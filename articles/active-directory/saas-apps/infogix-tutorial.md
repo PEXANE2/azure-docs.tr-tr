@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0f4874a16e12c5c9e7e5a0fd9858d3e42f2bb1cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b59a764510b93daf358e00a4d75bcefd31d2980f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91821273"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460249"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Öğretici: ınfogix Data3Sixty yönetir ile tümleştirme Azure Active Directory
 
@@ -27,10 +27,10 @@ Infogix Data3Sixty yönetmesinin Azure AD ile tümleştirilmesi aşağıdaki ava
 * Kullanıcılarınızın Azure AD hesaplarıyla ınfogix Data3Sixty yönetme (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini ınfogix Data3Sixty yönetir ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -219,19 +219,18 @@ Bu bölümde, ınfogix Data3Sixty yönetmesinin erişimine izin vererek Azure ç
 Bu bölümde, ınfogix Data3Sixty yönetir içinde Britta Simon adlı bir Kullanıcı oluşturulur. Infogix Data3Sixty yönetir, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Infogix Data3Sixty yönetme bölümünde zaten yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 > [!Note]
-> El ile bir kullanıcı oluşturmanız gerekiyorsa, [ınfogix Data3Sixty yönetme destek ekibine](mailto:data3sixtysupport@infogix.com)başvurun.
+> El ile bir kullanıcı oluşturmanız gerekiyorsa, [ınfogix Data3Sixty yönetme destek ekibine](mailto:data3sixtysupport@infogix.com)başvurun.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde ınfogix Data3Sixty yönetme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız ınfogix Data3Sixty yönetmede otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde ınfogix Data3Sixty yönetme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız ınfogix Data3Sixty yönetmede otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

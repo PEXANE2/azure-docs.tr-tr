@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b8cc59b805cd757edce79a14d124ea244b4652a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03c71664769f1518ba80d36867c71ef35b2ca026
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267491"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461473"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Senaryo: paylaşılan hizmetler sanal ağlarına yönlendirme
 
@@ -24,17 +24,19 @@ Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönle
 
 ## <a name="design"></a><a name="design"></a>Tasarım
 
-Bu senaryonun gereksinimlerini özetlemek için bir bağlantı matrisi kullanabiliriz. Matriste her hücrede, belirli bir trafik akışı için bir sanal WAN bağlantısının (akışın "Kimden" tarafı, tablodaki satır başlıkları) bir hedef ön eki (akışın "to" tarafı, tablodaki sütun üst bilgileri) öğrenip öğrenmediğini açıklanmaktadır. Bir "X", bağlantının sanal WAN tarafından sağlandığı anlamına gelir:
+Bu senaryonun gereksinimlerini özetlemek için bir bağlantı matrisi kullanabiliriz:
 
 **Bağlantı matrisi**
 
 | Kaynak             | Hedef:   |*Yalıtılmış VNET 'ler*|*Paylaşılan VNet*|*Dallar*|
 |---|---|---|---|---|
-|**Yalıtılmış VNET 'ler**|&#8594;|                |        X        |       X      |
-|**Paylaşılan sanal ağlar**  |&#8594;|       X        |        X        |       X      |
-|**Dallar**      |&#8594;|       X        |        X        |       X      |
+|**Yalıtılmış VNET 'ler**|&#8594;|        | Direct | Direct |
+|**Paylaşılan sanal ağlar**  |&#8594;| Direct | Direct | Direct |
+|**Dallar**      |&#8594;| Direct | Direct | Direct |
 
-[Yalıtılmış VNET senaryosuna](scenario-isolate-vnets.md)benzer şekilde, bu bağlantı matrisi, iki yol tablosuna (paylaşılan hizmetler sanal ağları ve dallar aynı bağlantı gereksinimlerine sahiptir) çeviren iki farklı satır deseni sunar. Sanal WAN zaten varsayılan bir yol tablosuna sahiptir, bu nedenle bu örnekteki **RT_SHARED** çağıracağız başka bir özel yol tablosuna ihtiyacımız olacak.
+Önceki tablodaki hücrelerin her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları) bir hedefle (akışın "to" tarafı, italik olan sütun üst bilgileri) iletişim kuracağını açıklar. Bu senaryoda, güvenlik duvarı veya ağ sanal gereçleri yoktur, bu nedenle iletişim doğrudan sanal WAN üzerinden akar (Bu nedenle tablodaki "doğrudan" sözcüğü).
+
+[Yalıtılmış VNET senaryosuna](scenario-isolate-vnets.md)benzer şekilde, bu bağlantı matrisi iki farklı satır deseni sunar ve bu da iki yol tablosuna (paylaşılan hizmetler sanal ağları ve dallar aynı bağlantı gereksinimlerine sahiptir) çevirir. Sanal WAN zaten varsayılan bir yol tablosuna sahiptir, bu nedenle bu örnekteki **RT_SHARED** çağıracağız başka bir özel yol tablosuna ihtiyacımız olacak.
 
 VNET 'ler **RT_SHARED** yol tablosuyla ilişkilendirilir. Dallara ve paylaşılan hizmet sanal ağlarına bağlantı gerektirdiğinden, paylaşılan hizmet VNet ve dalların **RT_SHARED** 'e yayılması gerekir (Aksi halde sanal ağlar dalı ve paylaşılan VNET öneklerini öğrenmez). Dallar her zaman varsayılan yol tablosuyla ilişkilendirildiğinden ve bağlantı gereksinimleri paylaşılan hizmetler sanal ağları için aynıysa, paylaşılan hizmet VNET 'leri varsayılan yol tablosuyla de ilişkilendireceğiz.
 

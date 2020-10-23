@@ -1,25 +1,28 @@
 ---
-title: Azure Izleyici 'de Windows olay günlüklerini toplayın ve çözümleyin | Microsoft Docs
+title: Azure Izleyici 'de Log Analytics Agent ile Windows olay günlüğü veri kaynaklarını toplama
 description: Windows olay günlükleri koleksiyonunun Azure Izleyici tarafından ve oluşturdukları kayıtların ayrıntıları tarafından nasıl yapılandırılacağı açıklanmaktadır.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 109e96f862ec2f3ddf879bccba114c44aecfe3c8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87075254"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440612"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows olay günlüğü veri kaynakları
-Windows olay günlükleri, birçok uygulama Windows olay günlüğü 'ne yazdığından Windows aracılarını kullanarak veri toplamaya yönelik en yaygın [veri kaynaklarından](agent-data-sources.md) biridir.  İzlemeniz gereken uygulamalar tarafından oluşturulan özel günlüklerin belirtilmesine ek olarak, sistem ve uygulama gibi standart günlüklerden olayları toplayabilirsiniz.
+# <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Log Analytics aracısıyla Windows olay günlüğü veri kaynaklarını toplama
+Windows olay günlükleri, birçok uygulama Windows olay günlüğü 'ne yazdığından, Windows sanal makinelerinde Log Analytics aracıları için en yaygın [veri kaynaklarından](agent-data-sources.md) biridir.  İzlemeniz gereken uygulamalar tarafından oluşturulan özel günlüklerin belirtilmesine ek olarak, sistem ve uygulama gibi standart günlüklerden olayları toplayabilirsiniz.
+
+> [!IMPORTANT]
+> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısıyla](log-analytics-agent.md) Windows olaylarının toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) .
 
 ![Windows Olayları](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Windows olay günlüklerini yapılandırma
-[Gelişmiş ayarlar 'Daki veri menüsünden](agent-data-sources.md#configuring-data-sources)Windows olay günlüklerini yapılandırın.
+Log Analytics çalışma alanı için [Gelişmiş ayarlar 'Daki veri menüsünden](agent-data-sources.md#configuring-data-sources) Windows olay günlüklerini yapılandırın.
 
 Azure Izleyici yalnızca ayarlarda belirtilen Windows olay günlüklerinden olayları toplar.  Günlük adını yazarak ve ' a tıklayarak bir olay günlüğü ekleyebilirsiniz **+** .  Her günlük için yalnızca seçilen önem derecelerine sahip olaylar toplanır.  Toplamak istediğiniz belirli bir günlüğün önem derecesi ' ni denetleyin.  Olayları filtrelemek için herhangi bir ek ölçüt sağlamazsanız.
 
@@ -60,7 +63,7 @@ Windows olay kayıtları bir tür **olaya** sahiptir ve aşağıdaki tabloda bul
 ## <a name="log-queries-with-windows-events"></a>Windows olaylarıyla sorguları günlüğe kaydet
 Aşağıdaki tabloda, Windows olay kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |:---|:---|
 | Olay |Tüm Windows olayları. |
 | Olay &#124; EventLevelName = = "Error" |Hata önem derecesine sahip tüm Windows olayları. |

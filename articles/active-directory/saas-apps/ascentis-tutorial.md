@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 4aed971619b6426b36953ec28c3c72858af9fb70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f0aa1735627556963221313c896666d13bd769e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549458"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457678"
 ---
 # <a name="tutorial-integrate-ascentis-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Ascentis 'yi tümleştirin
 
@@ -25,9 +25,9 @@ Bu öğreticide, Ascentis 'yi Azure Active Directory (Azure AD) ile tümleştirm
 * Azure AD 'de Ascentis 'ye erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla, asıp 'Leri otomatik olarak oturum açmalarına olanak sağlayın.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -134,19 +134,18 @@ Bu bölümde, Assıs 'ye erişim vererek, B. Simon 'u Azure çoklu oturum açma 
 
 ### <a name="create-ascentis-test-user"></a>Asentis test kullanıcısı oluşturma
 
-Bu bölümde, Ascentis 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Asentis platformunda kullanıcıları eklemek için [ascentis destek ekibi](mailto:support@ascentis.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Ascentis 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Asentis platformunda kullanıcıları eklemek için [ascentis destek ekibi](mailto:support@ascentis.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Ascentis kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız erişimler için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Ascentis kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız erişimler için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)

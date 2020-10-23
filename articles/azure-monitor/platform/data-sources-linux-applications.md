@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db83e24931ec91449ac8c08bf4ce476e0f527b26
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85963249"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461354"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Izleyici 'de Linux uygulamaları için performans sayaçlarını toplama 
-[!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
+
 Bu makalede, Azure Izleyici 'de belirli uygulamalar için performans sayaçlarını toplamak üzere [Linux için Log Analytics aracısını](https://github.com/Microsoft/OMS-Agent-for-Linux) yapılandırmaya yönelik ayrıntılar sağlanmaktadır.  Bu makaleye dahil edilen uygulamalar şunlardır:  
 
 - [MySQL](#mysql)
@@ -70,7 +70,7 @@ MySQL OMı sağlayıcısı 'nın yüklenmesiyle birlikte, MySQL OMI kimlik doğr
 
 Aşağıdaki tabloda, mycimprovauth kullanımı için sözdizimi hakkında ayrıntılı bilgi verilmektedir.
 
-| İşlem | Örnek | Açıklama
+| İşlem | Örnek | Description
 |:--|:--|:--|
 | *yanlış veya doğru* otomatik güncelleştirme | mycimprovauth otomatik güncelleştirme yanlış | Kimlik doğrulama dosyasının yeniden başlatma veya güncelleştirme sırasında otomatik olarak güncelleştirilip güncelleştirimeyeceğini ayarlar. |
 | Varsayılan *bağlama adresi Kullanıcı adı parolası* | mycimprovauth varsayılan 127.0.0.1 kök PWD | MySQL OMı kimlik doğrulama dosyasındaki varsayılan örneği ayarlar.<br>Parola alanı düz metin olarak girilmelidir-MySQL OMı kimlik doğrulama dosyasındaki parola temel 64 olarak kodlanır. |

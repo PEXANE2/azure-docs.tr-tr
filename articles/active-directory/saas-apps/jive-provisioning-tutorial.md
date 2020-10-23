@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: fa45ece76499b50694d366ed2dcdd57cc1e0c7dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caeff5be83e02948baab4ecbcf05630eacff74df
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312105"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459382"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Jive 'yi yapılandırma
 
@@ -35,7 +35,7 @@ Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim ala
 
 Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Jive uygulamanıza erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları Jive uygulamanıza atayabilirsiniz:
 
-[Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-jive"></a>Kullanıcıları Jive 'ye atamaya yönelik önemli ipuçları
 

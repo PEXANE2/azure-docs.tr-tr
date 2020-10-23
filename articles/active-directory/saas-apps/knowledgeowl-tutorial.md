@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: fc6cb5d992d4c961e23034560a688c7090622359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 367f6713102912786ce258c471278373636f7326
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858107"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458923"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Öğretici: KnowledgeOwl ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,9 @@ Bu öğreticide, KnowledgeOwl 'yi Azure Active Directory (Azure AD) ile tümleş
 * Kullanıcılarınızın Azure AD hesaplarıyla KnowledgeOwl için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -199,7 +199,7 @@ Bu bölümde, KnowledgeOwl erişimi vererek Azure çoklu oturum açma özelliği
 
     i. Sayfanın alt kısmındaki **Kaydet**’e tıklayın.
 
-    ![Ekran görüntüsü Kaydet düğmesini gösterir.](./media/knowledgeowl-tutorial/configure4.png)
+    ![Kaydet düğmesini gösteren ekran görüntüsü.](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>KnowledgeOwl test kullanıcısı oluştur
 
@@ -212,14 +212,14 @@ Bu bölümde, KnowledgeOwl içinde B. Simon adlı bir Kullanıcı oluşturulur. 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde KnowledgeOwl kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız KnowledgeOwl öğesinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde KnowledgeOwl kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız KnowledgeOwl öğesinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile KnowledgeOwl 'yi deneyin](https://aad.portal.azure.com/)

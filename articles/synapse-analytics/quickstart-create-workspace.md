@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9780a2adb60c690abda6880157252aaa0c562f18
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: d06d1b0553161523708f4bb142f1c715a77eb2dd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171772"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461116"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Hızlı başlangıç: SYNAPSE çalışma alanı oluşturma
 Bu hızlı başlangıçta Azure portal kullanarak bir Azure SYNAPSE çalışma alanı oluşturma adımları açıklanmaktadır.
@@ -23,13 +23,8 @@ Bu hızlı başlangıçta Azure portal kullanarak bir Azure SYNAPSE çalışma a
 
 1. [Azure Portal](https://portal.azure.com)açın ve en üstteki **SYNAPSE**için arama yapın.
 1. Arama sonuçlarında **Hizmetler**altında **Azure SYNAPSE Analytics (çalışma alanları Önizleme)** öğesini seçin.
-1. Bu ayarları kullanarak bir çalışma alanı oluşturmak için **Ekle** ' yi seçin:
-
-    |Tab|Ayar | Önerilen değer | Açıklama |
-    |---|---|---|---|
-    |Temel Bilgiler|**Çalışma alanı adı**|Bunu herhangi bir şekilde adlandırın.| Bu belgede, **MyWorkspace**kullanacağız.|
-    |Temel Bilgiler|**Bölge**|Depolama hesabının bölgesiyle eşleştirin.|
-
+1. Çalışma alanı oluşturmak için **Ekle** ' yi seçin.
+1. **Temel bilgiler** sekmesinde, çalışma alanına benzersiz bir ad verin. Bu belgede **Kapsamım çalışma alanını** kullanacağız
 1. Bir çalışma alanı oluşturmak için bir ADLSGEN2 hesabınızın olması gerekir. En basit seçenek yeni bir tane oluşturmaktır. Mevcut bir işlemi yeniden kullanmak istiyorsanız, bazı ek yapılandırmalar gerçekleştirmeniz gerekir. 
 1. 1. seçenek yeni bir ADLSGEN2 hesabı oluşturma 
     1. **Data Lake Storage Gen 2**' yi seçin altında **Yeni oluştur** ' a tıklayın ve **contosolake**olarak adlandırın.

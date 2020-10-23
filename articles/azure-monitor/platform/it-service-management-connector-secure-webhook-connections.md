@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 447b781ec83a01a58e6af9e9e43f75b3fc56b10f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64d45861f37e2015b747a4db0feb2d32e68fe893
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370789"
+ms.locfileid: "92427320"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Güvenli dışarı aktarma kullanarak Azure 'dan ıTSM araçlarına bağlanma
 
@@ -57,7 +57,10 @@ ITSM Bağlayıcısı aracını şu adımlarla kullanmaya başlayın:
 
 1. Uygulamanızı Azure AD'ye kaydetme.
 2. Güvenli bir Web kancası eylem grubu oluşturun.
-3. İş ortağı ortamınızı yapılandırın. Bugün, BMC Helix olan bir satıcıyı destekliyoruz.
+3. İş ortağı ortamınızı yapılandırın. 
+
+Güvenli dışarı aktarma aşağıdaki ıTSM araçlarıyla bağlantıları destekler:
+* [BMC Helix](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>Azure Active Directory Kaydet
 
@@ -86,18 +89,18 @@ Bir eyleme Web kancası eklemek için güvenli Web kancası için aşağıdaki y
 5. **Güvenli Web kancasını**seçin.
 6. Şu ayrıntıları seçin:
    1. Kaydettiğiniz Azure Active Directory örneğinin nesne KIMLIĞINI seçin.
-   2. URI için, satıcı ortamından kopyaladığınız Web kancası URL 'sini yapıştırın.
+   2. URI için, [ITSM aracı ortamından](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#configure-the-partner-environment)kopyaladığınız Web kancası URL 'sini yapıştırın.
    3. **Ortak uyarı şemasını** **Evet**olarak ayarlayın. 
 
    Aşağıdaki görüntüde örnek bir güvenli Web kancası eyleminin yapılandırması gösterilmektedir:
 
    ![Güvenli Web kancası eylemini gösteren ekran görüntüsü.](media/it-service-management-connector-secure-webhook-connections/secure-webhook.png)
 
-## <a name="configure-the-partner-environment"></a>İş ortağı ortamını yapılandırma
+## <a name="configure-the-itsm-tool-environment"></a>ITSM aracı ortamını yapılandırma
 
 Yapılandırma 2 adım içerir:
 1. Güvenli dışarı aktarma tanımının URI 'sini alın.
-2. Satıcının akışına göre tanımlar.
+2. ITSM aracının akışına göre tanımlar.
 
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>BMC Helix 'i Azure Izleyici 'ye bağlama
 

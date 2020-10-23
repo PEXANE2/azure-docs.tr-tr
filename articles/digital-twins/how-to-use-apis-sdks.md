@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5be746b73cef37826be36b13c6f491b8ef6ad809
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0fe56a8173a4cfe8836a078a62c7bc9015c83324
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359025"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461269"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -42,10 +42,10 @@ Ayrıca, [Azure Portal](https://portal.azure.com) ve [CLI](how-to-use-cli.md)ara
 ## <a name="overview-data-plane-apis"></a>Genel Bakış: veri düzlemi API 'Leri
 
 Veri düzlemi API 'Leri, Azure dijital TWINS örneğinizin içindeki öğeleri yönetmek için kullanılan Azure dijital TWINS API 'lardır. Yollar oluşturma, model yükleme, ilişki oluşturma ve TWINS yönetimi gibi işlemleri içerirler. Bunlar, aşağıdaki kategorilere büyük ölçüde ayrılabilir:
-* **Digitaltwınsmodelleriyle** -digitaltwınsmodel kategorisi, bir Azure dijital TWINS örneğindeki [modelleri](concepts-models.md) yönetmek için API 'ler içerir. Yönetim etkinlikleri, DTDL 'de yazılan modellerin karşıya yükleme, doğrulama, alma ve silme işlemlerini içerir.
+* **Digitaltwınmodeller** -digitaltwınmodeller kategorisi, bir Azure dijital TWINS örneğindeki [modelleri](concepts-models.md) yönetmek için API 'ler içerir. Yönetim etkinlikleri, DTDL 'de yazılan modellerin karşıya yükleme, doğrulama, alma ve silme işlemlerini içerir.
 * **Digitaltwins** -digitaltwıns kategorisi, geliştiricilerin bir Azure dijital TWINS örneğinde bulunan [dijital TWINS](concepts-twins-graph.md) ve ilişkilerini oluşturmalarına, değiştirmesine ve silmesine izin veren API 'leri içerir.
 * **Sorgu** -sorgu kategorisi, geliştiricilerin ilişkiler genelinde [ikizi grafiğinde dijital TWINS kümeleri bulmasına](how-to-query-graph.md) olanak tanır.
-* **Eventroutes** -eventroutes kategorisi, verileri sistem ve aşağı akış Hizmetleri aracılığıyla [yönlendiren](concepts-route-events.md)API 'leri içerir.
+* **Olay** rotaları-olay rotaları kategorisi, verileri sistem ve aşağı akış Hizmetleri aracılığıyla [yönlendiren](concepts-route-events.md)API 'leri içerir.
 
 Genel önizleme için en güncel veri düzlemi API sürümü _**2020-10-31**_' dir.
 
@@ -56,7 +56,7 @@ Veri düzlemi API 'Lerini kullanmak için:
 * **.Net (C#)** SDK 'sını kullanabilirsiniz. .NET SDK 'Yı kullanmak için...
    - paketi NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)' dan görüntüleyebilir ve ekleyebilirsiniz. 
    - örnek bir klasör içeren SDK kaynağını GitHub 'da bulabilirsiniz: [.net Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - [SDK başvuru belgelerini](/dotnet/api/overview/azure/digitaltwins?preserve-view=true&view=azure-dotnet-preview)görüntüleyebilirsiniz.
+   - [SDK başvuru belgelerini](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview)görüntüleyebilirsiniz.
    - Bu makalenin [.net (C#) SDK (veri düzlemi)](#net-c-sdk-data-plane) bölümüne devam ederek ayrıntılı bilgi ve kullanım örnekleri görebilirsiniz.
 * **Java** SDK 'sını kullanabilirsiniz. Java SDK 'sını kullanmak için...
    - paketi Maven 'ten görüntüleyebilir ve yükleyebilirsiniz: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)

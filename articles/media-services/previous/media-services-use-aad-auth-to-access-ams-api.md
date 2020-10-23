@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: c0d3ece75d15ae07091f613348389f845ec74ef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dae3b1adc1f7fecf6a34fc51d2a35bf4c98ea65
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262524"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425909"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD kimlik doğrulaması ile Azure Media Services API’sine erişme 
 
@@ -29,7 +29,7 @@ ms.locfileid: "89262524"
 
 Azure Media Services API 'si, yeniden bir API 'dir. Bunu, REST API kullanarak veya kullanılabilir istemci SDK 'larını kullanarak medya kaynakları üzerinde işlem gerçekleştirmek için kullanabilirsiniz. Azure Media Services Microsoft .NET için Media Services istemci SDK 'Sı sunmaktadır. Media Services kaynaklarına ve Media Services API'sine erişim yetkisi almak için önce kimliğinizi doğrulamanız gerekir. 
 
-Media Services, [Azure Active Directory (Azure AD) tabanlı kimlik doğrulamasını](../../active-directory/fundamentals/active-directory-whatis.md)destekler. Azure Media REST hizmeti, REST API isteklerini yapan kullanıcı veya uygulamanın kaynaklara erişmek için **katkıda** bulunan veya **sahip** rolü olmasını gerektirir. Daha fazla bilgi için [Azure portal Role-Based Access Control kullanmaya başlama](../../role-based-access-control/overview.md)bölümüne bakın.  
+Media Services, [Azure Active Directory (Azure AD) tabanlı kimlik doğrulamasını](../../active-directory/fundamentals/active-directory-whatis.md)destekler. Azure Media REST hizmeti, REST API isteklerini yapan kullanıcı veya uygulamanın kaynaklara erişmek için **katkıda** bulunan veya **sahip** rolü olmasını gerektirir. Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md).  
 
 Bu belge, REST veya .NET API 'Lerini kullanarak Media Services API 'sine erişme hakkında genel bakış sunar.
 
@@ -153,7 +153,7 @@ Aşağıdaki makaleler, Azure AD kimlik doğrulama kavramları hakkında genel b
 
 - [Azure AD tarafından belirtilen kimlik doğrulama senaryoları](../../active-directory/develop/authentication-vs-authorization.md)
 - [Azure AD 'de uygulama ekleme, güncelleştirme veya kaldırma](../../active-directory/develop/quickstart-register-app.md)
-- [PowerShell kullanarak Role-Based Access Control yapılandırma ve yönetme](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure PowerShell kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

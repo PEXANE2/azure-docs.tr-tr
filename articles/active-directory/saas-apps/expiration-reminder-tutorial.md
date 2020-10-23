@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 0f576205246ed90b8e8da91b7dd3074aa2d58d9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8e6d92545756e185697b1fb827d7b5f25dcfdd2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547194"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expiration-reminder"></a>Öğretici: süre sonu anımsatıcısı ile Azure Active Directory tümleştirme
 
@@ -27,10 +27,10 @@ Azure AD ile zaman aşımı anımsatıcısını tümleştirmek aşağıdaki avan
 * Kullanıcılarınızın Azure AD hesaplarıyla sona erme anımsatıcısı (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini süre sonu anımsatıcısı ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -174,18 +174,18 @@ Bu bölümde, süre sonu anımsatıcısının erişimine izin vererek Azure çok
 
 ### <a name="create-expiration-reminder-test-user"></a>Süre sonu anımsatıcı testi Kullanıcı Oluştur
 
-Bu bölümde, süre sonu anımsatıcısı 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Süre sonu anımsatıcı platformunda kullanıcıları eklemek için [süre sonu anımsatıcı destek ekibi](mailto:support@expirationreminder.net) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, süre sonu anımsatıcısı 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Süre sonu anımsatıcı platformunda kullanıcıları eklemek için [süre sonu anımsatıcı destek ekibi](mailto:support@expirationreminder.net) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde süre sonu anımsatıcı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız süre sonu anımsatıcısı için otomatik olarak oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde süre sonu anımsatıcı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız süre sonu anımsatıcısı için otomatik olarak oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e782dc632fe4100194015c3e0adb4ceb1ac30a6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d73f225f0e6f230509c856af0d15bc02e80fcd98
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89011472"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425882"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Hızlı başlangıç: bir kuyruğu yönetmek için .NET için Azure depolama SDK v11 kullanın
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, bir kuyruk oluşturmak ve buna ileti eklemek için .N
 > [!NOTE]
 > Bu hızlı başlangıç, Azure kuyruk depolama istemci kitaplığı 'nın eski bir sürümünü kullanır. En son sürümü kullanmaya başlamak için bkz. [hızlı başlangıç: .net Için Azure kuyruk depolama istemci kitaplığı V12](storage-quickstart-queues-dotnet.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -34,7 +34,7 @@ Ardından, işletim sisteminiz için .NET Core 2.0’ı indirip yükleyin. Windo
 - [Windows için .NET Core](https://www.microsoft.com/net/download/windows) veya [.NET Framework](https://www.microsoft.com/net/download/windows) (Windows için Visual Studio ile birlikte gelir) yükleyin
 - [Windows için Visual Studio](https://www.visualstudio.com/) yükleyin. .NET Core kullanıyorsanız, Visual Studio yüklenmesi isteğe bağlıdır.  
 
-.NET Core ve .NET Framework arasında seçim yapma hakkında bilgi için bkz: [Sunucu uygulamaları için .NET Framework ve .NET Core arasında seçim yapma](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
+.NET Core ve .NET Framework arasında seçim yapma hakkında bilgi için bkz: [Sunucu uygulamaları için .NET Framework ve .NET Core arasında seçim yapma](/dotnet/standard/choosing-core-framework-server).
 
 ### <a name="linux"></a>Linux
 
@@ -266,14 +266,14 @@ Azure kuyrukları ile .NET geliştirme için şu ek kaynaklara bakın:
 
 ### <a name="binaries-and-source-code"></a>İkili dosyalar ve kaynak kodu
 
-- [.Net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet) 'nın en son sürümüne yönelik NuGet paketlerini indirin
+- [.Net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage) 'nın en son sürümüne yönelik NuGet paketlerini indirin
     - [Common](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [Kuyruklar](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - GitHub üzerinde [.NET istemci kitaplığı kaynak kodunu](https://github.com/Azure/azure-storage-net) görüntüleyin.
 
 ### <a name="client-library-reference-and-samples"></a>İstemci kitaplığı başvurusu ve örnekleri
 
-- .NET istemci kitaplığı hakkında daha fazla bilgi için bkz. [.NET API başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
+- .NET istemci kitaplığı hakkında daha fazla bilgi için bkz. [.NET API başvurusu](/dotnet/api/overview/azure/storage).
 - .NET istemci kitaplığı kullanılarak yazılmış [kuyruk depolama örneklerini](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) keşfet.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -281,6 +281,6 @@ Azure kuyrukları ile .NET geliştirme için şu ek kaynaklara bakın:
 Bu hızlı başlangıçta, bir kuyruğa ileti eklemeyi, sıradaki iletilere göz atmayı ve .NET kullanarak iletileri sıradan çıkarmayı ve işlemeyi öğrendiniz. 
 
 > [!div class="nextstepaction"]
-> [Azure Kuyruk depolamayla uygulamalar arasında iletişim kurma](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [Azure Kuyruk depolamayla uygulamalar arasında iletişim kurma](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
 - .NET Core hakkında daha fazla bilgi için bkz. [10 dakika içinde .NET kullanmaya başlama](https://www.microsoft.com/net/learn/get-started/).
