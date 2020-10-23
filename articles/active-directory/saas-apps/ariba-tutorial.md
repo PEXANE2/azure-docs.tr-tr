@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 36ca2bc8ba7812229c9c22cedd294085d5a63af7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 139aeb2fad37f96ad9e3d7fc801d574a93e896bd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055206"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>Öğretici: Ariba ile tümleştirme Azure Active Directory
 
@@ -27,10 +27,10 @@ Ariba 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Kullanıcılarınızın Azure AD hesaplarıyla Ariba (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Ariba ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -43,7 +43,7 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 * Ariba, **SP** tarafından başlatılan SSO 'yu destekler
 
-* Ariba 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Ariba 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-ariba-from-the-gallery"></a>Galeriden Ariba ekleme
 
@@ -153,13 +153,12 @@ Bu bölümde, Ariba 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Ariba kutucuğunu tıklattığınızda, SSO 'yu ayarladığınız Ariba 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Ariba kutucuğunu tıklattığınızda, SSO 'yu ayarladığınız Ariba 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

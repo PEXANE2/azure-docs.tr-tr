@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f8cafc0ec94e9254d42bf6718e796a256d128d4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91305685"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445727"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için bandı yapılandırma
 
@@ -25,7 +25,7 @@ Bu makalede, kullanıcıları veya grupları otomatik olarak sağlamak ve sağla
 > [!NOTE]
 > Bu makalede, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmet ve sık sorulan soruların yanıtları hakkında önemli bilgiler için, bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı Şu anda önizleme aşamasındadır. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı Şu anda önizleme aşamasındadır. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -99,7 +99,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için bandı yapılandırmadan ön
 Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı veya grup atamalarını temel alan Kullanıcı veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için adım adım kılavuzluk eder.
 
 > [!TIP]
-> Ayrıca, ara [Çoklu oturum açma öğreticisindeki](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)yönergeleri izleyerek, her bir BANDı için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Otomatik Kullanıcı sağlamaktan bağımsız olarak çoklu oturum açmayı yapılandırabilirsiniz, ancak bu iki özellik birbirini tamamlamada.
+> Ayrıca, ara [Çoklu oturum açma öğreticisindeki](./harness-tutorial.md)yönergeleri izleyerek, her bir BANDı için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Otomatik Kullanıcı sağlamaktan bağımsız olarak çoklu oturum açmayı yapılandırabilirsiniz, ancak bu iki özellik birbirini tamamlamada.
 
 > [!NOTE]
 > Bu uç nokta uç noktası hakkında daha fazla bilgi edinmek için, bkz. ana [API anahtarları](https://docs.harness.io/article/smloyragsm-api-keys) makalesi.

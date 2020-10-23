@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 85b355981a50804f1c43441efa38c5db59967c1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26109d4b8875dd0b442521513dbd219dc0de06e0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760640"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455978"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Öğretici: Cıvic platformunu Azure Active Directory ile tümleştirme
 
@@ -26,9 +26,9 @@ Bu öğreticide, Cıvic platformunu Azure Active Directory (Azure AD) ile tümle
 * Kullanıcılarınızın Azure AD hesaplarıyla Cıvic platformunda otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -182,13 +182,12 @@ Bu bölümde, Cıvic platformunda B. Simon adlı bir Kullanıcı oluşturacaksı
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Cıvic platform kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Cıvic platformunda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Cıvic platform kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Cıvic platformunda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)

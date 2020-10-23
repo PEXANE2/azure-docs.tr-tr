@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d281b0ecd38ebbb76e093fd4f85213da4fc7d713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265807"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442074"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Azure AD dış kimlikleri için faturalandırma modeli
 
-Azure Active Directory (Azure AD) dış kimlikler fiyatlandırması, aylık etkin kullanıcıları (MAU) temel alır. Bu, bir takvim ayı içinde kimlik doğrulama etkinliği olan benzersiz kullanıcıların sayısıdır. Bu Faturalandırma modeli hem Azure AD Konuk Kullanıcı işbirliği (B2B) hem de [Azure AD B2C kiracılar](https://docs.microsoft.com/azure/active-directory-b2c/billing)için geçerlidir. MAU faturalandırma, ücretsiz bir katman ve esnek ve öngörülebilir bir fiyatlandırma sunarak maliyetleri düşürmenize yardımcı olur. Bu makalede, MAU faturalandırma ve Azure AD Kiracılarınızı bir aboneliğe bağlama hakkında bilgi edinin.
+Azure Active Directory (Azure AD) dış kimlikler fiyatlandırması, aylık etkin kullanıcıları (MAU) temel alır. Bu, bir takvim ayı içinde kimlik doğrulama etkinliği olan benzersiz kullanıcıların sayısıdır. Bu Faturalandırma modeli hem Azure AD Konuk Kullanıcı işbirliği (B2B) hem de [Azure AD B2C kiracılar](../../active-directory-b2c/billing.md)için geçerlidir. MAU faturalandırma, ücretsiz bir katman ve esnek ve öngörülebilir bir fiyatlandırma sunarak maliyetleri düşürmenize yardımcı olur. Bu makalede, MAU faturalandırma ve Azure AD Kiracılarınızı bir aboneliğe bağlama hakkında bilgi edinin.
 
 > [!IMPORTANT]
 > Bu makale fiyatlandırma ayrıntıları içermez. Kullanım faturalaması ve fiyatlandırmayla ilgili en son bilgiler için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -45,7 +45,7 @@ Konuk kullanıcılarınız için geçerli olan fiyatlandırma katmanı, Azure AD
 
 Uygun faturalandırma ve özelliklere erişim için Azure AD kiracısı bir Azure aboneliğine bağlanmalıdır. Dizinde bağlantı için kullanabileceğiniz bir abonelik yoksa, bu işlem sırasında bir tane ekleme fırsatına sahip olacaksınız.
 
-1. Abonelik içinde en azından [katılımcı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) rolü veya abonelik içindeki bir kaynak grubu atanmış bir Azure hesabıyla [Azure Portal](https://portal.azure.com/) oturum açın.
+1. Abonelik içinde en azından [katılımcı](../../role-based-access-control/built-in-roles.md) rolü veya abonelik içindeki bir kaynak grubu atanmış bir Azure hesabıyla [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. Bağlamak istediğiniz dizini seçin: Azure portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından dizini seçin.
 

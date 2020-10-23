@@ -9,7 +9,7 @@
         - name: B2B konuk kullanıcı erişimi nedir?
           href: what-is-b2b.md
         - name: Azure AD B2C nedir?
-          href: 'https://docs.microsoft.com/azure/active-directory-b2c/overview'
+          href: ../../active-directory-b2c/overview.md
     - name: Hızlı Başlangıçlar
       items:
         - name: Portala konuk kullanıcılar ekleme
@@ -137,13 +137,13 @@
         - name: SSS
           href: faq.md
         - name: Destek alma
-          href: 'https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto'
+          href: ../fundamentals/active-directory-troubleshooting-support-howto.md
         - name: Azure geri bildirim forumu
           href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
         - name: Azure Yol Haritası
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
         - name: Microsoft Soru-Cevap soru sayfası
-          href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+          href: /answers/topics/azure-active-directory.html
         - name: Fiyatlandırma
           href: 'https://azure.microsoft.com/pricing/details/active-directory/'
         - name: Fiyatlandırma hesaplayıcı

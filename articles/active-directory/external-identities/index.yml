@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: bad40c34db9f597320a05f46be92baae6632d93e
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: ecc69f8e2e281b4456861397bdd5af4ba41448e8
+  ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91265621"
+  ms.lasthandoff: 10/23/2020
+  ms.locfileid: "92441768"
 landingContent:
 - title: Dış Kimlikler Hakkında
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
     - text: Azure AD B2B işbirliği nedir?
       url: what-is-b2b.md
     - text: Azure AD B2C (işletmeden tüketiciye) kimliği nedir?
-      url: https://docs.microsoft.com/azure/active-directory-b2c/overview
+      url: ../../active-directory-b2c/overview.md
 - title: Kuruluşunuz dışındaki kullanıcılarla işbirliği yapma (B2B işbirliği)
   linkLists:
   - linkListType: concept
@@ -54,21 +54,21 @@ landingContent:
   - linkListType: overview
     links:
     - text: Azure AD B2C hakkında
-      url: https://docs.microsoft.com/azure/active-directory-b2c/overview
+      url: ../../active-directory-b2c/overview.md
     - text: Tekniğe ve özelliklere genel bakış
-      url: https://docs.microsoft.com/azure/active-directory-b2c/technical-overview
+      url: ../../active-directory-b2c/technical-overview.md
     - text: Tüm Azure AD B2C belgelerini görüntüleme
-      url: https://docs.microsoft.com/azure/active-directory-b2c/
+      url: ../../active-directory-b2c/index.yml
   - linkListType: concept
     links:
     - text: Azure AD B2C kullanıcı akışları
-      url: https://docs.microsoft.com/azure/active-directory-b2c/user-flow-overview
+      url: ../../active-directory-b2c/user-flow-overview.md
     - text: Azure AD B2C özel ilkeleri
-      url: https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview
+      url: ../../active-directory-b2c/custom-policy-overview.md
   - linkListType: tutorial
     links:
     - text: Azure AD B2C’de kullanıcı akışları oluşturma
-      url: https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows
+      url: ../../active-directory-b2c/tutorial-create-user-flows.md
 - title: B2B konuk kullanıcıları için self servis kaydolma akışları (önizleme)
   linkLists:
   - linkListType: overview

@@ -131,10 +131,6 @@
           href: security-center-monitoring.md
         - name: Öneriler için başvuru listesi
           href: recommendations-reference.md
-        - name: Ağ kaynaklarını koruma
-          href: security-center-network-recommendations.md
-        - name: Kimliği ve erişimi koruma
-          href: security-center-identity-access.md
         - name: Güvenlik önerilerini yönetme
           items:
             - name: Önerilere verilen yanıtları otomatikleştirme
@@ -142,6 +138,10 @@
               href: workflow-automation.md
             - name: Kaynağı öneriden muaf tutma
               href: exempt-resource.md
+        - name: Ağ kaynaklarını koruma
+          href: security-center-network-recommendations.md
+        - name: Kimliği ve erişimi koruma
+          href: security-center-identity-access.md
     - name: Azure Defender uyarıları
       items:
         - name: Azure Defender uyarılarına genel bakış
@@ -170,7 +170,7 @@
         - name: Güvenlik açığı taraması
           items:
             - name: Makineler için tümleşik VA tarayıcısı
-              displayName: 'qualys, vulnerability, arc'
+              displayName: 'qualys, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
             - name: VM’lerinizi KLG VA çözümüyle tarama
               displayName: 'qualys, rapid7, vulnerability'
@@ -179,7 +179,7 @@
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
             - name: Belirli güvenlik açığı bulgularını devre dışı bırakma
-              displayName: 'qualys, rapid7, vulnerability'
+              displayName: 'qualys, rapid7'
               href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: Tam zamanında VM erişimi ile yönetim bağlantı noktalarının güvenliğini sağlama
           items:
@@ -187,20 +187,24 @@
               displayName: 'jit, management'
               href: just-in-time-explained.md
             - name: Tam zamanında erişimi yönetme
-              displayName: 'jit, management'
+              displayName: 'jit, management, ports'
               href: security-center-just-in-time.md
         - name: Tümleşik Uç Nokta için Microsoft Defender lisansını kullanma
           displayName: 'ATP, mdatp, wdatp'
           href: security-center-wdatp.md
         - name: Uyarlamalı uygulama denetimlerini yönetme
+          displayName: 'aac, whitelist, allowlist, reviewgroup'
           href: security-center-adaptive-application.md
         - name: Dosya bütünlüğünü izlemeyi kullanma
           items:
             - name: Dosya bütünlüğünü izlemeye genel bakış
+              displayName: 'fim, change'
               href: security-center-file-integrity-monitoring.md
             - name: Dosya Bütünlüğünü İzleme kullanarak ana hatları karşılaştırma
+              displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
         - name: Uyarlamalı ağ sağlamlaştırmayı yönetme
+          displayName: anh
           href: security-center-adaptive-network-hardening.md
         - name: Docker konaklarınızı sağlamlaştırma
           displayName: containers

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 40484521ecdc32e2e279ddf1b68ddcd4b1d7bc9b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 23f32b6d09e36a98c68f5cb8f73ae1125c0543dd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427588"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460759"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
-Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti örneğiyle etkileşim kurmak üzere bir istemci uygulaması yazmak için yaygındır. Bu geliştirici odaklı öğreticide, [.net Için Azure dijital TWINS SDK 'sını (C#)](https://www.nuget.org/packages/Azure.DigitalTwins.Core)kullanarak Azure dijital TWINS hizmetinde programlamaya yönelik bir giriş sunulmaktadır. Bir C# Konsolu istemci uygulaması adımını sıfırdan başlayarak adım adım yazma konusunda size kılavuzluk eder.
+Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti örneğiyle etkileşim kurmak üzere bir istemci uygulaması yazmak için yaygındır. Bu geliştirici odaklı öğreticide, [.net Için Azure dijital TWINS SDK 'sını (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)kullanarak Azure dijital TWINS hizmetinde programlamaya yönelik bir giriş sunulmaktadır. Bir C# Konsolu istemci uygulaması adımını sıfırdan başlayarak adım adım yazma konusunda size kılavuzluk eder.
 
 > [!div class="checklist"]
 > * Projeyi ayarla
@@ -58,7 +58,7 @@ dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
 dotnet add package Azure.identity
 ```
 
-İlk bağımlılık [.net Için Azure Digital TWINS SDK 'sına](https://www.nuget.org/packages/Azure.DigitalTwins.Core)sahiptir. İkinci bağımlılık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
+İlk bağımlılık [.net Için Azure Digital TWINS SDK 'sına](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)sahiptir. İkinci bağımlılık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
 
 Öğreticinin tamamında kullanmaya devam edebileceksiniz, komut penceresini açık tutun.
 

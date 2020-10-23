@@ -7,22 +7,22 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ba19b7255be5ae24b3c4475f4195b84441b6c777
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 0123a89c4ec1c2c70326de1a2f685b08278333ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131505"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461558"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure dijital TWINS 'e alma IoT Hub telemetrisi
 
 Azure dijital TWINS, IoT cihazlarından ve diğer kaynaklardaki verilerle birlikte çalıştırılır. Azure dijital TWINS 'te kullanılacak cihaz verileri için ortak bir kaynak [IoT Hub](../iot-hub/about-iot-hub.md).
 
-Verileri Azure dijital TWINS 'e geri alma süreci, verileri alan ve özellikleri ayarlamak için [Digitaltwins API 'lerini](how-to-use-apis-sdks.md) kullanan bir [Azure işlevi](../azure-functions/functions-overview.md)gibi bir dış işlem kaynağı kurmak veya [dijital TWINS](concepts-twins-graph.md) 'de buna uygun olarak telemetri olayları tetiklemesi için kullanılır. 
+Verileri Azure dijital TWINS 'e geri alma süreci, verileri alan ve özellikleri ayarlamak için [Digitaltwins API 'lerini](/rest/api/digital-twins/dataplane/twins) kullanan bir [Azure işlevi](../azure-functions/functions-overview.md)gibi bir dış işlem kaynağı kurmak veya [dijital TWINS](concepts-twins-graph.md) 'de buna uygun olarak telemetri olayları tetiklemesi için kullanılır. 
 
 Bu nasıl yapılır belgesi, IoT Hub telemetri alabilen bir Azure işlevi yazma işlemini adım adım göstermektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneğe devam etmeden önce aşağıdaki kaynakları önkoşul olarak ayarlamanız gerekir:
 * **IoT Hub 'ı**. Yönergeler için, [bu IoT Hub hızlı başlangıç](../iot-hub/quickstart-send-telemetry-cli.md)konusunun *IoT Hub oluşturma* bölümüne bakın.

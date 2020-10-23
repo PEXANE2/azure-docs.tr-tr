@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 12c2652b4dcef46c5affde2c3fb9ef9288176eb9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 057b20d9c14b9a25a1e713d25796e1f0ac93daaa
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87852268"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428041"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Hızlı başlangıç: Python için Azure kuyruk depolama istemci kitaplığı V12
 
@@ -31,15 +31,15 @@ Python için Azure kuyruk depolama istemci kitaplığı V12 şu şekilde kullan�
 
 Ek kaynaklar:
 
-* [API başvuru belgeleri](https://docs.microsoft.com/python/api/azure-storage-queue/index)
+* [API başvuru belgeleri](/python/api/azure-storage-queue/index)
 * [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
 * [Paket (Python paket dizini)](https://pypi.org/project/azure-storage-queue/)
-* [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Örnekler](/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure depolama hesabı- [depolama hesabı oluşturma](/azure/storage/common/storage-quickstart-create-account)
 * İşletim sisteminiz için [Python](https://www.python.org/downloads/) -2,7, 3,5 veya üzeri
 
 ## <a name="setting-up"></a>Ayarlanıyor
@@ -111,9 +111,9 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
 Şu kaynaklarla etkileşim kurmak için aşağıdaki Python sınıflarını kullanın:
 
-* [QueueServiceClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient):, `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
-* [Queueclient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
-* [Queuemessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` sınıfı, bir kuyrukta [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) çağrılırken döndürülen ayrı nesneleri temsil eder.
+* [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient):, `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
+* [Queueclient](/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
+* [Queuemessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` sınıfı, bir kuyrukta [receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) çağrılırken döndürülen ayrı nesneleri temsil eder.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -149,9 +149,9 @@ Bu kodu bloğunun içine ekleyin `try` :
 Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kuyruk adına bir UUID değeri ekler.
 
 > [!IMPORTANT]
-> Kuyruk adları yalnızca küçük harf, sayı ve kısa çizgi içerebilir ve bir harf veya sayı ile başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır. Ad ayrıca 3 ila 63 karakter uzunluğunda olmalıdır. Adlandırma sıraları hakkında daha fazla bilgi için bkz. [adlandırma sıraları ve meta verileri](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata).
+> Kuyruk adları yalnızca küçük harf, sayı ve kısa çizgi içerebilir ve bir harf veya sayı ile başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır. Ad ayrıca 3 ila 63 karakter uzunluğunda olmalıdır. Adlandırma sıraları hakkında daha fazla bilgi için bkz. [adlandırma sıraları ve meta verileri](/rest/api/storageservices/naming-queues-and-metadata).
 
-[Queueclient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kuyruğu oluşturmak için [create_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) yöntemini çağırın.
+[Queueclient](/python/api/azure-storage-queue/azure.storage.queue.queueclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kuyruğu oluşturmak için [create_queue](/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) yöntemini çağırın.
 
 Bu kodu bloğunun sonuna ekleyin `try` :
 
@@ -171,7 +171,7 @@ Bu kodu bloğunun sonuna ekleyin `try` :
 
 ### <a name="add-messages-to-a-queue"></a>Bir kuyruğa ileti ekleme
 
-Aşağıdaki kod parçacığı [send_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) yöntemini çağırarak kuyruğa ileti ekler. Ayrıca, üçüncü çağrıdan döndürülen [Queuemessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage) öğesini de kaydeder `send_message` . , `saved_message` Programın ilerleyen kısımlarında ileti içeriğini güncelleştirmek için kullanılır.
+Aşağıdaki kod parçacığı [send_message](/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) yöntemini çağırarak kuyruğa ileti ekler. Ayrıca, üçüncü çağrıdan döndürülen [Queuemessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage) öğesini de kaydeder `send_message` . , `saved_message` Programın ilerleyen kısımlarında ileti içeriğini güncelleştirmek için kullanılır.
 
 Bu kodu bloğunun sonuna ekleyin `try` :
 
@@ -186,7 +186,7 @@ Bu kodu bloğunun sonuna ekleyin `try` :
 
 ### <a name="peek-at-messages-in-a-queue"></a>Kuyruktaki iletilere göz atın
 
-[Peek_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) yöntemini çağırarak kuyruktaki iletilere göz atın. `peek_messages`Yöntemi, sıranın önüne bir veya daha fazla ileti alır ancak iletinin görünürlüğünü değiştirmez.
+[Peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) yöntemini çağırarak kuyruktaki iletilere göz atın. `peek_messages`Yöntemi, sıranın önüne bir veya daha fazla ileti alır ancak iletinin görünürlüğünü değiştirmez.
 
 Bu kodu bloğunun sonuna ekleyin `try` :
 
@@ -203,7 +203,7 @@ Bu kodu bloğunun sonuna ekleyin `try` :
 
 ### <a name="update-a-message-in-a-queue"></a>Kuyruktaki bir iletiyi güncelleştirme
 
-[Update_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) yöntemini çağırarak bir iletinin içeriğini güncelleştirin. `update_message`Yöntemi, bir iletinin görünürlük zaman aşımını ve içeriğini değiştirebilir. İleti içeriği, boyutu 64 KB 'a kadar olan bir UTF-8 kodlu dize olmalıdır. Yeni içerikle birlikte, kodda daha önce kaydedilen iletiden değer geçirin. `saved_message`Değerler güncelleştirilecek iletiyi belirler.
+[Update_message](/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) yöntemini çağırarak bir iletinin içeriğini güncelleştirin. `update_message`Yöntemi, bir iletinin görünürlük zaman aşımını ve içeriğini değiştirebilir. İleti içeriği, boyutu 64 KB 'a kadar olan bir UTF-8 kodlu dize olmalıdır. Yeni içerikle birlikte, kodda daha önce kaydedilen iletiden değer geçirin. `saved_message`Değerler güncelleştirilecek iletiyi belirler.
 
 ```python
     print("\nUpdating the third message in the queue...")
@@ -215,7 +215,7 @@ Bu kodu bloğunun sonuna ekleyin `try` :
 
 ### <a name="receive-messages-from-a-queue"></a>Kuyruktan ileti alma
 
-[Receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) yöntemini çağırarak önceden eklenmiş iletileri indirin.
+[Receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) yöntemini çağırarak önceden eklenmiş iletileri indirin.
 
 Bu kodu bloğunun sonuna ekleyin `try` :
 
@@ -249,7 +249,7 @@ Bu kodu bloğunun sonuna ekleyin `try` :
 
 ### <a name="delete-a-queue"></a>Bir kuyruk silme
 
-Aşağıdaki kod, [delete_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) yöntemi kullanılarak sırayı silerek uygulamanın oluşturduğu kaynakları temizler.
+Aşağıdaki kod, [delete_queue](/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) yöntemi kullanılarak sırayı silerek uygulamanın oluşturduğu kaynakları temizler.
 
 Bu kodu bloğunun sonuna ekleyin `try` ve dosyayı kaydedin:
 
@@ -314,7 +314,7 @@ Bu hızlı başlangıçta, bir sıranın nasıl oluşturulacağını ve Python k
 Öğreticiler, örnekler, hızlı ve diğer belgeler için şu adresi ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Python Geliştiricileri için Azure](https://docs.microsoft.com/azure/python/)
+> [Python Geliştiricileri için Azure](/azure/python/)
 
 * Daha fazla bilgi edinmek için bkz. [Python Için Azure depolama kitaplıkları](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage).
 * Daha fazla Azure kuyruk depolama örnek uygulaması görmek için [Azure kuyruk depolama V12 Python istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)geçin.

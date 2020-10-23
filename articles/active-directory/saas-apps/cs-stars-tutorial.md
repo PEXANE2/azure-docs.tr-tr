@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 981fc2eb083ff2b1c7b472210299b535f04c45d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb3ed2aa3aae196e2135c6320a401aaf36556f86
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549220"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>Öğretici: CS yıldızlarla Azure Active Directory tümleştirme
 
@@ -27,10 +27,10 @@ CS yıldızlarını Azure AD ile tümleştirmek aşağıdaki avantajları sağla
 * Kullanıcılarınızın Azure AD hesaplarıyla CS yıldızlara (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini CS yıldıza göre yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -179,19 +179,18 @@ Bu bölümde, CS yıldıza erişim izni vererek Azure çoklu oturum açma özell
 
 ### <a name="create-cs-stars-test-user"></a>CS yıldızlı test kullanıcısı oluştur
 
-Bu bölümde, CS yıldızları 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. CS yıldızlarla çalışma, CS yıldızlı platformda kullanıcıları eklemek için [destek ekibi](https://riskonnect.com/support/) . Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, CS yıldızları 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. CS yıldızlarla çalışma, CS yıldızlı platformda kullanıcıları eklemek için [destek ekibi](https://riskonnect.com/support/) . Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde CS yıldızları kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız CS yıldızlara otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde CS yıldızları kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız CS yıldızlara otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
