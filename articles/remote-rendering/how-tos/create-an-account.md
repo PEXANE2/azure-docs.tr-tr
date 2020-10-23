@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: fb321aeeae1f0ef5aaadce22e228024895176143
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8169b277dfae918e86ac493259325ff84d0b6a4e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202659"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427471"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering hesabı oluşturma
 
@@ -101,7 +101,7 @@ Diğer açılan listeleri ilk adımda olarak seçilidir.
 
 Üç rolü de eklediyseniz, Azure uzaktan Işleme hesabınız, sistem tarafından atanan yönetilen hizmet kimliklerini kullanarak depolama hesabınıza erişebilir.
 > [!IMPORTANT]
-> Azure rol atamaları Azure depolama tarafından önbelleğe alınır, bu nedenle uzaktan işleme hesabınıza erişim verme ve depolama hesabınıza erişmek için kullanılabileceği zaman arasında 30 dakikalık bir gecikme olabilir. Ayrıntılar için bkz. [rol tabanlı erişim denetimi belgeleri](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected) .
+> Azure rol atamaları Azure depolama tarafından önbelleğe alınır, bu nedenle uzaktan işleme hesabınıza erişim verme ve depolama hesabınıza erişmek için kullanılabileceği zaman arasında 30 dakikalık bir gecikme olabilir. Ayrıntılar için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) belgeleri](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

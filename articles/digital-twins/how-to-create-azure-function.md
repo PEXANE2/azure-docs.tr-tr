@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d81d26c4cf975a20f31b4b4546c1477ed1a630e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: acbccd09fc8bc765083fea7b3a8d6ad749003ae9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048330"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428006"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Verileri işlemek için Azure Işlevleri uygulamalarına bağlanma
 
@@ -50,7 +50,7 @@ Visual Studio 2019 ' de _dosya > yeni > proje_ ' yi seçin ve _Azure işlevleri_
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>Event Grid tetikleyicisiyle bir Azure işlevi yazma
 
-İşlev uygulamanıza SDK ekleyerek bir Azure işlevi yazabilirsiniz. İşlev uygulaması, [.net Için Azure IoT Digital ikizi istemci kitaplığı (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)kullanarak Azure Digital TWINS ile etkileşime girer. 
+İşlev uygulamanıza SDK ekleyerek bir Azure işlevi yazabilirsiniz. İşlev uygulaması, [.net Için Azure dijital TWINS SDK 'sını (C#)](https://www.nuget.org/packages/Azure.DigitalTwins.Core)kullanarak Azure Digital TWINS ile etkileşime girer. 
 
 SDK 'yı kullanmak için aşağıdaki paketleri projenize eklemeniz gerekir. Paketleri Visual Studio NuGet Paket Yöneticisi 'ni kullanarak yükleyebilir ya da komut satırı aracını kullanarak paketleri ekleyebilirsiniz `dotnet` . Aşağıdaki yöntemlerden birini seçin: 
 

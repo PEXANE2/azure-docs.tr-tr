@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: bc5bfb7c9cadea7aaa9cdedb2a17943014c6ef59
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 344d4e6b57082eb9ccfcd0642732d05216ad3978
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124767"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426331"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma-Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -83,7 +83,7 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 > Birincil üzerinde şema güncelleştirmeleri varsa, ikincil veritabanında günlük yeniden yürütme gecikiyor. İkinci, ikincil veritabanında bir şema kilidi gerektirir.
 
 > [!IMPORTANT]
-> Birincil ile aynı bölgede ikincil bir veritabanı oluşturmak için Coğrafi çoğaltmayı kullanabilirsiniz. Aynı bölgedeki bir salt okunurdur iş yüklerini yük dengelemek için bu ikincili kullanabilirsiniz. Ancak, aynı bölgedeki bir ikincil veritabanı ek hata esnekliği sağlamaz ve bu nedenle olağanüstü durum kurtarma için uygun bir yük devretme hedefi değildir. Ayrıca, kullanılabilirlik alanı yalıtımının garanti etmez. Kullanılabilirlik alanı yalıtımına ulaşmak için Iş açısından kritik veya Premium hizmet katmanını [bölge yedekli yapılandırmasıyla](high-availability-sla.md#zone-redundant-configuration) kullanın.
+> Birincil ile aynı bölgede ikincil bir veritabanı oluşturmak için Coğrafi çoğaltmayı kullanabilirsiniz. Aynı bölgedeki bir salt okunurdur iş yüklerini yük dengelemek için bu ikincili kullanabilirsiniz. Ancak, aynı bölgedeki bir ikincil veritabanı ek hata esnekliği sağlamaz ve bu nedenle olağanüstü durum kurtarma için uygun bir yük devretme hedefi değildir. Ayrıca, kullanılabilirlik alanı yalıtımının garanti etmez. Kullanılabilirlik alanı yalıtımına ulaşmak için Iş açısından kritik veya Premium hizmet katmanını [bölge yedekli yapılandırma](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) veya genel amaçlı hizmet katmanı [bölge yedekli yapılandırmasıyla](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) kullanın.
 >
 
 - **Planlı yük devretme**

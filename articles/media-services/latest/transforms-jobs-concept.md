@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: inhenkel
-ms.openlocfilehash: a9e34c4aaeb6fc2c151233b05ed5584e0e624148
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297986"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426785"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Media Services dönüşümler ve Işler
 
@@ -62,7 +62,7 @@ Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş
 
 ### <a name="creating-transforms"></a>Dönüşümler oluşturma
 
-REST, CLı veya yayımlanmış SDK 'Lardan herhangi birini kullanarak dönüşümler oluşturabilirsiniz. Media Services v3 API 'SI Azure Resource Manager tarafından dağıtılır, bu nedenle Media Services hesabınızda dönüşümler oluşturup dağıtmak için Kaynak Yöneticisi şablonlarını da kullanabilirsiniz. Rol tabanlı erişim denetimi, dönüşümlere erişimi kilitlemek için kullanılabilir.
+REST, CLı veya yayımlanmış SDK 'Lardan herhangi birini kullanarak dönüşümler oluşturabilirsiniz. Media Services v3 API 'SI Azure Resource Manager tarafından dağıtılır, bu nedenle Media Services hesabınızda dönüşümler oluşturup dağıtmak için Kaynak Yöneticisi şablonlarını da kullanabilirsiniz. Azure rol tabanlı erişim denetimi, dönüşümlere erişimi kilitlemek için kullanılabilir.
 
 ### <a name="updating-transforms"></a>Dönüşümler güncelleştiriliyor
 

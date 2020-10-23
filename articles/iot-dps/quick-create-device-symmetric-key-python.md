@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: 0fe9d59e97ebbc9aba17fea14aed43756300d56e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8b87d9d487257504a438cf13a5b94e3ca4f9233d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90528610"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426374"
 ---
 # <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>Hızlı başlangıç: simetrik anahtarlarla bir Python cihazı sağlama
 
-Bu hızlı başlangıçta, Python kullanarak bir IoT Hub 'ına cihaz olarak Windows geliştirme makinesi sağlamayı öğreneceksiniz. Bu cihaz, bir IoT Hub 'ına atanmak üzere bir cihaz sağlama hizmeti (DPS) örneğiyle kimlik doğrulamak için bir simetrik anahtar kullanır. Kimliği doğrulanmış cihaz, tek bir kayıt temelinde DPS tarafından tanınır ve bir IoT Hub 'ına atanır. [Azure IoT Python SDK 'sının](https://github.com/Azure/azure-iot-sdk-python) örnek kodu, cihazı sağlamak için kullanılacaktır. 
+Bu hızlı başlangıçta, Python kullanarak bir IoT Hub 'ına cihaz olarak Windows geliştirme makinesi sağlamayı öğreneceksiniz. Bu cihaz, bir IoT Hub 'ına atanmak üzere bir cihaz sağlama hizmeti (DPS) örneğiyle kimlik doğrulaması yapmak için bir simetrik anahtar ve tek bir kayıt kullanır. [Azure IoT Python SDK 'sının](https://github.com/Azure/azure-iot-sdk-python) örnek kodu, cihazı sağlamak için kullanılacaktır. 
 
 Bu makalede tek bir kayıt ile sağlama işlemi gösterilmektedir, ancak kayıt grupları da kullanabilirsiniz. Kayıt grupları kullanılırken bazı farklılıklar vardır. Örneğin, cihaz için benzersiz bir kayıt KIMLIĞIYLE türetilmiş bir cihaz anahtarı kullanmanız gerekir. Simetrik anahtar kayıt grupları eski cihazlarla sınırlı olmasa da, [Simetrik anahtar kanıtı kullanarak eski cihazları sağlama](how-to-legacy-device-symm-key.md) bölümünde bir kayıt grubu örneği sağlanmaktadır. Daha fazla bilgi için, bkz. [Simetrik Anahtar Kanıtlama için Grup Kayıtları](concepts-symmetric-key-attestation.md#group-enrollments).
 
@@ -32,7 +32,7 @@ Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Li
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Windows tabanlı makinenizde [Python 3,7](https://www.python.org/downloads/) veya sonraki bir sürümünün yüklü olduğundan emin olun. ' İ çalıştırarak Python sürümünüzü kontrol edebilirsiniz `python --version` .
 

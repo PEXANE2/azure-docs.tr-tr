@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 654fc453f0b4167ae91afcab811de321925c6bf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9e4fd2f7f55f916743074b57f89788c0d32f7d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89614676"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427500"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure özel bağlantısı için Azure Güvenlik temeli
 
@@ -268,7 +268,7 @@ Daha fazla araştırma için Azure Sentinel 'e veri alma.
 
 İş gereksinimlerine bağlı olarak uygulamalarınızın ve kurumsal ortamlarınızla Azure kaynaklarınıza erişim düzeyini kısıtlayın. 
 
-Azure Active Directory rol tabanlı erişim denetimi aracılığıyla Azure kaynaklarına erişimi denetleyin.
+Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla Azure kaynaklarına erişimi denetleme.
 
 - [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
 
@@ -292,7 +292,7 @@ Uygun olduğunda, bekleyen ve geçişte şifreleme için Güvenlik Merkezi öner
 
 **Sorumluluk**: paylaşılan
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
 **Rehberlik**: veri ve kaynaklara erişimi denetlemek için Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) kullanın, aksi takdirde hizmete özel erişim denetimi yöntemlerini kullanın.
 
@@ -456,7 +456,7 @@ Azure kaynaklarınız için güvenli bir yapılandırma temeli olarak güvenlik 
 
 - [Azure portal bir şablona tek ve çoklu kaynak verme](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Güvenlik önerileri-bir başvuru kılavuzu](../security-center/recommendations-reference.md)
+- [Güvenlik önerileri - başvuru kılavuzu](../security-center/recommendations-reference.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

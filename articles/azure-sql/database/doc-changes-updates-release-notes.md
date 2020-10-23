@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 027a816e846996aa7c61a1747327128f9a0feed0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 01126a1ca8590d02d0cd0aa1c8554b34161dbac5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079216"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426265"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 |**Azure SQL Veritabanı**|Azure SQL veritabanı *tek veritabanı*| Açıkça belirtilmediği takdirde, Azure SQL veritabanı ürün adı, elastik bir havuza dağıtılan tek veritabanlarını ve veritabanlarını içerir. |
 |**Azure SQL Veritabanı**|Azure SQL veritabanı *elastik havuzu*| Açıkça belirtilmediği takdirde, Azure SQL veritabanı ürün adı, elastik bir havuza dağıtılan tek veritabanlarını ve veritabanlarını içerir.  |
 |**Azure SQL Veritabanı** |Azure SQL Veritabanı | Terim aynı kalır, ancak artık tek veritabanı ve elastik havuz dağıtımları için geçerli olur ve yönetilen örnek içermez. |
-| **Azure SQL**| YOK | Bu, Azure 'da kullanılabilen SQL Server veritabanı motoru ürünlerinin ailesini ifade eder: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure VM 'lerinde SQL Server. | 
+| **Azure SQL**| Yok | Bu, Azure 'da kullanılabilen SQL Server veritabanı motoru ürünlerinin ailesini ifade eder: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure VM 'lerinde SQL Server. | 
 
 ## <a name="features-in-public-preview"></a>Genel önizlemede Özellikler
 
@@ -100,7 +100,7 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
 |---------|---------|---------|---------|
 |[Dağıtılmış işlemler, sunucu güven grubundan yönetilen örnek kaldırıldıktan sonra yürütülebilir](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Eki 2020|Geçici çözüm vardır||
 |[Dağıtılmış işlemler, yönetilen örnek ölçeklendirme işleminden sonra yürütülemez](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Eki 2020|Geçici çözüm vardır||
-|Azure SQL 'de [bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) ve `BACKUP` / `RESTORE` yönetilen örnekteki bildirimde Azure depolama 'da kimlik doğrulaması yapmak için Azure AD Manage Identity kullanılamaz|Eyl 2020|Geçici çözüm vardır||
+|[bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) / [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) Azure SQL 'de ve `BACKUP` / `RESTORE` yönetilen örnekteki deyimdeki OPENROWSET, Azure depolama 'da kimlik doğrulaması yapmak için Azure AD Yönetim kimliğini kullanamaz|Eyl 2020|Geçici çözüm vardır||
 |[Hizmet sorumlusu Azure AD 'ye ve AKV 'ye erişemiyor](#service-principal-cannot-access-azure-ad-and-akv)|Ağu 2020|Geçici çözüm vardır||
 |[SAĞLAMA TOPLAMı olmadan el ile yedeklemenin geri yüklenmesi başarısız olabilir](#restoring-manual-backup-without-checksum-might-fail)|Mayıs 2020|Çözümlendi|Haziran 2020|
 |[Aracı, mevcut işleri değiştirme, devre dışı bırakma veya etkinleştirme sırasında yanıt vermemeye başladı](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mayıs 2020|Çözümlendi|Haziran 2020|
@@ -139,7 +139,7 @@ Hizmet katmanını veya sanal çekirdek sayısını değiştiren yönetilen örn
 
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>BULK INSERT ve yedekleme/GERI yükleme deyimleri, Azure depolama 'ya erişmek için yönetilen kimlik kullanamaz
 
-Toplu INSERT deyimleri, `DATABASE SCOPED CREDENTIAL` Azure depolama 'da kimlik doğrulaması yapmak Için yönetilen kimlikle kullanılamaz. Geçici bir çözüm olarak, PAYLAŞıLAN ERIŞIM IMZASı kimlik doğrulaması ' na geçin. Aşağıdaki örnek Azure SQL 'de (hem veritabanı hem de yönetilen örnek) çalışmaz:
+Toplu ekleme, yedekleme ve GERI yükleme deyimleri ve OPENROWSET işlevi, `DATABASE SCOPED CREDENTIAL` Azure depolama 'da kimlik doğrulaması yapmak Için yönetilen kimlikle birlikte kullanılamaz. Geçici bir çözüm olarak, PAYLAŞıLAN ERIŞIM IMZASı kimlik doğrulaması ' na geçin. Aşağıdaki örnek Azure SQL 'de (hem veritabanı hem de yönetilen örnek) çalışmaz:
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';

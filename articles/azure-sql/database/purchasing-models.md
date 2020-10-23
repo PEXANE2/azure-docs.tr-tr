@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5760d3daaa13a5ed16230e1ffb7fe3691455e09
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319461"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427037"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>VCore ve DTU satın alma modelleri arasında seçim yapın-Azure SQL veritabanı ve SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -72,7 +72,7 @@ Depolama fiyatları hakkında daha fazla bilgi için bkz. [fiyatlandırma](https
 
 Sanal çekirdek (vCore), mantıksal bir CPU 'YU temsil eder ve donanım kuşaklarını ve donanımın fiziksel özelliklerini (örneğin, çekirdek sayısı, bellek ve depolama boyutu) arasından seçim yapmanıza olanak sağlar. Sanal çekirdek tabanlı satın alma modeli esneklik, denetim, tek tek kaynak tüketiminin saydamlığını ve şirket içi iş yükü gereksinimlerini buluta çevirecek basit bir yol sunar. Bu model, iş yükü gereksinimlerinize göre işlem, bellek ve depolama kaynakları seçmenize olanak sağlar.
 
-Sanal çekirdek tabanlı satın alma modelinde, SQL veritabanı ve SQL yönetilen örneği için [genel amaçlı](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) ve [iş açısından kritik](high-availability-sla.md#premium-and-business-critical-service-tier-availability) hizmet katmanları arasında seçim yapabilirsiniz.  Tek veritabanları için [hiper ölçek hizmet katmanını](service-tier-hyperscale.md)da seçebilirsiniz.
+Sanal çekirdek tabanlı satın alma modelinde, SQL veritabanı ve SQL yönetilen örneği için [genel amaçlı](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) ve [iş açısından kritik](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) hizmet katmanları arasında seçim yapabilirsiniz.  Tek veritabanları için [hiper ölçek hizmet katmanını](service-tier-hyperscale.md)da seçebilirsiniz.
 
 Sanal çekirdek tabanlı satın alma modeli, işlem ve depolama kaynaklarını bağımsız olarak seçmenizi, şirket içi performansı eşleştirmeye ve fiyatı iyileştirmenize olanak tanır. Sanal çekirdek tabanlı satın alma modelinde şunları ödeyin:
 

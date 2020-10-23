@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5d57a6705973fbd5ee39042404015347d75b49b3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b01208c67610ff220df1654d10211472e0eed61f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019792"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426854"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API’leri ile geliştirme
 
@@ -35,7 +35,7 @@ Media Services kaynaklarına ve Media Services API'sine erişim yetkisi almak i�
 * **Hizmet sorumlusu kimlik doğrulaması**: Hizmetin kimliğini doğrulamak için kullanılır (örneğin: web uygulamaları, işlev uygulamaları, API ve mikro hizmetler). Bu kimlik doğrulama yöntemini yaygın olarak kullanan uygulamalar deamon hizmetleri, orta katman hizmetleri veya zamanlanmış işler çalıştıran uygulamalardır. Örneğin, Web uygulamaları için her zaman bir hizmet sorumlusu ile Media Services bağlanan bir orta katman olmalıdır.
 * **Kullanıcı kimlik doğrulaması**: Uygulamayı Media Services kaynaklarıyla etkileşim kurmak amacıyla kullanan bir kişinin kimliğini doğrulamak için kullanılır. Etkileşimli uygulamanın önce kullanıcıdan kimlik bilgilerini istemesi gerekir. Yetkili kullanıcılar tarafından kodlama işlerini veya canlı akışı izlemek için kullanılan yönetim konsolu uygulaması bunun bir örneğidir.
 
-Media Services API'si, REST API isteklerinde bulunan kullanıcının veya uygulamanın Media Services hesabı kaynağına erişimi olmasını ve **Katkıda Bulunan** veya **Sahip** rolü kullanmasını gerektirir. **Okuyucu** rolüyle API'ye erişilebilir ama yalnızca **Get** veya **List** işlemleri kullanılabilir.Daha fazla bilgi için bkz. [Media Services hesapları için rol tabanlı erişim denetimi](rbac-overview.md).
+Media Services API'si, REST API isteklerinde bulunan kullanıcının veya uygulamanın Media Services hesabı kaynağına erişimi olmasını ve **Katkıda Bulunan** veya **Sahip** rolü kullanmasını gerektirir. **Okuyucu** rolüyle API'ye erişilebilir ama yalnızca **Get** veya **List** işlemleri kullanılabilir. Daha fazla bilgi için bkz. [Media Services hesapları Için Azure rol tabanlı erişim denetimi (Azure RBAC)](rbac-overview.md).
 
 Hizmet sorumlusu oluşturmak yerine, Azure kaynakları için yönetilen kimlikler kullanarak Azure Resource Manager aracılığıyla Media Services API'sine erişmeyi göz önünde bulundurun. Azure kaynakları için yönetilen kimlikler hakkında daha fazla bilgi edinmek için bkz. [Azure kaynakları için yönetilen kimlikler nedir?](../../active-directory/managed-identities-azure-resources/overview.md).
 

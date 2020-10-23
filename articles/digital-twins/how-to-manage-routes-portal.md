@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ec23252883f928cfa6c1651afbfe88e413d55571
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: a2164afef3807a345819a18274eb01f2116de9fd
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339603"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427949"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (portal)
 
@@ -22,7 +22,7 @@ Azure dijital TWINS 'de, [olay bildirimlerini](how-to-interpret-event-data.md) a
 
 Bu makalede, [Azure Portal](https://portal.azure.com)kullanarak uç noktalar ve rotalar oluşturma işlemi adım adım açıklanmaktadır.
 
-Ayrıca, [Eventroutes API 'leri](how-to-use-apis-sdks.md), [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)ile uç noktaları ve yolları da yönetebilirsiniz. Bu makalenin Portal yerine bu mekanizmaların kullanıldığı bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (API 'ler ve CLI)*](how-to-manage-routes-apis-cli.md).
+Ayrıca, [Eventroutes API 'leri](how-to-use-apis-sdks.md), [.net (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)ile uç noktaları ve yolları da yönetebilirsiniz. Bu makalenin Portal yerine bu mekanizmaların kullanıldığı bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (API 'ler ve CLI)*](how-to-manage-routes-apis-cli.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bd43f89ff6e341756c1706eb96d07510c6fb1a4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710728"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428205"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -188,7 +188,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
 7. Özet
-8. Açıklama
+8. Description
 9. Ekran görüntüleri/videolar
 
 <br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
@@ -202,7 +202,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
-#### <a name="name"></a>Adı
+#### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -214,7 +214,7 @@ Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıkla
 
 Teklifinizin en fazla 256 karakter uzunluğunda olması için daha uzun bir açıklama sağlayın. Bu açıklama, arama sonuçlarında kullanılabilir.
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -328,16 +328,16 @@ Oluşturulduktan sonra, plan adları, kimlikleri, plan türü, kullanılabilirli
 
 ### <a name="create-new-plan"></a>Yeni plan oluştur
 
-***Plan kimliği*** – bu teklifte her plan için benzersiz BIR plan kimliği oluşturun. Bu KIMLIK, ürün URL 'sindeki müşterilere görünür olacaktır.  Yalnızca küçük harf, alfasayısal karakter, kısa çizgi veya alt çizgi kullanın. Bu plan KIMLIĞI için en fazla 50 karakter kullanılabilir. Bu KIMLIK, oluştur seçildikten sonra değiştirilemez.
+**_Plan kimliği_*_ – Bu teklifte her plan için benzersiz BIR plan kimliği oluşturun. Bu KIMLIK, ürün URL 'sindeki müşterilere görünür olacaktır.  Yalnızca küçük harf, alfasayısal karakter, kısa çizgi veya alt çizgi kullanın. Bu plan KIMLIĞI için en fazla 50 karakter kullanılabilir. Bu KIMLIK, oluştur seçildikten sonra değiştirilemez.
 
-***Plan adı*** – tekliflerinizi hangi plana seçeceğinize karar verirken müşteriler bu adı görür. Bu teklifteki her plan için benzersiz bir teklif adı oluşturun. Plan adı, aynı teklifin bir parçası olabilecek yazılım planlarını ayırt etmek için kullanılır (örneğin, teklif adı: Windows Server; planlar: Windows Server 2016, Windows Server 2019).
+_*_Plan adı_*_ – tekliflerinizi hangi plana seçeceğinize karar verirken müşteriler bu adı görür. Bu teklifteki her plan için benzersiz bir teklif adı oluşturun. Plan adı, aynı teklifin bir parçası olabilecek yazılım planlarını ayırt etmek için kullanılır (örneğin, teklif adı: Windows Server; planlar: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-setup"></a>Planı ayarla
 
 Bu sekme, plan türü için üst düzey yapılandırmayı, başka bir plandan gelen paketleri yeniden kullanıp kullanmayacağını ve planın hangi bulutlarda kullanılabilir olması gerektiğini ayarlamanıza olanak sağlar. Bu sekmede verdiğiniz yanıtlar aynı plan için diğer sekmelerde görüntülenecek alanları etkileyecektir.
 
 #### <a name="plan-type"></a>Plan türü
-Teklifiniz için plan türünü seçin. Bir **çözüm şablonu** planı tamamen müşteri tarafından yönetilir. **Yönetilen bir uygulama** planı, yayımcıların uygulamayı müşteri adına yönetmesine olanak sağlar. Ayrıntılar için bkz. [Azure Uygulama planlarına yönelik türler](#types-of-azure-application-plans).
+Teklifiniz için plan türünü seçin. Bir _*çözüm şablonu** planı, tamamen müşteri tarafından yönetilir. **Yönetilen bir uygulama** planı, yayımcıların uygulamayı müşteri adına yönetmesine olanak sağlar. Ayrıntılar için bkz. [Azure Uygulama planlarına yönelik türler](#types-of-azure-application-plans).
 
 #### <a name="re-use-technical-configuration"></a>Teknik yapılandırmayı yeniden kullanma
 
@@ -508,7 +508,7 @@ Bu plan sürümünün yönetilen uygulama örneklerinde bulunan tüm CRUD işlem
 
 Müşterilerin, `*/read` Varsayılan olarak kullanılabilir olan "" eylemlerine ek olarak yönetilen kaynaklarda gerçekleştirebileceği eylemleri belirtmek için bu seçeneği belirleyin.
 
-Müşterinizin bu şekilde gerçekleştirmesini sağlamak istediğiniz ek eylemleri, noktalı virgülle ayırarak listeleyin.  Daha fazla bilgi için bkz. [Azure kaynakları için reddedilen atamaları anlama](../../role-based-access-control/deny-assignments.md). Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için `Microsoft.Compute/virtualMachines/restart/action` izin verilen eylemlere ekleyin.
+Müşterinizin bu şekilde gerçekleştirmesini sağlamak istediğiniz ek eylemleri, noktalı virgülle ayırarak listeleyin.  Daha fazla bilgi için bkz. [Azure kaynakları için reddedilen atamaları anlama](../../role-based-access-control/deny-assignments.md). Kullanılabilir eylemler için bkz. [Azure Kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için `Microsoft.Compute/virtualMachines/restart/action` izin verilen eylemlere ekleyin.
 
 #### <a name="global-azure--azure-government-cloud"></a>Küresel Azure/Azure Kamu Bulutu
 
@@ -518,7 +518,7 @@ Desteklenen her bulutta bu yönetilen uygulamaya yönetim erişiminin olması ge
 
 **Yetkilendirmeler** – yönetilen kaynak grubu için izin verilmesini istediğiniz kullanıcı, Grup veya uygulamanın Azure ACTIVE DIRECTORY nesne kimliğini ekleyin. Kullanıcıyı, [Azure portal Azure Active Directory Kullanıcıları dikey penceresinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)bulunan birincil kimliğine göre belirler.
 
-Her sorumlu için, listeden (sahip veya katkıda bulunan) Azure AD yerleşik rollerinden birini seçin. Seçtiğiniz rol, sorumlunun müşteri aboneliğindeki kaynaklarda sahip olacağı izinleri anlatmaktadır. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md). Rol tabanlı erişim denetimi (RBAC) hakkında daha fazla bilgi için bkz. [Azure Portal RBAC ile çalışmaya başlama](../../role-based-access-control/overview.md).
+Her sorumlu için, listeden (sahip veya katkıda bulunan) Azure AD yerleşik rollerinden birini seçin. Seçtiğiniz rol, sorumlunun müşteri aboneliğindeki kaynaklarda sahip olacağı izinleri anlatmaktadır. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md). Azure rol tabanlı erişim denetimi (Azure RBAC) hakkında daha fazla bilgi için bkz. [Azure RBAC nedir?](../../role-based-access-control/overview.md).
 
 >[!Note]
 >Bulut başına en çok 100 yetkilendirmeler ekleyebilseniz de, genellikle bir Active Directory Kullanıcı grubu oluşturmak ve KIMLIĞINI "asıl KIMLIK" içinde belirtmek daha kolay olur. Bu, plan dağıtıldıktan sonra yönetim grubuna daha fazla kullanıcı eklemenize ve daha fazla yetkilendirmeler eklemek için planı güncelleştirme ihtiyacını azaltmasına imkan sağlar.

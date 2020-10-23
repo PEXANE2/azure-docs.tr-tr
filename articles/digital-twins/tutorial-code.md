@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 40484521ecdc32e2e279ddf1b68ddcd4b1d7bc9b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201366"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427588"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
-Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti örneğiyle etkileşim kurmak üzere bir istemci uygulaması yazmak için yaygındır. Bu geliştirici odaklı öğreticide, [.net Için Azure IoT Digital ikizi istemci kitaplığı (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)kullanılarak Azure dijital TWINS hizmetine karşı programlama hakkında bir giriş sunulmaktadır. Bir C# Konsolu istemci uygulaması adımını sıfırdan başlayarak adım adım yazma konusunda size kılavuzluk eder.
+Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti örneğiyle etkileşim kurmak üzere bir istemci uygulaması yazmak için yaygındır. Bu geliştirici odaklı öğreticide, [.net Için Azure dijital TWINS SDK 'sını (C#)](https://www.nuget.org/packages/Azure.DigitalTwins.Core)kullanarak Azure dijital TWINS hizmetinde programlamaya yönelik bir giriş sunulmaktadır. Bir C# Konsolu istemci uygulaması adımını sıfırdan başlayarak adım adım yazma konusunda size kılavuzluk eder.
 
 > [!div class="checklist"]
 > * Projeyi ayarla
@@ -25,7 +25,7 @@ Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti 
 > * Kaynakları temizleme
 > * Sonraki adımlar
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici, kurulum ve proje çalışması için komut satırını kullanır. Bu nedenle, alýþtýrmalar üzerinde gezinmek için herhangi bir kod düzenleyicisini kullanabilirsiniz.
 
@@ -58,7 +58,7 @@ dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
 dotnet add package Azure.identity
 ```
 
-İlk bağımlılık, [.net Için Azure IoT Digital ikizi istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)' dır. İkinci bağımlılık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
+İlk bağımlılık [.net Için Azure Digital TWINS SDK 'sına](https://www.nuget.org/packages/Azure.DigitalTwins.Core)sahiptir. İkinci bağımlılık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
 
 Öğreticinin tamamında kullanmaya devam edebileceksiniz, komut penceresini açık tutun.
 
@@ -266,12 +266,18 @@ Bu noktadan itibaren öğreticide, try/catch işleyicilerindeki hizmet yöntemle
 
 Azure dijital TWINS 'e bir model yüklediğinize göre, bu model tanımını **dijital TWINS**oluşturmak için kullanabilirsiniz. [Dijital TWINS](concepts-twins-graph.md) , bir modelin örnekleridir ve iş ortamınızdaki varlıkları, bir gruptaki sensörlerden, binadaki odaların veya bir otomobilde ışıkların bulunduğu şeyleri temsil eder. Bu bölümde, daha önce karşıya yüklediğiniz modele göre birkaç dijital TWINS oluşturulur.
 
-`using`İçinde yerleşik .net JSON serileştiricisi gerekecektir, en üst kısımdaki yeni bir ifade ekleyin `System.Text.Json` :
+`using`Bu yeni deyimleri en üste ekleyin; Bu kod örneği içinde yerleşik .net JSON serileştiricisini `System.Text.Json` ve `Serialization` [.net Için Azure Digital Twins SDK (C#) için](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) ad ALANıNı kullanır [önizleme için değiştirilen bağlantı]:
 
 ```csharp
 using System.Text.Json;
 using Azure.DigitalTwins.Core.Serialization;
 ```
+
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` Dijital TWINS ve ilişkilerle çalışmak için gerekli değildir; Bu, doğru biçime veri almaya yardımcı olabilecek isteğe bağlı bir ad alanıdır. Kullanmanın bazı alternatifleri şunlardır:
+>* JSON nesnesi oluşturmak için dizeleri bitiştirme
+>* `System.Text.Json`Dinamik olarak JSON nesnesi derlemek gibi BIR JSON ayrıştırıcısı kullanma
+>* C# dilinde özel türlerinizi modelleme, onları örneklendirme ve dizelerde serileştirme
 
 Ardından, `Main` Bu modele göre üç dijital TWINS oluşturmak ve başlatmak için yönteminin sonuna aşağıdaki kodu ekleyin.
 
@@ -301,17 +307,7 @@ TWINS, ilk çalıştırmadan sonra zaten mevcut olsa bile, ikinci kez oluşturul
 
 Daha sonra, oluşturduğunuz TWINS arasında **ilişkiler** oluşturarak bunları bir **ikizi grafiğine**bağlayabilirsiniz. [İkizi grafikleri](concepts-twins-graph.md) , tüm ortamınızı temsil etmek için kullanılır.
 
-Bu kod örneği, ilişki oluşturma konusunda yardımcı olmak için `Azure.DigitalTwins.Core.Serialization` ad alanını kullanır. Bunu projeye bu deyimle daha önce eklediniz `using` :
-
-```csharp
-using Azure.DigitalTwins.Core.Serialization;
-```
-
->[!NOTE]
->`Azure.DigitalTwins.Core.Serialization` Dijital TWINS ve ilişkilerle çalışmak için gerekli değildir; Bu, doğru biçime veri almaya yardımcı olabilecek isteğe bağlı bir ad alanıdır. Kullanmanın bazı alternatifleri şunlardır:
->* JSON nesnesi oluşturmak için dizeleri bitiştirme
->* `System.Text.Json`Dinamik olarak JSON nesnesi derlemek gibi BIR JSON ayrıştırıcısı kullanma
->* C# dilinde özel türlerinizi modelleme, onları örneklendirme ve dizelerde serileştirme
+Bu kod örneği, ilişki oluşturma konusunda yardımcı olmak için `Azure.DigitalTwins.Core.Serialization` ad alanını kullanır. Bunu, [*dijital TWINS oluşturma*](#create-digital-twins) bölümünde daha önce projeye eklediniz.
 
 `Program`Sınıfına, yönteminin altına yeni bir static yöntem ekleyin `Main` :
 

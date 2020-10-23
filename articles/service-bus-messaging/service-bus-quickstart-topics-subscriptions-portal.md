@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: d3dc63106e1ca5d9db2b14392ca1fb97e3a68289
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9085ccd272c6634e4be518872cb7e279da6b803c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88191533"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425399"
 ---
 # <a name="use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Azure portalını kullanarak Service Bus konusunu ve konunun aboneliklerini oluşturma
 Bu hızlı başlangıçta, bir Service Bus konu oluşturmak ve ardından bu konuya abonelikler oluşturmak için Azure portal kullanın. 
@@ -32,7 +32,11 @@ Service Bus konuları ve abonelikleri, çok sayıda kullanıcı ve uygulama gene
 > Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir konuya ileti gönderme ve bu iletileri bir abonelik aracılığıyla alma hakkında bilgi edinmek için aşağıdaki makaleye bakın: TOC 'de programlama dilini seçin. 
+Bu makalede bir Service Bus ad alanı, ad alanında bir konu ve konuya üç abonelik oluşturdunuz. Konuya ileti yayımlamayı ve bir abonelikten iletileri abone olmayı öğrenmek için, **Iletileri Yayımla ve abone ol** bölümünde aşağıdaki hızlı başlangıçlardan birine bakın. 
 
-> [!div class="nextstepaction"]
-> [İleti yayımlama ve iletilere abone olma](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [.NET](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [Java](service-bus-java-how-to-use-topics-subscriptions.md)
+- [JavaScript](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
+- [Python](service-bus-python-how-to-use-topics-subscriptions.md)
+- [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
+- [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)

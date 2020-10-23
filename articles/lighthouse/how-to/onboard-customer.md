@@ -3,12 +3,12 @@ title: Bir müşteriyi Azure Lighthouse’a ekleme
 description: Bir müşteriyi Azure Mathouse 'a eklemeyi öğrenin. böylece, kaynakları Azure tarafından atanan kaynak yönetimi kullanılarak kendi kiracınız aracılığıyla erişilebilir ve yönetilebilir.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 926e9bc5302403063d536e31fe304d837bca8ec5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b5a6d60d10b2cee7f26ae405ed95b980f423b42e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109077"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426339"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Bir müşteriyi Azure Lighthouse’a ekleme
 
@@ -62,7 +62,7 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Rolleri ve izinleri tanımlama
 
-Hizmet sağlayıcı olarak, farklı kapsamlar için farklı erişim gerektiren tek bir müşteri için birden çok görev gerçekleştirmek isteyebilirsiniz. Kiracınızdaki kullanıcılara uygun [rol tabanlı erişim denetimi (RBAC) yerleşik rollerini](../../role-based-access-control/built-in-roles.md) atamak için gereken sayıda Yetkilendirme tanımlayabilirsiniz.
+Hizmet sağlayıcı olarak, farklı kapsamlar için farklı erişim gerektiren tek bir müşteri için birden çok görev gerçekleştirmek isteyebilirsiniz. Kiracınızdaki kullanıcılara uygun [Azure yerleşik rollerini](../../role-based-access-control/built-in-roles.md) atamak için gereken sayıda Yetkilendirme tanımlayabilirsiniz.
 
 Yönetimi kolaylaştırmak için, her rol için Azure AD Kullanıcı gruplarını kullanmanızı öneririz. Bu sayede, Kullanıcı değişikliği yapmak için ekleme işlemini tekrarlamanız gerekmiyorsa, erişimi olan gruba bireysel kullanıcı ekleme veya kaldırma esnekliği sağlar. Bir hizmet sorumlusuna roller atayabilirsiniz, bu da otomasyon senaryoları için yararlı olabilir.
 

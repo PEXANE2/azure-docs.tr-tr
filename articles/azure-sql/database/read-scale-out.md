@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: bd393a897052dd0bd49851eee424c99ad1fcfb1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbde77de0ad8698ff82b80b440ae1d4bdcae1f36
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319437"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427010"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Salt okuma sorgusu iş yüklerini boşaltmak için salt okuma çoğaltmaları kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[Yüksek kullanılabilirlik mimarisinin](high-availability-sla.md#premium-and-business-critical-service-tier-availability)bir parçası olarak, Premium ve iş açısından kritik hizmet katmanındaki her tek veritabanı, esnek havuz veritabanı ve yönetilen örnek, birincil bir okuma-yazma çoğaltması ve birkaç ikincil salt okuma çoğaltmalarıyla otomatik olarak sağlanır. İkincil çoğaltmalar, birincil çoğaltmayla aynı işlem boyutuyla sağlanır. *Okuma ölçeği genişletme* özelliği, salt yazılır çoğaltmalardan birinin işlem kapasitesini kullanarak, bunları okuma/yazma çoğaltmasında çalıştırmak yerine salt okunurdur. Bu şekilde, bazı salt okunurdur bazı iş yükleri, okuma-yazma iş yüklerinden yalıtılabilir ve performanslarını etkilemeyecektir. Özelliği, analiz gibi mantıksal olarak ayrılmış salt okunurdur iş yüklerini içeren uygulamalara yöneliktir. Premium ve İş Açısından Kritik hizmet katmanlarında uygulamalar, ek ücret ödemeden bu ek kapasiteyi kullanarak performans avantajları elde edebilir.
+[Yüksek kullanılabilirlik mimarisinin](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)bir parçası olarak, Premium ve iş açısından kritik hizmet katmanındaki her tek veritabanı, esnek havuz veritabanı ve yönetilen örnek, birincil bir okuma-yazma çoğaltması ve birkaç ikincil salt okuma çoğaltmalarıyla otomatik olarak sağlanır. İkincil çoğaltmalar, birincil çoğaltmayla aynı işlem boyutuyla sağlanır. *Okuma ölçeği genişletme* özelliği, salt yazılır çoğaltmalardan birinin işlem kapasitesini kullanarak, bunları okuma/yazma çoğaltmasında çalıştırmak yerine salt okunurdur. Bu şekilde, bazı salt okunurdur bazı iş yükleri, okuma-yazma iş yüklerinden yalıtılabilir ve performanslarını etkilemeyecektir. Özelliği, analiz gibi mantıksal olarak ayrılmış salt okunurdur iş yüklerini içeren uygulamalara yöneliktir. Premium ve İş Açısından Kritik hizmet katmanlarında uygulamalar, ek ücret ödemeden bu ek kapasiteyi kullanarak performans avantajları elde edebilir.
 
 En az bir ikincil çoğaltma oluşturulduğunda, hiper ölçek hizmeti katmanında *okuma ölçeği* genişletme özelliği de kullanılabilir. Birden fazla ikincil çoğaltma, bir ikincil çoğaltmada bulunandan daha fazla kaynak gerektiren Yük Dengeleme salt okuma iş yükleri için kullanılabilir.
 
@@ -85,7 +85,7 @@ Bir salt okuma çoğaltmasına bağlanıldığında, dinamik yönetim görünüm
 
 Yaygın olarak kullanılan görünümler şunlardır:
 
-| Adı | Amaç |
+| Name | Amaç |
 |:---|:---|
 |[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Son saat için CPU, veri GÇ ve hizmet hedefi sınırlarına göre günlük yazma kullanımı dahil olmak üzere kaynak kullanım ölçümleri sağlar.|
 |[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Veritabanı altyapısı örneği için toplam bekleme istatistikleri sağlar. |

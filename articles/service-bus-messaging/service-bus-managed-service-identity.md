@@ -2,13 +2,13 @@
 title: Service Bus ile Azure kaynakları için Yönetilen kimlikler
 description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular ve abonelikler) erişmek için yönetilen kimliklerin nasıl kullanılacağı açıklanır.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 1deb3bdf823f1554e302bb35baabe444223f9008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 1efcd3c48e7e4a431a0c72c4b3b84531b44e973e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88079867"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425531"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
 [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , uygulama kodunuzun çalıştırıldığı dağıtımla ilişkili güvenli bir kimlik oluşturmanıza olanak sağlayan bir çapraz Azure özelliğidir. Daha sonra bu kimliği, uygulamanızın ihtiyaç duyacağı belirli Azure kaynaklarına erişim için özel izinler veren erişim denetimi rolleriyle ilişkilendirebilirsiniz.
@@ -45,7 +45,7 @@ Güvenlik sorumlusuna bir Azure rolü atamadan önce, güvenlik sorumlusunun sah
 
 Aşağıdaki listede, en dar kapsamdan başlayarak Service Bus kaynaklarına erişimi kapsamındaki düzeyler açıklanmaktadır:
 
-- **Kuyruk**, **Konu**veya **abonelik**: rol ataması, belirli Service Bus varlığı için geçerlidir. Şu anda Azure portal, Kullanıcı/Grup/yönetilen kimliklerin abonelik düzeyinde Service Bus Azure rollerine atanmasını desteklemez. Azure CLı komutunun kullanılmasına bir örnek: [az-role-atama-create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) Service Bus Azure rolüne bir kimlik atamak için: 
+- **Kuyruk**, **Konu**veya **abonelik**: rol ataması, belirli Service Bus varlığı için geçerlidir. Şu anda Azure portal, Kullanıcı/Grup/yönetilen kimliklerin abonelik düzeyinde Service Bus Azure rollerine atanmasını desteklemez. Azure CLı komutunun kullanılmasına bir örnek: [az-role-atama-create](/cli/azure/role/assignment?#az-role-assignment-create) Service Bus Azure rolüne bir kimlik atamak için: 
 
     ```azurecli
     az role assignment create \
@@ -91,6 +91,9 @@ Uygulama oluşturulduktan sonra aşağıdaki adımları izleyin:
 
 Bu ayarı etkinleştirdikten sonra, Azure Active Directory (Azure AD) ve App Service ana bilgisayarında yapılandırılmış yeni bir hizmet kimliği oluşturulur.
 
+> [!NOTE]
+> Yönetilen bir kimlik kullandığınızda bağlantı dizesinin şu biçimde olması gerekir: `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=Managed Identity` .
+
 Şimdi, bu hizmet kimliğini Service Bus kaynaklarınızın gerekli kapsamındaki bir role atayın.
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Azure portal kullanarak Azure rolleri atamak için
@@ -114,8 +117,10 @@ Bir Service Bus ad alanına rol atamak için Azure portal ad alanına gidin. Kay
 
 Rolü atadıktan sonra, Web uygulamasının tanımlı kapsamda Service Bus varlıklara erişimi olur. 
 
-### <a name="run-the-app"></a>Uygulamayı çalıştırma
 
+
+
+### <a name="run-the-app"></a>Uygulamayı çalıştırma
 Şimdi, oluşturduğunuz ASP.NET uygulamasının varsayılan sayfasını değiştirin. [Bu GitHub deposundan](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)Web uygulaması kodunu kullanabilirsiniz.  
 
 Varsayılan. aspx sayfası, giriş sayfanız. Kodu Default.aspx.cs dosyasında bulabilirsiniz. Sonuç olarak, birkaç giriş alanı olan en az bir Web uygulaması ve ileti göndermek ya da almak için Service Bus bağlanan **Gönder** ve **Al** düğmeleri vardır.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 3cb335cb32ded68377b4eec0af3b1ebbc19e77d9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b9db20fd357a50a92384b3c3f483f8d75b67b3e2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328310"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427357"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı ile ITSM ürünlerine/hizmetlerine bağlanma
 Bu makalede, çalışma öğelerinizi merkezi olarak yönetmek için ıTSM ürününüz/hizmetiniz ile Log Analytics BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılacağı hakkında bilgi sağlanır. ISMC hakkında daha fazla bilgi için bkz. [genel bakış](./itsmc-overview.md).
@@ -214,6 +214,8 @@ Aşağıdaki önkoşulların karşılandığından emin olun:
 > 3. Erişimi Iptal et ' e tıklayın.
 
 - Microsoft Log Analytics Integration (ServiceNow uygulaması) için Kullanıcı uygulamasını yükler. [Daha fazla bilgi edinin](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+> [!NOTE]
+> ISMC, ServiceNow mağazasından indirilen Microsoft Log Analytics tümleştirmesi için yalnızca resmi Kullanıcı uygulamasını destekler. ISMC, ServiceNow tarafında veya resmi ServiceNow çözümünün parçası olmayan uygulamada herhangi bir kod alımı desteklemez. 
 - Yüklü kullanıcı uygulaması için tümleştirme Kullanıcı rolü oluşturun. Tümleştirme Kullanıcı rolünü oluşturma hakkında bilgi [burada](#create-integration-user-role-in-servicenow-app)verilmiştir.
 
 ### <a name="connection-procedure"></a>**Bağlantı yordamı**

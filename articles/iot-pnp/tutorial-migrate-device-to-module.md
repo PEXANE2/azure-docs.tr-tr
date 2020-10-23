@@ -1,5 +1,5 @@
 ---
-title: Genel IoT Tak ve Kullan genel modülünü bağlama | Microsoft Docs
+title: Genel IoT Tak ve Kullan modülünü bağlama | Microsoft Docs
 description: Örnek C# IoT Tak ve Kullan Cihaz kodunu genel bir modülde kullanın.
 author: ericmitt
 ms.author: ericmitt
@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 671809b9cdbe72c8f3091b0056897c2342a38b1f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d425152f83821e1d157065370bd02e2d990ec876
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089171"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426934"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Öğretici: IoT Tak ve Kullan modülünü bağlama (C#)
 
@@ -22,7 +22,7 @@ Bir cihaz, bir IoT Hub 'ına bağlanırken model KIMLIĞINI yayımladığında b
 
 IoT Tak ve Kullan modülünün nasıl uygulanacağını göstermek için bu öğreticide, termostat C# cihaz örneğini genel bir modüle nasıl dönüştürebileceğiniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 

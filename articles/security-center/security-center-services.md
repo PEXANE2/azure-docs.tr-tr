@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 59a87e7c91266dd1ec2d7263df7149d07f6e7ce8
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 67c52728b72f0941ae3c9b39552ca398c12c67a2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342306"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425146"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -30,7 +30,7 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 
 |**Özellik**|**Azure Sanal Makineler**|**Azure Sanal Makine Ölçek Kümeleri**|**Azure yay etkin makineler**|**Azure Defender gerekli**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Yes|
+|[Uç nokta tümleştirmesi için Microsoft Defender](security-center-wdatp.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Yes|
 |[Sanal makine davranış analizi (ve güvenlik uyarıları)](alerts-reference.md)|✔|✔|✔|Yes|
 |[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|✔|✔|✔|Yes|
 |[Ağ tabanlı güvenlik uyarıları](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
@@ -54,7 +54,7 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 
 |**Özellik**|**Azure Sanal Makineler**|**Azure Sanal Makine Ölçek Kümeleri**|**Azure yay etkin makineler**|**Azure Defender gerekli**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP tümleştirmesi](security-center-wdatp.md)|-|-|-|Yes|
+|[Uç nokta tümleştirmesi için Microsoft Defender](security-center-wdatp.md)|-|-|-|Yes|
 |[Sanal makine davranış analizi (ve güvenlik uyarıları)](./azure-defender.md)|✔</br>(desteklenen sürümlerde)|✔</br>(desteklenen sürümlerde)|✔|Yes|
 |[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|-|-|-|Yes|
 |[Ağ tabanlı güvenlik uyarıları](other-threat-protections.md#network-layer)|✔|✔|-|Yes|

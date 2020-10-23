@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: a6f1a5b532ba3d8d5ce24d6f9856d86719d35c6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9415d66c49992bc31f773dec908a861f1126e714
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839546"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427211"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Öğretici: Azure AD kullanarak uçtan uca içerik koruma
 
@@ -42,7 +42,7 @@ Azure Media Services aboneliğiniz yoksa, bir Azure [ücretsiz deneme hesabı](h
 ### <a name="duration"></a>Süre
 Önkoşul teknolojisini denemeye hazırladıktan sonra öğreticinin tamamlanması iki saat sürer.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki en son teknoloji sürümleri ve kavramları kullanılır. Bu öğreticiye başlamadan önce bunları tanımanız önerilir.
 
@@ -313,7 +313,7 @@ Geliştirme makinenizde çalışan IIS gibi başka bir IDE/web platformu ve/veya
 
 Artık öğreticiyi tamamlayıp çalışan bir alt sisteme sahip olduğunuza göre, aşağıdaki müşteri senaryolarında bunu değiştirmeyi deneyebilirsiniz:
 
-### <a name="role-based-access-control-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Azure AD grup üyeliği aracılığıyla lisans teslimi için Access Control (RBAC) Role-Based
+### <a name="azure-role-based-access-control-azure-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Azure AD grup üyeliği aracılığıyla lisans teslimi için Azure rol tabanlı erişim denetimi (Azure RBAC)
 
 Şimdiye kadar, sistem, geçerli bir lisans almak ve korunan içeriği yürütmek için oturum açabilen tüm kullanıcılara izin verir.
 
@@ -344,7 +344,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 
 *Gruplar* talebi, Azure AD 'de kısıtlı bir [talep kümesinin](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets) üyesidir.
 
-#### <a name="test"></a>Test
+#### <a name="test"></a>Test etme
 
 1. *Premium_user* hesabıyla oturum açın. Korunan içeriği oynatabilmelisiniz.
 1. *Basic_user* hesabıyla oturum açın. Videonun şifrelendiğini belirten bir hata almalısınız, ancak şifresini çözmek için bir anahtar yok. Player tanılama alt sürümünün altındaki açılan menüde olayları, hataları ve İndirmeleri görüntülediğinizde, hata iletisi, Azure AD belirteç uç noktası tarafından verilen JWT içindeki gruplar talebi için eksik talep değeri nedeniyle lisans alma başarısızlığını göstermelidir.

@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: cdd93cf8751ce2e46f06020b1d18d42416f793d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21f29135cc3b94e5b8c2dfc99b0f7be26b37d123
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166117"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425274"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Uygulamaları MSAL.NET 'a geçirme
 
@@ -69,7 +69,7 @@ MSAL.NET 2. x artık hesap kavramını (IAccount arabirimi aracılığıyla) tan
 
 IUser ve IAccount arasındaki farklar hakkında daha fazla bilgi için bkz. [msal.NET 2. x](https://aka.ms/msal-net-2-released).
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
 #### <a name="interaction-required-exceptions"></a>Etkileşim gerekli özel durumları
 
@@ -176,8 +176,8 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 Microsoft Graph API 'sini kullanarak MSAL.NET Azure Active Directory okumak ve yazmak istiyorsanız ( https://graph.microsoft.com/) Aşağıdaki kod parçacığında olduğu gibi kapsamların bir listesini oluşturursunuz:
 
 ```csharp
-ResourceId = "https://graph.microsoft.com/";
-var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
+string ResourceId = "https://graph.microsoft.com/"; 
+string[] scopes = { ResourceId + "Directory.Read", ResourceId + "Directory.Write" }
 ```
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Uyarı: bir v 1.0 Web API 'sine karşılık gelen kapsamda bir veya iki eğik çizgi olmalıdır

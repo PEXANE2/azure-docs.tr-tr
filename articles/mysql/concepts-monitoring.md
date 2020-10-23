@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 8/13/2020
-ms.openlocfilehash: 9e1bd3f555873503aa1f6ed9c804aced3620fb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 4589687593abbe5667aa4b21b1361b68e4bed07f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627525"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428121"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda izleme
 Sunucularınız hakkındaki izleme verileri, iş yükünüz için sorun gidermenize ve iyileştirmenize yardımcı olur. MySQL için Azure veritabanı, sunucunuzun davranışına ilişkin Öngörüler sağlayan çeşitli ölçümler sağlar.
@@ -23,7 +23,7 @@ Tüm Azure ölçümlerinin bir dakikalık sıklığı vardır ve her ölçüm 30
 ### <a name="list-of-metrics"></a>Ölçüm listesi
 MySQL için Azure veritabanı 'nda bu ölçümler mevcuttur:
 
-|Ölçüm|Ölçüm görünen adı|Birim|Açıklama|
+|Ölçüm|Ölçüm görünen adı|Birim|Description|
 |---|---|---|---|
 |cpu_percent|CPU yüzdesi|Yüzde|Kullanımdaki CPU yüzdesi.|
 |memory_percent|Bellek yüzdesi|Yüzde|Kullanımdaki belleğin yüzdesi.|
@@ -34,15 +34,15 @@ MySQL için Azure veritabanı 'nda bu ölçümler mevcuttur:
 |serverlog_storage_usage|Kullanılan sunucu günlüğü depolaması|Bayt|Kullanımdaki sunucu günlüğü depolama miktarı.|
 |serverlog_storage_limit|Sunucu günlüğü depolama sınırı|Bayt|Bu sunucu için en fazla sunucu günlük depolama alanı.|
 |storage_limit|Depolama sınırı|Bayt|Bu sunucu için en fazla depolama alanı.|
-|active_connections|Etkin Bağlantılar|Sayı|Sunucuya etkin bağlantı sayısı.|
-|connections_failed|Başarısız Bağlantılar|Sayı|Sunucuya yönelik başarısız bağlantı sayısı.|
-|seconds_behind_master|Saniye cinsinden çoğaltma gecikmesi|Sayı|Çoğaltma sunucusunun kaynak sunucuya karşı gecikme saniye sayısı. (Temel katman sunucuları için geçerli değildir)|
+|active_connections|Etkin Bağlantılar|Count|Sunucuya etkin bağlantı sayısı.|
+|connections_failed|Başarısız Bağlantılar|Count|Sunucuya yönelik başarısız bağlantı sayısı.|
+|seconds_behind_master|Saniye cinsinden çoğaltma gecikmesi|Count|Çoğaltma sunucusunun kaynak sunucuya karşı gecikme saniye sayısı. (Temel katman sunucuları için geçerli değildir)|
 |network_bytes_egress|Ağ Çıkışı|Bayt|Etkin bağlantılar arasında ağ çıkışı.|
 |network_bytes_ingress|Ağ Girişi|Bayt|Etkin bağlantılar genelinde ağ.|
 |backup_storage_used|Kullanılan yedekleme depolama alanı|Bayt|Kullanılan yedekleme depolama alanı miktarı. Bu ölçüm, tüm tam veritabanı yedeklemeleri, fark yedeklemeleri ve sunucu için ayarlanan yedekleme Bekletme dönemi temel alınarak korunan depolama alanının toplamını temsil eder. Yedeklemelerin sıklığı hizmet olarak yönetilir ve [Kavramlar makalesinde](concepts-backup.md)açıklanmıştır. Coğrafi olarak yedekli depolama için, yedekleme depolama alanı kullanımı yerel olarak yedekli depolama alanının iki katından oluşur.|
 
 ## <a name="server-logs"></a>Sunucu günlükleri
-Sunucunuzda yavaş sorgu ve denetim günlüğünü etkinleştirebilirsiniz. Bu Günlükler Azure Izleyici günlükleri, Event Hubs ve depolama hesabı 'ndaki Azure tanılama günlükleri aracılığıyla da kullanılabilir. Günlüğe kaydetme hakkında daha fazla bilgi edinmek için [Denetim günlükleri](concepts-audit-logs.md) ' ni ve [yavaş sorgu günlüğü](concepts-server-logs.md) makalelerini ziyaret edin.
+Sunucunuzda yavaş sorgu ve denetim günlüğünü etkinleştirebilirsiniz. Bu Günlükler Azure Izleyici günlükleri, Event Hubs ve depolama hesabı 'ndaki Azure tanılama günlükleri aracılığıyla da kullanılabilir. Günlüğe kaydetme hakkında daha fazla bilgi edinmek için [Denetim günlükleri](concepts-audit-logs.md) ' ni ve [yavaş sorgu günlüğü](concepts-server-logs.md) makalelerini ziyaret edin.
 
 ## <a name="query-store"></a>Sorgu Deposu
 [Sorgu deposu](concepts-query-store.md) sorgu çalışma zamanı istatistikleri ve bekleme olayları dahil olmak üzere zaman içinde sorgu performansını izlemeyi tutan bir özelliktir. Özellik, **MySQL** şemasında çalışma zamanı performans bilgilerini sorgu ile devam ettirir. Verilerin toplanmasını ve depolanmasını çeşitli yapılandırma düğmelerini kullanarak denetleyebilirsiniz.
@@ -55,30 +55,12 @@ Sunucunuzda yavaş sorgu ve denetim günlüğünü etkinleştirebilirsiniz. Bu G
 
 ## <a name="planned-maintenance-notification"></a>Planlı bakım bildirimi
 
-**Planlı bakım bildirimleri** MySQL Için Azure veritabanınıza yaklaşan planlı bakım için uyarı almanızı sağlar. Bu bildirimler [hizmet durumunun](../service-health/overview.md) planlanmış bakımıyla tümleşiktir ve abonelikleriniz için tüm zamanlanmış bakımı tek bir yerden görüntülemenize olanak sağlar. Ayrıca, farklı kaynaklardan sorumlu farklı kişileriniz olabileceğinden farklı kaynak grupları için bildirimin doğru kitlelere ölçeklendirilmesine de yardımcı olur. Olaydan önce yaklaşan bakım 72 saati hakkında bildirim alacaksınız.
+[Planlı bakım bildirimleri](./concepts-planned-maintenance-notification.md) MySQL Için Azure veritabanınıza yaklaşan planlı bakım için uyarı almanızı sağlar. Bu bildirimler [hizmet durumunun](../service-health/overview.md) planlanmış bakımıyla tümleşiktir ve abonelikleriniz için tüm zamanlanmış bakımı tek bir yerden görüntülemenize olanak sağlar. Ayrıca, farklı kaynaklardan sorumlu farklı kişileriniz olabileceğinden farklı kaynak grupları için bildirimin doğru kitlelere ölçeklendirilmesine de yardımcı olur. Olaydan önce yaklaşan bakım 72 saati hakkında bildirim alacaksınız.
 
-Planlı bakım sırasında sunucunuzun yeniden başlatılmasını bekleyebilir ve [geçici hatalar](concepts-connectivity.md#transient-errors) oluşabilir. Bu olayların çoğu, sistem tarafından 60 saniyeden daha az bir süre içinde otomatik olarak azalır.
-
-> [!IMPORTANT]
-> Planlı bakım bildirimleri şu anda tüm bölgelerde genel önizlemede bulunabilir Orta Batı ABD **hariç**
-
-### <a name="to-receive-planned-maintenance-notification"></a>Planlı bakım bildirimi almak için
-
-1. [Portalda](https://portal.azure.com) **hizmet durumu**' nu seçin.
-2. **Uyarılar** bölümünde **sistem durumu uyarıları**' nı seçin.
-3. **+ Hizmet sistem durumu uyarısı Ekle** ' yi seçin ve alanları girin.
-4. Gerekli alanları doldurun. 
-5. **Olay türünü**seçin, **Planlı bakım** ' ı seçin veya **tümünü seçin**
-6. **Eylem gruplarında** , uyarıyı nasıl almak istediğinizi tanımlar (bir e-posta alın, mantıksal uygulama tetiklemesi vb.)  
-7. Oluşturma sonrasında kuralın etkinleştir ' in Evet olarak ayarlandığından emin olun.
-8. Uyarınızı gerçekleştirmek için **Uyarı kuralı oluştur** ' u seçin
-
-**Hizmet durumu uyarıları**oluşturma hakkında ayrıntılı adımlar için, [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications.md)konusuna bakın.
-
-> [!Note]
-> Tüm olaylar için **Planlı bakım bildirimi** 72 saat bildirimi sağlamak için her girişimde bulunacağız. Bununla birlikte, kritik veya güvenlik düzeltme ekleri durumlarında, bildirim olaya yakın bir şekilde gönderilebilir veya atlanamaz.
+[Planlı bakım bildirimleri](./concepts-planned-maintenance-notification.md) belgesinde bildirimleri ayarlama hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Bir ölçüm üzerinde uyarı oluşturma konusunda rehberlik için [uyarıları ayarlama](howto-alert-on-metric.md) bölümüne bakın.
 - Azure portal, REST API veya CLı kullanarak ölçümlere erişme ve dışarı aktarma hakkında daha fazla bilgi için bkz. [Azure ölçümleri 'Ne genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 - [Sunucunuzu izlemek için en iyi uygulamalardan](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/)blogumuzu okuyun.
+- MySQL için Azure veritabanı 'nda [Planlı bakım bildirimleri](./concepts-planned-maintenance-notification.md) hakkında daha fazla bilgi edinin-tek sunucu

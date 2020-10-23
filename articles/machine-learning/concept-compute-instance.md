@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: f32783b18b5454164567910aa369739d025b8be0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d840fe5b6fde72149893a15ab9096d3880c1c8ea
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826896"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425680"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -30,7 +30,7 @@ Makine öğrenimi için bulutta tam olarak yapılandırılmış ve yönetilen ge
 
 İşlem örneği, Machine Learning geliştirme ortamınız için iyileştirilmiş, tam olarak yönetilen bulut tabanlı bir iş istasyonudur. Aşağıdaki avantajları sağlar:
 
-|Önemli avantajlar|Açıklama|
+|Önemli avantajlar|Description|
 |----|----|
 |Üretkenlik|Tümleşik not defterlerini ve Azure Machine Learning Studio 'daki aşağıdaki araçları kullanarak modeller oluşturabilir ve dağıtabilirsiniz:<br/>-Jupyıter<br/>-Jupyıterlab<br/>-RStudio (Önizleme)<br/>İşlem örneği, Azure Machine Learning çalışma alanı ve Studio ile tamamen tümleşiktir. Çalışma alanındaki diğer veri bilimcileri ile not defterlerini ve verileri paylaşabilirsiniz.<br/> İşlem örnekleri ile [vs Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) de kullanabilirsiniz.
 |Yönetilen & güvenli|Güvenlik ayak izini azaltın ve kurumsal güvenlik gereksinimleriyle uyumluluk ekleyin. İşlem örnekleri, güçlü yönetim ilkeleri ve güvenli ağ yapılandırmalarının yanı sıra şunları sağlar:<br/><br/>-Kaynak Yöneticisi şablonlarından veya Azure Machine Learning SDK 'dan oto sağlama<br/>- [Azure rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/overview)<br/>- [Sanal ağ desteği](how-to-enable-virtual-network.md#compute-instance)<br/>-SSH erişimini etkinleştirmek/devre dışı bırakmak için SSH ilkesi<br/>TLS 1,2 etkin |
@@ -43,7 +43,7 @@ Kendiniz [bir işlem örneği oluşturabilirsiniz](how-to-create-manage-compute-
 
 > [!IMPORTANT]
 > Bu makaledeki işaretlenmiş öğeler (Önizleme) Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Machine Learning işlem örneği, çalışma alanınızdaki tamamen tümleşik bir not defteri deneyiminde modelleri yazmanıza, eğmenize ve dağıtmanıza olanak sağlar.
 
@@ -118,9 +118,9 @@ Aşağıdaki eylemleri gerçekleştirebilirsiniz:
 * İşlem örneğine SSH. SSH erişimi varsayılan olarak devre dışıdır ancak işlem örneği oluşturma sırasında etkinleştirilebilir. SSH erişimi, ortak/özel anahtar mekanizmasıyla gerçekleştirilir. Sekmesi, IP adresi, Kullanıcı adı ve bağlantı noktası numarası gibi SSH bağlantısı için Ayrıntılar verecektir.
 * IP adresi ve bölge gibi belirli bir işlem örneği hakkındaki ayrıntıları alın.
 
-[RBAC](/azure/role-based-access-control/overview) , çalışma alanındaki hangi kullanıcıların bir bilgi işlem örneği oluşturabileceğinizi, silebileceği, başlatabileceği, durdurabileceğinizi denetlemenize olanak tanır. Çalışma alanı katılımcısı ve sahip rolündeki tüm kullanıcılar çalışma alanı genelinde işlem örnekleri oluşturabilir, silebilir, başlatabilir, durdurabilir ve yeniden başlatabilir. Bununla birlikte, yalnızca belirli bir işlem örneği veya kendi adına oluşturulmuşsa atanan kullanıcı atanmış bir işlem örneği üzerinde Jupyıter, Jupiterlab ve RStudio erişimine izin verilir. Bir işlem örneği, kök erişimi olan tek bir kullanıcıya ayrılmıştır ve jupi/Jupiterlab/RStudio aracılığıyla oturum açabilir. İşlem örneğinde tek kullanıcı oturum açma işlemi olur ve tüm eylemler, bu kullanıcının Deneme çalıştırmalarının RBAC ve atısyonu için kimliğini kullanır. SSH erişimi, ortak/özel anahtar mekanizması aracılığıyla denetlenir.
+[Azure RBAC](/azure/role-based-access-control/overview) , çalışma alanındaki hangi kullanıcıların bir bilgi işlem örneği oluşturabileceğinizi, silebileceği, başlatabileceği, durdurabileceğinizi denetlemenize olanak tanır. Çalışma alanı katılımcısı ve sahip rolündeki tüm kullanıcılar çalışma alanı genelinde işlem örnekleri oluşturabilir, silebilir, başlatabilir, durdurabilir ve yeniden başlatabilir. Bununla birlikte, yalnızca belirli bir işlem örneği veya kendi adına oluşturulmuşsa atanan kullanıcı atanmış bir işlem örneği üzerinde Jupyıter, Jupiterlab ve RStudio erişimine izin verilir. Bir işlem örneği, kök erişimi olan tek bir kullanıcıya ayrılmıştır ve jupi/Jupiterlab/RStudio aracılığıyla oturum açabilir. İşlem örneğinde tek kullanıcı oturum açma işlemi olur ve tüm eylemler, bu kullanıcının Azure RBAC ve deneme çalıştırmaları için kimliğini kullanır. SSH erişimi, ortak/özel anahtar mekanizması aracılığıyla denetlenir.
 
-Bu eylemler RBAC tarafından denetlenebilir:
+Bu eylemler, Azure RBAC tarafından denetlenebilir:
 * *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/okundu*
 * *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/yaz*
 * *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/Sil*
@@ -148,7 +148,7 @@ Yönetici olarak, bir veri bilimcu adına bir işlem örneği oluşturabilir ve 
 * [Azure Resource Manager şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Bu şablonda gereken Tenantıd ve objectID 'yi bulma hakkında daha fazla bilgi için bkz. [kimlik doğrulama yapılandırması için kimlik nesne kimliklerini bulma](../healthcare-apis/find-identity-object-ids.md).  Bu değerleri Azure Active Directory portalında da bulabilirsiniz.
 * REST API
 
-İçin işlem örneğini oluşturduğunuz veri bilimcisi aşağıdaki RBAC izinlerine ihtiyaç duyuyor: 
+İçin işlem örneğini oluşturduğunuz veri bilimcisi, aşağıdaki Azure RBAC izinlerine ihtiyaç duyuyor: 
 * *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/Başlat/eylem*
 * *Microsoft. MachineLearningServices/Workspaces/hesaplar/durdur/eylem*
 * *Microsoft. MachineLearningServices/Workspaces/hesaplar/yeniden Başlat/eylem*
