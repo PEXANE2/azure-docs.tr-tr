@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 0fd3778d50216e337b872f0a27cb30b04a0219f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 972e4bcfc0eb20903dafc598bad812d0afe98afb
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617239"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428312"
 ---
 # <a name="what-is-azure-sql-database"></a>Azure SQL Veritabanı nedir?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Azure SQL Veritabanı ile Azure'da çalışan uygulamalar ve çözümler için y
 
 Azure SQL veritabanı, [Microsoft SQL Server veritabanı altyapısının](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)en son kararlı sürümünü temel alır. [Yüksek performanslı bellek içi teknolojiler](../in-memory-oltp-overview.md) ve [akıllı sorgu işleme](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json)gibi gelişmiş sorgu işleme özelliklerini kullanabilirsiniz. Hatta en yeni SQL Server özellikleri önce SQL Veritabanı'na, daha sonra SQL Server'a uygulanır. Düzeltme eki uygulama veya yükseltme konusunda endişelenmeden milyonlarca veritabanıyla test edilmiş olan en güncel SQL Server özelliklerine sahip olursunuz. 
 
-SQL veritabanı iki farklı satın alma modelinde performansı kolayca tanımlamanızı ve ölçeklendirmenizi sağlar: [sanal çekirdek tabanlı satın alma modeli](service-tiers-vcore.md) ve [DTU tabanlı satın alma modeli](service-tiers-dtu.md). SQL Veritabanı yerleşik yüksek kullanılabilirlik, yedekleme ve diğer yaygın bakım işlemlerine sahip olan tam olarak yönetilen bir hizmettir. Microsoft, SQL ve işletim sistemi kodunun tüm düzeltme ekini ve güncelleştirilmesini işler. Temel altyapıyı yönetmeniz gerekmez.
+SQL veritabanı iki farklı satın alma modelinde performansı kolayca tanımlamanızı ve ölçeklendirmenizi sağlar: [sanal çekirdek tabanlı satın alma modeli](service-tiers-vcore.md) ve [DTU tabanlı satın alma modeli](service-tiers-dtu.md). SQL Veritabanı yerleşik yüksek kullanılabilirlik, yedekleme ve diğer yaygın bakım işlemlerine sahip olan tam olarak yönetilen bir hizmettir. Microsoft, SQL ve işletim sistemi kodunun tüm düzeltme ekini ve güncelleştirilmesini işler. Temel alınan altyapıyı yönetmeniz gerekmez.
 
 Azure SQL veritabanı 'na yeni başladıysanız, Azure SQL *veritabanı 'Na genel bakış* videosunu, derınlemesıne [Azure SQL video serimize](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)göre inceleyin:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
@@ -108,7 +108,7 @@ Azure SQL veritabanı, işinizin kesintiler sırasında çalışmaya devam etmes
 
 Olağanüstü durum kurtarma, çok zararlı bir olayın, verilerinizin bir kopyasına sahip başka bir makineye veya makine kümesine sahip olacak kadar coğrafi olarak yerelleştirilmiş olduğunu varsayar. SQL Server, bu özelliği almak için zaman uyumsuz modda çalışan her zaman açık kullanılabilirlik gruplarını kullanabilirsiniz. Kullanıcılar genellikle çoğaltma işlemini bir işlem gerçekleştirmeden önce uzakta olmasını beklemek istemeiyorsunuzdur, bu nedenle planlanmamış yük devretme işlemleri gerçekleştirdiğinizde veri kaybı meydana gelir.
 
-Premium ve İş Açısından Kritik hizmet katmanlarındaki veritabanları, bir kullanılabilirlik grubunun eşitlemesine [benzer bir şey zaten yapılır](high-availability-sla.md#premium-and-business-critical-service-tier-availability) . Daha düşük hizmet katmanlarındaki veritabanları, [farklı ancak eşdeğer bir mekanizma](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability)kullanarak depolama aracılığıyla artıklık sağlar. Yerleşik mantık, tek bir makine hatasına karşı korunmaya yardımcı olur. Etkin coğrafi çoğaltma özelliği, tüm bir bölgenin yok edileceği olağanüstü duruma karşı koruma olanağı sağlar.
+Premium ve İş Açısından Kritik hizmet katmanlarındaki veritabanları, bir kullanılabilirlik grubunun eşitlemesine [benzer bir şey zaten yapılır](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) . Daha düşük hizmet katmanlarındaki veritabanları, [farklı ancak eşdeğer bir mekanizma](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability)kullanarak depolama aracılığıyla artıklık sağlar. Yerleşik mantık, tek bir makine hatasına karşı korunmaya yardımcı olur. Etkin coğrafi çoğaltma özelliği, tüm bir bölgenin yok edileceği olağanüstü duruma karşı koruma olanağı sağlar.
 
 Azure Kullanılabilirlik Alanları, tek bir bölge içinde tek bir veri merkezi oluşturma kesintisinden korunmanıza çalışır. Bir binadan güç veya ağ kaybına karşı korumaya yardımcı olur. SQL veritabanı 'nda farklı çoğaltmaları farklı kullanılabilirlik bölgelerine (farklı binalar, etkin) yerleştirebilirsiniz.
 

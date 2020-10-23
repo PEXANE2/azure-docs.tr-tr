@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Netüse Yönetici Konsolu yapılandırma | Microsoft Docs'
-description: Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory nasıl yapılandıracağınızı Netüse Yönetici Konsolu.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Netüse Kullanıcı kimlik doğrulamasını yapılandırma | Microsoft Docs'
+description: Kullanıcı hesaplarını Netüse Kullanıcı kimlik doğrulamasına otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 author: zchia
 writer: zchia
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: b4ac2308eae3466dbb9d68895bca4a4de30fcebc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 173ca296689bbdb8d574930ec2549e82839c47e9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91305021"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428464"
 ---
-# <a name="tutorial-configure-netskope-administrator-console-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Netüse Yönetici Konsolu yapılandırma
+# <a name="tutorial-configure-netskope-user-authentication-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Netüse Kullanıcı kimlik doğrulamasını yapılandırma
 
-Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Netüse Yönetici Konsolu otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Netüse Yönetici Konsolu ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Netüse Kullanıcı kimlik doğrulamasına otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için, Netüse Kullanıcı kimlik doğrulaması ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
@@ -32,49 +32,49 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Netüs
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * Bir Azure AD kiracısı
-* [Bir Netüse Yönetici Konsolu kiracısı](https://www.netskope.com/)
-* Netüse içindeki bir kullanıcı hesabı yönetici izinleriyle Yönetici Konsolu.
+* [Bir Netüse Kullanıcı kimlik doğrulama kiracısı](https://www.netskope.com/)
+* Yönetici izinleriyle Kullanıcı kimlik doğrulamasında bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-netskope-administrator-console"></a>Kullanıcıları Netüse Yönetici Konsolu atama
+## <a name="assigning-users-to-netskope-user-authentication"></a>Kullanıcıları Netüse Kullanıcı kimlik doğrulamasına atama
 
 Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'de hangi kullanıcıların ve/veya grupların Netüse Yönetici Konsolu erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Netüse Yönetici Konsolu atayabilirsiniz:
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Netüse Kullanıcı kimlik doğrulamasına erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Netüse Kullanıcı kimlik doğrulamasına atayabilirsiniz:
 * [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-netskope-administrator-console"></a>Kullanıcıları Netüse Yönetici Konsolu atamaya yönelik önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-netskope-user-authentication"></a>Kullanıcıları Netüse Kullanıcı kimlik doğrulamasına atamaya yönelik önemli ipuçları
 
-* Otomatik Kullanıcı sağlama yapılandırmasını test etmek üzere Netüse Yönetici Konsolu için tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için, Netüse Kullanıcı kimlik doğrulamasına tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı Netüse Yönetici Konsolu atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Bir kullanıcıyı Netüse Kullanıcı kimlik doğrulamasına atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="set-up-netskope-administrator-console-for-provisioning"></a>Sağlama için Netüse Yönetici Konsolu ayarlama
+## <a name="set-up-netskope-user-authentication-for-provisioning"></a>Sağlama için Netüse Kullanıcı kimlik doğrulamasını ayarlama
 
-1. [Netüse Yönetici Konsolu Yönetici konsolunda](https://netskope.goskope.com/)oturum açın. **Ana > ayarları**' na gidin.
+1. [Netüse Kullanıcı kimlik doğrulaması yönetici konsolunda](https://netskope.goskope.com/)oturum açın. **Ana > ayarları**' na gidin.
 
-    ![Netüse Yönetici Konsolu Yönetici Konsolu](media/netskope-administrator-console-provisioning-tutorial/admin.png)
+    ![Netüse Kullanıcı kimlik doğrulaması Yönetici Konsolu](media/netskope-administrator-console-provisioning-tutorial/admin.png)
 
 2.  **Araçlara**gidin. **Araçlar** menüsünde, **scım tümleştirmesi > Dizin araçları**' na gidin.
 
-    ![Netüse Yönetici Konsolu araçları](media/netskope-administrator-console-provisioning-tutorial/tools.png)
+    ![Netüse Kullanıcı kimlik doğrulama araçları](media/netskope-administrator-console-provisioning-tutorial/tools.png)
 
-    ![Netüse Yönetici Konsolu SCıM Ekle](media/netskope-administrator-console-provisioning-tutorial/directory.png)
+    ![Netüse Kullanıcı kimlik doğrulaması SCıM ekleme](media/netskope-administrator-console-provisioning-tutorial/directory.png)
 
 3. Aşağı kaydırın ve **belirteç Ekle** düğmesine tıklayın. **OAuth Istemci adı Ekle** iletişim kutusunda BIR **istemci adı** belirtin ve **Kaydet** düğmesine tıklayın.
 
-    ![Netüse Yönetici Konsolu belirteç Ekle](media/netskope-administrator-console-provisioning-tutorial/add.png)
+    ![Netüse Kullanıcı kimlik doğrulaması belirteci Ekle](media/netskope-administrator-console-provisioning-tutorial/add.png)
 
-    ![Netüse Yönetici Konsolu Istemci adı](media/netskope-administrator-console-provisioning-tutorial/clientname.png)
+    ![Netüse Kullanıcı kimlik doğrulama Istemci adı](media/netskope-administrator-console-provisioning-tutorial/clientname.png)
 
-3.  **SCIM sunucusu URL 'sini** ve **belirtecini**kopyalayın. Bu değerler, Azure portal Netüse Yönetici Konsolu uygulamanızın sağlama sekmesinde sırasıyla kiracı URL 'SI ve gizli belirteç alanlarına girilir.
+3.  **SCIM sunucusu URL 'sini** ve **belirtecini**kopyalayın. Bu değerler, Azure portal içindeki Netüse Kullanıcı kimlik doğrulama uygulamanızın sağlama sekmesinde kiracı URL 'SI ve gizli belirteç alanlarına girilir.
 
-    ![Netüse Yönetici Konsolu belirteç oluştur](media/netskope-administrator-console-provisioning-tutorial/token.png)
+    ![Netüse Kullanıcı kimlik doğrulaması belirteci oluştur](media/netskope-administrator-console-provisioning-tutorial/token.png)
 
-## <a name="add-netskope-administrator-console-from-the-gallery"></a>Galeriden Netüse Yönetici Konsolu ekleme
+## <a name="add-netskope-user-authentication-from-the-gallery"></a>Galeriden Netüse Kullanıcı kimlik doğrulaması ekleme
 
-Azure AD ile otomatik Kullanıcı sağlama için Netüse Yönetici Konsolu yapılandırmadan önce Azure AD uygulama galerisindeki Netüse Yönetici Konsolu yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlama için Netüse Kullanıcı kimlik doğrulamasını yapılandırmadan önce Azure AD uygulama galerisindeki Netüse Kullanıcı kimlik doğrulamasını yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD Uygulama Galerisi 'nden Netüse Yönetici Konsolu eklemek için aşağıdaki adımları uygulayın:**
+**Azure AD Uygulama Galerisi 'nden Netüse Kullanıcı kimlik doğrulaması eklemek için aşağıdaki adımları uygulayın:**
 
 1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
@@ -88,29 +88,29 @@ Azure AD ile otomatik Kullanıcı sağlama için Netüse Yönetici Konsolu yapı
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Ara kutusuna **netüse Yönetici Konsolu**girin, sonuçlar panelinde **netüse Yönetici Konsolu** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Ara kutusuna **Netüse Kullanıcı kimlik doğrulaması**' nı girin, sonuçlar panelinde **Netüse Kullanıcı kimlik doğrulaması** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![Sonuçlar listesinde netüse Yönetici Konsolu](common/search-new-app.png)
+    ![Sonuçlar listesinde netüse Kullanıcı kimlik doğrulaması](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-netskope-administrator-console"></a>Otomatik Kullanıcı sağlamayı Netüse Yönetici Konsolu yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-netskope-user-authentication"></a>Otomatik Kullanıcı sağlamasını Netüse Kullanıcı kimlik doğrulamasına yapılandırma 
 
-Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına bağlı olarak, Netüse Yönetici Konsolu içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında size kılavuzluk eder.
+Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Netüse Kullanıcı kimlik doğrulamasında kullanıcıları ve/veya grupları oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
 
 > [!TIP]
-> Netüse [Yönetici Konsolu çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-cloud-security-tutorial)sunulan yönergeleri Izleyerek netüse yönetıcı konsolu için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
+> Netüse Kullanıcı [kimlik doğrulaması çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-cloud-security-tutorial)belirtilen yönergeleri Izleyerek Netüse Kullanıcı kimlik doğrulaması için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
 
 > [!NOTE]
-> Netüse Yönetici Konsolu SCıM uç noktası hakkında daha fazla bilgi edinmek için, [bkz..](https://docs.google.com/document/d/1n9P_TL98_kd1sx5PAvZL2HS6MQAqkQqd-OSkWAAU6ck/edit#heading=h.prxq74iwdpon)
+> Netüse Kullanıcı kimlik doğrulamasının SCıM uç noktası hakkında daha fazla bilgi edinmek için, [bkz..](https://docs.google.com/document/d/1n9P_TL98_kd1sx5PAvZL2HS6MQAqkQqd-OSkWAAU6ck/edit#heading=h.prxq74iwdpon)
 
-### <a name="to-configure-automatic-user-provisioning-for-netskope-administrator-console-in-azure-ad"></a>Azure AD 'de Netüse Yönetici Konsolu için otomatik Kullanıcı sağlamayı yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-netskope-user-authentication-in-azure-ad"></a>Azure AD 'de Netüse Kullanıcı kimlik doğrulaması için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Netüse Yönetici Konsolu**' yi seçin.
+2. Uygulamalar listesinde, **Netüse Kullanıcı kimlik doğrulaması**' nı seçin.
 
-    ![Uygulamalar listesindeki Netüse Yönetici Konsolu bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Netüse Kullanıcı kimlik doğrulama bağlantısı](common/all-applications.png)
 
 3. **Hazırlama** sekmesini seçin.
 
@@ -120,7 +120,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına bağlı olarak,
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, **kiracı URL**'sinde daha önce alınan GIRIŞ **SCIM sunucusu URL** değeri. Daha önce **gizli bir belirteçte**alınan **belirteç** değerini girin. Azure AD 'nin Netüse Yönetici Konsolu bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Netüse Yönetici Konsolu hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde, **kiracı URL**'sinde daha önce alınan GIRIŞ **SCIM sunucusu URL** değeri. Daha önce **gizli bir belirteçte**alınan **belirteç** değerini girin. Azure AD 'nin Netüse Kullanıcı kimlik doğrulamasına bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Netüse Kullanıcı kimlik doğrulama hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -130,29 +130,29 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına bağlı olarak,
 
 7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları netüse yönetici konsolu olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Netüse Kullanıcı kimlik doğrulamasıyla eşitler**' ı seçin.
 
-    ![Netüse Yönetici Konsolu kullanıcı eşlemeleri](media/netskope-administrator-console-provisioning-tutorial/usermappings.png)
+    ![Netüse Kullanıcı kimlik doğrulaması Kullanıcı eşlemeleri](media/netskope-administrator-console-provisioning-tutorial/usermappings.png)
 
-9. **Öznitelik eşleme** bölümünde Azure AD 'Den Netüse Yönetici Konsolu eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Netüse Yönetici Konsolu kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Netüse Kullanıcı kimlik doğrulamasına eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Netüse Kullanıcı kimlik doğrulaması içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Netüse Yönetici Konsolu Kullanıcı öznitelikleri](media/netskope-administrator-console-provisioning-tutorial/userattributes.png)
+    ![Netüse Kullanıcı kimlik doğrulaması Kullanıcı öznitelikleri](media/netskope-administrator-console-provisioning-tutorial/userattributes.png)
 
-10. **Eşlemeler** bölümünde, **Azure Active Directory grupları netüse yönetici konsolu olarak eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Netüse Kullanıcı kimlik doğrulamasıyla eşitler**' ı seçin.
 
-    ![Netüse Yönetici Konsolu grubu eşlemeleri](media/netskope-administrator-console-provisioning-tutorial/groupmappings.png)
+    ![Netüse Kullanıcı kimlik doğrulama grubu eşlemeleri](media/netskope-administrator-console-provisioning-tutorial/groupmappings.png)
 
-11. **Öznitelik eşleme** bölümünde Azure AD 'Den netüse Yönetici Konsolu eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Netüse Yönetici Konsolu grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+11. **Öznitelik eşleme** bölümünde, Azure AD 'Den Netüse Kullanıcı kimlik doğrulamasına eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Netüse Kullanıcı kimlik doğrulamasında grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Netüse Yönetici Konsolu grubu öznitelikleri](media/netskope-administrator-console-provisioning-tutorial/groupattributes.png)
+    ![Netüse Kullanıcı kimlik doğrulama grubu öznitelikleri](media/netskope-administrator-console-provisioning-tutorial/groupattributes.png)
 
 12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
-13. Netüse Yönetici Konsolu için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+13. Netüse Kullanıcı kimlik doğrulaması için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
     ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek netüse Yönetici Konsolu sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek Netüse Kullanıcı kimlik doğrulamasına sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
@@ -160,7 +160,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına bağlı olarak,
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerlemeyi izlemek ve sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz ve bu, Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri Netüse yönetici konsolu üzerinde açıklar.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerlemeyi izlemek ve sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanarak, Netüse Kullanıcı kimlik DOĞRULAMASıNDA Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklar.
 
 Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 

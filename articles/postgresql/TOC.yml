@@ -157,6 +157,8 @@
             - name: Özel bağlantı
               href: concepts-data-access-and-security-private-link.md
               displayName: 'security, private link, private endpoint'
+        - name: Planlı bakım
+          href: concepts-planned-maintenance-notification.md
         - name: İş sürekliliği
           items:
             - name: İş sürekliliğine giriş

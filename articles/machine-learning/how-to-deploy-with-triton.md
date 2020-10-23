@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 9a6e2de07921d05e123154f604c3d1b369b3b89d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3a3600c4065d331ca1cfc129cd55dd56add21424
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998750"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92428350"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton çıkarım sunucusuyla yüksek performanslı hizmet (Önizleme) 
 
@@ -30,7 +30,7 @@ Triton, *çıkarım için iyileştirilmiş*bir çerçevedir. GPU 'ların daha iy
 > Azure Machine Learning dağıtım için Triton kullanımı Şu anda __Önizleme__aşamasındadır. Önizleme işlevselliği müşteri desteğinin kapsamına alınmayabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 > [!TIP]
-> Bu belgedeki kod parçacıkları tanım amaçlıdır ve bir çözümü tamamen gösteremeyebilir. Çalışan örnek kod için [Azure Machine Learning üç aylık dönemin uçtan uca örneklerine](https://aka.ms/aml-triton-sample)bakın.
+> Bu belgedeki kod parçacıkları tanım amaçlıdır ve bir çözümü tamamen gösteremeyebilir. Çalışan örnek kod için [Azure Machine Learning üç aylık dönemin uçtan uca örneklerine](https://github.com/Azure/azureml-examples/tree/main/tutorials)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
