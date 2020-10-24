@@ -3,12 +3,12 @@ title: Sık sorulan sorular-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs ve yanıtları hakkında sık sorulan soruların (SSS) bir listesi sunulmaktadır.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 511706e0de2737feb259c0ff9529373ab8b6d026
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: c95016064ecc9bbfc091138863c8215feeec50b4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495215"
+ms.locfileid: "92518033"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs sık sorulan sorular
 
@@ -42,13 +42,13 @@ Event Hubs Ayrılmış dahil olmak üzere fiyatlandırma katmanları hakkında d
 
 Azure Event Hubs, desteklenen tüm Azure bölgelerinde kullanılabilir. Bir liste için, [Azure bölgeleri](https://azure.microsoft.com/regions/) sayfasını ziyaret edin.  
 
-### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Birden çok olay hub 'ını göndermek ve almak için tek bir AMQP bağlantısı kullanabilir miyim?
+### <a name="can-i-use-a-single-advanced-message-queuing-protocol-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Birden çok olay hub 'ını göndermek ve almak için tek bir Gelişmiş İleti Sıraya Alma Protokolü (AMQP) bağlantısı kullanabilir miyim?
 
 Evet, tüm olay hub 'ları aynı ad alanında olduğu sürece.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Olaylar için en fazla saklama süresi nedir?
 
-Event Hubs Standart katman Şu anda en fazla yedi gün bekletme süresini desteklemektedir. Olay Hub 'ları kalıcı veri deposu olarak tasarlanmamıştır. 24 saatten büyük saklama süreleri, bir olay akışını aynı sistemlere yeniden yürütmeye uygun olan senaryolar için tasarlanmıştır; Örneğin, var olan veriler üzerinde yeni bir makine öğrenimi modeli eğitme veya doğrulama. Yedi günden daha fazla süre boyunca ileti bekletmesi gerekiyorsa, Olay Hub 'ınızdaki [Event Hubs yakalamayı](event-hubs-capture-overview.md) etkinleştirmek, Olay Hub 'ınızdaki verileri seçtiğiniz depolama hesabına veya Azure Data Lake hizmet hesabına çeker. Yakalamanın etkinleştirilmesi, satın alınan üretilen iş birimleriniz temelinde bir ücret doğurur.
+Event Hubs Standart katman Şu anda en fazla yedi gün bekletme süresini desteklemektedir. Olay Hub 'ları kalıcı veri deposu olarak tasarlanmamıştır. 24 saatten büyük saklama süreleri, bir olay akışını aynı sistemlere yeniden yürütmeye uygun olan senaryolar için tasarlanmıştır. Örneğin, var olan veriler üzerinde yeni bir makine öğrenimi modeli eğitme veya doğrulama. Yedi günden daha fazla süre boyunca ileti bekletmesi gerekiyorsa, Olay Hub 'ınızdaki [Event Hubs yakalamayı](event-hubs-capture-overview.md) etkinleştirmek, Olay Hub 'ınızdaki verileri seçtiğiniz depolama hesabına veya Azure Data Lake hizmet hesabına çeker. Yakalamanın etkinleştirilmesi, satın alınan üretilen iş birimleriniz temelinde bir ücret doğurur.
 
 Depolama hesabınızdaki yakalanan veriler için saklama süresini yapılandırabilirsiniz. Azure depolama 'nın **yaşam döngüsü yönetimi** özelliği, genel amaçlı v2 ve BLOB depolama hesapları için zengin, kural tabanlı bir ilke sunar. Verilerinizi uygun erişim katmanlarına geçirmeye veya veri yaşam döngüsünün sonunda sona ermesini sağlamak için ilkeyi kullanın. Daha fazla bilgi için bkz. [Azure Blob depolama yaşam döngüsünü yönetme](../storage/blobs/storage-lifecycle-management-concepts.md). 
 
@@ -56,12 +56,12 @@ Depolama hesabınızdaki yakalanan veriler için saklama süresini yapılandıra
 Event Hubs kaynaklarınızın durumunu [Azure izleyici](../azure-monitor/overview.md)'ye sağlayan ayrıntılı ölçümleri yayar. Ayrıca, yalnızca ad alanı düzeyinde değil, varlık düzeyinde de Event Hubs hizmetin genel durumunu değerlendirmenize imkan tanır. [Azure Event Hubs](event-hubs-metrics-azure-monitor.md)için hangi izlemenin sunulmakta olduğunu öğrenin.
 
 ### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure Event Hubs müşteri verilerini nerede depolar?
-Azure Event Hubs, müşteri verilerini depolar. Bu veriler tek bir bölgede Event Hubs tarafından otomatik olarak depolanır. bu nedenle bu hizmet, [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/)'nde belirtilenler de dahil olmak üzere bölge verileri 'nin gereksinimlerini otomatik olarak karşılar.
+Azure Event Hubs, müşteri verilerini depolar. Bu veriler, tek bir bölgede Event Hubs tarafından otomatik olarak depolanır. bu nedenle, bu hizmet [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/)'nde belirtilenler dahil olmak üzere bölge verileri 'nin gereksinimlerini otomatik olarak karşılar.
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Güvenlik duvarında hangi bağlantı noktalarını açmalıyım? 
 Aşağıdaki protokolleri, ileti göndermek ve almak için Azure Service Bus ile birlikte kullanabilirsiniz:
 
-- Gelişmiş İleti Sıraya Alma Protokolü (AMQP)
+- AMQP
 - HTTP
 - Apache Kafka
 
@@ -128,12 +128,23 @@ Event Hubs, mevcut Apache Kafka tabanlı uygulamalarınız tarafından kullanıl
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Mevcut uygulamamın Event Hubs ile iletişim kurmasını sağlamak için hangi yapılandırma değişikliklerinin yapılması gerekir?
 Bir olay hub 'ına bağlanmak için Kafka istemci yapılandırması ' nı güncelleştirmeniz gerekir. Event Hubs bir ad alanı oluşturarak ve [bağlantı dizesi](event-hubs-get-connection-string.md)elde ederek yapılır. Önyükleme. sunucuları Event Hubs FQDN ve bağlantı noktası 9093 ' ye işaret etmek üzere değiştirin. Kafka istemcisini, aşağıda gösterildiği gibi doğru kimlik doğrulamasıyla Event Hubs uç noktanıza (aldığınız bağlantı dizesi) yönlendirmek için sasl.jaas.config güncelleştirin:
 
-Bootstrap. Servers = {sızın. EVENTHUBS. FQDN}: 9093 Request. Timeout. MS = 60.000 karaktere Security. Protocol = SASL_SSL SASL. düzeneði = düz sasl.jaas.config= org. Apache. Kafka. Common. Security. düz. PlainLoginModule istenen Kullanıcı adı = "$ConnectionString" Password = "{sıze. EVENTHUBS. Bağlanma. DIZE} ";
+```properties
+bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
+request.timeout.ms=60000
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
+```
 
 Örnek:
 
-Bootstrap. Servers = dummynamespace. ServiceBus. Windows. net: 9093 Request. Timeout. MS = 60.000 karaktere Security. Protocol = SASL_SSL SASL. düzenek = düz sasl.jaas.config= org. Apache. Kafka. Common. Security. düz. PlainLoginModule gerekli kullanıcıadı = "$ConnectionString" Password = "Endpoint = SB://dummynamespace.ServiceBus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = XXXXXXXXXXXXXXXXXXXXX ";
-
+```properties
+bootstrap.servers=dummynamespace.servicebus.windows.net:9093
+request.timeout.ms=60000
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXX";
+```
 Note: sasl.jaas.config ortamınızda desteklenen bir yapılandırma değilse, SASL Kullanıcı adı ve parolasını ayarlamak için kullanılan yapılandırmaları bulun ve bunların yerine kullanın. Kullanıcı adını $ConnectionString ve parolayı Event Hubs bağlantı dizeniz olarak ayarlayın.
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Event Hubs için ileti/olay boyutu nedir?
@@ -259,9 +270,9 @@ SLA 'umuz hakkında daha fazla bilgi edinmek için bkz. [hizmet düzeyi anlaşma
 ## <a name="azure-stack-hub"></a>Azure Stack Hub
 
 ### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>Azure Blob depolamayı bir denetim noktası deposu olarak kullanırken Azure Storage SDK 'sının belirli bir sürümünü nasıl hedefleyebilirsiniz?
-Bu kodu Azure Stack hub 'da çalıştırırsanız, belirli bir depolama API sürümünü hedefetmediğiniz takdirde çalışma zamanı hatalarıyla karşılaşırsınız. Bunun nedeni, Event Hubs SDK 'sının Azure 'da kullanılabilen ve Azure Stack hub platformunda kullanılamayan en son Azure Storage API 'sini kullanması nedeniyle oluşur. Azure Stack hub, Azure 'da genel kullanıma sunulan farklı bir Storage blob SDK sürümü destekleyebilir. Azure blog depolamayı bir denetim noktası deposu olarak kullanıyorsanız, [Azure Stack hub derlemesi için desteklenen Azure depolama API sürümünü](/azure-stack/user/azure-stack-acs-differences?#api-version) denetleyin ve bu sürümü kodunuzda hedefleyin. 
+Bu kodu Azure Stack hub 'da çalıştırırsanız, belirli bir depolama API sürümünü hedefetmediğiniz takdirde çalışma zamanı hatalarıyla karşılaşırsınız. Bunun nedeni, Event Hubs SDK 'sının Azure 'da kullanılabilen ve Azure Stack hub platformunda kullanılamayan en son Azure Storage API 'sini kullanması nedeniyle oluşur. Azure Stack hub, Azure 'da genel kullanıma sunulan farklı bir Depolama Blobu SDK sürümü destekleyebilir. Azure blog depolamayı bir denetim noktası deposu olarak kullanıyorsanız, [Azure Stack hub derlemesi için desteklenen Azure depolama API sürümünü](/azure-stack/user/azure-stack-acs-differences?#api-version) denetleyin ve bu sürümü kodunuzda hedefleyin. 
 
-Örneğin, Azure Stack hub sürümü 2005 üzerinde çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2019-02-02 ' dir. Event Hubs SDK istemci kitaplığı, varsayılan olarak Azure 'da kullanılabilen en yüksek sürümü (SDK 'nın sürümü sırasında 2019-07-07) kullanır. Bu durumda, bu bölümdeki adımların yanı sıra Storage Service API sürüm 2019-02-02 ' i hedeflemek için de kod eklemeniz gerekecektir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için C#, Java, Python ve JavaScript/TypeScript için aşağıdaki örneklere bakın.  
+Örneğin, Azure Stack hub sürüm 2005 ' de çalışıyorsanız, depolama hizmeti için en yüksek sürüm 2019-02-02 ' dir. Event Hubs SDK istemci kitaplığı, varsayılan olarak Azure 'da kullanılabilen en yüksek sürümü (SDK 'nın sürümü sırasında 2019-07-07) kullanır. Bu durumda, bu bölümdeki adımların yanı sıra Storage Service API sürüm 2019-02-02 ' i hedeflemek için de kod eklemeniz gerekecektir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için C#, Java, Python ve JavaScript/TypeScript için aşağıdaki örneklere bakın.  
 
 Kodunuzda belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için GitHub 'da aşağıdaki örneklere bakın: 
 

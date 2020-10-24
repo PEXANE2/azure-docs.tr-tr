@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 2fb94faacc2bc7d6c3b1e166e617f3f675594cef
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bcb6e91bba367363385214806077146b1a24fe7b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101265"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503496"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features-azure-cognitive-search"></a>Azure ağ güvenlik özellikleriyle korunan içeriğe Dizin Oluşturucu erişimi (Azure Bilişsel Arama)
 
@@ -41,8 +41,8 @@ Müşteriler, Azure tarafından sunulan çeşitli ağ yalıtımı mekanizmaları
 | Azure Cosmos DB-SQL API 'SI | Desteklenir | Desteklenir |
 | Azure Cosmos DB-Cassandra, Mongo ve Gremlin API 'SI | Desteklenir | Desteklenmeyen |
 | Azure SQL Veritabanı | Desteklenir | Desteklenir |
-| Azure sanal makinelerde SQL Server | Desteklenir | YOK |
-| SQL Yönetilen Örnek | Desteklenir | YOK |
+| Azure sanal makinelerde SQL Server | Desteklenir | Yok |
+| SQL Yönetilen Örnek | Desteklenir | Yok |
 | Azure İşlevleri | Desteklenir | Yalnızca belirli Azure işlevleri katmanlarında desteklenir |
 
 > [!NOTE]
@@ -87,7 +87,7 @@ Bu işlevsellik yalnızca faturalandırılabilir Arama hizmetlerinde, oluşturul
 
 Müşteriler, güvenli kaynaklarına (örneğin, bir depolama hesabı) özel bir uç nokta bağlantısı oluşturmak için, **paylaşılan bir özel bağlantı kaynağı**üzerinde arama yönetimi Işlemini, [CREATEORUPDATE API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) 'yi çağırmalıdır. Bu (giden) özel uç nokta bağlantısının üzerinden geçen trafik yalnızca arama hizmeti 'ne özgü "özel" Dizin Oluşturucu yürütme ortamındaki sanal ağdan kaynaklanacaktır.
 
-Azure Bilişsel Arama, bu API çağıranlarının güvenli kaynağa özel uç nokta bağlantı isteklerini onaylamak için RBAC izinlerine sahip olduğunu doğrular. Örneğin, salt okuma izinlerine sahip bir depolama hesabına özel bir uç nokta bağlantısı istemeniz durumunda bu çağrı reddedilir.
+Azure Bilişsel Arama, bu API 'nin çağıranlarının güvenli kaynağa özel uç nokta bağlantı isteklerini onaylamak için Azure RBAC izinlerine sahip olduğunu doğrular. Örneğin, salt okuma izinlerine sahip bir depolama hesabına özel bir uç nokta bağlantısı istemeniz durumunda bu çağrı reddedilir.
 
 ### <a name="step-2-approve-the-private-endpoint-connection"></a>2. Adım: özel uç nokta bağlantısını onaylama
 

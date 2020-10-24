@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9ed3a4b0827e81b3f779d95a6eab1dc341e69bb1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569468"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503275"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>SYNAPSE SQL kullanarak güvenli bir şekilde veri yükleme
 
@@ -25,7 +25,7 @@ Aşağıdaki matris, her dosya türü ve depolama hesabı için desteklenen kiml
 
 |                          |                CSV                |              Parquet               |                ORC                 |
 | :----------------------: | :-------------------------------: | :-------------------------------:  | :-------------------------------:  |
-|  **Azure blob depolama**  | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD |              SAS/ANAHTAR               |              SAS/ANAHTAR               |
+|  **Azure Blob depolama**  | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD |              SAS/ANAHTAR               |              SAS/ANAHTAR               |
 | **Azure Data Lake Gen2** | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD | SAS (blob uç noktası)/MSI (DFS uç noktası)/SERVICE PRINCIPAL/KEY/AAD | SAS (blob uç noktası)/MSI (DFS uç noktası)/SERVICE PRINCIPAL/KEY/AAD |
 
 
@@ -97,7 +97,7 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
     > [!IMPORTANT]
     > **Depolama** **blobu veri** sahibini, katkıda bulunan veya okuyucu Azure rolünü belirtin. Bu roller, sahip, katkıda bulunan ve okuyucunuzun Azure yerleşik rollerinin farklıdır. 
 
-    ![Yük için RBAC izni veriliyor](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![Azure RBAC iznini yükleme için verme](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 4. Şimdi "yönetilen kimlik" belirten kopyalama ifadesini çalıştırabilirsiniz:
 
@@ -118,7 +118,7 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
     > [!IMPORTANT]
     > **Depolama** **blobu veri** sahibini, katkıda bulunan veya okuyucu Azure rolünü belirtin. Bu roller, sahip, katkıda bulunan ve okuyucunuzun Azure yerleşik rollerinin farklıdır.
 
-    ![Yük için RBAC izni veriliyor](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![Azure RBAC iznini yükleme için verme](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 2. Aşağıdaki [belgelere](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)gıderek Azure AD kimlik doğrulamasını yapılandırın. 
 

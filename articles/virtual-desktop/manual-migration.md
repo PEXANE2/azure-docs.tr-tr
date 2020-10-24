@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 74527f57340f850b60dd00dcd054992c423a49c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd292fa6b4f613e0a5f5a80e0cd87675f529baf5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90039117"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516180"
 ---
 # <a name="migrate-manually-from-windows-virtual-desktop-classic"></a>Windows sanal masaüstünden el ile geçiş (klasik)
 
@@ -35,7 +35,7 @@ Zahmetsiz, klasik sürümden uzaklaşmaya hala önem taşımaktadır. Geçiş ya
 - Windows sanal masaüstünü Azure portal aracılığıyla yönetin.
 - Uygulama gruplarına Azure Active Directory (AD) Kullanıcı grupları atayın.
 - Dağıtımınızın sorunlarını gidermek için geliştirilmiş Log Analytics özelliğini kullanın.
-- Yönetim erişimini yönetmek için Azure yerel Role-Based erişim denetimlerini kullanın.
+- Yönetim erişimini yönetmek için Azure yerel rol tabanlı erişim denetimi (Azure RBAC) kullanın.
 
 ## <a name="when-should-i-migrate"></a>Ne zaman geçiş yapmam gerekir?
 

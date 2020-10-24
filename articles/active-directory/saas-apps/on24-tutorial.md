@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 163a0c9a7e728ee9cd08c4a154ea499c059cf2f6
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 30fd3843b50ac6b075d33e961986b94ee2496fef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91944517"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518539"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Öğretici: ON24 sanal ortamı SAML bağlantısı ile Azure Active Directory tümleştirme
 
@@ -27,7 +27,7 @@ ON24 sanal ortamı SAML bağlantısını Azure AD ile tümleştirmek aşağıdak
 * Kullanıcılarınızın Azure AD hesaplarıyla ON24 sanal ortam SAML bağlantısına (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -195,7 +195,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -225,19 +225,18 @@ Bu bölümde, ON24 sanal ortam SAML bağlantısına erişim vererek Azure çoklu
 
 ### <a name="create-on24-virtual-environment-saml-connection-test-user"></a>ON24 sanal ortamı oluşturma SAML bağlantısı test kullanıcısı
 
-Bu bölümde, ON24 sanal ortamı SAML bağlantısı 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. ON24 sanal ortam SAML bağlantı platformuna kullanıcıları eklemek için [ON24 sanal ORTAMı SAML bağlantısı destek ekibi](https://www.on24.com/about-us/support/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, ON24 sanal ortamı SAML bağlantısı 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. ON24 sanal ortam SAML bağlantı platformuna kullanıcıları eklemek için [ON24 sanal ORTAMı SAML bağlantısı destek ekibi](https://www.on24.com/about-us/support/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde ON24 sanal ortam SAML bağlantısı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız ON24 sanal ortam SAML bağlantısında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde ON24 sanal ortam SAML bağlantısı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız ON24 sanal ortam SAML bağlantısında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

@@ -12,12 +12,12 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 14a25559b1eddd4adb58ae2106e8c9e92873ea48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eeddecbec31ec1bfa73cf956deb4c50809c50e7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88751175"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521955"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri
 
@@ -25,7 +25,7 @@ Bulut özellikli [bir hizmet olarak yazılım (SaaS)](https://azure.microsoft.co
 
 Azure AD ile önceden tümleştirilmiş olan tüm SaaS uygulamalarının listesi için bkz. [market Active Directory](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps).
 
-Otomatik sağlama galerisine veya SSO galerisine eklenecek bir SAML/OıDC özellikli uygulamaya eklenecek bir [SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups) etkin uygulaması istemek için [uygulama ağ portalı](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) 'nı kullanın.
+Otomatik sağlama galerisine veya SSO galerisine eklenecek bir SAML/OıDC özellikli uygulamaya eklenecek bir [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) etkin uygulaması istemek için [uygulama ağ portalı](../azuread-dev/howto-app-gallery-listing.md) 'nı kullanın.
 
 ## <a name="quick-links"></a>Hızlı bağlantılar
 
@@ -34,7 +34,7 @@ Otomatik sağlama galerisine veya SSO galerisine eklenecek bir SAML/OıDC özell
 | ![Logo-Atlasme bulutu](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)| [Atlasme bulutu-Kullanıcı sağlama](atlassian-cloud-provisioning-tutorial.md)|
 | ![Logo-ServiceNow](./media/tutorial-list/active-directory-saas-servicenow-tutorial.png)| [ServiceNow](servicenow-tutorial.md)|[ServiceNow-Kullanıcı hazırlama](servicenow-provisioning-tutorial.md)|
 | ![Logo-bolluk](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|[Bolluk-Kullanıcı sağlama](slack-provisioning-tutorial.md)|
-| ![Logo-başarılı etmenler](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [Başarılı etken-Kullanıcı sağlama](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial) |
+| ![Logo-başarılı etmenler](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [Başarılı etken-Kullanıcı sağlama](./sap-successfactors-inbound-provisioning-tutorial.md) |
 | ![Logo-Workday](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Workday](workday-tutorial.md)| [Workday-Kullanıcı sağlama](workday-inbound-tutorial.md)|
 
 Daha fazla öğretici bulmak için sol taraftaki İçindekiler tablosunu kullanın.
@@ -47,7 +47,7 @@ Daha fazla öğretici bulmak için sol taraftaki İçindekiler tablosunu kullan�
 | ![Logo-Alibaba bulut hizmeti (rol temelleri SSO 'SU)](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba bulut hizmeti (rol temeli SSO 'SU)](alibaba-cloud-service-role-based-sso-tutorial.md)| |
 | ![Logo-Google Cloud Platform](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform-Kullanıcı sağlama](google-apps-provisioning-tutorial.md) |
 | ![Logo-Salesforce](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Salesforce-Kullanıcı sağlama](salesforce-provisioning-tutorial.md) |
-| ![Logo-SAP bulut kimlik platformu](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP bulut kimlik platformu](saphana-tutorial.md)|[SAP Cloud Identity platformu-sağlama](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial) |
+| ![Logo-SAP bulut kimlik platformu](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP bulut kimlik platformu](saphana-tutorial.md)|[SAP Cloud Identity platformu-sağlama](./sap-cloud-platform-identity-authentication-provisioning-tutorial.md) |
 
 ## <a name="oneclick-sso"></a>OneClick SSO 'SU
 

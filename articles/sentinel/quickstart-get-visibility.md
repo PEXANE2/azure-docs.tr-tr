@@ -1,6 +1,6 @@
 ---
 title: "Hızlı Başlangıç: Azure Sentinel'i kullanmaya başlama"
-description: Azure Sentinel kullanarak ortamınızda neler olduğunu hızlı bir şekilde görüntülemeyi ve izlemeyi öğrenmek için bu hızlı başlangıcı kullanın. 
+description: Azure Sentinel kullanarak ortamınızda neler olduğunu hızlı bir şekilde görüntülemeyi ve izlemeyi öğrenmek için bu hızlı başlangıcı kullanın.
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: bdd3f543c948ac2825b836fdbedd4c0f0d713b2c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: affefb302d602e9069a903fa5f6a0fbae78992b9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208235"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516962"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Hızlı Başlangıç: Azure Sentinel'i kullanmaya başlama
 
@@ -80,10 +80,10 @@ Yeni bir kutucuk eklemek istiyorsanız, onu oluşturduğunuz veya Azure Sentinel
 Sıfırdan yeni bir çalışma kitabı oluşturabilir veya yeni çalışma kitabınız için temel olarak yerleşik çalışma kitabını kullanabilirsiniz.
 
 1. Sıfırdan yeni bir çalışma kitabı oluşturmak için **çalışma kitapları** ' nı ve ardından **+ Yeni çalışma kitabı**' nı seçin.
-2. Çalışma kitabının oluşturulduğu aboneliği seçin ve açıklayıcı bir ad verin. Her çalışma kitabı, birbirleriyle aynı şekilde bir Azure kaynağıdır ve kimlerin erişebileceğini tanımlamak ve sınırlamak için BT rolleri (RBAC) atayabilirsiniz. 
+2. Çalışma kitabının oluşturulduğu aboneliği seçin ve açıklayıcı bir ad verin. Her çalışma kitabı, birbirleriyle aynı şekilde bir Azure kaynağıdır ve kimlerin erişebileceğini tanımlamak ve sınırlamak için BT rolleri (Azure RBAC) atayabilirsiniz. 
 3. Görselleştirmeleri ' a sabitlemek üzere çalışma kitaplarında görünmesini sağlamak için bunu paylaşmanız gerekir. **Paylaşma** ' ya ve ardından **Kullanıcıları Yönet**' e tıklayın. 
  
-1. Diğer tüm Azure kaynakları için yaptığınız gibi erişim ve **rol atamalarını** **Denetle** öğesini kullanın. Daha fazla bilgi için bkz. [RBAC kullanarak Azure çalışma kitaplarını paylaşma](../azure-portal/azure-portal-dashboard-share-access.md).
+1. Diğer tüm Azure kaynakları için yaptığınız gibi erişim ve **rol atamalarını** **Denetle** öğesini kullanın. Daha fazla bilgi için bkz. Azure [RBAC kullanarak Azure çalışma kitaplarını paylaşma](../azure-portal/azure-portal-dashboard-share-access.md).
 
 
 ## <a name="new-workbook-examples"></a>Yeni çalışma kitabı örnekleri

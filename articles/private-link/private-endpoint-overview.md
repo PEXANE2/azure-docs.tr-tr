@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: def394369ebcb8b457d78ad6537830487e8049f7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6fd20cd9e3172d6ce80d2c18c2cfa41fcc044929
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277516"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508038"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure Özel Uç Nokta nedir?
 
@@ -81,7 +81,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Azure Machine Learning** | Microsoft. MachineLearningServices/çalışma alanları    | çalışma alanı |
 |**SignalR** | Microsoft. SignalRService/SignalR    | signalR |
 |**Azure İzleyici** | Microsoft. Insights/privateLinkScopes    | azuremonitor |
-|**Bilişsel Hizmetler** | (Microsoft. Biliveservices/hesapları    | account |
+|**Bilişsel hizmetler** | (Microsoft. Biliveservices/hesapları    | account |
 |**Azure Dosya Eşitleme** | Microsoft. Storagessync/storageSyncServices    | 'Nin |
     
   
@@ -133,15 +133,16 @@ Aşağıdaki tabloda özel uç noktalar kullanılırken bilinen kısıtlamaları
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Portal kullanarak SQL veritabanı için özel bir uç nokta oluşturma ](create-private-endpoint-portal.md)
-- [PowerShell kullanarak SQL veritabanı için özel bir uç nokta oluşturma ](create-private-endpoint-powershell.md)
-- [CLı kullanarak SQL veritabanı için özel bir uç nokta oluşturma ](create-private-endpoint-cli.md)
-- [Portalı kullanarak depolama hesabı için özel bir uç nokta oluşturma ](create-private-endpoint-storage-portal.md)
-- [Portal kullanarak Azure Cosmos hesabı için özel bir uç nokta oluşturma ](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Portalı kullanarak SQL veritabanı için özel bir uç nokta oluşturma](create-private-endpoint-portal.md)
+- [PowerShell kullanarak SQL veritabanı için özel bir uç nokta oluşturma](create-private-endpoint-powershell.md)
+- [CLı kullanarak SQL veritabanı için özel bir uç nokta oluşturma](create-private-endpoint-cli.md)
+- [Portalı kullanarak depolama hesabı için özel bir uç nokta oluşturma](create-private-endpoint-storage-portal.md)
+- [Portalı kullanarak Azure Cosmos hesabı için özel bir uç nokta oluşturma](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Azure PowerShell kullanarak kendi özel bağlantı hizmetinizi oluşturun](create-private-link-service-powershell.md)
-- [PostgreSQL için Azure veritabanı-Portal 'ı kullanarak tek sunucu için kendi özel bağlantısını oluşturun](../postgresql/howto-configure-privatelink-portal.md)
+- [Portalı kullanarak PostgreSQL için Azure veritabanı için kendi özel bağlantısını oluşturun-tek sunucu](../postgresql/howto-configure-privatelink-portal.md)
 - [PostgreSQL için Azure veritabanı-CLı kullanarak tek bir sunucu için kendi özel bağlantısını oluşturun](../postgresql/howto-configure-privatelink-cli.md)
 - [Portalı kullanarak MySQL için Azure veritabanı için kendi özel bağlantısını oluşturun](../mysql/howto-configure-privatelink-portal.md)
 - [CLı kullanarak MySQL için Azure veritabanı için kendi özel bağlantısını oluşturun](../mysql/howto-configure-privatelink-cli.md)
-- [Portal kullanarak MariaDB için Azure veritabanı için kendi özel bağlantısını oluşturun](../mariadb/howto-configure-privatelink-portal.md)
+- [Portalı kullanarak MariaDB için Azure veritabanı için kendi özel bağlantısını oluşturun](../mariadb/howto-configure-privatelink-portal.md)
 - [CLı kullanarak MariaDB için Azure veritabanı için kendi özel bağlantısını oluşturun](../mariadb/howto-configure-privatelink-cli.md)
+- [Portal ve CLı kullanarak Azure Key Vault için kendi özel bağlantısını oluşturun](../key-vault/general/private-link-service.md)

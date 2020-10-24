@@ -9,16 +9,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ee7eda58c211ca570b052d55c813999e62b95fde
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3ece62e671caa0838bbf4713c0ad4a74f19fd6cb
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876320"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518883"
 ---
 # <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>Öğretici-Google Maps 'tan Azure Maps 'e geçiş
 
-Bu makalede, Google Maps 'tan Web, mobil ve sunucu tabanlı uygulamaların Microsoft Azure haritalar platformuna nasıl geçirileceğiyle ilgili Öngörüler sunulmaktadır. Bu öğretici, Azure Maps 'a geçiş için karşılaştırılma kodu örnekleri, geçiş önerileri ve en iyi yöntemleri içerir.
+Bu makalede, Google Maps 'tan Web, mobil ve sunucu tabanlı uygulamaların Microsoft Azure haritalar platformuna nasıl geçirileceğiyle ilgili Öngörüler sunulmaktadır. Bu öğretici, Azure Maps 'a geçiş için karşılaştırılma kodu örnekleri, geçiş önerileri ve en iyi yöntemleri içerir. Bu öğreticide şunları öğreneceksiniz:
+
+> [!div class="checklist"]
+> * Azure haritalar 'da kullanılabilen eşdeğer Google Maps özellikleri için üst düzey karşılaştırma
+> * Göz önünde bulundurmanız gereken lisans farklılıkları
+> * Geçişinizi planlayın
+> * Teknik kaynakların ve desteğin nerede bulunacağı.
+
+## <a name="prerequisites"></a>Önkoşullar 
+
+1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
+3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
 ## <a name="azure-maps-platform-overview"></a>Azure haritalar platformuna genel bakış
 
@@ -107,10 +119,15 @@ Azure haritalar için yararlı teknik kaynakların listesi aşağıda verilmişt
 
 Geliştiriciler, [Forum](https://aka.ms/AzureMapsForums) aracılığıyla veya birçok Azure destek seçeneğinden biri aracılığıyla geçiş desteği arayabilir: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
-Google Maps uygulamanızı şunu kullanarak geçirmeyi öğrenebilirsiniz: 
+## <a name="next-steps"></a>Sonraki adımlar
 
-[Android uygulamasını geçirme](migrate-from-google-maps-android-app.md) 
+Google Maps uygulamanızı şu makalelerle nasıl geçirileceğiyle ilgili ayrıntıları öğrenin:
 
-[Web hizmetini geçirme](migrate-from-google-maps-web-services.md) 
+> [!div class="nextstepaction"]
+> [Web uygulamasını geçirme](migrate-from-google-maps-web-app.md)
 
-[Web uygulamasını geçirme](migrate-from-google-maps-web-app.md)
+> [!div class="nextstepaction"]
+> [Web hizmetini geçirme](migrate-from-google-maps-web-services.md) 
+
+> [!div class="nextstepaction"]
+> [Android uygulamasını geçirme](migrate-from-google-maps-android-app.md) 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: fbf76f846395d6bf0b02828ab1d6ad8b70c97784
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e9f3b7ea3d99de51b9398bda82b690d2c249a1d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289331"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520974"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Hesabınızı Iş Ortağı Merkezi 'ne geçirme
 
@@ -81,7 +81,7 @@ Dynamics 365 müşteri katılımı, PowerApps ve Dynamics 365 Işlemler teklifle
     * Sertifika veya yeniden sertifika, uygulamanızın Business Applications platformumuz en son sürümünü desteklemesini gerektirir.
     * Uygulamanız onaylandığında bir e-posta alacaksınız ve teklifin Microsoft AppSource canlı olarak gitmesini sağlamak için "canlı çalış" seçeneğini belirleyin.
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="additional-resources"></a>Ek kaynaklar
 
 Forumlarda uzmanlardan ve eşlerden yardım alın ve [Microsoft DYNAMICS CRM](https://community.dynamics.com/crm?wa=wsignin1.0)'de blogları, web seminerlerini, Videoları, olayları ve daha fazlasını bulun.
 

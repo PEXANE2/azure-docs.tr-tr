@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 135e0ccfd9b4681932a9a69df0372aa400933124
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ddf418c90857b5bb7eca97eb2c6943cc93fce9ab
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102583"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518934"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -21,12 +21,12 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 
 ## <a name="september-2020"></a>Eylül 2020
 
-Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun ve ardından Azure veri kaynaklarına yönelik salt okuma izinleri vermek için RBAC izinlerini kullanın. İsteğe bağlı olarak, IP kuralları bir seçenek değilse, [Güvenilen hizmet özel durum](search-indexer-howto-access-trusted-service-exception.md) özelliğini seçin.
+Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun, ardından Azure RBAC izinlerini kullanarak Azure veri kaynaklarına yönelik salt okuma izinleri verin. İsteğe bağlı olarak, IP kuralları bir seçenek değilse, [Güvenilen hizmet özel durum](search-indexer-howto-access-trusted-service-exception.md) özelliğini seçin.
 
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |------------------------------|----------|-------------|---------------|
-| [Yönetilen hizmet kimliği](search-howto-managed-identities-data-sources.md) | Dizin oluşturucular, güvenlik | Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun ve Azure veri kaynaklarına erişim sağlamak için RBAC izinlerini kullanın. Bu yaklaşım bağlantı dizesinde kimlik bilgileri gereksinimini ortadan kaldırır. <br><br>Yönetilen hizmet kimliğini kullanmanın ek bir yolu, IP kurallarının bir seçenek olmaması durumunda [güvenilir bir hizmet özel durumdur](search-indexer-howto-access-trusted-service-exception.md) . | Genel olarak kullanılabilir. Portalı kullanırken bu özelliğe erişin veya API-Version = 2020-06-30 ile [veri kaynağı (REST) oluşturun](/rest/api/searchservice/create-data-source) . |
+| [Yönetilen hizmet kimliği](search-howto-managed-identities-data-sources.md) | Dizin oluşturucular, güvenlik | Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun, Azure veri kaynaklarına erişim sağlamak için Azure RBAC izinlerini kullanın. Bu yaklaşım bağlantı dizesinde kimlik bilgileri gereksinimini ortadan kaldırır. <br><br>Yönetilen hizmet kimliğini kullanmanın ek bir yolu, IP kurallarının bir seçenek olmaması durumunda [güvenilir bir hizmet özel durumdur](search-indexer-howto-access-trusted-service-exception.md) . | Genel olarak kullanılabilir. Portalı kullanırken bu özelliğe erişin veya API-Version = 2020-06-30 ile [veri kaynağı (REST) oluşturun](/rest/api/searchservice/create-data-source) . |
 | [Özel bağlantı kullanan giden istekler](search-indexer-howto-access-private.md) | Dizin oluşturucular, güvenlik | Dizin oluşturucularının Azure özel bağlantısı tarafından güvenliği sağlanmış Azure kaynaklarına erişirken kullanabileceği bir paylaşılan özel bağlantı kaynağı oluşturun. Dizin Oluşturucu bağlantılarını güvenli hale getirmeye yönelik tüm yollar hakkında daha fazla bilgi için bkz. [Azure ağ güvenlik özellikleriyle korunan Içeriğe Dizin Oluşturucu erişimi](search-indexer-securing-resources.md). | Genel olarak kullanılabilir. Portal veya [paylaşılan özel bağlantı kaynağını](/rest/api/searchmanagement/sharedprivatelinkresources) api-Version = 2020-08-01 ile kullanırken bu özelliğe erişin. |
 | [Yönetim REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | REST | Yeni kararlı REST API, paylaşılan özel bağlantı kaynakları oluşturmak için destek ekler. | Genel olarak kullanılabilir. |
 | [Yönetim REST API (2020-08-01-Önizleme)](/rest/api/searchmanagement/management-api-versions) | REST | Azure Işlevleri için paylaşılan özel bağlantı kaynağı ve MySQL için Azure SQL veritabanları ekler. | Genel Önizleme. |

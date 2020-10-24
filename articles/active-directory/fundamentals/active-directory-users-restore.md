@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 04/01/2018
+ms.date: 10/23/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bba8a0898c11cf1af150f4824d9bef5e9e03576e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bd4d42e1cafa58aaf6a47188c9e86c24ac175047
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370891"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514398"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Active Directory kullanarak yakın zamanda silinen bir kullanıcıyı geri yükleme veya kaldırma
-Bir kullanıcıyı sildikten sonra, hesap 30 gün boyunca askıya alınmış durumda kalır. Bu 30 günlük pencerede, Kullanıcı hesabı tüm özellikleriyle birlikte geri yüklenebilir. 30 günlük pencere geçtikten sonra, Kullanıcı otomatik olarak ve kalıcı olarak silinir.
+Bir kullanıcıyı sildikten sonra, hesap 30 gün boyunca askıya alınmış durumda kalır. Bu 30 günlük pencerede, Kullanıcı hesabı tüm özellikleriyle birlikte geri yüklenebilir. 30 günlük pencere geçtikten sonra kalıcı silme işlemi otomatik olarak başlatılır.
 
 Yeniden yüklenebilen kullanıcılarınızı görüntüleyebilir, silinen bir kullanıcıyı geri yükleyebilir veya Azure portal Azure Active Directory (Azure AD) kullanarak bir kullanıcıyı kalıcı olarak silebilirsiniz.
 
@@ -80,7 +80,7 @@ Otomatik silme işlemi için 30 gün beklemeden bir kullanıcıyı kuruluşunuzd
     ![Kullanıcıları silinen kullanıcılar sayfası, Kullanıcı Sil seçeneği vurgulandı](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kullanıcılarınızı geri yükledikten veya sildikten sonra, aşağıdaki temel işlemleri gerçekleştirebilirsiniz:
+Kullanıcılarınızı geri yükledikten veya sildikten sonra şunları yapabilirsiniz:
 
 - [Kullanıcı ekleme veya silme](add-users-azure-active-directory.md)
 

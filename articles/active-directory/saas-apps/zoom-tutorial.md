@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: d257935aa3e9ad54b64b0f416119931661809172
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b4484b9bb235b24d2b733c329b52ab6b04be183
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545973"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519835"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Öğretici: yakınlaştırma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,9 @@ Bu öğreticide, yakınlaştırmayı Azure Active Directory (Azure AD) ile tüml
 * Kullanıcılarınızın Azure AD hesaplarıyla yakınlaştırmak için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -40,7 +40,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Yakınlaştırma, **SP** tarafından başlatılan SSO 'yu destekler ve 
-* Yakınlaştırma [ **Otomatik** Kullanıcı sağlamayı](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)destekler.
+* Yakınlaştırma [ **Otomatik** Kullanıcı sağlamayı](./zoom-provisioning-tutorial.md)destekler.
 
 ## <a name="adding-zoom-from-the-gallery"></a>Galeriden yakınlaştırma ekleme
 
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> Azure AD 'de rol yapılandırma hakkında bilgi edinmek için bkz. [Kurumsal uygulamalar IÇIN SAML belirtecinde verilen rol talebini yapılandırma](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
+> Azure AD 'de rol yapılandırma hakkında bilgi edinmek için bkz. [Kurumsal uygulamalar IÇIN SAML belirtecinde verilen rol talebini yapılandırma](../develop/active-directory-enterprise-app-role-management.md).
 
 > [!NOTE]
 > Yakınlaştırma, SAML yükünde bir grup talebi bekleyebilir. Herhangi bir grup oluşturduysanız, grup bilgilerini kendi sonunda yapılandırmak için Grup bilgileriyle [Yakınlaştırma istemci desteği ekibine](https://support.zoom.us/hc/) başvurun. Ayrıca, [istemci desteği ekibini yakınlaştırmak](https://support.zoom.us/hc/) IÇIN nesne kimliğini sağlamanız gerekir, BÖYLELIKLE nesne kimliğini kendi sonunda yapılandırabilirler. Nesne KIMLIĞINI almak için bkz. [Azure Ile yakınlaştırmayı yapılandırma](https://support.zoom.us/hc/articles/115005887566).
@@ -170,7 +170,7 @@ Bu bölümde, yakınlaştırma erişimi vererek Azure çoklu oturum açma özell
 
 ### <a name="create-zoom-test-user"></a>Yakınlaştırma testi kullanıcısı oluştur
 
-Bu bölümün amacı, yakınlaştırma aşamasında B. Simon adlı bir Kullanıcı oluşturmaktır. Yakınlaştırma, varsayılan olarak etkinleştirilen Otomatik Kullanıcı sağlamayı destekler. Otomatik Kullanıcı sağlamayı yapılandırma hakkında daha [fazla ayrıntı bulabilirsiniz](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial) .
+Bu bölümün amacı, yakınlaştırma aşamasında B. Simon adlı bir Kullanıcı oluşturmaktır. Yakınlaştırma, varsayılan olarak etkinleştirilen Otomatik Kullanıcı sağlamayı destekler. Otomatik Kullanıcı sağlamayı yapılandırma hakkında daha [fazla ayrıntı bulabilirsiniz](./zoom-provisioning-tutorial.md) .
 
 > [!NOTE]
 > Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [Yakınlaştırma istemci desteği ekibine](https://support.zoom.us/hc/) başvurmanız gerekir
@@ -179,14 +179,14 @@ Bu bölümün amacı, yakınlaştırma aşamasında B. Simon adlı bir Kullanıc
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde yakınlaştırma kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız yakınlaştırmadan otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde yakınlaştırma kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız yakınlaştırmadan otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile yakınlaştırmayı deneyin](https://aad.portal.azure.com/)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7604e8519e7ae8db255a0e033ca3df0bb941a845
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df3ae57652737acc2b23cda75ace361f0bb40340
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626267"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518194"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN Gateway için Azure Güvenlik temeli
 
@@ -178,7 +178,7 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tutma
 
-**Kılavuz**: Azure rol tabanlı erişim denetımı (RBAC), Azure kaynaklarına erişimi rol atamaları aracılığıyla yönetmenizi sağlar. Bu rolleri kullanıcılara atayabilir, hizmet sorumlularını ve yönetilen kimlikleri gruplara atayabilirsiniz. Belirli kaynaklar için önceden tanımlı yerleşik roller vardır ve bu roller Azure CLı, Azure PowerShell veya Azure portal gibi araçlarla envantere alınabilir veya sorgulanabilir.
+**Kılavuz**: Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynaklarına erişimi rol atamaları aracılığıyla yönetmenizi sağlar. Bu rolleri kullanıcılara atayabilir, hizmet sorumlularını ve yönetilen kimlikleri gruplara atayabilirsiniz. Belirli kaynaklar için önceden tanımlı yerleşik roller vardır ve bu roller Azure CLı, Azure PowerShell veya Azure portal gibi araçlarla envantere alınabilir veya sorgulanabilir.
 
 - [Azure AD 'de PowerShell ile dizin rolü alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
@@ -310,7 +310,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
 
-**Rehberlik**: VPN ağ geçitlerinin her bir müşteri sanal ağı IÇIN ayrılmış VM örnekleri vardır. Ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı sanal ağları, abonelikleri ve Yönetim gruplarını kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamların talep ettiği Azure kaynaklarınıza erişim düzeyini kısıtlayabilirsiniz. Azure kaynaklarına erişimi, Azure Active Directory rol tabanlı erişim denetimi aracılığıyla denetleyebilirsiniz.
+**Rehberlik**: VPN ağ geçitlerinin her bir müşteri sanal ağı IÇIN ayrılmış VM örnekleri vardır. Ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı sanal ağları, abonelikleri ve Yönetim gruplarını kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamların talep ettiği Azure kaynaklarınıza erişim düzeyini kısıtlayabilirsiniz. Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla Azure kaynaklarına erişimi denetleyebilirsiniz.
 
 - [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
 
@@ -362,11 +362,11 @@ Sanal ağınızdaki geçerli kaynaklar için bekleyen ve geçişte şifreleme i�
 
 **Sorumluluk**: müşteri
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: veri ve kaynaklara erişimi denetlemek IÇIN Azure AD RBAC kullanın, aksi takdirde hizmete özel erişim denetimi yöntemlerini kullanın. Sahip, katkıda bulunan veya ağ katılımcısı gibi yerleşik rol tabanlı erişim denetimi rollerini kullanın ve ardından rolü uygun kapsama atayın. Özel bir rol oluşturarak ve sanal ağlar, alt ağlar, VPN ağ geçitleri, ağ arabirimleri, ağ güvenlik grupları ve bu role yönlendirme tabloları için gereken belirli izinleri atayarak sanal ağ özellikleri alt kümesi için belirli izinler atayın.
+**Rehberlik**: veri ve kaynaklara erişimi denetlemek için Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) kullanın, aksi takdirde hizmete özel erişim denetimi yöntemlerini kullanın. Sahip, katkıda bulunan veya ağ katılımcısı gibi yerleşik rolleri kullanın ve ardından rolü uygun kapsama atayın. Özel bir rol oluşturarak ve sanal ağlar, alt ağlar, VPN ağ geçitleri, ağ arabirimleri, ağ güvenlik grupları ve bu role yönlendirme tabloları için gereken belirli izinleri atayarak sanal ağ özellikleri alt kümesi için belirli izinler atayın.
 
-- [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
 
 - [Sanal ağları planlama](../virtual-network/virtual-network-vnet-plan-design-arm.md#permissions)
 
@@ -532,7 +532,7 @@ Azure Güvenlik Merkezi 'nin önerilerini Azure kaynaklarınız için güvenli b
 
 - [Azure portal bir şablona tek ve çoklu kaynak verme](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Güvenlik önerileri-bir başvuru kılavuzu](../security-center/recommendations-reference.md)
+- [Güvenlik önerileri - başvuru kılavuzu](../security-center/recommendations-reference.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

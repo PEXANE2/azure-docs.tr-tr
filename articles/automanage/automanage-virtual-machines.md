@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 338fe463cec4c44b1ddf019d9ecb435736e46826
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f6786ad8b7a9a635770be378e3efd0716be2428
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816814"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519665"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -37,7 +37,7 @@ Ayrıca, Azure otomatik yönetimi de DRFT için otomatik olarak izler ve algıla
 Son olarak, deneyim inanılmaz basittir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Sanal makinelerinizde Azure oto yönetimi 'ni etkinleştirmeyi denemeden önce göz önünde bulundurmanız gereken birkaç önkoşul vardır.
 
@@ -58,7 +58,7 @@ Ayrıca, oto yönetimi 'nin yalnızca şu bölgelerde bulunan Windows VM 'Leri d
 
 Katılan Azure hizmetlerinin yanı sıra bunların desteklenen yapılandırma profillerinin eksiksiz listesi için bkz. [sanal makinelerin En Iyi uygulamaları için bkz. Azure oto yönetimi](virtual-machines-best-practices.md) .
 
- Sizi bu katılım hizmetlerine otomatik olarak ekleyeceğiz. Bunlar, [bulut benimseme çerçevesinden](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management)bulabileceğiniz en iyi yöntemler teknik incelemesi için önemlidir.
+ Sizi bu katılım hizmetlerine otomatik olarak ekleyeceğiz. Bunlar, [bulut benimseme çerçevesinden](/azure/cloud-adoption-framework/manage/azure-server-management)bulabileceğiniz en iyi yöntemler teknik incelemesi için önemlidir.
 
 Bu hizmetlerin tümü için otomatik olarak, otomatik yapılandırma, izleme için izleyici ve drara algılanırsa aracılık.
 

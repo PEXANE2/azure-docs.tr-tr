@@ -9,16 +9,34 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 5d7e6c5229fa6f8204ba363d9868ffa80d78ccba
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fb99afef2d5e210b8aa166f016bd2b9ec409c2a2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876507"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518968"
 ---
-# <a name="migrate-a-web-app-from-google-maps"></a>Google Maps 'tan bir Web uygulaması geçirme
+# <a name="tutorial---migrate-a-web-app-from-google-maps"></a>Öğretici-Google Maps 'tan bir Web uygulaması geçirme
 
-Google Maps kullanan çoğu Web uygulaması Google Maps v3 JavaScript SDK 'sını kullanıyor. Azure Haritalar Web SDK 'Sı, geçirilecek Azure tabanlı uygun SDK 'dir. Azure Haritalar Web SDK 'Sı, etkileşimli haritaları kendi içerikleriyle ve Imagery ile özelleştirmenizi sağlar. Uygulamanızı hem Web 'de hem de mobil uygulamalarda çalıştırabilirsiniz. Bu denetimde büyük veri kümelerini yüksek performansla oluşturmanızı sağlayan WebGL bileşeni kullanılmaktadır. JavaScript veya TypeScript kullanarak bu SDK ile geliştirin.
+Google Maps kullanan çoğu Web uygulaması Google Maps v3 JavaScript SDK 'sını kullanıyor. Azure Haritalar Web SDK 'Sı, geçirilecek Azure tabanlı uygun SDK 'dir. Azure Haritalar Web SDK 'Sı, etkileşimli haritaları kendi içerikleriyle ve Imagery ile özelleştirmenizi sağlar. Uygulamanızı hem Web 'de hem de mobil uygulamalarda çalıştırabilirsiniz. Bu denetimde büyük veri kümelerini yüksek performansla oluşturmanızı sağlayan WebGL bileşeni kullanılmaktadır. JavaScript veya TypeScript kullanarak bu SDK ile geliştirin. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+
+> [!div class="checklist"]
+> * Harita yükleme
+> * Bir eşlemeyi yerelleştirin
+> * İşaretleyiciler, polylines ve çokgenler ekleyin.
+> * Bilgileri bir açılan pencerede veya bilgi penceresinde görüntüleme
+> * KML ve GeoJSON verilerini yükleme ve görüntüleme
+> * Küme işaretçileri
+> * Döşeme katmanını kaplama
+> * Trafik verilerini gösterme
+> * Zemin kaplama ekleme
+
+Ayrıca şunları öğreneceksiniz: 
+
+> [!div class="checklist"]
+> * Azure Haritalar Web SDK 'sını kullanarak genel eşleme görevlerini gerçekleştirme
+> * Performansı ve Kullanıcı deneyimini geliştirmek için en iyi uygulamalar
+> * Azure haritalar 'da sunulan daha gelişmiş özellikleri kullanarak uygulamanızı nasıl yapacağıyla ilgili ipuçları
 
 Var olan bir Web uygulamasını geçiriyorsanız, bir açık kaynak eşleme denetim kitaplığı kullanıp kullanmın olup olmadığını kontrol edin. Açık kaynak eşleme denetim kitaplığı örnekleri şunlardır: Cesium, leaflet ve Openkatmanları. Bir açık kaynak eşleme denetim kitaplığı kullandığından ve Azure Maps web SDK 'sını kullanmak istemediğinizde bile uygulamanızı geçirebilirsiniz. Böyle bir durumda, uygulamanızı Azure Maps kutucuk Hizmetleri 'ne ([yol kutucukları](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [uydu kutucukları](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)) bağlayın. Aşağıda, yaygın olarak kullanılan bazı açık kaynaklı harita denetim kitaplıklarında Azure maps kullanma hakkında ayrıntılı bilgi verilmiştir.
 
@@ -33,6 +51,11 @@ Bir JavaScript çerçevesi kullanılarak geliştirilirken, aşağıdaki açık k
 - [Azure Maps 'e tepki verme bileşeni](https://github.com/WiredSolutions/react-azure-maps) -Azure Maps denetimi için bir tepki düzeyi.
 - [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) -Vue uygulaması Için bir Azure Maps bileşeni.
 
+## <a name="prerequisites"></a>Önkoşullar 
+
+1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
+3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
 ## <a name="key-features-support"></a>Anahtar özellikleri desteği
 
@@ -40,7 +63,7 @@ Tabloda, Google Maps v3 JavaScript SDK 'sindeki temel API özellikleri ve Azure 
 
 | Google Haritalar özelliği     | Azure Maps web SDK desteği |
 |-------------------------|:--------------------------:|
-| İşaretleyiciler                 | ✓                          |
+| İşaretler                 | ✓                          |
 | İşaretleyici Kümelemesi       | ✓                          |
 | Polylines & çokgenler    | ✓                          |
 | Veri katmanları             | ✓                          |
@@ -72,7 +95,6 @@ Aşağıda, Google Maps ve Azure Maps web SDK 'Ları arasındaki bazı önemli f
 
 Bu koleksiyonda her platform için kod örnekleri bulunur ve her örnek ortak kullanım durumunu içerir. Web uygulamanızı Google Maps v3 JavaScript SDK 'dan Azure Maps web SDK 'sına geçirmenize yardımcı olmak üzere tasarlanmıştır. Web uygulamalarıyla ilgili kod örnekleri JavaScript 'te verilmiştir. Ancak Azure Maps, bir [NPM modülü](how-to-use-map-control.md)aracılığıyla ek bir seçenek olarak TypeScript tanımları da sağlar.
 
-
 **Konu başlıkları**
 
 - [Harita yükleme](#load-a-map)
@@ -90,7 +112,6 @@ Bu koleksiyonda her platform için kod örnekleri bulunur ve her örnek ortak ku
 - [Trafik verilerini gösterme](#show-traffic-data)
 - [Zemin kaplama ekleme](#add-a-ground-overlay)
 - [KML verilerini haritaya ekleme](#add-kml-data-to-the-map)
-
 
 ### <a name="load-a-map"></a>Harita yükleme
 
@@ -1015,7 +1036,7 @@ Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümel
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir. |
 | `cluster_id`              | string  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |
-| `point_count`             | number  | Kümenin içerdiği noktaların sayısı.  |
+| `point_count`             | sayı  | Kümenin içerdiği noktaların sayısı.  |
 | `point_count_abbreviated` | string  | Long ise değeri abbreviates bir dize `point_count` . (örneğin, 4.000 4K olur)  |
 
 `DataSource`Sınıfı, kullanarak bir kümeyle ilgili ek bilgilere erişmek için aşağıdaki yardımcı işleve sahiptir `cluster_id` .
@@ -1720,9 +1741,18 @@ Kitaplıklar haritaya ek işlevsellik ekler. Bu kitaplıkların birçoğu Azure 
 | Geometri kitaplığı      | [Atlas. matematik](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math)   |
 | Görselleştirme kitaplığı | [Isı haritası katmanı](map-add-heat-map-layer.md) |
 
-Google Maps geçirme hakkında daha fazla bilgi edinmek için:
+## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hizmetler modülünü kullanma](how-to-use-services-module.md) 
-* [çizim araçları modülünü kullanma](set-drawing-options.md)
-* [Hizmetler modülünü kullanma](how-to-use-services-module.md)
-* [harita denetimini kullanma](how-to-use-map-control.md)
+Azure Haritalar Web SDK 'Sı hakkında daha fazla bilgi edinin:
+
+> [!div class="nextstepaction"]
+> [Harita denetimini kullanma](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"]
+> [Çizim araçları modülünü kullanma](set-drawing-options.md)
+
+> [!div class="nextstepaction"]
+> [Hizmetler modülünü kullanma](how-to-use-services-module.md)
+
+> [!div class="nextstepaction"]
+> [Uzamsal GÇ modülünü kullanma](how-to-use-spatial-io-module.md)

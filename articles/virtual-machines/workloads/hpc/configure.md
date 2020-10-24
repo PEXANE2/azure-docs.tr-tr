@@ -4,15 +4,15 @@ description: HPC için InfiniBand etkin H serisi ve N serisi VM 'Ler yapılandı
 author: vermagit
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 08/07/2020
+ms.date: 10/23/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ecfe1df273834ae38bd6bb94980444f5e34f786
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: a1bfb5988169ba79a6e3e8416804d7d4c896c758
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994813"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516859"
 ---
 # <a name="configure-and-optimize-vms"></a>VM’leri yapılandırma ve iyileştirme
 
@@ -36,11 +36,24 @@ SR-ıOV olmayan [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instan
   SR-ıOV özellikli [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)için, [CENTOS-HPC sürüm 7,6 veya Market 'teki sonrakı bir](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) sürüm VM görüntüleri uygundur. Bu VM görüntüleri, RDMA ve çeşitli yaygın olarak kullanılan MPı kitaplıkları ve bilimsel bilgi işlem paketleri ve başlamak için en kolay yol ile en iyi duruma getirilmiş ve önceden yüklenmiş olarak gelir.
 
   Bir taban CentOS Market görüntüsünden CentOS-HPC sürüm 7,6 ve üzeri VM görüntülerinin oluşturulmasında kullanılan betiklerin örneği [azhpc-Images](https://github.com/Azure/azhpc-images/tree/master/centos)depolarından oluşur.
+  
+  > [!NOTE] 
+  > En son Azure HPC Market görüntülerinin, ConnectX3-Pro InfiniBand kartlarını desteklemeyen, Mellanox OFED 5,1 ve üzeri bir sürüm vardır. SR-ıOV etkinleştirilmiş N serisi VM boyutları, FDR InfiniBand (ör. NCv3) ile aşağıdaki CentOS-HPC VM görüntü sürümlerini veya daha eski bir sürümü kullanabilir:
+  >- OpenLogic: CentOS-HPC: 7.6:7.6.2020062900
+  >- OpenLogic: CentOS-HPC: 7_6gen2:7.6.2020062901
+  >- OpenLogic: CentOS-HPC: 7.7:7.7.2020062600
+  >- OpenLogic: CentOS-HPC: 7_7-Gen2:7.7.2020062601
+  >- OpenLogic: CentOS-HPC: 8_1:8.1.2020062400
+  >- OpenLogic: CentOS-HPC: 8_1-Gen2:8.1.2020062401
+
 
 ### <a name="rhelcentos-vm-images"></a>RHEL/CentOS VM görüntüleri
 Market 'teki RHEL veya CentOS tabanlı, HPC olmayan VM görüntüleri, SR-ıOV özellikli [RDMA özellikli VM](../../sizes-hpc.md#rdma-capable-instances)'lerde kullanılmak üzere yapılandırılabilir. [InfiniBand 'yi etkinleştirme](enable-infiniband.md) ve VM 'lerde [MPI ayarlama](setup-mpi.md) hakkında daha fazla bilgi edinin.
 
   Bir taban CentOS Market görüntüsünden CentOS-HPC sürüm 7,6 ve üzeri VM görüntülerinin oluşturulmasında kullanılan betiklerin örneği [azhpc-Images](https://github.com/Azure/azhpc-images/tree/master/centos)depolarından oluşur.
+  
+  > [!NOTE]
+  > Mellanox OFED 5,1 ve üzeri, FDR InfiniBand (ör. NCv3) ile SR-ıOV etkinleştirilmiş N serisi VM boyutlarında ConnectX3-Pro InfiniBand kartlarını desteklemez. Lütfen ConnectX3-Pro kartlarla birlikte N serisi VM 'de LTS Mellanox OFED Version 4.9-0.1.7.0 veya daha eski bir sürümü kullanın. Lütfen daha [fazla ayrıntı görüntüleyin](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
 
 ### <a name="ubuntu-vm-images"></a>Ubuntu VM görüntüleri
 Market 'teki Ubuntu Server 16,04 LTS, 18,04 LTS ve 20,04 LTS VM görüntüleri hem SR-ıOV hem de SR-ıOV olmayan [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)için desteklenir. [InfiniBand 'yi etkinleştirme](enable-infiniband.md) ve VM 'lerde [MPI ayarlama](setup-mpi.md) hakkında daha fazla bilgi edinin.

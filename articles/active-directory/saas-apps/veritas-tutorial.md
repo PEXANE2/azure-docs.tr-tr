@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: cdb3f30813d2650737cfa43507cef2b1d456573d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e777a27e793b1f4ef5489248c170824d69d615c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532549"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517693"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Öğretici: VERITAS Enterprise kasası ile tümleştirme Azure Active Directory. Cloud SSO
 
@@ -27,10 +27,10 @@ VERITAS Enterprise kasasını tümleştirme. Azure AD ile bulut SSO 'SU aşağı
 * Kullanıcılarınızın Azure AD hesaplarıyla, Veritas Enterprise kasasında otomatik olarak oturum açmasını sağlayabilirsiniz. Cloud SSO (çoklu oturum açma).
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini VERITAS Enterprise Kasası. Cloud SSO ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -192,19 +192,18 @@ Bu bölümde, Veritas Enterprise Kasası 'na erişim vererek Azure çoklu oturum
 
 ### <a name="create-veritas-enterprise-vaultcloud-sso-test-user"></a>VERITAS Enterprise Kasası oluşturma. Cloud SSO test kullanıcısı
 
-Bu bölümde, VERITAS Enterprise kasasında Britta Simon adlı bir Kullanıcı oluşturacaksınız. Cloud SSO. VERITAS Enterprise kasası ile çalışma [. Cloud SSO destek ekibi](https://www.veritas.com/support/.html) , kullanıcıları VERITAS Enterprise kasasında ekleme. Cloud SSO platformu. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, VERITAS Enterprise kasasında Britta Simon adlı bir Kullanıcı oluşturacaksınız. Cloud SSO. VERITAS Enterprise kasası ile çalışma [. Cloud SSO destek ekibi](https://www.veritas.com/support/.html) , kullanıcıları VERITAS Enterprise kasasında ekleme. Cloud SSO platformu. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde VERITAS Enterprise Kasası. Cloud SSO kutucuğuna tıkladığınızda otomatik olarak VERITAS Enterprise kasasında oturum açmanız gerekir. SSO 'yu ayarladığınız bulut SSO 'SU. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde VERITAS Enterprise Kasası. Cloud SSO kutucuğuna tıkladığınızda otomatik olarak VERITAS Enterprise kasasında oturum açmanız gerekir. SSO 'yu ayarladığınız bulut SSO 'SU. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

@@ -4,12 +4,12 @@ description: Java ile işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 346dbb962e05519153537e3edb90763f5fd8da03
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2dfd00484e84f4b2c31e52392df43bb07a800f73
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996507"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519631"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Işlevleri Java geliştirici kılavuzu
 
@@ -134,8 +134,6 @@ public class Function {
 
 ## <a name="java-versions"></a>Java sürümleri
 
-_Java 11 desteği şu anda önizleme aşamasındadır_
-
 Üzerinde çalışan işlevlerin Azure 'da çalıştığı işlev uygulaması oluşturulurken kullanılan Java sürümü pom.xml dosyasında belirtilir. Maven arşiv ETYPE Şu anda bir Java 8 için pom.xml oluşturuyor ve yayımlamadan önce değiştirebilirsiniz. pom.xml Java sürümü, uygulamanızı yerel olarak geliştirmiş ve test ettiğiniz sürümle eşleşmelidir. 
 
 ### <a name="supported-versions"></a>Desteklenen sürümler
@@ -144,14 +142,14 @@ Aşağıdaki tabloda, işletim sistemine göre Işlevler çalışma zamanının 
 
 | İşlevler sürümü | Java sürümleri (Windows) | Java sürümleri (Linux) |
 | ----- | ----- | --- |
-| 3.x | 11 (Önizleme)<br/>8 | 11 (Önizleme)<br/>8 |
+| 3.x | 11 <br/>8 | 11 <br/>8 |
 | 2.x | 8 | yok |
 
 Dağıtımınız için bir Java sürümü belirtmediğiniz takdirde, Maven arşiv ETYPE, Azure 'a dağıtım sırasında varsayılan olarak Java 8 ' dir.
 
 ### <a name="specify-the-deployment-version"></a>Dağıtım sürümünü belirtin
 
-Parametresini kullanarak Maven arşiv ETYPE tarafından hedeflenen Java sürümünü kontrol edebilirsiniz `-DjavaVersion` . Bu parametrenin değeri ya da olabilir `8` `11` . Java 11 desteği şu anda önizleme aşamasındadır. 
+Parametresini kullanarak Maven arşiv ETYPE tarafından hedeflenen Java sürümünü kontrol edebilirsiniz `-DjavaVersion` . Bu parametrenin değeri ya da olabilir `8` `11` . 
 
 Maven arşiv ETYPE, belirtilen Java sürümünü hedefleyen bir pom.xml oluşturur. pom.xml ' deki aşağıdaki öğeler, kullanılacak Java sürümünü gösterir:
 
@@ -204,7 +202,7 @@ Adlı bir uygulama ayarında ek bağımsız değişkenler sağlayabilirsiniz `JA
 > [!IMPORTANT]  
 > Tüketim planında, özelleştirmenin çalışması için değeri 0 olan WEBSITE_USE_PLACEHOLDER ayarını da eklemeniz gerekir. Bu ayar, Java işlevleri için soğuk başlangıç sürelerini artırır.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 [Azure Portal](https://portal.azure.com), ayarı eklemek Için [uygulama ayarları sekmesini](functions-how-to-use-azure-function-app-settings.md#settings) kullanın `JAVA_OPTS` .
 
@@ -390,7 +388,7 @@ Bu işlevi bir HttpRequest üzerinde çağırılır. Kuyruk depolamaya birden ç
 | `HttpRequestMessage<T>`  |    HTTP Tetikleyicisi     | Yöntemi, üstbilgileri veya sorguları alır |
 | `HttpResponseMessage` | HTTP çıkış bağlama | 200 dışında bir durum döndürür   |
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 Birkaç tetikleyici, giriş verileriyle birlikte [tetikleyici meta verilerini](./functions-triggers-bindings.md) gönderir. Daha fazla açıklama kullanarak `@BindingName` tetikleyici meta verilerine bağlayabilirsiniz.
 

@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818484"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516979"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances hakkında sık sorulan sorular
 
@@ -61,7 +61,7 @@ Gereksinimlerinizi karşılayan en küçük görüntüyü kullanın. Linux için
 
 Bu aslında iş yükünüze bağlıdır. Kapsayıcılarınızın nasıl çalıştığını görmek için küçük ve test performansı ' nı başlatın. [CPU ve bellek kaynak kullanımını izleyin](container-instances-monitor.md)ve ardından kapsayıcıda dağıttığınız işlem türüne göre çekirdek veya bellek ekleyin.
 
-CPU çekirdekleri üzerindeki üst sınırlar ve kapsayıcı grubu başına kullanılabilir bellek için [kaynak kullanılabilirliğini](container-instances-region-availability.md#availability---general) kontrol ettiğinizden emin olun. 
+CPU çekirdekleri üzerindeki üst sınırlar ve kapsayıcı grubu başına kullanılabilir bellek için [kaynak kullanılabilirliğini](container-instances-region-availability.md) kontrol ettiğinizden emin olun. 
 
 > [!NOTE]
 > Bir kapsayıcı grubunun kaynakları, hizmetin temel alınan altyapısı tarafından kullanılır. Kapsayıcılarınız, gruba ayrılan tüm kaynakları değil, çoğuna erişebilecek. Bu nedenle, gruptaki kapsayıcılar için kaynak istenirken küçük bir kaynak arabelleği planlayın.
@@ -80,7 +80,7 @@ Henüz bağlanamazsınız. Şu anda bunlar bir kapsayıcı grubu için en yükse
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>Belirli bir bölgede ne zaman bir ACI olur?
 
-Geçerli bölge kullanılabilirliği [burada](container-instances-region-availability.md#availability---general)yayımlanır. Belirli bir bölge için bir gereksiniminize sahipseniz Azure desteği 'ne başvurun.
+Geçerli bölge kullanılabilirliği [burada](container-instances-region-availability.md)yayımlanır. Belirli bir bölge için bir gereksiniminize sahipseniz Azure desteği 'ne başvurun.
 
 ## <a name="features-and-scenarios"></a>Özellikler ve senaryolar
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 989b41d4fc55241a5fa75a0eed9ea8f4ebaeee67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fbc42864761360d252ed62cea1aef6f2937b599
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856832"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516078"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Öğretici: SignalFx ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, SignalFx 'i Azure Active Directory (Azure AD) ile tümleştirme
 * Kullanıcılarınızın Azure AD hesaplarıyla SignalFx 'e otomatik olarak oturum açmalarına olanak sağlar; '
 * Hesaplarınızı tek bir konumda (Azure portal) yönetin.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,7 +42,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * SignalFx, **IDP** tarafından başlatılan SSO 'yu destekler
 * SignalFx **, tam zamanında** Kullanıcı sağlamasını destekler
-* SignalFx 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* SignalFx 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="step-1-add-the-signalfx-application-in-azure"></a>1. Adım: Azure 'da SignalFx uygulamasını ekleme
 
@@ -92,7 +92,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu yönergeleri kullanın.
     
 1. Aşağıdaki taleplerin Active Directory doldurulmuş kaynak özniteliklerle eşlendiğini gözden geçirin ve doğrulayın. 
 
-    | Name |  Kaynak özniteliği|
+    | Adı |  Kaynak özniteliği|
     | ------------------- | -------------------- |
     | Kullanıcı. FirstName  | Kullanıcı. |
     | Kullanıcı. e-posta  | Kullanıcı. Mail |
@@ -156,7 +156,7 @@ SSO 'yu test etme ile ilgili olarak aşağıdaki bilgileri ve SignalFx ' de ilk 
 
 * Yeni bir test kullanıcısı ilk kez oturum açtığında, Azure bir parola değişikliğine zorlayacaktır. Bu gerçekleştiğinde, SSO oturum açma işlemi tamamlanmayacak; test kullanıcısı Azure portal yönlendirilir. Sorunu gidermek için, test kullanıcısı parolasını değiştirmeli ve SignalFx oturum açma sayfasına ya da erişim paneline gitmeli ve yeniden denemelidir.
     * Erişim panelinde SignalFx kutucuğuna tıkladığınızda, SignalFx ' de otomatik olarak oturum açmış olmanız gerekir. 
-        * Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+        * Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 * SignalFx uygulamasına erişim panelinden veya kuruluşa atanmış özel bir oturum açma sayfası aracılığıyla erişilebilir. Test kullanıcısı bu konumdan başlayarak tümleştirmeyi test etmelidir.
     * Test kullanıcısı **b. Simon \@ contoso.com**için bu işlemde daha önce oluşturulan kimlik bilgilerini kullanabilir.
@@ -169,12 +169,12 @@ SSO 'yu test etme ile ilgili olarak aşağıdaki bilgileri ve SignalFx ' de ilk 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
 
 - [Azure AD ile SignalFx 'i deneyin](https://aad.portal.azure.com/)

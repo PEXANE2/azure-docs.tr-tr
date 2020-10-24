@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 416ca556e298fa088916a554860d05725bc1cf72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ea65e94e97b69e24c6935328cc01c2295adc5a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045510"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518645"
 ---
 # <a name="plan-virtual-networks"></a>Sanal ağları planlama
 
@@ -105,7 +105,7 @@ Bir sanal ağdaki kaynaklar, Azure 'un [YERLEŞIK DNS](virtual-networks-name-res
 
 ## <a name="permissions"></a>İzinler
 
-Azure, kaynaklara [göre rol tabanlı erişim denetimi](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) kullanır. İzinler şu hiyerarşide bir [kapsama](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) atandı: yönetim grubu, abonelik, kaynak grubu ve tek kaynak. Hiyerarşi hakkında daha fazla bilgi edinmek için bkz. [kaynaklarınızı düzenleme](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Azure sanal ağları ve eşleme, ağ güvenlik grupları, hizmet uç noktaları ve yol tabloları gibi ilgili tüm özellikleri ile çalışmak için kuruluşunuzun üyelerini yerleşik [sahip](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [katkıda](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)bulunan veya [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rollerine atayabilir ve ardından rolü uygun kapsama atayabilirsiniz. Bir sanal ağ özellikleri alt kümesi için belirli izinler atamak istiyorsanız, [özel bir rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oluşturun ve [sanal ağlar](manage-virtual-network.md#permissions), [alt ağlar ve hizmet uç noktaları](virtual-network-manage-subnet.md#permissions), [ağ arabirimleri](virtual-network-network-interface.md#permissions), [eşleme](virtual-network-manage-peering.md#permissions), [Ağ ve uygulama güvenlik grupları](manage-network-security-group.md#permissions)ya da [tablo yönlendirme tabloları](manage-route-table.md#permissions) için gereken belirli izinleri atayın.
+Azure, kaynaklara [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) kullanır. İzinler şu hiyerarşide bir [kapsama](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) atandı: yönetim grubu, abonelik, kaynak grubu ve tek kaynak. Hiyerarşi hakkında daha fazla bilgi edinmek için bkz. [kaynaklarınızı düzenleme](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Azure sanal ağları ve eşleme, ağ güvenlik grupları, hizmet uç noktaları ve yol tabloları gibi ilgili tüm özellikleri ile çalışmak için kuruluşunuzun üyelerini yerleşik [sahip](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [katkıda](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)bulunan veya [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rollerine atayabilir ve ardından rolü uygun kapsama atayabilirsiniz. Bir sanal ağ özellikleri alt kümesi için belirli izinler atamak istiyorsanız, [özel bir rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oluşturun ve [sanal ağlar](manage-virtual-network.md#permissions), [alt ağlar ve hizmet uç noktaları](virtual-network-manage-subnet.md#permissions), [ağ arabirimleri](virtual-network-network-interface.md#permissions), [eşleme](virtual-network-manage-peering.md#permissions), [Ağ ve uygulama güvenlik grupları](manage-network-security-group.md#permissions)ya da [tablo yönlendirme tabloları](manage-route-table.md#permissions) için gereken belirli izinleri atayın.
 
 ## <a name="policy"></a>İlke
 

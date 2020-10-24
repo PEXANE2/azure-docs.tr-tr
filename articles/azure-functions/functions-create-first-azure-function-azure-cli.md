@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b299f0bb13bb25fbc192f3d117be11ca1ce26586
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b457c3b0ec0f68dd6a8213fbebe7a2596bed4c2e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89145561"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519682"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir işlev oluşturma
 
@@ -82,7 +82,11 @@ func init LocalFunctionProj --powershell
 ```
 ::: zone-end    
 ::: zone pivot="programming-language-java"  
-İşlevler projesini bir [Maven arketipinden](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) oluşturmak için boş bir klasörde aşağıdaki komutu çalıştırın. `-DjavaVersion=11`Işlevlerinizi Java 11 ' de çalıştırmak istiyorsanız kullanın. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions). 
+İşlevler projesini bir [Maven arketipinden](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) oluşturmak için boş bir klasörde aşağıdaki komutu çalıştırın. 
+
+> [!IMPORTANT]
+> + `-DjavaVersion=11`Işlevlerinizi Java 11 ' de çalıştırmak istiyorsanız kullanın. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions). 
+> + `JAVA_HOME`Bu makaleyi tamamlayabilmeniz için ortam değişkeni, JDK 'nin doğru sürümünün yükleneceği konum olarak ayarlanmalıdır.
 
 # <a name="bash"></a>[Bash](#tab/bash)
 ```bash
@@ -158,8 +162,6 @@ Uygulamanızı barındırmak üzere oluşturulan Azure kaynakları için ayarlar
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 Bu ayarları, kaynakların Azure 'da nasıl oluşturulduğunu denetlemek için, `runtime.os` `windows` ilk dağıtımdan önce ' dan önce ' ye geçiş yaparak yapabilirsiniz `linux` . Maven eklentisi tarafından desteklenen ayarların tam listesi için [yapılandırma ayrıntılarına](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)bakın.
-
-İşlev uygulamanızı Java 8 yerine Java 11 ' de çalıştırmak istiyorsanız, pom.xml dosyasını Java 11 değerleriyle el ile güncelleştirmeniz gerekir. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions). Java 11 ' de çalışırken emin olun  
 
 #### <a name="functiontestjava"></a>FunctionTest. Java
 

@@ -3,7 +3,7 @@ title: V1 ve v2 Dizin oluşturucudan Azure Media Services Video Indexer | Micros
 description: Bu konu, Azure Media Indexer v1 ve v2 'den Azure Media Services Video Indexer geçiş yapılacağını açıklamaktadır.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,31 +11,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2019
-ms.author: juliako
-ms.openlocfilehash: e6b7c8cbcf6685ca2e781789fc508d005bcb5f88
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 10/21/2020
+ms.author: inhenkel
+ms.openlocfilehash: 330bffebb870635fd473e88a8eadb300eed40b9b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018908"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518305"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer ve Media Indexer 2 ' den Video Indexer 'e geçiş
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-[Azure Media Indexer](media-services-index-content.md) medya işlemcisi ve [Azure Media Indexer 2 Preview](./legacy-components.md) medya işlemcileri kullanımdan kaldırılıyor. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) bu eski medya işlemcilerinin yerini alır.
+> [!IMPORTANT]
+> Müşterilerin Dizin Oluşturucu v1 ve Dizin Oluşturucu v2, [Media Services v3 Audioanalön ayarlı temel modunu](../latest/analyzing-video-audio-files-concept.md)kullanarak geçiş yapmanız önerilir. [Azure Media Indexer](media-services-index-content.md) medya işlemcisi ve [Azure Media Indexer 2 Preview](./legacy-components.md) medya işlemcileri kullanımdan kaldırılıyor. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın.
 
 Azure Media Services Video Indexer Azure Media Analytics, Azure Bilişsel Arama, bilişsel hizmetler (Yüz Tanıma API'si, Microsoft Translator, Görüntü İşleme API'si ve Özel Konuşma Tanıma hizmeti) üzerinde oluşturulmuştur. Video Indexer’ın görüntülü ve sesli modellerini kullanarak videolarınızdan içgörü ayıklamanıza olanak sağlar. Hangi senaryolar Video Indexer kullanılabileceğini, hangi özellikleri sunduğunu ve nasıl başladıklarınızı görmek için bkz. [video Indexer video ve ses modelleri](../video-indexer/video-indexer-overview.md). 
 
 [Azure Media Services v3 çözümleyici önayarlarını](../latest/analyzing-video-audio-files-concept.md) kullanarak veya doğrudan [video Indexer API 'lerini](https://api-portal.videoindexer.ai/)kullanarak video ve ses dosyalarınızda öngörüleri ayıklayabilirsiniz. Şu anda, Video Indexer API 'leri ve Media Services v3 API 'Leri tarafından sunulan özellikler arasında bir çakışma var.
 
 > [!NOTE]
-> Video Indexer ve Media Services çözümleyici önayarlarının ne zaman kullanılacağını anlamak için [karşılaştırma belgesine](../video-indexer/compare-video-indexer-with-media-services-presets.md)göz atın. 
+> Video Indexer ile Media Services çözümleyici ön ayarları arasındaki farkları anlamak için [karşılaştırma belgesine](../video-indexer/compare-video-indexer-with-media-services-presets.md)bakın.
 
 Bu makalede, Azure Media Indexer geçiş adımlarını ve Azure Media Indexer 2 ' ye Azure Media Services Video Indexer.  
 
-## <a name="migration-options"></a>Geçiş seçenekleri 
+## <a name="migration-options"></a>Geçiş seçenekleri
 
 |İhtiyacınız varsa  |öyleyse |
 |---|---|
@@ -48,7 +49,7 @@ Aşağıdaki bölümde ilgili bağlantılar [gösterilmektedir: video Indexer ku
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Media Services v3 API 'Leri ile çalışmaya başlama
 
-Azure Media Services v3 API, [Azure Media Services v3 Çözümleyicisi ön ayarları](../latest/analyzing-video-audio-files-concept.md)aracılığıyla video ve ses dosyalarından öngörüleri ayıklamanızı sağlar. 
+Azure Media Services v3 API, [Azure Media Services v3 Çözümleyicisi ön ayarları](../latest/analyzing-video-audio-files-concept.md)aracılığıyla video ve ses dosyalarından öngörüleri ayıklamanızı sağlar.
 
 **Audioanalsete önceden ayarlanmış** , bir ses veya video dosyasından birden çok ses öngörülerini ayıklamanızı sağlar. Çıktı, ses dökümü için bir VTT veya TTML dosyası ve bir JSON dosyası (tüm ek ses öngörüleri ile) içerir. Ses öngörüleri, anahtar sözcükleri, konuşmacı dizin oluşturma ve konuşma yaklaşımı analizini içerir. Audioanalönayarı belirli diller için dil algılamayı de destekler. Ayrıntılı bilgi için bkz. [dönüşümler](/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
@@ -69,15 +70,15 @@ Başlamak için bkz:
 
 Metinden konuşmaya hizmeti ile çalışmaya başlama hakkında daha fazla bilgi için bkz. [konuşmayı metne](../../cognitive-services/speech-service/speech-to-text.md) dönüştürme nedir?
 
-## <a name="known-differences-from-deprecated-services"></a>Kullanım dışı hizmetler 'den bilinen farklılıklar 
+## <a name="known-differences-from-deprecated-services"></a>Kullanım dışı hizmetler 'den bilinen farklılıklar
 
 Video Indexer, Azure Media Services v3 Audioanalönayarı ve bilişsel hizmetler konuşma Hizmetleri hizmetlerinin daha güvenilir olduğunu ve kullanımdan kaldırılan Azure Media Indexer 1 ve Azure Media Indexer 2 işlemcinden daha iyi kaliteli çıkış ürettiğini göreceksiniz.  
 
-Bazı bilinen farklılıklar şunlardır: 
+Bazı bilinen farklılıklar şunlardır:
 
-* Bilişsel hizmetler konuşma Hizmetleri anahtar sözcüğünün ayıklanmasını desteklemez. Ancak, Video Indexer ve Media Services v3 Audioanalönayarı, JSON dosya biçiminde daha sağlam bir anahtar sözcük kümesi sunmaktadır. 
+* Bilişsel hizmetler konuşma Hizmetleri anahtar sözcüğünün ayıklanmasını desteklemez. Ancak, Video Indexer ve Media Services v3 Audioanalönayarı, JSON dosya biçiminde daha sağlam bir anahtar sözcük kümesi sunmaktadır.
 
-## <a name="need-help"></a>Yardıma mı ihtiyacınız var?
+## <a name="support"></a>Destek
 
 [Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) giderek bir destek bileti açabilirsiniz
 

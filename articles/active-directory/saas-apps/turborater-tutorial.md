@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c22993baa6a9095bddba67bdc9d18a40021db6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7483e7a9300088d07e85d238ad897522d59c5464
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546398"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519393"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Öğretici: TurboRater ile tümleştirme Azure Active Directory
 
@@ -28,7 +28,7 @@ TurboRater 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Kullanıcılarınızın Azure AD hesaplarıyla TurboRater (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portal.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -47,7 +47,7 @@ TurboRater, ıDP tarafından başlatılan çoklu oturum açmayı (SSO) destekler
 
 TurboRater 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Azure Marketi 'nden yönetilen SaaS uygulamaları listenize TurboRater eklemeniz gerekir:
 
-1. [Azure Portal](https://portal.azure.com?azure-portal=true)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com?azure-portal=true) oturum açın.
 1. Sol bölmede **Azure Active Directory**’yi seçin.
 
     ![Azure Active Directory seçeneği](common/select-azuread.png)
@@ -107,7 +107,7 @@ Azure AD çoklu oturum açmayı TurboRater ile yapılandırmak için aşağıdak
 
        | Ortam | URL |
        | ---------------| --------------- |
-       | Test  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
+       | Test etme  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
        | Canlı  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
 
     > [!NOTE]
@@ -187,12 +187,12 @@ Bu bölümde, TurboRater 'da B. Simon adlı bir Kullanıcı oluşturacaksınız.
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı My Apps portalını kullanarak test edersiniz.
 
-Uygulamalarım portalındaki **Türborater** ' ı seçtiğinizde, çoklu oturum açmayı ayarladığınız türborater aboneliğinde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım portalı hakkında daha fazla bilgi için bkz. [My Apps Portalındaki uygulamaları erişme ve kullanma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Uygulamalarım portalındaki **Türborater** ' ı seçtiğinizde, çoklu oturum açmayı ayarladığınız türborater aboneliğinde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım portalı hakkında daha fazla bilgi için bkz. [My Apps Portalındaki uygulamaları erişme ve kullanma](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [SaaS uygulamalarını Azure Active Directory tümleştirme öğreticilerinin listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [SaaS uygulamalarını Azure Active Directory tümleştirme öğreticilerinin listesi](./tutorial-list.md)
 
-* [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-* [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

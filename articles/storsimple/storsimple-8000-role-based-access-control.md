@@ -1,5 +1,5 @@
 ---
-title: StorSimple için rol tabanlı Access Control kullanma | Microsoft Docs
+title: StorSimple için Azure rol tabanlı erişim denetimini kullanma | Microsoft Docs
 description: StorSimple bağlamında Azure rol tabanlı erişim denetimi 'nin (Azure RBAC) nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 38500edeca2241bfa9ab093e037af18159994b02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49c38e23ddbbfe983ff82ad25363c744292d4d69
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87920424"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518985"
 ---
-# <a name="role-based-access-control-for-storsimple"></a>StorSimple için rol tabanlı Access Control
+# <a name="azure-role-based-access-control-for-storsimple"></a>StorSimple için Azure rol tabanlı erişim denetimi
 
-Bu makalede, Azure rol tabanlı erişim denetimi 'nin (Azure RBAC) StorSimple cihazınız için nasıl kullanılabileceği hakkında kısa bir açıklama sunulmaktadır. RBAC, Azure için ayrıntılı erişim yönetimi sağlar. Herkese sınırsız erişim vermek yerine, işlerini yapmak üzere yalnızca StorSimple kullanıcılarına doğru erişim miktarını vermek için RBAC 'yi kullanın. Azure 'da erişim yönetiminin temelleri hakkında daha fazla bilgi için bkz. [Azure Portal rol tabanlı Access Control kullanmaya başlama](../role-based-access-control/overview.md).
+Bu makalede, Azure rol tabanlı erişim denetimi 'nin (Azure RBAC) StorSimple cihazınız için nasıl kullanılabileceği hakkında kısa bir açıklama sunulmaktadır. Azure RBAC, Azure için ayrıntılı erişim yönetimi sağlar. Herkese sınırsız erişim vermek yerine, işlerini yapmak üzere yalnızca StorSimple kullanıcılarına doğru erişim miktarına izin vermek için Azure RBAC kullanın. Azure 'da erişim yönetiminin temelleri hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md).
 
 Bu makale, Azure portal güncelleştirme 3,0 veya sonraki bir sürümünü çalıştıran StorSimple 8000 serisi cihazlar için geçerlidir.
 
@@ -31,7 +31,7 @@ Bu makale, Azure portal güncelleştirme 3,0 veya sonraki bir sürümünü çal�
 
 ## <a name="azure-roles-for-storsimple"></a>StorSimple için Azure rolleri
 
-RBAC, rollere göre atanabilir. Roller, ortamdaki kullanılabilir kaynaklara bağlı olarak belirli izin düzeylerinin olmasını güvence altına alır. StorSimple kullanıcılarının aralarından seçim yapabileceğiniz iki tür rol vardır: yerleşik veya özel.
+Azure RBAC, rollere göre atanabilir. Roller, ortamdaki kullanılabilir kaynaklara bağlı olarak belirli izin düzeylerinin olmasını güvence altına alır. StorSimple kullanıcılarının aralarından seçim yapabileceğiniz iki tür rol vardır: yerleşik veya özel.
 
 * **Yerleşik roller** -yerleşik roller sahip, katkıda bulunan, okuyucu veya Kullanıcı erişimi yöneticisi olabilir. Daha fazla bilgi için bkz. [Azure rol tabanlı Access Control Için yerleşik roller](../role-based-access-control/built-in-roles.md).
 

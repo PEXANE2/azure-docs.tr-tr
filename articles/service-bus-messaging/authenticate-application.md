@@ -3,12 +3,12 @@ title: Azure Service Bus varlıklara erişmek için bir uygulamanın kimliğini 
 description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular vb.) erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama hakkında bilgi sağlanır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88064834"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518237"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Azure Service Bus varlıklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama ve yetkilendirme
 Azure Service Bus, isteklere Service Bus varlıklara (kuyruklar, konular, abonelikler veya filtreler) yetki vermek için Azure Active Directory (Azure AD) kullanılmasını destekler. Azure AD ile, bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusu için izinler vermek üzere Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanabilirsiniz. Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
@@ -131,7 +131,7 @@ Uygulamanızı kaydettikten ve Azure Service Bus veri gönderme/alma izinlerine 
 Belirteçleri alma için desteklenen senaryoların listesi için, .NET GitHub deposu [Için Microsoft kimlik doğrulama kitaplığı 'nın (msal)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [senaryolar](https://aka.ms/msal-net-scenarios) bölümüne bakın.
 
 ## <a name="sample-on-github"></a>GitHub üzerinde örnek
-GitHub 'da aşağıdaki örneğe bakın: [Service Bus Için rol tabanlı erişim denetimi](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl). 
+GitHub 'da aşağıdaki örneğe bakın: [Service Bus Için Azure rol tabanlı erişim denetimi](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl). 
 
 **Etkileşimli kullanıcı oturum açma** seçeneğini değil, **istemci gizli anahtarı** seçeneğini kullanın. İstemci parolası seçeneğini kullandığınızda, bir açılır pencere görmezsiniz. Uygulama kimlik doğrulaması için kiracı KIMLIĞINI ve uygulama KIMLIĞINI kullanır. 
 

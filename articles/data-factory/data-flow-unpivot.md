@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 38986c3f93856981e903ae93ed7788ae01fc6d5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea8881adf39a315df7746dbce14dedcbee18ccf6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823590"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521059"
 ---
 # <a name="unpivot-transformation-in-mapping-data-flow"></a>Eşleme veri akışında Özet olmayan dönüştürme
 
@@ -28,27 +28,27 @@ Tek bir kayıttaki birden fazla sütundaki değerleri tek bir sütunda aynı de�
 
 ![Özet olmayan dönüştürme](media/data-flow/unpivot5.png "Özet seçeneklerini kaldırma 2")
 
-İlk olarak, pivot toplamadır için gruplandırmak istediğiniz sütunları ayarlayın. Gruplama için bir veya daha fazla sütunu sütun listesinin yanındaki + işaretiyle ayarlayın.
+İlk olarak, UNPIVOT toplamadır. Gruplama için bir veya daha fazla sütunu sütun listesinin yanındaki + işaretiyle ayarlayın.
 
 ## <a name="unpivot-key"></a>Özet olmayan anahtar
 
 ![Özet olmayan dönüştürme](media/data-flow/unpivot6.png "UNPIVOT seçenekleri 3")
 
-Pivot tuşu, ADF 'nin satırdan sütuna kadar Pivot olacağını belirten sütundur. Varsayılan olarak, bu alan için veri kümesindeki her benzersiz değer bir sütuna Özet olur. Ancak, isteğe bağlı olarak sütun değerlerine Pivot eklemek istediğiniz veri kümesinden değerleri girebilirsiniz.
+UNPIVOT tuşu, ADF 'nin sütundan satıra kadar Pivot olacağını belirten sütundur. Varsayılan olarak, bu alan için veri kümesindeki her bir benzersiz değer bir satıra pivot olur. Ancak, isteğe bağlı olarak satır değerlerine Pivot eklemek istediğiniz veri kümesinden değerleri girebilirsiniz.
 
 ## <a name="unpivoted-columns"></a>Özetlenen sütunlar
 
 ![Özet olmayan dönüştürme](media/data-flow//unpivot7.png "UNPIVOT seçenekleri 4")
 
-Son olarak, özetleme değerleri için kullanmak istediğiniz toplamayı ve yeni çıkış projeksiyonundaki sütunları dönüşümden nasıl görüntülenmesini istediğinizi seçin.
+Son olarak, satırlara dönüştürülen Özet olmayan sütunların değerlerini depolamak için sütun adını seçin.
 
-Seçim Satır değerlerinden her yeni sütun adına eklenmek üzere ön ek, orta ve son ek içeren bir adlandırma deseninin ayarlanabilir olmasını sağlayabilirsiniz.
+Seçim Satırları null değerlerle bırakabilirsiniz.
 
-Örneğin, "bölge" ile "Sales" özetleme, her bir satış değerinden yalnızca yeni sütun değerleri sunar. Örneğin: "25", "50", "1000",... Bununla birlikte, "Sales" önekini bir önek değeri olarak ayarlarsanız, "Sales" değerinin ön eki olur.
+Örneğin, SumCost, yukarıda paylaşılan örnekte seçilen sütun adıdır.
 
 ![Unipivot anahtarı olarak meyve sütununu kullanarak unipivot dönüşümünden önce ve sonra, PO, satıcı ve meyve sütunlarını gösteren resim.](media/data-flow/unpivot3.png)
 
-Sütun düzenlemesini "normal" olarak ayarlamak, özetleme sütunlarının tümünü toplanmış değerlerle birlikte gruplandırır. Sütun düzenleme "yan yana" olarak ayarlandığında sütun ve değer arasında alternatif olur.
+Sütun düzenlemesini "normal" olarak ayarlamak, tüm yeni Özet sütunları tek bir değerden birlikte gruplandırır. Sütun düzenlemesini "yan yana" olarak ayarlamak, varolan bir sütundan oluşturulan yeni Özet sütunları birlikte gruplandırır.
 
 ![Özet olmayan dönüştürme](media/data-flow//unpivot7.png "Özet kaldırma seçenekleri 5")
 

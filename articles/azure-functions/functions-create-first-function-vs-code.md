@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c8e22373f4550b0c65f6ea5c0b62815e32dcbb58
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4e50f6b2770f9f787c92e7a9c66f72cdbb252a94
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105133"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519699"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Hızlı Başlangıç: Visual Studio Code’u kullanarak Azure’da işlev oluşturma
 
@@ -65,7 +65,7 @@ Başlamadan önce, aşağıdaki gereksinimlerin yerinde olduğundan emin olun:
 - Hem [.net core 3,1](https://www.microsoft.com/net/download) hem de [.NET Core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 ::: zone-end
 ::: zone pivot="programming-language-java"
-- [Java geliştirici seti](/azure/developer/java/fundamentals/java-jdk-long-term-support), sürüm 8.
+- [Java geliştirici seti](/azure/developer/java/fundamentals/java-jdk-long-term-support), sürüm 8 veya 11.
 
 - [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri.
 ::: zone-end
@@ -121,7 +121,7 @@ Bu bölümde, seçtiğiniz dilde yerel bir Azure Işlevleri projesi oluşturmak 
     ::: zone pivot="programming-language-java"
     - **İşlev projeniz için bir dil seçin**: seçin `Java` .
 
-    - **Bir Java sürümü seçin**: `Java 8` `Java 11 (preview)` işlevlerinizin Azure 'da çalıştığı seçin veya seçin. Yerel olarak doğruladığınızı bir Java sürümü seçin.
+    - **Bir Java sürümü seçin**: `Java 8` `Java 11` işlevlerinizin Azure 'da çalıştığı seçin veya seçin. Yerel olarak doğruladığınızı bir Java sürümü seçin.
 
     - **Bir grup kimliği sağlayın**: Seç `com.function` .
 

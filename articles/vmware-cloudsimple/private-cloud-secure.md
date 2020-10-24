@@ -8,23 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 000e43a7861bd155ebbd7175db96dd323731464b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829882"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518220"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Özel Bulut ortamınızın güvenliğini sağlama
 
 CloudSimple hizmeti, CloudSimple portalı ve Azure 'dan özel bulut için rol tabanlı erişim denetimi (RBAC) tanımlayın.  Özel bulutun vCenter 'a erişmesi için kullanıcılar, gruplar ve roller VMware SSO kullanılarak belirtilir.  
 
-## <a name="rbac-for-cloudsimple-service"></a>CloudSimple hizmeti için RBAC
+## <a name="azure-rbac-for-cloudsimple-service"></a>CloudSimple hizmeti için Azure RBAC
 
 CloudSimple hizmeti oluşturma, Azure aboneliğinde **sahip** veya **katkıda bulunan** rolü gerektirir.  Varsayılan olarak, tüm sahipler ve katkıda bulunanlar bir CloudSimple hizmeti oluşturabilir ve özel bulutlar oluşturmak ve yönetmek için CloudSimple portalına erişebilir.  Her bölge için yalnızca bir CloudSimple hizmeti oluşturulabilir.  Belirli yöneticilere erişimi kısıtlamak için aşağıdaki yordamı izleyin.
 
 1. Azure portal yeni bir **kaynak grubunda** Cloudsimple hizmeti oluşturun
-2. Kaynak grubu için RBAC belirtin.
+2. Kaynak grubu için Azure RBAC belirtin.
 3. Aynı kaynak grubunu CloudSimple hizmeti olarak satın alın ve kullanın
 
 Yalnızca kaynak grubunda **sahip** veya **katkıda bulunan** ayrıcalıklarına sahip kullanıcılar cloudsimple hizmetini görebilir ve cloudsimple Portal 'ı başlatır.

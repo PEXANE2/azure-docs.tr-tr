@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: f342371ec065c4fb60c492c4354c6f8c717c9bb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fec471e4047707f2b7cbaa55fdc7f2256bebe93
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546086"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519879"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Öğretici: Zscaler Beta ile tümleştirme Azure Active Directory
 
@@ -27,10 +27,10 @@ Zscaler Beta 'yı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 * Kullanıcılarınızın Azure AD hesaplarıyla Zscaler Beta sürümünde otomatik olarak oturum açmaya izin verin. Bu erişim denetimine çoklu oturum açma (SSO) adı verilir.
 * Azure portal kullanarak hesaplarınızı tek bir merkezi konumda yönetin.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Zscaler Beta ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -136,7 +136,7 @@ Azure AD çoklu oturum açma 'yı Zscaler Beta ile yapılandırmak için aşağ�
     örneğin: **Kaydet**’i seçin.
 
     > [!NOTE]
-    > Azure AD 'de rolleri yapılandırma hakkında bilgi edinmek için bkz. [rol talebini yapılandırma](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management).
+    > Azure AD 'de rolleri yapılandırma hakkında bilgi edinmek için bkz. [rol talebini yapılandırma](../develop/active-directory-enterprise-app-role-management.md).
 
 7. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı indirmek için **Indir** ' i seçin **(base64)**. Bu dosyayı bilgisayarınıza kaydedin.
 
@@ -296,11 +296,10 @@ Bu bölümde, Cetta Simon kullanıcısı Zscaler Beta sürümünde oluşturulur.
 
 Erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-Erişim panelinde Zscaler Beta kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Zscaler Beta sürümünde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Zscaler Beta kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Zscaler Beta sürümünde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

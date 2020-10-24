@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 82cd39fdefef477e3761d8d7ab771301cea962e2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b81dfec5e8ee828fba202f14967a4583bde32ed3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92443232"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503768"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için HootSuite yapılandırma
 
@@ -30,12 +30,12 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem HootSu
 > * HootSuite 'de grupları ve grup üyeliklerini sağlama
 > * HootSuite ['de çoklu oturum açma](./hootsuite-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
-* Azure AD'de hazırlama [iznine](../users-groups-roles/directory-assign-admin-roles.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
+* Azure AD 'de sağlamayı yapılandırma [izni](../users-groups-roles/directory-assign-admin-roles.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
 * Kuruluşta **üye yönetme** Izinlerine sahip [HootSuite](http://www.hootsuite.com/) sahip bir kullanıcı hesabı.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
@@ -108,18 +108,30 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |displayName|Dize|
    |preferredLanguage|Dize|
    |timezone|Dize|
-   |urn: IETF: params: Scim: schemas: Extension: HootSuite: 2.0: Kullanıcı: Organizationıds|Dize|
-   |urn: IETF: params: Scim: schemas: Extension: HootSuite: 2.0: User: Teamıds|Dize|
+   |name.givenName|Dize|
+   |name.familyName|Dize|
 
-10. HootSuite için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını eşitler**' ı seçin.
+
+11. **Öznitelik eşleme** bölümünde Azure AD 'den HootSuite 'e eşitlenen grup özniteliklerini gözden geçirin. **Eşlenen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için HootSuite içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+
+      |Öznitelik|Tür|
+      |---|---|
+      |displayName|Dize|
+      |externalId|Dize|
+      |üyeler|Başvuru|
+
+12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
+
+13. HootSuite için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
     ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
-11. **Ayarlar** bölümünde **kapsam** Içindeki istenen değerleri seçerek HootSuite için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **kapsam** Içindeki istenen değerleri seçerek HootSuite için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-12. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
@@ -132,6 +144,10 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 * Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) bakın
 * Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](../app-provisioning/application-provisioning-quarantine-status.md) bakın.  
 
+## <a name="change-log"></a>Değişiklik günlüğü
+
+* 10/22/2020-"Name. bir" ve "Name. familyName" Kullanıcı öznitelikleri için destek eklendi. "Organizationıds" ve "Teamıds" özel uzantı öznitelikleri kullanıcılar için kaldırılmıştır.
+"DisplayName", "Members" ve "externalId" grup öznitelikleri için destek eklendi.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aad5ebaf7eef5b404f7849b79694facf1efd01b4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287330"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519448"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure dosyaları ve AD DS bir profil kapsayıcısı oluşturun
 
@@ -19,7 +19,7 @@ Bu makalede, var olan bir Windows sanal masaüstü konak havuzunda bir etki alan
 
 Bu işlem, bir şirket içi dizin hizmeti olan Active Directory Domain Services (AD DS) kullanır. Azure AD DS ile FSLogix profil kapsayıcısı oluşturma hakkında bilgi arıyorsanız bkz. [Azure dosyaları Ile fslogix profil kapsayıcısı oluşturma](create-profile-container-adds.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, etki alanı denetleyicinizin Azure ile eşitlendiğinden ve oturum konaklarınızın bağlı olduğu Azure sanal ağı 'ndan (VNET) çözümleneceğinden emin olun.
 
@@ -29,7 +29,7 @@ Başlamadan önce, etki alanı denetleyicinizin Azure ile eşitlendiğinden ve o
 
 Bir depolama hesabı ayarlamak için:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
 2. Arama çubuğunda **depolama hesabı** araması yapın.
 
@@ -86,7 +86,7 @@ Paylaşma düzeyi izinlerini yapılandırmak için, her kullanıcıya uygun eri�
 >[!NOTE]
 >İzinleri atadığınız hesapların veya grupların etki alanında oluşturulmuş ve Azure AD ile eşitlenmiş olması gerekir. Azure AD'de oluşturulan hesaplar kullanılamaz.
 
-Rol tabanlı erişim denetimi (RBAC) izinleri atamak için:
+Azure rol tabanlı erişim denetimi (Azure RBAC) izinleri atamak için:
 
 1. Azure portalını açın.
 
@@ -106,7 +106,7 @@ Rol tabanlı erişim denetimi (RBAC) izinleri atamak için:
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Azure dosya paylaşımında Kullanıcı izinleri atama
 
-Kullanıcılarınıza RBAC izinlerini atadıktan sonra NTFS izinlerini yapılandırmanız gerekir.
+Kullanıcılarınıza Azure RBAC izinleri atadıktan sonra, bir sonraki adımda NTFS izinlerini yapılandırmanız gerekir.
 
 Başlamak için Azure portal iki şey bilmeniz gerekir:
 
