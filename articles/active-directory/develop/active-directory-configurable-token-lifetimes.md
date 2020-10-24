@@ -9,23 +9,45 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 1410af4d3c1fb9974818e5c4ebc469eee03a314c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4accae27dc092a4900e6092c62c7f4978a46668a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948632"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503785"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
 Microsoft Identity platform tarafından verilen belirtecin ömrünü belirtebilirsiniz. Kuruluşunuzdaki tüm uygulamalar, çok kiracılı (çok kuruluşlu) bir uygulama veya belirli bir hizmet sorumlusu için belirteç ömrünü ayarlayabilirsiniz. Ancak, şu anda [yönetilen kimlik hizmeti sorumluları](../managed-identities-azure-resources/overview.md)için belirteç yaşam sürelerini yapılandırmayı desteklemiyoruz.
 
 > [!IMPORTANT]
-> Önizleme sırasında müşterilerden bir duyduktan sonra Azure AD koşullu erişim 'de [kimlik doğrulama oturumu yönetimi özelliklerini](../conditional-access/howto-conditional-access-session-lifetime.md) uyguladık. Bu yeni özelliği, oturum açma sıklığını ayarlayarak yenileme belirteci yaşam sürelerini yapılandırmak için kullanabilirsiniz. 30 Mayıs 2020 ' den sonra, yeni bir kiracı oturumu yapılandırmak ve belirteçleri yenilemek için yapılandırılabilir belirteç ömür ilkesi kullanamaz. Kullanımdan kaldırma, bu tarihten sonra birkaç ay içinde gerçekleşecektir. Bu, mevcut oturum ve belirteçleri yenileme belirteçleri ilkelerini durdurduğumuz anlamına gelir. Kullanımdan kaldırıldıktan sonra erişim belirteci yaşam sürelerini yapılandırabilirsiniz.
+> %30 Ocak 2021 ' den sonra, kiracılar artık yenileme ve oturum belirteci yaşam sürelerini yapılandıramayacak ve Azure Active Directory bu tarihten sonra ilkelerde mevcut yenileme ve oturum belirteci yapılandırmasını kullanmayı durduracak. Devre dışı bırakma sonrasında erişim belirteci yaşam sürelerini yapılandırmaya devam edebilirsiniz.
+> Azure AD koşullu erişim 'de [kimlik doğrulama oturumu yönetimi özellikleri](../conditional-access/howto-conditional-access-session-lifetime.md)uyguladık   . Bu yeni özelliği, oturum açma sıklığını ayarlayarak yenileme belirteci yaşam sürelerini yapılandırmak için kullanabilirsiniz. Koşullu erişim Azure AD Premium P1 özelliğidir ve Premium [fiyatlandırma sayfasında](https://azure.microsoft.com/en-us/pricing/details/active-directory/), primin doğru olup olmadığını değerlendirebilirsiniz. 
+> 
+> Kullanımdan kaldırma tarihinden sonra koşullu erişimde kimlik doğrulama oturumu yönetimi kullanmayan kiracılar için, Azure AD 'nin bir sonraki bölümde ana hatlarıyla belirtilen varsayılan yapılandırmayı kabul edebilecekleri bir işlem olabilir.
+
+## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>Kullanımdan kaldırıldıktan sonra yapılandırılabilir belirteç ömrü özellikleri
+Yenileme ve oturum belirteci yapılandırması aşağıdaki özelliklerden ve sırasıyla ayarlanan değerleriyle etkilenir. Yenileme ve oturum belirteci yapılandırması kullanımdan kaldırıldıktan sonra, ilkelerin özel değerler yapılandırılmış özel değerler mi olduğunu bağımsız olarak, Azure AD yalnızca aşağıda açıklanan varsayılan değeri kabul eder.  
+
+|Özellik   |İlke Özellik dizesi    |Ekranlarını |Varsayılan |
+|----------|-----------|------------|------------|
+|Yenileme belirteci en fazla etkin olmayan süre |Maxınactivetime  |Belirteçleri Yenile |90 gün  |
+|Single-Factor yenileme belirtecinin en fazla yaşı  |Maxagesinglefaktör  |Belirteçleri Yenile (tüm kullanıcılar için)  |İptal edilene kadar  |
+|Multi-Factor Refresh belirtecinin en fazla yaşı  |MaxAgeMultiFactor  |Belirteçleri Yenile (tüm kullanıcılar için) |180 gün  |
+|Single-Factor oturum belirtecinin maksimum yaşı  |Maxagesessionsinglefaktör |Oturum belirteçleri (kalıcı ve kalıcı olmayan)  |İptal edilene kadar |
+|Multi-Factor Session belirtecinin en fazla yaşı  |MaxAgeSessionMultiFactor  |Oturum belirteçleri (kalıcı ve kalıcı olmayan)  |180 gün |
+
+Özellik değerleri Azure AD varsayılanlarından farklı olan belirteç ömür ilkelerini belirlemek için [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini kullanabilirsiniz.
+
+İlkelerinizin kiracınızda nasıl kullanıldığını daha fazla anlamak için [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini kullanarak ilkelerinize hangi uygulamaların ve hizmet sorumlularının bağlandığını belirleyebilirsiniz. 
+
+Kiracınızda yenileme ve oturum belirteci yapılandırma özellikleri için özel değerler tanımlayan ilkeler varsa, Microsoft, kapsamdaki bu ilkeleri yukarıda açıklanan Varsayılanları yansıtan değerlere güncelleştirmenizi önerir. Hiçbir değişiklik yapılgerekmediğinden, Azure AD varsayılan değerleri otomatik olarak kabul eder.  
+
+## <a name="overview"></a>Genel Bakış
 
 Azure AD 'de bir ilke nesnesi, tek tek uygulamalarda veya bir kuruluştaki tüm uygulamalarda zorlanan bir kurallar kümesini temsil eder. Her ilke türünün, atandıkları nesnelere uygulanan bir özellikler kümesi ile benzersiz bir yapısı vardır.
 

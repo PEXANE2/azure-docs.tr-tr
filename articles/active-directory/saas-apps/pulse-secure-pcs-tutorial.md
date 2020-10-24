@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
-ms.openlocfilehash: c46565f7eaa060a060183cf321bb1df1903b945c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d38ff5c8f33bda5b12f6267e7a8cdf477db6c7d7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000922"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92511452"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-pcs"></a>Öğretici: Pulse Secure BILGISAYARLARıYLA çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -174,7 +174,7 @@ Aşağıdaki sayfada aşağıdaki adımları gerçekleştirin:
 
 ### <a name="create-pulse-secure-pcs-test-user"></a>Darbeli güvenli BILGISAYARLAR test kullanıcısı oluşturma
 
-Bu bölümde, darbeli güvenli BILGISAYARLARDA Britta Simon adlı bir Kullanıcı oluşturacaksınız. Pulse Secure PC platformunda kullanıcıları eklemek için [darbeli GÜVENLI bilgisayar desteği ekibi](mailto:support@pulsesecure.net) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, darbeli güvenli BILGISAYARLARDA Britta Simon adlı bir Kullanıcı oluşturacaksınız. Pulse Secure PC platformunda kullanıcıları eklemek için [darbeli GÜVENLI bilgisayar desteği ekibi](mailto:support@pulsesecure.net) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
@@ -184,10 +184,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 2. Pulse Secure PC oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde darbeli güvenli BILGISAYARLAR kutucuğuna tıkladığınızda bu, Pulse Secure PC oturum açma URL 'sine yeniden yönlendirilir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde darbeli güvenli BILGISAYARLAR kutucuğuna tıkladığınızda bu, Pulse Secure PC oturum açma URL 'sine yeniden yönlendirilir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Pulse Secure BILGISAYARLARıNı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Pulse Secure BILGISAYARLARıNı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

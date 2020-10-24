@@ -7,21 +7,21 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 635f1e03596d55101b6158353ed8cdc278212ceb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: edd9898580c60199b761b24b172a366069f09cb2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92155490"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516197"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>Azure Spring Cloud 'daki izinleri kullanma
-Bu makalede, Azure yay bulut kaynakları için izinleri temsil eden özel roller oluşturma konusu gösterilmektedir. Özel roller, [yerleşik Azure rollerini](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) çeşitli stok izinleriyle genişletir.
+Bu makalede, Azure yay bulut kaynakları için izinleri temsil eden özel roller oluşturma konusu gösterilmektedir. Özel roller, çeşitli stok izinleriyle [Azure yerleşik rollerini](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) genişletir.
 
 Aşağıdaki özel rolleri uygulayacağız:
 
 * **Geliştirici rolü**: 
     * Dağıtma
-    * Test
+    * Test etme
     * Uygulamaları yeniden Başlat
     * Git deposundaki uygulama yapılandırmalarına uygulayabilir ve değişiklikler yapabilir
     * Günlük akışını alabilir

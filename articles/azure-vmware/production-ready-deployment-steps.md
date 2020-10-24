@@ -3,18 +3,18 @@ title: Azure VMware çözüm dağıtımını planlama
 description: Bu makalede bir Azure VMware Çözüm dağıtımı iş akışı özetlenmektedir.  Nihai sonuç, sanal makine (VM) oluşturma ve geçirme için hazırlanma ortamıdır.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 7914176174a38fef2336fc52eae7501780057452
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147986"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517370"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware çözüm dağıtımını planlama
 
-Bu makalede, dağıtım sırasında kullanılan verileri tanımlamak ve toplamak için planlama işlemi sağlıyoruz. Dağıtımınızı planlarken, dağıtım sırasında kolay başvuru için topladığınız bilgileri belgelediğinizden emin olun.
+Bu makalede, dağıtım sırasında kullanılan verileri belirleyip toplayacağınız planlama süreci sunulmaktadır. Dağıtımınızı planlarken, dağıtım sırasında kolay başvuru için topladığınız bilgileri belgelediğinizden emin olun.
 
-Bu hızlı başlangıç işlemlerine, sanal makineler (VM 'Ler) ve geçiş için üretime hazırlı bir ortama neden olur. 
+Bu hızlı başlangıç işlemlerine, sanal makineler (VM 'Ler) ve geçiş için üretime hazırlı bir ortam ile sonuçlanır. 
 
 >[!IMPORTANT]
 >Azure VMware Çözüm kaynağınızı oluşturmadan önce, düğümlerinizin ayrılmasını sağlamak üzere bir destek bileti göndermek için [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md) makalesini izleyin. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve düğümlerinizi ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz. 
@@ -73,7 +73,7 @@ Daha fazla bilgi için bkz. [ağ planlama denetim listesi](tutorial-network-chec
 
 Özel bulutunuzda ilk ağınızı (NSX segmentinizi) oluşturmak için bir IP segmenti belirler.  Diğer bir deyişle, Azure VMware çözümünde VM 'Leri dağıtabilmeniz için Azure VMware çözümünde bir ağ kesimi oluşturmak istersiniz.   
 
-Yalnızca L2 ağlarını genişletmeyi planlıyor olsanız bile, ortamı doğrulamak için yararlı olacak bir ağ kesimi oluşturun.
+Yalnızca L2 ağlarını genişletmeyi planlıyor olsanız bile, ortamı doğrulayacak bir ağ kesimi oluşturun.
 
 Oluşturulan tüm IP segmentlerinin Azure ve şirket içi parmak izinizdeki benzersiz olması gerektiğini unutmayın.  
 
@@ -128,7 +128,7 @@ VMware HCX, Azure VMware çözümü ile paketlenmiş bir teknolojidir. VMware HC
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık gerekli bilgileri topladığınıza ve belgeleolduğunuza göre, Azure VMware çözümü özel bulutunuzu oluşturmak için sonraki bölüme geçin.
+Artık Toplandığınıza ve gerekli bilgileri belgeleolduğunuza göre, Azure VMware Çözüm özel bulutunuzu oluşturmak için sonraki bölüme devam edin.
 
 > [!div class="nextstepaction"]
 > [Azure VMware Çözümü dağıtma](deploy-azure-vmware-solution.md)

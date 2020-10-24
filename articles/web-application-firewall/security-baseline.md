@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: edb184fa286eb6212f714c18830540e105ea3305
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5ecfd5e5ff29b2eade4391976947062d6e8f186f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92021188"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516163"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarı için Azure Güvenlik temeli
 
@@ -355,7 +355,7 @@ Azure Active Directory (Azure AD) Kullanıcı hesapları için Tanılama ayarlar
 
 **Rehberlik**: ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için, geliştirme, test ve üretim ortamları gibi ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. 
 
-Azure Active Directory (Azure AD) rol tabanlı erişim denetimi (Azure RBAC) ile Azure kaynaklarına erişimi denetleme.
+Azure rol tabanlı erişim denetimi (Azure RBAC) ile Azure kaynaklarına erişimi denetleme.
 
 - [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
 
@@ -379,10 +379,10 @@ Uygun olduğunda, bekleyen ve şifreli şifreleme için Güvenlik Merkezi öneri
 
 **Sorumluluk**: paylaşılan
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: Azure Active Directory (Azure AD) rol tabanlı erişim denetimi (Azure RBAC) ile Azure kaynaklarına erişimi denetleme.
-- [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
+**Kılavuz**: Azure rol tabanlı erişim denetimi (Azure RBAC) ile Azure kaynaklarına erişimi denetleme.
+- [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

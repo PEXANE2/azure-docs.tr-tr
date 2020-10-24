@@ -3,16 +3,16 @@ title: Adanmış Olay Hub 'larına genel bakış-Azure Event Hubs | Microsoft Do
 description: Bu makalede, özel Azure Event Hubs, Olay Hub 'larının tek kiracılı dağıtımlarını sunan bir genel bakış sunulmaktadır.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: e6208a8d50e21766969dbe9d9739d5003958126a
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 20b153c9093c96e7357a8e439b6655f1db80bd46
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495110"
+ms.locfileid: "92517013"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Ayrılmış genel bakış
 
-*Event Hubs kümeler* en zorlu akış gereksinimlerine sahip müşteriler için tek kiracılı dağıtımlar sağlar. Bu tek kiracılı teklifin% 99,99 bir SLA 'Sı vardır ve yalnızca adanmış fiyatlandırma katmanımızda kullanılabilir. Bir Event Hubs kümesi, garantili kapasite ve alt saniyelik gecikme süresiyle saniyede milyonlarca olayı alabilir. Adanmış küme içinde oluşturulan ad alanları ve Olay Hub 'ları, standart teklifin tüm özelliklerini ve daha fazlasını içerir, ancak herhangi bir giriş sınırı olmadan. Ayrıca, ek bir ücret ödemeden popüler [Event Hubs yakalama](event-hubs-capture-overview.md) özelliğini de içerir, böylece veri akışlarını otomatik olarak Azure depolama 'ya veya Azure Data Lake günlüğe kaydedebilirsiniz. 
+*Event Hubs kümeler* en zorlu akış gereksinimlerine sahip müşteriler için tek kiracılı dağıtımlar sağlar. Bu tek kiracılı teklifin% 99,99 bir SLA 'Sı vardır ve yalnızca adanmış fiyatlandırma katmanımızda kullanılabilir. Bir Event Hubs kümesi, garantili kapasiteye ve alt saniyelik gecikmeye göre saniyede milyonlarca olayı alabilir. Adanmış küme içinde oluşturulan ad alanları ve Olay Hub 'ları, standart teklifin tüm özelliklerini ve daha fazlasını içerir, ancak herhangi bir giriş sınırı olmadan. Ayrıca, ek bir ücret ödemeden popüler [Event Hubs yakalama](event-hubs-capture-overview.md) özelliğini de içerir, böylece veri akışlarını otomatik olarak Azure depolama 'ya veya Azure Data Lake günlüğe kaydedebilirsiniz. 
 
 Kümeler, önceden ayrılmış bir CPU ve bellek kaynakları miktarı olan **Kapasite birimleri (cu düzeyinde kapsanır)** tarafından sağlanır ve faturalandırılır. Her küme için 1, 2, 4, 8, 12, 16 veya 20 cu düzeyinde kapsanır satın alabilirsiniz. Her CU için alma ve akış alma işlemlerinin sayısı, üreticileri ve tüketiciler, yük şekli, çıkış oranı (daha fazla ayrıntı için aşağıdaki kıyaslama sonuçlarına bakın) gibi çeşitli faktörlere bağlıdır. 
 
@@ -25,13 +25,13 @@ Adanmış Event Hubs, kurumsal düzeyde kapasiteye ihtiyaç duyan müşteriler i
 
 #### <a name="single-tenancy-guarantees-capacity-for-better-performance"></a>Tek kiracı, daha iyi performans için kapasiteyi garanti eder
 
-Adanmış bir küme, tam ölçekte kapasiteyi garanti eder ve trafikte herhangi bir patlama sağlamak için tam olarak dayanıklı depolama ve alt saniyelik gecikme süresiyle çok sayıda akış verisi alabilir. 
+Adanmış bir küme, tam ölçekte kapasiteyi garanti eder ve trafikte herhangi bir patlama sağlamak için tamamen dayanıklı depolama ve alt saniyelik gecikme süresi ile en fazla gigabayt veri alabilir. 
 
 #### <a name="inclusive-and-exclusive-access-to-features"></a>Özelliklere dahil ve özel erişim 
-Adanmış teklif, ek bir ücret ödemeden yakalama gibi özellikleri ve Kendi Anahtarını Getir (BYOK) gibi yakında sunulacak özelliklere özel erişimi de içerir. Hizmet Ayrıca, altyapı bakımı üzerinde daha az zaman harcayabilmeniz ve istemci tarafı Özellikler oluştururken daha fazla zaman harcamanız için yük dengelemeyi, işletim sistemi güncelleştirmelerini, güvenlik düzeltme eklerini ve Bölümlendirmeyi yönetir.  
+Adanmış teklif, hiçbir ek ücret ödemeden yakalama gibi özellikleri ve Kendi Anahtarını Getir (BYOK) gibi yakında sunulacak özelliklere özel erişimi içerir. Hizmet Ayrıca, altyapı bakımı üzerinde daha az zaman harcayabilmeniz ve istemci tarafı Özellikler oluştururken daha fazla zaman harcamanız için yük dengelemeyi, işletim sistemi güncelleştirmelerini, güvenlik düzeltme eklerini ve Bölümlendirmeyi yönetir.  
 
 #### <a name="cost-savings"></a>Maliyet tasarrufları
-Yüksek giriş birimlerinde (>100 lik), standart sunumdaki karşılaştırılabilir üretilen iş birimi miktarı satın almadan bir küme maliyeti saat başına önemli ölçüde küçüktür.
+Yüksek giriş birimlerinde (>100 üretilen iş birimi), standart sunumdaki karşılaştırılabilir üretilen iş birimi miktarı satın almadan bir küme maliyeti saat başına önemli ölçüde küçüktür.
 
 
 ## <a name="event-hubs-dedicated-quotas-and-limits"></a>Event Hubs Ayrılmış kotaları ve limitleri
@@ -53,7 +53,7 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 
 ## <a name="how-to-onboard"></a>Ekleme
 
-[Azure Portal](https://aka.ms/eventhubsclusterquickstart) aracılığıyla [bir Event Hubs kümesi oluşturmaya](event-hubs-dedicated-cluster-create-portal.md) yönelik self servis deneyimi artık önizlemededir. Sorularınız varsa veya Event Hubs Ayrılmış için yardıma ihtiyacınız varsa, lütfen [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)başvurun.
+[Azure Portal](https://aka.ms/eventhubsclusterquickstart) aracılığıyla [bir Event Hubs kümesi oluşturmaya](event-hubs-dedicated-cluster-create-portal.md) yönelik self servis deneyimi artık önizlemededir. Event Hubs Ayrılmış ekleme konusunda sorularınız varsa veya yardıma ihtiyacınız varsa [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)başvurun.
 
 ## <a name="faqs"></a>SSS
 

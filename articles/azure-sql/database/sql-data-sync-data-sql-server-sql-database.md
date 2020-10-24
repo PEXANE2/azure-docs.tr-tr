@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: bc0286dc509acd4afba7f1660b65e49b25378496
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 194625ab43dbb161d2b04352d715a44a1328a888
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371760"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503343"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -135,7 +135,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 - Birincil anahtar şu veri türlerine sahip olamaz: sql_variant, binary, varbinary, Image, XML.
 - Aşağıdaki veri türlerini birincil anahtar olarak kullanırken dikkatli olun, çünkü desteklenen duyarlık yalnızca ikinci-saat, DateTime, datetime2, DateTimeOffset olur.
 - Nesnelerin (veritabanları, tablolar ve sütunlar) adları, yazdırılabilir karakterler (.), sol köşeli ayraç ([) veya sağ köşeli ayraç (]) içeremez.
-- Tablo adı yazdırılabilir karakterler içeremez:! " # $ % ' ( ) * + -
+- Tablo adı yazdırılabilir karakterler içeremez:! "# $% ' () * +-boşluk
 - Azure Active Directory kimlik doğrulaması desteklenmiyor.
 - Aynı ada sahip ancak farklı bir şemaya sahip tablolar varsa (örneğin, dbo. Customers ve Sales. Customers) yalnızca bir tablo eşitlemeye eklenebilir.
 - User-Defined veri türlerine sahip sütunlar desteklenmez

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f438f4393538478f2960e709d8e23beb6106510d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485758"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503326"
 ---
 # <a name="secure-azure-digital-twins"></a>Güvenli Azure dijital TWINS
 
@@ -20,7 +20,7 @@ Azure dijital TWINS güvenliği için, dağıtımınızdaki belirli veriler, kay
 
 Azure dijital TWINS, bekleyen verilerin şifrelenmesini de destekler.
 
-## <a name="granting-permissions-with-azure-rbac"></a>Azure RBAC ile izin verme
+## <a name="roles-and-permissions-with-azure-rbac"></a>Azure RBAC ile roller ve izinler
 
 Azure RBAC, [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) ile tümleştirme yoluyla Azure dijital TWINS 'e sağlanır.
 
@@ -47,22 +47,32 @@ Yönetilen kimlikler ile Azure platformu bu çalışma zamanı kimliğini yönet
 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Yetkilendirme: Azure dijital TWINS için Azure rolleri
 
-Azure, bir Azure dijital TWINS kaynağına erişimi yetkilendirmek için aşağıdaki Azure yerleşik rollerini sağlar:
-* *Azure dijital TWINS veri sahibi* – Azure dijital TWINS kaynakları üzerinden tam erişim sağlamak için bu rolü kullanın.
-* *Azure dijital TWINS veri okuyucusu* – Azure dijital TWINS kaynaklarına salt okuma erişimi sağlamak için bu rolü kullanın.
+Azure, Azure dijital TWINS [veri düzlemi API 'lerine](how-to-use-apis-sdks.md#overview-data-plane-apis)erişim yetkisi veren **iki Azure yerleşik rolü** sağlar. Rollere ada veya KIMLIĞE göre başvurabilirsiniz:
+
+| Yerleşik rol | Açıklama | ID | 
+| --- | --- | --- |
+| Azure dijital TWINS veri sahibi | Azure dijital TWINS kaynakları üzerinden tam erişim sağlar | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
+| Azure dijital TWINS veri okuyucusu | Azure dijital TWINS kaynaklarına salt okuma erişimi verir | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
 >[!NOTE]
 > Bu roller yakın zamanda Önizlemedeki önceki adlarından yeniden adlandırıldı:
 > * *Azure dijital TWINS veri sahibi* , daha önce *Azure Digital TWINS sahibiydi (Önizleme)*.
 > * *Azure dijital TWINS veri okuyucu* daha önce *Azure Digital TWINS okuyucu (Önizleme)*.
 
-Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz. Azure RBAC belgelerindeki [*rol tanımlarını anlama*](../role-based-access-control/role-definitions.md) . Azure özel rolleri oluşturma hakkında daha fazla bilgi için bkz. [*Azure özel roller*](../role-based-access-control/custom-roles.md).
-
 Rolleri iki şekilde atayabilirsiniz:
 * Azure portal Azure dijital TWINS için erişim denetimi (ıAM) bölmesi aracılığıyla (bkz [*. Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma*](../role-based-access-control/role-assignments-portal.md))
 * bir rol eklemek veya kaldırmak için CLı komutları aracılığıyla
 
 Bunun nasıl yapılacağı hakkında daha ayrıntılı adımlar için Azure dijital TWINS [*öğreticisinde deneyin: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md).
+
+Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz. Azure RBAC belgelerindeki [*rol tanımlarını anlama*](../role-based-access-control/role-definitions.md) . Azure özel rolleri oluşturma hakkında daha fazla bilgi için bkz. [*Azure özel roller*](../role-based-access-control/custom-roles.md).
+
+##### <a name="automating-roles"></a>Rolleri otomatikleştirme
+
+Otomatikleştirilmiş senaryolardaki rollere başvuru yaparken, bunlara adları yerine **kimliklerini** yazmanız önerilir. Adlar yayınlar arasında değişebilir, ancak kimlikler bu şekilde Otomasyon 'da daha kararlı bir başvuru haline getirir.
+
+> [!TIP]
+> (Başvuru) gibi bir cmdlet 'e sahip rolleriniz assiging `New-AzRoleAssignment` ,[reference](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0) `-RoleDefinitionId` `-RoleDefinitionName` rol için bir ad yerine kimliği geçirmek yerine parametresini kullanabilirsiniz.
 
 ### <a name="permission-scopes"></a>İzin kapsamları
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 72a2b24ad8e05943f975f0819d8b2a872b0ab829
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a7f27ff20a4770caea44e73d91001d9785c015
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229013"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517234"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Stream Analytics için Azure Güvenlik temeli
 
@@ -248,7 +248,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: uygun yerlerde varsayılan parolaları değiştirme
 
-**Rehberlik**: Stream Analytics kimlik doğrulaması, Azure Active Directory ile birlikte sağlandığı ve hizmeti yönetmek için rol tabanlı erişim denetımı (RBAC) tarafından güvenliği sağlanmış olarak varsayılan parola kavramına sahip değildir. Ekleme akışı hizmetlerine ve çıkış hizmetlerine bağlı olarak, işlerinde yapılandırılan kimlik bilgilerini döndürmeniz gerekir.
+**Rehberlik**: Stream Analytics, Azure rol tabanlı erişim denetimi (Azure RBAC) tarafından hizmeti yönetmek için Azure Active Directory ve güvenliği sağlanmış olarak kimlik doğrulaması sağlanarak varsayılan parola kavramına sahip değildir. Ekleme akışı hizmetlerine ve çıkış hizmetlerine bağlı olarak, işlerinde yapılandırılan kimlik bilgilerini döndürmeniz gerekir.
 
 * [Stream Analytics işinin girdileri ve çıkışları için oturum açma kimlik bilgilerini döndürün](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
 
@@ -324,7 +324,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory kullanın
 
-**Rehberlik**: merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory (Azure AD) kullanın. Azure AD, istemcinin Stream Analytics kaynaklara erişimi üzerinde ayrıntılı denetim için rol tabanlı erişim denetimi (RBAC) sağlar.
+**Rehberlik**: merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory (Azure AD) kullanın. Azure AD, istemcinin Stream Analytics kaynaklara erişimi üzerinde ayrıntılı denetim için Azure rol tabanlı erişim denetimi (Azure RBAC) sağlar.
 
 * [Azure AD örneği oluşturma ve yapılandırma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 

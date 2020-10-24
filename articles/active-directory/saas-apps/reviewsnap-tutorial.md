@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 559053bba48d559032993d8047931d1fab0d8e33
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 00b9b12e3f60db631fdb30d3d449234149aec4b0
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105507"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516554"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>Öğretici: Belgetirme ile tümleştirme Azure Active Directory
 
@@ -27,10 +27,10 @@ Gözden geçirmeyi ek olarak Azure AD ile tümleştirmek aşağıdaki avantajlar
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak gözden geçirmeyi (çoklu oturum açma) gözden geçirmeyi sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini gözden geçirmeyi Snap ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -185,18 +185,18 @@ Bu bölümde, Lementta Simon 'u, Belgelemenek 'e erişim vererek Azure çoklu ot
 
 ### <a name="create-reviewsnap-test-user"></a>Belgele Snap test kullanıcısı oluştur
 
-Bu bölümde, BelgeAdı ' nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcılar için, belgele ek [destek ekibi](mailto:support@reviewsnap.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, BelgeAdı ' nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcılar için, belgele ek [destek ekibi](mailto:support@reviewsnap.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde gözden geçirmeniz ek kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız gözden geçirmeniz için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde gözden geçirmeniz ek kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız gözden geçirmeniz için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

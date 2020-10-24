@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2020
+ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: f0e34c8a331c475b103922789a9d1983f1c84cac
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c1e2d64bb30b6451e232c85a5892771157d32928
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92492217"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514410"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için genel geçiş kimlik eşitlemesini yapılandırma
 
@@ -52,7 +52,7 @@ Kiracı URL 'sini almak için genel geçiş kimliği eşitleme temsilcinizle ile
 
 ## <a name="step-3-add-global-relay-identity-sync-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden genel geçiş kimlik eşitlemesi ekleme
 
-Küresel geçiş kimlik eşitlemesine sağlamayı yönetmeye başlamak için Azure AD uygulama galerisinden genel geçiş kimlik eşitlemesi ekleyin. Daha önce SSO için genel geçiş kimliği eşitlemesini ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden uygulama ekleme hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) bakın. 
+Küresel geçiş kimlik eşitlemesine sağlamayı yönetmeye başlamak için Azure AD uygulama galerisinden genel geçiş kimlik eşitlemesi ekleyin. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım: Hazırlık kapsamına dahil edilecek kullanıcıları tanımlama 
 
@@ -63,7 +63,7 @@ Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun öz
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-global-relay-identity-sync"></a>5. Adım. Otomatik Kullanıcı sağlamayı genel geçiş kimlik eşitlemesine yapılandırma 
 
-Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
+Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşitleme uygulamasındaki kullanıcıları ve/veya grupları Azure AD 'de Kullanıcı ve/veya grup atamalarına göre oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
 
 ### <a name="to-configure-automatic-user-provisioning-for-global-relay-identity-sync-in-azure-ad"></a>Azure AD 'de küresel geçiş kimlik eşitlemesi için otomatik Kullanıcı sağlamayı yapılandırmak için:
 

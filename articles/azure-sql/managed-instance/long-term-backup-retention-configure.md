@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/29/2020
-ms.openlocfilehash: 4249e7df61c7f1f090b6377114bcab6ce1d40b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b0d6665b440516d29cc9aeb0b6e50f509528574
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619092"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503445"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL yönetilen örneğini yönetme uzun vadeli yedek saklama (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL yönetilen örneği 'nde [uzun süreli yedek saklama](../database/long-term-retention-overview.md#sql-managed-instance-support) ILKESINI (LTR) sınırlı bir genel önizleme özelliği olarak yapılandırabilirsiniz. Bu sayede, veritabanı yedeklerini 10 yıla kadar ayrı Azure Blob depolama kapsayıcılarında otomatik olarak koruyabilirsiniz. Ardından, bu yedeklemeleri PowerShell ile kullanarak bir veritabanını kurtarabilirsiniz.
+Azure SQL yönetilen örneği 'nde [uzun süreli yedek saklama](../database/long-term-retention-overview.md#sql-managed-instance-support) ILKESINI (LTR) sınırlı bir genel önizleme özelliği olarak yapılandırabilirsiniz. Bu, veritabanı yedeklerini 10 yıla kadar ayrı Azure Blob depolama kapsayıcılarında otomatik olarak korumanızı sağlar. Ardından, bu yedeklemeleri PowerShell ile kullanarak bir veritabanını kurtarabilirsiniz.
 
    > [!IMPORTANT]
    > Yönetilen örnekler için LTR Şu anda sınırlı önizlemededir ve büyük bir süre içinde EA ve CSP aboneliklerinde kullanılabilir. Kayıt istemek için lütfen bir [Azure destek bileti](https://azure.microsoft.com/support/create-ticket/)oluşturun. Sorun türü için teknik sorunu seçin, hizmet için SQL veritabanı yönetilen örneğini seçin ve sorun türü için **yedekleme, geri yükleme ve Iş sürekliliği/uzun süreli yedekleme saklama ' yı**seçin. İsteğiniz içinde, yönetilen örnek için LTR 'ın sınırlı genel önizlemesine kaydedilmesini istediğiniz durumu girin.

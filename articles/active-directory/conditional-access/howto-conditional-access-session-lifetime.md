@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 10/23/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 817a13080cedc1d737b43bae14a07a7d4a0bd416
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8d33721a70f0a9d4cfb26516d2f252424cc924f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145257"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503819"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Erişim Denetimi ile kimlik doğrulama oturum yönetimini yapılandırma
 
@@ -37,7 +37,7 @@ Oturum açma sıklığı, bir kullanıcıdan bir kaynağa erişmeye çalışırk
 
 Kullanıcı oturum açma sıklığı için Azure Active Directory (Azure AD) varsayılan yapılandırması, 90 günlük bir toplama penceresidir. Kimlik bilgileri için kullanıcılardan genellikle yapılacak bir şey gibi görünse de, bu durum geri yüklenebilir: kimlik bilgilerini düşünmeden girmek için eğitilen kullanıcılar, bunları istemeden kötü amaçlı bir kimlik bilgisi istemine girebilirler.
 
-Bir kullanıcının yeniden oturum açmasını istememe konusunda bir sorun olabilir, çünkü gerçekte BT ilkelerinin ihlal edilmesi oturumu iptal eder. Bir parola değişikliği, uyumsuz bir cihaz veya hesabı devre dışı bırakmak için bazı örnekler vardır (ancak bunlarla sınırlı değildir). Ayrıca, [PowerShell kullanarak kullanıcıların oturumlarını açıkça iptal](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)edebilirsiniz. Azure AD varsayılan yapılandırması, "oturumlarından oluşan güvenlik durusız" kullanıcılardan kimlik bilgilerini sağlamasını isteme "olarak değişir.
+Bir kullanıcının yeniden oturum açmasını istememe konusunda bir sorun olabilir, çünkü gerçekte BT ilkelerinin ihlal edilmesi oturumu iptal eder. Bir parola değişikliği, uyumsuz bir cihaz veya hesabı devre dışı bırakmak için bazı örnekler vardır (ancak bunlarla sınırlı değildir). Ayrıca, [PowerShell kullanarak kullanıcıların oturumlarını açıkça iptal](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0&preserve-view=true)edebilirsiniz. Azure AD varsayılan yapılandırması, "oturumlarından oluşan güvenlik durusız" kullanıcılardan kimlik bilgilerini sağlamasını isteme "olarak değişir.
 
 Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokollerini uygulamış olan uygulamalarla birlikte kullanılır. Aşağıdaki Web uygulamaları dahil olmak üzere Windows, Mac ve mobil için Microsoft Native uygulamaların çoğu ayarla uyumlu değil.
 
@@ -49,7 +49,7 @@ Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokolle
 - SharePoint ve OneDrive
 - Takımlar Web istemcisi
 - Dynamics CRM Online
-- Azure portal
+- Azure portalı
 
 Oturum açma sıklığı ayarı, SAML uygulamalarıyla birlikte çalışarak kendi tanımlama bilgilerini düşürülemez ve düzenli olarak kimlik doğrulaması için Azure AD 'ye yeniden yönlendirilir.
 
@@ -88,7 +88,7 @@ Tarayıcı oturumu kalıcılığı için Azure AD varsayılan değeri, kişisel 
 Koşullu erişim Azure AD Premium bir yetenektir ve Premium lisans gerektirir. Koşullu erişim hakkında daha fazla bilgi edinmek istiyorsanız bkz. [Azure Active Directory Koşullu erişim nedir?](overview.md#license-requirements)
 
 > [!WARNING]
-> Şu anda genel önizleme aşamasında olan [yapılandırılabilir belirteç yaşam süresi](../develop/active-directory-configurable-token-lifetimes.md) özelliğini kullanıyorsanız, lütfen aynı kullanıcı veya uygulama birleşimi için iki farklı ilke oluşturulmasını desteklemediğimiz, bu özelliğe ve diğeri yapılandırılabilir belirteç ömrü özelliğine sahip başka bir uygulamayla aynı şekilde desteklenmediğini unutmayın. Microsoft, yapılandırılabilir belirteç yaşam süresi özelliğini 1 Mayıs 2020 ' de devre dışı bırakmayı planlıyor ve koşullu erişim kimlik doğrulama oturumu Yönetimi özelliğiyle değiştirebilir.  
+> Şu anda genel önizleme aşamasında olan [yapılandırılabilir belirteç yaşam süresi](../develop/active-directory-configurable-token-lifetimes.md) özelliğini kullanıyorsanız, lütfen aynı kullanıcı veya uygulama birleşimi için iki farklı ilke oluşturulmasını desteklemediğimiz, bu özelliğe ve diğeri yapılandırılabilir belirteç ömrü özelliğine sahip başka bir uygulamayla aynı şekilde desteklenmediğini unutmayın. Microsoft, yapılandırılabilir belirteç yaşam süresi özelliğini 30 Ocak 2021 tarihinde yenileme ve oturum belirteci yaşam süreleri için devre dışı bırakmayı planlıyor ve koşullu erişim kimlik doğrulama oturumu Yönetimi özelliğiyle değiştirecek.  
 >
 > Oturum açma sıklığını etkinleştirmeden önce, kiracınızda diğer yeniden kimlik doğrulama ayarlarının devre dışı bırakıldığından emin olun. "Güvenilen cihazlarda MFA 'yı anımsa" etkinse, bu iki ayarı birlikte kullanmak kullanıcıların beklenmedik şekilde sorulmasına yol açacağından, oturum açma sıklığını kullanmadan önce devre dışı bırakmayı unutmayın. Yeniden doğrulama istemleri ve oturum ömrü hakkında daha fazla bilgi edinmek için, bkz. yeniden [kimlik doğrulama Istemlerini iyileştirin ve Azure Multi-Factor Authentication oturum ömrünü anlayın](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 

@@ -2,14 +2,14 @@
 title: Havuzlar için VM boyutlarını seçin
 description: Azure Batch havuzlarda işlem düğümleri için kullanılabilir VM boyutları arasından seçim yapma
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/23/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6dc1b3cf708a6dbaacc87e6c9fc00ae6f0ff3440
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: fd093006a9eb0c9746a19cb5f91b280145ddfb7e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107513"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517064"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu seçme
 
@@ -31,17 +31,19 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm VM boyut
 | Temel A | Basic_A0 *dışındaki* tüm boyutlar (a0) |
 | A | Standard_A0 *dışındaki* tüm boyutlar |
 | AV2 | Tüm Boyutlar |
-| B | Hiçbiri |
-| DC | Hiçbiri |
+| B | Desteklenmez |
+| DC | Desteklenmez |
 | Dv2, DSv2 | Tüm Boyutlar |
 | Dv3, Dsv3 | Tüm Boyutlar |
 | Dav4<sup>1</sup> | Tüm Boyutlar |
 | Dasv4<sup>1</sup> | Tüm Boyutlar |
 | Ddv4, Ddsv4 |  Tüm Boyutlar |
+| Dv4, Dsv4 | Desteklenmez |
 | Ev3, Esv3 | E64is_v3 dışındaki tüm boyutlar |
 | Eav4<sup>1</sup> | Tüm Boyutlar |
 | Easv4<sup>1</sup> | Tüm Boyutlar |
 | Edv4, Edsv4 |  Tüm Boyutlar |
+| Ev4, Esv4 | Desteklenmez |
 | F, FS | Tüm Boyutlar |
 | Fsv2 | Tüm Boyutlar |
 | G, GS | Tüm Boyutlar |
@@ -56,12 +58,13 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm VM boyut
 | NC | Tüm Boyutlar |
 | NCv2<sup>1</sup> | Tüm Boyutlar |
 | NCv3<sup>1</sup> | Tüm Boyutlar |
+| NCasT4_v3 | Hiçbiri-henüz kullanılamıyor |
 | ND<sup>1</sup> | Tüm Boyutlar |
 | NDv2<sup>1</sup> | Hiçbiri-henüz kullanılamıyor |
 | NV | Tüm Boyutlar |
 | NVv3<sup>1</sup> | Tüm Boyutlar |
-| NVv4 | Hiçbiri-henüz kullanılamıyor |
-| SAP HANA | Hiçbiri |
+| NVv4<sup>1</sup> | Tüm Boyutlar |
+| SAP HANA | Desteklenmez |
 
 <sup>1</sup> bu VM Serisi, sanal makine yapılandırmasındaki Batch havuzlarında ayrılabilir, ancak yeni bir Batch hesabı oluşturmanız ve belirli bir [Kota artışı](batch-quota-limit.md#increase-a-quota)istemeniz gerekir. Bu sınırlama, VM Serisi başına vCPU kotası Batch hesapları için tam olarak desteklendikten sonra kaldırılacaktır.
 

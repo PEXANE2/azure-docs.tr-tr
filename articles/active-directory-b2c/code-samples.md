@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 2db64a950569e4a96a9a87bb86a5397a17b4f2ba
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: b52bfc14906d8e47c804ae15ee898f6ca00784af
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214949"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503853"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C kod örnekleri
 
@@ -60,10 +60,23 @@ Aşağıdaki tablolarda iOS, Android, .NET ve Node.js de dahil olmak üzere uygu
 
 Aşağıdaki tablolar, [API bağlayıcıları](api-connectors-overview.md)kullanarak Kullanıcı akışlarınızdaki Web API 'lerini kullanmak için kod örneklerine bağlantılar sağlar.
 
-## <a name="api-connector-azure-function-quickstarts"></a>API Bağlayıcısı Azure Işlevi hızlı başlangıç
+### <a name="azure-function-quickstarts"></a>Azure Işlevi hızlı başlangıç
 
 | Örnek                                                                                                                          | Açıklama                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connector-azure-function-validate) | Bu .NET Core Azure Işlevi örneği, oturum açma işlemlerinin belirli e-posta etki alanlarına nasıl sınırlandırılacağını ve Kullanıcı tarafından belirtilen bilgilerin nasıl doğrulandığını gösterir. |
 | [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | Bu Node.js Azure Işlevi örneği, oturum açma işlemlerinin belirli e-posta etki alanlarına nasıl sınırlandırılacağını ve Kullanıcı tarafından belirtilen bilgilerin nasıl doğrulandığını gösterir.  |
 | [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | Bu Python Azure Işlevi örneği, oturum açma işlemlerinin belirli e-posta etki alanlarına nasıl sınırlandırılacağını ve Kullanıcı tarafından belirtilen bilgilerin nasıl doğrulandığını gösterir.    |
+
+### <a name="identity-verification-with-api-connectors"></a>API bağlayıcıları ile kimlik doğrulama
+
+| Örnek                                                                                                            | Açıklama                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | Bu örnek, IDology ile tümleştirme için bir API Bağlayıcısı kullanarak Self Servis kaydolma 'nın bir parçası olarak bir kullanıcı kimliğini nasıl doğrulayacağınızı gösterir. |
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | Bu örnek, Experian ile tümleştirme için bir API Bağlayıcısı kullanarak Self Servis kaydolma 'nın bir parçası olarak bir kullanıcı kimliğini nasıl doğrulayacağınızı gösterir. |
+
+### <a name="community-samples"></a>Topluluk örnekleri
+
+| Örnek                                                                                                            | Açıklama                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [API Bağlayıcısı topluluk örnekleri](https://github.com/azure-ad-b2c/api-connector-samples) | Bu depoda, API bağlayıcıları tarafından etkinleştirilen senaryoların topluluk tarafından korunan örnekleri bulunur.|
