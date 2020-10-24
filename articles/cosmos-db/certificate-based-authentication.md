@@ -7,22 +7,22 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 0b1fdec12b99edc952d24b0b3cc21bad24ec7554
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f787840422e61d6f43081d991ffc3ef28da6976
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569728"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486540"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Bir Azure AD kimliği için Azure Cosmos DB hesabından anahtarlara erişmek üzere sertifika tabanlı kimlik doğrulaması
 
 Sertifika tabanlı kimlik doğrulaması, istemci uygulamanızın Azure Active Directory (Azure AD) kullanılarak bir istemci sertifikasıyla kimliğinin doğrulanmasına olanak tanır. Sertifika tabanlı kimlik doğrulamasını şirket içindeki makine veya Azure’daki sanal makine gibi kimliğinizin olmasını gerektiren bir makinede gerçekleştirebilirsiniz. Uygulamanız daha sonra anahtarları doğrudan uygulamada kullanmadan Azure Cosmos DB anahtarlarını okuyabilir. Bu makalede örnek bir Azure AD uygulaması oluşturma, sertifika tabanlı kimlik doğrulaması için yapılandırma, yeni uygulama kimliğini kullanarak Azure 'da oturum açma ve ardından Azure Cosmos hesabınızdan anahtarları alma açıklanır. Bu makale, kimlikleri ayarlamak için Azure PowerShell kullanır ve Azure Cosmos hesabınızdan anahtar kimliğini doğrulayan ve erişen bir C# örnek uygulaması sağlar.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [En son Azure PowerShell sürümünü](/powershell/azure/install-az-ps) yükler.
 
-* [Azure aboneliğiniz](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
+* [Azure aboneliğiniz](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
 ## <a name="register-an-app-in-azure-ad"></a>Bir Uygulamayı Azure AD'ye kaydetme
 

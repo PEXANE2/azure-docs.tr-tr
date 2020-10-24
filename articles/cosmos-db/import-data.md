@@ -4,25 +4,27 @@ description: 'Öğretici: MongoDB, SQL Server, tablo depolama, Amazon DynamoDB, 
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 16412e6949bd6bf3d9496b33a900a0331bd1e9fb
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8613d3b02d396f16008ee771cdff25fe8b2e2f10
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278149"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490654"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Öğretici: Verilerinizi Azure Cosmos DB'ye geçirmek için Veri Geçiş Aracı'nı kullanma
 
 Bu öğreticide, çeşitli kaynaklardan Azure Cosmos kapsayıcılarına ve tablolarına verileri içeri aktarabilen Azure Cosmos DB Veri Geçişi aracının kullanımına ilişkin yönergeler sağlanmaktadır. JSON dosyalarından, CSV dosyalarından, SQL, MongoDB, Azure Tablo depolamadan, Amazon DynamoDB ve hatta Azure Cosmos DB SQL API koleksiyonlarından içeri aktarma işlemi yapabilirsiniz. Bu verileri, Azure Cosmos DB ile birlikte kullanmak için koleksiyonlara ve tablolara geçirirsiniz. Veri Geçişi aracı, tek bir bölüm koleksiyonundan SQL API’si için çok bölümlü bir koleksiyona geçirme işlemi sırasında da kullanılabilir.
 
-Azure Cosmos DB ile hangi API’yi kullanacaksınız?
+> [!NOTE]
+> Azure Cosmos DB veri geçiş aracı, küçük geçişler için tasarlanan açık kaynaklı bir araçtır. Daha büyük geçişler için verileri almak [üzere kılavuzumuzu](cosmosdb-migrationchoices.md)görüntüleyin.
 
-* **[SQL API’si](documentdb-introduction.md)**: Verileri içeri aktarmak için Veri Geçişi aracında sağlanan kaynak seçeneklerinin herhangi birini kullanabilirsiniz.
-* **[Tablo API’si](table-introduction.md)**: Verileri içeri aktarmak için Veri Geçişi aracını veya AzCopy’yi kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Cosmos DB Tablo API’si ile kullanılmak üzere verileri içeri aktarma](table-import.md).
-* **[MongoDB IÇIN apı Azure Cosmos DB](mongodb-introduction.md)** -veri geçiş aracı şu anda mongodb için Azure Cosmos DB API 'sini kaynak veya hedef olarak desteklememektedir. Azure Cosmos DB içindeki koleksiyonların içindeki veya olmayan verileri geçirmek istiyorsanız, yönergeler için [MongoDB verilerini MongoDB için Azure Cosmos DB API 'Siyle nasıl geçirebileceğiniz](mongodb-migrate.md) konusuna bakın. SQL API’si ile kullanılmak üzere MongoDB’den Azure Cosmos DB SQL API koleksiyonlarına verileri dışarı aktarmak için Veri Geçişi aracını kullanmaya devam edebilirsiniz.
-* **[GREMLIN API](graph-introduction.md)** -veri geçiş aracı şu anda Gremlin API hesapları için desteklenen bir içeri aktarma aracı değil.
+* **[SQL API](./introduction.md)** -verileri küçük bir ölçekte içeri aktarmak Için veri geçiş aracında sunulan kaynak seçeneklerden herhangi birini kullanabilirsiniz. [Büyük ölçekte verilerin içeri aktarılması için geçiş seçenekleri hakkında bilgi edinin](cosmosdb-migrationchoices.md).
+* **[Tablo API'si](table-introduction.md)** veri geçiş aracını veya [AzCopy](table-import.md#migrate-data-by-using-azcopy) komutunu kullanarak verileri içeri aktarabilirsiniz. Daha fazla bilgi için bkz. [Azure Cosmos DB Tablo API’si ile kullanılmak üzere verileri içeri aktarma](table-import.md).
+* **[MongoDB IÇIN apı Azure Cosmos DB](mongodb-introduction.md)** -veri geçiş aracı, mongodb için Azure Cosmos DB API 'sini kaynak veya hedef olarak desteklemez. Azure Cosmos DB, verileri koleksiyonlar içinde veya dışına geçirmek istiyorsanız, yönergeler için MongoDB [için Azure Cosmos DB API 'sine sahip MongoDB verilerini Cosmos veritabanına geçirme](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) konusuna bakın. SQL API’si ile kullanılmak üzere MongoDB’den Azure Cosmos DB SQL API koleksiyonlarına verileri dışarı aktarmak için Veri Geçişi aracını kullanmaya devam edebilirsiniz.
+* **[Cassandra API](graph-introduction.md)** -veri geçiş aracı, Cassandra API hesapları için desteklenen bir içeri aktarma aracı değildir. [Cassandra API içine veri aktarmaya yönelik geçiş seçenekleri hakkında bilgi edinin](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api)
+* **[GREMLIN API](graph-introduction.md)** -veri geçiş aracı şu anda Gremlin API hesapları için desteklenen bir içeri aktarma aracı değil. [Gremlin API 'sine veri aktarmaya yönelik geçiş seçenekleri hakkında bilgi edinin](cosmosdb-migrationchoices.md#other-apis) 
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -31,7 +33,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Farklı veri kaynaklarından verileri içeri aktarma
 > * Azure Cosmos DB’den JSON’a dışarı aktarma
 
-## <a name="prerequisites"></a><a id="Prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a><a id="Prerequisites"></a>Önkoşullar
 
 Bu makaledeki yönergeleri uygulamadan önce aşağıdaki adımları belirttiğinizden emin olun:
 
@@ -42,7 +44,7 @@ Bu makaledeki yönergeleri uygulamadan önce aşağıdaki adımları belirttiği
 * **Azure Cosmos DB kaynaklarını oluşturma:** Veri geçişini başlatmadan önce Azure portaldan tüm koleksiyonlarınızı oluşturun. Veritabanı düzeyinde aktarım hızı olan bir Azure Cosmos DB hesabına geçiş yapmak için, Azure Cosmos kapsayıcıları oluştururken bir bölüm anahtarı sağlayın.
 
 > [!IMPORTANT]
-> Veri geçiş aracının Azure Cosmos hesaplarınıza bağlanırken Aktarım Katmanı Güvenliği (TLS) 1,2 ' i kullandığından emin olmak için, .NET Framework sürüm 4,7 ' yi kullanın veya [Bu makalede](https://docs.microsoft.com/dotnet/framework/network-programming/tls)bulunan yönergeleri izleyin.
+> Veri geçiş aracının Azure Cosmos hesaplarınıza bağlanırken Aktarım Katmanı Güvenliği (TLS) 1,2 ' i kullandığından emin olmak için, .NET Framework sürüm 4,7 ' yi kullanın veya [Bu makalede](/dotnet/framework/network-programming/tls)bulunan yönergeleri izleyin.
 
 ## <a name="overview"></a><a id="Overviewl"></a>Genel Bakış
 
@@ -58,6 +60,9 @@ Veri Geçişi aracı, aşağıda örnekleri verilen çeşitli kaynaklardan Azure
 * Azure Cosmos kapsayıcıları
 
 İçeri aktarma aracı bir grafiksel kullanıcı arabirimi (dtui.exe) içerse de, komut satırından (dt.exe) da tetiklenebilir. Aslında, Kullanıcı arabirimi aracılığıyla bir içeri aktarma ayarladıktan sonra ilişkili komutun çıktısını almak için bir seçenek vardır. İçeri aktarma sırasında hiyerarşik ilişkiler (alt belgeler) oluşturmak için SQL Server veya CSV dosyaları gibi tablo kaynaklı verileri dönüştürebilirsiniz. Kaynak seçenekleri, her bir kaynaktan içeri aktarma için örnek komutlar, hedef seçenekler ve içeri aktarma sonuçlarını görüntüleme hakkında daha fazla bilgi edinmek için devamını okuyun.
+
+> [!NOTE]
+> Küçük geçişler için yalnızca Azure Cosmos DB geçiş aracını kullanmanız gerekir. Büyük geçişler için [verileri almak üzere kılavuzumuzu](cosmosdb-migrationchoices.md)görüntüleyin.
 
 ## <a name="installation"></a><a id="Install"></a>Yükleme
 
@@ -124,7 +129,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a name="import-from-mongodb"></a><a id="MongoDB"></a>MongoDB’den içeri aktarma
 
 > [!IMPORTANT]
-> MongoDB için Azure Cosmos DB API 'SI ile yapılandırılmış bir Cosmos hesabına aktarıyorsanız, bu [yönergeleri](mongodb-migrate.md)izleyin.
+> MongoDB için Azure Cosmos DB API 'SI ile yapılandırılmış bir Cosmos hesabına aktarıyorsanız, bu [yönergeleri](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)izleyin.
 
 MongoDB kaynak alma seçeneği ile, tek bir MongoDB koleksiyonundan içeri aktarabilir, isteğe bağlı olarak belgeleri bir sorgu kullanarak filtreleyebilir ve bir projeksiyon kullanarak belge yapısını değiştirebilirsiniz.  
 
@@ -152,7 +157,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 ## <a name="import-mongodb-export-files"></a><a id="MongoDBExport"></a>MongoDB dışarı aktarma dosyalarını içeri aktarma
 
 > [!IMPORTANT]
-> MongoDB desteğiyle Azure Cosmos DB bir hesaba aktarıyorsanız, bu [yönergeleri](mongodb-migrate.md)izleyin.
+> MongoDB desteğiyle Azure Cosmos DB bir hesaba aktarıyorsanız, bu [yönergeleri](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)izleyin.
 
 MongoDB dışarı aktarma JSON dosyası kaynak içeri aktarıcı seçeneği, mongoexport yardımcı programından üretilen bir veya daha fazla JSON dosyasını içeri aktarmanıza olanak sağlar.  
 
@@ -226,7 +231,7 @@ Azure Tablo depolama bağlantı dizesinin biçimi şöyledir:
 > [!NOTE]
 > Bağlantı dizesi alanında belirtilen Azure Tablo depolama örneğinin erişilebilir olduğundan emin olmak için Doğrula komutunu kullanın.
 
-İçinden içeri aktarma yapılacak Azure tablosunun adını girin. İsteğe bağlı olarak bir [filtre](../vs-azure-tools-table-designer-construct-filter-strings.md) belirtebilirsiniz.
+İçinden içeri aktarma yapılacak Azure tablosunun adını girin. İsteğe bağlı olarak bir [filtre](/visualstudio/azure/vs-azure-tools-table-designer-construct-filter-strings) belirtebilirsiniz.
 
 Azure Tablo depolama kaynağı içeri aktarıcı seçeneği aşağıdaki ek seçenekleri içerir:
 
@@ -281,7 +286,7 @@ Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-[Azure Cosmos DB hesabı yönetme](manage-account.md)bölümünde açıklandığı gibi, Azure Portal anahtarlar sayfasından Azure Cosmos DB hesabı bağlantı dizesini alabilirsiniz. Ancak, veritabanının adı bağlantı dizesinin aşağıdaki biçimde eklenmesi gerekir:
+[Azure Cosmos DB hesabı yönetme](./how-to-manage-database-account.md)bölümünde açıklandığı gibi, Azure Portal anahtarlar sayfasından Azure Cosmos DB hesabı bağlantı dizesini alabilirsiniz. Ancak, veritabanının adı bağlantı dizesinin aşağıdaki biçimde eklenmesi gerekir:
 
 `Database=<CosmosDB Database>;`
 
@@ -352,7 +357,7 @@ Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-[Azure Cosmos DB hesabını yönetme](manage-account.md) bölümünde açıklandığı gibi, Azure portalının Anahtarlar sayfasından Azure Cosmos DB hesabı bağlantı dizesi alınabilse de, bağlantı dizesinin sonuna veritabanı adının şu biçimde eklenmesi gerekir:
+[Azure Cosmos DB hesabını yönetme](./how-to-manage-database-account.md) bölümünde açıklandığı gibi, Azure portalının Anahtarlar sayfasından Azure Cosmos DB hesabı bağlantı dizesi alınabilse de, bağlantı dizesinin sonuna veritabanı adının şu biçimde eklenmesi gerekir:
 
 `Database=<CosmosDB Database>;`
 
@@ -411,7 +416,7 @@ Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-[Azure Cosmos DB hesabını yönetme](manage-account.md)bölümünde açıklandığı gibi, Azure Portal anahtarlar sayfasından Azure Cosmos DB hesabının bağlantı dizesini alabilirsiniz. Ancak, veritabanının adı bağlantı dizesinin aşağıdaki biçimde eklenmesi gerekir:
+[Azure Cosmos DB hesabını yönetme](./how-to-manage-database-account.md)bölümünde açıklandığı gibi, Azure Portal anahtarlar sayfasından Azure Cosmos DB hesabının bağlantı dizesini alabilirsiniz. Ancak, veritabanının adı bağlantı dizesinin aşağıdaki biçimde eklenmesi gerekir:
 
 `Database=<Azure Cosmos database>;`
 

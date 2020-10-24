@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 6101e80131aca94e44bb4e85ee51fe607f47c10f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebd1c4f71d71ca70f6d10763d538b1877b0c3539
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85118959"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489362"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Azure Cosmos DB akış tasarımı desenlerini değiştirme
 
@@ -52,7 +52,7 @@ Cosmos kapsayıcısının değişiklik akışından okumayı ek olarak, Azure Co
 
 ### <a name="high-availability"></a>Yüksek kullanılabilirlik
 
-Azure Cosmos DB,% 99,999 okuma ve yazma kullanılabilirliği sağlar. Birçok ileti kuyruğu farklı olarak, Azure Cosmos DB veriler kolayca küresel olarak dağıtılabilir ve bir [RTO (kurtarma süresi hedefi)](consistency-levels-tradeoffs.md#rto) sıfır ile yapılandırılabilir.
+Azure Cosmos DB,% 99,999 okuma ve yazma kullanılabilirliği sağlar. Birçok ileti kuyruğu farklı olarak, Azure Cosmos DB veriler kolayca küresel olarak dağıtılabilir ve bir [RTO (kurtarma süresi hedefi)](./consistency-levels.md#rto) sıfır ile yapılandırılabilir.
 
 Değişiklik akışındaki öğeleri işledikten sonra, gerçekleştirilmiş bir görünüm oluşturabilir ve toplanmış değerleri Azure Cosmos DB yeniden kalıcı hale getirebilirsiniz. Bir oyun oluşturmak için Azure Cosmos DB kullanıyorsanız, örneğin, tamamlanmış oyunlardan puanları temel alarak gerçek zamanlı öncü panolar uygulamak için değişiklik akışı ' nı kullanabilirsiniz.
 
@@ -73,7 +73,7 @@ Ayrıca, gerçek zamanlı veri taşıma için değişiklik akışından de okuma
 
 ## <a name="event-sourcing"></a>Olay kaynağını belirleme
 
-Olay kaynağını belirleme [deseninin](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) , bu verilere yönelik tam işlem serisini kaydetmek için yalnızca bir Append deposu kullanılması gerekir. Azure Cosmos DB değişiklik akışı, tüm veri alımı yazma (güncelleştirme veya silme yok) olarak modellendiği olay kaynağı oluşturma mimarilerinde merkezi bir veri deposu olarak harika bir seçenektir. Bu durumda, Azure Cosmos DB her yazma bir "olay" ve değişiklik akışında geçmiş olayların tam bir kaydına sahip olacaksınız. Merkezi olay deposu tarafından yayımlanan olayların tipik kullanımları, gerçekleştirilmiş görünümleri sürdürmek veya dış sistemlerle tümleştirme içindir. Değişiklik akışında bekletme için zaman sınırı olmadığından, tüm geçmiş olayları Cosmos kapsayıcısının değişiklik akışından başlayarak okuyarak yeniden çalabilirsiniz.
+Olay kaynağını belirleme [deseninin](/azure/architecture/patterns/event-sourcing) , bu verilere yönelik tam işlem serisini kaydetmek için yalnızca bir Append deposu kullanılması gerekir. Azure Cosmos DB değişiklik akışı, tüm veri alımı yazma (güncelleştirme veya silme yok) olarak modellendiği olay kaynağı oluşturma mimarilerinde merkezi bir veri deposu olarak harika bir seçenektir. Bu durumda, Azure Cosmos DB her yazma bir "olay" ve değişiklik akışında geçmiş olayların tam bir kaydına sahip olacaksınız. Merkezi olay deposu tarafından yayımlanan olayların tipik kullanımları, gerçekleştirilmiş görünümleri sürdürmek veya dış sistemlerle tümleştirme içindir. Değişiklik akışında bekletme için zaman sınırı olmadığından, tüm geçmiş olayları Cosmos kapsayıcısının değişiklik akışından başlayarak okuyarak yeniden çalabilirsiniz.
 
 [Birden çok değişiklik akışı tüketicilerinin aynı kapsayıcının değişiklik akışına abone](how-to-create-multiple-cosmos-db-triggers.md#optimizing-containers-for-multiple-triggers)olmasını sağlayabilirsiniz. [Kira kapsayıcısının](change-feed-processor.md#components-of-the-change-feed-processor) sağlanan verimlilik dışında, değişiklik akışını kullanma maliyeti yoktur. Değişiklik akışı, kullanılıp kullanılmadığından bağımsız olarak her kapsayıcıda kullanılabilir.
 

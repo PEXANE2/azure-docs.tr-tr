@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Manager şablonu kullanarak VM uzantısını etkinleştirme
 description: Bu makalede, karma bulut ortamlarında çalışan Azure Arc etkin sunucularına bir Azure Resource Manager şablonu kullanılarak sanal makine uzantılarının nasıl dağıtılacağı açıklanır.
-ms.date: 10/15/2020
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 23cb1e85b9560b7033dc5bdce672ee8718ed326b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 935fa38fbb98622f2da7d2ce9e1d166b12a32e44
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462991"
+ms.locfileid: "92491215"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>ARM şablonunu kullanarak Azure VM uzantılarını etkinleştirme
 
@@ -137,7 +137,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ## <a name="deploy-the-custom-script-extension"></a>Özel Betik uzantısını dağıtma
 
-Özel Betik uzantısını kullanmak için aşağıdaki örnek Windows ve Linux 'ta çalışacak şekilde sunulmaktadır. Özel Betik uzantısı hakkında bilginiz yoksa, bkz. [Windows Için özel Betik uzantısı](../../virtual-machines/extensions/custom-script-windows.md) veya [Linux Için özel Betik uzantısı](../../virtual-machines/extensions/custom-script-linux.md). Bu uzantıyı karma makinelerle kullanırken anlamanız gereken farklı özellikler vardır:
+Özel Betik uzantısını kullanmak için aşağıdaki örnek Windows ve Linux 'ta çalışacak şekilde sunulmaktadır. Özel Betik uzantısı hakkında bilginiz yoksa, bkz. [Windows Için özel Betik uzantısı](../../virtual-machines/extensions/custom-script-windows.md) veya [Linux için özel Betik uzantısı](../../virtual-machines/extensions/custom-script-linux.md). Bu uzantıyı karma makinelerle kullanırken anlamanız gereken farklı özellikler vardır:
 
 * Azure sanal makine özel Betik uzantısı ile desteklenen işletim sistemlerinin listesi, Azure Arc özellikli sunucular için geçerli değildir. Yay etkin sunucular için desteklenen OSs listesi [burada](agent-overview.md#supported-operating-systems)bulunabilir.
 
@@ -543,7 +543,7 @@ PowerShell DSC uzantısını kullanmak için, Windows ve Linux 'ta çalışmak �
 }
 ```
 
-## <a name="deploy-the-dependency-agent"></a>Bağımlılık aracısını dağıtma
+## <a name="deploy-the-dependency-agent-extension"></a>Bağımlılık Aracısı uzantısını dağıtma
 
 Azure Izleyici bağımlılık Aracısı uzantısını kullanmak için, Windows ve Linux 'ta çalışmak üzere aşağıdaki örnek verilmiştir. Bağımlılık aracısına alışkın değilseniz bkz. [Azure izleyici aracılarına genel bakış](../../azure-monitor/platform/agents-overview.md#dependency-agent).
 

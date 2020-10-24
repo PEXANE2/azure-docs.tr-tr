@@ -3,12 +3,12 @@ title: Azure Service Fabric 'de desteklenen küme sürümleri
 description: Service Fabric ekibi blogundan en yeni sürümlere bağlantı dahil olmak üzere Azure Service Fabric 'deki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: d0d53c704645fdeb1e68898c4cadf8429bcb5645
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 4569b31f990687fb9658d2bf251045e27ecf91a2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122441"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480965"
 ---
 # <a name="supported-service-fabric-versions"></a>Desteklenen Service Fabric sürümleri
 
@@ -44,12 +44,13 @@ Aşağıdaki tabloda Service Fabric sürümleri ve destek bitiş tarihleri liste
 | 7.0.470.* | 7.0.466.* |Sürüm 4,0 ' den küçük veya buna eşit |31 Ocak 2021  |
 | 7.0.472.* | 7.0.466.* |Sürüm 4,0 ' den küçük veya buna eşit |31 Ocak 2021  |
 | 7.0.478.* | 7.0.466.* |Sürüm 4,0 ' den küçük veya buna eşit |31 Ocak 2021  |
-| 7.1.409.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
-| 7.1.417.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
-| 7.1.428.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
-| 7.1.456.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
-| 7.1.458.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
-| 7.1.459.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
+| 7.1.409.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |31 Mart 2021 |
+| 7.1.417.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |31 Mart 2021 |
+| 7.1.428.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |31 Mart 2021 |
+| 7.1.456.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |31 Mart 2021 |
+| 7.1.458.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |31 Mart 2021 |
+| 7.1.459.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |31 Mart 2021 |
+| 7.2.413.* | 7.0.470.* |Sürüm 4,2 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -93,7 +94,7 @@ Aşağıdaki tabloda Service Fabric sürüm adları ve bunlara karşılık gelen
 | 6,1 CU2 UYGULAMAZSANıZ | 6.1.467.9494 | 6.1.185.1 |
 | 6,1 CU3 | 6.1.472.9494 | NA |
 | 6,1 CU4 | 6.1.480.9494 | 6.1.187.1 |
-| 6,2 RTO | 6.2.269.9494 | 6.2.184.1 | 
+| 6,2 RTO | 6.2.269.9494 | 6.2.184.1 | 
 | 6,2 CU1 | 6.2.274.9494 | 6.2.191.1 |
 | 6,2 CU2 UYGULAMAZSANıZ | 6.2.283.9494 | 6.2.194.1 |
 | 6,2 CU3 | 6.2.301.9494 | 6.2.199.1 |
@@ -125,4 +126,5 @@ Aşağıdaki tabloda Service Fabric sürüm adları ve bunlara karşılık gelen
 | 7,1 CU3 | 7.1.456.9590 | 7.1.452.1 |
 | 7,1 CU5 | 7.1.458.9590 | 7.1.454.1 |
 | 7,1 CU6 | 7.1.459.9590 | 7.1.455.1 |
+| 7,2 RTO | 7.2.413.9590 | NA |
 

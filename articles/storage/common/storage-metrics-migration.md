@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: c6a5f69a5a32ed1279b367c93b5246eb77ef0208
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1dc0c7f37dc848ecd361848934cbcc5640afc66
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802846"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490773"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Azure Izleyici 'de ölçümlere geçiş
 
-**31 ağustos 2023** ' de, *Klasik ölçümler* olarak da bilinen depolama Analizi ölçümler kullanımdan kaldırılacak. Daha fazla bilgi için [resmi duyurusuna](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)bakın. Klasik ölçümler kullanıyorsanız, bu tarihten önce Azure Izleyici 'de ölçümlere geçiş yaptığınızdan emin olun. Bu makale, geçişi yapmanıza yardımcı olur. 
+**31 ağustos 2023** ' de, *Klasik ölçümler* olarak da bilinen depolama Analizi ölçümler kullanımdan kaldırılacak. Daha fazla bilgi için [resmi duyuruya](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/) bakın. Klasik ölçümleri kullanıyorsanız, söz konusu tarihten önce Azure İzleyici'deki ölçümlere geçin. Bu makale geçişi yapmanıza yardımcı olur. 
 
 ## <a name="steps-to-complete-the-transition"></a>Geçişi tamamlamaya yönelik adımlar
 
@@ -30,12 +30,12 @@ Azure Izleyici 'de ölçümlere geçiş yapmak için aşağıdaki yaklaşımı �
 
 3. [Azure izleyici 'deki hangi ölçümlerin](#metrics-mapping-between-old-metrics-and-new-metrics) , kullanmakta olduğunuz ölçümlerle aynı verileri sunmakta olduğunu belirler. 
    
-4. Ölçüm verilerini görüntülemek için [grafikler](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal) veya [panolar](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal) oluşturun.
+4. Ölçüm verilerini görüntülemek için [grafikler](/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal) veya [panolar](/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal) oluşturun.
 
    > [!NOTE]
    > Azure Izleyici 'de ölçümler varsayılan olarak etkindir, bu nedenle ölçümleri yakalamaya başlamak için yapmanız gereken bir şey yoktur. Bununla birlikte, bu ölçümleri görüntülemek için grafikler veya panolar oluşturmanız gerekir. 
  
-5. Klasik depolama ölçümlerini temel alan uyarı kuralları oluşturduysanız, Azure Izleyici 'de ölçümleri temel alan [Uyarı kuralları oluşturun](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview) . 
+5. Klasik depolama ölçümlerini temel alan uyarı kuralları oluşturduysanız, Azure Izleyici 'de ölçümleri temel alan [Uyarı kuralları oluşturun](/azure/azure-monitor/platform/alerts-overview) . 
 
 6. Azure Izleyici 'de tüm ölçümlerinizi görebildikten sonra, klasik günlüğe kaydetmeyi devre dışı bırakabilirsiniz. 
 
@@ -53,7 +53,7 @@ Klasik ölçümler bir Azure depolama hesabında gönderilir ve depolanır. Azur
 
 Hesabınızdaki etkinlik bir ölçümü tetikleyemezse, klasik ölçümler söz konusu ölçüm için sıfır (0) değerini gösterir. Azure Izleyici 'de ölçümler, verileri tamamen yok sayacak ve bu da temizleyici raporlara yol açar. Örneğin, klasik ölçümler ile sunucu zaman aşımı hatası bildirilmezse, `ServerTimeoutError` ölçümler tablosundaki değer 0 olarak ayarlanır. Boyut eşittir ile ölçüm değerini sorgulayıp Azure Izleyici hiçbir veri döndürmez `Transactions` `ResponseType` `ServerTimeoutError` . 
 
-Azure Izleyici 'de ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Azure Izleyici 'de ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçümler](/azure/azure-monitor/platform/data-platform-metrics).
 
 <a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
 

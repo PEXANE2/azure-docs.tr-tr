@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ede358cdbe533a32ff99fbd736e171463472e45c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4945e89232ee9a15b2700dac49ccd829b7a52dac
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461336"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494777"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
@@ -381,6 +381,8 @@ Tüm TWINS sürümlerini aynı anda silme hakkında bir örnek için, _Tutorial 
 
 Bir ikizi oluşturmak, ayrıntılarını güncelleştirmek ve ikizi silmek için aşağıdaki çalıştırılabilir kod örneğini kullanabilirsiniz. 
 
+### <a name="set-up-the-runnable-sample"></a>Çalıştırılabilir örneği ayarlama
+
 Kod parçacığı öğreticiden model tanımındaki [Room.js](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) kullanır [*: örnek bir Istemci uygulamasıyla Azure dijital TWINS 'i araştırma*](tutorial-command-line-app.md). Bu bağlantıyı doğrudan dosyaya gitmek veya tam uçtan uca [örnek projenin bir](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)parçası olarak indirmek için kullanabilirsiniz.
 
 Örneği çalıştırmadan önce aşağıdakileri yapın:
@@ -392,7 +394,12 @@ Kod parçacığı öğreticiden model tanımındaki [Room.js](https://github.com
     dotnet add package Azure.identity
     ```
 
-Ardından, örneği çalıştırın.
+Ayrıca, örneği doğrudan çalıştırmak istiyorsanız yerel kimlik bilgilerini de ayarlamanız gerekir. Sonraki bölümde bu adım gösterilmektedir.
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>Örneği çalıştırma
+
+Yukarıdaki adımları tamamladıktan sonra, aşağıdaki örnek kodu doğrudan çalıştırabilirsiniz.
 
 ```csharp
 using System;
@@ -555,8 +562,6 @@ Yukarıdaki programın konsol çıktısı aşağıda verilmiştir:
 ## <a name="manage-twins-with-cli"></a>CLı ile TWINS 'i yönetme
 
 TWINS, Azure Digital TWINS CLı kullanılarak da yönetilebilir. Komutların [_How-to: Azure Digital TWINS CLI * kullanma](how-to-use-cli.md)bölümünde bulabilirsiniz.
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="view-all-digital-twins"></a>Tüm dijital TWINS 'i görüntüle
 

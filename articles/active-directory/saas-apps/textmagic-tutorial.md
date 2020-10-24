@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 81dc3a4f55b214ea6ca7ad0388e57f4b4fdc7124
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1db4f1ae40c72203cdd5d07c49b2f9c202ad525
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546483"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491368"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>Öğretici: TextMagic ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -90,7 +90,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. TextMagic uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Name |   Kaynak özniteliği| Ad Alanı  |
+    | Adı |   Kaynak özniteliği| Ad Alanı  |
     | --------------- | --------------- | --------------- |
     | şirket | User. CompanyName | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | firstName               | Kullanıcı. |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
@@ -149,11 +149,11 @@ Bu bölümde, TextMagic 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 4. Kullanıcı adı altında **Hesap ayarları** ' nı seçin.
 
-    ![TextMagic yapılandırması](./media/textmagic-tutorial/config1.png)
+    ![Ekran görüntüsü kullanıcıdan seçilen hesap ayarlarını gösterir.](./media/textmagic-tutorial/config1.png)
 
 5. **Tek Sign-On (SSO)** sekmesine tıklayın ve aşağıdaki alanları girin:  
 
-    ![TextMagic yapılandırması](./media/textmagic-tutorial/config2.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz tek Sign-On sekmesini gösterir.](./media/textmagic-tutorial/config2.png)
 
     a. **Kimlik sağlayıcısı VARLıK kimliği:** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
 

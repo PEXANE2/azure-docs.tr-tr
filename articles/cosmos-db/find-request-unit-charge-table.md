@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: beca38e46dd2223211fb403d1e1734a5d406075b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7d860ad28ff54a9f300f5c90314b9a7c9f6943dd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284953"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490688"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-table-api"></a>Azure Cosmos DB ' de yürütülen işlemler için istek birimi ücreti bulun Tablo API'si
 
@@ -44,4 +44,4 @@ RU tüketiminizi en iyi duruma getirme hakkında bilgi edinmek için şu makalel
 
 * [Azure Cosmos DB'deki istek birimleri ve aktarım hızı](request-units.md)
 * [Azure Cosmos DB’de sağlanan işlem hızını iyileştirme](optimize-cost-throughput.md)
-* [Azure Cosmos DB'de sorgu maliyetini iyileştirme](optimize-cost-queries.md)
+* [Azure Cosmos DB'de sorgu maliyetini iyileştirme](./optimize-cost-reads-writes.md)

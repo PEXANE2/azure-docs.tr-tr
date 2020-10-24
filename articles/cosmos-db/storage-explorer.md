@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 938968599f1824416666818a46cc73a1d33c5341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b5886984d6e3830549e86a7c1ee46cd2483e4b4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987737"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480607"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Depolama Gezgini kullanarak Azure Cosmos DB kaynaklarını yönetme
 
@@ -20,9 +20,9 @@ Azure Cosmos DB bağlanmak için Azure Depolama Gezgini 'ni kullanabilirsiniz. W
 
 Farklı Azure varlıklarınızı tek bir yerde yönetmek için aynı aracı kullanın. Depolama Blobları ve kuyrukları gibi diğer Azure varlıklarıyla birlikte Azure Cosmos DB varlıklarını yönetebilir, verileri işleyebilir, saklı yordamları ve Tetikleyicileri güncelleştirebilirsiniz.
 
-Azure Depolama Gezgini, SQL, MongoDB, Graph ve tablo API 'Leri için yapılandırılmış Cosmos hesaplarını destekler. Daha fazla bilgi için [Azure Depolama Gezgini Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer) gidin.
+Azure Depolama Gezgini, SQL, MongoDB, Graph ve tablo API 'Leri için yapılandırılmış Cosmos hesaplarını destekler. Daha fazla bilgi için [Azure Depolama Gezgini Azure Cosmos DB]() gidin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 MongoDB için bir SQL API 'si veya Azure Cosmos DB API 'SI olan Cosmos hesabı. Hesabınız yoksa Azure portal bir hesap oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure Cosmos DB: .net Ile SQL API web uygulaması derleme ve Azure Portal](create-sql-api-dotnet.md) .
 
@@ -74,7 +74,7 @@ Bir Azure Cosmos DB bağlanmak için bir bağlantı dizesi kullanabilirsiniz. Bu
 
 Öykünücüle bir Azure Cosmos DB bağlanmak için aşağıdaki adımları kullanın. Bu yöntem yalnızca SQL hesaplarını destekler.
 
-1. Cosmos DB öykünücü yükleyip açın. Öykünücüyü yüklemek için, bkz. [Cosmos DB öykünücü](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
+1. Cosmos DB öykünücü yükleyip açın. Öykünücüyü yüklemek için, bkz. [Cosmos DB öykünücü](./local-emulator.md).
 
 1. Sol ağaçta **yerel ve bağlı** ' yı bulun, **Cosmos DB hesaplar**' a sağ tıklayın ve ardından **Cosmos DB öykünücüye Bağlan**' ı seçin.
 
@@ -173,7 +173,7 @@ Birçok hızlı eylem görevini gerçekleştirmek için Gezgin bölmesinde bir a
 
 #### <a name="query-for-documents"></a>Belgeler için sorgu
 
-* Belge filtresini düzenlemek için bir [SQL sorgusu](how-to-sql-query.md)girin ve ardından **Uygula**' yı seçin.
+* Belge filtresini düzenlemek için bir [SQL sorgusu](./sql-query-getting-started.md)girin ve ardından **Uygula**' yı seçin.
 
   :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Sol bölmedeki eklenti simgesini gösteren ekran görüntüsü.":::
 
@@ -353,4 +353,4 @@ Sol ağaçta düğümleri genişletmeye çalıştığınızda aşağıdaki hatay
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Depolama Gezgini Azure Cosmos DB nasıl kullanacağınızı görmek için bu videoyu izleyin: [Azure Depolama Gezgini 'de Azure Cosmos DB kullanma](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
-* [Depolama Gezgini ile çalışmaya başlama](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) konusunda Depolama Gezgini hakkında daha fazla bilgi edinin ve daha fazla hizmet bağlayın.
+* [Depolama Gezgini ile çalışmaya başlama](../vs-azure-tools-storage-manage-with-storage-explorer.md) konusunda Depolama Gezgini hakkında daha fazla bilgi edinin ve daha fazla hizmet bağlayın.

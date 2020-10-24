@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: b6aa31e816a42e9cf1344137676fbbafb0c06730
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: a319e5f3b6aa861feb2d9dfc88d471ff695c2a3c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282179"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482328"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure Cosmos DB ve kapsayıcı oluşturma
 
@@ -25,7 +25,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'a dağıtma":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
 
@@ -136,4 +136,4 @@ Bu hızlı başlangıçta bir ARM şablonu kullanarak bir Azure Cosmos hesabı, 
 
 - [Azure Cosmos DB genel bakışını](introduction.md) okuyun
 - [Azure Resource Manager](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin
-- Diğer [Azure Cosmos DB kaynak yöneticisi şablonlarını](resource-manager-samples.md) al
+- Diğer [Azure Cosmos DB kaynak yöneticisi şablonlarını](./templates-samples-sql.md) al

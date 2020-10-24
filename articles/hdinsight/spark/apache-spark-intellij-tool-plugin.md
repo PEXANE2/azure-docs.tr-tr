@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
-ms.openlocfilehash: 370ac9528b023f01aaff5e5a7ec62785a02bb4bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85d9da10650028b0f04458ea3553d010e5589ffd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085353"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491385"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>HDInsight kümesi için Apache Spark uygulamalar oluşturmak için Azure Toolkit for IntelliJ kullanma
 
@@ -39,7 +39,7 @@ Bu makalede şunları öğreneceksiniz:
 
 * IntelliJ fıkrı. Bu makalede [IntelliJ fikir topluluk ver kullanılmaktadır.  2018.3.4](https://www.jetbrains.com/idea/download/).
 
-* Azure Toolkit for IntelliJ.  Bkz. [Azure Toolkit for IntelliJ yükleme](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable).
+* Azure Toolkit for IntelliJ.  Bkz. [Azure Toolkit for IntelliJ yükleme](/azure/developer/java/toolkit-for-intellij/).
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>IntelliJ IDEA için Scala eklentisini yükleme
 
@@ -466,7 +466,7 @@ IntelliJ fıkır içinde oluşturduğunuz mevcut Spark Scala uygulamalarını Az
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a0aebc727233cdd838f3e1bf8eeb5cd247b9836
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709207"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489685"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS 'de ters DNS arama bölgeleri barındırma
 
@@ -28,7 +28,7 @@ Bu makale, Azure portal, Azure PowerShell, Azure klasik CLı veya Azure CLı kul
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Geriye doğru arama DNS bölgesi oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Hub** menüsünde **Yeni**  >  **ağ**' ı ve ardından **DNS bölgesi**' ni seçin.
 
    !["DNS bölgesi" seçimi](./media/dns-reverse-dns-hosting/figure1.png)
@@ -48,7 +48,7 @@ IPv4 geriye doğru arama bölgesinin adı, temsil ettiği IP aralığını temel
 
 Aşağıdaki örnek, Azure portal aracılığıyla Azure DNS adlı bir sınıf C ters DNS bölgesinin nasıl oluşturulacağını gösterir `2.0.192.in-addr.arpa` :
 
- !["DNS bölgesi oluşturma" bölmesi, kutular doldurulmuş](./media/dns-reverse-dns-hosting/figure2.png)
+ ![Azure portal aracılığıyla Azure DNS içinde 2.0.192.in-addr. arpa adlı bir sınıf C ters DNS bölgesinin nasıl oluşturulacağını gösteren ekran görüntüsü.](./media/dns-reverse-dns-hosting/figure2.png)
 
 **Kaynak grubu konumu** , kaynak grubunun konumunu tanımlar. DNS bölgesi üzerinde hiçbir etkisi yoktur. DNS bölgesinin konumu her zaman “genel” şeklindedir ve gösterilmez.
 
@@ -117,7 +117,7 @@ Aşağıdaki örnek, Azure DNS bir ters DNS bölgesinde bir PTR kaydı oluşturm
 
 1. **DNS bölgesi** bölmesinin en üstünde **+ kayıt kümesi** ' ni seçerek **kayıt kümesi Ekle** bölmesini açın.
 
-   ![Kayıt kümesi oluşturmak için düğme](./media/dns-reverse-dns-hosting/figure4.png)
+   ![+ Kayıt kümesi düğmesine işaret eden bir ok ile DNS bölgesi bölmesinin ekran görüntüsü.](./media/dns-reverse-dns-hosting/figure4.png)
 
 1. Bir PTR kaydı için kayıt kümesinin adının ters sırada IPv4 adresinin geri kalanı olması gerekir. 
 
@@ -162,7 +162,7 @@ Aşağıdaki örnek, yeni PTR kaydı oluşturma sürecinde size yol gösterir. D
 4. **Etki alanı adı**için IP 'yi kullanan kaynağın FQDN 'sini girin.
 5. DNS kaydını oluşturmak için bölmenin altındaki **Tamam ' ı** seçin.
 
-!["Kayıt kümesi Ekle" bölmesi, kutular doldurulmuş](./media/dns-reverse-dns-hosting/figure7.png)
+![Tür alanındaki değere işaret eden bir ok ile içeren "kayıt kümesi Ekle" bölmesini gösteren ekran görüntüsü.](./media/dns-reverse-dns-hosting/figure7.png)
 
 Aşağıdaki örneklerde, PowerShell veya Azure CLı kullanarak bu görevin nasıl tamamlanacağı gösterilmektedir.
 

@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: b070d6600f18b87ec16f1f9894d577f4c0a6c51c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 47cca5019277b2f4d0025ccb6743589a21dfaafa
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149195"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480131"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Öğretici: IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
 
@@ -138,7 +138,7 @@ Yeni bir IoT Hub oluşturduğunuzda [tanılama günlükleri](../azure-monitor/pl
 
 2. IoT Hub dikey penceresindeki **izleme** bölümünü arayın. **Tanılama ayarları**'na tıklayın. 
 
-   ![IoT Hub dikey penceresinin Tanılama Ayarları bölümünü gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
+   ![Izleme bölümündeki tanılama ayarlarını vurgulayan ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
 3. Aboneliğin ve kaynak grubunun doğru olduğundan emin olun. **Kaynak türü**altında **Tümünü Seç**seçeneğinin işaretini kaldırın, sonra **IoT Hub**bulun ve denetleyin. ( *Tümünü yeniden Seç* ' in yanındaki onay işaretini koyar, tam olarak yoksayın.) **Kaynak**altında Hub adını seçin. Ekranınız şu görüntü gibi görünmelidir: 
@@ -182,7 +182,7 @@ Artık iletilerin hub 'a ne zaman gönderileceğini izlemek için bazı ölçüm
 
    Artık ekranınızda, *gönderilen telemetri iletileri*için küçültülmüş olan ölçüm ve ayrıca *kullanılan toplam ileti sayısı*için yeni ölçüm gösterilmektedir.
 
-   ![Gönderilen telemetri iletileri için ölçüm eklemeyi gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
+   ![Panoya sabitle düğmesini vurgulayan ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
 
    **Panoya sabitle**' ye tıklayın. Bu işlem, yeniden erişebilmek için Azure portal panoya sabitleyebilir. Panoya sabitleyemez, ayarlarınız korunmaz.
 

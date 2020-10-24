@@ -1,22 +1,22 @@
 ---
 title: Kuruluşunuz dışında paylaşma (ARM şablonu)-Azure veri paylaşımının hızlı başlangıç
-description: Bu hızlı başlangıçta Azure veri paylaşma ve Kaynak Yöneticisi şablonunu kullanarak müşteriler ve iş ortakları ile veri paylaşmayı öğrenin.
+description: Bu hızlı başlangıçta Azure veri paylaşımından ve bir Azure Resource Manager şablonu (ARM şablonu) kullanarak müşterilerle ve iş ortaklarıyla veri paylaşmayı öğrenin.
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: f72fbad579bcb08a36c2dd29c387e18953f26c09
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146143"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487696"
 ---
-# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Hızlı başlangıç: Azure veri paylaşma ve Kaynak Yöneticisi şablonlarını kullanarak veri paylaşma
+# <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>Hızlı başlangıç: Azure veri paylaşma ve ARM şablonunu kullanarak veri paylaşma
 
-Azure Resource Manager şablonu kullanarak bir Azure depolama hesabından yeni bir Azure veri paylaşımı ayarlamayı öğrenin ve verilerinizi Azure kuruluşunuz dışındaki müşteriler ve iş ortaklarıyla paylaşmaya başlayın. Desteklenen veri depolarının bir listesi için bkz. [Azure veri paylaşımında desteklenen veri depoları](./supported-data-stores.md).
+Bir Azure depolama hesabından bir Azure Resource Manager şablonu (ARM şablonu) kullanarak yeni bir Azure veri paylaşımının nasıl ayarlanacağını öğrenin. Ve Azure kuruluşunuzun dışındaki müşteriler ve iş ortakları ile verilerinizi paylaşmaya başlayın. Desteklenen veri depolarının bir listesi için bkz. [Azure veri paylaşımında desteklenen veri depoları](./supported-data-stores.md).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -38,12 +38,12 @@ Aşağıdaki kaynaklar şablonda tanımlanmıştır:
 
 * [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts):
 * [Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar](/azure/templates/microsoft.storage/storageaccounts/blobservices/containers)
+* [Microsoft. DataShare/hesapları](/azure/templates/microsoft.datashare/accounts)
+* [Microsoft. DataShare/hesaplar/paylaşımlar](/azure/templates/microsoft.datashare/accounts/shares)
 * [Microsoft. Storage/storageAccounts/Providers/Roleatamaları](/azure/templates/microsoft.authorization/roleassignments)
-* [Microsoft. DataShare/hesapları](/rest/api/datashare/accounts/create)
-* [Microsoft. DataShare/hesaplar/paylaşımlar](/rest/api/datashare/shares/create)
-* [Microsoft. DataShare/hesaplar/paylaşımlar/veri kümeleri](/rest/api/datashare/datasets/create)
-* [Microsoft. DataShare/hesaplar/paylaşımlar/davetler](/rest/api/datashare/invitations/create)
-* [Microsoft. DataShare/hesaplar/paylaşımlar/synchronizationSettings](/rest/api/datashare/synchronizationsettings/create)
+* [Microsoft. DataShare/hesaplar/paylaşımlar/veri kümeleri](/azure/templates/microsoft.datashare/accounts/shares/datasets)
+* [Microsoft. DataShare/hesaplar/paylaşımlar/davetler](/azure/templates/microsoft.datashare/accounts/shares/invitations)
+* [Microsoft. DataShare/hesaplar/paylaşımlar/synchronizationSettings](/azure/templates/microsoft.datashare/accounts/shares/synchronizationsettings)
 
 Şablon aşağıdaki görevleri gerçekleştirir:
 
@@ -56,11 +56,11 @@ Aşağıdaki kaynaklar şablonda tanımlanmıştır:
 
 Bu şablon, öğrenme amacıyla oluşturulur. Uygulamada, genellikle var olan bir depolama hesabında bazı verileriniz olur. Veri kümesini oluşturmak için bir şablon veya komut dosyası çalıştırmadan önce rol atamasını oluşturmanız gerekir. Bazen, şablonu dağıtırken aşağıdaki hata iletisini alabilirsiniz:
 
-```error message
+```plaintext
 "Missing permissions for DataShareAcccount on resource 'subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>' (Code: 5006)"
 ```
 
-Bunun nedeni, dağıtımın Azure rolü atamasının sonlandırılmadan önce veri kümesini oluşturmaya çalışıyor olmasından kaynaklanır. Hata iletisine rağmen dağıtım başarılı olabilir.  [Dağıtılan kaynakları gözden geçirmeyi](#review-deployed-resources)hala öğreneceksiniz.
+Bunun nedeni, dağıtımın Azure rolü atamasının sonlandırılmadan önce veri kümesini oluşturmaya çalışıyor olmasından kaynaklanır. Hata iletisine rağmen dağıtım başarılı olabilir. [Dağıtılan kaynakları gözden geçirmeyi](#review-deployed-resources)hala öğreneceksiniz.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 

@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2020
 ms.author: rolyon
-ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ab6561b1dc0e8b977fc69d259c5f26366f355ce
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511730"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481338"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Azure portalı kullanarak özel Azure rolleri oluşturma veya güncelleştirme
 
 [Azure yerleşik rolleri](built-in-roles.md) kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi Azure özel rollerinizi de oluşturabilirsiniz. Yerleşik rollerde olduğu gibi, abonelik ve kaynak grubu kapsamları 'nda kullanıcılara, gruplara ve hizmet sorumlularına özel roller atayabilirsiniz. Özel Roller bir Azure Active Directory (Azure AD) dizininde depolanır ve abonelikler arasında paylaşılabilir. Her bir dizin en fazla 5000 özel role sahip olabilir. Özel roller Azure portal, Azure PowerShell, Azure CLı veya REST API kullanılarak oluşturulabilir. Bu makalede, Azure portal kullanarak nasıl özel rol oluşturulacağı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Özel Roller oluşturmak için şunlar gerekir:
 
@@ -331,7 +331,7 @@ Bir izni dışladığınızda, veya olarak eklenir `NotActions` `NotDataActions`
 
 1. Silmek istediğiniz özel rolün üç nokta (**...**) simgesine tıklayın ve ardından **Sil**' e tıklayın.
 
-    ![Özel rol menüsü](./media/custom-roles-portal/delete-menu.png)
+    ![Silinmek üzere seçilebilirler özel rollerin bir listesini gösteren ekran görüntüsü.](./media/custom-roles-portal/delete-menu.png)
 
     Özel rolünüzün tamamen silinmesi birkaç dakika sürebilir.
 

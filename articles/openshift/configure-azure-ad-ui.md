@@ -8,12 +8,12 @@ author: sabbour
 ms.author: asabbour
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 2cb54c202af04996080cda970b3d327145f0e72b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eab701d22f579a816aa95bd43a74fd9ea07d9e4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469890"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490246"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Azure Red Hat OpenShift 4 kümesi için Azure Active Directory kimlik doğrulamasını yapılandırma (portal)
 
@@ -62,7 +62,7 @@ OpenShift 'i `email` talebi kullanacak ve `upn` `upn` Azure ACTIVE DIRECTORY tar
 
 **Belirteç yapılandırması (Önizleme)** bölümüne gidin ve **Isteğe bağlı talep Ekle**' ye tıklayın. **Kimlik** ' i seçin ve ardından **e-posta** ve **UPN** taleplerini denetleyin.
 
-![Gizli anahtar oluşturma](media/aro4-ad-tokens.png)
+![Eklenen e-posta ve UPN taleplerini gösteren ekran görüntüsü.](media/aro4-ad-tokens.png)
 
 ## <a name="assign-users-and-groups-to-the-cluster-optional"></a>Kümeye Kullanıcı ve Grup atama (isteğe bağlı)
 

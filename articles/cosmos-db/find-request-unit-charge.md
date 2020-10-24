@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 23f334d28ef5045c68bb84fc0bc34e8f847fe0f9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d8c1237b1bf4fac743ad5e70fee857337d9624c4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281844"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490671"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API 'sinde yürütülen işlemler için istek birimi ücreti bulma
 
@@ -175,8 +175,8 @@ RU tüketiminizi en iyi duruma getirme hakkında bilgi edinmek için şu makalel
 
 * [Azure Cosmos DB'deki istek birimleri ve aktarım hızı](request-units.md)
 * [Azure Cosmos DB’de sağlanan işlem hızını iyileştirme](optimize-cost-throughput.md)
-* [Azure Cosmos DB'de sorgu maliyetini iyileştirme](optimize-cost-queries.md)
-* [Sağlanan aktarım hızını küresel olarak ölçeklendirme](scaling-throughput.md)
+* [Azure Cosmos DB'de sorgu maliyetini iyileştirme](./optimize-cost-reads-writes.md)
+* [Sağlanan aktarım hızını küresel olarak ölçeklendirme](./request-units.md)
 * [Kapsayıcı ve veritabanlarına aktarım hızı sağlama](set-throughput.md)
 * [Bir kapsayıcı için sağlama işleme](how-to-provision-container-throughput.md)
 * [Azure Cosmos DB ölçümlerle izleme ve hata ayıklama](use-metrics.md)

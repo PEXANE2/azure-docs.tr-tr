@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 7a76ac3bbe62d48de67815d09e1c8d75f03caa36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d560a415aa6ee0da5304a1a9900c30b32e3be18
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86077907"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488937"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-mimari en iyi uygulamaları
 
@@ -38,14 +38,14 @@ Aşağıdaki tabloda, HDInsight kümesi oluşturmak için kullanılabilecek fark
 
 |Araç|Tarayıcı tabanlı|Komut Satırı|REST API|SDK|
 |---|---|---|---|---|
-|[Azure portalındaki](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLı (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||X|
-|[Python SDK'sı](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
-|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
+|[.NET SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)||||X|
+|[Python SDK'sı](https://docs.microsoft.com/python/api/overview/azure/hdinsight)||||X|
+|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight)||||X|
 |[Azure Resource Manager şablonları](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
 Daha fazla bilgi için bkz. [HDInsight 'Taki küme türleri](../hadoop/apache-hadoop-introduction.md).
@@ -107,7 +107,7 @@ Bazı HDInsight Hive meta veri deposu en iyi yöntemler şunlardır:
 
 ## <a name="best-practices-for-different-workloads"></a>Farklı iş yükleri için en iyi uygulamalar
 
-- İyileştirilmiş yanıt süresi [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)Ile etkileşimli Hive sorguları için LLAP kümesi kullanmayı düşünün   , sorguların bellek içi önbelleğe alınmasına izin veren Hive 2,0 ' de yeni bir özelliktir. LLAP, bazı durumlarda Hive sorgularını çok daha hızlı ve [Hive 1. x 'ten daha hızlı](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)hale getirir.
+- İyileştirilmiş yanıt süresi [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) Ile etkileşimli Hive sorguları için LLAP kümesi kullanmayı düşünün, sorguların bellek içi önbelleğe alınmasına Izin veren Hive 2,0 ' de yeni bir özelliktir. LLAP, bazı durumlarda Hive sorgularını çok daha hızlı ve [Hive 1. x 'ten daha hızlı](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)hale getirir.
 - Hive işlerinin yerine Spark işleri kullanmayı göz önünde bulundurun.
 - Impala tabanlı sorguları LLAP sorgularıyla değiştirmeyi göz önünde bulundurun.
 - MapReduce işlerini Spark işleri ile değiştirmeyi düşünün.

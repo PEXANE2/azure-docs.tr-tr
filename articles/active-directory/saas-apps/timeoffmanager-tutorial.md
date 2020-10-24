@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 59eb2e320a828b644af6f740cf9f8381370a0dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9535160bbc87b291ba40becdb55c917985bd348c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527375"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483157"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>Öğretici: TimeOffManager ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, TimeOffManager 'ı Azure Active Directory (Azure AD) ile tümle
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -146,11 +146,11 @@ Bu bölümde, TimeOffManager erişimi vererek Azure çoklu oturum açma özelli�
 
 2. **Hesap \> hesabı seçenekleri \> tek Sign-On ayarları**' na gidin.
    
-    ![Tek Sign-On ayarları](./media/timeoffmanager-tutorial/ic795917.png "Tek Sign-On ayarları")
+    ![Ekran görüntüsü, hesap seçeneklerinden seçilen tek Sign-On ayarlarını gösterir.](./media/timeoffmanager-tutorial/ic795917.png "Tek Sign-On ayarları")
 
 3. **Tek Sign-On ayarları** bölümünde aşağıdaki adımları gerçekleştirin:
    
-    ![Tek Sign-On ayarları](./media/timeoffmanager-tutorial/ic795918.png "Tek Sign-On ayarları")
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz tek Sign-On ayarları bölümünü gösterir.](./media/timeoffmanager-tutorial/ic795918.png "Tek Sign-On ayarları")
    
     a. Base-64 kodlu sertifikanızı Not defteri 'nde açın, bu içeriği panonuza kopyalayın ve ardından tüm sertifikayı **X. 509.440 sertifikası** metin kutusuna yapıştırın.
    
@@ -168,7 +168,7 @@ Bu bölümde, TimeOffManager erişimi vererek Azure çoklu oturum açma özelli�
 
 4. **Çoklu oturum açma ayarları** sayfasında, **onaylama tüketici hizmeti URL 'si** değerini kopyalayın ve Azure Portal içindeki **temel SAML yapılandırması** bölümündeki **yanıt URL** 'si metin kutusuna yapıştırın. 
 
-      ![Tek Sign-On ayarları](./media/timeoffmanager-tutorial/ic795915.png "Tek Sign-On ayarları")
+      ![Ekran görüntüsünde, onaylama tüketici hizmeti U R L bağlantısı gösterilmektedir.](./media/timeoffmanager-tutorial/ic795915.png "Tek Sign-On ayarları")
 
 ### <a name="create-timeoffmanager-test-user"></a>TimeOffManager test kullanıcısı oluşturma
 

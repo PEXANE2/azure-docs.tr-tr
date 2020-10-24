@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 1b49ac357fd021b23272112a24ae9371d12bc042
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 18e32a0387119d235294d1126d869186ae28d2b2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331592"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488988"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -92,7 +92,6 @@ Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekil
 - Arka uçlarınızın IP adresini, Azure ön kapısından gelen trafiği ve yalnızca Azure 'un altyapı hizmetlerini kabul edecek şekilde yapılandırın. Arka ucunuzu hızlandırma için aşağıdaki IP ayrıntılarına bakın:
  
     - Ön kapıdaki IPv4 arka uç IP adresi aralığı için [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519) bölümündeki *azurefrontkapısı. arka* uç bölümüne bakın veya [ağ güvenlik gruplarında](../virtual-network/network-security-groups-overview.md#security-rules) *azurefrontkapısı. arka uç* hizmet etiketini de kullanabilirsiniz.
-    - Hizmet etiketinde kapsanan ön kapıdaki **IPv6** arka uç IP alanı, Azure IP aralıkları json dosyasında listelenmez. Açık IPv6 adres aralığı arıyorsanız şu anda şu şekilde sınırlıdır `2a01:111:2050::/44`
     - Sanallaştırılmış ana bilgisayar IP adresleri aracılığıyla Azure 'un [temel altyapı hizmetleri](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) : `168.63.129.16` ve `169.254.169.254`
 
     > [!WARNING]

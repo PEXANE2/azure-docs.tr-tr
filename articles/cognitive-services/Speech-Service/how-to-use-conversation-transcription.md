@@ -1,222 +1,48 @@
 ---
-title: Gerçek zamanlı konuşma dökümü (Önizleme)-konuşma hizmeti
+title: Gerçek zamanlı konuşma dökümü hızlı başlangıç-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK 'Sı ile gerçek zamanlı konuşma dökümünü nasıl kullanacağınızı öğrenin. C++, C# ve Java için kullanılabilir.
+description: Konuşma SDK 'Sı ile gerçek zamanlı konuşma dökümünü nasıl kullanacağınızı öğrenin. Konuşma dökümü, konuşma hizmetine ses akışı yaparak, birden fazla katılımcı ekleme, kaldırma ve tanımanıza olanak sağlayan toplantılar ve diğer konuşmalar gerçekleştirmenize olanak tanır.
 services: cognitive-services
-author: markamos
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: weixu
-ms.custom: devx-track-csharp
-ms.openlocfilehash: a425c75dfd57f0d5f9c98b73d8b351972b70703a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/20/2020
+ms.author: trbye
+zone_pivot_groups: acs-js-csharp
+ms.openlocfilehash: 6cb338e8b7baa45e1c84f59a5730a9a500e71a79
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918664"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486812"
 ---
-# <a name="real-time-conversation-transcription-preview"></a>Gerçek zamanlı konuşma dökümü (Önizleme)
+# <a name="get-started-with-real-time-conversation-transcription"></a>Gerçek zamanlı konuşma dökümü ile çalışmaya başlama
 
-Konuşma **SDK 'sı konuşma API 'si** , veya kullanarak konuşma hizmetine ses akışı yaparak, birden fazla katılımcı ekleme, kaldırma ve tanıma olanağı sunarak toplantılar ve diğer konuşmalar oluşturmanızı sağlar `PullStream` `PushStream` . Bu konu, konuşma SDK 'Sı (sürüm 1.8.0 veya üzeri) ile konuşmayı metne nasıl kullanacağınızı bilmeniz gerekir. Daha fazla bilgi için bkz. [konuşma Hizmetleri nedir?](overview.md)
+Konuşma **SDK 'sı konuşma API 'si** , veya kullanarak konuşma hizmetine ses akışı yaparak, birden fazla katılımcı ekleme, kaldırma ve tanıma olanağı sunarak toplantılar ve diğer konuşmalar oluşturmanızı sağlar `PullStream` `PushStream` . İlk olarak REST API kullanarak her katılımcı için ses imzaları oluşturun ve ardından, konuşmaları oluşturmak için SDK ile birlikte ses imzalarını kullanın. Daha fazla bilgi için konuşmaya [genel bakış](conversation-transcription.md) bölümüne bakın.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Windows, Linux ve Android 'de C++, C# ve Java için konuşma API 'SI desteklenir.
-- Şu anda şu bölgelerde "en-US" ve "zh-CN" dillerinde kullanılabilir: _merkezileştirme_ ve _eastaya_.
-- Kayıttan yürütme başvuru akışı olan 7 MIC dairesel çok mikrofonlu bir dizi gerektirir. Microphone dizisinin [belirtimizi](https://aka.ms/sdsdk-microphone)karşılaması gerekir.
-- [Konuşma cihazları SDK 'sı](speech-devices-sdk.md) , uygun cihazlar ve görüşme dökümünü gösteren örnek bir uygulama sağlar.
+* Yalnızca şu abonelik bölgelerinde kullanılabilir: `centralus` , `eastasia` , `eastus` , `westeurope`
+* Kayıttan yürütme başvuru akışı olan 7 MIC dairesel çok mikrofonlu bir dizi gerektirir. Microphone dizisinin [belirtimizi](https://aka.ms/sdsdk-microphone)karşılaması gerekir.
+* [Konuşma cihazları SDK 'sı](speech-devices-sdk.md) , uygun cihazlar ve görüşme dökümünü gösteren örnek bir uygulama sağlar.
 
-## <a name="optional-sample-code-resources"></a>İsteğe bağlı örnek kod kaynakları
+## <a name="prerequisites"></a>Önkoşullar
 
-Konuşma cihaz SDK 'Sı, 8 kanal kullanan gerçek zamanlı ses yakalama için Java 'da örnek kod sağlar.
+Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](overview.md#try-the-speech-service-for-free).
 
-- [ROOBO cihazı örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
-- [Azure Kinect Dev Kit örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [JavaScript Basics include](includes/how-to/conversation-transcription/real-time-javascript.md)]
+::: zone-end
 
-## <a name="prerequisites"></a>Ön koşullar
-
-Bir konuşma hizmeti aboneliği. Yoksa [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/cognitive-services/) oluşturabilirsiniz.
-
-## <a name="create-voice-signatures"></a>Ses imzaları oluşturma
-
-İlk adım, etkin konuşmacı tanıma için konuşma katılımcıları için ses imzaları oluşturmaktır.
-
-### <a name="audio-input-requirements"></a>Ses girişi gereksinimleri
-
-- Ses imzaları oluşturmak için giriş sesi dalga dosyası 16 bit örneklerde, 16 kHz örnek hızında ve tek kanal (mono) biçiminde olmalıdır.
-- Her ses örneği için önerilen uzunluk otuz saniye ile iki dakika arasındadır.
-
-### <a name="sample-code"></a>Örnek kod
-
-Aşağıdaki örnek, C# ' de [REST API kullanarak](https://aka.ms/cts/signaturegenservice) sesli imza oluşturmanın iki farklı yolunu göstermektedir. "YourSubscriptionKey" için gerçek bilgileri, "Hoparlörkervoice. wav" için dalga dosyası adınızı ve `{region}` ve "YourServiceRegion" (_hacmor_ _eastasıya_) için bölgeniz olması gerektiğini unutmayın.
-
-```csharp
-class Program
-{
-    static async Task CreateVoiceSignatureByUsingFormData()
-    {
-        // Replace with your own region
-        var region = "YourServiceRegion";
-        // Change the name of the wave file to match yours
-        byte[] fileBytes = File.ReadAllBytes(@"speakerVoice.wav");
-        var form = new MultipartFormDataContent();
-        var content = new ByteArrayContent(fileBytes);
-        form.Add(content, "file", "file");
-        var client = new HttpClient();
-        // Add your subscription key to the header Ocp-Apim-Subscription-Key directly
-        // Replace "YourSubscriptionKey" with your own subscription key
-        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "YourSubscriptionKey");
-        // Edit with your desired region for `{region}`
-        var response = await client.PostAsync($"https://signature.{region}.cts.speech.microsoft.com/api/v1/Signature/GenerateVoiceSignatureFromFormData", form);
-        // A voice signature contains Version, Tag and Data key values from the Signature json structure from the Response body.
-        // Voice signature format example: { "Version": <Numeric string or integer value>, "Tag": "string", "Data": "string" }
-        var jsonData = await response.Content.ReadAsStringAsync();
-    }
-
-    static async Task CreateVoiceSignatureByUsingBody()
-    {
-        // Replace with your own region
-        var region = "YourServiceRegion";
-        // Change the name of the wave file to match yours
-        byte[] fileBytes = File.ReadAllBytes(@"speakerVoice.wav");
-        var content = new ByteArrayContent(fileBytes);
-
-        var client = new HttpClient();
-        // Add your subscription key to the header Ocp-Apim-Subscription-Key directly
-        // Replace "YourSubscriptionKey" with your own subscription key
-        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "YourSubscriptionKey");
-        // Edit with your desired region for `{region}`
-        var response = await client.PostAsync($"https://signature.{region}.cts.speech.microsoft.com/api/v1/Signature/GenerateVoiceSignatureFromByteArray", content);
-        // A voice signature contains Version, Tag and Data key values from the Signature json structure from the Response body.
-        // Voice signature format example: { "Version": <Numeric string or integer value>, "Tag": "string", "Data": "string" }
-        var jsonData = await response.Content.ReadAsStringAsync();
-    }
-
-    static void Main(string[] args)
-    {
-        CreateVoiceSignatureByUsingFormData().Wait();
-        CreateVoiceSignatureByUsingBody().Wait();
-    }
-}
-```
-
-## <a name="transcribe-conversations"></a>Konuşmalar
-
-Aşağıdaki örnek kod, üç hoparlör için konuşmaları gerçek zamanlı olarak nasıl oluşturacağınızı gösterir. Yukarıda gösterildiği gibi, her konuşmacı için zaten ses imzaları oluşturmuş olduğunuzu varsayar. SpeechConfig nesnesini oluştururken "YourSubscriptionKey" ve "YourServiceRegion" için gerçek bilgileri değiştirin.
-
-Örnek kod vurguları şunlardır:
-
-- `Conversation` `SpeechConfig` Kullanılarak oluşturulan bir toplantı tanımlayıcısı kullanarak nesneden nesne oluşturma`Guid.NewGuid()`
-- Bir `ConversationTranscriber` nesne oluşturma ve konuşmaya başlamak için ile konuşmayı birleştirin `JoinConversationAsync()`
-- İlgilendiğiniz olayları kaydetme
-- Konuşma nesnesini kullanarak konuşmaya katılımcı ekleme veya konuşmayı kaldırma
-- Ses akışı
-- Konuşma SDK 'Sı sürüm 1.9.0 ve her ikisi `int` ve `string` değer türü, ses imza sürümü alanında desteklenir.
-
-Döküm ve konuşmacı tanımlayıcı, kayıtlı olaylara geri dönmeyecektir.
-
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
-using Microsoft.CognitiveServices.Speech.Transcription;
-
-public class MyConversationTranscriber
-{
-    public static async Task ConversationWithPullAudioStreamAsync()
-    {
-        // Creates an instance of a speech config with specified subscription key and service region
-        // Replace with your own subscription key and region
-        var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-        config.SetProperty("ConversationTranscriptionInRoomAndOnline", "true");
-        var stopTranscription = new TaskCompletionSource<int>();
-
-        // Create an audio stream from a wav file or from the default microphone if you want to stream live audio from the supported devices
-        // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback
-        using (var audioInput = Helper.OpenWavFile(@"8channelsOfRecordedPCMAudio.wav"))
-        {
-            var meetingId = Guid.NewGuid().ToString();
-            using (var conversation = await Conversation.CreateConversationAsync(config, meetingId).ConfigureAwait(false))
-            {
-                // Create a conversation transcriber using audio stream input
-                using (var conversationTranscriber = new ConversationTranscriber(audioInput))
-                {
-                    await conversationTranscriber.JoinConversationAsync(conversation);
-
-                    // Subscribe to events
-                    conversationTranscriber.Transcribing += (s, e) =>
-                    {
-                            Console.WriteLine($"TRANSCRIBING: Text={e.Result.Text}");
-                    };
-
-                    conversationTranscriber.Transcribed += (s, e) =>
-                    {
-                        if (e.Result.Reason == ResultReason.RecognizedSpeech)
-                        {
-                            Console.WriteLine($"TRANSCRIBED: Text={e.Result.Text}, UserID={e.Result.UserId}");
-                        }
-                        else if (e.Result.Reason == ResultReason.NoMatch)
-                        {
-                            Console.WriteLine($"NOMATCH: Speech could not be recognized.");
-                        }
-                    };
-
-                    conversationTranscriber.Canceled += (s, e) =>
-                    {
-                        Console.WriteLine($"CANCELED: Reason={e.Reason}");
-
-                        if (e.Reason == CancellationReason.Error)
-                        {
-                            Console.WriteLine($"CANCELED: ErrorCode={e.ErrorCode}");
-                            Console.WriteLine($"CANCELED: ErrorDetails={e.ErrorDetails}");
-                            Console.WriteLine($"CANCELED: Did you update the subscription info?");
-                            stopTranscription.TrySetResult(0);
-                        }
-                    };
-
-                    conversationTranscriber.SessionStarted += (s, e) =>
-                    {
-                        Console.WriteLine("\nSession started event.");
-                    };
-
-                    conversationTranscriber.SessionStopped += (s, e) =>
-                    {
-                        Console.WriteLine("\nSession stopped event.");
-                        Console.WriteLine("\nStop recognition.");
-                        stopTranscription.TrySetResult(0);
-                    };
-
-                    // Add participants to the conversation.
-                    // Create voice signatures using REST API described in the earlier section in this document.
-                    // Voice signature needs to be in the following format:
-                    // { "Version": <Numeric string or integer value>, "Tag": "string", "Data": "string" }
-
-                    var speakerA = Participant.From("Speaker_A", "en-us", signatureA);
-                    var speakerB = Participant.From("Speaker_B", "en-us", signatureB);
-                    var speakerC = Participant.From("SPeaker_C", "en-us", signatureC);
-                    await conversation.AddParticipantAsync(speakerA);
-                    await conversation.AddParticipantAsync(speakerB);
-                    await conversation.AddParticipantAsync(speakerC);
-
-                    // Starts transcribing of the conversation. Uses StopTranscribingAsync() to stop transcribing when all participants leave.
-                    await conversationTranscriber.StartTranscribingAsync().ConfigureAwait(false);
-
-                    // Waits for completion.
-                    // Use Task.WaitAny to keep the task rooted.
-                    Task.WaitAny(new[] { stopTranscription.Task });
-
-                    // Stop transcribing the conversation.
-                    await conversationTranscriber.StopTranscribingAsync().ConfigureAwait(false);
-                 }
-            }
-       }
-    }
-}
-```
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [C# Basics include](includes/how-to/conversation-transcription/real-time-csharp.md)]
+::: zone-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Zaman uyumsuz konuşma dökümü](how-to-async-conversation-transcription.md)
+> [Zaman uyumsuz konuşma dökümü](how-to-async-conversation-transcription.md) 
+>  [Roobo cihazı örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java) 
+>  [Azure Kinect Dev Kit örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 71b7217a1a3d79db67e1649ce33d441f0c2c2da2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 86336ddb557613d42117480a5793e8b0ecbc7bae
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489413"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495830"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -283,7 +283,7 @@ Hayır. VNet eşlemesini etkinleştirmek için adres alanları çakışmamalıd�
 VNet eşleme bağlantısı oluşturmak için ücret alınmaz. Eşleme bağlantıları arasında veri aktarımı ücretlendirilir. [Buraya bakın](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>VNet eşleme trafiği şifrelendi mı?
-VNET eşleme trafiği veri merkezleri arasında (veya Microsoft-- [MACsec veri bağlantısı katmanı şifrelemesi](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) adına göre denetlenmez), temel alınan ağ donanımında kullanılır.
+Azure trafiği, veri merkezleri arasında (Microsoft veya Microsoft tarafından denetlenmeden fiziksel sınırlar dışında) taşınırsa, arka plandaki Ağ donanımında [MACsec veri bağlantısı katmanı şifrelemesi](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) kullanılır.  Bu, VNet eşleme trafiği için geçerlidir.
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Neden eşleme bağlantıdır bağlantısı *kesik* durumda?
 VNET eşleme bağlantıları, bir VNet eşleme bağlantısı silindiğinde *bağlantısı kesik* duruma geçer. Başarılı bir eşleme bağlantısını yeniden kurmak için her iki bağlantıyı da silmelisiniz.

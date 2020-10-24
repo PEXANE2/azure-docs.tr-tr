@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d0a1826dafd1e6ce6202dc4f29417a1ce100e54f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 345fd486788cfbb69454be488d771d9b4ea394ab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83195249"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488648"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Içeri/dışarı aktarma hizmeti için Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanın
 
@@ -101,9 +101,9 @@ Müşteri tarafından yönetilen anahtarınızla ilgili herhangi bir hata alırs
 |----------------|------------|-----------------|
 | Cmkerroraccessiptal edildi | Müşterinin yönettiği anahtara erişim iptal edilir.                                                       | Evet, aşağıdakileri denetle: <ol><li>Anahtar Kasası hala MSI 'ye erişim ilkesinde sahiptir.</li><li>Erişim ilkesinde al, sarmalama ve sarmalama izinleri etkin.</li><li>Anahtar Kasası güvenlik duvarının arkasındaki bir VNet 'daysanız, **Microsoft güvenilir Hizmetleri 'Ne Izin ver** ' in etkinleştirilip etkinleştirilmediğini denetleyin.</li><li>İş kaynağının MSI `None` 'Ların API 'ler kullanılarak sıfırlanıp sıfırlandığını denetleyin.<br>Evet ise değeri olarak ayarlayın `Identity = SystemAssigned` . Bu işlem, iş kaynağının kimliğini yeniden oluşturur.<br>Yeni kimlik oluşturulduktan sonra `Get` `Wrap` `Unwrap` anahtar kasasının erişim ilkesinde yeni kimlik için,, ve izinlerini etkinleştirin</li></ol>                                                                                            |
 | CmkErrorKeyDisabled      | Müşteri tarafından yönetilen anahtar devre dışı bırakıldı.                                         | Evet, anahtar sürümünü etkinleştirerek     |
-| CmkErrorKeyNotFound      | Müşteri tarafından yönetilen anahtar bulunamıyor. | Evet, anahtar silinmişse, ancak temizleme süresi içinde ise, [Anahtar Kasası anahtarını kaldırma Işlemini geri al özelliğini](https://docs.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)kullanarak devam eder.<br>Değilse <ol><li>Evet, müşteri anahtarı yedekledi ve geri yüklerse.</li><li>Hayır, aksi durumda.</li></ol>
-| CmkErrorVaultNotFound |Müşterinin yönettiği anahtarın anahtar kasası bulunamıyor. |   Anahtar Kasası silinmişse:<ol><li>Evet, temizleme koruma süresi içinde ise, [anahtar kasasını kurtarma](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)bölümündeki adımları kullanarak.</li><li>Temizleme koruma süresinin ötesinde, hayır.</li></ol><br>Diğer bir deyişle, Anahtar Kasası farklı bir kiracıya geçirildiyse, aşağıdaki adımlardan biri kullanılarak kurtarılabilir:<ol><li>Anahtar kasasını eski kiracıya geri döndürür.</li><li>`Identity = None`Değerini ayarlayın ve ardından değerine geri ayarlayın `Identity = SystemAssigned` . Bu, yeni kimlik oluşturulduktan sonra kimliği siler ve yeniden oluşturur. `Get` `Wrap` `Unwrap` Anahtar kasasının erişim ilkesindeki yeni kimlik için, ve izinlerini etkinleştirin.</li></ol>|
+| CmkErrorKeyNotFound      | Müşteri tarafından yönetilen anahtar bulunamıyor. | Evet, anahtar silinmişse, ancak temizleme süresi içinde ise, [Anahtar Kasası anahtarını kaldırma Işlemini geri al özelliğini](/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)kullanarak devam eder.<br>Değilse <ol><li>Evet, müşteri anahtarı yedekledi ve geri yüklerse.</li><li>Hayır, aksi durumda.</li></ol>
+| CmkErrorVaultNotFound |Müşterinin yönettiği anahtarın anahtar kasası bulunamıyor. |   Anahtar Kasası silinmişse:<ol><li>Evet, temizleme koruma süresi içinde ise, [anahtar kasasını kurtarma](/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)bölümündeki adımları kullanarak.</li><li>Temizleme koruma süresinin ötesinde, hayır.</li></ol><br>Diğer bir deyişle, Anahtar Kasası farklı bir kiracıya geçirildiyse, aşağıdaki adımlardan biri kullanılarak kurtarılabilir:<ol><li>Anahtar kasasını eski kiracıya geri döndürür.</li><li>`Identity = None`Değerini ayarlayın ve ardından değerine geri ayarlayın `Identity = SystemAssigned` . Bu, yeni kimlik oluşturulduktan sonra kimliği siler ve yeniden oluşturur. `Get` `Wrap` `Unwrap` Anahtar kasasının erişim ilkesindeki yeni kimlik için, ve izinlerini etkinleştirin.</li></ol>|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
+- [Azure Key Vault nedir](/azure/key-vault/key-vault-overview)?

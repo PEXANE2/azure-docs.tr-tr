@@ -9,19 +9,19 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 587fe536e860f3039bfd3a2d2c1e3c76cb40e4d5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 804330d44d63aa70076a7387aacfbbd3b4f742c9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278458"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480998"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Öğretici: Azure Cosmos DB SQL API hesabındaki verileri yönetmek için bir .NET konsol uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [Java](sql-api-java-get-started.md)
-> * [Async Java](sql-api-async-java-get-started.md)
+> * [Java](./create-sql-api-java.md)
+> * [Async Java](./create-sql-api-java.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
 
@@ -45,7 +45,7 @@ Zamanınız yok mu? Endişelenmeyin! Eksiksiz çözümü [GitHub](https://github
 
 Şimdi başlayalım!
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin bir Azure hesabı. Bir aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
 
@@ -157,7 +157,7 @@ Tebrikler! Bir Azure Cosmos DB hesabına başarıyla bağlandınız.
 
 ## <a name="step-4-create-a-database"></a>4. Adım: Veritabanı oluşturma
 
-Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir kapsayıcısıdır. `CreateDatabaseIfNotExistsAsync` `CreateDatabaseAsync` [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient) sınıfının ya da yöntemi bir veritabanı oluşturabilir.
+Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir kapsayıcısıdır. `CreateDatabaseIfNotExistsAsync` `CreateDatabaseAsync` [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient) sınıfının ya da yöntemi bir veritabanı oluşturabilir.
 
 1. Yöntemi kopyalayın ve `CreateDatabaseAsync` yönteminin altına yapıştırın `GetStartedDemoAsync` .
 
@@ -345,7 +345,7 @@ Tebrikler! İki Azure Cosmos öğesini başarıyla oluşturdunuz.
 
 ## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>7. Adım: Azure Cosmos DB kaynaklarını sorgulama
 
-Azure Cosmos DB, her bir kapsayıcıda depolanan JSON belgeleri için zengin sorguların gerçekleştirilmesini destekler. Daha fazla bilgi için bkz. [SQL sorgularıyla çalışmaya](sql-api-sql-query.md)başlama. Aşağıdaki örnek kod, önceki adımda eklediğimiz öğelerde bir sorgunun nasıl çalıştırılacağını gösterir.
+Azure Cosmos DB, her bir kapsayıcıda depolanan JSON belgeleri için zengin sorguların gerçekleştirilmesini destekler. Daha fazla bilgi için bkz. [SQL sorgularıyla çalışmaya](./sql-query-getting-started.md)başlama. Aşağıdaki örnek kod, önceki adımda eklediğimiz öğelerde bir sorgunun nasıl çalıştırılacağını gösterir.
 
 1. Yönteminden `QueryItemsAsync` sonra yöntemi kopyalayıp yapıştırın `AddItemsToContainerAsync` .
 
@@ -497,8 +497,8 @@ Bu, derdir ve sizin de sizin.
 
 * Daha karmaşık bir ASP.NET MVC öğreticisi mi istiyorsunuz? Bkz. [öğretici: .NET SDK kullanarak Azure Cosmos DB ile ASP.NET Core MVC web uygulaması geliştirme](sql-api-dotnet-application.md).
 * Azure Cosmos DB ölçek ve performans testi yapmak istiyor musunuz? Bkz. [Azure Cosmos DB performans ve ölçek testi](performance-testing.md).
-* Azure Cosmos DB isteklerinin, kullanımın ve depolamanın nasıl izleneceğini öğrenmek için bkz. [Azure Cosmos DB 'de performans ve depolama ölçümlerini izleme](monitor-accounts.md).
+* Azure Cosmos DB isteklerinin, kullanımın ve depolamanın nasıl izleneceğini öğrenmek için bkz. [Azure Cosmos DB 'de performans ve depolama ölçümlerini izleme](./monitor-cosmos-db.md).
 * Sorguları örnek veri kümesiyle çalıştırmak için [sorgu deneme alanı](https://www.documentdb.com/sql/demo)bakın.
-* Azure Cosmos DB hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos DB'ye hoş geldiniz](https://docs.microsoft.com/azure/cosmos-db/introduction).
+* Azure Cosmos DB hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos DB'ye hoş geldiniz](./introduction.md).
 
 [cosmos-db-create-account]: create-sql-api-java.md#create-a-database-account

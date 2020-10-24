@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: jasonh
-ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2176708d3b5371a9bb66a59a7c6c0af56c337e28
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409774"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490637"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'SI için grafik veri modelleme
 
@@ -37,7 +37,7 @@ Bir veri etki alanındaki varlıklar ve ilişkilerin aşağıdaki özelliklerden
 
 Yukarıdaki kriterler karşılandıysanız, bir grafik veritabanı yaklaşımının **sorgu karmaşıklığı**, **veri modeli ölçeklenebilirliği**ve **sorgu performansı**için avantaj sağlaması olasıdır.
 
-Bir sonraki adım, grafiğin analitik veya işlemsel amaçlar için kullanılacağını belirlemektir. Grafik ağır hesaplama ve veri işleme iş yükleri için kullanılmak üzere tasarlanıyorsa, [Cosmos DB Spark bağlayıcısını](https://docs.microsoft.com/azure/cosmos-db/spark-connector) ve [GraphX kitaplığının](https://spark.apache.org/graphx/)kullanımını keşfetmeye değer de vardır. 
+Bir sonraki adım, grafiğin analitik veya işlemsel amaçlar için kullanılacağını belirlemektir. Grafik ağır hesaplama ve veri işleme iş yükleri için kullanılmak üzere tasarlanıyorsa, [Cosmos DB Spark bağlayıcısını](./spark-connector.md) ve [GraphX kitaplığının](https://spark.apache.org/graphx/)kullanımını keşfetmeye değer de vardır. 
 
 ## <a name="how-to-use-graph-objects"></a>Graph nesnelerini kullanma
 

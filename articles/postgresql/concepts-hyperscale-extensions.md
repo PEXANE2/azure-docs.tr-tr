@@ -7,20 +7,20 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: fda40e58231b849f1e63f53f7bb268375ffe7fec
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2e4a09ba07a5fa5eb3a5af7aa88e092feb3e7efc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996440"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487985"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları – hiper ölçek (Citus)
 
-PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar, tek bir komutla veritabanınızdan yüklenebilecek veya kaldırılabileceği tek bir pakette birden fazla ilgili SQL nesnesini paketlemeye olanak tanır. Veritabanına yüklendikten sonra uzantılar, yerleşik özellikler gibi çalışabilir. PostgreSQL uzantıları hakkında daha fazla bilgi için bkz. [Package ile ilgili nesneler bir uzantıya](https://www.postgresql.org/docs/current/static/extend-extensions.html).
+PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar, tek bir komutla veritabanınızdan yüklenebilecek veya kaldırılabileceği tek bir pakette birden fazla ilgili SQL nesnesini paketlemeye olanak tanır. Veritabanına yüklendikten sonra uzantılar, yerleşik özellikler gibi çalışabilir. PostgreSQL uzantıları hakkında daha fazla bilgi için bkz. [Package ile ilgili nesneler bir uzantıya](https://www.postgresql.org/docs/current/static/extend-extensions.html).
 
 ## <a name="use-postgresql-extensions"></a>PostgreSQL uzantılarını kullanma
 
-PostgreSQL uzantılarının kullanabilmeniz için veritabanınıza yüklenmesi gerekir. Belirli bir uzantıyı yüklemek için, [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html)   paketlenmiş nesneleri veritabanınıza yüklemek üzere PSQL aracından Uzantı Oluştur komutunu çalıştırın.
+PostgreSQL uzantılarının kullanabilmeniz için veritabanınıza yüklenmesi gerekir. Belirli bir uzantıyı yüklemek için, paketlenmiş nesneleri veritabanınıza yüklemek üzere psql aracından [Uzantı Oluştur](https://www.postgresql.org/docs/current/static/sql-createextension.html) komutunu çalıştırın.
 
 PostgreSQL için Azure veritabanı-hiper ölçek (Citus) Şu anda burada listelenen bir anahtar uzantıları alt kümesini desteklemektedir. Listelenenler dışındaki uzantılar desteklenmez. PostgreSQL için Azure veritabanı ile kendi uzantınızı oluşturamazsınız.
 
@@ -140,7 +140,7 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 [Pg \_ stat \_ deyimleri uzantısı](https://www.postgresql.org/docs/current/pgstatstatements.html) , her PostgreSQL için Azure veritabanı sunucusuna önceden yüklenir ve SQL deyimlerinin yürütme istatistiklerini izlemeye yönelik bir yol sağlar.
 
-Ayar, `pg_stat_statements.track` uzantı tarafından hangi deyimlerin sayıldığını denetler. Varsayılan olarak `top` , istemci tarafından doğrudan verilen tüm deyimlerin izlendiği anlamına gelir. Diğer iki izleme düzeyi `none` ve ' dir `all` . Bu ayar, [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) veya [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)aracılığıyla bir sunucu parametresi olarak yapılandırılabilir.
+Ayar, `pg_stat_statements.track` uzantı tarafından hangi deyimlerin sayıldığını denetler. Varsayılan olarak `top` , istemci tarafından doğrudan verilen tüm deyimlerin izlendiği anlamına gelir. Diğer iki izleme düzeyi `none` ve ' dir `all` . Bu ayar, [Azure Portal](./howto-configure-server-parameters-using-portal.md) veya [Azure CLI](./howto-configure-server-parameters-using-cli.md)aracılığıyla bir sunucu parametresi olarak yapılandırılabilir.
 
 Pg_stat_statements sorgu yürütme bilgileri ile her SQL bildirisini günlüğe kaydettiği için sunucu performansı üzerindeki etki arasında bir zorunluluğunu getirir vardır. Pg_stat_statements uzantısını etkin bir şekilde kullanmıyorsanız, ' ye ayarlamanızı öneririz `pg_stat_statements.track` `none` . Bazı üçüncü taraf izleme Hizmetleri sorgu Performans öngörüleri sunmak için pg_stat_statements kullanabilir, bu nedenle bunun sizin için mi olduğunu doğrulayın.
 
