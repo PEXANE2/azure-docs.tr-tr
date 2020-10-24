@@ -8,19 +8,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 7eb01ccda3c3e13827a8977b8ee0e244aef6b0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9483fe972cf1a4dce4fb285ced3cb390d0bda725
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613247"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516792"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>Özel olarak geliştirilmiş bir uygulama için belirteç ömür varsayılanlarını değiştirme
 
 Bu makalede bir belirteç ömür ilkesi ayarlamak için Azure AD PowerShell 'in nasıl kullanılacağı gösterilmektedir. Azure AD Premium, uygulama geliştiricilerinin ve kiracı yöneticilerinin, gizli olmayan istemciler için verilen belirteçlerin ömrünü yapılandırmasına izin verir. Belirteç ömür ilkeleri, kiracı genelinde veya erişilmekte olan kaynaklara ayarlanır.
+
+> [!IMPORTANT]
+> %30 Ocak 2021 ' den sonra, kiracılar artık yenileme ve oturum belirteci yaşam sürelerini yapılandıramayacak ve Azure Active Directory bu tarihten sonra ilkelerde mevcut yenileme ve oturum belirteci yapılandırmasını kullanmayı durduracak. Kullanımdan kaldırıldıktan sonra erişim belirteci yaşam sürelerini yapılandırabilirsiniz. Daha fazla bilgi için [Azure AD 'de yapılandırılabilir belirteç yaşam sürelerini](./active-directory-configurable-token-lifetimes.md)okuyun.
+> Azure AD koşullu erişim 'de [kimlik doğrulama oturumu yönetimi özellikleri](../conditional-access/howto-conditional-access-session-lifetime.md)uyguladık   . Bu yeni özelliği, oturum açma sıklığını ayarlayarak yenileme belirteci yaşam sürelerini yapılandırmak için kullanabilirsiniz.  
 
 Belirteç ömür ilkesi ayarlamak için [Azure AD PowerShell modülünü](https://www.powershellgallery.com/packages/AzureADPreview)indirmeniz gerekir.
 **Connect-AzureAD-Onayla** komutunu çalıştırın.

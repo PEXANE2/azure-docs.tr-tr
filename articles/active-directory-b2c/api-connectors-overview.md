@@ -5,27 +5,30 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 195101a432d16c2236ea2d164416e75df33b12e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94d6b0192b014396f8751e58f5620aec5c132203
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828579"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503887"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows"></a>Kaydolma Kullanıcı akışlarını özelleştirmek ve genişletmek için API bağlayıcılarını kullanma
 
-## <a name="overview"></a>Genel Bakış 
-Geliştirici veya BT Yöneticisi olarak, kaydolma deneyimini özelleştirmek için oturum açma Kullanıcı akışlarınızı Web API 'Leriyle bütünleştirmek üzere API bağlayıcılarını kullanabilirsiniz. API bağlayıcıları ile şunları yapabilirsiniz:
+> [!IMPORTANT]
+> Kaydolma için API bağlayıcıları, Azure AD B2C genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-- **Kimlik doğrulama gerçekleştirin**. Hesap oluşturma kararlarında ek bir güvenlik düzeyi eklemek için bir kimlik doğrulama hizmeti kullanın.
+## <a name="overview"></a>Genel Bakış 
+Geliştirici veya BT Yöneticisi olarak, kaydolma deneyimini özelleştirmek için oturum açma Kullanıcı akışlarınızı Web API 'Leriyle bütünleştirmek üzere API bağlayıcılarını kullanabilirsiniz. Örneğin, API bağlayıcılarıyla şunları yapabilirsiniz:
+
 - **Kullanıcı giriş verilerini doğrulayın**. Hatalı biçimlendirilmiş veya geçersiz kullanıcı verilerine karşı doğrulayın. Örneğin, bir dış veri deposundaki veya izin verilen değerler listesindeki mevcut verilere karşı Kullanıcı tarafından belirtilen verileri doğrulayabilirsiniz. Geçersiz ise, kullanıcıdan geçerli veri sağlamasını isteyebilir veya kullanıcının kaydolma akışına devam etmesini engelleyebilirsiniz.
 - **Özel bir onay iş akışıyla tümleştirin**. Hesap oluşturmayı yönetmek ve kısıtlamak için özel bir onay sistemine bağlanın.
 - **Kullanıcı özniteliklerinin üzerine yaz**. Kullanıcıdan toplanan bir özniteliğe yeniden biçimlendirin veya bir değer atayın. Örneğin, bir Kullanıcı ilk adı küçük harfle veya tüm büyük harflerde girerse, adı yalnızca ilk harfi büyük harfle biçimlendirebilirsiniz. 
+- **Kimlik doğrulama gerçekleştirin**. Hesap oluşturma kararlarında ek bir güvenlik düzeyi eklemek için bir kimlik doğrulama hizmeti kullanın.
 - **Özel iş mantığını çalıştırın**. Anında iletme bildirimleri göndermek, kurumsal veritabanlarını güncelleştirmek, izinleri yönetmek, veritabanlarını denetlemek ve başka özel eylemler gerçekleştirmek için bulut sistemlerinizdeki aşağı akış olaylarını tetikleyebilirsiniz.
 
 Bir API Bağlayıcısı, bir uç nokta URL 'SI ve kimlik doğrulaması gibi bir API 'yi çağırmak için gereken bilgileri Azure Active Directory sağlar. Bir API bağlayıcısını yapılandırdıktan sonra, Kullanıcı akışındaki belirli bir adım için etkinleştirebilirsiniz. Kullanıcı kaydolma akışındaki bu adıma ulaştığında, API Bağlayıcısı çağrılır ve API 'nize bir HTTP POST isteği olarak çalışır ve bir JSON gövdesinde anahtar-değer çiftleri olarak Kullanıcı bilgilerini ("talepler") gönderir. API yanıtı, Kullanıcı akışının yürütülmesini etkileyebilir. Örneğin, API yanıtı bir kullanıcının kaydolmasını engelleyebilir, kullanıcıdan bilgi yeniden girmelerini veya kullanıcı özniteliklerinin üzerine yazmasına ya da bu özniteliklerin üzerine yazılmasına neden olabilir.
@@ -42,7 +45,7 @@ Bir API bağlayıcısını etkinleştirebileceğiniz bir Kullanıcı akışında
 
 ### <a name="after-signing-in-with-an-identity-provider"></a>Bir kimlik sağlayıcısıyla oturum açtıktan sonra
 
-Kaydolma işleminde bu adımdaki bir API Bağlayıcısı, Kullanıcı kimlik sağlayıcısıyla kimlik doğrulamasından sonra (Google, Facebook, & Azure AD) hemen çağrılır. Bu adım, kullanıcı özniteliklerinin toplanması için kullanıcıya sunulan form olan ***öznitelik koleksiyonu sayfasından***önce gelir. Bir kullanıcı yerel hesapla kayıt alıyorsa bu adım çağrılmaz. Bu adımda etkinleştirebileceğiniz API Bağlayıcısı senaryolarının örnekleri aşağıda verilmiştir:
+Kaydolma işleminde bu adımdaki bir API Bağlayıcısı, Kullanıcı kimlik sağlayıcısıyla kimlik doğrulamasından sonra (Google, Facebook, & Azure AD) hemen çağrılır. Bu adım, kullanıcı özniteliklerinin toplanması için kullanıcıya sunulan form olan **_öznitelik koleksiyonu sayfasından_** önce gelir. Bir kullanıcı yerel hesapla kayıt alıyorsa bu adım çağrılmaz. Bu adımda etkinleştirebileceğiniz API Bağlayıcısı senaryolarının örnekleri aşağıda verilmiştir:
 
 - Kullanıcının mevcut bir sistemde talepleri aramak için verdiği e-postayı veya federal kimliği kullanın. Mevcut sistemden bu talepleri döndürün, öznitelik koleksiyonu sayfasını önceden doldurabilir ve belirtece döndürmek için kullanılabilir hale getirin.
 - Sosyal kimlik temelinde bir izin verilenler veya engellenenler listesi uygulayın.
@@ -59,4 +62,5 @@ Kaydolma işleminde bu adımda bulunan bir API Bağlayıcısı, varsa öznitelik
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Bir Kullanıcı AKıŞıNA API Bağlayıcısı ekleme](add-api-connector.md) hakkında bilgi edinin
+- [Örneklerimizi](code-samples.md#api-connectors)kullanmaya başlayın.
 <!-- - Learn how to [add a custom approval system to self-service sign-up](add-approvals.md) -->

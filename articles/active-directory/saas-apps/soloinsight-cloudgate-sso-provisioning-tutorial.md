@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: aa9ed0954cbfa2d83eeed1c70f40beedcf4f44cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab23183fa42b87dad68da1d7ef9b1a2f6145750
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285984"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514802"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Soloinsight-CloudGate SSO 'yu yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Soloin
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -89,7 +89,7 @@ Azure AD ile otomatik Kullanıcı sağlama için Soloinsight-CloudGate SSO 'yu y
 Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Soloinsight-CloudGate SSO 'daki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında size kılavuzluk eder.
 
 > [!TIP]
-> [Soloinsight-CloudGate SSO çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/soloinsight-cloudgate-sso-tutorial)sunulan yönergeleri IZLEYEREK Soloinsight-CloudGate SSO için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilse de
+> [Soloinsight-CloudGate SSO çoklu oturum açma öğreticisinde](./soloinsight-cloudgate-sso-tutorial.md)sunulan yönergeleri IZLEYEREK Soloinsight-CloudGate SSO için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilse de
 
 ### <a name="to-configure-automatic-user-provisioning-for-soloinsight-cloudgate-sso-in-azure-ad"></a>Azure AD 'de Soloinsight-CloudGate SSO için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
@@ -161,4 +161,3 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 73b7b57aad43eea8e8d592d437185ca5c7e8a666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 612576698d9eb40807b90e9d70f401aa6e9b864e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304669"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92512948"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Öğretici: Palo Alto Networks-admin kullanıcı arabirimi ile Azure Active Directory tümleştirme
 
@@ -100,7 +100,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki ' a ek olarak, Palo Alto Networks-admin kullanıcı arabirimi uygulaması, daha az sayıda özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Name |  Kaynak özniteliği|
+    | Adı |  Kaynak özniteliği|
     | --- | --- |
     | username | User. UserPrincipalName |
     | adminrole | customadmin |
@@ -244,9 +244,9 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 2. Palo Alto Networks-admin kullanıcı arabirimi oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Palo Alto Networks-admin kullanıcı arabirimi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Palo Alto Networks-admin kullanıcı arabirimine otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Palo Alto Networks-admin kullanıcı arabirimi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Palo Alto Networks-admin kullanıcı arabirimine otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Palo Alto Networks-admin kullanıcı arabirimini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Palo Alto Networks-admin kullanıcı arabirimini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 995cd8470d4fbbf3dc340139a86275593a3d5d28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6831e96ebd8fd2db51d640ff3d93955b1a9f1477
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815267"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigerconnect-secure-messenger"></a>Öğretici: TigerConnect Secure Messenger ile Azure Active Directory tümleştirme
 
@@ -28,7 +28,7 @@ TigerConnect Secure Messenger 'ı Azure AD ile tümleştirmek aşağıdaki avant
 * Kullanıcılarınızın Azure AD hesaplarıyla güvenli Messenger (çoklu oturum açma) ile bağlantı kurmak için otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portal.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,7 +42,7 @@ Azure AD tümleştirmesini TigerConnect Secure Messenger ile yapılandırmak iç
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edin ve TigerConnect Secure Messenger 'ı Azure AD ile tümleştirin.
 
 * TigerConnect güvenli Messenger, **SP** tarafından başlatılan SSO 'yu destekler
-* TigerConnect güvenli Messenger 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve infiliğini koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* TigerConnect güvenli Messenger 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve infiliğini koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-tigerconnect-secure-messenger-from-the-gallery"></a>Galeriden Tıgerconnect Secure Messenger ekleniyor
 
@@ -144,16 +144,16 @@ Bu bölümde, TigerConnect Secure Messenger 'da Britta Simon adlı bir Kullanıc
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı My Apps portalını kullanarak test edersiniz.
 
-Uygulamalarım portalındaki **Tigerconnect güvenli Messenger** ' ı seçtiğinizde, çoklu oturum açma 'Yı ayarladığınız Tigerconnect Secure Messenger aboneliğinde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım portalı hakkında daha fazla bilgi için bkz. [My Apps Portalındaki uygulamaları erişme ve kullanma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Uygulamalarım portalındaki **Tigerconnect güvenli Messenger** ' ı seçtiğinizde, çoklu oturum açma 'Yı ayarladığınız Tigerconnect Secure Messenger aboneliğinde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım portalı hakkında daha fazla bilgi için bkz. [My Apps Portalındaki uygulamaları erişme ve kullanma](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory tümleştirme öğreticilerinin listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory tümleştirme öğreticilerinin listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Güvenli Messenger 'ı Azure AD ile bağlamayı deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 303720cf50b5eabf22319e1eeae7423c4f1d94bb
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a9410215abeb6fdb413866cbff12cf5f826c0fee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201707"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504380"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için Azure Güvenlik temeli
 
@@ -949,7 +949,7 @@ AKS yönetim gruplarınızın üyesi olan hesapları bulmaya yönelik geçici so
 
 Bir mantıksal yalıtım sınırı oluşturmak için Kubernetes 'te ad alanı uygulayın. Azure Kubernetes Service (AKS) örneklerinizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. ContainerService" ad alanındaki Azure Ilke diğer adlarını kullanın. 
 
-Yalıtım ve çoklu kiracı için ek Kubernetes özellikleri ve değerlendirmeleri gözden geçirin ve uygulayın: zamanlama, ağ, kimlik doğrulama/yetkilendirme ve kapsayıcılar. Ayrıca, geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları kullanın. AKS kümelerini sanal ağlarla, uygun şekilde etiketlenmiş alt ağlarla ve bir Web uygulaması güvenlik duvarı (WAF) ile güvenliği sağlanmış olarak ayırın.
+Aşağıdakiler dahil olmak üzere yalıtım ve çoklu kiracı için ek Kubernetes özelliklerini ve konularını gözden geçirin ve uygulayın: zamanlama, ağ, kimlik doğrulama/yetkilendirme ve kapsayıcılar. Ayrıca, geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları kullanın. AKS kümelerini sanal ağlarla, uygun şekilde etiketlenmiş alt ağlarla ve bir Web uygulaması güvenlik duvarı (WAF) ile güvenliği sağlanmış olarak ayırın.
 
 - [AKS 'de küme yalıtımına yönelik en iyi yöntemler hakkında bilgi edinin](operator-best-practices-cluster-isolation.md)
 

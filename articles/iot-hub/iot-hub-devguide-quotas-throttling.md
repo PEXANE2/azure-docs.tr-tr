@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f2ab3c55c5532b76c45a18054fd653dd8fe8137
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797811"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504083"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -59,7 +59,7 @@ Aşağıdaki tabloda zorlanan kısıtlar gösterilmektedir. Değerler tek bir hu
 | Eşzamanlı olarak bağlanılan cihaz akışlarının maksimum sayısı<sup>1</sup> | 50 | 50 | 50 |
 | Maksimum cihaz akışı veri aktarımı<sup>1</sup> (Toplam birim/gün) | 300 MB | 300 MB | 300 MB |
 
-<sup>1</sup> Bu özellik IoT Hub temel katmanında kullanılamaz. Daha fazla bilgi için bkz. [doğru IoT Hub seçme](iot-hub-scaling.md). <br/><sup>2</sup> Azaltma ölçer boyutu 4 KB 'tır.
+<sup>1</sup> Bu özellik IoT Hub temel katmanında kullanılamaz. Daha fazla bilgi için bkz. [doğru IoT Hub seçme](iot-hub-scaling.md). <br/><sup>2</sup> Azaltma ölçer boyutu 4 KB 'tır. Daraltma yalnızca istek yük boyutunu temel alır.
 
 ### <a name="throttling-details"></a>Kısıtlama ayrıntıları
 

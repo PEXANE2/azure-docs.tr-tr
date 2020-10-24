@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 3c08694efafef315b0f5e96d293d883767860fef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0b76c21ee76731f78ecd7f482472908fe93a9ee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855217"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92513339"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>Öğretici: Palo Alto Networks ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory-GlobalProtect
 
@@ -149,8 +149,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 2. Palo Alto Networks 'e gidin-GlobalG oturum açma URL 'sini doğrudan koruyun ve oturum akışını buradan başlatın.
 
-3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Palo Alto Networks-GlobalProtect kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Palo Alto Networks-GlobalProtect ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Palo Alto Networks-GlobalProtect kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Palo Alto Networks-GlobalProtect ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Palo Alto ağlarını-GlobalProtect ' ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Palo Alto ağlarını-GlobalProtect ' ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

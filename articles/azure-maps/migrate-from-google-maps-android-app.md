@@ -9,22 +9,35 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b493b78971b7e802d82e8f61203abdaaca527016
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873889"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503564"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Öğretici-Google Maps 'tan bir Android uygulaması geçirme
 
-Azure Haritalar Android SDK, Web SDK 'sına benzer bir API arabirimine sahiptir. Bu SDK 'Lardan biriyle geliştirdiyseniz, aynı kavramların, en iyi uygulamaların ve mimarilerin birçoğu geçerlidir.
+Azure Haritalar Android SDK, Web SDK 'sına benzer bir API arabirimine sahiptir. Bu SDK 'Lardan biriyle geliştirdiyseniz, aynı kavramların, en iyi uygulamaların ve mimarilerin birçoğu geçerlidir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+
+> [!div class="checklist"]
+> * Harita yükleme
+> * Bir eşlemeyi yerelleştirin
+> * İşaretleyiciler, polylines ve çokgenler ekleyin.
+> * Döşeme katmanını kaplama
+> * Trafik verilerini gösterme
 
 Azure Maps Android SDK, API 21 ' in en düşük Android sürümünü destekler: Android 5.0.0 (Lollipop).
 
 Tüm örnekler Java 'da verilmiştir; Ancak, Azure Maps Android SDK Kotlin kullanabilirsiniz.
 
 Azure haritalar tarafından Android SDK ile geliştirme hakkında daha fazla bilgi için bkz. [Azure Maps Için nasıl yapılır kılavuzlarıyla Android SDK](how-to-use-android-map-control-library.md).
+
+## <a name="prerequisites"></a>Önkoşullar 
+
+1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
+3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
 ## <a name="load-a-map"></a>Harita yükleme
 
@@ -745,6 +758,18 @@ mapControl.onReady(map -> {
 
 ![Azure haritalar trafiği](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
-Azure Haritalar Android SDK hakkında daha fazla bilgi edinin.
+## <a name="next-steps"></a>Sonraki adımlar
 
-[Android harita denetimini kullanma](how-to-use-android-map-control-library.md)
+Azure haritalar hakkında daha fazla bilgi Android SDK:
+
+> [!div class="nextstepaction"]
+> [Android harita denetimini kullanma](how-to-use-android-map-control-library.md)
+
+> [!div class="nextstepaction"]
+> [Android haritasına sembol katmanı ekleme](how-to-add-symbol-to-android-map.md)
+
+> [!div class="nextstepaction"]
+> [Android haritasına şekil ekleme](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+
+> [!div class="nextstepaction"]
+> [Android haritalar 'da harita stillerini değiştirme](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

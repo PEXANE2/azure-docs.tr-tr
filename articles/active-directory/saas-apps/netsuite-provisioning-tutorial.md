@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: bdee884990dfadec444fae919a715c7dc3428f77
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: faf66b9a261fd4e8f63779b3d254de4c44d1d731
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428413"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92513911"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Netsuite yapılandırma
 
@@ -36,7 +36,7 @@ Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim ala
 
 Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Netsuite uygulamanıza erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları Netsuite uygulamanıza atayabilirsiniz:
 
-[Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Netsuite OneWorld 'e Kullanıcı atamaya yönelik önemli ipuçları
 

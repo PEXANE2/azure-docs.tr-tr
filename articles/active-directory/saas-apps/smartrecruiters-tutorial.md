@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 5fddf5cb77cbcb1fb061ffd958fba4bf4ab2c9e7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b7de874cc074faa63203c58638fb04cc5cb2282b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127480"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514937"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>Öğretici: akıllı Işe ıcılar Azure Active Directory tümleştirme
 
@@ -27,7 +27,7 @@ Akıllı makineleri Azure AD ile tümleştirmek aşağıdaki avantajları sağla
 * Kullanıcılarınızın Azure AD hesapları ile akıllı Işe (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -207,19 +207,18 @@ Bu bölümde, akıllı Işe erişim izni vererek Azure çoklu oturum açma özel
 
 ### <a name="create-smartrecruiters-test-user"></a>Akıllı Işe Içeri test kullanıcısı oluşturma
 
-Bu bölümde, Smartişveren 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Smartişveren platformu 'ndaki kullanıcıları eklemek için akıllı iş ve [destek ekibi](https://www.smartrecruiters.com/about-us/contact-us/)ile çalışın   . Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Smartişveren 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Smartişveren platformu 'ndaki kullanıcıları eklemek için akıllı iş ve [destek ekibi](https://www.smartrecruiters.com/about-us/contact-us/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Akıllı Işveren kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız akıllı Işe Içeri otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Akıllı Işveren kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız akıllı Işe Içeri otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

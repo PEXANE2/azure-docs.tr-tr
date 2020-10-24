@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
-ms.openlocfilehash: d487295e9aab1a56553dc9d31b0a8714688005c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e295075a5c1ae8daa6673757770bbef01208c1d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91348742"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92505755"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-virtual-traffic-manager"></a>Öğretici: Pulse Secure sanal Traffic Manager ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -203,8 +203,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 2. Darbeli güvenli sanal Traffic Manager oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Pulse Secure sanal Traffic Manager kutucuğuna tıkladığınızda bu, Pulse Secure sanal Traffic Manager oturum açma URL 'sine yeniden yönlendirilir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Pulse Secure sanal Traffic Manager kutucuğuna tıkladığınızda bu, Pulse Secure sanal Traffic Manager oturum açma URL 'sine yeniden yönlendirilir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Pulse Secure sanal Traffic Manager yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Pulse Secure sanal Traffic Manager yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/16/2020
+ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: df45068ff14d8ac08a17719e4e0338308b504cac
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b6d46dfc348cc518daf2e6af4d5b9677148c3911
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92426099"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503224"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure sanal ağında Azure Machine Learning Studio 'yu kullanma
 
@@ -36,10 +36,10 @@ Bu serideki diğer makalelere göz atın:
 
 
 > [!IMPORTANT]
-> Çoğu Studio bir sanal ağda depolanan verilerle birlikte çalışarak, tümleşik Not defterleri __değildir__. Tümleşik Not defterleri, sanal bir ağdaki depolamanın kullanımını desteklemez. Bunun yerine, Jupyıter not defterlerini bir işlem örneğinden kullanabilirsiniz. Daha fazla bilgi için, [Işlem örneği Not Defteri Içindeki erişim verileri]() bölümüne bakın.
+> Çalışma alanınız, Azure Kamu veya Azure Çin 21Vianet gibi bir bağımsız __bulutta__ise, tümleşik Not defterleri sanal bir ağdaki depolamanın _kullanımını desteklemez._ Bunun yerine, Jupyıter not defterlerini bir işlem örneğinden kullanabilirsiniz. Daha fazla bilgi için, [Işlem örneği Not Defteri Içindeki erişim verileri](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) bölümüne bakın.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 

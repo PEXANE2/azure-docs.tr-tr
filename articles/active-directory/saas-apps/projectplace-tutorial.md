@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/29/2019
 ms.author: jeedes
-ms.openlocfilehash: cbc65e64dfd18cdc16873a2d82aecadabeec4c28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 508a3ca02ec6c0475e78d16691f6597e1a389f97
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553521"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92511862"
 ---
 # <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>Öğretici: Projectplace 'i Azure Active Directory ile tümleştirin
 
@@ -27,7 +27,7 @@ Bu öğreticide, Projectplace 'i Azure Active Directory (Azure AD) ile tümleşt
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 * Kullanıcılar, Projectplace 'de otomatik olarak sağlanabilir.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -160,12 +160,12 @@ Azure AD kullanıcılarının Projectplace 'de oturum açmasını sağlamak içi
 
 ### <a name="test-sso"></a>Test SSO 'SU
 
-Erişim panelinde Projectplace kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Projectplace için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Projectplace kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Projectplace için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

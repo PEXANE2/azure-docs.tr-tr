@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d18962e097358b8e80ac93b4d8419f7cd4f77ee0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4a741834637900ec0c78105790bac2453d759e2f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426810"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514495"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -37,6 +37,15 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 > V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md) ve Işleri görüntülemek, API 'lere erişme hakkında bilgi almak, içeriği şifrelemek için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri için (örneğin, dönüşümleri ve işleri yönetme) [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 >
 > Ayrıntılar için bkz.: [Media Services v3 için Azure Portal sınırlamaları](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
+
+## <a name="october-2020"></a>Ekim 2020
+
+### <a name="basic-audio-analysis"></a>Temel ses analizi
+Ses analizi önceden ayarı artık temel mod fiyatlandırma katmanını içerir. Yeni temel ses Çözümleyicisi modu, konuşma dökümünü ayıklamak ve çıkış başlıklarını ve alt yazıları biçimlendirmek için düşük maliyetli bir seçenek sağlar. Bu mod, bir VTT alt başlık/resim yazısı dosyası için konuşmayı metne dönüştürme ve oluşturma işlemi gerçekleştirir. Bu modun çıktısı yalnızca anahtar sözcükler, döküm ve zamanlama bilgileri dahil olmak üzere bir Öngörüler JSON dosyası içerir. Bu modda otomatik dil algılama ve konuşmacı seçme dahil değildir. [Desteklenen dillerin](analyzing-video-audio-files-concept.md#built-in-presets) listesine bakın.
+
+Dizin Oluşturucu v1 ve Dizin Oluşturucu v2 kullanan müşteriler temel ses analizi hazır ayarı 'na geçiş yapılmalıdır.
+
+Temel ses Çözümleyicisi modu hakkında daha fazla bilgi için bkz. [video ve ses dosyalarını çözümleme](analyzing-video-audio-files-concept.md).  Temel ses çözümleyici modunu REST API kullanmayı öğrenmek için bkz. [temel ses dönüşümü oluşturma](how-to-create-basic-audio-transform.md).
 
 ## <a name="august-2020"></a>Ağustos 2020
 

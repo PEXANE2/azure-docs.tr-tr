@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92b19941f34b9bf5656c9beb188a68d2cf01f674
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73743059"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504138"
 ---
 # <a name="face-detection-and-attributes"></a>Yüz algılama ve öznitelikler
 
@@ -47,7 +47,7 @@ Noktaların koordinatları piksel birimlerinde döndürülür.
 * **Cinsiyeti**. Verilen yüzün tahmini cinsiyeti. Olası değerler erkek, kadın ve genderküçüktür.
 * **Gözlük**. Verilen yüzün gözlük olup olmadığı. Olası değerler gözlük, Readinbahar, güneş gözlüğü ve yüzme Goggles.
 * **Saç**. Yüzün saç türü. Bu öznitelik, saç görünür olup olmadığını, balblerin algılanıp algılanmadığını ve hangi saç renklerinin algılandığını gösterir.
-* **Baş poz**. 3B alanda yüzün yönü. Bu öznitelik, derece cinsinden sıklık, zar ve yaw açılarla açıklanır. Değer aralıkları-90 derece ile 90 derece,-180 derece, 180 derece, ve-90 derece, sırasıyla derece olarak değişir. Açılı eşlemeler için aşağıdaki diyagrama bakın:
+* **Baş poz**. 3B alanda yüzün yönü. Bu öznitelik, derece cinsinden sıklık, zar ve yaw açılarla açıklanır. Değer aralıkları-90 derece ile 90 derece,-90 derece, 90 derece, ve-90 derece, sırasıyla derece olarak değişir. Açılı eşlemeler için aşağıdaki diyagrama bakın:
 
     ![Aralık, top ve yaw eksenlerinin etiketlendiği bir baş](../Images/headpose.1.jpg)
 * **Makeup**. Yüzün oluşturulup oluşturulmayacağını belirtir. Bu öznitelik, eyeMakeup ve lipMakeup için bir Boole değeri döndürür.
@@ -63,7 +63,7 @@ Noktaların koordinatları piksel birimlerinde döndürülür.
 Giriş görüntülerinizin en doğru algılama sonuçlarını vermesini sağlamak için aşağıdaki ipuçlarını kullanın:
 
 * Desteklenen giriş resim biçimleri JPEG, PNG, ilk çerçeve için GIF ve BMP.
-* Görüntü dosyası boyutu 4 MB 'tan büyük olmamalıdır.
+* Görüntü dosyası boyutu 6 MB 'tan büyük olmamalıdır.
 * Algılanabilir yüz boyut aralığı 36 x 36 ile 4096 x 4096 pikseldir. Bu aralığın dışındaki yüzler saptanmaz.
 * Teknik zorluk sorunları nedeniyle bazı yüzler algılanmayabilir. Aşırı yüz açıları (baş poz) veya yüz kapatma (yüz gözlüğü gibi nesneler) algılamayı etkileyebilir. En iyi ve yakın yüzler en iyi sonuçları verir.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 173ca296689bbdb8d574930ec2549e82839c47e9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5e71566ea7cd2e8953c84d58128e3380a782ba40
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428464"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516724"
 ---
 # <a name="tutorial-configure-netskope-user-authentication-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Netüse Kullanıcı kimlik doğrulamasını yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Netüs
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -97,7 +97,7 @@ Azure AD ile otomatik Kullanıcı sağlama için Netüse Kullanıcı kimlik doğ
 Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Netüse Kullanıcı kimlik doğrulamasında kullanıcıları ve/veya grupları oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
 
 > [!TIP]
-> Netüse Kullanıcı [kimlik doğrulaması çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-cloud-security-tutorial)belirtilen yönergeleri Izleyerek Netüse Kullanıcı kimlik doğrulaması için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
+> Netüse Kullanıcı [kimlik doğrulaması çoklu oturum açma öğreticisinde](./netskope-cloud-security-tutorial.md)belirtilen yönergeleri Izleyerek Netüse Kullanıcı kimlik doğrulaması için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
 
 > [!NOTE]
 > Netüse Kullanıcı kimlik doğrulamasının SCıM uç noktası hakkında daha fazla bilgi edinmek için, [bkz..](https://docs.google.com/document/d/1n9P_TL98_kd1sx5PAvZL2HS6MQAqkQqd-OSkWAAU6ck/edit#heading=h.prxq74iwdpon)
@@ -172,4 +172,3 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
-

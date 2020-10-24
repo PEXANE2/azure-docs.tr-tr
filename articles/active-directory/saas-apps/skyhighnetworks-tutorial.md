@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: d529123b52e0e90702839f6822a586cf53dffa52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 456348f5492af44274a37a6400fb8d95e9bd55a4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546728"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516038"
 ---
 # <a name="tutorial-integrate-mvision-cloud-azure-ad-sso-configuration-with-azure-active-directory"></a>Öğretici: MVISION bulutu Azure AD SSO yapılandırmasını Azure Active Directory ile tümleştirin
 
@@ -26,7 +26,7 @@ Bu öğreticide, MVISION bulutu Azure AD SSO yapılandırmasını Azure Active D
 * Kullanıcılarınızın Azure AD hesaplarıyla Azure AD SSO yapılandırmasına yönelik olarak Azure AD SSO yapılandırması için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,7 +41,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
 * MVISION bulutu Azure AD SSO yapılandırması **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* Dropbox 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve infili korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Dropbox 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve infili korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-mvision-cloud-azure-ad-sso-configuration-from-the-gallery"></a>Galeriden MVISION bulutu Azure AD SSO yapılandırması ekleme
 
@@ -161,22 +161,22 @@ Bu bölümde, MVISION bulut Azure AD SSO yapılandırmasına erişim vererek Azu
 
 ### <a name="create-mvision-cloud-azure-ad-sso-configuration-test-user"></a>MVISION bulutu Azure AD SSO yapılandırma test kullanıcısı oluşturma
 
-Bu bölümde, MVISION bulutu Azure AD SSO yapılandırması 'nda B. Simon adlı bir Kullanıcı oluşturacaksınız. MVision Cloud Azure AD SSO yapılandırma platformunda kullanıcıları eklemek için [MVision Cloud Azure AD SSO yapılandırma destek ekibi](mailto:support@skyhighnetworks.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, MVISION bulutu Azure AD SSO yapılandırması 'nda B. Simon adlı bir Kullanıcı oluşturacaksınız. MVision Cloud Azure AD SSO yapılandırma platformunda kullanıcıları eklemek için [MVision Cloud Azure AD SSO yapılandırma destek ekibi](mailto:support@skyhighnetworks.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde MVISION Cloud Azure AD SSO yapılandırma kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız MVISION bulutu Azure AD SSO yapılandırmasında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde MVISION Cloud Azure AD SSO yapılandırma kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız MVISION bulutu Azure AD SSO yapılandırmasında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile Azure AD SSO yapılandırma bulutunu deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)

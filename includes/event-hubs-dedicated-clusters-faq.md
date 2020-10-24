@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/23/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 345454557c1bd0df3b4e7210229c81f0149af0f3
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 0335481566ae3f28ac0f1e6bddce7050a65e7dc2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495099"
+ms.locfileid: "92517012"
 ---
 ### <a name="what-can-i-achieve-with-a-cluster"></a>Bir küme ile neler elde edebilirim?
 
-Bir Event Hubs kümesi için, alma ve akış alma işlemleri, üreticileri, Tüketicileriniz, geri alma ve işleme alma ücreti ve çok daha fazlası gibi çeşitli faktörlere bağlıdır. 
+Event Hubs kümesi için, alma ve akış alma işlemleri, üreticileri, Tüketicileriniz, geri alma ve işleme alma ücreti ve çok daha fazlası gibi çeşitli faktörlere bağlıdır. 
 
 Aşağıdaki tabloda, sınamamız sırasında elde ettiğimiz kıyaslama sonuçları gösterilmektedir:
 
@@ -35,11 +35,11 @@ Sınamada, aşağıdaki ölçütler kullanılmıştır:
 
 ### <a name="can-i-scale-updown-my-cluster"></a>Kümemin ölçeğini artırma/azaltma yapabilir miyim?
 
-Oluşturulduktan sonra, kümeler en az 4 saatlik kullanım için faturalandırılır. Self Servis deneyiminin önizleme sürümünde, Event Hubs ekibine teknik > kota > bir [destek talebi](https://ms.portal.azure.com/#create/Microsoft.Support) göndererek, kümenizin ölçeğini yukarı veya aşağı ölçeklendirmek üzere *ayrılmış kümeyi ölçeğini büyütme veya küçültme isteğinde* bulunabilir. Kümenizi ölçeklendirmek için isteğin tamamlanması 7 güne kadar sürebilir. 
+Oluşturulduktan sonra, kümeler en az 4 saatlik kullanım için faturalandırılır. Self Servis deneyiminin önizleme sürümünde, adanmış kümeyi ölçeğini genişletmek **Technical**veya ölçeklendirmek için Event Hubs ekibine teknik kota isteği kapsamında bir [destek isteği](https://ms.portal.azure.com/#create/Microsoft.Support) gönderebilirsiniz  >  **Quota**  >  **Request to Scale Up or Scale Down Dedicated Cluster** . Kümenizi ölçeklendirmek için isteğin tamamlanması 7 güne kadar sürebilir. 
 
-### <a name="how-will-geo-dr-work-with-my-cluster"></a>Kümemdeki coğrafi ve DR nasıl çalışır?
+### <a name="how-does-geo-dr-work-with-my-cluster"></a>Coğrafi DR, kümeme nasıl çalışır?
 
-Ayrılmış katman kümesi altında başka bir ad alanı ile ayrılmış katman kümesi altında bir ad alanını coğrafi olarak eşleştirin. Aktarım hızı sınırı uyumsuz olacağı için standart Teklifimizde bir ad alanı ile adanmış katman ad alanını eşleştirmeyi öneririz. 
+Ayrılmış katman kümesi altında başka bir ad alanı ile ayrılmış katman kümesi altında bir ad alanını coğrafi olarak eşleştirin. Standart Teklifimizde bir ad alanı ile ayrılmış bir ad alanı eşleştirmeyi teşvik ettik, çünkü aktarım hızı sınırı uyumsuz ve hatalara neden olur. 
 
 ### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Standart ad alanlarımı adanmış katman kümesine ait olacak şekilde geçirebilir miyim?
 Şu anda, Olay Hub 'larınızın verilerini standart bir ad alanından adanmış bir şekilde geçirmek için otomatik bir geçiş işlemini desteklemiyoruz. 

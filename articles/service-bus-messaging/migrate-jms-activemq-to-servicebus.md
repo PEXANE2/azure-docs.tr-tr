@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8408dde86d1902cf5b4899c4783c9dd185449ee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067163"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515755"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Mevcut Java Ileti hizmeti (JMS) 2,0 uygulamalarını Apache ActiveMQ ' den Azure Service Bus geçirin
 
@@ -62,7 +62,7 @@ Service Bus yükseltmeleri ve yeniden başlatmalar söz konusu olduğunda geçic
 
 #### <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 
-Azure Active Directory tarafından desteklenen rol tabanlı erişim denetimi (RBAC), Service Bus için tercih edilen kimlik doğrulama mekanizmasıdır. RBAC veya talep tabanlı kimlik doğrulaması, Apache QPID JMS tarafından şu anda desteklenmediğinden, kimlik doğrulaması için SAS anahtarlarını kullanmanız gerekir.
+Azure Active Directory tarafından desteklenen Azure rol tabanlı erişim denetimi (Azure RBAC), Service Bus için tercih edilen kimlik doğrulama mekanizmasıdır. Azure RBAC veya talep tabanlı kimlik doğrulaması şu anda Apache QPID JMS tarafından desteklenmediğinden, kimlik doğrulaması için SAS anahtarlarını kullanmanız gerekir.
 
 ## <a name="pre-migration"></a>Geçiş öncesi
 

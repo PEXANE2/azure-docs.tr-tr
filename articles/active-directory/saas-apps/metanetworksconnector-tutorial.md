@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 941218f9a35a0a242612ae1d6230c642129c8259
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b14a75dba2860c9dee58e40673d3299fdde277e7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856902"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Öğretici: meta ağlar Bağlayıcısı ile Azure Active Directory tümleştirme
 
@@ -27,7 +27,7 @@ Meta Networks bağlayıcısını Azure AD ile tümleştirmek aşağıdaki avanta
 * Kullanıcılarınızın Azure AD hesaplarıyla meta ağlar Bağlayıcısı 'nda (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -124,7 +124,7 @@ Azure AD çoklu oturum açmayı meta Networks Bağlayıcısı ile yapılandırma
     
 7. Meta Networks bağlayıcı uygulaması, yukarıdakine ek olarak, SAML yanıtına daha fazla öznitelik geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
     
-    | Name | Kaynak özniteliği | Ad Alanı|
+    | Adı | Kaynak özniteliği | Ad Alanı|
     | ---------------| --------------- | -------- |
     | FirstName | Kullanıcı. | |
     | Soyadı | User. soyadı | |
@@ -269,13 +269,12 @@ Bu bölümde, meta ağlar Bağlayıcısı 'nda Britta Simon adlı bir Kullanıc�
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde meta ağları bağlayıcı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız meta ağları bağlayıcıya otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde meta ağları bağlayıcı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız meta ağları bağlayıcıya otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

@@ -5,19 +5,22 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: a9e300a0e6f1b847c49ced7ded94db8e24016b32
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 857429ab5fd2e2ea9a0cb0173015ceba4bb0bacb
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102281"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504120"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Kaydolma Kullanıcı akışına API Bağlayıcısı ekleme (Önizleme)
+
+> [!IMPORTANT]
+> Kaydolma için API bağlayıcıları, Azure AD B2C genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce API bağlayıcısını oluşturun ve ardından Kullanıcı akışında etkinleştirin.
 
@@ -48,7 +51,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -80,7 +83,7 @@ Ayrıca, **Kullanıcı arabirimi yerel ayarları (' ui_locales ')** talebi tüm 
 > Bir talebin API uç noktası çağrıldığında bir değeri yoksa, talep API 'ye gönderilmez. API 'niz istek içinde olmayan bir talebi açıkça denetlemek ve işlemek için tasarlanmalıdır.
 
 > [!TIP] 
-> [**kimlikler (' kimlikler ')**](https://docs.microsoft.com/graph/api/resources/objectidentity) ve **e-posta adresi (' e-posta ')** talepleri, kiracınızda bir hesabı olmadan önce BIR kullanıcıyı tanımlamak için API 'niz tarafından kullanılabilir. ' Kimlikler ' talebi, Kullanıcı Google veya Facebook gibi bir kimlik sağlayıcısı ile kimlik doğrulaması yapıldığında gönderilir. ' e-posta ' her zaman gönderilir.
+> [**kimlikler (' kimlikler ')**](https://docs.microsoft.com/graph/api/resources/objectidentity) ve **e-posta adresi (' e-posta ')** talepleri, kiracınızda bir hesabı olmadan önce BIR kullanıcıyı tanımlamak için API 'niz tarafından kullanılabilir. 
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>Kullanıcı akışında API bağlayıcısını etkinleştirme
 
@@ -100,7 +103,7 @@ Kaydolma Kullanıcı akışına bir API Bağlayıcısı eklemek için bu adımla
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>Bir kimlik sağlayıcısıyla oturum açtıktan sonra
 
-Kaydolma işleminde bu adımdaki bir API Bağlayıcısı, Kullanıcı kimlik sağlayıcısıyla kimlik doğrulamasından sonra (Google, Facebook, & Azure AD) hemen çağrılır. Bu adım, kullanıcı özniteliklerinin toplanması için kullanıcıya sunulan form olan ***öznitelik koleksiyonu sayfasından***önce gelir. Bir kullanıcı yerel hesapla kayıt alıyorsa bu adım çağrılmaz.
+Kaydolma işleminde bu adımdaki bir API Bağlayıcısı, Kullanıcı kimlik sağlayıcısıyla kimlik doğrulamasından sonra (Google, Facebook, & Azure AD) hemen çağrılır. Bu adım, kullanıcıya kullanıcı özniteliklerinin toplanması için sunulan form olan **_öznitelik koleksiyonu sayfasından_* önce gelir. Bir kullanıcı yerel hesapla kayıt alıyorsa bu adım çağrılmaz.
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>Bu adımda API 'ye gönderilen örnek isteği
 ```http
@@ -109,7 +112,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -167,7 +170,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -236,9 +239,9 @@ Content-type: application/json
 
 | Parametre                                          | Tür              | Gerekli | Açıklama                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| sürüm                                            | Dize            | Evet      | API sürümü.                                                                                                                                                                                                                                                                |
-| eylem                                             | Dize            | Evet      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, bir **uygulama talebi**olarak seçilirse belirtece de döndürülebilir.                                              |
+| sürüm                                            | Dize            | Yes      | API sürümü.                                                                                                                                                                                                                                                                |
+| eylem                                             | Dize            | Yes      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, bir _ * uygulama talebi * * olarak seçilirse belirtece da döndürülebilecek.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Talebin içermesi gerekmez `_<extensions-app-id>_` . Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, bir **uygulama talebi**olarak seçilirse belirtece de döndürülebilir.  |
 
 ### <a name="example-of-a-blocking-response"></a>Engelleme yanıtı örneği
@@ -257,9 +260,9 @@ Content-type: application/json
 
 | Parametre   | Tür   | Gerekli | Açıklama                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| sürüm     | Dize | Evet      | API sürümü.                                                    |
-| eylem      | Dize | Evet      | Değer olmalıdır `ShowBlockPage`                                              |
-| userMessage | Dize | Evet      | Kullanıcıya görüntülenecek ileti.                                            |
+| sürüm     | Dize | Yes      | API sürümü.                                                    |
+| eylem      | Dize | Yes      | Değer olmalıdır `ShowBlockPage`                                              |
+| userMessage | Dize | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
 
 **Engelleyici bir Yanıt ile son kullanıcı deneyimi**
 
@@ -283,12 +286,13 @@ Content-type: application/json
 
 | Parametre   | Tür    | Gerekli | Açıklama                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| sürüm     | Dize  | Evet      | API sürümü.                                                    |
-| eylem      | Dize  | Evet      | Değer olmalıdır `ValidationError` .                                           |
-| durum      | Tamsayı | Evet      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
-| userMessage | Dize  | Evet      | Kullanıcıya görüntülenecek ileti.                                            |
+| sürüm     | Dize  | Yes      | API sürümü.                                                    |
+| eylem      | Dize  | Yes      | Değer olmalıdır `ValidationError` .                                           |
+| durum      | Tamsayı | Yes      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
+| userMessage | Dize  | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
 
-*Note:* Yanıt gövdesinde "durum" değerine ek olarak HTTP durum kodu "400" olmalıdır.
+> [!NOTE]
+> Yanıt gövdesinde "durum" değerine ek olarak HTTP durum kodu "400" olmalıdır.
 
 **Doğrulama hatası yanıtıyla Son Kullanıcı deneyimi**
 
@@ -300,7 +304,7 @@ Content-type: application/json
 ### <a name="using-serverless-cloud-functions"></a>Sunucusuz bulut işlevlerini kullanma
 Azure Işlevlerinde HTTP Tetikleyicileri gibi sunucusuz işlevler, API Bağlayıcısı ile kullanmak üzere API uç noktaları oluşturma basit bir yol sağlar. [Örneğin](code-samples.md#api-connectors), doğrulama mantığını gerçekleştirmek ve belirli e-posta etki alanları için oturum açma işlemleri kısıtlamak gibi sunucusuz bulut işlevini kullanabilirsiniz. Sunucusuz bulut işlevi ayrıca daha karmaşık senaryolar için diğer Web API 'Lerini, Kullanıcı depolarını ve diğer bulut hizmetlerini çağırıp çağırabilir.
 
-### <a name="best-practices"></a>Önerilen uygulamalar
+### <a name="best-practices"></a>En iyi uygulamalar
 Aşağıdakileri doğrulayın:
 * API 'niz, yukarıda özetlenen API isteği ve yanıt sözleşmelerini takip eden bir. 
 * API bağlayıcısının **uç nokta URL 'si** doğru API uç noktasını işaret eder.
@@ -318,4 +322,4 @@ Genel olarak, API 'nizi beklenmedik hata kodları, özel durumlar ve düşük pe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-- [Azure işlevi hızlı başlangıç örneklerimize](code-samples.md#api-connectors)başlayın.
+- [Örneklerimizi](code-samples.md#api-connectors)kullanmaya başlayın.

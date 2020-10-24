@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
-ms.openlocfilehash: fd0f489bd6109a5dcd6625eb26286e0d40c50c63
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e4f6cefd56c12162b370c78b6df2cd29ece030f1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962335"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515721"
 ---
 # <a name="enable-write-accelerator"></a>Yazma Hızlandırıcısı etkinleştir
 
@@ -57,13 +57,13 @@ VM başına Yazma Hızlandırıcısı tarafından desteklenebilir Azure Premium 
 | M16ms, M16s | 2 | 2500 |
 | M8ms, M8s | 1 | 1250 |
 
-IOPS sınırları, sanal makine başına değil, disk başına *değildir* . Tüm Yazma Hızlandırıcısı diskler VM başına aynı ıOPS sınırını paylaşır.
+IOPS sınırları, sanal makine başına değil, disk başına *değildir* . Tüm Yazma Hızlandırıcısı diskler VM başına aynı ıOPS sınırını paylaşır. Eklenen diskler, bir VM için yazma Hızlandırıcısı ıOPS sınırını aşamaz. Örneğin, eklenen diskler 30.000 ıOPS 'yi yapabilse de, sistem disklerin M416ms_v2 için 20.000 ıOPS 'ye geçmesine izin vermez.
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Yazma Hızlandırıcısını belirli bir diskte etkinleştirme
 
 Sonraki birkaç bölümde Yazma Hızlandırıcısı Azure Premium Depolama VHD 'lerde nasıl etkinleştirilecektir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki Önkoşullar zaman içinde Yazma Hızlandırıcısı kullanımı için geçerlidir:
 

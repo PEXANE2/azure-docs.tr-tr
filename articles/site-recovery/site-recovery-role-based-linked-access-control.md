@@ -1,21 +1,21 @@
 ---
 title: Azure Site Recovery 'de Azure rol tabanlı erişim denetimini yönetme
-description: Bu makalede, Azure Site Recovery erişimini yönetmek için rol tabanlı erişim denetimi 'nin (RBAC) nasıl uygulanacağı açıklanır.
+description: Bu makalede, Azure Site Recovery erişimini yönetmek için Azure rol tabanlı erişim denetimi 'nin (Azure RBAC) nasıl uygulanacağı açıklanır.
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3e1334f513e8ac587d639758d83ce080c5b4ab9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927173"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516911"
 ---
-# <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Rol tabanlı erişim denetimi (RBAC) ile Site Recovery erişimini yönetme
+# <a name="manage-site-recovery-access-with-azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi ile Site Recovery erişimini yönetme (Azure RBAC)
 
-Azure rol tabanlı erişim denetimi (Azure RBAC), Azure için ayrıntılı erişim yönetimine izin vermez. RBAC kullanarak, takımlarınızın içindeki sorumlulukları ayırabilirsiniz ve belirli işleri gerçekleştirmek için gerektiğinde kullanıcılara yalnızca belirli erişim izinleri verebilirsiniz.
+Azure rol tabanlı erişim denetimi (Azure RBAC), Azure için ayrıntılı erişim yönetimine izin vermez. Azure RBAC kullanarak, takımlarınızın içindeki sorumlulukları ayırabilirsiniz ve yalnızca belirli işleri gerçekleştirmek için gerektiğinde kullanıcılara yalnızca belirli erişim izinleri verebilirsiniz.
 
 Azure Site Recovery, Site Recovery yönetim işlemlerini denetlemek için 3 yerleşik rol sağlar. [Azure yerleşik rolleri](../role-based-access-control/built-in-roles.md) hakkında daha fazla bilgi edinin
 
@@ -72,9 +72,9 @@ Bir kullanıcının yeni bir sanal makinenin çoğaltmasını tamamlaması için
 Sırasıyla Kaynak Yöneticisi ve klasik dağıtım modelleriyle ilgili ' sanal makine katılımcısı ' ve ' klasik sanal makine katılımcısı ' [yerleşik rollerini](../role-based-access-control/built-in-roles.md) kullanmayı göz önünde bulundurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Azure Portal RBAC ile çalışmaya başlayın.
+* [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Azure Portal Azure RBAC ile çalışmaya başlayın.
 * İle erişimin nasıl yönetileceğini öğrenin:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Rol tabanlı Access Control sorun giderme](../role-based-access-control/troubleshooting.md): yaygın sorunları gidermeye yönelik öneriler alın.
+* [Azure RBAC sorunlarını giderme](../role-based-access-control/troubleshooting.md): sık karşılaşılan sorunları gidermeye yönelik öneriler alın.

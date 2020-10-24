@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: a38816f00c0e05c3bde1760e39ba00d745f12a44
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3aaa666ac6b7ddffcf5e0d2f5b62d26bd0f96004
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460963"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516214"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda bir veritabanının işlemsel olarak tutarlı bir kopyasını kopyalama
 
@@ -108,7 +108,7 @@ Sunucu Yöneticisi oturum açma veya kopyalamak istediğiniz veritabanını olu�
 
 Bu komut, Pool1 adlı esnek havuzda Veritabanı1 adlı yeni bir veritabanına kopyalar. Veritabanınızın boyutuna bağlı olarak kopyalama işleminin tamamlanması biraz zaman alabilir.
 
-Veritabanı1 tek veya havuza alınmış bir veritabanı olabilir, ancak Pool1 aynı hizmet katmanı Veritabanı1 ile aynı olmalıdır. 
+Veritabanı1 tek veya havuza alınmış bir veritabanı olabilir. Farklı katman havuzları arasında kopyalama desteklenir, ancak bazı çapraz katman kopyaları başarılı olmayacaktır. Örneğin, tek veya elastik standart bir veritabanını genel amaçlı bir havuza kopyalayabilirsiniz, ancak standart bir elastik veritabanını bir Premium havuza kopyalayamazsınız. 
 
    ```sql
    -- execute on the master database to start copying

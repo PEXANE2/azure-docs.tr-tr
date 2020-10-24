@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 7f3c5fc8e7ac4e61d44bb6cd54e1690d7c053526
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: fc6b36feecd96f2a84f9164e7efb3f07cf45f5a2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127174"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92505230"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Öğretici: ServiceNow ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide ServiceNow 'ı Azure Active Directory (Azure AD) ile tümleştir
 * Kullanıcılarınızın Azure AD hesaplarıyla ServiceNow için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -51,7 +51,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * ServiceNow [Otomatik Kullanıcı sağlamayı](servicenow-provisioning-tutorial.md)destekler.
 
-* ServiceNow 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimleri uygulayabilir. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* ServiceNow 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimleri uygulayabilir. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)
 
 * SSO 'yu etkinleştirmek için ServiceNow klasik (mobil) uygulamayı Azure AD ile yapılandırabilirsiniz. Hem Android hem de iOS kullanıcılarını destekler. Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
@@ -452,7 +452,7 @@ Bu bölümün amacı, ServiceNow 'da B. Simon adlı bir Kullanıcı oluşturmakt
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
-Erişim panelinde ServiceNow kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız ServiceNow 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde ServiceNow kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız ServiceNow 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="test-sso-for-servicenow-classic-mobile"></a>ServiceNow Classic için test SSO 'SU (mobil)
 
@@ -480,16 +480,16 @@ Erişim panelinde ServiceNow kutucuğunu seçtiğinizde, SSO 'yu ayarladığın�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Kullanıcı sağlamayı yapılandırma](servicenow-provisioning-tutorial.md)
 
 - [ServiceNow 'ı Azure AD ile deneyin](https://aad.portal.azure.com)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/protect-servicenow)
 
-- [ServiceNow 'ı gelişmiş görünürlük ve denetimlerle koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [ServiceNow 'ı gelişmiş görünürlük ve denetimlerle koruma](/cloud-app-security/proxy-intro-aad)

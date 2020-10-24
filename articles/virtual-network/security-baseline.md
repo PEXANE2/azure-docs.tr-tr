@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c34ace92fffee3c135cb05e07f06d885751bbce5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36be61fd65db7ea02a3baec4b519a13231c420ec
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629752"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514450"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>Sanal ağ için Azure Güvenlik temeli
 
@@ -118,7 +118,7 @@ Karmaşık güvenlik yapılandırmasını basitleştirmeye yardımcı olması i�
 
 Sanal ağlarınızla ilgili kullanılabilir güvenlik önerilerini içeren Güvenlik Merkezi için varsayılan ilkeye bakın.
 
-Tek bir şema tanımında Azure Resource Manager şablonları, rol tabanlı erişim denetimi (Azure RBAC) atamaları ve ilkeleri gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanın. Azure Blueprint, sürüm oluşturma aracılığıyla ince ayar yapılan denetim ve yönetim için yeni aboneliklere uygulanabilir. 
+Tek bir şema tanımında Azure Resource Manager şablonları, Azure rol tabanlı erişim denetimi (Azure RBAC) atamaları ve ilkeleri gibi temel ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanın. Azure Blueprint, sürüm oluşturma aracılığıyla ince ayar yapılan denetim ve yönetim için yeni aboneliklere uygulanabilir. 
 
 - [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -408,13 +408,13 @@ Ayrıca, MACsec (veri bağlantı katmanında bir IEEE standardı) kullanılarak 
 
 **Sorumluluk**: paylaşılan
 
-### <a name="46-use-role-based-access-control-to-manage-access-to-resources"></a>4,6: kaynaklara erişimi yönetmek için rol tabanlı erişim denetimi kullanma 
+### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: kaynaklara erişimi yönetmek için Azure RBAC kullanma 
 
 **Rehberlik**: veri ve kaynaklara erişimi yönetmek için Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) kullanın. Aksi takdirde, hizmete özgü erişim denetimi yöntemlerini kullanın. 
 
 Sahip, katkıda bulunan veya ağ katılımcısı gibi yerleşik roller ' i seçin ve rolü uygun kapsama atayın. Örneğin, bu rollerden herhangi birine sanal ağlar için gereken belirli izinlerle sanal ağ yeteneklerinin bir alt kümesini atayabilirsiniz. 
 
-- [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
 
 - [Sanal ağları planlama](virtual-network-vnet-plan-design-arm.md#permissions)
 
@@ -562,7 +562,7 @@ Azure kaynaklarınız için güvenli bir yapılandırma temeli olarak güvenlik 
 
 - [Azure portal bir şablona tek ve çoklu kaynak verme](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Güvenlik önerileri-bir başvuru kılavuzu](../security-center/recommendations-reference.md)
+- [Güvenlik önerileri - başvuru kılavuzu](../security-center/recommendations-reference.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
