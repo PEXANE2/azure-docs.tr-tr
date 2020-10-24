@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 78addb76e2ce7a2679358e241650cc5cc827791f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0cc3a335e5fbe037742767a3b59243e366f094ee
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461626"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495923"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Verileri işlemek için Azure Işlevleri uygulamalarına bağlanma
 
@@ -186,26 +186,28 @@ Aşağıdaki seçeneklerden birini kullanarak Azure işlev uygulaması için gü
 
 Önceki örneklerden Azure işlevi iskelet, Azure dijital TWINS ile kimlik doğrulaması yapabilmek için bir taşıyıcı belirtecinin kendisine geçirilmesini gerektirir. Bu taşıyıcı belirtecinin geçirildiğinden emin olmak için, işlev uygulaması için [yönetilen hizmet kimliği (MSI)](../active-directory/managed-identities-azure-resources/overview.md) ayarlamanız gerekir. Bu, her bir işlev uygulaması için yalnızca bir kez yapılmalıdır.
 
-Azure dijital TWINS örneğiniz için sistem tarafından yönetilen kimlik oluşturabilir ve işlev uygulamasının kimliğini _Azure Digital TWINS Owner (Önizleme)_ rolüne atayabilirsiniz. Bu, veri düzlemi etkinliklerini gerçekleştirmek için örnekte işlev uygulamasına izin verir. Daha sonra, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinin URL 'sini işlevinizle erişilebilir yapın.
+Azure dijital TWINS örneğiniz için sistem tarafından yönetilen kimlik oluşturabilir ve işlev uygulamasının kimliğini _**Azure Digital TWINS veri sahibi**_ rolüne atayabilirsiniz. Bu, veri düzlemi etkinliklerini gerçekleştirmek için örnekte işlev uygulamasına izin verir. Daha sonra, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinin URL 'sini işlevinizle erişilebilir yapın.
 
- Komutları çalıştırmak için [Azure Cloud Shell](https://shell.azure.com) kullanın.
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
+
+Komutları çalıştırmak için [Azure Cloud Shell](https://shell.azure.com) kullanın.
 
 Sistem tarafından yönetilen kimliği oluşturmak için aşağıdaki komutu kullanın. Çıktıda _PrincipalId_ alanını bir yere göz atın.
 
-```azurecli 
+```azurecli-interactive 
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-İşlev uygulamasının kimliğini Azure dijital TWINS örneğiniz için _Azure Digital TWINS Owner (Önizleme)_ rolüne atamak için aşağıdaki komutta _PrincipalId_ değerini kullanın.
+İşlev uygulamasının kimliğini Azure dijital TWINS örneğinizin _Azure Digital TWINS veri sahibi_ rolüne atamak için aşağıdaki komutta _PrincipalId_ değerini kullanın.
 
-```azurecli 
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive 
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
 Son olarak, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinizin URL 'sini işleviniz için erişilebilir hale getirebilirsiniz. Ortam değişkenlerini ayarlama hakkında daha fazla bilgi için bkz. [*ortam değişkenleri*](/sandbox/functions-recipes/environment-variables). 
 
 > [!TIP]
 > Azure Digital TWINS örneğinin URL 'SI, Azure Digital TWINS örneğinizin *ana bilgisayar adının*başlangıcına *https://* eklenerek yapılır. Ana bilgisayar adını görmek için, örneğinizin tüm özellikleriyle birlikte çalıştırabilirsiniz `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
 
-```azurecli 
+```azurecli-interactive 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 ### <a name="option-2-set-up-security-access-for-the-azure-function-app-using-azure-portal"></a>Seçenek 2: Azure portal kullanarak Azure işlev uygulaması için güvenlik erişimini ayarlama
@@ -241,7 +243,7 @@ Açılan _rol ataması Ekle (Önizleme)_ sayfasında şunları seçin:
 * _Kapsam_: Kaynak grubu
 * _Abonelik_: Azure aboneliğinizi seçin
 * _Kaynak grubu_: açılan listeden kaynak grubunuzu seçin
-* _Rol_: açılan listeden _Azure dijital TWINS sahibini (Önizleme)_ seçin
+* _Rol_: açılan listeden _Azure dijital TWINS veri sahibini_ seçin
 
 Sonra, _Kaydet_ düğmesine basarak ayrıntılarınızı kaydedin.
 

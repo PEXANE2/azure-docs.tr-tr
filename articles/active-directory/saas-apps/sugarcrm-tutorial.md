@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cd1be43bd8984df8fef690e595ec99f4b112c3c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ddcbfd9c069fa3d50cf694087600bfc3030b1c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533722"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484160"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>Öğretici: cukr CRM ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, cukr CRM 'yi Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -142,11 +142,11 @@ Bu bölümde, cukr CRM 'ye erişim izni vererek Azure çoklu oturum açma özell
 
 1. **Yönetim** bölümünde, **parola yönetimi**' ne tıklayın.
 
-    ![Yönetim](./media/sugarcrm-tutorial/ic795889.png "Yönetim")
+    ![Ekran görüntüsü, parola yönetimini seçebileceğiniz yönetim bölümünü gösterir.](./media/sugarcrm-tutorial/ic795889.png "Yönetim")
 
 1. **SAML kimlik doğrulamasını etkinleştir**' i seçin.
 
-    ![Yönetim](./media/sugarcrm-tutorial/ic795890.png "Yönetim")
+    ![Ekran görüntüsü SAML kimlik doğrulaması seçme seçeneğini gösterir.](./media/sugarcrm-tutorial/ic795890.png "Yönetim")
 
 1. **SAML kimlik doğrulaması** bölümünde aşağıdaki adımları uygulayın:
 
@@ -174,7 +174,7 @@ Azure AD kullanıcılarının cukr CRM 'de oturum açmasını sağlamak için, c
 
 1. **Yönetim** bölümünde **Kullanıcı yönetimi**' ne tıklayın.
 
-    ![Yönetim](./media/sugarcrm-tutorial/ic795893.png "Yönetim")
+    ![Ekran görüntüsü, Kullanıcı yönetimini seçebileceğiniz yönetim bölümünü gösterir.](./media/sugarcrm-tutorial/ic795893.png "Yönetim")
 
 1. **Kullanıcılar \> Yeni Kullanıcı oluştur**' a gidin.
 
@@ -182,7 +182,7 @@ Azure AD kullanıcılarının cukr CRM 'de oturum açmasını sağlamak için, c
 
 1. **Kullanıcı profili** sekmesinde aşağıdaki adımları gerçekleştirin:
 
-    ![Yeni Kullanıcı](./media/sugarcrm-tutorial/ic795895.png "Yeni Kullanıcı")
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı Profili sekmesini gösterir.](./media/sugarcrm-tutorial/ic795895.png "Yeni Kullanıcı")
 
     * **Kullanıcı adını**, **soyadını**ve ilgili metin kutularına geçerli bir Azure Active Directory kullanıcının **e-posta adresini** yazın.
   
@@ -190,7 +190,7 @@ Azure AD kullanıcılarının cukr CRM 'de oturum açmasını sağlamak için, c
 
 1. Parola sekmesinde aşağıdaki adımları gerçekleştirin:
 
-    ![Yeni Kullanıcı](./media/sugarcrm-tutorial/ic795896.png "Yeni Kullanıcı")
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz parolayı görebileceğiniz parola sekmesini gösterir.](./media/sugarcrm-tutorial/ic795896.png "Yeni Kullanıcı")
 
     a. Parolayı ilgili metin kutusuna yazın.
 

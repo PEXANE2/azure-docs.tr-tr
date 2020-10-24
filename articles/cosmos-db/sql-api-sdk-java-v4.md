@@ -9,32 +9,32 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 686c1e37e093a358bb5122fbfeccdfd98eb301ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2632d5c4fe637222cb6248d35671057430d935e7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804240"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477326"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 'SI için Java SDK v4 Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [.NET değişiklik akışı SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET Değişiklik Akışı SDK'sı v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK’sı v4](sql-api-sdk-java-v4.md)
 > * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
 > * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
-> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Verileri v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Verileri v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark Bağlayıcısı](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
-> * [REST Kaynak Sağlayıcısı](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
-> * [Toplu yürütücü-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
+> * [REST kaynak sağlayıcısı](/rest/api/cosmos-db-resource-provider/)
+> * [SQL](./sql-query-getting-started.md)
+> * [Toplu yürütücü - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Toplu yürütücü - Java](sql-api-sdk-bulk-executor-java.md)
 
 Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşitleme API 'sini tek bir Maven yapıtı halinde birleştirir. V4 SDK 'Sı, proje reaktör ve [Netty kitaplığı](https://netty.io/)temelinde gelişmiş performans, yeni API özellikleri ve zaman uyumsuz destek sunar. Kullanıcılar, Azure Cosmos DB Java SDK v4 ile [Azure Cosmos DB zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md) ve [Azure Cosmos DB Sync Java SDK v2](sql-api-sdk-java.md)ile daha iyi performans bekleyebilir.
 
@@ -43,7 +43,7 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 >
 > İşte hızlı bir şekilde çalışmaya yönelik üç adım!
 > 1. SDK 'yı kullanabilmek için [desteklenen en düşük Java çalışma zamanı 'nı (JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) ) yükleyebilirsiniz.
-> 2. Maven yapıtına erişmenizi sağlayan [Azure Cosmos DB Java SDK v4 Için hızlı başlangıç kılavuzu](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) aracılığıyla çalışın ve temel Azure Cosmos DB isteklerine kılavuzluk eder.
+> 2. Maven yapıtına erişmenizi sağlayan [Azure Cosmos DB Java SDK v4 Için hızlı başlangıç kılavuzu](./create-sql-api-java.md) aracılığıyla çalışın ve temel Azure Cosmos DB isteklerine kılavuzluk eder.
 > 3. Uygulamanızın SDK 'sını iyileştirmek için Azure Cosmos DB Java SDK v4 [Performans ipuçları](performance-tips-java-sdk-v4-sql.md) ve [sorun giderme](troubleshoot-java-sdk-v4-sql.md) kılavuzlarını okuyun.
 >
 > [Azure Cosmos DB atölyeler ve Labs](https://aka.ms/cosmosworkshop) , Java SDK 'sı v4 Azure Cosmos DB kullanmayı öğrenmek için başka harika bir kaynaktır!
@@ -54,9 +54,9 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 | İçerik | Bağlantı |
 |---|---|
 |**SDK indirmesi**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API belgeleri** | [Java API başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable&preserve-view=true) |
+|**API belgeleri** | [Java API başvuru belgeleri](/java/api/overview/azure/cosmosdb/client?preserve-view=true&view=azure-java-stable) |
 |**SDK 'ya katkıda bulunma** | [GitHub 'da Java merkezi deposu için Azure SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
-|**Kullanmaya başlama** | [Hızlı başlangıç: Azure Cosmos DB SQL API verilerini yönetmek için bir Java uygulaması oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) <br> [Hızlı başlangıç kodu ile GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
+|**Kullanmaya başlama** | [Hızlı başlangıç: Azure Cosmos DB SQL API verilerini yönetmek için bir Java uygulaması oluşturma](./create-sql-api-java.md) <br> [Hızlı başlangıç kodu ile GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**Temel kod örnekleri** | [Azure Cosmos DB: SQL API'si için Java örnekleri](sql-api-java-sdk-samples.md) <br> [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**Değişiklik akışı olan konsol uygulaması**| [Değişiklik akışı-Java SDK v4 örneği](create-sql-api-java-changefeed.md) <br> [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
 |**Web uygulaması örneği**| [Java SDK v4 ile Web uygulaması oluşturma](sql-api-java-application.md) <br> [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
@@ -72,4 +72,4 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)] 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Cosmos DB hakkında daha fazla bilgi için bkz. [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfası.
+Cosmos DB hakkında daha fazla bilgi edinmek için [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmeti sayfasına bakın.

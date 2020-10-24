@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c869f80eba5a6bdff4b952c62b0d964401f904d2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 05fe22ed0dc7d03148f66fd02aa648e1b63ab319
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277307"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475337"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
@@ -39,7 +39,7 @@ ServiceInterop.dll kullanılamadığı Linux ve diğer desteklenmeyen platformla
 
 Burada listelenen dört uygulama türü, varsayılan olarak 32 bitlik ana bilgisayar işlemini kullanır. Uygulama türü için ana bilgisayar işlemesini 64 bitlik işleme değiştirmek için aşağıdakileri yapın:
 
-- **Yürütülebilir uygulamalar için**: **Proje özellikleri** penceresinde, **Yapı** bölmesinde, [Platform hedefini](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) **x64**olarak ayarlayın.
+- **Yürütülebilir uygulamalar için**: **Proje özellikleri** penceresinde, **Yapı** bölmesinde, [Platform hedefini](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) **x64**olarak ayarlayın.
 
 - **VSTest tabanlı test projeleri için**: Visual Studio **Test** menüsünde **Test**  >  **Test ayarları**' nı seçin ve ardından **Varsayılan işlemci mimarisini** **x64**olarak ayarlayın.
 
@@ -53,7 +53,7 @@ Burada listelenen dört uygulama türü, varsayılan olarak 32 bitlik ana bilgis
     
 **Sunucu tarafı atık toplamayı aç**
 
-Çöp toplamanın sıklığını azaltmak bazı durumlarda yardımcı olabilir. .NET sürümünde [gcServer](https://docs.microsoft.com/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) olarak ayarlayın `true` .
+Çöp toplamanın sıklığını azaltmak bazı durumlarda yardımcı olabilir. .NET sürümünde [gcServer](/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) olarak ayarlayın `true` .
 
 **İstemci iş yükünüzü ölçeklendirin**
 
@@ -86,8 +86,8 @@ TCP protokolünde çalışırken, istemci uzun süreli bağlantıları kullanara
 
 Seyrek erişiminizin olduğu senaryolarda ve ağ geçidi modu erişimiyle karşılaştırıldığında daha yüksek bir bağlantı sayısı fark ederseniz şunları yapabilirsiniz:
 
-* [Cosmosclientoptions. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) özelliğini olarak yapılandırın `PrivatePortPool` (Framework sürümleri 4.6.1 ve üzeri ve .net Core sürümleri 2,0 ve üzeri ile geçerlidir). Bu özellik, SDK 'nın çeşitli Azure Cosmos DB hedef uç noktaları için kısa ömürlü bağlantı noktası havuzu kullanmasına izin verir.
-* [Cosmosclientoptions. ıdbu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) özelliğini 10 dakikadan büyük veya buna eşit olacak şekilde yapılandırın. Önerilen değerler 20 dakikadan 24 saate kadar sürer.
+* [Cosmosclientoptions. PortReuseMode](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) özelliğini olarak yapılandırın `PrivatePortPool` (Framework sürümleri 4.6.1 ve üzeri ve .net Core sürümleri 2,0 ve üzeri ile geçerlidir). Bu özellik, SDK 'nın çeşitli Azure Cosmos DB hedef uç noktaları için kısa ömürlü bağlantı noktası havuzu kullanmasına izin verir.
+* [Cosmosclientoptions. ıdbu](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) özelliğini 10 dakikadan büyük veya buna eşit olacak şekilde yapılandırın. Önerilen değerler 20 dakikadan 24 saate kadar sürer.
 
 <a id="same-region"></a>
 
@@ -103,7 +103,7 @@ Mümkün olduğunda, Azure Cosmos DB veritabanıyla aynı bölgedeki Azure Cosmo
 
 **İş parçacığı/görev sayısını artırma**
 
-Azure Cosmos DB çağrıları ağ üzerinden yapıldığından, istemci uygulamanın istekler arasında en az zaman harcamasını sağlamak için isteklerinizin eşzamanlılık derecesini değiştirmeniz gerekebilir. Örneğin, .NET [görev paralel kitaplığı](https://msdn.microsoft.com//library/dd460717.aspx)kullanıyorsanız, Azure Cosmos DB okuyan veya üzerine yazılan yüzlerce görev sırasını oluşturun.
+Azure Cosmos DB çağrıları ağ üzerinden yapıldığından, istemci uygulamanın istekler arasında en az zaman harcamasını sağlamak için isteklerinizin eşzamanlılık derecesini değiştirmeniz gerekebilir. Örneğin, .NET [görev paralel kitaplığı](/dotnet/standard/parallel-programming/task-parallel-library-tpl)kullanıyorsanız, Azure Cosmos DB okuyan veya üzerine yazılan yüzlerce görev sırasını oluşturun.
 
 **Hızlandırılmış ağı etkinleştir**
  
@@ -146,7 +146,7 @@ itemResponse.Resource
 
 **Ağ Geçidi modunu kullandığınızda konak başına System.Net MaxConnections 'yi artırma**
 
-Ağ Geçidi modunu kullandığınızda Azure Cosmos DB istekleri HTTPS/REST üzerinden yapılır. Ana bilgisayar adı veya IP adresi başına varsayılan bağlantı sınırına tabidir. `MaxConnections`İstemci kitaplığının Azure Cosmos DB için birden çok eş zamanlı bağlantı kullanabilmesi için daha yüksek bir değere (100 ile 1.000 arasında) ayarlamanız gerekebilir. .NET SDK 1.8.0 ve üzeri sürümlerde, [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) için varsayılan değer 50 ' dir. Değeri değiştirmek için [`Documents.Client.ConnectionPolicy.MaxConnectionLimit`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) daha yüksek bir değere ayarlayabilirsiniz.
+Ağ Geçidi modunu kullandığınızda Azure Cosmos DB istekleri HTTPS/REST üzerinden yapılır. Ana bilgisayar adı veya IP adresi başına varsayılan bağlantı sınırına tabidir. `MaxConnections`İstemci kitaplığının Azure Cosmos DB için birden çok eş zamanlı bağlantı kullanabilmesi için daha yüksek bir değere (100 ile 1.000 arasında) ayarlamanız gerekebilir. .NET SDK 1.8.0 ve üzeri sürümlerde, [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) için varsayılan değer 50 ' dir. Değeri değiştirmek için [`Documents.Client.ConnectionPolicy.MaxConnectionLimit`](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) daha yüksek bir değere ayarlayabilirsiniz.
 
 **Bölümlenmiş koleksiyonlar için Paralel sorguları ayarlama**
 
@@ -170,7 +170,7 @@ Paralel sorgular, gereksinimlerinize uyacak şekilde ayarlayabilmeniz için iki 
 
 Performans testi sırasında, küçük bir istek hızı kısıtlanana kadar yükü artırmanız gerekir. İstekler kısıtlandığı zaman, istemci uygulamanın, sunucu tarafından belirtilen yeniden deneme aralığı için azaltma kapatması gerekir. Geri alma işleminin ne kadar düşük olması, yeniden denemeler arasında bekleyen en az miktarda süre harcamanızı sağlar. 
 
-Daha fazla bilgi için bkz. [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
+Daha fazla bilgi için bkz. [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
     
 Aşağıdaki örnekte gösterildiği gibi, ek tanılama bilgileri ve sorun giderme gecikme sorunlarını günlüğe kaydetme mekanizması vardır. Daha yüksek okuma gecikmesi olan istekler için tanılama dizesini günlüğe kaydedebilirsiniz. Yakalanan tanılama dizesi, belirli bir istek için kaç kez *429* hatası aldığınızı anlamanıza yardımcı olur.
 

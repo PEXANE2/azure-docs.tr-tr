@@ -7,12 +7,12 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: e846f00388ce21690729f62592c86b73cc42c3f3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 9455ac3520192274e80f2d9e0fdfd1c8f8a238a3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173793"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482630"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsü 'nü yükleyip kullanın
 
@@ -369,7 +369,7 @@ mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mG
 
 ### <a name="table-api"></a>Tablo API’si
 
-Azure Cosmos öykünücüsünü masaüstünüzde çalışan bir kez etkinleştirdikten sonra, öykünücüle etkileşim kurmak için [Azure Cosmos DB tablo API'si SDK 'sını](table-storage-how-to-use-dotnet.md) kullanabilirsiniz. "/EnableTableEndpoint" ile yönetici olarak [komut isteminden](emulator-command-line-parameters.md) öykünücü başlatın. Daha sonra tablo API hesabına bağlanmak için aşağıdaki kodu çalıştırın:
+Azure Cosmos öykünücüsünü masaüstünüzde çalışan bir kez etkinleştirdikten sonra, öykünücüle etkileşim kurmak için [Azure Cosmos DB tablo API'si SDK 'sını](./tutorial-develop-table-dotnet.md) kullanabilirsiniz. "/EnableTableEndpoint" ile yönetici olarak [komut isteminden](emulator-command-line-parameters.md) öykünücü başlatın. Daha sonra tablo API hesabına bağlanmak için aşağıdaki kodu çalıştırın:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 3ec50acc693452fe73d929effcea98b12fc5ff8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a663eb65bcd85a1b2e91e6f2ad90dc64b61273ce
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75933945"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484772"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Windows BILGISAYARDAN HDInsight üzerinde Apache Hadoop ekosisteminde çalışma
 
@@ -58,7 +58,7 @@ Visual Studio ile gerçekleştirebileceğiniz görev örnekleri ve Visual Studio
 Kümeleri yönetmek ve büyük veri uygulamaları geliştirmek için Visual Studio 'Yu .NET SDK ile birlikte kullanabilirsiniz. Aşağıdaki görevler için diğer Ides 'i kullanabilirsiniz, ancak örnekler Visual Studio 'da gösterilir.
 
 Visual Studio 'da .NET SDK ile gerçekleştirebileceğiniz görev örnekleri:
-* [.Net Için Azure HDıNSIGHT SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
+* [.Net Için Azure HDıNSIGHT SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true).
 * [.NET SDK kullanarak Apache Hive sorguları çalıştırın](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 * [Apache Hadoop üzerinde Apache Hive ve Apache Pig streaming Ile C# Kullanıcı tanımlı Işlevleri kullanın](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 
@@ -90,7 +90,7 @@ Yalnızca Linux 'ta kullanılabilen bir araç veya teknolojiyi kullanmanız gere
 
 ## <a name="cross-platform-tools"></a>Platformlar arası Araçlar
 
-Azure komut satırı arabirimi (CLI), Azure kaynaklarını yönetmek için Microsoft tarafından sunulan platformlar arası komut satırı deneyimidir.  Daha fazla bilgi için bkz. [Azure Command-Line arabirimi (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+Azure komut satırı arabirimi (CLI), Azure kaynaklarını yönetmek için Microsoft tarafından sunulan platformlar arası komut satırı deneyimidir.  Daha fazla bilgi için bkz. [Azure Command-Line arabirimi (CLI)](/cli/azure/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

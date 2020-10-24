@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: 0c03c4f163ef36335dacdc3c28340164dcd23fba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b3d01445eb5624addb5edec3ccb9cd8e4a9b6d9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85299203"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476034"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: bir Go uygulamasını MongoDB için Azure Cosmos DB API 'sine bağlama
 
@@ -28,7 +28,7 @@ ms.locfileid: "85299203"
 
 Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir. Bu hızlı başlangıçta, Azure Cloud Shell kullanarak bir Azure Cosmos DB hesabı oluşturup yönetebilir, GitHub 'dan mevcut bir örnek uygulamayı klonlayabilir ve Azure Cosmos DB ile çalışacak şekilde yapılandırırsınız. 
 
-Örnek uygulama, go 'da yazılmış bir komut satırı tabanlı `todo` yönetim aracıdır. MongoDB için Azure Cosmos DB API 'SI, MongoDB [kablo protokolüyle uyumludur](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction#wire-protocol-compatibility)ve bu, herhangi bir MongoDB istemci sürücüsünün bu sunucuya bağlanmasını mümkün hale getirir. Bu uygulama, [MongoDB Için Go sürücüsünü](https://github.com/mongodb/mongo-go-driver) , verilerin bir Azure Cosmos DB veritabanında depolandığı uygulamaya saydam bir şekilde kullanır.
+Örnek uygulama, go 'da yazılmış bir komut satırı tabanlı `todo` yönetim aracıdır. MongoDB için Azure Cosmos DB API 'SI, MongoDB [kablo protokolüyle uyumludur](./mongodb-introduction.md#wire-protocol-compatibility)ve bu, herhangi bir MongoDB istemci sürücüsünün bu sunucuya bağlanmasını mümkün hale getirir. Bu uygulama, [MongoDB Için Go sürücüsünü](https://github.com/mongodb/mongo-go-driver) , verilerin bir Azure Cosmos DB veritabanında depolandığı uygulamaya saydam bir şekilde kullanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bağlantı dizesiyle de kullanabilirsiniz `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
@@ -279,7 +279,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 Azure Cosmos DB hesabı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgiler gösterir. 
 
 > [!NOTE]
-> Bu örnek, varsayılan Azure CLI çıktı biçimi olarak JSON kullanır. Başka bir çıktı biçimi kullanmak için bkz. [Azure CLI komutları için çıktı biçimleri](https://docs.microsoft.com/cli/azure/format-output-azure-cli).
+> Bu örnek, varsayılan Azure CLI çıktı biçimi olarak JSON kullanır. Başka bir çıktı biçimi kullanmak için bkz. [Azure CLI komutları için çıktı biçimleri](/cli/azure/format-output-azure-cli).
 
 ```json
 {
@@ -457,4 +457,4 @@ KIMLIĞI kullanarak bir öğesini silme `todo`
 Bu hızlı başlangıçta, Azure Cloud Shell kullanarak bir Azure Cosmos DB MongoDB API hesabı oluşturmayı ve yönetmek için bir go komut satırı uygulaması oluşturmayı ve çalıştırmayı öğrendiniz `todo` . Şimdi Azure Cosmos DB hesabınıza ek veriler aktarabilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB’ye MongoDB verileri aktarma](mongodb-migrate.md)
+> [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

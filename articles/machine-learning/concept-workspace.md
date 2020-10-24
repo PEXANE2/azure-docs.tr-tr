@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: dccdbcb99b32a922d76b29e5896cdf99290758d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b40ce0951e2d9c8933d4f0ea9d24b1673e254d6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302460"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495718"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
@@ -47,7 +47,7 @@ Aşağıdaki yollarla çalışma alanım ile etkileşim kurabilirsiniz:
 
 > [!IMPORTANT]
 > Aşağıda işaretlenmiş araçlar (Önizleme) Şu anda genel önizlemede.
-> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 + Web 'de:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
@@ -88,8 +88,8 @@ Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebil
 
 Çalışma alanı oluşturmanın birden çok yolu vardır:  
 
-* Her adımda size yol göstermek için bir nokta ve tıklama arabirimi için [Azure Portal](how-to-manage-workspace.md) kullanın.
-* Python betikleri veya Jupiter not defterlerinden anında çalışma alanı oluşturmak için [Python için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace) kullanın
+* Her adımda size yol göstermek için bir nokta ve tıklama arabirimi için [Azure Portal](how-to-manage-workspace.md?tabs=azure-portal#create-a-workspace) kullanın.
+* Python betikleri veya Jupiter not defterlerinden anında çalışma alanı oluşturmak için [Python için Azure Machine Learning SDK 'sını](how-to-manage-workspace.md?tabs=python#create-a-workspace) kullanın
 * Şirket güvenlik standartları ile oluşturma işlemini otomatik hale getirmeniz veya özelleştirmeniz gerektiğinde bir [Azure Resource Manager şablonu](how-to-create-workspace-template.md) veya [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) kullanın.
 * Visual Studio Code ' de çalışıyorsanız [vs Code uzantısını](how-to-manage-resources-vscode.md#create-a-workspace)kullanın.
 
@@ -114,7 +114,7 @@ Yeni bir çalışma alanı oluşturduğunuzda, bu, çalışma alanı tarafından
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): işlem hedefleri ve çalışma alanı için gereken diğer hassas bilgiler tarafından kullanılan gizli dizileri depolar.
 
 > [!NOTE]
-> Yeni sürümler oluşturmaya ek olarak, var olan Azure hizmetlerini de kullanabilirsiniz.
+> Bunun yerine, [BIR ARM şablonu kullanarak bir](how-to-create-workspace-template.md)çalışma alanını [Python SDK 'Sı](how-to-manage-workspace.md?tabs=python#create-a-workspace), [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/create_workspace.html)veya CLI Azure Machine Learning CLI ile oluşturduğunuzda mevcut Azure Kaynak örneklerini kullanabilirsiniz.
 
 <a name="wheres-enterprise"></a>
 
@@ -131,9 +131,9 @@ Her iki sürümde, müşteriler tüketilen Azure kaynaklarının maliyetlerinden
 Azure Machine Learning kullanmaya başlamak için bkz.:
 
 + [Azure Machine Learning genel bakış](overview-what-is-azure-ml.md)
-+ [Çalışma alanı oluşturma](how-to-manage-workspace.md)
-+ [Çalışma Alanını Yönetme](how-to-manage-workspace.md)
-+ [Öğretici: Python SDK ile ilk ML denemenizi oluşturmaya başlama](tutorial-1st-experiment-sdk-setup.md)
++ [Çalışma alanı oluşturma ve yönetme](how-to-manage-workspace.md)
++ [Öğretici: geliştirme ortamınızda Azure Machine Learning kullanmaya başlayın](tutorial-1st-experiment-sdk-setup-local.md)
++ [Öğretici: bir işlem örneği üzerinde ilk ML denemenizi oluşturmaya başlama](tutorial-1st-experiment-sdk-setup.md)
 + [Öğretici: R SDK ile Azure Machine Learning kullanmaya başlama](tutorial-1st-r-experiment.md)
-+ [Öğretici: otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma](tutorial-first-experiment-automated-ml.md) 
++ [Öğretici: Otomatik makine öğrenmesiyle ilk sınıflandırma modelinizi oluşturma](tutorial-first-experiment-automated-ml.md) 
 + [Öğretici: tasarımcı ile otomobil fiyatlarını tahmin etme](tutorial-designer-automobile-price-train-score.md)

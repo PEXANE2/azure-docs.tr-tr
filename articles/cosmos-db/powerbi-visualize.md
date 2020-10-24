@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: fc3ca5fdde464ba63671512a6ebecd2c314cb192
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7e5443869efd7f37153b47e4d9c3eaa39f9c41d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570835"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475286"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI bağlayıcısını kullanarak Azure Cosmos DB verilerini görselleştirme
 
@@ -25,14 +25,14 @@ Bu makalede Azure Cosmos DB hesabını Power BI Desktop'a bağlamak için gereke
 > [!NOTE]
 > Power BI Bağlayıcısı ile Azure Cosmos DB bağlantı şu anda yalnızca Azure Cosmos DB SQL API ve Gremlin API hesapları için desteklenmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu Power BI öğreticideki yönergeleri takip etmeden önce aşağıdaki kaynaklara erişiminizin olduğundan emin olun:
 
 * [En son Power BI Desktop sürümünü indirin](https://powerbi.microsoft.com/desktop).
 
 * GitHub 'dan [örnek Volcano verilerini](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) indirin.
 
-* [Azure Cosmos DB veri geçiş aracını](import-data.md)kullanarak [bir Azure Cosmos veritabanı hesabı oluşturun](https://azure.microsoft.com/documentation/articles/create-account/) ve Volcano verilerini içeri aktarın. Verileri içeri aktarırken, veri geçiş aracında kaynak ve hedefler için aşağıdaki ayarları göz önünde bulundurun:
+* [Azure Cosmos DB veri geçiş aracını](import-data.md)kullanarak [bir Azure Cosmos veritabanı hesabı oluşturun](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) ve Volcano verilerini içeri aktarın. Verileri içeri aktarırken, veri geçiş aracında kaynak ve hedefler için aşağıdaki ayarları göz önünde bulundurun:
 
    * **Kaynak parametreleri** 
 
@@ -133,9 +133,9 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
 
 1. Yeni sütun için bir ad girin, örneğin, LatLong.
 
-1. Ardından, yeni sütun için özel formül belirtin.  Bizim örneğimizde, aşağıdaki formül kullanılarak aşağıda gösterildiği gibi bir virgülle ayrılmış Enlem ve boylam değerlerini birleştirilecek: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . **Tamam**'a tıklayın.
+1. Ardından, yeni sütun için özel formül belirtin.  Bizim örneğimizde, aşağıdaki formül kullanılarak aşağıda gösterildiği gibi bir virgülle ayrılmış Enlem ve boylam değerlerini birleştirilecek: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . **Tamam**’a tıklayın.
    
-   DAX işlevleri de dahil olmak üzere veri çözümleme Ifadeleri (DAX) hakkında daha fazla bilgi için lütfen [Power BI Desktop Içindeki Dax temel](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)bilgilerini ziyaret edin.
+   DAX işlevleri de dahil olmak üzere veri çözümleme Ifadeleri (DAX) hakkında daha fazla bilgi için lütfen [Power BI Desktop Içindeki Dax temel](/power-bi/desktop-quickstart-learn-dax-basics)bilgilerini ziyaret edin.
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
 
@@ -226,4 +226,3 @@ For a scheduled refresh, do the following.
 ## <a name="next-steps"></a>Sonraki adımlar
 * Power BI hakkında daha fazla bilgi için bkz. [Power BI kullanmaya başlama](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 * Azure Cosmos DB hakkında daha fazla bilgi edinmek için [Azure Cosmos DB belge giriş sayfasına](https://azure.microsoft.com/documentation/services/cosmos-db/)bakın.
-

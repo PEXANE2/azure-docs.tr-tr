@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8154ef7a90011da8c15f52870eebb6c80ebaebca
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254083"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496105"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri ve sorun giderme
 
@@ -23,9 +23,9 @@ Uzamsal analiz sistemin durumunu izlemeye ve sorunları tanılarken yardımcı o
 
 ## <a name="enable-visualizations"></a>Görselleştirmeleri etkinleştir
 
-Bir video çerçevesindeki bir AI Insights olaylarını görselleştirmeyi etkinleştirmek için, `.debug` [uzamsal analiz işleminin](spatial-analysis-operations.md)sürümünü kullanmanız gerekir. Dört hata ayıklama işlemi kullanılabilir.
+Bir video çerçevesindeki bir AI Insights etkinlikleri görselleştirmesini etkinleştirmek için, `.debug` bir masaüstü makinesinde bir [uzamsal analiz işleminin](spatial-analysis-operations.md) sürümünü kullanmanız gerekir. Görselleştirme Azure Stack Edge cihazlarında mümkün değildir. Dört hata ayıklama işlemi kullanılabilir.
 
-[Dağıtım bildirimini](https://go.microsoft.com/fwlink/?linkid=2142179) , ortam değişkeni için doğru değeri kullanacak şekilde düzenleyin `DISPLAY` . `$DISPLAY`Ana bilgisayardaki değişkenle eşleşmesi gerekir. Dağıtım bildirimini güncelleştirdikten sonra kapsayıcıyı yeniden dağıtın.
+Cihazınız Azure Stack Edge aygıtı değilse, [Masaüstü makineleri](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) için dağıtım bildirim dosyasını ortam değişkeni için doğru değeri kullanacak şekilde düzenleyin `DISPLAY` . `$DISPLAY`Ana bilgisayardaki değişkenle eşleşmesi gerekir. Dağıtım bildirimini güncelleştirdikten sonra kapsayıcıyı yeniden dağıtın.
 
 Dağıtım tamamlandıktan sonra, `.Xauthority` dosyayı ana bilgisayardan kapsayıcıya kopyalamanız ve yeniden başlatmanız gerekebilir. Aşağıdaki örnekte, `peopleanalytics` ana bilgisayardaki kapsayıcının adıdır.
 
@@ -39,7 +39,7 @@ xhost +
 
 ## <a name="collect-system-health-telemetry"></a>Sistem durumu telemetrisini topla
 
-Telegraf, uzamsal analiz ile birlikte çalışarak açık kaynaklı bir görüntüdür ve Microsoft Container Registry kullanılabilir. Aşağıdaki girişleri alır ve Azure Izleyici 'ye gönderir. Telegraf modülü, istenen özel girişler ve çıktılar ile oluşturulabilir. Uzamsal çözümlemede telegraf Module yapılandırması, [dağıtım bildiriminin](https://go.microsoft.com/fwlink/?linkid=2142179)bir parçasıdır. Bu modül isteğe bağlıdır ve ihtiyacınız yoksa bildirimden kaldırılabilir. 
+Telegraf, uzamsal analiz ile birlikte çalışarak açık kaynaklı bir görüntüdür ve Microsoft Container Registry kullanılabilir. Aşağıdaki girişleri alır ve Azure Izleyici 'ye gönderir. Telegraf modülü, istenen özel girişler ve çıktılar ile oluşturulabilir. Uzamsal analizde telegraf Module yapılandırması, dağıtım bildiriminin bir parçasıdır (yukarıda bağlantılı). Bu modül isteğe bağlıdır ve ihtiyacınız yoksa bildirimden kaldırılabilir. 
 
 Girişi 
 1. Uzamsal analiz ölçümleri
@@ -51,7 +51,7 @@ Girişi
 Çıkışı
 1. Azure İzleyici
 
-Sağlanan uzamsal analiz telegraf modülü, uzamsal analiz kapsayıcısı tarafından sunulan tüm telemetri verilerini Azure Izleyici 'ye yayımlar. Aboneliğinize Azure izleyici ekleme hakkında bilgi için bkz. [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) .
+Sağlanan uzamsal analiz telegraf modülü, uzamsal analiz kapsayıcısı tarafından sunulan tüm telemetri verilerini Azure Izleyici 'ye yayımlar. Aboneliğinize Azure Izleyici ekleme hakkında bilgi için bkz. [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) .
 
 Azure Izleyici 'yi ayarladıktan sonra, modülün telemetri göndermesini sağlayan kimlik bilgileri oluşturmanız gerekir. Yeni bir hizmet sorumlusu oluşturmak için Azure portal kullanabilir veya bir tane oluşturmak için aşağıdaki Azure CLı komutunu kullanabilirsiniz.
 
@@ -68,14 +68,14 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-[Dağıtım bildiriminde](https://go.microsoft.com/fwlink/?linkid=2142179), *telegraf* modülünü arayın ve aşağıdaki değerleri önceki adımda bulunan hizmet sorumlusu bilgileriyle değiştirin ve yeniden dağıtın.
+[Azure Stack Edge cihazınızın](https://go.microsoft.com/fwlink/?linkid=2142179) veya diğer [Masaüstü makinenizin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)dağıtım bildiriminde, *telegraf* modülünü arayın ve aşağıdaki değerleri önceki adımda bulunan hizmet sorumlusu bilgileriyle değiştirin ve yeniden dağıtın.
 
 ```json
 
 "telegraf": { 
-  "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
-  "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
+  "settings": {
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
+  "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
 },
 "type": "docker",
 "env": {
@@ -105,19 +105,19 @@ Telegraf modülü dağıtıldıktan sonra, bildirilen ölçümlere Azure Izleyic
 
 | Olay Adı | Açıklama|
 |------|---------|
-|archon_exit    |Kullanıcı, uzamsal analiz modülü durumunun *çalışmayı* *durduruldu*olarak değiştirdiğinde gönderilir.  |
-|archon_error   |Kapsayıcının içindeki işlemlerden herhangi biri kilitleniyorsa gönderilir. Bu kritik bir hatadır.  |
-|Inputrate  |Grafiğin video girişini işleme hızıdır. Her 5 dakikada bir raporlanır. | 
-|OutputRate     |Grafiğin AI öngörülerini çıkış hızı. Her 5 dakikada bir raporlanır. |
-|archon_allGraphsStarted | Tüm grafiklerin başlaması bittiğinde gönderilir. |
-|archon_configchange    | Grafik yapılandırması değiştirildiğinde gönderilir. |
-|archon_graphCreationFailed     |Raporlandığı grafik başlatıldığında gönderilir `graphId` . |
-|archon_graphCreationSuccess    |Raporlanan grafik `graphId` başarıyla başladığında gönderilir. |
-|archon_graphCleanup    | Bildirilen grafik `graphId` Temizleme ve çıkış olduğunda gönderilir. |
-|archon_graphHeartbeat  |Bir yeteneğin her bir grafiği için her dakikada bir sinyal gönderilir. |
+|archon_exit    |Kullanıcı, uzamsal analiz modülü durumunun *çalışmayı* *durduruldu*olarak değiştirdiğinde gönderilir.  |
+|archon_error   |Kapsayıcının içindeki işlemlerden herhangi biri kilitleniyorsa gönderilir. Bu kritik bir hatadır.  |
+|Inputrate  |Grafiğin video girişini işleme hızıdır. Her 5 dakikada bir raporlanır. | 
+|OutputRate     |Grafiğin AI öngörülerini çıkış hızı. Her 5 dakikada bir raporlanır. |
+|archon_allGraphsStarted | Tüm grafiklerin başlaması bittiğinde gönderilir. |
+|archon_configchange    | Grafik yapılandırması değiştirildiğinde gönderilir. |
+|archon_graphCreationFailed     |Raporlandığı grafik başlatıldığında gönderilir `graphId` . |
+|archon_graphCreationSuccess    |Raporlanan grafik `graphId` başarıyla başladığında gönderilir. |
+|archon_graphCleanup    | Bildirilen grafik `graphId` Temizleme ve çıkış olduğunda gönderilir. |
+|archon_graphHeartbeat  |Bir yeteneğin her bir grafiği için her dakikada bir sinyal gönderilir. |
 |archon_apiKeyAuthFail |Görüntü İşleme kaynak anahtarı, aşağıdaki nedenlerden dolayı, kapsayıcıyı 24 saatten uzun bir süre için doğrulayamazsa gönderilir: kota dışı, geçersiz, çevrimdışı. |
-|Videoıngestersinyal     |Videonun video kaynağından akışını ve bu saatin hata sayısını gösteren her saat için gönderilir. Her bir grafik için bildirildi. |
-|Videoıngesterstate | Video akışı için raporlar *durduruldu* veya *başlatıldı* .Her bir grafik için bildirildi. |
+|Videoıngestersinyal     |Videonun video kaynağından akışını ve bu saatin hata sayısını gösteren her saat için gönderilir. Her bir grafik için bildirildi. |
+|Videoıngesterstate | Video akışı için raporlar *durduruldu* veya *başlatıldı* . Her bir grafik için bildirildi. |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>IoT Edge cihaz sorunlarını giderme
 
@@ -129,22 +129,17 @@ Telegraf modülü dağıtıldıktan sonra, bildirilen ölçümlere Azure Izleyic
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>Tanılama kapsayıcısı ile günlük dosyalarını toplama
 
-Uzamsal analiz, çalışma zamanı sorunlarını tanılamak için kullanabileceğiniz veya destek biletlerinin dahil olduğu Docker hata ayıklama günlüklerini oluşturur. Uzamsal analiz tanılama modülü, Microsoft Container Registry indirileceği için kullanılabilir. [Örnek dağıtım bildiriminde](https://go.microsoft.com/fwlink/?linkid=2142179) *Tanılama* modülünü arayın.
+Uzamsal analiz, çalışma zamanı sorunlarını tanılamak için kullanabileceğiniz veya destek biletlerinin dahil olduğu Docker hata ayıklama günlüklerini oluşturur. Uzamsal analiz tanılama modülü, Microsoft Container Registry indirileceği için kullanılabilir. [Azure Stack Edge cihazınızın](https://go.microsoft.com/fwlink/?linkid=2142179) veya diğer [Masaüstü makinenizin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)bildirim dağıtım dosyasında *Tanılama* modülünü arayın.
 
 "Env" bölümünde aşağıdaki yapılandırmayı ekleyin:
 
 ```json
-"diagnostics": {  
-  "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
-  "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
-  }
+"diagnostics": {  
+  "settings": {
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
+  "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
+  }
 ```    
-
->[!NOTE]
-> AS Kubernetes ortamında çalıştırmıyorsanız, günlük modülünün kapsayıcı oluşturma seçeneklerini aşağıdaki gibi değiştirin:
->
->`"createOptions": "{\"HostConfig\": {\"Binds\": [\"/var/run/docker.sock:/var/run/docker.sock\",\"/usr/bin/docker:/usr/bin/docker\"],\"LogConfig\": {\"Config\": {\"max-size\": \"500m\"}}}}"`
 
 Azure Blob depolama gibi uzak bir uç noktaya yüklenen günlükleri iyileştirmek için küçük bir dosya boyutu sürdürülmesi önerilir. Önerilen Docker günlükleri yapılandırması için aşağıdaki örneğe bakın.
 
@@ -193,13 +188,13 @@ Ayrıca, tüm dağıtılan yetenekler için IoT Edge modülü Ikizi belgesi arac
 > `diagnostics`Modül, günlüğe kaydetme içeriğini etkilemez, yalnızca mevcut günlükleri toplama, filtreleme ve karşıya yükleme konusunda yardımcı olur.
 > Bu modülü kullanmak için Docker API sürüm 1,40 veya sonraki bir sürüme sahip olmanız gerekir.
 
-[Örnek dağıtım bildirim](https://go.microsoft.com/fwlink/?linkid=2142179) dosyası, `diagnostics` günlükleri toplayıp karşıya yükleyen adlı bir modül içerir. Bu modül varsayılan olarak devre dışıdır ve günlüklere erişmeniz gerektiğinde IoT Edge modülü yapılandırması aracılığıyla etkinleştirilmelidir. 
+[Azure Stack Edge cihazınız](https://go.microsoft.com/fwlink/?linkid=2142179) veya diğer [Masaüstü makinenizin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) örnek dağıtım bildirim dosyası, `diagnostics` günlükleri toplayan ve yükleyen adlı bir modül içerir. Bu modül varsayılan olarak devre dışıdır ve günlüklere erişmeniz gerektiğinde IoT Edge modülü yapılandırması aracılığıyla etkinleştirilmelidir. 
 
 `diagnostics`Koleksiyon isteğe bağlıdır ve bir IoT Edge doğrudan yöntemi aracılığıyla denetlenir ve Azure Blob depolama alanına Günlükler gönderebilir.
 
 ### <a name="configure-diagnostics-upload-targets"></a>Tanılama karşıya yükleme hedeflerini yapılandırma
 
-IoT Edge portalından cihazınızı ve ardından **Tanılama** modülünü seçin. Örnek dosya [*DeploymentManifest.js*](https://go.microsoft.com/fwlink/?linkid=2142179), ' env ' adlı Tanılamalar Için **ortam değişkenleri** bölümüne bakın ve aşağıdaki bilgileri ekleyin:
+IoT Edge portalından cihazınızı ve ardından **Tanılama** modülünü seçin. [Azure Stack Edge cihazınız](https://go.microsoft.com/fwlink/?linkid=2142179) veya diğer [Masaüstü makineleriniz](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)için örnek dağıtım bildirim dosyasında, adlı Tanılamalar için **ortam değişkenleri** bölümüne bakın `env` ve aşağıdaki bilgileri ekleyin:
 
 **Azure Blob depolamaya yükleme yapılandırma**
 
@@ -221,9 +216,9 @@ Günlükler, modüldeki IoT Edge yöntemi ile isteğe bağlı olarak karşıya y
 
 
 1. IoT Hub Portal sayfanıza gidin, **Edge cihazları**' nı seçin, sonra cihazınızı ve tanılama modülünüzü seçin. 
-2. Modülün ayrıntılar sayfasına gidin ve ***doğrudan yöntem*** sekmesine tıklayın.
+2. Modülün ayrıntılar sayfasına gidin ve **_doğrudan yöntem_*_ sekmesine tıklayın.
 3. `getRTCVLogs`Yöntem adı üzerine tür ve yük içindeki bir JSON biçim dizesi. `{}`Boş bir yük olan yazabilirsiniz. 
-4. Bağlantı ve yöntem zaman aşımlarını ayarlayın ve **yöntemi çağır**' a tıklayın.
+4. Bağlantı ve yöntem zaman aşımlarını ayarlayın ve _ * Invoke yöntemi * * ' ye tıklayın.
 5. Hedef kapsayıcınızı seçin ve **günlük sözdizimi** bölümünde açıklanan parametreleri kullanarak bir yük JSON dizesi oluşturun. İsteği gerçekleştirmek için **Invoke yöntemi** ' ne tıklayın.
 
 >[!NOTE]
@@ -250,7 +245,7 @@ Aşağıdaki tabloda sorgu yanıtında öznitelikler listelenmiştir.
 
 | Sözcükle | Açıklama|
 |--|--|
-|DoPost| *True* ya da *false*. Günlüklerin karşıya yüklenip yüklenmediğini belirtir. Günlükleri karşıya yüklemeyi tercih ettiğinizde, API bilgileri ***zaman uyumlu***olarak döndürür. Günlükleri karşıya yüklemeyi seçtiğinizde, API, istek geçerliyse 200 döndürür ve günlükleri ***zaman uyumsuz***olarak karşıya yüklemeye başlar.|
+|DoPost| *True* ya da *false*. Günlüklerin karşıya yüklenip yüklenmediğini belirtir. Günlükleri karşıya yüklememe seçeneğini belirlediğinizde, API bilgileri "**zaman uyumlu**_" döndürür. Günlükleri karşıya yüklemeyi seçtiğinizde, API, istek geçerliyse 200 döndürür ve günlükleri _*_zaman uyumsuz_*_ olarak karşıya yüklemeye başlar.|
 |TimeFilter| Günlüklere uygulanan zaman filtresi.|
 |ValueFilters| Günlüklere uygulanan anahtar sözcük filtreleri. |
 |Ilişkin| Yöntem yürütme başlangıç zamanı. |
@@ -303,7 +298,7 @@ Aşağıdaki tabloda sorgu yanıtında öznitelikler listelenmiştir.
 }
 ```
 
-Bu ayarların daha iyi görünmesi ve günlükleri aynı filtreye sahip günlüklere itmesi için, bu ayarların ' ı ' ye doğru görünmesi durumunda getirme günlüğü satırları, zamanları ve boyutları ' nı işaretleyin ***DoPost*** `true` . 
+Bu ayarların daha iyi görünmesi ve günlükleri aynı filtreye sahip günlüklere itmesi için, bu ayarların ' ı ' ye doğru görünmesi durumunda getirme günlüğü satırları, zamanları ve boyutları ' nı işaretleyin _*_DoPost_*_ `true` . 
 
 Sorunları giderirken Azure Blob depolamadan günlükleri dışarı aktarabilirsiniz. 
 
@@ -319,9 +314,9 @@ Daha fazla bilgi için bkz. [kapsayıcıyı çalıştırmak için onay iste](spa
 
 Azure Stack Edge cihazınızın durumunu hata ayıklama ve doğrulamaya yönelik yardım için aşağıdaki bölüm sunulmaktadır.
 
-### <a name="access-the-kubernetes-api-endpoint"></a>Kubernetes API uç noktasına erişin. 
+### <a name="access-the-kubernetes-api-endpoint"></a>Kubernetes API uç noktasına erişin. 
 
-1. Cihazınızın yerel kullanıcı arabiriminde, **cihazlar** sayfasına gidin. 
+1. Cihazınızın yerel kullanıcı arabiriminde _*cihazlar** sayfasına gidin. 
 2. **Cihaz uç noktaları**altında Kubernetes API hizmet uç noktasını kopyalayın. Bu uç nokta aşağıdaki biçimde bir dizedir: `https://compute..[device-IP-address]` .
 3. Uç nokta dizesini kaydedin. Bunu daha sonra `kubectl` Kubernetes kümesine erişmek üzere yapılandırırken kullanacaksınız.
 

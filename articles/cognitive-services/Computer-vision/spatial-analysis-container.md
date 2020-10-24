@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d84867dbe51b9c6689ecdac2bc80585a88da66b4
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91277300"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496125"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Uzamsal analiz kapsayıcısını (Önizleme) yükleyip çalıştırın
 
 Uzamsal analiz kapsayıcısı, kişiler, taşınanlar ve fiziksel ortamlardaki nesnelerle etkileşimler arasındaki uzamsal ilişkileri anlamak için gerçek zamanlı akış videosunu analiz etmenizi sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
@@ -261,7 +261,7 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Ana bilgisayar Azure Stack Edge aygıtı değilse, [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) sürüm 1.0.8 yüklemeniz gerekir. Doğru sürümü indirmek için şu adımları izleyin:
+Ana bilgisayar Azure Stack Edge aygıtı değilse, [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) sürüm 1.0.9 yüklemeniz gerekir. Doğru sürümü indirmek için şu adımları izleyin:
 
 Ubuntu Server 18,04:
 ```bash
@@ -286,10 +286,10 @@ Cihazınızdaki paket listelerini güncelleştirin.
 sudo apt-get update
 ```
 
-1.0.8 sürümünü yükler:
+1.0.9 sürümünü yükler:
 
 ```bash
-sudo apt-get install iotedge=1.0.8* libiothsm-std=1.0.8*
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.8*
 ```
 
 Sonra, bir [bağlantı dizesi](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal)kullanarak ana bilgisayarı IoT Hub örneğiniz IoT Edge bir cihaz olarak kaydedin.
@@ -314,7 +314,7 @@ Azure CLı kullanarak kapsayıcıyı dağıtmak için aşağıdaki adımları ku
 
 ### <a name="iot-deployment-manifest"></a>IoT dağıtım bildirimi
 
-Birden çok konak bilgisayarında kapsayıcı dağıtımını kolaylaştırmak için, kapsayıcı oluşturma seçeneklerini ve ortam değişkenlerini belirtmek üzere bir dağıtım bildirim dosyası oluşturabilirsiniz. [GitHub üzerinde bir dağıtım bildirimi](https://go.microsoft.com/fwlink/?linkid=2142179)örneği bulabilirsiniz.
+Birden çok konak bilgisayarında kapsayıcı dağıtımını kolaylaştırmak için, kapsayıcı oluşturma seçeneklerini ve ortam değişkenlerini belirtmek üzere bir dağıtım bildirim dosyası oluşturabilirsiniz. [Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) ve [diğer masaüstü makineler](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) için GitHub üzerinde bir dağıtım bildirimi örneği bulabilirsiniz.
 
 Aşağıdaki tabloda IoT Edge modülü tarafından kullanılan çeşitli ortam değişkenleri gösterilmektedir. Ayrıca, içindeki özniteliğini kullanarak bunları yukarıda bağlı dağıtım bildiriminde da ayarlayabilirsiniz `env` `spatialanalysis` :
 
@@ -335,17 +335,16 @@ Aşağıdaki tabloda IoT Edge modülü tarafından kullanılan çeşitli ortam d
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Kapsayıcıyı çalıştırmak için, ve seçenekleri belirtilmelidir; Aksi takdirde kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
 
-Dosyadaki örnek [DeploymentManifest.js](https://go.microsoft.com/fwlink/?linkid=2142179) , kendi ayarlarınızı ve işlem seçiminizle güncelleştirdikten sonra, kapsayıcıyı ana bilgisayarda bir IoT Edge modülü olarak dağıtmak Için AŞAĞıDAKI [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) komutunu kullanabilirsiniz.
+[Azure Stack Edge cihazları](https://go.microsoft.com/fwlink/?linkid=2142179) için dağıtım bildirimini veya kendi ayarlarınızı ve işlem seçiminizi içeren [bir masaüstü makinesini](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) güncelleştirdiğinizde, kapsayıcıyı bir IoT Edge modülü olarak ana bilgisayara DAĞıTMAK için aşağıdaki [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) komutunu kullanabilirsiniz.
 
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
 ```
 
 |Parametre  |Açıklama  |
 |---------|---------|
-| `--deployment-id` | Dağıtım için yeni bir ad. |
 | `--hub-name` | Azure IoT Hub adınız. |
 | `--content` | Dağıtım dosyasının adı. |
 | `--target-condition` | Ana bilgisayar için IoT Edge cihaz adı. |
@@ -386,7 +385,7 @@ Hem kayıtlı hem de canlı video ile uzamsal analizler kullanabilirsiniz. Kayı
 
 **SAS belirteci oluştur ve URL** 'yi tıklatın ve BLOB SAS URL 'sini kopyalayın. Başlangıcını `https` `http` ve video oynatmayı destekleyen bir tarayıcıda URL 'yi test etme ve test etme ile değiştirin.
 
-`VIDEO_URL` [Dağıtım bildiriminde](https://go.microsoft.com/fwlink/?linkid=2142179) , tüm GRAFIKLER için oluşturduğunuz URL ile değiştirin. `VIDEO_IS_LIVE`Olarak ayarlayın `false` ve ardından, güncelleştirilmiş bildirimle uzamsal analiz kapsayıcısını yeniden dağıtın. Aşağıdaki örneğe bakın.
+`VIDEO_URL` [Azure Stack Edge cihazınız](https://go.microsoft.com/fwlink/?linkid=2142179) veya başka bir [Masaüstü makinenizin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) dağıtım bildiriminde, tüm grafikler için oluşturduğunuz URL ile değiştirin. `VIDEO_IS_LIVE`Olarak ayarlayın `false` ve ardından, güncelleştirilmiş bildirimle uzamsal analiz kapsayıcısını yeniden dağıtın. Aşağıdaki örneğe bakın.
 
 Uzamsal analiz modülü video dosyasını tüketmeye başlayacak ve sürekli olarak otomatik olarak yeniden oynacaktır.
 
@@ -412,7 +411,7 @@ Uzamsal analiz modülü video dosyasını tüketmeye başlayacak ve sürekli ola
 
 Kapsayıcıyı başlatırken veya çalıştırırken sorunlarla karşılaşırsanız, genel sorunların adımları için bkz. [telemetri ve sorun giderme](spatial-analysis-logging.md) . Bu makale ayrıca günlükleri oluşturma ve toplama ve sistem durumunu toplama hakkındaki bilgileri de içerir.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Uzamsal analiz kapsayıcısı Azure hesabınızdaki bir Görüntü İşleme kaynağı kullanarak Azure 'a faturalandırma bilgilerini gönderir. Genel önizlemede uzamsal analiz kullanımı Şu anda ücretsizdir. 
 

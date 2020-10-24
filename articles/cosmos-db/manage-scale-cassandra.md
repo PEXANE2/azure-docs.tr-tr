@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: d6518767b0148828280071188c086e396401a6fc
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cbd5dbd81cf8cda117447a15d4a73ae8a546f181
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277682"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482528"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API bir hesabı ölçeklendirin
 
 Cassandra için Azure Cosmos DB API 'sinin elastik yapısını keşfetmeye yönelik çeşitli seçenekler vardır. Azure Cosmos DB etkin bir şekilde ölçeklendirmenin nasıl yapılacağını anlamak için, sisteminizdeki performans taleplerini hesaba eklemek üzere doğru istek birimi (RU/sn) miktarına nasıl sağlanacağını anlamak önemlidir. İstek birimleri hakkında daha fazla bilgi için bkz. [İstek birimleri](request-units.md) makalesi. 
 
-Cassandra API için, [.net ve Java SDK](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api)'larını kullanarak tekil sorgular Için istek birimi ücreti alabilirsiniz. Bu, hizmette sağlamanız gereken RU/sn miktarını belirlemede yararlı olacaktır.
+Cassandra API için, [.net ve Java SDK](./find-request-unit-charge-cassandra.md)'larını kullanarak tekil sorgular Için istek birimi ücreti alabilirsiniz. Bu, hizmette sağlamanız gereken RU/sn miktarını belirlemede yararlı olacaktır.
 
 :::image type="content" source="./media/request-units/request-units.png" alt-text="Veritabanı işlemleri Istek birimlerini tüketir" border="false":::
 
@@ -38,7 +38,7 @@ Gecikme süresini en aza indirmek isterseniz, Cassandra API ölçek ve sağlama 
 
 Aşağıdaki bölümlerde her yaklaşımın avantajları ve dezavantajları açıklanmaktadır. Daha sonra, çözümünüzün ölçeklendirme ihtiyaçlarını, genel maliyet ve gereksinimlerinize yönelik verimlilik ihtiyaçlarını dengelemek için en iyi stratejiye karar verebilirsiniz.
 
-## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Azure portal kullanın
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Azure portalını kullanma
 
 Azure Cosmos DB Cassandra API hesabındaki kaynakları Azure portal kullanarak ölçeklendirebilirsiniz. Daha fazla bilgi edinmek için [kapsayıcılar ve veritabanlarında üretilen Iş sağlama](set-throughput.md)başlıklı makaleye bakın. Bu makalede, Azure portal [veritabanı](set-throughput.md#set-throughput-on-a-database) ya da [kapsayıcı](set-throughput.md#set-throughput-on-a-container) düzeyinde üretilen işi ayarlamanın göreli avantajları açıklanmaktadır. Bu makalelerde bahsedilen "veritabanı" ve "kapsayıcı" terimleri, Cassandra API için sırasıyla "keyspace" ve "Table" ile eşlenir.
 
@@ -46,7 +46,7 @@ Bu yöntemin avantajı, veritabanında üretilen iş kapasitesini yönetmenin ko
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>Denetim düzlemi 'ni kullanma
 
-Cassandra için Azure Cosmos DB API 'SI, çeşitli denetim düzlemi özelliklerimizi kullanarak aktarım hızını programlı bir şekilde ayarlama yeteneği sağlar. Rehberlik ve örnekler için [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [POWERSHELL](powershell-samples.md)ve [Azure CLI](cli-samples.md) makalelerine bakın.
+Cassandra için Azure Cosmos DB API 'SI, çeşitli denetim düzlemi özelliklerimizi kullanarak aktarım hızını programlı bir şekilde ayarlama yeteneği sağlar. Rehberlik ve örnekler için [Azure Resource Manager](./templates-samples-cassandra.md), [POWERSHELL](powershell-samples.md)ve [Azure CLI](cli-samples.md) makalelerine bakın.
 
 Bu yöntemin avantajı, yoğun etkinlik veya düşük etkinlik dönemlerinde hesaba bir Zamanlayıcı temelinde kaynakların ölçeğini artırma veya azaltma işlemlerini otomatikleştirebileceğiniz bir yöntemdir. Azure Işlevleri ve PowerShell kullanarak bunu [gerçekleştirmek için](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) örneğimize göz atın.
 

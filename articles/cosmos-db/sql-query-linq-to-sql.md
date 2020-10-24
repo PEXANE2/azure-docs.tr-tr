@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: f2a7570b7ebed26a06e1bd075c2904bc29061c21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f5e88e7201c4097e2f8d654b8780ea12816b15d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498863"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485112"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL çevirisi
 
-Azure Cosmos DB sorgu sağlayıcısı, bir LINQ sorgusundan Cosmos DB SQL sorgusuna en iyi çaba eşlemesini gerçekleştirir. LINQ 'dan çevrilen SQL sorgusunu almak istiyorsanız `ToString()` oluşturulan nesnede yöntemini kullanın `IQueryable` . Aşağıdaki açıklamada, [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)ile ilgili temel bir benzerlik varsayılmaktadır.
+Azure Cosmos DB sorgu sağlayıcısı, bir LINQ sorgusundan Cosmos DB SQL sorgusuna en iyi çaba eşlemesini gerçekleştirir. LINQ 'dan çevrilen SQL sorgusunu almak istiyorsanız `ToString()` oluşturulan nesnede yöntemini kullanın `IQueryable` . Aşağıdaki açıklamada, [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)ile ilgili temel bir benzerlik varsayılmaktadır.
 
 Sorgu sağlayıcısı tür sistemi yalnızca JSON ilkel türlerini destekler: numeric, Boolean, String ve null.
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/27/2020
-ms.openlocfilehash: 6e43d00722dd86934c8f95e06a3b8b590b263d61
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2c340f9e7d2c44082adc67eeb816276449602035
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91705169"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484500"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak PostgreSQL için Azure veritabanı sunucusu oluşturma
 
@@ -68,7 +68,7 @@ PostgreSQL için Azure veritabanı sunucusu oluşturmak için:
 Boş bir veritabanı, **Postgres**oluşturulur. Ayrıca, yönetilen hizmet işlemlerini Kullanıcı eylemlerinden ayırmak için kullanılan bir **azure_maintenance** veritabanı bulacaksınız. **Azure_maintenance** veritabanına erişemezsiniz.
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Sunucu düzeyinde güvenlik duvarı kuralı oluşturma
-Varsayılan olarak, oluşturduğunuz sunucuya herkese açık bir şekilde erişilebilir. IP adresiniz için izinler vermeniz gerekir. Azure portal sunucu kaynağınız ' ne gidin ve sunucu kaynağınız için sol taraftaki menüden **bağlantı güvenliği** ' ni seçin. Kaynağınızın nasıl bulunacağını bilmiyorsanız bkz. [kaynakları açma](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
+Varsayılan olarak, oluşturduğunuz sunucuya herkese açık bir şekilde erişilebilir. IP adresiniz için izinler vermeniz gerekir. Azure portal sunucu kaynağınız ' ne gidin ve sunucu kaynağınız için sol taraftaki menüden **bağlantı güvenliği** ' ni seçin. Kaynağınızın nasıl bulunacağını bilmiyorsanız bkz. [kaynakları açma](../azure-resource-manager/management/manage-resources-portal.md#open-resources).
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı 'nı gösteren ekran görüntüsü.":::
@@ -80,7 +80,7 @@ Varsayılan olarak, oluşturduğunuz sunucuya herkese açık bir şekilde erişi
 
 ## <a name="connect-to-azure-database-for-postgresql-server-by-using-psql"></a>Psql kullanarak PostgreSQL için Azure veritabanı sunucusuna bağlanma
 
-Popüler PostgreSQL istemcileri olan [psql](http://postgresguide.com/utilities/psql.html) veya [pgAdmin](https://www.pgadmin.org/docs/pgadmin4/latest/connecting.html)' i kullanabilirsiniz. Bu hızlı başlangıçta, Azure portal içindeki [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) psql kullanarak bağlanacağız.
+Popüler PostgreSQL istemcileri olan [psql](http://postgresguide.com/utilities/psql.html) veya [pgAdmin](https://www.pgadmin.org/docs/pgadmin4/latest/connecting.html)' i kullanabilirsiniz. Bu hızlı başlangıçta, Azure portal içindeki [Azure Cloud Shell](../cloud-shell/overview.md) psql kullanarak bağlanacağız.
 
 1. Sunucunuzun **genel bakış** bölümünden yeni oluşturduğunuz sunucu için sunucu adı, Sunucu Yöneticisi oturum açma adı, parola ve abonelik kimliğini bir yere göz atın.
 

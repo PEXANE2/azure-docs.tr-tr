@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 1b2e94bfe1bef9ecdeaa4b2b84224967bb1c7741
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 16110c8f48330d60d4d0b6a2affb870ffa5e349c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281588"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482681"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Cassandra için Azure Cosmos DB API 'sindeki akışı değiştirme
 
 Cassandra için Azure Cosmos DB API 'sindeki [akış desteğini değiştirme](change-feed.md) , Cassandra sorgu dilindeki (CQL) sorgu koşulları aracılığıyla kullanılabilir. Bu koşul koşullarını kullanarak, değişiklik akışı API 'sini sorgulayabilirsiniz. Uygulamalar, birincil anahtarı (bölüm anahtarı olarak da bilinir) kullanarak, CQL 'de gerekli olduğu gibi, bir tabloda yapılan değişiklikleri alabilir. Daha sonra sonuçlara göre daha fazla eylem gerçekleştirebilirsiniz. Tablodaki satırlarda yapılan değişiklikler, değiştirilme zamanı sırasına ve bölüm anahtarı başına sıralama sırasına göre yakalanır.
 
-Aşağıdaki örnek .NET kullanarak bir Cassandra API keyspace tablosundaki tüm satırlarda nasıl değişiklik akışı alınacağını göstermektedir. COSMOS_CHANGEFEED_START_TIME () koşulu doğrudan CQL içinde, değişiklik akışındaki öğeleri belirli bir başlangıç zamanından (Bu durumda geçerli DateTime) sorgulamak için kullanılır. [Burada C# ve](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) [Java için](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)tam örneği indirebilirsiniz.
+Aşağıdaki örnek .NET kullanarak bir Cassandra API keyspace tablosundaki tüm satırlarda nasıl değişiklik akışı alınacağını göstermektedir. COSMOS_CHANGEFEED_START_TIME () koşulu doğrudan CQL içinde, değişiklik akışındaki öğeleri belirli bir başlangıç zamanından (Bu durumda geçerli DateTime) sorgulamak için kullanılır. [Burada C# ve](/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) [Java için](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)tam örneği indirebilirsiniz.
 
 Her yinelemede sorgu, sayfalama durumu kullanılarak yapılan son noktada devam ediyor. Keyspace 'teki tabloda yeni değişikliklerin sürekli akışını görebiliriz. Eklenen veya güncellenen satırlardaki değişiklikleri görüyoruz. Cassandra API değişiklik akışını kullanarak silme işlemleri için izleme şu anda desteklenmiyor.
 
@@ -146,4 +146,4 @@ Aşağıdaki hata kodları ve iletileri Cassandra API içindeki değişiklik ak�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Resource Manager şablonları kullanarak Azure Cosmos DB Cassandra API kaynaklarını yönetme](manage-cassandra-with-resource-manager.md)
+* [Azure Resource Manager şablonları kullanarak Azure Cosmos DB Cassandra API kaynaklarını yönetme](./templates-samples-cassandra.md)

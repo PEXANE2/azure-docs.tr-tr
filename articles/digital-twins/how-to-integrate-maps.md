@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: f6c6c1cfdfef864be17adfed2d115150c4fbede0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3e5eb49a91e2c8bbd73f5dd37ed90f10b406fa3d
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045134"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496036"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
 
@@ -50,12 +50,12 @@ Azure dijital TWINS örnekleri, bir ikizi durumunun güncelleştirildiği her se
 Bu kalıp, IoT cihazı yerine doğrudan ikizi 'dan, eşleme mantığınızı güncelleştirmeye gerek kalmadan, sıcaklık için temel alınan veri kaynağını değiştirme esnekliği sağlayan bir yol elde etmenizi sağlar. Örneğin, eşleme mantığınızı güncelleştirmeye gerek kalmadan, birden fazla salon ölçüm ekleyebilir veya bu odayı başka bir oda ile bir termometre paylaşmak üzere ayarlayabilirsiniz.
 
 1. Azure dijital TWINS örneğinden olay alacak bir olay Kılavuzu konusu oluşturun.
-    ```azurecli
+    ```azurecli-interactive
     az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
     ```
 
 2. Olay kılavuzunuzun konusunu Azure dijital TWINS 'e bağlamak için bir uç nokta oluşturun.
-    ```azurecli
+    ```azurecli-interactive
     az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
     ```
 
@@ -64,9 +64,9 @@ Bu kalıp, IoT cihazı yerine doğrudan ikizi 'dan, eşleme mantığınızı gü
     >[!NOTE]
     >Şu anda bu komut gruplarını etkileyen Cloud Shell ' de **bilinen bir sorun** var: `az dt route` , `az dt model` , `az dt twin` .
     >
-    >Çözümlemek için, `az login` komutu çalıştırmadan önce Cloud Shell ' de çalıştırın ya da Cloud Shell yerine [Yerel CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Bunun hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure dijital TWINS 'de bilinen sorunlar*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
+    >Çözümlemek için, `az login` komutu çalıştırmadan önce Cloud Shell ' de çalıştırın ya da Cloud Shell yerine [Yerel CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) kullanın. Bunun hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure dijital TWINS 'de bilinen sorunlar*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
-    ```azurecli
+    ```azurecli-interactive
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
@@ -135,7 +135,7 @@ namespace SampleFunctionsApp
 
 İşlev uygulamanızda iki ortam değişkeni ayarlamanız gerekir. Bunlardan biri [Azure Maps birincil abonelik anahtarınıza](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account), diğeri Ise [Azure HARITALAR stateset Kimliğinizle](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)biridir.
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "subscription-key=<your-Azure-Maps-primary-subscription-key> -g <your-resource-group> -n <your-App-Service-(function-app)-name>"
 az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-stateset-ID> -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```

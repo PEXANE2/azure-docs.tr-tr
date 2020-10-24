@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 469235957ebe26dd44cc6ce464a68167629099ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 098d6e3712a928392547fcd2cba68b68dcca5ef3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948204"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476153"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı tek sunucu
 
@@ -81,8 +81,8 @@ Tek sunucu hizmeti yerleşik performans izleme ve uyarı özellikleriyle donatı
 
 Hizmet, PostgreSQL 'in topluluk sürümünü çalıştırır. Bu, tam uygulama uyumluluğuna izin verir ve PostgreSQL altyapısında geliştirilen mevcut uygulamayı tek sunuculu hizmete geçirmek için en az yeniden düzenleme maliyeti gerektirir. Tek sunucuya geçiş, aşağıdaki seçeneklerden biri kullanılarak gerçekleştirilebilir:
 
-- **Döküm ve geri yükleme** – kullanıcıların bazı kapalı kalma süresini karşılayabileceği, Pg_restore Pg_dump gibi topluluk araçlarını kullanarak döküm ve geri yükleme işlemleri için en hızlı geçiş yolu sağlayabildiği çevrimdışı geçişler için. Ayrıntılar için bkz. [döküm kullanarak geçiş ve geri yükleme](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore) .
-- **Azure veritabanı geçiş hizmeti** : en az kapalı kalma süresiyle tek sunucuya sorunsuz ve Basitleştirilmiş geçişler Için Azure veritabanı geçiş hizmeti yararlanılabilir olabilir. [CLI aracılığıyla](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)Portal ve DMS [aracılığıyla DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal) 'e bakın.
+- **Döküm ve geri yükleme** – kullanıcıların bazı kapalı kalma süresini karşılayabileceği, Pg_restore Pg_dump gibi topluluk araçlarını kullanarak döküm ve geri yükleme işlemleri için en hızlı geçiş yolu sağlayabildiği çevrimdışı geçişler için. Ayrıntılar için bkz. [döküm kullanarak geçiş ve geri yükleme](./howto-migrate-using-dump-and-restore.md) .
+- **Azure veritabanı geçiş hizmeti** : en az kapalı kalma süresiyle tek sunucuya sorunsuz ve Basitleştirilmiş geçişler Için Azure veritabanı geçiş hizmeti yararlanılabilir olabilir. [CLI aracılığıyla](../dms/tutorial-postgresql-azure-postgresql-online.md)Portal ve DMS [aracılığıyla DMS](../dms/tutorial-postgresql-azure-postgresql-online-portal.md) 'e bakın.
 
 ## <a name="contacts"></a>Kişiler
 
@@ -98,4 +98,3 @@ Buna ek olarak, aşağıdaki iletişim noktalarını uygun şekilde göz önünd
 
 Artık PostgreSQL için Azure veritabanı 'nın tek sunuculu dağıtım moduna giriş okudığınıza göre şu şekilde hazırsınız:
 - İlk sunucunuzu oluşturun.
-  

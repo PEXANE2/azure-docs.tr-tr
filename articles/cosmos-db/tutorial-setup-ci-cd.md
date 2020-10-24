@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 34508abdfa509dc2f8238e8e3b0dbac21c26ff7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7aace0b1ee6963aa220a60a11d02c370bf4d822a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801928"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476561"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps'ta Azure Cosmos DB öykünücüsü derleme göreviyle CI/CD işlem hattı oluşturma
 
@@ -32,13 +32,13 @@ Derleme görevini kullanmak için öncelikle Azure DevOps kuruluşunuza yükleme
 Ardından uzantının yükleneceği kuruluşu seçin. 
 
 > [!NOTE]
-> Bir Azure DevOps kuruluşuna uzantı yüklemek için bir hesap sahibi veya proje koleksiyonu yöneticisi olmanız gerekir. Gerekli izinlere sahip değilseniz ancak hesap üyesiyseniz uzantı isteyebilirsiniz. [Daha fazla bilgi edinin.](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts&preserve-view=true)
+> Bir Azure DevOps kuruluşuna uzantı yüklemek için bir hesap sahibi veya proje koleksiyonu yöneticisi olmanız gerekir. Gerekli izinlere sahip değilseniz ancak hesap üyesiyseniz uzantı isteyebilirsiniz. [Daha fazla bilgi edinin.](/azure/devops/marketplace/faq-extensions?preserve-view=true&view=vsts)
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Azure DevOps Market'te Azure Cosmos DB Emulator derleme görevini bulun ve yükleyin":::
 
 ## <a name="create-a-build-definition"></a>Derleme tanımı oluşturma
 
-Artık uzantı yüklendikten sonra, Azure DevOps kuruluşunuzda oturum açıp projeler panosundan projenizi bulabilirsiniz. Projenize bir [derleme işlem hattı](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&preserve-view=true&tabs=new-nav) ekleyebilir veya var olan derleme işlem hattını değiştirebilirsiniz. Bir derleme işlem hattınız varsa [Derleme tanımına Öykünücü derlemesi ekleme](#addEmulatorBuildTaskToBuildDefinition) bölümüne geçebilirsiniz.
+Artık uzantı yüklendikten sonra, Azure DevOps kuruluşunuzda oturum açıp projeler panosundan projenizi bulabilirsiniz. Projenize bir [derleme işlem hattı](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts) ekleyebilir veya var olan derleme işlem hattını değiştirebilirsiniz. Bir derleme işlem hattınız varsa [Derleme tanımına Öykünücü derlemesi ekleme](#addEmulatorBuildTaskToBuildDefinition) bölümüne geçebilirsiniz.
 
 1. Yeni bir derleme tanımı oluşturmak için Azure DevOps uygulamasının **Derlemeler** sekmesine gidin. **+ Yeni** seçeneğini belirleyin. \> **Yeni derleme işlem hattı**
 
@@ -51,7 +51,7 @@ Artık uzantı yüklendikten sonra, Azure DevOps kuruluşunuzda oturum açıp pr
 3. Son olarak derleme işlem hattı için kullanmak istediğiniz şablonu belirleyin. Bu öğreticide **ASP.NET** şablonunu seçeceğiz. Artık Azure Cosmos DB öykünücü derleme görevini kullanacak şekilde ayarlayabileceğiniz bir yapı ardışık düzeni vardır. 
 
 > [!NOTE]
-> Yükleme, CI 'nin bir parçası olarak önceki bir görevde el ile yapılmazsa, bu CI için seçilecek aracı havuzunun Docker for Windows yüklü olması gerekir. Aracı havuzlarının seçimi için bkz. [Microsoft barındırılan aracılar](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true&tabs=yaml) makalesi. ' i kullanmaya başlamanız önerilir `Hosted VS2017` .
+> Yükleme, CI 'nin bir parçası olarak önceki bir görevde el ile yapılmazsa, bu CI için seçilecek aracı havuzunun Docker for Windows yüklü olması gerekir. Aracı havuzlarının seçimi için bkz. [Microsoft barındırılan aracılar](/azure/devops/pipelines/agents/hosted?preserve-view=true&tabs=yaml&view=azure-devops) makalesi. ' i kullanmaya başlamanız önerilir `Hosted VS2017` .
 
 Azure Cosmos DB öykünücü Şu anda barındırılan VS2019 Aracısı havuzunu desteklemiyor. Ancak, öykünücü zaten VS2019 yüklendi ve öykünücü, aşağıdaki PowerShell cmdlet 'leri ile başlatılarak bunu kullanıyorsunuz. VS2019 kullanırken herhangi bir sorunla karşılaşırsanız, yardım için [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) ekibine ulaşın:
 
@@ -92,9 +92,9 @@ Bu adım isteğe bağlıdır ve yalnızca bir YAML görevi kullanarak CI/CD işl
 
 Şimdi testlerimizi öykünücüyü kullanacak şekilde yapılandıracağız. Öykünücü derleme görevi, derleme işlem hattındaki diğer görevlerin istek düzenleyebileceği "CosmosDbEmulator.Endpoint" ortam değişkenini dışarı aktarır. 
 
-Bu öğreticide [Visual Studio Test görevini](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) kullanarak **.runsettings** dosyasıyla yapılandırılmış birim testlerini çalıştıracağız. Birim testi kurulumu hakkında daha fazla bilgi edinmek için [belgeleri](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017&preserve-view=true) inceleyin. Bu belgede kullandığınız tüm Todo uygulama kodu örneği [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) 'da kullanılabilir
+Bu öğreticide [Visual Studio Test görevini](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) kullanarak **.runsettings** dosyasıyla yapılandırılmış birim testlerini çalıştıracağız. Birim testi kurulumu hakkında daha fazla bilgi edinmek için [belgeleri](/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?preserve-view=true&view=vs-2017) inceleyin. Bu belgede kullandığınız tüm Todo uygulama kodu örneği [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) 'da kullanılabilir
 
-Uygulamanın birim testlerine iletilecek parametreleri tanımlayan örnek **.runsettings** dosyasını aşağıda görebilirsiniz. Kullanılan `authKey` değişkeninin öykünücü için [iyi bilinen anahtar](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests) olduğuna dikkat edin. Bu `authKey`, öykünücü derleme görevi tarafından beklenen anahtardır ve **.runsettings** dosyanızda tanımlanmalıdır.
+Uygulamanın birim testlerine iletilecek parametreleri tanımlayan örnek **.runsettings** dosyasını aşağıda görebilirsiniz. Kullanılan `authKey` değişkeninin öykünücü için [iyi bilinen anahtar](./local-emulator.md#authenticate-requests) olduğuna dikkat edin. Bu `authKey`, öykünücü derleme görevi tarafından beklenen anahtardır ve **.runsettings** dosyanızda tanımlanmalıdır.
 
 ```csharp
 <RunSettings>
@@ -177,6 +177,6 @@ Derleme tamamlandıktan sonra testlerinizin iletildiğinden ve tümünün derlem
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yerel geliştirme ve test için öykünücü kullanımı hakkında daha fazla bilgi edinmek için bkz. [Yerel geliştirme ve test için Azure Cosmos DB Öykünücüsünü kullanma](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
+Yerel geliştirme ve test için öykünücü kullanımı hakkında daha fazla bilgi edinmek için bkz. [Yerel geliştirme ve test için Azure Cosmos DB Öykünücüsünü kullanma](./local-emulator.md).
 
-Öykünücü TLS/SSL sertifikalarını dışarı aktarmak için bkz [. Java, Python ve Node.jsbirlikte kullanmak üzere Azure Cosmos DB öykünücü sertifikalarını dışarı aktarma ](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)
+Öykünücü TLS/SSL sertifikalarını dışarı aktarmak için bkz [. Java, Python ve Node.jsbirlikte kullanmak üzere Azure Cosmos DB öykünücü sertifikalarını dışarı aktarma ](./local-emulator-export-ssl-certificates.md)

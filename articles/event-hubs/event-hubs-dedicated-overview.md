@@ -2,13 +2,13 @@
 title: Adanmış Olay Hub 'larına genel bakış-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, özel Azure Event Hubs, Olay Hub 'larının tek kiracılı dağıtımlarını sunan bir genel bakış sunulmaktadır.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 70061b5dc4fe72c9fd2fd60dd8c67da31b1d1e6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/23/2020
+ms.openlocfilehash: e6208a8d50e21766969dbe9d9739d5003958126a
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322446"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495110"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Ayrılmış genel bakış
 
@@ -41,7 +41,7 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 | Özellik | Standart | Ayrılmış |
 | --- |:---:|:---:|
 | Bant genişliği | 20 s (40 'e kadar) | 20 cu düzeyinde kapsanır |
-| Ad Alanları |  1 | CU başına 50 |
+| Ad alanları |  1 | CU başına 50 |
 | Event Hubs |  ad alanı başına 10 | ad alanı başına 1000 |
 | Giriş olayları | Milyon olay başına ödeme | Dahil |
 | İleti boyutu | 1.000.000 bayt | 1.000.000 bayt |
@@ -53,43 +53,16 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 
 ## <a name="how-to-onboard"></a>Ekleme
 
-[Azure portalı](https://aka.ms/eventhubsclusterquickstart) aracılığıyla [bir Event Hubs kümesi oluşturmaya](event-hubs-dedicated-cluster-create-portal.md) yönelik self servis deneyimi artık önizlemededir. Sorularınız varsa veya Event Hubs Ayrılmış için yardıma ihtiyacınız varsa, lütfen [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)başvurun.
+[Azure Portal](https://aka.ms/eventhubsclusterquickstart) aracılığıyla [bir Event Hubs kümesi oluşturmaya](event-hubs-dedicated-cluster-create-portal.md) yönelik self servis deneyimi artık önizlemededir. Sorularınız varsa veya Event Hubs Ayrılmış için yardıma ihtiyacınız varsa, lütfen [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)başvurun.
 
 ## <a name="faqs"></a>SSS
 
-#### <a name="what-can-i-achieve-with-a-cluster"></a>Bir küme ile neler elde edebilirim?
-
-Bir Event Hubs kümesi için, alma ve akış alma işlemleri, üreticileri, Tüketicileriniz, geri alma ve işleme alma ücreti ve çok daha fazlası gibi çeşitli faktörlere bağlıdır. 
-
-Aşağıdaki tabloda, sınamamız sırasında elde ettiğimiz kıyaslama sonuçları gösterilmektedir:
-
-| Yük şekli | Alıcıların | Giriş bant genişliği| Giriş iletileri | Çıkış bant genişliği | Çıkış iletileri | Toplam DTU | CU başına DTU |
-| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB toplu işleri | 2 | 400 MB/sn | 400k İleti/sn | 800 MB/sn | 800k İleti/sn | 400 tüs | 100 tüs | 
-| 10x10KB toplu işlem | 2 | 666 MB/sn | 66.6 k iletisi/sn | 1,33 GB/sn | 133k İleti/sn | 666 tüs | 166 tüs |
-| 6x32KB toplu işleri | 1 | 1,05 GB/sn | 34k İleti/sn | 1,05 GB/sn | 34k İleti/sn | 1000 tüs | 250 tüs |
-
-Sınamada, aşağıdaki ölçütler kullanılmıştır:
-
-- Dört Kapasite birimi (cu düzeyinde kapsanır) içeren bir adanmış katman Event Hubs kümesi kullanıldı. 
-- Alma işlemi için kullanılan olay hub 'ının 200 bölümü vardı. 
-- Alınan veriler, tüm bölümlerden alınan iki alıcı uygulaması tarafından alındı.
-
-#### <a name="can-i-scale-updown-my-cluster"></a>Kümemin ölçeğini artırma/azaltma yapabilir miyim?
-
-Oluşturulduktan sonra, kümeler en az 4 saatlik kullanım için faturalandırılır. Self Servis deneyiminin önizleme sürümünde, Event Hubs ekibine teknik > kota > bir [destek talebi](https://ms.portal.azure.com/#create/Microsoft.Support) göndererek, kümenizin ölçeğini yukarı veya aşağı ölçeklendirmek üzere *ayrılmış kümeyi ölçeğini büyütme veya küçültme isteğinde* bulunabilir. Kümenizi ölçeklendirmek için isteğin tamamlanması 7 güne kadar sürebilir. 
-
-#### <a name="how-will-geo-dr-work-with-my-cluster"></a>Kümemdeki coğrafi ve DR nasıl çalışır?
-
-Ayrılmış katman kümesi altında başka bir ad alanı ile ayrılmış katman kümesi altında bir ad alanını coğrafi olarak eşleştirin. Aktarım hızı sınırı uyumsuz olacağı için standart Teklifimizde bir ad alanı ile adanmış katman ad alanını eşleştirmeyi öneririz. 
-
-#### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Standart ad alanlarımı adanmış katman kümesine ait olacak şekilde geçirebilir miyim?
-Şu anda, Olay Hub 'larınızın verilerini standart bir ad alanından adanmış bir şekilde geçirmek için otomatik bir geçiş işlemini desteklemiyoruz. 
+[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Event Hubs Ayrılmış hakkında daha fazla bilgi edinmek için Microsoft satış temsilcinizle veya Microsoft Desteği başvurun. Ayrıca, aşağıdaki bağlantıları ziyaret ederek bir küme oluşturabilir veya Event Hubs fiyatlandırma katmanları hakkında daha fazla bilgi edinebilirsiniz:
 
-- [Azure portalı aracılığıyla Event Hubs kümesi oluşturma](https://aka.ms/eventhubsclusterquickstart) 
+- [Azure portal aracılığıyla Event Hubs kümesi oluşturma](https://aka.ms/eventhubsclusterquickstart) 
 - [Event Hubs ayrılmış fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/). Ayrıca, Event Hubs Ayrılmış kapasitesi hakkında ek ayrıntılar almak için Microsoft satış temsilcinizle veya Microsoft Desteği başvurabilirsiniz.
 - [Event HUBS SSS](event-hubs-faq.md) , fiyatlandırma bilgilerini içerir ve Event Hubs hakkında sık sorulan bazı sorulara yanıt verir.

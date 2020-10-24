@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 16ee2f01e1b7771e71afe49c4b69b1fb39e43f37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13d2633576454ea6445deb4d2b0b11c2bbb1514e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869448"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478380"
 ---
 # <a name="azcopy-sync"></a>azcopy eşitleme
 
@@ -151,15 +151,15 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--günlük düzeyi** dize, günlük dosyası, kullanılabilir düzeyler: `INFO` (tüm istekler ve yanıtlar), `WARNING` (yavaş yanıtlar), `ERROR` (yalnızca başarısız istekler) ve `NONE` (çıktı günlüğü yok) için günlük ayrıntı düzeyini tanımlar. (varsayılan `INFO` ). 
 
-**--Preserve-SMB-Info**     Varsayılan olarak false.SMB kullanan kaynaklar (Windows ve Azure dosyaları) arasında SMB Özellik bilgilerini (son yazma saati, oluşturma saati, öznitelik bitleri) korur.Bu bayrak, salt dosya filtresi belirtilmediği takdirde (örneğin, include-model) hem dosya hem de klasörler için geçerlidir.Klasörler için aktarılan bilgiler, klasörler için korunmayan son yazma zamanı dışında dosyalar için de aynıdır.
+**--Preserve-SMB-Info**   Varsayılan olarak false. SMB kullanan kaynaklar (Windows ve Azure dosyaları) arasında SMB Özellik bilgilerini (son yazma saati, oluşturma saati, öznitelik bitleri) korur. Bu bayrak, salt dosya filtresi belirtilmediği takdirde (örneğin, include-model) hem dosya hem de klasörler için geçerlidir. Klasörler için aktarılan bilgiler, klasörler için korunmayan son yazma zamanı dışında dosyalar için de aynıdır.
 
-**--Preserve-SMB-izinleri**     Varsayılan olarak false., Aware kaynakları (Windows ve Azure dosyaları) arasında SMB ACL 'Lerini korur.Bu bayrak, salt dosya filtresi belirtilmediği takdirde (örneğin,) hem dosya hem de klasörler için geçerlidir  `include-pattern` .
+**--Preserve-SMB-izinleri**   Varsayılan olarak false. , Aware kaynakları (Windows ve Azure dosyaları) arasında SMB ACL 'Lerini korur. Bu bayrak, salt dosya filtresi belirtilmediği takdirde (örneğin,) hem dosya hem de klasörler için geçerlidir `include-pattern` .
 
 **--PUT-MD5**     Her bir dosyanın MD5 karmasını oluşturun ve karmayı hedef Blobun veya dosyanın Content-MD5 özelliği olarak kaydedin. (Varsayılan olarak, karma oluşturulmaz.) Yalnızca karşıya yükleme sırasında kullanılabilir.
 
 **--özyinelemeli** `True` Varsayılan olarak, dizinler arasında eşitleme yaparken alt dizinlere yinelemeli olarak bakın.     (varsayılan `True` ). 
 
-**--S2S-Preserve-Access-Tier**  Hizmetten hizmete kopyalama sırasında erişim katmanını koruyun. Hedef depolama hesabının erişim katmanını ayarlamayı desteklediğinden emin olmak için [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) ' na bakın. Erişim katmanını ayarlamanın desteklenme durumlarında, lütfen s2sPreserveAccessTier = false kullanarak erişim katmanını kopyalamayı atlayın. (varsayılan `true` ). 
+**--S2S-Preserve-Access-Tier**  Hizmetten hizmete kopyalama sırasında erişim katmanını koruyun. Hedef depolama hesabının erişim katmanını ayarlamayı desteklediğinden emin olmak için [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](/azure/storage/blobs/storage-blob-storage-tiers) ' na bakın. Erişim katmanını ayarlamanın desteklenme durumlarında, lütfen s2sPreserveAccessTier = false kullanarak erişim katmanını kopyalamayı atlayın. (varsayılan `true` ). 
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 
@@ -171,4 +171,4 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

@@ -8,16 +8,16 @@ ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f16498f0661ba918acd42b7964b649d0bbdf5841
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334404"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495888"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 'de JavaScript sorgu API 'SI
 
-Azure Cosmos DB SQL API 'sini kullanarak sorgu vermekten ek olarak, [Cosmos DB sunucu tarafı SDK 'sı](https://azure.github.io/azure-cosmosdb-js-server/) Cosmos DB saklı yordamlar ve tetikleyicilerinde iyileştirilmiş sorgular gerçekleştirmeye yönelik bir JavaScript arabirimi sağlar. Bu JavaScript arabirimini kullanmak için SQL dilini bilmeniz gerekmez. JavaScript sorgu API 'SI, koşul işlevlerini, ECMAScript5's dizisi yerleşik ve Lodash gibi popüler JavaScript kitaplıklarını bilen bir sözdizimi ile program aracılığıyla sorgu oluşturmanızı sağlar. Sorgular JavaScript çalışma zamanı tarafından ayrıştırılır ve Azure Cosmos DB dizinleri kullanılarak verimli bir şekilde yürütülür.
+Azure Cosmos DB SQL API 'sini kullanarak sorgu vermekten ek olarak, [Cosmos DB sunucu tarafı SDK 'sı](https://github.com/Azure/azure-cosmosdb-js-server/) Cosmos DB saklı yordamlar ve tetikleyicilerinde iyileştirilmiş sorgular gerçekleştirmeye yönelik bir JavaScript arabirimi sağlar. Bu JavaScript arabirimini kullanmak için SQL dilini bilmeniz gerekmez. JavaScript sorgu API 'SI, koşul işlevlerini, ECMAScript5's dizisi yerleşik ve Lodash gibi popüler JavaScript kitaplıklarını bilen bir sözdizimi ile program aracılığıyla sorgu oluşturmanızı sağlar. Sorgular JavaScript çalışma zamanı tarafından ayrıştırılır ve Azure Cosmos DB dizinleri kullanılarak verimli bir şekilde yürütülür.
 
 ## <a name="supported-javascript-functions"></a>Desteklenen JavaScript işlevleri
 
@@ -43,7 +43,7 @@ Aşağıdaki JavaScript yapıları Azure Cosmos DB dizinleri için iyileştirilm
 - Denetim akışı (örneğin, for, IF)
 - İşlev çağrıları
 
-Daha fazla bilgi için bkz. [sunucu tarafı JavaScript belgeleri Cosmos DB](https://azure.github.io/azure-cosmosdb-js-server/).
+Daha fazla bilgi için bkz. [sunucu tarafı JavaScript belgeleri Cosmos DB](https://github.com/Azure/azure-cosmosdb-js-server/).
 
 ## <a name="sql-to-javascript-cheat-sheet"></a>SQL 'den JavaScript 'e başvuru sayfası
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.openlocfilehash: cb052f4ce962b1757f47f64e3f26fa5db2a731fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61321af538ee117828914a209523a1138e74c20
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88999691"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483463"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Öğretici: Tableau Server ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -131,11 +131,11 @@ Bu bölümde, Tableau sunucusuna erişim vererek Azure çoklu oturum açma özel
 
 2. **Yapılandırma** sekmesinde, **Kullanıcı kimliği & erişim**' i seçin ve ardından **kimlik doğrulama** yöntemi sekmesini seçin.
 
-    ![Tek Sign-On yapılandırma](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+    ![Ekran görüntüsü Kullanıcı kimliği & erişimi ' nden seçilen kimlik doğrulamasını gösterir.](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
 
 3. **Yapılandırma** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz yapılandırma sayfasını gösterir.](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
 
     a. **Kimlik doğrulama yöntemi**için SAML ' yi seçin.
 

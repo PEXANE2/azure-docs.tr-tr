@@ -1,6 +1,6 @@
 ---
 title: Synapse SQL mimarisi
-description: Azure SYNAPSE SQL 'in yüksek performans ve ölçeklenebilirlik elde etmek için Azure depolama ile büyük ölçüde paralel işleme (MPP) nasıl birleştirdiğini öğrenin.
+description: Azure SYNAPSE SQL 'in, yüksek performans ve ölçeklenebilirlik elde etmek için Azure depolama ile dağıtılmış sorgu Işleme özelliklerini nasıl birleştirdiğini öğrenin.
 services: synapse-analytics
 author: mlee3gsd
 manager: rothja
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3b54ca72c92722dffa370b0b8be1ca2c490f97
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87046866"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476017"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure SYNAPSE SQL mimarisi 
 
@@ -35,7 +35,7 @@ SQL havuzu için ölçek birimi, [veri ambarı birimi](resource-consumption-mode
 
 SYNAPSE SQL, düğüm tabanlı bir mimari kullanır. Uygulamalar, T-SQL komutlarını, SYNAPSE SQL için tek giriş noktası olan bir denetim düğümüne bağlanır ve bu komutlara verebilir. 
 
-SQL havuzu denetim düğümü, paralel işleme sorgularını iyileştirmek için MPP altyapısını kullanır ve ardından çalışmalarını paralel olarak yapmak üzere işlem düğümlerine geçirir. 
+Azure SYNAPSE SQL denetim düğümü, paralel işleme için sorguları iyileştirmek üzere dağıtılmış bir sorgu altyapısını kullanır ve ardından çalışmalarını paralel olarak yapmak üzere işlem düğümlerine geçirir. 
 
 SQL isteğe bağlı denetim düğümü, Işlem düğümlerinde yürütülecek daha küçük sorgulara bölerek Kullanıcı sorgusunun dağıtılmış yürütülmesini iyileştirmek ve yönetmek için dağıtılmış sorgu Işleme (DQP) altyapısını kullanır. Her küçük sorgu görev olarak adlandırılır ve dağıtılmış yürütme birimini temsil eder. Depolamadan dosya (ler) i okur, diğer görevlerden alınan sonuçlara, grupların veya sipariş verilerinden oluşan sonuçları birleştirir. 
 
@@ -47,7 +47,7 @@ Ayrılmış depolama ve işlem ile, SYNAPSE SQL 'in kullanılması, depolama iht
 * Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
 * Çalışma saatleri içinde işlem kapasitesini sürdürme.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır. Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. 
 
@@ -61,7 +61,7 @@ SQL isteğe bağlı, Veri Gölü dosyaları salt okuma biçiminde sorgulamanız�
 
 Denetim düğümü mimarinin beynidir. Tüm uygulamalarla ve bağlantılarla etkileşim kuran ön uçtur. 
 
-SQL havuzunda, MPP altyapısı Paralel sorguları iyileştirmek ve koordine etmek için denetim düğümünde çalışır. SQL havuzuna bir T-SQL sorgusu gönderdiğinizde denetim düğümü, her bir dağıtıma karşı paralel olarak çalışan sorgulara dönüştürür.
+SYNAPSE SQL 'de, dağıtılmış sorgu altyapısı Paralel sorguları iyileştirmek ve koordine etmek için denetim düğümünde çalışır. SQL havuzuna bir T-SQL sorgusu gönderdiğinizde denetim düğümü, her bir dağıtıma karşı paralel olarak çalışan sorgulara dönüştürür.
 
 İsteğe bağlı SQL 'de DQP motoru, Işlem düğümlerinde yürütülecek daha küçük sorgulara bölerek Kullanıcı sorgusunun dağıtılmış yürütülmesini iyileştirmek ve koordine etmek için denetim düğümünde çalışır. Ayrıca, her düğüm tarafından işlenecek dosya kümelerini de atar.
 
@@ -69,7 +69,7 @@ SQL havuzunda, MPP altyapısı Paralel sorguları iyileştirmek ve koordine etme
 
 İşlem düğümleri, hesaplama gücü sağlar. 
 
-SQL havuzunda dağıtımlar, işlenmek üzere Işlem düğümlerine eşlenir. Daha fazla işlem kaynağı için ödeme yaparken, havuz dağıtımları kullanılabilir Işlem düğümlerine yeniden eşler. İşlem düğümlerinin sayısı 1 ile 60 arasında değişir ve SQL havuzu için hizmet düzeyi tarafından belirlenir. Her Işlem düğümünün sistem görünümlerinde görünür bir düğüm KIMLIĞI vardır. Adları sys.pdw_nodes ile başlayan sistem görünümlerindeki node_id sütununa bakarak Işlem düğümü KIMLIĞINI görebilirsiniz. Bu sistem görünümlerinin listesi için bkz. [MPP sistem görünümleri](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+SQL havuzunda dağıtımlar, işlenmek üzere Işlem düğümlerine eşlenir. Daha fazla işlem kaynağı için ödeme yaparken, havuz dağıtımları kullanılabilir Işlem düğümlerine yeniden eşler. İşlem düğümlerinin sayısı 1 ile 60 arasında değişir ve SQL havuzu için hizmet düzeyi tarafından belirlenir. Her Işlem düğümünün sistem görünümlerinde görünür bir düğüm KIMLIĞI vardır. Adları sys.pdw_nodes ile başlayan sistem görünümlerindeki node_id sütununa bakarak Işlem düğümü KIMLIĞINI görebilirsiniz. Bu sistem görünümlerinin listesi için bkz. [SYNAPSE SQL System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
 
 İsteğe bağlı SQL 'de, her Işlem düğümüne görevi yürütmek için görev ve dosya kümesi atanır. Görev, aslında sorgu kullanıcısının gönderildiği bir parçası olan sorgu yürütme birimidir. Otomatik ölçeklendirme, Kullanıcı sorgusunu yürütmek için yeterli Işlem düğümlerinin kullanıldığını sağlamak üzere etkin olur.
 

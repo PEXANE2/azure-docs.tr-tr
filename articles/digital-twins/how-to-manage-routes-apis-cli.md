@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bd6c504970d4991ee7d5c44b091a5d91c9d0a166
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ce922e3ce39bc3df9f4c242558644922e5713300
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461405"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494808"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -24,7 +24,7 @@ Uç noktalar ve rotalar [olay rotaları API 'leri](/rest/api/digital-twins/datap
 
 Ayrıca, [Azure Portal](https://portal.azure.com)aracılığıyla da yönetilebilecek. Bunun yerine portalı kullanan Bu makalenin bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (portal)*](how-to-manage-routes-portal.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure hesabınızın** olması gerekir ( [buradan](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)birini ücretsiz olarak ayarlayabilirsiniz)
 * Azure aboneliğinizde bir **Azure dijital TWINS örneği** gerekir. Zaten bir örneğiniz yoksa, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-portal.md)bölümündeki adımları kullanarak bir tane oluşturabilirsiniz. Bu makalede daha sonra kullanmak için kurulum 'un aşağıdaki değerlerini kullanın:
@@ -48,19 +48,19 @@ Aşağıdaki örnek, Azure CLı kullanarak olay Kılavuzu türü uç noktasını
 
 İlk olarak, bir olay Kılavuzu konusu oluşturun. Aşağıdaki komutu kullanabilir veya *özel olay* hızlı başlangıcı Event Grid [ *özel konu oluştur* bölümünü](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) ziyaret ederek adımları daha ayrıntılı şekilde görüntüleyebilirsiniz.
 
-```azurecli
+```azurecli-interactive
 az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
 ```
 
 > [!TIP]
 > Azure CLı 'de komutlara geçirilebilecek Azure bölge adlarının bir listesini çıkarmak için şu komutu çalıştırın:
-> ```azurecli
+> ```azurecli-interactive
 > az account list-locations -o table
 > ```
 
 Konuyu oluşturduktan sonra, aşağıdaki [Azure dijital TWıNS CLI komutuyla](how-to-use-cli.md)Azure dijital TWINS 'e bağlayabilirsiniz:
 
-```azurecli
+```azurecli-interactive
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
@@ -77,12 +77,12 @@ Event Hubs veya Service Bus uç noktaları oluşturma işlemi yukarıda gösteri
 Ardından, Azure dijital TWINS 'de uç noktaları oluşturmak için aşağıdaki komutları kullanın: 
 
 * Service Bus konu uç noktası ekleyin (önceden oluşturulmuş bir Service Bus kaynağı gerektirir)
-```azurecli 
+```azurecli-interactive 
 az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
 * Event Hubs uç noktası Ekle (önceden oluşturulmuş Event Hubs kaynak gerektirir)
-```azurecli
+```azurecli-interactive
 az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
@@ -242,8 +242,6 @@ Desteklenen yol filtreleri aşağıda verilmiştir. Yukarıdaki istek gövdesind
 ## <a name="manage-endpoints-and-routes-with-cli"></a>CLı ile uç noktaları ve yolları yönetme
 
 Uç noktalar ve rotalar Ayrıca Azure dijital TWINS CLı kullanılarak yönetilebilir. CLı ve kullanılabilen komutları kullanma hakkında daha fazla bilgi için bkz. [*nasıl yapılır: Azure dijital TWINS CLI 'Yi kullanma*](how-to-use-cli.md).
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e3d6771f841d3a1d403c1c825da3b504b6896d9e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0fb783a6ad65ce17bff14b72e8d94d284769779f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277221"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475167"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB ve .NET SDK v2 için performans ipuçları
 
@@ -42,7 +42,7 @@ Bu nedenle, veritabanı performansını artırmaya çalışıyorsanız şu seçe
 
 Gelişmiş performans için Windows 64 bit ana bilgisayar işlemesini öneririz. SQL SDK, sorguları yerel olarak ayrıştırmak ve iyileştirmek için yerel bir ServiceInterop.dll içerir. ServiceInterop.dll yalnızca Windows x64 platformunda desteklenir. ServiceInterop.dll kullanılamadığı Linux ve diğer desteklenmeyen platformlar için, iyileştirilmiş sorguyu almak üzere ağ geçidine ek bir ağ çağrısı yapılır. Aşağıdaki uygulama türleri varsayılan olarak 32 bitlik ana bilgisayar işlemeyi kullanır. Ana bilgisayar işlemesini 64-bit işleme olarak değiştirmek için, uygulamanızın türüne göre aşağıdaki adımları izleyin:
 
-- Yürütülebilir uygulamalar için, **Yapı** sekmesindeki **Proje özellikleri** penceresinde [Platform hedefini](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) **x64** olarak ayarlayarak ana bilgisayar işlemesini değiştirebilirsiniz.
+- Yürütülebilir uygulamalar için, **Yapı** sekmesindeki **Proje özellikleri** penceresinde [Platform hedefini](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) **x64** olarak ayarlayarak ana bilgisayar işlemesini değiştirebilirsiniz.
 
 - VSTest tabanlı test projeleri için, **Test**  >  **Test Settings**  >  Visual Studio **Test** menüsünde test test ayarları**Varsayılan işlemci mimarisi x64 olarak** ' yi seçerek konak işlemeyi değiştirebilirsiniz.
 
@@ -56,7 +56,7 @@ Gelişmiş performans için Windows 64 bit ana bilgisayar işlemesini öneririz.
     
 **Sunucu tarafı atık toplamayı aç (GC)**
 
-Çöp toplamanın sıklığını azaltmak bazı durumlarda yardımcı olabilir. .NET sürümünde [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) olarak ayarlayın `true` .
+Çöp toplamanın sıklığını azaltmak bazı durumlarda yardımcı olabilir. .NET sürümünde [gcServer](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element) olarak ayarlayın `true` .
 
 **İstemci iş yükünüzü ölçeklendirin**
 
@@ -90,8 +90,8 @@ TCP protokolünde çalışırken, istemci, uzun süreli bağlantıları kullanar
 
 Seyrek erişiminizin olduğu senaryolarda ve ağ geçidi modu erişimiyle karşılaştırıldığında daha yüksek bir bağlantı sayısı fark ederseniz şunları yapabilirsiniz:
 
-* [Connectionpolicy. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) özelliğini ' e yapılandırın `PrivatePortPool` (Framework sürümü>= 4.6.1 ve .net Core sürümü >= 2,0): Bu özellik SDK 'nın farklı Azure Cosmos DB hedef uç noktaları için kısa ömürlü bağlantı noktası havuzu kullanmasına izin verir.
-* [Connectionpolicy. ıdıdconnectiontimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) özelliği 10 dakikadan büyük veya buna eşit olmalıdır. Önerilen değerler 20 dakika ile 24 saat arasında.
+* [Connectionpolicy. PortReuseMode](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) özelliğini ' e yapılandırın `PrivatePortPool` (Framework sürümü>= 4.6.1 ve .net Core sürümü >= 2,0): Bu özellik SDK 'nın farklı Azure Cosmos DB hedef uç noktaları için kısa ömürlü bağlantı noktası havuzu kullanmasına izin verir.
+* [Connectionpolicy. ıdıdconnectiontimeout](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) özelliği 10 dakikadan büyük veya buna eşit olmalıdır. Önerilen değerler 20 dakika ile 24 saat arasında.
 
 **İlk istekte başlangıç gecikmesini önlemek için OpenAsync çağrısı yapın**
 
@@ -109,7 +109,7 @@ Mümkün olduğunda, Azure Cosmos DB veritabanıyla aynı bölgedeki Azure Cosmo
 **İş parçacığı/görev sayısını artırma**
 <a id="increase-threads"></a>
 
-Azure Cosmos DB çağrıları ağ üzerinden yapıldığından, istemci uygulamanın istekler arasında en az zaman harcamasını sağlamak için isteklerinizin paralellik derecesini değiştirmeniz gerekebilir. Örneğin, .NET [görev paralel kitaplığı](https://msdn.microsoft.com//library/dd460717.aspx)kullanıyorsanız, Azure Cosmos DB okuyan veya üzerine yazılan yüzlerce görev sırasını oluşturun.
+Azure Cosmos DB çağrıları ağ üzerinden yapıldığından, istemci uygulamanın istekler arasında en az zaman harcamasını sağlamak için isteklerinizin paralellik derecesini değiştirmeniz gerekebilir. Örneğin, .NET [görev paralel kitaplığı](/dotnet/standard/parallel-programming/task-parallel-library-tpl)kullanıyorsanız, Azure Cosmos DB okuyan veya üzerine yazılan yüzlerce görev sırasını oluşturun.
 
 **Hızlandırılmış ağı etkinleştir**
  
@@ -127,7 +127,7 @@ Her `DocumentClient` örnek iş parçacığı açısından güvenlidir ve doğru
 
 **Ağ Geçidi modu kullanırken konak başına System.Net MaxConnections 'yi artırma**
 
-Ağ Geçidi modunu kullandığınızda Azure Cosmos DB istekleri HTTPS/REST üzerinden yapılır. Tabi, ana bilgisayar adı veya IP adresi başına varsayılan bağlantı sınırına göre yapılır. `MaxConnections`İstemci kitaplığının Azure Cosmos DB için birden çok eş zamanlı bağlantı kullanabilmesi için daha yüksek bir değere (100 'e 1.000) ayarlamanız gerekebilir. .NET SDK 1.8.0 ve üzeri sürümlerde, [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) için varsayılan değer 50 ' dir. Değeri değiştirmek için [belgeler. Client. ConnectionPolicy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) değerini daha yüksek bir değere ayarlayabilirsiniz.
+Ağ Geçidi modunu kullandığınızda Azure Cosmos DB istekleri HTTPS/REST üzerinden yapılır. Tabi, ana bilgisayar adı veya IP adresi başına varsayılan bağlantı sınırına göre yapılır. `MaxConnections`İstemci kitaplığının Azure Cosmos DB için birden çok eş zamanlı bağlantı kullanabilmesi için daha yüksek bir değere (100 'e 1.000) ayarlamanız gerekebilir. .NET SDK 1.8.0 ve üzeri sürümlerde, [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) için varsayılan değer 50 ' dir. Değeri değiştirmek için [belgeler. Client. ConnectionPolicy. MaxConnectionLimit](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) değerini daha yüksek bir değere ayarlayabilirsiniz.
 
 **Bölümlenmiş koleksiyonlar için Paralel sorguları ayarlama**
 
@@ -135,19 +135,19 @@ SQL .NET SDK 1.9.0 ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorg
 - `MaxDegreeOfParallelism` paralel olarak sorgulanabilecek en fazla bölüm sayısını denetler. 
 - `MaxBufferedItemCount` önceden getirilen sonuçların sayısını denetler.
 
-***Paralellik derecesi ayarlama***
+**_Paralellik derecesi ayarlama_*_
 
 Paralel sorgu birden çok bölümü paralel olarak sorgulayarak işe yarar. Ancak tek bir bölümden alınan veriler sorguya göre işlem içine alınır. `MaxDegreeOfParallelism` [SDK v2](sql-api-sdk-dotnet.md) 'nin bölüm sayısına en iyi şekilde ayarlanması, diğer tüm sistem koşullarının aynı kalması şartıyla en iyi performansı elde etmek için en iyi şansınız vardır. Bölüm sayısını bilmiyorsanız paralellik derecesini yüksek bir sayı olarak ayarlayabilirsiniz. Sistem paralellik derecesi olarak en az (bölüm sayısını, Kullanıcı tarafından girilen girişi) seçer.
 
 Paralel sorgular, verilerin sorguya göre tüm bölümler arasında eşit bir şekilde dağıtılması halinde en avantaja sahip olur. Bölümlenmiş koleksiyon, bir sorgu tarafından döndürülen verilerin tümünün veya çoğu birkaç bölümde yoğunlaşarak (bir bölüm en kötü durumdur), bu bölümlerin sorgunun performansını performans sorunlarına neden olur.
 
-***MaxBufferedItemCount ayarlama***
+_*_MaxBufferedItemCount ayarlama_*_
     
 Paralel sorgu, geçerli sonuç toplu işi istemci tarafından işlendiği sırada sonuçları önceden getirmek üzere tasarlanmıştır. Bu önceden getirme, bir sorgunun genel gecikmesinin artırılmasına yardımcı olur. `MaxBufferedItemCount`Parametresi, önceden getirilen sonuçların sayısını sınırlar. `MaxBufferedItemCount`Sorgunun ön getirmeyi en fazla avantaj almasına izin vermek için beklenen sonuç sayısı (veya daha yüksek bir sayı) olarak ayarlayın.
 
 Önceden getirme, paralellik derecesi ne olursa olsun aynı şekilde çalışacaktır ve tüm bölümlerdeki veriler için tek bir arabellek vardır.  
 
-**RetryAfter aralıklarında geri alma Uygula**
+_*RetryAfter aralıklarında geri alma Uygula**
 
 Performans testi sırasında, küçük bir istek hızı kısıtlanana kadar yükü artırmanız gerekir. İstekler kısıtlanmamışsa, sunucu tarafından belirtilen yeniden deneme aralığı için istemci uygulamanın azaltılmasından sonra kapatılması gerekir. Geri alma işleminin tamamlanması, yeniden denemeler arasında bekleyen en az miktarda süre harcamanızı sağlar. 
 
@@ -156,7 +156,7 @@ Yeniden deneme ilkesi desteği Bu SDK 'lara dahildir:
 - [SQL içinNode.js SDK](sql-api-sdk-node.md) ve [SQL için Python SDK](sql-api-sdk-python.md) 'nın sürümü 1.9.0 ve üzeri
 - [.NET Core](sql-api-sdk-dotnet-core.md) SDK 'larının tüm desteklenen sürümleri 
 
-Daha fazla bilgi için bkz. [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
+Daha fazla bilgi için bkz. [RetryAfter](/dotnet/api/microsoft.azure.documents.documentclientexception.retryafter).
     
 .NET SDK 'nın 1,19 ve sonraki sürümlerinde, aşağıdaki örnekte gösterildiği gibi ek tanılama bilgileri ve sorun giderme gecikme sorunlarını günlüğe kaydetme mekanizması vardır. Daha yüksek okuma gecikmesi olan istekler için tanılama dizesini günlüğe kaydedebilirsiniz. Yakalanan tanılama dizesi, belirli bir istek için kaç kez 429 hatası aldığınızı anlamanıza yardımcı olur.
 

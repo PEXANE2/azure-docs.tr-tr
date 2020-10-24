@@ -2,13 +2,13 @@
 title: Sık sorulan sorular-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs ve yanıtları hakkında sık sorulan soruların (SSS) bir listesi sunulmaktadır.
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: 2c58f67fed880b8aad60ff1a46a587dcf514102e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.date: 10/23/2020
+ms.openlocfilehash: 511706e0de2737feb259c0ff9529373ab8b6d026
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424189"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495215"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs sık sorulan sorular
 
@@ -181,29 +181,14 @@ Giriş ve çıkış kotaları ayrı ayrı uygulanır; böylece hiçbir Gönderen
 ### <a name="what-are-event-hubs-dedicated-clusters"></a>Event Hubs Ayrılmış kümeleri nedir?
 Event Hubs Ayrılmış kümeler, en zorlu gereksinimleri olan müşteriler için tek kiracılı dağıtımlar sunar. Bu teklif, işleme birimleri tarafından bağlı olmayan kapasite tabanlı bir küme oluşturur. Bu, kümenin CPU ve bellek kullanımı tarafından dikte edildiği şekilde verilerinizi almak ve aktarmak için kümeyi kullanabileceğiniz anlamına gelir. Daha fazla bilgi için bkz. [Event Hubs ayrılmış kümeleri](event-hubs-dedicated-overview.md).
 
-### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Tek bir kapasite birimiyle hangi değerlere ulaşabilirim?
-Adanmış bir küme için, alma ve akış alma işlemleri, üreticileri, Tüketicileriniz, geri alma ve işleme alma ücreti ve çok daha fazlası gibi çeşitli faktörlere bağlıdır. 
-
-Aşağıdaki tabloda, sınamamız sırasında elde ettiğimiz kıyaslama sonuçları gösterilmektedir:
-
-| Yük şekli | Alıcıların | Giriş bant genişliği| Giriş iletileri | Çıkış bant genişliği | Çıkış iletileri | Toplam DTU | CU başına DTU |
-| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB toplu işleri | 2 | 400 MB/sn | 400k İleti/sn | 800 MB/sn | 800k İleti/sn | 400 tüs | 100 tüs | 
-| 10x10KB toplu işlem | 2 | 666 MB/sn | 66.6 k iletisi/sn | 1,33 GB/sn | 133k İleti/sn | 666 tüs | 166 tüs |
-| 6x32KB toplu işleri | 1 | 1,05 GB/sn | 34k İleti/sn | 1,05 GB/sn | 34k İleti/sn | 1000 tüs | 250 tüs |
-
-Sınamada, aşağıdaki ölçütler kullanılmıştır:
-
-- Dört Kapasite birimi (cu düzeyinde kapsanır) içeren adanmış bir Event Hubs kümesi kullanıldı. 
-- Alma işlemi için kullanılan olay hub 'ının 200 bölümü vardı. 
-- Alınan veriler, tüm bölümlerden alınan iki alıcı uygulaması tarafından alındı.
-
-Sonuçlar, adanmış bir Event Hubs kümesiyle neler elde edilebileceklerini size fikir verir. Ayrıca, bir ayırma kümesi, mikro Batch ve uzun süreli saklama senaryolarınız için Event Hubs yakalama etkinleştirilmiş olarak gelir.
-
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Nasıl yaparım? bir Event Hubs Ayrılmış kümesi mi oluşturulsun?
-Bir [Kota artışı destek isteği](https://portal.azure.com/#create/Microsoft.Support) göndererek veya [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)başvurarak Event Hubs adanmış bir küme oluşturursunuz. Genellikle, kümenin dağıtımını yapmak için iki hafta sürer ve sizin tarafınızdan kullanılmak üzere kullanıma alınır. Bu işlem, Azure portal aracılığıyla tam bir self servis olana kadar geçicidir.
+Event Hubs adanmış bir küme ayarlamaya yönelik adım adım yönergeler ve daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak adanmış Event Hubs kümesi oluşturma](event-hubs-dedicated-cluster-create-portal.md). 
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+
+[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
+
+
+## <a name="best-practices"></a>En iyi uygulamalar
 
 ### <a name="how-many-partitions-do-i-need"></a>Kaç bölüme ihtiyacım var?
 Bölüm sayısı, oluşturma sırasında belirtilmiştir ve 1 ile 32 arasında olmalıdır. Bölüm sayısı değiştirilemez olmadığından, bölüm sayısını ayarlarken uzun vadeli ölçeği dikkate almanız gerekir. Bölümler, tüketen uygulamalarda gerekli aşağı akış paralelliğiyle ilişkili bir veri düzenleme mekanizmasıdır. Bir olay hub'ındaki bölüm sayısı, sahip olmayı beklediğiniz eşzamanlı okuyucu sayısıyla doğrudan ilgilidir. Bölümler hakkında daha fazla bilgi için bkz. [bölümler](event-hubs-features.md#partitions).

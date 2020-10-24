@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 633baafa7f6cb1bc134f07ce64ba98ebd4cb626c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50884a45e60826f09fffcc9f86992563e473424d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603059"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478057"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark Azure Cosmos DB bağlayıcısını kullanarak büyük veri analizlerini hızlandırma
 
@@ -33,8 +33,8 @@ Bağlayıcıyı Azure 'da yönetilen Spark kümeleri sağlayan [Azure Databricks
 
 ## <a name="quickstart"></a>Hızlı Başlangıç
 
-* Cosmos DB hesabı ayarlamak ve bazı verileri doldurmak için [Java SDK 'sını kullanmaya başlama](sql-api-async-java-get-started.md) bölümündeki adımları izleyin.
-* Azure Databricks bir çalışma alanı ve küme ayarlamaya Başlarken [Azure Databricks](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) adımları izleyin.
+* Cosmos DB hesabı ayarlamak ve bazı verileri doldurmak için [Java SDK 'sını kullanmaya başlama](./create-sql-api-java.md) bölümündeki adımları izleyin.
+* Azure Databricks bir çalışma alanı ve küme ayarlamaya Başlarken [Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) adımları izleyin.
 * Artık yeni not defterleri oluşturabilir ve Cosmos DB bağlayıcı kitaplığını içeri aktarabilirsiniz. Çalışma alanınızı ayarlama hakkında ayrıntılar için [Cosmos DB Bağlayıcısı Ile çalışmaya](#bk_working_with_connector) atlayın.
 * Aşağıdaki bölümde, bağlayıcıyı kullanarak okuma ve yazma ile ilgili kod parçacıkları vardır.
 

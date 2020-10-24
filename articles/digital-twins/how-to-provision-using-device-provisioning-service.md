@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f9dd69c147dff1bf0bd10ca070e023bb6f7692a5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b6dbcaf317efb8589a92275527f992029b7eb8a6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368443"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494745"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Cihaz sağlama hizmeti 'ni (DPS) kullanarak Azure dijital TWINS 'de cihazları otomatik olarak yönetme
 
@@ -22,7 +22,7 @@ Bu makalede açıklanan çözüm, cihaz sağlama hizmeti 'ni kullanarak Azure di
 
 _Sağlama_ ve _devre dışı bırakma_ aşamaları hakkında daha fazla bilgi Için ve tüm kurumsal IoT projelerinde ortak olan genel cihaz yönetim aşamaları kümesini daha iyi anlamak için, IoT Hub cihaz yönetimi belgelerinin [ *cihaz yaşam döngüsü* bölümüne](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle) bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Sağlamayı ayarlamadan önce, modeller ve TWINS içeren bir **Azure dijital TWINS örneğine** sahip olmanız gerekir. Bu örnek, verileri temel alarak dijital ikizi bilgilerini güncelleştirme özelliği ile de ayarlanmalıdır. 
 
@@ -71,7 +71,7 @@ IoT cihazları sağlamak için kullanılacak bir cihaz sağlama hizmeti örneği
 
 Aşağıdaki Azure CLı komutu bir cihaz sağlama hizmeti oluşturacaktır. Bir ad, kaynak grubu ve bölge belirtmeniz gerekecektir. Bu komut, [makinenizde yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)Azure CLI 'niz varsa [Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir.
 
-```azurecli
+```azurecli-interactive
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
 ```
 
@@ -237,7 +237,7 @@ Daha sonra, oluşturduğunuz Azure Digital TWINS örneğine başvuruyu içeren i
 
 Bu Azure CLı komutuyla ayarı ekleyin:
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -246,7 +246,7 @@ Son adım öğreticideki [*işlev uygulamasına Izin atama*](tutorial-end-to-end
 <!-- 
 * Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
 ``` -->
 
@@ -293,7 +293,7 @@ Kayıtlı ve IoT Hub bağlı olduğunu ve sonra ileti gönderilmeye başladığ�
 
 Bu makalede ayarladığınız akışın bir sonucu olarak, cihaz Azure dijital TWINS 'e otomatik olarak kaydedilir. Aşağıdaki [Azure Digital TWıNS CLI](how-to-use-cli.md) komutunu kullanarak, oluşturduğunuz Azure dijital TWINS örneğindeki cihazın ikizi bulun.
 
-```azurecli
+```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -449,13 +449,13 @@ Daha sonra, oluşturduğunuz Azure dijital TWINS örneğine ve Olay Hub 'ına ba
 
 Bu Azure CLı komutuyla ayarı ekleyin. Bu komut, [makinenizde yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)Azure CLI 'niz varsa [Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir.
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
 Daha sonra, yeni oluşturulan olay hub 'ına bağlanmak için işlev ortam değişkenini yapılandırmanız gerekecektir.
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -486,7 +486,7 @@ Cihaz Azure dijital TWINS 'den otomatik olarak kaldırılacak.
 
 Azure Digital TWINS örneğindeki cihazın ikizi silindiğini doğrulamak için aşağıdaki [Azure Digital TWINS CLI](how-to-use-cli.md) komutunu kullanın.
 
-```azurecli
+```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -502,7 +502,7 @@ Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](/cli/azure
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
 ```
 

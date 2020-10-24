@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 41ac1cb856011d9730f7b49bbf85350f4dbccdbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bd06491b5488223b9a8eba50839a7fdf0cd61b6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90895235"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478550"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Öğretici: PostgreSQL için Azure veritabanı – hiper ölçek (Citus) kullanarak gerçek zamanlı analiz panosu tasarlama
 
@@ -226,5 +226,5 @@ Yukarıdaki adımlarda, bir sunucu grubunda Azure kaynakları oluşturdunuz. Gel
 
 Bu öğreticide, bir hiper ölçek (Citus) sunucu grubu sağlamayı öğrendiniz. Bu ağa psql ile bağlanırsınız, bir şema oluşturdunuz ve dağıtılmış veriler. Ham formdaki verileri sorgulamayı, verileri düzenli olarak toplamasını, toplanmış tabloları sorgulamayı ve eski verilerin zaman dolmasını öğrendiniz.
 
-- Sunucu grubu [düğüm türleri](https://aka.ms/hyperscale-concepts) hakkında bilgi edinin
+- Sunucu grubu [düğüm türleri](./concepts-hyperscale-nodes.md) hakkında bilgi edinin
 - Sunucu grubunuz için en iyi [ilk boyutu](howto-hyperscale-scaling.md#picking-initial-size) belirleme

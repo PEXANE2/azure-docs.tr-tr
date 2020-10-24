@@ -3,16 +3,16 @@ title: Azure Backup Sunucusu ile Azure VMware Çözüm VM 'lerini yedekleme
 description: Azure VMware Çözüm ortamınızı, Azure Backup Sunucusu kullanarak sanal makineleri yedekleyecek şekilde yapılandırın.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: b8b5236a8da165efbb8e479e25b58872c4a735ee
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: d4273980a134fbdaabe64215aaf0b66a53253788
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893025"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495698"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile Azure VMware Çözüm VM 'lerini yedekleme
 
-Bu makalede, Azure VMware çözümünde çalışan VMware sanal makinelerini (VM 'Ler) Azure Backup Sunucusu kullanarak yedekleme yordamlarına ilerliyoruz. Başlamadan önce [Azure VMware çözümü için Microsoft Azure Backup sunucusu ayarlamayı](set-up-backup-server-for-azure-vmware-solution.md)iyice unutmayın.
+Bu makalede, Azure VMware çözümünde çalışan VMware sanal makinelerini (VM 'Ler) Azure Backup Sunucusu ile yedekliyoruz. İlk olarak, [Azure VMware çözümü için Microsoft Azure Backup Server 'ı ayarlama](set-up-backup-server-for-azure-vmware-solution.md)bölümüne bakın.
 
 Ardından, aşağıdakileri yapmak için gereken tüm yordamları inceleyeceğiz:
 
@@ -162,7 +162,11 @@ VMware 6,7 üzerinde iletişim kuralı olarak TLS etkinleştirilmiş.
 
    ![Son sayfa](../backup/media/backup-azure-backup-server-vmware/summary-screen.png)
 
-   **Üretim sunucusu** altında listelenen vCenter Server 'ı **VMware sunucusu** ve **Aracı durumu** olarak yazın ve **Tamam**olarak görmeniz gerekir. **Aracı durumu** **bilinmiyor**olarak görürseniz, **Yenile**' yi seçin.
+   **Üretim sunucusu** altında listelenen vCenter Server 'ı şu şekilde görürsünüz:
+   - **VMware sunucusu** olarak yazın 
+   - Aracı durumu **Tamam** olarak 
+   
+      **Aracı durumu** **bilinmiyor**olarak görürseniz, **Yenile**' yi seçin.
 
 ## <a name="configure-a-protection-group"></a>Koruma grubu yapılandırma
 
@@ -202,7 +206,7 @@ Koruma grupları birden çok VM toplar ve aynı veri saklama ve yedekleme ayarla
 
    - Önerilen disk ayırmaları belirttiğiniz bekletme aralığına, iş yükü türüne ve korunan verilerin boyutuna göre belirlenir. Gerekli değişiklikleri yapın ve ardından **İleri**' yi seçin.
    - **Veri boyutu:** Koruma grubundaki verilerin boyutu.
-   - **Disk alanı:** Koruma grubu için önerilen miktarda disk alanı. Bu ayarı değiştirmek istiyorsanız, her veri kaynağını tahmin ettiğiniz miktardan biraz daha büyük toplam alan ayırın.
+   - **Disk alanı:** Koruma grubu için önerilen miktarda disk alanı. Bu ayarı değiştirmek istiyorsanız, her veri kaynağı arttıkça tahmin ettiğiniz miktardan daha fazla alan seçin.
    - **Depolama havuzu ayrıntıları:** Depolama havuzunun toplam ve kalan disk boyutunu içeren durumunu gösterir.
 
    :::image type="content" source="media/azure-vmware-solution-backup/review-disk-allocation.png" alt-text="vSphere Web Istemcisi":::
@@ -229,14 +233,14 @@ Koruma grupları birden çok VM toplar ve aynı veri saklama ve yedekleme ayarla
 
    ![Çevrimiçi koruma verilerini belirtin](../backup/media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
-1. **Çevrimiçi yedekleme zamanlamasını belirtin** sayfasında, verileri yerel depolamadan Azure 'a ne sıklıkta yedeklemek istediğinizi belirtin ve ardından **İleri**' yi seçin. 
+1. **Çevrimiçi yedekleme zamanlamasını belirtin** sayfasında, verileri yerel depolamadan Azure 'a ne sıklıkta yedeklemek istediğinizi belirtin. 
 
    - Zamanlamaya göre oluşturulacak verilerin bulut kurtarma noktaları. 
    - Kurtarma noktası oluşturulduktan sonra, Azure 'daki kurtarma hizmetleri kasasına aktarılır.
 
    ![Çevrimiçi Yedekleme zamanlamasını belirtin](../backup/media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. **Çevrimiçi saklama Ilkesini belirtin** sayfasında, günlük, haftalık, aylık veya yıllık yedeklerden Azure 'a oluşturulan kurtarma noktalarını ne kadar süreyle saklamak istediğinizi belirtin ve ardından **İleri**' yi seçin.
+1. **Çevrimiçi saklama Ilkesini belirtin** sayfasında, yedeklerden Azure 'a olan kurtarma noktalarını ne kadar süreyle saklamak istediğinizi belirtin.
 
    - Azure 'da verileri ne kadar süreyle saklayabilmeniz için zaman sınırı yoktur.
    - Tek sınır, korunan örnek başına 9.999 taneden fazla kurtarma noktasına sahip olamaz. Bu örnekte, korumalı örnek VMware sunucusudur.
@@ -251,8 +255,9 @@ Koruma grupları birden çok VM toplar ve aynı veri saklama ve yedekleme ayarla
 
 Koruma grubunu Azure VMware Çözüm VM 'lerini yedekleyecek şekilde yapılandırdıktan sonra, Azure Backup Sunucusu konsolunu kullanarak yedekleme işinin ve uyarının durumunu izleyebilirsiniz. Şunları izleyebilirsiniz.
 
-- **İzleme** bölmesindeki **Uyarılar** sekmesinde, bir koruma grubu için hataları, uyarıları ve genel bilgileri, belirli bir korumalı bilgisayar veya ileti önem derecesine göre izleyebilirsiniz. Etkin ve etkin olmayan uyarıları görüntüleyebilir ve e-posta bildirimleri ayarlayabilirsiniz.
-- **İzleme** bölmesindeki **işler** sekmesinde, belirli bir korumalı veri kaynağı veya koruma grubu için Azure Backup sunucusu tarafından başlatılan işleri görüntüleyebilirsiniz. İş ilerleme durumunu izleyebilir veya işler tarafından tüketilen kaynakları kontrol edebilirsiniz.
+- **İzleme** görev alanında:
+   - **Uyarılar**' ın altında hataları, uyarıları ve genel bilgileri izleyebilirsiniz.  Etkin ve etkin olmayan uyarıları görüntüleyebilir ve e-posta bildirimleri ayarlayabilirsiniz.
+   - **İşler**altında, belirli bir korumalı veri kaynağı veya koruma grubu için Azure Backup sunucusu tarafından başlatılan işleri görüntüleyebilirsiniz. İş ilerleme durumunu izleyebilir veya işler tarafından tüketilen kaynakları kontrol edebilirsiniz.
 - **Koruma** görev bölmesinde, koruma grubundaki birim ve paylaşımların durumunu kontrol edebilirsiniz. Kurtarma ayarları, disk ayırma ve yedekleme zamanlaması gibi yapılandırma ayarlarını da denetleyebilirsiniz.
 - **Yönetim** görev alanında, **diskler, çevrimiçi**ve **aracılar** sekmelerini görüntüleyerek depolama havuzundaki disklerin durumunu DENETLEYEBILIR, Azure 'a kaydedebilir ve DPM aracısının durumunu dağıttınız.
 
@@ -263,18 +268,18 @@ Koruma grubunu Azure VMware Çözüm VM 'lerini yedekleyecek şekilde yapıland�
 Azure Backup Sunucusu Yönetici Konsolu, kurtarılabilir verileri bulmanın iki yolu vardır. Arama yapabilir veya gezinebilirsiniz. Verileri kurtardığınızda, verileri veya bir VM 'yi aynı konuma geri yüklemek istemeyebilirsiniz. Bu nedenle Azure Backup Sunucusu, VMware VM yedeklemeleri için üç kurtarma seçeneğini destekler:
 
 - **Özgün konum kurtarma (olr)**: KORUMALı bir VM 'yi özgün konumuna geri yüklemek için olr 'yi kullanın. Bir VM 'yi yalnızca yedekleme gerçekleşmesinden sonra hiçbir disk eklenmediyse veya silinmediyse, özgün konumuna geri yükleyebilirsiniz. Diskler eklendiyse veya silinirse, alternatif bir konum kurtarma kullanmanız gerekir.
-- **Alternatif Konum Kurtarma (ALR)**: özgün VM eksik olduğunda veya özgün VM 'yi rahatsız etmek ISTEMIYORSANıZ, VM 'yi alternatif bir konuma kurtarın. Bir VM 'yi alternatif bir konuma kurtarmak için bir ESXi konağının, kaynak havuzunun, klasörün ve depolama veri deposunun ve yolun konumunu sağlamanız gerekir. Geri yüklenen VM 'yi özgün VM 'den ayırt etmeye yardımcı olmak için, Azure Backup Sunucusu "-Kurtarılan" öğesini VM adına ekler.
+- **Alternatif Konum Kurtarma (ALR)**: özgün VM eksik olduğunda veya özgün VM 'yi rahatsız etmek istemediğiniz durumlarda kullanın. Bir ESXi konağının, kaynak havuzunun, klasörün ve depolama veri deposunun ve yolun konumunu belirtin. Geri yüklenen VM 'yi özgün VM 'den ayırt etmeye yardımcı olmak için, Azure Backup Sunucusu *"-Kurtarılan"* öğesini VM adına ekler.
 - **Tek dosya konumu kurtarma (ıLR)**: korunan VM bir Windows Server sanal makinesi ise, Azure Backup sunucusu ILR ÖZELLIĞI kullanılarak sanal makine içindeki tek tek dosyalar veya klasörler kurtarılabilir. Tek tek dosyaları kurtarmak için bu makalenin ilerleyen kısımlarında yer alarak bulunan yordama bakın. Bir VM 'den tek bir dosyanın geri yüklenmesi yalnızca Windows VM ve disk kurtarma noktaları için kullanılabilir.
 
 ### <a name="restore-a-recovery-point"></a>Kurtarma noktasını geri yükleme
 
 1. Azure Backup Sunucusu Yönetici Konsolu **Kurtarma** görünümünü seçin. 
 
-1. Kurtarmak istediğiniz VM 'yi bulmak için, **tarama** bölmesini kullanın veya filtre uygulayın. Bir VM veya klasör seçtikten sonra bölmesi **Için kurtarma noktaları** kullanılabilir kurtarma noktalarını görüntüler.
+1. Kurtarmak istediğiniz VM 'yi bulmak için, **tarama** bölmesini kullanın veya filtre uygulayın. Bir VM veya klasör seçtikten sonra, bölüm için * * kurtarma noktaları kullanılabilir kurtarma noktalarını görüntüler.
 
    ![Kullanılabilir kurtarma noktaları](../backup/media/restore-azure-backup-server-vmware/recovery-points.png)
 
-1. Kurtarma **noktaları** bölmesinde, takvim ve açılır menüleri kullanarak bir kurtarma noktasının alındığı tarihi seçin. Kalın yazı tipinde takvim tarihleri kullanılabilir kurtarma noktalarına sahip. Alternatif olarak, VM 'ye sağ tıklayıp **tüm kurtarma noktalarını göster** ' i seçip listeden kurtarma noktasını seçebilirsiniz.
+1. **Için kurtarma noktaları** bölmesinde, bir kurtarma noktası çekilirken bir tarih seçin. Kalın yazı tipinde takvim tarihleri kullanılabilir kurtarma noktalarına sahip. Alternatif olarak, VM 'ye sağ tıklayıp **tüm kurtarma noktalarını göster** ' i seçip listeden kurtarma noktasını seçebilirsiniz.
 
    > [!NOTE] 
    > Kısa vadeli koruma için daha hızlı kurtarma için disk tabanlı bir kurtarma noktası seçin. Kısa vadeli kurtarma noktalarının süresi dolduktan sonra, kurtarmak için yalnızca **çevrimiçi** kurtarma noktaları görürsünüz.
@@ -292,7 +297,7 @@ Azure Backup Sunucusu Yönetici Konsolu, kurtarılabilir verileri bulmanın iki 
    > [!NOTE]
    > VMware iş yükleri ağ bant genişliği azaltmayı etkinleştirmeyi desteklemez.
 
-1. **Kurtarma türünü seçin** sayfasında, özgün örneğe mi yoksa yeni bir konuma mi kurtarılacağı seçin ve ardından **İleri**' yi seçin.
+1. **Kurtarma türünü seçin** sayfasında, özgün örneğe veya yeni bir konuma kurtarın.
 
    - **Özgün örneğe kurtar**' ı seçerseniz, sihirbazda başka seçimler yapmanıza gerek kalmaz. Özgün örnek için veriler kullanılır.
    - **Herhangi bir konakta sanal makine olarak kurtar**' ı seçerseniz, **hedef belirtin** ekranında **ESXi Konağı**, **kaynak havuzu**, **klasör**ve **yol**bilgilerini girin.
@@ -312,7 +317,7 @@ Korunan bir VM kurtarma noktasından tek tek dosyaları geri yükleyebilirsiniz.
 
 1. Azure Backup Sunucusu Yönetici Konsolu **Kurtarma** görünümünü seçin.
 
-1. Kurtarmak istediğiniz VM 'yi bulmak için, **tarama** bölmesini kullanın veya filtre uygulayın. Bir VM veya klasör seçtikten sonra bölmesi **Için kurtarma noktaları** kullanılabilir kurtarma noktalarını görüntüler.
+1. Kurtarmak istediğiniz VM 'yi bulmak için, **tarama** bölmesini kullanın veya filtre uygulayın. Bir VM veya klasör seçtikten sonra, bölüm için * * kurtarma noktaları kullanılabilir kurtarma noktalarını görüntüler.
 
    ![Kullanılabilir kurtarma noktaları](../backup/media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
@@ -334,14 +339,14 @@ Korunan bir VM kurtarma noktasından tek tek dosyaları geri yükleyebilirsiniz.
 
 1. Kurtarma için öğeleri seçtiğinizde, Yönetici Konsolu araç şeridinde **Kurtarma Sihirbazı**'nı açmak için **kurtar** ' ı seçin. **Kurtarma Sihirbazı**'Nda, **Kurtarma seçimini İncele** ekranı, kurtarılacak seçili öğeleri gösterir.
 
-1. **Kurtarma seçeneklerini belirtin** ekranında, aşağıdakilerden birini yapın:
+1. **Kurtarma seçeneklerini belirtin** ekranında, aşağıdaki adımlardan birini yapın:
 
    - Ağ bant genişliği azaltmayı etkinleştirmek için **Değiştir** ' i seçin. **Kısıtlama** iletişim kutusunda, açmak için **ağ bant genişliği kullanımını azaltmayı etkinleştir** ' i seçin. Etkinleştirildikten sonra **ayarları** ve **iş zamanlamasını**yapılandırın.
    - Ağ azaltmayı devre dışı bırakmak için **İleri ' yi** seçin.
 
 1. **Kurtarma türü seçin** ekranında, **İleri**' yi seçin. Dosya veya klasörlerinizi yalnızca bir ağ klasörüne kurtarabilirsiniz.
 
-1. **Hedef belirtin** ekranında, dosyalarınız veya klasörleriniz için bir ağ konumu bulmak üzere **Araştır** ' ı seçin. Azure Backup Sunucusu, kurtarılan tüm öğelerin kopyalandığı bir klasör oluşturur. Klasör adı MABS_day-ay-yıl ön ekine sahiptir. Kurtarılan dosyalar veya klasör için bir konum seçtiğinizde, bu konumun, **hedef**, **hedef yol**ve **kullanılabilir alan**gibi ayrıntıları sağlanır.
+1. **Hedef belirtin** ekranında, dosyalarınız veya klasörleriniz için bir ağ konumu bulmak üzere **Araştır** ' ı seçin. Azure Backup Sunucusu, kurtarılan tüm öğelerin kopyalandığı bir klasör oluşturur. Klasör adı MABS_day-ay-yıl ön ekine sahiptir. Kurtarılan dosyalar veya klasör için bir konum seçtiğinizde, bu konumun ayrıntıları sağlanır.
 
    ![Dosyaların kurtarılacağı konumu belirtin](../backup/media/restore-azure-backup-server-vmware/specify-destination.png)
 

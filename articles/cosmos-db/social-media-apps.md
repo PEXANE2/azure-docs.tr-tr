@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7118a12a5a92912c51bb35d8b516d5b8e2f45388
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85850690"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478159"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB ile sosyal olarak çalışmaya devam edin
 
@@ -216,9 +216,9 @@ Azure Cosmos DB kullandığınız için, arama işlemi ve Kullanıcı arabirimi 
 
 Bu işlem ne kadar kolay?
 
-Azure Bilişsel Arama, [dizin oluşturucularının](https://msdn.microsoft.com/library/azure/dn946891.aspx)çağırdıkları öğeleri, veri depolarınızda bulunan arka plan süreçlerini ve verileri dizinlerdeki nesne ekleme, güncelleştirme veya kaldırma işlemini uygular. Azure [SQL veritabanı Dizinleyicileri](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [Azure Blob Dizinleyicileri](../search/search-howto-indexing-azure-blob-storage.md) ve ktam, [Azure Cosmos DB Dizin oluşturucularını](../search/search-howto-index-documentdb.md)destekler. Cosmos DB 'den Azure Bilişsel Arama 'a bilgilerin geçişi basittir. Her iki teknoloji de, bilgileri JSON biçiminde depolar, bu nedenle yalnızca [dizininizi oluşturmanız ve dizinlerinizi](../search/search-create-index-portal.md) dizinlemek istediğiniz belgelerinizden eşlemeniz gerekir. Bu kadar! Verilerinizin boyutuna bağlı olarak, tüm içeriğiniz bulut altyapısındaki en iyi hizmet olarak arama çözümü ile dakikalar içinde Aranmak üzere kullanılabilir olacaktır.
+Azure Bilişsel Arama, [dizin oluşturucularının](/rest/api/searchservice/Indexer-operations)çağırdıkları öğeleri, veri depolarınızda bulunan arka plan süreçlerini ve verileri dizinlerdeki nesne ekleme, güncelleştirme veya kaldırma işlemini uygular. Azure [SQL veritabanı Dizinleyicileri](/archive/blogs/kaevans/indexing-azure-sql-database-with-azure-search), [Azure Blob Dizinleyicileri](../search/search-howto-indexing-azure-blob-storage.md) ve ktam, [Azure Cosmos DB Dizin oluşturucularını](../search/search-howto-index-cosmosdb.md)destekler. Cosmos DB 'den Azure Bilişsel Arama 'a bilgilerin geçişi basittir. Her iki teknoloji de, bilgileri JSON biçiminde depolar, bu nedenle yalnızca [dizininizi oluşturmanız ve dizinlerinizi](../search/search-what-is-an-index.md) dizinlemek istediğiniz belgelerinizden eşlemeniz gerekir. Bu kadar! Verilerinizin boyutuna bağlı olarak, tüm içeriğiniz bulut altyapısındaki en iyi hizmet olarak arama çözümü ile dakikalar içinde Aranmak üzere kullanılabilir olacaktır.
 
-Azure Bilişsel Arama hakkında daha fazla bilgi için, [arama yapmak üzere Hitchhiker ' ın kılavuzunu](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)ziyaret edebilirsiniz.
+Azure Bilişsel Arama hakkında daha fazla bilgi için, [arama yapmak üzere Hitchhiker ' ın kılavuzunu](/archive/blogs/mvpawardprogram/a-hitchhikers-guide-to-search)ziyaret edebilirsiniz.
 
 ## <a name="the-underlying-knowledge"></a>Temel alınan bilgi
 

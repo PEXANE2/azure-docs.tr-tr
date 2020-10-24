@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 462ecb1fb3f44f3caac8c58bfca169e4eac2a6da
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: fef41a177f653dc67835897a48d734400a37a0d0
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207946"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496004"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -26,7 +26,7 @@ Bir bulut hizmeti kullandığınızda, erişimi yalnızca ihtiyacı olan kullan�
 > [!NOTE]
 > Bu makaledeki bilgiler, Azure Machine Learning Python SDK sürümü 1.0.83.1 veya üzeri ile birlikte çalışmaktadır.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Azure Active Directory (Azure AD) kullanmak üzere yapılandırılmışsa Multi-Factor Authentication desteklenir. Kimlik doğrulama işlemi şu şekildedir:
 
@@ -183,6 +183,7 @@ Azure Container Registry şifrelemek için kendi (müşteri tarafından yönetil
 Mevcut bir Azure Container Registry kullanarak çalışma alanı oluşturma örneği için aşağıdaki makalelere bakın:
 
 * [Azure CLI ile Azure Machine Learning için bir çalışma alanı oluşturun](how-to-manage-workspace-cli.md).
+* [Python SDK ile bir çalışma alanı oluşturun](how-to-manage-workspace.md?tabs=python#create-a-workspace).
 * [Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma](how-to-create-workspace-template.md)
 
 #### <a name="azure-container-instance"></a>Azure Container Örneği

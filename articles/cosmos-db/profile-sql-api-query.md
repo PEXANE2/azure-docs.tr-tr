@@ -8,25 +8,25 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: girobins
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 71ebc90834083def5b82e16dc387a6e61943206d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d47bd90f7704cd3c55f9e5d64fe6b58946d4568
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021757"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475100"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>.NET SDK kullanarak SQL sorgu yürütme ölçümlerini alın ve sorgu performansını çözümleyin
 
-Bu makalede, Azure Cosmos DB üzerinde SQL sorgu performansının nasıl profilini yapılacağı sunulmaktadır. Bu profil oluşturma `QueryMetrics` , .NET SDK 'dan alınan kullanılarak yapılabilir ve burada ayrıntılı olarak verilmiştir. [Queryölçümler](https://msdn.microsoft.com/library/microsoft.azure.documents.querymetrics.aspx) , arka uç sorgu yürütmesi hakkında bilgi içeren türü kesin belirlenmiş bir nesnedir. Bu ölçümler, [sorgu performansını ayarlama](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) makalesinde daha ayrıntılı olarak belgelenmiştir.
+Bu makalede, Azure Cosmos DB üzerinde SQL sorgu performansının nasıl profilini yapılacağı sunulmaktadır. Bu profil oluşturma `QueryMetrics` , .NET SDK 'dan alınan kullanılarak yapılabilir ve burada ayrıntılı olarak verilmiştir. [Queryölçümler](/dotnet/api/microsoft.azure.documents.querymetrics) , arka uç sorgu yürütmesi hakkında bilgi içeren türü kesin belirlenmiş bir nesnedir. Bu ölçümler, [sorgu performansını ayarlama](./sql-api-query-metrics.md) makalesinde daha ayrıntılı olarak belgelenmiştir.
 
 ## <a name="set-the-feedoptions-parameter"></a>Feedomeseçenekleri parametresini ayarlama
 
-[Documentclient. CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) için tüm aşırı yüklemeler isteğe bağlı bir [feedoçenparametresi](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) alır. Bu seçenek sorgu yürütmenin belirlenme ve parametreli hale getirilmiş olmasına olanak sağlar. 
+[Documentclient. CreateDocumentQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentquery) için tüm aşırı yüklemeler isteğe bağlı bir [feedoçenparametresi](/dotnet/api/microsoft.azure.documents.client.feedoptions) alır. Bu seçenek sorgu yürütmenin belirlenme ve parametreli hale getirilmiş olmasına olanak sağlar. 
 
-SQL sorgu yürütme ölçümlerini toplamak için, [Feedoseçenekleri](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) Içindeki [populatequeryölçümler](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) parametresini olarak ayarlamanız gerekir `true` . `PopulateQueryMetrics`True olarak ayarlamak, bunu, ilgili değerini içerecek şekilde yapar `FeedResponse` `QueryMetrics` . 
+SQL sorgu yürütme ölçümlerini toplamak için, [Feedoseçenekleri](/dotnet/api/microsoft.azure.documents.client.feedoptions) Içindeki [populatequeryölçümler](/dotnet/api/microsoft.azure.documents.client.feedoptions.populatequerymetrics#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) parametresini olarak ayarlamanız gerekir `true` . `PopulateQueryMetrics`True olarak ayarlamak, bunu, ilgili değerini içerecek şekilde yapar `FeedResponse` `QueryMetrics` . 
 
 ## <a name="get-query-metrics-with-asdocumentquery"></a>AsDocumentQuery () ile sorgu ölçümleri alın
-Aşağıdaki kod örneği, [Asdocumentquery ()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) yöntemi kullanılırken ölçümlerin nasıl alınacağını gösterir:
+Aşağıdaki kod örneği, [Asdocumentquery ()](/dotnet/api/microsoft.azure.documents.linq.documentqueryable.asdocumentquery) yöntemi kullanılırken ölçümlerin nasıl alınacağını gösterir:
 
 ```csharp
 // Initialize this DocumentClient and Collection
@@ -63,7 +63,7 @@ while (documentQuery.HasMoreResults)
 ```
 ## <a name="aggregating-querymetrics"></a>Queryölçümlerini toplama
 
-Önceki bölümde, [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) yöntemine yönelik birden çok çağrı olduğunu fark edersiniz. Her çağrı, `FeedResponse` `QueryMetrics` sorgunun her devamı için bir olan sözlüğü olan bir nesne döndürdü. Aşağıdaki örnek, LINQ kullanarak bunların nasıl toplanacağını göstermektedir `QueryMetrics` :
+Önceki bölümde, [ExecuteNextAsync](/dotnet/api/microsoft.azure.documents.linq.idocumentquery-1.executenextasync) yöntemine yönelik birden çok çağrı olduğunu fark edersiniz. Her çağrı, `FeedResponse` `QueryMetrics` sorgunun her devamı için bir olan sözlüğü olan bir nesne döndürdü. Aşağıdaki örnek, LINQ kullanarak bunların nasıl toplanacağını göstermektedir `QueryMetrics` :
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -130,7 +130,7 @@ IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetri
 
 ## <a name="expensive-queries"></a>Pahalı sorgular
 
-Yüksek aktarım hızı kullanan pahalı sorguları veya sorguları araştırmak için her sorgu tarafından tüketilen istek birimlerini yakalayabilirsiniz. İstek ücretine, içindeki [requestücretözelliğini](https://msdn.microsoft.com/library/azure/dn948712.aspx) kullanarak ulaşabilirsiniz `FeedResponse` . Azure portal ve farklı SDK 'Ları kullanarak istek ücreti alma hakkında daha fazla bilgi edinmek için bkz. [istek birimi ücreti bulma](find-request-unit-charge.md) makalesi.
+Yüksek aktarım hızı kullanan pahalı sorguları veya sorguları araştırmak için her sorgu tarafından tüketilen istek birimlerini yakalayabilirsiniz. İstek ücretine, içindeki [requestücretözelliğini](/dotnet/api/microsoft.azure.documents.client.feedresponse-1.requestcharge) kullanarak ulaşabilirsiniz `FeedResponse` . Azure portal ve farklı SDK 'Ları kullanarak istek ücreti alma hakkında daha fazla bilgi edinmek için bkz. [istek birimi ücreti bulma](find-request-unit-charge.md) makalesi.
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -232,11 +232,11 @@ WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, 
 
 Bu sorgu artık dizinden sunulabilecek.
 
-Sorgu performansını ayarlama hakkında daha fazla bilgi edinmek için bkz. [sorgu performansını ayarlama](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) makalesi.
+Sorgu performansını ayarlama hakkında daha fazla bilgi edinmek için bkz. [sorgu performansını ayarlama](./sql-api-query-metrics.md) makalesi.
 
 ## <a name="references"></a><a id="References"></a>Başvurular
 
-- [Azure Cosmos DB SQL belirtimi](https://go.microsoft.com/fwlink/p/?LinkID=510612)
+- [Azure Cosmos DB SQL belirtimi](./sql-query-getting-started.md)
 - [ANSı SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 - [JSON](https://json.org/)
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 081eb10166ff681990af15110829030176efa3fa
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 26302fa67394e6c3122b159866c3814fb5677ba6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207793"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494978"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (CLı) ayarlama
 
@@ -36,7 +36,7 @@ Bu makalenin bu sürümü, tek tek, CLı kullanılarak bu adımları el ile bir 
 
 Bu bölümde, Cloud Shell komutunu kullanarak **Azure Digital TWINS 'in yeni bir örneğini oluşturacaksınız** . Şunları sağlamanız gerekir:
 * İçinde dağıtılacak bir kaynak grubu. Zaten var olan bir kaynak grubunuz yoksa şu komutla bir tane oluşturabilirsiniz:
-    ```azurecli
+    ```azurecli-interactive
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * Dağıtım için bir bölge. Azure dijital TWINS 'i destekleyen bölgeleri görmek için [*bölgeye göre kullanılabilen Azure ürünlerini*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)ziyaret edin.
@@ -44,7 +44,7 @@ Bu bölümde, Cloud Shell komutunu kullanarak **Azure Digital TWINS 'in yeni bir
 
 Örneği oluşturmak için aşağıdaki komutta bu değerleri kullanın:
 
-```azurecli
+```azurecli-interactive
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
@@ -67,8 +67,8 @@ Artık hazır bir Azure dijital TWINS örneğiniz var. Daha sonra, uygun Azure K
 
 Rolü atamak için aşağıdaki komutu kullanın (Azure aboneliğinde [yeterli izinlere](#prerequisites-permission-requirements) sahip bir kullanıcı tarafından çalıştırılması gerekir). Bu komut, rolün atanması gereken kullanıcı için Azure AD hesabındaki *Kullanıcı asıl adını* geçirmeniz gerekir. Çoğu durumda, bu, Azure AD hesabındaki kullanıcının e-postasına göre eşleşir.
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Data Owner"
 ```
 
 Bu komutun sonucu oluşturulan rol ataması hakkında bilgi verilir.

@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: c77c917cf6063b787dc2972f5ee7db3329e0e743
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ef7749a2fa9c7a45cc4e2854e2eb4fcdc9792425
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92285022"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477037"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Cosmos DB Tablo API'si kaynaklarını yönetme
 
 Bu makalede, Azure Cosmos DB hesaplarınızı, veritabanlarınızı ve Kapsayıcılarınızı dağıtmayı ve yönetmeyi kolaylaştırmak için Azure Resource Manager şablonlarını nasıl kullanacağınızı öğreneceksiniz.
 
-Bu makalede yalnızca Tablo API'si hesap örnekleri bulunur, diğer API türü hesaplara yönelik örnekler bulunur. bkz. [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md) makaleleri için Azure Cosmos DB API 'si ile Azure Resource Manager şablonları kullanma.
+Bu makalede yalnızca Tablo API'si hesap örnekleri bulunur, diğer API türü hesaplara yönelik örnekler bulunur. bkz. [Cassandra](./templates-samples-cassandra.md), [Gremlin](./templates-samples-gremlin.md), [MongoDB](./templates-samples-mongodb.md), [SQL](./manage-with-templates.md) makaleleri için Azure Cosmos DB API 'si ile Azure Resource Manager şablonları kullanma.
 
 > [!IMPORTANT]
 >
@@ -54,7 +54,7 @@ Bu şablon, standart işleme sahip bir tabloyla Tablo API'si için bir Azure Cos
 
 Aşağıdaki ek kaynakları da inceleyebilirsiniz:
 
-* [Azure Resource Manager belgeleri](/azure/azure-resource-manager/)
+* [Azure Resource Manager belgeleri](../azure-resource-manager/index.yml)
 * [Azure Cosmos DB kaynak sağlayıcısı şeması](/azure/templates/microsoft.documentdb/allversions)
 * [Azure Cosmos DB hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 * [Ortak Azure Resource Manager Dağıtım hatalarını giderme](../azure-resource-manager/templates/common-deployment-errors.md)

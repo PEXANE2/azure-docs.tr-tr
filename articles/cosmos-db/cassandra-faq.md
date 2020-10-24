@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 9d6cb699ad8a24e4450cbeb4bc1ca3cb6d46d9fe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e38096a0c5de266be6be6a58e09a251ce28a55df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278187"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482613"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Azure Cosmos DB Cassandra API hakkında sık sorulan sorular
 
@@ -75,7 +75,7 @@ Hangi işlemlerin (ve bunların hacimlerin) Bu soruna neden olduğunu görmeniz 
 
 Kullanım ölçümleri, iş hızının saat boyunca, gün içinde ve yedi güne kadar, bölümler arasında veya toplu olarak nasıl kullanıldığını gösterir. Daha fazla bilgi için bkz. [Azure Cosmos DB ölçümlerle izleme ve hata ayıklama](use-metrics.md).
 
-Tanılama günlükleri [Azure Cosmos DB tanılama günlüğü](logging.md) makalesinde açıklanmaktadır.
+Tanılama günlükleri [Azure Cosmos DB tanılama günlüğü](./monitor-cosmos-db.md) makalesinde açıklanmaktadır.
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Birincil anahtar Azure Cosmos DB bölüm anahtarı kavramıyla mi eşlenir?
 
@@ -133,11 +133,11 @@ Evet, TTL destekleniyor.
 
 ### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>İş verimini birlikte altyapıyı nasıl izleyebilirim?
 
-Azure Cosmos DB, altyapıyı yönetme ve izleme konusunda endişelenmenize yardımcı olan bir platform hizmetidir. Örneğin, daha önce çeşitli araçlarla düğüm durumu, çoğaltma durumu, GC ve işletim sistemi parametrelerini izlemeniz gerekmez. Yalnızca, kısıtlı olup olmadığını görmek için Portal ölçümlerinde bulunan aktarım hızını bilmeniz ve daha sonra bu iş üretimini artırabilir veya azaltabilirsiniz. Seçenekleriniz şunlardır:
+Azure Cosmos DB, altyapıyı yönetme ve izleme konusunda endişelenmenize yardımcı olan bir platform hizmetidir. Örneğin, daha önce çeşitli araçlarla düğüm durumu, çoğaltma durumu, GC ve işletim sistemi parametrelerini izlemeniz gerekmez. Yalnızca, kısıtlı olup olmadığını görmek için Portal ölçümlerinde bulunan aktarım hızını bilmeniz ve daha sonra bu iş üretimini artırabilir veya azaltabilirsiniz. Şunları yapabilirsiniz:
 
-- [SLA 'ları](monitor-accounts.md) izleme
+- [SLA 'ları](./monitor-cosmos-db.md) izleme
 - [Ölçümleri](use-metrics.md) kullanma
-- [Tanılama günlüklerini](logging.md) kullanma
+- [Tanılama günlüklerini](./monitor-cosmos-db.md) kullanma
 
 ### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>Cassandra API hangi istemci SDK 'Ları çalışabilir?
 
@@ -187,7 +187,7 @@ Azure Cosmos DB öğreticide, [verilerinizi Cassandra API geçirme hesabınızda
 [Kullanıcı sesli geri bildirimi](https://feedback.azure.com/forums/263030-azure-cosmos-db)aracılığıyla geri bildirim sağlayın.
 
 [azure-portal]: https://portal.azure.com
-[query]: sql-api-sql-query.md
+[query]: ./sql-query-getting-started.md
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

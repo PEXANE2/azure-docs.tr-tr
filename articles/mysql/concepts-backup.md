@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 51c177af10713dfb35857097b267638156f0cc5d
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 9514d0fb6c9cbc95b82f13ffb576703893f303f2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057544"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484568"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yedekleme ve geri yükleme
 
@@ -38,7 +38,7 @@ Temel depolama, [temel katman sunucularını](concepts-pricing-tiers.md)destekle
 Genel amaçlı depolama, [genel amaçlı](concepts-pricing-tiers.md) ve [bellek için iyileştirilmiş katman](concepts-pricing-tiers.md) sunucusunu destekleyen arka uç deposıdır. 4 TB 'a kadar genel amaçlı depolamaya sahip sunucular için her hafta bir kez tam yedeklemeler oluşur. Değişiklik yedeklemeleri günde iki kez gerçekleşir. İşlem günlüğü yedeklemeleri beş dakikada bir gerçekleşir. 4 TB 'lık depolamaya kadar genel amaçlı depolama üzerindeki yedeklemeler anlık görüntü tabanlıdır ve yedekleme sırasında GÇ bant genişliğini tüketir. 4 TB 'lik depolamada büyük veritabanları (> 1 TB) için, şunları göz önünde bulundurmanız önerilir 
 
 - Yedekleme IOs için hesaba daha fazla IOPS sağlama veya
-- Alternatif olarak, temel alınan depolama alanının tercih ettiğiniz [Azure bölgelerinde](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)kullanılabilir olması durumunda 16 TB 'a kadar depolamayı destekleyen genel amaçlı depolamaya geçiş yapın. Genel amaçlı depolama için 16 TB 'a kadar depolamayı destekleyen ek bir ücret yoktur. 16 TB depolamaya geçiş konusunda yardım için lütfen Azure portal bir destek bileti açın. 
+- Alternatif olarak, temel alınan depolama altyapısı tercih ettiğiniz [Azure Bölgelerinizdeki](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)kullanılabilir ise, 16 TB 'a kadar depolamayı destekleyen genel amaçlı depolamaya geçiş yapın. Genel amaçlı depolama için 16 TB 'a kadar depolamayı destekleyen ek bir ücret yoktur. 16 TB depolamaya geçiş konusunda yardım için lütfen Azure portal bir destek bileti açın. 
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>16 TB 'a kadar depolama alanı içeren genel amaçlı depolama sunucuları
 [Azure bölgelerinin](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)bir alt kümesinde, tüm yeni sağlanan sunucular, 16 TB 'a kadar genel amaçlı depolama alanını destekleyebilir. Diğer bir deyişle, 16 TB 'a kadar depolama alanı, desteklendiği tüm [bölgeler](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) için varsayılan genel amaçlı depolama alanı olur. Bu 16 TB depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, sunucu oluşturulduktan hemen sonraya zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca değişiklik yedeğidir. 
@@ -55,12 +55,16 @@ Yedekleme bekletme süresi, kullanılabilir yedeklemeler temel aldığı için z
 - 4 TB 'a kadar depolama alanı olan sunucular en fazla 2 tam veritabanı yedeklemesi, tüm değişiklik yedeklemeleri ve en erken tam veritabanı yedeklemesinden bu yana gerçekleştirilen işlem günlüğü yedeklemelerini korur.
 -   16 TB 'a kadar depolamaya sahip sunucular, son 8 gündeki tüm fark anlık görüntülerini ve işlem günlüğü yedeklemelerini tam veritabanı anlık görüntüsünü tutar.
 
+#### <a name="long-term-retention"></a>Uzun süreli saklama
+35 günden daha büyük olan yedeklemeler için uzun süreli saklama, henüz hizmet tarafından yerel olarak desteklenmiyor. Yedeklemeleri almak ve uzun süreli saklama için depolamak üzere mysqldump kullanma seçeneğiniz vardır. Destek ekibimiz, BT 'nin nasıl elde edilebileceği hakkında bir [adım adım makalede](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) oturum açtı. 
+
+
 ### <a name="backup-redundancy-options"></a>Yedekleme artıklığı seçenekleri
 
 MySQL için Azure veritabanı, Genel Amaçlı ve bellek için Iyileştirilmiş katmanlardaki yerel olarak yedekli veya coğrafi olarak yedekli yedekleme depolaması arasında seçim yapmak için esneklik sağlar. Yedeklemeler coğrafi olarak yedekli yedekleme depolaması 'nda depolandığında, yalnızca sunucunuzun barındırıldığı bölge içinde depolanmaz, ancak aynı zamanda [eşleştirilmiş bir veri merkezine](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)çoğaltılır. Bu, daha iyi koruma ve olağanüstü durum durumunda sunucunuzu farklı bir bölgede geri yükleme yeteneği sağlar. Temel katman yalnızca yerel olarak yedekli yedekleme depolama alanı sunar.
 
-> [!IMPORTANT]
-> Yedekleme için yerel olarak yedekli veya coğrafi olarak yedekli depolamayı yapılandırmaya yalnızca sunucu oluşturma sırasında izin verilir. Sunucu sağlandıktan sonra yedekleme depolama artıklığı seçeneğini değiştiremezsiniz.
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Yerel olarak yedekli iken coğrafi olarak yedekli yedekleme depolamasına taşıma
+Yedekleme için yerel olarak yedekli veya coğrafi olarak yedekli depolamayı yapılandırmaya yalnızca sunucu oluşturma sırasında izin verilir. Sunucu sağlandıktan sonra yedekleme depolama artıklığı seçeneğini değiştiremezsiniz. Yedekleme depolama alanınızı yerel olarak yedekli depolama alanından coğrafi olarak yedekli depolamaya taşımak için yeni bir sunucu oluşturmak ve verileri [döküm ve geri yükleme](concepts-migrate-dump-restore.md) kullanarak geçirmek desteklenen tek seçenektir.
 
 ### <a name="backup-storage-cost"></a>Yedekleme depolama maliyeti
 

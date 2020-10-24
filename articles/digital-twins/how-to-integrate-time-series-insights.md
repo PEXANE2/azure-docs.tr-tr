@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4eef56bd19ed9912625c8ddca3cbf9ff46a59309
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 58d101bb93b4635e362c5ec78a03a659b71b63da
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048075"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495267"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure dijital TWINS 'i Azure Time Series Insights ile tümleştirme
 
@@ -46,28 +46,28 @@ Azure dijital TWINS [*öğreticisi: uçtan uca bir çözümü bağlama*](./tutor
 
 1. İlk olarak, Azure dijital TWINS örneğinden olay alacak bir olay hub 'ı ad alanı oluşturun. Aşağıdaki Azure CLı yönergelerini kullanabilir veya Azure portal kullanabilirsiniz: [*hızlı başlangıç: Azure Portal kullanarak bir olay hub 'ı oluşturma*](../event-hubs/event-hubs-create.md).
 
-    ```azurecli
+    ```azurecli-interactive
     # Create an Event Hubs namespace. Specify a name for the Event Hubs namespace.
     az eventhubs namespace create --name <name for your Event Hubs namespace> --resource-group <resource group name> -l <region, for example: East US>
     ```
 
 2. Ad alanı içinde bir olay hub 'ı oluşturun.
 
-    ```azurecli
+    ```azurecli-interactive
     # Create an event hub to receive twin change events. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
-3. Gönderme ve alma izinleriyle bir [Yetkilendirme kuralı](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) oluşturun.
+3. Gönderme ve alma izinleriyle bir [Yetkilendirme kuralı](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) oluşturun.
 
-    ```azurecli
+    ```azurecli-interactive
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
 
 4. Olay Hub 'ınızı Azure dijital TWINS örneğinize bağlayan bir Azure dijital TWINS [uç noktası](concepts-route-events.md#create-an-endpoint) oluşturun.
 
-    ```azurecli
+    ```azurecli-interactive
     az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
     ```
 
@@ -76,9 +76,9 @@ Azure dijital TWINS [*öğreticisi: uçtan uca bir çözümü bağlama*](./tutor
     >[!NOTE]
     >Şu anda bu komut gruplarını etkileyen Cloud Shell ' de **bilinen bir sorun** var: `az dt route` , `az dt model` , `az dt twin` .
     >
-    >Çözümlemek için, `az login` komutu çalıştırmadan önce Cloud Shell ' de çalıştırın ya da Cloud Shell yerine [Yerel CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Bunun hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure dijital TWINS 'de bilinen sorunlar*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
+    >Çözümlemek için, `az login` komutu çalıştırmadan önce Cloud Shell ' de çalıştırın ya da Cloud Shell yerine [Yerel CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) kullanın. Bunun hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure dijital TWINS 'de bilinen sorunlar*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
-    ```azurecli
+    ```azurecli-interactive
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
@@ -155,12 +155,12 @@ Daha sonra, bu işlevin kendi olay hub 'larınız ile bağlantı kurmak için ku
 1. *Event Hubs ad* alanınızı ve *kaynak grubu* adınızı Bu makalenin önceki kısımlarında hazırlayın
 
 2. Yeni bir olay hub 'ı oluşturun
-    ```azurecli
+    ```azurecli-interactive
     # Create an event hub. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
-3. Gönderme ve alma izinlerine sahip bir [Yetkilendirme kuralı](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) oluşturma
-    ```azurecli
+3. Gönderme ve alma izinlerine sahip bir [Yetkilendirme kuralı](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) oluşturma
+    ```azurecli-interactive
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
     ```
@@ -173,13 +173,13 @@ Daha sonra, oluşturduğunuz Olay Hub 'ları için bağlantı dizelerini içeren
 
 1. TWINS hub 'ı için yukarıda oluşturduğunuz yetkilendirme kurallarını kullanarak TWINS [Olay Hub 'ı bağlantı dizesini](../event-hubs/event-hubs-get-connection-string.md)alın.
 
-    ```azurecli
+    ```azurecli-interactive
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
 2. İşlev uygulamanızda, Bağlantı dizenizi içeren bir uygulama ayarı oluşturmak için elde ettiğiniz bağlantı dizesini kullanın:
 
-    ```azurecli
+    ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
     ```
 
@@ -187,13 +187,13 @@ Daha sonra, oluşturduğunuz Olay Hub 'ları için bağlantı dizelerini içeren
 
 1. Time Series Insights hub 'ı için yukarıda oluşturduğunuz yetkilendirme kurallarını kullanarak, TSI [Olay Hub 'ı bağlantı dizesini](../event-hubs/event-hubs-get-connection-string.md)alın:
 
-    ```azurecli
+    ```azurecli-interactive
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <TSI event hub name> --name <TSI auth rule>
     ```
 
 2. İşlev uygulamanızda, Bağlantı dizenizi içeren bir uygulama ayarı oluşturun:
 
-    ```azurecli
+    ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string>" -g <resource group> -n <your App Service (function app) name>
     ```
 
@@ -213,9 +213,7 @@ Sonra, ikinci olay hub 'ından verileri almak için bir Time Series Insights ör
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Azure dijital TWINS 'e IoT verileri göndermeye başlama
 
-Time Series Insights veri göndermeye başlamak için Azure Digital TWINS 'te değişen veri değerleriyle Digital ikizi özelliklerini güncelleştirmeye başlamanız gerekir. [Az DT ikizi Update](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) komutunu kullanın.
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+Time Series Insights veri göndermeye başlamak için Azure Digital TWINS 'te değişen veri değerleriyle Digital ikizi özelliklerini güncelleştirmeye başlamanız gerekir. [Az DT ikizi Update](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext-azure-iot-az-dt-twin-update) komutunu kullanın.
 
 Uçtan uca öğreticiyi kullanıyorsanız ([*öğretici: uçtan uca çözümü bağlama*](tutorial-end-to-end.md)) ortam kurulumuna yardımcı olması için, örnekten *devicesimülatör* projesini çalıştırarak sanal IoT verilerini göndermeye başlayabilirsiniz. Yönergeler, öğreticinin [*benzetimini yapılandırın ve çalıştırın*](tutorial-end-to-end.md#configure-and-run-the-simulation) bölümünde bulunur.
 

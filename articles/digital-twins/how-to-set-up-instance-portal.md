@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e874e7107af0eac60f16f5494c04905da56f785a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0dfc93987fb2ca25b9e397e4aa91adcaaafd8a38
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205515"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478867"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (portal) ayarlama
 
@@ -75,7 +75,7 @@ Artık hazır bir Azure dijital TWINS örneğiniz var. Daha sonra, uygun Azure K
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
 
 Aşağıdaki *rol ataması Ekle* sayfasında, değerleri girin (Azure aboneliğinde [yeterli izinlere](#prerequisites-permission-requirements) sahip bir kullanıcı tarafından tamamlanmalıdır):
-* **Rol**: açılan menüden *Azure dijital TWINS sahibini (Önizleme)* seçin
+* **Rol**: açılan menüden *Azure dijital TWINS veri sahibini* seçin
 * **Erişim ata**: açılan menüden *Azure AD Kullanıcı, Grup veya hizmet sorumlusu ' nı* seçin
 * **Seç**: atanacak kullanıcının adını veya e-posta adresini arayın. Sonucu seçtiğinizde, Kullanıcı *Seçili Üyeler* bölümünde görünür.
 
@@ -91,7 +91,7 @@ Ayrıntıları girmeyi tamamladığınızda *Kaydet* düğmesine basın.
 
 ### <a name="verify-success"></a>Başarıyı doğrula
 
-*Erişim denetimi (IAM)* altında ayarladığınız rol atamasını rol atamaları > görüntüleyebilirsiniz. Kullanıcının bir *Azure dijital TWINS sahibi (Önizleme)* rolüyle listede gösterilmesi gerekir. 
+*Erişim denetimi (IAM)* altında ayarladığınız rol atamasını rol atamaları > görüntüleyebilirsiniz. Kullanıcının bir *Azure dijital TWINS veri sahibi*rolüyle listede gösterilmesi gerekir. 
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
 

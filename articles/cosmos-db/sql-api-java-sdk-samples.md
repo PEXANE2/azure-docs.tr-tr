@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: ead5ab6f914db951027406e43437ac30a4f85247
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: afc9633c32174cbe1d94535d68e4c8f85f3d137b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279260"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478075"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API: Java SDK v4 örnekleri
 
@@ -124,7 +124,7 @@ Burada *Sample. Synchronicity. MainClass* olabilir
 
 ## <a name="autoscale-collection-examples"></a>Otomatik ölçeklendirme koleksiyonu örnekleri
 
-Bu örnekleri çalıştırmadan önce otomatik ölçeklendirme hakkında daha fazla bilgi edinmek için, [hesabınızda](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-autoscale/) ve [veritabanlarınızı ve kapsayıcılarınızda](https://docs.microsoft.com/azure/cosmos-db/provision-throughput-autoscale)otomatik ölçeklendirmeyi etkinleştirmeye yönelik bu yönergelere göz atın.
+Bu örnekleri çalıştırmadan önce otomatik ölçeklendirme hakkında daha fazla bilgi edinmek için, [hesabınızda](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-autoscale/) ve [veritabanlarınızı ve kapsayıcılarınızda](./provision-throughput-autoscale.md)otomatik ölçeklendirmeyi etkinleştirmeye yönelik bu yönergelere göz atın.
 
 [Otomatik ölçeklendirme veritabanı CRUD örnekleri](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir.
 
@@ -163,7 +163,7 @@ Bu örnekleri çalıştırmadan önce otomatik ölçeklendirme hakkında daha fa
 | [Yalnızca belge değiştiğinde belgeyi okuma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L266-L300) | AccessCondition. setType<br>AccessCondition. setCondition |
 
 ## <a name="indexing-examples"></a>Dizin örnekleri
-[Koleksiyon CRUD örnekleri](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkeleri](index-policy.md), [Dizin oluşturma türleri](index-types.md)ve [Dizin oluşturma yolları](index-paths.md) kavramsal makaleler. 
+[Koleksiyon CRUD örnekleri](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkeleri](index-policy.md), [Dizin oluşturma türleri](index-overview.md#index-kinds)ve [Dizin oluşturma yolları](index-policy.md#include-exclude-paths) kavramsal makaleler. 
 
 | Görev | API başvurusu |
 | --- | --- |
@@ -180,7 +180,7 @@ Bu örnekleri çalıştırmadan önce otomatik ölçeklendirme hakkında daha fa
 Dizin oluşturma hakkında daha fazla bilgi için bkz. [Azure Cosmos DB dizin oluşturma ilkeleri](index-policy.md).
 
 ## <a name="query-examples"></a>Sorgu örnekleri
-[Sorgu örnekleri](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java) dosyası, SQL sorgu dilbilgisini kullanarak aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB SQL sorgu başvurusu hakkında bilgi edinmek için, bkz. [SQL sorgu örnekleri Azure Cosmos DB](how-to-sql-query.md). 
+[Sorgu örnekleri](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java) dosyası, SQL sorgu dilbilgisini kullanarak aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB SQL sorgu başvurusu hakkında bilgi edinmek için, bkz. [SQL sorgu örnekleri Azure Cosmos DB](./sql-query-getting-started.md). 
 
 | Görev | API başvurusu |
 | --- | --- |

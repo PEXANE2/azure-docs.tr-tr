@@ -8,12 +8,12 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0c760a3a2f6300108c1739f18ef9fa97a40dd833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 211121e21502e9cd4929169053a8ad58a9d7b21b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021944"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476935"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>Tanılama ve sorun giderme Azure Cosmos DB .NET SDK isteği zaman aşımı özel durumları
 SDK, zaman aşımı sınırı gerçekleşmeden önce isteği tamamlayamadıysa HTTP 408 hatası oluşur.
@@ -28,7 +28,7 @@ SDK, her biri farklı bir kapsama sahip olan zaman aşımlarını denetlemek iç
 
 ### <a name="cancellationtoken"></a>CancellationToken
 
-SDK 'daki tüm zaman uyumsuz işlemlerin isteğe bağlı bir CancellationToken parametresi vardır. Bu [CancellationToken](https://docs.microsoft.com/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) parametresi tüm ağ isteklerinde tüm işlem boyunca kullanılır. Ağ istekleri arasında, iptal belirteci işaretli olabilir ve ilgili belirtecin geçerliliği dolmuşsa bir işlem iptal edilir. İptal belirteci, işlem kapsamında yaklaşık bir beklenen zaman aşımını tanımlamak için kullanılmalıdır.
+SDK 'daki tüm zaman uyumsuz işlemlerin isteğe bağlı bir CancellationToken parametresi vardır. Bu [CancellationToken](/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) parametresi tüm ağ isteklerinde tüm işlem boyunca kullanılır. Ağ istekleri arasında, iptal belirteci işaretli olabilir ve ilgili belirtecin geçerliliği dolmuşsa bir işlem iptal edilir. İptal belirteci, işlem kapsamında yaklaşık bir beklenen zaman aşımını tanımlamak için kullanılmalıdır.
 
 > [!NOTE]
 > `CancellationToken`Parametresi, kitaplığın [geçersiz duruma neden](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/)olmadığı durumlarda iptal işlemini denetlebileceği bir mekanizmadır. İşlem, İptalde tanımlanan zaman varsa tam olarak iptal etmeyebilir. Bunun yerine, zaman geçtikten sonra bunun güvenli olduğunu iptal eder.

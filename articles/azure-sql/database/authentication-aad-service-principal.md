@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/17/2020
-ms.openlocfilehash: 57d24c824782bdc6530b78450fc55a879a511ddc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 10/21/2020
+ms.openlocfilehash: 2ded60f8c57d8c9db374bf77efe6dfd1a71690bc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367695"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482936"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure SQL ile hizmet sorumlusu Azure Active Directory
 
@@ -34,7 +34,7 @@ Bir Azure AD uygulaması Azure portal veya bir PowerShell komutu kullanılarak k
 - Uygulama nesnesi
 - Hizmet sorumlusu nesnesi
 
-Azure AD uygulamaları hakkında daha fazla bilgi için bkz. [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](../../active-directory/develop/app-objects-and-service-principals.md) ve [Azure PowerShell bir Azure hizmet sorumlusu oluşturma](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-4.2.0).
+Azure AD uygulamaları hakkında daha fazla bilgi için bkz. [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](../../active-directory/develop/app-objects-and-service-principals.md) ve [Azure PowerShell bir Azure hizmet sorumlusu oluşturma](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps).
 
 SQL veritabanı, Azure SYNAPSE ve SQL yönetilen örneği aşağıdaki Azure AD nesnelerini destekler:
 
@@ -72,14 +72,16 @@ Bir Azure AD uygulaması adına SQL veritabanı ve Azure SYNAPSE 'de Azure AD ne
     - Sunucu kimliğinin sunucuya atanıp atanmadığını denetlemek için Get-AzSqlServer komutunu yürütün.
 
     > [!NOTE]
-    > Sunucu kimliği, CLı komutları kullanılarak da atanabilir. Daha fazla bilgi için bkz. [az SQL Server Create](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) ve [az SQL Server Update](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update).
+    > Sunucu kimliği, CLı komutları kullanılarak da atanabilir. Daha fazla bilgi için bkz. [az SQL Server Create](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create&preserve-view=true) ve [az SQL Server Update](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update&preserve-view=true).
 
 2. Oluşturulan veya sunucuya atanan sunucu kimliği için Azure AD [**Dizin okuyucularına**](../../active-directory/roles/permissions-reference.md#directory-readers) izin verin.
     - Bu izni vermek için, aşağıdaki makalede kullanılabilen SQL yönetilen örneği için kullanılan açıklamayı izleyin: [Azure AD yöneticisi sağlama (SQL yönetilen örneği)](authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-managed-instance)
     - Bu izni veren Azure AD kullanıcısının Azure AD **genel Yöneticisi** veya **ayrıcalıklı roller Yöneticisi** rolünün bir parçası olması gerekir.
 
 > [!IMPORTANT]
-> 1 ve 2. adımlar yukarıdaki sırada yürütülmelidir. İlk olarak, sunucu kimliğini oluşturun veya atayın ve ardından [**Dizin okuyucuları**](../../active-directory/roles/permissions-reference.md#directory-readers) iznini vererek. Bu adımlardan birini atlayarak veya her ikisi de Azure AD uygulaması adına Azure SQL 'de Azure AD nesne oluşturma sırasında bir yürütme hatasına neden olur. Azure AD uygulaması adına bir Azure AD kullanıcısı oluşturmaya yönelik adım adım yönergeler için bkz. [öğretici: Azure AD uygulamaları kullanarak Azure AD kullanıcıları oluşturma](authentication-aad-service-principal-tutorial.md).
+> 1 ve 2. adımlar yukarıdaki sırada yürütülmelidir. İlk olarak, sunucu kimliğini oluşturun veya atayın ve ardından [**Dizin okuyucuları**](../../active-directory/roles/permissions-reference.md#directory-readers) iznini vererek. Bu adımlardan birini atlayarak veya her ikisi de Azure AD uygulaması adına Azure SQL 'de Azure AD nesne oluşturma sırasında bir yürütme hatasına neden olur.
+>
+> Azure AD yöneticisi 'ni ayarlamak veya kaldırmak için hizmet sorumlusu kullanıyorsanız, uygulamanın Ayrıca Azure AD 'de [Directory. Read. All](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) Application API iznine sahip olması gerekir. Bir Azure AD [Yöneticisi ayarlamak için gereken izinler](authentication-aad-service-principal-tutorial.md#permissions-required-to-set-or-unset-the-azure-ad-admin)ve Azure AD uygulaması adına BIR Azure AD kullanıcısı oluşturmak için adım adım yönergeler hakkında daha fazla bilgi için bkz. [öğretici: Azure AD UYGULAMALARı kullanarak Azure AD kullanıcıları oluşturma](authentication-aad-service-principal-tutorial.md).
 >
 > **Genel önizlemede**, **Dizin OKUYUCULARı** rolünü Azure AD 'deki bir gruba atayabilirsiniz. Grup sahipleri daha sonra yönetilen kimliği bu grubun bir üyesi olarak ekleyebilir, bu da bir **genel yönetici** veya **ayrıcalıklı roller yöneticisinin** **Dizin okuyucuları** rolünü vermesi gereksinimini atlar. Bu özellik hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
 
@@ -92,7 +94,7 @@ Bir Azure AD uygulaması adına SQL veritabanı ve Azure SYNAPSE 'de Azure AD ne
       - Yukarıdaki hata için, [Azure SQL mantıksal sunucusuna bir kimlik atamak](authentication-aad-service-principal-tutorial.md#assign-an-identity-to-the-azure-sql-logical-server) ve [SQL mantıksal sunucu kimliğine Dizin okuyucuları atamak](authentication-aad-service-principal-tutorial.md#assign-directory-readers-permission-to-the-sql-logical-server-identity)için adımları izleyin.
     > [!NOTE]
     > Yukarıda belirtilen hata iletileri, Azure AD uygulama desteği için eksik kurulum gereksinimini açıkça tanımlamak için, özellik GA 'den önce değiştirilir.
-- Azure AD uygulamasının SQL yönetilen örneği için Azure AD yöneticisi olarak ayarlanması yalnızca CLı komutu ve PowerShell komutu kullanılarak desteklenir; Örneğin, [az. SQL 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) veya üzeri. Daha fazla bilgi için, bkz. [az SQL mı ad-admin Create](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin?view=azure-cli-latest#az-sql-mi-ad-admin-create) and [set-Azsqlınstanceactivedirectoryadministrator](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) komutları. 
+- Azure AD uygulamasının SQL yönetilen örneği için Azure AD yöneticisi olarak ayarlanması yalnızca CLı komutu ve PowerShell komutu kullanılarak desteklenir; Örneğin, [az. SQL 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) veya üzeri. Daha fazla bilgi için, bkz. [az SQL mı ad-admin Create](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin?view=azure-cli-latest#az-sql-mi-ad-admin-create&preserve-view=true) and [set-Azsqlınstanceactivedirectoryadministrator](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) komutları. 
     - Azure AD yöneticisini ayarlamak için SQL yönetilen örneği için Azure portal kullanmak istiyorsanız, olası bir geçici çözüm bir Azure AD grubu oluşturmaktır. Sonra bu gruba hizmet sorumlusu 'nı (Azure AD uygulaması) ekleyin ve bu grubu SQL yönetilen örneği için bir Azure AD yöneticisi olarak ayarlayın.
     - Hizmet sorumlusunu (Azure AD uygulaması) SQL veritabanı için Azure AD yöneticisi olarak ayarlama ve Azure SYNAPSE Azure portal, [PowerShell](authentication-aad-configure.md?tabs=azure-powershell#powershell-for-sql-database-and-azure-synapse)ve [CLI](authentication-aad-configure.md?tabs=azure-cli#powershell-for-sql-database-and-azure-synapse) komutları kullanılarak desteklenir.
 - Farklı bir kiracıda oluşturulan SQL veritabanı veya SQL yönetilen örneği 'ne erişirken, başka bir Azure AD kiracısından hizmet sorumlusu olan bir Azure AD uygulamasının kullanılması başarısız olur. Bu uygulamaya atanan bir hizmet sorumlusu, SQL mantıksal sunucusu veya yönetilen örnekle aynı kiracıdan olmalıdır.

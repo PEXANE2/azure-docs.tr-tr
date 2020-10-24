@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10d4d07a61bc4ebec789d53e4271a3bcdc7ba76b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 5806ea094abd3431cd7e22064c6acd8ad150726a
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205600"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495017"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (komut dosyası) ayarlama
 
@@ -43,7 +43,7 @@ Bu makalede bir Azure dijital TWINS örneği ve gerekli kimlik doğrulama yarı 
 
 Dağıtım betiğini Cloud Shell ' de çalıştırma adımları aşağıda verilmiştir.
 1. Tarayıcınızda bir [Azure Cloud Shell](https://shell.azure.com/) penceresine gidin. Şu komutu kullanarak oturum açın:
-    ```azurecli
+    ```azurecli-interactive
     az login
     ```
     CLı varsayılan tarayıcınızı açabildiğinden, bunu yapılır ve bir Azure oturum açma sayfası yükler. Aksi takdirde, konumunda bir tarayıcı sayfası açın *https://aka.ms/devicelogin* ve terminalinizde görünen yetkilendirme kodunu girin.
@@ -60,11 +60,11 @@ Dağıtım betiğini Cloud Shell ' de çalıştırma adımları aşağıda veril
 
 4. Komutu Cloud Shell penceresine göndererek betiği çalıştırın `./deploy.ps1` . Aşağıdaki komutu kopyalayabilir (Cloud Shell yapıştırmak için çağırır, Windows ve Linux 'ta **CTRL + SHIFT + v** ' i veya MacOS 'ta **cmd + SHIFT + v** ' yi kullanabilirsiniz. Sağ tıklama menüsünü de kullanabilirsiniz.
 
-    ```azurecli
+    ```azurecli-interactive
     ./deploy.ps1
     ```
 
-    Betik, bir Azure dijital TWINS örneği oluşturur ve Azure User 'a Azure *Digital TWINS Owner (Önizleme)* rolünü örnek olarak atar.
+    Betik, bir Azure dijital TWINS örneği oluşturur ve Azure User 'a Azure *Digital TWINS veri sahibi* rolünü örnek olarak atar.
 
     Komut dosyası otomatik kurulum adımları üzerinden çalışırken, aşağıdaki değerleri geçirmeniz istenir:
     * Örnek için: kullanılacak Azure aboneliğinizin *ABONELIK kimliği*
@@ -81,10 +81,10 @@ Betikten çıktı günlüğü alıntısı aşağıda verilmiştir:
 Betik başarılı bir şekilde tamamlanırsa, nihai çıktıyı görürsünüz `Deployment completed successfully` . Aksi takdirde, hata iletisini adreslayın ve betiği yeniden çalıştırın. Bu işlem, önceden tamamladığınız adımları atlar ve kaldığınız yerden yeniden giriş istemeye başlar.
 
 > [!NOTE]
-> Betik şu anda Azure dijital TWINS (*Azure dijital TWINS sahibi (Önizleme)*) içindeki gerekli yönetim rolünü, Cloud Shell betiği çalıştıran kullanıcıya atar. Bu rolü örneği yöneten başka birine atamanız gerekiyorsa, bunu şimdi Azure portal ([yönergeler](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) veya CLI ([yönergeler](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) yoluyla yapabilirsiniz.
+> Betik şu anda Azure dijital TWINS (*Azure dijital TWINS veri sahibi*) içindeki gerekli yönetim rolünü, Cloud Shell betiği çalıştıran kullanıcıya atar. Bu rolü örneği yöneten başka birine atamanız gerekiyorsa, bunu şimdi Azure portal ([yönergeler](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) veya CLI ([yönergeler](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) yoluyla yapabilirsiniz.
 
 >[!NOTE]
->Şu anda, bazı kullanıcıların (özellikle kişisel [Microsoft hesaplarındaki kullanıcılar (MSAs)](https://account.microsoft.com/account)) ** _Azure dijital TWINS sahibine (Önizleme)_ rol atamasını**bulabildiği, betikleştirilmiş kurulumla ilgili **bilinen bir sorun** vardır.
+>Şu anda, bazı kullanıcıların (özellikle kişisel [Microsoft hesaplarındaki kullanıcılar (MSAs)](https://account.microsoft.com/account)) ** _Azure dijital TWINS_ 'in rol atamasını**bulabileceği, betikleştirilmiş kurulum ile ilgili **bilinen bir sorun** vardır.
 >
 >Rol atamasını, bu makalenin ilerleyen kısımlarında bulunan [*Kullanıcı rolü atamasını doğrula*](#verify-user-role-assignment) bölümü ile doğrulayabilirsiniz ve gerekirse, [Azure Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) veya [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions)kullanarak rol atamasını el ile ayarlayabilirsiniz.
 >

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: bc7bc677fb44600721b580ac9efc42feea4d98da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87d33308932ecd7c523c6fbe287648d4afc21ef0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252961"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485809"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri Azure Cosmos DB yazma
 
@@ -23,7 +23,7 @@ Saklı yordam, tetikleyici ve Kullanıcı tanımlı işlevi çağırmak için ka
 > [!NOTE]
 > Bölümlenmiş kapsayıcılar için, saklı bir yordam yürütürken, istek seçeneklerinde bir bölüm anahtarı değeri belirtilmelidir. Saklı yordamlar her zaman bir bölüm anahtarına göre kapsamlandırılır. Farklı bir bölüm anahtarı değerine sahip öğeler, saklı yordama görünür olmayacaktır. Bu ayrıca tetikleyicilere de uygulanır.
 > [!Tip]
-> Cosmos, saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevlerle kapsayıcıları dağıtmaya destekler. Daha fazla bilgi için bkz [. sunucu tarafı işlevleriyle Azure Cosmos DB kapsayıcısı oluşturma.](manage-sql-with-resource-manager.md#create-sproc)
+> Cosmos, saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevlerle kapsayıcıları dağıtmaya destekler. Daha fazla bilgi için bkz [. sunucu tarafı işlevleriyle Azure Cosmos DB kapsayıcısı oluşturma.](./manage-with-templates.md#create-sproc)
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>Saklı yordamları yazma
 
@@ -386,7 +386,7 @@ function tax(income) {
 
 Kullanıcı tanımlı bir işlevi kaydetme ve kullanma örnekleri için, bkz. [Azure Cosmos DB makalesinde Kullanıcı tanımlı işlevleri kullanma](how-to-use-stored-procedures-triggers-udfs.md#udfs) .
 
-## <a name="logging"></a>Günlüğe Kaydetme 
+## <a name="logging"></a>Günlüğe kaydetme 
 
 Saklı yordam, Tetikleyiciler veya Kullanıcı tanımlı işlevleri kullanırken, komutu kullanarak adımları günlüğe kaydedebilirsiniz `console.log()` . Bu komut, `EnableScriptLogging` Aşağıdaki örnekte gösterildiği gibi true olarak ayarlandığında, hata ayıklama için bir dize odaklanacaktır:
 

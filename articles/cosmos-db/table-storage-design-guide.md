@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: dc140553cbca2347678c376cc9420cfddef22b07
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 94aa699d8daab7e5e7ff4ae82e5d09ab1475c07e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428056"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477598"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Tablo Depolama tablo tasarım kılavuzu: Ölçeklenebilir ve yüksek performanslı tablolar
 
@@ -24,7 +24,7 @@ ms.locfileid: "92428056"
 Tablo depolaması, verilerin milyarlarca varlık (ilişkisel veritabanı terminolojisinde "satırlar") veya yüksek işlem birimlerini desteklemesi gereken veri kümeleri için içerebilen bulut ölçekli uygulamaları destekleyecek şekilde tasarlanmıştır. Bu nedenle, verilerinizi nasıl depoladığınıza ve tablo depolamanın nasıl çalıştığını nasıl anlayacağınızı düşünün. İyi tasarlanmış bir NoSQL veri deposu, çözümünüzün daha fazla (ve daha düşük bir maliyetle) ilişkisel bir veritabanı kullanan bir çözümden daha fazla ölçeklenebilmesini sağlayabilir. Bu kılavuz, bu konularda size yardımcı olur.  
 
 ## <a name="about-azure-table-storage"></a>Azure Tablo depolama hakkında
-Bu bölümde, özellikle performans ve ölçeklenebilirlik için tasarlanmasıyla ilgili tablo depolamanın bazı temel özellikleri vurgulanmıştır. Azure depolama ve tablo depolama 'yı yeni kullanmaya başladıysanız, bu makalenin geri kalanını okumadan önce .NET kullanarak [Microsoft Azure depolama giriş](../storage/common/storage-introduction.md) ve [Azure Tablo depolama ile çalışmaya başlama](table-storage-how-to-use-dotnet.md) bölümüne bakın. Bu kılavuzun odağı tablo depolama alanında olsa da, Azure kuyruk depolama ve Azure Blob depolama hakkında bazı tartışmalar ve bunları bir çözümde tablo depolama ile birlikte nasıl kullanabileceğinizi de kapsar.  
+Bu bölümde, özellikle performans ve ölçeklenebilirlik için tasarlanmasıyla ilgili tablo depolamanın bazı temel özellikleri vurgulanmıştır. Azure depolama ve tablo depolama 'yı yeni kullanmaya başladıysanız, bu makalenin geri kalanını okumadan önce .NET kullanarak [Microsoft Azure depolama giriş](../storage/common/storage-introduction.md) ve [Azure Tablo depolama ile çalışmaya başlama](./tutorial-develop-table-dotnet.md) bölümüne bakın. Bu kılavuzun odağı tablo depolama alanında olsa da, Azure kuyruk depolama ve Azure Blob depolama hakkında bazı tartışmalar ve bunları bir çözümde tablo depolama ile birlikte nasıl kullanabileceğinizi de kapsar.  
 
 Tablo depolama, verileri depolamak için tablolu bir biçim kullanır. Standart terminolojisinde, tablonun her satırı bir varlığı temsil eder ve sütunlar ilgili varlığın çeşitli özelliklerini depolar. Her varlığın benzersiz bir şekilde tanımlanması için bir çift anahtar ve tablo depolamanın, varlığın en son ne zaman güncelleştirildiğini izlemek için kullandığı bir zaman damgası sütunu vardır. Zaman damgası alanı otomatik olarak eklenir ve zaman damgasını rastgele bir değerle el ile geçersiz kılabilirsiniz. Tablo depolaması, iyimser eşzamanlılık yönetimi için bu son değiştirilme zaman damgasını (LMT) kullanır.  
 
@@ -123,7 +123,7 @@ Aşağıdaki örnek, çalışan ve departman varlıklarını depolamak için bas
 </table>
 
 
-Şimdiye kadar, bu tasarım ilişkisel veritabanındaki bir tabloya benzer şekilde görünür. Önemli farklılıklar, zorunlu sütunlardır ve birden çok varlık türünü aynı tabloda depolayabilme özelliğidir. Ayrıca, **ad** veya **yaş**gibi Kullanıcı tanımlı özelliklerin her biri, ilişkisel veritabanındaki bir sütun gibi bir veri türüne (örneğin, bir tamsayı veya dize) sahiptir. Ancak, ilişkisel bir veritabanının aksine, tablo depolamanın şema-daha az doğası, bir özelliğin her varlıkta aynı veri türüne sahip olması gerektiği anlamına gelir. Karmaşık veri türlerini tek bir özellikte depolamak için JSON veya XML gibi serileştirilmiş bir biçim kullanmanız gerekir. Daha fazla bilgi için bkz. [Tablo depolama veri modelini anlama](https://msdn.microsoft.com/library/azure/dd179338.aspx).
+Şimdiye kadar, bu tasarım ilişkisel veritabanındaki bir tabloya benzer şekilde görünür. Önemli farklılıklar, zorunlu sütunlardır ve birden çok varlık türünü aynı tabloda depolayabilme özelliğidir. Ayrıca, **ad** veya **yaş**gibi Kullanıcı tanımlı özelliklerin her biri, ilişkisel veritabanındaki bir sütun gibi bir veri türüne (örneğin, bir tamsayı veya dize) sahiptir. Ancak, ilişkisel bir veritabanının aksine, tablo depolamanın şema-daha az doğası, bir özelliğin her varlıkta aynı veri türüne sahip olması gerektiği anlamına gelir. Karmaşık veri türlerini tek bir özellikte depolamak için JSON veya XML gibi serileştirilmiş bir biçim kullanmanız gerekir. Daha fazla bilgi için bkz. [Tablo depolama veri modelini anlama](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 Ve seçiminiz, `PartitionKey` `RowKey` iyi tablo tasarımı için temel seçenektir. Bir tabloda depolanan her varlık, ve benzersiz bir birleşimine sahip olmalıdır `PartitionKey` `RowKey` . İlişkisel bir veritabanı tablosundaki anahtarlarda olduğu gibi, `PartitionKey` ve değerleri de `RowKey` Hızlı görünüm sağlayan kümelenmiş bir dizin oluşturmak için dizinlenir. Ancak tablo depolama, ikincil dizinler oluşturmaz, bu nedenle yalnızca iki dizinli özellik bulunur (daha sonra açıklanan bazı desenler, daha sonra bu görünen sınırlamanın nasıl geçici bir şekilde çalışabilir).  
 
@@ -134,7 +134,7 @@ Hesap adı, tablo adı ve birlikte, `PartitionKey` tablo depolamanın varlığı
 
 Tablo depolamada, tek bir düğüm bir veya daha fazla tam bölüm hizmetleri ve hizmet, düğümler arasında dinamik olarak yük dengeleme bölümlerine göre ölçeklendirilir. Bir düğüm Load altındaysa tablo depolaması, bu düğüm tarafından hizmet verilen bölümlerin aralığını farklı düğümlere bölebilir. Trafik alt tarafları, tablo depolaması, Bölüm aralıklarını sessiz düğümlerden tek bir düğüm üzerine geri birleştirebilirler.  
 
-Tablo depolamanın iç ayrıntıları hakkında daha fazla bilgi edinmek ve belirli bölümleri nasıl yönettiği hakkında daha fazla bilgi için, bkz. [Microsoft Azure depolama: güçlü tutarlılık ile yüksek oranda kullanılabilir bir bulut depolama hizmeti](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency).  
+Tablo depolamanın iç ayrıntıları hakkında daha fazla bilgi edinmek ve belirli bölümleri nasıl yönettiği hakkında daha fazla bilgi için, bkz. [Microsoft Azure depolama: güçlü tutarlılık ile yüksek oranda kullanılabilir bir bulut depolama hizmeti](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency).  
 
 ### <a name="entity-group-transactions"></a>Varlık grubu işlemleri
 Tablo depolamadaki varlık grubu işlemleri (Yumurlar), birden çok varlıkta atomik güncelleştirmeler gerçekleştirmeye yönelik tek yerleşik mekanizmadır. Yumurtları *toplu işlemler*olarak da adlandırılır. Yumurtları yalnızca aynı bölümde depolanan varlıklar üzerinde çalışabilir (belirli bir tabloda aynı bölüm anahtarını paylaşıyor), bu nedenle birden çok varlık genelinde atomik işlem davranışına ihtiyacınız varsa, bu varlıkların aynı bölümde olduğundan emin olun. Bu genellikle, farklı varlık türleri için birden çok tablo kullanmadan, birden çok varlık türünü aynı tabloda (ve bölümde) tutmanın bir nedenidir. Tek bir EGT, en fazla 100 varlık üzerinde çalışabilir.  İşlenmek üzere birden çok eş zamanlı Yumurtları gönderirseniz, bu yumurtların Yumurtları genelinde ortak varlıklar üzerinde çalışmalarından emin olmak önemlidir. Aksi takdirde, işlemeyi erteleyerek risk alırsınız.
@@ -156,7 +156,7 @@ Aşağıdaki tabloda, bir tablo depolama çözümü tasarlarken farkında olacak
 | Boyutunu `RowKey` |Boyutu 1 KB 'a kadar olan bir dize. |
 | Bir varlık grubu işleminin boyutu |Bir işlem en fazla 100 varlığı içerebilir ve yükün boyutu 4 MB 'tan az olmalıdır. EGT, bir varlığı yalnızca bir kez güncelleştirebilir. |
 
-Daha fazla bilgi için bkz. [Tablo hizmeti veri modelini anlama](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
+Daha fazla bilgi için bkz. [Tablo hizmeti veri modelini anlama](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).  
 
 ### <a name="cost-considerations"></a>Maliyetle ilgili konular
 Tablo Depolaması nispeten ucuzdur, ancak her iki kapasite kullanımı için maliyet tahminleri ve tablo depolamayı kullanan herhangi bir çözüm değerlendirmesinin bir parçası olarak işlem miktarı dahil edilmelidir. Ancak, Çoğu senaryoda, çözümünüzün performansını veya ölçeklenebilirliğini geliştirmek için, Normalleştirilmemiş veya yinelenen verileri depolamak için geçerli bir yaklaşım vardır. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).  
@@ -202,7 +202,7 @@ Aşağıdaki örneklerde, tablo depolamanın çalışan varlıklarını aşağı
 | `Age` |Tamsayı |
 | `EmailAddress` |Dize |
 
-Tablo depolama sorguları tasarlamak için bazı genel yönergeler aşağıda verilmiştir. Aşağıdaki örneklerde kullanılan filtre sözdizimi tablo depolama REST API. Daha fazla bilgi için bkz. [Sorgu varlıkları](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Tablo depolama sorguları tasarlamak için bazı genel yönergeler aşağıda verilmiştir. Aşağıdaki örneklerde kullanılan filtre sözdizimi tablo depolama REST API. Daha fazla bilgi için bkz. [Sorgu varlıkları](/rest/api/storageservices/Query-Entities).  
 
 * *Nokta sorgusu* , kullanılacak en etkili aramadır ve en düşük gecikme süresini gerektiren yüksek hacimli aramalar veya aramalar için önerilir. Böyle bir sorgu, ve değerlerini belirterek tek bir varlığı etkin bir şekilde bulmak için dizinleri kullanabilir `PartitionKey` `RowKey` . Örneğin: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
 * İkinci en iyi *Aralık sorgusudur*. Birden `PartitionKey` `RowKey` fazla varlık döndürmek için bir değer aralığı üzerinde ve filtrelerini kullanır. `PartitionKey`Değer belirli bir bölümü tanımlar ve `RowKey` değerler bu bölümdeki varlıkların bir alt kümesini tanımlar. Örneğin: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
@@ -410,7 +410,7 @@ Tek bir tablo kullanarak tablo depolamada iki somut sınıfın örneklerini kal�
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
-Desen eşleme, bu kılavuzda belgelenen desenler (mavi) ve kenar desenleri (turuncu) arasındaki ilişkileri vurgular. Dikkate değer veren birçok farklı desen vardır. Örneğin, tablo depolaması için önemli senaryolardan biri, [komut sorgu sorumluluğu](https://msdn.microsoft.com/library/azure/jj554200.aspx) ayırma düzeninden [gerçekleştirilmiş görünüm deseninin](https://msdn.microsoft.com/library/azure/dn589782.aspx) kullanılması.  
+Desen eşleme, bu kılavuzda belgelenen desenler (mavi) ve kenar desenleri (turuncu) arasındaki ilişkileri vurgular. Dikkate değer veren birçok farklı desen vardır. Örneğin, tablo depolaması için önemli senaryolardan biri, [komut sorgu sorumluluğu](/previous-versions/msp-n-p/jj554200(v=pandp.10)) ayırma düzeninden [gerçekleştirilmiş görünüm deseninin](/previous-versions/msp-n-p/dn589782(v=pandp.10)) kullanılması.  
 
 ### <a name="intra-partition-secondary-index-pattern"></a>Bölüm içi ikincil dizin kalıbı
 Farklı `RowKey` değerler (aynı bölümde) kullanarak her varlığın birden çok kopyasını depolayın. Bu sayede hızlı ve verimli aramalar ve farklı değerler kullanarak sıralama düzenleri alternatif olarak sağlanır `RowKey` . Kopyalar arasındaki güncelleştirmeler, yumurtalar kullanılarak tutarlı tutulabilir.  
@@ -437,7 +437,7 @@ Bir dizi çalışan varlığı için sorgulama yaparsanız, çalışan KIMLIĞI 
 * 000100 ile 000199 arasında bir çalışan KIMLIĞI olan Satış departmanındaki tüm çalışanları bulmak için, şunu kullanın: $filter = (PartitionKey EQ ' Sales ') ve (RowKey Ge ' empid_000100 ') ve (RowKey Le ' empid_000199 ')  
 * "A" harfiyle başlayan bir e-posta adresine sahip satış departmanındaki tüm çalışanları bulmak için, şunu kullanın: $filter = (PartitionKey EQ ' Sales ') ve (RowKey Ge ' email_a ') ve (RowKey lt ' email_b ')  
   
-Yukarıdaki örneklerde kullanılan filtre sözdizimi tablo depolama REST API. Daha fazla bilgi için bkz. [Sorgu varlıkları](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Yukarıdaki örneklerde kullanılan filtre sözdizimi tablo depolama REST API. Daha fazla bilgi için bkz. [Sorgu varlıkları](/rest/api/storageservices/Query-Entities).  
 
 #### <a name="issues-and-considerations"></a>Sorunlar ve dikkat edilmesi gerekenler
 Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz önünde bulundurun:  
@@ -497,7 +497,7 @@ Bir dizi çalışan varlığı için sorgulama yaparsanız, çalışan KIMLIĞI 
 * Satış departmanındaki tüm çalışanları **000100** - **000199**aralığında, çalışan kimliği SıRASıYLA sıralanan bir çalışan kimliği ile bulmak için, şunu kullanın: $Filter = (partitionkey EQ ' empid_Sales ') ve (rowkey Ge ' 000100 ') ve (rowkey Le ' 000199 ')  
 * Satış departmanındaki tüm çalışanları "a" ile başlayan, e-posta adresi sırasıyla sıralanmış bir e-posta adresiyle bulmak için: $filter = (PartitionKey EQ ' email_Sales ') ve (RowKey Ge ' a ') ve (RowKey lt ' b ') kullanın  
 
-Yukarıdaki örneklerde kullanılan filtre sözdiziminin tablo depolama REST API olduğunu unutmayın. Daha fazla bilgi için bkz. [Sorgu varlıkları](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Yukarıdaki örneklerde kullanılan filtre sözdiziminin tablo depolama REST API olduğunu unutmayın. Daha fazla bilgi için bkz. [Sorgu varlıkları](/rest/api/storageservices/Query-Entities).  
 
 #### <a name="issues-and-considerations"></a>Sorunlar ve dikkat edilmesi gerekenler
 Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz önünde bulundurun:  
@@ -557,7 +557,7 @@ Bu örnekte, diyagramdaki 4. adım, çalışanı **Arşiv** tablosuna ekler. Ça
 #### <a name="recover-from-failures"></a>Hatalardan kurtarma
 Çalışan rolünün arşiv işlemini yeniden başlatması gerektiğinden, diyagramdaki 4-5. adımlarda gerçekleştirilen işlemlerin *ıdempotent* olması önemlidir. Tablo Depolaması kullanıyorsanız, 4. adım için "Ekle veya Değiştir" işlemini kullanmanız gerekir. 5. adımda, kullanmakta olduğunuz istemci kitaplığındaki "varsa sil" işlemini kullanmanız gerekir. Başka bir depolama sistemi kullanıyorsanız, uygun bir ıdempotent işlemi kullanmanız gerekir.  
 
-Çalışan rolü diyagramda 6. adımı hiçbir zaman tamamlarsa, bir zaman aşımından sonra ileti tekrar işlemeyi denemek için çalışan rolü için ayrılan sırada yeniden görüntülenir. Çalışan rolü, sıradaki bir iletinin kaç kez okunduğunu denetleyebilir ve gerekirse, bunu ayrı bir kuyruğa göndererek araştırma için "Poison" iletisi olarak işaretleyin. Sıra iletilerini okuma ve sıradan çıkarma sayısını denetleme hakkında daha fazla bilgi için bkz. [Iletileri alma](https://msdn.microsoft.com/library/azure/dd179474.aspx).  
+Çalışan rolü diyagramda 6. adımı hiçbir zaman tamamlarsa, bir zaman aşımından sonra ileti tekrar işlemeyi denemek için çalışan rolü için ayrılan sırada yeniden görüntülenir. Çalışan rolü, sıradaki bir iletinin kaç kez okunduğunu denetleyebilir ve gerekirse, bunu ayrı bir kuyruğa göndererek araştırma için "Poison" iletisi olarak işaretleyin. Sıra iletilerini okuma ve sıradan çıkarma sayısını denetleme hakkında daha fazla bilgi için bkz. [Iletileri alma](/rest/api/storageservices/Get-Messages).  
 
 Tablo depolama ve kuyruk depolamadaki bazı hatalar geçici hatalardır ve istemci uygulamanız onları işlemek için uygun yeniden deneme mantığını içermelidir.  
 
@@ -1009,7 +1009,7 @@ Tablo depolamaya yönelik bir sorgu, tek seferde en fazla 1.000 varlık döndür
 - Sorgu beş saniye içinde tamamlanmadı.
 - Sorgu Bölüm sınırını aşar. 
 
-Devamlılık belirteçlerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [sorgu zaman aşımı ve sayfalandırma](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
+Devamlılık belirteçlerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [sorgu zaman aşımı ve sayfalandırma](/rest/api/storageservices/Query-Timeout-and-Pagination).  
 
 Depolama Istemci kitaplığını kullanıyorsanız, tablo depolamadan varlık döndürdüğünden, devamlılık belirteçlerini otomatik olarak işleyebilir. Örneğin, aşağıdaki C# kod örneği, tablo depolaması bunları bir yanıt olarak döndürürse devamlılık belirteçlerini otomatik olarak işler:  
 
@@ -1415,7 +1415,7 @@ Doğrudan tablo depolamayla kimlik doğrulaması gerektirmeden, istemci uygulama
 * Web ve çalışan rollerinin varlıklarınızı yönetirken gerçekleştirdiği bazı işleri devretmek için bu işlemleri çalıştırabilirsiniz. Son Kullanıcı bilgisayarları ve mobil cihazlar gibi istemci cihazlara yük devreatayabilirsiniz.  
 * Bir istemciye kısıtlanmış ve zaman sınırlı bir izin kümesi atayabilirsiniz (örneğin, belirli kaynaklara salt okuma erişimine izin verme).  
 
-Tablo depolama ile SAS belirteçlerini kullanma hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanma](../storage/common/storage-dotnet-shared-access-signature-part-1.md).  
+Tablo depolama ile SAS belirteçlerini kullanma hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanma](../storage/common/storage-sas-overview.md).  
 
 Ancak, hala tablo depolamadaki varlıklara bir istemci uygulaması veren SAS belirteçlerini oluşturmanız gerekir. Bunu, depolama hesabı Anahtarlarınıza güvenli erişim sağlayan bir ortamda yapın. Genellikle, SAS belirteçlerini oluşturmak ve varlıklarınıza erişmesi gereken istemci uygulamalarına göndermek için bir Web veya çalışan rolü kullanırsınız. SAS belirteçlerini istemcilere oluşturma ve sunma konusunda hala bir ek yük olduğundan, özellikle de yüksek hacimli senaryolarda bu yükü azaltmanın en iyi şekilde göz önünde bulundurmanız gerekir.  
 
@@ -1512,5 +1512,4 @@ Bu zaman uyumsuz örnekte, zaman uyumlu sürümden aşağıdaki değişiklikleri
 * Yöntem imzası artık `async` değiştiriciyi ekler ve bir `Task` örnek döndürür.  
 * `Execute`Varlığı güncelleştirmek için yöntemini çağırmak yerine, yöntemi şimdi `ExecuteAsync` yöntemini çağırır. Yöntemi `await` sonuçları zaman uyumsuz olarak almak için değiştiricisini kullanır.  
 
-İstemci uygulaması, bu gibi birden çok zaman uyumsuz yöntemi çağırabilir ve her bir yöntem çağrısı ayrı bir iş parçacığında çalışır.  
-
+İstemci uygulaması, bu gibi birden çok zaman uyumsuz yöntemi çağırabilir ve her bir yöntem çağrısı ayrı bir iş parçacığında çalışır.

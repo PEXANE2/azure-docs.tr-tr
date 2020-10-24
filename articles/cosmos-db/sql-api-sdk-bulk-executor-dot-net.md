@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5203223f8468a4dfa0faf2df92e826a62f7bbfcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fa0b32d21c9a2172fa6093f2f7f57ccacf5e5d6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802761"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477768"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET toplu yürütücü kitaplığı: Indirme bilgileri 
 
@@ -21,29 +21,29 @@ ms.locfileid: "91802761"
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [.NET değişiklik akışı SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET Değişiklik Akışı SDK'sı v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK’sı v4](sql-api-sdk-java-v4.md)
 > * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
 > * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
-> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Verileri v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Verileri v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark Bağlayıcısı](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
-> * [REST Kaynak Sağlayıcısı](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
-> * [Toplu yürütücü-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
+> * [REST kaynak sağlayıcısı](/rest/api/cosmos-db-resource-provider/)
+> * [SQL](./sql-query-getting-started.md)
+> * [Toplu yürütücü - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Toplu yürütücü - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 | **Açıklama**| .NET toplu yürütücü kitaplığı, istemci uygulamalarının Azure Cosmos DB hesaplarında toplu işlemler gerçekleştirmesine olanak sağlar. Bu kitaplık, BulkImport, BulkUpdate ve BulkDelete ad alanları sağlar. BulkImport modülü, bir koleksiyon için sağlanan aktarım hızı en büyük ölçüde tüketilebilmesi için belgeleri en iyi duruma getirilmiş bir şekilde toplu Içe alabilir. BulkUpdate modülü Azure Cosmos kapsayıcılarındaki mevcut verileri düzeltme eki olarak toplu güncelleştirebilir. BulkDelete modülü, bir koleksiyon için sağlanan aktarım hızı en yüksek ölçüde tüketilebilmesi için belgeleri iyileştirilmiş bir şekilde toplu olarak silebilir.|
 |**SDK indirmesi**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **GitHub 'da toplu yürütücü kitaplığı**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
-|**API belgeleri**|[.NET API başvuru belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet&preserve-view=true)|
+|**API belgeleri**|[.NET API başvuru belgeleri](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?preserve-view=true&view=azure-dotnet)|
 |**Kullanmaya başlama**|[Toplu yürütücü kitaplığı .NET SDK ile çalışmaya başlama](bulk-executor-dot-net.md)|
-| **Desteklenen geçerli çerçeve**| Microsoft .NET Framework 4.5.2, 4.6.1 ve .NET Standard 2,0 |
+| **Şu anda desteklenen çerçeve**| Microsoft .NET Framework 4.5.2, 4.6.1 ve .NET Standard 2,0 |
 
 > [!NOTE]
 > Toplu yürütücü kullanıyorsanız, lütfen SDK 'da yerleşik toplu yürütücü bulunan [.NET SDK 'sının](tutorial-sql-api-dotnet-bulk-import.md)en son sürümü olan 3. x sürümünü inceleyin. 

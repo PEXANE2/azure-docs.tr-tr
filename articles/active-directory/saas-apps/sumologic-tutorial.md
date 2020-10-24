@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: a14235cb4fc20147accc8eb8a0e421cbc4df90f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c604a3edcee0c34df2817c7bbebf0f3ad4fada67
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533703"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483565"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sumologic"></a>Öğretici: SumoLogic ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, SumoLogic 'i Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -168,11 +168,11 @@ Bu bölümde, SumoLogic 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 1. **Yapılandırma seçin veya yeni** bir liste oluşturun LISTESINDEN **Azure AD**' ı seçin ve ardından **Yapılandır**' a tıklayın.
 
-    ![SAML 2,0 yapılandırma](./media/sumologic-tutorial/ic778558.png "SAML 2,0 yapılandırma")
+    ![Ekran görüntüsü, Azure A 'nın seçebileceğiniz SAML 2,0 ' i gösterir.](./media/sumologic-tutorial/ic778558.png "SAML 2,0 yapılandırma")
 
 1. **SAML 2,0 yapılandırma** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
-    ![SAML 2,0 yapılandırma](./media/sumologic-tutorial/ic778559.png "SAML 2,0 yapılandırma")
+    ![Ekran görüntüsünde, açıklanan değerleri girebileceğiniz SAML 2,0 yapılandırma iletişim kutusu gösterilir.](./media/sumologic-tutorial/ic778559.png "SAML 2,0 yapılandırma")
 
     a. **Yapılandırma adı** metin kutusuna **Azure AD**yazın.
 
@@ -200,11 +200,11 @@ Azure AD kullanıcılarının SumoLogic 'de oturum açmasını sağlamak için, 
 
 1. ** \> Kullanıcıları Yönet**' e gidin.
 
-    ![Kullanıcılar](./media/sumologic-tutorial/ic778561.png "Kullanıcılar")
+    ![Ekran görüntüsü Yönet menüsünden seçilen kullanıcıları gösterir.](./media/sumologic-tutorial/ic778561.png "Kullanıcılar")
 
 1. **Ekle**'ye tıklayın.
 
-    ![Kullanıcılar](./media/sumologic-tutorial/ic778562.png "Kullanıcılar")
+    ![Ekran görüntüsü kullanıcılar için Ekle düğmesini gösterir.](./media/sumologic-tutorial/ic778562.png "Kullanıcılar")
 
 1. **Yeni Kullanıcı** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 

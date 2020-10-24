@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f786a791fda1f601df2a94d9f38edcbfe9dc401
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289047"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474776"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümler ile performans ayarlama
 
@@ -37,8 +37,8 @@ Standart Görünüm gereksinimlerinin çoğu, gerçekleştirilmiş bir görünü
 |İçeriği görüntüleme                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında Azure veri ambarı 'nda ön işleme ve depolama. Temel tablolara veri eklendikçe güncelleştirildi.
 |Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor
 |Karmaşık sorgulardan Görünüm verilerini alma hızı     | Yavaş                                         | Hızlı  
-|Ek depolama                   | Hayır                                           | Evet
-|Sözdizimi                          | GÖRÜNÜM OLUŞTUR                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
+|Ek depolama                   | Hayır                                           | Yes
+|Syntax                          | CREATE VIEW                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
 
 ## <a name="benefits-of-materialized-views"></a>Gerçekleştirilmiş görünümlerin avantajları
 
@@ -79,7 +79,9 @@ Veri ambarlarındaki şema ve sorgu değişiklikleri genellikle normal ETL işle
 
 **Daha hızlı sorgu performansı için farklı veri dağıtımı stratejisi gerekir**
 
-Azure veri ambarı, dağıtılmış ve yüksek düzeyde paralel işleme (MPP) sistemidir.   Veri ambarı tablosundaki veriler, üç [dağıtım stratejisinden](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (karma, round_robin veya çoğaltılan) biri kullanılarak 60 düğüm arasında dağıtılır.  
+Azure veri ambarı, dağıtılmış ve yüksek düzeyde paralel işleme (MPP) sistemidir.  
+
+SYNAPSE SQL, kuruluşların veri mühendislerini bildiğiniz Standart T-SQL deneyimlerini kullanarak veri depolama ve veri sanallaştırma senaryoları uygulamasına olanak tanıyan bir dağıtılmış sorgu sistemidir. Ayrıca, SQL 'in, akış ve makine öğrenimi senaryolarına yönelik yeteneklerini de genişletir. Veri ambarı tablosundaki veriler, üç [dağıtım stratejisinden](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (karma, round_robin veya çoğaltılan) biri kullanılarak 60 düğüm arasında dağıtılır.  
 
 Veri dağıtımı tablo oluşturma zamanında belirtilir ve tablo bırakılana kadar değişmeden kalır. Gerçekleştirilmiş görünüm, karma ve round_robin veri dağıtımlarını destekler.  Kullanıcılar, temel tablolardan farklı olan, ancak görünümleri sık kullanan sorguların performansı için en uygun olan veri dağıtımını seçebilirler.  
 

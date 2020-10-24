@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 301bedc75d243f427120c955bda539508ff43200
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a831921ec3b3fa755496c08c02665b1c0fe99557
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87323647"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475966"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Hızlı başlangıç: Azure Cosmos DB 'de Java ve MongoDB API 'SI ile bir konsol uygulaması oluşturma
 
@@ -136,4 +136,4 @@ Artık [Robomongo](mongodb-robomongo.md)  /  Bu yeni verileri sorgulamak, deği�
 Bu hızlı başlangıçta, Mongo DB hesabı için Azure Cosmos DB API oluşturma, Veri Gezgini kullanarak bir veritabanı ve kapsayıcı ekleme ve Java konsol uygulaması kullanarak veri ekleme hakkında öğrendiniz. Artık Cosmos veritabanınıza ek veri aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB’ye MongoDB verileri aktarma](mongodb-migrate.md)
+> [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

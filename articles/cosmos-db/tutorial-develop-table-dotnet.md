@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 47b3706d1fb46ab7e115d79c2f06f6264c8b423e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9001d9982a26875f814b635533bebd7579339fa5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666524"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476731"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK'sı ile Azure Cosmos DB Tablo API'si'ni ve Azure Tablo depolama alanını kullanmaya başlama
 
@@ -98,7 +98,7 @@ NuGet paketini edinmek için aşağıdaki adımları izleyin:
 
 ## <a name="create-a-table"></a>Tablo oluşturma 
 
-[CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) sınıfı, Tablo Depolamada depolanan tabloları ve varlıkları almanızı sağlar. Cosmos DB Tablo API'si hesabında hiç tablo olmadığı `CreateTableAsync` için, bir tablo oluşturmak üzere yöntemi **Common.cs** sınıfına ekleyelim:
+[CloudTableClient](/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) sınıfı, Tablo Depolamada depolanan tabloları ve varlıkları almanızı sağlar. Cosmos DB Tablo API'si hesabında hiç tablo olmadığı `CreateTableAsync` için, bir tablo oluşturmak üzere yöntemi **Common.cs** sınıfına ekleyelim:
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="CreateTable":::
 
@@ -110,17 +110,17 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 ## <a name="define-the-entity"></a>Varlığı tanımlama 
 
-Varlıklar, [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity)’den oluşturulan özel bir sınıf kullanarak C# nesneleriyle eşlenir. Tabloya bir varlık eklemek için varlığınızın özelliklerini tanımlayan bir sınıf oluşturun.
+Varlıklar, [TableEntity](/dotnet/api/microsoft.azure.cosmos.table.tableentity)’den oluşturulan özel bir sınıf kullanarak C# nesneleriyle eşlenir. Tabloya bir varlık eklemek için varlığınızın özelliklerini tanımlayan bir sınıf oluşturun.
 
 Projenizin **Cosmostablesamples**öğesine sağ tıklayın. **Ekle**, **Yeni klasör** ' ü seçin ve **model**olarak adlandırın. Model klasörü içinde **CustomerEntity.cs** adlı bir sınıf ekleyin ve bu sınıfa aşağıdaki kodu ekleyin.
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Model/CustomerEntity.cs":::
 
-Bu kod, satır anahtarı olarak müşterinin adını ve bölüm anahtarı olarak soyadı ' nı kullanan bir varlık sınıfını tanımlar. Birlikte, bir varlığın bölüm ve sıra anahtarı varlığı tabloda benzersiz şekilde tanımlar. Aynı bölüm anahtarına sahip varlıklar farklı bölüm anahtarları olan varlıklardan daha hızlı sorgulanabilir ancak farklı bölüm anahtarlarının kullanılması paralel işlemler için daha fazla ölçeklenebilirlik sağlar. Tablolarda depolanacak varlıklar, [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity) sınıfından türetilen türler gibi desteklenen bir türde olmalıdır. Bir tabloda depolamak istediğiniz varlık özellikleri, türün genel özellikleri olmalı ve değerleri hem almayı hem de ayarlamayı desteklemelidir. Bununla birlikte varlık türü parametresiz bir oluşturucu olmalıdır.
+Bu kod, satır anahtarı olarak müşterinin adını ve bölüm anahtarı olarak soyadı ' nı kullanan bir varlık sınıfını tanımlar. Birlikte, bir varlığın bölüm ve sıra anahtarı varlığı tabloda benzersiz şekilde tanımlar. Aynı bölüm anahtarına sahip varlıklar farklı bölüm anahtarları olan varlıklardan daha hızlı sorgulanabilir ancak farklı bölüm anahtarlarının kullanılması paralel işlemler için daha fazla ölçeklenebilirlik sağlar. Tablolarda depolanacak varlıklar, [TableEntity](/dotnet/api/microsoft.azure.cosmos.table.tableentity) sınıfından türetilen türler gibi desteklenen bir türde olmalıdır. Bir tabloda depolamak istediğiniz varlık özellikleri, türün genel özellikleri olmalı ve değerleri hem almayı hem de ayarlamayı desteklemelidir. Bununla birlikte varlık türü parametresiz bir oluşturucu olmalıdır.
 
 ## <a name="insert-or-merge-an-entity"></a>Varlık ekleme veya birleştirme
 
-Aşağıdaki kod örneği bir varlık nesnesi oluşturur ve onu tabloya ekler. [Tableoperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) sınıfı Içindeki ınsertormerge yöntemi bir varlık eklemek veya birleştirmek için kullanılır. İşlemi yürütmek için [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet&preserve-view=true) yöntemi çağırılır. 
+Aşağıdaki kod örneği bir varlık nesnesi oluşturur ve onu tabloya ekler. [Tableoperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) sınıfı Içindeki ınsertormerge yöntemi bir varlık eklemek veya birleştirmek için kullanılır. İşlemi yürütmek için [CloudTable.ExecuteAsync](/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?preserve-view=true&view=azure-dotnet) yöntemi çağırılır. 
 
 Projenizin **Cosmostablesamples**öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **SamplesUtils.cs**adlı bir sınıf ekleyin. Bu sınıf, varlıklarda CRUD işlemleri gerçekleştirmek için gereken tüm kodu depolar. 
 
@@ -128,7 +128,7 @@ Projenizin **Cosmostablesamples**öğesine sağ tıklayın. **Ekle**, **Yeni ö�
 
 ## <a name="get-an-entity-from-a-partition"></a>Bir bölümden varlık edinme
 
-[Tableoperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) sınıfının altındaki Retrieve metodunu kullanarak bir bölümden varlık elde edebilirsiniz. Aşağıdaki kod örneği, bir müşteri varlığının bölüm anahtarı satır anahtarını, e-posta ve telefon numarasını alır. Bu örnek ayrıca varlık için sorgulamak üzere tüketilen istek birimlerini de yazdırır. Bir varlığı sorgulamak için, **SamplesUtils.cs** dosyasına aşağıdaki kodu ekleyin:
+[Tableoperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) sınıfının altındaki Retrieve metodunu kullanarak bir bölümden varlık elde edebilirsiniz. Aşağıdaki kod örneği, bir müşteri varlığının bölüm anahtarı satır anahtarını, e-posta ve telefon numarasını alır. Bu örnek ayrıca varlık için sorgulamak üzere tüketilen istek birimlerini de yazdırır. Bir varlığı sorgulamak için, **SamplesUtils.cs** dosyasına aşağıdaki kodu ekleyin:
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
 

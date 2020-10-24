@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f43a335e6490858828fb2efcaa8436dcb6f3d250
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 38f21ec32d14261c7f1bb5e285180d9721b9dca7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280513"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477836"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB ile sorgu performansını ayarlama
 
-Azure Cosmos DB, şema veya ikincil dizinler gerekmeden [verileri sorgulamak için bir SQL API 'si](how-to-sql-query.md)sağlar. Bu makalede geliştiriciler için aşağıdaki bilgiler sağlanmaktadır:
+Azure Cosmos DB, şema veya ikincil dizinler gerekmeden [verileri sorgulamak için bir SQL API 'si](./sql-query-getting-started.md)sağlar. Bu makalede geliştiriciler için aşağıdaki bilgiler sağlanmaktadır:
 
 * Azure Cosmos DB SQL sorgu yürütmesinin nasıl çalıştığı hakkında üst düzey Ayrıntılar
 * Sorgu isteği ve yanıt üstbilgileri ve istemci SDK seçenekleri hakkındaki ayrıntılar
@@ -275,6 +275,4 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 ## <a name="next-steps"></a>Sonraki adımlar
 * Desteklenen SQL sorgu işleçleri ve anahtar kelimeleri hakkında bilgi edinmek için bkz. [SQL Query](sql-query-getting-started.md). 
 * İstek birimleri hakkında bilgi edinmek için bkz. [İstek birimleri](request-units.md).
-* Dizin oluşturma ilkesi hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkesi](index-policy.md) 
-
-
+* Dizin oluşturma ilkesi hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkesi](index-policy.md)

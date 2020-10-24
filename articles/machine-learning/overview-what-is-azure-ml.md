@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: e214607b82a44fb1b6859a3c73d58907fbb279d9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad025d2278d6c9ab360ddbdc250e8db4b4eec665
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91710745"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495745"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -128,7 +128,8 @@ Azure depolama hesabınız, işlem hedefleri ve diğer kaynaklarınız, modeller
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Tercih ettiğiniz yöntemle ilk denemenizi oluşturun:
-  + [ML modellerini eğitmek & dağıtmak için Python not defterlerini kullanma](tutorial-1st-experiment-sdk-setup.md)
+- + [Kendi geliştirme ortamınızı kullanmaya başlayın](tutorial-1st-experiment-sdk-setup-local.md)
+  + [ML modellerini eğitmek & dağıtmak için bir işlem örneğinde Jupyıter not defterlerini kullanma](tutorial-1st-experiment-sdk-setup.md)
   + [ML modellerini eğitme & dağıtmak için R Markdown kullanma](tutorial-1st-r-experiment.md) 
   + [ML modellerini eğitmek & dağıtmak için otomatik makine öğrenimi kullanma](tutorial-first-experiment-automated-ml.md) 
   + [& dağıtmayı eğitme tasarımcı & bırakma yeteneklerini kullanın](tutorial-designer-automobile-price-train-score.md) 
