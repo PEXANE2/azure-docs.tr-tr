@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fd79568944d81e267a45287104bd0fa9698df2fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbfb2aef838dbef6e7403e635f5bce42bf9ec901
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89648688"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487271"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight kümesi Yönetimi en iyi uygulamaları
 
@@ -27,11 +27,11 @@ HDInsight kümelerini yönetmeye yönelik en iyi yöntemleri öğrenin.
 | Özel Kaynak Yöneticisi şablonu | [Kaynak Yöneticisi şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma](./hdinsight-hadoop-create-linux-clusters-arm-templates.md) |
 | Hızlı başlangıç şablonları | [HDInsight hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?term=hdinsight) |
 | Azure örneklerinden | [HDInsight Azure örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-hdinsight) |
-| Azure portal | [Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun](./spark/apache-spark-intellij-tool-plugin.md) |
+| Azure portalı | [Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun](./spark/apache-spark-intellij-tool-plugin.md) |
 | Azure CLI | [Azure CLı kullanarak HDInsight kümeleri oluşturma](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Azure PowerShell kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturma](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Azure REST API kullanarak Apache Hadoop kümeleri oluşturma](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
-| SDK 'lar (.NET, Python, Java) | [.Net](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet), [Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python), [Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable), [Go](https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview) |
+| SDK 'lar (.NET, Python, Java) | [.Net](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python&preserve-view=true), [Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable&preserve-view=true), [Go](https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview) |
 
 > [!Note]
 > Küme oluşturuyorsanız ve daha önce oluşturulmuş bir kümeden küme adını yeniden kullanacaksanız, kümenizi oluşturmadan önce önceki küme silme işleminin tamamlanmasını bekleyin.

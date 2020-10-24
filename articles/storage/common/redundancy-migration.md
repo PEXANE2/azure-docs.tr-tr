@@ -1,5 +1,5 @@
 ---
-title: Depolama hesabının nasıl çoğaltıldığını değiştirme
+title: Depolama hesabının çoğaltma yöntemini değiştirme
 titleSuffix: Azure Storage
 description: Mevcut bir depolama hesabındaki verilerin nasıl çoğaltılacağı nasıl değiştirileceğini öğrenin.
 services: storage
@@ -11,14 +11,14 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c305292e915e02a1b53eb140ccd052990efbd315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a16199891c00e2b8133aebebd1eaa6488423896c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827306"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487900"
 ---
-# <a name="change-how-a-storage-account-is-replicated"></a>Depolama hesabının nasıl çoğaltıldığını değiştirme
+# <a name="change-how-a-storage-account-is-replicated"></a>Depolama hesabının çoğaltma yöntemini değiştirme
 
 Azure depolama, geçici donanım arızaları, ağ veya güç kesintileri ve çok büyük doğal felaketler de dahil olmak üzere planlı ve planlanmamış olaylardan korunabilmesi için verilerinizin birden çok kopyasını her zaman depolar. Yedeklilik, depolama hesabınızın, başarısızlık durumunda bile [Azure depolama Için hizmet düzeyi sözleşmesini (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) karşıladığından emin olmanızı sağlar.
 
@@ -144,9 +144,9 @@ Bir destek kişisi sizinle iletişim kuracaktır ve ihtiyacınız olan herhangi 
 > [!NOTE]
 > Dinamik geçiş, Premium dosya paylaşımları için şu anda desteklenmiyor. Şu anda yalnızca el ile kopyalama veya taşıma işlemi destekleniyor.
 >
-> GZRS depolama hesapları Şu anda arşiv katmanını desteklemez. Daha fazla ayrıntı için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) .
+> GZRS depolama hesapları Şu anda arşiv katmanını desteklemez. Daha fazla ayrıntı için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](/azure/storage/blobs/storage-blob-storage-tiers) .
 >
-> Yönetilen diskler yalnızca LRS için kullanılabilir ve ZRS 'ye geçirilemez. Standart HDD 'de standart SSD ile yönetilen diskler için anlık görüntüler ve görüntüler saklayabilir ve [LRS ve ZRS seçenekleri arasından seçim](https://azure.microsoft.com/pricing/details/managed-disks/)yapabilirsiniz. Kullanılabilirlik kümeleriyle tümleştirme hakkında daha fazla bilgi için bkz. [Azure yönetilen disklere giriş](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
+> Yönetilen diskler yalnızca LRS için kullanılabilir ve ZRS 'ye geçirilemez. Standart HDD 'de standart SSD ile yönetilen diskler için anlık görüntüler ve görüntüler saklayabilir ve [LRS ve ZRS seçenekleri arasından seçim](https://azure.microsoft.com/pricing/details/managed-disks/)yapabilirsiniz. Kullanılabilirlik kümeleriyle tümleştirme hakkında daha fazla bilgi için bkz. [Azure yönetilen disklere giriş](/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
 
 ## <a name="switch-from-zrs-classic"></a>ZRS klasik 'den geçiş
 
@@ -167,7 +167,7 @@ ZRS klasik depolama hesabınızı, ZRS 'nin kullanılabildiği bölgelerde Azure
 
 Azure portal ZRS 'ye yükseltmek için hesabın **yapılandırma** ayarlarına gidin ve **Yükselt**' i seçin:
 
-![Portalda ZRS Classic 'i ZRS 'ye yükseltme](media/redundancy-migration/portal-zrs-classic-upgrade.png)
+![Portalda ZRS Klasik'i ZRS'ye yükseltme](media/redundancy-migration/portal-zrs-classic-upgrade.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -200,6 +200,6 @@ GRS 'den LRS 'ye depolama hesabınızı geçirirseniz, ek bir maliyet yoktur, an
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure depolama artıklığı](storage-redundancy.md)
+- [Azure Depolama yedekliliği](storage-redundancy.md)
 - [Bir depolama hesabı için son eşitleme zamanı özelliğini denetleyin](last-sync-time-get.md)
 - [Yüksek oranda kullanılabilir uygulamalar tasarlamak için coğrafi artıklığı kullanın](geo-redundant-design.md)

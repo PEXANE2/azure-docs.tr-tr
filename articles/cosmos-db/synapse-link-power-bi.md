@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 1157ca31a66e5df92ff28f5d7190993e51d7dd65
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6e77746d21d63cf1460b9e460e470a3bd12ce656
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367644"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480046"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>SYNAPSE bağlantısı ile Azure Cosmos DB verileri çözümlemek için Power BI ve sunucusuz SYNAPSE SQL havuzunu kullanın (Önizleme) 
 
@@ -19,7 +19,7 @@ Bu makalede, Azure Cosmos DB için bir sunucusuz SYNAPSE SQL Havuzu (daha önce 
 
 Bu senaryoda, bir iş ortağı perakende deposunda Surface ürün satışları hakkında kukla verileri kullanacaksınız. Her mağaza için gelir, büyük bir evye yakınlık ve belirli bir hafta için tanıtım etkisi doğrultusunda analiz edersiniz. Bu makalede, **RetailSales** ve **storedemographics** adlı iki görünüm ve aralarında bir sorgu oluşturacaksınız. Bu [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) deposundan örnek ürün verilerini alabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdaki kaynakları oluşturduğunuzdan emin olun:
 
@@ -141,5 +141,7 @@ Bu seçenekleri belirledikten sonra, aşağıdaki ekran görüntüsüne benzer b
 :::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="SYNAPSE Analytics çalışma alanına bir SQL betiği ekleyin":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+[T-SQL kullanarak Azure Cosmos DB verileri Azure SYNAPSE bağlantısı kullanarak sorgulama](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)
 
 [Azure açık veri kümelerini analiz etmek ve Azure SYNAPSE Studio 'da sonuçları görselleştirmek](../synapse-analytics/sql/tutorial-data-analyst.md) için sunucusuz SYNAPSE SQL havuzunu kullanın

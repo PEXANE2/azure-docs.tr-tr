@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: af17e37e5acb1e3552dd92b82eaf8d6397e4bc5e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e12bae14ede90a3b93a69d963981f097818e65ab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279908"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480233"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler
 
@@ -63,7 +63,7 @@ Saklı yordamlar bir Azure Cosmos kapsayıcısı ile ilişkilendirilir ve saklı
 
 ### <a name="data-consistency"></a>Veri tutarlılığı
 
-Saklı yordamlar ve Tetikleyiciler, her zaman bir Azure Cosmos kapsayıcısının birincil çoğaltmasında yürütülür. Bu özellik, saklı yordamlardan gelen okumaların [güçlü tutarlılık](consistency-levels-tradeoffs.md)sunmasını sağlar. Kullanıcı tanımlı işlevleri kullanan sorgular birincil veya herhangi bir ikincil çoğaltmada yürütülebilir. Saklı yordamlar ve Tetikleyiciler işlem yazma işlemlerini desteklemek için tasarlanmıştır: salt okuma mantığı, [Azure Cosmos db SQL API SDK 'ları](sql-api-dotnet-samples.md)kullanarak uygulama tarafı mantığı ve sorgular olarak en iyi şekilde uygulandığından, veritabanı aktarım hızını ortadan kaldırmaya yardımcı olur. 
+Saklı yordamlar ve Tetikleyiciler, her zaman bir Azure Cosmos kapsayıcısının birincil çoğaltmasında yürütülür. Bu özellik, saklı yordamlardan gelen okumaların [güçlü tutarlılık](./consistency-levels.md)sunmasını sağlar. Kullanıcı tanımlı işlevleri kullanan sorgular birincil veya herhangi bir ikincil çoğaltmada yürütülebilir. Saklı yordamlar ve Tetikleyiciler işlem yazma işlemlerini desteklemek için tasarlanmıştır: salt okuma mantığı, [Azure Cosmos db SQL API SDK 'ları](sql-api-dotnet-samples.md)kullanarak uygulama tarafı mantığı ve sorgular olarak en iyi şekilde uygulandığından, veritabanı aktarım hızını ortadan kaldırmaya yardımcı olur. 
 
 > [!TIP]
 > Saklı yordam veya tetikleyici içinde yürütülen sorgular, aynı betik işlemi tarafından yapılan öğelerde yapılan değişiklikleri göremeyebilir. Bu ifade `getContent().getCollection.queryDocuments()` , ve gibi tümleşik dil sorgularının yanı sıra SQL sorgularına de uygulanır `getContext().getCollection().filter()` .

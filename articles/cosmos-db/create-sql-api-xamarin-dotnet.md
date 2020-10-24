@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74ff6983b08b6f19a94384be7c4361d4266d6a20
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2d82b7f618757fbf77072bd7147595eec3083885
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108771"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487645"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak Xamarin ile ToDo uygulaması oluşturma
 
@@ -22,7 +22,7 @@ ms.locfileid: "92108771"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK’sı v4](create-sql-api-java.md)
-> * [Spring Data v3](create-sql-api-spring-data.md)
+> * [Spring Verileri v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -32,11 +32,11 @@ Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritaba
 > [!NOTE]
 > CosmosDB de dahil birçok Azure teklifini gösteren tamamen kurallı örnek bir Xamarin uygulaması için örnek koda GitHub’da [buradan](https://github.com/xamarinhq/app-geocontacts) erişilebilir. Bu uygulama, coğrafi olarak dağınık kişilerin görüntülenmesini sergileyerek bu kişilerin konumlarını güncelleştirmesine olanak sağlar.
 
-Bu hızlı başlangıç belgesinde Azure portalını kullanarak bir Azure Cosmos DB SQL API hesabını, belge veritabanını ve kapsayıcısını nasıl oluşturacağınız anlatılmıştır. Daha sonra [SQL .NET API](sql-api-sdk-dotnet.md) ve [Xamarin](https://docs.microsoft.com/xamarin/) [. Forms](https://docs.microsoft.com/xamarin/) ve [MVVM mimari deseninin](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)kullanıldığı bir yapılacaklar listesi mobil uygulaması derleyip dağıtacaksınız.
+Bu hızlı başlangıç belgesinde Azure portalını kullanarak bir Azure Cosmos DB SQL API hesabını, belge veritabanını ve kapsayıcısını nasıl oluşturacağınız anlatılmıştır. Daha sonra [SQL .NET API](sql-api-sdk-dotnet.md) ve [Xamarin](/xamarin/) [. Forms](/xamarin/) ve [MVVM mimari deseninin](/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)kullanıldığı bir yapılacaklar listesi mobil uygulaması derleyip dağıtacaksınız.
 
 :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png" alt-text="iOS’ta çalışan Xamarin todo uygulaması":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Windows üzerinde geliştirme yapıyorsanız ve henüz Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure geliştirme** ve **.NET ile Mobil Dağıtım** iş yüklerini etkinleştirdiğinizden emin olun.
 
@@ -177,7 +177,7 @@ Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken
 Aşağıdaki adımlarda, Mac için Visual Studio hata ayıklayıcısı kullanılarak uygulamayı çalıştırma işlemi gösterilecektir.
 
 > [!NOTE]
-> Android sürümündeki bir uygulama da tamamen aynı şekilde kullanılır ve her türlü değişiklik aşağıdaki adımlarda belirtilir. Windows üzerinde Visual Studio hatalarını ayıklamak isterseniz buna yönelik belgeler [iOS için burada](https://docs.microsoft.com/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) ve [Android için burada](https://docs.microsoft.com/xamarin/android/deploy-test/debugging/) bulunabilir.
+> Android sürümündeki bir uygulama da tamamen aynı şekilde kullanılır ve her türlü değişiklik aşağıdaki adımlarda belirtilir. Windows üzerinde Visual Studio hatalarını ayıklamak isterseniz buna yönelik belgeler [iOS için burada](/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) ve [Android için burada](/xamarin/android/deploy-test/debugging/) bulunabilir.
 
 1. İlk olarak vurgulanan açılır listeye tıklayarak ve iOS için ToDoItems.iOS, Android için ToDoItems.Android öğesini seçerek hedeflemek istediğiniz platformu seçin.
 

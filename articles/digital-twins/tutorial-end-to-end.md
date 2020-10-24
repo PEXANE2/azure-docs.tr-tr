@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f0d28a71e2bd6fc2006bda81fba7d7e6336c5b1c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a765bf547924cbba1c4cff36a97df4ae88df1787
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460844"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495944"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -160,24 +160,26 @@ Ana Visual Studio penceresinde geri açılan *Yayımla* bölmesinde tüm bilgile
 
 ### <a name="assign-permissions-to-the-function-app"></a>İşlev uygulamasına izin atama
 
-İşlev uygulamasının Azure dijital TWINS 'e erişmesine olanak tanımak için, bir sonraki adım bir uygulama ayarı yapılandırmak, uygulamayı sistem tarafından yönetilen bir Azure AD kimliği olarak atamak ve Azure dijital TWINS örneğinde bu kimliğe *Azure dijital TWINS sahibi (Önizleme)* rolü vermektir. Bu rol, örnekte birçok veri düzlemi etkinliği gerçekleştirmek isteyen herhangi bir kullanıcı veya işlev için gereklidir. Güvenlik ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [*Azure dijital TWINS çözümleri Için güvenlik*](concepts-security.md).
+İşlev uygulamasının Azure dijital TWINS 'e erişmesini sağlamak için, bir sonraki adım bir uygulama ayarı yapılandırmak, uygulamayı sistem tarafından yönetilen bir Azure AD kimliği olarak atamak ve Azure dijital TWINS örneğinde bu kimliğe *Azure dijital TWINS veri sahibi* rolünü vermektir. Bu rol, örnekte birçok veri düzlemi etkinliği gerçekleştirmek isteyen herhangi bir kullanıcı veya işlev için gereklidir. Güvenlik ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [*Azure dijital TWINS çözümleri Için güvenlik*](concepts-security.md).
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 Azure Cloud Shell ' de, işlev uygulamanızın Azure dijital TWINS örneğinizi referans olarak kullanacağı bir uygulama ayarı ayarlamak için aşağıdaki komutu kullanın.
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 Sistem tarafından yönetilen kimliği oluşturmak için aşağıdaki komutu kullanın. Çıktıda *PrincipalId* alanını bir yere göz atın.
 
-```azurecli
+```azurecli-interactive
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-İşlev uygulamasının kimliğini Azure dijital TWINS örneğiniz için *Azure Digital TWINS Owner (Önizleme)* rolüne atamak için aşağıdaki komutta bulunan çıktıdan *PrincipalId* değerini kullanın:
+İşlev uygulamasının kimliğini Azure dijital TWINS örneğiniz için *Azure Digital TWINS veri sahibi* rolüne atamak için aşağıdaki komutta bulunan çıktıdan *PrincipalId* değerini kullanın:
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
 
 Bu komutun sonucu, oluşturduğunuz rol ataması hakkında bilgi verilir. İşlev uygulamasının artık Azure dijital TWINS örneğinizi erişim izinleri vardır.
@@ -205,7 +207,7 @@ Azure dijital TWINS, cihazları ve bunların verilerini yönetmeye yönelik bir 
 
 Azure Cloud Shell ' de, yeni bir IoT Hub 'ı oluşturmak için bu komutu kullanın:
 
-```azurecli
+```azurecli-interactive
 az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku S1
 ```
 
@@ -244,7 +246,7 @@ Bu bölüm, IoT Hub KIMLIĞI *thermostat67*olan bir cihaz temsili oluşturur. Sa
 
 Azure Cloud Shell, aşağıdaki komutla IoT Hub bir cihaz oluşturun:
 
-```azurecli
+```azurecli-interactive
 az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> -g <your-resource-group>
 ```
 
@@ -256,13 +258,13 @@ Daha sonra, cihaz simülatörünü IoT Hub örneğinize veri gönderecek şekild
 
 Şu komutla *IoT Hub bağlantı dizesini* alarak başlayın:
 
-```azurecli
+```azurecli-interactive
 az iot hub connection-string show -n <your-IoT-hub-name>
 ```
 
 Ardından, aşağıdaki komutla *Cihaz bağlantı dizesini* alın:
 
-```azurecli
+```azurecli-interactive
 az iot hub device-identity connection-string show --device-id thermostat67 --hub-name <your-IoT-hub-name>
 ```
 
@@ -332,13 +334,13 @@ Bu bölümde, bir olay Kılavuzu konusu oluşturun ve ardından Azure dijital TW
 
 Azure Cloud Shell bir olay Kılavuzu konusu oluşturmak için aşağıdaki komutu çalıştırın:
 
-```azurecli
+```azurecli-interactive
 az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-grid-topic> -l <region>
 ```
 
 > [!TIP]
 > Azure CLı 'de komutlara geçirilebilecek Azure bölge adlarının bir listesini çıkarmak için şu komutu çalıştırın:
-> ```azurecli
+> ```azurecli-interactive
 > az account list-locations -o table
 > ```
 
@@ -346,7 +348,7 @@ Bu komutun çıktısı, oluşturduğunuz olay Kılavuzu konusu hakkında bilgi i
 
 Daha sonra, olay kılavuzunuza işaret eden bir Azure dijital TWINS uç noktası oluşturun. Aşağıdaki komutu kullanarak yer tutucu alanlarını gerektiği şekilde doldurun:
 
-```azurecli
+```azurecli-interactive
 az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --eventgrid-resource-group <your-resource-group> --eventgrid-topic <your-event-grid-topic> --endpoint-name <name-for-your-Azure-Digital-Twins-endpoint>
 ```
 
@@ -354,7 +356,7 @@ Bu komutun çıktısı, oluşturduğunuz uç nokta hakkında bilgi.
 
 Ayrıca, bu uç nokta için Azure dijital TWINS örneğinizi sorgulamak üzere aşağıdaki komutu çalıştırarak bitiş noktası oluşturma 'nın başarılı olduğunu doğrulayabilirsiniz:
 
-```azurecli
+```azurecli-interactive
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
@@ -368,9 +370,7 @@ Olay Kılavuzu konuya ve Azure dijital TWINS uç noktanıza verdiğiniz adları 
 
 Ardından, az önce oluşturduğunuz Azure Digital TWINS uç noktasına olayları gönderen bir Azure dijital TWINS yolu oluşturun.
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
-
-```azurecli
+```azurecli-interactive
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>
 ```
 
@@ -443,7 +443,7 @@ Bu öğreticide oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları sil
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
 ```
 

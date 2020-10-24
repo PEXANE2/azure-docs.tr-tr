@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 27e346dd97824918d859ea6819e3c2b43f4c02aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed7bda2875fa68254fb3842dac8b713a0bbddfd4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551957"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486999"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Öğretici: sınıfı olmayan tümleştirme Azure Active Directory
 
@@ -130,15 +130,15 @@ Azure AD 'de çoklu oturum açmayı yapılandırmak için aşağıdaki adımlar�
 
 2. **Kullanıcılara**tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/unifi-tutorial/app1.png)
+    ![Ekran görüntüsü, sınıfı olmayan siteden seçilen kullanıcıları gösterir.](./media/unifi-tutorial/app1.png)
 
 3. **Yeni kimlik sağlayıcısı ekle**' ye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/unifi-tutorial/app2.png)
+    ![Ekran görüntüsü, ad yeni kimlik sağlayıcısını seçili olarak gösterir.](./media/unifi-tutorial/app2.png)
 
 4. **Kimlik sağlayıcısı ekle** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/unifi-tutorial/app3.png) 
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik sağlayıcısı ekle ' nin gösterir.](./media/unifi-tutorial/app3.png) 
 
     a. **Sağlayıcı adı** metin kutusuna kimlik sağlayıcısının adını yazın.
 

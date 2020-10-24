@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 9a081a28d4c96e3c38986cbb3c0990bc89c5ab99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe1b685a0209643332d798b875b9e62b02aa02da
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83684472"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488784"
 ---
 # <a name="storage-analytics"></a>Depolama Analizi
 
@@ -41,7 +41,7 @@ Bir veri saklama ilkesi yapılandırdıysanız, Depolama Analizi eski günlük k
 
 ### <a name="understanding-billable-requests"></a>Faturalandırılabilir istekleri anlama
 
-Bir hesabın depolama hizmetine yapılan her istek faturalandırılabilir veya faturalandırılmamış olur. Depolama Analizi, isteğin nasıl işlendiğini belirten bir durum iletisi de dahil olmak üzere, bir hizmete yapılan her bir isteği günlüğe kaydeder. Benzer şekilde, Depolama Analizi, belirli durum iletilerinin yüzdeleri ve sayısı dahil olmak üzere hem hizmet hem de bu hizmetin API işlemleri için ölçümleri depolar. Bu özellikler birlikte, faturalandırılabilir isteklerinizi çözümlemenize, uygulamanızda geliştirmeler yapmanıza ve hizmetlerinize yönelik isteklerle ilgili sorunları tanılamanıza yardımcı olabilir. Faturalandırma hakkında daha fazla bilgi için bkz. [Azure depolama faturalandırma-bant genişliği, işlemler ve kapasiteyi anlama](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
+Bir hesabın depolama hizmetine yapılan her istek faturalandırılabilir veya faturalandırılmamış olur. Depolama Analizi, isteğin nasıl işlendiğini belirten bir durum iletisi de dahil olmak üzere, bir hizmete yapılan her bir isteği günlüğe kaydeder. Benzer şekilde, Depolama Analizi, belirli durum iletilerinin yüzdeleri ve sayısı dahil olmak üzere hem hizmet hem de bu hizmetin API işlemleri için ölçümleri depolar. Bu özellikler birlikte, faturalandırılabilir isteklerinizi çözümlemenize, uygulamanızda geliştirmeler yapmanıza ve hizmetlerinize yönelik isteklerle ilgili sorunları tanılamanıza yardımcı olabilir. Faturalandırma hakkında daha fazla bilgi için bkz. [Azure depolama faturalandırma-bant genişliği, işlemler ve kapasiteyi anlama](/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
 Depolama Analizi verilere baktığınızda, hangi isteklerin faturalandırılabilir olduğunu belirlemek için [depolama Analizi günlüğe kaydedilen işlemler ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) konusundaki tabloları kullanabilirsiniz. Ardından, belirli bir istek için ücretlendirildiğini görmek üzere günlüklerinizi ve ölçüm verilerinizi durum iletileriyle karşılaştırabilirsiniz. Bir depolama hizmeti veya tek bir API işlemi için kullanılabilirliği araştırmak üzere önceki konudaki tabloları da kullanabilirsiniz.
 

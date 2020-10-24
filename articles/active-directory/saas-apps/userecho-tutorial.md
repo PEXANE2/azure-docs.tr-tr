@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 6708fcbe6f756a92984ee8aa48c181e1103f2046
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c6e09405fbc2fec6da516cabc7f509de712c45d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532900"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487220"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Öğretici: UserEcho ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ UserEcho 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini UserEcho ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -128,19 +128,19 @@ Azure AD çoklu oturum açmayı UserEcho ile yapılandırmak için aşağıdaki 
 
 2. Üstteki araç çubuğunda, menüyü genişletmek için Kullanıcı adı ' na tıklayın ve ardından **Kurulum**' a tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/userecho-tutorial/tutorial_userecho_06.png) 
+    ![Ekran görüntüsü UserEcho sitesinden seçilen kurulumu gösterir.](./media/userecho-tutorial/tutorial_userecho_06.png) 
 
 3. **Tümleştirmeler**' e tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/userecho-tutorial/tutorial_userecho_07.png) 
+    ![Ekran görüntüsünde, Ayarlar menüsünden seçilen tümleştirmeler gösterilmektedir.](./media/userecho-tutorial/tutorial_userecho_07.png) 
 
 4. **Web sitesi**' ne ve ardından **Çoklu oturum açma (SAML2)** seçeneğine tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/userecho-tutorial/tutorial_userecho_08.png) 
+    ![Ekran görüntüsü, tümleştirmeler menüsünden çoklu oturum açma SAML2 seçili olduğunu gösterir.](./media/userecho-tutorial/tutorial_userecho_08.png) 
 
 5. **Çoklu oturum açma (SAML)** sayfasında, aşağıdaki adımları gerçekleştirin:
    
-    ![Tek Sign-On yapılandırma](./media/userecho-tutorial/tutorial_userecho_09.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz çoklu oturum açma SAML sayfasını gösterir.](./media/userecho-tutorial/tutorial_userecho_09.png)
     
     a. **SAML**özellikli olarak **Evet**' i seçin.
     
@@ -212,23 +212,23 @@ Bu bölümün amacı, UserEcho ' de Britta Simon adlı bir Kullanıcı oluşturm
 
 2. Üstteki araç çubuğunda, menüyü genişletmek için Kullanıcı adı ' na tıklayın ve ardından **Kurulum**' a tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/userecho-tutorial/tutorial_userecho_06.png)
+    ![Ekran görüntüsü UserEcho sitesinden seçilen kurulumu gösterir.](./media/userecho-tutorial/tutorial_userecho_06.png)
 
 3. **Kullanıcılar bölümünü genişletmek** için **Kullanıcılar**' a tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/userecho-tutorial/tutorial_userecho_10.png)
+    ![Ekran görüntüsü ayarlar menüsünden seçilen kullanıcıları gösterir.](./media/userecho-tutorial/tutorial_userecho_10.png)
 
 4. **Kullanıcılar**’a tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/userecho-tutorial/tutorial_userecho_11.png)
+    ![Ekran görüntüsü kullanıcıların seçili olduğunu gösterir.](./media/userecho-tutorial/tutorial_userecho_11.png)
 
 5. **Yeni Kullanıcı davet et**' e tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/userecho-tutorial/tutorial_userecho_12.png)
+    ![Ekran görüntüsü yeni kullanıcı denetimini davet et ' i gösterir.](./media/userecho-tutorial/tutorial_userecho_12.png)
 
 6. **Yeni Kullanıcı davet et** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
-    ![Tek Sign-On yapılandırma](./media/userecho-tutorial/tutorial_userecho_13.png)
+    ![Ekran görüntüsü, Kullanıcı bilgilerini girebileceğiniz yeni kullanıcı davet et iletişim kutusunu gösterir.](./media/userecho-tutorial/tutorial_userecho_13.png)
 
     a. **Ad** metin kutusuna, Britta Simon gibi kullanıcının adını yazın.
     

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: c2c598c65b1277248fea545f6bb25e5bed5aedaf
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 29300bf6487801018ecc1ce67ccc23ab9b7907eb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280068"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489175"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Azure Cosmos DB-Gremlin API 'sine yönelik bir veritabanı veya grafik için PowerShell ile işleme (RU/s) işlemleri
 
@@ -47,16 +47,16 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-Azcosmosdbgremlindatabaseüretilen Iş](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabasethroughput) | Gremlin API veritabanının üretilen iş değerini alır. |
-| [Get-Azcosmosdbgremlingraphüretilen Iş](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraphthroughput) | Gremlin API grafiğinin üretilen iş değerini alır. |
-| [Update-Azcosmosdbgremlindatabaseüretilen Iş](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbgremlindatabasethroughput) | Gremlin API veritabanının üretilen iş değerini güncelleştirir. |
-| [Update-Azcosmosdbgremlingraphverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbgremlingraphthroughput) | Gremlin API grafiğinin üretilen iş değerini güncelleştirir. |
-| [Invoke-AzCosmosDBGremlinDatabaseThroughputMigration](https://docs.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbgremlindatabasethroughputmigration) | Gremlin API veritabanının aktarım hızını geçirin. |
-| [Invoke-AzCosmosDBGremlinGraphThroughputMigration](https://docs.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbgremlingraphthroughputmigration) | Gremlin API grafiğinin aktarım hızını geçirin. |
+| [Get-Azcosmosdbgremlindatabaseüretilen Iş](/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabasethroughput) | Gremlin API veritabanının üretilen iş değerini alır. |
+| [Get-Azcosmosdbgremlingraphüretilen Iş](/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraphthroughput) | Gremlin API grafiğinin üretilen iş değerini alır. |
+| [Update-Azcosmosdbgremlindatabaseüretilen Iş](/powershell/module/az.cosmosdb/update-azcosmosdbgremlindatabasethroughput) | Gremlin API veritabanının üretilen iş değerini güncelleştirir. |
+| [Update-Azcosmosdbgremlingraphverimini](/powershell/module/az.cosmosdb/update-azcosmosdbgremlingraphthroughput) | Gremlin API grafiğinin üretilen iş değerini güncelleştirir. |
+| [Invoke-AzCosmosDBGremlinDatabaseThroughputMigration](/powershell/module/az.cosmosdb/invoke-azcosmosdbgremlindatabasethroughputmigration) | Gremlin API veritabanının aktarım hızını geçirin. |
+| [Invoke-AzCosmosDBGremlinGraphThroughputMigration](/powershell/module/az.cosmosdb/invoke-azcosmosdbgremlingraphthroughputmigration) | Gremlin API grafiğinin aktarım hızını geçirin. |
 |**Azure Kaynak grupları**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).

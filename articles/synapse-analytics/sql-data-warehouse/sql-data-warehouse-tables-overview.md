@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7973c85c7ca8051cae2ab7155dda94bec43ebd59
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460556"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486948"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda tablo tasarlama
 
@@ -79,7 +79,7 @@ SQL havuzu en yaygın kullanılan veri türlerini destekler. Desteklenen veri t�
 
 ## <a name="distributed-tables"></a>Dağıtılmış tablolar
 
-SQL havuzunun temel bir özelliği, [dağıtımların](massively-parallel-processing-mpp-architecture.md#distributions)tamamında tablo üzerinde depolama ve çalışma yöntemidir.  SQL havuzu veri dağıtmaya yönelik üç yöntemi destekler: hepsini bir kez deneme (varsayılan), karma ve çoğaltılan.
+SYNAPSE SQL 'in temel bir özelliği, [dağıtımların](massively-parallel-processing-mpp-architecture.md#distributions)tamamında tablolardaki depolama ve çalışma yöntemidir. SYNAPSE SQL, verileri dağıtmaya yönelik üç yöntemi destekler: hepsini bir kez deneme (varsayılan), karma ve çoğaltılan.
 
 ### <a name="hash-distributed-tables"></a>Karma dağıtılmış tablolar
 

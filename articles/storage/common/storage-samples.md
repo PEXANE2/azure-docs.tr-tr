@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2cf1b643caef515411842d6aaf668708e873e96d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d537ba74dad55ea1cb980ea04d20fd0c8494ed0b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367899"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479451"
 ---
 # <a name="azure-storage-samples"></a>Azure depolama örnekleri
 
@@ -67,8 +67,8 @@ Azure CLı örneklerini araştırmak için önce [Azure CLI 'Yı yüklemeniz](/c
 
 | Dil | API başvurusu | Kaynak kod |
 |----------|---------------|-------------|
-| .NET | [.NET Istemci kitaplığı başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [.NET Storage istemci kitaplığı için kaynak kodu](https://github.com/Azure/azure-storage-net) |
-| Java | [Java Istemci kitaplığı başvurusu](https://docs.microsoft.com/java/api/overview/azure/storage) | [Java depolama istemci kitaplığı için kaynak kodu](https://github.com/azure/azure-storage-java) |
+| .NET | [.NET Istemci kitaplığı başvurusu](/dotnet/api/overview/azure/storage) | [.NET Storage istemci kitaplığı için kaynak kodu](https://github.com/Azure/azure-storage-net) |
+| Java | [Java Istemci kitaplığı başvurusu](/java/api/overview/azure/storage) | [Java depolama istemci kitaplığı için kaynak kodu](https://github.com/azure/azure-storage-java) |
 | Python | [Python Istemci kitaplığı başvurusu](https://azure-storage.readthedocs.io/) | [Python depolama istemci kitaplığı için kaynak kodu](https://github.com/Azure/azure-storage-python) |
 | Node.js | [Node.js Istemci kitaplığı başvurusu](https://azure.github.io/azure-storage-node) | [Node.js depolama istemci kitaplığı için kaynak kodu](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++ Istemci kitaplığı başvurusu](https://azure.github.io/azure-sdk-for-cpp/) | [C++ depolama istemci kitaplığı için kaynak kodu](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)|

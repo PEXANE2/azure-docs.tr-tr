@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 71bd250cbfb2642a291d495273c4cd66ebb2c350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711d1cfccb6cdfe4a2fcb48a8ada7b33f744c317
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325394"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479094"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics bağlantı mimarisi
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -31,7 +31,7 @@ Bu makalede, ağ trafiğini Azure SQL veritabanı veya Azure SYNAPSE Analytics '
 
 Aşağıdaki diyagramda bağlantı mimarisine yüksek düzeyde bir genel bakış sunulmaktadır.
 
-![mimariye genel bakış](./media/connectivity-architecture/connectivity-overview.png)
+![Bağlantı mimarisine üst düzey bir genel bakış gösteren diyagram.](./media/connectivity-architecture/connectivity-overview.png)
 
 Aşağıdaki adımlarda, Azure SQL veritabanı 'na bir bağlantının nasıl kurulduğu açıklanır:
 
@@ -63,7 +63,7 @@ Azure içinden bağlanıyorsanız bağlantılarınız, varsayılan olarak bir ba
 
 Azure dışından bağlanıyorsanız, bağlantılarınızın varsayılan olarak bir bağlantı ilkesi vardır `Proxy` . Bir ilke, `Proxy` TCP oturumunun Azure SQL veritabanı ağ geçidi aracılığıyla ve sonraki tüm paketlerin ağ geçidiyle akış üzerinden kurulduğu anlamına gelir. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
 
-![mimariye genel bakış](./media/connectivity-architecture/connectivity-onprem.png)
+![TCP oturumunun Azure SQL veritabanı ağ geçidi aracılığıyla nasıl oluşturulduğunu ve sonraki tüm paketlerin ağ geçidiyle akışını gösteren diyagram.](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
 > Ayrıca [, dac Ile bağlanmayı](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) etkinleştirmek için 1434 ve 14000-14999 TCP bağlantı noktalarını açın
@@ -106,8 +106,8 @@ Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıl
 | Kuzey Avrupa         | 40.113.93.91, 191.235.193.75, 52.138.224.1, 13.74.104.113 |
 | Norveç Doğu          | 51.120.96.0        |
 | Norveç Batı          | 51.120.216.0       |
-| Güney Afrika Kuzey   | 102.133.152.0, 102.133.120.2       |
-| Güney Afrika Batı    | 102.133.24.0       |
+| Güney Afrika - Kuzey   | 102.133.152.0, 102.133.120.2       |
+| Güney Afrika - Batı    | 102.133.24.0       |
 | Orta Güney ABD     | 13.66.62.124, 23.98.162.75, 104.214.16.32, 20.45.121.1, 20.49.88.1   |
 | Güneydoğu Asya      | 104.43.15.0, 23.100.117.95, 40.78.232.3   |
 | İsviçre Kuzey    | 51.107.56.0, 51.107.57.0 |

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: c90f41e76b0f448fd07bcbd4f54dd02a653449fc
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8cd9abf02d66c6bed5720129d0b19c9a7545fac7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282801"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488325"
 ---
 # <a name="list-and-get-keyspaces-and-tables-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB Cassandra API için anahtar alanları ve tabloları listeleyin ve alın
 
@@ -39,13 +39,13 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB hesaplarını listeler veya belirtilen bir Cosmos DB hesabı alır. |
-| [Get-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspace) | Bir hesapta Cosmos DB Cassandra API Keyspaces listeler veya bir hesapta belirtilen Cosmos DB Cassandra API anahtar alanı alır. |
-| [Get-AzCosmosDBCassandraTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratable) | Anahtar alanında Cosmos DB Cassandra API tabloları listeler veya bir keyspace içinde belirtilen Cosmos DB Cassandra API tabloyu alır. |
+| [Get-AzCosmosDBAccount](/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB hesaplarını listeler veya belirtilen bir Cosmos DB hesabı alır. |
+| [Get-AzCosmosDBCassandraKeyspace](/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspace) | Bir hesapta Cosmos DB Cassandra API Keyspaces listeler veya bir hesapta belirtilen Cosmos DB Cassandra API anahtar alanı alır. |
+| [Get-AzCosmosDBCassandraTable](/powershell/module/az.cosmosdb/get-azcosmosdbcassandratable) | Anahtar alanında Cosmos DB Cassandra API tabloları listeler veya bir keyspace içinde belirtilen Cosmos DB Cassandra API tabloyu alır. |
 |**Azure Kaynak grupları**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).

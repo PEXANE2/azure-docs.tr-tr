@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c07943d517f893e67eed5103660a953b508cc87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08ead12c99ae4919a2daf523065cfe332c644df1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87535051"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487203"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Çalışma alanı yönetilen kimliğine izin ver (Önizleme)
 
@@ -70,7 +70,7 @@ Yönetilen kimliğin, çalışma alanı oluşturulduğunda sağlanmış olan kap
 
 
 Yönetilen kimliğe *Depolama Blobu veri katılımcısı* rolünü vermek için aynı kapsayıcı veya dosya sistemi ' ni seçin.
-![ADLS 2. depolama hesabı kapsayıcısı seçimi](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
+![Seçtiğiniz kapsayıcıyı veya dosya sistemini gösteren ekran görüntüsü.](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
 #### <a name="step-3-navigate-to-access-control"></a>3. Adım: erişim denetimi 'ne gitme
 

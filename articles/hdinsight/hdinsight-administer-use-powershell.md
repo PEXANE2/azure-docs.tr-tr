@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/13/2020
-ms.openlocfilehash: 1839cfe0f7295af583b7bd5397957a223e888d3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fbafd81fac1982f624adae9286000fb61db62c5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086515"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474929"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>HDInsight 'ta Azure PowerShell kullanarak Apache Hadoop kümelerini yönetme
 
@@ -146,7 +146,7 @@ Bkz. [HDInsight'a veri yükleme](hdinsight-upload-data.md).
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 
-* [Az. HDInsight cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.hdinsight/?view=azps-3.1.0#hdinsight)
+* [Az. HDInsight cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.hdinsight/#hdinsight)
 * [HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin](hdinsight-administer-use-portal-linux.md)
 * [Bir komut satırı arabirimi kullanarak HDInsight 'ı yönetme](hdinsight-administer-use-command-line.md)
 * [HDInsight kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md)

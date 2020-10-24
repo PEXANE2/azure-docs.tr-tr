@@ -10,12 +10,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 60d73f8b3eae21ab399853e8d05b67b7b431ee5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d3bb6925e11579deff914a930116d8ef464e39f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321063"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476901"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>SQL API hesaplarıyla Azure Cosmos DB zaman uyumsuz Java SDK v2 kullandığınızda oluşan sorunları giderme
 
@@ -63,13 +63,13 @@ ulimit -a
 
 ##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) bağlantı noktası tükenmesi
 
-Uygulamanız Azure sanal makinelerinde genel IP adresi olmadan dağıtılmışsa, varsayılan olarak [Azure SNAT bağlantı noktaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) , sanal makinenizin dışındaki herhangi bir uç noktaya bağlantı kurar. VM 'den Azure Cosmos DB uç noktasına izin verilen bağlantı sayısı [Azure SNAT yapılandırması](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)ile sınırlıdır.
+Uygulamanız Azure sanal makinelerinde genel IP adresi olmadan dağıtılmışsa, varsayılan olarak [Azure SNAT bağlantı noktaları](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) , sanal makinenizin dışındaki herhangi bir uç noktaya bağlantı kurar. VM 'den Azure Cosmos DB uç noktasına izin verilen bağlantı sayısı [Azure SNAT yapılandırması](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)ile sınırlıdır.
 
  Azure SNAT bağlantı noktaları yalnızca sanal makinenizin özel bir IP adresi varsa ve VM 'den bir işlem ortak IP adresine bağlanmaya çalıştığında kullanılır. Azure SNAT sınırlamasından kaçınmak için iki geçici çözüm vardır:
 
-* Azure Cosmos DB hizmeti uç noktanızı Azure sanal makineler sanal ağınızın alt ağına ekleyin. Daha fazla bilgi için bkz. [Azure sanal ağ hizmeti uç noktaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
+* Azure Cosmos DB hizmeti uç noktanızı Azure sanal makineler sanal ağınızın alt ağına ekleyin. Daha fazla bilgi için bkz. [Azure sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
-    Hizmet uç noktası etkinleştirildiğinde, istekler artık genel bir IP Azure Cosmos DB ' e gönderilmez. Bunun yerine, sanal ağ ve alt ağ kimliği gönderilir. Yalnızca genel IP 'Lere izin veriliyorsa bu değişiklik güvenlik duvarı düşceye neden olabilir. Bir güvenlik duvarı kullanıyorsanız, hizmet uç noktasını etkinleştirdiğinizde, [sanal ağ ACL 'lerini](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl)kullanarak güvenlik duvarına bir alt ağ ekleyin.
+    Hizmet uç noktası etkinleştirildiğinde, istekler artık genel bir IP Azure Cosmos DB ' e gönderilmez. Bunun yerine, sanal ağ ve alt ağ kimliği gönderilir. Yalnızca genel IP 'Lere izin veriliyorsa bu değişiklik güvenlik duvarı düşceye neden olabilir. Bir güvenlik duvarı kullanıyorsanız, hizmet uç noktasını etkinleştirdiğinizde, [sanal ağ ACL 'lerini](/previous-versions/azure/virtual-network/virtual-networks-acl)kullanarak güvenlik duvarına bir alt ağ ekleyin.
 * Azure sanal makinenize genel IP atayın.
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Hizmete ulaşılamıyor-güvenlik duvarı
@@ -276,5 +276,3 @@ Azure Cosmos DB uç noktasına birçok bağlantı `CLOSE_WAIT` durumunda olabili
 [Enable client SDK logging]: #enable-client-sice-logging
 [Bir konak makinesinde bağlantı sınırı]: #connection-limit-on-host
 [Azure SNAT (PAT) bağlantı noktası tükenmesi]: #snat
-
-

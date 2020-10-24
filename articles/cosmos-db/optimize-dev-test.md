@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 9390f8a2ab9372927b434ea94d7545c9ec540c58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c2194476dc6e640f9c4b93d564728478de41ef7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88606257"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475541"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Azure Cosmos DB'de geliştirme ve test maliyetlerini iyileştirme
 
@@ -28,7 +28,7 @@ Azure Cosmos DB ücretsiz katman sayesinde çalışmaya başlamak, uygulamaları
 > [!NOTE]
 > Ücretsiz katman yalnızca sağlanan aktarım hızı modunda kullanılabilir.
 
-Ücretsiz katman hesabın kullanım ömrü boyunca süresiz olarak sürer ve sınırsız depolama ve aktarım hızı (RU/s), SLA 'Lar, yüksek kullanılabilirlik, tüm Azure bölgelerinde anahtar genel dağıtım ve daha fazlası dahil olmak üzere normal Azure Cosmos DB hesabının tüm [avantajları ve özellikleriyle](introduction.md#key-benefits) birlikte gelir. Azure aboneliği başına en fazla bir ücretsiz katman hesabınız olabilir ve hesabı oluştururken kabul etmeniz gerekir. Başlamak için, [ücretsiz katman etkinken Azure Portal yeni bir hesap oluşturun](create-cosmosdb-resources-portal.md) veya [ARM şablonu](manage-sql-with-resource-manager.md#free-tier)kullanın. Daha ayrıntılı bilgi edinmek için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
+Ücretsiz katman hesabın kullanım ömrü boyunca süresiz olarak sürer ve sınırsız depolama ve aktarım hızı (RU/s), SLA 'Lar, yüksek kullanılabilirlik, tüm Azure bölgelerinde anahtar genel dağıtım ve daha fazlası dahil olmak üzere normal Azure Cosmos DB hesabının tüm [avantajları ve özellikleriyle](introduction.md#key-benefits) birlikte gelir. Azure aboneliği başına en fazla bir ücretsiz katman hesabınız olabilir ve hesabı oluştururken kabul etmeniz gerekir. Başlamak için, [ücretsiz katman etkinken Azure Portal yeni bir hesap oluşturun](create-cosmosdb-resources-portal.md) veya [ARM şablonu](./manage-with-templates.md#free-tier)kullanın. Daha ayrıntılı bilgi edinmek için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB’yi ücretsiz deneyin
 
@@ -57,5 +57,5 @@ Aşağıdaki makalelerde öykünücü veya ücretsiz Azure Cosmos DB hesapların
 * [Verimlilik maliyetini iyileştirme](optimize-cost-throughput.md) hakkında daha fazla bilgi edinin
 * [Depolama maliyetini iyileştirme](optimize-cost-storage.md) hakkında daha fazla bilgi edinin
 * [Okuma ve yazma maliyetlerini iyileştirme](optimize-cost-reads-writes.md) hakkında daha fazla bilgi edinin
-* [Sorguların maliyetini En Iyi duruma getirme](optimize-cost-queries.md) hakkında daha fazla bilgi edinin
+* [Sorguların maliyetini En Iyi duruma getirme](./optimize-cost-reads-writes.md) hakkında daha fazla bilgi edinin
 * [Çok bölgeli Azure Cosmos hesaplarının maliyetini En Iyi duruma getirme](optimize-cost-regions.md) hakkında daha fazla bilgi edinin

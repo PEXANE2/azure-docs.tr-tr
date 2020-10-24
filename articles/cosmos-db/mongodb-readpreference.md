@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: a0bc2118c1a7e719c5ac45cb4d253a0708acefdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e86c48695c732b27f5032c1e3780cc24c8d3dc39
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292347"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482273"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB MongoDB için API 'sini kullanarak genel olarak okuma dağıtımı
 
@@ -171,6 +171,6 @@ Bu uygulamayı kullanmaya devam edemeyecekiz aşağıdaki adımlarla Azure porta
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Cosmos DB’ye MongoDB verileri aktarma](mongodb-migrate.md)
+* [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
 * [MongoDB için Azure Cosmos DB API 'SI ile küresel olarak dağıtılmış bir veritabanı kurma](tutorial-global-distribution-mongodb.md)
 * [Azure Cosmos DB öykünücüsü ile yerel olarak geliştirme](local-emulator.md)

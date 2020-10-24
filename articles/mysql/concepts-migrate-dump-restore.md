@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: a0171481b97cff2ea085a80b387bff13590529a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cc18980d1dddc33ddf98f06de70449dee22e2ac
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905890"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484602"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Döküm alma ve geri yükleme işlemlerini kullanarak MySQL veritabanınızı MySQL için Azure Veritabanı'na geçirme
 
@@ -30,11 +30,15 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunları yapmanız gerekir:
 > [!TIP]
 > Veritabanı boyutlarına sahip büyük veritabanlarını 1 ' den fazla TBs 'ye geçirmek istiyorsanız, paralel dışarı ve içeri aktarmayı destekleyen **mydumper/myloader** gibi topluluk araçlarını kullanmayı düşünebilirsiniz. [Büyük MySQL veritabanlarını geçirmeyi](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)öğrenin.
 
-## <a name="common-use-cases-for-dump-and-restore"></a>Döküm ve geri yükleme için genel kullanım örnekleri
-Birçok yaygın senaryoda veritabanlarını bir Azure MySQL veritabanına dökmek ve yüklemek için **mysqldump** ve **mysqlpump** gibi MySQL yardımcı programlarını kullanabilirsiniz. Diğer senaryolarda, bunun yerine [içeri ve dışarı aktarma](concepts-migrate-import-export.md) yaklaşımını kullanabilirsiniz.
 
-- **Tüm veritabanını geçirirken veritabanı dökümlerini kullanın**. Bu öneri, büyük miktarda MySQL verisi taşırken veya canlı siteler veya uygulamalar için hizmet kesintisini en aza indirmek istediğinizde geçerlidir.
--  **Veritabanındaki tüm tablolar InnoDB Storage altyapısını kullanıyorsa Veritabanı dökümünü kullanın**. MySQL için Azure veritabanı yalnızca InnoDB depolama altyapısını destekler ve bu nedenle alternatif depolama altyapılarını desteklemez. Tablolarınız diğer depolama altyapılarıyla yapılandırıldıysa, MySQL için Azure veritabanı 'na geçişten önce bunları InnoDB Engine biçimine dönüştürün.
+## <a name="common-use-cases-for-dump-and-restore"></a>Döküm ve geri yükleme için genel kullanım örnekleri
+
+En yaygın kullanım örnekleri şunlardır:
+
+- **Diğer yönetilen hizmet sağlayıcısından taşıma** -yönetilen hizmet sağlayıcılarının çoğu, mantıksal yedekleme ve geri yükleme 'nin geçiş için tek seçenek olduğu için, güvenlik nedenleriyle fiziksel depolama dosyasına erişim sağlayamayabilir.
+- Şirket **içi ortamdan veya sanal makineden geçiş** -MySQL Için Azure VERITABANı, tek yaklaşım olarak mantıksal yedekleme ve geri yükleme yapan fiziksel yedeklemelerin geri yüklenmesini desteklemez.
+- **Yedekleme depolama alanınızı yerel olarak yedekli, coğrafi olarak yedekli depolama alanına taşıma** -MySQL Için Azure veritabanı, yalnızca sunucu oluşturma sırasında yedekleme için yerel olarak yedekli veya coğrafi olarak yedekli depolamayı yapılandırmaya izin verir. Sunucu sağlandıktan sonra yedekleme depolama artıklığı seçeneğini değiştiremezsiniz. Yedekleme depolama alanınızı yerel olarak yedekli depolama alanından coğrafi olarak yedekli depolamaya taşımak için tek seçenektir. 
+-  **Alternatif depolama altyapılarından InnoDB 'e geçiş** -MySQL Için Azure veritabanı yalnızca InnoDB depolama altyapısını destekler ve bu nedenle alternatif depolama altyapılarını desteklemez. Tablolarınız diğer depolama altyapılarıyla yapılandırıldıysa, MySQL için Azure veritabanı 'na geçişten önce bunları InnoDB Engine biçimine dönüştürün.
 
     Örneğin, MyISAM tablolarını kullanarak bir WordPress veya WebApp varsa, önce MySQL için Azure veritabanı 'na geri yüklemeden önce bu tabloları InnoDB biçimine geçirerek dönüştürün. `ENGINE=InnoDB`Yeni bir tablo oluştururken kullanılan altyapıyı ayarlamak için yan tümcesini kullanın, ardından geri yüklemeden önce verileri uyumlu tabloya aktarın.
 
@@ -165,3 +169,4 @@ Bilinen sorunlar, ipuçları ve püf noktaları için [techcommunity blogumuza](
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Uygulamaları MySQL Için Azure veritabanı 'Na bağlayın](./howto-connection-string.md).
 - MySQL için Azure veritabanı 'na veritabanı geçirme hakkında daha fazla bilgi için bkz. [veritabanı geçiş kılavuzu](https://aka.ms/datamigration).
+- Veritabanı boyutlarına sahip büyük veritabanlarını 1 ' den fazla TBs 'ye geçirmek istiyorsanız, paralel dışarı ve içeri aktarmayı destekleyen **mydumper/myloader** gibi topluluk araçlarını kullanmayı düşünebilirsiniz. [Büyük MySQL veritabanlarını geçirmeyi](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)öğrenin.

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/16/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 280e5012f7c41a906b5b2e266840ea3c0cc315ba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a5b019068368f1c0c076f5a1ed157c288bb7169c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151704"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479927"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal kullanarak Azure rol atamalarını listeleyin
 
@@ -126,7 +126,7 @@ Belirli bir kapsamdaki sistem tarafından atanan ve Kullanıcı tarafından atan
 
     Yönetim grubu, abonelik, kaynak grubu veya kaynak gibi çeşitli kapsamlardaki seçili kullanıcı tarafından atanan yönetilen kimliğe atanan rollerin listesini görürsünüz. Bu liste, okuma izninizin olduğu tüm rol atamalarını içerir.
 
-    ![Sistem tarafından atanan yönetilen kimlik için rol atamaları](./media/shared/role-assignments-user-assigned.png)
+    ![Kullanıcı tarafından atanan yönetilen kimlik için rol atamalarını gösteren ekran görüntüsü.](./media/shared/role-assignments-user-assigned.png)
 
 1. Aboneliği değiştirmek için **abonelik** listesine tıklayın.
 
@@ -178,7 +178,7 @@ Rol atamalarını bir kapsamda indirmek için bu adımları izleyin.
 
     ![Rol atamalarını CSV olarak indir](./media/role-assignments-list-portal/download-role-assignments-csv.png)
 
-    ![Rol atamalarını CSV olarak indir](./media/role-assignments-list-portal/download-role-assignments-json.png)
+    ![JSON biçiminde olarak indirilen rol atamalarının ekran görüntüsü.](./media/role-assignments-list-portal/download-role-assignments-json.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

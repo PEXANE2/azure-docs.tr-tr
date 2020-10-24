@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 70234c9bf6be8b9c2fbb5750fa1dba718ac2690d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 43c8f3dc0df41d9322edbe2e0c763de12b787ed6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370483"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479808"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -131,7 +131,7 @@ Depolama ölçümleri yalnızca blob hizmeti için kapasite ölçümlerini depol
 >
 >
 
-Blob 'lar gibi çeşitli depolama nesnelerinin boyutunu tahmin etmeye yönelik yardım için bkz. [Azure depolama faturalandırmasını anlama – bant genişliği, işlemler ve kapasite](https://docs.microsoft.com/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
+Blob 'lar gibi çeşitli depolama nesnelerinin boyutunu tahmin etmeye yönelik yardım için bkz. [Azure depolama faturalandırmasını anlama – bant genişliği, işlemler ve kapasite](/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Kullanılabilirliği izleme
 Saatlik veya dakikalık ölçüm tablolarında ( **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob** **kullanılabilirlik** sütunundaki değeri izleyerek Depolama hesabınızdaki depolama hizmetlerinin kullanılabilirliğini izlemeniz gerekir. **Kullanılabilirlik** sütunu, hizmetin veya satır tarafından temsıl edilen API işleminin kullanılabilirliğini gösteren bir yüzde değeri Içerir ( **rowkey** , satırın bir bütün olarak veya belirli bir API işlemi olarak hizmet için ölçümler içerip içermediğini gösterir).
@@ -362,7 +362,7 @@ Depolama hizmeti yalnızca başarılı istekler için **AverageE2ELatency** öl�
 #### <a name="investigating-client-performance-issues"></a>İstemci performans sorunlarını araştırma
 İstemci yavaş yanıt vermeye yönelik olası nedenler arasında sınırlı sayıda bağlantı veya iş parçacığı olması veya CPU, bellek veya ağ bant genişliği gibi kaynaklar yetersiz olabilir. İstemci kodunu daha verimli (örneğin, depolama hizmetine zaman uyumsuz çağrılar kullanarak) veya daha büyük bir sanal makine kullanarak (daha fazla çekirdek ve daha fazla bellekle) değiştirerek sorunu çözebilirsiniz.
 
-Tablo ve kuyruk Hizmetleri için, Nagle algoritması, **Averageserverlatency**ile karşılaştırıldığında yüksek **AverageE2ELatency** de olabilir: daha fazla bilgi için, [Nagle 'In algoritmasına, küçük isteklere yaklaşmayı](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)öğrenin. **System.net** ad alanındaki **ServicePointManager** sınıfını kullanarak koddaki Nagle algoritmasını devre dışı bırakabilirsiniz. Bu, zaten açık olan bağlantıları etkilemediğinden uygulamanızdaki tablo veya kuyruk hizmetlerine çağrı yapmadan önce bunu yapmalısınız. Aşağıdaki örnek, bir çalışan rolündeki **Application_Start** yönteminden gelir.
+Tablo ve kuyruk Hizmetleri için, Nagle algoritması, **Averageserverlatency**ile karşılaştırıldığında yüksek **AverageE2ELatency** de olabilir: daha fazla bilgi için, [Nagle 'In algoritmasına, küçük isteklere yaklaşmayı](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)öğrenin. **System.net** ad alanındaki **ServicePointManager** sınıfını kullanarak koddaki Nagle algoritmasını devre dışı bırakabilirsiniz. Bu, zaten açık olan bağlantıları etkilemediğinden uygulamanızdaki tablo veya kuyruk hizmetlerine çağrı yapmadan önce bunu yapmalısınız. Aşağıdaki örnek, bir çalışan rolündeki **Application_Start** yönteminden gelir.
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 

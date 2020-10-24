@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 3ab706b9cdf3c071fd5d3ceca732cff6b660db6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 542e4e09949aa3d673f632890bd7ee99adf431d5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086568"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487288"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight’ı şirket içi ağınıza bağlama
 
@@ -46,7 +46,7 @@ Aşağıdaki diyagramda yeşil çizgiler, sanal ağın DNS son ekine biten kayna
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md).
 * PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/)gerekecektir.
-* Azure CLı 'yi kullanmak istiyorsanız ve henüz yüklemediyseniz, bkz. [Azure CLI 'Yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure CLı 'yi kullanmak istiyorsanız ve henüz yüklemediyseniz, bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-virtual-network-configuration"></a>Sanal ağ yapılandırması oluştur
 
@@ -63,7 +63,7 @@ Aşağıdaki diyagramda yeşil çizgiler, sanal ağın DNS son ekine biten kayna
 
 Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://portal.azure.com) kullanır. Sanal makine oluşturmanın diğer yolları için bkz. [VM oluşturma-Azure CLI](../virtual-machines/linux/quick-create-cli.md) ve [vm oluşturma-Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md).  [BIND](https://www.isc.org/downloads/bind/) DNS yazılımını kullanan bir Linux sanal makinesi oluşturmak için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
   
 1. Üstteki menüden **+ kaynak oluştur**' u seçin.
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c372dafdbfa5e9cafb208673128038dc23b30f5a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515023"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488835"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Bir Azure Depolama hesabını başka bir bölgeye taşıma
 
@@ -51,7 +51,7 @@ Bu şablon, depolama hesabınızı tanımlayan ayarlar içerir.
 
 Şablonu Azure portalını kullanarak dışarı aktarmak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **Tüm kaynaklar** ' ı seçin ve ardından depolama hesabınızı seçin.
 
@@ -67,7 +67,7 @@ Bu şablon, depolama hesabınızı tanımlayan ayarlar içerir.
 
 Bir şablonu PowerShell kullanarak dışarı aktarmak için:
 
-1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin:
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -167,7 +167,7 @@ PowerShell kullanarak şablonu dağıtmak için:
          }]          
     ```
 
-    [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) komutunu çalıştırarak bölge kodlarını elde edebilirsiniz.
+    [Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu çalıştırarak bölge kodlarını elde edebilirsiniz.
 
     ```azurepowershell-interactive
     Get-AzLocation | format-table 
@@ -196,7 +196,7 @@ Hedef bölgede yeni bir depolama hesabı oluşturmak için şablonu dağıtın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0)ile hedef genel IP 'yi dağıtmak ISTEDIĞINIZ abonelik kimliğini edinin:
+1. [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)ile hedef genel IP 'yi dağıtmak ISTEDIĞINIZ abonelik kimliğini edinin:
 
    ```azurepowershell-interactive
    Get-AzSubscription
@@ -232,14 +232,14 @@ Aşağıdaki tabloda bu özelliklerin yanı sıra bunları yeni depolama hesabı
 
 ### <a name="move-data-to-the-new-storage-account"></a>Verileri yeni depolama hesabına taşıma
 
-AzCopy, verilerinizi üzerine taşımak için tercih edilen bir araçtır. Performans için iyileştirilmiştir.  AzCopy'nin daha hızlı olmasının nedenlerinden biri, verilerin doğrudan depolama sunucuları arasında kopyalanması ve bu sayede bilgisayarınızın ağ bant genişliğinin harcanmamasıdır. AzCopy'yi komut satırında veya özel betik içinde kullanabilirsiniz. Bkz. [AzCopy ile çalışmaya başlama](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+AzCopy, verilerinizi üzerine taşımak için tercih edilen bir araçtır. Performans için iyileştirilmiştir.  AzCopy'nin daha hızlı olmasının nedenlerinden biri, verilerin doğrudan depolama sunucuları arasında kopyalanması ve bu sayede bilgisayarınızın ağ bant genişliğinin harcanmamasıdır. AzCopy'yi komut satırında veya özel betik içinde kullanabilirsiniz. Bkz. [AzCopy ile çalışmaya başlama](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Verilerinizi üzerine taşımak için Azure Data Factory de kullanabilirsiniz. Sezgisel bir kullanıcı arabirimi sağlar. Azure Data Factory kullanmak için şu bağlantılardan herhangi birine bakın:. 
 
-  - [Azure Data Factory kullanarak Azure Blob depolama alanına veya oradan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-  - [Azure Data Factory kullanarak Azure Data Lake Storage 2. Nesil'e veya oradan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-  - [Azure Data Factory kullanarak Azure Dosyalar depolama alanına veya oradan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
-  - [Azure Data Factory kullanarak Azure Tablo depolama alanına veya oradan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
+  - [Azure Data Factory kullanarak Azure Blob depolama alanına veya oradan veri kopyalama](/azure/data-factory/connector-azure-blob-storage)
+  - [Azure Data Factory kullanarak Azure Data Lake Storage 2. Nesil'e veya oradan veri kopyalama](/azure/data-factory/connector-azure-data-lake-storage)
+  - [Azure Data Factory kullanarak Azure Dosyalar depolama alanına veya oradan veri kopyalama](/azure/data-factory/connector-azure-file-storage)
+  - [Azure Data Factory kullanarak Azure Tablo depolama alanına veya oradan veri kopyalama](/azure/data-factory/connector-azure-table-storage)
 
 ---
 
@@ -273,5 +273,5 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 Bu öğreticide, bir Azure Depolama hesabını bir bölgeden diğerine taşıdı ve kaynak kaynakları temizledi.  Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz:
 
 
-- [Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure VM’lerini başka bir bölgeye taşıma](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](/azure/azure-resource-manager/resource-group-move-resources)
+- [Azure VM’lerini başka bir bölgeye taşıma](/azure/site-recovery/azure-to-azure-tutorial-migrate)

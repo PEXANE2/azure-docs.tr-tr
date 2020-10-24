@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
-ms.openlocfilehash: f4eb26678dee161451ff10144c2eaa3321ecc011
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d8af5815e544698ab833001e5ce6d0f4a30a264
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84693121"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487407"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure hizmeti için özel etki alanı ayarları sağlamak üzere Azure DNS kullanma
 
@@ -103,7 +103,7 @@ DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ek
 
 Özel etki alanı adı için yapılandırılmış olan App Service 'e geri gidin. **Özel etki alanları**' na ve ardından **konak adları**' na tıklayın Oluşturduğunuz CNAME kaydını eklemek için **+ konak adı Ekle**' ye tıklayın.
 
-![Şekil 1](./media/dns-custom-domain/figure1.png)
+![+ Konak adı Ekle düğmesini vurgulayan ekran görüntüsü.](./media/dns-custom-domain/figure1.png)
 
 İşlem tamamlandıktan sonra, ad çözümlemenin çalıştığını doğrulamak için **nslookup** ' ı çalıştırın.
 
@@ -136,7 +136,7 @@ DNS bölgenize gidin ve **+ kayıt kümesi**' ne tıklayın. **Kayıt kümesi Ek
 
 **Depolama**  >  **depolama hesapları**' na tıklayarak depolama hesabınıza geri gidin, depolama hesabınızı seçin ve **özel etki alanı**' na tıklayın. Metin kutusunda asverify öneki olmadan oluşturduğunuz diğer adı yazın, **dolaylı CNAME doğrulaması kullan**' ı Işaretleyin ve **Kaydet**' e tıklayın. Bu adım tamamlandıktan sonra DNS bölgenize dönün ve asverify öneki olmadan bir CNAME kaydı oluşturun.  Bu noktadan sonra, CNAME kaydını cdnverify önekiyle silmeniz güvenlidir.
 
-![BLOB depolama özel etki alanı](./media/dns-custom-domain/indirectvalidate.png)
+![Özel etki alanı sayfasını gösteren ekran görüntüsü.](./media/dns-custom-domain/indirectvalidate.png)
 
 Çalıştırarak DNS çözümlemesini doğrulama `nslookup`
 

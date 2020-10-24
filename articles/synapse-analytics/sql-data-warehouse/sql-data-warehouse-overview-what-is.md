@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0ec5b5a5ee5c29893f47560d57e78c281825453e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ce4efe0250ea1b85e2e2d77b7ee69bdf3dbcab26
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370398"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480404"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) nedir?
 
@@ -40,7 +40,7 @@ SYNAPSE SQL havuzu, Azure SYNAPSE 'de genel kullanıma sunulan kurumsal veri amb
 
 SQL havuzu, SYNAPSE SQL kullanılırken sağlanmakta olan analitik kaynakların koleksiyonunu temsil eder. SQL havuzunun boyutu, veri ambarı birimleri (DWU) tarafından belirlenir.
 
-Basit [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL sorgularıyla büyük verileri içeri aktarın ve ardından yüksek performanslı analiz ÇALıŞTıRMAK için MPP gücünü kullanın. Tümleştirdiğinizde ve analiz edilirken, SYNAPSE SQL havuzu, işletmenizin daha hızlı ve daha sağlam Öngörüler için üzerinde sayıgelebilmesi için tek bir sürümü olacaktır.  
+Basit [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL sorgularıyla büyük verileri içeri aktarın ve ardından yüksek performanslı analiz çalıştırmak için dağıtılmış sorgu altyapısının gücünü kullanın. Verileri tümleştirdiğinizde ve analiz ettiğiniz için SYNAPSE SQL, işletmenizin daha hızlı ve daha sağlam Öngörüler için üzerine gelebilmesi için tek bir Truth sürümü olacaktır. 
 
 ## <a name="key-component-of-a-big-data-solution"></a>Büyük veri çözümünün anahtar bileşeni
 

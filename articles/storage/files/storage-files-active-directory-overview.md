@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e9fc4c1efa3517f5de46b7198c868a22331c79
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716073"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486398"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB erişimi için Azure dosyalarına yönelik kimlik tabanlı kimlik doğrulama seçeneklerine genel bakış
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -104,7 +104,7 @@ Azure dosya paylaşımlarında kimlik tabanlı kimlik doğrulamasını etkinleş
 
 Aşağıdaki diyagramda SMB üzerinden Azure dosya paylaşımlarına yönelik şirket içi AD DS kimlik doğrulaması gösterilmektedir. Şirket içi AD DS Azure AD Connect eşitleme kullanılarak Azure AD ile eşitlenmelidir. Yalnızca şirket içi AD DS ve Azure AD 'de bulunan karma kullanıcıların kimliği doğrulanabilir ve Azure dosya paylaşımının erişimine izin verebilir. Bunun nedeni, paylaşma düzeyi izninin Azure AD 'de temsil edilen kimliğe göre yapılandırılması, dizin/dosya düzeyi izninin AD DS ' de bu şekilde zorlandığı yerdir. İzinleri aynı karma kullanıcıya göre doğru şekilde yapılandırdığınızdan emin olun.
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diyagram":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="SMB üzerinden Azure dosya paylaşımlarına yönelik şirket içi AD DS kimlik doğrulamasını gösteren diyagram.":::
 
 ### <a name="azure-ad-ds"></a>Azure AD DS
 
@@ -116,7 +116,7 @@ Aşağıdaki diyagram, Azure AD DS kimlik doğrulaması için SMB üzerinden Azu
 
 - İkinci olarak, Azure AD 'de mevcut olan tüm kullanıcıların kimliği doğrulanabilir ve yetkilendirilenebilir. Kullanıcı yalnızca bulutta veya hibrit olabilir. Azure AD 'den Azure AD DS eşitleme, Kullanıcı yapılandırmasına gerek duymadan platform tarafından yönetilir. Ancak, istemcinin Azure AD DS etki alanına katılmış olması gerekir; Azure AD 'ye katılmış veya kayıtlı olamaz. 
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diyagram":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="SMB üzerinden Azure dosya paylaşımlarına yönelik şirket içi AD DS kimlik doğrulamasını gösteren diyagram.":::
 
 ### <a name="enable-identity-based-authentication"></a>Kimlik tabanlı kimlik doğrulamasını etkinleştir
 

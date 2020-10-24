@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 429883a1bd9bc4df270e6a9f2965087fa3fba2dc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280156"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488869"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
@@ -133,7 +133,7 @@ Depolama hesabı, Azure 'da verileriniz için benzersiz bir ad alanı sağlar. A
 - Tablo Depolama: `https://*mystorageaccount*.table.core.windows.net`
 - Kuyruk depolama: `https://*mystorageaccount*.queue.core.windows.net`
 - Azure dosyaları: `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage 2.: `https://*mystorageaccount*.dfs.core.windows.net` ( [büyük veriler için özel olarak Iyileştirilmiş ABFS sürücüsünü](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)kullanır.)
+- Azure Data Lake Storage 2.: `https://*mystorageaccount*.dfs.core.windows.net` ( [büyük veriler için özel olarak Iyileştirilmiş ABFS sürücüsünü](/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)kullanır.)
 
 > [!NOTE]
 > Blok Blobu ve BLOB depolama hesapları yalnızca blob hizmeti uç noktasını kullanıma sunar.
@@ -177,7 +177,7 @@ AzCopy, verilerin Azure Storage’a ve Azure Storage’dan yüksek performansla 
 
 Verilerinizi genel amaçlı v1 depolama hesabından BLOB depolama hesabına geçirmek için özel bir uygulama oluşturabilirsiniz. Azure istemci kitaplıklarından veya Azure Storage Services REST API birini kullanın. Azure Storage NET, Java, C++, Node.JS, PHP, Ruby ve Python gibi birden fazla dilde ve platformda zengin istemci kitaplıkları sağlar. İstemci kitaplıkları yeniden deneme mantığı, günlüğe kaydetme ve paralel karşıya yüklemeler gibi gelişmiş özellikler sunar. HTTP/HTTPS istekleri yapan herhangi bir dil tarafından çağrılabilen REST API’sine karşı doğrudan da geliştirebilirsiniz.
 
-Azure depolama REST API hakkında daha fazla bilgi için bkz. [Azure Storage Services REST API başvurusu](https://docs.microsoft.com/rest/api/storageservices/).
+Azure depolama REST API hakkında daha fazla bilgi için bkz. [Azure Storage Services REST API başvurusu](/rest/api/storageservices/).
 
 > [!IMPORTANT]
 > Bloblar, blobla birlikte istemci tarafı şifreleme depolama şifrelemesiyle ilgili meta veriler kullanılarak depolanır. İstemci tarafı şifreleme ile şifrelenmiş bir blobu kopyalarsanız, kopyalama işleminin başta şifreleme ile ilgili meta veriler olmak üzere blob meta verilerini koruduğundan emin olun. Bir blobu şifreleme meta verileri olmadan kopyalarsanız blob içeriği tekrar alınamaz. Şifrelemeyle ilgili meta veriler hakkında daha fazla bilgi için bkz. [Azure Depolama İstemci Tarafı Şifrelemesi](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

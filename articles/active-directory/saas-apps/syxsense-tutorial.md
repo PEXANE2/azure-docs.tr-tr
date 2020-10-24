@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 3bb03444062a5652e4e0aad24560b90acd2ce2d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 234ef7e3cec3bfa78bc2f2aac2670efc1e3c0499
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544828"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483480"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-syxsense"></a>Öğretici: Syxsense ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Syxsense tümleştirme ha
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -136,11 +136,11 @@ Bu bölümde, Syxsense erişimi vererek Azure çoklu oturum açma özelliğini k
 
 1. **Ayarlar simgesine**tıklayın.
 
-    ![Syxsense yapılandırması](./media/syxsense-tutorial/configure1.png)
+    ![Ekran görüntüsü ayarlar simgesini gösterir.](./media/syxsense-tutorial/configure1.png)
 
 1. **Dış kimlik doğrulamasına** tıklayın ve **SAML 2.0 meta verileri** metin kutusuna **uygulama Federasyon meta verileri URL 'si** değerini girip **Kaydet**' e tıklayın.
 
-    ![Syxsense yapılandırması](./media/syxsense-tutorial/configure2.png)
+    ![Ekran görüntüsü, uygulama Federasyon meta verileri U R L değerini girebileceğiniz dış kimlik doğrulama sayfasını gösterir.](./media/syxsense-tutorial/configure2.png)
 
 ### <a name="create-syxsense-test-user"></a>Syxsense test kullanıcısı oluşturma
 
@@ -148,15 +148,15 @@ Bu bölümde, Syxsense erişimi vererek Azure çoklu oturum açma özelliğini k
 
 1. Sol Gezinti panelinden **Kullanıcı hesapları** ' na tıklayın.
 
-    ![Syxsense yapılandırması](./media/syxsense-tutorial/user1.png)
+    ![Ekran görüntüsü, Gezinti panelinden seçilen kullanıcı hesaplarını gösterir.](./media/syxsense-tutorial/user1.png)
 
 1. **Ekle**'ye tıklayın.
 
-    ![Syxsense yapılandırması](./media/syxsense-tutorial/user2.png)
+    ![Ekran görüntüsü, Ekle ' yi seçebileceğiniz Kullanıcı hesapları bölmesini gösterir.](./media/syxsense-tutorial/user2.png)
 
 1. Kullanıcı ayrıntılarını kuruluşunuzun gereksinimlerine göre sağlayın ve **Kaydet**' e tıklayın.
 
-    ![Syxsense yapılandırması](./media/syxsense-tutorial/user3.png)
+    ![Ekran görüntüsü, bilgilerinizi girebileceğiniz sayfayı gösterir.](./media/syxsense-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Test SSO 'SU
 

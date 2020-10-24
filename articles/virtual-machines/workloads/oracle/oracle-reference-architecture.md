@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: f9765f4ce47e6e698daf1680aecf059241c58382
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d2a6954ffdb9f992ada7fc24dbcc161658b21d23
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993577"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480437"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 'da Oracle Database Enterprise Edition için başvuru mimarileri
 
@@ -72,7 +72,7 @@ Oracle Database sürüm 12,2 ve üzeri ile, tek bir Oracle Data Guard Broker yap
 
 Aşağıdaki diyagram, Azure 'da kullanılabilirlik alanları ile Oracle Data Guard 'ın kullanılması için önerilen bir mimaridir. Bu mimari% 99,99 VM çalışma süresi SLA 'sını almanızı sağlar.
 
-![Veri koruma Aracısı ile kullanılabilirlik alanlarını kullanmak Oracle Database-FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
+![Kullanılabilirlik alanları ile Azure 'da Oracle Data Guard 'ı kullanmak için önerilen bir mimari gösteren diyagram.](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
 Önceki diyagramda istemci sistemi, Web aracılığıyla Oracle arka ucu ile özel bir uygulamaya erişir. Web ön ucu, bir yük dengeleyicide yapılandırılır. Web ön ucu, çalışmayı işlemek için uygun uygulama sunucusuna bir çağrı yapar. Uygulama sunucusu birincil Oracle veritabanını sorgular. Oracle veritabanı, lisans maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için [Kısıtlanmış çekirdek vCPU 'ları](../../../virtual-machines/constrained-vcpu.md) olan hiper iş parçacıklı [bellek için iyileştirilmiş bir sanal makine](../../sizes-memory.md) kullanılarak yapılandırılmıştır. Performans ve yüksek kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanılır.
 

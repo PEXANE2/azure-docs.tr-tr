@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 23811f379f8738e3fe9f162e23627d0c3c457621
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8ae16e6799d1253b8b070d59414beaee3c7ff332
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367508"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479791"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Küme yapılandırmaları için ayrıntılı rol tabanlı erişime geçme
 
@@ -112,11 +112,11 @@ Sürüm 3.15.0 veya aşağıdaki sürümü kullanıyorsanız kesintileri önleme
 
 .NET için HDInsight SDK 'nın 5.0.0 veya sonraki bir [sürümüyle](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) güncelleştirin. Aşağıdaki değişikliklerden etkilenen bir yöntem kullanıyorsanız, minimum kod değişiklikleri gerekebilir:
 
-- [`ConfigurationOperationsExtensions.Get`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet) , artık depolama anahtarları (çekirdek-site) veya HTTP kimlik bilgileri (ağ geçidi) gibi **hassas parametreleri döndürmez** .
-    - Gizli parametreler dahil tüm yapılandırmaların alınması için ileri ' yi kullanın [`ConfigurationOperationsExtensions.List`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet) .' Reader ' rolüne sahip kullanıcıların bu yöntemi kullanabilediğine unutmayın. Bu, kullanıcıların bir küme için hassas bilgilere erişebileceği ayrıntılı denetim sağlar. 
-    - Yalnızca HTTP ağ geçidi kimlik bilgilerini almak için kullanın [`ClusterOperationsExtensions.GetGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet) . 
-- [`ConfigurationsOperationsExtensions.Update`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet) Artık kullanım dışıdır ve ile değiştirilmiştir [`ClusterOperationsExtensions.UpdateGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet) . 
-- [`ConfigurationsOperationsExtensions.EnableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet) ve [`DisableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet) artık kullanım dışıdır. HTTP artık her zaman etkindir, bu nedenle bu yöntemlere artık gerek yoktur.
+- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet&preserve-view=true) , artık depolama anahtarları (çekirdek-site) veya HTTP kimlik bilgileri (ağ geçidi) gibi **hassas parametreleri döndürmez** .
+    - Gizli parametreler dahil tüm yapılandırmaların alınması için ileri ' yi kullanın [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet&preserve-view=true) .' Reader ' rolüne sahip kullanıcıların bu yöntemi kullanabilediğine unutmayın. Bu, kullanıcıların bir küme için hassas bilgilere erişebileceği ayrıntılı denetim sağlar. 
+    - Yalnızca HTTP ağ geçidi kimlik bilgilerini almak için kullanın [`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet&preserve-view=true) . 
+- [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet&preserve-view=true) Artık kullanım dışıdır ve ile değiştirilmiştir [`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet&preserve-view=true) . 
+- [`ConfigurationsOperationsExtensions.EnableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet&preserve-view=true) ve [`DisableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet&preserve-view=true) artık kullanım dışıdır. HTTP artık her zaman etkindir, bu nedenle bu yöntemlere artık gerek yoktur.
 
 ### <a name="sdk-for-python"></a>Python için SDK
 
@@ -193,7 +193,7 @@ Küme yapılandırmalarının artık ayrıntılı rol tabanlı erişim denetimi 
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>HDInsight kümesi operatörü rolünü başka bir kullanıcıya veya hizmet sorumlusuna atamak için Azure CLı komutunu çalıştırırken "işlemi tamamlamaya yetecek ayrıcalıklara" neden görmüyorum?
 
-Sahip rolüne sahip olmanın yanı sıra, komutu yürüten Kullanıcı veya hizmet sorumlusu, atanan kişinin nesne kimliklerini aramak için yeterli Azure AD iznine sahip olmalıdır. Bu ileti, Azure AD izinlerinin yetersiz olduğunu gösterir. `-–assignee`Bağımsız değişkenini ile değiştirmeyi deneyin `–assignee-object-id` ve adı (ya da yönetilen bir kimlik söz konusu olduğunda asıl kimliği) yerine parametre olarak atanan e ' nın nesne kimliğini sağlayın. Daha fazla bilgi için [az role atama oluşturma belgelerinin](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) isteğe bağlı parametreler bölümüne bakın.
+Sahip rolüne sahip olmanın yanı sıra, komutu yürüten Kullanıcı veya hizmet sorumlusu, atanan kişinin nesne kimliklerini aramak için yeterli Azure AD iznine sahip olmalıdır. Bu ileti, Azure AD izinlerinin yetersiz olduğunu gösterir. `-–assignee`Bağımsız değişkenini ile değiştirmeyi deneyin `–assignee-object-id` ve adı (ya da yönetilen bir kimlik söz konusu olduğunda asıl kimliği) yerine parametre olarak atanan e ' nın nesne kimliğini sağlayın. Daha fazla bilgi için [az role atama oluşturma belgelerinin](/cli/azure/role/assignment#az-role-assignment-create) isteğe bağlı parametreler bölümüne bakın.
 
 Bu hala işe yaramazsa, doğru izinleri almak için Azure AD yöneticinize başvurun.
 

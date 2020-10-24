@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d784e8bfb0841570f63d8433fa74059eb9e22758
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569813"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487747"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Python SDK Azure Cosmos DB: sürüm notları ve kaynakları
 
@@ -22,25 +22,25 @@ ms.locfileid: "91569813"
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [.NET değişiklik akışı SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET Değişiklik Akışı SDK'sı v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK’sı v4](sql-api-sdk-java-v4.md)
 > * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
 > * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
-> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Verileri v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Verileri v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark Bağlayıcısı](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
-> * [REST Kaynak Sağlayıcısı](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [REST kaynak sağlayıcısı](/rest/api/cosmos-db-resource-provider/)
+> * [SQL](./sql-query-getting-started.md)
 > * [Toplu yürütücü-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
+> * [Toplu yürütücü - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**SDK 'Yı indir**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API belgeleri**|[Python API başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python&preserve-view=true)|
+|**API belgeleri**|[Python API başvuru belgeleri](/python/api/azure-cosmos/?preserve-view=true&view=azure-python)|
 |**SDK yükleme yönergeleri**|[Python SDK yükleme yönergeleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Kullanmaya başlama**|[Python SDK 'Yı kullanmaya başlama](create-sql-api-python.md)|
 |**Desteklenen geçerli platform**|[Python 2,7](https://www.python.org/downloads/) ve [Python 3.5.3 +](https://www.python.org/downloads/)|
@@ -316,7 +316,7 @@ Sürüm 4.0.0 B1, Python dili en iyi uygulamalarına uygun bir Kullanıcı dostu
 
 ## <a name="release--retirement-dates"></a>Yayın & kullanımdan kaldırma tarihleri
 
-Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlar. Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir.
+Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlar. Yeni özellikler, işlevler ve iyileştirmeler yalnızca geçerli SDK'ya eklendiğinden, her zaman mümkün olan en kısa zamanda, en son SDK sürümüne yükseltmeniz önerilir.
 
 > [!WARNING]
 > 31 Ağustos 2022 ' den sonra, Azure Cosmos DB artık hata düzeltmeleri yapamayacak, yeni özellikler ekleyecek ve SQL API için Azure Cosmos DB Python SDK 'sının 1. x veya 2. x sürümlerine destek sağlamacaktır. Yükseltmemeyi tercih ediyorsanız, SDK 'nın 1. x ve 2. x sürümünden gönderilen istekler Azure Cosmos DB hizmeti tarafından sunulmayı sürdürmeye devam edecektir.
@@ -359,4 +359,4 @@ Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Cosmos DB hakkında daha fazla bilgi için bkz. [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfası. 
+Cosmos DB hakkında daha fazla bilgi edinmek için [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmeti sayfasına bakın.

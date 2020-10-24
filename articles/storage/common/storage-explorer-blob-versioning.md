@@ -7,22 +7,22 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: chuye
-ms.openlocfilehash: d318983cec1365b71d14731395e71528621659d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55fff7e4e36f066ba8ae5734e483df393fbd72cd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051961"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488665"
 ---
 # <a name="azure-storage-explorer-blob-versioning-guide"></a>Azure Depolama Gezgini blob sürüm oluşturma kılavuzu
 
-Microsoft Azure Depolama Gezgini, blob sürümlerinin kolay erişim ve yönetimini sağlar. Bu kılavuz, blob sürümü oluşturma 'nın Depolama Gezgini 'da nasıl çalıştığını anlamanıza yardımcı olur. Devam etmeden önce [BLOB sürümü oluşturma](https://docs.microsoft.com/azure/storage/blobs/versioning-overview)hakkında daha fazla bilgi okumanız önerilir.
+Microsoft Azure Depolama Gezgini, blob sürümlerinin kolay erişim ve yönetimini sağlar. Bu kılavuz, blob sürümü oluşturma 'nın Depolama Gezgini 'da nasıl çalıştığını anlamanıza yardımcı olur. Devam etmeden önce [BLOB sürümü oluşturma](/azure/storage/blobs/versioning-overview)hakkında daha fazla bilgi okumanız önerilir.
 
 ## <a name="terminology"></a>Terminoloji
 
 Bu bölümde, bu makaledeki kullanımları anlamanıza yardımcı olacak bazı tanımlar sağlanmaktadır.
 
-- Geçici silme: alternatif bir otomatik veri koruma özelliği. [Burada](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview)geçici silme hakkında daha fazla bilgi edinebilirsiniz.
+- Geçici silme: alternatif bir otomatik veri koruma özelliği. [Burada](/azure/storage/blobs/soft-delete-blob-overview)geçici silme hakkında daha fazla bilgi edinebilirsiniz.
 - Etkin blob: etkin durumda bir blob veya blob sürümü oluşturulur. Yalnızca etkin durumdaki Bloblar veya blob sürümleri üzerinde işlem yapabilirsiniz.
 - Geçici olarak silinen blob: bir blob veya geçici silme olarak işaretlenen blob sürümü. Geçici olarak silinen blob 'lar yalnızca bekletme döneminde tutulur.
 - Blob sürümü: blob sürümü oluşturma etkinken oluşturulan bir BLOB. Her blob sürümü bir sürüm KIMLIĞIYLE ilişkilendirilir.
@@ -36,10 +36,10 @@ Depolama Gezgini Blobları görüntülemek için dört farklı görünümü dest
 
 | Görüntüle | Etkin sürüm olmayan BLOB 'lar | Geçici silinen sürüm olmayan Bloblar | Blob sürümleri |
 | ---- | :----------: | :-----------: | :------------------: |
-| Etkin blob 'lar | Evet | Hayır | Yalnızca geçerli sürüm |
-| Etkin Bloblar ve geçici olarak silinen blob 'lar | Evet | Evet | Yalnızca geçerli sürüm |
-| Geçerli sürüm olmadan etkin blob 'lar ve Bloblar | Evet | Hayır | Güncel sürüm veya en son etkin sürüm |
-| Tüm Bloblar ve geçerli sürüm olmadan blob 'lar | Evet | Evet | Güncel sürüm veya en son sürüm |
+| Etkin blob 'lar | Yes | Hayır | Yalnızca geçerli sürüm |
+| Etkin Bloblar ve geçici olarak silinen blob 'lar | Yes | Yes | Yalnızca geçerli sürüm |
+| Geçerli sürüm olmadan etkin blob 'lar ve Bloblar | Yes | Hayır | Güncel sürüm veya en son etkin sürüm |
+| Tüm Bloblar ve geçerli sürüm olmadan blob 'lar | Yes | Yes | Güncel sürüm veya en son sürüm |
 
 ### <a name="active-blobs"></a>Etkin blob 'lar
 
@@ -117,5 +117,5 @@ Her blob sürümünün kendi erişim katmanı vardır. Blob sürümlerinin eriş
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 
-* [Blob sürümü oluşturma](https://docs.microsoft.com/azure/storage/blobs/versioning-overview)
-* [Bloblar için geçici silme](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview)
+* [Blob sürümü oluşturma](/azure/storage/blobs/versioning-overview)
+* [Bloblar için geçici silme](/azure/storage/blobs/soft-delete-blob-overview)

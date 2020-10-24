@@ -10,18 +10,18 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1cdd04be4b5774944f70e551221a08261aef22d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333588"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488903"
 ---
 # <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
 Azure depolama hesabı; Bloblar, dosyalar, kuyruklar, tablolar ve diskler içeren tüm Azure depolama veri nesnelerinizi içerir. Depolama hesabı, Azure depolama verileriniz için HTTP veya HTTPS üzerinden dünyanın herhangi bir yerinden erişilebilen benzersiz bir ad alanı sağlar. Azure Depolama hesabınızdaki veriler dayanıklı ve yüksek oranda kullanılabilir, güvenli ve yüksek düzeyde ölçeklenebilir.
 
-Bu nasıl yapılır makalesinde [Azure Portal](https://portal.azure.com/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/), [Azure CLI](https://docs.microsoft.com/cli/azure)veya [Azure Resource Manager şablonunu](../../azure-resource-manager/management/overview.md)kullanarak bir depolama hesabı oluşturmayı öğreneceksiniz.  
+Bu nasıl yapılır makalesinde [Azure Portal](https://portal.azure.com/), [Azure POWERSHELL](/powershell/azure/), [Azure CLI](/cli/azure)veya [Azure Resource Manager şablonunu](../../azure-resource-manager/management/overview.md)kullanarak bir depolama hesabı oluşturmayı öğreneceksiniz.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: f89ebc6a82c8b0a5ee34f40e2a5630e1faeb6b27
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8bd5bba0f98a872ce31836217aef5605df3b0c41
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280700"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488189"
 ---
 # <a name="update-an-azure-cosmos-accounts-regions-using-powershell"></a>PowerShell kullanarak bir Azure Cosmos hesabının bölgelerini güncelleştirme
 
@@ -43,13 +43,13 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB hesaplarını listeler veya belirtilen bir Cosmos DB hesabı alır. |
-| [New-AzCosmosDBLocationObject](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdblocationobject) | Update-AzCosmosDBAccountRegion için parametre olarak kullanılacak PSLocation türünde bir nesne oluşturur. |
-| [Update-AzCosmosDBAccountRegion](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountregion) | Cosmos DB hesabının bölgelerini güncelleştirin. |
+| [Get-AzCosmosDBAccount](/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB hesaplarını listeler veya belirtilen bir Cosmos DB hesabı alır. |
+| [New-AzCosmosDBLocationObject](/powershell/module/az.cosmosdb/new-azcosmosdblocationobject) | Update-AzCosmosDBAccountRegion için parametre olarak kullanılacak PSLocation türünde bir nesne oluşturur. |
+| [Update-AzCosmosDBAccountRegion](/powershell/module/az.cosmosdb/update-azcosmosdbaccountregion) | Cosmos DB hesabının bölgelerini güncelleştirin. |
 |**Azure Kaynak grupları**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).

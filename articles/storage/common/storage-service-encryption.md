@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 19f0027b506b78ef81f9acc25a94ef9ab74643e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f56da93d0ea0f346e73b34990d8ec4c222bb8813
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985760"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488580"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Bekleyen veri için Azure Depolama şifrelemesi
 
@@ -30,7 +30,7 @@ Bir depolama hesabındaki veriler, performans katmanından (Standart veya Premiu
 
 20 Ekim 2017 ' den sonra Azure depolama 'ya yazılan her Blok Blobu, ekleme Blobu veya Sayfa Blobu şifrelenir. Bu tarihten önce oluşturulan Bloblar, bir arka plan işlemi tarafından şifrelenmeye devam eder. 20 Ekim 2017 ' den önce oluşturulan bir Blobun şifrelemeye zorlamak için, blobu yeniden yazabilirsiniz. Bir Blobun şifreleme durumunu denetleme hakkında bilgi edinmek için bkz. [bir Blobun şifreleme durumunu denetleme](../blobs/storage-blob-encryption-status.md).
 
-Azure depolama şifrelemesini temel alan şifreleme modülleri hakkında daha fazla bilgi için bkz. [şifreleme API 'si: yeni nesil](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
+Azure depolama şifrelemesini temel alan şifreleme modülleri hakkında daha fazla bilgi için bkz. [şifreleme API 'si: yeni nesil](/windows/desktop/seccng/cng-portal).
 
 Azure yönetilen diskler için şifreleme ve anahtar yönetimi hakkında daha fazla bilgi için bkz. Windows VM 'ler için [Azure yönetilen disklerin sunucu tarafı şifrelemesi](../../virtual-machines/windows/disk-encryption.md) veya Linux VM 'Leri için [Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../../virtual-machines/linux/disk-encryption.md) .
 

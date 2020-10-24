@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83b71d46c3d6b1612728b2bd81c6acede6d0559b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714444"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488631"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -23,7 +23,7 @@ Bu kılavuzda, Depolama Gezgini yaygın olarak görülen sorunlara yönelik çö
 
 ## <a name="azure-rbac-permissions-issues"></a>Azure RBAC izinleri sorunları
 
-Azure rol tabanlı erişim denetimi [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) , _rol_olarak izin kümelerini birleştirerek Azure kaynakları için yüksek düzeyde ayrıntılı erişim yönetimine izin verebilir. Azure RBAC çalışma Depolama Gezgini en iyi şekilde yararlanmak için bazı stratejiler aşağıda verilmiştir.
+Azure rol tabanlı erişim denetimi [Azure RBAC](/azure/role-based-access-control/overview) , _rol_olarak izin kümelerini birleştirerek Azure kaynakları için yüksek düzeyde ayrıntılı erişim yönetimine izin verebilir. Azure RBAC çalışma Depolama Gezgini en iyi şekilde yararlanmak için bazı stratejiler aşağıda verilmiştir.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Nasıl yaparım? Depolama Gezgini kaynaklarıma eriş mi?
 
@@ -65,7 +65,7 @@ Blob kapsayıcılarına veya kuyruklara erişmek istiyorsanız, Azure kimlik bil
 3. İliştirmekte olduğunuz kaynakla ilişkili kullanıcı hesabı ve kiracıyı seçin. İleri'ye tıklayın.
 4. Kaynak türünü seçin, kaynağın URL 'sini girin ve bağlantı için benzersiz bir görünen ad girin. İleri'ye tıklayın. Bağlan'a tıklayın.
 
-Diğer kaynak türleri için şu anda Azure RBAC ile ilgili bir çözümünüz yoktur. Geçici bir çözüm olarak, [kaynağına eklemek](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)IÇIN BIR SAS URI 'si isteyebilirsiniz.
+Diğer kaynak türleri için şu anda Azure RBAC ile ilgili bir çözümünüz yoktur. Geçici bir çözüm olarak, [kaynağına eklemek](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)IÇIN BIR SAS URI 'si isteyebilirsiniz.
 
 ### <a name="recommended-azure-built-in-roles"></a>Önerilen Azure yerleşik rolleri
 
@@ -100,7 +100,7 @@ Sertifikanın nereden geldiği konusunda emin değilseniz, bulmak için aşağı
 2. OpenSSL 'yi çalıştırın.
     * Windows: yükleme dizinini açın, **/bin/** seçin ve ardından **openssl.exe**öğesine çift tıklayın.
     * Mac ve Linux: `openssl` terminalden çalıştırın.
-3. `s_client -showcerts -connect microsoft.com:443` komutunu çalıştırın.
+3. Şu komutu çalıştırın: `s_client -showcerts -connect microsoft.com:443`.
 4. Otomatik olarak imzalanan sertifikaları bulun. Hangi sertifikaların kendinden imzalandığına ilişkin emin değilseniz, konunun ve verenin aynı olduğu her yerde dikkat edin `("s:")` `("i:")` .
 5. Her biri için otomatik olarak imzalanan sertifikalar bulduğunuzda, (ve dahil) her şeyi `-----BEGIN CERTIFICATE-----` `-----END CERTIFICATE-----` Yeni bir. cer dosyasına kopyalayıp yapıştırın.
 6. Depolama Gezgini açın ve **Edit**  >  **SSL sertifikalarını**düzenlemek için  >  **sertifikaları içeri aktarın**' a gidin. Ardından, oluşturduğunuz. cer dosyalarını bulmak, seçmek ve açmak için dosya seçiciyi kullanın.
@@ -111,7 +111,7 @@ Bu adımları izleyerek kendinden imzalı bir sertifika bulamıyorsanız, geri b
 
 ### <a name="blank-sign-in-dialog-box"></a>Boş oturum açma iletişim kutusu
 
-Active Directory Federasyon Hizmetleri (AD FS) (AD FS), elektron tarafından desteklenmeyen bir yeniden yönlendirme gerçekleştirmeyi Depolama Gezgini istem yaparken, boş oturum açma iletişim kutuları çoğu zaman oluşur. Bu sorunu geçici olarak çözmek için, oturum açma için cihaz kod akışını kullanmayı deneyebilirsiniz. Bunu yapmak için şu adımları uygulayın:
+Active Directory Federasyon Hizmetleri (AD FS) (AD FS), elektron tarafından desteklenmeyen bir yeniden yönlendirme gerçekleştirmeyi Depolama Gezgini istem yaparken, boş oturum açma iletişim kutuları çoğu zaman oluşur. Bu sorunu geçici olarak çözmek için, oturum açma için cihaz kod akışını kullanmayı deneyebilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. Sol dikey araç çubuğunda **Ayarlar**' ı açın. Ayarlar panelinde **uygulama**  >  **oturum açma**' ya gidin. **Cihaz kod akışı oturum açma**özelliğini etkinleştir.
 2. **Bağlan** iletişim kutusunu açın (sol taraftaki dikey çubukta bulunan tak simgesi veya hesap panelinde **Hesap Ekle** ' yi seçerek).
@@ -195,7 +195,7 @@ Kullanıcı arabirimi aracılığıyla ekli bir hesabı veya depolama kaynağın
 > [!NOTE]
 > Depolama Gezgini, proxy ayarlarını yapılandırmak için proxy otomatik yapılandırma dosyalarını desteklemez.
 
-### <a name="common-solutions"></a>Ortak çözümler
+### <a name="common-solutions"></a>Yaygın çözümler
 
 Sorun yaşamaya devam ediyorsanız, aşağıdaki sorun giderme yöntemlerini deneyin:
 
@@ -332,7 +332,7 @@ Depolama Gezgini sisteminizde .NET Core 'un yüklü olmasını gerektirir. .NET 
 # <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. Depolama Gezgini. tar. gz dosyasını indirin.
-2. [.NET Core çalışma zamanını](https://docs.microsoft.com/dotnet/core/install/linux)yükler:
+2. [.NET Core çalışma zamanını](/dotnet/core/install/linux)yükler:
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -345,7 +345,7 @@ Depolama Gezgini sisteminizde .NET Core 'un yüklü olmasını gerektirir. .NET 
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Depolama Gezgini. tar. gz dosyasını indirin.
-2. [.NET Core çalışma zamanını](https://docs.microsoft.com/dotnet/core/install/linux)yükler:
+2. [.NET Core çalışma zamanını](/dotnet/core/install/linux)yükler:
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -358,7 +358,7 @@ Depolama Gezgini sisteminizde .NET Core 'un yüklü olmasını gerektirir. .NET 
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Depolama Gezgini. tar. gz dosyasını indirin.
-2. [.NET Core çalışma zamanını](https://docs.microsoft.com/dotnet/core/install/linux)yükler:
+2. [.NET Core çalışma zamanını](/dotnet/core/install/linux)yükler:
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \

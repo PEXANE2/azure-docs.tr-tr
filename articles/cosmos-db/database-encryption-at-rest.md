@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb3dda7a2f33fa76ab78a67f86fb015430c64099
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceb2b8812b52b1ca2030a0fd0006c9388630c05e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85114784"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487492"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB'de veri şifreleme 
 
@@ -46,7 +46,7 @@ Y: anahtarlar Microsoft tarafından yönetilir.
 Y: Microsoft, Cosmos DB aşağıdaki şifreleme anahtarı dönüşü için bir iç kılavuz kümesine sahiptir. Belirli yönergeler yayımlanmaz. Microsoft, iç yönergelerin bir alt kümesi olarak görülen ve geliştiriciler için faydalı en iyi yöntemlere sahip olan [güvenlik geliştirme yaşam döngüsünü (SDL)](https://www.microsoft.com/sdl/default.aspx)yayımlar.
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>S: kendi şifreleme anahtarlarımı kullanabilir miyim?
-Y: Evet, bu özellik artık yeni Azure Cosmos DB hesapları için kullanılabilir ve bu, hesap oluşturma sırasında yapılmalıdır. Daha fazla bilgi için lütfen [müşteri tarafından yönetilen anahtarlar](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk) belgesine gidin.
+Y: Evet, bu özellik artık yeni Azure Cosmos DB hesapları için kullanılabilir ve bu, hesap oluşturma sırasında yapılmalıdır. Daha fazla bilgi için lütfen [müşteri tarafından yönetilen anahtarlar](./how-to-setup-cmk.md) belgesine gidin.
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>S: şifreleme hangi bölgelerde açık?
 Y: tüm Azure Cosmos DB bölgelerinin tüm Kullanıcı verileri için şifrelenmesi açıktır.

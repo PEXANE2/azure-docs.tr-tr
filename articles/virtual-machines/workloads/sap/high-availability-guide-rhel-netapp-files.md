@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 14c5cd480f17e137965ae4bbf6700a36eb92cc3e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 040220bfac2a3ac1ef54965ba9be35755b9b787b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167840"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487628"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirlik, SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux
 
@@ -614,11 +614,11 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
 
 1. **[A]** canlı tutmayı yapılandırma
 
-   SAP NetWeaver uygulama sunucusu ve yoks/SCS arasındaki iletişim, bir yazılım yük dengeleyici aracılığıyla yönlendirilir. Yük dengeleyici, yapılandırılabilir bir zaman aşımından sonra etkin olmayan bağlantıları keser. Bunu engellemek için SAP NetWeaver ASCS/SCS profilinde bir parametre ayarlamanız ve Linux sistem ayarlarını değiştirmeniz gerekir. Daha fazla bilgi için [SAP Note 1410736][1410736] makalesini okuyun.
+   SAP NetWeaver uygulama sunucusu ve yoks/SCS arasındaki iletişim, bir yazılım yük dengeleyici aracılığıyla yönlendirilir. Yük dengeleyici, yapılandırılabilir bir zaman aşımından sonra etkin olmayan bağlantıları keser. Bunu engellemek için, ENSA1 kullanıyorsanız SAP NetWeaver ASCS/SCS profilinde bir parametre ayarlamanız ve `keepalive` her IKI ENSA1/ENSA2 için tüm sap sunucularındaki Linux sistem ayarlarını değiştirmeniz gerekir. Daha fazla bilgi için [SAP Note 1410736][1410736] makalesini okuyun.
 
    ```
    # Change the Linux system configuration
-   sudo sysctl net.ipv4.tcp_keepalive_time=120
+   sudo sysctl net.ipv4.tcp_keepalive_time=300
    ```
 
 1. **[A]** /usr/SAP/sapservices dosyasını güncelleştirme

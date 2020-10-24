@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 65f276662ac4837003c7a7078b6197ba155eadc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e74a36d7b353d0713a7bf17f7a6341558f0739
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167598"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485010"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Azure Cosmos DB Tablo API'si hakkında sık sorulan sorular
 
@@ -97,7 +97,7 @@ Verilere gözatabilmeniz için Azure portal kullanabilirsiniz. Tablo API'si kodu
 
 ### <a name="which-tools-work-with-the-table-api"></a>Tablo API'si hangi araçlar çalışıyor?
 
-[Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)kullanabilirsiniz.
+[Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md)kullanabilirsiniz.
 
 Daha önce belirtilen biçimde bir bağlantı dizesi alma esnekliğine sahip araçlar yeni Tablo API'si destekleyebilir. [Azure Storage Istemci araçları](../storage/common/storage-explorers.md) sayfasında tablo araçları listesi sunulmaktadır.
 
@@ -115,7 +115,7 @@ Evet, her biri bağlantı dizesi aracılığıyla kendi URI 'sine işaret eden C
 
 ### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-offering"></a>Mevcut bir Azure Tablo Depolama uygulamasını bu teklife geçirmek Nasıl yaparım? mı?
 
-[AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) ve [Azure Cosmos DB veri geçiş aracı](import-data.md) desteklenir.
+[AzCopy](../storage/common/storage-use-azcopy-v10.md) ve [Azure Cosmos DB veri geçiş aracı](import-data.md) desteklenir.
 
 ### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>Bu hizmet için depolama boyutunun nasıl genişlediği, örneğin *n* GB veri ile başladım ve verilerim zaman IÇINDE 1 TB 'a büyüyecektir?
 
@@ -231,7 +231,7 @@ Non-.NET SDK 'Ları için, dizin oluşturma ilkesi yalnızca **Veri Gezgini**' d
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Platform olarak Azure Cosmos DB sıralama, toplamalar, hiyerarşi ve diğer işlevler gibi birçok özelliğe sahip olabilir. Bu özellikleri Tablo API'si ekleysin mi?
 
-Tablo API'si, Azure Tablo depolama ile aynı sorgu işlevlerini sağlar. Azure Cosmos DB ayrıca sıralama, toplamalar, jeo-uzamsal sorgu, hiyerarşi ve çok çeşitli yerleşik işlevleri de destekler. Daha fazla bilgi için bkz. [SQL sorguları](how-to-sql-query.md).
+Tablo API'si, Azure Tablo depolama ile aynı sorgu işlevlerini sağlar. Azure Cosmos DB ayrıca sıralama, toplamalar, jeo-uzamsal sorgu, hiyerarşi ve çok çeşitli yerleşik işlevleri de destekler. Daha fazla bilgi için bkz. [SQL sorguları](./sql-query-getting-started.md).
 
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Tablo API'si için tablo verimini ne zaman değiştirmem gerekir?
 
@@ -293,7 +293,7 @@ Azure Cosmos DB gecikme süresi, aktarım hızı, kullanılabilirlik ve tutarlı
 Görüşlerinizi aşağıdaki yollarla paylaşabilirsiniz:
 
 * [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [Soru sayfası Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Soru sayfası Microsoft Q&](/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow, programlama sorularına en iyisidir. Sorunuzun [konuyla ilgili](https://stackoverflow.com/help/on-topic) olduğundan emin olun ve mümkün olduğunca [fazla ayrıntı sağlayın ve bu soruyu açık ve answerable](https://stackoverflow.com/help/how-to-ask)yapın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

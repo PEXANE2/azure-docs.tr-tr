@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 815c738f1680c12f94aa97e91cd123237bf1b4f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac050a9b90272203a899a9a15a51df022e4b0d0e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542512"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483769"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Öğretici: TeamSeer ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Ekip Seer 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini TeamSeer ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -126,7 +126,7 @@ TeamSeer ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki 
 
 1. **HR Yöneticisi**' ne gidin.
 
-    ![IK yönetici](./media/teamseer-tutorial/ic789634.png "IK yönetici")
+    ![Ekran görüntüsü, TeamSeer penceresinden seçilen H R yöneticisini gösterir.](./media/teamseer-tutorial/ic789634.png "IK yönetici")
 
 1. **Kurulum**'a tıklayın.
 
@@ -134,11 +134,11 @@ TeamSeer ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki 
 
 1. **SAML sağlayıcısı ayrıntılarını ayarla**' ya tıklayın.
 
-    ![SAML ayarları](./media/teamseer-tutorial/ic789636.png "SAML ayarları")
+    ![Ekran görüntüsü SAML sağlayıcısı ayrıntılarının seçili olduğunu gösterir.](./media/teamseer-tutorial/ic789636.png "SAML ayarları")
 
 1. SAML sağlayıcı ayrıntıları bölümünde aşağıdaki adımları uygulayın:
 
-    ![SAML ayarları](./media/teamseer-tutorial/ic789637.png "SAML ayarları")
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz SAML sağlayıcısı ayrıntılarını gösterir.](./media/teamseer-tutorial/ic789637.png "SAML ayarları")
 
     a. **URL** metin kutusuna, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -146,7 +146,7 @@ TeamSeer ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki 
 
 1. SAML sağlayıcısı yapılandırmasını tamamlamak için aşağıdaki adımları uygulayın:
 
-    ![SAML ayarları](./media/teamseer-tutorial/ic789638.png "SAML ayarları")
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz SAML sağlayıcısı yapılandırmasını gösterir.](./media/teamseer-tutorial/ic789638.png "SAML ayarları")
 
     a. **Sınama e-posta adresleri**' nde, test kullanıcısının e-posta adresini yazın.
   
@@ -215,7 +215,7 @@ Azure AD kullanıcılarının TeamSeer 'da oturum açmasını sağlamak için, S
 
 1. **HR yönetici \> kullanıcıları** ' na gidin ve ardından **Yeni Kullanıcı Sihirbazı 'nı Çalıştır**' a tıklayın.
 
-    ![IK yönetici](./media/teamseer-tutorial/ic789640.png "IK yönetici")
+    ![Ekran görüntüsü, çalıştırılacak Sihirbazı seçebileceğiniz H R Yönetici sekmesini gösterir.](./media/teamseer-tutorial/ic789640.png "IK yönetici")
 
 1. **Kullanıcı ayrıntıları** bölümünde aşağıdaki adımları uygulayın:
 

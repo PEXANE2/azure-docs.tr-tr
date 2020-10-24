@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: ac67e7a8e5575bcbca451335fb0ea837fb70d3d3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b9b743e9f293455c09557348c53cc76b1f904b0a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282728"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489141"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-mongodb-api-database-and-collection-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Cosmos MongoDB API veritabanı ve koleksiyonu için bir kaynak kilidi oluşturma
 
@@ -42,11 +42,11 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure kaynağı**| |
-| [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) | Kaynak kilidi oluşturur. |
-| [Get-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcelock) | Bir kaynak kilidi alır veya kaynak kilitlerini listeler. |
-| [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) | Kaynak kilidini kaldırır. |
+| [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) | Kaynak kilidi oluşturur. |
+| [Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock) | Bir kaynak kilidi alır veya kaynak kilitlerini listeler. |
+| [Remove-AzResourceLock](/powershell/module/az.resources/remove-azresourcelock) | Kaynak kilidini kaldırır. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).

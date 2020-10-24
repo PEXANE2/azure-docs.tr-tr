@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa0ae0137064cc14d6d8f2adfe085ca255da73af
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082259"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486319"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight ile betik eylemi geliştirme
 
@@ -26,7 +26,7 @@ Betik eylemleri aşağıdaki yöntemlerle uygulanabilir:
 
 | Betik uygulamak için bu yöntemi kullanın... | Küme oluşturma sırasında... | Çalışan bir kümede... |
 | --- |:---:|:---:|
-| Azure portal |✓ |✓ |
+| Azure portalı |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure Klasik CLI |&nbsp; |✓ |
 | HDInsight .NET SDK 'Sı |✓ |✓ |
@@ -317,7 +317,7 @@ Aşağıda, bir betiği dağıtmaya hazırlanırken yapılacak adımlar verilmi�
 
 Aşağıdaki yöntemleri kullanarak HDInsight kümelerini özelleştirmek için betik eylemleri kullanabilirsiniz:
 
-* Azure portal
+* Azure portalı
 * Azure PowerShell
 * Azure Resource Manager şablonları
 * HDInsight .NET SDK 'Sı.
@@ -365,5 +365,5 @@ awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 ## <a name="next-steps"></a><a name="seeAlso"></a>Sonraki adımlar
 
 * [Betik eylemi kullanarak HDInsight kümelerini özelleştirmeyi](hdinsight-hadoop-customize-cluster-linux.md) öğrenin
-* HDInsight 'ı yöneten .NET uygulamaları oluşturma hakkında daha fazla bilgi edinmek için [HDInsight .NET SDK başvurusunu](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) kullanın
+* HDInsight 'ı yöneten .NET uygulamaları oluşturma hakkında daha fazla bilgi edinmek için [HDInsight .NET SDK başvurusunu](/dotnet/api/overview/azure/hdinsight) kullanın
 * HDInsight kümelerinde yönetim eylemleri gerçekleştirmek için REST 'i nasıl kullanacağınızı öğrenmek için [hdınsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) kullanın.

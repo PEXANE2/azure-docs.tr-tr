@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 3a5a4b3997a9286901fc24173e57563c5abe68a1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: bd2f91a697fffa1ef83f5173a394686245cf9826
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92429035"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488920"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>MySQL için Azure veritabanı 'nda planlı bakım bildirimi-tek sunucu
 
@@ -63,7 +63,7 @@ Azure portal planlı bakım bildirimini denetleyebilir ya da uyarıları bildiri
 
 **Hizmet durumu uyarıları**oluşturma hakkında ayrıntılı adımlar için, [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications.md)konusuna bakın.
 
-## <a name="can-i-control-or-change-planned-maintenance-for-my-servers-after-i-receive-a-notification-event"></a>Bildirim olayı aldıktan sonra sunucularım için planlı Bakımı denetleyebilir veya değiştirebilir miyim?
+## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Planlı Bakımı iptal edebilir veya erteleyebilir miyim?
 
 Sunucunuzu güvenli, kararlı ve güncel tutmak için bakım yapmanız gerekir. Planlı bakım olayı iptal edilemez veya ertelenemez. Bildirim, belirli bir Azure bölgesine gönderildikten sonra, bu bölgedeki herhangi bir sunucu için düzeltme eki uygulama değişiklikleri yapılamaz. Düzeltme Eki, tüm bölge için aynı anda kullanıma alınır. MySQL için Azure veritabanı-tek sunucu hizmeti, hizmet için ayrıntılı denetim veya özelleştirme gerektirmeyen bulut Yerel uygulaması için tasarlanmıştır. Sunucularınız için bakım zamanlanmasını istiyorsanız [Esnek sunucuları](./flexible-server/overview.md)düşünmeniz önerilir.
 

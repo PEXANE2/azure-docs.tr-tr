@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 21e1d93e206751b5a55b0b3549e8bd566612ddbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43a059354c70c792592ba46aa3d5b63677bda4eb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080462"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488359"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB veri izleme başvurusu
 
@@ -25,7 +25,7 @@ Aşağıdaki tabloda Azure Cosmos DB içindeki kaynak günlüklerinin özellikle
 
 | Azure depolama alanı veya özelliği | Azure Izleyici günlükleri özelliği | Açıklama |
 | --- | --- | --- |
-| **ışınızda** | **TimeGenerated** | İşlem gerçekleştiği tarih ve saat (UTC). |
+| **time** | **TimeGenerated** | İşlem gerçekleştiği tarih ve saat (UTC). |
 | **RESOURCEID** | **Kaynak** | Günlüklerin etkinleştirildiği Azure Cosmos DB hesabı.|
 | **alan** | **Kategori** | Azure Cosmos DB, **Dataplanerequests**, **mongorequests**, **QueryRuntimeStatistics**, **partitionkeystatıstıcs**, **partitionkeyrutüketim**, **controlplanerequests** , kullanılabilir günlük türlerdir. |
 | **operationName** | **OperationName** | İşlemin adı. İşlem adı,,,,,,,,  `Create` `Update` `Read` `ReadFeed` `Delete` `Replace` `Execute` `SqlQuery` `Query` , `JSQuery` ,, veya olabilir `Head` `HeadFeed` `Upsert` .   |
@@ -38,13 +38,13 @@ Aşağıdaki tabloda Azure Cosmos DB içindeki kaynak günlüklerinin özellikle
 | **ClientIpAddress** | **clientIpAddress_s** | İstemcinin IP adresi. |
 | **Istek ücreti** | **requestCharge_s** | İşlem tarafından kullanılan RU/sn sayısı |
 | **collectionRid** | **collectionId_s** | Koleksiyonun benzersiz KIMLIĞI.|
-| **sürenin** | **duration_d** | İşlemin süresi (milisaniye cinsinden). |
+| **süre** | **duration_d** | İşlemin süresi (milisaniye cinsinden). |
 | **requestLength** | **requestLength_s** | İsteğin bayt cinsinden uzunluğu. |
 | **responseLength** | **responseLength_s** | Yanıtın bayt cinsinden uzunluğu.|
-| **resourceTokenUserRid** | **resourceTokenUserRid_s** | Bu değer, kimlik doğrulaması için [kaynak belirteçleri](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) kullanılırken boş değildir. Değer, kullanıcının kaynak KIMLIĞINE işaret eder. |
+| **resourceTokenUserRid** | **resourceTokenUserRid_s** | Bu değer, kimlik doğrulaması için [kaynak belirteçleri](./secure-access-to-data.md#resource-tokens) kullanılırken boş değildir. Değer, kullanıcının kaynak KIMLIĞINE işaret eder. |
 | **responseLength** | **responseLength_s** | Yanıtın bayt cinsinden uzunluğu.|
 
-Tüm Azure Izleyici günlük kategorilerinin ve ilişkili şemaların bağlantılarının listesi için bkz. [Azure Izleyici günlükleri kategorileri ve şemaları](../azure-monitor/platform/diagnostic-logs-schema.md). 
+Tüm Azure Izleyici günlük kategorilerinin ve ilişkili şemaların bağlantılarının listesi için bkz. [Azure Izleyici günlükleri kategorileri ve şemaları](../azure-monitor/platform/resource-logs-schema.md). 
 
 ## <a name="metrics"></a>Ölçümler
 Aşağıdaki tablolarda Azure CosmOS DB için toplanan platform ölçümleri listelenmektedir. Tüm ölçümler, **Standart ölçümler Cosmos DB**ad alanında depolanır.

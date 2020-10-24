@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 1ed15182e700f125072c69ba9bcf60caf4da5c88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a0545ea61879b30349403e019ead69ba14f75cb9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87873050"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486506"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: Azure Cosmos DB MongoDB için API 'sini kullanarak bir Python uygulaması oluşturma
 
@@ -27,7 +27,7 @@ ms.locfileid: "87873050"
 > * [Golang](create-mongodb-go.md)
 >  
 
-Bu hızlı başlangıçta, GitHub 'dan kopyalanmış bir Python Flask-do Web uygulaması çalıştırmak için Mongo DB API hesabı veya Azure Cosmos DB öykünücüsü Azure Cosmos DB kullanırsınız. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
+Bu hızlı başlangıçta, GitHub 'dan kopyalanmış bir Python Flask To-Do Web uygulaması çalıştırmak için Mongo DB API hesabı veya Azure Cosmos DB öykünücüsü Azure Cosmos DB kullanırsınız. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -127,7 +127,7 @@ Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken
 
 ## <a name="deploy-to-azure"></a>Azure’a dağıtın
 
-Bu uygulamayı dağıtmak için Azure 'da yeni bir Web uygulaması oluşturabilir ve bu GitHub deposunun çatalından sürekli dağıtımı etkinleştirebilirsiniz. Azure 'da GitHub ile sürekli dağıtımı ayarlamak için bu [öğreticiyi](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment) izleyin.
+Bu uygulamayı dağıtmak için Azure 'da yeni bir Web uygulaması oluşturabilir ve bu GitHub deposunun çatalından sürekli dağıtımı etkinleştirebilirsiniz. Azure 'da GitHub ile sürekli dağıtımı ayarlamak için bu [öğreticiyi](../app-service/deploy-continuous-deployment.md) izleyin.
 
 Azure'a dağıtırken uygulama anahtarlarınızı kaldırmanız ve aşağıdaki bölümün açıklama satırı yapılmadığından emin olmanız gerekir:
 
@@ -137,7 +137,7 @@ Azure'a dağıtırken uygulama anahtarlarınızı kaldırmanız ve aşağıdaki 
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-Daha sonra MONGOURL, MONGO_PASSWORD ve MONGO_USERNAME değerlerinizi uygulama ayarlarına eklemeniz gerekir. Azure Web Apps’te Uygulama Ayarları hakkında daha fazla bilgi almak için bu [öğreticiyi](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings) izleyebilirsiniz.
+Daha sonra MONGOURL, MONGO_PASSWORD ve MONGO_USERNAME değerlerinizi uygulama ayarlarına eklemeniz gerekir. Azure Web Apps’te Uygulama Ayarları hakkında daha fazla bilgi almak için bu [öğreticiyi](../app-service/configure-common.md#configure-app-settings) izleyebilirsiniz.
 
 Bu deponun bir çatalını oluşturmak istemiyorsanız, aşağıdaki **Azure 'A dağıt** düğmesini de seçebilirsiniz. Daha sonra Azure 'a gitmeniz ve Azure Cosmos DB hesap bilgilerinizden uygulama ayarlarını ayarlamanız gerekir.
 
@@ -158,7 +158,7 @@ Bu deponun bir çatalını oluşturmak istemiyorsanız, aşağıdaki **Azure 'A 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Mongo DB API hesabı için bir Azure Cosmos DB oluşturma ve GitHub 'dan kopyalanmış bir Python Flask-do Web uygulaması çalıştırmak için Azure Cosmos DB öykünücüsünü kullanma hakkında öğrendiniz. Şimdi Azure Cosmos DB hesabınıza ek veriler aktarabilirsiniz. 
+Bu hızlı başlangıçta, Mongo DB API hesabı için bir Azure Cosmos DB oluşturma ve GitHub 'dan kopyalanmış bir Python Flask To-Do Web uygulaması çalıştırmak için Azure Cosmos DB öykünücüsünü kullanma hakkında öğrendiniz. Şimdi Azure Cosmos DB hesabınıza ek veriler aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB’ye MongoDB verileri aktarma](mongodb-migrate.md)
+> [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

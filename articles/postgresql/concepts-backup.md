@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 0c1b0b5ac0c5c71dc5c98cb91d86f879a82809bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b267a97b640c9d069f83223206200fc4814c86b9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708463"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488019"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-tek sunucu
 
@@ -32,11 +32,11 @@ En fazla 4 TB depolama alanı destekleyen sunucular için, tam yedeklemeler her 
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>16 TB 'a kadar depolama alanı olan sunucular
 
-[Azure bölgelerinin](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)bir alt kümesinde, tüm yeni sağlanan sunucular 16 TB 'a kadar depolamayı destekleyebilir. Bu büyük depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, sunucu oluşturulduktan hemen sonraya zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca değişiklik yedeğidir. Anlık görüntü değişiklik yedekleri belirli bir plana göre gerçekleştirilmez. Bir gün içinde üç fark anlık görüntü yedeklemesi yapılır. İşlem günlüğü yedeklemeleri her beş dakikada bir gerçekleşir. 
+[Azure bölgelerinin](./concepts-pricing-tiers.md#storage)bir alt kümesinde, tüm yeni sağlanan sunucular 16 TB 'a kadar depolamayı destekleyebilir. Bu büyük depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, sunucu oluşturulduktan hemen sonraya zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca değişiklik yedeğidir. Anlık görüntü değişiklik yedekleri belirli bir plana göre gerçekleştirilmez. Bir gün içinde üç fark anlık görüntü yedeklemesi yapılır. İşlem günlüğü yedeklemeleri her beş dakikada bir gerçekleşir. 
 
 ### <a name="backup-retention"></a>Yedekleme dosyası saklama
 
-Yedeklemeler, sunucusundaki yedekleme bekletme süresi ayarına göre tutulur. 35 gün günlük bir saklama süresi seçebilirsiniz. Varsayılan saklama süresi 7 gündür. [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal#set-backup-configuration) veya [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-restore-server-cli#set-backup-configuration)kullanarak yedekleme yapılandırmasını güncelleştirerek sunucu oluşturma sırasında veya daha sonra saklama süresini ayarlayabilirsiniz. 
+Yedeklemeler, sunucusundaki yedekleme bekletme süresi ayarına göre tutulur. 35 gün günlük bir saklama süresi seçebilirsiniz. Varsayılan saklama süresi 7 gündür. [Azure Portal](./howto-restore-server-portal.md#set-backup-configuration) veya [Azure CLI](./howto-restore-server-cli.md#set-backup-configuration)kullanarak yedekleme yapılandırmasını güncelleştirerek sunucu oluşturma sırasında veya daha sonra saklama süresini ayarlayabilirsiniz. 
 
 Yedekleme bekletme süresi, kullanılabilir yedeklemeler temel aldığı için zaman içinde bir nokta geri yüklemesi alma süresinin ne kadar geri alınacağını yönetir. Yedekleme bekletme süresi Ayrıca bir geri yükleme perspektifinden kurtarma penceresi olarak da ele alınabilir. Yedekleme saklama süresi içinde bir zaman içindeki bir anlık geri yükleme gerçekleştirmek için gereken tüm yedeklemeler, yedekleme depolama alanında tutulur. Örneğin, yedekleme Bekletme dönemi 7 gün olarak ayarlandıysa, kurtarma penceresi son 7 gün olarak değerlendirilir. Bu senaryoda, son 7 gün içinde sunucuyu geri yüklemek için gereken tüm yedeklemeler korunur. Yedi günlük bir yedekleme bekletme penceresi ile:
 - 4 TB 'a kadar depolama alanı olan sunucular en fazla 2 tam veritabanı yedeklemesi, tüm değişiklik yedeklemeleri ve en erken tam veritabanı yedeklemesinden bu yana gerçekleştirilen işlem günlüğü yedeklemelerini korur.
@@ -44,7 +44,7 @@ Yedekleme bekletme süresi, kullanılabilir yedeklemeler temel aldığı için z
 
 ### <a name="backup-redundancy-options"></a>Yedekleme artıklığı seçenekleri
 
-PostgreSQL için Azure veritabanı, Genel Amaçlı ve bellek için Iyileştirilmiş katmanlardaki yerel olarak yedekli veya coğrafi olarak yedekli yedekleme depolaması arasında seçim yapmak için esneklik sağlar. Yedeklemeler coğrafi olarak yedekli yedekleme depolaması 'nda depolandığında, yalnızca sunucunuzun barındırıldığı bölge içinde depolanmaz, ancak aynı zamanda [eşleştirilmiş bir veri merkezine](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)çoğaltılır. Bu, daha iyi koruma ve olağanüstü durum durumunda sunucunuzu farklı bir bölgede geri yükleme yeteneği sağlar. Temel katman yalnızca yerel olarak yedekli yedekleme depolama alanı sunar.
+PostgreSQL için Azure veritabanı, Genel Amaçlı ve bellek için Iyileştirilmiş katmanlardaki yerel olarak yedekli veya coğrafi olarak yedekli yedekleme depolaması arasında seçim yapmak için esneklik sağlar. Yedeklemeler coğrafi olarak yedekli yedekleme depolaması 'nda depolandığında, yalnızca sunucunuzun barındırıldığı bölge içinde depolanmaz, ancak aynı zamanda [eşleştirilmiş bir veri merkezine](../best-practices-availability-paired-regions.md)çoğaltılır. Bu, daha iyi koruma ve olağanüstü durum durumunda sunucunuzu farklı bir bölgede geri yükleme yeteneği sağlar. Temel katman yalnızca yerel olarak yedekli yedekleme depolama alanı sunar.
 
 > [!IMPORTANT]
 > Yedekleme için yerel olarak yedekli veya coğrafi olarak yedekli depolamayı yapılandırmaya yalnızca sunucu oluşturma sırasında izin verilir. Sunucu sağlandıktan sonra yedekleme depolama artıklığı seçeneğini değiştiremezsiniz.
@@ -69,7 +69,7 @@ PostgreSQL için Azure veritabanı 'nda geri yükleme gerçekleştirmek, özgün
 Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü boyutu, ağ bant genişliği ve aynı bölgedeki aynı bölgede Kurtarılan toplam veritabanı sayısı gibi çeşitli faktörlere bağlıdır. Kurtarma zamanı genellikle 12 saatten düşüktür.
 
 > [!IMPORTANT]
-> Silinen sunucular **geri yüklenemez.** Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Sunucu kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)faydalanabilir.
+> Silinen sunucular **geri yüklenemez.** Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Sunucu kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](../azure-resource-manager/management/lock-resources.md)faydalanabilir.
 
 ### <a name="point-in-time-restore"></a>Belirli bir noktaya geri yükleme
 

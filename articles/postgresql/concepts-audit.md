@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: efd4cb7c0c5db50729539373938ebccd689dee42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 615297a4bf47d80c9313f011b90d343b7ae680e3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708994"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488053"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda denetim günlüğü-tek sunucu
 
@@ -88,7 +88,7 @@ Hızlıca kullanmaya başlamak için, `pgaudit.log` olarak ayarlayın `WRITE` ve
 ## <a name="viewing-audit-logs"></a>Denetim günlüklerini görüntüleme
 . Log dosyalarını kullanıyorsanız, denetim günlüklerinizin PostgreSQL hata günlüklerinizin bulunduğu dosyaya dahil edilir. Günlük dosyalarını Azure [portalından](howto-configure-server-logs-in-portal.md) veya [CLI](howto-configure-server-logs-using-cli.md)'dan indirebilirsiniz. 
 
-Azure kaynak günlüğü 'nü kullanıyorsanız, günlüklere erişme yönteminiz seçtiğiniz uç noktaya göre değişir. Azure depolama için [günlük depolama hesabı](../azure-monitor/platform/resource-logs-collect-storage.md) makalesine bakın. Event Hubs için bkz. [Azure günlükleri akışı](../azure-monitor/platform/resource-logs-stream-event-hubs.md) makalesi.
+Azure kaynak günlüğü 'nü kullanıyorsanız, günlüklere erişme yönteminiz seçtiğiniz uç noktaya göre değişir. Azure depolama için [günlük depolama hesabı](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) makalesine bakın. Event Hubs için bkz. [Azure günlükleri akışı](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) makalesi.
 
 Azure Izleyici günlükleri için Günlükler seçtiğiniz çalışma alanına gönderilir. Postgres günlükleri **AzureDiagnostics** Collection modunu kullanır, bu nedenle AzureDiagnostics tablosundan sorgulanırlar. Tablodaki alanlar aşağıda açıklanmıştır. [Azure Izleyici günlükleri sorgusuna](../azure-monitor/log-query/log-query-overview.md) genel bakış bölümünde sorgulama ve uyarı alma hakkında daha fazla bilgi edinin.
 

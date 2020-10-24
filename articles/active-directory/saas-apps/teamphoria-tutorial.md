@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 30971c9c5280bfba37f46aaab0aaf2c2506502c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b53b717759bf65241b946194aab91bab0608320c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542352"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483412"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamphoria"></a>Öğretici: Teamphoria ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Teamphoria 'yı Azure Active Directory (Azure AD) ile tümleşt
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -134,15 +134,15 @@ Bu bölümde, Teamphoria erişimi vererek Azure çoklu oturum açma özelliğini
 
 4. Sol araç çubuğunda **yönetıcı ayarları** seçeneğine gidin ve yapılandırma sekmesinde, **tek oturum** aç ' a tıklayarak SSO yapılandırma penceresini açın.
 
-    ![Tek Sign-On yapılandırma](./media/teamphoria-tutorial/admin_sso_configure.png)
+    ![Ekran görüntüsü, teklı oturum açmayı seçebileceğiniz yönetıcı AYARLARıNı gösterir.](./media/teamphoria-tutorial/admin_sso_configure.png)
 
 5. SSO ayarlarını ekleme formunu açmak için sağ üst köşedeki **yenı KIMLIK sağlayıcısı ekle** seçeneğine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/teamphoria-tutorial/add_new_identity_provider.png)
+    ![Ekran görüntüsü, yenı KIMLIK sağlayıcısı ekle ' yi seçebileceğiniz yeri gösterir.](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
 6. Alanlara aşağıda açıklanan şekilde ayrıntıları girin-
 
-    ![Tek Sign-On yapılandırma](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz sayfayı gösterir.](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
     a. **Görünen ad**: yönetici sayfasında eklentinin görünen adını girin.
 
@@ -168,11 +168,11 @@ Azure AD kullanıcılarının Teamphoria 'da oturum açmasını sağlamak için,
 
 1. **El Ile davet** seçeneğine tıklayın.
 
-    ![Kişileri davet et](./media/teamphoria-tutorial/admin_manage_add_users.png)
+    ![Ekran görüntüsü El Ile davet seçeneğini gösterir.](./media/teamphoria-tutorial/admin_manage_add_users.png)
 
 1. Bu sayfada aşağıdaki eylemi gerçekleştirin.
 
-    ![Kişileri davet et](./media/teamphoria-tutorial/manual_user_invite.png)
+    ![Ekran görüntüsü, ad ve e-posta adresi girebileceğiniz El Ile Kullanıcı DAVETI sayfasını gösterir.](./media/teamphoria-tutorial/manual_user_invite.png)
 
     a. **E-posta adresi** metin kutusuna B. Simon gibi kullanıcının **e-posta adresini** girin.
 

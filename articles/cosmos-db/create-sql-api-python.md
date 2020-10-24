@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: 128e80572275924655e1da534553265407353fff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa23f6d5d7b81e93145fd7db3fb5b45e46918d21
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319019"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487594"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Python uygulaması oluşturma
 
@@ -26,7 +26,7 @@ ms.locfileid: "91319019"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK’sı v4](create-sql-api-java.md)
-> * [Spring Data v3](create-sql-api-spring-data.md)
+> * [Spring Verileri v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -39,7 +39,7 @@ Bu hızlı başlangıçta, Azure portal ve Visual Studio Code içinden GitHub 'd
     * Bir Azure etkin aboneliği içinde:
         * [Azure Ücretsiz hesabı oluşturun](https://azure.microsoft.com/free) veya mevcut aboneliğinizi kullanın 
         * [Visual Studio aylık krediler](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
-        * [Azure Cosmos DB ücretsiz katman](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+        * [Azure Cosmos DB ücretsiz katman](./optimize-dev-test.md#azure-cosmos-db-free-tier)
     * Azure etkin aboneliği olmadan:
         * 30 gün boyunca bir test ortamı olan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/).
         * [Azure Cosmos DB Öykünücüsü](https://aka.ms/cosmosdb-emulator) 
@@ -237,5 +237,3 @@ Bu hızlı başlangıçta, bir Azure Cosmos DB hesabı oluşturmayı, Veri Gezgi
 
 > [!div class="nextstepaction"]
 > [SQL API'si için Azure Cosmos DB'ye veri aktarma](import-data.md)
-
-
