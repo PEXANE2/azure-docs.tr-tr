@@ -11,12 +11,12 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 2f3433075a1fddf116aae28666feb62473c6dbfb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0533e76863d01675cee7aaca79e32821e5efc749
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476102"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92507812"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL havuzu için veri yükleme stratejileri
 
@@ -113,12 +113,14 @@ Parquet dosyalarını yüklerken aşağıdaki SQL veri türü eşlemesini kullan
 |                            INT64                             |            INT (64, true)            |      bigint      |
 |                            INT64                             |           INT (64, false)            |  ondalık (20, 0)   |
 |                            INT64                             |                KATEGORI                |     decimal      |
-|                            INT64                             |         SAAT (MIKRO S/NANOS)         |       time       |
-|                            INT64                             | ZAMAN DAMGASı (MILIMETRE/MIKRO S/NANOS) |    datetime2     |
+|                            INT64                             |         SAAT (MILIMETRE)                 |       time       |
+|                            INT64                             | ZAMAN DAMGASı (MILIMETRE)                  |    datetime2     |
 | [Karmaşık tür](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23lists&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=6Luk047sK26ijTzfvKMYc%2FNu%2Fz0AlLCX8lKKTI%2F8B5o%3D&reserved=0) |                 LISTELE                  |   varchar(maks.)   |
 | [Karmaşık tür](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  HARITA                  |   varchar(maks.)   |
 
-
+>[!IMPORTANT] 
+> - SQL adanmış havuzlar Şu anda MIKRO s ve NANOS Precision ile birlikte Parquet veri türlerini desteklememektedir. 
+> - Türler Parquet ve SQL arasında uyuştuyorsanız veya desteklenmeyen Parquet veri türleri varsa, şu hatayla karşılaşabilirsiniz:  **"Hdfsbridge:: recordReaderFillBuffer-kayıt okuyucu arabelleğinin doldurulmasıyla beklenmeyen hata oluştu: ClassCastException:..."**
 
 Dış nesne oluşturma örneği için bkz. [dış tablo oluşturma](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool).
 

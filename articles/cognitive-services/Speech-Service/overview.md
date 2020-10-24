@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: b7b28c972dfb55bfdc4e5bb09c460fe71c92328e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 09641fb66d2f68054d23abbf8ee9f4324e19832f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489430"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521518"
 ---
 # <a name="what-is-the-speech-service"></a>Konuşma tanıma hizmeti nedir?
 
@@ -81,7 +81,19 @@ Azure hesabınıza bir konuşma hizmeti kaynağı (ücretsiz veya ücretli katma
 > [!NOTE]
 > You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.
 -->
-Yeni konuşma kaynağınızın dağıtılması birkaç dakika sürer. Dağıtım tamamlandıktan sonra **Kaynağa Git** ' i seçin ve sol gezinti bölmesinde, konuşma hizmeti abonelik Anahtarlarınızı ve bölge tanımlarınızı göstermek için **anahtarlar ve uç nokta ' ı** seçin. Her abonelik iki anahtara sahiptir; uygulamanızda herhangi bir anahtarı kullanabilirsiniz. Bir anahtarı kod düzenleyicinize veya başka bir konuma hızlıca kopyalamak/yapıştırmak için, her bir anahtarın yanındaki Kopyala düğmesini seçin, pencereler arasında Pano içeriğini istenen konuma yapıştırın.
+Yeni konuşma kaynağınızın dağıtılması birkaç dakika sürer. 
+
+### <a name="find-keys-and-region"></a>Anahtar ve bölge bulma
+
+Tamamlanmış bir dağıtımın anahtarlarını ve bölgesini bulmak için şu adımları izleyin:
+
+1. Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
+
+2. **Tüm kaynaklar**' ı seçin ve bilişsel hizmetler kaynağınızın adını seçin.
+
+3. Sol bölmede, **kaynak yönetimi**altında **anahtarlar ve uç nokta**' ı seçin.
+
+Her abonelik iki anahtara sahiptir; uygulamanızda herhangi bir anahtarı kullanabilirsiniz. Kod düzenleyicinize veya başka bir konuma bir anahtar kopyalamak/yapıştırmak için, her anahtarın yanındaki Kopyala düğmesini seçin, pencereler arasında Pano içeriğini istenen konuma yapıştırın.
 
 Ayrıca, `LOCATION` bölge Kimliğiniz (örn.) değerini kopyalayın. `westus`, `westeurope` ) SDK çağrıları için.
 

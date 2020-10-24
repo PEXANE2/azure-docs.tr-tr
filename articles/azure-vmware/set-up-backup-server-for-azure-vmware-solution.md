@@ -2,26 +2,26 @@
 title: Azure VMware çözümü için Azure Backup Sunucusu ayarlama
 description: Azure Backup Sunucusu kullanarak sanal makineleri yedeklemek için Azure VMware Çözüm ortamınızı ayarlayın.
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: 37fd74f9859813061ff5653fd2c2b0b6cad319e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/23/2020
+ms.openlocfilehash: e71ec19402d22643d51f1435d1abcf56b20a290b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91580748"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517387"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure VMware çözümü için Azure Backup Sunucusu ayarlama
 
-Azure Backup Sunucusu, iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunan sağlam bir kurumsal yedekleme ve kurtarma sistemidir. Azure VMware Çözüm önizlemesi sırasında, Azure Backup Sunucusu kullanarak yalnızca sanal makine (VM) düzeyinde yedekleme yapılandırabilirsiniz. 
+Azure Backup Sunucusu iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunur. Azure VMware çözümü ile yalnızca Azure Backup Sunucusu kullanarak bir sanal makine (VM) düzeyinde bir yedekleme yapılandırabilirsiniz. 
 
 Azure Backup Sunucusu, yedekleme verilerini şu şekilde saklayabilir:
 
 - **Disk**: kısa vadeli depolama için, verileri disk havuzlarına Yedekler Azure Backup sunucusu.
 - **Azure**: hem kısa vadeli hem de uzun vadeli depolama için şirket içi Azure Backup sunucusu, disk havuzlarında depolanan verileri Azure Backup kullanılarak Microsoft Azure buluta yedeklenebilir.
 
-Kesintiler meydana geldiğinde ve kaynak veriler kullanılamadığında, verileri kaynağa veya alternatif bir konuma kolayca geri yüklemek için Azure Backup Sunucusu kullanabilirsiniz. Bu şekilde, planlanan veya beklenmeyen sorunlar nedeniyle özgün veriler kullanılamıyorsa, verileri farklı bir konuma kolayca geri yükleyebilirsiniz.
+Verileri kaynağa veya alternatif bir konuma geri yüklemek için Azure Backup Sunucusu kullanın. Bu şekilde, planlanan veya beklenmeyen sorunlar nedeniyle özgün veriler kullanılamıyorsa, verileri alternatif bir konuma geri yükleyebilirsiniz.
 
-Bu makalede, Azure Backup Sunucusu kullanarak VM 'Leri yedeklemek için Azure VMware Çözüm ortamınızı hazırlamanıza yardımcı olduğumuz. Şu adımlarda size kılavuzluk ederiz: 
+Bu makale, Azure Backup Sunucusu kullanarak VM 'Leri yedeklemek için Azure VMware Çözüm ortamınızı hazırlamanıza yardımcı olur. Şu adımlarda size kılavuzluk ederiz: 
 
 > [!div class="checklist"]
 > * Önerilen VM disk türünü ve kullanılacak boyutu belirleme.
@@ -31,10 +31,10 @@ Bu makalede, Azure Backup Sunucusu kullanarak VM 'Leri yedeklemek için Azure VM
 
 ## <a name="supported-vmware-features"></a>Desteklenen VMware özellikleri
 
-- **Aracısız yedekleme:** Azure Backup Sunucusu, sanal makineyi yedeklemek için vCenter veya ESXi sunucusuna bir aracının yüklenmesini gerektirmez. Bunun yerine, Azure Backup Sunucusu ile VMware sunucusunun kimliğini doğrulamak için kullanılan IP adresini veya tam etki alanı adını (FQDN) ve oturum açma kimlik bilgilerini sağlamanız yeterlidir.
+- **Aracısız yedekleme:** Azure Backup Sunucusu, VM 'yi yedeklemek için vCenter veya ESXi sunucusuna bir aracının yüklenmesini gerektirmez. Bunun yerine, Azure Backup Sunucusu ile VMware sunucusunun kimliğini doğrulamak için kullanılan IP adresini veya tam etki alanı adını (FQDN) ve oturum açma kimlik bilgilerini sağlamanız yeterlidir.
 - **Bulutta tümleşik yedekleme:** Azure Backup Sunucusu, iş yüklerini disk ve buluta korur. Azure Backup Sunucusu yedekleme ve kurtarma iş akışı, uzun süreli saklama ve şirket dışı yedekleme yönetmenize yardımcı olur.
 - **VCenter tarafından yönetilen VM 'Leri Algıla ve koru:** Azure Backup Sunucusu vCenter veya ESXi sunucusunda dağıtılan VM 'Leri algılar ve korur. Azure Backup Sunucusu, büyük dağıtımları koruyabilmeniz için vCenter tarafından yönetilen VM 'Leri de algılar.
-- **Klasör düzeyinde oto koruma:** vCenter, VM 'lerinizi VM klasörlerinde düzenlemenizi sağlar. Azure Backup Sunucusu, bu klasörleri algılar ve tüm alt klasörleri içeren klasör düzeyinde VM 'Leri korumak için kullanabilirsiniz. Klasörler korunurken, yalnızca söz konusu klasördeki VM 'Leri korumakla kalmaz Azure Backup Sunucusu, daha sonra eklenen VM 'Leri de korur. Azure Backup Sunucusu yeni VM 'Leri her gün algılar ve otomatik olarak korur. Sanal makinelerinizi özyinelemeli klasörlerde düzenlediğinizde, Azure Backup Sunucusu özyinelemeli klasörlerde dağıtılan yeni VM 'Leri otomatik olarak algılar ve korur.
+- **Klasör düzeyinde otomatik koruma:** vCenter, VM 'lerinizi VM klasörlerinde düzenlemenizi sağlar. Azure Backup Sunucusu bu klasörleri algılar. Tüm alt klasörleri dahil olmak üzere, klasör düzeyinde VM 'Leri korumak için kullanabilirsiniz. Klasörler korunurken, Azure Backup Sunucusu bu klasördeki VM 'Leri korur ve daha sonra eklenen VM 'Leri korur. Azure Backup Sunucusu, her gün yeni VM 'Leri algılar ve bunları otomatik olarak koruyabilirsiniz. Sanal makinelerinizi özyinelemeli klasörlerde düzenlediğinizde, Azure Backup Sunucusu özyinelemeli klasörlerde dağıtılan yeni VM 'Leri otomatik olarak algılar ve korur.
 - **Azure Backup sunucusu küme Içindeki sanal makineleri korumaya devam eder:** VM 'Ler küme içinde yük dengeleme için Vmoas olarak Azure Backup Sunucusu, VM korumasını otomatik olarak algılar ve devam ettirir.
 - **Gerekli dosyaları daha hızlı kurtarın:** Azure Backup Sunucusu, tüm VM 'leri kurtarmadan bir Windows sanal makinesi 'nden dosya veya klasör kurtarabilir.
 
@@ -66,11 +66,11 @@ Azure ortamınızda Azure Backup Sunucusu yüklerken bu bölümdeki önerileri g
 
 [Azure 'Da VMware özel bulutunuz için ağ iletişimini yapılandırmadiğinizden](tutorial-configure-networking.md)emin olun.
 
-### <a name="determine-the-size-of-the-virtual-machine"></a>Sanal makinenin boyutunu belirle
+### <a name="determine-the-size-of-the-vm"></a>VM'nin boyutunu belirleme
 
-Önceki adımda oluşturduğunuz sanal ağda bir Windows sanal makinesi oluşturmanız gerekir. Azure Backup Sunucusu çalıştırmak için bir sunucu seçtiğinizde, Windows Server 2019 Datacenter 'un bir galeri görüntüsü ile başlayın. [Ilk Windows sanal makinenizi Azure Portal oluşturma](../virtual-machines/windows/quick-create-portal.md) öğreticisinde, Azure 'u hiç kullanmamış olsanız bile, Azure 'DA önerilen VM 'yi kullanmaya başlamanızı sağlayabilirsiniz.
+Azure portal öğreticisindeki [Ilk WINDOWS VM 'Nizi oluşturma](../virtual-machines/windows/quick-create-portal.md) bölümündeki yönergeleri izleyin.  VM 'yi, önceki adımda oluşturduğunuz sanal ağda oluşturacaksınız. Azure Backup Sunucusu çalıştırmak için Windows Server 2019 Datacenter 'un bir galeri görüntüsü ile başlayın. 
 
-Aşağıdaki tabloda her bir Azure Backup Sunucusu sanal makine boyutu için en fazla korumalı iş yükü sayısı özetlenmektedir. Bilgiler, iç performansa ve iş yükü boyutu ile karmaşıklık için kurallı değerlere dayanır. Gerçek iş yükü boyutu daha büyük olabilir, ancak Azure Backup Sunucusu sanal makinesine bağlı diskler tarafından konamelidir.
+Tablo, her bir Azure Backup Sunucusu VM boyutu için en fazla korunan iş yükü sayısını özetler. Bilgiler, iç performansa ve iş yükü boyutu ile karmaşıklık için kurallı değerlere dayanır. Gerçek iş yükü boyutu daha büyük olabilir, ancak Azure Backup Sunucusu sanal makinesine bağlı diskler tarafından konamelidir.
 
 | En fazla korumalı iş yükü | Ortalama iş yükü boyutu | Ortalama iş yükü karmaşıklığı (günlük) | Minimum depolama ıOPS 'si | Önerilen disk türü/boyutu      | Önerilen VM boyutu |
 |-------------------------|-----------------------|--------------------------------|------------------|-----------------------------------|---------------------|
@@ -90,12 +90,12 @@ Aşağıdaki tabloda her bir Azure Backup Sunucusu sanal makine boyutu için en 
 
 ### <a name="disks-and-storage"></a>Diskler ve depolama alanı
 
-Azure Backup Sunucusu, yükleme için, sistem dosyalarını, yükleme dosyalarını, önkoşul olan yazılımı, veritabanı dosyalarını ve depolama havuzu için ayrılmış diskleri içeren diskler gerektirir.
+Azure Backup Sunucusu yükleme için disk gerektirir. 
 
 | Gereksinim                      | Önerilen boyut  |
 |----------------------------------|-------------------------|
 | Azure Backup Sunucusu yükleme                | Yükleme konumu: 3 GB<br />Veritabanı dosyaları sürücüsü: 900 MB<br />Sistem sürücüsü: SQL Server yüklemesi için 1 GB<br /><br />Ayrıca, arşivleme sırasında dosya kataloğunu geçici bir yükleme konumuna kopyalamak için Azure Backup Sunucusu alana ihtiyacınız vardır.      |
-| Depolama havuzu için disk<br />(Temel birimleri kullanır, dinamik bir diskte olamaz) | Korunan verilerin boyutunun iki ile üç katı.<br />Ayrıntılı depolama hesaplaması için bkz. [DPM Capacity Planner](https://www.microsoft.com/download/details.aspx?id=54301).   |
+| Depolama havuzu için disk<br />(Temel birimleri kullanır, dinamik bir diskte olamaz) | Korunan veri boyutunun iki ile üç katı.<br />Ayrıntılı depolama hesaplaması için bkz. [DPM Capacity Planner](https://www.microsoft.com/download/details.aspx?id=54301).   |
 
 Mevcut bir Azure VM 'ye yeni bir yönetilen veri diski iliştirme hakkında bilgi edinmek için, bkz. [Azure Portal kullanarak bir WINDOWS VM 'ye yönetilen veri diski iliştirme](../virtual-machines/windows/attach-managed-disk-portal.md).
 
@@ -104,12 +104,12 @@ Mevcut bir Azure VM 'ye yeni bir yönetilen veri diski iliştirme hakkında bilg
 
 ### <a name="store-backup-data-on-local-disk-and-in-azure"></a>Yedekleme verilerini yerel diskte ve Azure 'da depolayın
 
-Yedekleme verilerinin Azure 'da depolanması, Azure Backup Sunucusu VM 'deki yedekleme altyapısını azaltır. İşletimsel kurtarma (yedekleme) için Azure Backup Sunucusu, yedekleme verilerini VM 'ye bağlı Azure disklerinde depolar. Diskler ve depolama alanı VM 'ye eklendikten sonra, depolamayı sizin için yönetir Azure Backup Sunucusu. Yedekleme veri depolama alanı miktarı, her bir Azure sanal makinesine bağlı disklerin sayısına ve boyutuna bağlıdır. Azure VM 'nin her boyutunun, eklenebilecek en fazla disk sayısı vardır. Örneğin, a2 dört diskdir, a3 sekiz diskdir ve A4 16 diskdir. Yeniden, disk boyutu ve sayısı toplam yedekleme depolama havuzu kapasitesini tespit.
+Yedekleme verilerinin Azure 'da depolanması, Azure Backup Sunucusu VM 'deki yedekleme altyapısını azaltır. İşletimsel kurtarma (yedekleme) için Azure Backup Sunucusu, yedekleme verilerini VM 'ye bağlı Azure disklerinde depolar. Diskler ve depolama alanı VM 'ye eklendikten sonra, depolamayı sizin için yönetir Azure Backup Sunucusu. Depolama miktarı, her bir Azure sanal makinesine bağlı disklerin sayısına ve boyutuna bağlıdır. Azure VM 'nin her boyutunun, eklenebilecek en fazla disk sayısı vardır. Örneğin, a2 dört diskdir, a3 sekiz diskdir ve A4 16 diskdir. Yeniden, disk boyutu ve sayısı toplam yedekleme depolama havuzu kapasitesini tespit.
 
 > [!IMPORTANT]
 > Beş günden uzun bir süre içinde Azure Backup Sunucusu bağlı disklerde işlemsel kurtarma *verilerini korumamalıdır* . Veriler beş günden eski olursa, bunu bir kurtarma hizmetleri kasasında saklayın.
 
-Yedekleme verilerini Azure 'da depolamak için bir kurtarma hizmetleri Kasası oluşturun veya kullanın. Azure Backup Sunucusu iş yükünü yedeklemeye hazırlandığınızda, [Kurtarma Hizmetleri kasasını yapılandırırsınız](#create-a-recovery-services-vault). Yapılandırıldıktan sonra, bir çevrimiçi yedekleme işi her çalıştığında kasada bir kurtarma noktası oluşturulur. Her kurtarma hizmetleri Kasası en fazla 9.999 kurtarma noktası içerir. Oluşturulan kurtarma noktası sayısına ve ne kadar süreyle saklandığına bağlı olarak, yedekleme verilerini birçok yıl boyunca koruyabilirsiniz. Örneğin, aylık kurtarma noktaları oluşturabilir ve bunları beş yıl boyunca koruyabilirsiniz.
+Yedekleme verilerini Azure 'da depolamak için bir kurtarma hizmetleri Kasası oluşturun veya kullanın. Azure Backup Sunucusu iş yükünü yedeklemeye hazırlandığınızda, [Kurtarma Hizmetleri kasasını yapılandırırsınız](#create-a-recovery-services-vault). Yapılandırıldıktan sonra, bir çevrimiçi yedekleme işi her çalıştığında kasada bir kurtarma noktası oluşturulur. Her kurtarma hizmetleri Kasası en fazla 9.999 kurtarma noktası içerir. Oluşturulan kurtarma noktası sayısına ve ne kadar süreyle tutuldığına bağlı olarak, yedekleme verilerini birçok yıl boyunca tutabilirsiniz. Örneğin, aylık kurtarma noktaları oluşturabilir ve bunları beş yıl boyunca tutabilirsiniz.
 
 > [!IMPORTANT]
 > Yedekleme verilerini Azure 'a göndermenize veya yerel olarak tutmaya bakılmaksızın, Azure Backup Sunucusu kurtarma hizmetleri kasasıyla kaydetmeniz gerekir.
@@ -119,7 +119,7 @@ Yedekleme verilerini Azure 'da depolamak için bir kurtarma hizmetleri Kasası o
 Dağıtımınızı ölçeklendirmek istiyorsanız aşağıdaki seçeneklere sahip olursunuz:
 
 - **Ölçeği**artırma: Azure Backup sunucusu VM 'Nin boyutunu BIR serinin DS3 serisine artırın ve yerel depolamayı arttırın.
-- **Yük boşaltma verileri**: eski verileri Azure 'a gönderin ve yalnızca Azure Backup sunucusu makinesine bağlı depolamada bulunan en yeni verileri koruyun.
+- **Yük boşaltma verileri**: eski verileri Azure 'a gönderin ve Azure Backup sunucusu makineye bağlı depolamada yalnızca en yeni verileri tutun.
 - **Ölçeği genişletme**: iş yüklerini korumak için daha fazla Azure Backup sunucusu makine ekleyin.
 
 ### <a name="net-framework"></a>.NET Framework
@@ -128,9 +128,9 @@ VM 'de .NET Framework 3,5 SP1 veya üzeri yüklü olmalıdır.
 
 ### <a name="join-a-domain"></a>Bir etki alanına katılma
 
-Azure Backup Sunucusu VM bir etki alanına katılmalıdır ve VM üzerinde yönetici ayrıcalıklarına sahip bir etki alanı kullanıcısının Azure Backup Sunucusu yüklemesi gerekir.
+Azure Backup Sunucusu VM 'nin bir etki alanına katılması gerekir. VM üzerinde yönetici ayrıcalıklarına sahip bir etki alanı kullanıcısının Azure Backup Sunucusu yüklemesi gerekir.
 
-Önizleme sırasında desteklenmese de, bir Azure VM 'de dağıtılan Azure Backup Sunucusu, Azure VMware çözümünde VM 'lerde iş yüklerini yedekleyebilir. Yedekleme işleminin etkinleştirilmesi için iş yüklerinin aynı etki alanında olması gerekir.
+Azure VM 'de dağıtılan Azure Backup Sunucusu, Azure VMware çözümünde VM 'lerde iş yüklerini yedekleyebilir. Yedekleme işleminin etkinleştirilmesi için iş yüklerinin aynı etki alanında olması gerekir.
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -167,13 +167,13 @@ Kurtarma Hizmetleri Kasası, zaman içinde oluşturulan kurtarma noktalarını d
 
    ![Kurtarma Hizmetleri kasasını oluşturun.](../backup/media/backup-create-rs-vault/click-create-button.png)
 
-   Kurtarma Hizmetleri kasasının oluşturulması biraz zaman alabilir. Portalın sağ üst köşesindeki **Bildirimler** alanında durum bildirimlerini izleyin. Kasanız oluşturulduktan sonra Kurtarma Hizmetleri kasaları listesinde görünür. Kasanızı görmüyorsanız **Yenile**'yi seçin.
+   Kurtarma Hizmetleri kasasının oluşturulması biraz zaman alabilir. Portalın sağ üst köşesindeki **Bildirimler** alanında durum bildirimlerini izleyin. Kasanızı oluşturduktan sonra kurtarma hizmetleri kasaları listesinde görünür. Kasanızı görmüyorsanız **Yenile**'yi seçin.
 
    ![Backup kasaları listesini yenileyin.](../backup/media/backup-create-rs-vault/refresh-button.png)
 
 ## <a name="set-storage-replication"></a>Depolama çoğaltmasını ayarla
 
-Depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama (varsayılan) ve yerel olarak yedekli depolama arasında seçim yapmanızı sağlar. Coğrafi olarak yedekli depolama, Depolama hesabınızdaki verileri ikincil bir bölgeye kopyalar ve bu da verilerinizin dayanıklı olmasını sağlar. Yerel olarak yedekli depolama, dayanıklı olmayan bir ucuz seçeneğidir. Coğrafi olarak yedekli ve yerel olarak yedekli depolama seçenekleri hakkında daha fazla bilgi edinmek için bkz. [Azure depolama artıklığı](../storage/common/storage-redundancy.md).
+Depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama (varsayılan) ve yerel olarak yedekli depolama arasında seçim yapmanızı sağlar. Coğrafi olarak yedekli depolama, Depolama hesabınızdaki verileri ikincil bir bölgeye kopyalar ve böylece verilerinizin dayanıklı olmasını sağlar. Yerel olarak yedekli depolama, dayanıklı olmayan bir ucuz seçeneğidir. Coğrafi olarak yedekli ve yerel olarak yedekli depolama seçenekleri hakkında daha fazla bilgi edinmek için bkz. [Azure depolama artıklığı](../storage/common/storage-redundancy.md).
 
 > [!IMPORTANT]
 > Bir kurtarma hizmetleri Kasası için **yerel olarak yedekli/coğrafi olarak yedekli depolama çoğaltma türü** ayarını değiştirmek, kasadaki yedeklemeleri yapılandırmadan önce yapılmalıdır. Yedeklemeleri yapılandırdıktan sonra, bunu değiştirme seçeneği devre dışı bırakılır ve depolama çoğaltma türünü değiştiremezsiniz.
@@ -192,7 +192,7 @@ Yazılım paketini indirmek, ayıklamak ve yüklemek için bu bölümdeki adıml
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Zaten açık bir kurtarma hizmetleri Kasası varsa, bir sonraki adımla devam edin. Bir kurtarma hizmetleri Kasası açık değilse ancak Azure portal, ana menüde, **Araştır**' ı seçin.
+1. Zaten açık bir kurtarma hizmetleri Kasası varsa, bir sonraki adımla devam edin. Açık bir kurtarma hizmetleri Kasası yoksa ve Azure portal, ana menüden, **Araştır**' ı seçin.
 
    1. Kaynak listesinde **Kurtarma Hizmetleri**' ni girin.
 
@@ -214,7 +214,7 @@ Yazılım paketini indirmek, ayıklamak ve yüklemek için bu bölümdeki adıml
 
    ![Başlangıç Sihirbazı 'nı açmak için yedekle ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
-1. Açılan pencerede şunları yapın:
+1. Açılan pencerede:
 
    1. **İş yükünüz nerede çalışıyor?** menüsünde **Şirket içi**' ı seçin.
 
@@ -226,11 +226,11 @@ Yazılım paketini indirmek, ayıklamak ve yüklemek için bu bölümdeki adıml
 
       :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure.png" alt-text="Azure Backup Sunucusu, Azure VMware Çözüm VM 'lerini korumak için bir Azure hizmet olarak altyapı (IaaS) VM 'si olarak dağıtılır.":::
 
-1. Açılan **altyapıyı hazırla** penceresinde şunları yapın:
+1. Açılan **altyapıyı hazırla** penceresinde:
 
    1. Azure Backup Sunucusu yüklemek için **indirme** bağlantısını seçin.
 
-   1. **Zaten Indirilmiş olan veya en son Azure Backup sunucusu yükleme** onay kutusunu seçerek kasa kimlik bilgilerini indirin ve ardından **İndir**' i seçin. Kurtarma Hizmetleri kasasına Azure Backup Sunucusu kaydı sırasında kasa kimlik bilgilerini kullanırsınız. Bağlantılar sizi, yazılım paketini indirdiğiniz Indirme merkezi 'ne götürür.
+   1. 1. Zaten indirilmiş ' i seçin **veya en son Azure Backup sunucusu yüklemesini kullanarak** kasa kimlik bilgilerini Indirmek için **indirin** . Kurtarma Hizmetleri kasasına Azure Backup Sunucusu kaydettiğinizde bu kimlik bilgilerini kullanacaksınız. Bağlantılar sizi, yazılım paketini indirdiğiniz Indirme merkezi 'ne götürür.
 
    :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="Azure Backup Sunucusu, Azure VMware Çözüm VM 'lerini korumak için bir Azure hizmet olarak altyapı (IaaS) VM 'si olarak dağıtılır.":::
 
@@ -250,7 +250,7 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
 
 1. Tüm dosyaları indirdikten sonra, **Microsoft Azure Backup** Kurulum Sihirbazı 'nı açmak için **MicrosoftAzureBackupInstaller.exe** çift tıklayın ve ardından **İleri**' yi seçin.
 
-1. Dosyaların ayıklanacağı konumu seçin ve **İleri**' yi seçin.
+1. Dosyaların ayıklanacağı konumu seçin ve **İleri ' yi**seçin.
 
 1. Ayıklama işlemini başlatmak için **Ayıkla** ' yı seçin.
 
@@ -269,28 +269,28 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
 
 1. **Karşılama** ekranında, **önkoşul denetimleri** sayfasına devam etmek için **İleri** ' yi seçin.
 
-1. Azure Backup Sunucusu için donanım ve yazılım önkoşullarının karşılanıp karşılanmadığını belirlemek için **yeniden denetle** ' yi seçin. Başarıyla karşılanırsa, **İleri**' yi seçin.
+1. Donanım ve yazılımın Azure Backup Sunucusu önkoşullarını karşılayıp karşılamadığını belirlemek için **yeniden denetle** ' yi seçin. Başarıyla karşılanırsa, **İleri**' yi seçin.
 
-   ![ Azure Backup Sunucusu için donanım ve yazılım önkoşullarının karşılanıp karşılanmadığını belirlemek için yeniden denetle ' yi seçin. Başarıyla karşılanırsa, Ileri ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
+   ![ Donanım ve yazılımın Azure Backup Sunucusu önkoşullarını karşılayıp karşılamadığını belirlemek için yeniden denetle ' yi seçin. Başarıyla karşılanırsa, Ileri ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 
 1. Azure Backup Sunucusu yükleme paketi, gerekli olan uygun SQL Server ikilileriyle birlikte sunulur. Yeni bir Azure Backup Sunucusu yüklemesi başlattığınızda, **Bu kurulum ile yeni SQL Server örneğini yükleme** seçeneğini belirleyin. Sonra **Denetle ve yüklensin '** i seçin.
 
    ![Azure Backup Sunucusu yükleme paketi, gerekli olan uygun SQL Server ikilileriyle birlikte sunulur.](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
 
    > [!NOTE]
-   > Kendi SQL Server örneğinizi kullanmak istiyorsanız desteklenen SQL Server sürümleri SQL Server 2014 SP1 veya üzeri, 2016 ve 2017. Tüm SQL Server sürümleri Standard veya Enterprise 64-bit olmalıdır. Azure Backup Sunucusu uzak bir SQL Server örneğiyle çalışmıyor. Azure Backup Sunucusu tarafından kullanılan örnek yerel olmalıdır. Azure Backup Sunucusu için mevcut bir SQL Server örneğini kullanıyorsanız, kurulum yalnızca SQL Server *adlandırılan örneklerin* kullanımını destekler.
+   > Kendi SQL Server örneğinizi kullanmak istiyorsanız desteklenen SQL Server sürümleri SQL Server 2014 SP1 veya üzeri, 2016 ve 2017. Tüm SQL Server sürümleri Standard veya Enterprise 64-bit olmalıdır. Azure Backup Sunucusu tarafından kullanılan örnek yalnızca yerel olmalıdır; uzak olamaz. Azure Backup Sunucusu için mevcut bir SQL Server örneğini kullanıyorsanız, kurulum yalnızca SQL Server *adlandırılan örneklerin* kullanımını destekler.
 
-   Makineyi yeniden başlatma önerisiyle ilgili bir hata oluşursa, bunu yapın ve **yeniden denetle**' yi seçin. SQL Server yapılandırma sorunları varsa, SQL Server yönergelerine göre SQL Server yeniden yapılandırın. Ardından Azure Backup Sunucusu SQL Server mevcut örneğini kullanarak yüklemeyi veya yükseltmeyi yeniden deneyin.
+   Makineyi yeniden başlatma önerisiyle ilgili bir hata oluşursa, bunu yapın ve **yeniden denetle**' yi seçin. SQL Server yapılandırma sorunları için, SQL Server SQL Server yönergelerine göre yeniden yapılandırın. Ardından Azure Backup Sunucusu SQL Server var olan örneğini kullanarak yüklemeyi veya yükseltmeyi yeniden deneyin.
 
    **El ile yapılandırma**
 
-   Kendi SQL Server örneğinizi kullandığınızda ana veritabanına sysadmin rolüne BUILTIN\Administrators eklediğinizden emin olun.
+   Kendi SQL Server örneğinizi kullandığınızda ana veritabanının sysadmin rolüne sysadmin rolüne BUILTIN\Administrators eklediğinizden emin olun.
 
-   **SQL Server 2017 ile SSRS yapılandırması**
+   **Raporlama Hizmetlerini SQL Server 2017 ile yapılandırma**
 
-   2017 SQL Server kendi örneğini kullandığınızda SQL Server 2017 Reporting Services 'ı (SSRS) el ile yapılandırmanız gerekir. SSRS yapılandırmasından sonra SSRS 'nin **IsInitialized** özelliğinin **true**olarak ayarlandığından emin olun. Bu özellik **true**olarak AYARLANDıĞıNDA Azure Backup sunucusu SSRS 'nin zaten yapılandırıldığını VARSAYAR ve SSRS yapılandırmasını atlar.
+   SQL Server 2017 örneğinizi kullanıyorsanız, SQL Server 2017 Raporlama Hizmetleri 'ni (SSRS) el ile yapılandırmanız gerekir. SSRS yapılandırıldıktan sonra, SSRS 'nin **IsInitialized** özelliğini **true**olarak ayarladığınızdan emin olun. **True**olarak AYARLANDıĞıNDA Azure Backup sunucusu SSRS 'nin zaten yapılandırıldığını VARSAYAR ve SSRS yapılandırmasını atlar.
 
-   SSRS yapılandırma durumunu denetlemek için şu komutu çalıştırın:
+   SSRS yapılandırma durumunu denetlemek için şunu çalıştırın:
 
    ```powershell
    $configset =Get-WmiObject –namespace 
@@ -310,14 +310,14 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
    SSRS yapılandırması hakkında [daha fazla bilgi edinin](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode) .
 
    > [!NOTE]
-   > [Microsoft Online Services terms](https://www.microsoft.com/licensing/product-licensing/products) (OST), Azure Backup sunucusu veritabanı olarak kullanılan SQL Server lisansını yönetir. Azure Backup Sunucusu ile paketlenmiş SQL Server, OST 'ye göre yalnızca Azure Backup Sunucusu veritabanı olarak kullanılabilir.
+   > [Microsoft Online Services terms](https://www.microsoft.com/licensing/product-licensing/products) (OST), Azure Backup sunucusu veritabanı olarak kullanılan SQL Server lisansını yönetir. OST 'e göre yalnızca Azure Backup Sunucusu veritabanı olarak Azure Backup Sunucusu birlikte paketlenmiş SQL Server kullanın.
 
 1. Yükleme başarılı olduktan sonra **İleri**' yi seçin.
 
-1. Microsoft Azure Backup Server dosyalarının yüklenmesi için bir konum belirtin ve **İleri**' yi seçin.
+1. Microsoft Azure Backup Server dosyalarını yüklemek için bir konum belirtin ve **İleri**' yi seçin.
 
    > [!NOTE]
-   > Azure 'a yedekleme için karalama konumu gereklidir. Karalama konumunun, buluta yedeklenmek üzere planlandığı verilerin en az %5 ' i olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [depolama havuzlarını ve Disk depolamayı yapılandırma](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12)).
+   > Azure 'a yedekleme için karalama konumu gereklidir. Karalama konumunun, buluta yedeklemek için planlanmış verilerin en az %5 ' i olduğundan emin olun. Disk koruması için, yükleme bittikten sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [depolama havuzlarını ve Disk depolamayı yapılandırma](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12)).
 
    ![Microsoft Azure Backup Server dosyalarının yüklenmesi için bir konum belirtin ve Ileri ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
@@ -334,19 +334,22 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
 
 1. **Ayarların özetini**gözden geçirin ve **yükler**' i seçin.
 
-   Yükleme aşamalarda gerçekleşir. İlk aşamada Microsoft Azure Kurtarma Hizmetleri Aracısı yüklenir ve ikinci aşama Internet bağlantısını denetler. Internet bağlantısı varsa, yüklemeye devam edebilirsiniz. Aksi takdirde, internet 'e bağlanmak için proxy ayrıntılarını sağlamanız gerekir. Son aşama Önkoşul yazılımını denetler. Yüklü değilse, eksik yazılımlar Microsoft Azure Kurtarma Hizmetleri aracısıyla birlikte yüklenir.
+   Yükleme aşamalarda gerçekleşir. 
+   - İlk aşamada Microsoft Azure Kurtarma Hizmetleri Aracısı yüklenir.
+   - İkinci aşama Internet bağlantısını denetler. Varsa, yükleme işlemine devam edebilirsiniz. Kullanılabilir değilse, internet 'e bağlanmak için proxy ayrıntılarını sağlamalısınız. 
+   - Son aşama Önkoşul yazılımını denetler. Yüklü değilse, eksik yazılımlar Microsoft Azure Kurtarma Hizmetleri aracısıyla birlikte yüklenir.
 
 1. Makineyi kurtarma hizmetleri kasasına kaydetmek için kasa kimlik bilgilerini bulmak üzere **Araştır** ' ı seçin ve ardından **İleri**' yi seçin.
 
-1. Azure ile şirket içi arasında gönderilen verileri şifrelemek veya şifresini çözmek için bir pass ifadesi seçin.
+1. Azure ile şirket içi arasında gönderilen verileri şifrelemek veya şifresini çözmek için bir parola seçin.
 
    > [!TIP]
    > Otomatik olarak bir parola oluşturabilir veya en düşük 16 karakterlik parolanızı sağlayabilirsiniz.
 
-1. Geçiş tümceciğinin kaydedileceği konumu girin ve ardından sunucuyu kaydetmek için **İleri** ' yi seçin.
+1. Parolayı kaydetmek için konumu girin ve ardından sunucuyu kaydetmek için **İleri** ' yi seçin.
 
    > [!IMPORTANT]
-   > Pass deyimini yerel sunucu dışında bir güvenli konuma kaydedin. Pass tümceciğini depolamak için Azure Key Vault kullanmanızı kesinlikle öneririz.
+   > Parolayı yerel sunucu dışında bir güvenli konuma kaydedin. Parolayı depolamak için Azure Key Vault kullanmanızı kesinlikle öneririz.
 
    Microsoft Azure Kurtarma Hizmetleri Aracısı kurulumu bittikten sonra, yükleme adımı SQL Server ve Azure Backup Sunucusu bileşenleri için yükleme ve yapılandırmaya gider.
 
@@ -356,7 +359,7 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
 
 ### <a name="install-update-rollup-1"></a>Güncelleştirme paketi 1 ' i yükler
 
-İş yüklerini koruyabilmeniz için Azure Backup Sunucusu v3 için güncelleştirme paketi 1 ' in yüklenmesi zorunludur. Hata düzeltmelerinin listesini ve Azure Backup Sunucusu v3 güncelleştirme paketi 1 için yükleme yönergelerini görüntülemek için bkz. Bilgi Bankası makalesi [4534062](https://support.microsoft.com/en-us/help/4534062/).
+İş yüklerini koruyabilmeniz için Azure Backup Sunucusu v3 için güncelleştirme paketi 1 ' in yüklenmesi zorunludur.  Hata düzeltmelerini ve yükleme yönergelerini [Bilgi Bankası makalesinde](https://support.microsoft.com/en-us/help/4534062/)bulabilirsiniz.
 
 ## <a name="add-storage-to-azure-backup-server"></a>Azure Backup Sunucusu’na depolama alanı ekleme
 
@@ -369,7 +372,7 @@ Azure Backup Sunucusu v3 şunları sağlayan Modern Yedekleme Alanı destekler:
 
 ### <a name="volumes-in-azure-backup-server"></a>Azure Backup Sunucusu birimler
 
-Önceden eklenmemişse, gerekli depolama kapasitesine sahip veri disklerini Azure Backup Sunucusu sanal makineye ekleyin.
+Daha önce eklenmemişse, Azure Backup Sunucusu VM 'nin gerekli depolama kapasitesine sahip veri disklerini ekleyin.
 
 Azure Backup Sunucusu v3 yalnızca depolama birimlerini kabul eder. Bir birim eklediğinizde Azure Backup Sunucusu, birimi Modern Yedekleme Alanı gereken dayanıklı dosya sistemi (ReFS) olarak biçimlendirir.
 
@@ -381,13 +384,12 @@ Azure Backup Sunucusu v3 yalnızca depolama birimlerini kabul eder. Bir birim ek
 
 1. Kullanılabilir birimleri ekledikten sonra, bunları yönetmenize yardımcı olacak kolay bir ad verin. 
 
-1. Azure Backup Sunucusu Modern Yedekleme Alanı avantajları kullanabilmesi için bu birimleri ReFS olarak biçimlendirmek üzere **Tamam ' ı** seçin.
+1. Azure Backup Sunucusu, Modern Yedekleme Alanı avantajları kullanabilmesi için bu birimleri ReFS olarak biçimlendirmek üzere **Tamam ' ı** seçin.
 
-![Kullanılabilir birimleri ekleme](../backup/media/backup-mabs-add-storage/mabs-add-storage-7.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Backup Sunucusu kullanarak Azure VMware çözümünde çalışan VMware VM 'lerinin yedeklenmesini yapılandırma hakkında bilgi edinmek için sonraki öğreticiye geçin.
+Azure Backup Sunucusu kullanarak Azure VMware çözümünde çalışan VMware VM 'lerinin bir yedeğinin nasıl yapılandırılacağını öğrenmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Azure VMware Çözüm VM 'lerinin yedeklemesini yapılandırma](backup-azure-vmware-solution-virtual-machines.md)

@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 92ec7c0a1469c9f02855cd6191faa8514e54c8f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff97aa6c6f04ad41ba6e1b986f3cc0734ec7a326
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91829088"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92526090"
 ---
 | Kaynak | Sınır | Not |
 | --- | --- | --- |
@@ -39,6 +39,6 @@ ms.locfileid: "91829088"
 | En fazla dosya yükleme boyutu WAF |V1 orta WAF ağ geçitleri, 100 MB<br>V1 büyük WAF ağ geçitleri, 500 MB<br>V2 WAF, 750 MB| |
 | WAF gövde boyutu sınırı, dosyalar olmadan|128 KB||
 | En fazla WAF özel kuralları|100||
-| Maksimum WAF dışlamaları|100||
+| Application Gateway başına en fazla WAF dışlamaları|40||
 
 <sup>1</sup> WAF özellikli SKU 'lar söz konusu olduğunda, kaynak sayısını 40 ile sınırlamanız gerekir.

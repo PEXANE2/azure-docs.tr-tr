@@ -8,39 +8,39 @@ ms.topic: include
 ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 14e74bfbcd087ccc1d8c5f2f10a8e44ed37cce84
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 8eff9da82fdfa5749fd1c2bc04652d5c8ce8dfd2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016595"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518090"
 ---
-![Ölçümler menüsü](media/vm-disk-performance/utilization-metrics-example/fio-output.jpg)
+![R = 22.8 k vurgulanmasını gösteren f ı o çıkışının ekran görüntüsü.](media/vm-disk-performance/utilization-metrics-example/fio-output.jpg)
 
-Ancak, Standard_D8s_v3 toplam 28.600 IOPS elde edebilir. ölçümler kullanılarak, neler olduğunu araştırıp depolama GÇ darboğazımızın belirlenmesi sağlanır. İlk olarak, ölçüm düğmesine sol taraftaki menüyü bulun ve seçin:
+Standard_D8s_v3 toplam 28.600 ıOPS elde edebilir. Ölçümleri kullanarak, neler olduğunu araştıralım ve depolama GÇ darboğazımuzu nasıl tanımlayacağım. Sol bölmede **ölçümler**' i seçin:
 
-![Ölçümler menüsü](media/vm-disk-performance/utilization-metrics-example/metrics-menu.jpg)
+![Sol bölmede vurgulanan ölçümleri gösteren ekran görüntüsü.](media/vm-disk-performance/utilization-metrics-example/metrics-menu.jpg)
 
 İlk olarak, **VM 'Nin önbelleğe alınmış IOPS yüzde** ölçüsünü göz atalım:
 
-![VM önbelleğe alınan ıOPS yüzdesi](media/vm-disk-performance/utilization-metrics-example/vm-cached.jpg)
+![V M önbelleğe alınan g/ç 'yi gösteren ekran görüntüsü yüzdesi.](media/vm-disk-performance/utilization-metrics-example/vm-cached.jpg)
 
-Bu ölçüm, VM 'deki önbelleğe alınmış IOPS 'ye ayrılan 16.000 IOPS 'yi söylemekte, %61 kullanılıyor. Bu, depolama GÇ darboğazın %100 ' de olmadığı için önbelleğe alınmış disklere sahip olmadığı anlamına gelir. Şimdi, **VM 'Nin önbelleğe ALıNMAMıŞ IOPS yüzde** ölçüsünü göz atalım:
+Bu ölçüm, sanal makine üzerindeki önbelleğe alınmış ıOPS 'ye ayrılan 16.000 ıOPS 'nin %61 ' u olduğunu söyler. Bu yüzde, depolama GÇ sorununa %100 ' de olmadığı için önbelleğe alınan diskler olmadığı anlamına gelir. Şimdi **VM 'Nin önbelleğe ALıNMAMıŞ IOPS yüzdesi** ölçümünü inceleyelim:
 
-![VM önbelleğe alınmamış ıOPS yüzde yüzdesi](media/vm-disk-performance/utilization-metrics-example/vm-uncached.jpg)
+![V M önbelleğe alınmamış g/ç 'Leri tüketilen ekran görüntüsü.](media/vm-disk-performance/utilization-metrics-example/vm-uncached.jpg)
 
-Bu ölçüm %100 ' de olduğundan, VM 'deki önbelleğe alınmamış IOPS 'ye ayrılan tüm 12.800 IOPS 'nin kullanıldığını bize söyleyerek. Bunu düzeltebilmemiz için, VM 'imizin boyutunu ek GÇ 'yi işleyebilen daha büyük bir boyutla değiştirerek yapabilirsiniz. Ancak bunu yapmadan önce, kaç IOPS gördüğünü görmek için eklenen diske göz atalım. İlk olarak işletim **sistemi DISK IOPS tüketilen yüzdeye**bakarak Işletim sistemi diskine göz atalım:
+Bu ölçüm %100 ' dir. Bu, VM 'deki önbelleğe alınmamış ıOPS 'ye ayrılan tüm 12.800 ıOPS 'nin kullanıldığını söyler. Bu sorunu düzelttiğimiz yollardan biri, VM 'imizin boyutunu ek GÇ 'yi işleyebileceğiniz daha büyük bir boyuta değiştirmek olabilir. Ancak bunu yapmadan önce, kaç ıOPS gördüğünü öğrenmek için eklenen diske göz atalım. İşletim **sistemi DISK IOPS tüketilen yüzdeyi**inceleyerek Işletim sistemi diskini kontrol edin:
 
-![İşletim sistemi diski ıOPS tüketilen yüzde](media/vm-disk-performance/utilization-metrics-example/os-disk.jpg)
+![O 'un tükettiği disk g/ç yüzdesini gösteren ekran görüntüsü.](media/vm-disk-performance/utilization-metrics-example/os-disk.jpg)
 
-Bu ölçüm, bu P30 işletim sistemi diski için sağlanan 5.000 IOPS 'nin %90 ' nin üzerinde olduğunu bize bildiriyor. Bu, burada işletim sistemi diskinde bir performans sorunu olmadığı anlamına gelir. Şimdi, **veri DISKI IOPS tüketilen yüzdeye**bakarak VM 'ye bağlı veri disklerine göz atalım:
+Bu ölçüm, bu P30 işletim sistemi diski için sağlanan 5.000 ıOPS 'nin yaklaşık %90 ' üne sahip olduğunu bize söyler. Bu yüzde, işletim sistemi diskinde performans sorunu olmadığı anlamına gelir. Şimdi, VM 'ye bağlı veri disklerini, **tüketilen veri DISKI IOPS yüzdesine**göz atalım.
 
-![Veri diski ıOPS tüketilen yüzde](media/vm-disk-performance/utilization-metrics-example/data-disks-no-splitting.jpg)
+![Veri diski g/ç yüzdesini gösteren ekran görüntüsü.](media/vm-disk-performance/utilization-metrics-example/data-disks-no-splitting.jpg)
 
-Bu ölçüm, bağlı olan tüm diskler genelinde yüzde 42 ' ün altında bulunan ortalama IOPS 'nin olduğunu bize bildiriyor. Bu yüzde, diskler tarafından kullanılan ve ana bilgisayar önbelleğinden sunulmayan IOPS temel alınarak hesaplanır. Bu ölçüm hakkında daha ayrıntılı bilgi vererek bu ölçümleri **bölmek** ve LUN değerine göre bölmek için:
+Bu ölçüm, eklenen tüm diskler genelinde yüzde 42 ' ün altında olan ortalama ıOPS 'nin yüzdesini söyler. Bu yüzde, diskler tarafından kullanılan ve konak önbelleğinden sunulmayan ıOPS temel alınarak hesaplanır. Bu ölçülere *bölme* ve LUN değerine göre bölme uygulayarak bu ölçüme daha ayrıntılı bir bakalım:
 
-![Veri diski ıOPS değeri bölme Ile tüketildi](media/vm-disk-performance/utilization-metrics-example/data-disks-splitting.jpg)
+![Veri diski g/ç 'Leri bölme ile tüketilen ekran görüntüsü.](media/vm-disk-performance/utilization-metrics-example/data-disks-splitting.jpg)
 
-Bu ölçüm, LUN 3 ' te takılı olan veri disklerinin ve 2 ' nin sağlanan IOPS 'nin %85 ' de kullanıldığı konusunda bize söylemekte. Bu, GÇ 'nin VM ve disk mimarisine nasıl benzediklerinin bir diyagramı aşağıda verilmiştir:
+Bu ölçüm, 1. LUN 'a eklenen veri disklerini ve 2 ' nin sağlanan ıOPS 'nin %85 ' de kullandığını söyler. Bu, GÇ 'nin VM ve diskler mimarisinden nasıl görüneceğine ilişkin bir diyagram aşağıda verilmiştir:
 
-![Storage ıO ölçümleri örnek diyagramı](media/vm-disk-performance/utilization-metrics-example/metrics-diagram.jpg)
+![Depolama g/ç ölçümleri örneği diyagramı.](media/vm-disk-performance/utilization-metrics-example/metrics-diagram.jpg)

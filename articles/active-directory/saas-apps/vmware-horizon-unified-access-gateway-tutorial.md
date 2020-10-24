@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 9e9d98e8b68b4e01d7e8f19e7c7d89a88d9bf69f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfdcc39966e58a845be0096474cb8a3366f3dd7a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500910"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503631"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>Öğretici: VMware ufku Birleşik erişim ağ geçidi ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -125,7 +125,7 @@ Bu bölümde, VMware ufku Birleşik erişim ağ geçidine erişim vererek, B. Si
 
 ### <a name="create-vmware-horizon-unified-access-gateway-test-user"></a>VMware Horizon-Unified Access Gateway test kullanıcısı oluşturma
 
-Bu bölümde, VMware ufku Birleşik erişim ağ geçidinde B. Simon adlı bir Kullanıcı oluşturacaksınız. VMWare ufku Birleşik erişim ağ geçidi platformunda kullanıcıları eklemek için [VMWare ufku Birleşik erişim ağ geçidi destek ekibi](mailto:support@vmware.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, VMware ufku Birleşik erişim ağ geçidinde B. Simon adlı bir Kullanıcı oluşturacaksınız. VMWare ufku Birleşik erişim ağ geçidi platformunda kullanıcıları eklemek için [VMWare ufku Birleşik erişim ağ geçidi destek ekibi](mailto:support@vmware.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
@@ -141,8 +141,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız VMWare ufku Birleşik erişim ağ geçidinde otomatik olarak oturum açmış olmanız gerekir 
 
-Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de kullanabilirsiniz. Erişim panelinde VMware ufku Birleşik erişim ağ geçidi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız VMware ufku Birleşik erişim ağ geçidinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de kullanabilirsiniz. Erişim panelinde VMware ufku Birleşik erişim ağ geçidi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız VMware ufku Birleşik erişim ağ geçidinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-VMware ufku Birleşik erişim ağ geçidini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+VMware ufku Birleşik erişim ağ geçidini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
