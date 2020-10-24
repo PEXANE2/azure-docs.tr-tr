@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 787c39681d0e9aff25d205c7b195be00b8c0bc9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff66c2cb355e2070cdf30444c52d1accacac8964
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020023"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490450"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>.NET SDK 'da oturum belirteci biçimlerini dönüştürme
 
@@ -111,6 +111,6 @@ else
 Aşağıdaki makaleleri okuyun:
 
 * [Azure Cosmos DB tutarlılığı yönetmek için oturum belirteçlerini kullanın](how-to-manage-consistency.md#utilize-session-tokens)
-* [Azure Cosmos DB doğru tutarlılık düzeyini seçin](consistency-levels-choosing.md)
-* [Azure Cosmos DB tutarlılık, kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md)
-* [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md)
+* [Azure Cosmos DB doğru tutarlılık düzeyini seçin](./consistency-levels.md)
+* [Azure Cosmos DB tutarlılık, kullanılabilirlik ve performans avantajları](./consistency-levels.md)
+* [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları](./consistency-levels.md)

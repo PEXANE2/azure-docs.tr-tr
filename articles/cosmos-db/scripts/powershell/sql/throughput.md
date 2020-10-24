@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: e55b93d3790efe01a796860bd3607f2fcc6ba5f6
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c5d01d34e0941974590845f7a54248e2972c2067
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281982"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481797"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-database-or-container-for-azure-cosmos-db-core-sql-api"></a>Azure Cosmos DB Core (SQL) API 'SI için bir veritabanı veya kapsayıcı için PowerShell ile işleme (RU/s) işlemleri
 
@@ -47,16 +47,16 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-Azcosmosdbsqldatabaseüretilen Işi](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | Azure Cosmos DB Çekirdek (SQL) API veritabanında sağlanan aktarım hızını alır. |
-| [Get-Azcosmosdbsqlcontainerüretilen Işi](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Azure Cosmos DB Çekirdek (SQL) API kapsayıcısı üzerinde sağlanan aktarım hızını alın. |
-| [Update-Azcosmosdbsqldatabaseverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabase) | Azure Cosmos DB Core (SQL) API veritabanının üretilen iş değerini güncelleştirir. |
-| [Update-Azcosmosdbsqlcontainerverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Azure Cosmos DB Core (SQL) API kapsayıcısının üretilen iş değerini güncelleştirir. |
-| [Invoke-AzCosmosDBSqlDatabaseThroughputMigration](https://docs.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbsqldatabasethroughputmigration) | Azure Cosmos DB Core (SQL) API veritabanının verimini geçirin. |
-| [Invoke-AzCosmosDBSqlContainerThroughputMigration](https://docs.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbsqlcontainerthroughputmigration) | Azure Cosmos DB Core (SQL) API kapsayıcısının aktarım hızını geçirin. |
+| [Get-Azcosmosdbsqldatabaseüretilen Işi](/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | Azure Cosmos DB Çekirdek (SQL) API veritabanında sağlanan aktarım hızını alır. |
+| [Get-Azcosmosdbsqlcontainerüretilen Işi](/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Azure Cosmos DB Çekirdek (SQL) API kapsayıcısı üzerinde sağlanan aktarım hızını alın. |
+| [Update-Azcosmosdbsqldatabaseverimini](/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabase) | Azure Cosmos DB Core (SQL) API veritabanının üretilen iş değerini güncelleştirir. |
+| [Update-Azcosmosdbsqlcontainerverimini](/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Azure Cosmos DB Core (SQL) API kapsayıcısının üretilen iş değerini güncelleştirir. |
+| [Invoke-AzCosmosDBSqlDatabaseThroughputMigration](/powershell/module/az.cosmosdb/invoke-azcosmosdbsqldatabasethroughputmigration) | Azure Cosmos DB Core (SQL) API veritabanının verimini geçirin. |
+| [Invoke-AzCosmosDBSqlContainerThroughputMigration](/powershell/module/az.cosmosdb/invoke-azcosmosdbsqlcontainerthroughputmigration) | Azure Cosmos DB Core (SQL) API kapsayıcısının aktarım hızını geçirin. |
 |**Azure Kaynak grupları**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).

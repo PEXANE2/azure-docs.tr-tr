@@ -10,12 +10,12 @@ ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: a9501df45d598c85f8c694c5d07db4f959615c00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03ef816632b73f46acaf1efdf2ddec28459fc9b8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968184"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489345"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Azure Cosmos DB verilerinde toplu işlemler yapmak için toplu yürütücü Java kitaplığını kullanma
 
@@ -27,7 +27,7 @@ Bu öğretici, Azure Cosmos DB belgelerini içeri aktarmak ve güncelleştirmek 
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.  
 
-* Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyebilir](https://azure.microsoft.com/try/cosmosdb/) , ücretsiz ve taahhütlere sahip olabilirsiniz. Ya da [Azure Cosmos DB öykünücüsünü](/azure/cosmos-db/local-emulator) `https://localhost:8081` uç noktayla kullanabilirsiniz. Birincil Anahtar, [Kimlik doğrulama istekleri](local-emulator.md#authenticate-requests) bölümünde sağlanır.  
+* Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyebilir](https://azure.microsoft.com/try/cosmosdb/) , ücretsiz ve taahhütlere sahip olabilirsiniz. Ya da [Azure Cosmos DB öykünücüsünü](./local-emulator.md) `https://localhost:8081` uç noktayla kullanabilirsiniz. Birincil Anahtar, [Kimlik doğrulama istekleri](local-emulator.md#authenticate-requests) bölümünde sağlanır.  
 
 * [Java Development Kit (JDK) 1.7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)  
   - Ubuntu’da JDK’yi yüklemek için `apt-get install default-jdk` komutunu çalıştırın.  
@@ -215,5 +215,3 @@ Toplu yürütücü kitaplığı kullanırken daha iyi performans için aşağıd
     
 ## <a name="next-steps"></a>Sonraki adımlar
 * Toplu yürütücü Java kitaplığı 'nın Maven paket ayrıntıları ve sürüm notları hakkında bilgi edinmek için bkz.[toplu yürütücü SDK ayrıntıları](sql-api-sdk-bulk-executor-java.md).
-
-

@@ -9,18 +9,18 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 5b4e2fa95b9a5eebf393d7c64feecd3997b7ecfd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37e56caa8242709214265af0e1fc03c3853300f1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280037"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488801"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure depolama Analizi günlüğü
 
 Depolama Analizi, bir depolama cihazına gönderilen başarılı ve başarısız isteklerle ilgili ayrıntılı bilgileri günlüğe kaydeder. Bu bilgileri kullanarak istekleri ayrı ayrı izleyebilir ve depolama hizmetiyle ilgili sorunları tanılayabilirsiniz. İstekler en iyi çaba temelinde günlüğe kaydedilir.
 
- Depolama Analizi günlüğe kaydetme özelliği depolama hesabınızda varsayılan olarak etkin değildir. Bunu [Azure Portal](https://portal.azure.com/)etkinleştirebilirsiniz; Ayrıntılar için bkz. [Azure Portal bir depolama hesabını izleme](/azure/storage/storage-monitor-storage-account). Ayrıca, REST API veya istemci kitaplığı aracılığıyla Depolama Analizi programlı bir şekilde etkinleştirebilirsiniz. Her hizmet için Depolama Analizi etkinleştirmek üzere [BLOB hizmeti özelliklerini al](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API), [kuyruk hizmeti özelliklerini al](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)ve [Tablo hizmeti özelliklerini](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) Al işlemlerini kullanın.
+ Depolama Analizi günlüğe kaydetme özelliği depolama hesabınızda varsayılan olarak etkin değildir. Bunu [Azure Portal](https://portal.azure.com/)etkinleştirebilirsiniz; Ayrıntılar için bkz. [Azure Portal bir depolama hesabını izleme](/azure/storage/storage-monitor-storage-account). Ayrıca, REST API veya istemci kitaplığı aracılığıyla Depolama Analizi programlı bir şekilde etkinleştirebilirsiniz. Her hizmet için Depolama Analizi etkinleştirmek üzere [BLOB hizmeti özelliklerini al](/rest/api/storageservices/Blob-Service-REST-API), [kuyruk hizmeti özelliklerini al](/rest/api/storageservices/Get-Queue-Service-Properties)ve [Tablo hizmeti özelliklerini](/rest/api/storageservices/Get-Table-Service-Properties) Al işlemlerini kullanın.
 
  Günlük girişleri yalnızca hizmet uç noktasında yapılan istekler varsa oluşturulur. Örneğin, bir depolama hesabının kendi BLOB uç noktasında etkinliği varsa ancak tablo veya sıra uç noktalarında etkinlik varsa, yalnızca blob hizmetiyle ilgili günlükler oluşturulur.
 
@@ -204,7 +204,7 @@ Aşağıdaki örnek, 15 Mayıs, 10:00 ve 11 Mayıs 2014 Mayıs 'ta başlayan saa
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-Belirli dosyaları indirme hakkında daha fazla bilgi edinmek için bkz. [belirli dosyaları indirme](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files).
+Belirli dosyaları indirme hakkında daha fazla bilgi edinmek için bkz. [belirli dosyaları indirme](/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files).
 
 Günlük verilerinizi indirdiyseniz, dosyalardaki günlük girişlerini görüntüleyebilirsiniz. Bu günlük dosyaları, çok sayıda günlük okuma aracının ayrıştırabildiği sınırlı bir metin biçimi kullanır (daha fazla bilgi için bkz. kılavuz [izleme, tanılama ve sorun giderme Microsoft Azure depolama](storage-monitoring-diagnosing-troubleshooting.md)). Farklı araçların, günlük dosyalarınızın içeriğini biçimlendirmek, filtrelemek, sıralamak ve ad aramak için farklı özellikleri vardır. Depolama günlüğü günlük dosyası biçimi ve içeriği hakkında daha fazla bilgi için bkz. [depolama Analizi günlük biçimi](/rest/api/storageservices/storage-analytics-log-format) ve [depolama Analizi günlüğe kaydedilmiş Işlemler ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 

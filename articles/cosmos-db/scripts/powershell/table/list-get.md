@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 07/31/2020
 ms.author: mjbrown
-ms.openlocfilehash: ab4313f02d233b3eac33b7da202fca559bffa147
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 74c95fe8a7d113fc9aad77fa5819dc18f740d68c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281938"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481746"
 ---
 # <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB Tablo API'si için tabloları listeleme ve edinme
 
@@ -39,12 +39,12 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB hesaplarını listeler veya belirtilen bir Cosmos DB hesabı alır. |
-| [Get-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtable) | Bir hesaptaki Tablo API'si tabloları listeler veya bir hesapta belirtilen Tablo API'si tabloyu alır. |
+| [Get-AzCosmosDBAccount](/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB hesaplarını listeler veya belirtilen bir Cosmos DB hesabı alır. |
+| [Get-AzCosmosDBTable](/powershell/module/az.cosmosdb/get-azcosmosdbtable) | Bir hesaptaki Tablo API'si tabloları listeler veya bir hesapta belirtilen Tablo API'si tabloyu alır. |
 |**Azure Kaynak grupları**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).

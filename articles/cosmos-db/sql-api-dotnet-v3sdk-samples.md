@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: fe31e67168c4eaf6fe94c056a96fdf695ea94fe4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c3e975052672b26464847cec13470cfda9263742
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279988"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481508"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>SQL API 'SI için Azure Cosmos DB.NET v3 SDK (Microsoft. Azure. Cosmos) örnekleri
 
@@ -33,7 +33,7 @@ ms.locfileid: "92279988"
 * Örnek C# proje dosyalarının her birindeki görevlere bağlantılar.
 * İlgili API başvurusu içeriğine bağlantılar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure geliştirme iş akışı yüklü Visual Studio 2019
 
@@ -72,7 +72,7 @@ Bir Azure aboneliği veya ücretsiz Cosmos DB deneme hesabı
 | [Kapsayıcı oluşturma](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L97-L107) |[Database. CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet&preserve-view=true) |
 | [Özel dizin ilkesiyle kapsayıcı oluşturma](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L111-L127) |[Database. CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet&preserve-view=true) |
 | [Bir kapsayıcının yapılandırılmış performansını değiştirme](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L149-L171) |[Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) |
-| [KIMLIĞE göre kapsayıcı al](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L176-L185) |[Container. Readcontainsilinebilir eşitleme](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readcontainerasync?view=azure-dotnet&preserve-view=true) |
+| [KIMLIĞE göre kapsayıcı al](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L176-L185) |[Container. Readcontainsilinebilir eşitleme](/dotnet/api/microsoft.azure.cosmos.container.readcontainerasync?preserve-view=true&view=azure-dotnet) |
 | [Bir veritabanındaki tüm kapsayıcıları okuyun](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L193-L205) |[Database. Getcontainerqueryıterator](/dotnet/api/microsoft.azure.cosmos.database.getcontainerqueryiterator?view=azure-dotnet&preserve-view=true) |
 | [Kapsayıcı silme](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L213-L2018) |[Container. Deletecontainsilsync](/dotnet/api/microsoft.azure.cosmos.container.deletecontainerasync?view=azure-dotnet&preserve-view=true) |
 
@@ -92,7 +92,7 @@ Bir Azure aboneliği veya ücretsiz Cosmos DB deneme hesabı
 
 ## <a name="indexing-examples"></a>Dizin örnekleri
 
-Örnek *ındexmanagement* projesinin [runındexdemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L108-L122) yöntemi aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin ilkeleri](index-policy.md), [Dizin türleri](index-types.md)ve [dizin yolları](index-paths.md). 
+Örnek *ındexmanagement* projesinin [runındexdemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L108-L122) yöntemi aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin ilkeleri](index-policy.md), [Dizin türleri](index-overview.md#index-kinds)ve [dizin yolları](index-policy.md#include-exclude-paths). 
 
 | Görev | API başvurusu |
 | --- | --- |
@@ -102,7 +102,7 @@ Bir Azure aboneliği veya ücretsiz Cosmos DB deneme hesabı
 
 ## <a name="query-examples"></a>Sorgu örnekleri
 
-Örnek *sorgular* projesinin [rundemoasync](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L76-L96) yöntemi, SQL sorgu DILBILGISI, sorgu Içeren LINQ sağlayıcısı ve lambda kullanılarak aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB SQL sorgu başvurusu hakkında bilgi edinmek için, bkz. [SQL sorgu örnekleri Azure Cosmos DB](how-to-sql-query.md).
+Örnek *sorgular* projesinin [rundemoasync](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L76-L96) yöntemi, SQL sorgu DILBILGISI, sorgu Içeren LINQ sağlayıcısı ve lambda kullanılarak aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB SQL sorgu başvurusu hakkında bilgi edinmek için, bkz. [SQL sorgu örnekleri Azure Cosmos DB](./sql-query-getting-started.md).
 
 | Görev | API başvurusu |
 | --- | --- |

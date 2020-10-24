@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/24/2019
-ms.openlocfilehash: cdb2207ab834ab84cedd2ad23e5e26186ac44039
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f815754c099e1e085fb0692285b9e690d68194e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020482"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487679"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK kullanarak Apache Hive sorguları çalıştırma
 
@@ -24,7 +24,7 @@ HDInsight .NET SDK kullanarak Apache Hive sorguları göndermeyi öğrenin. Hive
 > [!NOTE]  
 > Bu makaledeki adımların bir Windows istemcisinden gerçekleştirilmesi gerekir. Bir Linux, OS X veya UNIX istemcisini Hive ile çalışmak üzere kullanma hakkında bilgi için, makalenin üst kısmında gösterilen sekme seçiciyi kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
@@ -146,6 +146,6 @@ Bu makalede, HDInsight .NET SDK kullanarak Apache Hive sorguları göndermeyi ö
 
 * [Azure HDInsight 'ı kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight 'ta Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md)
-* [HDInsight .NET SDK başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [HDInsight .NET SDK başvurusu](/dotnet/api/overview/azure/hdinsight)
 * [HDInsight ile Apache Sqoop kullanma](apache-hadoop-use-sqoop-mac-linux.md)
 * [Etkileşimli olmayan kimlik doğrulaması ile çalıştırılan .NET HDInsight uygulamaları oluşturma](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)

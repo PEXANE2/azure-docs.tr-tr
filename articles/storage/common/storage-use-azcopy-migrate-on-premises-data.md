@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 5b37417efdb99f6b90983b86954da70fa6f7c6a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f969c30033604cb4b331b5ed86d992af371f9c75
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716096"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490824"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Öğretici: AzCopy ile şirket içi verileri bulut depolamaya geçirme
 
@@ -37,7 +37,7 @@ Windows kullanıyorsanız bu öğreticide görev zamanlamak için kullanılan [S
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 İlk adım bir kapsayıcı oluşturmaktır. Blobların her zaman bir kapsayıcı içine yüklenmesi gerekir. Bilgisayarınızdaki dosyaları düzenlemek için klasörleri kullandığınız gibi blob gruplarını düzenlemek için de kapsayıcılardan faydalanabilirsiniz.
 
@@ -46,7 +46,7 @@ Kapsayıcı oluşturmak için şu adımları izleyin:
 1. Ana sayfadan **Depolama hesapları** düğmesini seçin ve oluşturduğunuz depolama hesabını seçin.
 2. **Hizmetler** bölümünden **Bloblar**’ı seçin ve sonra **Kapsayıcı**’yı seçin.
 
-   ![Bir kapsayıcı oluşturma](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
+   ![Kapsayıcı oluşturmayı gösteren ekran görüntüsü](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
  
 Kapsayıcı harfleri bir harf veya sayı ile başlamalıdır. Bunlar yalnızca harf, sayı ve kısa çizgi karakterini (-) içerebilir. Kapsayıcıları ve blobları adlandırma kuralları hakkında daha fazla bilgi için bkz. [Kapsayıcıları, blobları ve meta verileri adlandırma ve bunlara başvurma](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
@@ -62,7 +62,7 @@ AzCopy dosyasını bilgisayarınızda herhangi bir yere yerleştirin. Bilgisayar
 
 ## <a name="authenticate-with-azure-ad"></a>Azure AD ile kimlik doğrulaması
 
-İlk olarak, [Depolama Blobu veri katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) rolünü kimliğinize atayın. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)konusuna bakın.
+İlk olarak, [Depolama Blobu veri katılımcısı](/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) rolünü kimliğinize atayın. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](/azure/storage/common/storage-auth-aad-rbac-portal)konusuna bakın.
 
 Ardından, bir komut istemi açın, aşağıdaki komutu yazın ve ENTER tuşuna basın.
 
@@ -72,13 +72,13 @@ azcopy login
 
 Bu komut, bir kimlik doğrulama kodu ve bir Web sitesinin URL 'sini döndürür. Web sitesini açın, kodu sağlayın ve sonra **İleri** düğmesini seçin.
 
-![Bir kapsayıcı oluşturma](media/storage-use-azcopy-v10/azcopy-login.png)
+![Oturum açma isteminin gösterildiği ekran görüntüsü](media/storage-use-azcopy-v10/azcopy-login.png)
 
 Oturum açma penceresi görüntülenir. Bu pencerede, Azure hesabı kimlik bilgilerinizi kullanarak Azure hesabınızda oturum açın. Başarıyla oturum açtıktan sonra, tarayıcı penceresini kapatabilir ve AzCopy kullanmaya başlayabilirsiniz.
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Bir klasörün içeriğini Blob depolama alanına yükleme
 
-AzCopy komutunu kullanarak, bir klasördeki tüm dosyaları, [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) veya [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) üzerindeki Blob depolama alanına yükleyebilirsiniz. Bir klasördeki tüm blobları karşıya yüklemek için aşağıdaki AzCopy komutunu girin:
+AzCopy komutunu kullanarak, bir klasördeki tüm dosyaları, [Windows](/azure/storage/common/storage-use-azcopy) veya [Linux](/azure/storage/common/storage-use-azcopy-linux) üzerindeki Blob depolama alanına yükleyebilirsiniz. Bir klasördeki tüm blobları karşıya yüklemek için aşağıdaki AzCopy komutunu girin:
 
 ```AzCopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
@@ -176,7 +176,7 @@ Zamanlanmış görevin/sıralanmış işin düzgün şekilde çalıştığını 
 
 Şirket içi verileri Azure Depolama’ya (veya tam tersi) taşıma yolları hakkında daha fazla bilgi edinmek için bkz.:
 
-* [Azure Depolamadan/Depolamaya veri taşıma](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
+* [Azure Depolamadan/Depolamaya veri taşıma](/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
 
 AzCopy hakkında daha fazla bilgi için şu makalelerden birine bakın:
 

@@ -7,18 +7,18 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a186c6e176cde20474cdf4772b8724ad3f356a3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc4655ce6cd572183cd92e1c8b2ac10e613ebd8f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87493627"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489974"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-postgresql-server-using-powershell"></a>PowerShell kullanarak PostgreSQL için Azure veritabanı sunucusu 'nda depolamayı otomatik olarak büyüt
 
 Bu makalede, bir PostgreSQL için Azure veritabanı sunucu depolaması, iş yükünü etkilemeden nasıl büyütüleceği açıklanır.
 
-Depolama otomatik büyüme [, sunucunuzun depolama sınırına ulaşmasını](/azure/postgresql/concepts-pricing-tiers#reaching-the-storage-limit) ve Salt okunabilir hale gelmesini önler. 100 GB veya daha az depolama alanı olan sunucularda, boş alan %10 ' un altında olduğunda Boyut 5 GB artar. 100 GB 'tan fazla sağlanan depolama alanı olan sunucularda, boş alan 10 GB 'ın altında olduğunda Boyut %5 oranında artar. Maksimum depolama sınırları, [PostgreSQL Için Azure veritabanı fiyatlandırma katmanlarının](/azure/postgresql/concepts-pricing-tiers#storage)depolama bölümünde belirtilen şekilde uygulanır.
+Depolama otomatik büyüme [, sunucunuzun depolama sınırına ulaşmasını](./concepts-pricing-tiers.md#reaching-the-storage-limit) ve Salt okunabilir hale gelmesini önler. 100 GB veya daha az depolama alanı olan sunucularda, boş alan %10 ' un altında olduğunda Boyut 5 GB artar. 100 GB 'tan fazla sağlanan depolama alanı olan sunucularda, boş alan 10 GB 'ın altında olduğunda Boyut %5 oranında artar. Maksimum depolama sınırları, [PostgreSQL Için Azure veritabanı fiyatlandırma katmanlarının](./concepts-pricing-tiers.md#storage)depolama bölümünde belirtilen şekilde uygulanır.
 
 > [!IMPORTANT]
 > Depolamanın yalnızca yukarı ölçeklenebileceğinden, aşağı doğru ölçeklenemediğini unutmayın.
@@ -27,14 +27,14 @@ Depolama otomatik büyüme [, sunucunuzun depolama sınırına ulaşmasını](/a
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
-- Yerel olarak yüklenen veya tarayıcıda [Azure Cloud Shell](https://shell.azure.com/) [az PowerShell modülü](https://docs.microsoft.com/powershell/azure/install-az-ps)
+- Yerel olarak yüklenen veya tarayıcıda [Azure Cloud Shell](https://shell.azure.com/) [az PowerShell modülü](/powershell/azure/install-az-ps)
 - [PostgreSQL Için Azure veritabanı sunucusu](quickstart-create-postgresql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > Az. PostgreSql PowerShell modülü önizlemedeyken, aşağıdaki komutu kullanarak az PowerShell modülünden ayrı olarak yüklemelisiniz: `Install-Module -Name Az.PostgreSql -AllowPrerelease` .
 > Az. PostgreSql PowerShell modülü genel kullanıma sunulduğunda, bu, gelecekteki az PowerShell modülü sürümlerinin bir parçası haline gelir ve Azure Cloud Shell içinden yerel olarak kullanılabilir.
 
-PowerShell 'i yerel olarak kullanmayı seçerseniz, [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 'Ini kullanarak Azure hesabınıza bağlanın.
+PowerShell 'i yerel olarak kullanmayı seçerseniz, [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 'Ini kullanarak Azure hesabınıza bağlanın.
 
 ## <a name="enable-postgresql-server-storage-auto-grow"></a>PostgreSQL Server Storage otomatik büyümesini etkinleştir
 

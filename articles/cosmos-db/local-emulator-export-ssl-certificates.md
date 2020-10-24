@@ -7,12 +7,12 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: 068b316eaa92a1e781df0b9945133a26fa0b88a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f747cc6405cef07510766bcfa4c826aec9d9857b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445282"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490416"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Java, Python ve Node.js uygulamalarıyla kullanmak üzere Azure Cosmos DB öykünücü sertifikalarını dışarı aktarın
 
@@ -66,7 +66,7 @@ Bu makalede, Windows sertifika deposu ile tümleştirilen farklı dillerde ve ç
 
 Java tabanlı bir istemci kullanan Java uygulamalarını veya MongoDB uygulamalarını çalıştırırken, bu sertifikayı, bayrakları geçirmeden Java varsayılan sertifika deposuna yüklemek daha kolay olur `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` . Örneğin, dahil edilen Java demo uygulaması ( `https://localhost:8081/_explorer/index.html` ) varsayılan sertifika deposuna bağlıdır.
 
-X. 509.440 sertifikasını varsayılan Java sertifika deposuna aktarmak için [Java sertifikaları deposuna sertifika ekleme](https://docs.microsoft.com/azure/java-add-certificate-ca-store) bölümündeki yönergeleri izleyin. Keytool çalıştırılırken *% JAVA_HOME%* dizininde çalıştığınızı aklınızda bulundurun. Sertifika sertifika deposuna alındıktan sonra, SQL ve Azure Cosmos DB 's API istemcilerinin MongoDB için API 'si Azure Cosmos öykünücüsüne bağlanabilir.
+X. 509.440 sertifikasını varsayılan Java sertifika deposuna aktarmak için [Java sertifikaları deposuna sertifika ekleme](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store) bölümündeki yönergeleri izleyin. Keytool çalıştırılırken *% JAVA_HOME%* dizininde çalıştığınızı aklınızda bulundurun. Sertifika sertifika deposuna alındıktan sonra, SQL ve Azure Cosmos DB 's API istemcilerinin MongoDB için API 'si Azure Cosmos öykünücüsüne bağlanabilir.
 
 Alternatif olarak, sertifikayı içeri aktarmak için aşağıdaki Bash betiğini çalıştırabilirsiniz:
 
@@ -106,4 +106,3 @@ Sertifikayı Java sertifika deposuna yüklediyseniz veya başka bir yerde kullan
 
 * [Öykünücüyü denetlemek için komut satırı parametrelerini ve PowerShell komutlarını kullanma](emulator-command-line-parameters.md)
 * [Öykünücü ile ilgili sorunları ayıklama](troubleshoot-local-emulator.md)
-

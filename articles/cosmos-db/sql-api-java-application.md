@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 913bc4373785d9341064e505ddce84fe43f727b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74a4178cc6b9645f3cb22bf3d1c7c0ee942c3f5f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801605"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485299"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Öğretici: Azure Cosmos DB ve SQL API kullanarak Java Web uygulaması oluşturma
 
@@ -22,7 +22,7 @@ ms.locfileid: "91801605"
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
@@ -197,7 +197,7 @@ Azure Web Siteleri Java uygulamalarını dağıtmayı, uygulamanızı bir WAR do
    * Hedef kutusunda WAR dosyasını kaydetmek için bir hedef seçin.
    * **Finish (Son)** düğmesine tıklayın.
 
-1. Artık elinizde bir WAR dosyası olduğuna göre, bunu Azure Web Sitenizin **webapps** dizinine yüklemeniz yeterlidir. Dosyayı karşıya yükleme konusunda yönergeler için bkz. [Azure App Service Web Apps’e Java uygulaması ekleme](../app-service/web-sites-java-add-app.md). WAR dosyası webapps dizinine yüklendikten sonra, çalışma zamanı ortamı eklemiş olduğunu algılar ve otomatik olarak yükler.
+1. Artık elinizde bir WAR dosyası olduğuna göre, bunu Azure Web Sitenizin **webapps** dizinine yüklemeniz yeterlidir. Dosyayı karşıya yükleme konusunda yönergeler için bkz. [Azure App Service Web Apps’e Java uygulaması ekleme](../app-service/quickstart-java.md). WAR dosyası webapps dizinine yüklendikten sonra, çalışma zamanı ortamı eklemiş olduğunu algılar ve otomatik olarak yükler.
 
 1. Tamamlanmış ürününüzü görüntülemek için, `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` adresine gidip görevlerinizi eklemeye başlayın!
 

@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 1cd6b4b52db224db5febcec1eff79b01379a5956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d04c670010e3595d8f30c7ffcd34d99e27374cb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262829"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488461"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Anahtar değer deposu olarak Azure Cosmos DB-maliyete genel bakış
 
-Azure Cosmos DB, yüksek oranda kullanılabilir ve büyük ölçekli uygulamaları kolayca oluşturmaya yönelik küresel olarak dağıtılmış, çok modelli bir veritabanı hizmetidir. Varsayılan olarak, Azure Cosmos DB tüm verileri otomatik olarak ve etkin şekilde dizine alır. Bu, verilerde hızlı ve tutarlı [SQL](how-to-sql-query.md) (ve [JavaScript](stored-procedures-triggers-udfs.md)) sorguları sunar. 
+Azure Cosmos DB, yüksek oranda kullanılabilir ve büyük ölçekli uygulamaları kolayca oluşturmaya yönelik küresel olarak dağıtılmış, çok modelli bir veritabanı hizmetidir. Varsayılan olarak, Azure Cosmos DB tüm verileri otomatik olarak ve etkin şekilde dizine alır. Bu, verilerde hızlı ve tutarlı [SQL](./sql-query-getting-started.md) (ve [JavaScript](stored-procedures-triggers-udfs.md)) sorguları sunar. 
 
 Bu makalede, anahtar/değer deposu olarak kullanıldığında basit yazma ve okuma işlemlerine yönelik Azure Cosmos DB maliyeti açıklanmaktadır. Yazma işlemleri, veri öğelerinin eklemeleri, yerini alır, siler ve üst öğeleri içerir. Tüm çok bölgeli hesaplar için% 99,999 kullanılabilirlik SLA 'Sı <garantisi sağlamanın yanı sıra, Azure Cosmos DB, okumalar için 10 ms gecikme süresi ve (Dizinli) yazma işlemleri için 99. yüzdebirlik değeri sağlar. 
 
@@ -48,4 +48,3 @@ Temel blob veya nesne çoğunluğu her bir milyon okuma işlemi için hizmet üc
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * İş yükleriniz için üretilen işi tahmin etmek üzere [ru Hesaplayıcı](https://cosmos.azure.com/capacitycalculator/) kullanın.
-

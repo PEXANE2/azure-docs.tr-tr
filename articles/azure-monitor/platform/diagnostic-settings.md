@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: fcbce9e7a5b24cbbe695b2ad664137875464b705
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 32ff5a73494bac2cabcb9488f946673435173dd0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107938"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489447"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. [Platform ölçümleri](data-platform-metrics.md) varsayılan olarak toplanır ve genellikle Azure izleyici ölçümleri veritabanında depolanır. Bu makalede, farklı hedeflere platform ölçümleri ve platform günlükleri göndermek için tanılama ayarlarını oluşturma ve yapılandırma hakkında ayrıntılı bilgi verilmektedir.
@@ -43,7 +43,7 @@ Aşağıdaki videoda, platform günlüklerine tanılama ayarlarıyla yönlendirm
 ## <a name="destinations"></a>Hedefler
 Platform günlükleri ve ölçümleri aşağıdaki tablodaki hedeflere gönderilebilir. 
 
-| Hedef | Description |
+| Hedef | Açıklama |
 |:---|:---|
 | [Log Analytics çalışma alanı](design-logs-deployment.md) | Log Analytics çalışma alanına Günlükler ve ölçümler gönderme, güçlü günlük sorguları ve ayrıca uyarılar ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak için Azure Izleyici tarafından toplanan diğer izleme verileriyle analiz etmenizi sağlar. |
 | [Olay hub’ları](../../event-hubs/index.yml) | Event Hubs Günlükler ve ölçümler gönderme, üçüncü taraf SIG 'ler ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışını sağlar.  |
@@ -63,6 +63,8 @@ Tanılama ayarları oluşturulmadan önce tanılama ayarının tüm hedefleri ol
 > [!NOTE]
 > Azure portalında geçerli seçeneklerden biri olarak listeleniyor olsa bile, Azure Data Lake Storage 2. Nesil hesapları şu anda tanılama ayarlarının hedefi olarak desteklenmemektedir.
 
+> [!NOTE]
+> Azure Izleyici (Tanılama Ayarları), sanal ağlar etkinleştirildiğinde Event Hubs kaynaklara erişemez. Azure Izleyici (Tanılama Ayarları) hizmetine Event Hubs kaynaklarınıza erişim verilmesi için, güvenilen Microsoft hizmetlerinin Olay Hub 'ında bu güvenlik duvarını atlamasına Izin ver ayarını etkinleştirmeniz gerekir. 
 
 
 ## <a name="create-in-azure-portal"></a>Azure portalda oluşturma

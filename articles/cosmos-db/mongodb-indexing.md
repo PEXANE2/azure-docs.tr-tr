@@ -9,12 +9,12 @@ ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 6f7114188a7a996ee80346ec48a51f0cce8bba54
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 6e084a890dd5c772fbf576ddc50fd26b2d1774f0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425039"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487390"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
 
@@ -78,7 +78,7 @@ Alanda Jeo-uzamsal dizin oluşturma örneği aşağıda verilmiştir `location` 
 
 ### <a name="text-indexes"></a>Metin dizinleri
 
-MongoDB için Azure Cosmos DB API 'SI Şu anda metin dizinlerini desteklememektedir. Dizelerde metin arama sorguları için, Azure Cosmos DB ile [Azure bilişsel arama](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) tümleştirmesini kullanmanız gerekir. 
+MongoDB için Azure Cosmos DB API 'SI Şu anda metin dizinlerini desteklememektedir. Dizelerde metin arama sorguları için, Azure Cosmos DB ile [Azure bilişsel arama](../search/search-howto-index-cosmosdb.md) tümleştirmesini kullanmanız gerekir. 
 
 ## <a name="wildcard-indexes"></a>Joker karakter dizinleri
 

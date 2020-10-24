@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0cbbcc822765097f83fcd1a52ce775c69faba9fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c5629f80c37c9f79dc9a39c4d8304acbee9679d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87836437"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489583"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Hızlı başlangıç: Windows sanal makineler ile Azure dosyaları paylaşma oluşturma ve yönetme
 
@@ -98,7 +98,7 @@ Bu noktada yeni bir sanal makine oluşturdunuz ve bir veri diskini kullanıma a�
 1. Azure portal *qsfileshare* FileShare öğesine gidin ve **Bağlan**' ı seçin.
 1. İkinci kutunun içeriğini kopyalayıp **Not defteri**'ne yapıştırın.
 
-   ![Azure Dosyaları Bağlan bölmesinden UNC adı](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
+   ![Not defteri 'nde kopyalamanız ve yapıştırmanız gereken saniye kutusunun içeriğini gösteren ekran görüntüsü.](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
 
 1. VM 'de **Dosya Gezgini** 'ni açın ve pencerede **Bu bilgisayarı** seçin. Bu seçim Şeritteki kullanılabilir menüleri değiştirecek. **Bilgisayar** menüsünde, **Ağ Sürücüsüne Bağlan**' ı seçin.
 1. Sürücü harfini seçin ve UNC adını girin. Bu hızlı başlangıçta adlandırma önerilerini izlediyseniz, **Not defteri**'nden * \\ qsstorageacct. File. Core. Windows. net\qsfileshare* ' yi kopyalayın.

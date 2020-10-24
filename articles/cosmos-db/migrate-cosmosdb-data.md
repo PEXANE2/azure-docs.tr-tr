@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2228c99dba2dd99c0afa44457642235e08ac011
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263553"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480930"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme 
 
@@ -38,7 +38,7 @@ Azure Data Factory, Azure Data Migration hizmetleri gibi araçlar için bu sın�
 
 ## <a name="custom-tool-with-bulk-executor-library"></a>Toplu yürütücü kitaplığı ile özel araç 
 
-Yukarıdaki bölümde açıklanan zorluklar, birden çok örneğe kolayca ölçeklenebilen ve geçici hatalara dayanıklı olan özel bir araç kullanılarak çözülebilir. Ayrıca, özel araç çeşitli denetim noktalarında geçişi duraklatabilir ve devam edebilir. Azure Cosmos DB, bu özelliklerden bazılarını içeren [toplu yürütücü kitaplığını](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) zaten sağlıyor. Örneğin, toplu yürütücü kitaplığı geçici hataları işlemeye yönelik işlevlere zaten sahiptir ve düğüm başına 500 K ru 'yi kullanmak için tek bir düğümdeki iş parçacıklarını ölçeklendirebilirler. Toplu yürütücü kitaplığı ayrıca kaynak veri kümesini, bir denetim noktası olarak bağımsız olarak çalıştırılan mikro toplu işlemlere da bölümler.  
+Yukarıdaki bölümde açıklanan zorluklar, birden çok örneğe kolayca ölçeklenebilen ve geçici hatalara dayanıklı olan özel bir araç kullanılarak çözülebilir. Ayrıca, özel araç çeşitli denetim noktalarında geçişi duraklatabilir ve devam edebilir. Azure Cosmos DB, bu özelliklerden bazılarını içeren [toplu yürütücü kitaplığını](./bulk-executor-overview.md) zaten sağlıyor. Örneğin, toplu yürütücü kitaplığı geçici hataları işlemeye yönelik işlevlere zaten sahiptir ve düğüm başına 500 K ru 'yi kullanmak için tek bir düğümdeki iş parçacıklarını ölçeklendirebilirler. Toplu yürütücü kitaplığı ayrıca kaynak veri kümesini, bir denetim noktası olarak bağımsız olarak çalıştırılan mikro toplu işlemlere da bölümler.  
 
 Özel araç, toplu yürütücü kitaplığını kullanır ve birden çok istemcide ölçeklendirmeyi destekler ve alma işlemi sırasında hataları izler. Bu aracı kullanmak için, kaynak verilerin Azure Data Lake Storage (ADLS) içindeki farklı dosyalara bölümlenmesi gerekir, böylece farklı geçiş çalışanları her dosyayı seçip Azure Cosmos DB içine alabilir. Özel araç, ADLS içindeki her bir kaynak dosya için geçiş ilerlemesiyle ilgili meta verileri depolayan ayrı bir koleksiyon kullanır ve bunlarla ilişkili tüm hataları izler.  
 
@@ -152,4 +152,4 @@ Büyük veri kümelerini Azure Cosmos DB başarılı bir şekilde geçirmek içi
 
 * [.Net](bulk-executor-dot-net.md) ve [Java](bulk-executor-java.md)'daki toplu yürütücü kitaplığını kullanan örnek uygulamaları deneyerek daha fazla bilgi edinin. 
 * Toplu yürütücü kitaplığı, Cosmos DB Spark Bağlayıcısı ile tümleşiktir, daha fazla bilgi edinmek için bkz. [Azure Cosmos DB Spark Bağlayıcısı](spark-connector.md) makalesi.  
-* Büyük ölçekli geçişlerle ilgili ek yardım için "genel Danışma belgesi" sorun türü ve "büyük (TB +) geçişleri" sorun alt türü altında bir destek bileti açarak Azure Cosmos DB ürün ekibine başvurun. 
+* Büyük ölçekli geçişlerle ilgili ek yardım için "genel Danışma belgesi" sorun türü ve "büyük (TB +) geçişleri" sorun alt türü altında bir destek bileti açarak Azure Cosmos DB ürün ekibine başvurun.

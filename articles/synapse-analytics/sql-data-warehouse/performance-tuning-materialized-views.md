@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e807a01f575615967a039d360505a4f090cd1fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984110"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478329"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Gerçekleştirilmiş görünümlerle performans ayarı
 
@@ -37,8 +37,8 @@ Standart görünümde gereksinimlerin çoğu, gerçekleştirilmiş bir görünü
 |İçeriği görüntüleme                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında SQL havuzunda ön işleme ve depolama. Temel tablolara veri eklendikçe güncelleştirildi.
 |Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor
 |Karmaşık sorgulardan Görünüm verilerini alma hızı     | Yavaş                                         | Hızlı  
-|Ek depolama                   | Hayır                                           | Evet
-|Sözdizimi                          | GÖRÜNÜM OLUŞTUR                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
+|Ek depolama                   | Hayır                                           | Yes
+|Syntax                          | CREATE VIEW                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
 
 ## <a name="benefits-of-using-materialized-views"></a>Gerçekleştirilmiş görünümleri kullanmanın avantajları
 
@@ -79,7 +79,7 @@ SQL havuzlarındaki şema ve sorgu değişiklikleri, normal ETL işlemlerini ve 
 
 **Daha hızlı sorgu performansı için farklı veri dağıtımı stratejisi gerekir**
 
-SQL havuzu, dağıtılmış bir yüksek düzeyde paralel işleme (MPP) sistemidir.   SQL havuzu tablosundaki veriler, üç [dağıtım stratejisinden](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (karma, round_robin veya çoğaltılan) biri kullanılarak 60 düğüm arasında dağıtılır.  
+SYNAPSE SQL, dağıtılmış bir sorgu işleme sistemidir.  SQL tablosundaki veriler, üç [dağıtım stratejisinden](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (karma, round_robin veya çoğaltılan) biri kullanılarak 60 düğüm arasında dağıtılır.   
 
 Veri dağıtımı tablo oluşturma zamanında belirtilir ve tablo bırakılana kadar değişmeden kalır. Gerçekleştirilmiş görünüm, karma ve round_robin veri dağıtımlarını destekler.  Kullanıcılar, temel tablolardan farklı olan, ancak en çok görünümleri kullanan sorguların performansı için en uygun olan veri dağıtımını seçebilirler.  
 

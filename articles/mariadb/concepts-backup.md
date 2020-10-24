@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 5c82c7a3fbe931042c1ae817d2f5b6c9ae6989ff
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d452070619a8e6284b976ff202d2a86f1ff9312b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427757"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480743"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda yedekleme ve geri yükleme
 
@@ -44,12 +44,15 @@ Yedekleme bekletme süresi, kullanılabilir yedeklemeler temel aldığı için z
 - 4 TB 'a kadar depolama alanı olan sunucular en fazla 2 tam veritabanı yedeklemesi, tüm değişiklik yedeklemeleri ve en erken tam veritabanı yedeklemesinden bu yana gerçekleştirilen işlem günlüğü yedeklemelerini korur.
 -   16 TB 'a kadar depolamaya sahip sunucular, son 8 gündeki tüm fark anlık görüntülerini ve işlem günlüğü yedeklemelerini tam veritabanı anlık görüntüsünü tutar.
 
+#### <a name="long-term-retention-of-backups"></a>Yedeklemeler için uzun süreli saklama
+35 günden daha büyük olan yedeklemeler için uzun süreli saklama, henüz hizmet tarafından yerel olarak desteklenmiyor. Yedeklemeleri almak ve uzun süreli saklama için depolamak üzere mysqldump kullanma seçeneğiniz vardır. Destek ekibimiz, BT 'nin nasıl elde edilebileceği hakkında bir [adım adım makalede](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) oturum açtı. 
+
 ### <a name="backup-redundancy-options"></a>Yedekleme artıklığı seçenekleri
 
 MariaDB için Azure veritabanı, Genel Amaçlı ve bellek için Iyileştirilmiş katmanlardaki yerel olarak yedekli veya coğrafi olarak yedekli yedekleme depolama arasında seçim yapmak için esneklik sağlar. Yedeklemeler coğrafi olarak yedekli yedekleme depolaması 'nda depolandığında, yalnızca sunucunuzun barındırıldığı bölge içinde depolanmaz, ancak aynı zamanda [eşleştirilmiş bir veri merkezine](../best-practices-availability-paired-regions.md)çoğaltılır. Bu, daha iyi koruma ve olağanüstü durum durumunda sunucunuzu farklı bir bölgede geri yükleme yeteneği sağlar. Temel katman yalnızca yerel olarak yedekli yedekleme depolama alanı sunar.
 
-> [!IMPORTANT]
-> Yedekleme için yerel olarak yedekli veya coğrafi olarak yedekli depolamayı yapılandırmaya yalnızca sunucu oluşturma sırasında izin verilir. Sunucu sağlandıktan sonra yedekleme depolama artıklığı seçeneğini değiştiremezsiniz.
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Yerel olarak yedekli iken coğrafi olarak yedekli yedekleme depolamasına taşıma
+Yedekleme için yerel olarak yedekli veya coğrafi olarak yedekli depolamayı yapılandırmaya yalnızca sunucu oluşturma sırasında izin verilir. Sunucu sağlandıktan sonra yedekleme depolama artıklığı seçeneğini değiştiremezsiniz. Yedekleme depolama alanınızı yerel olarak yedekli depolama alanından coğrafi olarak yedekli depolamaya taşımak için yeni bir sunucu oluşturmak ve verileri [döküm ve geri yükleme](howto-migrate-dump-restore.md) kullanarak geçirmek desteklenen tek seçenektir.
 
 ### <a name="backup-storage-cost"></a>Yedekleme depolama maliyeti
 

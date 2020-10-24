@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0fe56a8173a4cfe8836a078a62c7bc9015c83324
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1d524e34623d5fde3d6f22afbdd63ce95699fe6f
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461269"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494476"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -32,10 +32,10 @@ Denetim düzlemi API 'Lerini kullanmak için:
 * [Denetim düzlemi Swagger klasöründeki](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)en son Swagger 'A başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
 * Şu anda, içindeki denetim API 'Leri için SDK 'Lara erişebilirsiniz...
   - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([başvuru [otomatik olarak oluşturulan]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([başvuru [otomatik olarak oluşturulan]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview))
+  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([başvuru [otomatik olarak oluşturulan]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview))
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([kaynak](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins))
-  - [Kaynak ol](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins)
+  - [Git](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins)
 
 Ayrıca, [Azure Portal](https://portal.azure.com) ve [CLI](how-to-use-cli.md)aracılığıyla Azure dijital TWINS ile etkileşime girerek denetim düzlemi API 'leri uygulayabilirsiniz.
 
@@ -56,7 +56,7 @@ Veri düzlemi API 'Lerini kullanmak için:
 * **.Net (C#)** SDK 'sını kullanabilirsiniz. .NET SDK 'Yı kullanmak için...
    - paketi NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)' dan görüntüleyebilir ve ekleyebilirsiniz. 
    - örnek bir klasör içeren SDK kaynağını GitHub 'da bulabilirsiniz: [.net Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - [SDK başvuru belgelerini](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview)görüntüleyebilirsiniz.
+   - [SDK başvuru belgelerini](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)görüntüleyebilirsiniz.
    - Bu makalenin [.net (C#) SDK (veri düzlemi)](#net-c-sdk-data-plane) bölümüne devam ederek ayrıntılı bilgi ve kullanım örnekleri görebilirsiniz.
 * **Java** SDK 'sını kullanabilirsiniz. Java SDK 'sını kullanmak için...
    - paketi Maven 'ten görüntüleyebilir ve yükleyebilirsiniz: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
@@ -65,6 +65,8 @@ Veri düzlemi API 'Lerini kullanmak için:
 * **JavaScript** SDK 'sını kullanabilirsiniz. JavaScript SDK 'sını kullanmak için...
    - paketi NPM 'den görüntüleyebilir ve yükleyebilirsiniz: [JavaScript Için Azure Azure Digital TWINS istemci kitaplığı](https://www.npmjs.com/package/@azure/digital-twins).
    - [SDK başvuru belgelerini](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)görüntüleyebilirsiniz.
+* **Python** SDK 'sını kullanabilirsiniz. Python SDK 'Yı kullanmak için...
+   - paketi görüntüleyebilir ve yükleyebilirsiniz: [Python Için Azure Azure Digital TWINS çekirdek istemci kitaplığı](https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/).
 * Diğer bir dil için, oto Rest kullanarak bir SDK oluşturabilirsiniz. [*Nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma*](how-to-create-custom-sdks.md)bölümündeki yönergeleri Izleyerek oto Rest kullanın.
 
 [CLI](how-to-use-cli.md)aracılığıyla Azure dijital TWINS ile etkileşime girerek Tarih düzlemi API 'leri de uygulayabilirsiniz.
@@ -100,6 +102,8 @@ string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
 var credential = new DefaultAzureCredential();
 DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
 ```
+
+[!INCLUDE [Azure Digital Twins: local credentials note](../../includes/digital-twins-local-credentials-note.md)] 
 
 Model ve liste modellerini karşıya yükleyin:
 

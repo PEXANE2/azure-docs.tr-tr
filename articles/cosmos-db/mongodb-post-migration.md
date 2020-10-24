@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: jasonh
-ms.openlocfilehash: f21aa30de2b2dfcf85e45c7ed4d5c485fe45eed7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6733e0f6447d055da8d349940bc7c7665e003e33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409706"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475609"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'SI kullanılırken geçiş sonrası en iyi duruma getirme adımları
 
@@ -53,12 +53,12 @@ Verilerinizi Global olarak dağıtmak için lütfen [MongoDB için Azure Cosmos 
 
 ## <a name="set-consistency-level"></a>Tutarlılık düzeyini ayarla
 
-Azure Cosmos DB, 5 iyi tanımlanmış [tutarlılık düzeyi](consistency-levels.md)sunmaktadır. MongoDB ve Azure Cosmos DB tutarlılık düzeyleri arasındaki eşleme hakkında bilgi edinmek için, [tutarlılık düzeylerini ve Azure Cosmos DB API 'leri](consistency-levels-across-apis.md)okuyun. Varsayılan tutarlılık düzeyi, oturum tutarlılığı düzeyidir. Tutarlılık düzeyinin değiştirilmesi isteğe bağlıdır ve bunu uygulamanız için iyileştirebilirsiniz. Azure portal kullanarak tutarlılık düzeyini değiştirmek için:
+Azure Cosmos DB, 5 iyi tanımlanmış [tutarlılık düzeyi](consistency-levels.md)sunmaktadır. MongoDB ve Azure Cosmos DB tutarlılık düzeyleri arasındaki eşleme hakkında bilgi edinmek için, [tutarlılık düzeylerini ve Azure Cosmos DB API 'leri](./consistency-levels.md)okuyun. Varsayılan tutarlılık düzeyi, oturum tutarlılığı düzeyidir. Tutarlılık düzeyinin değiştirilmesi isteğe bağlıdır ve bunu uygulamanız için iyileştirebilirsiniz. Azure portal kullanarak tutarlılık düzeyini değiştirmek için:
 
 1. Ayarlar altında **varsayılan tutarlılık** dikey penceresine gidin.
 2. [Tutarlılık düzeyinizi](consistency-levels.md) seçin
 
-Çoğu Kullanıcı, varsayılan oturum tutarlılığı ayarında tutarlılık düzeyini bırakır. Ancak, [çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md)vardır.
+Çoğu Kullanıcı, varsayılan oturum tutarlılığı ayarında tutarlılık düzeyini bırakır. Ancak, [çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları](./consistency-levels.md)vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

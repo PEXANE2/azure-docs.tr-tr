@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3ad53a90586ccf88c5c74326103997ca0a53cdf9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: fb97f9ee822c808057139bd25b2e4f43c48a2e48
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279752"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490518"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB 'de IP güvenlik duvarını yapılandırma
 
@@ -22,7 +22,7 @@ Hesabınızda depolanan verilerin güvenliğini sağlamak için Azure Cosmos DB 
 
 Varsayılan olarak, Azure Cosmos hesabınıza, istek geçerli bir yetkilendirme belirteci eşlik ettiği sürece internet 'ten erişilebilir. IP İlkesi tabanlı erişim denetimini yapılandırmak için, kullanıcının belirli bir Azure Cosmos hesabına erişmesi için izin verilen istemci IP 'Leri listesine dahil edilecek IP adresleri veya IP adresi aralıklarını CıDR (sınıfsız Inter-Domain yönlendirme) biçiminde sağlaması gerekir. Bu yapılandırma uygulandıktan sonra, izin verilen bu listenin dışındaki makinelerden gelen istekler 403 (yasak) yanıtını alır. IP güvenlik duvarını kullanırken Azure portal hesabınıza erişmesine izin vermeniz önerilir. Veri Gezgini 'nin kullanımına izin vermek için erişim ve Azure portal görüntülenen hesabınıza yönelik ölçümleri almak için erişim gerekir. Veri Gezgini 'ni kullanırken Azure portal hesabınıza erişmesine izin vermenin yanı sıra, güvenlik duvarı ayarlarınızı da geçerli IP adresinizi güvenlik duvarı kurallarına eklemek için güncelleştirmeniz gerekir. Güvenlik Duvarı değişikliklerinin yayılması 15 dakika kadar sürebilir.
 
-IP tabanlı güvenlik duvarını alt ağ ve VNET erişim denetimiyle birleştirebilirsiniz. Bunları birleştirerek, erişimi genel IP ve/veya VNET içindeki belirli bir alt ağdan sınırlayabilirsiniz. Alt ağ ve VNET tabanlı erişim denetimi kullanma hakkında daha fazla bilgi için bkz. [sanal ağlardan erişim Azure Cosmos DB kaynakları](vnet-service-endpoint.md).
+IP tabanlı güvenlik duvarını alt ağ ve VNET erişim denetimiyle birleştirebilirsiniz. Bunları birleştirerek, erişimi genel IP ve/veya VNET içindeki belirli bir alt ağdan sınırlayabilirsiniz. Alt ağ ve VNET tabanlı erişim denetimi kullanma hakkında daha fazla bilgi için bkz. [sanal ağlardan erişim Azure Cosmos DB kaynakları](./how-to-configure-vnet-service-endpoint.md).
 
 Özetlemek gerekirse, Azure Cosmos hesabına erişmek için yetkilendirme belirtecinin her zaman gereklidir. IP güvenlik duvarı ve VNET Access Control listesi (ACL 'Ler) ayarlanmamışsa Azure Cosmos hesabına yetkilendirme belirteciyle erişilebilir. IP güvenlik duvarı veya VNET ACL 'Leri veya her ikisi de Azure Cosmos hesabında kurulduktan sonra, yalnızca belirttiğiniz kaynaklardan (ve yetkilendirme belirteciyle) gelen istekler geçerli yanıtlar alır. 
 
@@ -47,7 +47,7 @@ IP erişim denetimi açıldığında, Azure portal IP adresleri, IP adresi aral�
 
 Bir IP erişim denetimi ilkesini programlı bir şekilde etkinleştirdiğinizde, erişimi sürdürmek için Azure portal IP adresini **ipRangeFilter** özelliğine eklemeniz gerekir. Portal IP adresleri şunlardır:
 
-|Bölge|IP adresi|
+|Bölge|IP Adresi|
 |------|----------|
 |Almanya|51.4.229.218|
 |Çin|139.217.8.252|
@@ -91,7 +91,7 @@ Rol örnekleri ekleyerek bulut hizmetinizi ölçeklendirirseniz, aynı bulut hiz
 
 ### <a name="requests-from-virtual-machines"></a>Sanal makinelerden gelen istekler
 
-Azure Cosmos DB kullanarak orta katmanlı Hizmetleri barındırmak için [sanal makineleri](https://azure.microsoft.com/services/virtual-machines/) veya [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) de kullanabilirsiniz. Cosmos DB hesabınızı sanal makinelerden erişime izin verecek şekilde yapılandırmak için, [IP erişim denetimi ilkesini yapılandırarak](#configure-ip-policy)Azure Cosmos DB hesabınız için ızın verilen IP adreslerinden biri olarak sanal makinenin ve/veya sanal makine ölçek KÜMESININ genel IP adresini yapılandırmanız gerekir.
+Azure Cosmos DB kullanarak orta katmanlı Hizmetleri barındırmak için [sanal makineleri](https://azure.microsoft.com/services/virtual-machines/) veya [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/overview.md) de kullanabilirsiniz. Cosmos DB hesabınızı sanal makinelerden erişime izin verecek şekilde yapılandırmak için, [IP erişim denetimi ilkesini yapılandırarak](#configure-ip-policy)Azure Cosmos DB hesabınız için ızın verilen IP adreslerinden biri olarak sanal makinenin ve/veya sanal makine ölçek KÜMESININ genel IP adresini yapılandırmanız gerekir.
 
 Aşağıdaki ekran görüntüsünde gösterildiği gibi Azure portal sanal makinelerin IP adreslerini alabilirsiniz:
 
@@ -105,7 +105,7 @@ Azure Cosmos DB hesabınıza Internet 'teki bir bilgisayardan eriştiğinizde, h
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Kaynak Yöneticisi şablonu kullanarak bir IP güvenlik duvarı yapılandırma
 
-Azure Cosmos DB hesabınıza erişim denetimini yapılandırmak için Kaynak Yöneticisi şablonunun, izin verilen IP aralıkları dizisiyle **ıprules** özelliğini belirttiğinden emin olun. IP güvenlik duvarını zaten dağıtılmış bir Cosmos hesabına yapılandırıyorsanız, `locations` dizinin şu anda dağıtılmış olan ile eşleştiğinden emin olun. `locations`Diziyi ve diğer özellikleri eşzamanlı olarak değiştiremezsiniz. Azure Cosmos DB için Azure Resource Manager şablonlarının daha fazla bilgi ve örnekleri için bkz. [Azure Resource Manager şablonları Azure Cosmos DB](resource-manager-samples.md)
+Azure Cosmos DB hesabınıza erişim denetimini yapılandırmak için Kaynak Yöneticisi şablonunun, izin verilen IP aralıkları dizisiyle **ıprules** özelliğini belirttiğinden emin olun. IP güvenlik duvarını zaten dağıtılmış bir Cosmos hesabına yapılandırıyorsanız, `locations` dizinin şu anda dağıtılmış olan ile eşleştiğinden emin olun. `locations`Diziyi ve diğer özellikleri eşzamanlı olarak değiştiremezsiniz. Azure Cosmos DB için Azure Resource Manager şablonlarının daha fazla bilgi ve örnekleri için bkz. [Azure Resource Manager şablonları Azure Cosmos DB](./templates-samples-sql.md)
 
 > [!IMPORTANT]
 > **Iprules** özelliği apı sürümü 2020-04-01 ile tanıtılmıştır. Önceki sürümler bunun yerine, virgülle ayrılmış IP adresleri listesi olan bir **ipRangeFilter** özelliği kullanıma sunuldu.
@@ -211,17 +211,17 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 Aşağıdaki seçenekleri kullanarak bir IP erişim denetimi ilkesiyle ilgili sorunları çözebilirsiniz:
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure Cosmos DB hesabınız için bir IP erişim denetimi ilkesi etkinleştirerek, hesabınıza verilen IP adresi aralıkları listesinin dışındaki tüm istekleri engellenir. Kapsayıcılara göz atma ve belge sorgulama gibi portal veri düzlemi işlemlerini etkinleştirmek için, portalda **güvenlik duvarı** bölmesini kullanarak Azure Portal erişime açıkça izin vermeniz gerekir.
 
-### <a name="sdks"></a>SDK’lar
+### <a name="sdks"></a>SDK
 
 İzin verilenler listesinde olmayan makinelerden SDK 'Ları kullanarak Azure Cosmos DB kaynaklarına eriştiğinizde, ek ayrıntı olmadan genel **403 yasaklanmış** bir yanıt döndürülür. Hesabınız için izin verilen IP listesini doğrulayın ve Azure Cosmos DB hesabınıza doğru ilke yapılandırmasının uygulandığından emin olun.
 
 ### <a name="source-ips-in-blocked-requests"></a>Engellenen isteklerde kaynak IP 'Leri
 
-Azure Cosmos DB hesabınızda tanılama günlüğünü etkinleştirin. Bu Günlükler her isteği ve yanıtı gösterir. Güvenlik Duvarı ile ilgili iletiler 403 dönüş koduyla günlüğe kaydedilir. Bu iletileri filtreleyerek, engellenen isteklerin kaynak IP 'lerini görebilirsiniz. Bkz. [Azure Cosmos DB tanılama günlüğü](logging.md).
+Azure Cosmos DB hesabınızda tanılama günlüğünü etkinleştirin. Bu Günlükler her isteği ve yanıtı gösterir. Güvenlik Duvarı ile ilgili iletiler 403 dönüş koduyla günlüğe kaydedilir. Bu iletileri filtreleyerek, engellenen isteklerin kaynak IP 'lerini görebilirsiniz. Bkz. [Azure Cosmos DB tanılama günlüğü](./monitor-cosmos-db.md).
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Azure Cosmos DB etkin için bir hizmet uç noktası olan bir alt ağdan gelen istekler
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e49ecf0f8e88e0de22117a5ed85b8352e73a2f5d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 65a3e9a1e60ad28fbc0357c5b04007ce4da37895
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020244"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487611"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: .NET SDK ve Azure Cosmos DB Tablo API'si uygulama oluşturma 
 
@@ -22,7 +22,7 @@ ms.locfileid: "89020244"
 > * [.NET](create-table-dotnet.md)
 > * [Java](create-table-java.md)
 > * [Node.js](create-table-nodejs.md)
-> * [Python](create-table-python.md)
+> * [Python](./table-storage-how-to-use-python.md)
 >  
 
 Bu hızlı başlangıçta GitHub’dan bir örneği kopyalayarak bir uygulama oluşturmak için .NET ve Azure Cosmos DB [Tablo API’sini](table-introduction.md) nasıl kullanacağınız gösterilmektedir. Bu hızlı başlangıçta ayrıca Azure Cosmos DB hesabı oluşturma ve web tabanlı Azure portalında tablo ve varlıklar oluşturmak için Veri Gezgini’ni kullanma da gösterilmektedir.
@@ -68,7 +68,7 @@ Zaten Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Com
    ```
 
 > [!TIP]
-> Benzer kod hakkında daha ayrıntılı bir anlatım için [Cosmos DB tablo API'si örnek](table-storage-how-to-use-dotnet.md) makalesine bakın.
+> Benzer kod hakkında daha ayrıntılı bir anlatım için [Cosmos DB tablo API'si örnek](./tutorial-develop-table-dotnet.md) makalesine bakın.
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>Örnek uygulamayı Visual Studio'da açma
 
@@ -173,4 +173,3 @@ Bu hızlı başlangıçta Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini'ni
 
 > [!div class="nextstepaction"]
 > [Tablo verilerini Tablo API’sine içeri aktarma](table-import.md)
-

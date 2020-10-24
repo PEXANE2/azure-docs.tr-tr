@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 01/26/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 2fa5cfcf0cb6c20a8a0b64651da0b365e12a3d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be421cc0bb00018b32ee63f2b486c11300627a01
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056331"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488563"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Azure Içeri/dışarı aktarma iş durumunu kopyalama günlük dosyalarıyla gözden geçirme
-Microsoft Azure İçeri/Dışarı Aktarma hizmeti bir içeri veya dışarı aktarma işiyle ilişkili sürücüleri işlediğinde, kopyalama günlük dosyalarını blob 'ları içeri veya dışarı aktarmak için kullandığınız depolama hesabına yazar. Günlük dosyası, içeri aktarılan veya aktarılan her dosya hakkında ayrıntılı durum içerir. Hizmet, tamamlanan bir işin durumunu sorgulayıp her bir kopya günlük dosyasının URL 'sini döndürür. Daha fazla bilgi için bkz. [Işi al](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get).  
+Microsoft Azure İçeri/Dışarı Aktarma hizmeti bir içeri veya dışarı aktarma işiyle ilişkili sürücüleri işlediğinde, kopyalama günlük dosyalarını blob 'ları içeri veya dışarı aktarmak için kullandığınız depolama hesabına yazar. Günlük dosyası, içeri aktarılan veya aktarılan her dosya hakkında ayrıntılı durum içerir. Hizmet, tamamlanan bir işin durumunu sorgulayıp her bir kopya günlük dosyasının URL 'sini döndürür. Daha fazla bilgi için bkz. [Işi al](/rest/api/storageimportexport/Jobs/Get).  
 
 ## <a name="example-urls"></a>Örnek URL 'Ler
 

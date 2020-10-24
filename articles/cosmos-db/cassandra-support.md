@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f9d472b94b5490d00eac6d160af40c61d547534b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 89e8a6a2abfc38c497be646bd70910895f92588f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107496"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489328"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri 
 
@@ -44,33 +44,33 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL veri türlerini destekler:
 
 |Komut  |Desteklenir |
 |---------|---------|
-| ascii  | Evet |
-| bigint  | Evet |
-| blob  | Evet |
-| boolean  | Evet |
-| counter  | Evet |
-| tarih  | Evet |
-| decimal  | Evet |
-| double  | Evet |
-| float  | Evet |
-| frozen  | Evet |
-| inet  | Evet |
-| int  | Evet |
-| list  | Evet |
-| set  | Evet |
-| smallint  | Evet |
-| metin  | Evet |
-| time  | Evet |
-| timestamp  | Evet |
-| timeuuid  | Evet |
-| tinyint  | Evet |
-| tuple  | Evet |
-| uuid  | Evet |
-| varchar  | Evet |
-| varint  | Evet |
-| tuples | Evet | 
-| udts  | Evet |
-| map | Evet |
+| ascii  | Yes |
+| bigint  | Yes |
+| blob  | Yes |
+| boolean  | Yes |
+| counter  | Yes |
+| date  | Yes |
+| decimal  | Yes |
+| double  | Yes |
+| float  | Yes |
+| frozen  | Yes |
+| inet  | Yes |
+| int  | Yes |
+| list  | Yes |
+| set  | Yes |
+| smallint  | Yes |
+| metin  | Yes |
+| time  | Yes |
+| timestamp  | Yes |
+| timeuuid  | Yes |
+| tinyint  | Yes |
+| tuple  | Yes |
+| uuid  | Yes |
+| varchar  | Yes |
+| varint  | Yes |
+| tuples | Yes | 
+| udts  | Yes |
+| map | Yes |
 
 Statik, veri türü bildirimi için desteklenir.
 
@@ -80,9 +80,9 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL işlevlerini destekler:
 
 |Komut  |Desteklenir |
 |---------|---------|
-| Simgesinde | Evet |
-| ttl | Evet |
-| WriteTime | Evet |
+| Simgesinde | Yes |
+| ttl | Yes |
+| WriteTime | Yes |
 | atama | Hayır |
 
 \* Cassandra API, belirteci bir izdüşüm/seçici olarak destekler ve yalnızca bir where yan tümcesinin sol tarafında belirtece (PK) izin verir. Örneğin, `WHERE token(pk) > 1024` desteklenir, ancak `WHERE token(pk) > token(100)` desteklenmez.
@@ -92,34 +92,34 @@ Toplama işlevleri:
 
 |Komut  |Desteklenir |
 |---------|---------|
-| dk | Evet |
-| max | Evet |
-| cin | Evet |
-| count | Evet |
+| dk | Yes |
+| max | Yes |
+| cin | Yes |
+| count | Yes |
 
 Blob dönüştürme işlevleri:
  
 |Komut  |Desteklenir |
 |---------|---------|
-| typeAsBlob(value)   | Evet |
-| blobAsType(value) | Evet |
+| typeAsBlob(value)   | Yes |
+| blobAsType(value) | Yes |
 
 
 UUID ve timeuuıd işlevleri:
  
 |Komut  |Desteklenir |
 |---------|---------|
-| dateOf()  | Evet |
-| now()  | Evet |
-| minTimeuuid()  | Evet |
-| unixTimestampOf()  | Evet |
-| toDate(timeuuid)  | Evet |
-| toTimestamp(timeuuid)  | Evet |
-| toUnixTimestamp(timeuuid)  | Evet |
-| toDate(timestamp)  | Evet |
-| toUnixTimestamp(timestamp)  | Evet |
-| toTimestamp(date)  | Evet |
-| toUnixTimestamp(date) | Evet |
+| dateOf()  | Yes |
+| now()  | Yes |
+| minTimeuuid()  | Yes |
+| unixTimestampOf()  | Yes |
+| toDate(timeuuid)  | Yes |
+| toTimestamp(timeuuid)  | Yes |
+| toUnixTimestamp(timeuuid)  | Yes |
+| toDate(timestamp)  | Yes |
+| toUnixTimestamp(timestamp)  | Yes |
+| toTimestamp(date)  | Yes |
+| toUnixTimestamp(date) | Yes |
 
 
   
@@ -129,11 +129,11 @@ Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutla
 
 |Komut  |Desteklenir |
 |---------|---------|
-| FILTRELEMEYE IZIN VER | Evet |
+| FILTRELEMEYE IZIN VER | Yes |
 | ANAHTAR ALANıNı DEĞIŞTIR | Yok (PaaS hizmeti, çoğaltma dahili olarak yönetilen)|
 | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ DEĞIŞTIR | Hayır |
 | ROLÜ DEĞIŞTIR | Hayır |
-| ALTER TABLE | Evet |
+| ALTER TABLE | Yes |
 | DEĞIŞTIRME TÜRÜ | Hayır |
 | KULLANıCı DEĞIŞTIR | Hayır |
 | IŞLEMINI | Evet (yalnızca günlüğe kaydedilen Batch)|
@@ -142,45 +142,45 @@ Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutla
 | ÖZEL DIZIN OLUŞTURMA (SASı) | Hayır |
 | CREATE INDEX | Evet ( [Dizin adı belirtmeden](cassandra-secondary-index.md), kümeleme anahtarlarındaki dizinler veya tam dondurulmuş koleksiyon desteklenmez) |
 | CREATE FUNCTION | Hayır |
-| ANAHTAR alanı oluştur (çoğaltma ayarları yoksayıldı) | Evet |
+| ANAHTAR alanı oluştur (çoğaltma ayarları yoksayıldı) | Yes |
 | GERÇEKLEŞTIRILMIŞ GÖRÜNÜM OLUŞTUR | Hayır |
-| CREATE TABLE | Evet |
+| CREATE TABLE | Yes |
 | TETIKLEYICI OLUŞTUR | Hayır |
-| OLUŞTURMA TÜRÜ | Evet |
+| OLUŞTURMA TÜRÜ | Yes |
 | ROL OLUŞTUR | Hayır |
 | Kullanıcı oluştur (yerel Apache Cassandra 'da kullanım dışı) | Hayır |
-| DELETE | Evet |
-| SIL (IF KOŞULUNDA hafif işlemler)| Evet |
+| DELETE | Yes |
+| SIL (IF KOŞULUNDA hafif işlemler)| Yes |
 | DISTINCT | Hayır |
 | BıRAKMA TOPLAMı | Hayır |
 | DROP FUNCTION | Hayır |
-| DROP INDEX | Evet |
-| ANAHTAR UZAYıNı BıRAK | Evet |
+| DROP INDEX | Yes |
+| ANAHTAR UZAYıNı BıRAK | Yes |
 | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ BıRAK | Hayır |
 | ROLÜ BıRAK | Hayır |
-| DROP TABLE | Evet |
+| DROP TABLE | Yes |
 | TETIKLEYICIYI BıRAK | Hayır | 
-| BıRAKMA TÜRÜ | Evet |
+| BıRAKMA TÜRÜ | Yes |
 | KULLANıCıYı bırak (yerel Apache Cassandra 'da kullanım dışı) | Hayır |
 | GRANT | Hayır |
-| INSERT | Evet |
-| Ekle (If koşulu ile hafif işlemler)| Evet |
+| INSERT | Yes |
+| Ekle (If koşulu ile hafif işlemler)| Yes |
 | IZINLERI LISTELE | Hayır |
 | ROLLERI LISTELE | Hayır |
 | KULLANıCıLARı LISTELEME (yerel Apache Cassandra 'da kullanım dışı) | Hayır |
 | REVOKE | Hayır |
-| SELECT | Evet |
+| SELECT | Yes |
 | Seç (IF KOŞULUNDA hafif işlemler)| Hayır |
-| UPDATE | Evet |
+| UPDATE | Yes |
 | GÜNCELLEŞTIR (If koşulu ile hafif işlemler)| Hayır |
 | KESILEMEDI | Hayır |
-| USE | Evet |
+| USE | Yes |
 
 ## <a name="json-support"></a>JSON desteği
 |Komut  |Desteklenir |
 |---------|---------|
-| JSON SEÇIN | Evet |
-| JSON EKLE | Evet |
+| JSON SEÇIN | Yes |
+| JSON EKLE | Yes |
 | fromJson () | Hayır |
 | toJson () | Hayır |
 
@@ -208,7 +208,7 @@ Ayrıca, bir yerel makinede yüklü olan CSQLSH kullanarak Azure Cosmos DB Cassa
 
 **Pencerelerin**
 
-Windows kullanıyorsanız, [Linux Için Windows FileSystem](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)'ı etkinleştirmenizi öneririz. Daha sonra aşağıdaki Linux komutlarını izleyebilirsiniz.
+Windows kullanıyorsanız, [Linux Için Windows FileSystem](/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)'ı etkinleştirmenizi öneririz. Daha sonra aşağıdaki Linux komutlarını izleyebilirsiniz.
 
 **Unix/Linux/Mac:**
 
@@ -255,7 +255,7 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Tutarlılık eşleme 
 
-Azure Cosmos DB Cassandra API'si okuma işlemleri için tutarlılık sunar.  Tutarlılık eşlemesi [burada](consistency-levels-across-apis.md#cassandra-mapping)ayrıntılı olarak verilmiştir.
+Azure Cosmos DB Cassandra API'si okuma işlemleri için tutarlılık sunar.  Tutarlılık eşlemesi [burada](./cassandra-consistency.md#mapping-consistency-levels)ayrıntılı olarak verilmiştir.
 
 ## <a name="permission-and-role-management"></a>İzin ve rol yönetimi
 

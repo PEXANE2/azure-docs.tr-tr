@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: a0d61488fe5e7e91d025c7d3b8d3aa862b9cd9bd
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1ed2929dc5dc79c30f2a9583966e32d81b63ba2e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428932"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487917"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda planlı bakım bildirimi-tek sunucu
 
@@ -61,9 +61,9 @@ Azure portal planlı bakım bildirimini denetleyebilir ya da uyarıları bildiri
 7. Oluşturma sonrasında kuralın etkinleştir ' in Evet olarak ayarlandığından emin olun.
 8. Uyarınızı gerçekleştirmek için **Uyarı kuralı oluştur** ' u seçin
 
-**Hizmet durumu uyarıları**oluşturma hakkında ayrıntılı adımlar için, [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications.md)konusuna bakın.
+**Hizmet durumu uyarıları**oluşturma hakkında ayrıntılı adımlar için, [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications-portal.md)konusuna bakın.
 
-## <a name="can-i-control-or-change-planned-maintenance-for-my-servers-after-i-receive-a-notification-event"></a>Bildirim olayı aldıktan sonra sunucularım için planlı Bakımı denetleyebilir veya değiştirebilir miyim?
+## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Planlı Bakımı iptal edebilir veya erteleyebilir miyim?
 
 Sunucunuzu güvenli, kararlı ve güncel tutmak için bakım yapmanız gerekir. Planlı bakım olayı iptal edilemez veya ertelenemez. Bildirim, belirli bir Azure bölgesine gönderildikten sonra, bu bölgedeki herhangi bir sunucu için düzeltme eki uygulama değişiklikleri yapılamaz. Düzeltme Eki, tüm bölge için aynı anda kullanıma alınır. PostgreSQL için Azure veritabanı-tek sunuculu hizmet, hizmet için ayrıntılı denetim veya özelleştirme gerektirmeyen bulut Yerel uygulaması için tasarlanmıştır. Sunucularınız için bakım zamanlanmasını istiyorsanız [Esnek sunucuları](./flexible-server/overview.md)düşünmeniz önerilir.
 

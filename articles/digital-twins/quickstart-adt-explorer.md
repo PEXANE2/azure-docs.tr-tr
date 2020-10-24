@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: bec4e831b3f7af0ef551617ba8a8253925226e05
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 925a5000f9778689660765ef715dd8760d5340a2
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461847"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495964"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Hızlı başlangıç-ADT Explorer kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -31,7 +31,7 @@ Hızlı başlangıç aşağıdaki önemli adımları içerir:
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil.":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için bir Azure aboneliğine sahip olmanız gerekir. Henüz bir tane yoksa, şimdi **[ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** .
 
@@ -318,7 +318,7 @@ Azure dijital TWINS öğreticilerine devam etmeyi planlıyorsanız, bu hızlı b
 
 Ardından, aşağıdaki komutla istemci uygulamanız için oluşturduğunuz Azure Active Directory Uygulama kaydını silin:
 
-```azurecli
+```azurecli-interactive
 az ad app delete --id <your-application-ID>
 ```
 

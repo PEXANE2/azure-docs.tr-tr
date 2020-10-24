@@ -8,19 +8,19 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 6452934828c4e74563daf001271b3ce018ab58e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ecf5c540c3fce7a60ebf256d871993400a731ed
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91707906"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481202"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-tek sunucu
 
 Bu hızlı başlangıçta, macOS, Ubuntu Linux veya Windows üzerinde Python kullanarak PostgreSQL için Azure veritabanı ile çalışırsınız. Hızlı başlangıç, veritabanına bağlanmayı ve verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanmayı gösterir. Makalede, Python hakkında bilgi sahibi olduğunuz ancak PostgreSQL için Azure veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 > [!TIP]
-> PostgreSQL ile bir Docgo uygulaması oluşturmak istiyorsanız öğreticiyi kullanıma alın ve [PostgreSQL öğreticisi ile bir docgo Web uygulaması dağıtın](../app-service/containers/tutorial-python-postgresql-app.md) .
+> PostgreSQL ile bir Docgo uygulaması oluşturmak istiyorsanız öğreticiyi kullanıma alın ve [PostgreSQL öğreticisi ile bir docgo Web uygulaması dağıtın](../app-service/tutorial-python-postgresql-app.md) .
 
 
 ## <a name="prerequisites"></a>Önkoşullar

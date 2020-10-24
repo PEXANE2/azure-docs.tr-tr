@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
-ms.openlocfilehash: 924dbadc07f57e5928ecc63a24bf5e57d6213670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c6d6a51887d2912da8d6b4e357a1036596d63d5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941438"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490025"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>PostgreSQL için Azure veritabanı 'na bağlanma ve sorguya genel bakış-tek sunucu
 
@@ -23,7 +23,7 @@ Aşağıdaki belge, PostgreSQL için Azure veritabanı tek sunucu ile bağlanma 
 | Hızlı Başlangıç | Açıklama |
 |---|---|
 |[PgAdmin](https://www.pgadmin.org/)|Sunucuya bağlanmak için pgAdmin kullanabilirsiniz ve veritabanı nesnelerinin oluşturulmasını, bakımını ve kullanımını basitleştirir.|
-|[Azure Cloud Shell 'de psql](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|Bu makalede, sunucunuzdaki verileri sorgulamak, eklemek, güncelleştirmek ve silmek için [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) 'in nasıl çalıştırılacağı gösterilmektedir. Geliştirme ortamınızda yüklüyse **psql** 'i çalıştırabilirsiniz|
+|[Azure Cloud Shell 'de psql](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|Bu makalede, sunucunuzdaki verileri sorgulamak, eklemek, güncelleştirmek ve silmek için [Azure Cloud Shell](../cloud-shell/overview.md) [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) 'in nasıl çalıştırılacağı gösterilmektedir. Geliştirme ortamınızda yüklüyse **psql** 'i çalıştırabilirsiniz|
 |[VS Code ile PostgreSQL](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)|VS Code için Azure veritabanları uzantısı (Önizleme), hem yerel olarak hem de zengin IntelliSense ile Scrapbook 'ları kullanarak PostgreSQL sunucunuza hem yerel olarak hem de bulutta geçiş yapmanıza olanak sağlar. |
 |[PHP](connect-php.md)|Bu hızlı başlangıçta PHP kullanarak bir veritabanına bağlanma ve verileri sorgulamak için veritabanı nesneleriyle çalışma kullanma gibi bir program oluşturma işlemlerinin nasıl yapılacağı gösterilmiştir.|
 |[Java](connect-java.md)|Bu hızlı başlangıçta Java kullanarak bir veritabanına bağlanma ve sonra verileri sorgulamak için veritabanı nesneleriyle çalışma kullanma işlemlerinin nasıl yapılacağı gösterilmiştir.|
@@ -42,10 +42,10 @@ Aktarım Katmanı Güvenliği (TLS), Microsoft 'un PostgreSQL için Azure verita
 ## <a name="postgresql-extensions"></a>PostgreSQL uzantıları
 PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar birden çok ilgili SQL nesnesini tek bir komutla veritabanınıza yüklenip kaldırılabilecek bir paket haline getirir. Veritabanınıza yüklenen uzantılar, yerleşik özellikler gibi çalışır.
 
-- [Postgres 11 uzantıları](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-11-extensions)
-- [Postgres 10 uzantıları](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-10-extensions)
-- [Postgres 9,6 uzantıları](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-96-extensions)
-- [Postgres 9,5 uzantıları](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-95-extensions)
+- [Postgres 11 uzantıları](./concepts-extensions.md#postgres-11-extensions)
+- [Postgres 10 uzantıları](./concepts-extensions.md#postgres-10-extensions)
+- [Postgres 9,6 uzantıları](./concepts-extensions.md#postgres-96-extensions)
+- [Postgres 9,5 uzantıları](./concepts-extensions.md#postgres-95-extensions)
 
 Daha fazla ayrıntı için bkz. [tek sunucuda PostgreSQL uzantılarını kullanma](concepts-extensions.md).
 

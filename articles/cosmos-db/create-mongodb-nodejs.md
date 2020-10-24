@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 5af929991e96d1307c32d219a9807c6e6a58387c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f5d137cb5bb702cc2ee9307336775dda1c864da
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91253386"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476051"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Hızlı başlangıç: mevcut bir MongoDB Node.js Web uygulamasını Azure Cosmos DB geçirme 
 
@@ -115,7 +115,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 Azure Cosmos DB hesabı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgiler gösterir. 
 
 > [!NOTE]
-> Bu örnek, varsayılan Azure CLI çıktı biçimi olarak JSON kullanır. Başka bir çıktı biçimi kullanmak için bkz. [Azure CLI komutları için çıktı biçimleri](https://docs.microsoft.com/cli/azure/format-output-azure-cli).
+> Bu örnek, varsayılan Azure CLI çıktı biçimi olarak JSON kullanır. Başka bir çıktı biçimi kullanmak için bkz. [Azure CLI komutları için çıktı biçimleri](/cli/azure/format-output-azure-cli).
 
 ```json
 {
@@ -249,4 +249,4 @@ git commit -m "configured MongoDB connection string"
 Bu hızlı başlangıçta, Azure Cloud Shell kullanarak Azure Cosmos DB MongoDB API hesabı oluşturmayı ve hesaba kullanıcı eklemek için bir MEAN.js uygulaması oluşturup çalıştırmayı öğrendiniz. Şimdi Azure Cosmos DB hesabınıza ek veriler aktarabilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB’ye MongoDB verileri aktarma](mongodb-migrate.md)
+> [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

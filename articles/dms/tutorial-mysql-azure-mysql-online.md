@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: b7e9491f3ddc49d49cf5301bba9d4f51fc9dd008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51df2d836d3b3c42b0f2a378ec258dd184c68d5e
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282349"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495589"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Öğretici: DMS hizmetini kullanarak çevrimiçi ortamda MySQL'i MySQL için Azure Veritabanı'na geçirme
 
@@ -49,7 +49,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
-* [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) 5.6 veya 5.7'yi indirme ve yükleme. Şirket içi MySQL sürümü ile MySQL için Azure Veritabanı sürümü eşleşmelidir. Örneğin, MySQL 5.6 yalnızca MySQL için Azure Veritabanı 5.6'ya geçirilebilir; 5.7 sürümüne yükseltilemez.
+* [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) 5.6 veya 5.7'yi indirme ve yükleme. Şirket içi MySQL sürümü ile MySQL için Azure Veritabanı sürümü eşleşmelidir. Örneğin, MySQL 5.6 yalnızca MySQL için Azure Veritabanı 5.6'ya geçirilebilir; 5.7 sürümüne yükseltilemez. MySQL 8,0 veya 'tan geçiş desteklenmez. MySQL 8,0 veya 'tan geçiş desteklenmez.
 * [MySQL için Azure Veritabanı örneği oluşturma](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal). Azure portal'ı kullanarak veritabanı oluşturma ve veritabanlarına bağlanma ile ilgili ayrıntılar için [MySQL Workbench kullanarak bağlanma ve veri sorgulama](https://docs.microsoft.com/azure/mysql/connect-workbench) başlıklı makaleye bakın.  
 * [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure sanal ağ oluşturun. Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
 

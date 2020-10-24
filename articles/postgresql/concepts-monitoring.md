@@ -6,23 +6,23 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 9424a56eeda5750afc00dd996be957e67850c30c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4d4287b877f5327b7fd485358b26148686b9515b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426679"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487934"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nı izleme ve ayarlama-tek sunucu
 Sunucularınız hakkındaki izleme verileri, iş yükünüz için sorun gidermenize ve iyileştirmenize yardımcı olur. PostgreSQL için Azure veritabanı, sunucunuzun davranışına ilişkin Öngörüler sağlamak üzere çeşitli izleme seçenekleri sunar.
 
 ## <a name="metrics"></a>Ölçümler
-PostgreSQL için Azure veritabanı, PostgreSQL sunucusunu destekleyen kaynakların davranışına fikir veren çeşitli ölçümler sağlar. Her ölçüm tek dakikalık bir sıklıkta yayılır ve [93 güne kadar geçmiş](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#retention-of-metrics)olur. Ölçümler üzerinde uyarılar yapılandırabilirsiniz. Adım adım yönergeler için bkz. [uyarıları ayarlama](howto-alert-on-metric.md). Diğer görevler otomatik eylemleri ayarlamayı, gelişmiş analiz gerçekleştirmeyi ve arşivleme geçmişini içerir. Daha fazla bilgi için bkz. [Azure ölçümlerine genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+PostgreSQL için Azure veritabanı, PostgreSQL sunucusunu destekleyen kaynakların davranışına fikir veren çeşitli ölçümler sağlar. Her ölçüm tek dakikalık bir sıklıkta yayılır ve [93 güne kadar geçmiş](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)olur. Ölçümler üzerinde uyarılar yapılandırabilirsiniz. Adım adım yönergeler için bkz. [uyarıları ayarlama](howto-alert-on-metric.md). Diğer görevler otomatik eylemleri ayarlamayı, gelişmiş analiz gerçekleştirmeyi ve arşivleme geçmişini içerir. Daha fazla bilgi için bkz. [Azure ölçümlerine genel bakış](../azure-monitor/platform/data-platform.md).
 
 ### <a name="list-of-metrics"></a>Ölçüm listesi
 Bu ölçümler PostgreSQL için Azure veritabanı 'nda kullanılabilir:
 
-|Ölçüm|Ölçüm görünen adı|Birim|Description|
+|Ölçüm|Ölçüm görünen adı|Birim|Açıklama|
 |---|---|---|---|
 |cpu_percent|CPU yüzdesi|Yüzde|Kullanımdaki CPU yüzdesi.|
 |memory_percent|Bellek yüzdesi|Yüzde|Kullanımdaki belleğin yüzdesi.|
@@ -61,6 +61,6 @@ Sorgu [deposu](concepts-query-store.md) sorgu çalışma zamanı istatistikleri 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Bir ölçüm üzerinde uyarı oluşturma konusunda rehberlik için [uyarıları ayarlama](howto-alert-on-metric.md) bölümüne bakın.
-- Azure portal, REST API veya CLı kullanarak ölçümlere erişme ve dışarı aktarma hakkında daha fazla bilgi için bkz. [Azure ölçümleri 'Ne genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- Azure portal, REST API veya CLı kullanarak ölçümlere erişme ve dışarı aktarma hakkında daha fazla bilgi için bkz. [Azure ölçümleri 'Ne genel bakış](../azure-monitor/platform/data-platform.md)
 - [Sunucunuzu izlemek için en iyi uygulamalardan](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/)blogumuzu okuyun.
 - PostgreSQL için Azure veritabanı 'nda [Planlı bakım bildirimleri](./concepts-planned-maintenance-notification.md) hakkında daha fazla bilgi edinin-tek sunucu.

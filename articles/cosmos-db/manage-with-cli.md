@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 631dd3242e695a1e7872a4b078ab3f9761591c56
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0b19d7681925296936fee5823f7df32e131f8bb8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277765"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482664"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure CLı kullanarak Azure Cosmos Core (SQL) API kaynaklarını yönetme
 
-Aşağıdaki kılavuzda Azure Cosmos DB hesaplarınız, veritabanlarınız ve kapsayıcılarınızı yönetme işleminin Azure CLI kullanılarak otomatikleştirilmesini sağlayan yaygın komutlar açıklanır. Tüm Azure Cosmos DB CLı komutlarına yönelik başvuru sayfaları, [Azure CLI başvurusunda](https://docs.microsoft.com/cli/azure/cosmosdb)bulunabilir. Ayrıca, MongoDB, Gremlin, Cassandra ve Tablo API'si için Cosmos DB hesapları, veritabanları ve kapsayıcıları oluşturma ve yönetme dahil olmak üzere [Azure Cosmos DB Için Azure CLI örneklerinde](cli-samples.md)daha fazla örnek bulabilirsiniz.
+Aşağıdaki kılavuzda Azure Cosmos DB hesaplarınız, veritabanlarınız ve kapsayıcılarınızı yönetme işleminin Azure CLI kullanılarak otomatikleştirilmesini sağlayan yaygın komutlar açıklanır. Tüm Azure Cosmos DB CLı komutlarına yönelik başvuru sayfaları, [Azure CLI başvurusunda](/cli/azure/cosmosdb)bulunabilir. Ayrıca, MongoDB, Gremlin, Cassandra ve Tablo API'si için Cosmos DB hesapları, veritabanları ve kapsayıcıları oluşturma ve yönetme dahil olmak üzere [Azure Cosmos DB Için Azure CLI örneklerinde](cli-samples.md)daha fazla örnek bulabilirsiniz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -545,5 +545,5 @@ az lock delete --ids $lockid
 Azure CLı hakkında daha fazla bilgi için bkz.
 
 * [Azure CLı 'yı yükler](/cli/azure/install-azure-cli)
-* [Azure CLı başvurusu](https://docs.microsoft.com/cli/azure/cosmosdb)
+* [Azure CLı başvurusu](/cli/azure/cosmosdb)
 * [Azure Cosmos DB için ek Azure CLı örnekleri](cli-samples.md)

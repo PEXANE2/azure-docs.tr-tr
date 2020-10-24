@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 8d249cdabcbfd82fc555c486f29bbdba200e1da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ae3c538c78be8af0fa4569592ac60547e7f5912
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710507"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481304"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'ndaki Günlükler-tek sunucu
 
@@ -72,7 +72,7 @@ PowerShell, CLı veya REST API kullanarak kaynak günlüklerini etkinleştirmek 
 
 ### <a name="access-resource-logs"></a>Kaynak günlüklerine erişin
 
-Günlüklere erişmenin yolu, seçtiğiniz uç noktaya bağlıdır. Azure depolama için [günlük depolama hesabı](../azure-monitor/platform/resource-logs-collect-storage.md) makalesine bakın. Event Hubs için bkz. [Azure günlükleri akışı](../azure-monitor/platform/resource-logs-stream-event-hubs.md) makalesi.
+Günlüklere erişmenin yolu, seçtiğiniz uç noktaya bağlıdır. Azure depolama için [günlük depolama hesabı](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) makalesine bakın. Event Hubs için bkz. [Azure günlükleri akışı](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) makalesi.
 
 Azure Izleyici günlükleri için Günlükler seçtiğiniz çalışma alanına gönderilir. Postgres günlükleri **AzureDiagnostics** Collection modunu kullanır, bu nedenle AzureDiagnostics tablosundan sorgulanırlar. Tablodaki alanlar aşağıda açıklanmıştır. [Azure Izleyici günlükleri sorgusuna](../azure-monitor/log-query/log-query-overview.md) genel bakış bölümünde sorgulama ve uyarı alma hakkında daha fazla bilgi edinin.
 
@@ -104,7 +104,7 @@ Aşağıdaki tablo, **Postgrestablogs** türü için alanları açıklar. Seçti
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
 | Tür | Günlüğün türü. Her `AzureDiagnostics` |
-| kaynak grubundaki | Sunucunun ait olduğu abonelik için GUID |
+| SubscriptionId | Sunucunun ait olduğu abonelik için GUID |
 | adlı yönetilen örnek, | Sunucunun ait olduğu kaynak grubunun adı |
 | ResourceProvider | Kaynak sağlayıcının adı. Her `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |

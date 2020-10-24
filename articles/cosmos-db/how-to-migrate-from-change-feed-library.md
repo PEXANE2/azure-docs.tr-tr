@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 7a15e5135cd89d7360a1357e3518b1253e80ee65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1c54c2e486f935b3c3ba1b13207caaa67099459
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019530"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490994"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Değişiklik akışı işlemcisi kitaplığından .NET v3 SDK Azure Cosmos DB geçirin
 
@@ -23,7 +23,7 @@ Bu makalede, [değişiklik akışı işlemci kitaplığını](https://github.com
 .NET v3 SDK 'sının birkaç önemli değişikliği vardır ve uygulamanızı geçirmeye yönelik temel adımlar aşağıda verilmiştir:
 
 1. `DocumentCollectionInfo` `Container` İzlenen ve kira kapsayıcıları için örnekleri başvurulara dönüştürün.
-1. Kullanan özelleştirmeler `WithProcessorOptions` `WithLeaseConfiguration` `WithPollInterval` , Aralık için ve aralıklar için, `WithStartTime` [Başlangıç saati için](how-to-configure-change-feed-start-time.md)ve `WithMaxItems` en fazla öğe sayısını tanımlamak için güncelleştirilmeleri gerekir.
+1. Kullanan özelleştirmeler `WithProcessorOptions` `WithLeaseConfiguration` `WithPollInterval` , Aralık için ve aralıklar için, `WithStartTime` [Başlangıç saati için](./change-feed-processor.md#starting-time)ve `WithMaxItems` en fazla öğe sayısını tanımlamak için güncelleştirilmeleri gerekir.
 1. `processorName`Üzerinde `GetChangeFeedProcessorBuilder` yapılandırılan değerle eşleşecek şekilde ' `ChangeFeedProcessorOptions.LeasePrefix` i ayarlayın veya başka bir şekilde kullanın `string.Empty` .
 1. Değişiklikler artık bir olarak teslim değildir, `IReadOnlyList<Document>` bunun yerine `IReadOnlyCollection<T>` tanımlamanız gereken bir tür, artık `T` temel öğe sınıfı yoktur.
 1. Değişiklikleri işlemek için artık bir uygulamaya ihtiyacınız yoktur, bunun yerine [bir temsilci tanımlamanız](change-feed-processor.md#implementing-the-change-feed-processor)gerekir. Temsilci bir statik Işlev olabilir veya yürütmeler genelinde durum korumanız gerekiyorsa, kendi sınıfınızı oluşturabilir ve temsilci olarak bir örnek yöntemi geçirebilirsiniz.
@@ -60,4 +60,4 @@ Eski kodu kullanarak uygulamayı güvenle durdurabilir, kodu yeni sürüme geçi
 
 * [Değişiklik akışı işlemcisine genel bakış](change-feed-processor.md)
 * [Değişiklik akışı tahmin aracını kullanma](how-to-use-change-feed-estimator.md)
-* [Değişiklik akışı işlemcisi başlangıç zamanı](how-to-configure-change-feed-start-time.md)
+* [Değişiklik akışı işlemcisi başlangıç zamanı](./change-feed-processor.md#starting-time)

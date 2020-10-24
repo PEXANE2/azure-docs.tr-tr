@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7f9573769beb5bf1f6ebe47e6e0a277185ac42b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87084832"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488427"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>ODBC sürücüsü ile bı Analytics araçlarını kullanarak Azure Cosmos DB bağlanma
 
@@ -117,7 +117,7 @@ Aşağıdaki adımlarda **tablo sınırlayıcıları** eşleme yöntemi kullanı
 
     Örneğin, şehir olarak bir **öznitelik** değeri eklerseniz ve tablonuzu yalnızca New York ve Dubai City değeri olan satırları içerecek şekilde sınırlandırmak Istiyorsanız, Attributes kutusuna City ve New York ' a ve ardından **değerler** kutusuna Dubai yazın.
 
-1. **Tamam**'a tıklayın. 
+1. **Tamam**’a tıklayın. 
 
 1. Örneklemek istediğiniz kapsayıcıların eşleme tanımlarını tamamladıktan sonra, **şema Düzenleyicisi** penceresinde **örnek**' e tıklayın.
      Her sütun için, SQL adı, SQL türü, SQL uzunluğu (varsa), ölçek (varsa), duyarlık (varsa) ve null yapılabilir sütununu değiştirebilirsiniz.
@@ -134,7 +134,7 @@ Bağlı sunucu bağlantısı ayarlayarak, SQL Server Management Studio (SSMS) Az
 
 1. Örneğin, [Adım 2](#connect)' de açıklandığı gibi bir sistem veri kaynağı oluşturun `SDS Name` .
 
-1. [SQL Server Management Studio yükleyip](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) sunucuya bağlanın. 
+1. [SQL Server Management Studio yükleyip](/sql/ssms/download-sql-server-management-studio-ssms) sunucuya bağlanın. 
 
 1. SSMS sorgu Düzenleyicisi 'nde, `DEMOCOSMOS` aşağıdaki komutlarla veri kaynağı için bağlı sunucu nesnesi oluşturun. Değerini `DEMOCOSMOS` bağlı sunucunuzun adıyla ve `SDS Name` sistem veri kaynağınızın adıyla değiştirin.
 
@@ -192,7 +192,7 @@ Ardından **tanımları görüntüle** penceresinde şunları yapın:
 
 1. **Yeni**' ye tıklayın, görünüm için bir ad girin, örneğin, EmployeesfromSeattleView ve ardından **Tamam**' a tıklayın.
 
-1. **Görünüm düzenleme** penceresinde bir Azure Cosmos DB sorgusu girin. Bu, örneğin [Azure Cosmos DB BIR SQL sorgusu](how-to-sql-query.md)olmalıdır `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` ve ardından **Tamam**' a tıklayın.
+1. **Görünüm düzenleme** penceresinde bir Azure Cosmos DB sorgusu girin. Bu, örneğin [Azure Cosmos DB BIR SQL sorgusu](./sql-query-getting-started.md)olmalıdır `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` ve ardından **Tamam**' a tıklayın.
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB":::
 

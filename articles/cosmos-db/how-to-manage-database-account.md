@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 98210f26072504c129ba32f765cf6bab74fef604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a8351b8c74f9219cf14575cc326fa8049264ed7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570718"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491130"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos hesabını yönetme
 
@@ -19,7 +19,7 @@ Bu makalede Azure portalını, Azure PowerShell’i, Azure CLI’yı ve Azure Re
 
 ## <a name="create-an-account"></a>Hesap oluşturma
 
-### <a name="azure-portal"></a><a id="create-database-account-via-portal"></a>Azure portal
+### <a name="azure-portal"></a><a id="create-database-account-via-portal"></a>Azure portalı
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -33,11 +33,11 @@ Lütfen bkz. [PowerShell ile Azure Cosmos DB hesabı oluşturma](manage-with-pow
 
 ### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager şablonu
 
-Lütfen bkz. [Azure Resource Manager şablonlarla Azure Cosmos DB hesap oluşturma](manage-sql-with-resource-manager.md)
+Lütfen bkz. [Azure Resource Manager şablonlarla Azure Cosmos DB hesap oluşturma](./manage-with-templates.md)
 
 ## <a name="addremove-regions-from-your-database-account"></a>Veritabanı hesabınızda bölge ekleme/çıkarma işlemi gerçekleştirme
 
-### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure portal
+### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure portalı
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 
@@ -65,7 +65,7 @@ Lütfen bkz. [PowerShell ile bölge ekleme veya kaldırma](manage-with-powershel
 
 ## <a name="configure-multiple-write-regions"></a><a id="configure-multiple-write-regions"></a>Birden fazla yazma bölgesi yapılandırma
 
-### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Azure portal
+### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Azure portalı
 
 **Verileri genel olarak Çoğalt** sekmesini açın ve çok bölgeli yazmaları etkinleştirmek için **Etkinleştir** ' i seçin. Çok bölgeli yazmaları etkinleştirdikten sonra, şu anda hesapta yer alan tüm okuma bölgeleri okuma ve yazma bölgeleri olur.
 
@@ -143,7 +143,7 @@ Hesap ve ayarı oluşturmak için kullanılan Kaynak Yöneticisi şablonunu dağ
 
 Otomatik yük devretme seçeneği, bir bölgenin kullanılamaz duruma gelmesi için en yüksek yük devretme önceliğine sahip bölgeye yük devretmesinin Azure Cosmos DB sağlar. Otomatik yük devretme etkinleştirildiğinde bölge önceliği değiştirilebilir. Otomatik yük devretmeyi etkinleştirmek için hesabın iki veya daha fazla bölgesi olmalıdır.
 
-### <a name="azure-portal"></a><a id="enable-automatic-failover-via-portal"></a>Azure portal
+### <a name="azure-portal"></a><a id="enable-automatic-failover-via-portal"></a>Azure portalı
 
 1. Azure Cosmos hesabınızdan **verileri genel olarak Çoğalt** bölmesini açın.
 
@@ -172,7 +172,7 @@ Bir Cosmos hesabı otomatik yük devretme için yapılandırıldıktan sonra, b�
 > [!IMPORTANT]
 > Hesap otomatik yük devretme için yapılandırıldığında yazma bölgesini (sıfır yük devretme önceliği) değiştiremezsiniz. Yazma bölgesini değiştirmek için otomatik yük devretmeyi devre dışı bırakıp el ile yük devretme yapmanız gerekir.
 
-### <a name="azure-portal"></a><a id="set-failover-priorities-via-portal"></a>Azure portal
+### <a name="azure-portal"></a><a id="set-failover-priorities-via-portal"></a>Azure portalı
 
 1. Azure Cosmos hesabınızdan **verileri genel olarak Çoğalt** bölmesini açın.
 
@@ -206,7 +206,7 @@ El ile yük devretme gerçekleştirme süreci, hesabın yazma bölgesinin (yük 
 > [!NOTE]
 > Birden çok yazma bölgesi olan hesaplara el ile yük devredilemez. Azure Cosmos SDK 'sını kullanan uygulamalar için SDK, bir bölgenin ne zaman kullanılamaz hale geldiğini algılar ve ardından SDK 'da çoklu barındırma API 'SI kullanılıyorsa otomatik olarak sonraki en yakın bölgeye yeniden yönlendirilir.
 
-### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure portal
+### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure portalı
 
 1. Azure Cosmos hesabınıza gidin ve **verileri genel olarak Çoğalt** menüsünü açın.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 48524bec352d2fa9c169a1345e52ad4c789e59d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 232d138488d061c638073b51198e5f2ea4c6b53f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552129"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481287"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Öğretici: başarıyla Azure Active Directory çoklu oturum açma (SSO) Tümleştirmesi
 
@@ -160,14 +160,14 @@ Bu bölümde, başarılı etkenlere erişim vererek Azure çoklu oturum açma ö
 
 3. Herhangi bir değeri **sıfırlama belirtecine** koyun ve SAML SSO 'yu etkinleştirmek Için **belirteci kaydet** ' e tıklayın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma][11]
+    ![Ekran görüntüsü, bir belirteç girebileceğiniz şekilde adlandırılan çoklu oturum açma özellikleriyle uygulama güvenliği sekmesini gösterir.][11]
 
     > [!NOTE]
     > Bu değer, açık/kapalı anahtar olarak kullanılır. Herhangi bir değer kaydedilirse, SAML SSO 'SU açık olur. Boş bir değer kaydedilirse, SAML SSO KAPALıDıR.
 
 4. ' In altında yerel ekran görüntüsü ve aşağıdaki eylemleri gerçekleştirir:
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma][12]
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz, SAML tabanlı S S O bölmesini gösterir.][12]
   
     a. **SAML V2 SSO** radyo düğmesini seçin
   
@@ -192,7 +192,7 @@ Bu bölümde, başarılı etkenlere erişim vererek Azure çoklu oturum açma ö
 
 5. SAML V2 ' ye gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma][13]
+    ![Ekran görüntüsü SAML V2 S P başlatılan oturum kapatma bölmesini gösterir; burada, açıklanan değerleri girebilirsiniz.][13]
 
     a. **SP tarafından başlatılan genel oturum kapatma desteği**olarak **Evet** ' i seçin.
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: jasonh
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 72b3f8a4e4a6da434ef20c8e505718ccd3e2deff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0b81bf951df6db0da7ed049c435a319f6ee33b8a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91578402"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479060"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Hızlı başlangıç: Azure Cosmos DB Gremlin API hesabını kullanarak .NET Framework veya çekirdek uygulama oluşturma
 
@@ -72,7 +72,7 @@ Zaten Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Com
 5. Projedeki NuGet paketlerini geri yükleyin. Bu Gremlin.Net sürücüsünü ve Newtonsoft.Json paketini içermelidir.
 
 
-6. Ayrıca NuGet paket yöneticisi veya [NuGet komut satırı yardımcı programını](https://docs.microsoft.com/nuget/install-nuget-client-tools) kullanarak Gremlin.Net sürücüsünü kendiniz de yükleyebilirsiniz: 
+6. Ayrıca NuGet paket yöneticisi veya [NuGet komut satırı yardımcı programını](/nuget/install-nuget-client-tools) kullanarak Gremlin.Net sürücüsünü kendiniz de yükleyebilirsiniz: 
 
     ```bash
     nuget install Gremlin.Net
@@ -176,4 +176,3 @@ Bu hızlı başlangıçta Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini'ni
 
 > [!div class="nextstepaction"]
 > [Gremlin kullanarak sorgulama](tutorial-query-graph.md)
-

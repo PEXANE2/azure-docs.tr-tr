@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 52885f874f877d9a2fd256d0212ba8693067ea8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2700b18797db3805a081b549605369e73889867b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802939"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476986"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB'de Yaşam Süresi (TTL)
 
@@ -20,7 +20,7 @@ ms.locfileid: "91802939"
 
 Süre sonu öğelerin silinmesi, Kullanıcı istekleri tarafından tüketilen Istek birimleri olan, sol taraftaki [Istek birimleri](request-units.md)tüketen bir arka plan görevdir. TTL 'nin süresi dolduktan sonra bile, kapsayıcı isteklerle aşırı yüklenmişse ve yeterli sayıda RU yoksa, veri silme geciktirilir. Silme işlemini gerçekleştirmek için yeterli ru varsa veriler silinir. Veri silme gecikiyor olsa da, TTL süresi dolduktan sonra veriler hiçbir sorgu (herhangi bir API tarafından) tarafından döndürülmez.
 
-> Bu içerik, Azure Cosmos DB işlemsel mağaza TTL ile ilgilidir. [Azure SYNAPSE bağlantısı](https://docs.microsoft.com/azure/cosmos-db/synapse-link)aracılığıyla NOETL htap senaryolarına izin veren ANALITYCAL Store TTL 'yi arıyorsanız, lütfen [buraya](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl)tıklayın.
+> Bu içerik, Azure Cosmos DB işlemsel mağaza TTL ile ilgilidir. [Azure SYNAPSE bağlantısı](./synapse-link.md)aracılığıyla NOETL htap senaryolarına izin veren ANALITYCAL Store TTL 'yi arıyorsanız, lütfen [buraya](./analytical-store-introduction.md#analytical-ttl)tıklayın.
 
 ## <a name="time-to-live-for-containers-and-items"></a>Kapsayıcılar ve öğeler için yaşam süresi
 

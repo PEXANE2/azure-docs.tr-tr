@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 2d781ca7293d4bd95ae62eadc50295ca14c2d381
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314939"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485384"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-hiper ölçek (Citus)
 
@@ -39,7 +39,7 @@ PostgreSQL için Azure veritabanı 'nda, hiper ölçek (Citus) kümesini geri y�
 
 
 > [!IMPORTANT]
-> Silinen hiper ölçek (Citus) kümeleri geri yüklenemez. Kümeyi silerseniz, kümeye ait olan tüm düğümler silinir ve kurtarılamaz. Küme kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](/azure/azure-resource-manager/management/lock-resources)faydalanabilir.
+> Silinen hiper ölçek (Citus) kümeleri geri yüklenemez. Kümeyi silerseniz, kümeye ait olan tüm düğümler silinir ve kurtarılamaz. Küme kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](../azure-resource-manager/management/lock-resources.md)faydalanabilir.
 
 ### <a name="point-in-time-restore-pitr"></a>Zaman içinde bir noktaya geri yükleme (ıNR)
 
@@ -65,5 +65,5 @@ Kurtarma mekanizmasından geri yükleme yapıldıktan sonra, kullanıcılarını
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-*  [Azure kullanılabilirlik alanları](/azure/availability-zones/az-overview)hakkında bilgi edinin.
-* Hiperscale (Citus) sunucu gruplarında [Önerilen uyarıları](/azure/postgresql/howto-hyperscale-alert-on-metric#suggested-alerts) ayarlayın.
+*  [Azure kullanılabilirlik alanları](../availability-zones/az-overview.md)hakkında bilgi edinin.
+* Hiperscale (Citus) sunucu gruplarında [Önerilen uyarıları](./howto-hyperscale-alert-on-metric.md#suggested-alerts) ayarlayın.

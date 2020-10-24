@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 5945f50ada9af6a8d117d3d773ebeae48d5f4085
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c3ea7930f41fe89538a817da032e993e534db9cd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90903770"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491334"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>PostgreSQL için Azure Veritabanı nedir?
 
@@ -29,7 +29,7 @@ PostgreSQL için Azure veritabanı, Microsoft bulutundaki [PostgreSQL Community 
 
  :::image type="content" source="./media/overview/overview-what-is-azure-postgres.png" alt-text="PostgreSQL için Azure Veritabanı":::
 
-Bu yetenekler neredeyse yönetim gerektirmez ve hepsi hiçbir ek ücret ödemeden sağlanır. Bu kişiler, sanal makineleri ve altyapıyı yönetmek için değerli zaman ve kaynakları ayırmak yerine hızlı uygulama geliştirmeye odaklanmanıza ve zamanınızı pazara sunma olanağı sağlar. Buna ek olarak, kendi seçtiğiniz açık kaynak araçları ve platformuyla uygulamanızı geliştirmeye devam edebilir, böylelikle yeni beceriler edinmek zorunda kalmadan işlerinizin gerektirdiği hızla ve verimlilikle kullanıma sunabilirsiniz.
+Bu özellikler neredeyse hiç yönetim gerektirmez ve tümüyle ek ücret ödemeden sağlanır. Bu kişiler, sanal makineleri ve altyapıyı yönetmek için değerli zaman ve kaynakları ayırmak yerine hızlı uygulama geliştirmeye odaklanmanıza ve zamanınızı pazara sunma olanağı sağlar. Buna ek olarak, kendi seçtiğiniz açık kaynak araçları ve platformuyla uygulamanızı geliştirmeye devam edebilir, böylelikle yeni beceriler edinmek zorunda kalmadan işlerinizin gerektirdiği hızla ve verimlilikle kullanıma sunabilirsiniz.
 
 ## <a name="deployment-models"></a>Dağıtım modelleri
 
@@ -43,7 +43,7 @@ PostgreSQL Community Edition tarafından desteklenen PostgreSQL için Azure veri
 
 PostgreSQL için Azure veritabanı tek sunucu, veritabanı özelleştirmeleri için en az gereksinimle tam olarak yönetilen bir veritabanı hizmetidir. Tek sunucu platformu, düzeltme eki uygulama, yedekleme, yüksek kullanılabilirlik, en az Kullanıcı Yapılandırması ve denetimiyle güvenlik gibi veritabanı yönetim işlevlerinin çoğunu işleyecek şekilde tasarlanmıştır. Mimari, tek kullanılabilirlik bölgesinde% 99,99 kullanılabilirlik ile yerleşik yüksek kullanılabilirlik için iyileştirilmiştir. PostgreSQL 9,5, 9, 6, 10 ve 11 Community sürümünü destekler. Hizmet, günümüzde çok çeşitli [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/services/)kullanılabilir.
 
-Tek Sunucu dağıtım seçeneği şu üç fiyatlandırma katmanına sahiptir: Temel, Genel Amaçlı ve Bellek İçin İyileştirilmiş. Her katman veritabanı iş yükünüzü desteklemek için farklı kaynak özellikleri sunar. İlk uygulamanızı aylık birkaç dolar ücretle küçük bir veritabanı üzerinde oluşturabilir ve sonra çözümünüzün gereksinimlerine göre ölçeği ayarlayabilirsiniz. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesini sağlar. Yalnızca ihtiyacınız olan kaynaklar için ve yalnızca bunlara ihtiyacınız olduğunda ödeme yaparsınız. Ayrıntılar için bkz. [Fiyatlandırma katmanları](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers).
+Tek Sunucu dağıtım seçeneği şu üç fiyatlandırma katmanına sahiptir: Temel, Genel Amaçlı ve Bellek İçin İyileştirilmiş. Her katman veritabanı iş yükünüzü desteklemek için farklı kaynak özellikleri sunar. İlk uygulamanızı aylık birkaç dolar ücretle küçük bir veritabanı üzerinde oluşturabilir ve sonra çözümünüzün gereksinimlerine göre ölçeği ayarlayabilirsiniz. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesini sağlar. Yalnızca ihtiyacınız olan kaynaklar için ve yalnızca bunlara ihtiyacınız olduğunda ödeme yaparsınız. Ayrıntılar için bkz. [Fiyatlandırma katmanları](./concepts-pricing-tiers.md).
 
 Tek sunucular, düzeltme eki uygulama ve özel PostgreSQL yapılandırma ayarları üzerinde ayrıntılı denetim gereksinimi olmadan otomatik düzeltme eki uygulamayı işleyecek şekilde tasarlanan bulut Yerel uygulamaları için idealdir.
 
@@ -72,7 +72,7 @@ Hiper Ölçek (Citus) dağıtım seçeneği şu özellikleri sunar:
 - Büyük veri kümelerinde daha hızlı yanıt almak için sunucular arasında sorgu paralelleştirme
 - Çok kiracılı uygulamalar, gerçek zamanlı işlem analizi ve yüksek aktarım hızı gerektiren işlem tabanlı iş yükleri için tam destek
   
-PostgreSQL için derlenmiş uygulamalar, standart [bağlantı kitaplıkları](https://docs.microsoft.com/azure/postgresql/concepts-connection-libraries) ve en az değişiklikle hiper ölçekte (Citus) dağıtılmış sorgular çalıştırabilir.
+PostgreSQL için derlenmiş uygulamalar, standart [bağlantı kitaplıkları](./concepts-connection-libraries.md) ve en az değişiklikle hiper ölçekte (Citus) dağıtılmış sorgular çalıştırabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

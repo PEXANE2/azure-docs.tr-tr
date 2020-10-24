@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 81180cc0d9cc7754e5a3e935c09441995f16c56a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca2e988067add1513036e2f314e84a7ba6908cdd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907565"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488070"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>PostgreSQL için Azure veritabanı-ayrılmış kapasiteye sahip tek sunuculu işlem kaynakları için ön ödeme
 
@@ -20,15 +20,15 @@ PostgreSQL için Azure veritabanı artık, Kullandıkça Öde fiyatlarına kıya
 Ayırmayı, PostgreSQL için belirli Azure veritabanı sunucularına atamanız gerekmez. Zaten PostgreSQL için Azure veritabanı (veya yeni dağıtılmış olanlar), ayrılmış fiyatlandırma avantajını otomatik olarak alır. Bir rezervasyon satın alarak, bir veya üç yıllık bir dönem için işlem maliyetleri için ön ödeme yaparsınız. Bir ayırma satın alarak, rezervasyon öznitelikleriyle eşleşen PostgreSQL için Azure veritabanı işlem ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Bir ayırma, PostgreSQL veritabanı sunucularıyla ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajı sona erer ve PostgreSQL için Azure veritabanı, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Ayırmalar otomatik olarak yenilemez. Fiyatlandırma bilgileri için bkz. [PostgreSQL Için Azure veritabanı ayrılmış kapasite teklifi](https://azure.microsoft.com/pricing/details/postgresql/). </br>
 
 > [!IMPORTANT]
-> [Tek sunucu](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) ve [hyperscale Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) dağıtım seçeneklerinde, PostgreSQL için Azure veritabanı için ayrılmış kapasite fiyatlandırması kullanılabilir. Hiper ölçekte RI fiyatlandırması hakkında bilgi için (Citus), [Bu sayfaya](concepts-hyperscale-reserved-pricing.md)bakın.
+> [Tek sunucu](./overview.md#azure-database-for-postgresql---single-server) ve [hyperscale Citus](./overview.md#azure-database-for-postgresql--hyperscale-citus) dağıtım seçeneklerinde, PostgreSQL için Azure veritabanı için ayrılmış kapasite fiyatlandırması kullanılabilir. Hiper ölçekte RI fiyatlandırması hakkında bilgi için (Citus), [Bu sayfaya](concepts-hyperscale-reserved-pricing.md)bakın.
 
-PostgreSQL için Azure veritabanı 'nın [Azure Portal](https://portal.azure.com/)ayrılmış kapasitesini satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../cost-management-billing/reservations/monthly-payments-reservations.md) rezervasyon ödemesi yapın. Ayrılmış kapasiteyi satın almak için:
+PostgreSQL için Azure veritabanı 'nın [Azure Portal](https://portal.azure.com/)ayrılmış kapasitesini satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../cost-management-billing/reservations/prepare-buy-reservation.md) rezervasyon ödemesi yapın. Ayrılmış kapasiteyi satın almak için:
 
 * Kullandıkça Öde tarifesine sahip en az bir kuruluş veya ayrı bir abonelik için sahip rolünde olmanız gerekir.
 * Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
 * Bulut çözümü sağlayıcısı (CSP) programı için, yalnızca yönetici aracıları veya satış aracıları, PostgreSQL için Azure veritabanı ayrılmış kapasitesini satın alabilir. </br>
 
-Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
+Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>Satın almadan önce doğru sunucu boyutunu belirle
@@ -63,7 +63,7 @@ Aşağıdaki tablo gerekli alanları açıklar.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="vcore-size-flexibility"></a>vCore boyutu esnekliği
 
@@ -79,9 +79,9 @@ VCore RESERVATION Discount, PostgreSQL için Azure veritabanı 'na ayrılmış k
 
 Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-* [Azure ayırmaları nelerdir](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)?
-* [Azure Ayırmalarını yönetme](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-* [Azure Ayrılmış Sanal Makine Örnekleri indirimini anlama](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-* [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-postgresql)
-* [Kurumsal kaydınız için rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](https://docs.microsoft.com/partner-center/azure-reservations)
+* [Azure ayırmaları nelerdir](../cost-management-billing/reservations/save-compute-costs-reservations.md)?
+* [Azure Ayırmalarını yönetme](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Azure Ayrılmış Sanal Makine Örnekleri indirimini anlama](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md)
+* [Kurumsal kaydınız için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](/partner-center/azure-reservations)

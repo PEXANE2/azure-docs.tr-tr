@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a37729849bc9702fb6823c11d4534cf35df72abf
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006441"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489532"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Sales Insights 'ı türetmek için uçtan uca veri işlem hattı oluşturma
 
@@ -25,9 +25,9 @@ Bu veri ardışık düzeni, çeşitli depolardaki verileri birleştirir, istenme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure CLı-en az sürüm 2.2.0. Bkz. [Azure CLI 'Yi yüklemeyi](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure CLı-en az sürüm 2.2.0. Bkz. [Azure CLI 'Yi yüklemeyi](/cli/azure/install-azure-cli).
 
 * bir komut satırı JSON işlemcisi olan JQ.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) ..
 
@@ -93,7 +93,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     ./scripts/resources.sh $resourceGroup LOCATION
     ```
 
-    Hangi bölgeyi belirtlediğinizden emin değilseniz, [az Account List-Locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations) komutuyla aboneliğiniz için desteklenen bölgelerin bir listesini alabilirsiniz.
+    Hangi bölgeyi belirtlediğinizden emin değilseniz, [az Account List-Locations](/cli/azure/account#az-account-list-locations) komutuyla aboneliğiniz için desteklenen bölgelerin bir listesini alabilirsiniz.
 
     Komut aşağıdaki kaynakları dağıtır:
 
@@ -254,7 +254,7 @@ HDInsight kullanarak verileri dönüştürmenin diğer yolları için [Jupyter N
 
 1. Menüden **verileri**  >  **daha fazla al...**  >  ' a gidin. **Azure**  >  **HDInsight etkileşimli sorgusu**.
 
-1. **Bağlan**'ı seçin.
+1. **Bağlan**’ı seçin.
 
 1. **HDInsight etkileşimli sorgu** iletişim kutusundan:
     1. **Sunucu** metin kutusunda, LLAP kümenizin adını biçiminde girin `https://LLAPCLUSTERNAME.azurehdinsight.net` .
@@ -264,7 +264,7 @@ HDInsight kullanarak verileri dönüştürmenin diğer yolları için [Jupyter N
 1. **AzureHive** iletişim kutusundan:
     1. **Kullanıcı adı** metin kutusuna girin `admin` .
     1. **Parola** metin kutusuna girin `Thisisapassword1` .
-    1. **Bağlan**'ı seçin.
+    1. **Bağlan**’ı seçin.
 
 1. **Gezgin**'den `sales` verileri önizlemek için ve/veya öğesini seçin `sales_raw` . Veriler yüklendikten sonra, oluşturmak istediğiniz panoyu deneyebilirsiniz. Power BI panoları kullanmaya başlamak için aşağıdaki bağlantılara bakın:
 

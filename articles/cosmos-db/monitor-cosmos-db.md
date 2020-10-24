@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 12bf87e16bf4506f2015dd75fb360f8de8399902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bfedc7d14c234f88e8140281a01ffcc330ba532
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797828"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488376"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>İzleme Azure Cosmos DB
 
@@ -66,7 +66,7 @@ Her Azure Cosmos veritabanı için Azure portal **genel bakış** sayfası, iste
 
 ## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a> Ölçüm verileri çözümleniyor
 
-Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. Bu deneyimi kullanmayla ilgili ayrıntılar ve farklı Azure Cosmos DB senaryoları çözümlemek için bkz. [Azure izleyici 'de Azure Cosmos DB ölçümleri izleme ve hata ayıklama](cosmos-db-azure-monitor-metrics.md) .
+Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. Bu deneyimi kullanmayla ilgili ayrıntılar ve farklı Azure Cosmos DB senaryoları çözümlemek için bkz. [Azure izleyici 'de Azure Cosmos DB ölçümleri izleme ve hata ayıklama]() .
 
 **Azure izleyici** menüsünden **ölçümler** ' i açarak Ölçüm Gezgini 'ni kullanarak diğer Azure hizmetlerinden ölçümlerle Azure Cosmos DB için ölçümleri çözümleyebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) kullanmaya başlama. Tüm Azure Cosmos DB ölçümleri **Standart ölçümlerde Cosmos DB**ad alanıdır. Bir grafiğe filtre eklerken bu ölçümler ile aşağıdaki boyutları kullanabilirsiniz:
 
@@ -78,7 +78,7 @@ Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. Bu 
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB için işlem düzeyi ölçümlerini görüntüleyin
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
 
@@ -118,7 +118,7 @@ Azure Izleyici günlüklerindeki veriler, her tablonun kendine ait benzersiz öz
 
 ### <a name="azure-cosmos-db-log-analytics-queries-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics sorguları Azure Cosmos DB
 
-Azure Cosmos Kapsayıcılarınızı izlemenize yardımcı olması için **günlük araması** arama çubuğuna girebileceğiniz bazı sorgular aşağıda verilmiştir. Bu sorgular [Yeni dille](../log-analytics/log-analytics-log-search-upgrade.md)çalışır.
+Azure Cosmos Kapsayıcılarınızı izlemenize yardımcı olması için **günlük araması** arama çubuğuna girebileceğiniz bazı sorgular aşağıda verilmiştir. Bu sorgular [Yeni dille](../azure-monitor/log-query/log-query-overview.md)çalışır.
 
 Azure Cosmos veritabanlarınızı izlemenize yardımcı olması için kullanabileceğiniz sorgular aşağıda verilmiştir.
 
@@ -151,9 +151,9 @@ Azure Cosmos veritabanlarınızı izlemenize yardımcı olması için kullanabil
 
 Portalda kullanılabilen hesap düzeyi ölçümleri, hesap depolama kullanımı ve toplam istek gibi SQL API 'Leri aracılığıyla kullanılamaz. Ancak, SQL API 'Lerini kullanarak koleksiyon düzeyinde kullanım verilerini alabilirsiniz. Koleksiyon düzeyindeki verileri almak için aşağıdakileri yapın:
 
-* REST API kullanmak için, [koleksiyonda BIR get işlemi gerçekleştirin](https://msdn.microsoft.com/library/mt489073.aspx). Koleksiyonun kota ve kullanım bilgileri, yanıttaki x-MS-Resource-Quota ve x-MS-Resource-Usage üst bilgilerinde döndürülür.
+* REST API kullanmak için, [koleksiyonda BIR get işlemi gerçekleştirin](/rest/api/cosmos-db/get-a-collection). Koleksiyonun kota ve kullanım bilgileri, yanıttaki x-MS-Resource-Quota ve x-MS-Resource-Usage üst bilgilerinde döndürülür.
 
-* .NET SDK 'yı kullanmak için, **Collectionsizeusage**, **databaseusage**, **documentusage**gibi birçok kullanım özelliği içeren bir [resourceres,](https://msdn.microsoft.com/library/dn799209.aspx) döndüren [documentclient. readdocumentcollectionasync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) yöntemini kullanın.
+* .NET SDK 'yı kullanmak için, **Collectionsizeusage**, **databaseusage**, **documentusage**gibi birçok kullanım özelliği içeren bir [resourceres,](/dotnet/api/microsoft.azure.documents.client.resourceresponse-1) döndüren [documentclient. readdocumentcollectionasync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) yöntemini kullanın.
 
 Ek ölçümlere erişmek için [Azure izleyici SDK 'sını](https://www.nuget.org/packages/Microsoft.Azure.Insights)kullanın. Kullanılabilir Ölçüm tanımları, şu çağırarak alınabilir:
 

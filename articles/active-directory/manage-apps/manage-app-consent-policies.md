@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: 59e00d2bb47826bb4bfa381c42db551f44d84b71
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: edcfa19ed93733c4d6b060ebcb5ff179708195aa
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427591"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486931"
 ---
 # <a name="manage-app-consent-policies"></a>Uygulama onayı ilkelerini yönetme
 
@@ -57,14 +57,14 @@ Kuruluşunuzda var olan uygulama izin ilkelerini öğrenerek başlamak iyi bir f
 1. Bir ilkenin "içerir" koşul kümelerini görüntüleyin:
 
     ```powershell
-    Get-AzureADMSPermissionGrantConditionSet -Id "microsoft-application-admin" `
+    Get-AzureADMSPermissionGrantConditionSet -PolicyId "microsoft-application-admin" `
                                              -ConditionSetType "includes"
     ```
 
 1. "Hariç tutar" koşul kümelerini görüntüle:
 
     ```powershell
-    Get-AzureADMSPermissionGrantConditionSet -Id "microsoft-application-admin" `
+    Get-AzureADMSPermissionGrantConditionSet -PolicyId "microsoft-application-admin" `
                                              -ConditionSetType "excludes"
     ```
 
@@ -130,7 +130,7 @@ Uygulama izni ilkesi oluşturulduktan sonra, bu ilkeye yönelik [Kullanıcı ona
 
 Aşağıdaki tabloda, uygulama izin ilkeleri için desteklenen koşulların listesi verilmiştir.
 
-| Koşul | Description|
+| Koşul | Açıklama|
 |:---------------|:----------|
 | PermissionClassification | Verilen iznin [izin sınıflandırması](configure-permission-classifications.md) veya "tümü", herhangi bir izin sınıflandırmasıyla (sınıflandırılmamış izinler dahil) eşleşir. Varsayılan değer "All" dır. |
 | PermissionType | Verilen iznin izin türü. Temsilci izinleri için uygulama izinleri (örn. uygulama rolleri) veya "temsilci" için "uygulama" kullanın. <br><br>**Not**: "delegatedUserConsentable" DEĞERI, API yayımcısı tarafından yönetici onayı gerektirecek şekilde yapılandırılmamış izin verilen izinleri belirtir — bu değer yerleşik izin verme ilkelerinde kullanılabilir, ancak özel izin verme ilkelerinde kullanılamaz. Gereklidir. |

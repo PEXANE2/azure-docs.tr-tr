@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 10713b264429b5588826421231e45194ebed33f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9a29a34b25b6834c2c343bd568f3dd3548ceff3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569194"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474946"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB'de rol tabanlı erişim denetimi
 
@@ -67,7 +67,7 @@ Bu ayar herhangi bir Cosmos kaynağında herhangi bir Cosmos DB SDK, hesap anaht
 
 - Saklı yordamları, Tetikleyicileri veya Kullanıcı tanımlı işlevleri değiştirme.
 
-Uygulamalarınız (veya Azure portal aracılığıyla) bu eylemlerden herhangi birini gerçekleştirdiyse, bu eylemlerin [ARM şablonları](manage-sql-with-resource-manager.md), [POWERSHELL](manage-with-powershell.md), [Azure CLI](manage-with-cli.md), REST veya [Azure Yönetim Kitaplığı](https://github.com/Azure-Samples/cosmos-management-net)aracılığıyla yürütülmesi için geçirilmesi gerekir. Azure yönetiminin [birden çok dilde](https://docs.microsoft.com/azure/?product=featured#languages-and-tools)kullanılabilir olduğunu unutmayın.
+Uygulamalarınız (veya Azure portal aracılığıyla) bu eylemlerden herhangi birini gerçekleştirdiyse, bu eylemlerin [ARM şablonları](./manage-with-templates.md), [POWERSHELL](manage-with-powershell.md), [Azure CLI](manage-with-cli.md), REST veya [Azure Yönetim Kitaplığı](https://github.com/Azure-Samples/cosmos-management-net)aracılığıyla yürütülmesi için geçirilmesi gerekir. Azure yönetiminin [birden çok dilde](/azure/?product=featured#languages-and-tools)kullanılabilir olduğunu unutmayın.
 
 ### <a name="set-via-arm-template"></a>ARM şablonu aracılığıyla ayarla
 

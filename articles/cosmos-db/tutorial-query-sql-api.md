@@ -8,16 +8,16 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 2a6033ef1d2b7dda04b1510d42fa49141e0b79b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd76a6848c9ff6a5c7a29e328814fe0054655691
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136006"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476442"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Öğretici: SQL API’sini kullanarak Azure Cosmos DB’yi sorgulama
 
-Azure Cosmos DB [SQL API’si](documentdb-introduction.md), SQL kullanılarak belgelerin sorgulanmasını destekler. Bu makalede, örnek bir belge ve iki örnek SQL sorgusu ve sonuçları sağlanmaktadır.
+Azure Cosmos DB [SQL API’si](./introduction.md), SQL kullanılarak belgelerin sorgulanmasını destekler. Bu makalede, örnek bir belge ve iki örnek SQL sorgusu ve sonuçları sağlanmaktadır.
 
 Bu makale aşağıdaki görevleri kapsar: 
 
@@ -64,7 +64,7 @@ Mevcut örnek veri kümesinde sorgular çalıştıran [Sorgu oyun alanı](https:
 SQL sorguları hakkında daha fazla bilgi için bkz:
 * [SQL sorgusu ve SQL sözdizimi](sql-query-getting-started.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, bir Azure Cosmos DB hesabınız ve koleksiyonunuz olduğu varsayılır. Bu kaynaklardan hiçbiri yok mu? [5 dakikalık hızlı başlangıcı](create-cosmosdb-resources-portal.md) tamamlayın.
 
@@ -149,4 +149,3 @@ Artık verilerinizi genel olarak nasıl dağıtacağınızı öğrenmek için so
 
 > [!div class="nextstepaction"]
 > [Verilerinizi genel olarak dağıtma](tutorial-global-distribution-sql-api.md)
-

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 23f32b6d09e36a98c68f5cb8f73ae1125c0543dd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e44fe44285a6693583c1b16645ad0d023428c72b
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460759"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494669"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -25,7 +25,7 @@ Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti 
 > * Kaynakları temizleme
 > * Sonraki adımlar
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, kurulum ve proje çalışması için komut satırını kullanır. Bu nedenle, alýþtýrmalar üzerinde gezinmek için herhangi bir kod düzenleyicisini kullanabilirsiniz.
 
@@ -34,6 +34,8 @@ Başlamak için gerekenler:
 * Geliştirme makinenizde **.NET Core 3,1** . Birden çok platform için .NET Core SDK bu sürümünü [.NET Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1)' i indirin.
 
 [!INCLUDE [Azure Digital Twins tutorials: instance prereq](../../includes/digital-twins-tutorial-prereq-instance.md)]
+
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
 
 ## <a name="set-up-project"></a>Projeyi ayarla
 
@@ -116,9 +118,6 @@ Console.WriteLine($"Service client created – ready to go");
 ```
 
 Dosyayı kaydedin. 
-
->[!NOTE]
-> Bu örnek, `DefaultAzureCredential` kimlik doğrulaması için bir kullanır. Diğer kimlik bilgileri türleri hakkında daha fazla bilgi için, bkz. [Microsoft Identity platform kimlik doğrulama kitaplıkları](../active-directory/develop/reference-v2-libraries.md)veya [istemci uygulamalarının kimlik doğrulaması](how-to-authenticate-client.md)Ile Ilgili Azure dijital TWINS makalesi.
 
 Komut pencerenizde şu komutla kodu çalıştırın: 
 

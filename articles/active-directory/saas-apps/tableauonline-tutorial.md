@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 035bc13ee44a8a003ae860eb2bdd67432fa91f14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 175934c3e80e1271d6d17aa04327b58887427ea5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542534"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483701"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Öğretici: Tableau Online ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Tableau online 'ı Azure Active Directory (Azure AD) ile tümle
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -165,15 +165,15 @@ Bu bölümde, Tableau çevrimiçi erişim izni vererek Azure çoklu oturum açma
 
 1. Farklı bir tarayıcı penceresinde, Tableau çevrimiçi uygulamanızda oturum açın. **Ayarlar** ' a ve ardından **kimlik doğrulaması**' na gidin.
 
-    ![Tek Sign-On yapılandırma](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
+    ![Ekran görüntüsü ayarlar menüsünden seçilen kimlik doğrulamasını gösterir.](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
 
 2. SAML 'yi etkinleştirmek için **kimlik doğrulama türleri** bölümünde bölümüne gidin. **Ek bir kimlik doğrulama yöntemini etkinleştirip** **SAML** onay kutusunu işaretleyin.
 
-    ![Tek Sign-On yapılandırma](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
+    ![Ekran görüntüsü, değerleri seçebileceğiniz kimlik doğrulama türleri bölümünü gösterir.](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
 
 3. **Meta veri dosyasını Tableau online bölümüne aktarmak** için aşağı kaydırın.  Araştır ' a tıklayın ve Azure AD 'den indirdiğiniz meta veri dosyasını içeri aktarın. Sonra **Uygula**' ya tıklayın.
 
-   ![Tek Sign-On yapılandırma](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
+   ![Ekran görüntüsü, meta veri dosyasını içeri aktarabileceğiniz bölümü gösterir.](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
 4. **Onayları Eşleştir** bölümünde **e-posta adresi**, **adı**ve **Soyadı**için karşılık gelen kimlik sağlayıcısı onaylama adını ekleyin. Bu bilgileri Azure AD 'den almak için: 
   
@@ -181,17 +181,17 @@ Bu bölümde, Tableau çevrimiçi erişim izni vererek Azure çoklu oturum açma
 
     b. **Kullanıcı öznitelikleri & talepler** bölümünde düzenleme simgesine tıklayın.
 
-   ![Tek Sign-On yapılandırma](./media/tableauonline-tutorial/attributesection.png)
+   ![Ekran görüntüsü, düzenleme simgesini seçebileceğiniz Kullanıcı öznitelikleri & talepler bölümünü gösterir.](./media/tableauonline-tutorial/attributesection.png)
 
     c. Aşağıdaki adımları kullanarak şu özniteliklerin ad alanı değerini kopyalayın: 1., e-posta ve Soyadı:
 
-   ![Azure AD tek Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
+   ![Ekran görüntüsü,, soyadı ve Emadresi özniteliklerini gösterir.](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
 
     d. **User.** bir değer ' e tıklayın
 
     e. **Ad alanı** metin kutusundan değeri kopyalayın.
 
-    ![Tek Sign-On yapılandırma](./media/tableauonline-tutorial/attributesection2.png)
+    ![Ekran görüntüsü, ad alanını girebileceğiniz Kullanıcı taleplerini Yönet bölümünü gösterir.](./media/tableauonline-tutorial/attributesection2.png)
 
     f. E-posta için ad alanı değerlerini kopyalamak ve soyadı yukarıdaki adımları tekrarlayın.
 
@@ -203,7 +203,7 @@ Bu bölümde, Tableau çevrimiçi erişim izni vererek Azure çoklu oturum açma
 
     * Soyadı: **Soyadı**
 
-    ![Tek Sign-On yapılandırma](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+    ![Ekran görüntüsü, değerleri girebileceğiniz eşleşme öznitelikleri bölümünü gösterir.](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
 
 ### <a name="create-tableau-online-test-user"></a>Tableau online test kullanıcısı oluşturma
 
@@ -211,11 +211,11 @@ Bu bölümde, Tableau online 'da Britta Simon adlı bir Kullanıcı oluşturacak
 
 1. **Tableau online**'da **Ayarlar** ' a ve ardından **kimlik doğrulama** Bölümü ' ne tıklayın. **Kullanıcıları Yönet** bölümünde aşağı kaydırın. **Kullanıcı Ekle** ' ye ve ardından **e-posta adreslerini girin ' e**tıklayın
   
-    ![Azure AD test kullanıcısı oluşturma](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
+    ![Ekran görüntüsü kullanıcıları Yönet bölümünü gösterir ve buradan Kullanıcı Ekle seçeneğini belirleyebilirsiniz.](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
 2. **(SAML) kimlik doğrulaması için Kullanıcı Ekle**' yi seçin. **E-posta adreslerini girin** metin kutusuna Britta. simon \@ contoso.com ekleyin
   
-    ![Azure AD test kullanıcısı oluşturma](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
+    ![Ekran görüntüsü, bir e-posta adresi girebileceğiniz Kullanıcı Ekle sayfasını gösterir.](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 
 3. **Kullanıcı Ekle**' ye tıklayın.
 

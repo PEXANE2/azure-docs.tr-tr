@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0054b6e9bb73ef2918a8e5c52c59a272bae5da26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34b486dc4ccfb116b49cf57217c5b7e5aedbd992
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612515"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488852"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Genel amaçlı v2 depolama hesabına yükseltme
 
@@ -40,7 +40,7 @@ Genel amaçlı v1 veya blob depolama hesaplarınızdan genel amaçlı v2 depolam
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-PowerShell kullanarak genel amaçlı bir v1 hesabını genel amaçlı v2 hesabına yükseltmek için, önce PowerShell 'i **az. Storage** modülünün en son sürümünü kullanacak şekilde güncelleştirin. PowerShell’i yükleme hakkında bilgi edinmek için bkz. [Azure PowerShell’i yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+PowerShell kullanarak genel amaçlı bir v1 hesabını genel amaçlı v2 hesabına yükseltmek için, önce PowerShell 'i **az. Storage** modülünün en son sürümünü kullanacak şekilde güncelleştirin. PowerShell’i yükleme hakkında bilgi edinmek için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps).
 
 Ardından, hesabı yükseltmek için, kaynak grubu adı, depolama hesabı adı ve istenen hesap erişim katmanınızı değiştirerek aşağıdaki komutu çağırın.
 
@@ -49,7 +49,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 ```
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Genel amaçlı v1 hesabını Azure CLı kullanarak genel amaçlı v2 hesabına yükseltmek için önce Azure CLı 'nın en son sürümünü yüklemeniz gerekir. CLI yüklemesi hakkında bilgi için bkz. [Azure CLI 2.0’ı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Genel amaçlı v1 hesabını Azure CLı kullanarak genel amaçlı v2 hesabına yükseltmek için önce Azure CLı 'nın en son sürümünü yüklemeniz gerekir. CLI yüklemesi hakkında bilgi için bkz. [Azure CLI 2.0’ı yükleme](/cli/azure/install-azure-cli).
 
 Ardından, hesabı yükseltmek için, kaynak grubu adı, depolama hesabı adı ve istenen hesap erişim katmanınızı değiştirerek aşağıdaki komutu çağırın.
 

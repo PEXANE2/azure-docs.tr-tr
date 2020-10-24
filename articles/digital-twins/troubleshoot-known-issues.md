@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8bcbe395f78d3e4e9a6f7f615edc61eaa04347cf
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8f56538470b8a52697e2d5c4154a6a6807a0cfde
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311669"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489022"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure dijital TWINS 'de bilinen sorunlar
 
@@ -34,7 +34,7 @@ Alternatif olarak, Azure portal Cloud Shell bölmesini açabilir ve Cloud Shell 
 
 :::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="' Cloud Shell ' simgesi vurgulanmış Azure portal görünümü ve Portal penceresinin alt kısmında görünen Cloud Shell":::
 
-Son olarak, Azure CLı komutlarını yerel olarak çalıştırabilmeniz için başka bir çözüm, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi makinenize yüklemektir. Yerel CLı bu sorunla karşılaşmaz.
+Son olarak, Azure CLı komutlarını yerel olarak çalıştırabilmeniz için başka bir çözüm, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 'yi makinenize yüklemektir. Yerel CLı bu sorunla karşılaşmaz.
 
 ### <a name="possible-causes"></a>Olası nedenler
 
@@ -46,7 +46,9 @@ Bu, ya da komut gruplarından Azure dijital TWINS komutlarını etkilemez `az dt
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>Komut dosyası kurulumundan sonra eksik rol ataması
 
-Bazı kullanıcılar [*nasıl yapılır: bir örnek ve kimlik doğrulaması (komut dosyası) ayarlama*](how-to-set-up-instance-scripted.md)rol atama bölümüyle ilgili sorunlar yaşayabilir. Betik hata göstermez, ancak *Azure dijital TWINS sahibi (Önizleme)* rolü kullanıcıya başarıyla atanmaz ve bu sorun, diğer kaynakları daha fazla kaynak oluşturma yeteneğini etkiler.
+Bazı kullanıcılar [*nasıl yapılır: bir örnek ve kimlik doğrulaması (komut dosyası) ayarlama*](how-to-set-up-instance-scripted.md)rol atama bölümüyle ilgili sorunlar yaşayabilir. Betik hata göstermez, ancak *Azure Digital TWINS veri sahibi* rolü kullanıcıya başarıyla atanmaz ve bu sorun, diğer kaynakları daha fazla kaynak oluşturma yeteneğini etkiler.
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 Rol atamalarınızın betiği çalıştırdıktan sonra başarıyla ayarlandığını anlamak için, kurulum makalesinin [*Kullanıcı rolü atamasını doğrula*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) bölümüne ait yönergeleri izleyin. Kullanıcılarınız bu rolle gösterilmezse, bu sorun sizi etkiler.
 
@@ -64,7 +66,7 @@ Kişisel bir [Microsoft hesabı (MSA)](https://account.microsoft.com/account)ile
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Etkileşimli tarayıcı kimlik doğrulamasıyla ilgili sorun
 
-Azure ** [. Identity](/dotnet/api/azure.identity?view=azure-dotnet) kitaplığı**'Nın **1.2.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz.
+Azure ** [. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) kitaplığı**'Nın **1.2.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz.
 
 Bu, kitaplığın en son sürümü değildir. En son sürüm **1.2.2**' dir.
 

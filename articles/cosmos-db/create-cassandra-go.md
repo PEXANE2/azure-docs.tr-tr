@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: ba53fb786b1d1f61535168cda2152049a12dfb99
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87f3ea2d1ce8d3d9f2f584db379618fc6c4a4a67
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86535843"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491249"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>Hızlı başlangıç: `gocql` Azure Cosmos DB Cassandra API verileri yönetmek için istemciyle bir go uygulaması derleme
 
@@ -85,7 +85,7 @@ func GetSession(cosmosCassandraContactPoint, cosmosCassandraPort, cosmosCassandr
 }
 ```
 
-[`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) Kullanıcı adı, parola, bağlantı noktası ve uygun TLS sürümünü ([HTTPS/SSL/TLS şifreleme güvenlik gereksinimi](https://docs.microsoft.com/azure/cosmos-db/database-security?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database)) kullanmak üzere yapılandırılmış bir yapı almak için cassandra Konağı Azure Cosmos DB işleve geçirilir
+[`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) Kullanıcı adı, parola, bağlantı noktası ve uygun TLS sürümünü ([HTTPS/SSL/TLS şifreleme güvenlik gereksinimi](./database-security.md?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database)) kullanmak üzere yapılandırılmış bir yapı almak için cassandra Konağı Azure Cosmos DB işleve geçirilir
 
 `GetSession`İşlev daha sonra `main` () işlevinden çağırılır `main.go` .
 
@@ -238,7 +238,7 @@ set COSMOSDB_CASSANDRA_USER=<value for "USERNAME">
 set COSMOSDB_CASSANDRA_PASSWORD=<value for "PRIMARY PASSWORD">
 ```
 
-Terminal penceresinde, doğru klasöre geçin. Örnek:
+Terminal penceresinde, doğru klasöre geçin. Örneğin:
 
 ```shell
 cd "C:\git-samples\azure-cosmosdb-cassandra-go-getting-started"

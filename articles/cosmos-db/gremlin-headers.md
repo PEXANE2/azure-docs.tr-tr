@@ -7,19 +7,19 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: f39b93058f3f96d37683ec1f3ae3de0f8c1cb786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b082c89684bc06346fa933aad6be97dc371bc3f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409536"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490586"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin sunucu yanıtı üstbilgileri
 Bu makalede, istek yürütmesi sırasında Cosmos DB Gremlin sunucusunun çağırana döndürdüğü başlıklar ele alınır. Bu üst bilgiler, istek performansı sorunlarının giderilmesi, Cosmos DB hizmetiyle yerel olarak tümleştirilen uygulamaların oluşturulması ve müşteri desteğinin basitleştirilmesi için kullanışlıdır.
 
 Bu üst bilgilere bağımlılık alan diğer Gremlin uygulamalarına yönelik taşınabilirlik sınırlandırdığını aklınızda bulundurun. Sonuç olarak, Cosmos DB Gremlin ile daha sıkı bir tümleştirme elde edersiniz. Bu üstbilgiler bir TinkerPop standardı değildir.
 
-## <a name="headers"></a>Üst bilgiler
+## <a name="headers"></a>Üst Bilgiler
 
 | Üst bilgi | Tür | Örnek değer | Dahil edildiğinde | Açıklama |
 | --- | --- | --- | --- | --- |
@@ -29,7 +29,7 @@ Bu üst bilgilere bağımlılık alan diğer Gremlin uygulamalarına yönelik ta
 | **x-MS-Total-Server-Time-MS** | double | 130,512 | Başarı ve Hata | Cosmos DB Gremlin sunucusunun tüm çapraz geçişi yürütebilmesi için geçen toplam süre (milisaniye cinsinden). Bu üst bilgi, her kısmi yanıta dahildir. İstek başlangıcından bu yana toplu yürütme süresini temsil eder. Son Yanıt toplam yürütme süresini gösterir. Bu üst bilgi, bir gecikme kaynağı olarak istemci ve sunucu arasında ayrım yapmak için yararlıdır. İstemci üzerindeki çapraz geçiş süresini, bu üst bilginin değerine göre karşılaştırabilirsiniz. |
 | **x-MS-Status-Code** | long | 200 | Başarı ve Hata | Üstbilgi, istek tamamlamada veya sonlandırmasının iç nedenini gösterir. Uygulamanın bu üst bilgiyi değere bakmamız ve düzeltici eylem yapması önerilir. |
 | **x-MS-alt durumu-kod** | long | 1003 | Yalnızca hata | Cosmos DB, Birleşik depolama katmanının üzerine yerleştirilmiş çok modelli bir veritabanıdır. Bu üst bilgi, yüksek kullanılabilirlik yığınının alt katmanlarında hata oluştuğunda oluşan hata nedeni hakkında ek bilgiler içerir. Uygulamanın bu üstbilgiyi depolaması ve Cosmos DB müşteri desteğiyle iletişim kurarken kullanması önerilir. Bu üstbilginin değeri, hızlı sorun giderme için Cosmos DB mühendis için yararlıdır. |
-| **x-MS-yeniden deneme-sonra-MS** | dize (TimeSpan) | "00:00:03.9500000" | Yalnızca hata | Bu üst bilgi, bir .NET [TimeSpan](https://docs.microsoft.com/dotnet/api/system.timespan) türünün dize gösterimidir. Bu değer yalnızca sağlanan üretilen iş tükenmesi nedeniyle başarısız olan isteklere dahil edilecek. Uygulama, geçen süre sonunda çapraz geçişi yeniden göndermelidir. |
+| **x-MS-yeniden deneme-sonra-MS** | dize (TimeSpan) | "00:00:03.9500000" | Yalnızca hata | Bu üst bilgi, bir .NET [TimeSpan](/dotnet/api/system.timespan) türünün dize gösterimidir. Bu değer yalnızca sağlanan üretilen iş tükenmesi nedeniyle başarısız olan isteklere dahil edilecek. Uygulama, geçen süre sonunda çapraz geçişi yeniden göndermelidir. |
 | **x-MS-etkinlik kimliği** | dize (GUID) | "A9218E01-3A3A-4716-9636-5BD86B056613" | Başarı ve Hata | Üst bilgi, bir isteğin benzersiz sunucu tarafı tanımlayıcısını içerir. Her isteğe, izleme amacıyla sunucu tarafından benzersiz bir tanımlayıcı atanır. Uygulamalar, müşterilerin müşteri desteğiyle iletişim kurmak isteyebileceğiniz istekler için sunucu tarafından döndürülen etkinlik tanımlayıcılarını günlüğe içermemelidir. Cosmos DB destek personeli, Bu tanımlayıcılara yönelik belirli istekleri Cosmos DB hizmeti telemetrisinde bulabilir. |
 
 ## <a name="status-codes"></a>Durum kodları

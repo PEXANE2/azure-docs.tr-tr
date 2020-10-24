@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: aaa9a78342cf64461d85d7542c7ed8a69186906b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f49b7a2b4acc42724616121186093b112867d2b5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275121"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487730"
 ---
 # <a name="azure-cosmos-db-sql-api-spring-data-azure-cosmos-db-v3-examples"></a>Azure Cosmos DB SQL API: Spring Data Azure Cosmos DB v3 örnekleri
 
@@ -34,9 +34,9 @@ ms.locfileid: "92275121"
 > Spring Data Azure Cosmos DB yalnızca SQL API 'sini destekler.
 >
 > Diğer Azure Cosmos DB API 'Lerinde yay verileri hakkında bilgi için şu makalelere bakın:
-> * [Azure Cosmos DB ile Apache Cassandra için yay verileri](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Azure Cosmos DB ile Spring Data MongoDB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Yay verileri Gremlin Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> * [Azure Cosmos DB ile Apache Cassandra için yay verileri](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Azure Cosmos DB ile Spring Data MongoDB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Yay verileri Gremlin Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
 > [!IMPORTANT]  
@@ -115,7 +115,7 @@ mvn spring-boot:run
 | [Belgeler Için sorgu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java#L73-L77) | CosmosRepository. derivedQueryMethod |
 
 ## <a name="custom-query-examples"></a>Özel sorgu örnekleri
-[Örnek](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java) dosyası, SQL sorgu dilbilgisini kullanarak aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB SQL sorgu başvurusu hakkında bilgi edinmek için, bkz. [SQL sorgu örnekleri Azure Cosmos DB](how-to-sql-query.md). 
+[Örnek](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java) dosyası, SQL sorgu dilbilgisini kullanarak aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB SQL sorgu başvurusu hakkında bilgi edinmek için, bkz. [SQL sorgu örnekleri Azure Cosmos DB](./sql-query-getting-started.md). 
 
 
 | Görev | API başvurusu |

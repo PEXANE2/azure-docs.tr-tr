@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dca046df68b10853752b0de65c48c2b8f83afb31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5af62cd8c110e38ffd2a72ef2441a8e548e1ece
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020907"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475501"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Depolama maliyetini en uygun Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Azure Cosmos DB, sınırsız depolama ve aktarım hızı sunar. Azure Cosmos kap
 
 ## <a name="storage-cost"></a>Depolama maliyeti
 
-Depolama birimi, GBs birimiyle faturalandırılır. Yerel SSD ile desteklenen depolama, verileriniz ve dizin oluşturma tarafından kullanılır. Kullanılan toplam depolama alanı, Azure Cosmos DB kullandığınız tüm bölgelerde kullanılan veriler ve dizinler için gereken depolama alanına eşittir. Azure Cosmos hesabını üç bölgede genel olarak çoğaltdıysanız, bu üç bölgenin her birinde toplam depolama maliyeti üzerinden ödeme yaparsınız. Depolama gereksinimini tahmin etmek için bkz. [Kapasite planlayıcısı](https://www.documentdb.com/capacityplanner) aracı. Azure Cosmos DB 'deki depolama maliyeti $0,25 GB/ay, en son güncelleştirmeler için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın. Azure Cosmos Kapsayıcınız tarafından kullanılan depolamayı, depolama alanınızı izlemek için, bkz. [izleyici Azure Cosmos DB](monitor-accounts.md)) makaleyi tespit etmek için uyarılar ayarlayabilirsiniz.
+Depolama birimi, GBs birimiyle faturalandırılır. Yerel SSD ile desteklenen depolama, verileriniz ve dizin oluşturma tarafından kullanılır. Kullanılan toplam depolama alanı, Azure Cosmos DB kullandığınız tüm bölgelerde kullanılan veriler ve dizinler için gereken depolama alanına eşittir. Azure Cosmos hesabını üç bölgede genel olarak çoğaltdıysanız, bu üç bölgenin her birinde toplam depolama maliyeti üzerinden ödeme yaparsınız. Depolama gereksinimini tahmin etmek için bkz. [Kapasite planlayıcısı](https://www.documentdb.com/capacityplanner) aracı. Azure Cosmos DB 'deki depolama maliyeti $0,25 GB/ay, en son güncelleştirmeler için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın. Azure Cosmos Kapsayıcınız tarafından kullanılan depolamayı, depolama alanınızı izlemek için, bkz. [izleyici Azure Cosmos DB](./monitor-cosmos-db.md)) makaleyi tespit etmek için uyarılar ayarlayabilirsiniz.
 
 ## <a name="optimize-cost-with-item-size"></a>Öğe boyutuyla maliyeti iyileştirin
 
@@ -28,7 +28,7 @@ Azure Cosmos DB, en iyi performans ve maliyet avantajları için öğe boyutunun
 
 ## <a name="optimize-cost-with-indexing"></a>Dizin oluşturma ile maliyeti iyileştirme
 
-Varsayılan olarak, veriler otomatik olarak dizinlenir ve bu, tüketilen toplam depolamayı artırabilir. Bununla birlikte, bu ek yükü azaltmak için özel dizin ilkeleri de uygulayabilirsiniz. İlke aracılığıyla ayarlanmayan otomatik dizin oluşturma işlemi, öğe boyutunun% 10-20 ' sidir. Dizin ilkelerini kaldırarak veya özelleştirerek, yazma işlemleri için ek ücret ödemezsiniz ve ek verimlilik kapasitesi gerektirmez. Özel dizin oluşturma ilkelerini yapılandırmak için [Azure Cosmos DB 'de dizin oluşturma](indexing-policies.md) bölümüne bakın. Daha önce ilişkisel veritabanları ile çalıştıysanız, "her şeyi dizine" veya daha yüksek depolama alanının kattığını düşünebilirsiniz. Ancak, Azure Cosmos DB, ortanca durumunda çok daha düşüktür. Azure Cosmos DB, dizinin depolama ek yükü genellikle düşüktür (% 10-20) alt depolama alanı için tasarlandığından, Otomatik Dizin oluşturma özelliği de vardır. Dizin oluşturma ilkesini yöneterek Dizin parmak izini ve sorgu performansını daha ayrıntılı bir şekilde kontrol edebilirsiniz.
+Varsayılan olarak, veriler otomatik olarak dizinlenir ve bu, tüketilen toplam depolamayı artırabilir. Bununla birlikte, bu ek yükü azaltmak için özel dizin ilkeleri de uygulayabilirsiniz. İlke aracılığıyla ayarlanmayan otomatik dizin oluşturma işlemi, öğe boyutunun% 10-20 ' sidir. Dizin ilkelerini kaldırarak veya özelleştirerek, yazma işlemleri için ek ücret ödemezsiniz ve ek verimlilik kapasitesi gerektirmez. Özel dizin oluşturma ilkelerini yapılandırmak için [Azure Cosmos DB 'de dizin oluşturma](index-policy.md) bölümüne bakın. Daha önce ilişkisel veritabanları ile çalıştıysanız, "her şeyi dizine" veya daha yüksek depolama alanının kattığını düşünebilirsiniz. Ancak, Azure Cosmos DB, ortanca durumunda çok daha düşüktür. Azure Cosmos DB, dizinin depolama ek yükü genellikle düşüktür (% 10-20) alt depolama alanı için tasarlandığından, Otomatik Dizin oluşturma özelliği de vardır. Dizin oluşturma ilkesini yöneterek Dizin parmak izini ve sorgu performansını daha ayrıntılı bir şekilde kontrol edebilirsiniz.
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Yaşam süresi ile maliyeti iyileştirin ve akışı değiştirin
 
@@ -40,7 +40,7 @@ Zengin medya türlerini (örneğin, videolar, görüntüler vb.) depolamak istiy
 
 ## <a name="check-storage-consumed"></a>Tüketilen depolamayı denetle
 
-Azure Cosmos kapsayıcısının depolama tüketimini denetlemek için, kapsayıcıda bir HEAD veya GET isteği çalıştırabilir, `x-ms-request-quota` ve `x-ms-request-usage` üst bilgilerini inceleyebilirsiniz. Alternatif olarak, .NET SDK ile çalışırken, kullanılan depolamayı almak için [Documentsizequota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))ve [documentsizeusage](https://msdn.microsoft.com/library/azure/dn850324.aspx) özelliklerini kullanabilirsiniz.
+Azure Cosmos kapsayıcısının depolama tüketimini denetlemek için, kapsayıcıda bir HEAD veya GET isteği çalıştırabilir, `x-ms-request-quota` ve `x-ms-request-usage` üst bilgilerini inceleyebilirsiniz. Alternatif olarak, .NET SDK ile çalışırken, kullanılan depolamayı almak için [Documentsizequota](/previous-versions/azure/dn850325(v%3Dazure.100))ve [documentsizeusage](/previous-versions/azure/dn850324(v=azure.100)) özelliklerini kullanabilirsiniz.
 
 ## <a name="using-sdk"></a>SDK’yı kullanma
 
@@ -59,6 +59,5 @@ Daha sonra, aşağıdaki makalelerle Azure Cosmos DB maliyet iyileştirmesi hakk
 * [Azure Cosmos DB Faturanızı Anlama](understand-your-bill.md) hakkında daha fazla bilgi edinin
 * [Verimlilik maliyetini iyileştirme](optimize-cost-throughput.md) hakkında daha fazla bilgi edinin
 * [Okuma ve yazma maliyetlerini iyileştirme](optimize-cost-reads-writes.md) hakkında daha fazla bilgi edinin
-* [Sorguların maliyetini En Iyi duruma getirme](optimize-cost-queries.md) hakkında daha fazla bilgi edinin
+* [Sorguların maliyetini En Iyi duruma getirme](./optimize-cost-reads-writes.md) hakkında daha fazla bilgi edinin
 * [Çok bölgeli Azure Cosmos hesaplarının maliyetini En Iyi duruma getirme](optimize-cost-regions.md) hakkında daha fazla bilgi edinin
-

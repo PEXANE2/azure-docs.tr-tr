@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d319d54d15b72747da029d365137f5b5bb384c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85119279"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489260"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Gelişmiş tehdit koruması (Önizleme)
 
@@ -26,7 +26,7 @@ Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde t
 > * Azure Cosmos DB için Gelişmiş tehdit koruması Şu anda yalnızca SQL API 'SI için kullanılabilir.
 > * Azure Cosmos DB için Gelişmiş tehdit koruması Şu anda Azure Kamu ve bağımsız bulut bölgelerinde kullanılamaz.
 
-Güvenlik uyarılarının tam araştırma deneyimi için, tüm belgeler, kapsayıcılar ve veritabanlarına yönelik CRUD işlemleri de dahil olmak üzere, veritabanı üzerindeki işlemleri günlüğe kaydeden [Azure Cosmos DB tanılama günlüğünü](https://docs.microsoft.com/azure/cosmos-db/logging)etkinleştirmeyi öneririz.
+Güvenlik uyarılarının tam araştırma deneyimi için, tüm belgeler, kapsayıcılar ve veritabanlarına yönelik CRUD işlemleri de dahil olmak üzere, veritabanı üzerindeki işlemleri günlüğe kaydeden [Azure Cosmos DB tanılama günlüğünü](./monitor-cosmos-db.md)etkinleştirmeyi öneririz.
 
 ## <a name="threat-types"></a>Tehdit türleri
 
@@ -59,16 +59,16 @@ Gelişmiş tehdit korumasını aşağıdaki bölümlerde açıklanan çeşitli y
 
 Belirli bir Azure Cosmos DB hesabına yönelik gelişmiş tehdit koruması ayarını oluşturmak, güncelleştirmek veya almak için REST API komutlarını kullanın.
 
-* [Gelişmiş tehdit koruması-oluştur](https://go.microsoft.com/fwlink/?linkid=2099745)
-* [Gelişmiş tehdit koruması-Get](https://go.microsoft.com/fwlink/?linkid=2099643)
+* [Gelişmiş tehdit koruması-oluştur](/rest/api/securitycenter/advancedthreatprotection/create)
+* [Gelişmiş tehdit koruması-Get](/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aşağıdaki PowerShell cmdlet 'lerini kullanın:
 
-* [Gelişmiş Tehdit Koruması'nı etkinleştirme](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
-* [Gelişmiş tehdit koruması al](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
-* [Gelişmiş tehdit korumasını devre dışı bırak](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+* [Gelişmiş Tehdit Koruması'nı etkinleştirme](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [Gelişmiş tehdit koruması al](/powershell/module/az.security/get-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [Gelişmiş tehdit korumasını devre dışı bırak](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
 
 ### <a name="arm-template"></a>[ARM şablonu](#tab/arm-template)
 
@@ -112,9 +112,9 @@ Uyarı ayrıntıları ve önerilen eylemlerle birlikte bir e-posta bildirimi de 
 
 ## <a name="cosmos-db-atp-alerts"></a>ATP uyarılarını Cosmos DB
 
- Azure Cosmos DB hesaplarını izlerken oluşturulan uyarıların listesini görmek için, Azure Güvenlik Merkezi belgelerindeki [Cosmos DB uyarılar](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos) bölümüne bakın.
+ Azure Cosmos DB hesaplarını izlerken oluşturulan uyarıların listesini görmek için, Azure Güvenlik Merkezi belgelerindeki [Cosmos DB uyarılar](../security-center/alerts-reference.md#alerts-azurecosmos) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Tanılama günlüğü](cosmosdb-monitor-resource-logs.md) hakkında daha fazla bilgi edinin Azure Cosmos DB
-* [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin
+* [Azure Güvenlik Merkezi](../security-center/security-center-introduction.md) hakkında daha fazla bilgi edinin

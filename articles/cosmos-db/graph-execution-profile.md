@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: jasonh
-ms.openlocfilehash: 841d2bcc50b62554fac8643048a3b3534e82dfa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d34c91cab157fcd51d58521d739fcb081fe03ea
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408241"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490603"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gremlin sorgularınızı hesaplamak için yürütme profili adımını kullanma
 
@@ -220,8 +220,8 @@ Aşağıda, yürütme profili yanıtını kullanarak sposıya yönelik genel iyi
 
 Aşağıdaki ekibinizle şunlardan yapılabilir:
 - Gremlin ifadesinin deseninin izlediği için sorgu tek bir KIMLIK aramadır `g.V('id')` .
-- `time`Ölçüden sorumlu olan bu sorgunun gecikmesi, [tek bir nokta okuma işlemi için 10ms 'den fazla](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide)olduğundan, bu sorgunun gecikmesi yüksek gibi görünüyor.
-- Nesnesine baktığımızda, olduğunu, yani `storeOps` `fanoutFactor` `5` [5 bölüme](https://docs.microsoft.com/azure/cosmos-db/partition-data) bu işlem tarafından erişildiğini görebiliriz.
+- `time`Ölçüden sorumlu olan bu sorgunun gecikmesi, [tek bir nokta okuma işlemi için 10ms 'den fazla](./introduction.md#guaranteed-low-latency-at-99th-percentile-worldwide)olduğundan, bu sorgunun gecikmesi yüksek gibi görünüyor.
+- Nesnesine baktığımızda, olduğunu, yani `storeOps` `fanoutFactor` `5` [5 bölüme](./partitioning-overview.md) bu işlem tarafından erişildiğini görebiliriz.
 
 Bu çözümlemenin bir sonucu olarak, ilk sorgunun gerekenden daha fazla bölüme erişimi olduğunu belirleyebiliriz. Bu, sorguda bir koşul olarak bölümleme anahtarı belirtilerek çözülebilir. Bu, sorgu başına daha az gecikme süresine ve maliyeti azaltır. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. Daha iyi bir sorgu olabilir `g.V('tt0093640').has('partitionKey', 't1001')` .
 

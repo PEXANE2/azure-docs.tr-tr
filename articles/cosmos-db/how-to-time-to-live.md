@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 56cf360dd8d015d797b4974aab667bb89edcce4b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 340ec7c16c5ed3e477cc2c4505c8b018d2d39a06
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951936"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486013"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB yaşam süresi yapılandırma
 
 Azure Cosmos DB, kapsayıcı düzeyinde yaşam süresi (TTL) yapılandırmayı seçebilir veya kapsayıcının ayarından sonra öğeyi bir öğe düzeyinde geçersiz kılabilirsiniz. Bir kapsayıcı için Azure portal veya dile özgü SDK 'Ları kullanarak TTL yapılandırabilirsiniz. Öğe düzeyi TTL geçersiz kılmaları SDK 'lar kullanılarak yapılandırılabilir.
 
-> Bu içerik, Azure Cosmos DB işlemsel mağaza TTL ile ilgilidir. [Azure SYNAPSE bağlantısı](https://docs.microsoft.com/azure/cosmos-db/synapse-link)aracılığıyla NOETL htap senaryolarına izin veren ANALITYCAL Store TTL 'yi arıyorsanız, lütfen [buraya](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl)tıklayın.
+> Bu içerik, Azure Cosmos DB işlemsel mağaza TTL ile ilgilidir. [Azure SYNAPSE bağlantısı](./synapse-link.md)aracılığıyla NOETL htap senaryolarına izin veren ANALITYCAL Store TTL 'yi arıyorsanız, lütfen [buraya](./analytical-store-introduction.md#analytical-ttl)tıklayın.
 
 ## <a name="enable-time-to-live-on-a-container-using-azure-portal"></a>Azure portal kullanarak bir kapsayıcıda yaşam süresi etkinleştirme
 
@@ -204,7 +204,7 @@ Bir kapsayıcıda yaşam için varsayılan bir zaman ayarlamaya ek olarak, bir �
 
 * TTL kapsayıcı düzeyinde devre dışıysa, kapsayıcıda TTL yeniden etkinleştirilene kadar öğedeki TTL alanı yok sayılır.
 
-### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure portal
+### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure portalı
 
 Bir öğe üzerinde yaşam süresini etkinleştirmek için aşağıdaki adımları kullanın:
 

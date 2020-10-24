@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 85f358d205a4a14874e520efdace5345de837588
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0bbb0da0ce39aab9fba843dda99b45ea59881ce2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276262"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490552"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB yüksek kullanılabilirlik sağlama
 
@@ -58,7 +58,7 @@ Küresel olarak dağıtılmış bir veritabanı olarak, Azure Cosmos DB aktarım
 
 Bölgesel kesintiden nadir durumlar için Azure Cosmos DB veritabanınızın her zaman yüksek oranda kullanılabilir olduğundan emin olur. Aşağıdaki ayrıntılar, Azure Cosmos hesap yapılandırmanıza bağlı olarak kesinti sırasında Azure Cosmos DB davranışını yakalar:
 
-* Azure Cosmos DB, istemciye bir yazma işlemi alınmadan önce, veriler yazma işlemlerini kabul eden bölge içindeki çoğaltmaların bir çekirdeği tarafından işlenir. Daha ayrıntılı bilgi için bkz. [tutarlılık düzeyleri ve aktarım hızı](consistency-levels-tradeoffs.md#consistency-levels-and-throughput)
+* Azure Cosmos DB, istemciye bir yazma işlemi alınmadan önce, veriler yazma işlemlerini kabul eden bölge içindeki çoğaltmaların bir çekirdeği tarafından işlenir. Daha ayrıntılı bilgi için bkz. [tutarlılık düzeyleri ve aktarım hızı](./consistency-levels.md#consistency-levels-and-throughput)
 
 * Birden fazla yazma bölgesiyle yapılandırılan çok bölgeli hesaplar, yazma ve okuma işlemleri için yüksek oranda kullanılabilir olacaktır. Bölgesel yük devretme işlemleri Azure Cosmos DB istemcisinde algılanır ve işlenir. Bunlar da anlık ve uygulamadan herhangi bir değişiklik gerektirmez.
 
@@ -89,7 +89,7 @@ Bölgesel kesintiden nadir durumlar için Azure Cosmos DB veritabanınızın her
 
 * Sonraki okumalar kurtarılan bölgeye yönlendirilir ve bunun için uygulamanızın kodunda değişiklik yapılması gerekmez. Daha önce başarısız olan bir bölgenin yük devretmesi ve yeniden katılması sırasında, uyumluluk garantisi Azure Cosmos DB tarafından kabul edilir.
 
-* Azure bölgesinin kalıcı olarak kurtarılabilir olduğu nadir ve talihsiz olayında bile, çok bölgeli Azure Cosmos hesabınız *güçlü* tutarlılık ile yapılandırıldıysa veri kaybı olmaz. Kalıcı ve kurtarılabilir bir yazma bölgesi durumunda, sınırlı stalet tutarlılığı ile yapılandırılmış çok bölgeli bir Azure Cosmos hesabı olan potansiyel veri kaybı penceresi, K = 100000 güncelleştirmelerinin ve T = 5 dakikadan kısa bir süre içinde (*k* veya *t*) kısıtlanmıştır. Oturum, tutarlı ön ek ve nihai tutarlılık seviyeleri için, olası veri kaybı penceresi en fazla 15 dakika sınırlı olur. Azure Cosmos DB için RTO ve RPO hedefleri hakkında daha fazla bilgi için bkz. [tutarlılık düzeyleri ve veri dayanıklılığı](consistency-levels-tradeoffs.md#rto)
+* Azure bölgesinin kalıcı olarak kurtarılabilir olduğu nadir ve talihsiz olayında bile, çok bölgeli Azure Cosmos hesabınız *güçlü* tutarlılık ile yapılandırıldıysa veri kaybı olmaz. Kalıcı ve kurtarılabilir bir yazma bölgesi durumunda, sınırlı stalet tutarlılığı ile yapılandırılmış çok bölgeli bir Azure Cosmos hesabı olan potansiyel veri kaybı penceresi, K = 100000 güncelleştirmelerinin ve T = 5 dakikadan kısa bir süre içinde (*k* veya *t*) kısıtlanmıştır. Oturum, tutarlı ön ek ve nihai tutarlılık seviyeleri için, olası veri kaybı penceresi en fazla 15 dakika sınırlı olur. Azure Cosmos DB için RTO ve RPO hedefleri hakkında daha fazla bilgi için bkz. [tutarlılık düzeyleri ve veri dayanıklılığı](./consistency-levels.md#rto)
 
 ## <a name="availability-zone-support"></a>Kullanılabilirlik alanı desteği
 
@@ -131,7 +131,7 @@ Kullanılabilirlik Alanları şu şekilde etkinleştirilebilir:
 
 * [Azure CLI](manage-with-cli.md#add-or-remove-regions)
 
-* [Azure Resource Manager şablonları](manage-sql-with-resource-manager.md)
+* [Azure Resource Manager şablonları](./manage-with-templates.md)
 
 ## <a name="building-highly-available-applications"></a>Yüksek oranda kullanılabilir uygulamalar oluşturma
 
@@ -143,15 +143,15 @@ Kullanılabilirlik Alanları şu şekilde etkinleştirilebilir:
 
 * Azure Cosmos hesabınız yüksek oranda kullanılabilir olsa bile, uygulamanız yüksek oranda kullanılabilir kalacak şekilde doğru şekilde tasarlanmayabilir. Uygulama test veya olağanüstü durum kurtarma (DR) detaylarının bir parçası olarak uygulamanızın uçtan uca yüksek kullanılabilirliğini test etmek için, hesapta otomatik yük devretmeyi geçici olarak devre dışı bırakın, [PowerShell, Azure CLI veya Azure Portal kullanarak el ile yük devretmeyi](how-to-manage-database-account.md#manual-failover)çağırın, sonra uygulamanızın yük devretmesini izleyin. Tamamlandıktan sonra, birincil bölgeye yeniden yük devreder ve hesap için otomatik yük devretmeyi geri yükleyebilirsiniz.
 
-* Küresel olarak dağıtılmış bir veritabanı ortamında, bölge genelinde bir kesinti olması durumunda tutarlılık düzeyi ve veri dayanıklılığı arasında doğrudan bir ilişki vardır. İş sürekliliği planınızı geliştirirken, kesintiye uğratan bir olaydan sonra uygulamanın tam olarak kurtarmadan önce kabul edilebilir en uzun süreyi anlamanız gerekir. Uygulamanın tam olarak kurtarılması için gereken süre, kurtarma zamanı hedefi (RTO) olarak bilinir. Ayrıca, uygulamanın, kesintiye uğratan bir olaydan sonra kurtarılırken kabul edebildiği en son veri güncelleştirme süresini de anlamanız gerekir. Kaybetmeyi göze alabileceğiniz güncelleştirme süresi kurtarma noktası hedefini (RPO) olarak bilinir. RPO ve RTO Azure Cosmos DB için bkz. [tutarlılık düzeyleri ve veri dayanıklılığı](consistency-levels-tradeoffs.md#rto)
+* Küresel olarak dağıtılmış bir veritabanı ortamında, bölge genelinde bir kesinti olması durumunda tutarlılık düzeyi ve veri dayanıklılığı arasında doğrudan bir ilişki vardır. İş sürekliliği planınızı geliştirirken, kesintiye uğratan bir olaydan sonra uygulamanın tam olarak kurtarmadan önce kabul edilebilir en uzun süreyi anlamanız gerekir. Uygulamanın tam olarak kurtarılması için gereken süre, kurtarma zamanı hedefi (RTO) olarak bilinir. Ayrıca, uygulamanın, kesintiye uğratan bir olaydan sonra kurtarılırken kabul edebildiği en son veri güncelleştirme süresini de anlamanız gerekir. Kaybetmeyi göze alabileceğiniz güncelleştirme süresi kurtarma noktası hedefini (RPO) olarak bilinir. RPO ve RTO Azure Cosmos DB için bkz. [tutarlılık düzeyleri ve veri dayanıklılığı](./consistency-levels.md#rto)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha sonra aşağıdaki makaleleri okuyabilirsiniz:
 
-* [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md)
+* [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları](./consistency-levels.md)
 
-* [Sağlanan aktarım hızını küresel olarak ölçeklendirme](scaling-throughput.md)
+* [Sağlanan aktarım hızını küresel olarak ölçeklendirme](./request-units.md)
 
 * [Genel dağıtım - başlık altında](global-dist-under-the-hood.md)
 

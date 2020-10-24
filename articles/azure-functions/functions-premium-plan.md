@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.custom:
 - references_regions
 - fasttrack-edit
-ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaf5cb70e3099d84a54a22fa291f8f3ab9e0daa6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578045"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490756"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
 
@@ -104,7 +104,7 @@ Plan veya bu plana dağıtılan bir işlev uygulamasındaki **Ölçek Genişletm
 Azure CLı 'den en fazla patlama sınırını de artırabilirsiniz:
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
+az functionapp plan update -g <resource_group> -n <premium_plan_name> --max-burst <desired_max_burst>
 ```
 
 Her plan için en az bir örnek olacaktır.  Gerçek minimum örnek sayısı, plandaki uygulamalar tarafından istenen her zaman kullanılabilir örneklere dayanarak sizin için otomatik olarak yapılandırılır.  Örneğin, A uygulaması beş her zaman kullanılabilir örnek isterse ve B uygulaması aynı planda her zaman kullanılabilir örnek isterse, minimum plan boyutu beş olarak hesaplanır.  A uygulaması tüm 5 ' te çalışır ve B uygulaması yalnızca 2 ' de çalışır.
@@ -117,7 +117,7 @@ Her plan için en az bir örnek olacaktır.  Gerçek minimum örnek sayısı, pl
 Bir plan için hesaplanan minimum değerin artırılması, Azure CLı kullanılarak yapılabilir.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity=<desired_min_instances> --resource-type Microsoft.Web/serverfarms 
+az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-instances <desired_min_instances>
 ```
 
 ### <a name="available-instance-skus"></a>Kullanılabilir örnek SKU 'Ları
@@ -146,7 +146,7 @@ Işlevlerin tüm bölgesel kullanılabilirliğine buradan bakın: [Azure.com](ht
 |Orta Avustralya| 100 | Kullanılamaz |
 |Orta Avustralya 2| 100 | Kullanılamaz |
 |Doğu Avustralya| 100 | 20 |
-|Avustralya Güneydoğu | 100 | 20 |
+|Güneydoğu Avustralya | 100 | 20 |
 |Brezilya Güney| 100 | 20 |
 |Orta Kanada| 100 | 20 |
 |Central US| 100 | 20 |

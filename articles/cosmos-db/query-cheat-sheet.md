@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5683fb64c9b5df027ff8b0f50cec49e9bce5808
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85117990"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475133"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB tabloları sorgula
 
@@ -32,7 +32,7 @@ A3 boyutlu kağıda (11,7 "x 16,5") bir çizici veya büyük ölçekli bir yazı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sorgu yazma hakkında daha fazla yardım için aşağıdaki makalelere bakın:
-* SQL API sorguları için bkz [. SQL API 'sini kullanarak sorgulama](tutorial-query-sql-api.md), [Azure Cosmos DB için SQL sorguları](how-to-sql-query.md)ve [SQL söz dizimi başvurusu](sql-api-query-reference.md)
+* SQL API sorguları için bkz [. SQL API 'sini kullanarak sorgulama](tutorial-query-sql-api.md), [Azure Cosmos DB için SQL sorguları](./sql-query-getting-started.md)ve [SQL söz dizimi başvurusu](./sql-query-getting-started.md)
 * MongoDB sorguları için bkz. MongoDB [için Azure Cosmos DB API 'sini kullanarak sorgulama](tutorial-query-mongodb.md) ve [MongoDB özellik desteği ve sözdizimi için Azure Cosmos DB API 'si](mongodb-feature-support.md)
 * Gremlin API sorguları için bkz [. GREMLIN API 'sini kullanarak sorgulama](tutorial-query-graph.md) ve [Azure Cosmos DB Gremlin Graf desteği](gremlin-support.md)
 * Tablo API'si sorguları için bkz [. tablo API'si kullanarak sorgulama](tutorial-query-table.md)
