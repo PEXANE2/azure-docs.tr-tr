@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: Zhchia
-ms.openlocfilehash: 164b2915d3085ff765635b10e97f7552df1bf4c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 786e99cec4999eef0af92fe2be18bcf0e48ed379
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256367"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519002"
 ---
 # <a name="tutorial-configure-miro-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için mıro yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları mıro 
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -79,7 +79,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için mıro 'yi yapılandırmadan 
 Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan mıro 'daki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırma adımlarında size kılavuzluk eder.
 
 > [!TIP]
-> Mıro [Çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/miro-tutorial)sunulan yönergeleri Izleyerek mıro için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> Mıro [Çoklu oturum açma öğreticisinde](./miro-tutorial.md)sunulan yönergeleri Izleyerek mıro için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
 > [!NOTE]
 > Mıro 'nın SCıM uç noktası hakkında daha fazla bilgi edinmek için [Bu](https://help.miro.com/hc/en-us/articles/360036777814)noktaya başvurun.
@@ -158,4 +158,3 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
-

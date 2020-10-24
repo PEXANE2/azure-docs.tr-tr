@@ -9,16 +9,16 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 715e09eaf6ca379261d619fe02ad81a69a519d3e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5f59f626d9edbf30f61935c026ac965dbbe946f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328547"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516928"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure uzamsal Tutturucuların kimlik doğrulaması ve yetkilendirmesi
 
-Bu makalede, uygulamanızın veya Web hizmetinizin Azure uzamsal bağlayıcılarının kimliğini doğrulayabilmeniz için çeşitli yollar öğreneceksiniz. Ayrıca, uzamsal bağlayıcı hesaplarınıza erişimi denetlemek için Azure Active Directory (Azure AD) içinde rol tabanlı erişim denetimi kullanma yolları hakkında bilgi edineceksiniz.
+Bu makalede, uygulamanızın veya Web hizmetinizin Azure uzamsal bağlayıcılarının kimliğini doğrulayabilmeniz için çeşitli yollar öğreneceksiniz. Ayrıca, uzamsal bağlayıcı hesaplarınıza erişimi denetlemek için Azure Active Directory (Azure AD) içinde Azure rol tabanlı erişim denetimi (Azure RBAC) kullanma yolları hakkında bilgi edineceksiniz.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -94,7 +94,7 @@ Bu özelliği ayarladıktan sonra SDK, bir erişim belirtecinin hesap anahtarın
 
 Azure Active Directory kullanıcıları hedefleyen uygulamalar için, Kullanıcı için bir Azure AD belirteci kullanmanızı öneririz. Bu belirteci [msal](../../active-directory/develop/msal-overview.md)kullanarak elde edebilirsiniz. [Bir uygulamayı kaydetmeye yönelik hızlı başlangıç](../../active-directory/develop/quickstart-register-app.md)içindeki adımları izleyin ve şunları yapın:
 
-**Azure portalında**
+**Azure portal**
 1.    Uygulamanızı Azure AD 'ye yerel bir uygulama olarak kaydedin. Kayıt kapsamında, uygulamanızın çok kiracılı olup olmayacağını belirlemeniz gerekir. Ayrıca, uygulamanız için izin verilen yeniden yönlendirme URL 'Lerini sağlamanız gerekir.
 1.  **API izinleri** sekmesine gidin.
 2.  **Izin Ekle**' yi seçin.
@@ -108,7 +108,7 @@ Azure Active Directory kullanıcıları hedefleyen uygulamalar için, Kullanıc�
    1.    Azure portal uzamsal bağlayıcılarınızın kaynağına gidin.
    2.    **Erişim denetimi (IAM)** sekmesine gidin.
    3.    **Rol ataması ekle**’yi seçin.
-   1.    [Bir rol seçin](#role-based-access-control).
+   1.    [Bir rol seçin](#azure-role-based-access-control).
    2.    **Seç** kutusunda, erişim atamak istediğiniz kullanıcıların, grupların ve/veya uygulamaların adlarını girin.
    3.    **Kaydet**’i seçin.
 
@@ -172,7 +172,7 @@ Burada, uygulamanızın arka uç hizmetinde kimlik doğrulaması yapmak için ke
 
 Azure AD erişim belirteci [msal](../../active-directory/develop/msal-overview.md)aracılığıyla alınır. [Uygulamayı kaydetme hızlı](../../active-directory/develop/quickstart-register-app.md)başlangıcı bölümündeki adımları izleyerek şunları yapın:
 
-**Azure portalında**
+**Azure portal**
 1.    Uygulamanızı Azure AD 'ye kaydedin:
         1.    Azure portal **Azure Active Directory**' i seçin ve **uygulama kayıtları**' yı seçin.
         2.    **Yeni kayıt**seçeneğini belirleyin.
@@ -182,7 +182,7 @@ Azure AD erişim belirteci [msal](../../active-directory/develop/msal-overview.m
         1.    Azure portal uzamsal bağlayıcılarınızın kaynağına gidin.
         2.    **Erişim denetimi (IAM)** sekmesine gidin.
         3.    **Rol ataması ekle**’yi seçin.
-        1.    [Bir rol seçin](#role-based-access-control).
+        1.    [Bir rol seçin](#azure-role-based-access-control).
         2.    **Seç** kutusunda, erişim atamak istediğiniz uygulamaların adını veya adlarını girin. Uygulamanızın kullanıcılarının uzamsal bağlayıcı hesabına karşı farklı rollere sahip olmasını istiyorsanız, Azure AD 'de birden çok uygulamayı kaydedin ve her birine ayrı bir rol atayın. Ardından, kullanıcılarınız için doğru rolü kullanmak üzere yetkilendirme mantığınızı uygulayın.
         
               > [!NOTE] 
@@ -262,7 +262,7 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 ---
 
-## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
+## <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
 
 Hizmetinizin uygulamalarına, hizmetlerine veya Azure AD kullanıcılarına verilen erişim düzeyini denetlemenize yardımcı olması için, bu önceden mevcut rolleri Azure uzamsal bağlayıcı hesaplarınıza göre gerektiği gibi atayabilirsiniz:
 

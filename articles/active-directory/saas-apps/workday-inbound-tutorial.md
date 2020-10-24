@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e22252ea3e132aee39075d986d7f5a979e14c0a3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541297"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520243"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
 
@@ -171,7 +171,7 @@ Bu adımda, güvenlik grubuna çalışan verileri için "etki alanı güvenliği
      >[!div class="mx-imgBorder"]
      >![Etki alanı güvenlik yapılandırması raporunu seçili etki alanı listesi ile gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wd_isu_08.png "Etki alanı güvenlik Ilkeleri") 
 
-     **Tamam**'a tıklayın.
+     **Tamam**’a tıklayın.
 
 3. Görüntülenen raporda, **dış hesap sağlama** seçeneğinin yanında görüntülenen üç nokta (...) simgesini seçin ve **etki alanı-> güvenlik ilkesi izinlerini Düzenle** ' ye tıklayın.
    >[!div class="mx-imgBorder"]
@@ -311,7 +311,7 @@ Bu bölümde, tümleştirmenizi kapsamındaki her bir Active Directory etki alan
 Şirket içi Active Directory sağlamak için, sağlama aracısının .NET 4.7.1 + Framework ve istenen Active Directory etki alanına ağ erişimi olan bir sunucuya yüklenmesi gerekir.
 
 > [!TIP]
-> [Burada](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)belirtilen yönergeleri kullanarak sunucunuzdaki .NET Framework sürümünü kontrol edebilirsiniz.
+> [Burada](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)belirtilen yönergeleri kullanarak sunucunuzdaki .NET Framework sürümünü kontrol edebilirsiniz.
 > Sunucuda .NET 4.7.1 veya üzeri yüklü değilse [buradan](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)indirebilirsiniz.  
 
 İndirilen Aracı yükleyicisini sunucu konağına aktarın ve aracı yapılandırmasını gerçekleştirmek için aşağıda verilen adımları izleyin.
@@ -392,7 +392,7 @@ Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz.
      |------------|----------------------|------------------------|
      | https://####.workday.com/ccx/service/tenantName | v 21.1 | Hayır |
      | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Hayır |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Evet |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > URL 'de sürüm bilgisi belirtilmemişse, uygulama Workday Web Hizmetleri (WWS) v 21.1 kullanır ve uygulamayla birlikte gelen varsayılan XPATH API ifadelerinde hiçbir değişiklik yapılması gerekmez. Belirli bir WWS API sürümünü kullanmak için, URL 'de sürüm numarasını belirtin <br>
@@ -410,7 +410,7 @@ Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz.
    * **Bildirim e-postası –** E-posta adresinizi girin ve "hata oluşursa e-posta gönder" onay kutusunu işaretleyin.
 
      > [!NOTE]
-     > Azure AD sağlama hizmeti, sağlama işi [karantina](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) durumuna geçtiğinde e-posta bildirimi gönderir.
+     > Azure AD sağlama hizmeti, sağlama işi [karantina](../app-provisioning/application-provisioning-quarantine-status.md) durumuna geçtiğinde e-posta bildirimi gönderir.
 
    * **Bağlantıyı Sına** düğmesine tıklayın. Bağlantı testi başarılı olursa üstteki **Kaydet** düğmesine tıklayın. Başarısız olursa, aracı kurulumunda yapılandırılan Workday kimlik bilgilerinin ve AD kimlik bilgilerinin geçerli olduğundan emin olun.
 
@@ -594,7 +594,7 @@ Hayır, çözüm Kullanıcı profillerinin bir önbelleğini korumaz. Azure AD s
 
 #### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>Çözüm, kullanıcıya şirket içi AD grupları atamayı destekliyor mu?
 
-Bu işlev şu anda desteklenmiyor. Önerilen geçici çözüm, [Denetim günlüğü verilerine](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta) YÖNELIK Microsoft Graph API uç noktasını sorgulayan ve Grup atama gibi senaryoları tetiklemek için bunu kullanan bir PowerShell betiği dağıtmaktır. Bu PowerShell betiği bir görev zamanlayıcısına iliştirilebilir ve sağlama Aracısı 'nı çalıştıran aynı kutuya dağıtılabilir.  
+Bu işlev şu anda desteklenmiyor. Önerilen geçici çözüm, [Denetim günlüğü verilerine](/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta) YÖNELIK Microsoft Graph API uç noktasını sorgulayan ve Grup atama gibi senaryoları tetiklemek için bunu kullanan bir PowerShell betiği dağıtmaktır. Bu PowerShell betiği bir görev zamanlayıcısına iliştirilebilir ve sağlama Aracısı 'nı çalıştıran aynı kutuya dağıtılabilir.  
 
 #### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>Çözüm iş günü çalışan profillerini sorgulamak ve güncelleştirmek için hangi Workday API 'Leri kullanır?
 
@@ -679,7 +679,7 @@ Sağlama Aracısı giden ara sunucu kullanımını destekler. Bunu, **C:\Program
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>Nasıl yaparım? sağlama aracısının Azure AD kiracısıyla iletişim kurabildiğinden ve aracı tarafından istenen bağlantı noktalarını engellemediğinden emin olun.
 
-Ayrıca, [gerekli tüm bağlantı noktalarının](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#open-ports) açık olup olmadığını da denetleyebilirsiniz.
+Ayrıca, [gerekli tüm bağlantı noktalarının](../manage-apps/application-proxy-add-on-premises-application.md#open-ports) açık olup olmadığını da denetleyebilirsiniz.
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>Birden çok AD etki alanı sağlamak için bir sağlama Aracısı yapılandırılmış olabilir mi?
 
@@ -1157,4 +1157,4 @@ Azure AD sağlama hizmeti, veri bekletmeye göre rapor oluşturmaz, analiz uygul
 * [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 * [Workday ve Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin](workday-tutorial.md)
 * [Diğer SaaS uygulamalarını Azure Active Directory ile tümleştirmeyi öğrenin](tutorial-list.md)
-* [Sağlama yapılandırmalarının yönetimi için Microsoft Graph API 'Lerini nasıl kullanacağınızı öğrenin](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Sağlama yapılandırmalarının yönetimi için Microsoft Graph API 'Lerini nasıl kullanacağınızı öğrenin](/graph/api/resources/synchronization-overview)

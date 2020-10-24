@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 71d9af57ab85d694cc08f30c19f6ac87796b2c4e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fa28b299a33f5386edc6ce14c523d2c332b0767b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425560"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520515"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Tableau online 'ı yapılandırma
 
@@ -25,7 +25,7 @@ Bu öğreticide, Tableau çevrimiçi ve Azure Active Directory (Azure AD) ile Az
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları öğrenmek için bkz. [Azure Active Directory ile hizmet olarak yazılım (SaaS) uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo şunları olduğunu varsayar:
 
@@ -61,7 +61,7 @@ Market 'ten Tableau çevrimiçi olarak eklemek için aşağıdaki adımları izl
 
 Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanan kullanıcılar veya gruplar eşitlenir.
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların veya grupların Tableau çevrimiçi erişimine ihtiyacı olduğuna karar verin. Bu kullanıcıları veya grupları Tableau online 'a atamak için, [bir kullanıcı veya grubu kurumsal uygulamaya atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)bölümündeki yönergeleri izleyin.
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların veya grupların Tableau çevrimiçi erişimine ihtiyacı olduğuna karar verin. Bu kullanıcıları veya grupları Tableau online 'a atamak için, [bir kullanıcı veya grubu kurumsal uygulamaya atama](../manage-apps/assign-user-or-group-access-portal.md)bölümündeki yönergeleri izleyin.
 
 ### <a name="important-tips-for-assigning-users-to-tableau-online"></a>Tableau çevrimiçi ortamda Kullanıcı atamaya yönelik önemli ipuçları
 

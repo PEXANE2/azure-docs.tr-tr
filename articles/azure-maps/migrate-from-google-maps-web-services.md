@@ -9,16 +9,32 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 5da42ebd31e4b09eb8bc223560aec976584c47e9
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3e80ff90e47f45655761abd4c7e8fa9ed04b61ef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874467"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518900"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Öğretici-Google Maps 'tan Web hizmeti geçirme
 
 Hem Azure hem de Google Maps, REST Web Hizmetleri aracılığıyla uzamsal API 'lere erişim sağlar. Bu platformların API arabirimleri benzer işlevleri gerçekleştirir. Ancak, bunların her biri farklı adlandırma kuralları ve yanıt nesneleri kullanır.
+
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+
+> * İleri ve ters coğrafi kodlama
+> * İlgi noktası arama
+> * Rotaları ve yönleri hesapla
+> * Harita görüntüsünü al
+> * Uzaklık matrisini hesaplama
+> * Saat dilimi ayrıntılarını al
+
+Ayrıca şunları öğreneceksiniz: 
+
+> [!div class="checklist"]
+> * Google Maps Web hizmetinden geçiş yaparken hangi Azure Maps REST hizmeti
+> * Azure haritalar hizmetlerinden en iyi şekilde yararlanmanıza yönelik ipuçları
+> * Diğer ilgili Azure haritalar hizmetleri hakkında Öngörüler
 
 Tablo, listelenen Google Maps hizmeti API 'Lerinde benzer işlevlere sahip Azure Maps hizmeti API 'Lerini gösterir.
 
@@ -48,6 +64,12 @@ Azure haritalar, ilgi çekici olabilecek birkaç ek REST Web hizmetine sahiptir:
 
 - [Uzamsal işlemler](https://docs.microsoft.com/rest/api/maps/spatial): bir hizmete bölge sınırlaması gibi karmaşık uzamsal hesaplamalar ve işlemler için yük boşaltma.
 - [Trafik](https://docs.microsoft.com/rest/api/maps/traffic): gerçek zamanlı trafik akışına ve olay verilerine erişin.
+
+## <a name="prerequisites"></a>Önkoşullar 
+
+1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
+3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
 ## <a name="geocoding-addresses"></a>Coğrafi kodlama adresleri
 
@@ -94,7 +116,7 @@ Bu tablo, Google Maps API parametrelerine Azure haritalar 'daki karşılaştır�
 | `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
 | `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `latlng`                    | `query`  |
-| `location_type`             | *yok*     |
+| `location_type`             | *Yok*     |
 | `result_type`               | `entityType`    |
 
 [Arama için en iyi uygulamaları](how-to-use-best-practices-for-search.md)gözden geçirin.
@@ -138,9 +160,9 @@ Tabloda, Google Maps API parametrelerine benzer Azure Maps API parametreleri ile
 
 | Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi |
 |---------------------------|-------------------------------------|
-| `fields`                  | *yok*                               |
+| `fields`                  | *Yok*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *yok*                               |
+| `inputtype`               | *Yok*                               |
 | `key`                     | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
 | `language`                | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `locationbias`            | `lat``lon`ve`radius`<br/>`topLeft` ve `btmRight`<br/>`countrySet`  |
@@ -157,13 +179,13 @@ Tablo, Google Maps API parametrelerini karşılaştırılabilir Azure Maps API p
 | `keyword`                   | `categorySet` ve `brandSet`        |
 | `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `location`                  | `lat` ve `lon`                     |
-| `maxprice`                  | *yok*                               |
-| `minprice`                  | *yok*                               |
+| `maxprice`                  | *Yok*                               |
+| `minprice`                  | *Yok*                               |
 | `name`                      | `categorySet` ve `brandSet`        |
-| `opennow`                   | *yok*                               |
+| `opennow`                   | *Yok*                               |
 | `pagetoken`                 | `ofs` ve `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *yok*                               |
+| `rankby`                    | *Yok*                               |
 | `type`                      | `categorySet –` Bkz. [desteklenen arama kategorileri](supported-search-categories.md) belgeleri.   |
 
 ## <a name="calculate-routes-and-directions"></a>Rotaları ve yönleri hesapla
@@ -243,10 +265,10 @@ Tablo çapraz başvuruları, Google Maps API parametreleri ile Azure haritalar '
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | *Yok* – bu, coğrafi kodlama ile ilgili bir özelliktir. `countrySet`Azure Maps coğrafi kodlama API 'sini kullanırken parametresini kullanın.  |
-| `scale`                     | *yok*                              |
+| `scale`                     | *Yok*                              |
 | `size`                      | `width` ve `height` – boyutu 8192x8192 olabilir. |
-| `style`                     | *yok*                              |
-| `visible`                   | *yok*                              |
+| `style`                     | *Yok*                              |
+| `visible`                   | *Yok*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]
@@ -334,7 +356,6 @@ Her PIN konumu için etiket değerlerini belirtin. Bu yaklaşım, konum listesin
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
-
 ![Azure haritalar işaretleyicisi](media/migrate-google-maps-web-services/azure-maps-marker.png)
 
 ' 1 ', ' 2 ' ve ' 3 ' Etiket değerleriyle üç PIN ekleyin:
@@ -342,8 +363,6 @@ Her PIN konumu için etiket değerlerini belirtin. Bu yaklaşım, konum listesin
 ```
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
-
-
 
 ![Azure birden çok işaretçileri eşler](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)
 
@@ -468,13 +487,24 @@ Bu açık kaynaklı istemci kitaplıkları diğer programlama dillerine yönelik
 
 - .NET Standard 2,0 – [GitHub projesi](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet paketi](https://www.nuget.org/packages/AzureMapsRestToolkit/)
 
-## <a name="additional-resources"></a>Ek kaynaklar
+## <a name="next-steps"></a>Sonraki adımlar
 
-Azure haritalar REST Hizmetleri için ek belgeler ve kaynaklar aşağıda verilmiştir.
+Azure haritalar REST hizmetleri hakkında daha fazla bilgi edinin:
 
-- [Arama için en iyi yöntemler](how-to-use-best-practices-for-search.md)
-- [Adres arama](how-to-search-for-address.md)
-- [Yönlendirme için en iyi uygulamalar](how-to-use-best-practices-for-routing.md)
-- [Azure haritalar REST hizmeti API başvuru belgeleri](https://docs.microsoft.com/rest/api/maps/)
-- [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)
-- [Hizmetler modülünü kullanma (Web SDK)](how-to-use-best-practices-for-routing.md)
+> [!div class="nextstepaction"]
+> [Arama için en iyi yöntemler](how-to-use-best-practices-for-search.md)
+
+> [!div class="nextstepaction"]
+> [Adres arama](how-to-search-for-address.md)
+
+> [!div class="nextstepaction"]
+> [Yönlendirme için en iyi uygulamalar](how-to-use-best-practices-for-routing.md)
+
+> [!div class="nextstepaction"]
+> [Azure haritalar REST hizmeti API başvuru belgeleri](https://docs.microsoft.com/rest/api/maps/)
+
+> [!div class="nextstepaction"]
+> [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+
+> [!div class="nextstepaction"]
+> [Hizmetler modülünü kullanma (Web SDK)](how-to-use-best-practices-for-routing.md)

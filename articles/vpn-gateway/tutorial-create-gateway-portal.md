@@ -5,13 +5,13 @@ author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 10/21/2020
-ms.openlocfilehash: 41bb69d675f3aa45061dab3236eae5c869bc346b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 10/23/2020
+ms.openlocfilehash: 74000322372652b90e0d0db07d687f8e57c4f88e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460776"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518254"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Öğretici: Azure portal kullanarak bir VPN ağ geçidi oluşturma ve yönetme
 
@@ -30,7 +30,7 @@ Aşağıdaki diyagramda, bu öğreticinin bir parçası olarak oluşturulan sana
 
 :::image type="content" source="./media/tutorial-create-gateway-portal/gateway-diagram.png" alt-text="VNet ve VPN Gateway diyagramı":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Etkin aboneliği olan bir Azure hesabı. Yoksa, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -100,7 +100,10 @@ Bu uygulamayı kullanmaya devam edemeyecekti veya sonraki öğreticiye gitmek i�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Nasıl yapılacağını öğrenmek için sonraki makaleye ilerleyin:
+VPN ağ geçidiniz olduktan sonra bağlantıları yapılandırabilirsiniz. Aşağıdaki makaleler en yaygın yapılandırmaların çoğunu oluşturmanıza yardımcı olur:
 
 > [!div class="nextstepaction"]
-> [Siteden siteye VPN bağlantıları oluşturma ve yönetme](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> [Siteden siteye VPN bağlantıları](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+
+> [!div class="nextstepaction"]
+> [Noktadan siteye VPN bağlantıları](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.author: jeedes
-ms.openlocfilehash: 1d429981bc85523483907e94876668c280ba12ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a858cd3344dfad07a726a3f3cb2585303806ce90
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546109"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519910"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoho-one-china"></a>Öğretici: Zoho One Çin ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,9 @@ Bu öğreticide, Zoho bir Çin 'yi Azure Active Directory (Azure AD) ile tümle�
 * Kullanıcılarınızın Azure AD hesaplarıyla bir Çin 'de oturum açmaya yönelik otomatik olarak oturum açmaya olanak sağlar.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -43,7 +43,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Zoho One Çin **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* Zoho 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bir şekilde korunmasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zoho 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bir şekilde korunmasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-zoho-one-china-from-the-gallery"></a>Galeriden Zoho bir Çin ekleme
 
@@ -133,25 +133,24 @@ Bu bölümde, Zoho 'a bir Çin erişimi vererek Azure çoklu oturum açma özell
 
 ### <a name="create-zoho-one-china-test-user"></a>Zoho One Çin test kullanıcısı oluşturma
 
-Bu bölümde, Zotta bir Çin 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Zoho One Çin [Destek ekibine](mailto:support@zohocorp.com.cn) çalışarak, Zoho One Çin platformunda Kullanıcı ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Zotta bir Çin 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Zoho One Çin [Destek ekibine](mailto:support@zohocorp.com.cn) çalışarak, Zoho One Çin platformunda Kullanıcı ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Zoho One Çin kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Zoho One Çin 'de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Zoho One Çin kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Zoho One Çin 'de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile bir Çin 'de Zoho deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
 
-- [Gelişmiş görünürlük ve denetimlerle Zoho 'yi koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Gelişmiş görünürlük ve denetimlerle Zoho 'yi koruma](/cloud-app-security/proxy-intro-aad)

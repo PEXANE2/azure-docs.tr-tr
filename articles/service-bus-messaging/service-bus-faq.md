@@ -3,12 +3,12 @@ title: Azure Service Bus sık sorulan sorular (SSS) | Microsoft Docs
 description: Bu makalede Azure Service Bus hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec79b6988fdbc78dc4f45e504f84179e617589cc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894532"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518764"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-sık sorulan sorular (SSS)
 
@@ -83,11 +83,11 @@ Ad alanınız için **bölge yedekliliği** kullanırsanız, birkaç ek adım ya
     > Komut tarafından döndürülen IP adresi `nslookup` statik BIR IP adresi değil. Ancak, temeldeki dağıtım silinene veya farklı bir kümeye taşınana kadar sabit kalır.
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Bir ad alanına/bir ad alanından gönderilen/alınan iletilerin IP adresini nerede bulabilirim? 
-Ad alanınızı/onlardan ileti gönderen veya alan istemcilerin IP adreslerini günlüğe almadık. Yalnızca izin verilen kullanıcıların veya uygulamaların ad alanına erişebildiğinden emin olmak için, mevcut tüm istemcilerin kimlik doğrulaması yapamaması ve rol tabanlı erişim denetimi ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) ayarlarını gözden geçirebilmesi için anahtarları yeniden oluşturun. 
+Ad alanınızı/onlardan ileti gönderen veya alan istemcilerin IP adreslerini günlüğe almadık. Yalnızca izin verilen kullanıcıların veya uygulamaların ad alanına erişebildiğinden emin olmak için mevcut tüm istemcilerin kimlik doğrulaması yapamaması ve [Azure rol tabanlı erişim denetimi (Azure RBAC)](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)ayarlarını gözden geçirebilmesi için anahtarları yeniden oluşturun. 
 
 **Premium** ad alanı kullanıyorsanız, ad alanına erişimi sınırlandırmak için [IP filtrelemesi](service-bus-ip-filtering.md), [sanal ağ hizmeti uç noktaları](service-bus-service-endpoints.md)ve [Özel uç noktalar](private-link-service.md) kullanın. 
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure Service Bus en iyi uygulamalar nelerdir?
 [Service Bus kullanarak performans iyileştirmeleri Için en iyi uygulamalar][Best practices for performance improvements using Service Bus] bölümüne bakın – bu makalede ileti alışverişi sırasında performansın nasıl iyileştirileceği açıklanır.
 

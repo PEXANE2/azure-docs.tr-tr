@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 86336ddb557613d42117480a5793e8b0ecbc7bae
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: e4b85c609c53c46cfab71f37b8427eb1cee29f1a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495830"
+ms.locfileid: "92518016"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -326,7 +326,7 @@ Hizmet uç noktaları aracılığıyla bir Azure hizmet kaynağını güvenli ha
 1. Azure hizmeti için hizmet uç noktalarını açın.
 2. Azure hizmetinde VNet ACL 'Lerini ayarlayın.
 
-İlk adım bir ağ tarafı işlemidir ve ikinci adım bir hizmet kaynak tarafı işlemidir. Her iki adım da yönetici rolüne verilen RBAC izinlerine bağlı olarak aynı yönetici veya farklı yöneticiler tarafından gerçekleştirilebilir. Azure hizmet tarafında VNet ACL 'Lerini ayarlamadan önce sanal ağınızın hizmet uç noktalarını etkinleştirmenizi öneririz. Bu nedenle, adımların VNet hizmet uç noktalarını ayarlamak için yukarıda listelenen sırayla gerçekleştirilmesi gerekir.
+İlk adım bir ağ tarafı işlemidir ve ikinci adım bir hizmet kaynak tarafı işlemidir. Her iki adım da yönetici rolüne verilen Azure RBAC izinlerine bağlı olarak aynı yönetici veya farklı yöneticiler tarafından gerçekleştirilebilir. Azure hizmet tarafında VNet ACL 'Lerini ayarlamadan önce sanal ağınızın hizmet uç noktalarını etkinleştirmenizi öneririz. Bu nedenle, adımların VNet hizmet uç noktalarını ayarlamak için yukarıda listelenen sırayla gerçekleştirilmesi gerekir.
 
 >[!NOTE]
 > Azure hizmeti erişimini izin verilen VNet ve alt ağa sınırlayabilmeniz için yukarıda açıklanan işlemlerin her ikisi de tamamlanmalıdır. Yalnızca ağ tarafında Azure hizmeti için hizmet uç noktalarını açmak, size sınırlı erişim sağlamaz. Ayrıca, Azure hizmet tarafında VNet ACL 'Leri de ayarlamanız gerekir.

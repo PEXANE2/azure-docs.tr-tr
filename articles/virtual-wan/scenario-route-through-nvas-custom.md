@@ -1,7 +1,7 @@
 ---
-title: "Senaryo: özel ayarları kullanarak trafiği NVA 'lar aracılığıyla yönlendirme"
+title: Özel ayarları kullanarak trafiği NVA 'lar aracılığıyla yönlendirme
 titleSuffix: Azure Virtual WAN
-description: Bu senaryo, Internet 'e bağlanacak trafik için farklı bir NVA kullanarak trafiği NVA 'lar aracılığıyla yönlendirmenize yardımcı olur.
+description: Bu senaryo, internet 'e bağlanacak trafik için farklı bir NVA kullanarak trafiği NVA 'lar aracılığıyla yönlendirmenize yardımcı olur.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,48 +9,44 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 031cbb48a7e0c572866dc591d26fb1e6b6b12dba
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 122e76e4bde96823ff18207bc24df4a8e91afb1c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424727"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517977"
 ---
-# <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Senaryo: trafiği NVA 'lar aracılığıyla yönlendirme-özel (Önizleme)
+# <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Senaryo: özel ayarları kullanarak trafiği NVA 'lar aracılığıyla yönlendirme
 
-Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek oldukça az sayıda senaryo vardır. Bu NVA (ağ sanal gereç) senaryosunda, hedef, trafiği VNET 'ler ve dallar arasındaki iletişim için bir NVA üzerinden yönlendirmektir ve Internet 'e yönelik trafik için farklı bir NVA kullanır. Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
+Azure sanal WAN sanal hub 'ı yönlendirme ile çalışırken kullanabileceğiniz çeşitli seçenekleriniz vardır. Bu makalenin odağı, sanal ağlar ve dallar arasındaki iletişim için trafiği bir ağ sanal gereci (NVA) ile yönlendirmek ve internet 'e yönelik trafik için farklı bir NVA kullanmak istediğinizde kullanılır. Daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 
-## <a name="design"></a><a name="design"></a>Tasarım
+## <a name="design"></a>Tasarım
 
-Bu senaryoda adlandırma kuralını kullanacağız:
+* Sanal hub 'a bağlı sanal ağlar için **ışınsal** . (Örneğin, VNet 1, VNet 2 ve bu makalenin ilerleyen bölümlerindeki diyagramda VNet 3.)
+* Kullanıcıların İnternet dışı trafiği incelemek için bir NVA dağıtmakta olduğu sanal ağlar için **hizmet sanal** ağı ve büyük olasılıkla bağlı bileşenler tarafından erişilen ortak hizmetler. (Örneğin, bu makalenin ilerleyen bölümlerindeki diyagramda VNet 4.) 
+* Kullanıcıların İnternet 'e ait trafiği denetlemek için kullanılacak bir NVA dağıtdıkları sanal ağlar için **çevre VNET** . (Örneğin, bu makalenin ilerleyen bölümlerindeki diyagramda VNet 5.)
+* Microsoft tarafından yönetilen sanal WAN hub 'ları için **hub 'lar** .
 
-* Sanal hub 'a ( **Şekil 1**' de VNET 1, VNET 2 ve VNET 3) bağlı sanal ağlar için "bağlı bileşen".
-* Internet olmayan trafiği incelemek için bir NVA ( **2. Şekil 1**' de) ve büyük olasılıkla bağlı bileşenler tarafından erişilen ortak hizmetlere sahip sanal ağlar için "hizmet VNET".
-* "DMZ VNet", kullanıcıların Internet 'e ait trafiği ( **Şekil 1**' de VNET 5) denetlemek için kullanılacak bir NVA dağıtmakta olduğu sanal ağlar için.
-* Microsoft tarafından yönetilen sanal WAN hub 'Ları için "hub 'lar".
+Aşağıdaki tabloda, bu senaryoda desteklenen bağlantılar özetlenmektedir:
 
-Aşağıdaki bağlantı matrisi, bu senaryoda desteklenen akışları özetler:
-
-**Bağlantı matrisi**
-
-| Kaynak          | Hedef:|*Bileşenler*|*Hizmet VNet*|*Dallar*|*İnternet*|
+| Kaynak          | Amaç|Bileşenler|Hizmet VNet|Dallar|İnternet|
 |---|---|:---:|:---:|:---:|:---:|:---:|
-| **Bileşenler**| &#8594;| Doğrudan |Doğrudan | Hizmet VNet üzerinden |DMZ VNet üzerinden |
-| **Hizmet VNet**| &#8594;| Doğrudan |yok| Doğrudan | |
-| **Dallar** | &#8594;| Hizmet VNet üzerinden |Doğrudan| Doğrudan |  |
+| **Bileşenler**| ->| hemen |hemen | Hizmet VNet üzerinden |Çevre VNet üzerinden |
+| **Hizmet VNet**| ->| hemen |yok| hemen | |
+| **Dallar** | ->| Hizmet VNet üzerinden |hemen| hemen |  |
 
-Bağlantı matrisindeki her bir hücre, bağlantı akışının doğrudan sanal WAN veya bir NVA ile VNET 'lerin üstünden akacağını belirtir. Farklı satırlarda ayrıntıya bakalım:
+Bağlantı matrisindeki her bir hücre, bağlantının doğrudan sanal WAN veya bir NVA ile sanal ağlardan biri üzerinden akışı yapılıp yapılmayacağını açıklar. 
 
+Aşağıdaki bilgileri unutmayın:
 * Bileşen
   * Bağlı bileşen doğrudan sanal WAN hub 'ları üzerinde diğer bağlı ışınsal Lara ulaşacaktır.
-  * Bağlı dallar, hizmet VNet 'e işaret eden statik bir yol aracılığıyla dallara bağlantı sağlar. Dallardan belirli önekleri öğrenmemelidir (Aksi halde bunlar daha belirgin olur ve Özeti geçersiz kılar).
-  * Bağlı bileşen doğrudan VNet eşlemesi aracılığıyla DMZ VNet 'e Internet trafiği gönderecek.
-* Dallar
-  * Dallar, hizmet VNet 'e işaret eden statik bir yönlendirme aracılığıyla bağlı olarak yer alır. Özetlenen statik yolu geçersiz kılan sanal ağlardan belirli önekleri öğrenmemelidir.
-* Hizmet sanal ağı, her VNet 'ten ve her dalda erişilebilir olması gereken bir paylaşılan hizmetler VNet 'ine benzer olacaktır.
-* Yalnızca destekleyeceği trafik doğrudan VNet eşayarları üzerinden geldiği için DMZ VNet 'in sanal WAN üzerinden bağlantısı olması gerekmez. Ancak, yapılandırmayı basitleştirmek için DMZ VNet ile aynı bağlantı modelini kullanacağız.
+  * Bağlı dallar, hizmet VNet 'e işaret eden statik bir yol aracılığıyla dallara bağlantı sağlar. Bunlar daha belirgin olduklarından ve Özeti geçersiz kıldığından, dallardan belirli önekleri öğrenirler.
+  * Bağlı bileşen, doğrudan VNet eşlemesi aracılığıyla çevre VNet 'e internet trafiği gönderecek.
+* Dallar, hizmet VNet 'e işaret eden statik bir yönlendirme aracılığıyla bağlı olarak yer alır. Özetlenen statik yolu geçersiz kılan sanal ağlardan belirli önekleri öğrenirler.
+* Hizmet VNet, her sanal ağ ve her dalda erişilebilir olması gereken paylaşılan bir hizmet VNet 'ine benzer olacaktır.
+* Yalnızca destekleyeceği trafik doğrudan sanal ağ eşayarları üzerinden geldiğinden, çevre VNet 'in sanal WAN üzerinden bağlantısı olması gerekmez. Ancak yapılandırmayı basitleştirmek için çevre VNet için ile aynı bağlantı modelini kullanın.
 
-Bağlantı matrisi, üç yol tablosuna çeviren üç farklı bağlantı deseni sunar. Farklı VNET 'lere olan ilişkilendirmeler aşağıdaki gibi olacaktır:
+Üç farklı bağlantı deseni vardır ve bu üç yol tablosuna çevrilir. Farklı sanal ağlarla ilişkiler şunlardır:
 
 * Bileşen
   * İlişkili yol tablosu: **RT_V2B**
@@ -62,73 +58,69 @@ Bağlantı matrisi, üç yol tablosuna çeviren üç farklı bağlantı deseni s
   * İlişkili yol tablosu: **varsayılan**
   * Yol tablolarına yayma: **RT_SHARED** ve **varsayılan**
 
-Sanal ağlar arası ve daldan VNet trafiğinin hizmet VNet 'teki NVA 'dan (VNet 4) geldiğinden emin olmak için bu statik yollara ihtiyacımız vardır:
+Bu statik yollar, sanal ağa ve daldan gelen ve giden trafiğin hizmet VNet 'inde (VNet 4) NVA üzerinden geçmemesini sağlar:
 
-| Description | Yol tablosu | Statik yol              |
+| Açıklama | Yol tablosu | Statik yol              |
 | ----------- | ----------- | ------------------------- |
 | Dallar    | RT_V2B      | 10.2.0.0/16-> vnet4conn  |
 | NVA tekerlek  | Varsayılan     | 10.1.0.0/16-> vnet4conn  |
 
-Artık sanal WAN, paketlerin gönderileceği bağlantıyı bilir, ancak bağlantının bu paketleri alırken ne yapılacağını bilmesi gerekir: bağlantı yolu tablolarının kullanıldığı yer.
+Artık, sanal WAN 'ı kullanarak paketlerin gönderileceği doğru bağlantıyı seçebilirsiniz. Ayrıca, bu paketleri alırken gerçekleştirilecek doğru eylemi seçmek için sanal WAN kullanmanız gerekir. Bunun için bağlantı yolu tablolarını aşağıdaki gibi kullanırsınız:
 
-| Description | Bağlantı | Statik yol            |
+| Açıklama | Bağlantı | Statik yol            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16-> 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16-> 10.4.0.5 |
 
-Bu noktada her şey yerinde olmalıdır.
+Daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 
-Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
+## <a name="architecture"></a>Mimari
 
-## <a name="architecture"></a><a name="architecture"></a>Mimari
+Makalenin önceki kısımlarında açıklanan mimarinin bir diyagramı aşağıda verilmiştir.
 
-**Şekil 1**' de bir hub, **hub 1**vardır.
+**Hub 1**adlı bir hub vardır.
 
 * **Hub 1** , NVA sanal ağları **VNET 4** ve **VNET 5**' e doğrudan bağlanır.
 
-* Sanal ağlar 1, 2 ve 3 ve dallar (VPN/ER/P2S) arasındaki trafiğin **VNET 4 NVA** 10.4.0.5 aracılığıyla gitmesi beklenir.
+* Sanal ağlar 1, 2 ve 3 ve dallar arasındaki trafiğin **VNET 4 NVA** 10.4.0.5 üzerinden gitmesi beklenir.
 
-* Sanal ağlar 1, 2 ve 3 ' ten Internet 'e ait tüm trafiğin **VNET 5 NVA** 10.5.0.5 aracılığıyla gitmesi bekleniyor.
+* Sanal ağlar 1, 2 ve 3 ' ten internet 'e ait tüm trafiğin **VNET 5 NVA** 10.5.0.5 aracılığıyla gitmesi bekleniyor.
 
-**Şekil 1**
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-1.png" alt-text="Ağ mimarisi diyagramı.":::
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-1.png" alt-text="Şekil 1":::
-
-## <a name="workflow"></a><a name="workflow"></a>İş akışı
+## <a name="workflow"></a>İş akışı
 
 NVA aracılığıyla yönlendirmeyi ayarlamak için şunları göz önünde bulundurmanız gereken adımlar şunlardır:
 
-1. Internet 'e bağlanan trafiğin VNet 5 üzerinden gitmesi için VNET eşlemesi ile VNet 5 ' e doğrudan bağlanmak için sanal ağlar 1, 2 ve 3 gerekir. Ayrıca 0.0.0.0/0 ve sonraki atlama 10.5.0.5 için VNET 'lerde ayarlanmış bir UDR gerekir. Şu anda sanal WAN, 0.0.0.0/0 için sanal hub 'da bir sonraki atlamaya izin vermiyor.
+1. İnternet 'e bağlanan trafiğin VNet 5 üzerinden gitmesi için sanal ağ eşlemesi ile VNet 5 arasında doğrudan bağlantı kurmak üzere VNET 'ler 1, 2 ve 3 gerekir. Ayrıca 0.0.0.0/0 ve sonraki atlama 10.5.0.5 için sanal ağlarda Kullanıcı tanımlı bir yol ayarlamış olmanız gerekir. Şu anda sanal WAN, 0.0.0.0/0 için sanal hub 'da bir sonraki atlamaya izin vermez.
 
-1. Azure portal, sanal hub 'ınıza gidin ve tüm VNET ve dal bağlantılarından yayma yoluyla rotaları öğrenmesi için bir özel yol tablosu oluşturun **RT_Shared** . **Şekil 2**' de, bu **RT_Shared**boş bir özel yol tablosu olarak gösterilmiştir.
+1. Azure portal sanal hub 'ınıza gidin ve **RT_Shared**adlı özel bir yol tablosu oluşturun. Bu tablo, tüm sanal ağlardan ve şube bağlantılarından yayma yoluyla yolları öğrenir. Bu boş tabloyu aşağıdaki diyagramda görebilirsiniz.
 
    * **Rotalar:** Herhangi bir statik yol eklemeniz gerekmez.
 
-   * **İlişkilendirme:** Vnetme 4 ve 5 ' i seçin. Bu, VNET 4 ve 5 bağlantılarının rota tablosu **RT_Shared**ile ilişkilendirilmesi anlamına gelir.
+   * **İlişkilendirme:** VNET 4 ve 5 ' i seçerek bu sanal ağların bağlantılarının yol tablosuyla ilişkili **RT_Shared**.
 
-   * **Yayma:** Tüm dallar ve VNet bağlantılarının yollarını bu yol tablosuna dinamik olarak yaymasını istiyorsanız, dallar ve tüm sanal ağlar ' ı seçin.
+   * **Yayma:** Tüm dallar ve sanal ağ bağlantılarının rotalarını bu yol tablosuna dinamik olarak yaymasını istiyorsanız, dallar ve tüm sanal ağlar ' ı seçin.
 
-1. Sanal ağlar 1, 2 ve 3 ' ten dallara giden trafiği yönlendirmek için **RT_V2B** özel bir yol tablosu oluşturun.
+1. Sanal ağlar 1, 2 ve 3 ' ten dallara giden trafiği yönlendirmek için **RT_V2B** adlı özel bir yol tablosu oluşturun.
 
-   * **Rotalar:** VNet 4 bağlantısı olarak sonraki atlamada, dallar (VPN/ER/P2S) (10.2.0.0/16 ' da **Şekil 2**) için toplanmış bir statik rota girişi ekleyin. Ayrıca, VNet 4 ' te şube ön ekleri için bir statik yol yapılandırmanız ve sonraki atlamanın VNet 4 ' te NVA 'nın belirli IP 'si olması gerektiğini belirtmeniz gerekir.
+   * **Rotalar:** Yeni VNet 4 bağlantısı olarak bir sonraki atlamada dallar için toplanmış bir statik rota girişi ekleyin. VNet 4 ' te şube ön ekleri için bir statik yol yapılandırın ve sonraki atlamayı VNet 4 ' te NVA 'nın belirli IP 'si olacak şekilde belirtin.
 
    * **İlişkilendirme:** Tüm VNET 'leri 1, 2 ve 3 ' ü seçin. Bu, 1, 2 ve 3 VNet bağlantılarının bu yol tablosuyla ilişkilendirileceğini ve bu yol tablosundaki yolları (yayma yoluyla statik ve dinamik) öğrenmenizi sağlar.
 
-   * **Yayma:** Bağlantılar yolları rota tablolarına yayar. Vnetme 1, 2 ve 3 ' ün seçilmesi, sanal ağlar 1, 2 ve 3 ' ten bu yol tablosuna olan yolların yayılmasını sağlayacaktır. Şube VNet trafiği, VNet 4 ' te NVA üzerinden gitilerek, şube bağlantılarından RT_V2B yollar yaymaya gerek yoktur.
+   * **Yayma:** Bağlantılar yolları rota tablolarına yayar. Vnetme 1, 2 ve 3 ' ün seçilmesi, sanal ağlar 1, 2 ve 3 ' ten bu yol tablosuna giden yolların yayılmasını sağlar. Şube bağlantılarından **RT_V2B**, şube sanal ağ trafiği VNET 4 ' te NVA üzerinden gittiği için, yolları dal bağlantılarından yaymaya gerek yoktur.
   
-1. Varsayılan yol tablosu **Defaultroutetable**' i düzenleyin.
+1. Varsayılan yol tablosunu düzenleyin, **Defaultroutetable**.
 
-   Tüm VPN, ExpressRoute ve kullanıcı VPN bağlantıları, varsayılan yol tablosuyla ilişkilendirilir. Tüm VPN, ExpressRoute ve kullanıcı VPN bağlantıları, rotaları aynı yol tabloları kümesine yayar.
+   Tüm VPN, Azure ExpressRoute ve kullanıcı VPN bağlantıları, varsayılan yol tablosuyla ilişkilendirilir. Tüm VPN, ExpressRoute ve kullanıcı VPN bağlantıları, rotaları aynı yol tabloları kümesine yayar.
 
-   * **Rotalar:** VNet 4 bağlantısı olarak sonraki atlamada, sanal ağlar 1, 2 ve 3 ( **Şekil 2**' de 10.1.0.0/16) için toplanmış bir statik rota girişi ekleyin. Ayrıca VNET 4, 2 ve 3 toplanmış ön ek için VNet 4 ' te bir statik yol yapılandırmanız ve sonraki atlamanın VNet 4 ' te NVA 'nın belirli IP 'si olması gerektiğini belirtmeniz gerekir.
+   * **Rotalar:** VNet 4 bağlantısı olarak sonraki atlamada, VI 1, 2 ve 3 için toplanmış bir statik yol girişi ekleyin. VNET 1, 2 ve 3 toplanmış ön ekler için VNet 4 ' te bir statik yol yapılandırın ve sonraki atlamanın VNet 4 ' te NVA 'nın belirli IP 'si olduğunu belirtin.
 
-   * **İlişkilendirme:** Dallar için seçeneğin (VPN/ER/P2S) seçildiğinden emin olun, şirket içi dal bağlantılarının *defaultroutetable*ile ilişkilendirilmesini sağlar.
+   * **İlişkilendirme:** Dallar (VPN/ER/P2S) seçeneğinin seçildiğinden emin olun, şirket içi dal bağlantılarının varsayılan yol tablosuyla ilişkilendirilmesini sağlar.
 
-   * **Yayma:** Şubelerin (VPN/ER/P2S) seçeneğinin belirlendiğinden emin olun, şirket içi bağlantıların, yolların *defaultroutetable*'a yayılmasını sağlar.
+   * **Yayma:** Dallar (VPN/ER/P2S) seçeneğinin seçildiğinden emin olun ve şirket içi bağlantıların yolları varsayılan yol tablosuna yaydığından emin olun.
 
-**Şekil 2**
-
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Şekil 1" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Ağ mimarisi diyagramı." lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

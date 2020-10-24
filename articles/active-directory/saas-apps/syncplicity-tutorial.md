@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: da532adfa2d4ab97edb44de9ae49c646ccdff381
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 792a5849c6afcdcbc32dc7de4d0d0dea23180a76
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544902"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517115"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Öğretici: syncplicity ile tümleştirin Azure Active Directory
 
@@ -26,9 +26,9 @@ Bu öğreticide, syncplicity 'i Azure Active Directory (Azure AD) ile tümleşti
 * Kullanıcılarınızın Azure AD hesaplarıyla syncplicity otomatik olarak oturum açmalarına olanak tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -156,7 +156,7 @@ Azure AD kullanıcılarının oturum açabilmeleri için syncplicity uygulaması
 
 1. **Yönetici** ' ye tıklayın ve **Kullanıcı hesapları** ' nı seçtikten sonra **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Kullanıcıları yönetme](./media/syncplicity-tutorial/ic769764.png "Kullanıcıları Yönet")
+    ![Kullanıcıları Yönet](./media/syncplicity-tutorial/ic769764.png "Kullanıcıları Yönet")
 
 1. Sağlamak istediğiniz bir Azure AD hesabının **e-posta adreslerini** yazın, **rol**olarak **Kullanıcı** ' yı seçin ve ardından **İleri**' ye tıklayın.
 
@@ -181,12 +181,12 @@ Azure AD kullanıcılarının oturum açabilmeleri için syncplicity uygulaması
 
 ### <a name="test-sso"></a>Test SSO 'SU
 
-Erişim panelinde syncplicity kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız syncplicity için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde syncplicity kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız syncplicity için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

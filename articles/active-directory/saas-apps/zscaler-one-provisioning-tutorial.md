@@ -11,22 +11,22 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 978f8ff5e57a5a9a1df10152713c8c42901b3b6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e306c65735d8a5682cd90a1ce28fceec7d045c4d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545871"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519767"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zscaler 'ı yapılandırma
 
 Bu öğreticide, Azure AD 'yi otomatik olarak sağlamak ve Kullanıcı ve grupları Zscaler 'ya yeniden sağlamak üzere yapılandırmak için Zscaler bir ve Azure Active Directory (Azure AD) içinde gerçekleştirme adımları gösterilmektedir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları öğrenmek için bkz. [Azure Active Directory ile hizmet olarak yazılım (SaaS) uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../active-directory-saas-app-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları öğrenmek için bkz. [Azure Active Directory ile hizmet olarak yazılım (SaaS) uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo şunları olduğunu varsayar:
 
@@ -63,7 +63,7 @@ Market 'ten Zscaler eklemek için aşağıdaki adımları izleyin.
 
 Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanan kullanıcılar veya gruplar eşitlenir.
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların veya grupların Zscaler 'ya erişmesi gerektiğini belirleyin. Bu kullanıcıları veya grupları Zscaler 'ya atamak için, [Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)' daki yönergeleri izleyin.
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların veya grupların Zscaler 'ya erişmesi gerektiğini belirleyin. Bu kullanıcıları veya grupları Zscaler 'ya atamak için, [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)' daki yönergeleri izleyin.
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-one"></a>Kullanıcıları Zscaler 'ya atamaya yönelik önemli ipuçları
 
@@ -134,7 +134,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
     ![Zscaler bir eşleşen Grup özniteliği](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Kapsam filtrelerini yapılandırmak için [kapsam filtresi öğreticisindeki](./../active-directory-saas-scoping-filters.md)yönergeleri izleyin.
+14. Kapsam filtrelerini yapılandırmak için [kapsam filtresi öğreticisindeki](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)yönergeleri izleyin.
 
 15. Zscaler için Azure AD sağlama hizmetini etkinleştirmek üzere, **Ayarlar** bölümünde **sağlama durumunu** **Açık**olarak değiştirin.
 
@@ -152,7 +152,7 @@ Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm kullanıcılar
 
 İlerleme durumunu izlemek ve sağlama etkinliği raporunun bağlantılarını izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz. Rapor, Zscaler üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklar.
 
-Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../active-directory-saas-provisioning-reporting.md).
+Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
@@ -161,7 +161,7 @@ Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Ot
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../active-directory-saas-provisioning-reporting.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-one-provisioning-tutorial/tutorial-general-01.png

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551918"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514546"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Öğretici: Trend mikro Web Güvenliği (TMWS) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, Trend Micro Web Security 'yi (TMWS) Azure Active Directory (Azu
 * Kullanıcılarınızın Azure AD hesaplarıyla bir TMW 'da otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,7 +40,7 @@ Başlamak için gerekli olanlar:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edeceksiniz.
 
 * TMWS, SP tarafından başlatılan SSO 'yu destekler.
-* TMWS 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. Microsoft Cloud App Security kullanarak oturum denetimini nasıl zorlayacağınızı öğrenmek için, bkz. [herhangi bir uygulama için koşullu erişim uygulama denetimi ekleme ve dağıtma](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* TMWS 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. Microsoft Cloud App Security kullanarak oturum denetimini nasıl zorlayacağınızı öğrenmek için, bkz. [herhangi bir uygulama için koşullu erişim uygulama denetimi ekleme ve dağıtma](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-tmws-from-the-gallery"></a>Galeriden TMWS ekleme
 
@@ -95,7 +95,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Önceki ekran görüntüsündeki özniteliklerin yanı sıra, TMWS, SAML yanıtında iki daha fazla özniteliğin geri geçirilmesini bekler. Bu öznitelikler aşağıdaki tabloda gösterilmiştir. Öznitelikler önceden doldurulur, ancak gereksinimlerinizi karşılayacak şekilde değiştirebilirsiniz.
     
-    | Name | Kaynak özniteliği|
+    | Adı | Kaynak özniteliği|
     | --------------- | --------- |
     | sAMAccountName | User. onpremisessamaccountname |
     | 'Le | User. UserPrincipalName |
@@ -116,7 +116,7 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** kutusuna girin `B.Simon` .  
-   1. **Kullanıcı adı** kutusuna ***kullanıcıadı *@* şirketetkialanı yazın *.* Uzantı***. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** kutusuna **_kullanıcıadı_ @ *şirketetkialanı yazın *.* * * * uzantısı. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’u seçin.
 
@@ -230,15 +230,14 @@ Azure AD hizmetini yapılandırdıktan ve Kullanıcı kimlik doğrulama yöntemi
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile eğilim mikro Web güvenliğini deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
 
-- [Gelişmiş görünürlük ve denetimlerle eğilim mikro Web güvenliğini koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Gelişmiş görünürlük ve denetimlerle eğilim mikro Web güvenliğini koruma](/cloud-app-security/proxy-intro-aad)

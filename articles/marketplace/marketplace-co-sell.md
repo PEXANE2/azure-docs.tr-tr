@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 10/19/2020
-ms.openlocfilehash: 96df9610f0da94cfe7d3a82fc8ef72aeb539b2d0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 343a6c92c9d77b5ef589477802015c6346a95ea9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207725"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521007"
 ---
 # <a name="co-sell-partner-engagement"></a>Ortak satış iş ortağı etkileşimi
 
@@ -75,11 +75,13 @@ Ortak satış yolculuğunu aşağıdaki adımları izleyerek doğrudan Iş Orta�
  
 1. **Kişiler** bölümüne satış iletişim bilgilerini yükleyin. Microsoft satıcıları, teklifiniz hakkında ek bilgiler istemek için bu kişilere ulaşabilir. (*Gerekli: teklifinizin kullanılabilir hale getirilme her coğrafya için bir kişi.*)
 
-    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Bu görüntü, Microsoft ile ortak satışın konumunu gösterir.":::
+    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Bu görüntü, Microsoft ile ortak satışın konumunu gösterir." seçeneğini belirleyin:
+<ul><ul>
 
-1. Devam etmeden önce taslağı kaydedin.
-1. Teklifin tüm gerekli bölümlerini tamamladıktan sonra, bunu İnceleme ve yayınlama için gönderebilirsiniz. Sağ üst köşedeki **gözden geçir ve Yayımla**' yı seçin. Teklif ayrıntılarını gözden geçirin ve **Yayımla**' yı seçin.
-1. Karşıya yüklediğiniz malzemeleri gözden geçireceğiz ve teklifinizin ortak satış programına uygun olup olmadığını saptayacağız.
+:::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="Bu görüntü, Microsoft ile ortak satışın konumunu gösterir.":::
+
+Bu işlem, işlemi gerçekleştirmek için sizi size ulaşacak.
+</ul></ul>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

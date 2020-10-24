@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 79a4fc048b8301d67206bf28b571f88f9e5ad024
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58da5c73ea2674bbbd1536a163e163aa0ff31d96
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597679"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521297"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Öğretici: bir Azure Time Series Insights Gen2 ortamı ayarlama
 
@@ -38,7 +38,7 @@ Henüz yoksa ücretsiz bir [Azure aboneliğine](https://azure.microsoft.com/free
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* En azından, Azure aboneliği için **katkıda bulunan** rolüne sahip olmanız gerekir. Daha fazla bilgi için [rol tabanlı erişim denetimi ve Azure Portal kullanarak erişimi yönetme](../role-based-access-control/role-assignments-portal.md)konusunu okuyun.
+* En azından, Azure aboneliği için **katkıda bulunan** rolüne sahip olmanız gerekir. Daha fazla bilgi için [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md)konusunu okuyun.
 
 ## <a name="create-a-device-simulation"></a>Cihaz benzetimi oluşturma
 
@@ -91,8 +91,8 @@ Bu bölümde, bir Azure Time Series Insights Gen2 ortamının nasıl oluşturula
     | **Kaynak grubu** | Var olan bir kaynak grubunu seçin veya Azure Time Series Insights Gen2 ortam kaynağı için yeni bir kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarına yönelik bir kapsayıcıdır. En iyi uygulama, cihaz simülatörü tarafından oluşturulan diğer IoT kaynaklarıyla aynı kaynak grubunu kullanmaktır. |
     | **Konum** | Azure Time Series Insights Gen2 ortamınız için bir veri merkezi bölgesi seçin. Ek gecikme süresini önlemek için, Azure Time Series Insights Gen2 ortamınızı cihaz simülatörü tarafından oluşturulan IoT Hub 'ınız ile aynı bölgede oluşturmak en iyisidir. |
     | **Katman** |  **Gen2 (L1)** seçeneğini belirleyin. Bu, Azure Time Series Insights Gen2 ürünü için SKU 'dır. |
-    | **Zaman serisi KIMLIĞI Özellik adı** | Zaman serisi örneklerinizi benzersiz bir şekilde tanımlayan değerleri içeren bir özelliğin adını girin. Zaman serisi KIMLIĞI olarak **özellik adı** kutusuna girdiğiniz değer daha sonra değiştirilemez. Bu öğretici için ***ıothub-Connection-Device-ID***girin. Birleşik zaman serisi kimliği gibi zaman serisi KIMLIĞI hakkında daha fazla bilgi edinmek için, [zaman SERISI kimliği seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md)okuyun. |
-    | **Depolama hesabı adı** | Yeni bir depolama hesabı için genel olarak benzersiz bir ad girin.|
+    | **Zaman serisi KIMLIĞI Özellik adı** | Zaman serisi örneklerinizi benzersiz bir şekilde tanımlayan değerleri içeren bir özelliğin adını girin. Zaman serisi KIMLIĞI olarak **özellik adı** kutusuna girdiğiniz değer daha sonra değiştirilemez. Bu öğretici için, **_ıothub-Connection-Device-id_*_ yazın. Birleşik zaman serisi kimliği gibi zaman serisi KIMLIĞI hakkında daha fazla bilgi edinmek için, [zaman SERISI kimliği seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md)okuyun. |
+    | _*Depolama hesabı adı** | Yeni bir depolama hesabı için genel olarak benzersiz bir ad girin.|
     | **Depolama hesabı türü** | Yeni bir depolama hesabı için depolama türünü seçin. StorageV2 önerilir|
     | **Depolama hesabı çoğaltma** | Yeni bir depolama hesabı için depolama türünü seçin. Konum seçiminize bağlı olarak, LRS, GRS ve ZRS arasından seçim yapabilirsiniz. Bu öğretici için LRS 'yi seçebilirsiniz|
     | **Hiyerarşik ad alanı** |Bu seçenek, StorageV2 olacak depolama türünü seçtiğinizde seçilebilir. Varsayılan olarak devre dışıdır. Bu öğreticide, varsayılan *devre dışı* durumunda bırakabilirsiniz|
@@ -233,7 +233,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         | **Değer** | Önayar arasından seç: **sıcaklık (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights Gen2 olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
         | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
 
-    1. **Uygula**’yı seçin. Sonra, **+ değişkeni tekrar ekleyin** ve aşağıdaki değerleri ayarlayın:
+    1. **Apply** (Uygula) seçeneğini belirleyin. Sonra, **+ değişkeni tekrar ekleyin** ve aşağıdaki değerleri ayarlayın:
 
         | Parametre | Eylem |
         | --- | --- |
@@ -242,7 +242,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         | **Değer** | Önayar arasından seç: **titreşim (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights Gen2 olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
         | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
 
-    1. **Uygula**’yı seçin. Sonra, **+ değişkeni tekrar ekleyin** ve üçüncü ve son değişken için aşağıdaki değerleri ayarlayın:
+    1. **Apply** (Uygula) seçeneğini belirleyin. Sonra, **+ değişkeni tekrar ekleyin** ve üçüncü ve son değişken için aşağıdaki değerleri ayarlayın:
 
         | Parametre | Eylem |
         | --- | --- |
@@ -254,7 +254,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
         [![Tür değişkenleri ekleyin.](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
-    1. **Uygula**’yı seçin. 
+    1. **Apply** (Uygula) seçeneğini belirleyin. 
     1. **Kaydet**’i seçin. Üç değişken oluşturulur ve görüntülenir.
 
         [![Tür eklendikten sonra Model görünümünde gözden geçirin.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)

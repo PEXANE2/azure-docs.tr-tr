@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 787c7d7df5f013dd4477e466c02a2b323b4b59df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95f1c4bf9b599da8285ac69e299549e5aa73c2f9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275107"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519597"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Yönetilen kimlik kullanarak veri kaynağına bir Dizin Oluşturucu bağlantısı kurma
 
@@ -31,7 +31,7 @@ Bu sorunlar, yönetilen bir kimlik kullanılarak bağlantınız ayarlanarak çö
 
 ## <a name="using-managed-identities"></a>Yönetilen kimlikleri kullanma
 
-[Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , azure hizmetlerini Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen kimlik sağlayan bir özelliktir. Bu özelliği, kimlik bilgileri içermeyen bir bağlantı dizesiyle bir veri kaynağı nesnesi oluşturmak için Azure Bilişsel Arama ' de kullanabilirsiniz. Bunun yerine, arama hizmetinize rol tabanlı erişim denetimi (RBAC) aracılığıyla veri kaynağına erişim izni verilir.
+[Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , azure hizmetlerini Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen kimlik sağlayan bir özelliktir. Bu özelliği, kimlik bilgileri içermeyen bir bağlantı dizesiyle bir veri kaynağı nesnesi oluşturmak için Azure Bilişsel Arama ' de kullanabilirsiniz. Bunun yerine, arama hizmetinize Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla veri kaynağına erişim izni verilir.
 
 Yönetilen kimlik kullanarak bir veri kaynağı ayarlarken, veri kaynağı kimlik bilgilerinizi değiştirebilirsiniz ve Dizin oluşturucularınız yine de veri kaynağına bağlanabilir. Ayrıca, bir hesap anahtarı dahil etmek veya bir hesap anahtarı almak için Key Vault kullanabilmeniz gerekmeden kodunuzda veri kaynağı nesneleri de oluşturabilirsiniz.
 

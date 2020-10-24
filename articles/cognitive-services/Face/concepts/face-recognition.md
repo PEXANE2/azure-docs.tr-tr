@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: 3957a9cde957c8e92806f10d39c949d73f20153e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00dadf8a91b7ed01ab9f91933d296744305a95af
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323031"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518815"
 ---
 # <a name="face-recognition-concepts"></a>Yüz tanıma kavramları
 
@@ -58,7 +58,7 @@ Bu bölümde, dört tanıma işlemlerinin daha önce açıklanan veri yapıları
 Giriş görüntülerinizin en doğru tanınma sonuçlarını vermesini sağlamak için aşağıdaki ipuçlarını kullanın:
 
 * Desteklenen giriş resim biçimleri JPEG, PNG, GIF (ilk çerçeve), BMP.
-* Görüntü dosyası boyutu 4 MB 'tan büyük olmamalıdır.
+* Görüntü dosyası boyutu 6 MB 'tan büyük olmamalıdır.
 * Kişi nesneleri oluştururken, farklı açılı ve aydınlatma çeşitleri sunan fotoğraflar kullanın.
 * Bazı yüzler, şu gibi teknik sorunlar nedeniyle tanınmayabilir:
   * Aşırı aydınlatmaya sahip görüntüler, örneğin, ciddi geri aydınlatma.

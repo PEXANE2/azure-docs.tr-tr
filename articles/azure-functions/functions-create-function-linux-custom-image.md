@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de4f52dae236502a087116aa72424641220c628
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758991"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517098"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
 
@@ -95,7 +95,10 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 ```
 ---
 
-`-DjavaVersion`Parametresi, işlevleri çalışma zamanına hangi Java sürümünün kullanılacağını söyler. `-DjavaVersion=11`İşlevlerinizin önizleme aşamasında olan Java 11 ' de çalışmasını istiyorsanız kullanın. Belirtmezseniz `-DjavaVersion` Maven varsayılan olarak Java 8 ' dir. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions).
+`-DjavaVersion`Parametresi, işlevleri çalışma zamanına hangi Java sürümünün kullanılacağını söyler. `-DjavaVersion=11`İşlevlerinizin Java 11 ' de çalışmasını istiyorsanız kullanın. Belirtmezseniz `-DjavaVersion` Maven varsayılan olarak Java 8 ' dir. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions).
+
+> [!IMPORTANT]
+> `JAVA_HOME`Bu makaleyi tamamlayabilmeniz için ortam değişkeni, JDK 'nin doğru sürümünün yükleneceği konum olarak ayarlanmalıdır.
 
 Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değerleri ister.   
 İstendiğinde aşağıdaki değerleri sağlayın:

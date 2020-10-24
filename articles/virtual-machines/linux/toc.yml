@@ -1024,8 +1024,6 @@
               href: disks-benchmarks.md
             - name: Performansı iyileştirme
               href: optimization.md
-            - name: Yazılım RAID yapılandırma
-              href: configure-raid.md
             - name: LVM'yi yapılandırma
               href: configure-lvm.md
         - name: Kullanıma açılmamış diskleri bulma - CLI

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 07/01/2020
+ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0261c495ad08000f9041390658e0f19954b71669
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88003361"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517030"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Öğretici: AI Oluşturucu ile form işleme uygulaması oluşturma
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Modelinizi eğitme
 > * Azure Power Apps veya Power otomatikleştirmek 'de kullanmak için modelinizi yayımlayın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Eğitim/test verileri için kullanılan aynı türden en az beş form kümesi. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [eğitim verileri kümesi oluşturma](./build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2128080) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
 * Bir Power Apps veya güç otomatikleştirme lisansı- [lisanslama kılavuzuna](https://go.microsoft.com/fwlink/?linkid=2085130)bakın. Lisansın [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/)içermesi gerekir.
@@ -93,7 +93,7 @@ Alan seçimi sayfasında, sizin için gereken alanları seçersiniz:
     - **Alan değeri**: algılanan alanın değeri.
 
 > [!div class="mx-imgBorder"]
-> ![Belge Ekle sayfası](./media/tutorial-ai-builder/select-fields-page.png)
+> ![etiketleme sayfası](./media/tutorial-ai-builder/select-fields-page.png)
 
 ### <a name="label-undetected-fields"></a>Algılanmayan alanları etiketle
 
@@ -104,7 +104,7 @@ Etiketlemek istediğiniz alan model tarafından otomatik olarak algılanmadıysa
 1. Seçtiğiniz form alanlarını denetlemek için **İleri**'yi seçin. Her şey yolunda görünüyorsa modelinizi eğitmek için **Eğit**'i seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Belge Ekle sayfası](./media/tutorial-ai-builder/summary-train-page.png)
+    > ![Eğitim sayfası](./media/tutorial-ai-builder/summary-train-page.png)
 1. Eğitim tamamlandıktan sonra **Eğitim tamamlandı** ekranında **Ayrıntılar sayfasına git**'i seçin.
 ## <a name="quick-test-your-model"></a>Modelinizi hızlıca test etme
 
@@ -127,7 +127,7 @@ Belirli alanlar için hatalı sonuçlar veya düşük güvenilirlik puanları al
 Modelinize memnunsanız yayımlamak için **Yayımla**  ' yı seçin. Yayımlama işlemi tamamlandığında modeliniz **Yayımlandı** durumuna geçer ve kullanıma hazır hale gelir.
 
 > [!div class="mx-imgBorder"]
-> ![Belge Ekle sayfası](./media/tutorial-ai-builder/model-page.png)
+> ![modeli Yayımla sayfası](./media/tutorial-ai-builder/model-page.png)
 
 Form işleme modelinizi yayımladıktan sonra, bunu bir [Power Apps tuval](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps) uygulamasında veya [Power otomatikleştirmede](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)kullanabilirsiniz.
 

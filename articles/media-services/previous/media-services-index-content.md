@@ -3,7 +3,7 @@ title: Azure Media Indexer ile medya dosyalarını dizine alma
 description: Azure Media Indexer, medya dosyalarınızın içeriğini aranabilir hale getirmenizi ve kapalı açıklamalı alt yazı ve anahtar sözcükler için tam metin dökümü oluşturmanıza olanak sağlar. Bu konuda Media Indexer nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
-author: Asolanki
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 827a56b2-58a5-4044-8d5c-3e5356488271
@@ -12,23 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/22/2019
-ms.author: juliako
+ms.date: 10/21/2020
+ms.author: inhenkel
 ms.reviewer: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 06bd9f159281a1353ca9474bf0876e99b6d1940a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 12a4099a6a3f0d06dfbb40171970c7386c3e4d22
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018969"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518849"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer ile medya dosyalarını dizine alma
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-> [!NOTE]
-> **Azure Media Indexer** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) , bu eski medya işlemcisinin yerini alır. Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.
+> [!IMPORTANT]
+> Müşterilerin Dizin Oluşturucu v1 ve Dizin Oluşturucu v2, [Media Services v3 Audioanalön ayarlı temel modunu](../latest/analyzing-video-audio-files-concept.md)kullanarak geçiş yapmanız önerilir. [Azure Media Indexer](media-services-index-content.md) medya işlemcisi ve [Azure Media Indexer 2 Preview](./legacy-components.md) medya işlemcileri kullanımdan kaldırılıyor. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın.
 
 Azure Media Indexer, medya dosyalarınızın içeriğini aranabilir hale getirmenizi ve kapalı açıklamalı alt yazı ve anahtar sözcükler için tam metin dökümü oluşturmanıza olanak sağlar. Bir toplu işte bir medya dosyası veya birden çok medya dosyası işleyebilirsiniz.  
 
@@ -246,7 +246,7 @@ Aynı çıkışlar (başarılı işler olarak) oluşturulur. Hata sütunu değer
 ### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a> Azure Media Indexer için görev önayarı
 Azure Media Indexer işleme, görevin yanı sıra isteğe bağlı bir görev ön ayarı sağlayarak özelleştirilebilir.  Bu yapılandırma XML biçimi aşağıda açıklanmıştır.
 
-| Ad | Gerektirme | Açıklama |
+| Adı | Gerektirme | Açıklama |
 | --- | --- | --- |
 | **girişinin** |yanlış |Dizin eklemek istediğiniz varlık dosyaları.</p><p>Azure Media Indexer, şu medya dosyası biçimlerini destekler: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Dosya adlarını **giriş** öğesinin **ad** veya **liste** özniteliğinde (aşağıda gösterildiği gibi) belirtebilirsiniz. Hangi varlık dosyasının dizine alınmayı belirtmezseniz, birincil dosya çekilir. Birincil varlık dosyası ayarlanmamışsa, giriş varlığının ilk dosyası dizine alınır.</p><p>Varlık dosya adını açıkça belirtmek için şunu yapın:<br/>`<input name="TestFile.wmv">`<br/><br/>Aynı zamanda birden çok varlık dosyasını aynı anda dizinde (en fazla 10 dosya). Bunu yapmak için:<br/><br/><ol class="ordered"><li><p>Bir metin dosyası (bildirim dosyası) oluşturun ve bir. lst uzantısı verin. </p></li><li><p>Bu bildirim dosyasına giriş varlığınızın tüm varlık dosya adlarının listesini ekleyin. </p></li><li><p>Bildirim dosyasını varlığa ekleyin (karşıya yükleyin).  </p></li><li><p>Girişin liste özniteliğinde bildirim dosyasının adını belirtin.<br/>`<input list="input.lst">`</li></ol><br/><br/>Note: bildirim dosyasına 10 ' dan fazla dosya eklerseniz, dizin oluşturma işi 2006 hata koduyla başarısız olur. |
 | **veriyi** |yanlış |Sözlük uyarlama için kullanılan belirtilen varlık dosyalarının meta verileri.  Uygun isimler gibi standart olmayan sözlük sözcüklerini tanımak için dizin oluşturucunun hazırlanması yararlı olur.<br/>`<metadata key="..." value="..."/>` <br/><br/>Önceden tanımlanmış **anahtarlar**için **değerler** sağlayabilirsiniz. Şu anda aşağıdaki anahtarlar desteklenir:<br/><br/>"title" ve "Description"-iş için dil modelinin ince ayar ve konuşma tanıma doğruluğunu iyileştirecek sözlük uyarlaması için kullanılır.  Temel Internet değerleri, dizin oluşturma göreviniz süresince iç sözlüğü genişletmek için içeriği kullanarak bağlamsal olarak ilgili metin belgelerini bulmak için arama yapar.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
@@ -255,7 +255,7 @@ Azure Media Indexer işleme, görevin yanı sıra isteğe bağlı bir görev ön
 ### <a name="error-codes"></a><a id="error_codes"></a>Hata kodları
 Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini yeniden raporlemelidir:
 
-| Kod | Ad | Olası nedenler |
+| Kod | Adı | Olası nedenler |
 | --- | --- | --- |
 | 2000 |Geçersiz yapılandırma |Geçersiz yapılandırma |
 | 2001 |Geçersiz giriş varlıkları |Eksik giriş varlıkları veya boş varlık. |

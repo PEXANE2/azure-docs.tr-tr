@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 26644d42e0e51d59c6c28daaba5447a65a43b6a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b5c106c1464ec6d77305b1985cc8dbd51e2b4db
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460650"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519486"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics işinden Azure SQL veritabanına erişmek için Yönetilen kimlikler kullanma (Önizleme)
 
@@ -19,7 +19,7 @@ Azure Stream Analytics, Azure SQL veritabanı çıkış havuzları için [yönet
 
 Yönetilen kimlik, belirli bir Stream Analytics işini temsil eden Azure Active Directory kayıtlı yönetilen bir uygulamadır. Yönetilen uygulama, hedeflenen bir kaynağın kimliğini doğrulamak için kullanılır. Bu makalede, Azure portal aracılığıyla bir Stream Analytics işinin Azure SQL veritabanı çıkışları için yönetilen kimliğin nasıl etkinleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özellik için aşağıdakiler gereklidir:
 
@@ -60,7 +60,7 @@ Yönetilen bir kimlik oluşturduktan sonra bir Active Directory Yöneticisi seç
 
    ![Active Directory Yöneticisi ekleme](./media/sql-db-output-managed-identity/add-admin.png)
 
-   Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure Active Directory yönetici olarak desteklenmediği için seçilemez.  **Azure Active Directory Features and Limitations**    [SQL veritabanı veya Azure Synapse kimlik doğrulaması Için Azure Active Directory kimlik doğrulaması kullan](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)' ın Azure Active Directory Özellikler ve sınırlamalar bölümünde desteklenen Yöneticiler listesine bakın. Rol tabanlı erişim denetimi (RBAC) yalnızca Portal için geçerlidir ve SQL Server yayılmaz. Ayrıca, seçilen kullanıcı veya Grup, sonraki bölümde **Kapsanan Veritabanı kullanıcısını** oluşturamayacak Kullanıcı olur.
+   Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure Active Directory yönetici olarak desteklenmediği için seçilemez.  **Azure Active Directory Features and Limitations**    [SQL veritabanı veya Azure Synapse kimlik doğrulaması Için Azure Active Directory kimlik doğrulaması kullan](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)' ın Azure Active Directory Özellikler ve sınırlamalar bölümünde desteklenen Yöneticiler listesine bakın. Azure rol tabanlı erişim denetimi (Azure RBAC) yalnızca portala uygulanır ve SQL Server yayılmaz. Ayrıca, seçilen kullanıcı veya Grup, sonraki bölümde **Kapsanan Veritabanı kullanıcısını** oluşturamayacak Kullanıcı olur.
 
 1. **Active Directory yönetici** sayfasında **Kaydet** ' i seçin. Yönetici değiştirme işlemi birkaç dakika sürer.
 

@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2f3fa755f61d398ce7f0965fba86262c3e3ec863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef38e36ce1d2c7968e3eb7079270626629523334
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021162"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518744"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Depolama Analizi ölçümleri (klasik)
 
@@ -176,7 +176,10 @@ Bu örnek veri, tek bir dakikalık (11 ' den başlayarak) tüm kayıtları göst
 >
 
 ## <a name="access-metrics-data-programmatically"></a>Ölçüm verilerine programlama yoluyla erişin  
-Aşağıdaki listede, bir dizi dakika için dakikalık ölçümlere erişen örnek C# kodu gösterilmektedir ve sonuçlar bir konsol penceresinde görüntülenir. Kod örneği, depolamada ölçüm tablolarına erişimi kolaylaştıran **CloudAnalyticsClient** sınıfını Içeren Azure Storage istemci kitaplığı sürüm 4. x veya üstünü kullanır.  
+Aşağıdaki listede, bir dizi dakika için dakikalık ölçümlere erişen örnek C# kodu gösterilmektedir ve sonuçlar bir konsol penceresinde görüntülenir. Kod örneği, depolamada ölçüm tablolarına erişimi kolaylaştıran **CloudAnalyticsClient** sınıfını Içeren Azure Storage istemci kitaplığı sürüm 4. x veya üstünü kullanır. 
+
+> [!NOTE]
+> **CloudAnalyticsClient** sınıfı, .net Için Azure Blob depolama istemci kitaplığı V12 ' na dahil değildir. **31 ağustos 2023** ' de, *Klasik ölçümler* olarak da bilinen depolama Analizi ölçümler kullanımdan kaldırılacak. Daha fazla bilgi için [resmi duyuruya](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/) bakın. Klasik ölçümler kullanıyorsanız, bu tarihten önce Azure Izleyici 'de ölçümlere geçiş yapmanızı öneririz. 
 
 ```csharp
 private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)  

@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 05994a61b0afd0190e3fc1d4b841d576cec047f5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 023cd13c40bdd6aae9febaf7d929f94fe26ef6d3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015860"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519648"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Video ve ses dosyalarını Azure Media Services Çözümleme
 
@@ -27,10 +27,12 @@ ms.locfileid: "92015860"
 
 Azure Media Services v3, video ve ses dosyalarından Video Indexer ile öngörüleri ayıklamanıza olanak tanır. Bu makalede, bu öngörüleri ayıklamak için kullanılan Media Services v3 Analyzer önayarları açıklanmaktadır. Daha ayrıntılı içgörüler istiyorsanız doğrudan Video Indexer’ı kullanın. Video Indexer ve Media Services çözümleyici önayarlarının ne zaman kullanılacağını anlamak için [karşılaştırma belgesine](../video-indexer/compare-video-indexer-with-media-services-presets.md)göz atın.
 
+Ses Çözümleyicisi önceden ayarlanmış, temel ve standart olmak üzere iki mod vardır. Aşağıdaki tabloda bulunan farkların açıklamasına bakın.
+
 Media Services v3 ön ayarlarını kullanarak içeriğinizi analiz etmek için bir **dönüşüm** oluşturur ve şu önayarlardan birini kullanan bir **Iş** gönderebilirsiniz: [Videoanalizzerönayar](/rest/api/media/transforms/createorupdate#videoanalyzerpreset) veya **audioanalizzerönayar**. **Videoanalizzerönayar**'in nasıl kullanılacağını gösteren bir öğretici için bkz. [Azure Media Services videoları analiz etme](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
-> Video veya Ses Çözümleyicisi önayarlarını kullanırken, hesabınızı 10 S3 Medya Ayrılmış Birimine sahip olacak şekilde ayarlamak için Azure portalı kullanın. Daha fazla bilgi için bkz. [Medya işlemeyi ölçeklendirme](media-reserved-units-cli-how-to.md).
+> Video veya ses çözümleyici ön ayarlarını kullanırken, bu gerekli olmasa da, hesabınızı 10 S3 medya ayrılmış birimlerine sahip olacak şekilde ayarlamak için Azure portal kullanın. Ses önayarları için S1 veya S2 kullanabilirsiniz. Daha fazla bilgi için bkz. [Medya işlemeyi ölçeklendirme](media-reserved-units-cli-how-to.md).
 
 ## <a name="compliance-privacy-and-security"></a>Uyumluluk, Gizlilik ve Güvenlik
 
@@ -42,17 +44,29 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 
 |**Önceden ayarlanmış ad**|**Senaryo**|**Ayrıntılar**|
 |---|---|---|
-|[Audioanaliz Zerönayar](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Ses standardını çözümleme|Önayar, konuşma dökümü dahil olmak üzere, önceden tanımlanmış bir AI tabanlı analiz işlemleri kümesi uygular. Şu anda önayar, tek bir dilde konuşmayı içeren tek bir ses izlemeli içeriği işlemeyi destekler. Girişte ses yükünün dilini ' Language Tag-Region ' BCP-47 biçimini kullanarak belirtebilirsiniz. Desteklenen diller Ingilizce (' en-US ' ve ' en-GB '), Ispanyolca (' es-ES ' ve ' es-MX '), Fransızca (' fr-FR '), Italyanca (' It-IT '), Japonca (' ja-JP '), Portekizce (' PT-BR '), Çince (' zh-CN '), Almanca (' de-DE '), Arapça (' ar-EG ' ve ' ar-SY '), Rusça (' ru-RU '), Hintçe (' Hi-ın ') ve Korece (' ko-KR ').<br/><br/> Dil belirtilmezse veya null olarak ayarlanırsa, otomatik dil algılama algılanan ilk dili seçer ve dosya süresince seçili dile devam eder. Otomatik dil algılama özelliği şu anda Ingilizce, Çince, Fransızca, Almanca, Italyanca, Japonca, Ispanyolca, Rusça ve Portekizce desteklemektedir. İlk dil algılandıktan sonra diller arasında dinamik geçiş yapmayı desteklemez. Otomatik dil algılama özelliği, açık bir konuşma sayesinde ses kayıtları ile en iyi şekilde işe yarar. Otomatik dil algılama dili bulamazsa, geri bulma işlemi Ingilizce 'ye döner.|[Audioanaliz Zerönayar](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio Basic çözümleniyor|"Bu mod, bir VTT alt başlık/resim yazısı dosyası için konuşmayı metne dönüştürme ve oluşturma işlemi gerçekleştirir. Bu modun çıktısı yalnızca anahtar sözcükler, döküm ve zamanlama bilgileri dahil olmak üzere bir Öngörüler JSON dosyası içerir. Bu modda otomatik dil algılama ve konuşmacı seçme dahil değildir. " Desteklenen dillerin listesine buradan ulaşabilirsiniz: https://go.microsoft.com/fwlink/?linkid=2109463|
-|[Videoanaliz Zerönayar](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Ses ve video çözümleme|Hem ses hem de videodan Öngörüler (zengin meta veriler) ayıklar ve bir JSON biçim dosyası verir. Video dosyasını işlerken yalnızca ses öngörülerini ayıklamak isteyip istemediğinizi belirtebilirsiniz. Daha fazla bilgi için bkz. [video çözümleme](analyze-videos-tutorial-with-api.md).|
-|[Facedetectorönayar](/rest/api/media/transforms/createorupdate#facedetectorpreset)|Videoda bulunan yüzler algılanıyor|Bir video çözümlenirken, mevcut tüm yüzleri tespit etmek için kullanılacak ayarları açıklar.|
+|[Audioanaliz Zerönayar](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Ses standardını çözümleme|Önayar, konuşma dökümü dahil olmak üzere, önceden tanımlanmış bir AI tabanlı analiz işlemleri kümesi uygular. Şu anda önayar, tek bir dilde konuşmayı içeren tek bir ses izlemeli içeriği işlemeyi destekler. Girişte ses yükünün dilini ' Language Tag-Region ' BCP-47 biçimini kullanarak belirtebilirsiniz. Desteklenen diller Ingilizce (' en-US ' ve ' en-GB '), Ispanyolca (' es-ES ' ve ' es-MX '), Fransızca (' fr-FR '), Italyanca (' It-IT '), Japonca (' ja-JP '), Portekizce (' PT-BR '), Çince (' zh-CN '), Almanca (' de-DE '), Arapça (' ar-EG ' ve ' ar-SY '), Rusça (' ru-RU '), Hintçe (' Hi-ın ') ve Korece (' ko-KR ').<br/><br/> Dil belirtilmezse veya null olarak ayarlanırsa, otomatik dil algılama algılanan ilk dili seçer ve dosya süresince seçili dile devam eder. Otomatik dil algılama özelliği şu anda Ingilizce, Çince, Fransızca, Almanca, Italyanca, Japonca, Ispanyolca, Rusça ve Portekizce desteklemektedir. İlk dil algılandıktan sonra diller arasında dinamik geçiş yapmayı desteklemez. Otomatik dil algılama özelliği, açık bir konuşma sayesinde ses kayıtları ile en iyi şekilde işe yarar. Otomatik dil algılama dili bulamazsa, geri bulma işlemi Ingilizce 'ye döner.|
+|[Audioanaliz Zerönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio Basic çözümleniyor|Bu mod, bir VTT alt başlık/resim yazısı dosyası için konuşmayı metne dönüştürme ve oluşturma işlemi gerçekleştirir. Bu modun çıktısı yalnızca anahtar sözcükler, döküm ve zamanlama bilgileri dahil olmak üzere bir Öngörüler JSON dosyası içerir. Bu modda otomatik dil algılama ve konuşmacı seçme dahil değildir. Desteklenen dillerin listesi [burada](https://go.microsoft.com/fwlink/?linkid=2109463) bulunabilir|
+|[Videoanaliz Zerönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Ses ve video çözümleme|Hem ses hem de videodan Öngörüler (zengin meta veriler) ayıklar ve bir JSON biçim dosyası verir. Video dosyasını işlerken yalnızca ses öngörülerini ayıklamak isteyip istemediğinizi belirtebilirsiniz. Daha fazla bilgi için bkz. [video çözümleme](analyze-videos-tutorial-with-api.md).|
+|[Facedetectorönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|Videoda bulunan yüzler algılanıyor|Bir video çözümlenirken, mevcut tüm yüzleri tespit etmek için kullanılacak ayarları açıklar.|
 
-### <a name="audioanalyzerpreset"></a>Audioanaliz Zerönayar
+### <a name="audioanalyzerpreset-standard-mode"></a>Audioanalöneri önceden ayarlanmış standart modu
 
-Önceden ayarlanmış, bir ses veya video dosyasından birden çok ses öngörülerini ayıklamanızı sağlar. Çıktı, ses dökümü için bir JSON dosyası (tüm Öngörüler ile) ve VTT dosyasını içerir. Bu önayar, bir [BCP47](https://tools.ietf.org/html/bcp47) dizesi biçimindeki giriş dosyasının dilini belirten bir özelliği kabul eder. Ses öngörüleri şunları içerir:
+Önceden ayarlanmış, bir ses veya video dosyasından birden çok ses öngörülerini ayıklamanızı sağlar.
+
+Çıktı, ses dökümü için bir JSON dosyası (tüm Öngörüler ile) ve VTT dosyasını içerir. Bu önayar, bir [BCP47](https://tools.ietf.org/html/bcp47) dizesi biçimindeki giriş dosyasının dilini belirten bir özelliği kabul eder. Ses öngörüleri şunları içerir:
 
 * **Ses dökümü**: zaman damgalarına sahip konuşulan sözcüklerin dökümünü alma. Birden çok dil desteklenir.
 * **Konuşmacı dizin oluşturma**: konuşmacıları ve ilgili konuşulan kelimeleri eşleme.
 * **Konuşma yaklaşımı Analizi**: ses dökümü üzerinde gerçekleştirilen yaklaşım analizinin çıktısı.
+* **Anahtar sözcükler**: ses dökümden ayıklanan anahtar sözcükler.
+
+### <a name="audioanalyzerpreset-basic-mode"></a>Audioanaliz Zerönayar temel modu
+
+Önceden ayarlanmış, bir ses veya video dosyasından birden çok ses öngörülerini ayıklamanızı sağlar.
+
+Çıktı, ses dökümü için bir JSON dosyası ve VTT dosyası içerir. Bu önayar, bir [BCP47](https://tools.ietf.org/html/bcp47) dizesi biçimindeki giriş dosyasının dilini belirten bir özelliği kabul eder. Çıktı şunları içerir:
+
+* **Ses dökümü**: zaman damgalarına sahip konuşulan sözcüklerin dökümünü alma. Birden çok dil desteklenir, ancak otomatik dil algılama ve konuşmacı koruması dahil edilmez.
 * **Anahtar sözcükler**: ses dökümden ayıklanan anahtar sözcükler.
 
 ### <a name="videoanalyzerpreset"></a>Videoanaliz Zerönayar

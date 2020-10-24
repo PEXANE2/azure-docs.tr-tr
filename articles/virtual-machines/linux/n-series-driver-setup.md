@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: c0f05bd9ebd100956cfb7b2b6188e18616368dd0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168486"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517268"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux çalıştıran N serisi VM 'Lere NVıDıA GPU sürücülerini yükler
 
@@ -161,6 +161,23 @@ N serisi VM 'lerde RDMA bağlantısını destekleyen Azure Marketi 'ndeki görü
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
 * **CentOS tabanlı 7,4 HPC** -RDMA sürücüleri ve Intel mpı 5,1, VM 'ye yüklenir.
+
+* **CentOS tabanlı HPC** -CENTOS-HPC 7,6 ve üzeri (ıNFINIBAND 'nin SR-IOV üzerinden desteklendiği SKU 'lar için). Bu görüntülerde, Mellanox OFED ve MPı kitaplıkları önceden yüklenmiş olmalıdır.
+
+> [!NOTE]
+> CX3-Pro kartlar yalnızca, Mellanox OFED 'in LTS sürümleri aracılığıyla desteklenir. ConnectX3-Pro kartlarla birlikte N serisi VM 'lerde LTS Mellanox OFED sürümü (4.9-0.1.7.0) kullanın. Daha fazla bilgi için bkz. [Linux sürücüleri](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
+>
+> Ayrıca, en son Azure Marketi HPC görüntülerinin, ConnectX3-Pro kartlarını desteklemeyen, Mellanox OFED 5,1 ve üzeri bir sürümü vardır. ConnectX3-Pro kartlarıyla VM 'lerde kullanmadan önce HPC görüntüsündeki Mellanox OFED sürümünü denetleyin.
+>
+> Aşağıdaki görüntüler ConnectX3-Pro kartlarını destekleyen en son CentOS-HPC görüntüleridir:
+>
+> - OpenLogic: CentOS-HPC: 7.6:7.6.2020062900
+> - OpenLogic: CentOS-HPC: 7_6gen2:7.6.2020062901
+> - OpenLogic: CentOS-HPC: 7.7:7.7.2020062600
+> - OpenLogic: CentOS-HPC: 7_7-Gen2:7.7.2020062601
+> - OpenLogic: CentOS-HPC: 8_1:8.1.2020062400
+> - OpenLogic: CentOS-HPC: 8_1-Gen2:8.1.2020062401
+>
 
 ## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>NV veya NVv3 serisi VM 'Lere KıLAVUZ sürücüleri yükler
 

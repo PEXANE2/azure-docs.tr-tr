@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 044ee51fb7ff675af0fb97224313c388c4cbeac1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371350"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521348"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Öğretici: Mitel Micyüksek Connect veya CloudLink platformuyla Azure Active Directory tümleştirme
 
@@ -25,11 +25,11 @@ Bu öğreticide, Mitel Connect uygulamasının, Mitel Micyüksek Connect veya Cl
 * Kullanıcıların, kurumsal kimlik bilgilerini kullanarak uygulamalara, Azure AD 'de uygulama bağlama ve şirket yoluyla bağlantı uygulamaları için erişim denetimi yapabilirsiniz.
 * Hesabınızdaki kullanıcıların Azure AD hesaplarını kullanarak, Micyüksek Connect veya CloudLink (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 Azure aboneliğiniz yoksa, Mitel Micyüksek Connect veya CloudLink platformuyla Azure AD tümleştirmesi başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, Micyüksek Connect ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -41,7 +41,7 @@ Azure AD tümleştirmesini, Micyüksek Connect ile yapılandırmak için aşağ�
 Bu öğreticide Azure AD çoklu oturum açma 'yı (SSO) yapılandırıp test edeceksiniz.
 
 * Mitel Connect, **SP** tarafından başlatılan SSO 'yu destekler
-* Mitel Connect 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Mitel Connect 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-mitel-connect-from-the-gallery"></a>Galeriden Mitel Connect ekleme
 
@@ -221,7 +221,7 @@ Aşağıdaki ayrıntılarla, Micyüksek Connect hesabınızda bir kullanıcı ol
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edeceksiniz.
 
-Erişim panelinde Mitel Connect kutucuğunu seçtiğinizde, **oturum açma URL 'si** alanında varsayılan olarak yapılandırdığınız Micyüksek Connect uygulamasında oturum açmak için otomatik olarak yeniden yönlendirilmelisiniz. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Mitel Connect kutucuğunu seçtiğinizde, **oturum açma URL 'si** alanında varsayılan olarak yapılandırdığınız Micyüksek Connect uygulamasında oturum açmak için otomatik olarak yeniden yönlendirilmelisiniz. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="configure-and-test-azure-ad-sso-with-cloudlink-platform"></a>Azure AD SSO 'yu CloudLink platformuyla yapılandırma ve test etme
 
@@ -375,12 +375,12 @@ Aşağıdaki ayrıntılarla CloudLink accounts portalınızda bir kullanıcı ol
 
 Bu bölümde, erişim panelini kullanarak Azure AD SSO yapılandırmanızı test edeceksiniz.
 
-Erişim panelinde Mitel Connect kutucuğunu seçtiğinizde, **oturum açma URL 'si** alanında varsayılan olarak yapılandırdığınız CloudLink uygulamasında oturum açmak için otomatik olarak yönlendirilirsiniz. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Mitel Connect kutucuğunu seçtiğinizde, **oturum açma URL 'si** alanında varsayılan olarak yapılandırdığınız CloudLink uygulamasında oturum açmak için otomatik olarak yönlendirilirsiniz. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

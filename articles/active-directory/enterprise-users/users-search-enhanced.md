@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 10/02/2020
+ms.date: 10/23/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcef70d821c7148cb926bd9357bbe656ceae35fe
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d0e2ce094b792d6f3f7e5f8fe1920d87a9cceea2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377068"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517184"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory 'de Kullanıcı yönetimi geliştirmeleri (Önizleme)
 
@@ -29,7 +29,7 @@ Bu makalede, Azure Active Directory (Azure AD) portalında Kullanıcı yönetimi
 Önizlemedeki değişiklikler şunları içerir:
 
 - Nesne KIMLIĞI, Dizin eşitleme durumu, oluşturma türü ve kimlik veren gibi daha görünür Kullanıcı Özellikleri
-- Arama şimdi ad, e-posta ve nesne kimliklerinin birleştirilmiş aramasına izin veriyor
+- Arama Şimdi, ad, e-posta ve nesne kimliklerinin alt dize aramasına ve birleştirilmiş aramasına izin veriyor
 - Kullanıcı türüne göre Gelişmiş filtreleme (üye, Konuk, yok), Dizin eşitleme durumu, oluşturma türü, şirket adı ve etki alanı adı
 - Ad ve Kullanıcı asıl adı gibi özelliklerde yeni sıralama özellikleri
 - Yeni bir Toplam Kullanıcı sayısı aramalarla veya filtrelerle güncelleştirilir
@@ -59,7 +59,7 @@ Aşağıda, **tüm kullanıcılar** sayfasında görüntülenen kullanıcı öze
 
 - Ad: kullanıcının görünen adı.
 - Kullanıcı asıl adı: kullanıcının Kullanıcı asıl adı (UPN).
-- Kullanıcı türü: kullanıcının Kullanıcı türü, üye veya konuk.
+- Kullanıcı türü: üye, Konuk, yok.
 - Eşitlenen Dizin: kullanıcının şirket içi dizinden eşitlenip eşitlenmediğini belirtir.
 - Kimlik veren: bir kullanıcı hesabında oturum açmak için kullanılan kimlik verenler.
 - Nesne KIMLIĞI: kullanıcının nesne KIMLIĞI.
@@ -67,6 +67,7 @@ Aşağıda, **tüm kullanıcılar** sayfasında görüntülenen kullanıcı öze
 - Şirket adı: kullanıcının ilişkilendirildiği şirket adı.
 - Davet durumu: Konuk Kullanıcı davetinin durumu.
 - Posta: kullanıcının e-postası.
+- Son oturum açma: kullanıcının son oturum açmasından geçen tarih. Bu özellik yalnızca denetim günlüklerini okuma izni olan kullanıcılar için görünür (Reporting_ApplicationAuditLogs_Read)
 
 ![Tüm kullanıcılar ve silinen Kullanıcı sayfalarında yeni kullanıcı özellikleri gösteriliyor](./media/users-search-enhanced/user-properties.png)
 
@@ -75,7 +76,10 @@ Aşağıda, **tüm kullanıcılar** sayfasında görüntülenen kullanıcı öze
 **Silinen kullanıcılar** sayfası, **tüm kullanıcılar** sayfasında kullanılabilir olan tüm sütunları ve bazı ek sütunları içerir, yani:
 
 - Silme tarihi: kullanıcının kuruluştan ilk silindiği tarih (Kullanıcı yeniden geri alındı).
-- Kalıcı silme tarihi: kullanıcının kuruluştan kalıcı olarak silindiği tarih.
+- Kalıcı silme tarihi: kullanıcının kuruluştan kalıcı olarak silinme işleminin otomatik olarak başladığı tarih. 
+
+> [!NOTE]
+> Silme tarihleri Eşgüdümlü Evrensel Saat (UTC) biçiminde görüntülenir.
 
 Bazı sütunlar varsayılan olarak görüntülenir. Diğer sütunları eklemek için sayfada **sütunlar** ' ı seçin, eklemek istediğiniz sütun adlarını seçin ve tercihlerinizi kaydetmek için **Tamam** ' ı seçin.
 
@@ -88,7 +92,7 @@ Herhangi bir kullanıcı için **kimlik veren** sütununda, oturum açma türün
 
 ## <a name="user-list-search"></a>Kullanıcı listesi arama
 
-Arama dizesi girdiğinizde, arama "ile başlar" araması kullanır ve artık tek bir aramada adları, e-postaları veya nesne kimliklerini eşleştirebilir. Bu özniteliklerden herhangi birini arama kutusuna girebilirsiniz ve arama, eşleşen sonuçları döndürmek için bu özelliklerden herhangi birini otomatik olarak arar. Aynı aramayı **tüm kullanıcılar** ve **silinen kullanıcılar** sayfalarında gerçekleştirebilirsiniz.
+Arama dizesi girdiğinizde, arama artık tek bir aramada adları, e-postaları veya nesne kimliklerini eşleştirmek için "ile başlar" ve alt dize aramasını kullanır. Bu özniteliklerden herhangi birini arama kutusuna girebilirsiniz ve arama tüm bu özellikleri tüm eşleşen sonuçları döndürmek için otomatik olarak arar. Alt dize araması yalnızca tüm sözcükler üzerinde gerçekleştirilir. Aynı aramayı **tüm kullanıcılar** ve **silinen kullanıcılar** sayfalarında gerçekleştirebilirsiniz.
 
 ## <a name="user-list-filtering"></a>Kullanıcı listesi filtreleme
 
@@ -133,10 +137,10 @@ Artık **tüm kullanıcılar** ve **silinen kullanıcılar** sayfalarındaki ada
 
 Soru | Yanıt
 -------- | ------
+Kalıcı silme tarihi geçtiğinde silinen kullanıcı neden hala görüntüleniyor? | Kalıcı silme tarihi UTC saat diliminde görüntülenir, bu nedenle bu durum geçerli saat diliminize eşleşmeyebilir. Ayrıca, bu tarih, kullanıcının kuruluştan kalıcı olarak silineceği en erken tarihtir, bu yüzden hala işleme devam edebilir. Kalıcı olarak silinen kullanıcılar otomatik olarak listeden kaldırılacak.
 Kullanıcılar ve konuklar için toplu yeteneklere ne olacak? | Toplu işlemler, toplu oluşturma, toplu davet etme, toplu silme ve Kullanıcı indirme dahil olmak üzere kullanıcılar ve konuklar için hala kullanılabilir. Onları **toplu işlemler**adlı bir menüde birleştirdik. **Toplu işlemler** seçeneklerini **tüm kullanıcılar** sayfasının en üstünde bulabilirsiniz.
 Kaynak sütununa ne oldu? | **Kaynak** sütunu benzer bilgiler sağlayan diğer sütunlarla değiştirilmiştir ve bu değerleri bağımsız olarak filtrelemenize izin verir. **Oluşturma türü**, **Dizin eşitlenmiş** ve **kimlik veren**örnekleri sayılabilir.
 Kullanıcı adı sütununa ne oldu? | **Kullanıcı adı** sütunu hala orada bulunur, ancak **Kullanıcı asıl adı**olarak yeniden adlandırılmıştır. Bu, söz konusu sütunda yer alan bilgileri daha iyi yansıtır. Ayrıca, tam Kullanıcı asıl adının artık B2B konukları için görüntülendiğini fark edersiniz. Bu, MS grafiğinde alacağınız ile eşleşir.  
-"Şunu içerir" araması gerçekleştirmem ve "içermez" araması yapmam neden | "İçerir" araması gerçekleştirmenize izin vermemize engel olan bazı sınırlamalar vardır. Geri bildirimleri duyduk, bu nedenle sürekli olarak kalın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

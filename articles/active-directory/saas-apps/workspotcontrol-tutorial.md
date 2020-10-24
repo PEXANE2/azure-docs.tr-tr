@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 59101e05345e9284b71b44d24732a45f3c53e629
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "88526644"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Öğretici: Iş noktası denetimiyle tümleştirme Azure Active Directory
 
@@ -26,9 +26,9 @@ Bu öğreticide, çalışma noktası denetimini Azure Active Directory (Azure AD
 * Kullanıcıların Azure AD hesaplarını kullanarak otomatik olarak Iş noktası denetiminde (çoklu oturum açma [SSO]) oturum açmasını sağlar.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure AD 'de uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure AD 'de uygulamalarda çoklu oturum açma](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Iş noktası denetimiyle yapılandırmak için aşağıdaki işlemleri yapmanız gerekir:
 
@@ -236,12 +236,12 @@ Azure AD kullanıcılarının, çalışma noktası denetiminde oturum açmasın�
 
 Bu bölümde, *erişim paneli*aracılığıyla Azure AD çoklu oturum açma yapılandırmanızı test ediyoruz.
 
-Erişim paneli 'nde **çalışma noktası denetim** kutucuğuna TıKLADıĞıNıZDA, SSO 'Yu ayarladığınız Iş noktası denetiminde otomatik olarak oturum açmış olmanız gerekir. Daha fazla bilgi için bkz. [Erişim Paneli'ne Giriş](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+Erişim paneli 'nde **çalışma noktası denetim** kutucuğuna TıKLADıĞıNıZDA, SSO 'Yu ayarladığınız Iş noktası denetiminde otomatik olarak oturum açmış olmanız gerekir. Daha fazla bilgi için bkz. [Erişim Paneli'ne Giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](./tutorial-list.md)
 
-- [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory uygulamalarda çoklu oturum açma](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

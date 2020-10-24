@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 06104964c06b0853498a7de272a62d2913b10be6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2328bd51712089f706c8491007f9f51eba52337
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88518735"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508137"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Öğretici: ödül noktalarıyla üst alt/üst ekiple tümleştirme Azure Active Directory
 
@@ -27,10 +27,10 @@ Azure AD ile ödül noktalarımı en üst alt/üst ekiplerimi tümleştirerek a�
 * Kullanıcılarınızın Azure AD hesaplarıyla, ödül noktalarım için en yüksek alt/üst ekiple (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, Ikramiye noktalarım üst alt/üst ekibiyle yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -180,18 +180,18 @@ Bu bölümde, ödül noktalarıma en üst alt/üst ekibe erişim vererek Britta 
 
 ### <a name="create-my-award-points-top-subtop-team-test-user"></a>Ikramiye noktalarımı üst alt/üst ekip test kullanıcısı oluştur
 
-Bu bölümde, ödül noktalarım üst alt/üst ekibimde Britta Simon adlı bir Kullanıcı oluşturacaksınız. İkramiye noktalarım en üst alt/üst ekip platformundaki kullanıcıları eklemek için [ödüllü noktalarıma ve en üst düzey takım destek ekibinden](mailto:myawardpoints@biworldwide.com) çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, ödül noktalarım üst alt/üst ekibimde Britta Simon adlı bir Kullanıcı oluşturacaksınız. İkramiye noktalarım en üst alt/üst ekip platformundaki kullanıcıları eklemek için [ödüllü noktalarıma ve en üst düzey takım destek ekibinden](mailto:myawardpoints@biworldwide.com) çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde ödül noktalarım üst alt/üst ekip kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Ikramiye noktam üst tarafında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde ödül noktalarım üst alt/üst ekip kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Ikramiye noktam üst tarafında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
