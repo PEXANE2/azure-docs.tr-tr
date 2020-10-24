@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
-ms.openlocfilehash: 6d62c9aa7be1511cdac6404ac7c42200677e56fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62351f341d03873afc59ff7748fa03da0a202d35
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651607"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495579"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench’te neler oldu?
 
@@ -99,6 +99,8 @@ Bu makalelerde daha fazla bilgi edinin:
 Hizmete genel bakış için [Azure Machine Learning nedir?](overview-what-is-azure-ml.md)makalesini okuyun.
 
 Tercih ettiğiniz yöntemle ilk denemenizi oluşturun:
+
+  + [Kendi ortamınızı kullanın](tutorial-1st-experiment-sdk-setup-local.md)
   + [Python not defterlerini kullanma](tutorial-1st-experiment-sdk-setup.md)
   + [R Markdown kullan](tutorial-1st-r-experiment.md) 
   + [Otomatik makine öğrenimi kullan](tutorial-designer-automobile-price-train-score.md) 

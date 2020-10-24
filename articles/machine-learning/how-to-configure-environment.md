@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 98bc108af22491c6ea0b64bc2e278b6b32f43a5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 66008012dd9b3eb6000e96f251d18cf14a9c8dc1
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203101"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495241"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı ayarlama
 
@@ -139,10 +139,10 @@ Bir işlem örneği için yüklenecek veya yapılandırılacak bir şey yok.
 
 Azure Machine Learning çalışma alanınızın içinden dilediğiniz zaman oluşturun. Yalnızca bir ad girin ve Azure VM türünü belirtin. Şu öğreticiyle şimdi deneyin [: Kurulum ortamı ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md).
 
-Paketlerin nasıl yükleneceği dahil olmak üzere işlem örnekleri hakkında daha fazla bilgi edinmek için bkz. [işlem örnekleri](concept-compute-instance.md).
+Paketlerin nasıl yükleneceğine ilişkin işlem örnekleri hakkında daha fazla bilgi edinmek için, bkz. [Azure Machine Learning işlem örneği oluşturma ve yönetme](how-to-create-manage-compute-instance.md).
 
 > [!TIP]
-> Kullanılmayan bir işlem örneği için ücretleri engellemek üzere [işlem örneğini durdurun](tutorial-1st-experiment-bring-data.md#clean-up-resources).
+> Kullanılmayan bir işlem örneği için ücretleri engellemek üzere [işlem örneğini durdurun](how-to-create-manage-compute-instance.md#manage).
 
 Jupyter Notebook Server ve JupyterLab ' a ek olarak, [Azure Machine Learning Studio 'nun içindeki tümleşik Not defteri özelliğindeki](how-to-run-jupyter-notebooks.md)işlem örneklerini kullanabilirsiniz.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 4aaf4f059976635f32c1a4e6b7130f8835598f98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f69c0460fe3e2d2570f79e842963f75bab792d9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552144"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483582"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>Öğretici: TAS ile tümleştirme Azure Active Directory
 
@@ -99,7 +99,7 @@ Azure AD çoklu oturum açma 'yı TAS ile yapılandırmak için aşağıdaki ad�
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![GÖREV etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://taseu.combtas.com/<DOMAIN>`
 
@@ -107,7 +107,7 @@ Azure AD çoklu oturum açma 'yı TAS ile yapılandırmak için aşağıdaki ad�
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![GÖREV etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://taseu.combtas.com/<DOMAIN>`
 
@@ -134,11 +134,11 @@ Azure AD çoklu oturum açma 'yı TAS ile yapılandırmak için aşağıdaki ad�
 
 2. Menünün sol tarafında, **Ayarlar** ' a tıklayın ve **yönetici** ' ye gidin ve ardından **Çoklu oturum açmayı Yönet**' e tıklayın.
 
-    ![GÖREV yapılandırması](./media/tas-tutorial/configure01.png)
+    ![Ekran görüntüsü tekli oturum açmayı Yönet ' in seçili olduğunu gösterir.](./media/tas-tutorial/configure01.png)
 
 3. **Çoklu oturum açmayı Yönet** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![GÖREV yapılandırması](./media/tas-tutorial/configure02.png)
+    ![Ekran görüntüsünde, tanımlanan değerleri girebileceğiniz çoklu oturum açma sayfasını yönetme sayfası gösterilir.](./media/tas-tutorial/configure02.png)
 
     a. **Ad** metin kutusuna ortam adınızı yazın.
     

@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f32a37d5d08e8b20e59455393c70e4e4d288eb11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83b28c562dca0c20b6f78058f1c7f7def60416ee
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802405"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496098"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB bulunamadı özel durumları tanılama ve sorun giderme
 HTTP durum kodu 404 kaynağın artık mevcut olmadığını gösterir.
@@ -28,7 +28,7 @@ Birden çok SDK istemci örneği vardır ve yazma işleminden önce okuma gerçe
 
 #### <a name="solution"></a>Çözüm:
 1. Azure Cosmos DB için varsayılan hesap tutarlılığı, oturum tutarlılığı olur. Bir öğe oluşturulduğunda veya güncelleştirilirken, yanıt, okuma isteğinin bu değişikliğe sahip bir yinelemeden okumasını sağlamak için SDK örnekleri arasında geçirilemeyen bir oturum belirteci döndürür.
-1. [Tutarlılık düzeyini](consistency-levels-choosing.md) [daha güçlü bir düzeye](consistency-levels-tradeoffs.md)değiştirin.
+1. [Tutarlılık düzeyini](./consistency-levels.md) [daha güçlü bir düzeye](./consistency-levels.md)değiştirin.
 
 ### <a name="invalid-partition-key-and-id-combination"></a>Geçersiz bölüm anahtarı ve KIMLIK birleşimi
 Bölüm anahtarı ve KIMLIK bileşimi geçerli değil.
@@ -37,7 +37,7 @@ Bölüm anahtarı ve KIMLIK bileşimi geçerli değil.
 Yanlış kombinasyona neden olan uygulama mantığını düzeltemedi. 
 
 ### <a name="invalid-character-in-an-item-id"></a>Öğe KIMLIĞINDE geçersiz karakter
-Öğe KIMLIĞINDE [geçersiz bir karakterle](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks) Azure Cosmos DB bir öğe eklenir.
+Öğe KIMLIĞINDE [geçersiz bir karakterle](/dotnet/api/microsoft.azure.documents.resource.id?preserve-view=true&view=azure-dotnet#remarks) Azure Cosmos DB bir öğe eklenir.
 
 #### <a name="solution"></a>Çözüm:
 KIMLIĞI özel karakterler içermeyen farklı bir değerle değiştirin. KIMLIĞI değiştirmek bir seçenek değilse, özel karakterlerin kaçış KIMLIĞINI Base64 olarak kodlayabilirsiniz.
@@ -79,7 +79,7 @@ while (invalidItemsIterator.HasMoreResults)
 ```
 
 ### <a name="time-to-live-purge"></a>Canlı temizleme süresi
-Öğe, [yaşam süresi (TTL)](https://docs.microsoft.com/azure/cosmos-db/time-to-live) özellik kümesine sahipti. TTL özelliğinin süresi aşıldığı için öğe temizlendi.
+Öğe, [yaşam süresi (TTL)](./time-to-live.md) özellik kümesine sahipti. TTL özelliğinin süresi aşıldığı için öğe temizlendi.
 
 #### <a name="solution"></a>Çözüm:
 Öğenin temizlenmeden kaçınmak için TTL özelliğini değiştirin.
@@ -94,11 +94,11 @@ Dizin oluşturmanın, dizin oluşturma ilkesini yakalamak veya değiştirmek iç
 İçinde öğenin bulunduğu veritabanı veya kapsayıcı silinmiş.
 
 #### <a name="solution"></a>Çözüm:
-1. Üst kaynağı [geri yükleyin](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore#backup-retention-period) veya kaynakları yeniden oluşturun.
+1. Üst kaynağı [geri yükleyin](./online-backup-and-restore.md#request-data-restore-from-a-backup) veya kaynakları yeniden oluşturun.
 1. Silinen kaynağı değiştirmek için yeni bir kaynak oluşturun.
 
 ### <a name="7-containercollection-names-are-case-sensitive"></a>7. kapsayıcı/koleksiyon adları büyük/küçük harfe duyarlıdır
-Kapsayıcı/koleksiyon adları büyük/küçük harfe duyarlı Cosmos DB.
+Cosmos DB kapsayıcı/koleksiyon adları büyük/küçük harfe duyarlıdır.
 
 #### <a name="solution"></a>Çözüm:
 Cosmos DB bağlanırken tam adı kullandığınızdan emin olun.

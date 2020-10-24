@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f0d62ae3909bc886fa6a56ba7ed32d55d27302dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2497a1fe5bfd3618246c9590685d08894e897f3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568660"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476527"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Tablo API’sini kullanarak Azure Cosmos DB genel dağıtımını ayarlama
 
@@ -28,7 +28,7 @@ Bu makale aşağıdaki görevleri kapsar:
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Tablo API’sini kullanarak tercih edilen bir bölgeye bağlanma
 
-[Genel dağıtımın](distribute-data-globally.md)avantajlarından yararlanabilmek için, istemci uygulamaları uygulamasının çalıştığı geçerli konumu belirtmelidir. Bu, özelliği ayarlanarak yapılır `CosmosExecutorConfiguration.CurrentRegion` . `CurrentRegion`Özelliği tek bir konum içermelidir. Her istemci örneği, düşük gecikmeli okumalar için kendi bölgelerini belirtebilir. Bölgenin, "Batı ABD" gibi [görünen adları](https://msdn.microsoft.com/library/azure/gg441293.aspx) kullanılarak adlandırılması gerekir. 
+[Genel dağıtımın](distribute-data-globally.md)avantajlarından yararlanabilmek için, istemci uygulamaları uygulamasının çalıştığı geçerli konumu belirtmelidir. Bu, özelliği ayarlanarak yapılır `CosmosExecutorConfiguration.CurrentRegion` . `CurrentRegion`Özelliği tek bir konum içermelidir. Her istemci örneği, düşük gecikmeli okumalar için kendi bölgelerini belirtebilir. Bölgenin, "Batı ABD" gibi [görünen adları](/previous-versions/azure/reference/gg441293(v=azure.100)) kullanılarak adlandırılması gerekir. 
 
 Azure Cosmos DB Tablo API'si SDK 'Sı, hesap yapılandırmasına ve geçerli bölgesel kullanılabilirliğe göre iletişim kurmak için en iyi uç noktayı otomatik olarak seçer. İstemcilere daha iyi gecikme sağlamak için en yakın bölgeyi önceliklendirir. Geçerli özelliği ayarladıktan sonra `CurrentRegion` okuma ve yazma istekleri aşağıdaki gibi yönlendirilir:
 
@@ -47,4 +47,3 @@ Bu öğreticide aşağıdakileri yaptınız:
 > [!div class="checklist"]
 > * Azure portalını kullanarak genel dağıtımı yapılandırma
 > * Azure Cosmos DB Tablo API’lerini kullanarak genel dağıtımı yapılandırma
-

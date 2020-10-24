@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb71c5eda66d3d11385577da7142970f4fbcbad2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289778"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474861"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Depolama için Azure Defender 'ı yapılandırma
 
@@ -37,7 +37,7 @@ Aşağıdaki listede, depolama için Azure Defender 'ın kullanılabilirliği ö
 
 - Yayın durumu:
   - [BLOB depolama](https://azure.microsoft.com/services/storage/blobs/) (genel kullanılabilirlik)
-  - [Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (genel kullanılabilirlik)
+  - [Azure dosyaları](/azure/storage/files/storage-files-introduction) (genel kullanılabilirlik)
   - Azure Data Lake Storage 2. (genel kullanılabilirlik)
 - Larının<br>
     Ticari bulutlar ✔<br>
@@ -98,16 +98,16 @@ Belirli bir abonelik veya kaynak grubu altındaki depolama hesapları genelinde 
 
 Belirli bir depolama hesabı için Azure Defender ayarını oluşturmak, güncelleştirmek veya almak üzere REST API komutlarını kullanın.
 
-- [Gelişmiş tehdit koruması-oluştur](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
-- [Gelişmiş tehdit koruması-Get](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
+- [Gelişmiş tehdit koruması-oluştur](/rest/api/securitycenter/advancedthreatprotection/create)
+- [Gelişmiş tehdit koruması-Get](/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aşağıdaki PowerShell cmdlet 'lerini kullanın:
 
-- [Gelişmiş tehdit korumasını etkinleştir](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-- [Gelişmiş tehdit koruması al](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-- [Gelişmiş tehdit korumasını devre dışı bırak](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+- [Gelişmiş tehdit korumasını etkinleştir](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+- [Gelişmiş tehdit koruması al](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+- [Gelişmiş tehdit korumasını devre dışı bırak](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ---
 

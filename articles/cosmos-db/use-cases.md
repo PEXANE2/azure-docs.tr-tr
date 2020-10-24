@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: af49a7bec68c30e4ded576a8d84eac850eb745f8
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b8d74f9da62b0f5a596c811efa9f93b55c99f1d7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331371"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476357"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB için yaygın kullanım örnekleri
 
@@ -28,7 +28,7 @@ Bu makaleyi okuduktan sonra aşağıdaki soruları cevaplayabilirsiniz:
 
 [Azure Cosmos DB](../cosmos-db/introduction.md) , Microsoft 'un herhangi bir ölçekte açık API 'leri olan hızlı NoSQL veritabanıdır. Hizmet, müşterilerin herhangi bir sayıda coğrafi bölgede esnek (ve bağımsız olarak) işleme ve depolamayı ölçeklendirmesine izin verecek şekilde tasarlanmıştır. Azure Cosmos DB, günümüzde Market, gecikme süresi, kullanılabilirlik ve tutarlılık dahil olmak üzere kapsamlı [hizmet düzeyi sözleşmeleri](https://azure.microsoft.com/support/legal/sla/cosmos-db/) sunan ilk genel olarak dağıtılmış veritabanı hizmetidir.
 
-Azure Cosmos DB, çok çeşitli uygulamalarda ve kullanım durumlarında kullanılan küresel bir dağıtılmış, çok modelli veritabanıdır. En az milisaniyelik yanıt süreleriyle ihtiyacı olan ve hızlı ve küresel olarak ölçeklendirilmesi gereken [sunucusuz](https://azure.com/serverless) bir uygulama için iyi bir seçimdir. Birden çok veri modelini (anahtar-değer, belge, grafik ve sütun) ve veri erişimi için [Azure Cosmos DB, MongoDB](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Gremlin API](graph-introduction.md)ve [tablo API 'si](table-introduction.md) yerel olarak ve genişletilebilir bir şekilde bir çok API 'yi destekler. 
+Azure Cosmos DB, çok çeşitli uygulamalarda ve kullanım durumlarında kullanılan küresel bir dağıtılmış, çok modelli veritabanıdır. En az milisaniyelik yanıt süreleriyle ihtiyacı olan ve hızlı ve küresel olarak ölçeklendirilmesi gereken [sunucusuz](https://azure.com/serverless) bir uygulama için iyi bir seçimdir. Birden çok veri modelini (anahtar-değer, belge, grafik ve sütun) ve veri erişimi için [Azure Cosmos DB, MongoDB](mongodb-introduction.md), [SQL API](./introduction.md), [Gremlin API](graph-introduction.md)ve [tablo API 'si](table-introduction.md) yerel olarak ve genişletilebilir bir şekilde bir çok API 'yi destekler. 
 
 Aşağıda, genel Ambition ile yüksek performanslı uygulamalar için iyi uygun hale gelen Azure Cosmos DB öznitelikleri verilmiştir.
 

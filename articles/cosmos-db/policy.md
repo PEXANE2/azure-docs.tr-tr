@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 493064bc22b1144df6878d71c99e50fd7c15ba1d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320906"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482239"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Cosmos DB kaynaklarına yönelik idare ve denetimleri uygulamak için Azure Ilkesini kullanma
 
@@ -134,4 +134,4 @@ Uyumlu olmayan kaynakları düzeltmek için bkz. [Azure ilkesi ile kaynakları](
 
 - Yukarıda gösterilen birden fazla yazma konumu ve VNet filtreleme ilkeleri için de dahil olmak üzere [Azure Cosmos DB için örnek özel ilke tanımlarını gözden geçirin](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB).
 - [Azure portal ilke ataması oluşturma](../governance/policy/assign-policy-portal.md)
-- [Azure Cosmos DB için Azure Ilkesi yerleşik ilke tanımlarını gözden geçirin](./policy-samples.md)
+- [Azure Cosmos DB için Azure Ilkesi yerleşik ilke tanımlarını gözden geçirin](./policy-reference.md)

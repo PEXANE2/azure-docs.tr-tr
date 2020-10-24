@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 3b9a94f7f9f64426374a5ea349b3653d837fc1ac
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893756"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494434"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti ile MySQL için Azure DB 'ye yönelik sınırlamalar & çevrimiçi geçiş sorunları
 
@@ -32,7 +32,7 @@ MySQL 'in MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilişkili b
 - MySQL için Azure veritabanı şunları destekler:
   - MySQL Community sürümü
   - InnoDB altyapısı
-- Aynı sürüm geçişi. MySQL 5,6 ' i MySQL için Azure veritabanı 5,7 ' e geçirme desteklenmez.
+- Aynı sürüm geçişi. MySQL 5,6 ' i MySQL için Azure veritabanı 5,7 ' e geçirme desteklenmez. MySQL 8,0 veya 'tan geçiş desteklenmez.
 - my.ini (Windows) veya My. cnf (Unix) ' de ikili günlüğü etkinleştir
   - Server_id herhangi bir sayıya daha büyük veya eşittir 1 olarak ayarlayın, örneğin, Server_id = 1 (yalnızca MySQL 5,6 için)
   - Set log-bin = \<path> (yalnızca MySQL 5,6 için)

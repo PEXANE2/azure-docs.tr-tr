@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: a0451e76ad8ce65486534bfbc68ae1b71adc9098
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 38027f651623b16fed259cbf099bc274457723eb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284972"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482562"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB ' de yürütülen işlemler için istek birimi ücreti bulun Cassandra API
 
@@ -53,4 +53,4 @@ RU tüketiminizi en iyi duruma getirme hakkında bilgi edinmek için şu makalel
 
 * [Azure Cosmos DB'deki istek birimleri ve aktarım hızı](request-units.md)
 * [Azure Cosmos DB’de sağlanan işlem hızını iyileştirme](optimize-cost-throughput.md)
-* [Azure Cosmos DB'de sorgu maliyetini iyileştirme](optimize-cost-queries.md)
+* [Azure Cosmos DB'de sorgu maliyetini iyileştirme](./optimize-cost-reads-writes.md)

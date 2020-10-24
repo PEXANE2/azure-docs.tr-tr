@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 97f6817a02b7adf4d2d3e12dee6d1e3445e09a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88053f2c7b1218a15315f2c616231d9356b65540
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552225"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484347"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-stormboard"></a>Öğretici: Stormboard ile tümleştirme Azure Active Directory
 
@@ -102,13 +102,13 @@ Azure AD çoklu oturum açmayı Stormboard ile yapılandırmak için aşağıdak
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı uygulayın:
 
-    ![Stormboard etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/both-replyurl.png)
+    ![Ekran görüntüsü, bir yanıt U R L girebilir ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/both-replyurl.png)
 
     **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.stormboard.com/saml2/ad/acs/<TEAMID>`
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Stormboard etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/both-signonurl.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/both-signonurl.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.stormboard.com/saml2/ad/login/<TEAMID>`
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8032c3607dd74cddbaa5fd6690a95ebdf218809a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bc03cf03f8a8e0f2a222ca1089618eaade9485d
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628203"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496080"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Nasıl yapılır: Web uygulaması sayma bir kişi dağıtma
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 * IoT Hub bağlantısını Web uygulamasında yapılandırma
 * Web uygulamasını dağıtma ve test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure IoT Edge dağıtım yapılandırmalarının ve [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) hakkında temel bilgiler
@@ -63,14 +63,14 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>Kapsayıcıyı konak bilgisayardaki Azure IoT Edge dağıtma
 
-Azure CLı kullanarak, uzamsal analiz kapsayıcısını ana bilgisayarda IoT modülü olarak dağıtın. Dağıtım işlemi, dağıtımınız için gerekli kapsayıcıları, değişkenleri ve konfigürasyonları özetleyen bir dağıtım bildirim dosyası gerektirir. GitHub 'da, *uzamsal analiz* kapsayıcısı için temel bir dağıtım yapılandırması içeren örnek bir [dağıtım bildirimi](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) bulabilirsiniz. 
+Azure CLı kullanarak, uzamsal analiz kapsayıcısını ana bilgisayarda IoT modülü olarak dağıtın. Dağıtım işlemi, dağıtımınız için gerekli kapsayıcıları, değişkenleri ve konfigürasyonları özetleyen bir dağıtım bildirim dosyası gerektirir. Örnek [Azure Stack Edge 'e özgü bir dağıtım bildirimi](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) ve ayrıca, GitHub üzerinde [Azure Stack olmayan bir kenara özgü dağıtım bildirimi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) ve bu da, *uzamsal analiz* kapsayıcısı için temel bir dağıtım yapılandırması içerir. 
 
 > [!NOTE] 
-> *Uzamsal-analiz-telegraf* ve *uzamsal analiz-tanılama* kapsayıcıları isteğe bağlıdır. Bunları dosyadaki *DeploymentManifest.js* kaldırmaya karar verebilirsiniz. Daha fazla bilgi için bkz. [telemetri ve sorun giderme](./spatial-analysis-logging.md) makalesi. [GitHub 'da](https://go.microsoft.com/fwlink/?linkid=2142179) dosya üzerinde örnek *DeploymentManifest.js* bulabilirsiniz 
+> *Uzamsal-analiz-telegraf* ve *uzamsal analiz-tanılama* kapsayıcıları isteğe bağlıdır. Bunları dosyadaki *DeploymentManifest.js* kaldırmaya karar verebilirsiniz. Daha fazla bilgi için bkz. [telemetri ve sorun giderme](./spatial-analysis-logging.md) makalesi. [Azure Stack Edge cihazları](https://go.microsoft.com/fwlink/?linkid=2142179) veya başka bir [Masaüstü makinesi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) için GitHub 'daki dosyalarda iki örnek *DeploymentManifest.js* bulabilirsiniz
 
 ### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
 
-IoT Edge modülü için **ortam değişkenlerinin** çoğu, yukarıda bağlı olan dosyadaki örnek *DeploymentManifest.js* zaten ayarlanmış. Dosyasında, `BILLING_ENDPOINT` `API_KEY` aşağıda gösterildiği gibi ve ortam değişkenlerini aratın. Değerleri, bitiş noktası URI 'SI ve daha önce oluşturduğunuz API anahtarı ile değiştirin. EULA değerinin "kabul et" olarak ayarlandığından emin olun. 
+IoT Edge modülü için **ortam değişkenlerinin** çoğu, yukarıda bağlantılı dosyalardaki örnek *DeploymentManifest.js* zaten ayarlanmıştır. Dosyasında, `BILLING_ENDPOINT` `API_KEY` aşağıda gösterildiği gibi ve ortam değişkenlerini aratın. Değerleri, bitiş noktası URI 'SI ve daha önce oluşturduğunuz API anahtarı ile değiştirin. EULA değerinin "kabul et" olarak ayarlandığından emin olun. 
 
 ```json
 "EULA": { 
@@ -89,7 +89,7 @@ IoT Edge modülü için **ortam değişkenlerinin** çoğu, yukarıda bağlı ol
 
 Artık *uzamsal analiz* kapsayıcısının ilk yapılandırması tamamlanana kadar, bir sonraki adım işlemler parametrelerini yapılandırmak ve bunları dağıtıma eklemektir. 
 
-İlk adım, örnek [dağıtım bildirimini](https://go.microsoft.com/fwlink/?linkid=2142179) güncelleştirmek ve operationId 'yi `cognitiveservices.vision.spatialanalysis-personcount` aşağıda gösterildiği gibi yapılandırmaktır:
+İlk adım, yukarıda belirtilen örnek dağıtım bildirimini güncelleştirmek ve operationId 'yi `cognitiveservices.vision.spatialanalysis-personcount` aşağıda gösterildiği gibi yapılandırmaktır:
 
 
 ```json
@@ -107,7 +107,7 @@ Artık *uzamsal analiz* kapsayıcısının ilk yapılandırması tamamlanana kad
 },
 ```
 
-[Dağıtım bildirimi](https://go.microsoft.com/fwlink/?linkid=2142179) güncelleştirildikten sonra, kamerayı yüklemek, kamera URL 'sini yapılandırmak ve Kullanıcı adını ve parolayı yapılandırmak için kamera üreticisinin yönergelerini izleyin. 
+Dağıtım bildirimi güncelleştirildikten sonra, kamerayı yüklemek, kamera URL 'sini yapılandırmak ve Kullanıcı adını ve parolayı yapılandırmak için kamera üreticisinin yönergelerini izleyin. 
 
 Ardından, `VIDEO_URL` KAMERANıN RTSP URL 'sini ve kameraya bağlanmak için kimlik bilgilerini ayarlayın.
 
@@ -122,7 +122,7 @@ Algılanan kişilerin ne zaman sayıldığını ve olayların üretilme için de
 
 ### <a name="execute-the-deployment"></a>Dağıtımı Yürüt
 
-[Dağıtım bildirimi](https://go.microsoft.com/fwlink/?linkid=2142179) tamamlandığına göre, kapsayıcıyı ana bilgisayarda bir IoT Edge modülü olarak dağıtmak IÇIN Azure CLI 'da bu komutu kullanın.
+Dağıtım bildirimi tamamlandığına göre, kapsayıcıyı ana bilgisayarda bir IoT Edge modülü olarak dağıtmak için Azure CLı 'da bu komutu kullanın.
 
 ```azurecli
 az login
@@ -145,7 +145,7 @@ Azure portal IoT Hub örneğinizin uzamsal analiz modülünün IoT Edge modülü
 
 ![Örnek dağıtım doğrulaması](./media/spatial-analysis/deployment-verification.png)
 
-Bu noktada, uzamsal analiz kapsayıcısı işlemi çalıştırıyor. Bu BT, işlem için AI öngörülerini yayar `cognitiveservices.vision.spatialanalysis-personcount` ve bu öngörüleri Azure IoT Hub örneğinize telemetri olarak yönlendirir. Ek kameraları yapılandırmak için, [Dağıtım bildirim](https://go.microsoft.com/fwlink/?linkid=2142179) dosyasını güncelleştirebilir ve dağıtımı yeniden çalıştırabilirsiniz.
+Bu noktada, uzamsal analiz kapsayıcısı işlemi çalıştırıyor. Bu BT, işlem için AI öngörülerini yayar `cognitiveservices.vision.spatialanalysis-personcount` ve bu öngörüleri Azure IoT Hub örneğinize telemetri olarak yönlendirir. Ek kameraları yapılandırmak için, dağıtım bildirim dosyasını güncelleştirebilir ve dağıtımı yeniden çalıştırabilirsiniz.
 
 ## <a name="person-counting-web-application"></a>Web uygulaması için kişi sayma
 
@@ -156,7 +156,7 @@ Bu kişi, Web uygulamasını bir örnek Web uygulamasını hızlı bir şekilde 
 Bu uygulamanın Azure Container Registry kullanılabilir bir kapsayıcı formu. İndirmek için aşağıdaki docker pull komutunu kullanın. Erişim belirteci için adresinde Microsoft ile iletişim kurun projectarchon@microsoft.com .
 
 ```bash
-docker login rtvsofficial.azurecr.io -u <token name> -p <password>
+docker login rtvsofficial.azurecr.io -u <token name> -p <password>
 docker pull rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0
 ```
 

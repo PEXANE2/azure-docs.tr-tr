@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3367a20ca5e2dc59880ed66939413606ff83963b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 99fcdd0232e2991acaceb6838bff0b00c6824dfb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122730"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474912"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te sunucusuz SQL havuzu ile Azure Cosmos DB verileri sorgulama (Önizleme)
 
@@ -277,5 +277,6 @@ Olası hatalar ve sorun giderme eylemleri aşağıdaki tabloda listelenmiştir:
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
+- [Azure SYNAPSE bağlantısıyla Power BI ve sunucusuz SYNAPSE SQL havuzu kullanma](../../cosmos-db/synapse-link-power-bi.md)
 - [SQL 'de isteğe bağlı olarak görünüm oluşturma ve kullanma](create-use-views.md) 
 - [Azure Cosmos DB üzerinde SQL isteğe bağlı görünümler oluşturma ve bunları DirectQuery aracılığıyla Power BI modellerine bağlama hakkında öğretici](./tutorial-data-analyst.md)

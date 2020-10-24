@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 420efd653ef6218b5a1d5a8c70ca268b7185fc30
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 41ba9d9e66fa1d7f622550bde68951573af4bb96
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103552"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484993"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Storage 1. ile HDInsight kümeleri oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portal kullanın](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Azure portalını kullanma](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [PowerShell kullanma (varsayılan depolama için)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [PowerShell kullanma (ek depolama için)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Kaynak Yöneticisi kullan](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -25,7 +25,7 @@ ms.locfileid: "92103552"
 
 Varsayılan depolama alanı veya ek depolama alanı olarak Azure Data Lake Storage 1. sahip bir HDInsight kümesi oluşturmak için Azure portal nasıl kullanacağınızı öğrenin. HDInsight kümesi için ek depolama isteğe bağlı olsa da, iş verilerinizi ek depolama hesaplarında depolamanız önerilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki gereksinimleri karşıladığınızı doğrulayın:
 
@@ -85,18 +85,11 @@ Bu bölümde, bir Azure Active Directory hizmet sorumlusu kullanarak HDInsight k
 Azure portal, var olan bir hizmet sorumlusunu kullanabilir veya yeni bir tane oluşturabilirsiniz.
 
 Azure portal bir hizmet sorumlusu oluşturmak için:
-
-1. Depolama dikey penceresinden **Data Lake Store erişim** ' i seçin.
-1. **Data Lake Storage 1. erişim** dikey penceresinde **Yeni oluştur**' u seçin.
-1. **Hizmet sorumlusu**' nı seçin ve ardından hizmet sorumlusu oluşturmak için yönergeleri izleyin.
-1. Daha sonra yeniden kullanmaya karar verirseniz sertifikayı indirin. Ek HDInsight kümeleri oluştururken aynı hizmet sorumlusunu kullanmak istiyorsanız, sertifikayı indirme yararlı olur.
-
-    ![HDInsight kümesine hizmet sorumlusu ekleme](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.2.png)
-
-1. Klasör erişimini yapılandırmak için **erişim** ' i seçin.  Bkz. [Dosya Izinlerini yapılandırma](#configure-file-permissions).
+1. Bkz. Azure Active Directory kullanarak [hizmet sorumlusu ve sertifikaları oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) .
 
 Azure portal mevcut bir hizmet sorumlusunu kullanmak için:
 
+1. Hizmet sorumlusu, depolama hesabında sahip izinlerine sahip olmalıdır. [Hizmet sorumlusu için depolama hesabında sahip olacak Izinleri ayarlama](#configure-serviceprincipal-permissions)bölümüne bakın.
 1. **Data Lake Store erişim**' i seçin.
 1. **Data Lake Storage 1. erişim** dikey penceresinde **Varolanı kullan**' ı seçin.
 1. **Hizmet sorumlusu**' nı seçin ve ardından hizmet sorumlusu ' nı seçin.
@@ -105,6 +98,10 @@ Azure portal mevcut bir hizmet sorumlusunu kullanmak için:
 [HDInsight kümesine hizmet sorumlusu ekleme](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png)
 
 1. Klasör erişimini yapılandırmak için **erişim** ' i seçin.  Bkz. [Dosya Izinlerini yapılandırma](#configure-file-permissions).
+
+### <a name="set-up-permissions-for-the-service-principal-to-be-owner-on-the-storage-account"></a><a name="configure-serviceprincipal-permissions"></a>Depolama hesabında sahip olması için hizmet sorumlusu için izinleri ayarlayın
+1. Depolama hesabının Access Control (ıAM) dikey penceresinde rol ataması Ekle ' ye tıklayın. 
+2. Rol ataması Ekle dikey penceresinde, rolü ' sahip ' olarak seçin ve SPN 'yi seçip Kaydet ' e tıklayın.
 
 ### <a name="configure-file-permissions"></a><a name="configure-file-permissions"></a>Dosya izinlerini yapılandırma
 

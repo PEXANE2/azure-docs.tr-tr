@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d7d77bdb223e8c3b71ef03febd4081d1f63bd1a3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281057"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475473"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB’de sağlanan işlem hızını iyileştirme
 
@@ -80,7 +80,7 @@ Yerel SDK 'lar (.NET/.NET Core, Java, Node.js ve Python), bu yanıtı, sunucu ta
 
 İstek hızının sürekli olarak birden fazla istemciniz varsa, o anda 9 ' a ayarlanmış olan varsayılan yeniden deneme sayısı yeterli olmayabilir. Bu gibi durumlarda, istemci `RequestRateTooLargeException` uygulamaya 429 durum kodu ile bir oluşturur. Varsayılan yeniden deneme sayısı, `RetryOptions` ConnectionPolicy örneğinde ayarlanarak değiştirilebilir. Varsayılan olarak, `RequestRateTooLargeException` isteğin istek hızının üzerinde çalışmaya devam etmesi durumunda 429 durum kodu ile toplam 30 saniyelik bir bekleme süresi dolduktan sonra döndürülür. Bu durum, geçerli yeniden deneme sayısı en fazla yeniden deneme sayısından az olduğunda bile, varsayılan olarak 9 veya Kullanıcı tanımlı bir değer olmalıdır. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet&preserve-view=true) 3 olarak ayarlanır. bu nedenle, bir istek işlemi, kapsayıcının ayrılmış aktarım hızını aşarak sınırlı olursa istek işlemi, uygulamaya özel durumu oluşturmadan önce üç kez yeniden dener. [Maxretrywaittimeınseconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 60 olarak ayarlanır. bu nedenle, ilk istek 60 saniye değerini aştığından kümülatif yeniden deneme bekleme süresi saniye cinsinden, özel durum atılır.
+[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) 3 olarak ayarlanır. bu nedenle, bir istek işlemi, kapsayıcının ayrılmış aktarım hızını aşarak sınırlı olursa istek işlemi, uygulamaya özel durumu oluşturmadan önce üç kez yeniden dener. [Maxretrywaittimeınseconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 60 olarak ayarlanır. bu nedenle, ilk istek 60 saniye değerini aştığından kümülatif yeniden deneme bekleme süresi saniye cinsinden, özel durum atılır.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -112,7 +112,7 @@ Ayrıca, Azure Cosmos DB kullanıyorsanız ve belirli veri değerlerine göre ar
 
 ## <a name="optimize-by-changing-indexing-policy"></a>Dizin oluşturma ilkesini değiştirerek iyileştirin 
 
-Varsayılan olarak, Azure Cosmos DB her kaydın her bir özelliğini otomatik olarak dizine ekler. Bu, geliştirmeyi kolaylaştırmak ve birçok farklı türde geçici sorgu üzerinde mükemmel performans sağlamak için tasarlanmıştır. Binlerce özellik içeren büyük kayıtlarınız varsa, özellikle bu özelliklerden yalnızca 10 veya 20 ' ye göre sorgulama yaparsanız, her özelliğin dizinleme için üretilen iş maliyetini ödemesine yardımcı olabilirsiniz. Belirli iş yükünüze yönelik bir tanıtıcı elde etmeniz daha da sonra, kılavuzumuz Dizin ilkenizi ayarlamanıza yardımcı olur. Azure Cosmos DB Dizin oluşturma ilkesi hakkında tam Ayrıntılar [burada](indexing-policies.md)bulunabilir. 
+Varsayılan olarak, Azure Cosmos DB her kaydın her bir özelliğini otomatik olarak dizine ekler. Bu, geliştirmeyi kolaylaştırmak ve birçok farklı türde geçici sorgu üzerinde mükemmel performans sağlamak için tasarlanmıştır. Binlerce özellik içeren büyük kayıtlarınız varsa, özellikle bu özelliklerden yalnızca 10 veya 20 ' ye göre sorgulama yaparsanız, her özelliğin dizinleme için üretilen iş maliyetini ödemesine yardımcı olabilirsiniz. Belirli iş yükünüze yönelik bir tanıtıcı elde etmeniz daha da sonra, kılavuzumuz Dizin ilkenizi ayarlamanıza yardımcı olur. Azure Cosmos DB Dizin oluşturma ilkesi hakkında tam Ayrıntılar [burada](index-policy.md)bulunabilir. 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>Sağlanan ve tüketilen verimlilik izleniyor 
 
@@ -156,7 +156,7 @@ Aşağıdaki adımlar Azure Cosmos DB kullanırken çözümlerinizi yüksek düz
 
 1. Kapsayıcılar ve veritabanları genelinde sağlanan aktarım hızına önemli ölçüde sahipseniz, RUs ile sağlanan ru 'ları gözden geçirmeniz ve iş yüklerini ince ayar yapmanız gerekir.  
 
-2. Uygulamanız için gerekli olan ayrılmış aktarım hızı miktarını tahmin etmek için bir yöntem, genellikle uygulamanız tarafından kullanılan bir Azure Cosmos kapsayıcısına veya veritabanına karşı tipik işlemleri çalıştırmaya ilişkin bir istek birimi RU ücreti kaydetmek ve sonra her saniye gerçekleştirmeyi tahmin ettiğiniz işlem sayısını tahmin etmek içindir. Tipik sorguları ve bunların kullanımlarını de ölçdiğinizden ve dahil ettiğinizden emin olun. Program aracılığıyla veya Portal kullanarak sorguların RU maliyetlerini nasıl tahmin edebileceğiniz hakkında bilgi edinmek için bkz. [sorguların maliyetini En Iyi duruma getirme](optimize-cost-queries.md). 
+2. Uygulamanız için gerekli olan ayrılmış aktarım hızı miktarını tahmin etmek için bir yöntem, genellikle uygulamanız tarafından kullanılan bir Azure Cosmos kapsayıcısına veya veritabanına karşı tipik işlemleri çalıştırmaya ilişkin bir istek birimi RU ücreti kaydetmek ve sonra her saniye gerçekleştirmeyi tahmin ettiğiniz işlem sayısını tahmin etmek içindir. Tipik sorguları ve bunların kullanımlarını de ölçdiğinizden ve dahil ettiğinizden emin olun. Program aracılığıyla veya Portal kullanarak sorguların RU maliyetlerini nasıl tahmin edebileceğiniz hakkında bilgi edinmek için bkz. [sorguların maliyetini En Iyi duruma getirme](./optimize-cost-reads-writes.md). 
 
 3. İşlem/süre ve istek ücreti dökümünü sunan Azure Izleyici günlüklerini etkinleştirerek, işlemleri ve bunların maliyetlerini bir diğer şekilde almanın bir başka yolu da vardır. Azure Cosmos DB her işlem için istek ücreti sağlar, bu nedenle her işlem ücreti yanıttan geri depolanabilir ve daha sonra analiz için kullanılır. 
 
@@ -182,6 +182,5 @@ Daha sonra, aşağıdaki makalelerle Azure Cosmos DB maliyet iyileştirmesi hakk
 * [Azure Cosmos DB Faturanızı Anlama](understand-your-bill.md) hakkında daha fazla bilgi edinin
 * [Depolama maliyetini iyileştirme](optimize-cost-storage.md) hakkında daha fazla bilgi edinin
 * [Okuma ve yazma maliyetlerini iyileştirme](optimize-cost-reads-writes.md) hakkında daha fazla bilgi edinin
-* [Sorguların maliyetini En Iyi duruma getirme](optimize-cost-queries.md) hakkında daha fazla bilgi edinin
+* [Sorguların maliyetini En Iyi duruma getirme](./optimize-cost-reads-writes.md) hakkında daha fazla bilgi edinin
 * [Çok bölgeli Azure Cosmos hesaplarının maliyetini En Iyi duruma getirme](optimize-cost-regions.md) hakkında daha fazla bilgi edinin
-

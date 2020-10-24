@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8735bf721ec85dcd556582f7fd887dd82b55a35d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b14910bc37fc8f3d7f105f382de64ae52fd19a47
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369990"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475235"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 için performans ipuçları
 
@@ -85,13 +85,13 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
 * **Daha düşük gecikme için Azure sanal makinenizde hızlandırılmış ağı etkinleştirin.**
 
-Performansı en üst düzeye çıkarmak için Windows kuruluşunuzda hızlandırılmış ağı etkinleştirmek [(yönergeler için tıklayın)](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) veya [Linux (yönergeler için tıklayın)](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) için yönergeleri izlemeniz önerilir.
+Performansı en üst düzeye çıkarmak için Windows kuruluşunuzda hızlandırılmış ağı etkinleştirmek [(yönergeler için tıklayın)](../virtual-network/create-vm-accelerated-networking-powershell.md) veya [Linux (yönergeler için tıklayın)](../virtual-network/create-vm-accelerated-networking-cli.md) için yönergeleri izlemeniz önerilir.
 
 Hızlandırılmış ağ olmadan, Azure VM 'niz ve diğer Azure kaynakları arasında geçiş yapan GÇ, VM ve ağ kartı arasında bulunan bir konak ve sanal anahtar aracılığıyla gereksiz yere yönlendirilebilir. Ana bilgisayarın ve sanal anahtarın veri yolunda satır içi olması, iletişim kanalında gecikme süresini ve değişimi artmakla kalmaz, VM 'den CPU döngülerini da artırır. Hızlandırılmış ağ ile, VM 'ler aracı olmadan doğrudan NIC ile birlikte arabirimler; konak ve sanal anahtar tarafından işlenmekte olan tüm ağ ilkesi ayrıntıları artık NIC 'de donanımda işlenir; konak ve sanal anahtar atlanır. Genellikle daha düşük gecikme süresi ve daha yüksek aktarım hızı, hızlandırılmış ağı etkinleştirdiğinizde daha *tutarlı* gecikme süresi ve azaltılmış CPU kullanımı sağlayabilirsiniz.
 
 Sınırlamalar: hızlandırılmış ağ, VM IŞLETIM sisteminde desteklenmelidir ve yalnızca VM durdurulduğunda ve serbest bırakıldığında etkinleştirilebilir. VM, Azure Resource Manager ile dağıtılamıyor.
 
-Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) ve [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) yönergelerine bakın.
+Daha fazla ayrıntı için lütfen [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) ve [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) yönergelerine bakın.
 
 ## <a name="sdk-usage"></a>SDK kullanımı
 * **En son SDK 'Yı yükler**
@@ -311,7 +311,7 @@ _ **Istemcinizi genişleme-iş yükü**
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateIndexingAsync)]
 
-    Daha fazla bilgi için bkz. [Azure Cosmos DB Dizin oluşturma ilkeleri](indexing-policies.md).
+    Daha fazla bilgi için bkz. [Azure Cosmos DB Dizin oluşturma ilkeleri](index-policy.md).
 
 ## <a name="throughput"></a>Aktarım hızı
 <a id="measure-rus"></a>

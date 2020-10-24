@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: d1c3ad9aa034e6eace5323dd80c5275699a6e728
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d821d6dacc2620988c32e63439ec2e039819e0a5
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331507"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495905"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Hizmet isteği başarısız oldu. Durum: 403 (yasak)
 
@@ -25,7 +25,9 @@ Bu hata, kimlik doğrulaması gerektiren birçok hizmet isteği türünde gerçe
 
 ### <a name="cause-1"></a>Neden #1
 
-Çoğu zaman bu hata, hizmet için Azure rol tabanlı erişim denetimi (Azure RBAC) izinlerinizin doğru ayarlanmadığını gösterir. Azure dijital TWINS örneği için birçok eylem, **yönetmeye çalıştığınız örnekte** *Azure dijital TWINS sahibi (Önizleme)* rolüne sahip olmanızı gerektirir. 
+Çoğu zaman bu hata, hizmet için Azure rol tabanlı erişim denetimi (Azure RBAC) izinlerinizin doğru ayarlanmadığını gösterir. Azure dijital TWINS örneği için birçok eylem, **yönetmeye çalıştığınız örnekte** *Azure Digital TWINS veri sahibi* rolüne sahip olmanızı gerektirir. 
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 ### <a name="cause-2"></a>Neden #2
 
@@ -37,11 +39,12 @@ Uygulama kaydı, Azure dijital TWINS API 'Leri için yapılandırılmış erişi
 
 ### <a name="solution-1"></a>Çözüm #1
 
-İlk çözüm, Azure Kullanıcı tarafından yönetmeye çalıştığınız örnekte _**Azure dijital TWINS sahibi (Önizleme)**_ rolünün olduğunu doğrulamadır. Bu role sahip değilseniz, ayarlayın.
+İlk çözüm, Azure kullanıcısının yönetmeye çalıştığınız örnekte _**Azure Digital TWINS veri sahibi**_ rolüne sahip olduğunu doğrulamadır. Bu role sahip değilseniz, ayarlayın.
 
 Bu rolün öğesinden farklı olduğunu unutmayın...
-* Tüm Azure aboneliğinde *sahip* rolü. Azure *dijital TWINS sahibi (Önizleme)* , Azure dijital TWINS 'in içindeki bir roldür ve bu tek Azure dijital TWINS örneği kapsamına alınır.
-* Azure dijital TWINS 'de *sahip* rolü. Bunlar, iki ayrı Azure dijital TWINS yönetim rolleridir ve *Azure Digital TWINS sahibi (Önizleme)* , önizleme sırasında yönetim için kullanılması gereken roldür.
+* Önizleme sırasında bu rolün önceki adı, *Azure dijital TWINS sahibi (Önizleme)* (rol aynıdır, ancak ad değişmiştir)
+* Tüm Azure aboneliğinde *sahip* rolü. Azure *dijital TWINS veri sahibi* , Azure dijital TWINS 'in içindeki bir roldür ve bu tek Azure dijital TWINS örneği kapsamına alınır.
+* Azure dijital TWINS 'de *sahip* rolü. Bunlar, iki ayrı Azure dijital TWINS yönetim rolleridir ve *Azure dijital TWINS veri sahibi* , önizleme sırasında yönetim için kullanılması gereken roldür.
 
 #### <a name="check-current-setup"></a>Geçerli kurulumu denetleyin
 
@@ -49,12 +52,12 @@ Bu rolün öğesinden farklı olduğunu unutmayın...
 
 #### <a name="fix-issues"></a>Sorunları giderme 
 
-Bu rol ataması yoksa, Azure **aboneliğinizde** sahip rolü olan birinin Azure **dijital TWINS örneğinde**Azure *dijital TWINS sahibi (Önizleme)* rolü sağlamak için aşağıdaki komutu çalıştırması gerekir. 
+Bu rol ataması yoksa, Azure **aboneliğinizde** sahip rolü olan birinin Azure **dijital**TWINS örneğinde Azure dijital *TWINS veri sahibi* rolünü vermesi için aşağıdaki komutu çalıştırması gerekir. 
 
 Abonelikte bir sahibiyseniz, bu komutu kendiniz çalıştırabilirsiniz. Değilseniz, bu komutu sizin adınıza çalıştırmak için bir sahibine başvurun.
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
 Bu rol gereksinimi ve atama süreci hakkında daha fazla bilgi için bkz. *nasıl yapılır: bir örnek ve kimlik doğrulaması ayarlama (CLI veya portal)*. [ *Set up your user's access permissions* ](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)

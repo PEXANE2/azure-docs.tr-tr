@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2da6fcb82b1ec14d6f57931709321871fa575d38
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 377165c94303a4a44d481009700cdef9169b3d78
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277032"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475813"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı işlemcisi
 
@@ -125,10 +125,10 @@ Değişiklik akışı işlemcisi başlatılır ve kapsayıcının yaşam süresi
 
 Değişiklik akışı işlemcisi, uzun süre çalışan işlemleri veya görevleri destekleyen herhangi bir platformda barındırılabilir:
 
-* Sürekli çalışan bir [Azure WebJob](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/).
-* [Azure sanal makinesindeki](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines)bir işlem.
-* [Azure Kubernetes hizmetinde](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)bir arka plan işi.
-* Bir [ASP.NET barındırılan hizmeti](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services).
+* Sürekli çalışan bir [Azure WebJob](/learn/modules/run-web-app-background-task-with-webjobs/).
+* [Azure sanal makinesindeki](/azure/architecture/best-practices/background-jobs#azure-virtual-machines)bir işlem.
+* [Azure Kubernetes hizmetinde](/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)bir arka plan işi.
+* Bir [ASP.NET barındırılan hizmeti](/aspnet/core/fundamentals/host/hosted-services).
 
 Değişiklik akışı işlemcisi kısa süreli ortamlarda çalışabilir, ancak kira kapsayıcısı durumu koruduğundan, bu ortamların başlangıç döngüleri bildirimleri almaya yönelik gecikme ekler (ortamın her başlatılışında işlemciyi başlatma yükünden kaynaklanır).
 
@@ -147,4 +147,4 @@ Değişiklik akışı işlemcisi kısa süreli ortamlarda çalışabilir, ancak 
 * [Değişiklik akışı çekme modeli](change-feed-pull-model.md)
 * [Değişiklik akışı işlemci kitaplığından geçiş yapma](how-to-migrate-from-change-feed-library.md)
 * [Değişiklik akışı tahmin aracını kullanma](how-to-use-change-feed-estimator.md)
-* [Değişiklik akışı işlemcisi başlangıç zamanı](how-to-configure-change-feed-start-time.md)
+* [Değişiklik akışı işlemcisi başlangıç zamanı](#starting-time)

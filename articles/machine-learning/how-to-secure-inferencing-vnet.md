@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/12/2020
+ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 0eb4f8a7994e7c1d04013e9c9cf92e604ef6a1a7
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: eb7439bc84eaa4bfba58be1059a19ddadfc6a93e
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424460"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496024"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning ınvenli bir ortamın güvenliğini sağlama
 
@@ -36,7 +36,7 @@ Bu makalede, bir sanal ağda aşağıdaki ınırm kaynaklarını güvenli hale g
 > - Azure Container Instances (ACI)
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
@@ -123,7 +123,7 @@ AKS kümesinden ve sanal ağa giden trafiği yalıtmak için iki yaklaşım vard
 * __Iç aks yük dengeleyici__: Bu yaklaşım, sanal ağ içinde özel bir IP kullanmak üzere dağıtımlarınız için uç noktayı yapılandırır.
 
 > [!WARNING]
-> **Özel AKS veya iç yük dengeleyici kullanın, ancak ikisini birden**kullanmayın.
+> İç yük dengeleyici, kubenet kullanan bir AKS kümesiyle çalışmaz. Aynı anda bir iç yük dengeleyici ve özel bir AKS kümesi kullanmak istiyorsanız, özel AKS kümenizi Azure Container Networking Interface (CNı) ile yapılandırın. Daha fazla bilgi için bkz. Azure [Kubernetes hizmetinde Azure CNI ağını yapılandırma](../aks/configure-azure-cni.md).
 
 ### <a name="private-aks-cluster"></a>Özel AKS kümesi
 
@@ -134,7 +134,7 @@ Varsayılan olarak, AKS kümelerinin, genel IP adreslerine sahip bir denetim dü
 > [!IMPORTANT]
 > Azure Machine Learning ile özel bağlantı etkin bir AKS kümesi kullanmadan önce, bu işlevi etkinleştirmek için bir destek olayı açmanız gerekir. Daha fazla bilgi için bkz. [kotaları yönetme ve artırma](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
-## <a name="internal-aks-load-balancer"></a>İç AKS yük dengeleyici
+### <a name="internal-aks-load-balancer"></a>İç AKS yük dengeleyici
 
 Varsayılan olarak, AKS dağıtımları [ortak yük dengeleyici](../aks/load-balancer-standard.md)kullanır. Bu bölümde, AKS 'in iç yük dengeleyiciyi kullanmak üzere nasıl yapılandırılacağını öğreneceksiniz. Ön uç olarak yalnızca özel IP 'Lere izin verilen bir iç (veya özel) yük dengeleyici kullanılır. İç yük dengeleyiciler, bir sanal ağ içindeki trafiğin yükünü dengelemek için kullanılır
 

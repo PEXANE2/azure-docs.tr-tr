@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 34b4a7395102549dfea6f9d51ef8d1216bacddba
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ebc0398eeb7679ffd57e0aa5aae642f6303aaa35
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327714"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484620"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight için Azure Güvenlik temeli
 
@@ -146,9 +146,7 @@ Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure RB
 
 Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme:
 
-https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
-Azure Ilkesini yapılandırma ve yönetme:
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias Azure Ilkesini yapılandırma ve yönetme:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -346,11 +344,11 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 Azure AD 'de PowerShell ile dizin rolü alma:
 
-https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole
 
 Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma:
 
-https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember
 
 Azure Güvenlik Merkezi ile kimlik ve erişimi izleme:
 
@@ -780,7 +778,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Azure aboneliklerinizi görüntüleme:
 
-https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription
 
 Azure RBAC 'yi anlama:
 
@@ -942,7 +940,7 @@ Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırm
 
 Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme:
 
-https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias
 
 Azure Ilkesini yapılandırma ve yönetme:
 
@@ -990,13 +988,9 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Kılavuz**: özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek Için Azure devops veya Azure Repos kullanın.
 
-Azure DevOps 'da kod depolama:
+[Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
-
-Azure Repos belgeleri:
-
-https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+[Azure Repos belgeleri](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1034,13 +1028,9 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Rehberlik**: HDInsight kümenizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak Için "Microsoft. HDInsight" ad alanındaki Azure ilke diğer adlarını kullanın.
 
-Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme:
+[Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias)
 
-https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
-Azure Ilkesini yapılandırma ve yönetme:
-
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+[Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1174,7 +1164,7 @@ https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 Azure 'da Key Vault anahtarlarını yedekleme:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1190,7 +1180,7 @@ https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok
 
 Azure 'da Anahtar Kasası anahtarlarını geri yükleme:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 

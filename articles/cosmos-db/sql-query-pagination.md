@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 4de3ec79b94969e45553857f1179a1104e090347
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2e899e76a1e68e120e0419926f8169785146bbfc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276103"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485044"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB sayfalandırma
 
@@ -56,7 +56,7 @@ Sorgu bir devamlılık belirteci döndürürse ek sorgu sonuçları vardır.
 
 Azure Cosmos DB REST API, üst bilgiyle devamlılık belirteçlerini yönetebilirsiniz `x-ms-continuation` . .NET veya Java SDK ile sorgulama yaparken, `x-ms-continuation` yanıt üst bilgisi boş değilse, sorgunun ek sonuçlara sahip olduğu anlamına gelir.
 
-Aynı SDK sürümünü kullandığınız sürece, devamlılık belirteçleri hiçbir zaman sona ermez. [Bir devamlılık belirtecinin boyutunu](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)isteğe bağlı olarak kısıtlayabilirsiniz. Sorgularınızdaki veri miktarı veya fiziksel bölüm sayısı ne olursa olsun sorgular tek bir devamlılık belirteci döndürür.
+Aynı SDK sürümünü kullandığınız sürece, devamlılık belirteçleri hiçbir zaman sona ermez. [Bir devamlılık belirtecinin boyutunu](/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)isteğe bağlı olarak kısıtlayabilirsiniz. Sorgularınızdaki veri miktarı veya fiziksel bölüm sayısı ne olursa olsun sorgular tek bir devamlılık belirteci döndürür.
 
 Bu sorgular önemli miktarda durum depolamayı gerektirdiğinden [Group By](sql-query-group-by.md) veya [DISTINCT](sql-query-keywords.md#distinct) içeren sorgular için devamlılık belirteçlerini kullanamazsınız. İle sorgular için `DISTINCT` , sorguya eklerseniz devamlılık belirteçlerini kullanabilirsiniz `ORDER BY` .
 

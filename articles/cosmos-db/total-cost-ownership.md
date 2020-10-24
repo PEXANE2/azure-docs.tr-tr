@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 1e6d0343a68d502fb567f6010b8c8b3043e282a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a058e7a23c36dcaca16c3cce1be1ca826d472bc0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569493"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477003"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Azure Cosmos DB ile toplam sahip olma maliyeti (TCO)
 
@@ -40,7 +40,7 @@ Azure Cosmos DB sunucusuz sağlama modeli, veritabanı altyapısının aşırı 
 
 * **Saate göre ödeme yaparsınız:** Zaman içinde herhangi bir noktada ölçeklendirilmesi gereken büyük ölçekli iş yükleri için yalnızca saate göre ücretlendirilirsiniz. Bir uygulamadaki iş yükleri genellikle yılın saatlerinde ve sorgulanan verilere göre farklılık gösterir. Azure Cosmos DB sayesinde ölçeği, ihtiyacınız olan şekilde değiştirebilir veya azaltabilirsiniz ve yalnızca ihtiyacınız olanlar için ödeme yapabilirsiniz. Şirket içi veya IaaS barındırılan sistemleri ile, her saat donanım yetkisini almanın bir yolu olmadığından bu modeli eşleştirebilirsiniz. Böyle durumlarda, büyük olasılıkla Azure Cosmos DB bir ortalama olarak 10 ila 14 kez tasarruf edebilirsiniz.
 
-* **Ücretsiz olarak çok sayıda özellik alırsınız:** Azure Cosmos DB, yazma iş yükleri alternatif veritabanı hizmetleriyle karşılaştırıldığında önemli ölçüde daha fazla. Ayrıca, Azure Cosmos DB [Otomatik Dizin oluşturma](indexing-policies.md), [yaşam süresi (TTL)](time-to-live.md), [akışı değiştirme](change-feed.md) ve diğer veritabanı hizmetlerinin genellikle ücretlendirdiği ek ücretler olmadan diğer özellikleri sunar.
+* **Ücretsiz olarak çok sayıda özellik alırsınız:** Azure Cosmos DB, yazma iş yükleri alternatif veritabanı hizmetleriyle karşılaştırıldığında önemli ölçüde daha fazla. Ayrıca, Azure Cosmos DB [Otomatik Dizin oluşturma](index-policy.md), [yaşam süresi (TTL)](time-to-live.md), [akışı değiştirme](change-feed.md) ve diğer veritabanı hizmetlerinin genellikle ücretlendirdiği ek ücretler olmadan diğer özellikleri sunar.
 
 * **Farklı iş yükleri için Birleşik para birimini kullanır:** Alternatif tekliflerden farklı olarak, Azure Cosmos DB iş yüklerinin aksine, örneğin, okuma ve yazma işlemleri yapmak zorunda değilsiniz. Ya da okuma aktarım hızı ve yazma aktarım hızına sahip bir iş yükü türüne göre verimlilik sağlama. Azure Cosmos DB, sağlanan aktarım hızı, Istek birimleri veya RU/sn açısından birleştirilmiş ve normalleştirilmiş bir para birimi kullanılarak ayrılmıştır. Azure Cosmos DB, iş yüklerinize öncelik atamanıza, kapasite planlama gerçekleştirmenize veya her bir kapasite türü için ayrı ücret ödemenize zorlamaz. Bu yaklaşım, çeşitli işlemler ve iş yükü türleri arasında aynı RU/s 'yi kolayca değiş tokuş etmenize olanak sağlar.
 
@@ -63,6 +63,6 @@ Azure Cosmos DB sunucusuz sağlama modeli, veritabanı altyapısının aşırı 
 * [Verimlilik maliyetini iyileştirme](optimize-cost-throughput.md) hakkında daha fazla bilgi edinin
 * [Depolama maliyetini iyileştirme](optimize-cost-storage.md) hakkında daha fazla bilgi edinin
 * [Okuma ve yazma maliyetlerini iyileştirme](optimize-cost-reads-writes.md) hakkında daha fazla bilgi edinin
-* [Sorguların maliyetini En Iyi duruma getirme](optimize-cost-queries.md) hakkında daha fazla bilgi edinin
+* [Sorguların maliyetini En Iyi duruma getirme](./optimize-cost-reads-writes.md) hakkında daha fazla bilgi edinin
 * [Çok bölgeli Cosmos hesaplarının maliyetini En Iyi duruma getirme](optimize-cost-regions.md) hakkında daha fazla bilgi edinin
 * [Bir NoSQL veritabanı bulut hizmeti 'Nin toplam maliyeti (değil)](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf) hakkında daha fazla bilgi edinin

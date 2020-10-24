@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 1b7cfa03aeb705ea7e7caf3254bc39d9fff722ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d50434ce3cca4e6f5082334bb91c3d569e2b1e1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546543"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483259"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>Öğretici: Taödünle Azure Active Directory tümleştirme
 
@@ -100,13 +100,13 @@ Azure AD çoklu oturum açma 'yı Taödünle paleti ile yapılandırmak için a�
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Taödünpalet etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/both_replyurl.png)
+    ![Ekran görüntüsü, bir yanıt U R L girebileceğiniz temel SAML yapılandırmasını gösterir.](common/both_replyurl.png)
 
     **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://talent-p.net/saml/acs/<tenantID>`
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Taödünpalet etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/both_signonurl.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/both_signonurl.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://talent-p.net/saml/sso/<tenantID>`
 
@@ -184,7 +184,7 @@ Bu bölümde, Tatatçine erişim vererek Azure çoklu oturum açma özelliğini 
 
 ### <a name="create-talent-palette-test-user"></a>Taödünpalet test kullanıcısı oluştur
 
-Bu bölümde, tasıya paleti içinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Tatatçli palet platformunda kullanıcıları eklemek için [taödünpalet destek ekibi](mailto:talent-support@pa-consul.co.jp) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, tasıya paleti içinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Tatatçli palet platformunda kullanıcıları eklemek için [taödünpalet destek ekibi](mailto:talent-support@pa-consul.co.jp) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

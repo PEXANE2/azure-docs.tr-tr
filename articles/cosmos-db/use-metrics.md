@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb6869aa8bc7ede7d2047abf8eddc98b01f567fa
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2a7645950fd7a239376f07d6c6f4689c1a3f3da5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280801"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476323"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB ölçümlerle izleme ve hata ayıklama
 
-Azure Cosmos DB işleme hızı, depolama, tutarlılık, kullanılabilirlik ve gecikme süresi ölçümleri sağlar. Azure portalı bu ölçümlerin bir toplu görünümünü sağlar. Azure Cosmos DB ölçümlerini Azure İzleyici API'sinden de görüntüleyebilirsiniz. Kapsayıcı adı gibi ölçümler için boyut değerleri büyük/küçük harfe duyarlıdır. Bu nedenle, bu boyut değerlerinde dize karşılaştırmaları yaparken büyük/küçük harfe duyarsız karşılaştırma kullanmanız gerekir. Azure izleyici 'de ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Azure izleyici 'den ölçümleri alma](cosmos-db-azure-monitor-metrics.md) makalesine bakın.
+Azure Cosmos DB işleme hızı, depolama, tutarlılık, kullanılabilirlik ve gecikme süresi ölçümleri sağlar. Azure portalı bu ölçümlerin bir toplu görünümünü sağlar. Azure Cosmos DB ölçümlerini Azure İzleyici API'sinden de görüntüleyebilirsiniz. Kapsayıcı adı gibi ölçümler için boyut değerleri büyük/küçük harfe duyarlıdır. Bu nedenle, bu boyut değerlerinde dize karşılaştırmaları yaparken büyük/küçük harfe duyarsız karşılaştırma kullanmanız gerekir. Azure izleyici 'de ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Azure izleyici 'den ölçümleri alma](./monitor-cosmos-db.md) makalesine bakın.
 
 Bu makale yaygın kullanım örneklerinde yol gösterir ve Azure Cosmos DB ölçümlerinin bu sorunlarda analiz ve hata ayıklama işlemleri için nasıl kullanılabileceğini açıklar. Ölçümler her beş dakikada bir toplanır ve yedi gün boyunca tutulur.
 
@@ -112,6 +112,6 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 Artık Azure portal belirtilen ölçümleri kullanarak sorunları nasıl izleyip ayıklayacağınız hakkında daha fazla öğrendiniz. Aşağıdaki makaleleri okuyarak veritabanı performansını artırma hakkında daha fazla bilgi edinmek isteyebilirsiniz:
 
-* Azure izleyici 'de ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Azure izleyici 'den ölçümleri alma](cosmos-db-azure-monitor-metrics.md) makalesine bakın. 
+* Azure izleyici 'de ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Azure izleyici 'den ölçümleri alma](./monitor-cosmos-db.md) makalesine bakın. 
 * [Azure Cosmos DB ile performans ve ölçek testi](performance-testing.md)
 * [Azure Cosmos DB için performans ipuçları](performance-tips.md)

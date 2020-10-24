@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: e4e680ea55988f7b3446bf72c8e800bcc51eb537
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 556b3915336d0ca9cec8ac67a34778cfb2523cbe
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282057"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475082"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB'de İstek birimleri
 
@@ -62,7 +62,7 @@ Kullanmakta olduğunuz Azure Cosmos hesabının türü, kullanılan RUs 'in ücr
 
   Aynı verilerde aynı sorgu, yinelenen yürütmeler üzerinde her zaman aynı ru sayısını ücretlendirilecektir.
 
-- **Betik kullanımı**: sorgularda olduğu gibi, saklı yordamlar ve Tetikleyiciler, gerçekleştirilen işlemlerin karmaşıklığına göre Rus kullanır. Uygulamanızı geliştirirken, her işlemin ne kadar RU kapasitesi tükettiğini daha iyi anlamak için [istek ücreti üst bilgisini](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) inceleyin.
+- **Betik kullanımı**: sorgularda olduğu gibi, saklı yordamlar ve Tetikleyiciler, gerçekleştirilen işlemlerin karmaşıklığına göre Rus kullanır. Uygulamanızı geliştirirken, her işlemin ne kadar RU kapasitesi tükettiğini daha iyi anlamak için [istek ücreti üst bilgisini](./optimize-cost-reads-writes.md#measuring-the-ru-charge-of-a-request) inceleyin.
 
 ## <a name="request-units-and-multiple-regions"></a>İstek birimleri ve birden çok bölge
 
@@ -76,12 +76,12 @@ Bir Cosmos kapsayıcısının *' R '* ru ile yapılandırıldığını ve Cosmos
 
 - [Azure Cosmos kapsayıcılarında ve veritabanlarında işleme sağlama](set-throughput.md)hakkında daha fazla bilgi edinin.
 - [Azure Cosmos DB sunucusuz](serverless.md)hakkında daha fazla bilgi edinin.
-- [Mantıksal bölümler](partition-data.md)hakkında daha fazla bilgi edinin.
-- [Sağlanan aktarım hızını genel olarak ölçeklendirme](scaling-throughput.md)hakkında daha fazla bilgi edinin.
+- [Mantıksal bölümler](./partitioning-overview.md)hakkında daha fazla bilgi edinin.
+- [Sağlanan aktarım hızını genel olarak ölçeklendirme]()hakkında daha fazla bilgi edinin.
 - [Azure Cosmos kapsayıcısında üretilen iş sağlama](how-to-provision-container-throughput.md)hakkında bilgi edinin.
 - [Azure Cosmos veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md)hakkında bilgi edinin.
 - [Bir işlem için istek birimi ücreti bulmayı](find-request-unit-charge.md)öğrenin.
 - [Azure Cosmos DB ' de sağlanan üretilen iş maliyetini en uygun hale getirmeyi](optimize-cost-throughput.md)öğrenin.
 - [Azure Cosmos DB ' de okuma ve yazma maliyetini en iyileştirmeden](optimize-cost-reads-writes.md)öğrenin.
-- [Sorgu maliyetinin Azure Cosmos DB nasıl iyileştirileceği](optimize-cost-queries.md)hakkında bilgi edinin.
+- [Sorgu maliyetinin Azure Cosmos DB nasıl iyileştirileceği](./optimize-cost-reads-writes.md)hakkında bilgi edinin.
 - [Verimlilik izlemek için ölçümleri nasıl kullanacağınızı](use-metrics.md)öğrenin.

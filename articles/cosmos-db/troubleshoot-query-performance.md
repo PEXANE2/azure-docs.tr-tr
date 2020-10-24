@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 9d17ce5b3409d8b6bb24d42c2857ba22699e1364
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7e57656a6749f600d07b679aad6b8c77ac96551
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277168"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476714"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken karşılaşılan sorgu sorunlarını giderme
 
@@ -191,7 +191,7 @@ Dizin oluşturma ilkesi güncelleştirildi:
 
 **Ru ücreti:** 2,98 Rus
 
-Herhangi bir zamanda, yazma veya okuma kullanılabilirliği üzerinde hiçbir etkisi olmadan dizin oluşturma ilkesine özellikler ekleyebilirsiniz. [Dizin dönüştürme ilerlemesini izleyebilirsiniz](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+Herhangi bir zamanda, yazma veya okuma kullanılabilirliği üzerinde hiçbir etkisi olmadan dizin oluşturma ilkesine özellikler ekleyebilirsiniz. [Dizin dönüştürme ilerlemesini izleyebilirsiniz](./how-to-manage-indexing-policy.md#dotnet-sdk).
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Hangi sistem işlevlerinin Dizin kullandığını anlayın
 
@@ -491,5 +491,5 @@ Sorgular, geçerli sonuç toplu işi istemci tarafından işlendiği sırada son
 Her sorgu için ru ölçüyle ilgili bilgiler için aşağıdaki makalelere bakın, sorgularınızı ayarlamak için yürütme istatistiklerini alın ve daha fazlasını yapın:
 
 * [.NET SDK kullanarak SQL sorgu yürütme ölçümleri alın](profile-sql-api-query.md)
-* [Azure Cosmos DB ile sorgu performansını ayarlama](sql-api-sql-query-metrics.md)
+* [Azure Cosmos DB ile sorgu performansını ayarlama](./sql-api-query-metrics.md)
 * [.NET SDK’sı için performans ipuçları](performance-tips.md)

@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 31e129b9b1a4b5161ed33c27ea4da76168170dbe
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667444"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495983"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning stüdyo nedir?
 
@@ -30,7 +30,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Studio, tür projesine ve kullanıcı deneyiminin düzeyine bağlı olarak birden çok yazma deneyimi sunar.
 
-+ **Not Defterleri**
++ **Notebooks**
 
   Doğrudan Studio 'da tümleştirilmiş olan yönetilen [Jupyter Notebook sunucularında](how-to-run-jupyter-notebooks.md) kendi kodunuzu yazın ve çalıştırın. 
 
@@ -61,7 +61,7 @@ Makine öğrenimi varlıklarınızı doğrudan tarayıcınızda yönetin. Varlı
 - Notebooks
 - Denemeler
 - Günlükleri Çalıştır
-- İşlem hatları 
+- Pipelines 
 - Ardışık düzen uç noktaları
 
 Deneyimli bir geliştirici olsanız bile, Studio çalışma alanı kaynaklarını nasıl yönetebileceğinizi kolaylaştırabilir.
@@ -98,7 +98,9 @@ Aşağıdaki tablo ML Studio (klasik) ve Azure Machine Learning arasındaki öne
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Studio 'yu](https://ml.azure.com)ziyaret edin veya bu öğreticilerle farklı yazma seçeneklerini keşfedebilirsiniz:  
-  + [& dağıtım modellerini eğitme için Python not defterlerini kullanma](tutorial-1st-experiment-sdk-setup.md)
+
+- + [Kendi geliştirme ortamınızı kullanmaya başlayın](tutorial-1st-experiment-sdk-setup-local.md)
+  + [& modellerini eğitmek için bir işlem örneğinde Jupyıter not defterlerini kullanma](tutorial-1st-experiment-sdk-setup.md)
   + [& dağıtım modellerini eğitme için otomatik makine öğrenimi kullanma](tutorial-first-experiment-automated-ml.md)  
   + [& modellerini eğitmek için tasarımcıyı kullanma](tutorial-designer-automobile-price-train-score.md)
 

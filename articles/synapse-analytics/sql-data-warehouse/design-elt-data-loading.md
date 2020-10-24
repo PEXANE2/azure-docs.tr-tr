@@ -11,18 +11,18 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fecdd65ae0dbf9faeb0e74e6446a9deaf8273106
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 2f3433075a1fddf116aae28666feb62473c6dbfb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075034"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476102"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL havuzu için veri yükleme stratejileri
 
-Geleneksel SMP SQL havuzları verileri yüklemek için bir Ayıkla, dönüştürme ve yükleme (ETL) işlemi kullanır. Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzu, bilgi işlem ve depolama kaynaklarının ölçeklenebilirlik ve esnekliğinden faydalanan, yüksek düzeyde paralel işleme (MPP) mimarisine sahiptir.
+Geleneksel SMP SQL havuzları verileri yüklemek için bir Ayıkla, dönüştürme ve yükleme (ETL) işlemi kullanır. Azure SYNAPSE Analytics 'te SYNAPSE SQL, işlem ve depolama kaynaklarının ölçeklenebilirlik ve esnekliğinden faydalanan dağıtılmış sorgu işleme mimarisini kullanır.
 
-Ayıklama, yükleme ve dönüştürme (ELT) işleminin kullanımı, MPP özelliğinden yararlanır ve yüklemeden önce veri dönüştürme için gereken kaynakları ortadan kaldırır.
+Ayıklama, yükleme ve dönüştürme (ELT) işleminin kullanımı, yerleşik olarak dağıtılan sorgu işleme yeteneklerini kullanır ve yüklemeden önce veri dönüştürme için gereken kaynakları ortadan kaldırır.
 
 SQL havuzu [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve [SqlBulkCopy apı](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)gibi popüler SQL Server seçenekleri de dahil olmak üzere birçok yükleme yöntemini desteklese de, verileri yüklemenin en hızlı ve en ölçeklenebilir yolu PolyBase dış tabloları ve [Copy deyimleridir](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
@@ -109,11 +109,11 @@ Parquet dosyalarını yüklerken aşağıdaki SQL veri türü eşlemesini kullan
 |                            INT32                             |           INT (32, false)            |      bigint      |
 |                            INT32                             |                 DATE                  |       date       |
 |                            INT32                             |                KATEGORI                |     decimal      |
-|                            INT32                             |            SAAT (MILIMETRE)             |       saat       |
+|                            INT32                             |            SAAT (MILIMETRE)             |       time       |
 |                            INT64                             |            INT (64, true)            |      bigint      |
 |                            INT64                             |           INT (64, false)            |  ondalık (20, 0)   |
 |                            INT64                             |                KATEGORI                |     decimal      |
-|                            INT64                             |         SAAT (MIKRO S/NANOS)         |       saat       |
+|                            INT64                             |         SAAT (MIKRO S/NANOS)         |       time       |
 |                            INT64                             | ZAMAN DAMGASı (MILIMETRE/MIKRO S/NANOS) |    datetime2     |
 | [Karmaşık tür](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23lists&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=6Luk047sK26ijTzfvKMYc%2FNu%2Fz0AlLCX8lKKTI%2F8B5o%3D&reserved=0) |                 LISTELE                  |   varchar(maks.)   |
 | [Karmaşık tür](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  HARITA                  |   varchar(maks.)   |

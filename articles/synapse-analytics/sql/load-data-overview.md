@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d96604cd23f49ff61dce2087fde2c13b8fa2069d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbbed2ccaa62a99bb54a6d3d2eecf0c644281404
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483737"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474674"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure SYNAPSE SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
 
-Geleneksel SMP veri ambarları, verileri yüklemek için bir ayıklama, dönüştürme ve yükleme (ETL) işlemi kullanır. Azure SQL havuzu, bilgi işlem ve depolama kaynaklarının ölçeklenebilirlik ve esnekliğinden faydalanan, yüksek düzeyde paralel işleme (MPP) mimarisidir. Ayıklama, yükleme ve dönüştürme (ELT) işleminin kullanımı, MPP özelliğinden yararlanabilir ve yüklemeden önce verileri dönüştürmek için gereken kaynakları ortadan kaldırabilir.
+Geleneksel SMP veri ambarları, verileri yüklemek için bir ayıklama, dönüştürme ve yükleme (ETL) işlemi kullanır. Azure SQL havuzu, bilgi işlem ve depolama kaynaklarının ölçeklenebilirlik ve esnekliğinden faydalanan, yüksek düzeyde paralel işleme (MPP) mimarisidir. Ayıklama, yükleme ve dönüştürme (ELT) işleminin kullanılması, yerleşik olarak dağıtılan sorgu işleme özelliğinden yararlanabilir ve yüklemeden önce verileri dönüştürmek için gereken kaynakları ortadan kaldırabilir.
 
 SQL havuzu BCP ve SQL BulkCopy API gibi PolyBase seçenekleri de dahil olmak üzere çok sayıda yükleme yöntemini destekleirken, yükleme tarihinin en hızlı ve en ölçeklenebilir yolu PolyBase aracılığıyla yapılır.  PolyBase, Azure Blob depolamada depolanan dış verilere veya T-SQL dili üzerinden Azure Data Lake Store erişen bir teknolojidir.
 
@@ -73,7 +73,7 @@ SQL Server dışarı aktarıyorsanız, verileri sınırlandırılmış metin dos
 |       timestamp       |                        girişin                         |
 |       timestamp       |                          datetime2                           |
 |       timestamp       |                           datetime                           |
-|       timestamp       |                             saat                             |
+|       timestamp       |                             time                             |
 |       date            |                             date                             |
 |        decimal        |                            decimal                           |
 
@@ -112,7 +112,7 @@ Metin dosyalarını biçimlendirmek için:
 
 ## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4. PolyBase kullanarak SQL havuzu hazırlama tablolarına verileri yükleme
 
-Hazırlama tablosuna veri yüklemek en iyi uygulamadır. Hazırlama tabloları, üretim tablolarının kesintiye uğramadan hataları işleyebilmeniz için izin verir. Hazırlama tablosu, verileri üretim tablolarına eklemeden önce veri dönüştürmeleri için SQL havuzu MPP kullanma fırsatı da sunar.
+Hazırlama tablosuna veri yüklemek en iyi uygulamadır. Hazırlama tabloları, üretim tablolarının kesintiye uğramadan hataları işleyebilmeniz için izin verir. Hazırlama tablosu, verileri üretim tablolarına eklemeden önce veri dönüştürmeleri için yerleşik olarak dağıtılan sorgu işleme yeteneklerini de kullanmanıza olanak sağlar.
 
 ### <a name="options-for-loading-with-polybase"></a>PolyBase ile yükleme seçenekleri
 

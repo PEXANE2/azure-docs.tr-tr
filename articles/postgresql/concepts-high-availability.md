@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 075f5fde272d4ee2e932e5f6c1f0e34324c38837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707940"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485452"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>PostgreSQL için Azure veritabanı 'nda yüksek kullanılabilirlik – tek sunucu
 PostgreSQL için Azure veritabanı – tek sunucu hizmeti, [% 99,99](https://azure.microsoft.com/support/legal/sla/postgresql) çalışma süresi için mali olarak desteklenen hizmet düzeyi SÖZLEŞMESI (SLA) ile garantili yüksek düzeyde kullanılabilirlik sağlar. PostgreSQL için Azure veritabanı, Kullanıcı tarafından sağlanan ölçek işlem işlemi gibi planlı olaylar sırasında ve ayrıca temel alınan donanım, yazılım veya ağ başarısızlığı gibi planlanmamış olaylar gerçekleştiğinde yüksek kullanılabilirlik sağlar. PostgreSQL için Azure veritabanı en kritik durumlardan hızla kurturabilir ve bu hizmeti kullanırken neredeyse hiçbir uygulama süresi olmamasını sağlar.
@@ -40,8 +40,8 @@ Aşağıda bazı planlı bakım senaryoları verilmiştir:
 | ------------ | ----------- |
 | <b>İşlem ölçeği artırma/azaltma | Kullanıcı işlem ölçeğini artırma/azaltma işlemi gerçekleştirdiğinde, ölçeklenmiş işlem yapılandırması kullanılarak yeni bir veritabanı sunucusu sağlanır. Eski veritabanı sunucusunda, etkin kontrol noktalarının tamamlanabilmesi için, istemci bağlantıları boşaltılır, kaydedilmeyen tüm işlemler iptal edilir ve sonra kapatılır. Depolama daha sonra eski veritabanı sunucusundan ayrılır ve yeni veritabanı sunucusuna eklenir. İstemci uygulaması bağlantıyı yeniden dener veya yeni bir bağlantı kurmaya çalıştığında, ağ geçidi bağlantı isteğini yeni veritabanı sunucusuna yönlendirir.|
 | <b>Depolama alanını ölçeklendirme | Depolama alanının ölçeği, çevrimiçi bir işlemdir ve veritabanı sunucusunu kesintiye uğratmaz.|
-| <b>Yeni yazılım dağıtımı (Azure) | Yeni özellik dağıtımı veya hata düzeltmeleri, hizmetin planlı bakımının bir parçası olarak otomatik olarak gerçekleşir. Daha fazla bilgi için [belgelere](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)bakın ve ayrıca [portalınızı](https://aka.ms/servicehealthpm)kontrol edin.|
-| <b>İkincil sürüm yükseltmeleri | PostgreSQL için Azure veritabanı, veritabanı sunucularını otomatik olarak Azure tarafından belirlenen alt sürüme ekler. Hizmetin planlı bakım kapsamında olur. Bu, saniye cinsinden kısa bir kapalı kalma süresine neden olur ve veritabanı sunucusu yeni ikincil sürümle otomatik olarak yeniden başlatılır. Daha fazla bilgi için [belgelere](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)bakın ve ayrıca [portalınızı](https://aka.ms/servicehealthpm)kontrol edin.|
+| <b>Yeni yazılım dağıtımı (Azure) | Yeni özellik dağıtımı veya hata düzeltmeleri, hizmetin planlı bakımının bir parçası olarak otomatik olarak gerçekleşir. Daha fazla bilgi için [belgelere](./concepts-monitoring.md#planned-maintenance-notification)bakın ve ayrıca [portalınızı](https://aka.ms/servicehealthpm)kontrol edin.|
+| <b>İkincil sürüm yükseltmeleri | PostgreSQL için Azure veritabanı, veritabanı sunucularını otomatik olarak Azure tarafından belirlenen alt sürüme ekler. Hizmetin planlı bakım kapsamında olur. Bu, saniye cinsinden kısa bir kapalı kalma süresine neden olur ve veritabanı sunucusu yeni ikincil sürümle otomatik olarak yeniden başlatılır. Daha fazla bilgi için [belgelere](./concepts-monitoring.md#planned-maintenance-notification)bakın ve ayrıca [portalınızı](https://aka.ms/servicehealthpm)kontrol edin.|
 
 
 ##  <a name="unplanned-downtime-mitigation"></a>Planlanmamış kapalı kalma süresi azaltma
@@ -68,8 +68,8 @@ Kurtarmak için Kullanıcı eylemi gerektiren bazı hata senaryoları şunlardı
 
 | **Senaryo** | **Kurtarma planı** |
 | ---------- | ---------- |
-| <b> Bölge hatası | Bölge arızası nadir bir olaydır. Ancak, bir bölge hatasından korumaya ihtiyacınız varsa, diğer bölgelerde olağanüstü durum kurtarma (DR) için bir veya daha fazla okuma çoğaltması yapılandırabilirsiniz. (Ayrıntılar için okuma çoğaltmaları oluşturma ve yönetme ile ilgili [Bu makaleye](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) bakın). Bölge düzeyinde bir hata olması durumunda, diğer bölgede yapılandırılan okuma çoğaltmasını üretim veritabanı sunucunuz olacak şekilde el ile yükseltebilirsiniz. |
-| <b> Mantıksal/Kullanıcı hataları | Yanlışlıkla bırakılan tablolar veya yanlış güncelleştirilmiş veriler gibi Kullanıcı hatalarından kurtarma, hata oluşmadan hemen önce geçen zamana kadar verileri geri yükleyerek ve kurtararak bir [zaman içinde kurtarma](https://docs.microsoft.com/azure/postgresql/concepts-backup) (sür) gerçekleştirmeyi içerir.<br> <br>  Veritabanı sunucusundaki tüm veritabanları yerine veritabanlarının yalnızca bir alt kümesini veya belirli tabloları geri yüklemek isterseniz, veritabanı sunucusunu yeni bir örneğe geri yükleyebilir, [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)aracılığıyla tabloları dışarı aktarabilir ve ardından bu tabloları veritabanınıza geri yüklemek için [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) kullanabilirsiniz. |
+| <b> Bölge hatası | Bölge arızası nadir bir olaydır. Ancak, bir bölge hatasından korumaya ihtiyacınız varsa, diğer bölgelerde olağanüstü durum kurtarma (DR) için bir veya daha fazla okuma çoğaltması yapılandırabilirsiniz. (Ayrıntılar için okuma çoğaltmaları oluşturma ve yönetme ile ilgili [Bu makaleye](./howto-read-replicas-portal.md) bakın). Bölge düzeyinde bir hata olması durumunda, diğer bölgede yapılandırılan okuma çoğaltmasını üretim veritabanı sunucunuz olacak şekilde el ile yükseltebilirsiniz. |
+| <b> Mantıksal/Kullanıcı hataları | Yanlışlıkla bırakılan tablolar veya yanlış güncelleştirilmiş veriler gibi Kullanıcı hatalarından kurtarma, hata oluşmadan hemen önce geçen zamana kadar verileri geri yükleyerek ve kurtararak bir [zaman içinde kurtarma](./concepts-backup.md) (sür) gerçekleştirmeyi içerir.<br> <br>  Veritabanı sunucusundaki tüm veritabanları yerine veritabanlarının yalnızca bir alt kümesini veya belirli tabloları geri yüklemek isterseniz, veritabanı sunucusunu yeni bir örneğe geri yükleyebilir, [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)aracılığıyla tabloları dışarı aktarabilir ve ardından bu tabloları veritabanınıza geri yüklemek için [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) kullanabilirsiniz. |
 
 
 
