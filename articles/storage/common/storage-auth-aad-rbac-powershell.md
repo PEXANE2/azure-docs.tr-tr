@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d750e1f287ff7dfc5259b704355e026011fa872a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19262441df87b96bbb43a010ca47861ec2b236d3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715798"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488767"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere PowerShell 'i kullanma
 
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD), [Azure rol tabanlı erişim denetimi (Azure R
 
 Azure AD güvenlik sorumlusuna bir Azure rolü atandığında Azure, bu güvenlik sorumlusu için bu kaynaklara erişim izni verir. Erişim, aboneliğin düzeyi, kaynak grubu, depolama hesabı veya tek bir kapsayıcı veya kuyruk kapsamına eklenebilir. Azure AD güvenlik sorumlusu, bir Kullanıcı, Grup, uygulama hizmeti sorumlusu veya [Azure kaynakları için yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md)olabilir.
 
-Bu makalede, Azure yerleşik rollerini listelemek ve kullanıcılara atamak için Azure PowerShell nasıl kullanılacağı açıklanır. Azure PowerShell kullanma hakkında daha fazla bilgi için bkz. [Azure PowerShell genel bakış](https://docs.microsoft.com/powershell/azure/).
+Bu makalede, Azure yerleşik rollerini listelemek ve kullanıcılara atamak için Azure PowerShell nasıl kullanılacağı açıklanır. Azure PowerShell kullanma hakkında daha fazla bilgi için bkz. [Azure PowerShell genel bakış](/powershell/azure/).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

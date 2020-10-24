@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: e3bbe39077cf6d7781f7e11fde044cf272aa83e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b403a960016be3795857ddd5645eb73e53e83bd6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714383"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488614"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Depolama Gezgini Güvenlik Kılavuzu
 
@@ -44,13 +44,13 @@ Bu bölümde, depolama kaynaklarınızın güvenliğini sağlamak için kullanı
 
 #### <a name="azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC)
 
-Azure [rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) , Azure kaynaklarınız üzerinde ayrıntılı erişim denetimi sağlar. Azure rolleri ve izinleri Azure portal yönetilebilir.
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/overview) , Azure kaynaklarınız üzerinde ayrıntılı erişim denetimi sağlar. Azure rolleri ve izinleri Azure portal yönetilebilir.
 
 Depolama Gezgini, depolama hesaplarına, bloblara ve kuyruklara Azure RBAC erişimini destekler. Dosya paylaşımlarına veya tablolara erişmeniz gerekiyorsa, depolama hesabı anahtarlarını listeleme izni veren Azure rolleri atamanız gerekir.
 
 #### <a name="access-control-lists-acls"></a>Erişim denetim listeleri (ACL’ler)
 
-[Erişim denetim listeleri (ACL 'ler)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) ADLS 2. blob kapsayıcılarında dosya ve klasör düzeyinde erişimi denetlemenize olanak tanır. Depolama Gezgini kullanarak ACL 'Leri yönetebilirsiniz.
+[Erişim denetim listeleri (ACL 'ler)](/azure/storage/blobs/data-lake-storage-access-control) ADLS 2. blob kapsayıcılarında dosya ve klasör düzeyinde erişimi denetlemenize olanak tanır. Depolama Gezgini kullanarak ACL 'Leri yönetebilirsiniz.
 
 ### <a name="shared-access-signatures-sas"></a>Paylaşılan erişim imzaları (SAS)
 
@@ -102,4 +102,4 @@ Bir blob kapsayıcısı için genel erişimi etkinleştirirken aşağıdaki yön
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Güvenlik önerileri](https://docs.microsoft.com/azure/storage/blobs/security-recommendations)
+- [Güvenlik önerileri](/azure/storage/blobs/security-recommendations)

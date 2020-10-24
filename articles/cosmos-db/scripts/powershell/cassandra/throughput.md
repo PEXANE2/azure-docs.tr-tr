@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 3bb69843e3035e1cf59a9e341ae39ef249b6a9fe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8bf49445990596471a6526274c2aa86843d4868a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282783"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488274"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB için anahtar uzayı veya tablo için PowerShell ile işleme (RU/s) işlemleri Cassandra API
 
@@ -47,16 +47,16 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-Azcosmosdbcassandrakeyspaceverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspacethroughput) | Cassandra API keyspace 'in üretilen iş değerini alır. |
-| [Get-Azcosmosdbcassandratableverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratablethroughput) | Cassandra API tablosunun üretilen iş değerini alır. |
-| [Update-Azcosmosdbcassandrakeyspaceverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbcassandrakeyspacethroughput) | Cassandra API keyspace 'in üretilen iş değerini güncelleştirir. |
-| [Update-Azcosmosdbcassandratableverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbcassandratablethroughput) | Cassandra API tablosunun üretilen iş değerini güncelleştirir. |
-| [Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration](https://docs.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbcassandrakeyspacethroughputmigration) | Cassandra API bir keyspace için aktarım hızını geçirin. |
-| [Invoke-AzCosmosDBCassandraTableThroughputMigration](https://docs.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbcassandratablethroughputmigration) | Cassandra API tablosu için aktarım hızını geçirin. |
+| [Get-Azcosmosdbcassandrakeyspaceverimini](/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspacethroughput) | Cassandra API keyspace 'in üretilen iş değerini alır. |
+| [Get-Azcosmosdbcassandratableverimini](/powershell/module/az.cosmosdb/get-azcosmosdbcassandratablethroughput) | Cassandra API tablosunun üretilen iş değerini alır. |
+| [Update-Azcosmosdbcassandrakeyspaceverimini](/powershell/module/az.cosmosdb/update-azcosmosdbcassandrakeyspacethroughput) | Cassandra API keyspace 'in üretilen iş değerini güncelleştirir. |
+| [Update-Azcosmosdbcassandratableverimini](/powershell/module/az.cosmosdb/update-azcosmosdbcassandratablethroughput) | Cassandra API tablosunun üretilen iş değerini güncelleştirir. |
+| [Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration](/powershell/module/az.cosmosdb/invoke-azcosmosdbcassandrakeyspacethroughputmigration) | Cassandra API bir keyspace için aktarım hızını geçirin. |
+| [Invoke-AzCosmosDBCassandraTableThroughputMigration](/powershell/module/az.cosmosdb/invoke-azcosmosdbcassandratablethroughputmigration) | Cassandra API tablosu için aktarım hızını geçirin. |
 |**Azure Kaynak grupları**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).

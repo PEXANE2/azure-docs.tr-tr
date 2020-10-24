@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/17/2020
-ms.openlocfilehash: 4e7da02f7dd7e8fb19e031b814624b289730b3ee
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 10/21/2020
+ms.openlocfilehash: a666acbcd2aed168bd1d871c0ef0fb8c3205fd05
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367729"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479161"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Öğretici: Azure AD uygulamalarını kullanarak Azure AD kullanıcıları oluşturma
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Azure SQL veritabanı 'nda hizmet sorumlusu kullanıcısı oluşturma
 > - Azure AD hizmet sorumlusu kullanıcısını kullanarak SQL veritabanı 'nda farklı bir Azure AD kullanıcısı oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Mevcut bir [Azure SQL veritabanı](single-database-create-quickstart.md) veya [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) dağıtımı. Bu öğretici için çalışan bir SQL veritabanınız olduğunu varsayıyoruz.
 - Zaten var olan bir Azure Active Directory erişim.
@@ -67,7 +67,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     > [!IMPORTANT]
     > Azure SQL mantıksal sunucusu için bir Azure AD kimliği ayarlandıysa, kimliğe [**Dizin okuyucular**](../../active-directory/roles/permissions-reference.md#directory-readers) izni verilmesi gerekir. Aşağıdaki bölümde bu adımla gezineceğiz. Azure AD kimlik doğrulaması çalışmayı durduracaktır, bu **adımı atlayın.**
 
-    - Geçmişte yeni bir SQL Server oluşturma parametresi ile [New-azsqlserver](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) komutunu kullandıysanız `AssignIdentity` , bu özelliği Azure dokusunda etkinleştirmek Için daha sonra [set-azsqlserver](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) komutunu ayrı bir komut olarak yürütmeniz gerekecektir.
+    - Geçmişte yeni bir SQL Server oluşturma parametresi ile [New-azsqlserver](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) komutunu kullandıysanız `AssignIdentity` , bu özelliği Azure dokusunda etkinleştirmek Için daha sonra [set-azsqlserver](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) komutunu ayrı bir komut olarak yürütmeniz gerekir.
 
 1. Sunucu kimliğinin başarıyla atandığını denetleyin. Aşağıdaki PowerShell komutunu yürütün:
 
@@ -177,6 +177,16 @@ Bu öğreticide ana hizmet sorumlusu olarak *Appsp* 'Yi ve *Appsp*tarafından Az
 
 Azure AD uygulaması oluşturma hakkında daha fazla bilgi için bkz. [nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](../../active-directory/develop/howto-create-service-principal-portal.md).
 
+### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>Azure AD yöneticisini ayarlamak veya ayarını kaldırmak için gereken izinler
+
+Hizmet sorumlusu 'nın Azure SQL için bir Azure AD yöneticisi ayarlaması veya ayarı ayarlaması için ek bir API Izni gereklidir. [Directory. Read. tüm](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) Application API IZINLERININ Azure AD 'de uygulamanıza eklenmesi gerekir.
+
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="nesne kimliği":::
+
+Ayrıca hizmet sorumlusu SQL veritabanı için [**SQL Server katkıda**](../../role-based-access-control/built-in-roles.md#sql-server-contributor) bulunan rolüne veya SQL yönetilen örneği Için [**SQL yönetilen örnek katılımcısı**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) rolüne gerekecektir.
+
+> [!NOTE]
+> Azure AD Graph API kullanım dışı olsa da, bu öğretici için **Directory. Reader. All** izni hala geçerlidir. Microsoft Graph API bu öğretici için geçerlidir.
 
 ## <a name="create-the-service-principal-user-in-azure-sql-database"></a>Azure SQL veritabanı 'nda hizmet sorumlusu kullanıcısı oluşturma
 

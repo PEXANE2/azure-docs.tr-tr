@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bcda410e678e44916a4128d7ef097883e148ed79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81d0a0df53ff18661582416d4d96fd5d5ee83192
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551869"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486914"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Öğretici: uniFLOW Online ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -101,7 +101,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdakilerin yanı sıra, en düşük çevrimiçi uygulama aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Name |  Kaynak özniteliği|
+    | Adı |  Kaynak özniteliği|
     | -----------| --------------- |
     | DisplayName | User. DisplayName |
     | takma ad | User. onpremisessamaccountname |
@@ -152,20 +152,19 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Ifkılow online
 
 1. Sol Gezinti panelinden **Kullanıcı** sekmesi ' ni seçin.
 
-    ![En düşük çevrimiçi yapılandırma](./media/uniflow-online-tutorial/configure1.png)
+    ![Ekran görüntüsü Kullanıcı tarafından seçili olmayan çevrimiçi siteden görüntülenir.](./media/uniflow-online-tutorial/configure1.png)
 
 1. **Kimlik sağlayıcıları**' na tıklayın.
 
-    ![En düşük çevrimiçi yapılandırma](./media/uniflow-online-tutorial/configure2.png)
+    ![Ekran görüntüsü kimlik sağlayıcılarının seçili olduğunu gösterir.](./media/uniflow-online-tutorial/configure2.png)
 
 1. **Kimlik sağlayıcısı ekle**' ye tıklayın.
 
-    ![En düşük çevrimiçi yapılandırma](./media/uniflow-online-tutorial/configure3.png)
+    ![Ekran görüntüsü, seçilmiş kimlik sağlayıcısını gösterir.](./media/uniflow-online-tutorial/configure3.png)
 
 1. **KIMLIK sağlayıcısı ekle** bölümünde aşağıdaki adımları uygulayın:
 
-
-    ![En düşük çevrimiçi yapılandırma](./media/uniflow-online-tutorial/configure4.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz KIMLIK sağlayıcısı ekle bölümünü gösterir.](./media/uniflow-online-tutorial/configure4.png)
 
     a. Ex: *Azuread SSO*görünen adını girin.
 
@@ -177,7 +176,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Ifkılow online
 
 1. **Genel** sekmesinde, aşağıdaki adımları uygulayın:
 
-    ![En düşük çevrimiçi yapılandırma](./media/uniflow-online-tutorial/configure5.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Genel sekmesini gösterir.](./media/uniflow-online-tutorial/configure5.png)
 
     a. Ex: *Azuread SSO*görünen adını girin.
 

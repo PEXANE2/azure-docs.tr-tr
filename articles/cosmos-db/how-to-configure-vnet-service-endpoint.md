@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1c1d96c373103e0a89a9553ce8dab6ce5cce23c7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d18cf248aa94e23abfa6e2b9467bb1167a32a6f1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279695"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490535"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) Azure Cosmos DB erişimi yapılandırma
 
@@ -93,7 +93,7 @@ Portaldan Azure Cosmos DB ölçümlerine erişiminizin olduğundan emin olmak i�
 
 Azure PowerShell kullanarak bir hizmet uç noktasını bir Azure Cosmos DB hesabına yapılandırmak için aşağıdaki adımları kullanın:  
 
-1. [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) yükleyip [oturum açın](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
+1. [Azure PowerShell](/powershell/azure/install-Az-ps) yükleyip [oturum açın](/powershell/azure/authenticate-azureps).  
 
 1. Bir sanal ağın mevcut alt ağı için hizmet uç noktasını etkinleştirin.  
 
@@ -317,7 +317,7 @@ Aşağıda, sanal ağlardan erişimi yapılandırma hakkında sık sorulan bazı
 
 ### <a name="are-notebooks-and-mongocassandra-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Not defterleri ve Mongo/Cassandra kabuğu Şu anda sanal ağ etkin hesaplarıyla uyumlu mı?
 
-Şu anda Cosmos DB Veri Gezgini [Mongo kabuğu](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) ve [Cassandra kabuğu](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/) tümleştirmeleri ve [jupi Not defterleri hizmeti](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks), VNET erişimiyle desteklenmez. Bu, şu anda etkin geliştirme aşamasındadır.
+Şu anda Cosmos DB Veri Gezgini [Mongo kabuğu](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) ve [Cassandra kabuğu](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/) tümleştirmeleri ve [jupi Not defterleri hizmeti](./cosmosdb-jupyter-notebooks.md), VNET erişimiyle desteklenmez. Bu, şu anda etkin geliştirme aşamasındadır.
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Azure Cosmos hesabında hem sanal ağ hizmeti uç noktası hem de IP erişim denetim ilkesi belirtebilir miyim? 
 

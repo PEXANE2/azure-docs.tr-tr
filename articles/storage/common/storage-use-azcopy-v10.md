@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 2f5b82f07ecff36ba95917a1f1b347c42ae7e074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1d25ae127d9a732225859a09622bb057c348e28
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856798"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488495"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
@@ -37,7 +37,7 @@ AzCopy, bir depolama hesabına iki yönlü blob veya dosya kopyalama işlemi ger
 Bu dosyalar bir ZIP dosyası (Windows ve Mac) veya bir tar dosyası (Linux) olarak sıkıştırılır. IK dosyasını Linux üzerinde indirip sıkıştırmasını açmak için Linux dağıtımına yönelik belgelere bakın.
 
 > [!NOTE]
-> [Azure Tablo depolama](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) hizmetinize veri kopyalamak Istiyorsanız, [azcopy sürüm 7,3](https://aka.ms/downloadazcopynet)' yi de yükleyebilirsiniz.
+> [Azure Tablo depolama](/azure/storage/tables/table-storage-overview) hizmetinize veri kopyalamak Istiyorsanız, [azcopy sürüm 7,3](https://aka.ms/downloadazcopynet)' yi de yükleyebilirsiniz.
 
 
 ## <a name="run-azcopy"></a>AzCopy programını çalıştırma
@@ -80,14 +80,14 @@ Azure Active Directory kullanarak, her komuta bir SAS belirteci eklemek yerine k
 
 İhtiyacınız olan yetkilendirme düzeyi, dosyaları karşıya yüklemeyi veya yalnızca indirmeyi planladığınızı temel alır.
 
-Yalnızca dosyaları indirmek istiyorsanız, [Depolama Blobu veri okuyucusunun](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) Kullanıcı Kimliğiniz, yönetilen kimlik veya hizmet sorumlusuna atandığını doğrulayın.
+Yalnızca dosyaları indirmek istiyorsanız, [Depolama Blobu veri okuyucusunun](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) Kullanıcı Kimliğiniz, yönetilen kimlik veya hizmet sorumlusuna atandığını doğrulayın.
 
 > Kullanıcı kimlikleri, Yönetilen kimlikler ve hizmet sorumluları her bir *güvenlik sorumlusu*türü olduğundan, bu makalenin geri kalanında *güvenlik sorumlusu* terimini kullanacağız.
 
 Dosyaları karşıya yüklemek isterseniz, bu rollerden birinin güvenlik sorumlusuna atandığını doğrulayın:
 
-- [Depolama Blob Verileri Katkıda Bulunanı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
-- [Depolama Blob Verileri Sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
+- [Depolama Blob Verileri Katkıda Bulunanı](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
+- [Depolama Blob Verileri Sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 Bu roller, bu kapsamların hiçbirinde güvenlik sorumlusuna atanabilir:
 
@@ -96,14 +96,14 @@ Bu roller, bu kapsamların hiçbirinde güvenlik sorumlusuna atanabilir:
 - Kaynak grubu
 - Abonelik
 
-Rolleri doğrulama ve atamayı öğrenmek için bkz. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Rolleri doğrulama ve atamayı öğrenmek için bkz. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Azure rol atamalarının yaymanın en fazla beş dakika sürebileceğini aklınızda bulundurun.
 
 Güvenlik sorumlunuz Hedef kapsayıcının veya dizinin erişim denetim listesine (ACL) eklendiyse güvenlik sorumlusuna bu rollerden birine sahip olmanız gerekmez. ACL 'de güvenlik sorumlunuz hedef dizinde yazma iznine sahip olmalıdır ve kapsayıcıda ve her üst dizinde yürütme iznini gerektirir.
 
-Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Access Control](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
+Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Access Control](/azure/storage/blobs/data-lake-storage-access-control).
 
 #### <a name="authenticate-a-user-identity"></a>Kullanıcı kimliğinin kimliğini doğrulama
 
@@ -123,7 +123,7 @@ azcopy login --tenant-id=<tenant-id>
 
 Bu komut, bir kimlik doğrulama kodu ve bir Web sitesinin URL 'sini döndürür. Web sitesini açın, kodu sağlayın ve sonra **İleri** düğmesini seçin.
 
-![Bir kapsayıcı oluşturma](media/storage-use-azcopy-v10/azcopy-login.png)
+![Kapsayıcı oluşturma](media/storage-use-azcopy-v10/azcopy-login.png)
 
 Oturum açma penceresi görüntülenir. Bu pencerede, Azure hesabı kimlik bilgilerinizi kullanarak Azure hesabınızda oturum açın. Başarıyla oturum açtıktan sonra, tarayıcı penceresini kapatabilir ve AzCopy kullanmaya başlayabilirsiniz.
 
@@ -137,9 +137,9 @@ Bir betiği çalıştırmadan önce, hizmet sorumlunuzu kimlik bilgileriyle AzCo
 
 Bir istemci gizli anahtarını veya hizmet sorumlusunun uygulama kaydıyla ilişkili bir sertifikanın parolasını kullanarak hesabınızda oturum açabilirsiniz.
 
-Hizmet sorumlusu oluşturma hakkında daha fazla bilgi edinmek için bkz. [nasıl yapılır: portalı kullanarak kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Hizmet sorumlusu oluşturma hakkında daha fazla bilgi edinmek için bkz. [nasıl yapılır: portalı kullanarak kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturma](/azure/active-directory/develop/howto-create-service-principal-portal).
 
-Genel olarak hizmet sorumluları hakkında daha fazla bilgi için, bkz. [Azure Active Directory uygulama ve hizmet sorumlusu nesneleri](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+Genel olarak hizmet sorumluları hakkında daha fazla bilgi için, bkz. [Azure Active Directory uygulama ve hizmet sorumlusu nesneleri](/azure/active-directory/develop/app-objects-and-service-principals)
 
 ##### <a name="using-a-client-secret"></a>İstemci parolası kullanma
 
@@ -169,7 +169,7 @@ azcopy login --service-principal  --application-id application-id --tenant-id=te
 
 Yetkilendirme için kendi kimlik bilgilerinizi kullanmayı tercih ediyorsanız, uygulama kaydınıza bir sertifika yükleyebilir ve sonra bu sertifikayı kullanarak oturum açabilirsiniz.
 
-Sertifikanızı uygulama kaydıza yüklemeye ek olarak, AzCopy 'in çalıştığı makineye veya VM 'ye kaydedilmiş sertifikanın bir kopyasına sahip olmanız da gerekir. Sertifikanın bu kopyası içinde olmalıdır. PFX veya. PEK biçimi ve özel anahtarı içermelidir. Özel anahtar parola korumalı olmalıdır. Windows kullanıyorsanız ve sertifikanız yalnızca bir sertifika deposunda mevcutsa, sertifikayı bir PFX dosyasına (özel anahtar dahil) aktardığınızdan emin olun. Rehberlik için bkz. [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)
+Sertifikanızı uygulama kaydıza yüklemeye ek olarak, AzCopy 'in çalıştığı makineye veya VM 'ye kaydedilmiş sertifikanın bir kopyasına sahip olmanız da gerekir. Sertifikanın bu kopyası içinde olmalıdır. PFX veya. PEK biçimi ve özel anahtarı içermelidir. Özel anahtar parola korumalı olmalıdır. Windows kullanıyorsanız ve sertifikanız yalnızca bir sertifika deposunda mevcutsa, sertifikayı bir PFX dosyasına (özel anahtar dahil) aktardığınızdan emin olun. Rehberlik için bkz. [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate)
 
 Ardından, `AZCOPY_SPA_CERT_PASSWORD` ortam değişkenini sertifika parolası olarak ayarlayın.
 
@@ -205,7 +205,7 @@ Sistem genelinde yönetilen bir kimliği etkinleştirme veya Kullanıcı tarafı
 
 ##### <a name="using-a-system-wide-managed-identity"></a>Sistem genelinde yönetilen kimlik kullanma
 
-İlk olarak, VM 'niz üzerinde sistem genelinde yönetilen bir kimlik etkinleştirdiğinizden emin olun. Bkz. [sistem tarafından atanan yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity).
+İlk olarak, VM 'niz üzerinde sistem genelinde yönetilen bir kimlik etkinleştirdiğinizden emin olun. Bkz. [sistem tarafından atanan yönetilen kimlik](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity).
 
 Ardından, komut konsolunuza aşağıdaki komutu yazın ve ENTER tuşuna basın.
 
@@ -215,7 +215,7 @@ azcopy login --identity
 
 ##### <a name="using-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik kullanma
 
-İlk olarak, VM 'niz üzerinde kullanıcı tarafından atanan bir yönetilen kimliği etkinleştirdiğinizden emin olun. Bkz. [Kullanıcı tarafından atanan yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity).
+İlk olarak, VM 'niz üzerinde kullanıcı tarafından atanan bir yönetilen kimliği etkinleştirdiğinizden emin olun. Bkz. [Kullanıcı tarafından atanan yönetilen kimlik](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity).
 
 Ardından, komut konsolunuza aşağıdaki komutlardan birini yazın ve ENTER tuşuna basın.
 
@@ -247,7 +247,7 @@ Bu örnek komut, verileri bir yerel dizinden bir blob kapsayıcısına özyinele
 azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
-SAS belirteçleri ve nasıl elde edileceği hakkında daha fazla bilgi edinmek için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview).
+SAS belirteçleri ve nasıl elde edileceği hakkında daha fazla bilgi edinmek için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](/azure/storage/common/storage-sas-overview).
 
 ## <a name="transfer-files"></a>Dosyaları aktarma
 
@@ -261,7 +261,7 @@ Kimliğinizi doğruladıktan veya bir SAS belirteci edindikten sonra, dosyaları
 
 - [AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)
 
-- [AzCopy ve Azure Stack Storage ile veri aktarımı](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#azcopy)
+- [AzCopy ve Azure Stack Storage ile veri aktarımı](/azure-stack/user/azure-stack-storage-transfer#azcopy)
 
 ## <a name="use-azcopy-in-a-script"></a>Betikte AzCopy kullanma
 
@@ -312,9 +312,9 @@ Depolama Gezgini, işlemleri gerçekleştirmek için hesap anahtarınızı kulla
 
 AzCopy 'in önceki sürümünü kullanmanız gerekirse, aşağıdaki bağlantılardan birine bakın:
 
-- [Windows üzerinde AzCopy (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
+- [Windows üzerinde AzCopy (v8)](/previous-versions/azure/storage/storage-use-azcopy)
 
-- [Linux üzerinde AzCopy (v7)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+- [Linux üzerinde AzCopy (v7)](/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 

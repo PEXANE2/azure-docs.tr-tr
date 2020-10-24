@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 217a049b589db98b6d28e7a0ef9b8ef64f635349
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e9328d25459985172d2a80915bb156d297371ae
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88541723"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>Öğretici: TimeLive ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile TimeLive ile tümleştirme aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini TimeLive ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -130,11 +130,11 @@ Azure AD çoklu oturum açmayı TimeLive ile yapılandırmak için aşağıdaki 
 
 2. **Yönetici seçenekleri**altında **Tercihler** ' i seçin.
 
-    ![TimeLive yapılandırması](./media/timelive-tutorial/configure1.png)
+    ![Ekran görüntüsü tercihleri seçili Yönetici seçeneklerini gösterir.](./media/timelive-tutorial/configure1.png)
 
 3. **Uygulama tercihi** bölümünde aşağıdaki adımları gerçekleştirin:
     
-    ![TimeLive yapılandırması](./media/timelive-tutorial/configure2.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz uygulama tercihi bölümünü gösterir.](./media/timelive-tutorial/configure2.png)
 
     a. **Güvenlik** sekmesini seçin.
 

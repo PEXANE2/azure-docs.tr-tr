@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: 5e32e269a36196d774bb1163a1c70c5d818ddcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e99d68d31f1da4dcb3ef1086a2bbd90f0ab30410
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000626"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489005"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop üzerinde Apache Hive ve Apache Pig ile C# Kullanıcı tanımlı işlevleri kullanma
 
@@ -24,13 +24,13 @@ HDInsight üzerinde [Apache Hive](https://hive.apache.org) ve [Apache Pig](https
 
 Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu işlem _akış_olarak bilinir. .NET uygulaması kullanılırken, veriler STDIN üzerindeki uygulamaya geçirilir ve uygulama STDOUT üzerinde sonuçları döndürür. STDıN ve STDOUT 'tan okumak ve yazmak için `Console.ReadLine()` `Console.WriteLine()` bir konsol uygulaması kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * .NET Framework 4,5 ' i hedefleyen C# kodu yazma ve oluşturma hakkında bir benzerlik.
 
     İstediğiniz IDE 'yi kullanın. [Visual Studio](https://www.visualstudio.com/vs) veya [Visual Studio Code](https://code.visualstudio.com/)önerilir. Bu belgedeki adımlarda Visual Studio 2019 kullanılır.
 
-* . Exe dosyalarını kümeye yüklemek ve Pig ve Hive işlerini çalıştırmak için bir yol. Visual Studio, [Azure PowerShell](/powershell/azure)ve [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) [için Data Lake araçlar](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md)önerilir. Bu belgedeki adımlarda, dosyaları karşıya yüklemek ve örnek Hive sorgusunu çalıştırmak için Visual Studio için Data Lake araçları kullanılır.
+* . Exe dosyalarını kümeye yüklemek ve Pig ve Hive işlerini çalıştırmak için bir yol. Visual Studio, [Azure PowerShell](/powershell/azure)ve [Azure CLI](/cli/azure/install-azure-cli) [için Data Lake araçlar](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md)önerilir. Bu belgedeki adımlarda, dosyaları karşıya yüklemek ve örnek Hive sorgusunu çalıştırmak için Visual Studio için Data Lake araçları kullanılır.
 
     Hive sorguları çalıştırmanın diğer yolları hakkında bilgi için bkz. [Azure HDInsight 'ta Apache Hive ve HiveQL nedir?](hdinsight-use-hive.md).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2e50502c8c3e37c5d48359079e2e72c13feea4a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399049"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487883"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Içeri/dışarı aktarma hizmeti: sık sorulan sorular
 
@@ -132,7 +132,7 @@ Hayır. Tüm sürücüler BitLocker ile şifrelenir.
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Bu hizmet tarafından içeri aktarılan verilere nasıl erişebilirim?
 
-Azure depolama hesabınızın altındaki verilere erişmek için Azure portal veya [Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) kullanın.  
+Azure depolama hesabınızın altındaki verilere erişmek için Azure portal veya [Depolama Gezgini](/azure/vs-azure-tools-storage-manage-with-storage-explorer) kullanın.  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>İçeri aktarma işlemi tamamlandıktan sonra, verileri depolama hesabında nasıl görünür? Dizin hiyerarşim korunuyor mu?
 
@@ -144,7 +144,7 @@ Bir sabit sürücüyü içeri aktarma işi için hazırlarken, hedef veri kümes
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Waımportexport Aracı, 32 bitlik işletim sistemleriyle uyumludur mi?
 
-Hayır. Waımportexport aracı yalnızca 64 bitlik Windows işletim sistemleriyle uyumludur. Desteklenen işletim SISTEMININ tüm listesi için [desteklenen Işletim sistemlerine](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)gidin.
+Hayır. Waımportexport aracı yalnızca 64 bitlik Windows işletim sistemleriyle uyumludur. Desteklenen işletim SISTEMININ tüm listesi için [desteklenen Işletim sistemlerine](/azure/storage/common/storage-import-export-requirements)gidin.
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure Içeri/dışarı aktarma tarafından desteklenen maksimum Blok Blobu ve Sayfa Blobu boyutu nedir?
 

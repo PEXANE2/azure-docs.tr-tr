@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/12/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 615bd423296fb9ed2ee28cab9e362873a30ee7b9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7a34b4a3a0f9fe75b5e252f20a8b0924b0ce01d7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284681"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488393"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API kullanırken sorgu sorunlarını giderme
 
@@ -116,7 +116,7 @@ db.coll.find({foodGroup: "Baby Foods"}).explain({"executionStatistics": true })
 | `timeInclusiveMS` | Arka uç sorgu gecikmesi |
 | `pathsIndexed` | Sorgunun kullandığı dizinleri gösterir | 
 | `pathsNotIndexed` | Varsa, sorgunun kullandığı dizinleri gösterir | 
-| `shardInformation` | Belirli bir [fiziksel bölümün](partition-data.md#physical-partitions) sorgu performansının Özeti | 
+| `shardInformation` | Belirli bir [fiziksel bölümün](./partitioning-overview.md#physical-partitions) sorgu performansının Özeti | 
 | `retrievedDocumentCount` | Sorgu altyapısı tarafından yüklenen belge sayısı | 
 | `outputDocumentCount` | Sorgu sonuçlarında döndürülen belge sayısı | 
 | `estimatedDelayFromRateLimitingInMilliseconds` | Hız sınırlaması nedeniyle tahmini ek sorgu gecikmesi | 
@@ -256,7 +256,7 @@ MongoDB için Azure Cosmos DB API 'sindeki en iyi yöntemler dizin oluşturma, M
 
 [Joker karakter dizinleri](mongodb-indexing.md#wildcard-indexes) , dizin oluşturmayı basitleştirecek. MongoDB 'nin aksine, joker karakter dizinleri sorgu koşullarına göre birden çok alanı destekleyebilir. Her özellik için ayrı bir dizin oluşturmak yerine bir tek joker karakter dizini kullanırsanız sorgu performansında bir farklılık olmayacaktır. Tüm özellikler için joker bir dizin eklemek, tüm sorgularınızı iyileştirmek için en kolay yoldur.
 
-Herhangi bir zamanda yazma veya okuma kullanılabilirliği üzerinde hiçbir etkisi olmayacak şekilde yeni dizinler ekleyebilirsiniz. [Dizin dönüştürme ilerlemesini izleyebilirsiniz](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+Herhangi bir zamanda yazma veya okuma kullanılabilirliği üzerinde hiçbir etkisi olmayacak şekilde yeni dizinler ekleyebilirsiniz. [Dizin dönüştürme ilerlemesini izleyebilirsiniz](./how-to-manage-indexing-policy.md#dotnet-sdk).
 
 ### <a name="understand-which-aggregation-operations-use-the-index"></a>Hangi toplama işlemlerinin Dizin kullandığını anlayın
 

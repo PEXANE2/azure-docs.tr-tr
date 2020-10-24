@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20bedf7e48b2e40cd67e33ea024a3ae0a9d305a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fd828baed5a03cbce5d5327248eb34045ffd6bc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707549"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489719"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLı 'dan okuma çoğaltmaları oluşturun ve yönetin REST API
 
@@ -32,9 +32,9 @@ Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması g
 ## <a name="azure-cli"></a>Azure CLI
 Azure CLı kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-- [Azure CLI 2.0’ı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI 2.0’ı yükleme](/cli/azure/install-azure-cli)
 - [PostgreSQL Için Azure veritabanı sunucusunun](quickstart-create-server-up-azure-cli.md) birincil sunucu olması.
 
 
@@ -60,7 +60,7 @@ Azure CLı kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
 ### <a name="create-a-read-replica"></a>Okuma amaçlı çoğaltma oluşturma
 
-[Az Postgres Server Replication Create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) komutu aşağıdaki parametreleri gerektirir:
+[Az Postgres Server Replication Create](/cli/azure/postgres/server/replica#az-postgres-server-replica-create) komutu aşağıdaki parametreleri gerektirir:
 
 | Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
@@ -91,14 +91,14 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 > Birincil sunucu ayarı yeni bir değere güncellenmesinden önce, çoğaltma ayarını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana üzerinde yapılan değişikliklerle devam etmesine yardımcı olur.
 
 ### <a name="list-replicas"></a>Çoğaltmaları Listele
-[Az Postgres Server Replication List](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list) komutunu kullanarak bir birincil sunucunun çoğaltmalarının listesini görüntüleyebilirsiniz.
+[Az Postgres Server Replication List](/cli/azure/postgres/server/replica#az-postgres-server-replica-list) komutunu kullanarak bir birincil sunucunun çoğaltmalarının listesini görüntüleyebilirsiniz.
 
 ```azurecli-interactive
 az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>Çoğaltma sunucusuna çoğaltmayı durdur
-[Az Postgres Server Replication stop](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop) komutunu kullanarak birincil sunucu ile okuma çoğaltması arasında çoğaltmayı durdurabilirsiniz.
+[Az Postgres Server Replication stop](/cli/azure/postgres/server/replica#az-postgres-server-replica-stop) komutunu kullanarak birincil sunucu ile okuma çoğaltması arasında çoğaltmayı durdurabilirsiniz.
 
 Birincil sunucuya çoğaltmayı ve bir okuma çoğaltmasını durdurduktan sonra geri alınamaz. Okuma çoğaltması, hem okuma hem de yazma işlemlerini destekleyen tek başına bir sunucu haline gelir. Tek başına sunucu tekrar bir çoğaltmaya yapılamaz.
 
@@ -107,7 +107,7 @@ az postgres server replica stop --name mydemoserver-replica --resource-group myr
 ```
 
 ### <a name="delete-a-primary-or-replica-server"></a>Birincil veya çoğaltma sunucusunu silme
-Birincil veya çoğaltma sunucusunu silmek için [az Postgres Server DELETE](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-delete) komutunu kullanın.
+Birincil veya çoğaltma sunucusunu silmek için [az Postgres Server DELETE](/cli/azure/postgres/server#az-postgres-server-delete) komutunu kullanın.
 
 Birincil sunucuyu sildiğinizde, tüm okuma çoğaltmalarına çoğaltma durdurulur. Okuma çoğaltmaları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
 

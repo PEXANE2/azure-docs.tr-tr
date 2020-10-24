@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b99d5ea33693431fb3811af50385891684a366e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df256749a813fe81857aa250081411afd52ae35c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546466"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489566"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>Öğretici: ThousandEyes ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -129,11 +129,11 @@ Bu bölümde, ThousandEyes 'e erişim vererek Azure çoklu oturum açma özelli�
 
 2. Üstteki menüde, **Ayarlar**' a tıklayın.
 
-    ![Ayarlar](./media/thousandeyes-tutorial/ic790066.png "Ayarlar")
+    ![Ekran görüntüsü, ayarlar seçiliyken ThousandEyes sitesini gösterir.](./media/thousandeyes-tutorial/ic790066.png "Ayarlar")
 
 3. **Hesap** öğesine tıklayın
 
-    ![Hesap](./media/thousandeyes-tutorial/ic790067.png "Hesap")
+    ![Ekran görüntüsü ayarlar menüsünden Seçili hesabı gösterir.](./media/thousandeyes-tutorial/ic790067.png "Hesap")
 
 4. **Güvenlik & kimlik doğrulaması** sekmesine tıklayın.
 
@@ -165,11 +165,11 @@ Bu bölümün amacı, ThousandEyes ' de Britta Simon adlı bir Kullanıcı oluş
 
 2. **Ayarlar**'a tıklayın.
 
-    ![Ayarlar](./media/thousandeyes-tutorial/IC790066.png "Ayarlar")
+    ![Ekran görüntüsü, ayarlar seçiliyken ThousandEyes sitesini gösterir.](./media/thousandeyes-tutorial/ic790066.png "Ayarlar")
 
 3. **Hesap**' a tıklayın.
 
-    ![Hesap](./media/thousandeyes-tutorial/IC790067.png "Hesap")
+    ![Ekran görüntüsü ayarlar menüsünden Seçili hesabı gösterir.](./media/thousandeyes-tutorial/ic790067.png "Hesap")
 
 4. **Hesaplar & kullanıcılar** sekmesine tıklayın.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b016468d858162123e2796e0d76b83b0a1bbf33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568055"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480063"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB için Azure Synapse Link: Gerçek zamanlıya yakın analiz için kullanım örnekleri
 
@@ -118,7 +118,7 @@ Tek bir gerçek zamanlı veritabanı, bir envanter yönetimi platformunun hem i�
 
   * İşlem deposunda [gerçek zamanlı dizin oluşturma](index-policy.md) ile her iki toplu iş & akış veri akışı alımı.
 
-  * Azure Cosmos DB işlemsel depolama, iş gereksiniminden en yakın [kullanılabilirlik vs performans dengelerinin](consistency-levels-tradeoffs.md) elde edilebilmesi için güçlü ve nihai tutarlılık seviyelerinin üç aşırı uç daha fazla seçenek sunar.
+  * Azure Cosmos DB işlemsel depolama, iş gereksiniminden en yakın [kullanılabilirlik vs performans dengelerinin](./consistency-levels.md) elde edilebilmesi için güçlü ve nihai tutarlılık seviyelerinin üç aşırı uç daha fazla seçenek sunar.
 
 * CompanyXYZ 'in tedarik zinciri ortakları, yüzlerce ve milyonlarca istekten oluşan trafik desenlerinin büyük ölçüde dalgalanmasının yanı sıra envanter yönetimi platformunun trafikte beklenmedik bir burstılmayla uğraşması gerekir.  Azure Cosmos DB kullanmanın avantajları:
 

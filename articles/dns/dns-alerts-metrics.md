@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
-ms.openlocfilehash: 42acbc0d32b3ce5de4befcf112b68f611ad70542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a27c4519024d6d3d2f3852534619b5f8c2bb5e43
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76937451"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489617"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS ölçümleri ve uyarıları
 Azure DNS, Microsoft Azure altyapısını kullanarak ad çözümlemesi sağlayan DNS etki alanları için bir barındırma hizmetidir. Bu makalede Azure DNS hizmetine yönelik ölçümler ve uyarılar açıklanmaktadır.
@@ -57,7 +57,7 @@ Bu ölçümü görüntülemek için Azure portal Monitor sekmesinden ölçümler
 ### <a name="record-set-capacity-utilization"></a>Kayıt kümesi kapasite kullanımı
 Azure DNS ' de *kayıt kümesi kapasitesi kullanım* ölçümü, bir DNS bölgesi Için kayıt kümesi kapasitenizin kullanım yüzdesini gösterir. Azure DNS içindeki her DNS bölgesi, bölge için izin verilen en fazla kayıt kümesi sayısını tanımlayan bir kayıt kümesi sınırına tabidir (bkz. [DNS limitleri](dns-zones-records.md#limits)). Bu nedenle, bu ölçüm, kayıt kümesi sınırına vurmaya ne kadar yakın olduğunu gösterir. Örneğin, DNS bölgeniz için 500 Kayıt kümeniz varsa ve bölgede varsayılan kayıt kümesi sınırı 5000 ise, Recordsetkapaıyutilileştirme ölçümü, %10 değerini gösterir (Bu işlem, 500 5000 ' i bölerek elde edilir). Ölçü birimi **yüzde** , **toplama** türü ise **en fazla**. Bu ölçümü görüntülemek için Azure portal Monitor sekmesinden ölçümler (Önizleme) gezgin deneyimi ' ni seçin. Kaynak açılan listesinden DNS bölgenizi seçin, kayıt kümesi kapasitesi kullanım ölçümünü seçin ve toplama olarak en fazla ' yı seçin. Aşağıdaki ekran görüntüsünde bir örnek gösterilmektedir. Ölçüm Gezgini deneyimi ve grafik hakkında daha fazla bilgi için bkz. [Azure izleyici ölçüm Gezgini](../azure-monitor/platform/metrics-charts.md). 
 
-![Kayıt kümesi sayısı](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
+![Ölçümlerin nasıl görüntüleneceği hakkında bir örnek gösteren ekran görüntüsü.](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 
 *Şekil: Azure DNS kayıt kümesi kapasite kullanım ölçümleri*
 

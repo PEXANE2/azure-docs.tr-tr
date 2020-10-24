@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 0eaac8ac65b490e1b8de716d79bd36d2f7a7567c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d237d5709f8d2bb47de3e89b0b7103b195376e11
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707668"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489753"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Azure veritabanı for PostgreSQL için Azure veritabanı-tek sunucu, Azure portal kullanarak başka bir bölgeye taşıma
 
@@ -21,9 +21,9 @@ Mevcut bir PostgreSQL için Azure veritabanı sunucusunu bir bölgeden diğerine
 Bir PostgreSQL için Azure veritabanı [çapraz bölge okuma çoğaltması](concepts-read-replicas.md#cross-region-replication) kullanarak başka bir bölgeye taşıma işleminin tamamlanmasını sağlayabilirsiniz. Bunu yapmak için ilk olarak hedef bölgede bir okuma çoğaltması oluşturun. Ardından, okuma ve yazma trafiğini kabul eden tek başına bir sunucu haline getirmek için okuma çoğaltması sunucusuna çoğaltmayı durdurun. 
 
 > [!NOTE]
-> Bu makale, sunucunuzu farklı bir bölgeye taşımaya odaklanır. Sunucunuzu farklı bir kaynak grubuna veya aboneliğine taşımak istiyorsanız [taşıma](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) makalesine başvurun. 
+> Bu makale, sunucunuzu farklı bir bölgeye taşımaya odaklanır. Sunucunuzu farklı bir kaynak grubuna veya aboneliğine taşımak istiyorsanız [taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md) makalesine başvurun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bölgeler arası okuma çoğaltması özelliği yalnızca PostgreSQL için Azure veritabanı-Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında tek bir sunucu için kullanılabilir. Kaynak sunucunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 

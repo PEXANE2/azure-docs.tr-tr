@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: aad69a34cc27f341bec5beda0f52e2581538aaf9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cd6bbe963f0cee89c188053d0770816fdabc1b93
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278431"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490399"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB’ye hoş geldiniz
 
@@ -40,7 +40,7 @@ Azure altyapısı ve [saydam çok bölgeli yazma çoğaltmasıyla](global-dist-u
 
 ### <a name="elastic-scalability-of-throughput-and-storage-worldwide"></a>Verimlilik ve depolama için esnek ölçeklenebilirlik, dünya çapındaki
 
-Saydam yatay bölümleme ve çok bölgeli yazma çoğaltması ile tasarlanan Cosmos DB, dünyanın her yerindeki yazma ve okumalarınız için, benzersiz elastik ölçeklenebilirlik sunar. Tek bir API çağrısıyla, tek bir API çağrısıyla binlerce ve yüzlerce milyonlarca istek/sn üzerinden ölçeği esnek dönüştürebilirsiniz ve yalnızca ihtiyacınız olan aktarım hızı (ve depolama alanı) için ödeme yaparsınız. Bu özellik, en yüksek düzeyde sağlama yapmanıza gerek kalmadan iş yüklerinizde beklenmedik ani artışlar ile uğraşmanıza yardımcı olur. Daha fazla bilgi için bkz. [Cosmos DB bölümünde bölümlendirme](partitioning-overview.md), [kapsayıcılar ve veritabanlarında sağlanan aktarım hızı](set-throughput.md)ve [sağlanan aktarım hızını küresel olarak ölçeklendirme](scaling-throughput.md).
+Saydam yatay bölümleme ve çok bölgeli yazma çoğaltması ile tasarlanan Cosmos DB, dünyanın her yerindeki yazma ve okumalarınız için, benzersiz elastik ölçeklenebilirlik sunar. Tek bir API çağrısıyla, tek bir API çağrısıyla binlerce ve yüzlerce milyonlarca istek/sn üzerinden ölçeği esnek dönüştürebilirsiniz ve yalnızca ihtiyacınız olan aktarım hızı (ve depolama alanı) için ödeme yaparsınız. Bu özellik, en yüksek düzeyde sağlama yapmanıza gerek kalmadan iş yüklerinizde beklenmedik ani artışlar ile uğraşmanıza yardımcı olur. Daha fazla bilgi için bkz. [Cosmos DB bölümünde bölümlendirme](partitioning-overview.md), [kapsayıcılar ve veritabanlarında sağlanan aktarım hızı](set-throughput.md)ve [sağlanan aktarım hızını küresel olarak ölçeklendirme](./request-units.md).
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>99. yüzdede garantili düşük gecikme süresi, dünya çapındaki
 
@@ -48,7 +48,7 @@ Cosmos DB kullanarak yüksek oranda duyarlı, dünya ölçekli uygulamalar oluş
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Tam olarak tanımlanmış, birden çok tutarlılık seçeneği
 
-Cosmos DB ' de küresel olarak dağıtılmış uygulamalar oluştururken, artık [tutarlılık, kullanılabilirlik, gecikme süresi ve aktarım hızı arasında](consistency-levels-tradeoffs.md)aşırı bir denge yapmanız gerekmez. Cosmos DB çok bölgeli yazma çoğaltma protokolü, [five well-defined consistency choices](consistency-levels.md)  -  genel olarak dağıtılmış uygulamanız için düşük gecikme süresi ve yüksek kullanılabilirliğe sahip, sezgisel bir programlama modeli için*sağlam*, *sınırlanmış Eskime durumu*, *oturum*, *tutarlı ön ek*ve *nihai* beş iyi tanımlanmış tutarlılık seçeneği sunmak üzere dikkatle tasarlanmıştır.
+Cosmos DB ' de küresel olarak dağıtılmış uygulamalar oluştururken, artık [tutarlılık, kullanılabilirlik, gecikme süresi ve aktarım hızı arasında](./consistency-levels.md)aşırı bir denge yapmanız gerekmez. Cosmos DB çok bölgeli yazma çoğaltma protokolü, [five well-defined consistency choices](consistency-levels.md)  -  genel olarak dağıtılmış uygulamanız için düşük gecikme süresi ve yüksek kullanılabilirliğe sahip, sezgisel bir programlama modeli için*sağlam*, *sınırlanmış Eskime durumu*, *oturum*, *tutarlı ön ek*ve *nihai* beş iyi tanımlanmış tutarlılık seçeneği sunmak üzere dikkatle tasarlanmıştır.
 
 ### <a name="no-schema-or-index-management"></a>Şema veya dizin yönetimi yok
 
@@ -76,11 +76,11 @@ Cosmos DB, [sektör lideri kapsamlı SLA 'lar](https://azure.microsoft.com/suppo
 
 ### <a name="globally-distributed-operational-analytics-and-ai-with-natively-built-in-apache-spark"></a>Yerel olarak yerleşik Apache Spark, genel olarak dağıtılmış işlemsel analiz ve AI
 
-[Spark](spark-connector.md) 'ı, Cosmos DB depolanan veriler üzerinde doğrudan çalıştırabilirsiniz. Bu özellik, doğrudan Cosmos DB karşı çalışan işlem iş yüklerini etkilemeden küresel ölçekte düşük gecikmeli, işlemsel çözümlemeler yapmanıza olanak sağlar. Daha fazla bilgi için bkz. [küresel olarak dağıtılmış işlemsel analiz](lambda-architecture.md).
+[Spark](spark-connector.md) 'ı, Cosmos DB depolanan veriler üzerinde doğrudan çalıştırabilirsiniz. Bu özellik, doğrudan Cosmos DB karşı çalışan işlem iş yüklerini etkilemeden küresel ölçekte düşük gecikmeli, işlemsel çözümlemeler yapmanıza olanak sağlar. Daha fazla bilgi için bkz. [küresel olarak dağıtılmış işlemsel analiz](./synapse-link.md).
 
 ### <a name="develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis"></a>Popüler açık kaynak yazılım (OSS) API 'Lerini kullanarak Cosmos DB uygulama geliştirme
 
-Cosmos DB, Cosmos veritabanınızda depolanan verilerinize göre çalışan bir API seçimi sunmaktadır. Varsayılan olarak, Cosmos veritabanınızı sorgulamak için SQL (çekirdek API) [kullanabilirsiniz](how-to-sql-query.md) . Cosmos DB, [Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) ve [Azure Tablo depolama](table-introduction.md)için API 'leri de uygular. Yaygın olarak kullanılan NoSQL (örn., MongoDB, Cassandra, Gremlin) için istemci sürücülerini (ve araçları) doğrudan Cosmos veritabanınıza işaret edebilirsiniz. Yaygın olarak kullanılan NoSQL API 'Lerinin tel protokollerini destekleyerek, Cosmos DB şunları yapmanıza olanak sağlar:
+Cosmos DB, Cosmos veritabanınızda depolanan verilerinize göre çalışan bir API seçimi sunmaktadır. Varsayılan olarak, Cosmos veritabanınızı sorgulamak için SQL (çekirdek API) [kullanabilirsiniz](./sql-query-getting-started.md) . Cosmos DB, [Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) ve [Azure Tablo depolama](table-introduction.md)için API 'leri de uygular. Yaygın olarak kullanılan NoSQL (örn., MongoDB, Cassandra, Gremlin) için istemci sürücülerini (ve araçları) doğrudan Cosmos veritabanınıza işaret edebilirsiniz. Yaygın olarak kullanılan NoSQL API 'Lerinin tel protokollerini destekleyerek, Cosmos DB şunları yapmanıza olanak sağlar:
 
 * Uygulama mantığınızın önemli kısımlarını korurken uygulamanızı Cosmos DB 'e kolayca geçirin.
 * Uygulamanızı taşınabilir tutun ve bulut satıcısı belirsiz olmaya devam edin.

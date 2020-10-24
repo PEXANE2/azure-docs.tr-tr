@@ -1,6 +1,6 @@
 ---
 title: Azure SYNAPSE Analytics (eski adıyla SQL DW) mimarisi
-description: Azure SYNAPSE Analytics 'in (eski adıyla SQL DW), yüksek performans ve ölçeklenebilirlik elde etmek için Azure depolama ile çok büyük bir paralel işleme (MPP) birleştirdiğini öğrenin.
+description: Azure SYNAPSE Analytics 'in (eski adıyla SQL DW), yüksek performans ve ölçeklenebilirlik elde etmek için Azure depolama ile dağıtılmış sorgu işleme özelliklerini nasıl birleştirdiğini öğrenin.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: cde6cb514b6f87315400b3c40d8b86bcb7ff0adb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cb49fc33567b13065351a28a557232212c6adc4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85210975"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479349"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) mimarisi
 
@@ -33,13 +33,13 @@ Azure Synapse kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir a
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
-## <a name="synapse-sql-mpp-architecture-components"></a>SYNAPSE SQL MPP mimari bileşenleri
+## <a name="synapse-sql-architecture-components"></a>SYNAPSE SQL mimarisi bileşenleri
 
 [SYNAPSE SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) , verilerin birden çok düğüm arasında işlem işlemesini dağıtmak için bir genişleme mimarisinden yararlanır. Ölçek birimi, [veri ambarı birimi](what-is-a-data-warehouse-unit-dwu-cdwu.md)olarak bilinen bir işlem gücü soyutlamasıdır. İşlem depolama alanından ayrıdır ve bu işlem, sisteminizi sisteminizdeki verilerden bağımsız olarak ölçeklendirmenizi sağlar.
 
 ![Synapse SQL mimarisi](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-SYNAPSE SQL, düğüm tabanlı bir mimari kullanır. Uygulamalar, T-SQL komutlarını, SYNAPSE SQL için tek giriş noktası olan bir denetim düğümüne bağlanır ve bu komutlara verebilir. Denetim düğümü, paralel işleme için sorguları en iyi duruma getirir ve sonra işlerini paralel olarak yapmak üzere işlem düğümlerine geçirir.
+SYNAPSE SQL, düğüm tabanlı bir mimari kullanır. Uygulamalar, T-SQL komutlarını, SYNAPSE SQL için tek giriş noktası olan bir denetim düğümüne bağlanır ve bu komutlara verebilir. Denetim düğümü, paralel işleme için sorguları en iyi duruma getirirken dağıtılmış sorgu altyapısını barındırır ve sonra işlerini paralel olarak yapmak üzere işlem düğümlerine geçirir.
 
 İşlem düğümleri tüm kullanıcı verilerini Azure Depolama’da depolar ve paralel sorgular çalıştırır. Veri Taşıma Hizmeti (DMS), sorguları paralel olarak çalıştırmak ve doğru sonuçlar döndürmek için verileri düğümler arasında taşıyan, sistem düzeyindeki bir dahili hizmettir.
 
@@ -50,7 +50,7 @@ Ayrılmış depolama ve işlem ile, SYNAPSE SQL havuzu bir arada kullanıldığ�
 - Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
 - Çalışma saatleri içinde işlem kapasitesini sürdürme.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Depolama
 
 SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Veriler, sistem performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
 
@@ -60,13 +60,13 @@ SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı ku
 
 ### <a name="control-node"></a>Denetim düğümü
 
-Denetim düğümü mimarinin beynidir. Tüm uygulamalarla ve bağlantılarla etkileşim kuran ön uçtur. MPP altyapısı paralel sorguları iyileştirmek ve koordine etmek için Denetim düğümü üzerinde çalışır. Bir T-SQL sorgusu gönderdiğinizde, denetim düğümü onu paralel olarak her dağıtıma karşı çalışan sorgulara dönüştürür.
+Denetim düğümü mimarinin beynidir. Tüm uygulamalarla ve bağlantılarla etkileşim kuran ön uçtur. Dağıtılmış sorgu altyapısı, Paralel sorguları iyileştirmek ve koordine etmek için denetim düğümünde çalışır. Bir T-SQL sorgusu gönderdiğinizde, denetim düğümü onu paralel olarak her dağıtıma karşı çalışan sorgulara dönüştürür.
 
 ### <a name="compute-nodes"></a>İşlem düğümleri
 
 İşlem düğümleri, hesaplama gücü sağlar. Dağıtım, işlenmek üzere Işlem düğümlerine eşlenir. Daha fazla işlem kaynağı için ödeme yaparken, dağıtımlar kullanılabilir Işlem düğümlerine yeniden eşlenir. İşlem düğümlerinin sayısı 1 ile 60 arasında değişir ve SYNAPSE SQL hizmet düzeyiyle belirlenir.
 
-Her Işlem düğümünün sistem görünümlerinde görünür bir düğüm KIMLIĞI vardır. Adları sys.pdw_nodes ile başlayan sistem görünümlerindeki node_id sütununa bakarak Işlem düğümü KIMLIĞINI görebilirsiniz. Bu sistem görünümlerinin listesi için bkz. [MPP sistem görünümleri](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Her Işlem düğümünün sistem görünümlerinde görünür bir düğüm KIMLIĞI vardır. Adları sys.pdw_nodes ile başlayan sistem görünümlerindeki node_id sütununa bakarak Işlem düğümü KIMLIĞINI görebilirsiniz. Bu sistem görünümlerinin listesi için bkz. [SYNAPSE SQL System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="data-movement-service"></a>Veri Taşıma Hizmeti
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e8bf3d2407e2c3d0db4bb5d8591ba598aba68a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfad185718dcc4a1c06ba3a4ed22961615ccd37e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546449"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486965"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Öğretici: Trısotech Digital Enterprise Server ile tümleştirme Azure Active Directory
 
@@ -120,15 +120,15 @@ Azure AD çoklu oturum açmayı Trısotech Digital Enterprise Server ile yapıla
 
 2. **Menü simgesine** tıklayın ve ardından **Yönetim**' i seçin.
 
-    ![Tek Sign-On yapılandırma](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
+    ![Ekran görüntüsü, Microsoft Digital Enterprise Server 'daki yönetim simgesini gösterir.](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
 
 3. **Kullanıcı sağlayıcısı**' nı seçin.
 
-    ![Tek Sign-On yapılandırma](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
+    ![Ekran görüntüsü, menüden Kullanıcı sağlayıcısının seçili olduğunu gösterir.](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
 
 4. **Kullanıcı sağlayıcısı yapılandırma** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı sağlayıcısı yapılandırmasını gösterir.](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
     a. **Kimlik doğrulama yönteminde**açılan listeden **güvenli onaylama işlemi biçimlendirme dili 2 ' yi (SAML 2)** seçin.
 

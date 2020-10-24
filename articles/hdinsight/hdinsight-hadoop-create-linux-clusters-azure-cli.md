@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
-ms.openlocfilehash: 04def98108bf996a8f8cabe0ad36c022011aa533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf292ccd185ad2c6a85cb6d2f097bb8a7fa9e173
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080729"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489668"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLı kullanarak HDInsight kümeleri oluşturma
 
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure CLI. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+Azure CLI. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi yükleme](/cli/azure/install-azure-cli) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +42,7 @@ Azure CLI. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi 
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Ortam değişkenlerini ayarlayın. Bu makaledeki değişkenlerin kullanımı Bash 'i temel alır. Diğer ortamlar için hafif Çeşitlemeler gerekecektir. Küme oluşturma için olası parametrelerin tam bir listesi için bkz. [az-HDInsight-Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) .
+2. Ortam değişkenlerini ayarlayın. Bu makaledeki değişkenlerin kullanımı Bash 'i temel alır. Diğer ortamlar için hafif Çeşitlemeler gerekecektir. Küme oluşturma için olası parametrelerin tam bir listesi için bkz. [az-HDInsight-Create](/cli/azure/hdinsight#az-hdinsight-create) .
 
     |Parametre | Açıklama |
     |---|---|
@@ -68,7 +68,7 @@ Azure CLI. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi 
     export componentVersion=Hadoop=2.7
     ```
 
-3. Aşağıdaki komutu girerek [kaynak grubunu oluşturun](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) :
+3. Aşağıdaki komutu girerek [kaynak grubunu oluşturun](/cli/azure/group#az-group-create) :
 
     ```azurecli-interactive
     az group create \
@@ -78,7 +78,7 @@ Azure CLI. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi 
 
     Geçerli konumların bir listesi için `az account list-locations` komutunu kullanın ve sonra değerden birini kullanın `name` .
 
-4. Aşağıdaki komutu girerek [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) :
+4. Aşağıdaki komutu girerek [bir Azure depolama hesabı oluşturun](/cli/azure/storage/account#az-storage-account-create) :
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -91,7 +91,7 @@ Azure CLI. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi 
         --sku Standard_LRS
     ```
 
-5. [Azure Storage hesabından birincil anahtarı ayıklayın](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) ve aşağıdaki komutu girerek bir değişkende saklayın:
+5. [Azure Storage hesabından birincil anahtarı ayıklayın](/cli/azure/storage/account/keys#az-storage-account-keys-list) ve aşağıdaki komutu girerek bir değişkende saklayın:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -100,7 +100,7 @@ Azure CLI. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi 
         --query [0].value -o tsv)
     ```
 
-6. Aşağıdaki komutu girerek [bir Azure depolama kapsayıcısı oluşturun](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) :
+6. Aşağıdaki komutu girerek [bir Azure depolama kapsayıcısı oluşturun](/cli/azure/storage/container#az-storage-container-create) :
 
     ```azurecli-interactive
     az storage container create \
@@ -109,7 +109,7 @@ Azure CLI. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi 
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. Aşağıdaki komutu girerek [HDInsight kümesini oluşturun](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) :
+7. Aşağıdaki komutu girerek [HDInsight kümesini oluşturun](/cli/azure/hdinsight#az-hdinsight-create) :
 
     ```azurecli-interactive
     az hdinsight create \

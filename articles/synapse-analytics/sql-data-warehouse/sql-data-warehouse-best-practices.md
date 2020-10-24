@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 6978855e9b32a3842e76d02ef543d86cf0673019
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf841da85dc929366991d6aed8f3d400ab3b31cc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85206657"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489651"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzu için en iyi Yöntemler (eski adıyla SQL DW)
 
@@ -64,7 +64,7 @@ Ayrıca bkz. [Insert](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synap
 
 SQL havuzu Azure Data Factory, PolyBase ve BCP gibi çeşitli araçlarla verileri yüklemeyi ve vermeyi destekler.  Performansın yüksek öneme sahip olmadığı küçük miktarlardaki veriler için bu araçlardan herhangi birini kullanabilirsiniz.  Ancak, büyük hacimli verileri yüklerken veya dışarı aktarırken ya da yüksek performansa ihtiyaç duyduğunuzda, PolyBase en iyi çözüm olacaktır.  
 
-PolyBase, MPP (büyük ölçüde paralel Işleme) mimarisinden yararlanmak için tasarlanmıştır ve veri magnitudes diğer araçlardan daha hızlı yüklenip dışarı aktarır.  PolyBase yükleri CTAS veya INSERT INTO ile çalıştırılabilir.  
+PolyBase, sistemin dağıtılmış yapısını kullanacak şekilde tasarlanmıştır ve veri magnitudes diğer araçlardan daha hızlı yüklenip dışarı aktarır.  PolyBase yükleri CTAS veya INSERT INTO ile çalıştırılabilir.   
 
 > [!TIP]
 > CTAS, işlem günlüğünü en aza indiren ve verilerinizi en hızlı yükleyen seçenektir.

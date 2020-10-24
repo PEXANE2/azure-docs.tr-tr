@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 427facaffa277ec44ee99d70681928f49fe31df8
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2aa4e7d063141f74dc94e5f23cd227fcc16ba84f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278480"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487424"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Öğretici: Xamarin ve Azure Cosmos DB ile mobil uygulamalar oluşturun
 
@@ -21,7 +21,7 @@ ms.locfileid: "92278480"
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
@@ -34,12 +34,12 @@ Azure Cosmos DB mobil uygulama geliştiricileri için aşağıdaki anahtar yeten
 
 :::image type="content" source="media/mobile-apps-with-xamarin/documentdb-for-mobile.png" alt-text="Mobil uygulamalar için Azure Cosmos DB özellikleri":::
 
-* Şemasız veriler üzerinde zengin sorgular. Azure Cosmos DB verileri heterojen koleksiyonlarda şemasız JSON belgeleri olarak depolar. Şemalar veya dizinler hakkında endişelenmeye gerek kalmadan [zengin ve hızlı sorguları](how-to-sql-query.md) sunar.
+* Şemasız veriler üzerinde zengin sorgular. Azure Cosmos DB verileri heterojen koleksiyonlarda şemasız JSON belgeleri olarak depolar. Şemalar veya dizinler hakkında endişelenmeye gerek kalmadan [zengin ve hızlı sorguları](./sql-query-getting-started.md) sunar.
 * İşlem hızı yüksektir. Azure Cosmos DB ile belgeleri okumak ve yazmak yalnızca birkaç milisaniye alır. Geliştiriciler ihtiyaçları olan işlem hızını belirtebilir ve Azure Cosmos DB, rahat bir tutarlılıkla tek tek tüm bölge hesapları ve çok bölgeli tüm hesaplar için %99,99 kullanılabilirlik SLA'sı ve çok bölgeli tüm veritabanı hesaplarında %99,999 okunabilirlik sağlar.
 * Sınırsız ölçek. [Uygulamanız büyüdükçe](partitioning-overview.md)Azure Cosmos kapsayıcılarınız büyür. Küçük veri boyutu ve saniye başına yüzlerce istekle başlayabilirsiniz. Koleksiyonlarınız veya veritabanlarınız zaman içinde petabaytlarca veriye ve saniye başına yüz milyonlarca isteğe ulaşabilir.
 * Global olarak dağıtılmıştır. Mobil uygulama kullanıcıları sıklıkla tüm dünya çapında sürekli hareket halindedir. Azure Cosmos DB [global olarak dağıtılmış bir veritabanıdır](distribute-data-globally.md). Verilerinizi kullanıcılarınız tarafından erişilebilir hale getirmek için haritaya tıklayın.
 * Yerleşik zengin yetkilendirme. Azure Cosmos DB ile karmaşık özel yetkilendirme kodu olmadan [kullanıcı başına veri](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems) veya çok kullanıcılı paylaşılan veriler gibi popüler düzenleri kolayca uygulayabilirsiniz.
-* Jeo-uzamsal sorgular. Birçok mobil uygulama bugün coğrafi bağlamsal deneyimler sunar. [Jeo-uzamsal türler](geospatial.md) için birinci sınıf destekle Azure Cosmos DB bu deneyimleri kolayca oluşturmanızı sağlar.
+* Jeo-uzamsal sorgular. Birçok mobil uygulama bugün coğrafi bağlamsal deneyimler sunar. [Jeo-uzamsal türler](./sql-query-geospatial-intro.md) için birinci sınıf destekle Azure Cosmos DB bu deneyimleri kolayca oluşturmanızı sağlar.
 * İkili dosya ekleri. Uygulama verileriniz genellikle ikili bloblar içerir. Ekler için yerel destek, Azure Cosmos DB’yi uygulama verileriniz için ihtiyacınız olan her şeyi sağlayacak hale getirir.
 
 ## <a name="azure-cosmos-db-and-xamarin-tutorial"></a>Azure Cosmos DB ve Xamarin öğreticisi
@@ -106,8 +106,5 @@ Tebrikler. Çözümü tamamladınız, artık Xamarin ve Azure Cosmos DB kullanan
 * [GitHub'da Xamarin ve Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) için kaynak kodu görüntüleyin.
 * [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md)’sini indirin.
 * [.NET uygulamaları](sql-api-dotnet-samples.md) için daha fazla kod örneği bulun.
-* [Azure Cosmos DB’nin zengin sorgu özellikleri](how-to-sql-query.md) hakkında bilgi edinin.
-* [Azure Cosmos DB’de jeo-uzamsal destek](geospatial.md) hakkında bilgi edinin.
-
-
-
+* [Azure Cosmos DB’nin zengin sorgu özellikleri](./sql-query-getting-started.md) hakkında bilgi edinin.
+* [Azure Cosmos DB’de jeo-uzamsal destek](./sql-query-geospatial-intro.md) hakkında bilgi edinin.

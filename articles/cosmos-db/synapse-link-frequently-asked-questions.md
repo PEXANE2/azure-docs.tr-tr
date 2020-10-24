@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: ebd3893f6443edda276bfb3b1e39ae0fe093acb2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f6a348ceb30806259035cb71bb4165b736949272
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104113"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480080"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 
@@ -37,13 +37,13 @@ Analitik mağaza desteğiyle çok bölgeli bir Azure Cosmos DB hesabını yapıl
 
 Analitik depoyu açık olan kapsayıcılar için, analitik depodaki verilerinizin otomatik yedeklemesi ve geri yüklenmesi Şu anda desteklenmez. 
 
-Bir veritabanı hesabında SYNAPSE bağlantısı etkinleştirildiğinde Azure Cosmos DB, her zaman olarak zamanlanan yedekleme aralığındaki kapsayıcıların işlem deposunda (yalnızca) otomatik olarak [yedekleme işlemlerine](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) devam eder. Analitik depo açık olan bir kapsayıcı yeni bir hesaba geri yüklendiğinde, kapsayıcının yalnızca işlem deposu ile geri yükleneceği ve analitik depo etkinleştirilmediği unutulmamalıdır. 
+Bir veritabanı hesabında SYNAPSE bağlantısı etkinleştirildiğinde Azure Cosmos DB, her zaman olarak zamanlanan yedekleme aralığındaki kapsayıcıların işlem deposunda (yalnızca) otomatik olarak [yedekleme işlemlerine](./online-backup-and-restore.md) devam eder. Analitik depo açık olan bir kapsayıcı yeni bir hesaba geri yüklendiğinde, kapsayıcının yalnızca işlem deposu ile geri yükleneceği ve analitik depo etkinleştirilmediği unutulmamalıdır. 
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>Azure Cosmos DB hesabım için Azure SYNAPSE Link özelliğini devre dışı bırakabilir miyim?
 
 Şu an için Synapse Link özelliğini hesap düzeyinde etkinleştirdikten sonra devre dışı bırakmanız mümkün değildir. Synapse Link özelliği hesap düzeyinde etkin olduğunda ve analiz deposu kullanan kapsayıcı bulunmadığında herhangi bir şekilde faturalandırma gerçekleştirilmeyeceğini unutmayın. 
 
-Özelliği kapatmanız gerekiyorsa 2 seçeneğiniz vardır. Birincisi, yeni bir Azure Cosmos DB hesabını silmek ve yeniden oluşturmak, gerekirse verileri geçirmek için kullanılır. İkinci seçenek, bir destek bileti açmak ve başka bir hesaba veri geçişi hakkında yardım almak için kullanılır.
+Özelliği kapatmanız gerekiyorsa iki seçeneğiniz vardır. Birincisi, Azure Cosmos DB hesabını silip yeniden oluşturmak ve gerekirse verileri geçirmektir. İkinci seçenek, başka bir hesaba veri geçirme konusunda yardım almak için bir destek bileti açmaktır.
 
 ## <a name="azure-cosmos-db-analytical-store"></a>Analitik depo Azure Cosmos DB
 
@@ -98,9 +98,9 @@ Analiz deposundaki veriler, işlem deposundaki parçaların yatay bölümlemesi 
 
 Şu anda, işlem deposundan otomatik olarak analitik depoya yayıldığında veri öğelerini dönüştüremiyoruz. Bu sınırlama tarafından engellenen senaryolarınız varsa [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com)e-posta gönderin.
 
-### <a name="is-analytical-store-supported-by-terraform"></a>Termstore, Terrayform tarafından destekleniyor mu?
+### <a name="is-analytical-store-supported-by-terraform"></a>Terraform analiz deposunu destekliyor mu?
 
-Şu anda Teroyform analitik depo kapsayıcılarını desteklemez. Daha fazla bilgi için lütfen [Terlarform GitHub sorunlarını](https://github.com/hashicorp/terraform/issues) kontrol edin.
+Şu anda Terraform analiz deposu kapsayıcılarını desteklemiyor. Daha fazla bilgi için [Terraform GitHub Sorunları](https://github.com/hashicorp/terraform/issues)'na bakın.
 
 ## <a name="analytical-time-to-live-ttl"></a>Analitik yaşam süresi (TTL)
 
@@ -116,7 +116,7 @@ Evet, analitik TTL geçerli herhangi bir değere güncelleştirilebilen olabilir
 
 Tüm işlem güncelleştirmeleri ve silmeleri analitik depoya kopyalanır ancak öğe, işlem deposundan temizlendiyse, analitik depoda güncelleştirilemez. Daha fazla bilgi için bkz. [ANALITIK TTL](analytical-store-introduction.md#analytical-ttl) makalesi.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 ### <a name="what-is-the-billing-model-of-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısının faturalandırma modeli nedir?
 

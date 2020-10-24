@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a601b7ec7e2615053203e23ea61fc6d2efc85bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09d661f29b2e262e5e67c471711a5e978abe79d8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533529"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Öğretici: T&E Express ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ T&E Express 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini T&E Express ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -128,11 +128,11 @@ Azure AD çoklu oturum açmayı T&E Express ile yapılandırmak için aşağıda
 
 1. **Yönetici** sekmesi altında **SAML etki alanı** ' na tıklayarak SAML ayarları sayfasını açın.
 
-    ![Tek Sign-On yapılandırma](./media/tyeexpress-tutorial/tye-SAML.png)
+    ![Ekran görüntüsü, Yönetici menüsünden SAML etki alanının seçili olduğunu gösterir.](./media/tyeexpress-tutorial/tye-SAML.png)
 
 1. **Hayır** **(Evet)** seçeneğinden **activar (etkinleştir)** seçeneğini belirleyin. **Kimlik sağlayıcısı meta verileri** metin kutusunda, Azure Portal indirdiğiniz meta veri XML 'sini yapıştırın.
 
-    ![Tek Sign-On yapılandırma](./media/tyeexpress-tutorial/tyeAdmin.png)
+    ![Ekran görüntüsü, meta verileri girebileceğiniz Dominio SAML sayfasını gösterir.](./media/tyeexpress-tutorial/tyeAdmin.png)
 
 1. Ayarları kaydetmek için **guardar (Kaydet)** düğmesine tıklayın.
 
@@ -197,17 +197,17 @@ Azure AD kullanıcılarının T&E Express 'te oturum açmasını sağlamak için
 
 1. Yönetici etiketi altında kullanıcılar ' a tıklayarak kullanıcılar ana sayfasını açın.
 
-    ![Çalışan Ekle](./media/tyeexpress-tutorial/tye-adminusers.png)
+    ![Ekran görüntüsü Yönetici menüsünden seçilen kullanıcıları gösterir.](./media/tyeexpress-tutorial/tye-adminusers.png)
 
 1. Kullanıcıları eklemek için giriş sayfasında açık ' a tıklayın **+** .
 
-    ![Çalışan Ekle](./media/tyeexpress-tutorial/tye-usershome.png)
+    ![Ekran görüntüsü, Kullanıcı eklemek için artı simgesini gösterir.](./media/tyeexpress-tutorial/tye-usershome.png)
 
 1. Formda istenen tüm zorunlu ayrıntıları girin ve ayrıntıları kaydetmek için Kaydet düğmesine tıklayın.
 
-    ![Çalışan Ekle](./media/tyeexpress-tutorial/tye-usersadd.png)
+    ![Ekran görüntüsü, uygun değerleri girebileceğiniz Kullanıcı bilgileri bölümünü gösterir.](./media/tyeexpress-tutorial/tye-usersadd.png)
 
-    ![Çalışan Ekle](./media/tyeexpress-tutorial/tye-userssave.png)
+    ![Ekran görüntüsünde, uygun değerleri girebileceğiniz onaylayanlar ve yardımcı bölümler gösterilir.](./media/tyeexpress-tutorial/tye-userssave.png)
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

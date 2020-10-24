@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6236b34c76ccd9e4688b97e7844cbadf9f515213
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 35bfc45ffffac17a2eca40cb51c2db5d94c140a2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372251"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487475"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de güvenlik - genel bakış
 
@@ -69,7 +69,7 @@ Her birine ayrıntılı bir şekilde bakalım.
 |Otomatik çevrimiçi yedeklemeler|Azure Cosmos veritabanları düzenli olarak yedeklenir ve coğrafi olarak yedekli bir depoda depolanır. <br><br>[Azure Cosmos DB Ile otomatik çevrimiçi yedekleme ve geri yükleme](online-backup-and-restore.md)hakkında daha fazla bilgi edinin.|
 |Silinen verileri geri yükleme|Otomatik çevrimiçi yedeklemeler, yanlışlıkla en fazla ~ 30 gün sonra silinmiş olabilecek verileri kurtarmak için kullanılabilir. <br><br>[Azure Cosmos DB Ile otomatik çevrimiçi yedekleme ve geri yükleme](online-backup-and-restore.md) hakkında daha fazla bilgi edinin|
 |Hassas verileri koruyun ve yalıtın|Bölgelerdeki tüm veriler, yenilikler bölümünde listelendi. Artık Rest 'de şifrelenir.<br><br>Kişisel veriler ve diğer gizli veriler belirli bir kapsayıcıya yalıtılabilir ve okuma/yazma veya salt okuma erişimi belirli kullanıcılarla sınırlı olabilir.|
-|Saldırıları izle|[Denetim günlüğü ve etkinlik günlüklerini](logging.md)kullanarak, hesabınızı normal ve anormal etkinlikler için izleyebilirsiniz. Kaynaklarınız üzerinde gerçekleştirilen işlemleri, işlemi kimin yaptığını, işlem ne zaman oluştuğunu, işlemin durumunu ve bu tablonun altındaki ekran görüntüsünde gösterilen çok daha fazlasını görüntüleyebilirsiniz.|
+|Saldırıları izle|[Denetim günlüğü ve etkinlik günlüklerini](./monitor-cosmos-db.md)kullanarak, hesabınızı normal ve anormal etkinlikler için izleyebilirsiniz. Kaynaklarınız üzerinde gerçekleştirilen işlemleri, işlemi kimin yaptığını, işlem ne zaman oluştuğunu, işlemin durumunu ve bu tablonun altındaki ekran görüntüsünde gösterilen çok daha fazlasını görüntüleyebilirsiniz.|
 |Saldırılara yanıt verme|Olası bir saldırı bildirmek üzere Azure Destek ile iletişim kurduktan sonra, 5 adımlı bir olay yanıtı işlemi kapatılır. 5 adımlı işlemin amacı, bir sorun saptandıktan ve bir araştırma başladıktan sonra normal hizmet güvenliğini ve işlemlerini mümkün olduğunca hızlı bir şekilde geri yüklemektir.<br><br>[Bulutta Microsoft Azure Güvenlik yanıtı](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)hakkında daha fazla bilgi edinin.|
 |Coğrafi sınırlama|Azure Cosmos DB, evereign bölgeleri için veri yönetimini sağlar (örneğin, Almanya, Çin, US Gov).|
 |Korumalı tesisler|Azure Cosmos DB veriler, SSD 'lerde Azure 'un korunan veri merkezlerinde depolanır.<br><br>[Microsoft Global veri merkezlerinde](https://www.microsoft.com/en-us/cloud-platform/global-datacenters) daha fazla bilgi edinin|
@@ -104,6 +104,6 @@ Birincil, ikincil, salt okuma ve okuma-yazma birincil anahtarları Azure portal 
 
 Birincil anahtarlar ve kaynak belirteçleri hakkında daha fazla bilgi için bkz. [Azure Cosmos DB verilerine erişimi güvenli hale getirme](secure-access-to-data.md).
 
-Denetim günlüğü hakkında daha fazla bilgi için bkz. [Azure Cosmos DB tanılama günlüğü](logging.md).
+Denetim günlüğü hakkında daha fazla bilgi için bkz. [Azure Cosmos DB tanılama günlüğü](./monitor-cosmos-db.md).
 
 Microsoft sertifikaları hakkında daha fazla bilgi için bkz. [Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/).

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bd659ebd74b67a036c189cae763205e6b0371f7c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e1dd1e94bd9747bb0961c09ce2f281c433b4b4fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058174"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488223"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Cosmos DB ile ASP.NET Core MVC web uygulaması geliştirme
 
@@ -22,7 +22,7 @@ ms.locfileid: "92058174"
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 
 Bu öğretici, Azure 'da barındırılan bir ASP.NET MVC uygulamasındaki verileri depolamak ve erişmek için Azure Cosmos DB nasıl kullanacağınızı gösterir. Bu öğreticide .NET SDK V3 ' i kullanırsınız. Aşağıdaki görüntüde, bu makaledeki örneği kullanarak oluşturacağınız Web sayfası gösterilmektedir:
@@ -43,7 +43,7 @@ Bu öğreticinin içindekiler:
 > [!TIP]
 > Bu öğreticide, ASP.NET Core MVC ve Azure App Service kullanarak önceki deneyiminiz olduğunu varsaymaktadır. ASP.NET Core veya [Önkoşul araçları](#prerequisites)' nı yeni kullanıyorsanız, [GitHub][GitHub]'dan tüm örnek projeyi indirmeniz, gerekli NuGet paketlerini eklemeniz ve çalıştırmanız önerilir. Projeyi oluşturduktan sonra, proje bağlamındaki kodla ilgili bilgi edinmek için bu makaleyi gözden geçirebilirsiniz.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki yönergeleri izleyerek önce aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 
@@ -238,7 +238,7 @@ Bu adımları tamamladıktan sonra, Visual Studio 'daki tüm *cshtml* belgelerin
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
 
-   Bu adımdaki kod, [ASP.NET Core ' de bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)yoluyla eklenecek tek bir örnek olarak istemciyi başlatır.
+   Bu adımdaki kod, [ASP.NET Core ' de bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection)yoluyla eklenecek tek bir örnek olarak istemciyi başlatır.
 
    `Item`Aynı dosyanın yöntemindeki yolları düzenleyerek varsayılan MVC denetleyicisini olarak değiştirin `Configure` :
 
@@ -333,11 +333,11 @@ Visual Studio, birkaç saniye içinde Web uygulamanızı yayımlar ve projenizi 
 Bu öğreticide, ASP.NET Core MVC web uygulaması oluşturmayı öğrendiniz. Uygulamanız, Azure Cosmos DB depolanan verilere erişebilir. Artık şu kaynaklarla devam edebilirsiniz:
 
 * [Azure Cosmos DB'de bölümleme](./partitioning-overview.md)
-* [SQL sorgularını kullanmaya başlama](./how-to-sql-query.md)
+* [SQL sorgularını kullanmaya başlama](./sql-query-getting-started.md)
 * [Gerçek dünyadan bir örnek kullanarak Azure Cosmos DB'de verileri modelleme ve bölümleme](./how-to-model-partition-example.md)
 
 [Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: https://docs.microsoft.com/aspnet/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks
-[Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
+[Preventing Cross-Site Request Forgery]: /aspnet/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks
+[Basic CRUD Operations in ASP.NET MVC]: /aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
 [GitHub]: https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app

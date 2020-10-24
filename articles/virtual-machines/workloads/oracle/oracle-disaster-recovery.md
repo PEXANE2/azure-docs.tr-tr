@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: fe93ada343e83d61526b6b899429d9e2b7b745d3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9736c4d2b048aa18f283689247f5597d7526f1df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996184"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480369"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure ortamında Oracle Database 12c veritabanı için olağanüstü durum kurtarma
 
@@ -42,7 +42,7 @@ Azure kurulumunun özeti aşağıda verilmiştir:
 - Ayrı alt ağlardaki bir atlama kutusu, uygulama hizmeti, veritabanı ve VPN ağ geçidi
 - NSG uygulama ve veritabanı alt ağlarında zorlandı
 
-![DR topolojisi sayfasının ekran görüntüsü](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![Azure 'da birincil ve DR sitelerini gösteren diyagram.](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
 ## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Senaryo 2: Azure 'da birincil site şirket içi ve DR sitesi
 
@@ -68,7 +68,7 @@ Azure kurulumunun özeti aşağıda verilmiştir:
 - Gelen TCP bağlantı noktası 1521 ' e (veya Kullanıcı tanımlı bir bağlantı noktasına) izin veren bir NSG ilkesi/kuralı
 - Sanal ağa erişmek için yalnızca şirket içi IP adresini/adreslerini (DB veya uygulama) kısıtlamak için bir NSG ilkesi/kuralı
 
-![DR topolojisi sayfasının ekran görüntüsü](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![Şirket içi ve Azure arasında doğrudan bağlantıları gösteren ve güvenlik duvarında açık TCP bağlantı noktaları gerektiren diyagram.](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>Yaklaşım 2: siteden siteye VPN
 Siteden siteye VPN daha iyi bir yaklaşımdır. VPN ayarlama hakkında daha fazla bilgi için bkz. [CLI kullanarak siteden sıteye VPN bağlantısı ile sanal ağ oluşturma](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md).

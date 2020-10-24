@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 37f8016e087642ae0a7455e35f3ce18d7229e169
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cd14ff0688f4230aeedac748ca4b32609bdd2938
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146649"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490331"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT Hub 'ınızı ve posta kutunuzu bağlama Azure Logic Apps IoT uzaktan izleme ve bildirimler
 
@@ -112,7 +112,7 @@ IoT Hub 'ınıza Service Bus kuyruğu için özel bir uç nokta ekleyin ve bir s
 
 1. **Mesajlaşma**altında **ileti yönlendirme**' yi seçin. **İleti yönlendirme** bölmesinde **Özel uç noktalar** sekmesini seçin ve **+ Ekle**' yi seçin. Aşağı açılan listeden **Service Bus kuyruğu**' nu seçin.
 
-   ![Azure portal IoT Hub 'ınıza bir uç nokta ekleyin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
+   ![Service Bus kuyruğu seçeneğini vurgulayan ekran görüntüsü.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
 
 1. **Service Bus uç noktası Ekle** bölmesinde aşağıdaki bilgileri girin:
 
@@ -183,7 +183,7 @@ Yukarıdaki bölümde, IoT Hub 'ınızı Service Bus kuyruğuna bir sıcaklık u
 1. Service Bus bağlantısı oluşturun.
    1. Bir bağlantı adı girin ve listeden Service Bus ad alanınızı seçin. Sonraki ekran açılır.
 
-      ![Azure portal mantıksal uygulamanız için bir hizmet veri yolu bağlantısı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
+      ![Bir sıraya veya daha fazla ileti geldiğinde bir sıraya (otomatik tamamlamayı) bir veya daha fazla ileti ulaştığında oluşan ekran görüntüsü.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
 
    1. Service Bus ilkesini (RootManageSharedAccessKey) seçin. Ardından  **Oluştur**' u seçin.
 

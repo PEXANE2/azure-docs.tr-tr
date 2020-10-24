@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 06821b62fa05a4fd772b15aa5a57bd1e3de5dbb2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7dface648f7bf219d4c66b038af62e3307560650
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329381"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489294"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -144,7 +144,7 @@ Bölüm anahtarı ve KIMLIK değerleri için uzunluk kısıtlamaları ve 2 MB To
 
 ## <a name="per-request-limits"></a>İstek başına sınırlar
 
-Azure Cosmos DB kapsayıcılar, öğeler ve veritabanları gibi kaynaklara karşı [CRUD ve sorgu işlemlerini](/rest/api/cosmos-db/) destekler. Aynı zamanda, bir kapsayıcıda aynı bölüm anahtarına sahip birden çok öğeye karşı [işlem toplu iş isteklerini](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) destekler.
+Azure Cosmos DB kapsayıcılar, öğeler ve veritabanları gibi kaynaklara karşı [CRUD ve sorgu işlemlerini](/rest/api/cosmos-db/) destekler. Aynı zamanda, bir kapsayıcıda aynı bölüm anahtarına sahip birden çok öğeye karşı [işlem toplu iş isteklerini](/dotnet/api/microsoft.azure.cosmos.transactionalbatch) destekler.
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
@@ -191,7 +191,7 @@ Otomatik ölçeklendirme ile işleme ve depolama limitlerinin daha ayrıntılı 
 
 ## <a name="sql-query-limits"></a>SQL sorgu sınırları
 
-Cosmos DB, [SQL](how-to-sql-query.md)kullanılarak öğelerin sorgulanmasını destekler. Aşağıdaki tabloda sorgu deyimlerinde, örnek tümce sayısı veya sorgu uzunluğu gibi kısıtlamalar açıklanmaktadır.
+Cosmos DB, [SQL](./sql-query-getting-started.md)kullanılarak öğelerin sorgulanmasını destekler. Aşağıdaki tabloda sorgu deyimlerinde, örnek tümce sayısı veya sorgu uzunluğu gibi kısıtlamalar açıklanmaktadır.
 
 | Kaynak | Varsayılan limit |
 | --- | --- |

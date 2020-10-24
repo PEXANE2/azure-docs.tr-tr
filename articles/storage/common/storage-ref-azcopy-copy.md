@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 736746cc710e4e22f61edaa7b2dfd1ceef3d90eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3d691692553a8201b3e3eccfaead82a2cbb9ca0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645470"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479706"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -292,7 +292,7 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 **--S2S-Handle-geçersiz-Metadata** dize, geçersiz meta veri anahtarlarının nasıl işleneceğini belirtir. Kullanılabilir seçenekler: Excludeifgeçersiz, Failifgeçersiz, Renameifgeçersiz. (varsayılan `ExcludeIfInvalid` ). (varsayılan "Excludeifgeçersiz")
 
-**--S2S-Preserve-Access-Tier**   Hizmetten hizmete kopyalama sırasında erişim katmanını koruyun. Hedef depolama hesabının erişim katmanını ayarlamayı desteklediğinden emin olmak için [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) ' na bakın. Erişim katmanını ayarlamanın desteklenme durumlarında, erişim katmanını kopyalamayı atlamak için s2sPreserveAccessTier = false kullanın. (varsayılan `true` ).  (varsayılan "true")
+**--S2S-Preserve-Access-Tier**   Hizmetten hizmete kopyalama sırasında erişim katmanını koruyun. Hedef depolama hesabının erişim katmanını ayarlamayı desteklediğinden emin olmak için [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](/azure/storage/blobs/storage-blob-storage-tiers) ' na bakın. Erişim katmanını ayarlamanın desteklenme durumlarında, erişim katmanını kopyalamayı atlamak için s2sPreserveAccessTier = false kullanın. (varsayılan `true` ).  (varsayılan "true")
 
 **--S2S-Preserve-Özellikler**   Hizmetten hizmete kopyalama sırasında tam özellikleri koruyun. AWS S3 ve Azure dosya için tek dosya kaynağı için liste işlemi, nesnelerin ve dosyaların tam özelliklerini döndürmez. Tam özellikleri korumak için AzCopy, nesne veya dosya başına bir ek istek göndermelidir. (varsayılan doğru)
 
@@ -306,4 +306,4 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

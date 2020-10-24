@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d801499360bd05cee4c01aefd873337303017f3
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 682a580d15af44ca69d9cb12a5349beaca2d28b2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427516"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489923"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Yönetilen Kimlik ile PostgreSQL için Azure Veritabanı'na bağlanma
 
@@ -24,7 +24,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 - VM kimliğini kullanarak bir erişim belirteci alın ve bunu bir PostgreSQL için Azure veritabanı sunucusu için sorgulamak üzere kullanın
 - C# örnek uygulamasında belirteç alımı uygulama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](../../articles/active-directory/managed-identities-azure-resources/overview.md) inceleyin. Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 - Gerekli kaynak oluşturma ve rol yönetimini yapmak için hesabınızın uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri olması gerekir. Rol atamasıyla ilgili yardıma ihtiyacınız varsa, [Azure abonelik kaynaklarınıza erişimi yönetmek için bkz. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanma](../../articles/role-based-access-control/role-assignments-portal.md).
@@ -34,13 +34,13 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 ## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>VM 'niz için Kullanıcı tarafından atanan yönetilen kimlik oluşturma
 
-[Az Identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) komutunu kullanarak aboneliğinizde bir kimlik oluşturun. Sanal makinenizin üzerinde çalıştığı aynı kaynak grubunu veya farklı bir tane kullanabilirsiniz.
+[Az Identity Create](/cli/azure/identity#az-identity-create) komutunu kullanarak aboneliğinizde bir kimlik oluşturun. Sanal makinenizin üzerinde çalıştığı aynı kaynak grubunu veya farklı bir tane kullanabilirsiniz.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myManagedIdentity
 ```
 
-Aşağıdaki adımlarda kimliği yapılandırmak için, kimliğin kaynak KIMLIĞINI ve istemci KIMLIĞINI değişkenlerde depolamak üzere [az Identity Show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) komutunu kullanın.
+Aşağıdaki adımlarda kimliği yapılandırmak için, kimliğin kaynak KIMLIĞINI ve istemci KIMLIĞINI değişkenlerde depolamak üzere [az Identity Show](/cli/azure/identity#az-identity-show) komutunu kullanın.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -50,7 +50,7 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myManagedI
 clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
 ```
 
-Artık Kullanıcı tarafından atanan kimliği [az VM Identity Assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) komutuyla sanal makineye atayabiliriz:
+Artık Kullanıcı tarafından atanan kimliği [az VM Identity Assign](/cli/azure/vm/identity#az-vm-identity-assign) komutuyla sanal makineye atayabiliriz:
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myVM --identities $resourceID

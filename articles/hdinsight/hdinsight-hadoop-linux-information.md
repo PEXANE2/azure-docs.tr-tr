@@ -8,24 +8,24 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b3c694b4d6134f30d04ba8bafee9a6ffabdd959
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856594"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488121"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux’ta HDInsight kullanma ile ilgili bilgiler
 
 Azure HDInsight kümeleri, Azure bulutu 'nda çalışan tanıdık bir Linux ortamında Apache Hadoop sağlar. Çoğu şey için, tüm Linux üzerinde Hadoop yüklemesi gibi çalışır. Bu belge, bilmeniz gereken belirli farklılıkları çağırır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu belgedeki adımların birçoğu, sisteminizde yüklü olması gerekebilecek aşağıdaki yardımcı programları kullanır.
 
 * [kıvrımlı](https://curl.haxx.se/) -Web tabanlı hizmetlerle iletişim kurmak için kullanılır.
 * bir komut satırı JSON işlemcisi olan **JQ**.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) ..
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -Azure hizmetlerini uzaktan yönetmek için kullanılır.
+* [Azure CLI](/cli/azure/install-azure-cli) -Azure hizmetlerini uzaktan yönetmek için kullanılır.
 * **Bir SSH istemcisi**. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Kullanıcılar
@@ -191,7 +191,7 @@ HDInsight kümesi dışından verilere erişmenin çeşitli yolları vardır. A�
 
 __Azure Blob depolama__kullanılıyorsa verilerinize erişebilmenizin yolları için aşağıdaki bağlantılara bakın:
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Azure ile çalışmaya yönelik arabirim komutlarını Command-Line. Yükledikten sonra, `az storage` depolamayı kullanma hakkında yardım için veya `az storage blob` BLOB 'a özgü komutlar için komutunu kullanın.
+* [Azure CLI](/cli/azure/install-az-cli2): Azure ile çalışmaya yönelik arabirim komutlarını Command-Line. Yükledikten sonra, `az storage` depolamayı kullanma hakkında yardım için veya `az storage blob` BLOB 'a özgü komutlar için komutunu kullanın.
 * [blobxfer.py](https://github.com/Azure/blobxfer): Azure depolama 'da bloblarla çalışmaya yönelik bir Python betiği.
 * Çeşitli SDK 'lar:
 

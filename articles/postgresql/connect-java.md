@@ -8,24 +8,24 @@ ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 66a3b4919903f739ed5afef0a02b501f00ff248f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1cc9d8bf253a7282a5893af75b5e2ed71b3ab4b6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88545446"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490161"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı ile Java ve JDBC kullanma
 
-Bu konu başlığı altında, [PostgreSQL Için Azure veritabanı](https://docs.microsoft.com/azure/postgresql/)'nda bilgi depolamak ve almak üzere Java ve [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) kullanan bir örnek uygulama oluşturma gösterilmektedir.
+Bu konu başlığı altında, [PostgreSQL Için Azure veritabanı](./index.yml)'nda bilgi depolamak ve almak üzere Java ve [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) kullanan bir örnek uygulama oluşturma gösterilmektedir.
 
 JDBC, geleneksel ilişkisel veritabanlarına bağlanmak için standart Java API 'sidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure hesabı. Hiç kimse yoksa [ücretsiz deneme sürümü alın](https://azure.microsoft.com/free/).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) veya [Azure CLI](/cli/azure/install-azure-cli). Otomatik olarak oturum açabileceksiniz ve ihtiyacınız olan tüm araçlara erişebilmek için Azure Cloud Shell önerilir.
-- Desteklenen bir [Java Development Kit](https://aka.ms/azure-jdks), sürüm 8 (Azure Cloud Shell içinde bulunur).
+- [Azure Cloud Shell](../cloud-shell/quickstart.md) veya [Azure CLI](/cli/azure/install-azure-cli). Otomatik olarak oturum açabileceksiniz ve ihtiyacınız olan tüm araçlara erişebilmek için Azure Cloud Shell önerilir.
+- Desteklenen bir [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), sürüm 8 (Azure Cloud Shell içinde bulunur).
 - [Apache Maven](https://maven.apache.org/) derleme aracı.
 
 ## <a name="prepare-the-working-environment"></a>Çalışma ortamını hazırlama
@@ -67,7 +67,7 @@ az group create \
 Oluşturacağız ilk şey, yönetilen bir PostgreSQL sunucusudur.
 
 > [!NOTE]
-> Azure portal kullanarak PostgreSQL [Için Azure veritabanı oluşturma sunucusu](/azure/postgresql/quickstart-create-server-database-portal)oluşturma hakkında daha ayrıntılı bilgi edinebilirsiniz.
+> Azure portal kullanarak PostgreSQL [Için Azure veritabanı oluşturma sunucusu](./quickstart-create-server-database-portal.md)oluşturma hakkında daha ayrıntılı bilgi edinebilirsiniz.
 
 [Azure Cloud Shell](https://shell.azure.com/)' de aşağıdaki komutu çalıştırın:
 

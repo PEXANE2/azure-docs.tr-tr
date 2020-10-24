@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/18/2019
-ms.openlocfilehash: 0a2e69a220f6752e5f0392c345b02967e2e76beb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20045ce914a340ac36e4df8cbd0df38e872a1d38
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203472"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487339"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka ve Azure Cosmos DB ile yapılandırılmış Apache Spark akışı kullanın
 
@@ -86,7 +86,7 @@ Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gi
 
 Bu belgede kullanılan proje verileri Cosmos DB depolar. Kodu çalıştırmadan önce, önce Cosmos DB Örneğinizde bir _veritabanı_ ve _koleksiyon_ oluşturmanız gerekir. Ayrıca, Cosmos DB yönelik isteklerin kimliğini doğrulamak için kullanılan belge uç noktasını ve _anahtarı_ da almalısınız.
 
-Bunu yapmanın bir yolu, [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)'yi kullanmaktır. Aşağıdaki betik adlı bir veritabanı `kafkadata` ve adlı bir koleksiyonu oluşturacaktır `kafkacollection` . Ardından birincil anahtarı döndürür.
+Bunu yapmanın bir yolu, [Azure CLI](/cli/azure/)'yi kullanmaktır. Aşağıdaki betik adlı bir veritabanı `kafkadata` ve adlı bir koleksiyonu oluşturacaktır `kafkacollection` . Ardından birincil anahtarı döndürür.
 
 ```azurecli
 #!/bin/bash

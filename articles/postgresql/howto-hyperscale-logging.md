@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/13/2020
-ms.openlocfilehash: 1dc7bc8e119de7c8fdcf09713286be2633457486
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fac0db7f8c94113ff87d1c0a3091e4c0cbd5ed2b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90895862"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489855"
 ---
 # <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda Günlükler-hiper ölçek (Citus)
 
@@ -34,5 +34,5 @@ Yeni Tanılama ayarları için bir ad seçin ve **Postgressqllogs** kutusunu iş
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Log Analytics sorgularını kullanmaya başlama](/azure/azure-monitor/log-query/get-started-portal)
-- [Azure Olay Hub 'ları](/azure/event-hubs/event-hubs-about) hakkında bilgi edinin
+- [Log Analytics sorgularını kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md)
+- [Azure Olay Hub 'ları](../event-hubs/event-hubs-about.md) hakkında bilgi edinin

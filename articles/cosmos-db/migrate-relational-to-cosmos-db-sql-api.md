@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: aaff5adf358c31d99df7a51305c4e3554c3259c1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3aec6cf2fa515d71b93d84cf8c4fc901fc847162
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166259"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487441"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Bire çok ilişkisel verileri Azure Cosmos DB SQL API hesabına geçirme
 
@@ -334,5 +334,5 @@ Her iki yaklaşımda da sonda, Cosmos DB koleksiyonundaki her bir sipariş belge
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="SQL veritabanındaki Orders ve OrderDetails tablolarını gösteren ekran görüntüsü.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Cosmos DB veri modelleme](https://docs.microsoft.com/azure/cosmos-db/modeling-data) hakkında bilgi edinin
-* [Azure Cosmos DB verileri nasıl modelleyip bölümleyeceğinizi](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example) öğrenin
+* [Azure Cosmos DB veri modelleme](./modeling-data.md) hakkında bilgi edinin
+* [Azure Cosmos DB verileri nasıl modelleyip bölümleyeceğinizi](./how-to-model-partition-example.md) öğrenin

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: 3de7101eb998d0f9b3b57afba6d19595738cbb63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddb14c321962c65d09be420d8da15f1e547aa282
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020414"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489549"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK'sını kullanarak MapReduce işlerini çalıştırma
 
@@ -24,7 +24,7 @@ HDInsight .NET SDK kullanarak MapReduce işlerini göndermeyi öğrenin. HDInsig
 > [!NOTE]  
 > Bu makaledeki adımların bir Windows istemcisinden gerçekleştirilmesi gerekir. Bir Linux, OS X veya UNIX istemcisini Hive ile çalışmak üzere kullanma hakkında bilgi için, makalenin üst kısmında gösterilen sekme seçiciyi kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -174,5 +174,5 @@ Bu makalede, bir HDInsight kümesi oluşturmanın çeşitli yollarını öğrend
 * Hive işi göndermek için bkz. [HDInsight .NET SDK kullanarak Apache Hive sorguları çalıştırma](apache-hadoop-use-hive-dotnet-sdk.md).
 * HDInsight kümeleri oluşturmak için bkz. [HDInsight 'Ta Linux tabanlı Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md).
 * HDInsight kümelerini yönetmek için bkz. [HDInsight 'ta Apache Hadoop kümelerini yönetme](../hdinsight-administer-use-portal-linux.md).
-* HDInsight .NET SDK 'sını öğrenmek için bkz. [HDInsight .NET SDK başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
+* HDInsight .NET SDK 'sını öğrenmek için bkz. [HDInsight .NET SDK başvurusu](/dotnet/api/overview/azure/hdinsight).
 * Azure 'da etkileşimli olmayan kimlik doğrulaması için bkz. [etkileşimli olmayan kimlik doğrulaması .net HDInsight uygulamaları oluşturma](../hdinsight-create-non-interactive-authentication-dotnet-applications.md).

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9a6d8843acf27a53e261d9c7180906b15d05cc33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30be9cbba7fe702d12285fe13794290c4820fd53
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314823"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488002"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nı izleme ve ayarlama-hiper ölçek (Citus)
 
@@ -22,7 +22,7 @@ Sunucularınız hakkındaki izleme verileri, iş yükünüz için sorun gidermen
 
 Hiper ölçek (Citus), bir sunucu grubundaki her bir düğüm için ölçümler sağlar. Ölçümler, destekleyici kaynakların davranışına ilişkin öngörüler sunar. Her ölçüm bir dakikalık sıklıkta yayılır ve 30 güne kadar geçmiş olur.
 
-Ölçümlerin grafiklerini görüntülemenin yanı sıra, uyarıları da yapılandırabilirsiniz. Adım adım yönergeler için bkz. [uyarıları ayarlama](howto-hyperscale-alert-on-metric.md).  Diğer görevler otomatik eylemleri ayarlamayı, gelişmiş analizler çalıştırmayı ve arşivleme geçmişini içerir. Daha fazla bilgi için bkz. [Azure ölçümlerine genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Ölçümlerin grafiklerini görüntülemenin yanı sıra, uyarıları da yapılandırabilirsiniz. Adım adım yönergeler için bkz. [uyarıları ayarlama](howto-hyperscale-alert-on-metric.md).  Diğer görevler otomatik eylemleri ayarlamayı, gelişmiş analizler çalıştırmayı ve arşivleme geçmişini içerir. Daha fazla bilgi için bkz. [Azure ölçümlerine genel bakış](../azure-monitor/platform/data-platform.md).
 
 ### <a name="list-of-metrics"></a>Ölçüm listesi
 
@@ -30,9 +30,9 @@ Bu ölçümler hiper ölçek (Citus) düğümleri için kullanılabilir:
 
 |Ölçüm|Ölçüm görünen adı|Birim|Açıklama|
 |---|---|---|---|
-|active_connections|Etkin Bağlantılar|Sayı|Sunucuya etkin bağlantı sayısı.|
+|active_connections|Etkin Bağlantılar|Count|Sunucuya etkin bağlantı sayısı.|
 |cpu_percent|CPU yüzdesi|Yüzde|Kullanımdaki CPU yüzdesi.|
-|'ye|IOPS|Sayı|[IOPS tanımına](../virtual-machines/premium-storage-performance.md#iops) ve [Hyperscale (Citus) aktarım](concepts-hyperscale-configuration-options.md) hızına bakın|
+|'ye|IOPS|Count|[IOPS tanımına](../virtual-machines/premium-storage-performance.md#iops) ve [Hyperscale (Citus) aktarım](concepts-hyperscale-configuration-options.md) hızına bakın|
 |memory_percent|Bellek yüzdesi|Yüzde|Kullanımdaki belleğin yüzdesi.|
 |network_bytes_ingress|Ağ Girişi|Bayt|Etkin bağlantılar genelinde ağ.|
 |network_bytes_egress|Ağ Çıkışı|Bayt|Etkin bağlantılar arasında ağ çıkışı.|

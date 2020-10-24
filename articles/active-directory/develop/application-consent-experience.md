@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4a4af81c6a216119ae2e1b0221c06ddc349452f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115484"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478142"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD uygulama onayı deneyimlerini anlama
 
@@ -65,13 +65,13 @@ Bir kullanıcının ortak izin senaryolarında görebileceği onay deneyimleri a
     
     2. Kullanıcılar geleneksel onay istemi 'ni görür.
 
-        ![Senaryo 1b için onay istemi](./media/application-consent-experience/consent_prompt_1b.png)
+        ![Geleneksel onay istemi 'ni gösteren ekran görüntüsü.](./media/application-consent-experience/consent_prompt_1b.png)
 
 2. Bir uygulamaya erişen ve yetkilendirme kapsamı dışında en az bir izin gerektiren bireyler.
     1. Yöneticiler, 1 ile aynı uyarıyı görür. yukarıda gösterildim.
     2. Kullanıcıların uygulamaya onay vermesini engellenecektir ve bu kullanıcılara yöneticiden uygulamaya erişim istemesi bildirilir. 
                 
-        ![Senaryo 1b için onay istemi](./media/application-consent-experience/consent_prompt_2b.png)
+        ![Kullanıcıya uygulamaya erişmek için bir yönetici sormasını söyleyen onay isteminin ekran görüntüsü.](./media/application-consent-experience/consent_prompt_2b.png)
 
 3. Ya da yönetici onay akışına yönlendirilir.
     1. Yönetici kullanıcılar Yönetici onay istemi 'ni görür. Başlık ve izin açıklamaları Bu istem üzerinde değişti, değişiklikler bu istemi kabul eden olguyu vurgulaması, uygulamanın tüm kiracı adına istenen verilere erişim izni vermesini sağlar.

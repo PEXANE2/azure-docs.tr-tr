@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 09/02/2020
-ms.openlocfilehash: b30a7822511dc6b4c3ae7e852cba49ebff6e24ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23361470fd7b1cdb5b6153580e0240ac2f6c9133
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400866"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490348"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 
@@ -126,7 +126,7 @@ Status            : Succeeded
 
 Betik eylemi betikleri aşağıdaki yardımcı programlar aracılığıyla kullanılabilir:
 
-* Azure portal
+* Azure portalı
 * Azure PowerShell
 * Azure CLI
 * HDInsight .NET SDK 'Sı
@@ -207,7 +207,7 @@ Kümenin oluşturulması birkaç dakika sürebilir.
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-hdinsight-net-sdk"></a>HDInsight .NET SDK 'dan küme oluşturma sırasında betik eylemi kullanma
 
-HDInsight .NET SDK 'Sı, bir .NET uygulamasından HDInsight ile çalışmayı kolaylaştıran istemci kitaplıkları sağlar. Kod örneği için bkz. [betik eylemleri](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#script-actions).
+HDInsight .NET SDK 'Sı, bir .NET uygulamasından HDInsight ile çalışmayı kolaylaştıran istemci kitaplıkları sağlar. Kod örneği için bkz. [betik eylemleri](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true#script-actions).
 
 ## <a name="script-action-to-a-running-cluster"></a>Çalışan bir kümeye betik eylemi
 
@@ -260,7 +260,7 @@ NodeTypes       : {HeadNode, WorkerNode}
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>Azure CLı 'dan çalışan bir kümeye betik eylemi uygulama
 
-Başlamadan önce Azure CLı 'yi yüklediğinizden ve yapılandırmadığınızdan emin olun. En son sürüme sahip olduğunuzdan emin olun. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Başlamadan önce Azure CLı 'yi yüklediğinizden ve yapılandırmadığınızdan emin olun. En son sürüme sahip olduğunuzdan emin olun. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli).
 
 1. Azure aboneliğinizde kimlik doğrulaması yapın:
 
@@ -323,12 +323,12 @@ Aşağıdaki örnek betik, bir betiği yükseltmek ve alçaltmak için cmdlet 'l
 
 | Komut | Açıklama |
 | --- | --- |
-| [`az hdinsight script-action delete`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-delete) |Kümenin belirtilen kalıcı betik eylemini siler. Bu komut, bir komut dosyası tarafından yapılan eylemleri geri almaz, yalnızca kalıcı bayrağı kaldırır.|
-|[`az hdinsight script-action execute`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)|Belirtilen HDInsight kümesinde betik eylemlerini yürütün.|
-| [`az hdinsight script-action list`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-list) |Belirtilen küme için tüm kalıcı betik eylemlerini listeler. |
-|[`az hdinsight script-action list-execution-history`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-list-execution-history)|Belirtilen küme için tüm betiklerin yürütme geçmişini listeler.|
-|[`az hdinsight script-action promote`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-promote)|Belirtilen geçici betik yürütmeyi kalıcı bir betiğe yükseltir.|
-|[`az hdinsight script-action show-execution-details`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-show-execution-details)|Verilen betik yürütme KIMLIĞI için betik yürütme ayrıntısı alır.|
+| [`az hdinsight script-action delete`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-delete) |Kümenin belirtilen kalıcı betik eylemini siler. Bu komut, bir komut dosyası tarafından yapılan eylemleri geri almaz, yalnızca kalıcı bayrağı kaldırır.|
+|[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)|Belirtilen HDInsight kümesinde betik eylemlerini yürütün.|
+| [`az hdinsight script-action list`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list) |Belirtilen küme için tüm kalıcı betik eylemlerini listeler. |
+|[`az hdinsight script-action list-execution-history`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list-execution-history)|Belirtilen küme için tüm betiklerin yürütme geçmişini listeler.|
+|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-promote)|Belirtilen geçici betik yürütmeyi kalıcı bir betiğe yükseltir.|
+|[`az hdinsight script-action show-execution-details`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-show-execution-details)|Verilen betik yürütme KIMLIĞI için betik yürütme ayrıntısı alır.|
 
 ### <a name="hdinsight-net-sdk"></a>HDInsight .NET SDK 'Sı
 

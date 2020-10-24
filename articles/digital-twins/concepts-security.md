@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: f438f4393538478f2960e709d8e23beb6106510d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331762"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485758"
 ---
 # <a name="secure-azure-digital-twins"></a>Güvenli Azure dijital TWINS
 
@@ -48,11 +48,13 @@ Yönetilen kimlikler ile Azure platformu bu çalışma zamanı kimliğini yönet
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Yetkilendirme: Azure dijital TWINS için Azure rolleri
 
 Azure, bir Azure dijital TWINS kaynağına erişimi yetkilendirmek için aşağıdaki Azure yerleşik rollerini sağlar:
-* *Azure dijital TWINS sahibi (Önizleme)* – Azure dijital TWINS kaynakları üzerinden tam erişim sağlamak için bu rolü kullanın.
-* *Azure dijital TWINS okuyucu (Önizleme)* – Azure dijital TWINS kaynaklarına salt okuma erişimi sağlamak için bu rolü kullanın.
+* *Azure dijital TWINS veri sahibi* – Azure dijital TWINS kaynakları üzerinden tam erişim sağlamak için bu rolü kullanın.
+* *Azure dijital TWINS veri okuyucusu* – Azure dijital TWINS kaynaklarına salt okuma erişimi sağlamak için bu rolü kullanın.
 
-> [!TIP]
-> *Azure dijital TWINS okuyucu (Önizleme)* rolü artık gözatma ilişkilerini de destekliyor.
+>[!NOTE]
+> Bu roller yakın zamanda Önizlemedeki önceki adlarından yeniden adlandırıldı:
+> * *Azure dijital TWINS veri sahibi* , daha önce *Azure Digital TWINS sahibiydi (Önizleme)*.
+> * *Azure dijital TWINS veri okuyucu* daha önce *Azure Digital TWINS okuyucu (Önizleme)*.
 
 Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz. Azure RBAC belgelerindeki [*rol tanımlarını anlama*](../role-based-access-control/role-definitions.md) . Azure özel rolleri oluşturma hakkında daha fazla bilgi için bkz. [*Azure özel roller*](../role-based-access-control/custom-roles.md).
 

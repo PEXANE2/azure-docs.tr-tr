@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 8936c2150c32a22877f9b56736ecc4b8f3424b32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6aed014800be41ce5b9d1d86d137aefcf2585e98
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533189"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486982"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Öğretici: Uberflip ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Uberflip 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Uberflip ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -50,7 +50,7 @@ Uberflip aşağıdaki özellikleri destekler:
 
 Uberflip 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Azure Marketi 'nden yönetilen SaaS uygulamaları listenize Uberflip eklemeniz gerekir:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol bölmede **Azure Active Directory**’yi seçin.
 
    ![Azure Active Directory seçeneği](common/select-azuread.png)
@@ -96,7 +96,7 @@ Azure AD çoklu oturum açmayı Uberflip ile yapılandırmak için aşağıdaki 
 
 1. **SAML Ile tek Sign-On ayarla** bölmesinde, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** (kurşun kalem simgesi) öğesini seçin.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Ekran görüntüsü, bir yanıt U R L girebileceğiniz temel SAML yapılandırmasını gösterir.](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölmesinde, YAPıLANDıRMAK istediğiniz SSO moduna bağlı olarak aşağıdaki adımlardan birini yapın:
 
@@ -113,7 +113,7 @@ Azure AD çoklu oturum açmayı Uberflip ile yapılandırmak için aşağıdaki 
 
      `https://app.uberflip.com/users/login`
 
-     ![Uberflip etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/both-signonurl.png)
+     ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/both-signonurl.png)
 
 1. **SAML Ile tek Sign-On ayarla** bölmesinde, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 

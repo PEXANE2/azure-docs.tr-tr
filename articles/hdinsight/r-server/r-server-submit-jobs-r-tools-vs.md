@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 402092f1667abb49da4521b91ba1f0e7d471f0d1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75435262"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490263"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Visual Studio için R Araçları’ndan iş gönderme
 
-[Visual Studio için R araçları](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (rtvs), hem [Visual Studio 2017](https://www.visualstudio.com/downloads/), hem de Visual [Studio 2015 güncelleştirme 3](https://go.microsoft.com/fwlink/?LinkId=691129) veya üzeri topluluk (ücretsiz), Professional ve Enterprise sürümleri için ücretsiz, açık kaynaklı bir uzantıdır. RTVS, [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)için kullanılamaz.
+[Visual Studio için R araçları](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (rtvs), hem [Visual Studio 2017](https://www.visualstudio.com/downloads/), hem de Visual [Studio 2015 güncelleştirme 3](https://go.microsoft.com/fwlink/?LinkId=691129) veya üzeri topluluk (ücretsiz), Professional ve Enterprise sürümleri için ücretsiz, açık kaynaklı bir uzantıdır. RTVS, [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019&preserve-view=true)için kullanılamaz.
 
 RTVS, [R etkileşim penceresi](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), IntelliSense (kod tamamlama) gibi araçlar sunarak r iş akışınızı geliştirir, ggplot2 ve Ggviz, [r Code hata ayıklama](https://docs.microsoft.com/visualstudio/rtvs/debugging)gibi r kitaplıkları aracılığıyla [görselleştirme çizmektedir](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) .
 

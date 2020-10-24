@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0e0bcde44ba28751761b7db3f6d6fcae8f7bd49c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08f677c23cce6eb840a1caee15dcddf6c8311517
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400562"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488699"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Veri aktarımı için bir Azure çözümü seçme
 
@@ -71,15 +71,15 @@ Ayrıca, Azure portal 'de Azure depolama hesabınıza gidebilir ve **veri aktar�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Depolama Gezgini bir giriş alın](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
-- [AzCopy 'e genel bakış konusunu okuyun](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
+- [AzCopy 'e genel bakış konusunu okuyun](/azure/storage/common/storage-use-azcopy-v10).
 - [Hızlı başlangıç: PowerShell ile Blobları karşıya yükleme, indirme ve listeleme](../blobs/storage-quickstart-blobs-powershell.md)
 - [Hızlı başlangıç: Azure CLı ile Bloblar oluşturma, indirme ve listeleme](../blobs/storage-quickstart-blobs-cli.md)
 - Şunları öğrenin:
 
-    - [Çevrimdışı aktarımlar için Azure Data Box, Azure Data Box disk ve Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/).
-    - [Çevrimiçi aktarımlar için Azure Data Box Gateway ve Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/).
-- [Azure Data Factory ne olduğunu öğrenin](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
+    - [Çevrimdışı aktarımlar için Azure Data Box, Azure Data Box disk ve Azure Data Box Heavy](/azure/databox/).
+    - [Çevrimiçi aktarımlar için Azure Data Box Gateway ve Azure Stack Edge](/azure/databox-online/).
+- [Azure Data Factory ne olduğunu öğrenin](/azure/data-factory/copy-activity-overview).
 - Veri aktarmak için REST API 'Lerini kullanma
 
-    - [.NET 'te](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [Java üzerinde](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [.NET 'te](/dotnet/api/overview/azure/storage)
+    - [Java üzerinde](/java/api/overview/azure/storage)

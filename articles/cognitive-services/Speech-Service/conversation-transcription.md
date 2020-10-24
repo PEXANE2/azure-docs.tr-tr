@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: dcc7721aec067c4de309e3fdd926245a9d240f0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d95525c7dfecd44758c86903ca4a96c2290df52
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81402505"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487797"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>Toplantılar (Önizleme) ile görüşme dökümü nedir?
 
@@ -34,9 +34,11 @@ Konuşma dökümü, her konuşmacının gerçek zamanlı ve/veya zaman uyumsuz o
 > [!NOTE]
 > Konuşma dökümü, odada bulunan hoparlör sayısına bir sınır koymasa da, oturum başına 2-10 hoparlörleri için en iyi duruma getirilmiştir.
 
-## <a name="use-cases"></a>Uygulama alanları
+## <a name="get-started"></a>başlarken
 
-### <a name="inclusive-meetings"></a>Kapsamlı toplantılar
+Başlamak [için gerçek](how-to-use-conversation-transcription.md) zamanlı konuşma dökümünü inceleyin.
+
+## <a name="use-cases"></a>Uygulama alanları
 
 Engelli ve işitme güçlüğü çeken katılımcılar gibi herkese açık bir şekilde toplantılar yapmak için gerçek zamanlı olarak döküm almak önemlidir. Gerçek zamanlı modda konuşma dökümü, sesi alıp kim olduğunu belirler ve tüm toplantı katılımcılarının bir gecikme süresi olmadan toplantıya katılmasını sağlar.
 
@@ -54,6 +56,10 @@ Bu, konuşma dökümünü nasıl çalıştığına ilişkin üst düzey bir gene
 
 - **Çok kanallı ses akışı** – belirtim ve tasarım ayrıntıları için bkz. [MICROSOFT Speech cihaz SDK mikrofonu](https://aka.ms/cts/microphone). Daha fazla bilgi edinmek veya bir geliştirme seti satın almak için bkz. [Microsoft Speech cihaz SDK 'Sını alma](https://aka.ms/cts/getsdk).
 - **Kullanıcı ses örnekleri** – konuşma dökümü, konuşmadan önce Kullanıcı profilleri gerektirir. Her kullanıcıdan ses kayıtları toplamanız gerekir, sonra da ses doğrulamak ve Kullanıcı profilleri oluşturmak için kayıtları [Imza oluşturma hizmetine](https://aka.ms/cts/signaturegenservice) göndermeniz gerekir.
+
+> [!NOTE]
+> Kullanıcı ses örnekleri isteğe bağlıdır. Bu giriş olmadan, döküm farklı konuşmacılar gösterir, ancak önceden kaydedilmiş özel konuşmacı adları olarak tanınması yerine "Speaker1", "Speaker2" vb. olarak gösterilir.
+
 
 ## <a name="real-time-vs-asynchronous"></a>Gerçek zamanlı vs. zaman uyumsuz
 
@@ -73,9 +79,9 @@ Ses verileri, konuşmacı tanımlayıcısı + döküm döndüren canlı olarak i
 
 ## <a name="language-support"></a>Dil desteği
 
-Şu anda görüşme dökümü şu bölgelerde "en-US" ve "zh-CN" yi destekler: *merkezileştirme* ve *eastaya*. Ek yerel ayar desteği gerekiyorsa [konuşma dökümü özelliği ekibi](mailto:CTSFeatureCrew@microsoft.com)' ne başvurun.
+Şu anda görüşme dökümü aşağıdaki bölgelerde bulunan [Tüm konuşmadan metne dilleri](language-support.md#speech-to-text) destekler:  `centralus` , `eastasia` , `eastus` , `westeurope` . Ek yerel ayar desteği gerekiyorsa [konuşma dökümü özelliği ekibi](mailto:CTSFeatureCrew@microsoft.com)' ne başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Konuşmaları gerçek zamanlı olarak dönüştürme](how-to-use-conversation-transcription-service.md)
+> [Konuşmaları gerçek zamanlı olarak dönüştürme](how-to-use-conversation-transcription.md)

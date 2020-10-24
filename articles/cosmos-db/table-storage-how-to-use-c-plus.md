@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: ed3ea64bf76eafd965e13f4dab1911840ed8139a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50a34f2572e5e9feea0b5adc3e12f72451e5728b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282859"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477343"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Azure Tablo Depolama ve Azure Cosmos DB Tablo API’sini C++ ile kullanma
 
@@ -78,7 +78,7 @@ Bu örnekte, Azure depolama bağlantı dizesinin tutulacağı statik bir alanın
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-İçin depolama hesabınızın adını kullanın `<your_storage_account>` . <your_storage_account_key> için, [Azure Portal](https://portal.azure.com)listelenen depolama hesabı için erişim anahtarını kullanın. Depolama hesapları ve erişim anahtarları hakkında bilgi için bkz. [depolama hesabı oluşturma](../storage/common/storage-create-storage-account.md).
+İçin depolama hesabınızın adını kullanın `<your_storage_account>` . <your_storage_account_key> için, [Azure Portal](https://portal.azure.com)listelenen depolama hesabı için erişim anahtarını kullanın. Depolama hesapları ve erişim anahtarları hakkında bilgi için bkz. [depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 
 ### <a name="set-up-an-azure-cosmos-db-connection-string"></a>Azure Cosmos DB bağlantı dizesini ayarlama
 
@@ -138,7 +138,7 @@ table.create_if_not_exists();
 
 ### <a name="add-an-entity-to-a-table"></a>Tabloya bir varlık ekleme
 
-Bir tabloya varlık eklemek için, yeni bir `table_entity` nesne oluşturun ve bunu öğesine geçirin `table_operation::insert_entity` . Aşağıdaki kod, satır anahtarı olarak müşterinin adını, bölüm anahtarı olarak soyadını kullanır. Birlikte, bir varlığın bölüm ve sıra anahtarı varlığı tabloda benzersiz şekilde tanımlar. Aynı bölüm anahtarına sahip varlıklar, farklı bölüm anahtarları olan varlıklardan daha hızlı sorgulanabilir. Farklı bölüm anahtarlarının kullanılması, daha fazla paralel işlem ölçeklenebilirliği sağlar. Daha fazla bilgi için bkz. [Microsoft Azure depolama performansı ve ölçeklenebilirliği yapılacaklar listesi](../storage/common/storage-performance-checklist.md).
+Bir tabloya varlık eklemek için, yeni bir `table_entity` nesne oluşturun ve bunu öğesine geçirin `table_operation::insert_entity` . Aşağıdaki kod, satır anahtarı olarak müşterinin adını, bölüm anahtarı olarak soyadını kullanır. Birlikte, bir varlığın bölüm ve sıra anahtarı varlığı tabloda benzersiz şekilde tanımlar. Aynı bölüm anahtarına sahip varlıklar, farklı bölüm anahtarları olan varlıklardan daha hızlı sorgulanabilir. Farklı bölüm anahtarlarının kullanılması, daha fazla paralel işlem ölçeklenebilirliği sağlar. Daha fazla bilgi için bkz. [Microsoft Azure depolama performansı ve ölçeklenebilirliği yapılacaklar listesi](../storage/blobs/storage-performance-checklist.md).
 
 Aşağıdaki kod, `table_entity` depolanacak bazı müşteri verileriyle yeni bir örneğini oluşturur. Sonraki kod, `table_operation::insert_entity` `table_operation` bir tabloya varlık eklemek için bir nesne oluşturmak için çağırır ve yeni tablo varlığını onunla ilişkilendirir. Son olarak, kod `execute` nesnesi üzerinde yöntemini çağırır `cloud_table` . Yeni, tabloya `table_operation` yeni müşteri varlığını eklemek Için tablo hizmetine bir istek gönderir `people` .  
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0b3c755415185324d427bcd3ae222774bca31284
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 54e990b27461bd47466e12e5f51f3ed2a8a585ec
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282711"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489107"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-database-or-collection-for-azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sine yönelik bir veritabanı veya koleksiyon için PowerShell ile işleme (RU/s) işlemleri
 
@@ -47,16 +47,16 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-Azcosmosdbmongodbdatabaseverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabasethroughput) | MongoDB veritabanı için belirtilen Azure Cosmos DB API 'sinin aktarım hızı değerini alır. |
-| [Get-Azcosmosdbmongodbcollectionverimlilik](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionthroughput) | MongoDB koleksiyonu için belirtilen Azure Cosmos DB API 'sinin aktarım hızı değerini alır. |
-| [Update-Azcosmosdbmongodbdatabaseverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbdatabasethroughput) | MongoDB veritabanı için Azure Cosmos DB API 'sinin üretilen iş değerini güncelleştirir. |
-| [Update-Azcosmosdbmongodbcollectionverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollectionthroughput) | MongoDB koleksiyonu için Azure Cosmos DB API 'sinin üretilen iş değerini güncelleştirir. |
-| [Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration](https://docs.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbmongodbdatabasethroughputmigration) | MongoDB koleksiyonu için Azure Cosmos DB API 'sinin aktarım hızını geçirin. |
-| [Invoke-AzCosmosDBMongoDBCollectionThroughputMigration](https://docs.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbmongodbcollectionthroughputmigration) | MongoDB koleksiyonu için Azure Cosmos DB API 'sinin aktarım hızını geçirin. |
+| [Get-Azcosmosdbmongodbdatabaseverimini](/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabasethroughput) | MongoDB veritabanı için belirtilen Azure Cosmos DB API 'sinin aktarım hızı değerini alır. |
+| [Get-Azcosmosdbmongodbcollectionverimlilik](/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionthroughput) | MongoDB koleksiyonu için belirtilen Azure Cosmos DB API 'sinin aktarım hızı değerini alır. |
+| [Update-Azcosmosdbmongodbdatabaseverimini](/powershell/module/az.cosmosdb/update-azcosmosdbmongodbdatabasethroughput) | MongoDB veritabanı için Azure Cosmos DB API 'sinin üretilen iş değerini güncelleştirir. |
+| [Update-Azcosmosdbmongodbcollectionverimini](/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollectionthroughput) | MongoDB koleksiyonu için Azure Cosmos DB API 'sinin üretilen iş değerini güncelleştirir. |
+| [Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration](/powershell/module/az.cosmosdb/invoke-azcosmosdbmongodbdatabasethroughputmigration) | MongoDB koleksiyonu için Azure Cosmos DB API 'sinin aktarım hızını geçirin. |
+| [Invoke-AzCosmosDBMongoDBCollectionThroughputMigration](/powershell/module/az.cosmosdb/invoke-azcosmosdbmongodbcollectionthroughputmigration) | MongoDB koleksiyonu için Azure Cosmos DB API 'sinin aktarım hızını geçirin. |
 |**Azure Kaynak grupları**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).

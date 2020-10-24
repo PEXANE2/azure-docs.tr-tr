@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d676d891683cc11dd8c1999c26464373d17e97be
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 71b7217a1a3d79db67e1649ce33d441f0c2c2da2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932031"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489413"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -191,7 +191,7 @@ Evet. Bir sanal ağ içinde dağıtılan tüm VM 'Ler ve Cloud Services rol örn
 ## <a name="azure-services-that-connect-to-vnets"></a>VNET 'lere bağlanan Azure hizmetleri
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>VNet ile Azure App Service Web Apps kullanabilir miyim?
-Evet. Bir ASE (App Service Ortamı) kullanarak bir VNet içinde Web Apps dağıtabilir, uygulamalarınızın arka ucunu VNet tümleştirmeyle sanal ağlarınıza bağlayabilirsiniz ve gelen trafiği hizmet uç noktalarıyla uygulamanıza taşıyabilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Evet. Bir ASE (App Service Ortamı) kullanarak bir VNet içinde Web Apps dağıtabilir, uygulamalarınızın arka ucunu VNet tümleştirmeyle sanal ağlarınıza bağlayabilirsiniz ve gelen trafiği hizmet uç noktalarıyla uygulamanıza taşıyabilirsiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [App Service ağ özellikleri](../app-service/networking-features.md)
 * [App Service Ortamı Web Apps oluşturma](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -283,7 +283,7 @@ Hayır. VNet eşlemesini etkinleştirmek için adres alanları çakışmamalıd�
 VNet eşleme bağlantısı oluşturmak için ücret alınmaz. Eşleme bağlantıları arasında veri aktarımı ücretlendirilir. [Buraya bakın](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>VNet eşleme trafiği şifrelendi mı?
-Hayır. Eşlenen VNET 'lerdeki kaynaklar arasındaki trafik özeldir ve yalıtılmıştır. Microsoft omurga üzerinde tamamen kalır.
+VNET eşleme trafiği veri merkezleri arasında (veya Microsoft-- [MACsec veri bağlantısı katmanı şifrelemesi](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) adına göre denetlenmez), temel alınan ağ donanımında kullanılır.
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Neden eşleme bağlantıdır bağlantısı *kesik* durumda?
 VNET eşleme bağlantıları, bir VNet eşleme bağlantısı silindiğinde *bağlantısı kesik* duruma geçer. Başarılı bir eşleme bağlantısını yeniden kurmak için her iki bağlantıyı da silmelisiniz.
@@ -407,7 +407,7 @@ Bir sanal ağdaki toplam VNet hizmeti uç noktası sayısı için bir sınır yo
 
 |Azure hizmeti| VNet kuralları sınırları|
 |---|---|
-|Azure Storage| 100|
+|Azure Depolama| 100|
 |Azure SQL| 128|
 |Azure Synapse Analytics|   128|
 |Azure KeyVault|    127|

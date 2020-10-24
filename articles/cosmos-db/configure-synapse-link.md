@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: dee5a56f309dab8f09a598219f6302c88f4308e7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d3e7eca546adbcac8af882ff4cd5b09d3d643d4c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370721"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489277"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısı 'nı yapılandırma ve kullanma (Önizleme)
 
@@ -32,7 +32,7 @@ Azure SYNAPSE link, Azure Cosmos DB SQL API kapsayıcıları veya Mongo DB kolek
 
 ## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>Azure Cosmos DB hesapları için Azure SYNAPSE bağlantısını etkinleştirme
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
@@ -60,7 +60,7 @@ Kapsayıcıyı oluştururken Azure Cosmos kapsayıcısında analitik depoyu aça
 > [!NOTE]
 > Şu anda analitik depoyu **Yeni** kapsayıcılar için (hem yeni hem de mevcut hesaplarda) etkinleştirebilirsiniz. [Azure Cosmos DB geçiş araçları](cosmosdb-migrationchoices.md) 'nı kullanarak, mevcut kapsayıcılarınızdaki verileri yeni kapsayıcılara geçirebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Azure Portal](https://portal.azure.com/) veya [Azure Cosmos Gezgini](https://cosmos.azure.com/)' nde oturum açın.
 
@@ -166,7 +166,7 @@ except exceptions.CosmosResourceExistsError:
 
 Analiz deposunu belirli bir TTL değeriyle etkinleştirdikten sonra ilerleyen zamanlarda farklı bir geçerli değer kullanarak güncelleştirebilirsiniz. Değeri güncelleştirmek için Azure portalını veya SDK'ları kullanabilirsiniz. Çeşitli analitik TTL yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [ANALITIK TTL desteklenen değerler](analytical-store-introduction.md#analytical-ttl) makalesi.
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Azure portal aracılığıyla analitik mağaza etkin bir kapsayıcı oluşturduysanız, varsayılan bir analitik TTL-1 ' i içerir. Bu değeri güncelleştirmek için aşağıdaki adımları kullanın:
 
@@ -225,7 +225,7 @@ Azure Cosmos DB için bir Synapse SQL sunucusuz veritabanı ve görünümleri SY
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 
-[Azure Resource Manager şablonu](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) , SQL API 'si için etkin bir Synapse bağlantısı Azure Cosmos DB hesabı oluşturur. Bu şablon, analitik TTL etkin olarak yapılandırılmış bir kapsayıcı içeren bir bölgede bir çekirdek (SQL) API hesabı oluşturur ve el ile veya otomatik ölçeklendirme üretimi kullanma seçeneği sağlar. Bu şablonu dağıtmak için Benioku sayfasında **Azure 'A dağıt** ' a tıklayın.
+[Azure Resource Manager şablonu](./manage-with-templates.md#azure-cosmos-account-with-analytical-store) , SQL API 'si için etkin bir Synapse bağlantısı Azure Cosmos DB hesabı oluşturur. Bu şablon, analitik TTL etkin olarak yapılandırılmış bir kapsayıcı içeren bir bölgede bir çekirdek (SQL) API hesabı oluşturur ve el ile veya otomatik ölçeklendirme üretimi kullanma seçeneği sağlar. Bu şablonu dağıtmak için Benioku sayfasında **Azure 'A dağıt** ' a tıklayın.
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Azure Synpao bağlantısı ile çalışmaya başlama-örnekler
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26794f0d743bc701879a161f69e374340206e5d8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570359"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488478"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'deki farklı API'ler hakkında sık sorulan sorular
 
@@ -70,7 +70,7 @@ Ayrıca, Azure aboneliği oluşturmadan uygulamanızı ücretsiz olarak gelişti
 
 Teknik bir soru sormak için, bu iki sorudan birine ve yanıt forumlarından birine gönderebilirsiniz:
 
-* [Soru sayfası Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Soru sayfası Microsoft Q&](/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow, programlama sorularına en iyisidir. Sorunuzun [konuyla ilgili](https://stackoverflow.com/help/on-topic) olduğundan emin olun ve mümkün olduğunca [fazla ayrıntı sağlayın ve bu soruyu açık ve answerable](https://stackoverflow.com/help/how-to-ask)yapın.
 
 Yeni özellikler istemek için [Kullanıcı sessiyle](https://feedback.azure.com/forums/263030-azure-cosmos-db)yeni bir istek oluşturun.
@@ -179,7 +179,7 @@ SQL API,,,,, `COUNT` `MIN` `MAX` `AVG` ve `SUM` SQL dilbilgisi aracılığıyla 
 
 SQL API 'SI, HTTP varlık etiketleri veya ETags aracılığıyla iyimser eşzamanlılık denetimini (OCC) destekler. Her SQL API kaynağı bir ETag öğesine sahiptir ve bir belge her güncelleştirildiği zaman sunucu üzerinde ETag ayarlanır. ETag üst bilgisi ve geçerli değer tüm yanıt iletilerine dahildir. ETags, sunucunun bir kaynağın güncelleştirilip güncelleştirilmediğini meyeceğine karar vermesini sağlamak için If-Match üstbilgisiyle birlikte kullanılabilir. If-Match değeri, denetlenecek ETag değeridir. ETag değeri sunucu ETag değeriyle eşleşiyorsa, kaynak güncellenir. ETag artık geçerli değilse, sunucu işlemi "HTTP 412 Önkoşul hatası" Yanıt koduyla reddeder. İstemci daha sonra kaynak için geçerli ETag değerini almak üzere kaynağı yeniden ekler. Ayrıca, ETags bir kaynağın tekrar al gerekip gerekmediğini belirleyebilmek için If-None-Match üst bilgisiyle birlikte kullanılabilir.
 
-.NET 'te iyimser eşzamanlılık kullanmak için [Accesscondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) sınıfını kullanın. Bir .NET örneği için bkz. GitHub 'daki DocumentManagement örneğindeki [program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) .
+.NET 'te iyimser eşzamanlılık kullanmak için [Accesscondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) sınıfını kullanın. Bir .NET örneği için bkz. GitHub 'daki DocumentManagement örneğindeki [program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) .
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>SQL API 'de işlem Nasıl yaparım? mı?
 
@@ -210,7 +210,7 @@ Bu, JavaScript 'in sınırlamasıdır. JavaScript, IEEE 754 ' de belirtildiği g
 Kaynak belirteçlerine, kaynak belirteçleri ve alt öğeleri (belgeler, ekler gibi) kullanarak izinler oluşturulmasına izin verilir. Bu, veritabanında bir izin oluşturulmaya veya bir hesap düzeyinde şu anda izin verilmediği anlamına gelir.
 
 [azure-portal]: https://portal.azure.com
-[query]: sql-api-sql-query.md
+[query]: ./sql-query-getting-started.md
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

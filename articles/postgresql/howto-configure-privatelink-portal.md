@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d2bdb96485a811ea9b3dde5320084f666508622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4da1c1e142c5d70bea342fd9513061710228e61d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907495"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489940"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>PostgreSQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme-portalı kullanarak tek sunucu
 
@@ -222,7 +222,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
     Address:  10.1.3.4
     ```
 
-3. Kullanılabilir herhangi bir istemciyi kullanarak PostgreSQL sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnekte, işlemi yapmak için [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) kullandım.
+3. Kullanılabilir herhangi bir istemciyi kullanarak PostgreSQL sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnekte, işlemi yapmak için [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15) kullandım.
 
 4. **Yeni bağlantı**' da bu bilgileri girin veya seçin:
 
@@ -252,7 +252,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılır, bir sanal ağ üzerinde bir VM oluşturdunuz, PostgreSQL için Azure veritabanı-tek sunucu ve özel erişim için özel bir uç nokta. İnternet 'ten bir VM 'ye bağlanırsınız ve özel bağlantı kullanarak PostgreSQL sunucusuna güvenli bir şekilde iletisiniz. Özel uç noktalar hakkında daha fazla bilgi için bkz. [Azure özel uç noktası nedir?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+Bu nasıl yapılır, bir sanal ağ üzerinde bir VM oluşturdunuz, PostgreSQL için Azure veritabanı-tek sunucu ve özel erişim için özel bir uç nokta. İnternet 'ten bir VM 'ye bağlanırsınız ve özel bağlantı kullanarak PostgreSQL sunucusuna güvenli bir şekilde iletisiniz. Özel uç noktalar hakkında daha fazla bilgi için bkz. [Azure özel uç noktası nedir?](../private-link/private-endpoint-overview.md).
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

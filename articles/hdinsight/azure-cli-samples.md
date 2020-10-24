@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d0d621728ac1956b2c036c9a45202c5d75ee9153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3181d4a0c605e0b1325f21de6b277e2b41f92d37
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499577"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487305"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLı örnekleri
 
@@ -24,15 +24,15 @@ ms.locfileid: "87499577"
 
 Bu makalede ortak görevler için örnek betikler sağlanmaktadır. Her örnek için, değişkenleri uygun değerlerle güncelleştirin ve ardından komutunu yürütün.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure CLI. Adımlar için bkz. [Azure CLI 'Yı yüklemeyin](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+* Azure CLI. Adımlar için bkz. [Azure CLI 'Yı yüklemeyin](/cli/azure/install-azure-cli) .
 
 * İsteğe bağlı: Bash. Bu makaledeki örneklerde, Windows 10 ' da bash kabuğu kullanılır. Yükleme adımları için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](https://docs.microsoft.com/windows/wsl/install-win10) .  Örnekler, bazı hafif değişikliklerle bir Windows komut isteminden çalışır.
 
 ## <a name="az-login"></a>az login
 
-[Azure 'Da oturum açın](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login).
+[Azure 'Da oturum açın](/cli/azure/reference-index#az-login).
 
 ```azurecli
 az login
@@ -43,7 +43,7 @@ az login
 
 ## <a name="az-hdinsight-create"></a>az HDInsight oluştur
 
-[Yeni bir küme oluşturur](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create).
+[Yeni bir küme oluşturur](/cli/azure/hdinsight#az-hdinsight-create).
 
 ### <a name="create-a-cluster-with-an-existing-storage-account"></a>Mevcut depolama hesabı ile küme oluşturma
 
@@ -176,7 +176,7 @@ az hdinsight create \
 
 ## <a name="az-hdinsight-application-create"></a>az HDInsight uygulama oluştur
 
-[HDInsight kümesi için bir uygulama oluşturun](https://docs.microsoft.com/cli/azure/hdinsight/application?view=azure-cli-latest#az-hdinsight-application-create).
+[HDInsight kümesi için bir uygulama oluşturun](/cli/azure/hdinsight/application#az-hdinsight-application-create).
 
 ### <a name="create-an-application-with-a-script-uri"></a>Betik URI 'SI ile uygulama oluşturma
 
@@ -243,7 +243,7 @@ az hdinsight application create \
 
 ## <a name="az-hdinsight-script-action-execute"></a>az HDInsight betiği-eylem yürütme
 
-[Belirtilen HDInsight kümesinde betik eylemlerini yürütün](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).
+[Belirtilen HDInsight kümesinde betik eylemlerini yürütün](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute).
 
 ### <a name="execute-a-script-action-and-persist-on-success"></a>Betik eylemi yürütme ve başarılı olma devam eden
 
