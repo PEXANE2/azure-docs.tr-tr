@@ -19,6 +19,7 @@
         - name: CLI kullanma
           href: fhir-paas-cli-quickstart.md
         - name: ARM şablonunu kullanma
+          displayName: Resource Manager
           href: fhir-paas-arm-template-quickstart.md
     - name: FHIR için Azure IoT Bağlayıcısı dağıtma (önizleme) - Portal
       href: iot-fhir-portal-quickstart.md

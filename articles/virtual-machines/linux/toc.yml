@@ -1024,8 +1024,6 @@
               href: disks-benchmarks.md
             - name: Performansı iyileştirme
               href: optimization.md
-            - name: LVM'yi yapılandırma
-              href: configure-lvm.md
         - name: Kullanıma açılmamış diskleri bulma - CLI
           href: find-unattached-disks.md
         - name: Kullanıma açılmamış diskleri bulma - Portal

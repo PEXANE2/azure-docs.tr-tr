@@ -515,6 +515,14 @@
               items:
                 - name: TLS/SSL kullanarak bağlantı kurma
                   href: flexible-server/how-to-connect-tls-ssl.md
+        - name: Sunucu parametrelerini yapılandırma
+          items:
+            - name: Azure portal
+              href: flexible-server/how-to-configure-server-parameters-portal.md
+              displayName: server parameters
+            - name: Azure CLI
+              href: flexible-server/how-to-configure-server-parameters-cli.md
+              displayName: 'server parameters, cli'
         - name: İzleme ve Günlükler
           items:
             - name: Ölçümler üzerinde uyarı oluşturma

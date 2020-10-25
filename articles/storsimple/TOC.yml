@@ -194,7 +194,7 @@
                   items:
                     - name: 'SSS: Yerel olarak sabitlenmiş birimler'
                       href: storsimple-8000-local-volume-faq.md
-                - name: Rol Tabanlı Erişim Denetimi
+                - name: Azure rol tabanlı erişim denetimi
                   href: storsimple-8000-role-based-access-control.md
                 - name: ACR’leri yönetme
                   href: storsimple-8000-manage-acrs.md
