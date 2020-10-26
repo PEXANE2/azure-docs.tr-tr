@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: 9212142ff6f43a84b141b0781fbe9828eebcbd40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e84f0c9beaee8a755499467925d28a83ba3139fc
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537166"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544061"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na veri çoğaltma
 
@@ -41,10 +41,10 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 - Her tablo bir birincil anahtara sahip olmalıdır.
 - Kaynak sunucu MySQL InnoDB altyapısını kullanmalıdır.
 - Kullanıcının, ikili günlüğü yapılandırma ve kaynak sunucuda yeni kullanıcılar oluşturma izinlerine sahip olması gerekir.
-- Kaynak sunucuda SSL etkinse, etki alanı için sağlanan SSL CA sertifikasının saklı yordama eklendiğinden emin olun `mysql.az_replication_change_master` . Aşağıdaki [örneklere](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) ve `master_ssl_ca` parametresine bakın.
-- Kaynak sunucunun IP adresinin MySQL Çoğaltma sunucusunun güvenlik duvarı kuralları için Azure veritabanı 'na eklendiğinden emin olun. [Azure portalını](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) veya [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli)’yı kullanarak güvenlik duvarı kurallarını güncelleştirin.
+- Kaynak sunucuda SSL etkinse, etki alanı için sağlanan SSL CA sertifikasının saklı yordama eklendiğinden emin olun `mysql.az_replication_change_master` . Aşağıdaki [örneklere](./howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) ve `master_ssl_ca` parametresine bakın.
+- Kaynak sunucunun IP adresinin MySQL Çoğaltma sunucusunun güvenlik duvarı kuralları için Azure veritabanı 'na eklendiğinden emin olun. [Azure portalını](./howto-manage-firewall-using-portal.md) veya [Azure CLI](./howto-manage-firewall-using-cli.md)’yı kullanarak güvenlik duvarı kurallarını güncelleştirin.
 - Kaynak sunucuyu barındıran makinenin 3306 numaralı bağlantı noktasında hem gelen hem de giden trafiğe izin verdiğinden emin olun.
-- Kaynak sunucunun **Genel BIR IP adresi**olduğundan, DNS 'nin genel olarak erişilebilir olduğundan veya tam etki alanı adı (FQDN) olduğundan emin olun.
+- Kaynak sunucunun **Genel BIR IP adresi** olduğundan, DNS 'nin genel olarak erişilebilir olduğundan veya tam etki alanı adı (FQDN) olduğundan emin olun.
 
 ### <a name="other"></a>Diğer
 - Veri içi çoğaltma yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında desteklenir.

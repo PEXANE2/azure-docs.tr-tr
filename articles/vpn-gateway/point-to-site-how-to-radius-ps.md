@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: c8d7ae3cd40f118399e5ff60fa0738b07249c5ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bce381ba4916bc58d2c7acf8d69b323dbdf972aa
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442405"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544792"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS kimlik doğrulaması kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırma: PowerShell
 
@@ -40,7 +40,7 @@ Noktadan Siteye bağlantılar için bir VPN cihazına veya genel kullanıma yön
 
 P2S bağlantıları aşağıdakileri gerektirir:
 
-* RouteBased VPN ağ geçidi. 
+* RouteBased VPN ağ geçidi. 
 * Kullanıcı kimlik doğrulamasını işleyecek bir RADIUS sunucusu. RADIUS sunucusu şirket içinde veya Azure VNet 'te dağıtılabilir. Ayrıca, yüksek kullanılabilirlik için iki RADIUS sunucusu da yapılandırabilirsiniz.
 * Sanal ağa bağlanacak Windows cihazları için bir VPN istemcisi yapılandırma paketi. VPN istemcisi yapılandırma paketi, bir VPN istemcisinin P2S üzerinden bağlanması için gereken ayarları sağlar.
 
@@ -77,7 +77,7 @@ Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MS
   * **Alt ağ adres aralığı: 192.168.1.0/24**
 * **Alt ağ adı: BackEnd**
   * **Alt ağ adres aralığı: 10.254.1.0/24**
-* **Alt ağ adı: GatewaySubnet**<br>VPN ağ geçidinin çalışması için Alt Ağ adı olarak *GatewaySubnet*'in kullanılması zorunludur.
+* **Alt ağ adı: GatewaySubnet**<br>VPN ağ geçidinin çalışması için Alt Ağ adı olarak *GatewaySubnet* 'in kullanılması zorunludur.
   * **Ağ Geçidi Alt Ağ adres aralığı: 192.168.200.0/24** 
 * **VPN istemcisi adres havuzu: 172.16.201.0/24**<br>Sanal ağa, bu Noktadan Siteye bağlantıyı kullanarak bağlanan VPN istemcileri, VPN istemci adresi havuzundan bir IP adresi alır.
 * **Abonelik:** Birden fazla aboneliğiniz varsa doğru aboneliği kullandığınızdan emin olun.
@@ -119,7 +119,7 @@ Aşağıdaki adımlar kaynak grubunda üç alt ağa sahip bir kaynak grubu ve bi
    ```azurepowershell-interactive
    New-AzResourceGroup -Name "TestRG" -Location "East US"
    ```
-2. Sanal ağ için alt ağ yapılandırmalarını oluşturup *FrontEnd*, *BackEnd* ve *GatewaySubnet* olarak adlandırın. Bu ön ekler bildirdiğiniz sanal adres alanının parçası olmalıdır.
+2. Sanal ağ için alt ağ yapılandırmalarını oluşturup *FrontEnd* , *BackEnd* ve *GatewaySubnet* olarak adlandırın. Bu ön ekler bildirdiğiniz sanal adres alanının parçası olmalıdır.
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
@@ -148,8 +148,8 @@ Aşağıdaki adımlar kaynak grubunda üç alt ağa sahip bir kaynak grubu ve bi
 
 Sanal ağ geçidini oluşturmadan ve yapılandırmadan önce, RADIUS sunucunuz kimlik doğrulaması için doğru şekilde yapılandırılmalıdır.
 
-1. Dağıtılan bir RADIUS sunucunuz yoksa, bir tane dağıtın. Dağıtım adımları için, RADIUS satıcınız tarafından sunulan kurulum kılavuzuna bakın.  
-2. VPN ağ geçidini YARıÇAP üzerinde bir RADIUS istemcisi olarak yapılandırın. Bu RADIUS istemcisini eklerken, oluşturduğunuz sanal ağ GatewaySubnet 'i belirtin. 
+1. Dağıtılan bir RADIUS sunucunuz yoksa, bir tane dağıtın. Dağıtım adımları için, RADIUS satıcınız tarafından sunulan kurulum kılavuzuna bakın.  
+2. VPN ağ geçidini YARıÇAP üzerinde bir RADIUS istemcisi olarak yapılandırın. Bu RADIUS istemcisini eklerken, oluşturduğunuz sanal ağ GatewaySubnet 'i belirtin. 
 3. RADIUS sunucusu kurulduktan sonra, RADIUS sunucusunun IP adresini ve RADIUS istemcilerinin RADIUS sunucusuyla konuşmak için kullanması gereken paylaşılan gizliliği alın. RADIUS sunucusu Azure sanal ağı 'nda ise, RADIUS sunucusu sanal makinesinin CA IP 'sini kullanın.
 
 [Ağ Ilkesi sunucusu (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) MAKALESI, ad etki alanı kimlik doğrulaması Için BIR Windows RADIUS sunucusu (NPS) yapılandırma hakkında rehberlik sağlar.
@@ -169,9 +169,9 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 ## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"></a> RADIUS sunucusunu ve istemci adres havuzunu ekleme
  
-* -RadiusServer adı veya IP adresi ile belirtilebilir. Adı belirtirseniz ve sunucu şirket içinde yer alıyorsa, VPN Gateway adı çözemeyebilir. Bu durumda, sunucunun IP adresini belirtmek daha iyidir. 
+* -RadiusServer adı veya IP adresi ile belirtilebilir. Adı belirtirseniz ve sunucu şirket içinde yer alıyorsa, VPN Gateway adı çözemeyebilir. Bu durumda, sunucunun IP adresini belirtmek daha iyidir. 
 * -RadiusSecret, RADIUS sunucunuzda yapılandırılanla eşleşmelidir.
-* -VpnClientAddressPool, bağlanan VPN istemcilerinin bir IP adresi aldığı aralıktır.Bağlantıyı kuracağınız şirket içi konum veya bağlanmak istediğiniz sanal ağ ile çakışmayan özel bir IP adresi aralığı kullanın. Yapılandırılmış büyük bir adres havuzuna sahip olduğunuzdan emin olun.  
+* -VpnClientAddressPool, bağlanan VPN istemcilerinin bir IP adresi aldığı aralıktır. Bağlantıyı kuracağınız şirket içi konum veya bağlanmak istediğiniz sanal ağ ile çakışmayan özel bir IP adresi aralığı kullanın. Yapılandırılmış büyük bir adres havuzuna sahip olduğunuzdan emin olun.  
 
 1. RADIUS parolası için güvenli bir dize oluşturun.
 
@@ -237,7 +237,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 ## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"></a> VPN istemcisi yapılandırma paketini indirme ve VPN istemcisini ayarlama
 
-VPN istemci yapılandırması, cihazların bir P2S bağlantısı üzerinden bir sanal ağa bağlanmasına olanak sağlar.VPN istemcisi yapılandırma paketi oluşturmak ve VPN istemcisini ayarlamak için bkz. [RADIUS kimlik doğrulaması IÇIN VPN Istemci yapılandırması oluşturma](point-to-site-vpn-client-configuration-radius.md).
+VPN istemci yapılandırması, cihazların bir P2S bağlantısı üzerinden bir sanal ağa bağlanmasına olanak sağlar. VPN istemcisi yapılandırma paketi oluşturmak ve VPN istemcisini ayarlamak için bkz. [RADIUS kimlik doğrulaması IÇIN VPN Istemci yapılandırması oluşturma](point-to-site-vpn-client-configuration-radius.md).
 
 ## <a name="7-connect-to-azure"></a><a name="connect"></a>7. Azure 'a bağlanın
 
@@ -252,7 +252,7 @@ VPN istemci yapılandırması, cihazların bir P2S bağlantısı üzerinden bir 
 
 ### <a name="connect-from-a-mac-vpn-client"></a>Mac VPN istemcisinden Bağlan
 
-Ağ iletişim kutusunda kullanmak istediğiniz istemci profilini bulup **Bağlan**’a tıklayın.
+Ağ iletişim kutusunda kullanmak istediğiniz istemci profilini bulup **Bağlan** ’a tıklayın.
 
   ![Mac bağlantısı](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
@@ -278,7 +278,11 @@ P2S bağlantısının sorunlarını gidermek için bkz. [Azure Noktadan siteye b
 
 ## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>Sanal makineye bağlanma
 
-[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
+[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm.md)]
+
+* Sanal ağ için DNS sunucusu IP adresleri belirtildikten sonra VPN istemci yapılandırma paketinin oluşturulduğunu doğrulayın. DNS sunucusu IP adreslerini güncelleştirdiyseniz, yeni bir VPN istemci yapılandırma paketi oluşturup yükleyin.
+
+* 'ipconfig' seçeneğini kullanarak bağlantıyı kurduğunuz bilgisayardaki Ethernet bağdaştırıcısına atanmış IPv4 adresini denetleyin. IP adresi bağlanacağınız sanal ağın adres aralığında veya VPNClientAddressPool adres aralığında ise, bu durum çakışan bir adres alanı olarak adlandırılır. Adres alanınız bu şekilde çakıştığında, ağ trafiği Azure’a ulaşmaz ve yerel ağda kalır.
 
 ## <a name="faq"></a><a name="faq"></a>SSS
 

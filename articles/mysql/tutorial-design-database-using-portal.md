@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
-ms.openlocfilehash: d34be152a0d104e688abd6e53c97353b69012670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d0c4167192c42939e16dfd36bdc3eeef4b54b7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906546"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543721"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak MySQL için Azure Veritabanı tasarlama
 
@@ -37,11 +37,11 @@ Sık kullandığınız web tarayıcınızı açıp [Microsoft Azure portalı](ht
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>MySQL için Azure Veritabanı sunucusu oluşturma
 
-MySQL için Azure Veritabanı sunucusu, tanımlı bir dizi [işlem ve depolama kaynağı](./concepts-compute-unit-and-storage.md) ile oluşturulur. Sunucu, [Azure kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) içinde oluşturulur.
+MySQL için Azure Veritabanı sunucusu, tanımlı bir dizi [işlem ve depolama kaynağı](./concepts-pricing-tiers.md) ile oluşturulur. Sunucu, [Azure kaynak grubu](../azure-resource-manager/management/overview.md) içinde oluşturulur.
 
 1. Portalın sol üst köşesinde bulunan **Kaynak oluştur** düğmesini (+) seçin.
 
-2. **Veritabanları**  >  **MySQL için Azure veritabanı**' nı seçin. **Veritabanları** kategorisi altında MySQL sunucusu bulamıyorsanız, kullanılabilir tüm veritabanı hizmetlerini görüntülemek Için **Tümünü gör** ' e tıklayın. Ayrıca arama kutusuna **MySQL için Azure Veritabanı** yazarak hizmeti hızlıca bulabilirsiniz.
+2. **Veritabanları**  >  **MySQL için Azure veritabanı** ' nı seçin. **Veritabanları** kategorisi altında MySQL sunucusu bulamıyorsanız, kullanılabilir tüm veritabanı hizmetlerini görüntülemek Için **Tümünü gör** ' e tıklayın. Ayrıca arama kutusuna **MySQL için Azure Veritabanı** yazarak hizmeti hızlıca bulabilirsiniz.
    
    :::image type="content" source="./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png" alt-text="MySQL’e gidin":::
 
@@ -54,29 +54,29 @@ MySQL için Azure Veritabanı sunucusu, tanımlı bir dizi [işlem ve depolama k
     Sunucu adı | Benzersiz sunucu adı | Azure veritabanınızı MySQL sunucusuna tanıtan benzersiz bir ad seçin. Örneğin, demosunucum. Etki alanı adı *. MySQL.Database.Azure.com* , sağladığınız sunucu adına eklenir. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ila 63 karakter arası içermelidir.
     Abonelik | Aboneliğiniz | Sunucunuz için kullanmak istediğiniz Azure aboneliğini seçin. Birden fazla aboneliğiniz varsa kaynağın faturalandığı aboneliği seçin.
     Kaynak grubu | *myresourcegroup* | Yeni veya mevcut bir kaynak grubu adı girin.
-    Kaynak seçme | *Adet* | Sıfırdan yeni bir sunucu oluşturmak için *Boş*’u seçin. (Mevcut bir MySQL için Azure Veritabanı sunucusunun bir coğrafi yedeğinden bir sunucu oluşturuyorsanız, *Yedek* seçeneğini belirleyin).
-    Sunucu yöneticisi oturumu açma | myadmin | Sunucuya bağlanırken kullanılacak oturum açma hesabı. Yönetici oturum açma adı **azure_superuser**, **admin**, **administrator**, **root**, **guest** veya **public** olamaz.
+    Kaynak seçme | *Adet* | Sıfırdan yeni bir sunucu oluşturmak için *Boş* ’u seçin. (Mevcut bir MySQL için Azure Veritabanı sunucusunun bir coğrafi yedeğinden bir sunucu oluşturuyorsanız, *Yedek* seçeneğini belirleyin).
+    Sunucu yöneticisi oturumu açma | myadmin | Sunucuya bağlanırken kullanılacak oturum açma hesabı. Yönetici oturum açma adı **azure_superuser** , **admin** , **administrator** , **root** , **guest** veya **public** olamaz.
     Parola | *Tercih ettiğiniz* | Sunucu yönetici hesabı için yeni bir parola girin. 8 ila 128 karakter arası içermelidir. Parolanız şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (!, $, #, %, vb.).
     Parolayı onayla | *Tercih ettiğiniz*| Yönetici hesabı parolasını onaylayın.
     Konum | *Kullanıcılarınıza en yakın bölge*| Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin.
     Sürüm | *En son sürüm*| En son sürüm (başka bir sürüm gerektiren belirli gereksinimleriniz yoksa).
-    Fiyatlandırma katmanı | **Genel Amaçlı**, **5. Nesil**, **2 sanal çekirdek**, **5 GB**, **7 gün**, **Coğrafi Olarak Yedekli** | Yeni sunucunuz için işlem, depolama ve yedekleme yapılandırmaları. **Fiyatlandırma katmanını**seçin. Sonra **genel amaçlı** sekmesini seçin. *Gen 5*, *2 sanal çekirdek*, *5 GB*ve *7 gün* , **işlem oluşturma**, **sanal çekirdek**, **depolama**ve **yedekleme saklama süresi**için varsayılan değerlerdir. Bu kaydırıcıları olduğu gibi bırakabilirsiniz. Coğrafi olarak yedekli depolamada sunucu yedeklemelerinizi etkinleştirmek için **yedek artıklığı seçeneklerinde** **coğrafi olarak yedekli** ' ı seçin. Bu fiyatlandırma katmanı seçimini kaydetmek için **Tamam**’ı seçin. Sonraki ekran görüntüsü bu seçimleri yakalar.
+    Fiyatlandırma katmanı | **Genel Amaçlı** , **5. Nesil** , **2 sanal çekirdek** , **5 GB** , **7 gün** , **Coğrafi Olarak Yedekli** | Yeni sunucunuz için işlem, depolama ve yedekleme yapılandırmaları. **Fiyatlandırma katmanını** seçin. Sonra **genel amaçlı** sekmesini seçin. *Gen 5* , *2 sanal çekirdek* , *5 GB* ve *7 gün* , **işlem oluşturma** , **sanal çekirdek** , **depolama** ve **yedekleme saklama süresi** için varsayılan değerlerdir. Bu kaydırıcıları olduğu gibi bırakabilirsiniz. Coğrafi olarak yedekli depolamada sunucu yedeklemelerinizi etkinleştirmek için **yedek artıklığı seçeneklerinde** **coğrafi olarak yedekli** ' ı seçin. Bu fiyatlandırma katmanı seçimini kaydetmek için **Tamam** ’ı seçin. Sonraki ekran görüntüsü bu seçimleri yakalar.
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="MySQL’e gidin":::
 
    > [!TIP]
    > **Otomatik büyüme** etkinken sunucunuz, ayrılan sınıra yaklaşdığınızda, iş yükünüzü etkilemeden depolama alanını arttırır.
 
-4. **Gözden geçir ve oluştur**’a tıklayın. Dağıtım işlemini izlemek için araç çubuğunda **Bildirimler** düğmesine tıklayabilirsiniz. Dağıtım 20 dakikaya kadar sürebilir.
+4. **Gözden geçir ve oluştur** ’a tıklayın. Dağıtım işlemini izlemek için araç çubuğunda **Bildirimler** düğmesine tıklayabilirsiniz. Dağıtım 20 dakikaya kadar sürebilir.
 
 ## <a name="configure-firewall"></a>Güvenlik duvarını yapılandırma
 
 MySQL için Azure Veritabanları bir güvenlik duvarı tarafından korunur. Varsayılan olarak, sunucuya ve sunucu içindeki veritabanlarına yönelik tüm bağlantılar reddedilir. MySQL için Azure Veritabanı’na ilk kez bağlanmadan önce, güvenlik duvarını istemcinin genel ağ IP adresini (veya IP adres aralığını) ekleyecek şekilde yapılandırın.
 
-1. Yeni oluşturduğunuz sunucuya ve ardından **Bağlantı güvenliği**’ne tıklayın.
+1. Yeni oluşturduğunuz sunucuya ve ardından **Bağlantı güvenliği** ’ne tıklayın.
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/1-Connection-security.png" alt-text="MySQL’e gidin":::
-2. **IP’mi Ekle** seçeneğini kullanabilir veya güvenlik duvarı kurallarını buradan yapılandırabilirsiniz. Kuralları oluşturduktan sonra **Kaydet**’e tıklamayı unutmayın.
+2. **IP’mi Ekle** seçeneğini kullanabilir veya güvenlik duvarı kurallarını buradan yapılandırabilirsiniz. Kuralları oluşturduktan sonra **Kaydet** ’e tıklamayı unutmayın.
 Artık mysql komut satırı aracını veya MySQL Workbench GUI aracını kullanarak sunucuya bağlanabilirsiniz.
 
 > [!TIP]
@@ -86,12 +86,12 @@ Artık mysql komut satırı aracını veya MySQL Workbench GUI aracını kullana
 
 Azure portalından MySQL için Azure Veritabanı sunucunuz için tam **Sunucu adı** ve **Sunucu yöneticisi oturum açma adını** alın. Tam sunucu adını, mysql komut satırı aracı kullanarak sunucunuza bağlanmak için kullanırsınız.
 
-1. [Azure portalı](https://portal.azure.com/)’nda soldaki menüden **Tüm kaynaklar**’a tıklayın, adı yazın ve MySQL için Azure Veritabanı sunucunuzu arayın. Ayrıntıları görüntülemek için sunucu adını seçin.
+1. [Azure portalı](https://portal.azure.com/)’nda soldaki menüden **Tüm kaynaklar** ’a tıklayın, adı yazın ve MySQL için Azure Veritabanı sunucunuzu arayın. Ayrıntıları görüntülemek için sunucu adını seçin.
 
 2. **Genel bakış** sayfasında, **Sunucu Adı** ve **Sunucu yöneticisi oturum açma adı** değerlerini not edin. Panoya kopyalamak için her alanın yanındaki kopyala düğmesine tıklayabilirsiniz.
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="MySQL’e gidin":::
 
-Bu örnekte sunucu adı *mydemoserver.MySQL.Database.Azure.com*' dir ve Sunucu Yöneticisi oturum açma adı *myadmin \@ demosunucum*' dır.
+Bu örnekte sunucu adı *mydemoserver.MySQL.Database.Azure.com* ' dir ve Sunucu Yöneticisi oturum açma adı *myadmin \@ demosunucum* ' dır.
 
 ## <a name="connect-to-the-server-using-mysql"></a>mysql kullanarak sunucuya bağlanma
 
@@ -166,7 +166,7 @@ SELECT * FROM inventory;
 
 Önemli bir veritabanı tablosunu yanlışlıkla sildiğinizi ve verileri kolayca kurtaramayacağınızı düşünün. MySQL için Azure Veritabanı, sunucuyu bir zaman noktasına geri yükleyerek, veritabanlarının bir kopyasının yeni sunucuda oluşturulmasını sağlar. Bu yeni sunucuyu silinen verilerinizi kurtarmak için kullanabilirsiniz. Şu adımlar, örnek sunucuyu tablo eklenmeden önceki bir noktaya geri yükler.
 
-1. Azure portalında MySQL için Azure Veritabanınızı bulun. **Genel bakış** sayfası üzerinde, araç çubuğunda **Geri yükle**’ye tıklayın. Geri Yükle sayfası açılır.
+1. Azure portalında MySQL için Azure Veritabanınızı bulun. **Genel bakış** sayfası üzerinde, araç çubuğunda **Geri yükle** ’ye tıklayın. Geri Yükle sayfası açılır.
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/1-restore-a-db.png" alt-text="MySQL’e gidin":::
 
@@ -174,12 +174,12 @@ SELECT * FROM inventory;
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="MySQL’e gidin":::
 
-   - **Geri yükleme noktası**: Listelenen zaman dilimi içerisindeki geri yüklemek istediğiniz noktayı seçin. Yerel saat diliminizi UTC'ye dönüştürdüğünüzden emin olun.
-   - **Yeni sunucuya geri yükleme**: Geri yüklemek istediğiniz yeni bir sunucu adı sağlayın.
-   - **Konum**: Bölge, kaynak sunucu ile aynıdır ve değiştirilemez.
-   - **Fiyatlandırma katmanı**: Fiyatlandırma katmanı, kaynak sunucu ile aynıdır ve değiştirilemez.
+   - **Geri yükleme noktası** : Listelenen zaman dilimi içerisindeki geri yüklemek istediğiniz noktayı seçin. Yerel saat diliminizi UTC'ye dönüştürdüğünüzden emin olun.
+   - **Yeni sunucuya geri yükleme** : Geri yüklemek istediğiniz yeni bir sunucu adı sağlayın.
+   - **Konum** : Bölge, kaynak sunucu ile aynıdır ve değiştirilemez.
+   - **Fiyatlandırma katmanı** : Fiyatlandırma katmanı, kaynak sunucu ile aynıdır ve değiştirilemez.
    
-3. Sunucuyu, tablo silinmeden önceki [bir zamana geri yüklemek](./howto-restore-server-portal.md) için **Tamam**’a tıklayın. Bir sunucuyu geri yüklemek, belirttiğiniz zamandan itibaren sunucunun yeni bir kopyasını oluşturur.
+3. Sunucuyu, tablo silinmeden önceki [bir zamana geri yüklemek](./howto-restore-server-portal.md) için **Tamam** ’a tıklayın. Bir sunucuyu geri yüklemek, belirttiğiniz zamandan itibaren sunucunun yeni bir kopyasını oluşturur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

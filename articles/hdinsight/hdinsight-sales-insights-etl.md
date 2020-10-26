@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: a37729849bc9702fb6823c11d4534cf35df72abf
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 17e4468785ff113a85265a17a8314a0174d5d360
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489532"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535391"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Sales Insights 'ı türetmek için uçtan uca veri işlem hattı oluşturma
 
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * [Azure yerleşik rol sahibinin](../role-based-access-control/built-in-roles.md)bir üyesi.
 
-* Data Factory işlem hattını tetiklemek için PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/)gerekecektir.
+* Data Factory işlem hattını tetiklemek için PowerShell kullanıyorsanız [az Module](/powershell/azure/)gerekecektir.
 
 * Bu öğreticinin sonunda iş öngörülerini görselleştirmek [Power BI Desktop](https://aka.ms/pbiSingleInstaller) .
 
@@ -110,7 +110,7 @@ Kümelere SSH erişiminin varsayılan parolası `Thisisapassword1` . Parolayı d
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>Dağıtımı doğrulama ve kaynak bilgilerini toplama
 
-1. Dağıtımınızın durumunu denetlemek isterseniz Azure portal kaynak grubuna gidin. **Ayarlar**altında **dağıtımlar**' ı, sonra dağıtımınızı seçin. Burada, başarıyla dağıtılan kaynakları ve devam eden kaynakları görebilirsiniz.
+1. Dağıtımınızın durumunu denetlemek isterseniz Azure portal kaynak grubuna gidin. **Ayarlar** altında **dağıtımlar** ' ı, sonra dağıtımınızı seçin. Burada, başarıyla dağıtılan kaynakları ve devam eden kaynakları görebilirsiniz.
 
 1. Kümelerin adlarını görüntülemek için aşağıdaki komutu girin:
 
@@ -214,7 +214,7 @@ cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
 
     Veya
 
-* Data Factory 'yi açın ve **yazar & İzleyicisi**' ni seçin. `IngestAndTransform`Komut zinciri portalından tetikleyin. Portal aracılığıyla işlem hatlarını tetikleme hakkında daha fazla bilgi için, bkz. [HDInsight 'ta isteğe bağlı Apache Hadoop kümelerini Azure Data Factory kullanarak oluşturma](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
+* Data Factory 'yi açın ve **yazar & İzleyicisi** ' ni seçin. `IngestAndTransform`Komut zinciri portalından tetikleyin. Portal aracılığıyla işlem hatlarını tetikleme hakkında daha fazla bilgi için, bkz. [HDInsight 'ta isteğe bağlı Apache Hadoop kümelerini Azure Data Factory kullanarak oluşturma](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
 
 İşlem hattının çalıştırıldığını doğrulamak için aşağıdaki adımlardan birini alabilirsiniz:
 
@@ -252,21 +252,21 @@ HDInsight kullanarak verileri dönüştürmenin diğer yolları için [Jupyter N
 
 1. Power BI Desktop'ı açın.
 
-1. Menüden **verileri**  >  **daha fazla al...**  >  ' a gidin. **Azure**  >  **HDInsight etkileşimli sorgusu**.
+1. Menüden **verileri**  >  **daha fazla al...**  >  ' a gidin. **Azure**  >  **HDInsight etkileşimli sorgusu** .
 
-1. **Bağlan**’ı seçin.
+1. **Bağlan** ’ı seçin.
 
 1. **HDInsight etkileşimli sorgu** iletişim kutusundan:
     1. **Sunucu** metin kutusunda, LLAP kümenizin adını biçiminde girin `https://LLAPCLUSTERNAME.azurehdinsight.net` .
     1. **Veritabanı** metin kutusuna yazın `default` .
-    1. **Tamam**’ı seçin.
+    1. **Tamam** ’ı seçin.
 
 1. **AzureHive** iletişim kutusundan:
     1. **Kullanıcı adı** metin kutusuna girin `admin` .
     1. **Parola** metin kutusuna girin `Thisisapassword1` .
-    1. **Bağlan**’ı seçin.
+    1. **Bağlan** ’ı seçin.
 
-1. **Gezgin**'den `sales` verileri önizlemek için ve/veya öğesini seçin `sales_raw` . Veriler yüklendikten sonra, oluşturmak istediğiniz panoyu deneyebilirsiniz. Power BI panoları kullanmaya başlamak için aşağıdaki bağlantılara bakın:
+1. **Gezgin** 'den `sales` verileri önizlemek için ve/veya öğesini seçin `sales_raw` . Veriler yüklendikten sonra, oluşturmak istediğiniz panoyu deneyebilirsiniz. Power BI panoları kullanmaya başlamak için aşağıdaki bağlantılara bakın:
 
 * [Power BI tasarımcıları için panolara giriş](https://docs.microsoft.com/power-bi/service-dashboards)
 * [Öğretici: Power BI hizmeti ile çalışmaya başlama](https://docs.microsoft.com/power-bi/service-get-started)

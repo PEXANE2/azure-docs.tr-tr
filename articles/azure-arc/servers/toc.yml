@@ -41,8 +41,18 @@
           href: onboard-powershell.md
     - name: Yönetme
       items:
-        - name: Azure VM uzantılarını yönetme ve kullanma
-          href: manage-vm-extensions.md
+        - name: Azure VM uzantıları
+          items:
+            - name: Genel Bakış
+              href: manage-vm-extensions.md
+            - name: Uzantıları portaldan yönetme
+              href: manage-vm-extensions-portal.md
+            - name: Uzantıları CLI ile yönetme
+              href: manage-vm-extensions-cli.md
+            - name: Uzantıları PowerShell ile yönetme
+              href: manage-vm-extensions-powershell.md
+            - name: Uzantıları ARM şablonunu kullanarak dağıtma
+              href: manage-vm-extensions-template.md
         - name: Aracıyı yönetme
           href: manage-agent.md
     - name: Sorun giderme
@@ -55,8 +65,22 @@
   items:
     - name: Veri yerleşimi
       href: data-residency.md
+    - name: Azure CLI
+      href: /cli/azure/ext/connectedmachine/connectedmachine
+    - name: Azure PowerShell
+      href: /powershell/module/az.connectedmachine
+    - name: .NET
+      href: /dotnet/api/overview/azure/hybridcompute/management
     - name: REST
       href: /rest/api/hybridcompute
+    - name: Başlayın
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/hybridcompute/mgmt/2020-08-02/hybridcompute'
+    - name: Java
+      href: /java/api/overview/azure/hybridcompute/management
+    - name: JavaScript
+      href: /javascript/api/%40azure/arm-hybridcompute
+    - name: Python
+      href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-hybridcompute/2.0.0/index.html'
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: policy-reference.md

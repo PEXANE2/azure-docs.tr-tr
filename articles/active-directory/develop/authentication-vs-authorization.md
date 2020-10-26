@@ -24,7 +24,7 @@ ms.locfileid: "92503734"
 
 Bu makalede kimlik doğrulaması ve yetkilendirme tanımlanmaktadır ve Web uygulamalarınızda, Web API 'Lerinde veya korumalı Web API 'Leri çağıran uygulamalarda kullanıcıların kimliğini doğrulamak ve yetkilendirmek için Microsoft Identity platformunu nasıl kullanabileceğiniz kısaca ele alınmaktadır. Bildiğiniz bir terimi görürseniz, temel kavramları kapsayan [Sözlüğümüzü](developer-glossary.md) veya [Microsoft Identity platform videolarımızı](identity-videos.md) deneyin.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulama
 
 **Kimlik doğrulama** , sizin olduğunu söylediğinizde sizin olduğunu kanıtlama işlemidir. Kimlik doğrulaması bazen AuthN şeklinde kısaltılabilir. Microsoft Identity platform kimlik doğrulamasını işlemek için [OpenID Connect](https://openid.net/connect/) protokolünü uygular.
 
@@ -44,9 +44,9 @@ Microsoft Identity platform; OAuth 2,0 ve OpenID Connect gibi sektör standardı
 
 Aşağıda, Microsoft Identity platform tarafından kullanılan çeşitli protokollerin kısa bir karşılaştırması verilmiştir:
 
-* **OAuth vs OpenID Connect**: yetkilendirme için OAuth kullanılır ve OpenID Connect (OIDC) kimlik doğrulaması için kullanılır. OpenID Connect, OAuth 2,0 üzerine kurulmuştur, bu nedenle terminoloji ve akış ikisi arasında benzerdir. Her ikisi de bir kullanıcının kimliğini doğrulayabilir (OpenID Connect kullanarak) ve kullanıcının sahip olduğu korumalı bir kaynağa (OAuth 2,0 kullanarak) tek bir istekte erişim yetkisi alabilir. Daha fazla bilgi için bkz. [OAuth 2,0 ve OpenID Connect Protocols](active-directory-v2-protocols.md) ve [OpenID Connect Protocol](v2-protocols-oidc.md).
-* **OAuth vs SAML**: OAuth YETKILENDIRME ve SAML için kullanılır kimlik doğrulaması için kullanılır. İki protokolün bir kullanıcının kimliğini doğrulamak (SAML kullanarak) ve korunan bir kaynağa erişmek için yetkilendirme alma (OAuth 2,0 kullanarak) ile birlikte nasıl kullanılabileceği hakkında daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0 SAML taşıyıcı onaylama akışı](v2-saml-bearer-assertion.md) .
-* **OpenID Connect vs SAML**: bir kullanıcının kimliğini doğrulamak Için hem OpenID Connect hem de SAML kullanılır ve çoklu oturum açmayı etkinleştirmek için kullanılır. SAML kimlik doğrulaması, genellikle Azure AD 'ye federe Active Directory Federasyon Hizmetleri (AD FS) (ADFS) gibi kimlik sağlayıcılarıyla kullanılır ve bu nedenle kurumsal uygulamalarda sık kullanılır. OpenID Connect genellikle, mobil uygulamalar, Web siteleri ve Web API 'Leri gibi yalnızca bulutta bulunan uygulamalar için kullanılır.
+* **OAuth vs OpenID Connect** : yetkilendirme için OAuth kullanılır ve OpenID Connect (OIDC) kimlik doğrulaması için kullanılır. OpenID Connect, OAuth 2,0 üzerine kurulmuştur, bu nedenle terminoloji ve akış ikisi arasında benzerdir. Her ikisi de bir kullanıcının kimliğini doğrulayabilir (OpenID Connect kullanarak) ve kullanıcının sahip olduğu korumalı bir kaynağa (OAuth 2,0 kullanarak) tek bir istekte erişim yetkisi alabilir. Daha fazla bilgi için bkz. [OAuth 2,0 ve OpenID Connect Protocols](active-directory-v2-protocols.md) ve [OpenID Connect Protocol](v2-protocols-oidc.md).
+* **OAuth vs SAML** : OAuth YETKILENDIRME ve SAML için kullanılır kimlik doğrulaması için kullanılır. İki protokolün bir kullanıcının kimliğini doğrulamak (SAML kullanarak) ve korunan bir kaynağa erişmek için yetkilendirme alma (OAuth 2,0 kullanarak) ile birlikte nasıl kullanılabileceği hakkında daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0 SAML taşıyıcı onaylama akışı](v2-saml-bearer-assertion.md) .
+* **OpenID Connect vs SAML** : bir kullanıcının kimliğini doğrulamak Için hem OpenID Connect hem de SAML kullanılır ve çoklu oturum açmayı etkinleştirmek için kullanılır. SAML kimlik doğrulaması, genellikle Azure AD 'ye federe Active Directory Federasyon Hizmetleri (AD FS) (ADFS) gibi kimlik sağlayıcılarıyla kullanılır ve bu nedenle kurumsal uygulamalarda sık kullanılır. OpenID Connect genellikle, mobil uygulamalar, Web siteleri ve Web API 'Leri gibi yalnızca bulutta bulunan uygulamalar için kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

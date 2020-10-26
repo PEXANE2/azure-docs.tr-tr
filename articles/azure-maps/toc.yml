@@ -95,6 +95,8 @@
   items:
     - name: Haritalar hesaplarını yönetme
       items:
+        - name: ARM şablonuyla hesap oluşturma
+          href: how-to-create-template.md
         - name: Hesapları yönetme
           href: how-to-manage-account-keys.md
         - name: Kimlik doğrulamasını yönetme

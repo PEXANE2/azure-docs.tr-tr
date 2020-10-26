@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91439977"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532671"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı-esnek sunucu
 
@@ -90,11 +90,9 @@ Esnek sunucu hizmeti yerleşik performans izleme ve uyarı özellikleriyle donat
 
 Hizmet, PostgreSQL 'in topluluk sürümünü çalıştırır. Bu, tam uygulama uyumluluğuna izin verir ve PostgreSQL altyapısında geliştirilen mevcut bir uygulamayı esnek sunucuya geçirmek için en az bir yeniden düzenleme maliyeti gerektirir. 
 
-- **Döküm ve geri yükleme** – kullanıcıların bazı kapalı kalma süresini karşılayabileceği, pg_restore pg_dump gibi topluluk araçlarını kullanarak döküm ve geri yükleme işlemleri için en hızlı geçiş yolu sağlayabildiği çevrimdışı geçişler için. Ayrıntılar için bkz. [döküm kullanarak geçiş ve geri yükleme](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore) .
-- **Azure veritabanı geçiş hizmeti** : en az kapalı kalma süresiyle esnek sunucuya sorunsuz ve Basitleştirilmiş geçişler Için Azure veritabanı geçiş hizmeti yararlanılabilir olabilir. [CLI aracılığıyla](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)Portal ve DMS [aracılığıyla DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal) 'e bakın. PostgreSQL için Azure veritabanı-tek sunucudan esnek sunucuya geçiş yapabilirsiniz. Ayrıntılar için bu [DMS makalesine](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) bakın.
+- **Döküm ve geri yükleme** – kullanıcıların bazı kapalı kalma süresini karşılayabileceği, pg_restore pg_dump gibi topluluk araçlarını kullanarak döküm ve geri yükleme işlemleri için en hızlı geçiş yolu sağlayabildiği çevrimdışı geçişler için. Ayrıntılar için bkz. [döküm kullanarak geçiş ve geri yükleme](../howto-migrate-using-dump-and-restore.md) .
+- **Azure veritabanı geçiş hizmeti** : en az kapalı kalma süresiyle esnek sunucuya sorunsuz ve Basitleştirilmiş geçişler Için Azure veritabanı geçiş hizmeti yararlanılabilir olabilir. [CLI aracılığıyla](../../dms/tutorial-postgresql-azure-postgresql-online.md)Portal ve DMS [aracılığıyla DMS](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) 'e bakın. PostgreSQL için Azure veritabanı-tek sunucudan esnek sunucuya geçiş yapabilirsiniz. Ayrıntılar için bu [DMS makalesine](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Artık PostgreSQL için Azure veritabanı esnek sunucu dağıtım moduna bir giriş okuduğunuzdan, ilk sunucunuzu oluşturmaya hazırsınız: [Azure Portal kullanarak PostgreSQL Için Azure veritabanı-esnek sunucu oluşturma](./quickstart-create-server-portal.md)
-
-

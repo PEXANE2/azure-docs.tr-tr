@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 10/19/2020
 ms.author: banders
-ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: aaa94f66f1b0441e025013369b3b674d799d4847
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371023"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203271"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure aboneliklerinin fatura sahipliğini MPA hesabınıza alma
 
@@ -21,31 +21,31 @@ Yönetilen hizmetler ve Azure kullanımı için birleştirilmiş tek bir fatura 
 
 Bu özellik yalnızca [Azure Uzmanı MSP](https://partner.microsoft.com/membership/azure-expert-msp) olduğu onaylanmış CSP Doğrudan Fatura İş Ortakları tarafından kullanılabilir. Microsoft idare ve ilkelerine tabidir; belirli müşteriler için gözden geçirme ve onay gerekebilir.
 
-Fatura sahipliğini istemek için **Genel Yönetici** veya **Yönetici Aracıları** rolüne sahip olmanız gerekir. Daha fazla bilgi için bkz. [İş Ortağı Merkezi - Kullanıcı rollerini ve izinleri atama](https://docs.microsoft.com/partner-center/permissions-overview).
+Fatura sahipliğini istemek için **Genel Yönetici** veya **Yönetici Aracıları** rolüne sahip olmanız gerekir. Daha fazla bilgi için bkz. [İş Ortağı Merkezi - Kullanıcı rollerini ve izinleri atama](/partner-center/permissions-overview).
 
 Bu makale, Microsoft İş Ortağı Sözleşmesi ödeme hesapları için geçerlidir. Bu hesaplar, Bulut çözümü Sağlayıcılarının (CSP) yeni ticaret deneyiminde müşterilerinin faturalarını yönetmesi için oluşturulmuştur. Yeni deneyim yalnızca bir Microsoft Müşteri Sözleşmesi’ni (MCA) kabul etmiş ve bir Azure Planına sahip olan en az bir müşteriye sahip iş ortakları tarafından kullanılabilir. [Microsoft İş Ortağı Sözleşmesi’ne erişiminizin olup olmadığını denetleyin](#check-access-to-a-microsoft-partner-agreement).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-1. Müşteriyle [kurumsal bayi ilişkisi](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer) oluşturun. Hem müşterinin hem de İş Ortağı kiracısının aynı yetkili bölgelerde bulunduğundan emin olmak için [CSP Bölgesel Yetkilerine Genel Bakış](https://docs.microsoft.com/partner-center/regional-authorization-overview) makalesine göz atın.
-1. [Müşterinin Microsoft Müşteri Sözleşmesini kabul ettiğiniz doğrulayın](https://docs.microsoft.com/partner-center/confirm-customer-agreement).
-1. Müşteri için bir [Azure planı](https://docs.microsoft.com/partner-center/purchase-azure-plan) oluşturun. Müşteri birden çok kurumsal bayi üzerinden satın alıyorsa, her müşteri ve kurumsal bayi birleşimi için ayrı Azure planı oluşturmanız gerekir.
+1. Müşteriyle [kurumsal bayi ilişkisi](/partner-center/request-a-relationship-with-a-customer) oluşturun. Hem müşterinin hem de İş Ortağı kiracısının aynı yetkili bölgelerde bulunduğundan emin olmak için [CSP Bölgesel Yetkilerine Genel Bakış](/partner-center/regional-authorization-overview) makalesine göz atın.
+1. [Müşterinin Microsoft Müşteri Sözleşmesini kabul ettiğiniz doğrulayın](/partner-center/confirm-customer-agreement).
+1. Müşteri için bir [Azure planı](/partner-center/purchase-azure-plan) oluşturun. Müşteri birden çok kurumsal bayi üzerinden satın alıyorsa, her müşteri ve kurumsal bayi birleşimi için ayrı Azure planı oluşturmanız gerekir.
 
 ## <a name="request-billing-ownership"></a>Fatura sahipliğini isteme
 
 1. CSP kiracısındaki CSP Yönetici Aracısı kimlik bilgilerini kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.  
     ![Faturalama sahipliğini istemek için Azure portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü.](./media/mpa-request-ownership/search-cmb.png)
-1. Sol taraftan **Müşteriler**’i seçin ve sonra listeden bir müşteri belirleyin.  
+1. Sol taraftan **Müşteriler** ’i seçin ve sonra listeden bir müşteri belirleyin.  
     [![Müşterilerin seçilmesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
-1. Sol alt köşeden **Aktarım istekleri**’ni ve ardından **Yeni istek ekle**’yi seçin.  
+1. Sol alt köşeden **Aktarım istekleri** ’ni ve ardından **Yeni istek ekle** ’yi seçin.  
     [![Aktarım isteklerinin seçilmesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-select-transfer-requests.png)](./media/mpa-request-ownership/mpa-select-transfer-requests.png#lightbox)
-1. Müşteri kuruluşunda, aktarım isteğini kabul edecek kullanıcının e-posta adresini girin. Kullanıcının bir Kurumsal Anlaşma hesap sahibi olması gerekir. **Aktarım isteği gönder**’i seçin.  
+1. Müşteri kuruluşunda, aktarım isteğini kabul edecek kullanıcının e-posta adresini girin. Kullanıcının bir Kurumsal Anlaşma hesap sahibi olması gerekir. **Aktarım isteği gönder** ’i seçin.  
     [![Aktarım isteği gönderme işlemini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-send-transfer-requests.png)](./media/mpa-request-ownership/mpa-send-transfer-requests.png#lightbox)
 1. Kullanıcı, aktarma isteğinizi gözden geçirme yönergelerini içeren bir e-posta alır.  
     ![Aktarım isteğini gözden geçirme e-postasını gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
 1. Kullanıcı, aktarma isteğini onaylamak için e-postadaki bağlantıyı seçer ve yönergeleri izler.  
-    [![Aktarım isteğini gözden geçirme işlemini gösteren ekran görüntüsü](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) Kullanıcı Azure ürünlerini aktarmak istediği kaynak faturalama hesabını seçebilir. Hesap seçildiğinde aktarılabilecek uygun ürünler gösterilir. **Not:** Devre dışı bırakılmış abonelikler aktarılamaz ve varsa "Aktarılamayan Azure Ürünleri" listesinde gösterilir. Aktarılacak Azure ürünleri seçildikten sonra **Doğrula**'yı seçin.
+    [![Aktarım isteğini gözden geçirme işlemini gösteren ekran görüntüsü](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) Kullanıcı Azure ürünlerini aktarmak istediği kaynak faturalama hesabını seçebilir. Hesap seçildiğinde aktarılabilecek uygun ürünler gösterilir. **Not:** Devre dışı bırakılmış abonelikler aktarılamaz ve varsa "Aktarılamayan Azure Ürünleri" listesinde gösterilir. Aktarılacak Azure ürünleri seçildikten sonra **Doğrula** 'yı seçin.
 1. **Aktarım Doğrulama Sonucu** alanında, aktarılacak Azure ürünlerinin etkisi gösterilir. Olası durumlar şunlardır:
     * **Başarılı** - Bu Azure ürününün doğrulaması başarılı oldu ve ürün aktarılabilir.
     * **Uyarı** - Seçili Azure ürünü için bir uyarı var. Ürün yine de aktarılabilir ama bunu yapmanın, düzeltme eylemleri gerçekleştirmek istemesi durumunda kullanıcının bilmesi gereken bazı etkileri olacaktır. Örneğin aktarılmakta olan Azure aboneliği bir RI avantajından yararlanıyor. Aktarımdan sonra abonelik bu avantajı alamayacak. Tasarrufları en üst düzeye çıkarmak için, RI'nin avantajlarını kullanabilecek başka bir abonelikle ilişkilendirildiğinden emin olun. Bunun yerine kullanıcı seçim sayfasına geri dönmeyi ve bu Azure aboneliğinin seçimini kaldırmayı da seçebilir.
@@ -57,10 +57,10 @@ Bu makale, Microsoft İş Ortağı Sözleşmesi ödeme hesapları için geçerli
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.  
     ![Aktarım durumunu istemek için Azure portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü.](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
-1. Sol taraftan **Müşteriler**’i seçin.  
+1. Sol taraftan **Müşteriler** ’i seçin.  
     [![Müşterilerin seçilmesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. Listeden aktarım isteğini gönderdiğiniz müşteriyi seçin.
-1. Sol alt taraftaki **Aktarım istekleri**'ni seçin. Aktarım istekleri sayfasında aşağıdaki bilgiler görüntülenir: [![Aktarım isteklerinin listesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png#lightbox)
+1. Sol alt taraftaki **Aktarım istekleri** 'ni seçin. Aktarım istekleri sayfasında aşağıdaki bilgiler görüntülenir: [![Aktarım isteklerinin listesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png#lightbox)
 
    |Sütun|Tanım|
    |---------|---------|
@@ -115,7 +115,7 @@ Devre dışı bırakılan abonelikler aktarılamaz. Fatura sahipliğini aktarmak
 
 ### <a name="azure-resources-transfer"></a>Azure kaynakları aktarımı
 
-VM’ler, diskler ve web siteleri aktarımı gibi aboneliklerden gelen tüm kaynaklar.
+VM’ler, diskler ve web siteleri aktarımı gibi aboneliklerden gelen tüm kaynaklar. Aktarılan abonelik kimlikleri ve kaynak kimlikleri korunur. 
 
 ### <a name="azure-marketplace-products-transfer"></a>Azure Market ürünleri aktarımı
 
@@ -123,13 +123,13 @@ Bulut Çözümü Sağlayıcıları (CSP) tarafından yönetilen abonelikler içi
 
 ### <a name="azure-reservations-transfer"></a>Azure rezervasyonları aktarımı
 
-Azure rezervasyonları abonelikle birlikte otomatik olarak taşınmaz. Rezervasyonu diğer abonelikler için EA’da tutabilir veya [Rezervasyonu iptal ederek](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) iş ortağının CSP’de yeniden satın alabilmesini sağlayabilirsiniz.
+Azure rezervasyonları abonelikle birlikte otomatik olarak taşınmaz. Rezervasyonu diğer abonelikler için EA’da tutabilir veya [Rezervasyonu iptal ederek](../reservations/exchange-and-refund-azure-reservations.md) iş ortağının CSP’de yeniden satın alabilmesini sağlayabilirsiniz.
 
 ### <a name="access-to-azure-services"></a>Azure hizmetlerine erişim
 
 Mevcut kullanıcılar, gruplar veya hizmet sorumlularına [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) kullanılarak atanan erişim, aktarım sırasında etkilenmez. İş ortağı, aboneliklere yeni bir Azure RBAC erişimi elde etmez.
 
-İş ortakları, aboneliklere erişim elde etmek için müşteriyle birlikte çalışmalıdır. İş ortaklarının [Adına Yönetici - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) veya [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) erişimi açık destek biletlerini alması gerekir.
+İş ortakları, aboneliklere erişim elde etmek için müşteriyle birlikte çalışmalıdır. İş ortaklarının [Adına Yönetici - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) veya [Azure Lighthouse](../../lighthouse/concepts/cloud-solution-provider.md) erişimi açık destek biletlerini alması gerekir.
 
 ### <a name="azure-support-plan"></a>Azure destek planınızı
 
@@ -145,7 +145,7 @@ Aktarım isteğini, istek onaylanana veya reddedilene kadar iptal edebilirsiniz.
 
 ### <a name="software-as-a-service-saas-transfer"></a>Hizmet Olarak Yazılım (SaaS) aktarımı
 
-SaaS ürünleri aboneliklerle birlikte aktarılmaz. SaaS ürünlerinin fatura sahipliğini aktarmak için kullanıcının [Azure desteğine başvurmasını](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) isteyin. Kullanıcı, fatura sahipliğiyle birlikte kaynak sahipliğini de aktarabilir. Kaynak sahipliği, ürünü silme ve ayrıntılarını görüntüleme gibi yönetim işlemleri gerçekleştirmenizi sağlar. Kullanıcının kaynak sahipliğini aktarabilmesi için SaaS ürününde kaynak sahibi olması gerekir.
+SaaS ürünleri aboneliklerle birlikte aktarılmaz. SaaS ürünlerinin fatura sahipliğini aktarmak için kullanıcının [Azure desteğine başvurmasını](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) isteyin. Kullanıcı, fatura sahipliğiyle birlikte kaynak sahipliğini de aktarabilir. Kaynak sahipliği, ürün ayrıntılarını silme ve görüntüleme gibi yönetim işlemlerini yapmanızı sağlar. Kullanıcının kaynak sahipliğini aktarabilmesi için SaaS ürününde kaynak sahibi olması gerekir.
 
 ### <a name="additional-approval-for-certain-customers"></a>Belirli müşteriler için ek onay
 
@@ -155,13 +155,13 @@ Müşteri geçiş isteklerinden bazıları, müşterinin geçerli kurumsal kayı
 
 Aktarılan Azure aboneliklerinin dizini, CSP ilişkisi oluşturulurken seçilen müşterinin diziniyle eşleşmelidir.
 
-Bu iki dizin eşleşmezse abonelikler aktarılamaz. Azure aboneliklerinin dizinini seçerek veya Azure aboneliklerinin dizinini müşteri CSP ilişkisi diziniyle eşleşecek şekilde değiştirerek müşteriyle yeni bir CSP satıcı ilişkisi oluşturmanız gerekir. Daha fazla bilgi için bkz. [Var olan bir aboneliği Azure AD dizininizle ilişkilendirme](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
+Bu iki dizin eşleşmezse abonelikler aktarılamaz. Azure aboneliklerinin dizinini seçerek veya Azure aboneliklerinin dizinini müşteri CSP ilişkisi diziniyle eşleşecek şekilde değiştirerek müşteriyle yeni bir CSP satıcı ilişkisi oluşturmanız gerekir. Daha fazla bilgi için bkz. [Var olan bir aboneliği Azure AD dizininizle ilişkilendirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory).
 
-### <a name="ea-subscription-in-the-non-orgnization-directory"></a>Kuruluş dışındaki dizinde EA aboneliği
+### <a name="ea-subscription-in-the-non-organization-directory"></a>Kuruluş dışı dizinde EA aboneliği
 
 Kuruluş dışındaki dizinlerdeki EA abonelikleri, dirinin CSP ile bir kurumsal bayi ilişkisi olması koşuluyla aktarılabilir. Dizinin bir kurumsal bayi ilişkisi yoksa, kuruluş kullanıcısının iş ortağı ilişkisini kabul edebilecek bir *Genel Yönetici* olarak dizinde bulunduğundan emin olmanız gerekir. Kullanıcı adının etki alanı adı bölümünün varsayılan ilk etki alanı adı "[etki alanı adı]. onmicrosoft.com" veya "contoso.com" gibi doğrulanmış, federasyon olmayan bir özel etki alanı adı olmalıdır.  
 
-Yeni kullanıcıyı dizine eklemek için bkz. [Hızlı Başlangıç: Yeni kullanıcıyı AAD dizinine eklemek için Azure Active Directory’ye yeni kullanıcı ekleme](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+Yeni kullanıcıyı dizine eklemek için bkz. [Hızlı Başlangıç: Yeni kullanıcıyı dizine eklemek için Azure Active Directory’ye yeni kullanıcı ekleme](../../active-directory/fundamentals/add-users-azure-active-directory.md).
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft İş Ortağı Sözleşmesi’ne erişimi denetleme
 
@@ -174,4 +174,4 @@ Yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure aboneliklerinin fatura sahipliği size aktarıldı. Bu aboneliklerin ücretlerini [Azure portalından](https://portal.azure.com) takip edin.
-* Aktarılan Azure aboneliklerine erişim elde etmek için müşteriyle birlikte çalışın. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+* Aktarılan Azure aboneliklerine erişim elde etmek için müşteriyle birlikte çalışın. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).

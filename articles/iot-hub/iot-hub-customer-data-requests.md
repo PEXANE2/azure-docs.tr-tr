@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 1fdff6e1c29b8484aaea3bb647e2f1738d1889c6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: df1d4f3a12c6e15e2954bb0e02454ef58b22cb73
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142236"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535799"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Azure IoT Hub cihazları için müşteri verileri isteği özellikleri
 
@@ -30,7 +30,7 @@ Cihaz iletilerini diğer hizmetlere iletmek için Azure IoT Hub hizmeti 'nin yö
 
 Azure IoT Hub hizmetinin Azure Event Grid tümleştirme özelliğini kullanıyorsanız, bu olayların her abonesi için veri isteklerinin kiracı yöneticisi tarafından gerçekleştirilmesi gerekir. Daha fazla bilgi için bkz. [Event Grid kullanarak IoT Hub olaylara tepki](iot-hub-event-grid.md)verme.
 
-Tanılama günlükleri oluşturmak için Azure IoT Hub hizmetinin Azure Izleyici tümleştirme özelliğini kullanıyorsanız, veri isteklerinin depolanan günlüklere karşı kiracı yöneticisi tarafından gerçekleştirilmesi gerekir. Daha fazla bilgi için bkz. [Azure IoT Hub sistem durumunu izleme](iot-hub-monitor-resource-health.md).
+Kaynak günlükleri oluşturmak için Azure IoT Hub hizmetinin Azure Izleyici tümleştirme özelliğini kullanıyorsanız, veri isteklerinin depolanan günlüklere karşı kiracı yöneticisi tarafından gerçekleştirilmesi gerekir. Daha fazla bilgi için bkz. [izleyici IoT Hub](monitor-iot-hub.md).
 
 ## <a name="deleting-customer-data"></a>Müşteri verilerini silme
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 1a6aabe7ef3500a114525fe6c8bc993826295e36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afbf80810f45f616eac40de16889bbebb1cf4964
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275362"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544809"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu kavramları
 
@@ -32,7 +32,7 @@ MySQL için Azure veritabanı sunucusu:
 - Veritabanlarına uygulanan yönetim ilkeleri için kapsam sağlar: oturum açma, güvenlik duvarı, kullanıcılar, roller, konfigürasyonlar vb.
 - Birden çok sürümde kullanılabilir. Daha fazla bilgi için bkz. [MySQL Için Azure veritabanı veritabanı sürümleri](./concepts-supported-versions.md).
 
-MySQL sunucusu için Azure Veritabanı içinde bir veya birden fazla veritabanı oluşturabilirsiniz. Tüm kaynakları kullanmak veya kaynakları paylaşmak için birden çok veritabanı oluşturmak üzere sunucu başına tek bir veritabanı oluşturmayı tercih edebilirsiniz. Fiyatlandırma Katmanı, sanal çekirdek ve depolama (GB) yapılandırmasına bağlı olarak, fiyatlandırma sunucu başına yapılandırılır. Daha fazla bilgi için bkz. [fiyatlandırma katmanları](./concepts-service-tiers.md).
+MySQL sunucusu için Azure Veritabanı içinde bir veya birden fazla veritabanı oluşturabilirsiniz. Tüm kaynakları kullanmak veya kaynakları paylaşmak için birden çok veritabanı oluşturmak üzere sunucu başına tek bir veritabanı oluşturmayı tercih edebilirsiniz. Fiyatlandırma Katmanı, sanal çekirdek ve depolama (GB) yapılandırmasına bağlı olarak, fiyatlandırma sunucu başına yapılandırılır. Daha fazla bilgi için bkz. [fiyatlandırma katmanları](./concepts-pricing-tiers.md).
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Nasıl yaparım? bir MySQL sunucusu için Azure veritabanı 'na bağlanıp kimlik doğrulaması yapılsın mı?
 
@@ -67,5 +67,5 @@ Azure portal veya Azure CLı kullanarak MySQL için Azure veritabanı sunucular�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Hizmete genel bakış için bkz. [MySQL Için Azure veritabanı 'Na genel bakış](./overview.md)
-- **Hizmet katmanınıza**dayalı belirli kaynak kotaları ve sınırlamalar hakkında bilgi için bkz. [hizmet katmanları](./concepts-service-tiers.md)
+- **Fiyatlandırma katmanınıza** dayalı belirli kaynak kotaları ve sınırlamalar hakkında bilgi için bkz. [fiyatlandırma katmanları](./concepts-pricing-tiers.md)
 - Hizmete bağlanma hakkında daha fazla bilgi için bkz. [MySQL Için Azure veritabanı bağlantı kitaplıkları](./concepts-connection-libraries.md).

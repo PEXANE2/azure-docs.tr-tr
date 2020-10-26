@@ -9,12 +9,12 @@ ms.date: 09/06/2018
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: c7414728ab65258f73f80ee7fb303c7e6b961052
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a54d0c85902915d2ee62acd8a1d38b8db8b221c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404969"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536054"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure portal kullanarak IoT Hub 'ı oluşturma
 
@@ -24,7 +24,7 @@ Bu makalede [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ları ol
 
 Bu öğreticideki adımları kullanmak için bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -36,13 +36,13 @@ Mevcut bir IoT Hub 'ın ayarlarını, IoT Hub bölmesinden oluşturulduktan sonr
 
 IoT Hub 'ı için ayarlayabileceğiniz özelliklerden bazıları şunlardır:
 
-**Fiyatlandırma ve ölçek**: Bu özelliği, farklı bir katmana geçirmek veya IoT Hub birimi sayısını ayarlamak için kullanabilirsiniz. 
+**Fiyatlandırma ve ölçek** : Bu özelliği, farklı bir katmana geçirmek veya IoT Hub birimi sayısını ayarlamak için kullanabilirsiniz. 
 
-**İşlem izleme**: cihazdan buluta iletilerle veya buluttan cihaza iletilerle ilgili olaylar için günlüğe kaydetme gibi farklı izleme kategorilerini açın veya kapatın.
+**İşlem izleme** : cihazdan buluta iletilerle veya buluttan cihaza iletilerle ilgili olaylar için günlüğe kaydetme gibi farklı izleme kategorilerini açın veya kapatın.
 
-**IP filtresi**: IoT Hub tarafından kabul edilecek veya REDDEDILECEK bir IP adresi aralığı belirtin.
+**IP filtresi** : IoT Hub tarafından kabul edilecek veya REDDEDILECEK bir IP adresi aralığı belirtin.
 
-**Özellikler**: kaynak kimliği, kaynak grubu, konum vb. gibi, başka bir yere kopyalayabilmeniz ve kullanabileceğiniz özelliklerin listesini sağlar.
+**Özellikler** : kaynak kimliği, kaynak grubu, konum vb. gibi, başka bir yere kopyalayabilmeniz ve kullanabileceğiniz özelliklerin listesini sağlar.
 
 ### <a name="shared-access-policies"></a>Paylaşılan erişim ilkeleri
 
@@ -74,19 +74,19 @@ Merkez için yollar ve özel uç noktalar tanımladığınız Ileti yönlendirme
 
 ### <a name="routes"></a>Yollar
 
-Yollar Ileti yönlendirme bölmesindeki ilk sekmedir. Yeni bir yol eklemek için +**Ekle**' ye tıklayın. Aşağıdaki ekranı görürsünüz. 
+Yollar Ileti yönlendirme bölmesindeki ilk sekmedir. Yeni bir yol eklemek için + **Ekle** ' ye tıklayın. Aşağıdaki ekranı görürsünüz. 
 
 ![Yeni yol eklemeyi gösteren ekran görüntüsü](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
 Rotayı adlandırın. Yol adı, bu hub için yol listesi içinde benzersiz olmalıdır. 
 
-**Uç nokta**için, açılan listeden bir seçim yapabilir veya yeni bir tane ekleyebilirsiniz. Bu örnekte, bir depolama hesabı ve kapsayıcısı zaten var. Bunları bir uç nokta olarak eklemek için uç nokta açılan menüsünde +**Ekle** ' ye tıklayın ve **BLOB depolama**' yı seçin. Aşağıdaki ekranda, depolama hesabının ve kapsayıcının belirtildiği yer gösterilmektedir.
+**Uç nokta** için, açılan listeden bir seçim yapabilir veya yeni bir tane ekleyebilirsiniz. Bu örnekte, bir depolama hesabı ve kapsayıcısı zaten var. Bunları bir uç nokta olarak eklemek için uç nokta açılan menüsünde + **Ekle** ' ye tıklayın ve **BLOB depolama** ' yı seçin. Aşağıdaki ekranda, depolama hesabının ve kapsayıcının belirtildiği yer gösterilmektedir.
 
 ![Yönlendirme kuralı için depolama uç noktası eklemeyi gösteren ekran görüntüsü](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
 
 Depolama hesabı ve kapsayıcısını seçmek için **kapsayıcı Seç** ' e tıklayın. Bu alanları seçtiğinizde, uç nokta bölmesine geri döner. Diğer alanlar için varsayılan değerleri kullanın ve depolama hesabı için uç noktayı oluşturmak ve yönlendirme kurallarına eklemek için **oluşturun** .
 
-**Veri kaynağı**Için cihaz telemetri iletileri ' ni seçin. 
+**Veri kaynağı** Için cihaz telemetri iletileri ' ni seçin. 
 
 Sonra, bir yönlendirme sorgusu ekleyin. Bu örnekte, bir değeri değerine eşit olan adlı bir uygulama özelliğine sahip iletiler `level` `critical` depolama hesabına yönlendirilir.
 
@@ -112,9 +112,9 @@ Bir IoT Hub 'ı için en fazla 10 özel uç nokta tanımlayabilirsiniz.
 
 Aboneliğinizde belirli bir IoT Hub 'ı bulmanın iki yolu vardır:
 
-1. IoT Hub 'ının ait olduğu kaynak grubunu biliyorsanız, **kaynak grupları**' na tıklayın ve ardından listeden kaynak grubunu seçin. Kaynak grubu ekranında, IoT Hub 'ları dahil olmak üzere bu gruptaki tüm kaynaklar gösterilir. Aradığınız hub 'a tıklayın.
+1. IoT Hub 'ının ait olduğu kaynak grubunu biliyorsanız, **kaynak grupları** ' na tıklayın ve ardından listeden kaynak grubunu seçin. Kaynak grubu ekranında, IoT Hub 'ları dahil olmak üzere bu gruptaki tüm kaynaklar gösterilir. Aradığınız hub 'a tıklayın.
 
-2. **Tüm kaynaklar**'a tıklayın. **Tüm kaynaklar** bölmesinde, varsayılan olarak kullanılacak bir açılan liste vardır `All types` . Açılan listeye tıklayın, işaretini kaldırın `Select all` . Bulun `IoT Hub` ve denetleyin. Açılır liste kutusuna tıklayarak bu kutuyu kapatın ve yalnızca IoT Hub 'larınızı gösteren girişler filtrelenecektir.
+2. **Tüm kaynaklar** 'a tıklayın. **Tüm kaynaklar** bölmesinde, varsayılan olarak kullanılacak bir açılan liste vardır `All types` . Açılan listeye tıklayın, işaretini kaldırın `Select all` . Bulun `IoT Hub` ve denetleyin. Açılır liste kutusuna tıklayarak bu kutuyu kapatın ve yalnızca IoT Hub 'larınızı gösteren girişler filtrelenecektir.
 
 ## <a name="delete-the-iot-hub"></a>IoT Hub 'ı silme
 
@@ -125,5 +125,4 @@ Bir IoT Hub 'ını silmek için, silmek istediğiniz IoT Hub 'ını bulun ve ard
 Azure IoT Hub 'yi yönetme hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin:
 
 * [IoT Hub ile ileti yönlendirme](tutorial-routing.md)
-* [IoT Hub ölçümleri](iot-hub-metrics.md)
-* [İşlemleri izleme](iot-hub-operations-monitoring.md)
+* [IoT Hub 'ınızı izleme](monitor-iot-hub.md)

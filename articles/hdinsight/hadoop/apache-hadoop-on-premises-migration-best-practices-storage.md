@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: cd27babee4b78d22bbd49ab53c1ed2fe5a54a0da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0594774533f306421f6f3d1260d074bd92b9c919
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856696"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544877"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme
 
@@ -23,9 +23,9 @@ Bu makale, Azure HDInsight sistemlerinde veri depolamaya yönelik öneriler sağ
 
 Şirket içi Apache Hadoop dosya sistemi (bir) dizin yapısı, Azure Blob depolamada veya Azure Data Lake Storage yeniden oluşturulabilir. Daha sonra, hesaplama için kullanılan HDInsight kümelerini Kullanıcı verilerini kaybetmeden güvenle silebilirsiniz. Her iki hizmet de bir HDInsight kümesi için hem varsayılan dosya sistemi hem de ek dosya sistemi olarak kullanılabilir. HDInsight kümesi ve depolama hesabı aynı bölgede barındırılmalıdır.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Depolama
 
-HDInsight kümeleri, Azure depolama 'daki blob kapsayıcısını varsayılan dosya sistemi veya ek bir dosya sistemi olarak kullanabilir.Standart katman depolama hesabı, HDInsight kümeleri ile kullanım için desteklenir. Premier katmanı desteklenmez. Varsayılan Blob kapsayıcısı iş geçmişi ve iş günlükleri gibi kümeye özel bilgileri depolar.Birden çok küme için varsayılan dosya sistemi olarak bir blob kapsayıcısının paylaşılması desteklenmez.
+HDInsight kümeleri, Azure depolama 'daki blob kapsayıcısını varsayılan dosya sistemi veya ek bir dosya sistemi olarak kullanabilir. Standart katman depolama hesabı, HDInsight kümeleri ile kullanım için desteklenir. Premier katmanı desteklenmez. Varsayılan Blob kapsayıcısı iş geçmişi ve iş günlükleri gibi kümeye özel bilgileri depolar. Birden çok küme için varsayılan dosya sistemi olarak bir blob kapsayıcısının paylaşılması desteklenmez.
 
 Oluşturma işleminde tanımlanan depolama hesapları ve ilgili anahtarları `%HADOOP_HOME%/conf/core-site.xml` küme düğümlerinde depolanır. Ayrıca, bu kişiler, ambarı Kullanıcı arabirimindeki, "özel çekirdek site" bölümü altında de erişilebilir. Depolama hesabı anahtarı varsayılan olarak şifrelenir ve bir özel şifre çözme betiği, Hadoop Daemon 'ları 'e geçirilmeden önce anahtarların şifresini çözmek için kullanılır. Hive, MapReduce, Hadoop akışı ve Pig dahil işler, depolama hesaplarının ve meta verilerin bir açıklamasını taşır.
 
@@ -37,15 +37,15 @@ Azure depolama 'da depolanan verilere erişmek için aşağıdaki biçimlerden b
 |---|---|
 |`wasb:///`|Şifrelenmemiş iletişim kullanarak varsayılan depolamaya erişin.|
 |`wasbs:///`|Şifrelenmiş iletişim kullanarak varsayılan depolamaya erişin.|
-|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|Varsayılan olmayan bir depolama hesabıyla iletişim kurulurken kullanılır. |
+|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|Varsayılan olmayan bir depolama hesabıyla iletişim kurulurken kullanılır. |
 
 [Standart depolama hesapları Için ölçeklenebilirlik hedefleri](../../storage/common/scalability-targets-standard-account.md) , Azure depolama hesaplarındaki geçerli sınırları listeler. Uygulamanın ihtiyaçları tek bir depolama hesabının ölçeklenebilirlik hedeflerini aşarsa, uygulama birden fazla depolama hesabı kullanmak ve ardından bu depolama hesaplarında veri nesnelerini bölümlemek üzere oluşturulabilir.
 
-[Azure depolama Analizi](../../storage/storage-analytics.md)   Tüm depolama hizmetleri için ölçümler sağlar ve Azure portal, grafikler aracılığıyla görselleştirilebilen ölçümleri toplamak üzere yapılandırılabilir. Depolama kaynağı ölçümleri için eşiklere ulaşıldığında bildirimde bulunan uyarılar oluşturulabilir.
+[Azure depolama Analizi](../../storage/common/storage-analytics.md) tüm depolama hizmetleri için ölçümler sağlar ve Azure Portal, grafikler aracılığıyla görselleştirildiği ölçümleri topla olarak yapılandırılabilir. Depolama kaynağı ölçümleri için eşiklere ulaşıldığında bildirimde bulunan uyarılar oluşturulabilir.
 
-Azure depolama, bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından yanlışlıkla değiştirildiğinde veya silindiğinde verileri kurtarmaya yardımcı olması için [BLOB nesnelerine geçici silme](../../storage/blobs/storage-blob-soft-delete.md) olanağı sağlar.
+Azure depolama, bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından yanlışlıkla değiştirildiğinde veya silindiğinde verileri kurtarmaya yardımcı olması için [BLOB nesnelerine geçici silme](../../storage/blobs/soft-delete-blob-overview.md) olanağı sağlar.
 
-[BLOB anlık görüntüleri](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)oluşturabilirsiniz. Anlık görüntü, zaman içinde bir noktada alınmış bir Blobun salt okunurdur ve bir blob 'u yedeklemek için bir yol sağlar. Anlık görüntü oluşturulduktan sonra okunabilir, kopyalanabilir veya silinebilir, ancak değiştirilmez.
+[BLOB anlık görüntüleri](/rest/api/storageservices/creating-a-snapshot-of-a-blob)oluşturabilirsiniz. Anlık görüntü, zaman içinde bir noktada alınmış bir Blobun salt okunurdur ve bir blob 'u yedeklemek için bir yol sağlar. Anlık görüntü oluşturulduktan sonra okunabilir, kopyalanabilir veya silinebilir, ancak değiştirilmez.
 
 > [!Note]
 > "Nesnelerin" sertifikası olmayan şirket içi Hadoop dağıtımların daha eski sürümleri için, Java güven deposuna aktarılmaları gerekir.
@@ -75,11 +75,11 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 - [Azure HDInsight kümeleri ile Azure depolama kullanma](../hdinsight-hadoop-use-blob-storage.md)
 - [Standart depolama hesapları için ölçeklenebilirlik hedefleri](../../storage/common/scalability-targets-standard-account.md)
 - [BLOB depolama için ölçeklenebilirlik ve performans hedefleri](../../storage/blobs/scalability-targets.md)
-- [Microsoft Azure Depolama Performansı ve Ölçeklenebilirlik Onay Listesi](../../storage/common/storage-performance-checklist.md)
+- [Microsoft Azure Depolama Performansı ve Ölçeklenebilirlik Onay Listesi](../../storage/blobs/storage-performance-checklist.md)
 - [Microsoft Azure Depolama izleme, tanılama ve sorun giderme](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
 - [Azure portalında depolama hesabını izleme](../../storage/common/storage-monitor-storage-account.md)
 
-### <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
+### <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil
 
 Azure Data Lake Storage 1., IBir ve POSIX stili erişim denetimi modeli uygular. Ayrıntılı erişim denetimi için Azure AD ile ilk sınıf tümleştirmesini sağlar. Depolayabileceği verilerin boyutu veya büyük ölçüde paralel analiz çalıştırma yeteneği yoktur.
 
@@ -92,21 +92,21 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 Azure Data Lake Storage 2. en son depolama sunumudur. Azure Blob depolama ile doğrudan tümleştirilmiş bir Hadoop uyumlu dosya sistemi uç noktasıyla, ilk nesil Azure Data Lake Storage 1. temel özellikleri birleştirir. Bu geliştirme, nesne depolamanın ölçek ve maliyet avantajlarını, genellikle yalnızca şirket içi dosya sistemleriyle ilişkili güvenilirlik ve performans ile birleştirir.
 
-Azure Data Lake Storage Gen 2, [Azure Blob depolama](../../storage/blobs/storage-blobs-introduction.md) alanının üzerine kurulmuştur ve hem dosya sistemi hem de nesne depolama paradigmalarına kullanarak verilerle arabirim oluşturmanızı sağlar. Dosya sistemi semantiği, dosya düzeyi güvenliği ve ölçek gibi [Azure Data Lake Storage 1.](../../data-lake-store/index.yml)Özellikler düşük maliyetli, katmanlı depolama, yüksek kullanılabilirlik/olağanüstü durum kurtarma özellikleri ve [Azure Blob depolama](../../storage/blobs/storage-blobs-introduction.md)'dan büyük bir SDK/araç oluşturma ekosistemi ile birleştirilir. Data Lake Storage 2., nesne depolamanın tüm nitelikleri, analiz iş yükleri için iyileştirilmiş bir dosya sistemi arabiriminin avantajları eklenirken kalır.
+Azure Data Lake Storage Gen 2, [Azure Blob depolama](../../storage/blobs/storage-blobs-introduction.md) alanının üzerine kurulmuştur ve hem dosya sistemi hem de nesne depolama paradigmalarına kullanarak verilerle arabirim oluşturmanızı sağlar. Dosya sistemi semantiği, dosya düzeyi güvenliği ve ölçek gibi [Azure Data Lake Storage 1.](../../data-lake-store/index.yml)Özellikler düşük maliyetli, katmanlı depolama, yüksek kullanılabilirlik/olağanüstü durum kurtarma özellikleri ve [Azure Blob depolama](../../storage/blobs/storage-blobs-introduction.md)'dan büyük bir SDK/araç oluşturma ekosistemi ile birleştirilir. Data Lake Storage 2., nesne depolamanın tüm nitelikleri, analiz iş yükleri için iyileştirilmiş bir dosya sistemi arabiriminin avantajları eklenirken kalır.
 
-Data Lake Storage 2. temel bir özelliği, bir dizi [hierarchical namespace](../../storage/data-lake-storage/namespace.md)   veri erişimi için nesneleri/dosyaları bir Dizin hiyerarşisinde düzenleyen BLOB depolama hizmetine hiyerarşik bir ad alanının eklenmesinin bir özelliğidir.Hiyerarşik yapı, dizinin ad önekini paylaşan tüm nesneleri listelemek ve işlemek yerine dizin üzerinde tek Atomik meta veri işlemleri gibi bir dizini yeniden adlandırma veya silme gibi işlemleri sağlar.
+Data Lake Storage 2. temel bir özelliği, bir dizi veri erişimi için nesneleri/dosyaları bir Dizin hiyerarşisinde düzenleyen BLOB depolama hizmetine [hiyerarşik bir ad alanının](../../storage/blobs/data-lake-storage-namespace.md) eklenmesinin bir özelliğidir. Hiyerarşik yapı, dizinin ad önekini paylaşan tüm nesneleri listelemek ve işlemek yerine dizin üzerinde tek Atomik meta veri işlemleri gibi bir dizini yeniden adlandırma veya silme gibi işlemleri sağlar.
 
 Geçmişte, bulut tabanlı analizler performans, yönetim ve güvenlik alanlarında tehlikeye atabilir. Azure Data Lake Storage (ADLS) Gen2 'in temel özellikleri şunlardır:
 
-- **Hadoop uyumlu erişim**: Azure Data Lake Storage 2., verileri [Hadoop Dağıtılmış dosya sistemi (bir)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)ile yaptığınız gibi yönetmenizi ve erişmenize olanak tanır. Yeni [ABFS sürücüsü](../../storage/data-lake-storage/abfs-driver.md),    [Azure HDInsight](../index.yml)'a dahil edilen tüm Apache Hadoop ortamlarında kullanılabilir. Bu sürücü, Data Lake Storage 2. depolanan verilere erişmenizi sağlar.
+- **Hadoop uyumlu erişim** : Azure Data Lake Storage 2., verileri [Hadoop Dağıtılmış dosya sistemi (bir)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)ile yaptığınız gibi yönetmenizi ve erişmenize olanak tanır. Yeni [ABFS sürücüsü](../../storage/blobs/data-lake-storage-abfs-driver.md) , [Azure HDInsight](../index.yml)'a dahil edilen tüm Apache Hadoop ortamlarında kullanılabilir. Bu sürücü, Data Lake Storage 2. depolanan verilere erişmenizi sağlar.
 
-- **POSIX Izinlerinin bir üst kümesi**: Data Lake Gen2 için güvenlik modeli, Data Lake Storage 2. özgü bazı ayrıntı düzeyi Ile birlikte ACL ve POSIX izinlerini tam olarak destekler. Ayarlar, yönetim araçları aracılığıyla veya Hive ve Spark gibi çerçeveler aracılığıyla yapılandırılabilir.
+- **POSIX Izinlerinin bir üst kümesi** : Data Lake Gen2 için güvenlik modeli, Data Lake Storage 2. özgü bazı ayrıntı düzeyi Ile birlikte ACL ve POSIX izinlerini tam olarak destekler. Ayarlar, yönetim araçları aracılığıyla veya Hive ve Spark gibi çerçeveler aracılığıyla yapılandırılabilir.
 
-- Uygun **maliyetli**: Data Lake Storage 2. Özellikler düşük maliyetli depolama kapasitesi ve işlemler. Veriler tam yaşam döngüsü boyunca geçiş yaparken, [Azure Blob depolama yaşam döngüsü](../../storage/common/storage-lifecycle-management-concepts.md)gibi yerleşik özellikler aracılığıyla maliyetleri en aza indirmek için faturalandırma ücretleri değişir.
+- Uygun **maliyetli** : Data Lake Storage 2. Özellikler düşük maliyetli depolama kapasitesi ve işlemler. Veriler tam yaşam döngüsü boyunca geçiş yaparken, [Azure Blob depolama yaşam döngüsü](../../storage/blobs/storage-lifecycle-management-concepts.md)gibi yerleşik özellikler aracılığıyla maliyetleri en aza indirmek için faturalandırma ücretleri değişir.
 
-- **BLOB depolama araçları, çerçeveler ve uygulamalarla çalışır**: Data Lake Storage 2., bugün BLOB depolama için mevcut olan çok sayıda araç, çerçeve ve uygulama ile çalışmaya devam eder.
+- **BLOB depolama araçları, çerçeveler ve uygulamalarla çalışır** : Data Lake Storage 2., bugün BLOB depolama için mevcut olan çok sayıda araç, çerçeve ve uygulama ile çalışmaya devam eder.
 
-- **İyileştirilmiş sürücü**: Azure Blob FileSystem sürücüsü (ABFS), büyük veri analizi için [özel olarak iyileştirilmiştir](../../storage/data-lake-storage/abfs-driver.md)   . Karşılık gelen REST API 'Leri, dfs.core.windows.net DFS uç noktası üzerinden ortaya çıkmış.
+- **İyileştirilmiş sürücü** : Azure Blob FileSystem sürücüsü (ABFS), büyük veri analizi için [özel olarak iyileştirilmiştir](../../storage/blobs/data-lake-storage-abfs-driver.md) . Karşılık gelen REST API 'Leri, dfs.core.windows.net DFS uç noktası üzerinden ortaya çıkmış.
 
 Aşağıdaki biçimlerden biri, ADLS 2. depolanan verilere erişmek için kullanılabilir:
 - `abfs:///`: Küme için varsayılan Data Lake Storage erişin.
@@ -114,8 +114,8 @@ Aşağıdaki biçimlerden biri, ADLS 2. depolanan verilere erişmek için kullan
 
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure Data Lake Storage 2. Nesil'e giriş](../../storage/data-lake-storage/introduction.md)
-- [Azure blob dosya sistemi sürücüsü (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
+- [Azure Data Lake Storage 2. Nesil'e giriş](../../storage/blobs/data-lake-storage-introduction.md)
+- [Azure blob dosya sistemi sürücüsü (ABFS.md)](../../storage/blobs/data-lake-storage-abfs-driver.md)
 - [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 ## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>Şirket içi Hadoop kümesi yapılandırması içindeki güvenli Azure depolama anahtarları
@@ -144,7 +144,7 @@ hadoop credential create fs.azure.account.key.account.blob.core.windows.net -val
 > Sağlayıcı yolu özelliği, anahtar core-site.xml aşağıdaki gibi küme düzeyinde depolamak yerine, distcp komut satırına da eklenebilir:
 
 ```bash
-hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
+hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
 ```
 
 ## <a name="restrict-azure-storage-data-access-using-sas"></a>SAS kullanarak Azure depolama veri erişimini kısıtlama
@@ -173,11 +173,11 @@ HDInsight, varsayılan olarak, kümeyle ilişkili Azure depolama hesaplarında b
 
 6. **Anahtar** ve **değer** alanları için aşağıdaki değerleri kullanın:
 
-    **Anahtar**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **değer**: Yukarıdaki 4. adımda Python uygulaması tarafından döndürülen SAS anahtarı.
+    **Anahtar** : `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **değer** : Yukarıdaki 4. adımda Python uygulaması tarafından döndürülen SAS anahtarı.
 
-7. Bu anahtarı ve değeri kaydetmek için **Ekle** düğmesine tıklayın ve sonra yapılandırma değişikliklerini kaydetmek için **Kaydet** düğmesine tıklayın. İstendiğinde, değişikliğin açıklamasını ekleyin (örneğin, "SAS depolama erişimi ekleme") ve ardından **Kaydet**' e tıklayın.
+7. Bu anahtarı ve değeri kaydetmek için **Ekle** düğmesine tıklayın ve sonra yapılandırma değişikliklerini kaydetmek için **Kaydet** düğmesine tıklayın. İstendiğinde, değişikliğin açıklamasını ekleyin (örneğin, "SAS depolama erişimi ekleme") ve ardından **Kaydet** ' e tıklayın.
 
-8. Ambarı Web Kullanıcı arabiriminde, sol taraftaki listeden işlemler ' i seçin ve ardından sağdaki hizmet eylemleri açılan listesinden **etkilenen tümünü yeniden Başlat** ' ı seçin. İstendiğinde, **Tümünü Yeniden Başlat**' ı seçin.
+8. Ambarı Web Kullanıcı arabiriminde, sol taraftaki listeden işlemler ' i seçin ve ardından sağdaki hizmet eylemleri açılan listesinden **etkilenen tümünü yeniden Başlat** ' ı seçin. İstendiğinde, **Tümünü Yeniden Başlat** ' ı seçin.
 
 9. MapReduce2 ve YARN için bu işlemi tekrarlayın.
 
@@ -193,14 +193,14 @@ Daha fazla bilgi için bkz. [HDInsight 'taki verilere erişimi kısıtlamak Içi
 
 ## <a name="use-data-encryption-and-replication"></a>Veri şifrelemeyi ve çoğaltmayı kullanma
 
-Azure depolama 'ya yazılan tüm veriler [depolama hizmeti şifrelemesi (SSE)](../../storage/common/storage-service-encryption.md)kullanılarak otomatik olarak şifrelenir. Azure depolama hesabındaki veriler, her zaman yüksek kullanılabilirlik için çoğaltılır.Bir depolama hesabı oluşturduğunuzda, aşağıdaki çoğaltma seçeneklerinden birini belirleyebilirsiniz:
+Azure depolama 'ya yazılan tüm veriler [depolama hizmeti şifrelemesi (SSE)](../../storage/common/storage-service-encryption.md)kullanılarak otomatik olarak şifrelenir. Azure depolama hesabındaki veriler, her zaman yüksek kullanılabilirlik için çoğaltılır. Bir depolama hesabı oluşturduğunuzda, aşağıdaki çoğaltma seçeneklerinden birini belirleyebilirsiniz:
 
-- [Yerel olarak yedekli depolama (LRS)](../../storage/common/storage-redundancy-lrs.md)
-- [Alanlar arası yedekli depolama (ZRS)](../../storage/common/storage-redundancy-zrs.md)
-- [Coğrafi olarak yedekli depolama (GRS)](../../storage/common/storage-redundancy-grs.md)
+- [Yerel olarak yedekli depolama (LRS)](../../storage/common/storage-redundancy.md#locally-redundant-storage)
+- [Alanlar arası yedekli depolama (ZRS)](../../storage/common/storage-redundancy.md#zone-redundant-storage)
+- [Coğrafi olarak yedekli depolama (GRS)](../../storage/common/storage-redundancy.md#geo-redundant-storage)
 - [Okuma erişimli coğrafi olarak yedekli depolama (RA-GRS)](../../storage/common/storage-redundancy.md)
 
-Azure depolama, yerel olarak yedekli depolama (LRS) sağlar, ancak önemli verileri olağanüstü durum kurtarma planının ihtiyaçlarına göre bir sıklık ile başka bir bölgedeki başka bir Azure depolama hesabına de kopyalamanız gerekir. [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), [distcp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html), [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)veya [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)dahil olmak üzere verileri kopyalamak için farklı yöntemler vardır.Yanlışlıkla silinmeye engel olmak için Azure Storage hesabı için erişim ilkelerini zorlamak de önerilir.
+Azure depolama, yerel olarak yedekli depolama (LRS) sağlar, ancak önemli verileri olağanüstü durum kurtarma planının ihtiyaçlarına göre bir sıklık ile başka bir bölgedeki başka bir Azure depolama hesabına de kopyalamanız gerekir. [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), [distcp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html), [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)veya [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)dahil olmak üzere verileri kopyalamak için farklı yöntemler vardır. Yanlışlıkla silinmeye engel olmak için Azure Storage hesabı için erişim ilkelerini zorlamak de önerilir.
 
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
@@ -216,7 +216,7 @@ Ek depolama hesabı, aşağıdaki yollarla bir birine eklenebilir:
 - Depolama hesabı adını ve anahtarını geçirerek [betik eylemi](../hdinsight-hadoop-add-storage.md) kullanma
 
 > [!Note]
-> Geçerli kullanım durumlarında, Azure depolama 'daki sınırlamalar [Azure desteği](https://azure.microsoft.com/support/faq/)'ne yapılan bir istek aracılığıyla artırılabilir.
+> Geçerli kullanım durumlarında, Azure depolama 'daki sınırlamalar [Azure desteği](https://azure.microsoft.com/support/faq/)'ne yapılan bir istek aracılığıyla artırılabilir.
 
 Daha fazla bilgi için bkz. [HDInsight’a başka depolama hesapları ekleme](../hdinsight-hadoop-add-storage.md).
 

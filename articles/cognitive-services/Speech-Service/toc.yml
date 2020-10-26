@@ -297,17 +297,15 @@
           href: index-conversation-scenarios.yml
         - name: Konuşma transkripsiyonu
           items:
-            - name: Genel Bakış
-              items:
-                - name: Konuşma transkripsiyonu nedir?
-                  href: conversation-transcription.md
+            - name: Konuşma Transkripsiyonuna genel bakış
+              href: conversation-transcription.md
+            - name: Gerçek Zamanlı Konuşma Transkripsiyonu hızlı başlangıç
+              href: how-to-use-conversation-transcription.md
             - name: Nasıl yapılır kılavuzları
               items:
                 - name: Çağrı merkezi senaryolarını işleme
                   displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
                   href: call-center-transcription.md
-                - name: Gerçek Zamanlı Konuşma transkripsiyonu
-                  href: how-to-use-conversation-transcription.md
                 - name: Zaman Uyumsuz Konuşma transkripsiyonu
                   href: how-to-async-conversation-transcription.md
             - name: Başvuru
@@ -341,14 +339,10 @@
                       href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
         - name: Çok cihazlı konuşma
           items:
-            - name: Genel bakış
-              items:
-                - name: Çok cihazlı konuşma nedir?
-                  href: multi-device-conversation.md
-            - name: Hızlı Başlangıç
-              items:
-                - name: Sohbet başlatma ve sohbete katılma
-                  href: quickstarts/multi-device-conversation.md
+            - name: Çok cihazlı konuşmaya genel bakış
+              href: multi-device-conversation.md
+            - name: Çok cihazlı konuşma hızla başlangıç
+              href: quickstarts/multi-device-conversation.md
             - name: Başvuru
               items:
                 - name: Konuşma SDK'sı
@@ -363,12 +357,8 @@
       items:
         - name: Ses yardımcısı belgeleri
           href: index-voice-assistants.yml
-        - name: Genel Bakış
-          items:
-            - name: Ses yardımcısı nedir?
-              href: voice-assistants.md
-            - name: Ses Yardımcısı örnekleri (GitHub)
-              href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
+        - name: Sesli yardımcılara genel bakış
+          href: voice-assistants.md
         - name: Özel Komutlar
           items:
             - name: Özel Komutlar nedir?

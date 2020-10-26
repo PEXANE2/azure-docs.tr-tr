@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 6198475025ff5222edeeb14cf25634ad2d916a1f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f0b3da7d225e4b2adca3f2d4b08cff9b56e2520
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88651446"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534609"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
 
@@ -37,7 +37,7 @@ HDInsight üzerinde Apache Kafka kümesi oluşturmak için aşağıdaki adımlar
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Üstteki menüden **+ kaynak oluştur**' u seçin.
+1. Üstteki menüden **+ kaynak oluştur** ' u seçin.
 
     ![Azure portal kaynak HDInsight oluşturma](./media/apache-kafka-get-started/azure-portal-create-resource.png)
 
@@ -50,10 +50,10 @@ HDInsight üzerinde Apache Kafka kümesi oluşturmak için aşağıdaki adımlar
     |Abonelik    |  Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin. |
     |Kaynak grubu     | Bir kaynak grubu oluşturun veya mevcut bir kaynak grubunu seçin.  Kaynak grubu, Azure bileşenleri için bir kapsayıcıdır.  Bu durumda, kaynak grubu HDInsight kümesini ve bağımlı Azure Depolama hesabını içermektedir. |
     |Küme adı   | Genel olarak benzersiz bir ad girin. Ad, harf, sayı ve kısa çizgi gibi en fazla 59 karakter içerebilir. Adın ilk ve son karakterleri, kısa çizgi olamaz. |
-    |Region    | Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.  Daha iyi performans için size daha yakın bir bölge seçin. |
+    |Bölge    | Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.  Daha iyi performans için size daha yakın bir bölge seçin. |
     |Küme türü| Liste açmak için **küme türünü seç** ' i seçin. Listeden küme türü olarak **Kafka** ' yi seçin.|
     |Sürüm|Küme türü için varsayılan sürüm belirtilecektir. Farklı bir sürüm belirtmek istiyorsanız, açılan listeden seçim yapın.|
-    |Küme oturum açma kullanıcı adı ve parolası    | Varsayılan oturum açma adı **admin**' dir. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf ve bir küçük harf, bir alfasayısal olmayan karakter (' "' karakterleri dışında) içermelidir \) . "Pass@word1" gibi genel parolalar **sağlamadığınızdan** emin olun.|
+    |Küme oturum açma kullanıcı adı ve parolası    | Varsayılan oturum açma adı **admin** ' dir. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf ve bir küçük harf, bir alfasayısal olmayan karakter (' "' karakterleri dışında) içermelidir \) . "Pass@word1" gibi genel parolalar **sağlamadığınızdan** emin olun.|
     |Secure Shell (SSH) kullanıcı adı | Varsayılan kullanıcı adı **sshuser** şeklindedir.  SSH kullanıcı adı için başka bir ad sağlayabilirsiniz. |
     |SSH için küme oturum açma parolasını kullanma| SSH kullanıcısı için, küme oturum açma kullanıcısı için sağladınız aynı parolayı kullanmak üzere bu onay kutusunu işaretleyin.|
 
@@ -61,7 +61,7 @@ HDInsight üzerinde Apache Kafka kümesi oluşturmak için aşağıdaki adımlar
 
     Her Azure bölgesi (konum) _hata etki alanları_ sağlar. Hata etki alanı, bir Azure veri merkezinde temel donanımlardan oluşan mantıksal bir gruplandırmadır. Her hata etki alanı ortak bir güç kaynağı ve ağ anahtarına sahiptir. Bir HDInsight kümesi içindeki düğümleri uygulayan sanal makineler ve yönetilen diskler, bu hata etki alanlarına dağıtılır. Bu mimari, fiziksel donanım hatalarının olası etkisini sınırlar.
 
-    Verilerin yüksek kullanılabilirliği için, __üç hata etki alanı__ içeren bir bölge (konum) seçin. Bir bölgedeki hata etki alanlarının sayısı hakkında bilgi almak için [Linux sanal makinelerinin kullanılabilirliği](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) belgesine bakın.
+    Verilerin yüksek kullanılabilirliği için, __üç hata etki alanı__ içeren bir bölge (konum) seçin. Bir bölgedeki hata etki alanlarının sayısı hakkında bilgi almak için [Linux sanal makinelerinin kullanılabilirliği](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) belgesine bakın.
 
     Depolama ayarlarına ilerlemek için **Sonraki: depolama >>** sekmesini seçin.
 
@@ -69,9 +69,9 @@ HDInsight üzerinde Apache Kafka kümesi oluşturmak için aşağıdaki adımlar
 
     |Özellik  |Açıklama  |
     |---------|---------|
-    |Birincil depolama türü|Varsayılan **Azure Storage**değerini kullanın.|
-    |Seçim yöntemi|Varsayılan değer **listesinden Seç ' i**kullanın.|
-    |Birincil depolama hesabı|Açılan listeyi kullanarak mevcut bir depolama hesabını seçin veya **Yeni oluştur**' u seçin. Yeni bir hesap oluşturursanız, ad 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakamlar ve küçük harfler içerebilir|
+    |Birincil depolama türü|Varsayılan **Azure Storage** değerini kullanın.|
+    |Seçim yöntemi|Varsayılan değer **listesinden Seç ' i** kullanın.|
+    |Birincil depolama hesabı|Açılan listeyi kullanarak mevcut bir depolama hesabını seçin veya **Yeni oluştur** ' u seçin. Yeni bir hesap oluşturursanız, ad 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakamlar ve küçük harfler içerebilir|
     |Kapsayıcı|Otomatik doldurulmuş değeri kullanın.|
 
     ![HDInsight Linux kullanmaya başlama küme depolama değerlerini sağlama](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "HDInsight kümesi oluşturmak için depolama değerleri sağlama")
@@ -202,7 +202,7 @@ Bu bölümde, küme üzerindeki Apache ambarı REST API ana bilgisayar bilgileri
 
 Kafka, veri akışlarını *konular* içinde depolar. Konuları yönetmek için `kafka-topics.sh` yardımcı programını kullanabilirsiniz.
 
-* **Bir konu oluşturmak için**, SSH bağlantısında aşağıdaki komutu kullanın:
+* **Bir konu oluşturmak için** , SSH bağlantısında aşağıdaki komutu kullanın:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
@@ -218,7 +218,7 @@ Kafka, veri akışlarını *konular* içinde depolar. Konuları yönetmek için 
         
         * Üç hata etki alanı içeren bölgelerde 3 çoğaltma katsayısı, çoğaltmaların hata etki alanları arasında yayılmasına olanak sağlar. İki hata etki alanı içeren bölgelerde dört çoğaltma katsayısı, çoğaltmaların etki alanları arasında eşit şekilde yayılmasına olanak sağlar.
         
-        * Bir bölgedeki hata etki alanlarının sayısı hakkında bilgi almak için [Linux sanal makinelerinin kullanılabilirliği](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) belgesine bakın.
+        * Bir bölgedeki hata etki alanlarının sayısı hakkında bilgi almak için [Linux sanal makinelerinin kullanılabilirliği](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) belgesine bakın.
 
         * Apache Kafka, Azure hata etki alanları ile uyumlu değildir. Konular için bölüm çoğaltmaları oluşturulurken, çoğaltmalar yüksek kullanılabilirlik için düzgün şekilde dağıtılmayabilir.
 
@@ -291,9 +291,9 @@ Bu hızlı başlangıç tarafından oluşturulan kaynakları temizlemek için ka
 
 Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
-1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve sonra __Kaynak Grupları__'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
+1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve sonra __Kaynak Grupları__ 'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
 2. Silinecek kaynak grubunu bulun ve sonra listenin sağ tarafındaki __Daha fazla__ düğmesine (...) sağ tıklayın.
-3. __Kaynak grubunu sil__'i seçip onaylayın.
+3. __Kaynak grubunu sil__ 'i seçip onaylayın.
 
 > [!WARNING]  
 > HDInsight üzerinde Apache Kafka kümesi silindiğinde, Kafka içinde depolanan tüm veriler silinir.

@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: a9da6a592249aed727231b810a3fbb5f7b72e228
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 16f1e2a6b7a3c0e81b7ceb57359a48a84ee489d9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164202"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532739"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için .NET (C#) kullanma
 
@@ -46,13 +46,13 @@ dotnet add package MySqlConnector
 MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
+2. Azure portalında sol taraftaki menüden **Tüm kaynaklar** 'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver** ) arayın.
 3. Sunucunun adına tıklayın.
-4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı** ’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  :::image type="content" source="./media/connect-csharp/1_server-overview-name-login.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
 
 ## <a name="connect-create-table-and-insert-data"></a>Bağlanma, tablo oluşturma ve veri ekleme
-`CREATE TABLE` ve `INSERT INTO` SQL deyimlerini kullanarak verilere bağlanmak ve verileri yüklemek için aşağıdaki kodu kullanın. Kod, [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metoduyla birlikte `MySqlConnection` sınıfını kullanarak MySQL ile bağlantı kurar. Ardından kod [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) yöntemini kullanarak CommandText özelliğini ayarlar ve [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metodunu çağırarak veritabanı komutlarını çalıştırır. 
+`CREATE TABLE` ve `INSERT INTO` SQL deyimlerini kullanarak verilere bağlanmak ve verileri yüklemek için aşağıdaki kodu kullanın. Kod, [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metoduyla birlikte `MySqlConnection` sınıfını kullanarak MySQL ile bağlantı kurar. Ardından kod [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) yöntemini kullanarak CommandText özelliğini ayarlar ve [ExecuteNonQueryAsync()](/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metodunu çağırarak veritabanı komutlarını çalıştırır. 
 
 `Server`, `Database`, `UserID` ve `Password` parametrelerini, sunucu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
 
@@ -117,7 +117,7 @@ namespace AzureMySqlExample
 
 ## <a name="read-data"></a>Verileri okuma
 
-Bir `SELECT` SQL deyimini kullanarak bağlanmak ve verileri okumak için aşağıdaki kodu kullanın. Kod, [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metoduyla birlikte `MySqlConnection` sınıfını kullanarak MySQL ile bağlantı kurar. Daha sonra kod tarafından [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) ve [ExecuteReaderAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executereaderasync) metodu kullanılarak veritabanı komutları çalıştırılır. Daha sonra kod [ReadAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbdatareader.readasync#System_Data_Common_DbDataReader_ReadAsync) metodunu kullanarak sonuçlardaki kayıtlara gider. Ardından kod, GetInt32 ve GetString yöntemini kullanarak kayıttaki değerleri ayrıştırır.
+Bir `SELECT` SQL deyimini kullanarak bağlanmak ve verileri okumak için aşağıdaki kodu kullanın. Kod, [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metoduyla birlikte `MySqlConnection` sınıfını kullanarak MySQL ile bağlantı kurar. Daha sonra kod tarafından [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) ve [ExecuteReaderAsync()](/dotnet/api/system.data.common.dbcommand.executereaderasync) metodu kullanılarak veritabanı komutları çalıştırılır. Daha sonra kod [ReadAsync()](/dotnet/api/system.data.common.dbdatareader.readasync#System_Data_Common_DbDataReader_ReadAsync) metodunu kullanarak sonuçlardaki kayıtlara gider. Ardından kod, GetInt32 ve GetString yöntemini kullanarak kayıttaki değerleri ayrıştırır.
 
 `Server`, `Database`, `UserID` ve `Password` parametrelerini, sunucu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
 
@@ -174,7 +174,7 @@ namespace AzureMySqlExample
 ```
 
 ## <a name="update-data"></a>Verileri güncelleştirme
-Bir `UPDATE` SQL deyimini kullanarak bağlanmak ve verileri okumak için aşağıdaki kodu kullanın. Kod, [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metoduyla birlikte `MySqlConnection` sınıfını kullanarak MySQL ile bağlantı kurar. Ardından kod [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) yöntemini kullanarak CommandText özelliğini ayarlar ve [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metodunu çağırarak veritabanı komutlarını çalıştırır. 
+Bir `UPDATE` SQL deyimini kullanarak bağlanmak ve verileri okumak için aşağıdaki kodu kullanın. Kod, [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metoduyla birlikte `MySqlConnection` sınıfını kullanarak MySQL ile bağlantı kurar. Ardından kod [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) yöntemini kullanarak CommandText özelliğini ayarlar ve [ExecuteNonQueryAsync()](/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metodunu çağırarak veritabanı komutlarını çalıştırır. 
 
 `Server`, `Database`, `UserID` ve `Password` parametrelerini, sunucu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
 
@@ -226,7 +226,7 @@ namespace AzureMySqlExample
 ## <a name="delete-data"></a>Verileri silme
 Bir `DELETE` SQL deyimini kullanarak bağlanmak ve verileri silmek için aşağıdaki kodu kullanın. 
 
-Kod, [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metoduyla birlikte `MySqlConnection` sınıfını kullanarak MySQL ile bağlantı kurar. Ardından kod [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) yöntemini kullanarak CommandText özelliğini ayarlar ve [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metodunu çağırarak veritabanı komutlarını çalıştırır. 
+Kod, [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) metoduyla birlikte `MySqlConnection` sınıfını kullanarak MySQL ile bağlantı kurar. Ardından kod [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) yöntemini kullanarak CommandText özelliğini ayarlar ve [ExecuteNonQueryAsync()](/dotnet/api/system.data.common.dbcommand.executenonqueryasync) metodunu çağırarak veritabanı komutlarını çalıştırır. 
 
 `Server`, `Database`, `UserID` ve `Password` parametrelerini, sunucu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
 

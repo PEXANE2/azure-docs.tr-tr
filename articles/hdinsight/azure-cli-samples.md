@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3181d4a0c605e0b1325f21de6b277e2b41f92d37
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a289a0d963c8e20a3b861ff9964e8afd6665de22
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487305"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542361"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLı örnekleri
 
@@ -28,7 +28,7 @@ Bu makalede ortak görevler için örnek betikler sağlanmaktadır. Her örnek i
 
 * Azure CLI. Adımlar için bkz. [Azure CLI 'Yı yüklemeyin](/cli/azure/install-azure-cli) .
 
-* İsteğe bağlı: Bash. Bu makaledeki örneklerde, Windows 10 ' da bash kabuğu kullanılır. Yükleme adımları için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](https://docs.microsoft.com/windows/wsl/install-win10) .  Örnekler, bazı hafif değişikliklerle bir Windows komut isteminden çalışır.
+* İsteğe bağlı: Bash. Bu makaledeki örneklerde, Windows 10 ' da bash kabuğu kullanılır. Yükleme adımları için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](/windows/wsl/install-win10) .  Örnekler, bazı hafif değişikliklerle bir Windows komut isteminden çalışır.
 
 ## <a name="az-login"></a>az login
 

@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 689417dd0743b01afd18b57b5336640f11edd044
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19466174faeef20b8ac29882b047d74ad2adc5ff
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504664"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535187"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory kullanıcılarını HDInsight kümesine eşitleme
 
-[Kurumsal güvenlik paketi (ESP) Içeren HDInsight kümeleri](hdinsight-domain-joined-introduction.md) , Azure Active Directory (Azure AD) kullanıcılarıyla güçlü kimlik doğrulaması ve *Azure rol tabanlı erişim denetımı (Azure RBAC)* ilkelerini kullanabilir. Azure AD 'ye kullanıcılar ve gruplar eklerken, kümenize erişmesi gereken kullanıcıları da eşzamanlı hale getirebilirsiniz.
+[Kurumsal güvenlik paketi (ESP) Içeren HDInsight kümeleri](./domain-joined/hdinsight-security-overview.md) , Azure Active Directory (Azure AD) kullanıcılarıyla güçlü kimlik doğrulaması ve *Azure rol tabanlı erişim denetımı (Azure RBAC)* ilkelerini kullanabilir. Azure AD 'ye kullanıcılar ve gruplar eklerken, kümenize erişmesi gereken kullanıcıları da eşzamanlı hale getirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Daha önce yapmadıysanız, [Kurumsal güvenlik paketi bir HDInsight kümesi oluşturun](hdinsight-domain-joined-configure.md).
+Daha önce yapmadıysanız, [Kurumsal güvenlik paketi bir HDInsight kümesi oluşturun](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).
 
 ## <a name="add-new-azure-ad-users"></a>Yeni Azure AD kullanıcıları ekleme
 
@@ -29,15 +29,15 @@ Konaklarınızı görüntülemek için, ambarı Web Kullanıcı arabirimini aç�
 
 1. [Azure Portal](https://portal.azure.com), ESP kümeniz Ile ILIŞKILI Azure AD dizinine gidin.
 
-2. Sol taraftaki menüden **tüm kullanıcılar** ' ı seçin ve ardından **Yeni Kullanıcı**' yı seçin.
+2. Sol taraftaki menüden **tüm kullanıcılar** ' ı seçin ve ardından **Yeni Kullanıcı** ' yı seçin.
 
     ![Azure portal kullanıcılar ve gruplar](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
-3. Yeni Kullanıcı formunu doldurun. Küme tabanlı izinleri atamak için oluşturduğunuz grupları seçin. Bu örnekte, Yeni Kullanıcı atayabilmeniz için "HiveUsers" adlı bir grup oluşturun. Bir ESP kümesi oluşturmak için [örnek yönergeler](hdinsight-domain-joined-configure.md) , ve olmak üzere iki grup ekleme içerir `HiveUsers` `AAD DC Administrators` .
+3. Yeni Kullanıcı formunu doldurun. Küme tabanlı izinleri atamak için oluşturduğunuz grupları seçin. Bu örnekte, Yeni Kullanıcı atayabilmeniz için "HiveUsers" adlı bir grup oluşturun. Bir ESP kümesi oluşturmak için [örnek yönergeler](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) , ve olmak üzere iki grup ekleme içerir `HiveUsers` `AAD DC Administrators` .
 
     ![Azure portal Kullanıcı bölmesi grupları seçin](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
-4. **Oluştur**’u seçin.
+4. **Oluştur** ’u seçin.
 
 ## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>Kullanıcıları eşleştirmek için Apache ambarı REST API kullanma
 
@@ -120,10 +120,10 @@ Aşağıdaki yöntem REST API ambarı ile GÖNDERI kullanır. Daha fazla bilgi i
     }
     ```
 
-1. Bu sonuç, durumun **tamamlandığını**, yeni bir kullanıcının oluşturulduğunu ve kullanıcıya bir üyelik atandığını gösterir. Bu örnekte, Kullanıcı Azure AD 'de aynı gruba eklendiğinden, Kullanıcı "HiveUsers" ile eşitlenen LDAP grubuna atanır.
+1. Bu sonuç, durumun **tamamlandığını** , yeni bir kullanıcının oluşturulduğunu ve kullanıcıya bir üyelik atandığını gösterir. Bu örnekte, Kullanıcı Azure AD 'de aynı gruba eklendiğinden, Kullanıcı "HiveUsers" ile eşitlenen LDAP grubuna atanır.
 
     > [!NOTE]  
-    > Önceki yöntem, yalnızca küme oluşturma sırasında etki alanı ayarlarının **Erişim Kullanıcı grubu** özelliğinde BELIRTILEN Azure AD gruplarını eşitler. Daha fazla bilgi için bkz.  [HDInsight kümesi oluşturma](domain-joined/apache-domain-joined-configure.md).
+    > Önceki yöntem, yalnızca küme oluşturma sırasında etki alanı ayarlarının **Erişim Kullanıcı grubu** özelliğinde BELIRTILEN Azure AD gruplarını eşitler. Daha fazla bilgi için bkz.  [HDInsight kümesi oluşturma](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Yeni eklenen Azure AD kullanıcısını doğrulama
 
@@ -148,6 +148,6 @@ Yeni örnek Kullanıcı Kullanıcı adına sahiptir `hiveuser3@contoso.com` . Bu
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [HDInsight 'ta ESP ile Apache Hive ilkelerini yapılandırma](hdinsight-domain-joined-run-hive.md)
-* [HDInsight kümelerini ESP ile yönetme](hdinsight-domain-joined-manage.md)
+* [HDInsight 'ta ESP ile Apache Hive ilkelerini yapılandırma](./domain-joined/apache-domain-joined-run-hive.md)
+* [HDInsight kümelerini ESP ile yönetme](./domain-joined/apache-domain-joined-manage.md)
 * [Kullanıcıları Apache ambarı 'na yetkilendir](hdinsight-authorize-users-to-ambari.md)

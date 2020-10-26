@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 929956d6f439df2a2e7cb8d1b950f5e68cdeab68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 348b9b80c74f085ce31ecce93753a253782fe3ea
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631724"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543177"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Azure HDInsight 'ta ağ trafiğini denetleme
 
 Bir Azure sanal ağlarındaki ağ trafiği aşağıdaki yöntemler kullanılarak denetlenebilir:
 
-* **Ağ güvenlik grupları** (NSG) ağa gelen ve giden trafiği filtrelemenize izin verir. Daha fazla bilgi için bkz. ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/security-overview.md) belgesi.
+* **Ağ güvenlik grupları** (NSG) ağa gelen ve giden trafiği filtrelemenize izin verir. Daha fazla bilgi için bkz. ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/network-security-groups-overview.md) belgesi.
 
 * **Ağ sanal** gereçleri (NVA), yalnızca giden trafikle birlikte kullanılabilir. NVA 'lar güvenlik duvarları ve yönlendiriciler gibi cihazların işlevlerini çoğaltın. Daha fazla bilgi için bkz. [ağ araçları](https://azure.microsoft.com/solutions/network-appliances) belgesi.
 
@@ -40,9 +40,9 @@ Ağ trafiğini denetlemek için **ağ güvenlik grupları** kullanmayı planlıy
 
 3. HDInsight 'ı yüklemeyi planladığınız alt ağ için ağ güvenlik grupları oluşturun veya değiştirin.
 
-    * __Ağ güvenlik grupları__: ıp adreslerinden __443__ numaralı bağlantı noktasında __gelen__ trafiğe izin verin. Bu, HDInsight Yönetim Hizmetleri 'nin kümeye sanal ağ dışından ulaşmasını güvence altına alabilir. __Kafka Rest proxy__ etkinleştirilmiş kümeler için bağlantı noktası __9400__ ' de __gelen__ trafiğe de izin verin. Bu, Kafka REST proxy sunucusuna ulaşılacağından emin olur.
+    * __Ağ güvenlik grupları__ : ıp adreslerinden __443__ numaralı bağlantı noktasında __gelen__ trafiğe izin verin. Bu, HDInsight Yönetim Hizmetleri 'nin kümeye sanal ağ dışından ulaşmasını güvence altına alabilir. __Kafka Rest proxy__ etkinleştirilmiş kümeler için bağlantı noktası __9400__ ' de __gelen__ trafiğe de izin verin. Bu, Kafka REST proxy sunucusuna ulaşılacağından emin olur.
 
-Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik gruplarına genel bakış](../virtual-network/security-overview.md).
+Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik gruplarına genel bakış](../virtual-network/network-security-groups-overview.md).
 
 ## <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>HDInsight kümelerinden giden trafiği denetleme
 
@@ -69,6 +69,6 @@ Sanal gereçler güvenlik duvarı kuralları hakkında daha fazla bilgi için bk
 * Kod örnekleri ve Azure sanal ağları oluşturma örnekleri için bkz. [Azure HDInsight kümeleri için sanal ağlar oluşturma](hdinsight-create-virtual-network.md).
 * HDInsight 'ı şirket içi ağa bağlanacak şekilde yapılandırmaya yönelik uçtan uca bir örnek için bkz. HDInsight 'ı Şirket [içi ağa bağlama](./connect-on-premises-network.md).
 * Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
-* Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../virtual-network/security-overview.md).
+* Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md).
 * Kullanıcı tanımlı rotalar hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı rotalar ve IP iletimi](../virtual-network/virtual-networks-udr-overview.md).
 * Sanal ağlar hakkında daha fazla bilgi için bkz. [HDInsight Için plan VNET](./hdinsight-plan-virtual-network-deployment.md).

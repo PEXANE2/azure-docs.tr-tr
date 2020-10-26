@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 45170e9df7082e277c445a2dab6d617eb208cd44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47262e0dc7247e1d514eeb64512c21ff1ae527ab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855642"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534830"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight 'ta Apache Hadoop işleri için veri yükleme
 
 HDInsight, Azure depolama üzerinden bir Hadoop Dağıtılmış dosya sistemi (bir) sağlar ve Azure Data Lake Storage. Bu depolama gen1 ve Gen2 içerir. Azure depolama ve Data Lake Storage 1. ile Gen2, Bunlar, Hadoop ortamında doğrudan yönettiği verilerde çalışmak üzere tüm bileşen kümesini etkinleştirir. Azure depolama, Data Lake Storage 1. ve Gen2 farklı dosya sistemleridir. Sistemler verilerin ve hesaplamaların depolanması için en iyi duruma getirilmiştir. Azure Storage kullanmanın avantajları hakkında daha fazla bilgi için bkz. [HDInsight Ile Azure depolama 'Yı kullanma](hdinsight-hadoop-use-blob-storage.md). Ayrıca bkz. [HDInsight ile Data Lake Storage 1. kullanma](hdinsight-hadoop-use-data-lake-storage-gen1.md)ve [HDInsight ile Data Lake Storage 2. kullanma](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdaki gereksinimleri dikkate alın:
 
@@ -37,7 +37,7 @@ Microsoft, Azure depolama ile çalışmak için aşağıdaki yardımcı programl
 
 | Araç | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure portalındaki](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -88,7 +88,7 @@ Azure depolama ile çalışmak için grafik arabirimi sağlayan çeşitli uygula
 
 ## <a name="mount-azure-storage-as-local-drive"></a>Azure Storage 'ı yerel sürücü olarak bağlama
 
-Bkz. [Azure Storage 'ı yerel sürücü olarak bağlama](https://docs.microsoft.com/archive/blogs/bigdatasupport/mount-azure-blob-storage-as-local-drive).
+Bkz. [Azure Storage 'ı yerel sürücü olarak bağlama](/archive/blogs/bigdatasupport/mount-azure-blob-storage-as-local-drive).
 
 ## <a name="upload-using-services"></a>Hizmetleri kullanarak karşıya yükleme
 
@@ -99,7 +99,7 @@ Azure Data Factory hizmeti, veri oluşturmaya yönelik tam olarak yönetilen bir
 |Depolama türü|Belgeler|
 |----|----|
 |Azure Blob depolama|[Azure Data Factory kullanarak Azure Blob depolama alanına veya oradan veri kopyalama](../data-factory/connector-azure-blob-storage.md)|
-|Azure Data Lake Storage Gen1|[Azure Data Factory kullanarak Azure Data Lake Storage 1. veri kopyalama](../data-factory/connector-azure-data-lake-store.md)|
+|Azure Data Lake Storage 1. Nesil|[Azure Data Factory kullanarak Azure Data Lake Storage 1. veri kopyalama](../data-factory/connector-azure-data-lake-store.md)|
 |Azure Data Lake Storage Gen2 |[Azure Data Factory ile Azure Data Lake Storage 2. verileri yükleme](../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 ### <a name="apache-sqoop"></a>Apache Sqoop

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 615e23dc388f36f5ae1cd7e0d846acc14ffa2236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cfc2abad828a3974c04074a4cde062a479f673f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086424"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533572"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı ile küme kullanılabilirliğini izleme
 
@@ -62,7 +62,6 @@ Ambarı aşağıdakiler dahil olmak üzere kullanılabilirliğiyle ilgili çok s
 | Kullanılabilir JournalNodes yüzdesi    | Bu uyarı, kümedeki aşağı yönelik JournalNodes sayısı yapılandırılan kritik eşikten fazlaysa tetiklenir. Bu, JournalNode işlem denetimlerinin sonuçlarını toplar. |
 | Kullanılabilir gün yüzdesi       | Bu uyarı, kümedeki aşağı doğru eşik sayısı yapılandırılan kritik eşikten büyükse tetiklenir. Bu, Davtanode işlem denetimlerinin sonuçlarını toplar.|
 
-Bir kümenin kullanılabilirliğini izlemeye yardımcı olan bir dizi uyarı listesinin tam listesi [burada](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-linux#ambari-web-ui)bulunabilir.
 
 Bir uyarının veya değişiklik ölçütlerinin ayrıntılarını görüntülemek için uyarının **adını** seçin. Örnek olarak, **Davode sistem durumu özetini** alın. Bir ' uyarı ' veya ' kritik ' uyarı ve kriterlerin denetim aralığı tetiklenecek belirli ölçütlere ek olarak uyarının açıklamasını görebilirsiniz. Yapılandırmayı düzenlemek için yapılandırma kutusunun sağ üst köşesindeki **Düzenle** düğmesini seçin.
 
@@ -87,7 +86,7 @@ Uyarı bildirimlerini yönetmek için bir iletişim kutusu açılır. İletişim
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği](hdinsight-high-availability-linux.md)
+- [HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği](./hdinsight-business-continuity.md)
 - [Küme kullanılabilirliği - Azure İzleyici günlükleri](./cluster-availability-monitor-logs.md)
 - [Azure Izleyici günlüklerini kullanma](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 - [Apache Ambari e-posta bildirimleri](apache-ambari-email.md)

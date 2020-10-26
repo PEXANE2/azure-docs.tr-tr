@@ -235,10 +235,13 @@
                   href: ../common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Verileri blob'larda içeri aktarma
                   href: ../common/storage-import-export-data-to-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  displayName: 'Azure CLI, az import-export create, import-export'
                 - name: Verileri dosyalarda içeri aktarma
                   href: ../common/storage-import-export-data-to-files.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  displayName: 'Azure CLI, az import-export create, import-export'
                 - name: Verileri blob'lardan dışarı aktarma
                   href: ../common/storage-import-export-data-from-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  displayName: 'Azure CLI, az import-export create, import-export'
                 - name: Nasıl yapılır
                   items:
                     - name: Müşteri tarafından yönetilen anahtarı kullanma

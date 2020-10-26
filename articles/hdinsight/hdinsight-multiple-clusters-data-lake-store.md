@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df28374d0f124ceb46d2f97d55218d428275deca
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083959"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533096"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Azure Data Lake Storage hesabıyla birden çok HDInsight kümesi kullanma
 
 HDInsight sürüm 3,5 ' den başlayarak, varsayılan dosya sistemi olarak Azure Data Lake Storage hesaplarıyla HDInsight kümeleri oluşturabilirsiniz.
-Data Lake Storage, yalnızca büyük miktarlarda veriyi barındırmak için ideal hale getiren sınırsız depolamayı destekler; aynı zamanda tek bir Data Lake Storage hesabını paylaşan birden çok HDInsight kümesini barındırmak için. Depolama olarak Data Lake Storage bir HDInsight kümesi oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: HDInsight 'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Data Lake Storage, yalnızca büyük miktarlarda veriyi barındırmak için ideal hale getiren sınırsız depolamayı destekler; aynı zamanda tek bir Data Lake Storage hesabını paylaşan birden çok HDInsight kümesini barındırmak için. Depolama olarak Data Lake Storage bir HDInsight kümesi oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: HDInsight 'ta kümeleri ayarlama](./hdinsight-hadoop-provision-linux-clusters.md).
 
 Bu makale, birden çok **etkin** HDInsight kümesinde kullanılabilecek tek ve paylaşılan bir Data Lake Storage hesabı ayarlamaya yönelik Data Lake Storage yöneticisine öneriler sağlar. Bu öneriler, paylaşılan bir Data Lake Storage hesabında birden çok güvenli ve güvenli olmayan Apache Hadoop kümelerini barındırmak için geçerlidir.
 
@@ -28,7 +28,7 @@ Bu makalenin geri kalanında, [Azure Data Lake Storage erişim denetiminde](../d
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Birden çok HDInsight kümesi için Data Lake Storage kurulum
 
-Data Lake Storage hesabıyla birden çok HDInsight kümesi kullanma önerilerini açıklamak için iki düzeyli bir klasör hiyerarşisi getirmemize izin verin. **/Clusters/finans**klasör yapısına sahip bir Data Lake Storage hesabınız olduğunu düşünün. Bu yapıyla, finans organizasyonu için gereken tüm kümeler depolama konumu olarak/Clusters/finans kullanabilir. Daha sonra, başka bir kuruluş, pazarlama söylediğinde aynı Data Lake Storage hesabını kullanarak HDInsight kümeleri oluşturmak istiyorsa,/Clusters/Marketing oluşturamazlar. Şimdilik yalnızca **/Clusters/finans**' ı kullanalım.
+Data Lake Storage hesabıyla birden çok HDInsight kümesi kullanma önerilerini açıklamak için iki düzeyli bir klasör hiyerarşisi getirmemize izin verin. **/Clusters/finans** klasör yapısına sahip bir Data Lake Storage hesabınız olduğunu düşünün. Bu yapıyla, finans organizasyonu için gereken tüm kümeler depolama konumu olarak/Clusters/finans kullanabilir. Daha sonra, başka bir kuruluş, pazarlama söylediğinde aynı Data Lake Storage hesabını kullanarak HDInsight kümeleri oluşturmak istiyorsa,/Clusters/Marketing oluşturamazlar. Şimdilik yalnızca **/Clusters/finans** ' ı kullanalım.
 
 Bu klasör yapısını HDInsight kümeleri tarafından etkin bir şekilde kullanılmak üzere etkinleştirmek için, Data Lake Storage Yöneticisi tabloda açıklandığı gibi uygun izinleri atamalıdır. Tabloda gösterilen izinler, varsayılan ACL 'Ler değil, Access-ACL 'Lerine karşılık gelir.
 
@@ -48,10 +48,10 @@ AAD uygulaması oluşturma hakkında yönergeler için (Ayrıca bir hizmet sorum
 
 Göz önünde bulundurmanız gereken bazı önemli noktaları.
 
-- İki düzey klasör yapısı (**/Clusters/Finance/**), kümeler için depolama hesabı kullanılmadan **önce** Data Lake Storage yöneticisinin uygun izinlerle oluşturulması ve sağlanması gerekir. Bu yapı, kümeler oluşturulurken otomatik olarak oluşturulmaz.
+- İki düzey klasör yapısı ( **/Clusters/Finance/** ), kümeler için depolama hesabı kullanılmadan **önce** Data Lake Storage yöneticisinin uygun izinlerle oluşturulması ve sağlanması gerekir. Bu yapı, kümeler oluşturulurken otomatik olarak oluşturulmaz.
 - Yukarıdaki örnek, **/Clusters/finans** 'ın sahip olduğu grubunu **fingrp** olarak ayarlamayı ve kökten başlayarak tüm klasör hiyerarşisine fingrp için **r-x** erişimine izin sağlamasını önerir. Bu, FINGRP üyelerinin kök 'dan başlayarak klasör yapısına gidebilmesini sağlar.
-- Farklı AAD hizmet sorumluları **/Clusters/finans**altında kümeler oluşturabilmesini durumunda, yapışkan bit ( **finans** klasöründe ayarlandığında), bir hizmet sorumlusu tarafından oluşturulan klasörlerin diğer tarafından silinebilmesini sağlar.
-- Klasör yapısı ve izinler oluşturulduktan sonra, HDInsight kümesi oluşturma işlemi **/Clusters/Finance/** altında kümeye özgü bir depolama konumu oluşturur. Örneğin, fincluster01 adlı bir küme için depolama alanı **/Clusters/Finance/f, ter01**olabilir. HDInsight kümesi tarafından oluşturulan klasörler için sahiplik ve izinler burada tabloda gösterilmiştir.
+- Farklı AAD hizmet sorumluları **/Clusters/finans** altında kümeler oluşturabilmesini durumunda, yapışkan bit ( **finans** klasöründe ayarlandığında), bir hizmet sorumlusu tarafından oluşturulan klasörlerin diğer tarafından silinebilmesini sağlar.
+- Klasör yapısı ve izinler oluşturulduktan sonra, HDInsight kümesi oluşturma işlemi **/Clusters/Finance/** altında kümeye özgü bir depolama konumu oluşturur. Örneğin, fincluster01 adlı bir küme için depolama alanı **/Clusters/Finance/f, ter01** olabilir. HDInsight kümesi tarafından oluşturulan klasörler için sahiplik ve izinler burada tabloda gösterilmiştir.
 
     |Klasör  |İzinler  |Sahip olan kullanıcı  |Sahip olan grup  | Adlandırılmış Kullanıcı | Adlandırılmış Kullanıcı izinleri | Adlandırılmış Grup | Adlandırılmış Grup izinleri |
     |---------|---------|---------|---------|---------|---------|---------|---------|
@@ -59,7 +59,7 @@ Göz önünde bulundurmanız gereken bazı önemli noktaları.
 
 ## <a name="recommendations-for-job-input-and-output-data"></a>İş girişi ve çıkış verileri için öneriler
 
-Bu giriş verilerinin bir işe ve bir iş çıktılarının **/kümelerin**dışında bir klasöre depolanmasını öneririz. Bu, bazı depolama alanını geri kazanmak için kümeye özgü klasör silinse bile, iş girişleri ve çıktılar ileride kullanılmak üzere hala kullanılabilir olur. Böyle bir durumda, iş girişlerini ve çıktılarını depolamak için klasör hiyerarşisinin hizmet sorumlusu için uygun düzeyde erişim sağlamasına izin verildiğinden emin olun.
+Bu giriş verilerinin bir işe ve bir iş çıktılarının **/kümelerin** dışında bir klasöre depolanmasını öneririz. Bu, bazı depolama alanını geri kazanmak için kümeye özgü klasör silinse bile, iş girişleri ve çıktılar ileride kullanılmak üzere hala kullanılabilir olur. Böyle bir durumda, iş girişlerini ve çıktılarını depolamak için klasör hiyerarşisinin hizmet sorumlusu için uygun düzeyde erişim sağlamasına izin verildiğinden emin olun.
 
 ## <a name="limit-on-clusters-sharing-a-single-storage-account"></a>Tek bir depolama hesabı paylaşan kümeler üzerinde sınırlama
 
@@ -91,5 +91,5 @@ Yukarıdaki tabloda gösterildiği gibi, **diğer kullanıcılar** için (örne�
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Hızlı başlangıç: HDInsight'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+- [Hızlı başlangıç: HDInsight'ta kümeleri ayarlama](./hdinsight-hadoop-provision-linux-clusters.md)
 - [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](hdinsight-hadoop-use-data-lake-storage-gen2.md)

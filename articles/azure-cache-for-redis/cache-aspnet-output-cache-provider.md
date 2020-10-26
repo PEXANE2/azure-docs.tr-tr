@@ -7,22 +7,22 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: cb986f1e0172c4a44381b2f9cf043025cb5abe8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d711b07a10e04dcdf31259f3e53c9687af28e28
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88705036"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544639"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için ASP.NET çıkış önbelleği sağlayıcısı
 
-Redsıs çıkış önbelleği sağlayıcısı, çıkış önbelleği verileri için işlem dışı bir depolama mekanizmasıdır. Bu veriler özellikle tam HTTP yanıtları (sayfa çıktısı önbelleği) içindir. Sağlayıcı, ASP.NET 4 ' te tanıtılan yeni çıktı önbelleği sağlayıcısı genişletilebilirlik noktasına takılır. ASP.NET Core uygulamalar için [ASP.NET Core yanıt önbelleğe alma işlemini](https://docs.microsoft.com/aspnet/core/performance/caching/response)okuyun. 
+Redsıs çıkış önbelleği sağlayıcısı, çıkış önbelleği verileri için işlem dışı bir depolama mekanizmasıdır. Bu veriler özellikle tam HTTP yanıtları (sayfa çıktısı önbelleği) içindir. Sağlayıcı, ASP.NET 4 ' te tanıtılan yeni çıktı önbelleği sağlayıcısı genişletilebilirlik noktasına takılır. ASP.NET Core uygulamalar için [ASP.NET Core yanıt önbelleğe alma işlemini](/aspnet/core/performance/caching/response)okuyun. 
 
 Redsıs çıkış önbelleği sağlayıcısını kullanmak için, önce önbelleğinizi yapılandırın ve ardından ASP.NET uygulamanızı Redsıs çıkış önbelleği sağlayıcısı NuGet paketini kullanarak yapılandırın. Bu konu, uygulamanızın Redsıs çıkış önbelleği sağlayıcısını kullanmak üzere yapılandırılmasına ilişkin yönergeler sağlar. Redsıs örneği için Azure önbelleği oluşturma ve yapılandırma hakkında daha fazla bilgi için bkz. [önbellek oluşturma](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
 ## <a name="store-aspnet-page-output-in-the-cache"></a>ASP.NET sayfa çıkışını önbellekte depola
 
-Visual Studio 'da Redsıs oturum durumu NuGet paketi için Azure önbelleğini kullanarak bir istemci uygulamasını yapılandırmak için, **Araçlar** menüsünden **NuGet Paket Yöneticisi**, **Paket Yöneticisi konsolu** ' na tıklayın.
+Visual Studio 'da Redsıs oturum durumu NuGet paketi için Azure önbelleğini kullanarak bir istemci uygulamasını yapılandırmak için, **Araçlar** menüsünden **NuGet Paket Yöneticisi** , **Paket Yöneticisi konsolu** ' na tıklayın.
 
 `Package Manager Console` penceresinden aşağıdaki komutu çalıştırın.
 
@@ -61,12 +61,12 @@ NuGet paketi, gerekli derleme başvurularını indirir ve ekler ve aşağıdaki 
 | *Databaseıdnumber* | pozitif tamsayı | 0 | *Bu öznitelik yalnızca web.config ya da AppSettings aracılığıyla belirtilebilir.*<br/><br/>Kullanılacak redne veritabanını belirtin. |
 | *Connectiontimeoutınmilliseconds* | pozitif tamsayı | StackExchange. Redsıs tarafından sağlanır | StackExchange. Redsıs. Connectionçoğullayıcı oluşturulurken *ConnectTimeout* ayarlamak için kullanılır. |
 | *Operationtimeoutınmilliseconds* | pozitif tamsayı | StackExchange. Redsıs tarafından sağlanır | StackExchange. Redsıs. Connectionçoğullayıcı oluştururken *Synctimeout* ayarlamak için kullanılır. |
-| *ConnectionString* (geçerli StackExchange. redsıs bağlantı dizesi) | string | *yok* | AppSettings veya web.config için bir parametre başvurusu ya da geçerli bir StackExchange. Redsıs bağlantı dizesi. Bu öznitelik *ana bilgisayar*, *bağlantı noktası*, *AccessKey*, *SSL*ve diğer StackExchange. redsıs öznitelikleri için değerler sağlayabilir. *ConnectionString*'e daha yakından bakmak Için, [öznitelik notları](#attribute-notes) bölümünde [ConnectionString ayarlama](#setting-connectionstring) bölümüne bakın. |
-| *settingsClassName*<br/>*settingsMethodName* | string<br/>string | *yok* | *Bu öznitelikler yalnızca web.config ya da AppSettings aracılığıyla belirtilebilir.*<br/><br/>Bir bağlantı dizesi sağlamak için bu öznitelikleri kullanın. *Settingsclassname* , *settingsmethodname*tarafından belirtilen metodu içeren derleme nitelikli sınıf adı olmalıdır.<br/><br/>*Settingsmethodname* tarafından belirtilen yöntem public, static ve void (herhangi bir parametre almaz) olmalıdır ve bu da **dize**dönüş türü ile. Bu yöntem, gerçek bağlantı dizesini döndürür. |
-| *loggingClassName*<br/>*loggingMethodName* | string<br/>string | *yok* | *Bu öznitelikler yalnızca web.config ya da AppSettings aracılığıyla belirtilebilir.*<br/><br/>StackExchange. Redof günlükleriyle birlikte oturum durumu/çıkış önbelleğinden Günlükler sağlayarak uygulamanızda hata ayıklamak için bu öznitelikleri kullanın. *Loggingclassname* , *loggingmethodname*tarafından belirtilen yöntemi içeren bir derleme nitelikli sınıf adı olmalıdır.<br/><br/>*Loggingmethodname* tarafından belirtilen yöntem, **System. IO. TextWriter**dönüş türü ile genel, statik ve void (herhangi bir parametre almaz) olmalıdır. |
+| *ConnectionString* (geçerli StackExchange. redsıs bağlantı dizesi) | string | *yok* | AppSettings veya web.config için bir parametre başvurusu ya da geçerli bir StackExchange. Redsıs bağlantı dizesi. Bu öznitelik *ana bilgisayar* , *bağlantı noktası* , *AccessKey* , *SSL* ve diğer StackExchange. redsıs öznitelikleri için değerler sağlayabilir. *ConnectionString* 'e daha yakından bakmak Için, [öznitelik notları](#attribute-notes) bölümünde [ConnectionString ayarlama](#setting-connectionstring) bölümüne bakın. |
+| *settingsClassName*<br/>*settingsMethodName* | string<br/>string | *yok* | *Bu öznitelikler yalnızca web.config ya da AppSettings aracılığıyla belirtilebilir.*<br/><br/>Bir bağlantı dizesi sağlamak için bu öznitelikleri kullanın. *Settingsclassname* , *settingsmethodname* tarafından belirtilen metodu içeren derleme nitelikli sınıf adı olmalıdır.<br/><br/>*Settingsmethodname* tarafından belirtilen yöntem public, static ve void (herhangi bir parametre almaz) olmalıdır ve bu da **dize** dönüş türü ile. Bu yöntem, gerçek bağlantı dizesini döndürür. |
+| *loggingClassName*<br/>*loggingMethodName* | string<br/>string | *yok* | *Bu öznitelikler yalnızca web.config ya da AppSettings aracılığıyla belirtilebilir.*<br/><br/>StackExchange. Redof günlükleriyle birlikte oturum durumu/çıkış önbelleğinden Günlükler sağlayarak uygulamanızda hata ayıklamak için bu öznitelikleri kullanın. *Loggingclassname* , *loggingmethodname* tarafından belirtilen yöntemi içeren bir derleme nitelikli sınıf adı olmalıdır.<br/><br/>*Loggingmethodname* tarafından belirtilen yöntem, **System. IO. TextWriter** dönüş türü ile genel, statik ve void (herhangi bir parametre almaz) olmalıdır. |
 | *applicationName* | string | Geçerli işlemin modül adı veya "/" | *Yalnızca SessionStateProvider*<br/>*Bu öznitelik yalnızca web.config ya da AppSettings aracılığıyla belirtilebilir.*<br/><br/>Redsıs önbelleğinde kullanılacak uygulama adı ön eki. Müşteri, farklı amaçlar için aynı redo önbelleğini kullanabilir. Oturum anahtarlarının çakışmadığından emin olmak için uygulama adının önüne eklenebilir. |
-| *throwOnError* | boolean | true | *Yalnızca SessionStateProvider*<br/>*Bu öznitelik yalnızca web.config ya da AppSettings aracılığıyla belirtilebilir.*<br/><br/>Bir hata oluştuğunda özel durum oluşturulup oluşturulmayacağını belirtir.<br/><br/>*ThrowOnError*hakkında daha fazla bilgi Için, [öznitelik notları](#attribute-notes) bölümünde [ *throwOnError* 'teki notlar](#notes-on-throwonerror) bölümüne bakın. |>*Microsoft. Web. redsıs. RedisSessionStateProvider. LastException*. |
-| *Retrytimeoutınmilliseconds* | pozitif tamsayı | 5000 | *Yalnızca SessionStateProvider*<br/>*Bu öznitelik yalnızca web.config ya da AppSettings aracılığıyla belirtilebilir.*<br/><br/>Bir işlem başarısız olduğunda yeniden denenme süresini. Bu değer *Operationtimeoutınmilliseconds*değerinden küçükse, sağlayıcı yeniden denenmeyecektir.<br/><br/>*Retrytimeoutınmilliseconds*hakkında daha fazla bilgi için bkz. [öznitelik notları](#attribute-notes) bölümünde [ *retrytimeoutınmilliseconds* hakkında notlar](#notes-on-retrytimeoutinmilliseconds) . |
+| *throwOnError* | boolean | true | *Yalnızca SessionStateProvider*<br/>*Bu öznitelik yalnızca web.config ya da AppSettings aracılığıyla belirtilebilir.*<br/><br/>Bir hata oluştuğunda özel durum oluşturulup oluşturulmayacağını belirtir.<br/><br/>*ThrowOnError* hakkında daha fazla bilgi Için, [öznitelik notları](#attribute-notes) bölümünde [ *throwOnError* 'teki notlar](#notes-on-throwonerror) bölümüne bakın. |>*Microsoft. Web. redsıs. RedisSessionStateProvider. LastException* . |
+| *Retrytimeoutınmilliseconds* | pozitif tamsayı | 5000 | *Yalnızca SessionStateProvider*<br/>*Bu öznitelik yalnızca web.config ya da AppSettings aracılığıyla belirtilebilir.*<br/><br/>Bir işlem başarısız olduğunda yeniden denenme süresini. Bu değer *Operationtimeoutınmilliseconds* değerinden küçükse, sağlayıcı yeniden denenmeyecektir.<br/><br/>*Retrytimeoutınmilliseconds* hakkında daha fazla bilgi için bkz. [öznitelik notları](#attribute-notes) bölümünde [ *retrytimeoutınmilliseconds* hakkında notlar](#notes-on-retrytimeoutinmilliseconds) . |
 | *redisSerializerType* | string | *yok* | Microsoft. Web. Reddir uygulayan bir sınıfın derleme nitelikli tür adını belirtir. ISerializer ve değerleri seri hale getirmek ve seri durumdan çıkarmak için özel mantığı içerir. Daha fazla bilgi için, [öznitelik notları](#attribute-notes) bölümünde [ *Redisserializertype* hakkında](#about-redisserializertype) bölümüne bakın. |
 
 ## <a name="attribute-notes"></a>Öznitelik notları
@@ -135,7 +135,7 @@ Aşağıdaki örneklerde, *ConnectionString* 'in nasıl kullanıldığı göster
 
 Bu davranış, mevcut ASP.NET oturum durumu sağlayıcısı kullanıcılarının beklentilerini destekleyen bir şekilde değiştirilmiştir, Ayrıca isterseniz özel durumlar üzerinde işlem yapma özelliği de sağlar. Varsayılan davranış yine bir hata oluştuğunda, diğer ASP.NET oturum durumu sağlayıcılarıyla tutarlı bir özel durum oluşturur; mevcut kod, önceki ile aynı şekilde çalışmalıdır.
 
-*ThrowOnError* **değerini false**olarak ayarlarsanız bir hata oluştuğunda özel durum oluşturmak yerine sessizce başarısız olur. Bir hata olup olmadığını görmek için, özel durumun ne olduğunu bulun, *Microsoft. Web. redsıs. RedisSessionStateProvider. LastException*statik özelliğini denetleyin.
+*ThrowOnError* **değerini false** olarak ayarlarsanız bir hata oluştuğunda özel durum oluşturmak yerine sessizce başarısız olur. Bir hata olup olmadığını görmek için, özel durumun ne olduğunu bulun, *Microsoft. Web. redsıs. RedisSessionStateProvider. LastException* statik özelliğini denetleyin.
 
 ### <a name="notes-on-retrytimeoutinmilliseconds"></a>*Retrytimeoutınmilliseconds* üzerine notlar
 
@@ -173,7 +173,7 @@ namespace MyCompany.Redis
 }
 ```
 
-Bu sınıfın **Mycompanydll**adlı bir derlemede tanımlandığını varsayarsak, parametresini kullanmak Için *Redisserializertype* parametresini ayarlayabilirsiniz:
+Bu sınıfın **Mycompanydll** adlı bir derlemede tanımlandığını varsayarsak, parametresini kullanmak Için *Redisserializertype* parametresini ayarlayabilirsiniz:
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -194,7 +194,7 @@ Bu sınıfın **Mycompanydll**adlı bir derlemede tanımlandığını varsayarsa
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-Önceki örnekte, önbelleğe alınan sayfa verileri 60 saniye boyunca önbellekte kalır ve sayfanın farklı bir sürümü her bir parametre birleşimi için önbelleğe alınır. OutputCache yönergesi hakkında daha fazla bilgi için bkz [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837) ..
+Önceki örnekte, önbelleğe alınan sayfa verileri 60 saniye boyunca önbellekte kalır ve sayfanın farklı bir sürümü her bir parametre birleşimi için önbelleğe alınır. OutputCache yönergesi hakkında daha fazla bilgi için bkz [@OutputCache](/previous-versions/dotnet/netframework-4.0/hdxfb6cy(v=vs.100)) ..
 
 Bu adımlar gerçekleştirildikten sonra uygulamanız Redsıs çıkış önbelleği sağlayıcısını kullanacak şekilde yapılandırılır.
 

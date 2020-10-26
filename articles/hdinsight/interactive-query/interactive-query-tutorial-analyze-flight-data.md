@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 730a6bfa627eafcab799fc811db4e20a1d4cec48
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85319200"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534592"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta etkileşimli sorgu kullanarak verileri ayıklama, dönüştürme ve yükleme
 
@@ -28,11 +28,11 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Azure SQL veritabanı 'nda bir veritabanında tablo oluşturma
 > * Azure SQL veritabanındaki bir veritabanına veri aktarmak için Sqoop kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* HDInsight üzerinde etkileşimli bir sorgu kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **etkileşimli sorgu** seçme.
+* HDInsight üzerinde etkileşimli bir sorgu kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü** için **etkileşimli sorgu** seçme.
 
-* Azure SQL veritabanı 'nda bir veritabanı. Veritabanını hedef veri deposu olarak kullanırsınız. Azure SQL veritabanında bir veritabanınız yoksa, bkz. [Azure Portal Azure SQL veritabanı 'nda veritabanı oluşturma](/azure/sql-database/sql-database-single-database-get-started).
+* Azure SQL veritabanı 'nda bir veritabanı. Veritabanını hedef veri deposu olarak kullanırsınız. Azure SQL veritabanında bir veritabanınız yoksa, bkz. [Azure Portal Azure SQL veritabanı 'nda veritabanı oluşturma](../../azure-sql/database/single-database-create-quickstart.md).
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -48,7 +48,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
    | Dönem Filtresi |Ocak |
    | Alanlar |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
-3. **İndir**'i seçin. Seçtiğiniz veri alanlarını içeren bir .zip dosyası alırsınız.
+3. **İndir** 'i seçin. Seçtiğiniz veri alanlarını içeren bir .zip dosyası alırsınız.
 
 ## <a name="upload-data-to-an-hdinsight-cluster"></a>Verileri bir HDInsight kümesine yükleme
 
@@ -97,7 +97,7 @@ Bir HDInsight kümesi üzerinde Hive işi çalıştırmanın çok sayıda yolu v
 
 Hive işinin bir parçası olarak, verileri .csv dosyasından **Delays** adlı bir Hive tablosuna aktarın.
 
-1. HDInsight kümesi için zaten sahip olduğunuz SSH isteminden, **flightgecikmeleri. HQL**adlı yeni bir dosya oluşturmak ve düzenlemek için aşağıdaki komutu kullanın:
+1. HDInsight kümesi için zaten sahip olduğunuz SSH isteminden, **flightgecikmeleri. HQL** adlı yeni bir dosya oluşturmak ve düzenlemek için aşağıdaki komutu kullanın:
 
     ```bash
     nano flightdelays.hql
@@ -165,7 +165,7 @@ Hive işinin bir parçası olarak, verileri .csv dosyasından **Delays** adlı b
     FROM delays_raw;
     ```
 
-3. Dosyayı kaydetmek için **CTRL + X**, ardından **y**tuşlarına basın ve ardından girin.
+3. Dosyayı kaydetmek için **CTRL + X** , ardından **y** tuşlarına basın ve ardından girin.
 
 4. Hive’ı başlatmak ve **flightdelays.hql** dosyasını çalıştırmak için aşağıdaki komutu kullanın:
 
@@ -232,7 +232,7 @@ SQL Veritabanına bağlanıp tablo oluşturmanın çok sayıda yolu vardır. Aş
     GO
     ```
 
-    `GO` deyimi girildiğinde önceki deyimler değerlendirilir. Bu ifade, bir kümelenmiş dizine sahip **gecikmeler**adlı bir tablo oluşturur.
+    `GO` deyimi girildiğinde önceki deyimler değerlendirilir. Bu ifade, bir kümelenmiş dizine sahip **gecikmeler** adlı bir tablo oluşturur.
 
     Tablonun oluşturulduğunu doğrulamak için aşağıdaki sorguyu kullanın:
 

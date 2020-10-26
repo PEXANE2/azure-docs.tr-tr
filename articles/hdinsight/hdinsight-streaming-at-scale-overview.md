@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a04ce77c7e81a3a73b87eaf5790b383dece35d86
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75435388"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535238"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight’ta ölçeğe göre akış
 
 Gerçek zamanlı büyük veri çözümleri, hareket halindeki veriler üzerinde çalışır. Genellikle, bu veriler en fazla varış zamanında değerlidir. Gelen veri akışı bu anda işlenebileceğinden daha büyük olursa, kaynakları daraltmanız gerekebilir. Alternatif olarak, bir HDInsight kümesi, isteğe bağlı düğümler ekleyerek akış çözümünüzü karşılayacak şekilde ölçeklenebilir.
 
-Bir akış uygulamasında, bir veya daha fazla veri kaynağı, yararlı bilgileri bırakmadan hızlı bir şekilde atılması gereken olayları (bazen milyonlarca saniyede milyonlarca) oluşturuyor. Gelen olaylar, [Apache Kafka](kafka/apache-kafka-introduction.md) veya [Event Hubs](https://azure.microsoft.com/services/event-hubs/)gibi bir hizmet tarafından *olay Kuyruklama*olarak da adlandırılan *akış ara belleği*ile işlenir. Olayları topladıktan sonra, [Apache Storm](storm/apache-storm-overview.md) veya [Apache Spark akışı](spark/apache-spark-streaming-overview.md)gibi *akış işleme* katmanında gerçek zamanlı bir analiz sistemi kullanarak verileri çözümleyebilirsiniz. İşlenen veriler, [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)gibi uzun süreli depolama sistemlerinde depolanabilir ve [Power BI](https://powerbi.microsoft.com), Tableau veya özel bir Web sayfası gibi bir iş zekası panosunda gerçek zamanlı olarak görüntülenebilir.
+Bir akış uygulamasında, bir veya daha fazla veri kaynağı, yararlı bilgileri bırakmadan hızlı bir şekilde atılması gereken olayları (bazen milyonlarca saniyede milyonlarca) oluşturuyor. Gelen olaylar, [Apache Kafka](kafka/apache-kafka-introduction.md) veya [Event Hubs](https://azure.microsoft.com/services/event-hubs/)gibi bir hizmet tarafından *olay Kuyruklama* olarak da adlandırılan *akış ara belleği* ile işlenir. Olayları topladıktan sonra, [Apache Storm](storm/apache-storm-overview.md) veya [Apache Spark akışı](spark/apache-spark-streaming-overview.md)gibi *akış işleme* katmanında gerçek zamanlı bir analiz sistemi kullanarak verileri çözümleyebilirsiniz. İşlenen veriler, [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)gibi uzun süreli depolama sistemlerinde depolanabilir ve [Power BI](https://powerbi.microsoft.com), Tableau veya özel bir Web sayfası gibi bir iş zekası panosunda gerçek zamanlı olarak görüntülenebilir.
 
 ![Azure HDInsight akış desenleri](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
@@ -39,7 +39,7 @@ Daha fazla bilgi için bkz. [Azure HDInsight 'ta Apache Storm nedir?](storm/apac
 
 Spark akışı, toplu işleme için kullandığınız kodu yeniden kullanmanıza olanak tanıyan Spark uzantısıdır. Aynı uygulamadaki hem Batch hem de etkileşimli sorguları birleştirebilirsiniz. Bu durumda, Spark akışı, durum bilgisi olarak bir kez işleme semantiğini sağlar. [Kafka DIRECT API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html)'siyle birlikte kullanıldığında, tüm Kafka verilerinin tek bir kez Spark akışı tarafından alındığından emin olmanızı sağlayan, uçtan uca tam olarak bir kez garanti elde etmek mümkündür. Spark akışının güçlerinden biri hataya dayanıklı yeteneklerdir ve küme içinde birden çok düğüm kullanılırken, hatalı düğümleri hızlı bir şekilde kurtarıyor.
 
-Daha fazla bilgi için bkz. [Apache Spark akışı nedir?](hdinsight-spark-streaming-overview.md).
+Daha fazla bilgi için bkz. [Apache Spark akışı nedir?](./spark/apache-spark-streaming-overview.md).
 
 ## <a name="scaling-a-cluster"></a>Küme ölçekleme
 

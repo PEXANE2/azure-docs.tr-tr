@@ -3,18 +3,18 @@ title: Azure Maliyet Yönetimi'nde AWS maliyetlerini ve kullanımını yönetme
 description: Bu makale, Maliyet Yönetimi'ndeki maliyet analizlerini ve bütçeleri kullanarak AWS maliyetlerinizi ve kullanımınızı yönetme konusunda yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/28/2020
+ms.date: 10/16/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 7df27a6ed288555d0f4815223fd0bb6dddff6f44
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5fed70ccdbebbd178412c416f37c2e9001a81f38
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266222"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148971"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure'da AWS maliyetlerini ve kullanımını yönetme
 
@@ -22,7 +22,7 @@ Azure Maliyet Yönetimi için AWS Maliyet ve Kullanım raporu tümleştirmesini 
 
 Tümleştirmeyi henüz yapılandırmadıysanız bkz. [AWS Kullanım raporu tümleştirmesini ayarlama ve yapılandırma](aws-integration-set-up-configure.md).
 
-_Başlamadan önce_: Maliyet analizi konusunda bilginiz yoksa [Maliyet analiziyle maliyetleri keşfetme ve analiz etme](quick-acm-cost-analysis.md) hızlı başlangıcına bakın. Azure'daki bütçeler konusunda bilginiz yoksa bkz. [Azure bütçesi oluşturma ve yönetme öğreticisi](tutorial-acm-create-budgets.md).
+_Başlamadan önce_ : Maliyet analizi konusunda bilginiz yoksa [Maliyet analiziyle maliyetleri keşfetme ve analiz etme](quick-acm-cost-analysis.md) hızlı başlangıcına bakın. Azure'daki bütçeler konusunda bilginiz yoksa bkz. [Azure bütçesi oluşturma ve yönetme öğreticisi](tutorial-acm-create-budgets.md).
 
 ## <a name="view-aws-costs-in-cost-analysis"></a>Maliyet analizinde AWS maliyetlerini görüntüleme
 
@@ -44,7 +44,7 @@ Maliyet analizinde kapsam seçiciyi açın ve AWS bağlı hesaplarınızı barı
 
 Aşağıda maliyet analizinde yönetim grubunu Sağlayıcıya (Azure ve AWS) göre gruplanmış şekilde gösteren bir örnek verilmiştir.
 
-:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="Maliyet analizinde üç aylık döneme ait Azure ve AWS maliyetlerini gösteren örnek" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="Yönetim grubu altında bağlı hesaplarla Kapsam seç görünümü örneği" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
 
 > [!NOTE]
 > Yönetim grupları şu anda Microsoft Müşteri Sözleşmesi (MCA) müşterileri için desteklenmemektedir. MCA müşterileri bağlayıcıyı oluşturup AWS verilerini görüntüleyebilir. Öte yandan MCA müşterileri Azure maliyetleri ile AWS maliyetlerini yönetim grubu altında birlikte görüntüleyemez.
@@ -55,17 +55,17 @@ AWS bağlı hesaplarıyla ilgili maliyetleri görüntülemek için kapsam seçic
 
 Aşağıda AWS bağlı hesap kapsamını seçmeyi gösteren bir örnek verilmiştir.
 
-:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="AWS bağlı hesaplarını gösteren Kapsam seç görünümü örneği" :::
+:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="Yönetim grubu altında bağlı hesaplarla Kapsam seç görünümü örneği" :::
 
 ### <a name="view-aws-consolidated-account-costs"></a>AWS birleştirilmiş hesaplarla ilgili maliyetleri görüntüleme
 
 AWS birleştirilmiş hesaplarla ilgili maliyetleri görüntülemek için kapsam seçiciyi açıp AWS birleştirilmiş hesabını seçin. Aşağıda AWS birleştirilmiş hesap kapsamını seçmeyi gösteren bir örnek verilmiştir.
 
-:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="Birleştirilmiş hesaplarla Kapsam seç görünümü örneği" :::
+:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="Yönetim grubu altında bağlı hesaplarla Kapsam seç görünümü örneği" :::
 
 Bu kapsam, AWS birleştirilmiş hesabıyla ilişkili tüm AWS bağlı hesaplarının toplu bir görünümünü sağlar. Aşağıda bir AWS birleştirilmiş hesabının, hizmet adına göre gruplanan maliyetleri gösterdiği bir örnek verilmiştir.
 
-:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="Maliyet analizinde AWS birleştirilmiş maliyetlerini gösteren örnek" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="Yönetim grubu altında bağlı hesaplarla Kapsam seç görünümü örneği" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
 
 ### <a name="dimensions-available-for-filtering-and-grouping"></a>Filtreleme ve gruplama için kullanılabilen boyutlar
 
@@ -95,7 +95,7 @@ Aşağıdaki tabloda maliyet analizinde gruplama ve filtreleme için kullanılab
 
 Kuruluşunuzda maliyetleri önceden yönetmek ve sorumluluk bilinci sağlamak için bütçeleri kullanabilirsiniz. Bütçeler AWS birleştirilmiş hesabı ve AWS bağlı hesap kapsamlarında ayarlanır. Aşağıda Maliyet Yönetimi'ndeki bir AWS birleştirilmiş hesabına ait bütçe örnekleri gösterilmiştir:
 
-:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="Birleştirilmiş AWS hesabı için bütçeleri gösteren örnek" :::
+:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="Yönetim grubu altında bağlı hesaplarla Kapsam seç görünümü örneği" :::
 
 ## <a name="aws-data-collection-process"></a>AWS veri toplama işlemi
 
@@ -145,7 +145,7 @@ Bu hata, Maliyet Yönetimi'nin AWS AssumeRole API'sini çağıramadığı anlam�
 - Dış kimlik, rol tanımındaki ve bağlayıcı tanımındaki değerle aynı.
 - Rol türü **Size veya 3. taraflara ait olan başka bir Azure hesabı** olarak ayarlanmış.
 - **MFA gerektirme** işaretlenmemiş.
-- AWS rolündeki güvenilir AWS hesabı _432263259397_.
+- AWS rolündeki güvenilir AWS hesabı _432263259397_ .
 
 ### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>Koleksiyon, Erişim Reddedildi hatasıyla başarısız oldu - CUR rapor tanımları
 
@@ -175,7 +175,13 @@ Bu hata, Maliyet Yönetimi'nin bağlayıcıda tanımlanmış olan Maliyet ve Kul
 
 **Hata kodu:** _ReportIsNotValid_
 
-Bu hata, AWS Maliyet ve Kullanım raporunun tanımıyla ilgilidir, bu rapor için belirli ayarlar gerekmektedir, gereksinimler için bkz. [AWS'de özel Maliyet ve Kullanım raporu oluşturma](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)
+Bu hata, AWS Maliyet ve Kullanım raporunun tanımıyla ilgilidir ve bu rapor için belirli ayarlar gerekmektedir. Gereksinimler için bkz. [AWS’de Maliyet ve Kullanım raporu oluşturma](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
+
+### <a name="internal-error-when-creating-connector"></a>Bağlayıcı oluşturulurken iç hata oluştu
+
+**Hata kodu:** _Bağlayıcı oluşturma: &lt;ConnectorName&gt; bağlayıcısı oluşturulamadı. Neden: İç hata. Lütfen doğru AWS özelliklerinin sağlandığını doğrulayın._
+
+AWS bağlayıcınız ve aboneliğiniz farklı yönetim gruplarında olduğunda bu hata oluşabilir. AWS bağlayıcısının ve aboneliğin aynı yönetim grubunda olması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

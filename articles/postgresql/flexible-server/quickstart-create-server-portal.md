@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 25c3f875717c9c064af0ce27bdab735db67d2f5d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 978fcb8c8cf9d2ffd929da5b76d7fd2ff109f420
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947835"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535867"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal PostgreSQL için Azure veritabanı oluşturma-esnek sunucu
 
@@ -29,13 +29,13 @@ Web tarayıcınızı açın ve [portala](https://portal.azure.com/) gidin. Porta
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>PostgreSQL için Azure Veritabanı sunucusu oluşturma
 
-PostgreSQL için Azure Veritabanı sunucusu, yapılandırılmış bir dizi [işlem ve depolama kaynağı](./concepts-compute-storage.md) ile oluşturulur. Sunucu, [Azure kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) içinde oluşturulur.
+PostgreSQL için Azure Veritabanı sunucusu, yapılandırılmış bir dizi [işlem ve depolama kaynağı](./concepts-compute-storage.md) ile oluşturulur. Sunucu, [Azure kaynak grubu](../../azure-resource-manager/management/overview.md) içinde oluşturulur.
 
 PostgreSQL için Azure Veritabanı sunucusu oluşturmak için şu adımları uygulayın:
 
 1. Portalın sol üst köşesinde bulunan **kaynak oluştur** (+) seçeneğini belirleyin.
 
-2. **Veritabanları**  >  **PostgreSQL için Azure veritabanı**' nı seçin.
+2. **Veritabanları**  >  **PostgreSQL için Azure veritabanı** ' nı seçin.
 
     :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 
@@ -52,11 +52,11 @@ PostgreSQL için Azure Veritabanı sunucusu oluşturmak için şu adımları uyg
     Abonelik|Aboneliğinizin adı|Sunucunuz için kullanmak istediğiniz Azure aboneliği. Birden çok aboneliğiniz varsa, kaynağın faturalandırılması için istediğiniz aboneliği seçin.
     Kaynak grubu|*myresourcegroup*| Yeni bir kaynak grubu adı veya aboneliğinizde var olan bir kaynak grubu.
     Sunucu adı |*mydemoserver*|PostgreSQL için Azure Veritabanı sunucunuzu tanıtan benzersiz bir ad. Girdiğiniz sunucu adına *postgres.database.azure.com* etki alanı adı eklenir. Sunucunuz yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. En az 3, en çok 63 karakterden oluşmalıdır.
-    Yönetici kullanıcı adı |*myadmin*| Sunucuya bağlanırken kullanılacak kendi oturum açma hesabınız. Yönetici oturum açma adı **azure_superuser**, **azure_pg_admin**, **yönetici**, **yönetici**, **kök**, **Konuk**veya **ortak**olamaz. **PG_** ile başlayamaz.
+    Yönetici kullanıcı adı |*myadmin*| Sunucuya bağlanırken kullanılacak kendi oturum açma hesabınız. Yönetici oturum açma adı **azure_superuser** , **azure_pg_admin** , **yönetici** , **yönetici** , **kök** , **Konuk** veya **ortak** olamaz. **PG_** ile başlayamaz.
     Parola |Parolanız| Sunucu yönetici hesabı için yeni bir parola. 8 ile 128 arasında karakter içermelidir. Parolanız şu kategorilerden üçünde yer alan karakterlerden oluşmalıdır: İngilizce büyük harfler, İngilizce küçük harfler, sayılar (0 - 9) ve alfasayısal olmayan karakterler (!, $, #, %, vb.).
     Konum|Kullanıcılarınıza en yakın bölge| Kullanıcılarınız için en yakın olan konum.
     Sürüm|En son ana sürüm| Belirli gereksinimleriniz olmadığı sürece, en son PostgreSQL ana sürümü.
-    İşlem + depolama | **Genel amaçlı**, **4 sanal çekırdek**, **512 GB**, **7 gün** | Yeni sunucunuz için işlem, depolama ve yedekleme yapılandırmaları. **Sunucuyu Yapılandır**' ı seçin. *Genel amaçlı*, *4 sanal çekırdek*, *512 GB*ve *7 gün* , **Işlem katmanı**, **sanal çekirdek**, **depolama**ve **yedekleme saklama süresi**için varsayılan değerlerdir. Bu kaydırıcıları olduğu gibi bırakabilir veya düzenleyebilirsiniz. Bu fiyatlandırma katmanı seçimini kaydetmek için **Tamam**’ı seçin. Sonraki ekran görüntüsü bu seçimleri yakalar.
+    İşlem + depolama | **Genel amaçlı** , **4 sanal çekırdek** , **512 GB** , **7 gün** | Yeni sunucunuz için işlem, depolama ve yedekleme yapılandırmaları. **Sunucuyu Yapılandır** ' ı seçin. *Genel amaçlı* , *4 sanal çekırdek* , *512 GB* ve *7 gün* , **Işlem katmanı** , **sanal çekirdek** , **depolama** ve **yedekleme saklama süresi** için varsayılan değerlerdir. Bu kaydırıcıları olduğu gibi bırakabilir veya düzenleyebilirsiniz. Bu fiyatlandırma katmanı seçimini kaydetmek için **Tamam** ’ı seçin. Sonraki ekran görüntüsü bu seçimleri yakalar.
 
     :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
     
@@ -70,13 +70,13 @@ PostgreSQL için Azure Veritabanı sunucusu oluşturmak için şu adımları uyg
 
     :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 
-6. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. Sunucuyu sağlamak için **Oluştur**’u seçin. Bu işlem birkaç dakika sürebilir.
+6. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. Sunucuyu sağlamak için **Oluştur** ’u seçin. Bu işlem birkaç dakika sürebilir.
 
-7. Araç çubuğunda, dağıtım sürecini izlemek için **Bildirimler** simgesini (zil) seçin. Dağıtım tamamlandığında, bu sunucu için Azure portalı panonuzda sunucunun **Genel bakış** sayfasına bir kısayol ekleyen **Panoya sabitle** öğesini seçebilirsiniz. **Kaynağa git**’i seçmek sunucunun **Genel bakış** sayfasını açar.
+7. Araç çubuğunda, dağıtım sürecini izlemek için **Bildirimler** simgesini (zil) seçin. Dağıtım tamamlandığında, bu sunucu için Azure portalı panonuzda sunucunun **Genel bakış** sayfasına bir kısayol ekleyen **Panoya sabitle** öğesini seçebilirsiniz. **Kaynağa git** ’i seçmek sunucunun **Genel bakış** sayfasını açar.
 
     :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 
-   Varsayılan olarak, sunucunuzun altında bir **postgres** veritabanı oluşturulur. [Postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) veritabanı; kullanıcılar, yardımcı programlar ve üçüncü taraf uygulamaları tarafından kullanılmak üzere geliştirilmiş, varsayılan bir veritabanıdır. (Diğer varsayılan veritabanı: **azure_maintenance**. İşlevi, yönetilen hizmet işlemlerini kullanıcı eylemlerinden ayırmaktır. Bu veritabanına erişemezsiniz.)
+   Varsayılan olarak, sunucunuzun altında bir **postgres** veritabanı oluşturulur. [Postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) veritabanı; kullanıcılar, yardımcı programlar ve üçüncü taraf uygulamaları tarafından kullanılmak üzere geliştirilmiş, varsayılan bir veritabanıdır. (Diğer varsayılan veritabanı: **azure_maintenance** . İşlevi, yönetilen hizmet işlemlerini kullanıcı eylemlerinden ayırmaktır. Bu veritabanına erişemezsiniz.)
 
     > [!NOTE]
     > PostgreSQL sunucusu için Azure Veritabanınıza yönelik bağlantılar 5432 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 5432 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 5432 numaralı bağlantı noktasını açmadığı sürece sunucunuza bağlanamazsınız.
@@ -152,19 +152,19 @@ Hızlı başlangıç bölümünde oluşturduğunuz kaynakları iki yoldan biriyl
 
 Yeni oluşturulan sunucu dahil olmak üzere kaynak grubunun tamamını silmek için:
 
-1. Portalda kaynak grubunuzu bulun. Soldaki menüden **Kaynak grupları**'nı seçin. Ardından, kaynak grubunuzun adını (örnekteki **myresourcegroup** gibi) seçin.
+1. Portalda kaynak grubunuzu bulun. Soldaki menüden **Kaynak grupları** 'nı seçin. Ardından, kaynak grubunuzun adını (örnekteki **myresourcegroup** gibi) seçin.
 
-2. Kaynak grubunuzun sayfasında **Sil**’i seçin. Silme işlemini onaylamak için, metin kutusuna kaynak grubunuzun adını (örneğin, **myresourcegroup**) girin. **Sil**’i seçin.
+2. Kaynak grubunuzun sayfasında **Sil** ’i seçin. Silme işlemini onaylamak için, metin kutusuna kaynak grubunuzun adını (örneğin, **myresourcegroup** ) girin. **Sil** ’i seçin.
 
 Yalnızca yeni oluşturulan sunucuyu silmek için:
 
-1. Sunucunuz açık değilse portalda sunucuyu bulun. Soldaki menüden **Tüm kaynaklar**'ı seçin. Ardından, oluşturduğunuz sunucuyu arayın.
+1. Sunucunuz açık değilse portalda sunucuyu bulun. Soldaki menüden **Tüm kaynaklar** 'ı seçin. Ardından, oluşturduğunuz sunucuyu arayın.
 
-2. **Genel Bakış** sayfasında **Sil**’i seçin.
+2. **Genel Bakış** sayfasında **Sil** ’i seçin.
 
     :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 
-3. Silmek istediğiniz sunucu adını onaylayın ve altındaki etkilenen veritabanlarını görüntüleyin. Metin kutusuna sunucunuzun adını (örneğin, **demosunucum**) girin. **Sil**’i seçin.
+3. Silmek istediğiniz sunucu adını onaylayın ve altındaki etkilenen veritabanlarını görüntüleyin. Metin kutusuna sunucunuzun adını (örneğin, **demosunucum** ) girin. **Sil** ’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

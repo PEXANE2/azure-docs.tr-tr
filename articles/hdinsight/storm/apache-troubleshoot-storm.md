@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc08adb2f71c49fad3c8574e9cfd5315f13d7f44
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84700374"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532773"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak Apache Storm sorunlarını giderme
 
@@ -27,8 +27,8 @@ Bir tarayıcıdan fırtınası Kullanıcı arabirimine erişmek için iki seçen
 ### <a name="apache-ambari-ui"></a>Apache ambarı Kullanıcı arabirimi
 
 1. Ambarı panosuna gidin.
-2. Hizmetler listesinde, **fırtınası**' yi seçin.
-3. **Hızlı bağlantılar** menüsünde, **fırtınası Kullanıcı arabirimi**' ni seçin.
+2. Hizmetler listesinde, **fırtınası** ' yi seçin.
+3. **Hızlı bağlantılar** menüsünde, **fırtınası Kullanıcı arabirimi** ' ni seçin.
 
 ### <a name="direct-link"></a>Doğrudan bağlantı
 
@@ -95,7 +95,7 @@ Geçerli HDP yığınının fırtınası ikilileri `/usr/hdp/current/storm-clien
 
 /Usr/HDP içindeki belirli HDP sürümleri için birden çok ikili olabilir (örneğin, `/usr/hdp/2.5.0.1233/storm` ). `/usr/hdp/current/storm-client`Klasör, küme üzerinde çalışan en son sürüme bağlı değildir.
 
-Daha fazla bilgi için bkz. SSH ve [Apache Storm](https://storm.apache.org/) [kullanarak HDInsight kümesine bağlanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) .
+Daha fazla bilgi için bkz. SSH ve [Apache Storm](https://storm.apache.org/) [kullanarak HDInsight kümesine bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md) .
 
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Bir fırtınası kümesinin dağıtım topolojisini belirleme Nasıl yaparım? mı?
 
@@ -141,7 +141,7 @@ Topolojiniz ile fırtınası Olay Hub Spout. jar dosyalarını kullanma hakkınd
 
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C# tabanlı topoloji (mono on HDInsight 3.4 + Linux fırtınası kümeleri)
 
-[HDInsight üzerinde Apache Storm ile Azure Event Hubs olayları işleme (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[HDInsight üzerinde Apache Storm ile Azure Event Hubs olayları işleme (C#)](./apache-storm-develop-csharp-event-hub-topology.md)
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5 + Linux fırtınası kümeleri için en son Apache Storm Event hub Spout ikilileri
 
@@ -186,4 +186,4 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 - [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](../../azure-portal/supportability/how-to-create-azure-support-request.md)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

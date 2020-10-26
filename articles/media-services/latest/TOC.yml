@@ -63,6 +63,7 @@
           href: protect-with-drm.md
         - name: Azure AD ile içeriği koruma
           href: azure-ad-content-protection.md
+          displayName: 'AAD, Active Directory'
     - name: REST
       items:
         - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma REST
@@ -129,8 +130,8 @@
         - name: Genel Bakış
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: Dönüşümler ve işler
-          href: transforms-jobs-concept.md
+    - name: Dönüşümler ve işler
+      href: transforms-jobs-concept.md
     - name: Canlı akış
       items:
         - name: Genel Bakış
@@ -265,6 +266,8 @@
       items:
         - name: Dönüşüm oluşturma
           href: cli-create-transform.md
+        - name: REST ile temel ses dönüşümü oluşturma
+          href: how-to-create-basic-audio-transform.md
         - name: İş oluşturma
           href: cli-create-jobs.md
         - name: Yerel dosya ve .NET ile iş girişi oluşturma
@@ -389,7 +392,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Başlayın
+        - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.media/allversions

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: bd2f91a697fffa1ef83f5173a394686245cf9826
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 754d693294235ff34c68f828235cca5bb2389a2b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488920"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544843"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>MySQL için Azure veritabanı 'nda planlı bakım bildirimi-tek sunucu
 
@@ -46,22 +46,22 @@ Azure portal planlı bakım bildirimini denetleyebilir ya da uyarıları bildiri
 
 ### <a name="check-planned-maintenance-notification-from-azure-portal"></a>Azure portal planlı bakım bildirimini denetle
 
-1. [Azure Portal](https://portal.azure.com) **hizmet durumu**' nu seçin.
+1. [Azure Portal](https://portal.azure.com) **hizmet durumu** ' nu seçin.
 2. **Planlı bakım** sekmesini seçin
-3. Planlı bakım bildirimini denetlemek istediğiniz **aboneliği**, * * bölgeyi ve **hizmeti** seçin. 
+3. Planlı bakım bildirimini denetlemek istediğiniz **aboneliği** , * * bölgeyi ve **hizmeti** seçin. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Planlı bakım bildirimi almak için
 
-1. [Portalda](https://portal.azure.com) **hizmet durumu**' nu seçin.
-2. **Uyarılar** bölümünde **sistem durumu uyarıları**' nı seçin.
+1. [Portalda](https://portal.azure.com) **hizmet durumu** ' nu seçin.
+2. **Uyarılar** bölümünde **sistem durumu uyarıları** ' nı seçin.
 3. **+ Hizmet sistem durumu uyarısı Ekle** ' yi seçin ve alanları girin.
 4. Gerekli alanları doldurun. 
-5. **Olay türünü**seçin, **Planlı bakım** ' ı seçin veya **tümünü seçin**
+5. **Olay türünü** seçin, **Planlı bakım** ' ı seçin veya **tümünü seçin**
 6. **Eylem gruplarında** , uyarıyı nasıl almak istediğinizi tanımlar (bir e-posta alın, mantıksal uygulama tetiklemesi vb.)  
 7. Oluşturma sonrasında kuralın etkinleştir ' in Evet olarak ayarlandığından emin olun.
 8. Uyarınızı gerçekleştirmek için **Uyarı kuralı oluştur** ' u seçin
 
-**Hizmet durumu uyarıları**oluşturma hakkında ayrıntılı adımlar için, [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications.md)konusuna bakın.
+**Hizmet durumu uyarıları** oluşturma hakkında ayrıntılı adımlar için, [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications-portal.md)konusuna bakın.
 
 ## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Planlı Bakımı iptal edebilir veya erteleyebilir miyim?
 

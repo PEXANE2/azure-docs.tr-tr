@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 874cea2377d3c0a128894bb67278e8ec2cbe7edc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 22ce91a81964ed52830fc19dbbbd52e7f170b0d4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490977"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535408"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
 
@@ -32,8 +32,8 @@ Microsoft, kümeleri ölçeklendirmek için aşağıdaki yardımcı programları
 
 |Yardımcı Program | Açıklama|
 |---|---|
-|[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
-|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[PowerShell Az](/powershell/azure)|[`Set-AzHDInsightClusterSize`](/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[PowerShell AzureRM](/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Azure CLI](/cli/azure/) | [`az hdinsight resize`](/cli/azure/hdinsight#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Azure Klasik CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure Portal](https://portal.azure.com)|HDInsight kümesi bölmesini açın, sol taraftaki menüden **küme boyutu** ' nu seçin, ardından küme boyutu bölmesinde çalışan düğümlerinin sayısını yazın ve Kaydet ' i seçin.|  
@@ -44,7 +44,7 @@ Bu yöntemlerin herhangi birini kullanarak, HDInsight kümenizi dakikalar içind
 
 > [!IMPORTANT]  
 > * Klasik Azure CLı kullanım dışıdır ve yalnızca klasik dağıtım modeliyle kullanılmalıdır. Diğer tüm dağıtımlar için [Azure CLI](/cli/azure/)'yi kullanın.
-> * PowerShell Azurerd modülü kullanım dışıdır.  Lütfen mümkün olan her durumda [az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) kullanın.
+> * PowerShell Azurerd modülü kullanım dışıdır.  Lütfen mümkün olan her durumda [az Module](/powershell/azure/new-azureps-module-az) kullanın.
 
 ## <a name="impact-of-scaling-operations"></a>Ölçeklendirme işlemlerinin etkisi
 
@@ -125,12 +125,12 @@ Bir ölçek azaltma işlemi sırasında çalışan işlerinizin başarısız olm
 1. İşleri el ile sonlandırın.
 1. Ölçeklendirme işlemi tamamlandıktan sonra işleri yeniden gönderin.
 
-Bekleyen ve çalışan işlerin bir listesini görmek için, aşağıdaki adımları izleyerek YARN **Kaynak Yöneticisi Kullanıcı arabirimini**kullanabilirsiniz:
+Bekleyen ve çalışan işlerin bir listesini görmek için, aşağıdaki adımları izleyerek YARN **Kaynak Yöneticisi Kullanıcı arabirimini** kullanabilirsiniz:
 
 1. [Azure Portal](https://portal.azure.com/), kümenizi seçin.  Küme yeni bir portal sayfasında açılır.
-2. Ana görünümden, **küme panoları**  >  **ambarı giriş**sayfasına gidin. Küme kimlik bilgilerinizi girin.
+2. Ana görünümden, **küme panoları**  >  **ambarı giriş** sayfasına gidin. Küme kimlik bilgilerinizi girin.
 3. Ambarı kullanıcı arabiriminden, sol taraftaki menüdeki hizmetler listesinden **Yarn** ' yi seçin.  
-4. YARN sayfasında **hızlı bağlantılar** ' ı seçin ve etkin baş düğümün üzerine gelin ve **Kaynak Yöneticisi Kullanıcı arabirimi**' ni seçin.
+4. YARN sayfasında **hızlı bağlantılar** ' ı seçin ve etkin baş düğümün üzerine gelin ve **Kaynak Yöneticisi Kullanıcı arabirimi** ' ni seçin.
 
     ![Apache ambarı hızlı bağlantılar Kaynak Yöneticisi Kullanıcı arabirimi](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 

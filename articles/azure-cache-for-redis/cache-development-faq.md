@@ -7,18 +7,18 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be2e4a002d1daf4da7d042f1fd7d5bf0e9a01377
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88211300"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544520"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Redsıs geliştirme hakkında Azure önbelleği SSS
 
 Bu makalede, redin için Azure önbelleği için geliştirme hakkında sık sorulan soruların yanıtları sağlanır.
 
-## <a name="common-questions-and-answers"></a>Yaygın sorular ve yanıtları
+## <a name="common-questions-and-answers"></a>Sık sorulan sorular ve yanıtları
 Bu bölümde aşağıdaki SSS ele alınmaktadır:
 
 * [Redsıs için Azure önbelleği 'ni kullanmaya nasıl başlarım?](#how-can-i-get-started-with-azure-cache-for-redis)
@@ -55,8 +55,8 @@ Genellikle istemcinin varsayılan değerleri yeterlidir. İş yükünüze göre 
 
 * **Yeniden deneme sayısı**
   * ConnectRetry ve ConnectTimeout için genel rehberlik hızlı bir şekilde başarısız olur ve yeniden dener. Bu kılavuz, iş yükünüze ve istemcinizin bir Redi komutu vermesi ve yanıt alması için ne kadar süre harcandığından elde edilir.
-  * StackExchange. redin bağlantı durumunu denetlemek ve kendiniz yeniden bağlanmak yerine otomatik olarak yeniden bağlanmasına izin verin. **Connectionçoğullayıcı. IsConnected özelliğini kullanmaktan kaçının**.
-  * Kar Balling-bazen yeniden denemekte olduğunuz ve yeniden deneme karından ve hiçbir zaman kurtarmadığı bir sorunla karşılaşabilirsiniz. Kar baletini oluşursa, Microsoft düzenleri & Yöntemler grubu tarafından yayımlanan, [yeniden deneme genel Kılavuzu](../best-practices-retry-general.md) ' nda açıklandığı gibi bir üstel geri alma algoritması kullanmayı göz önünde bulundurmanız gerekir.
+  * StackExchange. redin bağlantı durumunu denetlemek ve kendiniz yeniden bağlanmak yerine otomatik olarak yeniden bağlanmasına izin verin. **Connectionçoğullayıcı. IsConnected özelliğini kullanmaktan kaçının** .
+  * Kar Balling-bazen yeniden denemekte olduğunuz ve yeniden deneme karından ve hiçbir zaman kurtarmadığı bir sorunla karşılaşabilirsiniz. Kar baletini oluşursa, Microsoft düzenleri & Yöntemler grubu tarafından yayımlanan, [yeniden deneme genel Kılavuzu](/azure/architecture/best-practices/transient-faults) ' nda açıklandığı gibi bir üstel geri alma algoritması kullanmayı göz önünde bulundurmanız gerekir.
   
 * **Zaman aşımı değerleri**
   * İş yükünüzü değerlendirin ve değerleri uygun şekilde ayarlayın. Büyük değerleri depoluyorsanız, zaman aşımını daha yüksek bir değere ayarlayın.
@@ -109,7 +109,7 @@ Redsıs [komutlarında listelenen](https://redis.io/commands#) komutların herha
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Redsıs komut satırı araçları TLS bağlantı noktası ile çalışmaz, ancak reddo `stunnel` [komut satırı aracının reddo Için Azure Cache Ile nasıl kullanılacağına ilişkin](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) yönergeleri IZLEYEREK, araçları TLS bağlantı noktasına güvenli bir şekilde bağlamak için gibi bir yardımcı programı kullanabilirsiniz.
+> Redsıs komut satırı araçları TLS bağlantı noktası ile çalışmaz, ancak reddo `stunnel` [komut satırı aracının reddo Için Azure Cache Ile nasıl kullanılacağına ilişkin](./cache-how-to-redis-cli-tool.md) yönergeleri IZLEYEREK, araçları TLS bağlantı noktasına güvenli bir şekilde bağlamak için gibi bir yardımcı programı kullanabilirsiniz.
 >
 >
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 6bfedc7d14c234f88e8140281a01ffcc330ba532
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: af1419dfb47f9090fd3aa307c71f7e62206e3e93
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488376"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543364"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>İzleme Azure Cosmos DB
 
@@ -66,9 +66,9 @@ Her Azure Cosmos veritabanı için Azure portal **genel bakış** sayfası, iste
 
 ## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a> Ölçüm verileri çözümleniyor
 
-Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. Bu deneyimi kullanmayla ilgili ayrıntılar ve farklı Azure Cosmos DB senaryoları çözümlemek için bkz. [Azure izleyici 'de Azure Cosmos DB ölçümleri izleme ve hata ayıklama]() .
+Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar.
 
-**Azure izleyici** menüsünden **ölçümler** ' i açarak Ölçüm Gezgini 'ni kullanarak diğer Azure hizmetlerinden ölçümlerle Azure Cosmos DB için ölçümleri çözümleyebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) kullanmaya başlama. Tüm Azure Cosmos DB ölçümleri **Standart ölçümlerde Cosmos DB**ad alanıdır. Bir grafiğe filtre eklerken bu ölçümler ile aşağıdaki boyutları kullanabilirsiniz:
+**Azure izleyici** menüsünden **ölçümler** ' i açarak Ölçüm Gezgini 'ni kullanarak diğer Azure hizmetlerinden ölçümlerle Azure Cosmos DB için ölçümleri çözümleyebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) kullanmaya başlama. Tüm Azure Cosmos DB ölçümleri **Standart ölçümlerde Cosmos DB** ad alanıdır. Bir grafiğe filtre eklerken bu ölçümler ile aşağıdaki boyutları kullanabilirsiniz:
 
 * CollectionName
 * DatabaseName
@@ -80,11 +80,11 @@ Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. Bu 
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
+1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler** ' i seçin.
 
    :::image type="content" source="./media/monitor-cosmos-db/monitor-metrics-blade.png" alt-text="Azure portal 'de kullanılabilen izleme seçenekleri":::
 
-1. **Ölçümler** bölmesinden > **bir kaynak seçin** > gerekli **aboneliği**ve **kaynak grubunu**seçin. **Kaynak türü**için **Azure Cosmos DB hesapları**' nı seçin, mevcut Azure Cosmos hesaplarınızdan birini seçin ve **Uygula**' yı seçin.
+1. **Ölçümler** bölmesinden > **bir kaynak seçin** > gerekli **aboneliği** ve **kaynak grubunu** seçin. **Kaynak türü** için **Azure Cosmos DB hesapları** ' nı seçin, mevcut Azure Cosmos hesaplarınızdan birini seçin ve **Uygula** ' yı seçin.
 
    :::image type="content" source="./media/monitor-cosmos-db/select-cosmosdb-account.png" alt-text="Azure portal 'de kullanılabilen izleme seçenekleri":::
 
@@ -96,7 +96,7 @@ Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. Bu 
 
 ### <a name="add-filters-to-metrics"></a>Ölçümlere filtre ekleme
 
-Ayrıca ölçümleri ve belirli bir **CollectionName**, **DatabaseName**, **OperationType**, **Region**ve **StatusCode**tarafından görüntülenmiş grafik için filtre uygulayabilirsiniz. Ölçümleri filtrelemek için, **Filtre Ekle** ' yi seçin ve **OperationType** gibi gerekli özelliği seçin ve **sorgu**gibi bir değer seçin. Grafik daha sonra seçili dönem için sorgu işlemi için kullanılan istek birimlerini görüntüler. Saklı yordam aracılığıyla yürütülen işlemler, OperationType ölçümü altında kullanılamayacak şekilde günlüğe kaydedilmez.
+Ayrıca ölçümleri ve belirli bir **CollectionName** , **DatabaseName** , **OperationType** , **Region** ve **StatusCode** tarafından görüntülenmiş grafik için filtre uygulayabilirsiniz. Ölçümleri filtrelemek için, **Filtre Ekle** ' yi seçin ve **OperationType** gibi gerekli özelliği seçin ve **sorgu** gibi bir değer seçin. Grafik daha sonra seçili dönem için sorgu işlemi için kullanılan istek birimlerini görüntüler. Saklı yordam aracılığıyla yürütülen işlemler, OperationType ölçümü altında kullanılamayacak şekilde günlüğe kaydedilmez.
 
 :::image type="content" source="./media/monitor-cosmos-db/add-metrics-filter.png" alt-text="Azure portal 'de kullanılabilen izleme seçenekleri":::
 
@@ -153,7 +153,7 @@ Portalda kullanılabilen hesap düzeyi ölçümleri, hesap depolama kullanımı 
 
 * REST API kullanmak için, [koleksiyonda BIR get işlemi gerçekleştirin](/rest/api/cosmos-db/get-a-collection). Koleksiyonun kota ve kullanım bilgileri, yanıttaki x-MS-Resource-Quota ve x-MS-Resource-Usage üst bilgilerinde döndürülür.
 
-* .NET SDK 'yı kullanmak için, **Collectionsizeusage**, **databaseusage**, **documentusage**gibi birçok kullanım özelliği içeren bir [resourceres,](/dotnet/api/microsoft.azure.documents.client.resourceresponse-1) döndüren [documentclient. readdocumentcollectionasync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) yöntemini kullanın.
+* .NET SDK 'yı kullanmak için, **Collectionsizeusage** , **databaseusage** , **documentusage** gibi birçok kullanım özelliği içeren bir [resourceres,](/dotnet/api/microsoft.azure.documents.client.resourceresponse-1) döndüren [documentclient. readdocumentcollectionasync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) yöntemini kullanın.
 
 Ek ölçümlere erişmek için [Azure izleyici SDK 'sını](https://www.nuget.org/packages/Microsoft.Azure.Insights)kullanın. Kullanılabilir Ölçüm tanımları, şu çağırarak alınabilir:
 

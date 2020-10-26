@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/07/2020
-ms.openlocfilehash: 533fe0f391779a5bbe53bf7f2a136c3e9fb19017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a14a7276d51b7bc1f490bc9ab49f72aedfb829f7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080627"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541851"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma
 
@@ -51,11 +51,11 @@ Azure portal kullanarak bir Kaynak Yöneticisi şablonu dağıtabilirsiniz. Daha
 
 ## <a name="deploy-using-powershell"></a>PowerShell kullanarak dağıtma
 
-Azure PowerShell kullanarak Kaynak Yöneticisi şablonu dağıtabilirsiniz. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ile kaynak dağıtma ve Azure POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md) [SAS belirteci ve Azure PowerShell ile özel kaynak yöneticisi şablonu dağıtma](../azure-resource-manager/resource-manager-powershell-sas-token.md).
+Azure PowerShell kullanarak Kaynak Yöneticisi şablonu dağıtabilirsiniz. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ile kaynak dağıtma ve Azure POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md) [SAS belirteci ve Azure PowerShell ile özel kaynak yöneticisi şablonu dağıtma](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
 ## <a name="deploy-using-azure-cli"></a>Azure CLI’yi kullanarak dağıtma
 
-Azure CLı kullanarak bir Kaynak Yöneticisi şablonu dağıtabilirsiniz. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynakları dağıtma](../azure-resource-manager/templates/deploy-cli.md) ve [SAS BELIRTECI ve Azure clı ile özel kaynak yöneticisi şablonu dağıtma](../azure-resource-manager/resource-manager-cli-sas-token.md).
+Azure CLı kullanarak bir Kaynak Yöneticisi şablonu dağıtabilirsiniz. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynakları dağıtma](../azure-resource-manager/templates/deploy-cli.md) ve [SAS BELIRTECI ve Azure clı ile özel kaynak yöneticisi şablonu dağıtma](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
 ## <a name="deploy-using-the-rest-api"></a>REST API kullanarak dağıtma
 
@@ -78,6 +78,6 @@ Bu makalede, bir HDInsight kümesi oluşturmanın çeşitli yollarını öğrend
 * HDInsight ile ilgili diğer şablonlar için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?term=hdinsight).
 * .NET istemci kitaplığı aracılığıyla kaynak dağıtmaya ilişkin bir örnek için bkz. [.NET kitaplıkları ve şablon kullanarak kaynakları dağıtma](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Uygulama dağıtmaya yönelik ayrıntılı bir örnek için bkz. [Azure 'da mikro hizmetler sağlama ve dağıtma](../app-service/deploy-complex-application-predictably.md).
-* Çözümünüzü farklı ortamlarda dağıtmaya yönelik kılavuz için bkz. [Microsoft Azure’da geliştirme ve test ortamları](../solution-dev-test-environments.md).
+* Çözümünüzü farklı ortamlarda dağıtmaya yönelik kılavuz için bkz. [Microsoft Azure’da geliştirme ve test ortamları](../devtest-labs/devtest-lab-overview.md).
 * Azure Resource Manager şablonun bölümleri hakkında bilgi edinmek için bkz. [yazma şablonları](../azure-resource-manager/templates/template-syntax.md).
 * Azure Resource Manager şablonunda kullanabileceğiniz işlevlerin listesi için bkz. [Şablon işlevleri](../azure-resource-manager/templates/template-functions.md).

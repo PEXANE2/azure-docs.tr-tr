@@ -100,7 +100,9 @@
           href: rbac-migration.md
         - name: Erişim sorunlarını giderme
           href: troubleshooting-access-issues.md
-    - name: Günlüğü etkinleştirme
+    - name: Geçici silmeyi ve temizleme korumasını etkinleştirme
+      href: key-vault-recovery.md
+    - name: Günlü kaydını etkinleştir
       href: howto-logging.md
     - name: Geliştirme
       items:
@@ -109,7 +111,7 @@
         - name: Key Vault dağıtmak için Azure Resource Manager kullanma
           href: vault-create-template.md
         - name: Web Uygulaması gizli dizilerini kaydetme
-          href: vs-secure-secret-appsettings.md
+          href: /previous-versions/azure/key-vault/vs-secure-secret-appsettings?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
         - name: .NET ile hizmetten hizmete kimlik doğrulaması
           href: service-to-service-authentication.md
         - name: Key Vault Bağlı Hizmetini kullanma
@@ -134,14 +136,6 @@
           href: private-link-service.md
         - name: Güvenlik duvarının ardında Anahtar Kasası’na erişme - Azure Key Vault
           href: access-behind-firewall.md
-    - name: Geçici silme
-      items:
-        - name: Key Vault Kurtarma (Geçici Silme ve Temizleme Koruması)
-          href: key-vault-recovery.md
-        - name: CLI ile geçici silmeyi kullanma
-          href: soft-delete-cli.md
-        - name: PowerShell ile geçici silmeyi kullanma
-          href: soft-delete-powershell.md
     - name: Key Vault’u Taşıma
       items:
         - name: Key Vault’u Başka Bir Kaynak Grubuna Taşıma

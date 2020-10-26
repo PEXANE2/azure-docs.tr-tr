@@ -8,16 +8,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 7a5bab13dbaa5715aa8dd34e41aba34ce62557a2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4be295ada476e4dc41a86d06908ef1d653a3bad8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91329537"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545030"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak MySQL için Azure veritabanı esnek sunucusu oluşturma
 
-Bu hızlı başlangıçta, beş dakikada bir MySQL için Azure veritabanı esnek sunucusu oluşturmak üzere [Azure Cloud Shell](https://shell.azure.com) [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) komutlarının nasıl kullanılacağı gösterilmektedir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Bu hızlı başlangıçta, beş dakikada bir MySQL için Azure veritabanı esnek sunucusu oluşturmak üzere [Azure Cloud Shell](https://shell.azure.com) [Azure CLI](/cli/azure/get-started-with-azure-cli) komutlarının nasıl kullanılacağı gösterilmektedir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 > [!IMPORTANT] 
 > MySQL için Azure veritabanı esnek sunucu şu anda genel önizlemede
@@ -26,19 +26,19 @@ Bu hızlı başlangıçta, beş dakikada bir MySQL için Azure veritabanı esnek
 
 [Azure Cloud Shell](../../cloud-shell/overview.md) , bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de açabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve çalıştırmak için **ENTER** ' u seçin.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin** 'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de açabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve çalıştırmak için **ENTER** ' u seçin.
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2,0 veya üzerini gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2,0 veya üzerini gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Az Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) komutunu kullanarak hesabınızda oturum açmanız gerekir. Azure hesabınızın **ABONELIK kimliğini** ifade eden **ID** özelliğine göz önüne alın.
+[Az Login](/cli/azure/reference-index#az-login) komutunu kullanarak hesabınızda oturum açmanız gerekir. Azure hesabınızın **ABONELIK kimliğini** ifade eden **ID** özelliğine göz önüne alın.
 
 ```azurecli-interactive
 az login
 ```
 
-[Az Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) komutunu kullanarak hesabınız altındaki belirli bir aboneliği seçin. Komutta **abonelik** bağımsız değişkeninin değeri olarak kullanılacak **az Login** çıktısından **ID** değerini bir yere unutmayın. Birden fazla aboneliğiniz varsa kaynağın faturalanacağı uygun aboneliği seçin. Aboneliğinizi tamamen almak için [az Account List](https://docs.microsoft.com/cli/azure/account#az-account-list)kullanın.
+[Az Account set](/cli/azure/account#az-account-set) komutunu kullanarak hesabınız altındaki belirli bir aboneliği seçin. Komutta **abonelik** bağımsız değişkeninin değeri olarak kullanılacak **az Login** çıktısından **ID** değerini bir yere unutmayın. Birden fazla aboneliğiniz varsa kaynağın faturalanacağı uygun aboneliği seçin. Aboneliğinizi tamamen almak için [az Account List](/cli/azure/account#az-account-list)kullanın.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -46,13 +46,13 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-flexible-server"></a>Esnek sunucu oluşturma
 
-Komutunu kullanarak bir [Azure Kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) oluşturun `az group create` ve ardından bu kaynak grubunun içinde MySQL esnek sunucunuzu oluşturun. Benzersiz bir ad sağlamanız gerekir. Aşağıdaki örnek `eastus2` konumunda `myresourcegroup` adlı bir kaynak grubu oluşturur.
+Komutunu kullanarak bir [Azure Kaynak grubu](../../azure-resource-manager/management/overview.md) oluşturun `az group create` ve ardından bu kaynak grubunun içinde MySQL esnek sunucunuzu oluşturun. Benzersiz bir ad sağlamanız gerekir. Aşağıdaki örnek `eastus2` konumunda `myresourcegroup` adlı bir kaynak grubu oluşturur.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location eastus2
 ```
 
-Komutuyla esnek bir sunucu oluşturun `az mysql flexible-server create` . Bir sunucu birden çok veritabanı içerebilir. Aşağıdaki komut, Azure CLı 'nın [Yerel bağlamından](https://docs.microsoft.com/cli/azure/local-context)hizmet varsayılanlarını ve değerlerini kullanarak bir sunucu oluşturur: 
+Komutuyla esnek bir sunucu oluşturun `az mysql flexible-server create` . Bir sunucu birden çok veritabanı içerebilir. Aşağıdaki komut, Azure CLı 'nın [Yerel bağlamından](/cli/azure/local-context)hizmet varsayılanlarını ve değerlerini kullanarak bir sunucu oluşturur: 
 
 ```azurecli
 az mysql flexible-server create

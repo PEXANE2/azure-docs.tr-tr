@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 03c783b5a475f0a49fe94d33aa866654e9c9f5f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2d9c96a616f05c22c8b999fdc6cab2505c27485
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397836"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544945"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile HDInsight içinde Apache Hive ilkelerini yapılandırma
 
 Apache Hive için Apache Ranger ilkelerini yapılandırma hakkında bilgi edinin. Bu makalede hivesampletable erişimini kısıtlamak için iki Ranger ilkesi oluşturacaksınız. hivesampletable, HDInsight kümelerine sahiptir. İlkeleri yapılandırdıktan sonra, HDInsight 'taki Hive tablolarına bağlanmak için Excel ve ODBC sürücüsünü kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Kurumsal Güvenlik Paketi olan bir HDInsight kümesi. Bkz. [HDInsight KÜMELERINI ESP Ile yapılandırma](apache-domain-joined-configure.md).
+* Kurumsal Güvenlik Paketi olan bir HDInsight kümesi. Bkz. [HDInsight KÜMELERINI ESP Ile yapılandırma](./apache-domain-joined-configure-using-azure-adds.md).
 * Enterprise, Office 2016, Office 2013 Professional Plus, Excel 2013 tek başına veya Office 2010 Professional Plus için Microsoft 365 uygulamalar içeren bir iş istasyonu.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Apache Ranger Yönetici Arabirimine bağlanma
@@ -49,14 +49,14 @@ Bu bölümde, hivesampletable 'a erişmek için iki Ranger ilkesi oluşturacaks�
 **Ranger ilkeleri oluşturmak için**
 
 1. Ranger Yönetici Arabirimini açın. Bkz. Apache Ranger Yönetici Arabirimine bağlanma.
-2. **Hive**altında **CLUSTERNAME_Hive**' yi seçin. Önceden yapılandırılmış iki ilke göreceksiniz.
-3. **Yeni Ilke Ekle**' yi seçin ve ardından aşağıdaki değerleri girin:
+2. **Hive** altında **CLUSTERNAME_Hive** ' yi seçin. Önceden yapılandırılmış iki ilke göreceksiniz.
+3. **Yeni Ilke Ekle** ' yi seçin ve ardından aşağıdaki değerleri girin:
 
     |Özellik |Değer |
     |---|---|
     |İlke Adı|Read-hivesampletable-tümü|
     |Hive veritabanı|default|
-    |tablo|hivesampletable|
+    |table|hivesampletable|
     |Hive sütunu|*|
     |Kullanıcı Seçin|hiveuser1 kullanıcısının|
     |İzinler|seçin|
@@ -74,7 +74,7 @@ Bu bölümde, hivesampletable 'a erişmek için iki Ranger ilkesi oluşturacaks�
     |---|---|
     |İlke Adı|Read-hivesampletable-devicemake|
     |Hive veritabanı|default|
-    |tablo|hivesampletable|
+    |table|hivesampletable|
     |Hive sütunu|ClientID, devicemake|
     |Kullanıcı Seçin|hiveuser2|
     |İzinler|seçin|
@@ -88,14 +88,14 @@ Talimatlara [Hive ODBC veri kaynağı oluşturma](../hadoop/apache-hadoop-connec
  | Data Source Name | Veri kaynağınız için bir ad verin |
  | Ana bilgisayar | CLUSTERNAME.azurehdinsight.net girin. Örnek: HDIKumesi.azurehdinsight.net |
  | Bağlantı noktası | **443** yazın. (Önceden 563 olan bu bağlantı noktası 443 olarak değiştirilmiştir.) |
- | Veritabanı | **Varsayılanı**kullanın. |
- | Hive Server Type | **Hive Server 2**’yi seçin |
- | Mechanism | **Azure HDInsight Service**’i seçin |
+ | Veritabanı | **Varsayılanı** kullanın. |
+ | Hive Server Type | **Hive Server 2** ’yi seçin |
+ | Mechanism | **Azure HDInsight Service** ’i seçin |
  | HTTP Path | Boş bırakın. |
  | User Name | hiveuser1@contoso158.onmicrosoft.com yazın. Farklı olduğunda, etki alanı adını güncelleştirin. |
  | Parola | hiveuser1 kullanıcısının parolasını girin. |
 
-Veri kaynağını kaydetmeden önce **Test**’e tıklayın.
+Veri kaynağını kaydetmeden önce **Test** ’e tıklayın.
 
 ## <a name="import-data-into-excel-from-hdinsight"></a>HDInsight’tan Excel’e veri aktarma
 
@@ -107,17 +107,17 @@ Son bölümde iki ilke yapılandırdınız.  hiveuser1 tüm sütunlarda select i
 
     ![Veri bağlantısı açma Sihirbazı](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 
-1. Aşağı açılan listeden, son bölümde oluşturduğunuz veri kaynağı adını seçin ve ardından **Tamam**' ı seçin.
+1. Aşağı açılan listeden, son bölümde oluşturduğunuz veri kaynağı adını seçin ve ardından **Tamam** ' ı seçin.
 
 1. İlk kullanım için bir **ODBC sürücüsü** iletişim kutusu açılır. Sol menüden **Windows** ' u seçin. Ardından, **Gezgin** penceresini açmak için **Bağlan** ' ı seçin.
 
 1. **Veritabanı ve Tablo Seç** iletişim kutusunun açılmasını bekleyin. Bu işlem birkaç saniye sürebilir.
 
-1. **Hivesampletable**' ı seçin ve ardından **İleri**' yi seçin.
+1. **Hivesampletable** ' ı seçin ve ardından **İleri** ' yi seçin.
 
-1. **Son**’u seçin.
+1. **Son** ’u seçin.
 
-1. **Verileri İçeri Aktar** iletişim kutusunda sorguyu değiştirebilir veya belirtebilirsiniz. Bunu yapmak için **Özellikler**' i seçin. Bu işlem birkaç saniye sürebilir.
+1. **Verileri İçeri Aktar** iletişim kutusunda sorguyu değiştirebilir veya belirtebilirsiniz. Bunu yapmak için **Özellikler** ' i seçin. Bu işlem birkaç saniye sürebilir.
 
 1. **Tanım** sekmesini seçin. Komut metni:
 
@@ -131,7 +131,7 @@ Son bölümde iki ilke yapılandırdınız.  hiveuser1 tüm sütunlarda select i
 
 1. **Verileri Içeri aktar** iletişim kutusunu kapatmak için **Tamam ' ı** seçin.  
 
-1. hiveuser1 kullanıcısının parolasını tekrar girin ve **Tamam**’a tıklayın. Verilerin Excel’e aktarılması birkaç saniye sürer. İşlem tamamlandığında 11 ' den fazla veri sütunu görürsünüz.
+1. hiveuser1 kullanıcısının parolasını tekrar girin ve **Tamam** ’a tıklayın. Verilerin Excel’e aktarılması birkaç saniye sürer. İşlem tamamlandığında 11 ' den fazla veri sütunu görürsünüz.
 
 İkinci ilkeyi test etmek için (Read-hivesampletable-devicemake), son bölümde oluşturduğunuz
 
@@ -158,7 +158,7 @@ Son bölümde iki ilke yapılandırdınız.  hiveuser1 tüm sütunlarda select i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* HDInsight kümesini Kurumsal Güvenlik Paketi ile yapılandırmak için bkz. [HDInsight KÜMELERINI ESP Ile yapılandırma](apache-domain-joined-configure.md).
+* HDInsight kümesini Kurumsal Güvenlik Paketi ile yapılandırmak için bkz. [HDInsight KÜMELERINI ESP Ile yapılandırma](./apache-domain-joined-configure-using-azure-adds.md).
 * HDInsight kümesini ESP ile yönetmek için bkz. [HDInsight KÜMELERINI ESP Ile yönetme](apache-domain-joined-manage.md).
 * HDInsight kümelerinde ESP kullanarak Hive sorguları çalıştırmak için bkz. [HDInsight Ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).
 * Hive JDBC kullanarak Hive bağlamak için bkz [. HIVE JDBC sürücüsünü kullanarak Azure HDInsight 'ta Apache Hive bağlama](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)

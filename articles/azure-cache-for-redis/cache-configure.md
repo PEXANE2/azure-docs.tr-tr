@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 22025e7be9a0ff276336511a906055dc31a67230
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089732"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544775"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
 Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen yapılandırma açıklanmaktadır. Bu konu, Redsıs örnekleri için Azure önbelleği için varsayılan Redsıs sunucu yapılandırmasını da içerir.
@@ -24,11 +24,11 @@ Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen y
 ## <a name="configure-azure-cache-for-redis-settings"></a>Redsıs ayarları için Azure önbelleğini yapılandırma
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **redsıs dikey penceresinde Azure önbelleğinde** görüntülenir ve yapılandırılır.
+Redsıs ayarları için Azure önbelleği, **Kaynak menüsü** kullanılarak **redsıs dikey penceresinde Azure önbelleğinde** görüntülenir ve yapılandırılır.
 
 ![Redsıs ayarları için Azure önbelleği](./media/cache-configure/redis-cache-settings.png)
 
-**Kaynak menüsünü**kullanarak aşağıdaki ayarları görüntüleyebilir ve yapılandırabilirsiniz.
+**Kaynak menüsünü** kullanarak aşağıdaki ayarları görüntüleyebilir ve yapılandırabilirsiniz.
 
 * [Genel Bakış](#overview)
 * [Etkinlik günlüğü](#activity-log)
@@ -44,7 +44,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
     * [Veri kalıcılığı](#redis-data-persistence)
     * [Güncelleştirmeleri zamanlama](#schedule-updates)
     * [Coğrafi çoğaltma](#geo-replication)
-    * [Sanal ağ](#virtual-network)
+    * [Sanal Ağ](#virtual-network)
     * [Güvenlik duvarı](#firewall)
     * [Özellikler](#properties)
     * [Kilitler](#locks)
@@ -96,7 +96,7 @@ Tanıla ' ya tıklayın ve sorunları çözmeye yönelik yaygın sorunlar ve str
 * [Veri kalıcılığı](#redis-data-persistence)
 * [Güncelleştirmeleri zamanlama](#schedule-updates)
 * [Coğrafi çoğaltma](#geo-replication)
-* [Sanal ağ](#virtual-network)
+* [Sanal Ağ](#virtual-network)
 * [Güvenlik duvarı](#firewall)
 * [Özellikler](#properties)
 * [Kilitler](#locks)
@@ -117,7 +117,7 @@ Aşağıdaki ayarlar **Gelişmiş ayarlar** dikey penceresinde yapılandırılı
 * [Keyspace bildirimleri (Gelişmiş ayarlar)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Erişim bağlantı noktaları
-Varsayılan olarak, yeni önbellekler için TLS olmayan/SSL erişimi devre dışıdır. TLS olmayan bağlantı noktasını etkinleştirmek için, **Gelişmiş ayarlar** dikey PENCERESINDE **yalnızca SSL aracılığıyla erişime izin ver** ' **e tıklayın ve** ardından **Kaydet**' e tıklayın.
+Varsayılan olarak, yeni önbellekler için TLS olmayan/SSL erişimi devre dışıdır. TLS olmayan bağlantı noktasını etkinleştirmek için, **Gelişmiş ayarlar** dikey PENCERESINDE **yalnızca SSL aracılığıyla erişime izin ver** ' **e tıklayın ve** ardından **Kaydet** ' e tıklayın.
 
 > [!NOTE]
 > Redu için Azure önbelleğine TLS erişimi şu anda TLS 1,0, 1,1 ve 1,2 destekler, ancak 1,0 ve 1,1 sürümleri yakında kullanımdan kaldırılıyor.  Daha fazla bilgi için lütfen [TLS 1,0 ve 1,1 ' i kaldırın sayfasını](cache-remove-tls-10-11.md) okuyun.
@@ -126,7 +126,7 @@ Varsayılan olarak, yeni önbellekler için TLS olmayan/SSL erişimi devre dış
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
 #### <a name="memory-policies"></a>Bellek ilkeleri
-**Gelişmiş ayarlar** dikey penceresinde **MaxMemory ilkesi**, **MaxMemory-ayrılmış**ve **maxfragmentationmemory-ayrılmış** ayarları, önbelleğin bellek ilkelerini yapılandırır.
+**Gelişmiş ayarlar** dikey penceresinde **MaxMemory ilkesi** , **MaxMemory-ayrılmış** ve **maxfragmentationmemory-ayrılmış** ayarları, önbelleğin bellek ilkelerini yapılandırır.
 
 ![Redsıs MaxMemory Ilkesi için Azure önbelleği](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
@@ -145,7 +145,7 @@ Varsayılan olarak, yeni önbellekler için TLS olmayan/SSL erişimi devre dış
 
 **Maxfragmentationmemory-ayrılmış** ayarı, bellek parçalanması için ayrılan bellek miktarını, bir kümedeki örnek başına MB cinsinden yapılandırır. Bu değeri ayarlamak, önbellek dolduğunda veya dolduğunda, parçalanma oranı yüksek olduğunda daha tutarlı bir Redsıs sunucu deneyimine sahip olmasını sağlar. Bellek bu gibi işlemler için ayrıldığınızda, önbelleğe alınmış verilerin depolanması için kullanılamaz.
 
-Yeni bir bellek ayırma değeri seçerken göz önünde bulundurmanız gereken tek şey (**MaxMemory-Reserve** veya **maxfragmentationmemory-Reserve**), bu değişikliğin zaten büyük miktarda verilerle çalışan bir önbelleği nasıl etkileyebileceğini gösterebilir. Örneğin, 49 GB veri içeren bir 53 GB önbelleğiniz varsa, ayırma değerini 8 GB olarak değiştirirseniz bu değişiklik, sistem için kullanılabilir en yüksek belleği 45 GB 'a düşürülecektir. Geçerli `used_memory` ya da `used_memory_rss` değerlerinizin boyutu 45 GB 'ın üzerine fazlaysa, sistem verileri her ikisi de `used_memory` 45 GB 'ın altında olacak şekilde çıkarmak zorunda kalır `used_memory_rss` . Çıkarma, sunucu yükü ve bellek parçalanmasını artırabilir. Ve gibi önbellek ölçümleri hakkında daha fazla bilgi `used_memory` için `used_memory_rss` bkz. [kullanılabilir ölçümler ve raporlama aralıkları](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+Yeni bir bellek ayırma değeri seçerken göz önünde bulundurmanız gereken tek şey ( **MaxMemory-Reserve** veya **maxfragmentationmemory-Reserve** ), bu değişikliğin zaten büyük miktarda verilerle çalışan bir önbelleği nasıl etkileyebileceğini gösterebilir. Örneğin, 49 GB veri içeren bir 53 GB önbelleğiniz varsa, ayırma değerini 8 GB olarak değiştirirseniz bu değişiklik, sistem için kullanılabilir en yüksek belleği 45 GB 'a düşürülecektir. Geçerli `used_memory` ya da `used_memory_rss` değerlerinizin boyutu 45 GB 'ın üzerine fazlaysa, sistem verileri her ikisi de `used_memory` 45 GB 'ın altında olacak şekilde çıkarmak zorunda kalır `used_memory_rss` . Çıkarma, sunucu yükü ve bellek parçalanmasını artırabilir. Ve gibi önbellek ölçümleri hakkında daha fazla bilgi `used_memory` için `used_memory_rss` bkz. [kullanılabilir ölçümler ve raporlama aralıkları](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
 > **MaxMemory-ayrýlmýþ** ve **maxfragmentationmemory-ayrýlmýþ** ayarları yalnızca standart ve Premium önbellekler için kullanılabilir.
@@ -234,7 +234,7 @@ Daha fazla bilgi için bkz. [redsıs Için Premium Azure önbelleği için kalı
 
 ![Güncelleştirmeleri zamanlama](./media/cache-configure/redis-schedule-updates.png)
 
-Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün için bakım penceresi başlangıç saatini belirtip **Tamam**' a tıklayın. Bakım penceresi saati UTC 'dir.
+Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün için bakım penceresi başlangıç saatini belirtip **Tamam** ' a tıklayın. Bakım penceresi saati UTC 'dir.
 
 > [!IMPORTANT]
 > **Güncelleştirmeleri zamanla** Işlevi yalnızca Premium katman önbellekleri için kullanılabilir. Daha fazla bilgi ve yönergeler için bkz. [redsıs yönetimi Için Azure önbelleği-zamanlama güncelleştirmeleri](cache-administration.md#schedule-updates).
@@ -316,7 +316,7 @@ Kümelemenin etkinleştirildiği Premium bir önbelleğiniz varsa, önbelleğin 
 
 ![Önbelleğin hangi parçaların yeniden başlatılması gerektiğini gösteren ekran görüntüsü.](./media/cache-configure/redis-cache-reboot-cluster.png)
 
-Önbelleğinizin bir veya daha fazla düğümünü yeniden başlatmak için, istenen düğümleri seçin ve **Yeniden Başlat**' a tıklayın. Kümelendirmeyi etkin bir Premium önbelleğiniz varsa, yeniden başlatılacak olan parça (ler) i seçin ve ardından **Yeniden Başlat**' a tıklayın. Birkaç dakika sonra, seçilen düğüm (ler) i yeniden başlatılır ve birkaç dakika sonra yeniden çevrimiçi olacak.
+Önbelleğinizin bir veya daha fazla düğümünü yeniden başlatmak için, istenen düğümleri seçin ve **Yeniden Başlat** ' a tıklayın. Kümelendirmeyi etkin bir Premium önbelleğiniz varsa, yeniden başlatılacak olan parça (ler) i seçin ve ardından **Yeniden Başlat** ' a tıklayın. Birkaç dakika sonra, seçilen düğüm (ler) i yeniden başlatılır ve birkaç dakika sonra yeniden çevrimiçi olacak.
 
 > [!IMPORTANT]
 > Yeniden başlatma artık tüm fiyatlandırma katmanlarında kullanılabilir. Daha fazla bilgi ve yönergeler için bkz. [redsıs yönetimi Için Azure önbelleği-yeniden başlatma](cache-administration.md#reboot).
@@ -360,7 +360,7 @@ Varsayılan olarak, Azure Izleyici 'deki önbellek ölçümleri [30 gün boyunca
 * [Yeni destek isteği](#new-support-request)
 
 ### <a name="resource-health"></a>Kaynak durumu
-**Kaynak sistem durumu** , kaynağınızı izler ve beklendiği gibi çalışıp çalışmadığını bildirir. Azure Kaynak sistem durumu hizmeti hakkında daha fazla bilgi için bkz. [Azure Kaynak durumu genel bakış](../resource-health/resource-health-overview.md).
+**Kaynak sistem durumu** , kaynağınızı izler ve beklendiği gibi çalışıp çalışmadığını bildirir. Azure Kaynak sistem durumu hizmeti hakkında daha fazla bilgi için bkz. [Azure Kaynak durumu genel bakış](../service-health/resource-health-overview.md).
 
 > [!NOTE]
 > Kaynak sistem durumu şu anda bir sanal ağda barındırılan Redsıs örnekleri için Azure önbelleğinin sistem durumunu bildiremedi. Daha fazla bilgi için bkz. [BIR VNET 'te önbellek barındırırken tüm önbellek özelliklerini çalışma](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
@@ -382,11 +382,11 @@ Redsıs örnekleri için yeni Azure önbelleği, aşağıdaki varsayılan Redsı
 >
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >
-> **Maksimum bellek ilkesi**gibi yapılandırılabilir değerler, Azure CLI veya PowerShell gibi Azure Portal veya komut satırı yönetim araçları aracılığıyla yapılandırılabilir.
+> **Maksimum bellek ilkesi** gibi yapılandırılabilir değerler, Azure CLI veya PowerShell gibi Azure Portal veya komut satırı yönetim araçları aracılığıyla yapılandırılabilir.
 >
 >
 
-| Ayar | Varsayılan değer | Description |
+| Ayar | Varsayılan değer | Açıklama |
 | --- | --- | --- |
 | `databases` |16 |Varsayılan veritabanı sayısı 16 ' dır, ancak fiyatlandırma katmanını temel alarak farklı bir sayı yapılandırabilirsiniz. <sup>1</sup> varsayılan veritabanı DB 0 ' dır, `connection.GetDatabase(dbid)` `dbid` ve arasında bir sayı olan ' i kullanarak bağlantı başına temelinde farklı bir tane seçebilirsiniz `0` `databases - 1` . |
 | `maxclients` |Fiyatlandırma katmanına bağlıdır<sup>2</sup> |Bu değer, aynı anda izin verilen en fazla bağlı istemci sayısıdır. Sınıra ulaşıldıktan sonra, ' en fazla istemci sayısına ulaşıldı ' hatası döndüren tüm yeni bağlantıları kapatır. |
@@ -464,7 +464,7 @@ Veritabanları hakkında daha fazla bilgi için bkz. [redsıs veritabanları nel
 Redsıs komutları hakkında daha fazla bilgi için bkz [https://redis.io/commands](https://redis.io/commands) ..
 
 ## <a name="redis-console"></a>Redsıs konsolu
-Redsıs örnekleri için Azure önbelleğiniz için, tüm önbellek katmanlarında Azure portal kullanılabilen **Redsıs konsolunu**kullanarak komutları güvenli bir şekilde verebilirsiniz.
+Redsıs örnekleri için Azure önbelleğiniz için, tüm önbellek katmanlarında Azure portal kullanılabilen **Redsıs konsolunu** kullanarak komutları güvenli bir şekilde verebilirsiniz.
 
 > [!IMPORTANT]
 > - Redin Konsolu [VNET](cache-how-to-premium-vnet.md)ile çalışmaz. Önbelleğiniz bir sanal ağın parçası olduğunda, yalnızca VNET 'teki istemciler önbelleğe erişebilir. Redsıs konsolu, sanal ağ dışında bir yerel tarayıcınızda çalıştığından, önbelleğinize bağlanamaz.
@@ -498,7 +498,7 @@ shard1>get myKey
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>Önbelleğinizi yeni bir aboneliğe taşıma
-**Taşı**' ya tıklayarak önbelleğinizi yeni bir aboneliğe taşıyabilirsiniz.
+**Taşı** ' ya tıklayarak önbelleğinizi yeni bir aboneliğe taşıyabilirsiniz.
 
 ![Redsıs için Azure önbelleğini taşıma](./media/cache-configure/redis-cache-move.png)
 

@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 2fccf5431666990919faf7e6378b46c41d682437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf749f3aef10a0c67814722577f79906f447ffdb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941033"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532790"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda denetim günlüğü-esnek sunucu
 
@@ -57,7 +57,7 @@ Her denetim girişi, `AUDIT:` günlük satırının başlangıcında yakınında
 Hızlıca kullanmaya başlamak için, `pgaudit.log` olarak ayarlayın `WRITE` ve çıktıyı gözden geçirmek için sunucu günlüklerinizi açın. 
 
 ## <a name="viewing-audit-logs"></a>Denetim günlüklerini görüntüleme
-Günlüklere erişmenin yolu, seçtiğiniz uç noktaya bağlıdır. Azure depolama için [günlük depolama hesabı](../../azure-monitor/platform/resource-logs-collect-storage.md) makalesine bakın. Event Hubs için bkz. [Azure günlükleri akışı](../../azure-monitor/platform/resource-logs-stream-event-hubs.md) makalesi.
+Günlüklere erişmenin yolu, seçtiğiniz uç noktaya bağlıdır. Azure depolama için [günlük depolama hesabı](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) makalesine bakın. Event Hubs için bkz. [Azure günlükleri akışı](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) makalesi.
 
 Azure Izleyici günlükleri için Günlükler seçtiğiniz çalışma alanına gönderilir. Postgres günlükleri **AzureDiagnostics** Collection modunu kullanır, bu nedenle AzureDiagnostics tablosundan sorgulanırlar. Tablodaki alanlar aşağıda açıklanmıştır. [Azure Izleyici günlükleri sorgusuna](../../azure-monitor/log-query/log-query-overview.md) genel bakış bölümünde sorgulama ve uyarı alma hakkında daha fazla bilgi edinin.
 

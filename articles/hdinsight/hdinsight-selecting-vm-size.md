@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d347707b0f48314dd872bc3ad34ac624817d2937
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73682199"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535323"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Azure HDInsight kümeniz için doğru VM boyutunu seçme
 
@@ -32,7 +32,7 @@ VM boyutu ve türü, CPU işleme gücü, RAM boyutu ve ağ gecikmesi tarafından
 
 - RAM: VM boyutu VM 'deki kullanılabilir RAM miktarını da belirler. Diskten okumak yerine verileri işlenmek üzere bellekte depolayan iş yükleri için, çalışan düğümlerinizin verilere sığacak kadar yeterli belleğe sahip olduğundan emin olun.
 
-- Ağ: çoğu küme türü Için, küme tarafından işlenen veriler yerel diskte değildir, bunun yerine Data Lake Storage veya Azure depolama gibi bir harici depolama hizmetidir. Düğüm VM ve depolama hizmeti arasındaki ağ bant genişliğini ve aktarım hızını göz önünde bulundurun. Bir VM için kullanılabilen ağ bant genişliği genellikle daha büyük boyutlarda artar. Ayrıntılar için bkz. [VM boyutlarına genel bakış](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+- Ağ: çoğu küme türü Için, küme tarafından işlenen veriler yerel diskte değildir, bunun yerine Data Lake Storage veya Azure depolama gibi bir harici depolama hizmetidir. Düğüm VM ve depolama hizmeti arasındaki ağ bant genişliğini ve aktarım hızını göz önünde bulundurun. Bir VM için kullanılabilen ağ bant genişliği genellikle daha büyük boyutlarda artar. Ayrıntılar için bkz. [VM boyutlarına genel bakış](../virtual-machines/sizes.md).
 
 ## <a name="understanding-vm-optimization"></a>VM iyileştirmesini anlama
 
@@ -40,10 +40,10 @@ Azure 'daki sanal makine aileleri farklı kullanım durumlarına uyacak şekilde
 
 | Tür                     | Boyutlar           |    Açıklama       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Giriş düzeyi](../virtual-machines/linux/sizes-general.md)          | A, AV2  | Geliştirme ve test gibi giriş düzeyi iş yükleri için en uygun CPU performansı ve bellek yapılandırmalarının olması gerekir. Bunlar ekonomik bir seçenektir ve Azure kullanmaya başlamak için düşük maliyetli bir seçenek sunar. |
-| [Genel amaçlı](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Dengeli CPU/bellek oranı. Test ve geliştirme, küçük-orta büyüklükteki veritabanları ve küçük-orta büyüklükte trafik hacmine sahip web sunucuları için idealdir. |
-| [İşlem için iyileştirilmiş](../virtual-machines/linux/sizes-compute.md)        | F           | Yüksek CPU/bellek oranı. Orta trafikli web sunucuları, ağ araçları, toplu süreçler ve uygulama sunucuları için iyi.        |
-| [Bellek için iyileştirilmiş](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Yüksek bellek/CPU oranı. İlişkisel veritabanı sunucuları, orta veya büyük boyutlu önbellekler ve bellek içi analiz için idealdir.                 |
+| [Giriş düzeyi](../virtual-machines/sizes-general.md)          | A, AV2  | Geliştirme ve test gibi giriş düzeyi iş yükleri için en uygun CPU performansı ve bellek yapılandırmalarının olması gerekir. Bunlar ekonomik bir seçenektir ve Azure kullanmaya başlamak için düşük maliyetli bir seçenek sunar. |
+| [Genel amaçlı](../virtual-machines/sizes-general.md)          | D, DSv2, Dv2  | Dengeli CPU/bellek oranı. Test ve geliştirme, küçük-orta büyüklükteki veritabanları ve küçük-orta büyüklükte trafik hacmine sahip web sunucuları için idealdir. |
+| [İşlem için iyileştirilmiş](../virtual-machines/sizes-compute.md)        | F           | Yüksek CPU/bellek oranı. Orta trafikli web sunucuları, ağ araçları, toplu süreçler ve uygulama sunucuları için iyi.        |
+| [Bellek için iyileştirilmiş](../virtual-machines/sizes-memory.md)         | Esv3, Ev3  | Yüksek bellek/CPU oranı. İlişkisel veritabanı sunucuları, orta veya büyük boyutlu önbellekler ve bellek içi analiz için idealdir.                 |
 
 - HDInsight tarafından desteklenen bölgelerde kullanılabilir sanal makine örneklerinin fiyatlandırması hakkında bilgi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -74,4 +74,4 @@ VM SKU 'Larının ve küme boyutlarının benchi hakkında daha fazla bilgi içi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure HDInsight desteklenen düğüm yapılandırması](hdinsight-supported-node-configuration.md)
-- [Azure’da Linux sanal makine boyutları](../virtual-machines/linux/sizes.md)
+- [Azure’da Linux sanal makine boyutları](../virtual-machines/sizes.md)
