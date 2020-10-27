@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 2f2ab3c55c5532b76c45a18054fd653dd8fe8137
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 72aff2a2761d3aae695968bd5b4b9d07eab1697f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504083"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547699"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -43,7 +43,7 @@ Aşağıdaki tabloda zorlanan kısıtlar gösterilmektedir. Değerler tek bir hu
 | Kısıtlama | Ücretsiz, B1 ve S1 | B2 ve S2 | B3 ve S3 | 
 | -------- | ------- | ------- | ------- |
 | [Kimlik kayıt defteri işlemleri](#identity-registry-operations-throttle) (oluşturma, alma, listeleme, güncelleştirme, silme) | 1.67/sn/birim (100/dak/Unit) | 1.67/sn/birim (100/dak/Unit) | 83.33/sn/birim (5000/dk/birim) |
-| [Yeni cihaz bağlantıları](#device-connections-throttle) (Bu sınır, toplam bağlantı sayısı değil, _Yeni bağlantı_oranı için geçerlidir) | 100/sn veya 12/sn/birim üzerinde daha yüksek <br/> Örneğin, iki S1 birimi 2 \* 12 = 24 yeni bağlantı/sn olmakla kalmaz, birimlerinizde en az 100 yeni bağlantı/sn vardır. Dokuz S1 birimiyle, birimlerinizde 108 yeni bağlantı/sn (9 \* 12) vardır. | 120 yeni bağlantı/sn/birim | 6.000 yeni bağlantı/sn/birim |
+| [Yeni cihaz bağlantıları](#device-connections-throttle) (Bu sınır, toplam bağlantı sayısı değil, _Yeni bağlantı_ oranı için geçerlidir) | 100/sn veya 12/sn/birim üzerinde daha yüksek <br/> Örneğin, iki S1 birimi 2 \* 12 = 24 yeni bağlantı/sn olmakla kalmaz, birimlerinizde en az 100 yeni bağlantı/sn vardır. Dokuz S1 birimiyle, birimlerinizde 108 yeni bağlantı/sn (9 \* 12) vardır. | 120 yeni bağlantı/sn/birim | 6.000 yeni bağlantı/sn/birim |
 | Cihazdan buluta gönderim | 100 gönderme işlemi/sn veya 12 gönderme işlemi/sn/birim daha yüksek <br/> Örneğin, iki S1 birimi 2 \* 12 = 24/sn olmakla kalmaz, birimleriniz arasında en az 100 gönderme işlemi/sn vardır. Dokuz S1 birimiyle, birimleriniz arasında 108 gönderme işlemi/sn (9 \* 12) vardır. | 120 gönderme işlemi/sn/birim | 6.000 gönderme işlemi/sn/birim |
 | Buluttan cihaza cihaz gönderme<sup>1</sup> | 1,67 gönderme işlemi/sn/birim (100 ileti/dk/birim) | 1,67 gönderme işlemi/sn/birim (100 gönderme işlemi/dk/birim) | 83,33 gönderme işlemi/sn/birim (5.000 gönderme işlemi/dk/birim) |
 | Buluttan cihaza<sup>1</sup> alır <br/> (yalnızca cihaz HTTPS kullandığında)| 16,67 alma işlemi/sn/birim (1.000 alma işlemi/dk/birim) | 16,67 alma işlemi/sn/birim (1.000 alma işlemi/dk/birim) | 833,33 alma işlemi/sn/birim (50.000 alma işlemi/dk/birim) |
@@ -71,7 +71,7 @@ Aşağıdaki tabloda zorlanan kısıtlar gösterilmektedir. Değerler tek bir hu
 
 *  S2 için *iş cihazı işlemleri (güncelleştirme ikizi, doğrudan yöntemini çağır)* , yalnızca işleri kullanarak yöntemleri çağırdığınızda 50/sn/birim için geçerlidir. Doğrudan metotları doğrudan çağırdığınızda, 24 MB/sn/birim (S2 için) için özgün azaltma sınırı uygulanır.
 
-*  **Kota** , *her gün*hub 'ınızda gönderebilmeniz için toplam ileti sayısıdır. Hub 'ın kota sınırını [IoT Hub fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-hub/) **toplam ileti sayısı/gün** sütununda bulabilirsiniz.
+*  **Kota** , *her gün* hub 'ınızda gönderebilmeniz için toplam ileti sayısıdır. Hub 'ın kota sınırını [IoT Hub fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-hub/) **toplam ileti sayısı/gün** sütununda bulabilirsiniz.
 
 *  Buluttan cihaza ve cihazdan buluta, iletileri gönderebilmeniz için, 4 KB 'lık öbekten bağımsız *rate* olarak ileti sayısını belirleme. Her ileti en fazla 256 KB olabilir ve bu [en fazla ileti boyutudur](iot-hub-devguide-quotas-throttling.md#other-limits).
 
@@ -79,9 +79,9 @@ Aşağıdaki tabloda zorlanan kısıtlar gösterilmektedir. Değerler tek bir hu
 
 ### <a name="traffic-shaping"></a>Trafik şekillendirme
 
-IoT Hub, aşırı ara trafiğe uyum sağlamak için, sınırlı bir süre için azaltma üzerindeki istekleri kabul eder. Bu isteklerin ilk azı hemen işlenir. Ancak, istek sayısı azaltma oranını ihlal ederse IoT Hub, istekleri bir sıraya yerleştirmeyi ve sınır hızında işlenmesini başlatır. Bu etkiye *trafik şekillendirme*adı verilir. Ayrıca, bu sıranın boyutu sınırlı olur. Kısıtlama ihlali devam ederse, sonunda sıra doldurulur ve IoT Hub ile istekleri reddetme başlatılır `429 ThrottlingException` .
+IoT Hub, aşırı ara trafiğe uyum sağlamak için, sınırlı bir süre için azaltma üzerindeki istekleri kabul eder. Bu isteklerin ilk azı hemen işlenir. Ancak, istek sayısı azaltma oranını ihlal ederse IoT Hub, istekleri bir sıraya yerleştirmeyi ve sınır hızında işlenmesini başlatır. Bu etkiye *trafik şekillendirme* adı verilir. Ayrıca, bu sıranın boyutu sınırlı olur. Kısıtlama ihlali devam ederse, sonunda sıra doldurulur ve IoT Hub ile istekleri reddetme başlatılır `429 ThrottlingException` .
 
-Örneğin, bir saniyede 200 cihazdan buluta ileti göndermek için bir sanal cihaz kullanın. S1 IoT Hub (bir sınırı 100/sn D2C gönderir). İlk dakika veya ikisi için iletiler hemen işlenir. Ancak, cihaz kısıtlama sınırından daha fazla ileti gönderilmeye devam ettiğinden, IoT Hub saniyede yalnızca 100 ileti işleme başlar ve geri kalanı bir sıraya koyar. Yaşıyorsanız artırılan gecikme süresi başlar. Sonuç `429 ThrottlingException` olarak, kuyruk dolduğunda alma başlar ve [IoT Hub ölçümlerinde](iot-hub-metrics.md) "kısıtlama hatası sayısı" artmaya başlar.
+Örneğin, bir saniyede 200 cihazdan buluta ileti göndermek için bir sanal cihaz kullanın. S1 IoT Hub (bir sınırı 100/sn D2C gönderir). İlk dakika veya ikisi için iletiler hemen işlenir. Ancak, cihaz kısıtlama sınırından daha fazla ileti gönderilmeye devam ettiğinden, IoT Hub saniyede yalnızca 100 ileti işleme başlar ve geri kalanı bir sıraya koyar. Yaşıyorsanız artırılan gecikme süresi başlar. Sonuç `429 ThrottlingException` olarak, kuyruk dolduğunda alma başlar ve ["azaltma hatası sayısı" IoT Hub ölçümü](monitor-iot-hub-reference.md#device-telemetry-metrics) artmaya başlar. Ölçümlere göre uyarı ve grafik oluşturma hakkında bilgi edinmek için bkz. [Monitor IoT Hub](monitor-iot-hub.md).
 
 ### <a name="identity-registry-operations-throttle"></a>Kimlik kayıt defteri işlemleri kısıtlama
 
@@ -139,3 +139,4 @@ IoT Hub azaltma davranışının derinlemesine bir tartışması için bkz. blog
 Bu IoT Hub geliştirici kılavuzundaki diğer başvuru konuları şunları içerir:
 
 * [IoT Hub uç noktaları](iot-hub-devguide-endpoints.md)
+* [İzleyici IoT Hub](monitor-iot-hub.md)

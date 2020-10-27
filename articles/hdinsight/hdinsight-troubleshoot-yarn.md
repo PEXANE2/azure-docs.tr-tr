@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84224172dbfd63fee51b3a7b80f5990b04e5e228
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871975"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535034"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache Hadoop YARN sorunlarını giderme
 
@@ -24,7 +24,7 @@ Apache ambarı 'nda Apache Hadoop YARN yükleriyle çalışırken en üstteki so
 
 Yeni bir YARN kuyruğu oluşturmak için aşağıdaki adımları kullanın ve ardından Tüm kuyruklar arasında kapasite ayırmayı dengeleyin.
 
-Bu örnekte, iki mevcut kuyruk (**varsayılan** ve **thriftsvr**) her ikisi de %50 kapasitesinden %25 kapasiteye (Spark) %50 kapasiteye sahip olacak şekilde değiştirilmiştir.
+Bu örnekte, iki mevcut kuyruk ( **varsayılan** ve **thriftsvr** ) her ikisi de %50 kapasitesinden %25 kapasiteye (Spark) %50 kapasiteye sahip olacak şekilde değiştirilmiştir.
 
 | Kuyruk | Kapasite | Maksimum kapasite |
 | --- | --- | --- |
@@ -32,7 +32,7 @@ Bu örnekte, iki mevcut kuyruk (**varsayılan** ve **thriftsvr**) her ikisi de %
 | thrftsvr | 25% | 50% |
 | spark | 50% | 50% |
 
-1. **Ambarı görünümleri** simgesini seçin ve ardından Kılavuz stilini seçin. Sonra, **Yarn kuyruğu Yöneticisi**' ni seçin.
+1. **Ambarı görünümleri** simgesini seçin ve ardından Kılavuz stilini seçin. Sonra, **Yarn kuyruğu Yöneticisi** ' ni seçin.
 
     ![Apache ambarı panosu YARN Kuyruk Yöneticisi](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. **Varsayılan** kuyruğu seçin.
@@ -41,7 +41,7 @@ Bu örnekte, iki mevcut kuyruk (**varsayılan** ve **thriftsvr**) her ikisi de %
 3. **Varsayılan** sıra için **kapasiteyi** %50 ' dan %25 ' e değiştirin. **Thriftsvr** kuyruğu için **kapasiteyi** %25 olarak değiştirin.
 
     ![Varsayılan ve thriftsvr kuyrukları için kapasiteyi %25 olarak değiştirin](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Yeni bir kuyruk oluşturmak için **kuyruk Ekle**' yi seçin.
+4. Yeni bir kuyruk oluşturmak için **kuyruk Ekle** ' yi seçin.
 
     ![Apache ambarı YARN Pano ekleme kuyruğu](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
@@ -131,7 +131,7 @@ Bu değişiklikler, YARN Zamanlayıcı kullanıcı arabiriminde hemen görünür
 
 ### <a name="additional-reading"></a><a name="additional-reading-2"></a>Ek okuma
 
-- [SSH kullanarak HDInsight 'a (Apache Hadoop) bağlanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [SSH kullanarak HDInsight 'a (Apache Hadoop) bağlanma](./hdinsight-hadoop-linux-use-ssh-unix.md)
 - [Apache Hadoop YARN kavramları ve uygulamaları](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -142,4 +142,4 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 - [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](../azure-portal/supportability/how-to-create-azure-support-request.md)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

@@ -8,22 +8,22 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: a8d164dd50ac190d2bc14fea70cde20bfdb89361
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3a6fc2ff45d61d63118edc23f40f69f16db9131
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85849922"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536156"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight 'ta ML Hizmetleri nedir?
 
-Microsoft Machine Learning Server, Azure 'da HDInsight kümeleri oluştururken dağıtım seçeneği olarak kullanılabilir. Bu seçeneği sağlayan küme türü **ml Hizmetleri**olarak adlandırılır. Bu özellik, HDInsight 'ta uyarlanmayan analiz yöntemlerine yönelik isteğe bağlı erişim sağlar.
+Microsoft Machine Learning Server, Azure 'da HDInsight kümeleri oluştururken dağıtım seçeneği olarak kullanılabilir. Bu seçeneği sağlayan küme türü **ml Hizmetleri** olarak adlandırılır. Bu özellik, HDInsight 'ta uyarlanmayan analiz yöntemlerine yönelik isteğe bağlı erişim sağlar.
 
 HDInsight üzerinde ML Hizmetleri, neredeyse her boyuttaki veri kümelerinde R tabanlı analizler için en son özellikleri sağlar. Veri kümeleri, Azure Blob veya Data Lake Storage 'a yüklenebilir. R tabanlı uygulamalarınızın 8000 + açık kaynaklı R paketleri kullanılabilir. ScaleR 'daki yordamlar, Microsoft 'un büyük veri analizi paketi de mevcuttur.
 
 Edge düğümü, kümeye bağlanmak ve R betiklerinizi çalıştırmak için uygun bir yer sağlar. Edge düğümü, sunucunun çekirdekleri genelinde ScaleR paralelleştirilmiş dağıtılan işlevlerin çalıştırılmasına izin verir. Ayrıca, ScaleR 'nın Hadoop Haritası ' nı kullanarak bunları kümenin düğümleri arasında çalıştırabilirsiniz. Apache Spark işlem bağlamlarını da kullanabilirsiniz.
 
-Analizden kaynaklanan modeller veya tahminler, şirket içi kullanım için indirilebilirler. `operationalized`Azure 'da başka bir yerde de olabilirler. Özellikle, [Azure Machine Learning Studio (klasik)](https://studio.azureml.net)ve [Web hizmeti](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)aracılığıyla.
+Analizden kaynaklanan modeller veya tahminler, şirket içi kullanım için indirilebilirler. `operationalized`Azure 'da başka bir yerde de olabilirler. Özellikle, [Azure Machine Learning Studio (klasik)](https://studio.azureml.net)ve [Web hizmeti](../../machine-learning/classic/deploy-a-machine-learning-web-service.md)aracılığıyla.
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight 'ta ML hizmetlerini kullanmaya başlama
 
@@ -35,7 +35,7 @@ HDInsight 'ta ML Hizmetleri aşağıdaki avantajları sağlar:
 
 ### <a name="ai-innovation-from-microsoft-and-open-source"></a>Microsoft ve açık kaynaklı AI yeniliği
 
-  ML Hizmetleri, geri [alınamaz](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), geri [alınamaz, Iptal edilebilir](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)ve [microsoftml](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package)gibi dağıtılmış algoritmaların bir kümesini içerir. Bu algoritmalar, fiziksel belleğin boyutundan daha büyük olan veri boyutları üzerinde çalışabilir. Bunlar, dağıtılmış bir şekilde çok çeşitli platformlar üzerinde de çalışır. Microsoft 'un özel [R paketleri](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) ve ürünle birlikte bulunan [Python paketlerinin](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) koleksiyonu hakkında daha fazla bilgi edinin.
+  ML Hizmetleri, geri [alınamaz](/machine-learning-server/r-reference/revoscaler/revoscaler), geri [alınamaz, Iptal edilebilir](/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)ve [microsoftml](/machine-learning-server/python-reference/microsoftml/microsoftml-package)gibi dağıtılmış algoritmaların bir kümesini içerir. Bu algoritmalar, fiziksel belleğin boyutundan daha büyük olan veri boyutları üzerinde çalışabilir. Bunlar, dağıtılmış bir şekilde çok çeşitli platformlar üzerinde de çalışır. Microsoft 'un özel [R paketleri](/machine-learning-server/r-reference/introducing-r-server-r-package-reference) ve ürünle birlikte bulunan [Python paketlerinin](/machine-learning-server/python-reference/introducing-python-package-reference) koleksiyonu hakkında daha fazla bilgi edinin.
   
   ML Hizmetleri, bu Microsoft yeniliklerini ve katkılarını açık kaynaklı topluluktan (R, Python ve AI araç takımları) köprüler. Tümü tek bir kurumsal sınıf platformun üzerine. Tüm R veya Python açık kaynaklı makine öğrenimi paketleri, Microsoft 'un herhangi bir özel yeniliği ile yan yana çalışabilir.
 
@@ -43,7 +43,7 @@ HDInsight 'ta ML Hizmetleri aşağıdaki avantajları sağlar:
 
   Geleneksel paradigmalarına ve ortamlara bağlı olan kuruluşlar, işlem için çok zaman ve çaba harcamaya yatırım sağlar. Bu eylem, aşağıdakiler için çeviri süresi dahil olmak üzere önceden yapılan maliyetlere ve gecikmelere neden olur: modeller, yineleme ve geçerli tutmak için yinelemeler, mevzuat onayı ve izinleri yönetme.
 
-  ML hizmetleri kurumsal düzeyde [kullanım](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)sağlar. Machine Learning modeli tamamlandıktan sonra, Web Hizmetleri API 'Leri oluşturmak için yalnızca birkaç tıklama sürer. Bu [Web Hizmetleri](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) , buluttaki bir sunucu kılavuzunda barındırılır ve iş kolu uygulamalarıyla tümleştirilebilir. Elastik bir kılavuza dağıtım özelliği, hem Batch hem de gerçek zamanlı Puanlama için işletmenizin ihtiyaçlarına sorunsuz şekilde ölçeklendirmenize olanak tanır. Yönergeler için bkz. [HDInsight ÜZERINDE ml Hizmetleri](r-server-operationalize.md)'ni kullanma.
+  ML hizmetleri kurumsal düzeyde [kullanım](/machine-learning-server/what-is-operationalization)sağlar. Machine Learning modeli tamamlandıktan sonra, Web Hizmetleri API 'Leri oluşturmak için yalnızca birkaç tıklama sürer. Bu [Web Hizmetleri](/machine-learning-server/operationalize/concept-what-are-web-services) , buluttaki bir sunucu kılavuzunda barındırılır ve iş kolu uygulamalarıyla tümleştirilebilir. Elastik bir kılavuza dağıtım özelliği, hem Batch hem de gerçek zamanlı Puanlama için işletmenizin ihtiyaçlarına sorunsuz şekilde ölçeklendirmenize olanak tanır. Yönergeler için bkz. [HDInsight ÜZERINDE ml Hizmetleri](r-server-operationalize.md)'ni kullanma.
 
 <!---
 * **Deep ecosystem engagements to deliver customer success with optimal total cost of ownership**
@@ -60,9 +60,9 @@ Aşağıdaki özellikler, HDInsight üzerinde ML hizmetlerine eklenmiştir.
 
 | Özellik kategorisi | Açıklama |
 |------------------|-------------|
-| R-etkin | R 'de yazılmış çözümler için r ve betik yürütme için çalışma zamanı altyapısını içeren r için [r paketleri](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) . |
-| Python etkin | Python 'da yazılmış çözümler için Python [modülleri](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) , Python 'un açık kaynaklı bir dağıtımı ve betik yürütme için çalışma zamanı altyapısı.
-| [Önceden eğitilen modeller](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Görsel analiz ve metin yaklaşımı analizi için sağladığınız verileri puanlamaya hazırlanın. |
+| R-etkin | R 'de yazılmış çözümler için r ve betik yürütme için çalışma zamanı altyapısını içeren r için [r paketleri](/machine-learning-server/r-reference/introducing-r-server-r-package-reference) . |
+| Python etkin | Python 'da yazılmış çözümler için Python [modülleri](/machine-learning-server/python-reference/introducing-python-package-reference) , Python 'un açık kaynaklı bir dağıtımı ve betik yürütme için çalışma zamanı altyapısı.
+| [Önceden eğitilen modeller](/machine-learning-server/install/microsoftml-install-pretrained-models) | Görsel analiz ve metin yaklaşımı analizi için sağladığınız verileri puanlamaya hazırlanın. |
 | [Dağıtma ve kullanma](r-server-operationalize.md) | `Operationalize` sunucunuz ve Web hizmeti olarak çözüm dağıtın. |
 | [Uzaktan yürütme](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | İstemci iş istasyonunuzdan ağınızdaki ML Hizmetleri kümesinde uzak oturumlar başlatın. |
 
@@ -96,7 +96,7 @@ Azure Machine Learning kullanarak puan almak için, modelinizi bir Azure Web hiz
 
 ### <a name="score-on-premises"></a>Şirket içi puan
 
-Modelinizi oluşturduktan sonra şirket içinde puan almak için: modeli R 'de serileştirme, indirme, serbest bırakma, seri hale getirme ve ardından yeni veri Puanlama için kullanma. Daha önce HDInsight 'ta veya [Web Hizmetleri](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)'ni kullanarak, daha önce açıklanan yaklaşımı kullanarak yeni verileri puanlandırın.
+Modelinizi oluşturduktan sonra şirket içinde puan almak için: modeli R 'de serileştirme, indirme, serbest bırakma, seri hale getirme ve ardından yeni veri Puanlama için kullanma. Daha önce HDInsight 'ta veya [Web Hizmetleri](/machine-learning-server/operationalize/concept-what-are-web-services)'ni kullanarak, daha önce açıklanan yaklaşımı kullanarak yeni verileri puanlandırın.
 
 ## <a name="maintain-the-cluster"></a>Kümeyi koruma
 
@@ -112,7 +112,7 @@ Kümeyi oluşturduktan sonra ek paketler bir betik eylemiyle yüklenebilir. Daha
 
 ML Hizmetleri için kullanılabilir bellek, bir MapReduce işi çalıştırıldığında değiştirilebilir. Bir kümeyi değiştirmek için kümeniz için Apache ambarı Kullanıcı arabirimini kullanın. Ambarı Kullanıcı arabirimi yönergeleri için bkz. [ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme](../hdinsight-hadoop-manage-ambari.md).
 
-ML Hizmetleri için kullanılabilir bellek, **RxHadoopMR**çağrısında bulunan Hadoop anahtarları kullanılarak değiştirilebilir:
+ML Hizmetleri için kullanılabilir bellek, **RxHadoopMR** çağrısında bulunan Hadoop anahtarları kullanılarak değiştirilebilir:
 
 ```r
 hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"

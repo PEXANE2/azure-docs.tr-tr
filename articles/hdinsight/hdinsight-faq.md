@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0240510a2232bd12a94d5cdd59672270289e5e8f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84022223"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547529"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Sık sorulan sorular
 
@@ -24,7 +24,7 @@ Bu makalede, [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)'
 
 ### <a name="how-do-i-provision-an-hdinsight-cluster"></a>HDInsight kümesi sağlamak Nasıl yaparım? misiniz?
 
-HDInsight kümeleri türlerini ve sağlama yöntemlerini gözden geçirmek için bkz. [HDInsight 'ta Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasını içeren kümeleri ayarlama](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).
+HDInsight kümeleri türlerini ve sağlama yöntemlerini gözden geçirmek için bkz. [HDInsight 'ta Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasını içeren kümeleri ayarlama](./hdinsight-hadoop-provision-linux-clusters.md).
 
 ### <a name="how-do-i-delete-an-existing-hdinsight-cluster"></a>Nasıl yaparım? mevcut bir HDInsight kümesi silinsin mi?
 
@@ -38,7 +38,7 @@ Oluşturma ve silme işlemleri arasında en az 30 ila 60 dakika bırakmayı dene
 
 Uygun çekirdek sayısı ve diğer yapılandırma seçenekleri çeşitli etkenlere bağlıdır.
 
-Daha fazla bilgi için bkz. [HDInsight kümeleri Için kapasite planlaması](https://docs.microsoft.com/azure/hdinsight/hdinsight-capacity-planning).
+Daha fazla bilgi için bkz. [HDInsight kümeleri Için kapasite planlaması](./hdinsight-capacity-planning.md).
 
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>HDInsight kümesinde çeşitli düğüm türleri nelerdir?
 
@@ -46,11 +46,11 @@ Bkz. [Azure HDInsight kümelerinde kaynak türleri](hdinsight-virtual-network-ar
 
 ### <a name="what-are-the-best-practices-for-creating-large-hdinsight-clusters"></a>Büyük HDInsight kümeleri oluşturmak için en iyi uygulamalar nelerdir?
 
-1. Küme ölçeklenebilirliğini geliştirmek için [özel bir AMBARı DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db) ile HDInsight kümeleri ayarlamayı öneririz.
-2. Daha yüksek bant genişliğinden ve Azure Data Lake Storage 2. diğer performans özelliklerinden faydalanmak için HDInsight kümeleri oluşturmak için [Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) kullanın.
+1. Küme ölçeklenebilirliğini geliştirmek için [özel bir AMBARı DB](./hdinsight-custom-ambari-db.md) ile HDInsight kümeleri ayarlamayı öneririz.
+2. Daha yüksek bant genişliğinden ve Azure Data Lake Storage 2. diğer performans özelliklerinden faydalanmak için HDInsight kümeleri oluşturmak için [Azure Data Lake Storage 2.](./hdinsight-hadoop-use-data-lake-storage-gen2.md) kullanın.
 3. Bu düğümlerde çalışan birden çok ana hizmete uyum sağlamak için headnodes yeterince büyük olmalıdır.
 4. Etkileşimli sorgu gibi bazı özel iş yüklerinin de daha büyük Zookeeper düğümleri olması gerekir. Lütfen en az 8 çekirdekli VM 'yi değerlendirin.
-5. Hive ve Spark durumunda [dış Hive meta veri deposu](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores)kullanın.
+5. Hive ve Spark durumunda [dış Hive meta veri deposu](./hdinsight-use-external-metadata-stores.md)kullanın.
 
 ## <a name="individual-components"></a>Tek Tek Bileşenler
 
@@ -58,11 +58,11 @@ Bkz. [Azure HDInsight kümelerinde kaynak türleri](hdinsight-virtual-network-ar
 
 Evet. Ek bileşenler yüklemek veya küme yapılandırmasını özelleştirmek için şunu kullanın:
 
-- Oluşturma sırasında veya sonrasında betikler. Betikler [betik eylemi](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)aracılığıyla çağrılır. Betik eylemi, Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK ' dan kullanabileceğiniz bir yapılandırma seçeneğidir. Bu yapılandırma seçeneği Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK 'dan kullanılabilir.
+- Oluşturma sırasında veya sonrasında betikler. Betikler [betik eylemi](./hdinsight-hadoop-customize-cluster-linux.md)aracılığıyla çağrılır. Betik eylemi, Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK ' dan kullanabileceğiniz bir yapılandırma seçeneğidir. Bu yapılandırma seçeneği Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK 'dan kullanılabilir.
 
 - Uygulamaları yüklemek için [HDInsight uygulama platformu](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) .
 
-Desteklenen bileşenlerin listesi için bkz. [HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)
+Desteklenen bileşenlerin listesi için bkz. [HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Kümede önceden yüklenmiş olan bileşenleri yükseltebilir miyim?
 
@@ -129,11 +129,11 @@ Evet, aynı HDInsight sürümünü kullandıkları sürece, birden çok kümede 
 
 Daha fazla bilgi için, aşağıdaki belgelere bakın:
 
-- [Ağ trafiğini denetleme](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
+- [HDInsight üzerinde Apache Hadoop Hizmetleri tarafından kullanılan bağlantı noktaları](./hdinsight-hadoop-port-settings-for-services.md)
 
 - [Özel uç nokta ile bir sanal ağdaki HDInsight kümelerine gelen trafiği güvenli hale getirme](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
 
-- [HDInsight yönetim IP adresleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- [HDInsight yönetim IP adresleri](./hdinsight-management-ip-addresses.md)
 
 ### <a name="can-i-deploy-an-additional-virtual-machine-within-the-same-subnet-as-an-hdinsight-cluster"></a>Aynı alt ağ içinden bir HDInsight kümesiyle ek bir sanal makine dağıtabilir miyim?
 
@@ -186,7 +186,7 @@ Sertifika yetkilisi tarafından verilen bir sertifikanın kullanılması öneril
 
 ### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>Ranger 'da gösterilen oturum açma etkinliğini nasıl çekirim?
 
-Denetim gereksinimleri için, Microsoft, [HDInsight kümelerini izlemek Için Azure izleyici günlüklerini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial)bölümünde açıklandığı gibi Azure izleyici günlüklerini etkinleştirmenizi önerir.
+Denetim gereksinimleri için, Microsoft, [HDInsight kümelerini izlemek Için Azure izleyici günlüklerini kullanma](./hdinsight-hadoop-oms-log-analytics-tutorial.md)bölümünde açıklandığı gibi Azure izleyici günlüklerini etkinleştirmenizi önerir.
 
 ### <a name="can-i-disable-clamscan-on-my-cluster"></a>Kümeimde devre dışı bırakabilir miyim `Clamscan` ?
 
@@ -229,7 +229,7 @@ Aşağıdaki eylemlerden birini yapın:
 
 - [PowerShell kullanma](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
 
-- */User/Hive/boyutunu bulur. *HDInsight kümesinde aşağıdaki komut satırını kullanarak çöp kutusu/klasör:
+- */User/Hive/boyutunu bulur.* HDInsight kümesinde aşağıdaki komut satırını kullanarak çöp kutusu/klasör:
   
   `hdfs dfs -du -h /user/hive/.Trash/`
 
@@ -258,7 +258,7 @@ done
 Azure Depolama Gezgini kullanarak kullanıcılarınızın güvenlik gruplarına veri erişim ilkeleri atayabilirsiniz. Daha fazla bilgi için bkz.
 
 - [Nasıl yaparım?, Azure AD kullanıcılarının Hive veya diğer hizmetleri kullanarak Data Lake Storage 2. verileri sorgulaması için izinleri ayarlamak ister misiniz?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
-- [Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanarak dosya ve Dizin düzeyi izinleri ayarlama](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+- [Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanarak dosya ve Dizin düzeyi izinleri ayarlama](../storage/blobs/data-lake-storage-explorer.md)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>Çalışan düğümlerinin disk boyutunu arttırmadan, bir kümede, bu depolama alanını artırabilir miyim?
 
@@ -272,7 +272,7 @@ Bkz. [HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanm
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>Kenar düğümüne nasıl bağlanabilirim?
 
-Edge düğümü oluşturduktan sonra, bağlantı noktası 22 ' de SSH kullanarak buna bağlanabilirsiniz. Uç düğümünün adını küme portalından bulabilirsiniz. Adlar *genellikle ile biter*.
+Edge düğümü oluşturduktan sonra, bağlantı noktası 22 ' de SSH kullanarak buna bağlanabilirsiniz. Uç düğümünün adını küme portalından bulabilirsiniz. Adlar *genellikle ile biter* .
 
 ### <a name="why-are-persisted-scripts-not-running-automatically-on-newly-created-edge-nodes"></a>Kalıcı betikler neden yeni oluşturulan kenar düğümlerinde otomatik olarak çalışmıyor?
 
@@ -321,7 +321,7 @@ Komutu sanal ağ dışından veya eşlenmiş olmayan bir sanal ağdan çağırı
 > [!NOTE]
 > Kıvrımlı bir parola ister. Küme oturum açma Kullanıcı adı için geçerli bir parola girmeniz gerekir.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>HDInsight kümesini dağıtma maliyeti ne kadar sürer?
 
@@ -333,11 +333,11 @@ HDInsight kümesi faturalandırması küme oluşturulduğunda başlar ve küme s
 
 ### <a name="how-do-i-cancel-my-subscription"></a>Aboneliğimi iptal Nasıl yaparım? mi?
 
-Aboneliğinizi iptal etme hakkında daha fazla bilgi için bkz. [Azure aboneliğinizi Iptal etme](https://docs.microsoft.com/azure/billing/billing-how-to-cancel-azure-subscription).
+Aboneliğinizi iptal etme hakkında daha fazla bilgi için bkz. [Azure aboneliğinizi Iptal etme](../cost-management-billing/manage/cancel-azure-subscription.md).
 
 ### <a name="for-pay-as-you-go-subscriptions-what-happens-after-i-cancel-my-subscription"></a>Kullandıkça Öde abonelikleri için aboneliğimi iptal etmem durumunda ne olur?
 
-Aboneliğiniz iptal edildikten sonra hakkında daha fazla bilgi için bkz. [aboneliğimi iptal etdiğimde ne olur?](/azure/billing/billing-how-to-cancel-azure-subscription)
+Aboneliğiniz iptal edildikten sonra hakkında daha fazla bilgi için bkz. [aboneliğimi iptal etdiğimde ne olur?](../cost-management-billing/manage/cancel-azure-subscription.md)
 
 ## <a name="hive"></a>Hive
 

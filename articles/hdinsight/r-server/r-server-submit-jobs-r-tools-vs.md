@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 402092f1667abb49da4521b91ba1f0e7d471f0d1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 08426c74b26c18b15466578d9921520da1e9c923
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490263"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536241"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Visual Studio için R Araçları’ndan iş gönderme
 
-[Visual Studio için R araçları](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (rtvs), hem [Visual Studio 2017](https://www.visualstudio.com/downloads/), hem de Visual [Studio 2015 güncelleştirme 3](https://go.microsoft.com/fwlink/?LinkId=691129) veya üzeri topluluk (ücretsiz), Professional ve Enterprise sürümleri için ücretsiz, açık kaynaklı bir uzantıdır. RTVS, [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019&preserve-view=true)için kullanılamaz.
+[Visual Studio için R araçları](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (rtvs), hem [Visual Studio 2017](https://www.visualstudio.com/downloads/), hem de Visual [Studio 2015 güncelleştirme 3](https://go.microsoft.com/fwlink/?LinkId=691129) veya üzeri topluluk (ücretsiz), Professional ve Enterprise sürümleri için ücretsiz, açık kaynaklı bir uzantıdır. RTVS, [Visual Studio 2019](/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?preserve-view=true&view=vs-2019)için kullanılamaz.
 
-RTVS, [R etkileşim penceresi](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), IntelliSense (kod tamamlama) gibi araçlar sunarak r iş akışınızı geliştirir, ggplot2 ve Ggviz, [r Code hata ayıklama](https://docs.microsoft.com/visualstudio/rtvs/debugging)gibi r kitaplıkları aracılığıyla [görselleştirme çizmektedir](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) .
+RTVS, [R etkileşim penceresi](/visualstudio/rtvs/interactive-repl) (REPL), IntelliSense (kod tamamlama) gibi araçlar sunarak r iş akışınızı geliştirir, ggplot2 ve Ggviz, [r Code hata ayıklama](/visualstudio/rtvs/debugging)gibi r kitaplıkları aracılığıyla [görselleştirme çizmektedir](/visualstudio/rtvs/visualizing-data) .
 
 ## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
@@ -27,19 +27,19 @@ RTVS, [R etkileşim penceresi](https://docs.microsoft.com/visualstudio/rtvs/inte
 
     ![Visual Studio 2017 ' de RTVS 'yi yükleme](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. *Veri bilimi ve analitik uygulamalar* iş yükünü seçin, ardından **r dil desteğini**, **r geliştirmesi için çalışma zamanı desteğini**ve **Microsoft R Client** seçenekleri seçin.
+2. *Veri bilimi ve analitik uygulamalar* iş yükünü seçin, ardından **r dil desteğini** , **r geliştirmesi için çalışma zamanı desteğini** ve **Microsoft R Client** seçenekleri seçin.
 
 3. SSH kimlik doğrulaması için ortak ve özel anahtarlara sahip olmanız gerekir.
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Makinenize [ml Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) . ML Server [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) ve işlevlerini sağlar `RxSpark` .
+4. Makinenize [ml Server](/previous-versions/machine-learning-server/install/r-server-install-windows) . ML Server [`RevoScaleR`](/machine-learning-server/r-reference/revoscaler/revoscaler) ve işlevlerini sağlar `RxSpark` .
 
 5. Yerel istemcinizdeki işlevleri HDInsight kümenize çalıştırmak için bir işlem bağlamı sağlamak üzere [Putty](https://www.putty.org/) ' i Yükle `RevoScaleR` .
 
 6. R araçları için çalışma alanınız için yeni bir düzen sağlayan Visual Studio ortamınıza Veri Bilimi Ayarları uygulama seçeneğiniz vardır.
-   1. Geçerli Visual Studio ayarlarınızı kaydetmek için **araçlar > içeri ve dışarı aktarma ayarları** komutunu kullanın, ardından **Seçili ortam ayarlarını dışarı aktar** ' ı seçin ve bir dosya adı belirtin. Bu ayarları geri yüklemek için aynı komutu kullanın ve **Seçili ortam ayarlarını Içeri aktar**' ı seçin.
+   1. Geçerli Visual Studio ayarlarınızı kaydetmek için **araçlar > içeri ve dışarı aktarma ayarları** komutunu kullanın, ardından **Seçili ortam ayarlarını dışarı aktar** ' ı seçin ve bir dosya adı belirtin. Bu ayarları geri yüklemek için aynı komutu kullanın ve **Seçili ortam ayarlarını Içeri aktar** ' ı seçin.
 
-   2. **R araçları** menü öğesine gidin ve **veri bilimi ayarları..**. seçeneğini belirleyin.
+   2. **R araçları** menü öğesine gidin ve **veri bilimi ayarları..** . seçeneğini belirleyin.
 
        ![Visual Studio Veri Bilimi Ayarları](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
@@ -49,7 +49,7 @@ RTVS, [R etkileşim penceresi](https://docs.microsoft.com/visualstudio/rtvs/inte
 ## <a name="execute-local-r-methods"></a>Yerel R yöntemlerini yürütme
 
 1. HDInsight ML Hizmetleri kümenizi oluşturun.
-2. [Rtvs uzantısını](https://docs.microsoft.com/visualstudio/rtvs/installation)yükler.
+2. [Rtvs uzantısını](/visualstudio/rtvs/installation)yükler.
 3. [Örnek ZIP dosyasını](https://github.com/Microsoft/RTVS-docs/archive/master.zip)indirin.
 4. `examples/Examples.sln`Visual Studio 'da çözümü başlatmak için öğesini açın.
 5. `1-Getting Started with R.R`Dosyayı `A first look at R` çözüm klasöründe açın.
@@ -121,7 +121,7 @@ PuTTY ile donatılmış bir Windows bilgisayarından Microsoft ML Server/Microso
 
         ![Azure HDInsight depolama kapsayıcıları](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. Kümenizin kapsayıcı adını seçin, **Kullanıcı** klasörüne gidin (listenin en altında bulunan *daha fazla yükle* ' ye tıklamanız gerekebilir), ardından, *iptal edilebilir*' i ve ardından **Newuser**' ı seçin. `people.json`Dosya `newUser` klasöründe görüntülenmelidir.
+    4. Kümenizin kapsayıcı adını seçin, **Kullanıcı** klasörüne gidin (listenin en altında bulunan *daha fazla yükle* ' ye tıklamanız gerekebilir), ardından, *iptal edilebilir* ' i ve ardından **Newuser** ' ı seçin. `people.json`Dosya `newUser` klasöründe görüntülenmelidir.
 
         ![HDInsight dosya klasörü konumunu kopyaladı](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 

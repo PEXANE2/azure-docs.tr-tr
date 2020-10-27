@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 1f062a8f358ac311b53e657fb5714583458bd9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e62e2583f8a4d3872a1342f0f702a1913f733e7f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87872591"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545472"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight 'ta Python kullanarak Apache Storm topolojileri geliştirme
 
@@ -22,15 +22,15 @@ Python bileşenleri kullanan bir [Apache Storm](https://storm.apache.org/) topol
 > [!IMPORTANT]  
 > Bu belgedeki bilgiler, HDInsight 3,6 ' de fırtınası kullanılarak test edilmiştir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
+* HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü** için **fırtınası** seçme.
 
 * Yerel bir fırtınası geliştirme ortamı (Isteğe bağlı). Yerel bir fırtınası ortamı yalnızca, topolojiyi yerel olarak çalıştırmak istiyorsanız gereklidir. Daha fazla bilgi için bkz. [geliştirme ortamı kurma](https://storm.apache.org/releases/current/Setting-up-development-environment.html).
 
 * [Python 2,7 veya üzeri](https://www.python.org/downloads/).
 
-* [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks).
+* [Java geliştirici seti (JDK) sürüm 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
 
@@ -114,7 +114,7 @@ Daha önce belirtildiği gibi, `storm.py` fırtınası Için Thrift tanımını 
     storm kill wordcount
     ```
 
-    Alternatif olarak, fırtınası Kullanıcı arabirimini de kullanabilirsiniz. Topoloji için **topoloji eylemleri** altında **Sonlandır**' ı seçin.
+    Alternatif olarak, fırtınası Kullanıcı arabirimini de kullanabilirsiniz. Topoloji için **topoloji eylemleri** altında **Sonlandır** ' ı seçin.
 
 ## <a name="run-the-topology-locally"></a>Topolojiyi yerel olarak çalıştırma
 
@@ -141,7 +141,7 @@ Topoloji başladıktan sonra, yerel konsola aşağıdaki metne benzer bilgiler y
 24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 ```
 
-Topolojiyi durdurmak için __CTRL + C__kullanın.
+Topolojiyi durdurmak için __CTRL + C__ kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2cc0ef4ed0e7a63a822efc34e223cbec20815dd9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 82531466c80917087ca007900ca79b3485f38a21
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521484"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546271"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure bilişsel hizmetler nedir?
 
@@ -31,7 +31,7 @@ Bilişsel hizmetler 'in bilişsel olarak anlaşılmasına yönelik Katalog, beş
 * Konuşma
 * Dil
 * Karar
-* Arayın
+* Arama
 
 Bu makalede yer alan aşağıdaki bölümlerde, bu beş sütun sayısının parçası olan hizmetlerin bir listesi yer almaktadır.
 
@@ -93,7 +93,18 @@ Bu makalede yer alan aşağıdaki bölümlerde, bu beş sütun sayısının par�
 |[Bing Yerel İşletme Arama](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "Bing Yerel İşletme Arama")| Bing yerel Iş Arama API 'SI, uygulamalarınızın arama sorguları temelinde yerel işletmeler hakkında iletişim ve konum bilgilerini bulmasını sağlar.|
 |[Bing Yazım Denetimi](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Bing Yazım Denetimi")|Bing Yazım Denetimi bağlamsal dilbilgisi ve yazım denetimi gerçekleştirmenize olanak tanır.|
 
-## <a name="get-started-with-cognitive-services"></a>Bilişsel Hizmetler’i kullanmaya başlama
+## <a name="development-options"></a>Geliştirme seçenekleri 
+
+Azure ve bilişsel hizmetler ile çeşitli geliştirme seçeneklerine erişebilirsiniz, örneğin:
+
+* Logic Apps ve güç otomatikleştirme gibi Otomasyon ve tümleştirme araçları.
+* Azure Işlevleri ve App Service gibi dağıtım seçenekleri. 
+* Güvenli erişim için bilişsel hizmetler Docker kapsayıcıları.
+* Büyük veri senaryoları için Apache Spark, Azure Databricks, Azure SYNAPSE Analytics ve Azure Kubernetes hizmeti gibi araçlar. 
+
+Daha fazla bilgi için bkz. bilişsel [Hizmetler geliştirme seçenekleri](./cognitive-services-development-options.md).
+
+## <a name="learn-with-the-quickstarts"></a>Hızlı başlangıçlarla öğrenin
 
 Aşağıdaki yöntemleri kullanarak uygulamalı hızlı başlangıçlarla bilişsel hizmetler kaynağı oluşturarak başlayın:
 

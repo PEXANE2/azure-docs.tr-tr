@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: b33fab7657827733b2c5e7724666a3800686c8d9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b0f8c5806ba22708db6dc537d391c1f1b1a183ec
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91564791"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543823"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>MySQL için Azure Veritabanı Tek Sunucu
 
@@ -55,7 +55,7 @@ Tek sunucu hizmeti otomatik olarak sunucu yedeklemeleri oluşturur ve bunları K
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Saniyeler içinde performansı ve ölçeği ayarlama
 
-Tek sunucu hizmeti üç SKU katmanında mevcuttur: temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Temel katman, düşük maliyetli geliştirme ve düşük eşzamanlılık iş yükleri için idealdir. Genel Amaçlı ve bellek için Iyileştirilmiş, yüksek eşzamanlılık, ölçek ve öngörülebilir performans gerektiren üretim iş yükleri için daha uygundur. İlk uygulamanızı aylık birkaç dolar ücretle küçük bir veritabanı üzerinde oluşturabilir ve sonra çözümünüzün gereksinimlerine göre ölçeği ayarlayabilirsiniz. Depolama Ölçeklendirmesi çevrimiçi ve depolama otomatik büyümesini destekler. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesini sağlar. Yalnızca kullandığınız kaynaklar için ödeme yaparsınız. Ayrıntılar için bkz. [fiyatlandırma katmanları](concepts-service-tiers.md) .
+Tek sunucu hizmeti üç SKU katmanında mevcuttur: temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Temel katman, düşük maliyetli geliştirme ve düşük eşzamanlılık iş yükleri için idealdir. Genel Amaçlı ve bellek için Iyileştirilmiş, yüksek eşzamanlılık, ölçek ve öngörülebilir performans gerektiren üretim iş yükleri için daha uygundur. İlk uygulamanızı aylık birkaç dolar ücretle küçük bir veritabanı üzerinde oluşturabilir ve sonra çözümünüzün gereksinimlerine göre ölçeği ayarlayabilirsiniz. Depolama Ölçeklendirmesi çevrimiçi ve depolama otomatik büyümesini destekler. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesini sağlar. Yalnızca kullandığınız kaynaklar için ödeme yaparsınız. Ayrıntılar için bkz. [Fiyatlandırma katmanları](./concepts-pricing-tiers.md).
 
 ## <a name="enterprise-grade-security-compliance-and-governance"></a>Kurumsal düzeyde güvenlik, uyumluluk ve Idare
 
@@ -63,7 +63,7 @@ Tek sunucu hizmeti, bekleyen verilerin depolama şifrelemesi için FIPS 140-2 ta
 
 Hizmet [özel bağlantı](concepts-data-access-security-private-link.md) kullanarak sunuculara özel erişim sağlar ve [Gelişmiş tehdit koruması](concepts-data-access-and-security-threat-protection.md) özelliği sağlar. Gelişmiş tehdit koruması, veritabanlarına erişmek veya veritabanına yararlanmak için olağan dışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar.
 
-Yerel kimlik doğrulamasına ek olarak, tek sunucu hizmeti  [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) kimlik doğrulamasını destekler. Azure AD kimlik doğrulaması, Azure AD 'de tanımlanan ve yönetilen kimlikleri kullanarak MySQL sunucularına bağlanma mekanizmasıdır. Azure AD kimlik doğrulamasıyla, veritabanı kullanıcı kimliklerini ve diğer Azure hizmetlerini, erişim denetimini basitleştiren ve merkezileştiren merkezi bir konumda yönetebilirsiniz.
+Yerel kimlik doğrulamasına ek olarak, tek sunucu hizmeti  [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) kimlik doğrulamasını destekler. Azure AD kimlik doğrulaması, Azure AD 'de tanımlanan ve yönetilen kimlikleri kullanarak MySQL sunucularına bağlanma mekanizmasıdır. Azure AD kimlik doğrulamasıyla, veritabanı kullanıcı kimliklerini ve diğer Azure hizmetlerini, erişim denetimini basitleştiren ve merkezileştiren merkezi bir konumda yönetebilirsiniz.
 
 Tüm veritabanı düzeyindeki etkinlikleri izlemek için [Denetim günlüğü](concepts-audit-logs.md) kullanılabilir. 
 
@@ -80,7 +80,7 @@ Tek sunucu hizmeti yerleşik performans izleme ve uyarı özellikleriyle donatı
 Hizmet MySQL 'in topluluk sürümünü çalıştırır. Bu, tam uygulama uyumluluğuna izin verir ve MySQL altyapısında geliştirilen mevcut uygulamayı tek sunucu hizmetine geçirmek için en az yeniden düzenleme maliyeti gerektirir. Tek sunucuya geçiş, aşağıdaki seçeneklerden biri kullanılarak gerçekleştirilebilir:
 
 - **Dökümünü al ve geri yükle** – kullanıcıların bazı kapalı kalma süresini karşılayabileceği, döküm ve geri yükleme işlemleri, mysqldump/mydumper gibi topluluk araçlarını kullanarak geçirmek için en hızlı yolu sağlayabilir. Ayrıntılar için bkz. [döküm kullanarak geçiş ve geri yükleme](concepts-migrate-dump-restore.md) . 
-- **Azure veritabanı geçiş hizmeti** : en az kapalı kalma süresiyle tek sunucuya sorunsuz ve Basitleştirilmiş geçişler Için [Azure veritabanı geçiş hizmeti](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) yararlanılabilir olabilir. 
+- **Azure veritabanı geçiş hizmeti** : en az kapalı kalma süresiyle tek sunucuya sorunsuz ve Basitleştirilmiş geçişler Için [Azure veritabanı geçiş hizmeti](../dms/tutorial-mysql-azure-mysql-online.md) yararlanılabilir olabilir. 
 - **Veri çoğaltma** : en düşük kesinti süresi geçişleri için, binlog tabanlı çoğaltmaya dayanan veri çoğaltma işlemi de yararlanılabilir olabilir. Geçiş üzerinde daha fazla denetim isteyen uygulamalı uzmanlar tarafından en az kapalı kalma süresi geçişleri için veri içi çoğaltma tercih edilir. Ayrıntılar için bkz. [veri çoğaltma](concepts-data-in-replication.md) .
 
 ## <a name="contacts"></a>Kişiler
@@ -108,4 +108,3 @@ Artık MySQL için Azure veritabanı tek sunucu dağıtım moduna giriş okudı�
   - [PHP](./connect-php.md)
   - [.NET (C#)](./connect-csharp.md)
   - [Git](./connect-go.md)
-  

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: 71f9bc75bc2b84708af54ba89918cd874099a2d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d91da1aa6f7079069541ac955fce8331591a3bc6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85961906"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546186"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight 'ta bellek yetersiz Apache Hive hatasını çözme
 
@@ -91,7 +91,7 @@ Destek ve mühendislik ekiplerimiz, bellek yetersiz hatası nedeniyle [Apache JI
 
 "Hive. Auto. Convert. JOIN. noconditionaltask = true olduğunda noconditionaltask 'ı denetliyoruz. boyut ve harita birleştirmesindeki tablo boyutlarının toplamı noconditionaltask değerinden küçükse, planın bir harita birleşimi oluşturacağından, bununla ilgili sorun, hesaplamanın farklı bir karma uygulama tarafından sunulan ek yükü, küçük bir kenar boşluğu sorguları tarafından noconditionaltask boyutundan küçükse, OOM 'ye vuracak şekilde, farklı HashTable uygulamasına göre daha az bir değer elde etmez.
 
-hive-site.xml dosyasındaki **Hive. Auto. Convert. JOIN. noconditionaltask** , **true**olarak ayarlandı:
+hive-site.xml dosyasındaki **Hive. Auto. Convert. JOIN. noconditionaltask** , **true** olarak ayarlandı:
 
 ```xml
 <property>
@@ -105,14 +105,14 @@ hive-site.xml dosyasındaki **Hive. Auto. Convert. JOIN. noconditionaltask** , *
 </property>
 ```
 
-Büyük olasılıkla Map JOIN, Java yığın alanının bellek yetersiz hatası nedeniyle oluşur. Tez yürütme altyapısı, aslında tez kapsayıcısına ait olan bir yığın alanı kullanıldığında, [HDInsight 'Ta Hadoop Yarn bellek ayarlarında](https://docs.microsoft.com/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight)blog gönderisi bölümünde açıklandığı gibi. Tez kapsayıcı belleğini açıklayan aşağıdaki resme bakın.
+Büyük olasılıkla Map JOIN, Java yığın alanının bellek yetersiz hatası nedeniyle oluşur. Tez yürütme altyapısı, aslında tez kapsayıcısına ait olan bir yığın alanı kullanıldığında, [HDInsight 'Ta Hadoop Yarn bellek ayarlarında](/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight)blog gönderisi bölümünde açıklandığı gibi. Tez kapsayıcı belleğini açıklayan aşağıdaki resme bakın.
 
 ![Tez kapsayıcı bellek diyagramı: Hive bellek yetersiz hatası](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-Blog gönderisi önerdiğinde, aşağıdaki iki bellek ayarı yığın için kapsayıcı belleğini tanımlar: **Hive. tez. Container. size** ve **Hive. tez. Java. opts**. Deneyimimizden, yetersiz bellek özel durumu, kapsayıcı boyutu çok küçük olduğu anlamına gelmez. Java yığın boyutunun (Hive. tez. Java. opts) çok küçük olduğu anlamına gelir. Bellek yetersiz olduğunda **Hive. tez. Java. opts**'yi artırmayı deneyebilirsiniz. Gerekirse **Hive. tez. Container. size**öğesini artırmanız gerekebilir. **Java. opts** ayarı kapsayıcının %80 ' inden oluşmalıdır. **Boyut**.
+Blog gönderisi önerdiğinde, aşağıdaki iki bellek ayarı yığın için kapsayıcı belleğini tanımlar: **Hive. tez. Container. size** ve **Hive. tez. Java. opts** . Deneyimimizden, yetersiz bellek özel durumu, kapsayıcı boyutu çok küçük olduğu anlamına gelmez. Java yığın boyutunun (Hive. tez. Java. opts) çok küçük olduğu anlamına gelir. Bellek yetersiz olduğunda **Hive. tez. Java. opts** 'yi artırmayı deneyebilirsiniz. Gerekirse **Hive. tez. Container. size** öğesini artırmanız gerekebilir. **Java. opts** ayarı kapsayıcının %80 ' inden oluşmalıdır. **Boyut** .
 
 > [!NOTE]  
-> **Hive. tez. Java. opts** ayarı her zaman **Hive. tez. Container. SIZE**değerinden küçük olmalıdır.
+> **Hive. tez. Java. opts** ayarı her zaman **Hive. tez. Container. SIZE** değerinden küçük olmalıdır.
 
 Bir D12 makinesinde 28 GB bellek bulunduğundan, 10 GB 'lık bir kapsayıcı boyutu (10240 MB) kullanmaya ve Java 'ya %80 ' i atamaya karar verdik. opts:
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 1bdec284ccdfca9e13ca227fe1109afe28da14b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40e1fdae5cdb1ec806e67dcacc70510a63093a82
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851376"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539471"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>HDInsight 'ta Azure depolama 'ya genel bakış
 
@@ -21,7 +21,7 @@ Azure depolama, HDInsight ile sorunsuz bir şekilde tümleşen sağlam bir genel
 
 Varsayılan küme depolama alanı ve iş verileriniz için ayrı depolama kapsayıcıları kullanmanızı öneririz. Ayrım, HDInsight günlüklerini ve geçici dosyaları kendi iş verilerinden yalıtmaktır. Ayrıca, her bir depolama maliyetini azaltmak için, uygulama ve sistem günlükleri içeren varsayılan blob kapsayıcısını silmenizi öneririz. Kapsayıcıyı silmeden önce günlükleri aldığınızdan emin olun.
 
-Depolama hesabınızı **Seçili ağlardaki** **güvenlik duvarları ve sanal ağlar** kısıtlamalarına göre güvenli hale getirmek istiyorsanız, **Güvenilen Microsoft hizmetlerine izin ver**özel durumunu etkinleştirdiğinizden emin olun... Özel durum, HDInsight 'ın depolama hesabınıza erişebilmesi için kullanılır.
+Depolama hesabınızı **Seçili ağlardaki** **güvenlik duvarları ve sanal ağlar** kısıtlamalarına göre güvenli hale getirmek istiyorsanız, **Güvenilen Microsoft hizmetlerine izin ver** özel durumunu etkinleştirdiğinizden emin olun... Özel durum, HDInsight 'ın depolama hesabınıza erişebilmesi için kullanılır.
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight depolama mimarisi
 
@@ -44,7 +44,7 @@ HDInsight kümeleri ile Azure depolama hesabı kullanırken aşağıdaki ilkeler
 * **Bir kümeye bağlı olmayan depolama hesaplarındaki genel kapsayıcılar veya genel Bloblar:** Kapsayıcılarda bloblara salt okuma izninizin olması gerekir.
   
   > [!NOTE]  
-  > Ortak kapsayıcılar, bu kapsayıcıda kullanılabilen tüm Blobların bir listesini almanızı ve kapsayıcı meta verilerini almanızı sağlar. Genel blob'lar, yalnızca tam URL'yi biliyorsanız blob erişiminize izin verir. Daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](../storage/blobs/storage-manage-access-to-resources.md).
+  > Ortak kapsayıcılar, bu kapsayıcıda kullanılabilen tüm Blobların bir listesini almanızı ve kapsayıcı meta verilerini almanızı sağlar. Genel blob'lar, yalnızca tam URL'yi biliyorsanız blob erişiminize izin verir. Daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](../storage/blobs/anonymous-read-access-configure.md).
 
 * **Bir kümeye bağlı olmayan depolama hesaplarındaki özel kapsayıcılar:** Web Hcat işlerini gönderdiğinizde depolama hesabını tanımlamadığınız müddetçe kapsayıcılardaki bloblara erişemezsiniz.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323783"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547920"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase için Java uygulamaları oluşturma
 
@@ -25,13 +25,13 @@ Bu belgedeki adımlarda, projeyi oluşturmak ve derlemek için [Apache Maven](ht
 
 * HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama](./apache-hbase-tutorial-get-started-linux.md).
 
-* [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks).
+* [Java geliştirici seti (JDK) sürüm 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/)gerekecektir.
+* PowerShell kullanıyorsanız [az Module](/powershell/azure/)gerekecektir.
 
 * Bir metin düzenleyici. Bu makalede Microsoft Notepad kullanılmaktadır.
 
@@ -48,7 +48,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Maven projesi oluşturma
 
-1. **Hbaseapp**adlı bir Maven projesi oluşturmak için aşağıdaki komutu girin:
+1. **Hbaseapp** adlı bir Maven projesi oluşturmak için aşağıdaki komutu girin:
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -415,7 +415,7 @@ Aşağıdaki adımlar, `scp` jar 'Yi HDInsight kümesindeki Apache HBase 'in bir
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
     ```
 
-    Bu komut **kişiler**adlı bir HBase tablosu oluşturur ve verileri veriyle doldurur.
+    Bu komut **kişiler** adlı bir HBase tablosu oluşturur ve verileri veriyle doldurur.
 
 4. Tabloda depolanan e-posta adreslerini aramak için aşağıdaki komutu kullanın:
 
@@ -442,7 +442,7 @@ Aşağıdaki adımlar, `scp` jar 'Yi HDInsight kümesindeki Apache HBase 'in bir
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>JAR 'yi yükleme ve işleri çalıştırma (PowerShell)
 
-Aşağıdaki adımlarda, Apache HBase kümeniz için JAR 'yi varsayılan depolamaya yüklemek için Azure PowerShell [az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) kullanılır. HDInsight cmdlet 'leri, örnekleri uzaktan çalıştırmak için kullanılır.
+Aşağıdaki adımlarda, Apache HBase kümeniz için JAR 'yi varsayılan depolamaya yüklemek için Azure PowerShell [az Module](/powershell/azure/new-azureps-module-az) kullanılır. HDInsight cmdlet 'leri, örnekleri uzaktan çalıştırmak için kullanılır.
 
 1. AZ Module yükledikten ve yapılandırıldıktan sonra adlı bir dosya oluşturun `hbase-runner.psm1` . Bu dosyanın içeriği olarak aşağıdaki metni kullanın:
 

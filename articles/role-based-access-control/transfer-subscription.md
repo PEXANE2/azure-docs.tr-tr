@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3289f8a22e5601552ec6d44c7d37195b06913fde
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819702"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545353"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma
 
@@ -75,14 +75,15 @@ Birkaç Azure kaynağı bir aboneliğe veya dizine bağımlılığı vardır. Du
 | Azure Dosyaları | Evet | Evet |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
 | Azure Dosya Eşitleme | Evet | Evet |  |  |
 | Azure Yönetilen Diskleri | Evet | Evet |  |  Yönetilen diskleri müşteri tarafından yönetilen anahtarlarla şifrelemek için disk şifreleme kümeleri kullanıyorsanız, disk şifreleme kümeleriyle ilişkili sistem tarafından atanan kimlikleri devre dışı bırakıp yeniden etkinleştirmeniz gerekir. Ve rol atamalarını yeniden oluşturmanız gerekir, yani anahtar kasalarındaki disk şifreleme kümelerine gerekli izinleri verin. |
-| Kubernetes için Azure Kapsayıcı Hizmetleri | Evet | Evet |  |  |
+| Azure Kubernetes Service | Evet | Evet |  |  |
+| Azure İlkesi | Evet | Hayır | Özel tanımlar, Atamalar, muafiyetler ve uyumluluk verileri dahil olmak üzere tüm Azure Ilke nesneleri. | Tanımları [dışarı](../governance/policy/how-to/export-resources.md)ve içeri aktarmanız gerekir. Ardından, yeni ilke atamaları ve gerekli [ilke muafiyetleri](../governance/policy/concepts/exemption-structure.md)oluşturun. |
 | Azure Active Directory Domain Services | Evet | Hayır |  |  |
 | Uygulama kayıtları | Evet | Evet |  |  |
 
 > [!WARNING]
 > Aktarılmakta olan abonelikte aynı abonelikte **olmayan** bir anahtar kasasına bağımlılığı olan bir depolama HESABı veya SQL veritabanı gibi bir kaynak için geri kalan şifrelemeyi kullanıyorsanız kurtarılamaz bir senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
@@ -108,9 +109,9 @@ Bu adımları tamamlayabilmeniz için şunlar gerekir:
     az account set --subscription "Marketing"
     ```
 
-### <a name="install-the-resource-graph-extension"></a>Kaynak-grafik uzantısını yükler
+### <a name="install-the-azure-resource-graph-extension"></a>Azure Kaynak Grafiği uzantısını yükler
 
- Kaynak Grafiği uzantısı, Azure Resource Manager tarafından yönetilen kaynakları sorgulamak için [az Graph](/cli/azure/ext/resource-graph/graph) komutunu kullanmanıza olanak sağlar. Sonraki adımlarda bu komutu kullanacaksınız.
+ [Azure Kaynak Grafiği](../governance/resource-graph/index.yml)IÇIN Azure CLI uzantısı *kaynak* grafiği, Azure Resource Manager tarafından yönetilen kaynakları sorgulamak için [az Graph](/cli/azure/ext/resource-graph/graph) komutunu kullanmanıza olanak sağlar. Sonraki adımlarda bu komutu kullanacaksınız.
 
 1. *Kaynak grafik* uzantısının yüklenip yüklenmediğini görmek için [az Extension List](/cli/azure/extension#az_extension_list) kullanın.
 

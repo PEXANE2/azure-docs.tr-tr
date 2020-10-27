@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: a029dcbebf6dfe7a2b6cb517641c824a5937ca95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96aea35a4796eae9d31062cedaf917a736f0fe82
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988249"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547138"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Log Analytics Pano görselleştirmelerinizi yükseltme
 
@@ -47,7 +47,7 @@ Log Analytics sabitlenmiş bir bölüm yükseltilebilmişse, panolarda Log Analy
  
 ![Kutusuna](media/dashboard-upgrade/update-message-1.png)
  
-![Kutusuna](media/dashboard-upgrade/update-message-2.png)
+![Kutucuk görselleştirmesinin nasıl güncelleşdiğinin gösterildiği ekran görüntüsü.](media/dashboard-upgrade/update-message-2.png)
 
 > [!WARNING]
 > Pano yayımlandıktan sonra, yükseltme geri alınamaz. Ancak, yeniden yayımlamadan panodan uzağa giderseniz değişiklikler atılır.  
@@ -56,7 +56,7 @@ Tıklandığında görselleştirme yeni teknolojiye güncelleştirilecektir. Gö
 
 Görselleştirmeler yükseltildikten sonra, değişikliğin etkili olması için panonuzu yeniden yayımlamanız gerekir.
 
-![Kutusuna](media/dashboard-upgrade/update-message-3.png)
+![Yükseltilen görselleştirmeleri gösteren ekran görüntüsü.](media/dashboard-upgrade/update-message-3.png)
 
 ## <a name="stage-2---migration-of-all-dashboards"></a>2. Aşama-tüm panoların geçirilmesi
 
@@ -74,7 +74,7 @@ Panolar birden çok sorgudan gelen birden çok görselleştirme içerebildiğind
 
 Panolar görsel açıdan yoğun ve karmaşık olabilir. Bir panoyu görüntülerken bilişsel yükü azaltmak için, görüntüyü 25 farklı veri türüyle sınırlayarak görselleştirmeleri iyileştirdik. 25 ' ten fazla olduğunda Log Analytics verileri iyileştirir. Bu, çoğu veriyi ayrı olarak en fazla 25 tür gösterir ve ardından kalan değerleri "diğer" bir değere gruplandırır. Aşağıdaki grafikte böyle bir durum gösterilmektedir.  
 
-![Kutusuna](media/dashboard-upgrade/values-25-limit.png)
+![25 farklı veri türüyle bir panoyu gösteren ekran görüntüsü.](media/dashboard-upgrade/values-25-limit.png)
 
 ### <a name="dashboard-refresh-on-load"></a>Yükleme sırasında Pano yenileme
 

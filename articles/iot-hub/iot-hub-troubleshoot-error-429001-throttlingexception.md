@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 3095e398d7e5cfe59085144d5bb4e8dc33618064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f12a6982886eeaa375151c5b8a73acc573aab9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76960704"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545370"
 ---
 # <a name="429001-throttlingexception"></a>429001 ThrottlingException
 
@@ -21,7 +21,7 @@ Bu makalede, **429001 azaltıcı özel durum** hatalarına yönelik nedenler ve 
 
 ## <a name="symptoms"></a>Belirtiler
 
-IoT Hub istekleriniz **429001**hatasını vererek başarısız olur.
+IoT Hub istekleriniz **429001** hatasını vererek başarısız olur.
 
 ## <a name="cause"></a>Nedeni
 
@@ -29,7 +29,7 @@ IoT Hub istekleriniz **429001**hatasını vererek başarısız olur.
 
 ## <a name="solution"></a>Çözüm
 
-*Telemetri iletisi gönderme denemeleri* ölçüsünü yukarıda belirtilen sınırlara göre karşılaştırarak azaltma sınırına ulaşıp ulaşmayacağını denetleyin. Ayrıca, *azaltma hatası* ölçümünün sayısını da denetleyebilirsiniz. IoT Hub için kullanılabilen bu ve diğer ölçümler hakkında daha fazla bilgi için bkz. [IoT Hub ölçümleri ve bunların nasıl kullanılacağı](./iot-hub-metrics.md#iot-hub-metrics-and-how-to-use-them).
+*Telemetri iletisi gönderme denemeleri* ölçüsünü yukarıda belirtilen sınırlara göre karşılaştırarak azaltma sınırına ulaşıp ulaşmayacağını denetleyin. Ayrıca, *azaltma hatası* ölçümünün sayısını da denetleyebilirsiniz. Bu ölçümler hakkında daha fazla bilgi için bkz. [cihaz telemetri ölçümleri](monitor-iot-hub-reference.md#device-telemetry-metrics). IoT Hub 'ınızı izlemenize yardımcı olacak ölçümlerin nasıl kullanılacağı hakkında bilgi için bkz. [monitor IoT Hub](monitor-iot-hub.md).
 
 IoT Hub, yalnızca sınır ihlal edildiğinde çok uzun süre dolduktan sonra 429 kısıtlar Lingexception döndürür. Bu işlem, IoT Hub 'ınız veri bloğu trafiği alırsa iletilerinizin bırakılmaması için yapılır. IoT Hub bu süre boyunca iletileri işlem kısıtlama hızında işlemeye devam eder ve kapsamda çok fazla trafik olması halinde bu hız düşük olabilir. Daha fazla bilgi için bkz. [IoT Hub trafiği şekillendirme](./iot-hub-devguide-quotas-throttling.md#traffic-shaping).
 

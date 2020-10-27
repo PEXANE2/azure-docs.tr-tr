@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: bcd232a3242b0341bfc81fa9785f76b0d3bd90cb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2f1edc14efdeaf70bf4c2acc0e31e1517753ed3e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369463"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546356"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/fiziksel sunucu olağanüstü durum kurtarma işlemi için yapılandırma sunucusunu yönetme
 
@@ -29,24 +29,24 @@ OVF şablonuyla birlikte sunulan lisans, 180 gün için geçerli bir değerlendi
 Yapılandırma sunucusuna aşağıdaki gibi erişebilirsiniz:
 
 * Dağıtıldığı VM 'de oturum açın ve masaüstü kısayolundan **Azure Site Recovery Configuration Manager** başlatın.
-* Alternatif olarak, https://*Configurationservername*/: 44315/adresinden yapılandırma sunucusuna uzaktan erişebilirsiniz. Yönetici kimlik bilgileriyle oturum açın.
+* Alternatif olarak, https:// *Configurationservername* /: 44315/adresinden yapılandırma sunucusuna uzaktan erişebilirsiniz. Yönetici kimlik bilgileriyle oturum açın.
 
 ## <a name="modify-vmware-server-settings"></a>VMware sunucu ayarlarını değiştir
 
-1. Farklı bir VMware sunucusunu yapılandırma sunucusuyla ilişkilendirmek için, [oturum](#access-configuration-server)açtıktan sonra **vCenter Server/vSphere ESXi sunucusu Ekle**' yi seçin.
-2. Ayrıntıları girip **Tamam**' ı seçin.
+1. Farklı bir VMware sunucusunu yapılandırma sunucusuyla ilişkilendirmek için, [oturum](#access-configuration-server)açtıktan sonra **vCenter Server/vSphere ESXi sunucusu Ekle** ' yi seçin.
+2. Ayrıntıları girip **Tamam** ' ı seçin.
 
 ## <a name="modify-credentials-for-automatic-discovery"></a>Otomatik bulma için kimlik bilgilerini değiştirme
 
-1. VMware sunucusuna bağlanmak için kullanılan kimlik bilgilerini, VMware VM 'lerinin otomatik bulması için güncelleştirmek üzere [oturum](#access-configuration-server)açtıktan sonra hesabı seçin ve **Düzenle**' ye tıklayın.
-2. Yeni kimlik bilgilerini girin ve ardından **Tamam**' ı seçin.
+1. VMware sunucusuna bağlanmak için kullanılan kimlik bilgilerini, VMware VM 'lerinin otomatik bulması için güncelleştirmek üzere [oturum](#access-configuration-server)açtıktan sonra hesabı seçin ve **Düzenle** ' ye tıklayın.
+2. Yeni kimlik bilgilerini girin ve ardından **Tamam** ' ı seçin.
 
     ![VMware 'yi değiştirme](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
 
 Kimlik bilgilerini CSPSConfigtool.exe aracılığıyla da değiştirebilirsiniz.
 
 1. Yapılandırma sunucusunda oturum açın ve CSPSConfigtool.exe başlatın
-2. Değiştirmek istediğiniz hesabı seçin ve **Düzenle**' ye tıklayın.
+2. Değiştirmek istediğiniz hesabı seçin ve **Düzenle** ' ye tıklayın.
 3. Değiştirilen kimlik bilgilerini girin ve **Tamam 'a** tıklayın
 
 ## <a name="modify-credentials-for-mobility-service-installation"></a>Mobility hizmeti yüklemesi için kimlik bilgilerini değiştirme
@@ -55,7 +55,7 @@ Kimlik bilgilerini CSPSConfigtool.exe aracılığıyla da değiştirebilirsiniz.
 
 1. [Oturum](#access-configuration-server)açtıktan sonra, **sanal makine kimlik bilgilerini Yönet** ' i seçin
 2. Değiştirmek istediğiniz hesabı seçin ve **Düzenle** ' ye tıklayın.
-3. Yeni kimlik bilgilerini girin ve ardından **Tamam**' ı seçin.
+3. Yeni kimlik bilgilerini girin ve ardından **Tamam** ' ı seçin.
 
     ![Mobility hizmeti kimlik bilgilerini değiştirme](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
 
@@ -63,27 +63,27 @@ Kimlik bilgilerini CSPSConfigtool.exe aracılığıyla da değiştirebilirsiniz.
 
 1. Yapılandırma sunucusunda oturum açın ve CSPSConfigtool.exe başlatın
 2. Değiştirmek istediğiniz hesabı seçin ve **Düzenle** ' ye tıklayın.
-3. Yeni kimlik bilgilerini girip **Tamam**' a tıklayın.
+3. Yeni kimlik bilgilerini girip **Tamam** ' a tıklayın.
 
 ## <a name="add-credentials-for-mobility-service-installation"></a>Mobility hizmeti yüklemesi için kimlik bilgileri ekleme
 
 Yapılandırma sunucusunun OVF dağıtımı sırasında kimlik bilgileri ekleme kaçırdıysanız,
 
-1. [Oturum](#access-configuration-server)açtıktan sonra, **sanal makine kimlik bilgilerini Yönet**' i seçin.
-2. **Sanal makine kimlik bilgileri ekle**' ye tıklayın.
+1. [Oturum](#access-configuration-server)açtıktan sonra, **sanal makine kimlik bilgilerini Yönet** ' i seçin.
+2. **Sanal makine kimlik bilgileri ekle** ' ye tıklayın.
     ![Ekran görüntüsü, sanal makine kimlik bilgilerini ekle bağlantısı ile sanal makine kimlik bilgilerini Yönet bölmesini gösterir.](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
-3. Yeni kimlik bilgilerini girip **Ekle**' ye tıklayın.
+3. Yeni kimlik bilgilerini girip **Ekle** ' ye tıklayın.
 
 Ayrıca, CSPSConfigtool.exe aracılığıyla kimlik bilgileri de ekleyebilirsiniz.
 
 1. Yapılandırma sunucusunda oturum açın ve CSPSConfigtool.exe başlatın
-2. **Ekle**' ye tıklayın, yeni kimlik bilgilerini girin ve **Tamam**' a tıklayın.
+2. **Ekle** ' ye tıklayın, yeni kimlik bilgilerini girin ve **Tamam** ' a tıklayın.
 
 ## <a name="modify-proxy-settings"></a>Ara sunucu ayarlarını değiştir
 
 Configuration Server makinesi tarafından Azure 'a internet erişimi için kullanılan proxy ayarlarını değiştirin. Yapılandırma sunucusu makinesinde çalışan varsayılan işlem sunucusuna ek olarak bir işlem sunucusu makineniz varsa, her iki makinedeki ayarları değiştirin.
 
-1. Yapılandırma sunucusunda [oturum](#access-configuration-server) açtıktan sonra **Bağlantıyı Yönet**' i seçin.
+1. Yapılandırma sunucusunda [oturum](#access-configuration-server) açtıktan sonra **Bağlantıyı Yönet** ' i seçin.
 2. Proxy değerlerini güncelleştirin. Sonra ayarları güncelleştirmek için **Kaydet** ' i seçin.
 
 ## <a name="add-a-network-adapter"></a>Ağ bağdaştırıcısı ekleme
@@ -99,7 +99,7 @@ Yapılandırma sunucusu, tüm korumalı makinelerdeki Mobility aracılarının e
 
 ### <a name="check-expiry"></a>Son tarihi denetle
 
-Süre sonu tarihi, **yapılandırma sunucusu durumu**altında görünür. 2016 Mayıs 'tan önce yapılandırma sunucusu dağıtımları için, sertifika süre sonu bir yıl olarak ayarlanmıştır. Sona ermek üzere bir sertifikanız varsa, aşağıdakiler gerçekleşir:
+Süre sonu tarihi, **yapılandırma sunucusu durumu** altında görünür. 2016 Mayıs 'tan önce yapılandırma sunucusu dağıtımları için, sertifika süre sonu bir yıl olarak ayarlanmıştır. Sona ermek üzere bir sertifikanız varsa, aşağıdakiler gerçekleşir:
 
 - Sona erme tarihi iki ay veya daha azsa, hizmet portalda bildirim göndermeye başlar ve e-posta ile (Site Recovery bildirimlerine abone değilseniz).
 - Kasa kaynağı sayfasında bir bildirim başlığı görüntülenir. Daha fazla bilgi için başlık ' ı seçin.
@@ -107,14 +107,14 @@ Süre sonu tarihi, **yapılandırma sunucusu durumu**altında görünür. 2016 M
 
 ### <a name="if-certificates-are-yet-to-expire"></a>Sertifikaların süreleri henüz dolarsa
 
-1. , Kasadaki yenilemek için **Site Recovery altyapı**  >  **yapılandırma sunucusu**' nu açın. Gerekli yapılandırma sunucusunu seçin.
+1. , Kasadaki yenilemek için **Site Recovery altyapı**  >  **yapılandırma sunucusu** ' nu açın. Gerekli yapılandırma sunucusunu seçin.
 2. Tüm korumalı makinelerdeki tüm bileşenlerin genişleme işlem sunucularının, ana hedef sunucularının ve Mobility aracılarının en son sürümlere ait olduğundan ve bağlı durumda olduğundan emin olun.
-3. Şimdi, **sertifikaları yenile**' yi seçin.
+3. Şimdi, **sertifikaları yenile** ' yi seçin.
 4. Bu sayfadaki yönergeleri dikkatle izleyin ve seçili yapılandırma sunucusundaki sertifikaları ve ilgili bileşenleri yenilemek için Tamam ' a tıklayın.
 
 ### <a name="if-certificates-have-already-expired"></a>Sertifikaların zaten bir süre dolmuşsa
 
-1. Son bitiş tarihi, Sertifikalar **Azure Portal yenilenemiyor**. Devam etmeden önce tüm bileşenlerin genişleme işlem sunucularının, ana hedef sunucularının ve tüm korunan makinelerdeki Mobility aracılarının en son sürümlere ait olduğundan ve bağlı durumda olduğundan emin olun.
+1. Son bitiş tarihi, Sertifikalar **Azure Portal yenilenemiyor** . Devam etmeden önce tüm bileşenlerin genişleme işlem sunucularının, ana hedef sunucularının ve tüm korunan makinelerdeki Mobility aracılarının en son sürümlere ait olduğundan ve bağlı durumda olduğundan emin olun.
 2. **Bu yordamı yalnızca sertifikaların zaten geçerliliği dolmuşsa izleyin.** Yapılandırma sunucusunda oturum açın, C Drive > program Data > Site Recovery > Home > svsystems > bin ' a gidin ve "yenilenebilir CERT" yürütücü aracını yönetici olarak yürütün.
 3. Bir PowerShell yürütme penceresi açılır ve sertifikaların yenilenmesini tetikler. Bu işlem 15 dakika sürebilir. Yenileme tamamlanana kadar pencereyi kapatmayın.
 
@@ -125,12 +125,12 @@ Süre sonu tarihi, **yapılandırma sunucusu durumu**altında görünür. 2016 M
 Gerekirse, yapılandırma sunucusunu aynı kasada yeniden kaydedebilirsiniz. Ek bir işlem sunucusu makineniz varsa, yapılandırma sunucusu makinesinde çalışan varsayılan işlem sunucusuna ek olarak, her iki makineyi de yeniden kaydettirin.
 
 
-1. Kasada, **Manage**  >  **Site Recovery altyapı**  >  **yapılandırma sunucularını**Yönet ' i açın.
-2. **Sunucular**' da, kasa kimlik bilgileri dosyasını indirmek için **kayıt anahtarını indir** ' i seçin.
+1. Kasada, **Manage**  >  **Site Recovery altyapı**  >  **yapılandırma sunucularını** Yönet ' i açın.
+2. **Sunucular** ' da, kasa kimlik bilgileri dosyasını indirmek için **kayıt anahtarını indir** ' i seçin.
 3. Yapılandırma sunucusu makinesinde oturum açın.
-4. **%ProgramData%\asr\home\svsystems\bin**' de **cspsconfigtool.exe**açın.
-5. **Kasa kaydı** sekmesinde, **Araştır**' ı seçin ve indirdiğiniz kasa kimlik bilgileri dosyasını bulun.
-6. Gerekirse, proxy sunucu ayrıntılarını sağlayın. Ardından **Kaydet**’i seçin.
+4. **%ProgramData%\asr\home\svsystems\bin** ' de **cspsconfigtool.exe** açın.
+5. **Kasa kaydı** sekmesinde, **Araştır** ' ı seçin ve indirdiğiniz kasa kimlik bilgileri dosyasını bulun.
+6. Gerekirse, proxy sunucu ayrıntılarını sağlayın. Ardından **Kaydet** ’i seçin.
 7. Bir yönetici PowerShell komut penceresi açın ve aşağıdaki komutu çalıştırın:
    ```
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -178,18 +178,18 @@ Yapılandırma sunucusunun tüm sürümlerine yükseltmeye yönelik güncelleşt
 
 Sunucuyu aşağıdaki gibi yükseltin:
 
-1. Kasada **Manage**  >  **Site Recovery altyapı**  >  **yapılandırma sunucularını**Yönet ' e gidin.
+1. Kasada **Manage**  >  **Site Recovery altyapı**  >  **yapılandırma sunucularını** Yönet ' e gidin.
 2. Bir güncelleştirme varsa, **Aracı sürümü** > sütununda bir bağlantı görüntülenir.
     ![Güncelleştir](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Güncelleştirme yükleyicisi dosyasını yapılandırma sunucusuna indirin.
 
-    ![Güncelleştir](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Güncelleştirme yükleyicisi dosyasını indirmek için nereye tıklaleceği gösteren ekran görüntüsü.](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Yükleyiciyi çalıştırmak için çift tıklayın.
 5. Yükleyici, makinede çalışan geçerli sürümü algılar. Yükseltmeyi başlatmak için **Evet** ' e tıklayın.
 6. Yükseltme işlemi tamamlandığında sunucu yapılandırması doğrular.
 
-    ![Güncelleştir](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Tamamlanmış sunucu doğrulama yapılandırmasını gösteren ekran görüntüsü.](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Yükleyiciyi kapatmak için **son** ' a tıklayın.
 8. Site Recovery bileşenlerinin geri kalanını yükseltmek için [yükseltme kılavuzumuza](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure)bakın.
@@ -212,7 +212,7 @@ Yükleme dosyasını aşağıdaki gibi çalıştırın:
 
 ### <a name="parameters"></a>Parametreler
 
-|Parametre Adı| Tür | Description| Değerler|
+|Parametre Adı| Tür | Açıklama| Değerler|
 |-|-|-|-|
 | /ServerMode|Gerekli|Hem yapılandırma hem de işlem sunucusunun mu yoksa yalnızca işlem sunucusunun mu yükleneceğini belirtir|CS<br>PS|
 |/InstallLocation|Gerekli|Bileşenlerin yüklendiği klasör| Bilgisayardaki herhangi bir klasör|
@@ -222,12 +222,12 @@ Yükleme dosyasını aşağıdaki gibi çalıştırın:
 |/PSIP|Gerekli|Çoğaltma veri aktarımı için kullanılacak NIC’nin IP adresi| Herhangi bir geçerli IP adresi|
 |/CSIP|Gerekli|Yapılandırma sunucusunun dinleme yaptığı NIC’nin IP adresi| Herhangi bir geçerli IP adresi|
 |/PassphraseFilePath|Gerekli|Parola dosyası konumunun tam yolu|Geçerli dosya yolu|
-|/BypassProxy|İsteğe Bağlı|Yapılandırma sunucusunun Azure'a bir ara sunucu olmadan bağlandığını belirtir|Yapmak için bu değeri Venu’den alın|
-|/ProxySettingsFilePath|İsteğe Bağlı|Ara sunucu ayarları (Varsayılan ara sunucu kimlik doğrulaması gerektirir ya da özel bir ara sunucu kullanılır)|Dosya aşağıda belirtilen biçimde olmalıdır|
-|DataTransferSecurePort|İsteğe Bağlı|Çoğaltma verileri için kullanılacak PSIP’deki bağlantı noktası numarası| Geçerli Bağlantı Noktası Numarası (varsayılan değer: 9433)|
-|/SkipSpaceCheck|İsteğe Bağlı|Önbellek diski için alan denetimini atlama| |
+|/BypassProxy|İsteğe bağlı|Yapılandırma sunucusunun Azure'a bir ara sunucu olmadan bağlandığını belirtir|Yapmak için bu değeri Venu’den alın|
+|/ProxySettingsFilePath|İsteğe bağlı|Ara sunucu ayarları (Varsayılan ara sunucu kimlik doğrulaması gerektirir ya da özel bir ara sunucu kullanılır)|Dosya aşağıda belirtilen biçimde olmalıdır|
+|DataTransferSecurePort|İsteğe bağlı|Çoğaltma verileri için kullanılacak PSIP’deki bağlantı noktası numarası| Geçerli Bağlantı Noktası Numarası (varsayılan değer: 9433)|
+|/SkipSpaceCheck|İsteğe bağlı|Önbellek diski için alan denetimini atlama| |
 |/AcceptThirdpartyEULA|Gerekli|Bayrak, üçüncü taraf EULA'nın kabul edildiğini gösterir| |
-|/ShowThirdpartyEULA|İsteğe Bağlı|Üçüncü taraf EULA belgesini görüntüler. Giriş olarak sağlanırsa, diğer tüm parametreler yoksayılır| |
+|/ShowThirdpartyEULA|İsteğe bağlı|Üçüncü taraf EULA belgesini görüntüler. Giriş olarak sağlanırsa, diğer tüm parametreler yoksayılır| |
 
 
 
@@ -256,8 +256,8 @@ ProxyPassword="Password"
 1. Yapılandırma sunucusu altındaki tüm VM 'Ler için [korumayı devre dışı bırakın](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) .
 2. Tüm çoğaltma ilkelerinin yapılandırma sunucusundan [Ilişkisini kaldırın](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) ve [silin](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) .
 3. Yapılandırma sunucusuyla ilişkili tüm vCenter sunucularını/vSphere konaklarınızı [silin](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) .
-4. Kasada, **Site Recovery altyapı**  >  **yapılandırma sunucuları**' nı açın.
-5. Kaldırmak istediğiniz yapılandırma sunucusunu seçin. Ardından, **Ayrıntılar** sayfasında **Sil**' i seçin.
+4. Kasada, **Site Recovery altyapı**  >  **yapılandırma sunucuları** ' nı açın.
+5. Kaldırmak istediğiniz yapılandırma sunucusunu seçin. Ardından, **Ayrıntılar** sayfasında **Sil** ' i seçin.
 
     ![Yapılandırma sunucusunu Sil](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
 
@@ -293,15 +293,15 @@ Configuration sunucusunu isteğe bağlı olarak PowerShell kullanarak silebilirs
 
 1. Yapılandırma sunucunuzda oturum açın ve ardından yönetici olarak bir komut istemi penceresi açın.
 2. Dizini bin klasörü olarak değiştirmek için, şu komutu çalıştırın **%ProgramData%\ASR\home\svsystems\bin**
-3. Parola dosyasını oluşturmak için **genpassphrase.exe-v > MobSvc. parola**yürütün.
-4. Parolanız, **%ProgramData%\asr\home\svsystems\bin\mobsvc.exe**yolunda bulunan dosyada depolanır.
+3. Parola dosyasını oluşturmak için **genpassphrase.exe-v > MobSvc. parola** yürütün.
+4. Parolanız, **%ProgramData%\asr\home\svsystems\bin\mobsvc.exe** yolunda bulunan dosyada depolanır.
 
 ## <a name="refresh-configuration-server"></a>Yapılandırma sunucusunu Yenile
 
-1. Azure Portal, **Kurtarma Hizmetleri Kasası**'na gidin  >  **Manage**  >  VMware için**Site Recovery altyapısını**yönetme  >  **& fiziksel makineler**  >  **yapılandırma sunucuları**
+1. Azure Portal, **Kurtarma Hizmetleri Kasası** 'na gidin  >  **Manage**  >  VMware için **Site Recovery altyapısını** yönetme  >  **& fiziksel makineler**  >  **yapılandırma sunucuları**
 2. Yenilemek istediğiniz yapılandırma sunucusuna tıklayın.
-3. Seçilen yapılandırma sunucusu ayrıntılarının bulunduğu dikey pencerede, **daha fazla**  >  **sunucuyu Yenile**' ye tıklayın.
-4. **Kurtarma Hizmetleri Kasası**  >  **izleme**  >  **Site Recovery işleri**altında işin ilerlemesini izleyin.
+3. Seçilen yapılandırma sunucusu ayrıntılarının bulunduğu dikey pencerede, **daha fazla**  >  **sunucuyu Yenile** ' ye tıklayın.
+4. **Kurtarma Hizmetleri Kasası**  >  **izleme**  >  **Site Recovery işleri** altında işin ilerlemesini izleyin.
 
 ## <a name="failback-requirements"></a>Yeniden çalışma gereksinimleri
 

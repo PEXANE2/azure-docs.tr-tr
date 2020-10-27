@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/07/2020
-ms.openlocfilehash: c1d43da3a0be65b2351a4b6dbeeb2772062356bc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d8b36676c9b95992bdcf382c1f474b56e30ad3fb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974643"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535561"
 ---
 # <a name="archived-release-notes"></a>Arşivlenmiş sürüm notları
 
@@ -39,10 +39,10 @@ Hata etki alanı, bir Azure veri merkezinde temel donanımlardan oluşan mantık
 Müşteriler, platform tarafından yönetilen anahtarlarla IPSec şifrelemesini kullanarak küme düğümleri arasında geçiş şifrelemesini etkinleştirebilir. Bu seçenek, küme oluşturma sırasında etkinleştirilebilir. [İletimde şifrelemeyi etkinleştirme](./domain-joined/encryption-in-transit.md)hakkında daha fazla ayrıntı için bkz..
 
 #### <a name="encryption-at-host"></a>Konakta şifreleme
-Konakta şifrelemeyi etkinleştirdiğinizde, VM konağında depolanan veriler, REST ve depolama hizmetine şifrelenen akışlara şifrelenir. Bu sürümden, kümeyi oluştururken **geçici veri diskinde konakta şifrelemeyi etkinleştirebilirsiniz** . Konaktaki şifreleme yalnızca [sınırlı bölgelerdeki belırlı VM SKU 'larında](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-host-based-encryption-portal)desteklenir. HDInsight [aşağıdaki düğüm yapılandırmalarını ve SKU 'larını](./hdinsight-supported-node-configuration.md)destekler. [Konakta şifrelemeyi etkinleştirme](https://docs.microsoft.com/azure/hdinsight/disk-encryption#encryption-at-host-using-platform-managed-keys)hakkında daha fazla ayrıntı için bkz..
+Konakta şifrelemeyi etkinleştirdiğinizde, VM konağında depolanan veriler, REST ve depolama hizmetine şifrelenen akışlara şifrelenir. Bu sürümden, kümeyi oluştururken **geçici veri diskinde konakta şifrelemeyi etkinleştirebilirsiniz** . Konaktaki şifreleme yalnızca [sınırlı bölgelerdeki belırlı VM SKU 'larında](../virtual-machines/disks-enable-host-based-encryption-portal.md)desteklenir. HDInsight [aşağıdaki düğüm yapılandırmalarını ve SKU 'larını](./hdinsight-supported-node-configuration.md)destekler. [Konakta şifrelemeyi etkinleştirme](./disk-encryption.md#encryption-at-host-using-platform-managed-keys)hakkında daha fazla ayrıntı için bkz..
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
-HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden itibaren, hizmet giderek [Azure sanal makine ölçek kümelerine](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)geçiş yapar. İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden itibaren, hizmet giderek [Azure sanal makine ölçek kümelerine](../virtual-machine-scale-sets/overview.md)geçiş yapar. İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
 
 ### <a name="deprecation"></a>Kullanımdan kaldırma
 Bu yayın için kullanımdan kaldırma yok.
@@ -60,7 +60,7 @@ HDInsight, Spark, Hadoop ve ML Hizmetleri küme türleri için Zookeeper SKU 'su
 HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam eder. 
 
 ### <a name="component-version-change"></a>Bileşen sürümü değişikliği
-Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)bulabilirsiniz.
+Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md)bulabilirsiniz.
 
 ## <a name="release-date-08092020"></a>Yayın tarihi: 08/09/2020
 
@@ -110,11 +110,11 @@ JIRAs 'nin altında HBase için yeniden bağlantı noktası verilmiştir:
 * [HBASE-24205](https://issues.apache.org/jira/browse/HBASE-24205)
 
 ### <a name="component-version-change"></a>Bileşen sürümü değişikliği
-Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)bulabilirsiniz.
+Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md)bulabilirsiniz.
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 
-Azure portal, kullanıcıların bir Azure HDInsight kümesi oluştururken ortak anahtarın SSH kimlik doğrulaması türünü kullanarak bir hatayla karşılaştıkları bir sorun düzeltildi. Kullanıcılar **Gözden Geçir + Oluştur**'a tıkladığında "SSH kullanıcı adından üç ardışık karakter içermemelidir" hatasını alıyordu. Bu sorun düzeltildi ama düzeltilmiş görünümü yüklemek için CTRL + F5 tuşlarına basarak tarayıcınızın önbelleğini yenilemeniz gerekebilir. Bu sorunun geçici çözümü ARM şablonuyla bir küme oluşturmaktı. 
+Azure portal, kullanıcıların bir Azure HDInsight kümesi oluştururken ortak anahtarın SSH kimlik doğrulaması türünü kullanarak bir hatayla karşılaştıkları bir sorun düzeltildi. Kullanıcılar **Gözden Geçir + Oluştur** 'a tıkladığında "SSH kullanıcı adından üç ardışık karakter içermemelidir" hatasını alıyordu. Bu sorun düzeltildi ama düzeltilmiş görünümü yüklemek için CTRL + F5 tuşlarına basarak tarayıcınızın önbelleğini yenilemeniz gerekebilir. Bu sorunun geçici çözümü ARM şablonuyla bir küme oluşturmaktı. 
 
 ## <a name="release-date-07132020"></a>Yayın tarihi: 07/13/2020
 
@@ -122,10 +122,10 @@ Bu sürüm yalnızca HDInsight 3,6 ve 4,0 için geçerlidir. HDInsight yayını,
 
 ### <a name="new-features"></a>Yeni özellikler
 #### <a name="support-for-customer-lockbox-for-microsoft-azure"></a>Microsoft Azure için Müşteri Kasası desteği
-Azure HDInsight artık Azure Müşteri Kasası desteklemektedir. Müşterilerin müşteri verileri erişim isteklerini gözden geçirmesi ve onaylaması veya reddetmesi için bir arabirim sağlar. Destek isteği sırasında Microsoft mühendis 'ın müşteri verilerine erişmesi gerektiğinde kullanılır. Daha fazla bilgi için bkz. [Microsoft Azure müşteri kasası](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview).
+Azure HDInsight artık Azure Müşteri Kasası desteklemektedir. Müşterilerin müşteri verileri erişim isteklerini gözden geçirmesi ve onaylaması veya reddetmesi için bir arabirim sağlar. Destek isteği sırasında Microsoft mühendis 'ın müşteri verilerine erişmesi gerektiğinde kullanılır. Daha fazla bilgi için bkz. [Microsoft Azure müşteri kasası](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview).
 
 #### <a name="service-endpoint-policies-for-storage"></a>Depolama için hizmet uç noktası ilkeleri
-Müşteriler artık HDInsight küme alt ağında hizmet uç noktası Ilkelerini (SEP) kullanabilir. [Azure hizmet uç noktası İlkesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)hakkında daha fazla bilgi edinin.
+Müşteriler artık HDInsight küme alt ağında hizmet uç noktası Ilkelerini (SEP) kullanabilir. [Azure hizmet uç noktası İlkesi](../virtual-network/virtual-network-service-endpoint-policies-overview.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="deprecation"></a>Kullanımdan kaldırma
 #### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 3.6 Spark kümesinde Spark 2.1 ile 2.2’nin kullanımdan kaldırılması
@@ -155,7 +155,7 @@ HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam ed
 Zeppelin, dize biçimi için tablo çıktısında baştaki sıfırları yanlış bir şekilde kırpmıştı. Bu sorunu bu sürümde düzelttik.
 
 ### <a name="component-version-change"></a>Bileşen sürümü değişikliği
-Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)bulabilirsiniz.
+Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md)bulabilirsiniz.
 
 ## <a name="release-date-06112020"></a>Yayın tarihi: 06/11/2020
 
@@ -163,7 +163,7 @@ Bu sürüm yalnızca HDInsight 3,6 ve 4,0 için geçerlidir. HDInsight yayını,
 
 ### <a name="new-features"></a>Yeni özellikler
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
-HDInsight, kümeyi şimdi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden, yeni oluşturulan HDInsight kümeleri Azure sanal makine ölçek kümesini kullanmaya başlar. Değişiklik kademeli olarak kullanıma alınıyor. Hiç bir değişiklik olmaması beklenmelidir. [Azure sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)hakkında daha fazla bilgi için bkz..
+HDInsight, kümeyi şimdi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden, yeni oluşturulan HDInsight kümeleri Azure sanal makine ölçek kümesini kullanmaya başlar. Değişiklik kademeli olarak kullanıma alınıyor. Hiç bir değişiklik olmaması beklenmelidir. [Azure sanal makine ölçek kümeleri](../virtual-machine-scale-sets/overview.md)hakkında daha fazla bilgi için bkz..
  
 #### <a name="reboot-vms-in-hdinsight-cluster"></a>HDInsight kümesinde VM 'Leri yeniden başlatma
 Bu sürümde, yanıt vermeyen düğümleri yeniden başlatmak için HDInsight kümesindeki sanal makinelerin yeniden başlatılmasını destekliyoruz. Şu anda yalnızca API aracılığıyla yapabilirsiniz, PowerShell ve CLı desteği bu şekilde yapılır. API hakkında daha fazla bilgi için [Bu belgeye](https://github.com/Azure/azure-rest-api-specs/codeowners/master/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2018-06-01-preview/virtualMachines.json)bakın.
@@ -191,10 +191,10 @@ Baş düğüm için en az 4 çekirdekli bir VM, HDInsight kümelerinin yüksek k
 **İşletimsel** aşamada, küme kalan %20 çalışan düğümü için başka bir 60 dakika bekler. Bu 60 dakikanın sonunda, tüm çalışan düğümleri hala kullanılabilir olmasa bile küme **çalışan** aşamaya geçer. Bir küme **çalışan** aşamasına girdiğinde, normal olarak kullanabilirsiniz. Her ikisi de ölçeği artırma/azaltma gibi denetim planı işlemleri ve komut dosyaları ve işler gibi veri planı işlemleri kabul edilir. İstenen çalışan düğümlerinden bazıları yoksa, küme kısmen başarılı olarak işaretlenir. Başarıyla dağıtılan düğümler için ücretlendirilirsiniz. 
  
 #### <a name="create-new-service-principal-through-hdinsight"></a>HDInsight ile yeni hizmet sorumlusu oluşturma
-Daha önce, küme oluşturma ile müşteriler, Azure portal bağlı ADLS Gen 1 hesabına erişmek için yeni bir hizmet sorumlusu oluşturabilir. 15 2020 Haziran 'dan itibaren müşteriler HDInsight oluşturma iş akışında yeni hizmet sorumlusu oluşturamaz, yalnızca mevcut hizmet sorumlusu desteklenir. Bkz. [Azure Active Directory kullanarak hizmet sorumlusu ve sertifikaları oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Daha önce, küme oluşturma ile müşteriler, Azure portal bağlı ADLS Gen 1 hesabına erişmek için yeni bir hizmet sorumlusu oluşturabilir. 15 2020 Haziran 'dan itibaren müşteriler HDInsight oluşturma iş akışında yeni hizmet sorumlusu oluşturamaz, yalnızca mevcut hizmet sorumlusu desteklenir. Bkz. [Azure Active Directory kullanarak hizmet sorumlusu ve sertifikaları oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
 
 #### <a name="time-out-for-script-actions-with-cluster-creation"></a>Küme oluşturma ile betik eylemleri için zaman aşımı
-HDInsight, küme oluşturma ile betik eylemlerinin çalıştırılmasını destekler. Bu sürümden, küme oluşturma ile birlikte tüm betik eylemlerinin **60 dakika**içinde tamamlaması veya zaman aşımına geçmesi gerekir. Çalışan kümelere gönderilen betik eylemleri etkilenmez. Ayrıntılar hakkında daha [fazla bilgi edinin](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process).
+HDInsight, küme oluşturma ile betik eylemlerinin çalıştırılmasını destekler. Bu sürümden, küme oluşturma ile birlikte tüm betik eylemlerinin **60 dakika** içinde tamamlaması veya zaman aşımına geçmesi gerekir. Çalışan kümelere gönderilen betik eylemleri etkilenmez. Ayrıntılar hakkında daha [fazla bilgi edinin](./hdinsight-hadoop-customize-cluster-linux.md#script-action-in-the-cluster-creation-process).
  
 ### <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Dikkat etmeniz gereken yaklaşan Son değişiklik yok.
@@ -212,7 +212,7 @@ Spark sürümü, 2.4.0 sürümünden 2.4.4 sürümüne yükseltilir.
 #### <a name="kafka-210-to-211"></a>Kafka 2.1.0 to 2.1.1
 Kafka sürümü 2.1.0 sürümünden 2.1.1 sürümüne yükseltilir.
  
-HDInsight 4,0 ad HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions) bulabilirsiniz
+HDInsight 4,0 ad HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md) bulabilirsiniz
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 
@@ -230,7 +230,7 @@ Aktarım Katmanı Güvenliği (TLS) ve Güvenli Yuva Katmanı (SSL), bir bilgisa
 Bu sürümde, müşteriler yalnızca genel küme uç noktası üzerinden tüm bağlantılar için TLS 1,2 ' i kabul edebilir. Bunu desteklemek için, **Minsupportedtlsversion** yeni özelliği tanıtılmıştır ve küme oluşturma sırasında belirlenebilir. Özellik ayarlanmamışsa, küme yine de bugün davranışıyla aynı olan TLS 1,0, 1,1 ve 1,2 ' i destekler. Müşteriler bu özelliğin değerini "1,2" olarak ayarlayabilir, bu da kümenin yalnızca TLS 1,2 ve üstünü desteklediği anlamına gelir. Daha fazla bilgi için bkz. [Aktarım Katmanı Güvenliği](./transport-layer-security.md).
 
 #### <a name="bring-your-own-key-for-disk-encryption"></a>Disk şifrelemesi için kendi anahtarınızı getirin
-HDInsight 'taki tüm yönetilen diskler Azure Depolama Hizmeti Şifrelemesi (SSE) ile korunmaktadır. Bu disklerdeki veriler, varsayılan olarak Microsoft tarafından yönetilen anahtarlarla şifrelenir. Bu sürümden itibaren, disk şifrelemesi için Kendi Anahtarını Getir (BYOK) ve Azure Key Vault kullanarak yönetebilirsiniz. BYOK şifrelemesi, küme oluşturma sırasında ek bir ücret olmadan tek adımlı bir yapılandırmadır. HDInsight 'ı Azure Key Vault ile yönetilen kimlik olarak kaydedin ve kümenizi oluştururken şifreleme anahtarını eklemeniz yeterlidir. Daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtar disk şifrelemesi](https://docs.microsoft.com/azure/hdinsight/disk-encryption).
+HDInsight 'taki tüm yönetilen diskler Azure Depolama Hizmeti Şifrelemesi (SSE) ile korunmaktadır. Bu disklerdeki veriler, varsayılan olarak Microsoft tarafından yönetilen anahtarlarla şifrelenir. Bu sürümden itibaren, disk şifrelemesi için Kendi Anahtarını Getir (BYOK) ve Azure Key Vault kullanarak yönetebilirsiniz. BYOK şifrelemesi, küme oluşturma sırasında ek bir ücret olmadan tek adımlı bir yapılandırmadır. HDInsight 'ı Azure Key Vault ile yönetilen kimlik olarak kaydedin ve kümenizi oluştururken şifreleme anahtarını eklemeniz yeterlidir. Daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtar disk şifrelemesi](./disk-encryption.md).
 
 ### <a name="deprecation"></a>Kullanımdan kaldırma
 Bu yayının kullanım dışı bırakılmasıyla ilgili değildir. Yakında kullanım dışı bırakılmaya hazırlanmak için, [yaklaşan değişikliklere](#upcoming-changes)bakın.
@@ -281,7 +281,7 @@ Bu sürüm yalnızca HDInsight 3,6 ve 4,0 için geçerlidir.
 ### <a name="new-features"></a>Yeni özellikler
 
 #### <a name="service-tags"></a>Hizmet etiketleri
-Hizmet etiketleri, Azure hizmetlerine ağ erişimini kolayca kısıtlayabilmesini sağlayarak Azure sanal makineleri ve Azure sanal ağları için güvenliği basitleştirir. Ağ güvenlik grubu (NSG) kurallarınızın hizmet etiketlerini kullanarak belirli bir Azure hizmetine genel olarak veya Azure bölgesine giden trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Azure, her etiketi temel alan IP adreslerinin bakımını sağlar. Ağ güvenlik grupları (NSG 'ler) için HDInsight hizmet etiketleri, sistem durumu ve Yönetim Hizmetleri için IP adresi gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığına en aza indirmenize yardımcı olur. HDInsight müşterileri, Service Tag 'i Azure portal, PowerShell ve REST API aracılığıyla etkinleştirebilir. Daha fazla bilgi için bkz. [Azure HDInsight Için ağ güvenlik grubu (NSG) hizmet etiketleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags).
+Hizmet etiketleri, Azure hizmetlerine ağ erişimini kolayca kısıtlayabilmesini sağlayarak Azure sanal makineleri ve Azure sanal ağları için güvenliği basitleştirir. Ağ güvenlik grubu (NSG) kurallarınızın hizmet etiketlerini kullanarak belirli bir Azure hizmetine genel olarak veya Azure bölgesine giden trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Azure, her etiketi temel alan IP adreslerinin bakımını sağlar. Ağ güvenlik grupları (NSG 'ler) için HDInsight hizmet etiketleri, sistem durumu ve Yönetim Hizmetleri için IP adresi gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığına en aza indirmenize yardımcı olur. HDInsight müşterileri, Service Tag 'i Azure portal, PowerShell ve REST API aracılığıyla etkinleştirebilir. Daha fazla bilgi için bkz. [Azure HDInsight Için ağ güvenlik grubu (NSG) hizmet etiketleri](./hdinsight-service-tags.md).
 
 #### <a name="custom-ambari-db"></a>Özel Ambari DB
 HDInsight artık Apache ambarı için kendi SQL DB 'nizi kullanmanıza olanak tanır. Bu özel ambarı DB 'yi Azure portal veya Kaynak Yöneticisi şablonu aracılığıyla yapılandırabilirsiniz.  Bu özellik, işleme ve kapasite gereksinimleriniz için doğru SQL DB 'yi seçmenizi sağlar. Ayrıca, iş büyüme gereksinimlerini eşleştirmek için kolayca yükseltebilirsiniz. Daha fazla bilgi için bkz. [HDInsight kümelerini özel bir AMBARı DB Ile ayarlama](hdinsight-custom-ambari-db.md).
@@ -305,7 +305,7 @@ Sonraki sürümden itibaren, yeni HDInsight kümelerinizi yalnızca TLS 1,2 bağ
 6/30/2020 tarihinden itibaren Azure HDInsight, yılda daha sonra tüm HTTPS bağlantıları için TLS 1,2 veya sonraki sürümleri uygular. Tüm istemcilerinizin TLS 1,2 veya sonraki sürümlerini işlemeye hazırlanmasını öneririz.
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
-HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Şubat 2020 tarihinden itibaren (tam tarihin daha sonra iletileceği), HDInsight bunun yerine Azure sanal makine ölçek kümelerini kullanacaktır. [Azure sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)hakkında daha fazla bilgi için bkz..
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Şubat 2020 tarihinden itibaren (tam tarihin daha sonra iletileceği), HDInsight bunun yerine Azure sanal makine ölçek kümelerini kullanacaktır. [Azure sanal makine ölçek kümeleri](../virtual-machine-scale-sets/overview.md)hakkında daha fazla bilgi için bkz..
 
 #### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark kümesi düğüm boyutu değişikliği 
 Yakında çıkacak sürümde:
@@ -325,7 +325,7 @@ HDInsight 4,0 için bileşen sürümü değişikliği yoktur.
 
 HDInsight 'ta Apache Zeppelin 3,6:0.7.0-->0.7.3. 
 
-[Bu belge](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)içinden en güncel bileşen sürümlerini bulabilirsiniz.
+[Bu belge](./hdinsight-component-versioning.md)içinden en güncel bileşen sürümlerini bulabilirsiniz.
 
 ### <a name="new-regions"></a>Yeni bölgeler
 
@@ -353,19 +353,19 @@ Azure HDInsight için otomatik ölçeklendirme artık Apache Spark ve Hadoop kü
 
 Gereksinimlerinize bağlı olarak, yük tabanlı ve zamanlama tabanlı otomatik ölçeklendirme arasında seçim yapabilirsiniz. Zamanlama tabanlı otomatik ölçeklendirme, küme boyutunu önceden tanımlanmış bir zamanlamaya göre değiştirebilmesini sağlarken, yük tabanlı otomatik ölçeklendirme, geçerli kaynak gereksinimlerine bağlı olarak küme boyutunu yukarı ve aşağı ölçeklendirebilir. 
 
-HBase ve LLAP iş yükünün otomatik ölçeklendirme desteği de genel önizlemeye sunuldu. Daha fazla bilgi için bkz. [Azure HDInsight kümelerini otomatik olarak ölçeklendirme](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters).
+HBase ve LLAP iş yükünün otomatik ölçeklendirme desteği de genel önizlemeye sunuldu. Daha fazla bilgi için bkz. [Azure HDInsight kümelerini otomatik olarak ölçeklendirme](./hdinsight-autoscale-clusters.md).
 
 #### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>Apache HBase için HDInsight hızlandırılmış yazma Işlemleri 
 
-Hızlandırılmış Yazmalar özelliği Apache HBase Önceden Yazılan Günlük (WAL) performansını geliştirmek için Azure premium SSD yönetilen disklerini kullanır. Daha fazla bilgi için bkz. [Apache HBase için Azure HDInsight Hızlandırılmış Yazmalar](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes).
+Hızlandırılmış Yazmalar özelliği Apache HBase Önceden Yazılan Günlük (WAL) performansını geliştirmek için Azure premium SSD yönetilen disklerini kullanır. Daha fazla bilgi için bkz. [Apache HBase için Azure HDInsight Hızlandırılmış Yazmalar](./hbase/apache-hbase-accelerated-writes.md).
 
 #### <a name="custom-ambari-db"></a>Özel Ambari DB
 
-HDInsight artık müşterilerin ambarı için kendi SQL DB 'yi kullanmasını sağlamak için yeni bir kapasite sunmaktadır. Artık müşteriler, ambarı için doğru SQL DB 'yi seçip kendi iş büyüme gereksinimlerine göre kolayca yükseltebilir. Dağıtım bir Azure Resource Manager şablonuyla yapılır. Daha fazla bilgi için bkz. [HDInsight kümelerini özel bir AMBARı DB Ile ayarlama](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db).
+HDInsight artık müşterilerin ambarı için kendi SQL DB 'yi kullanmasını sağlamak için yeni bir kapasite sunmaktadır. Artık müşteriler, ambarı için doğru SQL DB 'yi seçip kendi iş büyüme gereksinimlerine göre kolayca yükseltebilir. Dağıtım bir Azure Resource Manager şablonuyla yapılır. Daha fazla bilgi için bkz. [HDInsight kümelerini özel bir AMBARı DB Ile ayarlama](./hdinsight-custom-ambari-db.md).
 
 #### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>F Serisi sanal makineler artık HDInsight ile kullanılabilir
 
-F Serisi sanal makineler (VM 'Ler), hafif işlem gereksinimleriyle HDInsight kullanmaya başlamak için iyi bir seçimdir. Daha düşük bir saatlik liste fiyatına sahip olan F Serisi, vCPU başına Azure İşlem Birimi (ACU) açısından fiyat-performans alanında Azure portföyündeki en iyi seçenektir. Daha fazla bilgi için bkz. [Azure HDInsight kümeniz için doğru VM boyutunu seçme](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size).
+F Serisi sanal makineler (VM 'Ler), hafif işlem gereksinimleriyle HDInsight kullanmaya başlamak için iyi bir seçimdir. Daha düşük bir saatlik liste fiyatına sahip olan F Serisi, vCPU başına Azure İşlem Birimi (ACU) açısından fiyat-performans alanında Azure portföyündeki en iyi seçenektir. Daha fazla bilgi için bkz. [Azure HDInsight kümeniz için doğru VM boyutunu seçme](./hdinsight-selecting-vm-size.md).
 
 ### <a name="deprecation"></a>Kullanımdan kaldırma
 
@@ -384,7 +384,7 @@ HDInsight, kümeyle yönetilen disk alanı sağlar. Bu sürümden, yeni oluştur
 Yaklaşan sürümlerde aşağıdaki değişiklikler olur. 
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
-HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. HDInsight 'tan itibaren, HDInsight bunun yerine Azure sanal makine ölçek kümelerini kullanacaktır. [Azure sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)hakkında daha fazla bilgi için bkz..
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. HDInsight 'tan itibaren, HDInsight bunun yerine Azure sanal makine ölçek kümelerini kullanacaktır. [Azure sanal makine ölçek kümeleri](../virtual-machine-scale-sets/overview.md)hakkında daha fazla bilgi için bkz..
 
 #### <a name="hbase-20-to-21"></a>HBase 2,0-2,1
 Yakında düzenlenecek HDInsight 4,0 sürümünde HBase sürümü 2,0 sürümünden 2,1 sürümüne yükseltilir.
@@ -396,7 +396,7 @@ A serisi VM 'Ler görece düşük CPU ve bellek kapasitesi nedeniyle ESP küme s
 HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam eder. 
 
 ### <a name="component-version-change"></a>Bileşen sürümü değişikliği
-Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [burada](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)bulabilirsiniz.
+Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [burada](./hdinsight-component-versioning.md)bulabilirsiniz.
 
 
 ## <a name="release-date-08072019"></a>Yayın tarihi: 08/07/2019
@@ -518,17 +518,17 @@ Apache Storm ve ML Hizmetleri HDInsight 4,0 ' de kullanılamaz.
 
 Yeni güncelleştirmeler ve yetenekler aşağıdaki kategorilere ayrılır:
 
-*  ***Hadoop ve diğer açık kaynak projelerini güncelleştirme*** : 20 + açık kaynaklı projelerde 1000 + hata düzeltmesine ek olarak, bu güncelleştirme **Spark (2,3)** ve **Kafka (1,0)**' in yeni bir sürümünü içerir.
+*  ***Hadoop ve diğer açık kaynak projelerini güncelleştirme** _ – 20 + açık kaynaklı projelerde 1000 + hata düzeltmesine ek olarak, bu güncelleştirme, yeni bir _ *Spark (2,3)* * ve **Kafka (1,0)** sürümünü içerir.
 
     a.  [**Apache Spark 2,3 ' deki yeni özellikler**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
     b.  [**Apache Kafka 1,0 ' deki yeni özellikler**](https://kafka.apache.org/downloads#1.0.0)
 
-*  ***R Server 9,1 ' i güncelleştirme Machine Learning Services 9,3*** – bu sürümle birlikte, algoritmik yenilikleriyle birlikte sunulan açık kaynak ve mühendislerin en iyi kullanımı ve kullanım kolaylığı sayesinde, tüm tercih edilen dillerde Apache Spark hızına sahip olan veri bilimcilerini ve mühendislerini sağlıyoruz. Bu sürüm, R Server 'da sunulan özellikleri, R Server 'dan ML hizmetlerine kadar olan küme adı değişikliği ile birlikte, Python için eklenen destek ile genişletir. 
+*  ***R Server 9,1 ile Machine Learning Services 9,3** _ – Bu sürümle birlikte, algoritmik yenilikleriyle birlikte açık kaynak ve mühendislerin en iyi kullanımı ve kullanım kolaylığı sayesinde, tüm tercih edilen dillerde, Apache Spark hızına sahip veri bilimcilerini ve mühendislerini sağlıyoruz. Bu sürüm, R Server 'da sunulan özellikleri, R Server 'dan ML hizmetlerine kadar olan küme adı değişikliği ile birlikte, Python için eklenen destek ile genişletir. 
 
-*  ***Azure Data Lake Storage 2. Için destek*** – hdınsight, Azure Data Lake Storage 2. Önizleme sürümünü destekleyecektir. Kullanılabilir bölgelerde müşteriler, HDInsight kümelerinin birincil veya Ikincil deposu olarak bir ADLS 2. hesabı seçebilecektir.
+_ * **Azure Data Lake Storage 2.** _ – HDInsight desteği, Azure Data Lake Storage 2. Önizleme sürümünü destekleyecektir. Kullanılabilir bölgelerde müşteriler, HDInsight kümelerinin birincil veya Ikincil deposu olarak bir ADLS 2. hesabı seçebilecektir.
 
-*  ***Hdınsight kurumsal güvenlik paketi güncelleştirmeleri (Önizleme)*** – (Önizleme) Azure Blob depolama, ADLS 1., Cosmos DB ve Azure DB Için [sanal ağ hizmet uç noktaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) desteği.
+_ * **Hdınsight kurumsal güvenlik paketi güncelleştirmeler (Önizleme)** _ – (Önizleme) Azure Blob depolama, ADLS 1., Cosmos DB ve Azure DB Için [sanal ağ hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md) desteği.
 
 ### <a name="component-versions"></a>Bileşen sürümleri
 
@@ -726,7 +726,7 @@ Bu sürüm HBase 1.1.2 ve aşağıdaki Apache düzeltme eklerini sağlar.
 
 Bu sürüm, aşağıdaki düzeltme eklerine ek olarak Hive 1.2.1 ve Hive 2.1.0 sağlar:
 
-**Hive 1.2.1 Apache yamaları:**
+_ *Hive 1.2.1 Apache yamaları:**
 
 -   [*HIVE-10697*](https://issues.apache.org/jira/browse/HIVE-10697): objecınspectorconvertors \# unionconvertor hatalı dönüştürme yapar.
 
@@ -1262,7 +1262,7 @@ Bu sürüm Spark 2.3.0 ve aşağıdaki Apache yamaları sağlar:
 
 Bu sürüm, ek Apache düzeltme ekleri olmadan Sqoop 1.4.6 sağlar.
 
-#### <a name="storm"></a>Fırtına
+#### <a name="storm"></a>Storm
 
 Bu sürüm, fırtınası 1.1.1 ve aşağıdaki Apache yamaları sağlar:
 
@@ -1665,7 +1665,7 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
 | HATA-97864              | [HIVE-18833](https://issues.apache.org/jira/browse/HIVE-18833)   | "Dizini orcfile olarak ekle" olduğunda otomatik birleştirme başarısız olur                                      |
 | HATA-98814              | [, 13314](https://issues.apache.org/jira/browse/HDFS-13314)   | Süs Yot, FSIMAGE bozulmasını algılarsa, isteğe bağlı olarak çıkış                              |
 
-**Yükseltme**
+**Upgrade**
 
 | **Hortonçalışmalar hata KIMLIĞI** | **Apache JIRA**                                                                                                                | **Özet**                                                                 |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -1787,11 +1787,11 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
 
 |**Apache bileşeni**|**Apache JIRA**|**Özet**|**Ayrıntılar**|
 |--|--|--|--|
-|**Spark 2,3** |**YOK** |**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |-"Kullanımdan kaldırma" belgesi ve "davranış değişikliği" kılavuzu vardır. https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-SQL bölümü için başka bir ayrıntılı "geçiş" Kılavuzu (2,2 ' den 2,3 ' e kadar) vardır. https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2,3** |**yok** |**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |-"Kullanımdan kaldırma" belgesi ve "davranış değişikliği" kılavuzu vardır. https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-SQL bölümü için başka bir ayrıntılı "geçiş" Kılavuzu (2,2 ' den 2,3 ' e kadar) vardır. https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark işi başarıyla tamamlandı, ancak bir bu işlem için bir sürücü kotası dolu hatası var |**Senaryo:** Komutu çalıştıran kullanıcının çöp kutusu klasöründe bir kota ayarlandığında **Insert üzerine yazma** işlemi çalıştırılıyor.<br /><br />**Önceki davranış:** İş, verileri çöp kutusu 'na taşıyamasa bile başarılı oldu. Sonuç, tabloda daha önce varolan bazı verileri yanlışlıkla içerebilir.<br /><br />**Yeni davranış:** Çöp kutusu klasörüne taşıma başarısız olduğunda, dosyalar kalıcı olarak silinir.|
-|**Kafka 1,0**|**YOK**|**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Kafka 1,0**|**yok**|**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/Ranger** | |EKLEME ÜZERINE yazma için gereken ek Ranger Hive ilkeleri |**Senaryo:** **Ekleme ÜZERINE yazma** için gereken ek Ranger Hive ilkeleri<br /><br />**Önceki davranış:** Hive **ekleme ÜZERINE yazma** sorguları her zamanki gibi başarılı olur.<br /><br />**Yeni davranış:** VP-2.6. x sürümüne yükselttikten sonra Hive **ekleme ÜZERINE yazma** sorguları hata vererek beklenmedik şekilde başarısız oluyor:<br /><br />Bildiri derlenirken hata: başarısız oldu: HiveAccessControlException Izni reddedildi: Kullanıcı jtikan,/tmp/ \* (State = 42000, Code = 40000) ÜZERINDE yazma ayrıcalığına sahip değil<br /><br />HDP-2.6.0 itibariyle, Hive **ekleme üzerine** yazma sorguları, kullanıcının,, bir kullanıcı adına, bu, bir kullanıcı adına, bu da bir SAYGER ilkesi aracılığıyla verilen yazma ayrıcalığına sahip olsa bile,<br /><br />**Geçici çözüm/beklenen müşteri eylemi:**<br /><br />1. Hive deposu altında yeni bir ilke oluşturun.<br />2. veritabanını gördüğünüz açılan menüde URI 'yi seçin.<br />3. yolu güncelleştirin (örnek:/tmp/*)<br />4. kullanıcıları ve grubu ekleyin ve kaydedin.<br />5. ekleme sorgusunu yeniden deneyin.|
-|**HDFS**|**YOK** |Birden çok KMS URI 'si için bir destek gerekir |**Önceki davranış:** KMS sağlayıcısı yolunu yapılandırmak için DFS. ENCRYPTION. Key. Provider. Uri özelliği kullanılmıştır.<br /><br />**Yeni davranış:** DFS. encryption. Key. Provider. Uri artık, KMS sağlayıcısı yolunu yapılandırmak için Hadoop. Security. Key. Provider. Path için kullanım dışı bırakılmıştır.|
+|**HDFS**|**yok** |Birden çok KMS URI 'si için bir destek gerekir |**Önceki davranış:** KMS sağlayıcısı yolunu yapılandırmak için DFS. ENCRYPTION. Key. Provider. Uri özelliği kullanılmıştır.<br /><br />**Yeni davranış:** DFS. encryption. Key. Provider. Uri artık, KMS sağlayıcısı yolunu yapılandırmak için Hadoop. Security. Key. Provider. Path için kullanım dışı bırakılmıştır.|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Zamanlayıcıyı devre dışı bırakma seçeneği |**Etkilenen bileşen:** Zeppelin-Server<br /><br />**Önceki davranış:** Zeppelin önceki sürümlerinde, Scheduler 'ı devre dışı bırakma seçeneği yoktu.<br /><br />**Yeni davranış:** Varsayılan olarak, varsayılan olarak devre dışı bırakıldığı için kullanıcılar artık Zamanlayıcı 'yı görmez.<br /><br />**Geçici çözüm/beklenen müşteri eylemi:** Zamanlayıcı 'yı etkinleştirmek istiyorsanız,, ambarı 'ndan Zeppelin ayarlarındaki özel Zeppelin sitesi altında, azeppelin. Not defteri. cron. Enable değerini true değeriyle eklemeniz gerekir.|
 
 ### <a name="known-issues"></a>Bilinen sorunlar
@@ -1925,6 +1925,6 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
 
 ### <a name="upgrading"></a>Yükseltmenin
 
-Bu özelliklerin tümü HDInsight 3,6 ' de mevcuttur. Spark, Kafka ve R Server 'ın (Machine Learning Services) en son sürümünü almak için, [hdınsight 3,6 kümesi oluştururken](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)lütfen Spark, Kafka, ml Hizmetleri sürümünü seçin. ADLS için destek almak üzere ADLS depolama türünü bir seçenek olarak seçebilirsiniz. Mevcut kümeler bu sürümlere otomatik olarak yükseltilmeyecek.
+Bu özelliklerin tümü HDInsight 3,6 ' de mevcuttur. Spark, Kafka ve R Server 'ın (Machine Learning Services) en son sürümünü almak için, [hdınsight 3,6 kümesi oluştururken](./hdinsight-hadoop-provision-linux-clusters.md)lütfen Spark, Kafka, ml Hizmetleri sürümünü seçin. ADLS için destek almak üzere ADLS depolama türünü bir seçenek olarak seçebilirsiniz. Mevcut kümeler bu sürümlere otomatik olarak yükseltilmeyecek.
 
-2018 Haziran 'dan sonra oluşturulan tüm yeni kümeler, tüm açık kaynaklı projelerde 1000 + hata düzeltmelerini otomatik olarak alır. Daha yeni bir HDInsight sürümüne yükseltme konusunda en iyi yöntemler için lütfen [Bu](https://docs.microsoft.com/azure/hdinsight/hdinsight-upgrade-cluster) kılavuzu izleyin.
+2018 Haziran 'dan sonra oluşturulan tüm yeni kümeler, tüm açık kaynaklı projelerde 1000 + hata düzeltmelerini otomatik olarak alır. Daha yeni bir HDInsight sürümüne yükseltme konusunda en iyi yöntemler için lütfen [Bu](./hdinsight-upgrade-cluster.md) kılavuzu izleyin.

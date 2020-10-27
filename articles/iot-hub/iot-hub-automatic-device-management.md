@@ -10,18 +10,18 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: e30daa3f81ed5dcae1323e721bf85cfed8fa9614
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0e017f4df413d6db528bb99756646859d9a74aea
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147808"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545404"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Azure portalını kullanarak otomatik IoT cihazı ve modül yönetimi
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Azure IoT Hub otomatik cihaz yönetimi, büyük cihaz filklerin yönetilmesi için yinelenen ve karmaşık görevlerin birçoğunu otomatikleştirir. Otomatik cihaz yönetimi sayesinde, özelliklerini temel alarak bir cihaz kümesini hedefleyebilir, istenen yapılandırmayı tanımlayabilir ve ardından IoT Hub cihazları kapsama geldiğinde güncelleştirebilir. Bu güncelleştirme, bir _otomatik cihaz yapılandırması_ veya _otomatik modül yapılandırması_kullanılarak yapılır; bu işlem tamamlama ve uyumluluğu özetler, birleştirme ve çakışmaları idare etmenize ve yapılandırmaları aşamalı bir yaklaşımda kullanıma almanızı sağlar.
+Azure IoT Hub otomatik cihaz yönetimi, büyük cihaz filklerin yönetilmesi için yinelenen ve karmaşık görevlerin birçoğunu otomatikleştirir. Otomatik cihaz yönetimi sayesinde, özelliklerini temel alarak bir cihaz kümesini hedefleyebilir, istenen yapılandırmayı tanımlayabilir ve ardından IoT Hub cihazları kapsama geldiğinde güncelleştirebilir. Bu güncelleştirme, bir _otomatik cihaz yapılandırması_ veya _otomatik modül yapılandırması_ kullanılarak yapılır; bu işlem tamamlama ve uyumluluğu özetler, birleştirme ve çakışmaları idare etmenize ve yapılandırmaları aşamalı bir yaklaşımda kullanıma almanızı sağlar.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -31,7 +31,7 @@ Otomatik cihaz yönetimi, istenen özelliklerle bir dizi cihaz WINS veya modül 
 
 * **Hedef içerik** , hedeflenen cihaz TWINS veya modül TWINS 'de eklenecek veya güncelleştirilebilen istenen özellikleri tanımlar. İçerik, istenen özelliklerin değiştirilmesi için bir yol içerir.
 
-* **Ölçümler** , **başarı**, **devam**ediyor ve **hata**gibi çeşitli yapılandırma durumlarının Özet sayılarını tanımlar. Özel ölçümler, ikizi tarafından bildirilen özelliklerde sorgu olarak belirtilir.  Sistem ölçümleri, hedeflenen TWINS sayısı ve başarıyla güncelleştirilmiş TWINS sayısı gibi ikizi güncelleştirme durumunu ölçen varsayılan ölçülerdir.
+* **Ölçümler** , **başarı** , **devam** ediyor ve **hata** gibi çeşitli yapılandırma durumlarının Özet sayılarını tanımlar. Özel ölçümler, ikizi tarafından bildirilen özelliklerde sorgu olarak belirtilir.  Sistem ölçümleri, hedeflenen TWINS sayısı ve başarıyla güncelleştirilmiş TWINS sayısı gibi ikizi güncelleştirme durumunu ölçen varsayılan ölçülerdir.
 
 Yapılandırma oluşturulduktan ve sonra beş dakikalık aralıklarla otomatik yapılandırmalar ilk kez çalışır. Ölçüm sorguları otomatik yapılandırmanın her çalıştırılışında çalışır.
 
@@ -58,9 +58,9 @@ Bir yapılandırma oluşturmadan önce, hangi cihazları veya modülleri etkilen
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
 
-2. **IoT cihaz yapılandırması**' nı seçin.
+2. **IoT cihaz yapılandırması** ' nı seçin.
 
-3. **Cihaz Yapılandırması Ekle** veya **Modül Yapılandırması Ekle**' yi seçin.
+3. **Cihaz Yapılandırması Ekle** veya **Modül Yapılandırması Ekle** ' yi seçin.
 
    ![Cihaz yapılandırması veya modül Yapılandırması Ekle](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
 
@@ -70,7 +70,7 @@ Bir yapılandırma oluşturmak için beş adım vardır. Aşağıdaki bölümler
 
 1. Yapılandırmanıza en fazla 128 harf olan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /` .
 
-2. Yapılandırmalarınızı izlemeye yardımcı olmak için Etiketler ekleyin. Etiketler, yapılandırmanızı tanımlayan **ad**ve **değer** çiftleridir. Örneğin `HostPlatform, Linux` veya `Version, 3.0.1` olabilir.
+2. Yapılandırmalarınızı izlemeye yardımcı olmak için Etiketler ekleyin. Etiketler, yapılandırmanızı tanımlayan **ad** ve **değer** çiftleridir. Örneğin `HostPlatform, Linux` veya `Version, 3.0.1` olabilir.
 
 3. Sonraki adıma geçmek için **İleri ' yi** seçin. 
 
@@ -96,7 +96,7 @@ Ayrıca, tüm ikizi yolunu belirterek ve değer parantez olmadan değeri sağlay
 
 Varolan bir özelliği kaldırmak istiyorsanız, özelliği değerini belirtin `null` .
 
-**Cihaz Ekle Ikizi ayarlama** veya **Modül Ekle ikizi ayarını**seçerek ek ayarlar ekleyebilirsiniz.
+**Cihaz Ekle Ikizi ayarlama** veya **Modül Ekle ikizi ayarını** seçerek ek ayarlar ekleyebilirsiniz.
 
 ### <a name="specify-metrics-optional"></a>Ölçümleri belirtin (isteğe bağlı)
 
@@ -104,11 +104,11 @@ Varolan bir özelliği kaldırmak istiyorsanız, özelliği değerini belirtin `
 
 Her yapılandırmanın en fazla beş özel ölçümü olabilir. 
 
-1. **Ölçüm adı**için bir ad girin.
+1. **Ölçüm adı** için bir ad girin.
 
-2. **Ölçüm ölçütü**için bir sorgu girin.  Sorgu, Device ikizi tarafından bildirilen özellikleri temel alır.  Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
+2. **Ölçüm ölçütü** için bir sorgu girin.  Sorgu, Device ikizi tarafından bildirilen özellikleri temel alır.  Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
-Örnek:
+Örneğin:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -123,7 +123,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Yapılandırılmış modüller üzerinde raporlamak için bir ölçüm oluşturuyorsanız, ' ı seçin `moduleId` `devices.modules` . Örnek:
+Yapılandırılmış modüller üzerinde raporlamak için bir ölçüm oluşturuyorsanız, ' ı seçin `moduleId` `devices.modules` . Örneğin:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -138,7 +138,7 @@ Otomatik cihaz yapılandırması yalnızca Device ikizi etiketlerini hedefleyebi
 
 Birden çok yapılandırma aynı cihazı veya modülü hedefleyebilir, çünkü her yapılandırmanın bir öncelik numarası vardır. Herhangi bir çakışma varsa, en yüksek önceliğe sahip yapılandırma kazanır. 
 
-1. Yapılandırma **önceliği**için pozitif bir tamsayı girin. En yüksek sayısal değer en yüksek öncelik olarak değerlendirilir. İki yapılandırmanın aynı öncelik numarası varsa, en son WINS 'nin oluşturulduğu bir değer vardır. 
+1. Yapılandırma **önceliği** için pozitif bir tamsayı girin. En yüksek sayısal değer en yüksek öncelik olarak değerlendirilir. İki yapılandırmanın aynı öncelik numarası varsa, en son WINS 'nin oluşturulduğu bir değer vardır. 
 
 2. Hangi cihazların veya modüllerin bu yapılandırmaya hedefleneceğini belirleyen bir **hedef koşul** girin. Koşul, ikizi Tags veya ikizi tarafından bildirilen özellikleri temel alır ve ifade biçimiyle eşleşmelidir. 
 
@@ -150,7 +150,7 @@ Birden çok yapılandırma aynı cihazı veya modülü hedefleyebilir, çünkü 
 
 ### <a name="review-configuration"></a>Yapılandırmayı gözden geçir
 
-Yapılandırma bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin.
+Yapılandırma bilgilerinizi gözden geçirin ve ardından **Gönder** ' i seçin.
 
 ## <a name="monitor-a-configuration"></a>Bir yapılandırmayı izleme
 
@@ -158,7 +158,7 @@ Bir yapılandırmanın ayrıntılarını görüntülemek ve çalıştıran cihaz
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
 
-2. **IoT cihaz yapılandırması**' nı seçin.
+2. **IoT cihaz yapılandırması** ' nı seçin.
 
 3. Yapılandırma listesini inceleyin. Her yapılandırma için aşağıdaki ayrıntıları görebilirsiniz:
 
@@ -180,7 +180,7 @@ Bir yapılandırmanın ayrıntılarını görüntülemek ve çalıştıran cihaz
 
    * **Hedef koşul** -hedef koşulla eşleşen cihazlar veya modüller. 
 
-   * **Ölçümler** -sistem ölçümlerinin ve özel ölçümlerin bir listesi.  Açılan listede ölçümü seçerek ve ardından **cihazları görüntüle** veya **modülleri görüntüle**' yi seçerek her bir ölçüm için sayılan cihazların veya modüllerin listesini görüntüleyebilirsiniz.
+   * **Ölçümler** -sistem ölçümlerinin ve özel ölçümlerin bir listesi.  Açılan listede ölçümü seçerek ve ardından **cihazları görüntüle** veya **modülleri görüntüle** ' yi seçerek her bir ölçüm için sayılan cihazların veya modüllerin listesini görüntüleyebilirsiniz.
 
    * **Device Ikizi Settings** veya **module ikizi Settings** -yapılandırma tarafından ayarlanan ikizi ayarları. 
 
@@ -202,7 +202,7 @@ Bir yapılandırmayı değiştirmek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
 
-2. **IoT cihaz yapılandırması**' nı seçin. 
+2. **IoT cihaz yapılandırması** ' nı seçin. 
 
 3. Değiştirmek istediğiniz yapılandırmayı seçin. 
 
@@ -213,7 +213,7 @@ Bir yapılandırmayı değiştirmek için aşağıdaki adımları kullanın:
    * Öncelik 
    * Ölçümler
 
-4. **Kaydet**’i seçin.
+4. **Kaydet** ’i seçin.
 
 5. Değişiklikleri izlemek için [Yapılandırmayı İzleme](#monitor-a-configuration) bölümündeki adımları izleyin. 
 
@@ -223,11 +223,11 @@ Bir yapılandırmayı sildiğinizde, her türlü cihaz WINS 'in bir sonraki en y
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub 'ınıza gidin. 
 
-2. **IoT cihaz yapılandırması**' nı seçin. 
+2. **IoT cihaz yapılandırması** ' nı seçin. 
 
 3. Silmek istediğiniz yapılandırmayı seçmek için onay kutusunu kullanın. 
 
-4. **Sil**’i seçin.
+4. **Sil** ’i seçin.
 
 5. Bir istem, doğrulamanızı ister.
 
@@ -236,8 +236,7 @@ Bir yapılandırmayı sildiğinizde, her türlü cihaz WINS 'in bir sonraki en y
 Bu makalede IoT cihazlarını ölçeklendirerek nasıl yapılandıracağınızı ve izleyeceğinizi öğrendiniz. Azure IoT Hub 'yi yönetme hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin:
 
 * [IoT Hub cihaz kimliklerinizi toplu olarak yönetme](iot-hub-bulk-identity-mgmt.md)
-* [IoT Hub ölçümleri](iot-hub-metrics.md)
-* [İşlemleri izleme](iot-hub-operations-monitoring.md)
+* [IoT Hub 'ınızı izleme](monitor-iot-hub.md)
 
 IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 

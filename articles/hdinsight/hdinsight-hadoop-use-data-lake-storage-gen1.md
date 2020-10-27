@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 7e05e89cae8688162c6ac6ded5ad56c85394dc8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5949bab7bdf11b11e0ff71f9054098ed83d95ab4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858803"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539845"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma
 
@@ -62,7 +62,7 @@ HDInsight, varsayılan depolama alanı olarak Data Lake Storage 1. dağıtıldı
 * Cluster1 `adl://mydatalakestore/cluster1storage` yolunu kullanabilir.
 * Cluster2 `adl://mydatalakestore/cluster2storage` yolunu kullanabilir.
 
-Her iki küme de aynı Data Lake Storage 1. hesabını kullanır **mydatalakestore**. Her kümenin, Data Lake Storage içinde kendi kök dosya sistemine erişimi vardır. Azure portal dağıtım deneyimi, kök yolu için **/Clusters/ \<clustername> ** gibi bir klasör adı kullanmanızı ister.
+Her iki küme de aynı Data Lake Storage 1. hesabını kullanır **mydatalakestore** . Her kümenin, Data Lake Storage içinde kendi kök dosya sistemine erişimi vardır. Azure portal dağıtım deneyimi, kök yolu için **/Clusters/ \<clustername>** gibi bir klasör adı kullanmanızı ister.
 
 Data Lake Storage 1. varsayılan depolama alanı olarak kullanmak için, hizmet sorumlusu erişimini aşağıdaki yollara vermeniz gerekir:
 
@@ -126,7 +126,7 @@ Data Lake Storage bir hesabı ek olarak eklemek ve birden fazla Data Lake Storag
 
 ## <a name="configure-data-lake-storage-gen1-access"></a>Data Lake Storage 1. erişimini yapılandırma
 
-HDInsight kümenizdeki Azure Data Lake Storage 1. erişimi yapılandırmak için bir Azure Active Directory (Azure AD) hizmet sorumlusuna sahip olmanız gerekir. Hizmet sorumlusu yalnızca bir Azure AD yöneticisi tarafından oluşturulabilir. Hizmet sorumlusunun bir sertifika ile oluşturulması gerekir. Daha fazla bilgi edinmek için bkz. [Hızlı başlangıç: HDInsight'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) ve [Otomatik olarak imzalanan sertifika ile hizmet sorumlusu oluşturma](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
+HDInsight kümenizdeki Azure Data Lake Storage 1. erişimi yapılandırmak için bir Azure Active Directory (Azure AD) hizmet sorumlusuna sahip olmanız gerekir. Hizmet sorumlusu yalnızca bir Azure AD yöneticisi tarafından oluşturulabilir. Hizmet sorumlusunun bir sertifika ile oluşturulması gerekir. Daha fazla bilgi edinmek için bkz. [Hızlı başlangıç: HDInsight'ta kümeleri ayarlama](./hdinsight-hadoop-provision-linux-clusters.md) ve [Otomatik olarak imzalanan sertifika ile hizmet sorumlusu oluşturma](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
 
 > [!NOTE]  
 > HDInsight kümesi için ek depolama alanı olarak Azure Data Lake Storage 1. kullanacaksanız, bu makalede açıklandığı gibi kümeyi oluştururken bunu yapmanızı önemle öneririz. Mevcut bir HDInsight kümesine ek depolama alanı olarak Azure Data Lake Storage 1. eklemek, desteklenen bir senaryo değildir.
@@ -137,19 +137,19 @@ Erişim denetimi modeli hakkında daha fazla bilgi için, [Azure Data Lake Stora
 
 HDInsight kümesinden Data Lake Storage dosyalara erişmek için çeşitli yollar vardır.
 
-* **Tam adı kullanarak**. Bu yöntemle, erişmek istediğiniz dosyanın tam yolunu girersiniz.
+* **Tam adı kullanarak** . Bu yöntemle, erişmek istediğiniz dosyanın tam yolunu girersiniz.
 
     ```
     adl://<data_lake_account>.azuredatalakestore.net/<cluster_root_path>/<file_path>
     ```
 
-* **Kısaltılmış yol biçimi kullanarak**. Bu yaklaşımda, yolu küme köküne kadar değiştirirsiniz:
+* **Kısaltılmış yol biçimi kullanarak** . Bu yaklaşımda, yolu küme köküne kadar değiştirirsiniz:
 
     ```
     adl:///<file path>
     ```
 
-* **Göreli yolu kullanarak**. Bu yöntemle, erişmek istediğiniz dosyanın yalnızca göreli yolunu girersiniz.
+* **Göreli yolu kullanarak** . Bu yöntemle, erişmek istediğiniz dosyanın yalnızca göreli yolunu girersiniz.
 
     ```
     /<file.path>/
@@ -220,7 +220,7 @@ Yapılandırılmış varsayılan deponun tüm yolunu belirlemek için,, 1. **ola
 
 Data Lake Storage 1. erişimi olan HDInsight kümeleri oluşturma hakkında ayrıntılı yönergeler için aşağıdaki bağlantıları kullanın.
 
-* [Portalı kullanma](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Portalı kullanma](./hdinsight-hadoop-provision-linux-clusters.md)
 * [PowerShell 'i kullanma (Data Lake Storage 1. varsayılan depolama alanı olarak)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [PowerShell 'i kullanma (Data Lake Storage 1. ek depolama alanı olarak)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Azure şablonlarını kullanma](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -305,7 +305,7 @@ Bu makalede, bkz. HDInsight ile uyumlu Azure Data Lake Storage 1. kullanmayı ö
 
 Daha fazla bilgi için bkz.
 
-* [Hızlı başlangıç: HDInsight'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Hızlı başlangıç: HDInsight'ta kümeleri ayarlama](./hdinsight-hadoop-provision-linux-clusters.md)
 * [Azure PowerShell kullanarak Data Lake Storage 1. kullanmak için HDInsight kümesi oluşturma](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [HDInsight'a veri yükleme](hdinsight-upload-data.md)
 * [HDInsight ile verilere erişimi kısıtlamak için Azure Blob depolama paylaşılan erişim Imzalarını kullanma](hdinsight-storage-sharedaccesssignature-permissions.md)

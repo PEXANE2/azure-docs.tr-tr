@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: deda7644d29fce5deb8d6c76f93da0caf0b22ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02192f3960b8021ee32203620893620c7b96f076
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536928"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539454"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Öğretici: IntelliJ kullanarak HDInsight 'ta Apache Spark için bir Scala Maven uygulaması oluşturma
 
@@ -25,7 +25,7 @@ Bu öğreticide, IntelliJ ıDEA ile Apache Maven kullanarak Scala 'da yazılan A
 * HDInsight Spark kümelerine gönderilebilen bir jar dosyası oluşturma.
 * Livy kullanarak uygulamayı Spark kümesi üzerinde çalıştırma.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * IntelliJ IDEA için Scala eklentisini yükleme
 > * IntelliJ kullanarak bir Scala Maven uygulaması geliştirme
@@ -39,7 +39,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Bir Java IDE. Bu makalede [IntelliJ fikir topluluk ver kullanılmaktadır.  2018.3.4](https://www.jetbrains.com/idea/download/).
 
-* Azure Toolkit for IntelliJ.  Bkz. [Azure Toolkit for IntelliJ yükleme](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in).
+* Azure Toolkit for IntelliJ.  Bkz. [Azure Toolkit for IntelliJ yükleme](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in).
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>IntelliJ IDEA için Scala eklentisini yükleme
 
@@ -47,7 +47,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
 
 1. IntelliJ IDEA’yı açın.
 
-2. Giriş ekranında **Configure**, eklentiler  >  penceresini açmak için**eklentileri** Yapılandır ' a gidin **Plugins** .
+2. Giriş ekranında **Configure** , eklentiler  >  penceresini açmak için **eklentileri** Yapılandır ' a gidin **Plugins** .
 
     ![' IntelliJ fıkır Scala pluginenable '](./media/apache-spark-create-standalone-application/enable-scala-plugin1.png)
 
@@ -71,7 +71,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
 
    ![Yeni proje iletişim kutusunu IntelliJ](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
 
-5. **İleri**’yi seçin.
+5. **İleri** ’yi seçin.
 
 6. **Yeni proje** penceresinde, aşağıdaki bilgileri sağlayın:  
 
@@ -84,7 +84,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
 
     ![Spark SDK 'sını seçen IntelliJ fıkır](./media/apache-spark-create-standalone-application/hdi-scala-new-project.png)
 
-7. **Son**’u seçin.
+7. **Son** ’u seçin.
 
 ## <a name="create-a-standalone-scala-project"></a>Tek başına Scala projesi oluşturma
 
@@ -100,36 +100,36 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
 
     ![Ekran görüntüsü yeni proje penceresinde seçili bir arşiv ETYPE gösterir.](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
-6. **İleri**’yi seçin.
+6. **İleri** ’yi seçin.
 
-7. **Yapıt koordinatlarını**genişlet. **GroupID**ve **ArtifactId**için ilgili değerleri sağlayın. **Ad**ve **konum** , yeniden doldurulur. Bu öğreticide aşağıdaki değerler kullanılır:
+7. **Yapıt koordinatlarını** genişlet. **GroupID** ve **ArtifactId** için ilgili değerleri sağlayın. **Ad** ve **konum** , yeniden doldurulur. Bu öğreticide aşağıdaki değerler kullanılır:
 
     - **GroupID:** com. Microsoft. spark. example
     - **ArtifactId:** Mini Simpleapp
 
     ![Ekran görüntüsü yeni proje penceresindeki yapıt koordinatları seçeneğini gösterir.](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
-8. **İleri**’yi seçin.
+8. **İleri** ’yi seçin.
 
-9. Ayarları doğrulayıp **İleri**’yi seçin.
+9. Ayarları doğrulayıp **İleri** ’yi seçin.
 
-10. Proje adını ve konumunu doğrulayıp **Son**’u seçin.  Projenin içeri aktarılması birkaç dakika sürer.
+10. Proje adını ve konumunu doğrulayıp **Son** ’u seçin.  Projenin içeri aktarılması birkaç dakika sürer.
 
-11. Proje içe aktarıldıktan sonra sol bölmeden **mini simpleapp**  >  **src**  >  **Test**  >  **Scala**  >  **com**  >  **Microsoft**  >  **Spark**  >  **örneğine**gidin.  **Myspec**öğesine sağ tıklayın ve ardından **Sil...** öğesini seçin. Uygulama için bu dosyaya ihtiyacınız yoktur.  İletişim kutusunda **Tamam ' ı** seçin.
+11. Proje içe aktarıldıktan sonra sol bölmeden **mini simpleapp**  >  **src**  >  **Test**  >  **Scala**  >  **com**  >  **Microsoft**  >  **Spark**  >  **örneğine** gidin.  **Myspec** öğesine sağ tıklayın ve ardından **Sil...** öğesini seçin. Uygulama için bu dosyaya ihtiyacınız yoktur.  İletişim kutusunda **Tamam ' ı** seçin.
   
 12. Sonraki adımlarda, Spark Scala uygulamasının bağımlılıklarını tanımlamak için **pom.xml** güncelleştirin. Bu bağımlılıkların otomatik olarak indirilip çözümlenmesi için Maven 'yi yapılandırmanız gerekir.
 
 13. **Ayarlar penceresini açmak** için **Dosya** menüsünden **Ayarlar** ' ı seçin.
 
-14. **Ayarlar** penceresinde, **derleme, yürütme, dağıtım**  >  **derleme araçları**  >  **Maven**  >  **içeri aktarma**' ya gidin.
+14. **Ayarlar** penceresinde, **derleme, yürütme, dağıtım**  >  **derleme araçları**  >  **Maven**  >  **içeri aktarma** ' ya gidin.
 
 15. **Maven projelerini otomatik olarak Içeri aktar** onay kutusunu seçin.
 
-16. **Uygula**’yı ve sonra **Tamam**’ı seçin.  Ardından proje penceresine geri dönersiniz.
+16. **Uygula** ’yı ve sonra **Tamam** ’ı seçin.  Ardından proje penceresine geri dönersiniz.
 
     ![Maven’i otomatik yüklemeler için yapılandırma](./media/apache-spark-create-standalone-application/configure-maven-download.png)
 
-17. Sol bölmeden **src**  >  **Main**  >  **Scala**  >  **com. Microsoft. spark. example**' a gidin ve App. Scala 'yı açmak için **uygulama** ' ya çift tıklayın.
+17. Sol bölmeden **src**  >  **Main**  >  **Scala**  >  **com. Microsoft. spark. example** ' a gidin ve App. Scala 'yı açmak için **uygulama** ' ya çift tıklayın.
 
 18. Var olan örnek kodu aşağıdaki kodla değiştirin ve değişiklikleri kaydedin. Bu kod, HVAC.csv verileri okur (tüm HDInsight Spark kümelerinde kullanılabilir). Altıncı sütunda yalnızca bir basamak olan satırları alır. Ve çıktıyı, kümenin varsayılan depolama kapsayıcısının altına **/Hvacout** dosyasına yazar.
 
@@ -183,27 +183,27 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
 
     1. **Dosya** menüsünde **proje yapısı...** öğesini seçin.
 
-    2. **Proje yapısı** penceresinde, **Artifacts**  >  **the plus symbol +**  >  **JAR**  >  **bağımlılıklara sahip modüllerden**artı sembol + jar öğesine gidin...
+    2. **Proje yapısı** penceresinde, **Artifacts**  >  **the plus symbol +**  >  **JAR**  >  **bağımlılıklara sahip modüllerden** artı sembol + jar öğesine gidin...
 
         ![' IntelliJ fıkır proje yapısı jar Ekle '](./media/apache-spark-create-standalone-application/hdinsight-create-jar1.png)
 
     3. **MODÜLLERDEN jar oluştur** penceresinde, **ana sınıf** metin kutusunda klasör simgesini seçin.
 
-    4. **Ana Sınıf Seç** penceresinde, varsayılan olarak görüntülenen sınıfı seçin ve ardından **Tamam**' ı seçin.
+    4. **Ana Sınıf Seç** penceresinde, varsayılan olarak görüntülenen sınıfı seçin ve ardından **Tamam** ' ı seçin.
 
         ![' IntelliJ fıkır proje yapısı Sınıf Seç '](./media/apache-spark-create-standalone-application/hdinsight-create-jar2.png)
 
-    5. **MODÜLLERDEN jar oluştur** penceresinde, **hedef jar 'e Ayıkla** seçeneğinin seçili olduğundan emin olun ve ardından **Tamam**' ı seçin.  Bu ayar, tüm bağımlılıklarla tek bir JAR oluşturur.
+    5. **MODÜLLERDEN jar oluştur** penceresinde, **hedef jar 'e Ayıkla** seçeneğinin seçili olduğundan emin olun ve ardından **Tamam** ' ı seçin.  Bu ayar, tüm bağımlılıklarla tek bir JAR oluşturur.
 
         ![IntelliJ fıkır modülünden proje yapısı jar](./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png)
 
-    6. **Çıkış düzeni** sekmesi, Maven projesinin bir parçası olarak dahil olan tüm jar dosyaları dışındaki türlerini listeler. Scala uygulamasının doğrudan bağımlılığı olmayan jar dosyalarını seçip silebilirsiniz. Uygulama için, burada oluşturduğunuz son bir tane (**basit Simpleapp derleme çıkışı**) ekleyebilirsiniz. Silinecek jar dosyaları dışındaki ' ı seçin ve ardından negatif sembolü seçin **-** .
+    6. **Çıkış düzeni** sekmesi, Maven projesinin bir parçası olarak dahil olan tüm jar dosyaları dışındaki türlerini listeler. Scala uygulamasının doğrudan bağımlılığı olmayan jar dosyalarını seçip silebilirsiniz. Uygulama için, burada oluşturduğunuz son bir tane ( **basit Simpleapp derleme çıkışı** ) ekleyebilirsiniz. Silinecek jar dosyaları dışındaki ' ı seçin ve ardından negatif sembolü seçin **-** .
 
         ![' IntelliJ fıkır proje yapısı çıktıyı Sil '](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
 
-        **Proje derlemesi 'Ne dahil et** onay kutusunun işaretli olduğundan emin olun. Bu seçenek, proje oluşturulduğu veya güncelleştirildiği her seferinde jar 'in oluşturulmasını sağlar. **Uygula** ' yı ve ardından **Tamam**' ı seçin.
+        **Proje derlemesi 'Ne dahil et** onay kutusunun işaretli olduğundan emin olun. Bu seçenek, proje oluşturulduğu veya güncelleştirildiği her seferinde jar 'in oluşturulmasını sağlar. **Uygula** ' yı ve ardından **Tamam** ' ı seçin.
 
-    7. Jar 'yi oluşturmak **için derleme**  >  **Yapı yapıtları**  >  **derlemesi**' ne gidin. Projenin yaklaşık 30 saniye içinde derlenmesi gerekir.  Çıktı jar dosyası, **\out\artifacts** altında oluşturulur.
+    7. Jar 'yi oluşturmak **için derleme**  >  **Yapı yapıtları**  >  **derlemesi** ' ne gidin. Projenin yaklaşık 30 saniye içinde derlenmesi gerekir.  Çıktı jar dosyası, **\out\artifacts** altında oluşturulur.
 
         ![IntelliJ fıkır proje yapısı çıkışı](./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png)
 
@@ -211,7 +211,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
 
 Uygulamayı kümede çalıştırmak için aşağıdaki yaklaşımları kullanabilirsiniz:
 
-* **Uygulama jar dosyasını kümeyle Ilişkili Azure Storage blob 'Una kopyalayın** . Bunu yapmak için, bir komut satırı yardımcı programı olan **AzCopy**’yi kullanabilirsiniz. Verileri karşıya yüklemek için kullanabileceğiniz çok sayıda başka istemci de mevcuttur. [HDInsight 'ta Apache Hadoop işleri Için karşıya yükleme verilerinde](../hdinsight-upload-data.md)daha fazla bilgi bulabilirsiniz.
+* **Uygulama jar dosyasını kümeyle Ilişkili Azure Storage blob 'Una kopyalayın** . Bunu yapmak için, bir komut satırı yardımcı programı olan **AzCopy** ’yi kullanabilirsiniz. Verileri karşıya yüklemek için kullanabileceğiniz çok sayıda başka istemci de mevcuttur. [HDInsight 'ta Apache Hadoop işleri Için karşıya yükleme verilerinde](../hdinsight-upload-data.md)daha fazla bilgi bulabilirsiniz.
 
 * **Bir uygulama Işini Spark kümesine uzaktan göndermek Için Apache Livy kullanın** . HDInsight üzerinde Spark kümeleri, Spark işlerini uzaktan göndermek için REST uç noktalarını kullanıma sunan Livy’yi içerir. Daha fazla bilgi için bkz. [HDInsight 'Ta Spark kümeleriyle Apache Livy kullanarak Apache Spark işleri uzaktan gönderme](apache-spark-livy-rest-interface.md).
 
@@ -219,15 +219,15 @@ Uygulamayı kümede çalıştırmak için aşağıdaki yaklaşımları kullanabi
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Üstteki **arama** kutusuna **HDInsight**yazın.
+1. Üstteki **arama** kutusuna **HDInsight** yazın.
 
-1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
+1. **Hizmetler** altında **HDInsight kümeleri** ' ni seçin.
 
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** seçeneğini belirleyin.
 
-1. **Sil**’i seçin. **Evet**’i seçin.
+1. **Sil** ’i seçin. **Evet** ’i seçin.
 
 ![' HDInsight Azure portalı Kümeyi Sil '](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 

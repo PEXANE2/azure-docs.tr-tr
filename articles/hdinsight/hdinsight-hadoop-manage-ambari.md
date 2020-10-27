@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f21b72cd519c1615d8273bf316a8d0ccad039672
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281404"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546169"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight kümelerini Apache Ambari Web arabiriminden yönetme
 
@@ -68,7 +68,7 @@ Sayfa açıldığında, üstteki çubuğun üzerine göz önünde yer. Bu çubuk
 Aşağıdaki liste, ambarı tarafından kullanılan ortak uyarı durumlarını içerir:
 
 * **Tamam**
-* **Warning**
+* **Uyarı**
 * **BAŞLATMA**
 * **BILINMEYEN**
 
@@ -78,21 +78,21 @@ Uyarılar, **Uyarılar** sayfasından görüntülenebilen çeşitli varsayılan 
 
 ![Apache ambarı uyarıları Sayfa Özeti](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
-Grupları **Eylemler** menüsünü kullanarak yönetebilir ve **Uyarı gruplarını yönet**' i seçebilirsiniz.
+Grupları **Eylemler** menüsünü kullanarak yönetebilir ve **Uyarı gruplarını yönet** ' i seçebilirsiniz.
 
 ![Apache ambarı uyarı gruplarını yönetme](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-Uyarı yöntemlerini yönetebilir ve __Bildirimleri Yönet__' i seçerek **Eylemler** menüsünde uyarı bildirimleri oluşturursunuz. Geçerli tüm bildirimler görüntülenir. Buradan bildirim oluşturun. Bildirimler, belirli bir uyarı/önem derecesi oluştuğunda **e-posta** veya **SNMP** aracılığıyla gönderilebilir. Örneğin, **Yarn varsayılan** grubundaki uyarılardan herhangi biri **kritik**olarak ayarlandığında bir e-posta iletisi gönderebilirsiniz.
+Uyarı yöntemlerini yönetebilir ve __Bildirimleri Yönet__ ' i seçerek **Eylemler** menüsünde uyarı bildirimleri oluşturursunuz. Geçerli tüm bildirimler görüntülenir. Buradan bildirim oluşturun. Bildirimler, belirli bir uyarı/önem derecesi oluştuğunda **e-posta** veya **SNMP** aracılığıyla gönderilebilir. Örneğin, **Yarn varsayılan** grubundaki uyarılardan herhangi biri **kritik** olarak ayarlandığında bir e-posta iletisi gönderebilirsiniz.
 
 ![Apache ambarı oluşturma uyarı bildirimi](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
 Son olarak, __Eylemler__ menüsünde __uyarı ayarlarını yönet__ ' i seçmek, bir uyarının bir bildirim gönderilmeden önce kaç kez oluşması gerektiğini ayarlamanıza olanak sağlar. Bu ayar, geçici hatalara yönelik bildirimleri engellemek için kullanılabilir.
 
-Ücretsiz [SendGrid hesabı](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)kullanan bir uyarı bildirimi hakkında öğretici için bkz. [Azure HDInsight 'ta Apache ambarı e-posta bildirimlerini yapılandırma](./apache-ambari-email.md).
+Ücretsiz [SendGrid hesabı](../sendgrid-dotnet-how-to-send-email.md)kullanan bir uyarı bildirimi hakkında öğretici için bkz. [Azure HDInsight 'ta Apache ambarı e-posta bildirimlerini yapılandırma](./apache-ambari-email.md).
 
 ### <a name="cluster"></a>Küme
 
-Panonun **ölçümler** sekmesi, kümenizin durumunu bir bakışta izlemeyi kolaylaştıran bir dizi pencere öğesi içerir. **CPU kullanımı**gibi birkaç pencere öğesi tıklandığında ek bilgi sağlar.
+Panonun **ölçümler** sekmesi, kümenizin durumunu bir bakışta izlemeyi kolaylaştıran bir dizi pencere öğesi içerir. **CPU kullanımı** gibi birkaç pencere öğesi tıklandığında ek bilgi sağlar.
 
 ![Ölçümlerle Apache ambarı panosu](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
@@ -100,7 +100,7 @@ Panonun **ölçümler** sekmesi, kümenizin durumunu bir bakışta izlemeyi kola
 
 ![Isı haritalarını ile Apache ambarı panosu](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
-Küme içindeki düğümler hakkında daha fazla bilgi için **konaklar**' ı seçin. Ardından ilgilendiğiniz belirli bir düğümü seçin.
+Küme içindeki düğümler hakkında daha fazla bilgi için **konaklar** ' ı seçin. Ardından ilgilendiğiniz belirli bir düğümü seçin.
 
 ![Apache ambarı ana bilgisayar Özeti ayrıntıları](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
@@ -200,7 +200,7 @@ Bir hizmeti yapılandırmak için aşağıdaki adımları kullanın:
 
     ![Apache ambarı hizmeti yapılandırması](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
-3. Yapılandırmayı değiştirmek için görüntülenecek alanları kullanın ve ardından **Kaydet**' i seçin. Veya önceki ayarlara geri dönmek için önceki bir yapılandırma seçin ve ardından **geçerli yap** ' ı seçin.
+3. Yapılandırmayı değiştirmek için görüntülenecek alanları kullanın ve ardından **Kaydet** ' i seçin. Veya önceki ayarlara geri dönmek için önceki bir yapılandırma seçin ve ardından **geçerli yap** ' ı seçin.
 
 ## <a name="ambari-views"></a>Ambarı görünümleri
 
@@ -214,7 +214,7 @@ Ambarı görünümleri, geliştiricilerin Apache ambarı görünümleri çerçev
 
 HDInsight 'ta aşağıdaki ambarı işlemleri desteklenmez:
 
-* __Ölçüm Toplayıcı hizmeti taşınıyor__. Ölçüm toplayıcı hizmetindeki bilgileri görüntülerken, hizmet eylemleri menüsünde bulunan eylemlerden biri __ölçüm toplayıcıyı taşıma__' dır. Bu eylem HDInsight 'ta desteklenmez.
+* __Ölçüm Toplayıcı hizmeti taşınıyor__ . Ölçüm toplayıcı hizmetindeki bilgileri görüntülerken, hizmet eylemleri menüsünde bulunan eylemlerden biri __ölçüm toplayıcıyı taşıma__ ' dır. Bu eylem HDInsight 'ta desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

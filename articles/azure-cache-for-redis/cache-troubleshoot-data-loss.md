@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 29492ee6b7bce50c4807a36d0c252e18e6aadf87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6db036752bab7b84b72a37b148eaec7aa5765ef3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008959"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538604"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Redis için Azure Cache'de veri kaybı sorunlarını giderme
 
@@ -36,7 +36,7 @@ Bu anahtarların önbelleğinizi kaybolduğunu fark ederseniz, aşağıdaki olas
 
 ### <a name="key-expiration"></a>Anahtar süre sonu
 
-Anahtar bir zaman aşımı atanmışsa ve bu süre geçtiğinde Redsıs için Azure önbelleği bir anahtarı otomatik olarak kaldırır. Redsıs anahtar süre sonu hakkında daha fazla bilgi için, [süre](https://redis.io/commands/expire) sonu komut belgelerine bakın. Ayrıca, zaman aşımı değerleri [set](https://redis.io/commands/set), [SETEX](https://redis.io/commands/setex), [GetSet](https://redis.io/commands/getset)ve diğer ** \* Mağaza** komutları kullanılarak ayarlanabilir.
+Anahtar bir zaman aşımı atanmışsa ve bu süre geçtiğinde Redsıs için Azure önbelleği bir anahtarı otomatik olarak kaldırır. Redsıs anahtar süre sonu hakkında daha fazla bilgi için, [süre](https://redis.io/commands/expire) sonu komut belgelerine bakın. Ayrıca, zaman aşımı değerleri [set](https://redis.io/commands/set), [SETEX](https://redis.io/commands/setex), [GetSet](https://redis.io/commands/getset)ve diğer **\* Mağaza** komutları kullanılarak ayarlanabilir.
 
 Kaç anahtarın dolduğunu gösteren istatistikleri almak için, [Info](https://redis.io/commands/info) komutunu kullanın. `Stats`Bölümünde, süre dolma anahtarlarının toplam sayısı gösterilir. Bu `Keyspace` bölümde, zaman aşımları ve ortalama zaman aşımı değeri olan anahtarların sayısı hakkında daha fazla bilgi sağlanmaktadır.
 
@@ -106,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Yanlış veritabanı seçimi
 
-Redsıs için Azure önbelleği varsayılan olarak **DB0** veritabanını kullanır. Başka bir veritabanına geçiş yaparsanız (örneğin, **DB1**) ve bundan sonra anahtarları okumaya çalışırsanız, redin Için Azure önbelleği bunları orada bulamaz. Her veritabanı mantıksal olarak ayrı bir birimdir ve farklı bir veri kümesi tutar. Diğer kullanılabilir veritabanlarını kullanmak ve bunların her birinde anahtarları aramak için [Seç](https://redis.io/commands/select) komutunu kullanın.
+Redsıs için Azure önbelleği varsayılan olarak **DB0** veritabanını kullanır. Başka bir veritabanına geçiş yaparsanız (örneğin, **DB1** ) ve bundan sonra anahtarları okumaya çalışırsanız, redin Için Azure önbelleği bunları orada bulamaz. Her veritabanı mantıksal olarak ayrı bir birimdir ve farklı bir veri kümesi tutar. Diğer kullanılabilir veritabanlarını kullanmak ve bunların her birinde anahtarları aramak için [Seç](https://redis.io/commands/select) komutunu kullanın.
 
 ### <a name="redis-instance-failure"></a>Redsıs örneği hatası
 
@@ -114,7 +114,7 @@ Redsıs, bellek içi veri deposudur. Veriler redo önbelleğini barındıran fiz
 
 Standart ve Premium katmanlardaki önbellekler, çoğaltılan bir yapılandırmada iki VM kullanarak veri kaybına karşı daha fazla esneklik sunar. Bu tür bir önbellekteki birincil düğüm başarısız olduğunda, çoğaltma düğümü verileri otomatik olarak sunacak şekilde alır. Bu sanal makineler, aynı anda kullanılamaz duruma gelme olasılığını en aza indirmek için hatalar ve güncelleştirmeler için ayrı etki alanlarında bulunur. Ancak büyük bir veri merkezi kesintisi olursa VM 'Ler yine de devam edebilir. Bu nadir durumlarda verileriniz kaybedilir.
 
-Bu altyapı hatalarıyla karşı verilerinizin korunmasını artırmak için [redsıs veri kalıcılığı](https://redis.io/topics/persistence) ve [coğrafi çoğaltma](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) kullanmayı göz önünde bulundurun.
+Bu altyapı hatalarıyla karşı verilerinizin korunmasını artırmak için [redsıs veri kalıcılığı](https://redis.io/topics/persistence) ve [coğrafi çoğaltma](./cache-how-to-geo-replication.md) kullanmayı göz önünde bulundurun.
 
 ## <a name="additional-information"></a>Ek bilgiler
 

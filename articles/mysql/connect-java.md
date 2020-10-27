@@ -8,24 +8,24 @@ ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: a54e950286a37c207d902090f015b3732e0ff10b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 793cab8b37872788da259e45148e314faa00ea15
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88517591"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545149"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>MySQL için Azure veritabanı ile Java ve JDBC kullanma
 
-Bu konu başlığı altında, [MySQL Için Azure veritabanı](https://docs.microsoft.com/azure/mysql/)'nda bilgi depolamak ve almak üzere Java ve [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) kullanan bir örnek uygulama oluşturma gösterilmektedir.
+Bu konu başlığı altında, [MySQL Için Azure veritabanı](./index.yml)'nda bilgi depolamak ve almak üzere Java ve [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) kullanan bir örnek uygulama oluşturma gösterilmektedir.
 
 JDBC, geleneksel ilişkisel veritabanlarına bağlanmak için standart Java API 'sidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure hesabı. Hiç kimse yoksa [ücretsiz deneme sürümü alın](https://azure.microsoft.com/free/).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) veya [Azure CLI](/cli/azure/install-azure-cli). Otomatik olarak oturum açabileceksiniz ve ihtiyacınız olan tüm araçlara erişebilmek için Azure Cloud Shell önerilir.
-- Desteklenen bir [Java Development Kit](https://aka.ms/azure-jdks), sürüm 8 (Azure Cloud Shell içinde bulunur).
+- [Azure Cloud Shell](../cloud-shell/quickstart.md) veya [Azure CLI](/cli/azure/install-azure-cli). Otomatik olarak oturum açabileceksiniz ve ihtiyacınız olan tüm araçlara erişebilmek için Azure Cloud Shell önerilir.
+- Desteklenen bir [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), sürüm 8 (Azure Cloud Shell içinde bulunur).
 - [Apache Maven](https://maven.apache.org/) derleme aracı.
 
 ## <a name="prepare-the-working-environment"></a>Çalışma ortamını hazırlama
@@ -68,7 +68,7 @@ az group create \
 Oluşturacağız ilk şey, yönetilen bir MySQL sunucusudur.
 
 > [!NOTE]
-> Azure portal kullanarak MySQL sunucusu oluşturma hakkında daha ayrıntılı bilgi edinmek için bkz. [MySQL Için Azure veritabanı sunucusu oluşturma](/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal).
+> Azure portal kullanarak MySQL sunucusu oluşturma hakkında daha ayrıntılı bilgi edinmek için bkz. [MySQL Için Azure veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-portal.md).
 
 [Azure Cloud Shell](https://shell.azure.com/), aşağıdaki betiği çalıştırın:
 

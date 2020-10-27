@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 478b53b78fb72a01ad028c7fb6b7683b34cbca14
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 88e433dbfa87d8ea483789b1fd838c62a6a481c0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370806"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536768"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Redsıs için Azure önbelleğini Azure PowerShell ile yönetme
 > [!div class="op_single_selector"]
@@ -22,13 +22,13 @@ ms.locfileid: "92370806"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu konu başlığı altında, Redsıs örnekleri için Azure önbelleğinizi oluşturma, güncelleştirme ve ölçeklendirme, erişim anahtarlarını yeniden oluşturma ve önbelleğiniz hakkındaki bilgileri görüntüleme gibi genel görevlerin nasıl gerçekleştirileceği gösterilmektedir. Redsıs PowerShell cmdlet 'lerinin Azure önbelleğinin tüm listesi için bkz. [redsıs cmdlet 'leri Için Azure önbelleği](https://docs.microsoft.com/powershell/module/az.rediscache).
+Bu konu başlığı altında, Redsıs örnekleri için Azure önbelleğinizi oluşturma, güncelleştirme ve ölçeklendirme, erişim anahtarlarını yeniden oluşturma ve önbelleğiniz hakkındaki bilgileri görüntüleme gibi genel görevlerin nasıl gerçekleştirileceği gösterilmektedir. Redsıs PowerShell cmdlet 'lerinin Azure önbelleğinin tüm listesi için bkz. [redsıs cmdlet 'leri Için Azure önbelleği](/powershell/module/az.rediscache).
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
 Klasik dağıtım modeli hakkında daha fazla bilgi için bkz [. Azure Resource Manager ile klasik dağıtım: dağıtım modellerini ve kaynaklarınızın durumunu anlayın](../azure-resource-manager/management/deployment-models.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure PowerShell zaten yüklediyseniz, Azure PowerShell sürüm 1.0.0 veya daha yeni bir sürüme sahip olmanız gerekir. Bu komutla yüklediğiniz Azure PowerShell sürümünü Azure PowerShell komut isteminde kontrol edebilirsiniz.
 
 ```azurepowershell
@@ -94,7 +94,7 @@ Azure Kamu bulutunda bir önbellek oluşturmak için aşağıdaki konumlardan bi
 * USGov Virginia
 * USGov Iowa
 
-Azure Kamu Bulutu hakkında daha fazla bilgi için bkz. [Microsoft Azure Kamu](https://azure.microsoft.com/features/gov/) ve [Microsoft Azure Kamu Geliştirici Kılavuzu](../azure-government-developer-guide.md).
+Azure Kamu Bulutu hakkında daha fazla bilgi için bkz. [Microsoft Azure Kamu](https://azure.microsoft.com/features/gov/) ve [Microsoft Azure Kamu Geliştirici Kılavuzu](../azure-government/documentation-government-developer-guide.md).
 
 ### <a name="to-connect-to-the-azure-china-cloud"></a>Azure Çin bulutuna bağlanmak için
 Azure Çin bulutuna bağlanmak için aşağıdaki komutlardan birini kullanın.
@@ -148,7 +148,7 @@ Aşağıdaki tabloda, Azure PowerShell kullanarak Redsıs örnekleri için Azure
 | ShardCount |Kümelendirmeyi etkin bir Premium önbellek oluştururken oluşturulacak parça sayısı. Geçerli değerler şunlardır: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Önbelleğin SKU 'sunu belirtir. Geçerli değerler şunlardır: temel, standart, Premium |Standart |
 | RedisConfiguration |Redsıs yapılandırma ayarlarını belirtir. Her bir ayar hakkında ayrıntılar için aşağıdaki [Redisconfiguration Özellikler](#redisconfiguration-properties) tablosuna bakın. | |
-| EnableNonSslPort |SSL olmayan bağlantı noktasının etkinleştirilip etkinleştirilmeyeceğini belirtir. |Yanlış |
+| EnableNonSslPort |SSL olmayan bağlantı noktasının etkinleştirilip etkinleştirilmeyeceğini belirtir. |False |
 | MaxMemoryPolicy |Bu parametre kullanım dışı bırakıldı. bunun yerine RedisConfiguration kullanın. | |
 | Staticıp |Önbelleğinizi VNET 'te barındırırken, önbelleğin alt ağında benzersiz bir IP adresi belirtir. Sağlanmazsa, alt ağdan bir tane seçilir. | |
 | Alt ağ |Önbelleğinizi VNET 'te barındırırken, önbelleğin dağıtılacağı alt ağın adını belirtir. | |
@@ -172,7 +172,7 @@ Aşağıdaki tabloda, Azure PowerShell kullanarak Redsıs örnekleri için Azure
 | veritabanlarında |Veritabanlarının sayısını yapılandırır. Bu özellik yalnızca önbellek oluşturma sırasında yapılandırılabilir. |Standart ve Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleği oluşturmak için
-Redsıs örnekleri için yeni Azure önbelleği, [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) cmdlet 'i kullanılarak oluşturulur.
+Redsıs örnekleri için yeni Azure önbelleği, [New-AzRedisCache](/powershell/module/az.rediscache/new-azrediscache) cmdlet 'i kullanılarak oluşturulur.
 
 > [!IMPORTANT]
 > Azure portal kullanarak bir abonelikte redin için Azure önbelleği ilk kez oluşturduğunuzda, portal `Microsoft.Cache` bu aboneliğin ad alanını kaydeder. PowerShell kullanarak bir abonelikte Redsıs için ilk Azure önbelleğini oluşturmaya çalışırsanız, önce bu ad alanını aşağıdaki komutu kullanarak kaydetmeniz gerekir; Aksi halde, ve gibi cmdlet 'leri `New-AzRedisCache` `Get-AzRedisCache` .
@@ -280,16 +280,16 @@ Parametresinin değerlerini belirtmek için `RedisConfiguration` değerleri `{}`
 <a name="databases"></a>
 
 ## <a name="to-configure-the-databases-setting-during-cache-creation"></a>Önbellek oluşturma sırasında veritabanları ayarını yapılandırmak için
-`databases`Ayar yalnızca önbellek oluşturma sırasında yapılandırılabilir. Aşağıdaki örnek, [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCache) cmdlet 'ini kullanarak 48 veritabanı Ile Premium P3 (26 GB) önbelleği oluşturur.
+`databases`Ayar yalnızca önbellek oluşturma sırasında yapılandırılabilir. Aşağıdaki örnek, [New-AzRedisCache](/powershell/module/az.rediscache/New-azRedisCache) cmdlet 'ini kullanarak 48 veritabanı Ile Premium P3 (26 GB) önbelleği oluşturur.
 
 ```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
 ```
 
-Özelliği hakkında daha fazla bilgi için `databases` bkz. [redsıs sunucu yapılandırması Için varsayılan Azure önbelleği](cache-configure.md#default-redis-server-configuration). [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) cmdlet 'ini kullanarak önbellek oluşturma hakkında daha fazla bilgi için bkz. Redsıs Için Azure önbelleği oluşturma bölümüne bakın.
+Özelliği hakkında daha fazla bilgi için `databases` bkz. [redsıs sunucu yapılandırması Için varsayılan Azure önbelleği](cache-configure.md#default-redis-server-configuration). [New-AzRedisCache](/powershell/module/az.rediscache/new-azrediscache) cmdlet 'ini kullanarak önbellek oluşturma hakkında daha fazla bilgi için bkz. Redsıs Için Azure önbelleği oluşturma bölümüne bakın.
 
 ## <a name="to-update-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleğini güncelleştirmek için
-Redsıs örnekleri için Azure önbelleği, [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/Set-azRedisCache) cmdlet 'i kullanılarak güncelleştirilir.
+Redsıs örnekleri için Azure önbelleği, [set-AzRedisCache](/powershell/module/az.rediscache/Set-azRedisCache) cmdlet 'i kullanılarak güncelleştirilir.
 
 Kullanılabilir parametrelerin ve bunların açıklamalarının listesini görmek için `Set-AzRedisCache` aşağıdaki komutu çalıştırın.
 
@@ -418,7 +418,7 @@ Bu komut verildikten sonra, önbelleğin durumu döndürülür (çağırmaya ben
 ```
 
 ## <a name="to-get-information-about-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleği hakkında bilgi almak için
-[Get-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/get-azrediscache) cmdlet 'ini kullanarak bir önbellek hakkında bilgi alabilirsiniz.
+[Get-AzRedisCache](/powershell/module/az.rediscache/get-azrediscache) cmdlet 'ini kullanarak bir önbellek hakkında bilgi alabilirsiniz.
 
 Kullanılabilir parametrelerin ve bunların açıklamalarının listesini görmek için `Get-AzRedisCache` aşağıdaki komutu çalıştırın.
 
@@ -502,7 +502,7 @@ Belirli bir önbellek hakkında bilgi döndürmek için, `Get-AzRedisCache` `Nam
 ```
 
 ## <a name="to-retrieve-the-access-keys-for-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleğinin erişim anahtarlarını almak için
-Önbelleğiniz için erişim anahtarlarını almak üzere [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-azRedisCacheKey) cmdlet 'ini kullanabilirsiniz.
+Önbelleğiniz için erişim anahtarlarını almak üzere [Get-AzRedisCacheKey](/powershell/module/az.rediscache/Get-azRedisCacheKey) cmdlet 'ini kullanabilirsiniz.
 
 Kullanılabilir parametrelerin ve bunların açıklamalarının listesini görmek için `Get-AzRedisCacheKey` aşağıdaki komutu çalıştırın.
 
@@ -546,7 +546,7 @@ Kullanılabilir parametrelerin ve bunların açıklamalarının listesini görme
 ```
 
 ## <a name="to-regenerate-access-keys-for-your-azure-cache-for-redis"></a>Redsıs için Azure önbelleğiniz için erişim anahtarlarını yeniden oluşturmak için
-Önbelleğiniz için erişim anahtarlarını yeniden oluşturmak üzere [New-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCacheKey) cmdlet 'ini kullanabilirsiniz.
+Önbelleğiniz için erişim anahtarlarını yeniden oluşturmak üzere [New-AzRedisCacheKey](/powershell/module/az.rediscache/New-azRedisCacheKey) cmdlet 'ini kullanabilirsiniz.
 
 Kullanılabilir parametrelerin ve bunların açıklamalarının listesini görmek için `New-AzRedisCacheKey` aşağıdaki komutu çalıştırın.
 
@@ -600,7 +600,7 @@ Kullanılabilir parametrelerin ve bunların açıklamalarının listesini görme
 ```
 
 ## <a name="to-delete-an-azure-cache-for-redis"></a>Redsıs için bir Azure önbelleğini silmek için
-Redsıs için bir Azure önbelleğini silmek için [Remove-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/remove-azrediscache) cmdlet 'ini kullanın.
+Redsıs için bir Azure önbelleğini silmek için [Remove-AzRedisCache](/powershell/module/az.rediscache/remove-azrediscache) cmdlet 'ini kullanın.
 
 Kullanılabilir parametrelerin ve bunların açıklamalarının listesini görmek için `Remove-AzRedisCache` aşağıdaki komutu çalıştırın.
 
@@ -848,10 +848,9 @@ Aşağıdaki komut belirtilen önbelleğin her iki düğümünü de yeniden baş
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure ile Windows PowerShell kullanma hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
-* [MSDN 'de Redsıs cmdlet belgeleri için Azure önbelleği](https://docs.microsoft.com/powershell/module/az.rediscache)
-* [Azure Resource Manager cmdlet 'leri](https://go.microsoft.com/fwlink/?LinkID=394765): Azure Resource Manager modülündeki cmdlet 'leri kullanmayı öğrenin.
+* [MSDN 'de Redsıs cmdlet belgeleri için Azure önbelleği](/powershell/module/az.rediscache)
+* [Azure Resource Manager cmdlet 'leri](/powershell/module/): Azure Resource Manager modülündeki cmdlet 'leri kullanmayı öğrenin.
 * [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/templates/deploy-portal.md): Azure Portal kaynak grupları oluşturma ve yönetme hakkında bilgi edinin.
 * [Azure blogu](https://azure.microsoft.com/blog/): Azure 'daki yeni özellikler hakkında bilgi edinin.
 * [Windows PowerShell blogu](https://devblogs.microsoft.com/powershell/): Windows PowerShell 'de yeni özellikler hakkında bilgi edinin.
 * ["Hey, betik Guy!" Blog](https://devblogs.microsoft.com/scripting/tag/hey-scripting-guy/): Windows PowerShell Community 'den gerçek dünya ipuçları ve püf noktaları alın.
-

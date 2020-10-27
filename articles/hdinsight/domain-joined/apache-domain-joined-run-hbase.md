@@ -7,18 +7,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5747de399e7ae0cfe99ba013f8da376be0ba1b2a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73044654"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544962"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache HBase ilkelerini yapılandırma
 
 Kurumsal Güvenlik Paketi (ESP) Apache HBase kümeleri için Apache Ranger ilkelerini nasıl yapılandıracağınızı öğrenin. ESP kümeleri bir etki alanına bağlıdır ve kullanıcıların etki alanı kimlik bilgileriyle kimlik doğrulaması yapmasına olanak sağlar. Bu öğreticide, bir HBase tablosundaki farklı sütun ailelerine erişimi kısıtlamak için iki Ranger ilkesi oluşturacaksınız.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Etki alanı kullanıcılarını oluşturma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-* [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 
 * Kurumsal Güvenlik Paketi bir [HDInsight HBase kümesi](apache-domain-joined-configure-using-azure-adds.md)oluşturun.
 
@@ -45,7 +45,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-domain-users"></a>Etki alanı kullanıcılarını oluşturma
 
-**Sales_user1** ve **marketing_user1** etki alanı kullanıcılarını oluşturma hakkında bilgi edinmek için [Kurumsal güvenlik paketi ile HDInsight kümesi oluşturma](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)sayfasını ziyaret edin. Bir üretim senaryosunda, etki alanı kullanıcıları Active Directory kiracınızdan gelir.
+**Sales_user1** ve **marketing_user1** etki alanı kullanıcılarını oluşturma hakkında bilgi edinmek için [Kurumsal güvenlik paketi ile HDInsight kümesi oluşturma](./apache-domain-joined-configure-using-azure-adds.md)sayfasını ziyaret edin. Bir üretim senaryosunda, etki alanı kullanıcıları Active Directory kiracınızdan gelir.
 
 ## <a name="create-hbase-tables-and-import-sample-data"></a>HBase tabloları oluşturma ve örnek verileri içeri aktarma
 
@@ -93,13 +93,13 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 ## <a name="create-ranger-policies"></a>Ranger ilkelerini oluşturma
 
-**Sales_user1** ve **Marketing_user1**için bir Ranger ilkesi oluşturun.
+**Sales_user1** ve **Marketing_user1** için bir Ranger ilkesi oluşturun.
 
-1. **Ranger Yönetici Arabirimini** açın. **HBase**altında ** \<ClusterName> _hbase** ' ye tıklayın.
+1. **Ranger Yönetici Arabirimini** açın. **HBase** altında **\<ClusterName> _hbase** ' ye tıklayın.
 
    ![HDInsight Apache Ranger yönetici kullanıcı arabirimi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
-2. **Ilke listesi** ekranı, bu küme için oluşturulan tüm Ranger ilkelerini görüntüler. Bir önceden yapılandırılmış ilke listelenebilir. **Yeni Ilke Ekle**' ye tıklayın.
+2. **Ilke listesi** ekranı, bu küme için oluşturulan tüm Ranger ilkelerini görüntüler. Bir önceden yapılandırılmış ilke listelenebilir. **Yeni Ilke Ekle** ' ye tıklayın.
 
     ![Apache Ranger HBase ilkeleri listesi](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
@@ -125,7 +125,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
    >[!NOTE]
    >**Select User** için bir etki alanı kullanıcısı otomatik olarak doldurulmazsa, Ranger’ın Azure AD ile eşitlenmesi için birkaç dakika bekleyin.
 
-4. **Add**’e tıklayarak ilkeyi kaydedin.
+4. **Add** ’e tıklayarak ilkeyi kaydedin.
 
 5. **Yeni Ilke Ekle** ' ye tıklayın ve ardından aşağıdaki değerleri girin:
 
@@ -141,7 +141,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
    ![Apache Ranger ilkesi pazarlama oluşturma](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
-6. **Add**’e tıklayarak ilkeyi kaydedin.
+6. **Add** ’e tıklayarak ilkeyi kaydedin.
 
 ## <a name="test-the-ranger-policies"></a>Ranger ilkelerini test etme
 
@@ -191,7 +191,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 ### <a name="access-data-as-marketing_user1"></a>Verilere marketing_user1 göre erişin
 
-1. Kümeye yeni bir SSH bağlantısı açın. **Marketing_user1**olarak oturum açmak için aşağıdaki komutu kullanın:
+1. Kümeye yeni bir SSH bağlantısı açın. **Marketing_user1** olarak oturum açmak için aşağıdaki komutu kullanın:
 
    ```bash
    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -235,11 +235,11 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz HBase kümesini aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
-2. Üstteki **arama** kutusuna **HDInsight**yazın. 
-1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+2. Üstteki **arama** kutusuna **HDInsight** yazın. 
+1. **Hizmetler** altında **HDInsight kümeleri** ' ni seçin.
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın. 
-1. **Sil**'e tıklayın. **Evet**'e tıklayın.
+1. **Sil** 'e tıklayın. **Evet** 'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

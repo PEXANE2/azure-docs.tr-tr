@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a72552d8654a45d1ff4c1890c8086d43d7bd801d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44cfe9bc6cd357cc0c649cecd022d3955bb5a2ce
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756543"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545880"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda yedekleme ve geri yükleme (Önizleme)
 
@@ -24,7 +24,7 @@ MySQL için Azure veritabanı esnek sunucu, otomatik olarak sunucu yedeklemeleri
 
 Esnek sunucu, veri dosyalarının anlık görüntü yedeklemelerini alır ve yerel olarak yedekli bir depolama alanında depolar. Sunucu ayrıca işlem günlükleri yedeklemesi de gerçekleştirir ve bunları yerel yedekli depolamada depolar. Bu yedeklemeler, yapılandırılmış yedekleme saklama döneminizin içindeki herhangi bir zamanda bir sunucuyu geri yüklemenize olanak tanır. Varsayılan yedekleme saklama süresi yedi gündür. Veritabanı yedeklemesini isteğe bağlı olarak 1 ile 35 gün yapılandırabilirsiniz. Rest 'de depolanan veriler için AES 256 bit şifreleme kullanılarak tüm yedeklemeler şifrelenir.
 
-Bu yedekleme dosyaları verilemez. Yedeklemeler yalnızca esnek sunucudaki geri yükleme işlemleri için kullanılabilir. Ayrıca, bir MySQL istemcisinden [mysqldump](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)kullanarak   bir veritabanını kopyalayabilirsiniz.
+Bu yedekleme dosyaları verilemez. Yedeklemeler yalnızca esnek sunucudaki geri yükleme işlemleri için kullanılabilir. Ayrıca, bir MySQL istemcisinden [mysqldump](../concepts-migrate-dump-restore.md#dump-and-restore-using-mysqldump-utility) kullanarak bir veritabanını kopyalayabilirsiniz.
 
 ## <a name="backup-frequency"></a>Yedekleme sıklığı
 
@@ -40,9 +40,9 @@ Yedekleme bekletme süresi, kullanılabilir yedeklemeleri temel aldığı için 
 
 ## <a name="backup-storage-cost"></a>Yedekleme depolama maliyeti
 
-Esnek sunucu, sağlanan sunucu depolama alanınızı ek bir ücret ödemeden yedekleme depolama alanı olarak %100 ' e kadar sağlar. Kullanılan ek yedekleme depolama alanı aylık GB olarak ücretlendirilir. Örneğin, 250 GB depolama alanı olan bir sunucu sağladıysanız, ek ücret ödemeden sunucu yedeklemeleri için kullanılabilir 250 GB depolama alanı vardır. Günlük yedekleme kullanımı 25 GB ise, en fazla 10 gün ücretsiz yedekleme depolama alanı olabilir. 250 GB 'tan fazla yedeklemeler için tüketilen depolama, [fiyatlandırma modeline](https://azure.microsoft.com/pricing/details/mysql/)göre ücretlendirilir.
+Esnek sunucu, sağlanan sunucu depolama alanınızı ek bir ücret ödemeden yedekleme depolama alanı olarak %100 ' e kadar sağlar. Kullanılan ek yedekleme depolama alanı aylık GB olarak ücretlendirilir. Örneğin, 250 GB depolama alanı olan bir sunucu sağladıysanız, ek ücret ödemeden sunucu yedeklemeleri için kullanılabilir 250 GB depolama alanı vardır. Günlük yedekleme kullanımı 25 GB ise, en fazla 10 gün ücretsiz yedekleme depolama alanı olabilir. 250 GB 'tan fazla yedeklemeler için tüketilen depolama, [fiyatlandırma modeline](https://azure.microsoft.com/pricing/details/mysql/)göre ücretlendirilir.
 
- [Backup Storage used](https://docs.microsoft.com/azure/mysql/concepts-monitoring)   Bir sunucu tarafından kullanılan yedekleme depolama alanını izlemek Için Azure Portal bulunan Azure Izleyici 'de bulunan yedekleme depolama alanı ölçüsünü kullanabilirsiniz. Kullanılan **yedekleme depolama** ölçümü, sunucu için ayarlanan yedekleme Bekletme dönemi temelinde saklanan tüm veritabanı yedeklemeleri ve günlük yedeklemeleri tarafından tüketilen depolama alanının toplamını temsil eder. Sunucu üzerindeki yoğun işlem etkinliği yedekleme depolama alanı kullanımının toplam veritabanı boyutundan bağımsız olarak artmasına neden olabilir.
+Bir sunucu tarafından kullanılan yedekleme depolama alanını izlemek için Azure portal bulunan Azure Izleyici 'de bulunan [yedekleme depolama alanı](../concepts-monitoring.md) ölçüsünü kullanabilirsiniz. Kullanılan **yedekleme depolama** ölçümü, sunucu için ayarlanan yedekleme Bekletme dönemi temelinde saklanan tüm veritabanı yedeklemeleri ve günlük yedeklemeleri tarafından tüketilen depolama alanının toplamını temsil eder. Sunucu üzerindeki yoğun işlem etkinliği yedekleme depolama alanı kullanımının toplam veritabanı boyutundan bağımsız olarak artmasına neden olabilir.
 
 Yedekleme depolama maliyetini denetlemenin birincil yolu, uygun yedekleme saklama süresini ayarlamadır. 1 ila 35 gün arasında bir saklama süresi seçebilirsiniz.
 
@@ -68,8 +68,8 @@ Bir noktadan noktaya geri yükleme, birden çok senaryoda faydalıdır. Yaygın 
 
 [Azure Portal](how-to-restore-server-portal.md)aracılığıyla en son geri yükleme noktası ve özel geri yükleme noktası arasında seçim yapabilirsiniz.
 
--   **En son geri yükleme noktası**: en son geri yükleme noktası, sunucuyu kaynak sunucuda gerçekleştirilen son yedeklemeye geri yüklemenize yardımcı olur. Geri yükleme için zaman damgası portalda da görüntülenir. Bu seçenek, sunucuyu en güncel duruma hızlıca geri yüklemek için yararlıdır.
--   **Özel geri yükleme noktası**: Bu, bu esnek sunucu için tanımlanan Bekletme dönemi içinde herhangi bir noktayı seçmenizi sağlar. Bu seçenek, bir kullanıcı hatasından kurtarmak üzere sunucunun kesin bir noktada geri yüklenmesi için yararlıdır.
+-   **En son geri yükleme noktası** : en son geri yükleme noktası, sunucuyu kaynak sunucuda gerçekleştirilen son yedeklemeye geri yüklemenize yardımcı olur. Geri yükleme için zaman damgası portalda da görüntülenir. Bu seçenek, sunucuyu en güncel duruma hızlıca geri yüklemek için yararlıdır.
+-   **Özel geri yükleme noktası** : Bu, bu esnek sunucu için tanımlanan Bekletme dönemi içinde herhangi bir noktayı seçmenizi sağlar. Bu seçenek, bir kullanıcı hatasından kurtarmak üzere sunucunun kesin bir noktada geri yüklenmesi için yararlıdır.
 
 Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü yedekleme boyutu, SKU 'nun işlem boyutu ve geri yükleme saati gibi çeşitli faktörlere bağlıdır. İşlem günlüğü kurtarma işlemi, geri yükleme işleminin bir parçası olarak en çok zaman alır. Geri yükleme süresi tam veya fark anlık görüntü yedekleme zamanlamalarına yakınsa, işlem günlüğü uygulaması en düşük olduğundan geri yüklemeler daha hızlıdır. Sunucunuza yönelik doğru kurtarma süresini tahmin etmek için, ortamınızda çok sayıda ortama özel değişken olduğu için test etmenizi kesinlikle öneririz.
 
@@ -77,7 +77,7 @@ Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü yedekleme b
 > Bölge yedekli yüksek kullanılabilirliğe sahip bir esnek sunucuyu geri yüklüyorsanız, geri yüklenen sunucu birincil sunucunuz ile aynı bölgede ve bölgede yapılandırılır ve HA olmayan bir modda tek bir esnek sunucu olarak dağıtılır. Esnek sunucu için [bölge yedekli yüksek kullanılabilirlik](concepts-high-availability.md) bölümüne bakın.
 
 > [!IMPORTANT]
-> Silinen sunucular **cannot**   geri yüklenemez. Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Sunucu kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)faydalanabilir.
+> Silinen sunucular **geri yüklenemez.** Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Sunucu kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](../../azure-resource-manager/management/lock-resources.md)faydalanabilir.
 
 ## <a name="perform-post-restore-tasks"></a>Geri yükleme sonrası görevleri gerçekleştirme
 
@@ -91,5 +91,5 @@ Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü yedekleme b
 ## <a name="next-steps"></a>Sonraki adımlar
 
 -   [İş sürekliliği](./concepts-business-continuity.md) hakkında bilgi edinin
--    [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin
+-   [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin
 -   [Yedekleme ve kurtarma](./concepts-backup-restore.md) hakkında bilgi edinin

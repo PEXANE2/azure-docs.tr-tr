@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 34e4781d1437b34607a6d9e4f99ec5bd2ef9b46d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: eb70e7cfec4e6f3e7e55fa74bbdd6cee43493576
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999986"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537890"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için sanal ağ desteğini yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. VNet, buluttaki özel bir ağ. Redsıs örneği için bir Azure önbelleği bir sanal ağ ile yapılandırıldığında, bu, genel olarak adreslenebilir değildir ve yalnızca VNet içindeki sanal makineler ve uygulamalardan erişilebilir. Bu makalede, Redsıs örneği için Premium bir Azure önbelleği için sanal ağ desteğinin nasıl yapılandırılacağı açıklanır.
@@ -28,11 +28,11 @@ Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği 
 ## <a name="virtual-network-support"></a>Sanal ağ desteği
 Sanal ağ (VNet) desteği, önbellek oluşturma sırasında **redsıs dikey penceresinde yeni Azure önbelleğinde** yapılandırılır. 
 
-1. Premium önbellek oluşturmak için [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin. Bkz. Azure portal önbellekler oluşturmaya ek olarak, Kaynak Yöneticisi şablonları, PowerShell veya Azure CLı kullanarak da oluşturabilirsiniz. Redu için Azure önbelleği oluşturma hakkında daha fazla bilgi için bkz. [önbellek oluşturma](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+1. Premium önbellek oluşturmak için [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur** ' u seçin. Bkz. Azure portal önbellekler oluşturmaya ek olarak, Kaynak Yöneticisi şablonları, PowerShell veya Azure CLı kullanarak da oluşturabilirsiniz. Redu için Azure önbelleği oluşturma hakkında daha fazla bilgi için bkz. [önbellek oluşturma](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Kaynak oluştur.":::
    
-2. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği**' ni seçin.
+2. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği** ' ni seçin.
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Kaynak oluştur.":::
 
@@ -40,7 +40,7 @@ Sanal ağ (VNet) desteği, önbellek oluşturma sırasında **redsıs dikey penc
    
    | Ayar      | Önerilen değer  | Açıklama |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS adı** | Genel olarak benzersiz bir ad girin. | Önbellek adı, yalnızca rakam, harf veya kısa çizgi içeren 1 ile 63 karakter arasında bir dize olmalıdır. Ad bir sayı veya harfle başlamalı ve bitmeli ve ardışık kısa çizgi içeremez. Önbellek örneğinizin *ana bilgisayar adı* * \<DNS name> . Redis.cache.Windows.net*olacaktır. | 
+   | **DNS adı** | Genel olarak benzersiz bir ad girin. | Önbellek adı, yalnızca rakam, harf veya kısa çizgi içeren 1 ile 63 karakter arasında bir dize olmalıdır. Ad bir sayı veya harfle başlamalı ve bitmeli ve ardışık kısa çizgi içeremez. Önbellek örneğinizin *ana bilgisayar adı* *\<DNS name> . Redis.cache.Windows.net* olacaktır. | 
    | **Abonelik** | Açılır ve aboneliğinizi seçin. | Redsıs örneği için bu yeni Azure önbelleğinin oluşturulacağı abonelik. | 
    | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Önbelleğinizin ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
    | **Konum** | Açılır ve bir konum seçin. | Önbelleğinizi kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
@@ -48,7 +48,7 @@ Sanal ağ (VNet) desteği, önbellek oluşturma sırasında **redsıs dikey penc
 
 4. **Ağ** sekmesini seçin veya sayfanın altındaki **ağ** düğmesine tıklayın.
 
-5. **Ağ** sekmesinde, bağlantı yönteminiz olarak **sanal ağlar** ' ı seçin. Yeni bir sanal ağ kullanmak için, [Azure Portal kullanarak sanal ağ oluşturma](../virtual-network/manage-virtual-network.md#create-a-virtual-network) veya [Azure Portal kullanarak bir sanal ağ oluşturma (klasik)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) adımlarını izleyerek ve ardından Premium önbelleğinizi oluşturmak ve yapılandırmak üzere **Redsıs dikey penceresinde yeni Azure önbelleğine** geri dönüp oluşturun.
+5. **Ağ** sekmesinde, bağlantı yönteminiz olarak **sanal ağlar** ' ı seçin. Yeni bir sanal ağ kullanmak için, [Azure Portal kullanarak sanal ağ oluşturma](../virtual-network/manage-virtual-network.md#create-a-virtual-network) veya [Azure Portal kullanarak bir sanal ağ oluşturma (klasik)](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) adımlarını izleyerek ve ardından Premium önbelleğinizi oluşturmak ve yapılandırmak üzere **Redsıs dikey penceresinde yeni Azure önbelleğine** geri dönüp oluşturun.
 
 > [!IMPORTANT]
 > Redsıs için Azure önbelleğinin bir Kaynak Yöneticisi VNet 'e dağıtılmasında, önbelleğin Redsıs örnekleri için Azure önbelleği dışında başka hiçbir kaynak içermeyen bir ayrılmış alt ağda olması gerekir. Redsıs için Azure önbelleğini diğer kaynakları içeren bir alt ağa bir Kaynak Yöneticisi VNet 'e dağıtmak için bir girişimde bulunuldu, dağıtım başarısız olur.
@@ -57,7 +57,7 @@ Sanal ağ (VNet) desteği, önbellek oluşturma sırasında **redsıs dikey penc
 
    | Ayar      | Önerilen değer  | Açıklama |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **Sanal ağ** | Açılır ve Sanal ağınızı seçin. | Önbelleğiniz ile aynı abonelikte ve konumda bulunan bir sanal ağ seçin. | 
+   | **Sanal Ağ** | Açılır ve Sanal ağınızı seçin. | Önbelleğiniz ile aynı abonelikte ve konumda bulunan bir sanal ağ seçin. | 
    | **Alt ağ** | Açılır ve alt ağlarınızı seçin. | Alt ağın adres aralığı CıDR gösteriminde (ör. 192.168.1.0/24) olmalıdır. Sanal ağın adres alanı tarafından içerilmelidir. | 
    | **Statik IP adresi** | Seçim Statik bir IP adresi girin. | Statik IP belirtmezseniz, otomatik olarak bir IP adresi seçilir. | 
 
@@ -76,11 +76,11 @@ Sanal ağ (VNet) desteği, önbellek oluşturma sırasında **redsıs dikey penc
 
 9. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin. 
 
-10.  **Gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
+10. **Gözden geçir + oluştur** ’u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
 
-11. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur**' u seçin.
+11. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur** ' u seçin.
 
-Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış**   sayfasında ilerlemeyi izleyebilirsiniz.  **Durum**    **çalışıyor**olarak görüntülendiğinde, önbellek kullanıma hazırdır. Önbellek oluşturulduktan sonra, **Kaynak menüsünden** **sanal ağ ' a** tıklayarak VNET 'in yapılandırmasını görüntüleyebilirsiniz.
+Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış** sayfasında ilerlemeyi izleyebilirsiniz. **Durum** **çalışıyor** olarak görüntülendiğinde, önbellek kullanıma hazırdır. Önbellek oluşturulduktan sonra, **Kaynak menüsünden** **sanal ağ ' a** tıklayarak VNET 'in yapılandırmasını görüntüleyebilirsiniz.
 
 ![Sanal ağ][redis-cache-vnet-info]
 
@@ -130,15 +130,15 @@ Dokuz giden bağlantı noktası gereksinimi vardır. Bu aralıklardaki giden ist
 
 | Bağlantı noktaları | Yön | Aktarım Protokolü | Amaç | Yerel IP | Uzak IP |
 | --- | --- | --- | --- | --- | --- |
-| 80, 443 |Outbound |TCP |Azure depolama/PKI (Internet) üzerinde redsıs bağımlılıkları | (Redsıs alt ağı) |* |
-| 443 | Outbound | TCP | Azure Key Vault redsıs bağımlılığı | (Redsıs alt ağı) | AzureKeyVault <sup>1</sup> |
-| 53 |Outbound |TCP/UDP |DNS 'de redsıs bağımlılıkları (Internet/VNet) | (Redsıs alt ağı) | 168.63.129.16 ve 169.254.169.254 <sup>2</sup> ve alt ağ <sup>3</sup> için özel DNS sunucusu |
-| 8443 |Outbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) | (Redsıs alt ağı) |
-| 10221-10231 |Outbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) | (Redsıs alt ağı) |
-| 20226 |Outbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
-| 13000-13999 |Outbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
-| 15000-15999 |Outbound |TCP |Redsıs ve Geo-Replication iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) (Coğrafi çoğaltma eş alt ağı) |
-| 6379-6380 |Outbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
+| 80, 443 |Giden |TCP |Azure depolama/PKI (Internet) üzerinde redsıs bağımlılıkları | (Redsıs alt ağı) |* |
+| 443 | Giden | TCP | Azure Key Vault redsıs bağımlılığı | (Redsıs alt ağı) | AzureKeyVault <sup>1</sup> |
+| 53 |Giden |TCP/UDP |DNS 'de redsıs bağımlılıkları (Internet/VNet) | (Redsıs alt ağı) | 168.63.129.16 ve 169.254.169.254 <sup>2</sup> ve alt ağ <sup>3</sup> için özel DNS sunucusu |
+| 8443 |Giden |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) | (Redsıs alt ağı) |
+| 10221-10231 |Giden |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) | (Redsıs alt ağı) |
+| 20226 |Giden |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
+| 13000-13999 |Giden |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
+| 15000-15999 |Giden |TCP |Redsıs ve Geo-Replication iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) (Coğrafi çoğaltma eş alt ağı) |
+| 6379-6380 |Giden |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
 
 <sup>1</sup> ' AzureKeyVault ' hizmet etiketini Kaynak Yöneticisi ağ güvenlik grupları ile birlikte kullanabilirsiniz.
 
@@ -156,14 +156,14 @@ Sekiz gelen bağlantı noktası aralığı gereksinimi vardır. Bu aralıklardak
 
 | Bağlantı noktaları | Yön | Aktarım Protokolü | Amaç | Yerel IP | Uzak IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Inbound |TCP |Redsıs ile istemci iletişimi, Azure Yük Dengeleme | (Redsıs alt ağı) | (Redsıs alt ağı), sanal ağ, Azure Load Balancer <sup>1</sup> |
-| 8443 |Inbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
-| 8500 |Inbound |TCP/UDP |Azure yük dengeleme | (Redsıs alt ağı) |Azure Load Balancer |
-| 10221-10231 |Inbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı), Azure Load Balancer |
-| 13000-13999 |Inbound |TCP |Redsıs kümelerine istemci iletişimi, Azure Yük Dengelemesi | (Redsıs alt ağı) |Sanal ağ, Azure Load Balancer |
-| 15000-15999 |Inbound |TCP |Redsıs kümelerine istemci iletişimi, Azure Yük Dengelemesi ve Geo-Replication | (Redsıs alt ağı) |Sanal ağ, Azure Load Balancer, (coğrafi çoğaltma eş alt ağı) |
-| 16001 |Inbound |TCP/UDP |Azure yük dengeleme | (Redsıs alt ağı) |Azure Load Balancer |
-| 20226 |Inbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
+| 6379, 6380 |Gelen |TCP |Redsıs ile istemci iletişimi, Azure Yük Dengeleme | (Redsıs alt ağı) | (Redsıs alt ağı), sanal ağ, Azure Load Balancer <sup>1</sup> |
+| 8443 |Gelen |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
+| 8500 |Gelen |TCP/UDP |Azure yük dengeleme | (Redsıs alt ağı) |Azure Load Balancer |
+| 10221-10231 |Gelen |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı), Azure Load Balancer |
+| 13000-13999 |Gelen |TCP |Redsıs kümelerine istemci iletişimi, Azure Yük Dengelemesi | (Redsıs alt ağı) |Sanal ağ, Azure Load Balancer |
+| 15000-15999 |Gelen |TCP |Redsıs kümelerine istemci iletişimi, Azure Yük Dengelemesi ve Geo-Replication | (Redsıs alt ağı) |Sanal ağ, Azure Load Balancer, (coğrafi çoğaltma eş alt ağı) |
+| 16001 |Gelen |TCP/UDP |Azure yük dengeleme | (Redsıs alt ağı) |Azure Load Balancer |
+| 20226 |Gelen |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
 
 <sup>1</sup> NSG kurallarını yazmak Için ' AzureLoadBalancer ' (Kaynak Yöneticisi) hizmet etiketini (veya klasik için ' AZURE_LOADBALANCER ') kullanabilirsiniz.
 
@@ -171,8 +171,8 @@ Sekiz gelen bağlantı noktası aralığı gereksinimi vardır. Bu aralıklardak
 
 Redsıs için Azure önbelleği için bir sanal ağda karşılanmamış olabilecek ağ bağlantısı gereksinimleri vardır. Redo için Azure Cache, bir sanal ağ içinde kullanıldığında aşağıdaki öğelerin tümünün düzgün çalışmasını gerektirir.
 
-* Dünya çapındaki Azure depolama uç noktalarına giden ağ bağlantısı. Bu, Redsıs örneği için Azure önbelleği ile aynı bölgede bulunan uç noktaları ve **diğer** Azure bölgelerinde bulunan depolama uç noktalarını içerir. Azure depolama uç noktaları şu DNS etki alanları altında çözümlenir: *Table.Core.Windows.net*, *BLOB.Core.Windows.net*, *Queue.Core.Windows.net*ve *File.Core.Windows.net*. 
-* *OCSP.msocsp.com*, *mscrl.Microsoft.com*ve *CRL.Microsoft.com*giden ağ bağlantısı. Bu bağlantı, TLS/SSL işlevselliğini desteklemek için gereklidir.
+* Dünya çapındaki Azure depolama uç noktalarına giden ağ bağlantısı. Bu, Redsıs örneği için Azure önbelleği ile aynı bölgede bulunan uç noktaları ve **diğer** Azure bölgelerinde bulunan depolama uç noktalarını içerir. Azure depolama uç noktaları şu DNS etki alanları altında çözümlenir: *Table.Core.Windows.net* , *BLOB.Core.Windows.net* , *Queue.Core.Windows.net* ve *File.Core.Windows.net* . 
+* *OCSP.msocsp.com* , *mscrl.Microsoft.com* ve *CRL.Microsoft.com* giden ağ bağlantısı. Bu bağlantı, TLS/SSL işlevselliğini desteklemek için gereklidir.
 * Sanal ağın DNS yapılandırması, önceki noktalarda bahsedilen tüm uç noktaları ve etki alanlarını çözebilme yeteneğine sahip olmalıdır. Bu DNS gereksinimleri, sanal ağ için yapılandırılmış ve korunan geçerli bir DNS altyapısının sağlanması sağlanarak karşılanacaktır.
 * Aşağıdaki Azure Izleme uç noktalarına giden ağ bağlantısı: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
 
@@ -256,7 +256,7 @@ ExpressRoute kullanarak bir şirket içi uygulamadan Redsıs örneği için Azur
 >Bir UDR 'de tanımlanan yolların, ExpressRoute yapılandırması tarafından tanıtılan tüm yollarla öncelikli **olması gerekir** . Aşağıdaki örnek, büyük 0.0.0.0/0 adres aralığını kullanır ve bu nedenle daha belirli adres aralıkları kullanılarak yol tanıtımlarının yanlışlıkla geçersiz kılınması olabilir.
 
 >[!WARNING]  
->Redsıs için Azure önbelleği, **genel eşleme yolundan özel eşleme yoluna yönelik yolların yanlışlıkla çapraz bir şekilde tanıtıldığı**ExpressRoute yapılandırmalarında desteklenmez. Ortak eşleme yapılandırılmış ExpressRoute yapılandırmalarında, büyük bir Microsoft Azure IP adresi aralığı kümesi için Microsoft 'tan yol tanıtımları alın. Bu adres aralıkları özel eşleme yolunda yanlış bir şekilde bildiriliyorsa, sonuç Redsıs örneği için Azure önbelleğindeki tüm giden ağ paketlerinin bir müşterinin Şirket içi ağ altyapısına yanlışlıkla zorla tünellemesini sağlar. Bu ağ akışı Redsıs için Azure önbelleğini keser. Bu sorunun çözümü, genel eşleme yolundan özel eşleme yoluna yönelik çapraz reklam yollarını durdurmaktır.
+>Redsıs için Azure önbelleği, **genel eşleme yolundan özel eşleme yoluna yönelik yolların yanlışlıkla çapraz bir şekilde tanıtıldığı** ExpressRoute yapılandırmalarında desteklenmez. Ortak eşleme yapılandırılmış ExpressRoute yapılandırmalarında, büyük bir Microsoft Azure IP adresi aralığı kümesi için Microsoft 'tan yol tanıtımları alın. Bu adres aralıkları özel eşleme yolunda yanlış bir şekilde bildiriliyorsa, sonuç Redsıs örneği için Azure önbelleğindeki tüm giden ağ paketlerinin bir müşterinin Şirket içi ağ altyapısına yanlışlıkla zorla tünellemesini sağlar. Bu ağ akışı Redsıs için Azure önbelleğini keser. Bu sorunun çözümü, genel eşleme yolundan özel eşleme yoluna yönelik çapraz reklam yollarını durdurmaktır.
 
 
 Bu [genel bakışta](../virtual-network/virtual-networks-udr-overview.md)Kullanıcı tanımlı yollarla ilgili arka plan bilgileri bulabilirsiniz.

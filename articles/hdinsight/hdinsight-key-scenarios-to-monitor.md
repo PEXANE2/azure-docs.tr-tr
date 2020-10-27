@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
-ms.openlocfilehash: 78ff8adcc2b50f89daa37112b14d219233559dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1da86e36cf20dc15152aea74be6c43a4cb43d3b4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075579"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539777"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight 'ta küme performansını izleme
 
@@ -50,7 +50,7 @@ Hadoop 'un dağıtılmış platformunda çalışan çeşitli hizmetleri vardır.
 
 YARN, JobTracker, kaynak yönetimi ve iş zamanlama/izlemenin iki sorumlulukını iki Daemon 'ları: genel Kaynak Yöneticisi ve uygulama başına ApplicationMaster (Har) olarak böler.
 
-Kaynak Yöneticisi, saf bir *Zamanlayıcı*olur ve yalnızca tüm rekabet eden uygulamalar arasında kullanılabilir kaynakları hızlar. Kaynak Yöneticisi, tüm kaynakların her zaman kullanıldığı, SLA 'Lar, kapasite garantisi vb. gibi çeşitli sabitler için optimize edilmesini sağlar. ApplicationMaster Kaynak Yöneticisi Kaynakları görüşür ve kapsayıcıları ve kaynak tüketimini yürütmek ve izlemek için NodeManager 'lar ile birlikte kullanılır.
+Kaynak Yöneticisi, saf bir *Zamanlayıcı* olur ve yalnızca tüm rekabet eden uygulamalar arasında kullanılabilir kaynakları hızlar. Kaynak Yöneticisi, tüm kaynakların her zaman kullanıldığı, SLA 'Lar, kapasite garantisi vb. gibi çeşitli sabitler için optimize edilmesini sağlar. ApplicationMaster Kaynak Yöneticisi Kaynakları görüşür ve kapsayıcıları ve kaynak tüketimini yürütmek ve izlemek için NodeManager 'lar ile birlikte kullanılır.
 
 Birden çok kiracı büyük bir kümeyi paylaşıyorsa, kümenin kaynakları için yarışmaya yer vardır. CapacityScheduler, istekleri sıraya alarak kaynak paylaşımında yardımcı olan takılabilir bir Zamanlayıcı 'dır. CapacityScheduler ayrıca kaynakların bir kuruluşun alt sıraları arasında paylaşıldığından, diğer uygulamaların sıralarının ücretsiz kaynakları kullanmasına izin verilmediğinden emin olmak için *hiyerarşik sıraları* destekler.
 
@@ -66,15 +66,15 @@ Kuyruklarınızı daha ayrıntılı bir şekilde görmek için, ambarı panosund
 
 ![Kaynak Yöneticisi UI menü bağlantıları](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
-Kaynak Yöneticisi Kullanıcı arabiriminde, sol taraftaki menüden **Zamanlayıcı** ' yı seçin. *Uygulama kuyrukları*altında kuyruklarınızın bir listesini görürsünüz. Burada, kuyruklarınızın her biri için kullanılan kapasiteyi, işlerin aralarında ne kadar iyi dağıtıldığını ve herhangi bir işin kaynak kısıtlamalı olup olmadığını görebilirsiniz.
+Kaynak Yöneticisi Kullanıcı arabiriminde, sol taraftaki menüden **Zamanlayıcı** ' yı seçin. *Uygulama kuyrukları* altında kuyruklarınızın bir listesini görürsünüz. Burada, kuyruklarınızın her biri için kullanılan kapasiteyi, işlerin aralarında ne kadar iyi dağıtıldığını ve herhangi bir işin kaynak kısıtlamalı olup olmadığını görebilirsiniz.
 
 ![Apache HAdoop Kaynak Yöneticisi UI menüsü](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
 ## <a name="storage-throttling"></a>Depolama alanı azaltma
 
-Kümenin performans sorunu depolama düzeyinde meydana gelebilir. Bu tür bir performans, çalışan görevleriniz depolama hizmetinden daha fazla GÇ gönderiyorsa meydana gelmiş olan giriş/çıkış (g/ç) işlemlerini *engelleme* nedeniyle en sık kullanılan sorun sayısıdır. Bu engelleme, geçerli IOs işlenene kadar işlenmek üzere bekleyen bir GÇ istekleri kuyruğu oluşturur. Bloklar, fiziksel sınır olmayan *depolama alanı azaltmasından*kaynaklanır, ancak bir hizmet düzeyi SÖZLEŞMESI (SLA) tarafından depolama hizmeti tarafından uygulanan bir sınır değildir. Bu sınır, tek bir istemcinin veya kiracının hizmeti tekeline almasını sağlar. SLA, Azure Storage için saniyedeki IOs (ıOPS) sayısını sınırlar. Ayrıntılar için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](../storage/common/scalability-targets-standard-account.md).
+Kümenin performans sorunu depolama düzeyinde meydana gelebilir. Bu tür bir performans, çalışan görevleriniz depolama hizmetinden daha fazla GÇ gönderiyorsa meydana gelmiş olan giriş/çıkış (g/ç) işlemlerini *engelleme* nedeniyle en sık kullanılan sorun sayısıdır. Bu engelleme, geçerli IOs işlenene kadar işlenmek üzere bekleyen bir GÇ istekleri kuyruğu oluşturur. Bloklar, fiziksel sınır olmayan *depolama alanı azaltmasından* kaynaklanır, ancak bir hizmet düzeyi SÖZLEŞMESI (SLA) tarafından depolama hizmeti tarafından uygulanan bir sınır değildir. Bu sınır, tek bir istemcinin veya kiracının hizmeti tekeline almasını sağlar. SLA, Azure Storage için saniyedeki IOs (ıOPS) sayısını sınırlar. Ayrıntılar için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](../storage/common/scalability-targets-standard-account.md).
 
-Azure Storage kullanıyorsanız, azaltma dahil olmak üzere depolama ile ilgili sorunları izleme hakkında bilgi için bkz. [izleyici, tanılama ve sorun giderme Microsoft Azure depolama](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
+Azure Storage kullanıyorsanız, azaltma dahil olmak üzere depolama ile ilgili sorunları izleme hakkında bilgi için bkz. [izleyici, tanılama ve sorun giderme Microsoft Azure depolama](../storage/common/storage-monitoring-diagnosing-troubleshooting.md).
 
 Kümenizin yedekleme deposu Azure Data Lake Storage (ADLS) ise, azaltma bilgileriniz büyük olasılıkla bant genişliği limitlerinin nedenidir. Bu durumda azaltma, görev günlüklerinde azaltma hataları gözlemleyerek belirlenebilir. ADLS için, bu makalelerde uygun hizmet için daraltma bölümüne bakın:
 
@@ -126,6 +126,6 @@ Disk alanı sorunlarıyla ilgili daha fazla bilgi için bkz. [disk yetersiz alan
 
 Kümelerinizi sorun giderme ve izleme hakkında daha fazla bilgi için aşağıdaki bağlantıları ziyaret edin:
 
-* [HDInsight günlüklerini çözümleme](hdinsight-debug-jobs.md)
+* [HDInsight günlüklerini çözümleme](./hdinsight-troubleshoot-guide.md)
 * [Apache Hadoop YARN günlükleri ile uygulama hatalarını ayıklama](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Linux tabanlı HDInsight 'ta Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirme](hdinsight-hadoop-collect-debug-heap-dump-linux.md)

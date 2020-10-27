@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 64056ef2f63331686553c52040af9e10ee0ac468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a1a23ca2d0b30a192c30b331c588d13a2a261a7
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982994"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558525"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) sorun giderme kılavuzu
 
@@ -122,7 +122,7 @@ Sorun gidermeye yardımcı olmak üzere bir destek bileti açılırken, eşleme 
 FHıR için Azure IoT Bağlayıcısı hakkında sık sorulan sorulara göz atın.
 
 >[!div class="nextstepaction"]
->[FHıR SSS için Azure IoT Bağlayıcısı](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[FHıR SSS için Azure IoT Bağlayıcısı](fhir-faq.md)
 
 * Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
 

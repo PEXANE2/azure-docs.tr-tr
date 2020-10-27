@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 9514d0fb6c9cbc95b82f13ffb576703893f303f2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ef53fc3de87eeaa41d3859fd8b10dd3cc942afc7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484568"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547223"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yedekleme ve geri yükleme
 
@@ -29,48 +29,53 @@ Yedekleme türü ve sıklığı, sunucular için arka uç depolamaya bağlıdır
 
 #### <a name="basic-storage-servers"></a>Temel depolama sunucuları
 
-Temel depolama, [temel katman sunucularını](concepts-pricing-tiers.md)destekleyen arka uç deposıdır. Temel depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. Tam bir veritabanı anlık görüntüsü günlük olarak gerçekleştirilir. Temel depolama sunucuları için gerçekleştirilen fark yedeklemesi yoktur ve tüm anlık görüntü yedeklemeleri yalnızca tam veritabanı yedeklemelerdir. 
+Temel depolama, [temel katman sunucularını](concepts-pricing-tiers.md)destekleyen arka uç deposıdır. Temel depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. Tam bir veritabanı anlık görüntüsü günlük olarak gerçekleştirilir. Temel depolama sunucuları için gerçekleştirilen fark yedeklemesi yoktur ve tüm anlık görüntü yedeklemeleri yalnızca tam veritabanı yedeklemelerdir.
 
-İşlem günlüğü yedeklemeleri her beş dakikada bir gerçekleşir. 
+İşlem günlüğü yedeklemeleri her beş dakikada bir gerçekleşir.
 
 #### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>4 TB 'a kadar depolama alanı içeren genel amaçlı depolama sunucuları
 
-Genel amaçlı depolama, [genel amaçlı](concepts-pricing-tiers.md) ve [bellek için iyileştirilmiş katman](concepts-pricing-tiers.md) sunucusunu destekleyen arka uç deposıdır. 4 TB 'a kadar genel amaçlı depolamaya sahip sunucular için her hafta bir kez tam yedeklemeler oluşur. Değişiklik yedeklemeleri günde iki kez gerçekleşir. İşlem günlüğü yedeklemeleri beş dakikada bir gerçekleşir. 4 TB 'lık depolamaya kadar genel amaçlı depolama üzerindeki yedeklemeler anlık görüntü tabanlıdır ve yedekleme sırasında GÇ bant genişliğini tüketir. 4 TB 'lik depolamada büyük veritabanları (> 1 TB) için, şunları göz önünde bulundurmanız önerilir 
+Genel amaçlı depolama, [genel amaçlı](concepts-pricing-tiers.md) ve [bellek için iyileştirilmiş katman](concepts-pricing-tiers.md) sunucusunu destekleyen arka uç deposıdır. 4 TB 'a kadar genel amaçlı depolamaya sahip sunucular için her hafta bir kez tam yedeklemeler gerçekleşir. Değişiklik yedeklemeleri günde iki kez gerçekleşir. İşlem günlüğü yedeklemeleri her beş dakikada bir gerçekleşir. 4 TB 'lık depolamaya kadar genel amaçlı depolama üzerindeki yedeklemeler anlık görüntü tabanlıdır ve yedekleme sırasında GÇ bant genişliği tüketir. 4 TB depolama alanı üzerinde büyük veritabanları (> 1 TB) için, şunları göz önünde bulundurmanız önerilir
 
 - Yedekleme IOs için hesaba daha fazla IOPS sağlama veya
-- Alternatif olarak, temel alınan depolama altyapısı tercih ettiğiniz [Azure Bölgelerinizdeki](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)kullanılabilir ise, 16 TB 'a kadar depolamayı destekleyen genel amaçlı depolamaya geçiş yapın. Genel amaçlı depolama için 16 TB 'a kadar depolamayı destekleyen ek bir ücret yoktur. 16 TB depolamaya geçiş konusunda yardım için lütfen Azure portal bir destek bileti açın. 
+- Alternatif olarak, temel alınan depolama altyapısı tercih ettiğiniz [Azure Bölgelerinizdeki](./concepts-pricing-tiers.md#storage)kullanılabilir ise, 16 TB 'a kadar depolamayı destekleyen genel amaçlı depolamaya geçiş yapın. Genel amaçlı depolama için 16 TB 'a kadar depolamayı destekleyen ek bir ücret yoktur. 16 TB depolamaya geçiş konusunda yardım için lütfen Azure portal bir destek bileti açın.
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>16 TB 'a kadar depolama alanı içeren genel amaçlı depolama sunucuları
-[Azure bölgelerinin](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)bir alt kümesinde, tüm yeni sağlanan sunucular, 16 TB 'a kadar genel amaçlı depolama alanını destekleyebilir. Diğer bir deyişle, 16 TB 'a kadar depolama alanı, desteklendiği tüm [bölgeler](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) için varsayılan genel amaçlı depolama alanı olur. Bu 16 TB depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, sunucu oluşturulduktan hemen sonraya zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca değişiklik yedeğidir. 
 
-Anlık görüntü değişiklik yedekleri günde en az bir kez gerçekleştirilir. Anlık görüntü değişiklik yedekleri belirli bir plana göre gerçekleştirilmez. Hareket günlüğü (MySQL içindeki binlog) son fark yedeklemesinden bu yana 50 GB aşmadığı takdirde, fark anlık görüntü yedeklemeleri 24 saatte bir gerçekleşir. Bir gün içinde en fazla altı anlık görüntü değişiklik yedeği alınabilir. 
+[Azure bölgelerinin](./concepts-pricing-tiers.md#storage)bir alt kümesinde, tüm yeni sağlanan sunucular, 16 TB 'a kadar genel amaçlı depolama alanını destekleyebilir. Diğer bir deyişle, 16 TB 'a kadar depolama alanı, desteklendiği tüm [bölgeler](./concepts-pricing-tiers.md#storage) için varsayılan genel amaçlı depolama alanı olur. Bu 16 TB depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, sunucu oluşturulduktan hemen sonraya zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca değişiklik yedeğidir.
 
-İşlem günlüğü yedeklemeleri her beş dakikada bir gerçekleşir. 
+[Azure bölgelerinin](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)bir alt kümesinde, tüm yeni sağlanan sunucular, 16 TB 'a kadar genel amaçlı depolama alanını destekleyebilir. Diğer bir deyişle, 16 TB 'a kadar depolama alanı, desteklendiği tüm [bölgeler](/concepts-pricing-tiers.md#storage) için varsayılan genel amaçlı depolama alanı olur. Bu 16 TB depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, sunucu oluşturulduktan hemen sonraya zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca değişiklik yedeğidir.
+
+Anlık görüntü değişiklik yedekleri günde en az bir kez gerçekleştirilir. Anlık görüntü değişiklik yedekleri belirli bir plana göre gerçekleştirilmez. Değişiklik anlık görüntüsü yedeklemeleri, son fark yedeklemesinden bu yana işlem günlüğü (MySQL içindeki binlog) 50 GB 'yi aşmadığı takdirde 24 saatte bir gerçekleşir. Bir gün içinde en fazla altı anlık görüntü değişiklik yedeği alınabilir.
+
+İşlem günlüğü yedeklemeleri her beş dakikada bir gerçekleşir.
 
 ### <a name="backup-retention"></a>Yedekleme dosyası saklama
 
-Yedeklemeler, sunucusundaki yedekleme bekletme süresi ayarına göre tutulur. 35 gün günlük bir saklama süresi seçebilirsiniz. Varsayılan saklama süresi 7 gündür. [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal#set-backup-configuration) veya [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-restore-server-cli#set-backup-configuration)kullanarak yedekleme yapılandırmasını güncelleştirerek sunucu oluşturma sırasında veya daha sonra saklama süresini ayarlayabilirsiniz. 
+Yedeklemeler, sunucusundaki yedekleme bekletme süresi ayarına göre tutulur. 35 gün günlük bir saklama süresi seçebilirsiniz. Varsayılan saklama süresi 7 gündür. [Azure Portal](./howto-restore-server-portal.md#set-backup-configuration) veya [Azure CLI](./howto-restore-server-cli.md#set-backup-configuration)kullanarak yedekleme yapılandırmasını güncelleştirerek sunucu oluşturma sırasında veya daha sonra saklama süresini ayarlayabilirsiniz.
 
 Yedekleme bekletme süresi, kullanılabilir yedeklemeler temel aldığı için zaman içinde bir nokta geri yüklemesi alma süresinin ne kadar geri alınacağını yönetir. Yedekleme bekletme süresi Ayrıca bir geri yükleme perspektifinden kurtarma penceresi olarak da ele alınabilir. Yedekleme saklama süresi içinde bir zaman içindeki bir anlık geri yükleme gerçekleştirmek için gereken tüm yedeklemeler, yedekleme depolama alanında tutulur. Örneğin, yedekleme Bekletme dönemi 7 gün olarak ayarlandıysa, kurtarma penceresi son 7 gün olarak değerlendirilir. Bu senaryoda, son 7 gün içinde sunucuyu geri yüklemek için gereken tüm yedeklemeler korunur. Yedi günlük bir yedekleme bekletme penceresi ile:
+
 - 4 TB 'a kadar depolama alanı olan sunucular en fazla 2 tam veritabanı yedeklemesi, tüm değişiklik yedeklemeleri ve en erken tam veritabanı yedeklemesinden bu yana gerçekleştirilen işlem günlüğü yedeklemelerini korur.
--   16 TB 'a kadar depolamaya sahip sunucular, son 8 gündeki tüm fark anlık görüntülerini ve işlem günlüğü yedeklemelerini tam veritabanı anlık görüntüsünü tutar.
+- 16 TB 'a kadar depolamaya sahip sunucular, son 8 gündeki tüm fark anlık görüntülerini ve işlem günlüğü yedeklemelerini tam veritabanı anlık görüntüsünü tutar.
 
-#### <a name="long-term-retention"></a>Uzun süreli saklama
-35 günden daha büyük olan yedeklemeler için uzun süreli saklama, henüz hizmet tarafından yerel olarak desteklenmiyor. Yedeklemeleri almak ve uzun süreli saklama için depolamak üzere mysqldump kullanma seçeneğiniz vardır. Destek ekibimiz, BT 'nin nasıl elde edilebileceği hakkında bir [adım adım makalede](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) oturum açtı. 
+#### <a name="long-term-retention"></a>Uzun vadeli bekletme
 
+35 günden daha büyük olan yedeklemelerin uzun süreli tutulması henüz hizmet tarafından yerel olarak desteklenmiyor. Yedeklemeleri almak ve uzun süreli saklama için depolamak üzere mysqldump kullanma seçeneğiniz vardır. Destek ekibimiz, BT 'nin nasıl elde edilebileceği hakkında bir [adım adım makalede](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) oturum açtı.
 
 ### <a name="backup-redundancy-options"></a>Yedekleme artıklığı seçenekleri
 
-MySQL için Azure veritabanı, Genel Amaçlı ve bellek için Iyileştirilmiş katmanlardaki yerel olarak yedekli veya coğrafi olarak yedekli yedekleme depolaması arasında seçim yapmak için esneklik sağlar. Yedeklemeler coğrafi olarak yedekli yedekleme depolaması 'nda depolandığında, yalnızca sunucunuzun barındırıldığı bölge içinde depolanmaz, ancak aynı zamanda [eşleştirilmiş bir veri merkezine](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)çoğaltılır. Bu, daha iyi koruma ve olağanüstü durum durumunda sunucunuzu farklı bir bölgede geri yükleme yeteneği sağlar. Temel katman yalnızca yerel olarak yedekli yedekleme depolama alanı sunar.
+MySQL için Azure veritabanı, Genel Amaçlı ve bellek için Iyileştirilmiş katmanlardaki yerel olarak yedekli veya coğrafi olarak yedekli yedekleme depolaması arasında seçim yapmak için esneklik sağlar. Yedeklemeler coğrafi olarak yedekli yedekleme depolaması 'nda depolandığında, yalnızca sunucunuzun barındırıldığı bölge içinde depolanmaz, ancak aynı zamanda [eşleştirilmiş bir veri merkezine](../best-practices-availability-paired-regions.md)çoğaltılır. Bu coğrafi yedeklilik, daha iyi koruma ve olağanüstü durum durumunda sunucunuzu farklı bir bölgede geri yükleme yeteneği sağlar. Temel katman yalnızca yerel olarak yedekli yedekleme depolama alanı sunar.
 
 #### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Yerel olarak yedekli iken coğrafi olarak yedekli yedekleme depolamasına taşıma
+
 Yedekleme için yerel olarak yedekli veya coğrafi olarak yedekli depolamayı yapılandırmaya yalnızca sunucu oluşturma sırasında izin verilir. Sunucu sağlandıktan sonra yedekleme depolama artıklığı seçeneğini değiştiremezsiniz. Yedekleme depolama alanınızı yerel olarak yedekli depolama alanından coğrafi olarak yedekli depolamaya taşımak için yeni bir sunucu oluşturmak ve verileri [döküm ve geri yükleme](concepts-migrate-dump-restore.md) kullanarak geçirmek desteklenen tek seçenektir.
 
 ### <a name="backup-storage-cost"></a>Yedekleme depolama maliyeti
 
-MySQL için Azure veritabanı, sağlanan sunucu depolama alanınızı ek bir ücret ödemeden yedekleme depolama alanı olarak %100 ' e kadar sağlar. Kullanılan ek yedekleme depolama alanı aylık GB olarak ücretlendirilir. Örneğin, 250 GB depolama alanı olan bir sunucu sağladıysanız, ek ücret ödemeden sunucu yedeklemeleri için kullanılabilir 250 GB ek depolama alanı vardır. 250 GB 'tan fazla yedeklemeler için tüketilen depolama, [fiyatlandırma modeline](https://azure.microsoft.com/pricing/details/mysql/)göre ücretlendirilir. 
+MySQL için Azure veritabanı, sağlanan sunucu depolama alanınızı ek bir ücret ödemeden yedekleme depolama alanı olarak %100 ' e kadar sağlar. Kullanılan ek yedekleme depolama alanı aylık GB olarak ücretlendirilir. Örneğin, 250 GB depolama alanı olan bir sunucu sağladıysanız, ek ücret ödemeden sunucu yedeklemeleri için kullanılabilir 250 GB ek depolama alanı vardır. 250 GB 'tan fazla yedeklemeler için tüketilen depolama, [fiyatlandırma modeline](https://azure.microsoft.com/pricing/details/mysql/)göre ücretlendirilir.
 
-Bir sunucu tarafından tüketilen yedekleme depolama alanını izlemek için Azure portal aracılığıyla Azure Izleyici 'de [kullanılan yedekleme depolama alanı](concepts-monitoring.md) ölçüsünü kullanabilirsiniz. Kullanılan yedekleme depolama ölçümü, tüm tam veritabanı yedeklemeleri, fark yedeklemeleri ve sunucu için ayarlanan yedekleme Bekletme dönemi temel alınarak korunan depolama alanının toplamını temsil eder. Yedeklemelerin sıklığı Service tarafından yönetilmektedir ve daha önce açıklanmıştır. Sunucu üzerindeki yoğun işlem etkinliği yedekleme depolama alanı kullanımının toplam veritabanı boyutundan bağımsız olarak artmasına neden olabilir. Coğrafi olarak yedekli depolama için, yedekleme depolama alanı kullanımı yerel olarak yedekli depolama alanının iki katından oluşur. 
+Bir sunucu tarafından tüketilen yedekleme depolama alanını izlemek için Azure portal aracılığıyla Azure Izleyici 'de [kullanılan yedekleme depolama alanı](concepts-monitoring.md) ölçüsünü kullanabilirsiniz. Kullanılan yedekleme depolama ölçümü, tüm tam veritabanı yedeklemeleri, fark yedeklemeleri ve sunucu için ayarlanan yedekleme Bekletme dönemi temel alınarak korunan depolama alanının toplamını temsil eder. Yedeklemelerin sıklığı Service tarafından yönetilmektedir ve daha önce açıklanmıştır. Sunucu üzerindeki yoğun işlem etkinliği yedekleme depolama alanı kullanımının toplam veritabanı boyutundan bağımsız olarak artmasına neden olabilir. Coğrafi olarak yedekli depolama için, yedekleme depolama alanı kullanımı yerel olarak yedekli depolama alanının iki katından oluşur.
 
 Yedekleme depolama maliyetini denetlemenin birincil yolu, uygun yedekleme saklama süresini ayarlayarak ve istediğiniz kurtarma hedeflerinizi karşılamak için doğru yedekleme artıklığı seçeneklerini belirleyerek yapılır. 7 ile 35 gün arasında bir bekletme dönemi seçebilirsiniz. Genel Amaçlı ve bellek için Iyileştirilmiş sunucular, yedeklemeler için coğrafi olarak yedekli depolamaya sahip olmak için seçim yapabilir.
 
@@ -86,7 +91,7 @@ MySQL için Azure veritabanı 'nda, geri yükleme gerçekleştirmek özgün sunu
 Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü boyutu, ağ bant genişliği ve aynı bölgedeki aynı bölgede Kurtarılan toplam veritabanı sayısı gibi çeşitli faktörlere bağlıdır. Kurtarma zamanı genellikle 12 saatten düşüktür.
 
 > [!IMPORTANT]
-> Silinen sunucular yalnızca, yedeklemelerin silinmesinden sonra **beş gün** içinde geri yüklenebilir. Veritabanı yedeklemesine yalnızca sunucuyu barındıran Azure aboneliğinden erişilebilir ve geri yüklenebilir. Bırakılan bir sunucuyu geri yüklemek için [belgelenen adımlara](howto-restore-dropped-server.md)bakın. Sunucu kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)faydalanabilir.
+> Silinen sunucular yalnızca, yedeklemelerin silinmesinden sonra **beş gün** içinde geri yüklenebilir. Veritabanı yedeklemesine yalnızca sunucuyu barındıran Azure aboneliğinden erişilebilir ve geri yüklenebilir. Bırakılan bir sunucuyu geri yüklemek için [belgelenen adımlara](howto-restore-dropped-server.md)bakın. Sunucu kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](../azure-resource-manager/management/lock-resources.md)faydalanabilir.
 
 ### <a name="point-in-time-restore"></a>Belirli bir noktaya geri yükleme
 
@@ -94,8 +99,9 @@ Yedekleme yedeklemenizin seçeneğinden bağımsız olarak, yedekleme saklama d�
 
 > [!NOTE]
 > Geri yükleme işleminden sonra varsayılan değerlere sıfırlanan (ve birincil sunucudan kopyalanmayan) iki sunucu parametresi vardır
-> * time_zone-bu değer varsayılan değer **sistemine** ayarlanır
-> * event_scheduler-event_scheduler, geri yüklenen sunucuda **kapalı** olarak ayarlanmıştır
+>
+> - time_zone-bu değer varsayılan değer **sistemine** ayarlanır
+> - event_scheduler-event_scheduler, geri yüklenen sunucuda **kapalı** olarak ayarlanmıştır
 >
 > [Sunucu parametresini](howto-server-parameters.md) yeniden yapılandırarak bu sunucu parametrelerini ayarlamanız gerekir
 

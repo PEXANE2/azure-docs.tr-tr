@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 5415446e0211618cfbee917d0df91213d68b7097
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6a914df9ed277625d3706465fe335e128aeced1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627355"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545166"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu parametreleri
 
@@ -57,9 +57,9 @@ Aşağıdaki sunucu parametrelerini ayarlayarak havuzdaki en yüksek ve en düş
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-MySQL için Azure veritabanı 'nda, ikili Günlükler her zaman etkindir (yani `log_bin` Açık olarak ayarlanır). Tetikleyicileri kullanmak istiyorsanız, *süper ayrıcalığa sahip değilsiniz ve ikili günlüğe kaydetme özelliğinin etkin olduğu bir hata alırsınız (daha az güvenli bir değişken kullanmak isteyebilirsiniz `log_bin_trust_function_creators` )*. 
+MySQL için Azure veritabanı 'nda, ikili Günlükler her zaman etkindir (yani `log_bin` Açık olarak ayarlanır). Tetikleyicileri kullanmak istiyorsanız, *süper ayrıcalığa sahip değilsiniz ve ikili günlüğe kaydetme özelliğinin etkin olduğu bir hata alırsınız (daha az güvenli bir değişken kullanmak isteyebilirsiniz `log_bin_trust_function_creators` )* . 
 
-İkili günlük biçimi her zaman **satırdır** ve sunucuya yapılan tüm bağlantılar **her zaman** satır tabanlı ikili günlük kullanır. Satır tabanlı ikili günlüğe kaydetme ile güvenlik sorunları yoktur ve ikili günlüğe alma, güvenli şekilde [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) **doğru**olarak ayarlanabilir.
+İkili günlük biçimi her zaman **satırdır** ve sunucuya yapılan tüm bağlantılar **her zaman** satır tabanlı ikili günlük kullanır. Satır tabanlı ikili günlüğe kaydetme ile güvenlik sorunları yoktur ve ikili günlüğe alma, güvenli şekilde [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) **doğru** olarak ayarlanabilir.
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -108,7 +108,7 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 MySQL, InnoDB tablosunu tablo oluşturma sırasında verdiğiniz yapılandırmaya göre farklı Tablespaces halinde depolar. [Sistem tablo](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) alanı, InnoDB veri sözlüğü için depolama alanıdır. [Tablo başına dosya tablosu](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) , tek bir InnoDB tablosunun verilerini ve dizinlerini içerir ve dosya sisteminde kendi veri dosyasında depolanır. Bu davranış, `innodb_file_per_table` sunucu parametresi tarafından denetlenir. `innodb_file_per_table`İçin ayarı `OFF` , InnoDB 'in, sistem tablo tablosu 'nda tablo oluşturmasına neden olur. Aksi halde, InnoDB tablo başına tabloalanları içinde tablo oluşturur.
 
-MySQL için Azure veritabanı, tek bir veri dosyasında en büyük, **1 TB**'yi destekler. Veritabanınızın boyutu 1 TB 'den büyükse, tabloyu [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablo alanında oluşturmanız gerekir. 1 TB 'tan büyük tek bir tablo boyutunuz varsa, bölüm tablosunu kullanmanız gerekir.
+MySQL için Azure veritabanı, tek bir veri dosyasında en büyük, **1 TB** 'yi destekler. Veritabanınızın boyutu 1 TB 'den büyükse, tabloyu [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablo alanında oluşturmanız gerekir. 1 TB 'tan büyük tek bir tablo boyutunuz varsa, bölüm tablosunu kullanmanız gerekir.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -215,9 +215,9 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 ### <a name="innodb_strict_mode"></a>innodb_strict_mode
 
-"Satır boyutu çok büyük (> 8126) şuna benzer bir hata alırsanız, **innodb_strict_mode**parametresini kapatmak isteyebilirsiniz. Satır veri boyutu 8k ' den daha büyükse, verilerin sunucu düzeyinde genel olarak değiştirilmesine izin verilmez, çünkü bu, veri kaybına neden olan bir hata olmadan veriler kesilir. **innodb_strict_mode** Şemayı sayfa boyutu sınırına uyacak şekilde değiştirmenizi öneririz. 
+"Satır boyutu çok büyük (> 8126) şuna benzer bir hata alırsanız, **innodb_strict_mode** parametresini kapatmak isteyebilirsiniz. Satır veri boyutu 8k ' den daha büyükse, verilerin sunucu düzeyinde genel olarak değiştirilmesine izin verilmez, çünkü bu, veri kaybına neden olan bir hata olmadan veriler kesilir. **innodb_strict_mode** Şemayı sayfa boyutu sınırına uyacak şekilde değiştirmenizi öneririz. 
 
-Bu parametre, kullanılarak bir oturum düzeyinde ayarlanabilir `init_connect` . **İnnodb_strict_mode** , oturum düzeyinde ayarlamak için, [listede bulunmayan ayar parametresi](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)' ne bakın.
+Bu parametre, kullanılarak bir oturum düzeyinde ayarlanabilir `init_connect` . **İnnodb_strict_mode** , oturum düzeyinde ayarlamak için, [listede bulunmayan ayar parametresi](./howto-server-parameters.md#setting-parameters-not-listed)' ne bakın.
 
 > [!NOTE]
 > Bir okuma Çoğaltma sunucunuz varsa, bir kaynak sunucuda oturum düzeyinde **innodb_strict_mode** olarak ayarlama, çoğaltmayı bozacaktır. Okuma çoğaltmalarınızı varsa parametre kümesinin kapalı kalmasını öneririz.

@@ -8,17 +8,17 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eede07b285614c061f4b59845c8f44d82083ec2
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87553657"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558542"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>FHIR için Azure IoT Bağlayıcısı’nın (önizleme) eşleme şablonları
 Bu makalede, eşleme şablonları kullanılarak FHıR için Azure IoT bağlayıcısının nasıl yapılandırılacağı açıklanır.
 
-FHıR için Azure IoT Bağlayıcısı, iki tür JSON tabanlı eşleme şablonu gerektirir. İlk tür olan **cihaz eşleme**, `devicedata` Azure Olay Hub 'ı uç noktasına gönderilen cihaz yüklerini eşleştirmekten sorumludur. Türleri, cihaz tanımlayıcılarını, ölçüm Tarih saatini ve ölçüm değerlerini ayıklar. İkinci tür olan **fhır eşleme**, fhır kaynağı için eşlemeyi denetler. Bu, izleme döneminin uzunluğunu, değerleri depolamak için kullanılan FHıR veri türünü ve terminoloji kodlarını yapılandırmanızı sağlar. 
+FHıR için Azure IoT Bağlayıcısı, iki tür JSON tabanlı eşleme şablonu gerektirir. İlk tür olan **cihaz eşleme** , `devicedata` Azure Olay Hub 'ı uç noktasına gönderilen cihaz yüklerini eşleştirmekten sorumludur. Türleri, cihaz tanımlayıcılarını, ölçüm Tarih saatini ve ölçüm değerlerini ayıklar. İkinci tür olan **fhır eşleme** , fhır kaynağı için eşlemeyi denetler. Bu, izleme döneminin uzunluğunu, değerleri depolamak için kullanılan FHıR veri türünü ve terminoloji kodlarını yapılandırmanızı sağlar. 
 
 Eşleme şablonları, türlerine göre bir JSON belgesinde oluşur. Bu JSON belgeleri daha sonra Azure portal aracılığıyla FHıR için Azure IoT bağlayıcınıza eklenir. Cihaz eşleme belgesi, **cihaz eşlemesini Yapılandır** sayfası ve fhır eşleme belgesi aracılığıyla **Fhır eşlemesini Yapılandır** sayfasından eklenir.
 
@@ -71,8 +71,8 @@ JsonPathContentTemplate, JSON yolu kullanılarak bir olay hub 'ı iletisinden ge
 |**TypeMatchExpression**|Olay Hub 'ı yüküne göre değerlendirilen JSON yolu ifadesi. Eşleşen bir JToken bulunursa, şablon bir eşleşme olarak kabul edilir. Sonraki tüm ifadeler, burada eşleşen ayıklanan JToken 'a göre değerlendirilir.|`$..[?(@heartRate)]`
 |**TimestampExpression**|Ölçümün oluşum süresi UTC için zaman damgası değerini Ayıklanacak JSON yol ifadesi.|`$.endDate`
 |**DeviceIdExpression**|Cihaz tanımlayıcısını Ayıklanacak JSON yol ifadesi.|`$.deviceId`
-|**Haentidexpression**|*Isteğe bağlı*: hasta TANıMLAYıCıYı Ayıklanacak JSON yol ifadesi.|`$.patientId`
-|**Karşılaşıldı Teridexpression**|*Isteğe bağlı*: karşılaştığınız TANıMLAYıCıYı Ayıklanacak JSON yol ifadesi.|`$.encounterId`
+|**Haentidexpression**|*Isteğe bağlı* : hasta TANıMLAYıCıYı Ayıklanacak JSON yol ifadesi.|`$.patientId`
+|**Karşılaşıldı Teridexpression**|*Isteğe bağlı* : karşılaştığınız TANıMLAYıCıYı Ayıklanacak JSON yol ifadesi.|`$.encounterId`
 |**Values []. ValueName**|Sonraki ifade tarafından Ayıklanan değer ile ilişkilendirilecek ad. Gerekli değeri/bileşeni FHıR eşleme şablonuna bağlamak için kullanılır. |`hr`
 |**Values []. ValueExpression**|Gerekli değeri Ayıklanacak JSON yol ifadesi.|`$.heartRate`
 |**Values []. Gerekli**|Yük içinde değerin mevcut olmasını gerektirir.  Bulunamazsa, bir ölçüm oluşturulmaz ve bir InvalidOperationException atılır.|`true`
@@ -565,7 +565,7 @@ Fhır veri türü [miktarını](http://hl7.org/fhir/datatypes.html#Quantity) tem
 FHıR (Önizleme) için Azure IoT Bağlayıcısı hakkında sık sorulan sorulara göz atın.
 
 >[!div class="nextstepaction"]
->[FHıR SSS için Azure IoT Bağlayıcısı](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[FHıR SSS için Azure IoT Bağlayıcısı](fhir-faq.md)
 
 * Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
 

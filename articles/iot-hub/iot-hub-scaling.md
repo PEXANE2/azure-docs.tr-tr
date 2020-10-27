@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: c82f6eb37d542f80b6cb79ffb1fae6fe0cf0c233
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: bd016fcfe377dc610d5918ad8128fff4f6473fe5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144283"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538468"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Çözümünüz için doğru IoT Hub katmanını seçin
 
@@ -42,17 +42,17 @@ Her IoT Hub için bir katmanda yalnızca bir tür [sürümü](https://azure.micr
 
 | Özellik | Temel katman | Ücretsiz/Standart katman |
 | ---------- | ---------- | ------------- |
-| [Cihazdan buluta telemetri](iot-hub-devguide-messaging.md) | Yes | Yes |
-| [Cihaz başına kimlik](iot-hub-devguide-identity-registry.md) | Yes | Yes |
-| [İleti yönlendirme](iot-hub-devguide-messages-read-custom.md), [ileti zenginleştirme](iot-hub-message-enrichments-overview.md)ve [Event Grid tümleştirme](iot-hub-event-grid.md) | Yes | Yes |
-| [HTTP, AMQP ve MQTT protokolleri](iot-hub-devguide-protocols.md) | Yes | Yes |
-| [Cihaz Sağlama Hizmeti](../iot-dps/about-iot-dps.md) | Yes | Yes |
-| [İzleme ve tanılama](iot-hub-monitor-resource-health.md) | Yes | Yes |
-| [Buluttan cihaza mesajlaşma](iot-hub-devguide-c2d-guidance.md) |   | Yes |
-| [Cihaz](iot-hub-devguide-device-twins.md)ikne, [Modül TWINS](iot-hub-devguide-module-twins.md)ve [cihaz yönetimi](iot-hub-device-management-overview.md) |   | Yes |
-| [Cihaz akışları (Önizleme)](iot-hub-device-streams-overview.md) |   | Yes |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
-| [IoT Tak Çalıştır](../iot-pnp/overview-iot-plug-and-play.md) |   | Yes |
+| [Cihazdan buluta telemetri](iot-hub-devguide-messaging.md) | Evet | Evet |
+| [Cihaz başına kimlik](iot-hub-devguide-identity-registry.md) | Evet | Evet |
+| [İleti yönlendirme](iot-hub-devguide-messages-read-custom.md), [ileti zenginleştirme](iot-hub-message-enrichments-overview.md)ve [Event Grid tümleştirme](iot-hub-event-grid.md) | Evet | Evet |
+| [HTTP, AMQP ve MQTT protokolleri](iot-hub-devguide-protocols.md) | Evet | Evet |
+| [Cihaz Sağlama Hizmeti](../iot-dps/about-iot-dps.md) | Evet | Evet |
+| [İzleme ve tanılama](monitor-iot-hub.md) | Evet | Evet |
+| [Buluttan cihaza mesajlaşma](iot-hub-devguide-c2d-guidance.md) |   | Evet |
+| [Cihaz](iot-hub-devguide-device-twins.md)ikne, [Modül TWINS](iot-hub-devguide-module-twins.md)ve [cihaz yönetimi](iot-hub-device-management-overview.md) |   | Evet |
+| [Cihaz akışları (Önizleme)](iot-hub-device-streams-overview.md) |   | Evet |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Evet |
+| [IoT Tak Çalıştır](../iot-pnp/overview-iot-plug-and-play.md) |   | Evet |
 
 IoT Hub Ayrıca, test ve değerlendirme için tasarlanmış bir ücretsiz katman sağlar. Standart katmanın tüm özelliklerine sahiptir, ancak sınırlı mesajlaşma kesintileri vardır. Ücretsiz katmandan temel ya da standart sürümüne yükseltemezsiniz.
 
@@ -77,37 +77,37 @@ IoT Hub temel ve standart katmanları arasındaki desteklenen özelliklerde fark
 
 | API | Temel katman | Ücretsiz/Standart katman |
 | --- | ---------- | ------------- |
-| [Cihazı silme](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#deletedevice-string--models-registrymanagerdeletedeviceoptionalparams-) | Yes | Yes |
-| [Cihazı al](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice) | Yes | Yes |
-| [Modülü Sil](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletemodule) | Yes | Yes |
-| [Modül al](/java/api/com.microsoft.azure.sdk.iot.service.registrymanager.getmodule?view=azure-java-stable) | Yes | Yes |
-| [Kayıt defteri istatistiklerini al](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getdevicestatistics-msrest-requestoptionsbase-) | Yes | Yes |
-| [Hizmet istatistiklerini al](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getservicestatistics-msrest-requestoptionsbase-) | Yes | Yes |
-| [Cihaz oluştur veya güncelleştir](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatedevice-string--device--servicecallback-device--) | Yes | Yes |
-| [Modül oluştur veya güncelleştir](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) | Yes | Yes |
-| [Sorgu IoT Hub](/dotnet/api/microsoft.azure.devices.registrymanager?view=azure-dotnet) | Yes | Yes |
-| [Karşıya dosya yükleme SAS URI 'SI oluştur](/rest/api/iothub/device/createfileuploadsasuri) | Yes | Yes |
-| [Cihaz ile sınırlı bildirim al](/rest/api/iothub/device/receivedeviceboundnotification) | Yes | Yes |
-| [Cihaz olayı gönder](/rest/api/iothub/device/senddeviceevent) | Yes | Yes |
+| [Cihazı silme](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#deletedevice-string--models-registrymanagerdeletedeviceoptionalparams-) | Evet | Evet |
+| [Cihazı al](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice) | Evet | Evet |
+| [Modülü Sil](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletemodule) | Evet | Evet |
+| [Modül al](/java/api/com.microsoft.azure.sdk.iot.service.registrymanager.getmodule?view=azure-java-stable) | Evet | Evet |
+| [Kayıt defteri istatistiklerini al](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getdevicestatistics-msrest-requestoptionsbase-) | Evet | Evet |
+| [Hizmet istatistiklerini al](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getservicestatistics-msrest-requestoptionsbase-) | Evet | Evet |
+| [Cihaz oluştur veya güncelleştir](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatedevice-string--device--servicecallback-device--) | Evet | Evet |
+| [Modül oluştur veya güncelleştir](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) | Evet | Evet |
+| [Sorgu IoT Hub](/dotnet/api/microsoft.azure.devices.registrymanager?view=azure-dotnet) | Evet | Evet |
+| [Karşıya dosya yükleme SAS URI 'SI oluştur](/rest/api/iothub/device/createfileuploadsasuri) | Evet | Evet |
+| [Cihaz ile sınırlı bildirim al](/rest/api/iothub/device/receivedeviceboundnotification) | Evet | Evet |
+| [Cihaz olayı gönder](/rest/api/iothub/device/senddeviceevent) | Evet | Evet |
 | Modül olayı gönder | Yalnızca AMQP ve MQTT | Yalnızca AMQP ve MQTT |
-| [Karşıya dosya yükleme durumunu güncelleştir](/rest/api/iothub/device/updatefileuploadstatus) | Yes | Yes |
-| [Toplu cihaz işlemi](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Evet, IoT Edge özellikleri dışında | Yes |
-| [İçeri aktarma dışarı aktarma işini iptal et](/rest/api/iothub/service/jobs/cancelimportexportjob) | Yes | Yes |
-| [İçeri aktarma dışarı aktarma işi oluştur](/rest/api/iothub/service/jobs/createimportexportjob) | Yes | Yes |
-| [İçeri aktarma dışarı aktarma işi al](/rest/api/iothub/service/jobs/getimportexportjob) | Yes | Yes |
-| [İçeri aktarma işlerini al](/rest/api/iothub/service/jobs/getimportexportjobs) | Yes | Yes |
-| [Komut kuyruğunu temizle](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Yes |
-| [Cihaz ikizi al](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | Yes |
-| [Modül ikizi al](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Yes |
-| [Cihaz yöntemini çağır](./iot-hub-devguide-direct-methods.md) |   | Yes |
-| [Cihaz ikizi Güncelleştir](./iot-hub-devguide-device-twins.md) |   | Yes |
-| [Modül ikizi Güncelleştir](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Yes |
-| [Cihaza bağlanma bildirimini bırakma](/rest/api/iothub/device/abandondeviceboundnotification) |   | Yes |
-| [Cihaz ile sınırlı bildirimi doldurun](/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
-| [İşi iptal et](/rest/api/media/jobs/canceljob) |   | Yes |
-| [İş oluşturma](/rest/api/media/jobs/create) |   | Yes |
-| [İşi al](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | Yes |
-| [Sorgu işleri](/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Yes |
+| [Karşıya dosya yükleme durumunu güncelleştir](/rest/api/iothub/device/updatefileuploadstatus) | Evet | Evet |
+| [Toplu cihaz işlemi](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Evet, IoT Edge özellikleri dışında | Evet |
+| [İçeri aktarma dışarı aktarma işini iptal et](/rest/api/iothub/service/jobs/cancelimportexportjob) | Evet | Evet |
+| [İçeri aktarma dışarı aktarma işi oluştur](/rest/api/iothub/service/jobs/createimportexportjob) | Evet | Evet |
+| [İçeri aktarma dışarı aktarma işi al](/rest/api/iothub/service/jobs/getimportexportjob) | Evet | Evet |
+| [İçeri aktarma işlerini al](/rest/api/iothub/service/jobs/getimportexportjobs) | Evet | Evet |
+| [Komut kuyruğunu temizle](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Evet |
+| [Cihaz ikizi al](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | Evet |
+| [Modül ikizi al](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Evet |
+| [Cihaz yöntemini çağır](./iot-hub-devguide-direct-methods.md) |   | Evet |
+| [Cihaz ikizi Güncelleştir](./iot-hub-devguide-device-twins.md) |   | Evet |
+| [Modül ikizi Güncelleştir](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Evet |
+| [Cihaza bağlanma bildirimini bırakma](/rest/api/iothub/device/abandondeviceboundnotification) |   | Evet |
+| [Cihaz ile sınırlı bildirimi doldurun](/rest/api/iothub/device/completedeviceboundnotification) |   | Evet |
+| [İşi iptal et](/rest/api/media/jobs/canceljob) |   | Evet |
+| [İş oluşturma](/rest/api/media/jobs/create) |   | Evet |
+| [İşi al](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | Evet |
+| [Sorgu işleri](/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Evet |
 
 ## <a name="message-throughput"></a>İleti işleme
 

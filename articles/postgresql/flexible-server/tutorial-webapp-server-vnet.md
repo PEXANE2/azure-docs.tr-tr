@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 35f96080d6a931c3491e119fe6866bc51eff4ff4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ab606e357bd911f4d7f266977bd14871f92744a0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490059"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546577"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Öğretici: Sanal ağda, PostgreSQL için Azure veritabanı-uygulama Hizmetleri Web uygulaması ile esnek sunucu oluşturma
 
 > [!IMPORTANT]
 > PostgreSQL için Azure veritabanı-esnek sunucu önizlemededir
 
-Bu öğreticide, bir [sanal ağ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)Içindeki PostgreSQL Için Azure veritabanı-esnek sunucu (Önizleme) ile bir Azure App Service Web uygulaması oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
+Bu öğreticide, bir [sanal ağ](../../virtual-network/virtual-networks-overview.md)Içindeki PostgreSQL Için Azure veritabanı-esnek sunucu (Önizleme) ile bir Azure App Service Web uygulaması oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 Bu öğreticide,
 >[!div class="checklist"]
@@ -121,4 +121,4 @@ az group delete -n myresourcegroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Mevcut bir özel DNS adını Azure App Service eşleme](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
+> [Mevcut bir özel DNS adını Azure App Service eşleme](../../app-service/app-service-web-tutorial-custom-domain.md)

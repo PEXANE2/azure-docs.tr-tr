@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 10/23/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b61d3ed21d053fc7166b47c94a9ec61e355d199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c093dcff46676dc5f8a25974c3c38c74ae7666b7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263170"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546696"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Öğretici: Azure Depolama’ya erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma 
 
@@ -51,11 +51,11 @@ Bu öğreticideki CLI betiği örneklerini çalıştırmak için iki seçeneğin
 Bu bölümde bir depolama hesabı oluşturursunuz. 
 
 1. Azure portalın sol üst köşesinde bulunan **+ Kaynak oluştur** düğmesine tıklayın.
-2. **Depolama**’ya ve sonra **Depolama hesabı - blob, dosya, tablo, kuyruk** öğesine tıklayın.
-3. **Ad**’ın altında, depolama hesabı için bir ad girin.  
-4. **Dağıtım modeli** ve **Hesap türü**, **Kaynak yöneticisi** ve **Depolama (genel amaçlı v1)** olarak ayarlanmalıdır. 
+2. **Depolama** ’ya ve sonra **Depolama hesabı - blob, dosya, tablo, kuyruk** öğesine tıklayın.
+3. **Ad** ’ın altında, depolama hesabı için bir ad girin.  
+4. **Dağıtım modeli** ve **Hesap türü** , **Kaynak yöneticisi** ve **Depolama (genel amaçlı v1)** olarak ayarlanmalıdır. 
 5. **Abonelik** ve **Kaynak Grubu** değerlerinin, önceki adımda VM'nizi oluştururken belirttiklerinizle eşleştiğinden emin olun.
-6. **Oluştur**’a tıklayın.
+6. **Oluştur** 'a tıklayın.
 
     ![Yeni depolama hesabı oluşturma](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -64,30 +64,33 @@ Bu bölümde bir depolama hesabı oluşturursunuz.
 Dosyalar blob depolama alanı gerektirdiğinden dosyasının depolanacağı bir blob kapsayıcısı oluşturmanız gerekir. Ardından yeni depolama hesabındaki blob kapsayıcısına bir dosya yükleyin.
 
 1. Yeni oluşturulan depolama hesabınıza geri gidin.
-2. **BLOB hizmeti**altında **kapsayıcılar**' a tıklayın.
+2. **BLOB hizmeti** altında **kapsayıcılar** ' a tıklayın.
 3. Sayfanın üstündeki **+ Kapsayıcı** seçeneğine tıklayın.
-4. **Yeni kapsayıcı**’nın altında, kapsayıcı için bir ad girin ve **Genel erişim düzeyi**’nin altında varsayılan değeri değiştirmeyin.
+4. **Yeni kapsayıcı** ’nın altında, kapsayıcı için bir ad girin ve **Genel erişim düzeyi** ’nin altında varsayılan değeri değiştirmeyin.
 
     ![Depolama kapsayıcısı oluşturma](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 5. Tercih ettiğiniz bir düzenleyiciyi kullanarak yerel makinenizde *hello world.txt* başlıklı bir dosya oluşturun.  Dosyayı açıp (tırnak işaretleri olmadan) "Hello world! :)" metnini ekleyin ve sonra kaydedin. 
 
-6. Kapsayıcı adına ve ardından **Karşıya yükle**’ye tıklayarak dosyayı yeni oluşturulan kapsayıcıya yükleyin
-7. **Blobu karşıya yükle** bölmesinde **Dosyalar**’ın altında, klasör simgesine tıklayıp yerel makinenizde **hello_world.txt** dosyasına göz atın, dosyayı seçin ve ardından **Karşıya yükle**’ye tıklayın.
+6. Kapsayıcı adına ve ardından **Karşıya yükle** ’ye tıklayarak dosyayı yeni oluşturulan kapsayıcıya yükleyin
+7. **Blobu karşıya yükle** bölmesinde **Dosyalar** ’ın altında, klasör simgesine tıklayıp yerel makinenizde **hello_world.txt** dosyasına göz atın, dosyayı seçin ve ardından **Karşıya yükle** ’ye tıklayın.
 
     ![Metin dosyasını karşıya yükleme](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>VM'nize Azure Depolama kapsayıcısı için erişim izni verme 
 
-Azure depolama blobundaki verileri almak için VM’nin yönetilen kimliğini kullanabilirsiniz.   
+Azure depolama blobundaki verileri almak için VM’nin yönetilen kimliğini kullanabilirsiniz.
+
+>[!NOTE]
+> Depolama gözden geçirme izinleri vermek için kullanabileceğiniz çeşitli roller hakkında daha fazla bilgi için [Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) verin
 
 1. Yeni oluşturulan depolama hesabınıza geri gidin.  
 2. Sol bölmedeki **Erişim denetimi (IAM)** bağlantısına tıklayın.  
 3. VM 'niz için yeni bir rol ataması eklemek üzere sayfanın üstünde **+ rol ataması Ekle** ' ye tıklayın.
-4. **Rol**altında, açılan listeden **Depolama Blobu veri okuyucu**' yı seçin. 
-5. Sonraki açılan listede **Erişimin atanacağı hedef** öğesinin altında **Sanal Makine**’yi seçin.  
-6. Ardından, uygun aboneliğin **Abonelik**’te listelendiğinden emin olun ve sonra **Kaynak Grubu**’nu **Tüm kaynak grupları** olarak ayarlayın.  
-7. **Seçin**’in altında, VM'nizi belirleyin ve ardından **Kaydet**’e tıklayın.
+4. **Rol** altında, açılan listeden **Depolama Blobu veri okuyucu** ' yı seçin. 
+5. Sonraki açılan listede **Erişimin atanacağı hedef** öğesinin altında **Sanal Makine** ’yi seçin.  
+6. Ardından, uygun aboneliğin **Abonelik** ’te listelendiğinden emin olun ve sonra **Kaynak Grubu** ’nu **Tüm kaynak grupları** olarak ayarlayın.  
+7. **Seçin** ’in altında, VM'nizi belirleyin ve ardından **Kaydet** ’e tıklayın.
 
     ![İzinler atama](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
@@ -97,8 +100,8 @@ Azure Depolama, Azure AD kimlik doğrulamasını yerel olarak desteklediğinden 
 
 Aşağıdaki adımları tamamlamak için, daha önce oluşturulmuş olan VM’den çalışmanız gerekir ve buna bağlanmak için de SSH istemciniz olmalıdır. Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](/windows/wsl/about)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](~/articles/virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
 
-1. Azure portalında **Sanal Makineler**'e gidin, Linux sanal makinenize gidin ve ardından **Genel Bakış** sayfasında **Bağlan**'a tıklayın. VM'nize bağlanma dizesini kopyalayın.
-2. Tercih ettiğiniz SSH istemciyle VM'ye **bağlanın**. 
+1. Azure portalında **Sanal Makineler** 'e gidin, Linux sanal makinenize gidin ve ardından **Genel Bakış** sayfasında **Bağlan** 'a tıklayın. VM'nize bağlanma dizesini kopyalayın.
+2. Tercih ettiğiniz SSH istemciyle VM'ye **bağlanın** . 
 3. Terminal penceresinde, Azure Depolama erişim belirtecini almak için CURL'yi kullanarak yerel Yönetilen Kimlik uç noktasına bir istek gönderin.
     
     ```bash

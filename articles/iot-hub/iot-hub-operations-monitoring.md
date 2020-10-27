@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 956a676709322860da7f08d032d370ed66f55b3f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 559dac0f37daf612404fca839e9918e97077029e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139334"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538502"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub işlemleri izleme (kullanım dışı)
 
 IoT Hub işlemler izleme, IoT Hub 'ınızdaki işlemlerin durumunu gerçek zamanlı olarak izlemenize olanak sağlar. IoT Hub birkaç işlem kategorisi içindeki olayları izler. İşlemek için bir veya daha fazla kategoriden bir veya daha fazla kategorinin bir uç noktasına olay göndermeyi tercih edebilirsiniz. Verileri hatalara göre izleyebilir veya veri desenlerine göre daha karmaşık işleme ayarlayabilirsiniz.
 
 >[!NOTE]
->IoT Hub **işlemleri izleme kullanım dışıdır ve 10 mart 2019 ' de IoT Hub kaldırılmıştır**. IoT Hub işlemlerini ve durumunu izlemek için bkz. [Azure IoT Hub sistem durumunu izleme ve sorunları hızlı bir şekilde tanılama](iot-hub-monitor-resource-health.md). Kullanımdan kaldırma zaman çizelgesi hakkında daha fazla bilgi için bkz. Azure [izleme Ile Azure IoT çözümlerinizi izleme ve Azure Kaynak durumu](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
+>IoT Hub **işlemleri izleme kullanım dışıdır ve 10 mart 2019 ' de IoT Hub kaldırılmıştır** . IoT Hub işlemlerini ve durumunu izlemek için bkz. [Monitor IoT Hub](monitor-iot-hub.md). Kullanımdan kaldırma zaman çizelgesi hakkında daha fazla bilgi için bkz. Azure [izleme Ile Azure IoT çözümlerinizi izleme ve Azure Kaynak durumu](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
 
 IoT Hub altı olay kategorisini izler:
 
@@ -39,11 +39,11 @@ IoT Hub altı olay kategorisini izler:
 
 1. IoT Hub 'ı oluşturun. [Başlarken](quickstart-send-telemetry-dotnet.md) kılavuzunda IoT Hub 'ı oluşturma yönergelerini bulabilirsiniz.
 
-2. IoT Hub 'ınızın dikey penceresini açın. Buradan, **işlemler izleme**' ye tıklayın.
+2. IoT Hub 'ınızın dikey penceresini açın. Buradan, **işlemler izleme** ' ye tıklayın.
 
     ![Portalda erişim işlemleri izleme yapılandırması](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. İzlemek istediğiniz izleme kategorilerini seçin ve ardından **Kaydet**' e tıklayın. Olaylar, **İzleme ayarlarında**listelenen olay hub 'ı ile uyumlu uç noktadan okumak için kullanılabilir. IoT Hub uç noktası çağrılır `messages/operationsmonitoringevents` .
+3. İzlemek istediğiniz izleme kategorilerini seçin ve ardından **Kaydet** ' e tıklayın. Olaylar, **İzleme ayarlarında** listelenen olay hub 'ı ile uyumlu uç noktadan okumak için kullanılabilir. IoT Hub uç noktası çağrılır `messages/operationsmonitoringevents` .
 
     ![IoT Hub 'ınızda işlem izlemeyi yapılandırma](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
@@ -197,11 +197,11 @@ IoT Hub 'ınızdaki izleme uç noktası, Olay Hub 'ı ile uyumlu bir uç noktas�
 
 1. Portalda IoT Hub kaynak dikey penceresine gidin.
 
-2. **İşlem izleme**' yi seçin ve **Event hub ile uyumlu adı** ve **Event hub ile uyumlu uç nokta** değerlerini bir yere göz önünde oluşturun:
+2. **İşlem izleme** ' yi seçin ve **Event hub ile uyumlu adı** ve **Event hub ile uyumlu uç nokta** değerlerini bir yere göz önünde oluşturun:
 
     ![Olay Hub 'ı ile uyumlu uç nokta değerleri](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. **Paylaşılan erişim ilkeleri**' ni ve ardından **hizmet**' i seçin. **Birincil anahtar** değerini bir yere getirin:
+3. **Paylaşılan erişim ilkeleri** ' ni ve ardından **hizmet** ' i seçin. **Birincil anahtar** değerini bir yere getirin:
 
     ![Hizmet paylaşılan erişim ilkesi birincil anahtarı](./media/iot-hub-operations-monitoring/service-key.png)
 

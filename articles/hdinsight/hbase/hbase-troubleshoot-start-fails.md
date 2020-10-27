@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 032c25969bf477e1163b8db2aca631044c457939
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75887215"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539981"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master (HMaster) Azure HDInsight 'ta başlatılamıyor
 
@@ -83,7 +83,7 @@ Bu sorunla, HMaster hizmetlerinizi yeniden başlattığınızda temizlenen çok 
 
 ### <a name="resolution"></a>Çözüm
 
-1. Apache ambarı kullanıcı arabiriminden, **HBase**  >  **configs**' a gidin. Özel `hbase-site.xml` dosyada aşağıdaki ayarı ekleyin:
+1. Apache ambarı kullanıcı arabiriminden, **HBase**  >  **configs** ' a gidin. Özel `hbase-site.xml` dosyada aşağıdaki ayarı ekleyin:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -113,7 +113,7 @@ Uzun `regionserver` JVM GC duraklatma. Duraklamanın `regionserver` yanıt verme
 
 Yalnızca ayarı değil, Zookeeper oturum zaman aşımını değiştirin, `hbase-site` `zookeeper.session.timeout` ancak aynı zamanda Zookeeper `zoo.cfg` ayarının `maxSessionTimeout` değiştirilmesi gerekir.
 
-1. Ambarı Kullanıcı arabirimine erişin, **HBase-> configs-> ayarlar**' a gidin, zaman aşımları bölümünde Zookeeper oturum zaman aşımı değerini değiştirin.
+1. Ambarı Kullanıcı arabirimine erişin, **HBase-> configs-> ayarlar** ' a gidin, zaman aşımları bölümünde Zookeeper oturum zaman aşımı değerini değiştirin.
 
 1. Ambarı Kullanıcı arabirimine erişin, **Zookeeper-> configs sayfasına gidin, özel >** `zoo.cfg` , aşağıdaki ayarı ekleyin/değiştirin. Değerin HBase ile aynı olduğundan emin olun `zookeeper.session.timeout` .
 
@@ -149,4 +149,4 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](../../azure-portal/supportability/how-to-create-azure-support-request.md)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

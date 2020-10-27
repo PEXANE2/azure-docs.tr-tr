@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086492"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547852"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma
 
@@ -61,7 +61,7 @@ Edge düğümü oluşturduktan sonra, SSH kullanarak kenar düğümüne bağlana
 > [!WARNING]
 > Edge düğümüne yüklenen özel bileşenler, Microsoft 'tan ticari olarak makul bir destek alır. Bu, karşılaştığınız sorunların çözümlenmesinde ortaya çıkabilir. Ya da, daha fazla yardım için topluluk kaynaklarına da başvurulabilir. Topluluktan yardım almak için en etkin sitelerin bazıları aşağıda verilmiştir:
 >
-> * [Microsoft Q&HDInsight için soru sayfası] (https://docs.microsoft.com/answers/topics/azure-hdinsight.html
+> * [Microsoft Q&HDInsight için soru sayfası] (/Yanıtlayıcı/topics/azure-hdinsight.html
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
 > Apache teknolojisi kullanıyorsanız, üzerinde Apache Hadoop sitesi gibi Apache proje siteleri aracılığıyla yardım bulabilirsiniz [https://apache.org](https://apache.org) . [Apache Hadoop](https://hadoop.apache.org/)
@@ -86,7 +86,7 @@ Bu bölümde, var olan bir HDInsight kümesine Edge düğümü eklemek için bir
     |Konum|Mevcut HDInsight kümesinin konumunu seçin.|
     |Küme Adı|Mevcut bir HDInsight kümesinin adını girin.|
 
-1. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u işaretleyin ve ardından kenar düğümünü oluşturmak Için **satın al** ' ı seçin.
+1. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ' u işaretleyin ve ardından kenar düğümünü oluşturmak Için **satın al** ' ı seçin.
 
 > [!IMPORTANT]  
 > Mevcut HDInsight kümesi için Azure kaynak grubunu seçtiğinizden emin olun.  Aksi halde, "iç içe kaynak üzerinde istenen işlem gerçekleştirilemiyor" hata iletisini alırsınız. ' &lt; ClusterName> ' üst kaynağı bulunamadı. "
@@ -111,13 +111,13 @@ Bu bölümde, bir Edge düğümü ile HDInsight kümesi oluşturmak için bir Ka
     |Küme Adı|Oluşturulacak yeni küme için bir ad girin.|
     |Küme Oturum Açma Kullanıcı Adı|Hadoop HTTP Kullanıcı adını girin.  Varsayılan ad, **admin** şeklindedir.|
     |Küme Oturum Açma Parolası|Hadoop HTTP Kullanıcı parolasını girin.|
-    |SSH Kullanıcı adı|SSH kullanıcı adını girin. Varsayılan ad **sshuser**' dır.|
+    |SSH Kullanıcı adı|SSH kullanıcı adını girin. Varsayılan ad **sshuser** ' dır.|
     |SSH parolası|SSH kullanıcı parolasını girin.|
     |Betik eylemini yükler|Bu makaleye gitmek için varsayılan değeri saklayın.|
 
     Şablonda bazı özellikler zaten kodlanmış: küme türü, küme çalışan düğümü sayısı, uç düğüm boyutu ve kenar düğümü adı.
 
-1. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u işaretleyin ve sonra da uç düğümü olan kümeyi oluşturmak Için **satın al** ' ı seçin.
+1. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ' u işaretleyin ve sonra da uç düğümü olan kümeyi oluşturmak Için **satın al** ' ı seçin.
 
 ## <a name="add-multiple-edge-nodes"></a>Birden çok Edge düğümü ekleme
 
@@ -133,7 +133,7 @@ Edge düğümü Azure portal bir uygulama olarak görünür.  Portal, size SSH k
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 2. HDInsight kümesini bir Edge düğümü ile açın.
-3. **Uygulamalar**' ı seçin. Edge düğümünü görürsünüz.  Varsayılan ad **New-edgenode**' dır.
+3. **Uygulamalar** ' ı seçin. Edge düğümünü görürsünüz.  Varsayılan ad **New-edgenode** ' dır.
 4. Kenar düğümünü seçin. SSH uç noktasını görürsünüz.
 
 **Hive 'yi kenar düğümünde kullanmak için**
@@ -158,9 +158,9 @@ Bir kenar düğümünü Azure portal silebilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 2. HDInsight kümesini bir Edge düğümü ile açın.
-3. **Uygulamalar**' ı seçin. Kenar düğümlerinin bir listesini görürsünüz.  
-4. Silmek istediğiniz kenar düğümüne sağ tıklayın ve ardından **Sil**' i seçin.
-5. Onaylamak için **Evet**’i seçin.
+3. **Uygulamalar** ' ı seçin. Kenar düğümlerinin bir listesini görürsünüz.  
+4. Silmek istediğiniz kenar düğümüne sağ tıklayın ve ardından **Sil** ' i seçin.
+5. Onaylamak için **Evet** ’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -169,6 +169,6 @@ Bu makalede, kenar düğümü ekleme ve kenar düğümüne erişme hakkında dah
 * [HDInsight uygulamaları yükleme](hdinsight-apps-install-applications.md): HDInsight uygulamalarını kümelerinize yükleme hakkında bilgi alın.
 * [Özel HDInsight uygulamaları yüklemek](hdinsight-apps-install-custom-applications.md): yayımlanmamış bir HDInsight uygulamasını HDInsight 'a dağıtmayı öğrenin.
 * [HDInsight uygulamalarını yayımlama](hdinsight-apps-publish-applications.md): Özel HDInsight uygulamalarınızı Azure Marketi’nde nasıl yayımlayacağınızı öğrenin.
-* [MSDN: HDInsight uygulaması yükleme](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight uygulamalarını nasıl tanımlayacağınızı öğrenin.
+* [MSDN: HDInsight uygulaması yükleme](/rest/api/hdinsight/hdinsight-application): HDInsight uygulamalarını nasıl tanımlayacağınızı öğrenin.
 * [Betik Eylemi kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md): ek uygulamalar yüklemek için Betik Eyleminin nasıl kullanılacağını öğrenin.
 * [HDInsight 'ta Kaynak Yöneticisi şablonları kullanarak Linux tabanlı Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-create-linux-clusters-arm-templates.md): HDInsight kümeleri oluşturmak için Kaynak Yöneticisi şablonlarının nasıl çağrılacağını öğrenin.

@@ -28,7 +28,7 @@ Bu öğreticide, WhosOnLocation 'ı Azure Active Directory (Azure AD) ile tümle
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -49,15 +49,15 @@ WhosOnLocation 'ın Azure AD ile tümleştirilmesini yapılandırmak için Galer
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **whosonlocation** yazın.
 1. Sonuçlar panelinden **Whosonlocation** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-whosonlocation"></a>WhosOnLocation için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak WhosOnLocation Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve WhosOnLocation içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak WhosOnLocation Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve WhosOnLocation içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu, WhosOnLocation ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -72,8 +72,8 @@ Azure AD SSO 'yu, WhosOnLocation ile yapılandırmak ve test etmek için aşağ�
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **whosonlocation** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **whosonlocation** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -101,25 +101,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, WhosOnLocation 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Whosonlocation**' ı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde, **Whosonlocation** ' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -131,11 +131,11 @@ Bu bölümde, WhosOnLocation 'a erişim vererek Azure çoklu oturum açma özell
 
 1. Farklı bir tarayıcı penceresinde, WhosOnLocation şirket sitenizde yönetici olarak oturum açın.
 
-2. **Araçlar**  ->  **hesabı**' na tıklayın.
+2. **Araçlar**  ->  **hesabı** ' na tıklayın.
 
     ![WhosOnLocation yapılandırması](./media/WhosOnLocation-tutorial/config1.png)
 
-3. Sol taraftaki gezginde, **çalışan erişimi**' ni seçin.
+3. Sol taraftaki gezginde, **çalışan erişimi** ' ni seçin.
 
     ![WhosOnLocation yapılandırması](./media/WhosOnLocation-tutorial/config2.png)
 
@@ -143,7 +143,7 @@ Bu bölümde, WhosOnLocation 'a erişim vererek Azure çoklu oturum açma özell
 
     ![WhosOnLocation yapılandırması](./media/WhosOnLocation-tutorial/config3.png)
 
-    a. **SAML Ile çoklu oturum açmayı** **Evet**olarak değiştirin.
+    a. **SAML Ile çoklu oturum açmayı** **Evet** olarak değiştirin.
 
     b. **Veren URL** metin kutusuna, Azure Portal KOPYALADıĞıNıZ **varlık kimliği** değerini yapıştırın.
 
@@ -151,7 +151,7 @@ Bu bölümde, WhosOnLocation 'a erişim vererek Azure çoklu oturum açma özell
 
     d. İndirilen **sertifikayı (base64)** Azure Portal Not defteri ' nden açın ve içeriği **sertifika** metin kutusuna yapıştırın.
 
-    e. **SAML yapılandırmasını kaydet**' e tıklayın.
+    e. **SAML yapılandırmasını kaydet** ' e tıklayın.
 
 ### <a name="create-whosonlocation-test-user"></a>WhosOnLocation test kullanıcısı oluştur
 

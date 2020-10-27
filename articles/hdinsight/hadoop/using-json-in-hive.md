@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 31fc6fe02559c356f072761c024308f158ae4d9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a7d3992ecd2c74947eaa1071b97b2032000c749
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085455"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547614"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive kullanarak JSON belgelerini işleme ve çözümleme
 
@@ -129,7 +129,7 @@ Get_json_object UDF kısıtlamaları vardır:
 * Sorgudaki her alan sorgunun yeniden ayrıştırılmasını gerektirdiğinden performansı etkiler.
 * **Al \_ JSON_OBJECT ()** , bir dizinin dize gösterimini döndürür. Bu diziyi bir Hive dizisine dönüştürmek için, "[" ve "]" köşeli ayraçlarını değiştirmek için normal ifadeler kullanmanız ve sonra diziyi almak için bölme çağrısı yapmanız gerekir.
 
-Bu dönüştürme, Hive wiki 'nin **json_tuple**kullanmanızı öneriyor.  
+Bu dönüştürme, Hive wiki 'nin **json_tuple** kullanmanızı öneriyor.  
 
 ### <a name="use-the-json_tuple-udf"></a>Json_tuple UDF kullanın
 
@@ -146,7 +146,7 @@ Hive konsolundaki bu betiğin çıkışı:
 
 ![Apache Hive JSON sorgu sonuçları](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-`json_tuple`UDF, Hive içindeki [yan yana görünüm](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) sözdizimini kullanır. Bu, JSON \_ kayıt düzeninin, özgün tablodaki her satıra udt işlevini uygulayarak bir sanal tablo oluşturmasını sağlar. Karmaşık jler, **yan yana görünümün**yinelenen kullanımı nedeniyle çok zor hale gelir. Ayrıca, **JSON_TUPLE** iç Içe geçmiş jdönemleri işleyemez.
+`json_tuple`UDF, Hive içindeki [yan yana görünüm](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) sözdizimini kullanır. Bu, JSON \_ kayıt düzeninin, özgün tablodaki her satıra udt işlevini uygulayarak bir sanal tablo oluşturmasını sağlar. Karmaşık jler, **yan yana görünümün** yinelenen kullanımı nedeniyle çok zor hale gelir. Ayrıca, **JSON_TUPLE** iç Içe geçmiş jdönemleri işleyemez.
 
 ### <a name="use-a-custom-serde"></a>Özel bir SerDe kullanma
 
@@ -154,11 +154,11 @@ SerDe, iç içe geçmiş JSON belgelerini ayrıştırmak için en iyi seçenekti
 
 ## <a name="summary"></a>Özet
 
-Seçtiğiniz Hive içindeki JSON işlecinin türü senaryonuza bağlıdır. Basit bir JSON belgesi ve aranacak bir alan ile, Hive UDF **get_json_object**seçin. Arama yapmak için birden fazla anahtarınız varsa **json_tuple**kullanabilirsiniz. İç içe geçmiş belgeler için **JSON SerDe**kullanın.
+Seçtiğiniz Hive içindeki JSON işlecinin türü senaryonuza bağlıdır. Basit bir JSON belgesi ve aranacak bir alan ile, Hive UDF **get_json_object** seçin. Arama yapmak için birden fazla anahtarınız varsa **json_tuple** kullanabilirsiniz. İç içe geçmiş belgeler için **JSON SerDe** kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 İlgili makaleler için bkz.:
 
-* [Örnek Apache Log4J dosyasını çözümlemek için HDInsight 'ta Apache Hadoop Apache Hive ve HiveQL kullanın](../hdinsight-use-hive.md)
+* [Örnek Apache Log4J dosyasını çözümlemek için HDInsight 'ta Apache Hadoop Apache Hive ve HiveQL kullanın](./hdinsight-use-hive.md)
 * [HDInsight 'ta etkileşimli sorgu kullanarak Uçuş gecikmesi verilerini çözümleme](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)

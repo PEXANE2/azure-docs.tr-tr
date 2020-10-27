@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: e0d1f9ad99e1b64560321312a22f61f5a2ef3dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34c6fe58873a614ee8502e052c2af5aaed898cd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016045"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547954"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'a üçüncü taraf Apache Hadoop uygulamaları yüklemeyin
 
@@ -43,7 +43,7 @@ Aşağıdaki listede yayımlanan uygulamalar gösterilmektedir:
 
 Bu makalede verilen yönergeler Azure portalı kullanmaktadır. Ayrıca, portaldan Azure Resource Manager şablonunu dışarı aktarabilir veya satıcılardan Kaynak Yöneticisi şablonunun bir kopyasını alabilir ve şablonu dağıtmak için Azure PowerShell ve Azure klasik CLı kullanabilirsiniz.  Bkz. [Kaynak Yöneticisi şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 HDInsight uygulamalarını mevcut bir HDInsight kümesine yüklemek istiyorsanız bir HDInsight kümesine sahip olmanız gerekir. Küme oluşturmak için bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md). HDInsight uygulamalarını ayrıca bir HDInsight kümesi oluştururken yükleyebilirsiniz.
 
 ## <a name="install-applications-to-existing-clusters"></a>Var olan kümelere uygulama yükleme
@@ -52,9 +52,9 @@ Aşağıdaki yordamda var olan bir HDInsight kümesine HDInsight uygulamaların�
 **HDInsight uygulaması yüklemesi**
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Sol menüden **Tüm Service**  >  **Analytics**  >  **HDInsight kümelerine**gidin.
+2. Sol menüden **Tüm Service**  >  **Analytics**  >  **HDInsight kümelerine** gidin.
 3. Listeden bir HDInsight kümesi seçin.  Henüz yoksa öncelikle bir tane oluşturmanız gerekir.  bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-4. **Ayarlar** kategorisi altında **uygulamalar**' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
+4. **Ayarlar** kategorisi altında **uygulamalar** ' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
    
     ![HDInsight uygulamaları portal menüsü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. Menüden **+ Ekle** ' yi seçin. Kullanılabilir uygulamaların bir listesini görebilirsiniz.  **+ Ekle** gri ise bu, HDInsight kümesinin bu sürümü için bir uygulama olmadığı anlamına gelir.
@@ -66,7 +66,7 @@ Yükleme durumunu Portal bildirimlerinden görebilirsiniz (portalın üst kısm�
 
 ## <a name="install-applications-during-cluster-creation"></a>Küme oluşturma sırasında uygulama yükleme
 
-Bir küme oluştururken HDInsight uygulamaları yükleme seçeneğine sahipsiniz. İşlem sırasında, küme oluşturulup çalışır duruma geldikten sonra HDInsight uygulamaları yüklenir. Azure portal kullanarak küme oluşturma sırasında uygulamaları yüklemek için **yapılandırma + fiyatlandırma** sekmesinden **+ Uygulama Ekle**' yi seçin.
+Bir küme oluştururken HDInsight uygulamaları yükleme seçeneğine sahipsiniz. İşlem sırasında, küme oluşturulup çalışır duruma geldikten sonra HDInsight uygulamaları yüklenir. Azure portal kullanarak küme oluşturma sırasında uygulamaları yüklemek için **yapılandırma + fiyatlandırma** sekmesinden **+ Uygulama Ekle** ' yi seçin.
 
 ![Azure portal kümesi yapılandırma uygulamaları](./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png)
 
@@ -76,9 +76,9 @@ Portal bir küme için yüklü HDInsight uygulamalarının listesini ve yüklü 
 **HDInsight uygulamasını listeleme ve özellikleri görüntüleme**
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Sol menüden **Tüm Service**  >  **Analytics**  >  **HDInsight kümelerine**gidin.
+2. Sol menüden **Tüm Service**  >  **Analytics**  >  **HDInsight kümelerine** gidin.
 3. Listeden bir HDInsight kümesi seçin.
-4. **Ayarlar** kategorisi altında **uygulamalar**' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
+4. **Ayarlar** kategorisi altında **uygulamalar** ' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
    
     ![HDInsight uygulamaları yüklü uygulamalar](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. Özelliği göstermek için yüklü uygulamalardan birini seçin. Özellik listeleri:
@@ -104,8 +104,7 @@ Bkz. [Yükleme sorunlarını giderme](hdinsight-apps-install-custom-applications
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Özel HDInsight uygulamaları yüklemek](hdinsight-apps-install-custom-applications.md): yayımlanmamış bir HDInsight uygulamasını HDInsight 'a dağıtmayı öğrenin.
 * [HDInsight uygulamalarını yayımlama](hdinsight-apps-publish-applications.md): Özel HDInsight uygulamalarınızı Azure Marketi’nde nasıl yayımlayacağınızı öğrenin.
-* [MSDN: HDInsight uygulaması yükleme](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight uygulamalarını nasıl tanımlayacağınızı öğrenin.
+* [MSDN: HDInsight uygulaması yükleme](/rest/api/hdinsight/hdinsight-application): HDInsight uygulamalarını nasıl tanımlayacağınızı öğrenin.
 * [Betik Eylemi kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md): ek uygulamalar yüklemek için Betik Eyleminin nasıl kullanılacağını öğrenin.
 * [HDInsight 'ta Kaynak Yöneticisi şablonları kullanarak Linux tabanlı Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-create-linux-clusters-arm-templates.md): HDInsight kümeleri oluşturmak için Kaynak Yöneticisi şablonlarının nasıl çağrılacağını öğrenin.
 * [HDInsight’ta boş kenar düğümleri kullanma](hdinsight-apps-use-edge-node.md): HDInsight kümesine erişmek, HDInsight uygulamaları test etmek ve HDInsight uygulamalarını barındırmak için boş bir kenar düğümünü kullanmayı öğrenin.
-

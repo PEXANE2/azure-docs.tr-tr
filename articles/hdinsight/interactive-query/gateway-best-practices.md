@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80586983"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546016"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive için ağ geçidi derinlemesine bakış ve en iyi uygulamalar
 
@@ -46,7 +46,7 @@ Aşağıdaki diyagramda bir SELECT sorgusunda yer alan adımlar gösterilmektedi
 
 Apache Hive,, bir, bir,, Bu soyutlama, Hive içindeki **Select** deyimlerinin dosya sisteminde **okuma** işlemlerine karşılık geldiğini gösterir. **Okuma** işlemleri, kullanıcıya bildirilmeden önce uygun şemaya çevrilir. Bu işlemin gecikmesi, veri boyutu ve son kullanıcıya ulaşmak için gereken toplam atlama sayısını artırır.
 
-Bu komutlar, temel alınan dosya sisteminde **yazma** işlemlerine karşılık geldiği için büyük veri **oluşturma** veya **ekleme** deyimleri yürütürken benzer bir davranış ortaya çıkabilir. Ham ORC gibi verileri, **Insert** veya **Load**kullanarak yüklemek yerine FileSystem/datalake 'a yazmayı düşünün.
+Bu komutlar, temel alınan dosya sisteminde **yazma** işlemlerine karşılık geldiği için büyük veri **oluşturma** veya **ekleme** deyimleri yürütürken benzer bir davranış ortaya çıkabilir. Ham ORC gibi verileri, **Insert** veya **Load** kullanarak yüklemek yerine FileSystem/datalake 'a yazmayı düşünün.
 
 Kurumsal güvenlik paketi etkinleştirilmiş kümeler ' de, yeterince karmaşık Apache Ranger ilkeleri sorgu derleme zamanında yavaşlama oluşmasına neden olabilir ve bu da ağ geçidi zaman aşımına neden olabilir. Bir ağ geçidi zaman aşımı bir ESP kümesinde fark alıyorsa, Ranger ilkelerinin sayısını azaltmayı veya birleştirmeyi düşünün.
 
@@ -54,11 +54,11 @@ Kurumsal güvenlik paketi etkinleştirilmiş kümeler ' de, yeterince karmaşık
 
 Yukarıdaki davranışın bir parçası olarak karşılanması gereken performans sorunlarını azaltmak ve anlamak için birden çok havalandırma vardır. HDInsight ağ geçidi üzerinde sorgu performansı düşüşünü yaşadığınızda aşağıdaki denetim listesini kullanın:
 
-* Büyük **seçim** sorguları yürütürken **LIMIT** yan tümcesini kullanın. **LIMIT** yan tümcesi, istemci konağına bildirilen toplam satırları azaltır. **LIMIT** yan tümcesi yalnızca sonuç üretimini etkiler ve sorgu planını değiştirmez. **LIMIT** yan tümcesini sorgu planına uygulamak için yapılandırmayı kullanın `hive.limit.optimize.enable` . **Sınır** , **x, y**olan bağımsız değişken form sınırı kullanılarak bir uzaklığa birleştirilebilir.
+* Büyük **seçim** sorguları yürütürken **LIMIT** yan tümcesini kullanın. **LIMIT** yan tümcesi, istemci konağına bildirilen toplam satırları azaltır. **LIMIT** yan tümcesi yalnızca sonuç üretimini etkiler ve sorgu planını değiştirmez. **LIMIT** yan tümcesini sorgu planına uygulamak için yapılandırmayı kullanın `hive.limit.optimize.enable` . **Sınır** , **x, y** olan bağımsız değişken form sınırı kullanılarak bir uzaklığa birleştirilebilir.
 
-* **Select \* **kullanmak yerine sorguları **Seç** ' i çalıştırırken ilgilendiğiniz sütunlarınızı adlandırın. Daha az sütun seçilmesi, okunan veri miktarını düşürür.
+* * *Select \** _ yerine sorguları **Seç** ' i çalıştırırken ilgilendiğiniz sütunlarınızı adlandırın. Daha az sütun seçilmesi, okunan veri miktarını düşürür.
 
-* Apache Beeline aracılığıyla ilgilendiğiniz sorguyu çalıştırmayı deneyin. Apache Beeline ile sonuç alımı uzun zaman alırsa, dış araçlarla aynı sonuçları alırken gecikmeler olması beklenir.
+_ Apache Beeline aracılığıyla ilgilendiğiniz sorguyu çalıştırmayı deneyin. Apache Beeline ile sonuç alımı uzun zaman alırsa, dış araçlarla aynı sonuçları alırken gecikmeler olması beklenir.
 
 * HDInsight Gateway ile kurulan bir bağlantının kuruladiğinden emin olmak için temel bir Hive sorgusunu test edin. Tek bir aracın sorunsuz bir şekilde çalıştığından emin olmak için iki veya daha fazla dış araçtan temel bir sorgu çalıştırmayı deneyin.
 
@@ -80,7 +80,7 @@ Yukarıdaki davranışın bir parçası olarak karşılanması gereken performan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [HDInsight üzerinde Apache Beeline](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-beeline)
-* [HDInsight Gateway zaman aşımı sorunlarını giderme adımları](https://docs.microsoft.com/azure/hdinsight/interactive-query/troubleshoot-gateway-timeout)
-* [HDInsight için sanal ağlar](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)
-* [Express Route ile HDInsight](https://docs.microsoft.com/azure/hdinsight/connect-on-premises-network)
+* [HDInsight üzerinde Apache Beeline](../hadoop/apache-hadoop-use-hive-beeline.md)
+* [HDInsight Gateway zaman aşımı sorunlarını giderme adımları](./troubleshoot-gateway-timeout.md)
+* [HDInsight için sanal ağlar](../hdinsight-plan-virtual-network-deployment.md)
+* [Express Route ile HDInsight](../connect-on-premises-network.md)

@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 0b7b09696cbbe12a57d066e452b4c8ea7a7b8f27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 319b7a40a87d29454b22a26088df313ef524dc56
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941451"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545829"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda günlükleri yapılandırma ve erişme-esnek sunucu
 
@@ -22,20 +22,20 @@ PostgreSQL günlükleri, esnek bir sunucunun her düğümünde kullanılabilir. 
 
 ## <a name="configure-diagnostic-settings"></a>Tanılama ayarlarını yapılandırma
 
-Azure portal, CLı, REST API ve PowerShell 'i kullanarak Postgres sunucunuz için tanılama ayarlarını etkinleştirebilirsiniz. Seçilecek günlük kategorisi **Postgressqllogs**' dır.
+Azure portal, CLı, REST API ve PowerShell 'i kullanarak Postgres sunucunuz için tanılama ayarlarını etkinleştirebilirsiniz. Seçilecek günlük kategorisi **Postgressqllogs** ' dır.
 
 Azure portal kullanarak kaynak günlüklerini etkinleştirmek için:
 
 1. Portalda, Postgres sunucunuzun gezinti menüsünde *Tanılama ayarları* ' na gidin.
    
-2. *Tanılama ayarı Ekle*' yi seçin.
+2. *Tanılama ayarı Ekle* ' yi seçin.
    :::image type="content" source="media/howto-logging/diagnostic-settings.png" alt-text="Tanılama Ayarları Ekle düğmesi":::
 
 3. Bu ayarı adlandırın. 
 
 4. Tercih ettiğiniz uç noktayı (depolama hesabı, Olay Hub 'ı, Log Analytics) seçin. 
 
-5. **Postgressqllogs**günlük türünü seçin.
+5. **Postgressqllogs** günlük türünü seçin.
    :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Tanılama Ayarları Ekle düğmesi":::
 
 7. Ayarınızı kaydedin.
@@ -44,7 +44,7 @@ PowerShell, CLı veya REST API kullanarak kaynak günlüklerini etkinleştirmek 
 
 ### <a name="access-resource-logs"></a>Kaynak günlüklerine erişin
 
-Günlüklere erişmenin yolu, seçtiğiniz uç noktaya bağlıdır. Azure depolama için [günlük depolama hesabı](../../azure-monitor/platform/resource-logs-collect-storage.md) makalesine bakın. Event Hubs için bkz. [Azure günlükleri akışı](../../azure-monitor/platform/resource-logs-stream-event-hubs.md) makalesi.
+Günlüklere erişmenin yolu, seçtiğiniz uç noktaya bağlıdır. Azure depolama için [günlük depolama hesabı](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) makalesine bakın. Event Hubs için bkz. [Azure günlükleri akışı](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) makalesi.
 
 Azure Izleyici günlükleri için Günlükler seçtiğiniz çalışma alanına gönderilir. Postgres günlükleri **AzureDiagnostics** Collection modunu kullanır, bu nedenle AzureDiagnostics tablosundan sorgulanırlar. Tablodaki alanlar aşağıda açıklanmıştır. [Azure Izleyici günlükleri sorgusuna](../../azure-monitor/log-query/log-query-overview.md) genel bakış bölümünde sorgulama ve uyarı alma hakkında daha fazla bilgi edinin.
 
@@ -71,5 +71,5 @@ Yukarıdaki sorguda, bu çalışma alanındaki tüm Postgres sunucusu günlüğ�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Log Analytics sorgularını kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
-- [Azure Olay Hub 'ları](https://docs.microsoft.com/azure/event-hubs/event-hubs-about) hakkında bilgi edinin
+- [Log Analytics sorgularını kullanmaya başlama](../../azure-monitor/log-query/get-started-portal.md)
+- [Azure Olay Hub 'ları](../../event-hubs/event-hubs-about.md) hakkında bilgi edinin

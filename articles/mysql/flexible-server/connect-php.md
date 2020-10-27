@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: 77e4e2e1548beaa840f46953ef5bb4e94345416f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc6b069e3c7686ec6964dab890e503aa193cf6fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947864"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545115"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Hızlı başlangıç: MySQL kullanarak MySQL için Azure veritabanı 'na bağlanma ve veri sorgulama-esnek sunucu
 
@@ -34,7 +34,7 @@ Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birin
 
 ### <a name="install-php"></a>PHP'yi yükleme
 
-PHP'yi kendi sunucunuza yükleyin veya PHP içeren bir Azure [web uygulaması](https://docs.microsoft.com/azure/app-service/overview) oluşturun.  Güvenlik duvarı kuralları oluşturmayı öğrenmek için [güvenlik duvarı kuralları oluşturma ve yönetme](./how-to-manage-firewall-portal.md) bölümüne bakın.
+PHP'yi kendi sunucunuza yükleyin veya PHP içeren bir Azure [web uygulaması](../../app-service/overview.md) oluşturun.  Güvenlik duvarı kuralları oluşturmayı öğrenmek için [güvenlik duvarı kuralları oluşturma ve yönetme](./how-to-manage-firewall-portal.md) bölümüne bakın.
 
 #### <a name="macos"></a>macOS
 
@@ -56,9 +56,9 @@ PHP'yi kendi sunucunuza yükleyin veya PHP içeren bir Azure [web uygulaması](h
 MySQL için Azure veritabanı esnek sunucusuna bağlanmak için gereken bağlantı bilgilerini alın. Tam sunucu adı ve oturum açma kimlik bilgileri gerekir.
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-2. Azure Portal sol taraftaki menüden **tüm kaynaklar**' ı seçin ve oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın.
+2. Azure Portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve oluşturduğunuz sunucuyu (örneğin, **demosunucum** ) arayın.
 3. Sunucu adını seçin.
-4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı** ’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  <!---:::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL Flexible Server name":::--->
 
 ## <a name="connecting-to-flexible-server-using-tlsssl-in-php"></a>PHP 'de TLS/SSL kullanarak esnek sunucuya bağlanma

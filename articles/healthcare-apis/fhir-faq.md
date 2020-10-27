@@ -8,16 +8,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 9c32ebef16750954f3df1a1d1b379bf42853f2b3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 20bf72c55a5b6d76a3b214f0a679e28da81e41e2
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056864"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558576"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>FHıR için Azure API 'SI hakkında sık sorulan sorular
 
-## <a name="azure-api-for-fhir"></a>FHIR için Azure API'si
+## <a name="azure-api-for-fhir-the-basics"></a>FHıR için Azure API: temel bilgiler
 
 ### <a name="what-is-fhir"></a>FHAR nedir?
 Hızlı sağlık birlikte çalışabilirlik kaynakları (FHıR-, "yangın"), farklı sistem durumu sistemleri arasında sağlık verileri değişimini etkinleştirmeye yönelik bir birlikte çalışabilirlik standardıdır. Bu standart, HL7 organizasyonu tarafından geliştirilmiştir ve dünyanın dört bir yanındaki sağlık kurumları tarafından benimsenmekte. FHıR 'nin en güncel sürümü, R4 (sürüm 4). FHıR için Azure API 'SI R4 destekler ve ayrıca önceki sürüm STU3 ' i (deneme sürümü 3 için standart) destekler. FHAR hakkında daha fazla bilgi için [HL7.org](http://hl7.org/fhir/summary.html)adresini ziyaret edin.
@@ -34,15 +34,25 @@ Evet, veriler Azure 'da yönetilen veritabanlarında depolanır. FHıR için Azu
 
 4.0.0 ve 3.0.1 sürümlerini hem FHıR için Azure API 'SI (PaaS) hem de Azure için FHıR sunucusu (açık kaynak) üzerinde destekliyoruz.
 
-Ayrıntılar için bkz. [desteklenen özellikler](fhir-features-supported.md). [HL7 FHIR sürüm geçmişindeki](https://hl7.org/fhir/R4/history.html)sürümler arasında nelerin değiştiğini okuyun.
+Ayrıntılar için bkz. [desteklenen özellikler](fhir-features-supported.md). [HL7 fhir sürüm geçmişinde](https://hl7.org/fhir/R4/history.html)fhır sürümleri (örn. STU3 ile R4) arasında nelerin değiştiğini okuyun.
 
-### <a name="whats-the-difference-between-the-open-source-microsoft-fhir-server-for-azure-and-the-azure-api-for-fhir"></a>Azure için açık kaynaklı Microsoft FHıR sunucusu ve FHıR için Azure API arasındaki fark nedir?
+FHIR için Azure IoT Bağlayıcısı (Önizleme) Şu anda yalnızca FHıR sürüm R4 desteklemektedir ve yalnızca FHıR için Azure API 'sinin R4 örneklerinde görülebilir.
+
+### <a name="whats-the-difference-between-microsoft-fhir-server-for-azure-and-the-azure-api-for-fhir"></a>' Azure için Microsoft FHıR Server ' ve ' FHıR için Azure API ' arasındaki fark nedir?
 
 FHıR için Azure API 'SI, Azure için açık kaynaklı Microsoft FHıR sunucusunun barındırılan ve yönetilen bir sürümüdür. Yönetilen hizmette, Microsoft tüm bakım ve güncelleştirmeleri sağlar. 
 
-Azure için FHıR sunucusu çalıştırırken, temeldeki hizmetlere doğrudan erişim sahibi olursunuz. Ancak, FI verilerini depoluyorsanız, sunucunun ve gerekli tüm uyumluluk işinin saklanması ve güncelleştirilmesinden de sorumlu olursunuz.
+Azure için FHıR sunucusunu çalıştırdığınızda, temeldeki hizmetlere doğrudan erişim sahibi olursunuz, ancak FI verilerini depoluyorsanız sunucunun ve gerekli tüm uyumluluk işinin saklanması ve güncellenmesi sorumludur.
 
-Geliştirme açısından, her özellik ilk olarak Azure için açık kaynaklı Microsoft FHıR sunucusuna dağıtılır. Açık kaynakta doğrulandıktan sonra, FHıR çözümü için PaaS Azure API 'sinde kullanıma sunulacaktır. Açık kaynaklı ve PaaS 'deki yayın arasındaki süre, özelliğin karmaşıklığına ve diğer yol haritası önceliklere bağlıdır. 
+Geliştirme açısından, yalnızca yönetilen hizmet için uygulanan her özellik, ilk olarak Azure için açık kaynaklı Microsoft FHıR sunucusuna dağıtılır. Açık kaynakta doğrulandıktan sonra, FHıR çözümü için PaaS Azure API 'sinde kullanıma sunulacaktır. Açık kaynaklı ve PaaS 'deki yayın arasındaki süre, özelliğin karmaşıklığına ve diğer yol haritası önceliklere bağlıdır. Bu, FHıR için Azure IoT Bağlayıcısı (Önizleme) gibi hizmetlerimiz için de aynı işlemdir.
+
+### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>FHIR için Azure API 'ye ne kadar serbest bırakıldıklarınızı nereden görebilirim?
+
+FHıR için Azure API 'sine nelerin [yayınlanabileceği](https://github.com/microsoft/fhir-server/releases) hakkında daha fazla bilgi için lütfen açık kaynaklı Fhır sunucusunun sürümüne bakın. 2020 Kasım 'Dan itibaren, açık kaynak öğe yönetilen hizmete yayınlanacaktır, öğeleri Azure-API-for-FHIR ile etiketliyoruz. Bu özellikler genellikle açık kaynaklı sürüm sayfasında olduktan sonra iki hafta kullanılabilir. Ayrıca, derlemeyi test etme [buraya] ( https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md) kendi ortamınızda test etmek istiyorsanız) ile ilgili yönergeler de sunuyoruz. Ek yönetilen hizmet güncelleştirmelerinin en iyi şekilde nasıl paylaşılacağını değerlendiriyoruz.
+
+### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>FHıR için Azure API hangi bölgelerde kullanılabilir?
+
+Şu anda [birden fazla coğrafi bölgede](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia)hem genel hem de kamu için genel kullanıma sunulduk. Microsoft 'ta kamu bulut hizmetleri hakkında daha fazla bilgi için, [Fedrampa Ile Azure hizmetleri](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope)'ne göz atın.
 
 ### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>FHIR için Azure API 'ye ne kadar serbest bırakıldıklarınızı nereden görebilirim?
 
@@ -52,6 +62,8 @@ FHıR için Azure API 'sine nelerin [yayınlanabileceği](https://github.com/mic
 
 FHıR üzerinde akıllı (Substitutable tıbbi uygulamalar ve yeniden kullanılabilir teknoloji), iş ortağı uygulamalarını FHıR sunucularıyla ve elektronik sistem durumu kayıtları ve sistem durumu bilgileri değişimleri gibi diğer sistem durumu BT sistemleriyle tümleştirmeye yönelik bir dizi açık belirtimdir. FHıR uygulaması ile akıllı bir uygulama oluşturarak, uygulamanızın farklı sistemlerdeki bir plethora erişilebilir ve yararlanılabilir sağlayabilirsiniz.
 FHIR için kimlik doğrulaması ve Azure API. AKıLLı hakkında daha fazla bilgi edinmek için bkz. [Smart Health](https://smarthealthit.org/).
+
+## <a name="fhir-implementations-and-specifications"></a>FHıR uygulamaları ve belirtimleri
 
 ### <a name="can-i-create-a-custom-fhir-resource"></a>Özel bir FHıR kaynağı oluşturabilir miyim?
 
@@ -63,7 +75,7 @@ Geçerli bir FHıR JSON verilerini sunucuya yükleyebiliriz. Uzantıyı tanımla
 
 ### <a name="what-is-the-limit-on-_count"></a>_Count sınırı nedir?
 
-Count üzerindeki geçerli sınır 100 ' dir.
+_Count geçerli sınırı 100 ' dir. _Count 100 ' den fazlasına ayarlarsanız, pakette yalnızca 100 kaydın gösterildiğini belirten bir uyarı alırsınız.
 
 ### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>Grup dışarı aktarma işlevinde herhangi bir sınırlama var mı?
 
@@ -83,49 +95,40 @@ Bunun bazı örnekleri aşağıda verilmiştir:
 * Hasta/ <id> /gözlem al
 * Hasta/ <id> /gözlem al? kod = 8302-2
 
+### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>FHıR için Azure API 'sindeki kaynakları ararken varsayılan sıralama nedir?
+
+Son güncelleştirilme tarihine göre sıralamayı destekliyoruz: _sort = _lastUpdated. Desteklenen diğer arama parametreleri hakkında daha fazla bilgi için, [desteklenen özellikler sayfamıza](https://docs.microsoft.com/azure/healthcare-apis/fhir-features-supported#search)göz atın.
+
+### <a name="how-does-export-work"></a>$Export nasıl çalışır?
+
+$export FHıR belirtiminin bir parçasıdır: https://hl7.org/fhir/uv/bulkdata/export/index.html . FHıR hizmeti yönetilen bir kimlikle ve bir depolama hesabıyla yapılandırıldıysa ve yönetilen kimliğin bu depolama hesabına erişimi varsa, FHıR API 'sindeki $export çağırabilirsiniz ve tüm FHıR kaynakları depolama hesabına aktarılabilir. Daha fazla bilgi için [$Export makalemize](https://docs.microsoft.com/azure/healthcare-apis/export-data)göz atın.
+
+## <a name="using-azure-api-for-fhir"></a>FHıR için Azure API 'YI kullanma
+
+### <a name="how-do-i-enable-log-analytics-for-azure-api-for-fhir"></a>FHıR için Azure API Log Analytics 'i etkinleştirmek Nasıl yaparım? mı?
+
+Tanılama günlük kaydını etkinleştirir ve bu günlüklere yönelik örnek sorguların gözden geçirilmesini sağlar. Denetim günlüklerini ve örnek sorguları etkinleştirme hakkında daha fazla bilgi için [Bu bölüme](https://docs.microsoft.com/azure/healthcare-apis/enable-diagnostic-logging)göz atın. Günlüklere ek bilgi eklemek istiyorsanız, [özel http üst bilgilerini kullanarak](https://docs.microsoft.com/azure/healthcare-apis/use-custom-headers)göz atın.
+
 ### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>Bir iş akışı içinde FHıR için Azure API 'SI kullanmayla ilgili bazı örnekleri nereden görebilirim?
 
 [Durum mimarisi GitHub sayfasında](https://github.com/microsoft/health-architectures)bulunan bir başvuru mimarileri koleksiyonudur.
 
-## <a name="azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme)
+### <a name="where-can-i-see-an-example-of-connecting-a-web-application-to-azure-api-for-fhir"></a>Bir Web uygulamasını FHIR için Azure API 'sine bağlama örneğini nereden görebilirim?
 
-### <a name="what-is-iomt"></a>IoMT nedir?
-IoMT, tıbbi nesnelerin Interneti olduğunu ve ağ üzerinden BT sistemleri ile sistem durumu ve iş verileri yakalayan ve alıp veren bir IoT cihazları kategorisidir. Bazı ıomt cihazlarına örnek olarak, uygunluk ve klinik wearables, izleme algılayıcıları, etkinlik izleyicileri, bakım noktaları ve hatta akıllı bir Pill sayılabilir.
+Örnek uygulamalar ve senaryolar içeren bir [sistem durumu mimarisi GitHub sayfasıdır](https://github.com/microsoft/health-architectures) . Bir Web uygulamasını FHIR için Azure API 'sine bağlamayı gösterir.  
 
-### <a name="how-many-azure-iot-connector-for-fhir-preview-do-i-need"></a>FHıR (Önizleme) için kaç Azure IoT bağlayıcısına ihtiyacım var?
-FHIR * için tek bir Azure IoT Bağlayıcısı, çok sayıda farklı cihaz türünden veri almak için kullanılabilir. Yine de aşağıdaki nedenlerle farklı bağlayıcılar kullanmaya karar verebilirsiniz:
-- **Ölçek**: genel önizleme için, fhır kaynak kapasitesi Için Azure IoT Bağlayıcısı sabittir ve saniyede 200 ileti hakkında bir verimlilik sağlanması beklenmektedir. Daha yüksek aktarım hızı gerekiyorsa FHıR için daha fazla Azure IoT Bağlayıcısı ekleyebilirsiniz.
-- **Cihaz türü**: cihaz yönetimi nedenleriniz için sahip olduğunuz her ıomt cihazı türü için fhır için ayrı bir Azure IoT Bağlayıcısı ayarlayabilirsiniz.
+## <a name="azure-api-for-fhir-features-and-services"></a>FHıR özellikleri ve hizmetleri için Azure API 
 
-### <a name="is-there-a-limit-on-number-of-azure-iot-connector-for-fhir-preview-during-public-preview"></a>Genel Önizleme sırasında FHIR (Önizleme) için Azure IoT Bağlayıcısı sayısı sınırı var mı?
-Evet, özellik genel önizlemedeyken abonelik başına FHıR için yalnızca iki Azure IoT Bağlayıcısı oluşturabilirsiniz. Bu sınır, Önizleme süresince Özellik ücretsiz olarak kullanılabilir olduğu için beklenmeyen giderleri engellemek için mevcuttur. İstek üzerine bu sınır, FHıR için en fazla beş Azure IoT Bağlayıcısı üzerinden yükseltilebilir.
+### <a name="is-there-a-way-to-encrypt-my-data-using-my-personal-key-not-a-default-key"></a>Kişisel anahtarımı varsayılan anahtar değil kullanarak şifrelemem için bir yol var mı?
 
-### <a name="what-azure-regions-azure-iot-connector-for-fhir-preview-feature-is-available-during-public-preview"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) özelliği, genel önizleme sırasında kullanılabilir mi?
-FHıR için Azure IoT Bağlayıcısı, FHıR için Azure API 'sinin kullanılabildiği tüm Azure bölgelerinde kullanılabilir.
+Evet, FHıR için Azure API, Cosmos DB destek aracılığıyla müşteri tarafından yönetilen anahtarların yapılandırılmasını sağlar. Kişisel anahtarla verilerinizi şifreleme hakkında daha fazla bilgi için [Bu bölüme](https://docs.microsoft.com/azure/healthcare-apis/customer-managed-key)göz atın.
+
+## <a name="azure-api-for-fhir-preview-features"></a>FHıR için Azure API: Önizleme özellikleri
 
 ### <a name="can-i-configure-scaling-capacity-for-azure-iot-connector-for-fhir-preview"></a>FHIR (Önizleme) için Azure IoT Bağlayıcısı için ölçek kapasitesini yapılandırabilir miyim?
+
 FHıR için Azure IoT Bağlayıcısı genel önizleme sırasında ücretsiz olduğundan, ölçeklendirme kapasitesi sabittir ve sınırlı olur. FHıR yapılandırması için Azure IoT Bağlayıcısı 'nın, saniye başına 200 ileti hakkında bir verimlilik sağlaması beklenir. Bazı kaynak kapasitesi yapılandırması, genel kullanıma açık (GA) olarak kullanılabilir hale getirilir.
 
-### <a name="what-fhir-version-does-azure-iot-connector-for-fhir-preview-support"></a>FHıR (Önizleme) için Azure IoT Bağlayıcısı 'nın hangi FHıR sürümü desteği vardır?
-FHıR için Azure IoT Bağlayıcısı Şu anda yalnızca FHıR sürüm R4 desteklemektedir. Bu nedenle, bu özellik yalnızca FHıR için Azure API 'sinin R4 örneklerinde görünür ve Microsoft şu anda sürüm STU3 desteklemeyi planlıyor.
-
 ### <a name="why-cant-i-install-azure-iot-connector-for-fhir-preview-when-private-link-is-enabled-on-azure-api-for-fhir"></a>FHıR için Azure API üzerinde özel bağlantı etkinleştirildiğinde neden FHIR için Azure IoT bağlayıcısını (Önizleme) yükleyemiyorum?
+
 FHıR için Azure IoT Bağlayıcısı Şu anda özel bağlantı özelliğini desteklemiyor. Bu nedenle, FHıR için Azure API 'sinde özel bağlantınız etkinse, FHıR için Azure IoT bağlayıcısını yükleyemez ve tam tersi de geçerlidir. Bu sınırlamanın, FHıR için Azure IoT Bağlayıcısı genel kullanıma (GA) uygun olduğunda dışarıda olması beklenir.
-
-### <a name="whats-the-difference-between-the-open-source-iomt-fhir-connector-for-azure-and-azure-iot-connector-for-fhir-preview-feature-of-azure-api-for-fhir-service"></a>Azure için açık kaynaklı ıomt FHıR Bağlayıcısı ve FHıR hizmeti için Azure API 'sinin FHIR (Önizleme) özelliği için Azure IoT Bağlayıcısı arasındaki fark nedir?
-FHıR için Azure IoT Bağlayıcısı, Azure için açık kaynaklı ıomt FHıR bağlayıcısının barındırılan ve yönetilen bir sürümüdür. Yönetilen hizmette, Microsoft tüm bakım ve güncelleştirmeleri sağlar.
-
-Azure için IoMT FHıR bağlayıcısını çalıştırırken, temel alınan kaynaklara doğrudan erişiminiz vardır. Ancak, FI verilerini depoluyorsanız, sunucunun ve gerekli tüm uyumluluk işinin saklanması ve güncelleştirilmesinden de sorumlu olursunuz.
-
-Geliştirme açısından, her özellik Azure için açık kaynaklı ıomt FHıR bağlayıcısına dağıtılır. Açık kaynakta doğrulandıktan sonra, FHıR hizmeti için Azure API 'sinin FHıR özelliği için PaaS Azure IoT Bağlayıcısı ' nda kullanıma sunulacaktır. Açık kaynaklı ve PaaS 'deki yayın arasındaki süre, özelliğin karmaşıklığına ve diğer yol eşleme önceliklere bağlıdır.
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-Bu makalede, FHıR için Azure API 'SI hakkında sık sorulan sorulardan bazılarını okuyun. Azure için FHıR sunucusundaki desteklenen özellikler hakkında bilgi edinin:
- 
->[!div class="nextstepaction"]
->[Desteklenen FHıR özellikleri](fhir-features-supported.md)
-
-* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
-
-FHIR, HL7’nin kayıtlı ticari markasıdır ve HL7’nin izniyle kullanılır.

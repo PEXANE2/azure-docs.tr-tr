@@ -8,15 +8,15 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2cee60a71f6f19e09194dc689f95999bb11faad3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca84cb6cdd6b47976eadbc5298701a46fe677426
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086475"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547835"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketi 'nde HDInsight uygulaması yayımlama
-Bir Azure HDInsight uygulamasını Linux tabanlı HDInsight kümesine yükleyebilirsiniz. Bu makalede, Azure Marketi 'nde bir HDInsight uygulaması yayımlamayı öğrenin. Azure Marketi 'nde yayımlama hakkında genel bilgi için bkz. [Azure Marketi 'nde teklif yayımlama](../marketplace/marketplace-publishers-guide.md).
+Bir Azure HDInsight uygulamasını Linux tabanlı HDInsight kümesine yükleyebilirsiniz. Bu makalede, Azure Marketi 'nde bir HDInsight uygulaması yayımlamayı öğrenin. Azure Marketi 'nde yayımlama hakkında genel bilgi için bkz. [Azure Marketi 'nde teklif yayımlama](../marketplace/overview.md).
 
 HDInsight uygulamaları *kendi lisansını getir (KLG)* modelini kullanır. Bir KLG senaryosunda, uygulamanın uygulama kullanıcılarına lisanslanması bir uygulama sağlayıcısı sorumludur. Uygulama kullanıcıları yalnızca kendi oluşturdukları, HDInsight kümesi ve kümenin VM 'Leri ve düğümleri gibi Azure kaynakları için ücretlendirilir. Şu anda, uygulamanın kendisi için faturalandırma Azure 'da gerçekleşmiyor.
 
@@ -28,7 +28,7 @@ Daha fazla bilgi için bkz. HDInsight uygulamasıyla ilgili bu makaleler:
 ## <a name="prerequisites"></a>Önkoşullar
 Özel uygulamanızı Market 'te göndermek için öncelikle [özel uygulamanızı oluşturun ve test](hdinsight-apps-install-custom-applications.md)edin.
 
-Geliştirici hesabınızı da kaydetmeniz gerekir. Daha fazla bilgi için bkz. [Azure Marketi 'nde teklif yayımlama](../marketplace/marketplace-publishers-guide.md) ve [bir Microsoft Geliştirici hesabı oluşturma](../marketplace/marketplace-publishers-guide.md).
+Geliştirici hesabınızı da kaydetmeniz gerekir. Daha fazla bilgi için bkz. [Azure Marketi 'nde teklif yayımlama](../marketplace/overview.md) ve [bir Microsoft Geliştirici hesabı oluşturma](../marketplace/overview.md).
 
 ## <a name="define-the-application"></a>Uygulamayı tanımlama
 Market 'te uygulamaları yayımlamayla ilgili iki adım vardır. İlk olarak, dosyasında bir *createUiDef.js* tanımlayın. Dosyadaki createUiDef.js, uygulamanızın hangi kümelerle uyumlu olduğunu gösterir. Ardından, şablonu Azure portal yayımlayın. Dosyadaki bir örnek createUiDef.jsaşağıda verilmiştir:
@@ -63,7 +63,7 @@ Bir uygulama bir kümeye yüklendiğinde (mevcut bir kümede veya yeni bir küme
   > * Okunabilirlik için kısa çizgi.
   > * Parametre olarak uygulama adına sahip benzersiz bir dize işlevi.
   > 
-  > Kalıcı betik eylem listesinde, yukarıdaki örnek, **ton-Install-v0-4wkahss55hlas**olarak görüntülenir. Bkz. [Örnek BIR JSON yükü](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+  > Kalıcı betik eylem listesinde, yukarıdaki örnek, **ton-Install-v0-4wkahss55hlas** olarak görüntülenir. Bkz. [Örnek BIR JSON yükü](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
   > 
 
 Yükleme betiği aşağıdaki özelliklere sahip olmalıdır:
@@ -87,14 +87,14 @@ HDInsight uygulamanızı yüklemek için gereken tüm dosyaları içeren bir. zi
 HDInsight uygulaması yayımlamak için:
 
 1. [Azure yayımlaması](https://publish.windowsazure.com/)' nda oturum açın.
-2. Sol taraftaki menüden **Çözüm şablonları**' nı seçin.
-3. Bir başlık girin ve ardından **yeni çözüm şablonu oluştur**' u seçin.
-4. Kuruluşunuzda henüz kaydolmadıysanız **Geliştirme Merkezi hesabı oluştur ' u seçin ve Azure programına katın**.  Daha fazla bilgi için bkz. [Microsoft Geliştirici hesabı oluşturma](../marketplace/marketplace-publishers-guide.md).
-5. Başlamak **için bazı topolojiler tanımla**' yı seçin. Bir çözüm şablonu, tüm Topolojilerine bir "üst" öğesidir. Tek bir teklifte veya çözüm şablonunda birden fazla topoloji tanımlayabilirsiniz. Bir teklif hazırlama için gönderildiğinde, tüm topolojilerle gönderilir. 
+2. Sol taraftaki menüden **Çözüm şablonları** ' nı seçin.
+3. Bir başlık girin ve ardından **yeni çözüm şablonu oluştur** ' u seçin.
+4. Kuruluşunuzda henüz kaydolmadıysanız **Geliştirme Merkezi hesabı oluştur ' u seçin ve Azure programına katın** .  Daha fazla bilgi için bkz. [Microsoft Geliştirici hesabı oluşturma](../marketplace/overview.md).
+5. Başlamak **için bazı topolojiler tanımla** ' yı seçin. Bir çözüm şablonu, tüm Topolojilerine bir "üst" öğesidir. Tek bir teklifte veya çözüm şablonunda birden fazla topoloji tanımlayabilirsiniz. Bir teklif hazırlama için gönderildiğinde, tüm topolojilerle gönderilir. 
 6. Bir topoloji adı girin ve ardından öğesini seçin **+** .
 7. Yeni bir sürüm girin ve ardından öğesini seçin **+** .
 8. Uygulamayı paketlediğiniz sırada oluşturduğunuz. zip dosyasını karşıya yükleyin.  
-9. **Sertifika iste**' yi seçin. Microsoft sertifika ekibi, dosyaları inceler ve topolojiyi sertifikalandırın.
+9. **Sertifika iste** ' yi seçin. Microsoft sertifika ekibi, dosyaları inceler ve topolojiyi sertifikalandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Kendi kümelerinizde [HDInsight uygulamaları yüklemeyi](hdinsight-apps-install-applications.md) öğrenin.
@@ -102,4 +102,3 @@ HDInsight uygulaması yayımlamak için:
 * [Linux tabanlı HDInsight kümelerini özelleştirmek](hdinsight-hadoop-customize-cluster-linux.md) ve daha fazla uygulama eklemek Için betik eylemini nasıl kullanacağınızı öğrenin. 
 * [HDInsight 'ta Azure Resource Manager şablonları kullanarak Linux tabanlı Apache Hadoop kümeleri oluşturmayı](hdinsight-hadoop-create-linux-clusters-arm-templates.md)öğrenin.
 * HDInsight 'ta HDInsight kümelerine erişmek, HDInsight uygulamalarını test etmek ve HDInsight uygulamalarını barındırmak için [boş bir kenar düğümünü kullanmayı](hdinsight-apps-use-edge-node.md) öğrenin.
-

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6dc002b0ed9e68ea15eaa58c226249837c7df32d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8a4b6998d1471a79dd789ed6528e22b07f2015c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85830868"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540984"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>App Service Ortamınızı zorlamalı tünel ile yapılandırma
 
@@ -73,7 +73,7 @@ Azure SQL ve Azure Depolama’ya gidenler dışında, ASE’nizden çıkan tüm 
 
 2. ASE alt ağınız ile Azure SQL ve Azure Depolama ile birlikte Hizmet Uç Noktalarını etkinleştirin.  Bu adım tamamlandıktan sonra zorlamalı tünel ile VNet’inizi yapılandırabilirsiniz.
 
-Tüm şirket içi trafiği yönlendirmek için önceden yapılandırılmış bir sanal ağ üzerinde ASE’nizi oluşturmak için, kaynak yöneticisi şablonunu kullanarak ASE’nizi oluşturmanız gerekir.  Önceden mevcut olan bir alt ağ içinde portal ile ASE oluşturulması mümkün değildir.  Şirket içi giden trafiği yönlendirmek için önceden yapılandırılmış bir VNet’e ASE’nizi dağıtırken, önceden mevcut olan bir alt ağ belirtmenize olanak sağlayan bir kaynak yöneticisi şablonu kullanarak ASE’nizi oluşturmanız gerekir. Bir şablon ile ATıCı dağıtma hakkında ayrıntılı bilgi için, [şablon kullanarak App Service ortamı oluşturma][template]makalesini okuyun.
+Bir şablon ile ATıCı dağıtma hakkında ayrıntılı bilgi için, [şablon kullanarak App Service ortamı oluşturma][template]makalesini okuyun.
 
 Hizmet Uç Noktaları, çok kiracılı hizmetlere erişimi bir dizi Azure sanal ağı ve alt ağı ile kısıtlamanızı sağlar. [Sanal Ağ Hizmet Uç Noktaları][serviceendpoints] belgelerinde Hizmet Uç Noktaları hakkında daha fazla bilgi edinebilirsiniz. 
 
@@ -95,7 +95,7 @@ Azure Depolama’ya gidenler dışında, ASE’nizden çıkan tüm giden trafiğ
 
 3. App Service Ortamınızdan İnternet’e giden tüm trafik için kullanılacak adresleri alın. Şirket içi trafiği yönlendiriyorsanız bu adresler NAT veya ağ geçidi IP’lerinizdir. App Service Ortamı giden trafiğini bir NVA üzerinden yönlendirmek istiyorsanız, çıkış adresi NVA’nın genel IP’sidir.
 
-4. _Mevcut bir App Service ortamı çıkış adreslerini ayarlamak için:_ Resources.azure.com adresine gidin ve abonelik/ \<subscription id> /ResourceGroups//Providers/Microsoft.Web/hostingenvironments/menüsüne gidin adresine gidin \<ase resource group> \<ase name> . Bundan sonra App Service Ortamınızı tanımlayan JSON dosyasını görebilirsiniz. Üst kısımda **read/write** ifadesinin gösterildiğinden emin olun. **Düzenle**’yi seçin. Ekranı en alta kadar kaydırın. **null** olan **userWhitelistedIpRanges** değerini aşağıdakine benzer bir değerle değiştirin. Çıkış adres aralığı olarak ayarlamak istediğiniz adresleri kullanın. 
+4. _Mevcut bir App Service ortamı çıkış adreslerini ayarlamak için:_ Resources.azure.com adresine gidin ve abonelik/ \<subscription id> /ResourceGroups//Providers/Microsoft.Web/hostingenvironments/menüsüne gidin adresine gidin \<ase resource group> \<ase name> . Bundan sonra App Service Ortamınızı tanımlayan JSON dosyasını görebilirsiniz. Üst kısımda **read/write** ifadesinin gösterildiğinden emin olun. **Düzenle** ’yi seçin. Ekranı en alta kadar kaydırın. **null** olan **userWhitelistedIpRanges** değerini aşağıdakine benzer bir değerle değiştirin. Çıkış adres aralığı olarak ayarlamak istediğiniz adresleri kullanın. 
 
     ```json
     "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"]
@@ -103,7 +103,7 @@ Azure Depolama’ya gidenler dışında, ASE’nizden çıkan tüm giden trafiğ
 
    Üst kısımdaki **PUT** öğesini seçin. Bu seçenek, App Service Ortamınızda bir ölçeklendirme işlemi başlatır ve güvenlik duvarını ayarlar.
 
-_Çıkış adresleri ile ASE’nizi oluşturmak için_: [Bir şablon ile App Service Ortamı oluşturma][template] bölümündeki yönergeleri izleyin ve uygun şablonu seçin.  "Özellikler" bloğunda değil, azuredeploy.json dosyasındaki "kaynaklar" bölümünü düzenleyin ve **userWhitelistedIpRanges** için değerlerinizi içeren bir satır ekleyin.
+_Çıkış adresleri ile ASE’nizi oluşturmak için_ : [Bir şablon ile App Service Ortamı oluşturma][template] bölümündeki yönergeleri izleyin ve uygun şablonu seçin.  "Özellikler" bloğunda değil, azuredeploy.json dosyasındaki "kaynaklar" bölümünü düzenleyin ve **userWhitelistedIpRanges** için değerlerinizi içeren bir satır ekleyin.
 
 ```json
 "resources": [

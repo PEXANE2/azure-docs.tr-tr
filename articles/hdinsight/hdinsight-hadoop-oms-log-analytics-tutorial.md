@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 5524c7625678d3bacc5fdbe3c295d8392da2280f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 775e2fad573832dd29fc45985c6d6bd0a50fdf3c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491011"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546101"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure İzleyici günlüklerini kullanarak HDInsight kümelerini izleme
 
 HDInsight 'ta Hadoop kümesi işlemlerini izlemek için Azure Izleyici günlüklerini nasıl etkinleştireceğinizi öğrenin. Ve bir HDInsight izleme çözümü ekleme.
 
-[Azure izleyici günlükleri](../log-analytics/log-analytics-overview.md) , bulutunuzu ve şirket içi ortamlarınızı Izleyen bir Azure izleyici hizmetidir. İzleme, kullanılabilirlik ve performansının bakımını sağlar. Bulutta, şirket içi ortamlarınızdaki ve diğer izleme araçlarından kaynaklar tarafından oluşturulan verileri toplar. Veriler, birden çok kaynak genelinde analiz sağlamak için kullanılır.
+[Azure izleyici günlükleri](../azure-monitor/log-query/log-query-overview.md) , bulutunuzu ve şirket içi ortamlarınızı Izleyen bir Azure izleyici hizmetidir. İzleme, kullanılabilirlik ve performansının bakımını sağlar. Bulutta, şirket içi ortamlarınızdaki ve diğer izleme araçlarından kaynaklar tarafından oluşturulan verileri toplar. Veriler, birden çok kaynak genelinde analiz sağlamak için kullanılır.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -40,7 +40,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
   HDInsight kümesi oluşturma yönergeleri için bkz. [Azure HDInsight kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
 
-* PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/)gerekecektir. En son sürüme sahip olduğunuzdan emin olun. Gerekirse, öğesini çalıştırın `Update-Module -Name Az` .
+* PowerShell kullanıyorsanız [az Module](/powershell/azure/)gerekecektir. En son sürüme sahip olduğunuzdan emin olun. Gerekirse, öğesini çalıştırın `Update-Module -Name Az` .
 
 * Azure CLı 'yi kullanmak istiyorsanız ve henüz yüklemediyseniz, bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli).
 
@@ -53,19 +53,19 @@ Bu bölümde, var olan bir HDInsight Hadoop kümesini işleri izlemek için bir 
 
 1. [Azure Portal](https://portal.azure.com/), kümenizi seçin. Küme yeni bir portal sayfasında açılır.
 
-1. Soldan, **izleme**altında **Azure izleyici**' yi seçin.
+1. Soldan, **izleme** altında **Azure izleyici** ' yi seçin.
 
-1. Ana görünümden **Azure Izleyici tümleştirmesi**altında **Etkinleştir**' i seçin.
+1. Ana görünümden **Azure Izleyici tümleştirmesi** altında **Etkinleştir** ' i seçin.
 
 1. **Çalışma alanı seç** aşağı açılan listesinden, mevcut bir Log Analytics çalışma alanını seçin.
 
-1. **Kaydet**’i seçin.  Ayarın kaydedilmesi birkaç dakika sürer.
+1. **Kaydet** ’i seçin.  Ayarın kaydedilmesi birkaç dakika sürer.
 
     ![HDInsight kümeleri için izlemeyi etkinleştir](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "HDInsight kümeleri için izlemeyi etkinleştir")
 
 ## <a name="enable-azure-monitor-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Izleyicisini etkinleştirme
 
-Azure PowerShell az Module [Enable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) cmdlet 'Ini kullanarak Azure izleyici günlüklerini etkinleştirebilirsiniz.
+Azure PowerShell az Module [Enable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) cmdlet 'Ini kullanarak Azure izleyici günlüklerini etkinleştirebilirsiniz.
 
 ```powershell
 # Enter user information
@@ -97,7 +97,7 @@ Get-AzHDInsightMonitoring `
     -Name $cluster
 ```
 
-Devre dışı bırakmak için [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) cmdlet 'ini kullanın:
+Devre dışı bırakmak için [Disable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) cmdlet 'ini kullanın:
 
 ```powershell
 Disable-AzHDInsightMonitoring -Name "<your-cluster>"
@@ -128,7 +128,7 @@ az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>HDInsight kümesi yönetim çözümlerini yükler
 
-HDInsight, Azure Izleyici günlükleri için ekleyebileceğiniz kümeye özgü yönetim çözümleri sağlar. [Yönetim çözümleri](../log-analytics/log-analytics-add-solutions.md) , ek veri ve analiz araçları sağlayarak Azure izleyici günlüklerine işlevsellik ekler. Bu çözümler, HDInsight kümelerinizdeki önemli performans ölçümlerini toplar. Ve ölçümleri aramak için araçlar sağlar. Bu çözümler, HDInsight 'ta desteklenen çoğu küme türü için görsel öğeler ve panolar de sağlar. Çözümle topladığınız ölçümleri kullanarak, özel izleme kuralları ve uyarılar oluşturabilirsiniz.
+HDInsight, Azure Izleyici günlükleri için ekleyebileceğiniz kümeye özgü yönetim çözümleri sağlar. [Yönetim çözümleri](../azure-monitor/insights/solutions.md) , ek veri ve analiz araçları sağlayarak Azure izleyici günlüklerine işlevsellik ekler. Bu çözümler, HDInsight kümelerinizdeki önemli performans ölçümlerini toplar. Ve ölçümleri aramak için araçlar sağlar. Bu çözümler, HDInsight 'ta desteklenen çoğu küme türü için görsel öğeler ve panolar de sağlar. Çözümle topladığınız ölçümleri kullanarak, özel izleme kuralları ve uyarılar oluşturabilirsiniz.
 
 Kullanılabilir HDInsight çözümleri:
 
@@ -139,7 +139,7 @@ Kullanılabilir HDInsight çözümleri:
 * HDInsight Spark Izleme
 * HDInsight fırtınası Izleme
 
-Yönetim çözümü yönergeleri için bkz. [Azure 'Da yönetim çözümleri](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Denemek için bir HDInsight Hadoop Izleme çözümü yüklemeyi deneyin. İşlem tamamlandığında **Özet**altında listelenmiş bir **HDInsightHadoop** kutucuğu görürsünüz. **HDInsightHadoop** kutucuğunu seçin. HDInsightHadoop çözümü şöyle görünür:
+Yönetim çözümü yönergeleri için bkz. [Azure 'Da yönetim çözümleri](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Denemek için bir HDInsight Hadoop Izleme çözümü yüklemeyi deneyin. İşlem tamamlandığında **Özet** altında listelenmiş bir **HDInsightHadoop** kutucuğu görürsünüz. **HDInsightHadoop** kutucuğunu seçin. HDInsightHadoop çözümü şöyle görünür:
 
 ![HDInsight izleme çözüm görünümü](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
@@ -147,7 +147,7 @@ Küme yeni bir küme olduğundan, rapor hiçbir etkinliği göstermez.
 
 ## <a name="configuring-performance-counters"></a>Performans sayaçlarını yapılandırma
 
-Azure izleyici, kümenizdeki düğümlerin performans ölçümlerini toplamayı ve çözümlemeyi destekler. Daha fazla bilgi için bkz. [Azure izleyici 'de Linux performansı veri kaynakları](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters).
+Azure izleyici, kümenizdeki düğümlerin performans ölçümlerini toplamayı ve çözümlemeyi destekler. Daha fazla bilgi için bkz. [Azure izleyici 'de Linux performansı veri kaynakları](../azure-monitor/platform/data-sources-performance-counters.md#linux-performance-counters).
 
 ## <a name="cluster-auditing"></a>Küme denetimi
 

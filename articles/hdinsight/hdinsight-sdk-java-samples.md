@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/29/2019
-ms.openlocfilehash: 2698e88517642460d756ca7c57031a8f1912358f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c7c89706d749151b5a59667282eb6675fd18dc8c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490943"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535374"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Java örnekleri
 
@@ -32,7 +32,7 @@ Bu makalede aşağıdakiler sunulmaktadır:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Java için Azure HDInsight SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
+[Java için Azure HDInsight SDK](/java/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>Küme yönetimi-oluşturma
 
@@ -45,4 +45,4 @@ Bu makalede aşağıdakiler sunulmaktadır:
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Bu ek SDK işlevselliği için kod parçacıkları, [Java Için HDıNSIGHT SDK başvuru belgelerinde](https://docs.microsoft.com/java/api/overview/azure/hdinsight)bulunabilir.
+Bu ek SDK işlevselliği için kod parçacıkları, [Java Için HDıNSIGHT SDK başvuru belgelerinde](/java/api/overview/azure/hdinsight)bulunabilir.

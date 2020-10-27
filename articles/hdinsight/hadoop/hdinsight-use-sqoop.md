@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c09a910ea5f6ac5c66a94c73bda49d1f65630708
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076887"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545234"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight'ta Hadoop ile Apache Sqoop'u kullanma
 
@@ -99,7 +99,7 @@ Küme, SQL veritabanı ve diğer nesneler, Azure portal aracılığıyla Azure R
 
 3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum '** u seçin.
 
-4. **Satın al**'ı seçin. Şablon dağıtımı için dağıtım gönderme başlıklı yeni bir kutucuk görürsünüz. Kümenin ve SQL Database’in oluşturulması yaklaşık 20 dakika sürer.
+4. **Satın al** 'ı seçin. Şablon dağıtımı için dağıtım gönderme başlıklı yeni bir kutucuk görürsünüz. Kümenin ve SQL Database’in oluşturulması yaklaşık 20 dakika sürer.
 
 ## <a name="run-sqoop-jobs"></a>Sqoop işlerini Çalıştır
 
@@ -120,6 +120,6 @@ HDInsight, çeşitli yöntemler kullanarak Sqoop işlerini çalıştırabilir. S
 
 Şimdi Sqoop 'yi nasıl kullanacağınızı öğrendiniz. Daha fazla bilgi edinmek için şu makalelere bakın:
 
-* [HDInsight ile Apache Hive kullanma](../hdinsight-use-hive.md)
+* [HDInsight ile Apache Hive kullanma](./hdinsight-use-hive.md)
 * [HDInsight 'a veri yükleme](../hdinsight-upload-data.md): HDInsight/Azure Blob depolamaya veri yüklemek için diğer yöntemleri bulun.
 * [HDInsight üzerinde Apache Hadoop ile SQL Veritabanı arasında veri içeri ve dışarı aktarma işlemleri için Apache Sqoop'u kullanma](./apache-hadoop-use-sqoop-mac-linux.md)

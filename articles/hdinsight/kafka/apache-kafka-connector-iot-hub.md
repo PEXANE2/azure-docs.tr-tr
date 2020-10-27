@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: b4f390e6d362895d58be0e8695e72d058a021b34
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c4efb8b4835b7dc828caa49eaf6013a2f58bb081
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485554"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534558"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Azure ile HDInsight üzerinde Apache Kafka kullanın IoT Hub
 
@@ -37,7 +37,7 @@ Connect API 'SI hakkında daha fazla bilgi için bkz [https://kafka.apache.org/d
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Azure IoT Hub ve cihaz. Bu makalede, [Connect Raspberry PI online simülatörü IoT Hub Azure 'a](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started)kullanmayı düşünün.
+* Azure IoT Hub ve cihaz. Bu makalede, [Connect Raspberry PI online simülatörü IoT Hub Azure 'a](../../iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)kullanmayı düşünün.
 
 * [Scala derleme aracı](https://www.scala-sbt.org/).
 
@@ -123,9 +123,9 @@ SSH bağlantınızdan kenar düğümüne, bağlayıcıyı tek başına modda ça
     |`bootstrap.servers=localhost:9092`|Değeri, `localhost:9092` önceki adımdaki aracı konaklarıyla değiştirin|Kafka aracılarını bulmak için kenar düğümü için tek başına yapılandırmayı yapılandırır.|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|Bu değişiklik, Kafka ile birlikte sunulan konsol üreticisi 'ni kullanarak test etmenizi sağlar. Diğer üreticileri ve tüketiciler için farklı dönüştürücülerin olması gerekebilir. Diğer dönüştürücü değerlerini kullanma hakkında daha fazla bilgi için bkz [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) ..|
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Yukarıdaki gibi.|
-    |Yok|`consumer.max.poll.records=10`|Dosyanın sonuna ekleyin. Bu değişiklik, havuz bağlayıcısında aynı anda 10 kayıt arasında sınırlama yaparak zaman aşımlarını önlemektir. Daha fazla bilgi için bkz. [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
+    |YOK|`consumer.max.poll.records=10`|Dosyanın sonuna ekleyin. Bu değişiklik, havuz bağlayıcısında aynı anda 10 kayıt arasında sınırlama yaparak zaman aşımlarını önlemektir. Daha fazla bilgi için bkz. [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
 
-1. Dosyayı kaydetmek için __CTRL + X__, __Y__kullanın ve ardından __girin__.
+1. Dosyayı kaydetmek için __CTRL + X__ , __Y__ kullanın ve ardından __girin__ .
 
 1. Bağlayıcı tarafından kullanılan konuları oluşturmak için aşağıdaki komutları kullanın:
 
@@ -149,11 +149,11 @@ Bağlayıcı tarafından kullanılan IoT Hub bilgilerini almak için aşağıdak
 
 1. IoT Hub 'ınız için Event hub ile uyumlu uç nokta ve Olay Hub 'ı ile uyumlu uç nokta adını alın. Bu bilgileri almak için aşağıdaki yöntemlerden birini kullanın:
 
-   * __ [Azure Portal](https://portal.azure.com/)__, aşağıdaki adımları kullanın:
+   * __[Azure Portal](https://portal.azure.com/)__ , aşağıdaki adımları kullanın:
 
-     1. IoT Hub gidin ve __uç noktalar__' ı seçin.
-     2. __Yerleşik uç noktalarda__ __Olaylar__' ı seçin.
-     3. __Özelliklerden__aşağıdaki alanların değerini kopyalayın:
+     1. IoT Hub gidin ve __uç noktalar__ ' ı seçin.
+     2. __Yerleşik uç noktalarda__ __Olaylar__ ' ı seçin.
+     3. __Özelliklerden__ aşağıdaki alanların değerini kopyalayın:
 
          * __Olay Hub 'ı ile uyumlu ad__
          * __Olay Hub 'ı ile uyumlu uç nokta__
@@ -162,7 +162,7 @@ Bağlayıcı tarafından kullanılan IoT Hub bilgilerini almak için aşağıdak
         > [!IMPORTANT]  
         > Portaldaki uç nokta değeri, bu örnekte gerekli olmayan ek metin içerebilir. Bu düzenle eşleşen metni ayıklayın `sb://<randomnamespace>.servicebus.windows.net/` .
 
-   * __ [Azure CLI](/cli/azure/get-started-with-azure-cli)'dan__aşağıdaki komutu kullanın:
+   * __[Azure CLI](/cli/azure/get-started-with-azure-cli)'dan__ aşağıdaki komutu kullanın:
 
        ```azurecli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
@@ -176,15 +176,15 @@ Bağlayıcı tarafından kullanılan IoT Hub bilgilerini almak için aşağıdak
        "Partitions": 2
        ```
 
-2. __Paylaşılan erişim ilkesini__ ve __anahtarı__alın. Bu örnekte, __hizmet__ anahtarını kullanın. Bu bilgileri almak için aşağıdaki yöntemlerden birini kullanın:
+2. __Paylaşılan erişim ilkesini__ ve __anahtarı__ alın. Bu örnekte, __hizmet__ anahtarını kullanın. Bu bilgileri almak için aşağıdaki yöntemlerden birini kullanın:
 
-    * __ [Azure Portal](https://portal.azure.com/)__, aşağıdaki adımları kullanın:
+    * __[Azure Portal](https://portal.azure.com/)__ , aşağıdaki adımları kullanın:
 
-        1. __Paylaşılan erişim ilkeleri__' ni seçin ve ardından __hizmet__' i seçin.
+        1. __Paylaşılan erişim ilkeleri__ ' ni seçin ve ardından __hizmet__ ' i seçin.
         2. __Birincil anahtar__ değerini kopyalayın.
         3. __Bağlantı dizesini kopyalayın--birincil anahtar__ değeri.
 
-    * __ [Azure CLI](/cli/azure/get-started-with-azure-cli)'dan__aşağıdaki komutu kullanın:
+    * __[Azure CLI](/cli/azure/get-started-with-azure-cli)'dan__ aşağıdaki komutu kullanın:
 
         1. Birincil anahtar değerini almak için aşağıdaki komutu kullanın:
 
@@ -233,7 +233,7 @@ Kaynağı IoT Hub çalışacak şekilde yapılandırmak için, Edge düğümüne
 
     Örnek bir yapılandırma için bkz. [Azure Için Kafka Connect Source Connector IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md).
 
-1. Değişiklikleri kaydetmek için __CTRL + X__, __Y__ve __ENTER__tuşlarını kullanın.
+1. Değişiklikleri kaydetmek için __CTRL + X__ , __Y__ ve __ENTER__ tuşlarını kullanın.
 
 Bağlayıcı kaynağını yapılandırma hakkında daha fazla bilgi için bkz [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md) ..
 
@@ -262,7 +262,7 @@ Havuz bağlantısını IoT Hub ile çalışacak şekilde yapılandırmak için, 
 
     Örnek bir yapılandırma için bkz. [Azure IoT Hub Için Kafka Connect Sink Connector](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
 
-1. Değişiklikleri kaydetmek için __CTRL + X__, __Y__ve __ENTER__tuşlarını kullanın.
+1. Değişiklikleri kaydetmek için __CTRL + X__ , __Y__ ve __ENTER__ tuşlarını kullanın.
 
 Bağlayıcı havuzunu yapılandırma hakkında daha fazla bilgi için bkz [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) ..
 
