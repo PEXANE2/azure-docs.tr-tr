@@ -30,7 +30,7 @@ Azure AD ile Reward ağ geçidini tümleştirmek aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini, Reward Gateway ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -61,13 +61,13 @@ Reward Gateway 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, galer
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **Reward Gateway**yazın, sonuç panelinden **yeniden ağ geçidi** ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna, **Reward Gateway** yazın, sonuç panelinden **yeniden ağ geçidi** ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde ağ geçidini yeniden dengeleme](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Reward ağ geçidiyle yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak Reward ağ geçidiyle yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı, Reward Gateway ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açmayı, Reward Gateway ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **Reward Gateway** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **Reward Gateway** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -140,7 +140,7 @@ Azure AD çoklu oturum açmayı, Reward Gateway ile yapılandırmak için aşağ
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -152,28 +152,28 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alan türü`brittasimon@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Reward Gateway 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **yeniden ağ geçidi**' ni seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **yeniden ağ geçidi** ' ni seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Reward Gateway**' i seçin.
+2. Uygulamalar listesinde, **Reward Gateway** ' i seçin.
 
     ![Uygulamalar listesinde Reward Gateway bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 

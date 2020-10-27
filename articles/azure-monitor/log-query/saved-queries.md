@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
-ms.openlocfilehash: 462358ab967d4ba26a265d7b5f401b995223815e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d712aab6dcb52f64af340b3110e475c8da2b10
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85959851"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542616"
 ---
 # <a name="saved-queries-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de kaydedilmiş sorgular Log Analytics
 
@@ -38,7 +38,7 @@ Bu davranış tüm Log Analytics kapsamları için tutarlıdır. İstediğiniz k
 
 ### <a name="example-query-dialog"></a>Örnek sorgu iletişim kutusu
 
-Log Analytics deneyimini ilk kez girdiğinizde, *örnek sorgular iletişim kutusu* otomatik olarak gösterilir.  Ayrıca, ekranın sağ üst köşesinde **örnek sorgular**' a tıklanarak da erişilebilir.
+Log Analytics deneyimini ilk kez girdiğinizde, *örnek sorgular iletişim kutusu* otomatik olarak gösterilir.  Ayrıca, ekranın sağ üst köşesinde **örnek sorgular** ' a tıklanarak da erişilebilir.
 
 ![Kutusuna](media/saved-queries/sidebar-2.png)
 
@@ -54,7 +54,7 @@ Her örnek sorgu bir kart tarafından temsil edilir. İhtiyaç duyduğunuz şeyi
 
 İletişim deneyiminin tüm işlevlerine, Log Analytics sol taraftaki kenar çubuğu 'ndaki sorgular bölmesinden erişilebilir. Sorgu açıklamasını ve ek işlevselliği almak için bir sorgu adının üzerine geldiğinizde.
 
-![Kutusuna](media/saved-queries/sidebar-3.png)
+![Sorgular bölmesini gösteren ekran görüntüsü.](media/saved-queries/sidebar-3.png)
 
 ## <a name="finding-and-filtering-queries"></a>Sorguları bulma ve filtreleme
 
@@ -80,9 +80,9 @@ Gruplandırma *ölçütü* açılır listesine tıklayarak sorguların grupland�
 İletişim kutusu gruplama şunları destekler:
 
 - **Kaynak türü** : Azure 'Da bir sanal makine gibi tanımlanan bir kaynaktır. Azure Izleyici günlüklerinin/Log Analytics tablolarının kaynak türüne tam eşlenmesinin [Azure Izleyici Tablo başvurusuna](/azure/azure-monitor/reference/tables/tables-resourcetype) bakın.  
-- **Category** : *güvenlik* veya *Denetim*gibi bir bilgi türü. Kategoriler, tablolar yan bölmesinde tanımlanan kategorilerle aynıdır. Kategorilerin tam listesi için bkz. [Azure Izleyici tablo başvurusu](/azure/azure-monitor/reference/tables/tables-category) .  
+- **Category** : *güvenlik* veya *Denetim* gibi bir bilgi türü. Kategoriler, tablolar yan bölmesinde tanımlanan kategorilerle aynıdır. Kategorilerin tam listesi için bkz. [Azure Izleyici tablo başvurusu](/azure/azure-monitor/reference/tables/tables-category) .  
 - **Çözüm** : sorgularla Ilişkili bir Azure izleyici çözümü
-- **Konu** : *etkinlik günlükleri* veya *uygulama günlükleri*gibi örnek sorgunun konusu. Konu özelliği, örnek sorgular için benzersizdir ve belirli kaynak türüne göre farklılık gösterebilir.
+- **Konu** : *etkinlik günlükleri* veya *uygulama günlükleri* gibi örnek sorgunun konusu. Konu özelliği, örnek sorgular için benzersizdir ve belirli kaynak türüne göre farklılık gösterebilir.
 
 Gruplandırma değerleri Ayrıca etkin bir içindekiler tablosu olarak davranır. Ekranın sol tarafındaki değerlerden birine tıkladığınızda sorgular görünümü ' ni tıklanan öğeye kaydırır.
 

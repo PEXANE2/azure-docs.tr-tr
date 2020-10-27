@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: bed196d1be101ffa75affc389d390ec0fa764b05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0e79e42c7c004638336ada23de663bbe74b7e48
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941027"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532654"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-esnek sunucu
 
@@ -28,7 +28,7 @@ Veritabanı yüksek kullanılabilirlik ile yapılandırıldıysa, birincil olara
 > [!IMPORTANT]
 >Durdurulmuş sunucularda yedeklemeler gerçekleştirilmez. Ancak, veritabanı 7 gün sonra otomatik olarak başlatıldığında veya Kullanıcı tarafından başlatıldıktan sonra yedeklemeler sürdürülür.
 
-Yedeklemeler yalnızca esnek sunucu içindeki geri yükleme işlemleri için kullanılabilir. Verileri esnek sunucuya dışarı veya dışarı aktarmak istiyorsanız, [döküm ve geri yükleme](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)   yöntemini kullanırsınız.
+Yedeklemeler yalnızca esnek sunucu içindeki geri yükleme işlemleri için kullanılabilir. Verileri esnek sunucuya dışarı veya dışarı aktarmak istiyorsanız, [döküm ve geri yükleme](../howto-migrate-using-dump-and-restore.md) yöntemini kullanırsınız.
 
 
 ### <a name="backup-retention"></a>Yedekleme dosyası saklama
@@ -40,9 +40,9 @@ Yedekleme bekletme süresi, kullanılabilir yedeklemeleri temel aldığı için 
 
 ### <a name="backup-storage-cost"></a>Yedekleme depolama maliyeti
 
-Esnek sunucu, sağlanan sunucu depolama alanınızı ek bir ücret ödemeden yedekleme depolama alanı olarak %100 ' e kadar sağlar. Kullanılan ek yedekleme depolama alanı aylık GB olarak ücretlendirilir. Örneğin, 250 GiB depolama alanı olan bir sunucu sağladıysanız, ek ücret ödemeden yedekleme depolama kapasitesi 250 GiB vardır. Günlük yedekleme kullanımı 25 GiB ise, en fazla 10 gün ücretsiz yedekleme depolama alanı olabilir. 250 GiB 'yi aşan yedekleme depolama tüketimi [fiyatlandırma modeline](https://azure.microsoft.com/pricing/details/postgresql/)göre ücretlendirilir.
+Esnek sunucu, sağlanan sunucu depolama alanınızı ek bir ücret ödemeden yedekleme depolama alanı olarak %100 ' e kadar sağlar. Kullanılan ek yedekleme depolama alanı aylık GB olarak ücretlendirilir. Örneğin, 250 GiB depolama alanı olan bir sunucu sağladıysanız, ek ücret ödemeden yedekleme depolama kapasitesi 250 GiB vardır. Günlük yedekleme kullanımı 25 GiB ise, en fazla 10 gün ücretsiz yedekleme depolama alanı olabilir. 250 GiB 'yi aşan yedekleme depolama tüketimi [fiyatlandırma modeline](https://azure.microsoft.com/pricing/details/postgresql/)göre ücretlendirilir.
 
- [Backup storage used](https://docs.microsoft.com/azure/postgresql/concepts-monitoring)   Bir sunucu tarafından tüketilen yedekleme depolama alanını izlemek Için Azure Portal kullanılan yedekleme depolama ölçüsünü kullanabilirsiniz. Kullanılan yedekleme depolama alanı ölçümü, sunucu için ayarlanan yedekleme saklama süresi temel alınarak saklanan tüm veritabanı yedeklemeleri ile günlük yedeklemeleri tarafından kullanılan depolama alanının toplamını temsil eder.  Sunucu üzerindeki yoğun işlem etkinliği yedekleme depolama alanı kullanımının toplam veritabanı boyutundan bağımsız olarak artmasına neden olabilir.
+Sunucu tarafından kullanılan yedekleme depolama alanını izlemek için Azure portaldaki [Kullanılan yedekleme depolama alanı](../concepts-monitoring.md) ölçümünü kullanabilirsiniz. Kullanılan yedekleme depolama alanı ölçümü, sunucu için ayarlanan yedekleme saklama süresi temel alınarak saklanan tüm veritabanı yedeklemeleri ile günlük yedeklemeleri tarafından kullanılan depolama alanının toplamını temsil eder.  Sunucu üzerindeki yoğun işlem etkinliği yedekleme depolama alanı kullanımının toplam veritabanı boyutundan bağımsız olarak artmasına neden olabilir.
 
 Yedekleme depolama maliyetini denetlemenin birincil yolu, uygun yedekleme saklama süresini ayarlayarak ve istediğiniz kurtarma hedeflerinizi karşılamak için doğru yedekleme artıklığı seçeneklerini belirleyerek yapılır.
 
@@ -71,15 +71,15 @@ Bir noktadan noktaya geri yükleme, birden çok senaryoda faydalıdır. Örneği
 
 En erken geri yükleme noktası ve özel geri yükleme noktası arasında seçim yapabilirsiniz.
 
--   **En erken geri yükleme noktası**: saklama döneminize bağlı olarak, geri yükleme için en erken zaman olur. En eski yedekleme zamanı otomatik olarak seçilir ve portalda görüntülenir. Bu, zaman içinde belirli bir testi incelemek veya bir test yapmak istiyorsanız kullanışlıdır.
+-   **En erken geri yükleme noktası** : saklama döneminize bağlı olarak, geri yükleme için en erken zaman olur. En eski yedekleme zamanı otomatik olarak seçilir ve portalda görüntülenir. Bu, zaman içinde belirli bir testi incelemek veya bir test yapmak istiyorsanız kullanışlıdır.
 
--   **Özel geri yükleme noktası**: Bu seçenek, bu esnek sunucu için tanımlanan Bekletme dönemi içinde herhangi bir noktayı seçmenizi sağlar. Varsayılan olarak, UTC olarak en son zaman otomatik seçilir ve test amaçlarınız için en son kaydedilen işleme geri yüklemek istiyorsanız yararlı olur. İsteğe bağlı olarak başka günler ve saat seçebilirsiniz. 
+-   **Özel geri yükleme noktası** : Bu seçenek, bu esnek sunucu için tanımlanan Bekletme dönemi içinde herhangi bir noktayı seçmenizi sağlar. Varsayılan olarak, UTC olarak en son zaman otomatik seçilir ve test amaçlarınız için en son kaydedilen işleme geri yüklemek istiyorsanız yararlı olur. İsteğe bağlı olarak başka günler ve saat seçebilirsiniz. 
 
 Kurtarılacak tahmini süre, veritabanı boyutu, işlem günlüklerinin hacmi, ağ bant genişliği ve aynı bölgedeki aynı bölgede Kurtarılan toplam veritabanı sayısı gibi çeşitli faktörlere bağlıdır. Genel kurtarma süresi genellikle birkaç dakikadan birkaç saate kadar sürer.
 
 
 > [!IMPORTANT]
-> Silinen sunucular **cannot**   geri yüklenemez. Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Sunucu kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)faydalanabilir.
+> Silinen sunucular **geri yüklenemez.** Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Sunucu kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](../../azure-resource-manager/management/lock-resources.md)faydalanabilir.
 
 ## <a name="perform-post-restore-tasks"></a>Geri yükleme sonrası görevleri gerçekleştirme
 
@@ -101,6 +101,5 @@ Veritabanını geri yükledikten sonra, kullanıcılarınızın ve uygulamaları
 ## <a name="next-steps"></a>Sonraki adımlar
 
 -   [İş sürekliliği](./concepts-business-continuity.md) hakkında bilgi edinin
--    [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin
+-   [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin
 -   [Nasıl geri](./how-to-restore-server-portal.md) yükleyeceğinizi öğrenin
-

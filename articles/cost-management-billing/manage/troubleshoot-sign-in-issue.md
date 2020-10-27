@@ -32,14 +32,14 @@ Bu kılavuz, Azure portalında veya Azure hesap merkezinde oturum açamama sorun
 - Farklı bir İnternet tarayıcısı kullanın.
 - Tarayıcınızda özel gözatma modunu kullanın:
 
-   - **Microsoft Edge:** **Ayarlar**’ı (profil resminizin yanındaki üç nokta) açın, **Yeni InPrivate pencere**’yi seçin ve [Azure portalına](https://portal.azure.com/) veya [Azure hesap merkezine](https://account.azure.com/Subscriptions) gidip burada oturum açın. 
+   - **Microsoft Edge:** **Ayarlar** ’ı (profil resminizin yanındaki üç nokta) açın, **Yeni InPrivate pencere** ’yi seçin ve [Azure portalına](https://portal.azure.com/) veya [Azure hesap merkezine](https://account.azure.com/Subscriptions) gidip burada oturum açın. 
    - **Chrome:** **Gizli** modu seçin.
-   - **Safari:** **Dosya**’yı ve sonra **Yeni Özel Pencere**’yi seçin.
+   - **Safari:** **Dosya** ’yı ve sonra **Yeni Özel Pencere** ’yi seçin.
 
 - Önbelleği temizleyin ve İnternet tanımlama bilgilerini silin:
 
-   - **Microsoft Edge:** **Ayarlar**’ı açıp **Gizlilik ve Hizmetler**’i seçin. **Gözatma Verilerini Temizle** bölümündeki adımları izleyin. **Gözatma geçmişi**, **İndirme geçmişi** ve **Önbelleğe alınan resimler ve dosyalar** onay kutularının işaretli olduğundan emin olun ve **Sil**’i seçin.
-   - **Chrome:** **Ayarlar**’ı ve sonra **Gizlilik ve Güvenlik** bölümünden **Gözatma verilerini temizle**’yi seçin.
+   - **Microsoft Edge:** **Ayarlar** ’ı açıp **Gizlilik ve Hizmetler** ’i seçin. **Gözatma Verilerini Temizle** bölümündeki adımları izleyin. **Gözatma geçmişi** , **İndirme geçmişi** ve **Önbelleğe alınan resimler ve dosyalar** onay kutularının işaretli olduğundan emin olun ve **Sil** ’i seçin.
+   - **Chrome:** **Ayarlar** ’ı ve sonra **Gizlilik ve Güvenlik** bölümünden **Gözatma verilerini temizle** ’yi seçin.
 
 ## <a name="you-are-automatically-signed-in-as-a-different-user"></a>Otomatik şekilde farklı kullanıcı olarak oturum açtınız
 
@@ -49,13 +49,13 @@ Sorunu çözmek için aşağıdaki yöntemlerden birini deneyin:
 
 - Önbelleği temizleyin ve İnternet tanımlama bilgilerini silin.
 
-   - **Microsoft Edge:** **Ayarlar**’ı açıp **Gizlilik ve Hizmetler**’i seçin. **Gözatma Verilerini Temizle** bölümündeki adımları izleyin. **Gözatma geçmişi**, **İndirme geçmişi**, **Tanımlama bilgileri** ve **Önbelleğe alınan resimler ve dosyalar** onay kutularının işaretli olduğundan emin olun ve **Sil**’i seçin.
-   - **Chrome:** **Ayarlar**’ı ve sonra **Gizlilik ve Güvenlik** bölümünden **Gözatma verilerini temizle**’yi seçin.
+   - **Microsoft Edge:** **Ayarlar** ’ı açıp **Gizlilik ve Hizmetler** ’i seçin. **Gözatma Verilerini Temizle** bölümündeki adımları izleyin. **Gözatma geçmişi** , **İndirme geçmişi** , **Tanımlama bilgileri** ve **Önbelleğe alınan resimler ve dosyalar** onay kutularının işaretli olduğundan emin olun ve **Sil** ’i seçin.
+   - **Chrome:** **Ayarlar** ’ı ve sonra **Gizlilik ve Güvenlik** bölümünden **Gözatma verilerini temizle** ’yi seçin.
 - Tarayıcı ayarlarınızı varsayılana sıfırlayın.
 - Tarayıcınızda özel gözatma modunu kullanın. 
-   - **Microsoft Edge:** **Ayarlar**’ı (profil resminizin yanındaki üç nokta) açın, **Yeni InPrivate pencere**’yi seçin ve [Azure portalına](https://portal.azure.com/) veya [Azure hesap merkezine](https://account.azure.com/Subscriptions) gidip burada oturum açın. 
+   - **Microsoft Edge:** **Ayarlar** ’ı (profil resminizin yanındaki üç nokta) açın, **Yeni InPrivate pencere** ’yi seçin ve [Azure portalına](https://portal.azure.com/) veya [Azure hesap merkezine](https://account.azure.com/Subscriptions) gidip burada oturum açın. 
    - **Chrome:** **Gizli** modu seçin.
-   - **Safari:** **Dosya**’yı ve sonra **Yeni Özel Pencere**’yi seçin.
+   - **Safari:** **Dosya** ’yı ve sonra **Yeni Özel Pencere** ’yi seçin.
 
 ## <a name="i-can-sign-in-but-i-see-the-error-no-subscriptions-found"></a>Oturum açabiliyorum, ancak “Abonelik bulunamadı” hatasını görüyorum
 
@@ -73,8 +73,8 @@ Bu sorunu düzeltmek için:
 Kullandığınız hesabın Hesap Yöneticisi olup olmadığını denetleyin. Hesap Yöneticisinin kim olduğunu doğrulamak için şu adımları izleyin:
 
 1.  [Azure portalındaki Abonelikler görünümünde](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) oturum açın.
-1.  Denetlemek istediğiniz aboneliği ve sonra **Ayarlar**’ı seçin.
-1.  **Özellikler**’i seçin. Aboneliğin hesap yöneticisi, **Hesap Yöneticisi** kutusunda görüntülenir.
+1.  Denetlemek istediğiniz aboneliği ve sonra **Ayarlar** ’ı seçin.
+1.  **Özellikler** ’i seçin. Aboneliğin hesap yöneticisi, **Hesap Yöneticisi** kutusunda görüntülenir.
 
 ## <a name="additional-help-resources"></a>Ek yardım kaynakları
 

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 6d4539e5dbc7182386a60317a9ee45a986ffd61f
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 99ea17dad4f99cdab3fb44b8031e60e6cf69879c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999945"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543160"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight KIMLIK Aracısı (Önizleme)
 
@@ -43,7 +43,7 @@ Bu diyagramda, istemci (yani, bir tarayıcı veya uygulama) önce OAuth belirtec
 
 Yalnızca temel kimlik doğrulamasını (yani, Kullanıcı adı ve parola) destekleyen birçok eski uygulama de olabilir. Bu senaryolarda, küme ağ geçitlerine bağlanmak için HTTP temel kimlik doğrulamasını kullanmaya devam edebilirsiniz. Bu kurulumda, ağ geçidi düğümlerinden doğrudan bir görüş satırı olmasını sağlamak için ağ geçidi düğümlerinden Active Directory Federasyon Hizmetleri (AD FS) (AD FS) uç noktasına ağ bağlantısı olduğundan emin olmanız gerekir.
 
-Aşağıdaki diyagramda, Federasyon kullanıcıları için temel kimlik doğrulama akışı gösterilmektedir. İlk olarak, ağ geçidi, [Ropc akışını](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)kullanarak kimlik doğrulamasını tamamlamaya çalışır. Azure AD ile eşitlenen Parola karması yoksa, AD FS uç noktasının keşfedilmesinden ve AD FS uç noktasına erişerek kimlik doğrulamasının tamamlanmasını geri döner.
+Aşağıdaki diyagramda, Federasyon kullanıcıları için temel kimlik doğrulama akışı gösterilmektedir. İlk olarak, ağ geçidi, [Ropc akışını](../../active-directory/develop/v2-oauth-ropc.md)kullanarak kimlik doğrulamasını tamamlamaya çalışır. Azure AD ile eşitlenen Parola karması yoksa, AD FS uç noktasının keşfedilmesinden ve AD FS uç noktasına erişerek kimlik doğrulamasının tamamlanmasını geri döner.
 
 :::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="HDInsight ID broker ile kimlik doğrulama akışını gösteren diyagram.":::
 
@@ -54,7 +54,7 @@ HDInsight ID Broker etkin bir Kurumsal Güvenlik Paketi kümesi oluşturmak içi
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kurumsal Güvenlik Paketi kümesi için temel oluşturma adımlarını izleyin. Daha fazla bilgi için bkz. [Kurumsal güvenlik paketi HDInsight kümesi oluşturma](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
-1. **HDıNSIGHT kimlik Broker 'ı etkinleştir**' i seçin.
+1. **HDıNSIGHT kimlik Broker 'ı etkinleştir** ' i seçin.
 
 HDInsight ID Broker özelliği kümeye bir ek VM ekler. Bu VM, HDInsight ID Broker düğümüdür ve kimlik doğrulamasını desteklemek için sunucu bileşenleri içerir. HDInsight ID Broker düğümü, Azure AD DS etki alanına katılmış etki alanıdır.
 
@@ -103,7 +103,7 @@ HDInsight ID Broker özelliği kümeye bir ek VM ekler. Bu VM, HDInsight ID Brok
 
 ## <a name="tool-integration"></a>Araç tümleştirmesi
 
-HDInsight araçları, OAuth ile yerel olarak destek için güncelleştirilir. Kümelere modern OAuth tabanlı erişim için bu araçları kullanın. HDInsight [IntelliJ eklentisi](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) Scala gibi Java tabanlı uygulamalarda kullanılabilir. [Visual Studio Code Için Spark ve Hive araçları](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) , pyspark ve Hive işleri için kullanılabilir. Araçlar hem Batch hem de etkileşimli işleri destekler.
+HDInsight araçları, OAuth ile yerel olarak destek için güncelleştirilir. Kümelere modern OAuth tabanlı erişim için bu araçları kullanın. HDInsight [IntelliJ eklentisi](../spark/apache-spark-intellij-tool-plugin.md#integrate-with-hdinsight-identity-broker-hib) Scala gibi Java tabanlı uygulamalarda kullanılabilir. [Visual Studio Code Için Spark ve Hive araçları](../hdinsight-for-vscode.md) , pyspark ve Hive işleri için kullanılabilir. Araçlar hem Batch hem de etkileşimli işleri destekler.
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Azure AD DS Parola karması olmadan SSH erişimi
 
@@ -117,11 +117,11 @@ Etki alanına katılmış bir VM 'ye SSH eklemek veya komutu çalıştırmak iç
 
 Kuruluşunuz parola karmalarını Azure AD DS eşitlemiyor, en iyi uygulama olarak, Azure AD 'de yalnızca bulutta bulunan bir kullanıcı oluşturun. Ardından kümeyi oluştururken Küme Yöneticisi olarak atayın ve bunu yönetim amacıyla kullanın. VM 'ye SSH aracılığıyla kök erişimi almak için kullanabilirsiniz.
 
-Kimlik doğrulama sorunlarını gidermek için [bu kılavuza](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues)bakın.
+Kimlik doğrulama sorunlarını gidermek için [bu kılavuza](./domain-joined-authentication-issues.md)bakın.
 
 ## <a name="clients-using-oauth-to-connect-to-an-hdinsight-gateway-with-hdinsight-id-broker"></a>HDInsight ID broker ile bir HDInsight ağ geçidine bağlanmak için OAuth kullanan istemciler
 
-HDInsight ID Broker kurulumunda, ağ geçidine bağlanan özel uygulamalar ve istemciler, önce gerekli OAuth belirtecini almak üzere güncelleştirilebilen olabilir. Aşağıdaki bilgilerle belirteci almak için [Bu belgedeki](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) adımları izleyin:
+HDInsight ID Broker kurulumunda, ağ geçidine bağlanan özel uygulamalar ve istemciler, önce gerekli OAuth belirtecini almak üzere güncelleştirilebilen olabilir. Aşağıdaki bilgilerle belirteci almak için [Bu belgedeki](../../storage/common/storage-auth-aad-app.md) adımları izleyin:
 
 *   OAuth Kaynak URI 'si: `https://hib.azurehdinsight.net` 
 *   AppID: 7865c1d2-F040-46cc-875f-831a1ef6a28a

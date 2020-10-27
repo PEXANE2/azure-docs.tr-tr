@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 11/20/2019
-ms.openlocfilehash: 15a86fd191eefc5882150fb276228d18efd6ff5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e0c16ee7aa66847cc6f3f4618b8090b7ce86663
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323800"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533793"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>HDInsight 'ta Apache Hive Java UDF kullanma
 
@@ -22,7 +22,7 @@ Apache Hive ile birlikte çalışarak Java tabanlı kullanıcı tanımlı bir i�
 ## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
-* [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks)
+* [Java geliştirici seti (JDK) sürüm 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
 * Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu, Azure Storage için wasb://, Azure Data Lake Storage 2. için abfs://veya adl://için Azure Data Lake Storage 1. olacaktır. Azure depolama için güvenli aktarım etkinse URI olur `wasbs://` .  Ayrıca bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
 

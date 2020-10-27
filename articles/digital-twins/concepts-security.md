@@ -24,13 +24,13 @@ Azure dijital TWINS, bekleyen verilerin şifrelenmesini de destekler.
 
 Azure RBAC, [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) ile tümleştirme yoluyla Azure dijital TWINS 'e sağlanır.
 
-Bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir *güvenlik sorumlusu*için izin vermek üzere Azure RBAC kullanabilirsiniz. Güvenlik sorumlusu Azure AD tarafından doğrulanır ve döndürülen bir OAuth 2,0 belirteci alır. Bu belirteç, bir Azure dijital TWINS örneğine erişim isteği yetkilendirmek için kullanılabilir.
+Bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir *güvenlik sorumlusu* için izin vermek üzere Azure RBAC kullanabilirsiniz. Güvenlik sorumlusu Azure AD tarafından doğrulanır ve döndürülen bir OAuth 2,0 belirteci alır. Bu belirteç, bir Azure dijital TWINS örneğine erişim isteği yetkilendirmek için kullanılabilir.
 
 ### <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 
-Azure AD ile, erişim iki adımlı bir işlemdir. Bir güvenlik sorumlusu (bir Kullanıcı, Grup veya uygulama) Azure dijital TWINS 'e erişmeyi denediğinde, isteğin *kimliğinin doğrulanması* ve *yetkilendirilmiş*olması gerekir. 
+Azure AD ile, erişim iki adımlı bir işlemdir. Bir güvenlik sorumlusu (bir Kullanıcı, Grup veya uygulama) Azure dijital TWINS 'e erişmeyi denediğinde, isteğin *kimliğinin doğrulanması* ve *yetkilendirilmiş* olması gerekir. 
 
-1. İlk olarak, güvenlik sorumlusunun kimliği *doğrulanır*ve bir OAuth 2,0 belirteci döndürülür.
+1. İlk olarak, güvenlik sorumlusunun kimliği *doğrulanır* ve bir OAuth 2,0 belirteci döndürülür.
 2. Ardından, belirteç, belirtilen kaynağa erişimi *yetkilendirmek* Için Azure dijital TWINS hizmetine yapılan bir isteğin parçası olarak geçirilir.
 
 Kimlik doğrulama adımı, herhangi bir uygulama isteğinin çalışma zamanında bir OAuth 2,0 erişim belirteci içermesini gerektirir. Bir uygulama, [Azure işlevleri](../azure-functions/functions-overview.md) uygulaması gibi bir Azure varlığı içinde çalışıyorsa, kaynaklara erişmek için **yönetilen bir kimlik** kullanabilir. Sonraki bölümde Yönetilen kimlikler hakkında daha fazla bilgi edinin.
@@ -56,8 +56,8 @@ Azure, Azure dijital TWINS [veri düzlemi API 'lerine](how-to-use-apis-sdks.md#o
 
 >[!NOTE]
 > Bu roller yakın zamanda Önizlemedeki önceki adlarından yeniden adlandırıldı:
-> * *Azure dijital TWINS veri sahibi* , daha önce *Azure Digital TWINS sahibiydi (Önizleme)*.
-> * *Azure dijital TWINS veri okuyucu* daha önce *Azure Digital TWINS okuyucu (Önizleme)*.
+> * *Azure dijital TWINS veri sahibi* , daha önce *Azure Digital TWINS sahibiydi (Önizleme)* .
+> * *Azure dijital TWINS veri okuyucu* daha önce *Azure Digital TWINS okuyucu (Önizleme)* .
 
 Rolleri iki şekilde atayabilirsiniz:
 * Azure portal Azure dijital TWINS için erişim denetimi (ıAM) bölmesi aracılığıyla (bkz [*. Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma*](../role-based-access-control/role-assignments-portal.md))

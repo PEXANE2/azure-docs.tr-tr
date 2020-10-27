@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 58f807a5a036f14af9baede604debe9d577cdbf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4153b612b4b15883f28517d806acf6b340a94e49
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000694"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543058"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop on MapReduce streaming Ile C# kullanma
 
@@ -31,15 +31,15 @@ HDInsight kümeleri [mono kullanır ( https://mono-project.com) ](https://mono-p
 
 Bu belgede akış için kullanılan temel işlem aşağıdaki gibidir:
 
-1. Hadoop, STDIN 'de verileri eşleştiriciyle (Bu örnekteki*mapper.exe* ) geçirir.
+1. Hadoop, STDIN 'de verileri eşleştiriciyle (Bu örnekteki *mapper.exe* ) geçirir.
 2. Eşleyici, verileri işler ve STDOUT için sekmeyle ayrılmış anahtar/değer çiftlerini yayar.
-3. Çıktı, Hadoop tarafından okunarak Reducer (Bu örnekteki*reducer.exe* ) STDIN üzerinde geçirilir.
+3. Çıktı, Hadoop tarafından okunarak Reducer (Bu örnekteki *reducer.exe* ) STDIN üzerinde geçirilir.
 4. Reducer, sekmeyle ayrılmış anahtar/değer çiftlerini okur, verileri işler ve sonra sonucu STDOUT üzerinde sekmeyle ayrılmış anahtar/değer çiftleri olarak yayar.
 5. Çıktı, Hadoop tarafından okunmakta ve çıkış dizinine yazılır.
 
 Akış hakkında daha fazla bilgi için bkz. [Hadoop akışı](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Visual Studio.
 
@@ -47,7 +47,7 @@ Akış hakkında daha fazla bilgi için bkz. [Hadoop akışı](https://hadoop.ap
 
 * . Exe dosyalarını kümeye yüklemek için bir yol. Bu belgedeki adımlarda, dosyaları küme için birincil depolamaya yüklemek üzere Visual Studio için Data Lake araçları kullanılır.
 
-* PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/)gerekecektir.
+* PowerShell kullanıyorsanız [az Module](/powershell/azure/)gerekecektir.
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -55,7 +55,7 @@ Akış hakkında daha fazla bilgi için bkz. [Hadoop akışı](https://hadoop.ap
 
 ## <a name="create-the-mapper"></a>Eşleyici oluşturma
 
-Visual Studio 'da *Eşleyici*adlı yeni bir .NET Framework konsol uygulaması oluşturun. Uygulama için aşağıdaki kodu kullanın:
+Visual Studio 'da *Eşleyici* adlı yeni bir .NET Framework konsol uygulaması oluşturun. Uygulama için aşağıdaki kodu kullanın:
 
 ```csharp
 using System;
@@ -92,7 +92,7 @@ Uygulamayı oluşturduktan sonra, */bin/Debug/mapper.exe* dosyasını proje dizi
 
 ## <a name="create-the-reducer"></a>Reducer oluşturma
 
-Visual Studio 'da, *Reducer*adlı yeni bir .NET Framework konsol uygulaması oluşturun. Uygulama için aşağıdaki kodu kullanın:
+Visual Studio 'da, *Reducer* adlı yeni bir .NET Framework konsol uygulaması oluşturun. Uygulama için aşağıdaki kodu kullanın:
 
 ```csharp
 using System;
@@ -147,9 +147,9 @@ Uygulamayı oluşturduktan sonra, */bin/Debug/reducer.exe* dosyasını proje diz
 
 Ardından, *Eşleyici* ve *Reducer* uygulamalarını HDInsight depolama alanına yüklemeniz gerekir.
 
-1. Visual Studio 'da Sunucu Gezgini **görüntüle**' yi seçin  >  **Server Explorer**.
+1. Visual Studio 'da Sunucu Gezgini **görüntüle** ' yi seçin  >  **Server Explorer** .
 
-1. **Azure**' a sağ tıklayın, **Microsoft Azure aboneliğine Bağlan...** öğesini seçin ve oturum açma işlemini doldurun.
+1. **Azure** ' a sağ tıklayın, **Microsoft Azure aboneliğine Bağlan...** öğesini seçin ve oturum açma işlemini doldurun.
 
 1. Bu uygulamayı dağıtmak istediğiniz HDInsight kümesini genişletin. Metin **(varsayılan depolama hesabı)** içeren bir giriş listelenir.
 
@@ -161,13 +161,13 @@ Ardından, *Eşleyici* ve *Reducer* uygulamalarını HDInsight depolama alanına
 
 1. . Exe dosyalarını karşıya yüklemek için aşağıdaki yöntemlerden birini kullanın:
 
-    * Bir **Azure depolama hesabı**kullanıyorsanız, **karşıya yükleme blobu** simgesini seçin.
+    * Bir **Azure depolama hesabı** kullanıyorsanız, **karşıya yükleme blobu** simgesini seçin.
 
         ![Eşleyici için HDInsight karşıya yükleme simgesi, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
-        **Yeni dosyayı karşıya yükle** Iletişim kutusundaki **dosya adı**altında, **Araştır**' ı seçin. **Blobu karşıya yükle** iletişim kutusunda *Eşleyici* projesi için *bin\Debug* klasörüne gidin ve *mapper.exe* dosyasını seçin. Son olarak, **Aç** ' ı ve ardından **Tamam** ' ı seçerek karşıya yüklemeyi tamamlayabilirsiniz.
+        **Yeni dosyayı karşıya yükle** Iletişim kutusundaki **dosya adı** altında, **Araştır** ' ı seçin. **Blobu karşıya yükle** iletişim kutusunda *Eşleyici* projesi için *bin\Debug* klasörüne gidin ve *mapper.exe* dosyasını seçin. Son olarak, **Aç** ' ı ve ardından **Tamam** ' ı seçerek karşıya yüklemeyi tamamlayabilirsiniz.
 
-    * **Azure Data Lake Storage**için, dosya listesinde boş bir alana sağ tıklayın ve ardından **karşıya yükle**' yi seçin. Son olarak *mapper.exe* dosyasını seçin ve sonra **Aç**' ı seçin.
+    * **Azure Data Lake Storage** için, dosya listesinde boş bir alana sağ tıklayın ve ardından **karşıya yükle** ' yi seçin. Son olarak *mapper.exe* dosyasını seçin ve sonra **Aç** ' ı seçin.
 
     *mapper.exe* karşıya yükleme işlemi tamamlandıktan sonra, *reducer.exe* dosyası için karşıya yükleme işlemini tekrarlayın.
 
@@ -183,7 +183,7 @@ Aşağıdaki yordam bir SSH oturumu kullanarak MapReduce işinin nasıl çalış
 
 1. MapReduce işini başlatmak için aşağıdaki komutlardan birini kullanın:
 
-   * Varsayılan depolama alanı **Azure depolama**ise:
+   * Varsayılan depolama alanı **Azure depolama** ise:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -194,7 +194,7 @@ Aşağıdaki yordam bir SSH oturumu kullanarak MapReduce işinin nasıl çalış
             -output /example/wordcountout
         ```
 
-    * Varsayılan depolama **Data Lake Storage 1.**:
+    * Varsayılan depolama **Data Lake Storage 1.** :
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -205,7 +205,7 @@ Aşağıdaki yordam bir SSH oturumu kullanarak MapReduce işinin nasıl çalış
             -output /example/wordcountout
         ```
 
-   * Varsayılan depolama **Data Lake Storage 2.**:
+   * Varsayılan depolama **Data Lake Storage 2.** :
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -253,7 +253,7 @@ Bir MapReduce işini çalıştırmak ve sonuçları indirmek için aşağıdaki 
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
 
-Bu betik, HDInsight küme adı ile birlikte küme oturum açma hesabı adı ve parolasını ister. İş tamamlandıktan sonra çıktı, *output.txt*adlı bir dosyaya indirilir. Aşağıdaki metin dosyadaki verilerin bir örneğidir `output.txt` :
+Bu betik, HDInsight küme adı ile birlikte küme oturum açma hesabı adı ve parolasını ister. İş tamamlandıktan sonra çıktı, *output.txt* adlı bir dosyaya indirilir. Aşağıdaki metin dosyadaki verilerin bir örneğidir `output.txt` :
 
 ```output
 you     1128

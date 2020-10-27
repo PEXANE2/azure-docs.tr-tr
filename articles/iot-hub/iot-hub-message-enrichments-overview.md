@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 3fd1ae82450c6203833a1e7b9947d516950c0330
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3975a57c095a8593e392e932bd125308853d3756
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146591"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541528"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Cihazdan buluta IoT Hub iletileri için ileti zenginleştirmelerinin
 
@@ -35,9 +35,9 @@ Bir ileti zenginleştirmesi, üç temel öğeye sahiptir:
 
 * Herhangi bir statik dize. Koşullar, Logic, işlemler ve işlevler gibi dinamik değerlere izin verilmez. Örneğin, birkaç müşteri tarafından kullanılan bir SaaS uygulaması geliştirirseniz, her müşteriye bir tanımlayıcı atayabilir ve bu tanımlayıcıyı uygulamada kullanılabilir hale getirebilirsiniz. Uygulama çalıştığında IoT Hub, cihaz telemetri iletilerini müşterinin tanımlayıcısına göre damgalayıp, bu da iletileri her müşteri için farklı şekilde işlemeyi mümkün kılar.
 
-* İletiyi gönderen IoT Hub 'ının adı. Bu değer *$iothubname*.
+* İletiyi gönderen IoT Hub 'ının adı. Bu değer *$iothubname* .
 
-* Cihaz ikizi bilgileri, örneğin yolu. Örnekler *$Twin. Tags. Field* ve *$Twin. Tags. Enlem*olacaktır.
+* Cihaz ikizi bilgileri, örneğin yolu. Örnekler *$Twin. Tags. Field* ve *$Twin. Tags. Enlem* olacaktır.
 
    > [!NOTE]
    > Şu anda yalnızca $iothubname, $twin. Tags, $twin. Properties. Desired ve $twin. Properties. bildirilen ileti zenginleştirme için desteklenen değişkenler.
@@ -62,8 +62,8 @@ Zenginleştirme aşağıdaki yöntemler kullanılarak yapılandırılabilir:
 
 | **Yöntem** | **Komut** |
 | ----- | -----| 
-| Portal | [Azure portalı](https://portal.azure.com) | [İleti zenginleştirme öğreticisine](tutorial-message-enrichments.md) bakın | 
-| Azure CLI’si   | [az IoT Hub iletisi-zenginleştirme](/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Portal | [Azure Portal](https://portal.azure.com) | [İleti zenginleştirme öğreticisine](tutorial-message-enrichments.md) bakın | 
+| Azure CLI   | [az IoT Hub iletisi-zenginleştirme](/cli/azure/iot/hub/message-enrichment) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
 İleti sorgularının eklenmesi ileti yönlendirmeye gecikme eklemez.
@@ -84,7 +84,7 @@ Zenginleştirme aşağıdaki yöntemler kullanılarak yapılandırılabilir:
 
 * Bir cihaz ikizi güncelleştirmelerinin, ilgili zenginleştirme değerinde yansıtılması beş dakika kadar sürebilir.
 
-* En zenginler de dahil olmak üzere toplam ileti boyutu 256 KB 'yi aşamaz. İleti boyutu 256 KB 'yi aşarsa IoT Hub iletiyi bırakacak. İletiler bırakıldığında hataları tanımlamak ve hatalarını ayıklamak için [IoT Hub ölçümlerini](iot-hub-metrics.md) kullanabilirsiniz. Örneğin, D2C. telemetri. çıkış. geçersiz izleyebilirsiniz.
+* En zenginler de dahil olmak üzere toplam ileti boyutu 256 KB 'yi aşamaz. İleti boyutu 256 KB 'yi aşarsa IoT Hub iletiyi bırakacak. İletiler bırakıldığında hataları tanımlamak ve hatalarını ayıklamak için [IoT Hub ölçümlerini](monitor-iot-hub-reference.md#metrics) kullanabilirsiniz. Örneğin, [yönlendirme ölçümlerinde](monitor-iot-hub-reference.md#routing-metrics)uyumsuz ( *D2C. telemetri. çıkış. geçersiz* ) ölçümü ile ilgili *telemetri iletilerini* izleyebilirsiniz. Daha fazla bilgi için bkz. [izleyici IoT Hub](monitor-iot-hub.md).
 
 * İleti zenginleştirmelerinin dijital ikizi değişiklik olayları için uygulanmıyor.
 

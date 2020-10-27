@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 957cea854b9894b3149a0e292b8072b73875cae5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 5175575bcd968ab9d9bb9db7e284eb332bc7f675
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127089"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542429"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Öğretici: Power BI sağlayıcı panosu oluşturma
 
@@ -81,7 +81,7 @@ Mantıksal uygulamanızı Azure Event Hubs bağlamak için, [azure Event Hubs ve
 |---|---|
 |İçerik türü|uygulama/json|
 |Aralık|3|
-|Frequency|Second|
+|Sıklık|Second|
 
 Bu adımın sonunda, mantıksal uygulama Tasarlayıcıınızın şöyle görünmesi gerekir:
 
@@ -139,21 +139,21 @@ Sonraki adım, Olay Hub 'ından gelen verileri daha önce oluşturduğunuz Power
 }
 ```
 
-2. JSON yüklerinizi incedığınıza göre, mantıksal uygulama tasarlayana geri dönüp **+ yeni adım**' ı seçin. **Başlangıç değişkenini** bir sonraki adımla bulun ve ekleyin ve aşağıdaki parametreleri girin:
+2. JSON yüklerinizi incedığınıza göre, mantıksal uygulama tasarlayana geri dönüp **+ yeni adım** ' ı seçin. **Başlangıç değişkenini** bir sonraki adımla bulun ve ekleyin ve aşağıdaki parametreleri girin:
 
     |Parametre|Değer|
     |---|---|
-    |Ad|Arabirim adı|
+    |Adı|Arabirim adı|
     |Tür|Dize|
 
-    **Kaydet**'e tıklayın. 
+    **Kaydet** 'e tıklayın. 
 
-3. **String**olarak Type ile **Body** adlı başka bir değişken ekleyin. Mantıksal uygulamanız şu eylemleri ekledi:
+3. **String** olarak Type ile **Body** adlı başka bir değişken ekleyin. Mantıksal uygulamanız şu eylemleri ekledi:
 
     >[!div class="mx-imgBorder"]
     >![Değişkenleri Başlat](media/initialize-string-variables.png)
     
-4. **+ Yeni adım** ' ı seçin ve BIR **ayrıştırma JSON** eylemi ekleyin. **Özellikleri ayrıştırmak**için bunu yeniden adlandırın. Içerik için Olay Hub 'ından gelen **Özellikler** ' i seçin. En altta **şema oluşturmak için örnek yük kullan** ' ı seçin ve yukarıdaki özellikler bölümünden örnek yükü yapıştırın.
+4. **+ Yeni adım** ' ı seçin ve BIR **ayrıştırma JSON** eylemi ekleyin. **Özellikleri ayrıştırmak** için bunu yeniden adlandırın. Içerik için Olay Hub 'ından gelen **Özellikler** ' i seçin. En altta **şema oluşturmak için örnek yük kullan** ' ı seçin ve yukarıdaki özellikler bölümünden örnek yükü yapıştırın.
 
 5. Sonra, **değişken ayarla** eylemini seçin ve **arabirim adı** değişkeninizi ayrıştırılmış JSON özelliklerindeki **ıothub-Interface-Name** ile güncelleştirin.
 
@@ -168,14 +168,14 @@ Sonraki adım, Olay Hub 'ından gelen verileri daha önce oluşturduğunuz Power
 
 9. Bir **değişken kümesi** eylemi ekleyin ve **gövde** değişkenini adım 7 ' deki ayrıştırılmış JSON öğesinden gelen **gövdesiyle** güncelleştirin.
 
-10. Bir sonraki eyleminiz olarak bir **koşul** denetimi ekleyin ve koşulu **gövde**, **içerir**, duyun olarak **ayarlayın.** Bu, Power BI veri kümesini doldurmadan önce akıllı Vinals düzeltme ekiyle gelen doğru veri kümesine sahip olduğunuzdan emin olur. 7-9 adımları şöyle görünür:
+10. Bir sonraki eyleminiz olarak bir **koşul** denetimi ekleyin ve koşulu **gövde** , **içerir** , duyun olarak **ayarlayın.** Bu, Power BI veri kümesini doldurmadan önce akıllı Vinals düzeltme ekiyle gelen doğru veri kümesine sahip olduğunuzdan emin olur. 7-9 adımları şöyle görünür:
 
     >[!div class="mx-imgBorder"] 
     >![Akıllı vitals koşul Ekle](media/smart-vitals-pbi.png)
 
 11. Koşulun **gerçek** durumu için, **bir veri kümesine satır ekle** Power BI işlevine çağıran bir eylem ekleyin. Bunun için Power BI oturum açmanız gerekir. **Yanlış** durum, **sonlandırma** denetimini yeniden kullanabilir.
 
-12. Uygun **çalışma alanını**, **veri kümesini**ve **tabloyu**seçin. Power BI ' de akış veri kümenizi oluştururken belirttiğiniz parametreleri Olay Hub 'ınızdan gelen ayrıştırılmış JSON değerlerine eşleyin. Doldurulmuş eylemleriniz şuna benzemelidir:
+12. Uygun **çalışma alanını** , **veri kümesini** ve **tabloyu** seçin. Power BI ' de akış veri kümenizi oluştururken belirttiğiniz parametreleri Olay Hub 'ınızdan gelen ayrıştırılmış JSON değerlerine eşleyin. Doldurulmuş eylemleriniz şuna benzemelidir:
 
     >[!div class="mx-imgBorder"] 
     >![Power BI satır ekleme](media/add-rows-yesenia.png)
@@ -183,14 +183,14 @@ Sonraki adım, Olay Hub 'ından gelen verileri daha önce oluşturduğunuz Power
 13. **Akıllı Knee küme ayracı** anahtar durumu için, içeriği ayrıştırmak için 7. adıma benzer bir **JSON JSON** eylemi ekleyin. Ardından Power BI içindeki oyuncak Sillerinizi veri kümenizi güncelleştirmek için **bir veri kümesine satır ekleyin** .
 
     >[!div class="mx-imgBorder"] 
-    >![Akıllı vitals koşul Ekle](media/knee-brace-pbi.png)
+    >![Bir veri kümesine nasıl satır ekleneceğini gösteren ekran görüntüsü.](media/knee-brace-pbi.png)
 
 14. **Kaydet** ' e basın ve ardından mantıksal uygulamanızı çalıştırın.
 
 ## <a name="build-a-real-time-dashboard-for-patient-vitals"></a>Hasta için gerçek zamanlı bir pano oluşturun
-Şimdi Power BI dönün ve **+ Oluştur** ' u seçerek yeni bir **Pano**oluşturun. Panonuza bir ad verin ve **Oluştur**' a basın.
+Şimdi Power BI dönün ve **+ Oluştur** ' u seçerek yeni bir **Pano** oluşturun. Panonuza bir ad verin ve **Oluştur** ' a basın.
 
-Üst gezinti çubuğunda üç noktayı seçin ve ardından **+ kutucuk Ekle**' yi seçin.
+Üst gezinti çubuğunda üç noktayı seçin ve ardından **+ kutucuk Ekle** ' yi seçin.
 
 >[!div class="mx-imgBorder"] 
 >![Panoya kutucuk Ekle](media/add-tile.png)
@@ -203,7 +203,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla kayn
 
 1. Azure portal, oluşturduğunuz Olay Hub 'ını ve Logic Apps kaynaklarını silebilirsiniz.
 
-2. IoT Central uygulamanız için Yönetim sekmesine gidin ve **Sil**' i seçin.
+2. IoT Central uygulamanız için Yönetim sekmesine gidin ve **Sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

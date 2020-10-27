@@ -31,7 +31,7 @@ Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için Genesys 
 > * Genesys tarafından Purecm 'de grupları ve grup üyeliklerini sağlama
 > * Genesys tarafından [Purecg 'de çoklu oturum açma](./purecloud-by-genesys-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -59,7 +59,7 @@ Azure AD Uygulama Galerisi 'nden Genesys 'e göre Pureci 'yi Genesys 'e göre Pu
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* Genesys tarafından Purecm 'ye Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* Genesys tarafından Purecm 'ye Kullanıcı ve grup atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -70,11 +70,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-purecloud-by-genesys-in-azure-ad"></a>Azure AD 'de Genesys tarafından otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Genesys tarafından Purecı**' yi seçin.
+2. Uygulamalar listesinde, **Genesys tarafından Purecı** ' yi seçin.
 
     ![Uygulamalar listesindeki Genesys bağlantısına göre Purecme bağlantısı](common/all-applications.png)
 
@@ -82,7 +82,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -94,9 +94,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümü altında, **Genesys tarafından Azure Active Directory Kullanıcıları, Poyana 'yı Pureck olarak eşitler**seçeneğini belirleyin.
+8. **Eşlemeler** bölümü altında, **Genesys tarafından Azure Active Directory Kullanıcıları, Poyana 'yı Pureck olarak eşitler** seçeneğini belirleyin.
 
 9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Maesys tarafından Purecgen 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Genesys tarafından purecr 'teki Kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, Genesys API 'sinin, bu özniteliğe göre kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -114,7 +114,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: employeeNumber|Dize|
      
 
-10. **Eşlemeler** bölümünde, **Genesys tarafından pureck Ile Azure Active Directory gruplarını eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde, **Genesys tarafından pureck Ile Azure Active Directory gruplarını eşitler** ' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde, Azure AD 'Den Maesys tarafından Purecgen 'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Genesys tarafından purecas 'daki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin. Genesys tarafından Purecre, Grup oluşturmayı veya silmeyi desteklemez ve yalnızca grupların güncelleştirilmesini destekler.
 
@@ -134,7 +134,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

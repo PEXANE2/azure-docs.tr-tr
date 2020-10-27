@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: b9f7e93af61dbcf306f7d6eb105cb113412a423a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083109"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542310"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-altyapı en iyi yöntemleri
 
@@ -27,7 +27,7 @@ HDInsight kümesi kapasite planlaması için yapılacak temel seçimler şunlard
 Azure bölgesi, kümenin fiziksel olarak sağlandığını belirler. Okuma ve yazma gecikmesini en aza indirmek için, kümenin verilerle aynı bölgede olması gerekir.
 
 **Depolama konumu ve boyutu**  
-Varsayılan depolama, kümeyle aynı bölgede olmalıdır.48 düğümlü bir küme için 4 ile 8 arasında depolama hesabı olması önerilir. Toplam depolama alanı zaten yeterli olabilir, ancak her depolama hesabı işlem düğümleri için ek ağ bant genişliği sağlar. Birden çok depolama hesabı olduğunda, ön ek olmadan her depolama hesabı için rastgele bir ad kullanın. Rastgele adlandırma amacı, tüm hesaplarda depolama performans sorunlarını (azaltma) veya genel modlu hataların olasılığını azaltmaktadır. Daha iyi performans için, depolama hesabı başına yalnızca bir kapsayıcı kullanın.
+Varsayılan depolama, kümeyle aynı bölgede olmalıdır. 48 düğümlü bir küme için 4 ile 8 arasında depolama hesabı olması önerilir. Toplam depolama alanı zaten yeterli olabilir, ancak her depolama hesabı işlem düğümleri için ek ağ bant genişliği sağlar. Birden çok depolama hesabı olduğunda, ön ek olmadan her depolama hesabı için rastgele bir ad kullanın. Rastgele adlandırma amacı, tüm hesaplarda depolama performans sorunlarını (azaltma) veya genel modlu hataların olasılığını azaltmaktadır. Daha iyi performans için, depolama hesabı başına yalnızca bir kapsayıcı kullanın.
 
 **VM boyutu ve türü (şimdi G serisi destekleniyor)**  
 Her küme türü bir dizi düğüm türüne sahiptir ve her düğüm türü, VM boyutu ve türü için özel seçeneklere sahiptir. VM boyutu ve türü, CPU işleme gücü, RAM boyutu ve ağ gecikmesi tarafından belirlenir. Sanal bir iş yükü, her düğüm türü için en iyi VM boyutunu ve türünü tespit etmek üzere kullanılabilir.
@@ -52,35 +52,35 @@ Ayrıca, HDInsight 'taki Hadoop bileşenlerini ve sürümlerini denetlemek için
 |**Uygulama**|**Tümleştirme**
 |---|---|
 |Airflow|IaaS veya HDInsight Edge düğümü
-|Alluxıo|IaaS  
-|Arcadia|IaaS 
+|Alluxıo|IaaS  
+|Arcadia|IaaS 
 |Atlas|Hiçbiri (yalnızca HDP)
 |Datameer|HDInsight Edge düğümü
 |DataStax (Cassandra)|IaaS (CosmosDB Azure üzerinde alternatif)
-|Veri Toruya|IaaS 
-|Drill|IaaS 
+|Veri Toruya|IaaS 
+|Drill|IaaS 
 |Ignite|IaaS
-|Jetro dili|IaaS 
-|Mapaçi|IaaS 
+|Jetro dili|IaaS 
+|Mapaçi|IaaS 
 |Mongo|IaaS (CosmosDB Azure üzerinde alternatif)
-|NiFi|IaaS 
+|NiFi|IaaS 
 |Presto|IaaS veya HDInsight Edge düğümü
-|Python 2|PaaS 
-|Python 3|PaaS 
-|R|PaaS 
-|'LARıNıN|IaaS 
+|Python 2|PaaS 
+|Python 3|PaaS 
+|R|PaaS 
+|SAS|IaaS 
 |Vertica|IaaS (Azure 'da SQLDW bir alternatif)
-|Tableau|IaaS 
+|Tableau|IaaS 
 |Su çizgisi|HDInsight Edge düğümü
-|StreamSets|HDInsight Edge 
-|Palanyapıştır|IaaS 
-|Sailpoint|IaaS 
+|StreamSets|HDInsight Edge 
+|Palanyapıştır|IaaS 
+|Sailpoint|IaaS 
 
 Daha fazla bilgi için, [farklı HDInsight sürümleriyle kullanılabilen bileşenler Apache Hadoop](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) makalesine bakın
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>Betik eylemlerini kullanarak HDInsight kümelerini özelleştirme
 
-HDInsight, bir **betik eylemi**olarak adlandırılan bir küme yapılandırması yöntemi sağlar. Bir betik eylemi, HDInsight kümesindeki düğümlerde çalıştırılan ve ek bileşenleri yüklemek ve yapılandırma ayarlarını değiştirmek için kullanılabilir olan Bash betiğiyle çalışır.
+HDInsight, bir **betik eylemi** olarak adlandırılan bir küme yapılandırması yöntemi sağlar. Bir betik eylemi, HDInsight kümesindeki düğümlerde çalıştırılan ve ek bileşenleri yüklemek ve yapılandırma ayarlarını değiştirmek için kullanılabilir olan Bash betiğiyle çalışır.
 
 Betik eylemleri, HDInsight kümesinden erişilebilen bir URI üzerinde depolanmalıdır. Bunlar, küme oluşturma sırasında veya sonrasında kullanılabilir ve yalnızca belirli düğüm türlerinde çalışacak şekilde kısıtlanabilir.
 
@@ -109,7 +109,7 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>Önyükleme kullanarak HDInsight yapılandırmalarını özelleştirme
 
-, Gibi yapılandırma dosyalarındaki kurulumunun değişiklikleri `core-site.xml` `hive-site.xml` ve `oozie-env.xml` önyükleme kullanılarak yapılabilir. Aşağıdaki betik, PowerShell [az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) cmdlet [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)kullanarak bir örnektir:
+, Gibi yapılandırma dosyalarındaki kurulumunun değişiklikleri `core-site.xml` `hive-site.xml` ve `oozie-env.xml` önyükleme kullanılarak yapılabilir. Aşağıdaki betik, PowerShell [az Module](/powershell/azure/new-azureps-module-az) cmdlet [New-AzHDInsightClusterConfig](/powershell/module/az.hdinsight/new-azhdinsightcluster)kullanarak bir örnektir:
 
 ```powershell
 # hive-site.xml configuration

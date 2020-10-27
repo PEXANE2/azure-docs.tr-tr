@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
-ms.openlocfilehash: 162049c12c0618298695e43dae43f16e9fb50260
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d46f20f33e2627525f8f7f5b08bdaa2875626940
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372200"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541987"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>Go için HDInsight SDK (Önizleme)
 
@@ -25,7 +25,7 @@ Go için HDInsight SDK 'Sı, HDInsight kümelerinizi yönetmenize imkan tanıyan
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir [ `go get` araç](https://github.com/golang/go/wiki/GoGetTools).
 * [Git](https://golang.org/dl/).
@@ -34,12 +34,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 GOPATH konumundan şunu çalıştırın `go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulama
 
 Önce SDK 'nın Azure aboneliğinizle doğrulanması gerekir.  Hizmet sorumlusu oluşturmak için aşağıdaki örneği izleyin ve kimlik doğrulaması için kullanın. Bu yapıldıktan sonra, `ClustersClient` yönetim işlemleri gerçekleştirmek için kullanılabilecek çok sayıda işlev (aşağıdaki bölümlerde özetlenen) içeren bir örneğine sahip olacaksınız.
 
 > [!NOTE]  
-> Aşağıdaki örnekte, gereksinimlerinize daha uygun olabilecek büyük olasılıkla kimlik doğrulamanın başka yolları vardır. Tüm işlevler burada özetlenmiştir: [Go için Azure SDK kimlik doğrulama işlevleri](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
+> Aşağıdaki örnekte, gereksinimlerinize daha uygun olabilecek büyük olasılıkla kimlik doğrulamanın başka yolları vardır. Tüm işlevler burada özetlenmiştir: [Go için Azure SDK kimlik doğrulama işlevleri](/azure/go/azure-sdk-go-authorization)
 
 ### <a name="authentication-example-using-a-service-principal"></a>Hizmet sorumlusu kullanarak kimlik doğrulama örneği
 
@@ -365,7 +365,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ### <a name="enable-oms-monitoring"></a>OMS izlemeyi etkinleştir
 
 > [!NOTE]  
-> OMS Izlemesini etkinleştirmek için, mevcut bir Log Analytics çalışma alanına sahip olmanız gerekir. Henüz bir tane oluşturmadıysanız, bunu nasıl yapacağınızı öğrenebilirsiniz: [Azure portal Log Analytics çalışma alanı oluşturma](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+> OMS Izlemesini etkinleştirmek için, mevcut bir Log Analytics çalışma alanına sahip olmanız gerekir. Henüz bir tane oluşturmadıysanız, bunu nasıl yapacağınızı öğrenebilirsiniz: [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md).
 
 Kümenizde OMS Izlemesini etkinleştirmek için:
 
@@ -394,7 +394,7 @@ extClient.DisableMonitoring(context.Background(), "<Resource Group Name", "Clust
 HDInsight, kümeyi özelleştirmek için özel betikler çağıran betik eylemleri adlı bir yapılandırma işlevi sağlar.
 
 > [!NOTE]  
-> Betik eylemlerinin kullanımı hakkında daha fazla bilgi burada bulunabilir: [betik eylemleri kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)
+> Betik eylemlerinin kullanımı hakkında daha fazla bilgi burada bulunabilir: [betik eylemleri kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](./hdinsight-hadoop-customize-cluster-linux.md)
 
 ### <a name="execute-script-actions"></a>Betik eylemlerini yürütme
 

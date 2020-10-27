@@ -235,7 +235,7 @@
           displayName: policy
     - name: Çalışma alanlarını oluşturma ve yönetme
       items:
-        - name: Azure portalı kullanma
+        - name: Azure portalı veya Python SDK'sını kullanma
           href: how-to-manage-workspace.md
         - name: Azure CLI kullanma
           href: how-to-manage-workspace-cli.md

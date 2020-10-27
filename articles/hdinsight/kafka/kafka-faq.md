@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84c48f14ae57cfa4aa3290924d3d170c075fe3a6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80436901"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532550"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight'ta Apache Kafka hakkında sık sorulan sorular
 
@@ -68,7 +68,7 @@ Kafka iletileri için kullanılabilir alan miktarını artırmak için düğüml
 
 ## <a name="can-a-kafka-cluster-work-with-databricks"></a>Kafka kümesi, Databricks ile çalışabilir mi? 
 
-Evet, Kafka kümeler Databricks ile birlikte çalışarak aynı VNet 'te oldukları sürece bu şekilde çalışabilir. Databricks ile bir Kafka kümesi kullanmak için, bir HDInsight Kafka kümesiyle VNet oluşturun ve sonra Databricks çalışma alanınızı oluşturup VNet ekleme 'yi kullandığınızda bu sanal ağı belirtin. Daha fazla bilgi için bkz. [Azure sanal ağınızda Azure Databricks dağıtma (VNet ekleme)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Databricks çalışma alanını oluştururken Kafka kümesinin önyükleme Aracısı adlarını sağlamanız gerekir. Kafka Broker adlarını alma hakkında daha fazla bilgi için bkz. [Apache Zookeeper ve aracı ana bilgisayar bilgilerini alma](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started#getkafkainfo).
+Evet, Kafka kümeler Databricks ile birlikte çalışarak aynı VNet 'te oldukları sürece bu şekilde çalışabilir. Databricks ile bir Kafka kümesi kullanmak için, bir HDInsight Kafka kümesiyle VNet oluşturun ve sonra Databricks çalışma alanınızı oluşturup VNet ekleme 'yi kullandığınızda bu sanal ağı belirtin. Daha fazla bilgi için bkz. [Azure sanal ağınızda Azure Databricks dağıtma (VNet ekleme)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Databricks çalışma alanını oluştururken Kafka kümesinin önyükleme Aracısı adlarını sağlamanız gerekir. Kafka Broker adlarını alma hakkında daha fazla bilgi için bkz. [Apache Zookeeper ve aracı ana bilgisayar bilgilerini alma](./apache-kafka-get-started.md#getkafkainfo).
 
 ## <a name="how-can-i-have-maximum-data-durability"></a>Maksimum veri dayanıklılığını nasıl kullanabilirim?
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 782fa75cee5ffb5f9c86082a86e2b3552914c274
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6f1a94ae070419c38efb481e8f3967aec6a212d0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168231"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533963"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service erişim kısıtlamaları
 
@@ -61,7 +61,8 @@ Hizmet uç noktaları, bir App Service Ortamı çalışan uygulamalara erişimi 
 Hizmet uç noktaları ile uygulamanızı uygulama ağ geçitleri veya diğer WAF cihazları ile yapılandırabilirsiniz. Ayrıca, çok katmanlı uygulamaları güvenli arka uçlarla da yapılandırabilirsiniz. Bazı olasılıklarla ilgili daha fazla ayrıntı için, [ağ özelliklerini okuyun ve App Service](networking-features.md) ve [hizmet uç noktalarıyla tümleştirme Application Gateway](networking/app-gateway-with-service-endpoints.md).
 
 > [!NOTE]
-> Hizmet uç noktaları şu anda IP SSL sanal IP (VIP) kullanan Web uygulamaları için desteklenmemektedir. 
+> - Hizmet uç noktaları şu anda IP SSL sanal IP (VIP) kullanan Web uygulamaları için desteklenmemektedir.
+> - IP veya hizmet uç noktası kısıtlamalarına 512 satırlık bir sınır vardır. 512 ' den fazla kısıtlama satırı isterseniz, Azure ön kapısı, Azure uygulama ağ geçidi veya Web uygulaması güvenlik duvarı (WAF) gibi tek başına bir güvenlik ürününe bakmanız önerilir.
 >
 
 ## <a name="managing-access-restriction-rules"></a>Erişim kısıtlama kurallarını yönetme
@@ -74,7 +75,7 @@ Bir kuralı düzenlediğinizde bir IP adresi kuralı ve bir sanal ağ kuralı ar
 
 ![Sanal ağ kuralı ayarlarını gösteren Azure portal IP kısıtlaması Düzenle iletişim kutusunun ekran görüntüsü.](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
-Bir kuralı silmek için, kuraldaki **...** öğesine tıklayın ve ardından **Kaldır**' a tıklayın.
+Bir kuralı silmek için, kuraldaki **...** öğesine tıklayın ve ardından **Kaldır** ' a tıklayın.
 
 ![erişim kısıtlama kuralını Sil](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
@@ -111,7 +112,7 @@ Değerler ayrıca, Kaynak Yöneticisi veya Azure Resource Manager şablonu kulla
 
 Bu bilgilerin Kaynak Yöneticisi konumu:
 
-management.azure.com/subscriptions/**ABONELIK kimliği**/ResourceGroups/**kaynak grupları**/Providers/Microsoft.Web/Sites/**Web uygulaması adı**/config/Web? api-Version = 2018-02-01
+management.azure.com/subscriptions/ **ABONELIK kimliği** /ResourceGroups/ **kaynak grupları** /Providers/Microsoft.Web/Sites/ **Web uygulaması adı** /config/Web? api-Version = 2018-02-01
 
 Önceki örnek için JSON sözdizimi şöyledir:
 ```json

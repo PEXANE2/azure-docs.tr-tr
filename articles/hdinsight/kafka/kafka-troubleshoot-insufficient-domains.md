@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/09/2019
-ms.openlocfilehash: 8be7e05ac85ce0b1b10edf18d3885a07e016b9ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 070ba5ecb6f151099c13082eee650c5720e63b2a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75895024"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532603"
 ---
 # <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>Senaryo: `not sufficient fault domains in region` Azure HDInsight 'Ta küme oluşturma işlemi başarısız oldu
 
@@ -26,7 +26,7 @@ Apache Kafka kümesi oluşturulmaya çalışılırken aşağıdakine benzer bir 
 
 Hata etki alanı, bir Azure veri merkezinde temel donanımlardan oluşan mantıksal bir gruplandırmadır. Her hata etki alanı ortak bir güç kaynağı ve ağ anahtarına sahiptir. Bir HDInsight kümesi içindeki düğümleri uygulayan sanal makineler ve yönetilen diskler, bu hata etki alanlarına dağıtılır. Bu mimari, fiziksel donanım hatalarının olası etkisini sınırlar.
 
-Her Azure bölgesinde belirli sayıda hata etki alanı bulunur. Etki alanlarının listesi ve içerdikleri hata etki alanlarının sayısı için [kullanılabilirlik kümeleri](../../virtual-machines/windows/manage-availability.md)hakkındaki belgelere bakın.
+Her Azure bölgesinde belirli sayıda hata etki alanı bulunur. Etki alanlarının listesi ve içerdikleri hata etki alanlarının sayısı için [kullanılabilirlik kümeleri](../../virtual-machines/manage-availability.md)hakkındaki belgelere bakın.
 
 HDInsight 'ta, Kafka kümelerinin en az üç hata etki alanına sahip bir bölgede sağlanması gerekir.
 
@@ -42,4 +42,4 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](../../azure-portal/supportability/how-to-create-azure-support-request.md)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

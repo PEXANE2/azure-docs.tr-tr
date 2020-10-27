@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: 2a6b324c4caf9619566ba335ab2e5a318ab68bb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e85226e7a2544cda01f40a1c1be6be32f11d9dfc
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079437"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542803"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase üzerinde Apache Phoenix sorguları çalıştırmak için Apache Zeppelin kullanma
 
@@ -31,7 +31,7 @@ HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama
 
 1. `CLUSTERNAME`AŞAĞıDAKI URL 'deki kümenizin adıyla değiştirin `https://CLUSTERNAME.azurehdinsight.net/zeppelin` . Sonra URL 'YI bir Web tarayıcısına girin. Küme oturum açma kullanıcı adınızı ve parolanızı girin.
 
-1. Zeppelin sayfasında **Yeni dekont oluştur**' u seçin.
+1. Zeppelin sayfasında **Yeni dekont oluştur** ' u seçin.
 
     ![HDInsight etkileşimli sorgu Zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
 
@@ -40,13 +40,13 @@ HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama
     - Note adı: nota bir ad girin.
     - Varsayılan yorumlayıcı: açılan listeden **JDBC** ' ı seçin.
 
-    Ardından, **Note oluştur**' u seçin.
+    Ardından, **Note oluştur** ' u seçin.
 
 1. Not defteri üstbilgisinin bağlı bir durum belirttiğinden emin olun. Sağ üst köşedeki yeşil noktayla gösterilir.
 
     ![Zeppelin Not defteri durumu](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin Not defteri durumu")
 
-1. Bir HBase tablosu oluşturun. Aşağıdaki komutu girin ve ardından **SHIFT + enter**tuşlarına basın:
+1. Bir HBase tablosu oluşturun. Aşağıdaki komutu girin ve ardından **SHIFT + enter** tuşlarına basın:
 
     ```sql
     %jdbc(phoenix)
@@ -98,5 +98,5 @@ HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Apache Phoenix artık Azure HDInsight 'ta Zeppelin 'i destekliyor](https://blogs.msdn.microsoft.com/ashish/2018/08/17/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight/)
+- [Apache Phoenix artık Azure HDInsight 'ta Zeppelin 'i destekliyor](/archive/blogs/ashish/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight)
 - [Apache Phoenix dilbilgisi](https://phoenix.apache.org/language/index.html)

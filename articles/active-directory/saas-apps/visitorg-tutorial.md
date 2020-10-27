@@ -28,7 +28,7 @@ Bu öğreticide, Visit.org 'i Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -50,14 +50,14 @@ Visit.org tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden 
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Visit.org** yazın.
 1. Sonuçlar panelinden **Visit.org** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-visitorg"></a>Visit.org için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Visit.org ile yapılandırın ve test edin. SSO 'nun çalışması için, Visit.org içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Visit.org ile yapılandırın ve test edin. SSO 'nun çalışması için, Visit.org içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Visit.org ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -72,8 +72,8 @@ Azure AD SSO 'yu Visit.org ile yapılandırmak ve test etmek için aşağıdaki 
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Visit.org** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **Visit.org** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -86,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Visit.org uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | -----------| --------- |
     | e-posta |  Kullanıcı. emaadresi |
     | first_name | Kullanıcı. |
@@ -104,25 +104,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Visit.org 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Visit.org**' yi seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde **Visit.org** ' yi seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 

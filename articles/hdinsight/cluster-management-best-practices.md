@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fbfb2aef838dbef6e7403e635f5bce42bf9ec901
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: fc2f9e5408dd760b48fc63c4021230446fe40de9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487271"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542327"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight kümesi Yönetimi en iyi uygulamaları
 
@@ -26,12 +26,12 @@ HDInsight kümelerini yönetmeye yönelik en iyi yöntemleri öğrenin.
 | Azure Data Factory | [Azure Data Factory kullanarak HDInsight 'ta isteğe bağlı Apache Hadoop kümeleri oluşturma](./hdinsight-hadoop-create-linux-clusters-adf.md) |
 | Özel Kaynak Yöneticisi şablonu | [Kaynak Yöneticisi şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma](./hdinsight-hadoop-create-linux-clusters-arm-templates.md) |
 | Hızlı başlangıç şablonları | [HDInsight hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?term=hdinsight) |
-| Azure örneklerinden | [HDInsight Azure örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-hdinsight) |
-| Azure portalı | [Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun](./spark/apache-spark-intellij-tool-plugin.md) |
+| Azure örneklerinden | [HDInsight Azure örnekleri](/samples/browse/?products=azure-hdinsight) |
+| Azure portal | [Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun](./spark/apache-spark-intellij-tool-plugin.md) |
 | Azure CLI | [Azure CLı kullanarak HDInsight kümeleri oluşturma](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Azure PowerShell kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturma](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Azure REST API kullanarak Apache Hadoop kümeleri oluşturma](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
-| SDK 'lar (.NET, Python, Java) | [.Net](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python&preserve-view=true), [Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable&preserve-view=true), [Go](https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview) |
+| SDK 'lar (.NET, Python, Java) | [.Net](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [Python](/python/api/overview/azure/hdinsight?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/hdinsight?preserve-view=true&view=azure-java-stable), [Go](./hdinsight-go-sdk-overview.md) |
 
 > [!Note]
 > Küme oluşturuyorsanız ve daha önce oluşturulmuş bir kümeden küme adını yeniden kullanacaksanız, kümenizi oluşturmadan önce önceki küme silme işleminin tamamlanmasını bekleyin.
@@ -62,7 +62,7 @@ HDInsight kümelerini yönetmeye yönelik en iyi yöntemleri öğrenin.
 | El ile ölçeklendirme | [Azure HDInsight kümelerini ölçeklendirme](./hdinsight-scaling-best-practices.md) |
 | Ambarı ile izleme| [Azure HDInsight 'ta küme performansını izleme](./hdinsight-key-scenarios-to-monitor.md) |
 | Azure Izleyici günlükleri ile izleme | [Azure İzleyici günlüklerini kullanarak HDInsight kümelerini izleme](./hdinsight-hadoop-oms-log-analytics-tutorial.md) |
-| Hizmet sorunları, planlı bakım, sağlık & Güvenlik Danışma belgeleri | [Aboneliğe özgü hizmet durumu uyarılarına abone ol](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal) |
+| Hizmet sorunları, planlı bakım, sağlık & Güvenlik Danışma belgeleri | [Aboneliğe özgü hizmet durumu uyarılarına abone ol](../service-health/alerts-activity-log-service-notifications-portal.md) |
 
 
 ## <a name="how-do-i-check-on-deleted-hdinsight-clusters"></a>Nasıl yaparım? silinen HDInsight kümelerinde denetim yapılsın mı?

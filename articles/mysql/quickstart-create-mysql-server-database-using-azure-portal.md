@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 7/15/2020
-ms.openlocfilehash: cdddd9a90911499421351adf0f41ef90f0e2f9a5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a3438293bcbf656a371b55605c64a005ae4d599a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90906560"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541409"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal MySQL için Azure veritabanı sunucusu oluşturma
 
@@ -24,13 +24,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 Web tarayıcınızı açın ve [Azure portalına](https://portal.azure.com/) gidin. Portalda oturum açmak için kimlik bilgilerinizi girin. Varsayılan görünüm hizmet panonuzu içerir.
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>MySQL için Azure Veritabanı sunucusu oluşturma
-MySQL için Azure Veritabanı sunucusu, tanımlı bir dizi [işlem ve depolama kaynağı](./concepts-compute-unit-and-storage.md) ile oluşturulur. Sunucu, [Azure kaynak grubu](../azure-resource-manager/management/overview.md) içinde oluşturulur.
+MySQL için Azure Veritabanı sunucusu, tanımlı bir dizi [işlem ve depolama kaynağı](./concepts-pricing-tiers.md) ile oluşturulur. Sunucu, [Azure kaynak grubu](../azure-resource-manager/management/overview.md) içinde oluşturulur.
 
 MySQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları uygulayın:
 
 1. Portalın sol üst köşesinde bulunan **kaynak oluştur** (+) seçeneğini belirleyin.
 
-2. **Veritabanları**  >  **MySQL için Azure veritabanı**' nı seçin. Ayrıca, arama kutusuna **MySQL** girerek hizmeti bulabilirsiniz.
+2. **Veritabanları**  >  **MySQL için Azure veritabanı** ' nı seçin. Ayrıca, arama kutusuna **MySQL** girerek hizmeti bulabilirsiniz.
 
   
 >[!div class="mx-imgBorder"]
@@ -46,36 +46,36 @@ MySQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları uygulay
 Abonelik | Aboneliğiniz | Sunucunuz için kullanmak istediğiniz Azure aboneliğini seçin. Birden fazla aboneliğiniz varsa kaynağın faturalandığı aboneliği seçin.
 Kaynak grubu | *myresourcegroup* | Yeni veya mevcut bir kaynak grubu adı girin. Kaynak grubu, tek bir projeye ait olan bağımlılıklarınızı düzenlemek için kullanılabilir.
 Sunucu adı | Benzersiz sunucu adı | MySQL için Azure veritabanı sunucunuzu tanımlayan benzersiz bir ad girin. Örneğin, ' mysqldbserver '. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ila 63 karakter arası içermelidir.
-Veri kaynağı |*Hiçbiri* | Sıfırdan yeni bir sunucu oluşturmak için *Yok*'u seçin. (Mevcut bir MySQL için Azure veritabanı sunucusunun coğrafi yedeğinden bir sunucu oluşturuyorsanız *yedeklemeyi* seçersiniz).
-Sunucu yöneticisi oturumu açma | myadmin | Sunucu yöneticiniz için bir Kullanıcı adı girin. Yönetici Kullanıcı adı olarak **azure_superuser**, **yönetici**, **yönetici**, **kök**, **Konuk**veya **genel** kullanamazsınız.
+Veri kaynağı |*Hiçbiri* | Sıfırdan yeni bir sunucu oluşturmak için *Yok* 'u seçin. (Mevcut bir MySQL için Azure veritabanı sunucusunun coğrafi yedeğinden bir sunucu oluşturuyorsanız *yedeklemeyi* seçersiniz).
+Sunucu yöneticisi oturumu açma | myadmin | Sunucu yöneticiniz için bir Kullanıcı adı girin. Yönetici Kullanıcı adı olarak **azure_superuser** , **yönetici** , **yönetici** , **kök** , **Konuk** veya **genel** kullanamazsınız.
 Parola | *Tercih ettiğiniz* | Sunucu yönetici hesabı için yeni bir parola girin. Parola, büyük harf veya küçük harf, sayı ve alfasayısal olmayan karakter (!, $, #,%, vb.) ile birlikte 8 ile 128 karakter uzunluğunda olmalıdır.
 Parolayı onayla | *Tercih ettiğiniz*| Yönetici hesabı parolasını onaylayın.
 Konum | *Kullanıcılarınıza en yakın bölge*| Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin.
 Sürüm | *En son ana sürüm*| En son ana sürüm (başka bir sürüm gerektiren belirli gereksinimleriniz yoksa).
-İşlem + depolama | **Genel Amaçlı**, **5. Nesil**, **2 sanal çekirdek**, **5 GB**, **7 gün**, **Coğrafi Olarak Yedekli** |Yeni sunucunuz için işlem, depolama ve yedekleme yapılandırmaları. **Sunucuyu Yapılandır**' ı seçin. Ardından uygun fiyatlandırma katmanını seçin. daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/mysql/)bakın. Coğrafi olarak yedekli depolamada sunucu yedeklemelerinizi etkinleştirmek için **yedek artıklığı seçeneklerinde** **coğrafi olarak yedekli** ' ı seçin. **Tamam**’ı seçin.
+İşlem + depolama | **Genel Amaçlı** , **5. Nesil** , **2 sanal çekirdek** , **5 GB** , **7 gün** , **Coğrafi Olarak Yedekli** |Yeni sunucunuz için işlem, depolama ve yedekleme yapılandırmaları. **Sunucuyu Yapılandır** ' ı seçin. Ardından uygun fiyatlandırma katmanını seçin. daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/mysql/)bakın. Coğrafi olarak yedekli depolamada sunucu yedeklemelerinizi etkinleştirmek için **yedek artıklığı seçeneklerinde** **coğrafi olarak yedekli** ' ı seçin. **Tamam** ’ı seçin.
 
    > [!NOTE]
    > Hafif işlem ve g/ç iş yükünüz için yeterli ise temel fiyatlandırma katmanını kullanmayı düşünün. Temel fiyatlandırma katmanında oluşturulan sunucuların daha sonra Genel Amaçlı veya bellek için Iyileştirilmiş olarak ölçeklenmeyeceğini unutmayın. 
 
 4. Sunucuyu sağlamak için **gözden geçir + oluştur** ' u seçin. Hazırlama işlemi 20 dakika kadar sürebilir.
    
-5. Araç çubuğunda **Bildirimler**’i (zil simgesi) seçip dağıtım işlemini izleyin.
+5. Araç çubuğunda **Bildirimler** ’i (zil simgesi) seçip dağıtım işlemini izleyin.
    
-Varsayılan olarak, sunucunuz altında aşağıdaki veritabanları oluşturulur: **information_schema**, **mysql**, **performance_schema** ve **sys**.
+Varsayılan olarak, sunucunuz altında aşağıdaki veritabanları oluşturulur: **information_schema** , **mysql** , **performance_schema** ve **sys** .
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Sunucu düzeyinde güvenlik duvarı kuralı oluşturma
-Varsayılan olarak, oluşturulan sunucu bir güvenlik duvarıyla korunur ve genel erişime açık değildir. IP 'nize erişim sağlamak için, Azure portal sunucu kaynağına gidin ve sunucu kaynağınız için sol taraftaki menüden **bağlantı güvenliği** ' ni seçin. Kaynağı nasıl bulacağınızı bilmiyorsanız bkz. [kaynak açma](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
+Varsayılan olarak, oluşturulan sunucu bir güvenlik duvarıyla korunur ve genel erişime açık değildir. IP 'nize erişim sağlamak için, Azure portal sunucu kaynağına gidin ve sunucu kaynağınız için sol taraftaki menüden **bağlantı güvenliği** ' ni seçin. Kaynağı nasıl bulacağınızı bilmiyorsanız bkz. [kaynak açma](../azure-resource-manager/management/manage-resources-portal.md#open-resources).
 
 >[!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="MySQL için Azure Veritabanı seçeneği":::
    
-Şimdi **geçerli ISTEMCI IP adresi ekle** ' yi seçin ve ardından **Kaydet**' i seçin. Bu IP 'lerden sunucunuza bağlanmak için ek IP 'Ler ekleyebilir veya bir IP aralığı sağlayabilirsiniz. Daha fazla bilgi için bkz. [MySQL Için Azure veritabanı sunucusunda güvenlik duvarı kurallarını yönetme](./concepts-firewall-rules.md)
+Şimdi **geçerli ISTEMCI IP adresi ekle** ' yi seçin ve ardından **Kaydet** ' i seçin. Bu IP 'lerden sunucunuza bağlanmak için ek IP 'Ler ekleyebilir veya bir IP aralığı sağlayabilirsiniz. Daha fazla bilgi için bkz. [MySQL Için Azure veritabanı sunucusunda güvenlik duvarı kurallarını yönetme](./concepts-firewall-rules.md)
 
 > [!NOTE]
 > Ağınızın bağlantı sorunlarını önlemek için MySQL için Azure veritabanı tarafından kullanılan bağlantı noktası 3306 üzerinden giden trafiğe izin verdiğinden emin olun.  
 
 ## <a name="connect-to-azure-database-for-mysql-server-using-mysql-command-line-client"></a>MySQL komut satırı istemcisini kullanarak MySQL için Azure veritabanı sunucusuna bağlanma
-Yerel ortamınızdan sunucusuna bağlanmak için [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) veya [MySQL çalışma ekranı](./connect-workbench.md) seçeneğini belirleyebilirsiniz. Bu hızlı başlangıçta, sunucuya bağlanmak için [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) **mysql.exe** çalıştıracağız.
+Yerel ortamınızdan sunucusuna bağlanmak için [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) veya [MySQL çalışma ekranı](./connect-workbench.md) seçeneğini belirleyebilirsiniz. Bu hızlı başlangıçta, sunucuya bağlanmak için [Azure Cloud Shell](../cloud-shell/overview.md) **mysql.exe** çalıştıracağız.
 
 1. Sol üst taraftaki vurgulanan simgeye tıklayarak portalda Azure Cloud Shell başlatın. Aşağıdaki görüntüde gösterildiği gibi, **genel bakış** bölümünden yeni oluşturduğunuz sunucu için sunucu adı, Sunucu Yöneticisi oturum açma adı, parola ve aboneliğinizi bir yere göz atın.
 
@@ -129,10 +129,10 @@ Yerel ortamınızdan sunucusuna bağlanmak için [mysql.exe](https://dev.mysql.c
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Bir kaynak grubunda MySQL için Azure veritabanı sunucusunu başarıyla oluşturdunuz.  Gelecekte bu kaynaklara ihtiyaç duymazsanız, kaynak grubunu silerek veya MySQL sunucusunu silmeniz durumunda bunları silebilirsiniz. Kaynak grubunu silmek için şu adımları izleyin:
-1. Azure portal, **kaynak gruplarını**arayıp seçin. 
+1. Azure portal, **kaynak gruplarını** arayıp seçin. 
 2. Kaynak grubu listesinde, kaynak grubunuzun adını seçin.
-3. Kaynak grubunuzun Genel Bakış sayfasında **kaynak grubunu sil**' i seçin.
-4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil**' i seçin.
+3. Kaynak grubunuzun Genel Bakış sayfasında **kaynak grubunu sil** ' i seçin.
+4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil** ' i seçin.
 
 Sunucuyu silmek için aşağıda gösterildiği gibi sunucunuzun **genel bakış** sayfasında **Sil** düğmesine tıklayabilirsiniz:
 > [!div class="mx-imgBorder"]
@@ -140,6 +140,6 @@ Sunucuyu silmek için aşağıda gösterildiği gibi sunucunuzun **genel bakış
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
->MySQL ile Windows [üzerinde BIR php uygulaması derleme](../app-service/app-service-web-tutorial-php-mysql.md) 
-> MySQL ile Linux ['TA php uygulaması derleme](../app-service/containers/tutorial-php-mysql-app.md) 
-> [MySQL Ile Java tabanlı Spring uygulaması derleme](https://docs.microsoft.com/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)
+>MySQL ile Windows [üzerinde BIR php uygulaması derleme](../app-service/tutorial-php-mysql-app.md) 
+> MySQL ile Linux ['TA php uygulaması derleme](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%253fpivots%253dplatform-linux) 
+> [MySQL Ile Java tabanlı Spring uygulaması derleme](/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)

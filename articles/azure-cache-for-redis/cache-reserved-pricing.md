@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76da267ae14a1f58ee2cadbf48f4b2ec419312b4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093026"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543534"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip Redsıs işlem kaynakları için Azure önbelleği için ön ödeme
 
@@ -25,7 +25,7 @@ Redsıs örnekleri için ayırmayı belirli Azure önbelleğine atamanız gerekm
 * Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
 * Bulut çözümü sağlayıcısı (CSP) programı için yalnızca yönetici aracıları veya satış aracıları, Red, ayrılmış kapasite için Azure önbelleği satın alabilir.
 
-Kurumsal müşterilerin ve kullandıkça öde müşterilerinin rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar için bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlayın](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlayın](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
+Kurumsal müşterilerin ve kullandıkça öde müşterilerinin rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar için bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlayın](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlayın](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
 
 ## <a name="determine-the-right-cache-size-before-purchase"></a>Satın almadan önce doğru önbellek boyutunu belirle
@@ -38,7 +38,7 @@ Ayırma boyutu, belirli bir bölgedeki mevcut veya hemen dağıtılmış önbell
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>Redsıs ayrılmış kapasitesi için Azure önbelleği satın alın
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
+2. **Tüm hizmetler** > **Rezervasyonlar** ’ı seçin.
 3. **Ekle** ' yi seçin ve ardından satın alma rezervasyonları bölmesinde önbelleğiniz için yeni bir ayırma satın almak üzere **Redsıs için Azure önbelleği** ' ni seçin.
 4. Gerekli alanları doldur. ' Yi seçtiğiniz özniteliklerle eşleşen mevcut veya yeni veritabanları, ayrılmış kapasite indirimi elde etmek için nitelendir ' ı seçin. İndirimin alınacağı Redsıs örnekleri için Azure önbelleğinizin gerçek sayısı, seçilen kapsama ve miktara bağlıdır.
 
@@ -51,7 +51,7 @@ Aşağıdaki tablo gerekli alanları açıklar.
 | Alan | Açıklama |
 | :------------ | :------- |
 | Abonelik   | Reda için Azure önbelleği için ödeme yapmak üzere kullanılan abonelik, ayrılmış kapasite ayırması. Abonelik üzerindeki ödeme yöntemi, Red, ayrılmış kapasite rezervasyonu için Azure önbelleğinin ön maliyetlerini ücretlendirilmiştir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
-| Kapsam | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Rezervasyon**indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan redsıs örnekleri Için Azure önbelleğine uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik**, rezervasyon indirimi Bu abonelikteki redsıs örnekleri Için Azure önbelleğine uygulanır. </br></br> **Tek kaynak grubu**, ayırma indirimi seçili abonelikteki redsıs örnekleri ve bu abonelik içindeki seçili kaynak grubu Için Azure önbelleğine uygulanır.
+| Kapsam | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Rezervasyon** indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan redsıs örnekleri Için Azure önbelleğine uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik** , rezervasyon indirimi Bu abonelikteki redsıs örnekleri Için Azure önbelleğine uygulanır. </br></br> **Tek kaynak grubu** , ayırma indirimi seçili abonelikteki redsıs örnekleri ve bu abonelik içindeki seçili kaynak grubu Için Azure önbelleğine uygulanır.
 | Bölge | Reddir için Azure önbelleğinin kapsamına giren Azure bölgesi ayrılmış kapasite ayırması.
 | Fiyatlandırma katmanı | Redsıs sunucuları için Azure önbelleğinin hizmet katmanı.
 | Süre | Bir yıl veya üç yıl
@@ -59,7 +59,7 @@ Aşağıdaki tablo gerekli alanları açıklar.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="cache-size-flexibility"></a>Önbellek boyutu esnekliği
 
@@ -77,10 +77,9 @@ Rezervasyon indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen Redsıs ö
 
 * Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-    * [Azure Ayrılmış Sanal Makine Örnekleri nedir?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
-    * [Azure Ayırmalarını yönetme](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-    * [Azure Ayrılmış Sanal Makine Örnekleri indirimini anlama](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-    * [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)
-    * [Kurumsal kaydınız için rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-    * [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](https://docs.microsoft.com/partner-center/azure-reservations)
-
+    * [Azure Ayrılmış Sanal Makine Örnekleri nedir?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+    * [Azure Ayırmalarını yönetme](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+    * [Azure Ayrılmış Sanal Makine Örnekleri indirimini anlama](../cost-management-billing/reservations/understand-reservation-charges.md)
+    * [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reservation-charges-mysql.md)
+    * [Kurumsal kaydınız için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+    * [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](/partner-center/azure-reservations)

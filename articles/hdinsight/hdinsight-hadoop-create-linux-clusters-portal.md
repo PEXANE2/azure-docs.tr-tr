@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebfd5c456d3658c6339e5174c9c4ab33f6c52d4d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87874036"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541715"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun
 
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Üstteki menüden **+ kaynak oluştur**' u seçin.
+1. Üstteki menüden **+ kaynak oluştur** ' u seçin.
 
     ![Azure portal yeni bir küme oluşturun](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Azure portal yeni bir küme oluşturma")
 
@@ -48,12 +48,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 |Özellik |Açıklama |
 |---|---|
 |Abonelik|Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin.|
-|Kaynak grubu|Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur**' u seçin.|
+|Kaynak grubu|Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur** ' u seçin.|
 |Küme adı|Genel olarak benzersiz bir ad girin.|
 |Bölge|Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.|
 |Küme türü|Bir listeyi açmak için **küme türünü seç** ' e tıklayın. Listeden istenen küme türünü seçin. HDInsight kümeleri farklı türlerde gelir. Bunlar, kümenin ayarlanmış olduğu iş yüküne veya teknolojiye karşılık gelir. Birden çok türü birleştiren bir küme oluşturmak için desteklenen bir yöntem yoktur.|
-|Sürüm|Aşağı açılan listeden bir **Sürüm**seçin. Ne seçeceğimizi bilmiyorsanız varsayılan sürümü kullanın. Daha fazla bilgi için bkz. [HDInsight küme sürümleri](hdinsight-component-versioning.md).|
-|Küme oturum açma kullanıcı adı|Kullanıcı adını belirtin, varsayılan olarak **admin**' dir.|
+|Sürüm|Aşağı açılan listeden bir **Sürüm** seçin. Ne seçeceğimizi bilmiyorsanız varsayılan sürümü kullanın. Daha fazla bilgi için bkz. [HDInsight küme sürümleri](hdinsight-component-versioning.md).|
+|Küme oturum açma kullanıcı adı|Kullanıcı adını belirtin, varsayılan olarak **admin** ' dir.|
 |Küme oturum açma parolası|Parolayı girin.|
 |Küme oturum açma parolasını onaylayın|Parolayı yeniden girin|
 |Secure Shell (SSH) kullanıcı adı|Kullanıcı adını belirtin, varsayılan olarak **sshuser**|
@@ -64,19 +64,19 @@ Ileri ' yi seçin: bir sonraki sekmeye ilerlemek için **depolama >>** .
 ## <a name="storage"></a>Depolama
 
 > [!WARNING] 
-> 15 Haziran 2020 ' den itibaren müşteriler HDInsight kullanarak yeni hizmet sorumlusu oluşturamayacak. Bkz. Azure Active Directory kullanarak [hizmet sorumlusu ve sertifikaları oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) .
+> 15 Haziran 2020 ' den itibaren müşteriler HDInsight kullanarak yeni hizmet sorumlusu oluşturamayacak. Bkz. Azure Active Directory kullanarak [hizmet sorumlusu ve sertifikaları oluşturma](../active-directory/develop/howto-create-service-principal-portal.md) .
 
 ![HDInsight küme depolaması oluştur](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Azure portal depolamada yeni bir küme oluşturma")
 
 ### <a name="primary-storage"></a>Birincil depolama alanı
 
-**Birincil depolama türü**için aşağı açılan listeden varsayılan depolama türünü seçin. Tamamlanacak sonraki alanlar, seçiminize göre farklılık gösterecektir. **Azure depolama**için:
+**Birincil depolama türü** için aşağı açılan listeden varsayılan depolama türünü seçin. Tamamlanacak sonraki alanlar, seçiminize göre farklılık gösterecektir. **Azure depolama** için:
 
-1. **Seçim yöntemi**Için **listeden seç**' i veya **erişim anahtarı**' nı seçin.
-    * **Listeden seç**' in ardından, açılan listeden **birincil depolama hesabınızı** seçin veya **Yeni oluştur**' u seçin.
-    * **Kullanım erişim anahtarı**için **depolama hesabınızın adını**girin. Daha sonra **erişim anahtarını**sağlayın.
+1. **Seçim yöntemi** Için **listeden seç** ' i veya **erişim anahtarı** ' nı seçin.
+    * **Listeden seç** ' in ardından, açılan listeden **birincil depolama hesabınızı** seçin veya **Yeni oluştur** ' u seçin.
+    * **Kullanım erişim anahtarı** için **depolama hesabınızın adını** girin. Daha sonra **erişim anahtarını** sağlayın.
 
-1. **Kapsayıcı**için varsayılan değeri kabul edin veya yeni bir tane girin.
+1. **Kapsayıcı** için varsayılan değeri kabul edin veya yeni bir tane girin.
 
 ### <a name="additional-azure-storage"></a>Ek Azure depolama
 
@@ -99,7 +99,7 @@ Sonraki sekmeye ilerlemek için **İleri ' yi seçin: güvenlik + ağ >>** .
 
 |Özellik |Açıklama |
 |---|---|
-|Kurumsal güvenlik paketi|İsteğe bağlı: **Kurumsal güvenlik paketi**kullanmak için onay kutusunu seçin. Daha fazla bilgi için [Azure Active Directory Domain Services kullanarak kurumsal güvenlik paketi HDInsight kümesi yapılandırma](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)konusuna bakın.|
+|Kurumsal güvenlik paketi|İsteğe bağlı: **Kurumsal güvenlik paketi** kullanmak için onay kutusunu seçin. Daha fazla bilgi için [Azure Active Directory Domain Services kullanarak kurumsal güvenlik paketi HDInsight kümesi yapılandırma](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)konusuna bakın.|
 |TLS|İsteğe bağlı: açılan listeden bir TLS sürümü seçin. Daha fazla bilgi için bkz. [Aktarım Katmanı Güvenliği](./transport-layer-security.md).|
 |Sanal ağ|İsteğe bağlı: açılan listeden var olan bir sanal ağı ve alt ağı seçin. Bilgi için bkz. [Azure HDInsight kümeleri için sanal ağ dağıtımını planlayın](hdinsight-plan-virtual-network-deployment.md). Bu makale, sanal ağ için belirli yapılandırma gereksinimlerini içerir.|
 |Disk şifreleme ayarları|İsteğe bağlı: şifrelemeyi kullanmak için onay kutusunu seçin. Daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtar disk şifrelemesi](./disk-encryption.md).|
@@ -128,7 +128,7 @@ Küme yapılandırmasını doğrulamak ve son sekmeye ilerlemek için **gözden 
 
 ![HDInsight küme Özeti oluştur](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Küme düğümlerinin sayısını belirtin")
 
-Ayarları gözden geçirin. **Oluştur**’u seçerek kümeyi oluşturun.
+Ayarları gözden geçirin. **Oluştur** ’u seçerek kümeyi oluşturun.
 
 Kümenin oluşturulması genellikle yaklaşık 20 dakika sürer. Sağlama işlemini denetlemek için **bildirimleri** izleyin.
 

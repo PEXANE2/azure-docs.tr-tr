@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89084f0631b52631708db68a11595cb24d1b9fee
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 14ea98ecc4d9682353038088a124802d60a5dd5d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690128"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131454"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure sanal makineleri için genişletilmiş ölçüm ekleme
 
@@ -38,7 +38,7 @@ Cloudyn, Azure VM'lerin kaynakları hakkında ayrıntılı bilgiler sunmak için
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Genişletilmiş ölçümlerin etkin olup olmadığını belirleme
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
-2. **Sanal makineler**'in altında bir VM seçtikten sonra **İzleme** bölümünde **Ölçümler**'i seçin. Kullanılabilir ölçümlerin listesi gösterilir.
+2. **Sanal makineler** 'in altında bir VM seçtikten sonra **İzleme** bölümünde **Ölçümler** 'i seçin. Kullanılabilir ölçümlerin listesi gösterilir.
 3. Ölçümlerden birkaç tanesini seçtiğinizde veriler grafik biçiminde görüntülenir.  
     ![Örnek ölçüm - ana bilgisayar CPU yüzdesi](./media/azure-vm-extended-metrics/metric01.png)
 
@@ -50,17 +50,17 @@ Standart ölçümler ana bilgisayar ölçümleridir. Örnek olarak _CPU yüzdesi
 
 Genişletilmiş ölçümleri etkinleştirmek oldukça kolaydır. Her VM için konuk düzeyinde izlemeyi etkinleştirmeniz gerekir. Konuk düzeyinde izlemeyi etkinleştirdiğinizde VM'ye Azure tanılama aracısı yüklenir. Varsayılan olarak, temel bir genişletilmiş ölçüm kümesi eklenir. Aşağıdaki işlem, klasik ve normal VM'ler için aynıdır ve hem Windows hem de Linux VM'ler için geçerlidir.
 
-Hem Azure hem de Linux konuk düzeyinde izleme için depolama hesabı gerektiğini unutmayın. Konuk düzeyinde izlemeyi etkinleştirdiğinizde var olan bir depolama hesabını seçmezseniz, sizin için bir depolama hesabı oluşturulur.
+Hem Windows hem de Linux konuk düzeyinde izleme için depolama hesabı gerektiğini unutmayın. Konuk düzeyinde izlemeyi etkinleştirdiğinizde var olan bir depolama hesabını seçmezseniz, sizin için bir depolama hesabı oluşturulur.
 
 ### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Mevcut VM'lerde konuk düzeyinde izlemeyi etkinleştirme
 
-1. **Sanal Makineler**'de VM listenizi görüntüleyin ve VM'lerden birini seçin.
-2. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
-3. Tanılama ayarları sayfasında **Konuk düzeyinde izlemeyi etkinleştir**'e tıklayın.  
+1. **Sanal Makineler** 'de VM listenizi görüntüleyin ve VM'lerden birini seçin.
+2. **İzleme** bölümünde **Tanılama ayarları** 'nı seçin.
+3. Tanılama ayarları sayfasında **Konuk düzeyinde izlemeyi etkinleştir** 'e tıklayın.  
     ![Genel Bakış sayfasındaki Konuk düzeyinde izlemeyi etkinleştir seçeneği](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
 4. Birkaç dakika içinde VM'ye Azure tanılama aracısı yüklenir. Temel ölçüm kümesi eklenir. Sayfayı yenileyin. Eklenen performans sayaçları Genel Bakış sekmesinde görünür.
-5. İzleme'nin altında **Ölçümler**'i seçin.
-6. **Ölçüm Ad Alanı**'nın altındaki ölçümler grafiğinde **Konuk (Klasik)** seçimini yapın.
+5. İzleme'nin altında **Ölçümler** 'i seçin.
+6. **Ölçüm Ad Alanı** 'nın altındaki ölçümler grafiğinde **Konuk (Klasik)** seçimini yapın.
 7. Ölçüm listesinde konuk VM'nin kullanılabilir performans sayaçlarının tümünü görüntüleyebilirsiniz.  
     ![örnek genişletilmiş ölçümler listesi](./media/azure-vm-extended-metrics/extended-metrics.png)
 
@@ -74,7 +74,7 @@ Azure sanal makineleri için genişletilmiş ölçümleri etkinleştirme hakkın
 
 ## <a name="resource-manager-credentials"></a>Resource Manager kimlik bilgileri
 
-Genişletilmiş ölçümleri etkinleştirdikten sonra Cloudyn'in [Resource Manager kimlik bilgilerinize](../../cost-management/activate-subs-accounts.md) erişimi olduğundan emin olun. Cloudyn'in VM'lerinize ait performans verilerini toplaması ve görüntülemesi için kimlik bilgileriniz gereklidir. Bu bilgiler, maliyet iyileştirme önerileri oluşturmak için de kullanılır. Cloudyn, bir örneğin boyutunu küçültme önerilerine uygun bir aday olup olmadığını belirlemek için en az üç günlük performans verilerine ihtiyaç duyar.
+Genişletilmiş ölçümleri etkinleştirdikten sonra Cloudyn'in [Resource Manager kimlik bilgilerinize](./activate-subs-accounts.md) erişimi olduğundan emin olun. Cloudyn'in VM'lerinize ait performans verilerini toplaması ve görüntülemesi için kimlik bilgileriniz gereklidir. Bu bilgiler, maliyet iyileştirme önerileri oluşturmak için de kullanılır. Cloudyn, bir örneğin boyutunu küçültme önerilerine uygun bir aday olup olmadığını belirlemek için en az üç günlük performans verilerine ihtiyaç duyar.
 
 ## <a name="enable-vm-metrics-with-a-script"></a>VM ölçümlerini betik kullanarak etkinleştirme
 
@@ -88,4 +88,4 @@ Cloudyn portalında Azure örneklerinizin performans ölçümlerini görüntüle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hesaplarınız için Azure Resource Manager API’si erişimini etkinleştirmediyseniz bkz. [Azure aboneliklerini ve hesaplarını etkinleştirme](../../cost-management/activate-subs-accounts.md).
+- Hesaplarınız için Azure Resource Manager API’si erişimini etkinleştirmediyseniz bkz. [Azure aboneliklerini ve hesaplarını etkinleştirme](./activate-subs-accounts.md).

@@ -30,7 +30,7 @@ Iş yıldızlarını Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Iş yıldızları ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Iş yıldızlarını Azure AD 'ye tümleştirmeyi yapılandırmak için galeride
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **workyıldızlar**yazın, sonuç panelinden **iş yıldızlarını** seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **workyıldızlar** yazın, sonuç panelinden **iş yıldızlarını** seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesindeki iş yıldızları](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre iş yıldızlarını yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre iş yıldızlarını yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve iş yıldızdaki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı Iş yıldızlarıyla birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açma 'yı çalışma yıldıza göre yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **iş yıldızları** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **iş yıldızları** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -126,11 +126,11 @@ Azure AD çoklu oturum açma 'yı çalışma yıldıza göre yapılandırmak iç
 
 1. Başka bir tarayıcı penceresinde, Iş yıldızlı şirket sitenizde yönetici olarak oturum açın.
 
-2. Ana araç çubuğunda, **Ayarlar**' a tıklayın.
+2. Ana araç çubuğunda, **Ayarlar** ' a tıklayın.
 
     ![Çalışma yıldızları ayarları](./media/workstars-tutorial/tutorial_workstars_sett.png)
 
-3. **Oturum açma**  >  **ayarları**' na gidin.
+3. **Oturum açma**  >  **ayarları** ' na gidin.
 
     ![İş yıldızları oturum açma](./media/workstars-tutorial/tutorial_workstars_signon.png)
 
@@ -140,25 +140,25 @@ Azure AD çoklu oturum açma 'yı çalışma yıldıza göre yapılandırmak iç
     
     ![İş yıldızları SAML](./media/workstars-tutorial/tutorial_workstars_saml.png)
 
-    a. **Kimlik sağlayıcısı adı** metin kutusuna **Office 365**yazın.
+    a. **Kimlik sağlayıcısı adı** metin kutusuna **Office 365** yazın.
 
-    b. **Kimlik sağlayıcısı VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
+    b. **Kimlik sağlayıcısı VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
     c. İndirilen sertifika dosyasının içeriğini Not defteri 'nde kopyalayın ve ardından **x509 sertifikası** metin kutusuna yapıştırın. 
 
-    d. **SAML SSO URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    d. **SAML SSO URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
     
-    e. **Uzaktan oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si**değerini yapıştırın. 
+    e. **Uzaktan oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si** değerini yapıştırın. 
 
-    f. **ad kimliğini** **e-posta olarak seçin (varsayılan)**.
+    f. **ad kimliğini** **e-posta olarak seçin (varsayılan)** .
 
-    örneğin: **Onayla**'ya tıklayın.
+    örneğin: **Onayla** 'ya tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -170,27 +170,27 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, çalışma yıldızlara erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **çalışma**yıldızı ' nı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **çalışma** yıldızı ' nı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **çalışma yıldızlar**' yı seçin.
+2. Uygulamalar listesinde, **çalışma yıldızlar** ' yı seçin.
 
     ![Uygulamalar listesindeki Iş yıldızları bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
-ms.openlocfilehash: 0174c40a0fada0f78cc8d52f5c45b991c3851da0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a5982cb96891b3c0724007aa98527a07daba0fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85850560"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532569"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Kafka akışları API 'SI kullanma
 
@@ -25,7 +25,7 @@ Kafka Stream işleme genellikle Apache Spark veya Apache Storm kullanılarak yap
 
 Kafka Akışları hakkında daha fazla bilgi için, Apache.org adresindeki [Akışların Tanıtımı](https://kafka.apache.org/10/documentation/streams/) belgelerine bakın.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Kodu anlama
@@ -33,13 +33,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Kafka konuları yapılandırma
 > * Kodu çalıştırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight 3.6 kümesi üzerinde bir Kafka. HDInsight kümesinde Kafka oluşturma hakkında bilgi edinmek için bkz. [HDInsight 'ta Apache Kafka kullanmaya başlama](apache-kafka-get-started.md) belgesi.
 
 * [Apache Kafka tüketicisi ve ÜRETICISI API](apache-kafka-producer-consumer-api.md) belgesindeki adımları uygulayın. Bu belgede yer alan adımlarda, bu öğreticide oluşturulan örnek uygulama ve konular kullanılmaktadır.
 
-* [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks) veya OpenJDK gibi bir eşdeğer.
+* [Java geliştirici seti (JDK) sürüm 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) veya OpenJDK gibi bir eşdeğer.
 
 * Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
 
@@ -266,9 +266,9 @@ Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu sileb
 
 Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
-1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve sonra __Kaynak Grupları__'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
+1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve sonra __Kaynak Grupları__ 'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
 2. Silinecek kaynak grubunu bulun ve sonra listenin sağ tarafındaki __Daha fazla__ düğmesine (...) sağ tıklayın.
-3. __Kaynak grubunu sil__'i seçip onaylayın.
+3. __Kaynak grubunu sil__ 'i seçip onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

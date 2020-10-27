@@ -7,12 +7,12 @@ author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: a102c9f375b37579cf6f92b08d67f762d3dfd26a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5554a66927fc70f22ec552b938ae62038a04acb9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220899"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533028"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Senaryo: Apache Hive Günlükler Azure HDInsight 'taki baş düğümlerdeki disk alanını dolduriyor
 
@@ -23,7 +23,7 @@ Bu makalede, Azure HDInsight kümelerinde baş düğümlerde yeterli disk alanı
 Apache Hive/LLAP kümesinde, istenmeyen Günlükler baş düğümlerdeki tüm disk alanını kaplar. Bu nedenle, aşağıdaki sorunlar görülebilir.
 
 1. Baş düğümde hiç boşluk kalmadı, SSH erişimi başarısız olur.
-2. Ambarı *http hatası veriyor: 503 hizmeti kullanılamıyor*.
+2. Ambarı *http hatası veriyor: 503 hizmeti kullanılamıyor* .
 3. HiveServer2 etkileşimli yeniden başlatılamadı.
 
 `ambari-agent`Sorun oluştuğunda günlükler aşağıdaki gibi görünür.
@@ -77,4 +77,4 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * [@AzureSupport](https://twitter.com/azuresupport)Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](../../azure-portal/supportability/how-to-create-azure-support-request.md)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

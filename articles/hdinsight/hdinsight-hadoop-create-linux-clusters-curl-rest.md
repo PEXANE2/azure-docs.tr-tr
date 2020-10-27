@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: f2b3810afab86b2f81a18bac442ef361404f2309
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b67ddd57c3a0787213763253cef5083f420cefe0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490365"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541681"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API kullanarak Apache Hadoop kümeleri oluşturma
 
@@ -219,7 +219,7 @@ Bu örnek, bu belgedeki adımlarda kullanılır. **Parameters** bölümündeki �
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
 > [!NOTE]  
-> Bu adımlar, [kaynaklara erişmek üzere bir hizmet sorumlusu oluşturmak Için Azure CLI kullanma](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) başlıklı ' ın *parola Ile hizmet sorumlusu oluşturma* bölümünün, desteklenmeyen bir sürümüdür. Bu adımlar, Azure REST API kimlik doğrulaması yapmak için kullanılan bir hizmet sorumlusu oluşturur.
+> Bu adımlar, [kaynaklara erişmek üzere bir hizmet sorumlusu oluşturmak Için Azure CLI kullanma](/cli/azure/create-an-azure-service-principal-azure-cli) başlıklı ' ın *parola Ile hizmet sorumlusu oluşturma* bölümünün, desteklenmeyen bir sürümüdür. Bu adımlar, Azure REST API kimlik doğrulaması yapmak için kullanılan bir hizmet sorumlusu oluşturur.
 
 1. Bir komut satırından, Azure aboneliklerinizi listelemek için aşağıdaki komutu kullanın.
 
@@ -242,13 +242,13 @@ Bu örnek, bu belgedeki adımlarda kullanılır. **Parameters** bölümündeki �
 
    Bu komuttan döndürülen değer, yeni uygulamanın __uygulama kimliğidir__ . Bu değeri kaydedin.
 
-3. **Uygulama kimliğini**kullanarak bir hizmet sorumlusu oluşturmak için aşağıdaki komutu kullanın.
+3. **Uygulama kimliğini** kullanarak bir hizmet sorumlusu oluşturmak için aşağıdaki komutu kullanın.
 
    ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     Bu komuttan döndürülen değer, __nesne kimliğidir__. Bu değeri kaydedin.
+     Bu komuttan döndürülen değer, __nesne kimliğidir__ . Bu değeri kaydedin.
 
 4. **Nesne kimliği** değerini kullanarak hizmet sorumlusuna **sahip** rolünü atayın. Daha önce edindiğiniz **ABONELIK kimliğini** kullanın.
 
@@ -274,7 +274,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 
 Bu istek başarılı olursa, bir 200 serisi yanıtı alırsınız ve yanıt gövdesi bir JSON belgesi içerir.
 
-Bu istek tarafından döndürülen JSON belgesi, **access_token**adlı bir öğe içeriyor. **Access_token** değeri, REST API isteklerinde kimlik doğrulaması yapmak için kullanılır.
+Bu istek tarafından döndürülen JSON belgesi, **access_token** adlı bir öğe içeriyor. **Access_token** değeri, REST API isteklerinde kimlik doğrulaması yapmak için kullanılır.
 
 ```json
 {

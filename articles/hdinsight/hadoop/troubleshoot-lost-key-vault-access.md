@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: 1e34c1002be3dffb719490fee01e481e8df45901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc8162f3a7ca8744a94aba039996275b5f13c727
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532571"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533419"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Senaryo: disk şifrelemesi ile Azure HDInsight kümeleri Key Vault erişimi kaybeder
 
@@ -26,7 +26,7 @@ Kaynak Durumu Center (RHC) uyarısı, `The HDInsight cluster is unable to access
 
 Uyarı, KV 'nin küme düğümlerinden erişilebilir olmasını sağlar, böylece ağ bağlantısı, KV sistem durumu ve Kullanıcı tarafından atanan yönetilen kimlik için erişim ilkesini sağlar. Bu uyarı yalnızca sonraki düğüm yeniden başlatıldığında aracı kapatmasından önce gelen bir uyarıdır. düğümler yeniden başlatılıncaya kadar küme çalışmaya devam eder.
 
-**Disk şifreleme Key Vault durumu**uyarısı hakkında daha fazla bilgi edinmek Için Apache ambarı Kullanıcı arabirimine gidin. Bu uyarı, doğrulama hatasının nedeni hakkında ayrıntılara sahip olacaktır.
+**Disk şifreleme Key Vault durumu** uyarısı hakkında daha fazla bilgi edinmek Için Apache ambarı Kullanıcı arabirimine gidin. Bu uyarı, doğrulama hatasının nedeni hakkında ayrıntılara sahip olacaktır.
 
 ## <a name="resolution"></a>Çözüm
 
@@ -36,7 +36,7 @@ Daha fazla ayrıntı için [Azure Key Vault kullanılabilirlik ve artıklık](..
 
 ### <a name="kv-accidental-deletion"></a>KV yanlışlıkla silme
 
-* KV içindeki silinen anahtarı otomatik olarak kurtar ' a geri yükleyin. Daha fazla bilgi için bkz. [silinen anahtarı kurtarma](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey).
+* KV içindeki silinen anahtarı otomatik olarak kurtar ' a geri yükleyin. Daha fazla bilgi için bkz. [silinen anahtarı kurtarma](/rest/api/keyvault/recoverdeletedkey).
 * Yanlışlıkla silinmelerden kurtulmak için KV ekibine ulaşın.
 
 ### <a name="kv-access-policy-changed"></a>KV erişim ilkesi değişti
@@ -88,4 +88,4 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](../../azure-portal/supportability/how-to-create-azure-support-request.md)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

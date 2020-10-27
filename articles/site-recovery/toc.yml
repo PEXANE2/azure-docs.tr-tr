@@ -164,7 +164,7 @@
       href: recovery-plan-overview.md
     - name: Azure’a geçiş hakkında
       href: migrate-overview.md
-    - name: Site Recovery ile rol tabanlı erişim denetimi hakkında
+    - name: Site Recovery ile Azure rol tabanlı erişim denetimi hakkında
       href: site-recovery-role-based-linked-access-control.md
     - name: İkincil bir şirket içi siteye olağanüstü durum kurtarma hakkında
       items:

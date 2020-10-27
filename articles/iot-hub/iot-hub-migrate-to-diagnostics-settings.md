@@ -8,18 +8,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: ab07da38c01b052a4220274fb059683a22950a3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c90142330b0530f1127beae1624ff27d7eb6ca
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75750713"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541494"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>IoT Hub işlemler izlemeden tanılama ayarlarına geçirin
 
 IoT Hub içindeki işlemlerin durumunu izlemek için [İşlem izlemeyi](iot-hub-operations-monitoring.md) kullanan müşteriler, bu Iş akışını Azure izleyici 'nin bir özelliği olan [Azure tanılama ayarlarına](../azure-monitor/platform/platform-logs-overview.md)geçirebilir. Tanılama ayarları birçok Azure hizmeti için kaynak düzeyinde tanılama bilgilerini sağlar.
 
-**IoT Hub işlemler izleme işlevi kullanım dışıdır**ve portaldan kaldırılmıştır. Bu makalede, iş yüklerinizi işlemler izlemeden tanılama ayarlarına taşıma adımları sağlanır. Kullanımdan kaldırma zaman çizelgesi hakkında daha fazla bilgi için bkz. Azure [izleme Ile Azure IoT çözümlerinizi izleme ve Azure Kaynak durumu](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
+**IoT Hub işlemler izleme işlevi kullanım dışıdır** ve portaldan kaldırılmıştır. Bu makalede, iş yüklerinizi işlemler izlemeden tanılama ayarlarına taşıma adımları sağlanır. Kullanımdan kaldırma zaman çizelgesi hakkında daha fazla bilgi için bkz. Azure [izleme Ile Azure IoT çözümlerinizi izleme ve Azure Kaynak durumu](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
 
 ## <a name="update-iot-hub"></a>Güncelleştirme IoT Hub
 
@@ -34,9 +34,9 @@ Azure portal IoT Hub güncelleştirmek için, önce tanılama ayarlarını açı
 
 Yeni tanılama ayarlarını iş akışınızda test etmeniz durumunda, işlemler izleme özelliğini kapatabilirsiniz. 
 
-1. IoT Hub menüsünde, **işlem izleme**' yi seçin.
+1. IoT Hub menüsünde, **işlem izleme** ' yi seçin.
 
-2. Her izleme kategorisinin altında **hiçbiri**' ni seçin.
+2. Her izleme kategorisinin altında **hiçbiri** ' ni seçin.
 
 3. İşlemleri izleme değişikliklerini kaydedin.
 
@@ -52,7 +52,7 @@ Ayrıca, Tanılama ayarları izleme için beş yeni kategori sunar. Mevcut şema
 * İş işlemleri
 * Doğrudan Yöntemler
 
-Belirli şema yapıları için bkz. [Tanılama ayarları şemasını anlama](iot-hub-monitor-resource-health.md#understand-the-logs).
+Belirli şema yapıları için bkz. [kaynak günlükleri](monitor-iot-hub-reference.md#resource-logs).
 
 ## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Düşük gecikme süresi ile cihaz bağlama ve bağlantı kesme olaylarını izleme
 
@@ -60,4 +60,4 @@ Cihazdaki cihaz bağlantısını ve bağlantı kesmeyi izlemek için, uyarılar�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure IoT Hub durumunu izleyin ve sorunları hızla tanılayın](iot-hub-monitor-resource-health.md)
+[İzleyici IoT Hub](monitor-iot-hub.md)

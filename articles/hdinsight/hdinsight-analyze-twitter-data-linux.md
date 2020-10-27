@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: 8031e917d998b877e6c3a5830d69abf81c9bdebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe511ed2d6b724c1215f9986c9d6c50aae076935
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086730"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533300"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight üzerinde Apache Hive ve Apache Hadoop kullanarak Twitter verilerini çözümleme
 
@@ -30,31 +30,31 @@ Twitter, her Tweet için verileri bir JavaScript Nesne Gösterimi (JSON) belgesi
 
 1. Bir Web tarayıcısından ' de oturum açın [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/) . Twitter hesabınız yoksa **Şimdi kaydolun** bağlantısını seçin.
 
-2. **Yeni uygulama oluştur**' u seçin.
+2. **Yeni uygulama oluştur** ' u seçin.
 
-3. **Ad**, **Açıklama**, **Web sitesi**girin. **Web sitesi** alanı IÇIN bir URL oluşturabilirsiniz. Aşağıdaki tabloda, kullanılacak bazı örnek değerler gösterilmektedir:
+3. **Ad** , **Açıklama** , **Web sitesi** girin. **Web sitesi** alanı IÇIN bir URL oluşturabilirsiniz. Aşağıdaki tabloda, kullanılacak bazı örnek değerler gösterilmektedir:
 
    | Alan | Değer |
    |--- |--- |
-   | Ad |MyHDInsightApp |
+   | Adı |MyHDInsightApp |
    | Açıklama |MyHDInsightApp |
    | Web sitesi |`https://www.myhdinsightapp.com` |
 
-4. **Evet, kabul**ediyorum ' u seçin ve ardından **Twitter uygulamanızı oluştur**' u seçin.
+4. **Evet, kabul** ediyorum ' u seçin ve ardından **Twitter uygulamanızı oluştur** ' u seçin.
 
-5. **İzinler** sekmesini seçin. Varsayılan izin **salt okunurdur**.
+5. **İzinler** sekmesini seçin. Varsayılan izin **salt okunurdur** .
 
 6. **Anahtarlar ve erişim belirteçleri** sekmesini seçin.
 
-7. **Erişim belirtecimi oluştur**' u seçin.
+7. **Erişim belirtecimi oluştur** ' u seçin.
 
 8. Sayfanın sağ üst köşesindeki **Test OAuth** ' ı seçin.
 
-9. **Tüketici anahtarı**, **Tüketici parolası**, **erişim belirteci**ve **erişim belirteci gizli**anahtarını yazın.
+9. **Tüketici anahtarı** , **Tüketici parolası** , **erişim belirteci** ve **erişim belirteci gizli** anahtarını yazın.
 
 ### <a name="download-tweets"></a>Fazla doldurulabilir yükleme
 
-Aşağıdaki Python kodu Twitter 'dan 10.000 tasarruf sağlar ve **tweets.txt**adlı bir dosyaya kaydeder.
+Aşağıdaki Python kodu Twitter 'dan 10.000 tasarruf sağlar ve **tweets.txt** adlı bir dosyaya kaydeder.
 
 > [!NOTE]  
 > Python zaten yüklü olduğundan, HDInsight kümesinde aşağıdaki adımlar gerçekleştirilir.
@@ -78,7 +78,7 @@ Aşağıdaki Python kodu Twitter 'dan 10.000 tasarruf sağlar ve **tweets.txt**a
    pip install tweepy progressbar pyOpenSSL requests[security]
    ```
 
-1. **Gettweets.py**adlı bir dosya oluşturmak için aşağıdaki komutu kullanın:
+1. **Gettweets.py** adlı bir dosya oluşturmak için aşağıdaki komutu kullanın:
 
    ```bash
    nano gettweets.py
@@ -143,7 +143,7 @@ Aşağıdaki Python kodu Twitter 'dan 10.000 tasarruf sağlar ve **tweets.txt**a
     > [!TIP]  
     > Popüler anahtar sözcükleri izlemek için son satırdaki konular filtresini ayarlayın. Betiği çalıştırdığınız sırada popüler anahtar sözcüklerin kullanılması, verilerin daha hızlı yakalanmasını sağlar.
 
-1. Dosyayı kaydetmek için **CTRL + X**, sonra **Y** kullanın.
+1. Dosyayı kaydetmek için **CTRL + X** , sonra **Y** kullanın.
 
 1. Dosyayı çalıştırmak ve arası dosyaları indirmek için aşağıdaki komutu kullanın:
 
@@ -283,7 +283,7 @@ Bu komutlar, verileri kümedeki tüm düğümlerin erişebileceği bir konumda d
    WHERE (length(json_response) > 500);
    ```
 
-1. **CTRL + X**tuşlarına basın ve ardından dosyayı kaydetmek için **Y** tuşuna basın.
+1. **CTRL + X** tuşlarına basın ve ardından dosyayı kaydetmek için **Y** tuşuna basın.
 
 1. Dosyasında bulunan HiveQL 'i çalıştırmak için aşağıdaki komutu kullanın:
 
@@ -313,4 +313,4 @@ Bu komutlar, verileri kümedeki tüm düğümlerin erişebileceği bir konumda d
 Yapılandırılmamış bir JSON veri kümesini yapılandırılmış bir [Apache Hive](https://hive.apache.org/) tablosuna nasıl dönüştürebileceğinizi öğrendiniz. HDInsight 'ta Hive hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [HDInsight'ı kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [HDInsight kullanarak Uçuş gecikmesi verilerini çözümleme](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [HDInsight kullanarak Uçuş gecikmesi verilerini çözümleme](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 8ae16e6799d1253b8b070d59414beaee3c7ff332
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d2e9c1fe89866511f8eae0b900563471cd6e52e9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479791"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533317"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Küme yapılandırmaları için ayrıntılı rol tabanlı erişime geçme
 
@@ -20,16 +20,16 @@ Hassas bilgileri almak için daha ayrıntılı rol tabanlı erişimi desteklemey
 
 ## <a name="what-is-changing"></a>Ne değişiyor?
 
-Daha önce, kullanıcılar izin, katkıda bulunan veya okuyucu [Azure rollerinin](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)sahibi olan herkes tarafından kullanılabilir oldukları için, küme kullanıcıları tarafından HDInsight API 'si aracılığıyla elde edilebilir `*/read` . Gizli dizileri, bir kullanıcının rolünden izin verilmelidir daha fazla yükseltilmiş erişim elde etmek için kullanılabilecek değerler olarak tanımlanır. Bunlar, küme ağ geçidi HTTP kimlik bilgileri, depolama hesabı anahtarları ve veritabanı kimlik bilgileri gibi değerleri içerir.
+Daha önce, kullanıcılar izin, katkıda bulunan veya okuyucu [Azure rollerinin](../role-based-access-control/rbac-and-directory-admin-roles.md)sahibi olan herkes tarafından kullanılabilir oldukları için, küme kullanıcıları tarafından HDInsight API 'si aracılığıyla elde edilebilir `*/read` . Gizli dizileri, bir kullanıcının rolünden izin verilmelidir daha fazla yükseltilmiş erişim elde etmek için kullanılabilecek değerler olarak tanımlanır. Bunlar, küme ağ geçidi HTTP kimlik bilgileri, depolama hesabı anahtarları ve veritabanı kimlik bilgileri gibi değerleri içerir.
 
 3 Eylül 2019 ' den başlayarak, bu gizli bilgilere erişmek için izin gerekir, bu da `Microsoft.HDInsight/clusters/configurations/action` artık okuyucu rolüne sahip kullanıcılar tarafından erişilemeyeceği anlamına gelir. Bu izne sahip roller katkıda bulunan, sahip ve yeni HDInsight küme Işletmeni rolü (aşağıda daha fazla).
 
-Ayrıca, katkıda bulunan veya sahip 'in yönetim izinleri verilmeden gizli dizileri alabilecek yeni bir [HDInsight küme işletmeni](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) rolü sunuyoruz. Özetlemek gerekirse:
+Ayrıca, katkıda bulunan veya sahip 'in yönetim izinleri verilmeden gizli dizileri alabilecek yeni bir [HDInsight küme işletmeni](../role-based-access-control/built-in-roles.md#hdinsight-cluster-operator) rolü sunuyoruz. Özetlemek gerekirse:
 
 | Rol                                  | Virüslü                                                                                       | Ileri git       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Okuyucu                                | -Gizli dizileri de içeren okuma erişimi.                                                                   | -Gizli dizileri **hariç** okuma erişimi |           |   |   |
-| HDInsight küme operatörü<br>(Yeni rol) | Yok                                                                                              | -Gizli dizileri dahil okuma/yazma erişimi         |   |   |
+| HDInsight küme operatörü<br>(Yeni rol) | YOK                                                                                              | -Gizli dizileri dahil okuma/yazma erişimi         |   |   |
 | Katılımcı                           | -Parolalar da dahil olmak üzere okuma/yazma erişimi.<br>-Tüm Azure kaynakları türlerini oluşturun ve yönetin.<br>-Betik eylemlerini yürütün.     | düzeltme sınıfı, |
 | Sahip                                 | -Gizlilikler dahil olmak üzere okuma/yazma erişimi.<br>-Tüm kaynaklara tam erişim<br>-Başkalarına erişim yetkisi verin.<br>-Betik eylemlerini yürütün. | düzeltme sınıfı, |
 
@@ -57,23 +57,23 @@ Senaryonuza yönelik geçiş adımlarını görmek için aşağıdaki bölümler
 
 Aşağıdaki API 'Ler değiştirilecek veya kullanım dışı bırakılacak:
 
-- [**Get/configurations/{configurationName}**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (hassas bilgiler kaldırıldı)
+- [**Get/configurations/{configurationName}**](/rest/api/hdinsight/hdinsight-cluster#get-configuration) (hassas bilgiler kaldırıldı)
     - Daha önce ayrı yapılandırma türlerini (parolalar dahil) almak için kullanılır.
     - 3 Eylül 2019 ' den itibaren bu API çağrısı artık gizli dizileri olan ayrı yapılandırma türleri döndürüyor. Gizli dizileri de içeren tüm yapılandırmaların elde edilmesi için yeni GÖNDERI/yapılandırma çağrısını kullanın. Yalnızca ağ geçidi ayarlarını almak için yeni POST/getGatewaySettings çağrısını kullanın.
-- [**/Configurations al**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (kullanım dışı)
+- [**/Configurations al**](/rest/api/hdinsight/hdinsight-cluster#get-configuration) (kullanım dışı)
     - Daha önce tüm yapılandırmaların (gizli diziler dahil) alınması için kullanılır
     - 3 Eylül 2019 ' den itibaren bu API çağrısı kullanım dışı bırakılacak ve artık desteklenmeyecektir. İleri doğru olan tüm yapılandırmaların elde etmek için yeni POST/Configurations çağrısını kullanın. Gizli parametrelere sahip yapılandırmaların elde edilmesi için, GET/configurations/{configurationName} çağrısını kullanın.
-- [**Post/configurations/{configurationName}**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (kullanım dışı)
+- [**Post/configurations/{configurationName}**](/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (kullanım dışı)
     - Daha önce Ağ Geçidi kimlik bilgilerini güncelleştirmek için kullanılır.
     - 3 Eylül 2019 ' den itibaren bu API çağrısı kullanım dışı bırakılacak ve artık desteklenmeyecektir. Bunun yerine yeni POST/updateGatewaySettings komutunu kullanın.
 
 Aşağıdaki değiştirme API 'Leri eklendi:</span>
 
-- [**GÖNDERI/yapılandırma**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#list-configurations)
+- [**GÖNDERI/yapılandırma**](/rest/api/hdinsight/hdinsight-cluster#list-configurations)
     - Gizli dizileri dahil tüm yapılandırmaların elde edilmesi için bu API 'yi kullanın.
-- [**POST/getGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
+- [**POST/getGatewaySettings**](/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
     - Ağ Geçidi ayarlarını almak için bu API 'YI kullanın.
-- [**/UpdateGatewaySettings SONRASı**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
+- [**/UpdateGatewaySettings SONRASı**](/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
     - Ağ Geçidi ayarlarını (Kullanıcı adı ve/veya parola) güncelleştirmek için bu API 'YI kullanın.
 
 ### <a name="azure-hdinsight-tools-for-visual-studio-code"></a>Visual Studio Code için Azure HDInsight araçları
@@ -86,7 +86,7 @@ Sürüm 3.20.0 veya aşağıdaki sürümü kullanıyorsanız kesintileri önleme
 
 ### <a name="azure-data-lake-and-stream-analytics-tools-for-visual-studio"></a>Visual Studio için Azure Data Lake ve Stream Analytics araçları
 
-Kesintiden kaçınmak üzere [Visual Studio için Azure Data Lake ve Stream Analytics araçları](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools&ssr=false#overview) sürümüne güncelleştirin.  Güncelleştirme hakkında yardım için, [Visual Studio için belgelerimizi, güncelleştirme Data Lake araçları](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started#update-data-lake-tools-for-visual-studio)' nı inceleyin.
+Kesintiden kaçınmak üzere [Visual Studio için Azure Data Lake ve Stream Analytics araçları](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools&ssr=false#overview) sürümüne güncelleştirin.  Güncelleştirme hakkında yardım için, [Visual Studio için belgelerimizi, güncelleştirme Data Lake araçları](./hadoop/apache-hadoop-visual-studio-tools-get-started.md#update-data-lake-tools-for-visual-studio)' nı inceleyin.
 
 ### <a name="azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse
 
@@ -122,10 +122,10 @@ Sürüm 3.15.0 veya aşağıdaki sürümü kullanıyorsanız kesintileri önleme
 
 Python için HDInsight SDK 'sının [Version 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) veya üzeri sürümüne güncelleştirin. Aşağıdaki değişikliklerden etkilenen bir yöntem kullanıyorsanız, minimum kod değişiklikleri gerekebilir:
 
-- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) , artık depolama anahtarları (çekirdek-site) veya HTTP kimlik bilgileri (ağ geçidi) gibi **hassas parametreleri döndürmez** .
-    - Gizli parametreler dahil tüm yapılandırmaların alınması için ileri ' yi kullanın [`ConfigurationsOperations.list`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) .' Reader ' rolüne sahip kullanıcıların bu yöntemi kullanabilediğine unutmayın. Bu, kullanıcıların bir küme için hassas bilgilere erişebileceği ayrıntılı denetim sağlar. 
-    - Yalnızca HTTP ağ geçidi kimlik bilgilerini almak için kullanın [`ClusterOperations.get_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) .
-- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) Artık kullanım dışıdır ve ile değiştirilmiştir [`ClusterOperations.update_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) .
+- [`ConfigurationsOperations.get`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) , artık depolama anahtarları (çekirdek-site) veya HTTP kimlik bilgileri (ağ geçidi) gibi **hassas parametreleri döndürmez** .
+    - Gizli parametreler dahil tüm yapılandırmaların alınması için ileri ' yi kullanın [`ConfigurationsOperations.list`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) .' Reader ' rolüne sahip kullanıcıların bu yöntemi kullanabilediğine unutmayın. Bu, kullanıcıların bir küme için hassas bilgilere erişebileceği ayrıntılı denetim sağlar. 
+    - Yalnızca HTTP ağ geçidi kimlik bilgilerini almak için kullanın [`ClusterOperations.get_gateway_settings`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) .
+- [`ConfigurationsOperations.update`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) Artık kullanım dışıdır ve ile değiştirilmiştir [`ClusterOperations.update_gateway_settings`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) .
 
 ### <a name="sdk-for-java"></a>Java Için SDK
 
@@ -154,7 +154,7 @@ Kesintileri önlemek için [az PowerShell Version 2.0.0](https://www.powershellg
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>Kullanıcıya HDInsight küme Işletmeni rolü atamasını ekleme
 
-[Sahip](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rolüne sahip bir Kullanıcı, gizli HDInsight küme yapılandırma değerlerine (küme ağ geçidi kimlik bilgileri ve depolama hesabı anahtarları gibi) okuma/yazma erişimi olmasını Istediğiniz kullanıcılara [HDInsight küme işletmeni](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) rolünü atayabilir.
+[Sahip](../role-based-access-control/built-in-roles.md#owner) rolüne sahip bir Kullanıcı, gizli HDInsight küme yapılandırma değerlerine (küme ağ geçidi kimlik bilgileri ve depolama hesabı anahtarları gibi) okuma/yazma erişimi olmasını Istediğiniz kullanıcılara [HDInsight küme işletmeni](../role-based-access-control/built-in-roles.md#hdinsight-cluster-operator) rolünü atayabilir.
 
 ### <a name="using-the-azure-cli"></a>Azure CLI'yı kullanma
 
@@ -183,7 +183,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
-Alternatif olarak, bir kullanıcıya HDInsight küme operatörü rolü atamasını eklemek için Azure portal kullanabilirsiniz. [Azure Portal-rol ataması ekleme ' yi kullanarak Azure rol atamalarını ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)belgelerine bakın.
+Alternatif olarak, bir kullanıcıya HDInsight küme operatörü rolü atamasını eklemek için Azure portal kullanabilirsiniz. [Azure Portal-rol ataması ekleme ' yi kullanarak Azure rol atamalarını ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)belgelerine bakın.
 
 ## <a name="faq"></a>SSS
 
