@@ -19,7 +19,7 @@ Azure Cloud Shell’i başlatmak için:
 
 | Seçenek | Örnek/Bağlantı |
 |-----------------------------------------------|---|
-| Kod bloğunun sağ üst köşesindeki **Deneyin**’i seçin. **Deneyin** seçeneği belirlendiğinde, kod otomatik olarak Cloud Shell’e kopyalanmaz. | ![Azure Cloud Shell için Deneyin örneği](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| Kod bloğunun sağ üst köşesindeki **Deneyin** ’i seçin. **Deneyin** seçeneği belirlendiğinde, kod otomatik olarak Cloud Shell’e kopyalanmaz. | ![Azure Cloud Shell için Deneyin örneği](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
 | Cloud Shell’i tarayıcınızda açmak için [https://shell.azure.com](https://shell.azure.com) bölümüne gidin veya **Cloud Shell’i Başlat** düğmesini seçin. | [![Cloud Shell’i yeni bir pencerede başlatma](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
 | [Azure portalın](https://portal.azure.com) sağ üst köşesindeki menü çubuğunda yer alan **Cloud Shell** düğmesini seçin. | ![Azure portaldaki Cloud Shell düğmesi](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 

@@ -29,7 +29,7 @@ Kaynaktan silmeden önce verilerinizin Azure’a yüklendiğinden emin olun. Ver
 
 - Yönetilen disk kaynak gruplarınız. Yönetilen diskler oluştururken, VHD'ler sayfa blobları olarak yüklenir ve ardından yönetilen disklere dönüştürülür. Yönetilen diskler, sipariş oluşturma sırasında belirtilen kaynak gruplarına iliştirilir. 
 
-    - Azure'da yönetilen disklere kopyalama işleminiz başarılı olduysa, Azure portalındaki **Sipariş ayrıntıları**’na gidip yönetilen diskler için belirtilen kaynak gruplarını not alabilirsiniz.
+    - Azure'da yönetilen disklere kopyalama işleminiz başarılı olduysa, Azure portalındaki **Sipariş ayrıntıları** ’na gidip yönetilen diskler için belirtilen kaynak gruplarını not alabilirsiniz.
 
         ![Yönetilen disk kaynak gruplarını tanımlama](media/data-box-verify-upload-return/order-details-managed-disk-resource-groups.png)
 
@@ -37,7 +37,7 @@ Kaynaktan silmeden önce verilerinizin Azure’a yüklendiğinden emin olun. Ver
 
         ![Kaynak gruplarına bağlı yönetilen disk](media/data-box-verify-upload-return/managed-disks-resource-group.png)
 
-    - Bir VHDX veya dinamik ya da fark kayıt VHD'si kopyaladıysanız, VHDX veya VHD bir sayfa blobu olarak hazırlama depolama hesabına yüklenir ancak VHD'nin yönetilen diske dönüştürülmesi başarısız olur. Hazırlama **Depolama hesabı > Bloblar**’a gidin ve uygun kapsayıcıyı seçin: Standart SSD, Standart HDD veya Premium SSD. VHD'ler, hazırlama depolama hesabınıza sayfa blobları olarak yüklenir ve ücret doğurur.
+    - Bir VHDX veya dinamik ya da fark kayıt VHD'si kopyaladıysanız, VHDX veya VHD bir sayfa blobu olarak hazırlama depolama hesabına yüklenir ancak VHD'nin yönetilen diske dönüştürülmesi başarısız olur. Hazırlama **Depolama hesabı > Bloblar** ’a gidin ve uygun kapsayıcıyı seçin: Standart SSD, Standart HDD veya Premium SSD. VHD'ler, hazırlama depolama hesabınıza sayfa blobları olarak yüklenir ve ücret doğurur.
 
 
 ## <a name="erasure-of-data-from-data-box"></a>Data Box'tan verileri silme

@@ -16,11 +16,11 @@ Son adım cihazı göndermeye hazırlamaktır. Bu adımda tüm cihaz paylaşıml
 > [!IMPORTANT]
 > Azure adlandırma kurallarıyla uyumlu olmayan verileri işaretlediği için göndermeye hazırlama adımı gereklidir. Bu adım, uyumsuz veriler nedeniyle olası veri yükleme hatalarını önler.
 
-1. **Göndermeye hazırlama** sayfasına gidip **Hazırlamayı başlat**'a tıklayın. Varsayılan olarak, veriler kopyalanırken sağlama toplamları hesaplanır. Göndermeye hazırlama işlemi, sağlama toplamı hesaplamasını tamamlar ve dosya listesini ( *-BOM dosyaları*) oluşturur. Sağlama toplamı hesaplaması, verilerinizin boyutuna bağlı olarak birkaç saat veya birkaç gün sürebilir. 
+1. **Göndermeye hazırlama** sayfasına gidip **Hazırlamayı başlat** 'a tıklayın. Varsayılan olarak, veriler kopyalanırken sağlama toplamları hesaplanır. Göndermeye hazırlama işlemi, sağlama toplamı hesaplamasını tamamlar ve dosya listesini ( *-BOM dosyaları* ) oluşturur. Sağlama toplamı hesaplaması, verilerinizin boyutuna bağlı olarak birkaç saat veya birkaç gün sürebilir. 
    
     ![Göndermeye hazırlama 1](media/data-box-prepare-to-ship/prepare-to-ship1.png)
 
-    Herhangi bir nedenle cihaz hazırlamayı durdurmak isterseniz **Hazırlamayı durdur**'a tıklayın. Daha sonra göndermeye hazırlama işlemine kaldığınız yerden devam edebilirsiniz.
+    Herhangi bir nedenle cihaz hazırlamayı durdurmak isterseniz **Hazırlamayı durdur** 'a tıklayın. Daha sonra göndermeye hazırlama işlemine kaldığınız yerden devam edebilirsiniz.
         
     ![Göndermeye hazırlama 2](media/data-box-prepare-to-ship/prepare-to-ship2.png)
     
@@ -45,6 +45,6 @@ Son adım cihazı göndermeye hazırlamaktır. Bu adımda tüm cihaz paylaşıml
     3. Cihazın gönderim yönergelerini seçip indirin. Gönderim yönergeleri, bulunduğunuz ülkeye bağlı olarak farklı olabilir.
     4. E-mürekkep gönderim etiketini göstermiyorsa ters gönderim etiketini buradan indirebilirsiniz. 
 
-5. Cihazı kapatın. **Kapat veya yeniden başlat** sayfasına gidip **Kapat**'a tıklayın. Onayınız istendiğinde devam etmek için **Tamam**'a tıklayın.
+5. Cihazı kapatın. **Kapat veya yeniden başlat** sayfasına gidip **Kapat** 'a tıklayın. Onayınız istendiğinde devam etmek için **Tamam** 'a tıklayın.
 
 6. Kabloları sökün. Bir sonraki adım cihazı Microsoft'a göndermektir.
