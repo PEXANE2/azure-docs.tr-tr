@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 15d7b11ed49880a81e52c48a93a72e1491a5b645
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47e2211be478a16238d35eeb5219cf6e785a6979
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394338"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547580"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Azure HDInsight için kullanılabilen Apache bileşenleri ve sürümleri
 
@@ -96,7 +96,7 @@ Bu tabloda, Azure portal ve PowerShell ve .NET SDK gibi diğer dağıtım yönte
 | HDInsight 3,6 ML Hizmetleri      | 9,3               | 31 Aralık 2020                      | 31 Aralık 2020                |
 
 > [!NOTE]
-> Bir küme sürümü için destek süresi dolduktan sonra, Azure portal aracılığıyla kullanılamayabilir. Bazı durumlarda, küme sürümleri, sürüm kullanımdan kaldırılması tarihine kadar Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) komutu ve .NET SDK içindeki **Sürüm** parametresi kullanılarak kullanılabilir olmaya devam eder.
+> Bir küme sürümü için destek süresi dolduktan sonra, Azure portal aracılığıyla kullanılamayabilir. Bazı durumlarda, küme sürümleri, sürüm kullanımdan kaldırılması tarihine kadar Windows PowerShell [New-AzHDInsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) komutu ve .NET SDK içindeki **Sürüm** parametresi kullanılarak kullanılabilir olmaya devam eder.
 
 ### <a name="retired-versions"></a>Kullanımdan kaldırılan sürümler
 
@@ -119,7 +119,7 @@ Bu tabloda, Azure portal mevcut olmayan HDInsight sürümleri listelenir.
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight küme sürümleri için hizmet düzeyi sözleşmesi
 
-Hizmet düzeyi sözleşmesi bir _destek penceresi_olarak tanımlanır. Destek penceresi, HDInsight sürümünün Microsoft Müşteri Hizmetleri ve desteği tarafından desteklendiği zaman dönedir. Sürüm _destek sona erme tarihini_Geçirtiyse, HDInsight kümesi Destek penceresinin dışındadır. HDInsight sürüm X için destek süresi sonu (daha yeni bir X + 1 sürümü kullanılabilir olduktan sonra), daha sonra:
+Hizmet düzeyi sözleşmesi bir _destek penceresi_ olarak tanımlanır. Destek penceresi, HDInsight sürümünün Microsoft Müşteri Hizmetleri ve desteği tarafından desteklendiği zaman dönedir. Sürüm _destek sona erme tarihini_ Geçirtiyse, HDInsight kümesi Destek penceresinin dışındadır. HDInsight sürüm X için destek süresi sonu (daha yeni bir X + 1 sürümü kullanılabilir olduktan sonra), daha sonra:
 
 - **Formül 1:** HDInsight kümesi sürüm X 'in serbest bırakıldığı tarihe 180 gün ekleyin.
 - **Formül 2:** HDInsight kümesi sürümü X + 1 ' in Azure portal kullanılabilir hale getirilme tarihine 90 gün ekleyin.

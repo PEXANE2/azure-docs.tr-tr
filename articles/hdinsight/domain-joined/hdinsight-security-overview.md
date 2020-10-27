@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f450d54a0039f591178ae839fbb404f31d80671
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150799"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537278"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
 
@@ -33,7 +33,7 @@ HDInsight 'ta çevre güvenliği [sanal ağlar](../hdinsight-plan-virtual-networ
 
 VNET 'te dağıtılan tüm kümelerin özel bir uç noktası da olur. Uç noktası, küme ağ geçitlerine özel HTTP erişimi için VNET 'in içindeki özel bir IP 'ye çözümlenir.
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulama
 
 HDInsight 'tan [Kurumsal güvenlik paketi](apache-domain-joined-architecture.md) , Active Directory tabanlı kimlik doğrulaması, çoklu Kullanıcı desteği ve rol tabanlı erişim denetimi sağlar. Active Directory tümleştirme [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)kullanılarak elde edilir. Bu özelliklerde, bir Active Directory etki alanına katılmış bir HDInsight kümesi oluşturabilirsiniz. Daha sonra, kuruluş içinden kümeye kimlik doğrulayabilecek çalışanların bir listesini yapılandırın.
 
@@ -78,10 +78,10 @@ Aşağıdaki tabloda her güvenlik çözümü türü için kaynakların bağlant
 | Veri erişim güvenliği | Azure Data Lake Storage 1. ve Gen2 için [erişim denetim listelerinin ACL 'lerini](../../storage/blobs/data-lake-storage-access-control.md) yapılandırma  | Müşteri |
 |  | Depolama hesaplarında ["güvenli aktarım gerekli"](../../storage/common/storage-require-secure-transfer.md) özelliğini etkinleştirin. | Müşteri |
 |  | [Azure depolama güvenlik duvarlarını](../../storage/common/storage-network-security.md) ve sanal ağları yapılandırma | Müşteri |
-|  | Cosmos DB ve [Azure SQL veritabanı](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) için [Azure sanal ağ hizmet uç noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) yapılandırma | Müşteri |
+|  | Cosmos DB ve [Azure SQL veritabanı](../../azure-sql/database/vnet-service-endpoint-rule-overview.md) için [Azure sanal ağ hizmet uç noktalarını](../../virtual-network/virtual-network-service-endpoints-overview.md) yapılandırma | Müşteri |
 |  | [Yoldaki şifreleme](./encryption-in-transit.md) özelliğinin, küme içi ILETIŞIM için TLS ve IPSec kullanmak üzere etkinleştirildiğinden emin olun. | Müşteri |
-|  | Azure depolama şifrelemesi için [müşteri tarafından yönetilen anahtarları](../../storage/common/storage-encryption-keys-portal.md) yapılandırma | Müşteri |
-|  | [Müşteri kasayı](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) kullanarak Azure desteği ile verilerinize erişimi denetleme | Müşteri |
+|  | Azure depolama şifrelemesi için [müşteri tarafından yönetilen anahtarları](../../storage/common/customer-managed-keys-configure-key-vault.md) yapılandırma | Müşteri |
+|  | [Müşteri kasayı](../../security/fundamentals/customer-lockbox-overview.md) kullanarak Azure desteği ile verilerinize erişimi denetleme | Müşteri |
 | Uygulama ve ara yazılım güvenliği | AAD-DS ile tümleştirme ve [ESP yapılandırma](apache-domain-joined-configure-using-azure-adds.md) veya [OAuth kimlik doğrulaması için Hib](identity-broker.md) kullanma| Müşteri |
 |  | [Apache Ranger yetkilendirme](apache-domain-joined-run-hive.md) ilkelerini yapılandırma | Müşteri |
 |  | [Azure izleyici günlüklerini](../hdinsight-hadoop-oms-log-analytics-tutorial.md) kullanma | Müşteri |
@@ -98,5 +98,5 @@ Aşağıdaki tabloda her güvenlik çözümü türü için kaynakların bağlant
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [ESP ile HDInsight kümelerini planlayın](apache-domain-joined-architecture.md)
-* [HDInsight kümelerini ESP ile yapılandırma](apache-domain-joined-configure.md)
+* [HDInsight kümelerini ESP ile yapılandırma](./apache-domain-joined-configure-using-azure-adds.md)
 * [HDInsight kümelerini ESP ile yönetme](apache-domain-joined-manage.md)

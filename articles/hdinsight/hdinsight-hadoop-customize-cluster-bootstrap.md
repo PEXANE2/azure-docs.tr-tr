@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: cd81a15853f1c3b0eb1b1cdd40cc4c7ebf713308
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 246c5600da3b554ba65872780f0719a58f3f4be2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490314"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547495"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Önyükleme kullanarak HDInsight kümelerini özelleştirme
 
@@ -48,14 +48,14 @@ Oluşturma süresi boyunca HDInsight kümesine ek bileşenler yükleme hakkında
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/)gerekecektir.
+* PowerShell kullanıyorsanız [az Module](/powershell/azure/)gerekecektir.
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell'i kullanma
 
 Aşağıdaki PowerShell kodu bir [Apache Hive](https://hive.apache.org/) yapılandırmasını özelleştirir:
 
 > [!IMPORTANT]  
-> Parametrenin `Spark2Defaults` [Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)ile kullanılması gerekebilir. Aşağıdaki kod örneğinde gösterildiği gibi parametreye boş değerler geçirebilirsiniz.
+> Parametrenin `Spark2Defaults` [Add-AzHDInsightConfigValue](/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)ile kullanılması gerekebilir. Aşağıdaki kod örneğinde gösterildiği gibi parametreye boş değerler geçirebilirsiniz.
 
 ```powershell
 # hive-site.xml configuration
@@ -86,9 +86,9 @@ New-AzHDInsightCluster `
 **Değişikliği doğrulamak için:**
 
 1. `https://CLUSTERNAME.azurehdinsight.net/`Kümenizin adı olduğu yere gidin `CLUSTERNAME` .
-1. Sol menüden **Hive**  >  **configs**  >  **İleri**' ye gidin.
-1. **Gelişmiş Hive-site**' ı genişletin.
-1. **Hive. metasarı. Client. Socket. Timeout** öğesini bulun ve değerin **90**olduğunu onaylayın.
+1. Sol menüden **Hive**  >  **configs**  >  **İleri** ' ye gidin.
+1. **Gelişmiş Hive-site** ' ı genişletin.
+1. **Hive. metasarı. Client. Socket. Timeout** öğesini bulun ve değerin **90** olduğunu onaylayın.
 
 Diğer yapılandırma dosyalarını özelleştirmeye ilişkin bazı örnekler:
 
@@ -143,7 +143,7 @@ Spark2 ' deki yapılandırmayı değiştirmek için örnek Kaynak Yöneticisi Ş
 * [HDInsight 'ta Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md) diğer özel seçenekleri kullanarak HDInsight kümesi oluşturma hakkında yönergeler sağlar.
 * [HDInsight için betik eylem betikleri geliştirme](hdinsight-hadoop-script-actions-linux.md)
 * [HDInsight kümelerinde Apache Spark yükleyip kullanma](spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [HDInsight kümelerine Apache Giraph 'Yi yükleyip kullanın](hdinsight-hadoop-giraph-install.md).
+* [HDInsight kümelerine Apache Giraph 'Yi yükleyip kullanın](./hdinsight-hadoop-hue-linux.md).
 
 ## <a name="appendix-powershell-sample"></a>Ek: PowerShell örneği
 

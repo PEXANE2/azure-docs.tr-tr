@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 5a40faa1feac20ae096dfe39a5b1d109d4a11d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31d0d7f3ecb9ddb8a52c8ddda8a076e32283ae16
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564007"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545727"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory yönetilen sanal ağ (Önizleme)
 
@@ -94,6 +94,7 @@ ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak i
 - Doğu ABD
 - Doğu ABD 2
 - Orta Batı ABD
+- Batı ABD
 - Batı ABD 2
 - Orta Güney ABD
 - Central US
@@ -102,6 +103,7 @@ ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak i
 - Güney Birleşik Krallık
 - Güneydoğu Asya
 - Doğu Avustralya
+- Güneydoğu Avustralya
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>ADF tarafından yönetilen sanal ağdan gelen genel uç nokta aracılığıyla giden iletişimler
 - Giden iletişimler için yalnızca bağlantı noktası 443 açılır.

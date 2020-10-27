@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: bc90389e9f600f1411699700989e38c78bee99cc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dc6412a85beba67551e7683c8127a65730f9218f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103348"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535476"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Güvenlik duvarını kullanarak Azure HDInsight kümeleri için giden ağ trafiği yapılandırma
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Güvenlik Duvarı 'nı kullanarak HDInsight kümenizdeki gide
 
 HDInsight kümeleri normalde bir sanal ağda dağıtılır. Kümede, bu sanal ağın dışındaki hizmetler üzerinde bağımlılıklar vardır.
 
-Gelen yönetim trafiği bir güvenlik duvarı üzerinden gönderilemez. [Burada](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)belgelendiği gibi, gelen trafik için NSG hizmet etiketlerini kullanabilirsiniz. 
+Gelen yönetim trafiği bir güvenlik duvarı üzerinden gönderilemez. [Burada](./hdinsight-service-tags.md)belgelendiği gibi, gelen trafik için NSG hizmet etiketlerini kullanabilirsiniz. 
 
 HDInsight giden trafik bağımlılıkları, FQDN 'Ler ile neredeyse tamamen tanımlanmıştır. Bunların arkasında statik IP adresleri yok. Statik adreslerin olmaması, ağ güvenlik gruplarının (NSG 'ler) bir kümeden giden trafiği kilitleyemeyeceği anlamına gelir. IP adresleri, en çok bir kez değişir ve geçerli ad çözümlemesi ve kullanımı temel alınarak kuralları ayarlayamamıştır.
 
@@ -53,7 +53,7 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
 1. Azure portal yeni güvenlik duvarını **Test-FW01** seçin.
 
-1. **Ayarlar**  >  **kuralları**  >  **uygulama kuralı koleksiyonu**  >  **+ uygulama kuralı koleksiyonu Ekle**' ye gidin.
+1. **Ayarlar**  >  **kuralları**  >  **uygulama kuralı koleksiyonu**  >  **+ uygulama kuralı koleksiyonu Ekle** ' ye gidin.
 
     ![Başlık: uygulama kuralı koleksiyonu Ekle](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
@@ -63,7 +63,7 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
     | Özellik|  Değer|
     |---|---|
-    |Ad| FwAppRule|
+    |Adı| FwAppRule|
     |Öncelik|200|
     |Eylem|İzin Ver|
 
@@ -75,21 +75,21 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
     **Hedef FQDN bölümü**
 
-    | Name | Kaynak adresler | Protokol: bağlantı noktası | Hedef FQDN 'ler | Notlar |
+    | Name | Kaynak adresler | Protokol:Bağlantı Noktası | Hedef FQDN 'ler | Notlar |
     | --- | --- | --- | --- | --- |
-    | Rule_2 | * | https: 443 | login.windows.net | Windows oturum açma etkinliğine izin verir |
-    | Rule_3 | * | https: 443 | login.microsoftonline.com | Windows oturum açma etkinliğine izin verir |
+    | Rule_2 | * | https:443 | login.windows.net | Windows oturum açma etkinliğine izin verir |
+    | Rule_3 | * | https:443 | login.microsoftonline.com | Windows oturum açma etkinliğine izin verir |
     | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. net | `storage_account_name`Gerçek depolama hesabı adınızla değiştirin. YALNıZCA HTTPS bağlantılarını kullanmak için depolama hesabında ["güvenli aktarım gerekli"](../storage/common/storage-require-secure-transfer.md) özelliğinin etkinleştirildiğinden emin olun. Depolama hesaplarına erişmek için özel uç nokta kullanıyorsanız, bu adım gerekli değildir ve depolama trafiği güvenlik duvarından iletilmez.|
 
    ![Başlık: uygulama kuralı koleksiyonu ayrıntılarını girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. **Ekle**’yi seçin.
+1. **Ekle** ’yi seçin.
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Ağ kurallarıyla güvenlik duvarını yapılandırma
 
 HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluşturun.
 
-1. Önceki adımdan devam etmek için **ağ kuralı koleksiyonu**  >  **+ ağ kuralı koleksiyonu Ekle**' ye gidin.
+1. Önceki adımdan devam etmek için **ağ kuralı koleksiyonu**  >  **+ ağ kuralı koleksiyonu Ekle** ' ye gidin.
 
 1. **Ağ kuralı koleksiyonu Ekle** ekranında, aşağıdaki bilgileri sağlayın:
 
@@ -97,7 +97,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
 
     | Özellik|  Değer|
     |---|---|
-    |Ad| FwNetRule|
+    |Adı| FwNetRule|
     |Öncelik|200|
     |Eylem|İzin Ver|
 
@@ -110,23 +110,23 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
     
    ![Başlık: uygulama kuralı koleksiyonu girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. **Ekle**’yi seçin.
+1. **Ekle** ’yi seçin.
 
 ### <a name="create-and-configure-a-route-table"></a>Rota tablosu oluşturma ve yapılandırma
 
 Aşağıdaki girişlerle bir yol tablosu oluşturun:
 
-* **Internet**'in bir sonraki atlama türü Ile [sistem durumu ve yönetim HIZMETLERINDEN](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) gelen tüm IP adresleri. Bu, genel bölgelerin 4 IP 'sini ve belirli bölgeniz için 2 IP 'yi içermelidir. Bu kural yalnızca ResourceProviderConnection *gelen*olarak ayarlandıysa gereklidir. ResourceProviderConnection *giden* olarak ayarlandıysa, bu IP 'ler UDR 'de gerekli değildir. 
+* **Internet** 'in bir sonraki atlama türü Ile [sistem durumu ve yönetim HIZMETLERINDEN](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) gelen tüm IP adresleri. Bu, genel bölgelerin 4 IP 'sini ve belirli bölgeniz için 2 IP 'yi içermelidir. Bu kural yalnızca ResourceProviderConnection *gelen* olarak ayarlandıysa gereklidir. ResourceProviderConnection *giden* olarak ayarlandıysa, bu IP 'ler UDR 'de gerekli değildir. 
 
 * 0.0.0.0/0 IP adresi için bir Sanal Gereç yolu, sonraki atlama olan Azure Güvenlik Duvarı özel IP adresiniz.
 
 Örneğin, "Doğu ABD" ABD bölgesinde oluşturulan bir kümenin yol tablosunu yapılandırmak için aşağıdaki adımları kullanın:
 
-1. Azure Güvenlik Duvarı **testinizi seçin-FW01**. **Genel bakış** sayfasında LISTELENEN **özel IP adresini** kopyalayın. Bu örnekte, **10.0.2.4 örnek adresini**kullanacağız.
+1. Azure Güvenlik Duvarı **testinizi seçin-FW01** . **Genel bakış** sayfasında LISTELENEN **özel IP adresini** kopyalayın. Bu örnekte, **10.0.2.4 örnek adresini** kullanacağız.
 
-1. Ardından **tüm hizmetler**  >  **ağ**  >  **yolu tabloları** ' na gidin ve **rota tablosu oluşturun**.
+1. Ardından **tüm hizmetler**  >  **ağ**  >  **yolu tabloları** ' na gidin ve **rota tablosu oluşturun** .
 
-1. Yeni yolınızdan **Ayarlar**  >  **rotalar**  >  **+ Ekle**' ye gidin. Aşağıdaki yolları ekleyin:
+1. Yeni yolınızdan **Ayarlar**  >  **rotalar**  >  **+ Ekle** ' ye gidin. Aşağıdaki yolları ekleyin:
 
 | Yönlendirme adı | Adres ön eki | Sonraki atlama türü | Sonraki atlama adresi |
 |---|---|---|---|
@@ -140,13 +140,13 @@ Aşağıdaki girişlerle bir yol tablosu oluşturun:
 
 Yol tablosu yapılandırmasını doldurun:
 
-1. **Ayarlar**altında **alt ağlar** ' i seçerek HDInsight alt ağına oluşturduğunuz yol tablosunu atayın.
+1. **Ayarlar** altında **alt ağlar** ' i seçerek HDInsight alt ağına oluşturduğunuz yol tablosunu atayın.
 
-1. **+ İlişkilendir**' i seçin.
+1. **+ İlişkilendir** ' i seçin.
 
 1. **Alt ağı ilişkilendir** ekranında, kümenizin oluşturulduğu sanal ağı seçin. Ve HDInsight kümeniz için kullandığınız **alt ağ** .
 
-1. **Tamam**’ı seçin.
+1. **Tamam** ’ı seçin.
 
 ## <a name="edge-node-or-custom-application-traffic"></a>Edge-node veya özel uygulama trafiği
 
@@ -160,7 +160,7 @@ Uygulamalarınızın başka bağımlılıkları varsa, bunların Azure güvenlik
 
 ## <a name="logging-and-scale"></a>Günlüğe kaydetme ve ölçeklendirme
 
-Azure Güvenlik Duvarı, günlükleri birkaç farklı depolama sistemine gönderebilir. Güvenlik duvarınız için günlüğe kaydetmeyi yapılandırma yönergeleri için [öğretici: Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme](../firewall/tutorial-diagnostics.md)bölümündeki adımları izleyin.
+Azure Güvenlik Duvarı, günlükleri birkaç farklı depolama sistemine gönderebilir. Güvenlik duvarınız için günlüğe kaydetmeyi yapılandırma yönergeleri için [öğretici: Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme](../firewall/firewall-diagnostics.md)bölümündeki adımları izleyin.
 
 Günlüğe kaydetme kurulumunu tamamladıktan sonra, Log Analytics kullanıyorsanız, engellenen trafiği şöyle bir sorgu ile görüntüleyebilirsiniz:
 

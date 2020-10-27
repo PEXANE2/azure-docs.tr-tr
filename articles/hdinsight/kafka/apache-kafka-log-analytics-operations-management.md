@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 593d6861ee5913fffb25bfdea4829e1b1ce6ddc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5128ac7608dfce08471f7a7f97ed28a7971e62b2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087410"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534456"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka için günlükleri çözümleme
 
@@ -50,7 +50,7 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
 
 1. [Azure Portal](https://portal.azure.com), Log Analytics çalışma alanınızı seçin.
 
-2. Sol taraftaki menüden, **genel**altında **Günlükler**' i seçin. Buradan, Kafka adresinden toplanan verileri arayabilirsiniz. Sorgu penceresinde bir sorgu girin ve sonra **Çalıştır**' ı seçin. Aşağıda bazı örnek aramalar verilmiştir:
+2. Sol taraftaki menüden, **genel** altında **Günlükler** ' i seçin. Buradan, Kafka adresinden toplanan verileri arayabilirsiniz. Sorgu penceresinde bir sorgu girin ve sonra **Çalıştır** ' ı seçin. Aşağıda bazı örnek aramalar verilmiştir:
 
 * Disk kullanımı:
 
@@ -104,7 +104,7 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Izleyici hakkında daha fazla bilgi için bkz. [Azure izleyici 'ye genel bakış](../../log-analytics/log-analytics-get-started.md)ve [HDInsight kümelerini Izlemek için Azure izleyici günlüklerini sorgulama](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
+Azure Izleyici hakkında daha fazla bilgi için bkz. [Azure izleyici 'ye genel bakış](../../azure-monitor/overview.md)ve [HDInsight kümelerini Izlemek için Azure izleyici günlüklerini sorgulama](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
 
 Apache Kafka ile çalışma hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 

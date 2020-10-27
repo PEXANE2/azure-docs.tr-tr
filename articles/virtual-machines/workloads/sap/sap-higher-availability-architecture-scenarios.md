@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82b0b53b1933a7ca08163a12b2b7649b7b9538f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c112896e78c07fafa2d714b0533db1f58dd57ffd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361645"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535612"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>SAP sisteminin "daha yüksek kullanılabilirlik" düzeyine ulaşmak için Azure altyapı VM yeniden başlatma işlemini kullanma
 
@@ -228,7 +228,7 @@ Azure yönetilen diskler, eklendiği sanal makinenin hata etki alanına otomatik
 
 Azure altyapı yüksek kullanılabilirlik ve depolama hesapları kullanan bir SAP NetWeaver sisteminin örnek mimarisi şuna benzeyebilir:
 
-![SAP uygulamasının "daha yüksek kullanılabilirlik" düzeyine ulaşmak için Azure altyapı yüksek kullanılabilirliği kullanın][planning-guide-figure-2900]
+![Azure altyapı yüksek kullanılabilirlik ve depolama hesapları kullanan SAP NetWeaver sisteminin mimarisini gösteren diyagram.][planning-guide-figure-2900]
 
 Azure altyapı yüksek kullanılabilirliği ve yönetilen diskler kullanan bir SAP NetWeaver sisteminin örnek mimarisi şuna benzeyebilir:
 

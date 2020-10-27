@@ -7,13 +7,13 @@ ms.author: mhopkins
 ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 9ab45495283f8751912d93e9799958a8effc887a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: quickstart
+ms.openlocfilehash: 10f16118b37810ed888c0812a30ad276c49803f2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323749"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545795"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Hızlı başlangıç: Java V8 SDK ile Blobları yönetme
 
@@ -38,9 +38,9 @@ Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https
 git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 ```
 
-Bu komut, depoyu yerel Git klasörünüze kopyalar. Projeyi açmak için, Eclipse’ı başlatın ve Karşılama ekranını kapatın. Dosya sistemi ' nden **Dosya** ' yı seçin ve ardından **projeleri açın**. **Proje niteliklerini algıla ve yapılandır** seçeneğinin belirlenmiş olduğundan emin olun. **Dizin**’i seçin ve ardından kopyalanan dizini depoladığınız konuma gidin. Kopyalanan deponun içinde **blobAzureApp** klasörünü seçin. **blobAzureApp** projesinin Eclipse projesi olarak göründüğünden emin olun ve ardından **Son**’u seçin.
+Bu komut, depoyu yerel Git klasörünüze kopyalar. Projeyi açmak için, Eclipse’ı başlatın ve Karşılama ekranını kapatın. Dosya sistemi ' nden **Dosya** ' yı seçin ve ardından **projeleri açın** . **Proje niteliklerini algıla ve yapılandır** seçeneğinin belirlenmiş olduğundan emin olun. **Dizin** ’i seçin ve ardından kopyalanan dizini depoladığınız konuma gidin. Kopyalanan deponun içinde **blobAzureApp** klasörünü seçin. **blobAzureApp** projesinin Eclipse projesi olarak göründüğünden emin olun ve ardından **Son** ’u seçin.
 
-Proje içeri aktarmayı tamamladıktan sonra, **AzureApp. Java** ' yı açın ( **src/Main/Java**Içinde **blobquickstart. blobAzureApp** içinde bulunur) ve `accountname` `accountkey` dizenin içindeki ve içindeki öğesini değiştirin `storageConnectionString` . Sonra, uygulamayı çalıştırın. Aşağıdaki bölümlerde bu görevleri tamamlamak için gereken özel yönergeler açıklanmıştır.
+Proje içeri aktarmayı tamamladıktan sonra, **AzureApp. Java** ' yı açın ( **src/Main/Java** Içinde **blobquickstart. blobAzureApp** içinde bulunur) ve `accountname` `accountkey` dizenin içindeki ve içindeki öğesini değiştirin `storageConnectionString` . Sonra, uygulamayı çalıştırın. Aşağıdaki bölümlerde bu görevleri tamamlamak için gereken özel yönergeler açıklanmıştır.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -57,7 +57,7 @@ public static final String storageConnectionString =
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-Bu örnek uygulama, varsayılan dizininizdeki bir sınama dosyası oluşturur (*C:\Users \<user> \Appdata\local\temp*, Windows kullanıcıları Için), blob depolamaya yükler, kapsayıcıdaki Blobları listeler ve ardından eski ve yeni dosyaları karşılaştırabilmeniz için dosyayı yeni bir adla indirir.
+Bu örnek uygulama, varsayılan dizininizdeki bir sınama dosyası oluşturur ( *C:\Users \<user> \Appdata\local\temp* , Windows kullanıcıları Için), blob depolamaya yükler, kapsayıcıdaki Blobları listeler ve ardından eski ve yeni dosyaları karşılaştırabilmeniz için dosyayı yeni bir adla indirir.
 
 Maven’i komut satırında kullanarak örneği çalıştırın. Bir kabuk açın ve kopyalanan dizininiz içindeki **blobAzureApp** öğesine gidin. Sonra `mvn compile exec:java` komutunu girin.
 
@@ -76,7 +76,7 @@ Deleting the container
 Deleting the source, and downloaded files
 ```
 
-Devam etmeden önce, örnek dosya için varsayılan dizininizi (Windows kullanıcıları için*C:\Users \<user> \Appdata\local\temp*) denetleyin. Blob depolamadaki dosyanın içeriğini görüntülemek için, blobun URL'sini konsol penceresinden kopyalayın ve tarayıcıya yapıştırın. Dizininizdeki örnek dosyayı Blob depolamada saklanan içerikle karşılaştırırsanız, bunların aynı olduğunu görürsünüz.
+Devam etmeden önce, örnek dosya için varsayılan dizininizi (Windows kullanıcıları için *C:\Users \<user> \Appdata\local\temp* ) denetleyin. Blob depolamadaki dosyanın içeriğini görüntülemek için, blobun URL'sini konsol penceresinden kopyalayın ve tarayıcıya yapıştırın. Dizininizdeki örnek dosyayı Blob depolamada saklanan içerikle karşılaştırırsanız, bunların aynı olduğunu görürsünüz.
 
   >[!NOTE]
   >Ayrıca, Blob depolamadaki dosyaları görüntülemek için, [Azure Depolama Gezgini](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gibi bir araç da kullanabilirsiniz. Azure Depolama Gezgini, depolama hesabı bilgilerinize erişmenize olanak tanıyan ücretsiz ve platformlar arası bir araçtır.
@@ -93,22 +93,22 @@ Sonraki aşamada, nasıl çalıştığını anlayabilmeniz için örnek kodu inc
 
 * [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage.storageaccount) nesnesinin depolama hesabına işaret eden bir örneğini oluşturun.
 
-    **CloudStorageAccount** nesnesi, depolama hesabınızın bir gösterimidir ve programlamayla depolama hesabı özelliklerini ayarlayabilmenizi ve bu özelliklere erişebilmenizi sağlar. **CloudStorageAccount** nesnesini kullanarak, blob hizmetine erişmek için kullanılan **CloudBlobClient**’in bir örneğini oluşturabilirsiniz.
+    **CloudStorageAccount** nesnesi, depolama hesabınızın bir gösterimidir ve programlamayla depolama hesabı özelliklerini ayarlayabilmenizi ve bu özelliklere erişebilmenizi sağlar. **CloudStorageAccount** nesnesini kullanarak, blob hizmetine erişmek için kullanılan **CloudBlobClient** ’in bir örneğini oluşturabilirsiniz.
 
 * **Cloudblobclient** nesnesinin, Depolama hesabınızdaki [BLOB hizmetine](/java/api/com.microsoft.azure.storage.blob.cloudblobclient) işaret eden bir örneğini oluşturun.
 
-    **Cloudblobclient** , blob hizmetine bir erişim noktası sağlar ve bu sayede BLOB depolama özelliklerini program aracılığıyla ayarlamanıza ve erişmenize olanak tanır. **CloudBlobClient** nesnesini kullanarak, kapsayıcı oluşturmak için kullanılan **CloudBlobContainer**ıin bir örneğini oluşturabilirsiniz.
+    **Cloudblobclient** , blob hizmetine bir erişim noktası sağlar ve bu sayede BLOB depolama özelliklerini program aracılığıyla ayarlamanıza ve erişmenize olanak tanır. **CloudBlobClient** nesnesini kullanarak, kapsayıcı oluşturmak için kullanılan **CloudBlobContainer** ıin bir örneğini oluşturabilirsiniz.
 
 * [CloudBlobContainer](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer) nesnesinin, eriştiğiniz kapsayıcıyı temsil eden bir örneğini oluşturun. Tıpkı bilgisayarınızdaki dosyaları düzenlemek için klasörleri kullandığınız gibi blobları düzenlemek için de kapsayıcıları kullanın.
 
-    **Cloudblobcontainer**' ı oluşturduktan sonra, ilgilendiğiniz belirli bir Blobun işaret eden bir [Cloudblockblob](/java/api/com.microsoft.azure.storage.blob.cloudblockblob) nesnesi örneği oluşturabilir ve karşıya yükleme, indirme, kopyalama veya başka bir işlem gerçekleştirebilirsiniz.
+    **Cloudblobcontainer** ' ı oluşturduktan sonra, ilgilendiğiniz belirli bir Blobun işaret eden bir [Cloudblockblob](/java/api/com.microsoft.azure.storage.blob.cloudblockblob) nesnesi örneği oluşturabilir ve karşıya yükleme, indirme, kopyalama veya başka bir işlem gerçekleştirebilirsiniz.
 
 > [!IMPORTANT]
 > Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcılar hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
-Bu bölümde, nesnelerin örneğini oluşturuyor, yeni kapsayıcı oluşturuyor ve ardından kapsayıcıdaki izinleri bloblar herkese açık olacak ve bloblara yalnızca bir URL ile erişilebilecek şekilde ayarlıyorsunuz. Bu kapsayıcının adı **quickstartcontainer**'dır.
+Bu bölümde, nesnelerin örneğini oluşturuyor, yeni kapsayıcı oluşturuyor ve ardından kapsayıcıdaki izinleri bloblar herkese açık olacak ve bloblara yalnızca bir URL ile erişilebilecek şekilde ayarlıyorsunuz. Bu kapsayıcının adı **quickstartcontainer** 'dır.
 
 Örnek her çalıştırıldığında yeni bir kapsayıcı oluşturmak istediğimizden, bu örnekte [CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists) komutu kullanılır. Bir uygulamanın tamamında aynı kapsayıcıyı kullandığınız bir üretim ortamında, **Createıfnotexists** ' i yalnızca bir kez çağırmak daha iyi bir uygulamadır. Alternatif olarak, kapsayıcıyı önceden oluşturabilirsiniz. Böylece kapsayıcıyı kodda oluşturmanıza gerek kalmaz.
 

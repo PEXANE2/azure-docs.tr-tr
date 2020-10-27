@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: ff0c7001184af58432a7915b3a7df29f900bedec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b5f5a9fb8ddd25f750b19044bac7253bbff2f98
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006611"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545217"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>PowerShell kullanarak MapReduce işlerini HDInsight üzerinde Apache Hadoop çalıştırma
 
@@ -25,7 +25,7 @@ Bu belge, HDInsight kümesinde Hadoop 'ta MapReduce işini çalıştırmak için
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-* PowerShell [az Module](https://docs.microsoft.com/powershell/azure/) yüklendi.
+* PowerShell [az Module](/powershell/azure/) yüklendi.
 
 ## <a name="run-a-mapreduce-job"></a>MapReduce işi çalıştırma
 
@@ -43,7 +43,7 @@ Aşağıdaki cmdlet 'ler, MapReduce işlerini uzak bir HDInsight kümesinde çal
 
 Aşağıdaki adımlarda, HDInsight kümenizdeki bir işi çalıştırmak için bu cmdlet 'lerin nasıl kullanılacağı gösterilmektedir.
 
-1. Bir düzenleyici kullanarak aşağıdaki kodu **mapreducejob.ps1**olarak kaydedin.
+1. Bir düzenleyici kullanarak aşağıdaki kodu **mapreducejob.ps1** olarak kaydedin.
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 

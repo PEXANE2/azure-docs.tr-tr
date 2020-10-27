@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: a5e4b8bbae67e32a5a0c951de583688836eb014b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426386"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547427"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight kümelerini özel bağlantıyla güvenli hale getirme ve yalıtma (Önizleme)
 
@@ -25,7 +25,7 @@ Bir Azure Resource Manager (ARM) şablonunda belirli ağ özelliklerini yapılan
 
 ## <a name="remove-public-ip-addresses"></a>Genel IP adreslerini kaldır
 
-Varsayılan olarak, HDInsight RP genel IP 'Leri kullanarak kümeye *gelen* bir bağlantı kullanır. `resourceProviderConnection`Ağ özelliği *giden*olarak ayarlandığında, bağlantıların her zaman RP 'den RP 'ye BAŞLATıLMASı için HDInsight RP bağlantılarını tersine çevirir. Gelen bağlantı olmadan, gelen hizmet etiketlerine veya genel IP adreslerine gerek yoktur.
+Varsayılan olarak, HDInsight RP genel IP 'Leri kullanarak kümeye *gelen* bir bağlantı kullanır. `resourceProviderConnection`Ağ özelliği *giden* olarak ayarlandığında, bağlantıların her zaman RP 'den RP 'ye BAŞLATıLMASı için HDInsight RP bağlantılarını tersine çevirir. Gelen bağlantı olmadan, gelen hizmet etiketlerine veya genel IP adreslerine gerek yoktur.
 
 Varsayılan sanal ağ mimarisinde kullanılan temel yük dengeleyiciler, HDInsight RP gibi gerekli giden bağımlılıklara erişmek için otomatik olarak ortak NAT (ağ adresi çevirisi) sağlar. Genel internet 'e giden bağlantıyı kısıtlamak istiyorsanız [bir güvenlik duvarı yapılandırabilirsiniz](./hdinsight-restrict-outbound-traffic.md), ancak bu bir gereksinim değildir.
 
@@ -54,13 +54,13 @@ Küme FQDN 'lerini kullanarak kümeye erişmek için doğrudan iç yük dengeley
 
 Varsayılan olarak devre dışı bırakılan özel bağlantı, bir kümeyi oluşturmadan önce Kullanıcı tanımlı yollar (UDR) ve güvenlik duvarı kurallarını düzgün bir şekilde ayarlamak için kapsamlı ağ bilgisi gerektirir. Kümeye özel bağlantı erişimi yalnızca, `resourceProviderConnection` önceki bölümde açıklandığı gibi ağ özelliği *giden* olarak ayarlandığında kullanılabilir.
 
-`privateLink` *Etkin*olarak ayarlandığında, iç [Standart yük dengeleyiciler](../load-balancer/load-balancer-overview.md) (SLB) oluşturulur ve her SLB Için bir Azure özel bağlantı hizmeti sağlanır. Özel bağlantı hizmeti, HDInsight kümesine özel uç noktalardan erişmenizi sağlar.
+`privateLink` *Etkin* olarak ayarlandığında, iç [Standart yük dengeleyiciler](../load-balancer/load-balancer-overview.md) (SLB) oluşturulur ve her SLB Için bir Azure özel bağlantı hizmeti sağlanır. Özel bağlantı hizmeti, HDInsight kümesine özel uç noktalardan erişmenizi sağlar.
 
-Standart yük dengeleyiciler, temel yük dengeleyiciler gibi [genel gıden NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) 'yi otomatik olarak sağlamaz. Giden bağımlılıklar için [sanal ağ NAT](../virtual-network/nat-overview.md) veya bir [güvenlik DUVARı](./hdinsight-restrict-outbound-traffic.md)gibi kendi NAT çözümünüzü sağlamanız gerekir. HDInsight kümenizin giden bağımlılıklarına hala erişmesi gerekiyor. Bu giden bağımlılıklara izin verilmiyorsa, küme oluşturma başarısız olabilir.
+Standart yük dengeleyiciler, temel yük dengeleyiciler gibi [genel gıden NAT](../load-balancer/load-balancer-outbound-connections.md) 'yi otomatik olarak sağlamaz. Giden bağımlılıklar için [sanal ağ NAT](../virtual-network/nat-overview.md) veya bir [güvenlik DUVARı](./hdinsight-restrict-outbound-traffic.md)gibi kendi NAT çözümünüzü sağlamanız gerekir. HDInsight kümenizin giden bağımlılıklarına hala erişmesi gerekiyor. Bu giden bağımlılıklara izin verilmiyorsa, küme oluşturma başarısız olabilir.
 
 ### <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
-Özel bağlantı hizmetlerinin başarıyla oluşturulması için [özel bağlantı hizmeti için ağ ilkelerini açıkça devre dışı bırakmanız](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)gerekir.
+Özel bağlantı hizmetlerinin başarıyla oluşturulması için [özel bağlantı hizmeti için ağ ilkelerini açıkça devre dışı bırakmanız](../private-link/disable-private-link-service-network-policy.md)gerekir.
 
 Aşağıdaki diyagramda bir küme oluşturmadan önce gereken ağ yapılandırması örneği gösterilmektedir. Bu örnekte, tüm giden trafik UDR kullanılarak Azure Güvenlik Duvarı 'na [zorlanır](../firewall/forced-tunneling.md) ve bir küme oluşturmadan önce güvenlik duvarında gerekli giden bağımlılıkların "izin verildi" olması gerekir. Kurumsal Güvenlik Paketi kümeler için, Azure Active Directory Domain Services ağ bağlantısı VNet eşlemesi tarafından sağlanarak yapılabilir.
 

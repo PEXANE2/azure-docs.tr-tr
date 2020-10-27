@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5c0694f9ef16de9c69d424b5005ca0d5a277a77f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdd43a017e584a07d61d41e1af06d30db2f30ac7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505038"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542786"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight 'ta Apache HBase ve Apache Phoenix için yedekleme ve çoğaltma ayarlama
 
@@ -52,7 +52,7 @@ Kümeyi sildikten sonra, verileri yerinde bırakabilir ya da verileri yeni bir k
 
 * Geçerli depolama konumunu işaret eden yeni bir HDInsight örneği oluşturun. Yeni örnek, tüm mevcut verilerle oluşturulur.
 
-* `hbase`Klasörü farklı bir Azure Storage blob kapsayıcısına veya Data Lake Storage konuma kopyalayın ve ardından bu verilerle yeni bir küme başlatın. Azure depolama için [AzCopy](../../storage/common/storage-use-azcopy.md)kullanın ve Data Lake Storage [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)kullanın.
+* `hbase`Klasörü farklı bir Azure Storage blob kapsayıcısına veya Data Lake Storage konuma kopyalayın ve ardından bu verilerle yeni bir küme başlatın. Azure depolama için [AzCopy](../../storage/common/storage-use-azcopy-v10.md)kullanın ve Data Lake Storage [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)kullanın.
 
 ## <a name="export-then-import"></a>Dışarı aktar ve Içeri aktar
 
@@ -173,7 +173,7 @@ Bu kıvrımlı komutunda, `<zookeeperHostFullName>` örnek gibi bir ZooKeeper ko
 
 ## <a name="snapshots"></a>Anlık Görüntüler
 
-[Anlık görüntüler](https://hbase.apache.org/book.html#ops.snapshots) , HBase veri deposundaki verilerin bir zaman içinde yedeklenmesini sağlar. Anlık görüntü işlemi etkin bir şekilde bir meta veri işlemi olduğu için anlık görüntüler en düşük düzeyde ek olur ve saniyede tamamlanır. Anlık görüntü sırasında gerçek veri kopyalanmaz. Anlık görüntüler, güncelleştirme, silme ve eklemelerin hepsi yeni veri olarak temsil edildiği için,. Bir anlık görüntüyü aynı kümeye geri yükleyebilir (*kopyalayabilir*) veya bir anlık görüntüyü başka bir kümeye aktarabilirsiniz.
+[Anlık görüntüler](https://hbase.apache.org/book.html#ops.snapshots) , HBase veri deposundaki verilerin bir zaman içinde yedeklenmesini sağlar. Anlık görüntü işlemi etkin bir şekilde bir meta veri işlemi olduğu için anlık görüntüler en düşük düzeyde ek olur ve saniyede tamamlanır. Anlık görüntü sırasında gerçek veri kopyalanmaz. Anlık görüntüler, güncelleştirme, silme ve eklemelerin hepsi yeni veri olarak temsil edildiği için,. Bir anlık görüntüyü aynı kümeye geri yükleyebilir ( *kopyalayabilir* ) veya bir anlık görüntüyü başka bir kümeye aktarabilirsiniz.
 
 Bir anlık görüntü oluşturmak için HDInsight HBase kümenizin baş düğümüne SSH ve `hbase` kabuğu başlatın:
 
@@ -245,4 +245,4 @@ HDInsight üzerinde çoğaltmayı etkinleştirmek için, çalışan kaynak HDIns
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Apache HBase çoğaltmasını yapılandırma](apache-hbase-replication.md)
-* [HBase Içeri ve dışarı aktarma yardımcı programıyla çalışma](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)
+* [HBase Içeri ve dışarı aktarma yardımcı programıyla çalışma](/archive/blogs/data_otaku/working-with-the-hbase-import-and-export-utility)

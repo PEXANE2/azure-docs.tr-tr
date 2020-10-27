@@ -8,12 +8,12 @@ keywords: Hadoop yüksek kullanılabilirlik
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c322380d6a41e69baa8f753b84c0bc074f334647
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207589"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547036"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight iş sürekliliği mimarileri
 
@@ -54,11 +54,11 @@ Hive olay tabanlı çoğaltma, birincil ve ikincil kümeler arasında yapıland�
 
 #### <a name="hive-active-primary-with-standby-secondary"></a>Hive etkin birincil, bekleme ikincili
 
-Etkin bir *birincil durumda, bekleme ikincili olan*uygulamalar etkin birincil bölgeye yazılır, ancak bekleyen bir ikincil küme, normal işlemler sırasında salt okunurdur. Normal işlemler sırasında, bölgeye özgü okuma işlemlerinin ikinciye yük devretme işlemini seçebilirsiniz.
+Etkin bir *birincil durumda, bekleme ikincili olan* uygulamalar etkin birincil bölgeye yazılır, ancak bekleyen bir ikincil küme, normal işlemler sırasında salt okunurdur. Normal işlemler sırasında, bölgeye özgü okuma işlemlerinin ikinciye yük devretme işlemini seçebilirsiniz.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
 
-Hive çoğaltma ve kod örnekleri hakkında daha fazla bilgi için [Azure HDInsight kümelerinde Apache Hive çoğaltmaya](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication) başvurabilirsiniz
+Hive çoğaltma ve kod örnekleri hakkında daha fazla bilgi için [Azure HDInsight kümelerinde Apache Hive çoğaltmaya](./interactive-query/apache-hive-replication.md) başvurabilirsiniz
 
 ## <a name="apache-spark"></a>Apache Spark
 
@@ -97,7 +97,7 @@ Uygulamalar, birincil bölgedeki Spark ve Hive kümelerini okur ve yazar. Bu ara
 
 HBase dışa aktarma ve HBase çoğaltma, HDInsight HBase kümeleri arasında iş sürekliliğini etkinleştirmenin yaygın yollarıdır.
 
-HBase dışa aktarma, birincil HBase kümesinden tabloları temel alınan Azure Data Lake Storage Gen 2 depolamasına aktarmak için HBase dışa aktarma yardımcı programını kullanan bir toplu çoğaltma işlemidir. Daha sonra, aktarılan verilere ikincil HBase kümesinden erişilebilir ve ikincil tabloda önceden bulunması gereken tablolara içeri aktarılabilecek. HBase dışa aktarma Işlemi tablo düzeyinde ayrıntı düzeyi sağlarken, artımlı güncelleştirme durumlarında dışarı aktarma Otomasyon altyapısı her bir çalıştırmaya dahil edilecek artımlı satır aralığını denetler. Daha fazla bilgi için bkz. [HDInsight HBase yedekleme ve çoğaltma](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#export-then-import).
+HBase dışa aktarma, birincil HBase kümesinden tabloları temel alınan Azure Data Lake Storage Gen 2 depolamasına aktarmak için HBase dışa aktarma yardımcı programını kullanan bir toplu çoğaltma işlemidir. Daha sonra, aktarılan verilere ikincil HBase kümesinden erişilebilir ve ikincil tabloda önceden bulunması gereken tablolara içeri aktarılabilecek. HBase dışa aktarma Işlemi tablo düzeyinde ayrıntı düzeyi sağlarken, artımlı güncelleştirme durumlarında dışarı aktarma Otomasyon altyapısı her bir çalıştırmaya dahil edilecek artımlı satır aralığını denetler. Daha fazla bilgi için bkz. [HDInsight HBase yedekleme ve çoğaltma](./hbase/apache-hbase-backup-replication.md#export-then-import).
 
 HBase çoğaltma, tam olarak otomatik bir şekilde HBase kümeleri arasında neredeyse gerçek zamanlı çoğaltma kullanır. Çoğaltma, tablo düzeyinde yapılır. Tüm tablolar ya da belirli tablolar çoğaltma için hedeflenebilir. HBase çoğaltma sonunda tutarlıdır, yani birincil bölgedeki bir tabloda yapılan son düzenlemeler hemen tüm ikincil öğeler tarafından kullanılamayabilir. İkincillerle, sonunda birincil ile tutarlı hale gelmeleri garanti edilir. HBase çoğaltma, iki veya daha fazla HDInsight HBase kümesi arasında ayarlanabilir:
 
@@ -105,9 +105,9 @@ HBase çoğaltma, tam olarak otomatik bir şekilde HBase kümeleri arasında ner
 * Birincil ve ikincil aynı bölgedeki farklı eşlenmiş VNET 'lerde bulunur.
 * Birincil ve ikincil, farklı bölgelerdeki farklı eşlenmiş sanal ağlarda bulunur.
 
-Daha fazla bilgi için bkz. [Azure sanal ağlarında Apache HBase küme çoğaltmasını ayarlama](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-replication).
+Daha fazla bilgi için bkz. [Azure sanal ağlarında Apache HBase küme çoğaltmasını ayarlama](./hbase/apache-hbase-replication.md).
 
-HBase kümelerinin yedeğini almanın birkaç yolu vardır, örneğin, [HBase klasörünü kopyalama](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-the-hbase-folder), tabloları ve [anlık görüntüleri](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#snapshots) [kopyalama](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-tables) .
+HBase kümelerinin yedeğini almanın birkaç yolu vardır, örneğin, [HBase klasörünü kopyalama](./hbase/apache-hbase-backup-replication.md#copy-the-hbase-folder), tabloları ve [anlık görüntüleri](./hbase/apache-hbase-backup-replication.md#snapshots) [kopyalama](./hbase/apache-hbase-backup-replication.md#copy-tables) .
 
 ### <a name="hbase-rpo--rto"></a>HBase RPO & RTO
 
@@ -147,7 +147,7 @@ Bu çapraz bölge kümesi, çoğaltmanın birincil bölge ve ikincil bölge aras
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
-Bölgeler arası kullanılabilirliği etkinleştirmek için HDInsight 4,0, farklı bir bölgedeki birincil Kafka kümesinin ikincil çoğaltmasını sürdürmek için kullanılabilen Kafka MirrorMaker 'ı destekler. MirrorMaker, üst düzey bir tüketici-üretici çifti olarak davranır, birincil kümedeki belirli bir konudan tüketir ve ikincide aynı ada sahip bir konuya üretir. MirrorMaker kullanarak yüksek kullanılabilirliğe sahip olağanüstü durum kurtarma için çapraz küme çoğaltma, üreticileri ve tüketicilerin çoğaltma kümesine yük devri yapması gerektiği varsayımıyla birlikte gelir. Daha fazla bilgi için bkz. [HDInsight 'Ta Kafka ile Apache Kafka konularını çoğaltmak Için MirrorMaker kullanma](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-mirroring)
+Bölgeler arası kullanılabilirliği etkinleştirmek için HDInsight 4,0, farklı bir bölgedeki birincil Kafka kümesinin ikincil çoğaltmasını sürdürmek için kullanılabilen Kafka MirrorMaker 'ı destekler. MirrorMaker, üst düzey bir tüketici-üretici çifti olarak davranır, birincil kümedeki belirli bir konudan tüketir ve ikincide aynı ada sahip bir konuya üretir. MirrorMaker kullanarak yüksek kullanılabilirliğe sahip olağanüstü durum kurtarma için çapraz küme çoğaltma, üreticileri ve tüketicilerin çoğaltma kümesine yük devri yapması gerektiği varsayımıyla birlikte gelir. Daha fazla bilgi için bkz. [HDInsight 'Ta Kafka ile Apache Kafka konularını çoğaltmak Için MirrorMaker kullanma](./kafka/apache-kafka-mirroring.md)
 
 Çoğaltma başlatıldığında konu ömrü ne olduğuna bağlı olarak, MirrorMaker konu çoğaltma, kaynak ve çoğaltma konuları arasında farklı uzaklıklara yol açabilir. HDInsight Kafka kümeleri, tek küme düzeyinde yüksek kullanılabilirlik özelliği olan konu Bölüm çoğaltmasını da destekler.
 
@@ -192,7 +192,7 @@ Eksileri:
 
 ## <a name="hdinsight-enterprise-security-package"></a>HDInsight Kurumsal Güvenlik Paketi
 
-Bu ayar, kullanıcıların her iki kümede da kimlik doğrulaması yapabilmeleri için [Azure AD DS çoğaltma kümelerinde](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-replica-set) hem birincil hem de ikincil olarak çok kullanıcılı işlevselliği etkinleştirmek üzere kullanılır. Normal işlemler sırasında, kullanıcıların okuma işlemleriyle sınırlı olduğundan emin olmak için Ranger ilkelerinin Ikincil içinde ayarlanması gerekir. Aşağıdaki mimaride, bir ESP etkin Hive etkin birincil – bekleme Ikincil kümesinin nasıl görünebileceği açıklanmaktadır.
+Bu ayar, kullanıcıların her iki kümede da kimlik doğrulaması yapabilmeleri için [Azure AD DS çoğaltma kümelerinde](../active-directory-domain-services/tutorial-create-replica-set.md) hem birincil hem de ikincil olarak çok kullanıcılı işlevselliği etkinleştirmek üzere kullanılır. Normal işlemler sırasında, kullanıcıların okuma işlemleriyle sınırlı olduğundan emin olmak için Ranger ilkelerinin Ikincil içinde ayarlanması gerekir. Aşağıdaki mimaride, bir ESP etkin Hive etkin birincil – bekleme Ikincil kümesinin nasıl görünebileceği açıklanmaktadır.
 
 Ranger meta veri deposu çoğaltma:
 

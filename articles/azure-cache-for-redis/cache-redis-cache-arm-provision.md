@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: 0445aeaea6f99754469d5c0e46972aef2ed667aa
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fdfa8c767757aa17983a28d0d586698551326fe4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424217"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545336"
 ---
 # <a name="create-an-azure-cache-for-redis-using-an-arm-template"></a>ARM şablonunu kullanarak Redsıs için Azure önbelleği oluşturma
 
@@ -26,8 +26,8 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* **Bir depolama hesabı**: oluşturmak için bkz. [Azure depolama hesabı oluşturma](/azure/storage/common/storage-account-create?tabs=azure-portal). Depolama hesabı, tanılama verileri için kullanılır.
+* **Azure aboneliği** : Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* **Bir depolama hesabı** : oluşturmak için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal). Depolama hesabı, tanılama verileri için kullanılır.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
@@ -46,7 +46,7 @@ Yeni [Premium katmanının](cache-overview.md#service-tiers) Kaynak Yöneticisi 
 * [Veri kalıcılığı olan Redsıs için Premium Azure önbelleği oluşturma](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [Sanal bir ağa dağıtılan Premium Redis Cache oluşturma](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 
-En son şablonları denetlemek için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/documentation/templates/) ve _Redsıs için Azure önbelleği_araması.
+En son şablonları denetlemek için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/documentation/templates/) ve _Redsıs için Azure önbelleği_ araması.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -55,14 +55,14 @@ En son şablonları denetlemek için bkz. [Azure hızlı başlangıç şablonlar
     [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 1. Aşağıdaki değerleri seçin veya girin:
 
-    * **Abonelik**: veri paylaşımının ve diğer kaynakların oluşturulması için kullanılan bir Azure aboneliğini seçin.
-    * **Kaynak grubu**: yeni bir kaynak grubu oluşturmak Için **Yeni oluştur** ' u seçin veya var olan bir kaynak grubunu seçin.
-    * **Konum**: kaynak grubu için bir konum seçin. Depolama hesabı ve Redo önbelleğinin aynı bölgede olması gerekir. Varsayılan olarak Redsıs Cache, kaynak grubuyla aynı konumu kullanır. Bu nedenle, depolama hesabıyla aynı konumu belirtin.
-    * **Redis Cache adı**: redsıs önbelleği için bir ad girin.
-    * **Mevcut tanılama depolama hesabı**: bir depolama HESABıNıN kaynak kimliğini girin. Söz dizimi `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>` şeklindedir.
+    * **Abonelik** : veri paylaşımının ve diğer kaynakların oluşturulması için kullanılan bir Azure aboneliğini seçin.
+    * **Kaynak grubu** : yeni bir kaynak grubu oluşturmak Için **Yeni oluştur** ' u seçin veya var olan bir kaynak grubunu seçin.
+    * **Konum** : kaynak grubu için bir konum seçin. Depolama hesabı ve Redo önbelleğinin aynı bölgede olması gerekir. Varsayılan olarak Redsıs Cache, kaynak grubuyla aynı konumu kullanır. Bu nedenle, depolama hesabıyla aynı konumu belirtin.
+    * **Redis Cache adı** : redsıs önbelleği için bir ad girin.
+    * **Mevcut tanılama depolama hesabı** : bir depolama HESABıNıN kaynak kimliğini girin. Söz dizimi `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>` şeklindedir.
 
     Geri kalan ayarlar için varsayılan değeri kullanın.
-1. **yukarıda belirtilen hüküm ve koşulları**ve **satın alma**seçimini kabul ediyorum ' u seçin.
+1. **yukarıda belirtilen hüküm ve koşulları** ve **satın alma** seçimini kabul ediyorum ' u seçin.
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: db55ac4ce868f2e6ce2afbfbf014aac67653ce4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7643f882d5ac330046c169e0a3f2fa4920331d4e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500513"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537703"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure klasik CLı kullanılarak Redsıs için Azure önbelleği oluşturma ve yönetme
 > [!div class="op_single_selector"]
@@ -30,9 +30,9 @@ Azure klasik CLı, Azure altyapınızı herhangi bir platformdan yönetmenin har
 Azure klasik CLı kullanarak Redsıs örnekleri için Azure önbelleği oluşturup yönetmek için aşağıdaki adımları gerçekleştirmeniz gerekir.
 
 * Azure hesabınız olmalıdır. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir [Hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
-* [Azure klasık CLI 'Yı yükler](../cli-install-nodejs.md).
+* [Azure klasık CLI 'Yı yükler](/cli/azure/install-classic-cli).
 * Azure CLı yüklemenizi bir kişisel Azure hesabıyla veya bir iş ya da okul Azure hesabıyla bağlayın ve komutunu kullanarak klasik CLı 'dan oturum açın `azure login` .
-* Aşağıdaki komutlardan herhangi birini çalıştırmadan önce, komutunu çalıştırarak klasik CLı 'yı Kaynak Yöneticisi moduna geçirin `azure config mode arm` . Daha fazla bilgi için bkz. Azure [klasık CLI kullanarak Azure kaynaklarını ve kaynak gruplarını yönetme](../xplat-cli-azure-resource-manager.md).
+* Aşağıdaki komutlardan herhangi birini çalıştırmadan önce, komutunu çalıştırarak klasik CLı 'yı Kaynak Yöneticisi moduna geçirin `azure config mode arm` . Daha fazla bilgi için bkz. Azure [klasık CLI kullanarak Azure kaynaklarını ve kaynak gruplarını yönetme](../azure-resource-manager/management/manage-resources-cli.md).
 
 ## <a name="azure-cache-for-redis-properties"></a>Redsıs özellikleri için Azure önbelleği
 Aşağıdaki özellikler, Redsıs örnekleri için Azure önbelleği oluşturma ve güncelleştirme sırasında kullanılır.

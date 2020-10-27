@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: cae8647d970020a22d59dc49b058d43fe28dd00c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816465"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543109"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: küme oluşturma hataları
 
@@ -24,7 +24,7 @@ Bu makalede, küme oluştururken karşılaşabileceğiniz hatalara yönelik çö
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hata kodu: ' CsmDocument_2_0 ' DeploymentDocument doğrulaması başarısız oldu
 
-**Hata**: "betik eylemi konumuna erişilemiyor URI: \<SCRIPT ACTION URL\> "
+**Hata** : "betik eylemi konumuna erişilemiyor URI: \<SCRIPT ACTION URL\> "
 
 ### <a name="error-message-1"></a>Hata iletisi 1
 
@@ -141,7 +141,7 @@ Ağ güvenlik grubunuzda (NSG) bulunan bir güvenlik duvarı kuralı, kritik Azu
 Ağ trafiğini denetlemek için ağ güvenlik grupları kullanmayı planlıyorsanız, HDInsight 'ı yüklemeden önce aşağıdaki işlemleri gerçekleştirin:
 
 - HDInsight için kullanmayı planladığınız Azure bölgesini belirler.
-- HDInsight için gereken IP adreslerini belirler. Daha fazla bilgi için bkz. [HDInsight yönetimi IP adresleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+- HDInsight için gereken IP adreslerini belirler. Daha fazla bilgi için bkz. [HDInsight yönetimi IP adresleri](./hdinsight-management-ip-addresses.md).
   - HDInsight 'ı yüklemeyi planladığınız alt ağ için ağ güvenlik grupları oluşturun veya değiştirin.
   - Ağ güvenlik grupları için IP adreslerinden 443 numaralı bağlantı noktasında gelen trafiğe izin verin. Bu yapılandırma, HDInsight Yönetim Hizmetleri 'nin kümeye sanal ağ dışından erişmesini sağlar.
 
@@ -172,7 +172,7 @@ Daha fazla bilgi için bkz. [Data Lake Storage 2. hesabındaki yönetilen kimlik
 
 ### <a name="error"></a>Hata
 
-"Ağ güvenlik grubundaki/Subscriptions/ \<SubscriptionID\> /resourcegroups/<kaynak grubu adı \> varsayılan/sağlayıcıları/Microsoft. Network/networkSecurityGroups/ \<Network Security Group Name\> alt ağ/Subscriptions/ \<SubscriptionID\> /ResourceGroups/ \<Resource Group name\> RG-westeurope-VNET-TomTom-default/Providers/Microsoft. Network/virtualnetworks//Subnets/ile yapılandırılan güvenlik kuralları, \<Virtual Network Name\> \<Subnet Name\> gerekli gelen ve/veya giden bağlantılara izin vermiyor. Daha fazla bilgi için lütfen [Azure HDInsight için bir sanal ağ planlayın](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)veya desteğe başvurun. "
+"Ağ güvenlik grubundaki/Subscriptions/ \<SubscriptionID\> /resourcegroups/<kaynak grubu adı \> varsayılan/sağlayıcıları/Microsoft. Network/networkSecurityGroups/ \<Network Security Group Name\> alt ağ/Subscriptions/ \<SubscriptionID\> /ResourceGroups/ \<Resource Group name\> RG-westeurope-VNET-TomTom-default/Providers/Microsoft. Network/virtualnetworks//Subnets/ile yapılandırılan güvenlik kuralları, \<Virtual Network Name\> \<Subnet Name\> gerekli gelen ve/veya giden bağlantılara izin vermiyor. Daha fazla bilgi için lütfen [Azure HDInsight için bir sanal ağ planlayın](./hdinsight-plan-virtual-network-deployment.md)veya desteğe başvurun. "
 
 ### <a name="cause"></a>Nedeni
 
@@ -182,8 +182,8 @@ Ağ güvenlik grupları veya Kullanıcı tanımlı yollar (UDRs) HDInsight küme
 
 Ağ trafiğini denetlemek için ağ güvenlik grupları kullanmayı planlıyorsanız, HDInsight 'ı yüklemeden önce aşağıdaki işlemleri gerçekleştirin:
 
-- HDInsight için kullanmayı planladığınız Azure bölgesini tanımlayabilir ve bölgeniz için IP adreslerinin güvenli bir listesini oluşturun. Daha fazla bilgi için bkz. [sistem durumu ve Yönetim Hizmetleri: belirli bölgeler](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions).
-- HDInsight 'ın gerektirdiği IP adreslerini belirler. Daha fazla bilgi için bkz. [HDInsight YÖNETIM IP adresleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+- HDInsight için kullanmayı planladığınız Azure bölgesini tanımlayabilir ve bölgeniz için IP adreslerinin güvenli bir listesini oluşturun. Daha fazla bilgi için bkz. [sistem durumu ve Yönetim Hizmetleri: belirli bölgeler](./hdinsight-management-ip-addresses.md#health-and-management-services-specific-regions).
+- HDInsight 'ın gerektirdiği IP adreslerini belirler. Daha fazla bilgi için bkz. [HDInsight YÖNETIM IP adresleri](./hdinsight-management-ip-addresses.md).
 - HDInsight 'ı yüklemeyi planladığınız alt ağ için ağ güvenlik grupları oluşturun veya değiştirin. Ağ güvenlik grupları için IP adreslerinden 443 numaralı bağlantı noktasında gelen trafiğe izin verin. Bu yapılandırma, HDInsight Yönetim Hizmetleri 'nin kümeye sanal ağ dışından erişmesini sağlar.
 
 ---
@@ -216,7 +216,7 @@ HDInsight hizmeti, kümeyi oluşturmaya çalışırken kümenize bağlanamaz
 
 ### <a name="resolution"></a>Çözüm
 
-Özel VNet ağ güvenlik grubu (NSG) ve Kullanıcı tanımlı yollar (UDRs) kullanıyorsanız, kümenizin HDInsight yönetim hizmetleriyle iletişim kurabildiğinden emin olun. Daha fazla bilgi için bkz. [HDInsight YÖNETIM IP adresleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+Özel VNet ağ güvenlik grubu (NSG) ve Kullanıcı tanımlı yollar (UDRs) kullanıyorsanız, kümenizin HDInsight yönetim hizmetleriyle iletişim kurabildiğinden emin olun. Daha fazla bilgi için bkz. [HDInsight YÖNETIM IP adresleri](./hdinsight-management-ip-addresses.md).
 
 ---
 
@@ -240,4 +240,4 @@ HDInsight kümesi oluştururken abonelik tabanlı Azure Ilke atamasını silin v
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Küme oluşturma hatalarında sorun giderme hakkında daha fazla bilgi için bkz. [Azure HDInsight ile küme oluşturma hatalarında sorun giderme](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails).
+Küme oluşturma hatalarında sorun giderme hakkında daha fazla bilgi için bkz. [Azure HDInsight ile küme oluşturma hatalarında sorun giderme](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md).

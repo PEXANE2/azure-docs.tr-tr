@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 4b196818ade1e703e24ed1ced6ebac1b44d0b083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5de4e1b465cfc3ced59f8fe34a7f397324b4a225
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372077"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537635"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Redis için Azure Cache’e geçiş
 Bu makalede, şirket içinde veya başka bir bulut hizmetinde çalışan mevcut bir redo önbelleğinin redin için Azure önbelleğine geçirilmesi için çeşitli yaklaşımlar açıklanmaktadır.
@@ -64,12 +64,12 @@ Bu seçeneği uygulamak için genel adımlar şunlardır:
 2. Var olan Redsıs önbelleğinin bir anlık görüntüsünü kaydedin. [Redsıs 'Yi, anlık görüntüleri](https://redis.io/topics/persistence) düzenli aralıklarla kaydetmek veya [Kaydet](https://redis.io/commands/save) veya [bgsave](https://redis.io/commands/bgsave) komutlarını kullanarak el ile çalıştırmak için yapılandırabilirsiniz. RDB dosyası varsayılan olarak "dump. RDB" olarak adlandırılır ve *redsıs. conf* yapılandırma dosyasında belirtilen yolda yer alır.
 
     > [!NOTE]
-    > Redu için Azure Cache içindeki verileri geçiriyorsanız, [BIR RDB dosyasını dışarı aktarma](cache-how-to-import-export-data.md) veya bunun yerine [PowerShell Export cmdlet 'ini](https://docs.microsoft.com/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0) kullanma hakkındaki yönergelere bakın.
+    > Redu için Azure Cache içindeki verileri geçiriyorsanız, [BIR RDB dosyasını dışarı aktarma](cache-how-to-import-export-data.md) veya bunun yerine [PowerShell Export cmdlet 'ini](/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0) kullanma hakkındaki yönergelere bakın.
     >
 
 3. RDB dosyasını yeni önbelleğinizin bulunduğu bölgedeki bir Azure depolama hesabına kopyalayın. Bu görev için AzCopy kullanabilirsiniz.
 
-4. Bu [içeri aktarma yönergelerini](cache-how-to-import-export-data.md) veya [PowerShell içeri aktarma CMDLET 'ini](https://docs.microsoft.com/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0)kullanarak RDB dosyasını yeni önbelleğe aktarın.
+4. Bu [içeri aktarma yönergelerini](cache-how-to-import-export-data.md) veya [PowerShell içeri aktarma CMDLET 'ini](/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0)kullanarak RDB dosyasını yeni önbelleğe aktarın.
 
 5. Uygulamanızı yeni önbellek örneğini kullanacak şekilde güncelleştirin.
 

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/13/2020
-ms.openlocfilehash: 0fbafd81fac1982f624adae9286000fb61db62c5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0b4a31b88c9a6fa8c2c6170fce38760c1a361f2e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474929"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533436"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>HDInsight 'ta Azure PowerShell kullanarak Apache Hadoop kümelerini yönetme
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell, Azure 'da iş yüklerinizin dağıtımını ve yönetimini denetlemek ve otomatik hale getirmek için kullanılabilir. Bu makalede, Azure PowerShell az modülünü kullanarak Azure HDInsight 'ta [Apache Hadoop](https://hadoop.apache.org/) kümelerini yönetmeyi öğreneceksiniz. HDInsight PowerShell cmdlet 'lerinin listesi için, [az. HDInsight başvurusuna](https://docs.microsoft.com/powershell/module/az.hdinsight)bakın.
+Azure PowerShell, Azure 'da iş yüklerinizin dağıtımını ve yönetimini denetlemek ve otomatik hale getirmek için kullanılabilir. Bu makalede, Azure PowerShell az modülünü kullanarak Azure HDInsight 'ta [Apache Hadoop](https://hadoop.apache.org/) kümelerini yönetmeyi öğreneceksiniz. HDInsight PowerShell cmdlet 'lerinin listesi için, [az. HDInsight başvurusuna](/powershell/module/az.hdinsight)bakın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell [az Module](https://docs.microsoft.com/powershell/azure/) yüklendi.
+PowerShell [az Module](/powershell/azure/) yüklendi.
 
 ## <a name="create-clusters"></a>Küme oluşturma
 
@@ -75,7 +75,7 @@ Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <New
 
 ## <a name="update-http-user-credentials"></a>HTTP Kullanıcı kimlik bilgilerini güncelleştirme
 
-[Set-AzHDInsightGatewayCredential](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) bir Azure HDInsight kümesinin ağ geçidi http kimlik bilgilerini ayarlar.
+[Set-AzHDInsightGatewayCredential](/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) bir Azure HDInsight kümesinin ağ geçidi http kimlik bilgilerini ayarlar.
 
 ```powershell
 $clusterName = "CLUSTERNAME"
@@ -146,7 +146,7 @@ Bkz. [HDInsight'a veri yükleme](hdinsight-upload-data.md).
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 
-* [Az. HDInsight cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.hdinsight/#hdinsight)
+* [Az. HDInsight cmdlet 'leri](/powershell/module/az.hdinsight/#hdinsight)
 * [HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin](hdinsight-administer-use-portal-linux.md)
 * [Bir komut satırı arabirimi kullanarak HDInsight 'ı yönetme](hdinsight-administer-use-command-line.md)
 * [HDInsight kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md)

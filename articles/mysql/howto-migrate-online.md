@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 978312c6238315cf836cf7c26a2ee63e452d3b85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c7fe3db3f85824dc2cfbe87fc22b63a59e931ab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90884603"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546373"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na en düşük kesinti süresi geçişi
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
@@ -25,4 +25,4 @@ Azure DMS, şirket içi şirketinizin ilk yükünü MySQL için Azure veritaban�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - MySQL uygulamalarının MySQL için Azure veritabanı 'na nasıl geçirileceğini gösteren bir demo içeren [MySQL/PostgreSQL uygulamalarını Azure yönetilen hizmetine kolayca geçirin](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201).
-- [DMS kullanarak MySQL Için MySQL for MySQL 'e Azure veritabanı 'Na geçiş](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online)öğreticisine bakın.
+- [DMS kullanarak MySQL Için MySQL for MySQL 'e Azure veritabanı 'Na geçiş](../dms/tutorial-mysql-azure-mysql-online.md)öğreticisine bakın.

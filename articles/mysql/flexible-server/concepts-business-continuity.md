@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı esnek sunucusu ile iş sürekliliği 'ne genel bakış
+title: İş sürekliliği 'ne genel bakış-MySQL için Azure veritabanı esnek sunucu
 description: MySQL için Azure veritabanı esnek sunucusu ile iş sürekliliği kavramlarını öğrenin
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 0c1afaa7d2d7971b2570914aa7c69fa7c666ae46
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 833031a787f8571a8f8aea8e536410d4abcca298
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107853"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546424"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı ile iş sürekliliği 'ne genel bakış-esnek sunucu (Önizleme)
 
@@ -21,7 +21,6 @@ ms.locfileid: "92107853"
 MySQL için Azure veritabanı esnek sunucu, planlı ve plansız bir kesinti durumunda veritabanlarınızı koruyan iş sürekliliği özellikleri sunar. Otomatik yedeklemeler ve yüksek kullanılabilirlik gibi özellikler, farklı kurtarma süresi ve veri kaybı Etkilenmeler ile farklı hata koruması düzeylerine sahiptir. Uygulamanızı hatalara karşı korumak üzere mimarduğunuzda, her bir uygulama için kurtarma süresi hedefini (RTO) ve kurtarma noktası hedefini (RPO) göz önünde bulundurmanız gerekir. RTO, kapalı kalma süresi toleransı ve RPO, veritabanı hizmetine bir kesinti sonrasında veri kaybı toleransı sağlar.
 
 Aşağıdaki tabloda esnek sunucu tarafından sunulan özellikler gösterilmektedir.
-
 
 | **Özellik** | **Açıklama** | **Kısıtlamalar** |
 | ---------- | ----------- | ------------ |
@@ -34,17 +33,18 @@ Aşağıdaki tabloda esnek sunucu tarafından sunulan özellikler gösterilmekte
 > Önizleme dönemi boyunca çalışma süresi, RTO ve RPO SLA 'Sı sunulmaz. Yalnızca bilgi ve planlama amaçlarıyla bu sayfada sunulan ayrıntılar.
 
 ## <a name="planned-downtime-mitigation"></a>Planlanmış kapalı kalma süresi hafifletme
+
 Kapalı kalma süresi olan bazı planlı bakım senaryoları aşağıda verilmiştir:
 
 | **Senaryo** | **İşleme**|
 | :------------ | :----------- |
 | **İşlem Ölçeklendirmesi (Kullanıcı)**| İşlem ölçekleme işlemi gerçekleştirdiğinizde, ölçeklendirilmiş işlem yapılandırması kullanılarak yeni bir esnek sunucu sağlanır. Var olan veritabanı sunucusunda, etkin kontrol noktalarının tamamlanabilmesi için, istemci bağlantıları boşaltılır, kaydedilmeyen tüm işlemler iptal edilir ve sonra kapatılır. Daha sonra depolama alanı yeni sunucuya eklenir ve istemci bağlantılarını kabul etmeden önce gerekirse kurtarma işlemi gerçekleştirilir. |
 | **Yeni yazılım dağıtımı (Azure)** | Yeni özellik dağıtımı veya hata düzeltmeleri, hizmetin planlı bakımının bir parçası olarak otomatik olarak gerçekleşir ve bu etkinliklerin ne zaman gerçekleşmesini zamanlayabilirsiniz. Daha fazla bilgi için [belgelere](https://aka.ms/servicehealthpm)bakın ve ayrıca [portalınızı](https://aka.ms/servicehealthpm) denetleyin |
-| **İkincil sürüm yükseltmeleri (Azure)** | MySQL için Azure veritabanı, veritabanı sunucularını otomatik olarak Azure tarafından belirlenen alt sürüme ekler. Hizmetin planlı bakım kapsamında olur. Bu, saniye cinsinden kısa bir kapalı kalma süresine neden olur ve veritabanı sunucusu yeni ikincil sürümle otomatik olarak yeniden başlatılır. Daha fazla bilgi için [belgelere](https://docs.microsoft.com/azure/mysql/concepts-monitoring#planned-maintenance-notification)bakın ve ayrıca [portalınızı](https://aka.ms/servicehealthpm)kontrol edin.|
+| **İkincil sürüm yükseltmeleri (Azure)** | MySQL için Azure veritabanı, veritabanı sunucularını otomatik olarak Azure tarafından belirlenen alt sürüme ekler. Hizmetin planlı bakım kapsamında olur. Bu, saniye cinsinden kısa bir kapalı kalma süresine neden olur ve veritabanı sunucusu yeni ikincil sürümle otomatik olarak yeniden başlatılır. Daha fazla bilgi için [belgelere](../concepts-monitoring.md#planned-maintenance-notification)bakın ve ayrıca [portalınızı](https://aka.ms/servicehealthpm)kontrol edin.|
 
-Esnek sunucu, bölgesel olarak **yedekli yüksek kullanılabilirliğe**göre yapılandırıldığında, esnek sunucu önce bekleme sunucusunda, sonra da yük devretme olmadan birincil sunucuda işlemler gerçekleştirir. Daha fazla ayrıntı için [Kavramlar-yüksek kullanılabilirlik](./concepts-high-availability.md) bölümüne bakın.
+Esnek sunucu, bölgesel olarak **yedekli yüksek kullanılabilirliğe** göre yapılandırıldığında, esnek sunucu önce bekleme sunucusunda, sonra da yük devretme olmadan birincil sunucuda işlemler gerçekleştirir. Daha fazla ayrıntı için [Kavramlar-yüksek kullanılabilirlik](./concepts-high-availability.md) bölümüne bakın.
 
-##  <a name="unplanned-downtime-mitigation"></a>Planlanmamış kapalı kalma süresi azaltma
+## <a name="unplanned-downtime-mitigation"></a>Planlanmamış kapalı kalma süresi azaltma
 
 Temel alınan donanım hatası, ağ sorunları ve yazılım hataları da dahil, öngörülemeyen hataların bir sonucu olarak plansız kapalı kalma süreleri meydana gelebilir. Veritabanı sunucusu beklenmedik şekilde kapanıyorsa, yüksek kullanılabilirlik [HA] ile yapılandırıldıysa, bekleme çoğaltması etkinleştirilir. Aksi takdirde, yeni bir veritabanı sunucusu otomatik olarak sağlanır. Planlanmamış kapalı kalma süresi önlenemez, esnek sunucu, kurtarma işlemlerini hem veritabanı sunucusunda hem de depolama katmanlarında, insan müdahalesine gerek kalmadan otomatik olarak gerçekleştirerek kapalı kalma süresini azaltır.
 
@@ -60,12 +60,10 @@ Bazı planlanmamış hata senaryoları ve kurtarma işlemi aşağıda verilmişt
 | **Kullanılabilirlik bölgesi hatası** | Nadir bir olay olsa da, bölge düzeyindeki bir hatadan kurtarmak istiyorsanız, yedeklemeyi kullanarak bir noktadan noktaya kurtarma gerçekleştirebilir ve en son verilere ulaşmak için özel geri yükleme noktasını seçebilirsiniz. Yeni bir esnek sunucu, başka bir bölgeye dağıtılır. Geri yüklemek için geçen süre, önceki yedeklemeye ve kurtarılacak işlem günlüklerinin sayısına bağlıdır. | Esnek sunucu, bekleme sitesine otomatik yük devretme işlemi gerçekleştirir. Daha fazla ayrıntı için [ha kavramları sayfasına](./concepts-high-availability.md) bakın. |
 | **Bölge hatası** | Çapraz-bölge çoğaltma ve coğrafi geri yükleme özellikleri henüz önizlemede desteklenmiyor. | |
 
-
 > [!IMPORTANT]
-> Silinen sunucular **cannot**   geri yüklenemez. Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. [Azure resource lock](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)   Sunucunuzun yanlışlıkla silinmesini önlemeye yardımcı olmak için Azure Kaynak kilidini kullanın.
-
+> Silinen sunucular **geri yüklenemez.** Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Sunucunuzun yanlışlıkla silinmesini önlemeye yardımcı olmak için [Azure Kaynak kilidini](../../azure-resource-manager/management/lock-resources.md) kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
--    [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin
--   [Yedekleme ve kurtarma](./concepts-backup-restore.md) hakkında bilgi edinin
+- [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin
+- [Yedekleme ve kurtarma](./concepts-backup-restore.md) hakkında bilgi edinin

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: 95472d53045e23741286188da004eb649570a965
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c2aa33ac9e92f6763c0d89f0a049409c1a6a4049
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487237"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546033"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight kümesi için günlükleri yönetme
 
@@ -77,11 +77,11 @@ Tipik bir HDInsight kümesi, çeşitli hizmetleri ve açık kaynaklı yazılım 
 
 Apache ambarı, bir Web Kullanıcı arabirimi ve REST API sağlayarak bir HDInsight kümesinin yönetimini, yapılandırılmasını ve izlenmesini basitleştirir. Ambarı, Linux tabanlı HDInsight kümelerine dahildir. Azure portal HDInsight sayfasında **küme Pano** bölmesini seçerek **küme panoları** bağlantı sayfasını açın.  Ardından, yeni kullanıcı arabirimi ' ni açmak için **HDInsight kümesi Pano** bölmesini seçin.  Sizden küme oturum açma kimlik bilgileriniz istenir.
 
-Hizmet görünümlerinin listesini açmak için HDInsight için Azure portal sayfasındaki **ambarı görünümleri** bölmesini seçin.  Bu liste, yüklediğiniz kitaplıklara bağlı olarak farklılık gösterir.  Örneğin, YARN kuyruğu Yöneticisi, Hive görünümü ve tez görünümü ' ne bakabilirsiniz.  Yapılandırma ve hizmet bilgilerini görmek için herhangi bir hizmet bağlantısı seçin.  Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfasında, küme hizmetleri yapılandırma ve hizmet sürümü geçmişi hakkında bilgi sağlanır. Ambarı Kullanıcı arabiriminin bu bölümüne gitmek için **yönetici** menüsünü ve ardından **yığınlar ve sürümler**' i seçin.  Hizmet sürümü bilgilerini görmek için **sürümler** sekmesini seçin.
+Hizmet görünümlerinin listesini açmak için HDInsight için Azure portal sayfasındaki **ambarı görünümleri** bölmesini seçin.  Bu liste, yüklediğiniz kitaplıklara bağlı olarak farklılık gösterir.  Örneğin, YARN kuyruğu Yöneticisi, Hive görünümü ve tez görünümü ' ne bakabilirsiniz.  Yapılandırma ve hizmet bilgilerini görmek için herhangi bir hizmet bağlantısı seçin.  Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfasında, küme hizmetleri yapılandırma ve hizmet sürümü geçmişi hakkında bilgi sağlanır. Ambarı Kullanıcı arabiriminin bu bölümüne gitmek için **yönetici** menüsünü ve ardından **yığınlar ve sürümler** ' i seçin.  Hizmet sürümü bilgilerini görmek için **sürümler** sekmesini seçin.
 
 ![Apache ambarı yönetici yığını ve sürümleri](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-Ambarı Kullanıcı arabirimini kullanarak, kümedeki belirli bir konakta (veya düğümünde) çalışan tüm (veya tüm) hizmetlerin yapılandırmasını indirebilirsiniz.  **Konaklar** menüsünü ve ardından ilgilendiğiniz konağın bağlantısını seçin. Bu konağın sayfasında, **konak eylemleri** düğmesini seçin ve ardından **istemci yapılandırması**' nı indirin.
+Ambarı Kullanıcı arabirimini kullanarak, kümedeki belirli bir konakta (veya düğümünde) çalışan tüm (veya tüm) hizmetlerin yapılandırmasını indirebilirsiniz.  **Konaklar** menüsünü ve ardından ilgilendiğiniz konağın bağlantısını seçin. Bu konağın sayfasında, **konak eylemleri** düğmesini seçin ve ardından **istemci yapılandırması** ' nı indirin.
 
 ![Apache ambarı indirme konak istemci yapılandırması](./media/hdinsight-log-management/download-client-configs.png)
 
@@ -109,7 +109,7 @@ Sonraki adım çeşitli hizmetlere yönelik iş yürütme günlüğü dosyaları
 
 ### <a name="access-the-hadoop-log-files"></a>Hadoop günlük dosyalarına erişin
 
-HDInsight, günlük dosyalarını hem küme dosyası sisteminde hem de Azure Storage 'da depolar. Kümeye bir [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) bağlantısı açıp dosya sistemine gözatıp veya uzak baş düğüm sunucusunda Hadoop Yarn durum portalını kullanarak kümedeki günlük dosyalarını inceleyebilirsiniz. Azure depolama 'daki verileri erişebilecek ve indirebileceğiniz araçlardan herhangi birini kullanarak Azure Storage 'daki günlük dosyalarını inceleyebilirsiniz. Örnekler [AzCopy](../storage/common/storage-use-azcopy.md), [Cloudxplorer](https://clumsyleaf.com/products/cloudxplorer)ve Visual Studio Sunucu Gezgini. Ayrıca, Azure Blob depolama alanındaki verilere erişmek için PowerShell ve Azure depolama Istemci kitaplıklarını veya Azure .NET SDK 'larını de kullanabilirsiniz.
+HDInsight, günlük dosyalarını hem küme dosyası sisteminde hem de Azure Storage 'da depolar. Kümeye bir [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) bağlantısı açıp dosya sistemine gözatıp veya uzak baş düğüm sunucusunda Hadoop Yarn durum portalını kullanarak kümedeki günlük dosyalarını inceleyebilirsiniz. Azure depolama 'daki verileri erişebilecek ve indirebileceğiniz araçlardan herhangi birini kullanarak Azure Storage 'daki günlük dosyalarını inceleyebilirsiniz. Örnekler [AzCopy](../storage/common/storage-use-azcopy-v10.md), [Cloudxplorer](https://clumsyleaf.com/products/cloudxplorer)ve Visual Studio Sunucu Gezgini. Ayrıca, Azure Blob depolama alanındaki verilere erişmek için PowerShell ve Azure depolama Istemci kitaplıklarını veya Azure .NET SDK 'larını de kullanabilirsiniz.
 
 Hadoop, kümedeki çeşitli düğümlerde *görev denemeleri* olarak işlerin çalışmasını çalıştırır. HDInsight, ilk olarak tamamlanmamış diğer görev girişimlerini sonlandırarak, öngörülebilir görev denemeleri başlatabilir. Bu, anında denetleyici, stderr ve Syslog günlük dosyalarına kaydedilen önemli bir etkinlik oluşturur. Ayrıca, birden çok görev denemesi aynı anda çalışır, ancak bir günlük dosyası sonuçları yalnızca daha erken görüntüleyebilir.
 
@@ -144,13 +144,13 @@ YARN ResourceManager Kullanıcı arabirimi küme baş düğümünde çalışır 
 
 1. Bir web tarayıcısında `https://CLUSTERNAME.azurehdinsight.net` sayfasına gidin. CLUSTERNAME değerini HDInsight kümenizin adıyla değiştirin.
 2. Soldaki hizmetler listesinden YARN ' yi seçin.
-3. Hızlı bağlantılar açılan listesinden küme baş düğümlerinden birini seçin ve ardından **ResourceManager günlükleri**' ni seçin. YARN günlüklerine bağlantıların bir listesini görürsünüz.
+3. Hızlı bağlantılar açılan listesinden küme baş düğümlerinden birini seçin ve ardından **ResourceManager günlükleri** ' ni seçin. YARN günlüklerine bağlantıların bir listesini görürsünüz.
 
 ## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>4. Adım: günlük birimi depolama boyutlarını ve maliyetlerini tahmin etme
 
 Önceki adımları tamamladıktan sonra, HDInsight kümenizin üretmiş olduğu günlük dosyalarının türlerini ve hacimlerini kavramış olursunuz.
 
-Ardından, bir süre içinde anahtar günlük depolama konumlarında günlük verilerinin hacmini analiz edin. Örneğin, 30-60-90 günlük dönem üzerinden hacmi ve büyümeyi çözümleyebilirsiniz.  Bu bilgileri bir elektronik tabloya kaydedin veya Excel için Visual Studio, Azure Depolama Gezgini veya Power Query gibi diğer araçları kullanın. Daha fazla bilgi için bkz. [HDInsight günlüklerini çözümleme](hdinsight-debug-jobs.md).  
+Ardından, bir süre içinde anahtar günlük depolama konumlarında günlük verilerinin hacmini analiz edin. Örneğin, 30-60-90 günlük dönem üzerinden hacmi ve büyümeyi çözümleyebilirsiniz.  Bu bilgileri bir elektronik tabloya kaydedin veya Excel için Visual Studio, Azure Depolama Gezgini veya Power Query gibi diğer araçları kullanın. ```
 
 Artık anahtar günlükleri için bir günlük yönetimi stratejisi oluşturmak üzere yeterli bilgiye sahipsiniz.  Hem günlük boyutu büyümesini hem de günlük depolama Azure hizmeti maliyetlerini tahmin etmek için elektronik tablonuzu (veya seçim aracını) kullanın.  Ayrıca, incelediğiniz Günlükler kümesi için herhangi bir günlük tutma gereksinimini göz önünde bulundurun.  Artık, hangi günlük dosyalarının silinebileceği (varsa) ve hangi günlüklerin korunması ve daha ucuz Azure depolama için arşivlenmesi gerektiğini belirlemekten sonra gelecekteki günlük depolama maliyetlerini yeniden tahmin edebilirsiniz.
 
@@ -186,6 +186,6 @@ Tüm düğümlerdeki günlükleri tek bir merkezi konuma toplamak için, tüm g�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [HDInsight için izleme ve günlüğe kaydetme uygulaması](https://msdn.microsoft.com/library/dn749790.aspx)
+* [HDInsight için izleme ve günlüğe kaydetme uygulaması](/previous-versions/msp-n-p/dn749790(v=pandp.10))
 * [Linux tabanlı HDInsight 'ta YARN uygulama günlüklerine erişim Apache Hadoop](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Çeşitli Apache Hadoop bileşenleri için günlük dosyalarının boyutunu denetleme](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

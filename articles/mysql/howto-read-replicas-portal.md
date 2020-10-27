@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 6b097aa0adb39e1576e8771bbae8707348351a82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63ce078cc80b856fe09f3d2bbad1c6e96615eae8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740131"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546815"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
 Bu makalede, Azure portal kullanarak MySQL için Azure veritabanı hizmetinde okuma çoğaltmaları oluşturmayı ve yönetmeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Kaynak sunucu olarak kullanılacak [MySQL Için Azure veritabanı sunucusu](quickstart-create-mysql-server-database-using-azure-portal.md) .
 
@@ -35,9 +35,9 @@ Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturul
 
 2. Ana sunucu olarak kullanmak istediğiniz MySQL için Azure veritabanı sunucusunu seçin. Bu eylem **genel bakış** sayfasını açar.
 
-3. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
+3. **Ayarlar** ' ın altında, menüden **çoğaltma** ' yı seçin.
 
-4. **Çoğaltma ekle**' yi seçin.
+4. **Çoğaltma ekle** ' yi seçin.
 
    :::image type="content" source="./media/howto-read-replica-portal/add-replica.png" alt-text="MySQL için Azure veritabanı-çoğaltma":::
 
@@ -55,7 +55,7 @@ Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturul
 7. Çoğaltmanın oluşturulmasını onaylamak için **Tamam ' ı** seçin.
 
 > [!NOTE]
-> Okuma çoğaltmaları, ana sunucuyla aynı sunucu yapılandırmasıyla oluşturulur. Çoğaltma sunucusu yapılandırması oluşturulduktan sonra değiştirilebilir. Çoğaltma sunucusu her zaman aynı kaynak grubunda ve kaynak sunucuyla aynı abonelikte oluşturulur. Farklı bir kaynak grubuna veya farklı bir aboneliğe çoğaltma sunucusu oluşturmak istiyorsanız, oluşturulduktan sonra [Çoğaltma sunucusunu taşıyabilirsiniz](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) . Çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının kaynaktan eşit veya daha büyük bir değer tutulması önerilir.
+> Okuma çoğaltmaları, ana sunucuyla aynı sunucu yapılandırmasıyla oluşturulur. Çoğaltma sunucusu yapılandırması oluşturulduktan sonra değiştirilebilir. Çoğaltma sunucusu her zaman aynı kaynak grubunda ve kaynak sunucuyla aynı abonelikte oluşturulur. Farklı bir kaynak grubuna veya farklı bir aboneliğe çoğaltma sunucusu oluşturmak istiyorsanız, oluşturulduktan sonra [Çoğaltma sunucusunu taşıyabilirsiniz](../azure-resource-manager/management/move-resource-group-and-subscription.md) . Çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının kaynaktan eşit veya daha büyük bir değer tutulması önerilir.
 
 Çoğaltma sunucusu oluşturulduktan sonra **çoğaltma** dikey penceresinden görüntülenebilir.
 
@@ -70,17 +70,17 @@ Azure portal bir kaynak ve çoğaltma sunucusu arasında çoğaltmayı durdurmak
 
 1. Azure portal, MySQL için kaynak Azure veritabanı sunucusunu seçin. 
 
-2. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
+2. **Ayarlar** ' ın altında, menüden **çoğaltma** ' yı seçin.
 
 3. Çoğaltmasını durdurmak istediğiniz çoğaltma sunucusunu seçin.
 
    :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="MySQL için Azure veritabanı-çoğaltma":::
 
-4. **Çoğaltmayı durdur**' u seçin.
+4. **Çoğaltmayı durdur** ' u seçin.
 
    :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="MySQL için Azure veritabanı-çoğaltma":::
 
-5. **Tamam**' a tıklayarak çoğaltmayı durdurmak istediğinizi onaylayın.
+5. **Tamam** ' a tıklayarak çoğaltmayı durdurmak istediğinizi onaylayın.
 
    :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="MySQL için Azure veritabanı-çoğaltma":::
 
@@ -90,7 +90,7 @@ Azure portal bir okuma çoğaltması sunucusunu silmek için aşağıdaki adıml
 
 1. Azure portal, MySQL için kaynak Azure veritabanı sunucusunu seçin.
 
-2. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
+2. **Ayarlar** ' ın altında, menüden **çoğaltma** ' yı seçin.
 
 3. Silmek istediğiniz çoğaltma sunucusunu seçin.
 
@@ -113,7 +113,7 @@ Azure portal bir kaynak sunucuyu silmek için aşağıdaki adımları kullanın:
 
 1. Azure portal, MySQL için kaynak Azure veritabanı sunucusunu seçin.
 
-2. **Genel bakışta** **Sil**' i seçin.
+2. **Genel bakışta** **Sil** ' i seçin.
 
    :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="MySQL için Azure veritabanı-çoğaltma":::
 
@@ -125,7 +125,7 @@ Azure portal bir kaynak sunucuyu silmek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com/), Izlemek istediğiniz MySQL Için Azure veritabanı sunucusu çoğaltmasını seçin.
 
-2. Kenar çubuğunun **izleme** bölümü altında **ölçümler**' i seçin:
+2. Kenar çubuğunun **izleme** bölümü altında **ölçümler** ' i seçin:
 
 3. Kullanılabilir ölçümler açılan listesinden **saniye cinsinden çoğaltma gecikmesi** seçin.
 

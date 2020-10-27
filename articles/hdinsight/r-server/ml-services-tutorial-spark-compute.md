@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 73ca0d089ab758fb13e69d341337139d79194cc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e727bc7ad8b7f0b8a04c48f3abd1f1ac0806c66
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71121931"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545914"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Spark işlem bağlamında R kullanma
 
 Bu öğreticide, Azure HDInsight Machine Learning Hizmetleri kümesinde çalışan Apache Spark R işlevlerinin kullanılmasına yönelik adım adım bir giriş sunulmaktadır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Örnek verileri yerel depolamaya indirme
@@ -31,9 +31,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Bileşik XDF dosyalarını kullan
 > * XDF 'u CSV 'ye Dönüştür
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure HDInsight Machine Learning Hizmetleri kümesi. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) bölümüne gidin ve **küme türü**için **ml Hizmetleri**' ni seçin.
+* Azure HDInsight Machine Learning Hizmetleri kümesi. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) bölümüne gidin ve **küme türü** için **ml Hizmetleri** ' ni seçin.
 
 ## <a name="connect-to-rstudio-server"></a>RStudio Server’a bağlanma
 
@@ -43,7 +43,7 @@ RStudio sunucusu kümenin Edge düğümünde çalışır. Aşağıdaki siteye gi
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-İlk kez oturum açtığınızda iki kez kimlik doğrulaması yapmanız gerekir. İlk kimlik doğrulaması isteminde, Küme Yöneticisi Kullanıcı adı ve parolasını (varsayılan *yönetici*) sağlayın. İkinci kimlik doğrulama isteminde SSH kullanıcı adını ve parolasını belirtin (varsayılan olarak *sshuser*' dir). Sonraki oturum açma işlemleri yalnızca SSH kimlik bilgilerini gerektirir.
+İlk kez oturum açtığınızda iki kez kimlik doğrulaması yapmanız gerekir. İlk kimlik doğrulaması isteminde, Küme Yöneticisi Kullanıcı adı ve parolasını (varsayılan *yönetici* ) sağlayın. İkinci kimlik doğrulama isteminde SSH kullanıcı adını ve parolasını belirtin (varsayılan olarak *sshuser* ' dir). Sonraki oturum açma işlemleri yalnızca SSH kimlik bilgilerini gerektirir.
 
 ## <a name="download-the-sample-data-to-local-storage"></a>Örnek verileri yerel depolamaya indirme
 
@@ -57,7 +57,7 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
     remoteDir <- "https://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012" # location of data
     ```
 
-1. Sağ bölmede **ortam** sekmesini seçin. Değişkenler **değerler**altında görüntülenir.
+1. Sağ bölmede **ortam** sekmesini seçin. Değişkenler **değerler** altında görüntülenir.
 
     ![HDInsight R Studio Web Konsolu](./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png)
 
@@ -168,7 +168,7 @@ Spark işlem bağlamında, aşağıdaki işlevleri kullanarak veri kaynakları o
 |`RxParquetData` | Bir Parquet veri kaynağı nesnesi oluşturur.|
 |`RxOrcData` | Bir Orc veri kaynağı nesnesi oluşturur.|
 
-Bir [Rxtextdata](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxtextdata) nesnesi oluşturun ve bu dosyaya kopyaladığınız dosyaları kullanın. RStudio ' da aşağıdaki kodu girin:
+Bir [Rxtextdata](/machine-learning-server/r-reference/revoscaler/rxtextdata) nesnesi oluşturun ve bu dosyaya kopyaladığınız dosyaları kullanın. RStudio ' da aşağıdaki kodu girin:
 
 ```R
 airDS <- RxTextData( airDataDir,
@@ -179,7 +179,7 @@ airDS <- RxTextData( airDataDir,
 
 ## <a name="create-a-compute-context-for-spark"></a>Spark için işlem bağlamı oluşturma
 
-Çalışan düğümlerinde veri yüklemek ve çözümlemeler çalıştırmak için, komut dosyanızı işlem bağlamını [Rxspark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark)olarak ayarlarsınız. Bu bağlamda, R işlevleri işleri yönetmek için yerleşik gereksinim olmadan iş yükünü tüm çalışan düğümlerine otomatik olarak dağıtır. Spark işlem bağlamı, `RxSpark` `rxSparkConnect()` Spark işlem bağlamını oluşturmak için veya kullanılarak oluşturulur ve `rxSparkDisconnect()` yerel bir işlem bağlamına dönmek için kullanır. RStudio ' da aşağıdaki kodu girin:
+Çalışan düğümlerinde veri yüklemek ve çözümlemeler çalıştırmak için, komut dosyanızı işlem bağlamını [Rxspark](/machine-learning-server/r-reference/revoscaler/rxspark)olarak ayarlarsınız. Bu bağlamda, R işlevleri işleri yönetmek için yerleşik gereksinim olmadan iş yükünü tüm çalışan düğümlerine otomatik olarak dağıtır. Spark işlem bağlamı, `RxSpark` `rxSparkConnect()` Spark işlem bağlamını oluşturmak için veya kullanılarak oluşturulur ve `rxSparkDisconnect()` yerel bir işlem bağlamına dönmek için kullanır. RStudio ' da aşağıdaki kodu girin:
 
 ```R
 # Define the Spark compute context
@@ -191,7 +191,7 @@ rxSetComputeContext(mySparkCluster)
 
 ## <a name="fit-a-linear-model"></a>Doğrusal bir modeli sığdırma
 
-1. Veri kaynağınızı kullanarak doğrusal bir modele uydurmak için [Rxlinmod](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxlinmod) işlevini kullanın `airDS` . RStudio ' da aşağıdaki kodu girin:
+1. Veri kaynağınızı kullanarak doğrusal bir modele uydurmak için [Rxlinmod](/machine-learning-server/r-reference/revoscaler/rxlinmod) işlevini kullanın `airDS` . RStudio ' da aşağıdaki kodu girin:
 
     ```R
     system.time(
@@ -225,14 +225,14 @@ rxSetComputeContext(mySparkCluster)
     Coefficients:
                    Estimate Std. Error t value Pr(>|t|)     | Counts
     DayOfWeek=Mon   3.54210    0.03736   94.80 2.22e-16 *** | 901592
-    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 *** | 855805
-    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 *** | 868505
-    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 *** | 891674
-    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 *** | 896495
-    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 *** | 732944
-    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 *** | 858366
+    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 **_ | 855805
+    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 _*_ | 868505
+    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 _*_ | 891674
+    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 _*_ | 896495
+    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 _*_ | 732944
+    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 _*_ | 858366
     ---
-    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    Signif. codes:  0 ‘_*_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
     Residual standard error: 35.48 on 6005374 degrees of freedom
     Multiple R-squared: 0.001827 (as if intercept included)
@@ -247,7 +247,7 @@ rxSetComputeContext(mySparkCluster)
 
 Gördüğünüz gibi, doğrudan Hadoop üzerinde R ile CSV dosyalarını analiz edebilirsiniz. Ancak, verileri daha verimli bir biçimde depoluyaparsanız analizini daha hızlı yapabilirsiniz. R XDF dosya biçimi etkilidir, ancak tek bir dosyayı tek bir bir (Bu, yükleme durumundan yüklemeye değişir ancak genellikle 64 MB veya 128 MB olur.) 
 
-Bir bileşik XDF dosyaları kümesi oluşturmak için Hadoop üzerinde [Rxımport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) kullandığınızda, `RxTextData` InData gibi bir veri kaynağı ve dosya sistemi dosyası, bir bir dosya kaynağı olarak bir bir sunucusu `AirDS` `RxXdfData` , çıkışdosyası bağımsız değişkeni olarak bir. Daha sonra `RxXdfData` nesneyi sonraki R analizlerde veri bağımsız değişkeni olarak kullanabilirsiniz.
+Bir bileşik XDF dosyaları kümesi oluşturmak için Hadoop üzerinde [Rxımport](/machine-learning-server/r-reference/revoscaler/rximport) kullandığınızda, `RxTextData` InData gibi bir veri kaynağı ve dosya sistemi dosyası, bir bir dosya kaynağı olarak bir bir sunucusu `AirDS` `RxXdfData` , çıkışdosyası bağımsız değişkeni olarak bir. Daha sonra `RxXdfData` nesneyi sonraki R analizlerde veri bağımsız değişkeni olarak kullanabilirsiniz.
 
 1. Bir `RxXdfData` nesne tanımlayın. RStudio ' da aşağıdaki kodu girin:
 
@@ -298,7 +298,7 @@ Bir bileşik XDF dosyaları kümesi oluşturmak için Hadoop üzerinde [Rxımpor
 
 ### <a name="in-a-spark-context"></a>Spark bağlamında
 
-Analiz çalıştırırken CSV dosyalarınızı daha fazla verimlilik için XDF dosya biçimine dönüştürdüyseniz, ancak şimdi verilerinizi CSV 'ye dönüştürmek istiyorsanız [Rxdatastep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep)kullanarak bunu yapabilirsiniz.
+Analiz çalıştırırken CSV dosyalarınızı daha fazla verimlilik için XDF dosya biçimine dönüştürdüyseniz, ancak şimdi verilerinizi CSV 'ye dönüştürmek istiyorsanız [Rxdatastep](/machine-learning-server/r-reference/revoscaler/rxdatastep)kullanarak bunu yapabilirsiniz.
 
 CSV dosyalarının bir klasörünü oluşturmak için, önce `RxTextData` Dosya bağımsız değişkeni olarak bir dizin adı kullanarak bir nesne oluşturun. Bu nesne, CSV dosyalarının oluşturulacağı klasörü temsil eder. Bu dizin, çalıştırdığınızda oluşturulur `rxDataStep` . Ardından, `RxTextData` bağımsız değişkeninde bu nesnenin üzerine gelin `outFile` `rxDataStep` . Oluşturulan her CSV, dizin adına göre ve ardından bir sayı ile adlandırılır.
 
@@ -366,4 +366,4 @@ Bir kümeyi silmek için bkz. [tarayıcınızı, PowerShell 'i veya Azure CLI 'y
 Bu öğreticide, bir HDInsight Machine Learning Hizmetleri kümesinde çalışan Apache Spark R işlevlerinin nasıl kullanılacağını öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Azure HDInsight Machine Learning Hizmetleri kümesi için işlem bağlamı seçenekleri](r-server-compute-contexts.md)
-* [Hadoop üzerinde Spark için R Işlevleri](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)
+* [Hadoop üzerinde Spark için R Işlevleri](/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: 7ce183595ed8e20c4b5cf4afe9ac1174882dc392
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d24c63e3a2989173e718cd27fa43cecc50181047
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370330"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533504"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache HBase kullanma
 
 Bu öğreticide, Azure HDInsight 'ta Apache HBase kümesi oluşturma, HBase tabloları oluşturma ve Apache Hive kullanarak sorgu tabloları oluşturma işlemlerinin nasıl yapılacağı gösterilmiştir.  Genel HBase bilgileri için bkz. [HDInsight HBase’e genel bakış](./apache-hbase-overview.md).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Apache HBase kümesi oluşturma
@@ -28,11 +28,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Curl kullanarak HBase REST API’lerini kullanma
 > * Küme durumunu denetleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Bash. Bu makaledeki örneklerde, kıvrımlı komutları için Windows 10 ' da bash kabuğu kullanılır. Yükleme adımları için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](https://docs.microsoft.com/windows/wsl/install-win10) .  Diğer [UNIX kabukları](https://www.gnu.org/software/bash/) de çalışacaktır.  Kıvrımlı örnekler, bazı hafif değişikliklerle bir Windows komut istemi üzerinde çalışabilir.  Ya da Windows PowerShell cmdlet 'i [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod)' da kullanabilirsiniz.
+* Bash. Bu makaledeki örneklerde, kıvrımlı komutları için Windows 10 ' da bash kabuğu kullanılır. Yükleme adımları için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](/windows/wsl/install-win10) .  Diğer [UNIX kabukları](https://www.gnu.org/software/bash/) de çalışacaktır.  Kıvrımlı örnekler, bazı hafif değişikliklerle bir Windows komut istemi üzerinde çalışabilir.  Ya da Windows PowerShell cmdlet 'i [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod)' da kullanabilirsiniz.
 
 ## <a name="create-apache-hbase-cluster"></a>Apache HBase kümesi oluşturma
 
@@ -50,14 +50,14 @@ Aşağıdaki yordam bir HBase kümesi oluşturmak için bir Azure Resource Manag
     |Kaynak grubu|Bir Azure Kaynak yönetimi grubu oluşturun veya mevcut bir tane kullanın.|
     |Konum|Kaynak grubunun konumunu belirtin. |
     |ClusterName|HBase kümesi için bir ad girin.|
-    |Küme oturum açma adı ve parolası|Varsayılan oturum açma adı **admin**' dir.|
+    |Küme oturum açma adı ve parolası|Varsayılan oturum açma adı **admin** ' dir.|
     |SSH kullanıcı adı ve parolası|Varsayılan kullanıcı adı **sshuser** şeklindedir.|
 
     Diğer parametreler isteğe bağlıdır.  
 
     Her kümenin bir Azure Depolama hesabı bağımlılığı vardır. Bir kümeyi sildikten sonra veriler depolama hesabında kalır. Kümenin varsayılan depolama hesabı adı, "depo" ifadesi eklenmiş küme adıdır. Şablon değişkenleri bölümünde sabit kodlanmış.
 
-3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u seçin ve ardından **satın al**' ı seçin. Bir küme oluşturmak yaklaşık 20 dakika sürer.
+3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ' u seçin ve ardından **satın al** ' ı seçin. Bir küme oluşturmak yaklaşık 20 dakika sürer.
 
 Bir HBase kümesi silindikten sonra aynı varsayılan blob kapsayıcısını kullanarak başka bir HBase kümesi oluşturabilirsiniz. Yeni küme özgün kümede oluşturduğunuz HBase tablolarını seçer. Tutarsızlıkları önlemek için kümeyi silmeden önce HBase tablolarını devre dışı bırakmanız önerilir.
 
@@ -228,7 +228,7 @@ HBase verileri Ayrıca, ESP etkin HBase kullanılarak Hive ile sorgulanabilir:
 
 REST API’sinin güvenliği [temel kimlik doğrulaması](https://en.wikipedia.org/wiki/Basic_access_authentication) ile sağlanır. Kimlik bilgilerinizin sunucuya güvenli bir şekilde gönderilmesi için istekleri her zaman Güvenli HTTP (HTTPS) kullanarak yapmalısınız.
 
-1. HDInsight kümesinde HBase REST API 'Lerini etkinleştirmek için, **komut dosyası eylemi** bölümüne aşağıdaki özel başlatma betiğini ekleyin. Kümeyi oluştururken veya küme oluşturulduktan sonra başlangıç betiğini ekleyebilirsiniz. **Düğüm türü**için, betiğin yalnızca HBase bölge sunucularında yürütüldüğünden emin olmak Için **bölge sunucuları** ' nı seçin.
+1. HDInsight kümesinde HBase REST API 'Lerini etkinleştirmek için, **komut dosyası eylemi** bölümüne aşağıdaki özel başlatma betiğini ekleyin. Kümeyi oluştururken veya küme oluşturulduktan sonra başlangıç betiğini ekleyebilirsiniz. **Düğüm türü** için, betiğin yalnızca HBase bölge sunucularında yürütüldüğünden emin olmak Için **bölge sunucuları** ' nı seçin.
 
 
     ```bash
@@ -332,7 +332,7 @@ HDInsight içinde HBase, kümelerin izlenmesi için bir Web Kullanıcı Arabirim
 
 1. Sol menüden **HBase** ' i seçin.
 
-1. Sayfanın üst kısmındaki **hızlı bağlantılar** ' ı seçin, etkin Zookeeper düğümü bağlantısına gelin ve **HBase Master Kullanıcı arabirimi**' ni seçin.  Kullanıcı arabirimi başka bir tarayıcı sekmesinde açılır:
+1. Sayfanın üst kısmındaki **hızlı bağlantılar** ' ı seçin, etkin Zookeeper düğümü bağlantısına gelin ve **HBase Master Kullanıcı arabirimi** ' ni seçin.  Kullanıcı arabirimi başka bir tarayıcı sekmesinde açılır:
 
    ![HDInsight Apache HBase HMaster Kullanıcı arabirimi](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -349,10 +349,10 @@ HDInsight içinde HBase, kümelerin izlenmesi için bir Web Kullanıcı Arabirim
 Tutarsızlıkları önlemek için kümeyi silmeden önce HBase tablolarını devre dışı bırakmanız önerilir. HBase komutunu kullanabilirsiniz `disable 'Contacts'` . Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz HBase kümesini aşağıdaki adımlarla silin:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-1. Üstteki **arama** kutusuna **HDInsight**yazın.
-1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
+1. Üstteki **arama** kutusuna **HDInsight** yazın.
+1. **Hizmetler** altında **HDInsight kümeleri** ' ni seçin.
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın.
-1. **Sil**'e tıklayın. **Evet**'e tıklayın.
+1. **Sil** 'e tıklayın. **Evet** 'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

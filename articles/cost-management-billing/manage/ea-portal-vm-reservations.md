@@ -3,17 +3,17 @@ title: Azure EA VM ayrılmış örnekleri
 description: Bu makalede, sanal makine ayrılmış örnekleri için Azure rezervasyonlarının, kurumsal kaydınızla para tasarrufu yapmanıza nasıl yardımcı olabildiği özetlenmektedir.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4970852634039bddfb14be579db5dd355fff9740
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 16e325f029fc4c317a61db62df97ded5c213e0e5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442454"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132542"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM ayrılmış örnekleri
 
@@ -22,6 +22,12 @@ Bu makalede, sanal makine ayrılmış örnekleri için Azure rezervasyonlarını
 ## <a name="reservation-exchanges-and-refunds"></a>Rezervasyon değişiklikleri ve para iadeleri
 
 Bir rezervasyonu aynı türdeki başka bir rezervasyonla değiştirebilirsiniz. İhtiyaç duymadığınız rezervasyonları da iade ederek yılda 50.000 ABD dolarına kadar para iadesi alabilirsiniz. Rezervasyon değiştirmek veya para iadesi almak için Azure portalını kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../reservations/exchange-and-refund-azure-reservations.md).
+
+### <a name="partial-refunds"></a>Kısmi para iadeleri
+
+EA müşterileri, fazla kullanım ve parasal olmayan taahhüt kullanılarak satın alınan rezervasyonları iade ettiğinde kısmi para iadesi yaparız.
+
+Para iadesi önceki aya ait negatif ve geçerli aya ait pozitif bir ayarlama olarak EA portalında gösterilir. Bu işlemler, rezervasyon değişimine benzer şekilde gösterilir. Alacak faturasında özgün fatura numarası belirtildiğinden, alacak faturasıyla ilk satın almanın mutabakatını yapmak için lütfen özgün fatura numarasını belirtin.
 
 ## <a name="reservation-costs-and-usage"></a>Rezervasyon maliyetleri ve kullanımı
 
@@ -57,13 +63,13 @@ Ayrılmış örnekler, sanal makine maliyetlerinizi tüm VM'ler için geçerli o
 
 ### <a name="how-to-buy-reserved-virtual-machine-instances"></a>Ayrılmış sanal makine örneklerini satın alma
 
-Azure ayrılmış sanal makine örneği satın almak için bir Kurumsal Azure kayıt yöneticisinin _Ayrılmış Örnek_ satın alma seçeneğini etkinleştirmesi gerekir. Bu seçenek _Azure EA Portal_'ın _Kayıt_ sekmesindeki [Kayıt Ayrıntıları](https://ea.azure.com/) bölümünde yer alır.
+Azure ayrılmış sanal makine örneği satın almak için bir Kurumsal Azure kayıt yöneticisinin _Ayrılmış Örnek_ satın alma seçeneğini etkinleştirmesi gerekir. Bu seçenek _Azure EA Portal_ 'ın _Kayıt_ sekmesindeki [Kayıt Ayrıntıları](https://ea.azure.com/) bölümünde yer alır.
 
-EA kaydına ayrılmış örnek ekleme seçeneği etkinleştirildikten sonra EA kaydı ile ilişkilendirilmiş etkin bir aboneliğe sahip olan hesap kullanıcıları, [Azure portalından](https://aka.ms/reservations) ayrılmış sanal makine örneği satın alabilir. Daha fazla bilgi için bkz. [Ayrılmış Sanal Makine Örnekleriyle sanal makineler için önceden ödeme yapma ve tasarruf etme](https://go.microsoft.com/fwlink/?linkid=861721).
+EA kaydına ayrılmış örnek ekleme seçeneği etkinleştirildikten sonra EA kaydı ile ilişkilendirilmiş etkin bir aboneliğe sahip olan hesap kullanıcıları, [Azure portalından](https://aka.ms/reservations) ayrılmış sanal makine örneği satın alabilir. Daha fazla bilgi için bkz. [Ayrılmış Sanal Makine Örnekleriyle sanal makineler için önceden ödeme yapma ve tasarruf etme](../../virtual-machines/windows/prepay-reserved-vm-instances.md).
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>Ayrılmış örnek satın alma ayrıntılarını görüntüleme
 
-Ayrılmış örnek satın alma ayrıntılarınızı [Azure portalının](https://aka.ms/reservations) sol tarafındaki _Rezervasyonlar_ menüsünden veya [Azure EA Portal](https://ea.azure.com/)'dan görüntüleyebilirsiniz. Sol taraftaki menüden **Raporlar**'ı seçin ve _Kullanım Özeti_ sekmesinde _Hizmetlere Göre Ücretler_ bölümüne inin. Bölümün en altına indiğinizde satın alınan ayrılmış örneklerinizin hizmetin yanında `1 year` veya `3 years` ifadesi ile birlikte listelendiğini göreceksiniz, örneğin: `Standard_DS1_v2 eastus 1 year` veya `Standard_D2s_v3 eastus2 3 years`.
+Ayrılmış örnek satın alma ayrıntılarınızı [Azure portalının](https://aka.ms/reservations) sol tarafındaki _Rezervasyonlar_ menüsünden veya [Azure EA Portal](https://ea.azure.com/)'dan görüntüleyebilirsiniz. Sol taraftaki menüden **Raporlar** 'ı seçin ve _Kullanım Özeti_ sekmesinde _Hizmetlere Göre Ücretler_ bölümüne inin. Bölümün en altına indiğinizde satın alınan ayrılmış örneklerinizin hizmetin yanında `1 year` veya `3 years` ifadesi ile birlikte listelendiğini göreceksiniz, örneğin: `Standard_DS1_v2 eastus 1 year` veya `Standard_D2s_v3 eastus2 3 years`.
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>Ayrılmış örnek ile ilişkilendirilmiş olan aboneliği nasıl değiştirebilirim veya ayrılmış örnek avantajlarımı aynı hesap altındaki başka bir aboneliğe nasıl aktarabilirim?
 

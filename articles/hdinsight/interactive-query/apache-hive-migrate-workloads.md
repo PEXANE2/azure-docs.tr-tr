@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcc0faa8fdbd61ab3e3e0886256f7c796e5a98e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308393"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534694"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive iş yüklerini HDInsight 'a geçirme 4,0
 
@@ -39,12 +39,12 @@ Dış meta veri deposu 'nun yeni bir kopyasını oluşturun. Dış bir meta veri
 ### <a name="3-upgrade-metastore-schema"></a>3. meta veri deposu şemasını yükselt
 Meta veri **kopyalama** işlemi tamamlandıktan sonra, yeni meta veri deposunu Hive 3 şemasına yükseltmek Için mevcut HDInsight 3,6 kümesindeki [komut dosyası eyleminde](../hdinsight-hadoop-customize-cluster-linux.md) bir şema yükseltme betiği çalıştırın. (Bu adım, yeni meta veri deposunu bir kümeye bağlanmasını gerektirmez.) Bu, veritabanının HDInsight 4,0 meta veri deposu olarak eklenmesini sağlar.
 
-Aşağıdaki tablodaki değerleri daha fazla kullanın. `SQLSERVERNAME DATABASENAME USERNAME PASSWORD`Hive meta veri deposu **kopyası**için boşluklarla ayırarak uygun değerlerle değiştirin. SQL Server adını belirtirken ". database.windows.net" eklemeyin.
+Aşağıdaki tablodaki değerleri daha fazla kullanın. `SQLSERVERNAME DATABASENAME USERNAME PASSWORD`Hive meta veri deposu **kopyası** için boşluklarla ayırarak uygun değerlerle değiştirin. SQL Server adını belirtirken ". database.windows.net" eklemeyin.
 
 |Özellik | Değer |
 |---|---|
 |Betik türü|-Özel|
-|Adı|Hive yükseltmesi|
+|Name|Hive yükseltmesi|
 |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |Düğüm türleri|Head|
 |Parametreler|SQLSERVERNAME DATABASENAME KULLANıCı ADı PAROLASı|
@@ -117,7 +117,7 @@ HDInsight 3,6 ve 4,0 kümelerinin aynı depolama hesabını kullanması gerekir.
 
 1. [Secure Shell (SSH) istemcisi](../hdinsight-hadoop-linux-use-ssh-unix.md)kullanarak HDInsight 3,6 kümesine bağlanın.
 
-1. Açık SSH oturumunda, **alltables. HQL**adlı bir dosya oluşturmak için aşağıdaki betik dosyasını indirin.
+1. Açık SSH oturumunda, **alltables. HQL** adlı bir dosya oluşturmak için aşağıdaki betik dosyasını indirin.
 
     ```bash
     wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
@@ -208,7 +208,7 @@ Yayının tamamlandığını ve tamamen çalıştığını doğruladıktan sonra
 
 ## <a name="query-execution-across-hdinsight-versions"></a>HDInsight sürümleri arasında sorgu yürütme
 
-HDInsight 3,6 kümesi içinde Hive/LLAP sorgularını yürütmenin ve hata ayıklamanın iki yolu vardır. HiveCLI, bir komut satırı deneyimi sağlar ve [tez görünümü/Hive görünümü](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view) GUI tabanlı bir iş akışı sağlar.
+HDInsight 3,6 kümesi içinde Hive/LLAP sorgularını yürütmenin ve hata ayıklamanın iki yolu vardır. HiveCLI, bir komut satırı deneyimi sağlar ve [tez görünümü/Hive görünümü](../hadoop/apache-hadoop-use-hive-ambari-view.md) GUI tabanlı bir iş akışı sağlar.
 
 HDInsight 4,0 ' de HiveCLI, Beeline ile değiştirilmiştir. Tez görünümü/Hive görünümü GUI tabanlı bir iş akışı sağlar. HiveCLI, Hiveserver 1 için bir Thrift istemcsahiptir ve Beeline, Hiveserver 2 ' ye erişim sağlayan bir JDBC istemcidedir. Beeline Ayrıca, diğer bir JDBC uyumlu veritabanı uç noktasına bağlanmak için kullanılabilir. Beline, herhangi bir yükleme gerekmeden HDInsight 4,0 ' de kullanıma sunulmuştur.
 

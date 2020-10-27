@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9cbcbeb9d9e216a0b686cba258288db8439e0a9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7b673dc8dfeb2ebf86aec5b7449df91c2ffd635
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90946759"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534065"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>Öğretici: Sanal ağda uygulama Hizmetleri Web uygulamasıyla bir MySQL için Azure veritabanı (Önizleme) oluşturma
 
 > [!IMPORTANT]
 > MySQL için Azure veritabanı-esnek sunucu şu anda genel önizlemededir.
 
-Bu öğreticide, bir [sanal ağ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)Içinde MySQL esnek sunucusu (Önizleme) Ile Azure App Service Web uygulaması oluşturma işlemlerinin nasıl yapılacağı gösterilir.
+Bu öğreticide, bir [sanal ağ](../../virtual-network/virtual-networks-overview.md)Içinde MySQL esnek sunucusu (Önizleme) Ile Azure App Service Web uygulaması oluşturma işlemlerinin nasıl yapılacağı gösterilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -28,7 +28,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 Bu makalede, Azure CLı sürüm 2,0 veya üstünü yerel olarak çalıştırıyor olmanız gerekir. Yüklü sürümü görmek için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
-[Az Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) komutunu kullanarak hesabınızda oturum açmanız gerekir. Komut çıktısındaki ilgili abonelik adına karşılık gelen **id** özelliğinin değerini not edin.
+[Az Login](/cli/azure/reference-index#az-login) komutunu kullanarak hesabınızda oturum açmanız gerekir. Komut çıktısındaki ilgili abonelik adına karşılık gelen **id** özelliğinin değerini not edin.
 
 ```azurecli
 az login
@@ -69,7 +69,7 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 
 > [!NOTE]
 > - --Location bağımsız değişkeni için, önceki bölümde veritabanıyla aynı konumu kullanın.
-> - _ &lt; App-name>_ tüm Azure genelinde benzersiz bir adla değiştirin (sunucu uç noktası https:// \<app-name> . azurewebsites.net). <app-name> için izin verilen karakterler A-Z, 0-9 ve-. İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
+> - _&lt; App-name>_ tüm Azure genelinde benzersiz bir adla değiştirin (sunucu uç noktası https:// \<app-name> . azurewebsites.net). <app-name> için izin verilen karakterler A-Z, 0-9 ve-. İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
 
 Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
 
@@ -81,7 +81,7 @@ Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
 
 ## <a name="add-the-web-app-to-the-virtual-network"></a>Web uygulamasını sanal ağa ekleme
 
-Bir WebApp 'ye bölgesel sanal ağ tümleştirmesi eklemek için **az WebApp VNET-Integration** komutunu kullanın. _ &lt; VNET-Name>_ ve _ &lt; alt ağ adını_ , esnek sunucunun kullandığı sanal ağ ve alt ağ adıyla değiştirin.
+Bir WebApp 'ye bölgesel sanal ağ tümleştirmesi eklemek için **az WebApp VNET-Integration** komutunu kullanın. _&lt; VNET-Name>_ ve _&lt; alt ağ adını_ , esnek sunucunun kullandığı sanal ağ ve alt ağ adıyla değiştirin.
 
 ```azurecli
 az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
@@ -95,8 +95,8 @@ Kod artık App Service 'e dağıtıldığına göre, bir sonraki adım, uygulama
 az webapp config appsettings set --settings DBHOST="<mysql-server-name>.mysql.database.azure.com" DBNAME="flexibleserverdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
-- Yeni oluşturulan esnek sunucu komutu için _ &lt; MySQL-Server-Name>_, _ &lt; UserName>_ ve _ &lt; Password>_ yerine koyun.
-- _ &lt; UserName>_ ve _ &lt; Password>_ komutunun sizin için de oluşturduğu kimlik bilgileriyle değiştirin.
+- Yeni oluşturulan esnek sunucu komutu için _&lt; MySQL-Server-Name>_ , _&lt; UserName>_ ve _&lt; Password>_ yerine koyun.
+- _&lt; UserName>_ ve _&lt; Password>_ komutunun sizin için de oluşturduğu kimlik bilgileriyle değiştirin.
 - Kaynak grubu ve uygulama adı,. Azure/config dosyasındaki önbelleğe alınmış değerlerden çizilir.
 - Komut DBHOST, DBNAME, DBUSER ve DBPASS adlı ayarları oluşturur. Uygulama kodunuz veritabanı bilgileri için farklı bir ad kullanıyorsa, bu adları kodda belirtildiği gibi uygulama ayarları için kullanın.
 
@@ -111,4 +111,4 @@ az group delete -n myresourcegroup
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Mevcut bir özel DNS adını Azure App Service eşleme](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
+> [Mevcut bir özel DNS adını Azure App Service eşleme](../../app-service/app-service-web-tutorial-custom-domain.md)

@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 0d886fc6797011ff3a0adeb69f50358ece9c5f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf1c558474cfde85dd2c9ba8c85dc553fe5d9b56
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252184"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547512"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Öğretici: IoT hub’ınızla bağlantıyı test etmek için bir simülasyon cihazı kullanma
 
@@ -29,7 +29,7 @@ Bu öğreticide, cihaz bağlantısını test etmek için Azure IOT Hub'ı portal
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Cihazın kimlik doğrulamasını denetleme
 > * Cihazın bulut bağlantısını denetleme
@@ -62,7 +62,7 @@ https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip adres
 
 Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu öğreticideki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 Bir önceki hızlı başlangıç ya da öğreticide ücretsiz veya standart katman IOT hub'ı oluşturduysanız bu adımı atlayabilirsiniz.
 
@@ -76,15 +76,15 @@ Portalda oturum açın ve IoT Hub'ınıza gidin. Ardından **IoT cihazları** ar
 
 ![IoT cihazları aracı](media/tutorial-connectivity/iot-devices-tool.png)
 
-Yeni bir cihaz kaydetmek için **+ Ekle**’ye tıklayın, **Cihaz Kimliği**’ni **MyTestDevice** olarak ayarlayın ve **Kaydet**’e tıklayın:
+Yeni bir cihaz kaydetmek için **+ Ekle** ’ye tıklayın, **Cihaz Kimliği** ’ni **MyTestDevice** olarak ayarlayın ve **Kaydet** ’e tıklayın:
 
 ![Yeni cihaz ekleme](media/tutorial-connectivity/add-device.png)
 
-**MyTestDevice**’ın bağlantı dizesini almak için cihazlar listesinde ona tıklayın ve ardından **Bağlantı dizesi birincil anahtarı** değerini kopyalayın. Bağlantı dizesi cihaz için *paylaşılan erişim anahtarını* içerir.
+**MyTestDevice** ’ın bağlantı dizesini almak için cihazlar listesinde ona tıklayın ve ardından **Bağlantı dizesi birincil anahtarı** değerini kopyalayın. Bağlantı dizesi cihaz için *paylaşılan erişim anahtarını* içerir.
 
 ![Cihaz bağlantı dizesini alma](media/tutorial-connectivity/copy-connection-string.png)
 
-**MyTestDevice**’ın IoT hub'ınıza telemetri göndermesini denemek için daha önce indirdiğiniz Node.js simülasyon cihazı uygulamasını çalıştırın.
+**MyTestDevice** ’ın IoT hub'ınıza telemetri göndermesini denemek için daha önce indirdiğiniz Node.js simülasyon cihazı uygulamasını çalıştırın.
 
 Geliştirme makinenizdeki terminal penceresinde, indirdiğiniz örnek Node.js projesinin kök klasörüne gidin. Ardından **iot-hub\Tutorials\ConnectivityTests** klasörüne gidin.
 
@@ -105,7 +105,7 @@ Hub'ınıza bağlanmaya çalışırken terminal penceresinde bilgiler gösterili
 
 Bu bölümde, cihaz anahtarını sıfırlar ve simülasyon cihazı bağlanmaya çalıştığında çıkan hatayı incelersiniz.
 
-**MyTestDevice**’ın birincil cihaz anahtarını sıfırlamak için aşağıdaki komutları çalıştırın:
+**MyTestDevice** ’ın birincil cihaz anahtarını sıfırlamak için aşağıdaki komutları çalıştırın:
 
 ```azurecli-interactive
 # Generate a new Base64 encoded key using the current date
@@ -266,11 +266,11 @@ Simülasyon cihazı, istenen özelliklerde yapılan değişiklikleri almanın ya
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse portaldan IoT hub’ı ve kaynak grubunu silin. Bunu yapmak için, IoT hub’ınızı içeren **tutorials-iot-hub-rg** kaynak grubunu seçin ve **Sil**’e tıklayın.
+Artık gerekli değilse portaldan IoT hub’ı ve kaynak grubunu silin. Bunu yapmak için, IoT hub’ınızı içeren **tutorials-iot-hub-rg** kaynak grubunu seçin ve **Sil** ’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, cihaz anahtarlarınızı denetlemeyi, cihaz bulut bağlantısını denetlemeyi, bulut-cihaz bağlantısını denetlemeyi ve cihaz çift eşitlemesini denetlemeyi öğrendiniz. IoT hub'ınızı izleme hakkında daha fazla bilgi için IoT Hub izlemeye yönelik nasıl yapılır makalesini inceleyin.
 
 > [!div class="nextstepaction"]
-> [Tanılama ile izleme](iot-hub-monitor-resource-health.md)
+> [İzleyici IoT Hub](monitor-iot-hub.md)

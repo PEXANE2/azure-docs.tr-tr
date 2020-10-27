@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: 886e8cb1c5d86c1a61e65fa8cbd54c022f6c1c6b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d4fcf7830250e5e6d2e4255ddb88867023606d0e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484823"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547563"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri için sanal ağlar oluşturma
 
@@ -27,7 +27,7 @@ Bu makaledeki kod örneklerinin hiçbirini yürütmeden önce TCP/IP ağını ka
 
 Bu makaledeki örneklere yönelik diğer önkoşullar aşağıdaki öğeleri içerir:
 
-* PowerShell kullanıyorsanız, [az Module](https://docs.microsoft.com/powershell/azure/)'ü yüklemeniz gerekir.
+* PowerShell kullanıyorsanız, [az Module](/powershell/azure/)'ü yüklemeniz gerekir.
 * Azure CLı 'yi kullanmak istiyorsanız ve henüz yüklemediyseniz, bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli).
 
 > [!IMPORTANT]  
@@ -377,6 +377,6 @@ Bu adımları tamamladıktan sonra, tam etki alanı adlarını (FQDN) kullanarak
 * Apache HBase Coğrafi çoğaltmayı yapılandırmak için bkz. [Azure sanal ağlarında Apache HBase küme çoğaltmasını ayarlama](hbase/apache-hbase-replication.md).
 * Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
 
-* Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../virtual-network/security-overview.md).
+* Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md).
 
 * Kullanıcı tanımlı rotalar hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı rotalar ve IP iletimi](../virtual-network/virtual-networks-udr-overview.md).

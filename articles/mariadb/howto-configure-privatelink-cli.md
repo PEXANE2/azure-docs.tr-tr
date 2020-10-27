@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 565e6fb2def64dd594e1b0018f3378ea09bc63cb
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fb3ed4e41125131538957addce5bf935b897b581
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426212"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537227"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>CLı kullanarak MariaDB için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -21,7 +21,7 @@ ms.locfileid: "92426212"
 > [!NOTE]
 > Özel bağlantı özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında bulunan MariaDB sunucuları için Azure veritabanı 'nda kullanılabilir. Veritabanı sunucusunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
@@ -40,7 +40,7 @@ az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-virtual-network"></a>Sanal Ağ Oluşturma
-[Az Network VNET Create](/cli/azure/network/vnet)komutuyla bir sanal ağ oluşturun. Bu örnek, *Mysubnet*adlı bir alt ağ ile *myVirtualNetwork* adlı varsayılan bir sanal ağ oluşturur:
+[Az Network VNET Create](/cli/azure/network/vnet)komutuyla bir sanal ağ oluşturun. Bu örnek, *Mysubnet* adlı bir alt ağ ile *myVirtualNetwork* adlı varsayılan bir sanal ağ oluşturur:
 
 ```azurecli-interactive
 az network vnet create \
@@ -50,7 +50,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>Alt ağ özel uç nokta ilkelerini devre dışı bırak 
-Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta [ağ ilkelerini](../private-link/disable-private-endpoint-network-policy.md)devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
+Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta [ağ ilkelerini](../private-link/disable-private-endpoint-network-policy.md)devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -60,7 +60,7 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>Sanal makineyi oluşturma 
-Az VM Create ile bir VM oluşturun. İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir parola girin. Bu örnek, *myvm*ADLı bir VM oluşturur: 
+Az VM Create ile bir VM oluşturun. İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir parola girin. Bu örnek, *myvm* ADLı bir VM oluşturur: 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
@@ -137,26 +137,26 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP Dosyasını İndir** ’i seçin. Azure bir Uzak Masaüstü Protokolü ( *. rdp* ) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. *İndirilen. rdp* dosyasını açın.
 
-    1. İstendiğinde **Bağlan**’ı seçin.
+    1. İstendiğinde **Bağlan** ’ı seçin.
 
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan** ' ı seçmeniz gerekebilir.
 
-1. **Tamam**’ı seçin.
+1. **Tamam** ’ı seçin.
 
-1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet**’i veya **Devam**’ı seçin.
+1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet** ’i veya **Devam** ’ı seçin.
 
 1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.  
 
 ## <a name="access-the-mariadb-server-privately-from-the-vm"></a>MariaDB sunucusuna VM 'den özel olarak erişin
 
-1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
+1.  *Myvm* uzak masaüstünde PowerShell ' i açın.
 
 2.  `nslookup mydemoserver.privatelink.mariadb.database.azure.com` yazın. 
 
@@ -171,17 +171,17 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 3. Kullanılabilir herhangi bir istemciyi kullanarak MariaDB sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnekte, işlemi yapmak için [MySQL çalışma ekranı](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) kullandım.
 
-4. **Yeni bağlantı**' da bu bilgileri girin veya seçin:
+4. **Yeni bağlantı** ' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
     | Bağlantı Adı| Seçtiğiniz bağlantı adını seçin.|
     | Konak adı | *Mydemoserver.Privatelink.MariaDB.Database.Azure.com* seçin |
-    | Kullanıcı adı | *username@servername*MariaDB sunucu oluşturma sırasında belirtilen kullanıcı adını girin. |
+    | Kullanıcı adı | *username@servername* MariaDB sunucu oluşturma sırasında belirtilen kullanıcı adını girin. |
     | Parola | MariaDB sunucu oluşturma sırasında bir parola girin. |
     ||
 
-5. **Bağlantıyı Sına** veya **Tamam ' ı**seçin.
+5. **Bağlantıyı Sına** veya **Tamam ' ı** seçin.
 
 6. I Sol menüden veritabanlarına gözatıp MariaDB veritabanından bilgi oluşturma veya sorgulama
 

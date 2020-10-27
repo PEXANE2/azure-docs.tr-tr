@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb1c2d8daa74d1224ad07ef7a2fb5a74f4773338
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dac56059455a75f4d64a698c416dc22793432bc8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000325"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545608"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight üzerinde Apache Storm ile Azure Event Hubs olayları işleme (C#)
 
@@ -43,10 +43,10 @@ Microsoft, bir fırtınası topolojisinden Event Hubs iletişim kurmak için kul
 
 Aşağıdaki bileşenler bu örnekte kullanılır:
 
-* __Eventhubspout__: Event Hubs verilerini okur.
-* __Eventhubcıvata__: verileri Event Hubs yazar.
-* __Eventhubspoutconfig__: EventHubSpout 'yi yapılandırmak için kullanılır.
-* __Eventhubcıvatconfig__: eventhubcıvaı yapılandırmak için kullanılır.
+* __Eventhubspout__ : Event Hubs verilerini okur.
+* __Eventhubcıvata__ : verileri Event Hubs yazar.
+* __Eventhubspoutconfig__ : EventHubSpout 'yi yapılandırmak için kullanılır.
+* __Eventhubcıvatconfig__ : eventhubcıvaı yapılandırmak için kullanılır.
 
 ### <a name="example-spout-usage"></a>Örnek Spout kullanımı
 
@@ -64,11 +64,11 @@ SCP.NET topolojinize EventHubSpout eklemek için yöntemler sağlar. Bu yönteml
     eventHubPartitions);
 ```
 
-Önceki örnekte __Eventhubspout__adlı yeni bir Spout bileşeni oluşturulur ve bunu bir olay hub 'ı ile iletişim kuracak şekilde yapılandırır. Bileşen için paralellik ipucu, Olay Hub 'ındaki bölüm sayısına ayarlanır. Bu ayar, fırtınası 'nın her bölüm için bileşenin bir örneğini oluşturmasına izin verir.
+Önceki örnekte __Eventhubspout__ adlı yeni bir Spout bileşeni oluşturulur ve bunu bir olay hub 'ı ile iletişim kuracak şekilde yapılandırır. Bileşen için paralellik ipucu, Olay Hub 'ındaki bölüm sayısına ayarlanır. Bu ayar, fırtınası 'nın her bölüm için bileşenin bir örneğini oluşturmasına izin verir.
 
 ### <a name="example-bolt-usage"></a>Örnek sürgüsü kullanımı
 
-Bir cıvacının örneğini oluşturmak için **Javabileşen Mentconstructor** metodunu kullanın. Aşağıdaki örnek, **Eventhubcıvaun**yeni bir örneğini oluşturmayı ve yapılandırmayı gösterir:
+Bir cıvacının örneğini oluşturmak için **Javabileşen Mentconstructor** metodunu kullanın. Aşağıdaki örnek, **Eventhubcıvaun** yeni bir örneğini oluşturmayı ve yapılandırmayı gösterir:
 
 ```csharp
 // Java construcvtor for the Event Hub Bolt
@@ -91,15 +91,15 @@ topologyBuilder.SetJavaBolt(
 ```
 
 > [!NOTE]  
-> Bu örnek, Spout örneği gibi bir **Eventhubcıvatconfig**oluşturmak Için **javacomponentconstructor** yerine bir dize olarak geçirilen bir Clojure ifadesi kullanır. Her iki yöntem de işe yarar. Size en uygun yöntemi kullanın.
+> Bu örnek, Spout örneği gibi bir **Eventhubcıvatconfig** oluşturmak Için **javacomponentconstructor** yerine bir dize olarak geçirilen bir Clojure ifadesi kullanır. Her iki yöntem de işe yarar. Size en uygun yöntemi kullanın.
 
 ## <a name="download-the-completed-project"></a>Tamamlanmış projeyi indirin
 
 Bu makalede oluşturulan projenin tüm sürümünü [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)'dan indirebilirsiniz. Ancak, bu makaledeki adımları izleyerek yapılandırma ayarlarını yine de sağlamanız gerekir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-* HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
+* HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü** için **fırtınası** seçme.
 
 * [Azure Olay Hub 'ı](../../event-hubs/event-hubs-create.md).
 
@@ -107,7 +107,7 @@ Bu makalede oluşturulan projenin tüm sürümünü [GitHub](https://github.com/
 
 * [Visual Studio Için HDInsight araçları](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
-* Geliştirme ortamınızda Java JDK 1,8 veya sonraki bir sürümü. JDK İndirmeleri [Oracle](https://aka.ms/azure-jdks)'dan edinilebilir.
+* Geliştirme ortamınızda Java JDK 1,8 veya sonraki bir sürümü. JDK İndirmeleri [Oracle](/azure/developer/java/fundamentals/java-jdk-long-term-support)'dan edinilebilir.
 
   * **JAVA_HOME** ortam değişkeni, Java içeren dizine işaret etmelidir.
   * **% JAVA_HOME%/bin** dizini yolda olmalıdır.
@@ -122,9 +122,9 @@ Adlı bir dizin oluşturun `eventhubspout` ve dosyayı dizine kaydedin.
 
 Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](../../event-hubs/event-hubs-create.md)konusunun "bir olay hub 'ı oluşturma" bölümündeki bilgileri kullanın.
 
-1. Olay Hub 'ı oluşturulduktan sonra, Azure portal **EventHub** ayarlarını görüntüleyin ve **paylaşılan erişim ilkeleri**' ni seçin. Aşağıdaki ilkeleri oluşturmak için **+ Ekle** ' yi seçin:
+1. Olay Hub 'ı oluşturulduktan sonra, Azure portal **EventHub** ayarlarını görüntüleyin ve **paylaşılan erişim ilkeleri** ' ni seçin. Aşağıdaki ilkeleri oluşturmak için **+ Ekle** ' yi seçin:
 
-   | Adı | İzinler |
+   | Name | İzinler |
    | --- | --- |
    | yazarı |Gönder |
    | okuyucu |Dinle |
@@ -139,7 +139,7 @@ Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](
 
 2. Çözümü [eventhub-fırtınası-karma](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)konumundan indirin.
 
-3. **Eventhubexample. sln**öğesini açın. **Eventhubwriter** projesinde **App.config** dosyasını açın. Daha önce aşağıdaki anahtarlar için değeri dolduracak olan olay hub 'ında bulunan bilgileri kullanın:
+3. **Eventhubexample. sln** öğesini açın. **Eventhubwriter** projesinde **App.config** dosyasını açın. Daha önce aşağıdaki anahtarlar için değeri dolduracak olan olay hub 'ında bulunan bilgileri kullanın:
 
    | Anahtar | Değer |
    | --- | --- |
@@ -155,7 +155,7 @@ Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](
 
 1. **Eventhubreader** projesini açın.
 
-2. **Eventhubreader**için **App.config** dosyasını açın. Daha önce aşağıdaki anahtarlar için değeri dolduracak olan olay hub 'ında bulunan bilgileri kullanın:
+2. **Eventhubreader** için **App.config** dosyasını açın. Daha önce aşağıdaki anahtarlar için değeri dolduracak olan olay hub 'ında bulunan bilgileri kullanın:
 
    | Anahtar | Değer |
    | --- | --- |
@@ -169,11 +169,11 @@ Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](
 
 ## <a name="deploy-the-topologies"></a>Topolojileri dağıtma
 
-1. **Çözüm Gezgini**, **Eventhubreader** projesine sağ tıklayın ve **HDInsight 'ta fırtınası 'ya gönder**' i seçin.
+1. **Çözüm Gezgini** , **Eventhubreader** projesine sağ tıklayın ve **HDInsight 'ta fırtınası 'ya gönder** ' i seçin.
 
     ![HDInsight 'ta fırtınası üzerine gönder vurgulanmış Çözüm Gezgini ekran görüntüsü](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
 
-2. **Topolojiyi gönder** iletişim kutusunda, **fırtınası kümenizi**seçin. **Ek konfigürasyonlar**' ı genişletin, **Java dosya yolları**' nı seçin, **...**' ı seçin ve daha önce indirdiğiniz jar dosyasını içeren dizini seçin. Son olarak **Gönder**' e tıklayın.
+2. **Topolojiyi gönder** iletişim kutusunda, **fırtınası kümenizi** seçin. **Ek konfigürasyonlar** ' ı genişletin, **Java dosya yolları** ' nı seçin, **...** ' ı seçin ve daha önce indirdiğiniz jar dosyasını içeren dizini seçin. Son olarak **Gönder** ' e tıklayın.
 
     ![Gönderme topolojisi iletişim kutusunun ekran görüntüsü](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
 
@@ -181,9 +181,9 @@ Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](
 
     ![Fırtınası topolojileri görüntüleyicisinin ekran görüntüsü](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
 
-4. **Çözüm Gezgini**, **Eventhubwriter** projesine sağ tıklayın ve **HDInsight 'ta fırtınası 'ya gönder**' i seçin.
+4. **Çözüm Gezgini** , **Eventhubwriter** projesine sağ tıklayın ve **HDInsight 'ta fırtınası 'ya gönder** ' i seçin.
 
-5. **Topolojiyi gönder** iletişim kutusunda, **fırtınası kümenizi**seçin. **Ek konfigürasyonlar**' ı genişletin, **Java dosya yolları**' nı seçin, **...**' ı seçin ve daha önce indirdiğiniz jar dosyasını içeren dizini seçin. Son olarak **Gönder**' e tıklayın.
+5. **Topolojiyi gönder** iletişim kutusunda, **fırtınası kümenizi** seçin. **Ek konfigürasyonlar** ' ı genişletin, **Java dosya yolları** ' nı seçin, **...** ' ı seçin ve daha önce indirdiğiniz jar dosyasını içeren dizini seçin. Son olarak **Gönder** ' e tıklayın.
 
 6. Topoloji gönderildiğinde, her iki topolojinin kümede çalıştığından emin olmak için, **fırtınası topolojileri görüntüleyicisinde** topoloji listesini yenileyin.
 
@@ -201,7 +201,7 @@ Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](
 
 ## <a name="stop-the-topologies"></a>Topolojileri durdurma
 
-Topolojileri durdurmak için, **fırtınası topolojisi görüntüleyicisinde**her bir topoloji seçin ve ardından **Sonlandır**' ı tıklatın.
+Topolojileri durdurmak için, **fırtınası topolojisi görüntüleyicisinde** her bir topoloji seçin ve ardından **Sonlandır** ' ı tıklatın.
 
 ![Sonlandırma düğmesi vurgulanmış olan fırtınası topolojisi görüntüleyicisinin ekran görüntüsü](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
 

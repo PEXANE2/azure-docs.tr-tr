@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 05/27/2020
-ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be33c968499052b2b254754f37e5163012bcadd0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88754965"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547597"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>HDInsight 'ta Apache Beeline bağlanma veya yerel olarak yüklemeyi
 
@@ -104,7 +104,7 @@ Doğrudan küme baş düğümünden veya HDInsight kümesiyle aynı Azure sanal 
 
 ## <a name="install-beeline-client"></a>Beeline istemcisini yükler
 
-Baş düğümlere Beeline dahil edilse de, yerel olarak yüklemek isteyebilirsiniz.  Yerel bir makineye yönelik Install adımları [Linux Için Windows alt sistemine](https://docs.microsoft.com/windows/wsl/install-win10)dayanır.
+Baş düğümlere Beeline dahil edilse de, yerel olarak yüklemek isteyebilirsiniz.  Yerel bir makineye yönelik Install adımları [Linux Için Windows alt sistemine](/windows/wsl/install-win10)dayanır.
 
 1. Paket listelerini güncelleştirme. Bash kabuğunuzun aşağıdaki komutunu girin:
 
@@ -128,7 +128,7 @@ Baş düğümlere Beeline dahil edilse de, yerel olarak yüklemek isteyebilirsin
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
         ```
 
-        Sonra **CTRL + X**ve **Y**tuşlarına basın ve ardından girin.
+        Sonra **CTRL + X** ve **Y** tuşlarına basın ve ardından girin.
 
 1. Hadoop ve Beeline arşivlerini indirin, aşağıdaki komutları girin:
 
@@ -144,7 +144,7 @@ Baş düğümlere Beeline dahil edilse de, yerel olarak yüklemek isteyebilirsin
     tar -xvzf apache-hive-1.2.1-bin.tar.gz
     ```
 
-1. Bashrc dosyasını daha fazla düzeltme. Arşivlerin açıldığı yolu belirlemeniz gerekir. [Linux Için Windows alt sistemi](https://docs.microsoft.com/windows/wsl/install-win10)kullanıyorsanız ve adımları tam olarak takip ediyorsanız, yolunuzda `/mnt/c/Users/user/` `user` Kullanıcı adınız olur.
+1. Bashrc dosyasını daha fazla düzeltme. Arşivlerin açıldığı yolu belirlemeniz gerekir. [Linux Için Windows alt sistemi](/windows/wsl/install-win10)kullanıyorsanız ve adımları tam olarak takip ediyorsanız, yolunuzda `/mnt/c/Users/user/` `user` Kullanıcı adınız olur.
 
     1. Dosyayı açın: `nano ~/.bashrc`
 
@@ -156,7 +156,7 @@ Baş düğümlere Beeline dahil edilse de, yerel olarak yüklemek isteyebilirsin
         PATH=$PATH:$HIVE_HOME/bin
         ```
 
-    1. Sonra **CTRL + X**ve **Y**tuşlarına basın ve ardından girin.
+    1. Sonra **CTRL + X** ve **Y** tuşlarına basın ve ardından girin.
 
 1. Bash oturumunuzu kapatıp yeniden açın.
 

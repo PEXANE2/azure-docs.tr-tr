@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ccf7ddb44a25ec123f13b5d7b6cdb5354b63778
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9bfd2330f71b9690e2864968cf51cb438bb23676
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996642"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534082"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure 'da Oracle veritabanı tasarlama ve uygulama
 
@@ -101,11 +101,11 @@ AWR raporundan elde ettiğiniz ölçümler aşağıda verilmiştir:
 
 Örneğin, aşağıdaki diyagramda günlük dosyası eşitleme en üstte. Bu, LGWR 'ın günlük arabelleğini yeniden yineleme günlük dosyasına yazmadan önce gerekli olan bekleme sayısını belirtir. Bu sonuçlar, daha iyi uygulanan depolama veya disklerin gerekli olduğunu gösterir. Ayrıca, diyagram CPU (çekirdek) sayısını ve bellek miktarını da gösterir.
 
-![AWR rapor sayfasının ekran görüntüsü](./media/oracle-design/cpu_memory_info.png)
+![Tablonun en üstünde bulunan günlük dosyası eşitlemesini gösteren ekran görüntüsü.](./media/oracle-design/cpu_memory_info.png)
 
 Aşağıdaki diyagramda, okuma ve yazma toplam g/ç sayısı gösterilmektedir. Rapor sırasında yazılan 59 GB okuma ve 247,3 GB vardı.
 
-![AWR rapor sayfasının ekran görüntüsü](./media/oracle-design/io_info.png)
+![Okuma ve yazma toplam g/ç sayısını gösteren ekran görüntüsü.](./media/oracle-design/io_info.png)
 
 #### <a name="2-choose-a-vm"></a>2. bir VM seçin
 
@@ -143,13 +143,13 @@ Ağ bant genişliği gereksinimlerinize göre, aralarından seçim yapabileceği
 
 ### <a name="disk-types-and-configurations"></a>Disk türleri ve yapılandırma
 
-- *Varsayılan işletim sistemi diskleri*: Bu disk türleri kalıcı veriler ve önbelleğe alma sağlar. Başlangıçta işletim sistemi erişimi için iyileştirilir ve işlem veya veri ambarı (analitik) iş yükleri için tasarlanmamıştır.
+- *Varsayılan işletim sistemi diskleri* : Bu disk türleri kalıcı veriler ve önbelleğe alma sağlar. Başlangıçta işletim sistemi erişimi için iyileştirilir ve işlem veya veri ambarı (analitik) iş yükleri için tasarlanmamıştır.
 
-- *Yönetilmeyen diskler*: Bu disk TÜRLERIYLE, VM disklerinizde karşılık gelen sanal sabit DISK (VHD) dosyalarını depolayan depolama hesaplarını yönetirsiniz. VHD dosyaları, Azure depolama hesaplarında sayfa Blobları olarak depolanır.
+- *Yönetilmeyen diskler* : Bu disk TÜRLERIYLE, VM disklerinizde karşılık gelen sanal sabit DISK (VHD) dosyalarını depolayan depolama hesaplarını yönetirsiniz. VHD dosyaları, Azure depolama hesaplarında sayfa Blobları olarak depolanır.
 
-- *Yönetilen diskler*: Azure, VM disklerinizde kullandığınız depolama hesaplarını yönetir. Disk türünü (Premium veya standart) ve ihtiyacınız olan diskin boyutunu belirtirsiniz. Azure, diski sizin için oluşturur ve yönetir.
+- *Yönetilen diskler* : Azure, VM disklerinizde kullandığınız depolama hesaplarını yönetir. Disk türünü (Premium veya standart) ve ihtiyacınız olan diskin boyutunu belirtirsiniz. Azure, diski sizin için oluşturur ve yönetir.
 
-- *Premium depolama diskleri*: Bu disk türleri üretim iş yükleri için idealdir. Premium Depolama, DS, DSv2, GS ve F serisi VM 'Ler gibi belirli boyut serisi sanal makinelere eklenebilecek VM disklerini destekler. Premium disk farklı boyutlarda gelir ve 32 GB ile 4.096 GB arasında değişen diskler arasında seçim yapabilirsiniz. Her disk boyutunun kendi performans belirtimleri vardır. Uygulama gereksinimlerinize bağlı olarak, sanal makinenize bir veya daha fazla disk ekleyebilirsiniz.
+- *Premium depolama diskleri* : Bu disk türleri üretim iş yükleri için idealdir. Premium Depolama, DS, DSv2, GS ve F serisi VM 'Ler gibi belirli boyut serisi sanal makinelere eklenebilecek VM disklerini destekler. Premium disk farklı boyutlarda gelir ve 32 GB ile 4.096 GB arasında değişen diskler arasında seçim yapabilirsiniz. Her disk boyutunun kendi performans belirtimleri vardır. Uygulama gereksinimlerinize bağlı olarak, sanal makinenize bir veya daha fazla disk ekleyebilirsiniz.
 
 Portaldan yeni bir yönetilen disk oluşturduğunuzda, kullanmak istediğiniz disk türü için **hesap türünü** seçebilirsiniz. Kullanılabilir disklerin tümünün açılan menüde gösterildiğine dikkat edin. Belirli bir VM boyutunu seçtikten sonra, menü yalnızca söz konusu VM boyutunu temel alan kullanılabilir Premium Depolama SKU 'Larını gösterir.
 
@@ -186,9 +186,9 @@ G/ç gereksinimlerinden oluşan net bir resme sahip olduktan sonra, bu gereksini
 
 Konak önbelleğe alma için üç seçenek vardır:
 
-- *ReadOnly*: tüm istekler sonraki kullanımlar için önbelleğe alınır. Tüm yazma işlemleri doğrudan Azure Blob depolama alanına kalıcıdır.
+- *ReadOnly* : tüm istekler sonraki kullanımlar için önbelleğe alınır. Tüm yazma işlemleri doğrudan Azure Blob depolama alanına kalıcıdır.
 
-- *ReadWrite*: Bu bir "salt okuma" algoritmasıdır. Okuma ve yazma işlemleri, gelecekteki okumalar için önbelleğe alınır. Yazısız yazma işlemleri, önce yerel önbellekte kalıcı hale getirilir. Ayrıca, hafif iş yükleri için en düşük disk gecikme süresini de sağlar. Gerekli verileri kalıcı olarak işlemeyen bir uygulamayla ReadWrite önbelleği kullanmak, VM kilitlenirse veri kaybına yol açabilir.
+- *ReadWrite* : Bu bir "salt okuma" algoritmasıdır. Okuma ve yazma işlemleri, gelecekteki okumalar için önbelleğe alınır. Yazısız yazma işlemleri, önce yerel önbellekte kalıcı hale getirilir. Ayrıca, hafif iş yükleri için en düşük disk gecikme süresini de sağlar. Gerekli verileri kalıcı olarak işlemeyen bir uygulamayla ReadWrite önbelleği kullanmak, VM kilitlenirse veri kaybına yol açabilir.
 
 - *Hiçbiri* (devre dışı): Bu seçeneği kullanarak önbelleği atlayabilirsiniz. Tüm veriler diske aktarılır ve Azure depolama 'da kalıcı hale getirilir. Bu yöntem, g/ç yoğunluklu iş yükleri için en yüksek g/ç hızını sağlar. Ayrıca "işlem maliyeti" göz önünde bulundurmanız gerekir.
 
@@ -196,7 +196,7 @@ Konak önbelleğe alma için üç seçenek vardır:
 
 Aktarım hızını en üst düzeye çıkarmak için, konak önbelleğe alma için **none** ile başlamanız önerilir. Premium Depolama için, dosya sistemini **ReadOnly** veya **none** seçenekleriyle bağladığınızda "engelleri" devre dışı bırakmanız gerektiğini aklınızda bulundurun. /Etc/fstab dosyasını UUID ile disklere güncelleştirin.
 
-![Yönetilen disk sayfasının ekran görüntüsü](./media/oracle-design/premium_disk02.png)
+![ReadOnly ve None seçeneklerini gösteren yönetilen disk sayfasının ekran görüntüsü.](./media/oracle-design/premium_disk02.png)
 
 - İşletim sistemi diskleri için varsayılan **okuma/yazma** önbelleği kullanın.
 - SISTEM, GEÇICI ve GERI alma için, önbelleğe alma için **none** kullanın.
@@ -208,9 +208,9 @@ Veri diski ayarınız kaydedildikten sonra, işletim sistemi düzeyinde sürüc�
 
 Azure ortamınızı ayarladıktan ve yapılandırdıktan sonra, bir sonraki adım ağınızı güvenli hale getirmeye çalışır. Bazı öneriler aşağıda verilmiştir:
 
-- *NSG ilkesi*: NSG, bir alt ağ veya NIC ile tanımlanabilir. Erişimi, hem güvenlik hem de uygulama güvenlik duvarları gibi şeyler için zorla yönlendirme için alt ağ düzeyinde denetlemek daha basittir.
+- *NSG ilkesi* : NSG, bir alt ağ veya NIC ile tanımlanabilir. Erişimi, hem güvenlik hem de uygulama güvenlik duvarları gibi şeyler için zorla yönlendirme için alt ağ düzeyinde denetlemek daha basittir.
 
-- Sıçrama *kutusu*: daha güvenli erişim için Yöneticiler Uygulama hizmetine veya veritabanına doğrudan bağlanmamalıdır. Bir atlama kutusu, yönetici makinesi ile Azure kaynakları arasında bir medya olarak kullanılır.
+- Sıçrama *kutusu* : daha güvenli erişim için Yöneticiler Uygulama hizmetine veya veritabanına doğrudan bağlanmamalıdır. Bir atlama kutusu, yönetici makinesi ile Azure kaynakları arasında bir medya olarak kullanılır.
 ![Sıçrama kutusu topolojisi sayfasının ekran görüntüsü](./media/oracle-design/jumpbox.png)
 
     Yönetici makinesi yalnızca atlama kutusuna IP kısıtlı erişim sunmalıdır. Sıçrama kutusunun uygulamaya ve veritabanına erişimi olmalıdır.

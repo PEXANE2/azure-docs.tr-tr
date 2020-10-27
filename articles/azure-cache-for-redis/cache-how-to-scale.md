@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/11/2017
-ms.openlocfilehash: e780ef0b82240ac6771059f8bd239b90395135d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 332233873bfbcb2ae77f5a70b4aaa5a6102cecec
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213342"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537856"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini ölçeklendirme
 Redin için Azure önbelleğinde, önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek teklifleri vardır. Bir önbellek oluşturulduktan sonra, uygulamanızın gereksinimlerinin değiştirilmesi durumunda önbelleğin boyutunu ve fiyatlandırma katmanını ölçeklendirebilirsiniz. Bu makalede, Azure portal ve Azure PowerShell ve Azure CLı gibi araçları kullanarak önbelleğinizi nasıl ölçekleyebilirsiniz.
@@ -34,7 +34,7 @@ Redsıs için Azure cache [izleme](cache-how-to-monitor.md) özelliklerini kulla
 
 ![Ölçek](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-**Fiyatlandırma katmanı Seç** dikey penceresinde istediğiniz fiyatlandırma katmanını seçin ve **Seç**' e tıklayın.
+**Fiyatlandırma katmanı Seç** dikey penceresinde istediğiniz fiyatlandırma katmanını seçin ve **Seç** ' e tıklayın.
 
 ![Fiyatlandırma katmanı][redis-cache-pricing-tier-blade]
 
@@ -52,7 +52,7 @@ Aşağıdaki kısıtlamalara sahip farklı bir fiyatlandırma katmanına ölçek
 
 ![Ölçeklendirme][redis-cache-scaling]
 
-Ölçeklendirme tamamlandığında, durum **ölçeklendirmeden** **çalışır**olarak değişir.
+Ölçeklendirme tamamlandığında, durum **ölçeklendirmeden** **çalışır** olarak değişir.
 
 ## <a name="how-to-automate-a-scaling-operation"></a>Ölçeklendirme işlemini otomatikleştirme
 Azure portal önbellek örneklerinizi ölçeklendirmenin yanı sıra, PowerShell cmdlet 'leri, Azure CLı ve Microsoft Azure Yönetim kitaplıklarını (MAML) kullanarak ölçeklendirebilirsiniz. 
@@ -65,7 +65,7 @@ Azure portal önbellek örneklerinizi ölçeklendirmenin yanı sıra, PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-, Veya özellikleri değiştirildiğinde [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) cmdlet 'Ini kullanarak PowerShell ile redsıs örnekleri Için Azure önbelleğinizi ölçekleyebilirsiniz `Size` `Sku` `ShardCount` . Aşağıdaki örnek, `myCache` 2,5 GB önbellek olarak adlandırılan bir önbelleğin nasıl ölçeklendirilebilen gösterilmektedir. 
+, Veya özellikleri değiştirildiğinde [set-AzRedisCache](/powershell/module/az.rediscache/set-azrediscache) cmdlet 'Ini kullanarak PowerShell ile redsıs örnekleri Için Azure önbelleğinizi ölçekleyebilirsiniz `Size` `Sku` `ShardCount` . Aşağıdaki örnek, `myCache` 2,5 GB önbellek olarak adlandırılan bir önbelleğin nasıl ölçeklendirilebilen gösterilmektedir. 
 
 ```powershell
    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
@@ -174,7 +174,7 @@ Bir ölçeklendirme işlemi başarısız olursa, hizmet işlemi döndürmeye ça
 Ölçeklendirme süresi, daha fazla miktarda verinin daha uzun sürede tamamlanmasını sağlamak için önbellekte ne kadar veri olduğuna bağlıdır. Ölçeklendirme yaklaşık 20 dakika sürer. Kümelenmiş önbellekler için ölçeklendirme, parça başına yaklaşık 20 dakika sürer.
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>Ölçeklendirmenin tamamlandığını nasıl anlayabilirim?
-Azure portal ölçeklendirme işleminin devam ettiğini görebilirsiniz. Ölçeklendirme tamamlandığında, önbelleğin durumu **çalışıyor**olarak değişir.
+Azure portal ölçeklendirme işleminin devam ettiğini görebilirsiniz. Ölçeklendirme tamamlandığında, önbelleğin durumu **çalışıyor** olarak değişir.
 
 <!-- IMAGES -->
 

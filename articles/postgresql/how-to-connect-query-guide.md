@@ -1,18 +1,18 @@
 ---
 title: Connect ve Query-tek sunuculu PostgreSQL
-description: Azure My SQL Database hızlı Başlangıçlarının bağlantıları sunucunuza nasıl bağlanacağınızı ve sorguları nasıl çalıştıracağınızı gösterir.
+description: Hızlı başlangıç bağlantıları, PostgreSQL için Azure veritabanınıza tek sunucuya nasıl bağlanacağınızı ve sorguları nasıl çalıştıracağınızı gösterir.
 services: postgresql
 ms.service: postgresql
 ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
-ms.openlocfilehash: 5c6d6a51887d2912da8d6b4e357a1036596d63d5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 413f5fc1f6579102b62042c1470816470c2e1449
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490025"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546560"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>PostgreSQL için Azure veritabanı 'na bağlanma ve sorguya genel bakış-tek sunucu
 
@@ -33,13 +33,12 @@ Aşağıdaki belge, PostgreSQL için Azure veritabanı tek sunucu ile bağlanma 
 |[Python](connect-python.md)|Bu hızlı başlangıçta Python kullanarak bir veritabanına bağlanma ve verileri sorgulamak için veritabanı nesneleriyle çalışma kullanma işlemlerinin nasıl yapılacağı gösterilmiştir. |
 |[Ruby](connect-ruby.md)|Bu hızlı başlangıçta, Ruby kullanarak bir veritabanına bağlanma ve verileri sorgulamak için veritabanı nesneleriyle çalışma kullanma adlı bir program oluşturma işlemlerinin nasıl yapılacağı gösterilmiştir.|
 
-
 ## <a name="tls-considerations-for-database-connectivity"></a>Veritabanı bağlantısı için TLS konuları
 
-Aktarım Katmanı Güvenliği (TLS), Microsoft 'un PostgreSQL için Azure veritabanı 'nda veritabanlarına bağlanmak için sağladığı veya desteklediği tüm sürücüler tarafından kullanılır. Özel yapılandırma gerekmez, ancak yeni oluşturulan sunucular için TLS 1,2 ' i zorunlu tutun. TLS 1,0 ve 1,1 kullanıyorsanız, sunucularınızın TLS sürümünü güncelleştirmeniz önerilir. Bkz. [ TLS Yapılandırma](howto-tls-configurations.md)
-
+Aktarım Katmanı Güvenliği (TLS), Microsoft 'un PostgreSQL için Azure veritabanı 'nda veritabanlarına bağlanmak için sağladığı veya desteklediği tüm sürücüler tarafından kullanılır. Özel yapılandırma gerekmez, ancak yeni oluşturulan sunucular için TLS 1,2 ' i zorunlu tutun. TLS 1,0 ve 1,1 kullanıyorsanız, sunucularınızın TLS sürümünü güncelleştirmeniz önerilir. Bkz. [TLS Yapılandırma](howto-tls-configurations.md)
 
 ## <a name="postgresql-extensions"></a>PostgreSQL uzantıları
+
 PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar birden çok ilgili SQL nesnesini tek bir komutla veritabanınıza yüklenip kaldırılabilecek bir paket haline getirir. Veritabanınıza yüklenen uzantılar, yerleşik özellikler gibi çalışır.
 
 - [Postgres 11 uzantıları](./concepts-extensions.md#postgres-11-extensions)
@@ -49,7 +48,7 @@ PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişle
 
 Daha fazla ayrıntı için bkz. [tek sunucuda PostgreSQL uzantılarını kullanma](concepts-extensions.md).
 
-## <a name="next-steps"></a>Sonraki Adımlar 
+## <a name="next-steps"></a>Sonraki adımlar
 
 - [Döküm ve geri yükleme kullanarak verileri geçirme](howto-migrate-using-dump-and-restore.md)
 - [İçeri ve dışarı aktarma kullanarak verileri geçirme](howto-migrate-using-export-and-import.md)

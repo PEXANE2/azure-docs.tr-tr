@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 9794dd47949dc7dea891893dbcf261808ab335fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a2c734b256ad934b7a17d7cefd1783b406e766
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521386"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537193"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-veri geçişi en iyi yöntemleri
 
@@ -24,19 +24,19 @@ Bu makale, Azure HDInsight 'a veri taşımaya yönelik öneriler sağlar. Şirke
 Şirket içinden Azure ortamına veri geçirmek için iki ana seçenek vardır:
 
 * TLS ile ağ üzerinden veri aktarımı
-    * Internet üzerinden: Azure Depolama Gezgini, AzCopy, Azure PowerShell ve Azure CLı gibi çeşitli araçlardan birini kullanarak düzenli bir internet bağlantısı üzerinden Azure depolama 'ya veri aktarabilirsiniz. Daha fazla bilgi için bkz. [Azure Storage 'a veri taşıma](../../storage/common/storage-moving-data.md).
+    * Internet üzerinden: Azure Depolama Gezgini, AzCopy, Azure PowerShell ve Azure CLı gibi çeşitli araçlardan birini kullanarak düzenli bir internet bağlantısı üzerinden Azure depolama 'ya veri aktarabilirsiniz. Daha fazla bilgi için bkz. [Azure Storage 'a veri taşıma](../../storage/common/storage-choose-data-transfer-solution.md).
 
     * Express Route-ExpressRoute, Microsoft veri merkezleri ile şirket içinde veya bir birlikte bulundurma tesisinde bulunan altyapı arasında özel bağlantılar oluşturmanızı sağlayan bir Azure hizmetidir. ExpressRoute bağlantıları, genel Internet üzerinden geçmez ve Internet üzerinden tipik bağlantılardan daha düşük gecikme süreleriyle daha yüksek güvenlik, güvenilirlik ve hız sunar. Daha fazla bilgi için bkz. [ExpressRoute bağlantı hattı oluşturma ve değiştirme](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
 
-    * Data Box çevrimiçi veri aktarımı-Data Box Edge ve Data Box Gateway, siteniz ile Azure arasında verileri yönetmek için ağ depolama ağ geçitleri görevi gören çevrimiçi veri aktarımı ürünlerdir. Data Box Edge, şirket içi bir ağ aygıtı, verileri Azure 'a ve Azure 'a aktarır ve verileri işlemek için yapay zeka (AI) özellikli uç işlem kullanır. Data Box Gateway, depolama ağ geçidi özelliklerine sahip bir sanal gereç. Daha fazla bilgi için bkz. [Azure Data Box belgeleri-çevrimiçi aktarım](https://docs.microsoft.com/azure/databox-online/).
+    * Data Box çevrimiçi veri aktarımı-Data Box Edge ve Data Box Gateway, siteniz ile Azure arasında verileri yönetmek için ağ depolama ağ geçitleri görevi gören çevrimiçi veri aktarımı ürünlerdir. Data Box Edge, şirket içi bir ağ aygıtı, verileri Azure 'a ve Azure 'a aktarır ve verileri işlemek için yapay zeka (AI) özellikli uç işlem kullanır. Data Box Gateway, depolama ağ geçidi özelliklerine sahip bir sanal gereç. Daha fazla bilgi için bkz. [Azure Data Box belgeleri-çevrimiçi aktarım](../../databox-online/index.yml).
 
 * Verileri çevrimdışı aktarma
 
-    Data Box çevrimdışı veri aktarımı-Data Box, Data Box Disk ve Data Box Heavy cihazları, ağ bir seçenek olmadığında büyük miktarlarda verileri Azure 'a aktarmanızı sağlar. Bu çevrimdışı veri aktarımı cihazları, kuruluşunuz ile Azure veri merkezi arasında gönderilir. Bu kişiler, geçiş sırasında verilerinizin korunmasına yardımcı olmak için AES şifrelemesi kullanırlar ve verileri cihazdan silmek için tam karşıya yükleme sonrası Temizleme işlemi gerçekleştirirler. Data Box çevrimdışı aktarım cihazları hakkında daha fazla bilgi için bkz. [Azure Data Box belgeleri-çevrimdışı aktarım](https://docs.microsoft.com/azure/databox/). Hadoop kümelerinin geçirilmesi hakkında daha fazla bilgi için bkz. [on-premises bir sunucudan Azure Storage 'a geçiş yapmak için Azure Data Box kullanma](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
+    Data Box çevrimdışı veri aktarımı-Data Box, Data Box Disk ve Data Box Heavy cihazları, ağ bir seçenek olmadığında büyük miktarlarda verileri Azure 'a aktarmanızı sağlar. Bu çevrimdışı veri aktarımı cihazları, kuruluşunuz ile Azure veri merkezi arasında gönderilir. Bu kişiler, geçiş sırasında verilerinizin korunmasına yardımcı olmak için AES şifrelemesi kullanırlar ve verileri cihazdan silmek için tam karşıya yükleme sonrası Temizleme işlemi gerçekleştirirler. Data Box çevrimdışı aktarım cihazları hakkında daha fazla bilgi için bkz. [Azure Data Box belgeleri-çevrimdışı aktarım](../../databox/index.yml). Hadoop kümelerinin geçirilmesi hakkında daha fazla bilgi için bkz. [on-premises bir sunucudan Azure Storage 'a geçiş yapmak için Azure Data Box kullanma](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
 
 Aşağıdaki tabloda, veri hacmi ve ağ bant genişliğine bağlı olarak yaklaşık veri aktarım süresi bulunur. Veri geçişinin üç haftadan uzun sürmesine bekleniyorsa bir veri kutusu kullanın.
 
-|Veri mik | Ağ bant genişliği<br>/<br>**45 Mbps (T3)**|Ağ bant genişliği<br>/<br>**100 Mbps**|Ağ bant genişliği<br>/<br>**1 Gbps**|Ağ bant genişliği<br>/<br>**10 Gbps**|
+|Veri mik | Ağ bant genişliği<br>/<br>**45 Mbps (T3)**|Ağ bant genişliği<br>/<br>**100 Mb/sn**|Ağ bant genişliği<br>/<br>**1 Gb/sn**|Ağ bant genişliği<br>/<br>**10 Gbps**|
 |---|:---:|:---:|:---:|:---:|
 |1 TB|2 gün|1 gün| 2 saat|14 dakika|
 |10 TB|22 gün|10 gün|1 gün|2 saat|

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 021bfc0b87b0da800728eda26d9f5222bd52bc1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbae7254949eaa642b8344b4e550de4a44b2f33f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086968"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545982"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight’ta WebHCat’ten alınan hataları anlama ve düzeltme
 
@@ -39,7 +39,7 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 
 ## <a name="too-many-requests"></a>Çok fazla istek
 
-**Http durum kodu**: 429
+**Http durum kodu** : 429
 
 | Nedeni | Çözüm |
 | --- | --- |
@@ -47,7 +47,7 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 
 ## <a name="server-unavailable"></a>Sunucu kullanılamıyor
 
-**Http durum kodu**: 503
+**Http durum kodu** : 503
 
 | Nedeni | Çözüm |
 | --- | --- |
@@ -55,7 +55,7 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 
 ## <a name="bad-request-content-could-not-find-job"></a>Hatalı istek Içeriği: iş bulunamadı
 
-**Http durum kodu**: 400
+**Http durum kodu** : 400
 
 | Nedeni | Çözüm |
 | --- | --- |
@@ -65,7 +65,7 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 
 ## <a name="bad-gateway"></a>Hatalı ağ geçidi
 
-**Http durum kodu**: 502
+**Http durum kodu** : 502
 
 | Nedeni | Çözüm |
 | --- | --- |
@@ -83,7 +83,7 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](../azure-portal/supportability/how-to-create-azure-support-request.md)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
 
 [maximum-applications]: https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://cwiki.apache.org/confluence/display/Hive/WebHCat+Configure#WebHCatConfigure-WebHCatConfiguration

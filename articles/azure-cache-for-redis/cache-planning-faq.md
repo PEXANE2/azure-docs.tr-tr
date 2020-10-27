@@ -6,18 +6,18 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 13ba529dd3067ae16167f0d9c14c8f72b982f52c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 398b567e173691068e6dd932e075d6598dcfe601
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010877"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537414"
 ---
 # <a name="azure-cache-for-redis-planning-faqs"></a>Red, planlama için Azure önbelleği SSS
 
 Bu makalede, redin için Azure önbelleğinin nasıl planlanacağı hakkında yaygın soruların yanıtları sağlanmaktadır.
 
-## <a name="common-questions-and-answers"></a>Yaygın sorular ve yanıtları
+## <a name="common-questions-and-answers"></a>Sık sorulan sorular ve yanıtları
 Bu bölümde aşağıdaki SSS ele alınmaktadır:
 
 * [Redsıs performansı için Azure önbelleği](#azure-cache-for-redis-performance)
@@ -43,7 +43,7 @@ Bu tablodan aşağıdaki ekibinizle çizebilirsiniz:
 | Fiyatlandırma katmanı | Boyut | CPU çekirdekleri | Kullanılabilir bant genişliği | 1 KB değer boyutu | 1 KB değer boyutu |
 | --- | --- | --- | --- | --- | --- |
 | **Standart önbellek boyutları** | | |**Megabit/sn (MB/sn)/megabayt/sn (MB/s)** |**Saniye başına istek (RPS) SSL olmayan** |**İstek/saniye (RPS) SSL** |
-| C0 | 250 MB | Shared | 100/12,5  |  15.000 |   7.500 |
+| C0 | 250 MB | Paylaşılan | 100/12,5  |  15.000 |   7.500 |
 | C1 |   1 GB | 1      | 500/62,5  |  38.000 |  20.720 |
 | C2 | 2,5 GB | 2      | 500/62,5  |  41.000 |  37.000 |
 | C3 |   6 GB | 4      | 1000/125  | 100.000 |  90,000 |
@@ -77,14 +77,14 @@ Evet, Redu için Azure önbelleği, Azure Kamu bulutu, Azure Çin 21Vianet bulut
 
 | Bulut   | Redsıs için DNS son eki            |
 |---------|---------------------------------|
-| Ortak  | *. redis.cache.windows.net       |
+| Genel  | *. redis.cache.windows.net       |
 | US Gov  | *. redis.cache.usgovcloudapi.net |
 | Almanya | *. redis.cache.cloudapi.de       |
 | Çin   | *. redis.cache.chinacloudapi.cn  |
 
 Reda için Azure önbelleğini diğer bulutlarla birlikte kullanma hakkında daha fazla bilgi için aşağıdaki bağlantılara bakın.
 
-- [Azure Kamu veritabanları-Redsıs için Azure önbelleği](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
+- [Azure Kamu veritabanları-Redsıs için Azure önbelleği](../azure-government/compare-azure-government-global-azure.md)
 - [Azure Çin 21Vianet bulutu-Redsıs için Azure önbelleği](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)
 

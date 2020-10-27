@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6faac66edaaf047f5ba025e94a1522c2313f9ed
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328573"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546679"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory için Azure özel bağlantısı
 
@@ -53,10 +53,10 @@ Azure Data Factory hizmetine yönelik iletişimler özel bağlantı üzerinden g
 ![Azure Data Factory mimarisine yönelik özel bağlantı diyagramı.](./media/data-factory-private-link/private-link-architecture.png)
 
 Önceki iletişim kanallarının her biri için özel bağlantı hizmetinin etkinleştirilmesi aşağıdaki işlevleri sunar:
-- **Desteklenen**:
+- **Desteklenen** :
    - Tüm giden iletişimleri engelleseniz bile, sanal ağınızda veri fabrikasını yazabilir ve izleyebilirsiniz.
    - Şirket içinde barındırılan tümleştirme çalışma zamanı ve Azure Data Factory hizmeti arasındaki komut iletişimleri, özel bir ağ ortamında güvenli bir şekilde gerçekleştirilebilir. Şirket içinde barındırılan tümleştirme çalışma zamanı ve Azure Data Factory hizmeti arasındaki trafik özel bağlantı aracılığıyla gider. 
-- **Şu anda desteklenmiyor**:
+- **Şu anda desteklenmiyor** :
    - Sağ barındırılan bir tümleştirme çalışma zamanı kullanan etkileşimli yazma, test bağlantısı, klasör listesi ve tablo listesi, şema al ve veri önizleme gibi özel bağlantı üzerinden ilerler.
    - Otomatik olarak barındırılan tümleştirme çalışma zamanının yeni sürümü, otomatik güncelleştirme 'yi etkinleştirirseniz Microsoft Indirme merkezi 'nden otomatik olarak indirilebilir.
 
@@ -67,7 +67,7 @@ Azure Data Factory hizmetine yönelik iletişimler özel bağlantı üzerinden g
 > Bağlı bir hizmet oluşturduğunuzda, kimlik bilgilerinizin bir Azure Anahtar Kasası 'nda depolandığından emin olun. Aksi takdirde, Azure Data Factory özel bağlantıyı etkinleştirdiğinizde kimlik bilgileri çalışmayacaktır.
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Azure Data Factory için özel bağlantı ayarlama
-[Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal), PowerShell veya Azure CLI kullanarak özel uç noktalar oluşturabilirsiniz.
+[Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)kullanarak özel uç noktalar oluşturabilirsiniz.
 
 Ayrıca, Azure portal Azure Data Factory 'nize giderek aşağıda gösterildiği gibi özel bir uç nokta oluşturabilirsiniz:
 

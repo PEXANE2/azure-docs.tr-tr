@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 54109d5889ae2c08f444a3a089386d413bf4262b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9731455edf0afbe4c0768ae40a51316ac71ad94
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650196"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537584"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Redsıs için Azure önbelleği ile bir makine öğrenimi modelini Azure Işlevlerine dağıtma 
 
@@ -23,11 +23,11 @@ Redsıs için Azure önbelleği son derece performans ve ölçeklenebilir bir Az
 > Hem Azure Machine Learning hem de Azure Işlevleri genel kullanıma sunulduğunda, Işlevleri için Machine Learning hizmetinden bir modeli paketleyebilme özelliği önizlemededir.  
 >
 
-## <a name="prerequisites"></a>Ön koşullar
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
-* Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) makalesine bakın.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
-* Çalışma alanınıza kayıtlı eğitilen makine öğrenimi modeli. Bir modeliniz yoksa, görüntü oluşturma öğreticisini kullanın: eğitim ve kayıt yapmak için [modeli eğitme](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml) .
+## <a name="prerequisites"></a>Önkoşullar
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
+* Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](../machine-learning/how-to-manage-workspace.md) makalesine bakın.
+* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* Çalışma alanınıza kayıtlı eğitilen makine öğrenimi modeli. Bir modeliniz yoksa, görüntü oluşturma öğreticisini kullanın: eğitim ve kayıt yapmak için [modeli eğitme](../machine-learning/tutorial-train-models-with-aml.md) .
 
 > [!IMPORTANT]
 > Bu makaledeki kod parçacıkları aşağıdaki değişkenleri ayarlamış olduğunu varsayar:
@@ -36,14 +36,14 @@ Redsıs için Azure önbelleği son derece performans ve ölçeklenebilir bir Az
 > * `model` -Dağıtılacak kayıtlı model.
 > * `inference_config` -Modelin çıkarım yapılandırması.
 >
-> Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
+> Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](../machine-learning/how-to-deploy-and-where.md).
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>Redsıs örneği için Azure önbelleği oluşturma 
 Herhangi bir temel, standart veya Premium önbellek örneğiyle Azure Işlevlerine bir makine öğrenimi modeli dağıtabileceksiniz. Bir önbellek örneği oluşturmak için aşağıdaki adımları izleyin.  
 
-1. Azure portal giriş sayfasına gidin veya kenar çubuğu menüsünü açın ve ardından **kaynak oluştur**' u seçin. 
+1. Azure portal giriş sayfasına gidin veya kenar çubuğu menüsünü açın ve ardından **kaynak oluştur** ' u seçin. 
    
-1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği**' ni seçin.
+1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği** ' ni seçin.
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
    
@@ -51,7 +51,7 @@ Herhangi bir temel, standart veya Premium önbellek örneğiyle Azure Işlevleri
    
    | Ayar      | Önerilen değer  | Açıklama |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS adı** | Genel olarak benzersiz bir ad girin. | Önbellek adı, yalnızca rakam, harf veya kısa çizgi içeren 1 ile 63 karakter arasında bir dize olmalıdır. Ad bir sayı veya harfle başlamalı ve bitmeli ve ardışık kısa çizgi içeremez. Önbellek örneğinizin *ana bilgisayar adı* * \<DNS name> . Redis.cache.Windows.net*olacaktır. | 
+   | **DNS adı** | Genel olarak benzersiz bir ad girin. | Önbellek adı, yalnızca rakam, harf veya kısa çizgi içeren 1 ile 63 karakter arasında bir dize olmalıdır. Ad bir sayı veya harfle başlamalı ve bitmeli ve ardışık kısa çizgi içeremez. Önbellek örneğinizin *ana bilgisayar adı* *\<DNS name> . Redis.cache.Windows.net* olacaktır. | 
    | **Abonelik** | Açılır ve aboneliğinizi seçin. | Redsıs örneği için bu yeni Azure önbelleğinin oluşturulacağı abonelik. | 
    | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Önbelleğinizin ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
    | **Konum** | Açılır ve bir konum seçin. | Önbelleğinizi kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
@@ -71,24 +71,24 @@ Herhangi bir temel, standart veya Premium önbellek örneğiyle Azure Işlevleri
 
 1. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin. 
 
-1.  **Gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
+1. **Gözden geçir + oluştur** ’u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
 
-1. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur**' u seçin.
+1. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur** ' u seçin.
 
-Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış**   sayfasında ilerlemeyi izleyebilirsiniz.  **Durum**    **çalışıyor**olarak görüntülendiğinde, önbellek kullanıma hazırdır. 
+Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış** sayfasında ilerlemeyi izleyebilirsiniz. **Durum** **çalışıyor** olarak görüntülendiğinde, önbellek kullanıma hazırdır. 
 
 ## <a name="prepare-for-deployment"></a>Dağıtım için hazırlanma
 
 Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerekenleri tanımlamanız gerekir. Aşağıdaki liste, bir dağıtım için gereken temel öğeleri açıklar:
 
-* Bir __giriş betiği__. Bu betik istekleri kabul eder, modeli kullanarak isteği puan eder ve sonuçları döndürür.
+* Bir __giriş betiği__ . Bu betik istekleri kabul eder, modeli kullanarak isteği puan eder ve sonuçları döndürür.
 
     > [!IMPORTANT]
     > Giriş betiği modelinize özeldir; gelen istek verilerinin biçimini, modelinizde beklenen verilerin biçimini ve istemcilere döndürülen verilerin biçimini anlamalıdır.
     >
     > İstek verileri modelinize uygun olmayan bir biçimdeyse, komut dosyası bunu kabul edilebilir bir biçime dönüştürebilir. Ayrıca, istemciye döndürmeden önce yanıtı dönüştürebilir.
     >
-    > Varsayılan olarak, işlevler için paketleme sırasında giriş metin olarak değerlendirilir. Girişin ham baytlarını kullanmak istiyorsanız (örneğin, blob Tetikleyicileri için), [ham verileri kabul etmek Için Amlrequest](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-advanced-entry-script#binary-data)' i kullanmanız gerekir.
+    > Varsayılan olarak, işlevler için paketleme sırasında giriş metin olarak değerlendirilir. Girişin ham baytlarını kullanmak istiyorsanız (örneğin, blob Tetikleyicileri için), [ham verileri kabul etmek Için Amlrequest](../machine-learning/how-to-deploy-advanced-entry-script.md#binary-data)' i kullanmanız gerekir.
 
 Run işlevi için bir redo uç noktaya bağlandığından emin olun.
 
@@ -106,12 +106,12 @@ def init():
     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
     model = joblib.load(model_path)
 
-@input_schema('data', NumpyParameterType(input_sample))
+@input_schema('data', NumpyParameterType(input_sample))
 @output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
-        input = azrediscache.get(data)
-        result = model.predict(input)
+        input = azrediscache.get(data)
+        result = model.predict(input)
         data = np.array(json.loads(data))
         result = model.predict(data)
         # You can return any data type, as long as it is JSON serializable.
@@ -121,14 +121,14 @@ def run(data):
         return error
 ```
 
-Giriş betiği hakkında daha fazla bilgi için bkz [. Puanlama kodu tanımlama.](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where?tabs=python#define-an-entry-script)
+Giriş betiği hakkında daha fazla bilgi için bkz [. Puanlama kodu tanımlama.](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-entry-script)
 
 * Giriş betiğini veya modelini çalıştırmak için gereken yardımcı betikler veya Python/Conda paketleri gibi **Bağımlılıklar**
 
-Bu varlıklar bir __çıkarım yapılandırmasında__kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur.
+Bu varlıklar bir __çıkarım yapılandırmasında__ kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur.
 
 > [!IMPORTANT]
-> Azure Işlevleri ile kullanmak üzere bir çıkarım yapılandırması oluştururken, bir [ortam](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) nesnesi kullanmanız gerekir. Özel bir ortam tanımlıyorsanız, bir PIP bağımlılığı olarak >= 1.0.45 sürümü ile azureml-varsayılan değer eklemeniz gerektiğini unutmayın. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerir. Aşağıdaki örnek, bir ortam nesnesi oluşturmayı ve bunu bir çıkarım yapılandırmasıyla kullanmayı gösterir:
+> Azure Işlevleri ile kullanmak üzere bir çıkarım yapılandırması oluştururken, bir [ortam](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) nesnesi kullanmanız gerekir. Özel bir ortam tanımlıyorsanız, bir PIP bağımlılığı olarak >= 1.0.45 sürümü ile azureml-varsayılan değer eklemeniz gerektiğini unutmayın. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerir. Aşağıdaki örnek, bir ortam nesnesi oluşturmayı ve bunu bir çıkarım yapılandırmasıyla kullanmayı gösterir:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -144,12 +144,12 @@ Bu varlıklar bir __çıkarım yapılandırmasında__kapsüllenir. Çıkarım ya
 > inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 > ```
 
-Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments).
+Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](../machine-learning/how-to-use-environments.md).
 
-Çıkarım yapılandırması hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where?tabs=python#define-an-inference-configuration).
+Çıkarım yapılandırması hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-inference-configuration).
 
 > [!IMPORTANT]
-> IŞLEVLERE dağıtım yaparken, bir __dağıtım yapılandırması__oluşturmanız gerekmez.
+> IŞLEVLERE dağıtım yaparken, bir __dağıtım yapılandırması__ oluşturmanız gerekmez.
 
 ## <a name="install-the-sdk-preview-package-for-functions-support"></a>İşlevler desteği için SDK önizleme paketini yükler
 
@@ -161,10 +161,10 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
-Azure Işlevlerine dağıtılan Docker görüntüsünü oluşturmak için, kullanarak ilgilendiğiniz tetikleyici için [azureml. contrib. Functions. Package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) veya belirli paket işlevini kullanın. Aşağıdaki kod parçacığı, model ve çıkarım yapılandırmasından HTTP tetikleyicisi ile yeni bir paket oluşturmayı göstermektedir:
+Azure Işlevlerine dağıtılan Docker görüntüsünü oluşturmak için, kullanarak ilgilendiğiniz tetikleyici için [azureml. contrib. Functions. Package](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) veya belirli paket işlevini kullanın. Aşağıdaki kod parçacığı, model ve çıkarım yapılandırmasından HTTP tetikleyicisi ile yeni bir paket oluşturmayı göstermektedir:
 
 > [!NOTE]
-> Kod parçacığı, `model` kayıtlı bir model içerdiğini ve `inference_config` çıkarım ortamının yapılandırmasını içeren olduğunu varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
+> Kod parçacığı, `model` kayıtlı bir model içerdiğini ve `inference_config` çıkarım ortamının yapılandırmasını içeren olduğunu varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](../machine-learning/how-to-deploy-and-where.md).
 
 ```python
 from azureml.contrib.functions import package
@@ -178,7 +178,7 @@ print(model_package.location)
 Ne zaman `show_output=True` , Docker Build işleminin çıktısı gösterilir. İşlem tamamlandıktan sonra görüntü, çalışma alanınızın Azure Container Registry oluşturulur. Görüntü derlendikten sonra Azure Container Registry konum görüntülenir. Döndürülen konum biçimindedir `<acrinstance>.azurecr.io/package@sha256:<imagename>` .
 
 > [!NOTE]
-> İşlevlerin paketlenmesi Şu anda HTTP tetikleyicilerini, blob Tetikleyicileri ve Service Bus tetikleyicilerini desteklemektedir. Tetikleyiciler hakkında daha fazla bilgi için bkz. [Azure işlevleri bağlamaları](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns).
+> İşlevlerin paketlenmesi Şu anda HTTP tetikleyicilerini, blob Tetikleyicileri ve Service Bus tetikleyicilerini desteklemektedir. Tetikleyiciler hakkında daha fazla bilgi için bkz. [Azure işlevleri bağlamaları](../azure-functions/functions-bindings-storage-blob-trigger.md#blob-name-patterns).
 
 > [!IMPORTANT]
 > Görüntü dağıtımında kullanılan konum bilgilerini kaydedin.
@@ -209,7 +209,7 @@ Ne zaman `show_output=True` , Docker Build işleminin çıktısı gösterilir. �
     }
     ```
 
-    __Kullanıcı adı__ ve __parolalardan__biri için değeri kaydedin.
+    __Kullanıcı adı__ ve __parolalardan__ biri için değeri kaydedin.
 
 1. Hizmeti dağıtmaya yönelik bir kaynak grubunuz veya App Service planınız yoksa, aşağıdaki komutlar her ikisinin de nasıl oluşturulacağını gösterir:
 
@@ -288,7 +288,7 @@ Bu noktada, işlev uygulaması görüntüyü yüklemeye başlar.
 Şimdi Azure Işlevi HTTP tetikleyicimizi çalıştırıp test edeceğiz.
 
 1. Azure portal Azure Işlev uygulamanıza gidin.
-1. Geliştirici altında **kod + test**' i seçin. 
+1. Geliştirici altında **kod + test** ' i seçin. 
 1. Sağ taraftaki **giriş** sekmesini seçin. 
 1. **Çalıştır** düğmesine tıklayarak Azure işlevi http tetikleyicisini test edin. 
 
@@ -305,18 +305,17 @@ Aksi takdirde, hızlı başlangıç ile işiniz bittiğinde, ücretlerden kaçı
 
 ### <a name="to-delete-a-resource-group"></a>Kaynak grubunu silmek için
 
-1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları** ’nı seçin.
 
-2. **Ada göre filtrele...** kutusuna kaynak grubunuzun adını girin. Sonuç listesindeki kaynak grubunuzda **...** düğmesini ve sonra **Kaynak grubunu sil**’i seçin.
+2. **Ada göre filtrele...** kutusuna kaynak grubunuzun adını girin. Sonuç listesindeki kaynak grubunuzda **...** düğmesini ve sonra **Kaynak grubunu sil** ’i seçin.
 
-Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve ardından **Sil**’i seçin.
+Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve ardından **Sil** ’i seçin.
 
 Birkaç dakika sonra kaynak grubu ve bu gruptaki kaynakların tümü silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-* [Redsıs Için Azure önbelleği](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview) hakkında daha fazla bilgi edinin
-* [İşlevler belgelerindeki](/azure/azure-functions/functions-create-function-linux-custom-image) işlevlerinizi uygulamanızı yapılandırma hakkında bilgi edinin.
-* [API Başvurusu](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) 
-* [Redsıs Için Azure önbelleği kullanan bir Python uygulaması](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-python-get-started) oluşturma
-
+* [Redsıs Için Azure önbelleği](./cache-overview.md) hakkında daha fazla bilgi edinin
+* [İşlevler belgelerindeki](../azure-functions/functions-create-function-linux-custom-image.md) işlevlerinizi uygulamanızı yapılandırma hakkında bilgi edinin.
+* [API Başvurusu](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
+* [Redsıs Için Azure önbelleği kullanan bir Python uygulaması](./cache-python-get-started.md) oluşturma

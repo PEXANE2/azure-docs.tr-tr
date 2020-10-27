@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: c163b7325cb4e039ddcfee95a39b82b4cb258b3c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f47a23a3b95975d98d3825bc5b14ed0522102a0c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461303"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547648"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı'nı kullanarak Azure'ı ITSM araçlarına bağlama
 
@@ -50,7 +50,7 @@ Bir bağlantı oluşturabilmeniz için önce ITSM Bağlayıcısı çözümünü 
 
    ![Azure yeni kaynak](media/itsmc-overview/azure-add-new-resource.png)
 
-2. Market 'te **BT hizmet yönetimi Bağlayıcısı** arayın ve **Oluştur**' a tıklayın.
+2. Market 'te **BT hizmet yönetimi Bağlayıcısı** arayın ve **Oluştur** ' a tıklayın.
 
    ![ISMC çözümü Ekle](media/itsmc-overview/add-itsmc-solution.png)
 
@@ -65,7 +65,7 @@ Bir bağlantı oluşturabilmeniz için önce ITSM Bağlayıcısı çözümünü 
    >[!NOTE]
    >Microsoft Operations Management Suite (OMS) ile Azure Izleyici arasında devam eden geçişin bir parçası olarak, OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
 
-5. **Oluştur**’a tıklayın.
+5. **Oluştur** 'a tıklayın.
 
 Çözüm kaynağı dağıtıldığında, pencerenin sağ üst kısmında bir bildirim görüntülenir.
 
@@ -85,12 +85,12 @@ Bağlanmakta olduğunuz ıSM ürününe bağlı olarak, aşağıdaki adımları 
 
 ITSM araçlarınızı önceden doldurduktan sonra bağlantı oluşturmak için aşağıdaki adımları izleyin:
 
-1. **Tüm kaynaklara**gidin, **ServiceDesk (yourçalışmaalanıadı)** öğesini arayın.
-2. Sol bölmedeki **çalışma alanı VERI kaynakları** altında **ITSM bağlantıları**' na tıklayın.
+1. **Tüm kaynaklara** gidin, **ServiceDesk (yourçalışmaalanıadı)** öğesini arayın.
+2. Sol bölmedeki **çalışma alanı VERI kaynakları** altında **ITSM bağlantıları** ' na tıklayın.
    ![ITSM bağlantıları](media/itsmc-overview/itsm-connections.png)
 
    Bu sayfada bağlantıların listesi görüntülenir.
-3. **Bağlantı Ekle**'ye tıklayın.
+3. **Bağlantı Ekle** 'ye tıklayın.
 
    ![ITSM bağlantısı ekle](media/itsmc-overview/add-new-itsm-connection.png)
 
@@ -122,8 +122,8 @@ Eylem grupları, Azure uyarılarınız için eylemleri tetiklemenin modüler ve 
 
 Aşağıdaki yordamı kullanın:
 
-1. Azure portal,  **İzle**' ye tıklayın.
-2. Sol bölmede  **eylem grupları**' na tıklayın. **Eylem grubu Ekle** penceresi görüntülenir.
+1. Azure portal,  **İzle** ' ye tıklayın.
+2. Sol bölmede  **eylem grupları** ' na tıklayın. **Eylem grubu Ekle** penceresi görüntülenir.
 
     ![Eylem Grupları](media/itsmc-overview/action-groups.png)
 
@@ -131,7 +131,7 @@ Aşağıdaki yordamı kullanın:
 
     ![Eylem grupları ayrıntısı](media/itsmc-overview/action-groups-details.png)
 
-4. Eylemler listesinde, **eylem türü**için açılan menüden **ıtssm** ' ı seçin. Eylem için bir **ad** girin ve **Ayrıntıları Düzenle**' ye tıklayın.
+4. Eylemler listesinde, **eylem türü** için açılan menüden **ıtssm** ' ı seçin. Eylem için bir **ad** girin ve **Ayrıntıları Düzenle** ' ye tıklayın.
 5. Log Analytics çalışma alanınızın bulunduğu **aboneliği** seçin. **Bağlantı** adını (ITSM Bağlayıcısı adınız) ve ardından çalışma alanınızın adını seçin. Örneğin, "MyITSMMConnector (MyWorkspace)."
 
     ![ITSM eylemi ayrıntıları](media/itsmc-overview/itsm-action-details.png)
@@ -140,7 +140,10 @@ Aşağıdaki yordamı kullanın:
 
 7. Sabit değerlerle Box alanlarını dolduracak şekilde, "özel şablon kullan" onay kutusunu işaretlemeniz, aksi takdirde, açılan listeden var olan bir [şablonu](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) kullanmayı seçin ve şablon alanlarını sabit değerlerle doldurun.
 
-8. **Tamam**’a tıklayın.
+8. Her yapılandırma öğesi **için her yapılandırma öğesi için bireysel çalışma öğeleri oluştur** onay kutusunu seçerek her yapılandırma öğesinin kendi iş öğesi olacaktır. Her yapılandırma öğesi için bir iş öğesi olacağı anlamına gelir ve oluşturulacak uyarılara göre güncelleştirilir.
+Devre dışı bırak onay kutusu ' nu seçerseniz **her bir yapılandırma öğesi için bireysel çalışma öğeleri oluştur** her uyarı yeni bir iş öğesi oluşturur, yani yapılandırma öğesi başına 1 ' den fazla uyarı olabilir.
+
+9. **Tamam** ’a tıklayın.
 
 Bir Azure uyarı kuralı oluştururken/düzenlenirken, bir ıTSM eylemi olan bir eylem grubu kullanın. Uyarı tetiklendiğinde, çalışma öğesi ıTSM aracında oluşturulur/güncelleştirilir.
 
@@ -242,7 +245,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Planlanan bitiş tarihi
 - Çalışma başlangıç tarihi
 - Çalışma bitiş tarihi
-- Description
+- Açıklama
 - Bilgisayar
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow olayı için çıkış verileri
@@ -289,7 +292,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | PlannedEndDate_t  |   Planlanan bitiş tarihi |
 | WorkStartDate_t  | Gerçek başlangıç tarihi |
 | WorkEndDate_t | Gerçek bitiş tarihi|
-| Description_s | Description |
+| Description_s | Açıklama |
 | Bilgisayar  | Yapılandırma öğesi |
 
 
@@ -303,7 +306,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 
 2. ServiceNow 'daki veriler Log Analytics ile eşitlenmediği için ServiceNow örneğinin uyku modunda olmadığından emin olun. ServiceNow dev örnekleri bazen uzun bir süre boşta kaldığında uyku moduna geçebilir. Aksi takdirde, sorunu bildirin.
 3. Log Analytics uyarılar harekete geçse ancak ıTSM ürününde iş öğeleri oluşturulmadıysa veya yapılandırma öğeleri, iş öğelerine ya da diğer genel bilgiler için oluşturulmadıysa veya bağlanmadıysa, aşağıdaki yerlere bakın:
-   -  ISMC: çözüm, bağlantıların/iş öğelerinin/bilgisayarların, vb. bir özetini gösterir. **Bağlayıcı durumunu**gösteren kutucuğa tıklayın ve bu, arama ile Ilgili sorgu **günlüğü**  için sizi yönlendirir. Daha fazla bilgi için LogType_S hata ile günlük kayıtlarına bakın.
+   -  ISMC: çözüm, bağlantıların/iş öğelerinin/bilgisayarların, vb. bir özetini gösterir. **Bağlayıcı durumunu** gösteren kutucuğa tıklayın ve bu, arama ile Ilgili sorgu **günlüğü**  için sizi yönlendirir. Daha fazla bilgi için LogType_S hata ile günlük kayıtlarına bakın.
    - **Günlük arama** sayfası: sorgu ServiceDeskLog_CL kullanarak doğrudan hataları/ilgili bilgileri görüntüleyin `*` `*` .
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Web uygulaması dağıtımı Service Manager sorunlarını giderme

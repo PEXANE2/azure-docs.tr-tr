@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: b01e7ca9ff05b6eed51e1c454b8064ab28bda0d5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0fda0b659dd2500e811fac1f53c99a9987276185
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223064"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537482"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Redsıs ağ yalıtımı seçenekleri için Azure önbelleği 
 Bu makalede, gereksinimlerinize uygun en iyi ağ yalıtımı çözümünü nasıl belirleyebileceğinizi öğreneceksiniz. Azure özel bağlantısı, Azure sanal ağ (VNet) ekleme ve Azure Güvenlik Duvarı kurallarının avantajları ve sınırlamaları ile ilgili temel bilgileri inceleyeceğiz.  
@@ -21,7 +21,7 @@ Azure özel bağlantısı, bir sanal ağdan Azure PaaS hizmetlerine özel bağla
 
 ### <a name="advantages"></a>Avantajlar
 * Redsıs örnekleri için temel, standart ve Premium Azure önbelleğinde desteklenir. 
-* [Azure özel bağlantısı](/azure/private-link/private-link-overview)' nı kullanarak, sanal ağ Içindeki bir Azure önbellek örneğine, sanal ağ içindeki bir alt ağda özel bir IP adresi atanmış özel bir uç nokta aracılığıyla bağlanabilirsiniz. Bununla birlikte, önbellek örnekleri hem VNet içinde hem de genel olarak kullanılabilir.  
+* [Azure özel bağlantısı](../private-link/private-link-overview.md)' nı kullanarak, sanal ağ Içindeki bir Azure önbellek örneğine, sanal ağ içindeki bir alt ağda özel bir IP adresi atanmış özel bir uç nokta aracılığıyla bağlanabilirsiniz. Bununla birlikte, önbellek örnekleri hem VNet içinde hem de genel olarak kullanılabilir.  
 * Özel bir uç nokta oluşturulduktan sonra, genel ağa erişim bayrağı aracılığıyla kısıtlanabilir `publicNetworkAccess` . Bu bayrak `Enabled` Varsayılan olarak olarak ayarlanır ve önbelleğe hem genel hem de özel bağlantı erişimine izin verme seçeneği sunar. Olarak ayarlanırsa `Disabled` , yalnızca özel bağlantı erişimine izin verir. Değerini `Disabled` BIR Patch isteği ile olarak ayarlayabilirsiniz. Daha fazla bilgi için bkz. [Azure özel bağlantısı (Önizleme) Ile Reda Için Azure önbelleği](cache-private-link.md). 
 * Tüm dış önbellek bağımlılıkları VNet 'in NSG kurallarını etkilemez.
 
@@ -51,7 +51,7 @@ VNet, Azure 'daki özel ağınız için temel yapı taşdır. VNet birçok Azure
 
 
 ## <a name="azure-firewall-rules"></a>Azure Güvenlik duvarı kuralları
-[Azure Güvenlik Duvarı](/azure/firewall/overview) , Azure VNET kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmetidir. Yerleşik yüksek kullanılabilirliğe sahip ve Kısıtlanmamış bulut ölçeklenebilirliğine sahip bir hizmet olarak tam durum bilgisi olmayan bir güvenlik duvarıdır. Aboneliklerle sanal ağlarda uygulama ve ağ bağlantısı ilkelerini merkezi olarak oluşturabilir, zorlayabilir ve günlüğe alabilirsiniz.  
+[Azure Güvenlik Duvarı](../firewall/overview.md) , Azure VNET kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmetidir. Yerleşik yüksek kullanılabilirliğe sahip ve Kısıtlanmamış bulut ölçeklenebilirliğine sahip bir hizmet olarak tam durum bilgisi olmayan bir güvenlik duvarıdır. Aboneliklerle sanal ağlarda uygulama ve ağ bağlantısı ilkelerini merkezi olarak oluşturabilir, zorlayabilir ve günlüğe alabilirsiniz.  
 
 ### <a name="advantages"></a>Avantajlar
 * Güvenlik duvarı kuralları yapılandırıldığında, yalnızca belirtilen IP adresi aralıklarından gelen istemci bağlantıları önbelleğe bağlanabilir. Güvenlik duvarı kuralları yapılandırılmış olsa bile, Redsıs izleme sistemlerine yönelik Azure önbelleğinden gelen bağlantılara her zaman izin verilir. Tanımladığınız NSG kurallarına da izin verilir.  
@@ -63,4 +63,4 @@ VNet, Azure 'daki özel ağınız için temel yapı taşdır. VNet birçok Azure
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Redsıs örneği Için Premium bir Azure önbelleği Için VNET 'e eklenmiş önbelleğin](cache-how-to-premium-vnet.md)nasıl yapılandırılacağını öğrenin.  
 * [Redsıs katmanları için tüm Azure önbelleği için güvenlik duvarı kurallarını](cache-configure.md#firewall)yapılandırmayı öğrenin. 
-* [Özel uç noktaları redsıs katmanları için tüm Azure önbelleğinde yapılandırmayı](cache-private-link.md)öğrenin. 
+* [Özel uç noktaları redsıs katmanları için tüm Azure önbelleğinde yapılandırmayı](cache-private-link.md)öğrenin.

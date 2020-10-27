@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 583a5bcac71265596127c7860c0509963f76b2fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6abdb3cc6981a4fbdd52b88a75457c37709597f5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080950"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534337"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Data Lake Storage 1. verileri çözümlemek için HDInsight Spark kümesini kullanma
 
@@ -23,7 +23,7 @@ Bu makalede, bir Data Lake Storage hesabındaki verileri okuyan bir işi çalı�
 
 * Azure Data Lake Storage 1. hesabı. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](../../data-lake-store/data-lake-store-get-started-portal.md)yönergelerini izleyin.
 
-* Depolama alanı olarak Data Lake Storage 1. Azure HDInsight Spark küme. [Hızlı başlangıç: HDInsight 'ta kümeleri ayarlama bölümündeki](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)yönergeleri izleyin.
+* Depolama alanı olarak Data Lake Storage 1. Azure HDInsight Spark küme. [Hızlı başlangıç: HDInsight 'ta kümeleri ayarlama bölümündeki](../hdinsight-hadoop-provision-linux-clusters.md)yönergeleri izleyin.
 
 ## <a name="prepare-the-data"></a>Verileri hazırlama
 
@@ -58,13 +58,13 @@ Ek depolama alanı olarak Data Lake Storage ve varsayılan depolama alanı olara
     Copy Completed. 1 file copied.
     ```
 
-    Veri dosyası (**HVAC.csv**) Data Lake Storage hesabındaki **/HVAC** klasörü altına kopyalanacak.
+    Veri dosyası ( **HVAC.csv** ) Data Lake Storage hesabındaki **/HVAC** klasörü altına kopyalanacak.
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Data Lake Storage 1. ile HDInsight Spark kümesi kullanma
 
-1. [Azure Portal](https://portal.azure.com/), başlangıç panosundan, Apache Spark kümenizin kutucuğuna tıklayın (başlangıç panosuna sabitlediğiniz takdirde). Ayrıca, tüm HDInsight kümelerine **gözatabileceğiniz**kümenize da gidebilirsiniz  >  **HDInsight Clusters**.
+1. [Azure Portal](https://portal.azure.com/), başlangıç panosundan, Apache Spark kümenizin kutucuğuna tıklayın (başlangıç panosuna sabitlediğiniz takdirde). Ayrıca, tüm HDInsight kümelerine **gözatabileceğiniz** kümenize da gidebilirsiniz  >  **HDInsight Clusters** .
 
-2. Spark kümesi dikey penceresinden **Hızlı Bağlantılar**’a ve sonra **Küme Panosu** dikey penceresinden **Jupyter Not Defteri**’ne tıklayın. İstenirse, küme için yönetici kimlik bilgilerini girin.
+2. Spark kümesi dikey penceresinden **Hızlı Bağlantılar** ’a ve sonra **Küme Panosu** dikey penceresinden **Jupyter Not Defteri** ’ne tıklayın. İstenirse, küme için yönetici kimlik bilgilerini girin.
 
    > [!NOTE]  
    > Aşağıdaki URL’yi tarayıcınızda açarak da Jupyter Notebook’a ulaşabilirsiniz. **CLUSTERNAME** değerini kümenizin adıyla değiştirin:
@@ -105,7 +105,7 @@ Ek depolama alanı olarak Data Lake Storage ve varsayılan depolama alanı olara
         adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
         ```
 
-     Boş bir hücrede, aşağıdaki kod örneğini yapıştırın, **MYDATALAKESTORE** değerini Data Lake Storage hesap adınızla değiştirin ve **SHIFT + enter**tuşlarına basın. Bu kod örneği, verileri **hvac** adlı geçici bir tabloya kaydeder.
+     Boş bir hücrede, aşağıdaki kod örneğini yapıştırın, **MYDATALAKESTORE** değerini Data Lake Storage hesap adınızla değiştirin ve **SHIFT + enter** tuşlarına basın. Bu kod örneği, verileri **hvac** adlı geçici bir tabloya kaydeder.
 
       ```scala
       # Load the data. The path below assumes Data Lake Storage is   default storage for the Spark cluster
@@ -138,7 +138,7 @@ Ek depolama alanı olarak Data Lake Storage ve varsayılan depolama alanı olara
 
      ![Sorgu sonucunun alan grafiği](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "Sorgu sonucunun alan grafiği")
 
-8. Uygulamayı çalıştırmayı tamamladıktan sonra kaynakları serbest bırakmak için not defterini kapatmanız gerekir. Bunu yapmak için not defterindeki **Dosya** menüsünde **Kapat ve Durdur**’a tıklayın. Bunun yapılması not defterini kapatır.
+8. Uygulamayı çalıştırmayı tamamladıktan sonra kaynakları serbest bırakmak için not defterini kapatmanız gerekir. Bunu yapmak için not defterindeki **Dosya** menüsünde **Kapat ve Durdur** ’a tıklayın. Bunun yapılması not defterini kapatır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

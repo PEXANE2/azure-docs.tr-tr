@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cdcc60e6eeec22e202d670c3fc057711bd432a6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73241201"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545455"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Storm Apache Hadoop ini yazma
 
@@ -21,7 +21,7 @@ Bu öğreticide, HDInsight üzerinde Apache Storm tarafından kullanılan, Apach
 
 Bu belgede kullanılan örnek topoloji, HDInsight üzerinde fırtınası ile birlikte gelen bileşenlere bağımlıdır. Diğer Apache Storm kümeleriyle birlikte kullanıldığında, değişikliğin Azure Data Lake Storage çalışmasını gerektirebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Kümeyi betik eylemiyle yapılandırma
@@ -30,9 +30,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Çıktı verilerini görüntüle
 > * Topolojiyi durdurma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks)
+* [Java geliştirici seti (JDK) sürüm 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
 
@@ -160,7 +160,7 @@ Bu betiği kümenizle birlikte kullanma hakkında bilgi için bkz. [betik eyleml
     hdfs.url: wasbs:///
     ```
 
-    Dosyayı kaydetmek için __CTRL + X__, sonra __Y__ve son olarak __ENTER__tuşlarını kullanın. Bu dosyadaki değerler, depolama URL 'sini ve verilerin yazıldığı dizin adını ayarlar.
+    Dosyayı kaydetmek için __CTRL + X__ , sonra __Y__ ve son olarak __ENTER__ tuşlarını kullanın. Bu dosyadaki değerler, depolama URL 'sini ve verilerin yazıldığı dizin adını ayarlar.
 
 1. Topolojiyi başlatmak için aşağıdaki komutu kullanın:
 
@@ -205,9 +205,9 @@ Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu sileb
 
 Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
-1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve sonra __Kaynak Grupları__'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
+1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve sonra __Kaynak Grupları__ 'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
 2. Silinecek kaynak grubunu bulun ve sonra listenin sağ tarafındaki __Daha fazla__ düğmesine (...) sağ tıklayın.
-3. __Kaynak grubunu sil__'i seçip onaylayın.
+3. __Kaynak grubunu sil__ 'i seçip onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

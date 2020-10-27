@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 45b9c158aca85d62b02d65282876d5e40129878f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ba1d1e15b1dbb3efb24219b6c09a6827e701d46
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081075"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546084"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache ambarı 'nı kullanarak HDInsight kümelerini yönetme REST API
 
@@ -29,7 +29,7 @@ Apache ambarı, [REST API 'leri](https://github.com/apache/ambari/blob/trunk/amb
 
 * HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* Windows 10 ' da Ubuntu üzerinde Bash.  Bu makaledeki örneklerde, Windows 10 ' da bash kabuğu kullanılır. Yükleme adımları için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](https://docs.microsoft.com/windows/wsl/install-win10) .  Diğer [UNIX kabukları](https://www.gnu.org/software/bash/) de çalışacaktır.  Bazı küçük değişikliklere sahip örnekler, Windows komut istemi üzerinde çalışabilir.  Ya da Windows PowerShell 'i kullanabilirsiniz.
+* Windows 10 ' da Ubuntu üzerinde Bash.  Bu makaledeki örneklerde, Windows 10 ' da bash kabuğu kullanılır. Yükleme adımları için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](/windows/wsl/install-win10) .  Diğer [UNIX kabukları](https://www.gnu.org/software/bash/) de çalışacaktır.  Bazı küçük değişikliklere sahip örnekler, Windows komut istemi üzerinde çalışabilir.  Ya da Windows PowerShell 'i kullanabilirsiniz.
 
 * bir komut satırı JSON işlemcisi olan JQ.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) ..
 
@@ -37,11 +37,11 @@ Apache ambarı, [REST API 'leri](https://github.com/apache/ambari/blob/trunk/amb
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambarı REST API 'SI için temel Tekdüzen Kaynak tanımlayıcısı
 
- HDInsight üzerinde REST API ambarı için temel Tekdüzen Kaynak tanımlayıcısı (URI), `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` burada `CLUSTERNAME` kümenizin adıdır.  URI 'Lerinde küme adları **büyük/küçük harfe duyarlıdır**.  URI () öğesinin tam etki alanı adı (FQDN) bölümünde küme adı `CLUSTERNAME.azurehdinsight.net` büyük/küçük harfe duyarsız olsa da, URI 'deki diğer oluşumlar büyük/küçük harfe duyarlıdır.
+ HDInsight üzerinde REST API ambarı için temel Tekdüzen Kaynak tanımlayıcısı (URI), `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` burada `CLUSTERNAME` kümenizin adıdır.  URI 'Lerinde küme adları **büyük/küçük harfe duyarlıdır** .  URI () öğesinin tam etki alanı adı (FQDN) bölümünde küme adı `CLUSTERNAME.azurehdinsight.net` büyük/küçük harfe duyarsız olsa da, URI 'deki diğer oluşumlar büyük/küçük harfe duyarlıdır.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulama
 
-HDInsight üzerinde ambarı 'na bağlanmak için HTTPS gerekir. Küme oluşturma sırasında verdiğiniz yönetici hesabı adını (varsayılan **yönetici**) ve parolayı kullanın.
+HDInsight üzerinde ambarı 'na bağlanmak için HTTPS gerekir. Küme oluşturma sırasında verdiğiniz yönetici hesabı adını (varsayılan **yönetici** ) ve parolayı kullanın.
 
 Yerine Kurumsal Güvenlik Paketi kümeleri için `admin` , gibi tam bir Kullanıcı adı kullanın `username@domain.onmicrosoft.com` .
 
@@ -87,7 +87,7 @@ $clusterName
 
 ### <a name="parsing-json-data"></a>JSON verilerini ayrıştırma
 
-Aşağıdaki örnek, JSON yanıt belgesini ayrıştırmak ve sonuçlardan yalnızca bilgileri göstermek için [JQ](https://stedolan.github.io/jq/) veya [ConvertFrom-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) ' u kullanır `health_report` .
+Aşağıdaki örnek, JSON yanıt belgesini ayrıştırmak ve sonuçlardan yalnızca bilgileri göstermek için [JQ](https://stedolan.github.io/jq/) veya [ConvertFrom-JSON](/powershell/module/microsoft.powershell.utility/convertfrom-json) ' u kullanır `health_report` .
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" \
@@ -253,7 +253,7 @@ Dönüş değeri aşağıdaki örneklerden birine benzerdir:
     Dönüş değeri öğesine benzerdir `/clusters/CLUSTERNAME/` . Bu değer Data Lake Storage hesabı içindeki bir yoldur. Bu yol, kümenin uyumlu dosya sisteminin köküdür.  
 
 > [!NOTE]  
-> [Azure PowerShell](/powershell/azure/) tarafından sunulan [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) cmdlet 'i, kümenin depolama bilgilerini de döndürür.
+> [Azure PowerShell](/powershell/azure/) tarafından sunulan [Get-AzHDInsightCluster](/powershell/module/az.hdinsight/get-azhdinsightcluster) cmdlet 'i, kümenin depolama bilgilerini de döndürür.
 
 ### <a name="get-all-configurations"></a>Tüm konfigürasyonları al
 

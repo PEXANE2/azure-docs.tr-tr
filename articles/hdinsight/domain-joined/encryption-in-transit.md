@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 25e38beb561ee954db2987643775f3a3c6e05737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85382ecd627ec8afc63a85de0debd98f94a89849
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89668774"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544894"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Azure HDInsight için iletim sırasında IPSec şifrelemesi
 
@@ -27,7 +27,7 @@ Azure HDInsight, kurumsal verilerinizi güvenli hale getirmek için çeşitli g�
 
 Bekleyen şifreleme, Azure depolama hesaplarında sunucu tarafı şifrelemesi ve HDInsight kümenizin bir parçası olan Azure VM 'lerinde disk şifrelemesi kapsamında yer alır.
 
-HDInsight 'ta geçiş sırasında verilerin şifrelenmesi, küme ağ geçitlerini ve küme düğümleri arasında [Internet Protokolü güvenliği (IPSec)](https://en.wikipedia.org/wiki/IPsec) Için [Aktarım KATMANı güvenliği (TLS)](https://docs.microsoft.com/azure/hdinsight/transport-layer-security) ile elde edilir. IPSec isteğe bağlı olarak tüm baş düğümler, çalışan düğümleri, kenar düğümleri ve Zookeeper düğümleri arasında etkinleştirilebilir. Windows tabanlı VM 'Ler ve kümedeki diğer Linux tabanlı düğümler olan ağ geçidi veya [kimlik Aracısı](https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker) düğümleri arasındaki trafik için etkin değildir.
+HDInsight 'ta geçiş sırasında verilerin şifrelenmesi, küme ağ geçitlerini ve küme düğümleri arasında [Internet Protokolü güvenliği (IPSec)](https://en.wikipedia.org/wiki/IPsec) Için [Aktarım KATMANı güvenliği (TLS)](../transport-layer-security.md) ile elde edilir. IPSec isteğe bağlı olarak tüm baş düğümler, çalışan düğümleri, kenar düğümleri ve Zookeeper düğümleri arasında etkinleştirilebilir. Windows tabanlı VM 'Ler ve kümedeki diğer Linux tabanlı düğümler olan ağ geçidi veya [kimlik Aracısı](./identity-broker.md) düğümleri arasındaki trafik için etkin değildir.
 
 ## <a name="enable-encryption-in-transit"></a>İletimde şifrelemeyi etkinleştir
 

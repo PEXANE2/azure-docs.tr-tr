@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: c1890ab9f99999c88e28eb9a76d6270fa08fb87c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: c480de6da0427b8eda212e02e08c7b3f5426941c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996665"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534150"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM 'de Oracle altın kapısı uygulama 
 
@@ -24,7 +24,7 @@ Başlamadan önce Azure CLI’nin yüklü olduğundan emin olun. Daha fazla bilg
 
 ## <a name="prepare-the-environment"></a>Ortamı hazırlama
 
-Oracle altın kapısı yüklemesini gerçekleştirmek için aynı Kullanılabilirlik kümesinde iki Azure VM oluşturmanız gerekir. VM 'Leri oluşturmak için kullandığınız Market görüntüsü **Oracle: Oracle-Database-Ee: 12.1.0.2: latest**.
+Oracle altın kapısı yüklemesini gerçekleştirmek için aynı Kullanılabilirlik kümesinde iki Azure VM oluşturmanız gerekir. VM 'Leri oluşturmak için kullandığınız Market görüntüsü **Oracle: Oracle-Database-Ee: 12.1.0.2: latest** .
 
 Ayrıca, UNIX Düzenleyicisi VI hakkında bilgi sahibi olmanız ve X11 (X Windows) ile ilgili temel bilgiye sahip olmanız gerekir.
 
@@ -347,7 +347,7 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>Altın Kapı yazılımını indirin
 Oracle altın kapısı yazılımını indirmek ve hazırlamak için aşağıdaki adımları izleyin:
 
-1. [Oracle altın kapısı indirme sayfasından](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html) **fbo_ggs_Linux_x64_shiphome.zip** dosyasını indirin. **Oracle Linux x86-64 Için Oracle GoldenGate 12. x. x. x**indirme başlığı altında, indirilecek bir. zip dosyaları kümesi olmalıdır.
+1. [Oracle altın kapısı indirme sayfasından](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html) **fbo_ggs_Linux_x64_shiphome.zip** dosyasını indirin. **Oracle Linux x86-64 Için Oracle GoldenGate 12. x. x. x** indirme başlığı altında, indirilecek bir. zip dosyaları kümesi olmalıdır.
 
 2. . Zip dosyalarını istemci bilgisayarınıza indirdikten sonra, dosyaları sanal makinenize kopyalamak için güvenli kopyalama Protokolü 'Nü (SCP) kullanın:
 
@@ -389,9 +389,9 @@ Bu isteğe bağlı bir adımdır. Linux istemcisi kullanıyorsanız veya zaten X
 3. PuTTY anahtar Oluşturucu:
 
    - Bir anahtar oluşturmak için **Oluştur** düğmesini seçin.
-   - Anahtarın içeriğini kopyalayın (**CTRL + C**).
+   - Anahtarın içeriğini kopyalayın ( **CTRL + C** ).
    - **Özel anahtarı kaydet** düğmesini seçin.
-   - Görüntülenen uyarıyı yoksayın ve sonra **Tamam**' ı seçin.
+   - Görüntülenen uyarıyı yoksayın ve sonra **Tamam** ' ı seçin.
 
    ![PuTTY anahtar Oluşturucu sayfasının ekran görüntüsü](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -403,21 +403,21 @@ Bu isteğe bağlı bir adımdır. Linux istemcisi kullanıyorsanız veya zaten X
    $ cd .ssh
    ```
 
-5. **Authorized_keys**adlı bir dosya oluşturun. Anahtarın içeriğini bu dosyaya yapıştırın ve dosyayı kaydedin.
+5. **Authorized_keys** adlı bir dosya oluşturun. Anahtarın içeriğini bu dosyaya yapıştırın ve dosyayı kaydedin.
 
    > [!NOTE]
    > Anahtarın dizeyi içermesi gerekir `ssh-rsa` . Ayrıca, anahtarın içeriği tek satırlık bir metin olmalıdır.
    >  
 
-6. PuTTY’yi başlatın. **Kategori** bölmesinde **bağlantı**  >  **SSH**  >  **kimlik doğrulaması**' nı seçin. **Kimlik doğrulaması Için özel anahtar dosyası** kutusunda, daha önce oluşturduğunuz anahtara gidin.
+6. PuTTY’yi başlatın. **Kategori** bölmesinde **bağlantı**  >  **SSH**  >  **kimlik doğrulaması** ' nı seçin. **Kimlik doğrulaması Için özel anahtar dosyası** kutusunda, daha önce oluşturduğunuz anahtara gidin.
 
    ![Özel anahtar ayarla sayfasının ekran görüntüsü](./media/oracle-golden-gate/setprivatekey.png)
 
-7. **Kategori** bölmesinde **bağlantı**  >  **SSH**  >  **X11**' ı seçin. Ardından **X11 Iletmeyi etkinleştir** kutusunu seçin.
+7. **Kategori** bölmesinde **bağlantı**  >  **SSH**  >  **X11** ' ı seçin. Ardından **X11 Iletmeyi etkinleştir** kutusunu seçin.
 
    ![Enable X11 sayfasının ekran görüntüsü](./media/oracle-golden-gate/enablex11.png)
 
-8. **Kategori** bölmesinde **oturum**' a gidin. Ana bilgisayar bilgilerini girip **Aç**' ı seçin.
+8. **Kategori** bölmesinde **oturum** ' a gidin. Ana bilgisayar bilgilerini girip **Aç** ' ı seçin.
 
    ![Oturum sayfasının ekran görüntüsü](./media/oracle-golden-gate/puttysession.png)
 
@@ -442,19 +442,19 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
 
 4. Envanter dizinini değiştirin ve ardından devam etmek için **İleri** ' yi seçin.
 
-   ![Yükleme Seçme sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![Yükleme dizinini gösteren yükleme Seç sayfasının ekran görüntüsü.](./media/oracle-golden-gate/golden_gate_install_03.png)
 
 5. **Özet** ekranında, devam etmek için **yüklemek** ' ı seçin.
 
-   ![Yükleyici yükleme sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![Yükleme Seç sayfasını ve yükleme düğmesini gösteren ekran görüntüsü.](./media/oracle-golden-gate/golden_gate_install_04.png)
 
 6. Bir betiği ' root ' olarak çalıştırmanız istenebilir. Bu durumda, ayrı bir oturum açın, VM 'ye SSH yapın, kök için sudo ve sonra betiği çalıştırın. **Tamam** devam et ' i seçin.
 
-   ![Yükleme Seçme sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![Betik konumunu ve yapılandırma betiğinin nasıl yürütüleceğini gösteren ekran görüntüsü.](./media/oracle-golden-gate/golden_gate_install_05.png)
 
 7. Yükleme tamamlandığında, işlemi gerçekleştirmek için **Kapat** ' ı seçin.
 
-   ![Yükleme Seçme sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![Kapat düğmesini gösteren yükleme Seç sayfasının ekran görüntüsü.](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>MyVM1 'de hizmet ayarlama (birincil)
 

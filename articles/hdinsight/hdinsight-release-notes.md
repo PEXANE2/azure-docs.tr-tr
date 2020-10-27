@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 616e3e6c37faa3c085b8531173b557973e09fbf8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0c14e5537385b7518fd08d9d3599993bc6d82f88
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974575"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535510"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -32,11 +32,11 @@ Bu sürüm hem HDInsight 3,6 hem de HDInsight 4,0 için geçerlidir. HDInsight y
 HDInsight artık önizleme aşamasında kümelere genel IP ve özel bağlantı erişimi olmayan kümeler oluşturmayı desteklemektedir. Müşteriler, genel IP olmadan tamamen yalıtılmış bir küme oluşturmak için yeni gelişmiş ağ ayarlarını kullanabilir ve kümeye erişmek için kendi özel uç noktalarını kullanabilir. 
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
-HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden itibaren, hizmet giderek [Azure sanal makine ölçek kümelerine](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)geçiş yapar. İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden itibaren, hizmet giderek [Azure sanal makine ölçek kümelerine](../virtual-machine-scale-sets/overview.md)geçiş yapar. İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
 
 ## <a name="deprecation"></a>Kullanımdan kaldırma
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3,6 ML Hizmetleri kümesinin kullanımdan kaldırılması
-HDInsight 3,6 ML Hizmetleri küme türü, destek 'in ara 31 2020 ' de sona bitecektir. Müşteriler bundan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturmaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#available-versions)edin.
+HDInsight 3,6 ML Hizmetleri küme türü, destek 'in ara 31 2020 ' de sona bitecektir. Müşteriler bundan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturmaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md#available-versions)edin.
 
 ## <a name="behavior-changes"></a>Davranış değişiklikleri
 Bu yayın için davranış değişikliği yok.
@@ -51,4 +51,4 @@ HDInsight, Spark, Hadoop ve ML Hizmetleri küme türleri için Zookeeper düğü
 HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam eder. 
 
 ## <a name="component-version-change"></a>Bileşen sürümü değişikliği
-Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)bulabilirsiniz.
+Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md)bulabilirsiniz.

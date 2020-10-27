@@ -7,18 +7,18 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: 71f1e2b50daf333e19bc11bce119f37cec28d146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90e60044e227ea1a18ea032d302b29abda1ea2e8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88209199"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536853"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Öğretici: ASP.NET üzerinde edilgen önbellekli puan tablosu oluşturma
 
-Bu öğreticide, [redde için Azure önbelleği için ASP.net hızlı](cache-web-app-howto.md)başlangıcı ' nda oluşturulan *contosoteamstats* ASP.NET Web uygulamasını, redsıs için Azure Cache ile birlikte [önbellek modelini](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) kullanan bir puan tablosu içerecek şekilde güncelleştecaksınız. Örnek uygulama bir veritabanındaki ekip istatistiklerinin listesini görüntüler ve performansı artırmak için önbellekten veri depolamak ve almak için Azure önbelleği 'ni kullanmak için farklı yollar gösterir. Öğreticiyi tamamladığınızda, bir veritabanını okuyan ve yazan, Redsıs için Azure önbelleğiyle en iyi duruma getirilmiş ve Azure 'da barındırılan, çalışan bir Web uygulamasına sahip olursunuz.
+Bu öğreticide, [redde için Azure önbelleği için ASP.net hızlı](cache-web-app-howto.md)başlangıcı ' nda oluşturulan *contosoteamstats* ASP.NET Web uygulamasını, redsıs için Azure Cache ile birlikte [önbellek modelini](/azure/architecture/patterns/cache-aside) kullanan bir puan tablosu içerecek şekilde güncelleştecaksınız. Örnek uygulama bir veritabanındaki ekip istatistiklerinin listesini görüntüler ve performansı artırmak için önbellekten veri depolamak ve almak için Azure önbelleği 'ni kullanmak için farklı yollar gösterir. Öğreticiyi tamamladığınızda, bir veritabanını okuyan ve yazan, Redsıs için Azure önbelleğiyle en iyi duruma getirilmiş ve Azure 'da barındırılan, çalışan bir Web uygulamasına sahip olursunuz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Redsıs için Azure önbelleği 'ni kullanarak verileri depolayarak ve alarak veri üretimini geliştirme ve veritabanı yükünü azaltma.
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gerekir:
 
@@ -45,7 +45,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gere
 ### <a name="add-the-entity-framework-to-the-project"></a>Projeye Entity Framework ekleme
 
 1. Visual Studio 'da [redsıs Için Azure önbelleği için ASP.net hızlı başlangıç](cache-web-app-howto.md)bölümünde oluşturduğunuz *contosoteamstats* çözümünü açın.
-2. **Araçlar > NuGet Paket Yöneticisi > Paket Yöneticisi Konsolu**’na tıklayın.
+2. **Araçlar > NuGet Paket Yöneticisi > Paket Yöneticisi Konsolu** ’na tıklayın.
 3. EntityFramework’ü yüklemek için **Paket Yöneticisi Konsolu** penceresinden aşağıdaki komutu çalıştırın:
 
     ```powershell
@@ -56,9 +56,9 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
 
 ### <a name="add-the-team-model"></a>Takım modeli ekleme
 
-1. **Çözüm Gezgini**’nde **Modeller**’e sağ tıklayın ve **Ekle**, **Sınıf**’ı seçin.
+1. **Çözüm Gezgini** ’nde **Modeller** ’e sağ tıklayın ve **Ekle** , **Sınıf** ’ı seçin.
 
-1. Sınıf adı için `Team` girin ve **Ekle**’ye tıklayın.
+1. Sınıf adı için `Team` girin ve **Ekle** ’ye tıklayın.
 
     ![Model sınıfı ekleme](./media/cache-web-app-cache-aside-leaderboard/cache-model-add-class-dialog.png)
 
@@ -142,7 +142,7 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
     }
     ```
 
-1. **Çözüm Gezgini**, açmak için **Web.config** çift tıklayın.
+1. **Çözüm Gezgini** , açmak için **Web.config** çift tıklayın.
 
     ![Web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
 
@@ -173,17 +173,17 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
 
 1. Visual Studio’da projeyi derleyin. 
 
-1. **Çözüm Gezgini**'nde **Denetleyiciler** klasörüne sağ tıklayın ve **Ekle**, **Denetleyici**'yi seçin.
+1. **Çözüm Gezgini** 'nde **Denetleyiciler** klasörüne sağ tıklayın ve **Ekle** , **Denetleyici** 'yi seçin.
 
-1. **Görünümlere sahip MVC 5 Denetleyici, Entity Framework kullanarak** öğesini seçin ve **Ekle**’ye tıklayın. **Ekle**’ye tıkladıktan sonra herhangi bir hata alırsanız, önce projeyi oluşturduğunuzdan emin olun.
+1. **Görünümlere sahip MVC 5 Denetleyici, Entity Framework kullanarak** öğesini seçin ve **Ekle** ’ye tıklayın. **Ekle** ’ye tıkladıktan sonra herhangi bir hata alırsanız, önce projeyi oluşturduğunuzdan emin olun.
 
     ![Denetleyici sınıfı ekleme](./media/cache-web-app-cache-aside-leaderboard/cache-add-controller-class.png)
 
-1. **Model sınıfı** açılır listesinden **Ekip (ContosoTeamStats.Models)** öğesini seçin. **Veri bağlamı** açılır listesinden **TeamContext (ContosoTeamStats.Models)** öğesini seçin. **Denetleyici** adı metin kutusuna `TeamsController` yazın (otomatik olarak doldurulmamışsa). Denetleyici sınıfını oluşturmak ve varsayılan görünümleri eklemek için **Ekle**’ye tıklayın.
+1. **Model sınıfı** açılır listesinden **Ekip (ContosoTeamStats.Models)** öğesini seçin. **Veri bağlamı** açılır listesinden **TeamContext (ContosoTeamStats.Models)** öğesini seçin. **Denetleyici** adı metin kutusuna `TeamsController` yazın (otomatik olarak doldurulmamışsa). Denetleyici sınıfını oluşturmak ve varsayılan görünümleri eklemek için **Ekle** ’ye tıklayın.
 
     ![Denetleyici yapılandırma](./media/cache-web-app-cache-aside-leaderboard/cache-configure-controller.png)
 
-1. **Çözüm Gezgini**’nde, **Global.asax** öğesini genişletin ve **Global.asax.cs**’yi açmak için çift tıklayın.
+1. **Çözüm Gezgini** ’nde, **Global.asax** öğesini genişletin ve **Global.asax.cs** ’yi açmak için çift tıklayın.
 
     ![Global.asax.cs](./media/cache-web-app-cache-aside-leaderboard/cache-global-asax.png)
 
@@ -200,7 +200,7 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
     Database.SetInitializer<TeamContext>(new TeamInitializer());
     ```
 
-1. **Çözüm Gezgini**’nde, `App_Start` öğesini genişletin ve `RouteConfig.cs` öğesine çift tıklayın.
+1. **Çözüm Gezgini** ’nde, `App_Start` öğesini genişletin ve `RouteConfig.cs` öğesine çift tıklayın.
 
     ![RouteConfig.cs](./media/cache-web-app-cache-aside-leaderboard/cache-RouteConfig-cs.png)
 
@@ -216,7 +216,7 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
 
 ### <a name="configure-the-layout-view"></a>Düzen görünümünü yapılandırma
 
-1. **Çözüm Gezgini**’nde, **Görünümler** klasörünü ve ardından **Paylaşılan** klasörünü genişletin ve **_Layout.cshtml** öğesine çift tıklayın. 
+1. **Çözüm Gezgini** ’nde, **Görünümler** klasörünü ve ardından **Paylaşılan** klasörünü genişletin ve **_Layout.cshtml** öğesine çift tıklayın. 
 
     ![_Layout.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml.png)
 
@@ -226,7 +226,7 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
     <title>@ViewBag.Title - Contoso Team Stats</title>
     ```
 
-1. `body`Bölümünde, `Html.ActionLink` *Redsıs testi için Azure Cache*bağlantısının hemen altındaki *contoso Team stats* için aşağıdaki yeni ifadeyi ekleyin.
+1. `body`Bölümünde, `Html.ActionLink` *Redsıs testi için Azure Cache* bağlantısının hemen altındaki *contoso Team stats* için aşağıdaki yeni ifadeyi ekleyin.
 
     ```csharp
     @Html.ActionLink("Contoso Team Stats", "Index", "Teams", new { area = "" }, new { @class = "navbar-brand" })`
@@ -234,7 +234,7 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
 
     ![Kod değişiklikleri](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml-code.png)
 
-1. Uygulamayı derleyip çalıştırmak için **Ctrl+F5**'e basın. Uygulamasının bu sürümü, sonuçları doğrudan veritabanından okur. **Yeni Oluştur**, **Düzenle**, **Ayrıntılar** ve **Sil** eylemlerinin **Görünümlere sahip MVC 5 Denetleyici, Entity Framework kullanarak** iskelesi tarafından otomatik olarak uygulamaya eklendiğini unutmayın. Öğreticinin sonraki bölümünde, veri erişimini iyileştirmek ve uygulamaya ek özellikler sağlamak için Redsıs için Azure önbelleği ekleyeceksiniz.
+1. Uygulamayı derleyip çalıştırmak için **Ctrl+F5** 'e basın. Uygulamasının bu sürümü, sonuçları doğrudan veritabanından okur. **Yeni Oluştur** , **Düzenle** , **Ayrıntılar** ve **Sil** eylemlerinin **Görünümlere sahip MVC 5 Denetleyici, Entity Framework kullanarak** iskelesi tarafından otomatik olarak uygulamaya eklendiğini unutmayın. Öğreticinin sonraki bölümünde, veri erişimini iyileştirmek ve uygulamaya ek özellikler sağlamak için Redsıs için Azure önbelleği ekleyeceksiniz.
 
     ![Başlangıç uygulaması](./media/cache-web-app-cache-aside-leaderboard/cache-starter-application.png)
 
@@ -244,13 +244,13 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
 
 ### <a name="add-a-cache-connection-to-the-teams-controller"></a>Teams Controller’a önbellek bağlantısı ekleme
 
-Hızlı başlangıçta *StackExchange.Redis* istemci kitaplığı paketini zaten yüklediniz. Ayrıca yayımlanan App Service ile ve yerel olarak kullanılmak üzere *CacheConnection* uygulama ayarını da yapılandırdınız. *TeamsController*’da bu aynı istemci kitaplığını ve *CacheConnection* bilgilerini kullanın.
+Hızlı başlangıçta *StackExchange.Redis* istemci kitaplığı paketini zaten yüklediniz. Ayrıca yayımlanan App Service ile ve yerel olarak kullanılmak üzere *CacheConnection* uygulama ayarını da yapılandırdınız. *TeamsController* ’da bu aynı istemci kitaplığını ve *CacheConnection* bilgilerini kullanın.
 
-1. **Çözüm Gezgini**’nde, **Denetleyiciler** klasörünü genişletin ve **TeamsController.cs** öğesini açmak için çift tıklayın.
+1. **Çözüm Gezgini** ’nde, **Denetleyiciler** klasörünü genişletin ve **TeamsController.cs** öğesini açmak için çift tıklayın.
 
     ![Ekip denetleyicisi](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. Aşağıdaki iki `using` deyimi **TeamsController.cs**öğesine ekleyin:
+1. Aşağıdaki iki `using` deyimi **TeamsController.cs** öğesine ekleyin:
 
     ```csharp
     using System.Configuration;
@@ -574,7 +574,7 @@ Bu örneğin bir parçası olarak oluşturulan iskele kurma kodu ekip ekleme, d�
 
 ### <a name="add-caching-methods-to-the-teams-index-view"></a>Takımlar Dizini görünümüne önbelleğe alma yöntemleri ekleme
 
-1. **Çözüm Gezgini**’nde, **Görünümler** klasörünü ve ardından **Ekipler** klasörünü genişletin ve **Index.cshtml** öğesine çift tıklayın.
+1. **Çözüm Gezgini** ’nde, **Görünümler** klasörünü ve ardından **Ekipler** klasörünü genişletin ve **Index.cshtml** öğesine çift tıklayın.
 
     ![Index.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-views-teams-index-cshtml.png)
 
@@ -624,7 +624,7 @@ Bu örneğin bir parçası olarak oluşturulan iskele kurma kodu ekip ekleme, d�
 
     ![Durum iletisi](./media/cache-web-app-cache-aside-leaderboard/cache-status-message.png)
 
-1. Projeyi derlemek için **F6**’ya basın.
+1. Projeyi derlemek için **F6** ’ya basın.
 
 ## <a name="run-the-app-locally"></a>Uygulamayı yerel olarak çalıştırma
 
@@ -646,7 +646,7 @@ Uygulamayı yerel olarak çalıştırmak için:
 
 Bu bölümde, Azure 'da barındırılırken uygulamanın kullanması için SQL veritabanı 'nda yeni bir veritabanı sağlayacaksınız.
 
-1. [Azure portalında](https://portal.azure.com/), Azure portalının sol üst köşesindeki **Kaynak oluştur**’a tıklayın.
+1. [Azure portalında](https://portal.azure.com/), Azure portalının sol üst köşesindeki **Kaynak oluştur** ’a tıklayın.
 
 1. **Yeni** sayfasında **Veritabanları** > **SQL Veritabanı** seçeneklerine tıklayın.
 
@@ -654,9 +654,9 @@ Bu bölümde, Azure 'da barındırılırken uygulamanın kullanması için SQL v
 
    | Ayar       | Önerilen değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Veritabanı adı** | *ContosoTeamsDatabase* | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
+   | **Veritabanı adı** | *ContosoTeamsDatabase* | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers). |
    | **Abonelik** | *Aboneliğiniz*  | Önbelleği oluşturmak ve App Service’i barındırmak için kullandığınız aynı aboneliği seçin. |
-   | **Kaynak grubu**  | *TestResourceGroup* | **Var olanı kullan**’a tıklayın ve önbelleğinizi ve App Service’i yerleştirdiğiniz aynı kaynak grubunu kullanın. |
+   | **Kaynak grubu**  | *TestResourceGroup* | **Var olanı kullan** ’a tıklayın ve önbelleğinizi ve App Service’i yerleştirdiğiniz aynı kaynak grubunu kullanın. |
    | **Kaynak seçme** | **Boş veritabanı** | Boş bir veritabanıyla başlayın. |
 
 1. **Sunucu** bölümünde, **Gerekli ayarları yapılandır** > **Yeni sunucu oluştur** seçeneklerine tıklayın ve aşağıdaki bilgileri girip **Seç** düğmesine tıklayın:
@@ -664,19 +664,19 @@ Bu bölümde, Azure 'da barındırılırken uygulamanın kullanması için SQL v
    | Ayar       | Önerilen değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Sunucu adı** | Genel olarak benzersiz bir ad | Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
-   | **Sunucu yöneticisi oturum açma bilgileri** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
+   | **Sunucu yöneticisi oturum açma bilgileri** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers). |
    | **Parola** | Geçerli bir parola | Parolanızda en az 8 karakter bulunmalı ve parolanız şu üç kategoriden karakterler içermelidir: büyük harf karakterler, küçük harf karakterler, sayılar ve alfasayısal olmayan karakterler. |
    | **Konum** | *Doğu ABD* | Önbelleği ve App Service’i oluşturduğunuz aynı bölgeyi seçin. |
 
-1. **Panoya sabitle**’ye tıklayın ve sonra **Oluştur**’a tıklayarak yeni veritabanını ve sunucuyu oluşturun.
+1. **Panoya sabitle** ’ye tıklayın ve sonra **Oluştur** ’a tıklayarak yeni veritabanını ve sunucuyu oluşturun.
 
-1. Yeni veritabanı oluşturulduktan sonra **Veritabanı bağlantı dizelerini göster**’e tıklayın ve **ADO.NET** bağlantı dizesini kopyalayın.
+1. Yeni veritabanı oluşturulduktan sonra **Veritabanı bağlantı dizelerini göster** ’e tıklayın ve **ADO.NET** bağlantı dizesini kopyalayın.
 
     ![Bağlantı dizelerini göster](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 
-1. Azure portalında App Service’inize gidip **Uygulama Ayarları**’na tıklayın ve sonra Bağlantı dizeleri bölümünden **Yeni bağlantı dizesi ekle**’ye tıklayın.
+1. Azure portalında App Service’inize gidip **Uygulama Ayarları** ’na tıklayın ve sonra Bağlantı dizeleri bölümünden **Yeni bağlantı dizesi ekle** ’ye tıklayın.
 
-1. Entity Framework veritabanı bağlam sınıfıyla eşleşecek şekilde *TeamContext* adlı yeni bir bağlantı dizesi ekleyin. Yeni veritabanınız için bağlantı dizesini değer olarak yapıştırın. Bağlantı dizesinde aşağıdaki yer tutucuları değiştirdiğinizden emin olup **Kaydet**’e tıklayın:
+1. Entity Framework veritabanı bağlam sınıfıyla eşleşecek şekilde *TeamContext* adlı yeni bir bağlantı dizesi ekleyin. Yeni veritabanınız için bağlantı dizesini değer olarak yapıştırın. Bağlantı dizesinde aşağıdaki yer tutucuları değiştirdiğinizden emin olup **Kaydet** ’e tıklayın:
 
     | Yer tutucu | Önerilen değer |
     | --- | --- |
@@ -689,11 +689,11 @@ Bu bölümde, Azure 'da barındırılırken uygulamanın kullanması için SQL v
 
 Öğreticinin bu adımında, uygulamayı bulutta çalıştırmak üzere uygulama güncelleştirmelerini Azure’da yayımlayacaksınız.
 
-1. Visual Studio’da **ContosoTeamStats** öğesine sağ tıklayın ve **Yayımla**’yı seçin.
+1. Visual Studio’da **ContosoTeamStats** öğesine sağ tıklayın ve **Yayımla** ’yı seçin.
 
-    ![Yayımla](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
+    ![Yayımlama](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
-2. **Yayımla**’ya tıklayarak, hızlı başlangıçta oluşturduğunuz aynı yayımlama profilini kullanın.
+2. **Yayımla** ’ya tıklayarak, hızlı başlangıçta oluşturduğunuz aynı yayımlama profilini kullanın.
 
 3. Yayımlama tamamlandıktan sonra Visual Studio, uygulamayı varsayılan web tarayıcınızda başlatır.
 
@@ -723,13 +723,13 @@ Eylemlerden bazılarına tıklayın ve farklı kaynaklardan veri alma denemeleri
 > Bir kaynak grubunu silme işlemi geri alınamaz ve kaynak grubunun ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. Bu örneği, tutmak istediğiniz kaynakları içeren mevcut bir kaynak grubunda barındırmak için kaynaklar oluşturduysanız, her kaynağı kendi ilgili dikey penceresinden tek tek silebilirsiniz.
 >
 
-1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’na tıklayın.
+1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları** ’na tıklayın.
 2. **Öğeleri filtrele...** metin kutusuna kaynak grubunuzun adını yazın.
 3. Kaynak grubunuzun sağındaki **...** öğesine tıklayın ve **Kaynak grubunu sil** seçeneğine tıklayın.
 
     ![Sil](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
-4. Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil**’e tıklayın.
+4. Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil** ’e tıklayın.
 
     Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 

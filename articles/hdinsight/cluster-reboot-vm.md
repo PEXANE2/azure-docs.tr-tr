@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 2177e74bd627e80ea1afbcacaf85baf4e030834c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 725b616fec9c2bc4a0540a7941098377e01732e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91928988"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546475"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>HDInsight kümeleri için VM 'Leri yeniden başlatma
 
@@ -38,13 +38,13 @@ Bir düğüm yeniden başlatıldığında, küme sağlıksız hale gelebilir ve 
 
 Düğüm yeniden başlatma işlemini kullanmak için iki adım gereklidir: düğümleri listeleyin ve düğümleri yeniden başlatın.
 
-1. Düğümleri listeleyin. [Get-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsighthost)adresinde küme düğümü listesini alabilirsiniz.
+1. Düğümleri listeleyin. [Get-AzHDInsightHost](/powershell/module/az.hdinsight/get-azhdinsighthost)adresinde küme düğümü listesini alabilirsiniz.
 
       ```
       Get-AzHDInsightHost -ClusterName myclustername
       ```
 
-1. Konakları yeniden başlatın. Yeniden başlatmak istediğiniz düğümlerin adlarını aldıktan sonra [restart-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost)kullanarak düğümleri yeniden başlatın.
+1. Konakları yeniden başlatın. Yeniden başlatmak istediğiniz düğümlerin adlarını aldıktan sonra [restart-AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost)kullanarak düğümleri yeniden başlatın.
 
       ```
       Restart-AzHDInsightHost -ClusterName myclustername -Name wn0-myclus, wn1-myclus
@@ -54,13 +54,13 @@ Düğüm yeniden başlatma işlemini kullanmak için iki adım gereklidir: düğ
 
 İstekleri HDInsight 'a göndermek için API belgesi içindeki **TRY It** özelliğini kullanabilirsiniz. Düğüm yeniden başlatma işlemini kullanmak için iki adım gereklidir: düğümleri listeleyin ve düğümleri yeniden başlatın.
 
-1. Düğümleri listeleyin. Küme düğümü listesini REST API veya ambarı 'ndan alabilirsiniz. Daha fazla bilgi için bkz. [HDInsight List hosts REST API işlemi](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/listhosts).
+1. Düğümleri listeleyin. Küme düğümü listesini REST API veya ambarı 'ndan alabilirsiniz. Daha fazla bilgi için bkz. [HDInsight List hosts REST API işlemi](/rest/api/hdinsight/virtualmachines/listhosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-1. Konakları yeniden başlatın. Yeniden başlatmak istediğiniz düğümlerin adlarını aldıktan sonra, düğümleri yeniden başlatmak için REST API kullanarak düğümleri yeniden başlatın. Düğüm adı, küme adının *NodeType (WN/hn/ZK/GW)*  +  *x*-  +  *ilk altı*karakterinin düzenine uyar. Daha fazla bilgi için bkz. [HDInsight yeniden başlatma konakları REST API işlemi](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/restarthosts).
+1. Konakları yeniden başlatın. Yeniden başlatmak istediğiniz düğümlerin adlarını aldıktan sonra, düğümleri yeniden başlatmak için REST API kullanarak düğümleri yeniden başlatın. Düğüm adı, küme adının *NodeType (WN/hn/ZK/GW)*  +  *x* -  +  *ilk altı* karakterinin düzenine uyar. Daha fazla bilgi için bkz. [HDInsight yeniden başlatma konakları REST API işlemi](/rest/api/hdinsight/virtualmachines/restarthosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview
@@ -77,6 +77,6 @@ Yeniden başlatmak istediğiniz düğümlerin gerçek adları, istek gövdesinde
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Restart-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost)
-* [HDInsight sanal makineleri REST API](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines)
-* [HDInsight REST API](https://docs.microsoft.com/rest/api/hdinsight/)
+* [Restart-AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost)
+* [HDInsight sanal makineleri REST API](/rest/api/hdinsight/virtualmachines)
+* [HDInsight REST API](/rest/api/hdinsight/)
