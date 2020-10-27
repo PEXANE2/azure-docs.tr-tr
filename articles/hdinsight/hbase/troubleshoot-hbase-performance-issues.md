@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be3f02a80524d9c4b633e1e34d581fc26bfd32d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75887164"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547903"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Azure HDInsight'ta Apache HBase performans sorunlarını giderme
 
@@ -73,9 +73,9 @@ Aşağıda, belirlediğimiz diğer özel parametrelerden bazıları ve değişen
 
 - `memstore`Boyutu varsayılan 128 MB ile 256 MB arasında artırın. Genellikle, bu ayar ağır yazma senaryolarında önerilir.
 
-- Varsayılan değer olan **1** ' den **4**' e kadar sıkıştırma için ayrılan iş parçacıklarının sayısını artırın. Sık karşılaşılan küçük işlemleri gözlemlememiz durumunda bu ayar geçerlidir.
+- Varsayılan değer olan **1** ' den **4** ' e kadar sıkıştırma için ayrılan iş parçacıklarının sayısını artırın. Sık karşılaşılan küçük işlemleri gözlemlememiz durumunda bu ayar geçerlidir.
 
-- `memstore`Depolama sınırı nedeniyle temizlemeyi engellemeyi önleyin. Bu arabelleği sağlamak için `Hbase.hstore.blockingStoreFiles` ayarı **100**olarak arttırın.
+- `memstore`Depolama sınırı nedeniyle temizlemeyi engellemeyi önleyin. Bu arabelleği sağlamak için `Hbase.hstore.blockingStoreFiles` ayarı **100** olarak arttırın.
 
 - Boşaltmaları denetlemek için aşağıdaki ayarları kullanın:
 
@@ -104,13 +104,13 @@ Aşağıda, belirlediğimiz diğer özel parametrelerden bazıları ve değişen
 - RPC zaman aşımları: **3 dakika**
 
    - RPC zaman aşımları HBase RPC zaman aşımı, HBase istemci tarayıcısı zaman aşımı ve Phoenix sorgu zaman aşımı içerir. 
-   - `hbase.client.scanner.caching`Parametresinin hem sunucu ucunda hem de istemci ucunda aynı değere ayarlandığından emin olun. Aynı değillerse, bu ayar ile ilgili istemci-uç hatalarına yol açar `OutOfOrderScannerException` . Bu ayar büyük taramalar için düşük bir değere ayarlanmalıdır. Bu değer **100**olarak ayarlanmıştır.
+   - `hbase.client.scanner.caching`Parametresinin hem sunucu ucunda hem de istemci ucunda aynı değere ayarlandığından emin olun. Aynı değillerse, bu ayar ile ilgili istemci-uç hatalarına yol açar `OutOfOrderScannerException` . Bu ayar büyük taramalar için düşük bir değere ayarlanmalıdır. Bu değer **100** olarak ayarlanmıştır.
 
 ## <a name="other-considerations"></a>Diğer önemli noktalar
 
 Ayarlamayı göz önünde bulundurmanız gereken ek parametreler aşağıda verilmiştir:
 
-- `Hbase.rs.cacheblocksonwrite` – Varsayılan olarak HDI 'de, bu ayar **true**olarak ayarlanır.
+- `Hbase.rs.cacheblocksonwrite` – Varsayılan olarak HDI 'de, bu ayar **true** olarak ayarlanır.
 
 - Daha sonra küçük sıkıştırmayı erteleme ayarlarına izin veren ayarlar.
 
@@ -124,4 +124,4 @@ Sorununuz çözümlenmemiş kalırsa, daha fazla destek için aşağıdaki kanal
 
 - İle bağlanın [@AzureSupport](https://twitter.com/azuresupport) . Bu, müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabıdır. Azure Community 'yi doğru kaynaklara bağlar: yanıtlar, destek ve uzmanlar.
 
-- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Microsoft Azure aboneliğiniz abonelik yönetimine ve faturalandırma desteğine erişim içerir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](../../azure-portal/supportability/how-to-create-azure-support-request.md)konusunu inceleyin. Microsoft Azure aboneliğiniz abonelik yönetimine ve faturalandırma desteğine erişim içerir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

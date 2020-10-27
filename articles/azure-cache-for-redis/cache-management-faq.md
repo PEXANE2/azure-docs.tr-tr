@@ -7,17 +7,17 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: 5c5c7a5adae9891f764f714d1700c6024376de02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15c7ed4ca9d04e4bb314eea8b92bef749d2369b1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205391"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537669"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Redsıs yönetimi hakkında Azure önbelleği SSS
 Bu makalede, redin için Azure önbelleğini yönetme hakkında sık sorulan soruların yanıtları sağlanır.
 
-## <a name="common-questions-and-answers"></a>Yaygın sorular ve yanıtları
+## <a name="common-questions-and-answers"></a>Sık sorulan sorular ve yanıtları
 Bu bölümde aşağıdaki SSS ele alınmaktadır:
 
 * [Redsıs 'e bağlanmak için TLS olmayan/SSL bağlantı noktasını ne zaman etkinleştirmem gerekir?](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
@@ -63,7 +63,7 @@ Redsıs araçlarını indirme yönergeleri için bkz. [redsıs komutlarını nas
 * Test için kullanılan istemci sanal makinesi, Redsıs örneği için Azure önbelleğiniz ile aynı bölgede olmalıdır.
 * Daha iyi donanımlar olduğundan ve en iyi sonuçları vermesi için istemciniz için dv2 VM serisini kullanmanızı öneririz.
 * Seçtiğiniz önbellek için en az bilgi işlem ve bant genişliği özelliği olan seçtiğiniz istemci VM 'nizin olduğundan emin olun.
-* Windows kullanıyorsanız, istemci makinesinde VRSS 'i etkinleştirin. [Ayrıntılar için buraya bakın](https://technet.microsoft.com/library/dn383582.aspx).
+* Windows kullanıyorsanız, istemci makinesinde VRSS 'i etkinleştirin. [Ayrıntılar için buraya bakın](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).
 * Premium katman Redsıs örnekleri, hem CPU hem de ağ için daha iyi donanımlar üzerinde çalıştıkları için daha iyi ağ gecikmesi ve üretilen iş hızına sahiptir.
 
 ### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>Ortak Redi komutları kullanılırken dikkat edilecek noktalar nelerdir?
@@ -144,7 +144,7 @@ Bu ayar nasıl yapılandırılır:
     > [!NOTE]
     > Bu yöntem tarafından belirtilen değer genel bir ayardır ve tüm AppDomain etki alanı etkilendi. Örneğin, 4 çekirdekli bir makineniz varsa ve çalışma zamanı sırasında *MinWorkerThreads* ve *MINIOTHREADS* 'i CPU başına 50 olarak ayarlamak Istiyorsanız, **ThreadPool. SetMinThreads (200, 200)** kullanın.
 
-* En düşük iş parçacığı ayarlarını, içindeki yapılandırma öğesinin altında bulunan, [ *miniothreads* veya *MinWorkerThreads* yapılandırma ayarı](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) kullanılarak belirlemek de mümkündür `<processModel>` `Machine.config` `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Bu şekilde en düşük iş parçacığı sayısını bu şekilde ayarlamak, sistem genelinde bir ayar olduğundan genellikle önerilmez.**
+* En düşük iş parçacığı ayarlarını, içindeki yapılandırma öğesinin altında bulunan, [ *miniothreads* veya *MinWorkerThreads* yapılandırma ayarı](/previous-versions/dotnet/netframework-4.0/7w2sway1(v=vs.100)) kullanılarak belirlemek de mümkündür `<processModel>` `Machine.config` `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Bu şekilde en düşük iş parçacığı sayısını bu şekilde ayarlamak, sistem genelinde bir ayar olduğundan genellikle önerilmez.**
 
   > [!NOTE]
   > Bu yapılandırma öğesinde belirtilen değer, *çekirdek başına* ayardır. Örneğin, 4 çekirdekli bir makineniz varsa ve *Miniothreads* ayarınızı çalışma zamanında 200 olarak istiyorsanız, kullanabilirsiniz `<processModel minIoThreads="50"/>` .

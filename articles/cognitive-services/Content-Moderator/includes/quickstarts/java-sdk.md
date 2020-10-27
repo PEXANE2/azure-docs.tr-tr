@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: include
-ms.date: 09/15/2020
+ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 1e32cd924c8e0f713ebe7cedfca0466a1e07c3bf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 304807214958a9893560b176e96f6bfcf79877ab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91332591"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548267"
 ---
 Java için Azure Content Moderator istemci kitaplığı 'nı kullanmaya başlayın. Maven paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
@@ -24,42 +24,41 @@ Content Moderator, rahatsız edici, riskli veya başka türlü istenmeyen içeri
 
 Java için Content Moderator istemci kitaplığını kullanarak şunları yapın:
 
-* Yetişkinlere yönelik içerik, metin veya insan yüzeyleri için orta görüntüler.
+* Orta görüntüler
+* Orta metin
 
-[Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable)  |  [Yapıt (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Örnekler](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
+[Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator)  | [Yapıt (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Örnekler](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Java Development Kit 'in (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) geçerli sürümü
 * [Gradle yapı aracı](https://gradle.org/install/)veya başka bir bağımlılık Yöneticisi.
+* Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir Content moderator kaynağı oluşturun Content moderator bir kaynak oluşturun. Dağıtım için bekleyin ve **Kaynağa Git** düğmesine tıklayın.
+    * Uygulamanızı Content Moderator bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
-## <a name="create-a-content-moderator-resource"></a>Content Moderator kaynağı oluşturma
+## <a name="setting-up"></a>Ayarlanıyor
 
-Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak Content moderator için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
-
-* [Azure Portal](https://portal.azure.com/)kaynağı görüntüleyin.
-
-Kaynağından bir anahtar aldıktan sonra, adlı anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `AZURE_CONTENTMODERATOR_KEY` .
-
-## <a name="create-a-new-gradle-project"></a>Yeni bir Gradle projesi oluşturma
+### <a name="create-a-new-gradle-project"></a>Yeni bir Gradle projesi oluşturma
 
 Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin. 
 
 ```console
 mkdir myapp && cd myapp
 ```
-`gradle init` öğesini çalıştırın. Bu komut, uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan *Build. Gradle. kts*de dahil olmak üzere Gradle için temel derleme dosyaları oluşturur. Çalışma dizininizden bu komutu çalıştırın:
+
+`gradle init`Çalışma dizininizden komutunu çalıştırın. Bu komut, uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan *Build. Gradle. kts* de dahil olmak üzere Gradle için temel derleme dosyaları oluşturur.
 
 ```console
 gradle init --type basic
 ```
 
-Bir derleme betiği DSL seçmeniz istendiğinde, **Kotlin**' u seçin.
+Bir **DSL** seçmeniz Istendiğinde, **Kotlin** ' ı seçin.
 
 ## <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
-*Build. Gradle. kts* ' i bulun ve tercıh ettiğiniz IDE veya metin düzenleyicinizle açın. Ardından aşağıdaki derleme yapılandırması içine kopyalayın. Bu yapılandırma, bir Java uygulaması olarak projeyi, giriş noktası **Contentmoderatorhızlı başlangıç**sınıfı olan bir Java uygulaması olarak tanımlar. Content Moderator istemci kitaplığının yanı sıra, JSON serileştirmesi için Gson SDK 'yı içeri aktarır.
+*Build. Gradle. kts* ' i bulun ve tercıh ettiğiniz IDE veya metin düzenleyicinizle açın. Ardından aşağıdaki derleme yapılandırması içine kopyalayın. Bu yapılandırma, bir Java uygulaması olarak projeyi, giriş noktası **Contentmoderatorhızlı başlangıç** sınıfı olan bir Java uygulaması olarak tanımlar. Content Moderator istemci kitaplığının yanı sıra, JSON serileştirmesi için GSON SDK 'yı içeri aktarır.
 
 ```kotlin
 plugins {
@@ -81,15 +80,35 @@ dependencies{
 }
 ```
 
-Çalışma dizininizden bir proje kaynak klasörü oluşturmak için aşağıdaki komutu çalıştırın.
+### <a name="create-a-java-file"></a>Java dosyası oluşturma
+
+
+Çalışma dizininizden bir proje kaynak klasörü oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Ardından yeni klasörde *Contentmoderatorquickstart. Java* adlı bir dosya oluşturun. Dosyayı tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki kitaplıkları en üst kısımdaki içeri aktarın:
+Yeni klasöre gidin ve *Contentmoderatorquickstart. Java* adlı bir dosya oluşturun. Bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki deyimleri ekleyin `import` :
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
+
+> [!TIP]
+> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java)'da bulabilirsiniz.
+
+Uygulamanın **Contentmoderatorquickstart** sınıfında, kaynağınızın anahtarı ve uç noktası için değişkenler oluşturun.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_creds)]
+
+> [!IMPORTANT]
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz [ürün adı] kaynağı başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
+>
+> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) makalesine bakın.
+
+Uygulamanın **Main** yönteminde, bu hızlı başlangıçta kullanılan yöntemlere çağrılar ekleyin. Bunları daha sonra tanımlayacaksınız.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_maincalls)]
+
 
 ## <a name="object-model"></a>Nesne modeli
 
@@ -109,41 +128,29 @@ Bu kod parçacıkları, Java için Content Moderator istemci kitaplığı ile a�
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Orta görüntüler](#moderate-images)
+* [Orta metin](#moderate-text)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-> [!NOTE]
-> Bu adım, adlı Content Moderator anahtarınız için [bir ortam değişkeni oluşturduğunuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayar `AZURE_CONTENTMODERATOR_KEY` .
-
-Uygulamanın `main` yönteminde, abonelik uç noktası değerini ve abonelik anahtarı ortam değişkenini kullanarak bir [Contentmoderatorclient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) nesnesi oluşturun. 
-
-> [!NOTE]
-> Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+Uygulamanın `main` yönteminde, abonelik uç noktası değerini ve abonelik anahtarınızı kullanarak bir [Contentmoderatorclient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) nesnesi oluşturun.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
 ## <a name="moderate-images"></a>Orta görüntüler
 
-### <a name="get-sample-images"></a>Örnek görüntüleri al
+### <a name="set-up-sample-image"></a>Örnek görüntü ayarlama
 
-Projenizin **src/Main/** klasöründe bir **kaynak** klasörü oluşturun ve bu klasöre gidin. Ardından *ImageFiles.txt*yeni bir metin dosyası oluşturun. Bu dosyada, &mdash; her satırda BIR URL 'yi çözümlemek için görüntülerin URL 'lerini eklersiniz. Aşağıdaki örnek görüntüleri kullanabilirsiniz:
+Yeni bir yöntemde, bir görüntüyü işaret eden belirli bir URL dizesiyle bir **[Bodymodelmodel](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel?view=azure-java-stable)** nesnesi oluşturun.
 
-```
-https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
-https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
-```
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod)]
+
 
 ### <a name="define-helper-class"></a>Yardımcı sınıfı tanımla
 
-Ardından, *contentmoderatorquickstart. Java* dosyanızda, aşağıdaki sınıf tanımını **contentmoderatorquickstart** sınıfına ekleyin. Bu iç sınıf daha sonra görüntü denetleme sürecinde kullanılacaktır.
+Ardından, *contentmoderatorquickstart. Java* dosyanızda, aşağıdaki sınıf tanımını **contentmoderatorquickstart** sınıfına ekleyin. Bu iç sınıf, görüntü denetleme işleminde kullanılır.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
 
-### <a name="iterate-through-images"></a>Görüntüler arasında yineleme
-
-Sonra, aşağıdaki kodu yönteminin altına ekleyin `main` . Ya da, bunu öğesinden çağrılan ayrı bir yönteme ekleyebilirsiniz `main` . Bu kod _ImageFiles.txt_ dosyasının her satırı üzerinden yapılır.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
 
 ### <a name="analyze-content"></a>İçeriği analiz etme
 Bu kod satırı, verilen URL 'deki görüntüyü yetişkinlere veya kcy içeriğine karşı denetler. Bu koşullarla ilgili bilgi için bkz. görüntü denetleme kavramsal Kılavuzu.
@@ -166,13 +173,38 @@ Son olarak, döndürülen bilgileri `EvaluationData` listede depolayın.
 
 ### <a name="print-results"></a>Sonuçları Yazdır
 
-`while`Döngüden sonra, sonuçları konsola ve bir çıkış dosyasına ( *src/Main/resources/ModerationOutput.js*) yazdıran aşağıdaki kodu ekleyin.
+`while`Döngüden sonra, sonuçları konsola ve bir çıkış dosyasına ( *src/Main/resources/ModerationOutput.js* ) yazdıran aşağıdaki kodu ekleyin.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 
 `try`Yöntemi kapatın ve `catch` metodunu tamamlamaya yönelik bir ifade ekleyin.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
+
+## <a name="moderate-text"></a>Orta metin
+
+### <a name="set-up-sample-text"></a>Örnek metin ayarlama
+
+**Contentmoderatorhızlı başlangıç** sınıfınızın en üstünde, bir yerel metin dosyasına bir başvuru tanımlayın. Proje dizininize bir. txt dosyası ekleyin ve çözümlemek istediğiniz metni girin.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
+
+### <a name="analyze-text"></a>Metni çözümle
+
+. Txt dosyasını okuyan ve her satırda **Screentext** yöntemini çağıran yeni bir yöntem oluşturun.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
+
+### <a name="print-text-moderation-results"></a>Metin denetleme sonuçlarını yazdır
+
+Denetleme sonuçlarını proje dizininizde bir. JSON dosyasına yazdırmak için aşağıdaki kodu ekleyin.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
+
+`try` `catch` Yöntemini gerçekleştirmek için ve ifadesini kapatın.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
+
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 

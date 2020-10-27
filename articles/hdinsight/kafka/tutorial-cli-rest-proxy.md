@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49419853f193336e39ff8f729472342bb137fd39
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490229"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539488"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Öğretici: Azure CLı kullanarak HDInsight 'ta Apache Kafka REST proxy etkin kümesi oluşturma
 
-Bu öğreticide, Azure komut satırı arabirimi 'ni (CLı) kullanarak Azure HDInsight 'ta Apache Kafka [rest proxy etkin](./rest-proxy.md) bir küme oluşturmayı öğreneceksiniz. Azure HDInsight kuruluşlara yönelik, yönetilen, tam spektrumlu ve açık kaynaklı bir analiz hizmetidir. Apache Kafka açık kaynaklı, dağıtılmış bir akış platformudur. Yayımla-abone ol ileti kuyruğuna benzer işlevler sağladığı için genellikle ileti aracısı olarak kullanılır. Kafka REST proxy, HTTP üzerinden bir [REST API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) aracılığıyla Kafka kümeniz ile etkileşime girebilmenizi sağlar. Azure CLI, Azure kaynaklarını yönetmek için Microsoft tarafından sunulan platformlar arası komut satırı deneyimidir.
+Bu öğreticide, Azure komut satırı arabirimi 'ni (CLı) kullanarak Azure HDInsight 'ta Apache Kafka [rest proxy etkin](./rest-proxy.md) bir küme oluşturmayı öğreneceksiniz. Azure HDInsight kuruluşlara yönelik, yönetilen, tam spektrumlu ve açık kaynaklı bir analiz hizmetidir. Apache Kafka açık kaynaklı, dağıtılmış bir akış platformudur. Yayımla-abone ol ileti kuyruğuna benzer işlevler sağladığı için genellikle ileti aracısı olarak kullanılır. Kafka REST proxy, HTTP üzerinden bir [REST API](/rest/api/hdinsight-kafka-rest-proxy/) aracılığıyla Kafka kümeniz ile etkileşime girebilmenizi sağlar. Azure CLI, Azure kaynaklarını yönetmek için Microsoft tarafından sunulan platformlar arası komut satırı deneyimidir.
 
 Apache Kafka API'sine yalnızca aynı sanal ağ içindeki kaynaklar tarafından erişilebilir. Doğrudan SSH kullanarak kümeye erişebilirsiniz. Diğer hizmetleri, ağları veya sanal makineleri Apache Kafka'ya bağlamak için önce bir sanal ağ oluşturmanız e sonra ağ içinde kaynakları oluşturmanız gerekir. Daha fazla bilgi için bkz. [sanal ağ kullanarak Apache Kafka bağlama](./apache-kafka-connect-vpn-gateway.md).
 
@@ -56,8 +56,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     |location|KONUMU, kümenin oluşturulacağı bir bölge ile değiştirin. Geçerli konumların listesi için `az account list-locations` komutunu kullanın|
     |clusterName|CLUSTERNAME öğesini, yeni kümeniz için genel olarak benzersiz bir adla değiştirin.|
     |storageAccount|STORAGEACCOUNTNAME ' i yeni depolama hesabınız için bir adla değiştirin.|
-    |httpPassword|Küme oturum açma, **yönetici**için parola ile değiştirin.|
-    |sshPassword|Secure Shell Kullanıcı adı, **sshuser**için parola ile değiştirin.|
+    |httpPassword|Küme oturum açma, **yönetici** için parola ile değiştirin.|
+    |sshPassword|Secure Shell Kullanıcı adı, **sshuser** için parola ile değiştirin.|
     |securityGroupName|SECURITYGROUPNAME öğesini Kafka Rest proxy için istemci AAD güvenlik grubu adıyla değiştirin. Değişkeni `--kafka-client-group-name` için parametresine geçirilecek `az-hdinsight-create` .|
     |Securitygroupıd|SECURITYGROUPıD değerini Kafka Rest proxy için istemci AAD güvenlik grubu KIMLIĞIYLE değiştirin. Değişkeni `--kafka-client-group-id` için parametresine geçirilecek `az-hdinsight-create` .|
     |storageContainer|Kümenin kullanacağı depolama kapsayıcısı, bu öğretici için olduğu gibi kalır. Bu değişken, kümenin adıyla ayarlanır.|
@@ -130,18 +130,18 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
         |Parametre | Açıklama|
         |---|---|
-        |--tür|Değer **Kafka**olmalıdır.|
-        |--workernode-veri-diskler-düğüm başına|Çalışan düğümü başına kullanılacak veri diski sayısı. HDInsight Kafka yalnızca veri diskleriyle desteklenir. Bu öğretici **2**değerini kullanır.|
+        |--tür|Değer **Kafka** olmalıdır.|
+        |--workernode-veri-diskler-düğüm başına|Çalışan düğümü başına kullanılacak veri diski sayısı. HDInsight Kafka yalnızca veri diskleriyle desteklenir. Bu öğretici **2** değerini kullanır.|
 
     1. Kafka REST proxy için gerekli parametreler:
 
         |Parametre | Açıklama|
         |---|---|
-        |--Kafka-Management-node-size|Düğümün boyutu. Bu öğretici **Standard_D4_v2**değeri kullanır.|
-        |--Kafka-Client-Group-ID|Kafka Rest proxy için istemci AAD güvenlik grubu KIMLIĞI. Değer **$securityGroupID**değişkeninden geçirilir.|
-        |--Kafka-Client-Group-Name|Kafka Rest proxy için istemci AAD güvenlik grubu adı. Değer **$securityGroupName**değişkeninden geçirilir.|
-        |--sürüm|HDInsight kümesi sürümü en az 4,0 olmalıdır. Değer **$clusterVersion**değişkeninden geçirilir.|
-        |--Bileşen-sürümü|Kafka sürümü en az 2,1 olmalıdır. Değer **$componentVersion**değişkeninden geçirilir.|
+        |--Kafka-Management-node-size|Düğümün boyutu. Bu öğretici **Standard_D4_v2** değeri kullanır.|
+        |--Kafka-Client-Group-ID|Kafka Rest proxy için istemci AAD güvenlik grubu KIMLIĞI. Değer **$securityGroupID** değişkeninden geçirilir.|
+        |--Kafka-Client-Group-Name|Kafka Rest proxy için istemci AAD güvenlik grubu adı. Değer **$securityGroupName** değişkeninden geçirilir.|
+        |--sürüm|HDInsight kümesi sürümü en az 4,0 olmalıdır. Değer **$clusterVersion** değişkeninden geçirilir.|
+        |--Bileşen-sürümü|Kafka sürümü en az 2,1 olmalıdır. Değer **$componentVersion** değişkeninden geçirilir.|
     
         Kümeyi REST proxy olmadan oluşturmak isterseniz,, `--kafka-management-node-size` `--kafka-client-group-id` ve `--kafka-client-group-name` komutunu kaldırın `az hdinsight create` .
 

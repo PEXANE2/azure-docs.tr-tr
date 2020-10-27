@@ -1,23 +1,23 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 titleSuffix: Azure
-description: dosya dahil etme
+description: include dosyası
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 000971878e24c46892aaef1fa0c65237a4219883
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e139954e6550e33edb75d01ab9dbec0bba543ea6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81678585"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548262"
 ---
 **Eşleme** kaynağı başarıyla dağıtıldıktan sonra, bu adımları izleyerek görüntüleyebilirsiniz.
 
-1. **Kaynak grupları**' na gidin ve **eşleme** kaynağını oluştururken seçtiğiniz kaynak grubunu seçin. Çok fazla kaynak grubunuz varsa **filtre** kutusunu kullanın.
+1. **Kaynak grupları** ' na gidin ve **eşleme** kaynağını oluştururken seçtiğiniz kaynak grubunu seçin. Çok fazla kaynak grubunuz varsa **filtre** kutusunu kullanın.
 
     > [!div class="mx-imgBorder"]
     > ![Kaynak grupları](../media/setup-direct-get-resourcegroup.png)
@@ -25,7 +25,7 @@ ms.locfileid: "81678585"
 1. Oluşturduğunuz **eşleme** kaynağını seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Eşleme kaynağı görünümü](../media/setup-direct-get-open.png)
+    > ![Oluşturduğunuz eşleme kaynağını gösteren ekran görüntüsü.](../media/setup-direct-get-open.png)
 
 1. **Genel bakış** sayfası, burada gösterildiği gibi üst düzey bilgileri gösterir.
 
@@ -37,14 +37,14 @@ ms.locfileid: "81678585"
     > [!div class="mx-imgBorder"]
     > ![Eşleme kaynağı ASN bilgileri](../media/setup-direct-get-asninfo.png)
 
-1. Sol tarafta **Bağlantılar**' ı seçin. Ekranın üst kısmında, bağlantı hattı kapsamındaki farklı tesislerde ASN ile Microsoft arasındaki eşleme bağlantılarının bir özetini görürsünüz. Ayrıca, gösterilen şekilde orta bölmedeki **Bağlantılar** ' ı seçerek **genel bakış** sayfasından bağlantı özetine erişebilirsiniz.
+1. Sol tarafta **Bağlantılar** ' ı seçin. Ekranın üst kısmında, bağlantı hattı kapsamındaki farklı tesislerde ASN ile Microsoft arasındaki eşleme bağlantılarının bir özetini görürsünüz. Ayrıca, gösterilen şekilde orta bölmedeki **Bağlantılar** ' ı seçerek **genel bakış** sayfasından bağlantı özetine erişebilirsiniz.
 
     > [!div class="mx-imgBorder"]
     > ![Eşleme kaynağı bağlantıları](../media/setup-exchange-get-connectionssummary.png)
 
     * **Bağlantı durumu** , eşleme bağlantısı kurulumunun durumuna karşılık gelir. Bu alanda gösterilen durumlar, [Exchange eşleme gözden geçirmede](../walkthrough-exchange-all.md)gösterilen durum diyagramını izler.
     * **IPv4 oturum durumu** ve **IPv6 oturum durumu** SıRASıYLA IPv4 ve IPv6 BGP oturum durumlarına karşılık gelir.  
-    * Ekranın üst kısmında bir satır seçtiğinizde, alt taraftaki **bağlantı** bölümünde her bağlantı için ayrıntılar gösterilir. **Yapılandırma**, **IPv4 adresi**ve **IPv6 adresini**genişletmek için okları seçin.
+    * Ekranın üst kısmında bir satır seçtiğinizde, alt taraftaki **bağlantı** bölümünde her bağlantı için ayrıntılar gösterilir. **Yapılandırma** , **IPv4 adresi** ve **IPv6 adresini** genişletmek için okları seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Eşleme kaynağı görünümü](../media/setup-exchange-get-connectionsipv4.png)
+    > ![Bir bölümü genişleten bir oku vurgulayan ekran görüntüsü.](../media/setup-exchange-get-connectionsipv4.png)

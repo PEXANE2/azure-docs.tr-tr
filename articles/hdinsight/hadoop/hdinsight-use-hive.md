@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 37fdf863d29015bba7015fcff1ae49a34aebd785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2e59b35a30bd838eab2b05dcacf83d8b2c21236
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462284"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540406"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive ve HiveQL nedir?
 
@@ -72,14 +72,14 @@ Hive tarafından desteklenen dosya biçimleri hakkında daha fazla bilgi için b
 
 Hive ile oluşturabileceğiniz iki tür tablo vardır:
 
-* __İç__: veriler Hive veri ambarında depolanır. Veri ambarı, `/hive/warehouse/` kümenin varsayılan depolama alanında bulunur.
+* __İç__ : veriler Hive veri ambarında depolanır. Veri ambarı, `/hive/warehouse/` kümenin varsayılan depolama alanında bulunur.
 
     Aşağıdaki koşullardan biri geçerli olduğunda iç tabloları kullanın:
 
     * Veriler geçicidir.
     * Hive 'ın tablo ve veri yaşam döngüsünü yönetmesini istiyorsunuz.
 
-* __Harici__: veriler veri ambarının dışında saklanır. Veriler, küme tarafından erişilebilen herhangi bir depolama alanında depolanabilir.
+* __Harici__ : veriler veri ambarının dışında saklanır. Veriler, küme tarafından erişilebilen herhangi bir depolama alanında depolanabilir.
 
     Aşağıdaki koşullardan biri geçerli olduğunda dış tabloları kullanın:
 
@@ -88,7 +88,7 @@ Hive ile oluşturabileceğiniz iki tür tablo vardır:
     * Varsayılan olmayan bir depolama hesabı gibi özel bir konuma ihtiyacınız vardır.
     * Hive dışında bir program veri biçimini, konumunu ve benzerlerini yönetir.
 
-Daha fazla bilgi için [Hive iç ve dış tablolar giriş](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) blog gönderisine bakın.
+Daha fazla bilgi için [Hive iç ve dış tablolar giriş](/archive/blogs/cindygross/hdinsight-hive-internal-and-external-tables-intro) blog gönderisine bakın.
 
 ## <a name="user-defined-functions-udf"></a>Kullanıcı tanımlı işlevler (UDF)
 
@@ -100,7 +100,7 @@ Hive, **Kullanıcı tanımlı işlevler (UDF)** aracılığıyla da genişletile
 
 * [Apache Hive ile C# Kullanıcı tanımlı bir işlev kullanma](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [HDInsight 'a özel Apache Hive Kullanıcı tanımlı bir işlev ekleme](https://docs.microsoft.com/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
+* [HDInsight 'a özel Apache Hive Kullanıcı tanımlı bir işlev ekleme](/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
 
 * [Bir örnek Apache Hive tarih/saat biçimlerini Hive zaman damgasına dönüştürmek için Kullanıcı tanımlı işlev](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
@@ -133,7 +133,7 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 |Deyim |Açıklama |
 |---|---|
-|TABLOYU BıRAK|Tablo zaten varsa, silin.|
+|DROP TABLE|Tablo zaten varsa, silin.|
 |DıŞ TABLO OLUŞTUR|Hive içinde yeni bir **dış** tablo oluşturur. Dış tablolar yalnızca tablo tanımını Hive içinde depolar. Veriler özgün konumunda ve özgün biçimde bırakılır.|
 |SATıR BIÇIMI|Hive verilerin nasıl biçimlendirildiğini söyler. Bu durumda, her günlükteki alanlar boşlukla ayrılır.|
 |TEXTFILE KONUMU OLARAK DEPOLANDı|Hive verilerinin nerede depolandığını ( `example/data` Dizin) ve metin olarak depolandığını söyler. Veriler tek bir dosyada olabilir veya dizin içindeki birden çok dosyaya yayılabilir.|
@@ -197,11 +197,11 @@ Azure Data Factory, HDInsight 'ı Data Factory bir işlem hattının parçası o
 
 Hive işini çalıştırmak için SQL Server Integration Services (SSSıS) kullanabilirsiniz. SSIS için Azure Özellik paketi, HDInsight üzerinde Hive işlerinde çalışan aşağıdaki bileşenleri sağlar.
 
-* [Azure HDInsight Hive görevi](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
+* [Azure HDInsight Hive görevi](/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Azure aboneliği bağlantı Yöneticisi](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
+* [Azure aboneliği bağlantı Yöneticisi](/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-Daha fazla bilgi için bkz. [Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) belgeleri.
+Daha fazla bilgi için bkz. [Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis) belgeleri.
 
 ### <a name="apache-oozie"></a>Apache Oozie
 

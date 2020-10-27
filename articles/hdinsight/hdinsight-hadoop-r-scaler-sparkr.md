@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 28a97edcbe84ae63a3d3d0cad2b9275c672f5664
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5864a5de8ddec60f2072a28827a870c83ece8b9d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082284"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546050"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight 'ta ScaleR ve parlak r 'yi birleştirme
 
-Bu belgede, bir **Scaler** lojistik regresyon modeli kullanarak uçuş gelme gecikmelerinin nasıl tahmin edilmesi gösterilmektedir. Örnek, **parlak r**kullanılarak birleştirilmiş Uçuş gecikmesi ve hava durumu verilerini kullanır.
+Bu belgede, bir **Scaler** lojistik regresyon modeli kullanarak uçuş gelme gecikmelerinin nasıl tahmin edilmesi gösterilmektedir. Örnek, **parlak r** kullanılarak birleştirilmiş Uçuş gecikmesi ve hava durumu verilerini kullanır.
 
 Her iki paket de Apache Hadoop Spark yürütme altyapısında çalıştırılsa da, her biri kendi ilgili Spark oturumlarını gerektirdiğinden bellek içi veri paylaşımıyla engellenirler. Bu sorun ML Server gelecek bir sürümünde giderilene kadar geçici çözüm, çakışmayan Spark oturumlarını sürdürmek ve ara dosyalar aracılığıyla veri alışverişi yapmak için kullanılır. Buradaki yönergeler, bu gereksinimlerin elde etmek için kullanımı kolay olduğunu gösterir.
 
@@ -25,7 +25,7 @@ Bu örnek başlangıçta Mario Inchiosa ve roni burd tarafından Strata 2016 ' d
 
 Kod başlangıçta Azure 'daki bir HDInsight kümesinde Spark üzerinde çalışan ML Server için yazılmıştır. Ancak, tek bir betikte parlak r ve ScaleR kullanımını karıştırma kavramı, şirket içi ortamlar bağlamında da geçerlidir.
 
-Bu belgede yer alan adımlarda, R için bir ara düzey bilginiz olduğunu ve ML Server [Scaler](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) kitaplığı olduğunu varsayalım. Bu senaryoda yürüyen bir [mini-mini r](https://spark.apache.org/docs/2.1.0/sparkr.html) 'ye tanıtıyorsunuz.
+Bu belgede yer alan adımlarda, R için bir ara düzey bilginiz olduğunu ve ML Server [Scaler](/machine-learning-server/r/concept-what-is-revoscaler) kitaplığı olduğunu varsayalım. Bu senaryoda yürüyen bir [mini-mini r](https://spark.apache.org/docs/2.1.0/sparkr.html) 'ye tanıtıyorsunuz.
 
 ## <a name="the-airline-and-weather-datasets"></a>Hava yolu ve hava durumu veri kümeleri
 
@@ -535,7 +535,7 @@ Bu makalede, Hadoop Spark 'ta model geliştirme için ScaleR ile veri işleme i�
 
 ## <a name="next-steps-and-more-information"></a>Sonraki adımlar ve daha fazla bilgi
 
-- Apache Spark ML Server kullanımı hakkında daha fazla bilgi için başlangıç [kılavuzuna](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)bakın.
+- Apache Spark ML Server kullanımı hakkında daha fazla bilgi için başlangıç [kılavuzuna](/machine-learning-server/r/how-to-revoscaler-spark)bakın.
 
 - HDInsight 'ta ML hizmetleri hakkında bilgi için bkz. [HDInsight 'TA ml hizmetlerine genel bakış](r-server/r-server-overview.md).
 
@@ -543,4 +543,4 @@ Mini r kullanımı hakkında daha fazla bilgi için bkz.:
 
 - [Apache parlak r belgesi](https://spark.apache.org/docs/2.1.0/sparkr.html).
 
-- Databricks 'den [mini e genel bakış](https://docs.databricks.com/spark/latest/sparkr/overview.html) .
+- [Parlak r genel bakış](/azure/databricks/spark/latest/sparkr/overview)

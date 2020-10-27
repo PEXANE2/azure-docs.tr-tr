@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 1de11a07bdbac153b6813915cfa52edfa6484aec
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 982747c1a7e093f84daeb63e75cfdf439d3fccf9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877127"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546730"
 ---
 # <a name="restore-a-dropped-azure-database-for-mysql-server"></a>Bir MySQL için Azure veritabanı sunucusunu geri yükleme
 
@@ -36,7 +36,7 @@ Bir MySQL için Azure veritabanı sunucusunu geri yüklemek için şunlar gereki
    
  3. MySQL Server olayını Sil olayına çift tıklayın ve JSON sekmesine tıklayın ve JSON çıktısında "RESOURCEID" ve "submissionTimestamp" özniteliklerini aklınızda edin. RESOURCEID şu biçimdedir:/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforMySQL/servers/deletedserver.
  
- 4. [Sunucu REST API Oluştur sayfasına](https://docs.microsoft.com/rest/api/mysql/servers/create) gidin ve yeşil renkle vurgulanmış olan "dene" sekmesine tıklayın ve Azure hesabınızla oturum açın.
+ 4. [Sunucu REST API Oluştur sayfasına](/rest/api/mysql/servers/create) gidin ve yeşil renkle vurgulanmış olan "dene" sekmesine tıklayın ve Azure hesabınızla oturum açın.
  
  5. 3. adımda yakalanan RESOURCEID özniteliğinden türetilmiş resourceGroupName, serverName (silinen sunucu adı), SubscriptionID,, API-Version, görüntüde gösterildiği gibi önceden doldurulurken.
  

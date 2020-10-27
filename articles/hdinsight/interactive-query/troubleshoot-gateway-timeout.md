@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
-ms.openlocfilehash: 809b2e383eb57b730fd76ec2194764178aa810c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aeedda5c26a2e9dc0fa2b228285cfda45d880d29
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75895042"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547393"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı Hive görünümünden sorgu çalıştırırken oluşan özel durum
 
@@ -54,13 +54,13 @@ Durumu iyileştirecek bazı genel öneriler:
 
 * Dış Hive meta veri deposu kullanıyorsanız, DB ölçümlerini denetleyin ve veritabanının aşırı yüklü olmadığından emin olun. Meta veri deposu veritabanı katmanını ölçeklendirmeyi düşünün.
 
-* Paralel Ops 'un açık olduğundan emin olun (Bu, HTTP işleyici iş parçacıklarının paralel olarak çalışmasını sağlar). Değeri doğrulamak için [Apache ambarı](../hdinsight-hadoop-manage-ambari.md) 'nı başlatın ve **Hive**  >  **configs**  >  **Gelişmiş**  >  **özel Hive-site**bölümüne gidin. Değeri `hive.server2.parallel.ops.in.session` olmalıdır `true` .
+* Paralel Ops 'un açık olduğundan emin olun (Bu, HTTP işleyici iş parçacıklarının paralel olarak çalışmasını sağlar). Değeri doğrulamak için [Apache ambarı](../hdinsight-hadoop-manage-ambari.md) 'nı başlatın ve **Hive**  >  **configs**  >  **Gelişmiş**  >  **özel Hive-site** bölümüne gidin. Değeri `hive.server2.parallel.ops.in.session` olmalıdır `true` .
 
 * Kümenin VM SKU 'sunun yük için çok küçük olmadığından emin olun. İşi birden çok küme arasında bölmeyi göz önünde bulundurun. Daha fazla bilgi için bkz. [küme türü seçme](../hdinsight-capacity-planning.md#choose-a-cluster-type).
 
 * Küme üzerinde Ranger yüklüyse, lütfen her bir sorgu için değerlendirilmesi gereken çok fazla sayıda Ranger ilkesi olup olmadığını kontrol edin. Yinelenen veya gerekmeyen ilkeleri arayın.
 
-* **HiveServer2 yığın boyutu** değerini, ambarı 'ndan denetleyin. **Hive**  >  **configs**  >  **ayarları**  >  **iyileştirmesi**' na gidin. Değerin 10 GB 'tan büyük olduğundan emin olun. Performansı iyileştirmek için gereken şekilde ayarlayın.
+* **HiveServer2 yığın boyutu** değerini, ambarı 'ndan denetleyin. **Hive**  >  **configs**  >  **ayarları**  >  **iyileştirmesi** ' na gidin. Değerin 10 GB 'tan büyük olduğundan emin olun. Performansı iyileştirmek için gereken şekilde ayarlayın.
 
 * Hive sorgusunun iyi ayarlanmış olduğundan emin olun. Daha fazla bilgi için bkz. [Azure HDInsight 'ta Apache Hive sorgularını iyileştirme](../hdinsight-hadoop-optimize-hive-query.md).
 
@@ -72,4 +72,4 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](../../azure-portal/supportability/how-to-create-azure-support-request.md)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

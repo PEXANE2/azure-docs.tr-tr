@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: b928ea8b0d05b9e1eac3c9429ec4c0ce8f88bb22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 881ec4aa36261958b566dc2d7c4d06475a76bad4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322882"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545506"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java 'da Apache Storm topolojisi oluşturma
 
@@ -26,7 +26,7 @@ Bu belgedeki adımları tamamladıktan sonra, HDInsight üzerinde Apache Storm i
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks)
+* [Java geliştirici seti (JDK) sürüm 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
 
@@ -43,7 +43,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Maven projesi oluşturma
 
-**WORDCOUNT**adlı bir Maven projesi oluşturmak için aşağıdaki komutu girin:
+**WORDCOUNT** adlı bir Maven projesi oluşturmak için aşağıdaki komutu girin:
 
 ```cmd
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
@@ -199,9 +199,9 @@ Bu bölüm eklenti, kaynak ve diğer derleme yapılandırma seçeneklerini eklem
 
     Diğer bir faydalı eklenti, [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/) derleme seçeneklerini değiştirmek için kullanılan ' dır. Maven 'nin uygulamanızın kaynağı ve hedefi için kullandığı Java sürümünü değiştirin.
 
-  * HDInsight __3,4 veya önceki sürümlerde__, kaynak ve hedef Java sürümünü __1,7__olarak ayarlayın.
+  * HDInsight __3,4 veya önceki sürümlerde__ , kaynak ve hedef Java sürümünü __1,7__ olarak ayarlayın.
 
-  * HDInsight __3,5__için, kaynak ve hedef Java sürümünü __1,8__olarak ayarlayın.
+  * HDInsight __3,5__ için, kaynak ve hedef Java sürümünü __1,8__ olarak ayarlayın.
 
   `<plugins>` `pom.xml` Apache Maven derleyicisi eklentisini dahil etmek için dosyanın bölümüne aşağıdaki metni ekleyin. Bu örnek 1,8 belirtir, bu nedenle hedef HDInsight sürümü 3,5 ' dir.
 
@@ -237,11 +237,11 @@ Bu örnek, proje () köküne kaynaklar `${basedir}` içeren bir konum olarak kay
 
 Java tabanlı Apache Storm topolojisi, bir bağımlılık olarak yazmak (veya başvuru yapmanız gereken üç bileşenden oluşur).
 
-* **Spout**: dış kaynaklardaki verileri okur ve veri akışlarını topolojiye yayar.
+* **Spout** : dış kaynaklardaki verileri okur ve veri akışlarını topolojiye yayar.
 
-* **Cıvatalar**: spolar veya diğer cıvatları tarafından yayılan akışlar üzerinde işleme yapar ve bir veya daha fazla akış yayar.
+* **Cıvatalar** : spolar veya diğer cıvatları tarafından yayılan akışlar üzerinde işleme yapar ve bir veya daha fazla akış yayar.
 
-* **Topoloji**: Spout ve cıvatların nasıl düzenlendiğini tanımlar ve topoloji için giriş noktası sağlar.
+* **Topoloji** : Spout ve cıvatların nasıl düzenlendiğini tanımlar ve topoloji için giriş noktası sağlar.
 
 ### <a name="create-the-spout"></a>Spout oluşturma
 
@@ -327,9 +327,9 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
 Cıvatalar, veri işlemeyi işler. Cıvatalar, örneğin hesaplama, kalıcılık veya dış bileşenlere konuşuyor gibi her şeyi gerçekleştirebilir. Bu topoloji iki cıvatları kullanır:
 
-* **Splitcümlesini**: **Rasgelesentencespout** tarafından tek tek sözcüklere yayılan cümleler böler.
+* **Splitcümlesini** : **Rasgelesentencespout** tarafından tek tek sözcüklere yayılan cümleler böler.
 
-* **WORDCOUNT**: her bir sözcüğün kaç kez oluştuğunu sayar.
+* **WORDCOUNT** : her bir sözcüğün kaç kez oluştuğunu sayar.
 
 #### <a name="splitsentence"></a>Splitcümlesi
 

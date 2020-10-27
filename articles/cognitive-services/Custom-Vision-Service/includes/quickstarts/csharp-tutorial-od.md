@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: 8bdfbbd0150d9b52077d9def54fcdd46e1b4caa4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a641e4cd1203fb5c110b4c9ea85ce5fd518cb199
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379802"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548101"
 ---
 .NET için Özel Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve bir nesne algılama modeli oluşturmak için örnek kodu deneyin. Bir proje oluşturacak, Etiketler ekleyecek, projeyi örnek görüntülerle eğtireceksiniz ve projenin tahmin uç nokta URL 'sini programlı bir şekilde test etmek üzere kullanacaksınız. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
@@ -21,11 +21,12 @@ ms.locfileid: "92379802"
 * Projeye Etiketler ekleyin
 * Görüntüleri karşıya yükleme ve etiketleme
 * Projeyi eğitme
+* Geçerli yinelemeyi Yayımla
 * Tahmin uç noktasını test etme
 
 [Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet) | Kitaplık kaynak kodu [(eğitim)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training) [(tahmin)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction) | Paket (NuGet) [(eğitim](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/) ) [(tahmin)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)  |  [örnekleri](https://docs.microsoft.com/samples/browse/?products=azure&term=vision&terms=vision)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual STUDIO IDE](https://visualstudio.microsoft.com/vs/) veya [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
@@ -43,11 +44,11 @@ Visual Studio 'yu kullanarak yeni bir .NET Core uygulaması oluşturun.
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler 
 
-Yeni bir proje oluşturduktan sonra, **Çözüm Gezgini** proje çözümüne sağ tıklayıp **NuGet Paketlerini Yönet**' i seçerek istemci kitaplığını yükleyebilirsiniz. Açılan paket yöneticisinde **, Seç '** i seçin, **ön sürümü dahil**et ' i işaretleyin ve ve için arama yapın `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training` `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction` . En son sürümü seçin ve ardından öğesini **yükledikten**sonra. 
+Yeni bir proje oluşturduktan sonra, **Çözüm Gezgini** proje çözümüne sağ tıklayıp **NuGet Paketlerini Yönet** ' i seçerek istemci kitaplığını yükleyebilirsiniz. Açılan paket yöneticisinde **, Seç '** i seçin, **ön sürümü dahil** et ' i işaretleyin ve ve için arama yapın `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training` `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction` . En son sürümü seçin ve ardından öğesini **yükledikten** sonra. 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `custom-vision-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `custom-vision-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs* . 
 
 ```console
 dotnet new console -n custom-vision-quickstart
@@ -92,7 +93,7 @@ Uygulamanın **ana** yönteminde, kaynağınızın anahtarı ve uç noktası iç
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz özel görüntü işleme kaynakları başarıyla dağıtılırsa, **sonraki adımlar**altında **Kaynağa Git** düğmesine tıklayın. Anahtarlarınızın ve uç noktanın **kaynak yönetimi**altında kaynakların **anahtar ve uç nokta** sayfalarında bulabilirsiniz. Eğitim ve tahmin anahtarlarınızın her ikisini de almanız gerekir.
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz özel görüntü işleme kaynakları başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtarlarınızın ve uç noktanın **kaynak yönetimi** altında kaynakların **anahtar ve uç nokta** sayfalarında bulabilirsiniz. Eğitim ve tahmin anahtarlarınızın her ikisini de almanız gerekir.
 >
 > İşiniz bittiğinde kodınızdan anahtarları kaldırmayı ve hiçbir zaman herkese açık bir şekilde göndermemeyi unutmayın. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) makalesine bakın.
 
@@ -128,7 +129,7 @@ Yeni bir yöntemde, uç noktanızı ve anahtarlarınızı kullanarak eğitim ve 
 
 ## <a name="create-a-new-custom-vision-project"></a>Yeni bir Özel Görüntü İşleme projesi oluşturma
 
-Bu sonraki küçük kod bir nesne algılama projesi oluşturur. Oluşturulan proje, [özel görüntü işleme web sitesinde](https://customvision.ai/)görünür. Projenizi oluştururken diğer seçenekleri belirtmek için bkz. [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) yöntemi ( [bir algılayıcı derleme](../../get-started-build-detector.md) Web portalı kılavuzunda açıklanmıştır).  
+Bu sonraki Yöntem bir nesne algılama projesi oluşturur. Oluşturulan proje, [özel görüntü işleme web sitesinde](https://customvision.ai/)görünür. Projenizi oluştururken diğer seçenekleri belirtmek için bkz. [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) yöntemi ( [bir algılayıcı derleme](../../get-started-build-detector.md) Web portalı kılavuzunda açıklanmıştır).  
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_create)]
 
@@ -153,7 +154,7 @@ Ardından her örnek görüntüyü bölge koordinatlarıyla karşıya yüklemek 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_upload)]
 
-Bu noktada, tüm örnek görüntülerini karşıya yüklediniz ve her birini (**çatal** veya **makas**) ilişkili bir piksel dikdörtgeniyle etiketledi.
+Bu noktada, tüm örnek görüntülerini karşıya yüklediniz ve her birini ( **çatal** veya **makas** ) ilişkili bir piksel dikdörtgeniyle etiketledi.
 
 ## <a name="train-the-project"></a>Projeyi eğitme
 
@@ -168,14 +169,14 @@ Bu yöntem, projede ilk eğitim yinelemesini oluşturur. Eğitim tamamlanana kad
 
 ## <a name="publish-the-current-iteration"></a>Geçerli yinelemeyi Yayımla
 
-Bu yöntem, modelin geçerli yinelemesini sorgulama için kullanılabilir hale getirir. Tahmin istekleri göndermek için model adını bir başvuru olarak kullanabilirsiniz. İçin kendi değerini girmeniz gerekir `predictionResourceId` . Tahmin kaynak KIMLIĞINI, kaynağın **genel bakış** sekmesinde, **abonelik kimliği**olarak listelenen Azure Portal bulabilirsiniz.
+Bu yöntem, modelin geçerli yinelemesini sorgulama için kullanılabilir hale getirir. Tahmin istekleri göndermek için model adını bir başvuru olarak kullanabilirsiniz. İçin kendi değerini girmeniz gerekir `predictionResourceId` . Tahmin kaynak KIMLIĞINI, kaynağın **genel bakış** sekmesinde, **abonelik kimliği** olarak listelenen Azure Portal bulabilirsiniz.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_publish)]
 
 
 ## <a name="test-the-prediction-endpoint"></a>Tahmin uç noktasını test etme
 
-Komut dosyasının bu bölümü, test görüntüsünü yükler, model uç noktasını sorgular ve tahmin verilerinin konsola çıktısını verir.
+Bu yöntem, test görüntüsünü yükler, model uç noktasını sorgular ve tahmin verilerinin konsola çıktısını verir.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_prediction)]
 
@@ -207,7 +208,7 @@ Making a prediction:
         scissors: 1.2% [ 0.112389535, 0.119195729, 0.658031344, 0.7023591 ]
 ```
 
-Daha sonra test görüntüsünün ( **görüntülerde/testte**bulunan) uygun şekilde etiketlendiğini ve algılama bölgesinin doğru olduğunu doğrulayabilirsiniz. Bu noktada uygulamadan çıkmak için herhangi bir tuşa basabilirsiniz.
+Daha sonra test görüntüsünün ( **görüntülerde/testte** bulunan) uygun şekilde etiketlendiğini ve algılama bölgesinin doğru olduğunu doğrulayabilirsiniz. Bu noktada uygulamadan çıkmak için herhangi bir tuşa basabilirsiniz.
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 

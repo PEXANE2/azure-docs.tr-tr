@@ -1,141 +1,216 @@
 ---
-author: areddish
+author: PatrickFarley
 ms.custom: devx-track-java
-ms.author: areddish
+ms.author: pafarley
 ms.service: cognitive-services
-ms.date: 09/15/2020
-ms.openlocfilehash: f4b64c25bff93683c79aa1aa3eb556988c798cb0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/13/2020
+ms.openlocfilehash: ea8f56202ab62954a065428e20c97d5b7c555614
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90604990"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548053"
 ---
-Bu kılavuz, bir görüntü sınıflandırma modeli oluşturmak için Java için Özel Görüntü İşleme istemci kitaplığı 'nı kullanmaya başlamanıza yardımcı olacak yönergeler ve örnek kod sağlar. Bir proje oluşturacak, Etiketler ekleyecek, projeyi eğtireceksiniz ve projenin tahmin uç nokta URL 'sini programlı bir şekilde test etmek üzere kullanacaksınız. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
+Bir görüntü sınıflandırma modeli oluşturmak için Java için Özel Görüntü İşleme istemci kitaplığı 'nı kullanmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
 > [!NOTE]
 > Kod _yazmadan bir sınıflandırma modeli derlemek_ ve eğitemak istiyorsanız, bunun yerine [tarayıcı tabanlı kılavuza](../../getting-started-build-a-classifier.md) bakın.
 
+Java için Özel Görüntü İşleme istemci kitaplığını kullanarak şunları yapın:
+
+* Yeni bir Özel Görüntü İşleme projesi oluşturma
+* Projeye Etiketler ekleyin
+* Görüntüleri karşıya yükleme ve etiketleme
+* Projeyi eğitme
+* Geçerli yinelemeyi Yayımla
+* Tahmin uç noktasını test etme
+
+[Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable) | Kitaplık kaynak kodu [(eğitim)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-training) [(tahmin)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-prediction)| Yapıt (Maven) [(eğitim)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-training/1.1.0-preview.2/jar) ( [tahmin)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-prediction/1.1.0-preview.2/jar)  | 
+ [örnekleri](https://docs.microsoft.com/samples/browse/?products=azure&terms=custom%20vision)
+
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Kendi seçtiğiniz bir Java IDE
-- [JDK 7 veya 8](https://aka.ms/azure-jdks) yüklendi.
-- [Maven](https://maven.apache.org/) yüklendi
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* [Java Development Kit 'in (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) geçerli sürümü
+* [Gradle yapı aracı](https://gradle.org/install/)veya başka bir bağımlılık Yöneticisi.
+* Azure aboneliğiniz olduktan sonra bir Özel Görüntü İşleme kaynak oluşturun ve bir <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> eğitim ve tahmin kaynağı oluşturmak ve anahtarlarınızı ve uç noktanızı almak için Azure Portal özel görüntü işleme bir kaynak oluşturun. Dağıtım için bekleyin ve **Kaynağa Git** düğmesine tıklayın.
+    * Uygulamanızı Özel Görüntü İşleme bağlamak için oluşturduğunuz kaynaklarda anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
-## <a name="get-the-custom-vision-client-library"></a>Özel Görüntü İşleme istemci kitaplığı 'nı al
+## <a name="setting-up"></a>Ayarlanıyor
 
-Java için Özel Görüntü İşleme bir görüntü analizi uygulaması yazmak için Özel Görüntü İşleme Maven paketlerine ihtiyacınız olacaktır. Bu paketler, indirileceği örnek projeye dahildir, ancak bunlara ayrı ayrı erişebilirsiniz.
+### <a name="create-a-new-gradle-project"></a>Yeni bir Gradle projesi oluşturma
 
-Özel Görüntü İşleme istemci kitaplığını Maven merkezi deposunda bulabilirsiniz:
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin. 
 
-- [Eğitim SDK’sı](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
-- [Tahmin SDK’sı](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
-
-[Bilişsel Hizmetler Java SDK'sı Örnekleri](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master) projesini kopyalayın veya indirin. **Vision/CustomVision/** klasörüne gidin.
-
-Bu Java projesi, [Özel Görüntü İşleme web sitesi](https://customvision.ai/) üzerinden erişilebilen __Sample Java Project__ adlı yeni bir Özel Görüntü İşleme görüntü sınıflandırma projesi oluşturur. Daha sonra bir sınıflandırıcıyı eğitip test etmek için görüntüleri karşıya yükler. Bu projede sınıflandırıcının, bir ağacın __Köknar__ mı yoksa __Japon Kirazı__ mı olduğunu belirlemesi hedeflenmiştir.
-
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
-
-Program, anahtar verilerinize ortam değişkenleri olarak başvuracak şekilde yapılandırılmıştır. **Vision/customvision** klasörüne gidin ve ortam değişkenlerini ayarlamak Için aşağıdaki PowerShell komutlarını girin. 
-
-> [!NOTE]
-> Windows dışı bir işletim sistemi kullanıyorsanız, yönergeler için bkz. [ortam değişkenlerini yapılandırma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) .
-
-```powershell
-$env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
-$env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
+```console
+mkdir myapp && cd myapp
 ```
 
-## <a name="examine-the-code"></a>Kodu inceleme
+`gradle init`Çalışma dizininizden komutunu çalıştırın. Bu komut, uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan *Build. Gradle. kts* de dahil olmak üzere Gradle için temel derleme dosyaları oluşturur.
 
-Java IDE'nize `Vision/CustomVision` projesini yükleyin ve _CustomVisionSamples.java_ dosyasını açın. **RunSample** metodunu bulun ve **ObjectDetection_Sample** yöntemi çağırın &mdash; . Bu yöntem, bu kılavuzda kapsanmayan nesne algılama senaryosunu yürütür. **ImageClassification_Sample** yöntemi bu örneğin birincil işlevini gerçekleştirir; yöntemin tanımına gidin ve kodu inceleyin.
+```console
+gradle init --type basic
+```
+
+Bir **DSL** seçmeniz Istendiğinde, **Kotlin** ' ı seçin.
+
+### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
+
+*Build. Gradle. kts* ' i bulun ve tercıh ettiğiniz IDE veya metin düzenleyicinizle açın. Ardından aşağıdaki derleme yapılandırması içine kopyalayın. Bu yapılandırma projeyi, giriş noktası **CustomVisionQuickstart** sınıfı olan bir Java uygulaması olarak tanımlar. Özel Görüntü İşleme kitaplıklarını içeri aktarır.
+
+```kotlin
+plugins {
+    java
+    application
+}
+application { 
+    mainClassName = "CustomVisionQuickstart"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile(group = "com.azure", name = "azure-cognitiveservices-customvision-training", version = "1.1.0-preview.2")
+    compile(group = "com.azure", name = "azure-cognitiveservices-customvision-prediction", version = "1.1.0-preview.2")
+}
+```
+
+### <a name="create-a-java-file"></a>Java dosyası oluşturma
+
+
+Çalışma dizininizden bir proje kaynak klasörü oluşturmak için aşağıdaki komutu çalıştırın:
+
+```console
+mkdir -p src/main/java
+```
+
+Yeni klasöre gidin ve *CustomVisionQuickstart. Java* adlı bir dosya oluşturun. Bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki deyimleri ekleyin `import` :
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_imports)]
+
+> [!TIP]
+> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java)'da bulabilirsiniz.
+
+
+Uygulamanın **CustomVisionQuickstart** sınıfında, kaynağınızın anahtarları ve uç noktası için değişkenler oluşturun.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_creds)]
+
+
+> [!IMPORTANT]
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz [ürün adı] kaynağı başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
+>
+> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) makalesine bakın.
+
+Uygulamanın **Main** yönteminde, bu hızlı başlangıçta kullanılan yöntemlere çağrılar ekleyin. Bunları daha sonra tanımlayacaksınız.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_maincalls)]
+
+## <a name="object-model"></a>Nesne modeli
+
+Aşağıdaki sınıflar ve arabirimler Özel Görüntü İşleme Java istemci kitaplığı 'nın bazı önemli özelliklerini işler.
+
+|Ad|Açıklama|
+|---|---|
+|[CustomVisionTrainingClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-java-stable) | Bu sınıf, modellerinizin oluşturulmasını, eğitimini ve yayımlanmasını işler. |
+|[CustomVisionPredictionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-java-stable)| Bu sınıf, görüntü sınıflandırması tahminleri için modellerinizin sorgulanmasını işler.|
+|[Imagetahmin](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.models.imageprediction?view=azure-java-stable)| Bu sınıf tek bir görüntüde tek bir tahmin tanımlar. Nesne KIMLIĞI ve adı ve Güvenirlik puanı özelliklerini içerir.|
+
+## <a name="code-examples"></a>Kod örnekleri
+
+Bu kod parçacıkları, Java için Özel Görüntü İşleme istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
+
+* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
+* [Yeni bir Özel Görüntü İşleme projesi oluşturma](#create-a-new-custom-vision-project)
+* [Projeye Etiketler ekleyin](#add-tags-to-the-project)
+* [Görüntüleri karşıya yükleme ve etiketleme](#upload-and-tag-images)
+* [Projeyi eğitme](#train-the-project)
+* [Geçerli yinelemeyi Yayımla](#publish-the-current-iteration)
+* [Tahmin uç noktasını test etme](#test-the-prediction-endpoint)
+
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+
+**Ana** yönteinizde, uç noktanızı ve anahtarlarınızı kullanarak eğitim ve tahmin istemcileri örneğini oluşturun.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_auth)]
+
 
 ## <a name="create-a-custom-vision-project"></a>Özel Görüntü İşleme projesi oluşturma
 
-Bu ilk kod parçası bir görüntü sınıflandırma projesi oluşturur. Oluşturulan proje, daha önce ziyaret ettiğiniz [Özel Görüntü İşleme web sitesinde](https://customvision.ai/) gösterilir. Projenizi oluştururken diğer seçenekleri belirtmek için bkz. [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) yöntemi aşırı yüklemeleri (sınıflandırıcı Web portalı [oluşturma](../../getting-started-build-a-classifier.md) kılavuzunda açıklanmıştır).
+T # # yeni bir Özel Görüntü İşleme projesi oluşturma
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_create)]
+Bu sonraki Yöntem bir görüntü sınıflandırma projesi oluşturur. Oluşturulan proje, daha önce ziyaret ettiğiniz [Özel Görüntü İşleme web sitesinde](https://customvision.ai/) gösterilir. Projenizi oluştururken diğer seçenekleri belirtmek için bkz. [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_&preserve-view=true) yöntemi aşırı yüklemeleri ( [bir algılayıcı derleme](../../get-started-build-detector.md) Web portalı kılavuzunda açıklanmıştır).
 
-## <a name="create-tags-in-the-project"></a>Projede etiketler oluşturma
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_create)]
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_tags)]
+## <a name="add-tags-to-your-project"></a>Projenize etiketler ekleme
+
+Bu yöntem, modelin eğiteolacağı etiketleri tanımlar.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_tags)]
 
 ## <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
 
-Örnek görüntüler, projenin **src/main/resources** klasörüne eklenmiştir. Bu görüntüler söz konusu konumdan okunur ve uygun etiketleriyle birlikte hizmete yüklenir.
+İlk olarak, bu proje için örnek görüntüleri indirin. [Örnek görüntüler klasörünün](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) içeriğini yerel cihazınıza kaydedin.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_upload)]
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_upload)]
 
 Önceki kod parçacığı, görüntüleri kaynak akışları olarak alan ve hizmete yükleyen iki yardımcı işlevden yararlanmasına neden olur (tek bir toplu işte en fazla 64 görüntü yükleyebilirsiniz).
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_helpers)]
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_helpers)]
 
-## <a name="train-and-publish-the-project"></a>Projeyi eğitme ve yayımlama
+## <a name="train-the-project"></a>Projeyi eğitme
 
-Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve ardından bu yinelemeyi tahmin uç noktasına yayınlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin uç noktasında kullanılamaz.
+Bu yöntem, projede ilk eğitim yinelemesini oluşturur. Eğitim tamamlanana kadar hizmeti sorgular.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_train)]
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_train)]
 
-## <a name="use-the-prediction-endpoint"></a>Tahmin uç noktasını kullanma
 
-Burada `predictor` nesnesiyle gösterilen tahmin uç noktası, bir görüntüyü geçerli modele göndermek ve sınıflandırma tahmini almak için kullandığınız başvurudur. Bu örnekte `predictor`, tahmin anahtarı ortam değişkeni kullanılarak başka bir yerde tanımlanır.
+## <a name="publish-the-current-iteration"></a>Geçerli yinelemeyi Yayımla
 
-[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_predict)]
+Bu yöntem, modelin geçerli yinelemesini sorgulama için kullanılabilir hale getirir. Tahmin istekleri göndermek için model adını bir başvuru olarak kullanabilirsiniz. İçin kendi değerini girmeniz gerekir `predictionResourceId` . Tahmin kaynak KIMLIĞINI, kaynağın **genel bakış** sekmesinde, **abonelik kimliği** olarak listelenen Azure Portal bulabilirsiniz.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_publish)]
+
+## <a name="test-the-prediction-endpoint"></a>Tahmin uç noktasını test etme
+
+Bu yöntem, test görüntüsünü yükler, model uç noktasını sorgular ve tahmin verilerinin konsola çıktısını verir.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_predict)]
+
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Maven kullanarak çözümü derlemek ve çalıştırmak için, bir komut isteminde proje dizinine (**Vision/customvision**) gidin ve Çalıştır komutunu yürütün:
+## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-```bash
-mvn compile exec:java
-```
-
-Uygulamanın konsol çıkışı aşağıdaki metne benzer olmalıdır:
+Uygulamayı ile oluşturabilirsiniz:
 
 ```console
-Creating project...
-Adding images...
-Adding image: hemlock_1.jpg
-Adding image: hemlock_2.jpg
-Adding image: hemlock_3.jpg
-Adding image: hemlock_4.jpg
-Adding image: hemlock_5.jpg
-Adding image: hemlock_6.jpg
-Adding image: hemlock_7.jpg
-Adding image: hemlock_8.jpg
-Adding image: hemlock_9.jpg
-Adding image: hemlock_10.jpg
-Adding image: japanese_cherry_1.jpg
-Adding image: japanese_cherry_2.jpg
-Adding image: japanese_cherry_3.jpg
-Adding image: japanese_cherry_4.jpg
-Adding image: japanese_cherry_5.jpg
-Adding image: japanese_cherry_6.jpg
-Adding image: japanese_cherry_7.jpg
-Adding image: japanese_cherry_8.jpg
-Adding image: japanese_cherry_9.jpg
-Adding image: japanese_cherry_10.jpg
-Training...
-Training status: Training
-Training status: Training
-Training status: Completed
-Done!
-        Hemlock: 93.53%
-        Japanese Cherry: 0.01%
+gradle build
 ```
 
-Bundan sonra test görüntüsü tahmininin (çıkışın son birkaç satırı) doğru olduğunu onaylayabilirsiniz.
+Uygulamayı `gradle run` komutla çalıştırın:
+
+```console
+gradle run
+```
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
+
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık, nesne algılama işleminin her adımının kodda nasıl yapılabileceğini gördünüz. Bu örnek tek bir eğitim yinelemesi yürütür, ancak genellikle modelinizi daha doğru hale getirmek için birden çok kez eğitmeniz ve test etmeniz gerekir.
+Artık görüntü sınıflandırma işleminin her adımından kodda nasıl yapılabileceğini gördünüz. Bu örnek tek bir eğitim yinelemesi yürütür, ancak genellikle modelinizi daha doğru hale getirmek için birden çok kez eğitmeniz ve test etmeniz gerekir.
 
 > [!div class="nextstepaction"]
 > [Modeli test etme ve yeniden eğitme](../../test-your-model.md)
 
 * [Özel Görüntü İşleme nedir?](../../overview.md)
-* * [SDK başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable)
+* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java) 'da bulunabilir

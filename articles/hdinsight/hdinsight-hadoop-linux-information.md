@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 1b3c694b4d6134f30d04ba8bafee9a6ffabdd959
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488121"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546118"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux’ta HDInsight kullanma ile ilgili bilgiler
 
@@ -24,9 +24,9 @@ Azure HDInsight kümeleri, Azure bulutu 'nda çalışan tanıdık bir Linux orta
 Bu belgedeki adımların birçoğu, sisteminizde yüklü olması gerekebilecek aşağıdaki yardımcı programları kullanır.
 
 * [kıvrımlı](https://curl.haxx.se/) -Web tabanlı hizmetlerle iletişim kurmak için kullanılır.
-* bir komut satırı JSON işlemcisi olan **JQ**.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) ..
+* bir komut satırı JSON işlemcisi olan **JQ** .  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) ..
 * [Azure CLI](/cli/azure/install-azure-cli) -Azure hizmetlerini uzaktan yönetmek için kullanılır.
-* **Bir SSH istemcisi**. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Bir SSH istemcisi** . Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Kullanıcılar
 
@@ -81,7 +81,7 @@ Bu komut, hizmeti açıklayan bir JSON belgesi döndürür ve ardından [JQ](htt
     >
     > Kimlik doğrulaması düz metin-bağlantının güvenli olduğundan emin olmak için her zaman HTTPS kullanın.
 
-* 22 veya 23 numaralı bağlantı noktasında **SSH** -clustername-SSH.azurehdinsight.net. 22 numaralı bağlantı noktası, ikincil sunucuya bağlanmak için 23 kullanıldığında birincil headnode 'a bağlanmak için kullanılır. Baş düğümler hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği](hdinsight-high-availability-linux.md).
+* 22 veya 23 numaralı bağlantı noktasında **SSH** -clustername-SSH.azurehdinsight.net. 22 numaralı bağlantı noktası, ikincil sunucuya bağlanmak için 23 kullanıldığında birincil headnode 'a bağlanmak için kullanılır. Baş düğümler hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği](./hdinsight-business-continuity.md).
 
     > [!NOTE]  
     > Küme baş düğümlerine yalnızca bir istemci makinesinden SSH aracılığıyla erişebilirsiniz. Bağlandıktan sonra, bir headnode 'dan SSH kullanarak çalışan düğümlerine erişebilirsiniz.
@@ -92,8 +92,8 @@ Daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop Services tarafından ku
 
 Hadoop ile ilgili dosyalar konumundaki küme düğümlerinde bulunabilir `/usr/hdp` . Bu dizin aşağıdaki alt dizinleri içerir:
 
-* **2.6.5.3009-43**: Dizin adı, HDInsight tarafından kullanılan Hadoop platformunun sürümüdür. Kümenizdeki sayı burada listelenenden farklı olabilir.
-* **geçerli**: Bu dizin, **2.6.5.3009-43** dizininde bulunan alt dizinlere bağlantılar içerir. Bu dizin, sürüm numarasını anımsamanıza gerek kalmayacak şekilde bulunur.
+* **2.6.5.3009-43** : Dizin adı, HDInsight tarafından kullanılan Hadoop platformunun sürümüdür. Kümenizdeki sayı burada listelenenden farklı olabilir.
+* **geçerli** : Bu dizin, **2.6.5.3009-43** dizininde bulunan alt dizinlere bağlantılar içerir. Bu dizin, sürüm numarasını anımsamanıza gerek kalmayacak şekilde bulunur.
 
 Örnek veri ve JAR dosyaları, ve ' de Hadoop Dağıtılmış Dosya Sistemi bulunabilir `/example` `/HdiSamples` .
 
@@ -183,13 +183,13 @@ Ayrıca, aşağıdaki adımları kullanarak Azure portal kullanarak depolama bil
 
 1. [Azure Portal](https://portal.azure.com/)HDInsight kümenizi seçin.
 
-2. **Özellikler** bölümünde **depolama hesapları**' nı seçin. Küme için depolama bilgileri görüntülenir.
+2. **Özellikler** bölümünde **depolama hesapları** ' nı seçin. Küme için depolama bilgileri görüntülenir.
 
 ### <a name="how-do-i-access-files-from-outside-hdinsight"></a>HDInsight dışından Dosya Nasıl yaparım? erişim
 
 HDInsight kümesi dışından verilere erişmenin çeşitli yolları vardır. Aşağıda, verilerle çalışmak için kullanılabilecek yardımcı programlar ve SDK 'ların birkaç bağlantısı verilmiştir:
 
-__Azure Blob depolama__kullanılıyorsa verilerinize erişebilmenizin yolları için aşağıdaki bağlantılara bakın:
+__Azure Blob depolama__ kullanılıyorsa verilerinize erişebilmenizin yolları için aşağıdaki bağlantılara bakın:
 
 * [Azure CLI](/cli/azure/install-az-cli2): Azure ile çalışmaya yönelik arabirim komutlarını Command-Line. Yükledikten sonra, `az storage` depolamayı kullanma hakkında yardım için veya `az storage blob` BLOB 'a özgü komutlar için komutunu kullanın.
 * [blobxfer.py](https://github.com/Azure/blobxfer): Azure depolama 'da bloblarla çalışmaya yönelik bir Python betiği.
@@ -201,7 +201,7 @@ __Azure Blob depolama__kullanılıyorsa verilerinize erişebilmenizin yolları i
     * [Python](https://github.com/Azure/azure-sdk-for-python)
     * [Ruby](https://github.com/Azure/azure-sdk-for-ruby)
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
-    * [Depolama REST API’si](https://msdn.microsoft.com/library/azure/dd135733.aspx)
+    * [Depolama REST API’si](/rest/api/storageservices/Blob-Service-REST-API)
 
 __Azure Data Lake Storage 1.__ kullanıyorsanız verilerinize erişebilmenizin yolları için aşağıdaki bağlantılara bakın:
 
@@ -245,7 +245,7 @@ Bir bileşenin farklı bir sürümünü kullanmak için, ihtiyacınız olan sür
 > [!IMPORTANT]
 > HDInsight kümesiyle birlikte sunulan bileşenler tam olarak desteklenir ve Microsoft Desteği bu bileşenlerle ilgili sorunları yalıtmaya ve çözmeye yardımcı olur.
 >
-> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Bu durum sorunu çözmeye veya bu teknolojinin derin uzmanlığı bulunan açık kaynaklı teknolojiler için kullanılabilir kanalları size sormaya neden olur. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [Microsoft Q&HDInsight için soru sayfası](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) [https://stackoverflow.com](https://stackoverflow.com) . Ayrıca Apache projelerinin üzerinde proje siteleri vardır [https://apache.org](https://apache.org) , örneğin: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
+> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Bu durum sorunu çözmeye veya bu teknolojinin derin uzmanlığı bulunan açık kaynaklı teknolojiler için kullanılabilir kanalları size sormaya neden olur. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [Microsoft Q&HDInsight için soru sayfası](/answers/topics/azure-hdinsight.html) [https://stackoverflow.com](https://stackoverflow.com) . Ayrıca Apache projelerinin üzerinde proje siteleri vardır [https://apache.org](https://apache.org) , örneğin: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

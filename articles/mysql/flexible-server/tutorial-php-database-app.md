@@ -8,21 +8,21 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90946787"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537941"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Öğretici: Azure App Service bir PHP (Laray) ve MySQL esnek sunucusu (Önizleme) uygulaması derleme
 
 
 :::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Esnek sunucu ile Azure 'da PHP Web uygulaması":::
 
-[Azure App Service](https://docs.microsoft.com/azure/app-service/overview) , Linux işletim sistemini kullanarak yüksek düzeyde ölçeklenebilir, kendini yayama bir Web barındırma hizmeti sağlar. Bu öğreticide, Azure 'da bir PHP uygulamasının nasıl oluşturulacağı ve bir MySQL veritabanına nasıl bağlanacağı gösterilmektedir. İşiniz bittiğinde, Linux üzerinde Azure App Service üzerinde çalışan bir [Laralevel](https://laravel.com/) uygulamanız olacaktır.
+[Azure App Service](../../app-service/overview.md) , Linux işletim sistemini kullanarak yüksek düzeyde ölçeklenebilir, kendini yayama bir Web barındırma hizmeti sağlar. Bu öğreticide, Azure 'da bir PHP uygulamasının nasıl oluşturulacağı ve bir MySQL veritabanına nasıl bağlanacağı gösterilmektedir. İşiniz bittiğinde, Linux üzerinde Azure App Service üzerinde çalışan bir [Laralevel](https://laravel.com/) uygulamanız olacaktır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Yerel MySQL ile PHP (Laralevel) uygulaması kurma
 > * MySQL esnek sunucusu oluşturma (Önizleme)
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Veri modelini güncelleştirme ve uygulamayı yeniden dağıtma
 > * Uygulamayı Azure portalında yönetme
 
-[Azure aboneliğiniz](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
+[Azure aboneliğiniz](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -96,7 +96,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>MySQL bağlantısını yapılandırma
 
-Depo kökünde *.env* adlı bir dosya oluşturun. Aşağıdaki değişkenleri *.env* dosyasına kopyalayın. _ &lt; Root_password>_ yer tutucusunu MySQL kök kullanıcısının parolasıyla değiştirin.
+Depo kökünde *.env* adlı bir dosya oluşturun. Aşağıdaki değişkenleri *.env* dosyasına kopyalayın. _&lt; Root_password>_ yer tutucusunu MySQL kök kullanıcısının parolasıyla değiştirin.
 
 ```txt
 APP_ENV=local
@@ -139,7 +139,7 @@ Bir tarayıcıda `http://localhost:8000` sayfasına gidin. Sayfaya birkaç göre
 PHP’yi durdurmak için terminale `Ctrl + C` yazın.
 
 ## <a name="create-a-mysql-flexible-server-preview"></a>MySQL esnek sunucusu oluşturma (Önizleme)
-Bu adımda, [MySQL Için Azure veritabanı esnek sunucusu](/azure/mysql) 'nda genel önizlemede olan bir MySQL veritabanı oluşturacaksınız. Daha sonra, PHP uygulamasını bu veritabanına bağlanacak şekilde yapılandırırsınız. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), komutuyla ' de bir sunucu oluşturun [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) .
+Bu adımda, [MySQL Için Azure veritabanı esnek sunucusu](../index.yml) 'nda genel önizlemede olan bir MySQL veritabanı oluşturacaksınız. Daha sonra, PHP uygulamasını bu veritabanına bağlanacak şekilde yapılandırırsınız. [Azure Cloud Shell](../../cloud-shell/overview.md), komutuyla ' de bir sunucu oluşturun [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) .
 
 ```azurecli-interactive
 az mysql flexible-server create  --resource-group myResourceGroup --public-access <IP-Address>
@@ -196,7 +196,7 @@ Bu adımda, PHP uygulamasını MySQL için Azure Veritabanı içinde oluşturdu�
 
 ### <a name="configure-the-database-connection"></a>Veritabanı bağlantısını yapılandırma
 
-Depo kökünde bir _.env.production_ dosyası oluşturun ve içine aşağıdaki değişkenleri kopyalayın. _ &lt; MySQL-Server-Name>_ yer tutucusunu hem *DB_Host* hem *DB_USERNAME*ile değiştirin.
+Depo kökünde bir _.env.production_ dosyası oluşturun ve içine aşağıdaki değişkenleri kopyalayın. _&lt; MySQL-Server-Name>_ yer tutucusunu hem *DB_Host* hem *DB_USERNAME* ile değiştirin.
 
 ```
 APP_ENV=production
@@ -272,7 +272,7 @@ git commit -m "database.php updates"
 
 Uygulamanız dağıtılmaya hazırdır.
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a>Azure’a dağıtın
 
 Bu adımda, MySQL’e bağlı PHP uygulamasını Azure App Service'e dağıtırsınız.
 
@@ -280,7 +280,7 @@ Bu adımda, MySQL’e bağlı PHP uygulamasını Azure App Service'e dağıtırs
 
 FTP ve yerel git, bir dağıtım kullanıcısı kullanarak bir Azure Web uygulamasına dağıtabilir. Dağıtım kullanıcısını yapılandırdıktan sonra tüm Azure dağıtımlarınız için kullanabilirsiniz. Hesap düzeyinde dağıtım Kullanıcı adınız ve parolanız, Azure aboneliği kimlik bilgilerinizden farklı.
 
-Dağıtım kullanıcısını yapılandırmak için, Azure Cloud Shell bölümünde [az WebApp Deployment User set](https://docs.microsoft.com/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) komutunu çalıştırın. Kullanıcı adı _ &lt;>_ ve _ &lt; parola>_ , dağıtım Kullanıcı Kullanıcı adınızla ve parolasıyla değiştirin.
+Dağıtım kullanıcısını yapılandırmak için, Azure Cloud Shell bölümünde [az WebApp Deployment User set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) komutunu çalıştırın. Kullanıcı adı _&lt;>_ ve _&lt; parola>_ , dağıtım Kullanıcı Kullanıcı adınızla ve parolasıyla değiştirin.
 
 Kullanıcı adı Azure içinde benzersiz olmalıdır ve yerel git gönderimleri için ' @ ' sembolünü içermemelidir.
 Parola en az sekiz karakter uzunluğunda olmalıdır ve şu üç öğeden ikisi vardır: harfler, rakamlar ve semboller.
@@ -293,7 +293,7 @@ JSON çıktısı, parolayı null olarak gösterir. ' Çakışma ' alırsanız. A
 
 ### <a name="create-an-app-service-plan"></a>App Service planı oluşturma
 
-Cloud Shell, [az appservice plan Create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create) komutuyla kaynak grubunda bir App Service planı oluşturun. Aşağıdaki örnek, ücretsiz fiyatlandırma katmanında (--SKU F1) ve bir Linux kapsayıcısında (--,-Linux) myAppServicePlan adlı bir App Service planı oluşturur.
+Cloud Shell, [az appservice plan Create](/cli/azure/appservice/plan#az-appservice-plan-create) komutuyla kaynak grubunda bir App Service planı oluşturun. Aşağıdaki örnek, ücretsiz fiyatlandırma katmanında (--SKU F1) ve bir Linux kapsayıcısında (--,-Linux) myAppServicePlan adlı bir App Service planı oluşturur.
 
 az appservice plan Create--Name myAppServicePlan--Resource-Group myResourceGroup--SKU F1---Linux
 
@@ -301,9 +301,9 @@ az appservice plan Create--Name myAppServicePlan--Resource-Group myResourceGroup
 
 ### <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
-MyAppServicePlan App Service planında bir [Web uygulaması](https://docs.microsoft.com/azure/app-service/overview#app-service-on-linux) oluşturun.
+MyAppServicePlan App Service planında bir [Web uygulaması](../../app-service/overview.md#app-service-on-linux) oluşturun.
 
-Cloud Shell [az WebApp Create](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) komutunu kullanabilirsiniz. Aşağıdaki örnekte, _ &lt; app-name>_ değerini genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z` , `0-9` ve `-` ). Çalışma zamanı `PHP|7.0` olarak ayarlanmıştır. Desteklenen tüm çalışma zamanlarını görmek için [az WebApp List-çalışma zamanları--Linux](https://docs.microsoft.com/cli/azure/webapp#az-webapp-list-runtimes)' u çalıştırın.
+Cloud Shell [az WebApp Create](/cli/azure/webapp#az-webapp-create) komutunu kullanabilirsiniz. Aşağıdaki örnekte, _&lt; app-name>_ değerini genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z` , `0-9` ve `-` ). Çalışma zamanı `PHP|7.0` olarak ayarlanmıştır. Desteklenen tüm çalışma zamanlarını görmek için [az WebApp List-çalışma zamanları--Linux](/cli/azure/webapp#az-webapp-list-runtimes)' u çalıştırın.
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
@@ -336,7 +336,7 @@ Git dağıtımı etkin boş bir yeni web uygulaması oluşturdunuz.
 
 App Service'te, [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) komutunu kullanıp ortam değişkenlerini _uygulama ayarları_ olarak belirlersiniz.
 
-Aşağıdaki komut `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` ve `DB_PASSWORD` uygulama ayarlarını yapılandırır. _ &lt; App-name>_ ve _ &lt; mysql-Server-Name>_ yer tutucularını değiştirin.
+Aşağıdaki komut `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` ve `DB_PASSWORD` uygulama ayarlarını yapılandırır. _&lt; App-name>_ ve _&lt; mysql-Server-Name>_ yer tutucularını değiştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
@@ -365,7 +365,7 @@ Yerel terminal penceresinde, uygulama anahtarını _.env_ dosyasına kaydetmeden
 php artisan key:generate --show
 ```
 
-Cloud Shell, komutunu kullanarak App Service uygulamasındaki uygulama anahtarını ayarlayın [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) . _ &lt; App-name>_ ve _ &lt; outputofphpartisankey: Generate>_ yer tutucuları değiştirin.
+Cloud Shell, komutunu kullanarak App Service uygulamasındaki uygulama anahtarını ayarlayın [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) . _&lt; App-name>_ ve _&lt; outputofphpartisankey: Generate>_ yer tutucuları değiştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -377,17 +377,17 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 [Laralevel uygulama yaşam döngüsü](https://laravel.com/docs/5.4/lifecycle) , uygulamanın kök dizini yerine _ortak_ dizin içinde başlar. App Service için varsayılan PHP Docker görüntüsü, Apache kullanır ve Laravel için `DocumentRoot` öğesini özelleştirmenize izin vermez. Bununla birlikte, `.htaccess` kullanarak tüm istekleri kök dizin yerine _/public_ dizinini işaret edecek şekilde yeniden yazabilirsiniz. Depo köküne bu amaçla bir `.htaccess` zaten eklenmiştir. Bununla, Laravel uygulamanız dağıtılmaya hazırdır.
 
-Daha fazla bilgi için bkz. [site kökünü değiştirme](https://docs.microsoft.com/azure/app-service/configure-language-php?pivots=platform-linux#change-site-root).
+Daha fazla bilgi için bkz. [site kökünü değiştirme](../../app-service/configure-language-php.md?pivots=platform-linux#change-site-root).
 
 ### <a name="push-to-azure-from-git"></a>Git üzerinden Azure'a gönderme
 
-Yerel terminal penceresine dönüp yerel Git deponuza bir Azure uzak deposu ekleyin. _ &lt; Deploymentlocalgiturl-from-Create-Step>_ , [Web uygulaması oluştur](#create-a-web-app)listesinden kaydettiğiniz git uzak URL 'siyle değiştirin.
+Yerel terminal penceresine dönüp yerel Git deponuza bir Azure uzak deposu ekleyin. _&lt; Deploymentlocalgiturl-from-Create-Step>_ , [Web uygulaması oluştur](#create-a-web-app)listesinden kaydettiğiniz git uzak URL 'siyle değiştirin.
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-Aşağıdaki komutla uygulamanızı dağıtmak için Azure uzak deposuna gönderin. Git kimlik bilgileri Yöneticisi kimlik bilgilerini sizden isterse, Azure portal oturum açmak için kullandığınız kimlik bilgilerini değil **dağıtım kullanıcısı yapılandırma**bölümünde oluşturduğunuz kimlik bilgilerini girdiğinizden emin olun.
+Aşağıdaki komutla uygulamanızı dağıtmak için Azure uzak deposuna gönderin. Git kimlik bilgileri Yöneticisi kimlik bilgilerini sizden isterse, Azure portal oturum açmak için kullandığınız kimlik bilgilerini değil **dağıtım kullanıcısı yapılandırma** bölümünde oluşturduğunuz kimlik bilgilerini girdiğinizden emin olun.
 
 ```bash
 git push azure master
@@ -466,7 +466,7 @@ Yerel terminal penceresinde, Laravel veritabanı geçişlerini çalıştırarak 
 php artisan migrate
 ```
 
-[Laravel adlandırma kuralına](https://laravel.com/docs/5.4/eloquent#defining-models) göre `Task` modeli (bkz. _app/Task.php_) varsayılan olarak `tasks` tablosu ile eşlenir.
+[Laravel adlandırma kuralına](https://laravel.com/docs/5.4/eloquent#defining-models) göre `Task` modeli (bkz. _app/Task.php_ ) varsayılan olarak `tasks` tablosu ile eşlenir.
 
 ### <a name="update-application-logic"></a>Uygulama mantığını güncelleştirme
 
@@ -572,6 +572,6 @@ az group delete --name myResourceGroup
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure portal kaynaklarını yönetme](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal) <br/>
+> [Azure portal kaynaklarını yönetme](../../azure-resource-manager/management/manage-resources-portal.md) <br/>
 > [!div class="nextstepaction"]
 > [Sunucunuzu yönetme](how-to-manage-server-cli.md)

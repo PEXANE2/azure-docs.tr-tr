@@ -7,18 +7,18 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d355e7557ff38c52872a89941025d33d01bd92d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fa9f9b07eb20c995bc0cf47dd3bf72f236c3112
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503319"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546832"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>PowerShell kullanarak MySQL için Azure veritabanı sunucusunda depolamayı otomatik olarak büyütme
 
 Bu makalede, bir MySQL için Azure veritabanı sunucusu depolama alanını, iş yükünü etkilemeden nasıl artırabileceğinizi açıklar.
 
-Depolama otomatik büyüme [, sunucunuzun depolama sınırına ulaşmasını](/azure/mysql/concepts-pricing-tiers#reaching-the-storage-limit) ve Salt okunabilir hale gelmesini önler. 100 GB veya daha az depolama alanı olan sunucularda, boş alan %10 ' un altında olduğunda Boyut 5 GB artar. 100 GB 'tan fazla sağlanan depolama alanı olan sunucularda, boş alan 10 GB 'ın altında olduğunda Boyut %5 oranında artar. En fazla depolama sınırı, [MySQL Için Azure veritabanı fiyatlandırma katmanlarının](/azure/mysql/concepts-pricing-tiers#storage)depolama bölümünde belirtilen şekilde uygulanır.
+Depolama otomatik büyüme [, sunucunuzun depolama sınırına ulaşmasını](./concepts-pricing-tiers.md#reaching-the-storage-limit) ve Salt okunabilir hale gelmesini önler. 100 GB veya daha az depolama alanı olan sunucularda, boş alan %10 ' un altında olduğunda Boyut 5 GB artar. 100 GB 'tan fazla sağlanan depolama alanı olan sunucularda, boş alan 10 GB 'ın altında olduğunda Boyut %5 oranında artar. En fazla depolama sınırı, [MySQL Için Azure veritabanı fiyatlandırma katmanlarının](./concepts-pricing-tiers.md#storage)depolama bölümünde belirtilen şekilde uygulanır.
 
 > [!IMPORTANT]
 > Depolamanın yalnızca yukarı ölçeklenebileceğinden, aşağı doğru ölçeklenemediğini unutmayın.

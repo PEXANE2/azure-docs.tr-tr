@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: f9e52d931f8873cebf42534fd6bf03b144e61e23
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 35f2f82b4fe6862f0d023a70b32c964698b0c0eb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974677"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547818"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight yönetim IP adresleri
 
@@ -40,10 +40,10 @@ Azure HDInsight sistem durumu ve Yönetim Hizmetleri için şu IP adreslerinden 
 
 | Kaynak IP adresi | Hedef  | Yön |
 | ---- | ----- | ----- |
-| 168.61.49.99 | \*: 443 | Inbound |
-| 23.99.5.239 | \*: 443 | Inbound |
-| 168.61.48.131 | \*: 443 | Inbound |
-| 138.91.141.162 | \*: 443 | Inbound |
+| 168.61.49.99 | \*: 443 | Gelen |
+| 23.99.5.239 | \*: 443 | Gelen |
+| 168.61.48.131 | \*: 443 | Gelen |
+| 138.91.141.162 | \*: 443 | Gelen |
 
 ## <a name="health-and-management-services-specific-regions"></a>Sistem durumu ve Yönetim Hizmetleri: belirli bölgeler
 
@@ -54,40 +54,40 @@ Kaynaklarınızın bulunduğu belirli bir Azure bölgesindeki Azure HDInsight si
 
 | Ülke | Bölge | İzin verilen kaynak IP adresleri | İzin verilen hedef | Yön |
 | ---- | ---- | ---- | ---- | ----- |
-| Asya | Doğu Asya | 23.102.235.122</br>52.175.38.134 | \*: 443 | Inbound |
-| &nbsp; | Güneydoğu Asya | 13.76.245.160</br>13.76.136.249 | \*: 443 | Inbound |
-| Avustralya | Doğu Avustralya | 104.210.84.115</br>13.75.152.195 | \*: 443 | Inbound |
-| &nbsp; | Avustralya Güneydoğu | 13.77.2.56</br>13.77.2.94 | \*: 443 | Inbound |
-| Brezilya | Brezilya Güney | 191.235.84.104</br>191.235.87.113 | \*: 443 | Inbound |
-| Kanada | Doğu Kanada | 52.229.127.96</br>52.229.123.172 | \*: 443 | Inbound |
-| &nbsp; | Orta Kanada | 52.228.37.66</br>52.228.45.222 |\*: 443 | Inbound |
-| Çin | Kuzey Çin | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | \*: 443 | Inbound |
-| &nbsp; | Doğu Çin | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | \*: 443 | Inbound |
-| &nbsp; | Çin Kuzey 2 | 40.73.37.141</br>40.73.38.172 | \*: 443 | Inbound |
-| &nbsp; | Çin Doğu 2 | 139.217.227.106</br>139.217.228.187 | \*: 443 | Inbound |
-| Avrupa | Kuzey Avrupa | 52.164.210.96</br>13.74.153.132 | \*: 443 | Inbound |
-| &nbsp; | West Europe| 52.166.243.90</br>52.174.36.244 | \*: 443 | Inbound |
-| Fransa | Orta Fransa| 20.188.39.64</br>40.89.157.135 | \*: 443 | Inbound |
-| Almanya | Orta Almanya | 51.4.146.68</br>51.4.146.80 | \*: 443 | Inbound |
-| &nbsp; | Kuzeydoğu Almanya | 51.5.150.132</br>51.5.144.101 | \*: 443 | Inbound |
-| Hindistan | Orta Hindistan | 52.172.153.209</br>52.172.152.49 | \*: 443 | Inbound |
-| &nbsp; | Güney Hindistan | 104.211.223.67<br/>104.211.216.210 | \*: 443 | Inbound |
-| Japonya | Doğu Japonya | 13.78.125.90</br>13.78.89.60 | \*: 443 | Inbound |
-| &nbsp; | Batı Japonya | 40.74.125.69</br>138.91.29.150 | \*: 443 | Inbound |
-| Güney Kore | Güney Kore - Orta | 52.231.39.142</br>52.231.36.209 | \*: 443 | Inbound |
-| &nbsp; | Güney Kore - Güney | 52.231.203.16</br>52.231.205.214 | \*: 443 | Inbound
-| Birleşik Krallık | Batı Birleşik Krallık | 51.141.13.110</br>51.141.7.20 | \*: 443 | Inbound |
-| &nbsp; | Güney Birleşik Krallık | 51.140.47.39</br>51.140.52.16 | \*: 443 | Inbound |
-| Birleşik Devletler | Central US | 13.89.171.122</br>13.89.171.124 | \*: 443 | Inbound |
-| &nbsp; | Doğu ABD | 13.82.225.233</br>40.71.175.99 | \*: 443 | Inbound |
-| &nbsp; | Orta Kuzey ABD | 157.56.8.38</br>157.55.213.99 | \*: 443 | Inbound |
-| &nbsp; | Orta Batı ABD | 52.161.23.15</br>52.161.10.167 | \*: 443 | Inbound |
-| &nbsp; | Batı ABD | 13.64.254.98</br>23.101.196.19 | \*: 443 | Inbound |
-| &nbsp; | Batı ABD 2 | 52.175.211.210</br>52.175.222.222 | \*: 443 | Inbound |
-| &nbsp; | BAE Kuzey | 65.52.252.96</br>65.52.252.97 | \*: 443 | Inbound |
-| &nbsp; | BAE Orta | 20.37.76.96</br>20.37.76.99 | \*: 443 | Inbound |
+| Asya | Doğu Asya | 23.102.235.122</br>52.175.38.134 | \*: 443 | Gelen |
+| &nbsp; | Güneydoğu Asya | 13.76.245.160</br>13.76.136.249 | \*: 443 | Gelen |
+| Avustralya | Doğu Avustralya | 104.210.84.115</br>13.75.152.195 | \*: 443 | Gelen |
+| &nbsp; | Güneydoğu Avustralya | 13.77.2.56</br>13.77.2.94 | \*: 443 | Gelen |
+| Brezilya | Brezilya Güney | 191.235.84.104</br>191.235.87.113 | \*: 443 | Gelen |
+| Kanada | Doğu Kanada | 52.229.127.96</br>52.229.123.172 | \*: 443 | Gelen |
+| &nbsp; | Orta Kanada | 52.228.37.66</br>52.228.45.222 |\*: 443 | Gelen |
+| Çin | Kuzey Çin | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | \*: 443 | Gelen |
+| &nbsp; | Doğu Çin | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | \*: 443 | Gelen |
+| &nbsp; | Çin Kuzey 2 | 40.73.37.141</br>40.73.38.172 | \*: 443 | Gelen |
+| &nbsp; | Çin Doğu 2 | 139.217.227.106</br>139.217.228.187 | \*: 443 | Gelen |
+| Avrupa | Kuzey Avrupa | 52.164.210.96</br>13.74.153.132 | \*: 443 | Gelen |
+| &nbsp; | West Europe| 52.166.243.90</br>52.174.36.244 | \*: 443 | Gelen |
+| Fransa | Orta Fransa| 20.188.39.64</br>40.89.157.135 | \*: 443 | Gelen |
+| Almanya | Orta Almanya | 51.4.146.68</br>51.4.146.80 | \*: 443 | Gelen |
+| &nbsp; | Kuzeydoğu Almanya | 51.5.150.132</br>51.5.144.101 | \*: 443 | Gelen |
+| Hindistan | Orta Hindistan | 52.172.153.209</br>52.172.152.49 | \*: 443 | Gelen |
+| &nbsp; | Güney Hindistan | 104.211.223.67<br/>104.211.216.210 | \*: 443 | Gelen |
+| Japonya | Doğu Japonya | 13.78.125.90</br>13.78.89.60 | \*: 443 | Gelen |
+| &nbsp; | Batı Japonya | 40.74.125.69</br>138.91.29.150 | \*: 443 | Gelen |
+| Güney Kore | Güney Kore - Orta | 52.231.39.142</br>52.231.36.209 | \*: 443 | Gelen |
+| &nbsp; | Güney Kore - Güney | 52.231.203.16</br>52.231.205.214 | \*: 443 | Gelen
+| Birleşik Krallık | Batı Birleşik Krallık | 51.141.13.110</br>51.141.7.20 | \*: 443 | Gelen |
+| &nbsp; | Güney Birleşik Krallık | 51.140.47.39</br>51.140.52.16 | \*: 443 | Gelen |
+| Birleşik Devletler | Central US | 13.89.171.122</br>13.89.171.124 | \*: 443 | Gelen |
+| &nbsp; | Doğu ABD | 13.82.225.233</br>40.71.175.99 | \*: 443 | Gelen |
+| &nbsp; | Orta Kuzey ABD | 157.56.8.38</br>157.55.213.99 | \*: 443 | Gelen |
+| &nbsp; | Orta Batı ABD | 52.161.23.15</br>52.161.10.167 | \*: 443 | Gelen |
+| &nbsp; | Batı ABD | 13.64.254.98</br>23.101.196.19 | \*: 443 | Gelen |
+| &nbsp; | Batı ABD 2 | 52.175.211.210</br>52.175.222.222 | \*: 443 | Gelen |
+| &nbsp; | BAE Kuzey | 65.52.252.96</br>65.52.252.97 | \*: 443 | Gelen |
+| &nbsp; | BAE Orta | 20.37.76.96</br>20.37.76.99 | \*: 443 | Gelen |
 
-Azure Kamu için kullanılacak IP adresleri hakkında daha fazla bilgi için bkz. [Azure Kamu Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) belgesi.
+Azure Kamu için kullanılacak IP adresleri hakkında daha fazla bilgi için bkz. [Azure Kamu Intelligence + Analytics](../azure-government/compare-azure-government-global-azure.md) belgesi.
 
 Daha fazla bilgi için bkz. [ağ trafiğini denetleme](./control-network-traffic.md).
 

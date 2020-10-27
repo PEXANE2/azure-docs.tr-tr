@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 527d2d8cb8086ed6b5e87417e2bc80dd52aa6e63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a47781bcdf60d863d6dcf77d70bc0ee496a51388
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82188421"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538808"
 ---
 # <a name="troubleshoot-resource-creation-failures-in-azure-hdinsight"></a>Azure HDInsight 'ta kaynak oluşturma hatalarıyla ilgili sorunları giderme
 
@@ -25,7 +25,7 @@ Azure'da kaynak grubu başına 800 dağıtımlık kota sınırı vardır. Her ka
 
 Bu sorunu çözmek için Azure portal, CLı veya PowerShell kullanarak artık gerekmeyen dağıtımları silin.
 
-Daha fazla bilgi için bkz. [Kaynak kotaları hatalarını düzeltme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).
+Daha fazla bilgi için bkz. [Kaynak kotaları hatalarını düzeltme](../azure-resource-manager/templates/error-resource-quota.md).
 
 ## <a name="error-the-maximum-node-exceeded-the-available-cores-in-this-region"></a>Hata: en fazla düğüm, bu bölgedeki kullanılabilir çekirdekleri aştı
 
@@ -33,15 +33,15 @@ Aboneliğiniz bir bölge için çekirdek sayısını sınırlandıracak şekilde
 
 Kota artırma isteğinde bulunmak için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)gidin ve **Yardım + Destek**' i seçin.
+1. [Azure Portal](https://portal.azure.com)gidin ve **Yardım + Destek** ' i seçin.
 
-1. **Yeni destek isteği**’ni seçin.
+1. **Yeni destek isteği** ’ni seçin.
 
 1. **Yeni destek isteği** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri sağlayın:
 
    * **Sorun türü:** **Hizmet ve abonelik sınırlarını (kotalar)** seçin.
    * **Abonelik:** Değiştirmek istediğiniz aboneliği seçin.
-   * **Kota türü:** **HDInsight**' ı seçin.
+   * **Kota türü:** **HDInsight** ' ı seçin.
 
 Daha fazla bilgi için bkz. [Çekirdeği artırmak için destek bileti oluşturma](hdinsight-capacity-planning.md#quotas).
 
@@ -53,4 +53,4 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](../azure-portal/supportability/how-to-create-azure-support-request.md)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

@@ -7,18 +7,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
-ms.openlocfilehash: 21d8f513ea0f749f0318b9bc5926a746f840505b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0b8b499613f8234f449e6d72f6ed6ec1f2f21287
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147824"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545421"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Azure CLI’yı kullanarak otomatik IoT cihazı ve modül yönetimi
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Azure IoT Hub otomatik cihaz yönetimi, büyük cihaz filklerin yönetilmesi için yinelenen ve karmaşık görevlerin birçoğunu otomatikleştirir. Otomatik cihaz yönetimi sayesinde, özelliklerini temel alarak bir cihaz kümesini hedefleyebilir, istenen yapılandırmayı tanımlayabilir ve ardından IoT Hub cihazları kapsama geldiğinde güncelleştirebilir. Bu güncelleştirme, bir _otomatik cihaz yapılandırması_ veya _otomatik modül yapılandırması_kullanılarak yapılır; bu işlem tamamlama ve uyumluluğu özetler, birleştirme ve çakışmaları idare etmenize ve yapılandırmaları aşamalı bir yaklaşımda kullanıma almanızı sağlar.
+Azure IoT Hub otomatik cihaz yönetimi, büyük cihaz filklerin yönetilmesi için yinelenen ve karmaşık görevlerin birçoğunu otomatikleştirir. Otomatik cihaz yönetimi sayesinde, özelliklerini temel alarak bir cihaz kümesini hedefleyebilir, istenen yapılandırmayı tanımlayabilir ve ardından IoT Hub cihazları kapsama geldiğinde güncelleştirebilir. Bu güncelleştirme, bir _otomatik cihaz yapılandırması_ veya _otomatik modül yapılandırması_ kullanılarak yapılır; bu işlem tamamlama ve uyumluluğu özetler, birleştirme ve çakışmaları idare etmenize ve yapılandırmaları aşamalı bir yaklaşımda kullanıma almanızı sağlar.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -28,7 +28,7 @@ Otomatik cihaz yönetimi, istenen özelliklerle bir dizi cihaz WINS veya modül 
 
 * **Hedef içerik** , hedeflenen cihaz TWINS veya modül TWINS 'de eklenecek veya güncelleştirilebilen istenen özellikleri tanımlar. İçerik, istenen özelliklerin değiştirilmesi için bir yol içerir.
 
-* **Ölçümler** , **başarı**, **devam**ediyor ve **hata**gibi çeşitli yapılandırma durumlarının Özet sayılarını tanımlar. Özel ölçümler, ikizi tarafından bildirilen özelliklerde sorgu olarak belirtilir.  Sistem ölçümleri, hedeflenen TWINS sayısı ve başarıyla güncelleştirilmiş TWINS sayısı gibi ikizi güncelleştirme durumunu ölçen varsayılan ölçülerdir.
+* **Ölçümler** , **başarı** , **devam** ediyor ve **hata** gibi çeşitli yapılandırma durumlarının Özet sayılarını tanımlar. Özel ölçümler, ikizi tarafından bildirilen özelliklerde sorgu olarak belirtilir.  Sistem ölçümleri, hedeflenen TWINS sayısı ve başarıyla güncelleştirilmiş TWINS sayısı gibi ikizi güncelleştirme durumunu ölçen varsayılan ölçülerdir.
 
 Yapılandırma oluşturulduktan ve sonra beş dakikalık aralıklarla otomatik yapılandırmalar ilk kez çalışır. Ölçüm sorguları otomatik yapılandırmanın her çalıştırılışında çalışır.
 
@@ -105,7 +105,7 @@ Otomatik modül yapılandırması çok benzer şekilde davranır, ancak `moduleC
 }
 ```
 
-Modüller için ölçüm sorguları Ayrıca cihaz sorgularına benzerdir, ancak ' den ' ı seçersiniz `moduleId` `devices.modules` . Örnek: 
+Modüller için ölçüm sorguları Ayrıca cihaz sorgularına benzerdir, ancak ' den ' ı seçersiniz `moduleId` `devices.modules` . Örneğin: 
 
 ```json
 {
@@ -136,7 +136,7 @@ Bir yapılandırma oluşturmak için aşağıdaki komutu kullanın:
 
 * --**hub-adı** -yapılandırmanın oluşturulacağı IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Komutuyla istenen aboneliğe geçiş yapın `az account set -s [subscription name]`
 
-* --**hedef koşul** -Bu yapılandırmayla hangi cihazların veya modüllerin hedefleneceğini belirleyen bir hedef koşul girin.Otomatik cihaz yapılandırması için, bu durum cihaz ikizi etiketlerine veya cihaz ikizi istenen özelliklere dayalıdır ve ifade biçimiyle eşleşmelidir.Örneğin `tags.environment='test'` veya `properties.desired.devicemodel='4000x'` olabilir.Otomatik modül yapılandırması için, koşul modül ikizi Tags veya Module ikizi istenen özellikleri temel alır. Örneğin `from devices.modules where tags.environment='test'` veya `from devices.modules where properties.reported.chillerProperties.model='4000x'` olabilir.
+* --**hedef koşul** -Bu yapılandırmayla hangi cihazların veya modüllerin hedefleneceğini belirleyen bir hedef koşul girin. Otomatik cihaz yapılandırması için, bu durum cihaz ikizi etiketlerine veya cihaz ikizi istenen özelliklere dayalıdır ve ifade biçimiyle eşleşmelidir. Örneğin `tags.environment='test'` veya `properties.desired.devicemodel='4000x'` olabilir. Otomatik modül yapılandırması için, koşul modül ikizi Tags veya Module ikizi istenen özellikleri temel alır. Örneğin `from devices.modules where tags.environment='test'` veya `from devices.modules where properties.reported.chillerProperties.model='4000x'` olabilir.
 
 * --**Öncelik** -pozitif bir tamsayı. İki veya daha fazla yapılandırmanın aynı cihaza veya modüle hedeflenmiş olması durumunda, öncelik için en yüksek sayısal değere sahip yapılandırma uygulanır.
 
@@ -155,7 +155,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --**hub-adı** -yapılandırmanın bulunduğu IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Komutuyla istenen aboneliğe geçiş yapın `az account set -s [subscription name]`
 
-Komut penceresinde yapılandırmayı inceleyin.**Ölçümler** özelliği her bir hub tarafından değerlendirilen her ölçüm için bir sayı listeler:
+Komut penceresinde yapılandırmayı inceleyin. **Ölçümler** özelliği her bir hub tarafından değerlendirilen her ölçüm için bir sayı listeler:
 
 * **Targetedcount** -hedefleme koşuluyla eşleşen IoT Hub cihaz TWINS veya modül TWINS sayısını belirten bir sistem ölçümü.
 
@@ -229,8 +229,7 @@ az iot hub configuration delete --config-id [configuration id] \
 Bu makalede IoT cihazlarını ölçeklendirerek nasıl yapılandıracağınızı ve izleyeceğinizi öğrendiniz. Azure IoT Hub 'yi yönetme hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin:
 
 * [IoT Hub cihaz kimliklerinizi toplu olarak yönetme](iot-hub-bulk-identity-mgmt.md)
-* [IoT Hub ölçümleri](iot-hub-metrics.md)
-* [İşlemleri izleme](iot-hub-operations-monitoring.md)
+* [IoT Hub 'ınızı izleme](monitor-iot-hub.md)
 
 IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 

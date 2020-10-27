@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: fa0ae0137064cc14d6d8f2adfe085ca255da73af
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c392ad7a098116a8f2224d6844d38dc40e01d753
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486319"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545999"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight ile betik eylemi geliştirme
 
@@ -26,7 +26,7 @@ Betik eylemleri aşağıdaki yöntemlerle uygulanabilir:
 
 | Betik uygulamak için bu yöntemi kullanın... | Küme oluşturma sırasında... | Çalışan bir kümede... |
 | --- |:---:|:---:|
-| Azure portalı |✓ |✓ |
+| Azure portal |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure Klasik CLI |&nbsp; |✓ |
 | HDInsight .NET SDK 'Sı |✓ |✓ |
@@ -256,7 +256,7 @@ Bu bölüm, kendi özel betiğinizi yazarken çalıştırabileceğiniz bazı yay
 
 Bazı durumlarda, betiğinizin parametreleri gerekebilir. Örneğin, ambarı REST API kullanılırken küme için yönetici parolası gerekebilir.
 
-Betiğe geçirilen parametreler *Konumsal parametreler*olarak bilinir ve `$1` ilk parametre için, `$2` ikincisi için atanır ve bu şekilde-açık. `$0` betiğin adını içerir.
+Betiğe geçirilen parametreler *Konumsal parametreler* olarak bilinir ve `$1` ilk parametre için, `$2` ikincisi için atanır ve bu şekilde-açık. `$0` betiğin adını içerir.
 
 Komut dosyasına parametre olarak geçirilen değerler tek tırnak (') içine alınmalıdır. Bunun yapılması, geçen değerin değişmez değer olarak değerlendirilmesini sağlar.
 
@@ -290,9 +290,9 @@ Bir kümeyi özelleştirmek için kullanılan betikler aşağıdaki konumlardan 
 
 * Kümeyle ilişkili __ek bir depolama hesabı__ .
 
-* __Genel olarak okunabilir BIR URI__. Örneğin, OneDrive, Dropbox veya diğer dosya barındırma hizmeti 'nde depolanan verilerin URL 'SI.
+* __Genel olarak okunabilir BIR URI__ . Örneğin, OneDrive, Dropbox veya diğer dosya barındırma hizmeti 'nde depolanan verilerin URL 'SI.
 
-* HDInsight kümesiyle ilişkili bir __Azure Data Lake Storage hesabı__ . HDInsight ile Azure Data Lake Storage kullanma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: HDInsight 'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* HDInsight kümesiyle ilişkili bir __Azure Data Lake Storage hesabı__ . HDInsight ile Azure Data Lake Storage kullanma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: HDInsight 'ta kümeleri ayarlama](./hdinsight-hadoop-provision-linux-clusters.md).
 
     > [!NOTE]  
     > Hizmet sorumlusu HDInsight 'ın erişim için kullandığı Data Lake Storage, betikte okuma erişiminin olması gerekir.
@@ -317,7 +317,7 @@ Aşağıda, bir betiği dağıtmaya hazırlanırken yapılacak adımlar verilmi�
 
 Aşağıdaki yöntemleri kullanarak HDInsight kümelerini özelleştirmek için betik eylemleri kullanabilirsiniz:
 
-* Azure portalı
+* Azure portal
 * Azure PowerShell
 * Azure Resource Manager şablonları
 * HDInsight .NET SDK 'Sı.
@@ -332,13 +332,13 @@ Microsoft, bir HDInsight kümesine bileşen yüklemek için örnek betikler sağ
 
 Aşağıda, geliştirmiş olduğunuz betikleri kullanırken karşılaşabileceğiniz hatalar verilmiştir:
 
-**Hata**: `$'\r': command not found` . Bazen sonrasında `syntax error: unexpected end of file` .
+**Hata** : `$'\r': command not found` . Bazen sonrasında `syntax error: unexpected end of file` .
 
-*Neden*: Bu hata, bir betikteki satırlar CRLF ile bitmediğinde oluşur. UNIX sistemleri, son satır olarak yalnızca LF bekler.
+*Neden* : Bu hata, bir betikteki satırlar CRLF ile bitmediğinde oluşur. UNIX sistemleri, son satır olarak yalnızca LF bekler.
 
 Bu sorun çoğu zaman, komut dosyası bir Windows ortamında yazıldığı için, CRLF Windows üzerinde birçok metin Düzenleyicisi için biten ortak bir satır olduğundan, çoğu zaman oluşur.
 
-*Çözüm*: metin düzenleyicinizde bir seçenek varsa, satır sonu için UNIX BIÇIMI veya LF 'yi seçin. CRLF 'yi bir LF olarak değiştirmek için bir UNIX sisteminde aşağıdaki komutları da kullanabilirsiniz:
+*Çözüm* : metin düzenleyicinizde bir seçenek varsa, satır sonu için UNIX BIÇIMI veya LF 'yi seçin. CRLF 'yi bir LF olarak değiştirmek için bir UNIX sisteminde aşağıdaki komutları da kullanabilirsiniz:
 
 > [!NOTE]  
 > Aşağıdaki komutlar, CRLF satır sonlarını LF olarak değiştirmeleri için kabaca eşdeğerdir. Sisteminizde bulunan yardımcı programlara göre birini seçin.
@@ -350,11 +350,11 @@ Bu sorun çoğu zaman, komut dosyası bir Windows ortamında yazıldığı için
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Dosyayı doğrudan değiştirir |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |ÇıKıŞDOSYASı yalnızca LF sonları olan bir sürüm içeriyor. |
 
-**Hata**: `line 1: #!/usr/bin/env: No such file or directory` .
+**Hata** : `line 1: #!/usr/bin/env: No such file or directory` .
 
-*Neden*: komut dosyası UTF-8 olarak bir bayt sırası IŞARETIYLE (BOM) kaydedildiğinde bu hata oluşur.
+*Neden* : komut dosyası UTF-8 olarak bir bayt sırası IŞARETIYLE (BOM) kaydedildiğinde bu hata oluşur.
 
-*Çözüm*: dosyayı ASCII ya da bir BOM olmadan UTF-8 olarak kaydedin. Ayrıca, bir Linux veya UNIX sisteminde, BOM olmadan bir dosya oluşturmak için aşağıdaki komutu kullanabilirsiniz:
+*Çözüm* : dosyayı ASCII ya da bir BOM olmadan UTF-8 olarak kaydedin. Ayrıca, bir Linux veya UNIX sisteminde, BOM olmadan bir dosya oluşturmak için aşağıdaki komutu kullanabilirsiniz:
 
 ```bash
 awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
@@ -366,4 +366,4 @@ awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
 * [Betik eylemi kullanarak HDInsight kümelerini özelleştirmeyi](hdinsight-hadoop-customize-cluster-linux.md) öğrenin
 * HDInsight 'ı yöneten .NET uygulamaları oluşturma hakkında daha fazla bilgi edinmek için [HDInsight .NET SDK başvurusunu](/dotnet/api/overview/azure/hdinsight) kullanın
-* HDInsight kümelerinde yönetim eylemleri gerçekleştirmek için REST 'i nasıl kullanacağınızı öğrenmek için [hdınsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) kullanın.
+* HDInsight kümelerinde yönetim eylemleri gerçekleştirmek için REST 'i nasıl kullanacağınızı öğrenmek için [hdınsight REST API](/rest/api/hdinsight/) kullanın.

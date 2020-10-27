@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
-ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71a4f2aa9bebd325b329af335985a37df5cd7263
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82786623"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547410"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight için bir sanal ağ planlayın
 
@@ -84,7 +84,7 @@ Mevcut bir Azure sanal ağına nasıl yeni HDInsight ekleneceğini saptamak içi
         Daha fazla bilgi için bkz. [ağ güvenlik grupları Ile Ilgili sorun giderme](../virtual-network/diagnose-network-traffic-filter-problem.md) belgesi.
 
         > [!IMPORTANT]  
-        > Ağ güvenlik grubu kuralları kural önceliğine göre sırayla uygulanır. Trafik düzeniyle eşleşen ilk kural uygulanır ve bu trafik için başka hiçbir uygulanmaz. En çok izin veren kuralların en az izin veren kuralları. Daha fazla bilgi için bkz. ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/security-overview.md) belgesi.
+        > Ağ güvenlik grubu kuralları kural önceliğine göre sırayla uygulanır. Trafik düzeniyle eşleşen ilk kural uygulanır ve bu trafik için başka hiçbir uygulanmaz. En çok izin veren kuralların en az izin veren kuralları. Daha fazla bilgi için bkz. ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/network-security-groups-overview.md) belgesi.
 
     * Kullanıcı tanımlı yollar
 
@@ -148,7 +148,7 @@ Birleşik ağlardaki sanal ağ ve kaynaklar arasında ad çözümlemesini etkinl
 
          * Diğer tüm istekleri şirket içi DNS sunucusuna ilet. Şirket içi DNS, diğer tüm ad çözümleme isteklerini, hatta Microsoft.com gibi internet kaynakları için istekleri işler.
 
-     * __Şirket ıçı DNS__: sanal ağ DNS son eki için ISTEKLERI özel DNS sunucusuna iletir. Özel DNS sunucusu daha sonra Azure özyinelemeli çözümleyiciye iletilir.
+     * __Şirket ıçı DNS__ : sanal ağ DNS son eki için ISTEKLERI özel DNS sunucusuna iletir. Özel DNS sunucusu daha sonra Azure özyinelemeli çözümleyiciye iletilir.
 
        Bu yapılandırma, sanal ağın DNS sonekini özel DNS sunucusuna içeren tam etki alanı adları için istekleri yönlendirir. Diğer tüm istekler (genel internet adresleri için bile) Şirket içi DNS sunucusu tarafından işlenir.
 
@@ -210,6 +210,6 @@ Bir HDInsight kümesi oluşturduğunuzda, bir yük dengeleyici de oluşturulur. 
 * Kod örnekleri ve Azure sanal ağları oluşturma örnekleri için bkz. [Azure HDInsight kümeleri için sanal ağlar oluşturma](hdinsight-create-virtual-network.md).
 * HDInsight 'ı şirket içi ağa bağlanacak şekilde yapılandırmaya yönelik uçtan uca bir örnek için bkz. HDInsight 'ı Şirket [içi ağa bağlama](./connect-on-premises-network.md).
 * Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
-* Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../virtual-network/security-overview.md).
+* Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md).
 * Kullanıcı tanımlı rotalar hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı rotalar ve IP iletimi](../virtual-network/virtual-networks-udr-overview.md).
 * Trafiği denetleme hakkında daha fazla bilgi için bkz. [ağ trafiğini denetleme](./control-network-traffic.md).

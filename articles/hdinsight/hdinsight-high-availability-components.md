@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 4d0405df1863ee47374242ba4fba5b845711d3a1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1ff7932f0afb128f6e7568ecdae602c6471db0bd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424520"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539726"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight tarafından desteklenen yüksek kullanılabilirlik Hizmetleri
 
 Analiz bileşenleriniz için en uygun düzeylerde kullanılabilirlik sağlamak amacıyla, HDInsight, önemli hizmetlerin yüksek kullanılabilirliğini sağlamak için benzersiz bir mimariye geliştirilmiştir. Bu mimarinin bazı bileşenleri, Microsoft tarafından otomatik yük devretme sağlamak üzere geliştirilmiştir. Diğer bileşenler, belirli hizmetleri desteklemek için dağıtılan standart Apache bileşenleridir. Bu makalede, HDInsight 'ta HA hizmeti modelinin mimarisi, HDInsight 'ın HA Hizmetleri için yük devretmeyi nasıl desteklediği ve diğer hizmet kesintilerinden kurtarmak için en iyi uygulamalar açıklanmaktadır.
 
 > [!NOTE]
-> Bu makale, Microsoft 'un artık kullandığı bir terim olan *bağımlı*dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
+> Bu makale, Microsoft 'un artık kullandığı bir terim olan *bağımlı* dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ## <a name="high-availability-infrastructure"></a>Yüksek kullanılabilirlik altyapısı
 
@@ -49,7 +49,7 @@ Aşağıdaki bölümler, bu hizmetlerin birlikte nasıl çalıştığı hakkınd
 
 ## <a name="hdinsight-high-availability-services"></a>HDInsight yüksek kullanılabilirlik Hizmetleri
 
-Microsoft, HDInsight kümelerinde aşağıdaki tabloda bulunan dört Apache hizmeti için destek sağlar. Bileşenlere Apache tarafından desteklenen yüksek kullanılabilirlik hizmetlerinden ayırt etmek için, *HDıNSIGHT ha Hizmetleri*olarak adlandırılırlar.
+Microsoft, HDInsight kümelerinde aşağıdaki tabloda bulunan dört Apache hizmeti için destek sağlar. Bileşenlere Apache tarafından desteklenen yüksek kullanılabilirlik hizmetlerinden ayırt etmek için, *HDıNSIGHT ha Hizmetleri* olarak adlandırılırlar.
 
 | Hizmet | Küme düğümleri | Küme türleri | Amaç |
 |---|---|---|---|
@@ -65,7 +65,7 @@ Microsoft, HDInsight kümelerinde aşağıdaki tabloda bulunan dört Apache hizm
 
 Her HDInsight kümesinin sırasıyla etkin ve bekleme modlarında iki yayın düğümü vardır. HDInsight ha Hizmetleri yalnızca baş üzerinde çalışır. Bu hizmetler her zaman etkin headnode üzerinde çalışmalıdır ve bekleme konumuna durdurulup bakım moduna konur.
 
-HA hizmetlerinin doğru durumlarını korumak ve hızlı yük devretme sağlamak için HDInsight, dağıtılmış uygulamalar için bir düzenleme hizmeti olan Apache ZooKeeper kullanır ve bu da etkin baş düğüm seçimi yürütmek için kullanılır. HDInsight, HDInsight HA Hizmetleri için yük devretme yordamını koordine eden bazı arka plan Java işlemleri de sağlar. Bu hizmetler şunlardır: Ana yük devretme denetleyicisi, bağımlı yük devretme denetleyicisi, *Master-ha-Service*ve *bağımlı-ha-Service*.
+HA hizmetlerinin doğru durumlarını korumak ve hızlı yük devretme sağlamak için HDInsight, dağıtılmış uygulamalar için bir düzenleme hizmeti olan Apache ZooKeeper kullanır ve bu da etkin baş düğüm seçimi yürütmek için kullanılır. HDInsight, HDInsight HA Hizmetleri için yük devretme yordamını koordine eden bazı arka plan Java işlemleri de sağlar. Bu hizmetler şunlardır: Ana yük devretme denetleyicisi, bağımlı yük devretme denetleyicisi, *Master-ha-Service* ve *bağımlı-ha-Service* .
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 
@@ -136,5 +136,5 @@ HDInsight HBase kümeleri, yüksek kullanılabilirlik HBase Master destekler. He
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği](hdinsight-high-availability-linux.md)
+- [HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği](./hdinsight-business-continuity.md)
 - [Azure HDInsight sanal ağ mimarisi](hdinsight-virtual-network-architecture.md)

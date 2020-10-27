@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 47450b85412e75cf632d9c2873289e9a0820beb0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fd7300fd21d20476305dc5404158f255d533ffed
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91537778"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539335"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure HDInsight 'ta Apache Spark kümesi oluşturma
 
@@ -26,7 +26,7 @@ Birden çok kümeyi birlikte kullanıyorsanız, bir sanal ağ oluşturmak isteye
 ## <a name="prerequisite"></a>Önkoşul
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [PowerShell az Module](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- [PowerShell az Module](/powershell/azure/install-az-ps).
 
 ## <a name="create-an-apache-spark-cluster-in-hdinsight"></a>HDInsight 'ta Apache Spark kümesi oluşturma
 
@@ -36,7 +36,7 @@ Birden çok kümeyi birlikte kullanıyorsanız, bir sanal ağ oluşturmak isteye
 HDInsight kümesi oluşturma işlemi, aşağıdaki Azure nesnelerinin ve kaynaklarının oluşturulmasını kapsar:
 
 - Bir Azure kaynak grubu. Azure kaynak grubu, Azure kaynakları için bir kapsayıcıdır.
-- Bir Azure depolama hesabı veya Azure Data Lake Storage.  Her HDInsight kümesi için bağımlı bir veri depolama alanı gerekir. Bu hızlı başlangıçta, küme depolama birimi olarak Azure depolama Blobları kullanan bir küme oluşturacaksınız. Data Lake Storage Gen2'yi kullanma hakkında daha fazla bilgi için bkz. [Hızlı başlangıç: HDInsight'ta kümeleri ayarlama](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+- Bir Azure depolama hesabı veya Azure Data Lake Storage.  Her HDInsight kümesi için bağımlı bir veri depolama alanı gerekir. Bu hızlı başlangıçta, küme depolama birimi olarak Azure depolama Blobları kullanan bir küme oluşturacaksınız. Data Lake Storage Gen2'yi kullanma hakkında daha fazla bilgi için bkz. [Hızlı başlangıç: HDInsight'ta kümeleri ayarlama](../hdinsight-hadoop-provision-linux-clusters.md).
 - HDInsight üzerinde farklı küme türleri kümesi.  Bu hızlı başlangıçta bir Spark 2.3 kümesi oluşturursunuz.
 
 Kaynakları oluşturmak için bir PowerShell betiği kullanırsınız. 
@@ -140,7 +140,7 @@ HDInsight kümeleri oluşturma ile ilgili bir sorun yaşıyorsanız, bunu yapmak
 
 [Jupyter Notebook](https://jupyter.org/) , çeşitli programlama dillerini destekleyen etkileşimli bir not defteri ortamıdır. Not defteri, verilerle etkileşim kurmanıza, kodu markdown metniyle birleştirmenize ve basit görselleştirmeler gerçekleştirmenize olanak sağlar.
 
-1. [Azure Portal](https://portal.azure.com), **HDInsight kümelerini**arayın ve seçin.
+1. [Azure Portal](https://portal.azure.com), **HDInsight kümelerini** arayın ve seçin.
    
    ![Ekran görüntüsünde, H D Insight Azure portal araması gösterilmektedir.](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png)
    
@@ -148,11 +148,11 @@ HDInsight kümeleri oluşturma ile ilgili bir sorun yaşıyorsanız, bunu yapmak
    
    ![Ekran görüntüsü, oluşturduğunuz kümeyle H-Insight kümelerini gösterir.](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png)
    
-1. Küme **genel bakış** sayfasında, **küme panoları**' nı seçin ve ardından **Jupyter Notebook**' yi seçin. İstendiğinde, küme için küme oturum açma kimlik bilgilerini girin.
+1. Küme **genel bakış** sayfasında, **küme panoları** ' nı seçin ve ardından **Jupyter Notebook** ' yi seçin. İstendiğinde, küme için küme oturum açma kimlik bilgilerini girin.
 
    ![Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook açın](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook açın")
 
-1. **New**  >  Bir not defteri oluşturmak için yeni**pyspark** ' ı seçin.
+1. **New**  >  Bir not defteri oluşturmak için yeni **pyspark** ' ı seçin.
 
    ![Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook oluşturma](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook oluşturma")
 
@@ -174,7 +174,7 @@ SQL (Yapılandırılmış Sorgu Dili), veri sorgulama ve tanımlama için en ço
     SHOW TABLES
     ```
 
-    HDInsight 'ta Spark kümeniz ile bir Jupyter Notebook kullandığınızda, `sqlContext` Spark SQL kullanarak Hive sorguları çalıştırmak için kullanabileceğiniz bir önayar alırsınız. `%%sql`, Hive sorgusunu çalıştırmak için Jupyter Not Defteri’ne `sqlContext` ön ayarını kullanmasını söyler. Sorgu, varsayılan olarak tüm HDInsight kümelerinde sağlanan Hive tablosundaki (**hivesampletable**) ilk 10 satırı getirir. Sonuçları almak 30 saniye kadar sürer. Çıktı şuna benzer:
+    HDInsight 'ta Spark kümeniz ile bir Jupyter Notebook kullandığınızda, `sqlContext` Spark SQL kullanarak Hive sorguları çalıştırmak için kullanabileceğiniz bir önayar alırsınız. `%%sql`, Hive sorgusunu çalıştırmak için Jupyter Not Defteri’ne `sqlContext` ön ayarını kullanmasını söyler. Sorgu, varsayılan olarak tüm HDInsight kümelerinde sağlanan Hive tablosundaki ( **hivesampletable** ) ilk 10 satırı getirir. Sonuçları almak 30 saniye kadar sürer. Çıktı şuna benzer:
 
     ![HDInsight 'ta Spark 'ta sorgu Apache Hive](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query.png "HDInsight Spark 'ta Hive sorgusu")
 
@@ -191,17 +191,17 @@ SQL (Yapılandırılmış Sorgu Dili), veri sorgulama ve tanımlama için en ço
 
     ![HDInsight 'ta Hive sorgusu çıkışı](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query-output.png "HDInsight 'ta Hive sorgusu çıkışı")
 
-1. Not defterindeki **Dosya** menüsünden **Kapat ve Durdur**’u seçin. Not defterini kapatmak, küme kaynaklarını serbest bırakır.
+1. Not defterindeki **Dosya** menüsünden **Kapat ve Durdur** ’u seçin. Not defterini kapatmak, küme kaynaklarını serbest bırakır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 HDInsight, verilerinizi Azure Depolama’da veya Azure Data Lake Storage’da depolar, böylece kullanılmadığında bir kümeyi güvenle silebilirsiniz. Ayrıca, kullanılmıyorken dahi HDInsight kümesi için sizden ücret kesilir. Küme ücretleri depolama ücretlerinin birkaç katı olduğundan, kullanılmadığında kümelerin silinmesi mantıklı olandır. [Sonraki adımlar](#next-steps) içinde listelenen öğretici üzerinde hemen çalışmayı planlıyorsanız, kümeyi tutmak isteyebilirsiniz.
 
-Azure portalına geri dönüp **Sil**’i seçin.
+Azure portalına geri dönüp **Sil** ’i seçin.
 
 ![HDInsight kümesini silme Azure portal](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 
-Kaynak grubu adını seçerek de kaynak grubu sayfasını açabilir ve sonra **Kaynak grubunu sil**’i seçebilirsiniz. Kaynak grubunu silerek, hem HDInsight kümesini hem de varsayılan depolama hesabını silersiniz.
+Kaynak grubu adını seçerek de kaynak grubu sayfasını açabilir ve sonra **Kaynak grubunu sil** ’i seçebilirsiniz. Kaynak grubunu silerek, hem HDInsight kümesini hem de varsayılan depolama hesabını silersiniz.
 
 ### <a name="piecemeal-clean-up-with-powershell-az-module"></a>PowerShell az Module ile öbek Temizleme
 

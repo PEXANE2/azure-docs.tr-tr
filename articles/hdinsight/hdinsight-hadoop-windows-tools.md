@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: a663eb65bcd85a1b2e91e6f2ad90dc64b61273ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6482b2ec07a0473ddbea2098d37c5d67c8b68704
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484772"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539709"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Windows BILGISAYARDAN HDInsight üzerinde Apache Hadoop ekosisteminde çalışma
 
@@ -31,17 +31,17 @@ PowerShell ile gerçekleştirebileceğiniz görev örnekleri:
 * [PowerShell kullanarak Apache Hive sorguları çalıştırın](hadoop/apache-hadoop-use-hive-powershell.md).
 * [Kümeleri PowerShell Ile yönetin](hdinsight-administer-use-powershell.md).
 
-En son sürümü almak için [Azure PowerShell 'i yüklemek ve yapılandırmak](https://docs.microsoft.com/powershell/azure/install-az-ps) için adımları izleyin.
+En son sürümü almak için [Azure PowerShell 'i yüklemek ve yapılandırmak](/powershell/azure/install-az-ps) için adımları izleyin.
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>Bir tarayıcıda çalıştırabileceğiniz yardımcı programlar
 
 Aşağıdaki yardımcı programlar bir tarayıcıda çalışan bir Web Kullanıcı arabirimine sahiptir:
-* **[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)** , tarayıcınızda ve Azure Portal içinden çalışan etkileşimli, komut satırı kabuğudur.
+* **[Azure Cloud Shell](../cloud-shell/overview.md)** , tarayıcınızda ve Azure Portal içinden çalışan etkileşimli, komut satırı kabuğudur.
 
 * **[Apache ambarı Web Kullanıcı arabirimi](hdinsight-hadoop-manage-ambari.md)** , farklı türlerde işleri yönetmek için kullanılabilecek Azure Portal kullanılabilen bir yönetim ve izleme yardımcı programıdır:
     * [REST API ile Apache ambarı 'nı kullanma](hdinsight-hadoop-manage-ambari-rest-api.md)
     * [Apache ambarı 'nda Apache Hive görünümü](hadoop/apache-hadoop-use-hive-ambari-view.md)
-    * [Apache ambarı 'nda Apache Tez görünümü](hdinsight-debug-ambari-tez-view.md)
+    * [Apache ambarı 'nda Apache Tez görünümü](./index.yml)
 
 ## <a name="data-lake-hadoop-tools-for-visual-studio"></a>Visual Studio için Data Lake (Hadoop) araçları
 
@@ -84,7 +84,7 @@ HDInsight 'ta Apache Spark kümeleri, Jupyter Not defterleri ile kullanılabilen
 
 Yalnızca Linux 'ta kullanılabilen bir araç veya teknolojiyi kullanmanız gereken bir durumda geliyorsa, aşağıdaki seçenekleri göz önünde bulundurun:
 
-* **Windows 10 üzerinde Ubuntu 'Da Bash** , Windows 'Ta bir Linux alt sistemi sağlar. Bash, adanmış bir Linux yüklemesini sürdürmenize gerek kalmadan doğrudan Linux yardımcı programlarını çalıştırmanızı sağlar. Yükleme adımları için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](https://docs.microsoft.com/windows/wsl/install-win10) .  Diğer [UNIX kabukları](https://www.gnu.org/software/bash/) de çalışacaktır.
+* **Windows 10 üzerinde Ubuntu 'Da Bash** , Windows 'Ta bir Linux alt sistemi sağlar. Bash, adanmış bir Linux yüklemesini sürdürmenize gerek kalmadan doğrudan Linux yardımcı programlarını çalıştırmanızı sağlar. Yükleme adımları için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](/windows/wsl/install-win10) .  Diğer [UNIX kabukları](https://www.gnu.org/software/bash/) de çalışacaktır.
 * **Docker for Windows** , Linux tabanlı birçok araca erişim sağlar ve doğrudan Windows 'tan çalıştırılabilir. Örneğin, Docker kullanarak Hive için Beeline istemcisini doğrudan Windows 'tan çalıştırabilirsiniz. Docker 'ı yerel bir Jupyter Not defteri çalıştırmak ve HDInsight 'ta Spark 'a uzaktan bağlanmak için de kullanabilirsiniz. [Docker for Windows kullanmaya başlayın](https://docs.docker.com/docker-for-windows/)
 * **[MobaXterm](https://mobaxterm.mobatek.net/)** , bir SSH bağlantısı üzerinden küme dosya sistemine grafik olarak göz atmanıza olanak sağlar.
 

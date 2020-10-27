@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/11/2020
-ms.openlocfilehash: 452a3b04637126b40aca907178bebd6f74ec4481
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86d951089e4247d9b959476c812b98e170d92bd8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79365806"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547988"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>HDInsight'ta Kurumsal Güvenlik Paketini Kullanma
 
@@ -57,7 +57,7 @@ Daha fazla bilgi için bkz. [Azure AD DS kullanarak HDInsight KÜMELERINI ESP Il
 
 Etki alanınız için bir şirket içi Active Directory örneğiniz veya daha karmaşık Active Directory kurulumlarınız varsa, Azure AD Connect kullanarak bu kimlikleri Azure AD 'ye eşitleyebilirsiniz. Daha sonra, bu Active Directory kiracısında Azure AD DS 'yi etkinleştirebilirsiniz.
 
-Kerberos, parola karmalarını kullandığından, [Azure AD DS Parola karması eşitlemesini etkinleştirmeniz](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)gerekir.
+Kerberos, parola karmalarını kullandığından, [Azure AD DS Parola karması eşitlemesini etkinleştirmeniz](../../active-directory-domain-services/tutorial-create-instance.md)gerekir.
 
 Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ile Federasyon kullanıyorsanız, parola karma eşitlemesini etkinleştirmeniz gerekir. (Önerilen bir kurulum için [Bu videoya](https://youtu.be/qQruArbu2Ew)bakın.) Parola karması eşitleme, AD FS altyapınızın başarısız olması durumunda olağanüstü durum kurtarma ile yardımcı olur ve ayrıca sızdırılan kimlik bilgisi koruma sağlamaya yardımcı olur. Daha fazla bilgi için bkz. [Azure AD Connect Sync ile parola karma eşitlemesini etkinleştirme](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
 
@@ -65,7 +65,7 @@ Azure AD ve Azure AD DS olmadan yalnızca IaaS VM 'lerinde şirket içi Active D
 
 Federasyon kullanılıyorsa ve parola karmaları doğru şekilde eşitlendiğinde, ancak kimlik doğrulama hatalarıyla karşılaşırsanız, PowerShell hizmet sorumlusu için bulut parolası kimlik doğrulamasının etkinleştirilip etkinleştirilmediğini denetleyin. Aksi takdirde, Azure AD kiracınız için bir [giriş bölgesi bulma (HRD) ilkesi](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) ayarlamanız gerekir. HRD ilkesini denetlemek ve ayarlamak için:
 
-1. Önizleme [Azure AD PowerShell modülünü](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)yükler.
+1. Önizleme [Azure AD PowerShell modülünü](/powershell/azure/active-directory/install-adv2)yükler.
 
    ```powershell
    Install-Module AzureAD

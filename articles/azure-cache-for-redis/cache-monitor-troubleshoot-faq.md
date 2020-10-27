@@ -6,17 +6,17 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 2149d069ce9cb0b636e461d19963f413b162bc9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e96c73578a9341f67d90cd4482ed75179c6886d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010897"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537533"
 ---
 # <a name="azure-cache-for-redis-monitoring-and-troubleshooting-faqs"></a>Redsıs izleme ve sorun giderme için Azure önbelleği
 Bu makalede redin için Azure önbelleğini izleme ve sorunlarını giderme hakkında sık sorulan soruların yanıtları sunulmaktadır.
 
-## <a name="common-questions-and-answers"></a>Yaygın sorular ve yanıtları
+## <a name="common-questions-and-answers"></a>Sık sorulan sorular ve yanıtları
 Bu bölümde aşağıdaki SSS ele alınmaktadır:
 
 * [Nasıl yaparım? önbelleğim sistem durumunu ve performansını izlemek mi?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
@@ -29,7 +29,7 @@ Redsıs örnekleri için Microsoft Azure önbelleği [Azure Portal](https://port
 Redsıs **Kaynak menüsü** Için Azure önbelleği, önbelleğinizi izlemek ve sorunlarını gidermek için çeşitli araçlar içerir.
 
 * **Sorunları tanılama ve** çözme, yaygın sorunlar ve bunları çözmeye yönelik stratejiler hakkında bilgi sağlar.
-* **Kaynak sistem durumu** , kaynağınızı izler ve beklendiği gibi çalışıp çalışmadığını bildirir. Azure Kaynak sistem durumu hizmeti hakkında daha fazla bilgi için bkz. [Azure Kaynak durumu genel bakış](../resource-health/resource-health-overview.md).
+* **Kaynak sistem durumu** , kaynağınızı izler ve beklendiği gibi çalışıp çalışmadığını bildirir. Azure Kaynak sistem durumu hizmeti hakkında daha fazla bilgi için bkz. [Azure Kaynak durumu genel bakış](../service-health/resource-health-overview.md).
 * **Yeni destek isteği** önbelleğiniz için bir destek isteği açma seçenekleri sağlar.
 
 Bu araçlar, Redsıs örnekleri için Azure önbelleğinizin durumunu izlemenize ve önbelleğe alma uygulamalarınızı yönetmenize yardımcı olur. Daha fazla bilgi için [Azure önbelleğini redsıs için yapılandırma](cache-configure.md)konusunun "destek & sorun giderme ayarları" bölümüne bakın.

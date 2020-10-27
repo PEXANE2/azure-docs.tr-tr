@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: d3d5ced5860c14e9e4d522c42ffd0bc71341a9c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac252c3898eb014885bf9a6bf6bdedb7db74fb62
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941379"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545846"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı ile ilgili ölçümler hakkında uyarı ayarlamak için Azure portal kullanın-esnek sunucu
 
@@ -30,9 +30,9 @@ Bir uyarıyı, tetiklendiğinde aşağıdaki eylemleri yapmak üzere yapılandı
 
 Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
 
-* [Azure portalındaki](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#create-with-azure-portal)
-* [Azure CLI](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#with-azure-cli)
-* [Azure İzleyici REST API'si](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure Portal](../../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure İzleyici REST API'si](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure portal bir ölçümde uyarı kuralı oluşturma
 
@@ -50,7 +50,7 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
 
    :::image type="content" source="./media/howto-alert-on-metrics/6-configure-signal-logic.png" alt-text="Uyarı kurallarını seçin":::
 
-7. **Koşul** (örn.) gibi uyarı mantığını yapılandırın. "Büyüktür"), **eşik** (örn. yüzde 85), **zaman toplama**, ölçüm kuralının uyarı tetikleyiciden önce karşılanması **gereken süre (** örn. "Son 30 dakika içinde") ve **Sıklık**.
+7. **Koşul** (örn.) gibi uyarı mantığını yapılandırın. "Büyüktür"), **eşik** (örn. yüzde 85), **zaman toplama** , ölçüm kuralının uyarı tetikleyiciden önce karşılanması **gereken süre (** örn. "Son 30 dakika içinde") ve **Sıklık** .
 
    Tamamlandığında **bitti** ' yi seçin.
 
@@ -80,5 +80,5 @@ Bir uyarı oluşturduktan sonra, bunu seçebilir ve aşağıdaki eylemleri gerç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Uyarılarda Web kancalarını yapılandırma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-webhooks)hakkında daha fazla bilgi edinin.
-* Hizmetinizin kullanılabilir olduğundan ve yanıt verebilmesini sağlamak için [ölçüm koleksiyonuna genel bakış](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-how-to-customize-monitoring) alın.
+* [Uyarılarda Web kancalarını yapılandırma](../../azure-monitor/platform/alerts-webhooks.md)hakkında daha fazla bilgi edinin.
+* Hizmetinizin kullanılabilir olduğundan ve yanıt verebilmesini sağlamak için [ölçüm koleksiyonuna genel bakış](../../azure-monitor/platform/data-platform.md) alın.

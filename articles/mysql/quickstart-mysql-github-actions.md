@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 7b4620c739b2f94cb6b96743280cd1decbbb746e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ce045da7d21c2af0dfde5ee896b4f7f343ce6545
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326199"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541273"
 ---
 # <a name="use-github-actions-to-connect-to-azure-mysql"></a>Azure MySQL 'e bağlanmak için GitHub eylemlerini kullanma
 
 [MySQL Için Azure veritabanı](https://azure.microsoft.com/services/mysql/)'na veritabanı güncelleştirmelerini dağıtmak üzere bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/actions) ile çalışmaya başlayın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şunlara ihtiyacınız vardır: 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -39,7 +39,7 @@ Dosya iki bölümden oluşur:
 
 ## <a name="generate-deployment-credentials"></a>Dağıtım kimlik bilgileri oluştur
 
-[Azure CLI](/cli/azure/)'de [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) komutuyla bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) veya **deneyin** düğmesini seçerek çalıştırın.
+[Azure CLI](/cli/azure/)'de [az ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac&preserve-view=true) komutuyla bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) veya **deneyin** düğmesini seçerek çalıştırın.
 
 Yer tutucuları `server-name` Azure 'da barındırılan MySQL sunucunuzun adıyla değiştirin. Ve öğesini `subscription-id` `resource-group` MySQL sunucunuza bağlı abonelik kimliği ve kaynak grubuyla değiştirin.  
 
@@ -66,7 +66,7 @@ Yer tutucuları `server-name` Azure 'da barındırılan MySQL sunucunuzun adıyl
 
 ## <a name="copy-the-mysql-connection-string"></a>MySQL bağlantı dizesini Kopyala 
 
-Azure Portal, MySQL için Azure veritabanı sunucusuna gidin ve **Ayarlar**  >  **bağlantı dizeleri**' ni açın. **ADO.NET** bağlantı dizesini kopyalayın. Ve için yer tutucu değerlerini `your_database` değiştirin `your_password` . Bağlantı dizesi şuna benzer olacaktır. 
+Azure Portal, MySQL için Azure veritabanı sunucusuna gidin ve **Ayarlar**  >  **bağlantı dizeleri** ' ni açın. **ADO.NET** bağlantı dizesini kopyalayın. Ve için yer tutucu değerlerini `your_database` değiştirin `your_password` . Bağlantı dizesi şuna benzer olacaktır. 
 
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;
@@ -77,7 +77,7 @@ Bağlantı dizesini GitHub parolası olarak kullanacaksınız.
 
 1. [GitHub](https://github.com/)'da deponuza gözatamazsınız.
 
-1. **Yeni gizli > > ayarlar**' ı seçin.
+1. **Yeni gizli > > ayarlar** ' ı seçin.
 
 1. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını verin `AZURE_CREDENTIALS` .
 
@@ -98,7 +98,7 @@ Bağlantı dizesini GitHub parolası olarak kullanacaksınız.
 
 1. GitHub deponuz için **eylemlere** gidin. 
 
-2. **İş akışınızı kendiniz ayarlama**seçeneğini belirleyin. 
+2. **İş akışınızı kendiniz ayarlama** seçeneğini belirleyin. 
 
 2. `on:`İş akışı dosyanızın bölümünden sonraki her şeyi silin. Örneğin, kalan iş akışınız şöyle görünebilir. 
 
@@ -191,4 +191,4 @@ Azure MySQL veritabanınıza ve deponuza artık gerek duyulmadığında, kaynak 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure ve GitHub tümleştirmesi hakkında bilgi edinin](https://docs.microsoft.com/azure/developer/github/)
+> [Azure ve GitHub tümleştirmesi hakkında bilgi edinin](/azure/developer/github/)

@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e7765e077638c85c0cefe394a10cc22fe2b0b757
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 30ce2247207b34ab63df5b32b2a96f27256afdbb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147773"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547801"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub terimlerin sözlüğü
 
@@ -38,7 +38,7 @@ Azure IoT Hub otomatik cihaz yönetimi, büyük cihaz filliklerini tümüyle ya�
 
 [Klasik Azure CLI](/cli/azure/install-classic-cli) , Microsoft Azure Kaynak oluşturmak ve yönetmek için platformlar arası, açık kaynaklı, kabuk tabanlı bir komut aracıdır. CLı 'nın bu sürümü yalnızca klasik dağıtımlar için kullanılmalıdır.
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 [Azure CLI](/cli/azure/install-az-cli2) , Microsoft Azure Kaynak oluşturmak ve yönetmek için platformlar arası, açık kaynaklı, kabuk tabanlı bir komut aracıdır.
 
@@ -60,7 +60,7 @@ Bir IoT Hub ile etkileşime geçen [arka uç uygulamaları](#back-end-app) oluş
 
 ## <a name="azure-portal"></a>Azure portal
 
-[Microsoft Azure Portal](https://portal.azure.com) , Azure kaynaklarınızı sağlayabileceğiniz ve yönetebileceğiniz merkezi bir yerdir. Dikey _pencereleri kullanarak içeriğini_düzenler.
+[Microsoft Azure Portal](https://portal.azure.com) , Azure kaynaklarınızı sağlayabileceğiniz ve yönetebileceğiniz merkezi bir yerdir. Dikey _pencereleri kullanarak içeriğini_ düzenler.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -178,7 +178,7 @@ Bir [cihaz ikizi](iot-hub-devguide-device-twins.md) , meta veriler, konfigürasy
 
 [Doğrudan yöntem](iot-hub-devguide-direct-methods.md) , IoT Hub 'ıNıZDA bir API çağırarak bir cihazdaki bir yöntemi yürütmek için bir yöntem tetiklemeniz için bir yoldur.
 
-## <a name="endpoint"></a>Uç Noktası
+## <a name="endpoint"></a>Uç Nokta
 
 IoT Hub 'ı, uygulamalarınızın IoT Hub 'ına bağlanmasını sağlayan birden çok [uç nokta](iot-hub-devguide-endpoints.md) sunar. Cihazların, [cihazdan buluta](#device-to-cloud) iletileri gönderme ve [buluttan cihaza](#cloud-to-device) iletileri alma gibi işlemleri gerçekleştirmesini sağlayan cihaza yönelik uç noktalar vardır. [Arka uç uygulamalarının](#back-end-app) [cihaz kimlik](#device-identity) yönetimi ve cihaz ikizi yönetimi gibi işlemleri gerçekleştirmesini sağlayan hizmete yönelik yönetim uç noktaları vardır. Cihazdan buluta iletileri okumak için hizmete yönelik [yerleşik uç noktalar](#built-in-endpoints) vardır. Bir [yönlendirme kuralı](#routing-rules)tarafından dağıtılan cihazdan buluta iletileri almak için [Özel uç noktalar](#custom-endpoints) oluşturabilirsiniz.
 
@@ -218,7 +218,7 @@ IoT Hub, milyonlarca cihaz ile bir çözüm arka ucu arasında güvenilir ve gü
 
 ## <a name="iot-hub-metrics"></a>IoT Hub ölçümleri
 
-[IoT Hub ölçümler](iot-hub-metrics.md) , [Azure aboneliğinizdeki](#subscription)IoT Hub 'larının durumu hakkında size veri sağlar. IoT Hub ölçümler, hizmetin ve ona bağlı cihazların genel sistem durumunu değerlendirmenizi sağlar. IoT Hub ölçümler, IoT Hub 'ınız ile neler olduğunu görmenizi ve Azure desteği ile iletişim kurmaya gerek kalmadan kök neden sorunlarını araştırmanıza yardımcı olabilir.
+[IoT Hub ölçümler](monitor-iot-hub-reference.md#metrics) , [Azure aboneliğinizdeki](#subscription)IoT Hub 'larının durumu hakkında size veri sağlar. IoT Hub ölçümler, hizmetin ve ona bağlı cihazların genel sistem durumunu değerlendirmenizi sağlar. IoT Hub ölçümler, IoT Hub 'ınız ile neler olduğunu görmenizi ve Azure desteği ile iletişim kurmaya gerek kalmadan kök neden sorunlarını araştırmanıza yardımcı olabilir. Daha fazla bilgi için bkz. [izleyici IoT Hub](monitor-iot-hub.md).
 
 ## <a name="iot-hub-query-language"></a>IoT Hub sorgu dili
 
