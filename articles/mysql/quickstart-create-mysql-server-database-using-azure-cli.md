@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a7d69ae15e72133e08b3e66de607aa06fefdbd32
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 161d1c95507d366ce00f75580a100fd2607675d9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87495397"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544027"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak MySQL için Azure veritabanı sunucusu oluşturma
 
 > [!TIP]
 > Daha basit [az MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI komutunu kullanmayı düşünün (Şu anda önizleme aşamasındadır). [Hızlı](./quickstart-create-server-up-azure-cli.md)başlangıcı deneyin.
 
-Bu hızlı başlangıçta, beş dakikada bir MySQL için Azure veritabanı sunucusu oluşturmak üzere [Azure Cloud Shell](https://shell.azure.com) ' de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) komutlarının nasıl kullanılacağı gösterilmektedir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Bu hızlı başlangıçta, beş dakikada bir MySQL için Azure veritabanı sunucusu oluşturmak üzere [Azure Cloud Shell](https://shell.azure.com) ' de [Azure CLI](/cli/azure/get-started-with-azure-cli) komutlarının nasıl kullanılacağı gösterilmektedir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -30,13 +30,13 @@ Bu hızlı başlangıçta, beş dakikada bir MySQL için Azure veritabanı sunuc
 ## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, Azure CLı sürüm 2,0 veya üstünü yerel olarak çalıştırıyor olmanız gerekir. Yüklü sürümü görmek için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
-[Az Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu kullanarak hesabınızda oturum açmanız gerekir. Azure hesabınızın **ABONELIK kimliğini** ifade eden **ID** özelliğine göz önüne alın. 
+[Az Login](/cli/azure/reference-index#az-login) komutunu kullanarak hesabınızda oturum açmanız gerekir. Azure hesabınızın **ABONELIK kimliğini** ifade eden **ID** özelliğine göz önüne alın. 
 
 ```azurecli-interactive
 az login
 ```
 
-[Az Account set](/cli/azure/account) komutunu kullanarak hesabınız altındaki belirli bir aboneliği seçin. Komutta **abonelik** bağımsız değişkeninin değeri olarak kullanılacak **az Login** çıktısından **ID** değerini bir yere unutmayın. Birden fazla aboneliğiniz varsa kaynağın faturalanacağı uygun aboneliği seçin. Aboneliğinizi tamamen almak için [az Account List](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)kullanın.
+[Az Account set](/cli/azure/account) komutunu kullanarak hesabınız altındaki belirli bir aboneliği seçin. Komutta **abonelik** bağımsız değişkeninin değeri olarak kullanılacak **az Login** çıktısından **ID** değerini bir yere unutmayın. Birden fazla aboneliğiniz varsa kaynağın faturalanacağı uygun aboneliği seçin. Aboneliğinizi tamamen almak için [az Account List](/cli/azure/account#az-account-list)kullanın.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -62,9 +62,9 @@ Yukarıdaki bağımsız değişkenlerin ayrıntıları aşağıda verilmiştir:
 name | mydemoserver | MySQL için Azure veritabanı sunucunuz için benzersiz bir ad girin. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ila 63 karakter arası içermelidir.
 resource-group | myresourcegroup | Azure kaynak grubunun adını sağlayın.
 location | westus | Sunucu için Azure konumu.
-admin-user | myadmin | Yöneticinin oturum açma kullanıcı adı. Şu değerler kullanılamaz: **azure_superuser**, **admin**, **administrator**, **root**, **guest** veya **public**.
+admin-user | myadmin | Yöneticinin oturum açma kullanıcı adı. Şu değerler kullanılamaz: **azure_superuser** , **admin** , **administrator** , **root** , **guest** veya **public** .
 admin-password | *güvenli parola* | Yönetici kullanıcının parolası. 8 ile 128 arasında karakter içermelidir. Parolanız şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar ve alfasayısal olmayan karakterler.
-sku-name|GP_Gen5_2|Fiyatlandırma katmanının adını ve işlem yapılandırmasını girin. Toplu olarak {fiyatlandırma katmanı}_{COMPUTE Generation}_{vçekirdekler} kuralını izler. Daha fazla bilgi için [fiyatlandırma katmanlarına](./concepts-pricing-tiers.md) bakın.
+sku-name|GP_Gen5_2|Fiyatlandırma katmanının adını ve işlem yapılandırmasını girin. Toplu olarak {fiyatlandırma katmanı} _{COMPUTE Generation}_ {vçekirdekler} kuralını izler. Daha fazla bilgi için [fiyatlandırma katmanlarına](./concepts-pricing-tiers.md) bakın.
 
 >[!IMPORTANT] 
 >- Sunucunuzdaki varsayılan MySQL sürümü 5,7 ' dir. Şu anda 5,6 ve 8,0 sürümleri de mevcuttur.
@@ -143,6 +143,6 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
->MySQL ile Windows [üzerinde BIR php uygulaması derleme](../app-service/app-service-web-tutorial-php-mysql.md) 
-> MySQL ile Linux ['TA php uygulaması derleme](../app-service/containers/tutorial-php-mysql-app.md) 
-> [MySQL Ile Java tabanlı Spring uygulaması derleme](https://docs.microsoft.com/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)
+>MySQL ile Windows [üzerinde BIR php uygulaması derleme](../app-service/tutorial-php-mysql-app.md) 
+> MySQL ile Linux ['TA php uygulaması derleme](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%253fpivots%253dplatform-linux) 
+> [MySQL Ile Java tabanlı Spring uygulaması derleme](/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: a9f050bb25873e4b6ede234c800b00f2c34085d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3e2ca2eca0d258a14365edc97b98d0c827b0b6f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085285"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546067"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight üzerinde Apache Hadoop Hizmetleri tarafından kullanılan bağlantı noktaları
 
@@ -55,7 +55,7 @@ Aşağıdakiler, belirli küme türleri için kullanılabilir:
 | Storm |443 |HTTPS |Storm |Fırtınası Web Kullanıcı arabirimi. Bkz. [HDInsight 'ta Apache Storm topolojilerini dağıtma ve yönetme](storm/apache-storm-deploy-monitor-topology-linux.md) |
 | Kafka Rest proxy |443 |HTTPS |Kafka |Kafka REST API. Bkz. [rest proxy kullanarak Azure HDInsight 'ta Apache Kafka kümeleriyle etkileşim kurma](kafka/rest-proxy.md) |
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulama
 
 İnternet 'te genel olarak kullanıma sunulan tüm hizmetlerin kimliği doğrulanmalıdır:
 
@@ -158,7 +158,7 @@ Aşağıdakiler, belirli küme türleri için kullanılabilir:
 | --- | --- | --- | --- | --- |
 | 'Ndan |Çalışan düğümleri |9092 |Kafka tel Protokolü |İstemci iletişimi için kullanılır |
 | &nbsp; |Zookeeper düğümleri |2181 |&nbsp; |İstemcilerin Zookeeper 'e bağlanmak için kullandığı bağlantı noktası |
-| REST proxy | Kafka yönetim düğümleri |9400 |HTTPS |[Kafka REST belirtimi](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
+| REST proxy | Kafka yönetim düğümleri |9400 |HTTPS |[Kafka REST belirtimi](/rest/api/hdinsight-kafka-rest-proxy/) |
 
 ### <a name="spark-ports"></a>Spark bağlantı noktaları
 

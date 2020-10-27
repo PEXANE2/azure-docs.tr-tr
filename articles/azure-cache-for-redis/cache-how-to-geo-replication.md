@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: f6ac02f0bcd9becf5dd1ffcd600f78b848b47cda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33d5ec89ef7563df16e0fe9b447eca88b1dba7fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839699"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536887"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Coğrafi çoğaltmayı ayarlama
 
@@ -75,7 +75,7 @@ Coğrafi Çoğaltma yapılandırıldıktan sonra, aşağıdaki kısıtlamalar ba
 
     ![Birincil ve ikincil önbellekler için bağlantı durumunun nasıl görüntüleneceğini vurgulayan ekran görüntüsü.](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    Çoğaltma işlemi tamamlandıktan sonra **bağlantı durumu** **başarılı**olarak değişir.
+    Çoğaltma işlemi tamamlandıktan sonra **bağlantı durumu** **başarılı** olarak değişir.
 
     ![Önbellek durumu](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
@@ -145,8 +145,8 @@ Evet, VNET 'lerdeki önbelleklerin coğrafi yinelemesi uyarılarla desteklenir:
 
 - Aynı VNET 'teki önbellekler arasında coğrafi çoğaltma desteklenir.
 - Farklı VNET 'lerdeki önbellekler arasında coğrafi çoğaltma de desteklenir.
-  - Sanal ağlar aynı bölgedeyse [VNET eşlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) veya [VPN Gateway VNET-VNet bağlantısı](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V)kullanarak bunları bağlayabilirsiniz.
-  - Sanal ağlar farklı bölgelerde ise, VNET eşlemesi kullanılarak coğrafi çoğaltma desteklenir, ancak temel iç yük dengeleyiciler içeren bir kısıtlama nedeniyle sanal ağ 1 ' deki (bölge 1) bir istemci sanal makinesi, DNS adı üzerinden VNET 2 ' deki (bölge 2) önbelleğe erişemez. VNET eşleme kısıtlamaları hakkında daha fazla bilgi için bkz. [sanal ağ eşleme-gereksinimler ve kısıtlamalar](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Önerilen çözüm VPN Gateway VNET 'ten VNET 'e bağlantı kullanmaktır.
+  - Sanal ağlar aynı bölgedeyse [VNET eşlemesi](../virtual-network/virtual-network-peering-overview.md) veya [VPN Gateway VNET-VNet bağlantısı](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)kullanarak bunları bağlayabilirsiniz.
+  - Sanal ağlar farklı bölgelerde ise, VNET eşlemesi kullanılarak coğrafi çoğaltma desteklenir, ancak temel iç yük dengeleyiciler içeren bir kısıtlama nedeniyle sanal ağ 1 ' deki (bölge 1) bir istemci sanal makinesi, DNS adı üzerinden VNET 2 ' deki (bölge 2) önbelleğe erişemez. VNET eşleme kısıtlamaları hakkında daha fazla bilgi için bkz. [sanal ağ eşleme-gereksinimler ve kısıtlamalar](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Önerilen çözüm VPN Gateway VNET 'ten VNET 'e bağlantı kullanmaktır.
   
 [Bu Azure şablonunu](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)kullanarak, VPN Gateway VNET-VNET bağlantısıyla bağlı bir sanal ağa hızla iki coğrafi çoğaltılan önbellek dağıtabilirsiniz.
 
@@ -166,7 +166,7 @@ Kurtarma noktası almak için, herhangi bir önbellekten [dışarı aktarın](ca
 
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>Coğrafi çoğaltmayı yönetmek için PowerShell veya Azure CLı kullanabilir miyim?
 
-Evet, coğrafi çoğaltma Azure portal, PowerShell veya Azure CLı kullanılarak yönetilebilir. Daha fazla bilgi için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) veya [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest).
+Evet, coğrafi çoğaltma Azure portal, PowerShell veya Azure CLı kullanılarak yönetilebilir. Daha fazla bilgi için bkz. [PowerShell belgeleri](/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) veya [Azure CLI belgeleri](/cli/azure/redis/server-link?view=azure-cli-latest).
 
 ### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Verileri Azure bölgeleri arasında çoğaltma maliyeti ne kadar sürer?
 
@@ -188,7 +188,7 @@ Müşteri tarafından başlatılan bir yük devretmeyi başlatmak için öncelik
 
 ### <a name="can-i-configure-a-firewall-with-geo-replication"></a>Bir güvenlik duvarını coğrafi çoğaltma ile yapılandırabilir miyim?
 
-Evet, coğrafi çoğaltma ile bir [güvenlik duvarı](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) yapılandırabilirsiniz. Coğrafi çoğaltmanın bir güvenlik duvarı ile birlikte çalışması için, ikincil önbelleğin IP adresinin birincil önbelleğin güvenlik duvarı kurallarına eklendiğinden emin olun.
+Evet, coğrafi çoğaltma ile bir [güvenlik duvarı](./cache-configure.md#firewall) yapılandırabilirsiniz. Coğrafi çoğaltmanın bir güvenlik duvarı ile birlikte çalışması için, ikincil önbelleğin IP adresinin birincil önbelleğin güvenlik duvarı kurallarına eklendiğinden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

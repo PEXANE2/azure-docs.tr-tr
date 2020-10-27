@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: c0f5d8cdc7dda72f21fc1cf372e3796b26a3054a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: c831e099eca3cd6e6da20f55ad19980ae8e9ddc5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127429"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545931"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Azure HDInsight 'ta ağ sanal gereç yapılandırma
 
 > [!Important]
-> Aşağıdaki bilgiler **yalnızca** [Azure Güvenlik Duvarı](https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic)dışında bir ağ sanal gereci (NVA) yapılandırmak istiyorsanız gereklidir.
+> Aşağıdaki bilgiler **yalnızca** [Azure Güvenlik Duvarı](./hdinsight-restrict-outbound-traffic.md)dışında bir ağ sanal gereci (NVA) yapılandırmak istiyorsanız gereklidir.
 
 Azure Güvenlik Duvarı FQDN etiketi, yaygın olarak karşılaşılan birçok önemli FQDN için trafiğe izin verecek şekilde otomatik olarak yapılandırılır. Başka bir ağ sanal gerecinin kullanılması, birkaç ek özellik yapılandırmanızı gerektirir. Ağ sanal gerecinizi yapılandırırken aşağıdaki faktörleri göz önünde bulundurun:
 
 * Hizmet uç noktası özellikli Hizmetleri, genellikle maliyet veya performans konuları için NVA 'nın atlanmasına neden olan hizmet uç noktaları ile yapılandırılabilir.
-* Resourceproviderconnection *giden*olarak ayarlandıysa, depolama ve SQL Server 'lar için özel uç noktaları, meta depolar için kullanabilirsiniz ve bunları NVA 'ya eklemeniz gerekmez.
+* Resourceproviderconnection *giden* olarak ayarlandıysa, depolama ve SQL Server 'lar için özel uç noktaları, meta depolar için kullanabilirsiniz ve bunları NVA 'ya eklemeniz gerekmez.
 * IP adresi bağımlılıkları HTTP/sn olmayan trafiğe yöneliktir (TCP ve UDP trafiği).
 * FQDN HTTP/HTTPS uç noktaları, NVA cihazınızda onaylanabilir.
 * Oluşturduğunuz yol tablosunu HDInsight alt ağına atayın.
@@ -31,7 +31,7 @@ Azure Güvenlik Duvarı FQDN etiketi, yaygın olarak karşılaşılan birçok ö
 
 İsteğe bağlı olarak, aşağıdaki hizmet uç noktalarından birini veya daha fazlasını etkinleştirerek, NVA 'yi atlayarak elde edebilirsiniz. Bu seçenek, maliyetten tasarruf etmek için büyük miktarlarda veri aktarımı ve ayrıca performans iyileştirmeleri için yararlı olabilir. 
 
-| **Uç Noktası** |
+| **Uç Nokta** |
 |---|
 | Azure SQL |
 | Azure Storage |
@@ -39,9 +39,9 @@ Azure Güvenlik Duvarı FQDN etiketi, yaygın olarak karşılaşılan birçok ö
 
 ### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları
 
-| **Uç Noktası** | **Ayrıntılar** |
+| **Uç Nokta** | **Ayrıntılar** |
 |---|---|
-| [Burada](hdinsight-management-ip-addresses.md) Yayınlanan IP 'ler | Bu IP 'Ler HDInsight kaynak sağlayıcısına yöneliktir ve asimetrik yönlendirmeyi önlemek için UDR 'ye eklenmelidir. Bu kural yalnızca ResourceProviderConnection *gelen*olarak ayarlandıysa gereklidir. ResourceProviderConnection *giden* olarak ayarlandıysa, bu IP 'ler UDR 'de gerekli değildir.  |
+| [Burada](hdinsight-management-ip-addresses.md) Yayınlanan IP 'ler | Bu IP 'Ler HDInsight kaynak sağlayıcısına yöneliktir ve asimetrik yönlendirmeyi önlemek için UDR 'ye eklenmelidir. Bu kural yalnızca ResourceProviderConnection *gelen* olarak ayarlandıysa gereklidir. ResourceProviderConnection *giden* olarak ayarlandıysa, bu IP 'ler UDR 'de gerekli değildir.  |
 | AAD-DS özel IP 'Leri | Yalnızca, sanal ağlar eşlenirse, ESP kümeleri için gereklidir.|
 
 

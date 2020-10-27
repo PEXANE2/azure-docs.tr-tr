@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 99a58cdbed10703c64b980af8571bce2d2638e72
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: efc4d07e9e3a64a36f2ecf3fa0000379bef380f9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152148"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538587"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Dağıtılmış izleme (Önizleme) ile Azure IoT cihazdan buluta iletileri izleme
 
@@ -29,7 +29,7 @@ IoT Hub, dağıtılmış izlemeyi desteklemek için ilk Azure hizmetlerinden bir
 IoT Hub için dağıtılmış izlemeyi etkinleştirmek aşağıdakileri yapabilmenizi sağlar:
 
 - Her iletinin akışını, [izleme bağlamını](https://github.com/w3c/trace-context)kullanarak IoT Hub aracılığıyla tam olarak izleyin. Bu izleme bağlamı, bir bileşenden olayları diğer bir bileşenden ilişkilendirmenize olanak tanıyan bağıntı kimliklerini içerir. Bu, [cihaz ikizi](iot-hub-devguide-device-twins.md)kullanan bir alt küme veya tüm IoT cihaz iletileri için uygulanabilir.
-- İzleme bağlamını [Azure izleyici tanılama günlüklerine](iot-hub-monitor-resource-health.md)otomatik olarak günlüğe kaydedin.
+- İzleme bağlamını [Azure Izleyici günlüklerine](monitor-iot-hub.md)otomatik olarak kaydet.
 - IoT Hub ve yönlendirme uç noktalarına kadar cihazdan ileti akışını ve gecikme süresini ölçün ve anlayın.
 - IoT çözümünüzdeki Azure dışı hizmetler için nasıl dağıtılmış izleme uygulamak istediğinizi göz önünde bulundurarak başlayın.
 
@@ -55,21 +55,21 @@ Bu bölümde, dağıtılmış izleme özniteliklerini (bağıntı kimlikleri ve 
 
 1. [Azure Portal](https://portal.azure.com/)IoT Hub 'ınıza gidin.
 
-1. IoT Hub 'ınızın sol bölmesinde, **izleme** bölümüne gidin ve **Tanılama ayarları**' na tıklayın.
+1. IoT Hub 'ınızın sol bölmesinde, **izleme** bölümüne gidin ve **Tanılama ayarları** ' na tıklayın.
 
-1. Tanılama ayarları açık değilse **tanılamayı aç**' a tıklayın. Tanılama ayarlarını zaten etkinleştirdiyseniz, **Tanılama ayarı Ekle**' ye tıklayın.
+1. **Tanılama ayarı Ekle** ' ye tıklayın.
 
-1. **Ad** alanına, yeni bir tanılama ayarı için bir ad girin. Örneğin, **Distributedtracingsettings**.
+1. **Ad** alanına, yeni bir tanılama ayarı için bir ad girin. Örneğin, **Distributedtracingsettings** .
 
 1. Günlüğün nereye gönderileceğini belirlemek için aşağıdaki seçeneklerden birini veya daha fazlasını seçin:
 
-    - **Depolama hesabına Arşivle**: bir depolama hesabını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
-    - **Bir olay hub 'ına akış**: Olay Hub 'ını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
-    - **Log Analytics gönder**: Günlük Analizi çalışma alanını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
+    - **Depolama hesabına Arşivle** : bir depolama hesabını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
+    - **Bir olay hub 'ına akış** : Olay Hub 'ını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
+    - **Log Analytics gönder** : Günlük Analizi çalışma alanını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
 
 1. **Günlük** bölümünde, bilgilerini günlüğe kaydetmek istediğiniz işlemleri seçin.
 
-    **Distributedizlemeyi**dahil ettiğinizden emin olun ve günlüğe kaydetmenin kaç gün boyunca **bekletilmesini** istediğinizi bir bekletme yapılandırın. Günlük tutma, depolama maliyetlerini etkiler.
+    **Distributedizlemeyi** dahil ettiğinizden emin olun ve günlüğe kaydetmenin kaç gün boyunca **bekletilmesini** istediğinizi bir bekletme yapılandırın. Günlük tutma, depolama maliyetlerini etkiler.
 
     ![Distributedizleme kategorisinin IoT Tanılama ayarları için nerede olduğunu gösteren ekran görüntüsü](./media/iot-hub-distributed-tracing/diag-logs.png)
 
@@ -83,7 +83,7 @@ Günlüğe kaydetme açıldıktan sonra, aşağıdaki durumlardan birinde geçer
 - İleti IoT Hub tarafından işlenir.
 - İleti özel uç noktalara yönlendirilir. Yönlendirmenin etkinleştirilmesi gerekir.
 
-Bu Günlükler ve şemaları hakkında daha fazla bilgi edinmek için bkz. [IoT Hub tanılama günlüklerinde dağıtılmış izleme](iot-hub-monitor-resource-health.md#distributed-tracing-preview).
+Bu Günlükler ve şemaları hakkında daha fazla bilgi edinmek için bkz. [IoT Hub kaynak günlüklerinde](monitor-iot-hub-reference.md#distributed-tracing-preview) [Izleyici IoT Hub](monitor-iot-hub.md) ve dağıtılmış izleme.
 
 ## <a name="set-up-device"></a>Cihazı ayarlama
 
@@ -183,7 +183,7 @@ Bu yönergeler, Windows üzerinde örnek oluşturmak içindir. Diğer ortamlar i
 
 C SDK kullanılmadan dağıtılmış izleme özelliğinin önizlenmesi **önemsiz değildir** . Bu nedenle, bu yaklaşım önerilmez.
 
-İlk olarak, [IoT Hub Iletileri oluşturma ve okuma](iot-hub-devguide-messages-construct.md)için geliştirme Kılavuzu ' nu izleyerek iletilerinize tüm IoT Hub Protokolü temel öğelerini uygulamanız gerekir. Daha sonra, `tracestate` **System özelliği**olarak eklemek için MQTT/AMQP iletilerindeki protokol özelliklerini düzenleyin. Daha ayrıntılı belirtmek gerekirse:
+İlk olarak, [IoT Hub Iletileri oluşturma ve okuma](iot-hub-devguide-messages-construct.md)için geliştirme Kılavuzu ' nu izleyerek iletilerinize tüm IoT Hub Protokolü temel öğelerini uygulamanız gerekir. Daha sonra, `tracestate` **System özelliği** olarak eklemek için MQTT/AMQP iletilerindeki protokol özelliklerini düzenleyin. Daha ayrıntılı belirtmek gerekirse:
 
 * MQTT için, `%24.tracestate=timestamp%3d1539243209` , `1539243209` UNIX zaman damgası biçimindeki ileti oluşturma zamanına göre değiştirilmeli ileti konusuna ekleyin. Örnek olarak, [C SDK 'sindeki](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) uygulamaya başvurun
 * AMQP için `key("tracestate")` `value("timestamp=1539243209")` ileti ek açıklaması ekleyin. Başvuru uygulama için [buraya](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)bakın.
@@ -196,19 +196,19 @@ Buluttan izlenecek ileti yüzdesini değiştirmek için cihaz ikizi güncelleşt
 
 ### <a name="update-using-the-portal"></a>Portalı kullanarak güncelleştirme
 
-1. [Azure Portal](https://portal.azure.com/)' de IoT Hub 'ınıza giderek **IoT cihazları**' na tıklayın.
+1. [Azure Portal](https://portal.azure.com/)' de IoT Hub 'ınıza giderek **IoT cihazları** ' na tıklayın.
 
 1. Cihazınıza tıklayın.
 
-1. **Dağıtılmış Izlemeyi etkinleştir (Önizleme)** bölümüne bakın ve **Etkinleştir**' i seçin.
+1. **Dağıtılmış Izlemeyi etkinleştir (Önizleme)** bölümüne bakın ve **Etkinleştir** ' i seçin.
 
     ![Azure portal 'da dağıtılmış izlemeyi etkinleştir](./media/iot-hub-distributed-tracing/azure-portal.png)
 
 1. %0 ile %100 arasında bir **örnekleme oranı** seçin.
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** ’e tıklayın.
 
-1. Birkaç saniye bekleyin ve **yenileme**' ye basın, sonra cihaz tarafından başarıyla onaylandıysanız, onay işareti içeren bir eşitleme simgesi belirir.
+1. Birkaç saniye bekleyin ve **yenileme** ' ye basın, sonra cihaz tarafından başarıyla onaylandıysanız, onay işareti içeren bir eşitleme simgesi belirir.
 
 1. Telemetri iletisi uygulamasının konsol penceresine geri dönün. İle gönderilen iletileri `tracestate` uygulama özelliklerinde görürsünüz.
 
@@ -226,7 +226,7 @@ Buluttan izlenecek ileti yüzdesini değiştirmek için cihaz ikizi güncelleşt
 
     ![Azure IoT Hub uzantısı 'nda dağıtılmış izlemeyi etkinleştir](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
-1. Açılan pencerede **Etkinleştir**' i seçin ve ardından ENTER tuşuna basarak örnekleme oranı olarak 100 ' i doğrulayın.
+1. Açılan pencerede **Etkinleştir** ' i seçin ve ardından ENTER tuşuna basarak örnekleme oranı olarak 100 ' i doğrulayın.
 
     ![Örnekleme modunu Güncelleştir](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 
@@ -252,7 +252,7 @@ Birden çok cihaz için dağıtılmış izleme örnekleme yapılandırmasını g
 | Öğe adı | Gerekli | Tür | Açıklama |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Evet | Tamsayı | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1` ve üzerinde `2` . |
-| `sampling_rate` | Yes | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca ' den `0` `100` (kapsamlı) değerlere izin verilir.  |
+| `sampling_rate` | Evet | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca ' den `0` `100` (kapsamlı) değerlere izin verilir.  |
 
 ## <a name="query-and-visualize"></a>Sorgulama ve görselleştirme
 
@@ -260,7 +260,7 @@ Bir IoT Hub tarafından günlüğe kaydedilen tüm izlemeleri görmek için Tan�
 
 ### <a name="query-using-log-analytics"></a>Log Analytics kullanarak sorgulama
 
-[Tanılama günlükleri ile Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)ayarladıysanız, kategoride Günlükler arayarak sorgulayın `DistributedTracing` . Örneğin, bu sorgu günlüğe kaydedilen tüm izlemeleri gösterir:
+[Kaynak günlükleriyle Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)ayarladıysanız, kategoride Günlükler arayarak sorgulayın `DistributedTracing` . Örneğin, bu sorgu günlüğe kaydedilen tüm izlemeleri gösterir:
 
 ```Kusto
 // All distributed traces 
@@ -278,7 +278,7 @@ Log Analytics gösterildiği gibi örnek Günlükler:
 | 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "Parentspanıd": "0144d2590aacd909"} |
 | 2018-02-22T03:28:48.633 Z | Diagnosticıthubegress | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType": "EventHub", "endpointName": "myEventHub", "Parentspanıd": "0144d2590aacd909"} |
 
-Farklı türlerdeki günlükleri anlamak için bkz. [Azure IoT Hub tanılama günlükleri](iot-hub-monitor-resource-health.md#distributed-tracing-preview).
+Farklı türlerdeki günlükleri anlamak için bkz. [Azure IoT Hub dağıtılmış izleme günlükleri](monitor-iot-hub-reference.md#distributed-tracing-preview).
 
 ### <a name="application-map"></a>Uygulama Eşlemesi
 
@@ -313,7 +313,7 @@ Etkinleştirildikten sonra, IoT Hub için dağıtılmış izleme desteği şu ak
 1. IoT cihazı IoT Hub ileti gönderir.
 1. İleti, IoT Hub ağ geçidine ulaşır.
 1. IoT Hub `tracestate` ileti özelliklerinde öğesine bakar ve doğru biçimde olup olmadığını denetler.
-1. Bu durumda, IoT Hub `trace-id` ileti için `span-id` "atlama" için genel olarak benzersiz bir işlem üretir ve bu dosyaları Azure izleyici tanılama günlüklerine kaydeder `DiagnosticIoTHubD2C` .
+1. Bu durumda IoT Hub, `trace-id` "atlama" için bir genel olarak benzersiz bir ileti üretir `span-id` ve bu dosyaları, işlem altında [IoT Hub dağıtılmış izleme günlüklerine](monitor-iot-hub-reference.md#distributed-tracing-preview) kaydeder `DiagnosticIoTHubD2C` .
 1. İleti işleme tamamlandıktan sonra, IoT Hub bir tane oluşturur `span-id` ve işlem altında var olan ile birlikte günlüğe kaydeder `trace-id` `DiagnosticIoTHubIngress` .
 1. İleti için yönlendirme etkinleştirildiyse, IoT Hub özel uç noktaya yazar ve `span-id` Kategori altında aynı olan başka bir oturum açar `trace-id` `DiagnosticIoTHubEgress` .
 1. Yukarıdaki adımlar, oluşturulan her ileti için yinelenir.
@@ -330,3 +330,4 @@ Etkinleştirildikten sonra, IoT Hub için dağıtılmış izleme desteği şu ak
 - Mikro hizmetlerde genel dağıtılmış izleme deseninin daha fazla bilgi edinmek için bkz. [mikro hizmet mimarisi deseninin: dağıtılmış izleme](https://microservices.io/patterns/observability/distributed-tracing.html).
 - Dağıtılmış izleme ayarlarını çok sayıda cihaza uygulayacak şekilde yapılandırmayı ayarlamak için bkz. [IoT cihazlarını ölçeklendirerek yapılandırma ve izleme](./iot-hub-automatic-device-management.md).
 - Azure Izleyici hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici nedir?](../azure-monitor/overview.md).
+- Azure Izleyici 'yi IoT HUb ile kullanma hakkında daha fazla bilgi için bkz. [Monitor IoT Hub](monitor-iot-hub.md)

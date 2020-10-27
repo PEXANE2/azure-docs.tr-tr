@@ -3,12 +3,12 @@ title: Azure geçişi sunucu geçişine sahip bir VMware geçiş seçeneği seç
 description: Azure geçişi sunucu geçişi ile VMware VM 'lerini Azure 'a geçirme seçeneklerine genel bakış sağlar
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: e62b9cea80f1ed7f672135b93e52ba606a717a6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac08075212d885a1aca755f94906b50754e23b9d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88950230"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534116"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware geçiş seçeneği seçin
 
@@ -29,9 +29,9 @@ Hangi yöntemin kullanılacağına karar vermenize yardımcı olması için bu s
 **Gereç dağıtımı** | [Azure geçişi](migrate-appliance.md) gereci şirket içinde dağıtılır. | [Azure geçişi çoğaltma](migrate-replication-appliance.md) gereci şirket içinde dağıtılır.
 **Site Recovery uyumluluğu** | Uyumluluk. | Site Recovery kullanarak bir makine için çoğaltma ayarladıysanız Azure geçişi sunucu geçişi ile çoğaltamaz.
 **Hedef disk** | Yönetilen diskler | Yönetilen diskler
-**Disk sınırları** | İşletim sistemi diski: 2 TB<br/><br/> Veri diski: 8 TB<br/><br/> En fazla disk: 60 | İşletim sistemi diski: 2 TB<br/><br/> Veri diski: 8 TB<br/><br/> En fazla disk: 63
-**Geçiş diskleri** | Desteklenmez | Desteklenir
-**UEFı önyüklemesi** | Desteklenmez | Azure 'daki geçirilmiş VM otomatik olarak bir BIOS önyükleme VM 'sine dönüştürülür.<br/><br/> İşletim sistemi diski en fazla dört bölüm içermelidir ve birimler NTFS ile biçimlendirilmelidir.
+**Disk sınırları** | İşletim sistemi diski: 2 TB<br/><br/> Veri diski: 32 TB<br/><br/> En fazla disk: 60 | İşletim sistemi diski: 2 TB<br/><br/> Veri diski: 8 TB<br/><br/> En fazla disk: 63
+**Geçiş diskleri** | Desteklenmez | Destekleniyor
+**UEFı önyüklemesi** | Destekleniyor. | Destekleniyor.
 
 ## <a name="compare-deployment-steps"></a>Dağıtım adımlarını karşılaştırın
 
@@ -45,7 +45,7 @@ Sınırlamaları inceledikten sonra, her bir çözümü dağıtmaya ilişkin ad�
 **VMware 'yi geçişe hazırlama** | VMware sunucularında ve VM 'lerde ayarları yapılandırın. | Gerekli | Gerekli
 **VM 'Lere Mobility hizmetini yükler** | Mobility hizmeti, çoğaltmak istediğiniz her VM üzerinde çalışır | Gerekli değil | Gerekli
 **Çoğaltma gereç dağıtımı** | [Çoğaltma](migrate-replication-appliance.md) gereci, aracı tabanlı geçiş için kullanılır. VM 'lerde çalışan Mobility hizmeti ve sunucu geçişi arasında bağlantı kurar. | Gerekli değil | Gerekli
-**VM 'Leri çoğaltın**. VM çoğaltmasını etkinleştirin. | Çoğaltma ayarlarını yapılandırın ve çoğaltılacak VM 'Leri seçin | Gerekli | Gerekli
+**VM 'Leri çoğaltın** . VM çoğaltmasını etkinleştirin. | Çoğaltma ayarlarını yapılandırın ve çoğaltılacak VM 'Leri seçin | Gerekli | Gerekli
 **Geçiş testi çalıştırma** | Her şeyin beklendiği gibi çalıştığından emin olmak için bir test geçişi çalıştırın. | Gerekli | Gerekli
 **Tam geçiş çalıştırma** | VM 'Leri geçirin. | Gerekli | Gerekli
 

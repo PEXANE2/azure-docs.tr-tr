@@ -6,18 +6,18 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: yegu
-ms.openlocfilehash: 145be11436eb4d0c4f6b892e5239ccacd838d780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0bb8fd2d0b0ac271a167ad5474a55646bdafc65
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91654222"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536802"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için yüksek kullanılabilirlik
 
 Redin için Azure önbelleğinde yerleşik yüksek kullanılabilirlik vardır. Yüksek kullanılabilirlik mimarisinin hedefi, temel alınan sanal makineler (VM 'Ler) planlı veya plansız kesintilerden etkilendiğinde bile, yönetilen Redis örneğinizin çalışır durumda olduğundan emin olmaktır. Tek bir VM 'de redin barındırılmasına göre daha fazla yüzde oranı sunar.
 
-Redin için Azure Cache, bir önbellek için *düğüm*olarak adlandırılan birden çok VM kullanarak yüksek kullanılabilirlik uygular. Bu düğümleri, veri çoğaltma ve yük devretme ile eşgüdümlü bir şekilde gerçekleşecek şekilde yapılandırır. Redsıs yazılım düzeltme eki uygulama gibi bakım işlemlerini de düzenler. Standart ve Premium katmanlarda çeşitli yüksek kullanılabilirlik seçenekleri mevcuttur:
+Redin için Azure Cache, bir önbellek için *düğüm* olarak adlandırılan birden çok VM kullanarak yüksek kullanılabilirlik uygular. Bu düğümleri, veri çoğaltma ve yük devretme ile eşgüdümlü bir şekilde gerçekleşecek şekilde yapılandırır. Redsıs yazılım düzeltme eki uygulama gibi bakım işlemlerini de düzenler. Standart ve Premium katmanlarda çeşitli yüksek kullanılabilirlik seçenekleri mevcuttur:
 
 | Seçenek | Açıklama | Kullanılabilirlik | Standart | Premium |
 | ------------------- | ------- | ------- | :------: | :---: |
@@ -28,7 +28,7 @@ Redin için Azure Cache, bir önbellek için *düğüm*olarak adlandırılan bir
 
 ## <a name="standard-replication"></a>Standart çoğaltma
 
-Standart veya Premium katmanda redin için bir Azure önbelleği, varsayılan olarak bir dizi Redsıs sunucusu üzerinde çalışır. İki sunucu adanmış VM 'lerde barındırılır. Açık kaynaklı redo, veri yazma isteklerini yalnızca bir sunucunun işlemesini sağlar. Bu sunucu, diğer *çoğaltma*sırasında *birincil* düğümdür. Sunucu düğümlerini sağlamasını gerçekleştirdikten sonra Redsıs için Azure önbelleği, bunlara birincil ve çoğaltma rolleri atar. Birincil düğüm, genellikle yazma hizmetinin yanı sıra Redsıs istemcilerinden gelen okuma isteklerini de sorumludur. Bir yazma işleminde, iç belleğine yeni bir anahtar ve bir anahtar güncelleştirmesi kaydeder ve istemciye anında yanıt verir. İşlemi zaman uyumsuz olarak çoğaltmaya iletir.
+Standart veya Premium katmanda redin için bir Azure önbelleği, varsayılan olarak bir dizi Redsıs sunucusu üzerinde çalışır. İki sunucu adanmış VM 'lerde barındırılır. Açık kaynaklı redo, veri yazma isteklerini yalnızca bir sunucunun işlemesini sağlar. Bu sunucu, diğer *çoğaltma* sırasında *birincil* düğümdür. Sunucu düğümlerini sağlamasını gerçekleştirdikten sonra Redsıs için Azure önbelleği, bunlara birincil ve çoğaltma rolleri atar. Birincil düğüm, genellikle yazma hizmetinin yanı sıra Redsıs istemcilerinden gelen okuma isteklerini de sorumludur. Bir yazma işleminde, iç belleğine yeni bir anahtar ve bir anahtar güncelleştirmesi kaydeder ve istemciye anında yanıt verir. İşlemi zaman uyumsuz olarak çoğaltmaya iletir.
 
 :::image type="content" source="media/cache-high-availability/replication.png" alt-text="Veri çoğaltma Kurulumu":::
    
@@ -37,7 +37,7 @@ Standart veya Premium katmanda redin için bir Azure önbelleği, varsayılan ol
 >
 >
 
-Redsıs önbelleğinde birincil düğüm kullanılamıyorsa, çoğaltma kendisini otomatik olarak yeni birincil olacak şekilde yükseltir. Bu işleme *Yük devretme*adı verilir. Çoğaltma, birincil düğümün hızlı bir şekilde kurtarmasının önüne alınmadan önce yeterince uzun süre bekleyecektir. Yük devretme Işlemi gerçekleştiğinde, redin için Azure önbelleği yeni bir VM sağlar ve bunu çoğaltma düğümü olarak önbelleğe birleştirir. Çoğaltma, birincil ile tam veri eşitlemesi gerçekleştirerek önbellek verilerinin başka bir kopyasına sahip olur.
+Redsıs önbelleğinde birincil düğüm kullanılamıyorsa, çoğaltma kendisini otomatik olarak yeni birincil olacak şekilde yükseltir. Bu işleme *Yük devretme* adı verilir. Çoğaltma, birincil düğümün hızlı bir şekilde kurtarmasının önüne alınmadan önce yeterince uzun süre bekleyecektir. Yük devretme Işlemi gerçekleştiğinde, redin için Azure önbelleği yeni bir VM sağlar ve bunu çoğaltma düğümü olarak önbelleğe birleştirir. Çoğaltma, birincil ile tam veri eşitlemesi gerçekleştirerek önbellek verilerinin başka bir kopyasına sahip olur.
 
 Bir birincil düğüm, Redsıs yazılımı veya işletim sistemi güncelleştirmesi gibi planlı bir bakım etkinliğinin bir parçası olarak hizmetten geçebilir. Ayrıca, temeldeki donanımda, yazılımda veya ağda oluşan hatalarda oluşan planlanmamış olaylar nedeniyle çalışmayı durdurabilir. [Redin Için Azure önbelleği Için yük devretme ve düzeltme eki uygulama](cache-failover.md) , Redsıs yük devretmeleri türleri hakkında ayrıntılı bir açıklama sağlar. Redo için bir Azure önbelleği, ömrü boyunca birçok yük devretmenize devam edecektir. Yüksek kullanılabilirlik mimarisi, bu değişiklikleri bir önbellekte mümkün olduğunca saydam hale getirmek için tasarlanmıştır.
 
@@ -57,7 +57,7 @@ Redsıs için Azure önbelleği, Premium katmanda ek çoğaltma düğümlerine i
 >
 >
 
-Redsıs için Azure önbelleği, Premium katmandaki bölge yedekli konfigürasyonları destekler. Bölgesel olarak [yedekli önbellek](cache-how-to-zone-redundancy.md) , düğümlerini aynı bölgedeki farklı [Azure kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview) arasında yerleştirebilir. Tek bir hata noktası olarak veri merkezini veya AZ kesintiyi ortadan kaldırır ve önbelleğinizin genel kullanılabilirliğini artırır.
+Redsıs için Azure önbelleği, Premium katmandaki bölge yedekli konfigürasyonları destekler. Bölgesel olarak [yedekli önbellek](cache-how-to-zone-redundancy.md) , düğümlerini aynı bölgedeki farklı [Azure kullanılabilirlik alanları](../availability-zones/az-overview.md) arasında yerleştirebilir. Tek bir hata noktası olarak veri merkezini veya AZ kesintiyi ortadan kaldırır ve önbelleğinizin genel kullanılabilirliğini artırır.
 
 Aşağıdaki diyagramda bölge yedekli yapılandırması gösterilmektedir:
 

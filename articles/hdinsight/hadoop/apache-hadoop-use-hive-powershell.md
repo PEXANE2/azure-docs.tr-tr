@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 327a8a0de0d144a5c1d8494a6dd22a8b89a7bd93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 013eb8215064173e002aea23043bc2e9ba92b525
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081058"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545251"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell kullanarak Apache Hive sorguları çalıştırma
 
@@ -28,7 +28,7 @@ Bu belge, HDInsight kümesindeki bir Apache Hadoop Apache Hive sorguları çalı
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
-* PowerShell [az Module](https://docs.microsoft.com/powershell/azure/) yüklendi.
+* PowerShell [az Module](/powershell/azure/) yüklendi.
 
 ## <a name="run-a-hive-query"></a>Hive sorgusu çalıştırma
 
@@ -84,7 +84,7 @@ Aşağıdaki adımlarda, HDInsight kümenizdeki bir işi çalıştırmak için b
    >
    > `Invoke-AzHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
-   > **Burada dizeler**hakkında daha fazla bilgi için, bkz. <a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">Windows PowerShell 'i burada kullanma-dizeler</a>.
+   > **Burada dizeler** hakkında daha fazla bilgi için bkz. [dizeler](/powershell/module/microsoft.powershell.core/about/about_quoting_rules#here-strings).
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

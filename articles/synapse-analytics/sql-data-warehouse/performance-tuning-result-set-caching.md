@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 933ec541e358f1839c1b4d24acd19e439ea26375
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362274"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541290"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Sonuç kümesini önbelleğe ile performans ayarlama
 
@@ -36,11 +36,15 @@ Sonuç kümesi önbelleğe alma etkin olduğunda, SYNAPSE SQL otomatik olarak so
 
 Sonuç kümesi önbelleği bir veritabanı için açıldıktan sonra, bu sorgular hariç, önbellek tam olarak tüm sorgular için sonuçlar önbelleğe alınır:
 
-- DateTime. Now () gibi belirleyici olmayan işlevler kullanan sorgular
+- Temel tabloların verilerinde veya sorgusunda değişiklik yapılmasa bile, belirleyici olmayan yerleşik işlevlere veya çalışma zamanı ifadelerine sahip sorgular. Örneğin, DateTime. Now (), GetDate ().
 - Kullanıcı tanımlı işlevleri kullanan sorgular
 - Satır düzeyi güvenlik veya sütun düzeyi güvenliği etkin olan tabloları kullanan sorgular
 - Satır boyutu 64 KB 'tan büyük verileri döndüren sorgular
 - Boyut (>10 GB) büyük verileri döndüren sorgular 
+>[!NOTE]
+> - Belirleyici olmayan bazı işlevler ve çalışma zamanı ifadeleri aynı verilere karşı yinelenen sorgular için belirleyici olabilir. Örneğin, ROW_NUMBER ().  
+> - Sorgu sonuç kümesindeki satırların sırası/sırası Uygulama mantığınız için önemliyse, sorgunuzda SıRALAMA ölçütü kullanın.
+> - ORDER BY sütunlarındaki veriler benzersiz değilse, sonuç kümesi önbelleğe alma özelliğinin etkin veya devre dışı olmasına bakılmaksızın ORDER BY sütunlarında aynı değerlere sahip satırlar için garanteed satır düzeni yoktur.
 
 > [!IMPORTANT]
 > Sonuç kümesi önbelleği oluşturma ve önbellekten veri alma işlemleri, bir Synapse SQL havuzu örneğinin denetim düğümünde gerçekleşir.

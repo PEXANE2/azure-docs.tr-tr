@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 62a34a2dba459c6f65729cd5c6804378ee7f8b52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74aa0bf84c19b9d663b92d529604c08bf5800c45
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902770"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544860"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda performans ayarlama ve veritabanı bakımı için sys_schema kullanma
 
@@ -29,7 +29,7 @@ Sys_schema 52 görünüm vardır ve her görünüm aşağıdaki öneklerden biri
 - Kullanıcı: kullanıcılara göre tüketilen ve gruplandırılan kaynaklar. Dosya g/ç, bağlantı ve bellek örnekleri örnektir.
 - Wait: bekleme olayları ana bilgisayara veya kullanıcıya göre gruplandırılır.
 
-Şimdi sys_schema bazı yaygın kullanım düzenlerine göz atalım. Kullanmaya başlamak için kullanım desenlerini iki kategoride gruplarız: **performans ayarlama** ve **Veritabanı Bakımı**.
+Şimdi sys_schema bazı yaygın kullanım düzenlerine göz atalım. Kullanmaya başlamak için kullanım desenlerini iki kategoride gruplarız: **performans ayarlama** ve **Veritabanı Bakımı** .
 
 ## <a name="performance-tuning"></a>Performans ayarlama
 
@@ -83,4 +83,4 @@ Dizinler, okuma performansını artırmaya yönelik harika araçlardır, ancak e
 Özet olarak sys_schema, hem performans ayarlaması hem de veritabanı bakımı için harika bir araçtır. MySQL için Azure veritabanı 'nda bu özellikten faydalantığınızdan emin olun. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- En çok ilgili sorularınızın eş yanıtlarını bulmak veya yeni bir soru/cevap göndermek için [Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) veya [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)ziyaret edin.
+- En çok ilgili sorularınızın eş yanıtlarını bulmak veya yeni bir soru/cevap göndermek için [Microsoft Q&soru sayfası](/answers/topics/azure-database-mysql.html) veya [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)ziyaret edin.

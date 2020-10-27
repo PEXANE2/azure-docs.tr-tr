@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d53e0cb92ead0d60ae335e95903cd69ae2700140
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142810"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536088"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub cihaz kimliklerinizi toplu olarak içeri ve dışarı aktarma
 
 Her IoT Hub 'ında, hizmette cihaz başına kaynaklar oluşturmak için kullanabileceğiniz bir kimlik kayıt defteri vardır. Kimlik kayıt defteri, cihaza yönelik uç noktalara erişimi denetlemenize de olanak sağlar. Bu makalede, cihaz kimliklerinin bir kimlik kayıt defterine toplu ve dışarı aktarma işlemlerinin nasıl yapılacağı açıklanır. C# dilinde çalışan bir örnek görmek ve bir hub 'ı farklı bir bölgeye kopyalarken bu yeteneği nasıl kullanabileceğinizi öğrenmek için bkz. [nasıl klonlamak IoT Hub](iot-hub-how-to-clone.md).
 
 > [!NOTE]
-> IoT Hub, yakın zamanda sınırlı sayıda bölgede sanal ağ desteği ekledi. Bu özellik, içeri ve dışarı aktarma işlemlerinin güvenliğini sağlar ve kimlik doğrulama için anahtar geçirme gereksinimini ortadan kaldırır.  Başlangıçta, sanal ağ desteği yalnızca şu bölgelerde kullanılabilir: *WestUS2*, *EastUS*ve *Güneydoğu ABD*. Sanal ağ desteği ve API çağrısı hakkında daha fazla bilgi edinmek için bkz. [sanal ağlar için IoT Hub desteği](virtual-network-support.md).
+> IoT Hub, yakın zamanda sınırlı sayıda bölgede sanal ağ desteği ekledi. Bu özellik, içeri ve dışarı aktarma işlemlerinin güvenliğini sağlar ve kimlik doğrulama için anahtar geçirme gereksinimini ortadan kaldırır.  Başlangıçta, sanal ağ desteği yalnızca şu bölgelerde kullanılabilir: *WestUS2* , *EastUS* ve *Güneydoğu ABD* . Sanal ağ desteği ve API çağrısı hakkında daha fazla bilgi edinmek için bkz. [sanal ağlar için IoT Hub desteği](virtual-network-support.md).
 
 İçeri ve dışarı aktarma işlemleri, bir IoT Hub 'ına karşı toplu hizmet işlemlerini yürütmelerine olanak sağlayan *işlerin* bağlamında gerçekleşir.
 
@@ -61,7 +61,7 @@ IoT Hub 'ınız için bağlantı dizesini Azure portal bulmak için:
 
 - IoT Hub'ınıza gidin.
 
-- **Paylaşılan erişim ilkeleri**' ni seçin.
+- **Paylaşılan erişim ilkeleri** ' ni seçin.
 
 - İhtiyaç duyduğunuz izinleri hesaba ayırarak bir ilke seçin.
 
@@ -109,7 +109,7 @@ Bu yöntem, denetlediğiniz bir blob kapsayıcısında cihaz bilgilerinizin güv
      | SharedAccessBlobPermissions.Delete
    ```
 
-* Dışarı aktarma verilerinizde kimlik doğrulama anahtarlarını dışlamak istediğinizi belirten bir *Boole değeri* . **Yanlışsa**, kimlik doğrulama anahtarları dışarı aktarma çıktısına dahil edilir. Aksi halde, anahtarlar **null**olarak verilir.
+* Dışarı aktarma verilerinizde kimlik doğrulama anahtarlarını dışlamak istediğinizi belirten bir *Boole değeri* . **Yanlışsa** , kimlik doğrulama anahtarları dışarı aktarma çıktısına dahil edilir. Aksi halde, anahtarlar **null** olarak verilir.
 
 Aşağıdaki C# kod parçacığı, verileri dışarı aktarma verilerinde cihaz kimlik doğrulama anahtarlarını içeren bir dışarı aktarma işi başlatmayı ve sonra tamamlanma için yoklama yapıldığını göstermektedir:
 
@@ -134,7 +134,7 @@ while(true)
 }
 ```
 
-İş, çıkışını belirtilen blob kapsayıcısında **devices.txt**adına sahip bir Blok Blobu olarak depolar. Çıktı verileri, her satırda bir cihaz içeren JSON serileştirilmiş cihaz verilerinden oluşur.
+İş, çıkışını belirtilen blob kapsayıcısında **devices.txt** adına sahip bir Blok Blobu olarak depolar. Çıktı verileri, her satırda bir cihaz içeren JSON serileştirilmiş cihaz verilerinden oluşur.
 
 Aşağıdaki örnek, çıkış verilerini gösterir:
 
@@ -226,7 +226,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
    SharedAccessBlobPermissions.Read
    ```
 
-* İşten *çıktı* olarak kullanılacak bir [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) blob kapsayıcısının URI 'sini içeren bir *dize* . İş, tamamlanan içeri aktarma **işinden**hata bilgilerini depolamak için bu kapsayıcıda bir Blok Blobu oluşturur. SAS belirteci şu izinleri içermelidir:
+* İşten *çıktı* olarak kullanılacak bir [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) blob kapsayıcısının URI 'sini içeren bir *dize* . İş, tamamlanan içeri aktarma **işinden** hata bilgilerini depolamak için bu kapsayıcıda bir Blok Blobu oluşturur. SAS belirteci şu izinleri içermelidir:
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
@@ -262,15 +262,15 @@ Kimlik kayıt defterinizde aşağıdaki toplu işlemleri gerçekleştirmek için
 
 Cihaz başına içeri aktarma işlemini denetlemek için her bir cihaz için serileştirme verilerini içeri aktarma ' da isteğe bağlı **ImportMode** özelliğini kullanın. **ImportMode** özelliği aşağıdaki seçeneklere sahiptir:
 
-| ImportMode | Description |
+| ImportMode | Açıklama |
 | --- | --- |
-| **createOrUpdate** |Belirtilen **kimliğe**sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten varsa, varolan bilgilerin, **ETag** değeriyle ilgili olarak girilen giriş verileriyle üzerine yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |
-| **oluşturma** |Belirtilen **kimliğe**sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten varsa, günlük dosyasına bir hata yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |
-| **update** |Belirtilen **kimliğe**sahip bir cihaz zaten varsa, varolan bilgilerin **ETag** değerine bakılmaksızın, girilen giriş verileriyle üzerine yazılır. <br/>Cihaz yoksa, günlük dosyasına bir hata yazılır. |
-| **updateIfMatchETag** |Belirtilen **kimliğe**sahip bir cihaz zaten varsa, yalnızca bir **ETag** eşleşmesi varsa, mevcut bilgilerin girilen giriş verileriyle üzerine yazılır. <br/>Cihaz yoksa, günlük dosyasına bir hata yazılır. <br/>**ETag** uyumsuzluğu varsa, günlük dosyasına bir hata yazılır. |
-| **createOrUpdateIfMatchETag** |Belirtilen **kimliğe**sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten mevcutsa, belirtilen giriş verileriyle yalnızca bir **ETag** eşleşmesi varsa, varolan bilgilerin üzerine yazılır. <br/>**ETag** uyumsuzluğu varsa, günlük dosyasına bir hata yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |
-| **delete** |Belirtilen **kimliğe**sahip bir cihaz zaten varsa, **ETag** değeri dikkate almadan silinir. <br/>Cihaz yoksa, günlük dosyasına bir hata yazılır. |
-| **deleteIfMatchETag** |Belirtilen **kimliğe**sahip bir cihaz zaten varsa, yalnızca bir **ETag** eşleşmesi varsa silinir. Cihaz yoksa, günlük dosyasına bir hata yazılır. <br/>ETag uyumsuzluğu varsa, günlük dosyasına bir hata yazılır. |
+| **createOrUpdate** |Belirtilen **kimliğe** sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten varsa, varolan bilgilerin, **ETag** değeriyle ilgili olarak girilen giriş verileriyle üzerine yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |
+| **oluşturma** |Belirtilen **kimliğe** sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten varsa, günlük dosyasına bir hata yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |
+| **update** |Belirtilen **kimliğe** sahip bir cihaz zaten varsa, varolan bilgilerin **ETag** değerine bakılmaksızın, girilen giriş verileriyle üzerine yazılır. <br/>Cihaz yoksa, günlük dosyasına bir hata yazılır. |
+| **updateIfMatchETag** |Belirtilen **kimliğe** sahip bir cihaz zaten varsa, yalnızca bir **ETag** eşleşmesi varsa, mevcut bilgilerin girilen giriş verileriyle üzerine yazılır. <br/>Cihaz yoksa, günlük dosyasına bir hata yazılır. <br/>**ETag** uyumsuzluğu varsa, günlük dosyasına bir hata yazılır. |
+| **createOrUpdateIfMatchETag** |Belirtilen **kimliğe** sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten mevcutsa, belirtilen giriş verileriyle yalnızca bir **ETag** eşleşmesi varsa, varolan bilgilerin üzerine yazılır. <br/>**ETag** uyumsuzluğu varsa, günlük dosyasına bir hata yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |
+| **delete** |Belirtilen **kimliğe** sahip bir cihaz zaten varsa, **ETag** değeri dikkate almadan silinir. <br/>Cihaz yoksa, günlük dosyasına bir hata yazılır. |
+| **deleteIfMatchETag** |Belirtilen **kimliğe** sahip bir cihaz zaten varsa, yalnızca bir **ETag** eşleşmesi varsa silinir. Cihaz yoksa, günlük dosyasına bir hata yazılır. <br/>ETag uyumsuzluğu varsa, günlük dosyasına bir hata yazılır. |
 
 > [!NOTE]
 > Serileştirme verileri bir cihaz için açıkça bir **ImportMode** bayrağı tanımlamıyorsa, içeri aktarma işlemi sırasında varsayılan olarak **CreateOrUpdate** olur.
@@ -432,8 +432,7 @@ Kopyalama makalesinde onunla ilişkili bir çalışma örneği bulunur ve bu say
 
 Azure IoT Hub 'yi yönetme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere göz atın:
 
-* [IoT Hub ölçümleri](iot-hub-metrics.md)
-* [IoT Hub günlükleri](iot-hub-monitor-resource-health.md)
+* [İzleyici IoT Hub](monitor-iot-hub.md)
 
 IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 

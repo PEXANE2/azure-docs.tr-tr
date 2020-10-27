@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90862a74e5fb6521a95292d50fc5cc11bd0082b5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530072"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547665"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için Mobility hizmeti hakkında
 
@@ -33,7 +33,7 @@ ms.locfileid: "90530072"
 
 Anında yükleme, [çoğaltmayı etkinleştirmek](vmware-azure-enable-replication.md#enable-replication)için Azure Portal çalıştırılan işin integral bir parçasıdır. Korumak ve çoğaltmayı etkinleştirmek istediğiniz VM kümesini seçtikten sonra, yapılandırma sunucusu Mobility hizmet aracısını sunuculara gönderir, aracıyı kurar ve yapılandırma sunucusu ile aracının kaydını tamamlar.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Tüm gönderme yükleme [önkoşullarının](vmware-azure-install-mobility-service.md) karşılandığından emin olun.
 - Tüm sunucu yapılandırmalarının, [VMware VM 'leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma Için destek matrisindeki](vmware-physical-azure-support-matrix.md)ölçütlere uygun olduğundan emin olun.
@@ -52,7 +52,7 @@ Mobility hizmetinin göndererek yüklenmesi sırasında aşağıdaki adımlar ge
    - Tüm önkoşullar karşılanıyorsa, yükleme başlar.
    - Bir veya daha fazla [Önkoşul](vmware-physical-azure-support-matrix.md) karşılanmazsa yükleme başarısız olur.
 1. Aracı yüklemesinin bir parçası olarak, Azure Site Recovery için Birim Gölge Kopyası Hizmeti (VSS) sağlayıcısı yüklenir. VSS sağlayıcısı, uygulamayla tutarlı kurtarma noktaları oluşturmak için kullanılır. VSS sağlayıcısı yüklemesi başarısız olursa, bu adım atlanır ve aracı yüklemesi devam eder.
-1. Aracı yüklemesi başarılı olur ancak VSS sağlayıcısı yüklemesi başarısız olursa, iş durumu **Uyarı**olarak işaretlenir. Bu, kilitlenme ile tutarlı kurtarma noktası üretimini etkilemez.
+1. Aracı yüklemesi başarılı olur ancak VSS sağlayıcısı yüklemesi başarısız olursa, iş durumu **Uyarı** olarak işaretlenir. Bu, kilitlenme ile tutarlı kurtarma noktası üretimini etkilemez.
 
     - Uygulamayla tutarlı kurtarma noktaları oluşturmak için, Site Recovery VSS sağlayıcısı 'nı el ile yüklemeyi tamamlamaya yönelik [kılavuzumuza](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) bakın.
     - Uygulamayla tutarlı kurtarma noktaları oluşturmak istemiyorsanız, uygulamayla tutarlı kurtarma noktalarını kapatmak için [çoğaltma ilkesini değiştirin](vmware-azure-set-up-replication.md#create-a-policy) .
@@ -69,7 +69,7 @@ Mobility hizmetinin göndererek yüklenmesi sırasında aşağıdaki adımlar ge
 
 ## <a name="install-the-mobility-service-using-ui"></a>Kullanıcı arabirimini kullanarak Mobility hizmetini yükler
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Tüm sunucu yapılandırmalarının, [VMware VM 'leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma Için destek matrisindeki](vmware-physical-azure-support-matrix.md)ölçütlere uygun olduğundan emin olun.
 - Sunucunun işletim sistemi için [yükleyiciyi bulun](#locate-installer-files) .
@@ -78,16 +78,16 @@ Mobility hizmetinin göndererek yüklenmesi sırasında aşağıdaki adımlar ge
 > Bir Azure bölgesinden diğerine bir Azure altyapı hizmeti (IaaS) VM 'si çoğaltdıysanız, UI yükleme yöntemini kullanmayın. [Komut istemi](#install-the-mobility-service-using-command-prompt) yüklemesini kullanın.
 
 1. Yükleme dosyasını makineye kopyalayın ve çalıştırın.
-1. **Yükleme seçeneği**içinde **Mobility hizmetini yükleme**' yi seçin.
-1. Yükleme konumunu seçin ve yükleme ' **yi**seçin.
+1. **Yükleme seçeneği** içinde **Mobility hizmetini yükleme** ' yi seçin.
+1. Yükleme konumunu seçin ve yükleme ' **yi** seçin.
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility1.png" alt-text="Mobility hizmeti yükleme seçeneği sayfası.":::
 
-1. Yükleme **işlemindeki**yüklemeyi izleyin. Yükleme tamamlandıktan sonra, hizmeti yapılandırma sunucusuna kaydetmek için **yapılandırmaya devam et** ' i seçin.
+1. Yükleme **işlemindeki** yüklemeyi izleyin. Yükleme tamamlandıktan sonra, hizmeti yapılandırma sunucusuna kaydetmek için **yapılandırmaya devam et** ' i seçin.
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="Mobility hizmeti yükleme seçeneği sayfası.":::
 
-1. **Yapılandırma sunucusu ayrıntıları**' nda, yapılandırdığınız IP adresini ve parolayı belirtin.
+1. **Yapılandırma sunucusu ayrıntıları** ' nda, yapılandırdığınız IP adresini ve parolayı belirtin.
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="Mobility hizmeti yükleme seçeneği sayfası.":::
 
@@ -97,14 +97,14 @@ Mobility hizmetinin göndererek yüklenmesi sırasında aşağıdaki adımlar ge
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>Komut istemi kullanarak Mobility hizmetini yükler
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Tüm sunucu yapılandırmalarının, [VMware VM 'leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma Için destek matrisindeki](vmware-physical-azure-support-matrix.md)ölçütlere uygun olduğundan emin olun.
 - Sunucunun işletim sistemi için [yükleyiciyi bulun](#locate-installer-files) .
 
 ### <a name="windows-machine"></a>Windows makinesi
 
-- Bir komut isteminden, korumak istediğiniz sunucuda yükleyiciyi _C:\Temp_gibi bir yerel klasöre kopyalamak için aşağıdaki komutları çalıştırın. Yükleyicinin dosya adını gerçek dosya adıyla değiştirin.
+- Bir komut isteminden, korumak istediğiniz sunucuda yükleyiciyi _C:\Temp_ gibi bir yerel klasöre kopyalamak için aşağıdaki komutları çalıştırın. Yükleyicinin dosya adını gerçek dosya adıyla değiştirin.
 
   ```cmd
   cd C:\Temp
@@ -130,18 +130,18 @@ Mobility hizmetinin göndererek yüklenmesi sırasında aşağıdaki adımlar ge
 
 Ayar | Ayrıntılar
 --- | ---
-Sözdizimi | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 Kurulum günlükleri | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | Zorunlu yükleme parametresi. Mobility hizmeti (MS) veya ana hedefin (MT) yüklenip yüklenmeyeceğini belirtir.
 `/InstallLocation`| İsteğe bağlı parametre. Mobility hizmeti yükleme konumunu (herhangi bir klasör) belirtir.
-`/Platform` | Zorunlu. Mobility hizmetinin yüklendiği platformu belirtir: <br/> VMware VM 'Leri/fiziksel sunucuları için **VMware** . <br/> Azure VM 'Leri için **Azure** .<br/><br/> Azure VM 'lerini fiziksel makine olarak değerlendiriyorsanız, **VMware**' yi belirtin.
+`/Platform` | Zorunlu. Mobility hizmetinin yüklendiği platformu belirtir: <br/> VMware VM 'Leri/fiziksel sunucuları için **VMware** . <br/> Azure VM 'Leri için **Azure** .<br/><br/> Azure VM 'lerini fiziksel makine olarak değerlendiriyorsanız, **VMware** ' yi belirtin.
 `/Silent`| İsteğe bağlı. Yükleyicinin sessiz modda çalıştırılıp çalıştırılmayacağını belirtir.
 
 #### <a name="registration-settings"></a>Kayıt ayarları
 
 Ayar | Ayrıntılar
 --- | ---
-Sözdizimi | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 Aracı yapılandırma günlükleri | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
 `/CSEndPoint` | Zorunlu parametre. `<CSIP>` yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
 `/PassphraseFilePath` |  Zorunlu. Parolanın konumu. Geçerli bir UNC veya yerel dosya yolu kullanın.
@@ -171,7 +171,7 @@ Aracı yapılandırma günlükleri | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgent
 
 Ayar | Ayrıntılar
 --- | ---
-Sözdizimi | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | Zorunlu yükleme parametresi. Mobility hizmeti (MS) veya ana hedefin (MT) yüklenip yüklenmeyeceğini belirtir.
 `-d` | İsteğe bağlı parametre. Mobility hizmeti yükleme konumunu belirtir: `/usr/local/ASR` .
 `-v` | Zorunlu. Mobility hizmetinin yüklü olduğu platformu belirtir. <br/> VMware VM 'Leri/fiziksel sunucuları için **VMware** . <br/> Azure VM 'Leri için **Azure** .
@@ -181,18 +181,18 @@ Sözdizimi | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 
 Ayar | Ayrıntılar
 --- | ---
-Sözdizimi | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
 `-i` | Zorunlu parametre. `<CSIP>` yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
 `-P` |  Zorunlu. Parolasının kaydedildiği dosyanın tam dosya yolu. Geçerli bir klasör kullanın.
 
 ## <a name="azure-virtual-machine-agent"></a>Azure sanal makine Aracısı
 
-- **Windows VM 'leri**: Mobility hizmetinin 9.7.0.0 sürümünden [Azure VM Aracısı](../virtual-machines/extensions/features-windows.md#azure-vm-agent) , Mobility hizmeti yükleyicisi tarafından yüklenir. Bu, makinenin Azure 'a devredilmesini sağlar, Azure VM, herhangi bir VM uzantısını kullanmak için aracı yükleme önkoşullarını karşılar.
-- **Linux VM 'leri**:  [Walınuxagent](../virtual-machines/extensions/update-linux-agent.md) yük DEVRETMEDEN sonra Azure VM 'ye el ile yüklenmelidir.
+- **Windows VM 'leri** : Mobility hizmetinin 9.7.0.0 sürümünden [Azure VM Aracısı](../virtual-machines/extensions/features-windows.md#azure-vm-agent) , Mobility hizmeti yükleyicisi tarafından yüklenir. Bu, makinenin Azure 'a devredilmesini sağlar, Azure VM, herhangi bir VM uzantısını kullanmak için aracı yükleme önkoşullarını karşılar.
+- **Linux VM 'leri** :  [Walınuxagent](../virtual-machines/extensions/update-linux-agent.md) yük DEVRETMEDEN sonra Azure VM 'ye el ile yüklenmelidir.
 
 ## <a name="locate-installer-files"></a>Yükleyici dosyalarını bul
 
-Yapılandırma sunucusunda _%ProgramData%\asr\home\svsystems\pushınstallsvc\repository_klasörüne gidin. İşletim sistemine bağlı olarak hangi yükleyicide ihtiyacınız olduğunu denetleyin. Aşağıdaki tabloda, her VMware VM ve fiziksel sunucu işletim sistemi için yükleyici dosyaları özetlenmektedir. Başlamadan önce [desteklenen işletim sistemlerini](vmware-physical-azure-support-matrix.md#replicated-machines)gözden geçirebilirsiniz.
+Yapılandırma sunucusunda _%ProgramData%\asr\home\svsystems\pushınstallsvc\repository_ klasörüne gidin. İşletim sistemine bağlı olarak hangi yükleyicide ihtiyacınız olduğunu denetleyin. Aşağıdaki tabloda, her VMware VM ve fiziksel sunucu işletim sistemi için yükleyici dosyaları özetlenmektedir. Başlamadan önce [desteklenen işletim sistemlerini](vmware-physical-azure-support-matrix.md#replicated-machines)gözden geçirebilirsiniz.
 
 > [!NOTE]
 > Dosya adları, aşağıdaki tabloda gösterilen sözdizimini gerçek değerler için yer tutucu olarak _Sürüm_ ve _Tarih_ ile birlikte kullanır. Gerçek dosya adları şu örneklere benzer şekilde görünür:
@@ -232,7 +232,7 @@ Yükleyici dosyası | İşletim sistemi (yalnızca 64 bit)
 3. Configuration Server 'a gidin, SUSE Linux Enterprise Server 11 SP3 Aracı yükleyicisini yol INSTALL_DIR \home\svsystems\pushınstallsvc\repository dizinine kopyalayın
 1. En son yükleyiciyi kopyaladıktan sonra, InMage Pushınstall hizmetini yeniden başlatın. 
 1. Şimdi, ilişkili genişleme işlem sunucularına giderek adım 3 ve 4. adımları yineleyin.
-1. **Örneğin**, install Path, C:\Program Files (x86) \Microsoft Azure Site Recovery ise yukarıdaki belirtilen dizinler şu şekilde olur
+1. **Örneğin** , install Path, C:\Program Files (x86) \Microsoft Azure Site Recovery ise yukarıdaki belirtilen dizinler şu şekilde olur
     1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushınstallsvc\repository
 
 ### <a name="rhel-5-or-centos-5-server"></a>RHEL 5 veya CentOS 5 sunucusu
@@ -244,7 +244,7 @@ Yükleyici dosyası | İşletim sistemi (yalnızca 64 bit)
 3. Yapılandırma sunucusu ' na gidin, RHEL 5 veya CentOS 5 Aracı yükleyicisini yol INSTALL_DIR \home\svsystems\pushınstallsvc\repository dizinine kopyalayın
 1. En son yükleyiciyi kopyaladıktan sonra, InMage Pushınstall hizmetini yeniden başlatın. 
 1. Şimdi, ilişkili genişleme işlem sunucularına giderek adım 3 ve 4. adımları yineleyin.
-1. **Örneğin**, install Path, C:\Program Files (x86) \Microsoft Azure Site Recovery ise yukarıdaki belirtilen dizinler şu şekilde olur
+1. **Örneğin** , install Path, C:\Program Files (x86) \Microsoft Azure Site Recovery ise yukarıdaki belirtilen dizinler şu şekilde olur
     1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushınstallsvc\repository
 
 ## <a name="debian-7-server"></a>7 sunucu
@@ -256,7 +256,7 @@ Yükleyici dosyası | İşletim sistemi (yalnızca 64 bit)
 3. Configuration Server 'a gidin, INSTALL_DIR \home\svsystems\pushınstallsvc\repository yolunda detem 7 Aracı yükleyicisini kopyalayın
 1. En son yükleyiciyi kopyaladıktan sonra, InMage Pushınstall hizmetini yeniden başlatın. 
 1. Şimdi, ilişkili genişleme işlem sunucularına giderek adım 3 ve 4. adımları yineleyin.
-1. **Örneğin**, install Path, C:\Program Files (x86) \Microsoft Azure Site Recovery ise yukarıdaki belirtilen dizinler şu şekilde olur
+1. **Örneğin** , install Path, C:\Program Files (x86) \Microsoft Azure Site Recovery ise yukarıdaki belirtilen dizinler şu şekilde olur
     1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushınstallsvc\repository
 
 ## <a name="next-steps"></a>Sonraki adımlar

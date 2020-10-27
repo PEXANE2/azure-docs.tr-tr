@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: 1e04662cb0f67863e23f1fc1ce7e1f21ca4e9197
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898a02796d578d76f9b45d167f4e92a4bf9831ba
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087648"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536292"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta ML hizmetleri kümesini yönetme
 
@@ -21,7 +21,7 @@ Bu makalede, birden çok eşzamanlı kullanıcı ekleme, bir ML Hizmetleri küme
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* HDInsight üzerinde bir ML Hizmetleri kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **ml Hizmetleri** seçme.
+* HDInsight üzerinde bir ML Hizmetleri kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü** için **ml Hizmetleri** seçme.
 
 * Güvenli Kabuk (SSH) istemcisi: HDInsight kümesine uzaktan bağlanmak ve komutları doğrudan küme üzerinde çalıştırmak için bir SSH istemcisi kullanılır. Daha fazla bilgi için bkz [. HDInsight Ile SSH kullanma.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -31,8 +31,8 @@ RStudio Community sürümünün çalıştığı Edge düğümüne daha fazla kul
 
 ![HDI Azure portal oturum açma parametreleri](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
-- **Küme oturum açma kullanıcı adı**: Oluşturduğunuz HDInsight kümelerini korumak için kullanılan HDInsight ağ geçidinden kimlik doğrulaması yapmak için kullanılan HTTP kullanıcısı. Bu HTTP kullanıcısı, Apache ambarı Kullanıcı arabirimine, Apache Hadoop YARN Kullanıcı arabirimine ve diğer UI bileşenlerine erişmek için kullanılır.
-- **Secure Shell (SSH) Kullanıcı adı**: güvenli kabuk aracılığıyla kümeye erişmek IÇIN bir SSH kullanıcısı. Bu kullanıcı Linux sisteminde tüm baş düğümler, çalışan düğümleri ve kenar düğümler için kullanılan kullanıcıdır. Bu sayede uzak kümedeki düğümlere erişmek için Secure Shell kullanabilirsiniz.
+- **Küme oturum açma kullanıcı adı** : Oluşturduğunuz HDInsight kümelerini korumak için kullanılan HDInsight ağ geçidinden kimlik doğrulaması yapmak için kullanılan HTTP kullanıcısı. Bu HTTP kullanıcısı, Apache ambarı Kullanıcı arabirimine, Apache Hadoop YARN Kullanıcı arabirimine ve diğer UI bileşenlerine erişmek için kullanılır.
+- **Secure Shell (SSH) Kullanıcı adı** : güvenli kabuk aracılığıyla kümeye erişmek IÇIN bir SSH kullanıcısı. Bu kullanıcı Linux sisteminde tüm baş düğümler, çalışan düğümleri ve kenar düğümler için kullanılan kullanıcıdır. Bu sayede uzak kümedeki düğümlere erişmek için Secure Shell kullanabilirsiniz.
 
 HDInsight 'ta ML Hizmetleri kümesinde kullanılan R Studio Server Community sürümü, oturum açma mekanizması olarak yalnızca Linux Kullanıcı adı ve parolasını kabul eder. Belirteç iletmeyi desteklemez. Bu nedenle, bir ML Hizmetleri kümesinde R Studio 'Yu ilk kez erişmeye çalıştığınızda iki kez oturum açmanız gerekir.
 
@@ -74,7 +74,7 @@ Aşağıdaki ekran görüntüsünde çıktılar gösterilmektedir.
 
 RStudio 'dan ' ye erişin `https://CLUSTERNAME.azurehdinsight.net/rstudio/` . Kümeyi oluşturduktan sonra ilk kez oturum açıyorsanız, Küme Yöneticisi kimlik bilgilerini ve ardından oluşturduğunuz SSH kullanıcı kimlik bilgilerini girin. İlk oturum açma işlemi değilse, yalnızca oluşturduğunuz SSH kullanıcısına ait kimlik bilgilerini girin.
 
-Ayrıca, başka bir tarayıcı penceresinden aynı anda özgün kimlik bilgilerini (varsayılan olarak *sshuser*) kullanarak da oturum açabilirsiniz.
+Ayrıca, başka bir tarayıcı penceresinden aynı anda özgün kimlik bilgilerini (varsayılan olarak *sshuser* ) kullanarak da oturum açabilirsiniz.
 
 Ayrıca yeni eklenen kullanıcıların Linux sisteminde kök ayrıcalıklarına sahip olmadığına ancak uzak HDFS ve WASB depolama alanındaki tüm dosyalara aynı düzeyde erişime sahip olduğuna dikkat edin.
 
@@ -106,7 +106,7 @@ mySparkCluster <- RxSpark(
 )
 ```
 
-Daha fazla bilgi için, [Apache Spark işlem bağlamında](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios) geri alma kullanma konusunun "Apache Hadoop istemci olarak Microsoft Machine Learning Server kullanma" bölümüne bakın.
+Daha fazla bilgi için, [Apache Spark işlem bağlamında](/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios) geri alma kullanma konusunun "Apache Hadoop istemci olarak Microsoft Machine Learning Server kullanma" bölümüne bakın.
 
 ## <a name="use-a-compute-context"></a>İşlem bağlamı kullanma
 
@@ -195,19 +195,19 @@ Kümenin çalışan düğümlerine R paketleri yüklemek için bir betik eylemi 
 
 1. [Betiği kullanarak kümeleri özelleştirme](../hdinsight-hadoop-customize-cluster-linux.md)bölümündeki adımları izleyin.
 
-3. **Betiği gönder eylemi**için aşağıdaki bilgileri sağlayın:
+3. **Betiği gönder eylemi** için aşağıdaki bilgileri sağlayın:
 
-   * **Betik türü**için **özel**' i seçin.
+   * **Betik türü** için **özel** ' i seçin.
 
-   * **Ad**için, betik eylemi için bir ad sağlayın.
+   * **Ad** için, betik eylemi için bir ad sağlayın.
 
-     * **Bash betiği URI 'si**için girin `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` . Bu, çalışan düğümüne ek R paketleri yükleyen betiğtir
+     * **Bash betiği URI 'si** için girin `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` . Bu, çalışan düğümüne ek R paketleri yükleyen betiğtir
 
-   * Yalnızca **çalışan**için onay kutusunu seçin.
+   * Yalnızca **çalışan** için onay kutusunu seçin.
 
-   * **Parametreler**: Yüklenecek R paketleri. Örneğin, `bitops stringr arules`
+   * **Parametreler** : Yüklenecek R paketleri. Örneğin, `bitops stringr arules`
 
-   * **Bu betik eylemini kalıcı hale**getirmek için onay kutusunu işaretleyin.  
+   * **Bu betik eylemini kalıcı hale** getirmek için onay kutusunu işaretleyin.  
 
    > [!NOTE]
    > 1. Varsayılan olarak, tüm R paketleri Microsoft MRAN deposunun yüklü olan ML Server sürümüyle tutarlı bir anlık görüntüsünden yüklenir. Paketlerin daha yeni sürümlerini yüklemek istiyorsanız uyumsuzluk riskiyle karşı karşıya kalabilirsiniz. Ancak bu tür yüklemeleri paket listesinin ilk öğesi olarak `useCRAN` belirleyerek mümkün kılabilirsiniz, örneğin `useCRAN bitops, stringr, arules`.  
@@ -216,7 +216,7 @@ Kümenin çalışan düğümlerine R paketleri yüklemek için bir betik eylemi 
 
    ![Betik eylemini Azure portal gönder](./media/r-server-hdinsight-manage/submit-script-action.png)
 
-4. Betiği çalıştırmak için **Oluştur**’u seçin. Betik tamamlandıktan sonra R paketleri tüm çalışan düğümlerinde kullanılabilir.
+4. Betiği çalıştırmak için **Oluştur** ’u seçin. Betik tamamlandıktan sonra R paketleri tüm çalışan düğümlerinde kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

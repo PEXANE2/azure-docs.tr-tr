@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: fc10d385df1dffed07e771d622d9bf9d8bedee39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1cd6d93ff45d7fb40ae7ca1874343486bd0b8cb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086543"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547937"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Kullanıcıları Apache Ambari Görünümleri için yetkilendirme
 
@@ -24,7 +24,7 @@ Active Directory Kullanıcılar, etki alanı kimlik bilgilerini kullanarak küme
 > [!WARNING]  
 > Linux tabanlı HDInsight kümenizdeki ambarı izleme (hdinsightwatchdog) parolasını değiştirmeyin. Parola değiştirme, betik eylemlerini kullanma veya kümeniz ile ölçeklendirme işlemleri gerçekleştirme yeteneğini keser.
 
-Daha önce yapmadıysanız, yeni bir ESP kümesi sağlamak için [Bu yönergeleri](./domain-joined/apache-domain-joined-configure.md) izleyin.
+Daha önce yapmadıysanız, yeni bir ESP kümesi sağlamak için [Bu yönergeleri](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) izleyin.
 
 ## <a name="access-the-ambari-management-page"></a>Ambarı yönetim sayfasına erişin
 
@@ -36,13 +36,13 @@ Daha önce yapmadıysanız, yeni bir ESP kümesi sağlamak için [Bu yönergeler
 
 ### <a name="add-users-through-the-portal"></a>Portalı kullanarak Kullanıcı ekleme
 
-1. Yönetim sayfasından **Kullanıcılar**' ı seçin.
+1. Yönetim sayfasından **Kullanıcılar** ' ı seçin.
 
     ![Apache ambarı yönetim sayfası kullanıcıları](./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png)
 
-1. **+ Yerel kullanıcı oluştur**' u seçin.
+1. **+ Yerel kullanıcı oluştur** ' u seçin.
 
-1. **Kullanıcı adı** ve **parola**belirtin. **Kaydet**' i seçin.
+1. **Kullanıcı adı** ve **parola** belirtin. **Kaydet** ' i seçin.
 
 ### <a name="add-users-through-powershell"></a>PowerShell aracılığıyla Kullanıcı ekleme
 
@@ -167,7 +167,7 @@ curl -k -u $user:$userPassword -H "X-Requested-By: ambari" \
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>Apache Hive görünümlerine izin verme
 
-Ambarı, diğerleri arasında [Apache Hive](https://hive.apache.org/) ve [Apache tez](https://tez.apache.org/)için görünüm örnekleriyle gelir. Bir veya daha fazla Hive görünümü örneğine erişim vermek için, **ambarı yönetim sayfasına**gidin.
+Ambarı, diğerleri arasında [Apache Hive](https://hive.apache.org/) ve [Apache tez](https://tez.apache.org/)için görünüm örnekleriyle gelir. Bir veya daha fazla Hive görünümü örneğine erişim vermek için, **ambarı yönetim sayfasına** gidin.
 
 1. Yönetim sayfasından, sol taraftaki **Görünümler** menü başlığı altında bulunan **Görünümler** bağlantısını seçin.
 
@@ -191,14 +191,14 @@ Ambarı, diğerleri arasında [Apache Hive](https://hive.apache.org/) ve [Apache
 
    * Kullanıcı adını seçin veya yazın. Bu Kullanıcı adını yeni bir kullanıcı olarak eklemek için **Yeni** düğmesini seçin.
 
-   * Değişikliklerinizi kaydetmek için **mavi onay kutusunu**seçin.
+   * Değişikliklerinizi kaydetmek için **mavi onay kutusunu** seçin.
 
      ![Apache ambarı Kullanıcı izinleri verme](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
 
 1. Bir grup eklemek için **Grup Ekle** düğmesini seçin.
 
    * Grup adını yazmaya başlayın. Var olan bir grup adını seçme veya yeni bir grup ekleme işlemi, Kullanıcı ekleme ile aynıdır.
-   * Değişikliklerinizi kaydetmek için **mavi onay kutusunu**seçin.
+   * Değişikliklerinizi kaydetmek için **mavi onay kutusunu** seçin.
 
      ![Apache ambarı izin verme izinleri](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
 
@@ -224,7 +224,7 @@ Kullanıcılar ve gruplar için, erişim izinleri azaltma sırasıyla listelenen
 * Hizmet operatörü
 * Küme kullanıcısı
 
-Rolleri yönetmek için, **ambarı yönetimi sayfasına**gidin, ardından sol taraftaki *kümeler* menü grubunda bulunan **Roller** bağlantısını seçin.
+Rolleri yönetmek için, **ambarı yönetimi sayfasına** gidin, ardından sol taraftaki *kümeler* menü grubunda bulunan **Roller** bağlantısını seçin.
 
 ![Apache ambarı roller menü bağlantıları](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 

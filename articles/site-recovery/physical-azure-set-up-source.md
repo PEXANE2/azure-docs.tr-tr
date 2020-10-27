@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
-ms.openlocfilehash: d2cc3627222bcd8de5a5cb1b5c83b04c5d4ef880
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 327e995a8fe2f66903548fba054804768d2538ab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86130196"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534303"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Fiziksel sunucuların Azure'a olağanüstü durum kurtarması gerçekleştirmesi için yapılandırma sunucusunu ayarlama
 
@@ -36,19 +36,19 @@ Aşağıdaki tabloda bir yapılandırma sunucusu için en düşük donanım, yaz
 ## <a name="choose-your-protection-goals"></a>Koruma hedeflerinizi seçin
 
 1. Azure portal, **Kurtarma Hizmetleri** kasaları dikey penceresine gidip kasanızı seçin.
-2. Kasanın **kaynak** menüsünde **, başlangıç**  >  **Site Recovery**  >  **1. Adım: altyapı**  >  **koruma hedefini**hazırlama ' ya tıklayın.
+2. Kasanın **kaynak** menüsünde **, başlangıç**  >  **Site Recovery**  >  **1. Adım: altyapı**  >  **koruma hedefini** hazırlama ' ya tıklayın.
 
-    ![Hedefleri seçme](./media/physical-azure-set-up-source/choose-goals.png)
-3. **Koruma hedefi**' nde, **Azure 'a** ve **sanallaştırılmamış/diğer**' i seçin ve ardından **Tamam**' a tıklayın.
+    ![Koruma hedefinin nerede seçdiğinin gösterildiği ekran görüntüsü.](./media/physical-azure-set-up-source/choose-goals.png)
+3. **Koruma hedefi** ' nde, **Azure 'a** ve **sanallaştırılmamış/diğer** ' i seçin ve ardından **Tamam** ' a tıklayın.
 
     ![Hedefleri seçme](./media/physical-azure-set-up-source/physical-protection-goal.png)
 
 ## <a name="set-up-the-source-environment"></a>Kaynak ortamı ayarlama
 
-1. **Kaynağı hazırla**bölümünde, bir yapılandırma sunucunuz yoksa, bir tane eklemek Için **+ yapılandırma sunucusu** ' na tıklayın.
+1. **Kaynağı hazırla** bölümünde, bir yapılandırma sunucunuz yoksa, bir tane eklemek Için **+ yapılandırma sunucusu** ' na tıklayın.
 
-   ![Kaynağı ayarlama](./media/physical-azure-set-up-source/plus-config-srv.png)
-2. **Sunucu Ekle** dikey penceresinde, **sunucu türü**' nde **Configuration Server** ' ın göründüğünden emin olun.
+   ![Yapılandırma sunucusunun nasıl seçdiğinin gösterildiği ekran görüntüsü.](./media/physical-azure-set-up-source/plus-config-srv.png)
+2. **Sunucu Ekle** dikey penceresinde, **sunucu türü** ' nde **Configuration Server** ' ın göründüğünden emin olun.
 4. Site Recovery Birleşik kurulum yükleme dosyasını indirin.
 5. Kasa kayıt anahtarını indirin. Birleşik kurulumu çalıştırdığınızda kayıt anahtarı gereklidir. Anahtar, oluşturulduktan sonra beş gün boyunca geçerlidir.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 98e062b159b2df639923cb3cd3aac286f6051016
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490909"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535102"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight kümesinde yavaş veya başarısız olan bir işin sorunlarını giderme
 
@@ -90,8 +90,8 @@ HDInsight çeşitli Azure hizmetlerini kullanır. Azure HDInsight üzerinde sana
 
 #### <a name="check-azure-service-usage-limits"></a>Azure hizmeti kullanım sınırlarını denetle
 
-Büyük bir küme veya aynı anda birçok küme oluşturduysanız, bir Azure hizmet sınırını aştıysanız bir küme başarısız olabilir. Hizmet limitleri, Azure aboneliğinize bağlı olarak farklılık gösterir. Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
-Microsoft 'un kullanılabilir HDInsight kaynakları sayısını (VM çekirdekleri ve VM örnekleri gibi) [Kaynak Yöneticisi çekirdek kota artışı isteği](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)ile artırmayı isteyebilirsiniz.
+Büyük bir küme veya aynı anda birçok küme oluşturduysanız, bir Azure hizmet sınırını aştıysanız bir küme başarısız olabilir. Hizmet limitleri, Azure aboneliğinize bağlı olarak farklılık gösterir. Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md).
+Microsoft 'un kullanılabilir HDInsight kaynakları sayısını (VM çekirdekleri ve VM örnekleri gibi) [Kaynak Yöneticisi çekirdek kota artışı isteği](../azure-portal/supportability/resource-manager-core-quotas-request.md)ile artırmayı isteyebilirsiniz.
 
 #### <a name="check-the-release-version"></a>Yayın sürümünü denetleyin
 
@@ -115,7 +115,7 @@ Aşağıdaki bölümlerde, her bir düğümün sistem durumunun ve toplam kümen
 
 ### <a name="check-your-webhcat-service"></a>WebHCat hizmetinizi denetleyin
 
-Apache Hive, Apache Pig veya Apache Sqoop işleri için bir yaygın senaryo, [Webhcat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (veya *tempkaton*) hizmeti ile başarısız oluyor. WebHCat, Hive, Pig, Scoop ve MapReduce gibi uzak iş yürütmesi için bir REST arabirimidir. WebHCat, iş gönderme isteklerini Apache Hadoop YARN uygulamalarına çevirir ve YARN uygulama durumundan türetilmiş bir durum döndürür.  Aşağıdaki bölümlerde ortak WebHCat HTTP durum kodları açıklanır.
+Apache Hive, Apache Pig veya Apache Sqoop işleri için bir yaygın senaryo, [Webhcat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (veya *tempkaton* ) hizmeti ile başarısız oluyor. WebHCat, Hive, Pig, Scoop ve MapReduce gibi uzak iş yürütmesi için bir REST arabirimidir. WebHCat, iş gönderme isteklerini Apache Hadoop YARN uygulamalarına çevirir ve YARN uygulama durumundan türetilmiş bir durum döndürür.  Aşağıdaki bölümlerde ortak WebHCat HTTP durum kodları açıklanır.
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (502 durum kodu)
 
@@ -172,7 +172,7 @@ YARN düzeyinde iki zaman aşımı türü vardır:
 
     `/var/log/webhcat/webhcat.log`Günlük dosyasını açar ve "sıraya alınan iş" araması yaparsanız, yürütme zamanının çok uzun (>2000 MS) olduğu ve artan bekleme sürelerinin gösterildiği girişlerle birlikte birden fazla giriş görebilirsiniz.
 
-    Sıraya alınan işlerin süresi artmaya devam eder, çünkü yeni işlerin gönderildiği oran eski işlerin tamamlandığı hızdan daha yüksektir. YARN belleği kullanılan %100 olduğunda, *joblauncher kuyruğu* artık *varsayılan kuyruktan*kapasite ödünç alabilir. Bu nedenle, joblauncher kuyruğuna daha fazla yeni iş kabul edilemez. Bu davranış, bekleme süresinin daha uzun sürmesine neden olur ve genellikle bir çok zaman aşımı hatasına neden olur.
+    Sıraya alınan işlerin süresi artmaya devam eder, çünkü yeni işlerin gönderildiği oran eski işlerin tamamlandığı hızdan daha yüksektir. YARN belleği kullanılan %100 olduğunda, *joblauncher kuyruğu* artık *varsayılan kuyruktan* kapasite ödünç alabilir. Bu nedenle, joblauncher kuyruğuna daha fazla yeni iş kabul edilemez. Bu davranış, bekleme süresinin daha uzun sürmesine neden olur ve genellikle bir çok zaman aşımı hatasına neden olur.
 
     Aşağıdaki görüntüde,% 714,4 fazla kullanılan iş başlatıcısı sırası gösterilmektedir. Bu, varsayılan kuyrukta içinden ödünç almak için hala ücretsiz kapasite olduğu için kabul edilebilir. Ancak, küme tam olarak kullanıldığında ve YARN belleği %100 kapasiteye sahip olduğunda, yeni işlerin beklenmesi gerekir ve bu süre sonunda zaman aşımına neden olur.
 
@@ -206,7 +206,7 @@ Bu sorunları tanılamak için:
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>4. Adım: ortam yığınını ve sürümlerini gözden geçirme
 
-Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfası, Küme Hizmetleri Yapılandırması ve hizmet sürümü geçmişi hakkında bilgi sağlar.  Hatalı Hadoop hizmeti kitaplık sürümleri, küme hatasının nedeni olabilir.  Ambarı Kullanıcı arabiriminde, **yönetici** menüsünü ve ardından  **yığınlar ve sürümler**' i seçin.  Hizmet sürümü bilgilerini görmek için sayfada **sürümler** sekmesini seçin:
+Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfası, Küme Hizmetleri Yapılandırması ve hizmet sürümü geçmişi hakkında bilgi sağlar.  Hatalı Hadoop hizmeti kitaplık sürümleri, küme hatasının nedeni olabilir.  Ambarı Kullanıcı arabiriminde, **yönetici** menüsünü ve ardından  **yığınlar ve sürümler** ' i seçin.  Hizmet sürümü bilgilerini görmek için sayfada **sürümler** sekmesini seçin:
 
 ![Apache ambarı yığını ve sürümleri](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
@@ -262,7 +262,7 @@ Bir küme hatasının kaynağını tanılamaya yardımcı olmak için, aynı yap
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [HDInsight kümelerini Apache Ambari Web arabiriminden yönetme](hdinsight-hadoop-manage-ambari.md)
-* [HDInsight günlüklerini çözümleme](hdinsight-debug-jobs.md)
+* [HDInsight günlüklerini çözümleme](./hdinsight-troubleshoot-guide.md)
 * [Linux tabanlı HDInsight 'ta Apache Hadoop YARN uygulama oturum açma erişimi](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Linux tabanlı HDInsight 'ta Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirme](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [HDInsight üzerinde Apache Spark kümesi için bilinen sorunlar](hdinsight-apache-spark-known-issues.md)
+* [HDInsight üzerinde Apache Spark kümesi için bilinen sorunlar](./spark/apache-spark-known-issues.md)

@@ -8,21 +8,21 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: d91161127b3fd3b63d7a5cc76df2fbeb33b62f34
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 97aa37d5bc99295de7b827467b8c6db551c34ef7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479842"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547546"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>Tarayıcınızı, PowerShell 'i veya Azure CLı 'yı kullanarak bir HDInsight kümesini silme
 
-HDInsight kümesi faturalandırması küme oluşturulduğunda başlar ve küme silindiğinde sona erer. Faturalandırma, dakika başına dağıtılır, bu nedenle artık kullanımda olmadığında kümenizi her zaman silmeniz gerekir. Bu belgede [Azure Portal](https://portal.azure.com), [Azure PowerShell az Module](https://docs.microsoft.com/powershell/azure/)ve [Azure CLI](/cli/azure/)kullanarak bir kümeyi silmeyi öğreneceksiniz.
+HDInsight kümesi faturalandırması küme oluşturulduğunda başlar ve küme silindiğinde sona erer. Faturalandırma, dakika başına dağıtılır, bu nedenle artık kullanımda olmadığında kümenizi her zaman silmeniz gerekir. Bu belgede [Azure Portal](https://portal.azure.com), [Azure PowerShell az Module](/powershell/azure/)ve [Azure CLI](/cli/azure/)kullanarak bir kümeyi silmeyi öğreneceksiniz.
 
 > [!IMPORTANT]  
 > HDInsight kümesini silmek, kümeyle ilişkili Azure depolama hesaplarını veya Data Lake Storage silmez. Gelecekte bu hizmetlerde depolanan verileri yeniden kullanabilirsiniz.
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portal
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 

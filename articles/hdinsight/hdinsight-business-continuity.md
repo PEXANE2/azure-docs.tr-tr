@@ -8,12 +8,12 @@ keywords: Hadoop yüksek kullanılabilirlik
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: beb3c54a0ab7f6f063232a1ad49744d99746c589
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893654"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546951"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight iş sürekliliği
 
@@ -39,7 +39,7 @@ Bu bölümde, iş sürekliliği planlaması sırasında göz önünde bulundurma
 
 * Kümedeki anormal davranışları algılamak ve ilgili uyarı bildirimlerini ayarlamak için HDInsight 'ta Azure izleme araçları 'nı kullanın. Belirli küme türünün önemli performans ölçümlerini toplayacak şekilde, önceden yapılandırılmış HDInsight kümesine özgü yönetim çözümlerini dağıtabilirsiniz. Daha fazla bilgi için bkz. [HDInsight Için Azure izleme](./hdinsight-hadoop-oms-log-analytics-tutorial.md).  
 
-* Abonelik, hizmet veya bölge için hizmet sorunları, planlı bakım, sağlık ve Güvenlik Danışma belgeleri hakkında bildirim almak için Azure sistem durumu uyarılarına abone olun. Sorun nedeni ve Resolute ETA sorunları dahil sistem durumu bildirimleri yük devretme ve geri alma işlemlerini daha iyi yürütebilmeniz için size yardımcı olur. Daha fazla bilgi için bkz. [Azure hizmet durumu belgeleri](/azure/service-health/).
+* Abonelik, hizmet veya bölge için hizmet sorunları, planlı bakım, sağlık ve Güvenlik Danışma belgeleri hakkında bildirim almak için Azure sistem durumu uyarılarına abone olun. Sorun nedeni ve Resolute ETA sorunları dahil sistem durumu bildirimleri yük devretme ve geri alma işlemlerini daha iyi yürütebilmeniz için size yardımcı olur. Daha fazla bilgi için bkz. [Azure hizmet durumu belgeleri](../service-health/index.yml).
 
 ## <a name="single-region-availability"></a>Tek bölge kullanılabilirliği
 
@@ -113,7 +113,7 @@ Bölgeler arası yüksek kullanılabilirlik olağanüstü durum kurtarma kullana
 |Veri Depolama|İkincil bölgedeki birincil verileri/tabloları çoğaltma|Yalnızca seçkin verileri Çoğalt|
 |Veri çıkış|Giden çapraz bölge veri aktarımları bir fiyata gelir. Bant genişliği fiyatlandırma yönergelerini gözden geçirin|Bölge çıkış parmak izini azaltmak için yalnızca seçkin verileri Çoğalt|
 |Küme Işlem|İkincil bölgede ek HDInsight kümesi/s|Birincil hatadan sonra ikincil işlem dağıtmak için otomatikleştirilmiş betikleri kullanın. İkincil küme boyutunu en düşük düzeyde tutmak için otomatik ölçeklendirmeyi kullanın. Ucuz VM SKU 'larını kullanın. VM SKU 'Larının indirimli olabileceği bölgelerde ikincil öğeler oluşturun.|
-|Kimlik Doğrulaması |İkincil bölgedeki çok kullanıcılı senaryolar, ek Azure AD DS kurulumları oluşturacak|İkincil bölgedeki çok kullanıcılı kurulumlardan kaçının.|
+|Kimlik Doğrulama |İkincil bölgedeki çok kullanıcılı senaryolar, ek Azure AD DS kurulumları oluşturacak|İkincil bölgedeki çok kullanıcılı kurulumlardan kaçının.|
 
 ### <a name="complexity-optimizations"></a>Karmaşıklık iyileştirmeleri
 

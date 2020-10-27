@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 951de77f2ef10a06ff03801872cebcef088172b7
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 200f74ee8d99c80956f1d27599769401d30c3f95
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167058"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537958"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme)
 
@@ -66,7 +66,7 @@ Daha fazla bilgi için bkz. [yedekleme kavramları](concepts-backup-restore.md) 
 
 ## <a name="network-isolation"></a>Ağ Yalıtımı
 
-MySQL için Azure veritabanı esnek sunucusuna bağlanmak için iki ağ seçeneğiniz vardır. Seçenekler **özel erişim (VNET tümleştirmesi)** ve **genel erişim (izin verilen IP adresleri)**. 
+MySQL için Azure veritabanı esnek sunucusuna bağlanmak için iki ağ seçeneğiniz vardır. Seçenekler **özel erişim (VNET tümleştirmesi)** ve **genel erişim (izin verilen IP adresleri)** . 
 
 * **Özel erişim (VNET tümleştirmesi)** – esnek sunucunuzu [Azure sanal ağınıza](../../virtual-network/virtual-networks-overview.md)dağıtabilirsiniz. Azure sanal ağları özel ve güvenli ağ iletişimi sağlar. Bir sanal ağdaki kaynaklar özel IP adresleri üzerinden iletişim kurabilir.
 
@@ -75,7 +75,7 @@ MySQL için Azure veritabanı esnek sunucusuna bağlanmak için iki ağ seçene�
    * Azure olmayan kaynaklardan esnek sunucunuza bağlanmak için VPN veya ExpressRoute kullanın
    * Ortak uç nokta yok
 
-* **Genel erişim (izin VERILEN IP adresleri)** – esnek sunucunuzu ortak bir uç nokta ile dağıtabilirsiniz. Genel uç nokta, genel olarak çözümlenebilen bir DNS adresidir. "İzin verilen IP adresleri" ifadesi sunucunuza erişim izni vermek için seçtiğiniz bir IP aralığı anlamına gelir. Bu izinler, **güvenlik duvarı kuralları**olarak adlandırılır.
+* **Genel erişim (izin VERILEN IP adresleri)** – esnek sunucunuzu ortak bir uç nokta ile dağıtabilirsiniz. Genel uç nokta, genel olarak çözümlenebilen bir DNS adresidir. "İzin verilen IP adresleri" ifadesi sunucunuza erişim izni vermek için seçtiğiniz bir IP aralığı anlamına gelir. Bu izinler, **güvenlik duvarı kuralları** olarak adlandırılır.
 
 Daha fazla bilgi için bkz. [ağ kavramları](concepts-networking.md) .
 
@@ -99,7 +99,7 @@ Hizmet, Aktarım Katmanı Güvenliği varsayılan olarak zorunlu kılınan veril
 
 Daha fazla bilgi için bkz. [Esnek sunuculara şifreli bağlantıları kullanma](https://docs.mongodb.com/manual/tutorial/configure-ssl) .
 
-Esnek sunucular, [Azure sanal ağ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) (VNet) Tümleştirmesi kullanılarak sunuculara tam özel erişim sağlar. Azure sanal ağındaki sunuculara yalnızca özel IP adresleri üzerinden ulaşılırsa ve bu adreslere bağlanabilir. VNet tümleştirmeyle, genel erişim reddedilir ve sunuculara genel uç noktalar kullanılarak ulaşılamıyor. 
+Esnek sunucular, [Azure sanal ağ](../../virtual-network/virtual-networks-overview.md) (VNet) Tümleştirmesi kullanılarak sunuculara tam özel erişim sağlar. Azure sanal ağındaki sunuculara yalnızca özel IP adresleri üzerinden ulaşılırsa ve bu adreslere bağlanabilir. VNet tümleştirmeyle, genel erişim reddedilir ve sunuculara genel uç noktalar kullanılarak ulaşılamıyor. 
 
 Daha fazla bilgi için bkz. [ağ kavramları](concepts-networking.md) .
 
@@ -115,7 +115,7 @@ Daha fazla bilgi için bkz. [izleme kavramları](concepts-monitoring.md) .
 Hizmet MySQL 'in topluluk sürümünü çalıştırır. Bu, tam uygulama uyumluluğuna izin verir ve MySQL altyapısında geliştirilen mevcut uygulamayı tek sunucu hizmetine geçirmek için en az yeniden düzenleme maliyeti gerektirir. Tek sunucuya geçiş, aşağıdaki seçeneklerden biri kullanılarak gerçekleştirilebilir:
 
 - **Dökümünü al ve geri yükle** – kullanıcıların bazı kapalı kalma süresini karşılayabileceği, döküm ve geri yükleme işlemleri, mysqldump/mydumper gibi topluluk araçlarını kullanarak geçirmek için en hızlı yolu sağlayabilir. Ayrıntılar için bkz. döküm kullanarak geçiş ve geri yükleme. 
-- **Azure veritabanı geçiş hizmeti** : en az kapalı kalma süresiyle tek sunucuya sorunsuz ve Basitleştirilmiş geçişler Için [Azure veritabanı geçiş hizmeti](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) yararlanılabilir olabilir. 
+- **Azure veritabanı geçiş hizmeti** : en az kapalı kalma süresiyle tek sunucuya sorunsuz ve Basitleştirilmiş geçişler Için [Azure veritabanı geçiş hizmeti](../../dms/tutorial-mysql-azure-mysql-online.md) yararlanılabilir olabilir. 
 
 ## <a name="azure-regions"></a>Azure bölgeleri
 

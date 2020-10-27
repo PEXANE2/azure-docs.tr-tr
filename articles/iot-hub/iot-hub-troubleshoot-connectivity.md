@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 17fb1bf8aebe1bd114f970aed997e77ce8a07af1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b194812ef68820a0c310d0bac3b055360c5b5e4a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150777"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538434"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub bağlantısını izleme, tanılama ve sorun giderme
 
@@ -28,25 +28,25 @@ Birçok olası hata noktası olduğundan, IoT cihazlarına yönelik bağlantı s
 
 Cihazların bağlantısı kesildiğinde uyarıları almak ve günlükleri yazmak için Azure Izleyici 'yi kullanın.
 
-### <a name="turn-on-diagnostic-logs"></a>Tanılama günlüklerini aç
+### <a name="turn-on-logs"></a>Günlükleri aç
 
-Cihaz bağlantısı olaylarını ve hatalarını günlüğe kaydetmek için IoT Hub tanılamayı açın. Tanılama günlükleri etkinleştirilmemişse, cihazın bağlantısı kesildiğinde sorun gidermek için herhangi bir bilgi olmayacak ve bu günlükleri mümkün olduğunca erken açmanızı öneririz.
+Cihaz bağlantısı olaylarını ve hatalarını günlüğe kaydetmek için [IoT Hub bağlantıları kaynak günlükleri](monitor-iot-hub-reference.md#connections)için bir tanılama ayarı oluşturun. Bu ayarların olabildiğince erken oluşturulması önerilir, çünkü bu günlükler varsayılan olarak toplanmaz ve bunlar olmadan cihaz bağlantısı kesildiklerinde sorun gidermeye ilişkin hiçbir bilgiye sahip olmayacaktır.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. IoT Hub 'ınıza gidin.
+1. IoT Hub 'ınıza gidin.
 
-3. **Tanılama ayarları**' nı seçin.
+1. **Tanılama ayarları** ' nı seçin.
 
-4. **Tanılamayı aç '** ı seçin.
+1. **Tanılama ayarı Ekle** ' yi seçin.
 
-5. Toplanabilecek **bağlantı** günlüklerini etkinleştirin.
+1. **Bağlantı** günlüklerini seçin.
 
-6. Daha kolay analiz için **Log Analytics gönder** ' i açın ([bkz. fiyatlandırma](https://azure.microsoft.com/pricing/details/log-analytics/)). [Bağlantı hatalarını çözme](#resolve-connectivity-errors)bölümündeki örneğe bakın.
+1. Daha kolay analiz için **Log Analytics gönder** ' i seçin ( [bkz. fiyatlandırma](https://azure.microsoft.com/pricing/details/log-analytics/)). [Bağlantı hatalarını çözme](#resolve-connectivity-errors)bölümündeki örneğe bakın.
 
    ![Önerilen ayarlar](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
-Daha fazla bilgi edinmek için bkz. [Azure IoT Hub sistem durumunu izleme ve sorunları hızlı bir şekilde tanılama](iot-hub-monitor-resource-health.md).
+Daha fazla bilgi için bkz. [izleyici IoT Hub](monitor-iot-hub.md).
 
 ### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>Ölçekte cihaz bağlantısı kesilmeye yönelik uyarıları ayarlama
 
@@ -56,11 +56,11 @@ Cihazların bağlantısı kesildiğinde uyarı almak için, **bağlı cihazlar (
 
 2. IoT Hub 'ınıza gidin.
 
-3. **Uyarıları**seçin.
+3. **Uyarıları** seçin.
 
-4. **Yeni uyarı kuralı**'nı seçin.
+4. **Yeni uyarı kuralı** 'nı seçin.
 
-5. **Koşul Ekle**' yi seçin ve ardından "bağlı cihazlar (Önizleme)" öğesini seçin.
+5. **Koşul Ekle** ' yi seçin ve ardından "bağlı cihazlar (Önizleme)" öğesini seçin.
 
 6. Aşağıdaki istemlere göre eşik ve uyarı ayarlayın.
 
@@ -72,15 +72,15 @@ Daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılar nelerdir?](../azu
 
 ## <a name="resolve-connectivity-errors"></a>Bağlantı hatalarını çözme
 
-Bağlı cihazlar için tanılama günlüklerini ve uyarılarını açtığınızda, hata oluştuğunda uyarılar alırsınız. Bu bölümde, bir uyarı aldığınızda yaygın sorunların nasıl aranacağı açıklanmaktadır. Aşağıdaki adımlarda, tanılama günlüklerinizin Azure Izleyici günlüklerini ayarlamış olduğunuz varsayılmaktadır.
+Bağlı cihazlar için günlükleri ve uyarıları açtığınızda, hata oluştuğunda uyarılar alırsınız. Bu bölümde, bir uyarı aldığınızda yaygın sorunların nasıl aranacağı açıklanmaktadır. Aşağıdaki adımlarda, bir Log Analytics çalışma alanına IoT Hub bağlantı günlükleri göndermek için zaten bir tanılama ayarı oluşturmuş olduğunuz varsayılmaktadır.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. IoT Hub 'ınıza gidin.
 
-1. **Günlükleri**seçin.
+1. **Günlükleri** seçin.
 
-1. IoT Hub için bağlantı hata günlüklerini yalıtmak için aşağıdaki sorguyu girin ve **Çalıştır**' ı seçin:
+1. IoT Hub için bağlantı hata günlüklerini yalıtmak için aşağıdaki sorguyu girin ve **Çalıştır** ' ı seçin:
 
     ```kusto
     AzureDiagnostics

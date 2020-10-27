@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 7d8d2c7d48dc0b77d3be0b9019d4bbf1da8a40c4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a99c6412650cac565414817c91752ae85b8ad37d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490280"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539607"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST proxy kullanarak Azure HDInsight 'ta Apache Kafka kümeleriyle etkileşim kurma
 
@@ -21,13 +21,13 @@ Kafka REST proxy, HTTP üzerinden bir REST API aracılığıyla Kafka kümeniz i
 
 ## <a name="rest-api-reference"></a>REST API başvurusu
 
-Kafka REST API tarafından desteklenen işlemler için bkz. [HDInsight Kafka Rest Proxy API başvurusu](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
+Kafka REST API tarafından desteklenen işlemler için bkz. [HDInsight Kafka Rest Proxy API başvurusu](/rest/api/hdinsight-kafka-rest-proxy).
 
 ## <a name="background"></a>Arka Plan
 
 ![Kafka REST ara sunucu tasarımı](./media/rest-proxy/rest-proxy-architecture.png)
 
-API tarafından desteklenen işlemlerin tam belirtimi için [Apache Kafka Rest Proxy API 'sine](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)bakın.
+API tarafından desteklenen işlemlerin tam belirtimi için [Apache Kafka Rest Proxy API 'sine](/rest/api/hdinsight-kafka-rest-proxy)bakın.
 
 ### <a name="rest-proxy-endpoint"></a>REST proxy uç noktası
 
@@ -40,7 +40,7 @@ Kafka REST proxy 'sine erişim Azure Active Directory güvenlik grupları ile y�
 REST proxy uç noktası istekleri için, istemci uygulamaların bir OAuth belirteci alması gerekir. Belirteç, güvenlik grubu üyeliğini doğrulamak için kullanılır. Aşağıdaki bir OAuth belirtecinin nasıl alınacağını gösteren bir [istemci uygulaması örneği](#client-application-sample) bulun. İstemci uygulaması, HTTP isteğindeki OAuth belirtecini REST proxy 'ye geçirir.
 
 > [!NOTE]
-> AAD güvenlik grupları hakkında daha fazla bilgi için bkz. [Azure Active Directory grupları kullanarak uygulama ve kaynak erişimini yönetme](../../active-directory/fundamentals/active-directory-manage-groups.md). OAuth belirteçlerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [oauth 2,0 kod verme akışını kullanarak Azure Active Directory Web uygulamalarına erişimi yetkilendirme](../../active-directory/develop/v1-protocols-oauth-code.md).
+> AAD güvenlik grupları hakkında daha fazla bilgi için bkz. [Azure Active Directory grupları kullanarak uygulama ve kaynak erişimini yönetme](../../active-directory/fundamentals/active-directory-manage-groups.md). OAuth belirteçlerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [oauth 2,0 kod verme akışını kullanarak Azure Active Directory Web uygulamalarına erişimi yetkilendirme](../../active-directory/azuread-dev/v1-protocols-oauth-code.md).
 
 ## <a name="kafka-rest-proxy-with-network-security-groups"></a>Ağ güvenlik grupları ile Kafka REST proxy
 Kendi VNet 'nizi getirip ağ güvenlik grupları ile ağ trafiğini denetlemeniz durumunda, bağlantı noktası 443 ' e ek olarak **9400** numaralı bağlantı noktasında **gelen** trafiğe izin verin. Bu, Kafka REST proxy sunucusuna ulaşılacağından emin olur.
@@ -51,7 +51,7 @@ Kendi VNet 'nizi getirip ağ güvenlik grupları ile ağ trafiğini denetlemeniz
 
 1. Bir Azure AD güvenlik grubu oluşturun. Azure AD 'ye kaydettiğiniz uygulamayı, grubun bir **üyesi** olarak güvenlik grubuna ekleyin. Bu güvenlik grubu, REST proxy ile etkileşime girmesine izin verilen uygulamaları denetlemek için kullanılacaktır. Azure AD grupları oluşturma hakkında daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-    Grubun **güvenlik**tür olduğunu doğrulayın.
+    Grubun **güvenlik** tür olduğunu doğrulayın.
     ![Güvenlik grubu](./media/rest-proxy/rest-proxy-group.png)
 
     Uygulamanın grubun üyesi olduğunu doğrulayın.
@@ -65,11 +65,11 @@ Aşağıdaki adımlar Azure portal kullanır. Azure CLı kullanan bir örnek iç
 
      ![Ekran görüntüsü, güvenlik + ağ seçiliyken H D Insight Cluster oluştur sayfasını gösterir.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
-1. **Güvenlik grubu seç**' e tıklayın. Güvenlik grupları listesinden REST proxy 'sine erişimi olmasını istediğiniz güvenlik grubunu seçin. Uygun güvenlik grubunu bulmak için arama kutusunu kullanabilirsiniz. Alttaki **Seç** düğmesine tıklayın.
+1. **Güvenlik grubu seç** ' e tıklayın. Güvenlik grupları listesinden REST proxy 'sine erişimi olmasını istediğiniz güvenlik grubunu seçin. Uygun güvenlik grubunu bulmak için arama kutusunu kullanabilirsiniz. Alttaki **Seç** düğmesine tıklayın.
 
      ![Ekran görüntüsü, bir güvenlik grubu seçme seçeneğiyle H D Insight Cluster oluştur sayfasını gösterir.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
-1. [Azure Portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started)bölümünde açıklandığı gibi kümenizi oluşturmak için kalan adımları izleyin.
+1. [Azure Portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma](./apache-kafka-get-started.md)bölümünde açıklandığı gibi kümenizi oluşturmak için kalan adımları izleyin.
 
 1. Küme oluşturulduktan sonra, Kafka REST proxy URL 'sini kaydetmek için küme özelliklerine gidin.
 
@@ -269,4 +269,4 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kafka REST Proxy API başvuru belgeleri](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/)
+* [Kafka REST Proxy API başvuru belgeleri](/rest/api/hdinsight-kafka-rest-proxy/)

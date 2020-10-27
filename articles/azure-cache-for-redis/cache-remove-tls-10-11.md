@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 7be987b99c60185647ab976691d42b72236c6364
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: fd0e6f893d152259c46ff06e9ec20af54395c5e6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496064"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545319"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>TLS 1,0 ve 1,1 ' i Redsıs için Azure Cache ile birlikte kullanarak kaldırma
 
@@ -65,7 +65,7 @@ Redsıs .NET istemcileri, en eski TLS sürümünü varsayılan olarak .NET Frame
 
 Redis .NET Core istemcileri varsayılan işletim sistemi varsayılan TLS sürümüne göre değişir. 
 
-İşletim sistemi sürümüne ve uygulanan tüm düzeltme eklerine bağlı olarak, geçerli varsayılan TLS sürümü farklılık gösterebilir. Bu bilgiler hakkında bir bilgi kaynağı olmakla kalmaz, Windows için bir makale [aşağıda](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) verilmiştir. 
+İşletim sistemi sürümüne ve uygulanan tüm düzeltme eklerine bağlı olarak, geçerli varsayılan TLS sürümü farklılık gösterebilir. Bu bilgiler hakkında bir bilgi kaynağı olmakla kalmaz, Windows için bir makale [aşağıda](/dotnet/framework/network-programming/tls#support-for-tls-12) verilmiştir. 
 
 Ancak, eski bir işletim sistemi kullanıyorsanız veya yalnızca emin olmak istiyorsanız, tercih edilen TLS sürümünü istemci aracılığıyla el ile yapılandırmanızı öneririz.
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 0f69b30f477f99e2a4cae10edc7443b0630175c9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 77af5a66ba349e5985e3b27b07c82a1595ccc8a1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487815"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547087"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB'deki tutarlılık düzeyleri
 
@@ -49,7 +49,7 @@ Azure Cosmos DB, okuma isteklerinin yüzde 100 ' unun seçilen tutarlılık düz
 
 Beş tutarlılık düzeyinin semantiği aşağıda açıklanmıştır:
 
-- **Güçlü**: güçlü tutarlılık, bir doğrizlebilirlik garantisi sunar. Doğrizlebilirlik istekleri aynı anda sunma anlamına gelir. Okumaların, bir öğenin en son kaydedilmiş sürümünü döndürmesi garanti edilir. İstemci hiçbir şekilde işlenmemiş veya kısmi yazma görmez. Kullanıcıların her zaman en son yürütülen yazma okuma garantisi vardır.
+- **Güçlü** : güçlü tutarlılık, bir doğrizlebilirlik garantisi sunar. Doğrizlebilirlik istekleri aynı anda sunma anlamına gelir. Okumaların, bir öğenin en son kaydedilmiş sürümünü döndürmesi garanti edilir. İstemci hiçbir şekilde işlenmemiş veya kısmi yazma görmez. Kullanıcıların her zaman en son yürütülen yazma okuma garantisi vardır.
 
   Aşağıdaki grafikte, müzik notlarıyla güçlü tutarlılık gösterilmektedir. Veriler "Batı ABD 2" bölgesine yazıldıktan sonra, diğer bölgelerden gelen verileri okurken en son değeri alırsınız:
 
@@ -77,7 +77,7 @@ Oturum yazma işlemi dışındaki istemciler aşağıdaki garantilere sahip olur
 
   :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Bir spekme olarak tutarlılık":::
 
-- **Tutarlı ön ek**: döndürülen güncelleştirmeler boşluklar olmadan tüm güncelleştirmelerin bazı ön eklerini içerir. Tutarlı ön ek tutarlılık düzeyi, okumaların hiçbir şekilde sıra dışı yazmaları görmeme garantisi sağlar.
+- **Tutarlı ön ek** : döndürülen güncelleştirmeler boşluklar olmadan tüm güncelleştirmelerin bazı ön eklerini içerir. Tutarlı ön ek tutarlılık düzeyi, okumaların hiçbir şekilde sıra dışı yazmaları görmeme garantisi sağlar.
 
 Sıralamada yazma işlemleri gerçekleştirildiyse, istemci, veya `A, B, C` `A` `A,B` `A,B,C` gibi hiçbir bir sıra dışı permütasyon görür `A,C` `B,A,C` . Tutarlı ön ek, nihai tutarlılık ile karşılaştırılabilir yazma gecikmeleri, kullanılabilirlik ve okuma üretilen işi sağlar, ancak aynı zamanda siparişin önemli olduğu senaryoların ihtiyaçlarına uygun sıra garantisi sağlar.
 
@@ -92,7 +92,7 @@ Aşağıdaki grafikte, müzik notlarıyla tutarlılık ön eki tutarlılığı g
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Bir spekme olarak tutarlılık":::
 
-- **Nihai**: okumalar için sıralama garantisi yoktur. Yazma işlemleri kesildiğinde çoğaltmalar nihai tutarlılığa ulaşacaktır.  
+- **Nihai** : okumalar için sıralama garantisi yoktur. Yazma işlemleri kesildiğinde çoğaltmalar nihai tutarlılığa ulaşacaktır.  
 Son tutarlılık, bir istemci, daha önce okuduğundan daha eski olan değerleri okuyabileceğinden en zayıf tutarlılık biçimidir. Nihai tutarlılık, uygulamanın herhangi bir sıralama garantisi gerektirmediğinden idealdir. Örnek olarak yeniden doldurulabilir, beğeni veya iş parçacıklı yorumların sayısını verilebilir. Aşağıdaki grafikte, müzik notlarıyla nihai tutarlılık gösterilmektedir.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="Bir spekme olarak tutarlılık":::
@@ -101,7 +101,7 @@ Son tutarlılık, bir istemci, daha önce okuduğundan daha eski olan değerleri
 
 Uygulamada genellikle daha güçlü tutarlılık garantisi alabilirsiniz. Bir okuma işleminin tutarlılık garantisi, istediğiniz veritabanı durumunun yeniliği ve sıralamasına karşılık gelir. Okuma tutarlılığı, yazma/güncelleştirme işlemlerinin sıralaması ve yayılması ile bağlantılıdır.  
 
-Veritabanında yazma işlemi yoksa, son, **oturum**veya **tutarlı ön ek** tutarlılık düzeylerine sahip bir okuma **işlemi, güçlü**tutarlılık düzeyiyle bir okuma işlemiyle aynı sonuçları elde etmek olasıdır.
+Veritabanında yazma işlemi yoksa, son, **oturum** veya **tutarlı ön ek** tutarlılık düzeylerine sahip bir okuma **işlemi, güçlü** tutarlılık düzeyiyle bir okuma işlemiyle aynı sonuçları elde etmek olasıdır.
 
 Azure Cosmos hesabınız, güçlü tutarlılık dışında bir tutarlılık düzeyiyle yapılandırıldıysa, olasılık açısından *olasılığa sınırlı bir Stalet* (PBS) ölçüsüne bakarak istemcilerinizin iş yükleriniz için güçlü ve tutarlı okumalar alabilir olasılığını fark edebilirsiniz. Bu ölçüm Azure portal kullanıma sunulur, daha fazla bilgi edinmek için bkz. [Izleme olasılığa yönelik sınırlı Stalet (PBS) ölçümü](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
@@ -141,7 +141,7 @@ Tam RTT gecikmesi, hafif bir mesafe ve Azure ağ topolojisi 'nin bir işlevidir.
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>Tutarlılık düzeyleri ve veri dayanıklılığı
 
-Küresel olarak dağıtılmış bir veritabanı ortamında, bölge genelinde bir kesinti olması durumunda tutarlılık düzeyi ve veri dayanıklılığı arasında doğrudan bir ilişki vardır. İş sürekliliği planınızı geliştirirken, kesintiye uğratan bir olaydan sonra uygulamanın tam olarak kurtarmadan önce kabul edilebilir en uzun süreyi anlamanız gerekir. Uygulamanın tam olarak kurtarılması için gereken süre, **kurtarma zamanı hedefi** (**RTO**) olarak bilinir. Ayrıca, uygulamanın, kesintiye uğratan bir olaydan sonra kurtarılırken kabul edebildiği en son veri güncelleştirme süresini de anlamanız gerekir. Kaybetmemek için uygun olan güncelleştirmelerin zaman dilimi **Kurtarma noktası hedefi** (**RPO**) olarak bilinir.
+Küresel olarak dağıtılmış bir veritabanı ortamında, bölge genelinde bir kesinti olması durumunda tutarlılık düzeyi ve veri dayanıklılığı arasında doğrudan bir ilişki vardır. İş sürekliliği planınızı geliştirirken, kesintiye uğratan bir olaydan sonra uygulamanın tam olarak kurtarmadan önce kabul edilebilir en uzun süreyi anlamanız gerekir. Uygulamanın tam olarak kurtarılması için gereken süre, **kurtarma zamanı hedefi** ( **RTO** ) olarak bilinir. Ayrıca, uygulamanın, kesintiye uğratan bir olaydan sonra kurtarılırken kabul edebildiği en son veri güncelleştirme süresini de anlamanız gerekir. Kaybetmemek için uygun olan güncelleştirmelerin zaman dilimi **Kurtarma noktası hedefi** ( **RPO** ) olarak bilinir.
 
 Aşağıdaki tabloda, bölge genelinde kesinti olması durumunda tutarlılık modeli ve veri dayanıklılığı arasındaki ilişki tanımlanmaktadır. Dağıtılmış bir sistemde, güçlü tutarlılıkla bile, bir RPO ile dağıtılmış bir veritabanına sahip olma imkanını ve üst [sınır](https://en.wikipedia.org/wiki/CAP_theorem)nedeniyle 0 ' dan sıfır olmasını unutmamak önemlidir.
 
@@ -180,8 +180,6 @@ Tutarlılık kavramları hakkında daha fazla bilgi edinmek için aşağıdaki m
 
 Azure Cosmos DB 'deki tutarlılık düzeyleri hakkında daha fazla bilgi edinmek için aşağıdaki makaleleri okuyun:
 
-- [Uygulamanız için doğru tutarlılık düzeyini seçin]()
-- [Azure Cosmos DB API 'lerde tutarlılık düzeyleri]()
 - [Varsayılan tutarlılık düzeyini yapılandırma](how-to-manage-consistency.md#configure-the-default-consistency-level)
 - [Varsayılan tutarlılık düzeyini geçersiz kılma](how-to-manage-consistency.md#override-the-default-consistency-level)
 - [SLA Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)

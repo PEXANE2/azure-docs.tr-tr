@@ -7,23 +7,23 @@ ms.service: mysql
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: 4589687593abbe5667aa4b21b1361b68e4bed07f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b2670862814495ab04f92d8f34a757d3ede6cf4a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428121"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546883"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda izleme
 Sunucularınız hakkındaki izleme verileri, iş yükünüz için sorun gidermenize ve iyileştirmenize yardımcı olur. MySQL için Azure veritabanı, sunucunuzun davranışına ilişkin Öngörüler sağlayan çeşitli ölçümler sağlar.
 
 ## <a name="metrics"></a>Ölçümler
-Tüm Azure ölçümlerinin bir dakikalık sıklığı vardır ve her ölçüm 30 gün geçmiş sağlar. Ölçümler üzerinde uyarılar yapılandırabilirsiniz. Adım adım yönergeler için bkz. [uyarıları ayarlama](howto-alert-on-metric.md). Diğer görevler otomatik eylemleri ayarlamayı, gelişmiş analiz gerçekleştirmeyi ve arşivleme geçmişini içerir. Daha fazla bilgi için bkz. [Azure ölçümlerine genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Tüm Azure ölçümlerinin bir dakikalık sıklığı vardır ve her ölçüm 30 gün geçmiş sağlar. Ölçümler üzerinde uyarılar yapılandırabilirsiniz. Adım adım yönergeler için bkz. [uyarıları ayarlama](howto-alert-on-metric.md). Diğer görevler otomatik eylemleri ayarlamayı, gelişmiş analiz gerçekleştirmeyi ve arşivleme geçmişini içerir. Daha fazla bilgi için bkz. [Azure ölçümlerine genel bakış](../azure-monitor/platform/data-platform.md).
 
 ### <a name="list-of-metrics"></a>Ölçüm listesi
 MySQL için Azure veritabanı 'nda bu ölçümler mevcuttur:
 
-|Ölçüm|Ölçüm görünen adı|Birim|Description|
+|Ölçüm|Ölçüm görünen adı|Birim|Açıklama|
 |---|---|---|---|
 |cpu_percent|CPU yüzdesi|Yüzde|Kullanımdaki CPU yüzdesi.|
 |memory_percent|Bellek yüzdesi|Yüzde|Kullanımdaki belleğin yüzdesi.|
@@ -61,6 +61,6 @@ Sunucunuzda yavaş sorgu ve denetim günlüğünü etkinleştirebilirsiniz. Bu G
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Bir ölçüm üzerinde uyarı oluşturma konusunda rehberlik için [uyarıları ayarlama](howto-alert-on-metric.md) bölümüne bakın.
-- Azure portal, REST API veya CLı kullanarak ölçümlere erişme ve dışarı aktarma hakkında daha fazla bilgi için bkz. [Azure ölçümleri 'Ne genel bakış](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+- Azure portal, REST API veya CLı kullanarak ölçümlere erişme ve dışarı aktarma hakkında daha fazla bilgi için bkz. [Azure ölçümleri 'Ne genel bakış](../azure-monitor/platform/data-platform.md).
 - [Sunucunuzu izlemek için en iyi uygulamalardan](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/)blogumuzu okuyun.
 - MySQL için Azure veritabanı 'nda [Planlı bakım bildirimleri](./concepts-planned-maintenance-notification.md) hakkında daha fazla bilgi edinin-tek sunucu

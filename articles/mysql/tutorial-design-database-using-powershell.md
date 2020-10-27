@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 32efda0c97bec10f2c8aa29d6f83a28538d64468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5dd66b16674e1441865f796153e7508acc854d0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496789"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543755"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>Öğretici: PowerShell kullanarak MySQL için Azure veritabanı tasarlama
 
@@ -28,7 +28,7 @@ MySQL için Azure Veritabanı, MySQL Community Edition veritabanı altyapısın�
 > - Verileri güncelleştirme
 > - Verileri geri yükleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -54,7 +54,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini kullanarak bir [Azure Kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 Aşağıdaki örnek, **Batı ABD** bölgesinde **myresourcegroup** adlı bir kaynak grubu oluşturur.
 
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 Cmdlet 'ini kullanarak MySQL için Azure veritabanı sunucusu oluşturun `New-AzMySqlServer` . Bir sunucu birden çok veritabanını yönetebilir. Genellikle her proje veya kullanıcı için farklı bir veritabanı kullanılır.
 
-Aşağıdaki örnek, **myresourcegroup** kaynak grubundaki **demosunucum** adlı **Batı ABD** bölgesinde **myadmin**Sunucu Yöneticisi oturum açma bilgilerini içeren bir MySQL sunucusu oluşturur. 2 sanal çekirdek ve coğrafi olarak yedekli yedeklemeler etkin olan genel amaçlı fiyatlandırma katmanında bir gen 5 sunucusudur. Örnek, MySQL Server yönetici hesabının parolası olduğundan, örneğin ilk satırında kullanılan parolayı belgeleyin.
+Aşağıdaki örnek, **myresourcegroup** kaynak grubundaki **demosunucum** adlı **Batı ABD** bölgesinde **myadmin** Sunucu Yöneticisi oturum açma bilgilerini içeren bir MySQL sunucusu oluşturur. 2 sanal çekirdek ve coğrafi olarak yedekli yedeklemeler etkin olan genel amaçlı fiyatlandırma katmanında bir gen 5 sunucusudur. Örnek, MySQL Server yönetici hesabının parolası olduğundan, örneğin ilk satırında kullanılan parolayı belgeleyin.
 
 > [!TIP]
 > Sunucu adı bir DNS adıyla eşleşir ve bunun Azure'da benzersiz olması gerekir.
@@ -104,7 +104,7 @@ New-AzMySqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup -Serv
 
 ## <a name="get-the-connection-information"></a>Bağlantı bilgilerini alma
 
-Sunucunuza bağlanmak için ana bilgisayar bilgilerini ve erişim kimlik bilgilerini sağlamanız gerekir. Bağlantı bilgilerini öğrenmek için aşağıdaki örneği kullanın. **Fullyıqualifieddomainname** ve **tınlogin**değerlerini bir yere göz önünde koyun.
+Sunucunuza bağlanmak için ana bilgisayar bilgilerini ve erişim kimlik bilgilerini sağlamanız gerekir. Bağlantı bilgilerini öğrenmek için aşağıdaki örneği kullanın. **Fullyıqualifieddomainname** ve **tınlogin** değerlerini bir yere göz önünde koyun.
 
 ```azurepowershell-interactive
 Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |

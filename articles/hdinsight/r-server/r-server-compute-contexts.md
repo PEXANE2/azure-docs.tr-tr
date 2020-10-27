@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087614"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536343"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>HDInsight üzerinde ML Hizmetleri için işlem bağlamı seçenekleri
 
@@ -23,14 +23,14 @@ Bir kümenin kenar düğümü, kümeye bağlanmak ve R betiklerinizi çalıştı
 
 ## <a name="ml-services-on-azure-hdinsight"></a>Azure HDInsight 'ta ML Hizmetleri
 
-[Azure HDInsight üzerinde ml Hizmetleri](r-server-overview.md) , R tabanlı analizler için en son özellikleri sağlar. [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob depolama") depolama hesabınızda, bir Data Lake Store veya yerel Linux dosya sisteminde Apache Hadoop bir kapsayıcıda depolanan verileri kullanabilir. ML Hizmetleri açık kaynak R üzerinde oluşturulmuş olduğundan, oluşturduğunuz R tabanlı uygulamalar 8000 + açık kaynaklı R paketlerinden herhangi birini uygulayabilir. Ayrıca, Microsoft 'un ML Hizmetleri 'ne dahil olan büyük veri analizi paketindeki, [iptal edilebilir](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler)olan bu yordamları da kullanabilirler.  
+[Azure HDInsight üzerinde ml Hizmetleri](r-server-overview.md) , R tabanlı analizler için en son özellikleri sağlar. [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob depolama") depolama hesabınızda, bir Data Lake Store veya yerel Linux dosya sisteminde Apache Hadoop bir kapsayıcıda depolanan verileri kullanabilir. ML Hizmetleri açık kaynak R üzerinde oluşturulmuş olduğundan, oluşturduğunuz R tabanlı uygulamalar 8000 + açık kaynaklı R paketlerinden herhangi birini uygulayabilir. Ayrıca, Microsoft 'un ML Hizmetleri 'ne dahil olan büyük veri analizi paketindeki, [iptal edilebilir](/machine-learning-server/r-reference/revoscaler/revoscaler)olan bu yordamları da kullanabilirler.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Kenar düğümü için işlem bağlamları
 
 Genel olarak, kenar düğümündeki ML Hizmetleri kümesinde çalıştırılan bir R betiği, o düğümdeki R yorumlayıcısı içinde çalışır. Özel durumlar, Iptal edilmiş bir işlevi çağıran bu adımlardır. Iptal etme işlemi, geri alınamaz işlem bağlamını nasıl ayarlayacağınızla belirlenen bir işlem ortamında çalışır.  R betiğini bir kenar düğümünden çalıştırdığınızda, işlem bağlamının olası değerleri şunlardır:
 
-- Yerel sıralı (*Yerel*)
-- Yerel paralel (*localpar*)
+- Yerel sıralı ( *Yerel* )
+- Yerel paralel ( *localpar* )
 - Harita azalt
 - Spark
 
@@ -59,12 +59,12 @@ Bu ilkeler verildiğinde, aşağıdaki bölümlerde bir işlem bağlamı seçmek
 
 ### <a name="local"></a>Yerel
 
-- Analiz edilecek veri miktarı küçükse ve yinelenen analiz gerektirmiyorsa, *Yerel* veya *localpar*kullanarak doğrudan çözümleme yordamına akış yapın.
-- Analiz edilecek veri miktarı küçük veya orta ölçekli ise ve yinelenen analiz gerektiriyorsa, bunu yerel dosya sistemine kopyalayın, XDF dosyasına aktarın ve *Yerel* veya *localpar*aracılığıyla çözümleyin.
+- Analiz edilecek veri miktarı küçükse ve yinelenen analiz gerektirmiyorsa, *Yerel* veya *localpar* kullanarak doğrudan çözümleme yordamına akış yapın.
+- Analiz edilecek veri miktarı küçük veya orta ölçekli ise ve yinelenen analiz gerektiriyorsa, bunu yerel dosya sistemine kopyalayın, XDF dosyasına aktarın ve *Yerel* veya *localpar* aracılığıyla çözümleyin.
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- Analiz edilecek veri miktarı büyükse, **Rxhivedata** veya **Rxparquetdata**kullanarak bir Spark veri çerçevesine veya (depolama bir sorun değilse), bu dosyayı Spark işlem bağlamını kullanarak analiz edin.
+- Analiz edilecek veri miktarı büyükse, **Rxhivedata** veya **Rxparquetdata** kullanarak bir Spark veri çerçevesine veya (depolama bir sorun değilse), bu dosyayı Spark işlem bağlamını kullanarak analiz edin.
 
 ### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop eşleme azaltma
 
@@ -77,7 +77,7 @@ Daha fazla bilgi ve Iptal işlemi bağlamlarının örnekleri için, rxSetComput
 > ?rxSetComputeContext
 ```
 
-Ayrıca, [Machine Learning Server belgelerine](https://docs.microsoft.com/machine-learning-server/) [dağıtılmış bilgi işlem genel bakış](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) bölümüne de bakabilirsiniz.
+Ayrıca, [Machine Learning Server belgelerine](/machine-learning-server/) [dağıtılmış bilgi işlem genel bakış](/machine-learning-server/r/how-to-revoscaler-distributed-computing) bölümüne de bakabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 673a76417739fa59a91979cca7c6807a584868f0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81758732"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538264"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
 
@@ -24,15 +24,15 @@ Bu makalede, **404104 Deviceconnectioncloseduzaktan** hatalarının nedenleri ve
 
 ### <a name="symptom-1"></a>Belirti 1
 
-Cihazların düzenli aralıklarla bağlantısını keser (örneğin, her 65 dakikada bir) ve IoT Hub tanılama günlüklerinde **404104 Deviceconnectioncloseduzaktan** ' yi görürsünüz. Bazen **401003 Iothubyetkilendirilmemiş** ve başarılı bir cihaz bağlantısı olayının bir dakikadan daha kısa bir sürede olduğunu da görürsünüz.
+Cihazların düzenli aralıklarla bağlantısını keser (örneğin, her 65 dakikada bir) ve IoT Hub kaynak günlüklerinde **404104 Deviceconnectioncloseduzaktan** görürsünüz. Bazen **401003 Iothubyetkilendirilmemiş** ve başarılı bir cihaz bağlantısı olayının bir dakikadan daha kısa bir sürede olduğunu da görürsünüz.
 
 ### <a name="symptom-2"></a>Belirti 2
 
-Cihazların bağlantısı rastgele kesilir ve IoT Hub tanılama günlüklerinde **404104 Deviceconnectioncloseduzaktan** bakın.
+Cihazların bağlantısı rastgele kesilir ve IoT Hub kaynak günlüklerinde **404104 Deviceconnectioncloseduzaktan** bakın.
 
 ### <a name="symptom-3"></a>Belirti 3
 
-Birçok cihaz bağlantısı kesildiğinde, [bağlı cihazlar ölçümünde](iot-hub-metrics.md)bir DIP görürsünüz ve tanılama günlüklerinde normalden fazla **404104 Deviceconnectioncloseduzaktan** ve [500 xxx iç hata](iot-hub-troubleshoot-error-500xxx-internal-errors.md) vardır.
+Birçok cihaz bağlantısı her seferinde, [bağlı cihazlar (connectedDeviceCount) ölçümünde](monitor-iot-hub-reference.md)bir DIP görürsünüz ve Azure izleyici günlüklerinde normalden fazla **404104 Deviceconnectioncloseduzaktan** ve [500 xxx iç hata](iot-hub-troubleshoot-error-500xxx-internal-errors.md) vardır.
 
 ## <a name="causes"></a>Nedenler
 

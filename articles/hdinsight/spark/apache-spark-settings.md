@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 231ab5cc93d98d7356d47472b7e160ddd3ade790
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82188166"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545948"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark ayarlarını yapılandırma
 
@@ -23,13 +23,13 @@ Varsayılan HDInsight Apache Spark kümesi şu düğümleri içerir: üç Apache
 
 ![Spark HDInsight mimarisi](./media/apache-spark-settings/spark-hdinsight-arch.png)
 
-HDInsight kümenizdeki düğümlerin sayısı ve sanal makine boyutları Spark yapılandırmanızı etkileyebilir. Varsayılan olmayan HDInsight yapılandırma değerleri genellikle varsayılan olmayan Spark yapılandırma değerlerini gerektirir. Bir HDInsight Spark kümesi oluşturduğunuzda, bileşenlerden her biri için önerilen VM boyutları gösterilir. Şu anda Azure için [bellek için Iyileştirilmiş LINUX VM boyutları](../../virtual-machines/linux/sizes-memory.md) D12 v2 veya daha fazladır.
+HDInsight kümenizdeki düğümlerin sayısı ve sanal makine boyutları Spark yapılandırmanızı etkileyebilir. Varsayılan olmayan HDInsight yapılandırma değerleri genellikle varsayılan olmayan Spark yapılandırma değerlerini gerektirir. Bir HDInsight Spark kümesi oluşturduğunuzda, bileşenlerden her biri için önerilen VM boyutları gösterilir. Şu anda Azure için [bellek için Iyileştirilmiş LINUX VM boyutları](../../virtual-machines/sizes-memory.md) D12 v2 veya daha fazladır.
 
 ## <a name="apache-spark-versions"></a>Apache Spark sürümleri
 
 Kümeniz için en iyi Spark sürümünü kullanın.  HDInsight hizmeti hem Spark hem de HDInsight 'ın kendine ait çeşitli sürümlerini içerir.  Spark 'ın her sürümü bir dizi varsayılan küme ayarlarını içerir.  
 
-Yeni bir küme oluşturduğunuzda, aralarından seçim yapabileceğiniz birden çok Spark sürümü vardır. Tam liste,  [HDInsight bileşenleri ve sürümleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)görmek için.
+Yeni bir küme oluşturduğunuzda, aralarından seçim yapabileceğiniz birden çok Spark sürümü vardır. Tam liste,  [HDInsight bileşenleri ve sürümleri](../hdinsight-component-versioning.md)görmek için.
 
 > [!NOTE]  
 > HDInsight hizmetindeki Apache Spark varsayılan sürümü hiçbir bildirimde bulunmaksızın değiştirilebilir. Bir sürüm bağımlılığı varsa, Microsoft, .NET SDK, Azure PowerShell ve Azure klasik CLı kullanarak kümeler oluştururken belirli sürümü belirtmenizi önerir.
@@ -60,7 +60,7 @@ Kümede performans iyileştirmesi yapmadan önce geçerli HDInsight kümesi yap�
 
 Apache ambarı Web Kullanıcı arabirimi, anahtar kümesi kaynak kullanımı ölçümlerinin bir panosu ile görüntülenir.  Ambarı panosu, Apache Spark yapılandırmayı ve diğer yüklü Hizmetleri gösterir. Pano, Spark dahil olmak üzere yüklü hizmetler için bilgileri görüntülediğiniz bir **yapılandırma geçmişi** sekmesi içerir.
 
-Apache Spark yapılandırma değerlerini görmek için yapılandırma **geçmişi**' ni seçin ve ardından **Spark2**' ı seçin.  Yapılandırma sekmesini **seçin ve ardından** `Spark` `Spark2` hizmet listesindeki (sürümünüze bağlı olarak) bağlantısını seçin.  Kümeniz için yapılandırma değerlerinin listesini görürsünüz:
+Apache Spark yapılandırma değerlerini görmek için yapılandırma **geçmişi** ' ni seçin ve ardından **Spark2** ' ı seçin.  Yapılandırma sekmesini **seçin ve ardından** `Spark` `Spark2` hizmet listesindeki (sürümünüze bağlı olarak) bağlantısını seçin.  Kümeniz için yapılandırma değerlerinin listesini görürsünüz:
 
 ![Spark yapılandırması](./media/apache-spark-settings/spark-configurations.png)
 

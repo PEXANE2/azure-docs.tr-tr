@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 4618b315f12257c11391b76ac7ed4dab23fec259
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 047bfac9179fd10383fc91155c7cb6e737fda516
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460912"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558780"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -25,8 +25,11 @@ Güvenlik Merkezi, etkin geliştirme aşamasındadır ve gelişmede geliştirmel
 
 Bu sayfa sıklıkla güncelleştirildi, bu nedenle sık olarak yeniden ziyaret edin. 
 
+Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bilgi edinmek için bkz. [Azure Güvenlik Merkezi 'nde yapılan önemli değişiklikler](upcoming-changes.md). 
+
 > [!TIP]
 > Altı aydan eski olan öğeleri arıyorsanız, [Azure Güvenlik Merkezi 'ndeki yenilikler Için arşivde](release-notes-archive.md)bulabilirsiniz.
+
 
 
 ## <a name="october-2020"></a>Ekim 2020
@@ -561,7 +564,7 @@ Aşağıdaki makalelerde Güvenlik Merkezi 'nin kapsayıcı güvenliği hakkınd
 
 Uyarlamalı uygulama denetimleri özelliği iki önemli güncelleştirme aldı:
 
-* Yeni bir öneri, daha önce izin verilmeyen olası yasal davranışı tanımlar. **Uyarlamalı uygulama denetim ilkenizde yeni öneri, Allowlist kuralları güncellenmelidir**, uyarlamalı uygulama denetimleri ihlal uyarılarındaki hatalı pozitif sonuç sayısını azaltmak için mevcut ilkeye yeni kurallar eklemenizi ister.
+* Yeni bir öneri, daha önce izin verilmeyen olası yasal davranışı tanımlar. **Uyarlamalı uygulama denetim ilkenizde yeni öneri, Allowlist kuralları güncellenmelidir** , uyarlamalı uygulama denetimleri ihlal uyarılarındaki hatalı pozitif sonuç sayısını azaltmak için mevcut ilkeye yeni kurallar eklemenizi ister.
 
 * Yol kuralları artık joker karakterleri destekliyor. Bu güncelleştirmeden, joker karakterleri kullanarak izin verilen yol kurallarını yapılandırabilirsiniz. Desteklenen iki senaryo vardır:
 
@@ -636,7 +639,7 @@ Ayarla iki adımdan oluşur:
 - **Log Analytics Aracısı Windows tabanlı Azure Arc makinelerinizde yüklü olmalıdır (Önizleme)**
 - **Log Analytics Aracısı, Linux tabanlı Azure yay makinelerinizde yüklü olmalıdır (Önizleme)**
 
-Bu yeni öneriler, var olan (ilgili) öneriyle aynı dört güvenlik denetiminde görünür, **makinelerinizde izleme Aracısı yüklü**olmalıdır: güvenlik yapılandırmalarının düzeltilmesi, uyarlamalı uygulama denetimi uygulamak, sistem güncelleştirmelerini uygulamak ve Endpoint Protection 'ı etkinleştirmek.
+Bu yeni öneriler, var olan (ilgili) öneriyle aynı dört güvenlik denetiminde görünür, **makinelerinizde izleme Aracısı yüklü** olmalıdır: güvenlik yapılandırmalarının düzeltilmesi, uyarlamalı uygulama denetimi uygulamak, sistem güncelleştirmelerini uygulamak ve Endpoint Protection 'ı etkinleştirmek.
 
 Öneriler Ayrıca dağıtım sürecini hızlandırmaya yardımcı olmak için hızlı düzelme özelliğini de içerir. 
 
@@ -675,7 +678,7 @@ Otomasyon yapılandırmalarınızı kuruluşunuz genelinde dağıtmak için bu y
 
 - **İnternet 'e yönelik olmayan sanal makineler ağ güvenlik gruplarıyla korunmalıdır**
 
-İnternet 'e yönelik sanal makineler, internet 'e yönelik ve internet 'e yönelik olmayan VM 'Ler arasında ayrım yapmadığından, var olan bir önerinin **ağ güvenlik gruplarıyla korunması gerekir**. Her iki için de bir VM bir ağ güvenlik grubuna atanmamışsa yüksek öneme sahip bir öneri oluşturulmuştur. Bu yeni öneri, internet 'e yönelik olmayan makineleri, yanlış pozitif sonuçları azaltmak ve gereksiz yüksek önem derecesine karşı önlemek için ayırır.
+İnternet 'e yönelik sanal makineler, internet 'e yönelik ve internet 'e yönelik olmayan VM 'Ler arasında ayrım yapmadığından, var olan bir önerinin **ağ güvenlik gruplarıyla korunması gerekir** . Her iki için de bir VM bir ağ güvenlik grubuna atanmamışsa yüksek öneme sahip bir öneri oluşturulmuştur. Bu yeni öneri, internet 'e yönelik olmayan makineleri, yanlış pozitif sonuçları azaltmak ve gereksiz yüksek önem derecesine karşı önlemek için ayırır.
 
 [Ağ önerileri](recommendations-reference.md#recs-network) tablosunda daha fazla bilgi edinin.
 

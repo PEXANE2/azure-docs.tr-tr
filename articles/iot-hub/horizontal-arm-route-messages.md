@@ -1,6 +1,6 @@
 ---
-title: IoT Hub, depolama hesabı, rota iletileri yayımlamak için ARM şablonu kullanma
-description: IoT Hub, depolama hesabı, rota iletileri yayımlamak için ARM şablonu kullanma
+title: ARM şablonunu kullanarak Azure IoT Hub, depolama hesabı, rota iletileri yayımlama
+description: ARM şablonunu kullanarak Azure IoT Hub, depolama hesabı, rota iletileri yayımlama
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,18 +8,22 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 7c53d720aef029d79d95cacd558c3bf9d35b4af6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1b9c576ce03d808fe6a4d0cac5196dfcd1b73eab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148924"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545489"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure IoT Hub ve depolama hesabı dağıtma
 
 Bu hızlı başlangıçta, Azure depolama 'ya iletileri yönlendiren bir IoT Hub oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) ve iletileri tutacak bir depolama hesabı kullanırsınız. İletileri göndermek için hub 'a bir sanal IoT cihazı el ile ekledikten sonra, cihazdan hub 'a ileti göndermek için  *ARM-okuma-yazma* adlı bir uygulamadaki Bu bağlantı bilgilerini yapılandırırsınız. Hub, hub 'a gönderilen iletilerin otomatik olarak depolama hesabına yönlendirilmesi için yapılandırılır. Bu hızlı başlangıç sonunda, depolama hesabını açıp gönderilen iletileri görebilirsiniz.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
+
+[![Azure 'A dağıtma](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -31,9 +35,10 @@ Bu hızlı başlangıçta kullanılan şablon `101-iothub-auto-route-messages` [
 
 :::code language="json" source="~/quickstart-templates/101-iothub-auto-route-messages/azuredeploy.json":::
 
-Şablonda iki Azure kaynağı tanımlanmıştır: 
-* [Microsoft. Devices/Iothubs](/azure/templates/microsoft.devices/iothubs)
-* [Microsoft. Storage/](/azure/templates/microsoft.storage/allversions)
+Şablonda iki Azure kaynağı tanımlanmıştır:
+
+- [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+- [Microsoft. Devices/IotHubs](/azure/templates/microsoft.devices/iothubs)
 
 ## <a name="deploy-the-template-and-run-the-sample-app"></a>Şablonu dağıtma ve örnek uygulamayı çalıştırma
 
@@ -48,7 +53,7 @@ Bu bölümde, iletileri göndermek için şablonu dağıtma, sanal cihaz oluştu
 
 1. [IoT C# örneklerini](/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/)indirip sıkıştırmasını açın.
 
-1. Bir komut penceresi açın ve IoT C# örneklerinin sıkıştırunı geri yüklediğiniz klasöre gidin. ARM-Read-Write. csproj dosyasını içeren klasörü bulun. Bu komut penceresinde ortam değişkenlerini oluşturursunuz. Anahtarları almak için [Azure portal] (] içinde oturum açın https://portal.azure.com . **Kaynak grupları** ' nı seçin ve ardından bu hızlı başlangıç için kullanılan kaynak grubunu seçin.
+1. Bir komut penceresi açın ve IoT C# örneklerinin sıkıştırunı geri yüklediğiniz klasöre gidin. ARM-Read-Write. csproj dosyasını içeren klasörü bulun. Bu komut penceresinde ortam değişkenlerini oluşturursunuz. Anahtarları almak için [Azure Portal](https://portal.azure.com) oturum açın. **Kaynak grupları** ' nı seçin ve ardından bu hızlı başlangıç için kullanılan kaynak grubunu seçin.
 
    ![Kaynak grubunu seçin](./media/horizontal-arm-route-messages/01-select-resource-group.png)
 
@@ -56,12 +61,12 @@ Bu bölümde, iletileri göndermek için şablonu dağıtma, sanal cihaz oluştu
 
    ![Kaynak grubundaki kaynakları görüntüle](./media/horizontal-arm-route-messages/02-view-resources-in-group.png)
 
-1. **Hub adına**ihtiyacınız vardır. Kaynak listesinden hub 'ı seçin. Hub 'ın adını IoT Hub bölümünün en üstünden Windows panosuna kopyalayın. 
- 
+1. **Hub adına** ihtiyacınız vardır. Kaynak listesinden hub 'ı seçin. Hub 'ın adını IoT Hub bölümünün en üstünden Windows panosuna kopyalayın.
+
    ![Hub adını kopyalama](./media/horizontal-arm-route-messages/03-copy-hub-name.png)
 
     Bu komutta hub adını belirtilen yerde değiştirin ve komut penceresinde bu komutu yürütün:
-   
+
     ```cmd
     SET IOT_HUB_URI=<hub name goes here>.azure-devices-net;
     ```
@@ -72,22 +77,22 @@ Bu bölümde, iletileri göndermek için şablonu dağıtma, sanal cihaz oluştu
    SET IOT_HUB_URI=ContosoTestHubdlxlud5h.azure-devices-net;
    ```
 
-1. Sonraki ortam değişkeni IoT cihaz anahtarıdır. Hub 'ın IoT Hub menüsünden **IoT cihazları** ' nı seçerek hub 'a yeni bir cihaz ekleyin. 
+1. Sonraki ortam değişkeni IoT cihaz anahtarıdır. Hub 'ın IoT Hub menüsünden **IoT cihazları** ' nı seçerek hub 'a yeni bir cihaz ekleyin.
 
    ![IoT cihazlarını seçin](./media/horizontal-arm-route-messages/04-select-iot-devices.png)
 
-1. Ekranın sağ tarafında yeni bir cihaz eklemek için **+ Yeni** ' yi seçin. 
+1. Ekranın sağ tarafında yeni bir cihaz eklemek için **+ Yeni** ' yi seçin.
 
-   Yeni cihaz adını girin. Bu hızlı başlangıç, **contoso-test-cihazından**başlayarak bir ad kullanır. Cihazı kaydedin ve sonra cihaz anahtarını almak için bu ekranı yeniden açın. (Bölmeyi kapattığınızda anahtar sizin için oluşturulur.) Birincil veya ikincil anahtarı seçin ve Windows panosuna kopyalayın. Komut penceresinde, komutunu Yürüt ' e ayarlayın ve ardından **ENTER**tuşuna basın. Komut, aşağıdaki gibi görünmelidir:
+   Yeni cihaz adını girin. Bu hızlı başlangıç, **contoso-test-cihazından** başlayarak bir ad kullanır. Cihazı kaydedin ve sonra cihaz anahtarını almak için bu ekranı yeniden açın. (Bölmeyi kapattığınızda anahtar sizin için oluşturulur.) Birincil veya ikincil anahtarı seçin ve Windows panosuna kopyalayın. Komut penceresinde, komutunu Yürüt ' e ayarlayın ve ardından **ENTER** tuşuna basın. Komut, aşağıdaki gibi görünmelidir:
 
    ```cmd
    SET IOT_DEVICE_KEY=<device-key-goes-here>
    ```
 
-1. Son ortam değişkeni, **CIHAZ kimliğidir**. Komut penceresinde, komutunu ayarlayıp yürütün. 
-   
+1. Son ortam değişkeni, **CIHAZ kimliğidir** . Komut penceresinde, komutunu ayarlayıp yürütün.
+
    ```cms
-   SET IOT_DEVICE_ID=<device-id-goes-here> 
+   SET IOT_DEVICE_ID=<device-id-goes-here>
    ```
 
    Bu örnek şöyle görünür:
@@ -96,17 +101,17 @@ Bu bölümde, iletileri göndermek için şablonu dağıtma, sanal cihaz oluştu
    SET IOT_DEVICE_ID=Contoso-Test-Device
    ```
 
-1. Tanımladığınız ortam değişkenlerini görmek için, komut satırında SET yazın ve **ENTER**tuşuna basın, ardından **IoT**ile başlayan olanları arayın.
+1. Tanımladığınız ortam değişkenlerini görmek için, komut satırında SET yazın ve **ENTER** tuşuna basın, ardından **IoT** ile başlayan olanları arayın.
 
    ![Bkz. ortam değişkenleri](./media/horizontal-arm-route-messages/06-environment-variables.png)
 
-Artık ortam değişkenleri ayarlanır, uygulamayı aynı komut penceresinden çalıştırın. Aynı pencereyi kullandığınız için, uygulamayı çalıştırdığınızda değişkenler bellekte erişilebilir olacaktır.
+    Artık ortam değişkenleri ayarlanır, uygulamayı aynı komut penceresinden çalıştırın. Aynı pencereyi kullandığınız için, uygulamayı çalıştırdığınızda değişkenler bellekte erişilebilir olacaktır.
 
-1. Uygulamayı çalıştırmak için, komut penceresine aşağıdaki komutu yazın ve **ENTER**tuşuna basın.
+1. Uygulamayı çalıştırmak için, komut penceresine aşağıdaki komutu yazın ve **ENTER** tuşuna basın.
 
     `dotnet run arm-read-write`
 
-   Uygulama, her iletiyi IoT Hub 'ına gönderirken konsolda iletileri oluşturur ve görüntüler. Hub, ARM şablonunda otomatik yönlendirmeye sahip olacak şekilde yapılandırılmıştır. "Level = Storage" metnini içeren iletiler otomatik olarak depolama hesabına yönlendirilir. Uygulamanın 10 ila 15 dakika boyunca çalışmasına izin verin, ardından çalışmayı durduruncaya kadar bir kez veya iki **kez ENTER tuşuna** basın.
+   Uygulama, her iletiyi IoT Hub 'ına gönderirken konsolda iletileri oluşturur ve görüntüler. Hub, ARM şablonunda otomatik yönlendirmeye sahip olacak şekilde yapılandırılmıştır. Metni içeren iletiler `level = storage` otomatik olarak depolama hesabına yönlendirilir. Uygulamanın 10 ila 15 dakika boyunca çalışmasına izin verin, ardından çalışmayı durduruncaya kadar bir kez veya iki **kez ENTER tuşuna** basın.
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
@@ -116,7 +121,7 @@ Artık ortam değişkenleri ayarlanır, uygulamayı aynı komut penceresinden ç
 
    ![Depolama hesabı dosyalarına bakın](./media/horizontal-arm-route-messages/07-see-storage.png)
 
-1. Dosyalardan birini seçip **İndir** ' i seçin ve dosyayı daha sonra bulabileceğiniz bir konuma indirin. Bu, 47 gibi sayısal bir ada sahip olacaktır. Sonuna ". txt" ekleyin ve sonra açmak için dosyaya çift tıklayın.
+1. Dosyalardan birini seçip **İndir** ' i seçin ve dosyayı daha sonra bulabileceğiniz bir konuma indirin. Bu, 47 gibi sayısal bir ada sahip olacaktır. Sonuna _. txt_ ekleyin ve sonra açmak için dosyaya çift tıklayın.
 
 1. Dosyayı açtığınızda, her satır farklı bir ileti için olur; her iletinin gövdesi de şifrelenir. İleti gövdesine karşı sorgu gerçekleştirmeniz için olması gerekir.
 
@@ -129,7 +134,7 @@ Bir IoT Hub ve depolama hesabı oluşturmak için ARM şablonu dağıttı ve hub
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlangıç sırasında eklenen kaynakları kaldırmak için [Azure Portal](https://portal.azure.com)oturum açın. **Kaynak grupları**' nı seçin ve ardından bu hızlı başlangıç için kullandığınız kaynak grubunu bulun. Kaynak grubunu seçin ve *Sil*' i seçin. Gruptaki tüm kaynakları silecek.
+Bu hızlı başlangıç sırasında eklenen kaynakları kaldırmak için [Azure Portal](https://portal.azure.com)oturum açın. **Kaynak grupları** ' nı seçin ve ardından bu hızlı başlangıç için kullandığınız kaynak grubunu bulun. Kaynak grubunu seçin ve *Sil* ' i seçin. Gruptaki tüm kaynakları silecek.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

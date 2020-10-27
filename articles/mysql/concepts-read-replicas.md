@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 421763769ff0bd7ffe2b06eb48e1ac5ecbbb545e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151178"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537975"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -24,7 +24,7 @@ MySQL çoğaltma özellikleri ve sorunları hakkında daha fazla bilgi edinmek i
 > [!NOTE]
 > Sapma ücretsiz iletişim
 >
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_ sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>Okuma çoğaltması ne zaman kullanılır?
@@ -71,7 +71,7 @@ Ancak göz önünde bulundurulması gereken sınırlamalar vardır:
 
 Kaynak sunucuda var olan bir çoğaltma sunucusu yoksa, kaynak ilk olarak çoğaltma için hazırlamak üzere yeniden başlatılır.
 
-Çoğaltma oluşturma iş akışı 'nı başlattığınızda, MySQL için boş bir Azure veritabanı sunucusu oluşturulur. Yeni sunucu, kaynak sunucuda bulunan verilerle doldurulur. Oluşturma süresi, kaynaktaki veri miktarına ve son haftalık tam yedeklemeden bu yana geçen zamana bağlıdır. Süre, birkaç dakika ile birkaç saat arasında değişebilir. Çoğaltma sunucusu her zaman aynı kaynak grubunda ve kaynak sunucuyla aynı abonelikte oluşturulur. Farklı bir kaynak grubuna veya farklı bir aboneliğe çoğaltma sunucusu oluşturmak istiyorsanız, oluşturulduktan sonra [Çoğaltma sunucusunu taşıyabilirsiniz](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) .
+Çoğaltma oluşturma iş akışı 'nı başlattığınızda, MySQL için boş bir Azure veritabanı sunucusu oluşturulur. Yeni sunucu, kaynak sunucuda bulunan verilerle doldurulur. Oluşturma süresi, kaynaktaki veri miktarına ve son haftalık tam yedeklemeden bu yana geçen zamana bağlıdır. Süre, birkaç dakika ile birkaç saat arasında değişebilir. Çoğaltma sunucusu her zaman aynı kaynak grubunda ve kaynak sunucuyla aynı abonelikte oluşturulur. Farklı bir kaynak grubuna veya farklı bir aboneliğe çoğaltma sunucusu oluşturmak istiyorsanız, oluşturulduktan sonra [Çoğaltma sunucusunu taşıyabilirsiniz](../azure-resource-manager/management/move-resource-group-and-subscription.md) .
 
 Her çoğaltma, depolama [otomatik büyüme](concepts-pricing-tiers.md#storage-auto-grow)için etkinleştirilir. Otomatik büyüme özelliği, çoğaltmanın kendisine çoğaltılan verilerle kalmasına izin verir ve çoğaltma dışı hatalardan kaynaklanan bir kesintiye uğramasını önler.
 
@@ -83,7 +83,7 @@ Oluşturma sırasında bir çoğaltma, kaynak sunucunun güvenlik duvarı kurall
 
 Çoğaltma, yönetim hesabını kaynak sunucudan devralır. Kaynak sunucudaki tüm Kullanıcı hesapları, okuma çoğaltmalarına çoğaltılır. Bir okuma çoğaltmasına yalnızca kaynak sunucuda bulunan Kullanıcı hesaplarını kullanarak bağlanabilirsiniz.
 
-Bir MySQL için Azure veritabanı sunucusunda yaptığınız gibi, ana bilgisayar adını ve geçerli bir kullanıcı hesabını kullanarak çoğaltmaya bağlanabilirsiniz. Yönetici Kullanıcı adı **myadmin**olan **myreplica** adlı BIR sunucu için MySQL CLI kullanarak çoğaltmaya bağlanabilirsiniz:
+Bir MySQL için Azure veritabanı sunucusunda yaptığınız gibi, ana bilgisayar adını ve geçerli bir kullanıcı hesabını kullanarak çoğaltmaya bağlanabilirsiniz. Yönetici Kullanıcı adı **myadmin** olan **myreplica** adlı BIR sunucu için MySQL CLI kullanarak çoğaltmaya bağlanabilirsiniz:
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
@@ -113,7 +113,7 @@ Kaynak ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Kaynak sunucu ve
 
 Kaynak ve çoğaltma sunucuları arasında otomatik yük devretme yoktur. 
 
-Çoğaltma zaman uyumsuz olduğundan, kaynak ve çoğaltma arasında bir gecikme vardır. Gecikme miktarı, kaynak sunucuda çalışan iş yükünün ne kadar ağır ve veri merkezleri arasındaki gecikme süresi gibi bir dizi faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikmesi birkaç saniyeyle birkaç dakika arasında değişir. Her bir çoğaltma için kullanılabilen ölçüm *çoğaltması*gecikmesini kullanarak gerçek çoğaltma gecikmelerinizi izleyebilirsiniz. Bu ölçüm, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Yineleme gecikmesini bir süre içinde gözlemleyerek ortalama gecikmenizin ne olduğunu tanımlamanızı öneririz. Çoğaltma gecikmesi üzerinde bir uyarı ayarlayabilirsiniz, böylece beklenen aralığın dışında olursa işlem yapabilirsiniz.
+Çoğaltma zaman uyumsuz olduğundan, kaynak ve çoğaltma arasında bir gecikme vardır. Gecikme miktarı, kaynak sunucuda çalışan iş yükünün ne kadar ağır ve veri merkezleri arasındaki gecikme süresi gibi bir dizi faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikmesi birkaç saniyeyle birkaç dakika arasında değişir. Her bir çoğaltma için kullanılabilen ölçüm *çoğaltması* gecikmesini kullanarak gerçek çoğaltma gecikmelerinizi izleyebilirsiniz. Bu ölçüm, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Yineleme gecikmesini bir süre içinde gözlemleyerek ortalama gecikmenizin ne olduğunu tanımlamanızı öneririz. Çoğaltma gecikmesi üzerinde bir uyarı ayarlayabilirsiniz, böylece beklenen aralığın dışında olursa işlem yapabilirsiniz.
 
 > [!Tip]
 > Çoğaltmaya yük devretmek, çoğaltmayı kaynaktan geri bağladığınızda oluşan gecikme süresi, ne kadar veri kaybı olduğunu gösterir.

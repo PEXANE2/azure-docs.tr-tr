@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 6f79460f00ce52fd54d0cda34467d3df35185ba0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e851c47e67ac6e42d81b7688e457c2f9e17725b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496806"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543959"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Öğretici: Azure CLI’yı kullanarak MySQL için Azure Veritabanı tasarlama
 
@@ -42,7 +42,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
-[az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) komutuyla bir [Azure kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[az group create](/cli/azure/group#az-group-create) komutuyla bir [Azure kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 Aşağıdaki örnek `westus` konumunda `myresourcegroup` adlı bir kaynak grubu oluşturur.
 
@@ -185,9 +185,9 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 `az mysql server restore` komutu için aşağıdaki parametreler gerekir:
 
-| Ayar | Önerilen değer | Açıklama  |
+| Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Kaynak sunucunun bulunduğu kaynak grubu.  |
+| resource-group |  myresourcegroup |  Kaynak sunucunun bulunduğu kaynak grubu.  |
 | name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Zaman içinde geri yüklenecek bir nokta seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, `2017-04-13T05:59:00-08:00` şeklinde kendi yerel saat diliminizi ya da `2017-04-13T13:59:00Z` şeklindeki UTC Zulu biçimini kullanabilirsiniz. |
 | source-server | mydemoserver | Geri yükleme kaynağı olarak kullanılacak sunucunun adı veya kimliği. |

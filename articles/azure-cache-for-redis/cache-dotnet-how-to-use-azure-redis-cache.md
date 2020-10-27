@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: b64fd82ab6050d6f4a9f0f91c2b8336ce03ab1d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3c18fcc0f4ff21eaaea2cbaf664e87d0ff33d60
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88211351"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537074"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Hızlı başlangıç: .NET Framework bir uygulamayla Redsıs için Azure önbelleğini kullanma
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen g�
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Bilgisayarınızda *CacheSecrets.config* adlı bir dosya oluşturun ve örnek uygulamanızın kaynak kodu ile denetlenmeyecek bir konuma yerleştirin. Bu hızlı başlangıç için *CacheSecrets.config* dosyası şu konumda bulunur: *C:\AppSecrets\CacheSecrets.config*.
+Bilgisayarınızda *CacheSecrets.config* adlı bir dosya oluşturun ve örnek uygulamanızın kaynak kodu ile denetlenmeyecek bir konuma yerleştirin. Bu hızlı başlangıç için *CacheSecrets.config* dosyası şu konumda bulunur: *C:\AppSecrets\CacheSecrets.config* .
 
 *CacheSecrets.config* dosyasını düzenleyin ve aşağıdaki içerikleri ekleyin:
 
@@ -47,7 +47,7 @@ Bilgisayarınızda *CacheSecrets.config* adlı bir dosya oluşturun ve örnek uy
 
 ## <a name="create-a-console-app"></a>Konsol uygulaması oluşturma
 
-Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' ye tıklayın.
+Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje** ' ye tıklayın.
 
 Uygulamanızı yapılandırmak için **konsol uygulaması (.NET Framework)** ve **İleri** ' yi seçin. Yeni bir konsol uygulaması oluşturmak için bir **Proje adı** yazın ve **Oluştur** ' a tıklayın.
 
@@ -57,7 +57,7 @@ Uygulamanızı yapılandırmak için **konsol uygulaması (.NET Framework)** ve 
 
 Bu bölümde, .NET için [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) istemcisini kullanmak üzere konsol uygulamasını yapılandıracaksınız.
 
-Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi**Paket Yöneticisi Konsolu ' na tıklayın  >  **Package Manager Console**ve Paket Yöneticisi konsolu penceresinde aşağıdaki komutu çalıştırın.
+Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi** Paket Yöneticisi Konsolu ' na tıklayın  >  **Package Manager Console** ve Paket Yöneticisi konsolu penceresinde aşağıdaki komutu çalıştırın.
 
 ```powershell
 Install-Package StackExchange.Redis
@@ -81,7 +81,7 @@ Visual Studio’da, *App.config* dosyanızı açın ve *CacheSecrets.config* dos
 </configuration>
 ```
 
-Çözüm Gezgini’nde, **Başvurular**’a sağ tıklayın ve **Başvuru ekle**’ye tıklayın. **System.Configuration** bütünleştirilmiş koduna bir başvuru ekleyin.
+Çözüm Gezgini’nde, **Başvurular** ’a sağ tıklayın ve **Başvuru ekle** ’ye tıklayın. **System.Configuration** bütünleştirilmiş koduna bir başvuru ekleyin.
 
 Aşağıdaki `using` deyimlerini *Program.cs* dosyasına ekleyin:
 
@@ -92,7 +92,7 @@ using System.Configuration;
 
 Redo için Azure önbelleği bağlantısı, sınıfı tarafından yönetilir `ConnectionMultiplexer` . Bu sınıf, istemci uygulamanız genelinde paylaşılmalı ve yeniden kullanılmalıdır. Her işlem için yeni bir bağlantı oluşturmayın. 
 
-Kimlik bilgilerini asla kaynak kodunda depolamayın. Bu örneği basit tutmak için, yalnızca bir dış gizli diziler yapılandırma dosyası kullanıyorum. Daha iyi bir yaklaşım [Sertifikalar ile Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios) kullanmaktır.
+Kimlik bilgilerini asla kaynak kodunda depolamayın. Bu örneği basit tutmak için, yalnızca bir dış gizli diziler yapılandırma dosyası kullanıyorum. Daha iyi bir yaklaşım [Sertifikalar ile Azure Key Vault](/rest/api/keyvault/certificate-scenarios) kullanmaktır.
 
 *Program.cs* dosyasında, konsol uygulamanızın `Program` sınıfına aşağıdaki üyeleri ekleyin:
 
@@ -173,7 +173,7 @@ Redsıs için Azure önbelleğinde, Redsıs için bir Azure önbelleğindeki ver
 
 Redis, Redis dizeleri kadar veri depolar, ancak bu dizeler önbellekte .NET nesneleri depolarken kullanılabilecek seri hale getirilmiş ikili veriler dahil, birçok veri türünü içerebilir.
 
-Konsol uygulamasını derleyip çalıştırmak için **Ctrl+F5**'e basın.
+Konsol uygulamasını derleyip çalıştırmak için **Ctrl+F5** 'e basın.
 
 Aşağıdaki örnekte, `Message` anahtarının Azure portalındaki Redis Konsolu kullanılarak ayarlanan, önceden önbelleğe alınmış bir değer içerdiğini görebilirsiniz. Uygulama, önbelleğe alınan bu değeri güncelleştirdi. Ayrıca uygulama, `PING` ve `CLIENT LIST` komutlarını da yürüttü.
 
@@ -186,7 +186,7 @@ Redsıs için Azure Cache hem .NET nesnelerini hem de ilkel veri türlerini önb
 
 Nesneleri seri hale getirmenin basit bir yolu, [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)’da `JsonConvert` seri hale getirme yöntemlerini kullanmak ve JSON’a ve JSON’dan seri hale getirmektir. Bu bölümde, önbelleğe bir .NET nesnesi ekleyeceksiniz.
 
-Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi**Paket Yöneticisi Konsolu ' na tıklayın  >  **Package Manager Console**ve Paket Yöneticisi konsolu penceresinde aşağıdaki komutu çalıştırın.
+Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi** Paket Yöneticisi Konsolu ' na tıklayın  >  **Package Manager Console** ve Paket Yöneticisi konsolu penceresinde aşağıdaki komutu çalıştırın.
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -247,13 +247,13 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 > Bir kaynak grubunu silme işlemi geri alınamaz ve kaynak grubunun ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. Bu örneği, tutmak istediğiniz kaynakları içeren mevcut bir kaynak grubunda barındırmak için kaynaklar oluşturduysanız, kaynak grubunu silmek yerine her kaynağı kendi ilgili dikey penceresinden tek tek silebilirsiniz.
 >
 
-[Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’na tıklayın.
+[Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları** ’na tıklayın.
 
-**Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil**’e tıklayın.
+**Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil** ’e tıklayın.
 
 ![Sil](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
-Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil**’e tıklayın.
+Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil** ’e tıklayın.
 
 Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 
@@ -271,4 +271,4 @@ Bu hızlı başlangıçta, bir .NET uygulamasından Redsıs için Azure önbelle
 Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
 
 > [!div class="nextstepaction"]
-> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

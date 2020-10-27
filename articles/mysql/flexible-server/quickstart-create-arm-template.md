@@ -6,23 +6,22 @@ ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
-ms.date: 09/22/2020
-ms.openlocfilehash: 18366069fd7273afe33b538d2bd69ac8a99689c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/23/2020
+ms.openlocfilehash: 3f32d3d7cc498126d0fbdb709aaf0424d335793f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948135"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534133"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>Hızlı başlangıç: MySQL için Azure veritabanı oluşturmak için bir ARM şablonu kullanma-esnek sunucu (Önizleme)
 
+> [!IMPORTANT]
+> MySQL için Azure veritabanı-esnek sunucu şu anda genel önizlemededir.
 
-> [!IMPORTANT] 
-> MySQL için Azure veritabanı-esnek sunucu şu anda genel önizlemededir
+MySQL için Azure veritabanı-esnek sunucu (Önizleme), bulutta yüksek oranda kullanılabilir MySQL veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız yönetilen bir hizmettir. Bir sunucuda birden çok sunucuyu veya birden çok veritabanını dağıtmak üzere esnek bir sunucu sağlamak için bir Azure Resource Manager şablonu (ARM şablonu) kullanabilirsiniz.
 
-MySQL için Azure veritabanı-esnek sunucu (Önizleme), bulutta yüksek oranda kullanılabilir MySQL veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız yönetilen bir hizmettir. Bir sunucuda birden çok sunucuyu veya birden çok veritabanını dağıtmak üzere esnek bir sunucu sağlamak için ARM şablonlarını kullanabilirsiniz.
-
-[ARM şablonu](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) projenizin altyapısını ve yapılandırmasını tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyasıdır. Şablon, dağıtmak istediğiniz öğeyi oluşturmaya yönelik programlama komutları dizisini yazmak zorunda kalmadan bu öğeyi belirtmenize imkan tanıyan bildirim temelli söz dizimini kullanır.
+[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -30,137 +29,137 @@ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https:/
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-MySQL için Azure veritabanı esnek sunucu, bir bölgedeki bir veya daha fazla veritabanı için üst kaynaktır. Veritabanlarına uygulanan yönetim ilkeleri için kapsam sağlar: oturum açma, güvenlik duvarı, kullanıcılar, roller, konfigürasyonlar vb.
+MySQL için Azure veritabanı esnek sunucu, bir bölgedeki bir veya daha fazla veritabanı için üst kaynaktır. Veritabanlarına uygulanan yönetim ilkeleri için kapsam sağlar: oturum açma, güvenlik duvarı, kullanıcılar, roller, konfigürasyonlar.
+
+Dosyasında bir _mysql-flexible-server-template.js_ oluşturun ve bu JSON betiğini buna kopyalayın.
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "administratorLogin": {
+      "type": "String"
+    },
+    "administratorLoginPassword": {
+      "type": "SecureString"
+    },
+    "location": {
+      "type": "String"
+    },
+    "serverName": {
+      "type": "String"
+    },
+    "serverEdition": {
+      "type": "String"
+    },
+    "vCores": {
+      "type": "Int"
+    },
+    "storageSizeMB": {
+      "type": "Int"
+    },
+    "standbyCount": {
+      "type": "Int"
+    },
+    "availabilityZone": {
+      "type": "String"
+    },
+    "version": {
+      "type": "String"
+    },
+    "tags": {
+      "defaultValue": {},
+      "type": "Object"
+    },
+    "firewallRules": {
+      "defaultValue": {},
+      "type": "Object"
+    },
+    "vnetData": {
+      "defaultValue": {},
+      "type": "Object"
+    },
+    "backupRetentionDays": {
+      "type": "Int"
+    }
+  },
+  "variables": {
+    "api": "2020-02-14-privatepreview",
+    "firewallRules": "[parameters('firewallRules').rules]",
+    "publicNetworkAccess": "[if(empty(parameters('vnetData')), 'Enabled', 'Disabled')]",
+    "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"vnetId\": \"\", \"vnetName\": \"\", \"vnetResourceGroup\": \"\", \"subnetName\": \"\" }'), parameters('vnetData'))]",
+    "finalVnetData": "[json(concat('{ \"DelegatedVnetID\": \"', variables('vnetDataSet').vnetId, '\", \"DelegatedVnetName\": \"', variables('vnetDataSet').vnetName, '\", \"DelegatedVnetResourceGroup\": \"', variables('vnetDataSet').vnetResourceGroup, '\", \"DelegatedSubnetName\": \"', variables('vnetDataSet').subnetName, '\"}'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DBforMySQL/flexibleServers",
+      "apiVersion": "[variables('api')]",
+      "name": "[parameters('serverName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_D4ds_v4",
+        "tier": "[parameters('serverEdition')]",
+        "capacity": "[parameters('vCores')]"
+      },
+      "tags": "[parameters('tags')]",
+      "properties": {
+        "version": "[parameters('version')]",
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+        "publicNetworkAccess": "[variables('publicNetworkAccess')]",
+        "VnetInjArgs": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
+        "standbyCount": "[parameters('standbyCount')]",
+        "storageProfile": {
+          "storageMB": "[parameters('storageSizeMB')]",
+          "backupRetentionDays": "[parameters('backupRetentionDays')]"
+        },
+        "availabilityZone": "[parameters('availabilityZone')]"
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-08-01",
+      "name": "[concat('firewallRules-', copyIndex())]",
+      "dependsOn": [
+        "[concat('Microsoft.DBforMySQL/flexibleServers/', parameters('serverName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.DBforMySQL/flexibleServers/firewallRules",
+              "name": "[concat(parameters('serverName'),'/',variables('firewallRules')[copyIndex()].name)]",
+              "apiVersion": "[variables('api')]",
+              "properties": {
+                "StartIpAddress": "[variables('firewallRules')[copyIndex()].startIPAddress]",
+                "EndIpAddress": "[variables('firewallRules')[copyIndex()].endIPAddress]"
+              }
+            }
+          ]
+        }
+      },
+      "copy": {
+        "name": "firewallRulesIterator",
+        "count": "[if(greater(length(variables('firewallRules')), 0), length(variables('firewallRules')), 1)]",
+        "mode": "Serial"
+      },
+      "condition": "[greater(length(variables('firewallRules')), 0)]"
+    }
+  ]
+}
+```
 
 Bu kaynaklar şablonda tanımlanmıştır:
 
 - Microsoft. Dbformyısql/Flexibelservers
 
-Bir ```mysql-flexible-server-template.json``` dosya oluşturun ve bu betiği bu dosyaya kopyalayın ```json``` .
-
-```json
-{
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "administratorLogin": {
-            "type": "String"
-        },
-        "administratorLoginPassword": {
-            "type": "SecureString"
-        },
-        "location": {
-            "type": "String"
-        },
-        "serverName": {
-            "type": "String"
-        },
-        "serverEdition": {
-            "type": "String"
-        },
-        "vCores": {
-            "type": "Int"
-        },
-        "storageSizeMB": {
-            "type": "Int"
-        },
-        "standbyCount": {
-            "type": "Int"
-        },
-        "availabilityZone": {
-            "type": "String"
-        },
-        "version": {
-            "type": "String"
-        },
-        "tags": {
-            "defaultValue": {},
-            "type": "Object"
-        },
-        "firewallRules": {
-            "defaultValue": {},
-            "type": "Object"
-        },
-        "vnetData": {
-            "defaultValue": {},
-            "type": "Object"
-        },
-        "backupRetentionDays": {
-            "type": "Int"
-        }
-    },
-    "variables": {
-        "api": "2020-02-14-privatepreview",
-        "firewallRules": "[parameters('firewallRules').rules]",
-        "publicNetworkAccess": "[if(empty(parameters('vnetData')), 'Enabled', 'Disabled')]",
-        "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"vnetId\": \"\", \"vnetName\": \"\", \"vnetResourceGroup\": \"\", \"subnetName\": \"\" }'), parameters('vnetData'))]",
-        "finalVnetData": "[json(concat('{ \"DelegatedVnetID\": \"', variables('vnetDataSet').vnetId, '\", \"DelegatedVnetName\": \"', variables('vnetDataSet').vnetName, '\", \"DelegatedVnetResourceGroup\": \"', variables('vnetDataSet').vnetResourceGroup, '\", \"DelegatedSubnetName\": \"', variables('vnetDataSet').subnetName, '\"}'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.DBforMySQL/flexibleServers",
-            "apiVersion": "[variables('api')]",
-            "name": "[parameters('serverName')]",
-            "location": "[parameters('location')]",
-            "tags": "[parameters('tags')]",
-            "sku": {
-                "name": "Standard_D4ds_v4",
-                "tier": "[parameters('serverEdition')]",
-                "capacity": "[parameters('vCores')]"
-            },
-            "properties": {
-                "version": "[parameters('version')]",
-                "administratorLogin": "[parameters('administratorLogin')]",
-                "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
-                "publicNetworkAccess": "[variables('publicNetworkAccess')]",
-                "VnetInjArgs": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
-                "standbyCount": "[parameters('standbyCount')]",
-                "storageProfile": {
-                    "storageMB": "[parameters('storageSizeMB')]",
-                    "backupRetentionDays": "[parameters('backupRetentionDays')]"
-                },
-                "availabilityZone": "[parameters('availabilityZone')]"
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-08-01",
-            "name": "[concat('firewallRules-', copyIndex())]",
-            "dependsOn": [
-                "[concat('Microsoft.DBforMySQL/flexibleServers/', parameters('serverName'))]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "resources": [
-                        {
-                            "type": "Microsoft.DBforMySQL/flexibleServers/firewallRules",
-                            "name": "[concat(parameters('serverName'),'/',variables('firewallRules')[copyIndex()].name)]",
-                            "apiVersion": "[variables('api')]",
-                            "properties": {
-                                "StartIpAddress": "[variables('firewallRules')[copyIndex()].startIPAddress]",
-                                "EndIpAddress": "[variables('firewallRules')[copyIndex()].endIPAddress]"
-                            }
-                        }
-                    ]
-                }
-            },
-            "copy": {
-                "name": "firewallRulesIterator",
-                "count": "[if(greater(length(variables('firewallRules')), 0), length(variables('firewallRules')), 1)]",
-                "mode": "Serial"
-            },
-            "condition": "[greater(length(variables('firewallRules')), 0)]"
-        }
-    ]
-}
-```
-
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)açmak Için aşağıdaki PowerShell kod bloğundan **deneyin** öğesini seçin.
+[Azure Cloud Shell](../../cloud-shell/overview.md)açmak Için aşağıdaki PowerShell kod bloğundan **deneyin** öğesini seçin.
 
 ```azurepowershell-interactive
 $serverName = Read-Host -Prompt "Enter a name for the new Azure Database for MySQL server"
@@ -179,15 +178,14 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 
-## <a name="view-the-deployed-resources"></a>Dağıtılan kaynakları görüntüleme
+## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
 Sunucunuzun Azure 'da oluşturulup oluşturuçalışmadığını doğrulamak için aşağıdaki adımları izleyin.
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com), **MySQL için Azure veritabanı sunucuları**' nı arayıp seçin.
-
-2. Veritabanı listesinde yeni sunucunuzu seçin. Yeni MySQL için Azure veritabanı sunucunuzun **genel bakış** sayfası görüntülenir.
+1. [Azure Portal](https://portal.azure.com), **MySQL için Azure veritabanı sunucuları** ' nı arayıp seçin.
+1. Veritabanı listesinde yeni sunucunuzu seçin. Yeni MySQL için Azure veritabanı sunucunuzun **genel bakış** sayfası görüntülenir.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -219,13 +217,10 @@ Kaynak grubunu silmek için:
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını**arayıp seçin.
-
-2. Kaynak grubu listesinde, kaynak grubunuzun adını seçin.
-
-3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil**' i seçin.
-
-4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil**' i seçin.
+1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını** arayıp seçin.
+1. Kaynak grubu listesinde, kaynak grubunuzun adını seçin.
+1. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil** ' i seçin.
+1. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil** ' i seçin.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -250,7 +245,7 @@ echo "Press [ENTER] to continue ..."
 ARM şablonu oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, bkz.:
 
 > [!div class="nextstepaction"]
-> [ Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 MySQL kullanarak App Service bir uygulama oluşturmaya yönelik adım adım bir öğretici için, bkz.:
 

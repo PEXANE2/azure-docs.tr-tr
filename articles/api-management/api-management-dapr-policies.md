@@ -3,15 +3,15 @@ title: Azure API Management Davpr tümleştirme ilkeleri | Microsoft Docs
 description: Azure API Management ilkelerini, Davpr mikro hizmetleri uzantılarıyla etkileşimde bulunmak için öğrenin.
 author: vladvino
 ms.author: vlvinogr
-ms.date: 9/13/2020
+ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: d537040be4ed4cbf961a4621980d3d290e306359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bf9c4d233cfad454d63da4dce30a38af80d24ab
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91345140"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558406"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management Davpr tümleştirme ilkeleri
 
@@ -104,14 +104,14 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 ## <a name="send-message-to-pubsub-topic"></a><a name="pubsub"></a> Yayın/alt konuya ileti gönder
 
-Bu ilke, API Management ağ geçidine bir Davpr yayımlama/abone olma konusuna ileti göndermesini söyler. İlke, `http://localhost:3500/v1.0/publish/{{pub-name}}/{{topic}}` şablon parametrelerini değiştirmek ve ilke bildiriminde belirtilen içerik eklemek için BIR http post isteği yaparak bunu gerçekleştirir.
+Bu ilke, API Management ağ geçidine bir Davpr yayımlama/abone olma konusuna ileti göndermesini söyler. İlke, `http://localhost:3500/v1.0/publish/{{pubsub-name}}/{{topic}}` şablon parametrelerini değiştirmek ve ilke bildiriminde belirtilen içerik eklemek için BIR http post isteği yaparak bunu gerçekleştirir.
 
 İlke, davpr çalışma zamanının ağ geçidiyle aynı Pod içindeki bir sepet kapsayıcısında çalıştığını varsayar. Davpr çalışma zamanı, yayımlama/alt semantiğini uygular.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
 ```xml
-<publish-to-dapr topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
+<publish-to-dapr pubsub-name="pubsub-name" topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
     <!-- message content -->
 </publish-to-dapr>
 ```
@@ -131,7 +131,8 @@ Eğer Davpr çalışma zamanı, hedef konuyu bulamıyorsa, örneğin ve bir hata
      <inbound>
         <base />
         <publish-to-dapr
-               topic="@("orders/new")"
+           pubsub-name="orders"
+               topic="new"
                response-variable-name="dapr-response">
             @(context.Request.Body.As<string>())
         </publish-to-dapr>
@@ -158,7 +159,8 @@ Eğer Davpr çalışma zamanı, hedef konuyu bulamıyorsa, örneğin ve bir hata
 
 | Öznitelik        | Açıklama                     | Gerekli | Varsayılan |
 |------------------|---------------------------------|----------|---------|
-| konu başlığı            | Hedef konu adı               | Evet      | Yok     |
+| PubSub-adı      | Hedef PubSub bileşeninin adı. , Davpr 'de [pubsubname](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) parametresine eşlenir. Yoksa, __Konu__ özniteliği değeri, biçiminde olmalıdır `pubsub-name/topic-name` .    | Hayır       | Yok    |
+| konu başlığı            | Konunun adı. , Davpr içindeki [Konu](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) parametresiyle eşlenir.               | Evet      | Yok     |
 | yoksayma-hata     | Ayarlanırsa `true` , ilke, ["hata üzerinde](api-management-error-handling-policies.md) " bölümünü, davpr çalışma zamanından hata aldıktan sonra tetiklemez şekilde bildirir | Hayır | `false` |
 | Yanıt değişkeni-adı | Davpr çalışma zamanından yanıt depolamak için kullanılacak [değişkenlerin](api-management-policy-expressions.md#ContextVariables) koleksiyon girişinin adı | Hayır | Yok |
 | timeout | Davpr çalışma zamanının yanıt vermesi için beklenecek süre (saniye cinsinden). 1 ile 240 saniye arasında değişebilir. | Hayır | 5 |

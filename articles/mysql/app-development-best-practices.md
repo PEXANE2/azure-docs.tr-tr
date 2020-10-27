@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: dc9764ce68d54418578c293833c1fd38080ba0ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afe14bc03f0d12e56e1512aeb788a77c64151b58
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538917"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547257"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>MySQL için Azure veritabanı ile uygulama oluşturmak için en iyi uygulamalar 
 
@@ -23,12 +23,12 @@ MySQL için Azure veritabanı 'nı kullanarak buluta hazır bir uygulama oluştu
 Uygulamanızı Azure 'da dağıttığınızda tüm bağımlılıklarınızın aynı bölgede bulunduğundan emin olun. Bölgeler veya kullanılabilirlik alanları arasında örnekleri yayma, uygulamanızın genel performansını etkileyebilecek ağ gecikmesi oluşturur. 
 
 ### <a name="keep-your-mysql-server-secure"></a>MySQL sunucunuzu güvende tutun
-MySQL sunucunuzu [güvenli](https://docs.microsoft.com/azure/mysql/concepts-security) ve erişilebilir değil herkese açık olacak şekilde yapılandırın. Sunucunuzun güvenliğini sağlamak için şu seçeneklerden birini kullanın: 
-- [Güvenlik duvarı kuralları](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules)
-- [Sanal ağlar](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet) 
-- [Azure Özel Bağlantı](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)
+MySQL sunucunuzu [güvenli](./concepts-security.md) ve erişilebilir değil herkese açık olacak şekilde yapılandırın. Sunucunuzun güvenliğini sağlamak için şu seçeneklerden birini kullanın: 
+- [Güvenlik duvarı kuralları](./concepts-firewall-rules.md)
+- [Sanal ağlar](./concepts-data-access-and-security-vnet.md) 
+- [Azure Özel Bağlantı](./concepts-data-access-security-private-link.md)
 
-Güvenlik için, her zaman SSL üzerinden MySQL sunucunuza bağlanmanız ve MySQL sunucunuzu ve uygulamanızı TLS 1,2 kullanacak şekilde yapılandırmanız gerekir. Bkz. [SSL/TLS Yapılandırma](https://docs.microsoft.com/azure/mysql/concepts-ssl-connection-security). 
+Güvenlik için, her zaman SSL üzerinden MySQL sunucunuza bağlanmanız ve MySQL sunucunuzu ve uygulamanızı TLS 1,2 kullanacak şekilde yapılandırmanız gerekir. Bkz. [SSL/TLS Yapılandırma](./concepts-ssl-connection-security.md). 
 
 ### <a name="tune-your-server-parameters"></a>Sunucu parametrelerinizi ayarlayın
 Okuma ağır iş yükleri ayarlama sunucu parametreleri için `tmp_table_size` ve `max_heap_table_size` daha iyi performans için iyileştirilmesine yardımcı olabilir. Bu değişkenler için gereken değerleri hesaplamak için, toplam bağlantı başına bellek değerlerine ve temel belleğe bakın. `tmp_table_size`Sunucudaki toplam bellek için temel bellek hesaplarıyla birlikte, hariç olmak üzere, bağlantı başına bellek parametrelerinin toplamı.
@@ -38,15 +38,15 @@ En büyük olası boyutunu hesaplamak için `tmp_table_size` `max_heap_table_siz
 ```(total memory - (base memory + (sum of per-connection memory * # of connections)) / # of connections```
 
 >[!NOTE]
-> Toplam bellek, sunucunun sağlanan sanal çekirdekler üzerinde sahip olduğu toplam bellek miktarını gösterir.  Örneğin, MySQL sunucusu için Genel Amaçlı iki sanal çekirdek Azure veritabanı 'nda toplam bellek 5 GB * 2 olacaktır. [Fiyatlandırma katmanı](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers) belgelerindeki her bir katman için bellek hakkında daha fazla ayrıntı bulabilirsiniz.
+> Toplam bellek, sunucunun sağlanan sanal çekirdekler üzerinde sahip olduğu toplam bellek miktarını gösterir.  Örneğin, MySQL sunucusu için Genel Amaçlı iki sanal çekirdek Azure veritabanı 'nda toplam bellek 5 GB * 2 olacaktır. [Fiyatlandırma katmanı](./concepts-pricing-tiers.md) belgelerindeki her bir katman için bellek hakkında daha fazla ayrıntı bulabilirsiniz.
 >
 > Temel bellek, ve gibi, `query_cache_size` `innodb_buffer_pool_size` MySQL 'in sunucu başlangıcında başlatılacağı ve ayıracağını belirten bellek değişkenlerini belirtir. Ve gibi bağlantı başına bellek, `sort_buffer_size` `join_buffer_size` yalnızca bir sorgu için ihtiyaç duyduğunda ayrılan bellektir.
 
 ### <a name="create-non-admin-users"></a>Yönetici olmayan kullanıcılar oluşturma 
-Her veritabanı için [yönetici olmayan kullanıcılar oluşturun](https://docs.microsoft.com/azure/mysql/howto-create-users) . Genellikle, Kullanıcı adları veritabanı adları olarak tanımlanır.
+Her veritabanı için [yönetici olmayan kullanıcılar oluşturun](./howto-create-users.md) . Genellikle, Kullanıcı adları veritabanı adları olarak tanımlanır.
 
 ### <a name="reset-your-password"></a>Parolanızı sıfırlama
-Azure portal kullanarak MySQL sunucunuzun [parolasını sıfırlayabilirsiniz](https://docs.microsoft.com/azure/mysql/howto-create-manage-server-portal#update-admin-password) . 
+Azure portal kullanarak MySQL sunucunuzun [parolasını sıfırlayabilirsiniz](./howto-create-manage-server-portal.md#update-admin-password) . 
 
 Bir üretim veritabanı için sunucu parolanızı sıfırlama, uygulamanızı getirebilir. Uygulamanızın kullanıcılarına etkisini en aza indirmek için, tüm üretim iş yükleri için parolayı yoğun olmayan saatlerde sıfırlamak iyi bir uygulamadır.
 
@@ -54,29 +54,29 @@ Bir üretim veritabanı için sunucu parolanızı sıfırlama, uygulamanızı ge
 İşte performans sorunlarını ayıklamanıza yardımcı olmak için kullanabileceğiniz birkaç araç ve uygulama aşağıda verilmiştir.
 
 ### <a name="enable-slow-query-logs-to-identify-performance-issues"></a>Performans sorunlarını belirlemek için yavaş sorgu günlüklerini etkinleştir
-Sunucunuzdaki [yavaş sorgu günlüklerini](https://docs.microsoft.com/azure/mysql/concepts-server-logs) ve [Denetim günlüklerini](https://docs.microsoft.com/azure/mysql/concepts-audit-logs) etkinleştirebilirsiniz. Yavaş sorgu günlüklerinin çözümlenmesi, sorun giderme için performans sorunlarını belirlemenize yardımcı olabilir. 
+Sunucunuzdaki [yavaş sorgu günlüklerini](./concepts-server-logs.md) ve [Denetim günlüklerini](./concepts-audit-logs.md) etkinleştirebilirsiniz. Yavaş sorgu günlüklerinin çözümlenmesi, sorun giderme için performans sorunlarını belirlemenize yardımcı olabilir. 
 
-Denetim günlükleri, Azure Izleyici günlükleri, Azure Event Hubs ve depolama hesaplarında Azure Tanılama Günlükler aracılığıyla da kullanılabilir. Bkz. [sorgu performans sorunlarını giderme](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-query-performance).
+Denetim günlükleri, Azure Izleyici günlükleri, Azure Event Hubs ve depolama hesaplarında Azure Tanılama Günlükler aracılığıyla da kullanılabilir. Bkz. [sorgu performans sorunlarını giderme](./howto-troubleshoot-query-performance.md).
 
 ### <a name="use-connection-pooling"></a>Bağlantı havuzu kullanma
-Veritabanı bağlantılarını yönetmek, uygulamanın performansı üzerinde önemli bir etkiye sahip olabilir. Performansı iyileştirmek için, bağlantıların kaç kez kurulabileceğinizi ve anahtar kod yollarında bağlantı kurma süresini azaltmanız gerekir. Esneklik ve performansı geliştirmek için MySQL için Azure veritabanı 'na bağlanmak üzere [bağlantı havuzunu](https://docs.microsoft.com/azure/mysql/concepts-connectivity#access-databases-by-using-connection-pooling-recommended) kullanın. 
+Veritabanı bağlantılarını yönetmek, uygulamanın performansı üzerinde önemli bir etkiye sahip olabilir. Performansı iyileştirmek için, bağlantıların kaç kez kurulabileceğinizi ve anahtar kod yollarında bağlantı kurma süresini azaltmanız gerekir. Esneklik ve performansı geliştirmek için MySQL için Azure veritabanı 'na bağlanmak üzere [bağlantı havuzunu](./concepts-connectivity.md#access-databases-by-using-connection-pooling-recommended) kullanın. 
 
 Bağlantıları etkin bir şekilde yönetmek için [Proxysql](https://proxysql.com/) bağlantı havuzlayıcı ' i kullanabilirsiniz. Bir bağlantı havuzlayıcı kullanılması, boştaki bağlantıları azaltabilir ve var olan bağlantıları yeniden kullanabilir ve bu da sorunları önlemeye yardımcı olur. Daha fazla bilgi için bkz. [ProxySQL 'i ayarlama](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/connecting-efficiently-to-azure-database-for-mysql-with-proxysql/ba-p/1279842) . 
 
 ### <a name="retry-logic-to-handle-transient-errors"></a>Geçici hataları işlemek için yeniden deneme mantığı
-Uygulamanız, veritabanı bağlantılarının aralıklı olarak bırakılmakta veya kaybolduğu [geçici hatalarla](https://docs.microsoft.com/azure/mysql/concepts-connectivity#handling-transient-errors) karşılaşabilir. Bu gibi durumlarda, sunucu, 5 ila 10 saniye içinde bir ila iki yeniden denemeden sonra çalışır. 
+Uygulamanız, veritabanı bağlantılarının aralıklı olarak bırakılmakta veya kaybolduğu [geçici hatalarla](./concepts-connectivity.md#handling-transient-errors) karşılaşabilir. Bu gibi durumlarda, sunucu, 5 ila 10 saniye içinde bir ila iki yeniden denemeden sonra çalışır. 
 
-İlk yeniden denemeden önce 5 saniye beklemek iyi bir uygulamadır. Sonra, 60 saniyeye kadar yavaş bekleme süresini artırarak her yeniden denemeye uyun. Uygulamanızın işlemi kabul eden en fazla yeniden deneme sayısını sınırlayın, böylece daha fazla araştırma yapabilirsiniz. Daha fazla bilgi için bkz. [bağlantı hatalarıyla ilgili sorunları giderme](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-common-connection-issues) . 
+İlk yeniden denemeden önce 5 saniye beklemek iyi bir uygulamadır. Sonra, 60 saniyeye kadar yavaş bekleme süresini artırarak her yeniden denemeye uyun. Uygulamanızın işlemi kabul eden en fazla yeniden deneme sayısını sınırlayın, böylece daha fazla araştırma yapabilirsiniz. Daha fazla bilgi için bkz. [bağlantı hatalarıyla ilgili sorunları giderme](./howto-troubleshoot-common-connection-issues.md) . 
 
 ### <a name="enable-read-replication-to-mitigate-failovers"></a>Yük devretmeleri azaltmak için okuma çoğaltmasını etkinleştirin
-Yük devretme senaryolarında [gelen verileri çoğaltma](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) kullanabilirsiniz. Okuma çoğaltmaları kullanırken, kaynak ve çoğaltma sunucuları arasında otomatik yük devretme gerçekleşmez. 
+Yük devretme senaryolarında [gelen verileri çoğaltma](./howto-data-in-replication.md) kullanabilirsiniz. Okuma çoğaltmaları kullanırken, kaynak ve çoğaltma sunucuları arasında otomatik yük devretme gerçekleşmez. 
 
 Çoğaltma zaman uyumsuz olduğundan kaynak ve çoğaltma arasında bir gecikme fark edeceksiniz. Ağ gecikmesi, kaynak sunucuda çalışan iş yükünün boyutu ve veri merkezleri arasındaki gecikme süresi gibi birçok faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikme süresi birkaç saniyeden birkaç dakikaya kadar değişir.
 
 ## <a name="database-deployment"></a>Veritabanı dağıtımı 
 
 ### <a name="configure-an-azure-database-for-mysql-task-in-your-cicd-deployment-pipeline"></a>CI/CD dağıtım işlem hattınızda MySQL için Azure veritabanı görevini yapılandırma
-Bazen değişiklikleri veritabanınıza dağıtmanız gerekir. Bu gibi durumlarda, [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) aracılığıyla sürekli TÜMLEŞTIRME (CI) ve sürekli teslım (CD) kullanabilir ve bir özel betik çalıştırarak veritabanını güncelleştirmek için [MySQL sunucunuzun](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops) bir görevini kullanabilirsiniz.
+Bazen değişiklikleri veritabanınıza dağıtmanız gerekir. Bu gibi durumlarda, [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) aracılığıyla sürekli TÜMLEŞTIRME (CI) ve sürekli teslım (CD) kullanabilir ve bir özel betik çalıştırarak veritabanını güncelleştirmek için [MySQL sunucunuzun](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops&preserve-view=true) bir görevini kullanabilirsiniz.
 
 ### <a name="use-an-effective-process-for-manual-database-deployment"></a>El ile veritabanı dağıtımı için etkili bir işlem kullanın 
 El ile veritabanı dağıtımı sırasında, kapalı kalma süresini en aza indirmek veya başarısız dağıtım riskini azaltmak için aşağıdaki adımları izleyin: 
@@ -119,6 +119,4 @@ Depolamak istediğiniz verilerin türüne göre doğru veri türünün kullanıl
 Yavaş sorgulardan kaçınmak için dizinleri kullanabilirsiniz. Dizinler, belirli sütunlara hızlıca sahip satırları bulmaya yardımcı olabilir. Bkz. [MySQL 'de dizinleri kullanma](https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html).
 
 ### <a name="use-explain-for-your-select-queries"></a>Seçme sorgularınız için AÇıKLA kullanın
-`EXPLAIN`Sorgunuzu çalıştırmak Için MySQL ile ilgili Öngörüler elde etmek için, ifadesini kullanın. Sorgunuzun performans sorunlarını veya sorunları tespit etmenize yardımcı olabilir. Bkz. [Açıklama kullanarak sorgu performansını profil](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-query-performance)oluşturma.
-
-
+`EXPLAIN`Sorgunuzu çalıştırmak Için MySQL ile ilgili Öngörüler elde etmek için, ifadesini kullanın. Sorgunuzun performans sorunlarını veya sorunları tespit etmenize yardımcı olabilir. Bkz. [Açıklama kullanarak sorgu performansını profil](./howto-troubleshoot-query-performance.md)oluşturma.

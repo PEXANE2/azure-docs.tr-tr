@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: e171ce1ab7d2b9d4a78399ee639945bde16b71ca
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 63fdee6036580df42f7f965244b5f888c1ec082d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019418"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540763"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Docgo Web uygulaması dağıtma
 
@@ -99,9 +99,9 @@ cd djangoapp
 
 # <a name="download"></a>[İndir](#tab/download)
 
-Web sitesini ziyaret edin [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) ve sonra ZIP 'ı **İndir** **' i**seçin. 
+Web sitesini ziyaret edin [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) ve sonra ZIP 'ı **İndir** **' i** seçin. 
 
-ZIP dosyasını *docgoapp*adlı bir klasöre ayıklayın. 
+ZIP dosyasını *docgoapp* adlı bir klasöre ayıklayın. 
 
 Ardından bu *docgoapp* klasöründe bir Terminal penceresi açın.
 
@@ -111,7 +111,7 @@ Docgoapp örneği, Docgo belgelerine [Ilk Docgo uygulamanızı yazmayı](https:/
 
 Örnek ayrıca App Service gibi bir üretim ortamında çalışacak şekilde değiştirilmiştir:
 
-- Üretim ayarları *azuresite/Production. Kopyala* dosyasında bulunur. Geliştirme ayrıntıları *azuresite/Settings. Kopyala*' da bulunur.
+- Üretim ayarları *azuresite/Production. Kopyala* dosyasında bulunur. Geliştirme ayrıntıları *azuresite/Settings. Kopyala* ' da bulunur.
 - Uygulama, `DJANGO_ENV` ortam değişkeni "üretim" olarak ayarlandığında üretim ayarlarını kullanır. Bu ortam değişkenini daha sonra öğreticide, PostgreSQL veritabanı yapılandırması için kullanılan diğer kullanıcılarla birlikte oluşturursunuz.
 
 Bu değişiklikler, DMİ git 'in herhangi bir üretim ortamında çalıştırılmasını ve App Service özel olmadığını yapılandırmaya özgüdür. Daha fazla bilgi için bkz. [Docgo dağıtım denetim listesi](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/). Ayrıca, bazı değişiklikler hakkında ayrıntılı bilgi için bkz. [Azure 'Da Docgo Için üretim ayarları](configure-language-python.md#production-settings-for-django-apps) .
@@ -138,7 +138,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 ```
 
 - *\<postgres-server-name>* Tüm Azure genelinde benzersiz olan bir adla değiştirin (sunucu uç noktası olur `https://<postgres-server-name>.postgres.database.azure.com` ). İyi bir model, şirketinizin adı ve başka bir benzersiz değer birleşimini kullanmaktır.
-- *\<admin-username>* Ve için *\<admin-password>* , bu Postgres sunucusu için bir yönetici kullanıcı oluşturmak üzere kimlik bilgilerini belirtin.
+- *\<admin-username>* Ve için *\<admin-password>* , bu Postgres sunucusu için bir yönetici kullanıcı oluşturmak üzere kimlik bilgilerini belirtin. `$`Kullanıcı adı veya parola içinde karakteri kullanmayın. Daha sonra bu değerlerle ortam değişkenleri oluşturursunuz; bu, `$` karakterin Python uygulamalarını çalıştırmak için kullanılan Linux kapsayıcısı içinde özel anlamı vardır.
 - Burada kullanılan B_Gen5_1 (Basic, 5. nesil, 1 çekirdek) [fiyatlandırma katmanı](../postgresql/concepts-pricing-tiers.md) en düşük maliyetli bir işlemdir. Üretim veritabanları için, `--sku-name` bunun yerine GP_Gen5_2 (genel amaçlı, Gen 5, 2 çekirdek) katmanını kullanmak için bağımsız değişkenini atlayın.
 
 Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
@@ -153,7 +153,7 @@ Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
 
 Tüm adımları diğer ve komutlarla ayrı olarak yapabilirsiniz `az postgres` `psql` , ancak `az postgres up` tüm adımları bir araya getirebilirsiniz.
 
-Komut tamamlandığında, veritabanı için farklı bağlantı dizeleri içeren bir JSON nesnesi (sunucu URL 'SI, oluşturulan bir Kullanıcı adı (" joyfulKoala@msdocs-djangodb-12345 ") ve bır GUID parolası) verir. Kullanıcı adını ve parolayı, bu öğreticide daha sonra ihtiyacınız olan geçici bir metin dosyasına kopyalayın.
+Komut tamamlandığında, veritabanı için farklı bağlantı dizeleri içeren bir JSON nesnesi (sunucu URL 'SI, oluşturulan bir Kullanıcı adı (" joyfulKoala@msdocs-djangodb-12345 ") ve bır GUID parolası) verir. Bu öğreticide daha sonra gereksinim duyduğunuz kısa Kullanıcı adını (@ öğesinden önce) ve parolayı geçici bir metin dosyasına kopyalayın.
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
@@ -188,7 +188,7 @@ Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
 - Yoksa App Service uygulamasını oluşturun.
 - Zaten etkinleştirilmemişse, uygulama için varsayılan günlüğü etkinleştirin.
 - Derleme Otomasyonu etkinken ZIP dağıtımını kullanarak depoyu karşıya yükleyin.
-- Kaynak grubunun adı ve App Service planı gibi ortak parametreleri dosyaya *. Azure/config*dosyasına ekleyin. Sonuç olarak, sonraki komutlarla aynı parametreyi belirtmeniz gerekmez. Örneğin, değişiklikleri yaptıktan sonra uygulamayı yeniden dağıtmak için `az webapp up` herhangi bir parametre olmadan yalnızca tekrar çalıştırabilirsiniz. Bununla birlikte, CLı uzantılarından gelen komutlar `az postgres up` mevcut değildir. bu nedenle, kaynak grubunu ve konumu ilk kullanımı ile burada belirtmeniz gerekli değildir `az webapp up` .
+- Kaynak grubunun adı ve App Service planı gibi ortak parametreleri dosyaya *. Azure/config* dosyasına ekleyin. Sonuç olarak, sonraki komutlarla aynı parametreyi belirtmeniz gerekmez. Örneğin, değişiklikleri yaptıktan sonra uygulamayı yeniden dağıtmak için `az webapp up` herhangi bir parametre olmadan yalnızca tekrar çalıştırabilirsiniz. Bununla birlikte, CLı uzantılarından gelen komutlar `az postgres up` mevcut değildir. bu nedenle, kaynak grubunu ve konumu ilk kullanımı ile burada belirtmeniz gerekli değildir `az webapp up` .
 
 Dağıtım başarılı olduğunda, komut aşağıdaki örnekte olduğu gibi JSON çıktısı üretir:
 
@@ -212,7 +212,7 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 ```
 
 - *\<postgres-server-name>* Daha önce komutuyla kullandığınız adla değiştirin `az postgres up` . *Azuresite/Production.* kay içindeki kod, `.postgres.database.azure.com` tam Postgres sunucu URL 'sini oluşturmak için otomatik olarak ekler.
-- *\<username>* Ve *\<password>* ' yi önceki komutla kullandığınız yönetici kimlik bilgileriyle `az postgres up` veya `az postgres up` sizin için oluşturulan yöneticilerle değiştirin. *Azuresite/Production.* kay içindeki kod, ve ' den tam Postgres Kullanıcı adını otomatik olarak oluşturur `DBUSER` `DBHOST` .
+- *\<username>* Ve *\<password>* ' yi önceki komutla kullandığınız yönetici kimlik bilgileriyle `az postgres up` veya `az postgres up` sizin için oluşturulan yöneticilerle değiştirin. *Azuresite/Production.* kay içindeki kod, ve ' deki tam Postgres Kullanıcı adını otomatik olarak oluşturur `DBUSER` , bu `DBHOST` nedenle `@server` bölümü içermez. (Ayrıca, daha önce belirtildiği gibi, `$` Linux ortam değişkenleri için özel bir anlam içerdiğinden, karakteri her iki değerde de kullanmamalısınız.)
 - Kaynak grubu ve uygulama adları, *. Azure/config* dosyasındaki önbelleğe alınmış değerlerden çizilir.
 
 Python kodunuzda bu ayarlara, gibi deyimlerle ortam değişkenleri olarak erişirsiniz `os.environ.get('DJANGO_ENV')` . Daha fazla bilgi için bkz. [ortam değişkenlerine erişin](configure-language-python.md#access-environment-variables).
@@ -235,7 +235,7 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
 
     SSH oturumuna bağlanamıyorsanız, uygulamanın kendisi başlatılamadı. Ayrıntılar için [Tanılama günlüklerine bakın](#stream-diagnostic-logs) . Örneğin, önceki bölümde gerekli uygulama ayarlarını oluşturmadıysanız Günlükler gösterilir `KeyError: 'DBNAME'` .
 
-1. SSH oturumunda aşağıdaki komutları çalıştırın ( **CTRL** + **SHIFT** + **V**kullanarak komutları yapıştırabilirsiniz):
+1. SSH oturumunda aşağıdaki komutları çalıştırın ( **CTRL** + **SHIFT** + **V** kullanarak komutları yapıştırabilirsiniz):
 
     ```bash
     # Change to the folder where the app code is deployed
@@ -268,7 +268,7 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
 
     Hataları düzeltmek için ayarları güncelleştirdikten sonra, uygulamayı yeniden başlatmak için bir dakika verin ve ardından Tarayıcıyı yenileyin.
 
-1. `http://<app-name>.azurewebsites.net/admin` adresine gidin. Önceki bölümde bulunan Süper Kullanıcı kimlik bilgilerini kullanarak oturum açın ( `root` ve `Pollsdb1` ). **Yoklamalar**altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
+1. `http://<app-name>.azurewebsites.net/admin` adresine gidin. Önceki bölümde bulunan Süper Kullanıcı kimlik bilgilerini kullanarak oturum açın ( `root` ve `Pollsdb1` ). **Yoklamalar** altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
 
 1. `http://<app-name>.azurewebsites.net`Soruların artık kullanıcıya sunulduğunu onaylamak için tekrar gidin. Bu soruları yanıtlayın, ancak veritabanında bazı veriler oluşturmak istersiniz.
 
@@ -348,11 +348,11 @@ Uygulamayı aşağıdaki adımlarla yerel olarak test edin:
 
 1. `http://localhost:8000`"Hiçbir yoklama yok" iletisini görüntülemesi gereken bir tarayıcıda adresine gidin. 
 
-1. `http:///localhost:8000/admin`Daha önce oluşturduğunuz yönetici kullanıcıyı kullanarak adresine gidin ve oturum açın. **Yoklamalar**' ın altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun. 
+1. `http:///localhost:8000/admin`Daha önce oluşturduğunuz yönetici kullanıcıyı kullanarak adresine gidin ve oturum açın. **Yoklamalar** ' ın altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun. 
 
 1. *Http: \/ /localhost: 8000* ' e gidin ve uygulamayı test etmek için soruyu yanıtlayın. 
 
-1. **CTRL**C tuşlarına basarak Docgo sunucusunu durdurun + **C**.
+1. **CTRL** C tuşlarına basarak Docgo sunucusunu durdurun + **C** .
 
 Yerel olarak çalıştırılırken, uygulama yerel bir SQLite3 veritabanı kullanıyor ve üretim veritabanınızı engellemez. İsterseniz üretim ortamınızın benzetimini yapmak için bir yerel PostgreSQL veritabanı da kullanabilirsiniz.
 
@@ -374,9 +374,9 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-Geliştirme sunucusunu ile yeniden çalıştırın `python manage.py runserver` ve uygulamayı *http: \/ /localhost: 8000/admin*konumunda test edin:
+Geliştirme sunucusunu ile yeniden çalıştırın `python manage.py runserver` ve uygulamayı *http: \/ /localhost: 8000/admin* konumunda test edin:
 
-Docgo Web sunucusunu **CTRL** + **C**ile yeniden durdurun.
+Docgo Web sunucusunu **CTRL** + **C** ile yeniden durdurun.
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -427,7 +427,7 @@ az webapp log tail
 
 Konsol günlüklerini hemen görmüyorsanız, 30 saniye içinde yeniden kontrol edin.
 
-Günlük akışını istediğiniz zaman durdurmak için **CTRL** + **C**yazın.
+Günlük akışını istediğiniz zaman durdurmak için **CTRL** + **C** yazın.
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DjangoCLITutorialHelp)
 

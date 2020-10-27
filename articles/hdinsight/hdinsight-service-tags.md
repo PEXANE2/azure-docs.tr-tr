@@ -7,16 +7,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 112f915f533627ccdc0ac6efe38caacc80b254bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89399965"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535255"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight için NSG hizmet etiketleri
 
-Ağ güvenlik grupları (NSG 'ler) için Azure HDInsight hizmet etiketleri, sistem durumu ve Yönetim Hizmetleri için IP adresi gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığına en aza indirmenize yardımcı olur. [Hizmet etiketleri](../virtual-network/security-overview.md#service-tags) , NSG 'lerinize her BIR [Yönetim IP adresini](hdinsight-management-ip-addresses.md) girmeden belirli IP 'lerden gelen trafiğe izin verir.
+Ağ güvenlik grupları (NSG 'ler) için Azure HDInsight hizmet etiketleri, sistem durumu ve Yönetim Hizmetleri için IP adresi gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığına en aza indirmenize yardımcı olur. [Hizmet etiketleri](../virtual-network/network-security-groups-overview.md#service-tags) , NSG 'lerinize her BIR [Yönetim IP adresini](hdinsight-management-ip-addresses.md) girmeden belirli IP 'lerden gelen trafiğe izin verir.
 
 HDInsight hizmeti bu hizmet etiketlerini yönetir. Kendi hizmet etiketinizi oluşturamaz veya var olan bir etiketi değiştiremezsiniz. Microsoft, hizmet etiketiyle eşleşen adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
 
@@ -26,9 +26,9 @@ Belirli bir bölgeyi kullanmak isterseniz ve hizmet etiketi henüz bu sayfada be
 
 Ağ güvenlik gruplarında hizmet etiketleri kullanmak için iki seçeneğiniz vardır:
 
-- **Tek bir Global HDInsight hizmet etiketi kullan**: Bu seçenek, Sanal ağınızı HDInsight hizmetinin tüm bölgelerde kümeleri izlemek için KULLANDıĞı tüm IP adreslerine açar. Bu seçenek en basit yöntemdir, ancak kısıtlayıcı güvenlik gereksinimleriniz varsa uygun olmayabilir.
+- **Tek bir Global HDInsight hizmet etiketi kullan** : Bu seçenek, Sanal ağınızı HDInsight hizmetinin tüm bölgelerde kümeleri izlemek için KULLANDıĞı tüm IP adreslerine açar. Bu seçenek en basit yöntemdir, ancak kısıtlayıcı güvenlik gereksinimleriniz varsa uygun olmayabilir.
 
-- **Birden çok bölgesel hizmet etiketi kullan**: Bu seçenek, Sanal ağınızı yalnızca HDInsight 'ın o belirli bölgede kullandığı IP adreslerine açar. Ancak, birden çok bölge kullanıyorsanız, sanal ağınıza birden çok hizmet etiketi eklemeniz gerekir.
+- **Birden çok bölgesel hizmet etiketi kullan** : Bu seçenek, Sanal ağınızı yalnızca HDInsight 'ın o belirli bölgede kullandığı IP adreslerine açar. Ancak, birden çok bölge kullanıyorsanız, sanal ağınıza birden çok hizmet etiketi eklemeniz gerekir.
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Tek bir Global HDInsight hizmet etiketi kullanın
 
@@ -36,11 +36,11 @@ HDInsight kümeniz ile hizmet etiketleri kullanmaya başlamanın en kolay yolu, 
 
 1. [Azure Portal](https://portal.azure.com/)ağ güvenlik grubunuzu seçin.
 
-1. **Ayarlar**altında **gelen güvenlik kuralları**' nı seçin ve **+ Ekle**' yi seçin.
+1. **Ayarlar** altında **gelen güvenlik kuralları** ' nı seçin ve **+ Ekle** ' yi seçin.
 
-1. **Kaynak** açılan listesinden **hizmet etiketi**' ni seçin.
+1. **Kaynak** açılan listesinden **hizmet etiketi** ' ni seçin.
 
-1. **Kaynak hizmet etiketi** açılan listesinden **HDInsight**' ı seçin.
+1. **Kaynak hizmet etiketi** açılan listesinden **HDInsight** ' ı seçin.
 
     ![Azure portal bir hizmet etiketi ekleyin](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
@@ -59,7 +59,7 @@ Kümeniz bu tabloda listelenen bir bölgede bulunuyorsa, NSG 'nize yalnızca tek
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
 | Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |
-| &nbsp; | Avustralya Güneydoğu | HDInsight. AustraliaSoutheast |
+| &nbsp; | Güneydoğu Avustralya | HDInsight. AustraliaSoutheast |
 | &nbsp; | Orta Avustralya | HDInsight. AustraliaCentral |
 | Çin | Çin Doğu 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Çin Kuzey 2 | HDInsight. ChinaNorth2 |
@@ -125,5 +125,5 @@ Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, hizmet eti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ağ güvenlik grupları: hizmet etiketleri](../virtual-network/security-overview.md#security-rules)
+- [Ağ güvenlik grupları: hizmet etiketleri](../virtual-network/network-security-groups-overview.md#security-rules)
 - [Azure HDInsight kümeleri için sanal ağlar oluşturma](hdinsight-create-virtual-network.md)

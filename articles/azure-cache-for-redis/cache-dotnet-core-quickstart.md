@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 1cb35ce995a27030612499cc3147943112e1c50e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 12466f64daa699925e4e184536b2d50c5fb89847
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89662366"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547733"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Hızlı başlangıç: .NET Core uygulaması ile Redsıs için Azure önbelleğini kullanma
 
@@ -47,7 +47,7 @@ Komut pencerenizde yeni *Redistest* proje dizinine geçin.
 
 ## <a name="add-secret-manager-to-the-project"></a>Projeye Gizli Dizi Yöneticisi ekleme
 
-Bu bölümde, projenize [Gizli Dizi Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/security/app-secrets) ekleyeceksiniz. Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje ağacınızın dışında depolar. Bu yaklaşım, uygulama gizli dizilerini kaynak kodunun içinde yanlışlıkla paylaşmayı önlemeye yardımcı olur.
+Bu bölümde, projenize [Gizli Dizi Yöneticisi aracını](/aspnet/core/security/app-secrets) ekleyeceksiniz. Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje ağacınızın dışında depolar. Bu yaklaşım, uygulama gizli dizilerini kaynak kodunun içinde yanlışlıkla paylaşmayı önlemeye yardımcı olur.
 
 *Redistest.csproj* dosyanızı açın. *Microsoft.Extensions.SecretManager.Tools* öğesini dahil etmek için bir `DotNetCliToolReference` öğesi ekleyin. Ayrıca, aşağıda gösterildiği gibi bir `UserSecretsId` öğesi ekleyin ve dosyayı kaydedin.
 
@@ -293,13 +293,13 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 > Bir kaynak grubunu silme işlemi geri alınamaz ve kaynak grubunun ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. Bu örneği, tutmak istediğiniz kaynakları içeren mevcut bir kaynak grubunda barındırmak için kaynaklar oluşturduysanız, kaynak grubunu silmek yerine her kaynağı kendi ilgili dikey penceresinden tek tek silebilirsiniz.
 >
 
-[Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’na tıklayın.
+[Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları** ’na tıklayın.
 
-**Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil**’e tıklayın.
+**Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil** ’e tıklayın.
 
 ![Sil](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
-Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil**’e tıklayın.
+Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil** ’e tıklayın.
 
 Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 
@@ -317,4 +317,4 @@ Bu hızlı başlangıçta, .NET Core uygulamasından Redsıs için Azure önbell
 Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
 
 > [!div class="nextstepaction"]
-> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

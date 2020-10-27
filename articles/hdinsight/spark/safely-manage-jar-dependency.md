@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/05/2020
-ms.openlocfilehash: b5b8c014a7150ad83875b9fd361c3538d865d153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5834d3512c95e77e6ce45472ff8f2e1b4b2ed456
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90064158"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545591"
 ---
 # <a name="safely-manage-jar-dependencies"></a>Jar bağımlılıklarını güvenli şekilde yönetme
 
@@ -79,6 +79,6 @@ Ardından, `sbt clean` ve ' yi çalıştırarak `sbt assembly` gölgeli jar dosy
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [HDInsight IntelliJ araçlarını kullanma](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox)
+* [HDInsight IntelliJ araçlarını kullanma](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
 
-* [IntelliJ 'de Spark için bir Scala Maven uygulaması oluşturma](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-create-standalone-application)
+* [IntelliJ 'de Spark için bir Scala Maven uygulaması oluşturma](./apache-spark-create-standalone-application.md)

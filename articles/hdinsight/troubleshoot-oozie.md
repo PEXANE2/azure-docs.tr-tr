@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: fb795a9d7100019b2b1820c592f87025b77f5878
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f30c66839228e43f9a6fbdce9914f1ca1572c0ec
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045867"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538944"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Oozie sorunlarını giderme
 
@@ -30,7 +30,7 @@ Aşağıdakiler, içinde karşılaşabileceğiniz belirli hatalar ve bunları na
 
 ### <a name="issue"></a>Sorun
 
-İş durumu **askıya alındı**olarak değişir. İşin ayrıntıları `RunHiveScript` durumu **START_MANUAL**olarak gösterir. Eylemi seçmek şu hata iletisini görüntüler:
+İş durumu **askıya alındı** olarak değişir. İşin ayrıntıları `RunHiveScript` durumu **START_MANUAL** olarak gösterir. Eylemi seçmek şu hata iletisini görüntüler:
 
 ```output
 JA009: Cannot initialize Cluster. Please check your configuration for map
@@ -50,7 +50,7 @@ JA009: Cannot initialize Cluster. Please check your configuration for map
 
 ### <a name="issue"></a>Sorun
 
-İş durumu **askıya alındı**olarak değişir. İşin ayrıntıları `RunHiveScript` durumu **START_MANUAL**olarak gösterir. Eylemi seçerseniz, aşağıdaki hata iletisini gösterir:
+İş durumu **askıya alındı** olarak değişir. İşin ayrıntıları `RunHiveScript` durumu **START_MANUAL** olarak gösterir. Eylemi seçerseniz, aşağıdaki hata iletisini gösterir:
 
 ```output
 JA002: User: oozie is not allowed to impersonate <USER>
@@ -77,7 +77,7 @@ sudo adduser USERNAME users
 
 ### <a name="issue"></a>Sorun
 
-İş durumu **sonlandırıldı**olarak değişir. İşin ayrıntıları `RunSqoopExport` durumu **hata**olarak gösterir. Eylemi seçerseniz, aşağıdaki hata iletisini gösterir:
+İş durumu **sonlandırıldı** olarak değişir. İşin ayrıntıları `RunSqoopExport` durumu **hata** olarak gösterir. Eylemi seçerseniz, aşağıdaki hata iletisini gösterir:
 
 ```output
 Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
@@ -113,4 +113,4 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](../azure-portal/supportability/how-to-create-azure-support-request.md)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

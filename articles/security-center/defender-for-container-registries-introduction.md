@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0c504ebdec524390d9deb22088979199f80e4f13
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275957"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558644"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Kapsayıcı kayıt defterleri için Azure Defender 'a giriş
 
@@ -71,6 +71,12 @@ Evet. Sonuçlar [alt değerlendirmeler REST API 'si](/rest/api/securitycenter/su
 Azure Defender tarafından kapsayıcı kayıt defterleri için desteklenen kapsayıcı kayıt defterleri türlerinin listesi için bkz. [kullanılabilirlik](defender-for-container-registries-usage.md#availability).
 
 Desteklenmeyen kayıt defterlerini Azure aboneliğinize bağladığınızda bunlar taranmaz ve bunlar için faturalandırılmaz.
+
+### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>Güvenlik açığı tarayıcılarından bulguları özelleştirebilir miyim?
+Evet. Bir bulmayı yok saymanız gereken bir kuruluş varsa, bunu düzeltmek yerine isteğe bağlı olarak devre dışı bırakabilirsiniz. Devre dışı bulgular, güvenli puanınızı etkilemez veya istenmeyen gürültü oluşturmaz.
+
+[Tümleşik güvenlik açığı değerlendirmesi aracından bulguları devre dışı bırakmak için kurallar oluşturma hakkında bilgi edinin](defender-for-container-registries-usage.md#disable-specific-findings-preview).
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767343"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547716"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub ileti yönlendirme sorgusu söz dizimi
 
@@ -23,7 +23,7 @@ ms.locfileid: "91767343"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-İleti yönlendirme, ileti özellikleri ve ileti gövdesinde, Device ikizi etiketleri ve Device ikizi özellikleri ile sorgulama yapmanıza olanak sağlar. İleti gövdesi JSON değilse, ileti yönlendirme iletiyi yine de yönlendirebilir, ancak sorgular ileti gövdesine uygulanamıyor.  Sorgular Boole ifadesi olarak tanımlanır ve bu, tüm gelen verileri yönlendiren sorgunun başarılı olduğunu ve Boole false ' ın sorgu başarısız olduğunu ve veri yönlendirilmesini sağlar. İfade null veya tanımsız olarak değerlendirilirse, yanlış olarak değerlendirilir ve hata durumunda tanılama günlüklerinde bir hata oluşturulur. Yolun kaydedilmesi ve değerlendirilmesi için sorgu söz dizimi doğru olmalıdır.  
+İleti yönlendirme, ileti özellikleri ve ileti gövdesinde, Device ikizi etiketleri ve Device ikizi özellikleri ile sorgulama yapmanıza olanak sağlar. İleti gövdesi JSON değilse, ileti yönlendirme iletiyi yine de yönlendirebilir, ancak sorgular ileti gövdesine uygulanamıyor.  Sorgular Boole ifadesi olarak tanımlanır ve bu, tüm gelen verileri yönlendiren sorgunun başarılı olduğunu ve Boole false ' ın sorgu başarısız olduğunu ve veri yönlendirilmesini sağlar. İfade null veya tanımsız olarak değerlendirilirse, yanlış olarak değerlendirilir ve bir hata durumunda [kaynak günlükleri](monitor-iot-hub-reference.md#routes) günlüklerinde IoT Hub yollar oluşturulur. Yolun kaydedilmesi ve değerlendirilmesi için sorgu söz dizimi doğru olmalıdır.  
 
 ## <a name="message-routing-query-based-on-message-properties"></a>İleti özelliklerine dayanan ileti yönlendirme sorgusu 
 
@@ -62,7 +62,7 @@ Sistem Özellikleri, iletilerin içeriğini ve kaynağını belirlemesine yardı
 | DT-DataSchema | string |  Bu değer, cihazdan buluta iletilerde IoT Hub tarafından ayarlanır. Cihaz bağlantısında ayarlanan cihaz modeli KIMLIĞINI içerir. Sorgulamak için kullanın `$dt-dataschema` . |
 | DT-konu | string | Cihazdan buluta iletileri gönderen bileşenin adı. Sorgulamak için kullanın `$dt-subject` . |
 
-[IoT Hub iletilerinde](iot-hub-devguide-messages-construct.md)açıklandığı gibi, bir iletide ek sistem özellikleri vardır. Önceki tablodaki özelliklerin yanı sıra **Connectiondeviceıd**, **connectionmoduleıd**' yi de sorgulayabilirsiniz.
+[IoT Hub iletilerinde](iot-hub-devguide-messages-construct.md)açıklandığı gibi, bir iletide ek sistem özellikleri vardır. Önceki tablodaki özelliklerin yanı sıra **Connectiondeviceıd** , **connectionmoduleıd** ' yi de sorgulayabilirsiniz.
 
 ### <a name="application-properties"></a>Uygulama özellikleri
 
@@ -146,7 +146,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> Bu, gövde kodlamasının JavaScript 'te nasıl işleneceğini gösterir. C# dilinde bir örnek görmek isterseniz, [Azure IoT C# örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)indirin. master.zip dosyasını sıkıştırmayı açın. Visual Studio Solution *SimulatedDevice*'ın program.cs dosyası, iletilerin nasıl kodlanacağını ve bir IoT Hub nasıl göndereceğini gösterir. İleti yönlendirme [öğreticisinde](tutorial-routing.md)açıklandığı gibi, ileti yönlendirmeyi test etmek için kullanılan aynı örnektir. Program.cs 'in en altında, kodlanmış dosyalardan birinde okuma, kodunu çözme ve bunu okuyabilmeniz için ASCII olarak yeniden yazma yöntemi de vardır. 
+> Bu, gövde kodlamasının JavaScript 'te nasıl işleneceğini gösterir. C# dilinde bir örnek görmek isterseniz, [Azure IoT C# örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)indirin. master.zip dosyasını sıkıştırmayı açın. Visual Studio Solution *SimulatedDevice* 'ın program.cs dosyası, iletilerin nasıl kodlanacağını ve bir IoT Hub nasıl göndereceğini gösterir. İleti yönlendirme [öğreticisinde](tutorial-routing.md)açıklandığı gibi, ileti yönlendirmeyi test etmek için kullanılan aynı örnektir. Program.cs 'in en altında, kodlanmış dosyalardan birinde okuma, kodunu çözme ve bunu okuyabilmeniz için ASCII olarak yeniden yazma yöntemi de vardır. 
 
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri

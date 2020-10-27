@@ -9,24 +9,24 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: dcb851384f8e2aff60220d4e0002b10f930095a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d94b0815ebe7660d6daef97db0c2a1bef7977ed8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963070"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548181"
 ---
 > [!IMPORTANT]
 > Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır.
 
 [Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual STUDIO IDE](https://visualstudio.microsoft.com/vs/) veya [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
-* Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları ( *sample_data.zip*indir ve Ayıkla) kullanabilirsiniz.
-* Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+* Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları ( *sample_data.zip* indir ve Ayıkla) kullanabilirsiniz.
+* Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
@@ -38,11 +38,11 @@ Visual Studio 'yu kullanarak yeni bir .NET Core uygulaması oluşturun.
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler 
 
-Yeni bir proje oluşturduktan sonra, **Çözüm Gezgini** proje çözümüne sağ tıklayıp **NuGet Paketlerini Yönet**' i seçerek istemci kitaplığını yükleyebilirsiniz. Açılan paket yöneticisinde, Seç ' i seçin, **ön sürümü dahil** **et ' i**işaretleyin ve arama yapın `Azure.AI.FormRecognizer` . Sürüm `3.0.0` ' ü ve ardından **öğesini seçin**. 
+Yeni bir proje oluşturduktan sonra, **Çözüm Gezgini** proje çözümüne sağ tıklayıp **NuGet Paketlerini Yönet** ' i seçerek istemci kitaplığını yükleyebilirsiniz. Açılan paket yöneticisinde, Seç ' i seçin, **ön sürümü dahil** **et ' i** işaretleyin ve arama yapın `Azure.AI.FormRecognizer` . Sürüm `3.0.0` ' ü ve ardından **öğesini seçin** . 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `formrecognizer-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `formrecognizer-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs* . 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -84,7 +84,7 @@ Proje dizininden, *program.cs* dosyasını tercih ettiğiniz DÜZENLEYICIDE veya
 Uygulamanın **Program** sınıfında, kaynağınızın anahtarı ve uç noktası için değişkenler oluşturun.
 
 > [!IMPORTANT]
-> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz Fprı tanıyıcı kaynağı başarıyla dağıtılırsa, **sonraki adımlar**altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi**altında bulabilirsiniz. 
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz Fprı tanıyıcı kaynağı başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
 >
 > İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) makalesine bakın.
 
@@ -102,7 +102,7 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 
  - Özel formlarınızı tanımak için eğitilen özel modeller kullanarak form alanlarını ve içeriği tanıyor.  Bu değerler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. [özel formları çözümleme](#analyze-forms-with-a-custom-model).
  - Bir modeli eğitme gerekmeden tablolar, satırlar ve sözcükler dahil form içeriğini tanıma.  Form içeriği bir nesne koleksiyonunda döndürülür `FormPage` . Bkz. örnek [formu Içeriğini tanıma](#recognize-form-content).
- - Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak ABD makbuzlarından ortak alanları tanıma.  Bu alanlar ve meta veriler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. örnek [tanıma alındıları](#recognize-receipts).
+ - Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak ABD makbuzlarından ortak alanları tanıma. Bu alanlar ve meta veriler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. örnek [tanıma alındıları](#recognize-receipts).
 
 ### <a name="formtrainingclient"></a>Formtraıningclient
 
@@ -132,10 +132,10 @@ Bu kod parçacıkları, .NET için form tanıyıcı istemci kitaplığı ile aş
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-**Main**altında adlı yeni bir yöntem oluşturun `AuthenticateClient` . Bu görevi, form tanıyıcı hizmetine isteklerinizin kimliğini doğrulamak için diğer görevlerde kullanacaksınız. Bu yöntem, `AzureKeyCredential` gerekirse, API anahtarını yeni istemci nesneleri oluşturmadan güncelleştirebilmeniz için nesnesini kullanır.
+**Main** altında adlı yeni bir yöntem oluşturun `AuthenticateClient` . Bu görevi, form tanıyıcı hizmetine isteklerinizin kimliğini doğrulamak için diğer görevlerde kullanacaksınız. Bu yöntem, `AzureKeyCredential` gerekirse, API anahtarını yeni istemci nesneleri oluşturmadan güncelleştirebilmeniz için nesnesini kullanır.
 
 > [!IMPORTANT]
-> Azure portal anahtarınızı ve uç noktanızı alın. **Önkoşul** bölümünde oluşturduğunuz form tanıyıcı kaynağı başarıyla dağıtıldı, **sonraki adımlar**altındaki **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi**altında bulabilirsiniz. 
+> Azure portal anahtarınızı ve uç noktanızı alın. **Önkoşul** bölümünde oluşturduğunuz form tanıyıcı kaynağı başarıyla dağıtıldı, **sonraki adımlar** altındaki **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
 >
 > İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Örneğin, [Azure Anahtar Kasası](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
@@ -148,7 +148,7 @@ Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formlar
 
 Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerekecektir. Bunları **Program** sınıfınızın köküne ekleyin.
 
-* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al** ' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur** ' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Ardından, blob depolamada tek bir belgenin SAS URL 'sini almak için yukarıdaki adımları kullanın.
 * Son olarak, aşağıdaki örneklere dahil edilen örnek makbuz görüntüsünün URL 'sini kaydedin (Ayrıca [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)' da kullanılabilir). 
 
@@ -170,7 +170,7 @@ Bu görevin geri kalanı, içerik bilgilerini konsola yazdırır.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_print)]
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Form Page 1 has 18 lines.
@@ -218,7 +218,7 @@ Döndürülen değer bir `RecognizedReceipt` nesne koleksiyonudur: gönderilen b
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_print)]
 
-### <a name="output"></a>Çıktı 
+### <a name="output"></a>Çıkış 
 
 ```console
 Form Page 1 has 18 lines.
@@ -286,7 +286,7 @@ Son olarak, sonraki adımlarda kullanmak üzere eğitilen model KIMLIĞINI dönd
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train_return)]
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu yanıt okunabilirlik için kesildi.
 
@@ -353,7 +353,7 @@ Döndürülen, `CustomFormModel` modelin ayıklayabileceğiniz alanları, her bi
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_trainlabels_response)]
 
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu yanıt okunabilirlik için kesildi.
 
@@ -412,7 +412,7 @@ Aşağıdaki kod, analiz sonuçlarını konsola yazdırır. Her tanınan alanı 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze_response)]
 
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu yanıt okunabilirlik için kesildi.
 
@@ -486,7 +486,7 @@ Aşağıdaki kod bloğu, form tanıyıcı hesabınıza kaç modelin kaydedildiğ
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_count)]
 
-### <a name="output"></a>Çıktı 
+### <a name="output"></a>Çıkış 
 
 ```console
 Account has 20 models.
@@ -500,7 +500,7 @@ Aşağıdaki kod bloğu, hesabınızdaki geçerli modelleri listeler ve ayrınt�
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_list)]
 
 
-### <a name="output"></a>Çıktı 
+### <a name="output"></a>Çıkış 
 
 Bu yanıt okunabilirlik için kesildi.
 
@@ -528,7 +528,7 @@ Aşağıdaki kod bloğu yeni bir model ( [model eğitme](#train-a-model-without-
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_get)]
 
-### <a name="output"></a>Çıktı 
+### <a name="output"></a>Çıkış 
 
 Bu yanıt okunabilirlik için kesildi.
 

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 659e44ddc13cf093d7e571e904e177136ed21127
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d94a4858b4c4fa99a09acc2bec88f94a64686c2d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084503"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539148"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit derin öğrenme modelini Azure HDInsight Spark kümesiyle kullanma
 
 Bu makalede, aşağıdaki adımları uygulayın.
 
-1. Bir Azure HDInsight Spark kümesine [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/) yüklemek için özel bir komut dosyası çalıştırın.
+1. Bir Azure HDInsight Spark kümesine [Microsoft Cognitive Toolkit](/cognitive-toolkit/) yüklemek için özel bir komut dosyası çalıştırın.
 
 2. [Spark Python API 'sini (PySpark)](https://spark.apache.org/docs/latest/api/python/index.html) kullanarak bir Azure Blob depolama hesabındaki dosyalara eğitilen Microsoft Cognitive Toolkit derin bir öğrenme modelinin nasıl uygulanacağını öğrenmek için [Apache Spark](https://spark.apache.org/) kümesine [Jupyter Notebook](https://jupyter.org/) yükleyin
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc40903de09ebfe04858c631eee0233561784418
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86519873"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546917"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Azure Kubernetes hizmetini ve MySQL için Azure veritabanı 'nı bağlama
 
@@ -26,7 +26,7 @@ AKS, Kasım 2018 ' den bu desteklenen sanal makine örneklerinde hızlandırılm
 AKS kümenizin hızlandırılmış ağa sahip olup olmadığını doğrulayabilirsiniz:
 1. Azure portal gidin ve AKS kümenizi seçin.
 2. Özellikler sekmesini seçin.
-3. **Altyapı kaynak grubunun**adını kopyalayın.
+3. **Altyapı kaynak grubunun** adını kopyalayın.
 4. Altyapı kaynak grubunu bulmak ve açmak için Portal arama çubuğunu kullanın.
 5. Bu kaynak grubunda bir VM seçin.
 6. VM 'nin **ağ** sekmesine gidin.
@@ -43,5 +43,5 @@ az network nic list --resource-group nodeResourceGroup -o table
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure Kubernetes Service kümesini oluşturma](../aks/kubernetes-walkthrough.md)
-- [OSBA ve MySQL Için Azure veritabanı 'nı kullanarak bir hele grafiğinden WordPress yüklemeyi](../aks/integrate-azure.md) öğrenin
+- [Azure Kubernetes hizmet kümesi oluşturma](../aks/kubernetes-walkthrough.md)
+- [OSBA ve MySQL Için Azure veritabanı 'nı kullanarak bir hele grafiğinden WordPress yüklemeyi](../aks/index.yml) öğrenin
