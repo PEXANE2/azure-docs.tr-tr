@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 10/23/2020
 ms.custom: generated
-ms.openlocfilehash: 955e80f31cf08dd703f089d26a03b7f97242eab0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 905bdf95222a03514b5c5e76e18330cf27da0d3d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631113"
+ms.locfileid: "92745138"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -158,6 +158,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft.Intune](#microsoftintune) |
 | **Diğer** |
 | [Microsoft. BingMaps](#microsoftbingmaps) |
+| [Microsoft. DigitalTwins](#microsoftdigitaltwins) |
 
 
 ## <a name="general"></a>Genel
@@ -9663,6 +9664,45 @@ Azure hizmeti: [Bing Haritalar](https://docs.microsoft.com/BingMaps/)
 > | Microsoft. BingMaps/Mapapsıs/Listgizlilikler/Action | Microsoft. BingMaps/Mapapsıs için gizli dizileri listeleyin |
 > | Microsoft. BingMaps/Mapapsıs/Listusageölçümlerini/eylemi | Microsoft. BingMaps/Mapapsıs ölçümlerini listeleyin |
 > | Microsoft. BingMaps/Işlemler/okuma | Microsoft. BingMaps için işlemleri listeleyin |
+
+### <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
+
+Azure hizmeti: [Azure dijital TWINS](../digital-twins/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Eylem | Açıklama |
+> | --- | --- |
+> | Microsoft. Digitaltwıns/Register/Action | Dijital TWINS kaynak sağlayıcısı için aboneliği kaydedin ve dijital TWINS örneklerinin oluşturulmasını etkinleştirin. |
+> | Microsoft. DigitalTwins/kaydını kaldırma/eylem | Dijital TWINS kaynak sağlayıcısı aboneliğini silme |
+> | Microsoft. DigitalTwins/Digitaltwınsınstances/Read | Herhangi bir Microsoft. DigitalTwins/Digitaltwınsınstances kaynağını okuyun |
+> | Microsoft. DigitalTwins/Digitaltwınsınstances/Write | Herhangi bir Microsoft. DigitalTwins/Digitaltwınsınstances kaynağı oluşturun veya güncelleştirin |
+> | Microsoft. DigitalTwins/Digitaltwınsınstances/Delete | Bir Microsoft. DigitalTwins/Digitaltwınsınstances kaynağını silme |
+> | Microsoft. DigitalTwins/Digitaltwınsınstances/diagnosticSettings/Read | Kaynak için tanılama ayarlarını alır |
+> | Microsoft. DigitalTwins/Digitaltwınsınstances/diagnosticSettings/Write | Kaynak için tanılama ayarlarını ayarlar |
+> | Microsoft. DigitalTwins/Digitaltwınsınstances/endpoints/Delete | Dijital bir TWINS kaynağının herhangi bir uç noktasını silme |
+> | Microsoft. DigitalTwins/Digitaltwınsınstances/endpoints/Read | Dijital bir TWINS kaynağının herhangi bir uç noktasını okuma |
+> | Microsoft. DigitalTwins/Digitaltwınsınstances/endpoints/Write | Dijital bir TWINS kaynağının herhangi bir uç noktasını oluşturma veya güncelleştirme |
+> | Microsoft. DigitalTwins/Digitaltwınsınstances/logDefinitions/Read | Kaynağın Azure Izleyicisinin günlük ayarlarını alır |
+> | Microsoft. DigitalTwins/Digitaltwınsınstances/metricDefinitions/Read | Kaynağın Azure Izleyicisinin ölçüm ayarlarını alır |
+> | Microsoft. DigitalTwins/Digitaltwınsınstances/operationsResults/Read | Herhangi bir Işlem sonucunu oku |
+> | Microsoft. Digitaltwıns/konumlar/Checknameavaılabılıty/Action | Dijital TWINS kaynak sağlayıcısındaki bir kaynağın ad kullanılabilirliğini denetleme |
+> | Microsoft. DigitalTwins/konumlar/operationsResults/Read | Herhangi bir Işlem sonucunu oku |
+> | Microsoft. DigitalTwins/işlemler/okuma | Tüm Işlemleri oku |
+> | **DataAction** | **Açıklama** |
+> | Microsoft. DigitalTwins/sorgu/eylem | Herhangi bir dijital TWINS grafiğini sorgulama |
+> | Microsoft. DigitalTwins/digitaltwıns/okuma | Tüm dijital Ikizi okuma |
+> | Microsoft. DigitalTwins/digitaltwıns/Write | Herhangi bir dijital Ikizi oluşturun veya güncelleştirin |
+> | Microsoft. DigitalTwins/digitaltwıns/Delete | Tüm dijital Ikizi silme |
+> | Microsoft. DigitalTwins/digitaltwins/komutlar/eylem | Dijital Ikizi üzerinde herhangi bir komutu çağırma |
+> | Microsoft. DigitalTwins/digitaltwıns/ilişkiler/okuma | Herhangi bir dijital Ikizi Ilişkisini okuyun |
+> | Microsoft. DigitalTwins/digitaltwıns/ilişkiler/yazma | Herhangi bir dijital Ikizi Ilişkisi oluşturun veya güncelleştirin |
+> | Microsoft. DigitalTwins/digitaltwıns/ilişkiler/silme | Herhangi bir dijital Ikizi Ilişkisini silme |
+> | Microsoft. DigitalTwins/eventroutes/okuma | Herhangi bir olay yolunu okuyun |
+> | Microsoft. DigitalTwins/eventrotalar/Sil | Herhangi bir olay yolunu Sil |
+> | Microsoft. DigitalTwins/eventroutes/Write | Herhangi bir olay yolunu oluşturun veya güncelleştirin |
+> | Microsoft. DigitalTwins/modeller/okuma | Herhangi bir modeli okuyun |
+> | Microsoft. DigitalTwins/modeller/yazma | Herhangi bir model oluşturun veya güncelleştirin |
+> | Microsoft. DigitalTwins/modeller/silme | Herhangi bir modeli Sil |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

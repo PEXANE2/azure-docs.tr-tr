@@ -2,15 +2,15 @@
 title: ASP.NET uygulamalarını yapılandırma
 description: Azure App Service içinde bir ASP.NET uygulamasının nasıl yapılandırılacağını öğrenin. Bu makalede en yaygın yapılandırma görevlerine yer verilmiştir.
 ms.devlang: dotnet
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 30fddaec9ca5d0439beadedf7c5ca6b6c7d51d83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ed6835583cc4881b19eee14ed392b193324535e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961712"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744156"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Azure App Service için bir ASP.NET uygulaması yapılandırma
 
@@ -71,7 +71,7 @@ ConfigurationManager.ConnectionStrings["MyConnection"];
 }
 ```
 
-App Service ve *web.config*aynı ada sahip bir uygulama ayarı yapılandırırsanız App Service değeri *web.config* değere göre önceliklidir. Yerel *web.config* değeri uygulamada yerel olarak hata ayıklamanıza olanak tanır, ancak App Service değeri, uygulamayı üretim ayarları ile birlikte çalıştırmaya olanak sağlar. Bağlantı dizeleri aynı şekilde çalışır. Bu şekilde, uygulamanızın gizli dizilerini kod deponuzun dışında tutabilir ve kodunuzda değişiklik yapmadan uygun değerlere erişebilirsiniz.
+App Service ve *web.config* aynı ada sahip bir uygulama ayarı yapılandırırsanız App Service değeri *web.config* değere göre önceliklidir. Yerel *web.config* değeri uygulamada yerel olarak hata ayıklamanıza olanak tanır, ancak App Service değeri, uygulamayı üretim ayarları ile birlikte çalıştırmaya olanak sağlar. Bağlantı dizeleri aynı şekilde çalışır. Bu şekilde, uygulamanızın gizli dizilerini kod deponuzun dışında tutabilir ve kodunuzda değişiklik yapmadan uygun değerlere erişebilirsiniz.
 
 ## <a name="deploy-multi-project-solutions"></a>Çoklu proje çözümlerini dağıtma
 
@@ -91,7 +91,7 @@ ASP.NET uygulamanız Visual Studio hata ayıklayıcısında bir özel durum olu�
 </system.web>
 ```
 
-Güncelleştirilmiş *Web.config*uygulamanızı yeniden dağıtın. Artık aynı ayrıntılı özel durum sayfasını görmeniz gerekir.
+Güncelleştirilmiş *Web.config* uygulamanızı yeniden dağıtın. Artık aynı ayrıntılı özel durum sayfasını görmeniz gerekir.
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 

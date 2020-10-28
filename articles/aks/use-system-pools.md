@@ -5,17 +5,17 @@ services: container-service
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2cb6ed265d3e94c2c162381dfb80ba0c5427a71f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: fasttrack-edit, devx-track-azurecli
+ms.openlocfilehash: b567ebfc2cb13aa0db6f8dd32db79cb7e031b710
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888945"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745749"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetindeki (AKS) sistem düğüm havuzlarını yönetme
 
-Azure Kubernetes hizmeti 'nde (AKS), aynı yapılandırmanın düğümleri *düğüm havuzlarında*birlikte gruplandırılır. Düğüm havuzları, uygulamalarınızı çalıştıran temel VM 'Leri içerir. Sistem düğüm havuzları ve Kullanıcı düğümü havuzları, AKS kümeleriniz için iki farklı düğüm havuzu modudur. Sistem düğüm havuzları, ve gibi kritik sistem yığınlarını barındırmanın birincil amacını sunar `CoreDNS` `metrics-server` . Kullanıcı düğümü havuzları, uygulama yığınlarınızı barındırmanın birincil amacını sunar. Ancak, aks kümenizde yalnızca bir havuza sahip olmak istiyorsanız, uygulama Pod 'leri sistem düğüm havuzlarında zamanlanabilir. Her bir AKS kümesi en az bir düğümü olan en az bir sistem düğüm havuzu içermelidir.
+Azure Kubernetes hizmeti 'nde (AKS), aynı yapılandırmanın düğümleri *düğüm havuzlarında* birlikte gruplandırılır. Düğüm havuzları, uygulamalarınızı çalıştıran temel VM 'Leri içerir. Sistem düğüm havuzları ve Kullanıcı düğümü havuzları, AKS kümeleriniz için iki farklı düğüm havuzu modudur. Sistem düğüm havuzları, ve gibi kritik sistem yığınlarını barındırmanın birincil amacını sunar `CoreDNS` `metrics-server` . Kullanıcı düğümü havuzları, uygulama yığınlarınızı barındırmanın birincil amacını sunar. Ancak, aks kümenizde yalnızca bir havuza sahip olmak istiyorsanız, uygulama Pod 'leri sistem düğüm havuzlarında zamanlanabilir. Her bir AKS kümesi en az bir düğümü olan en az bir sistem düğüm havuzu içermelidir.
 
 > [!Important]
 > Bir üretim ortamında AKS kümeniz için tek bir sistem düğüm havuzu çalıştırırsanız, düğüm havuzu için en az üç düğüm kullanmanızı öneririz.

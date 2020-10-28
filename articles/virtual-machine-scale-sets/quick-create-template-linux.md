@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt, subject-armqs
-ms.openlocfilehash: f6ab030b7f807a884b5d05487724fc9c66a6de87
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mimckitt, subject-armqs, devx-track-azurecli
+ms.openlocfilehash: d040215968b0ebb433edba03e4839ffe7add0e5c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88648641"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745870"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>Hızlı başlangıç: ARM şablonuyla Linux sanal makine ölçek kümesi oluşturma
 
@@ -77,7 +77,7 @@ Bu kaynaklar şablonda tanımlanmıştır:
 
 Şablon, [şişe](https://bottlepy.org/docs/dev/), Python Web çerçevesi ve basıt bir http sunucusu yüklemek Için özel betik uzantısını kullanır.
 
-**Fileuris**  -  *installserver.sh*ve *workserver.py*içinde iki komut dosyası tanımlanmıştır. Bu dosyalar GitHub 'dan indirilir, sonra da uygulamayı yüklemek ve yapılandırmak için *Komutoexecute* çalıştırmaları `bash installserver.sh` .
+**Fileuris**  -  *installserver.sh* ve *workserver.py* içinde iki komut dosyası tanımlanmıştır. Bu dosyalar GitHub 'dan indirilir, sonra da uygulamayı yüklemek ve yapılandırmak için *Komutoexecute* çalıştırmaları `bash installserver.sh` .
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -109,7 +109,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-*Http: \/ /Publicıpaddress: 9000/do_work*biçiminde bir Web tarayıcısına yük dengeleyicinin genel IP adresini girin. Aşağıdaki örnekte gösterildiği gibi yük dengeleyici trafiği VM örneklerinizden birine dağıtır:
+*Http: \/ /Publicıpaddress: 9000/do_work* biçiminde bir Web tarayıcısına yük dengeleyicinin genel IP adresini girin. Aşağıdaki örnekte gösterildiği gibi yük dengeleyici trafiği VM örneklerinizden birine dağıtır:
 
 ![NGINX varsayılan web sayfası](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 

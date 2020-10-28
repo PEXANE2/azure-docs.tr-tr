@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842878"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744727"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Önizleme: Azure'da Windows VM'leri için Otomatik VM konuk düzeltme eki uygulama
 
@@ -28,7 +28,7 @@ Otomatik VM Konuk düzeltme eki uygulama aşağıdaki özelliklere sahiptir:
 > [!IMPORTANT]
 > Otomatik VM Konuk düzeltme eki uygulama şu anda genel önizleme aşamasındadır. Aşağıda açıklanan genel önizleme işlevlerini kullanmak için bir katılım prosedürü gereklidir.
 > Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="how-does-automatic-vm-guest-patching-work"></a>Otomatik VM Konuk düzeltme eki uygulama nasıl çalışır?
 
@@ -80,17 +80,20 @@ Azure 'da Windows VM 'Leri artık aşağıdaki düzeltme eki düzenleme modları
 
 **AutomaticByPlatform:**
 - Bu mod, Windows sanal makinesi için otomatik VM Konuk düzeltme eki uygulamayı sağlar ve sonraki düzeltme eki yüklemesi Azure tarafından düzenlenir.
+- Bu mod, kullanılabilirlik için ilk düzeltme eki uygulama için gereklidir.
 - Bu modun ayarlanması ayrıca çoğaltmayı önlemek için Windows sanal makinesinde yerel otomatik güncelleştirmeleri devre dışı bırakır.
 - Bu mod yalnızca yukarıda desteklenen işletim sistemi platformu görüntüleri kullanılarak oluşturulan VM 'Ler için desteklenir.
 - Bu modu kullanmak için, özelliğini ayarlayın `osProfile.windowsConfiguration.enableAutomaticUpdates=true` ve  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` VM şablonundaki özelliği ayarlayın.
 
 **Otomatik olarak:**
 - Bu mod, Windows sanal makinesinde otomatik güncelleştirme yapılmasını ve Otomatik Güncelleştirmeler aracılığıyla sanal makineye düzeltme ekleri yüklenmesini mümkün.
+- Bu mod, kullanılabilirliği ilk düzeltme ekini desteklemez.
 - Bu mod, başka bir yama modu belirtilmemişse varsayılan olarak ayarlanır.
 - Bu modu kullanmak için özelliği ayarlayın `osProfile.windowsConfiguration.enableAutomaticUpdates=true` ve  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByOS` VM şablonundaki özelliği ayarlayın.
 
 **El ile:**
 - Bu mod, Windows sanal makinesinde otomatik güncelleştirmeleri devre dışı bırakır.
+- Bu mod, kullanılabilirliği ilk düzeltme ekini desteklemez.
 - Bu mod, özel düzeltme eki uygulama çözümleri kullanılırken ayarlanmalıdır.
 - Bu modu kullanmak için özelliği ayarlayın `osProfile.windowsConfiguration.enableAutomaticUpdates=false` ve  `osProfile.windowsConfiguration.patchSettings.patchMode=Manual` VM şablonundaki özelliği ayarlayın.
 
@@ -196,7 +199,7 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Yeni bir VM oluştururken otomatik VM Konuk düzeltme eki uygulamayı etkinleştirmek için [az VM Create](/cli/azure/vm#az-vm-create) kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myvm* adlı BIR VM için otomatik VM Konuk düzeltme eki uygulamayı yapılandırır:
+Yeni bir VM oluştururken otomatik VM Konuk düzeltme eki uygulamayı etkinleştirmek için [az VM Create](/cli/azure/vm#az-vm-create) kullanın. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *myvm* adlı BIR VM için otomatik VM Konuk düzeltme eki uygulamayı yapılandırır:
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform

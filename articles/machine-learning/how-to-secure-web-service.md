@@ -10,13 +10,13 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 5d0a86a966cacfdeac291c66fa245a613b383a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, devx-track-azurecli
+ms.openlocfilehash: 52344b665b00329c80fb651657fbbd19d5ffd7a4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629532"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743091"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama
 
@@ -26,11 +26,11 @@ Bu makalede, Azure Machine Learning aracılığıyla dağıtılan bir Web hizmet
 Web hizmetlerine erişimi kısıtlamak ve istemcilerin gönderebileceği verileri güvenli hale getirmek için [https](https://en.wikipedia.org/wiki/HTTPS) 'yi kullanırsınız. HTTPS, iki arasındaki iletişimleri şifreleyerek bir istemci ve Web hizmeti arasındaki iletişimin güvenliğini sağlamaya yardımcı olur. Şifreleme, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)kullanır. TLS, bazen TLS 'nin öncülü olan *Güvenli Yuva Katmanı* (SSL) olarak adlandırılır.
 
 > [!TIP]
-> Azure Machine Learning SDK, güvenli iletişimlerle ilgili özellikler için "SSL" terimini kullanır. Bu, Web hizmetinizin *TLS*kullanmayacağınız anlamına gelmez. SSL yalnızca daha yaygın olarak tanınan bir terimdir.
+> Azure Machine Learning SDK, güvenli iletişimlerle ilgili özellikler için "SSL" terimini kullanır. Bu, Web hizmetinizin *TLS* kullanmayacağınız anlamına gelmez. SSL yalnızca daha yaygın olarak tanınan bir terimdir.
 >
 > Özellikle, Azure Machine Learning aracılığıyla dağıtılan Web Hizmetleri, AKS için ACI ve TLS sürüm 1,2 için yalnızca TLS sürüm 1,1 ' i destekler.
 
-TLS ve SSL her ikisi de şifreleme ve kimlik doğrulamaya yardımcı olan *dijital sertifikaları*kullanır. Dijital sertifikaların nasıl çalıştığı hakkında daha fazla bilgi için Vikipedi topic [ortak anahtar altyapısına](https://en.wikipedia.org/wiki/Public_key_infrastructure)bakın.
+TLS ve SSL her ikisi de şifreleme ve kimlik doğrulamaya yardımcı olan *dijital sertifikaları* kullanır. Dijital sertifikaların nasıl çalıştığı hakkında daha fazla bilgi için Vikipedi topic [ortak anahtar altyapısına](https://en.wikipedia.org/wiki/Public_key_infrastructure)bakın.
 
 > [!WARNING]
 > Web hizmetiniz için HTTPS kullanmıyorsanız, hizmete gönderilen ve hizmetten gönderilen veriler Internet 'te başkaları tarafından görülebilir.
@@ -54,14 +54,14 @@ Bu, bir Web hizmetinin güvenliğini sağlamaya yönelik genel bir işlemdir:
 
 ## <a name="get-a-domain-name"></a>Etki alanı adı alma
 
-Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde*bir tane satın alın. İşlem ve fiyat kayıt şirketlerinde arasında farklılık gösterir. Kaydedici, etki alanı adını yönetmek için araçlar sağlar. Tam etki alanı adını (FQDN) (örneğin, www \. contoso.com) Web hizmetinizi BARıNDıRAN IP adresine eşlemek için bu araçları kullanabilirsiniz.
+Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde* bir tane satın alın. İşlem ve fiyat kayıt şirketlerinde arasında farklılık gösterir. Kaydedici, etki alanı adını yönetmek için araçlar sağlar. Tam etki alanı adını (FQDN) (örneğin, www \. contoso.com) Web hizmetinizi BARıNDıRAN IP adresine eşlemek için bu araçları kullanabilirsiniz.
 
 ## <a name="get-a-tlsssl-certificate"></a>Bir TLS/SSL sertifikası alın
 
 Bir TLS/SSL sertifikası (dijital sertifika) almanın birçok yolu vardır. En yaygın olarak, bir *sertifika yetkilisinden* (CA) bir sertifika satın alımdır. Sertifikayı nereden alacağınız bağımsız olarak, aşağıdaki dosyalar gereklidir:
 
-* Bir **sertifika**. Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
-* Bir **anahtar**. Anahtar Ayrıca pek kodlu olmalıdır.
+* Bir **sertifika** . Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
+* Bir **anahtar** . Anahtar Ayrıca pek kodlu olmalıdır.
 
 Bir sertifika istediğinizde, Web hizmeti için kullanmayı planladığınız adresin FQDN 'sini sağlamanız gerekir (örneğin, www \. contoso.com). Sertifikaya atılabilecek adres ve istemcilerin kullandığı adres, Web hizmetinin kimliğini doğrulamak için karşılaştırılır. Bu adresler eşleşmezse istemci bir hata iletisi alır.
 
@@ -87,7 +87,7 @@ AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan b
 
 **Enable_ssl** yöntemi, Microsoft tarafından veya satın aldığınız bir sertifika tarafından sunulan bir sertifikayı kullanabilir.
 
-  * Microsoft 'tan bir sertifika kullandığınızda *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "contoso" değeri "contoso" etki alanı adını oluşturur \<six-random-characters> . \<azureregion> cloudapp.azure.com ", burada \<azureregion> hizmeti içeren bölgedir. İsteğe bağlı olarak, mevcut *leaf_domain_label*üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
+  * Microsoft 'tan bir sertifika kullandığınızda *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "contoso" değeri "contoso" etki alanı adını oluşturur \<six-random-characters> . \<azureregion> cloudapp.azure.com ", burada \<azureregion> hizmeti içeren bölgedir. İsteğe bağlı olarak, mevcut *leaf_domain_label* üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
 
     Hizmeti TLS etkin olarak dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *Ssl_key* *anahtar* dosyasının değerine ayarlayın.
 
@@ -115,7 +115,7 @@ AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan b
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
-  * *Satın aldığınız bir sertifikayı*kullandığınızda *ssl_cert_pem_file*, *ssl_key_pem_file*ve *ssl_cname* parametrelerini kullanırsınız. Aşağıdaki örnek, satın aldığınız bir TLS/SSL sertifikası kullanan bir yapılandırma oluşturmak için *. pek* dosyalarının nasıl kullanılacağını gösterir:
+  * *Satın aldığınız bir sertifikayı* kullandığınızda *ssl_cert_pem_file* , *ssl_key_pem_file* ve *ssl_cname* parametrelerini kullanırsınız. Aşağıdaki örnek, satın aldığınız bir TLS/SSL sertifikası kullanan bir yapılandırma oluşturmak için *. pek* dosyalarının nasıl kullanılacağını gösterir:
 
     ```python
     from azureml.core.compute import AksCompute
@@ -130,7 +130,7 @@ AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan b
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-*Enable_ssl*hakkında daha fazla bilgi için bkz. [AksProvisioningConfiguration.Enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py&preserve-view=true#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) ve [AksAttachConfiguration.Enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py&preserve-view=true#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
+*Enable_ssl* hakkında daha fazla bilgi için bkz. [AksProvisioningConfiguration.Enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py&preserve-view=true#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) ve [AksAttachConfiguration.Enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py&preserve-view=true#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
 
 ### <a name="deploy-on-azure-container-instances"></a>Azure Container Instances dağıtma
 

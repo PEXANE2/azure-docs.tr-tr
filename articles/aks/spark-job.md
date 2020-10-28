@@ -5,19 +5,19 @@ author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
-ms.custom: mvc
-ms.openlocfilehash: ff392b974c5faed99f57e5901fced51ba22ac857
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: e94d9d586f15c228436a8a9d48fb12c26369c449
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078145"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742337"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS üzerinde Apache Spark işleri çalıştırma
 
 [Apache Spark][apache-spark] , büyük ölçekli veri işleme için hızlı bir altyapıdır. [Spark 2.3.0 sürümünden][spark-kubernetes-earliest-version]itibaren Apache Spark, Kubernetes kümeleriyle yerel tümleştirmeyi destekler. Azure Kubernetes hizmeti (AKS), Azure 'da çalışan yönetilen bir Kubernetes ortamıdır. Bu belge, Azure Kubernetes Service (AKS) kümesinde Apache Spark işleri hazırlamaya ve çalıştırmaya ilişkin ayrıntıları sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdakiler gerekir.
 

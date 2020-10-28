@@ -8,13 +8,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
-ms.date: 04/15/2020
-ms.openlocfilehash: cf899962f6e62b0943f48494bf5c3fe27a6327a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/16/2020
+ms.openlocfilehash: a4583e7fbf1eeaf4447e1e717c716159af645bfa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91651726"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742538"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark havuzu oluşturma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Web araçlarını kullanarak Azure SYNAPSE 'de Apache
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE Analytics çalışma alanı](quickstart-create-workspace.md)
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
@@ -41,15 +41,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Not defteri, çeşitli programlama dillerini destekleyen etkileşimli bir ortamdır. Not defteri verilerinizle etkileşim kurmanıza, kodu Marku, metinle birleştirmeye ve basit görselleştirmeler gerçekleştirmenize olanak tanır.
 
-1. Kullanmak istediğiniz Azure SYNAPSE çalışma alanının Azure portal görünümünde, **SYNAPSE Studio 'Yu Başlat**' ı seçin.
-2. SYNAPSE Studio başlatıldıktan sonra **Geliştir**' i seçin. Ardından, **Not defterleri** girişinin üzerine gelin. Üç nokta (**...**) simgesini seçin.
-3. Buradan **Yeni Not defteri**' ni seçin. Otomatik olarak oluşturulan bir adla yeni bir not defteri oluşturulur ve açılır.
-  ![Yeni Not defteri](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "Yeni Not defteri")
+1. Kullanmak istediğiniz Azure SYNAPSE çalışma alanının Azure portal görünümünde, **SYNAPSE Studio 'Yu Başlat** ' ı seçin.
+2. SYNAPSE Studio başlatıldıktan sonra **Geliştir** ' i seçin. Ardından, **+** Yeni bir kaynak eklemek için "" simgesini seçin.
+3. Buradan, **Not defteri** ' ni seçin. Otomatik olarak oluşturulan bir adla yeni bir not defteri oluşturulur ve açılır.
+ 
+     ![Yeni Not defteri](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "Yeni Not defteri")
 
 4. **Özellikler** penceresinde, Not defteri için bir ad sağlayın.
-5. Araç çubuğunda **Yayımla**' ya tıklayın.
+5. Araç çubuğunda **Yayımla** ' ya tıklayın.
 6. Çalışma alanınızda yalnızca bir Apache Spark havuzu varsa, varsayılan olarak seçilidir. Hiçbiri seçili değilse, doğru Apache Spark havuzunu seçmek için açılan eklentiyi kullanın.
-7. **Kod Ekle**' ye tıklayın. Varsayılan dil `Pyspark` . Pyspark ve Spark SQL karışımını kullanacaksınız, bu nedenle varsayılan seçenek iyi bir seçimdir. Desteklenen diğer diller Spark için Scala ve .NET ' dir.
+7. **Kod Ekle** ' ye tıklayın. Varsayılan dil `Pyspark` . Pyspark ve Spark SQL karışımını kullanacaksınız, bu nedenle varsayılan seçenek iyi bir seçimdir. Desteklenen diğer diller Spark için Scala ve .NET ' dir.
 8. Daha sonra, işlemek için basit bir Spark DataFrame nesnesi oluşturursunuz. Bu durumda, kodu koddan oluşturursunuz. Üç satır ve üç sütun vardır:
 
    ```python
@@ -60,15 +61,15 @@ Not defteri, çeşitli programlama dillerini destekleyen etkileşimli bir ortamd
 
 9. Şimdi aşağıdaki yöntemlerden birini kullanarak hücreyi çalıştırın:
 
-   - **SHIFT + enter**tuşlarına basın.
+   - **SHIFT + enter** tuşlarına basın.
    - Hücrenin solundaki mavi oynat simgesini seçin.
    - Araç çubuğundaki **Tümünü Çalıştır** düğmesini seçin.
 
-   ![Veri çerçevesi nesnesi oluştur](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png "Spark işinden çıkış")
+       ![Veri çerçevesi nesnesi oluştur](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png)
 
 10. Apache Spark havuz örneği zaten çalışmıyorsa, otomatik olarak başlatılır. Apache Spark havuz örneği durumunu çalıştırdığınız hücrenin altında ve ayrıca not defterinin altındaki durum panelinde görebilirsiniz. Havuzun boyutuna bağlı olarak, başlangıç 2-5 dakika sürer. Kod çalışmayı bitirdikten sonra hücrenin altındaki bilgiler, ne kadar süre çalıştırılacağını ve yürütülmesi gerektiğini gösterir. Çıkış hücresinde çıktıyı görürsünüz.
 
-    ![Bir hücreyi yürütmeden çıkış](./media/quickstart-apache-spark-notebook/run-cell-with-output.png "Spark işinden çıkış")
+    ![Bir hücreyi yürütmeden çıkış](./media/quickstart-apache-spark-notebook/run-cell-with-output.png)
 
 11. Veriler artık verileri birçok farklı şekilde kullanabileceğiniz bir veri çerçevesinde bulunur. Bu hızlı başlangıçtaki geri kalanı için farklı biçimlerde gerekecektir.
 12. Aşağıdaki kodu başka bir hücrede girin ve çalıştırın, bu, verilerin kopyaları ile birlikte bir Spark tablosu, CSV ve bir Parquet dosyası oluşturur:
@@ -113,7 +114,7 @@ Yapılandırılmış Sorgu Dili (SQL), verileri sorgulamak ve tanımlamak için 
 
     ![Azure SYNAPSE Spark 'da sorgu çıkışı](./media/quickstart-apache-spark-notebook/spark-get-started-query.png "Azure SYNAPSE Spark 'da sorgu çıkışı")
 
-3. **Görünüm** değiştiricisinde **grafik**' i seçin.
+3. **Görünüm** değiştiricisinde **grafik** ' i seçin.
 4. En sağdaki taraftaki **Görünüm seçenekleri** simgesini seçin.
 5. **Grafik türü** alanında "çubuk grafik" i seçin.
 6. X ekseni sütun alanında "durum" ı seçin.
@@ -129,7 +130,7 @@ Yapılandırılmış Sorgu Dili (SQL), verileri sorgulamak ve tanımlamak için 
     display(spark.sql('SELECT * FROM demo_df'))
     ```
 
-11. Daha önce yürütülen hücrelerden her birinin **Geçmiş sunucusuna** ve **izlemeye**gitme seçeneği vardı. Bağlantılara tıkladığınızda kullanıcı deneyiminin farklı bölümlerine gidersiniz.
+11. Daha önce yürütülen hücrelerden her birinin **Geçmiş sunucusuna** ve **izlemeye** gitme seçeneği vardı. Bağlantılara tıkladığınızda kullanıcı deneyiminin farklı bölümlerine gidersiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

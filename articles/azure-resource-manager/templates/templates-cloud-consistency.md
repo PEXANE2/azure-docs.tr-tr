@@ -5,13 +5,13 @@ author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
-ms.custom: seodec18
-ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356894"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744756"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Bulut tutarlılığı için ARM şablonları geliştirme
 
@@ -205,7 +205,7 @@ Bir yapıtın mutlak URI 'sini oluşturmak için tercih edilen yöntem, Concat �
 }
 ```
 
-Bu yaklaşımda, yapılandırma betikleri dahil olmak üzere tüm dağıtım yapıtları, şablonun kendisi ile aynı konumda depolanabilir. Tüm bağlantıların konumunu değiştirmek için, yalnızca _Artifactslocation parametreleri_için farklı bır temel URL belirtmeniz gerekir.
+Bu yaklaşımda, yapılandırma betikleri dahil olmak üzere tüm dağıtım yapıtları, şablonun kendisi ile aynı konumda depolanabilir. Tüm bağlantıların konumunu değiştirmek için, yalnızca _Artifactslocation parametreleri_ için farklı bır temel URL belirtmeniz gerekir.
 
 ## <a name="factor-in-differing-regional-capabilities"></a>Farklı bölgesel özelliklerde faktör
 
@@ -641,7 +641,7 @@ Her belirli uzantı da sürümlüdür. Bu sürüm, `typeHandlerVersion` VM uzant
         ...
 ```
 
-Belirli bir VM uzantısı için kullanılabilir sürümlerin bir listesini almak için [Get-Azurermvmextensionımage](/powershell/module/az.compute/get-azvmextensionimage) cmdlet 'ini kullanın. Aşağıdaki örnek, PowerShell DSC (Istenen durum yapılandırması) VM uzantısının mevcut sürümlerini **MyLocation**'dan alır:
+Belirli bir VM uzantısı için kullanılabilir sürümlerin bir listesini almak için [Get-Azurermvmextensionımage](/powershell/module/az.compute/get-azvmextensionimage) cmdlet 'ini kullanın. Aşağıdaki örnek, PowerShell DSC (Istenen durum yapılandırması) VM uzantısının mevcut sürümlerini **MyLocation** 'dan alır:
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT

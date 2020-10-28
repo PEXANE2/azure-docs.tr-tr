@@ -4,12 +4,12 @@ description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaları
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee37e994c9e72c3d3c98455360dc68746f49d278
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332721"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743124"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -151,7 +151,7 @@ Azure Backup, veri kullanılabilirliğini ve dayanıklılık özelliğini güçl
 | Yedekleme yönetimi türü | Desteklenir                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri ve bağımsız bulutlar.  |
-| SQL/SAP HANA | Evet                                                          | Batı ABD 2 (WUS2), Orta Batı ABD (WCUS), Kanada Orta (CNC), Kanada Doğu (CNE), Doğu ABD (EUS), Batı ABD (WUS), Japonya Doğu (JPE), Japonya Doğu (JPE) |
+| SQL/SAP HANA | Evet                                                          | Fransa hariç tüm ortak bölgeler |
 | MARS Aracısı/şirket içi  | Hayır                                                           | Yok               |
 | AFS (Azure dosya paylaşımları)                 | Hayır                                                           | Yok               |
 

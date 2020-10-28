@@ -2,14 +2,14 @@
 title: Azure Resource Manager şablonu kullanarak bir Azure kurtarma hizmetleri Kasası oluşturmak için hızlı başlangıç.
 description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak Azure kurtarma hizmetleri Kasası oluşturmayı öğreneceksiniz (ARM şablonu).
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/29/2020
-ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c1c6d625c67130a4e3608cee6134b8c81404c01b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88684125"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745881"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bir kurtarma hizmetleri Kasası oluşturma
 
@@ -42,7 +42,7 @@ Daha fazla Azure Kurtarma Hizmetleri şablonu için bkz. [Azure hızlı başlang
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Şablonu dağıtmak için **abonelik**, **kaynak grubu**ve **kasa adı** gereklidir.
+Şablonu dağıtmak için **abonelik** , **kaynak grubu** ve **kasa adı** gereklidir.
 
 1. Azure 'da oturum açmak ve şablonu açmak için **Azure 'A dağıt** görüntüsünü seçin.
 
@@ -52,14 +52,14 @@ Daha fazla Azure Kurtarma Hizmetleri şablonu için bkz. [Azure hızlı başlang
 
    :::image type="content" source="media/quickstart-create-vault-template/create-vault-template.png" alt-text="Bir kurtarma hizmetleri Kasası oluşturmak için şablon.":::
 
-   - **Abonelik**: Azure aboneliğinizi seçin.
-   - **Kaynak grubu**: var olan bir grubu seçin veya grup eklemek Için **Yeni oluştur** ' u seçin.
-   - **Konum**: kaynak grubunun konumunu varsayılan olarak belirler ve bir kaynak grubu seçildikten sonra kullanılamaz hale gelir.
-   - **Kasa adı**: kasa için bir ad sağlayın.
-   - **Depolama türünü değiştir**: varsayılan değer **false**'dur. Yalnızca kasanın depolama türünü değiştirmeniz gerekiyorsa **true** ' ı seçin.
-   - **Kasa depolama türü**: varsayılan: **GloballyRedundant**. Depolama türü **true**olarak ayarlandıysa, **locallyyedekli**' i seçin.
-   - **Konum**: işlev, `[resourceGroup().location]` kaynak grubunun konumunu varsayılan olarak belirler. Konumu değiştirmek için **westus**gibi bir değer girin.
-   - **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**onay kutusunu seçin.
+   - **Abonelik** : Azure aboneliğinizi seçin.
+   - **Kaynak grubu** : var olan bir grubu seçin veya grup eklemek Için **Yeni oluştur** ' u seçin.
+   - **Konum** : kaynak grubunun konumunu varsayılan olarak belirler ve bir kaynak grubu seçildikten sonra kullanılamaz hale gelir.
+   - **Kasa adı** : kasa için bir ad sağlayın.
+   - **Depolama türünü değiştir** : varsayılan değer **false** 'dur. Yalnızca kasanın depolama türünü değiştirmeniz gerekiyorsa **true** ' ı seçin.
+   - **Kasa depolama türü** : varsayılan: **GloballyRedundant** . Depolama türü **true** olarak ayarlandıysa, **locallyyedekli** ' i seçin.
+   - **Konum** : işlev, `[resourceGroup().location]` kaynak grubunun konumunu varsayılan olarak belirler. Konumu değiştirmek için **westus** gibi bir değer girin.
+   - **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** onay kutusunu seçin.
 
 1. Kasanın dağıtımına başlamak için, **satın al** düğmesini seçin. Başarılı bir dağıtımdan sonra bir bildirim görüntülenir.
 

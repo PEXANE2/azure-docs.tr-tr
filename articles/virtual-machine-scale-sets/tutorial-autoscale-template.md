@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: fae86e13be624d7a5304aa04b82432e1163b1244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: f94a68833347d662f427fa0944dd83d33458bd14
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84629546"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745994"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Öğretici: Azure şablonu ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 Ölçek kümesi oluşturduğunuzda, çalıştırmak istediğiniz VM örneği sayısını tanımlarsınız. Uygulamanızın talebi değiştikçe, sanal makine örneklerinin sayısını otomatik olarak artırabilir veya azaltabilirsiniz. Otomatik ölçeklendirme özelliği, uygulamanızın yaşam döngüsü boyunca uygulama performansındaki değişikliklere veya müşteri taleplerine ayak uydurmanıza olanak tanır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -33,7 +33,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için A
 
 
 ## <a name="define-an-autoscale-profile"></a>Otomatik ölçeklendirme profilini tanımlama
-*Microsoft.insights/autoscalesettings* kaynak sağlayıcısı ile bir Azure şablonunda otomatik ölçeklendirme profili tanımlayın. *Profil*, ölçek kümesinin ve tüm ilişkili kuralların kapasitesini açıklar. Aşağıdaki örnek, *CPU kullanımına dayalı yüzdeye göre otomatik ölçeklendir* adlı bir profili tanımlar ve varsayılan değeri, minimum değeri, *2* sanal makine örneği kapasitesini ve maksimum *10* değerini ayarlar:
+*Microsoft.insights/autoscalesettings* kaynak sağlayıcısı ile bir Azure şablonunda otomatik ölçeklendirme profili tanımlayın. *Profil* , ölçek kümesinin ve tüm ilişkili kuralların kapasitesini açıklar. Aşağıdaki örnek, *CPU kullanımına dayalı yüzdeye göre otomatik ölçeklendir* adlı bir profili tanımlar ve varsayılan değeri, minimum değeri, *2* sanal makine örneği kapasitesini ve maksimum *10* değerini ayarlar:
 
 ```json
 {
@@ -143,7 +143,7 @@ Aşağıdaki örnek, ortalama CPU yükü 5 dakikadan uzun bir süre boyunca %30�
 az group create --name myResourceGroup --location eastus
 ```
 
-Şimdi [az group deployment create](/cli/azure/group/deployment) komutunu kullanarak bir sanal makine ölçek kümesi oluşturun. İstendiğinde, her bir sanal makine örneği için kimlik bilgileri olarak kullanılan kendi kullanıcı adınızı (örn. *azureuser*) ve parolanızı sağlayın.
+Şimdi [az group deployment create](/cli/azure/group/deployment) komutunu kullanarak bir sanal makine ölçek kümesi oluşturun. İstendiğinde, her bir sanal makine örneği için kimlik bilgileri olarak kullanılan kendi kullanıcı adınızı (örn. *azureuser* ) ve parolanızı sağlayın.
 
 ```azurecli-interactive
 az group deployment create \
@@ -188,7 +188,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-**stress**, *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
+**stress** , *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
 
 **stress** yardımcı programının CPU yükü oluşturduğunu onaylamak için, **top** yardımcı programını kullanarak etkin sistem yükünü inceleyin:
 
@@ -216,7 +216,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Tekrar **stress**, *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
+Tekrar **stress** , *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
 
 İkinci sanal makine örneğiyle bağlantınızı kapatın. **stress** yardımcı programı, sanal makine örneğinde çalışmaya devam eder.
 

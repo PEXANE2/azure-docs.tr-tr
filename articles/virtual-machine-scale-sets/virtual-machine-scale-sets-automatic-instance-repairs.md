@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 45c316c1d1dd56f6d920423a725b2488df1a5032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 383895f2cb5983abd68bfca67d2c8361ee094ea1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527430"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744850"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için otomatik örnek onarımları
 
@@ -62,13 +62,13 @@ Otomatik örnek onarma işlemleri toplu olarak gerçekleştirilir. Belirli bir z
 
 ### <a name="grace-period"></a>Yetkisiz kullanım süresi
 
-Bir örnek, ölçek kümesinde gerçekleştirilen bir PUT, PATCH veya POST eylemi nedeniyle bir durum değişikliği işleminden geçtiğinde (örneğin, yeniden görüntü, yeniden dağıtma, güncelleştirme, vb.), söz konusu örnekteki herhangi bir onarım eylemi yalnızca yetkisiz kullanım süresi dolduktan sonra gerçekleştirilir. Yetkisiz kullanım süresi, örneğin sağlıklı duruma dönmesi için izin verilen sürenin miktarıdır. Yetkisiz kullanım süresi, durum değişikliği tamamlandıktan sonra başlar. Bu, zamanından önce veya yanlışlıkla onarım işlemlerinden kaçınmaya yardımcı olur. Kullanım süresi, ölçek kümesindeki yeni oluşturulan her örnek için kabul edilir (onarım işleminin sonucu olarak oluşturulan diğeri dahil). Kullanım süresi, ISO 8601 biçimindeki dakikalar içinde belirtilir ve *Automaticrepairspolicy. gracePeriod*özelliği kullanılarak ayarlanabilir. Yetkisiz kullanım süresi 30 dakika ile 90 dakika arasında değişebilir ve varsayılan değer olan 30 dakika olabilir.
+Bir örnek, ölçek kümesinde gerçekleştirilen bir PUT, PATCH veya POST eylemi nedeniyle bir durum değişikliği işleminden geçtiğinde (örneğin, yeniden görüntü, yeniden dağıtma, güncelleştirme, vb.), söz konusu örnekteki herhangi bir onarım eylemi yalnızca yetkisiz kullanım süresi dolduktan sonra gerçekleştirilir. Yetkisiz kullanım süresi, örneğin sağlıklı duruma dönmesi için izin verilen sürenin miktarıdır. Yetkisiz kullanım süresi, durum değişikliği tamamlandıktan sonra başlar. Bu, zamanından önce veya yanlışlıkla onarım işlemlerinden kaçınmaya yardımcı olur. Kullanım süresi, ölçek kümesindeki yeni oluşturulan her örnek için kabul edilir (onarım işleminin sonucu olarak oluşturulan diğeri dahil). Kullanım süresi, ISO 8601 biçimindeki dakikalar içinde belirtilir ve *Automaticrepairspolicy. gracePeriod* özelliği kullanılarak ayarlanabilir. Yetkisiz kullanım süresi 30 dakika ile 90 dakika arasında değişebilir ve varsayılan değer olan 30 dakika olabilir.
 
 ### <a name="suspension-of-repairs"></a>Onarımlar askıya alma 
 
-Sanal Makine Ölçek Kümeleri gerekirse otomatik örnek onarımları geçici olarak askıya alma özelliğini sağlar. Sanal makine ölçek kümesinin örnek görünümündeki otomatik onarımda bulunan *Hizmetler* Için *ServiceState* , otomatik onarımın geçerli durumunu gösterir. Ölçek kümesi otomatik onarımları kabul ettiğinde, *ServiceState* parametresinin değeri *çalışıyor*olarak ayarlanır. Ölçek kümesi için otomatik onarımlar askıya alındığında, *ServiceState* parametresi *askıya alındı*olarak ayarlanır. Bir ölçek kümesi üzerinde *Automaticrepairspolicy* tanımlanmazsa, ancak otomatik onarımlar özelliği etkinleştirilmemişse, *ServiceState* parametresi *çalışmıyor*olarak ayarlanır.
+Sanal Makine Ölçek Kümeleri gerekirse otomatik örnek onarımları geçici olarak askıya alma özelliğini sağlar. Sanal makine ölçek kümesinin örnek görünümündeki otomatik onarımda bulunan *Hizmetler* Için *ServiceState* , otomatik onarımın geçerli durumunu gösterir. Ölçek kümesi otomatik onarımları kabul ettiğinde, *ServiceState* parametresinin değeri *çalışıyor* olarak ayarlanır. Ölçek kümesi için otomatik onarımlar askıya alındığında, *ServiceState* parametresi *askıya alındı* olarak ayarlanır. Bir ölçek kümesi üzerinde *Automaticrepairspolicy* tanımlanmazsa, ancak otomatik onarımlar özelliği etkinleştirilmemişse, *ServiceState* parametresi *çalışmıyor* olarak ayarlanır.
 
-Bir ölçek kümesindeki sağlıksız olanları değiştirmek için yeni oluşturulan örnekler, sürekli olarak onarım işlemleri gerçekleştirildikten sonra bile düzgün şekilde kalmaya devam ederse, bir güvenlik önlemi olarak platform otomatik onarımlar için *ServiceState* 'ı *askıya alındı*olarak güncelleştirir. Otomatik onarımları bir kez daha yeniden *deneyebilirsiniz. bu*, otomatik onarımlar Için *ServiceState* değerini ayarlar. Ölçek kümesi için [Otomatik onarımlar ilkesinin hizmet durumunu görüntüleme ve güncelleştirme](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) bölümünde ayrıntılı yönergeler verilmiştir. 
+Bir ölçek kümesindeki sağlıksız olanları değiştirmek için yeni oluşturulan örnekler, sürekli olarak onarım işlemleri gerçekleştirildikten sonra bile düzgün şekilde kalmaya devam ederse, bir güvenlik önlemi olarak platform otomatik onarımlar için *ServiceState* 'ı *askıya alındı* olarak güncelleştirir. Otomatik onarımları bir kez daha yeniden *deneyebilirsiniz. bu* , otomatik onarımlar Için *ServiceState* değerini ayarlar. Ölçek kümesi için [Otomatik onarımlar ilkesinin hizmet durumunu görüntüleme ve güncelleştirme](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) bölümünde ayrıntılı yönergeler verilmiştir. 
 
 Otomatik örnek onarımları işlemi aşağıdaki gibi işler:
 
@@ -96,7 +96,7 @@ Bu [hızlı başlangıç şablonunu](https://github.com/Azure/azure-quickstart-t
  
 Aşağıdaki adımlar, yeni bir ölçek kümesi oluştururken otomatik onarım ilkesini etkinleştirir.
  
-1. **Sanal makine ölçek kümelerine**gidin.
+1. **Sanal makine ölçek kümelerine** gidin.
 1. Yeni bir ölçek kümesi oluşturmak için **+ Ekle** ' yi seçin.
 1. **Sistem durumu** sekmesine gidin. 
 1. **Sistem durumu** bölümünü bulun.
@@ -156,7 +156,7 @@ az vmss create \
   --automatic-repairs-grace-period 30
 ```
 
-Yukarıdaki örnek, örneklerin uygulama sistem durumunu izlemek için mevcut yük dengeleyiciyi ve sistem durumu araştırmasını kullanır. Bunun yerine izleme için bir uygulama sistem durumu uzantısı kullanmayı tercih ederseniz, bir ölçek kümesi oluşturabilir, uygulama durumu uzantısını yapılandırabilir ve ardından, sonraki bölümde açıklandığı gibi *az VMSS Update*kullanarak otomatik örnek onarım ilkesini etkinleştirebilirsiniz.
+Yukarıdaki örnek, örneklerin uygulama sistem durumunu izlemek için mevcut yük dengeleyiciyi ve sistem durumu araştırmasını kullanır. Bunun yerine izleme için bir uygulama sistem durumu uzantısı kullanmayı tercih ederseniz, bir ölçek kümesi oluşturabilir, uygulama durumu uzantısını yapılandırabilir ve ardından, sonraki bölümde açıklandığı gibi *az VMSS Update* kullanarak otomatik örnek onarım ilkesini etkinleştirebilirsiniz.
 
 ## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>Mevcut bir ölçek kümesini güncelleştirirken otomatik onarım ilkesini etkinleştirme
 
@@ -169,12 +169,12 @@ Varolan bir ölçek kümesinin modelini güncelleştirdikten sonra, en son model
 Mevcut bir ölçek kümesinin otomatik onarımlar ilkesini Azure portal aracılığıyla değiştirebilirsiniz. 
  
 1. Var olan bir sanal makine ölçek kümesine gidin.
-1. Soldaki menüdeki **Ayarlar** ' ın altında **sistem durumu ve Onar**' ı seçin.
+1. Soldaki menüdeki **Ayarlar** ' ın altında **sistem durumu ve Onar** ' ı seçin.
 1. **Uygulama durumunu izle** seçeneğini etkinleştirin.
 1. **Otomatik onarma ilkesi** bölümünü bulun.
 1. **Otomatik onarımlar** **seçeneğini açın.**
 1. **Yetkisiz kullanım süresi (dk)** alanında yetkisiz kullanım süresini dakika cinsinden belirtin, izin verilen değerler 30 ila 90 dakika arasındadır. 
-1. İşiniz bittiğinde **Kaydet**‘i seçin. 
+1. İşiniz bittiğinde **Kaydet** ‘i seçin. 
 
 ### <a name="rest-api"></a>REST API
 
@@ -223,7 +223,7 @@ az vmss update \
 
 ### <a name="rest-api"></a>REST API 
 
-Sanal makine ölçek kümesi, özellik düzenleme *Hizmetleri*altındaki otomatik onarımların *hizmetlerini görüntülemek için, API* sürüm 2019-12-01 veya üzeri ile [örnek görünümü al](/rest/api/compute/virtualmachinescalesets/getinstanceview) ' i kullanın. 
+Sanal makine ölçek kümesi, özellik düzenleme *Hizmetleri* altındaki otomatik onarımların *hizmetlerini görüntülemek için, API* sürüm 2019-12-01 veya üzeri ile [örnek görünümü al](/rest/api/compute/virtualmachinescalesets/getinstanceview) ' i kullanın. 
 
 ```http
 GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'
@@ -309,7 +309,7 @@ Set-AzVmssOrchestrationServiceState `
 
 **Ölçek kümesi örnekleri için uygulama sistem durumu görüntüleme**
 
-Uygulamanın sistem durumunu görüntülemek için bir sanal makine ölçek kümesindeki örnekler için [örnek görünümü al API](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) 'sini kullanabilirsiniz. Azure PowerShell ile [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) cmdlet 'ini *-InstanceView* bayrağıyla birlikte kullanabilirsiniz. Uygulama sistem durumu, *Vmhealth*özelliği altında verilmiştir.
+Uygulamanın sistem durumunu görüntülemek için bir sanal makine ölçek kümesindeki örnekler için [örnek görünümü al API](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) 'sini kullanabilirsiniz. Azure PowerShell ile [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) cmdlet 'ini *-InstanceView* bayrağıyla birlikte kullanabilirsiniz. Uygulama sistem durumu, *Vmhealth* özelliği altında verilmiştir.
 
 Azure portal sistem durumunu da görebilirsiniz. Mevcut bir ölçek kümesine gidin, sol taraftaki menüden **örnekler** ' i seçin ve her bir ölçek kümesi örneğinin sistem durumu için **sistem** durumu sütununa bakın. 
 

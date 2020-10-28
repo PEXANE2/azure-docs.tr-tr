@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/24/2020
-ms.openlocfilehash: 0675f77acbdecfe74634a6734b83c5b74019b8ab
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: cc17cd23ae197db25fed440eb249f2cf069d4859
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332034"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744590"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma
 
@@ -28,7 +28,7 @@ Data Lake Storage 2. kullanarak küme oluşturma seçeneklerinin tam karşılaş
 Data Lake Storage 2., neredeyse tüm Azure HDInsight küme türleri için hem varsayılan hem de ek depolama hesabı olarak bir depolama seçeneği olarak kullanılabilir. Ancak, HBase Data Lake Storage 2. yalnızca bir hesaba sahip olabilir.
 
 > [!Note]  
-> **Birincil depolama türü**olarak Data Lake Storage 2. seçeneğini belirledikten sonra, ek depolama alanı olarak bir Data Lake Storage 1. seçemezsiniz.
+> **Birincil depolama türü** olarak Data Lake Storage 2. seçeneğini belirledikten sonra, ek depolama alanı olarak bir Data Lake Storage 1. seçemezsiniz.
 
 ## <a name="create-hdinsight-clusters-using-data-lake-storage-gen2"></a>Data Lake Storage 2. kullanarak HDInsight kümeleri oluşturma
 
@@ -66,19 +66,19 @@ Kullanıcıların verileri sorgulamasına yönelik izinleri ayarlamak için, ACL
 
 HDInsight kümesinden Data Lake Storage 2. dosyalara erişmek için çeşitli yollar vardır.
 
-* **Tam adı kullanarak**. Bu yöntemle, erişmek istediğiniz dosyanın tam yolunu girersiniz.
+* **Tam adı kullanarak** . Bu yöntemle, erişmek istediğiniz dosyanın tam yolunu girersiniz.
 
     ```
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **Kısaltılmış yol biçimi kullanarak**. Bu yaklaşımda, yolu küme köküne kadar değiştirirsiniz:
+* **Kısaltılmış yol biçimi kullanarak** . Bu yaklaşımda, yolu küme köküne kadar değiştirirsiniz:
 
     ```
     abfs:///<file.path>/
     ```
 
-* **Göreli yolu kullanarak**. Bu yöntemle, erişmek istediğiniz dosyanın yalnızca göreli yolunu girersiniz.
+* **Göreli yolu kullanarak** . Bu yöntemle, erişmek istediğiniz dosyanın yalnızca göreli yolunu girersiniz.
 
     ```
     /<file.path>/

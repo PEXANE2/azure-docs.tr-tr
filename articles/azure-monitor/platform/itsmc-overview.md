@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: f47a23a3b95975d98d3825bc5b14ed0522102a0c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5c18a904f0ec0f100312ee3fafb53038bd2ccf19
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547648"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745691"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı'nı kullanarak Azure'ı ITSM araçlarına bağlama
 
@@ -65,7 +65,7 @@ Bir bağlantı oluşturabilmeniz için önce ITSM Bağlayıcısı çözümünü 
    >[!NOTE]
    >Microsoft Operations Management Suite (OMS) ile Azure Izleyici arasında devam eden geçişin bir parçası olarak, OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
 
-5. **Oluştur** 'a tıklayın.
+5. **Tamam** ’a tıklayın.
 
 Çözüm kaynağı dağıtıldığında, pencerenin sağ üst kısmında bir bildirim görüntülenir.
 
@@ -122,28 +122,29 @@ Eylem grupları, Azure uyarılarınız için eylemleri tetiklemenin modüler ve 
 
 Aşağıdaki yordamı kullanın:
 
-1. Azure portal,  **İzle** ' ye tıklayın.
-2. Sol bölmede  **eylem grupları** ' na tıklayın. **Eylem grubu Ekle** penceresi görüntülenir.
+1. Azure portal,  **Uyarılar** ' a tıklayın.
+2. Üst bölmede,  **eylemleri Yönet** ' e tıklayın. **Eylem grubu Ekle** penceresi görüntülenir.
 
-    ![Eylem Grupları](media/itsmc-overview/action-groups.png)
+    [![Eylem grupları](media/itsmc-overview/action-groups-selection.png)](media/itsmc-overview/action-groups-selection-big.png)
 
-3. Eylem grubunuz için **Name** ve **ShortName** sağlayın. Eylem grubunuzu oluşturmak istediğiniz **kaynak grubunu** ve **aboneliği** seçin.
+3. Eylem grubunuzu oluşturmak istediğiniz **aboneliği** ve **kaynak grubunu** seçin. Eylem grubunuz için **eylem grubu adı** ve **görünen ad** belirtin. **İleri** ' ye tıklayın.
 
     ![Eylem grupları ayrıntısı](media/itsmc-overview/action-groups-details.png)
 
-4. Eylemler listesinde, **eylem türü** için açılan menüden **ıtssm** ' ı seçin. Eylem için bir **ad** girin ve **Ayrıntıları Düzenle** ' ye tıklayın.
-5. Log Analytics çalışma alanınızın bulunduğu **aboneliği** seçin. **Bağlantı** adını (ITSM Bağlayıcısı adınız) ve ardından çalışma alanınızın adını seçin. Örneğin, "MyITSMMConnector (MyWorkspace)."
+4. Bildirim listesinde **Iç içe: eylemler** ' e tıklayın.
+5. Eylemler listesinde, **eylem türü** için açılan menüden **ıtssm** ' ı seçin. Eylem için bir **ad** girin ve **düzenleme ayrıntılarını** temsil eden kalemin üzerine tıklayın.
+6. Log Analytics çalışma alanınızın bulunduğu **aboneliği** seçin. **Bağlantı** adını (ITSM Bağlayıcısı adınız) ve ardından çalışma alanınızın adını seçin. Örneğin, "MyITSMMConnector (MyWorkspace)."
 
-    ![ITSM eylemi ayrıntıları](media/itsmc-overview/itsm-action-details.png)
+    ![ITSM eylemi ayrıntıları](media/itsmc-overview/itsm-action-configuration.png)
 
-6. Açılır menüden **Iş öğesi** türünü seçin.
+7. Açılır menüden **Iş öğesi** türünü seçin.
 
-7. Sabit değerlerle Box alanlarını dolduracak şekilde, "özel şablon kullan" onay kutusunu işaretlemeniz, aksi takdirde, açılan listeden var olan bir [şablonu](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) kullanmayı seçin ve şablon alanlarını sabit değerlerle doldurun.
+8. Sabit değerlerle Box alanlarını dolduracak şekilde, "özel şablon kullan" onay kutusunu işaretlemeniz, aksi takdirde, açılan listeden var olan bir [şablonu](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) kullanmayı seçin ve şablon alanlarını sabit değerlerle doldurun.
 
-8. Her yapılandırma öğesi **için her yapılandırma öğesi için bireysel çalışma öğeleri oluştur** onay kutusunu seçerek her yapılandırma öğesinin kendi iş öğesi olacaktır. Her yapılandırma öğesi için bir iş öğesi olacağı anlamına gelir ve oluşturulacak uyarılara göre güncelleştirilir.
+9. Her yapılandırma öğesi **için her yapılandırma öğesi için bireysel çalışma öğeleri oluştur** onay kutusunu seçerek her yapılandırma öğesinin kendi iş öğesi olacaktır. Her yapılandırma öğesi için bir iş öğesi olacağı anlamına gelir ve oluşturulacak uyarılara göre güncelleştirilir.
 Devre dışı bırak onay kutusu ' nu seçerseniz **her bir yapılandırma öğesi için bireysel çalışma öğeleri oluştur** her uyarı yeni bir iş öğesi oluşturur, yani yapılandırma öğesi başına 1 ' den fazla uyarı olabilir.
 
-9. **Tamam** ’a tıklayın.
+10. **Tamam** ’a tıklayın.
 
 Bir Azure uyarı kuralı oluştururken/düzenlenirken, bir ıTSM eylemi olan bir eylem grubu kullanın. Uyarı tetiklendiğinde, çalışma öğesi ıTSM aracında oluşturulur/güncelleştirilir.
 
@@ -162,7 +163,7 @@ ITSM Bağlayıcısı bir bağlantı kurarken yapılandırmanıza bağlı olarak,
 
 Olay ve değişiklik isteği verileri, çözümdeki ITSM Bağlayıcısı Panosu kullanılarak görselleştirilebilir.
 
-![Log Analytics ekranı](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
+![ITSM Bağlayıcısı panosunu gösteren ekran görüntüsü.](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 Pano, bağlantılarla ilgili sorunları çözümlemek için bir başlangıç noktası olarak kullanılabilecek bağlayıcı durumu hakkında bilgi de sağlar.
 

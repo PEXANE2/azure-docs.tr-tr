@@ -4,14 +4,14 @@ description: Azure SQL veritabanı ile bağlantı ile Azure App Service çalış
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: devx-track-csharp, mvc, cli-validate, seodec18
+ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b83dfbd715a6b27491fd5f5efd41213210092325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 305137cf371d7a9e3d336d8142ef9a03eb38421f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982894"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743706"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Öğretici: Azure App Service ASP.NET Core ve Azure SQL veritabanı uygulaması oluşturma
 
@@ -29,7 +29,7 @@ ms.locfileid: "90982894"
 
 ![App Service’te çalışan uygulama](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure’da SQL Veritabanı oluşturma
@@ -41,7 +41,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -269,7 +269,7 @@ Azure uygulamanıza yönelik bağlantı dizelerini ayarlamak için [`az webapp c
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
 ```
 
-ASP.NET Core, bu adlandırılmış bağlantı dizesini ( `MyDbConnection` ), *appsettings.jsüzerinde*belirtilen herhangi bir bağlantı dizesi gibi standart kalıbı kullanarak kullanabilirsiniz. Bu durumda, `MyDbConnection` * üzerindeappsettings.js*de tanımlanmıştır. App Service ' de çalışırken, App Service tanımlanan bağlantı dizesi * üzerindeappsettings.js*tanımlanan bağlantı dizesi üzerinden önceliklidir. Kod, yerel geliştirme sırasında değeri *appsettings.js* kullanır ve aynı kod dağıtıldığında App Service değeri kullanır.
+ASP.NET Core, bu adlandırılmış bağlantı dizesini ( `MyDbConnection` ), *appsettings.jsüzerinde* belirtilen herhangi bir bağlantı dizesi gibi standart kalıbı kullanarak kullanabilirsiniz. Bu durumda, `MyDbConnection` *üzerindeappsettings.js* de tanımlanmıştır. App Service ' de çalışırken, App Service tanımlanan bağlantı dizesi *üzerindeappsettings.js* tanımlanan bağlantı dizesi üzerinden önceliklidir. Kod, yerel geliştirme sırasında değeri *appsettings.js* kullanır ve aynı kod dağıtıldığında App Service değeri kullanır.
 
 Kodunuzda bağlantı dizesinin nasıl başvurulduğunu görmek için bkz. [üretim veritabanına bağlanmak için uygulamayı yapılandırma](#configure-app-to-connect-to-production-database).
 
@@ -385,7 +385,7 @@ dotnet ef database update
 
 `Done` özelliğini kullanarak kodunuzda birkaç değişiklik yapın. Bu öğreticide, daha kolay uygulama için, işlemin nasıl çalıştığını görmek üzere yalnızca `Index` ve `Create` görünümlerini değiştireceksiniz.
 
-_Denetleyicileri/TodosController. cs_dosyasını açın.
+_Denetleyicileri/TodosController. cs_ dosyasını açın.
 
 `Create([Bind("ID,Description,CreatedDate")] Todo todo)` metodunu bulun ve `Done` değerini `Bind` özniteliğindeki özellik listesine ekleyin. Hazır olduğunuzda, `Create()` metot imzanız aşağıdaki koda benzer şekilde görünür:
 
@@ -393,7 +393,7 @@ _Denetleyicileri/TodosController. cs_dosyasını açın.
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
 ```
 
-_Görünümleri/Todos/Create. cshtml_dosyasını açın.
+_Görünümleri/Todos/Create. cshtml_ dosyasını açın.
 
 Razor kodunda, `Description` için `<div class="form-group">` öğesi ve `CreatedDate` için başka bir `<div class="form-group">` öğesi görürsünüz. Aşağıdaki iki öğeyi takip eden `Done` için başka bir `<div class="form-group">` öğesi ekleyin:
 
@@ -407,7 +407,7 @@ Razor kodunda, `Description` için `<div class="form-group">` öğesi ve `Create
 </div>
 ```
 
-_Görünümleri/Todos/Index. cshtml_dosyasını açın.
+_Görünümleri/Todos/Index. cshtml_ dosyasını açın.
 
 Boş `<th></th>` öğesini arayın. Bu öğenin hemen üstüne aşağıdaki Razor kodunu ekleyin:
 
@@ -449,7 +449,7 @@ git commit -m "added done field"
 git push azure master
 ```
 
-Tamamlandıktan sonra `git push` App Service uygulamanıza gidin ve Yapılacaklar öğesi eklemeyi deneyin ve **Tamam**' ı işaretleyin.
+Tamamlandıktan sonra `git push` App Service uygulamanıza gidin ve Yapılacaklar öğesi eklemeyi deneyin ve **Tamam** ' ı işaretleyin.
 
 ![Code First geçişten sonra Azure uygulaması](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
@@ -461,8 +461,8 @@ ASP.NET Core uygulama Azure App Service çalışırken konsol günlüklerini Clo
 
 Örnek proje, iki yapılandırma değişikliğiyle [Azure 'da ASP.NET Core oturum açma](/aspnet/core/fundamentals/logging#azure-app-service-provider) kılavuzundaki kılavuza zaten uyar:
 
-- `Microsoft.Extensions.Logging.AzureAppServices` *Dotnetcoressqldb. csproj*içinde öğesine bir başvuru içerir.
-- `loggerFactory.AddAzureWebAppDiagnostics()` *Program.cs*içindeki çağrılar.
+- `Microsoft.Extensions.Logging.AzureAppServices` *Dotnetcoressqldb. csproj* içinde öğesine bir başvuru içerir.
+- `loggerFactory.AddAzureWebAppDiagnostics()` *Program.cs* içindeki çağrılar.
 
 App Service ASP.NET Core [günlük düzeyini](/aspnet/core/fundamentals/logging#log-level) varsayılan düzeyden olarak ayarlamak için `Information` `Error` , [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) Cloud Shell komutunu kullanın.
 
@@ -471,7 +471,7 @@ az webapp log config --name <app-name> --resource-group myResourceGroup --applic
 ```
 
 > [!NOTE]
-> Projenin günlük düzeyi zaten `Information` *appsettings.js*öğesinde olarak ayarlanmıştır.
+> Projenin günlük düzeyi zaten `Information` *appsettings.js* öğesinde olarak ayarlanmıştır.
 > 
 
 Günlük akışını başlatmak için [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) Cloud Shell komutunu kullanın.
@@ -488,7 +488,7 @@ ASP.NET Core günlüklerini özelleştirme hakkında daha fazla bilgi için bkz.
 
 ## <a name="manage-your-azure-app"></a>Azure uygulamanızı yönetme
 
-Oluşturduğunuz uygulamayı görmek için [Azure Portal](https://portal.azure.com), **uygulama hizmetleri**' ni arayıp seçin.
+Oluşturduğunuz uygulamayı görmek için [Azure Portal](https://portal.azure.com), **uygulama hizmetleri** ' ni arayıp seçin.
 
 ![Azure portal 'de uygulama hizmetleri 'ni seçin](./media/tutorial-dotnetcore-sqldb-app/app-services.png)
 

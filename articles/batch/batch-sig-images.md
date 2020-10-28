@@ -3,13 +3,13 @@ title: Özel görüntü havuzu oluşturmak için paylaşılan görüntü galeris
 description: Özel görüntü havuzları, toplu iş yüklerinizi çalıştırmak için işlem düğümlerini yapılandırmanın etkili bir yoludur.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 4a41e8345bdb4c4e8761debe8e6b39f8588f5a8c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605201"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745526"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Özel görüntü havuzu oluşturmak için paylaşılan görüntü galerisini kullanma
 
@@ -40,7 +40,7 @@ Senaryonuz için yapılandırılmış paylaşılan bir görüntünün kullanılm
 
 - **Bir Azure Batch hesabı.** Batch hesabı oluşturmak için, [Azure Portal](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md)kullanarak Batch hızlı başlangıçlara bakın.
 
-- **Paylaşılan görüntü Galerisi görüntüsü**. Paylaşılan bir görüntü oluşturmak için, yönetilen bir görüntü kaynağınız olması veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır.
+- **Paylaşılan görüntü Galerisi görüntüsü** . Paylaşılan bir görüntü oluşturmak için, yönetilen bir görüntü kaynağınız olması veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır.
 
 > [!NOTE]
 > Paylaşılan görüntü, Batch hesabıyla aynı abonelikte değilse, bu abonelik için [Microsoft.Batch kaynak sağlayıcısını kaydetmeniz](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) gerekir. İki abonelik aynı Azure AD kiracısında olmalıdır.
@@ -208,9 +208,9 @@ Azure portal paylaşılan görüntüden bir havuz oluşturmak için aşağıdaki
 1. [Azure portalını](https://portal.azure.com) açın.
 1. **Batch hesaplarına** gidin ve hesabınızı seçin.
 1. **Havuzlar** ' ı seçin ve ardından **Ekle** ' yi seçerek yeni bir havuz oluşturun.
-1. **Görüntü türü** bölümünde **paylaşılan görüntü Galerisi**' ni seçin.
+1. **Görüntü türü** bölümünde **paylaşılan görüntü Galerisi** ' ni seçin.
 1. Kalan bölümleri, yönetilen görüntünüz hakkındaki bilgilerle doldurun.
-1. **Tamam**’ı seçin.
+1. **Tamam** ’ı seçin.
 
 ![Portalla paylaşılan görüntüden sahip bir havuz oluşturun.](media/batch-sig-images/create-custom-pool.png)
 

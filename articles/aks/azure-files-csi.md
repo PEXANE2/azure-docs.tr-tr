@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 986db4edbf7b8856a12067fb66a370627642e970
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078366"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745796"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) içindeki Azure dosya kapsayıcısı depolama arabirimi (CSı) sürücülerini kullanma (Önizleme)
 
@@ -33,13 +33,13 @@ Kubernetes birimleri hakkında daha fazla bilgi için bkz. [AKS 'de uygulamalar 
 
 ## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>Yerleşik depolama sınıflarını kullanarak Azure dosyaları PVs 'yi dinamik olarak oluşturma
 
-Bir Azure dosya paylaşımının nasıl oluşturulduğunu tanımlamak için bir depolama sınıfı kullanılır. Depolama hesabı, Azure dosya paylaşımlarını tutmak üzere depolama sınıfıyla kullanılmak üzere [düğüm kaynak grubunda][node-resource-group] otomatik olarak oluşturulur. *Skuname*Için aşağıdaki [Azure Storage artıklık SKU][storage-skus] 'larından birini seçin:
+Bir Azure dosya paylaşımının nasıl oluşturulduğunu tanımlamak için bir depolama sınıfı kullanılır. Depolama hesabı, Azure dosya paylaşımlarını tutmak üzere depolama sınıfıyla kullanılmak üzere [düğüm kaynak grubunda][node-resource-group] otomatik olarak oluşturulur. *Skuname* Için aşağıdaki [Azure Storage artıklık SKU][storage-skus] 'larından birini seçin:
 
-* **Standard_LRS**: standart yerel olarak yedekli depolama
-* **Standard_GRS**: Standart coğrafi olarak yedekli depolama
-* **Standard_ZRS**: standart bölge-yedekli depolama
-* **Standard_RAGRS**: Standart Okuma Erişimli Coğrafi olarak yedekli depolama
-* **Premium_LRS**: Premium yerel olarak yedekli depolama
+* **Standard_LRS** : standart yerel olarak yedekli depolama
+* **Standard_GRS** : Standart coğrafi olarak yedekli depolama
+* **Standard_ZRS** : standart bölge-yedekli depolama
+* **Standard_RAGRS** : Standart Okuma Erişimli Coğrafi olarak yedekli depolama
+* **Premium_LRS** : Premium yerel olarak yedekli depolama
 
 > [!NOTE]
 > Azure dosyaları, Azure Premium depolamayı destekler. En düşük Premium dosya paylaşma 100 GB 'dir.
@@ -212,7 +212,7 @@ NFS 4,1 kullanan bir dosya paylaşma oluşturmak için, `AllowNfsFileShares` abo
 az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
 ```
 
-Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu doğrulayın:
+Durumun *kayıtlı* gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu doğrulayın:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
@@ -259,7 +259,7 @@ storageclass.storage.k8s.io/azurefile-csi created
 [stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) `data.txt` Aşağıdaki komutu [kubectl Apply][kubectl-apply] komutuyla dağıtarak, zaman damgalarını bir dosyaya kaydeden bir örnek durum bilgisi kümesi dağıtabilirsiniz:
 
  ```console
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
 ```

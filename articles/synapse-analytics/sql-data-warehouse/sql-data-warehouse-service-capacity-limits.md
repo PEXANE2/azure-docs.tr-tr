@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e06dbee5b1edbb4fd1a3379ee2d9aa06f9949ab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85204991"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742456"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) kapasite sınırları
 
@@ -61,8 +61,8 @@ ms.locfileid: "85204991"
 
 | Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
-| PolyBase yükleri |Satır başına MB |1<br/><br/>PolyBase, 1 MB 'tan küçük satırları yükler. LOB veri türlerini kümelenmiş bir columnstore dizini (CCı) olan tablolara yüklemek desteklenmez.<br/><br/> |
-||||
+| PolyBase yükleri |Satır başına MB |1<br/><br/>PolyBase, 1 MB 'tan küçük satırları yükler. LOB veri türlerini kümelenmiş bir columnstore dizini (CCı) olan tablolara yüklemek desteklenmez.<br/> |
+|PolyBase yükleri|Toplam dosya sayısı|1.000.000<br/><br/>PolyBase yükleri, en fazla 1M dosyayı aşamaz. Şu hatayla karşılaşabilirsiniz: **bölme sayısı 1000000 üst sınırını aştığından işlem başarısız oldu** .|
 
 ## <a name="queries"></a>Sorgular
 
@@ -82,7 +82,7 @@ ms.locfileid: "85204991"
 | Dize değişmez değerleri | Deyimdeki dize sabit değerlerinin sayısı | 20.000 <br/><br/>Bir sorgunun tek bir ifadesindeki dize sabitleri sayısı sınırlıdır. Bu sayının aşılması SQL Server hatası 8632 ile sonuçlanır.|
 ||||
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 | Sistem görünümü | En fazla satır |
 |:--- |:--- |

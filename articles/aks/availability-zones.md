@@ -2,15 +2,15 @@
 title: Azure Kubernetes Service (AKS) içinde kullanılabilirlik bölgelerini kullanma
 description: Azure Kubernetes Service (AKS) içindeki kullanılabilirlik bölgelerine düğümleri dağıtan bir küme oluşturmayı öğrenin
 services: container-service
-ms.custom: fasttrack-edit, references_regions
+ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 5d2c670bc862dadf289171fbf53318e876eff3d3
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165817"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745808"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Kullanılabilirlik alanlarını kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma
 
@@ -22,7 +22,7 @@ Bu makalede bir AKS kümesi oluşturma ve düğüm bileşenlerini kullanılabili
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure CLı sürüm 2.0.76 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Azure CLı sürüm 2.0.76 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][install-azure-cli].
 
 ## <a name="limitations-and-region-availability"></a>Sınırlamalar ve bölge kullanılabilirliği
 
@@ -56,11 +56,11 @@ Durum bilgisi olan iş yükleri çalıştırmanız gerekiyorsa, Pod özellikleri
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS kümeleri için kullanılabilirlik bölgelerine genel bakış
 
-Kullanılabilirlik alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bölgeler, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm bölge etkin bölgelerde en az üç ayrı bölge vardır. Bölgenin içinde fiziksel olarak ayrılmış kullanılabilirlik alanları uygulamaları ve verileri veri merkezi hatalarına karşı korur.
+Kullanılabilirlik alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bölgeler, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm bölge etkin bölgelerde her zaman birden fazla bölge vardır. Bölgenin içinde fiziksel olarak ayrılmış kullanılabilirlik alanları uygulamaları ve verileri veri merkezi hatalarına karşı korur.
 
 Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik bölgeleri nelerdir?][az-overview].
 
-Kullanılabilirlik alanları kullanılarak dağıtılan AKS kümeleri, düğümleri tek bir bölge içinde birden çok bölgeye dağıtabilir. Örneğin, Doğu ABD 2 bölgesindeki bir küme, *East US 2*   *Doğu ABD 2*üç kullanılabilirlik alanında bulunan düğümleri oluşturabilir. AKS kümesi kaynaklarının bu dağıtımı, belirli bir bölgede hatalara dayanıklı oldukları için küme kullanılabilirliğini geliştirir.
+Kullanılabilirlik alanları kullanılarak dağıtılan AKS kümeleri, düğümleri tek bir bölge içinde birden çok bölgeye dağıtabilir. Örneğin, Doğu ABD 2 bölgesindeki bir küme,  *East US 2*   *Doğu ABD 2* üç kullanılabilirlik alanında bulunan düğümleri oluşturabilir. AKS kümesi kaynaklarının bu dağıtımı, belirli bir bölgede hatalara dayanıklı oldukları için küme kullanılabilirliğini geliştirir.
 
 ![Kullanılabilirlik alanları arasında AKS düğüm dağılımı](media/availability-zones/aks-availability-zones.png)
 
@@ -68,11 +68,11 @@ Tek bir bölge kullanılamaz duruma gelirse, küme birden çok bölgeye yayıld�
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>Kullanılabilirlik alanları arasında AKS kümesi oluşturma
 
-[Az aks Create][az-aks-create] komutunu kullanarak bir küme oluşturduğunuzda, `--zones` parametresi hangi bölge Aracısı düğümlerinin dağıtılacağını tanımlar. Parametreyi küme oluşturma zamanında tanımlarsanız, etcd gibi denetim düzlemi bileşenleri üç bölgeye yayılır `--zones` . Denetim düzlemi bileşenlerinin yayıldığı belirli bölgeler, ilk düğüm havuzu için seçilen açık bölgelerin bağımsızdır.
+[Az aks Create][az-aks-create] komutunu kullanarak bir küme oluşturduğunuzda, `--zones` parametresi hangi bölge Aracısı düğümlerinin dağıtılacağını tanımlar. Parametreyi küme oluşturma zamanında tanımlarsanız, etcd veya API gibi denetim düzlemi bileşenleri bölgedeki kullanılabilir bölgelere yayılır `--zones` . Denetim düzlemi bileşenlerinin yayıldığı belirli bölgeler, ilk düğüm havuzu için seçilen açık bölgelerin bağımsızdır.
 
 Bir AKS kümesi oluştururken varsayılan aracı havuzu için herhangi bir bölge tanımlamadıysanız, denetim düzlemi bileşenlerinin kullanılabilirlik alanları arasında yayılmasının garantisi yoktur. [Az aks nodepool Add][az-aks-nodepool-add] komutunu kullanarak ek düğüm havuzları ekleyebilir ve `--zones` yeni düğümler belirtebilirsiniz, ancak denetim düzleminin bölgeler arasında yayılmasını değiştirmez. Kullanılabilirlik alanı ayarları, yalnızca küme veya düğüm havuzu oluşturma sırasında tanımlanabilir.
 
-Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* adlı bir aks kümesi oluşturur. Toplam *3* düğüm oluşturulur-bölge *1*' de bir aracı, biri *2*' de ve diğeri *3*' te.
+Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *Myakscluster* adlı bir aks kümesi oluşturur. Toplam *3* düğüm oluşturulur-bölge *1* ' de bir aracı, biri *2* ' de ve diğeri *3* ' te.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus2

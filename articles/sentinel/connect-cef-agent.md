@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: a54dfa0f2b072d30cac605937a1b623ef9d4051d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab02cc7e60870852666c8c01ccc17a1b1102a62
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631503"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742837"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. Adım: günlük ileticisini dağıtma
 
 
 Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma alanınıza ileten Linux makinesini belirlersiniz ve yapılandıracaksınız. Bu makine, şirket içi ortamınızda, Azure VM 'de veya başka bir buluttaki bir sanal makinede bulunan fiziksel veya sanal bir makine olabilir. Belirtilen bağlantıyı kullanarak, belirlenen makinede aşağıdaki görevleri gerçekleştiren bir komut dosyası çalıştırırsınız:
+
 - , Linux için Log Analytics aracısını (OMS Aracısı olarak da bilinir) yükleyerek aşağıdaki amaçlarla yapılandırır:
     - TCP bağlantı noktası 25226 ' deki yerleşik Linux Syslog arka plan programından CEF iletilerini dinleme
     - Bunların ayrıştırılabildiği ve zenginleştirdiği Azure Sentinel çalışma alanınıza TLS üzerinden güvenli bir şekilde gönderme
@@ -36,18 +37,25 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Belirlenen Linux makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
-- Linux makinesinde Python yüklü olmalıdır.<br>`python -version`Denetlemek için komutunu kullanın.
+
+- Linux makinesinde **python 2,7** ' in yüklü olması gerekir.<br>`python -version`Denetlemek için komutunu kullanın.
+
 - Log Analytics aracısını yüklemeden önce Linux makinenin herhangi bir Azure çalışma alanına bağlı olmaması gerekir.
+
+- Bu işlemin bir noktasında çalışma alanı KIMLIĞI ve çalışma alanı birincil anahtarına ihtiyacınız olabilir. Onları çalışma alanı kaynağında, **aracılar yönetimi** altında bulabilirsiniz.
 
 ## <a name="run-the-deployment-script"></a>Dağıtım betiğini çalıştırma
  
-1. Azure Sentinel gezinti menüsünde, **veri bağlayıcıları**' na tıklayın. Bağlayıcılar listesinden **ortak olay biçimi (CEF)** kutucuğuna ve ardından sağ alt köşedeki **bağlayıcı sayfası aç** düğmesine tıklayın. 
+1. Azure Sentinel gezinti menüsünde, **veri bağlayıcıları** ' na tıklayın. Bağlayıcılar listesinden **ortak olay biçimi (CEF)** kutucuğuna ve ardından sağ alt köşedeki **bağlayıcı sayfası aç** düğmesine tıklayın. 
 
-1. **1,2 altına Linux MAKINESINE CEF toplayıcısı**'nı yüklemek için aşağıdaki betiği çalıştırın altında belirtilen bağlantıyı kopyalayın **ve CEF toplayıcısı 'nı yüklemek ve uygulamak için aşağıdaki**metni:
+1. 1,2 altında, **CEF toplayıcısını Linux makinesine yüklemek** için aşağıdaki betiği Çalıştır altında belirtilen bağlantıyı kopyalayın **ve CEF toplayıcısı 'nı yüklemek ve uygulamak için aşağıdaki** METINDEN (çalışma alanı kimliğini ve birincil anahtarı yer tutucuları yerine uygulayarak) uygulayın:
 
-     `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    ```bash
+    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    ```
 
 1. Betik çalışırken, herhangi bir hata veya uyarı iletisi aldığınızdan emin olmak için kontrol edin.
+    - *Bilgisayar* alanının eşlemesiyle bir sorunu düzeltmek için bir komut çalıştırmanızı yönlendiren bir ileti alabilirsiniz. Ayrıntılar için [dağıtım betiğinin](#mapping-command) açıklamasına bakın.
 
 > [!NOTE]
 > **Hem düz Syslog *hem* de CEF iletilerini iletmek için aynı makineyi kullanma**
@@ -122,12 +130,15 @@ Uygun açıklamayı görmek için bir Syslog Daemon seçin.
 
 1. ***Bilgisayar* alanının beklenen şekilde eşlenmesi doğrulanıyor:**
 
-    - Syslog kaynağındaki *bilgisayar* alanının, bu komutu çalıştırarak ve aracıyı yeniden başlatarak Log Analytics aracısında düzgün şekilde eşlenmesini sağlar.
+    - Syslog kaynağındaki *bilgisayar* alanının, aşağıdaki komutu kullanarak Log Analytics aracısında düzgün şekilde eşlenmesini sağlar: 
 
         ```bash
-        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
+        ```
+    - <a name="mapping-command"></a>Eşlemeyle ilgili bir sorun varsa, komut dosyası **aşağıdaki komutu el ile çalıştırmanızı** yönlendiren bir hata iletisi üretir (yer tutucunun yerine çalışma alanı kimliğini uygulama). Komut doğru eşlemeyi güvence altına alacak ve aracıyı yeniden başlatacaktır.
+    
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
 # <a name="syslog-ng-daemon"></a>[Syslog-ng Daemon](#tab/syslogng)
@@ -187,15 +198,16 @@ Uygun açıklamayı görmek için bir Syslog Daemon seçin.
 
 1. ***Bilgisayar* alanının beklenen şekilde eşlenmesi doğrulanıyor:**
 
-    - Syslog kaynağındaki *bilgisayar* alanının, bu komutu çalıştırarak ve aracıyı yeniden başlatarak Log Analytics aracısında düzgün şekilde eşlenmesini sağlar.
+    - Syslog kaynağındaki *bilgisayar* alanının, aşağıdaki komutu kullanarak Log Analytics aracısında düzgün şekilde eşlenmesini sağlar: 
 
         ```bash
-        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
         ```
-
-
+    - <a name="mapping-command"></a>Eşlemeyle ilgili bir sorun varsa, komut dosyası **aşağıdaki komutu el ile çalıştırmanızı** yönlendiren bir hata iletisi üretir (yer tutucunun yerine çalışma alanı kimliğini uygulama). Komut doğru eşlemeyi güvence altına alacak ve aracıyı yeniden başlatacaktır.
+    
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, CEF gereçlerini Azure Sentinel 'e bağlamak için Log Analytics aracısının nasıl dağıtılacağını öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:

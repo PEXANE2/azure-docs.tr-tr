@@ -6,13 +6,13 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.custom: cli-validate
-ms.openlocfilehash: 9c984daa380f1d4f0a7b067604ab66ba14a0b70b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: cli-validate, devx-track-azurecli
+ms.openlocfilehash: 7945c6c6f834de068665e3400440d2be5dd713ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88084761"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743455"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Öğretici: Kapsayıcılar için Web App uygulamasında çok kapsayıcılı (önizleme) uygulama oluşturma
 
@@ -21,7 +21,7 @@ ms.locfileid: "88084761"
 
 [Kapsayıcılar için Web App](overview.md#app-service-on-linux), Docker görüntülerini esnek bir şekilde kullanmanızı sağlar. Bu öğreticide WordPress ve MySQL kullanarak çok kapsayıcılı bir uygulama oluşturmayı öğreneceksiniz. Bu öğreticiyi Cloud Shell'de tamamlayacaksınız ama bu komutları [Azure CLI](/cli/azure/install-azure-cli) komut satırı aracı (2.0.32 veya üzeri) ile yerel olarak da çalıştırabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir Docker Compose yapılandırmasını Kapsayıcılar için Web App ile çalışacak biçime dönüştürme
@@ -138,7 +138,7 @@ Dağıtılan uygulamaya göz atmak için (`http://<app-name>.azurewebsites.net`)
 
 ![Kapsayıcılar için Web App üzerinde örnek çok kapsayıcılı uygulama][1]
 
-**Tebrikler**, kapsayıcılar için Web App içinde çok kapsayıcılı bir uygulama oluşturdunuz. Şimdi uygulamanızı MySQL için Azure Veritabanı'nı kullanacak şekilde yapılandıracaksınız. WordPress'i şu anda yüklemeyin.
+**Tebrikler** , kapsayıcılar için Web App içinde çok kapsayıcılı bir uygulama oluşturdunuz. Şimdi uygulamanızı MySQL için Azure Veritabanı'nı kullanacak şekilde yapılandıracaksınız. WordPress'i şu anda yüklemeyin.
 
 ## <a name="connect-to-production-database"></a>Üretim veritabanına bağlanma
 
@@ -148,7 +148,7 @@ Dağıtılan uygulamaya göz atmak için (`http://<app-name>.azurewebsites.net`)
 
 Komutuyla bir MySQL için Azure veritabanı sunucusu oluşturun [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) .
 
-Aşağıdaki komutta, MySQL sunucu adını, _ &lt; MySQL-Server-Name>_ yer tutucusunu gördüğünüz yere koyun (geçerli karakterler `a-z` , `0-9` ve `-` ). Bu ad, MySQL sunucusu ana bilgisayar adının (`<mysql-server-name>.database.windows.net`) bir parçasıdır ve genel olarak benzersiz olması gerekir.
+Aşağıdaki komutta, MySQL sunucu adını, _&lt; MySQL-Server-Name>_ yer tutucusunu gördüğünüz yere koyun (geçerli karakterler `a-z` , `0-9` ve `-` ). Bu ad, MySQL sunucusu ana bilgisayar adının (`<mysql-server-name>.database.windows.net`) bir parçasıdır ve genel olarak benzersiz olması gerekir.
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
@@ -413,7 +413,7 @@ services:
 
 ### <a name="configure-environment-variables"></a>Ortam değişkenlerini yapılandırma
 
-Redis'i kullanmak için App Service'te `WP_REDIS_HOST` ayarını etkinleştirmeniz gerekir. Bu, WordPress'in Redis ana bilgisayarıyla iletişim kurabilmesi için *yapılması gerekli olan bir ayardır*. Bu değişikliği yapmak için Cloud Shell'de [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanın. Uygulama ayarları büyük/küçük harfe duyarlıdır ve boşlukla ayrılmıştır.
+Redis'i kullanmak için App Service'te `WP_REDIS_HOST` ayarını etkinleştirmeniz gerekir. Bu, WordPress'in Redis ana bilgisayarıyla iletişim kurabilmesi için *yapılması gerekli olan bir ayardır* . Bu değişikliği yapmak için Cloud Shell'de [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanın. Uygulama ayarları büyük/küçük harfe duyarlıdır ve boşlukla ayrılmıştır.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WP_REDIS_HOST="redis"
@@ -464,17 +464,17 @@ Adımları tamamlayın ve WordPress'i yükleyin.
 
 ### <a name="connect-wordpress-to-redis"></a>WordPress'i Redis'e bağlama
 
-WordPress Yöneticisi ' nde oturum açın. Sol gezinti bölmesinde, **Eklentiler**' i seçin ve ardından **yüklü eklentiler**' i seçin.
+WordPress Yöneticisi ' nde oturum açın. Sol gezinti bölmesinde, **Eklentiler** ' i seçin ve ardından **yüklü eklentiler** ' i seçin.
 
 ![WordPress Eklentileri'ni seçin][2]
 
 Tüm eklentiler burada gösterilir
 
-Eklentiler sayfasında **Redis Object Cache**'i bulun ve **Etkinleştir**'e tıklayın.
+Eklentiler sayfasında **Redis Object Cache** 'i bulun ve **Etkinleştir** 'e tıklayın.
 
 ![Redis'i etkinleştirme][3]
 
-**Ayarlar**’a tıklayın.
+**Ayarlar** ’a tıklayın.
 
 ![Ayarlar'a tıklayın][4]
 
@@ -486,7 +486,7 @@ WordPress, Redis sunucusuna bağlanır. Bağlantı **durumu** aynı sayfada gör
 
 ![WordPress, Redis sunucusuna bağlanır. Bağlantı **durumu** aynı sayfada görüntülenir.][6]
 
-**Tebrikler**, WordPress'i Redis'e bağladınız. Üretime hazır uygulama artık **MySQL için Azure Veritabanı, kalıcı depolama ve Redis**'i kullanıyor. Artık App Service Planınızı birden fazla örnek olacak şekilde ölçeklendirebilirsiniz.
+**Tebrikler** , WordPress'i Redis'e bağladınız. Üretime hazır uygulama artık **MySQL için Azure Veritabanı, kalıcı depolama ve Redis** 'i kullanıyor. Artık App Service Planınızı birden fazla örnek olacak şekilde ölçeklendirebilirsiniz.
 
 ## <a name="find-docker-container-logs"></a>Docker Kapsayıcısı günlüklerini bulma
 

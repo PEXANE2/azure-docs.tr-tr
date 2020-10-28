@@ -4,13 +4,13 @@ description: Hem Azure portal hem de Azure CLı kullanarak Web uygulamalarının
 ms.topic: quickstart
 ms.date: 10/06/2020
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: b489f7daebc9232088020948752c3792dca65095
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 935baef209811146d0b60f4fc02986818fd103a7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018755"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743785"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
@@ -22,9 +22,9 @@ Bu kılavuz, App Service içinde yerleşik bir Linux kapsayıcısı kullanan Pyt
 
 Yapılandırma için [Azure Portal](https://portal.azure.com) ya da Azure CLI 'yi kullanabilirsiniz:
 
-- **Azure Portal**, **Settings**  >  [Azure Portal App Service uygulama yapılandırma](configure-common.md)sayfasında açıklandığı şekilde uygulamanın Ayarlar**yapılandırma** sayfasını kullanın.
+- **Azure Portal** , **Settings**  >  [Azure Portal App Service uygulama yapılandırma](configure-common.md)sayfasında açıklandığı şekilde uygulamanın Ayarlar **yapılandırma** sayfasını kullanın.
 
-- **Azure CLI**: iki seçeneğiniz vardır.
+- **Azure CLI** : iki seçeneğiniz vardır.
 
     - Kod bloklarının sağ üst köşesinde bulunan **deneyin** düğmesini kullanarak açabileceğiniz [Azure Cloud Shell](../cloud-shell/overview.md)komutları çalıştırın.
     - [Azure CLI](/cli/azure/install-azure-cli)'nın en son sürümünü yükleyerek komutları yerel olarak çalıştırın ve [az Login](/cli/azure/reference-index#az-login)komutunu kullanarak Azure 'da oturum açın.
@@ -34,9 +34,9 @@ Yapılandırma için [Azure Portal](https://portal.azure.com) ya da Azure CLI 'y
 
 ## <a name="configure-python-version"></a>Python sürümünü Yapılandır
 
-- **Azure Portal**: **yapılandırma** sayfasında, Linux kapsayıcıları için [genel ayarları yapılandırma](configure-common.md#configure-general-settings) bölümünde açıklandığı gibi **Genel ayarlar** sekmesini kullanın.
+- **Azure Portal** : **yapılandırma** sayfasında, Linux kapsayıcıları için [genel ayarları yapılandırma](configure-common.md#configure-general-settings) bölümünde açıklandığı gibi **Genel ayarlar** sekmesini kullanın.
 
-- **Azure CLI**:
+- **Azure CLI** :
 
     -  [Az WebApp config Show](/cli/azure/webapp/config#az_webapp_config_show)komutuyla geçerli Python sürümünü göster:
     
@@ -68,8 +68,8 @@ Bunun yerine kendi kapsayıcı görüntünüzü oluşturarak desteklenmeyen bir 
 App Service, Oryx olarak adlandırılan yapı sistemi, git veya ZIP paketleri kullanarak uygulamanızı dağıtırken aşağıdaki adımları gerçekleştirir:
 
 1. Bu ayar tarafından belirtilmişse özel bir ön derleme betiği çalıştırın `PRE_BUILD_COMMAND` .
-1. `pip install -r requirements.txt` komutunu çalıştırın. *requirements.txt* dosya projenin kök klasöründe bulunmalıdır. Aksi takdirde, yapı işlemi şu hatayı raporlar: "setup.py bulunamadı veya requirements.txt; Pınstall çalışmıyor. "
-1. Depo kökünde *Manage.py* bulunursa (bir Docgo uygulaması olduğunu), *Manage.py collectstatic*komutunu çalıştırın. Ancak, `DISABLE_COLLECTSTATIC` ayar ise, `true` Bu adım atlanır.
+1. Şu komutu çalıştırın: `pip install -r requirements.txt`. *requirements.txt* dosya projenin kök klasöründe bulunmalıdır. Aksi takdirde, yapı işlemi şu hatayı raporlar: "setup.py bulunamadı veya requirements.txt; Pınstall çalışmıyor. "
+1. Depo kökünde *Manage.py* bulunursa (bir Docgo uygulaması olduğunu), *Manage.py collectstatic* komutunu çalıştırın. Ancak, `DISABLE_COLLECTSTATIC` ayar ise, `true` Bu adım atlanır.
 1. Ayar tarafından belirtilmişse özel derleme sonrası betiği çalıştırın `POST_BUILD_COMMAND` .
 
 Varsayılan olarak,, `PRE_BUILD_COMMAND` `POST_BUILD_COMMAND` ve `DISABLE_COLLECTSTATIC` ayarları boştur. 
@@ -90,7 +90,7 @@ App Service çalışma ve Linux 'ta Python uygulamaları oluşturma hakkında da
 > `SCM_DO_BUILD_DURING_DEPLOYMENT`Ya da 1 içeriyorsa adlı bir ayar `true` , dağıtım sırasında bir Oryx derlemesini tetikler. Bu ayar, git kullanılarak dağıtıldığında, Azure CLı komutuyla `az webapp up` ve Visual Studio Code doğru olur.
 
 > [!NOTE]
-> Oryx 'in çalıştığı yapı kapsayıcısı uygulamanın çalıştığı çalışma zamanı kapsayıcısından farklı olduğundan, her zaman tüm ön ve derleme sonrası betiklerdeki göreli yolları kullanın. Uygulama Projesi klasörünüzün kapsayıcı içinde tam olarak yerleştirilme (örneğin, *site/Wwwroot*altına yerleştirilmiş olması) hiçbir şekilde güvenmeyin.
+> Oryx 'in çalıştığı yapı kapsayıcısı uygulamanın çalıştığı çalışma zamanı kapsayıcısından farklı olduğundan, her zaman tüm ön ve derleme sonrası betiklerdeki göreli yolları kullanın. Uygulama Projesi klasörünüzün kapsayıcı içinde tam olarak yerleştirilme (örneğin, *site/Wwwroot* altına yerleştirilmiş olması) hiçbir şekilde güvenmeyin.
 
 ## <a name="production-settings-for-django-apps"></a>Docgo uygulamaları için üretim ayarları
 
@@ -102,7 +102,7 @@ Aşağıdaki tabloda, Azure ile ilgili üretim ayarları açıklanmaktadır. Bu 
 | --- | --- |
 | `SECRET_KEY` | Değeri, [uygulama ayarlarında ortam değişkenleri olarak erişim](#access-app-settings-as-environment-variables)bölümünde açıklandığı gibi bir App Service ayarında depolayın. [Değeri, Azure Key Vault ' de bir "secrete" olarak da saklayabilirsiniz](/azure/key-vault/secrets/quick-create-python). |
 | `DEBUG` | `DEBUG`App Service 0 (false) değeriyle bir ayar oluşturun ve ardından değeri bir ortam değişkeni olarak yükleyin. Geliştirme ortamınızda, `DEBUG` 1 değerine sahip bir ortam değişkeni oluşturun (true). |
-| `ALLOWED_HOSTS` | Üretimde, Docgo, uygulamanın URL 'sini `ALLOWED_HOSTS` *Settings.py*dizisine dahil etmeniz gerekir. Bu URL 'YI çalışma zamanında bu kodla elde edebilirsiniz `os.environ['WEBSITE_HOSTNAME']` . App Service, `WEBSITE_HOSTNAME` ortam değişkenini otomatik olarak uygulamanın URL 'si olarak ayarlar. |
+| `ALLOWED_HOSTS` | Üretimde, Docgo, uygulamanın URL 'sini `ALLOWED_HOSTS` *Settings.py* dizisine dahil etmeniz gerekir. Bu URL 'YI çalışma zamanında bu kodla elde edebilirsiniz `os.environ['WEBSITE_HOSTNAME']` . App Service, `WEBSITE_HOSTNAME` ortam değişkenini otomatik olarak uygulamanın URL 'si olarak ayarlar. |
 | `DATABASES` | Veritabanı bağlantısı için App Service ayarları tanımlayın ve sözlüğü doldurmak için ortam değişkenleri olarak yükleyin [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) . Değerleri (özellikle Kullanıcı adı ve parola) [gizli Azure Key Vault](/azure/key-vault/secrets/quick-create-python)olarak saklayabilirsiniz. |
 
 ## <a name="container-characteristics"></a>Kapsayıcı özellikleri
@@ -144,7 +144,7 @@ Django uygulamaları için App Service uygulama kodunuzda `wsgi.py` adlı bir do
 gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
 
-Başlangıç komutu üzerinde daha özel denetim istiyorsanız, [özel bir başlangıç komutu](#customize-startup-command)kullanın, `<module>` *wsgi.py*içeren klasörün adıyla değiştirin ve `--chdir` Bu modül proje kökünde değilse bir bağımsız değişken ekleyin. Örneğin, *wsgi.py* 'niz proje kökünden *knboard/arka uç/yapılandırma* altında bulunuyorsa, bağımsız değişkenleri kullanın `--chdir knboard/backend config.wsgi` .
+Başlangıç komutu üzerinde daha özel denetim istiyorsanız, [özel bir başlangıç komutu](#customize-startup-command)kullanın, `<module>` *wsgi.py* içeren klasörün adıyla değiştirin ve `--chdir` Bu modül proje kökünde değilse bir bağımsız değişken ekleyin. Örneğin, *wsgi.py* 'niz proje kökünden *knboard/arka uç/yapılandırma* altında bulunuyorsa, bağımsız değişkenleri kullanın `--chdir knboard/backend config.wsgi` .
 
 Üretim günlüğünü etkinleştirmek için, `--access-logfile` ve `--error-logfile` parametrelerini [özel başlangıç komutları](#customize-startup-command)için örneklerde gösterildiği gibi ekleyin.
 
@@ -172,15 +172,15 @@ App Service özel komut dosyası, Django uygulaması veya Flask uygulaması bula
 
 Bu makalede daha önce belirtildiği gibi, guniclerconfiguration ['a genel bakış](https://docs.gunicorn.org/en/stable/configure.html#configuration-file)bölümünde açıklandığı gibi, proje kökündeki bir *Gunicorn.conf.py* dosyası aracılığıyla gunicyasaları için yapılandırma ayarları sağlayabilirsiniz.
 
-Bu yapılandırma yeterli değilse, bir başlangıç komut dosyasında özel bir başlangıç komutu veya birden çok komut sağlayarak kapsayıcının başlangıç davranışını kontrol edebilirsiniz. Bir başlangıç komut dosyası, seçtiğiniz adı (örneğin, *Startup.sh*, *Startup. cmd*, *startup.txt*vb.) kullanabilir.
+Bu yapılandırma yeterli değilse, bir başlangıç komut dosyasında özel bir başlangıç komutu veya birden çok komut sağlayarak kapsayıcının başlangıç davranışını kontrol edebilirsiniz. Bir başlangıç komut dosyası, seçtiğiniz adı (örneğin, *Startup.sh* , *Startup. cmd* , *startup.txt* vb.) kullanabilir.
 
 Tüm komutların, proje kök klasörü için göreli yollar kullanması gerekir.
 
 Başlangıç komutunu veya komut dosyasını belirtmek için:
 
-- **Azure Portal**: uygulamanın **yapılandırma** sayfasını seçin ve ardından **Genel ayarlar**' ı seçin. **Başlangıç komutu** alanında, başlangıç komutunuz tam metnini veya başlangıç komut dosyanızın adını yerleştirin. Sonra değişiklikleri uygulamak için **Kaydet** ' i seçin. Bkz. Linux kapsayıcıları için [genel ayarları yapılandırma](configure-common.md#configure-general-settings) .
+- **Azure Portal** : uygulamanın **yapılandırma** sayfasını seçin ve ardından **Genel ayarlar** ' ı seçin. **Başlangıç komutu** alanında, başlangıç komutunuz tam metnini veya başlangıç komut dosyanızın adını yerleştirin. Sonra değişiklikleri uygulamak için **Kaydet** ' i seçin. Bkz. Linux kapsayıcıları için [genel ayarları yapılandırma](configure-common.md#configure-general-settings) .
 
-- **Azure CLI**: başlangıç komutunu veya dosyayı ayarlamak için [az WebApp config Set](/cli/azure/webapp/config#az_webapp_config_set) komutunu parametresiyle birlikte kullanın `--startup-file` :
+- **Azure CLI** : başlangıç komutunu veya dosyayı ayarlamak için [az WebApp config Set](/cli/azure/webapp/config#az_webapp_config_set) komutunu parametresiyle birlikte kullanın `--startup-file` :
 
     ```azurecli-interactive
     az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -192,7 +192,7 @@ App Service, özel bir başlangıç komutunu veya dosyasını işlerken meydana 
 
 ### <a name="example-startup-commands"></a>Örnek başlangıç komutları
 
-- **Gunicbir bağımsız değişken eklendi**: Aşağıdaki örnek, `--workers=4` bir dmongo uygulamasını başlatmak için gunicbir komut satırına ekler: 
+- **Gunicbir bağımsız değişken eklendi** : Aşağıdaki örnek, `--workers=4` bir dmongo uygulamasını başlatmak için gunicbir komut satırına ekler: 
 
     ```bash
     # <module-path> is the relative path to the folder that contains the module
@@ -202,7 +202,7 @@ App Service, özel bir başlangıç komutunu veya dosyasını işlerken meydana 
 
     Daha fazla bilgi için bkz. [Gunicorn'u Çalıştırma](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-- **Docgo için üretim günlüğünü etkinleştir**: `--access-logfile '-'` `--error-logfile '-'` komut satırına ve bağımsız değişkenlerini ekleyin:
+- **Docgo için üretim günlüğünü etkinleştir** : `--access-logfile '-'` `--error-logfile '-'` komut satırına ve bağımsız değişkenlerini ekleyin:
 
     ```bash    
     # '-' for the log files means stdout for --access-logfile and stderr for --error-logfile.
@@ -213,7 +213,7 @@ App Service, özel bir başlangıç komutunu veya dosyasını işlerken meydana 
 
     Daha fazla bilgi için bkz. [Gunicgınlogging](https://docs.gunicorn.org/en/stable/settings.html#logging) (docs.gunicorn.org).
     
-- **Özel Flask ana modülü**: varsayılan olarak, App Service bir Flask uygulamasının ana modülünün *Application.py* veya *app.py*olduğunu varsayar. Ana modülünüzün farklı bir ad kullanması durumunda başlangıç komutunu özelleştirmeniz gerekir. Örneğin, YF, ana modülü *Hello.py* olan bir Flask uygulaması ve bu dosyadaki Flask uygulaması nesnesi olarak adlandırılmışsa `myapp` , komut aşağıdaki gibidir:
+- **Özel Flask ana modülü** : varsayılan olarak, App Service bir Flask uygulamasının ana modülünün *Application.py* veya *app.py* olduğunu varsayar. Ana modülünüzün farklı bir ad kullanması durumunda başlangıç komutunu özelleştirmeniz gerekir. Örneğin, YF, ana modülü *Hello.py* olan bir Flask uygulaması ve bu dosyadaki Flask uygulaması nesnesi olarak adlandırılmışsa `myapp` , komut aşağıdaki gibidir:
 
     ```bash
     gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -225,7 +225,7 @@ App Service, özel bir başlangıç komutunu veya dosyasını işlerken meydana 
     gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
     ```
     
-- **Gunicıse sunucusu kullanın**: [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)gibi farklı bir Web sunucusu kullanmak için, başlangıç komutu olarak veya başlangıç komut dosyasında uygun komutu kullanın:
+- **Gunicıse sunucusu kullanın** : [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)gibi farklı bir Web sunucusu kullanmak için, başlangıç komutu olarak veya başlangıç komut dosyasında uygun komutu kullanın:
 
     ```bash
     python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -256,7 +256,7 @@ Popüler Web çerçeveleri `X-Forwarded-*` Standart uygulama hiyerarşinizdeki b
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-linux-no-h.md)]
 
-Günlüklere Azure Portal erişmek için, **Monitoring**  >  uygulamanızın sol taraftaki menüsünde izleme**günlüğü akışı** ' nı seçin.
+Günlüklere Azure Portal erişmek için, **Monitoring**  >  uygulamanızın sol taraftaki menüsünde izleme **günlüğü akışı** ' nı seçin.
 
 ## <a name="open-ssh-session-in-browser"></a>Tarayıcıda SSH oturumu açma
 
@@ -282,9 +282,9 @@ Günlüklere Azure Portal erişmek için, **Monitoring**  >  uygulamanızın sol
 
     - Herhangi bir hata iletisi için [günlük akışını](#access-diagnostic-logs) inceleyin.
 
-- **Günlük akışında "Setup.py bulunamadı veya requirements.txt; Pyx Install çalışmıyor. "**: Oryx derleme işlemi *requirements.txt* dosyanızı bulamadı.
+- **Günlük akışında "Setup.py bulunamadı veya requirements.txt; Pyx Install çalışmıyor. "** : Oryx derleme işlemi *requirements.txt* dosyanızı bulamadı.
 
-    - App Service doğrudan bağlanmak ve *requirements.txt* doğrudan *site/Wwwroot*altında var olduğunu doğrulamak Için SSH veya kudu konsolunu kullanın. Mevcut değilse, siteyi deponuzda mevcut yapın ve dağıtımınıza dahil edin. Ayrı bir klasörde varsa, onu köke taşıyın.
+    - App Service doğrudan bağlanmak ve *requirements.txt* doğrudan *site/Wwwroot* altında var olduğunu doğrulamak Için SSH veya kudu konsolunu kullanın. Mevcut değilse, siteyi deponuzda mevcut yapın ve dağıtımınıza dahil edin. Ayrı bir klasörde varsa, onu köke taşıyın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

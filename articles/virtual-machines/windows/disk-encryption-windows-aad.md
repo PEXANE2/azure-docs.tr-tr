@@ -7,13 +7,13 @@ ms.subservice: security
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
-ms.custom: seodec18
-ms.openlocfilehash: 0e8ea218aa9c557fb109aee0dba318cfd5f605c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 352c8848b98bfb463c03ceea89ebe3f4b6ad6d5b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836250"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742435"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Windows VM 'Leri için Azure AD ile Azure disk şifrelemesi (önceki sürüm)
 
@@ -31,7 +31,7 @@ Birçok disk şifreleme senaryosunu etkinleştirebilirsiniz ve adımlar senaryoy
 ## <a name="enable-encryption-on-new-iaas-vms-created-from-the-marketplace"></a>Market 'ten oluşturulan yeni IaaS sanal makinelerinde şifrelemeyi etkinleştirme
 Kaynak Yöneticisi şablonu kullanarak Azure 'daki Market 'ten yeni IaaS Windows VM 'de disk şifrelemeyi etkinleştirebilirsiniz. Şablon, Windows Server 2012 Galeri görüntüsünü kullanarak yeni bir şifrelenmiş Windows VM oluşturur.
 
-1. [Kaynak Yöneticisi şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image) **Azure 'a dağıt**' a tıklayın.
+1. [Kaynak Yöneticisi şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image) **Azure 'a dağıt** ' a tıklayın.
 
 2. Abonelik, kaynak grubu, kaynak grubu konumu, parametreler, yasal koşullar ve Sözleşme ' yi seçin. Şifrelemenin etkinleştirildiği yeni bir IaaS VM 'si dağıtmak için **satın al** ' a tıklayın.
 
@@ -48,7 +48,7 @@ Kaynak Yöneticisi şablonu kullanarak Azure 'daki Market 'ten yeni IaaS Windows
          Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
          ```
 
-     -  VM 'yi seçin ve ardından portalda şifreleme durumunu doğrulamak için **Ayarlar** başlığı altında **diskler** ' e tıklayın. **Şifreleme**altındaki grafikte etkinleştirilip etkinleştirilmediğini görürsünüz. 
+     -  VM 'yi seçin ve ardından portalda şifreleme durumunu doğrulamak için **Ayarlar** başlığı altında **diskler** ' e tıklayın. **Şifreleme** altındaki grafikte etkinleştirilip etkinleştirilmediğini görürsünüz. 
            ![Azure portal disk şifrelemesi etkin](../media/disk-encryption/disk-encryption-fig2.png)
 
 Aşağıdaki tabloda Azure AD istemci KIMLIĞI kullanılarak Market senaryosundan yeni VM 'Ler için Kaynak Yöneticisi şablon parametreleri listelenmektedir:
@@ -156,7 +156,7 @@ Azure 'da çalışan bir IaaS sanal makinesinde şifrelemeyi etkinleştirmek iç
 [Çalışan bir WINDOWS VM 'yi şifrelemek için Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)kullanarak Azure 'da var olan veya çalışan IaaS Windows VM 'lerinde disk şifrelemeyi etkinleştirebilirsiniz.
 
 
-1. Azure hızlı başlangıç şablonunda **Azure 'A dağıt**' a tıklayın.
+1. Azure hızlı başlangıç şablonunda **Azure 'A dağıt** ' a tıklayın.
 
 2. Abonelik, kaynak grubu, kaynak grubu konumu, parametreler, yasal koşullar ve Sözleşme ' yi seçin. Mevcut veya çalışan IaaS VM üzerinde şifrelemeyi etkinleştirmek için **satın al** ' a tıklayın.
 
@@ -168,7 +168,7 @@ Aşağıdaki tabloda, bir Azure AD istemci KIMLIĞI kullanan mevcut veya çalı�
 | AADClientSecret | Anahtar kasasına gizli diziler yazma izinleri olan Azure AD uygulamasının istemci gizli anahtarı. |
 | keyVaultName | BitLocker anahtarının yüklenmesi gereken anahtar kasasının adı. Bunu, cmdlet 'ini `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` veya Azure CLI komutunu kullanarak edinebilirsiniz `az keyvault list --resource-group "MySecureGroup"`|
 |  keyEncryptionKeyURL 'Si | Oluşturulan BitLocker anahtarını şifrelemek için kullanılan anahtar şifreleme anahtarının URL 'SI. UseExistingKek açılır listesinde **nokek** ' ı seçerseniz bu parametre isteğe bağlıdır. UseExistingKek açılır listesinde **kek** ' yi seçerseniz _Keyencryptionkeyurl_ değerini girmeniz gerekir. |
-| Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Geçerli değerler _Işletim sistemi_, _veri_ve _hepsi_. |
+| Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Geçerli değerler _Işletim sistemi_ , _veri_ ve _hepsi_ . |
 | sequenceVersion | BitLocker işleminin sıra sürümü. Aynı VM 'de her disk şifreleme işlemi gerçekleştirildiğinde bu sürüm numarasını artırın. |
 | vmName | Şifreleme işleminin gerçekleştirileceği sanal makinenin adı. |
 

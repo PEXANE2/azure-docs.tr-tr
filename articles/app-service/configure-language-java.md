@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
-ms.custom: seodec18, devx-track-java
+ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2e77d76ddae540a311655eca36c53b23c418f5e3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171584"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744147"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service için bir Java uygulaması yapılandırma
 
@@ -330,29 +330,29 @@ Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platfor
 ::: zone pivot="platform-windows"
 
 1. [NewRelic.com](https://newrelic.com/signup) adresinde bir Newrelik hesabı oluşturun
-2. Newrelik 'ten Java aracısını indirin, *newrelic-java-x.x.x.zip*benzer bir dosya adı olacaktır.
+2. Newrelik 'ten Java aracısını indirin, *newrelic-java-x.x.x.zip* benzer bir dosya adı olacaktır.
 3. Lisans anahtarınızı kopyalayın, aracıyı daha sonra yapılandırmak için gerekir.
-4. [App Service örneğine SSH ekleyin](configure-linux-open-ssh-session.md) ve */Home/site/Wwwroot/APM*adlı yeni bir dizin oluşturun.
-5. Paketi açılan Newrelik Java aracı dosyalarını */Home/site/Wwwroot/APM*altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/newrelik*konumunda olmalıdır.
+4. [App Service örneğine SSH ekleyin](configure-linux-open-ssh-session.md) ve */Home/site/Wwwroot/APM* adlı yeni bir dizin oluşturun.
+5. Paketi açılan Newrelik Java aracı dosyalarını */Home/site/Wwwroot/APM* altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/newrelik* konumunda olmalıdır.
 6. */Home/site/Wwwroot/APM/newrelic/newrelic.exe* konumundaki YAML dosyasını değiştirin ve yer tutucu lisans değerini kendi lisans anahtarınızla değiştirin.
 7. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
 
     - **Java SE** uygulamaları için, değeriyle adlı bir ortam değişkeni oluşturun `JAVA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
-    - **Tomcat**için, değeriyle adlı bir ortam değişkeni oluşturun `CATALINA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - **Tomcat** için, değeriyle adlı bir ortam değişkeni oluşturun `CATALINA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ::: zone-end
 ::: zone pivot="platform-linux"
 
 1. [NewRelic.com](https://newrelic.com/signup) adresinde bir Newrelik hesabı oluşturun
-2. Newrelik 'ten Java aracısını indirin, *newrelic-java-x.x.x.zip*benzer bir dosya adı olacaktır.
+2. Newrelik 'ten Java aracısını indirin, *newrelic-java-x.x.x.zip* benzer bir dosya adı olacaktır.
 3. Lisans anahtarınızı kopyalayın, aracıyı daha sonra yapılandırmak için gerekir.
-4. [App Service örneğine SSH ekleyin](configure-linux-open-ssh-session.md) ve */Home/site/Wwwroot/APM*adlı yeni bir dizin oluşturun.
-5. Paketi açılan Newrelik Java aracı dosyalarını */Home/site/Wwwroot/APM*altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/newrelik*konumunda olmalıdır.
+4. [App Service örneğine SSH ekleyin](configure-linux-open-ssh-session.md) ve */Home/site/Wwwroot/APM* adlı yeni bir dizin oluşturun.
+5. Paketi açılan Newrelik Java aracı dosyalarını */Home/site/Wwwroot/APM* altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/newrelik* konumunda olmalıdır.
 6. */Home/site/Wwwroot/APM/newrelic/newrelic.exe* konumundaki YAML dosyasını değiştirin ve yer tutucu lisans değerini kendi lisans anahtarınızla değiştirin.
 7. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
    
     - **Java SE** uygulamaları için, değeriyle adlı bir ortam değişkeni oluşturun `JAVA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
-    - **Tomcat**için, değeriyle adlı bir ortam değişkeni oluşturun `CATALINA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - **Tomcat** için, değeriyle adlı bir ortam değişkeni oluşturun `CATALINA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ::: zone-end
 
@@ -364,8 +364,8 @@ Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platfor
 
 1. [AppDynamics.com](https://www.appdynamics.com/community/register/) adresinde bir AppDynamics hesabı oluşturun
 2. AppDynamics Web sitesinden Java aracısını indirin, dosya adı *AppServerAgent-x.x.x.xxxxx.zip* benzerdir.
-3. [Kudu konsolunu](https://github.com/projectkudu/kudu/wiki/Kudu-console) kullanarak */Home/site/Wwwroot/APM*adlı yeni bir dizin oluşturun.
-4. Java aracı dosyalarını */Home/site/Wwwroot/APM*altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/AppDynamics*konumunda olmalıdır.
+3. [Kudu konsolunu](https://github.com/projectkudu/kudu/wiki/Kudu-console) kullanarak */Home/site/Wwwroot/APM* adlı yeni bir dizin oluşturun.
+4. Java aracı dosyalarını */Home/site/Wwwroot/APM* altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/AppDynamics* konumunda olmalıdır.
 5. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
 
    - **Java SE** uygulamaları için, `JAVA_OPTS` `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` App Service adınız olan değer ile adlı bir ortam değişkeni oluşturun `<app-name>` .
@@ -376,8 +376,8 @@ Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platfor
 
 1. [AppDynamics.com](https://www.appdynamics.com/community/register/) adresinde bir AppDynamics hesabı oluşturun
 2. AppDynamics Web sitesinden Java aracısını indirin, dosya adı *AppServerAgent-x.x.x.xxxxx.zip* benzerdir.
-3. [App Service örneğine SSH ekleyin](configure-linux-open-ssh-session.md) ve */Home/site/Wwwroot/APM*adlı yeni bir dizin oluşturun.
-4. Java aracı dosyalarını */Home/site/Wwwroot/APM*altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/AppDynamics*konumunda olmalıdır.
+3. [App Service örneğine SSH ekleyin](configure-linux-open-ssh-session.md) ve */Home/site/Wwwroot/APM* adlı yeni bir dizin oluşturun.
+4. Java aracı dosyalarını */Home/site/Wwwroot/APM* altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/AppDynamics* konumunda olmalıdır.
 5. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
 
    - **Java SE** uygulamaları için, `JAVA_OPTS` `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` App Service adınız olan değer ile adlı bir ortam değişkeni oluşturun `<app-name>` .
@@ -437,7 +437,7 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
 
 1. Projenizin *meta INF/* dizininde bir *context.xml* dosyası oluşturun. Yoksa *meta INF/* dizin oluşturun.
 
-2. *context.xml*, `Context` veri kaynağını bir JNDI adresine bağlamak için bir öğe ekleyin. `driverClassName`Yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
+2. *context.xml* , `Context` veri kaynağını bir JNDI adresine bağlamak için bir öğe ekleyin. `driverClassName`Yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
 
     ```xml
     <Context>
@@ -515,7 +515,7 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
 
 1. Projenizin *meta INF/* dizininde bir *context.xml* dosyası oluşturun. Yoksa *meta INF/* dizin oluşturun.
 
-2. *context.xml*, `Context` veri kaynağını bir JNDI adresine bağlamak için bir öğe ekleyin. `driverClassName`Yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
+2. *context.xml* , `Context` veri kaynağını bir JNDI adresine bağlamak için bir öğe ekleyin. `driverClassName`Yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
 
     ```xml
     <Context>
@@ -541,16 +541,16 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
 
 #### <a name="shared-server-level-resources"></a>Paylaşılan sunucu düzeyi kaynakları
 
-Paylaşılan, sunucu düzeyinde bir veri kaynağı eklemek, Tomcat 'in server.xml düzenlemenizi gerektirir. İlk olarak, bir [Başlangıç betiğini](faq-app-service-linux.md#built-in-images) karşıya yükleyin ve yolu **yapılandırma**  >  **Başlangıç komutunda**betiğin yolunu ayarlayın. [FTP](deploy-ftp.md)kullanarak başlangıç betiğini karşıya yükleyebilirsiniz.
+Paylaşılan, sunucu düzeyinde bir veri kaynağı eklemek, Tomcat 'in server.xml düzenlemenizi gerektirir. İlk olarak, bir [Başlangıç betiğini](faq-app-service-linux.md#built-in-images) karşıya yükleyin ve yolu **yapılandırma**  >  **Başlangıç komutunda** betiğin yolunu ayarlayın. [FTP](deploy-ftp.md)kullanarak başlangıç betiğini karşıya yükleyebilirsiniz.
 
 Başlangıç betiğinizin server.xml dosyasına bir [XSL dönüştürmesi](https://www.w3schools.com/xml/xsl_intro.asp) yapıp elde edilen XML dosyasının çıktısını almak için kullanılır `/usr/local/tomcat/conf/server.xml` . Başlangıç betiği APK aracılığıyla libxslt 'yi yüklemelidir. XSL dosyanız ve başlangıç betiğimiz FTP aracılığıyla karşıya yüklenebilir. Aşağıda örnek bir başlangıç betiği verilmiştir.
 
 ```sh
-# Install libxslt. Also copy the transform file to /home/tomcat/conf/
+# Install libxslt. Also copy the transform file to /home/tomcat/conf/
 apk add --update libxslt
 
-# Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
+# Usage: xsltproc --output output.xml style.xsl input.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 Örnek bir xsl dosyası aşağıda verilmiştir. Örnek xsl dosyası, Tomcat server.xml yeni bir bağlayıcı düğümü ekler.
@@ -678,7 +678,7 @@ Son olarak, sürücü JARs ' ı Tomcat Sınıfyoluna yerleştirip App Service ye
     ```
 
 1. İstediğiniz FTP istemcisini kullanarak, JDBC sürücünüzü, `jboss-cli-commands.cli` , `startup_script.sh` ve modül tanımınızı öğesine yükleyin `/site/deployments/tools/` .
-2. Sitenizi kapsayıcı başladığında çalışacak şekilde yapılandırın `startup_script.sh` . Azure portalında, **yapılandırma**  >  **Genel ayarlar**  >  **başlangıç komutu**' na gidin. Başlangıç komut alanını olarak ayarlayın `/home/site/deployments/tools/startup_script.sh` . Değişikliklerinizi **kaydedin** .
+2. Sitenizi kapsayıcı başladığında çalışacak şekilde yapılandırın `startup_script.sh` . Azure portalında, **yapılandırma**  >  **Genel ayarlar**  >  **başlangıç komutu** ' na gidin. Başlangıç komut alanını olarak ayarlayın `/home/site/deployments/tools/startup_script.sh` . Değişikliklerinizi **kaydedin** .
 
 Veri kaynağının Jpatron sunucusuna eklendiğini doğrulamak için, WebApp ile SSH ve çalıştırın `$JBOSS_HOME/bin/jboss-cli.sh --connect` . Jpatron 'a bağlandıktan sonra, `/subsystem=datasources:read-resource` veri kaynaklarının bir listesini yazdırmak için öğesini çalıştırın.
 

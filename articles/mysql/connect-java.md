@@ -4,16 +4,16 @@ description: Bir MySQL veritabanı için Azure veritabanı ile Java ve JDBC kull
 author: jdubois
 ms.author: judubois
 ms.service: mysql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 793cab8b37872788da259e45148e314faa00ea15
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b7db124f8f5ba56f760dc054491990889e4e738f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545149"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745274"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>MySQL için Azure veritabanı ile Java ve JDBC kullanma
 
@@ -21,7 +21,7 @@ Bu konu başlığı altında, [MySQL Için Azure veritabanı](./index.yml)'nda b
 
 JDBC, geleneksel ilişkisel veritabanlarına bağlanmak için standart Java API 'sidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure hesabı. Hiç kimse yoksa [ücretsiz deneme sürümü alın](https://azure.microsoft.com/free/).
 - [Azure Cloud Shell](../cloud-shell/quickstart.md) veya [Azure CLI](/cli/azure/install-azure-cli). Otomatik olarak oturum açabileceksiniz ve ihtiyacınız olan tüm araçlara erişebilmek için Azure Cloud Shell önerilir.

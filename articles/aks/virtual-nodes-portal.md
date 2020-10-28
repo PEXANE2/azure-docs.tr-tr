@@ -4,13 +4,13 @@ description: Bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmak için Azure 
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.custom: references_regions
-ms.openlocfilehash: 0fe8c4753cef9fa829a2cb696e164dbdf5f2b8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: aaada79855b07e390ce3d30a20cd08dc484481c9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297578"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745478"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
@@ -28,7 +28,7 @@ Daha önce ACI kullandıysanız, hizmet sağlayıcısını aboneliğiniz ile kay
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-Aşağıdaki örnek çıktıda gösterildiği gibi, *Microsoft. Containerınstance* sağlayıcısı *kayıtlı*olarak rapor etmelidir:
+Aşağıdaki örnek çıktıda gösterildiği gibi, *Microsoft. Containerınstance* sağlayıcısı *kayıtlı* olarak rapor etmelidir:
 
 ```output
 Namespace                    RegistrationState    RegistrationPolicy
@@ -36,7 +36,7 @@ Namespace                    RegistrationState    RegistrationPolicy
 Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
-Sağlayıcı *Notregistered*olarak gösteriyorsa, aşağıdaki örnekte gösterildiği gibi [az Provider Register][az-provider-register] kullanarak sağlayıcıyı kaydedin:
+Sağlayıcı *Notregistered* olarak gösteriyorsa, aşağıdaki örnekte gösterildiği gibi [az Provider Register][az-provider-register] kullanarak sağlayıcıyı kaydedin:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -76,18 +76,18 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
-Azure Portal sol üst köşesinde **kaynak oluştur**  >  **Kubernetes hizmeti**' ni seçin.
+Azure Portal sol üst köşesinde **kaynak oluştur**  >  **Kubernetes hizmeti** ' ni seçin.
 
 **Temel Bilgiler** sayfasında aşağıdaki seçenekleri yapılandırın:
 
-- *PROJE AYRINTILARI*: Bir Azure aboneliği seçtikten sonra bir Azure kaynak grubu seçin veya *myResourceGroup* adıyla yeni bir tane oluşturun. **Kubernetes kümesi adı** alanına *myAKSCluster* gibi bir ad girin.
-- *KÜME AYRINTILARI*: AKS kümesi için bölge, Kubernetes sürümü ve DNS adı ön eki seçin.
-- *BIRINCIL düğüm havuzu*: aks düğümleri IÇIN bir VM boyutu seçin. AKS kümesi dağıtıldıktan sonra, sanal makine boyutu **değiştirilemez**.
-     - Kümeye dağıtılacak düğüm sayısını seçin. Bu makalede, **düğüm sayısını** *1*olarak ayarlayın. Küme dağıtıldıktan sonra düğüm sayısı **ayarlanabilir**.
+- *PROJE AYRINTILARI* : Bir Azure aboneliği seçtikten sonra bir Azure kaynak grubu seçin veya *myResourceGroup* adıyla yeni bir tane oluşturun. **Kubernetes kümesi adı** alanına *myAKSCluster* gibi bir ad girin.
+- *KÜME AYRINTILARI* : AKS kümesi için bölge, Kubernetes sürümü ve DNS adı ön eki seçin.
+- *BIRINCIL düğüm havuzu* : aks düğümleri IÇIN bir VM boyutu seçin. AKS kümesi dağıtıldıktan sonra, sanal makine boyutu **değiştirilemez** .
+     - Kümeye dağıtılacak düğüm sayısını seçin. Bu makalede, **düğüm sayısını** *1* olarak ayarlayın. Küme dağıtıldıktan sonra düğüm sayısı **ayarlanabilir** .
 
-**İleri: ölçek**öğesine tıklayın.
+**İleri: ölçek** öğesine tıklayın.
 
-**Ölçek** sayfasında, **sanal düğümler**altında *etkin* ' i seçin.
+**Ölçek** sayfasında, **sanal düğümler** altında *etkin* ' i seçin.
 
 ![AKS kümesi oluşturma ve sanal düğümleri etkinleştirme](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
@@ -95,7 +95,7 @@ Varsayılan olarak, bir Azure Active Directory hizmet sorumlusu oluşturulur. Bu
 
 Küme, Gelişmiş ağ için de yapılandırılır. Sanal düğümler kendi Azure sanal ağ alt ağını kullanacak şekilde yapılandırılır. Bu alt ağ, AKS kümesi arasında Azure kaynaklarını bağlama izinlerine temsilci seçti. Henüz temsilci alt ağınız yoksa, Azure portal Azure sanal ağını ve alt ağını sanal düğümlerle kullanılmak üzere oluşturur ve yapılandırır.
 
-**Gözden geçir ve oluştur**’u seçin. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin.
+**Gözden geçir ve oluştur** ’u seçin. Doğrulama tamamlandıktan sonra **Oluştur** ' u seçin.
 
 AKS kümesinin oluşturulması ve kullanıma hazır olması birkaç dakika sürer.
 
@@ -103,7 +103,7 @@ AKS kümesinin oluşturulması ve kullanıma hazır olması birkaç dakika süre
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Bir Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi [kubectl][kubectl]’i kullanın. `kubectl` istemcisi Azure Cloud Shell’de önceden yüklüdür.
 
-Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . **Kopyala** ’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 [az aks get-credentials][az-aks-get-credentials] komutunu kullanarak, `kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırın. Aşağıdaki örnek *myResourceGroup* adlı kaynak grubu içindeki *myAKSCluster* adlı kümenin kimlik bilgilerini alır:
 
@@ -117,7 +117,7 @@ Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu ku
 kubectl get nodes
 ```
 
-Aşağıdaki örnek çıktıda, oluşturulan tek VM düğümü ve Linux için sanal düğüm, *sanal düğüm-aci-Linux*sanal düğümü gösterilmektedir:
+Aşağıdaki örnek çıktıda, oluşturulan tek VM düğümü ve Linux için sanal düğüm, *sanal düğüm-aci-Linux* sanal düğümü gösterilmektedir:
 
 ```output
 NAME                           STATUS    ROLES     AGE       VERSION

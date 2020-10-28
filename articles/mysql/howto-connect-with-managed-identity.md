@@ -6,13 +6,13 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 63a9a0acc7a3cb7f5b5a5d451ab6199ec5f1390f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 74530b861b4dc7a35fa8b192ecc0e79ce5fa59c2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546747"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742989"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Yönetilen Kimlik ile MySQL için Azure Veritabanı'na bağlanma
 
@@ -28,7 +28,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 > [!IMPORTANT]
 > Yönetilen kimlikle bağlantı yalnızca MySQL 5,7 ve üzeri sürümlerde kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](../../articles/active-directory/managed-identities-azure-resources/overview.md) inceleyin. Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 - Gerekli kaynak oluşturma ve rol yönetimini yapmak için hesabınızın uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri olması gerekir. Rol atamasıyla ilgili yardıma ihtiyacınız varsa, [Azure abonelik kaynaklarınıza erişimi yönetmek için bkz. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanma](../../articles/role-based-access-control/role-assignments-portal.md).

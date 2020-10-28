@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 54985cbd874f6a8a3dd0db08df3ceb4b53c72cac
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2f4bd040d7e5858fd561444f56dbce7b3f940d9a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093285"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742393"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management Service 'ten dış hizmetler kullanma
 Azure API Management hizmetinde kullanılabilen ilkeler, yalnızca gelen istek, giden yanıt ve temel yapılandırma bilgilerini temel alan çok sayıda kullanışlı iş gerçekleştirebilir. Ancak API Management ilkelerden, dış hizmetlerle etkileşime girebilmek birçok fırsat daha açar.
@@ -63,7 +63,7 @@ Bolluk, gelen Web kancaları kavramını içerir. Bir gelen Web kancası yapıla
 ![Bolluk Web kancası](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
 ### <a name="is-fire-and-forget-good-enough"></a>Ateştir ve yeterince iyi unutur.
-İstek için bir ateş ve unutma stili kullanılırken belirli bir denge vardır. Bir nedenden dolayı istek başarısız olursa, hata bildirilmemiştir. Bu durumda, ikincil hata raporlama sistemine sahip olmanın karmaşıklığı ve yanıt için bekleyen ek performans maliyeti garanti edilmez. Yanıtın denetlenmesi gereken senaryolarda, [gönderme isteği](./api-management-advanced-policies.md#SendRequest) ilkesi daha iyi bir seçenektir.
+İstek için bir ateş ve unutma stili kullanılırken belirli bir denge vardır. Bir nedenden dolayı istek başarısız olursa, hata bildirilmeyecektir. Bu durumda, ikincil hata raporlama sistemine sahip olmanın karmaşıklığı ve yanıt için bekleyen ek performans maliyeti garanti edilmez. Yanıtın denetlenmesi gereken senaryolarda, [gönderme isteği](./api-management-advanced-policies.md#SendRequest) ilkesi daha iyi bir seçenektir.
 
 ## <a name="send-request"></a>Send-Request
 `send-request`İlke, karmaşık işleme işlevleri gerçekleştirmek ve daha fazla ilke işleme için KULLANıLABILECEK API Yönetimi hizmetine veri döndürmek için bir dış hizmet kullanılmasını sağlar.

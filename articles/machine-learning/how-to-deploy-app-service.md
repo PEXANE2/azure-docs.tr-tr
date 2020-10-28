@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 2f1eddf33dc02b1afaffdc200ed8b79b18f77aa4
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
+ms.openlocfilehash: 31c9f203a8602b6c078fe2e9c672c539140f9990
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999192"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744426"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
 
@@ -56,7 +56,7 @@ Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi iç
 
 Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerekenleri tanımlamanız gerekir. Aşağıdaki listede bir dağıtım için gereken ana öğeler açıklanmaktadır:
 
-* Bir __giriş betiği__. Bu betik istekleri kabul eder, modeli kullanarak isteği puan eder ve sonuçları döndürür.
+* Bir __giriş betiği__ . Bu betik istekleri kabul eder, modeli kullanarak isteği puan eder ve sonuçları döndürür.
 
     > [!IMPORTANT]
     > Giriş betiği modelinize özeldir; gelen istek verilerinin biçimini, modelinizde beklenen verilerin biçimini ve istemcilere döndürülen verilerin biçimini anlamalıdır.
@@ -72,7 +72,7 @@ Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerek
 
 * Giriş betiğini veya modelini çalıştırmak için gereken yardımcı betikler veya Python/Conda paketleri gibi **Bağımlılıklar**
 
-Bu varlıklar bir __çıkarım yapılandırmasında__kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur.
+Bu varlıklar bir __çıkarım yapılandırmasında__ kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur.
 
 > [!IMPORTANT]
 > Azure App Service ile kullanım için bir çıkarım yapılandırması oluştururken, bir [ortam](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) nesnesi kullanmanız gerekir. Özel bir ortam tanımlıyorsanız, bir PIP bağımlılığı olarak >= 1.0.45 sürümü ile azureml-varsayılan değer eklemeniz gerektiğini unutmayın. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerir. Aşağıdaki örnek, bir ortam nesnesi oluşturmayı ve bunu bir çıkarım yapılandırmasıyla kullanmayı gösterir:
@@ -97,7 +97,7 @@ Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için orta
 Çıkarım yapılandırması hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
-> Azure App Service ' ye dağıtım yaparken, bir __dağıtım yapılandırması__oluşturmanız gerekmez.
+> Azure App Service ' ye dağıtım yaparken, bir __dağıtım yapılandırması__ oluşturmanız gerekmez.
 
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
@@ -146,7 +146,7 @@ Ne zaman `show_output=True` , Docker Build işleminin çıktısı gösterilir. �
     }
     ```
 
-    __Kullanıcı adı__ ve __parolalardan__biri için değeri kaydedin.
+    __Kullanıcı adı__ ve __parolalardan__ biri için değeri kaydedin.
 
 1. Hizmeti dağıtmaya yönelik bir kaynak grubunuz veya App Service planınız yoksa, aşağıdaki komutlar her ikisinin de nasıl oluşturulacağını gösterir:
 

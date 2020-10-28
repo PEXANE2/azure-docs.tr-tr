@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: d6b9ebd8401151d57f103e639e70dd213bde6e33
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 82cb8da1a83e5b1e5430ebecf40f5152c824f6aa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152080"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742490"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -33,17 +33,17 @@ Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir uygu
 
 1. Portalda genellikle yaptığınız gibi bir uygulama oluşturun. Portalda bu sayfaya gidin.
 
-2. Bir işlev uygulaması kullanıyorsanız, **platform özellikleri**' ne gidin. Diğer uygulama türleri için, sol gezinti bölmesinde **Ayarlar** grubuna gidin.
+2. Bir işlev uygulaması kullanıyorsanız, **platform özellikleri** ' ne gidin. Diğer uygulama türleri için, sol gezinti bölmesinde **Ayarlar** grubuna gidin.
 
-3. **Kimlik**seçin.
+3. **Kimlik** seçin.
 
-4. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet**’e tıklayın.
+4. **Sistem atandı** sekmesinde **durumu** **Açık** olarak değiştirin. **Kaydet** ’e tıklayın.
 
     ![App Service yönetilen kimliği](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 
 > [!NOTE] 
-> Web uygulamanız veya yuva uygulamanız için yönetilen kimliği Azure portal, **Kurumsal uygulamalar**altında, **Kullanıcı ayarları** bölümüne bakın. Genellikle yuva adı öğesine benzerdir `<app name>/slots/<slot name>` .
+> Web uygulamanız veya yuva uygulamanız için yönetilen kimliği Azure portal, **Kurumsal uygulamalar** altında, **Kullanıcı ayarları** bölümüne bakın. Genellikle yuva adı öğesine benzerdir `<app name>/slots/<slot name>` .
 
 
 ### <a name="using-the-azure-cli"></a>Azure CLI'yı kullanma
@@ -198,13 +198,13 @@ Kullanıcı tarafından atanan kimlik ile uygulama oluşturmak için kimlik olu�
 
 2. Portalda genellikle yaptığınız gibi bir uygulama oluşturun. Portalda bu sayfaya gidin.
 
-3. Bir işlev uygulaması kullanıyorsanız, **platform özellikleri**' ne gidin. Diğer uygulama türleri için, sol gezinti bölmesinde **Ayarlar** grubuna gidin.
+3. Bir işlev uygulaması kullanıyorsanız, **platform özellikleri** ' ne gidin. Diğer uygulama türleri için, sol gezinti bölmesinde **Ayarlar** grubuna gidin.
 
-4. **Kimlik**seçin.
+4. **Kimlik** seçin.
 
-5. **Kullanıcı atandı** sekmesinde **Ekle**' ye tıklayın.
+5. **Kullanıcı atandı** sekmesinde **Ekle** ' ye tıklayın.
 
-6. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**'ye tıklayın.
+6. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle** 'ye tıklayın.
 
     ![App Service yönetilen kimliği](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -324,7 +324,7 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 **IDENTITY_ENDPOINT** , uygulamanızın belirteç isteyebileceği yerel bir URL 'dir. Bir kaynağın belirtecini almak için, bu uç noktaya yönelik bir HTTP GET isteği oluşturun ve aşağıdaki parametreleri de dahil edin:
 
-> | Parametre adı    | İçinde     | Description                                                                                                                                                                                                                                                                                                                                |
+> | Parametre adı    | İçinde     | Açıklama                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | kaynak          | Sorgu  | Belirtecin alınması gereken kaynağın Azure AD Kaynak URI 'SI. Bu, [Azure AD kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) veya DIĞER Kaynak URI 'Yi destekleyen Azure hizmetlerinden biridir.    |
 > | api-sürümü       | Sorgu  | Kullanılacak belirteç API 'sinin sürümü. Lütfen "2019-08-01" veya üstünü kullanın (Şu anda yalnızca "2017-09-01" sağlayan Linux tüketimini kullanmadıkça, Yukarıdaki nota bakın).                                                                                                                                                                                                                                                                 |
@@ -338,7 +338,7 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gövdesi içerir:
 
-> | Özellik adı | Description                                                                                                                                                                                                                                        |
+> | Özellik adı | Açıklama                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | İstenen erişim belirteci. Çağıran Web hizmeti, alıcı Web hizmetinde kimlik doğrulaması yapmak için bu belirteci kullanabilir.                                                                                                                               |
 > | client_id     | Kullanılan kimliğin istemci KIMLIĞI.                                                                                                                                                                                                       |
@@ -395,7 +395,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const rp = require('request-promise');
+const rp = require('request-promise');
 const getToken = function(resource, cb) {
     let options = {
         uri: `${process.env["IDENTITY_ENDPOINT"]}/?resource=${resource}&api-version=2019-08-01`,

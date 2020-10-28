@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 1802708c3b9e15a2459f29d15da72f2dc1da1a4f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 2fbdd46b872c4c70999355d457045f4aac8aa34c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093999"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742796"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Azure yay bulut uygulaması için sistem tarafından atanan yönetilen kimliği etkinleştirme
 
@@ -22,7 +22,7 @@ Azure kaynakları için Yönetilen kimlikler, Azure Spring Cloud uygulamanız gi
 
 Bu makalede, Azure portal ve CLı (Version 0.2.4 'ten ulaşılabilir) kullanılarak bir Azure yay bulutu uygulaması için sistem tarafından atanan yönetilen kimliklerin nasıl etkinleştirileceği ve devre dışı bırakılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Azure kaynakları için Yönetilen kimlikler hakkında bilgi sahibi değilseniz bkz. [genel bakış bölümü](../active-directory/managed-identities-azure-resources/overview.md).
 Dağıtılmış bir Azure yay bulutu örneğine ihtiyacınız olacak. [Azure CLI kullanarak dağıtmak Için hızlı](spring-cloud-quickstart.md)başlangıcı izleyin.
 
@@ -34,8 +34,8 @@ Sistem tarafından atanan kimlik ile uygulama oluşturmak, uygulamada ek bir öz
 
 1. Portalda genellikle yaptığınız gibi bir uygulama oluşturun. Portalda bu sayfaya gidin.
 2. Sol gezinti bölmesindeki **Ayarlar** grubuna gidin.
-3. **Kimlik**seçin.
-4. **Sistem atandı** sekmesinde **durumu** *Açık*olarak değiştirin. **Kaydet**’e tıklayın.
+3. **Kimlik** seçin.
+4. **Sistem atandı** sekmesinde **durumu** *Açık* olarak değiştirin. **Kaydet** ’e tıklayın.
 
  ![Portalda yönetilen kimlik](./media/spring-cloud-managed-identity/identity-1.png)
 
@@ -72,8 +72,8 @@ Sistem tarafından atanan bir kimliğin kaldırılması, Azure AD 'den de silini
 Sistem tarafından atanan yönetilen kimliği, artık ihtiyaç duyulmayan bir uygulamadan kaldırmak için:
 
 1. Azure yay bulutu örneğini içeren Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
-1. İstediğiniz sanal makineye gidin ve **kimlik**' i seçin.
-1. **Sistem tarafından atanan** / **durum**altında **kapalı** ' yı seçin ve ardından **Kaydet**' e tıklayın:
+1. İstediğiniz sanal makineye gidin ve **kimlik** ' i seçin.
+1. **Sistem tarafından atanan** / **durum** altında **kapalı** ' yı seçin ve ardından **Kaydet** ' e tıklayın:
 
  ![Yönetilen kimlik](./media/spring-cloud-managed-identity/remove-identity.png)
 

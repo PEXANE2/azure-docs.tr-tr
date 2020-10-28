@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: b5f3305fc5d2595c8b7b08d78ff20edea01c195e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 334e0c745257354d9548a6f9c8cee4d43fa8da6d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229846"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744746"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure sanal makine ölçek kümesi otomatik işletim sistemi görüntüsü yükseltmeleri
 
@@ -68,7 +68,7 @@ Aşağıdaki platform SKU 'Ları Şu anda desteklenmektedir (ve daha fazla düze
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Otomatik işletim sistemi görüntüsünü yükseltmeyi yapılandırma gereksinimleri
 
-- Görüntünün *Version* özelliği *en son*olarak ayarlanmalıdır.
+- Görüntünün *Version* özelliği *en son* olarak ayarlanmalıdır.
 - Service Fabric olmayan ölçek kümeleri için uygulama durumu araştırmaları veya [uygulama sistem durumu uzantısı](virtual-machine-scale-sets-health-extension.md) kullanın.
 - Işlem API 'SI sürüm 2018-10-01 veya üstünü kullanın.
 - Ölçek kümesi modelinde belirtilen dış kaynakların kullanılabilir olduğundan ve güncelleştirildiğinden emin olun. Örnek olarak, VM uzantı özelliklerinde önyükleme yükü için SAS URI, depolama hesabındaki yük, modeldeki gizli dizi başvuruları ve daha fazlası bulunur.
@@ -121,14 +121,14 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Ölçek kümesi için otomatik işletim sistemi görüntüsü yükseltmelerini yapılandırmak üzere [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 'ini kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı ölçek kümesi için Otomatik yükseltmeleri yapılandırır:
+Ölçek kümesi için otomatik işletim sistemi görüntüsü yükseltmelerini yapılandırmak üzere [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 'ini kullanın. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *myScaleSet* adlı ölçek kümesi için Otomatik yükseltmeleri yapılandırır:
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Ölçek kümesi için otomatik işletim sistemi görüntüsü yükseltmelerini yapılandırmak için [az VMSS Update](/cli/azure/vmss#az-vmss-update) kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı ölçek kümesi için Otomatik yükseltmeleri yapılandırır:
+Ölçek kümesi için otomatik işletim sistemi görüntüsü yükseltmelerini yapılandırmak için [az VMSS Update](/cli/azure/vmss#az-vmss-update) kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *myScaleSet* adlı ölçek kümesi için Otomatik yükseltmeleri yapılandırır:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
@@ -184,7 +184,7 @@ Uzantı, bir VM içinden sistem durumunu raporladığında, uzantı, uygulama si
 Azure PowerShell, Azure CLı 2,0 veya REST API 'Leri ile ölçek kümesinde gerçekleştirilen en son işletim sistemi yükseltmesinin geçmişini kontrol edebilirsiniz. Son iki ay içinde son beş işletim sistemi yükseltme girişiminin geçmişini alabilirsiniz.
 
 ### <a name="rest-api"></a>REST API
-Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı ölçek kümesinin durumunu denetlemek için [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) kullanır:
+Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *myScaleSet* adlı ölçek kümesinin durumunu denetlemek için [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) kullanır:
 
 ```
 GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
@@ -228,14 +228,14 @@ GET çağrısı aşağıdaki örnek çıkışına benzer özellikler döndürür
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek üzere [Get-AzVmss](/powershell/module/az.compute/get-azvmss) cmdlet 'ini kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi için işletim sistemi yükseltme durumunu nasıl gözden geçiceğiniz ayrıntılardır:
+Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek üzere [Get-AzVmss](/powershell/module/az.compute/get-azvmss) cmdlet 'ini kullanın. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi için işletim sistemi yükseltme durumunu nasıl gözden geçiceğiniz ayrıntılardır:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek için [az VMSS Get-OS-Upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) komutunu kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi için işletim sistemi yükseltme durumunu nasıl gözden geçiceğiniz ayrıntılardır:
+Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek için [az VMSS Get-OS-Upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) komutunu kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi için işletim sistemi yükseltme durumunu nasıl gözden geçiceğiniz ayrıntılardır:
 
 ```azurecli-interactive
 az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSet
@@ -269,21 +269,21 @@ Orchestrator 'ın en son görüntüyü uygulamasını beklemek istemediğiniz be
 > İşletim sistemi görüntüsü yükseltmelerinden el ile tetikleyici otomatik geri alma özellikleri sağlamaz. Bir örnek, bir yükseltme işleminden sonra durumunu kurtarmaz, önceki işletim sistemi diski geri yüklenemez.
 
 ### <a name="rest-api"></a>REST API
-Tüm sanal makine ölçek kümesi örneklerini kullanılabilir en son görüntü işletim sistemi sürümüne taşımak için bir sıralı yükseltme başlatmak üzere [işletim sistemi yükseltme](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API 'si çağrısını kullanın. Zaten kullanılabilir olan en son işletim sistemi sürümünü çalıştıran örnekler etkilenmez. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi üzerinde sıralı bir işletim sistemi yükseltmesini nasıl başlayakullanabileceğinizi ayrıntılardır:
+Tüm sanal makine ölçek kümesi örneklerini kullanılabilir en son görüntü işletim sistemi sürümüne taşımak için bir sıralı yükseltme başlatmak üzere [işletim sistemi yükseltme](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API 'si çağrısını kullanın. Zaten kullanılabilir olan en son işletim sistemi sürümünü çalıştıran örnekler etkilenmez. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi üzerinde sıralı bir işletim sistemi yükseltmesini nasıl başlayakullanabileceğinizi ayrıntılardır:
 
 ```
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek için [Start-Azvmssrollingosupgrad](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) cmdlet 'ini kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi üzerinde sıralı bir işletim sistemi yükseltmesini nasıl başlayakullanabileceğinizi ayrıntılardır:
+Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek için [Start-Azvmssrollingosupgrad](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) cmdlet 'ini kullanın. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi üzerinde sıralı bir işletim sistemi yükseltmesini nasıl başlayakullanabileceğinizi ayrıntılardır:
 
 ```azurepowershell-interactive
 Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek için [az VMSS yuvarlama-yükseltme Başlat](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) komutunu kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi üzerinde sıralı bir işletim sistemi yükseltmesini nasıl başlayakullanabileceğinizi ayrıntılardır:
+Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek için [az VMSS yuvarlama-yükseltme Başlat](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) komutunu kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi üzerinde sıralı bir işletim sistemi yükseltmesini nasıl başlayakullanabileceğinizi ayrıntılardır:
 
 ```azurecli-interactive
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"

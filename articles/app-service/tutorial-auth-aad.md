@@ -5,14 +5,14 @@ keywords: app service, azure app service, authN, authZ, güvenli, güvenlik, ço
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/29/2020
-ms.custom: devx-track-csharp, seodec18
+ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: abda26e359becb137d4c0c9f2965ebfbb5ee047c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8620d6bc403882cb308405e8ffb4412917d0c6f1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982911"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743831"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Öğretici: Azure App Service'te kullanıcıların kimliğini doğrulama ve kullanıcıları uçtan uca yetkilendirme
 
@@ -51,7 +51,7 @@ Bu öğreticideki adımları MacOS, Linux ve Windows üzerinde izleyebilirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -237,25 +237,25 @@ Azure Active Directory’yi kimlik sağlayıcısı olarak kullanacaksınız. Dah
 
 [Azure Portal](https://portal.azure.com) menüsünde, **kaynak grupları** ' nı seçin veya herhangi bir sayfadan *kaynak gruplarını* arayıp seçin.
 
-**Kaynak grupları**' nda, kaynak grubunuzu bulun ve seçin. **Genel bakış**bölümünde arka uç uygulamanızın yönetim sayfasını seçin.
+**Kaynak grupları** ' nda, kaynak grubunuzu bulun ve seçin. **Genel bakış** bölümünde arka uç uygulamanızın yönetim sayfasını seçin.
 
 :::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="Yapılacaklar listesi uygulaması gösteren bir tarayıcı penceresinde Azure App Service REST API örneğinin ekran görüntüsü.":::
 
-Arka uç uygulamanızın sol menüsünde **kimlik doğrulama/yetkilendirme**' yi seçin ve ardından **Açık**' ı seçerek App Service kimlik doğrulamasını etkinleştirin.
+Arka uç uygulamanızın sol menüsünde **kimlik doğrulama/yetkilendirme** ' yi seçin ve ardından **Açık** ' ı seçerek App Service kimlik doğrulamasını etkinleştirin.
 
-**İsteğin kimliği doğrulanmamış olduğunda gerçekleştirilecek eylem** menüsünde **Azure Active Directory ile oturum aç**’ı seçin.
+**İsteğin kimliği doğrulanmamış olduğunda gerçekleştirilecek eylem** menüsünde **Azure Active Directory ile oturum aç** ’ı seçin.
 
-**Kimlik doğrulama sağlayıcıları**altında **Azure Active Directory**' yi seçin.
+**Kimlik doğrulama sağlayıcıları** altında **Azure Active Directory** ' yi seçin.
 
 :::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="Yapılacaklar listesi uygulaması gösteren bir tarayıcı penceresinde Azure App Service REST API örneğinin ekran görüntüsü.":::
 
-**Hızlı**' i seçin, ardından yenı bir ad uygulaması oluşturmak için varsayılan ayarları kabul edin ve **Tamam**' ı seçin.
+**Hızlı** ' i seçin, ardından yenı bir ad uygulaması oluşturmak için varsayılan ayarları kabul edin ve **Tamam** ' ı seçin.
 
-**Kimlik doğrulama/yetkilendirme** sayfasında **Kaydet**' i seçin.
+**Kimlik doğrulama/yetkilendirme** sayfasında **Kaydet** ' i seçin.
 
 İletiyle ilgili bildirimi gördüğünüzde `Successfully saved the Auth Settings for <back-end-app-name> App` Portal sayfasını yenileyin.
 
-Yeniden **Azure Active Directory** seçin ve **Azure AD uygulaması**seçin.
+Yeniden **Azure Active Directory** seçin ve **Azure AD uygulaması** seçin.
 
 Azure AD uygulamasının **ISTEMCI kimliğini** bir not defteri 'ne kopyalayın. Bu değer daha sonra gerekli olacaktır.
 
@@ -265,7 +265,7 @@ Azure AD uygulamasının **ISTEMCI kimliğini** bir not defteri 'ne kopyalayın.
 
 Ön uç uygulaması için de aynı adımları izleyin, ancak son adımı atlayın. Ön uç uygulaması için istemci KIMLIĞI gerekmez.
 
-İsterseniz `http://<front-end-app-name>.azurewebsites.net` sayfasına gidin. Şimdi güvenli oturum açma sayfasına yönlendirilmeniz gerekir. Oturum açtıktan sonra, arka uç uygulamasının artık ön uç uygulamadan Azure Active Directory oturum açmasını gerektirdiğinden, arka uç uygulamasından *verilere erişemezsiniz*. Üç şey yapmanız gerekir:
+İsterseniz `http://<front-end-app-name>.azurewebsites.net` sayfasına gidin. Şimdi güvenli oturum açma sayfasına yönlendirilmeniz gerekir. Oturum açtıktan sonra, arka uç uygulamasının artık ön uç uygulamadan Azure Active Directory oturum açmasını gerektirdiğinden, arka uç uygulamasından *verilere erişemezsiniz* . Üç şey yapmanız gerekir:
 
 - Arka uca ön uç erişimi verme
 - App Service’i kullanılabilir bir belirteç döndürecek şekilde yapılandırma
@@ -280,13 +280,13 @@ Her iki uygulamanızda da kimlik doğrulaması ve yetkilendirmeyi etkinleştirdi
 
 [Azure Portal](https://portal.azure.com) menüsünde **Azure Active Directory** ' i seçin veya herhangi bir sayfadan *Azure Active Directory* ' i arayıp seçin.
 
-**Uygulama kayıtları**  >  **sahip olan uygulamalar**  >  **Bu dizindeki tüm uygulamaları görüntüle '** yi seçin. Ön uç uygulamanızın adını seçin ve ardından **API izinleri**' ni seçin.
+**Uygulama kayıtları**  >  **sahip olan uygulamalar**  >  **Bu dizindeki tüm uygulamaları görüntüle '** yi seçin. Ön uç uygulamanızın adını seçin ve ardından **API izinleri** ' ni seçin.
 
 :::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="Yapılacaklar listesi uygulaması gösteren bir tarayıcı penceresinde Azure App Service REST API örneğinin ekran görüntüsü.":::
 
-**Izin Ekle**' yi seçin, sonra **Kuruluşumun kullandığı API 'ler**' i seçin  >  **\<back-end-app-name>** .
+**Izin Ekle** ' yi seçin, sonra **Kuruluşumun kullandığı API 'ler** ' i seçin  >  **\<back-end-app-name>** .
 
-Arka uç uygulaması için **API Izinleri iste** sayfasında, **temsilci izinleri** ve **User_impersonation**seçin ve ardından **izin Ekle**' yi seçin.
+Arka uç uygulaması için **API Izinleri iste** sayfasında, **temsilci izinleri** ve **User_impersonation** seçin ve ardından **izin Ekle** ' yi seçin.
 
 :::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="Yapılacaklar listesi uygulaması gösteren bir tarayıcı penceresinde Azure App Service REST API örneğinin ekran görüntüsü.":::
 
@@ -296,13 +296,13 @@ Arka uç uygulaması için **API Izinleri iste** sayfasında, **temsilci izinler
 
 [Azure Kaynak Gezgini](https://resources.azure.com) gidin ve kaynak ağacını kullanarak ön uç Web uygulamanızı bulun.
 
-[Azure Kaynak Gezgini](https://resources.azure.com) artık kaynak ağacında seçili olan ön uç uygulamanız ile açılır. Sayfanın üst kısmındaki **Oku/Yaz**’a tıklayarak Azure kaynaklarınızın düzenlenmesini etkinleştirin.
+[Azure Kaynak Gezgini](https://resources.azure.com) artık kaynak ağacında seçili olan ön uç uygulamanız ile açılır. Sayfanın üst kısmındaki **Oku/Yaz** ’a tıklayarak Azure kaynaklarınızın düzenlenmesini etkinleştirin.
 
 :::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="Yapılacaklar listesi uygulaması gösteren bir tarayıcı penceresinde Azure App Service REST API örneğinin ekran görüntüsü.":::
 
-Sol tarayıcıda, **config**  >  **authsettings öğesine tıklayın**öğesine gidin.
+Sol tarayıcıda, **config**  >  **authsettings öğesine tıklayın** öğesine gidin.
 
-**authsettings** görünümünde **Düzenle**’ye tıklayın. `additionalLoginParams`Kopyaladığınız ISTEMCI kimliğini kullanarak AŞAĞıDAKI JSON dizesine ayarlayın. 
+**authsettings** görünümünde **Düzenle** ’ye tıklayın. `additionalLoginParams`Kopyaladığınız ISTEMCI kimliğini kullanarak AŞAĞıDAKI JSON dizesine ayarlayın. 
 
 ```json
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
@@ -348,7 +348,7 @@ git commit -m "add authorization header for server code"
 git push frontend master
 ```
 
-`https://<front-end-app-name>.azurewebsites.net` oturumunu yeniden açın. Kullanıcı veri kullanımı sözleşmesi sayfasında **Kabul Et**’e tıklayın.
+`https://<front-end-app-name>.azurewebsites.net` oturumunu yeniden açın. Kullanıcı veri kullanımı sözleşmesi sayfasında **Kabul Et** ’e tıklayın.
 
 Artık daha önce olduğu gibi arka uç uygulamanızdan verileri oluşturabilir, okuyabilir, güncelleştirebilir ve silebilirsiniz. Şimdiki tek fark, her iki uygulamanın da, hizmetten hizmete çağrılar dahil olmak üzere, App Service kimlik doğrulama ve yetkilendirmesi ile güvenli hale getirilmesidir.
 

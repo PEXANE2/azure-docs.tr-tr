@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87029306"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745834"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Sanal makine ölçek kümesini değiştirme
 
@@ -354,7 +354,7 @@ Bazı özellikler, geçerli değere bağlı olarak özel durumlarla birlikte de�
 ### <a name="properties-that-require-deallocation-to-change"></a>Değişikliğe göre ayırmayı gerektiren özellikler
 Ölçek kümesindeki VM 'Ler serbest bırakıldığında bazı özellikler yalnızca belirli değerlere değiştirilebilir. Bu özellikler şunları içerir:
 
-- **SKU adı**-yenı VM SKU 'su ölçek kümesi şu anda açık olan donanımda DESTEKLENMIYORSA, SKU adını değiştirmeden önce ölçek kümesindeki VM 'leri serbest getirmeniz gerekir. Daha fazla bilgi için bkz. [Azure VM 'yi yeniden boyutlandırma](../virtual-machines/windows/resize-vm.md).
+- **SKU adı** -yenı VM SKU 'su ölçek kümesi şu anda açık olan donanımda DESTEKLENMIYORSA, SKU adını değiştirmeden önce ölçek kümesindeki VM 'leri serbest getirmeniz gerekir. Daha fazla bilgi için bkz. [Azure VM 'yi yeniden boyutlandırma](../virtual-machines/windows/resize-vm.md).
 
 
 ## <a name="vm-specific-updates"></a>VM 'ye özgü güncelleştirmeler
@@ -364,7 +364,7 @@ Belirli değişiklikler, küresel ölçek kümesi özellikleri yerine belirli sa
 ## <a name="scenarios"></a>Senaryolar
 
 ### <a name="application-updates"></a>Uygulama güncelleştirmeleri
-Bir uygulama, uzantılar aracılığıyla bir ölçek kümesine dağıtılırsa, uzantı yapılandırmasına yönelik bir güncelleştirme, uygulamanın yükseltme ilkesine uygun olarak güncelleştirilmesini sağlar. Örneğin, özel bir betik uzantısında çalıştırmak için bir betiğin yeni bir sürümüne sahipseniz, *Fileuris* özelliğini yeni betiğe işaret etmek üzere güncelleştirebilirsiniz. Bazı durumlarda, uzantı yapılandırması değişmese de bir güncelleştirmeye zorlamak isteyebilirsiniz (örneğin, betiği, betiğin URI 'sine değişiklik yapmadan güncelleştirdiniz). Bu durumlarda, bir güncelleştirmeyi zorlamak için *Forceupdatetag* ' i değiştirebilirsiniz. Azure platformu bu özelliği yorumlamaz. Değeri değiştirirseniz, uzantının nasıl çalıştığı üzerinde hiçbir etkisi olmaz. Bir değişiklik, uzantıyı yeniden çalışmaya zorlar. *Forceupdatetag*hakkında daha fazla bilgi için bkz. [Uzantılar için REST API belgeleri](/rest/api/compute/virtualmachineextensions/createorupdate). *Forceupdatetag* 'in yalnızca özel Betik uzantısı değil tüm uzantılarla kullanılabileceğini unutmayın.
+Bir uygulama, uzantılar aracılığıyla bir ölçek kümesine dağıtılırsa, uzantı yapılandırmasına yönelik bir güncelleştirme, uygulamanın yükseltme ilkesine uygun olarak güncelleştirilmesini sağlar. Örneğin, özel bir betik uzantısında çalıştırmak için bir betiğin yeni bir sürümüne sahipseniz, *Fileuris* özelliğini yeni betiğe işaret etmek üzere güncelleştirebilirsiniz. Bazı durumlarda, uzantı yapılandırması değişmese de bir güncelleştirmeye zorlamak isteyebilirsiniz (örneğin, betiği, betiğin URI 'sine değişiklik yapmadan güncelleştirdiniz). Bu durumlarda, bir güncelleştirmeyi zorlamak için *Forceupdatetag* ' i değiştirebilirsiniz. Azure platformu bu özelliği yorumlamaz. Değeri değiştirirseniz, uzantının nasıl çalıştığı üzerinde hiçbir etkisi olmaz. Bir değişiklik, uzantıyı yeniden çalışmaya zorlar. *Forceupdatetag* hakkında daha fazla bilgi için bkz. [Uzantılar için REST API belgeleri](/rest/api/compute/virtualmachineextensions/createorupdate). *Forceupdatetag* 'in yalnızca özel Betik uzantısı değil tüm uzantılarla kullanılabileceğini unutmayın.
 
 Uygulamaların özel bir görüntü ile dağıtılması da yaygındır. Bu senaryo aşağıdaki bölümde ele alınmıştır.
 
@@ -379,7 +379,7 @@ Azure platform görüntülerini kullanıyorsanız, *ImageReference* 'ı değişt
 ## <a name="examples"></a>Örnekler
 
 ### <a name="update-the-os-image-for-your-scale-set"></a>Ölçek kümesi için işletim sistemi görüntüsünü güncelleştirme
-Ubuntu LTS 16,04 ' nin eski bir sürümünü çalıştıran bir ölçek kümesine sahip olabilirsiniz. Yeni bir Ubuntu LTS 16,04 sürümüne (sürüm *16.04.201801090*gibi) güncelleştirmek istiyorsunuz. Görüntü başvurusu sürümü özelliği bir listenin parçası değildir, bu nedenle bu özellikleri doğrudan aşağıdaki komutlardan biriyle değiştirebilirsiniz:
+Ubuntu LTS 16,04 ' nin eski bir sürümünü çalıştıran bir ölçek kümesine sahip olabilirsiniz. Yeni bir Ubuntu LTS 16,04 sürümüne (sürüm *16.04.201801090* gibi) güncelleştirmek istiyorsunuz. Görüntü başvurusu sürümü özelliği bir listenin parçası değildir, bu nedenle bu özellikleri doğrudan aşağıdaki komutlardan biriyle değiştirebilirsiniz:
 
 - Aşağıdaki gibi [Update-AzVmss](/powershell/module/az.compute/update-azvmss) ile Azure PowerShell:
 
@@ -447,7 +447,7 @@ Azure Load Balancer olan bir ölçek kümesine sahip olduğunu ve Azure Load Bal
     ```
 
 >[!NOTE]
-> Bu komutlar, ölçek kümesinde yalnızca bir IP yapılandırması ve yük dengeleyici olduğunu varsayar. Birden çok varsa, *0*dışında bir liste dizini kullanmanız gerekebilir.
+> Bu komutlar, ölçek kümesinde yalnızca bir IP yapılandırması ve yük dengeleyici olduğunu varsayar. Birden çok varsa, *0* dışında bir liste dizini kullanmanız gerekebilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

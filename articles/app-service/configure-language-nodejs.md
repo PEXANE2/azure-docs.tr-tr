@@ -1,17 +1,17 @@
 ---
 title: Node.js uygulamalarını yapılandırma
 description: Yerel Windows örneklerinde veya önceden oluşturulmuş bir Linux kapsayıcısında, Azure App Service bir Node.js uygulamasının nasıl yapılandırılacağını öğrenin. Bu makalede en yaygın yapılandırma görevlerine yer verilmiştir.
-ms.custom: devx-track-js
+ms.custom: devx-track-js, devx-track-azurecli
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 48b111966d58af80b6c34fa17231034f4f0cc213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f925854f4ef09ccc74c0ec1e8fdcca6b71d1437
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311844"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744056"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Azure App Service için Node.js uygulaması yapılandırma
 
@@ -93,8 +93,8 @@ Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak d
 
 1. Tarafından belirtilmişse özel betiği çalıştırın `PRE_BUILD_SCRIPT_PATH` .
 1. `npm install`NPM ve betikler dahil olmak üzere herhangi bir bayrak olmadan çalıştırın `preinstall` `postinstall` ve ayrıca yüklenir `devDependencies` .
-1. `npm run build` *Üzerindepackage.js*bir derleme betiği belirtilmişse çalıştırın.
-1. `npm run build:azure` *Üzerindepackage.js*bir derleme: Azure betiği belirtilmişse çalıştırın.
+1. `npm run build` *Üzerindepackage.js* bir derleme betiği belirtilmişse çalıştırın.
+1. `npm run build:azure` *Üzerindepackage.js* bir derleme: Azure betiği belirtilmişse çalıştırın.
 1. Tarafından belirtilmişse özel betiği çalıştırın `POST_BUILD_SCRIPT_PATH` .
 
 > [!NOTE]
@@ -123,7 +123,7 @@ Node.js kapsayıcıları, bir üretim işlem yöneticisi olan [PM2](https://pm2.
 
 ### <a name="run-custom-command"></a>Özel komut Çalıştır
 
-App Service, uygulamanızı *Run.sh*gibi bir yürütülebilir dosya gibi özel bir komut kullanarak başlatabilir. Örneğin, çalıştırmak için `npm run start:prod` [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
+App Service, uygulamanızı *Run.sh* gibi bir yürütülebilir dosya gibi özel bir komut kullanarak başlatabilir. Örneğin, çalıştırmak için `npm run start:prod` [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
@@ -164,7 +164,7 @@ Kapsayıcıda ortak Node.js dosyalarından biri bulunduğunda kapsayıcı, uygul
 Ayrıca, aşağıdaki uzantılara sahip özel bir başlangıç dosyası da yapılandırabilirsiniz:
 
 - Bir *. js* dosyası
-- *. JSON*, *.config.js*, *. YAML*veya *. yıml* uzantılı bir [PM2 dosyası](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
+- *. JSON* , *.config.js* , *. YAML* veya *. yıml* uzantılı bir [PM2 dosyası](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
 
 Özel bir başlangıç dosyası eklemek için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
 
@@ -177,7 +177,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > [!NOTE]
 > Uzaktan hata ayıklama Şu anda önizleme aşamasındadır.
 
-Bir * .config.js, *. yıml veya *. YAML*kullanarak çalıştırmanız dışında, [PM2 ile çalışacak](#run-with-pm2)şekilde yapılandırırsanız Node.js uygulamanızda [Visual Studio Code](https://code.visualstudio.com/) uzaktan hata ayıklayabilirsiniz.
+Bir * .config.js, *. yıml veya *. YAML* kullanarak çalıştırmanız dışında, [PM2 ile çalışacak](#run-with-pm2)şekilde yapılandırırsanız Node.js uygulamanızda [Visual Studio Code](https://code.visualstudio.com/) uzaktan hata ayıklayabilirsiniz.
 
 Çoğu durumda, uygulamanız için ek yapılandırma gerekmez. Uygulamanız dosyadaki bir *process.js* (varsayılan veya özel) ile ÇALıŞıYORSA, `script` JSON kökünde bir özelliği olmalıdır. Örneğin:
 
@@ -191,9 +191,9 @@ Bir * .config.js, *. yıml veya *. YAML*kullanarak çalıştırmanız dışında
 
 Uzaktan hata ayıklama için Visual Studio Code ayarlamak için [App Service uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)kurun. Uzantı sayfasındaki yönergeleri izleyin ve Visual Studio Code Azure 'da oturum açın.
 
-Azure Gezgini 'nde, hata ayıklamak istediğiniz uygulamayı bulun, sağ tıklayın ve **Uzaktan hata ayıklamayı Başlat**' ı seçin. Uygulamanızı etkinleştirmek için **Evet** ' e tıklayın. App Service, sizin için bir tünel proxy 'si başlatır ve hata ayıklayıcıyı iliştirir. Daha sonra uygulamaya istek yapabilir ve hata ayıklayıcıyı kesme noktalarında duraklatarak görebilirsiniz.
+Azure Gezgini 'nde, hata ayıklamak istediğiniz uygulamayı bulun, sağ tıklayın ve **Uzaktan hata ayıklamayı Başlat** ' ı seçin. Uygulamanızı etkinleştirmek için **Evet** ' e tıklayın. App Service, sizin için bir tünel proxy 'si başlatır ve hata ayıklayıcıyı iliştirir. Daha sonra uygulamaya istek yapabilir ve hata ayıklayıcıyı kesme noktalarında duraklatarak görebilirsiniz.
 
-Hata ayıklama işlemi tamamlandıktan sonra, **bağlantıyı kes**' i seçerek hata ayıklayıcıyı durdurun. İstendiğinde, uzaktan hata ayıklamayı devre dışı bırakmak için **Evet** ' e tıklamanız gerekir. Daha sonra devre dışı bırakmak için, Azure Gezgini 'nde uygulamanızı tekrar sağ tıklayın ve **Uzaktan hata ayıklamayı devre dışı bırak**' ı seçin.
+Hata ayıklama işlemi tamamlandıktan sonra, **bağlantıyı kes** ' i seçerek hata ayıklayıcıyı durdurun. İstendiğinde, uzaktan hata ayıklamayı devre dışı bırakmak için **Evet** ' e tıklamanız gerekir. Daha sonra devre dışı bırakmak için, Azure Gezgini 'nde uygulamanızı tekrar sağ tıklayın ve **Uzaktan hata ayıklamayı devre dışı bırak** ' ı seçin.
 
 ::: zone-end
 
@@ -209,7 +209,7 @@ process.env.NODE_ENV
 
 Varsayılan olarak, App Service derleme Otomasyonu çalıştırmaları, `npm install --production` derleme Otomasyonu etkinken git veya ZIP dağıtımı aracılığıyla dağıtılmış bir Node.js uygulaması algıladığında çalışır. Uygulamanız Grsıt, Bower veya Gulp gibi popüler Otomasyon araçlarından herhangi birini gerektiriyorsa, çalıştırmak için [özel bir dağıtım betiği](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) sağlamanız gerekir.
 
-Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için, bunlarıpackage.jsiçindeki bağımlılıklara eklemeniz gerekir * .* Örneğin:
+Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için, bunlarıpackage.jsiçindeki bağımlılıklara eklemeniz gerekir *.* Örneğin:
 
 ```json
 "dependencies": {
@@ -227,7 +227,7 @@ npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-Depo kökünde Şu anda iki ek dosya vardır: *. Deployment* ve *Deploy.sh*.
+Depo kökünde Şu anda iki ek dosya vardır: *. Deployment* ve *Deploy.sh* .
 
 *Deploy.sh* açın ve aşağıdaki `Deployment` gibi görünen bölümü bulun:
 
@@ -318,7 +318,7 @@ if (req.secure) {
 
 - [Günlük akışına erişin](#access-diagnostic-logs).
 - Uygulamayı üretim modunda yerel olarak test edin. App Service, Node.js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örneğin:
-    - *package.js*bağlı olarak, üretim modu ( `dependencies` vs.) için farklı paketler yüklenebilir `devDependencies` .
+    - *package.js* bağlı olarak, üretim modu ( `dependencies` vs.) için farklı paketler yüklenebilir `devDependencies` .
     - Bazı Web çerçeveleri, statik dosyaları üretim modunda farklı şekilde dağıtabilir.
     - Belirli Web çerçeveleri, üretim modunda çalışırken özel başlatma betikleri kullanabilir.
 - Uygulamanızı geliştirme modunda App Service çalıştırın. Örneğin, [MEAN.js](https://meanjs.org/), uygulama [ `NODE_ENV` ayarını ayarlayarak](configure-common.md)uygulamanızı çalışma zamanında geliştirme moduna ayarlayabilirsiniz.

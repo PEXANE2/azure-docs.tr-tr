@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi için güncelleştirme dağı
 description: Bu makalede, güncelleştirme dağıtımlarının nasıl planlanmakta ve bunların durumlarını incelemesinin nasıl yapılacağı açıklanır.
 services: automation
 ms.subservice: update-management
-ms.date: 10/26/2020
+ms.date: 10/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d6594e1cdd7925a4287cf9edbfd5324b427338f4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 41ccecfb844f11a0d234271bcddc1851d3c02fda
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637607"
+ms.locfileid: "92742299"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Güncelleştirmeler nasıl dağıtılır ve sonuçlar incelenmek
 
@@ -75,9 +75,6 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
 
    > [!NOTE]
    > Güncelleştirme dağıtımına dahil etmek için yenisiyle değiştirilen güncelleştirmeleri belirtemezsiniz.
-
-   > [!IMPORTANT]
-   > Red Hat Enterprise için çekirdek yükseltmeleri de de en fazla paket olarak gösterilir. Çekirdek yükseltmeleri içeren güncelleştirmeleri dışlayamazsınız Güncelleştirme Yönetimi, bu güncelleştirmeleri uygular.
 
 9. **Zamanlama ayarları** ' nı seçin. Varsayılan başlangıç zamanı, geçerli zamandan 30 dakika sonradır. Başlangıç zamanını en düşük 10 dakika olmak üzere istediğiniz değere ayarlayabilirsiniz.
 

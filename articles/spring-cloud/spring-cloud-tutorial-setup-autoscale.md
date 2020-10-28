@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 4effdbf5fb924b59a540ce16e769633c484c641a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 6023d1ebd27ebaccacfce85ce0f49b7ef87e17ad
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091075"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742658"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Öğretici: mikro hizmet uygulamaları için otomatik ölçeklendirmeyi ayarlama
 
@@ -20,7 +20,7 @@ ms.locfileid: "92091075"
 
 Otomatik ölçeklendirme, mikro hizmet uygulamalarının talep değiştiğinde en iyi şekilde çalışmasına yardımcı olan Azure Spring Cloud 'ın yerleşik bir özelliğidir. Bu, sanal CPU 'ların, belleğin ve uygulama örneklerinin sayısını değiştirmeyi içerir. Bu makalede, Microsoft Azure portal veya Azure CLı kullanarak uygulamalarınız için otomatik ölçeklendirme ayarlarının nasıl ayarlanacağı açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu yordamları izlemek için şunlar gerekir:
 
@@ -30,11 +30,11 @@ Bu yordamları izlemek için şunlar gerekir:
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Azure portal otomatik ölçeklendirme sayfasına gidin
 
-1. [Azure portalda](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Azure Spring Cloud **genel bakış** sayfasına gidin.
 3. Hizmetinizi içeren kaynak grubunu seçin.
 4. Sol gezinti bölmesindeki menüde **Ayarlar** ' ın altında **uygulamalar** sekmesini seçin.
-5. Otomatik ölçeklendirmeyi ayarlamak istediğiniz uygulamayı seçin. Bu örnekte, **demo**adlı uygulamayı seçin. Daha sonra uygulamanın **genel bakış** sayfasını görmeniz gerekir.
+5. Otomatik ölçeklendirmeyi ayarlamak istediğiniz uygulamayı seçin. Bu örnekte, **demo** adlı uygulamayı seçin. Daha sonra uygulamanın **genel bakış** sayfasını görmeniz gerekir.
 6. Sol gezinti bölmesindeki menüdeki **Ayarlar** ' ın altındaki **Ölçek Genişletme** sekmesine gidin.
 7. Otomatik ölçeklendirmeyi ayarlamak istediğiniz dağıtımı seçin. Aşağıdaki bölümde gösterilen otomatik ölçeklendirme seçeneklerini görmeniz gerekir.
 

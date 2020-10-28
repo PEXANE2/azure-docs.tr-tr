@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 19eb5ae89598a0ebe040f1ffda5afd2b9e3d5e7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 357d3aaa9cf9e324f8dd27636b9f34f503f566de
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87059254"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746007"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Öğretici: Azure şablonu ile sanal makine ölçek kümelerine uygulama yükleme
 Bir ölçek kümesindeki sanal makine (VM) örneklerinde uygulamaları çalıştırmak için önce uygulama bileşenlerini ve gerekli dosyaları yüklemeniz gerekir. Önceki bir öğreticide, sanal makine örneklerinizi dağıtmak için nasıl özel sanal makine görüntüsü oluşturulacağını ve kullanılacağını öğrendiniz. Bu özel görüntüde, el ile uygulama yüklemeleri ve yapılandırmaları yer alıyordu. Her sanal makine örneği dağıtıldıktan sonra bir ölçek kümesine uygulamaların yüklenmesini otomatikleştirebilir veya önceden ölçek kümesinde çalıştırılan bir uygulamayı güncelleştirebilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -40,7 +40,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için A
 
 
 ## <a name="create-custom-script-extension-definition"></a>Özel Betik Uzantısı tanımı oluşturma
-Azure şablonu ile bir sanal makine ölçek kümesi tanımladığınızda *Microsoft.Compute/virtualMachineScaleSets* kaynak sağlayıcısı, uzantılara bir bölüm ekleyebilir. *extensionsProfile*, bir ölçek kümesindeki sanal makine örneklerine nelerin uygulanacağını açıklar. Özel Betik Uzantısı’nı kullanmak için *Microsoft.Azure.Extensions* yayımcısını ve *CustomScript* türünü belirtirsiniz.
+Azure şablonu ile bir sanal makine ölçek kümesi tanımladığınızda *Microsoft.Compute/virtualMachineScaleSets* kaynak sağlayıcısı, uzantılara bir bölüm ekleyebilir. *extensionsProfile* , bir ölçek kümesindeki sanal makine örneklerine nelerin uygulanacağını açıklar. Özel Betik Uzantısı’nı kullanmak için *Microsoft.Azure.Extensions* yayımcısını ve *CustomScript* türünü belirtirsiniz.
 
 Kaynak yükleme betiklerini veya paketlerini tanımlamak için *fileUris* özelliği kullanılır. Yükleme işlemini başlatmak için gereken betikler, *commandToExecute* komutunda tanımlanır. Aşağıdaki örnek, NGINX web sunucusunu yükleyip yapılandıran GitHub’daki bir örnek betiği tanımlar:
 
@@ -108,7 +108,7 @@ Sonraki adımda güncelleştirilmiş bir sürümü görebilmeniz için web taray
 
 
 ## <a name="update-app-deployment"></a>Uygulama dağıtımını güncelleştirme
-Bir ölçek kümesinin yaşam döngüsü boyunca, uygulamanızın güncelleştirilmiş bir sürümünü dağıtmanız gerekebilir. Özel Betik Uzantısı ile, güncelleştirilmiş bir dağıtım betiğine başvurabilir ve sonra uzantıyı ölçek kümenize yeniden uygulayabilirsiniz. Önceki adımda ölçek kümesi oluşturulduğunda, *Upgradepolicy* *Otomatik*olarak ayarlanmıştır. Bu ayar, ölçek kümesindeki sanal makine örneklerinin otomatik olarak güncelleştirilmesini ve uygulamanızın en son sürümünü uygulamasını sağlar.
+Bir ölçek kümesinin yaşam döngüsü boyunca, uygulamanızın güncelleştirilmiş bir sürümünü dağıtmanız gerekebilir. Özel Betik Uzantısı ile, güncelleştirilmiş bir dağıtım betiğine başvurabilir ve sonra uzantıyı ölçek kümenize yeniden uygulayabilirsiniz. Önceki adımda ölçek kümesi oluşturulduğunda, *Upgradepolicy* *Otomatik* olarak ayarlanmıştır. Bu ayar, ölçek kümesindeki sanal makine örneklerinin otomatik olarak güncelleştirilmesini ve uygulamanızın en son sürümünü uygulamasını sağlar.
 
 Özel Betik Uzantısı tanımını güncelleştirmek için şablonunuzu yeni bir yükleme betiğine başvuracak şekilde düzenleyin. Özel Betik Uzantısı’nın değişikliği tanıması için yeni bir dosya adı kullanılmalıdır. Özel Betik Uzantısı, değişiklikleri belirlemek için betiğin içeriklerini incelemez. Aşağıdaki tanım, güncelleştirilmiş yükleme betiğini, adının sonuna *_v2* eklenmiş şekilde kullanır:
 

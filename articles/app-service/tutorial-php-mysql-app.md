@@ -5,14 +5,14 @@ ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 06/15/2020
-ms.custom: mvc, cli-validate, seodec18
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0faf269852418ee8694e5fa51ce8010e57a2c054
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1053eb9772650dce040570bda04addf93df49178
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150219"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743547"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>Öğretici: Azure App Service bir PHP ve MySQL uygulaması derleme
 
@@ -42,7 +42,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -107,7 +107,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>MySQL bağlantısını yapılandırma
 
-Depo kökünde *.env* adlı bir dosya oluşturun. Aşağıdaki değişkenleri *.env* dosyasına kopyalayın. _ &lt; Root_password>_ yer tutucusunu MySQL kök kullanıcısının parolasıyla değiştirin.
+Depo kökünde *.env* adlı bir dosya oluşturun. Aşağıdaki değişkenleri *.env* dosyasına kopyalayın. _&lt; Root_password>_ yer tutucusunu MySQL kök kullanıcısının parolasıyla değiştirin.
 
 ```txt
 APP_ENV=local
@@ -205,7 +205,7 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql-ser
 
 ### <a name="connect-to-production-mysql-server-locally"></a>Üretim MySQL sunucusuna yerel olarak bağlanma
 
-Yerel terminal penceresinde, Azure’da MySQL sunucusuna bağlanın. Daha önce _ &lt; Yönetici-Kullanıcı>_ ve _ &lt; mysql-sunucu-adı>_ için belirttiğiniz değeri kullanın. Parola sorulduğunda, Azure’da veritabanı oluştururken belirttiğiniz parolayı kullanın.
+Yerel terminal penceresinde, Azure’da MySQL sunucusuna bağlanın. Daha önce _&lt; Yönetici-Kullanıcı>_ ve _&lt; mysql-sunucu-adı>_ için belirttiğiniz değeri kullanın. Parola sorulduğunda, Azure’da veritabanı oluştururken belirttiğiniz parolayı kullanın.
 
 ```bash
 mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
@@ -242,7 +242,7 @@ Bu adımda, PHP uygulamasını MySQL için Azure Veritabanı içinde oluşturdu�
 
 ### <a name="configure-the-database-connection"></a>Veritabanı bağlantısını yapılandırma
 
-Depo kökünde bir _.env.production_ dosyası oluşturun ve içine aşağıdaki değişkenleri kopyalayın. Placeholder_ &lt; MySQL-sunucu-adı>_ hem *DB_Host* hem de *DB_USERNAME*değiştirin.
+Depo kökünde bir _.env.production_ dosyası oluşturun ve içine aşağıdaki değişkenleri kopyalayın. Placeholder_ &lt; MySQL-sunucu-adı>_ hem *DB_Host* hem de *DB_USERNAME* değiştirin.
 
 ```
 APP_ENV=production
@@ -379,7 +379,7 @@ Bu adımda, MySQL’e bağlı PHP uygulamasını Azure App Service'e dağıtırs
 
 App Service'te, [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) komutunu kullanıp ortam değişkenlerini _uygulama ayarları_ olarak belirlersiniz.
 
-Aşağıdaki komut `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` ve `DB_PASSWORD` uygulama ayarlarını yapılandırır. _ &lt; App-name>_ ve _ &lt; mysql-Server-Name>_ yer tutucularını değiştirin.
+Aşağıdaki komut `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` ve `DB_PASSWORD` uygulama ayarlarını yapılandırır. _&lt; App-name>_ ve _&lt; mysql-Server-Name>_ yer tutucularını değiştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
@@ -408,7 +408,7 @@ Yerel terminal penceresinde, uygulama anahtarını _.env_ dosyasına kaydetmeden
 php artisan key:generate --show
 ```
 
-Cloud Shell, komutunu kullanarak App Service uygulamasındaki uygulama anahtarını ayarlayın [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) . _ &lt; App-name>_ ve _ &lt; outputofphpartisankey: Generate>_ yer tutucuları değiştirin.
+Cloud Shell, komutunu kullanarak App Service uygulamasındaki uygulama anahtarını ayarlayın [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) . _&lt; App-name>_ ve _&lt; outputofphpartisankey: Generate>_ yer tutucuları değiştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -422,13 +422,13 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 Uygulamanın sanal uygulama yolunu ayarlayın. [Laravel uygulaması yaşam döngüsü](https://laravel.com/docs/5.4/lifecycle), uygulamanın kök dizini yerine _public_ dizininde başladığı için bu adım gereklidir. Yaşam döngüsü kök dizinde başlayan diğer PHP çerçeveleri, sanal uygulama yolu el ile yapılandırılmadan çalışabilir.
 
-Cloud Shell, komutunu kullanarak sanal uygulama yolunu ayarlayın [`az resource update`](/cli/azure/resource#az-resource-update) . _ &lt; App-name>_ yer tutucusunu değiştirin.
+Cloud Shell, komutunu kullanarak sanal uygulama yolunu ayarlayın [`az resource update`](/cli/azure/resource#az-resource-update) . _&lt; App-name>_ yer tutucusunu değiştirin.
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
-Varsayılan olarak, Azure App Service kök sanal uygulama yolunu ( _/_ ) dağıtılan uygulama dosyalarının kök dizinine (_sites\wwwroot_) yönlendirir.
+Varsayılan olarak, Azure App Service kök sanal uygulama yolunu ( _/_ ) dağıtılan uygulama dosyalarının kök dizinine ( _sites\wwwroot_ ) yönlendirir.
 
 ::: zone-end
 
@@ -550,7 +550,7 @@ Yerel terminal penceresinde, Laravel veritabanı geçişlerini çalıştırarak 
 php artisan migrate
 ```
 
-[Laravel adlandırma kuralına](https://laravel.com/docs/5.4/eloquent#defining-models) göre `Task` modeli (bkz. _app/Task.php_) varsayılan olarak `tasks` tablosu ile eşlenir.
+[Laravel adlandırma kuralına](https://laravel.com/docs/5.4/eloquent#defining-models) göre `Task` modeli (bkz. _app/Task.php_ ) varsayılan olarak `tasks` tablosu ile eşlenir.
 
 ### <a name="update-application-logic"></a>Uygulama mantığını güncelleştirme
 
@@ -679,7 +679,7 @@ Günlük akışını dilediğiniz zaman durdurmak için `Ctrl`+`C` yazın.
 
 Oluşturduğunuz uygulamayı yönetmek için [Azure Portal](https://portal.azure.com) gidin.
 
-Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
+Sol menüden **uygulama hizmetleri** ' ne ve ardından Azure uygulamanızın adına tıklayın.
 
 ![Azure uygulamasına portal gezintisi](./media/tutorial-php-mysql-app/access-portal.png)
 

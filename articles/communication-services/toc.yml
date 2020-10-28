@@ -84,6 +84,8 @@
       href: concepts/logging-and-diagnostics.md
     - name: Ölçümler
       href: concepts/metrics.md
+    - name: Sorun giderme
+      href: concepts/troubleshooting-info.md
 - name: Örnekler
   items:
     - name: Grup araması hero örneği
@@ -105,4 +107,4 @@
 - name: Kaynaklar
   items:
     - name: Sürüm notları
-      href: 'https://github.com/Azure/Communication/blob/master/releasenotes/2020-September-22.md'
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes'

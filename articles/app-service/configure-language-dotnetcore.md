@@ -2,16 +2,16 @@
 title: ASP.NET Core uygulamalarını yapılandırma
 description: Yerel Windows örneklerinde veya önceden oluşturulmuş bir Linux kapsayıcısında, Azure App Service bir ASP.NET Core uygulamasının nasıl yapılandırılacağını öğrenin. Bu makalede en yaygın yapılandırma görevlerine yer verilmiştir.
 ms.devlang: dotnet
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 3456adc2b143f1f51115183fe4873938d067d267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f7047638aa2e2b4a9ac6ffade82fdc117b56cfb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961678"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744171"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Azure App Service için bir ASP.NET Core uygulaması yapılandırma
 
@@ -125,7 +125,7 @@ namespace SomeNamespace
 }
 ```
 
-App Service ve *appsettings.jsüzerinde*aynı ada sahip bir uygulama ayarı yapılandırırsanız, örneğin App Service değeri değeri *appsettings.js* üzerinden önceliklidir. Değer * üzerindeki yerelappsettings.js* , uygulamada yerel olarak hata ayıklamanıza olanak tanır, ancak App Service değeri, uygulamayı üretim ayarları ile birlikte çalıştırmanıza olanak sağlar. Bağlantı dizeleri aynı şekilde çalışır. Bu şekilde, uygulamanızın gizli dizilerini kod deponuzun dışında tutabilir ve kodunuzda değişiklik yapmadan uygun değerlere erişebilirsiniz.
+App Service ve *appsettings.jsüzerinde* aynı ada sahip bir uygulama ayarı yapılandırırsanız, örneğin App Service değeri değeri *appsettings.js* üzerinden önceliklidir. Değer *üzerindeki yerelappsettings.js* , uygulamada yerel olarak hata ayıklamanıza olanak tanır, ancak App Service değeri, uygulamayı üretim ayarları ile birlikte çalıştırmanıza olanak sağlar. Bağlantı dizeleri aynı şekilde çalışır. Bu şekilde, uygulamanızın gizli dizilerini kod deponuzun dışında tutabilir ve kodunuzda değişiklik yapmadan uygun değerlere erişebilirsiniz.
 
 > [!NOTE]
 > *appsettings.jsüzerindeki* [Hiyerarşik yapılandırma verilerine](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) `:` .NET Core için standart olan sınırlayıcı kullanılarak erişildiğini unutmayın. App Service belirli bir hiyerarşik yapılandırma ayarını geçersiz kılmak için, uygulama ayarı adını anahtarda aynı ayrılmış biçimle ayarlayın. [Cloud Shell](https://shell.azure.com)aşağıdaki örneği çalıştırabilirsiniz:
@@ -175,7 +175,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="detect-https-session"></a>HTTPS oturumunu Algıla
 
-App Service, [SSL sonlandırması](https://wikipedia.org/wiki/TLS_termination_proxy) ağ yükü dengeleyicilerde gerçekleşinceye kadar, tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini bilmeleri gerekiyorsa, Iletilen üstbilgiler ara yazılımını *Startup.cs*içinde yapılandırın:
+App Service, [SSL sonlandırması](https://wikipedia.org/wiki/TLS_termination_proxy) ağ yükü dengeleyicilerde gerçekleşinceye kadar, tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini bilmeleri gerekiyorsa, Iletilen üstbilgiler ara yazılımını *Startup.cs* içinde yapılandırın:
 
 - İçindeki ve üst bilgilerini iletmek için, yazılım yazılımını [Forwardedheadersoptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) ile yapılandırın `X-Forwarded-For` `X-Forwarded-Proto` `Startup.ConfigureServices` .
 - Bilinen ağlara özel IP adresi aralıkları ekleyin, böylece ara yazılım App Service yük dengeleyiciye güvenebilirler.

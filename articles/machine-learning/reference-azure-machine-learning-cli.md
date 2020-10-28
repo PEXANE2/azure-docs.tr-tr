@@ -9,13 +9,13 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
-ms.custom: seodec18
-ms.openlocfilehash: 50ac8ede9f8272d6956d1ac29e57a9c26d2c0bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 8ce32ab1e7dac6fd1a154fc6e730113428a8291b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708280"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744484"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>& Azure Machine Learning için CLı uzantısını kullanın
 
@@ -34,7 +34,7 @@ CLı Azure Machine Learning SDK 'sının yerini almaz. Otomasyonuna uygun olan y
 
 * CLı 'yi kullanmak için bir Azure aboneliğinizin olması gerekir. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* **Yerel ortamınızdan**bu belgedeki CLI komutlarını kullanmak IÇIN [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)gerekir.
+* **Yerel ortamınızdan** bu belgedeki CLI komutlarını kullanmak IÇIN [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)gerekir.
 
     [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)KULLANıYORSANıZ, CLI tarayıcı aracılığıyla erişilir ve bulutta bulunur.
 
@@ -411,7 +411,7 @@ Aşağıdaki tabloda JSON dosyasındaki her üst düzey alan, türü ve bir aç�
 
 | JSON alanı | Tür | Açıklama |
 |---|---|---|
-| `name` | `string` | Ortamın adı. **Microsoft** veya **AzureML**ile ad başlatma. |
+| `name` | `string` | Ortamın adı. **Microsoft** veya **AzureML** ile ad başlatma. |
 | `version` | `string` | Ortamın sürümü. |
 | `environmentVariables` | `{string: string}` | Ortam değişkeni adlarının ve değerlerinin karma eşlemesi. |
 | `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py&preserve-view=true)hat hedef işlem kaynağında kullanılacak Python ortamını ve yorumlayıcısını tanımlar. |

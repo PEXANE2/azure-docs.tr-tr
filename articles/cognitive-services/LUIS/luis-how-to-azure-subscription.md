@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adc0c253648ed7ae869a20b92c42e7f6478501b7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: eecc93558625d3ae891ca589424aec218036adae
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151593"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744698"
 ---
 # <a name="create-luis-resources"></a>LUSıS kaynakları oluşturma
 
@@ -29,7 +29,7 @@ LUSıS üç tür Azure kaynağına ve Azure olmayan bir kaynağa izin verir:
 
 |Kaynak|Amaç|Bilişsel hizmet `kind`|Bilişsel hizmet `type`|
 |--|--|--|--|
-|Kaynak yazma|Uygulamalarınızı oluşturmanıza, yönetmenize, eğmenize, test etmenize ve yayımlamanıza olanak sağlar. LUSıS uygulamalarını programya ya da LUSıS portalından yazmak istiyorsanız [BIR lusıs yazma kaynağı oluşturun](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) . Azure authroring kaynaklarınızı uygulamanıza bağlayabilmek için önce [Lue hesabınızı geçirmeniz](luis-migration-authoring.md#what-is-migration) gerekir. Kişileri [katkıda bulunan rolüne](#contributions-from-other-authors)atayarak, yazma kaynağına yönelik izinleri denetleyebilirsiniz. <br><br> LUSıS yazma kaynağı için bir katman avi.<br> * **Ücretsiz F0 Authoring Resource** , 1 milyon ücretsiz yazma işlemi ve 1000 ücretsiz test tahmin uç noktası isteği sağlar. |`LUIS.Authoring`|`Cognitive Services`|
+|Kaynak yazma|Uygulamalarınızı oluşturmanıza, yönetmenize, eğmenize, test etmenize ve yayımlamanıza olanak sağlar. LUSıS uygulamalarını programya ya da LUSıS portalından yazmak istiyorsanız [BIR lusıs yazma kaynağı oluşturun](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) . Azure yazma kaynaklarınızı uygulamanıza bağlayabilmeniz için önce [Lue hesabınızı geçirmeniz](luis-migration-authoring.md#what-is-migration) gerekir. Kişileri [katkıda bulunan rolüne](#contributions-from-other-authors)atayarak, yazma kaynağına yönelik izinleri denetleyebilirsiniz. <br><br> LUSıS yazma kaynağı için kullanılabilir bir katman var:<br> * **Ücretsiz F0 Authoring Resource** , 1 milyon ücretsiz yazma işlemi ve 1000 ücretsiz test tahmin uç noktası isteği sağlar. |`LUIS.Authoring`|`Cognitive Services`|
 |Tahmin kaynağı| LUSıS uygulamanızı yayımladıktan sonra, tahmin uç noktası isteklerini sorgulamak için tahmin kaynağını/anahtarını kullanın. İstemci uygulamanızın, yazma veya başlangıç kaynağı tarafından belirtilen 1.000 isteklerinin ötesinde tahmin istekleri yapmadan önce bir LUSıS tahmin kaynağı oluşturun. <br><br> Tahmin kaynağı için iki katmanlı bir karşı avalble vardır:<br> * Aylık 10.000 ücretsiz tahmin uç noktası istekleri sağlayan **ücretsiz F0 tahmin kaynağı**<br> * Ücretli katman olan **Standart S0 tahmin kaynağı** . [Fiyatlandırma ayrıntıları hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
 |Başlangıç/deneme kaynağı|Uygulamalarınızı oluşturmanıza, yönetmenize, eğmenize, test etmenize ve yayımlamanıza olanak sağlar. Bu, önce TP LUL 'yi imzalarken Başlatıcı Kaynak seçeneğini belirlerseniz, ayrıştırılmış tarafından oluşturulur. Ancak, başlangıç anahtarı sonunda kullanım dışı bırakılır ve tüm LUYA kullanıcıları, [kendi hesaplarını geçirmelidir](luis-migration-authoring.md#what-is-migration) ve bu uygulamaların bir yazma kaynağına bağlanması gerekir. Bu kaynak, yazma kaynağı gibi Azure rol tabanlı erişim denetimi için izin vermez. <br><br> Yazma kaynağı olarak, başlangıç kaynağı size 1 milyon ücretsiz yazma işlemi ve 1000 ücretsiz test tahmin uç noktası isteği verir.|-|Azure kaynağı değil|
 |[Bilişsel hizmet hizmeti çoklu hizmet kaynak anahtarı](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|LUVE diğer desteklenen bilişsel hizmetler ile paylaşılan sorgu tahmini uç noktası istekleri.|`CognitiveServices`|`Cognitive Services`|
@@ -117,7 +117,7 @@ Sahibi ve tüm katkıda bulunanlar, uygulamayı yazmak için erişime sahiptir.
 |Sürüm içeri aktarılıyor||
 |Uygulamayı genel yap|Bir uygulama genel olduğunda, yazma veya bitiş noktası anahtarına sahip herkes uygulamayı sorgulayabilir.|
 |Modeli değiştir|
-|Yayımla|
+|Yayımlama|
 |[Etkin öğrenme](luis-how-to-review-endpoint-utterances.md) için uç nokta utslerini gözden geçirme|
 |Eğitim|
 
@@ -203,7 +203,7 @@ Kaynak `kind` :
     ```
 
     > [!Note]
-    > Bu anahtarlar, **Manage-> Azure KAYNAKLARıNDA**Luo portalında atanana kadar Luo portalı **tarafından kullanılmaz.**
+    > Bu anahtarlar, **Manage-> Azure KAYNAKLARıNDA** Luo portalında atanana kadar Luo portalı **tarafından kullanılmaz.**
 
 <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>
 
@@ -212,8 +212,8 @@ Kaynak `kind` :
 Tek bir uygulama için veya LUSıS 'deki tüm uygulamalar için bir yazma kaynağı atayabilirsiniz. Aşağıdaki yordam, tüm uygulamaları tek bir yazma kaynağına atar.
 
 1. [Lui portalında](https://www.luis.ai)oturum açın.
-1. Üst gezinti çubuğunda, en sağdaki kullanıcı hesabınızı seçin ve ardından **Ayarlar**' ı seçin.
-1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet**’i seçin.
+1. Üst gezinti çubuğunda, en sağdaki kullanıcı hesabınızı seçin ve ardından **Ayarlar** ' ı seçin.
+1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet** ’i seçin.
 
 ## <a name="assign-a-resource-to-an-app"></a>Uygulamaya kaynak atama
 
@@ -292,7 +292,7 @@ Hesabınızı sildiğinizde hangi verilerin silindiği hakkında bilgi için bkz
 ## <a name="viewing-azure-resource-metrics"></a>Azure Kaynak ölçümlerini görüntüleme
 
 ### <a name="viewing-azure-resource-summary-usage"></a>Azure Kaynak Özeti kullanımını görüntüleme
-Azure 'da LUSıS kullanım bilgilerini görüntüleyebilirsiniz. **Genel bakış** sayfası, çağrılar ve hatalar dahil olmak üzere son özet bilgileri gösterir. Bir LUSıS uç noktası isteği yaparsanız, **genel bakış sayfasını**hemen izleyin ve kullanım için en fazla beş dakika bekleyin.
+Azure 'da LUSıS kullanım bilgilerini görüntüleyebilirsiniz. **Genel bakış** sayfası, çağrılar ve hatalar dahil olmak üzere son özet bilgileri gösterir. Bir LUSıS uç noktası isteği yaparsanız, **genel bakış sayfasını** hemen izleyin ve kullanım için en fazla beş dakika bekleyin.
 
 ![Özet kullanımı görüntüleme](./media/luis-usage-tiers/overview.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 643b28b2e88f233d2924270511d3c87fa4d9b767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba14e2c475611ed77661060d6e17ae0bcbf0a6ca
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631639"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744221"
 ---
 # <a name="step-3-validate-connectivity"></a>3. Adım: bağlantıyı doğrulama
 
@@ -29,18 +29,27 @@ Günlük ileticinizi dağıttıktan sonra (adım 1 ' de) ve Güvenlik çözümü
 
 - Günlük ileticisi makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 
-- Günlük ileticisi makinenizde Python yüklü olmalıdır.<br>
+- Günlük ileticisi makinenizde **python 2,7** ' in yüklü olması gerekir.<br>
 `python –version`Denetlemek için komutunu kullanın.
+
+- Bu işlemin bir noktasında çalışma alanı KIMLIĞI ve çalışma alanı birincil anahtarına ihtiyacınız olabilir. Onları çalışma alanı kaynağında, **aracılar yönetimi** altında bulabilirsiniz.
 
 ## <a name="how-to-validate-connectivity"></a>Bağlantıyı doğrulama
 
-1. Azure Sentinel gezinti menüsünde **Günlükler**' i açın. Güvenlik çözümünüzdeki günlükleri alıp almadığınızı görmek için **Commonsecuritylog** şemasını kullanarak bir sorgu çalıştırın.<br>
-Günlüklerinizin **Log Analytics**görünmeye başlaması için 20 dakika sürecağına dikkat edin. 
+1. Azure Sentinel gezinti menüsünde **Günlükler** ' i açın. Güvenlik çözümünüzdeki günlükleri alıp almadığınızı görmek için **Commonsecuritylog** şemasını kullanarak bir sorgu çalıştırın.<br>
+Günlüklerinizin **Log Analytics** görünmeye başlaması için 20 dakika sürecağına dikkat edin. 
 
 1. Sorgudan herhangi bir sonuç görmüyorsanız, olayların güvenlik çözümünden oluşturulduğunu doğrulayın veya bir süre oluşturmayı deneyin ve belirlediğiniz Syslog iletici makinesine iletildiğini doğrulayın. 
 
-1. Güvenlik çözümünüz, günlük ileticisi ve Azure Sentinel arasındaki bağlantıyı denetlemek için günlük ileticisinde aşağıdaki betiği çalıştırın. Bu betik, arka plan programının doğru şekilde yapılandırıldığını ve arka plan programı ile Log Analytics Aracısı arasındaki iletişimi engellemediğini kontrol eder. Ayrıca, uçtan uca bağlantıyı denetlemek için ' TestCommonEventFormat ' adlı sahte iletiler gönderir. <br>
- `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
+1. Güvenlik çözümünüz, günlük ileticisi ve Azure Sentinel arasındaki bağlantıyı denetlemek için günlük ileticisinde (yer tutucunun yerine çalışma alanı KIMLIĞINI uygulama) aşağıdaki betiği çalıştırın. Bu betik, arka plan programının doğru şekilde yapılandırıldığını ve arka plan programı ile Log Analytics Aracısı arasındaki iletişimi engellemediğini kontrol eder. Ayrıca, uçtan uca bağlantıyı denetlemek için ' TestCommonEventFormat ' adlı sahte iletiler gönderir. <br>
+
+    ```bash
+    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    ```
+
+   - ***Bilgisayar* alanının eşlemesiyle** bir sorunu düzeltmek için bir komut çalıştırmanızı yönlendiren bir ileti alabilirsiniz. Ayrıntılar için [doğrulama betiğinin](#mapping-command) açıklamasına bakın.
+
+    - **CISCO ASA güvenlik duvarı günlüklerinin ayrıştırılmasıyla** ilgili bir sorunu düzeltmek için bir komut çalıştırmanızı yönlendiren bir ileti alabilirsiniz. Ayrıntılar için [doğrulama betiğinin](#parsing-command) açıklamasına bakın.
 
 ## <a name="validation-script-explained"></a>Doğrulama betiği açıklanmıştı
 
@@ -72,21 +81,31 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
     </filter>
     ```
 
-1. Güvenlik Duvarı olayları için Cisco ASA ayrıştırma 'Nın beklenen şekilde yapılandırıldığını denetler:
+1. Aşağıdaki komut kullanılarak Cisco ASA güvenlik duvarı olayları için ayrıştırma 'nin beklenen şekilde yapılandırılıp yapılandırılmadığını denetler: 
 
     ```bash
-    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
-        /opt/microsoft/omsagent/plugin/security_lib.rb && 
-        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-1. Syslog kaynağındaki *bilgisayar* alanının Log Analytics aracısında düzgün şekilde eşlendiğini denetler:
+    - <a name="parsing-command"></a>Ayrıştırma ile ilgili bir sorun varsa, komut dosyası **aşağıdaki komutu el ile çalıştırmanızı** yönlendiren bir hata iletisi üretir (yer tutucunun yerine çalışma alanı kimliğini uygulama). Komut doğru ayrıştırmanın ve aracının yeniden başlatılmasına emin olur.
+    
+        ```bash
+        # Cisco ASA parsing fix
+        sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. Syslog kaynağındaki *bilgisayar* alanının, aşağıdaki komutu kullanarak Log Analytics aracısında düzgün şekilde eşlendiğini denetler: 
 
     ```bash
-    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
+
+    - <a name="mapping-command"></a>Eşlemeyle ilgili bir sorun varsa, komut dosyası **aşağıdaki komutu el ile çalıştırmanızı** yönlendiren bir hata iletisi üretir (yer tutucunun yerine çalışma alanı kimliğini uygulama). Komut doğru eşlemeyi güvence altına alacak ve aracıyı yeniden başlatacaktır.
+
+        ```bash
+        # Computer field mapping fix
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 1. Makinede ağ trafiğini (örneğin, bir ana bilgisayar güvenlik duvarı) engelliyor olabilecek herhangi bir güvenlik geliştirmesi olup olmadığını denetler.
 
@@ -155,21 +174,31 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
     </filter>
     ```
 
-1. Güvenlik Duvarı olayları için Cisco ASA ayrıştırma 'Nın beklenen şekilde yapılandırıldığını denetler:
+1. Aşağıdaki komut kullanılarak Cisco ASA güvenlik duvarı olayları için ayrıştırma 'nin beklenen şekilde yapılandırılıp yapılandırılmadığını denetler: 
 
     ```bash
-    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
-        /opt/microsoft/omsagent/plugin/security_lib.rb && 
-        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-1. Syslog kaynağındaki *bilgisayar* alanının Log Analytics aracısında düzgün şekilde eşlendiğini denetler:
+    - <a name="parsing-command"></a>Ayrıştırma ile ilgili bir sorun varsa, komut dosyası **aşağıdaki komutu el ile çalıştırmanızı** yönlendiren bir hata iletisi üretir (yer tutucunun yerine çalışma alanı kimliğini uygulama). Komut doğru ayrıştırmanın ve aracının yeniden başlatılmasına emin olur.
+    
+        ```bash
+        # Cisco ASA parsing fix
+        sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. Syslog kaynağındaki *bilgisayar* alanının, aşağıdaki komutu kullanarak Log Analytics aracısında düzgün şekilde eşlendiğini denetler: 
 
     ```bash
-    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
+
+    - <a name="mapping-command"></a>Eşlemeyle ilgili bir sorun varsa, komut dosyası **aşağıdaki komutu el ile çalıştırmanızı** yönlendiren bir hata iletisi üretir (yer tutucunun yerine çalışma alanı kimliğini uygulama). Komut doğru eşlemeyi güvence altına alacak ve aracıyı yeniden başlatacaktır.
+
+        ```bash
+        # Computer field mapping fix
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 1. Makinede ağ trafiğini (örneğin, bir ana bilgisayar güvenlik duvarı) engelliyor olabilecek herhangi bir güvenlik geliştirmesi olup olmadığını denetler.
 

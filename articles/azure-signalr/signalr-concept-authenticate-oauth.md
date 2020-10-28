@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 731e4306575a8bd5f63dd47ca213a0e52a21487b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 03b112466ef094a578d47586a44ab383a5da1a9b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151228"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744891"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR hizmeti kimlik doğrulaması
 
@@ -41,7 +41,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gerekir:
 
@@ -55,18 +55,18 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gere
 
 1. Web tarayıcısını açın, `https://github.com` adresine gidin ve hesabınızda oturum açın.
 
-2. Hesabınız için **Ayarlar**  >  **Geliştirici ayarları** ' na gidin ve **Yeni bir uygulama kaydet**' e veya *OAuth uygulamaları*altında **Yeni OAuth uygulaması** ' na tıklayın.
+2. Hesabınız için **Ayarlar**  >  **Geliştirici ayarları** ' na gidin ve **Yeni bir uygulama kaydet** ' e veya *OAuth uygulamaları* altında **Yeni OAuth uygulaması** ' na tıklayın.
 
-3. Yeni OAuth Uygulaması için aşağıdaki ayarları kullanın ve ardından **Uygulamayı kaydet**'e tıklayın:
+3. Yeni OAuth Uygulaması için aşağıdaki ayarları kullanın ve ardından **Uygulamayı kaydet** 'e tıklayın:
 
-    | Ayar Adı | Önerilen Değer | Description |
+    | Ayar Adı | Önerilen Değer | Açıklama |
     | ------------ | --------------- | ----------- |
     | Uygulama adı | *Azure SignalR Sohbeti* | GitHub kullanıcısı, kimlik doğrulama yaptıkları uygulamayı tanıyabilmelidir ve güvenmelidir.   |
     | Giriş sayfası URL'si | `http://localhost:5000/home` | |
     | Uygulama açıklaması | *GitHub kimlik doğrulamasıyla Azure SignalR hizmetini kullanan bir sohbet odası örneği* | Uygulama kullanıcılarınızın kullanılan kimlik doğrulamanın bağlamını anlayabilmesine yardımcı olacak, yararlı bir uygulama açıklaması. |
-    | Yetkilendirme geri çağırma URL'si | `http://localhost:5000/signin-github` | Bu ayar, OAuth uygulamanız için en önemli ayardır. Bu, başarılı bir kimlik doğrulamasının ardından GitHub'ın kullanıcıyı döndürdüğü geri çağırma URL'sidir. Bu öğreticide, *AspNet.Security.OAuth.GitHub* paketi için varsayılan geri çağırma URL'sini (*/signin-github*) kullanmalısınız.  |
+    | Yetkilendirme geri çağırma URL'si | `http://localhost:5000/signin-github` | Bu ayar, OAuth uygulamanız için en önemli ayardır. Bu, başarılı bir kimlik doğrulamasının ardından GitHub'ın kullanıcıyı döndürdüğü geri çağırma URL'sidir. Bu öğreticide, *AspNet.Security.OAuth.GitHub* paketi için varsayılan geri çağırma URL'sini ( */signin-github* ) kullanmalısınız.  |
 
-4. Yeni OAuth uygulama kaydı tamamlandıktan sonra, aşağıdaki komutları kullanarak *İstemci Kimliği* ve *İstemci Parolası*'nı Parola Yöneticisi'ne ekleyin. *Your_GitHub_Client_Id* ve *Your_GitHub_Client_Secret* değerlerini OAuth uygulamanızın değerleriyle değiştirin.
+4. Yeni OAuth uygulama kaydı tamamlandıktan sonra, aşağıdaki komutları kullanarak *İstemci Kimliği* ve *İstemci Parolası* 'nı Parola Yöneticisi'ne ekleyin. *Your_GitHub_Client_Id* ve *Your_GitHub_Client_Secret* değerlerini OAuth uygulamanızın değerleriyle değiştirin.
 
     ```dotnetcli
     dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
@@ -85,7 +85,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gere
     dotnet restore
     ```
 
-1. *Startup.cs*'yi açın ve aşağıdaki ad alanları için `using` deyimlerini ekleyin:
+1. *Startup.cs* 'yi açın ve aşağıdaki ad alanları için `using` deyimlerini ekleyin:
 
     ```csharp
     using System.Net.Http;
@@ -193,7 +193,7 @@ Varsayılan olarak bir web istemcisi SignalR Hizmeti'ne bağlanmaya çalıştı�
 
 Bu bölümde, hub sınıfına `Authorize` özniteliğini ekleyerek ve hub yöntemlerini kimliği doğrulanmış kullanıcının talebinden kullanıcı adını okuyacak şekilde güncelleştirerek, gerçek kimlik doğrulamasını açacaksınız.
 
-1. *Hub\Chat.cs*'yi açın ve şu ad alanlarına başvurular ekleyin:
+1. *Hub\Chat.cs* 'yi açın ve şu ad alanlarına başvurular ekleyin:
 
     ```csharp
     using System.Threading.Tasks;
@@ -230,9 +230,9 @@ Bu bölümde, hub sınıfına `Authorize` özniteliğini ekleyerek ve hub yönte
 
 ### <a name="update-the-web-client-code"></a>Web istemcisi kodunu güncelleştirme
 
-1. *wwwroot\index.html*'yi açın ve kullanıcı adı isteyen kodu kimlik doğrulama denetleyicisi tarafından döndürülen tanımlama bilgisini kullanacak olan kodla değiştirin.
+1. *wwwroot\index.html* 'yi açın ve kullanıcı adı isteyen kodu kimlik doğrulama denetleyicisi tarafından döndürülen tanımlama bilgisini kullanacak olan kodla değiştirin.
 
-    Aşağıdaki kodu *index.html*'den çıkarın:
+    Aşağıdaki kodu *index.html* 'den çıkarın:
 
     ```javascript
     // Get the user name and store it to prepend to messages.
@@ -323,7 +323,7 @@ Bu bölümde, hub sınıfına `Authorize` özniteliğini ekleyerek ve hub yönte
     }
     ```
 
-4. *index.html*'nin en altında, kullanıcıdan oturum açmasını istemek için `connection.start()` hata işleyicisini aşağıda gösterildiği gibi güncelleştirin.
+4. *index.html* 'nin en altında, kullanıcıdan oturum açmasını istemek için `connection.start()` hata işleyicisini aşağıda gösterildiği gibi güncelleştirin.
 
     ```javascript
     connection.start()
@@ -396,7 +396,7 @@ Bu bölümdeki adımlarda Azure CLI için *signalr* uzantısı kullanılır. Aş
 az extension add -n signalr
 ```
 
-Aşağıdaki kaynakları oluştururken, SignalR Hizmeti kaynağınızın içinde bulunduğu kaynak grubunun aynısı kullandığınızdan emin olun. Bu yaklaşım, daha sonra tüm kaynakları kaldırmak istediğinizde temizleme işlemini çok kolaylaştırır. Verilen örneklerde, önceki öğreticilerde önerilen grup adını (*SignalRTestResources*) kullandığınız varsayılır.
+Aşağıdaki kaynakları oluştururken, SignalR Hizmeti kaynağınızın içinde bulunduğu kaynak grubunun aynısı kullandığınızdan emin olun. Bu yaklaşım, daha sonra tüm kaynakları kaldırmak istediğinizde temizleme işlemini çok kolaylaştırır. Verilen örneklerde, önceki öğreticilerde önerilen grup adını ( *SignalRTestResources* ) kullandığınız varsayılır.
 
 ### <a name="create-the-web-app-and-plan"></a>Web uygulamasını ve planı oluşturma
 
@@ -550,7 +550,7 @@ Kodunuzu dağıtmak için, Git kabuğunda aşağıdaki komutları yürütün.
 
 Yapmanız gereken son işlem GitHub OAuth uygulamasının **Giriş sayfası URL'si** ve **Yetkilendirme geri çağırma URL'si** değerlerini yeni barındırılan uygulamaya işaret edecek şekilde güncelleştirmektir.
 
-1. [https://github.com](https://github.com)Bir tarayıcıda açın ve hesabınızın **Ayarlar**  >  **Geliştirici ayarları**  >  **OAuth Apps**' e gidin.
+1. [https://github.com](https://github.com)Bir tarayıcıda açın ve hesabınızın **Ayarlar**  >  **Geliştirici ayarları**  >  **OAuth Apps** ' e gidin.
 
 2. Kimlik doğrulama uygulamanıza tıklayın ve **Giriş sayfası URL'si** ve **Yetkilendirme geri çağırma URL'si** değerlerini aşağıda gösterildiği gibi güncelleştirin:
 
@@ -572,13 +572,13 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 > [!IMPORTANT]
 > Bir kaynak grubunu silme işlemi geri alınamaz ve kaynak grubunun ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. Bu örneği, tutmak istediğiniz kaynakları içeren mevcut bir kaynak grubunda barındırmak için kaynaklar oluşturduysanız, kaynak grubunu silmek yerine her kaynağı kendi ilgili dikey penceresinden tek tek silebilirsiniz.
 
-[Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’na tıklayın.
+[Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları** ’na tıklayın.
 
-**Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *SignalRTestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil**’e tıklayın.
+**Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *SignalRTestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil** ’e tıklayın.
 
 ![Sil](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 
-Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil**’e tıklayın.
+Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil** ’e tıklayın.
 
 Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 

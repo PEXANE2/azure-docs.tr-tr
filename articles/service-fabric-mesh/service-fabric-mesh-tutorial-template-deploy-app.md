@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: cc4912545bedb650268b3d8e4a3e9820b70b5fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842538"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745979"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Öğretici: Şablon kullanarak Service Fabric Mesh’e uygulama dağıtma
 
@@ -34,7 +34,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -196,7 +196,7 @@ Service Fabric Mesh uygulaması, Azure Resource Manager (RM) şablonlarını kul
 Bu öğreticide örnek olarak Yapılacaklar Listesi örneği kullanılmıştır.  Yeni şablon ve parametre dosyası oluşturmak yerine [mesh_rp.windows.json deployment template](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) ve [mesh_rp.windows.parameter.json parameters](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) dosyalarını indirin.
 
 ### <a name="parameters"></a>Parametreler
-Şablonunuzda, uygulama dağıtıldıktan sonra değişeceğini tahmin ettiğiniz değerler olduğunda veya dağıtım bazında değiştirme seçeneğine sahip olmak istediğinizde (diğer dağıtımlar için bu şablonu yeniden kullanmayı planlıyorsanız) en iyi uygulama, değerlerin parametrelerini oluşturmaktır. Bunu yapmanın yolu, dağıtım şablonunuzun en üst kısmında bir "parametreler" bölümü oluşturmak ve dağıtım şablonunun sonraki bölümlerinde başvurulacak parametre adlarını ve özelliklerini burada belirtmektir. Her parametre tanımı *type*, *defaultValue* ve isteğe bağlı *description* içeren bir *metadata* bölümüne sahiptir.
+Şablonunuzda, uygulama dağıtıldıktan sonra değişeceğini tahmin ettiğiniz değerler olduğunda veya dağıtım bazında değiştirme seçeneğine sahip olmak istediğinizde (diğer dağıtımlar için bu şablonu yeniden kullanmayı planlıyorsanız) en iyi uygulama, değerlerin parametrelerini oluşturmaktır. Bunu yapmanın yolu, dağıtım şablonunuzun en üst kısmında bir "parametreler" bölümü oluşturmak ve dağıtım şablonunun sonraki bölümlerinde başvurulacak parametre adlarını ve özelliklerini burada belirtmektir. Her parametre tanımı *type* , *defaultValue* ve isteğe bağlı *description* içeren bir *metadata* bölümüne sahiptir.
 
 Parametreler bölümü dağıtım şablonunuzun en üstünde, *resources* bölümünün hemen öncesinde tanımlanır:
 

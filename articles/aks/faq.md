@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: c68810e0fd9ee3593aa014243c3f75fb8a63a7fd
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: bbe4d43fde3746e6c992b7f03927f081d3814597
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494528"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745752"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -57,12 +57,12 @@ AKS, sanal makine ölçek kümeleri, sanal ağlar ve yönetilen diskler dahil ol
 
 Bu mimariyi etkinleştirmek için, her bir AKS dağıtımı iki kaynak grubuna yaymıştır:
 
-1. İlk kaynak grubunu oluşturursunuz. Bu grup yalnızca Kubernetes hizmet kaynağını içerir. AKS kaynak sağlayıcısı, dağıtım sırasında ikinci kaynak grubunu otomatik olarak oluşturur. İkinci kaynak grubuna bir örnek *MC_myResourceGroup_myAKSCluster_eastus*. Bu ikinci kaynak grubunun adını belirtme hakkında daha fazla bilgi için sonraki bölüme bakın.
-1. *Düğüm kaynak grubu*olarak bilinen ikinci kaynak grubu, kümeyle ilişkili tüm altyapı kaynaklarını içerir. Bu kaynaklar, Kubernetes düğümü VM 'Leri, sanal ağ ve depolamayı içerir. Varsayılan olarak, düğüm kaynak grubunun *MC_myResourceGroup_myAKSCluster_eastus*gibi bir adı vardır. AKS, küme her silindiğinde düğüm kaynağını otomatik olarak siler, bu nedenle yalnızca kümenin yaşam döngüsünü paylaşan kaynaklar için kullanılmalıdır.
+1. İlk kaynak grubunu oluşturursunuz. Bu grup yalnızca Kubernetes hizmet kaynağını içerir. AKS kaynak sağlayıcısı, dağıtım sırasında ikinci kaynak grubunu otomatik olarak oluşturur. İkinci kaynak grubuna bir örnek *MC_myResourceGroup_myAKSCluster_eastus* . Bu ikinci kaynak grubunun adını belirtme hakkında daha fazla bilgi için sonraki bölüme bakın.
+1. *Düğüm kaynak grubu* olarak bilinen ikinci kaynak grubu, kümeyle ilişkili tüm altyapı kaynaklarını içerir. Bu kaynaklar, Kubernetes düğümü VM 'Leri, sanal ağ ve depolamayı içerir. Varsayılan olarak, düğüm kaynak grubunun *MC_myResourceGroup_myAKSCluster_eastus* gibi bir adı vardır. AKS, küme her silindiğinde düğüm kaynağını otomatik olarak siler, bu nedenle yalnızca kümenin yaşam döngüsünü paylaşan kaynaklar için kullanılmalıdır.
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>AKS düğümü kaynak grubu için kendi adını verebilir miyim?
 
-Evet. Varsayılan olarak, AKS, düğüm kaynak grubunu *MC_resourcegroupname_clustername_location*olarak adlandırın, ancak kendi adınızı de sağlayabilirsiniz.
+Evet. Varsayılan olarak, AKS, düğüm kaynak grubunu *MC_resourcegroupname_clustername_location* olarak adlandırın, ancak kendi adınızı de sağlayabilirsiniz.
 
 Kendi kaynak grubu adınızı belirtmek için, [aks-Preview][aks-preview-cli] Azure CLI uzantısı sürüm *0.3.2* veya üstünü yüklemelisiniz. [Az aks Create][az-aks-create] komutunu kullanarak bir aks kümesi oluşturduğunuzda, *--node-Resource-Group* parametresini kullanın ve kaynak grubu için bir ad belirtin. AKS kümesi dağıtmak için [bir Azure Resource Manager şablonu kullanırsanız][aks-rm-template] , *Noderesourcegroup* özelliğini kullanarak kaynak grubu adını tanımlayabilirsiniz.
 
@@ -95,6 +95,9 @@ AKS aşağıdaki [giriş denetleyicilerini][admission-controllers]destekler:
 - *Değiştirici Tingadmissionweb kancası*
 - *ValidatingAdmissionWebhook*
 - *ResourceQuota*
+- *Pod Nodeselector*
+- *Pod Toleranationrestriction*
+- *Extendedresourcetoleranation*
 
 Şu anda AKS 'de giriş denetleyicileri listesini değiştiremezsiniz.
 
@@ -109,9 +112,11 @@ namespaceSelector:
       operator: DoesNotExist
 ```
 
+API sunucusu çıkışı ile güvenlik duvarları, bu sayede giriş denetleyici Web kancaları küme içinden erişilebilmesi gerekir.
+
 ## <a name="can-admission-controller-webhooks-impact-kube-system-and-internal-aks-namespaces"></a>Erişim Denetleyicisi Web kancaları, kuin sistemi ve iç AKS ad alanlarını etkileyebilir mi?
 
-Sistemin kararlılığını korumak ve özel giriş denetleyicilerinin kuin sisteminde iç Hizmetleri etkilemeleri önlemesini engellemek için, ad alanı AKS 'leri, kuin sistemi ve AKS iç ad alanlarını otomatik olarak dışlayan bir **Admissions Enforcer**içerir. Bu hizmet, özel giriş denetleyicilerinin kuin sisteminde çalışan hizmetleri etkilememesini sağlar.
+Sistemin kararlılığını korumak ve özel giriş denetleyicilerinin kuin sisteminde iç Hizmetleri etkilemeleri önlemesini engellemek için, ad alanı AKS 'leri, kuin sistemi ve AKS iç ad alanlarını otomatik olarak dışlayan bir **Admissions Enforcer** içerir. Bu hizmet, özel giriş denetleyicilerinin kuin sisteminde çalışan hizmetleri etkilememesini sağlar.
 
 Özel giriş Web kancasının kapsamında olmasını istediğiniz bir şeyin Kuto sistemine dağıtılması için kritik bir kullanım örneğine sahipseniz, Admissions Enforcer bunu yok sayabilmesi için aşağıdaki etiketi veya ek açıklamayı ekleyebilirsiniz.
 
