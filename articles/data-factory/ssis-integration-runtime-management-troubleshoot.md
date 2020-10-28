@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f1332255ae83a32f9b71d24d812b00fad9b7fa1
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86172035"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637930"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory 'de SSIS Integration Runtime yönetimi sorunlarını giderme
 
@@ -82,7 +82,7 @@ Bu tür bir hata iletisi şöyle görünür: "geçersiz nesne adı ' catalog.cat
 
 ## <a name="custom-setup-issues"></a>Özel Kurulum sorunları
 
-SSIS IR'nizin sağlanması veya yeniden yapılandırılması sırasında özel kurulum kendi kurulum adımlarınızı eklemeniz için bir arabirim sağlar. Daha fazla bilgi için bkz. [Azure-SSIS Integration Runtime için kurulumu özelleştirme](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
+SSIS IR'nizin sağlanması veya yeniden yapılandırılması sırasında özel kurulum kendi kurulum adımlarınızı eklemeniz için bir arabirim sağlar. Daha fazla bilgi için bkz. [Azure-SSIS Integration Runtime için kurulumu özelleştirme](./how-to-configure-azure-ssis-ir-custom-setup.md).
 
 Kapsayıcınızın yalnızca gerekli kurulum dosyalarını içerdiğinden emin olun; kapsayıcıdaki tüm dosyalar SSIS IR çalışan düğümüne indirilecektir. Özel kurulum betiğini SSIS IR'de çalıştırmadan önce betik yürütme sorunlarını çözmek için betiği yerel makinede test etmenizi öneririz.
 
@@ -114,7 +114,7 @@ Bu hata özel kurulum yürütme günlüklerini blob kapsayıcınıza yükleme gi
 
 ## <a name="virtual-network-configuration"></a>Sanal ağ yapılandırması
 
-SSIS IR'yi Azure Sanal Ağıyla birleştirdiğinizde, SSIS IR kullanıcı aboneliği altındaki sanal ağı kullanır. Daha fazla bilgi için bkz. [Azure-SSIS Integration Runtime'ı sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+SSIS IR'yi Azure Sanal Ağıyla birleştirdiğinizde, SSIS IR kullanıcı aboneliği altındaki sanal ağı kullanır. Daha fazla bilgi için bkz. [Azure-SSIS Integration Runtime'ı sanal ağa ekleme](./join-azure-ssis-integration-runtime-virtual-network.md).
 SSIS IR başarıyla başladıktan sonra, ağ bağlantısı sorunlarıyla karşılaşırsanız, sorunu tanılamak için [Tanıla bağlantı aracını](ssis-integration-runtime-diagnose-connectivity-faq.md) kullanmayı deneyebilirsiniz.
 Sanal Ağ ile ilgili bir sorun olduğunda aşağıdaki hatalardan birini görürsünüz.
 
@@ -141,7 +141,7 @@ Bu hatalar sanal ağın var olmadığı, Azure Batch hizmetinin bu sanal ağa er
 
 Bu tür bir hata iletisi şu şekilde görünebilir: "VNet 'te Integration Runtime sağlanamadı. DNS sunucusu veya NSG ayarları yapılandırılırsa, DNS sunucusunun erişilebilir olduğundan ve NSG 'nin doğru yapılandırıldığından emin olun. "
 
-Bu durumda büyük olasılıkla DNS sunucusunda ve NSG ayarlarında SSIS IR için gereken Azure sunucu adının çözümlenmesini veya bu ada erişilmesini engelleyen özelleştirilmiş bir yapılandırma kullanıyorsunuzdur. Daha fazla bilgi için bkz. [SSIS IR Sanal Ağ yapılandırması](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Sorunlarınız devam ediyorsa Azure Data Factory destek takımına başvurun.
+Bu durumda büyük olasılıkla DNS sunucusunda ve NSG ayarlarında SSIS IR için gereken Azure sunucu adının çözümlenmesini veya bu ada erişilmesini engelleyen özelleştirilmiş bir yapılandırma kullanıyorsunuzdur. Daha fazla bilgi için bkz. [SSIS IR Sanal Ağ yapılandırması](./join-azure-ssis-integration-runtime-virtual-network.md). Sorunlarınız devam ediyorsa Azure Data Factory destek takımına başvurun.
 
 ### <a name="vnetresourcegrouplockedduringupgrade"></a>VNetResourceGroupLockedDuringUpgrade
 
@@ -157,11 +157,11 @@ SSIS IR'yi durdurduğunuzda Sanal Ağ ile ilgili tüm kaynaklar silinir. Ama abo
 
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
-Bu hata IR çalışırken oluşur ve IR'nin artık iyi durumda olmadığı anlamına gelir. Bu hata her zaman DNS sunucusunda veya NSG yapılandırmasında yapılan ve SSIS IR'nin gerekli hizmete bağlanmasını engelleyen bir değişiklikten kaynaklanır. DNS sunucusunun ve NSG'nin yapılandırması müşteri tarafından denetlendiğinden, müşterinin kendi tarafında bağlantıyı engelleyen sorunları düzeltmesi gerekir. Daha fazla bilgi için bkz. [SSIS IR Sanal Ağ yapılandırması](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Sorunlarınız devam ediyorsa Azure Data Factory destek takımına başvurun.
+Bu hata IR çalışırken oluşur ve IR'nin artık iyi durumda olmadığı anlamına gelir. Bu hata her zaman DNS sunucusunda veya NSG yapılandırmasında yapılan ve SSIS IR'nin gerekli hizmete bağlanmasını engelleyen bir değişiklikten kaynaklanır. DNS sunucusunun ve NSG'nin yapılandırması müşteri tarafından denetlendiğinden, müşterinin kendi tarafında bağlantıyı engelleyen sorunları düzeltmesi gerekir. Daha fazla bilgi için bkz. [SSIS IR Sanal Ağ yapılandırması](./join-azure-ssis-integration-runtime-virtual-network.md). Sorunlarınız devam ediyorsa Azure Data Factory destek takımına başvurun.
 
 ## <a name="static-public-ip-addresses-configuration"></a>Statik genel IP adresleri yapılandırması
 
-Azure-SSIS IR Azure sanal ağına katdığınızda, IR 'nin, belirli IP adreslerine erişimi sınırlayan veri kaynaklarına erişebilmesi için kendi statik genel IP adreslerini de bir araya getirebileceksiniz. Daha fazla bilgi için bkz. [Azure-SSIS Integration Runtime'ı sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+Azure-SSIS IR Azure sanal ağına katdığınızda, IR 'nin, belirli IP adreslerine erişimi sınırlayan veri kaynaklarına erişebilmesi için kendi statik genel IP adreslerini de bir araya getirebileceksiniz. Daha fazla bilgi için bkz. [Azure-SSIS Integration Runtime'ı sanal ağa ekleme](./join-azure-ssis-integration-runtime-virtual-network.md).
 
 Yukarıdaki sanal ağ sorunlarının yanı sıra statik ortak IP adresleriyle ilgili sorunu da karşılayabilirsiniz. Yardım için lütfen aşağıdaki hataları kontrol edin.
 
@@ -174,7 +174,7 @@ Bu hata, Azure-SSIS IR başlattığınızda çeşitli nedenlerden kaynaklanabili
 | Belirtilen statik genel IP adresi zaten kullanılıyor, lütfen Azure-SSIS Integration Runtime için kullanılmamış iki tane belirtin. | İki kullanılmamış statik genel IP adresi seçmeniz veya belirtilen genel IP adresine yönelik geçerli başvuruları kaldırmanız ve ardından Azure-SSIS IR yeniden başlatmanız gerekir. |
 | Belirtilen statik genel IP adresi, DNS adına sahip değil, lütfen Azure-SSIS Integration Runtime DNS adına sahip iki tane belirtin. | Aşağıdaki resimde gösterildiği gibi Azure portal genel IP adresinin DNS adını ayarlayabilirsiniz. Belirli adımlar şunlardır: (1) Azure portal aç ve bu genel IP adresinin kaynak sayfasına git; (2) **yapılandırma** bölümünü SEÇIN ve DNS adını ayarlayıp **Kaydet** düğmesine tıklayın; (3) Azure-SSIS IR yeniden başlatın. |
 | Azure-SSIS Integration Runtime için sunulan VNet ve statik genel IP adresleri aynı konumda olmalıdır. | Azure ağının gereksinimlerine göre, statik genel IP adresi ve sanal ağ aynı konum ve abonelikte olmalıdır. Lütfen iki geçerli statik genel IP adresi sağlayın ve Azure-SSIS IR yeniden başlatın. |
-| Belirtilen statik genel IP adresi temel bir tane, lütfen Azure-SSIS Integration Runtime için iki standart değer sağlayın. | Yardım için [genel IP adresi SKU 'larına](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) bakın. |
+| Belirtilen statik genel IP adresi temel bir tane, lütfen Azure-SSIS Integration Runtime için iki standart değer sağlayın. | Yardım için [genel IP adresi SKU 'larına](../virtual-network/public-ip-addresses.md#sku) bakın. |
 
 ![Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
 

@@ -10,12 +10,12 @@ author: meiyl
 ms.reviewer: sawinark
 manager: yidetu
 ms.date: 06/07/2020
-ms.openlocfilehash: cf41da685036770144ebf7eb2befd0c3d126362d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ede36b20353f00ed9a4f80bec2d7bc5a3512a9ea
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87446020"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637964"
 ---
 # <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>SSIS tümleştirme çalışma zamanı 'ndaki bağlantıyı Tanıla özelliğini kullanma
 
@@ -38,13 +38,13 @@ Bağlantıları test ederken oluşan en yaygın hatalar hakkında bilgi edinmek 
 
 ## <a name="error-code-invalidinput"></a>Hata kodu: ınvalidınput
 
-- **Hata iletisi**: "Lütfen girişin doğru olduğundan emin olun."
-- **Olası neden**: giriş yanlış.
-- **Öneri**: Girişinizi denetleyin.
+- **Hata iletisi** : "Lütfen girişin doğru olduğundan emin olun."
+- **Olası neden** : giriş yanlış.
+- **Öneri** : Girişinizi denetleyin.
 
 ## <a name="error-code-firewallornetworkissue"></a>Hata kodu: Firewallornetworkıssue
 
-- **Hata iletisi**: "Lütfen bu bağlantı noktasının güvenlik duvarınızın/sunucunuzun/NSG 'de açık olduğunu ve ağın kararlı olduğunu doğrulayın."
+- **Hata iletisi** : "Lütfen bu bağlantı noktasının güvenlik duvarınızın/sunucunuzun/NSG 'de açık olduğunu ve ağın kararlı olduğunu doğrulayın."
 - **Olası nedenler:**
   - Sunucunuz bağlantı noktasını açmıyor.
   - Ağ güvenlik grubunuzun bağlantı noktasındaki giden trafik reddedildi.
@@ -56,7 +56,7 @@ Bağlantıları test ederken oluşan en yaygın hatalar hakkında bilgi edinmek 
 
 ## <a name="error-code-misconfigureddnssettings"></a>Hata kodu: Hatalı Configureddnssettings
 
-- **Hata iletisi**: "Azure-SSIS IR Ile Birleşik VNET 'TE kendi DNS sunucunuzu kullanıyorsanız, ana bilgisayar adınızı çözümleyebildiğini doğrulayın."
+- **Hata iletisi** : "Azure-SSIS IR Ile Birleşik VNET 'TE kendi DNS sunucunuzu kullanıyorsanız, ana bilgisayar adınızı çözümleyebildiğini doğrulayın."
 - **Olası nedenler:**
   -  Özel DNS 'niz ile ilgili bir sorun var.
   -  Özel ana bilgisayar adınız için tam etki alanı adı (FQDN) kullanmamış olabilirsiniz.
@@ -66,7 +66,7 @@ Bağlantıları test ederken oluşan en yaygın hatalar hakkında bilgi edinmek 
 
 ## <a name="error-code-servernotallowremoteconnection"></a>Hata kodu: ServerNotAllowRemoteConnection
 
-- **Hata iletisi**: "Lütfen sunucunuzun Bu bağlantı noktası ÜZERINDEN uzak TCP bağlantılarına izin verdiğini doğrulayın."
+- **Hata iletisi** : "Lütfen sunucunuzun Bu bağlantı noktası ÜZERINDEN uzak TCP bağlantılarına izin verdiğini doğrulayın."
 - **Olası nedenler:**
   -  Sunucu güvenlik duvarınız uzak TCP bağlantılarına izin vermiyor.
   -  Sunucunuz çevrimiçi değil.
@@ -76,7 +76,7 @@ Bağlantıları test ederken oluşan en yaygın hatalar hakkında bilgi edinmek 
    
 ## <a name="error-code-misconfigurednsgsettings"></a>Hata kodu: Hatalı Configurednsgsettings
 
-- **Hata iletisi**: "Lütfen sanal ağınızın NSG ' sini bu bağlantı noktası üzerinden giden trafiğe izin verdiğinden emin olun. Azure ExpressRoute ve veya UDR kullanıyorsanız, lütfen bu bağlantı noktasının güvenlik duvarınızın/sunucunuzun üzerinde açık olduğunu doğrulayın. "
+- **Hata iletisi** : "Lütfen sanal ağınızın NSG ' sini bu bağlantı noktası üzerinden giden trafiğe izin verdiğinden emin olun. Azure ExpressRoute ve veya UDR kullanıyorsanız, lütfen bu bağlantı noktasının güvenlik duvarınızın/sunucunuzun üzerinde açık olduğunu doğrulayın. "
 - **Olası nedenler:**
   -  Ağ güvenlik grubunuzun bağlantı noktasındaki giden trafik reddedildi.
   -  NVA/Azure Güvenlik duvarınız/şirket içi güvenlik duvarınız bağlantı noktasını açmıyor.
@@ -86,24 +86,24 @@ Bağlantıları test ederken oluşan en yaygın hatalar hakkında bilgi edinmek 
 
 ## <a name="error-code-genericissues"></a>Hata kodu: Genericsorunlar
 
-- **Hata iletisi**: "test bağlantısı genel sorunlar nedeniyle başarısız oldu."
-- **Olası neden**: test bağlantısı genel geçici bir sorunla karşılaştı.
-- **Öneri**: test bağlantısını daha sonra yeniden deneyin. Yeniden deneme işlemi yardım vermezse, Azure Data Factory destek ekibine başvurun.
+- **Hata iletisi** : "test bağlantısı genel sorunlar nedeniyle başarısız oldu."
+- **Olası neden** : test bağlantısı genel geçici bir sorunla karşılaştı.
+- **Öneri** : test bağlantısını daha sonra yeniden deneyin. Yeniden deneme işlemi yardım vermezse, Azure Data Factory destek ekibine başvurun.
 
 ## <a name="error-code-pspingexecutiontimeout"></a>Hata kodu: PSPingExecutionTimeout
 
-- **Hata iletisi**: "test bağlantısı zaman aşımı, lütfen daha sonra yeniden deneyin."
-- **Olası neden**: test bağlantısı zaman aşımına uğradı.
-- **Öneri**: test bağlantısını daha sonra yeniden deneyin. Yeniden deneme işlemi yardım vermezse, Azure Data Factory destek ekibine başvurun.
+- **Hata iletisi** : "test bağlantısı zaman aşımı, lütfen daha sonra yeniden deneyin."
+- **Olası neden** : test bağlantısı zaman aşımına uğradı.
+- **Öneri** : test bağlantısını daha sonra yeniden deneyin. Yeniden deneme işlemi yardım vermezse, Azure Data Factory destek ekibine başvurun.
 
 ## <a name="error-code-networkinstable"></a>Hata kodu: Networkınstable
 
-- **Hata iletisi**: "test bağlantısı, ağ kararsızlık nedeniyle düzenli olarak başarılı oldu."
-- **Olası neden**: geçici ağ sorunu.
-- **Öneri**: sunucu veya güvenlik duvarı ağının kararlı olup olmadığını denetleyin.
+- **Hata iletisi** : "test bağlantısı, ağ kararsızlık nedeniyle düzenli olarak başarılı oldu."
+- **Olası neden** : geçici ağ sorunu.
+- **Öneri** : sunucu veya güvenlik duvarı ağının kararlı olup olmadığını denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [SSMS ile Azure 'a bir SSIS projesi dağıtma](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms)
-- [SSMS ile Azure 'da SSIS paketlerini çalıştırma](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)
-- [Azure 'da SSIS paketlerini zamanlama](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)
+- [SSMS ile Azure 'a bir SSIS projesi dağıtma](/sql/integration-services/ssis-quickstart-deploy-ssms)
+- [SSMS ile Azure 'da SSIS paketlerini çalıştırma](/sql/integration-services/ssis-quickstart-run-ssms)
+- [Azure 'da SSIS paketlerini zamanlama](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)

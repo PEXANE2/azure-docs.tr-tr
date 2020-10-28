@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jingwang
-ms.openlocfilehash: 3c65ed7e5fa6bb1652791eee75d4caa4c9c5f1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f890e4c47a427b6ca8c07463d6795f0813ef5bbd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83873629"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638202"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory kullanarak DB2 'den veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -49,9 +49,9 @@ DB2 veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayab
 * LUW 10,1 için IBM DB2
 
 >[!TIP]
->DB2 Bağlayıcısı DB2 için Microsoft OLE DB Sağlayıcısı üzerine kurulmuştur. DB2 bağlayıcı hatalarıyla ilgili sorunları gidermek için [veri sağlayıcısı hata kodlarına](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)bakın.
+>DB2 Bağlayıcısı DB2 için Microsoft OLE DB Sağlayıcısı üzerine kurulmuştur. DB2 bağlayıcı hatalarıyla ilgili sorunları gidermek için [veri sağlayıcısı hata kodlarına](/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -79,7 +79,7 @@ Bağlantı dizesinin içindeki tipik Özellikler:
 |:--- |:--- |:--- |
 | sunucu |DB2 sunucusunun adı. Sunucu adının sonuna iki nokta üst üste ile ayrılmış bağlantı noktası numarasını belirtebilirsiniz, örneğin `server:port` .<br>DB2 Bağlayıcısı DDM/DRDA protokolünü kullanır ve belirtilmemişse varsayılan olarak 50000 numaralı bağlantı noktasını kullanır. Belirli DB2 veritabanınızın kullandığı bağlantı noktası, sürüme ve ayarlarınıza göre farklı olabilir. Örneğin, DB2 LUW, AS400 için varsayılan bağlantı noktası 50000, varsayılan bağlantı noktası 446 ' dir ve TLS etkinleştirildiğinde 448. Bağlantı noktasının genellikle nasıl yapılandırıldığı hakkında aşağıdaki DB2 belgelerine başvurun: [DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [DB2 iSeries](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)ve [db2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Evet |
 | database |DB2 veritabanının adı. |Evet |
-| authenticationType |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değer: **temel**. |Evet |
+| authenticationType |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değer: **temel** . |Evet |
 | username |DB2 veritabanına bağlanmak için Kullanıcı adını belirtin. |Evet |
 | password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Evet |
 | packageCollection | Veritabanı sorgulanırken, gerekli paketlerin ADF tarafından otomatik olarak oluşturulduğu yeri belirtin. Bu ayarlanmamışsa, Data Factory varsayılan değer olarak {username} kullanır. | Hayır |
@@ -114,13 +114,13 @@ Bağlantı dizesinin içindeki tipik Özellikler:
         "type": "Db2",
         "typeProperties": {
             "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;packageCollection=<packagecollection>;certificateCommonName=<certname>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -168,7 +168,7 @@ DB2 'den veri kopyalamak için aşağıdaki özellikler desteklenir:
 |:--- |:--- |:--- |
 | tür | DataSet 'in Type özelliği: **Db2Table** olarak ayarlanmalıdır | Evet |
 | schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
-| tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
+| table | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -255,7 +255,7 @@ DB2 'den veri kopyalarken aşağıdaki eşlemeler DB2 veri türlerinden, geçici
 | Ondalık |Ondalık |
 | DecimalFloat |Ondalık |
 | Çift |Çift |
-| Kayan |Çift |
+| Float |Çift |
 | Sel |Dize |
 | Tamsayı |Int32 |
 | LongVarBinary |Byte [] |
@@ -264,7 +264,7 @@ DB2 'den veri kopyalarken aşağıdaki eşlemeler DB2 veri türlerinden, geçici
 | Sayısal |Ondalık |
 | Gerçek |Tek |
 | Small |Int16 |
-| Süre |TimeSpan |
+| Saat |TimeSpan |
 | Zaman damgası |DateTime |
 | Ikili |Byte [] |
 | VarChar |Dize |

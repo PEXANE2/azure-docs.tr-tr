@@ -2,15 +2,15 @@
 title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: 23f86d7d0b7e1f882cf3fb74adc484e0fe47db87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 084ab69f463334569d37efd9187bfe587bfc524d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372434"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668942"
 ---
-# <a name="create-resources-at-the-management-group-level"></a>Yönetim grubu düzeyinde kaynaklar oluşturma
+# <a name="management-group-deployments-with-arm-templates"></a>ARM şablonlarıyla yönetim grubu dağıtımları
 
 Kuruluşunuz geliştikçe, yönetim grubu düzeyinde kaynak oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) dağıtabilirsiniz. Örneğin, bir yönetim grubu için [ilkeler](../../governance/policy/overview.md) veya [Azure rol tabanlı erişim denetımı (Azure RBAC)](../../role-based-access-control/overview.md) tanımlamanız ve atamanız gerekebilir. Yönetim grubu düzeyi şablonları ile, ilkeleri yönetim grubu düzeyinde bildirimli olarak uygulayabilir ve roller atayabilirsiniz.
 
@@ -43,7 +43,7 @@ Abonelikler veya kaynak gruplarına dağıtan iç içe şablonlar için şunu ku
 
 Kaynaklarınızı yönetmek için şunu kullanın:
 
-* [etiketler](/azure/templates/microsoft.resources/tags)
+* [lerimi](/azure/templates/microsoft.resources/tags)
 
 ## <a name="schema"></a>Şema
 
@@ -52,42 +52,26 @@ Yönetim grubu dağıtımları için kullandığınız şema, kaynak grubu dağ�
 Şablonlar için şunu kullanın:
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    ...
+}
 ```
 
 Bir parametre dosyasının şeması, tüm dağıtım kapsamları için aynıdır. Parametre dosyaları için şunu kullanın:
 
 ```json
-https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    ...
+}
 ```
-
-## <a name="deployment-scopes"></a>Dağıtım kapsamları
-
-Bir yönetim grubuna dağıtım yaparken, dağıtım komutunda belirtilen yönetim grubunu hedefleyebilir veya kiracıda başka bir yönetim grubu seçebilirsiniz.
-
-Şablonun kaynaklar bölümünde tanımlanan kaynaklar, dağıtım komutundan yönetim grubuna uygulanır.
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-mg.json" highlight="5":::
-
-Başka bir yönetim grubunu hedeflemek için, iç içe geçmiş bir dağıtım ekleyin ve `scope` özelliğini belirtin. `scope`Özelliğini, biçiminde bir değer olarak ayarlayın `Microsoft.Management/managementGroups/<mg-name>` .
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
-
-Ayrıca, bir yönetim grubu içindeki abonelikleri veya kaynak gruplarını hedefleyebilirsiniz. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
-
-Yönetim grubu içinde bir aboneliği hedeflemek için, iç içe geçmiş bir dağıtım ve `subscriptionId` özelliğini kullanın.
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
-
-Bu abonelik içindeki bir kaynak grubunu hedeflemek için, başka bir iç içe dağıtım ve `resourceGroup` özelliğini ekleyin.
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
-
-Bir abonelikte kaynak grubu oluşturmaya ve bu kaynak grubuna bir depolama hesabı dağıtmaya yönelik bir yönetim grubu dağıtımı kullanmak için, bkz. [aboneliğe ve kaynak grubuna dağıtım](#deploy-to-subscription-and-resource-group).
 
 ## <a name="deployment-commands"></a>Dağıtım komutları
 
-Yönetim grubu dağıtımları için komutlar, kaynak grubu dağıtımları komutlarından farklıdır.
+Bir yönetim grubuna dağıtmak için yönetim grubu dağıtım komutlarını kullanın.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı için [az Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create)kullanın:
 
@@ -99,6 +83,8 @@ az deployment mg create \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Azure PowerShell için [New-AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment)kullanın.
 
 ```azurepowershell-interactive
@@ -109,42 +95,70 @@ New-AzManagementGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
 ```
 
-REST API için [dağıtımlar-yönetim grubu kapsamında oluştur](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)' u kullanın.
+---
+
+ARM şablonları dağıtmaya yönelik dağıtım komutları ve seçenekleri hakkında daha ayrıntılı bilgi için bkz.:
+
+* [ARM şablonları ve Azure portal kaynak dağıtma](deploy-portal.md)
+* [ARM şablonları ve Azure CLı ile kaynak dağıtma](deploy-cli.md)
+* [ARM şablonları ve Azure PowerShell kaynak dağıtma](deploy-powershell.md)
+* [ARM şablonlarıyla kaynakları dağıtma ve Azure Resource Manager REST API](deploy-rest.md)
+* [GitHub deposundan şablon dağıtmak için bir dağıtım düğmesi kullanın](deploy-to-azure-button.md)
+* [ARM şablonlarını Cloud Shell dağıtma](deploy-cloud-shell.md)
+
+## <a name="deployment-scopes"></a>Dağıtım kapsamları
+
+Bir yönetim grubuna dağıtırken, kaynakların dağıtımını yapabilirsiniz:
+
+* işlemin hedef yönetim grubu
+* Kiracıdaki başka bir yönetim grubu
+* Yönetim grubundaki abonelikler
+* Yönetim grubundaki kaynak grupları (iki iç içe dağıtım aracılığıyla)
+* [uzantı kaynakları](scope-extension-resources.md) , kaynaklara uygulanabilir
+
+Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
+
+Bu bölümde, farklı kapsamların nasıl ayarlanacağı gösterilmektedir. Bu farklı kapsamları tek bir şablonda birleştirebilirsiniz.
+
+### <a name="scope-to-target-management-group"></a>Hedef yönetim grubuna kapsam
+
+Şablonun kaynaklar bölümünde tanımlanan kaynaklar, dağıtım komutundan yönetim grubuna uygulanır.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-mg.json" highlight="5":::
+
+### <a name="scope-to-another-management-group"></a>Kapsamı başka bir yönetim grubuna
+
+Başka bir yönetim grubunu hedeflemek için, iç içe geçmiş bir dağıtım ekleyin ve `scope` özelliğini belirtin. `scope`Özelliğini, biçiminde bir değer olarak ayarlayın `Microsoft.Management/managementGroups/<mg-name>` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
+
+### <a name="scope-to-subscription"></a>Abonelik kapsamı
+
+Ayrıca, abonelikleri bir yönetim grubu içinde de hedefleyebilirsiniz. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
+
+Yönetim grubu içinde bir aboneliği hedeflemek için, iç içe geçmiş bir dağıtım ve `subscriptionId` özelliğini kullanın.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
+
+### <a name="scope-to-resource-group"></a>Kapsam-kaynak grubu
+
+Bu abonelik içindeki bir kaynak grubunu hedeflemek için, iki iç içe dağıtım ekleyin. İlki kaynak grubuna sahip aboneliği hedefler. İkincisi, özelliği ayarlayarak kaynak grubunu hedefler `resourceGroup` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
+
+Bir abonelikte kaynak grubu oluşturmaya ve bu kaynak grubuna bir depolama hesabı dağıtmaya yönelik bir yönetim grubu dağıtımı kullanmak için, bkz. [aboneliğe ve kaynak grubuna dağıtım](#deploy-to-subscription-and-resource-group).
 
 ## <a name="deployment-location-and-name"></a>Dağıtım konumu ve adı
 
 Yönetim grubu düzeyinde dağıtımlar için, dağıtım için bir konum sağlamanız gerekir. Dağıtımın konumu, dağıttığınız kaynakların konumundan ayrıdır. Dağıtım konumu, dağıtım verilerinin depolanacağı konumu belirtir.
 
-Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, ** üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
+Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy** varsayılan dağıtım adını oluşturur.
 
 Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
 
-## <a name="use-template-functions"></a>Şablon işlevlerini kullanma
-
-Yönetim grubu dağıtımları için, Şablon işlevleri kullanılırken bazı önemli noktalar vardır:
-
-* [ResourceGroup ()](template-functions-resource.md#resourcegroup) **işlevi desteklenmiyor.**
-* [Subscription ()](template-functions-resource.md#subscription) **işlevi desteklenmiyor.**
-* [Reference ()](template-functions-resource.md#reference) ve [List ()](template-functions-resource.md#list) işlevleri desteklenir.
-* Yönetim grubuna dağıtılan kaynaklar için [RESOURCEID ()](template-functions-resource.md#resourceid) işlevini kullanmayın.
-
-  Bunun yerine, yönetim grubunun uzantıları olarak uygulanan kaynaklar için [Extensionresourceıd ()](template-functions-resource.md#extensionresourceid) işlevini kullanın. Yönetim grubuna dağıtılan özel ilke tanımları, yönetim grubunun uzantılarıdır.
-
-  Yönetim grubu düzeyinde özel bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
-  
-  ```json
-  "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
-  ```
-
-  Yönetim grubu içinde kullanılabilir kiracı kaynakları için [Tenantresourceıd](template-functions-resource.md#tenantresourceid) işlevini kullanın. Yerleşik ilke tanımları, kiracı düzeyi kaynaklarıdır.
-
-  Yerleşik bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
-  
-  ```json
-  "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
-  ```
-
 ## <a name="azure-policy"></a>Azure İlkesi
+
+Yönetim grubuna dağıtılan özel ilke tanımları, yönetim grubunun uzantılarıdır. Özel bir ilke tanımının KIMLIĞINI almak için [Extensionresourceıd ()](template-functions-resource.md#extensionresourceid) işlevini kullanın. Yerleşik ilke tanımları, kiracı düzeyi kaynaklarıdır. Yerleşik bir ilke tanımının KIMLIĞINI almak için, [Tenantresourceıd](template-functions-resource.md#tenantresourceid) işlevini kullanın.
 
 Aşağıdaki örnek, yönetim grubu düzeyinde bir ilkenin nasıl [tanımlanacağını](../../governance/policy/concepts/definition-structure.md) gösterir ve bunu atar.
 

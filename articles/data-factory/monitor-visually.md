@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48373c9ffc9146b6e62b62fb7d7fe10d571ce27f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570136"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638117"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory’yi görsel olarak izleme
 
@@ -36,7 +36,7 @@ Varsayılan izleme görünümü, seçilen dönemdeki işlem hattı çalıştırm
 | Çalıştırma başlangıç | İşlem hattı çalışmasının başlangıç tarihi ve saati (AA/GG/YYYY, ss: DD: SS) |
 | Süre | Çalıştırma süresi (SS: DD: SS) |
 | Tetikleyen | İşlem hattını Başlatan tetikleyicinin adı |
-| Durum | **Başarısız**, **başarılı**, **devam ediyor**, **iptal edildi**veya **sıraya alındı** |
+| Durum | **Başarısız** , **başarılı** , **devam ediyor** , **iptal edildi** veya **sıraya alındı** |
 | Ek Açıklamalar | İşlem hattı ile ilişkili filtrelenebilir Etiketler  |
 | Parametreler | İşlem hattı çalıştırması için parametreler (ad/değer çiftleri) |
 | Hata | İşlem hattı başarısız olursa, çalıştırma hatası |
@@ -55,11 +55,11 @@ Her Işlem hattı çalıştırması için etkinlik çalıştırmalarını görü
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
 | Etkinlik Adı | İşlem hattının içindeki etkinliğin adı |
-| Etkinlik Türü | Etkinliğin türü; örneğin **Copy**, **executedataflow**veya **AzureMLExecutePipeline** |
+| Etkinlik Türü | Etkinliğin türü; örneğin **Copy** , **executedataflow** veya **AzureMLExecutePipeline** |
 | Eylemler | JSON giriş bilgilerini, JSON çıktı bilgilerini veya ayrıntılı etkinliğe özgü izleme deneyimlerini görmenizi sağlayan simgeler | 
 | Çalıştırma başlangıç | Etkinlik çalıştırmasının başlangıç tarihi ve saati (AA/GG/YYYY, ss: DD: SS) |
 | Süre | Çalıştırma süresi (SS: DD: SS) |
-| Durum | **Başarısız**, **başarılı**, **devam ediyor**veya **iptal edildi** |
+| Durum | **Başarısız** , **başarılı** , **devam ediyor** veya **iptal edildi** |
 | Integration Runtime | Etkinliğin çalıştırıldığı Integration Runtime |
 | Kullanıcı Özellikleri | Etkinliğin Kullanıcı tanımlı özellikleri |
 | Hata | Etkinlik başarısız olursa, çalıştırma hatası |
@@ -93,8 +93,8 @@ Kullanıcı özelliklerini oluşturduktan sonra bunları izleme listesi görün�
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
 | İşlem hattı adı | İşlem hattının adına göre filtreleyin. |
-| Çalıştırma başlangıç |  Gösterilecek işlem hattı çalıştırmalarının zaman aralığını belirleme. Seçenekler, **son 24 saat**, **son hafta**ve **son 30 gün** için hızlı filtreler içerir veya özel bir tarih ve saat seçer. |
-| Çalışma durumu | **Şu**durum ile filtre çalıştırmaları: **başarılı**, başarısız, **sıraya alınmış**, **iptal edildi**veya **devam ediyor**. |
+| Çalıştırma başlangıç |  Gösterilecek işlem hattı çalıştırmalarının zaman aralığını belirleme. Seçenekler, **son 24 saat** , **son hafta** ve **son 30 gün** için hızlı filtreler içerir veya özel bir tarih ve saat seçer. |
+| Çalışma durumu | **Şu** durum ile filtre çalıştırmaları: **başarılı** , başarısız, **sıraya alınmış** , **iptal edildi** veya **devam ediyor** . |
 | Ek Açıklamalar | Her bir ardışık düzene uygulanan etiketlere göre filtrele |
 | Çalıştırmalar | İşlem hatlarını yeniden yönlendirme görmek isteyip istemediğinizi filtreleyin |
 
@@ -110,7 +110,7 @@ Sütun üst bilgisinin üzerine gelerek liste görünümündeki sütun genişlik
 
 ## <a name="rerun-activities-inside-a-pipeline"></a>Etkinlikleri bir işlem hattı içinde yeniden çalıştırma
 
-Etkinlikleri bir işlem hattı içinde yeniden çalıştırabilirsiniz. **Etkinlik çalıştırmalarını görüntüle**' yi seçin ve ardından işlem hattınızda etkinlik hattınızı yeniden çalıştırmak istediğiniz noktayı seçin.
+Etkinlikleri bir işlem hattı içinde yeniden çalıştırabilirsiniz. **Etkinlik çalıştırmalarını görüntüle** ' yi seçin ve ardından işlem hattınızda etkinlik hattınızı yeniden çalıştırmak istediğiniz noktayı seçin.
 
 ![Etkinlik çalıştırmalarını görüntüleme](media/monitor-visually/rerun-activities-image1.png)
 
@@ -118,7 +118,7 @@ Etkinlikleri bir işlem hattı içinde yeniden çalıştırabilirsiniz. **Etkinl
 
 ### <a name="rerun-from-failed-activity"></a>Başarısız etkinlikten yeniden çalıştır
 
-Bir etkinlik başarısız olursa, zaman aşımına uğrar veya iptal edilirse, **başarısız etkinlikten yeniden çalıştır**' ı seçerek bu başarısız etkinlikten ardışık düzeni yeniden çalıştırabilirsiniz.
+Bir etkinlik başarısız olursa, zaman aşımına uğrar veya iptal edilirse, **başarısız etkinlikten yeniden çalıştır** ' ı seçerek bu başarısız etkinlikten ardışık düzeni yeniden çalıştırabilirsiniz.
 
 ![Başarısız etkinliği yeniden çalıştır](media/monitor-visually/rerun-failed-activity.png)
 
@@ -168,7 +168,7 @@ Sol alt köşedeki **bilgi** simgesini seçin. Ardından, işlem hattınızı ve
 
 ## <a name="alerts"></a>Uyarılar
 
-Data Factory içinde desteklenen ölçümler üzerinde uyarı oluşturabilirsiniz. Başlamak **Monitor**  >  için Data Factory izleme sayfasında,**uyarıları & ölçümleri** izleyin ' ı seçin.
+Data Factory içinde desteklenen ölçümler üzerinde uyarı oluşturabilirsiniz. Başlamak **Monitor**  >  için Data Factory izleme sayfasında, **uyarıları & ölçümleri** izleyin ' ı seçin.
 
 ![Data Factory Izleyici sayfası](media/monitor-visually/start-page.png)
 
@@ -212,4 +212,4 @@ Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki vide
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İşlem hatlarını izleme ve yönetme hakkında bilgi edinmek için işlem [hatlarını programlama yoluyla izleme ve yönetme](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) makalesine bakın.
+İşlem hatlarını izleme ve yönetme hakkında bilgi edinmek için işlem [hatlarını programlama yoluyla izleme ve yönetme](./monitor-programmatically.md) makalesine bakın.

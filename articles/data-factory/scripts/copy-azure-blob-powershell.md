@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: cd8c8450d6e747e9789c785d1c594532b94a36cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9550556aa022a9211072fd4c5fb18acb4ee7882e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443084"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637998"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>Verileri bulutta kopyalamak için bir Data Factory işlem hattı oluşturmak için PowerShell 'i kullanma
 
@@ -26,7 +26,7 @@ Bu örnek PowerShell betiği, verileri bir konumdan Azure Blob depolama alanınd
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure depolama hesabı**. Blob depolama alanını hem **kaynak** hem de **havuz** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma sırasında [depolama hesabı oluşturma](../../storage/common/storage-account-create.md) konusuna bakın. 
+* **Azure depolama hesabı** . Blob depolama alanını hem **kaynak** hem de **havuz** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma sırasında [depolama hesabı oluşturma](../../storage/common/storage-account-create.md) konusuna bakın. 
 * Blob Depolama içinde bir **blob kapsayıcısı** oluşturun, kapsayıcıda bir giriş **klasörü** oluşturun ve bazı dosyaları klasöre yükleyin. Azure Blob depolamaya bağlanmak, blob kapsayıcısı oluşturmak, giriş dosyasını karşıya yüklemek ve çıkış dosyasını doğrulamak için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) gibi araçları kullanabilirsiniz.
 
 ## <a name="sample-script"></a>Örnek betik
@@ -68,6 +68,6 @@ Bu betik şu komutları kullanır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).
 
 Ek Azure Data Factory PowerShell betiği örnekleri [Azure Data Factory PowerShell örneklerinde](../samples-powershell.md)bulunabilir.

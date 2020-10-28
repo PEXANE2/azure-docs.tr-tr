@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 2197136b86d0bfbb2de79af6712c953339d46371
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8192b1351d54acbb553bacb8b36474cba271cb05
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442846"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638083"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Şirket içi Netezza sunucusundan Azure 'a veri geçirmek için Azure Data Factory kullanma 
 
@@ -41,13 +41,13 @@ Azure Data Factory, çeşitli düzeylerde paralellik sağlayan sunucusuz bir mim
 
 Yukarıdaki diyagram aşağıdaki gibi yorumlanabilir:
 
-- Tek bir kopyalama etkinliği, ölçeklenebilir işlem kaynaklarından yararlanabilir. Azure Integration Runtime kullandığınızda, her kopyalama etkinliği için sunucusuz bir şekilde [en fazla 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) belirtebilirsiniz. Şirket içinde barındırılan bir tümleştirme çalışma zamanı (Şirket içinde barındırılan IR) sayesinde, makineyi el ile ölçeklendirebilir veya birden fazla makineye ([en fazla dört düğüme](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) ölçeklendirebilirsiniz ve tek bir kopyalama etkinliği bölümünü tüm düğümlerde dağıtır. 
+- Tek bir kopyalama etkinliği, ölçeklenebilir işlem kaynaklarından yararlanabilir. Azure Integration Runtime kullandığınızda, her kopyalama etkinliği için sunucusuz bir şekilde [en fazla 256 DIUs](./copy-activity-performance.md#data-integration-units) belirtebilirsiniz. Şirket içinde barındırılan bir tümleştirme çalışma zamanı (Şirket içinde barındırılan IR) sayesinde, makineyi el ile ölçeklendirebilir veya birden fazla makineye ([en fazla dört düğüme](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)) ölçeklendirebilirsiniz ve tek bir kopyalama etkinliği bölümünü tüm düğümlerde dağıtır. 
 
 - Tek bir kopyalama etkinliği, birden çok iş parçacığı kullanarak veri deposundan okur ve yazar. 
 
-- Azure Data Factory denetim akışı, paralel olarak birden çok kopyalama etkinliği başlatabilir. Örneğin, [her döngü için](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)bir kullanarak bunları başlatabilir. 
+- Azure Data Factory denetim akışı, paralel olarak birden çok kopyalama etkinliği başlatabilir. Örneğin, [her döngü için](./control-flow-for-each-activity.md)bir kullanarak bunları başlatabilir. 
 
-Daha fazla bilgi için bkz. [kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu](https://docs.microsoft.com/azure/data-factory/copy-activity-performance).
+Daha fazla bilgi için bkz. [kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu](./copy-activity-performance.md).
 
 ## <a name="resilience"></a>Esnekliği
 
@@ -95,33 +95,33 @@ Yukarıdaki diyagram aşağıdaki gibi yorumlanabilir:
 
 ### <a name="manage-authentication-and-credentials"></a>Kimlik doğrulama ve kimlik bilgilerini yönetme 
 
-- Netezza kimlik doğrulaması yapmak için [bağlantı dizesi aracılığıyla ODBC kimlik doğrulamasını](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties)kullanabilirsiniz. 
+- Netezza kimlik doğrulaması yapmak için [bağlantı dizesi aracılığıyla ODBC kimlik doğrulamasını](./connector-netezza.md#linked-service-properties)kullanabilirsiniz. 
 
 - Azure Blob depolamada kimlik doğrulaması yapmak için: 
 
-   - [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity)kullanılması önemle önerilir. Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen Azure Data Factory kimliğin üzerine inşa, Yönetilen kimlikler, bağlantılı hizmet tanımında kimlik bilgilerini sağlamak zorunda kalmadan işlem hatlarını yapılandırmanıza olanak tanır.  
+   - [Azure kaynakları için yönetilen kimliklerin](./connector-azure-blob-storage.md#managed-identity)kullanılması önemle önerilir. Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen Azure Data Factory kimliğin üzerine inşa, Yönetilen kimlikler, bağlantılı hizmet tanımında kimlik bilgilerini sağlamak zorunda kalmadan işlem hatlarını yapılandırmanıza olanak tanır.  
 
-   - Alternatif olarak, [hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), [paylaşılan erişim imzası](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)veya [depolama hesabı anahtarı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)kullanarak Azure Blob depolama alanında kimlik doğrulaması yapabilirsiniz. 
+   - Alternatif olarak, [hizmet sorumlusu](./connector-azure-blob-storage.md#service-principal-authentication), [paylaşılan erişim imzası](./connector-azure-blob-storage.md#shared-access-signature-authentication)veya [depolama hesabı anahtarı](./connector-azure-blob-storage.md#account-key-authentication)kullanarak Azure Blob depolama alanında kimlik doğrulaması yapabilirsiniz. 
 
 - Azure Data Lake Storage 2. doğrulamak için: 
 
-   - [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)kullanılması önemle önerilir.
+   - [Azure kaynakları için yönetilen kimliklerin](./connector-azure-data-lake-storage.md#managed-identity)kullanılması önemle önerilir.
    
-   - [Hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) veya bir [depolama hesabı anahtarı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)da kullanabilirsiniz. 
+   - [Hizmet sorumlusu](./connector-azure-data-lake-storage.md#service-principal-authentication) veya bir [depolama hesabı anahtarı](./connector-azure-data-lake-storage.md#account-key-authentication)da kullanabilirsiniz. 
 
 - Azure SYNAPSE Analytics 'te kimlik doğrulaması yapmak için:
 
-   - [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity)kullanılması önemle önerilir.
+   - [Azure kaynakları için yönetilen kimliklerin](./connector-azure-sql-data-warehouse.md#managed-identity)kullanılması önemle önerilir.
    
-   - [Hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) veya [SQL kimlik doğrulaması](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)da kullanabilirsiniz.
+   - [Hizmet sorumlusu](./connector-azure-sql-data-warehouse.md#service-principal-authentication) veya [SQL kimlik doğrulaması](./connector-azure-sql-data-warehouse.md#sql-authentication)da kullanabilirsiniz.
 
-- Azure kaynakları için Yönetilen kimlikler kullanmadığınız durumlarda, Azure Data Factory bağlı hizmetleri değiştirmeye gerek kalmadan anahtarları merkezi olarak yönetmeyi ve döndürmeyi kolaylaştırmak için [Azure Key Vault kimlik bilgilerini depolamayı](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) kesinlikle öneririz. Bu Ayrıca, [CI/CD için en iyi uygulamalardan](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)biridir. 
+- Azure kaynakları için Yönetilen kimlikler kullanmadığınız durumlarda, Azure Data Factory bağlı hizmetleri değiştirmeye gerek kalmadan anahtarları merkezi olarak yönetmeyi ve döndürmeyi kolaylaştırmak için [Azure Key Vault kimlik bilgilerini depolamayı](./store-credentials-in-key-vault.md) kesinlikle öneririz. Bu Ayrıca, [CI/CD için en iyi uygulamalardan](./continuous-integration-deployment.md#best-practices-for-cicd)biridir. 
 
 ### <a name="migrate-initial-snapshot-data"></a>İlk anlık görüntü verilerini geçirme 
 
 Küçük tablolar (yani, 100 GB 'tan daha az bir birimi olan veya iki saat içinde Azure 'a geçirilebilecek tablolar) için her bir kopyalama işi tablo başına veri yükleme yapabilirsiniz. Daha fazla verimlilik için, aynı anda ayrı tabloları yüklemek üzere birden çok Azure Data Factory kopyalama işi çalıştırabilirsiniz. 
 
-Her kopyalama işinde, paralel sorgular çalıştırmak ve verileri bölümlere göre kopyalamak için aşağıdaki veri bölümü seçeneklerinden biriyle [ `parallelCopies` özellik ayarını](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) kullanarak, bazı paralellik düzeyine erişebilirsiniz:
+Her kopyalama işinde, paralel sorgular çalıştırmak ve verileri bölümlere göre kopyalamak için aşağıdaki veri bölümü seçeneklerinden biriyle [ `parallelCopies` özellik ayarını](./copy-activity-performance.md#parallel-copy) kullanarak, bazı paralellik düzeyine erişebilirsiniz:
 
 - Daha fazla verimlilik elde etmek için bir veri diliminden başlamanız önerilir.  `parallelCopies`Ayardaki değerin, Netezza sunucusundaki tablonuzdaki veri dilimi bölümlerinin toplam sayısından küçük olduğundan emin olun.  
 
@@ -192,18 +192,18 @@ Aşağıdaki deyimlerin doğru olduğunu varsayalım:
 Daha fazla bilgi için aşağıdaki makalelere ve kılavuzlara bakın:
 
 - [Azure Data Factory kullanarak şirket içi ilişkisel veri ambarı veritabanından Azure 'a veri geçirme](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
-- [Netezza Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-netezza)
-- [ODBC bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-odbc)
-- [Azure Blob depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage 2. Nesil bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure SYNAPSE Analytics Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
-- [Kopyalama etkinliği performans ayarlama Kılavuzu](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Şirket içinde barındırılan tümleştirme çalışma zamanı HA ve ölçeklenebilirliği](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [Veri taşırken güvenlikle ilgili dikkat edilmesi gerekenler](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Kimlik bilgilerini Azure Key Vault’ta depolama](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Verileri bir tablodan artımlı olarak kopyalama](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
-- [Verileri birden çok tablodan artımlı olarak kopyalama](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
+- [Netezza Bağlayıcısı](./connector-netezza.md)
+- [ODBC bağlayıcısı](./connector-odbc.md)
+- [Azure Blob depolama Bağlayıcısı](./connector-azure-blob-storage.md)
+- [Azure Data Lake Storage 2. Nesil bağlayıcısı](./connector-azure-data-lake-storage.md)
+- [Azure SYNAPSE Analytics Bağlayıcısı](./connector-azure-sql-data-warehouse.md)
+- [Kopyalama etkinliği performans ayarlama Kılavuzu](./copy-activity-performance.md)
+- [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](./create-self-hosted-integration-runtime.md)
+- [Şirket içinde barındırılan tümleştirme çalışma zamanı HA ve ölçeklenebilirliği](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [Veri taşırken güvenlikle ilgili dikkat edilmesi gerekenler](./data-movement-security-considerations.md)
+- [Kimlik bilgilerini Azure Key Vault’ta depolama](./store-credentials-in-key-vault.md)
+- [Verileri bir tablodan artımlı olarak kopyalama](./tutorial-incremental-copy-portal.md)
+- [Verileri birden çok tablodan artımlı olarak kopyalama](./tutorial-incremental-copy-multiple-tables-portal.md)
 - [Azure Data Factory fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>Sonraki adımlar

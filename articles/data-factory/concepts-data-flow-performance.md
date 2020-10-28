@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 055cdf7b6cec12eb8c3e7fde891d155b831a6523
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874841"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637879"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -155,7 +155,7 @@ Azure SQL veritabanı ' kaynak ' bölümlendirme adlı benzersiz bir bölümlend
 
 #### <a name="isolation-level"></a>Yalıtım düzeyi
 
-Azure SQL kaynak sistemi üzerinde okunan yalıtım düzeyinin performansı üzerinde etkisi vardır. ' READ UNCOMMITTED ' seçeneğinin belirlenmesi en hızlı performansı sağlar ve tüm veritabanı kilitlerini önler. SQL yalıtım düzeyleri hakkında daha fazla bilgi için lütfen bkz. [yalıtım düzeylerini anlama](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15).
+Azure SQL kaynak sistemi üzerinde okunan yalıtım düzeyinin performansı üzerinde etkisi vardır. ' READ UNCOMMITTED ' seçeneğinin belirlenmesi en hızlı performansı sağlar ve tüm veritabanı kilitlerini önler. SQL yalıtım düzeyleri hakkında daha fazla bilgi için lütfen bkz. [yalıtım düzeylerini anlama](/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15).
 
 #### <a name="read-using-query"></a>Sorguyu kullanarak oku
 
@@ -163,7 +163,7 @@ Azure SQL veritabanı 'ndan bir tablo veya SQL sorgusu kullanarak okuma yapabili
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure SYNAPSE Analytics kaynakları
 
-Azure SYNAPSE Analytics kullanılırken, kaynak seçeneklerinde **hazırlama hazırlama** adlı bir ayar bulunur. Bu, ADF 'nin [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)kullanarak SYNAPSE okumasına izin verir ve bu da okuma performansını önemli ölçüde geliştirir. PolyBase 'i etkinleştirmek için veri akışı etkinlik ayarlarında bir Azure Blob depolama alanı veya Azure Data Lake Storage Gen2 hazırlama konumu belirtmeniz gerekir.
+Azure SYNAPSE Analytics kullanılırken, kaynak seçeneklerinde **hazırlama hazırlama** adlı bir ayar bulunur. Bu, ADF 'nin [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)kullanarak SYNAPSE okumasına izin verir ve bu da okuma performansını önemli ölçüde geliştirir. PolyBase 'i etkinleştirmek için veri akışı etkinlik ayarlarında bir Azure Blob depolama alanı veya Azure Data Lake Storage Gen2 hazırlama konumu belirtmeniz gerekir.
 
 ![Hazırlamayı etkinleştirme](media/data-flow/enable-staging.png "Hazırlamayı etkinleştirme")
 
@@ -198,7 +198,7 @@ Bunlar her ikisi de Azure SQL VERITABANı veya SYNAPSE havuzu içindeki SQL önc
 ![Dizinleri devre dışı bırak](media/data-flow/disable-indexes-sql.png "Dizinleri devre dışı bırak")
 
 > [!WARNING]
-> Dizinler devre dışı bırakıldığında, veri akışı bir veritabanının denetimini etkili bir şekilde ele alınır ve sorguların Şu anda başarılı olması düşüktür. Sonuç olarak, bu çakışmayı önlemek için gece ortasında birçok ETL işi tetiklenir. Daha fazla bilgi için [dizinleri devre dışı bırakma kısıtlamaları](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15) hakkında bilgi edinin
+> Dizinler devre dışı bırakıldığında, veri akışı bir veritabanının denetimini etkili bir şekilde ele alınır ve sorguların Şu anda başarılı olması düşüktür. Sonuç olarak, bu çakışmayı önlemek için gece ortasında birçok ETL işi tetiklenir. Daha fazla bilgi için [dizinleri devre dışı bırakma kısıtlamaları](/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15) hakkında bilgi edinin
 
 #### <a name="scaling-up-your-database"></a>Veritabanınızı ölçeklendirme
 
@@ -206,7 +206,7 @@ Bunlar her ikisi de Azure SQL VERITABANı veya SYNAPSE havuzu içindeki SQL önc
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure SYNAPSE Analytics havuzları
 
-Azure SYNAPSE Analytics 'e yazarken, **hazırlama etkinleştirmeyi etkinleştir** ' in true olarak ayarlandığından emin olun. Bu, ADF 'yi, verileri toplu olarak etkin bir şekilde yükleyen [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) kullanarak yazmasını sağlar. PolyBase kullanırken verileri hazırlamak için bir Azure Data Lake Storage Gen2 veya Azure Blob depolama hesabına başvurmanız gerekir.
+Azure SYNAPSE Analytics 'e yazarken, **hazırlama etkinleştirmeyi etkinleştir** ' in true olarak ayarlandığından emin olun. Bu, ADF 'yi, verileri toplu olarak etkin bir şekilde yükleyen [PolyBase](/sql/relational-databases/polybase/polybase-guide) kullanarak yazmasını sağlar. PolyBase kullanırken verileri hazırlamak için bir Azure Data Lake Storage Gen2 veya Azure Blob depolama hesabına başvurmanız gerekir.
 
 PolyBase dışında, Azure SYNAPSE Analytics için Azure SQL veritabanı olarak aynı en iyi uygulamalar geçerlidir.
 
@@ -226,7 +226,7 @@ Dosya yazarken, her birinin performans etkisi olan bir adlandırma seçenekleri 
 
 Adlandırma **deseninin** ayarlanması, her bölüm dosyasını daha kolay bir adla yeniden adlandıracaktır. Bu işlem, yazma işleminden sonra gerçekleşir ve varsayılanı seçmekten biraz daha yavaştır. Bölüm başına, her bölüme el ile ad vermenize olanak tanır.
 
-Bir sütun, verileri nasıl çıktısını almak istediğinizi içeriyorsa **sütunda veri olarak**seçebilirsiniz. Bu, verileri reshuffles ve sütunlar eşit olarak dağıtılmadığından performansı etkileyebilir.
+Bir sütun, verileri nasıl çıktısını almak istediğinizi içeriyorsa **sütunda veri olarak** seçebilirsiniz. Bu, verileri reshuffles ve sütunlar eşit olarak dağıtılmadığından performansı etkileyebilir.
 
 **Tek bir dosyaya çıkış** , tüm verileri tek bir bölümde birleştirir. Bu, özellikle büyük veri kümelerinde uzun yazma sürelerine yol açar. Azure Data Factory takım, bunu yapmak için açık bir iş nedeni olmadıkça bu **seçeneği seçmeyi kesinlikle** önerir.
 
@@ -247,7 +247,7 @@ CosmosDB 'ye yazarken, veri akışı yürütmesi sırasında aktarım hızını 
 
 #### <a name="broadcasting"></a>Yayınlar
 
-Birleşimler, aramalar ve mevcut dönüştürmelerde, bir veya iki veri akışı çalışan düğümü belleğine sığacak kadar küçükse, **yayını**etkinleştirerek performansı iyileştirebilirsiniz. Yayın, kümedeki tüm düğümlere küçük veri çerçeveleri gönderdiğinizde olur. Bu, Spark altyapısının büyük akıştaki verileri reshuffling olmadan bir JOIN gerçekleştirmesini sağlar. Varsayılan olarak, Spark altyapısı, birleştirmenin bir tarafını yayınlamayacağınıza otomatik olarak karar verir. Gelen verileriniz hakkında bilginiz varsa ve bir akışın diğerine göre önemli ölçüde daha küçük olacağını biliyorsanız, **sabit** yayınlama seçeneğini belirleyebilirsiniz. Sabit yayınlama, Spark 'ın seçili akışı yayınlamasını zorlar. 
+Birleşimler, aramalar ve mevcut dönüştürmelerde, bir veya iki veri akışı çalışan düğümü belleğine sığacak kadar küçükse, **yayını** etkinleştirerek performansı iyileştirebilirsiniz. Yayın, kümedeki tüm düğümlere küçük veri çerçeveleri gönderdiğinizde olur. Bu, Spark altyapısının büyük akıştaki verileri reshuffling olmadan bir JOIN gerçekleştirmesini sağlar. Varsayılan olarak, Spark altyapısı, birleştirmenin bir tarafını yayınlamayacağınıza otomatik olarak karar verir. Gelen verileriniz hakkında bilginiz varsa ve bir akışın diğerine göre önemli ölçüde daha küçük olacağını biliyorsanız, **sabit** yayınlama seçeneğini belirleyebilirsiniz. Sabit yayınlama, Spark 'ın seçili akışı yayınlamasını zorlar. 
 
 Verileri bulunan verilerin boyutu Spark düğümü için çok büyükse bellek yetersiz hatası alabilirsiniz. Bellek yetersiz hatalarından kaçınmak için **bellek için iyileştirilmiş** kümeleri kullanın. Veri akışı yürütmeleri sırasında yayın zaman aşımları yaşarsanız, yayın iyileştirmesini kapatabilirsiniz. Ancak bu, veri akışlarının daha yavaş gerçekleştirilmesine neden olur.
 

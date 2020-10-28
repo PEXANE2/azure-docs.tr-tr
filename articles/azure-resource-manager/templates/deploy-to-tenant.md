@@ -2,15 +2,15 @@
 title: Kaynakları kiracıya dağıtma
 description: Azure Resource Manager şablonundaki kiracı kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: 48b3fbcedb119ae699624e79f83297f4ecbc9ede
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 854ccbd43509b6c0b5a04357844c78c32b7e6396
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372400"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668688"
 ---
-# <a name="create-resources-at-the-tenant-level"></a>Kiracı düzeyinde kaynaklar oluşturma
+# <a name="tenant-deployments-with-arm-templates"></a>ARM şablonlarıyla kiracı dağıtımları
 
 Kuruluşunuz geliştikçe, Azure AD kiracınızda [ilkeler](../../governance/policy/overview.md) veya [Azure rol tabanlı erişim denetımı (Azure RBAC)](../../role-based-access-control/overview.md) tanımlamanız ve atamanız gerekebilir. Kiracı düzeyinde şablonlar ile genel olarak ilkeleri uygulayabilir ve genel düzeyde roller atayabilirsiniz.
 
@@ -49,13 +49,19 @@ Kiracı dağıtımları için kullandığınız şema, kaynak grubu dağıtımla
 Şablonlar için şunu kullanın:
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    ...
+}
 ```
 
 Bir parametre dosyasının şeması, tüm dağıtım kapsamları için aynıdır. Parametre dosyaları için şunu kullanın:
 
 ```json
-https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    ...
+}
 ```
 
 ## <a name="required-access"></a>Gerekli erişim
@@ -78,21 +84,11 @@ Azure Active Directory genel yöneticisinin rol atama izni otomatik olarak yoktu
 
 Asıl öğe artık şablonu dağıtmak için gerekli izinlere sahiptir.
 
-## <a name="deployment-scopes"></a>Dağıtım kapsamları
-
-Bir kiracıya dağıtım yaparken kiracıyı veya Yönetim gruplarını, abonelikleri ve kaynak gruplarını kiracıya hedefleyebilirsiniz. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
-
-Şablonun kaynaklar bölümünde tanımlanan kaynaklar kiracıya uygulanır.
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-tenant.json" highlight="5":::
-
-Kiracıdaki bir yönetim grubunu hedeflemek için, iç içe geçmiş bir dağıtım ekleyin ve `scope` özelliğini belirtin.
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,22":::
-
 ## <a name="deployment-commands"></a>Dağıtım komutları
 
 Kiracı dağıtımları komutları, kaynak grubu dağıtımları için komutlardan farklıdır.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı için [az Deployment Tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)kullanın:
 
@@ -103,6 +99,8 @@ az deployment tenant create \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Azure PowerShell için [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)kullanın.
 
 ```azurepowershell-interactive
@@ -112,38 +110,58 @@ New-AzTenantDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
-REST API için dağıtımları kullanın [-kiracı kapsamında oluşturun veya güncelleştirin](/rest/api/resources/deployments/createorupdateattenantscope).
+---
+
+ARM şablonları dağıtmaya yönelik dağıtım komutları ve seçenekleri hakkında daha ayrıntılı bilgi için bkz.:
+
+* [ARM şablonları ve Azure portal kaynak dağıtma](deploy-portal.md)
+* [ARM şablonları ve Azure CLı ile kaynak dağıtma](deploy-cli.md)
+* [ARM şablonları ve Azure PowerShell kaynak dağıtma](deploy-powershell.md)
+* [ARM şablonlarıyla kaynakları dağıtma ve Azure Resource Manager REST API](deploy-rest.md)
+* [GitHub deposundan şablon dağıtmak için bir dağıtım düğmesi kullanın](deploy-to-azure-button.md)
+* [ARM şablonlarını Cloud Shell dağıtma](deploy-cloud-shell.md)
+
+## <a name="deployment-scopes"></a>Dağıtım kapsamları
+
+Bir yönetim grubuna dağıtırken, kaynakların dağıtımını yapabilirsiniz:
+
+* Kiracı
+* kiracının içindeki yönetim grupları
+* Aboneliklerin
+* kaynak grupları (iki iç içe dağıtım aracılığıyla)
+* [uzantı kaynakları](scope-extension-resources.md) , kaynaklara uygulanabilir
+
+Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
+
+Bu bölümde, farklı kapsamların nasıl ayarlanacağı gösterilmektedir. Bu farklı kapsamları tek bir şablonda birleştirebilirsiniz.
+
+### <a name="scope-to-tenant"></a>Kapsam-kiracı
+
+Şablonun kaynaklar bölümünde tanımlanan kaynaklar kiracıya uygulanır.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-tenant.json" highlight="5":::
+
+### <a name="scope-to-management-group"></a>Kapsam-yönetim grubu
+
+Kiracıdaki bir yönetim grubunu hedeflemek için, iç içe geçmiş bir dağıtım ekleyin ve `scope` özelliğini belirtin.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,22":::
+
+### <a name="scope-to-subscription"></a>Abonelik kapsamı
+
+Ayrıca, Kiracıdaki abonelikleri de hedefleyebilirsiniz. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
+
+Kiracıdaki bir aboneliği hedeflemek için, iç içe geçmiş bir dağıtım ve `subscriptionId` özelliğini kullanın.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="10,18":::
 
 ## <a name="deployment-location-and-name"></a>Dağıtım konumu ve adı
 
 Kiracı düzeyinde dağıtımlar için dağıtım için bir konum sağlamanız gerekir. Dağıtımın konumu, dağıttığınız kaynakların konumundan ayrıdır. Dağıtım konumu, dağıtım verilerinin depolanacağı konumu belirtir.
 
-Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, ** üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
+Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy** varsayılan dağıtım adını oluşturur.
 
 Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
-
-## <a name="use-template-functions"></a>Şablon işlevlerini kullanma
-
-Kiracı dağıtımları için, Şablon işlevleri kullanılırken bazı önemli noktalar vardır:
-
-* [ResourceGroup ()](template-functions-resource.md#resourcegroup) **işlevi desteklenmiyor.**
-* [Subscription ()](template-functions-resource.md#subscription) **işlevi desteklenmiyor.**
-* [Reference ()](template-functions-resource.md#reference) ve [List ()](template-functions-resource.md#list) işlevleri desteklenir.
-* Kiracı düzeyinde dağıtılan kaynakların kaynak KIMLIĞINI almak için [RESOURCEID ()](template-functions-resource.md#resourceid) kullanmayın.
-
-  Bunun yerine, [Tenantresourceıd ()](template-functions-resource.md#tenantresourceid) işlevini kullanın.
-
-  Örneğin, bir yerleşik ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
-
-  ```json
-  tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
-  ```
-
-  Döndürülen kaynak KIMLIĞI şu biçimdedir:
-
-  ```json
-  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  ```
 
 ## <a name="create-management-group"></a>Yönetim grubu oluşturma
 

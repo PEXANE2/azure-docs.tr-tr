@@ -4,12 +4,12 @@ description: Özel uç noktaları kullanarak bir Azure Batch hesabına özel ola
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f797dbda7888eb8ea9f5c76e3b527fb98d896ee4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542147"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669027"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Azure Batch hesapları ile özel uç noktaları kullanma
 
@@ -28,25 +28,25 @@ Bu makalede özel bir Batch hesabı oluşturma ve özel bir uç nokta kullanarak
 
 Azure portal kullanarak özel bir Batch hesabı oluşturmak için aşağıdaki adımları kullanın:
 
-1. **Kaynak oluştur** bölmesinde **Batch hizmeti** ' ni seçin ve ardından **Oluştur**' u seçin.
-2. **Temel bilgiler** sekmesinde abonelik, kaynak grubu, bölge ve Batch hesabı adını girip **İleri: Gelişmiş**' i seçin.
-3. **Gelişmiş** sekmesinde, **genel ağ erişimini** **devre dışı**olarak ayarlayın.
-4. **Ayarlar**' da **Özel uç nokta bağlantıları** ' nı seçin ve **+ Özel uç noktası**' nı seçin
+1. **Kaynak oluştur** bölmesinde **Batch hizmeti** ' ni seçin ve ardından **Oluştur** ' u seçin.
+2. **Temel bilgiler** sekmesinde abonelik, kaynak grubu, bölge ve Batch hesabı adını girip **İleri: Gelişmiş** ' i seçin.
+3. **Gelişmiş** sekmesinde, **genel ağ erişimini** **devre dışı** olarak ayarlayın.
+4. **Ayarlar** ' da **Özel uç nokta bağlantıları** ' nı seçin ve **+ Özel uç noktası** ' nı seçin
    :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="Özel uç nokta bağlantıları":::
-5. **Temel bilgiler** bölmesinde, abonelik, kaynak grubu, Özel uç nokta kaynağı adı ve bölge ayrıntılarını girin veya seçin, sonra **İleri: kaynak**' ı seçin.
-6. **Kaynak** bölmesinde, **kaynak türünü** **Microsoft.Batch/batchaccounts**olarak ayarlayın. Erişmek istediğiniz özel Batch hesabını seçin ve ardından **İleri: yapılandırma**' yı seçin.
+5. **Temel bilgiler** bölmesinde, abonelik, kaynak grubu, Özel uç nokta kaynağı adı ve bölge ayrıntılarını girin veya seçin, sonra **İleri: kaynak** ' ı seçin.
+6. **Kaynak** bölmesinde, **kaynak türünü** **Microsoft.Batch/batchaccounts** olarak ayarlayın. Erişmek istediğiniz özel Batch hesabını seçin ve ardından **İleri: yapılandırma** ' yı seçin.
    :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Özel uç nokta bağlantıları":::
 7. **Yapılandırma** bölmesinde, bu bilgileri girin veya seçin:
-   - **Sanal ağ**: Sanal ağınızı seçin.
-   - **Alt ağ**: alt ağlarınızı seçin.
-   - **Özel DNS bölgesi Ile tümleştirin**: **Evet**' i seçin. Özel uç noktanıza özel olarak bağlanmak için bir DNS kaydına ihtiyacınız vardır. Özel uç noktanızı özel bir DNS bölgesiyle tümleştirmenizi öneririz. Ayrıca, kendi DNS sunucularınızı kullanabilir veya sanal makinelerinizdeki konak dosyalarını kullanarak DNS kayıtları oluşturabilirsiniz.
-   - **Özel DNS bölgesi**: Privatelink seç. <region> . batch.azure.com. Özel DNS bölgesi otomatik olarak belirlenir. Azure portal kullanarak değiştiremezsiniz.
-8. **Gözden geçir + oluştur**' u seçin ve ardından Azure 'un yapılandırmanızı doğrulaması için bekleyin.
-9. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
+   - **Sanal ağ** : Sanal ağınızı seçin.
+   - **Alt ağ** : alt ağlarınızı seçin.
+   - **Özel DNS bölgesi Ile tümleştirin** : **Evet** ' i seçin. Özel uç noktanıza özel olarak bağlanmak için bir DNS kaydına ihtiyacınız vardır. Özel uç noktanızı özel bir DNS bölgesiyle tümleştirmenizi öneririz. Ayrıca, kendi DNS sunucularınızı kullanabilir veya sanal makinelerinizdeki konak dosyalarını kullanarak DNS kayıtları oluşturabilirsiniz.
+   - **Özel DNS bölgesi** : Privatelink seç. \<region\> . batch.azure.com. Özel DNS bölgesi otomatik olarak belirlenir. Azure portal kullanarak değiştiremezsiniz.
+8. **Gözden geçir + oluştur** ' u seçin ve ardından Azure 'un yapılandırmanızı doğrulaması için bekleyin.
+9. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur** ’u seçin.
 
 Özel uç nokta sağlandıktan sonra, Özel uç noktasını kullanarak aynı sanal ağdaki VM 'lerden Batch hesabına erişebilirsiniz. Azure portal IP adresini görüntülemek için:
 
-1. **Tüm kaynaklar**’ı seçin.
+1. **Tüm kaynaklar** ’ı seçin.
 2. Daha önce oluşturduğunuz özel uç nokta için arama yapın.
 3. DNS ayarlarını ve IP adreslerini görmek için **genel bakış** sekmesini seçin.
 

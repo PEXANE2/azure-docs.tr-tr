@@ -2,15 +2,15 @@
 title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 0673ea5260c7312395acde8a62b5d457657b9793
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.openlocfilehash: 7b0edde4f3571255e92c65d82429b4ddd1a689b8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729126"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668886"
 ---
-# <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
+# <a name="subscription-deployments-with-arm-templates"></a>ARM şablonlarıyla abonelik dağıtımları
 
 Kaynakların yönetimini basitleştirmek için, Azure aboneliğinizin düzeyindeki kaynakları dağıtmak üzere bir Azure Resource Manager şablonu (ARM şablonu) kullanabilirsiniz. Örneğin, abonelikleriniz için [ilkeler](../../governance/policy/overview.md) ve [Azure rol tabanlı erişim denetımı (Azure RBAC)](../../role-based-access-control/overview.md) dağıtabilirsiniz. Ayrıca, abonelik içinde kaynak grupları oluşturabilir ve kaynakları abonelikte kaynak gruplarına dağıtabilirsiniz.
 
@@ -56,7 +56,7 @@ Aboneliğinizi yönetmek için şunu kullanın:
 * [bütçelerinin](/azure/templates/microsoft.consumption/budgets)
 * [Analiz profilini değiştir](/azure/templates/microsoft.changeanalysis/profile)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
-* [etiketler](/azure/templates/microsoft.resources/tags)
+* [lerimi](/azure/templates/microsoft.resources/tags)
 
 Desteklenen diğer türler şunlardır:
 
@@ -71,32 +71,26 @@ Abonelik düzeyi dağıtımlar için kullandığınız şema, kaynak grubu dağ�
 Şablonlar için şunu kullanın:
 
 ```json
-https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    ...
+}
 ```
 
 Bir parametre dosyasının şeması, tüm dağıtım kapsamları için aynıdır. Parametre dosyaları için şunu kullanın:
 
 ```json
-https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    ...
+}
 ```
-
-## <a name="deployment-scopes"></a>Dağıtım kapsamları
-
-Bir aboneliğe dağıtım yaparken, bir aboneliği ve abonelik içindeki kaynak gruplarını hedefleyebilirsiniz. Hedef abonelikten farklı bir aboneliğe dağıtamazsınız. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
-
-Şablonun kaynaklar bölümünde tanımlanan kaynaklar aboneliğe uygulanır.
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
-
-Abonelik içindeki bir kaynak grubunu hedeflemek için, iç içe geçmiş bir dağıtım ekleyin ve `resourceGroup` özelliğini ekleyin. Aşağıdaki örnekte, iç içe dağıtım adlı bir kaynak grubunu hedefler `rg2` .
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
-
-Bu makalede, farklı kapsamlara kaynakların nasıl dağıtılacağını gösteren şablonlar bulabilirsiniz. Kaynak grubu oluşturan ve buna bir depolama hesabı dağıtan bir şablon için bkz. [kaynak grubu ve kaynaklar oluşturma](#create-resource-group-and-resources). Kaynak grubu oluşturan, buna bir kilit uygulayan ve kaynak grubu için bir rol atayan bir şablon için bkz. [erişim denetimi](#access-control).
 
 ## <a name="deployment-commands"></a>Dağıtım komutları
 
-Abonelik düzeyi dağıtımlara yönelik komutlar, kaynak grubu dağıtımları için komutlardan farklıdır.
+Bir aboneliğe dağıtmak için abonelik düzeyinde dağıtım komutlarını kullanın.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı için [az Deployment Sub Create](/cli/azure/deployment/sub#az-deployment-sub-create)kullanın. Aşağıdaki örnek, bir kaynak grubu oluşturmak için bir şablon dağıtır:
 
@@ -108,7 +102,9 @@ az deployment sub create \
   --parameters rgName=demoResourceGroup rgLocation=centralus
 ```
 
-PowerShell dağıtım komutu için [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) veya **New-azsubscriptiondeployment**kullanın. Aşağıdaki örnek, bir kaynak grubu oluşturmak için bir şablon dağıtır:
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+PowerShell dağıtım komutu için [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) veya **New-azsubscriptiondeployment** kullanın. Aşağıdaki örnek, bir kaynak grubu oluşturmak için bir şablon dağıtır:
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -119,35 +115,52 @@ New-AzSubscriptionDeployment `
   -rgLocation centralus
 ```
 
-REST API için [dağıtımlar-abonelik kapsamında oluştur](/rest/api/resources/deployments/createorupdateatsubscriptionscope)' u kullanın.
+---
+
+ARM şablonları dağıtmaya yönelik dağıtım komutları ve seçenekleri hakkında daha ayrıntılı bilgi için bkz.:
+
+* [ARM şablonları ve Azure portal kaynak dağıtma](deploy-portal.md)
+* [ARM şablonları ve Azure CLı ile kaynak dağıtma](deploy-cli.md)
+* [ARM şablonları ve Azure PowerShell kaynak dağıtma](deploy-powershell.md)
+* [ARM şablonlarıyla kaynakları dağıtma ve Azure Resource Manager REST API](deploy-rest.md)
+* [GitHub deposundan şablon dağıtmak için bir dağıtım düğmesi kullanın](deploy-to-azure-button.md)
+* [ARM şablonlarını Cloud Shell dağıtma](deploy-cloud-shell.md)
+
+## <a name="deployment-scopes"></a>Dağıtım kapsamları
+
+Bir aboneliğe dağıtırken, kaynakların dağıtımını yapabilirsiniz:
+
+* işlemin hedef aboneliği
+* abonelik içindeki kaynak grupları
+* [uzantı kaynakları](scope-extension-resources.md) , kaynaklara uygulanabilir
+
+Hedef abonelikten farklı bir aboneliğe dağıtamazsınız. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
+
+Bu bölümde, farklı kapsamların nasıl ayarlanacağı gösterilmektedir. Bu farklı kapsamları tek bir şablonda birleştirebilirsiniz.
+
+### <a name="scope-to-subscription"></a>Abonelik kapsamı
+
+Kaynakları hedef aboneliğe dağıtmak için bu kaynakları şablonun kaynaklar bölümüne ekleyin.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
+
+Aboneliğe dağıtım örnekleri için bkz. [kaynak grupları oluşturma](#create-resource-groups) ve [ilke tanımı atama](#assign-policy-definition).
+
+### <a name="scope-to-resource-group"></a>Kapsam-kaynak grubu
+
+Abonelik içindeki bir kaynak grubuna kaynak dağıtmak için, iç içe geçmiş bir dağıtım ekleyin ve özelliğini ekleyin `resourceGroup` . Aşağıdaki örnekte, iç içe dağıtım adlı bir kaynak grubunu hedefler `demoResourceGroup` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
+
+Kaynak grubuna dağıtım örneği için bkz. [kaynak grubu ve kaynakları oluşturma](#create-resource-group-and-resources).
 
 ## <a name="deployment-location-and-name"></a>Dağıtım konumu ve adı
 
 Abonelik düzeyindeki dağıtımlar için, dağıtım için bir konum sağlamanız gerekir. Dağıtımın konumu, dağıttığınız kaynakların konumundan ayrıdır. Dağıtım konumu, dağıtım verilerinin depolanacağı konumu belirtir.
 
-Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, ** üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
+Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy** varsayılan dağıtım adını oluşturur.
 
 Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
-
-## <a name="use-template-functions"></a>Şablon işlevlerini kullanma
-
-Abonelik düzeyindeki dağıtımlar için, Şablon işlevleri kullanılırken bazı önemli noktalar vardır:
-
-* [ResourceGroup ()](template-functions-resource.md#resourcegroup) **işlevi desteklenmiyor.**
-* [Reference ()](template-functions-resource.md#reference) ve [List ()](template-functions-resource.md#list) işlevleri desteklenir.
-* Abonelik düzeyinde dağıtılan kaynakların kaynak KIMLIĞINI almak için [RESOURCEID ()](template-functions-resource.md#resourceid) kullanmayın. Bunun yerine, [Subscriptionresourceıd ()](template-functions-resource.md#subscriptionresourceid) işlevini kullanın.
-
-  Örneğin, bir aboneliğe dağıtılan bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
-
-  ```json
-  subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
-  ```
-
-  Döndürülen kaynak KIMLIĞI şu biçimdedir:
-
-  ```json
-  /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  ```
 
 ## <a name="resource-groups"></a>Kaynak grupları
 

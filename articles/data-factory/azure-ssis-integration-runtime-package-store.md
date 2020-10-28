@@ -12,23 +12,23 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 158adb6b35b488c310bd2912d4076b86579383a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29d072c513d9a75055d4bb486f44b17b00b7f0a9
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446405"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638355"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Paketleri Azure-SSIS Integration Runtime paket deposuyla yönetme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Şirket içi SQL Server Integration Services (SSIS) iş yüklerinizi Buluta taşımak & için, Azure Data Factory (ADF) içinde Azure-SSIS Integration Runtime (IR) sağlayabilirsiniz. Daha fazla bilgi için bkz. [sağlama Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure). Bir Azure-SSIS IR şunları destekler:
+Şirket içi SQL Server Integration Services (SSIS) iş yüklerinizi Buluta taşımak & için, Azure Data Factory (ADF) içinde Azure-SSIS Integration Runtime (IR) sağlayabilirsiniz. Daha fazla bilgi için bkz. [sağlama Azure-SSIS IR](./tutorial-deploy-ssis-packages-azure.md). Bir Azure-SSIS IR şunları destekler:
 
 - Azure SQL veritabanı sunucusu/yönetilen örneği (proje dağıtım modeli) tarafından barındırılan SSIS kataloğuna (SSıSDB) dağıtılan Paketleri çalıştırma
 - Azure SQL yönetilen örneği (paket dağıtım modeli) tarafından barındırılan dosya sistemine, Azure dosyalarına veya SQL Server veritabanına (MSDB) dağıtılan Paketleri çalıştırma
 
-Paket dağıtım modelini kullanırken Azure-SSIS IR paket depolarıyla sağlamak isteyip istemediğinizi seçebilirsiniz. Bunlar, Azure SQL yönetilen örneği tarafından barındırılan dosya sisteminin, Azure dosyalarının veya MSDB 'nin üzerinde bir paket yönetim katmanı sağlar. Azure-SSIS IR paket deposu, paketleri içeri/dışarı/dışarı/dışarı/dışarı aktarmanıza/çalıştırmanıza ve [eskı SSIS paket deposuna](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)benzer SQL Server Management Studio (SSMS) üzerinden çalışan paketlerin izlenmesini/durdurulmasına olanak tanır. 
+Paket dağıtım modelini kullanırken Azure-SSIS IR paket depolarıyla sağlamak isteyip istemediğinizi seçebilirsiniz. Bunlar, Azure SQL yönetilen örneği tarafından barındırılan dosya sisteminin, Azure dosyalarının veya MSDB 'nin üzerinde bir paket yönetim katmanı sağlar. Azure-SSIS IR paket deposu, paketleri içeri/dışarı/dışarı/dışarı/dışarı aktarmanıza/çalıştırmanıza ve [eskı SSIS paket deposuna](/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)benzer SQL Server Management Studio (SSMS) üzerinden çalışan paketlerin izlenmesini/durdurulmasına olanak tanır. 
 
 ## <a name="connect-to-azure-ssis-ir"></a>Azure-SSIS IR Bağlan
 
@@ -42,39 +42,39 @@ SSMS **Nesne Gezgini** penceresinde, **bağlan** açılan menüsünde **Azure-SS
 
 ## <a name="manage-folders-and-packages"></a>Klasörleri ve paketleri yönetme
 
-SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, bir menü açmak ve **Yeni klasör**, **paketi Içeri**aktar, **paketi dışarı aktar**, **Sil**veya **Yenile**' yi seçmek için herhangi bir paket mağazalarına, klasöre veya pakete sağ tıklayabilirsiniz.
+SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, bir menü açmak ve **Yeni klasör** , **paketi Içeri** aktar, **paketi dışarı aktar** , **Sil** veya **Yenile** ' yi seçmek için herhangi bir paket mağazalarına, klasöre veya pakete sağ tıklayabilirsiniz.
 
    ![Klasörleri ve paketleri yönetme](media/azure-ssis-integration-runtime-package-store/ssms-package-store-manage.png)
 
    *  İçeri aktarılan paketler için yeni bir klasör oluşturmak üzere **Yeni klasör** ' ü seçin.
 
-   *  Paketleri **dosya sisteminden**, **SQL Server** (msdb) veya eski **SSIS paketi deposundan** paket deponuza içeri aktarmak için **paketi içeri aktar** ' ı seçin.
+   *  Paketleri **dosya sisteminden** , **SQL Server** (msdb) veya eski **SSIS paketi deposundan** paket deponuza içeri aktarmak için **paketi içeri aktar** ' ı seçin.
 
       ![Paketi içeri aktar](media/azure-ssis-integration-runtime-package-store/ssms-package-store-import.png)
 
-      İçinden içeri aktarılacak **paket konumuna** bağlı olarak, ilgili **sunucu** / **kimlik doğrulaması türünü**seçin, gerekirse erişim kimlik bilgilerini girin, **paket yolunu**seçin ve yeni **paket adını**girin. Paketler içeri aktarılırken, koruma düzeyi değiştirilemez. Bunu değiştirmek için SQL Server Veri Araçları (SSDT) veya `dtutil` komut satırı yardımcı programını kullanın.
+      İçinden içeri aktarılacak **paket konumuna** bağlı olarak, ilgili **sunucu** / **kimlik doğrulaması türünü** seçin, gerekirse erişim kimlik bilgilerini girin, **paket yolunu** seçin ve yeni **paket adını** girin. Paketler içeri aktarılırken, koruma düzeyi değiştirilemez. Bunu değiştirmek için SQL Server Veri Araçları (SSDT) veya `dtutil` komut satırı yardımcı programını kullanın.
 
       > [!NOTE]
       > SSIS paketlerinin Azure-SSIS IR paket depolarına aktarılması yalnızca bir tane tarafından yapılabilir ve SQL Server/SSIS sürümünü korurken bunları temel MSDB/dosya sistemine/Azure dosyalarına kopyalayacaktır. 
       >
-      > Azure-SSIS IR Şu anda **SQL Server 2017**' i temel aldığı için, alt sürüm paketlerinin yürütülmesi çalışma zamanında ssıs 2017 paketlerine yükseltilir. Daha yüksek sürüm paketlerinin yürütülmesi desteklenmez.
+      > Azure-SSIS IR Şu anda **SQL Server 2017** ' i temel aldığı için, alt sürüm paketlerinin yürütülmesi çalışma zamanında ssıs 2017 paketlerine yükseltilir. Daha yüksek sürüm paketlerinin yürütülmesi desteklenmez.
       >
       > Ayrıca, eski SSIS paket depoları belirli SQL Server sürümüne bağlı ve yalnızca bu sürümde SSMS üzerinde erişilebilir olduğundan, eski SSIS paket mağazalarındaki alt sürüm paketlerinin SSMS 2019 veya sonraki sürümleri kullanılarak Azure-SSIS IR paket depolarına içeri aktarılbilmeleri için önce, belirtilen SSMS sürümü kullanılarak dosya sistemine aktarılması gerekir.
       >
-      > Alternatif olarak, koruma düzeylerini değiştirirken birden çok SSIS paketini Azure-SSIS IR paket depolarına aktarmak için [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) komut satırı yardımcı programını kullanabilirsiniz. bkz. [dtutil ile birden çok paket dağıtma](#deploying-multiple-packages-with-dtutil).
+      > Alternatif olarak, koruma düzeylerini değiştirirken birden çok SSIS paketini Azure-SSIS IR paket depolarına aktarmak için [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) komut satırı yardımcı programını kullanabilirsiniz. bkz. [dtutil ile birden çok paket dağıtma](#deploying-multiple-packages-with-dtutil).
 
-   *  Paketleri paket deponuzdan **dosya sistemine**, **SQL Server** (msdb) veya eski **SSIS paket deposuna**dışarı aktarmak için **paketi dışarı aktar** ' ı seçin.
+   *  Paketleri paket deponuzdan **dosya sistemine** , **SQL Server** (msdb) veya eski **SSIS paket deposuna** dışarı aktarmak için **paketi dışarı aktar** ' ı seçin.
 
       ![Paketi dışarı aktar](media/azure-ssis-integration-runtime-package-store/ssms-package-store-export.png)
 
-      Uygulamasına verilecek **paket konumuna** bağlı olarak, ilgili **sunucu** / **kimlik doğrulaması türünü**seçin, gerekirse erişim kimlik bilgilerini girin ve **paket yolunu**seçin. Paketleri dışa aktarırken, önce şifrelerini çözmek için parolaları girin ve ardından, hassas verilerin depolanmasını veya Kullanıcı anahtarı ya da parola ile tüm verileri şifrelemeyi önlemek için koruma düzeyini değiştirebilirsiniz.
+      Uygulamasına verilecek **paket konumuna** bağlı olarak, ilgili **sunucu** / **kimlik doğrulaması türünü** seçin, gerekirse erişim kimlik bilgilerini girin ve **paket yolunu** seçin. Paketleri dışa aktarırken, önce şifrelerini çözmek için parolaları girin ve ardından, hassas verilerin depolanmasını veya Kullanıcı anahtarı ya da parola ile tüm verileri şifrelemeyi önlemek için koruma düzeyini değiştirebilirsiniz.
 
       > [!NOTE]
       > Azure-SSIS IR paket mağazalarından SSIS paketlerini dışa aktarma işlemi yalnızca bir tane tek tek yapılabilir ve bu sayede koruma düzeyini değiştirmeden bu, SQL Server dosyaları SSIS 2019 veya üzeri sürüm paketlerine yükseltecektir.
       >
-      > Azure-SSIS IR Şu anda **SQL Server 2017**' i temel aldığı için, alt sürüm paketlerinin yürütülmesi çalışma zamanında ssıs 2017 paketlerine yükseltilir. Daha yüksek sürüm paketlerinin yürütülmesi desteklenmez.
+      > Azure-SSIS IR Şu anda **SQL Server 2017** ' i temel aldığı için, alt sürüm paketlerinin yürütülmesi çalışma zamanında ssıs 2017 paketlerine yükseltilir. Daha yüksek sürüm paketlerinin yürütülmesi desteklenmez.
       >
-      > Alternatif olarak, koruma düzeylerini değiştirirken Azure-SSIS IR paket mağazalarından birden çok SSIS paketini dışarı aktarmak için [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) komut satırı yardımcı programını kullanabilirsiniz. bkz. [dtutil ile birden çok paket dağıtma](#deploying-multiple-packages-with-dtutil).
+      > Alternatif olarak, koruma düzeylerini değiştirirken Azure-SSIS IR paket mağazalarından birden çok SSIS paketini dışarı aktarmak için [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) komut satırı yardımcı programını kullanabilirsiniz. bkz. [dtutil ile birden çok paket dağıtma](#deploying-multiple-packages-with-dtutil).
 
    *  Paket deponuzdan mevcut klasörleri/paketleri silmek için **Sil** ' i seçin.
 
@@ -82,13 +82,13 @@ SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, bir menü açmak ve **Yeni kl
 
 ## <a name="execute-packages"></a>Paketleri Yürüt
 
-SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, bir menü açmak ve **paketi Çalıştır**' ı seçmek için saklı paketlere sağ tıklayabilirsiniz.  Bu, ADF işlem hatlarında SSIS paket etkinliklerini yürütme olarak Azure-SSIS IR üzerinde paket yürütmelerini yapılandırabileceğiniz **paket yürütme yardımcı programı** iletişim kutusunu açar.
+SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, bir menü açmak ve **paketi Çalıştır** ' ı seçmek için saklı paketlere sağ tıklayabilirsiniz.  Bu, ADF işlem hatlarında SSIS paket etkinliklerini yürütme olarak Azure-SSIS IR üzerinde paket yürütmelerini yapılandırabileceğiniz **paket yürütme yardımcı programı** iletişim kutusunu açar.
 
 ![Paket Yürütme Yardımcı Programı sayfaları 1 & 2](media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute.png)
 
 ![Paket Yürütme Yardımcı Programı sayfaları 3 & 4](media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute2.png)
 
-**Paket yürütme yardımcı programı** Iletişim kutusunun **genel**, **yapılandırma**, **yürütme seçenekleri**ve **günlük** sayfaları, SSIS paketi yürütme etkinliğinin **Ayarlar** sekmesine karşılık gelir. Bu sayfalarda, paketinizin şifreleme parolasını ve paket yapılandırma dosyanız için erişim bilgilerini girebilirsiniz. Ayrıca, paket yürütme kimlik bilgilerinizi ve özelliklerini ve günlük klasörünüz için erişim bilgilerini de girebilirsiniz.  **Paket yürütme yardımcı programı** Iletişim kutusunun **değerleri ayarla** sayfası, geçersiz kılmak için mevcut paket özelliklerinizi girebileceğiniz SSIS paketi yürütme etkinliğinin **geçersiz kılmaları** sekmesine karşılık gelir. Daha fazla bilgi için bkz. [ADF işlem hatları içinde SSIS paketlerini yürütme SSIS paketi etkinlikleri](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+**Paket yürütme yardımcı programı** Iletişim kutusunun **genel** , **yapılandırma** , **yürütme seçenekleri** ve **günlük** sayfaları, SSIS paketi yürütme etkinliğinin **Ayarlar** sekmesine karşılık gelir. Bu sayfalarda, paketinizin şifreleme parolasını ve paket yapılandırma dosyanız için erişim bilgilerini girebilirsiniz. Ayrıca, paket yürütme kimlik bilgilerinizi ve özelliklerini ve günlük klasörünüz için erişim bilgilerini de girebilirsiniz.  **Paket yürütme yardımcı programı** Iletişim kutusunun **değerleri ayarla** sayfası, geçersiz kılmak için mevcut paket özelliklerinizi girebileceğiniz SSIS paketi yürütme etkinliğinin **geçersiz kılmaları** sekmesine karşılık gelir. Daha fazla bilgi için bkz. [ADF işlem hatları içinde SSIS paketlerini yürütme SSIS paketi etkinlikleri](./how-to-invoke-ssis-package-ssis-activity.md).
 
 **Yürüt** düğmesini SEÇTIĞINIZDE, SSIS paketi yürütme etkinliğine sahip yenı bir ADF işlem hattı otomatik olarak oluşturulup tetiklenir. Aynı ayarlara sahip bir ADF işlem hattı zaten varsa, yeniden çalıştırılır ve yeni bir işlem hattı oluşturulmaz. ADF işlem hattı ve SSIS paketi yürütme etkinliği `Pipeline_SSMS_YourPackageName_HashString` sırasıyla ve olarak adlandırılır `Activity_SSMS_YourPackageName` .
 
@@ -98,7 +98,7 @@ SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, bir menü açmak ve **paketi 
 
 ## <a name="monitor-and-stop-running-packages"></a>Çalışan paketleri izleme ve durdurma
 
-SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, çalışmakta olan paketleri görmek için **çalışan paketler** düğümünü genişletebilirsiniz.  Bir menü açmak için bunlardan birine sağ tıklayın ve **Durdur** veya **Yenile**' yi seçin.
+SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, çalışmakta olan paketleri görmek için **çalışan paketler** düğümünü genişletebilirsiniz.  Bir menü açmak için bunlardan birine sağ tıklayın ve **Durdur** veya **Yenile** ' yi seçin.
 
    ![Çalışan paketleri izleme ve durdurma](media/azure-ssis-integration-runtime-package-store/ssms-package-store-monitor.png)
 
@@ -108,7 +108,7 @@ SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, çalışmakta olan paketleri 
 
 ## <a name="monitor-azure-ssis-ir-and-edit-package-stores"></a>Azure-SSIS IR izleme ve paket depolarını düzenleme
 
-SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, bir menü açmak için sağ tıklayıp **Azure Data Factory portala git** veya **Yenile**' yi seçebilirsiniz.
+SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, bir menü açmak için sağ tıklayıp **Azure Data Factory portala git** veya **Yenile** ' yi seçebilirsiniz.
 
    ![ADF portalına git](media/azure-ssis-integration-runtime-package-store/ssms-package-store-monitor2.png)
 
@@ -122,9 +122,9 @@ SSMS üzerinde Azure-SSIS IR bağlandıktan sonra, bir menü açmak için sağ t
 
 Eski paket dağıtım modelini koruyarak, şirket içi SSIS iş yüklerinizi ADF 'de SSIS 'ye taşımak &, paketlerinizi dosya sisteminden dağıtmanız, SQL Server tarafından barındırılan MSDB veya eski SSIS paketi mağazalarının Azure dosyaları, Azure SQL yönetilen örneği tarafından barındırılan MSDB veya Azure-SSIS IR paket depoları ile dağıtılması gerekir. Aynı zamanda, daha önce yapmadıysanız, koruma düzeyini Kullanıcı anahtarına göre şifrelemeden veya parola ile şifrelemesine geçmeniz gerekir.
 
-Birden çok paketi toplu halde dağıtmak için SQL Server/SSIS yüklemesiyle birlikte gelen [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) komut satırı yardımcı programını kullanabilirsiniz. Bu, belirli bir SSIS sürümüne bağlanır. bu nedenle, koruma düzeyini değiştirmeden alt sürüm paketlerini dağıtmak için kullanıyorsanız, SSIS sürümünü korurken yalnızca bunları kopyalayacaktır. Bunları dağıtmak ve koruma düzeyini aynı anda geçirmek için kullanırsanız, bunları SSIS sürümüne yükseltir.
+Birden çok paketi toplu halde dağıtmak için SQL Server/SSIS yüklemesiyle birlikte gelen [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) komut satırı yardımcı programını kullanabilirsiniz. Bu, belirli bir SSIS sürümüne bağlanır. bu nedenle, koruma düzeyini değiştirmeden alt sürüm paketlerini dağıtmak için kullanıyorsanız, SSIS sürümünü korurken yalnızca bunları kopyalayacaktır. Bunları dağıtmak ve koruma düzeyini aynı anda geçirmek için kullanırsanız, bunları SSIS sürümüne yükseltir.
 
- Azure-SSIS IR Şu anda **SQL Server 2017**' i temel aldığı için, alt sürüm paketlerinin yürütülmesi çalışma zamanında ssıs 2017 paketlerine yükseltilir. Daha yüksek sürüm paketlerinin yürütülmesi desteklenmez.
+ Azure-SSIS IR Şu anda **SQL Server 2017** ' i temel aldığı için, alt sürüm paketlerinin yürütülmesi çalışma zamanında ssıs 2017 paketlerine yükseltilir. Daha yüksek sürüm paketlerinin yürütülmesi desteklenmez.
 
 Sonuç olarak, çalışma zamanı yükseltmelerinden kaçınmak için paket dağıtım modelinde Azure-SSIS IR üzerinde çalıştırılacak paketlerin dağıtılması SQL Server/SSIS 2017 yüklemesiyle birlikte gelen dtutil 2017 kullanmalıdır. Ücretsiz [SQL Server/ssıs 2017 Developer Edition](https://go.microsoft.com/fwlink/?linkid=853016) 'ı bu amaçla indirip yükleyebilirsiniz. Yüklendikten sonra, bu klasörde dtutil 2017 bulabilirsiniz: `YourLocalDrive:\Program Files\Microsoft SQL Server\140\DTS\Binn` .
 
@@ -148,7 +148,7 @@ for %f in (*.dtsx) do dtutil.exe /FILE %f /ENCRYPT FILE;Z:\%f;2;YourEncryptionPa
 
 Yukarıdaki komutları bir toplu iş dosyasında çalıştırmak için `%f` ile değiştirin `%%f` .
 
-Dosya sisteminin en üstündeki eski SSIS paket mağazalarından birden çok paketi Azure dosyalarına dağıtmak ve koruma düzeyini aynı anda geçirmek için aynı komutları kullanabilirsiniz, ancak `YourLocalDrive:\...\YourPackageFolder` eskı SSIS paket depoları tarafından kullanılan bir yerel klasörle değiştirebilirsiniz: `YourLocalDrive:\Program Files\Microsoft SQL Server\YourSQLServerDefaultCompatibilityLevel\DTS\Packages\YourPackageFolder` . Örneğin, eski SSIS paket depkaladınız 2016 SQL Server bağlıysa, adresine gidin `YourLocalDrive:\Program Files\Microsoft SQL Server\130\DTS\Packages\YourPackageFolder` .  Değerini, `YourSQLServerDefaultCompatibilityLevel` [SQL Server varsayılan uyumluluk seviyeleri listesinden](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#arguments)bulabilirsiniz.
+Dosya sisteminin en üstündeki eski SSIS paket mağazalarından birden çok paketi Azure dosyalarına dağıtmak ve koruma düzeyini aynı anda geçirmek için aynı komutları kullanabilirsiniz, ancak `YourLocalDrive:\...\YourPackageFolder` eskı SSIS paket depoları tarafından kullanılan bir yerel klasörle değiştirebilirsiniz: `YourLocalDrive:\Program Files\Microsoft SQL Server\YourSQLServerDefaultCompatibilityLevel\DTS\Packages\YourPackageFolder` . Örneğin, eski SSIS paket depkaladınız 2016 SQL Server bağlıysa, adresine gidin `YourLocalDrive:\Program Files\Microsoft SQL Server\130\DTS\Packages\YourPackageFolder` .  Değerini, `YourSQLServerDefaultCompatibilityLevel` [SQL Server varsayılan uyumluluk seviyeleri listesinden](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#arguments)bulabilirsiniz.
 
 Azure dosyalarının en üstünde Azure-SSIS IR paket depoları yapılandırdıysanız, SSMS 2019 veya sonraki sürümlerde Azure-SSIS IR bağlandığınızda dağıtılan paketleriniz burada görünür.
 
@@ -211,4 +211,4 @@ Azure dosyalarının en üstünde Azure-SSIS IR paket depoları yapılandırdıy
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Otomatik olarak oluşturulan ADF işlem hatlarını, SSIS paketi etkinliklerini yürütün veya ADF portalında yeni bir tane oluşturabilirsiniz. Daha fazla bilgi için bkz. [ADF işlem hatları içinde SSIS paketlerini yürütme SSIS paketi etkinlikleri](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Otomatik olarak oluşturulan ADF işlem hatlarını, SSIS paketi etkinliklerini yürütün veya ADF portalında yeni bir tane oluşturabilirsiniz. Daha fazla bilgi için bkz. [ADF işlem hatları içinde SSIS paketlerini yürütme SSIS paketi etkinlikleri](./how-to-invoke-ssis-package-ssis-activity.md).

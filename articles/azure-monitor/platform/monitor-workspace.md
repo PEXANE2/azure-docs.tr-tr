@@ -6,22 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: d77b4b5824c4426f106d10ca246c5b0d5e76327a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d6c29cb41d38e5473a9b24dbc89fd99d3e19c16f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372268"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638338"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanının sistem durumunu izleme
-Azure Izleyici 'de Log Analytics çalışma alanınızın performansını ve kullanılabilirliğini sürdürmek için, ortaya çıkan sorunları önceden tespit etmeniz gerekir. Bu makalede, [işlem](/azure-monitor/reference/tables/operation) tablosundaki verileri kullanarak Log Analytics çalışma alanınızın sistem durumunun nasıl izleneceği açıklanır. Bu tablo her Log Analytics çalışma alanına dahildir ve çalışma alanınızda oluşan hata ve uyarıları içerir. Çalışma alanınızda önemli olaylar olduğunda, bu verileri düzenli olarak gözden geçirmeniz ve uyarı oluşturmanız gerekir.
+Azure Izleyici 'de Log Analytics çalışma alanınızın performansını ve kullanılabilirliğini sürdürmek için, ortaya çıkan sorunları önceden tespit etmeniz gerekir. Bu makalede, [işlem](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) tablosundaki verileri kullanarak Log Analytics çalışma alanınızın sistem durumunun nasıl izleneceği açıklanır. Bu tablo her Log Analytics çalışma alanına dahildir ve çalışma alanınızda oluşan hata ve uyarıları içerir. Çalışma alanınızda önemli olaylar olduğunda, bu verileri düzenli olarak gözden geçirmeniz ve uyarı oluşturmanız gerekir.
 
-## <a name="_logsoperation-function"></a>_LogsOperation işlevi
-Azure Izleyici günlükleri, sorunun oluştuğu çalışma alanındaki [işlem](/azure-monitor/reference/tables/operation) tablosuna herhangi bir sorun hakkındaki ayrıntıları gönderir. **_LogsOperation** sistem Işlevi, **işlem** tablosuna dayalıdır ve analiz ve uyarı için basitleştirilmiş bir bilgi kümesi sağlar.
+## <a name="_logoperation-function"></a>_LogOperation işlevi
+Azure Izleyici günlükleri, sorunun oluştuğu çalışma alanındaki [işlem](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) tablosuna herhangi bir sorun hakkındaki ayrıntıları gönderir. **_LogOperation** sistem Işlevi, **işlem** tablosuna dayalıdır ve analiz ve uyarı için basitleştirilmiş bir bilgi kümesi sağlar.
 
 ## <a name="columns"></a>Sütunlar
 
-**_LogsOperation** işlevi aşağıdaki tablodaki sütunları döndürür.
+**_LogOperation** işlevi aşağıdaki tablodaki sütunları döndürür.
 
 | Sütun | Açıklama |
 |:---|:---|
@@ -36,7 +36,7 @@ Azure Izleyici günlükleri, sorunun oluştuğu çalışma alanındaki [işlem](
 
 
 ## <a name="categories"></a>Kategoriler
-Aşağıdaki tabloda _LogsOperations işlevindeki Kategoriler açıklanmaktadır. 
+Aşağıdaki tabloda _LogOperation işlevindeki Kategoriler açıklanmaktadır. 
 
 | Kategori | Açıklama |
 |:---|:---|
@@ -80,10 +80,10 @@ Log Analytics çalışma alanınızda bir sorun algılandığında kullanım dı
 Günlük uyarı kuralları oluşturmak için [Azure izleyici 'yi kullanarak günlük uyarılarını oluşturma, görüntüleme ve yönetme](../platform/alerts-log.md) içindeki işlemi kullanın. Aşağıdaki bölümlerde her kurala ilişkin ayrıntılar açıklanır.
 
 
-| Sorgu | Eşik değeri | Dönem | Frequency |
+| Sorgu | Eşik değeri | Dönem | Sıklık |
 |:---|:---|:---|:---|
-| `_LogsOperation | where Level == "Error"`   | 0 | 5 | 5 |
-| `_LogsOperation | where Level == "Warning"` | 0 | 1440 | 1440 |
+| `_LogOperation | where Level == "Error"`   | 0 | 5 | 5 |
+| `_LogOperation | where Level == "Warning"` | 0 | 1440 | 1440 |
 
 Bu uyarı kuralları hata veya uyarı ile tüm işlemlerle aynı yanıtı verir. Uyarı üreten işlemlere daha aşina olduğunuzda, belirli işlemler için farklı yanıt vermek isteyebilirsiniz. Örneğin, belirli işlemler için farklı kişilere bildirim göndermek isteyebilirsiniz. 
 

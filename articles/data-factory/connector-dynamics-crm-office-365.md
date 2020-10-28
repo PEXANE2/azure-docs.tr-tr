@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/23/2020
-ms.openlocfilehash: 942cbda3652692acc8eedf2ec9508bb501a60547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 204399186ae229324f9dc478e0ef58a173060013
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332109"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638185"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Ve Azure Data Factory kullanarak Dynamics 365 (Common Data Service) veya Dynamics CRM 'den veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,14 +56,14 @@ Dynamics 365 özel olarak, aşağıdaki uygulama türleri desteklenir:
 
 Bu bağlayıcı, finans, Işlemler ve Tatatçiler gibi diğer uygulama türlerini desteklemez.
 
-Bu Dynamics Connector, [Dynamics XRM araçları](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)'nın üzerine kurulmuştur.
+Bu Dynamics Connector, [Dynamics XRM araçları](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)'nın üzerine kurulmuştur.
 
 >[!TIP]
 >Dynamics 365 finans ve Işlemlerinden veri kopyalamak için [DYNAMICS AX bağlayıcısını](connector-dynamics-ax.md)kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu bağlayıcıyı Azure AD hizmet sorumlusu kimlik doğrulaması ile birlikte kullanmak için Common Data Service veya Dynamics 'te sunucu-sunucu (S2S) kimlik doğrulamasını ayarlamanız gerekir. Ayrıntılı adımlar için [Bu makaleye](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) bakın.
+Bu bağlayıcıyı Azure AD hizmet sorumlusu kimlik doğrulaması ile birlikte kullanmak için Common Data Service veya Dynamics 'te sunucu-sunucu (S2S) kimlik doğrulamasını ayarlamanız gerekir. Ayrıntılı adımlar için [Bu makaleye](/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) bakın.
 
 ## <a name="get-started"></a>başlarken
 
@@ -172,7 +172,7 @@ Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>Dynamics 365 ve şirket içi Dynamics CRM 'yi ıFD ile
 
-Dynamics Online ile karşılaştırılan ek özellikler **konak adı** ve **bağlantı noktasıdır**.
+Dynamics Online ile karşılaştırılan ek özellikler **konak adı** ve **bağlantı noktasıdır** .
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
@@ -255,7 +255,7 @@ Verileri Dynamics 'ten kopyalamak için, kopyalama etkinliği **kaynağı** böl
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının Type özelliği "DynamicsSource", "DynamicsCrmSource" veya "CommonDataServiceForAppsSource" olarak ayarlanmalıdır. | Evet |
-| sorgu | FetchXML, Dynamics Online 'da ve şirket içinde kullanılan özel bir sorgu dilidir. Aşağıdaki örneğe bakın. Daha fazla bilgi için bkz. [FetchXML Ile derleme sorguları](https://msdn.microsoft.com/library/gg328332.aspx). | `entityName`Veri kümesi belirtilmemişse Hayır |
+| sorgu | FetchXML, Dynamics Online 'da ve şirket içinde kullanılan özel bir sorgu dilidir. Aşağıdaki örneğe bakın. Daha fazla bilgi için bkz. [FetchXML Ile derleme sorguları](/previous-versions/dynamicscrm-2016/developers-guide/gg328332(v=crm.8)). | `entityName`Veri kümesi belirtilmemişse Hayır |
 
 >[!NOTE]
 >FetchXML sorgusunda yapılandırdığınız sütun projeksiyonu içermediği halde, PK sütunu her zaman gönderilir.
@@ -326,12 +326,12 @@ Verileri Dynamics 'e kopyalamak için kopyalama etkinliği **havuzu** bölümü 
 | writeBehavior | İşlemin yazma davranışı. Değerin "upsert" olması gerekir. | Evet |
 | alternateKeyName | Daha büyük bir çıkış yapmak için varlığınızda tanımlanan alternatif anahtar adı. | Hayır. |
 | writeBatchSize | Her toplu işte Dynamics 'e yazılan verilerin satır sayısı. | Hayır. Varsayılan değer 10'dur. |
-| ıgnorenullvalues | Bir yazma işlemi sırasında anahtar alanları dışındaki giriş verilerinden null değerlerin yoksayılıp yoksayılmayacağı.<br/><br/>Geçerli değerler **true** ve **false**şeklindedir:<ul><li>**Doğru**: bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde verileri hedef nesnede değiştirmeden bırakın. Ekleme işlemi yaparken tanımlanmış bir varsayılan değer ekleyin.</li><li>**Yanlış**: bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde, hedef nesnedeki verileri null bir değere güncelleştirin. Ekleme işlemi yaparken null değer ekleyin.</li></ul> | Hayır. Varsayılan değer **false**'dur. |
+| ıgnorenullvalues | Bir yazma işlemi sırasında anahtar alanları dışındaki giriş verilerinden null değerlerin yoksayılıp yoksayılmayacağı.<br/><br/>Geçerli değerler **true** ve **false** şeklindedir:<ul><li>**Doğru** : bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde verileri hedef nesnede değiştirmeden bırakın. Ekleme işlemi yaparken tanımlanmış bir varsayılan değer ekleyin.</li><li>**Yanlış** : bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde, hedef nesnedeki verileri null bir değere güncelleştirin. Ekleme işlemi yaparken null değer ekleyin.</li></ul> | Hayır. Varsayılan değer **false** 'dur. |
 
 >[!NOTE]
 >Hem havuz **Writebatchsize** hem de kopyalama etkinliği **[Parallelcopy](copy-activity-performance-features.md#parallel-copy)** for the Dynamics Sink için varsayılan değer 10 ' dur. Bu nedenle, 100 kayıt aynı anda varsayılan olarak Dynamics 'e gönderilir.
 
-Dynamics 365 Online için, [her kuruluş için iki eş zamanlı toplu çağrı](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)sınırı vardır. Bu sınır aşılırsa, ilk istek çalıştırılmadan önce bir "sunucu meşgul" özel durumu oluşturulur. Eşzamanlı aramaların bu tür azaltmasını önlemek için **Writebatchsize** 10 veya daha az bir durumda tutun.
+Dynamics 365 Online için, [her kuruluş için iki eş zamanlı toplu çağrı](/previous-versions/dynamicscrm-2016/developers-guide/jj863631(v=crm.8)#Run-time%20limitations)sınırı vardır. Bu sınır aşılırsa, ilk istek çalıştırılmadan önce bir "sunucu meşgul" özel durumu oluşturulur. Eşzamanlı aramaların bu tür azaltmasını önlemek için **Writebatchsize** 10 veya daha az bir durumda tutun.
 
 **Writebatchsize** ve **parallelkopyaların** en iyi birleşimi, varlığınızın şemasına bağlıdır. Şema öğeleri; sütun sayısını, satır boyutunu ve bu çağrılardan oluşan eklenti, iş akışı veya iş akışı etkinliklerinin sayısını içerir. **Writebatchsize** (10) &times; **parallelkopyaların** (10) varsayılan ayarı, Dynamics hizmetine göre öneri. Bu değer, en iyi performansa sahip olmasa da çoğu Dynamics varlık için geçerlidir. Kopyalama etkinliği ayarlarınızda birleşimi ayarlayarak performansı ayarlayabilirsiniz.
 
@@ -397,7 +397,7 @@ Aşağıdaki eşleme tablosunu kullanarak kaynak Dynamics veri türüne dayalı 
 | AttributeType. Status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> **AttributeType. CalendarRules**, **attributeType. multiselectseçim listesi**ve **attributeType. partylist** Dynamics veri türleri desteklenmez.
+> **AttributeType. CalendarRules** , **attributeType. multiselectseçim listesi** ve **attributeType. partylist** Dynamics veri türleri desteklenmez.
 
 ## <a name="writing-data-to-a-lookup-field"></a>Arama alanına veri yazma
 
@@ -413,15 +413,15 @@ Müşteri ve sahip gibi birden çok hedefi olan bir arama alanına veri yazmak i
 
 Örneğin, kaynağın şu iki sütuna sahip olduğunu varsayalım:
 
-- **GUID**türünde, Dynamics 'teki hedef varlığın birincil anahtar değeri olan **customerfield** sütunu.
-- Hedef varlığın mantıksal adı olan **dize**türünde **hedef** sütun.
+- **GUID** türünde, Dynamics 'teki hedef varlığın birincil anahtar değeri olan **customerfield** sütunu.
+- Hedef varlığın mantıksal adı olan **dize** türünde **hedef** sütun.
 
-Ayrıca, bu tür verileri **Müşteri**türünde bir Sink Dynamics varlık alanı **customerfield** 'a kopyalamak istediğinizi varsayın.
+Ayrıca, bu tür verileri **Müşteri** türünde bir Sink Dynamics varlık alanı **customerfield** 'a kopyalamak istediğinizi varsayın.
 
 Kopyalama etkinliği sütun eşlemesi ' nde, iki sütunu aşağıdaki gibi eşleyin:
 
-- **Customerfield** 'ı **customerfield**. Bu eşleme, normal alan eşlemedir.
-- **Müşteri alanı \@ EntityReference**'a **hedefleyin** . Havuz sütunu, varlık başvurusunu temsil eden bir sanal sütundur. Şemaların içeri aktarılmasıyla gösterilmeyeceği şekilde, bir eşlemede bu tür alan adlarını girin.
+- **Customerfield** 'ı **customerfield** . Bu eşleme, normal alan eşlemedir.
+- **Müşteri alanı \@ EntityReference** 'a **hedefleyin** . Havuz sütunu, varlık başvurusunu temsil eden bir sanal sütundur. Şemaların içeri aktarılmasıyla gösterilmeyeceği şekilde, bir eşlemede bu tür alan adlarını girin.
 
 ![Dynamics arama alanı sütun eşleme](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
 

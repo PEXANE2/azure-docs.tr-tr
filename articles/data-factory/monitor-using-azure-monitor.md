@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 6862fa6c9dfa3e8ba26d6f07dc1d9096cf16f092
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: af274c9c50b514befb4a3ce5930877edf964d976
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151908"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638100"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak Data Factory izleyin ve uyarır
 
@@ -28,15 +28,15 @@ Azure Izleyici, çoğu Azure hizmeti için temel düzeyde altyapı ölçümleri 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
 
-Daha fazla bilgi için bkz. [Azure izleyiciye genel bakış](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor).
+Daha fazla bilgi için bkz. [Azure izleyiciye genel bakış](../azure-monitor/overview.md).
 
 ## <a name="keeping-azure-data-factory-metrics-and-pipeline-run-data"></a>Azure Data Factory ölçümleri ve işlem hattını tutma-verileri çalıştırma
 
 Data Factory depolar işlem hattı-verileri yalnızca 45 gün boyunca çalıştırın. Bu verileri daha uzun süre tutmak istiyorsanız Azure Izleyici 'yi kullanın. Izleyici ile tanılama günlüklerini analiz için birden çok farklı hedefe yönlendirebilirsiniz.
 
-* **Depolama hesabı**: Tanılama günlüklerinizi denetim veya el ile inceleme için bir depolama hesabına kaydedin. Bekletme süresini gün cinsinden belirtmek için tanılama ayarlarını kullanabilirsiniz.
-* **Olay Hub 'ı**: günlükleri Azure Event Hubs Stream. Günlükler, Power BI gibi bir iş ortağı hizmeti/özel analiz çözümüne giriş haline gelir.
-* **Log Analytics**: günlükleri Log Analytics analiz edin. Azure Izleyici ile Data Factory tümleştirme aşağıdaki senaryolarda kullanışlıdır:
+* **Depolama hesabı** : Tanılama günlüklerinizi denetim veya el ile inceleme için bir depolama hesabına kaydedin. Bekletme süresini gün cinsinden belirtmek için tanılama ayarlarını kullanabilirsiniz.
+* **Olay Hub 'ı** : günlükleri Azure Event Hubs Stream. Günlükler, Power BI gibi bir iş ortağı hizmeti/özel analiz çözümüne giriş haline gelir.
+* **Log Analytics** : günlükleri Log Analytics analiz edin. Azure Izleyici ile Data Factory tümleştirme aşağıdaki senaryolarda kullanışlıdır:
   * Izlemek üzere Data Factory tarafından yayınlanan zengin bir ölçüm kümesine karmaşık sorgular yazmak istiyorsunuz. Bu sorgularda, Izleyici aracılığıyla özel uyarılar oluşturabilirsiniz.
   * Veri fabrikaları genelinde izlemek istiyorsunuz. Birden çok veri fabrikasına ait verileri tek bir Izleyici çalışma alanına yönlendirebilirsiniz.
 
@@ -46,7 +46,7 @@ Ayrıca, günlükleri yayan kaynağın aboneliğinde olmayan bir depolama hesab�
 
 Veri fabrikanızın tanılama ayarlarını oluşturun veya ekleyin.
 
-1. Portalda Izleyici ' ye gidin. **Ayarlar**  >  **Tanılama ayarları**' nı seçin.
+1. Portalda Izleyici ' ye gidin. **Ayarlar**  >  **Tanılama ayarları** ' nı seçin.
 
 1. Tanılama ayarı ayarlamak istediğiniz veri fabrikasını seçin.
 
@@ -54,11 +54,11 @@ Veri fabrikanızın tanılama ayarlarını oluşturun veya ekleyin.
 
    ![Hiçbir ayar yoksa bir tanılama ayarı oluştur](media/data-factory-monitor-oms/monitor-oms-image1.png)
 
-   Data Factory 'de mevcut ayarlar varsa, veri fabrikasında zaten yapılandırılmış ayarların bir listesini görürsünüz. **Tanılama ayarı Ekle**' yi seçin.
+   Data Factory 'de mevcut ayarlar varsa, veri fabrikasında zaten yapılandırılmış ayarların bir listesini görürsünüz. **Tanılama ayarı Ekle** ' yi seçin.
 
    ![Ayarlar varsa bir tanılama ayarı ekleyin](media/data-factory-monitor-oms/add-diagnostic-setting.png)
 
-1. Ayarınızı bir ad verin, **Log Analytics gönder**' i seçin ve sonra **Log Analytics çalışma**alanından bir çalışma alanı seçin.
+1. Ayarınızı bir ad verin, **Log Analytics gönder** ' i seçin ve sonra **Log Analytics çalışma** alanından bir çalışma alanı seçin.
 
     * _Azure-Diagnostics_ modunda, tanılama günlükleri _AzureDiagnostics_ tablosuna akar.
 
@@ -75,14 +75,14 @@ Veri fabrikanızın tanılama ayarlarını oluşturun veya ekleyin.
 
       Log Analytics tablolarına göndermek için iş yüklerinize uygun çeşitli Günlükler seçebilirsiniz. Örneğin, SQL Server Integration Services (SSIS) hiç kullanmıyorsanız, herhangi bir SSIS günlüğü seçmeniz gerekir. SSIS Integration Runtime (IR) Başlat/Durdur/bakım işlemlerini günlüğe kaydetmek istiyorsanız SSIS IR günlüklerini seçebilirsiniz. SSIS paket yürütmelerini SQL Server Management Studio (SSMS), SQL Server Agent veya diğer belirlenmiş araçlar aracılığıyla çağırdığınızda, SSIS paket günlükleri ' ni seçebilirsiniz. ADF işlem hatlarında SSIS paketi yürütme etkinliklerini kullanarak SSIS paket yürütmelerini çağırırsanız, tüm Günlükler ' i seçebilirsiniz.
 
-    * _Allölçümler_' i SEÇERSENIZ, ADF etkinliğinin ölçümleri, işlem hattı ve tetikleyici ÇALıŞTıRMALARı ve SSIS IR IŞLEMLERI ve SSIS paket yürütmeleri dahil olmak üzere, üzerinde uyarı izlemeniz veya bunları uygulamanız IÇIN çeşitli ADF ölçümleri kullanılabilir hale getirilir.
+    * _Allölçümler_ ' i SEÇERSENIZ, ADF etkinliğinin ölçümleri, işlem hattı ve tetikleyici ÇALıŞTıRMALARı ve SSIS IR IŞLEMLERI ve SSIS paket yürütmeleri dahil olmak üzere, üzerinde uyarı izlemeniz veya bunları uygulamanız IÇIN çeşitli ADF ölçümleri kullanılabilir hale getirilir.
 
    ![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden _kaynağa özgü mod_' u **seçmeniz önerilir.** Daha fazla bilgi için bkz. [Log Analytics bilinen sınırlamalar](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics).
+    > Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden _kaynağa özgü mod_ ' u **seçmeniz önerilir.** Daha fazla bilgi için bkz. [Log Analytics bilinen sınırlamalar](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
 
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
 Birkaç dakika sonra, bu veri fabrikasının ayarları listenizde yeni ayar görüntülenir. Tanılama günlükleri, yeni olay verileri oluşturulmasıyla hemen bu çalışma alanına akışlardır. Bir olay yayınlandığınızda ve Log Analytics göründüğünde 15 dakikaya kadar zaman çıkabilir.
 
@@ -94,7 +94,7 @@ Bu çözüm, ayrıntıları ayrıntıya gitme ve beklenmeyen davranış desenler
 * Türe göre Veri Fabrikası etkinlik çalıştırmaları ile detaya gitme yeteneği
 * Data Factory üst işlem hattının Özeti, etkinlik hataları
 
-1. **Azure Marketi**' ne gidin, **analiz** filtresi ' ni seçin ve **Azure Data Factory Analytics 'i arayın (Önizleme)**
+1. **Azure Marketi** ' ne gidin, **analiz** filtresi ' ni seçin ve **Azure Data Factory Analytics 'i arayın (Önizleme)**
 
    !["Azure Marketi" ne gidin, "analiz filtresi" yazın ve "Azure Data Factory analiz (Önizleme") seçeneğini belirleyin.](media/data-factory-monitor-oms/monitor-oms-image3.png)
 
@@ -102,7 +102,7 @@ Bu çözüm, ayrıntıları ayrıntıya gitme ve beklenmeyen davranış desenler
 
    !["Azure Data Factory Analytics (Önizleme)" hakkındaki ayrıntılar](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-1. **Oluştur** ' u seçin ve ardından **Log Analytics çalışma alanını**oluşturun veya seçin.
+1. **Oluştur** ' u seçin ve ardından **Log Analytics çalışma alanını** oluşturun veya seçin.
 
    ![Yeni çözüm oluşturma](media/data-factory-monitor-oms/monitor-log-analytics-image-5.png)
 
@@ -127,7 +127,7 @@ Bu çözümün yüklenmesi, seçilen Log Analytics çalışma alanının çalı�
 ![Veri Fabrikası tarafından çalıştırılan işlem hattının grafik gösterimi "](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 > [!NOTE]
-> Azure Data Factory Analytics (Önizleme), tanılama günlüklerini _kaynağa özgü_ hedef tablolarına gönderir. Şu tablolara yönelik sorgular yazabilirsiniz: _Adfardışık düzen eylemsizlik_, _Adftriggerrun_ve _adfactivityrun_.
+> Azure Data Factory Analytics (Önizleme), tanılama günlüklerini _kaynağa özgü_ hedef tablolarına gönderir. Şu tablolara yönelik sorgular yazabilirsiniz: _Adfardışık düzen eylemsizlik_ , _Adftriggerrun_ ve _adfactivityrun_ .
 
 ## <a name="data-factory-metrics"></a>Data Factory ölçümleri
 
@@ -155,14 +155,14 @@ Azure Data Factory sürüm 2 tarafından yayılan ölçülerden bazıları şunl
 | Ssıspackageexecutionfailed           | Başarısız SSIS paketi yürütme ölçümleri    | Count    | Toplam                | Bir dakikalık pencere içinde başarısız olan SSSıS paket yürütmelerinin toplam sayısı. |
 | Ssıspackageexecutionsucceeded        | Başarılı SSIS paketi yürütme ölçümleri | Count    | Toplam                | Bir dakika penceresinde başarılı olan SSIS paket yürütmelerinin toplam sayısı. |
 
-Ölçümlere erişmek için [Azure izleyici veri platformundaki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)yönergeleri doldurun.
+Ölçümlere erişmek için [Azure izleyici veri platformundaki](../azure-monitor/platform/data-platform.md)yönergeleri doldurun.
 
 > [!NOTE]
 > Yalnızca tamamlanan, tetiklenen etkinlik ve işlem hattı çalıştırmalarının olayları yayınlanır. Devam eden ve hata ayıklama çalıştırmaları **yayılmadı** . Diğer taraftan, **Tüm** SSIS paket yürütmelerinin olayları, çağrı metotlarından bağımsız olarak, tamamlanmış ve sürmekte olanlar da dahil olmak üzere yayınlanır. Örneğin, Azure özellikli SQL Server Veri Araçları (SSDT) üzerinde paket yürütmelerini, SSMS 'de T-SQL, SQL Server Agent veya diğer belirlenmiş araçlar aracılığıyla veya ADF işlem hatlarında SSIS paket etkinliklerini yürütme veya hata ayıklama çalıştırmaları olarak çalıştırabilirsiniz.
 
 ## <a name="data-factory-alerts"></a>Data Factory uyarılar
 
-Azure Portal oturum açın ve **Monitor**  >  uyarı oluşturmak için**uyarıları** İzle ' yi seçin.
+Azure Portal oturum açın ve **Monitor**  >  uyarı oluşturmak için **uyarıları** İzle ' yi seçin.
 
 ![Portal menüsündeki uyarılar](media/monitor-using-azure-monitor/alerts_image3.png)
 
@@ -226,7 +226,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 * `{api-version}` yerine `2016-09-01` yazın.
 * `{resource-id}`Tanılama ayarlarını düzenlemek istediğiniz KAYNAĞıN kimliğiyle değiştirin. Daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/management/manage-resource-groups-portal.md).
 * `Content-Type`Üstbilgiyi olarak ayarlayın `application/json` .
-* Yetkilendirme üst bilgisini Azure Active Directory (Azure AD) ' dan aldığınız JSON Web belirtecine ayarlayın. Daha fazla bilgi için bkz. [Istekleri kimlik doğrulama](../active-directory/develop/authentication-scenarios.md).
+* Yetkilendirme üst bilgisini Azure Active Directory (Azure AD) ' dan aldığınız JSON Web belirtecine ayarlayın. Daha fazla bilgi için bkz. [Istekleri kimlik doğrulama](../active-directory/develop/authentication-vs-authorization.md).
 
 ##### <a name="body"></a>Gövde
 
@@ -269,7 +269,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | --- | --- | --- |
 | **Storageaccountıd** |Dize | Tanılama günlükleri göndermek istediğiniz depolama hesabının kaynak KIMLIĞI. |
 | **Servicebusruleıd** |Dize | ' In, akış tanılama günlükleri için Event Hubs oluşturulmasını istediğiniz hizmet veri yolu ad alanının hizmet veri yolu kuralı KIMLIĞI. Kural KIMLIĞI biçimi vardır `{service bus resource ID}/authorizationrules/{key name}` .|
@@ -346,7 +346,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 * `{api-version}` yerine `2016-09-01` yazın.
 * `{resource-id}`Tanılama ayarlarını düzenlemek istediğiniz KAYNAĞıN kimliğiyle değiştirin. Daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/management/manage-resource-groups-portal.md).
 * `Content-Type`Üstbilgiyi olarak ayarlayın `application/json` .
-* Yetkilendirme üst bilgisini Azure AD 'den aldığınız bir JSON Web belirtecine ayarlayın. Daha fazla bilgi için bkz. [Istekleri kimlik doğrulama](../active-directory/develop/authentication-scenarios.md).
+* Yetkilendirme üst bilgisini Azure AD 'den aldığınız bir JSON Web belirtecine ayarlayın. Daha fazla bilgi için bkz. [Istekleri kimlik doğrulama](../active-directory/develop/authentication-vs-authorization.md).
 
 ##### <a name="response"></a>Yanıt
 
@@ -397,7 +397,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-Daha fazla bilgi için bkz. [Tanılama ayarları](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
+Daha fazla bilgi için bkz. [Tanılama ayarları](/rest/api/monitor/diagnosticsettings).
 
 ## <a name="schema-of-logs-and-events"></a>Günlüklerin ve olayların şeması
 
@@ -583,7 +583,7 @@ SSIS IR Başlat/Durdur/bakım işlemlerinin günlük öznitelikleri aşağıda v
 
 #### <a name="ssis-event-message-context-log-attributes"></a>SSIS olay iletisi bağlam günlüğü öznitelikleri
 
-SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay iletileriyle ilgili koşulların günlük öznitelikleri aşağıda verilmiştir. Birçok SSIS paketi özelliklerinin çalışma zamanı değerlerini gösteren [SSIS Katalog (SSıSDB) olay iletisi bağlam tablosu veya görünümü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15) gibi benzer bilgileri alırlar. `Basic/Verbose`Günlüğe kaydetme düzeyi ' ni seçtiğinizde ve hata ayıklama/uyumluluk denetimi için faydalı olduğunda oluşturulur.
+SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay iletileriyle ilgili koşulların günlük öznitelikleri aşağıda verilmiştir. Birçok SSIS paketi özelliklerinin çalışma zamanı değerlerini gösteren [SSIS Katalog (SSıSDB) olay iletisi bağlam tablosu veya görünümü](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15) gibi benzer bilgileri alırlar. `Basic/Verbose`Günlüğe kaydetme düzeyi ' ni seçtiğinizde ve hata ayıklama/uyumluluk denetimi için faydalı olduğunda oluşturulur.
 
 ```json
 {
@@ -620,7 +620,7 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 | **operationId**            | Dize | SSSıSDB 'de belirli bir işlemi izlemeye yönelik benzersiz KIMLIK          | `1` (1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili işlemleri belirtir) |
 | **contextDepth**           | Dize | Olay iletisi bağlamınızın derinliği                              | `0` (0 paket yürütme başlamadan önce bağlamı belirtir, 1 hata oluştuğunda bağlamı belirtir ve bağlam hatadan daha fazla olduğunda artar) |
 | **packagePath**            | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesinin yolu      | `\Package` |
-| **contextType**            | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesi türü      | `60`( [daha fazla bağlam türü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)görüntüleyin) |
+| **contextType**            | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesi türü      | `60`( [daha fazla bağlam türü](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)görüntüleyin) |
 | **contextSourceName**      | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesinin adı      | `MyPackage` |
 | **Contextsourceıd**        | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesinin benzersiz KIMLIĞI | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
 | **Başlaması**           | Dize | Olay iletisi bağlam kaynağınız için paket özelliğinin adı   | `DelayValidation` |
@@ -629,7 +629,7 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 
 #### <a name="ssis-event-messages-log-attributes"></a>SSIS olay iletileri günlük öznitelikleri
 
-SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay iletilerinin günlük öznitelikleri aşağıda verilmiştir. Olay iletilerinin ayrıntılı metin/meta verilerini gösteren [Sssısdb olay iletileri tablosu veya görünümü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15) gibi benzer bilgileri alırlar. Bunlar haricinde herhangi bir günlük düzeyinde oluşturulur `None` .
+SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay iletilerinin günlük öznitelikleri aşağıda verilmiştir. Olay iletilerinin ayrıntılı metin/meta verilerini gösteren [Sssısdb olay iletileri tablosu veya görünümü](/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15) gibi benzer bilgileri alırlar. Bunlar haricinde herhangi bir günlük düzeyinde oluşturulur `None` .
 
 ```json
 {
@@ -669,8 +669,8 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 | **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                       | `Informational` |
 | **operationId**            | Dize | SSSıSDB 'de belirli bir işlemi izlemeye yönelik benzersiz KIMLIK        | `1` (1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili işlemleri belirtir) |
 | **messageTime**            | Dize | Olay iletinizin UTC biçiminde oluşturulduğu zaman          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | Dize | Olay iletinizin türü                                     | `70`( [daha fazla ileti türüne](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)bakın) |
-| **messageSourceType**      | Dize | Olay iletisi kaynağınızın türü                              | `20`( [daha fazla ileti kaynağı türü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)görüntüleyin) |
+| **messageType**            | Dize | Olay iletinizin türü                                     | `70`( [daha fazla ileti türüne](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)bakın) |
+| **messageSourceType**      | Dize | Olay iletisi kaynağınızın türü                              | `20`( [daha fazla ileti kaynağı türü](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)görüntüleyin) |
 | **İleti**                | Dize | Olay iletinizin metni                                     | `MyPackage:Validation has started.` |
 | **PaketAdı**            | Dize | Yürütülen paket dosyanızın adı                             | `MyPackage.dtsx` |
 | **eventName**              | Dize | İlgili çalışma zamanı olayının adı                                 | `OnPreValidate` |
@@ -683,7 +683,7 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>SSIS çalıştırılabilir istatistik günlüğü öznitelikleri
 
-İşte SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan yürütülebilir istatistiklerin günlük öznitelikleri burada, yürütülebilir dosyalar paketlerin Denetim akışında kapsayıcı veya görevlerdir. Bunlar, yineleme dahil, çalışan her çalıştırılabilir için bir satır gösteren [Sssısdb çalıştırılabilir istatistik tablosu veya görünümü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15) gibi benzer bilgileri de iletirler. Bunlar dışında `None` , görev düzeyi darboğazları/başarısızlıklarını belirlemek için yararlı olan herhangi bir günlük düzeyinde oluşturulur.
+İşte SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan yürütülebilir istatistiklerin günlük öznitelikleri burada, yürütülebilir dosyalar paketlerin Denetim akışında kapsayıcı veya görevlerdir. Bunlar, yineleme dahil, çalışan her çalıştırılabilir için bir satır gösteren [Sssısdb çalıştırılabilir istatistik tablosu veya görünümü](/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15) gibi benzer bilgileri de iletirler. Bunlar dışında `None` , görev düzeyi darboğazları/başarısızlıklarını belirlemek için yararlı olan herhangi bir günlük düzeyinde oluşturulur.
 
 ```json
 {
@@ -727,7 +727,7 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>SSIS yürütme bileşeni aşama günlüğü öznitelikleri
 
-SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan veri akışı bileşenlerine ilişkin çalışma zamanı istatistiklerinin günlük öznitelikleri aşağıda verilmiştir. Bunlar, tüm yürütme aşamalarında veri akışı bileşenleri tarafından harcanan süreyi gösteren [Sssısdb yürütme bileşeni aşamaları tablosu veya görünümü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15) olarak benzer bilgileri iletirler. `Performance/Verbose`Günlüğe kaydetme düzeyi ' ni seçtiğinizde ve veri akışı yürütme istatistiklerini yakalamak için işinize yarayacaktır.
+SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan veri akışı bileşenlerine ilişkin çalışma zamanı istatistiklerinin günlük öznitelikleri aşağıda verilmiştir. Bunlar, tüm yürütme aşamalarında veri akışı bileşenleri tarafından harcanan süreyi gösteren [Sssısdb yürütme bileşeni aşamaları tablosu veya görünümü](/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15) olarak benzer bilgileri iletirler. `Performance/Verbose`Günlüğe kaydetme düzeyi ' ni seçtiğinizde ve veri akışı yürütme istatistiklerini yakalamak için işinize yarayacaktır.
 
 ```json
 {
@@ -773,7 +773,7 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan veri ak
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>SSIS yürütme verileri istatistikleri günlük öznitelikleri
 
-Veri akışı işlem hatlarında, SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan yukarı akış bileşenlerinden alınan veri hareketlerinin günlük öznitelikleri aşağıda verilmiştir. Veri akışı görevleri aracılığıyla taşınan veri satır sayılarını gösteren [SSISDB yürütme verileri istatistikleri tablosu veya görünümü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15) gibi benzer bilgileri de iletirler. `Verbose`Günlüğe kaydetme düzeyi ' ni seçtiğinizde ve veri akışı iş akışını hesaplama için işinize yarayacaktır.
+Veri akışı işlem hatlarında, SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan yukarı akış bileşenlerinden alınan veri hareketlerinin günlük öznitelikleri aşağıda verilmiştir. Veri akışı görevleri aracılığıyla taşınan veri satır sayılarını gösteren [SSISDB yürütme verileri istatistikleri tablosu veya görünümü](/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15) gibi benzer bilgileri de iletirler. `Verbose`Günlüğe kaydetme düzeyi ' ni seçtiğinizde ve veri akışı iş akışını hesaplama için işinize yarayacaktır.
 
 ```json
 {
@@ -834,9 +834,9 @@ Log Analytics şemayı Izleyiciden aşağıdaki özel durumlarla devralır:
     | $. Properties. UserProperties | UserProperties | Dinamik |
     | $. Properties. Açıklamaları | Ek Açıklamalar | Dinamik |
     | $. Properties. Girişinin | Giriş | Dinamik |
-    | $. Properties. Çıktıların | Çıktı | Dinamik |
+    | $. Properties. Çıktıların | Çıkış | Dinamik |
     | $. Properties. Hata. errorCode | ErrorCode | int |
-    | $. Properties. Hata. ileti | Hata | dize |
+    | $. Properties. Hata. ileti | Hata | string |
     | $. Properties. Hatayla | Hata | Dinamik |
     | $. Properties. Öncül | Öncül | Dinamik |
     | $. Properties. Parametrelere | Parametreler | Dinamik |
@@ -845,42 +845,42 @@ Log Analytics şemayı Izleyiciden aşağıdaki özel durumlarla devralır:
 
 ## <a name="monitor-ssis-operations-with-azure-monitor"></a>Azure Izleyici ile SSIS işlemlerini izleme
 
-SSIS iş yüklerinizi kaldırmak & geçiş yapmak için, [ADF 'de SSIS IR](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) 'yi şunları destekler:
+SSIS iş yüklerinizi kaldırmak & geçiş yapmak için, [ADF 'de SSIS IR](./tutorial-deploy-ssis-packages-azure.md) 'yi şunları destekler:
 
 - Azure SQL veritabanı sunucusu/yönetilen örneği (proje dağıtım modeli) tarafından barındırılan SSIS kataloğuna (SSıSDB) dağıtılan Paketleri çalıştırma
 - Azure SQL yönetilen örneği (paket dağıtım modeli) tarafından barındırılan dosya sistemine, Azure dosyalarına veya SQL Server veritabanına (MSDB) dağıtılan Paketleri çalıştırma
 
-Sağlandıktan sonra, [Azure PowerShell veya ADF portalının **Monitor** hub 'ında bulunan SSIS IR işletimsel durumunu denetleyebilirsiniz](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime). Proje dağıtım modeliyle, SSIS paketi yürütme günlükleri SSSıSDB iç tablolarında veya görünümlerinde depolanır, bu sayede SSMS gibi tasarlanan araçları kullanarak bunları sorgulayabilir, çözümleyebilir ve görsel olarak sunabilirsiniz. Paket dağıtım modeli ile, SSIS paketi yürütme günlükleri dosya sistemi veya Azure dosyalarında, sorgu, analiz etmeden ve görsel olarak kullanmadan önce diğer belirlenen araçları kullanarak ayrıştırmanız ve işlem yapmanız gereken CSV dosyaları olarak depolanabilir.
+Sağlandıktan sonra, [Azure PowerShell veya ADF portalının **Monitor** hub 'ında bulunan SSIS IR işletimsel durumunu denetleyebilirsiniz](./monitor-integration-runtime.md#azure-ssis-integration-runtime). Proje dağıtım modeliyle, SSIS paketi yürütme günlükleri SSSıSDB iç tablolarında veya görünümlerinde depolanır, bu sayede SSMS gibi tasarlanan araçları kullanarak bunları sorgulayabilir, çözümleyebilir ve görsel olarak sunabilirsiniz. Paket dağıtım modeli ile, SSIS paketi yürütme günlükleri dosya sistemi veya Azure dosyalarında, sorgu, analiz etmeden ve görsel olarak kullanmadan önce diğer belirlenen araçları kullanarak ayrıştırmanız ve işlem yapmanız gereken CSV dosyaları olarak depolanabilir.
 
-Artık [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform) TÜMLEŞTIRMESIYLE, SSIS IR işlemlerinden oluşturulan tüm ölçümleri ve günlükleri ve Azure Portal üzerinde SSIS paket yürütmelerini sorgulayabilir, çözümleyebilir ve görsel olarak sunabilirsiniz. Ayrıca, bunlar üzerinde de uyarı oluşturabilirsiniz.
+Artık [Azure izleyici](../azure-monitor/platform/data-platform.md) TÜMLEŞTIRMESIYLE, SSIS IR işlemlerinden oluşturulan tüm ölçümleri ve günlükleri ve Azure Portal üzerinde SSIS paket yürütmelerini sorgulayabilir, çözümleyebilir ve görsel olarak sunabilirsiniz. Ayrıca, bunlar üzerinde de uyarı oluşturabilirsiniz.
 
 ### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>SSIS işlemleri için tanılama ayarlarını ve çalışma alanını yapılandırma
 
-SSIS IR işlemlerinden ve SSIS paket yürütmelerinin Azure Izleyici 'de oluşturulan tüm ölçümleri ve günlükleri göndermek için, [ADF 'niz için tanılama ayarlarını ve çalışma alanını yapılandırmanız](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#configure-diagnostic-settings-and-workspace)gerekir.
+SSIS IR işlemlerinden ve SSIS paket yürütmelerinin Azure Izleyici 'de oluşturulan tüm ölçümleri ve günlükleri göndermek için, [ADF 'niz için tanılama ayarlarını ve çalışma alanını yapılandırmanız](#configure-diagnostic-settings-and-workspace)gerekir.
 
 ### <a name="ssis-operational-metrics"></a>SSIS işletimsel ölçümleri
 
-SSIS işletimsel [ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics) , SSIS IR başlatma ve durdurma işlemlerinin durumunu ve belirli bır zamanda SSIS paket yürütmelerini tanımlayan, performans sayaçları veya sayısal değerlerdir. Bunlar, [Azure izleyici 'Deki ADF ölçümlerinin](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics)bir parçasıdır.
+SSIS işletimsel [ölçümleri](../azure-monitor/platform/data-platform-metrics.md) , SSIS IR başlatma ve durdurma işlemlerinin durumunu ve belirli bır zamanda SSIS paket yürütmelerini tanımlayan, performans sayaçları veya sayısal değerlerdir. Bunlar, [Azure izleyici 'Deki ADF ölçümlerinin](#data-factory-metrics)bir parçasıdır.
 
-ADF 'niz Azure Izleyici 'de tanılama ayarlarını ve çalışma alanını yapılandırdığınızda, _Allölçümler_ onay kutusunun BELIRLENMESI, SSIS Işletimsel ölçümlerini Azure Ölçüm Gezgini, [Azure panosu 'nda sunumu](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)ve [neredeyse gerçek zamanlı uyarılar](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric) [kullanarak etkileşimli analiz](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)için kullanılabilir hale getirir.
+ADF 'niz Azure Izleyici 'de tanılama ayarlarını ve çalışma alanını yapılandırdığınızda, _Allölçümler_ onay kutusunun BELIRLENMESI, SSIS Işletimsel ölçümlerini Azure Ölçüm Gezgini, [Azure panosu 'nda sunumu](../azure-monitor/learn/tutorial-app-dashboards.md)ve [neredeyse gerçek zamanlı uyarılar](../azure-monitor/platform/alerts-metric.md) [kullanarak etkileşimli analiz](../azure-monitor/platform/metrics-getting-started.md)için kullanılabilir hale getirir.
 
 ![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
 ### <a name="ssis-operational-alerts"></a>SSIS işletimsel uyarıları
 
-ADF portalından SSIS işletimsel ölçümlerinde uyarılar yükseltmek için [ADF **izleyici** hub 'ının **Uyarılar & ölçümler** sayfasını seçin ve sunulan adım adım yönergeleri izleyin](https://docs.microsoft.com/azure/data-factory/monitor-visually#alerts).
+ADF portalından SSIS işletimsel ölçümlerinde uyarılar yükseltmek için [ADF **izleyici** hub 'ının **Uyarılar & ölçümler** sayfasını seçin ve sunulan adım adım yönergeleri izleyin](./monitor-visually.md#alerts).
 
 ![SSIS işletimsel uyarılarını ADF portalından oluşturma](media/data-factory-monitor-oms/data-factory-monitor-alerts-ssis.png)
 
-Azure portal SSIS işletimsel ölçümlerinde uyarılar yükseltmek için [Azure **izleyici** hub ' ın **Uyarılar** sayfasını seçin ve sunulan adım adım yönergeleri izleyin](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-alerts).
+Azure portal SSIS işletimsel ölçümlerinde uyarılar yükseltmek için [Azure **izleyici** hub ' ın **Uyarılar** sayfasını seçin ve sunulan adım adım yönergeleri izleyin](#data-factory-alerts).
 
 ![Azure portal SSIS işletimsel uyarılarını yükseltme](media/data-factory-monitor-oms/azure-monitor-alerts-ssis.png)
 
 ### <a name="ssis-operational-logs"></a>SSIS işletimsel günlükleri
 
-SSIS işletimsel [günlükleri](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) , tanımlanan herhangi bir sorun üzerinde yeterli bağlam sunan ve kök neden analizi için YARARLı olan SSIS IR IŞLEMLERI ve SSIS paket yürütmeleri tarafından oluşturulan olaylardır. 
+SSIS işletimsel [günlükleri](../azure-monitor/platform/data-platform-logs.md) , tanımlanan herhangi bir sorun üzerinde yeterli bağlam sunan ve kök neden analizi için YARARLı olan SSIS IR IŞLEMLERI ve SSIS paket yürütmeleri tarafından oluşturulan olaylardır. 
 
-ADF 'niz Azure Izleyicisinde tanılama ayarlarını ve çalışma alanını yapılandırdığınızda ilgili SSIS işletimsel günlüklerini seçip Azure Veri Gezgini tabanlı Log Analytics gönderebilirsiniz. Burada, [zengin sorgu dili](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview), [Azure panosu 'nda sunum](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)ve [gerçek zamanlı uyarılar](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)kullanılarak analiz için kullanılabilir hale getirilir.
+ADF 'niz Azure Izleyicisinde tanılama ayarlarını ve çalışma alanını yapılandırdığınızda ilgili SSIS işletimsel günlüklerini seçip Azure Veri Gezgini tabanlı Log Analytics gönderebilirsiniz. Burada, [zengin sorgu dili](../azure-monitor/log-query/log-query-overview.md), [Azure panosu 'nda sunum](../azure-monitor/learn/tutorial-app-dashboards.md)ve [gerçek zamanlı uyarılar](../azure-monitor/platform/alerts-log.md)kullanılarak analiz için kullanılabilir hale getirilir.
 
 ![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -895,7 +895,7 @@ Azure Izleyici ve Log Analytics SSIS paketi yürütme günlüklerinin şemaları
 | `SSISPackageExecutionComponentPhases` | `ADFSSISPackageExecutionComponentPhases` | `[internal].[execution_component_phases]` |
 | `SSISPackageExecutionDataStatistics`  | `ADFSSISPackageExecutionDataStatistics`  | `[internal].[execution_data_statistics]`  |
 
-SSIS işletimsel günlük öznitelikleri/özellikleri hakkında daha fazla bilgi için bkz. [ADF Için Azure izleyici ve Log Analytics şemaları](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events).
+SSIS işletimsel günlük öznitelikleri/özellikleri hakkında daha fazla bilgi için bkz. [ADF Için Azure izleyici ve Log Analytics şemaları](#schema-of-logs-and-events).
 
 Seçtiğiniz SSIS paketi yürütme günlükleriniz her zaman çağrı metotlarından bağımsız olarak Log Analytics gönderilir. Örneğin, Azure özellikli SSDT 'de paket yürütmelerini, SSMS üzerinde T-SQL, SQL Server Agent veya diğer belirlenmiş araçlar aracılığıyla veya ADF işlem hatlarında SSIS paketi yürütme etkinliklerini tetiklemeli veya hata ayıklama çalıştırmaları olarak çalıştırabilirsiniz.
 

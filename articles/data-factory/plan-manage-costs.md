@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: ca76563475dfbf8d35595c1de3cdee37f80e3ce1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f61085d3dab6d4489aa190204be4169ea5c2fb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83691267"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638015"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>Azure Data Factory maliyetlerini planlayın ve yönetin
 
@@ -56,15 +56,15 @@ Artık Aylık faturanızı tahmin etmek için, 30 etkinlik çalıştırması ve 
 
 ## <a name="use-budgets-and-cost-alerts"></a>Bütçe ve maliyet uyarılarını kullanma
 
-Maliyetleri yönetmek için [bütçeler](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets) oluşturabilir ve paydaşları harcama anormallikleri ve fazla harcama riskleri ile ilgili otomatik olarak bilgilendiren uyarılar oluşturabilirsiniz.  Uyarılar, bütçe ve maliyet eşiklerine kıyasla harcamaya göre belirlenir.  Bir bütçe oluşturduğunuzda, kaynak KIMLIĞI ve ölçüm adı gibi ek filtreler ekleyerek bunu abonelik düzeyinde ya da daha düşük bir ayrıntı düzeyinde yapabilirsiniz.  Ancak bir fabrika içindeki bireysel işlem hatları için bütçeler oluşturamazsınız.
+Maliyetleri yönetmek için [bütçeler](../cost-management-billing/costs/tutorial-acm-create-budgets.md) oluşturabilir ve paydaşları harcama anormallikleri ve fazla harcama riskleri ile ilgili otomatik olarak bilgilendiren uyarılar oluşturabilirsiniz.  Uyarılar, bütçe ve maliyet eşiklerine kıyasla harcamaya göre belirlenir.  Bir bütçe oluşturduğunuzda, kaynak KIMLIĞI ve ölçüm adı gibi ek filtreler ekleyerek bunu abonelik düzeyinde ya da daha düşük bir ayrıntı düzeyinde yapabilirsiniz.  Ancak bir fabrika içindeki bireysel işlem hatları için bütçeler oluşturamazsınız.
 
 ## <a name="monitor-costs-at-factory-level"></a>Fabrika düzeyinde maliyetleri izleme
 
-Azure Data Factory kullanmaya başladığınızda, Azure portal [Maliyet Analizi](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis) bölmesinde tahakkuk eden maliyetleri görebilirsiniz.
+Azure Data Factory kullanmaya başladığınızda, Azure portal [Maliyet Analizi](../cost-management-billing/costs/quick-acm-cost-analysis.md) bölmesinde tahakkuk eden maliyetleri görebilirsiniz.
 
-1. [Maliyet analizini](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis)görüntülemek Için, **maliyet yönetimi + faturalama** penceresini açın, menüden **maliyet yönetimi** ' ni seçin ve ardından **Açık maliyet analizi**' ni seçin.
+1. [Maliyet analizini](../cost-management-billing/costs/quick-acm-cost-analysis.md)görüntülemek Için, **maliyet yönetimi + faturalama** penceresini açın, menüden **maliyet yönetimi** ' ni seçin ve ardından **Açık maliyet analizi** ' ni seçin.
 2. Varsayılan görünüm, geçerli ayın birikmiş maliyetlerini gösterir.  Farklı bir zaman aralığına ve günlük veya aylık gibi farklı bir ayrıntı düzeyine geçiş yapabilirsiniz.
-3. Azure Data Factory gibi tek bir hizmetin maliyetlerini daraltmak için, **Filtre Ekle** ' yi ve ardından **hizmet adı**' nı seçin.  Ardından listeden **Azure Data Factory v2** 'yi seçin.
+3. Azure Data Factory gibi tek bir hizmetin maliyetlerini daraltmak için, **Filtre Ekle** ' yi ve ardından **hizmet adı** ' nı seçin.  Ardından listeden **Azure Data Factory v2** 'yi seçin.
 4. Belirli bir fabrika örneği ve belirli ADF ölçüm ayrıntı düzeyi için maliyeti çözümlemek üzere ek filtreler ekleyebilirsiniz.
 
    ![Maliyet analizi](media/plan-manage-costs/cost-analysis.png)
@@ -81,7 +81,7 @@ Azure Data Factory kullanıcı deneyiminde bireysel işlem hattı çalıştırma
 
 ![Ardışık düzen tüketim ayrıntıları](media/plan-manage-costs/pipeline-consumption-details.png)
 
-İşlem hattı çalıştırma tüketim görünümü, belirli bir işlem hattı çalışmasının her ADF ölçümü için tüketilen miktarı gösterir, ancak size faturalandırılan miktar, kullandığınız Azure hesabının türüne ve kullanılan para birimi türüne bağlı olduğundan, ücretlendirilen fiili fiyatı göstermez.  Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data).
+İşlem hattı çalıştırma tüketim görünümü, belirli bir işlem hattı çalışmasının her ADF ölçümü için tüketilen miktarı gösterir, ancak size faturalandırılan miktar, kullandığınız Azure hesabının türüne ve kullanılan para birimi türüne bağlı olduğundan, ücretlendirilen fiili fiyatı göstermez.  Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](../cost-management-billing/costs/understand-cost-mgt-data.md).
 
 ## <a name="monitor-consumption-at-activity-run-level"></a>Etkinlik çalıştırma düzeyinde tüketimi izleyin
 İşlem hattı çalıştırma düzeyinde toplanmış tüketimi anladığınızda, daha fazla ayrıntıya gitme ve ardışık düzen içindeki en pahalı etkinlik olduğunu belirlemeniz gereken senaryolar vardır.
@@ -101,5 +101,5 @@ Aşağıda, bir eşleme veri akışı etkinliğinin çalıştırıldığı bir �
 Fiyatlandırmanın Azure Data Factory nasıl çalıştığı hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - [Azure Data Factory fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/data-factory/ssis/)
-- [Örnekler aracılığıyla Azure Data Factory anlama](https://docs.microsoft.com/azure/data-factory/pricing-concepts)
+- [Örnekler aracılığıyla Azure Data Factory anlama](./pricing-concepts.md)
 - [Fiyatlandırma Hesaplayıcı Azure Data Factory](https://azure.microsoft.com/pricing/calculator/?service=data-factory)

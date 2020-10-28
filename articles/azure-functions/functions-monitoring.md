@@ -4,13 +4,13 @@ description: İşlev yürütmeyi izlemek için Azure Application Insights Azure 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.custom: devx-track-csharp, fasttrack-edit, contperfq2
-ms.openlocfilehash: 85851c896d32d2e15efa0a39260af4331f99f862
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: devx-track-csharp, fasttrack-edit, contperfq2, devx-track-js
+ms.openlocfilehash: 87c31df6ecb92acd5bedaee274f9886383e5c617
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217159"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668729"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -33,7 +33,7 @@ Geliştirme sırasında uygulama öngörülerini etkinleştirirseniz, sınama s�
 
 ## <a name="application-insights-integration"></a>Application Insights tümleştirme
 
-Genellikle, işlev uygulamanızı oluştururken bir Application Insights örneği oluşturursunuz. Bu durumda, tümleştirme için gerekli olan izleme anahtarı zaten *APPINSIGHTS_INSTRUMENTATIONKEY*adlı bir uygulama ayarı olarak ayarlanmıştır. Bir nedenden dolayı, işlev uygulamanızın izleme anahtarı ayarlanmamışsa, [Application Insights tümleştirmesini etkinleştirmeniz](configure-monitoring.md#enable-application-insights-integration)gerekir.  
+Genellikle, işlev uygulamanızı oluştururken bir Application Insights örneği oluşturursunuz. Bu durumda, tümleştirme için gerekli olan izleme anahtarı zaten *APPINSIGHTS_INSTRUMENTATIONKEY* adlı bir uygulama ayarı olarak ayarlanmıştır. Bir nedenden dolayı, işlev uygulamanızın izleme anahtarı ayarlanmamışsa, [Application Insights tümleştirmesini etkinleştirmeniz](configure-monitoring.md#enable-application-insights-integration)gerekir.  
 
 ## <a name="collecting-telemetry-data"></a>Telemetri verilerini toplama
 
@@ -95,9 +95,9 @@ Bir uygulama geliştirirken genellikle Azure 'da çalışırken neredeyse gerçe
 
 İşlev yürütmeleri tarafından oluşturulan günlük verilerinin akışını görüntülemenin iki yolu vardır.
 
-* **Yerleşik günlük akışı**: App Service platformu, uygulama günlüğü dosyalarınızın akışını görüntülemenize olanak sağlar. Bu akış, [yerel geliştirme](functions-develop-local.md) sırasında işlevlerinizi hata ayıkladığınızda ve portalda **Test** sekmesini kullandığınızda görülen çıkış ile eşdeğerdir. Günlük tabanlı tüm bilgiler görüntülenir. Daha fazla bilgi için bkz. [akış günlükleri](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Bu akış yöntemi yalnızca tek bir örneği destekler ve bir tüketim planında Linux üzerinde çalışan bir uygulamayla birlikte kullanılamaz.
+* **Yerleşik günlük akışı** : App Service platformu, uygulama günlüğü dosyalarınızın akışını görüntülemenize olanak sağlar. Bu akış, [yerel geliştirme](functions-develop-local.md) sırasında işlevlerinizi hata ayıkladığınızda ve portalda **Test** sekmesini kullandığınızda görülen çıkış ile eşdeğerdir. Günlük tabanlı tüm bilgiler görüntülenir. Daha fazla bilgi için bkz. [akış günlükleri](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Bu akış yöntemi yalnızca tek bir örneği destekler ve bir tüketim planında Linux üzerinde çalışan bir uygulamayla birlikte kullanılamaz.
 
-* **Canlı ölçüm akışı**: işlev uygulamanız [Application Insights bağlandığı](configure-monitoring.md#enable-application-insights-integration)zaman, Azure Portal [canlı ölçüm akışı](../azure-monitor/app/live-stream.md)kullanarak günlük verilerini ve diğer ölçümleri neredeyse gerçek zamanlı olarak görebilirsiniz. Bir tüketim planında birden çok örnek veya Linux üzerinde çalışan işlevleri izlerken bu yöntemi kullanın. Bu yöntem [örneklenmiş verileri](configure-monitoring.md#configure-sampling)kullanır.
+* **Canlı ölçüm akışı** : işlev uygulamanız [Application Insights bağlandığı](configure-monitoring.md#enable-application-insights-integration)zaman, Azure Portal [canlı ölçüm akışı](../azure-monitor/app/live-stream.md)kullanarak günlük verilerini ve diğer ölçümleri neredeyse gerçek zamanlı olarak görebilirsiniz. Bir tüketim planında birden çok örnek veya Linux üzerinde çalışan işlevleri izlerken bu yöntemi kullanın. Bu yöntem [örneklenmiş verileri](configure-monitoring.md#configure-sampling)kullanır.
 
 Günlük akışları hem portalda hem de birçok yerel geliştirme ortamında görüntülenebilir. Günlük akışlarını etkinleştirmeyi öğrenmek için bkz. [Azure işlevlerinde akış yürütme günlüklerini etkinleştirme](streaming-logs.md).
 

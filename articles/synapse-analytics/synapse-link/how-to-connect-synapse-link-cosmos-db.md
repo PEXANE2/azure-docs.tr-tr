@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB için Azure SYNAPSE bağlantısına (Önizleme) bağlanma
-description: Azure SYNAPSE bağlantısı ile bir Azure Cosmos DB SYNAPSE çalışma alanına bağlama
+description: Azure SYNAPSE bağlantısıyla bir Azure Cosmos DB veritabanını Azure SYNAPSE çalışma alanına bağlamayı öğrenin.
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,65 +9,65 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 50717c7e8a7b0f748df98c1896e1b7eb64cd7be3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 3434953de3460d3eff066768474f03aa0e14165e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819359"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668602"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısına (Önizleme) bağlanma
 
 Bu makalede Azure SYNAPSE bağlantısıyla Azure SYNAPSE Analytics Studio 'dan bir Azure Cosmos DB veritabanına nasıl erişebileceğiniz açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Cosmos DB bir veritabanını çalışma alanınıza bağlanmadan önce şunları yapmanız gerekir:
 
+* Mevcut Azure Cosmos DB veritabanı veya [hızlı başlangıç: bir Azure Cosmos DB hesabını yönetme](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account)bölümündeki adımları izleyerek yeni bir hesap oluşturun.
+* Mevcut Azure SYNAPSE çalışma alanı veya [hızlı başlangıç: SYNAPSE çalışma alanı oluşturma](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)bölümündeki adımları izleyerek yeni bir çalışma alanı oluşturun.
+
 > [!IMPORTANT]
-> Azure Cosmos DB için Azure SYNAPSE bağlantısı şu anda yönetilen sanal ağ etkin olmayan çalışma alanlarında destekleniyor. 
+> Azure Cosmos DB için Azure SYNAPSE bağlantısı şu anda yönetilen bir sanal ağı etkinleştirilmemiş olan çalışma alanlarında destekleniyor.
 
-* Mevcut Azure Cosmos DB veritabanı veya bu [hızlı](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account) başlangıcı izleyerek yeni bir hesap oluştur
-* Bu [hızlı](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) başlangıcı izleyerek var olan SYNAPSE çalışma alanı veya yeni bir çalışma alanı oluştur 
+## <a name="enable-synapse-link-on-an-azure-cosmos-db-database-account"></a>Azure Cosmos DB veritabanı hesabında SYNAPSE bağlantısını etkinleştir
 
-## <a name="enable-azure-cosmos-db-analytical-store"></a>Analitik depoyu Azure Cosmos DB etkinleştir
+Büyük ölçekli analizlerinizi işletimsel performansınızı etkilemeden Azure Cosmos DB olarak çalıştırmak için, Azure Cosmos DB için SYNAPSE bağlantısının etkinleştirilmesini öneririz. SYNAPSE link, Azure SYNAPSE 'de bir kapsayıcıya ve yerleşik desteğe HTAP özelliği sunar.
 
-Büyük ölçekli analizleri, işletimsel performansınızı etkilemeden Azure Cosmos DB olarak çalıştırmak için, Azure Cosmos DB için SYNAPSE bağlantısının etkinleştirilmesini öneririz. SYNAPSE link, Azure SYNAPSE 'de bir kapsayıcıya ve yerleşik desteğe HTAP özelliği sunar.
+## <a name="go-to-synapse-studio"></a>SYNAPSE Studio 'ya git
 
-## <a name="navigate-to-synapse-studio"></a>SYNAPSE Studio 'ya gidin
+Azure SYNAPSE çalışma alanınızdan **SYNAPSE Studio 'Yu Başlat** ' ı seçin. SYNAPSE Studio giriş sayfasında, size veri Nesne Gezgini alan **veri** ' yi seçin.
 
-SYNAPSE çalışma alanınızdan **SYNAPSE Studio 'Yu Başlat**' ı seçin. SYNAPSE Studio giriş sayfasında, verileri **Nesne Gezgini verileri** **seçin.**
+## <a name="connect-an-azure-cosmos-db-database-to-an-azure-synapse-workspace"></a>Azure Cosmos DB veritabanını bir Azure SYNAPSE çalışma alanına bağlama
 
-## <a name="connect-an-azure-cosmos-db-database-to-a-synapse-workspace"></a>Bir Azure Cosmos DB veritabanını bir Synapse çalışma alanına bağlama
+Azure Cosmos DB bir veritabanını bağlama, bağlantılı hizmet olarak yapılır. Azure Cosmos DB bağlı bir hizmetle, Azure SYNAPSE Analytics veya SQL için Apache Spark Azure Cosmos DB 'e göz atabilir ve bu verileri okuyabilir ve yazabilirsiniz.
 
-Azure Cosmos DB bir veritabanını bağlama, bağlantılı hizmet olarak yapılır. Azure Cosmos DB bağlı bir hizmet, kullanıcıların Azure SYNAPSE Analytics veya SQL için Apache Spark verileri Azure Cosmos DB 'e gözatmasına, okumasına ve yazmasına olanak sağlar.
+Veri Nesne Gezgini, aşağıdaki adımları izleyerek bir Azure Cosmos DB veritabanına doğrudan bağlanabilirsiniz:
 
-Veri Nesne Gezgini, aşağıdaki adımları uygulayarak bir Azure Cosmos DB veritabanına doğrudan bağlanabilirsiniz:
+1. **+** **Verilerin** yakınında bulunan simgeyi seçin.
+1. **Dış verilere bağlan** ' ı seçin.
+1. Bağlanmak istediğiniz API 'yi (örneğin, **SQL API** veya **MongoDB için API** ) seçin.
+1. **Devam** ’ı seçin.
+1. Bağlı hizmeti adlandırmak için kolay bir ad kullanın. Ad, veri Nesne Gezgini görünür ve Azure SYNAPSE çalışma zamanları tarafından veritabanına ve kapsayıcılara bağlanmak için kullanılır.
+1. **Azure Cosmos DB hesap adını** ve **veritabanı adını** seçin.
+1. Seçim Hiçbir bölge belirtilmemişse, Azure SYNAPSE çalışma zamanı işlemleri analitik deponun etkinleştirildiği en yakın bölgeye yönlendirilir. Ayrıca kullanıcılarınızın Azure Cosmos DB analitik depoya erişmek için kullanmasını istediğiniz bölgeyi el ile ayarlayabilirsiniz. **Ek bağlantı özellikleri** ' ni seçin ve ardından **Yeni** ' yi seçin. **Özellik adı** altında, **preferredregion** yazın. **Değeri** istediğiniz bölgeye ayarlayın, örneğin, **WestUS2** . (Sözcükler ve sayı arasında boşluk yoktur.)
+1. **Oluştur** ’u seçin.
 
-1. ***+*** Verilerin yakınında simge Seç
-2. **Dış verilere bağlan** ' ı seçin
-3. Bağlanmak istediğiniz API 'yi seçin: MongoDB için SQL API veya API
-4. ***Devam***'ı seçin
-5. Bağlı hizmeti adlandırın. Ad Nesne Gezgini görüntülenir ve veritabanı ve kapsayıcılara bağlanmak için SYNAPSE çalışma zamanları tarafından kullanılır. Kolay bir ad kullanmanızı öneririz.
-6. **Azure Cosmos DB hesap adı** ve **veritabanı adını** seçin
-7. Seçim Hiçbir bölge belirtilmemişse, SYNAPSE çalışma zamanı işlemleri, analitik deponun etkinleştirildiği en yakın bölgeye yönlendirilir. Ancak, kullanıcılarınızın analitik depoya Azure Cosmos DB erişmesini istediğiniz bölgeyi el ile ayarlayabilirsiniz. **Ek bağlantı özellikleri** ' ni ve ardından **Yeni**' yi seçin. **Özellik adı**altında, ***Preferredregion*** yazın ve **değeri** Istediğiniz bölgeye ayarlayın (örnek: WestUS2, sözcükler ve sayı arasında boşluk yoktur)
-8. ***Oluştur***’u seçin
+Azure Cosmos DB veritabanları, **Azure Cosmos DB** bölümünün altındaki **bağlı** sekmede görüntülenir. Azure Cosmos DB ile, bir HTAP etkin kapsayıcıyı aşağıdaki simgelerle yalnızca OLTP kapsayıcılarından ayırt edebilirsiniz:
 
-Azure Cosmos DB veritabanları Azure Cosmos DB bölümünde **bağlantılı** sekmenin altında görünür. Azure Cosmos DB ile, bir HTAP etkin kapsayıcıyı aşağıdaki simgelerle yalnızca OLTP kapsayıcısından ayırt edebilirsiniz:
+**Yalnızca OLTP kapsayıcısı** :
 
-**Yalnızca OLTP kapsayıcısı**:
+![OLTP kapsayıcı simgesini gösteren görselleştirme.](../media/quickstart-connect-synapse-link-cosmosdb/oltp-container.png)
 
-![OLTP kapsayıcısı](../media/quickstart-connect-synapse-link-cosmosdb/oltp-container.png)
+**Htap etkin kapsayıcı** :
 
-**Kapsayıcı etkin öğesine dokunun**:
-
-![HTAP kapsayıcısı](../media/quickstart-connect-synapse-link-cosmosdb/htap-container.png)
+![HTAP kapsayıcı simgesini gösteren görselleştirme.](../media/quickstart-connect-synapse-link-cosmosdb/htap-container.png)
 
 ## <a name="quickly-interact-with-code-generated-actions"></a>Kod tarafından oluşturulan eylemlerle hızlıca etkileşim kurun
 
-Bir kapsayıcıya sağ tıklayarak Spark veya SQL çalışma zamanı tetiklenecek hareketlerle ilgili bir listeniz vardır. Bir kapsayıcıya yazmak Azure Cosmos DB Işlem deposu aracılığıyla gerçekleşir ve Istek birimlerini kullanır.  
+Bir kapsayıcıya sağ tıklayarak Spark veya SQL çalışma zamanını tetikleyecek bir hareket listeniz olur. Bir kapsayıcıya yazmak Azure Cosmos DB Işlem deposu aracılığıyla gerçekleşir ve Istek birimlerini kullanır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [SYNAPSE ve Azure Cosmos DB arasında nelerin desteklendiğini öğrenin](./concept-synapse-link-cosmos-db-support.md)
+* [Azure SYNAPSE ve Azure Cosmos DB arasında nelerin desteklendiğini öğrenin](./concept-synapse-link-cosmos-db-support.md)
 * [Spark ile analitik depoyu sorgulama hakkında bilgi edinin](./how-to-query-analytical-store-spark.md)
