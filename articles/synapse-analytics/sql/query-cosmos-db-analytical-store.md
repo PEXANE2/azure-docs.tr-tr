@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 99fcdd0232e2991acaceb6838bff0b00c6824dfb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c5fa326fa05a34ae5b51054b867a766489b85c16
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474912"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670710"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te sunucusuz SQL havuzu ile Azure Cosmos DB verileri sorgulama (Önizleme)
 
@@ -23,6 +23,9 @@ SYNAPSE sunucusuz SQL Havuzu (daha önce isteğe bağlı SQL), işlem iş yükle
 Azure Cosmos DB sorgulamak için, tam [seçim](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) yüzeyi alanı [SQL işlevlerinin ve işleçlerin](overview-features.md)çoğunluğu dahil olmak üzere [OPENROWSET](develop-openrowset.md) işlevi aracılığıyla desteklenir. Ayrıca, Azure Blob depolama alanındaki verilerle birlikte Azure Cosmos DB verileri okuyan sorgunun sonuçlarını veya [dış tablo oluştur](develop-tables-cetas.md#cetas-in-sql-on-demand)' u kullanarak Azure Data Lake Storage ' i seçin. Şu anda, [Cetas](develop-tables-cetas.md#cetas-in-sql-on-demand)kullanarak Azure Cosmos DB SUNUCUSUZ SQL havuzu sorgu sonuçlarını depolayamaz.
 
 Bu makalede, SYNAPSE bağlantısı etkinleştirilmiş Azure Cosmos DB kapsayıcılarından verileri sorgulayan sunucusuz SQL havuzu ile bir sorgu yazmayı öğreneceksiniz. Daha sonra, Azure Cosmos DB kapsayıcıları üzerinde sunucusuz SQL havuzu görünümleri oluşturma ve bunları [Bu](./tutorial-data-analyst.md) öğreticideki Power BI modellerine bağlama hakkında daha fazla bilgi edinebilirsiniz. 
+
+> [!IMPORTANT]
+> Bu öğretici, daha sonra desteklenecek olan sorgu deneyimini sağlayan [Azure Cosmos DB iyi tanımlanmış şemayla](../../cosmos-db/analytical-store-introduction.md#schema-representation) bir kapsayıcı kullanır. Sunucusuz SQL havuzunun [Azure Cosmos DB tam uygunluk şeması](#full-fidelity-schema) için sağladığı sorgu deneyimi, önizleme geri bildirimlerine göre değiştirilecek geçici bir davranış olur. `OPENROWSET`Sorgu experinece değiştirilebilir ve iyi tanımlanmış şemayla hizalanabileceğinden, işlevin genel önizleme sırasında tam uygunlukta kapsayıcılar için sağladığı şemaya güvenmeyin. Geri bildirimde bulunmak için [SYNAPSE link ürün ekibine](mailto:cosmosdbsynapselink@microsoft.com) başvurun.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -253,12 +256,77 @@ Azure Cosmos DB SQL (Core) API 'SI hesaplarının JSON özelliği türlerini des
 | Null | `any SQL type` 
 | İç içe nesne veya dizi | JSON metni olarak seri hale getirilmiş varchar (max) (UTF8 veritabanı harmanlaması) |
 
+## <a name="full-fidelity-schema"></a>Tam uygunluk şeması
+
+Azure Cosmos DB tam uygunluk şeması, bir kapsayıcıdaki her özellik için hem değerleri hem de en iyi eşleşme türlerini kaydeder.
+`OPENROWSET` tam uygunluğa sahip bir kapsayıcıdaki işlev her hücrede hem tür hem de gerçek değer sağlar. Aşağıdaki sorgunun öğeleri tam uygunluk şemasına sahip bir kapsayıcıdan okuduğunu varsayalım:
+
+```sql
+SELECT *
+FROM OPENROWSET(
+      'CosmosDB',
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) as rows
+```
+
+Bu sorgunun sonucu, JSON metni olarak biçimlendirilen türleri ve değerleri döndürür: 
+
+| date_rep | çalışmaların | geo_id |
+| --- | --- | --- |
+| {"Date": "2020-08-13"} | {"Int32": "254"} | {"String": "RS"} |
+| {"Date": "2020-08-12"} | {"Int32": "235"}| {"String": "RS"} |
+| {"Date": "2020-08-11"} | {"Int32": "316"} | {"String": "RS"} |
+| {"Date": "2020-08-10"} | {"Int32": "281"} | {"String": "RS"} |
+| {"Date": "2020-08-09"} | {"Int32": "295"} | {"String": "RS"} |
+| {"String": "2020/08/08"} | {"Int32": ","} | {"String": "RS"} |
+| {"Date": "2020-08-07"} | {"float64": "339.0"} | {"String": "RS"} |
+
+Her değer için Cosmos DB kapsayıcı öğesinde tanımlanan türü görebilirsiniz. Özellik değerlerinin çoğu `date_rep` `date` değer içerir, ancak bazıları Cosmos DB dize olarak yanlış depolanır. Tam uygunluk şeması, hem doğru yazılmış değerleri hem de `date` Hatalı biçimlendirilmiş `string` değerleri döndürür.
+Servis talebi sayısı, değer olarak depolanan bir bilgi, `int32` ancak ondalık sayı olarak girilen bir değer vardır. Bu değer `float64` türü. En büyük sayıyı aşan bazı değerler varsa `int32` , bunlar tür olarak depolanır `int64` . `geo_id`Bu örnekteki tüm değerler türler olarak depolanır `string` .
+
+> [!IMPORTANT]
+> Tam uygunluk şeması, hem beklenen türler hem de hatalı olarak girilmiş türler içeren değerleri gösterir.
+> Tam uygunluk analitik deposunda corection uygulamak için Azure Cosmos DB kapsayıcısında yanlış türlere sahip değerleri temizlemeniz gerekir. 
+
 Mongo DB API türü Azure Cosmos DB hesaplarını sorgulamak için, analitik depoda tam uygunluk şeması gösterimi ve [burada](../../cosmos-db/analytical-store-introduction.md#analytical-schema)kullanılacak genişletilmiş özellik adları hakkında daha fazla bilgi edinebilirsiniz.
+
+Tam uygunluk şeması sorgulanırken, SQL türünü açık bir şekilde belirtmeniz ve beklenen Cosmos DB özellik türünün `WITH` yan tümcesini belirtmeniz gerekir. Aşağıdaki örnekte, özelliği için `string` doğru tür `geo_id` ve `int32` özellik için doğru tür olduğunu varsayacağız `cases` :
+
+```sql
+SELECT geo_id, cases = SUM(cases)
+FROM OPENROWSET(
+      'CosmosDB'
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) WITH ( geo_id VARCHAR(50) '$.geo_id.string',
+             cases INT '$.cases.int32'
+    ) as rows
+GROUP BY geo_id
+```
+
+Diğer türlere sahip değerler `geo_id` ve sütunlarında döndürülmeyecektir `cases` ve sorgu `NULL` Bu hücrelerde değer döndürür. Bu sorgu, `cases` () ifadesinde belirtilen türle yalnızca öğesine başvuracaktır `cases.int32` . `cases.int64`' I temsil eden diğer türler (,) içeren değerleriniz `cases.float64` Cosmos DB kapsayıcıda temizlenemez, yan tümcesine açıkça başvurulmanız `WITH` ve sonuçları birleştirmeniz gerekir. Aşağıdaki sorgu `int32` ,, `int64` ve `float64` `cases` sütununda depolanır:
+
+```sql
+SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
+FROM OPENROWSET(
+      'CosmosDB',
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) WITH ( geo_id VARCHAR(50) '$.geo_id.string', 
+             cases_int INT '$.cases.int32',
+             cases_bigint BIGINT '$.cases.int64',
+             cases_float FLOAT '$.cases.float64'
+    ) as rows
+GROUP BY geo_id
+```
+
+Bu örnekte, her bir `int32` `int64` `float64` ülke için servis talebi sayısını hesaplamak üzere durum, veya değerler olarak saklanır ve tüm değerler ayıklanmalıdır. 
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
 - Diğer **ad** , işlevinden sonra belirtilmelidir `OPENROWSET` (örneğin, `OPENROWSET (...) AS function_alias` ). Takma ad atlama bağlantı sorununa neden olabilir ve SYNAPSE sunucusuz SQL uç noktası geçici olarak kullanılamıyor olabilir. Bu sorun, Kasım 2020 ' de çözümlenir.
-- Sunucusuz SQL havuzu şu anda [Azure Cosmos DB tam aslına uygunluk şemasını](../../cosmos-db/analytical-store-introduction.md#schema-representation)desteklemiyor. Yalnızca iyi tanımlanmış şemaya Cosmos DB erişmek için sunucusuz SQL havuzunu kullanın.
+- Sunucusuz SQL havuzunun [Azure Cosmos DB tam uygunluk şeması](#full-fidelity-schema) için sağladığı sorgu deneyimi, önizleme geri bildirimlerine göre değiştirilecek geçici bir davranıştır. `OPENROWSET`Sorgu deneyimi iyi tanımlanmış şemayla hizalanabileceğinden, işlevin genel önizleme sırasında sağladığı şemaya güvenmeyin. Geri bildirimde bulunmak için [SYNAPSE link ürün ekibine](mailto:cosmosdbsynapselink@microsoft.com) başvurun.
 
 Olası hatalar ve sorun giderme eylemleri aşağıdaki tabloda listelenmiştir:
 
@@ -275,7 +343,7 @@ Olası hatalar ve sorun giderme eylemleri aşağıdaki tabloda listelenmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure SYNAPSE bağlantısıyla Power BI ve sunucusuz SYNAPSE SQL havuzu kullanma](../../cosmos-db/synapse-link-power-bi.md)
 - [SQL 'de isteğe bağlı olarak görünüm oluşturma ve kullanma](create-use-views.md) 

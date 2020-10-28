@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: e485065588fefa95868df9865f317de54e6ef020
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 3a3eb77315953c3791e09c4326af7cc3e3231a69
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628788"
+ms.locfileid: "92670033"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C ile tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme
 
@@ -117,13 +117,13 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     };
     ```
 
-1. `authConfig.js`Dosyayı *Javascriptspa* klasörü içinde açın.
+1. *authConfig.js* dosyasını *javascriptspa* klasörü içinde açın.
 1. `msalConfig`Nesnede, Güncelleştir:
     * `clientId`önceki bir adımda kaydettiğiniz **uygulama (istemci) kimliğiyle**
     * `authority` Azure AD B2C kiracı adınızla URI ve önkoşulların bir parçası olarak oluşturduğunuz kaydolma/oturum açma Kullanıcı akışının adı (örneğin, *B2C_1_signupsignin1* )
-1. `policies.js` dosyasını açın.
+1. *policies.js* dosyasını açın.
 1. Ve için girdileri bulun `names` `authorities` ve adım 2 ' de oluşturduğunuz ilkelerin adlarıyla uygun şekilde değiştirin. `fabrikamb2c.onmicrosoft.com`Örneğin, Azure AD B2C kiracınızın adıyla değiştirin `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>` .
-1. `apiConfig.js` dosyasını açın.
+1. *apiConfig.js* dosyasını açın.
 1. Kapsamların atamasını bulun `b2cScopes` ve URL 'yi, Web API 'si için oluşturduğunuz kapsam URL 'si ile değiştirin (örneğin,) `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]` .
 1. API URL 'SI için atamayı bulun `webApi` ve geçerlI URL 'yi, 4. adımda Web API 'nizi DAĞıTTıĞıNıZ URL ile değiştirin `webApi: http://localhost:5000/hello` .
 

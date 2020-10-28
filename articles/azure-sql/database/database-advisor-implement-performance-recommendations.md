@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b5170f1c2e6c72c684cb1afcf1bf9bf8d3ef6fff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1ef29eb71ccd945552550f64e5ae95bc85be44d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284372"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672121"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Azure SQL veritabanı için Veritabanı Danışmanı performans önerileri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,9 +55,9 @@ Geçmişte uygulanan ayarlama eylemlerinin tamamlanma geçmişini de bulabilirsi
 
 Azure SQL veritabanı, çalıştıran sorguları sürekli izler ve performansı iyileştirebilecek dizinleri tanımlar. Belirli bir dizinin eksik olduğu güvenden sonra yeni bir **Dizin oluşturma** önerisi oluşturulur.
 
-Azure SQL veritabanı, dizinin bir süre içinde dolaştıracağından emin olarak güven oluşturur. Tahmini performans kazanmasına bağlı olarak, öneriler yüksek, orta veya düşük olarak kategorize edilir.
+Azure SQL veritabanı, dizinin bir süre içinde dolaştıracağından emin olarak güven oluşturur. Tahmini performans kazanımına bağlı olarak öneriler yüksek, orta veya düşük olarak kategorize edilir.
 
-Öneriler kullanılarak oluşturulan dizinler her zaman otomatik olarak oluşturulan dizinler olarak işaretlenir. [Sys. Indexes görünümüne](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)bakarak hangi dizinlerin otomatik olarak oluşturulduğunu görebilirsiniz. Otomatik oluşturulan dizinler DEĞIŞTIRME/yeniden adlandırma komutlarını engellemez.
+Öneriler kullanılarak oluşturulan dizinler her zaman otomatik olarak oluşturulan dizinler olarak işaretlenir. [Sys. Indexes görünümüne](/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)bakarak hangi dizinlerin otomatik olarak oluşturulduğunu görebilirsiniz. Otomatik oluşturulan dizinler DEĞIŞTIRME/yeniden adlandırma komutlarını engellemez.
 
 Otomatik olarak oluşturulmuş bir dizine sahip sütunu bırakmaya çalışırsanız, komut geçer. Otomatik oluşturulan dizin, komutla birlikte bırakılır. Normal dizinler, dizini oluşturulmuş sütunlarda ALTER/RENAME komutunu engeller.
 
@@ -105,7 +105,7 @@ Bu öneriyi uyguladıktan sonra, veritabanınızda dakika içinde zorunlu Parame
 
 | SQL hata kodu | İleti |
 | --- | --- |
-| 201 |' ' Yordamı veya işlevi, sağlanmamış *' ' parametresini bekliyor*. |
+| 201 |' ' Yordamı veya işlevi, sağlanmamış *' ' parametresini bekliyor* . |
 | 207 |Geçersiz sütun adı ' * '. |
 | 208 |Geçersiz nesne adı ' * '. |
 | 213 |Girilen değerlerin sütun adı veya numarası tablo tanımıyla eşleşmiyor. |
@@ -114,7 +114,7 @@ Bu öneriyi uyguladıktan sonra, veritabanınızda dakika içinde zorunlu Parame
 
 ## <a name="custom-applications"></a>Özel uygulamalar
 
-Geliştiriciler, Azure SQL veritabanı için performans önerilerini kullanarak özel uygulamalar geliştirmeyi düşünebilirler. Bir veritabanı için Portalda listelenen tüm önerilere [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API aracılığıyla erişilebilir.
+Geliştiriciler, Azure SQL veritabanı için performans önerilerini kullanarak özel uygulamalar geliştirmeyi düşünebilirler. Bir veritabanı için Portalda listelenen tüm önerilere [Get-AzSqlDatabaseRecommendedAction](/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API aracılığıyla erişilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

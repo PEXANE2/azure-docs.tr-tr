@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 5da707d02d867ea35382b09612a89144f0a6527f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 426445342263ad10f174ecf7cca926805eb601e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282303"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669627"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
 
@@ -165,8 +165,7 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 |Peştuca|    `ps`    |
 |Farsça|   `fa`    |
 |Lehçe|    `pl`    |
-|Portekizce (Brezilya)|   `pt-br` |
-|Portekizce (Portekiz)| `pt-pt` |
+|Portekizce|    `pt`    |
 |Rumence|  `ro`    |
 |Rusça|   `ru`    |
 |Sırpça (Kiril)|    `sr-Cyrl`|

@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2020
+ms.date: 10/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9194b461cdceab889e1dfd20e3e70f3f69cb4369
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0861d1fd3ab2a378f0b9afc4e8b35b32badfc3db
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978263"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670661"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -44,9 +44,9 @@ Farklı depolama türleri için en düşük SAP HANA sertifikalı koşullar şun
 
 - Azure Premium Storage- **/Hana/log** Azure [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md)tarafından desteklenmelidir. **/Hana/Data** birimi Azure yazma hızlandırıcısı veya ultra disk olmadan Premium depolamaya yerleştirilebilecek
 - En azından **/Hana/log** birimi Için Azure Ultra disk. **/Hana/Data** Volume, Azure yazma Hızlandırıcısı olmayan Premium depolamaya veya daha hızlı yeniden başlatma süreleriyle elde edilebilir.
-- **NFS v 4.1** , **/Hana/log ve/Hana/Data**için Azure NetApp Files en üstünde bulunan birimleri. /Hana/Shared birimi NFS v3 veya NFS v 4.1 protokolünü kullanabilir
+- **NFS v 4.1** , **/Hana/log ve/Hana/Data** için Azure NetApp Files en üstünde bulunan birimleri. /Hana/Shared birimi NFS v3 veya NFS v 4.1 protokolünü kullanabilir
 
-Bazı depolama türleri birleştirilebilir. Örneğin, **/Hana/Data** ' ı Premium depolamaya koymak mümkündür ve gereken düşük gecikme süresini elde etmek için **/Hana/log** , Ultra disk depolama alanına yerleştirilebilir. **/Hana/Data**için ANF 'yi temel alan bir birim kullanırsanız, **/Hana/log** birimi de ANF 'nin üzerindeki NFS 'yi temel alır. Birimlerden biri (/Hana/Data gibi) ve Azure Premium depolama ya da diğer birime yönelik Ultra disk ( **/Hana/log**gibi) IÇIN ANF üzerinde NFS kullanılması **desteklenmez**.
+Bazı depolama türleri birleştirilebilir. Örneğin, **/Hana/Data** ' ı Premium depolamaya koymak mümkündür ve gereken düşük gecikme süresini elde etmek için **/Hana/log** , Ultra disk depolama alanına yerleştirilebilir. **/Hana/Data** için ANF 'yi temel alan bir birim kullanırsanız, **/Hana/log** birimi de ANF 'nin üzerindeki NFS 'yi temel alır. Birimlerden biri (/Hana/Data gibi) ve Azure Premium depolama ya da diğer birime yönelik Ultra disk ( **/Hana/log** gibi) IÇIN ANF üzerinde NFS kullanılması **desteklenmez** .
 
 Şirket içi dünyada, genellikle g/ç alt sistemleri ve özellikleri hakkında dikkatli olmanız gerekiyordu. Bunun nedeni, Gereç satıcısının SAP HANA için en düşük depolama gereksinimlerinin karşılandığından emin olması gerekiyordu. Azure altyapısını kendiniz oluştururken, bu SAP tarafından verilen gereksinimlerin bazılarını bilmelisiniz. SAP 'nin öneren düşük aktarım hızı özelliklerinden bazıları şunlardır:
 
@@ -93,7 +93,7 @@ Aşağıdaki Azure Premium disklerine yönelik önbelleğe alma önerileri, şun
 - **Işletim sistemi diski** -VM oluşturma sırasında Azure tarafından ayarlanan varsayılan önbelleğe alma işlemini değiştirmeyin
 
 
-Çeşitli Azure Premium disklerinde dizili kümeler oluşturmak için LVM veya mdaddm kullanıyorsanız, dizili boyutları tanımlamanız gerekir. Bu boyutlar **/Hana/Data** ve **/Hana/log**arasında farklılık gösterir. **Öneri: bir öneri, öneriye göre kullanılacak şekilde belirlenir:**
+Çeşitli Azure Premium disklerinde dizili kümeler oluşturmak için LVM veya mdaddm kullanıyorsanız, dizili boyutları tanımlamanız gerekir. Bu boyutlar **/Hana/Data** ve **/Hana/log** arasında farklılık gösterir. **Öneri: bir öneri, öneriye göre kullanılacak şekilde belirlenir:**
 
 - **/Hana/Data** IÇIN 256 KB
 - **/Hana/log** IÇIN 64 KB
@@ -143,36 +143,36 @@ Bu veri bloğu işlevinin planlanabilecek ideal durumlar, büyük olasılıkla f
 
 SAP **/Hana/Data** Volume yapılandırması:
 
-| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data | Maksimum patlama performansı | IOPS | Veri bloğu ıOPS |
+| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data | Sağlanan İşleme Hızı | Maksimum patlama performansı | IOPS | Veri bloğu ıOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
-| M32ts | 192 GiB | 500 MBps | 4 x P6 | 680 MBps | 960 | 14.000 |
-| M32ls | 256 GiB | 500 MBps | 4 x P6 | 680 MBps | 960 | 14.000 |
-| M64ls | 512 GiB | 1.000 MBps | 4 x P10 |  680 MBps | 2.000 | 14.000 |
-| M64s | 1.000 GiB | 1.000 MBps | 4 x P15 | 680 MBps | 4.400 | 14.000 |
-| M64ms | 1.750 GiB | 1.000 MBps | 4 x P20 | 680 MBps | 9.200 | 14.000 |  
-| M128s | 2.000 GiB | 2.000 MBps | 4 x P20 | 680 MBps | 9.200| 14.000 | 
-| M128ms | 3.800 GiB | 2.000 MBps | 4 x P30 | 800 MBps (sağlandı) | 20.000 | patlama yok | 
-| M208s_v2 | 2.850 GiB | 1.000 MBps | 4 x P30 | 800 MBps (sağlandı) | 20.000| patlama yok | 
-| M208ms_v2 | 5.700 GiB | 1.000 MBps | 4 x P40 | 1.000 MBps (sağlandı) | 25,000 | patlama yok |
-| M416s_v2 | 5.700 GiB | 2.000 MBps | 4 x P40 | 1.000 MBps (sağlandı) | 25,000 | patlama yok |
-| M416ms_v2 | 11.400 GiB | 2.000 MBps | 4 x P50 | 2.000 MBps (sağlandı) | 25,000 | patlama yok |
+| M32ts | 192 GiB | 500 MBps | 4 x P6 | 200 MBps | 680 MBps | 960 | 14.000 |
+| M32ls | 256 GiB | 500 MBps | 4 x P6 | 200 MBps | 680 MBps | 960 | 14.000 |
+| M64ls | 512 GiB | 1.000 MBps | 4 x P10 | 400 MBps | 680 MBps | 2.000 | 14.000 |
+| M64s | 1.000 GiB | 1.000 MBps | 4 x P15 | 500 MBps | 680 MBps | 4.400 | 14.000 |
+| M64ms | 1.750 GiB | 1.000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9.200 | 14.000 |  
+| M128s | 2.000 GiB | 2.000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9.200| 14.000 | 
+| M128ms | 3.800 GiB | 2.000 MBps | 4 x P30 | 800 MBps | gereksiz | 20.000 | gereksiz | 
+| M208s_v2 | 2.850 GiB | 1.000 MBps | 4 x P30 | 800 MBps | gereksiz | 20.000| gereksiz | 
+| M208ms_v2 | 5.700 GiB | 1.000 MBps | 4 x P40 | 1.000 MBps | gereksiz | 30.000 | gereksiz |
+| M416s_v2 | 5.700 GiB | 2.000 MBps | 4 x P40 | 1.000 MBps | gereksiz | 30.000 | gereksiz |
+| M416ms_v2 | 11.400 GiB | 2.000 MBps | 4 x P50 | 2.000 MBps | gereksiz | 30.000 | gereksiz |
 
 
 **/Hana/log** birimi için. yapılandırma şöyle görünür:
 
-| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | **/Hana/log** birimi | Maksimum patlama performansı | IOPS | Veri bloğu ıOPS |
+| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | **/Hana/log** birimi | Sağlanan İşleme Hızı | Maksimum patlama performansı | IOPS | Veri bloğu ıOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
-| M32ts | 192 GiB | 500 MBps | 3 x P10 | 510 MBps | 1.500 | 10.500 | 
-| M32ls | 256 GiB | 500 MBps | 3 x P10 | 510 MBps | 1.500 | 10.500 | 
-| M64ls | 512 GiB | 1.000 MBps | 3 x P10 | 510 MBps | 1.500 | 10.500 | 
-| M64s | 1.000 GiB | 1.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 | 
-| M64ms | 1.750 GiB | 1.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 |  
-| M128s | 2.000 GiB | 2.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500|  
-| M128ms | 3.800 GiB | 2.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 | 
-| M208s_v2 | 2.850 GiB | 1.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 |  
-| M208ms_v2 | 5.700 GiB | 1.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 |  
-| M416s_v2 | 5.700 GiB | 2.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 |  
-| M416ms_v2 | 11.400 GiB | 2.000 MBps | 3 x P15 | 510 MBps | 3.300 | 10.500 | 
+| M32ts | 192 GiB | 500 MBps | 3 x P10 | 300 MBps | 510 MBps | 1.500 | 10.500 | 
+| M32ls | 256 GiB | 500 MBps | 3 x P10 | 300 MBps | 510 MBps | 1.500 | 10.500 | 
+| M64ls | 512 GiB | 1.000 MBps | 3 x P10 | 300 MBps | 510 MBps | 1.500 | 10.500 | 
+| M64s | 1.000 GiB | 1.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 | 
+| M64ms | 1.750 GiB | 1.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 |  
+| M128s | 2.000 GiB | 2.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500|  
+| M128ms | 3.800 GiB | 2.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 | 
+| M208s_v2 | 2.850 GiB | 1.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 |  
+| M208ms_v2 | 5.700 GiB | 1.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 |  
+| M416s_v2 | 5.700 GiB | 2.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 |  
+| M416ms_v2 | 11.400 GiB | 2.000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3.300 | 10.500 | 
 
 
 Diğer birimlerde yapılandırma şöyle görünür:
@@ -192,19 +192,19 @@ Diğer birimlerde yapılandırma şöyle görünür:
 | M416ms_v2 | 11.400 GiB | 2.000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
 
 
-Farklı önerilen birimler için depolama aktarım hızının, çalıştırmak istediğiniz iş yükünü karşılayıp karşılamadığını kontrol edin. İş yükü **/Hana/Data** ve **/Hana/log**için daha yüksek birimler gerektiriyorsa, Azure Premium Depolama VHD 'lerinin sayısını artırmanız gerekir. Listelenmiş olandan daha fazla VHD 'ye sahip bir birimi boyutlandırma, ıOPS 'yi ve g/ç verimini Azure sanal makine türü sınırları içinde arttırır.
+Farklı önerilen birimler için depolama aktarım hızının, çalıştırmak istediğiniz iş yükünü karşılayıp karşılamadığını kontrol edin. İş yükü **/Hana/Data** ve **/Hana/log** için daha yüksek birimler gerektiriyorsa, Azure Premium Depolama VHD 'lerinin sayısını artırmanız gerekir. Listelenmiş olandan daha fazla VHD 'ye sahip bir birimi boyutlandırma, ıOPS 'yi ve g/ç verimini Azure sanal makine türü sınırları içinde arttırır.
 
 Azure Yazma Hızlandırıcısı yalnızca [Azure yönetilen disklerle](https://azure.microsoft.com/services/managed-disks/)birlikte çalışmaktadır. Bu nedenle, en azından **/Hana/log** birimini oluşturan Azure Premium Depolama disklerinin yönetilen diskler olarak dağıtılması gerekir. [Yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md)makalesinde Azure yazma Hızlandırıcısı hakkında daha ayrıntılı yönergeler ve kısıtlamalar bulabilirsiniz.
 
 Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) ailesi ve [Edsv4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)'Nin Hana sertifikalı VM 'leri için, **/Hana/Data** ve **/Hana/log** birimi için ANF gerekir. Ya da yalnızca **/Hana/log** birimi için Azure Premium depolama yerine Azure Ultra Disk Storage 'ı kullanmanız gerekir. Sonuç olarak, Azure Premium depolamada bulunan **/Hana/Data** birimi için yapılandırma şöyle görünebilir:
 
-| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data | Maksimum patlama performansı | IOPS | Veri bloğu ıOPS |
+| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data | Sağlanan İşleme Hızı | Maksimum patlama performansı | IOPS | Veri bloğu ıOPS |
 | --- | --- | --- | --- | --- | --- | --- |
-| E20ds_v4 | 160 GiB | 480 MBps | 3 x P10 | 510 MBps | 1.500 | 10.500 |
-| E32ds_v4 | 256 GiB | 768 MBps | 3 x P10 |  510 MBps | 1.500 | 10.500|
-| E48ds_v4 | 384 GiB | 1.152 MBps | 3 x P15 |  510 MBps | 3.300  | 10.500 | 
-| E64ds_v4 | 504 GiB | 1.200 MBps | 3 x P15 |  510 MBps | 3.300 | 10.500 | 
-| E64s_v3 | 432 GiB | 1.200 MB/s | 3 x P15 |  510 MBps | 3.300 | 10.500 | 
+| E20ds_v4 | 160 GiB | 480 MBps | 3 x P10 | 300 MBps | 510 MBps | 1.500 | 10.500 |
+| E32ds_v4 | 256 GiB | 768 MBps | 3 x P10 |  300 MBps | 510 MBps | 1.500 | 10.500|
+| E48ds_v4 | 384 GiB | 1.152 MBps | 3 x P15 |  375 MBps |510 MBps | 3.300  | 10.500 | 
+| E64ds_v4 | 504 GiB | 1.200 MBps | 3 x P15 |  375 MBps | 510 MBps | 3.300 | 10.500 | 
+| E64s_v3 | 432 GiB | 1.200 MB/s | 3 x P15 |  375 MBps | 510 MBps | 3.300 | 10.500 | 
 
 Ultra disk üzerinde **/Hana/log** dahil diğer birimler için yapılandırma şu şekilde görünebilir:
 

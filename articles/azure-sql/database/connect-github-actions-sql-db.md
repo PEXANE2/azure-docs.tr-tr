@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: cd08b02cb3b67ce615ffa1003ee1e4441a281c17
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 9203cebbd721b918f2514f7615712c035a0460ed
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92285148"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669744"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>Azure SQL veritabanı 'na bağlanmak için GitHub eylemlerini kullanma
 
@@ -26,7 +26,7 @@ ms.locfileid: "92285148"
 - Dacpac paketi () içeren bir GitHub deposu `Database.dacpac` . GitHub hesabınız yoksa [ücretsiz kaydolun](https://github.com/join).  
 - Bir Azure SQL veritabanı.
     - [Hızlı başlangıç: Azure SQL veritabanı tek veritabanı oluşturma](single-database-create-quickstart.md)
-    - [Mevcut SQL Server veritabanından bir dacpac paketi oluşturma](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+    - [Mevcut SQL Server veritabanından bir dacpac paketi oluşturma](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 
 ## <a name="workflow-file-overview"></a>İş akışı dosyasına genel bakış
 
@@ -68,7 +68,7 @@ Yer tutucuları `server-name` Azure üzerinde BARıNDıRıLAN SQL Server 'ın ad
 
 ## <a name="copy-the-sql-connection-string"></a>SQL bağlantı dizesini Kopyala 
 
-Azure Portal Azure SQL veritabanınıza gidin ve **Ayarlar**  >  **bağlantı dizeleri**' ni açın. **ADO.NET** bağlantı dizesini kopyalayın. Ve için yer tutucu değerlerini `your_database` değiştirin `your_password` . Bağlantı dizesi bu çıkışa benzer şekilde görünür. 
+Azure Portal Azure SQL veritabanınıza gidin ve **Ayarlar**  >  **bağlantı dizeleri** ' ni açın. **ADO.NET** bağlantı dizesini kopyalayın. Ve için yer tutucu değerlerini `your_database` değiştirin `your_password` . Bağlantı dizesi bu çıkışa benzer şekilde görünür. 
 
 ```output
     Server=tcp:my-sql-server.database.windows.net,1433;Initial Catalog={your-database};Persist Security Info=False;User ID={admin-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
@@ -80,7 +80,7 @@ Bağlantı dizesini GitHub parolası olarak kullanacaksınız.
 
 1. [GitHub](https://github.com/)'da deponuza gözatamazsınız.
 
-1. **Yeni gizli > > ayarlar**' ı seçin.
+1. **Yeni gizli > > ayarlar** ' ı seçin.
 
 1. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını verin `AZURE_CREDENTIALS` .
 
@@ -101,7 +101,7 @@ Bağlantı dizesini GitHub parolası olarak kullanacaksınız.
 
 1. GitHub deponuz için **eylemlere** gidin. 
 
-2. **İş akışınızı kendiniz ayarlama**seçeneğini belirleyin. 
+2. **İş akışınızı kendiniz ayarlama** seçeneğini belirleyin. 
 
 2. `on:`İş akışı dosyanızın bölümünden sonraki her şeyi silin. Örneğin, kalan iş akışınız şöyle görünebilir. 
 
@@ -194,4 +194,4 @@ Azure SQL veritabanınız ve deponuzu artık gerekmiyorsa, kaynak grubunu ve Git
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure ve GitHub tümleştirmesi hakkında bilgi edinin](https://docs.microsoft.com/azure/developer/github/)
+> [Azure ve GitHub tümleştirmesi hakkında bilgi edinin](/azure/developer/github/)

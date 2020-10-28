@@ -10,12 +10,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: f98cfcd49806061a969a9227f9ade05f70ce79ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e69bba858ccf62f1b3a3b45b08771ddba71f11cf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85982329"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671393"
 ---
 # <a name="azure-sql-database-and-managed-instance-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL veritabanı ve yönetilen örnek Içeri/dışarı aktarma hizmeti bir veritabanını içeri veya dışarı aktarmak uzun zaman alıyor
 
@@ -25,7 +25,7 @@ Içeri/dışarı aktarma hizmetini kullandığınızda, işlem beklenenden uzun 
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL veritabanı Içeri/dışarı aktarma hizmeti
 
-Azure SQL veritabanı Içeri/dışarı aktarma hizmeti, her Azure veri merkezinde çalışan REST tabanlı bir Web hizmetidir. Veritabanınızı Azure portal taşımak için [veritabanını Içeri aktar](database-import.md#using-azure-portal) veya [dışarı aktar](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) seçeneğini kullandığınızda bu hizmet çağrılır. Hizmet, Azure SQL veritabanı ile Azure Blob depolama arasında içeri aktarmalar ve dışarı aktarmalar gerçekleştirmek için ücretsiz istek sıraya alma ve işlem hizmetleri sağlar.
+Azure SQL veritabanı Içeri/dışarı aktarma hizmeti, her Azure veri merkezinde çalışan REST tabanlı bir Web hizmetidir. Veritabanınızı Azure portal taşımak için [veritabanını Içeri aktar](database-import.md#using-azure-portal) veya [dışarı aktar](./database-import.md#using-azure-portal) seçeneğini kullandığınızda bu hizmet çağrılır. Hizmet, Azure SQL veritabanı ile Azure Blob depolama arasında içeri aktarmalar ve dışarı aktarmalar gerçekleştirmek için ücretsiz istek sıraya alma ve işlem hizmetleri sağlar.
 
 İçeri ve dışarı aktarma işlemleri geleneksel bir fiziksel veritabanı yedeklemesini temsil etmez ancak bunun yerine özel bir BACPAC biçimi kullanan veritabanının mantıksal bir yedeklemesi değildir. BACPAC biçimi Microsoft SQL Server, Azure SQL veritabanı ve Azure SQL yönetilen örneği sürümleri arasında değişebilen bir fiziksel biçim kullanmanızı önlemenize olanak sağlar.
 
@@ -40,20 +40,20 @@ Azure SQL veritabanı Içeri/dışarı aktarma hizmeti, içeri ve dışarı akta
 
 Veritabanınızın dışarı aktarmaları yalnızca yanlışlıkla veri silme işleminden kurtarmak için kullanılırsa, tüm Azure SQL veritabanı sürümleri sistem tarafından oluşturulan yedeklerden Self Servis geri yükleme özelliği sağlar. Ancak diğer nedenlerle bu dışarı aktarmalar varsa ve sürekli olarak daha hızlı veya daha öngörülebilir içeri/dışarı aktarma performansına ihtiyacınız varsa, aşağıdaki seçenekleri göz önünde bulundurun:
 
-* [SQLPackage yardımcı programını kullanarak BIR BACPAC dosyasına dışarı aktarın](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-sqlpackage-utility).
-* [SQL Server Management Studio (SSMS) kullanarak BACPAC dosyasına dışarı aktarın](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-sql-server-management-studio-ssms).
+* [SQLPackage yardımcı programını kullanarak BIR BACPAC dosyasına dışarı aktarın](./database-export.md#sqlpackage-utility).
+* [SQL Server Management Studio (SSMS) kullanarak BACPAC dosyasına dışarı aktarın](./database-export.md#sql-server-management-studio-ssms).
 * Microsoft SQL Server Data-Tier uygulama çerçevesi (DacFx) API 'sini kullanarak doğrudan kodunuzda BACPAC içeri aktarma veya dışarı aktarma işlemini çalıştırın. Daha fazla bilgi için bkz.
-  * [Veri katmanı uygulamasını dışarı aktarma](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
-  * [Microsoft. SqlServer. Dac ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.sqlserver.dac)
+  * [Veri katmanı uygulamasını dışarı aktarma](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+  * [Microsoft. SqlServer. Dac ad alanı](/dotnet/api/microsoft.sqlserver.dac)
   * [DACFx 'i indir](https://www.microsoft.com/download/details.aspx?id=55713)
 
 ## <a name="things-to-consider-when-you-export-or-import-a-database"></a>Bir veritabanını dışarı veya içeri aktarırken göz önünde bulundurmanız gerekenler
 
-* Bu makalede ele alınan tüm yöntemler veritabanı Işlem birimi (DTU) kotasını kullanır ve bu da Azure SQL veritabanı hizmeti tarafından azaltma işlemine neden olur. [Veritabanı IÇIN DTU istatistiklerini Azure Portal görüntüleyebilirsiniz](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview#sql-database-resource-monitoring). Veritabanı kaynak sınırlarına ulaştıysa, daha fazla kaynak eklemek için [hizmet katmanını yükseltin](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources) .
+* Bu makalede ele alınan tüm yöntemler veritabanı Işlem birimi (DTU) kotasını kullanır ve bu da Azure SQL veritabanı hizmeti tarafından azaltma işlemine neden olur. [Veritabanı IÇIN DTU istatistiklerini Azure Portal görüntüleyebilirsiniz](./monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring). Veritabanı kaynak sınırlarına ulaştıysa, daha fazla kaynak eklemek için [hizmet katmanını yükseltin](./scale-resources.md) .
 * İdeal olarak, veritabanı ile aynı bölgedeki bir VM 'den istemci uygulamaları (SqlPackage yardımcı programı veya özel DAC uygulamanız gibi) çalıştırmalısınız. Aksi takdirde, ağ gecikme süresiyle ilgili performans sorunlarıyla karşılaşabilirsiniz.
 * Kümelenmiş dizinler olmadan büyük tabloları dışarı aktarmak çok yavaş olabilir veya hatta hataya neden olabilir. Bu davranış, tablo bölünemediği ve paralel olarak verilemeyeceği için oluşur. Bunun yerine, tek bir işlemde dışa aktarılmalıdır ve özellikle büyük tablolar için, dışa aktarma sırasında yavaş performans ve olası hata oluşmasına neden olur.
 
 
 ## <a name="related-documents"></a>İlgili belgeler
 
-[Bir veritabanını dışarı aktarırken dikkat edilecek noktalar](https://docs.microsoft.com/azure/sql-database/sql-database-export#considerations-when-exporting-an-azure-sql-database)
+[Bir veritabanını dışarı aktarırken dikkat edilecek noktalar](./database-export.md#considerations)

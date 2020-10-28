@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab974b0f68e831e672329f8af5ae1cb6a5fdbd4c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886495"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672078"
 ---
 # <a name="data-discovery--classification"></a>Veri Bulma ve Sınıflandırma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ En hassas verileriniz arasında işletme, finans, sağlık hizmetleri veya kişi
 - Son derece hassas veriler içeren veritabanlarının güvenliğine erişimi denetleme ve güvenliği artırma.
 
 > [!NOTE]
-> Şirket içi SQL Server hakkında daha fazla bilgi için bkz. [SQL veri bulma & sınıflandırması](https://go.microsoft.com/fwlink/?linkid=866999).
+> Şirket içi SQL Server hakkında daha fazla bilgi için bkz. [SQL veri bulma & sınıflandırması](/sql/relational-databases/security/sql-data-discovery-and-classification).
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Veri bulma & sınıflandırması nedir?
 
@@ -55,18 +55,18 @@ Bu bölümde, aşağıdaki adımlar açıklanmaktadır:
 
 Sınıflandırma iki meta veri özniteliği içerir:
 
-- **Etiketler**: sütunda depolanan verilerin duyarlılık düzeyini tanımlamak için kullanılan ana sınıflandırma öznitelikleri.  
-- **Bilgi türleri**: sütunda depolanan verilerin türü hakkında daha ayrıntılı bilgiler sağlayan öznitelikler.
+- **Etiketler** : sütunda depolanan verilerin duyarlılık düzeyini tanımlamak için kullanılan ana sınıflandırma öznitelikleri.  
+- **Bilgi türleri** : sütunda depolanan verilerin türü hakkında daha ayrıntılı bilgiler sağlayan öznitelikler.
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>Sınıflandırma taksonominizi tanımlama ve özelleştirme
 
 Veri bulma & sınıflandırması, yerleşik bir duyarlılık etiketleri kümesi ve yerleşik bir bilgi türleri ve bulma mantığı kümesiyle gelir. Artık bu taksonomiyi özelleştirebilir ve özel olarak kendi ortamınız için sınıflandırma yapıları derecelendirme kümesi oluşturabilirsiniz.
 
-Sınıflandırma taksonominizi Azure kuruluşunuzun tamamı için tek bir yerde tanımlayabilir ve özelleştirebilirsiniz. Bu konum, güvenlik ilkenizin bir parçası olarak [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro)'nde bulunur. Yalnızca kuruluşun kök yönetim grubunda yönetici haklarına sahip bir kişi bu görevi gerçekleştirebilir.
+Sınıflandırma taksonominizi Azure kuruluşunuzun tamamı için tek bir yerde tanımlayabilir ve özelleştirebilirsiniz. Bu konum, güvenlik ilkenizin bir parçası olarak [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)'nde bulunur. Yalnızca kuruluşun kök yönetim grubunda yönetici haklarına sahip bir kişi bu görevi gerçekleştirebilir.
 
 Bilgi koruması için ilke yönetiminin bir parçası olarak, Özel Etiketler tanımlayabilir, bunları derecelendirip bunları seçili bir bilgi türleri kümesiyle ilişkilendirebilirsiniz. Ayrıca, kendi özel bilgi türlerinizi ekleyebilir ve bunları dize desenleriyle yapılandırabilirsiniz. Desenler, veritabanlarınızdaki bu tür verileri tanımlamak için bulma mantığına eklenir.
 
-Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'NDE SQL Information Protection Ilkesini özelleştirme (Önizleme)](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
+Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'NDE SQL Information Protection Ilkesini özelleştirme (Önizleme)](../../security-center/security-center-info-protection-policy.md).
 
 Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kullanarak ayrı veritabanlarını sınıflandırarak devam edebilirsiniz.
 
@@ -91,7 +91,7 @@ Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kull
 
    - Belirli bir sütunun önerisini kabul etmek için ilgili satırın sol sütunundaki onay kutusunu seçin. Tüm önerileri kabul edildi olarak işaretlemek için, öneriler tablosu üstbilgisindeki en soldaki onay kutusunu seçin.
 
-   - Seçili önerileri uygulamak için **Seçili önerileri kabul et**' i seçin.
+   - Seçili önerileri uygulamak için **Seçili önerileri kabul et** ' i seçin.
 
 1. Sütunları, alternatif olarak veya öneri tabanlı sınıflandırmanın yanı sıra el ile de sınıflandırabilirsiniz:
 
@@ -125,7 +125,7 @@ Bu yerleşik roller bir veritabanının veri sınıflandırmasını değiştireb
 - Katılımcı
 - SQL Güvenlik Yöneticisi
 
-[Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)'de rol tabanlı izinler hakkında daha fazla bilgi edinin.
+[Azure RBAC](../../role-based-access-control/overview.md)'de rol tabanlı izinler hakkında daha fazla bilgi edinin.
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>Sınıflandırmaları Yönet
 
@@ -140,42 +140,42 @@ T-SQL ' i sütun sınıflandırmaları eklemek veya kaldırmak ve tüm veritaban
 
 Sınıflandırmalar için T-SQL kullanma hakkında daha fazla bilgi için aşağıdaki başvurulara bakın:
 
-- Bir veya daha fazla sütunun sınıflandırmasını eklemek veya güncelleştirmek için: [DUYARLıLıK sınıflandırması Ekle](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- Sınıflandırmayı bir veya daha fazla sütundan kaldırmak için: [DÜŞÜRÜLME DUYARLıLıK sınıflandırması](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-- Veritabanındaki tüm sınıflandırmaları görüntülemek için: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+- Bir veya daha fazla sütunun sınıflandırmasını eklemek veya güncelleştirmek için: [DUYARLıLıK sınıflandırması Ekle](/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Sınıflandırmayı bir veya daha fazla sütundan kaldırmak için: [DÜŞÜRÜLME DUYARLıLıK sınıflandırması](/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Veritabanındaki tüm sınıflandırmaları görüntülemek için: [sys.sensitivity_classifications](/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 ### <a name="use-powershell-cmdlets"></a>PowerShell cmdlet'leri kullanma
 PowerShell kullanarak Azure SQL veritabanı ve Azure SQL yönetilen örneği için sınıflandırmaları ve önerileri yönetin.
 
 #### <a name="powershell-cmdlets-for-azure-sql-database"></a>Azure SQL veritabanı için PowerShell cmdlet 'leri
 
-- [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
-- [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
-- [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
-- [Get-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
-- [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
-- [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
+- [Get-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
+- [Set-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
+- [Remove-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
+- [Get-AzSqlDatabaseSensitivityRecommendation](/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
+- [Enable-AzSqlDatabaSesensitivityRecommendation](/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
+- [Disable-AzSqlDatabaseSensitivityRecommendation](/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
 #### <a name="powershell-cmdlets-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için PowerShell cmdlet 'leri
 
-- [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
-- [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
-- [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
-- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
-- [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
-- [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
+- [Get-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
+- [Set-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
+- [Remove-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
+- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
+- [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
+- [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
 ### <a name="use-the-rest-api"></a>REST API 'YI kullanma
 
 Sınıflandırmaları ve önerileri programlı bir şekilde yönetmek için REST API kullanabilirsiniz. Yayımlanan REST API aşağıdaki işlemleri destekler:
 
-- [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): belirtilen sütunun duyarlılık etiketini oluşturur veya güncelleştirir.
-- [Sil](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): belirtilen sütunun duyarlılık etiketini siler.
-- [Öneriyi devre dışı bırak](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): belirtilen sütunda duyarlılık önerilerini devre dışı bırakır.
-- [Öneriyi etkinleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): belirtilen sütunda duyarlılık önerilerini etkinleştirir. (Öneriler varsayılan olarak tüm sütunlarda etkindir.)
-- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): belirtilen sütunun duyarlılık etiketini alır.
-- [Geçerli veritabanına göre Listele](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): belirtilen veritabanının geçerli duyarlılık etiketlerini alır.
-- [Veritabanı tarafından önerilen liste](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): belirtilen veritabanının önerilen duyarlılık etiketlerini alır.
+- [Oluştur veya Güncelleştir](/rest/api/sql/sensitivitylabels/createorupdate): belirtilen sütunun duyarlılık etiketini oluşturur veya güncelleştirir.
+- [Sil](/rest/api/sql/sensitivitylabels/delete): belirtilen sütunun duyarlılık etiketini siler.
+- [Öneriyi devre dışı bırak](/rest/api/sql/sensitivitylabels/disablerecommendation): belirtilen sütunda duyarlılık önerilerini devre dışı bırakır.
+- [Öneriyi etkinleştir](/rest/api/sql/sensitivitylabels/enablerecommendation): belirtilen sütunda duyarlılık önerilerini etkinleştirir. (Öneriler varsayılan olarak tüm sütunlarda etkindir.)
+- [Get](/rest/api/sql/sensitivitylabels/get): belirtilen sütunun duyarlılık etiketini alır.
+- [Geçerli veritabanına göre Listele](/rest/api/sql/sensitivitylabels/listcurrentbydatabase): belirtilen veritabanının geçerli duyarlılık etiketlerini alır.
+- [Veritabanı tarafından önerilen liste](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): belirtilen veritabanının önerilen duyarlılık etiketlerini alır.
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Sonraki adımlar
 

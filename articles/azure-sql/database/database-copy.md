@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 3aaa666ac6b7ddffcf5e0d2f5b62d26bd0f96004
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 99eea73add47b6498833de7bfd7728feb4c5c4ab
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516214"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671568"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda bir veritabanının işlemsel olarak tutarlı bir kopyasını kopyalama
 
@@ -43,7 +43,7 @@ Veri erişiminde sunucu düzeyi oturum açma bilgilerini kullanır ve veritaban�
 
 ## <a name="copy-using-the-azure-portal"></a>Azure portalını kullanarak kopyalama
 
-Azure portal kullanarak bir veritabanını kopyalamak için veritabanınızın sayfasını açın ve ardından **Kopyala**' ya tıklayın.
+Azure portal kullanarak bir veritabanını kopyalamak için veritabanınızın sayfasını açın ve ardından **Kopyala** ' ya tıklayın.
 
    ![Veritabanı kopyalama](./media/database-copy/database-copy.png)
 
@@ -82,7 +82,7 @@ Veritabanı kopyası zaman uyumsuz bir işlemdir ancak hedef veritabanı, istek 
 
 Sunucu Yöneticisi oturum açma veya kopyalamak istediğiniz veritabanını oluşturan oturum açma ile ana veritabanında oturum açın. Veritabanı kopyalama işleminin başarılı olması için, sunucu yöneticisi olmayan oturum açma rollerinin üyesi olmalıdır `dbmanager` . Oturumlar ve sunucuya bağlanma hakkında daha fazla bilgi için bkz. [oturum açma bilgilerini yönetme](logins-create-manage.md).
 
-Kaynak veritabanını CREATE DATABASE ile kopyalamaya başla [... Deyimin KOPYASı olarak](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) . T-SQL deyimleri, veritabanı kopyalama işlemi tamamlanana kadar çalışmaya devam eder.
+Kaynak veritabanını CREATE DATABASE ile kopyalamaya başla [... Deyimin KOPYASı olarak](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) . T-SQL deyimleri, veritabanı kopyalama işlemi tamamlanana kadar çalışmaya devam eder.
 
 > [!NOTE]
 > T-SQL ifadesini sonlandırmak, veritabanı kopyalama işlemini sonlandırmaz. İşlemi sonlandırmak için hedef veritabanını bırakın.
@@ -143,13 +143,13 @@ Veritabanınızı, T-SQL kullanarak farklı bir abonelikte bulunan bir sunucuya 
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>Kopyalama işleminin ilerlemesini izleme
 
-[Sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys.dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)ve [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) görünümlerini sorgulayarak kopyalama işlemini izleyin. Kopyalama işlemi devam ederken, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **kopyalama**olarak ayarlanır.
+[Sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)ve [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) görünümlerini sorgulayarak kopyalama işlemini izleyin. Kopyalama işlemi devam ederken, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **kopyalama** olarak ayarlanır.
 
-* Kopyalama başarısız olursa, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **şüpheli**olarak ayarlanır. DROP ifadesini yeni veritabanında yürütün ve daha sonra yeniden deneyin.
-* Kopyalama başarılı olursa, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **çevrimiçi**olarak ayarlanır. Kopyalama tamamlanmıştır ve yeni veritabanı, kaynak veritabanından bağımsız olarak değiştirilebilen normal bir veritabanıdır.
+* Kopyalama başarısız olursa, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **şüpheli** olarak ayarlanır. DROP ifadesini yeni veritabanında yürütün ve daha sonra yeniden deneyin.
+* Kopyalama başarılı olursa, yeni veritabanı için sys. databases görünümünün **state_desc** sütunu **çevrimiçi** olarak ayarlanır. Kopyalama tamamlanmıştır ve yeni veritabanı, kaynak veritabanından bağımsız olarak değiştirilebilen normal bir veritabanıdır.
 
 > [!NOTE]
-> Kopyalama işlemi devam ederken iptal etmeyi seçerseniz, yeni veritabanında [drop database](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql) ifadesini yürütün.
+> Kopyalama işlemi devam ederken iptal etmeyi seçerseniz, yeni veritabanında [drop database](/sql/t-sql/statements/drop-database-transact-sql) ifadesini yürütün.
 
 > [!IMPORTANT]
 > Kaynaktan önemli ölçüde daha küçük bir hizmet hedefine sahip bir kopya oluşturmanız gerekiyorsa, hedef veritabanı dengeli işlem işlemini tamamlayacak yeterli kaynağa sahip olmayabilir ve kopyalama işlemi başarısız olmasına neden olabilir. Bu senaryoda, farklı bir sunucuda ve/veya farklı bir bölgede bir kopya oluşturmak için bir coğrafi geri yükleme isteği kullanın. Daha fazla bilgi için bkz. [veritabanı yedeklerini kullanarak Azure SQL veritabanını kurtarma](recovery-using-backups.md#geo-restore) .
@@ -182,7 +182,7 @@ Portalda kaynak grubunda bulunan ve SQL işlemleri de dahil olmak üzere birden 
 
 ## <a name="resolve-logins"></a>Oturum açma işlemlerini çözümle
 
-Yeni veritabanı hedef sunucuda çevrimiçi olduktan sonra, kullanıcıları yeni veritabanından hedef sunucudaki oturum açmayla yeniden eşlemek için [alter User](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) deyimini kullanın. Yalnız bırakılmış kullanıcıları çözümlemek için bkz. [yalnız bırakılmış kullanıcılarda sorun giderme](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server). Ayrıca bkz. [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini yönetme](active-geo-replication-security-configure.md).
+Yeni veritabanı hedef sunucuda çevrimiçi olduktan sonra, kullanıcıları yeni veritabanından hedef sunucudaki oturum açmayla yeniden eşlemek için [alter User](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) deyimini kullanın. Yalnız bırakılmış kullanıcıları çözümlemek için bkz. [yalnız bırakılmış kullanıcılarda sorun giderme](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server). Ayrıca bkz. [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini yönetme](active-geo-replication-security-configure.md).
 
 Yeni veritabanındaki tüm kullanıcılar, kaynak veritabanında sahip oldukları izinleri korurlar. Veritabanı kopyasını Başlatan Kullanıcı, yeni veritabanının veritabanı sahibi olur. Kopyalama başarılı olduktan ve diğer kullanıcılar yeniden eşlendikten sonra, yalnızca veritabanı sahibi yeni veritabanında oturum açabilir.
 

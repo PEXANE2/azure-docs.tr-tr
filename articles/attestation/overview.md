@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: a84308ba06a38cea475fcb1bae022da16424a731
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ee906b406f5fd09fc870626f1905541a4270c66
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90033005"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670530"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Doğrulama (önizleme)
 
@@ -73,7 +73,7 @@ Azure kanıtlama, TEEs, aşağıdaki avantajları sağladığından, kanıtlamak
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>İş sürekliliği ve olağanüstü durum kurtarma (BCDR) desteği
 
-Azure kanıtlama için [Iş sürekliliği ve olağanüstü durum kurtarma](/azure/best-practices-availability-paired-regions) (BCDR), bir bölgedeki önemli kullanılabilirlik sorunlarından veya olağanüstü durum olaylarından kaynaklanan hizmet kesintilerini azaltmanıza olanak sağlar.
+Azure kanıtlama için [Iş sürekliliği ve olağanüstü durum kurtarma](../best-practices-availability-paired-regions.md) (BCDR), bir bölgedeki önemli kullanılabilirlik sorunlarından veya olağanüstü durum olaylarından kaynaklanan hizmet kesintilerini azaltmanıza olanak sağlar.
 
 Aşağıda şu anda BCDR tarafından desteklenen bölgeler verilmiştir
 - Doğu ABD 2 => Orta ABD eşleştirilmiş.
@@ -91,4 +91,3 @@ Aşağıda şu anda BCDR tarafından desteklenen bölgeler verilmiştir
 - [Azure kanıtlama temel kavramları](basic-concepts.md) hakkında bilgi edinin
 - [Kanıtlama ilkesi yazma ve imzalama](author-sign-policy.md)
 - [PowerShell kullanarak Azure kanıtlama ayarlama](quickstart-powershell.md)
-

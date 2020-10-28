@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 07/29/2019
-ms.openlocfilehash: fe4bcb10db33c6f68abeb779e668726fc1a59345
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b3235f457f1c6475c18045886c49d3dd2ca2242
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360251"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671186"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>Öğretici: Azure SQL veritabanı C&#x23; ve ADO.NET 'de ilişkisel veritabanı tasarlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,9 +34,9 @@ Azure SQL veritabanı, Microsoft Bulut (Azure) içindeki ilişkisel bir hizmet o
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 > [!TIP]
-> Aşağıdaki Microsoft Learn modülü, basit bir veritabanının oluşturulması dahil olmak üzere [Azure SQL veritabanını sorgulayan bir ASP.NET uygulamasının nasıl geliştirileceği ve yapılandırılacağı](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)hakkında bilgi edinmenize yardımcı olur.
+> Aşağıdaki Microsoft Learn modülü, basit bir veritabanının oluşturulması dahil olmak üzere [Azure SQL veritabanını sorgulayan bir ASP.NET uygulamasının nasıl geliştirileceği ve yapılandırılacağı](/learn/modules/develop-app-that-queries-azure-sql/)hakkında bilgi edinmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Visual Studio 2019](https://www.visualstudio.com/downloads/) veya sonraki bir sürümünü yükleme.
 
@@ -47,7 +47,7 @@ Azure SQL veritabanı 'ndaki bir veritabanı, tanımlı bir dizi işlem ve depol
 Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
-2. **Yeni** sayfasında, Azure Market bölümünde **Veritabanları**’nı seçin ve ardından **Öne Çıkan** bölümünde **SQL Veritabanı**’na tıklayın.
+2. **Yeni** sayfasında, Azure Market bölümünde **Veritabanları** ’nı seçin ve ardından **Öne Çıkan** bölümünde **SQL Veritabanı** ’na tıklayın.
 
    ![create empty-database](./media/design-first-database-csharp-tutorial/create-empty-database.png)
 
@@ -71,16 +71,16 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
     ![create database-server](./media/design-first-database-csharp-tutorial/create-database-server.png)
 
-5. **Seç**’e tıklayın.
-6. Hizmet katmanını, DTU veya sanal çekirdek sayısını ve depolama alanı miktarını belirtmek için **Fiyatlandırma katmanı**’na tıklayın. Her hizmet katmanı için kullanılabilir DTU 'lar/sanal çekirdek sayısı ve depolama seçeneklerini keşfedebilirsiniz.
+5. **Seç** ’e tıklayın.
+6. Hizmet katmanını, DTU veya sanal çekirdek sayısını ve depolama alanı miktarını belirtmek için **Fiyatlandırma katmanı** ’na tıklayın. Her hizmet katmanı için kullanılabilir DTU 'lar/sanal çekirdek sayısı ve depolama seçeneklerini keşfedebilirsiniz.
 
-    Hizmet katmanını, DTU 'Lar veya sanal çekirdekler sayısını ve depolama alanı miktarını seçtikten sonra **Uygula**' ya tıklayın.
+    Hizmet katmanını, DTU 'Lar veya sanal çekirdekler sayısını ve depolama alanı miktarını seçtikten sonra **Uygula** ' ya tıklayın.
 
 7. Boş veritabanı için bir **harmanlama** girin (Bu öğretici için varsayılan değeri kullanın). Harmanlamalar hakkında daha fazla bilgi için bkz. [Harmanlamalar](/sql/t-sql/statements/collations)
 
 8. **SQL veritabanı** formunu tamamladığınıza göre, veritabanını sağlamak için **Oluştur** ' a tıklayın. Bu adım birkaç dakika sürebilir.
 
-9. Araç çubuğunda **Bildirimler**’e tıklayarak dağıtım işlemini izleyin.
+9. Araç çubuğunda **Bildirimler** ’e tıklayarak dağıtım işlemini izleyin.
 
    ![Ekran görüntüsü, Azure portal dağıtım sürmekte olan bildirimleri gösterir.](./media/design-first-database-csharp-tutorial/notification.png)
 
@@ -91,21 +91,21 @@ SQL veritabanı, sunucu düzeyinde bir IP güvenlik duvarı oluşturur. Bu güve
 > [!IMPORTANT]
 > SQL Veritabanı 1433 numaralı bağlantı noktası üzerinden iletişim kurar. Bu hizmete bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, yöneticiniz 1433 numaralı bağlantı noktasını açmadığı takdirde veritabanınıza bağlanamazsınız.
 
-1. Dağıtım tamamlandıktan sonra, sol taraftaki menüden **SQL veritabanları** ' na ve ardından **SQL veritabanları** sayfasında *YourDatabase* ' e tıklayın. Veritabanınızın genel bakış sayfası açılır ve tam **sunucu adı** (örneğin, *yourserver.Database.Windows.net*) görüntülenerek daha fazla yapılandırma seçeneği sunulur.
+1. Dağıtım tamamlandıktan sonra, sol taraftaki menüden **SQL veritabanları** ' na ve ardından **SQL veritabanları** sayfasında *YourDatabase* ' e tıklayın. Veritabanınızın genel bakış sayfası açılır ve tam **sunucu adı** (örneğin, *yourserver.Database.Windows.net* ) görüntülenerek daha fazla yapılandırma seçeneği sunulur.
 
 2. Bu tam sunucu adını, SQL Server Management Studio sunucunuza ve veritabanlarına bağlanmak için kullanmak üzere kopyalayın.
 
    ![sunucu adı](./media/design-first-database-csharp-tutorial/server-name.png)
 
-3. Araç çubuğunda **Sunucu güvenlik duvarını ayarla**’ya tıklayın. Sunucu için **güvenlik duvarı ayarları** sayfası açılır.
+3. Araç çubuğunda **Sunucu güvenlik duvarını ayarla** ’ya tıklayın. Sunucu için **güvenlik duvarı ayarları** sayfası açılır.
 
    ![Sunucu düzeyi IP güvenlik duvarı kuralı](./media/design-first-database-csharp-tutorial/server-firewall-rule.png)
 
 4. Geçerli IP adresinizi yeni bir IP güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' ye tıklayın. Bir IP güvenlik duvarı kuralı, tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir.
 
-5. **Kaydet**’e tıklayın. Sunucuda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+5. **Kaydet** ’e tıklayın. Sunucuda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
-6. **Tamam**’a tıklayın ve sonra **Güvenlik duvarı ayarları** sayfasını kapatın.
+6. **Tamam** ’a tıklayın ve sonra **Güvenlik duvarı ayarları** sayfasını kapatın.
 
 IP adresiniz artık IP güvenlik duvarından geçebilirler. Artık SQL Server Management Studio veya seçtiğiniz başka bir aracı kullanarak veritabanınıza bağlanabilirsiniz. Daha önce oluşturduğunuz sunucu yöneticisi hesabını kullandığınızdan emin olun.
 

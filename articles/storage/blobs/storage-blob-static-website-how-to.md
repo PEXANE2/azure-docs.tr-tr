@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2359c762c9ad653ee2eed294709ad7bf6b2a31c0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289880"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671113"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure depolama 'da statik bir Web sitesi barındırma
 
@@ -38,15 +38,15 @@ Statik Web sitesi barındırma, depolama hesabında etkinleştirmeniz gereken bi
 
 4. Depolama hesabı için statik Web sitesi barındırmayı etkinleştirmek üzere **etkin** ' i seçin.
 
-5. **Dizin belgesi adı** alanında, bir varsayılan dizin sayfası (örneğin: *index.html*) belirtin. 
+5. **Dizin belgesi adı** alanında, bir varsayılan dizin sayfası (örneğin: *index.html* ) belirtin. 
 
    Varsayılan dizin sayfası, bir Kullanıcı statik Web sitenizin köküne gittiğinde görüntülenir.  
 
-6. **Hata belgesi yolu** alanında, varsayılan bir hata sayfası (örneğin: *404.html*) belirtin. 
+6. **Hata belgesi yolu** alanında, varsayılan bir hata sayfası (örneğin: *404.html* ) belirtin. 
 
    Varsayılan hata sayfası, bir Kullanıcı statik Web sitenizde mevcut olmayan bir sayfaya gitmeye çalıştığında görüntülenir.
 
-7. **Kaydet**’e tıklayın. Azure portal artık statik Web sitesi uç noktanızı görüntülüyor. 
+7. **Kaydet** ’e tıklayın. Azure portal artık statik Web sitesi uç noktanızı görüntülüyor. 
 
     ![Depolama hesabı için statik Web sitesi barındırmayı etkinleştirme](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -151,7 +151,7 @@ Bu yönergeler, Azure portal görüntülenen Depolama Gezgini sürümünü kulla
    ![İçerik türlerini denetle](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
 
    >[!NOTE]
-   > Depolama Gezgini, bu özelliği, gibi `text/html` yaygın olarak tanınan uzantılar için otomatik olarak ayarlar `.html` . Ancak, bazı durumlarda bunu kendiniz ayarlamanız gerekecektir. Bu özelliği ' ye ayarlamazsanız tarayıcı, `text/html` kullanıcılardan içeriği işlemek yerine dosyayı indirmesini ister. Bu özelliği ayarlamak için, dosyaya sağ tıklayın ve ardından **Özellikler**' e tıklayın.
+   > Depolama Gezgini, bu özelliği, gibi `text/html` yaygın olarak tanınan uzantılar için otomatik olarak ayarlar `.html` . Ancak, bazı durumlarda bunu kendiniz ayarlamanız gerekecektir. Bu özelliği ' ye ayarlamazsanız tarayıcı, `text/html` kullanıcılardan içeriği işlemek yerine dosyayı indirmesini ister. Bu özelliği ayarlamak için, dosyaya sağ tıklayın ve ardından **Özellikler** ' e tıklayın.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -204,7 +204,7 @@ Sitenizin sayfalarını bir tarayıcıdan, Web sitesinin genel URL 'sini kullana
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Depolama hesabınızın firmaya Genel Bakış sayfasının yanında görünen bölmede, **statik Web sitesi**' ni seçin. Sitenizin URL 'SI **birincil uç nokta** alanında görüntülenir.
+Depolama hesabınızın firmaya Genel Bakış sayfasının yanında görünen bölmede, **statik Web sitesi** ' ni seçin. Sitenizin URL 'SI **birincil uç nokta** alanında görüntülenir.
 
 ![Azure depolama statik Web siteleri ölçümleri ölçümü](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
@@ -249,7 +249,7 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
    > [!NOTE]
    > Ölçüm verileri farklı ölçüm API 'Lerine bağlanarak oluşturulur. Portal yalnızca verileri döndüren üyelere odaklanmak için yalnızca belirli bir zaman çerçevesinde kullanılan API üyelerini görüntüler. Gerekli API üyesini seçebildiğinizden emin olmak için ilk adım zaman çerçevesini genişletmelidir.
 
-2. Zaman çerçevesi düğmesine tıklayın, bir zaman dilimi seçin ve ardından **Uygula**' ya tıklayın.
+2. Zaman çerçevesi düğmesine tıklayın, bir zaman dilimi seçin ve ardından **Uygula** ' ya tıklayın.
 
    ![Azure depolama statik Web siteleri ölçümleri zaman aralığı](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 
@@ -259,7 +259,7 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 4. Ardından **Çıkış** ölçümünü seçin.
 
-   ![Azure depolama statik Web siteleri ölçümleri ölçümü](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
+   ![Azure Storage statik Web siteleri çıkış ölçümünü gösteren ekran görüntüsü.](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
 
 5. *Toplama* seçicideki **Toplam** ' u seçin.
 

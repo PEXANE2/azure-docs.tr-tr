@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 711d1cfccb6cdfe4a2fcb48a8ada7b33f744c317
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d0242ceec62db6548d91e5e58c21981a4f0246a0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479094"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672506"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics bağlantı mimarisi
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "92479094"
 Bu makalede, ağ trafiğini Azure SQL veritabanı veya Azure SYNAPSE Analytics 'teki bir sunucuya yönlendirecek çeşitli bileşenlerin mimarisi açıklanmaktadır. Ayrıca, farklı bağlantı ilkelerini ve Azure içinden bağlanan istemcileri ve Azure dışından bağlanan istemcileri nasıl etkilediğini açıklar.
 
 > [!IMPORTANT]
-> Bu *Makale,* **Azure SQL yönetilen örneği**için geçerlidir. [Yönetilen bir örnek Için bağlantı mimarisi](../managed-instance/connectivity-architecture-overview.md)' ne bakın.
+> Bu *Makale,* **Azure SQL yönetilen örneği** için geçerlidir. [Yönetilen bir örnek Için bağlantı mimarisi](../managed-instance/connectivity-architecture-overview.md)' ne bakın.
 
 ## <a name="connectivity-architecture"></a>Bağlantı mimarisi
 
@@ -51,7 +51,7 @@ SQL veritabanı ve Azure SYNAPSE sunucuları, sunucunun bağlantı ilkesi ayarı
 
 - **Varsayılan:** Bu, bağlantı ilkesini açıkça değiştirmediğiniz müddetçe, oluşturulduktan sonra tüm sunucularda etkin olan bağlantı ilkesidir `Proxy` `Redirect` . Varsayılan ilke, `Redirect` Azure 'ın içinden (örneğin, bir Azure sanal makinesinden) gelen tüm istemci bağlantılarına ve `Proxy` dış kaynaklı tüm istemci bağlantılarına (örneğin, yerel iş istasyonunuzun bağlantıları) yöneliktir.
 
-`Redirect` `Proxy` En düşük gecikme süresi ve en yüksek aktarım hızı için bağlantı ilkesi üzerinde bağlantı ilkesini kesinlikle öneririz. Ancak, yukarıda özetlenen ağ trafiğine izin vermek için ek gereksinimleri karşılamanız gerekecektir. İstemci bir Azure sanal makinedir, bunu [hizmet etiketleriyle](../../virtual-network/security-overview.md#service-tags)ağ güvenlik grupları (NSG) kullanarak gerçekleştirebilirsiniz. İstemci Şirket içindeki bir iş istasyonundan bağlanıyorsa, şirket güvenlik duvarınız üzerinden ağ trafiğine izin vermek için ağ yöneticinizle birlikte çalışmanız gerekebilir.
+`Redirect` `Proxy` En düşük gecikme süresi ve en yüksek aktarım hızı için bağlantı ilkesi üzerinde bağlantı ilkesini kesinlikle öneririz. Ancak, yukarıda özetlenen ağ trafiğine izin vermek için ek gereksinimleri karşılamanız gerekecektir. İstemci bir Azure sanal makinedir, bunu [hizmet etiketleriyle](../../virtual-network/network-security-groups-overview.md#service-tags)ağ güvenlik grupları (NSG) kullanarak gerçekleştirebilirsiniz. İstemci Şirket içindeki bir iş istasyonundan bağlanıyorsa, şirket güvenlik duvarınız üzerinden ağ trafiğine izin vermek için ağ yöneticinizle birlikte çalışmanız gerekebilir.
 
 ## <a name="connectivity-from-within-azure"></a>Azure içinden bağlantı
 
@@ -66,7 +66,7 @@ Azure dışından bağlanıyorsanız, bağlantılarınızın varsayılan olarak 
 ![TCP oturumunun Azure SQL veritabanı ağ geçidi aracılığıyla nasıl oluşturulduğunu ve sonraki tüm paketlerin ağ geçidiyle akışını gösteren diyagram.](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> Ayrıca [, dac Ile bağlanmayı](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) etkinleştirmek için 1434 ve 14000-14999 TCP bağlantı noktalarını açın
+> Ayrıca [, dac Ile bağlanmayı](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) etkinleştirmek için 1434 ve 14000-14999 TCP bağlantı noktalarını açın
 
 ## <a name="gateway-ip-addresses"></a>Ağ geçidi IP adresleri
 
@@ -124,6 +124,6 @@ Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bir sunucu için Azure SQL veritabanı bağlantı ilkesini değiştirme hakkında daha fazla bilgi için bkz. [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
+- Bir sunucu için Azure SQL veritabanı bağlantı ilkesini değiştirme hakkında daha fazla bilgi için bkz. [Conn-Policy](/cli/azure/sql/server/conn-policy).
 - ADO.NET 4,5 veya sonraki bir sürümünü kullanan istemciler için Azure SQL veritabanı bağlantı davranışı hakkında bilgi için bkz. [1433 sonrasındaki bağlantı noktaları ADO.NET 4,5](adonet-v12-develop-direct-route-ports.md).
 - Genel uygulama geliştirmeye genel bakış bilgileri için bkz. [SQL veritabanı uygulaması geliştirmeye genel bakış](develop-overview.md).

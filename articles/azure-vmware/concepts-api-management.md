@@ -3,34 +3,36 @@ title: Kavramlar-API Management
 description: API Management Azure VMware Çözüm sanal makinelerinde (VM) çalışan API 'Leri nasıl koruduğunu öğrenin
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 346d0f795c3d19b115ced771991263cce2104217
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f412ee81fc77435f2586a31c1bf6f6bdf22c66e2
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262986"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670343"
 ---
 # <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>Azure VMware Çözüm tabanlı VM 'lerde çalışan API 'Leri yayımlamak ve korumak için API Management
 
-Microsoft Azure [API Management](https://azure.microsoft.com/services/api-management/) , geliştiricilerin ve DevOps takımlarının iç veya dış tüketicilere güvenli bir şekilde yayımlamasına olanak sağlar.
+Microsoft Azure [API Management](https://azure.microsoft.com/services/api-management/) iç veya dış tüketicilere güvenli bir şekilde yayımlama olanağı sağlar.  Yalnızca geliştirici ve Premium SKU 'Ları Azure sanal ağ tümleştirmesinin Azure VMware Çözüm iş yükleri üzerinde çalışan API 'Leri yayımlamasına izin verir.  Her iki SKU da API Management hizmeti ile arka uç arasındaki bağlantıyı güvenli bir şekilde etkinleştirir. 
 
-Birçok SKU 'da sunulmakla birlikte, Azure sanal ağ tümleştirmesinin Azure VMware Çözüm iş yükleri üzerinde çalışan API 'Leri yayımlaması için yalnızca geliştirici ve Premium SKU 'Lar izin verir. Bu iki SKU, API Management hizmeti ile arka uç arasındaki bağlantıyı güvenli bir şekilde etkinleştirir. Geliştirici SKU 'su, Premium SKU, üretim dağıtımları için olduğu sürece geliştirme ve test amaçlıdır.
+>[!NOTE]
+>Geliştirici SKU 'su, Premium SKU, üretim dağıtımları için olduğu sürece geliştirme ve test amaçlıdır.
 
-Azure VMware Çözüm sanal makinelerinin (VM 'Ler) üstünde çalışan arka uç hizmetleri için, varsayılan olarak API Management yapılandırma, şirket içi arka uç hizmetleriyle aynıdır. Hem iç hem de dış dağıtımlar için, arka uç sunucusu Azure VMware Çözüm tarafında bir NSX Load Balancer arkasına yerleştirildiğinde, API Management yük dengeleyicinin sanal IP (VIP) uç noktası olarak yapılandırır.
+API Management yapılandırması, Azure VMware Çözüm sanal makinelerinin (VM 'Ler) ve şirket içinde çalışan arka uç hizmetleri için aynıdır. Her iki dağıtımda de API Management, arka uç sunucusu Azure VMware çözümünde bir NSX Load Balancer arkasına yerleştirildiğinde, yük dengeleyicideki sanal IP 'yi (VIP) arka uç uç noktası olarak yapılandırır. 
+
 
 ## <a name="external-deployment"></a>Dış dağıtım
 
-Dış dağıtım, dış kullanıcılar tarafından tüketilen API 'Leri ortak bir uç nokta kullanarak yayımlar. Geliştiriciler ve DevOps mühendisleri, Azure portal veya PowerShell aracılığıyla API 'Leri ve API Management geliştirici portalını yönetebilir.
+Dış dağıtım, dış kullanıcılar tarafından tüketilen API 'Leri ortak bir uç nokta kullanarak yayımlar. Geliştiriciler ve DevOps mühendisleri, API 'Leri Azure portal veya PowerShell aracılığıyla ve API Management geliştirici portalından yönetebilir.
 
 Dış dağıtım diyagramı, tüm işlemi ve ilgili aktörleri (en üstte gösterilen) gösterir. Aktörler şunlardır:
 
 - **Yönetici:** PowerShell veya Azure DevOps gibi Azure portal ve otomasyon mekanizmaları aracılığıyla Azure VMware çözümünü yöneten yönetici veya DevOps ekibini temsil eder.
 
-- **Kullanıcılar:**  Sunulan API 'lerin tüketicilerini temsil eder ve API 'Leri kullanan kullanıcı ve hizmetleri temsil eder.
+- **Kullanıcılar:**  , Sunulan API tüketicilerini temsil eder ve API 'Leri kullanan kullanıcı ve hizmetleri temsil eder.
 
-Trafik akışı, hub sanal ağına takılmış, arka uç hizmetlerini soyutlayan API Management örneğinden geçer. ExpressRoute ağ geçidi, trafiği ExpressRoute Global Reach kanalına yönlendirir ve gelen trafiği farklı arka uç hizmetleri örneklerine dağıtmak Load Balancer bir NSX 'e ulaşır.
+Trafik akışı, hub sanal ağına takılmış arka uç hizmetlerini soyutlayan API Management örneğinden geçer. ExpressRoute ağ geçidi, trafiği ExpressRoute Global Reach kanalına yönlendirir ve gelen trafiği farklı arka uç hizmetleri örneklerine dağıtmaya yönelik bir NSX 'e ulaşır Load Balancer.
 
-API Management Azure genel API 'sine sahiptir ve Azure DDOS koruma hizmeti 'nin etkinleştirilmesi önerilir. 
+API Management Azure genel API 'sine sahiptir ve Azure DDOS koruma hizmeti 'nin etkinleştirilmesi önerilir. 
 
 :::image type="content" source="media/api-management/external-deployment.png" alt-text="Dış dağıtım-Azure VMware çözümü için API Management":::
 
@@ -39,7 +41,7 @@ API Management Azure genel API 'sine sahiptir ve Azure DDOS koruma hizmeti 'nin 
 
 İç dağıtım, dahili kullanıcılar veya sistemler tarafından kullanılan API 'Leri yayımlar. DevOps ekibi ve API geliştiricileri, dış dağıtımda olduğu gibi aynı yönetim araçlarını ve geliştirici portalını kullanır.
 
-İç dağıtımlar, özelliklerinden yararlanarak API için genel ve güvenli bir uç nokta oluşturmak ve farklı senaryolar sağlayan karma bir dağıtım oluşturmak için [Azure Application Gateway ile](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md) olabilir.  API, yeteneklerini kullanır ve farklı senaryolar sağlayan karma bir dağıtım oluşturur.
+İç dağıtımlar, API için genel ve güvenli bir uç nokta oluşturmak üzere [Azure Application Gateway ile](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md) yapılabilir.  Ağ geçidinin özellikleri, farklı senaryolar sağlayan karma bir dağıtım oluşturmak için kullanılır.  
 
 * Hem iç hem de dış tüketicilerle tüketim için aynı API Management kaynağını kullanın.
 
@@ -49,11 +51,12 @@ API Management Azure genel API 'sine sahiptir ve Azure DDOS koruma hizmeti 'nin 
 
 Aşağıdaki dağıtım diyagramı, iç veya dış olabilecek tüketicileri gösterir. her tür aynı veya farklı API 'Lere erişiyor.
 
-İç dağıtımda API 'Ler aynı API Management örneğine sunulur. API Management önünde Application Gateway Azure Web uygulaması güvenlik duvarı (WAF) özelliği etkinleştirilmiş ve Azure VMware çözümünde çalışan arka uç hizmetlerinin yalnızca bir alt kümesini kullanıma sunarak trafiği filtrelemek için bir dizi HTTP dinleyicisi ve kuralı ile dağıtılır.
+İç dağıtımda API 'Ler aynı API Management örneğine sunulur. API Management önünde Application Gateway Azure Web uygulaması güvenlik duvarı (WAF) özelliği etkinleştirilmiş olarak dağıtılır. Ayrıca, Azure VMware çözümünde çalışan arka uç hizmetlerinin yalnızca bir alt kümesini açığa çıkarmak üzere trafiği filtrelemek için bir HTTP dinleyicileri ve kuralları kümesi de dağıtılır.
 
-* İç trafik, ExpressRoute ağ geçidi aracılığıyla Azure Güvenlik Duvarı 'na yönlendirilir ve trafik kuralları kurulduysa veya doğrudan API Management için API Management.  
+
+* ExpressRoute ağ geçidi ile Azure Güvenlik Duvarı arasındaki iç trafik rotaları ve API Management, doğrudan veya trafik kuralları aracılığıyla.   
 
 * Dış trafik, API Management için dış koruma katmanını kullanan Application Gateway üzerinden Azure 'u girer.
 
 
-:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Dış dağıtım-Azure VMware çözümü için API Management":::
+:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Dış dağıtım-Azure VMware çözümü için API Management" lightbox="media/api-management/internal-deployment.png":::

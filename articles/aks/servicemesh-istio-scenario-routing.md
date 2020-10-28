@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 871a764c549de75d5a9e1449ba2e0737d38a4094
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69541ec652188bc3826b7829fbc5c182193d6ba9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83799954"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670942"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (aks) içinde istio ile akıllı yönlendirme ve kanarya sürümlerini kullanma
 
@@ -39,7 +39,7 @@ Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, aks [hızlı
 
 ## <a name="about-this-application-scenario"></a>Bu uygulama senaryosu hakkında
 
-Örnek AKS oylama uygulaması, kullanıcılara iki oylama seçeneği (**kediler** veya **köpekler**) sağlar. Her seçenek için oy sayısını sürekli olarak sürdüren bir depolama bileşeni vardır. Ayrıca, her bir seçenek için oy saçılması etrafında ayrıntılar sağlayan bir analiz bileşeni de vardır.
+Örnek AKS oylama uygulaması, kullanıcılara iki oylama seçeneği ( **kediler** veya **köpekler** ) sağlar. Her seçenek için oy sayısını sürekli olarak sürdüren bir depolama bileşeni vardır. Ayrıca, her bir seçenek için oy saçılması etrafında ayrıntılar sağlayan bir analiz bileşeni de vardır.
 
 Bu uygulama senaryosunda, `1.0` bir analiz bileşeninin oylama uygulaması ve sürümü dağıtarak başlatılır `1.0` . Analytics bileşeni, Oy sayısı için basit sayımlar sağlar. Oylama uygulaması ve analiz bileşeni, `1.0` Reddir tarafından desteklenen depolama bileşeni sürümü ile etkileşim kurar.
 
@@ -53,7 +53,7 @@ Sürüm `2.0` , Kullanıcı alt kümesinde beklendiği gibi çalıştığından 
 
 Uygulamayı Azure Kubernetes Service (AKS) kümenize dağıtarak başlayalım. Aşağıdaki diyagramda, bu bölümün sonuna kadar çalışan, `1.0` tüm bileşenlerin sürümü, Istio giriş ağ geçidi aracılığıyla hizmet verilen gelen isteklerle birlikte verilmiştir:
 
-![AKS oylama uygulama bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-01.png)
+![Tüm bileşenlerin sürüm 1,0 ' i, Istio giriş ağ geçidi aracılığıyla hizmet verilen gelen isteklerle birlikte gösteren diyagram.](media/servicemesh/istio/scenario-routing-components-01.png)
 
 Bu makaleyle birlikte izlemeniz gereken yapıtlar [Azure-Samples/aks-oylama-App][github-azure-sample] GitHub deposunda bulunabilir. Yapıtları indirebilir veya depoyu şu şekilde klonlayabilirsiniz:
 
@@ -180,7 +180,7 @@ Analiz bileşeninin yeni bir sürümünü dağıtalım. Bu yeni sürüm `1.1` , 
 
 Aşağıdaki diyagramda, bu bölümün sonunda ne çalıştığını gösterilmektedir- `1.1` bileşenimizin yalnızca bir sürümünde `voting-analytics` bileşenden yönlendirilen trafik vardır `voting-app` . `1.0` `voting-analytics` Bileşenimizin sürümü çalışmaya devam ediyor ve hizmet tarafından başvurulduğu halde `voting-analytics` , istio proxy 'leri, giden ve giden trafiğe izin vermez.
 
-![AKS oylama uygulama bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-02.png)
+![Oylama-analiz bileşeninin yalnızca 1,1 sürümünü gösteren diyagramda, oylama-uygulama bileşeninden yönlendirilen trafik vardır.](media/servicemesh/istio/scenario-routing-components-02.png)
 
 Bileşenin sürümünü dağıtalım `1.1` `voting-analytics` . Bu bileşeni `voting` ad alanında oluştur:
 
@@ -361,7 +361,7 @@ Aşağıdaki diyagramda, bu bölümün sonunda ne çalıştırdıklarınız gös
 * Bileşenin sürümü, bileşen sürümü `2.0` `voting-app` ve bileşen sürümü birbirleriyle `2.0` `voting-analytics` `2.0` `voting-storage` iletişim kurabilir.
 * `2.0` `voting-app` Bileşenin sürümüne yalnızca belirli bir özellik bayrağı ayarlanmış olan kullanıcılar erişebilir. Bu değişiklik, tanımlama bilgisi aracılığıyla bir özellik bayrağı kullanılarak yönetilir.
 
-![AKS oylama uygulama bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-03.png)
+![Bu bölümün sonunda ne çalıştırabileceksiniz gösteren diyagram.](media/servicemesh/istio/scenario-routing-components-03.png)
 
 İlk olarak, bu yeni bileşenler için istio hedef kurallarını ve sanal hizmetlerini karşılamak olarak güncelleştirin. Bu güncelleştirmeler, trafiği yeni bileşenlere doğru bir şekilde yönlendirmemenizi ve kullanıcıların beklenmeyen bir erişim almaz olmasını sağlar:
 
@@ -415,7 +415,7 @@ Oy sayıları, uygulamanın sürümleri arasında farklılık görüntüler. Bu 
 
 Kanarya sürümünü başarıyla test edildikten sonra, `voting-app` sanal hizmeti tüm trafiği bileşen sürümüne yönlendirecek şekilde güncelleştirin `2.0` `voting-app` . Tüm kullanıcılar `2.0` , özellik bayrağının ayarlanmış olup olmamasına bakılmaksızın uygulamanın sürümünü görür:
 
-![AKS oylama uygulama bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-04.png)
+![Özellik bayrağının ayarlanmış olup olmamasına bakılmaksızın kullanıcıların uygulamanın 2,0 sürümünü görmediğini gösteren diyagram.](media/servicemesh/istio/scenario-routing-components-04.png)
 
 Artık etkin olmasını istemediğiniz bileşenlerin sürümlerini kaldırmak için tüm hedef kurallarını güncelleştirin. Ardından, bu sürümlere başvurmayı durdurmak için tüm sanal Hizmetleri güncelleştirin.
 

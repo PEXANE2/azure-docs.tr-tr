@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: bbd895686b52ae7d1ced00b635d4d33e93c970a7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: fce4da9cc9577bc9805289473d3df7647b1b0934
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069854"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670919"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Uzaktan Izleme çözümünü Azure Data Lake Store ile tümleştirme
 
@@ -21,7 +21,7 @@ Uzaktan Izleme çözümünde sunulmadan daha fazla gelişmiş analiz gereksiniml
 
 Bu nasıl yapılır bölümünde, uzaktan Izleme çözümünüzdeki IoT Hub 'ından bir Azure Data Lake Store veri akışı için bir Azure Stream Analytics işi kullanacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır hakkında daha fazla işlem için şunlar gerekir:
 
@@ -38,7 +38,7 @@ Uzaktan Izleme çözümünüzün IoT Hub 'ında adanmış bir tüketici grubu ol
 > [!NOTE]
 > Tüketici grupları, uygulamalar tarafından Azure IoT Hub veri çekmek için kullanılır. Her beş çıkış tüketicisi için yeni bir tüketici grubu oluşturmanız gerekir. En çok 32 Tüketici grubu oluşturabilirsiniz.
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
 1. Azure portal **Cloud Shell** düğmesine tıklayın.
 
@@ -57,7 +57,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
 IoT Hub 'ınızdaki verileri Azure Data Lake deponuza akışa almak için bir Azure Stream Analytics işi oluşturun.
 
-1. **Kaynak oluştur ' a**tıklayın, marketten nesnelerin interneti seçin ve **Stream Analytics iş**' e tıklayın.
+1. **Kaynak oluştur ' a** tıklayın, marketten nesnelerin interneti seçin ve **Stream Analytics iş** ' e tıklayın.
 
     ![Yeni Stream Analytics Işi](./media/iot-accelerators-integrate-data-lake/new-stream-analytics-job.png)
 
@@ -65,9 +65,9 @@ IoT Hub 'ınızdaki verileri Azure Data Lake deponuza akışa almak için bir Az
 
 1. Data Lake Store, yakın yerde veya aynı bölgede yer alan bir konum seçin. Burada Doğu ABD kullandık.
 
-1. Barındırma ortamının varsayılan **bulut**olarak ayrılmadığınızdan emin olun.
+1. Barındırma ortamının varsayılan **bulut** olarak ayrılmadığınızdan emin olun.
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur** 'a tıklayın.
 
     ![Stream Analytics Işi oluştur](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 
@@ -75,7 +75,7 @@ IoT Hub 'ınızdaki verileri Azure Data Lake deponuza akışa almak için bir Az
 
 1. Uzaktan Izleme çözümü kaynak grubunuzda **Stream Analytics işe** gidin.
 
-1. Genel Bakış sayfasında **girişler**' e tıklayın.
+1. Genel Bakış sayfasında **girişler** ' e tıklayın.
 
     ![Genel Bakış sayfası](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview.png)
 
@@ -83,15 +83,15 @@ IoT Hub 'ınızdaki verileri Azure Data Lake deponuza akışa almak için bir Az
 
     ![Giriş Ekle](./media/iot-accelerators-integrate-data-lake/stream-analytics-add-input.png)
 
-1. Yeni Giriş sekmesinde, **ıothub**Için bir giriş diğer adı girin.
+1. Yeni Giriş sekmesinde, **ıothub** Için bir giriş diğer adı girin.
 
-1. Tüketici grubu açılır listesinden daha önce oluşturduğunuz tüketici grubunu seçin. Burada **streamanalyticsjob**kullandık.
+1. Tüketici grubu açılır listesinden daha önce oluşturduğunuz tüketici grubunu seçin. Burada **streamanalyticsjob** kullandık.
 
     ![Giriş seçin](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** ’e tıklayın.
 
-1. Genel Bakış sayfasında, **çıktılar**' e tıklayın.
+1. Genel Bakış sayfasında, **çıktılar** ' e tıklayın.
 
     ![Data Lake Store Ekle](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview-2.png)
 
@@ -99,7 +99,7 @@ IoT Hub 'ınızdaki verileri Azure Data Lake deponuza akışa almak için bir Az
 
     ![Çıkış Ekle](./media/iot-accelerators-integrate-data-lake/stream-analytics-output.png)
 
-1. Yeni çıkış sekmesinde, **DataLakeStore**Için bir çıkış diğer adı girin.
+1. Yeni çıkış sekmesinde, **DataLakeStore** Için bir çıkış diğer adı girin.
 
 1. Önceki adımlarda oluşturduğunuz Data Lake Store hesabını seçin ve verileri depoya akışına yönelik klasör yapısını sağlayın.
 
@@ -107,7 +107,7 @@ IoT Hub 'ınızdaki verileri Azure Data Lake deponuza akışa almak için bir Az
 
     ![Klasör yapısı sağla](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-output.png)
 
-1. **Yetkilendir**'e tıklayın.
+1. **Yetkilendir** 'e tıklayın.
 
     Stream Analytics işi için dosya sistemine yazma erişimi sağlamak üzere Data Lake Store ile yetkilendirmeniz gerekir.
 
@@ -118,13 +118,13 @@ IoT Hub 'ınızdaki verileri Azure Data Lake deponuza akışa almak için bir Az
     > [!NOTE]
     > Açılan pencerede bir hata görürseniz, ınbilito modunda yeni bir tarayıcı penceresi açın ve yeniden deneyin.
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** ’e tıklayın.
 
 ## <a name="edit-the-stream-analytics-query"></a>Stream Analytics sorgusunu düzenle
 
 Azure Stream Analytics, verileri akımış bir giriş kaynağı belirtmek, verileri istendiği gibi dönüştürmek ve çeşitli depolama veya işleme hedeflerine çıkış yapmak için SQL benzeri bir sorgu dili kullanır.
 
-1. Genel Bakış sekmesinde **Sorguyu Düzenle**' ye tıklayın.
+1. Genel Bakış sekmesinde **Sorguyu Düzenle** ' ye tıklayın.
 
     ![Sorguyu Düzenle](./media/iot-accelerators-integrate-data-lake/stream-analytics-edit-query.png)
 
@@ -141,20 +141,20 @@ Azure Stream Analytics, verileri akımış bir giriş kaynağı belirtmek, veril
 
     ![Stream Analytics sorgu](./media/iot-accelerators-integrate-data-lake/stream-analytics-query.png)
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** ’e tıklayın.
 1. Değişiklikleri kabul etmek için **Evet** ' e tıklayın.
 
 ## <a name="start-the-stream-analytics-job"></a>Stream Analytics işini Başlat
 
-1. Genel Bakış sekmesinde **Başlat**' a tıklayın.
+1. Genel Bakış sekmesinde **Başlat** ' a tıklayın.
 
     ![Stream Analytics Işi Başlat](./media/iot-accelerators-integrate-data-lake/stream-analytics-start.png)
 
-1. İşi Başlat sekmesinde, **Özel ' e**tıklayın.
+1. İşi Başlat sekmesinde, **Özel ' e** tıklayın.
 
 1. Cihazınızın akışa başlatıldığı zaman verilerin çekilmesi için birkaç saat geri gitmesi için özel süre ayarlayın.
 
-1. **Başlat**'a tıklayın.
+1. **Başlat** 'a tıklayın.
 
     ![Özel Tarih Seç](./media/iot-accelerators-integrate-data-lake/stream-analytics-start-custom.png)
 
@@ -168,11 +168,11 @@ Azure Stream Analytics, verileri akımış bir giriş kaynağı belirtmek, veril
 
 1. Data Lake Store gidin.
 
-1. Genel Bakış sekmesinde, **Veri Gezgini**' ne tıklayın.
+1. Genel Bakış sekmesinde, **Veri Gezgini** ' ne tıklayın.
 
-1. Veri Gezgini 'nde **/streaming** klasörüne gidin. YYYY/AA/GG/HH biçimiyle oluşturulan klasörleri görürsünüz.
+1. Veri Gezgini 'nde **/streaming** klasörüne gidin. YYYY/AA/GG biçimiyle oluşturulan klasörleri görürsünüz.
 
-    ![Akış verilerini keşfet](./media/iot-accelerators-integrate-data-lake/data-lake-store-data-explorer.png)
+    ![/Streaming/YYYY/MM/DD/HH klasörünün yolunu gösteren ekran görüntüsü.](./media/iot-accelerators-integrate-data-lake/data-lake-store-data-explorer.png)
 
     JSON dosyalarını saat başına bir dosya olarak görürsünüz.
 

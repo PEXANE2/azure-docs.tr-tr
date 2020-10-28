@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8019c049d830df0c2f3301a450eed60145c8eab3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02294d4832224f1c94a4c586f3dcc455255bfbbf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89570482"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670102"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'deki ilke anahtarlarına genel bakış
 
@@ -34,7 +34,7 @@ Azure Active Directory B2C (Azure AD B2C), tümleştiği hizmetlerle güven sağ
 
 ## <a name="policy-keyset-and-keys"></a>İlke anahtar kümesi ve anahtarları
 
-Azure AD B2C içindeki ilke anahtarlarına yönelik en üst düzey kaynak, **anahtar kümesi** kapsayıcısıdır. Her anahtar kümesi en az bir **anahtar**içerir. Anahtar aşağıdaki özniteliklere sahiptir:
+Azure AD B2C içindeki ilke anahtarlarına yönelik en üst düzey kaynak, **anahtar kümesi** kapsayıcısıdır. Her anahtar kümesi en az bir **anahtar** içerir. Anahtar aşağıdaki özniteliklere sahiptir:
 
 | Öznitelik |  Gerekli | Açıklamalar |
 | --- | --- |--- |
@@ -58,7 +58,7 @@ Güvenlik nedeniyle, Azure AD B2C anahtarları düzenli aralıklarla veya acil d
 
 Azure AD B2C anahtar kümesi birden fazla anahtara sahipse, aşağıdaki ölçütlere göre her bir anahtardan yalnızca biri etkin olur:
 
-- Anahtar etkinleştirme, **etkinleştirme tarihini**temel alır.
+- Anahtar etkinleştirme, **etkinleştirme tarihini** temel alır.
   - Anahtarlar etkinleştirme tarihine göre artan sırada sıralanır. Etkinleştirme tarihleri daha sonra ileride daha sonra gelen anahtarlar listede daha düşüktür. Etkinleştirme tarihi olmayan anahtarlar listenin en altında bulunur.
   - Geçerli tarih ve saat bir anahtarın etkinleştirme tarihinden daha büyükse, Azure AD B2C anahtarı etkinleştirir ve önceki etkin anahtarı kullanmayı durdurur.
 - Geçerli anahtarın sona erme saati geçtiğinde ve anahtar kapsayıcısı, geçerli *olmayan* ve *süresi* dolmadan yeni bir anahtar içeriyorsa, yeni anahtar otomatik olarak etkin hale gelir.
@@ -71,13 +71,20 @@ Bir anahtar kapsayıcısı içinde geçerli etkin anahtarı almak için Microsof
 
 İmzalama ve şifreleme anahtarları eklemek veya silmek için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
-1. Genel Bakış sayfasında, **ilkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C** seçin.
+1. Genel Bakış sayfasında, **ilkeler** altında **kimlik deneyimi çerçevesi** ' ni seçin.
 1. **Ilke anahtarlarını** seçin 
-    1. Yeni bir anahtar eklemek için **Ekle**' yi seçin.
-    1. Yeni bir anahtarı kaldırmak için, anahtarı seçin ve **Sil**' i seçin. Anahtarı silmek için, silinecek anahtar kapsayıcısının adını yazın. Azure AD B2C, anahtarı silecek ve son ek. bak ile anahtarın bir kopyasını oluşturacak.
+    1. Yeni bir anahtar eklemek için **Ekle** ' yi seçin.
+    1. Yeni bir anahtarı kaldırmak için, anahtarı seçin ve **Sil** ' i seçin. Anahtarı silmek için, silinecek anahtar kapsayıcısının adını yazın. Azure AD B2C, anahtarı silecek ve son ek. bak ile anahtarın bir kopyasını oluşturacak.
+
+### <a name="replace-a-key"></a>Bir anahtarı değiştirme
+
+Anahtar kümesi içindeki anahtarlar değiştirilebilir veya kaldırılabilir. Var olan bir anahtarı değiştirmeniz gerekiyorsa:
+
+- **Etkinleştirme tarihi** geçerli tarih ve saate ayarlanmış olarak yeni bir anahtar eklemeniz önerilir. Azure AD B2C, yeni anahtarı etkinleştirir ve önceki etkin anahtarı kullanmayı durdurur.
+- Alternatif olarak, doğru anahtarlarla yeni bir anahtar kümesi de oluşturabilirsiniz. Yeni anahtar kümesi kullanmak için ilkenizi güncelleştirin ve ardından eski anahtar kümesi kaldırın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

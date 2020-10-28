@@ -3,14 +3,14 @@ title: Azure Otomasyonu Değişiklik İzleme ve envantere genel bakış
 description: Bu makalede, ortamınızdaki yazılım ve Microsoft hizmet değişikliklerini belirlemenize yardımcı olan Değişiklik İzleme ve envanter özelliği açıklanır.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9654529723b5b69c15358be9e06db4f8cbed35e3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210458"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670741"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
@@ -48,7 +48,7 @@ Değişiklik İzleme ve stok, aşağıdaki sınırlamalara sahip değildir veya 
 - Windows kayıt defteri izleme için özyineleme
 - Ağ dosya sistemleri
 - Farklı yükleme yöntemleri
-- *Windows 'da depolanan **. exe** dosyaları
+- *Windows 'da depolanan *_. exe_* dosyaları
 - **En büyük dosya boyutu** sütunu ve değerleri geçerli uygulamada kullanılmıyor.
 - 30 dakikalık bir toplama döngüsüne 2500 'den fazla dosya toplamaya çalışırsanız, Değişiklik İzleme ve envanter performansı düşebilir.
 - Ağ trafiği yüksekse, değişiklik kayıtlarının görüntülenmesi altı saate kadar sürebilir.
@@ -77,13 +77,15 @@ Ağ grubu güvenlik kuralları oluşturduğunuzda veya Otomasyon hizmetine ve Lo
 
 ## <a name="enable-change-tracking-and-inventory"></a>Değişiklik İzlemeyi ve Sayımı Etkinleştirme
 
-Değişiklik İzleme ve envanterini etkinleştirebilmenin yanı sıra yönetilecek makineleri seçebilirsiniz:
+Değişiklik İzleme ve stoku aşağıdaki yollarla etkinleştirebilirsiniz:
 
-* [Bir Azure sanal makinesinden](enable-from-vm.md).
-* [Birden çok Azure sanal makinesine göz atmaktan](enable-from-portal.md).
-* [Bir Azure Otomasyonu hesabından](enable-from-automation-account.md).
-* Yay özellikli sunucular veya Azure dışı makineler için, [VM uzantısını](../../azure-arc/servers/manage-vm-extensions.md) kullanarak Azure Arc etkin sunuculardan Log Analytics aracısını yükleyip, sonra [çalışma alanındaki makineleri](enable-from-automation-account.md#enable-machines-in-the-workspace) değişiklik izleme ve stoğa etkinleştirin.
-* [Otomasyon Runbook 'U kullanma](enable-from-runbook.md).
+- [Otomasyon hesabınızdan](enable-from-automation-account.md) bir veya daha fazla Azure ve Azure dışı makine için.
+
+- Azure [Arc etkin sunucularına](../../azure-arc/servers/overview.md)kayıtlı makineler veya sunucular dahil olmak üzere Azure olmayan makineler için el ile. Hibrit makineler için, önce makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak ve ardından Azure ilkesi kullanarak, [ *Linux* veya *Windows* Azure Arc makineler yerleşik ilkesine dağıtım Log Analytics aracısını](../../governance/policy/samples/built-in-policies.md#monitoring) atamak üzere Windows için Log Analytics aracısını yüklemenizi öneririz. Makineleri VM'ler için Azure İzleyici de izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
+
+- Tek bir Azure VM için Azure portal [sanal makine sayfasından](enable-from-vm.md) . Bu senaryo, Linux ve Windows VM 'Leri için kullanılabilir.
+
+- [Birden çok Azure VM](enable-from-portal.md) Için Azure Portal sanal makineler sayfasında bunları seçerek.
 
 ## <a name="tracking-file-changes"></a>Dosya değişikliklerini izleme
 
@@ -106,8 +108,8 @@ Değişiklik İzleme ve envanter, Windows kayıt defteri anahtarlarının deği�
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Kapatılırken çalıştırılan betikleri izler.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Kullanıcı Windows hesabında oturum açmadan önce yüklenen anahtarları izler. Anahtar, 64 bit bilgisayarlarda çalışan 32 bitlik uygulamalar için kullanılır.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Uygulama ayarlarındaki değişiklikleri izler.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Doğrudan Windows Gezgini 'nde bulunan ve genellikle **explorer.exe**ile işlem içinde çalıştırılan bağlam menüsü işleyicilerini izler.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Doğrudan Windows Gezgini 'ne bağlanan ve genellikle **explorer.exe**ile işlem içinde çalışan kopya kanca işleyicilerini izler.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Doğrudan Windows Gezgini 'nde bulunan ve genellikle **explorer.exe** ile işlem içinde çalıştırılan bağlam menüsü işleyicilerini izler.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Doğrudan Windows Gezgini 'ne bağlanan ve genellikle **explorer.exe** ile işlem içinde çalışan kopya kanca işleyicilerini izler.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Simge kaplama işleyicisi kaydını izler.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | 64 bit bilgisayarlarda çalışan 32 bitlik uygulamalar için simge kaplama işleyici kaydını izler.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Internet Explorer için yeni tarayıcı yardımcısı nesne eklentilerini izler. Geçerli sayfanın Belge Nesne Modeli (DOM) erişmek ve gezintiyi denetlemek için kullanılır.
@@ -117,7 +119,7 @@ Değişiklik İzleme ve envanter, Windows kayıt defteri anahtarlarının deği�
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | WaveMapper, wave1 ve Wave2, msacm. ımaadpcm,. msadpcm,. msgsm610 ve vidc ile ilişkili 32 bitlik sürücüleri izler. **system.ini** dosyasındaki [Drivers] bölümüne benzer.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | , 64 bit bilgisayarlarda çalışan 32 bit uygulamalar için WaveMapper, wave1 ve Wave2, msacm. ımaadpcm,. msadpcm,. msgsm610 ve vidc ile ilişkili 32 bitlik sürücüleri izler. **system.ini** dosyasındaki [Drivers] bölümüne benzer.
 > |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Bilinen veya yaygın olarak kullanılan sistem dll 'lerinin listesini izler. İzleme, kullanıcıların, sistem dll 'lerinin Truva atı sürümlerini bırakarak zayıf uygulama dizini izinleriyle yararlanmasını önler.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Windows için etkileşimli oturum açma desteği modeli olan **winlogon.exe**olay bildirimleri alabilen paketlerin listesini izler.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Windows için etkileşimli oturum açma desteği modeli olan **winlogon.exe** olay bildirimleri alabilen paketlerin listesini izler.
 
 ## <a name="recursion-support"></a>Özyineleme desteği
 
@@ -125,7 +127,7 @@ Değişiklik İzleme ve envanter özyineleme destekler, bu da dizinler genelinde
 
 - Birden çok dosyayı izlemek için joker karakterler gereklidir.
 
-- Joker karakterleri yalnızca bir dosya yolunun son kesiminde (örneğin, **arayacak \\ dosyası*** veya **/etc/*. conf**) kullanabilirsiniz.
+- Joker karakterleri yalnızca bir dosya yolunun son kesiminde (örneğin, **arayacak \\ dosyası** _ veya _ */etc/* . conf * *) kullanabilirsiniz.
 
 - Bir ortam değişkeni geçersiz bir yol içeriyorsa, doğrulama başarılı olur ancak yürütme sırasında yol başarısız olur.
 
@@ -160,7 +162,7 @@ Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Ana
 
 ### <a name="microsoft-service-data"></a>Microsoft hizmet verileri
 
-Microsoft Hizmetleri için varsayılan toplama sıklığı 30 dakikadır. **Ayarları Düzenle**' nin altındaki **Microsoft Hizmetleri** sekmesinde bir kaydırıcıyı kullanarak sıklığı yapılandırabilirsiniz.
+Microsoft Hizmetleri için varsayılan toplama sıklığı 30 dakikadır. **Ayarları Düzenle** ' nin altındaki **Microsoft Hizmetleri** sekmesinde bir kaydırıcıyı kullanarak sıklığı yapılandırabilirsiniz.
 
 ![Microsoft Hizmetleri kaydırıcısı](./media/overview/windowservices.png)
 
