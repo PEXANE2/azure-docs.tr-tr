@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b217e77310224779ea3ea840e613e28da6c86a3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627627"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779875"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Yönetilen Örneği hakkında sık sorulan sorular (SSS)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,7 +82,7 @@ Yeni ve Önizleme özellikleri için bkz. [sürüm notları](../database/doc-cha
 
 **SQL yönetilen örneğini nasıl sağlayabilirim?**
 
-[Azure Portal](instance-create-quickstart.md), [POWERSHELL](scripts/create-configure-managed-instance-powershell.md), [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) ve [ARM şablonlarından](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)bir örnek sağlayabilirsiniz.
+[Azure Portal](instance-create-quickstart.md), [POWERSHELL](scripts/create-configure-managed-instance-powershell.md), [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) ve [ARM şablonlarından](/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)bir örnek sağlayabilirsiniz.
 
 **Mevcut bir abonelikte yönetilen örnekler sağlayabilir miyim?**
 
@@ -94,7 +94,7 @@ Bu, alt ağ adını Regex ^ [a-za-Z_] [^ \\ \/ \: \* \? \" \<\> \| \` \' \^ ] * 
 
 **Yönetilen örnekten nasıl ölçeklendirebilirim?**
 
-Yönetilen örneğinizi [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [POWERSHELL](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) veya [ARM şablonlarından](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)ölçeklendirebilirsiniz.
+Yönetilen örneğinizi [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [POWERSHELL](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) veya [ARM şablonlarından](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)ölçeklendirebilirsiniz.
 
 **Yönetilen örnekten bir bölgeden diğerine taşıyabilir miyim?**
 
@@ -102,7 +102,7 @@ Evet, yazabilirsiniz. Yönergeler için bkz. [kaynakları bölgeler arasında ta
 
 **Yönetilen örnekten nasıl silebilirim?**
 
-Yönetilen örnekleri Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0&preserve-view=true), [Azure CLı](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) veya [Kaynak Yöneticisi REST API 'leri](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)aracılığıyla silebilirsiniz.
+Yönetilen örnekleri Azure portal, [PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0), [Azure CLı](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) veya [Kaynak Yöneticisi REST API 'leri](/rest/api/sql/managedinstances/delete)aracılığıyla silebilirsiniz.
 
 **Bir örneği oluşturmak veya güncelleştirmek ya da bir veritabanını geri yüklemek için ne kadar süre sürer?**
 
@@ -118,7 +118,7 @@ Yönetilen örnek adının değiştirilmesi desteklenmiyor.
 
 Evet, yönetilen örnek varsayılan DNS bölgesi *. Database.Windows.net* değiştirilebilir. 
 
-Varsayılan yerine başka bir DNS bölgesi kullanmak için, örneğin *. contoso.com*: 
+Varsayılan yerine başka bir DNS bölgesi kullanmak için, örneğin *. contoso.com* : 
 - Bir diğer ad tanımlamak için CliConfig 'i kullanın. Araç yalnızca bir kayıt defteri ayarları sarmalayıcısıdır ve bu nedenle Grup İlkesi veya bir komut dosyası kullanılarak yapılabilir.
 - *TrustServerCertificate = true* seçeneğiyle *CNAME* kullanın.
 
@@ -137,7 +137,7 @@ Bir seçenek, [bir veritabanını BACPAC 'e aktarmak](../database/database-expor
 
 Veritabanındaki tüm tablolarda *birincil* anahtarlar varsa ve veritabanında bellek içi OLTP nesneleri yoksa, [İşlemsel çoğaltma](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true) kullanılabilir.
 
-Yönetilen örnekten alınan yerel COPY_ONLY yedeklemeleri, SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan SQL Server geri yüklenemez. Daha fazla ayrıntı için bkz. [yalnızca kopya yedekleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true).
+Yönetilen örnekten alınan yerel COPY_ONLY yedeklemeleri, SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan SQL Server geri yüklenemez. Daha fazla ayrıntı için bkz. [yalnızca kopya yedekleme](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15).
 
 **SQL Server örneğinden SQL yönetilen örneği 'ne nasıl geçirebilirim?**
 
@@ -180,15 +180,15 @@ Performansı daha da ayarlamak için, [uygulama ve veritabanı ayarlama](../data
 
 **Yönetilen örneğimin izlenmesi ve uyarı verme seçenekleri nelerdir?**
 
-SQL yönetilen örnek kullanımını ve performansını izlemeye ve uyarıya yönelik tüm olası seçenekler için bkz. [Azure SQL yönetilen örnek izleme seçenekleri blog gönderisi](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416). SQL MI için gerçek zamanlı performans izleme için bkz. [Azure SQL veritabanı yönetilen örneği Için gerçek zamanlı performans izleme](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance).
+SQL yönetilen örnek kullanımını ve performansını izlemeye ve uyarıya yönelik tüm olası seçenekler için bkz. [Azure SQL yönetilen örnek izleme seçenekleri blog gönderisi](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416). SQL MI için gerçek zamanlı performans izleme için bkz. [Azure SQL veritabanı yönetilen örneği Için gerçek zamanlı performans izleme](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance).
 
 **Performans izleme için SQL Profiler kullanabilir miyim?**
 
-Evet, SQL Profiler desteklenir veya SQL yönetilen örneğidir. Daha ayrıntılı bilgi için bkz. [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true).
+Evet, SQL Profiler desteklenir veya SQL yönetilen örneğidir. Daha ayrıntılı bilgi için bkz. [SQL Profiler](/sql/tools/sql-server-profiler/sql-server-profiler?preserve-view=true&view=sql-server-ver15).
 
 **Veritabanı Danışmanı ve yönetilen örnek veritabanları için Sorgu Performansı İçgörüleri destekleniyor mu?**
 
-Hayır, bunlar desteklenmez. Veritabanlarınızı izlemek için, [DMVs](../database/monitoring-with-dmvs.md) ve [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15&preserve-view=true) 'U [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true) ve [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15&preserve-view=true) ile birlikte kullanabilirsiniz.
+Hayır, bunlar desteklenmez. Veritabanlarınızı izlemek için, [DMVs](../database/monitoring-with-dmvs.md) ve [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?preserve-view=true&view=sql-server-ver15) 'U [SQL Profiler](/sql/tools/sql-server-profiler/sql-server-profiler?preserve-view=true&view=sql-server-ver15) ve [XEvents](/sql/relational-databases/extended-events/extended-events?preserve-view=true&view=sql-server-ver15) ile birlikte kullanabilirsiniz.
 
 **SQL yönetilen örneği 'nde ölçüm uyarıları oluşturabilir miyim?**
 
@@ -228,11 +228,11 @@ Yönetilen örnekte otomatik yedeklemelerin ne zaman gerçekleştirildiğini izl
 
 **İsteğe bağlı yedekleme destekleniyor mu?**
 
-Evet, Azure Blob depolamada yalnızca bir kopya tam yedekleme oluşturabilirsiniz, ancak yönetilen örnekte yalnızca geri yüklenebilir. Ayrıntılar için bkz. [yalnızca kopya yedekleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true). Ancak, şifreleme için kullanılan sertifikaya erişilemediğinden, veritabanı hizmet tarafından yönetilen TDE tarafından şifrelendiyse, salt kopya yedekleme olanaksızdır. Böyle bir durumda, veritabanını başka bir SQL yönetilen örneğine taşımak veya müşteri tarafından yönetilen anahtara geçiş yapmak için zaman içinde geri yükleme özelliğini kullanın.
+Evet, Azure Blob depolamada yalnızca bir kopya tam yedekleme oluşturabilirsiniz, ancak yönetilen örnekte yalnızca geri yüklenebilir. Ayrıntılar için bkz. [yalnızca kopya yedekleme](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15). Ancak, şifreleme için kullanılan sertifikaya erişilemediğinden, veritabanı hizmet tarafından yönetilen TDE tarafından şifrelendiyse, salt kopya yedekleme olanaksızdır. Böyle bir durumda, veritabanını başka bir SQL yönetilen örneğine taşımak veya müşteri tarafından yönetilen anahtara geçiş yapmak için zaman içinde geri yükleme özelliğini kullanın.
 
 **Yerel geri yükleme (. bak dosyalarından) yönetilen örneğe destekleniyor mu?**
 
-Evet, SQL Server 2005 + sürümlerinde desteklenir ve kullanılabilir.  Yerel geri yüklemeyi kullanmak için,. bak dosyanızı Azure Blob depolama alanına yükleyin ve T-SQL komutlarını yürütün. Daha ayrıntılı bilgi için bkz. [URL 'Den yerel geri yükleme](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url).
+Evet, SQL Server 2005 + sürümlerinde desteklenir ve kullanılabilir.  Yerel geri yüklemeyi kullanmak için,. bak dosyanızı Azure Blob depolama alanına yükleyin ve T-SQL komutlarını yürütün. Daha ayrıntılı bilgi için bkz. [URL 'Den yerel geri yükleme](./migrate-to-instance-from-sql-server.md#native-restore-from-url).
 
 ## <a name="business-continuity"></a>İş sürekliliği
 
@@ -254,7 +254,7 @@ Bu, bir SLA 'nın yerine getirilmesi için yönetim trafiğinin kesintisiz olara
 
 **Gelen yönetim trafiği için kullanılan kaynak IP aralıklarını alabilir miyim?**
 
-Evet. [Ağ İzleyicisi akış günlüklerini yapılandırarak](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)ağlar güvenlik grubunuzdan gelen trafiği çözümleyebilirsiniz.
+Evet. [Ağ İzleyicisi akış günlüklerini yapılandırarak](../../network-watcher/network-watcher-monitoring-overview.md#analyze-traffic-to-or-from-a-network-security-group)ağlar güvenlik grubunuzdan gelen trafiği çözümleyebilirsiniz.
 
 **NSG 'yi veri uç noktasına (bağlantı noktası 1433) erişimi denetlemek için ayarlayabilir miyim?**
 
@@ -273,7 +273,7 @@ Evet. Bunu başarmanın en kolay yolu, trafiği NVA aracılığıyla yönlendirm
  
 **Yönetilen bir örnek için kaç IP adresine ihtiyacım var?**
 
-Alt ağda yeterli sayıda kullanılabilir [IP adresi](connectivity-architecture-overview.md#network-requirements)olmalıdır. SQL yönetilen örneği için VNet alt ağ boyutunu belirlemekte, bkz. [yönetilen örnek için gereken alt ağ boyutunu ve aralığını belirleme](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-determine-size-vnet-subnet). 
+Alt ağda yeterli sayıda kullanılabilir [IP adresi](connectivity-architecture-overview.md#network-requirements)olmalıdır. SQL yönetilen örneği için VNet alt ağ boyutunu belirlemekte, bkz. [yönetilen örnek için gereken alt ağ boyutunu ve aralığını belirleme](./vnet-subnet-determine-size.md). 
 
 **Örnek güncelleştirme işlemini gerçekleştirmek için yeterli IP adresi yoksa ne olacak?**
 
@@ -285,7 +285,7 @@ Hayır. Boş bir alt ağ ya da zaten yönetilen örnek içeren bir alt ağ kulla
 
 **Alt ağ adres aralığını değiştirebilir miyim?**
 
-İçinde yönetilen örnekler varsa. Bu bir Azure ağ altyapısı kısıtlamasıdır. Yalnızca [boş bir alt ağa ek adres alanı ekleme](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet#change-subnet-settings)izni verilir. 
+İçinde yönetilen örnekler varsa. Bu bir Azure ağ altyapısı kısıtlamasıdır. Yalnızca [boş bir alt ağa ek adres alanı ekleme](../../virtual-network/virtual-network-manage-subnet.md#change-subnet-settings)izni verilir. 
 
 **Yönetilen örnekten başka bir alt ağa taşıyabilir miyim?**
 
@@ -293,7 +293,7 @@ Hayır. Bu, geçerli bir yönetilen örnek tasarım kısıtlamasıdır. Ancak, b
 
 **Yönetilen bir örnek oluşturmak için boş bir sanal ağa ihtiyacım var mı?**
 
-Bu gerekli değildir. Azure [SQL yönetilen örneği için bir sanal ağ oluşturabilir](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-vnet-subnet) veya [var olan bir sanal ağı Azure SQL yönetilen örneği için yapılandırabilirsiniz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vnet-subnet).
+Bu gerekli değildir. Azure [SQL yönetilen örneği için bir sanal ağ oluşturabilir](./virtual-network-subnet-create-arm-template.md) veya [var olan bir sanal ağı Azure SQL yönetilen örneği için yapılandırabilirsiniz](./vnet-existing-add-subnet.md).
 
 **Yönetilen bir örneği bir alt ağdaki diğer hizmetlere yerleştirebilir miyim?**
 
@@ -316,13 +316,13 @@ Bu nedenle, IP adresinin gereksiz kapalı kalma süresine neden olabileceği iç
 
 **Yönetilen örnek genel bir uç noktaya sahip mi?**
 
-Evet. Yönetilen örnek, varsayılan olarak yalnızca hizmet yönetimi için kullanılan genel bir uç noktaya sahiptir, ancak müşteri bu hizmeti veri erişimi için de etkinleştirebilir. Daha ayrıntılı bilgi için bkz. [genel uç NOKTALARLA SQL yönetilen örneği kullanma](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely). Ortak uç noktayı yapılandırmak için, [SQL yönetilen örneği 'nde ortak uç noktayı yapılandırma](public-endpoint-configure.md)bölümüne gidin.
+Evet. Yönetilen örnek, varsayılan olarak yalnızca hizmet yönetimi için kullanılan genel bir uç noktaya sahiptir, ancak müşteri bu hizmeti veri erişimi için de etkinleştirebilir. Daha ayrıntılı bilgi için bkz. [genel uç NOKTALARLA SQL yönetilen örneği kullanma](./public-endpoint-overview.md). Ortak uç noktayı yapılandırmak için, [SQL yönetilen örneği 'nde ortak uç noktayı yapılandırma](public-endpoint-configure.md)bölümüne gidin.
 
 **Yönetilen örnek denetimi genel uç noktaya nasıl erişebilir?**
 
 Yönetilen örnek, hem ağ hem de uygulama düzeyinde genel uç noktaya erişimi denetler.
 
-Yönetim ve Dağıtım Hizmetleri, bir dış yük dengeleyiciye eşlenen bir [Yönetim uç noktası](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint) kullanarak yönetilen örneğe bağlanır. Trafik yalnızca yönetilen örneğin yönetim bileşenlerinin kullandığı önceden tanımlanmış bir bağlantı noktası kümesi üzerinde alındığında düğümlere yönlendirilir. Düğümlerdeki yerleşik bir güvenlik duvarı yalnızca Microsoft IP aralıklarından gelen trafiğe izin verecek şekilde ayarlanmıştır. Sertifikalar, Yönetim bileşenleri ile yönetim düzlemi arasındaki iletişimin hepsini karşılıklı olarak doğrular. Daha ayrıntılı bilgi için bkz. [SQL yönetilen örneği Için bağlantı mimarisi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#virtual-cluster-connectivity-architecture).
+Yönetim ve Dağıtım Hizmetleri, bir dış yük dengeleyiciye eşlenen bir [Yönetim uç noktası](./connectivity-architecture-overview.md#management-endpoint) kullanarak yönetilen örneğe bağlanır. Trafik yalnızca yönetilen örneğin yönetim bileşenlerinin kullandığı önceden tanımlanmış bir bağlantı noktası kümesi üzerinde alındığında düğümlere yönlendirilir. Düğümlerdeki yerleşik bir güvenlik duvarı yalnızca Microsoft IP aralıklarından gelen trafiğe izin verecek şekilde ayarlanmıştır. Sertifikalar, Yönetim bileşenleri ile yönetim düzlemi arasındaki iletişimin hepsini karşılıklı olarak doğrular. Daha ayrıntılı bilgi için bkz. [SQL yönetilen örneği Için bağlantı mimarisi](./connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture).
 
 **Yönetilen örnek veritabanlarındaki verilere erişmek için genel uç noktasını kullanabilir miyim?**
 
@@ -337,9 +337,9 @@ Hayır, bu seçenek kullanılamaz.  Özel veri uç noktası için, yönetilen ö
 Hızlı rota devresi eşlemesi bunu yapmanın tercih edilen yoludur. Küresel sanal ağ eşlemesi, aşağıdaki notta açıklanan kısıtlamalarla desteklenir.  
 
 > [!IMPORTANT]
-> [9/22/2020 tarihinde yeni oluşturulan sanal kümeler için genel sanal ağ eşlemesi duyuruldu](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Diğer bir deyişle, duyuru tarihinden sonra boş alt ağlarda oluşturulan SQL yönetilen örnekleri ve bu alt ağlarda oluşturulan tüm sonraki yönetilen örnekler için genel sanal ağ eşlemesi desteklenir. Diğer tüm SQL yönetilen örnekler için eşleme desteği, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
+> [9/22/2020 tarihinde yeni oluşturulan sanal kümeler için genel sanal ağ eşlemesi duyuruldu](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Diğer bir deyişle, duyuru tarihinden sonra boş alt ağlarda oluşturulan SQL yönetilen örnekleri ve bu alt ağlarda oluşturulan tüm sonraki yönetilen örnekler için genel sanal ağ eşlemesi desteklenir. Diğer tüm SQL yönetilen örnekler için eşleme desteği, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
 
-Hızlı rota devresi eşlemesi ve genel sanal ağ eşlemesi mümkün değilse, tek diğer seçenek siteden siteye VPN bağlantısı ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [POWERSHELL](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) oluşturmaktır.
+Hızlı rota devresi eşlemesi ve genel sanal ağ eşlemesi mümkün değilse, tek diğer seçenek siteden siteye VPN bağlantısı ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) oluşturmaktır.
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Veri kaybı riskini azaltma  
 
@@ -347,19 +347,19 @@ Hızlı rota devresi eşlemesi ve genel sanal ağ eşlemesi mümkün değilse, t
 
 Herhangi bir veri savunma riskini azaltmak için müşterilerin bir dizi güvenlik ayarı ve denetimi uygulaması önerilir:
 
-- Tüm veritabanlarında [Saydam veri şifrelemesi (TDE)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) öğesini açın.
+- Tüm veritabanlarında [Saydam veri şifrelemesi (TDE)](../database/transparent-data-encryption-tde-overview.md) öğesini açın.
 - Ortak dil çalışma zamanını (CLR) devre dışı bırakın. Bu, şirket içinde de önerilir.
 - Yalnızca Azure Active Directory (Azure AD) kimlik doğrulaması kullanın.
 - Düşük ayrıcalıklı bir DBA hesabıyla örneğe erişin.
 - Sysadmin hesabı için JıT atlama kutusu erişimini yapılandırın.
-- [SQL denetimini](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)açın ve uyarı mekanizmalarıyla tümleştirin.
-- [Azure Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) Suite 'Ten [tehdit algılamayı](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) açın.
+- [SQL denetimini](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)açın ve uyarı mekanizmalarıyla tümleştirin.
+- [Azure Defender for SQL](../database/azure-defender-for-sql.md) Suite 'Ten [tehdit algılamayı](../database/threat-detection-configure.md) açın.
 
 ## <a name="dns"></a>DNS
 
 **SQL yönetilen örneği için özel bir DNS yapılandırabilir miyim?**
 
-Evet. Bkz. [Azure SQL yönetilen örneği Için özel DNS yapılandırma](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
+Evet. Bkz. [Azure SQL yönetilen örneği Için özel DNS yapılandırma](./custom-dns-configure.md).
 
 **DNS yenileme yapabilir miyim?**
 
@@ -378,22 +378,22 @@ Geçici bir çözüm olarak, SQL yönetilen örneği 4 sanal çekirdeğe indirge
 
 Yönetilen bir örnek ilk kez sağlandığında saat dilimi yapılandırması ayarlanabilir. Mevcut bir yönetilen Örneğin saat dilimini değiştirme desteklenmiyor. Ayrıntılar için bkz. [saat dilimi sınırlamaları](timezones-overview.md#limitations).
 
-Geçici çözümler, doğru saat dilimine sahip yeni bir yönetilen örnek oluşturma ve ardından el ile yedekleme ve geri yükleme gerçekleştirme ya da önerdiğimiz bir [çapraz örnek zaman geri yükleme](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/)gerçekleştirme işlemlerini içerir.
+Geçici çözümler, doğru saat dilimine sahip yeni bir yönetilen örnek oluşturma ve ardından el ile yedekleme ve geri yükleme gerçekleştirme ya da önerdiğimiz bir [çapraz örnek zaman geri yükleme](/archive/blogs/sqlserverstorageengine/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance)gerçekleştirme işlemlerini içerir.
 
 
 ## <a name="security-and-database-encryption"></a>Güvenlik ve veritabanı şifrelemesi
 
 **Sysadmin sunucu rolü SQL yönetilen örneği için kullanılabilir mi?**
 
-Evet, müşteriler sysadmin rolünün üyeleri olan oturum açma işlemleri oluşturabilir.  Sysadmin ayrıcalığına sahip olan müşteriler, örneğin, SLA taahhüdünü olumsuz yönde etkileyebilecek örnek çalıştırma sorumluluğunu de kabul eder. Sysadmin sunucu rolüne oturum açma eklemek için bkz. [Azure AD kimlik doğrulaması](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-aad-security-tutorial#azure-ad-authentication).
+Evet, müşteriler sysadmin rolünün üyeleri olan oturum açma işlemleri oluşturabilir.  Sysadmin ayrıcalığına sahip olan müşteriler, örneğin, SLA taahhüdünü olumsuz yönde etkileyebilecek örnek çalıştırma sorumluluğunu de kabul eder. Sysadmin sunucu rolüne oturum açma eklemek için bkz. [Azure AD kimlik doğrulaması](./aad-security-configure-tutorial.md#azure-ad-authentication).
 
 **SQL yönetilen örneği için Saydam Veri Şifrelemesi destekleniyor mu?**
 
-Evet, Saydam Veri Şifrelemesi SQL yönetilen örneği için desteklenir. Ayrıntılar için bkz. [SQL yönetilen örneği için saydam veri şifrelemesi](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal).
+Evet, Saydam Veri Şifrelemesi SQL yönetilen örneği için desteklenir. Ayrıntılar için bkz. [SQL yönetilen örneği için saydam veri şifrelemesi](../database/transparent-data-encryption-tde-overview.md?tabs=azure-portal).
 
 **"Kendi anahtarını getir" modelini TDE kullanabilir miyim?**
 
-Evet, BYOK senaryosu için Azure Key Vault Azure SQL yönetilen örneği için kullanılabilir. Ayrıntılar için bkz. [müşteri tarafından yönetilen anahtarla saydam veri şifrelemesi](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key&preserve-view=true).
+Evet, BYOK senaryosu için Azure Key Vault Azure SQL yönetilen örneği için kullanılabilir. Ayrıntılar için bkz. [müşteri tarafından yönetilen anahtarla saydam veri şifrelemesi](../database/transparent-data-encryption-tde-overview.md?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key).
 
 **Şifrelenmiş bir SQL Server veritabanını geçirebilir miyim?**
 
@@ -409,8 +409,8 @@ Azure Cloud Shell kullanarak, yönetilen örnek için TDE koruyucuyu döndürebi
 
 Evet, SQL yönetilen örneğine geri yüklemek için veritabanınızın şifresini çözmeniz gerekmez. Şifrelenmiş yedekleme dosyasından verileri okuyabilmeniz için kaynak sistemde SQL yönetilen örneği için şifreleme anahtarı koruyucusu olarak kullanılan bir sertifika/anahtar sağlamanız gerekir. Bunu yapmak için iki olası yol vardır:
 
-- *Sertifika koruyucuyu SQL yönetilen örneğine yükleyin*. Yalnızca PowerShell kullanılarak yapılabilir. [Örnek betik](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate) , tüm süreci açıklar.
-- *Azure Key Vault için asimetrik anahtar koruyucusunu karşıya yükleyin ve SQL yönetilen örneği üzerine gelin*. Bu yaklaşım, şifreleme anahtarını depolamak için Key Vault tümleştirmesinin kullanıldığı, kendi anahtarını getir (BYOK) TDE kullanım örneğine benzer. Anahtarı şifreleme anahtar koruyucusu olarak kullanmak istemiyorsanız ve yalnızca SQL yönetilen örneği için anahtarı şifrelenmiş veritabanlarını geri yüklemek istiyorsanız, [BYOK TDE ayarlama](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)yönergelerini izleyin ve **Seçili anahtarı varsayılan TDE koruyucusu yap**onay kutusunu işaretlemeyin.
+- *Sertifika koruyucuyu SQL yönetilen örneğine yükleyin* . Yalnızca PowerShell kullanılarak yapılabilir. [Örnek betik](./tde-certificate-migrate.md) , tüm süreci açıklar.
+- *Azure Key Vault için asimetrik anahtar koruyucusunu karşıya yükleyin ve SQL yönetilen örneği üzerine gelin* . Bu yaklaşım, şifreleme anahtarını depolamak için Key Vault tümleştirmesinin kullanıldığı, kendi anahtarını getir (BYOK) TDE kullanım örneğine benzer. Anahtarı şifreleme anahtar koruyucusu olarak kullanmak istemiyorsanız ve yalnızca SQL yönetilen örneği için anahtarı şifrelenmiş veritabanlarını geri yüklemek istiyorsanız, [BYOK TDE ayarlama](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)yönergelerini izleyin ve **Seçili anahtarı varsayılan TDE koruyucusu yap** onay kutusunu işaretlemeyin.
 
 Şifreleme koruyucusunu SQL yönetilen örneği için kullanılabilir hale getirildikten sonra standart veritabanı geri yükleme yordamıyla devam edebilirsiniz.
 
@@ -423,17 +423,17 @@ SQL yönetilen örneği, [sanal çekirdek tabanlı satın alma modeli](sql-manag
 **SQL yönetilen örneği için hangi maliyet avantajları mevcuttur?**
 
 Azure SQL avantajları ile maliyetleri aşağıdaki yollarla kaydedebilirsiniz:
--   Şirket içi lisanslarda mevcut yatırımlarını en üst düzeye çıkarın ve [Azure hibrit avantajı](https://docs.microsoft.com/azure/azure-sql/azure-hybrid-benefit?tabs=azure-powershell)yüzde 55 ' ye kadar tasarruf edin. 
--   İşlem kaynakları için bir ayırmaya işleyin ve [ayrılmış örnek avantajı](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity)ile yüzde 33 ' a kadar tasarruf edin. Bunu, yüzde 82 ' e varan tasarruf için Azure hibrit avantajı ile birleştirin. 
+-   Şirket içi lisanslarda mevcut yatırımlarını en üst düzeye çıkarın ve [Azure hibrit avantajı](../azure-hybrid-benefit.md?tabs=azure-powershell)yüzde 55 ' ye kadar tasarruf edin. 
+-   İşlem kaynakları için bir ayırmaya işleyin ve [ayrılmış örnek avantajı](../database/reserved-capacity-overview.md)ile yüzde 33 ' a kadar tasarruf edin. Bunu, yüzde 82 ' e varan tasarruf için Azure hibrit avantajı ile birleştirin. 
 -   Devam eden geliştirme ve test iş yükleriniz için indirimli ücretler sunan [Azure geliştirme ve test fiyatlandırma avantajına](https://azure.microsoft.com/pricing/dev-test/) göre yüzde 55 ' a varan bir ücret kazanın.
 
 **Ayrılmış örnek avantajı kimler için uygun?**
 
-Ayrılmış örnek avantajına uygun olması için, abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Ayırmalar hakkında daha fazla bilgi için bkz. [ayrılmış örnek avantajı](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity). 
+Ayrılmış örnek avantajına uygun olması için, abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Ayırmalar hakkında daha fazla bilgi için bkz. [ayrılmış örnek avantajı](../database/reserved-capacity-overview.md). 
 
 **Rezervasyonları iptal edebilir, Exchange veya para iadesi yapılabilir mi?**
 
-Belirli sınırlamalara sahip rezervasyonları iptal edebilir, Exchange veya iade edebilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+Belirli sınırlamalara sahip rezervasyonları iptal edebilir, Exchange veya iade edebilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="billing-for-managed-instance-and-backup-storage"></a>Yönetilen örnek ve yedekleme depolaması için faturalandırma
 
@@ -443,7 +443,7 @@ Yönetilen örnek fiyatlandırma seçeneklerini araştırmak için bkz. [fiyatla
 
 **Yönetilen örneğimin fatura maliyetini nasıl izleyebilirim?**
 
-Bunu [Azure maliyet yönetimi çözümünü](https://docs.microsoft.com/azure/cost-management-billing/)kullanarak yapabilirsiniz. [Azure Portal](https://portal.azure.com) **abonelikler** ' e gidin ve **Maliyet Analizi**' ni seçin. 
+Bunu [Azure maliyet yönetimi çözümünü](../../cost-management-billing/index.yml)kullanarak yapabilirsiniz. [Azure Portal](https://portal.azure.com) **abonelikler** ' e gidin ve **Maliyet Analizi** ' ni seçin. 
 
 **Birikmiş maliyetler** seçeneğini kullanın ve ardından **kaynak türüne** göre filtreleyin `microsoft.sql/managedinstances` .
 
@@ -453,7 +453,7 @@ Yedekleme Bekletme dönemi kümesinden bağımsız olarak satın alınan ayrılm
 
 **Yedekleme depolama tüketimin fatura maliyetini nasıl izleyebilirim?**
 
-Yedekleme depolama maliyetini Azure portal aracılığıyla izleyebilirsiniz. Yönergeler için bkz. [otomatik yedeklemeler Için izleme maliyetleri](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=managed-instance#monitor-costs). 
+Yedekleme depolama maliyetini Azure portal aracılığıyla izleyebilirsiniz. Yönergeler için bkz. [otomatik yedeklemeler Için izleme maliyetleri](../database/automated-backups-overview.md?tabs=managed-instance#monitor-costs). 
 
 **Yönetilen örnekteki yedekleme depolama maliyetlerimi nasıl iyileştirebilirim?**
 
@@ -515,11 +515,11 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 
 **Azure SQL veritabanı & SQL yönetilen örneği için kök CA değişikliği nedir?**
 
-Bkz. [Azure SQL veritabanı & SQL yönetilen örneği Için sertifika döndürme](https://docs.microsoft.com/azure/azure-sql/updates/ssl-root-certificate-expiring). 
+Bkz. [Azure SQL veritabanı & SQL yönetilen örneği Için sertifika döndürme](../updates/ssl-root-certificate-expiring.md). 
 
 **SQL yönetilen örneği için planlı bakım olayı nedir?**
 
-Bkz. [SQL yönetilen örneği 'Nde Azure bakım olaylarını planlayın](https://docs.microsoft.com/azure/azure-sql/database/planned-maintenance). 
+Bkz. [SQL yönetilen örneği 'Nde Azure bakım olaylarını planlayın](../database/planned-maintenance.md). 
 
 
 ## <a name="azure-feedback-and-support"></a>Azure geri bildirim ve destek
@@ -530,5 +530,4 @@ Yeni bir yönetilen örnek özelliği için oy verebilir veya [SQL yönetilen ö
 
 **Azure destek isteği 'ni nasıl oluşturabilirim?**
 
-Azure destek isteği oluşturmayı öğrenmek için bkz. [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
-
+Azure destek isteği oluşturmayı öğrenmek için bkz. [Azure destek isteği oluşturma](../../azure-portal/supportability/how-to-create-azure-support-request.md).

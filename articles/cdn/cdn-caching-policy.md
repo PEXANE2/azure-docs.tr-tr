@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: 6beaee98e78e79c48270801f5696e4e487b0a2c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5807d38e22d8cecf40b5ad4262f9e4662b77ec4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84883716"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779144"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure Media Services Azure CDN önbelleğe alma ilkesini yönetme
 Azure Media Services HTTP tabanlı uyarlamalı akış ve aşamalı indirme sağlar. HTTP tabanlı akış, proxy ve CDN katmanlarında önbelleğe almanın yanı sıra istemci tarafı önbelleğe alma avantajlarıyla yüksek düzeyde ölçeklenebilir. Akış uç noktaları, HTTP önbellek üstbilgileri için genel akış özellikleri ve ayrıca yapılandırma sağlar. Akış uç noktaları, HTTP Cache-Control: Max-Age ve Expires Headers ayarlar. [W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)adresinden http önbellek üstbilgileri hakkında daha fazla bilgi edinebilirsiniz.
@@ -40,10 +40,9 @@ Azure Media Services, akış uç noktaları için [TÜMLEŞIK CDN](https://azure
 
 1. Azure portal kullanarak önbellek üstbilgilerini yapılandırmak için akış uç noktasını [yapılandırma bölümüne bakın](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) .
 2. Azure Media Services REST API'si, [Streamingendpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
-3. Azure Media Services .NET SDK, [Streamingendpointcachecontrol özellikleri](https://go.microsoft.com/fwlink/?LinkId=615302).
+3. Azure Media Services .NET SDK, [Streamingendpointcachecontrol özellikleri](/dotnet/api/microsoft.windowsazure.mediaservices.client.streamingendpointcachecontrol).
 
 ## <a name="cache-configuration-precedence-order"></a>Önbellek yapılandırması öncelik sırası
 1. Yapılandırılan Azure Media Services önbellek değeri varsayılan değeri geçersiz kılar.
 2. El ile yapılandırma yoksa, varsayılan değerler geçerlidir.
 3. Varsayılan olarak, 2 saniyelik önbellek üst bilgileri, Azure medyasından veya Azure depolama yapılandırması ne olursa olsun canlı akış bildirimi (çalma listesi) için geçerlidir ve bu değerin üzerine yazmak kullanılabilir değildir.
-

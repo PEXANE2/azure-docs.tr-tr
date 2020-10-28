@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: e9092e9564fadb07311b151948656bc6cd007323
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: a707cde306006aef685c22cf1a9f9332449ee1c9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951732"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778229"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Metro tarafından Azure CDN kapsama 
 > [!div class="op_single_selector"]
@@ -49,4 +49,4 @@ Bu makalede, Azure Content Delivery Network (CDN) ürünleriyle ilgili varlık n
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Beyaz listeye yönelik en son IP adreslerini almak için [Azure CDN Edge düğümleri API 'sine](https://docs.microsoft.com/rest/api/cdn/edgenodes)bakın.
+* Beyaz listeye yönelik en son IP adreslerini almak için [Azure CDN Edge düğümleri API 'sine](/rest/api/cdn/edgenodes)bakın.

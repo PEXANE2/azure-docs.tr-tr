@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 04/16/2019
-ms.openlocfilehash: 208793d3ba8c3463abe892b368beb41d4b79f214
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7f2f060f32cf3bf92660a2e8b75a45b7ec76b82
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617460"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779773"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL yönetilen örnek içerik başvurusu
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -64,7 +64,7 @@ Bu makalede, Azure SQL yönetilen örneğini yönetmenize ve yapılandırmanıza
 
 - [El ile ayarlama](../database/performance-guidance.md)
 - [Performansı izlemek için DMV’leri kullanma](../database/monitoring-with-dmvs.md)
-- [Performansı izlemek için sorgu deposunu kullanma](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
+- [Performansı izlemek için sorgu deposunu kullanma](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Akıllı İçgörüler ile performans sorunlarını giderme](../database/intelligent-insights-troubleshoot-performance.md)
 - [Akıllı İçgörüler tanılama günlüğünü kullanın](../database/intelligent-insights-use-diagnostics-log.md)
 - [In-Memory OLTP alanını izleme](../in-memory-oltp-monitor-space.md)

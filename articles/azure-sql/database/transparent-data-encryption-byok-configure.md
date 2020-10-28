@@ -5,19 +5,19 @@ description: Azure SQL veritabanı ve Azure SYNAPSE analizlerini, PowerShell vey
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: e2cdf7d5213f1667b0b588cc5bfa9f105245b6b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38be8b97b3255e4e63301e693d2a5f295e8d801b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619126"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779977"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve Azure CLı: Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarla etkinleştirin
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -36,11 +36,11 @@ Bu makalede, Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQ
 - Anahtar, TDE için kullanılacak aşağıdaki özniteliklere sahip olmalıdır:
   - Sona erme tarihi yok
   - Devre dışı değil
-  - Al, *sarmalama tuşu*, *anahtar sarmalama işlemini geri* *alabilir*
+  - Al, *sarmalama tuşu* , *anahtar sarmalama işlemini geri* *alabilir*
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Az modülü yükleme yönergeleri için bkz. [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps). Belirli cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
+Az modülü yükleme yönergeleri için bkz. [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps). Belirli cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/).
 
 Key Vault hakkında daha fazla bilgi için bkz. [Key Vault PowerShell yönergeleri](../../key-vault/secrets/quick-create-powershell.md) ve [PowerShell ile geçici silme Key Vault kullanma](../../key-vault/general/soft-delete-powershell.md).
 
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLı 'nın gerekli sürümünü (sürüm 2,0 veya üzeri) yüklemek ve Azure aboneliğinize bağlanmak için bkz. [Azure platformlar arası Command-Line arabirimi 2,0 ' ni yükleyip yapılandırma](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Azure CLı 'nın gerekli sürümünü (sürüm 2,0 veya üzeri) yüklemek ve Azure aboneliğinize bağlanmak için bkz. [Azure platformlar arası Command-Line arabirimi 2,0 ' ni yükleyip yapılandırma](/cli/azure/install-azure-cli).
 
 Key Vault hakkında daha fazla bilgi için bkz. [clı 2,0 kullanarak Key Vault yönetme](../../key-vault/general/manage-with-cli2.md) ve [CLI ile geçici silme Key Vault kullanma](../../key-vault/general/soft-delete-cli.md).
 
@@ -239,7 +239,7 @@ Bir sorun oluşursa, aşağıdakileri denetleyin:
 
 - Yeni anahtar sunucuya eklenemezse veya yeni anahtar TDE koruyucusu olarak güncelleştirilemez, aşağıdakileri denetleyin:
    - Anahtar, bir sona erme tarihi içermemelidir
-   - Anahtar, *Al*, *sarmalama tuşu*ve *sarmalama anahtar* işlemlerini etkin olmalıdır.
+   - Anahtar, *Al* , *sarmalama tuşu* ve *sarmalama anahtar* işlemlerini etkin olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

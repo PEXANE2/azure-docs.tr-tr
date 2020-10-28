@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 816f64f9987abbdcd49de93b3bc218ec1606d9f3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 91be1c51639aa3ae8acbf0c37f5c4a8174b5a592
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461660"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779450"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -19,7 +19,7 @@ Azure VMware çözümü hakkında sık sorulan sorular için yanıtlar.
 
 #### <a name="what-is-azure-vmware-solution"></a>Azure VMware Çözümü nedir?
 
-Kuruluşlar, iş çevikliği geliştirmek, maliyetleri azaltmak ve yeniliklerini hızlandırmak için strateji yaparken, hibrit bulut platformları, müşterilerin dijital dönüşümünde önemli etkinleştiriciler olarak ortaya çıktı. Azure VMware çözümü, VMware 'nin yazılım tanımlı veri merkezi (SDDC) yazılımını Microsoft Azure küresel bulut hizmeti ekosistemi ile birleştirir. Azure VMware çözümü, performans, kullanılabilirlik, güvenlik ve uyumluluk gereksinimlerini karşılayacak şekilde yönetilir.
+Kuruluşlar, iş çevikliği geliştirmek, maliyetleri azaltmak ve yeniliklerini hızlandırmak için strateji yaparken, hibrit bulut platformları, müşterilerin dijital dönüşümünde önemli etkinleştiriciler olarak ortaya çıktı. Azure VMware çözümü, VMware 'nin Software-Defined veri merkezi (SDDC) yazılımını Microsoft Azure küresel bulut hizmeti ekosistemi ile birleştirir. Azure VMware çözümü, performans, kullanılabilirlik, güvenlik ve uyumluluk gereksinimlerini karşılayacak şekilde yönetilir.
 
 ## <a name="azure-vmware-solution-service"></a>Azure VMware çözüm hizmeti
 
@@ -49,7 +49,7 @@ Evet. Standart çapraz vCenter [vMotion gereksinimleri](https://kb.vmware.com/s/
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>Şirket içi ortamlarda gerekli olan belirli bir vSphere sürümü mi?
 
-Tüm bulut ortamları, vMotion için şirket içi ortamlarda VMware HCX, vSphere 5,5 veya sonraki bir sürümü ile gelir.
+Tüm bulut ortamları, vMotion için şirket içi ortamlarda VMware HCX, vSphere 5,5 veya üzeri ile gelir.
 
 #### <a name="what-does-the-change-control-process-look-like"></a>Değişiklik denetimi işlemi nasıl görünür?
 
@@ -57,7 +57,7 @@ Hizmette yapılan güncelleştirmeler, Microsoft Azure Standart değişiklik yö
 
 #### <a name="how-is-this-different-from-azure-vmware-solution-by-cloudsimple"></a>Bu, CloudSimple tarafından Azure VMware çözümünden farklı midir?
 
-Yeni Azure VMware çözümüyle, Microsoft ve VMware 'nin doğrudan bir bulut sağlayıcısı ortaklığı vardır. Yeni çözüm, Microsoft tarafından tamamen tasarlanır, oluşturulmuştur ve desteklenir, VMware tarafından onaylanmıştır. Mimari türsel olarak, çözümler Azure adanmış bir altyapıda çalışan VMware teknoloji yığını ile tutarlıdır.
+Yeni Azure VMware çözümüyle, Microsoft ve VMware 'nin doğrudan bir bulut sağlayıcısı ortaklığı vardır. Yeni çözüm, Microsoft tarafından tamamen tasarlanır, oluşturulmuştur ve desteklenir, VMware tarafından onaylanmıştır. Mimari türsel olarak, çözümler, VMware teknoloji yığınının adanmış bir Azure altyapısında çalışıyor olması bakımından tutarlıdır.
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Red hat çözümleri Azure VMware çözümünde destekleniyor mu?
 
@@ -68,7 +68,7 @@ Microsoft ve Red hat, Azure platformunda çalışan Red Hat ekosistemlerine yön
 VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* işlevi/hizmeti olarak sunulmaktadır. Azure VMware çözümü için VMware HCX EE önizleme aşamasındadır. Bu, ücretsiz bir işlev/hizmet ve hizmet hüküm ve koşullarına tabidir. VMware HCX EE hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Hizmeti kapatabilir veya hizmetten vazgeçebilirsiniz.
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Azure VMware Çözüm VM 'Leri VMRC tarafından yönetiliyor mu?
-Evet, üzerinde yüklü olduğu sistem özel bulut vCenter 'a erişebilir ve genel DNS kullanıyor (yani ESXi ana bilgisayar adlarını çözümleyebilmesi için).
+Evet, üzerinde yüklü olduğu sistem özel bulut vCenter 'a erişebilir ve ESXi ana bilgisayar adlarını çözümlemek için ortak DNS kullanıyor olabilir.
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'Leri ile VMRC 'yi yüklemek ve kullanmak için özel yönergeler var mı?
 Hayır, [VMware tarafından sunulan yönergeleri](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) kullanın ve bu YÖNERGELERDE belirtilen VM önkoşullarını yerine uygulayın. 
@@ -102,7 +102,7 @@ Her ESXi konağında, 15,2 TB 'lik kapasite katmanı ve 3,2-TB NVMe önbellek ka
 
 #### <a name="how-much-network-bandwidth-is-available-in-each-esxi-host"></a>Her ESXi konağında kullanılabilir ağ bant genişliği miktarı nedir?
 
-Her ESXi Konağı Azure VMware çözümü, ESXi sistem trafiği için sağlanan iki NIC ve iş yükü trafiği için sağlanan iki NIC ile 4 25 GB/sn 'lik NIC 'ler ile yapılandırılır. 
+Azure VMware çözümünde her ESXi Konağı 4 25-Gbps NIC, ESXi sistem trafiği için sağlanan iki NIC ve iş yükü trafiği için sağlanan iki NIC ile yapılandırılır. 
 
 #### <a name="is-data-stored-on-the-vsan-datastores-encrypted-at-rest"></a>Veriler, bekleyen vSAN veri depoları üzerinde mi depolanıyor?
 
@@ -116,9 +116,9 @@ Evet, tüm vSAN verileri, Azure Key Vault depolanan anahtarlar kullanılarak var
 
 Bu yedekleme çözümleri müşteriler tarafından yüklenip yönetildiğinden, destek için ilgili ISV 'ye ulaşabilirler. 
 
-#### <a name="what-is-the-correct-storage-policy-for-the-dedup-setup"></a>Yinelenenleri kaldırma kurulumu için doğru depolama ilkesi nedir?
+#### <a name="what-is-the-correct-storage-policy-for-the-dedupe-setup"></a>Yinelenenleri kaldırma kurulumu için doğru depolama ilkesi nedir?
 
-VM şablonunuz için *thin_provision* depolama ilkesini kullanın.  Varsayılan değer *thick_provision*.
+VM şablonunuz için *thin_provision* depolama ilkesini kullanın.  Varsayılan değer *thick_provision* .
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>SNMP altyapı günlükleri paylaşılıyor mu?
 
@@ -130,17 +130,17 @@ Hayır.
 
 Hayır, özel bulut konakları ve kümeleri ayrılmış ve kullanılmadan önce ve güvenli bir şekilde silinir.
 
-#### <a name="what-are-the-minimum-and-maximum-number-of-hosts-per-cluster"></a>Küme başına en düşük ve en yüksek ana bilgisayar sayısı nelerdir?
+#### <a name="what-are-the-minimum-and-the-maximum-number-of-hosts-per-cluster"></a>Küme başına en düşük ve en yüksek ana bilgisayar sayısı nedir?
 
 Kümeler 3 ila 16 ESXi konakları arasında ölçeklendirebilir. Deneme kümeleri üç ana bilgisayar ile sınırlıdır.
 
 #### <a name="can-i-scale-my-private-cloud-clusters"></a>Özel bulut kümelerimi ölçeklendirebilir miyim?
 
-Evet, kümeler en düşük ve en fazla ESXi ana bilgisayarı sayısı arasında ölçeklenir. Deneme kümeleri üç ana bilgisayar ile sınırlıdır.
+Evet, kümeler en düşük ve en fazla ESXi Konağı sayısı arasında ölçeklendirilir. Deneme kümeleri üç ana bilgisayar ile sınırlıdır.
 
 #### <a name="what-are-trial-clusters"></a>Deneme kümeleri nedir?
 
-Deneme kümeleri, Azure VMware Çözüm özel bulutlarının bir aylık değerlendirmesi için kullanılan üç ana bilgisayar kümeleridir.
+Deneme kümeleri, Azure VMware çözümü özel bulutlarının tek aylık değerlendirmeleri için kullanılan üç ana bilgisayar kümeleridir.
 
 #### <a name="can-i-use-high-end-hosts-for-trial-clusters"></a>Deneme kümeleri için yüksek kaliteli Konakları kullanabilir miyim?
 
@@ -166,17 +166,17 @@ Hayır, NSX 'i şirket içinde kullanmak zorunda değilsiniz.
 
 #### <a name="what-is-the-upgrade-and-update-schedule-for-vmware-software-in-a-private-cloud"></a>Özel buluttaki VMware yazılımı için yükseltme ve güncelleştirme zamanlaması nedir?
 
-Özel bulut yazılım paketi yükseltmeleri, Yazılımı VMware 'den en son yazılım paketi sürümünün bir sürümünde tutmak için yapılır. Özel bulut yazılımı sürümleri, bireysel yazılım bileşenlerinin en son sürümlerinden (ESXi, NSX-T, vCenter, vSAN) farklı olabilir.
+Özel bulut yazılım paketi yükseltmeleri, Yazılımı VMware 'den en son yazılım paketi sürümünün bir sürümü içinde tutmak için yapılır. Özel bulut yazılımı sürümleri, bireysel yazılım bileşenlerinin en son sürümlerinden (ESXi, NSX-T, vCenter, vSAN) farklı olabilir.
 
 #### <a name="how-often-will-the-private-cloud-software-stack-be-updated"></a>Özel bulut yazılım yığını ne sıklıkla güncelleştirilir?
 
-Özel bulut yazılımı, VMware 'den yazılım paketi yayını ile izleyen bir zamanlamaya göre yükseltilir. Özel bulutunuz yükseltmeler için kapalı kalma süresi gerektirmez.
+Özel bulut yazılımı, VMware 'den yazılım paketi yayınını izleyen bir zamanlamaya göre yükseltilir. Özel bulutunuz yükseltmeler için kapalı kalma süresi gerektirmez.
 
 ## <a name="connectivity"></a>Bağlantı
 
 #### <a name="what-network-ip-address-planning-is-required-to-incorporate-private-clouds-with-on-premises-environments"></a>Şirket içi ortamlarla özel bulutlar eklemek için hangi ağ IP adresi planlaması gerekir?
 
-Bir Azure VMware çözümü özel bulutu dağıtmak için özel bir ağ/22 adres alanı gerekir. Bu özel adres alanı, bir abonelikteki diğer sanal ağlarla veya şirket içi ağlarla çakışmamalıdır.
+Bir Azure VMware çözümü özel bulutu dağıtmak için özel bir ağ/22 adres alanı gerekir. Bu özel adres alanı, bir abonelikteki veya şirket içi ağlardaki diğer sanal ağlarla çakışmamalıdır.
  
 #### <a name="how-do-i-connect-from-on-premises-environments-to-an-azure-vmware-solution-private-cloud"></a>Şirket içi ortamlardan Azure VMware Çözüm özel bulutuna Nasıl yaparım? mı bağlanacak?
 
@@ -228,7 +228,7 @@ Fiyatlandırma hakkında genel sorular için bkz. Azure VMware Çözüm [fiyatla
 
 #### <a name="who-supports-azure-vmware-solution"></a>Azure VMware çözümünü kimler destekler?
 
-Azure VMware çözümü desteği Microsoft tarafından dağıtılır. Bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)gönderebilirsiniz.
+Microsoft, Azure VMware çözümü için destek sunar. Bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)gönderebilirsiniz.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Azure VMware çözümü özel bulutu oluşturmak için hangi hesaplara ihtiyacım var?
 
@@ -239,10 +239,10 @@ Azure aboneliğinde bir Azure hesabınızın olması gerekir.
 * Microsoft ile bir [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) gerekir.
 * Azure aboneliğinde bir Azure hesabınızın olması gerekir.
 
-Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrılması için bir destek bileti göndermeniz gerekir. İsteğinizi doğrulamak ve düğümlerinizi ayırmak için beş adede kadar iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz.
+Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizi ayırmak için bir destek bileti göndermeniz gerekir. İsteğinizi doğrulamak ve düğümlerinizi ayırmak için beş adede kadar iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz.
 
 
-1. Azure portal, **Yardım + Destek**altında, **[Yeni bir destek isteği](https://rc.portal.azure.com/#create/Microsoft.Support)** oluşturun ve bilet için aşağıdaki bilgileri sağlayın:
+1. Azure portal, **Yardım + Destek** altında, **[Yeni bir destek isteği](https://rc.portal.azure.com/#create/Microsoft.Support)** oluşturun ve bilet için aşağıdaki bilgileri sağlayın:
    - **Sorun türü:** Teknik
    - **Abonelik:** Aboneliğinizi seçin
    - **Hizmet:** Tüm hizmetler Azure VMware çözümüne >
@@ -272,9 +272,9 @@ Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrıl
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   ```
+   `"
 
-   Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md).
+   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=21069522

@@ -12,23 +12,23 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: bb9e17a4befcdcf1a322734c6cc5d75d653f23e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1485f06af2bb3c4912df3e34cb23c409b7db3dc2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676146"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780368"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL veritabanı ve SQL yönetilen örnek güvenlik özelliklerine genel bakış
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Bu makalede, [Azure SQL veritabanı](sql-database-paas-overview.md) ve [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)kullanılarak bir uygulamanın veri katmanını güvenli hale getirmenin temelleri özetlenmektedir. Açıklanan güvenlik stratejisi aşağıdaki resimde gösterildiği gibi katmanlı derinlemesine savunma yaklaşımını takip eder ve dışarıdan şu şekilde gider:
+Bu makalede, [Azure SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)ve [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)kullanarak bir uygulamanın veri katmanını güvenli hale getirmenin temelleri özetlenmektedir. Açıklanan güvenlik stratejisi aşağıdaki resimde gösterildiği gibi katmanlı derinlemesine savunma yaklaşımını takip eder ve dışarıdan şu şekilde gider:
 
 ![Katmanlı derinlemesine savunma diyagramı. Müşteri verileri, ağ güvenliği, erişim yönetimi ve tehdit ve bilgi korumalarının katmanlarında yapılır.](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Ağ güvenliği
 
-Microsoft Azure SQL Veritabanı ve SQL yönetilen örneği, bulut ve kurumsal uygulamalar için bir ilişkisel veritabanı hizmeti sağlar. Güvenlik duvarları, müşteri verilerini korumaya yardımcı olmak için, IP adresine veya Azure sanal ağ trafiği kaynağına dayalı olarak erişim izni verilene kadar sunucuya ağ erişimini engeller.
+Microsoft Azure SQL Veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics, bulut ve kurumsal uygulamalar için bir ilişkisel veritabanı hizmeti sağlar. Güvenlik duvarları, müşteri verilerini korumaya yardımcı olmak için, IP adresine veya Azure sanal ağ trafiği kaynağına dayalı olarak erişim izni verilene kadar sunucuya ağ erişimini engeller.
 
 ### <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
 
@@ -36,7 +36,7 @@ IP güvenlik duvarı kuralları, her isteğin kaynak IP adresine göre veritaban
 
 ### <a name="virtual-network-firewall-rules"></a>Sanal ağ güvenlik duvarı kuralları
 
-[Sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md) , sanal ağ bağlantınızı Azure omurgası üzerinden genişlettirecektir ve trafiğin kaynaklandığı sanal ağ alt ağını belirlemek IÇIN Azure SQL veritabanı 'nı etkinleştirin. Trafiğin Azure SQL veritabanına ulaşmasını sağlamak için, ağ güvenlik grupları aracılığıyla giden trafiğe izin vermek üzere SQL [hizmeti etiketlerini](../../virtual-network/security-overview.md) kullanın.
+[Sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md) , sanal ağ bağlantınızı Azure omurgası üzerinden genişlettirecektir ve trafiğin kaynaklandığı sanal ağ alt ağını belirlemek IÇIN Azure SQL veritabanı 'nı etkinleştirin. Trafiğin Azure SQL veritabanına ulaşmasını sağlamak için, ağ güvenlik grupları aracılığıyla giden trafiğe izin vermek üzere SQL [hizmeti etiketlerini](../../virtual-network/network-security-groups-overview.md) kullanın.
 
 [Sanal ağ kuralları](vnet-service-endpoint-rule-overview.md) , Azure SQL veritabanı 'nın yalnızca bir sanal ağ içindeki seçili alt ağlardan gönderilen iletişimleri kabul etmesine olanak tanır.
 
@@ -99,7 +99,7 @@ Gelişmiş tehdit koruması, olağan dışı davranışları ve veritabanlarına
 
 [Aktarım Katmanı Güvenliği (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)ile hareket halindeki VERILERI şifreleyerek SQL VERITABANı, SQL yönetilen örneği ve Azure SYNAPSE Analytics güvenli müşteri verileri.
 
-Tüm bağlantılar için SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE şifrelemeyi (SSL/TLS) her zaman uygular. Bu, bağlantı dizesinde **şifreleme** veya **TrustServerCertificate** ayarından bağımsız olarak, tüm verilerin istemci ve sunucu arasında "geçişte" şifrelendiğinden emin olmanızı sağlar.
+SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics, tüm bağlantılar için her zaman şifreleme (SSL/TLS) uygular. Bu, bağlantı dizesinde **şifreleme** veya **TrustServerCertificate** ayarından bağımsız olarak, tüm verilerin istemci ve sunucu arasında "geçişte" şifrelendiğinden emin olmanızı sağlar.
 
 En iyi yöntem olarak, uygulama tarafından kullanılan bağlantı dizesinde, şifreli bir bağlantı belirtmeniz ve sunucu sertifikasına _**güvenmemeniz**_ önerilir. Bu, uygulamanızı sunucu sertifikasını doğrulamaya zorlar ve böylece uygulamanızın ortadaki tür saldırılarına karşı savunmasız kalmasına engel olur.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7edf790e526329dd285d03a31137a26220e52ee
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85921160"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778940"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS ile Azure CDN kullanma
 ## <a name="what-is-cors"></a>CORS nedir?
@@ -69,13 +69,13 @@ Microsoft 'tan Azure CDN Standard 'da, istekteki **kaynak** üst bilgisini denet
 ![Standart kurallar altyapısına sahip kurallar örneği](./media/cdn-cors/cdn-standard-cors.png)
 
 > [!TIP]
-> **Erişim-denetimi-Izin verme yöntemleri**gibi ek yanıt üstbilgilerini değiştirmek için kuralınıza ek eylemler ekleyebilirsiniz.
+> **Erişim-denetimi-Izin verme yöntemleri** gibi ek yanıt üstbilgilerini değiştirmek için kuralınıza ek eylemler ekleyebilirsiniz.
 > 
 
-**Akamai ' dan Azure CDN Standart**, joker karakter kaynağını kullanmadan birden fazla kaynağa izin veren tek mekanizma [sorgu dizesi önbelleğe almayı](cdn-query-string.md)kullanmaktır. CDN uç noktası için sorgu dizesi ayarını etkinleştirin ve ardından izin verilen her etki alanından gelen istekler için benzersiz bir sorgu dizesi kullanın. Bunun yapılması, benzersiz bir sorgu dizesi için CDN önbelleğine ayrı bir nesne olarak neden olur. Ancak bu yaklaşım ideal değildir, ancak CDN 'de önbelleğe alınan aynı dosyanın birden çok kopyasının oluşmasına neden olur.  
+**Akamai ' dan Azure CDN Standart** , joker karakter kaynağını kullanmadan birden fazla kaynağa izin veren tek mekanizma [sorgu dizesi önbelleğe almayı](cdn-query-string.md)kullanmaktır. CDN uç noktası için sorgu dizesi ayarını etkinleştirin ve ardından izin verilen her etki alanından gelen istekler için benzersiz bir sorgu dizesi kullanın. Bunun yapılması, benzersiz bir sorgu dizesi için CDN önbelleğine ayrı bir nesne olarak neden olur. Ancak bu yaklaşım ideal değildir, ancak CDN 'de önbelleğe alınan aynı dosyanın birden çok kopyasının oluşmasına neden olur.  
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Verizon 'ten Premium Azure CDN
-Verizon Premium kuralları altyapısını kullanarak, istekteki **kaynak** üst bilgisini denetlemek için [bir kural oluşturmanız](cdn-rules-engine.md) gerekir.  Geçerli bir başlangıç noktası ise, kuralınız **erişim-Control-Allow-Origin** üst bilgisini istekte verilen kaynağa ayarlar.  **Kaynak** üstbilgisinde belirtilen kaynağa izin verilmiyorsa, kuralınız, tarayıcının isteği reddetmesine neden olacak şekilde **erişim-denetim-izin-Origin** üst bilgisini atmalıdır. 
+Verizon Premium kuralları altyapısını kullanarak, istekteki **kaynak** üst bilgisini denetlemek için [bir kural oluşturmanız](./cdn-verizon-premium-rules-engine.md) gerekir.  Geçerli bir başlangıç noktası ise, kuralınız **erişim-Control-Allow-Origin** üst bilgisini istekte verilen kaynağa ayarlar.  **Kaynak** üstbilgisinde belirtilen kaynağa izin verilmiyorsa, kuralınız, tarayıcının isteği reddetmesine neden olacak şekilde **erişim-denetim-izin-Origin** üst bilgisini atmalıdır. 
 
 Bunu Premium kurallar altyapısı ile gerçekleştirmenin iki yolu vardır. Her iki durumda da, dosyanın kaynak sunucusundaki **erişim-denetim-izin-kaynak** üst bilgisi yok SAYıLıR ve CDN 'nin Rules altyapısı ızın verilen CORS kaynakları 'nı tamamen yönetir.
 
@@ -91,7 +91,7 @@ https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.co
 > 
 > 
 
-Normal ifade eşleşiyorsa kuralınız, **erişim-denetimi-izin-kaynak** üst bilgisini (varsa), isteği gönderen kaynağa göre değiştirir.  Ayrıca, **Access-Control-Allow-Methods**gıbı ek CORS üst bilgileri de ekleyebilirsiniz.
+Normal ifade eşleşiyorsa kuralınız, **erişim-denetimi-izin-kaynak** üst bilgisini (varsa), isteği gönderen kaynağa göre değiştirir.  Ayrıca, **Access-Control-Allow-Methods** gıbı ek CORS üst bilgileri de ekleyebilirsiniz.
 
 ![Normal ifadeyle kurallar örneği](./media/cdn-cors/cdn-cors-regex.png)
 
@@ -103,7 +103,4 @@ Normal ifadeler yerine, **Istek üst bilgisi** [eşleştirme koşulunun](/previo
 > [!TIP]
 > Yukarıdaki örnekte joker karakter * kullanımı, Rules altyapısına hem HTTP hem de HTTPS ile eşleşmesini söyler.
 > 
-> 
-
-
-
+>

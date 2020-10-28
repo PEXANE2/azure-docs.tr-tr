@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: d716b026159311c12341c30a8c32d5a9ecc6fa3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff205069c31d50813a4fad71a3c9e2f8e2462844
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87432757"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778132"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS ile Azure CDN kullanma
 
@@ -27,13 +27,13 @@ ms.locfileid: "87432757"
 
 Özel depolama kapsayıcılarına sınırlı erişim vermek istiyorsanız, Azure depolama hesabınızın Paylaşılan Erişim İmzası (SAS) özelliğini kullanabilirsiniz. Bir SAS, hesap anahtarınızı açığa çıkarmadan Azure Depolama kaynaklarınıza kısıtlı erişim hakları veren bir URI'dir. Depolama hesabı anahtarınızla güvenmediğiniz, ancak belirli depolama hesabı kaynaklarına erişim vermek istediğiniz istemcilere bir SAS sağlayabilirsiniz. Bu istemcilere paylaşılan erişim imzası URI 'SI dağıtarak, belirli bir süre için kaynağa erişim izni vermiş olursunuz.
  
-SAS ile başlangıç ve sona erme zamanları, izinler (okuma/yazma) ve IP aralıkları gibi bir Blobun farklı erişim parametrelerini tanımlayabilirsiniz. Bu makalede, Azure CDN ile birlikte SAS 'nin nasıl kullanılacağı açıklanır. SAS hakkında daha fazla bilgi için, bunu oluşturma ve parametre seçeneklerini kullanma, bkz. [paylaşılan erişim imzaları (SAS) kullanma](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1).
+SAS ile başlangıç ve sona erme zamanları, izinler (okuma/yazma) ve IP aralıkları gibi bir Blobun farklı erişim parametrelerini tanımlayabilirsiniz. Bu makalede, Azure CDN ile birlikte SAS 'nin nasıl kullanılacağı açıklanır. SAS hakkında daha fazla bilgi için, bunu oluşturma ve parametre seçeneklerini kullanma, bkz. [paylaşılan erişim imzaları (SAS) kullanma](../storage/common/storage-sas-overview.md).
 
 ## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>Depolama SAS ile çalışmak için Azure CDN ayarlama
 Azure CDN ile SAS kullanımı için aşağıdaki üç seçenek önerilir. Tüm seçenekler zaten bir çalışma SAS oluşturmuş olduğunu varsayar (bkz. Önkoşullar). 
  
-### <a name="prerequisites"></a>Önkoşullar
-Başlamak için bir depolama hesabı oluşturun ve ardından varlığınız için bir SAS oluşturun. İki tür saklı erişim imzası oluşturabilirsiniz: hizmet SAS veya hesap SAS. Daha fazla bilgi için bkz. [paylaşılan erişim Imzaları türleri](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#types-of-shared-access-signatures).
+### <a name="prerequisites"></a>Ön koşullar
+Başlamak için bir depolama hesabı oluşturun ve ardından varlığınız için bir SAS oluşturun. İki tür saklı erişim imzası oluşturabilirsiniz: hizmet SAS veya hesap SAS. Daha fazla bilgi için bkz. [paylaşılan erişim Imzaları türleri](../storage/common/storage-sas-overview.md#types-of-shared-access-signatures).
 
 Bir SAS belirteci oluşturduktan sonra, URL 'nize ekleyerek BLOB depolama dosyanıza erişebilirsiniz `?sv=<SAS token>` . Bu URL aşağıdaki biçimdedir: 
 
@@ -44,7 +44,7 @@ Bir SAS belirteci oluşturduktan sonra, URL 'nize ekleyerek BLOB depolama dosyan
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
 
-Parametreleri ayarlama hakkında daha fazla bilgi için bkz. [SAS parametresi konuları](#sas-parameter-considerations) ve [paylaşılan erişim imzası parametreleri](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works).
+Parametreleri ayarlama hakkında daha fazla bilgi için bkz. [SAS parametresi konuları](#sas-parameter-considerations) ve [paylaşılan erişim imzası parametreleri](../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works).
 
 ![CDN SAS ayarları](./media/cdn-sas-storage-support/cdn-sas-settings.png)
 
@@ -52,7 +52,7 @@ Parametreleri ayarlama hakkında daha fazla bilgi için bkz. [SAS parametresi ko
 
 Bu seçenek en basit seçenektir ve Azure CDN kaynak sunucuya geçirilen tek bir SAS belirtecini kullanır.
  
-1. Bir uç nokta seçin, **önbelleğe alma kuralları**' nı seçin, sonra **sorgu dizesi önbellek** listesinden **her benzersiz URL 'yi** seçin.
+1. Bir uç nokta seçin, **önbelleğe alma kuralları** ' nı seçin, sonra **sorgu dizesi önbellek** listesinden **her benzersiz URL 'yi** seçin.
 
     ![CDN önbelleğe alma kuralları](./media/cdn-sas-storage-support/cdn-caching-rules.png)
 
@@ -71,13 +71,13 @@ Bu seçenek en basit seçenektir ve Azure CDN kaynak sunucuya geçirilen tek bir
  
 Bu seçenek yalnızca **Verizon profillerden Azure CDN Premium** için kullanılabilir. Bu seçenekle, blob depolamayı kaynak sunucuda güvenli hale getirebilirsiniz. Dosya için özel erişim kısıtlamalarına gerek duymuyorsanız, ancak kullanıcıların depolama kaynağına doğrudan erişmesini engellemek istiyorsanız, bu seçeneği kullanmak isteyebilirsiniz, ancak Azure CDN yük boşaltma süreleriyle Kullanıcı için bilinmeyen SAS belirteci, kaynak sunucunun belirtilen kapsayıcısındaki dosyalara erişen herkes için gereklidir. Bununla birlikte, URL yeniden yazma kuralı nedeniyle, CDN uç noktasında SAS belirteci gerekli değildir.
  
-1. Bir URL yeniden yazma kuralı oluşturmak için [Rules altyapısını](cdn-rules-engine.md) kullanın. Yeni kuralların yayılması 4 saate kadar sürer.
+1. Bir URL yeniden yazma kuralı oluşturmak için [Rules altyapısını](./cdn-verizon-premium-rules-engine.md) kullanın. Yeni kuralların yayılması 4 saate kadar sürer.
 
    ![CDN Yönet düğmesi](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
    ![CDN kuralları altyapısı düğmesi](./media/cdn-sas-storage-support/cdn-rules-engine-btn.png)
 
-   Aşağıdaki örnek URL yeniden yazma kuralı bir yakalama grubu ve *sasstoragedemo*adlı bir uç nokta içeren bir normal ifade modelini kullanır:
+   Aşağıdaki örnek URL yeniden yazma kuralı bir yakalama grubu ve *sasstoragedemo* adlı bir uç nokta içeren bir normal ifade modelini kullanır:
    
    Kaynak:   
    `(container1\/.*)`
@@ -102,7 +102,7 @@ Bu seçenek yalnızca **Verizon profillerden Azure CDN Premium** için kullanıl
 
 Azure CDN güvenlik belirteci kimlik doğrulamasını kullanmak için Verizon profile öğesinden bir **Azure CDN Premium** sahip olmanız gerekir. Bu seçenek en güvenli ve özelleştirilebilir. İstemci erişimi, güvenlik belirtecinde ayarladığınız güvenlik parametrelerini temel alır. Güvenlik belirtecini oluşturup ayarladıktan sonra, tüm CDN uç noktası URL 'Lerinde gerekli olacaktır. Bununla birlikte, URL yeniden yazma kuralı nedeniyle, CDN uç noktasında SAS belirteci gerekli değildir. SAS belirteci daha sonra geçersiz hale gelirse Azure CDN artık içeriğin kaynak sunucudan yeniden doğrulanması mümkün olmayacaktır.
 
-1. [Azure CDN bir güvenlik belirteci oluşturun](https://docs.microsoft.com/azure/cdn/cdn-token-auth#setting-up-token-authentication) ve kullanıcılarınızın dosyaya erişebileceği CDN uç noktası ve yolu için Rules altyapısını kullanarak etkinleştirin.
+1. [Azure CDN bir güvenlik belirteci oluşturun](./cdn-token-auth.md#setting-up-token-authentication) ve kullanıcılarınızın dosyaya erişebileceği CDN uç noktası ve yolu için Rules altyapısını kullanarak etkinleştirin.
 
    Bir güvenlik belirteci uç noktası URL 'SI şu biçimdedir:   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
@@ -114,9 +114,9 @@ Azure CDN güvenlik belirteci kimlik doğrulamasını kullanmak için Verizon pr
        
    Bir güvenlik belirteci kimlik doğrulaması için parametre seçenekleri bir SAS belirtecinin parametre seçeneklerinden farklıdır. Bir güvenlik belirteci oluştururken bir süre sonu süresi kullanmayı seçerseniz, bunu SAS belirtecinin sona erme süresi ile aynı değere ayarlamanız gerekir. Bunun yapılması, sona erme süresinin tahmin edilebilir olmasını sağlar. 
  
-2. Kapsayıcıdaki tüm bloblara SAS belirteci erişimini etkinleştirmek için bir URL yeniden yazma kuralı oluşturmak üzere [Rules altyapısını](cdn-rules-engine.md) kullanın. Yeni kuralların yayılması 4 saate kadar sürer.
+2. Kapsayıcıdaki tüm bloblara SAS belirteci erişimini etkinleştirmek için bir URL yeniden yazma kuralı oluşturmak üzere [Rules altyapısını](./cdn-verizon-premium-rules-engine.md) kullanın. Yeni kuralların yayılması 4 saate kadar sürer.
 
-   Aşağıdaki örnek URL yeniden yazma kuralı bir yakalama grubu ve *sasstoragedemo*adlı bir uç nokta içeren bir normal ifade modelini kullanır:
+   Aşağıdaki örnek URL yeniden yazma kuralı bir yakalama grubu ve *sasstoragedemo* adlı bir uç nokta içeren bir normal ifade modelini kullanır:
    
    Kaynak:   
    `(container1\/.*)`
@@ -138,13 +138,13 @@ SAS parametreleri Azure CDN görünür olmadığından, Azure CDN kendisine gör
 | --- | --- |
 | Başlangıç | Azure CDN blob dosyasına erişmeye başlayabileceğiniz zaman. Saat farkı (farklı bileşenler için saat sinyali farklı zamanlara ulaştığında) nedeniyle, varlığın hemen kullanılabilir olmasını istiyorsanız 15 dakika daha erken bir süre seçin. |
 | End | Azure CDN blob dosyasına artık erişememesi gereken süre. Daha önce Azure CDN önbelleğe alınmış dosyalara hala erişilebilir. Dosya sona erme süresini denetlemek için Azure CDN güvenlik belirtecinde uygun süre sonu saatini ayarlayın veya varlığı temizleyin. |
-| İzin verilen IP adresleri | İsteğe bağlı. **Verizon ' den Azure CDN**kullanıyorsanız, bu parametreyi [VERIZON Edge Server IP aralıklarından Azure CDN](/azure/cdn/cdn-pop-list-api)tanımlanan aralıklar olarak ayarlayabilirsiniz. **Akamai ' den Azure CDN**kullanıyorsanız IP adresleri STATIK olmadığından IP aralıkları parametresini ayarlayamazsınız.|
+| İzin verilen IP adresleri | İsteğe bağlı. **Verizon ' den Azure CDN** kullanıyorsanız, bu parametreyi [VERIZON Edge Server IP aralıklarından Azure CDN](./cdn-pop-list-api.md)tanımlanan aralıklar olarak ayarlayabilirsiniz. **Akamai ' den Azure CDN** kullanıyorsanız IP adresleri STATIK olmadığından IP aralıkları parametresini ayarlayamazsınız.|
 | İzin verilen protokoller | Hesap SAS ile yapılan bir istek için izin verilen protokol (ler). HTTPS ayarı önerilir.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 SAS hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
-- [Paylaşılan erişim imzaları (SAS) kullanma](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
-- [Paylaşılan erişim Imzaları, Bölüm 2: BLOB depolama ile SAS oluşturma ve kullanma](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
+- [Paylaşılan erişim imzaları (SAS) kullanma](../storage/common/storage-sas-overview.md)
+- [Paylaşılan erişim Imzaları, Bölüm 2: BLOB depolama ile SAS oluşturma ve kullanma](../storage/common/storage-sas-overview.md)
 
-Belirteç kimlik doğrulamasını ayarlama hakkında daha fazla bilgi için bkz. [Azure Content Delivery Network varlıklarını belirteç kimlik doğrulamasıyla koruma](https://docs.microsoft.com/azure/cdn/cdn-token-auth).
+Belirteç kimlik doğrulamasını ayarlama hakkında daha fazla bilgi için bkz. [Azure Content Delivery Network varlıklarını belirteç kimlik doğrulamasıyla koruma](./cdn-token-auth.md).

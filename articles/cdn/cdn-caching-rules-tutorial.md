@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae217352b83617600fd983a747d578f8f28e7ddd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81254317"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779246"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Öğretici: Azure CDN önbelleğe alma kurallarını ayarlama
 
 > [!NOTE] 
-> Önbelleğe alma kuralları yalnızca Verizon **Azure CDN ve Akamai** profillerindeki standart **Azure CDN Standart** için kullanılabilir. **Microsoft profillerinin Azure CDN** Için, Verizon profiller **'den Azure CDN Premium** için [standart kurallar altyapısını](cdn-standard-rules-engine-reference.md) kullanmanız gerekir, benzer Işlevler için **Manage** Portal 'daki [Verizon Premium Rules altyapısını](cdn-rules-engine.md) kullanmanız gerekir.
+> Önbelleğe alma kuralları yalnızca Verizon **Azure CDN ve Akamai** profillerindeki standart **Azure CDN Standart** için kullanılabilir. **Microsoft profillerinin Azure CDN** Için, Verizon profiller **'den Azure CDN Premium** için [standart kurallar altyapısını](cdn-standard-rules-engine-reference.md) kullanmanız gerekir, benzer Işlevler için **Manage** Portal 'daki [Verizon Premium Rules altyapısını](./cdn-verizon-premium-rules-engine.md) kullanmanız gerekir.
  
 
 Bu öğreticide, Azure Content Delivery Network (CDN) önbelleğe alma kurallarını kullanarak varsayılan önbellek süre sonu davranışının hem genel olarak hem de URL yolu ve dosya uzantısı gibi özel koşullarla ayarlanması veya değiştirilmesi açıklanmıştır. Azure CDN iki tür önbelleğe alma kuralı sağlar:
@@ -32,7 +32,7 @@ Bu öğreticide, Azure Content Delivery Network (CDN) önbelleğe alma kurallar�
 
 - Özel önbelleğe alma kuralları: Profilinizdeki her uç nokta için bir veya daha fazla özel önbelleğe alma kuralı ayarlayabilirsiniz. Özel önbelleğe alma kuralları ayarlandığında belirli yollar ve dosya uzantılarıyla eşleşir, sırasıyla işlenir ve genel önbelleğe alma kuralını geçersiz kılar. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > - Önbelleğe alma kuralları sayfasını açın.
 > - Genel önbelleğe alma kuralı oluşturun.
@@ -48,7 +48,7 @@ Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir CDN profili 
 
 1. [Azure portalında](https://portal.azure.com) bir CDN profili ve ardından bir uç nokta seçin.
 
-2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları**’nı seçin.
+2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları** ’nı seçin.
 
    ![CDN Önbelleğe alma kuralları düğmesi](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
@@ -61,7 +61,7 @@ Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir CDN profili 
 
 Aşağıda gösterilen şekilde bir genel önbelleğe alma kuralı oluşturun:
 
-1. **Genel önbelleğe alma kuralları**’nın altında **Sorgu dizesi önbelleğe alma davranışı** seçeneğini **Sorgu dizelerini yoksay** olarak ayarlayın.
+1. **Genel önbelleğe alma kuralları** ’nın altında **Sorgu dizesi önbelleğe alma davranışı** seçeneğini **Sorgu dizelerini yoksay** olarak ayarlayın.
 
 2. **Önbelleğe alma davranışı** seçeneğini **Eksikse ayarla** olarak ayarlayın.
        
@@ -90,15 +90,15 @@ Aşağıda gösterilen şekilde bir özel önbelleğe alma kuralı oluşturun:
  
 1. Bir CDN profili ve ardından kaldırmak istediğiniz önbelleğe alma kurallarını içeren uç noktayı seçin.
 
-2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları**’nı seçin.
+2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları** ’nı seçin.
 
 3. **Genel önbelleğe alma kuralları** altında **Önbelleğe alma davranışı** seçeneğini **Ayarlı değil** olarak ayarlayın.
  
 4. **Özel önbelleğe alma kuralları** altında, silmek istediğiniz kuralın yanındaki onay kutusunu seçin.
 
-5. **Sil**’i seçin.
+5. **Sil** ’i seçin.
 
-6. Sayfanın üst kısmından **Kaydet**’i seçin.
+6. Sayfanın üst kısmından **Kaydet** ’i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -114,6 +114,3 @@ Ek önbelleğe alma kuralı ayarlarını yapılandırma konusunda bilgi edinmek 
 
 > [!div class="nextstepaction"]
 > [Azure CDN önbelleğe alma davranışını önbelleğe alma kurallarıyla denetleme](cdn-caching-rules.md)
-
-
-

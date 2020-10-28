@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2ef1367cbbb1fb71159c4520c3d1481904c1769
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84886067"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779331"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Azure CDN gelişmiş HTTP raporları ile kullanım istatistiklerini analiz etme
 ## <a name="overview"></a>Genel Bakış
@@ -33,7 +33,7 @@ Bu belgede Microsoft Azure CDN 'de gelişmiş HTTP raporlaması açıklanmaktad�
     ![CDN profili dikey penceresi Yönet düğmesi](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
     CDN yönetim portalı açılır.
-2. **Analiz** sekmesinin üzerine gelin ve ardından **Gelişmiş http raporları** açılır öğesi üzerine gelin.  **Http büyük platformu**' na tıklayın.
+2. **Analiz** sekmesinin üzerine gelin ve ardından **Gelişmiş http raporları** açılır öğesi üzerine gelin.  **Http büyük platformu** ' na tıklayın.
    
     ![CDN yönetim portalı-gelişmiş raporlar menüsü](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
@@ -202,6 +202,5 @@ Grafiğin sol tarafı (y ekseni), 404 olmayan bir durum kodu ile sonuçlanan ilk
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure CDN'ye Genel Bakış](cdn-overview.md)
 * [Microsoft Azure CDN 'de gerçek zamanlı istatistikler](cdn-real-time-stats.md)
-* [Kurallar altyapısını kullanarak varsayılan HTTP davranışını geçersiz kılma](cdn-rules-engine.md)
+* [Kurallar altyapısını kullanarak varsayılan HTTP davranışını geçersiz kılma](./cdn-verizon-premium-rules-engine.md)
 * [Kenar performansını çözümleme](cdn-edge-performance.md)
-

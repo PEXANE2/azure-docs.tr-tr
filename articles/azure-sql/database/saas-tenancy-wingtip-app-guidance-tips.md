@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 4c3a141525f650d6e254f79ce9e3396f2c35a95f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa9215fa001fb117000eb6a68867ddd46fac9b92
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84051888"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780334"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip bilet örnek SaaS uygulamaları ile çalışmaya yönelik genel kılavuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,17 +25,17 @@ Bu makale, Azure SQL veritabanı 'nı kullanan Wingtip bilet örnek SaaS uygulam
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Wingtip bilet SaaS betiklerini indirme ve engellemesini kaldırma
 
-ZIP dosyaları bir dış kaynaktan indirilip ayıklandığında, yürütülebilir içerikler (betikler, dll 'ler) Windows tarafından engellenebilir. Bir zip dosyasından betikleri ayıkladığınızda, **Ayıklamadan önce. zip dosyasının engelini kaldırmak için aşağıdaki adımları izleyin**. Bu, betiklerin çalışmasına izin verilmesini sağlar.
+ZIP dosyaları bir dış kaynaktan indirilip ayıklandığında, yürütülebilir içerikler (betikler, dll 'ler) Windows tarafından engellenebilir. Bir zip dosyasından betikleri ayıkladığınızda, **Ayıklamadan önce. zip dosyasının engelini kaldırmak için aşağıdaki adımları izleyin** . Bu, betiklerin çalışmasına izin verilmesini sağlar.
 
 1. Araştırmak istediğiniz veritabanı Kiracı deseninin Wingtip bilet SaaS GitHub deposuna göz atın:
     - [Wingtipbilet ssaas-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [Wingtipbilet ssaas-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [Wingtipbilet ssaas-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
-2. **Kopyala veya indir**' e tıklayın.
+2. **Kopyala veya indir** ' e tıklayın.
 3. **ZIP 'ı indir** ' e tıklayın ve dosyayı kaydedin.
-4. ZIP dosyasına sağ tıklayın ve **Özellikler**' i seçin. ZIP dosya adı, depo adına karşılık gelir. değerine. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
-5. **Genel** sekmesinde **Engellemeyi kaldır**' ı seçin.
-6. **Tamam**'a tıklayın.
+4. ZIP dosyasına sağ tıklayın ve **Özellikler** ' i seçin. ZIP dosya adı, depo adına karşılık gelir. değerine. _WingtipTicketsSaaS-DbPerTenant-master.zip_ )
+5. **Genel** sekmesinde **Engellemeyi kaldır** ' ı seçin.
+6. **Tamam** ’a tıklayın.
 7. Dosyaları ayıklayın.
 
 Betikler içinde bulunur *. \\ Öğrenme modülleri* klasörü.
@@ -43,7 +43,7 @@ Betikler içinde bulunur *. \\ Öğrenme modülleri* klasörü.
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Wingtip bilet PowerShell betikleri ile çalışma
 
-En iyi şekilde yararlanmak için, belirtilen betiklere erişmeniz gerekir. Yürütme noktaları kullanın ve betikler üzerinde ilerleyin ve farklı SaaS desenlerinin nasıl uygulandığını inceleyin. En iyi şekilde anlamak için, sunulan betiklerin ve modüllerin kolayca ilerlemek için [PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise)'yi kullanmanızı öneririz.
+En iyi şekilde yararlanmak için, belirtilen betiklere erişmeniz gerekir. Yürütme noktaları kullanın ve betikler üzerinde ilerleyin ve farklı SaaS desenlerinin nasıl uygulandığını inceleyin. En iyi şekilde anlamak için, sunulan betiklerin ve modüllerin kolayca ilerlemek için [PowerShell ISE](/powershell/scripting/components/ise/introducing-the-windows-powershell-ise)'yi kullanmanızı öneririz.
 
 ### <a name="update-the-configuration-file-for-your-deployment"></a>Dağıtımınız için yapılandırma dosyasını güncelleştirme
 
@@ -57,7 +57,7 @@ Burada bu değerler ayarlandığında, her bir betikte dağıtıma özgü değer
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>F5 'e basarak betikleri yürütün
 
-Çeşitli betikler klasörlerde gezinmek için *$PSScriptRoot* kullanır ve *$PSScriptRoot* yalnızca **F5**'e basılarak betikler yürütüldüğünde değerlendirilir.Bir seçimi vurgulama ve çalıştırma (**F8**) hatalara neden olabilir, bu nedenle betikleri çalıştırırken **F5** tuşuna basın.
+Çeşitli betikler klasörlerde gezinmek için *$PSScriptRoot* kullanır ve *$PSScriptRoot* yalnızca **F5** 'e basılarak betikler yürütüldüğünde değerlendirilir.  Bir seçimi vurgulama ve çalıştırma ( **F8** ) hatalara neden olabilir, bu nedenle betikleri çalıştırırken **F5** tuşuna basın.
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>Uygulamayı incelemek üzere betiklerde ilerleme
 
@@ -67,34 +67,34 @@ PowerShell komut dosyalarını keşfetme ve Adımlama ipuçları:
 
 - PowerShell ıSE 'de **demo-** betikleri açın.
 - **F5** ile yürütün veya devam edin (bir komut dosyasının seçimleri çalıştırılırken *$PSScriptRoot* değerlendirilmediği için **F8** kullanarak önerilmez).
-- Bir çizgiye tıklayarak veya çizgiyi seçerek ve **F9**’a basarak kesme noktaları yerleştirin.
-- **F10**’u kullanarak bir işlev veya betiği atlayın.
-- **F11**’i kullanarak bir işlev veya betiğe gidin.
-- **Shift + F11**’i kullanarak geçerli işlev veya betikten çıkın.
+- Bir çizgiye tıklayarak veya çizgiyi seçerek ve **F9** ’a basarak kesme noktaları yerleştirin.
+- **F10** ’u kullanarak bir işlev veya betiği atlayın.
+- **F11** ’i kullanarak bir işlev veya betiğe gidin.
+- **Shift + F11** ’i kullanarak geçerli işlev veya betikten çıkın.
 
 
 ## <a name="explore-database-schema-and-execute-sql-queries-using-ssms"></a>Veritabanı şemasını keşfetme ve SSMS kullanarak SQL sorguları yürütme
 
-Uygulama sunucularına ve veritabanlarına bağlanmak ve bu dosyalara gitmek için [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) kullanın.
+Uygulama sunucularına ve veritabanlarına bağlanmak ve bu dosyalara gitmek için [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) kullanın.
 
 Dağıtımın başlangıçta Bağlanılacak kiracılar ve Katalog sunucuları vardır. Sunucuların adlandırılması, veritabanı Kiracı düzenine bağlıdır (Ayrıntılar için aşağıya bakın).
 
-   - **Tek başına uygulama:** her kiracı için sunucular (örn. *contosoconcerthall- &lt; Kullanıcı &gt; * sunucusu) ve *Katalog-sa- &lt; Kullanıcı &gt; *
-   - **Kiracı başına veritabanı:** *tenants1-DPT- &lt; user &gt; * ve *Catalog-DPT- &lt; user &gt; * Servers
-   - **Çok kiracılı veritabanı:** *tenants1-MT- &lt; user &gt; * ve *Catalog-MT- &lt; user &gt; * Servers
+   - **Tek başına uygulama:** her kiracı için sunucular (örn. *contosoconcerthall- &lt; Kullanıcı &gt;* sunucusu) ve *Katalog-sa- &lt; Kullanıcı &gt;*
+   - **Kiracı başına veritabanı:** *tenants1-DPT- &lt; user &gt;* ve *Catalog-DPT- &lt; user &gt;* Servers
+   - **Çok kiracılı veritabanı:** *tenants1-MT- &lt; user &gt;* ve *Catalog-MT- &lt; user &gt;* Servers
 
 Başarılı bir tanıtım bağlantısı sağlamak için, tüm sunucuların tüm IP 'Leri aracılığıyla izin veren bir [güvenlik duvarı kuralı](firewall-configure.md) vardır.
 
 
 1. *SSMS* 'yi açın ve kiracılar 'a bağlanın. Sunucu adı, seçtiğiniz veritabanı Kiracı düzenine bağlıdır (Ayrıntılar için aşağıya bakın):
-    - **Tek başına uygulama:** ayrı kiracıların sunucuları (örn. *contosoconcerthall- &lt; User &gt; . Database.Windows.net*)
+    - **Tek başına uygulama:** ayrı kiracıların sunucuları (örn. *contosoconcerthall- &lt; User &gt; . Database.Windows.net* )
     - **Kiracı başına veritabanı:** *tenants1-DPT- &lt; user &gt; . Database.Windows.net*
     - **Çok kiracılı veritabanı:** *tenants1-MT- &lt; user &gt; . Database.Windows.net*
 2. **Connect**  >  **Veritabanı altyapısına Bağlan...** öğesine tıklayın:
 
    ![katalog sunucusu seçeneğine tıklayın](./media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. Demo kimlik bilgileri şunlardır: Login = *Geliştirici*, Password = *P \@ ssword1*
+3. Demo kimlik bilgileri şunlardır: Login = *Geliştirici* , Password = *P \@ ssword1*
 
     Aşağıdaki görüntüde, *kiracı başına veritabanı* için oturum açma bilgisi gösterilmektedir.
     ![bağlanma](./media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
@@ -116,7 +116,6 @@ Aşağıdaki görüntüde, *kiracı başına veritabanı* için oturum açma des
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Wingtip bilet SaaS tek başına uygulamasını dağıtma](../../sql-database/saas-standaloneapp-get-started-deploy.md)
-- [Kiracı uygulaması başına Wingtip bilet SaaS veritabanını dağıtma](../../sql-database/saas-dbpertenant-get-started-deploy.md)
-- [Wingtip bilet SaaS çok kiracılı veritabanı uygulamasını dağıtma](../../sql-database/saas-multitenantdb-get-started-deploy.md)
-
+- [Wingtip bilet SaaS tek başına uygulamasını dağıtma](./saas-standaloneapp-get-started-deploy.md)
+- [Kiracı uygulaması başına Wingtip bilet SaaS veritabanını dağıtma](./saas-dbpertenant-get-started-deploy.md)
+- [Wingtip bilet SaaS çok kiracılı veritabanı uygulamasını dağıtma](./saas-multitenantdb-get-started-deploy.md)

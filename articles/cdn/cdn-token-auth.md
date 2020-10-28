@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21ef06f37e6840df08b1477f9c0ff24f6e15d1a3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887444"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778013"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Belirteç kimlik doğrulamasıyla Azure CDN varlıkların güvenliğini sağlama
 
@@ -64,7 +64,7 @@ Aşağıdaki akış çizelgesi, CDN uç noktasında belirteç kimlik doğrulamas
 
     ![CDN profili Yönet düğmesi](./media/cdn-token-auth/cdn-manage-btn.png)
 
-2. **Http büyük**üzerine gelin, ardından açılır menü kutusunda **belirteç kimlik doğrulaması** ' nı seçin. Daha sonra şifreleme anahtarını ve şifreleme parametrelerini aşağıdaki gibi ayarlayabilirsiniz:
+2. **Http büyük** üzerine gelin, ardından açılır menü kutusunda **belirteç kimlik doğrulaması** ' nı seçin. Daha sonra şifreleme anahtarını ve şifreleme parametrelerini aşağıdaki gibi ayarlayabilirsiniz:
 
    1. Bir veya daha fazla şifreleme anahtarı oluşturun. Şifreleme anahtarı büyük/küçük harfe duyarlıdır ve alfasayısal karakterlerin herhangi bir birleşimini içerebilir. Boşluk da dahil olmak üzere diğer karakter türlerine izin verilmez. En fazla 250 karakter uzunluğunda olur. Şifreleme anahtarlarınızın rastgele olduğundan emin olmak için, [OpenSSL aracını](https://www.openssl.org/)kullanarak bunları oluşturmanız önerilir. 
 
@@ -80,9 +80,9 @@ Aşağıdaki akış çizelgesi, CDN uç noktasında belirteç kimlik doğrulamas
     
    2. **Birincil anahtar** kutusuna benzersiz bir şifreleme anahtarı girin ve isteğe bağlı olarak **yedekleme anahtarı** kutusuna bir yedekleme anahtarı girin.
 
-   3. **En düşük şifreleme sürümü** listesinden her anahtar için en düşük şifreleme sürümünü seçin ve ardından **Güncelleştir**' i seçin:
-      - **V2**: anahtarın sürüm 2,0 ve 3,0 belirteçleri oluşturmak için kullanılabileceğini gösterir. Bu seçeneği yalnızca eski sürüm 2,0 şifreleme anahtarından sürüm 3,0 anahtarına geçiş yapıyorsanız kullanın.
-      - **V3**: (önerilir), anahtarın yalnızca sürüm 3,0 belirteçleri oluşturmak Için kullanılabileceğini gösterir.
+   3. **En düşük şifreleme sürümü** listesinden her anahtar için en düşük şifreleme sürümünü seçin ve ardından **Güncelleştir** ' i seçin:
+      - **V2** : anahtarın sürüm 2,0 ve 3,0 belirteçleri oluşturmak için kullanılabileceğini gösterir. Bu seçeneği yalnızca eski sürüm 2,0 şifreleme anahtarından sürüm 3,0 anahtarına geçiş yapıyorsanız kullanın.
+      - **V3** : (önerilir), anahtarın yalnızca sürüm 3,0 belirteçleri oluşturmak Için kullanılabileceğini gösterir.
 
       ![CDN belirteci kimlik doğrulama kurulum anahtarı](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
@@ -164,26 +164,26 @@ Aşağıdaki akış çizelgesi, CDN uç noktasında belirteç kimlik doğrulamas
 
       Belirteç oluşturulduktan sonra, **üretilen belirteç** kutusunda görüntülenir. Belirteci kullanmak için, URL yolunuzda dosyanın sonuna bir sorgu dizesi olarak ekleyin. Örneğin, `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
-   8. İsteğe bağlı olarak, belirtecinizin parametrelerini görüntüleyebilmeniz için, şifre çözme aracıyla belirtecinizi test edin. Belirteç değerini **şifre çözme** kutusuna yapıştırın. **Şifresini çözmek Için anahtardan** kullanılacak şifreleme anahtarını seçin ve ardından **şifre çöz**' ü seçin.
+   8. İsteğe bağlı olarak, belirtecinizin parametrelerini görüntüleyebilmeniz için, şifre çözme aracıyla belirtecinizi test edin. Belirteç değerini **şifre çözme** kutusuna yapıştırın. **Şifresini çözmek Için anahtardan** kullanılacak şifreleme anahtarını seçin ve ardından **şifre çöz** ' ü seçin.
 
       Belirtecin şifresi çözülmediğinde, parametreleri **özgün parametreler** kutusunda görüntülenir.
 
-   9. İsteğe bağlı olarak, bir istek reddedildiğinde döndürülen yanıt kodu türünü özelleştirin. **Etkin**' i seçin, ardından **Yanıt** kodu listesinden yanıt kodunu seçin. **Üstbilgi adı** otomatik olarak **konum**olarak ayarlanır. Yeni yanıt kodunu uygulamak için **Kaydet** ' i seçin. Belirli yanıt kodları için **üstbilgi değeri** kutusuna hata sayfanızın URL 'sini de girmeniz gerekir. **403** yanıt kodu (yasak) varsayılan olarak seçilidir. 
+   9. İsteğe bağlı olarak, bir istek reddedildiğinde döndürülen yanıt kodu türünü özelleştirin. **Etkin** ' i seçin, ardından **Yanıt** kodu listesinden yanıt kodunu seçin. **Üstbilgi adı** otomatik olarak **konum** olarak ayarlanır. Yeni yanıt kodunu uygulamak için **Kaydet** ' i seçin. Belirli yanıt kodları için **üstbilgi değeri** kutusuna hata sayfanızın URL 'sini de girmeniz gerekir. **403** yanıt kodu (yasak) varsayılan olarak seçilidir. 
 
-3. **Http büyük**altında **Rules Engine**' i seçin. Özelliği uygulamak için yollar tanımlamak, belirteç kimlik doğrulaması özelliğini etkinleştirmek ve belirteç kimlik doğrulaması ile ilgili ek özellikleri etkinleştirmek için Rules altyapısını kullanın. Daha fazla bilgi için bkz. [kural altyapısı başvurusu](cdn-rules-engine-reference.md).
+3. **Http büyük** altında **Rules Engine** ' i seçin. Özelliği uygulamak için yollar tanımlamak, belirteç kimlik doğrulaması özelliğini etkinleştirmek ve belirteç kimlik doğrulaması ile ilgili ek özellikleri etkinleştirmek için Rules altyapısını kullanın. Daha fazla bilgi için bkz. [kural altyapısı başvurusu](./cdn-verizon-premium-rules-engine-reference.md).
 
    1. Belirteç kimlik doğrulaması uygulamak istediğiniz varlığı veya yolu tanımlamak için mevcut bir kuralı seçin veya yeni bir kural oluşturun. 
-   2. Bir kuralda belirteç kimlik doğrulamasını etkinleştirmek için, **Özellikler** listesinden **[belirteç](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** kimlik doğrulaması ' nı seçin ve ardından **etkin**' i seçin. Bir kuralı **güncelleştiriyorsanız veya bir kural oluşturuyorsanız,** **Güncelleştir** ' i seçin.
+   2. Bir kuralda belirteç kimlik doğrulamasını etkinleştirmek için, **Özellikler** listesinden **[belirteç](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** kimlik doğrulaması ' nı seçin ve ardından **etkin** ' i seçin. Bir kuralı **güncelleştiriyorsanız veya bir kural oluşturuyorsanız,** **Güncelleştir** ' i seçin.
         
       ![CDN kuralları altyapı belirteci kimlik doğrulama etkinleştirme örneği](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
-4. Kurallar altyapısında, ek belirteç kimlik doğrulaması ile ilgili özellikleri de etkinleştirebilirsiniz. Aşağıdaki özelliklerden herhangi birini etkinleştirmek için, **Özellikler** listesinden seçin ve ardından **etkin**' i seçin.
+4. Kurallar altyapısında, ek belirteç kimlik doğrulaması ile ilgili özellikleri de etkinleştirebilirsiniz. Aşağıdaki özelliklerden herhangi birini etkinleştirmek için, **Özellikler** listesinden seçin ve ardından **etkin** ' i seçin.
     
-   - **[Belirteç kimlik doğrulaması reddi kodu](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)**: bir istek reddedildiğinde kullanıcıya döndürülen yanıtın türünü belirler. Burada ayarlanan kurallar, belirteç tabanlı kimlik doğrulama sayfasındaki **özel olarak reddetme** bölümünde ayarlanan yanıt kodunu geçersiz kılar.
+   - **[Belirteç kimlik doğrulaması reddi kodu](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)** : bir istek reddedildiğinde kullanıcıya döndürülen yanıtın türünü belirler. Burada ayarlanan kurallar, belirteç tabanlı kimlik doğrulama sayfasındaki **özel olarak reddetme** bölümünde ayarlanan yanıt kodunu geçersiz kılar.
 
-   - **[Belirteç kimlik doğrulaması URL 'Sini yoksay durum](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)**: belirteci doğrulamak IÇIN kullanılan URL 'nin büyük/küçük harfe duyarlı olup olmadığını belirler.
+   - **[Belirteç kimlik doğrulaması URL 'Sini yoksay durum](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)** : belirteci doğrulamak IÇIN kullanılan URL 'nin büyük/küçük harfe duyarlı olup olmadığını belirler.
 
-   - **[Belirteç kimlik doğrulaması parametresi](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)**: istenen URL 'de görünen belirteç kimlik doğrulama sorgu dizesi parametresini yeniden adlandırır. 
+   - **[Belirteç kimlik doğrulaması parametresi](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)** : istenen URL 'de görünen belirteç kimlik doğrulama sorgu dizesi parametresini yeniden adlandırır. 
         
      ![CDN kuralları altyapı belirteci kimlik doğrulama ayarları örneği](./media/cdn-token-auth/cdn-rules-engine2.png)
 

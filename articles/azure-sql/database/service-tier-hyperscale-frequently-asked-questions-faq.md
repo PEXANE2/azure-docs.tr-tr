@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488975"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780198"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -136,7 +136,7 @@ Hayır.
 
 ### <a name="how-many-read-scale-out-replicas-are-supported"></a>Kaç okuma ölçeği genişletme çoğaltması desteklenir
 
-Hiper ölçek veritabanları, varsayılan olarak bir okuma ölçeği genişletme çoğaltması (birincil dahil olmak üzere iki çoğaltma) ile oluşturulur. [Azure Portal](https://portal.azure.com) veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)kullanarak 0 ile 4 arasında salt okuma çoğaltması sayısını ölçeklendirebilirsiniz.
+Hiper ölçek veritabanları, varsayılan olarak bir okuma ölçeği genişletme çoğaltması (birincil dahil olmak üzere iki çoğaltma) ile oluşturulur. [Azure Portal](https://portal.azure.com) veya [REST API](/rest/api/sql/databases/createorupdate)kullanarak 0 ile 4 arasında salt okuma çoğaltması sayısını ölçeklendirebilirsiniz.
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-replicas"></a>Yüksek kullanılabilirlik için ek işlem çoğaltmaları sağlanması gerekir
 
@@ -198,7 +198,7 @@ Satır, sayfa ve columnstore sıkıştırması dahil olmak üzere Evet.
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>Çok büyük bir tablonuz varsa, tablomın verileri birden fazla veri dosyasına yayılmaktadır
 
-Evet. Belirli bir tabloyla ilişkili veri sayfaları, aynı dosya grubunun bir parçası olan birden çok veri dosyasında bitebilirler. SQL Server, verileri veri dosyaları üzerinden dağıtmak için [orantılı bir Fill stratejisi](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) kullanır.
+Evet. Belirli bir tabloyla ilişkili veri sayfaları, aynı dosya grubunun bir parçası olan birden çok veri dosyasında bitebilirler. SQL Server, verileri veri dosyaları üzerinden dağıtmak için [orantılı bir Fill stratejisi](/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) kullanır.
 
 ## <a name="data-migration-questions"></a>Veri geçişi soruları
 
@@ -231,9 +231,9 @@ Hiper ölçek, yeni/değiştirilmiş verileri 100 MB/s olarak kullanabilir, anca
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-azure-synapse-analytics"></a>Blob depolamadaki verileri okuyabilir ve hızlı yükleme yapabilir (Azure SYNAPSE Analytics 'te PolyBase gibi)
 
-Bir istemci uygulamanızın Azure Storage 'dan veri okuyabilmesini ve veri yükünü bir hiper ölçekli veritabanına yüklemesini (tıpkı Azure SQL veritabanı 'ndaki diğer veritabanları gibi) sağlayabilirsiniz. PolyBase Şu anda Azure SQL veritabanı 'nda desteklenmiyor. Hızlı yük sağlamaya alternatif olarak, [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/)KULLANABILIR veya [SQL için spark Bağlayıcısı](spark-connector.md)ile [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) bir Spark işi kullanabilirsiniz. SQL 'e Spark Bağlayıcısı toplu ekleme 'yi destekler.
+Bir istemci uygulamanızın Azure Storage 'dan veri okuyabilmesini ve veri yükünü bir hiper ölçekli veritabanına yüklemesini (tıpkı Azure SQL veritabanı 'ndaki diğer veritabanları gibi) sağlayabilirsiniz. PolyBase Şu anda Azure SQL veritabanı 'nda desteklenmiyor. Hızlı yük sağlamaya alternatif olarak, [Azure Data Factory](../../data-factory/index.yml)KULLANABILIR veya [SQL için spark Bağlayıcısı](spark-connector.md)ile [Azure Databricks](/azure/azure-databricks/) bir Spark işi kullanabilirsiniz. SQL 'e Spark Bağlayıcısı toplu ekleme 'yi destekler.
 
-BULK INSERT veya OPENROWSET kullanarak Azure Blob mağazasından verileri toplu olarak okumak de mümkündür: [Azure Blob depolama alanındaki verilere toplu erişim örnekleri](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
+BULK INSERT veya OPENROWSET kullanarak Azure Blob mağazasından verileri toplu olarak okumak de mümkündür: [Azure Blob depolama alanındaki verilere toplu erişim örnekleri](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
 
 Hiper ölçekte basit kurtarma veya toplu günlük modeli desteklenmez. Yüksek kullanılabilirlik ve zaman içinde kurtarma sağlamak için tam kurtarma modeli gereklidir. Ancak, hiper ölçek günlüğü mimarisi diğer Azure SQL veritabanı hizmet katmanlarına kıyasla daha iyi veri alma oranı sağlar.
 
@@ -277,7 +277,7 @@ Hayır. Yedeklemeler, depolama alt sistemi tarafından yönetilir ve depolama an
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Hiper ölçek veritabanı ile coğrafi geri yükleme yapabilir miyim
 
-Evet. Coğrafi geri yükleme tam olarak desteklenmektedir. Bir noktadan noktaya geri yükleme işleminin aksine, coğrafi geri yükleme bir veri boyutu işlemi gerektirir. Veri dosyaları paralel olarak kopyalanır, bu nedenle bu işlemin süresi, birincil olarak veritabanındaki en büyük dosyanın boyutuna (Toplam veritabanı boyutu yerine) bağlıdır. Veritabanı, kaynak veritabanının bölgesiyle [eşleştirilmiş](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) olan Azure bölgesine geri yüklenirse, coğrafi geri yükleme süresi önemli ölçüde daha kısa olur.
+Evet. Coğrafi geri yükleme tam olarak desteklenmektedir. Bir noktadan noktaya geri yükleme işleminin aksine, coğrafi geri yükleme bir veri boyutu işlemi gerektirir. Veri dosyaları paralel olarak kopyalanır, bu nedenle bu işlemin süresi, birincil olarak veritabanındaki en büyük dosyanın boyutuna (Toplam veritabanı boyutu yerine) bağlıdır. Veritabanı, kaynak veritabanının bölgesiyle [eşleştirilmiş](../../best-practices-availability-paired-regions.md) olan Azure bölgesine geri yüklenirse, coğrafi geri yükleme süresi önemli ölçüde daha kısa olur.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Hiper ölçekli veritabanı ile Coğrafi çoğaltmayı ayarlayabilir miyim
 
@@ -357,7 +357,7 @@ Hayır. Yalnızca birincil işlem çoğaltması okuma/yazma isteklerini kabul ed
 
 ### <a name="how-many-secondary-compute-replicas-can-i-provision"></a>Kaç tane ikincil işlem çoğaltması sağlayabilirim?
 
-Hiper ölçek veritabanları için varsayılan olarak bir ikincil çoğaltma oluşturacağız. Kopyaların sayısını ayarlamak istiyorsanız [Azure Portal](https://portal.azure.com) veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)kullanarak bunu yapabilirsiniz.
+Hiper ölçek veritabanları için varsayılan olarak bir ikincil çoğaltma oluşturacağız. Kopyaların sayısını ayarlamak istiyorsanız [Azure Portal](https://portal.azure.com) veya [REST API](/rest/api/sql/databases/createorupdate)kullanarak bunu yapabilirsiniz.
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>Nasıl yaparım? bu ikincil işlem çoğaltmalarına bağlanın
 

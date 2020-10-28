@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5b6fe2b2704f101a7775b7eb700375105b0a9eca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6061de0a330518baaa829a9a1c8a05f196d68dcb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81259893"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777852"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Öğretici: Depolama bloblarına HTTPS üzerinden Azure CDN özel etki alanı kullanarak erişme
 
@@ -37,7 +37,7 @@ Profilinizde bir CDN uç noktası oluşturduğunuzda, varsayılan olarak CDN iç
 Özel etki alanınızda HTTPS protokolünü kullanarak, verilerinizin TLS/SSL şifrelemesi aracılığıyla güvenli bir şekilde teslim edilmesini sağlarsınız. Web tarayıcınız HTTPS üzerinden bir web sitesine bağlanırken, web sitesinin güvenlik sertifikasını doğrular ve bu sertifikanın yasal bir sertifika yetkilisi tarafından verildiğini doğrular. Özel etki alanınızda HTTPS yapılandırmak için, şu öğreticideki yönergeleri izleyin: [Azure CDN özel etki alanında HTTPS yapılandırma](cdn-custom-ssl.md).
 
 ## <a name="shared-access-signatures"></a>Paylaşılan Erişim İmzaları
-Blob depolama uç noktanız anonim okuma erişimini engellemek için yapılandırılmışsa, özel etki alanınıza yaptığınız her istekte bir [Paylaşılan Erişim İmzası (SAS)](cdn-sas-storage-support.md) belirteci sağlamanız gerekir. Varsayılan olarak, blob depolama uç noktaları anonim okuma erişimini engeller. SAS hakkında daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](../storage/blobs/storage-manage-access-to-resources.md).
+Blob depolama uç noktanız anonim okuma erişimini engellemek için yapılandırılmışsa, özel etki alanınıza yaptığınız her istekte bir [Paylaşılan Erişim İmzası (SAS)](cdn-sas-storage-support.md) belirteci sağlamanız gerekir. Varsayılan olarak, blob depolama uç noktaları anonim okuma erişimini engeller. SAS hakkında daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](../storage/blobs/anonymous-read-access-configure.md).
 
 Azure CDN SAS belirtecine eklenen kısıtlamaları yok sayar. Örneğin, tüm SAS belirteçlerinin bir sona erme zamanı vardır, yani içerik CDN varlık noktası (POP) sunucularından temizlenene kadar içeriğe süresi dolmuş bir SAS ile hala erişilebilir. Önbellek yanıtı üst bilgisini ayarlayarak verilerin Azure CDN üzerinde ne kadar süreyle önbelleğe alınacağını denetleyebilirsiniz. Daha fazla bilgi için, bkz. [Azure CDN’de Azure Depolama bloblarının sona erme tarihini yönetme](cdn-manage-expiration-of-blob-content.md).
 
@@ -61,7 +61,3 @@ Azure CDN üzerinden bloblara eriştiğinizde, POP sunucuları ve kaynak (Blob d
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Öğretici: Azure CDN önbelleğe alma kurallarını ayarlama](cdn-caching-rules-tutorial.md)
-
-
-
-

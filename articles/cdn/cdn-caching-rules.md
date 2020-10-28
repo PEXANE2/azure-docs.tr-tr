@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
-ms.openlocfilehash: 1f30943eb0cc72f677785d1228b47b65764c1e7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5f4f6a6e72b57638688069111071a6e0a035c49
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887865"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778974"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Azure CDN önbelleğe alma davranışını önbelleğe alma kurallarıyla denetleme
 
 > [!NOTE] 
-> Önbelleğe alma kuralları yalnızca Verizon **Azure CDN ve Akamai** profillerindeki standart **Azure CDN Standart** için kullanılabilir. **Microsoft profillerinin Azure CDN** Için, Verizon profiller **'den Azure CDN Premium** için [standart kurallar altyapısını](cdn-standard-rules-engine-reference.md) kullanmanız gerekir, benzer Işlevler için **Manage** Portal 'daki [Verizon Premium Rules altyapısını](cdn-rules-engine.md) kullanmanız gerekir.
+> Önbelleğe alma kuralları yalnızca Verizon **Azure CDN ve Akamai** profillerindeki standart **Azure CDN Standart** için kullanılabilir. **Microsoft profillerinin Azure CDN** Için, Verizon profiller **'den Azure CDN Premium** için [standart kurallar altyapısını](cdn-standard-rules-engine-reference.md) kullanmanız gerekir, benzer Işlevler için **Manage** Portal 'daki [Verizon Premium Rules altyapısını](./cdn-verizon-premium-rules-engine.md) kullanmanız gerekir.
  
 Azure Content Delivery Network (CDN), dosyalarınızın nasıl önbelleğe alınacağını denetlemek için iki yol sunar: 
 
@@ -42,7 +42,7 @@ Varsayılan önbelleğe alma davranışı ve önbelleğe alma yönergesi üstbil
 
 1. Azure portal açın, bir CDN profili seçin ve ardından bir uç nokta seçin.
 
-2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları**’nı seçin.
+2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları** ’nı seçin.
 
    ![CDN Önbelleğe alma kuralları düğmesi](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
@@ -54,11 +54,11 @@ Varsayılan önbelleğe alma davranışı ve önbelleğe alma yönergesi üstbil
 ## <a name="caching-behavior-settings"></a>Önbelleğe alma davranışı ayarları
 Genel ve özel önbelleğe alma kuralları için aşağıdaki **önbelleğe alma davranışı** ayarlarını belirtebilirsiniz:
 
-- **Atlama önbelleği**: Origin tarafından belirtilen Cache-Directive üst bilgilerini önbelleğe almayın ve yoksayın.
+- **Atlama önbelleği** : Origin tarafından belirtilen Cache-Directive üst bilgilerini önbelleğe almayın ve yoksayın.
 
-- **Geçersiz kıl**: Origin tarafından belirtilen önbellek süresini yoksay; Bunun yerine, belirtilen önbellek süresini kullanın. Bu, Cache-Control: No-Cache ' i geçersiz kılmaz.
+- **Geçersiz kıl** : Origin tarafından belirtilen önbellek süresini yoksay; Bunun yerine, belirtilen önbellek süresini kullanın. Bu, Cache-Control: No-Cache ' i geçersiz kılmaz.
 
-- **Eksik Ise ayarla**: varsa, kaynak tarafından sağlanmış Cache-Directive üst bilgilerini kabul edin. Aksi takdirde, belirtilen önbellek süresini kullanın.
+- **Eksik Ise ayarla** : varsa, kaynak tarafından sağlanmış Cache-Directive üst bilgilerini kabul edin. Aksi takdirde, belirtilen önbellek süresini kullanın.
 
 ![Genel önbelleğe alma kuralları](./media/cdn-caching-rules/cdn-global-caching-rules.png)
 
@@ -75,9 +75,9 @@ Genel ve özel önbelleğe alma kuralları için önbelleğin süre sonu süresi
 
 Özel önbellek kuralları için, iki eşleşme koşulu vardır:
  
-- **Yol**: Bu koşul, etki alanı adı hariç olmak üzere URL 'nin yoluyla eşleşir ve joker karakter simgesini () destekler \* . Örneğin, _/myfile.html_, _/My/Folder/*_ ve _/My/images/*. jpg_. En fazla 260 karakter uzunluğunda olur.
+- **Yol** : Bu koşul, etki alanı adı hariç olmak üzere URL 'nin yoluyla eşleşir ve joker karakter simgesini () destekler \* . Örneğin, _/myfile.html_ , _/My/Folder/*_ ve _/My/images/*. jpg_ . En fazla 260 karakter uzunluğunda olur.
 
-- **Uzantı**: Bu koşul, istenen dosyanın dosya uzantısıyla eşleşiyor. Eşleştirilecek virgülle ayrılmış dosya uzantılarının bir listesini sağlayabilirsiniz. Örneğin, _. jpg_, _. mp3_veya _. png_. En fazla uzantı sayısı 50, uzantı başına en fazla karakter sayısı 16 ' dır. 
+- **Uzantı** : Bu koşul, istenen dosyanın dosya uzantısıyla eşleşiyor. Eşleştirilecek virgülle ayrılmış dosya uzantılarının bir listesini sağlayabilirsiniz. Örneğin, _. jpg_ , _. mp3_ veya _. png_ . En fazla uzantı sayısı 50, uzantı başına en fazla karakter sayısı 16 ' dır. 
 
 ## <a name="global-and-custom-rule-processing-order"></a>Genel ve özel kural işleme sırası
 Genel ve özel önbelleğe alma kuralları aşağıdaki sırayla işlenir:
@@ -86,7 +86,7 @@ Genel ve özel önbelleğe alma kuralları aşağıdaki sırayla işlenir:
 
 - Özel önbelleğe alma kuralları, uygulanan genel önbelleğe alma kurallarına göre önceliklidir. Özel önbelleğe alma kuralları yukarıdan aşağıya doğru sırayla işlenir. Diğer bir deyişle, bir istek her iki koşuldan de eşleşiyorsa, listenin altındaki kurallar listenin en üstündeki kurallara göre önceliklidir. Bu nedenle, listede daha az belirli kurallar yerleştirmeniz gerekir.
 
-**Örnek**:
+**Örnek** :
 - Genel önbelleğe alma kuralı: 
    - Önbelleğe alma davranışı: **geçersiz kıl**
    - Önbellek sona erme süresi: 1 gün
@@ -103,7 +103,7 @@ Genel ve özel önbelleğe alma kuralları aşağıdaki sırayla işlenir:
    - Önbelleğe alma davranışı: **eksikse ayarla**
    - Önbellek sona erme süresi: 3 gün
 
-Bu kurallar ayarlandığında, _ &lt; uç nokta ana bilgisayar adı &gt; _. azureedge.net/Home/index.html için bir istek özel önbelleğe alma kuralı #2 tetikler: eksik ve 3 gün olarak **ayarlanır** . Bu nedenle, *index.html* dosyası `Cache-Control` veya `Expires` http üstbilgileri varsa, bunlar kabul edilir; Aksi takdirde, bu üst bilgiler ayarlanmamışsa, dosya 3 gün boyunca önbelleğe alınır.
+Bu kurallar ayarlandığında, _&lt; uç nokta ana bilgisayar adı &gt;_ . azureedge.net/Home/index.html için bir istek özel önbelleğe alma kuralı #2 tetikler: eksik ve 3 gün olarak **ayarlanır** . Bu nedenle, *index.html* dosyası `Cache-Control` veya `Expires` http üstbilgileri varsa, bunlar kabul edilir; Aksi takdirde, bu üst bilgiler ayarlanmamışsa, dosya 3 gün boyunca önbelleğe alınır.
 
 > [!NOTE] 
 > Bir kural değişikliğinden önce önbelleğe alınan dosyalar, kaynak önbellek süresi ayarını korur. Önbellek sürelerini sıfırlamak için [dosyayı temizlemeniz](cdn-purge-endpoint.md)gerekir. 

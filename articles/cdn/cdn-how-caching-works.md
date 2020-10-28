@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86201800"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778628"
 ---
 # <a name="how-caching-works"></a>Önbelleğe alma nasıl işler?
 
@@ -65,7 +65,7 @@ Bir kaynağın eski olduğu kabul edildiğinde, kaynak sunucunun onu doğrulamas
 ## <a name="cache-directive-headers"></a>Cache-Directive üstbilgileri
 
 > [!IMPORTANT]
-> Varsayılan olarak, DSA için iyileştirilmiş bir Azure CDN uç noktası Cache-Directive üst bilgilerini yoksayar ve önbelleğe almayı atlar. Verizon **Azure CDN ve Akamai profillerden standart** **Azure CDN Standart** için, bir Azure CDN uç noktasının önbelleğe almayı etkinleştirmek için [CDN önbelleğe alma kurallarını](cdn-caching-rules.md) kullanarak bu üstbilgileri nasıl değerlendirmiş olduğunu ayarlayabilirsiniz. Yalnızca **Verizon profillerinin Azure CDN Premium** için, önbelleğe almayı etkinleştirmek üzere [Rules altyapısını](cdn-rules-engine.md) kullanın.
+> Varsayılan olarak, DSA için iyileştirilmiş bir Azure CDN uç noktası Cache-Directive üst bilgilerini yoksayar ve önbelleğe almayı atlar. Verizon **Azure CDN ve Akamai profillerden standart** **Azure CDN Standart** için, bir Azure CDN uç noktasının önbelleğe almayı etkinleştirmek için [CDN önbelleğe alma kurallarını](cdn-caching-rules.md) kullanarak bu üstbilgileri nasıl değerlendirmiş olduğunu ayarlayabilirsiniz. Yalnızca **Verizon profillerinin Azure CDN Premium** için, önbelleğe almayı etkinleştirmek üzere [Rules altyapısını](./cdn-verizon-premium-rules-engine.md) kullanın.
 
 Azure CDN, önbellek süresini ve önbellek paylaşımını tanımlayan aşağıdaki HTTP Cache-Directive üst bilgilerini destekler.
 
@@ -129,14 +129,11 @@ Aşağıdaki tabloda Azure CDN ürünlerin varsayılan önbelleğe alma davranı
 | **Kaynak kabul**       | Evet    | Evet   | Hayır   | Evet    | Hayır   | Evet   | Evet    |
 | **CDN önbellek süresi** | 2 gün |7 gün | Yok | 7 gün | Yok | 1 gün | 1 yıl |
 
-**Kaynağı**kabul edin: kaynak SUNUCUDAN gelen http yanıtında varsa, desteklenen Cache-Directive üst bilgilerini kabul edilip edilmeyeceğini belirtir.
+**Kaynağı** kabul edin: kaynak SUNUCUDAN gelen http yanıtında varsa, desteklenen Cache-Directive üst bilgilerini kabul edilip edilmeyeceğini belirtir.
 
-**CDN önbellek süresi**: bir kaynağın Azure CDN önbelleğe alınma süresini belirtir. Ancak, kabul etme **kaynağı** Evet ise ve kaynak SUNUCUDAN gelen http yanıtı Cache-Directive üstbilgisini içeriyorsa `Expires` `Cache-Control: max-age` , Azure CDN bunun yerine üst bilgi tarafından belirtilen Duration değerini kullanır. 
+**CDN önbellek süresi** : bir kaynağın Azure CDN önbelleğe alınma süresini belirtir. Ancak, kabul etme **kaynağı** Evet ise ve kaynak SUNUCUDAN gelen http yanıtı Cache-Directive üstbilgisini içeriyorsa `Expires` `Cache-Control: max-age` , Azure CDN bunun yerine üst bilgi tarafından belirtilen Duration değerini kullanır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - CDN 'de önbelleğe alma kuralları aracılığıyla varsayılan önbelleğe alma davranışını özelleştirmeyi ve geçersiz kılmayı öğrenmek için bkz. önbellek [kuralları Ile denetim Azure CDN önbelleğe alma davranışı](cdn-caching-rules.md). 
 - Önbelleğe alma davranışını denetlemek için Sorgu dizelerini nasıl kullanacağınızı öğrenmek için bkz. [sorgu dizeleri Ile denetim Azure CDN önbelleğe alma davranışı](cdn-query-string.md).
-
-
-

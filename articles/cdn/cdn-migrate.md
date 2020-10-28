@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: c1302822715a37ef1b85007130067ac02a8fd17a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58c1177fb3c4d241a3efe1759b3900abbd04ca1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887587"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778396"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Standart Verizon 'den Premium Verizon 'e bir Azure CDN profili geçirme
 
@@ -42,7 +42,7 @@ Verizon profilinden bir **Azure CDN standardını** yükseltmek için [Microsoft
 
 **Verizon profillerden Azure CDN Premium** aşağıdaki ek özelliklere sahiptir:
 - [Belirteç kimlik doğrulaması](cdn-token-auth.md): kullanıcıların güvenli kaynakları getirmek için bir belirteç almasına ve kullanmasına izin verir.
-- [Kural altyapısı](cdn-rules-engine.md): http isteklerinin işlenme biçimini özelleştirmenize olanak sağlar.
+- [Kural altyapısı](./cdn-verizon-premium-rules-engine.md): http isteklerinin işlenme biçimini özelleştirmenize olanak sağlar.
 - Gelişmiş analiz araçları:
    - [Ayrıntılı HTTP Analizi](cdn-advanced-http-reports.md)
    - [Uç performans analizi](cdn-edge-performance.md)
@@ -50,5 +50,4 @@ Verizon profilinden bir **Azure CDN standardını** yükseltmek için [Microsoft
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kural altyapısı hakkında daha fazla bilgi edinmek için bkz. [Azure CDN kuralları altyapısı başvurusu](cdn-rules-engine-reference.md).
-
+Kural altyapısı hakkında daha fazla bilgi edinmek için bkz. [Azure CDN kuralları altyapısı başvurusu](./cdn-verizon-premium-rules-engine-reference.md).

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5d84616e70d2a28abf3937b485f4fcf5258c43e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191289"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779416"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Tanılama günlükleri-Azure Content Delivery Network
 
@@ -42,7 +42,7 @@ Aşağıdaki adımlar için bir Azure CDN profili gereklidir. Devam etmeden önc
 
 Azure CDN uç noktanıza yönelik günlüğü etkinleştirmek için şu adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 
 2. Azure Portal, **tüm kaynaklar**  ->  **-CDN-profile** ' e gidin
 
@@ -59,11 +59,11 @@ Azure CDN uç noktanıza yönelik günlüğü etkinleştirmek için şu adımlar
 Günlükleri depolamak üzere bir depolama hesabı kullanmak için şu adımları izleyin:
 
  >[!NOTE] 
- >Bu adımları gerçekleştirmek için bir depolama hesabı gereklidir. Daha fazla bilgi için bkz. **[Azure depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)** .
+ >Bu adımları gerçekleştirmek için bir depolama hesabı gereklidir. Daha fazla bilgi için bkz. **[Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%252fazure%252fstorage%252fblobs%252ftoc.json)** .
     
-1. **Tanılama ayarı adı**için tanılama günlük ayarlarınız için bir ad girin.
+1. **Tanılama ayarı adı** için tanılama günlük ayarlarınız için bir ad girin.
  
-2. **Bir depolama hesabına arşiv**' i seçin ve ardından **coreanalytics**' i seçin. 
+2. **Bir depolama hesabına arşiv** ' i seçin ve ardından **coreanalytics** ' i seçin. 
 
 3. **Bekletme (gün)** için bekletme günü sayısını seçin. Sıfır günlük bir bekletme, günlükleri süresiz olarak depolar. 
 
@@ -71,41 +71,41 @@ Günlükleri depolamak üzere bir depolama hesabı kullanmak için şu adımlar�
 
     :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="CDN uç noktası seçin." border="true":::
 
-3. **Kaydet**’i seçin.
+3. **Kaydet** ’i seçin.
 
 ### <a name="send-to-log-analytics"></a>Log Analytics’e gönderme
 
 Günlükler için Log Analytics kullanmak için şu adımları izleyin:
 
 >[!NOTE] 
->Bu adımları gerçekleştirmek için bir Log Analytics çalışma alanı gereklidir. Daha fazla bilgi için bkz. **[Azure portal Log Analytics çalışma alanı oluşturma](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)** .
+>Bu adımları gerçekleştirmek için bir Log Analytics çalışma alanı gereklidir. Daha fazla bilgi için bkz. **[Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md)** .
     
-1. **Tanılama ayarı adı**için tanılama günlük ayarlarınız için bir ad girin.
+1. **Tanılama ayarı adı** için tanılama günlük ayarlarınız için bir ad girin.
 
-2. **Log Analytics gönder**' i seçin ve ardından **coreanalytics**' i seçin. 
+2. **Log Analytics gönder** ' i seçin ve ardından **coreanalytics** ' i seçin. 
 
 3. Günlükler için aboneliği ve Log Analytics çalışma alanını seçin.
 
    :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="CDN uç noktası seçin." border="true":::
 
-4. **Kaydet**’i seçin.
+4. **Kaydet** ’i seçin.
 
 ### <a name="stream-to-an-event-hub"></a>Bir olay hub'ına akış yap
 
 Günlükler için bir olay hub 'ı kullanmak için şu adımları izleyin:
 
 >[!NOTE] 
->Bu adımları gerçekleştirmek için bir olay hub 'ı gerekir. Bkz. hızlı başlangıç: daha fazla bilgi için **[Azure Portal kullanarak bir olay hub 'ı oluşturun](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)** .
+>Bu adımları gerçekleştirmek için bir olay hub 'ı gerekir. Bkz. hızlı başlangıç: daha fazla bilgi için **[Azure Portal kullanarak bir olay hub 'ı oluşturun](../event-hubs/event-hubs-create.md)** .
     
-1. **Tanılama ayarı adı**için tanılama günlük ayarlarınız için bir ad girin.
+1. **Tanılama ayarı adı** için tanılama günlük ayarlarınız için bir ad girin.
 
-2. **Bir olay hub 'ına akış**' ı seçin ve ardından **coreanalytics**' i seçin. 
+2. **Bir olay hub 'ına akış** ' ı seçin ve ardından **coreanalytics** ' i seçin. 
 
 3. Günlükler için abonelik ve Olay Hub 'ı ad alanını seçin.
 
    :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="CDN uç noktası seçin." border="true":::
 
-4. **Kaydet**’i seçin.
+4. **Kaydet** ’i seçin.
 
 
 ## <a name="enable-logging-with-powershell"></a>PowerShell ile günlüğe kaydetmeyi etkinleştirme
@@ -190,8 +190,8 @@ Aracı indirmek için bkz. [Azure Depolama Gezgini](https://storageexplorer.com/
 1.  **Microsoft Azure Depolama Gezgini** açın
 2.  Depolama hesabını bulma
 3.  Bu depolama hesabı altındaki **BLOB kapsayıcıları** düğümünü genişletin.
-4.  *Öngörüler-logs-coreanalytics*adlı kapsayıcıyı seçin.
-5.  Sonuçlar, *RESOURCEID =* olarak ilk düzeyden başlayarak sağ bölmedeki görünür. *ÜzerindePT1H.js*dosyayı bulana kadar her bir düzeyi seçmeye devam edin. Yolun açıklaması için bkz. [BLOB yol biçimi](cdn-azure-diagnostic-logs.md#blob-path-format).
+4.  *Öngörüler-logs-coreanalytics* adlı kapsayıcıyı seçin.
+5.  Sonuçlar, *RESOURCEID =* olarak ilk düzeyden başlayarak sağ bölmedeki görünür. *ÜzerindePT1H.js* dosyayı bulana kadar her bir düzeyi seçmeye devam edin. Yolun açıklaması için bkz. [BLOB yol biçimi](cdn-azure-diagnostic-logs.md#blob-path-format).
 6.  Her blob *PT1H.js* dosyasında, belırlı bir CDN uç noktası veya özel etki alanı için bir saat için analiz günlükleri temsil eder.
 7.  Bu JSON dosyasının içeriğinin şeması, çekirdek analiz günlüklerinin bölüm şemasında açıklanmaktadır.
 
@@ -229,7 +229,7 @@ Aracı şu şekilde kullanabilirsiniz:
 
 ## <a name="log-data-delays"></a>Günlük verileri gecikmeleri
 
-Aşağıdaki tabloda **Microsoft 'tan Azure CDN Standart**için günlük verisi gecikmeleri **Azure CDN, Akamai 'Ten standart**ve **Verizon 'den Standart/Premium Azure CDN**gösterilmektedir.
+Aşağıdaki tabloda **Microsoft 'tan Azure CDN Standart** için günlük verisi gecikmeleri **Azure CDN, Akamai 'Ten standart** ve **Verizon 'den Standart/Premium Azure CDN** gösterilmektedir.
 
 Microsoft günlük veri gecikmeleri | Verizon günlük verileri gecikmeleri | Akamai günlük verileri gecikmeleri
 --- | --- | ---
@@ -369,14 +369,7 @@ Burada *saat* , istatistiklerin bildirildiği saat sınırının başlangıç sa
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Azure tanılama günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
-* [Azure CDN ek Portal aracılığıyla temel analiz](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Izleyici günlükleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
-* [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
-
-
-
-
-
-
-
+* [Azure tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md)
+* [Azure CDN ek Portal aracılığıyla temel analiz](./cdn-analyze-usage-patterns.md)
+* [Azure İzleyici günlükleri](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Log Analytics REST API](/rest/api/loganalytics)

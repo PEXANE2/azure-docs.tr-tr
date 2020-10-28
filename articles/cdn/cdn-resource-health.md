@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 65b3d5a29028214a52e6b26430472394c91c6f27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81c92b6ef5bdf89391364bc238f55200eb3679f6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887069"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778160"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Azure CDN kaynaklarının sistem durumunu izleme
   
-Azure CDN kaynak sistem durumu, [Azure Kaynak sistem](../resource-health/resource-health-overview.md)durumunun bir alt kümesidir.  Azure Kaynak durumu ' nu kullanarak CDN kaynaklarının sistem durumunu izleyebilir ve sorunları gidermek için eyleme dönüştürülebilir rehberlik alabilirsiniz.
+Azure CDN kaynak sistem durumu, [Azure Kaynak sistem](../service-health/resource-health-overview.md)durumunun bir alt kümesidir.  Azure Kaynak durumu ' nu kullanarak CDN kaynaklarının sistem durumunu izleyebilir ve sorunları gidermek için eyleme dönüştürülebilir rehberlik alabilirsiniz.
 
 >[!IMPORTANT] 
 >Kaynak durumu Azure CDN yalnızca genel CDN tesliminin ve API yeteneklerinin sistem durumu için olan hesaplardır.  Azure CDN kaynak durumu, bireysel CDN uç noktalarını doğrulamaz.
@@ -38,7 +38,7 @@ Azure CDN kaynak sistem durumu, [Azure Kaynak sistem](../resource-health/resourc
 
     ![Ayarlar düğmesi](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. *Destek + sorun giderme*altında **kaynak sistem durumu**' na tıklayın.
+3. *Destek + sorun giderme* altında **kaynak sistem durumu** ' na tıklayın.
 
     ![CDN kaynak durumu](./media/cdn-resource-health/cdn-resource-health3.png)
 
@@ -51,7 +51,7 @@ Azure CDN kaynak sistem durumu, [Azure Kaynak sistem](../resource-health/resourc
 
 Azure CDN kaynak durumu ile ilgili durumlar aşağıda bulunabilir.
 
-|İleti | Önerilen Eylem |
+|İleti | Önerilen Eylem |
 |---|---|
 |Bir veya daha çok CDN uç noktanızı durdurmuş, kaldırmış veya yanlış yapılandırmış olabilirsiniz | Bir veya daha çok CDN uç noktanızı durdurmuş, kaldırmış veya yanlış yapılandırmış olabilirsiniz.|
 |Üzgünüz, CDN yönetim hizmeti şu anda kullanılamıyor | Durum güncelleştirmeleri için burayı tekrar işaretleyin; Sorununuz beklenen çözüm zamanından sonra devam ederse desteğe başvurun.|
@@ -62,6 +62,6 @@ Azure CDN kaynak durumu ile ilgili durumlar aşağıda bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Kaynak durumu 'na genel bakış konusunu okuyun](../resource-health/resource-health-overview.md)
+- [Azure Kaynak durumu 'na genel bakış konusunu okuyun](../service-health/resource-health-overview.md)
 - [CDN sıkıştırması sorunlarını giderme](./cdn-troubleshoot-compression.md)
 - [404 hatalarıyla ilgili sorunları giderme](./cdn-troubleshoot-endpoint.md)

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: ca74c5f54cfb513f4611fafc40d34378707ff949
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0612445d0a1bfa10182eb8ce827001d0856f4d9b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746485"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777920"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Hızlı başlangıç: Azure CDN profili ve uç nokta ARM şablonu oluşturma
 
@@ -46,7 +46,7 @@ Bu şablon, şunu oluşturacak şekilde yapılandırıldı:
 
 Şablonda bir Azure kaynağı tanımlanmıştır:
 
-* **[Microsoft. CDN/profiller](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles)**
+* **[Microsoft. CDN/profiller](/azure/templates/microsoft.cdn/profiles)**
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -107,7 +107,7 @@ Artık gerekli değilse, [az Group Delete](/cli/azure/group#az-group-delete) kom
 
 ### <a name="powershell"></a>PowerShell
 
-Artık gerekli değilse, [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) komutunu kullanarak kaynak grubunu ve içinde yer alan tüm kaynakları kaldırabilirsiniz.
+Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) komutunu kullanarak kaynak grubunu ve içinde yer alan tüm kaynakları kaldırabilirsiniz.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191156"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779178"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Azure CDN faturalamasını anlama
 
@@ -38,7 +38,7 @@ Faturalandırma bölgesi, Azure CDN nesnelerin tesliminin ne kadar ücretlendiri
 
 - Bölge 5: Hindistan
 
-Varlık noktası (POP) bölgeleri hakkında daha fazla bilgi için bkz. [bölgeye göre Azure CDN pop konumları](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Örneğin, Meksika 'da bulunan bir POP Kuzey Amerika bölgedeyse ve bu nedenle bölge 1 ' de yer alır. 
+Varlık noktası (POP) bölgeleri hakkında daha fazla bilgi için bkz. [bölgeye göre Azure CDN pop konumları](./cdn-pop-locations.md). Örneğin, Meksika 'da bulunan bir POP Kuzey Amerika bölgedeyse ve bu nedenle bölge 1 ' de yer alır. 
 
 Azure CDN fiyatlandırması hakkında daha fazla bilgi için bkz. [Content Delivery Network fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/).
 
@@ -48,7 +48,7 @@ Azure CDN faturalandırma bölgesi, son kullanıcıya içerik teslim eden kaynak
 Örneğin, Meksika 'da bulunan bir Kullanıcı bir istek yayınlar ve bu istek eşleme veya trafik koşullarına bağlı olarak Birleşik Devletler POP 'ta bulunan bir sunucu tarafından hizmet verilirken, faturalandırma Bölgesi Birleşik Devletler olur.
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>Faturalandırılabilir Azure CDN işlem nedir?
-CDN 'de sonlanan herhangi bir HTTP (S) isteği, tüm yanıt türlerini içeren faturalandırılabilir bir olaydır: başarılı, hata veya diğer. Ancak farklı yanıtlar farklı trafik miktarları oluşturabilir. Örneğin, *304 değiştirilmedi* ve diğer üst bilgi yanıtları küçük bir başlık yanıtı olduklarından az trafik oluşturur; benzer şekilde, hata yanıtları (örneğin, *404 bulunamadı*) faturalanabilir ancak küçük bir yanıt yükü nedeniyle küçük bir ücret doğurur.
+CDN 'de sonlanan herhangi bir HTTP (S) isteği, tüm yanıt türlerini içeren faturalandırılabilir bir olaydır: başarılı, hata veya diğer. Ancak farklı yanıtlar farklı trafik miktarları oluşturabilir. Örneğin, *304 değiştirilmedi* ve diğer üst bilgi yanıtları küçük bir başlık yanıtı olduklarından az trafik oluşturur; benzer şekilde, hata yanıtları (örneğin, *404 bulunamadı* ) faturalanabilir ancak küçük bir yanıt yükü nedeniyle küçük bir ücret doğurur.
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Azure CDN kullanımı ile ilgili diğer Azure maliyetleri nelerdir?
 Azure CDN kullanmak, nesneleriniz için kaynak olarak kullanılan hizmetler üzerinde bazı kullanım ücretleri de doğurur. Bu maliyetler genellikle genel CDN kullanım maliyetinin küçük bir bölümünü alır.
@@ -66,7 +66,7 @@ Azure CDN kullanmak, nesneleriniz için kaynak olarak kullanılan hizmetler üze
 
 Azure depolama faturalandırma hakkında daha fazla bilgi için bkz. [Azure depolama faturalandırmasını anlama – bant genişliği, işlemler ve kapasite](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-*Barındırılan hizmet teslimi*kullanıyorsanız, ücretlendirilecektir:
+*Barındırılan hizmet teslimi* kullanıyorsanız, ücretlendirilecektir:
 
 - Azure İşlem Zamanı: kaynak olarak davranan işlem örnekleri.
 
@@ -90,7 +90,7 @@ Bir CDN POP 'un önbelleğini doldurması gereken her seferinde, önbelleğe al�
 ## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Microsoft 'tan gelen Azure CDN ücretsiz veri aktarımı için hangi kaynak hizmetleri uygun? 
 CDN başlangıç noktası olarak aşağıdaki Azure hizmetlerinden birini kullanırsanız, kaynaktan CDN pop 'Lara veri aktarımından ücretlendirilmeyecektir. 
 
-- Azure Storage
+- Azure Depolama
 - Azure Media Services
 - Azure Sanal Makineler
 - Sanal Ağ
@@ -119,4 +119,4 @@ CDN başlangıç noktası olarak aşağıdaki Azure hizmetlerinden birini kullan
 - Redis için Azure Önbelleği
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Nasıl yaparım? maliyetlerimi en etkili şekilde yönetin mi?
-İçeriğiniz için mümkün olan en uzun TTL 'yi ayarlayın. 
+İçeriğiniz için mümkün olan en uzun TTL 'yi ayarlayın.

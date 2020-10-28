@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: 43527e8e5860e0bbfc50643210156be943d2f174
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48b74a5507eb4a1d48b7bf70133e476a30fe8169
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85985199"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779960"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bellek içi teknolojileri kullanarak performansı iyileştirin
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -37,7 +37,7 @@ Bellek içi teknolojiler, bu iş yüklerinin performansını, sorguların yerel 
 
 Azure SQL veritabanı ve Azure SQL yönetilen örneği aşağıdaki bellek içi teknolojilere sahiptir:
 
-- *[Bellek ıçı OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* , saniye başına işlem sayısını artırır ve işlem işleme gecikmesini azaltır. In-Memory OLTP 'tan faydalanabilir senaryolar: ticari ve oyun gibi yüksek performanslı işlem işleme, olaylardan veya IoT cihazlarından veri alımı, önbelleğe alma, veri yükleme ve geçici tablo ve tablo değişken senaryolarıdır.
+- *[Bellek ıçı OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* , saniye başına işlem sayısını artırır ve işlem işleme gecikmesini azaltır. In-Memory OLTP 'tan faydalanabilir senaryolar: ticari ve oyun gibi yüksek performanslı işlem işleme, olaylardan veya IoT cihazlarından veri alımı, önbelleğe alma, veri yükleme ve geçici tablo ve tablo değişken senaryolarıdır.
 - *Kümelenmiş columnstore dizinleri* , depolama alanı parmak izini (10 kez) azaltır ve raporlama ve analiz sorguları için performansı geliştirir. Veritabanınıza daha fazla veri sığdırmak ve performansı artırmak için veri reyonlarınızdaki olgu tabloları ile birlikte kullanabilirsiniz. Ayrıca, onu arşivlemek ve 10 kat daha fazla veri sorgulayabilmeniz için işletimsel veritabanınızdaki geçmiş verilerle birlikte kullanabilirsiniz.
 - ITAP *kümelenmemiş columnstore dizinleri* , İşletimsel veritabanını doğrudan sorgulayarak, pahalı bir ayıklama, dönüştürme ve yükleme (ETL) işlemini çalıştırmaya ve veri ambarının doldurulmasını beklemeniz gerekmeden, işinize gerçek zamanlı Öngörüler elde etmenize yardımcı olur. Kümelenmemiş columnstore dizinleri, OLTP veritabanındaki analiz sorgularının hızla yürütülmesine olanak sağlarken, işlemsel iş yükünde oluşan etkiyi azaltır.
 - HTAP için *bellek için iyileştirilmiş kümelenmiş columnstore dizinleri* , hızlı işlem işlemleri yapmanızı ve analiz sorgularını aynı verilere göre çok hızlı bir *şekilde çalıştırmanızı sağlar* .
@@ -93,7 +93,7 @@ In-Memory OLTP: hızlı [Başlangıç 1: In-Memory OLTP teknolojilerini daha hı
 Teknolojiler hakkında ayrıntılı Videolar:
 
 - [Bellek ıçı OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (performans avantajları ve bu sonuçları kendiniz yeniden oluşturma adımları içeren)
-- [Bellek içi OLTP videoları: nedir ve ne zaman/nasıl kullanılır?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
+- [Bellek içi OLTP videoları: nedir ve ne zaman/nasıl kullanılır?](/archive/blogs/sqlserverstorageengine/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it)
 
 Belirli bir veritabanının OLTP In-Memory destekleyip desteklemediğini anlamak için programlı bir yoldur. Aşağıdaki Transact-SQL sorgusunu çalıştırabilirsiniz:
 
@@ -101,7 +101,7 @@ Belirli bir veritabanının OLTP In-Memory destekleyip desteklemediğini anlamak
 SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
 
-Sorgu **1**döndürürse, bu veritabanında OLTP In-Memory desteklenir. Aşağıdaki sorgular bir veritabanının Genel Amaçlı, standart veya temel bir şekilde indirgenemez önce kaldırılması gereken tüm nesneleri belirler:
+Sorgu **1** döndürürse, bu veritabanında OLTP In-Memory desteklenir. Aşağıdaki sorgular bir veritabanının Genel Amaçlı, standart veya temel bir şekilde indirgenemez önce kaldırılması gereken tüm nesneleri belirler:
 
 ```sql
 SELECT * FROM sys.tables WHERE is_memory_optimized=1
@@ -111,7 +111,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>In-Memory OLTP için veri boyutu ve depolama alanı üst sınırı
 
-In-Memory OLTP, Kullanıcı verilerini depolamak için kullanılan bellek için iyileştirilmiş tablolar içerir. Bu tabloların belleğe sığması gerekir. Belleği doğrudan SQL veritabanı 'nda yönetirken, Kullanıcı verileri için bir kota kavramımız vardır. Bu fikir, *bellek ıçı OLTP depolaması*olarak adlandırılır.
+In-Memory OLTP, Kullanıcı verilerini depolamak için kullanılan bellek için iyileştirilmiş tablolar içerir. Bu tabloların belleğe sığması gerekir. Belleği doğrudan SQL veritabanı 'nda yönetirken, Kullanıcı verileri için bir kota kavramımız vardır. Bu fikir, *bellek ıçı OLTP depolaması* olarak adlandırılır.
 
 Desteklenen her tek veritabanı fiyatlandırma katmanı ve her elastik havuz fiyatlandırma katmanı, In-Memory OLTP depolama alanı miktarını içerir.
 
@@ -149,7 +149,7 @@ Ancak katmanı daha eski sürüme dönüştürmek veritabanınızı olumsuz etki
 
 Veritabanını Genel Amaçlı, standart veya temel sürümüne indirgediğinizde, tüm bellek için iyileştirilmiş tabloları ve tablo türlerini ve yerel koda derlenmiş T-SQL modüllerini kaldırın.
 
-*İş açısından kritik katmanındaki ölçek azaltma kaynakları*: bellek için iyileştirilmiş tablolardaki veriler, veritabanının veya yönetilen örneğin katmanıyla ILIŞKILI In-Memory OLTP depolama alanına sığmalıdır ya da elastik havuzda kullanılabilir. Katmanı ölçeklendirmeye veya veritabanını daha fazla kullanılabilir In-Memory OLTP depolaması olmayan bir havuza taşımaya çalışırsanız, işlem başarısız olur.
+*İş açısından kritik katmanındaki ölçek azaltma kaynakları* : bellek için iyileştirilmiş tablolardaki veriler, veritabanının veya yönetilen örneğin katmanıyla ILIŞKILI In-Memory OLTP depolama alanına sığmalıdır ya da elastik havuzda kullanılabilir. Katmanı ölçeklendirmeye veya veritabanını daha fazla kullanılabilir In-Memory OLTP depolaması olmayan bir havuza taşımaya çalışırsanız, işlem başarısız olur.
 
 ## <a name="in-memory-columnstore"></a>Bellek içi columnstore
 
@@ -164,13 +164,13 @@ Verilerinizi düzenlemek için kullanabileceğiniz iki tür columnstore modeli v
 
 Teknoloji hakkında ayrıntılı video:
 
-- [Columnstore dizini: Ignite 2016 'den bellek Içi analiz videoları](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
+- [Columnstore dizini: Ignite 2016 'den bellek Içi analiz videoları](/archive/blogs/sqlserverstorageengine/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016)
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Columnstore dizinleri için veri boyutu ve depolama
 
 Columnstore dizinlerinin belleğe sığması gerekmez. Bu nedenle, Dizin boyutunun tek ucu, [DTU tabanlı satın alma modeli](database/service-tiers-dtu.md) ve [sanal çekirdek tabanlı satın alma modeli](database/service-tiers-vcore.md) makalelerinde belgelenen en büyük genel veritabanı boyutudur.
 
-Kümelenmiş columnstore dizinleri kullandığınızda, temel tablo depolaması için sütunlu sıkıştırma kullanılır. Bu sıkıştırma, Kullanıcı verilerinizin depolama ayak izini önemli ölçüde azaltabilir, yani veritabanına daha fazla veri uydurabilecek anlamına gelir. Ve sıkıştırma, [sütunlu arşiv sıkıştırması](https://msdn.microsoft.com/library/cc280449.aspx#using-columnstore-and-columnstore-archive-compression)ile daha da artırılabilir. Elde ettiğiniz sıkıştırma miktarı verilerin doğasına bağlıdır, ancak sıkıştırma işlemi 10 kez daha yaygın değildir.
+Kümelenmiş columnstore dizinleri kullandığınızda, temel tablo depolaması için sütunlu sıkıştırma kullanılır. Bu sıkıştırma, Kullanıcı verilerinizin depolama ayak izini önemli ölçüde azaltabilir, yani veritabanına daha fazla veri uydurabilecek anlamına gelir. Ve sıkıştırma, [sütunlu arşiv sıkıştırması](/sql/relational-databases/data-compression/data-compression#using-columnstore-and-columnstore-archive-compression)ile daha da artırılabilir. Elde ettiğiniz sıkıştırma miktarı verilerin doğasına bağlıdır, ancak sıkıştırma işlemi 10 kez daha yaygın değildir.
 
 Örneğin, en fazla 1 terabaytlık (TB) boyutunda bir veritabanınız varsa ve columnstore dizinlerini kullanarak sıkıştırmaya 10 kez ulaşdıysanız, veritabanında toplam 10 TB Kullanıcı verisi kullanabilirsiniz.
 
@@ -189,7 +189,7 @@ Hedef katmanınız S3 altındaysa, *tek veritabanını temel veya Standart sür�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı Başlangıç 1: daha hızlı T-SQL performansı için OLTP teknolojilerini In-Memory](https://msdn.microsoft.com/library/mt694156.aspx)
+- [Hızlı Başlangıç 1: daha hızlı T-SQL performansı için OLTP teknolojilerini In-Memory](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp)
 - [Mevcut bir Azure SQL uygulamasında In-Memory OLTP kullanma](in-memory-oltp-configure.md)
 - In-Memory OLTP için [OLTP depolamasını izleme In-Memory](in-memory-oltp-monitor-space.md)
 - [Bellek içi özellikleri deneme](in-memory-sample.md)
@@ -200,18 +200,18 @@ Hedef katmanınız S3 altındaysa, *tek veritabanını temel veya Standart sür�
 
 - [SQL veritabanı 'nda In-Memory OLTP ile DTU 'yu %70 oranında düşürürken, çekirdeğin anahtar veritabanı iş yükünü nasıl çift katına kullandığını öğrenin](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 - [Bellek içi OLTP blog gönderisi](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
-- [In-Memory OLTP hakkında bilgi edinin](https://msdn.microsoft.com/library/dn133186.aspx)
-- [Columnstore dizinleri hakkında bilgi edinin](https://msdn.microsoft.com/library/gg492088.aspx)
-- [Gerçek zamanlı operasyonel çözümlemeler hakkında bilgi edinin](https://msdn.microsoft.com/library/dn817827.aspx)
-- Bkz. [yaygın Iş yükü desenleri ve geçiş konuları](https://msdn.microsoft.com/library/dn673538.aspx) (In-Memory OLTP yaygın olarak önemli performans kazancı sağlayan iş yükü düzenlerini açıklar)
+- [In-Memory OLTP hakkında bilgi edinin](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
+- [Columnstore dizinleri hakkında bilgi edinin](/sql/relational-databases/indexes/columnstore-indexes-overview)
+- [Gerçek zamanlı operasyonel çözümlemeler hakkında bilgi edinin](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
+- Bkz. [yaygın Iş yükü desenleri ve geçiş konuları](/previous-versions/dn673538(v=msdn.10)) (In-Memory OLTP yaygın olarak önemli performans kazancı sağlayan iş yükü düzenlerini açıklar)
 
 ### <a name="application-design"></a>Uygulama tasarımı
 
-- [Bellek içi OLTP (bellek içi iyileştirme)](https://msdn.microsoft.com/library/dn133186.aspx)
+- [Bellek içi OLTP (bellek içi iyileştirme)](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 - [Mevcut bir Azure SQL uygulamasında In-Memory OLTP kullanma](in-memory-oltp-configure.md)
 
 ### <a name="tools"></a>Araçlar
 
-- [Azure portalındaki](https://portal.azure.com/)
-- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
-- [SQL Server Veri Araçları (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Azure Portal](https://portal.azure.com/)
+- [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Veri Araçları (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)

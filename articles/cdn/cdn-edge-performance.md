@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8119c56c26ed32db136064d93775d21a71f238f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887715"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778661"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN’de kenar düğümü performansını çözümleme
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -55,7 +55,7 @@ Bu pano aşağıdakilerden oluşur:
     ![CDN profili dikey penceresi Yönet düğmesi](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN yönetim portalı açılır.
-2. **Analiz** sekmesinin üzerine gelin ve ardından **kenar performansı Analizi** açılır öğesi üzerine gelin.  **Panoya**tıklayın.
+2. **Analiz** sekmesinin üzerine gelin ve ardından **kenar performansı Analizi** açılır öğesi üzerine gelin.  **Panoya** tıklayın.
    
     Kenar düğümü Analizi panosu görüntülenir.
 
@@ -143,7 +143,7 @@ Bu modüldeki her rapor, farklı türlerde ölçümler için bant genişliği ve
     ![CDN profili dikey penceresi Yönet düğmesi](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN yönetim portalı açılır.
-2. **Analiz** sekmesinin üzerine gelin ve ardından **kenar performansı Analizi** açılır öğesi üzerine gelin.  **Http büyük nesne**' ye tıklayın.
+2. **Analiz** sekmesinin üzerine gelin ve ardından **kenar performansı Analizi** açılır öğesi üzerine gelin.  **Http büyük nesne** ' ye tıklayın.
    
     Edge düğümü analiz raporları ekranı görüntülenir.
 
@@ -186,6 +186,5 @@ Bu modüldeki her rapor, farklı türlerde ölçümler için bant genişliği ve
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure CDN'ye Genel Bakış](cdn-overview.md)
 * [Microsoft Azure CDN 'de gerçek zamanlı istatistikler](cdn-real-time-stats.md)
-* [Kurallar altyapısını kullanarak varsayılan HTTP davranışını geçersiz kılma](cdn-rules-engine.md)
+* [Kurallar altyapısını kullanarak varsayılan HTTP davranışını geçersiz kılma](./cdn-verizon-premium-rules-engine.md)
 * [Gelişmiş HTTP raporları](cdn-advanced-http-reports.md)
-

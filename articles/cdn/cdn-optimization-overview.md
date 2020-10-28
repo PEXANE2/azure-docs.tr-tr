@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 0710f2f31510ae299fafe89dc1798f40e325e8b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c7e4ff05307452da67c37b23bf492db8855e2ef
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192594"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778372"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>İçerik teslimi türü için Azure CDN iyileştirin
 
@@ -39,7 +39,7 @@ Bu makalede, çeşitli iyileştirme özelliklerine ve bunları ne zaman kullanma
 * [Genel web teslimi](#general-web-delivery). Bu iyileştirme, medya akışı ve büyük dosya indirme için de kullanılır.
 
 > [!NOTE]
-> Microsoft 'un dinamik site ivmesi, [Azure ön kapı hizmeti](https://docs.microsoft.com/azure/frontdoor/front-door-overview)aracılığıyla sunulur.
+> Microsoft 'un dinamik site ivmesi, [Azure ön kapı hizmeti](../frontdoor/front-door-overview.md)aracılığıyla sunulur.
 
 **Verizon profillerden Verizon ve Azure CDN Premium** **'dan Azure CDN Standart** aşağıdaki iyileştirmeleri destekler:
 
@@ -70,7 +70,7 @@ Bir CDN uç noktası oluşturduğunuzda, son noktanın teslim etmesini istediği
 
     ![Uç nokta seçimi](./media/cdn-optimization-overview/01_Akamai.png)
 
-2. Ayarlar altında **iyileştirme**' yi seçin. Ardından, **en iyileştirilmiş for** açılan listesinden bir tür seçin.
+2. Ayarlar altında **iyileştirme** ' yi seçin. Ardından, **en iyileştirilmiş for** açılan listesinden bir tür seçin.
 
     ![İyileştirme ve tür seçimi](./media/cdn-optimization-overview/02_Select.png)
 
@@ -95,7 +95,7 @@ Medya akışı zamana duyarlıdır, çünkü istemciye gelen ve video içeriğin
 
 Bu senaryo, Azure Media Service müşterileri için ortaktır. Azure Media Services kullandığınızda hem canlı hem de isteğe bağlı akış için kullanılabilen tek bir akış uç noktası alırsınız. Bu senaryoyla, müşterilerin canlı iken isteğe bağlı akış olarak değiştiklerinde başka bir uç noktaya geçiş yapması gerekmez. Genel medya akışı iyileştirmesi bu tür senaryoyu destekler.
 
-**Microsoft 'tan** **Azure CDN**standart Azure CDN Standart ve Verizon ' den **Premium Azure CDN Premium**, genel akış medya içeriğini sunmak için genel web teslimi iyileştirme türünü kullanın.
+**Microsoft 'tan** **Azure CDN** standart Azure CDN Standart ve Verizon ' den **Premium Azure CDN Premium** , genel akış medya içeriğini sunmak için genel web teslimi iyileştirme türünü kullanın.
 
 Medya akışı iyileştirmesi hakkında daha fazla bilgi için bkz. [medya akışı iyileştirmesi](cdn-media-streaming-optimization.md).
 
@@ -103,7 +103,7 @@ Medya akışı iyileştirmesi hakkında daha fazla bilgi için bkz. [medya akı�
 
 İsteğe bağlı video medya akışı iyileştirmesi, isteğe bağlı video akış içeriğini geliştirir. İsteğe bağlı video akışı için bir uç nokta kullanırsanız, bu seçeneği kullanın.
 
-Azure CDN **Microsoft 'tan gelen Azure CDN Standart**, **Verizon 'Ten standart**ve **Verizon profillerden Azure CDN Premium** için, isteğe bağlı video akış medya içeriği sunmak için genel Web teslim iyileştirme türünü kullanın.
+Azure CDN **Microsoft 'tan gelen Azure CDN Standart** , **Verizon 'Ten standart** ve **Verizon profillerden Azure CDN Premium** için, isteğe bağlı video akış medya içeriği sunmak için genel Web teslim iyileştirme türünü kullanın.
 
 Medya akışı iyileştirmesi hakkında daha fazla bilgi için bkz. [medya akışı iyileştirmesi](cdn-media-streaming-optimization.md).
 
@@ -115,22 +115,19 @@ Medya akışı iyileştirmesi hakkında daha fazla bilgi için bkz. [medya akı�
 
 **Akamai profillerden Azure CDN Standart** için, büyük dosya INDIRMELERI 10 MB 'tan büyük içerik için iyileştirilmiştir. Ortalama dosya boyutunuz 10 MB 'den küçükse genel web teslimi kullanın. Ortalama dosya boyutlarınız 10 MB 'den sürekli olarak büyükse, büyük dosyalar için ayrı bir uç nokta oluşturulması daha verimli olabilir. Örneğin, bellenim veya yazılım güncelleştirmeleri genellikle büyük dosyalardır. 1,8 GB 'tan büyük dosyaları teslim etmek için büyük dosya indirme iyileştirmesi gereklidir.
 
-Azure CDN **Microsoft 'tan gelen Azure CDN Standart**, **Verizon 'Ten standart**ve **Verizon profillerden Azure CDN Premium** için, büyük dosya indirme içeriği sağlamak için genel Web teslim iyileştirme türünü kullanın. Dosya indirme boyutuyla ilgili bir sınırlama yoktur.
+Azure CDN **Microsoft 'tan gelen Azure CDN Standart** , **Verizon 'Ten standart** ve **Verizon profillerden Azure CDN Premium** için, büyük dosya indirme içeriği sağlamak için genel Web teslim iyileştirme türünü kullanın. Dosya indirme boyutuyla ilgili bir sınırlama yoktur.
 
 Büyük dosya iyileştirmesi hakkında daha fazla bilgi için bkz. [büyük dosya iyileştirmesi](cdn-large-file-optimization.md).
 
 ### <a name="dynamic-site-acceleration"></a>Dinamik site hızlandırma
 
- Dinamik site hızlandırma (DSA), Akamai ' dan standart **Azure CDN Standart**, **Verizon 'ten standart Azure CDN**ve **Verizon profillerden Azure CDN Premium** için kullanılabilir. Bu iyileştirme, kullanmak için ek ücret içerir; daha fazla bilgi için bkz. [Content Delivery Network fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/).
+ Dinamik site hızlandırma (DSA), Akamai ' dan standart **Azure CDN Standart** , **Verizon 'ten standart Azure CDN** ve **Verizon profillerden Azure CDN Premium** için kullanılabilir. Bu iyileştirme, kullanmak için ek ücret içerir; daha fazla bilgi için bkz. [Content Delivery Network fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/).
 
 > [!NOTE]
-> Microsoft 'un dinamik site ivmesi, Microsoft 'un özel küresel ağını kullanarak uygulama iş yüklerinizi sunmaya yönelik küresel bir [her noktaya](https://en.wikipedia.org/wiki/Anycast) hizmet olan [Azure ön kapı hizmeti](https://docs.microsoft.com/azure/frontdoor/front-door-overview) aracılığıyla sunulur.
+> Microsoft 'un dinamik site ivmesi, Microsoft 'un özel küresel ağını kullanarak uygulama iş yüklerinizi sunmaya yönelik küresel bir [her noktaya](https://en.wikipedia.org/wiki/Anycast) hizmet olan [Azure ön kapı hizmeti](../frontdoor/front-door-overview.md) aracılığıyla sunulur.
 
 DSA, dinamik içeriğin gecikmesi ve performansına faydalanabilir çeşitli teknikler içerir. Yönlendirme ve ağ iyileştirme, TCP iyileştirmesi ve daha fazlasını içeren teknikler. 
 
 Bu iyileştirmeyi, önbelleğe alınamayan çok sayıda yanıt içeren bir Web uygulamasını hızlandırmak için kullanabilirsiniz. Arama sonuçları, kullanıma alma işlemleri veya gerçek zamanlı veriler örnekleri verilmiştir. Statik veriler için çekirdek Azure CDN önbelleğe alma özelliklerini kullanmaya devam edebilirsiniz. 
 
 Dinamik site hızlandırma hakkında daha fazla bilgi için bkz. [dinamik site hızlandırma](cdn-dynamic-site-acceleration.md).
-
-
-
