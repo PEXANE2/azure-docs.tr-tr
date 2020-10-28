@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: c42180990f81e179a8fa8cdfe9e5d762323213b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71de0573f252cab7f2b479212551562de2b1d1c2
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89661058"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674365"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>Öğretici: Seismik ile tümleştirme Azure Active Directory
 
@@ -27,10 +27,10 @@ Seismıc 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Kullanıcılarınızın Azure AD hesaplarıyla Seısmıc (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Seismıc ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -45,7 +45,7 @@ Azure AD tümleştirmesini Seismıc ile yapılandırmak için aşağıdaki öğe
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
 * Seismik **SP** tarafından başlatılan SSO 'yu destekler
-* Seisıc 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Seisıc 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-seismic-from-the-gallery"></a>Galeriden Seismik ekleme
 
@@ -53,14 +53,14 @@ Seismik 'in Azure AD ile tümleştirilmesini yapılandırmak için galerideki Se
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **seismıc** yazın.
 1. Sonuçlar panelinden **Seismik** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Seismik ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Seismik ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Seismıc içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Seismıc ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -76,8 +76,8 @@ Azure AD çoklu oturum açma 'yı Seismıc ile yapılandırmak ve test etmek iç
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **seismik** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **seismik** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.seismic.com/SSO/<ROUTEURL>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Değeri gerçek Sign-On URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Seismik istemci desteği ekibine](mailto:support@seismic.com) başvurun. Ayrıca, tanımlayıcı değerini otomatik olarak doldurmak için **hizmet sağlayıcısı meta verilerini** karşıya yükleyebilirsiniz. **hizmet sağlayıcısı meta verileri**hakkında daha fazla bilgi Için, [seıc istemci desteği ekibine](mailto:support@seismic.com)başvurun.
+    > Bu değerler gerçek değildir. Değeri gerçek Sign-On URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Seismik istemci desteği ekibine](mailto:support@seismic.com) başvurun. Ayrıca, tanımlayıcı değerini otomatik olarak doldurmak için **hizmet sağlayıcısı meta verilerini** karşıya yükleyebilirsiniz. **hizmet sağlayıcısı meta verileri** hakkında daha fazla bilgi Için, [seıc istemci desteği ekibine](mailto:support@seismic.com)başvurun.
 
 5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -107,25 +107,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Seismıc erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Seismik**' i seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde, **Seismik** ' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -139,18 +139,18 @@ Bu bölümde, Seismıc erişimi vererek Azure çoklu oturum açma özelliğini k
 
 ### <a name="create-seismic-test-user"></a>Seismik test kullanıcısı oluşturma
 
-Bu bölümde Seismıc 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Seismik platformunda kullanıcıları eklemek için [seismik destek ekibi](mailto:support@seismic.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde Seismıc 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Seismik platformunda kullanıcıları eklemek için [seismik destek ekibi](mailto:support@seismic.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Seismik kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Seismik 'de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Seismik kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Seismik 'de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

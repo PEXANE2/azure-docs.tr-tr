@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6107ffea4fe4d615a42973ab1b231ca9f6b5241f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556360"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674960"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX uygulama iliştirme sözlüğü
 
@@ -25,7 +25,7 @@ MALTıLı bir kapsayıcı, MALTıLı uygulamaların çalıştırıldığı yerdi
 
 ## <a name="msix-application"></a>MSIX uygulaması 
 
-Bir MSIX dosyasında depolanan uygulama.
+İçinde depolanan bir uygulama. MSIX dosyası.
 
 ## <a name="msix-package"></a>MSIX paketi 
 
@@ -35,13 +35,17 @@ Bir MSIX paketi, bir MSIX dosyası veya uygulamasıdır.
 
 MALTÝ Share, genişletilmiş MSIX paketlerini tutan bir ağ paylaşımıdır. MSIX paylaşımları SMB 3 veya üstünü destekler. Uygulamalar, uygulama dosyalarını sistem sürücüsüne taşımaya gerek kalmadan bu MSIX paylaşımından hazırlanmalıdır.
 
+## <a name="msix-image"></a>MSIX resmi
+
+MSIX görüntüsü bir veya daha fazla MSIX paketlenmiş uygulama içeren bir VHD, VHDx veya CıM dosyasıdır. Her uygulama, MSıXMGR Aracı kullanılarak MSIX görüntüsünde dağıtılır.
+
 ## <a name="repackage"></a>Yeniden paketlemenize
 
 Yeniden paketleme, MSIX olmayan bir uygulama alır ve MSIX paketleme aracı 'Nı (MPT) kullanarak MALTıYA dönüştürür. Daha fazla bilgi için bkz. [Msix paketleme aracına genel bakış](/windows/msix/packaging-tool/tool-overview).
 
-## <a name="expand"></a>Genişlet
+## <a name="expand-an-msix-package"></a>Bir MSIX paketini Genişlet
 
-MSIX paketinin genişletilmesi çok adımlı bir işlemdir. Bu dosya, MALTıDAN yararlanır ve içeriğini bir VHD (x) veya CıM dosyasına yerleştirir. 
+Bir MSIX paketinin genişletilmesi çok adımlı bir işlemdir. Genişletme, MSIX dosyasını alır ve içeriğini bir VHD (x) veya CıM dosyasına koyar. 
 
 Bir MSIX paketini genişletmek için:
 
@@ -63,11 +67,11 @@ Bir MSIX paketinin karşıya yüklenmesi, MSIX paylaşımının genişletilmiş 
 
 Windows sanal masaüstü 'nde, karşıya yüklemeler MALTıYA her bir paylaşımdan bir kez gerçekleşir. Bir paketi karşıya yükledikten sonra, aynı abonelikteki tüm konak havuzları buna başvurabilir.
 
-## <a name="publish-an-msix-package"></a>MSIX paketi yayımlama
+## <a name="add-an-msix-package"></a>MSIX paketi ekleme
 
-Windows sanal masaüstü 'nde, bir MALTıLıK paketi yayımlandığında, uzak bir uygulama veya Masaüstü bağlantısı vardır.
+Windows sanal masaüstü 'nde, bir MSIX paketi eklendiğinde onu bir konak havuzuna bağlar.
 
-## <a name="assign-an-msix-package"></a>Bir MSIX paketi ata 
+## <a name="publish-an-msix-package"></a>MSIX paketi yayımlama 
 
 Windows sanal masaüstü 'nde yayınlanmış bir MSIX paketi bir Active Directory Etki Alanı hizmetine (AD DS) veya Azure Active Directory (Azure AD) kullanıcısına veya kullanıcı grubuna atanmalıdır.
 
@@ -118,4 +122,3 @@ Aşağıdaki tablo, VHD ve CimFS arasında bir performans karşılaştırmasına
 ## <a name="next-steps"></a>Sonraki adımlar
 
 MSIX uygulama iliştirme hakkında daha fazla bilgi edinmek istiyorsanız [genel bakış](what-is-app-attach.md) ve [SSS bölümüne](app-attach-faq.md)göz atın. Aksi takdirde, [uygulama eklemeyi ayarlama](app-attach.md)ile çalışmaya başlayın.
-

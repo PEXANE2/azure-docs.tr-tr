@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: d90cc76da20861ae9eca7aaf59a49e5f3e866c92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a57de3d6beda5336f480f20137a9ccaa014b012d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444426"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675090"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory kimlik doğrulaması kullan
 
@@ -153,21 +153,21 @@ Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum 
   - SQL yönetilen örneği için Azure AD Server sorumlularını (oturum açma) ekleme, role eklenebilen birden çok Azure AD Server sorumlusu (oturum açma) oluşturma olasılığa izin verir `sysadmin` .
 - Yalnızca sunucu için bir Azure AD yöneticisi, Azure Active Directory bir hesabı kullanarak sunucuya veya yönetilen örneğe ilk olarak bağlanabilir. Active Directory Yöneticisi, sonraki Azure AD veritabanı kullanıcılarını yapılandırabilir.
 - Bağlantı zaman aşımını 30 saniyeye ayarlamayı öneririz.
-- SQL Server 2016 Management Studio ve SQL Server Veri Araçları Visual Studio 2015 için (sürüm 14.0.60311.1 Nisan 2016 veya üzeri) Azure Active Directory kimlik doğrulamasını destekler. (Azure AD kimlik doğrulaması, **SqlServer için .NET Framework veri sağlayıcısı**tarafından desteklenir; en az sürüm .NET Framework 4,6). Bu nedenle, bu araçların ve veri katmanı uygulamalarının (DAC ve BACPAC) en yeni sürümleri Azure AD kimlik doğrulaması kullanabilir.
+- SQL Server 2016 Management Studio ve SQL Server Veri Araçları Visual Studio 2015 için (sürüm 14.0.60311.1 Nisan 2016 veya üzeri) Azure Active Directory kimlik doğrulamasını destekler. (Azure AD kimlik doğrulaması, **SqlServer için .NET Framework veri sağlayıcısı** tarafından desteklenir; en az sürüm .NET Framework 4,6). Bu nedenle, bu araçların ve veri katmanı uygulamalarının (DAC ve BACPAC) en yeni sürümleri Azure AD kimlik doğrulaması kullanabilir.
 - Sürüm 15.0.1 ile başlayarak, [sqlcmd yardımcı](/sql/tools/sqlcmd-utility) programı ve [bcp yardımcı programı](/sql/tools/bcp-utility) , Multi-Factor Authentication ile etkileşimli kimlik doğrulama desteği Active Directory.
-- Visual Studio 2015 için SQL Server Veri Araçları, en az veri araçları 'nın 2016 Nisan sürümü (sürüm 14.0.60311.1) gerektirir. Şu anda, Azure AD kullanıcıları SSDT Nesne Gezgini gösterilmez. Geçici bir çözüm olarak, [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx)kullanıcıları görüntüleyin.
+- Visual Studio 2015 için SQL Server Veri Araçları, en az veri araçları 'nın 2016 Nisan sürümü (sürüm 14.0.60311.1) gerektirir. Şu anda, Azure AD kullanıcıları SSDT Nesne Gezgini gösterilmez. Geçici bir çözüm olarak, [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql)kullanıcıları görüntüleyin.
 - [SQL Server Için MICROSOFT JDBC sürücüsü 6,0](https://www.microsoft.com/download/details.aspx?id=11774) , Azure AD kimlik doğrulamasını destekler. Ayrıca bkz. [bağlantı özelliklerini ayarlama](/sql/connect/jdbc/setting-the-connection-properties).
 - PolyBase, Azure AD kimlik doğrulamasını kullanarak kimlik doğrulaması yapamaz.
 - Azure AD kimlik doğrulaması, Azure SQL veritabanı ve Azure SYNAPSE için Azure portal **Içeri aktarma veritabanı** ve **dışarı aktarma veritabanı** dikey pencereleri kullanılarak desteklenir. Azure AD kimlik doğrulaması kullanarak içeri ve dışarı aktarma, bir PowerShell komutundan de desteklenir.
-- CLı kullanılarak SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE için Azure AD kimlik doğrulaması desteklenir. Daha fazla bilgi için bkz. [Azure AD kimlik DOĞRULAMASıNı SQL veritabanı veya Azure SYNAPSE Ile yapılandırma ve yönetme](authentication-aad-configure.md) [SQL Server-az SQL Server](https://docs.microsoft.com/cli/azure/sql/server).
+- CLı kullanılarak SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE için Azure AD kimlik doğrulaması desteklenir. Daha fazla bilgi için bkz. [Azure AD kimlik DOĞRULAMASıNı SQL veritabanı veya Azure SYNAPSE Ile yapılandırma ve yönetme](authentication-aad-configure.md) [SQL Server-az SQL Server](/cli/azure/sql/server).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Bir Azure AD örneği oluşturup doldurmayı ve sonra Azure SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE ile yapılandırmayı öğrenmek için bkz. [SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](authentication-aad-configure.md).
 - SQL yönetilen örneği ile Azure AD Server sorumlularını (oturum açma) kullanmanın bir öğreticisi için bkz. [SQL yönetilen örneği Ile Azure AD Server sorumluları (oturumlar)](../managed-instance/aad-security-configure-tutorial.md)
 - SQL veritabanında oturum açma bilgileri, kullanıcılar, veritabanı rolleri ve izinlere genel bakış için bkz. [oturum açma bilgileri, kullanıcılar, veritabanı rolleri ve izinler](logins-create-manage.md).
-- Veritabanı sorumluları hakkında daha fazla bilgi için bkz. [Sorumlular](https://msdn.microsoft.com/library/ms181127.aspx).
-- Veritabanı rolleri hakkında daha fazla bilgi için bkz. [Veritabanı rolleri](https://msdn.microsoft.com/library/ms189121.aspx).
+- Veritabanı sorumluları hakkında daha fazla bilgi için bkz. [Sorumlular](/sql/relational-databases/security/authentication-access/principals-database-engine).
+- Veritabanı rolleri hakkında daha fazla bilgi için bkz. [Veritabanı rolleri](/sql/relational-databases/security/authentication-access/database-level-roles).
 - SQL yönetilen örneği için Azure AD Server sorumlularını (oturum açma) oluşturma hakkında sözdizimi için bkz.  [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 - SQL Veritabanındaki güvenlik duvarı kuralları hakkında daha fazla bilgi için bkz. [SQL Veritabanı güvenlik duvarı kuralları](firewall-configure.md).
 

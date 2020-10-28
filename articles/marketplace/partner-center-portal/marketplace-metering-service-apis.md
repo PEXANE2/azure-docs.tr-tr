@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d4c1005d300a5b326ff2f41d9fa3838dbb1c7552
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278020"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674630"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Market ölçülen faturalandırma API 'Leri
 
@@ -34,7 +34,7 @@ Takvim gününün her bir saati için yalnızca bir kullanım olayı dağıtıla
 
 Kaynak başına bir takvim gününe ait her saat için yalnızca bir kullanım olayı dağıtılabilir. Bir saat içinde birden fazla birim tüketilirse, saat içinde tüketilen tüm birimleri birikir ve tek bir olayda yayın. Kullanım olayları yalnızca son 24 saat için kullanılabilir. Bir kullanım olayını 8:00 ile 8:59:59 arasında herhangi bir zamanda yayar (ve kabul edilirse) ve aynı gün için 8:00 ve 8:59:59 arasında ek bir olay gönderirseniz, yineleme olarak reddedilir.
 
-**Gönderi**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Gönderi** : `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -67,7 +67,7 @@ Kaynak başına bir takvim gününe ait her saat için yalnızca bir kullanım o
 >[!NOTE]
 >`resourceId` SaaS uygulaması ve yönetilen uygulama yayma özel ölçümü için farklı anlamlara sahiptir. 
 
-Azure uygulama tarafından yönetilen uygulamalar planları için, `resourceId` `resourceUsageId` `billingDetails` yönetilen uygulama meta verileri nesnesinin altında bulunur. [Azure tarafından yönetilen kimlikler belirtecini kullanarak](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token), bu dosyayı getirmeye yönelik örnek bir betik bulunabilir. 
+Azure uygulama tarafından yönetilen uygulamalar planları için, `resourceId` yönetilen uygulamadır `resource group Id` . [Azure tarafından yönetilen kimlikler belirtecini kullanarak](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token), bu dosyayı getirmeye yönelik örnek bir betik bulunabilir. 
 
 SaaS teklifleri için `resourceId` SaaS ABONELIK kimliğidir. SaaS abonelikleri hakkında daha fazla bilgi için bkz. [abonelikleri listeleme](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
 
@@ -191,7 +191,7 @@ Toplu kullanım olayı API 'SI, birden fazla satın alınan kaynağın kullanım
 >[!NOTE]
 >`resourceId` SaaS uygulaması ve yönetilen uygulama yayma özel ölçümü için farklı anlamlara sahiptir. 
 
-Azure uygulama tarafından yönetilen uygulamalar planları için, `resourceId` `resourceUsageId` `billingDetails` yönetilen uygulama meta verileri nesnesinin altında bulunur. [Azure tarafından yönetilen kimlikler belirtecini kullanarak](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token), bu dosyayı getirmeye yönelik örnek bir betik bulunabilir. 
+Azure uygulama tarafından yönetilen uygulamalar planları için, `resourceId` yönetilen uygulamadır `resource group Id` . [Azure tarafından yönetilen kimlikler belirtecini kullanarak](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token), bu dosyayı getirmeye yönelik örnek bir betik bulunabilir. 
 
 SaaS teklifleri için `resourceId` SaaS ABONELIK kimliğidir. SaaS abonelikleri hakkında daha fazla bilgi için bkz. [abonelikleri listeleme](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
 

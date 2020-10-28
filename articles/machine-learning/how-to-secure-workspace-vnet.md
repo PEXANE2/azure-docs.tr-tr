@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 3001b8829660f2891cb051269026bf7100a8f938
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1dc7c343087e4fc11aef20e95bc9cafea20a99b4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461013"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672867"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning çalışma alanının güvenliğini sağlama
 
@@ -27,7 +27,7 @@ Bu makale, bir Azure Machine Learning iş akışını güvenli hale getirmek iç
 
 Bu serideki diğer makalelere göz atın:
 
-[1. VNET 'e genel bakış](how-to-network-security-overview.md)  >  **2. Çalışma alanı**3 ' ü güvenli hale getirin  >  [. Eğitim ortamının](how-to-secure-training-vnet.md)4 ' ü koruyun  >  [. Invenli ortam](how-to-secure-inferencing-vnet.md)5 ' i güvenli hale getirin  >  [. Studio işlevselliğini etkinleştir](how-to-enable-studio-virtual-network.md)
+[1. VNET 'e genel bakış](how-to-network-security-overview.md)  >  **2. Çalışma alanı** 3 ' ü güvenli hale getirin  >  [. Eğitim ortamının](how-to-secure-training-vnet.md)4 ' ü koruyun  >  [. Invenli ortam](how-to-secure-inferencing-vnet.md)5 ' i güvenli hale getirin  >  [. Studio işlevselliğini etkinleştir](how-to-enable-studio-virtual-network.md)
 
 Bu makalede, bir sanal ağda aşağıdaki çalışma alanı kaynaklarını nasıl etkinleştireceğinizi öğreneceksiniz:
 > [!div class="checklist"]
@@ -74,23 +74,28 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak i
 
    [![Azure Machine Learning çalışma alanına bağlı depolama alanı](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. Depolama hizmeti hesabı sayfasında __güvenlik duvarları ve sanal ağlar__' ı seçin.
+1. Depolama hizmeti hesabı sayfasında __güvenlik duvarları ve sanal ağlar__ ' ı seçin.
 
    ![Azure portal Azure Storage sayfasındaki "güvenlik duvarları ve sanal ağlar" alanı](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
 1. __Güvenlik duvarları ve sanal ağlar__ sayfasında, aşağıdaki işlemleri yapın:
-    1. __Seçili ağlar__'ı seçin.
-    1. __Sanal ağlar__altında __var olan sanal ağ ekle__ bağlantısını seçin. Bu eylem, işlemin bulunduğu sanal ağı ekler (bkz. 1. adım).
+    1. __Seçili ağlar__ 'ı seçin.
+    1. __Sanal ağlar__ altında __var olan sanal ağ ekle__ bağlantısını seçin. Bu eylem, işlemin bulunduğu sanal ağı ekler (bkz. 1. adım).
 
         > [!IMPORTANT]
         > Depolama hesabı, eğitim veya çıkarım için kullanılan işlem örnekleri veya kümeler ile aynı sanal ağ ve alt ağ içinde olmalıdır.
 
-    1. __Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver__ onay kutusunu seçin.
+    1. __Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver__ onay kutusunu seçin. Bu, tüm Azure hizmetlerinin depolama hesabınıza erişmesini sağlamaz.
+    
+        * **Aboneliğinizde kayıtlı** bazı hizmetlerin kaynakları, select işlemleri için **aynı abonelikteki** depolama hesabına erişebilir. Örneğin, Günlükler yazma veya yedeklemeler oluşturma.
+        * Bazı hizmetlerin kaynaklarına, sistem tarafından atanan yönetilen kimliğine __bir Azure rolü atayarak__ depolama hesabınıza açık erişim verilebilir.
+
+        Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](../storage/common/storage-network-security.md#trusted-microsoft-services).
 
     > [!IMPORTANT]
     > Azure Machine Learning SDK ile çalışırken, geliştirme ortamınızın Azure depolama hesabına bağlanabiliyor olması gerekir. Depolama hesabı bir sanal ağın içindeyken güvenlik duvarının, geliştirme ortamının IP adresinden erişime izin vermelidir.
     >
-    > Depolama hesabına erişimi etkinleştirmek için, *geliştirme istemcisinde bir Web tarayıcısından*depolama hesabı Için __güvenlik duvarlarını ve sanal ağları__ ziyaret edin. Ardından, istemcinin IP adresini __adres aralığına__eklemek IÇIN __Istemci IP adresini ekle__ onay kutusunu kullanın. Ayrıca, geliştirme ortamının IP adresini el ile girmek için __adres aralığı__ alanını da kullanabilirsiniz. İstemcinin IP adresi eklendikten sonra SDK 'Yı kullanarak depolama hesabına erişebilir.
+    > Depolama hesabına erişimi etkinleştirmek için, *geliştirme istemcisinde bir Web tarayıcısından* depolama hesabı Için __güvenlik duvarlarını ve sanal ağları__ ziyaret edin. Ardından, istemcinin IP adresini __adres aralığına__ eklemek IÇIN __Istemci IP adresini ekle__ onay kutusunu kullanın. Ayrıca, geliştirme ortamının IP adresini el ile girmek için __adres aralığı__ alanını da kullanabilirsiniz. İstemcinin IP adresi eklendikten sonra SDK 'Yı kullanarak depolama hesabına erişebilir.
 
    [![Azure portal "güvenlik duvarları ve sanal ağlar" bölmesi](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
@@ -170,12 +175,12 @@ Bir sanal ağın arkasındaki Azure Key Vault Azure Machine Learning deneme yete
 
 1. Çalışma alanıyla ilişkili olan Key Vault gidin.
 
-1. __Key Vault__ sayfasında, sol bölmede __ağ iletişimi__' ni seçin.
+1. __Key Vault__ sayfasında, sol bölmede __ağ iletişimi__ ' ni seçin.
 
 1. __Güvenlik duvarları ve sanal ağlar__ sekmesinde, aşağıdaki işlemleri yapın:
-    1. __Erişime Izin ver__' ın altında __Özel uç nokta ve seçili ağlar__' ı seçin.
-    1. __Sanal ağlar__altında, deneme hesapla'nizin bulunduğu sanal ağı eklemek için __var olan sanal ağları Ekle__ ' yi seçin.
-    1. __Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver__altında __Evet__' i seçin.
+    1. __Erişime Izin ver__ ' ın altında __Özel uç nokta ve seçili ağlar__ ' ı seçin.
+    1. __Sanal ağlar__ altında, deneme hesapla'nizin bulunduğu sanal ağı eklemek için __var olan sanal ağları Ekle__ ' yi seçin.
+    1. __Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver__ altında __Evet__ ' i seçin.
 
    [![Key Vault bölmesindeki "güvenlik duvarları ve sanal ağlar" bölümü](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 
@@ -197,7 +202,7 @@ Bu gereksinimler karşılandıktan sonra, Azure Container Registry etkinleştirm
 
 1. Aşağıdaki yöntemlerden birini kullanarak, çalışma alanınızın Azure Container Registry adını bulun:
 
-    __Azure portalı__
+    __Azure Portal__
 
     Çalışma alanınızın genel bakış bölümünden __kayıt defteri__ değeri Azure Container Registry bağlanır.
 

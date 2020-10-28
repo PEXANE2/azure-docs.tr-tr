@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 5ddc79721355924f125acedd7420cab5f487c065
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71c73fec4f559b34b097556243617636acd77480
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445042"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673268"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>Öğretici: Azure portal (Azure SQL veritabanı) etkin Coğrafi çoğaltmayı ve yük devretmeyi yapılandırma
 
@@ -35,7 +35,7 @@ Azure portal kullanarak etkin Coğrafi çoğaltmayı yapılandırmak için aşa�
 * Azure SQL veritabanı 'ndaki bir veritabanı: farklı bir coğrafi bölgeye çoğaltmak istediğiniz birincil veritabanı.
 
 > [!Note]
-> Azure portal kullanırken, birincil ile aynı abonelik içinde yalnızca ikincil bir veritabanı oluşturabilirsiniz. İkincil bir veritabanının farklı bir abonelikte olması gerekiyorsa [create database REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) veya [ALTER DATABASE Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)kullanın.
+> Azure portal kullanırken, birincil ile aynı abonelik içinde yalnızca ikincil bir veritabanı oluşturabilirsiniz. İkincil bir veritabanının farklı bir abonelikte olması gerekiyorsa [create database REST API](/rest/api/sql/databases/createorupdate) veya [ALTER DATABASE Transact-SQL API](/sql/t-sql/statements/alter-database-transact-sql)kullanın.
 
 ## <a name="add-a-secondary-database"></a>İkincil veritabanı Ekle
 
@@ -50,7 +50,7 @@ Aşağıdaki adımlar, coğrafi çoğaltma ortaklığında yeni bir ikincil veri
 > İş ortağı veritabanı zaten mevcutsa (örneğin, önceki coğrafi çoğaltma ilişkisini sonlandırmayla ilgili bir sonuç olarak), komut başarısız olur.
 
 1. [Azure Portal](https://portal.azure.com), coğrafi çoğaltma için ayarlamak istediğiniz veritabanına gidin.
-2. SQL veritabanı sayfasında, **coğrafi çoğaltma**' yı seçin ve ardından ikincil veritabanını oluşturmak için bölgeyi seçin. Birincil veritabanını barındıran bölge dışında herhangi bir bölgeyi seçebilirsiniz, ancak [eşleştirilmiş bölgeyi](../../best-practices-availability-paired-regions.md)öneririz.
+2. SQL veritabanı sayfasında, **coğrafi çoğaltma** ' yı seçin ve ardından ikincil veritabanını oluşturmak için bölgeyi seçin. Birincil veritabanını barındıran bölge dışında herhangi bir bölgeyi seçebilirsiniz, ancak [eşleştirilmiş bölgeyi](../../best-practices-availability-paired-regions.md)öneririz.
 
     ![Coğrafi çoğaltmayı yapılandırma](./media/active-geo-replication-configure-portal/configure-geo-replication.png)
 3. İkincil veritabanı için sunucu ve fiyatlandırma katmanını seçin ya da yapılandırın.
@@ -70,8 +70,8 @@ Aşağıdaki adımlar, coğrafi çoğaltma ortaklığında yeni bir ikincil veri
 İkincil veritabanı birincil olacak şekilde değiştirilebilir.  
 
 1. [Azure Portal](https://portal.azure.com), coğrafi çoğaltma ortaklığının birincil veritabanına gidin.
-2. SQL veritabanı dikey penceresinde **Tüm ayarlar**  >  **coğrafi çoğaltma**' yı seçin.
-3. **İkincil** öğeler listesinde, yeni birincil olmasını istediğiniz veritabanını seçin ve **zorlamalı yük devretme**' ye tıklayın.
+2. SQL veritabanı dikey penceresinde **Tüm ayarlar**  >  **coğrafi çoğaltma** ' yı seçin.
+3. **İkincil** öğeler listesinde, yeni birincil olmasını istediğiniz veritabanını seçin ve **zorlamalı yük devretme** ' ye tıklayın.
 
     ![yük devretme](./media/active-geo-replication-configure-portal/secondaries.png)
 4. Yük devretmeyi başlatmak için **Evet** ' e tıklayın.
@@ -88,9 +88,9 @@ Roller geçildiğinde her iki veritabanının da kullanılamadığı (0 ile 25 s
 Bu işlem, çoğaltmayı ikincil veritabanına kalıcı olarak sonlandırır ve ikincil öğesinin rolünü düzenli bir okuma-yazma veritabanıyla değiştirir. İkincil veritabanı bağlantısı bozulur, komut başarılı olur ancak bağlantı geri yüklenene kadar ikincil okuma-yazma olmaz.  
 
 1. [Azure Portal](https://portal.azure.com), coğrafi çoğaltma ortaklığının birincil veritabanına gidin.
-2. SQL veritabanı sayfasında, **coğrafi çoğaltma**' yı seçin.
+2. SQL veritabanı sayfasında, **coğrafi çoğaltma** ' yı seçin.
 3. **İkincil** öğeler listesinde, coğrafi çoğaltma ortaklığından kaldırmak istediğiniz veritabanını seçin.
-4. **Çoğaltmayı durdur**' a tıklayın.
+4. **Çoğaltmayı durdur** ' a tıklayın.
 
     ![İkincili kaldır](./media/active-geo-replication-configure-portal/remove-secondary.png)
 5. Bir onay penceresi açılır. Veritabanını coğrafi çoğaltma ortaklığından kaldırmak için **Evet** ' e tıklayın. (Herhangi bir çoğaltmanın parçası olmayan bir okuma-yazma veritabanına ayarlayın.)

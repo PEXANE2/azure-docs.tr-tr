@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 661147769d8ae845066e912a84118c9fd3f93486
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497004"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674916"
 ---
 # <a name="weather-partner-integration"></a>Hava durumu iş ortağı tümleştirmesi
 
@@ -28,7 +28,7 @@ Hava durumu ortağının bir Docker görüntüsünü/programını sağlaması ge
 - Hava durumu ortağının sistemindeki verilere erişmek için müşteriye özgü API anahtarları/kimlik bilgileri
 - VM SKU 'SU ayrıntıları (Iş ortakları, Docker 'ın belirli VM gereksinimlerine sahip olması durumunda bunu sağlayabilir, aksi takdirde müşteriler Azure 'da desteklenen VM SKU 'Ları arasından seçim yapabilir)
 
-Yukarıdaki Docker bilgilerini kullanarak müşteri, bir hava durumu ortağını, bu kişilerin Farmker örneğine kaydeder. Müşterilerin, veri Hava durumu verilerini almak için Docker 'ı nasıl kullanabileceği hakkında daha fazla bilgi edinmek için [Hava durumu verilerini alma](https://docs.microsoft.com/azure/industry/agriculture/get-weather-data-from-weather-partner) kılavuzuna bakın
+Yukarıdaki Docker bilgilerini kullanarak müşteri, bir hava durumu ortağını, bu kişilerin Farmker örneğine kaydeder. Müşterilerin, veri Hava durumu verilerini almak için Docker 'ı nasıl kullanabileceği hakkında daha fazla bilgi edinmek için [Hava durumu verilerini alma](./get-weather-data-from-weather-partner.md) kılavuzuna bakın
 
 ## <a name="connector-docker-development"></a>Bağlayıcı Docker geliştirme
 
@@ -71,9 +71,9 @@ Müşterilerin Docker yürütmesi sırasında iş ortağı tarafı API 'Lerinde 
    }
 }
 ```
-API hizmeti bu dict 'yi seri hale getirir ve bunu bir [Keykasasında](https://docs.microsoft.com/azure/key-vault/basic-concepts)depolar.
+API hizmeti bu dict 'yi seri hale getirir ve bunu bir [Keykasasında](../../key-vault/general/basic-concepts.md)depolar.
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) , hava durumu işlerini düzenlemek ve Docker kodunu yürütmek üzere kaynakları almak için kullanılır. Ayrıca, Docker işinin çalıştırıldığı sanal makineye güvenli bir şekilde veri gönderme mekanizması sağlar. Artık Keykasasında güvenli şekilde depolanan API kimlik bilgileri, anahtar kasasından güvenli dizeler olarak okunabilir ve Docker kapsayıcısının çalışma dizininde activity.jsüzerinde genişletilmiş özellikler olarak kullanılabilir hale getirilir (yol dosya "/mnt/working_dir/activity.json") Docker kodu, çalışma zamanında bu dosyadaki kimlik bilgilerini, müşteri adına iş ortağı tarafı API 'Lerine erişmek için okuyabilir. Kimlik bilgileri dosyada aşağıdaki gibi kullanılabilir olacaktır:
+[Azure Data Factory](../../data-factory/introduction.md) , hava durumu işlerini düzenlemek ve Docker kodunu yürütmek üzere kaynakları almak için kullanılır. Ayrıca, Docker işinin çalıştırıldığı sanal makineye güvenli bir şekilde veri gönderme mekanizması sağlar. Artık Keykasasında güvenli şekilde depolanan API kimlik bilgileri, anahtar kasasından güvenli dizeler olarak okunabilir ve Docker kapsayıcısının çalışma dizininde activity.jsüzerinde genişletilmiş özellikler olarak kullanılabilir hale getirilir (yol dosya "/mnt/working_dir/activity.json") Docker kodu, çalışma zamanında bu dosyadaki kimlik bilgilerini, müşteri adına iş ortağı tarafı API 'Lerine erişmek için okuyabilir. Kimlik bilgileri dosyada aşağıdaki gibi kullanılabilir olacaktır:
 
 ```json
 { 
@@ -89,7 +89,7 @@ Farmtts kitaplığı, iş ortaklarının etkinlik özelliklerinden kimlik bilgil
 
 Dosyanın ömrü yalnızca Docker kod yürütme sırasında olduğundan, Docker çalıştırıldıktan sonra silinir.
 
-ADF işlem hatları ve etkinliklerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz [https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping) ..
+ADF işlem hatları ve etkinliklerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz [https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](../../data-factory/copy-activity-schema-and-type-mapping.md) ..
 
 **HTTP istek üstbilgileri**
 
@@ -107,7 +107,7 @@ JSON, rastgele veri yapılarının basit bir metin gösterimini sağlayan, dilde
 
 ## <a name="docker-specifications"></a>Docker belirtimleri
 
-Docker programının iki bileşeni olması gerekir: **önyükleme** ve **işler**. Birden çok Iş olabilir.
+Docker programının iki bileşeni olması gerekir: **önyükleme** ve **işler** . Birden çok Iş olabilir.
 
 ### <a name="bootstrap"></a>Bootstrap
 
@@ -121,10 +121,10 @@ Bu bileşen, müşteri, Farmtts 'de Docker kaydını başlattığında yürütü
 Aşağıdaki meta veriler bu işlemin bir parçası olarak oluşturulur. 
 
  > [!NOTE]
- > **Lütfen** dosyadaki bootstrap_manifest.js[başvuru uygulamasında](https://github.com/azurefarmbeats/noaa_docker)bahsedildiği gibi güncelleştirirseniz, önyükleme, bildirim dosyanıza göre aynısını oluştururken aşağıdaki meta verileri oluşturmanız gerekmez.
+ > **Lütfen** dosyadaki bootstrap_manifest.js [başvuru uygulamasında](https://github.com/azurefarmbeats/noaa_docker)bahsedildiği gibi güncelleştirirseniz, önyükleme, bildirim dosyanıza göre aynısını oluştururken aşağıdaki meta verileri oluşturmanız gerekmez.
 
-- /**Dalgalı veri modeli**: bir hava kaynağı modeli, hava durumu verilerini temsil eden ve kaynak tarafından sunulan farklı veri kümelerine karşılık gelen bir modeldir. Örneğin, bir Dailyforebir Simplemodel günde bir kez ortalama sıcaklık, nem ve yağış bilgilerini sağlayabilir, bu durumda bir DailyForecastAdvancedModel saatlik ayrıntı düzeyinde daha fazla bilgi sağlayabiliriz. İstediğiniz sayıda dalgalı Therdatamodel oluşturabilirsiniz.
-- /**JobType**: farmtts, genişletilebilir bir iş yönetim sistemine sahiptir. Hava durumu veri sağlayıcısı olarak, farklı veri kümelerine/API 'Lere sahip olursunuz (örneğin, Getgünlüktahminleri); onları JobType olarak Farmpts 'de etkinleştirebilirsiniz. Bir JobType oluşturulduktan sonra bir müşteri, kendi konumu/grubu için hava durumu verilerini almak üzere bu türdeki Işleri tetikleyebilir (bkz. [Farmtts Swagger](https://aka.ms/farmbeatsswagger)Içindeki JobType ve Job API 'leri).
+- /**Dalgalı veri modeli** : bir hava kaynağı modeli, hava durumu verilerini temsil eden ve kaynak tarafından sunulan farklı veri kümelerine karşılık gelen bir modeldir. Örneğin, bir Dailyforebir Simplemodel günde bir kez ortalama sıcaklık, nem ve yağış bilgilerini sağlayabilir, bu durumda bir DailyForecastAdvancedModel saatlik ayrıntı düzeyinde daha fazla bilgi sağlayabiliriz. İstediğiniz sayıda dalgalı Therdatamodel oluşturabilirsiniz.
+- /**JobType** : farmtts, genişletilebilir bir iş yönetim sistemine sahiptir. Hava durumu veri sağlayıcısı olarak, farklı veri kümelerine/API 'Lere sahip olursunuz (örneğin, Getgünlüktahminleri); onları JobType olarak Farmpts 'de etkinleştirebilirsiniz. Bir JobType oluşturulduktan sonra bir müşteri, kendi konumu/grubu için hava durumu verilerini almak üzere bu türdeki Işleri tetikleyebilir (bkz. [Farmtts Swagger](https://aka.ms/farmbeatsswagger)Içindeki JobType ve Job API 'leri).
 
 ### <a name="jobs"></a>İşler
 
@@ -148,7 +148,7 @@ Bu bileşen, bir Farmher Kullanıcı, önyükleme işleminin bir parçası olara
   Hava ölçüleri > derinliği  | Algılayıcının santimetre cinsinden derinliği. Örneğin, zemin altındaki nemi 10 cm ölçümü.
   Hava ölçüleri > açıklaması  | Ölçümün anlamlı bir açıklamasını sağlayın. |
   **JobType** | **Açıklama** |
-  Adı  | Işin adı; örneğin Get_Daily_Forecast; müşterinin Hava durumu verilerini almak için çalışacağı iş|
+  Ad  | Işin adı; örneğin Get_Daily_Forecast; müşterinin Hava durumu verilerini almak için çalışacağı iş|
   pipelineDetails > parametreler > adı  | parametrenin adı |
   pipelineDetails > parametreler > tür | String, INT, float, bool, Array seçeneklerinden biri |
   pipelineDetails > parametreler > IsRequired | Boolean gerekli parametre ise true, değilse false; Varsayılan değer true 'dur |
@@ -159,7 +159,7 @@ Bu bileşen, bir Farmher Kullanıcı, önyükleme işleminin bir parçası olara
   **Dalgalı bir Datalocation** | **Açıklama** |
   Dalgalı veri ModelId  | Önyükleme sırasında oluşturulan karşılık gelen dalgalı veri modelinin KIMLIĞI|
   location  | Enlem, boylam ve yükseltmeyi temsil eder |
-  Adı | Nesnenin adı |
+  Ad | Nesnenin adı |
   Açıklama | Açıklama |
   farmId | **isteğe bağlı** İş parametresinin bir parçası olarak müşteri tarafından sunulan grubun KIMLIĞI |
   Özellikler  | Üreticiden ek özellikler.
@@ -180,7 +180,7 @@ Bağlayıcı Docker 'ın meta verilerde güncelleştirme gönderebilme özelliğ
 
 ## <a name="weather-data-telemetry-specifications"></a>Hava durumu verileri (telemetri) belirtimleri
 
-Hava durumu verileri, işlenmek üzere bir Azure Olay Hub 'ına gönderilen kurallı bir iletiyle eşleştirilir. Azure EventHub, bağlı cihazlardan ve uygulamalardan gerçek zamanlı veri (telemetri) alımı sağlayan bir hizmettir. Hava durumu verilerini Farmtts 'e göndermek için, bir olay hub 'ına Farmtts 'de ileti gönderen bir istemci oluşturmanız gerekir. Telemetri gönderme hakkında daha fazla bilgi için bkz. [bir olay hub 'ına telemetri gönderme](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)
+Hava durumu verileri, işlenmek üzere bir Azure Olay Hub 'ına gönderilen kurallı bir iletiyle eşleştirilir. Azure EventHub, bağlı cihazlardan ve uygulamalardan gerçek zamanlı veri (telemetri) alımı sağlayan bir hizmettir. Hava durumu verilerini Farmtts 'e göndermek için, bir olay hub 'ına Farmtts 'de ileti gönderen bir istemci oluşturmanız gerekir. Telemetri gönderme hakkında daha fazla bilgi için bkz. [bir olay hub 'ına telemetri gönderme](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 Aşağıda, belirtilen bir olay hub 'ına bir istemci olarak telemetri gönderen örnek bir Python kodu verilmiştir.
 

@@ -3,18 +3,18 @@ title: Kavramlar-kimlik ve erişim
 description: Azure VMware çözümünün kimlik ve erişim kavramları hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7127109801d92d2177f6edac3efcaf76ddf217e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88750577"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674640"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Çözüm kimliği kavramları
 
-Bir vCenter Server ve NSX-T Yöneticisi, özel bir bulut dağıtıldığında temin edilir. Özel bulut yazılım tanımlı ağını genişletmek üzere sanal makine iş yüklerini ve NSX-T yöneticisini yönetmek için vCenter 'ı kullanın.
+Özel bir bulut dağıtımında, bir vCenter Server ve NSX-T Yöneticisi temin edin. Sanal makine (VM) iş yüklerini yönetmek için vCenter 'ı kullanın. Özel bulut yazılım tanımlı ağını genişletmek için NSX-T Yöneticisi 'ni kullanırsınız.
 
-Erişim ve kimlik yönetimi NSX-T Manager için vCenter ve kısıtlı yönetici hakları için CloudAdmin Grup ayrıcalıklarını kullanın. Bu ilke, özel bulut platformunuzun otomatik olarak yükseltilmesini sağlar. Bu, en yeni özellikleri ve düzeltme eklerini düzenli olarak sunar. Özel bulut yükseltmeleri hakkında daha fazla bilgi için bkz. [özel bulut yükseltmeleri kavramları makalesi][concepts-upgrades] .
+Erişim ve kimlik yönetimi NSX-T Manager için vCenter ve kısıtlı yönetici hakları için CloudAdmin Grup ayrıcalıklarını kullanın. Özel bulut platformunuzun en yeni özellikler ve düzeltme ekleriyle otomatik olarak yükseltmelerini sağlar.  Daha fazla bilgi için bkz. [özel bulut yükseltmeleri kavramları makalesi][concepts-upgrades].
 
 ## <a name="vcenter-access-and-identity"></a>vCenter erişimi ve kimliği
 
@@ -33,7 +33,7 @@ CloudAdmin ve CloudGlobalAdmin ayrıcalıkları aşağıdaki tabloda gösterilmi
 |  ESX Aracısı Yöneticisi       |  --  |         --       |  Microsoft tüm işlemleri yapar.  |
 |  Klasör                  |  Bir CloudAdmin kullanıcısının tüm klasör ayrıcalıkları vardır.     |  --  |  --  |
 |  Genel                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. Serviceyöneticileri, Global. SetCustomField, Global.SysTıtemtag         |                  |    |
-|  Ana bilgisayar                    |  Host. HBR. HbrManagement      |        --          |  Microsoft, diğer tüm konak işlemlerini yapar.  |
+|  Yönetici                    |  Host. HBR. HbrManagement      |        --          |  Microsoft, diğer tüm konak işlemlerini yapar.  |
 |  InventoryService        |  InventoryService. etiketleme      |        --          |  --  |
 |  Ağ                 |  Network. assign    |                  |  Microsoft, diğer tüm ağ işlemlerini yapar.  |
 |  İzinler             |  --  |        --       |  Microsoft tüm Izin işlemlerini yapar.  |
@@ -49,7 +49,7 @@ CloudAdmin ve CloudGlobalAdmin ayrıcalıkları aşağıdaki tabloda gösterilmi
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Yöneticisi erişimi ve kimliği
 
-NSX-T yöneticisine "Yönetici" hesabını kullanarak erişirsiniz. Bu hesabın tam ayrıcalıkları vardır ve T1 yönlendiricileri, mantıksal anahtarlar ve tüm hizmetler oluşturup yönetmenize olanak sağlar. NSX-T ' deki tüm ayrıcalıklar Ayrıca NSX-T T0 yönlendiricisine erişim sağlar. T0 yönlendiricisinde yapılan bir değişiklik, ağ performansının düşmesine veya özel bir buluta erişim kaybına neden olabilir. Destek gereksinimlerini karşılamak için, NSX-T T0 yönlendiricinizde herhangi bir değişiklik istemek üzere Azure portal bir destek isteği açmanız gerekir.
+NSX-T Yöneticisi 'ne erişmek için "Yönetici" hesabını kullanın. Tam ayrıcalıklara sahiptir ve T1 yönlendiricileri, mantıksal anahtarlar ve tüm hizmetler oluşturup yönetmenize olanak sağlar. Ayrıcalıklar, NSX-T T0 yönlendiricisine erişmenizi sağlar. T0 yönlendiricisinde yapılan bir değişiklik, ağ performansının düşmesine neden olabilir veya özel bulut erişimi olmayabilir. NSX-T T0 yönlendiricinizde herhangi bir değişiklik istemek için Azure portal bir destek isteği açın.
   
 ## <a name="next-steps"></a>Sonraki adımlar
 

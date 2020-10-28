@@ -13,19 +13,19 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 2a3e1e7279e915c0c5992190ef0c8d1d83880dbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b81572266f6ee5bd90662a98988d41479f399cc
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596141"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675000"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-Factor Azure Active Directory kimlik doğrulamasını kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics, MFA kimlik doğrulamasıyla *Azure Active Directory-Universal* kullanarak [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) bağlantılarını destekler. Bu makalede çeşitli kimlik doğrulama seçenekleri arasındaki farklar ve ayrıca Azure SQL için Azure Active Directory (Azure AD) içinde evrensel kimlik doğrulaması kullanmayla ilişkili sınırlamalar ele alınmaktadır.
+Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics, MFA kimlik doğrulamasıyla *Azure Active Directory-Universal* kullanarak [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) bağlantılarını destekler. Bu makalede çeşitli kimlik doğrulama seçenekleri arasındaki farklar ve ayrıca Azure SQL için Azure Active Directory (Azure AD) içinde evrensel kimlik doğrulaması kullanmayla ilişkili sınırlamalar ele alınmaktadır.
 
-**En son SSMS 'Yi indirin** -istemci bilgisayarda, [Download SQL Server Management Studio 'ten (SSMS)](https://aka.ms/ssms)en son SSMS sürümünü indirin. 
+**En son SSMS 'Yi indirin** -istemci bilgisayarda, [Download SQL Server Management Studio 'ten (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)en son SSMS sürümünü indirin. 
 
 [!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
 
@@ -47,18 +47,18 @@ Azure Multi-Factor Authentication (MFA) de destekleyen etkileşimli yöntem şun
 
 Azure MFA, kullanıcıların oturum açmaya yönelik basit işlem taleplerini karşılarken, verilere ve uygulamalara erişimi korumaya da yardımcı olur. Kolay doğrulama seçenekleriyle (telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi), kullanıcıların tercih ettikleri yöntemi seçebilmesine olanak tanıyan güçlü kimlik doğrulaması sağlar. Azure AD ile etkileşimli MFA, doğrulama için bir açılır iletişim kutusu ile sonuçlanabilir.
 
-Azure Multi-Factor Authentication 'nin bir açıklaması için bkz. [Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
+Azure Multi-Factor Authentication 'nin bir açıklaması için bkz. [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
 Yapılandırma adımları için bkz. [SQL Server Management Studio Için Azure SQL veritabanı Multi-Factor Authentication 'ı yapılandırma](authentication-mfa-ssms-configure.md).
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD etki alanı adı veya kiracı KIMLIĞI parametresi
 
-[SSMS sürüm 17](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)' den başlayarak, mevcut Azure AD 'ye, diğer Azure Active Directory 'lerden Konuk Kullanıcı olarak içeri aktarılan kullanıcılar, BAĞLANDıKLARıNDA Azure AD etki alanı adını veya kiracı kimliğini sağlayabilir. Konuk kullanıcılar, diğer Azure reklamları, outlook.com, hotmail.com, live.com gibi Microsoft hesaplarından veya gmail.com gibi diğer hesaplarla davet edilen kullanıcıları içerir. Bu bilgiler `Azure Active Directory - Universal with MFA` kimlik doğrulamanın doğru kimlik doğrulama yetkilisini belirlemesine izin verir. Bu seçenek ayrıca, outlook.com, hotmail.com, live.com veya MSA olmayan hesaplar gibi Microsoft hesaplarını (MSA) desteklemek için de gereklidir. 
+[SSMS sürüm 17](/sql/ssms/download-sql-server-management-studio-ssms)' den başlayarak, mevcut Azure AD 'ye, diğer Azure Active Directory 'lerden Konuk Kullanıcı olarak içeri aktarılan kullanıcılar, BAĞLANDıKLARıNDA Azure AD etki alanı adını veya kiracı kimliğini sağlayabilir. Konuk kullanıcılar, diğer Azure reklamları, outlook.com, hotmail.com, live.com gibi Microsoft hesaplarından veya gmail.com gibi diğer hesaplarla davet edilen kullanıcıları içerir. Bu bilgiler `Azure Active Directory - Universal with MFA` kimlik doğrulamanın doğru kimlik doğrulama yetkilisini belirlemesine izin verir. Bu seçenek ayrıca, outlook.com, hotmail.com, live.com veya MSA olmayan hesaplar gibi Microsoft hesaplarını (MSA) desteklemek için de gereklidir. 
 
 Evrensel kimlik doğrulaması kullanarak kimlik doğrulaması yapmak isteyen tüm konuk kullanıcıların Azure AD etki alanı adını veya kiracı KIMLIĞINI girmesi gerekir. Bu parametre, Azure SQL mantıksal sunucusunun ilişkilendirildiği geçerli Azure AD etki alanı adını veya kiracı KIMLIĞINI temsil eder. Örneğin, SQL mantıksal sunucusu Azure AD etki alanı ile ilişkiliyse `contosotest.onmicrosoft.com` , Kullanıcı `joe@contosodev.onmicrosoft.com` Azure AD etki alanından içeri aktarılmış bir kullanıcı olarak barındırılır, `contosodev.onmicrosoft.com` Bu kullanıcının kimliğini doğrulamak için gereken etki alanı adı `contosotest.onmicrosoft.com` . Kullanıcı, Azure AD 'nin SQL mantıksal sunucusuyla ilişkili yerel bir kullanıcısı olduğunda ve bir MSA hesabı olmadığında, etki alanı adı veya kiracı KIMLIĞI gerekmez. Parametreyi (SSMS sürüm 17,2 ' den başlayarak) girmek için:
 
 
 1. SSMS 'de bir bağlantı açın. Sunucu adınızı girin ve MFA kimlik doğrulamasıyla **Azure Active Directory-Universal** ' ı seçin. Oturum açmak istediğiniz **Kullanıcı adını** ekleyin.
-1. **Seçenekler** kutusunu seçin ve **bağlantı özellikleri** sekmesine gidin. **Veritabanına Bağlan** iletişim kutusunda veritabanınızın iletişim kutusunu doldurun. **Ad etki alanı adı veya KIRACı kimliği** kutusunu işaretleyin ve kimlik doğrulaması yetkilisini (etki alanı adı (**contosotest.onmicrosoft.com**) veya kiracı kimliğinin GUID 'si gibi) belirtin. 
+1. **Seçenekler** kutusunu seçin ve **bağlantı özellikleri** sekmesine gidin. **Veritabanına Bağlan** iletişim kutusunda veritabanınızın iletişim kutusunu doldurun. **Ad etki alanı adı veya KIRACı kimliği** kutusunu işaretleyin ve kimlik doğrulaması yetkilisini (etki alanı adı ( **contosotest.onmicrosoft.com** ) veya kiracı kimliğinin GUID 'si gibi) belirtin. 
 
    ![Veritabanına bağlanma ve AD etki alanı adına veya kiracı KIMLIĞINE yönelik ayarları vurgulayan bağlantı özellikleri sekmesinin ekran görüntüsü.](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
 
@@ -69,11 +69,11 @@ SSMS 18. x veya üzeri bir sürümü çalıştırıyorsanız, bu AD etki alanı 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD iş 'e iş desteği
 
 > [!IMPORTANT]
-> Konuk kullanıcıların Azure SQL veritabanı 'na bağlanmasına yönelik destek, SQL yönetilen örneği ve bir grubun parçası olmadan Azure SYNAPSE Şu anda **genel önizlemededir**. Daha fazla bilgi için bkz. [Azure AD Konuk kullanıcıları oluşturma ve Azure AD yöneticisi olarak ayarlama](authentication-aad-guest-users.md).
+> Konuk kullanıcıların Azure SQL veritabanı 'na bağlanmasına yönelik destek, SQL yönetilen örneği ve bir grubun parçası olmadan Azure SYNAPSE Şu anda **genel önizlemededir** . Daha fazla bilgi için bkz. [Azure AD Konuk kullanıcıları oluşturma ve Azure AD yöneticisi olarak ayarlama](authentication-aad-guest-users.md).
 
-Azure AD B2B senaryolarında Konuk Kullanıcı olarak desteklenen Azure AD kullanıcıları (bkz. [Azure B2B Işbirliği nedir](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)), yalnızca ILIŞKILI Azure AD 'de oluşturulan bir grubun üyelerinin PARÇASı olarak SQL Database ve Azure SYNAPSE 'a bağlanabilir ve belirli BIR veritabanındaki [Kullanıcı oluşturma (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) ifadesini kullanarak el ile eşleştirilir. Örneğin, Azure AD `steve@gmail.com` 'ye `contosotest` (Azure AD etki alanı ile) davet edildiyseniz, `contosotest.onmicrosoft.com` `usergroup` üyeyi içeren Azure AD 'de, gibi bir Azure AD grubunun oluşturulması gerekir `steve@gmail.com` . Daha sonra, `MyDatabase` Transact-SQL ifadesini yürüterek, bu grup bir Azure ad SQL Yöneticisi veya Azure AD dbo tarafından belirli bir veritabanı için oluşturulmalıdır (örneğin,) `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` . 
+Azure AD B2B senaryolarında Konuk Kullanıcı olarak desteklenen Azure AD kullanıcıları (bkz. [Azure B2B Işbirliği nedir](../../active-directory/external-identities/what-is-b2b.md)), yalnızca ILIŞKILI Azure AD 'de oluşturulan bir grubun üyelerinin PARÇASı olarak SQL Database ve Azure SYNAPSE 'a bağlanabilir ve belirli BIR veritabanındaki [Kullanıcı oluşturma (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) ifadesini kullanarak el ile eşleştirilir. Örneğin, Azure AD `steve@gmail.com` 'ye `contosotest` (Azure AD etki alanı ile) davet edildiyseniz, `contosotest.onmicrosoft.com` `usergroup` üyeyi içeren Azure AD 'de, gibi bir Azure AD grubunun oluşturulması gerekir `steve@gmail.com` . Daha sonra, `MyDatabase` Transact-SQL ifadesini yürüterek, bu grup bir Azure ad SQL Yöneticisi veya Azure AD dbo tarafından belirli bir veritabanı için oluşturulmalıdır (örneğin,) `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` . 
 
-Veritabanı kullanıcısı oluşturulduktan sonra, Kullanıcı `steve@gmail.com` `MyDatabase` SSMS kimlik doğrulama seçeneğini kullanarak oturum açabilir `Azure Active Directory – Universal with MFA` . Varsayılan olarak, `usergroup` yalnızca Connect iznine sahiptir. Daha fazla veri erişiminin, yeterli ayrıcalığa sahip bir kullanıcı tarafından veritabanında [verilmesi](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) gerekir. 
+Veritabanı kullanıcısı oluşturulduktan sonra, Kullanıcı `steve@gmail.com` `MyDatabase` SSMS kimlik doğrulama seçeneğini kullanarak oturum açabilir `Azure Active Directory – Universal with MFA` . Varsayılan olarak, `usergroup` yalnızca Connect iznine sahiptir. Daha fazla veri erişiminin, yeterli ayrıcalığa sahip bir kullanıcı tarafından veritabanında [verilmesi](/sql/t-sql/statements/grant-transact-sql) gerekir. 
 
 > [!NOTE]
 > SSMS 17. x için, `steve@gmail.com` Konuk Kullanıcı olarak kullanarak, **ad etki alanı adını veya Kiracı kimliği** kutusunu denetlemeniz ve `contosotest.onmicrosoft.com` **bağlantı özelliği** iletişim kutusunda ad etki alanı adını eklemeniz gerekir. **Ad etki alanı adı veya KIRACı kimliği** SEÇENEĞI yalnızca MFA kimlik doğrulamasıyla **Azure Active Directory Universal** için desteklenir. Aksi halde, onay kutusu gri renkte olur.
@@ -96,8 +96,8 @@ Veritabanı kullanıcısı oluşturulduktan sonra, Kullanıcı `steve@gmail.com`
 - [Azure Active Directory kimlik doğrulamasını SQL veritabanı veya Azure SYNAPSE ile yapılandırma ve yönetme](authentication-aad-configure.md)
 - [Azure AD konuk kullanıcıları oluşturma ve bir Azure AD yöneticisi olarak ayarlama](authentication-aad-guest-users.md) 
 - [Microsoft SQL Server Data-Tier uygulama çerçevesi (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
-- [SQLPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)  
+- [SQLPackage.exe](/sql/tools/sqlpackage)  
 - [BACPAC dosyasını yeni bir veritabanına aktarma](database-import.md)  
 - [BACPAC dosyasından veritabanını dışarı aktarma](database-export.md)  
-- C# arabirimi [ıüniversalauthprovider arabirimi](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx)  
-- MFA kimlik doğrulamasıyla **Azure Active Directory Universal** KULLANıRKEN, adal Izleme [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)ile başlayarak kullanılabilir. Varsayılan olarak, **Azure hizmetleri**, **Azure Cloud**, **adal çıkış penceresi izleme düzeyi**altındaki **Araçlar**, **Seçenekler** menüsünü ve ardından **Görünüm** menüsünde **çıktıyı** etkinleştirerek, adal izlemeyi açabilirsiniz. İzlemeler **Azure Active Directory seçenek**belirlendiğinde çıkış penceresinde kullanılabilir.  
+- C# arabirimi [ıüniversalauthprovider arabirimi](/dotnet/api/microsoft.sqlserver.dac.iuniversalauthprovider)  
+- MFA kimlik doğrulamasıyla **Azure Active Directory Universal** KULLANıRKEN, adal Izleme [SSMS 17,3](/sql/ssms/download-sql-server-management-studio-ssms)ile başlayarak kullanılabilir. Varsayılan olarak, **Azure hizmetleri** , **Azure Cloud** , **adal çıkış penceresi izleme düzeyi** altındaki **Araçlar** , **Seçenekler** menüsünü ve ardından **Görünüm** menüsünde **çıktıyı** etkinleştirerek, adal izlemeyi açabilirsiniz. İzlemeler **Azure Active Directory seçenek** belirlendiğinde çıkış penceresinde kullanılabilir.

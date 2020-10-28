@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078932"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674329"
 ---
 # <a name="sensor-partner-integration"></a>Algılayıcı iş ortağı tümleştirmesi
 
@@ -48,7 +48,7 @@ API 'Ler Swagger teknik belgelerini içerir. API 'Ler ve bunlara karşılık gel
 
 Farmtler Microsoft Azure Active Directory kimlik doğrulamasını kullanır.Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar.
 
-Daha fazla bilgi için bkz. [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).
+Daha fazla bilgi için bkz. [Azure Active Directory](../../app-service/overview-authentication-authorization.md).
 
 Farmrets veri hub 'ı, aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır:
    - İstemci Kimliği
@@ -126,10 +126,10 @@ JSON, rastgele veri yapılarının basit bir metin gösterimini sağlayan, dilde
 
 Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta verilerini oluşturmalarına ve yönetmesine olanak tanıyan aşağıdaki API 'Lere sahiptir.
 
-- /**Devicemodel**: devicemodel cihaz, ağ geçidi veya düğüm olan üretici ve cihaz türü gibi cihazın meta verilerine karşılık gelir.
-- /**Cihaz**: cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir.
-- /**Sensormodel**: sensormodel: üretici, analog veya dijital olan algılayıcı türü ve çevresel sıcaklık ve basınç gibi algılayıcı ölçüsü gibi algılayıcı meta verilerine karşılık gelir.
-- /**Algılayıcı**: algılayıcı, değerleri kaydeden bir fiziksel sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.
+- /**Devicemodel** : devicemodel cihaz, ağ geçidi veya düğüm olan üretici ve cihaz türü gibi cihazın meta verilerine karşılık gelir.
+- /**Cihaz** : cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir.
+- /**Sensormodel** : sensormodel: üretici, analog veya dijital olan algılayıcı türü ve çevresel sıcaklık ve basınç gibi algılayıcı ölçüsü gibi algılayıcı meta verilerine karşılık gelir.
+- /**Algılayıcı** : algılayıcı, değerleri kaydeden bir fiziksel sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.
 
   DeviceModel | Açıklama |
   --- | ---
@@ -137,7 +137,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Üretici  | Üreticinin adı |
   ProductCode  | Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800. |
   Bağlantı noktaları  | Bağlantı noktası adı ve türü, dijital veya analog.  |
-  Adı  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
+  Ad  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın. |
   Özellikler  | Üreticiden ek özellikler. |
   **Cihaz** | **Açıklama** |
@@ -146,7 +146,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Reportingınterval |Saniye cinsinden raporlama aralığı. |
   Konum    |Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden). |
   Parentdeviceıd | Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir düğüm bir ağ geçidine bağlıysa, düğümde ağ geçidi olarak Parentdeviceıd vardır. |
-  Adı  | Kaynağı tanımlamak için ad. Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır.  |
+  Ad  | Kaynağı tanımlamak için ad. Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır.  |
   Açıklama  | Anlamlı bir açıklama sağlayın.  |
   Özellikler  |Üreticiden ek özellikler.  |
   **SensorModel** | **Açıklama** |
@@ -160,7 +160,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Sensorölçüleri > AggregationType  | Hiçbiri, ortalama, maksimum, en az veya Standartsapması.
   Sensorölçüleri > derinliği  | Algılayıcının santimetre cinsinden derinliği. Örneğin, zemin altındaki nemi 10 cm ölçümü.
   Sensorölçüleri > açıklaması  | Ölçümün anlamlı bir açıklamasını sağlayın.
-  Adı  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
+  Ad  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın.
   Özellikler  | Üreticiden ek özellikler.
   **Algılayıcısı**  | **Açıklama** |
@@ -169,7 +169,7 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Konum  | Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).
   Bağlantı noktası > adı  |Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bu, cihaz modelinde tanımlananla aynı ada sahip olmalıdır.
   DeviceId  | Algılayıcıın bağlı olduğu cihazın KIMLIĞI.
-  Adı  | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.
+  Ad  | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.
   Açıklama  | Anlamlı bir açıklama sağlayın.
   Özellikler  | Üreticiden ek özellikler.
 
@@ -201,7 +201,7 @@ Telemetri verileri, işlenmek üzere Azure Event Hubs yayımlanmış olan kurall
 
 ## <a name="send-telemetry-data-to-farmbeats"></a>Telemetri verilerini Farmolar 'a gönderme
 
-Telemetriye telemetri verileri göndermek için, Farmtts 'deki bir olay hub 'ına ileti gönderen bir istemci oluşturun. Telemetri verileri hakkında daha fazla bilgi için bkz. [bir olay hub 'ına telemetri gönderme](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send).
+Telemetriye telemetri verileri göndermek için, Farmtts 'deki bir olay hub 'ına ileti gönderen bir istemci oluşturun. Telemetri verileri hakkında daha fazla bilgi için bkz. [bir olay hub 'ına telemetri gönderme](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
 
 Aşağıda, belirtilen bir olay hub 'ına bir istemci olarak telemetri gönderen örnek bir Python kodu verilmiştir.
 
@@ -324,7 +324,7 @@ Cihaz iş ortakları, müşterilerin mevcut bir Farmtts tümleştirmesinin bağl
 
 ## <a name="view-the-last-telemetry-sent"></a>Gönderilen son Telemetriyi görüntüleme
 
-Cihaz iş ortakları, müşterilerin gönderilen **telemetri**altında bulunan son Telemetriyi görüntülemesini sağlayabilir. Bu, en son telemetrinin Farmtts 'ye başarıyla gönderildiği süredir.
+Cihaz iş ortakları, müşterilerin gönderilen **telemetri** altında bulunan son Telemetriyi görüntülemesini sağlayabilir. Bu, en son telemetrinin Farmtts 'ye başarıyla gönderildiği süredir.
 
 ## <a name="troubleshooting-and-error-management"></a>Sorun giderme ve hata yönetimi
 

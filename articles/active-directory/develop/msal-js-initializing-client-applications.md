@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 5af5d3a88262792f4b32e2ce3d8143ac680f083a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: ea8629e53ec793b4a63c817b6ec83278a2d23871
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87027045"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674089"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js kullanarak istemci uygulamalarını başlatma
 
@@ -37,9 +37,9 @@ Uygulamanızı kaydettikten sonra, Azure portal bulunan aşağıdaki değerlerin
 | Değer | Gerekli | Açıklama |
 |:----- | :------: | :---------- |
 | Uygulama (istemci) kimliği | Gerekli | Uygulamanızı Microsoft Identity platform içinde benzersiz bir şekilde tanımlayan GUID. |
-| Yetkili | İsteğe Bağlı | Uygulamanız için kimlik sağlayıcısı URL 'SI ( *örnek*) ve *oturum açma hedef kitlesi* . Örnek ve oturum açma hedef kitlesi, birleştirilmiş olduğunda *yetkiyi*yapar. |
-| Dizin (kiracı) kimliği | İsteğe Bağlı | Yalnızca kuruluşunuz için bir iş kolu uygulaması oluşturuyorsanız, genellikle *tek kiracılı uygulama*olarak adlandırılan bunu belirtin. |
-| Yeniden Yönlendirme URI'si | İsteğe Bağlı | Bir Web uygulaması oluşturuyorsanız, `redirectUri` kimlik sağlayıcısının (Microsoft Identity Platform) verdiği güvenlik belirteçlerini döndürmesi gerektiğini belirtir. |
+| Yetkili | İsteğe bağlı | Uygulamanız için kimlik sağlayıcısı URL 'SI ( *örnek* ) ve *oturum açma hedef kitlesi* . Örnek ve oturum açma hedef kitlesi, birleştirilmiş olduğunda *yetkiyi* yapar. |
+| Dizin (kiracı) kimliği | İsteğe bağlı | Yalnızca kuruluşunuz için bir iş kolu uygulaması oluşturuyorsanız, genellikle *tek kiracılı uygulama* olarak adlandırılan bunu belirtin. |
+| Yeniden Yönlendirme URI'si | İsteğe bağlı | Bir Web uygulaması oluşturuyorsanız, `redirectUri` kimlik sağlayıcısının (Microsoft Identity Platform) verdiği güvenlik belirteçlerini döndürmesi gerektiğini belirtir. |
 
 ## <a name="initialize-msaljs-2x-apps"></a>MSAL.js 2. x uygulamalarını başlatın
 

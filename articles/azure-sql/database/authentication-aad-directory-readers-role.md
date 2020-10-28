@@ -9,19 +9,19 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 0f9b6e0250acb53899ab0443a62db7c9cc51f992
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2374b1fb7f355b336c713a8a3240eacc8b1f188c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370109"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675079"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Azure SQL için Azure Active Directory Directory okuyucuları rolü
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 > [!NOTE]
-> Bu makaledeki bu özellik **genel önizlemede**.
+> Bu makaledeki bu özellik **genel önizlemede** .
 
 Azure Active Directory (Azure AD), [Azure Active Directory (Önizleme) içindeki rol atamalarını yönetmek için bulut grupları kullanarak](../../active-directory/roles/groups-concept.md)tanıtılmıştır. Bu, Azure AD rollerinin gruplara atanmasını sağlar.
 
@@ -31,7 +31,7 @@ Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE Analytic
 
 - SQL yönetilen örneği için Azure AD oturum açmaları oluşturma
 - Azure SQL 'de Azure AD kullanıcılarını taklit et
-- Windows kimlik doğrulaması ( [alter User (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-mi-current#d-map-the-user-in-the-database-to-an-azure-ad-login-after-migration) komutu kullanılarak) Ile SQL yönetilen örneği kullanan SQL Server kullanıcıları geçirme
+- Windows kimlik doğrulaması ( [alter User (Transact-SQL)](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-mi-current#d-map-the-user-in-the-database-to-an-azure-ad-login-after-migration) komutu kullanılarak) Ile SQL yönetilen örneği kullanan SQL Server kullanıcıları geçirme
 - SQL yönetilen örneği için Azure AD yöneticisini değiştirme
 - [Hizmet sorumlularına (uygulamalar)](authentication-aad-service-principal.md) Azure SQL 'de Azure AD kullanıcıları oluşturmalarına izin verme
 
@@ -45,7 +45,7 @@ Mantıksal sunucu için bir Azure AD yöneticisi ayarlanırken SQL veritabanı v
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>Dizin okuyucuları rolünü bir Azure AD grubuna verme
 
-Şu anda **genel önizlemede**, artık [genel yönetici](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) veya [AYRıCALıKLı rol yöneticisi](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) bir Azure AD grubu oluşturabilir ve [**Dizin okuyucuları**](../../active-directory/roles/permissions-reference.md#directory-readers) iznini gruba atayabilir. Bu, bu grubun üyeleri için Azure AD Graph API erişimine izin verir. Bunlara ek olarak, bu grubun sahibi olan Azure AD kullanıcıları, Azure SQL mantıksal sunucularının kimlikleri dahil olmak üzere bu grup için yeni üyeler atamaya izin verilir.
+Şu anda **genel önizlemede** , artık [genel yönetici](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) veya [AYRıCALıKLı rol yöneticisi](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) bir Azure AD grubu oluşturabilir ve [**Dizin okuyucuları**](../../active-directory/roles/permissions-reference.md#directory-readers) iznini gruba atayabilir. Bu, bu grubun üyeleri için Azure AD Graph API erişimine izin verir. Bunlara ek olarak, bu grubun sahibi olan Azure AD kullanıcıları, Azure SQL mantıksal sunucularının kimlikleri dahil olmak üzere bu grup için yeni üyeler atamaya izin verilir.
 
 Bu çözüm, bir grup oluşturmak ve kullanıcıları tek seferlik bir etkinlik olarak atamak için yüksek ayrıcalıklı bir Kullanıcı (genel yönetici veya ayrıcalıklı rol yöneticisi) gerektirir, ancak Azure AD grubu sahipleri ileri doğru Üyeler atayabilecektir. Bu, gelecekte Azure AD kiracısındaki tüm SQL veritabanlarını, SQL yönetilen örnekleri veya Azure SYNAPSE sunucularını yapılandırmak için yüksek ayrıcalıklı bir kullanıcının dahil olması gereğini ortadan kaldırır.
 

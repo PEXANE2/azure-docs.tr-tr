@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8df4de01750de92222bfa9021b66828927804e85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8b4b86656e7b1b4dfd8b69cbc8386f5b6ff6a8c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005488"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674942"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Öğretici: bir Databricks Delta tablosunu güncelleştirmek için Data Lake Capture modelini uygulama
 
@@ -31,7 +31,7 @@ Bu öğreticide şunları yapacaksınız:
 
 Bu çözümü, Azure Databricks çalışma alanıyla başlayarak ters sırada oluşturacağız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -54,13 +54,13 @@ Bu çözümü, Azure Databricks çalışma alanıyla başlayarak ters sırada ol
 
 İlk olarak, satış siparişi açıklayan bir CSV dosyası oluşturun ve ardından bu dosyayı depolama hesabına yükleyin. Daha sonra, Databricks Delta tablolarımızda ilk satırı doldurmak için bu dosyadaki verileri kullanacaksınız.
 
-1. Azure Depolama Gezgini açın. Ardından depolama hesabınıza gidin ve **BLOB kapsayıcıları** bölümünde **veri**adlı yeni bir kapsayıcı oluşturun.
+1. Azure Depolama Gezgini açın. Ardından depolama hesabınıza gidin ve **BLOB kapsayıcıları** bölümünde **veri** adlı yeni bir kapsayıcı oluşturun.
 
    ![veri klasörü](./media/data-lake-storage-events/data-container.png "veri klasörü")
 
    Depolama Gezgini kullanma hakkında daha fazla bilgi için bkz. [bir Azure Data Lake Storage 2. hesabındaki verileri yönetmek için Azure Depolama Gezgini kullanma](data-lake-storage-explorer.md).
 
-2. **Veri** kapsayıcısında, **giriş**adlı bir klasör oluşturun.
+2. **Veri** kapsayıcısında, **giriş** adlı bir klasör oluşturun.
 
 3. Aşağıdaki metni bir metin düzenleyicisine yapıştırın.
 
@@ -69,7 +69,7 @@ Bu çözümü, Azure Databricks çalışma alanıyla başlayarak ters sırada ol
    536365,85123A,WHITE HANGING HEART T-LIGHT HOLDER,6,12/1/2010 8:26,2.55,17850,United Kingdom
    ```
 
-4. Bu dosyayı yerel bilgisayarınıza kaydedin ve **data.csv**adı verin.
+4. Bu dosyayı yerel bilgisayarınıza kaydedin ve **data.csv** adı verin.
 
 5. Depolama Gezgini, bu dosyayı **giriş** klasörüne yükleyin.  
 
@@ -87,7 +87,7 @@ Bu bölümde, şu görevleri gerçekleştirirsiniz:
 
 Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure Portal, **kaynak**  >  **Analizi**oluştur  >  **Azure Databricks**' u seçin.
+1. Azure Portal, **kaynak**  >  **Analizi** oluştur  >  **Azure Databricks** ' u seçin.
 
     ![Azure portal databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -99,9 +99,9 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 ### <a name="create-a-spark-cluster-in-databricks"></a>Databricks’te Spark kümesi oluşturma
 
-1. [Azure Portal](https://portal.azure.com), oluşturduğunuz Azure Databricks çalışma alanına gidin ve sonra **çalışma alanını Başlat**' ı seçin.
+1. [Azure Portal](https://portal.azure.com), oluşturduğunuz Azure Databricks çalışma alanına gidin ve sonra **çalışma alanını Başlat** ' ı seçin.
 
-2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Yeni**  >  **küme**' yi seçin.
+2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Yeni**  >  **küme** ' yi seçin.
 
     ![Azure 'da databricks](./media/data-lake-storage-events/databricks-on-azure.png "Azure 'da databricks")
 
@@ -114,21 +114,21 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     * Küme için bir ad girin.
     * **120 dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
-4. **Küme oluştur**' u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
+4. **Küme oluştur** ' u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
 Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerinde Spark kümesi oluşturma](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
 
 ### <a name="create-a-notebook"></a>Not defteri oluşturma
 
-1. Sol bölmede **Çalışma Alanı**’nı seçin. **Çalışma Alanı** açılır listesinden **Oluştur** > **Not Defteri**’ni seçin.
+1. Sol bölmede **Çalışma Alanı** ’nı seçin. **Çalışma Alanı** açılır listesinden **Oluştur** > **Not Defteri** ’ni seçin.
 
     ![Databricks 'te Not defteri oluşturma](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Databricks 'te Not defteri oluşturma")
 
 2. **Not Defteri Oluştur** iletişim kutusunda, not defterinizin adını girin. Dil olarak **Python** ' ı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-    ![Databricks 'te Not defteri oluşturma](./media/data-lake-storage-events/new-databricks-notebook.png "Databricks 'te Not defteri oluşturma")
+    ![Not Defteri Oluştur iletişim kutusunu ve dil olarak Python 'un nerede seçdiğinin gösterildiği ekran görüntüsü.](./media/data-lake-storage-events/new-databricks-notebook.png "Databricks 'te Not defteri oluşturma")
 
-    **Oluştur**’u seçin.
+    **Oluştur** ’u seçin.
 
 ### <a name="create-and-populate-a-databricks-delta-table"></a>Databricks Delta tablosu oluşturma ve doldurma
 
@@ -150,7 +150,7 @@ Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerin
     customerTablePath = adlsPath + 'delta-tables/customers'
     ```
 
-    Bu kod, **source_file**adlı bir pencere öğesi oluşturur. Daha sonra, bu kodu çağıran ve bu pencere öğesine bir dosya yolu geçiren bir Azure Işlevi oluşturacaksınız.  Bu kod ayrıca depolama hesabıyla hizmet sorumlunuzu doğrular ve diğer hücrelerde kullanacağınız bazı değişkenler oluşturur.
+    Bu kod, **source_file** adlı bir pencere öğesi oluşturur. Daha sonra, bu kodu çağıran ve bu pencere öğesine bir dosya yolu geçiren bir Azure Işlevi oluşturacaksınız.  Bu kod ayrıca depolama hesabıyla hizmet sorumlunuzu doğrular ve diğer hücrelerde kullanacağınız bazı değişkenler oluşturur.
 
     > [!NOTE]
     > Bir üretim ayarında, kimlik doğrulama anahtarınızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, kimlik doğrulama anahtarı yerine kod blosonra bir arama anahtarı ekleyin. <br><br>Örneğin, bu kod satırını kullanmak yerine `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` Aşağıdaki kod satırını kullanacaksınız: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` . <br><br>Bu Öğreticiyi tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
@@ -238,19 +238,19 @@ Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerin
 
 Daha önce oluşturduğunuz Not defterini çalıştıran bir Iş oluşturun. Daha sonra, bir olay ortaya çıktığında bu işi çalıştıran bir Azure Işlevi oluşturacaksınız.
 
-1. **İşler**' e tıklayın.
+1. **İşler** ' e tıklayın.
 
-2. **İşler** sayfasında, **iş oluştur**' a tıklayın.
+2. **İşler** sayfasında, **iş oluştur** ' a tıklayın.
 
 3. İşe bir ad verin ve ardından `upsert-order-data` çalışma kitabını seçin.
 
-   ![Bir iş oluşturma](./media/data-lake-storage-events/create-spark-job.png "Bir iş oluşturma")
+   ![İş oluşturma](./media/data-lake-storage-events/create-spark-job.png "İş oluşturma")
 
 ## <a name="create-an-azure-function"></a>Azure İşlevi oluşturma
 
 Işi çalıştıran bir Azure Işlevi oluşturun.
 
-1. Databricks çalışma alanının üst köşesinde kişiler simgesini ve ardından **Kullanıcı ayarları**' nı seçin.
+1. Databricks çalışma alanının üst köşesinde kişiler simgesini ve ardından **Kullanıcı ayarları** ' nı seçin.
 
    ![Hesabı yönetme](./media/data-lake-storage-events/generate-token.png "Kullanıcı ayarları")
 
@@ -258,7 +258,7 @@ Işi çalıştıran bir Azure Işlevi oluşturun.
 
    Belirteci güvenli bir yere kopyalamadığınızdan emin olun. Azure Işlevinizde bu belirtecin, Işi çalıştırabilmesi için Databricks ile kimlik doğrulaması yapması gerekir.
   
-3. Azure portal sol üst köşesinde bulunan **kaynak oluştur** düğmesini seçin ve ardından **işlem > işlev uygulaması**' yı seçin.
+3. Azure portal sol üst köşesinde bulunan **kaynak oluştur** düğmesini seçin ve ardından **işlem > işlev uygulaması** ' yı seçin.
 
    ![Azure işlevi oluşturma](./media/data-lake-storage-events/function-app-create-flow.png "Azure işlevi oluşturma")
 
@@ -266,9 +266,9 @@ Işi çalıştıran bir Azure Işlevi oluşturun.
 
    ![İşlev uygulamasını yapılandırma](./media/data-lake-storage-events/new-function-app.png "İşlev uygulamasını yapılandırma")
 
-5. İşlev Uygulaması **genel bakış** sayfasında **yapılandırma**' ya tıklayın.
+5. İşlev Uygulaması **genel bakış** sayfasında **yapılandırma** ' ya tıklayın.
 
-   ![İşlev uygulamasını yapılandırma](./media/data-lake-storage-events/configure-function-app.png "İşlev uygulamasını yapılandırma")
+   ![Yapılandırılan özellikler altındaki yapılandırma seçeneğini vurgulayan ekran görüntüsü.](./media/data-lake-storage-events/configure-function-app.png "İşlev uygulamasını yapılandırma")
 
 6. **Uygulama ayarları** sayfasında, her bir ayarı eklemek için **Yeni uygulama ayarı** düğmesini seçin.
 
@@ -285,13 +285,13 @@ Işi çalıştıran bir Azure Işlevi oluşturun.
 
    ![Yeni işlev](./media/data-lake-storage-events/new-function.png "Yeni işlev")
 
-8. **Azure Event Grid tetikleyiciyi**seçin.
+8. **Azure Event Grid tetikleyiciyi** seçin.
 
    İstenirse **Microsoft. Azure. WebJobs. Extensions. EventGrid** uzantısını yükleyebilirsiniz. Yüklemek gerekirse, işlevi oluşturmak için **Azure Event Grid tetikleyiciyi** yeniden seçmeniz gerekir.
 
    **Yeni işlev** bölmesi görüntülenir.
 
-9. **Yeni işlev** bölmesinde, **UpsertOrder**Işlevini adlandırın ve ardından **Oluştur** düğmesine tıklayın.
+9. **Yeni işlev** bölmesinde, **UpsertOrder** Işlevini adlandırın ve ardından **Oluştur** düğmesine tıklayın.
 
 10. Kod dosyasının içeriğini bu kodla değiştirin ve **Kaydet** düğmesine tıklayın:
 
@@ -345,13 +345,13 @@ Bu bölümde, depolama hesabına dosyalar yüklendiğinde Azure Işlevini çağ�
 
 1. İşlev kodu sayfasında **Event Grid abonelik Ekle** düğmesine tıklayın.
 
-   ![Yeni olay aboneliği](./media/data-lake-storage-events/new-event-subscription.png "Yeni olay aboneliği")
+   ![Event Grid aboneliği Ekle düğmesini vurgulayan ekran görüntüsü.](./media/data-lake-storage-events/new-event-subscription.png "Yeni olay aboneliği")
 
 2. **Olay aboneliği oluştur** sayfasında, aboneliği adlandırın ve ardından depolama hesabınızı seçmek için sayfadaki alanları kullanın.
 
    ![Yeni olay aboneliği](./media/data-lake-storage-events/new-event-subscription-2.png "Yeni olay aboneliği")
 
-3. **Olay türlerine Filtre Uygula** aşağı açılan listesinde, **oluşturulan blobu**ve **BLOB silinen** olayları seçin ve ardından **Oluştur** düğmesine tıklayın.
+3. **Olay türlerine Filtre Uygula** aşağı açılan listesinde, **oluşturulan blobu** ve **BLOB silinen** olayları seçin ve ardından **Oluştur** düğmesine tıklayın.
 
 ## <a name="test-the-event-grid-subscription"></a>Event Grid aboneliğini test etme
 
@@ -409,7 +409,7 @@ Bu bölümde, depolama hesabına dosyalar yüklendiğinde Azure Işlevini çağ�
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında kaynak grubunu ve tüm ilgili kaynakları silin. Bunu yapmak için depolama hesabına ait kaynak grubunu seçin ve **Sil**' i seçin.
+Artık gerekli olmadığında kaynak grubunu ve tüm ilgili kaynakları silin. Bunu yapmak için depolama hesabına ait kaynak grubunu seçin ve **Sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

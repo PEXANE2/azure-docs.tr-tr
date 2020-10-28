@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: ab072fa53d3ecc3f856b6765acfb8c19da3ff298
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: aaddev devx-track-js
+ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442261"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673507"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Azure AD B2C ile çalışmak için JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı kullanın
 
@@ -56,7 +56,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>3. Adım: kimlik doğrulamasını yapılandırma
 
-1. `config.json`Örnekteki dosyayı açın.
+1. Örnekteki dosyadaki *config.js* açın.
 
 2. Uygulamanızı kaydederken daha önce edindiğiniz uygulama kimlik bilgileriyle örneği yapılandırın. Değerleri kiracı adınız, istemci KIMLIĞINIZ ve ilke adınızla değiştirerek aşağıdaki kod satırlarını değiştirin.
 
@@ -169,7 +169,7 @@ Aşağıdaki adımlarda önceki [JAVASCRIPT Spa](#javascript-spa) bölümündeki
 
 ### <a name="step-2-catch-and-handle-authentication-errors-in-your-login-method"></a>2. Adım: oturum açma yönteminizin kimlik doğrulama hatalarını yakalama ve işleme
 
-Kullanıcı **parolayı unutma**seçeneğini belirlediğinde, uygulamanız kodunuzda yakalamalı bir hata oluşturur ve ardından uygun kullanıcı akışını sunarak idare edersiniz. Bu durumda, `b2c_1_reset` parola sıfırlama akışı.
+Kullanıcı **parolayı unutma** seçeneğini belirlediğinde, uygulamanız kodunuzda yakalamalı bir hata oluşturur ve ardından uygun kullanıcı akışını sunarak idare edersiniz. Bu durumda, `b2c_1_reset` parola sıfırlama akışı.
 
 1. Oturum açma yönteminizi aşağıdaki şekilde genişletin:
 

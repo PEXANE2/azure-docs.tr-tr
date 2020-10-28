@@ -8,12 +8,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 235d82e54c79350f110ab0cda4f4b672e396c61d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2743efa5a9067f0667d54be0b7df75a627e60fcd
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652015"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674030"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service Web Işleri ile arka plan görevleri çalıştırma
 
@@ -61,13 +61,16 @@ Several steps in the three "Create..." sections are identical;
 when making changes in one don't forget the other two.
 -->
 
+> [!IMPORTANT]
+> Uygulamanızla yapılandırılmış kaynak denetiminiz varsa, WebJobs 'lar kaynak denetimi tümleştirmesinin parçası olarak dağıtılmalıdır. Kaynak denetimi uygulamanızla yapılandırıldıktan sonra, Azure portalından WebJob eklenemez.
+
 1. [Azure Portal](https://portal.azure.com), App Service Web UYGULAMANıZıN, API uygulamanızın veya mobil uygulamanızın **App Service** sayfasına gidin.
 
-2. **Web işleri**' ni seçin.
+2. **Web işleri** ' ni seçin.
 
    ![Web Işleri seçin](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. **WebJobs** sayfasında **Ekle**' yi seçin.
+2. **WebJobs** sayfasında **Ekle** ' yi seçin.
 
     ![WebJob sayfası](./media/web-sites-create-web-jobs/wjblade.png)
 
@@ -75,20 +78,20 @@ when making changes in one don't forget the other two.
 
    ![Yapılandırmanız gereken WebJob ekleme ayarlarını gösteren ekran görüntüsü.](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | Ayar      | Örnek değer   | Açıklama  |
+   | Ayar      | Örnek değer   | Açıklama  |
    | ------------ | ----------------- | ------------ |
    | **Ad** | myContinuousWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir. |
    | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
    | **Tür** | Sürekli | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
    | **Ölçeklendirme** | Çoklu örnek | Yalnızca sürekli WebJobs için kullanılabilir. Programın veya betiğin tüm örneklerde mı yoksa yalnızca bir örnek üzerinde mi çalışacağını belirler. Birden çok örnek üzerinde çalıştırma seçeneği ücretsiz veya paylaşılan [fiyatlandırma katmanlarına](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)uygulanmaz. | 
 
-4. **Tamam**'a tıklayın.
+4. **Tamam** ’a tıklayın.
 
    Yeni WebJob, **WebJobs** sayfasında görünür.
 
    ![Web Işleri listesi](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-2. Sürekli bir WebJob 'ı durdurmak veya yeniden başlatmak için, listeden WebJob 'a sağ tıklayın ve **Durdur** veya **Başlat**' a tıklayın.
+2. Sürekli bir WebJob 'ı durdurmak veya yeniden başlatmak için, listeden WebJob 'a sağ tıklayın ve **Durdur** veya **Başlat** ' a tıklayın.
 
     ![Sürekli WebJob 'u durdur](./media/web-sites-create-web-jobs/continuousstop.png)
 
@@ -101,11 +104,11 @@ when making changes in one don't forget the other two.
 
 1. [Azure Portal](https://portal.azure.com), App Service Web UYGULAMANıZıN, API uygulamanızın veya mobil uygulamanızın **App Service** sayfasına gidin.
 
-2. **Web işleri**' ni seçin.
+2. **Web işleri** ' ni seçin.
 
    ![Web Işleri seçin](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. **WebJobs** sayfasında **Ekle**' yi seçin.
+2. **WebJobs** sayfasında **Ekle** ' yi seçin.
 
     ![WebJob sayfası](./media/web-sites-create-web-jobs/wjblade.png)
 
@@ -113,20 +116,20 @@ when making changes in one don't forget the other two.
 
    ![El ile tetiklenen bir WebJob oluşturmak için ayarlanması gereken ayarları gösteren ekran görüntüsü.](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | Ayar      | Örnek değer   | Açıklama  |
+   | Ayar      | Örnek değer   | Açıklama  |
    | ------------ | ----------------- | ------------ |
    | **Ad** | myTriggeredWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir.|
    | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
    | **Tür** | Diğini | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
    | **Tetikleyiciler** | El ile | |
 
-4. **Tamam**'a tıklayın.
+4. **Tamam** ’a tıklayın.
 
    Yeni WebJob, **WebJobs** sayfasında görünür.
 
    ![Web Işleri listesi](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-7. WebJob 'ı çalıştırmak için, listede adına sağ tıklayın ve **Çalıştır**' a tıklayın.
+7. WebJob 'ı çalıştırmak için, listede adına sağ tıklayın ve **Çalıştır** ' a tıklayın.
    
     ![WebJob Çalıştır](./media/web-sites-create-web-jobs/runondemand.png)
 
@@ -139,11 +142,11 @@ when making changes in one don't forget the other two.
 
 1. [Azure Portal](https://portal.azure.com), App Service Web UYGULAMANıZıN, API uygulamanızın veya mobil uygulamanızın **App Service** sayfasına gidin.
 
-2. **Web işleri**' ni seçin.
+2. **Web işleri** ' ni seçin.
 
    ![Web Işleri seçin](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. **WebJobs** sayfasında **Ekle**' yi seçin.
+2. **WebJobs** sayfasında **Ekle** ' yi seçin.
 
    ![WebJob sayfası](./media/web-sites-create-web-jobs/wjblade.png)
 
@@ -151,7 +154,7 @@ when making changes in one don't forget the other two.
 
    ![WebJob ekleme sayfası](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | Ayar      | Örnek değer   | Açıklama  |
+   | Ayar      | Örnek değer   | Açıklama  |
    | ------------ | ----------------- | ------------ |
    | **Ad** | myScheduledWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir. |
    | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
@@ -159,7 +162,7 @@ when making changes in one don't forget the other two.
    | **Tetikleyiciler** | Zamanlanan | Zamanlamanın güvenilir bir şekilde çalışması için Always On özelliğini etkinleştirin. Her zaman açık, yalnızca temel, standart ve Premium fiyatlandırma katmanlarında kullanılabilir.|
    | **CRON İfadesi** | 0 0/20 * * * * | [Cron ifadeleri](#ncrontab-expressions) aşağıdaki bölümde açıklanmıştır. |
 
-4. **Tamam**'a tıklayın.
+4. **Tamam** ’a tıklayın.
 
    Yeni WebJob, **WebJobs** sayfasında görünür.
 
@@ -193,7 +196,7 @@ Daha fazla bilgi için bkz. [tetiklenen bir WebJob zamanlama](webjobs-dotnet-dep
    
     ![Web işi çalıştırma ayrıntıları](./media/web-sites-create-web-jobs/webjobrundetails.png)
 
-   Çıkış metnini ayrı bir tarayıcı penceresinde görmek için **İndir**' i seçin. Metnin kendisini indirmek için **İndir** ' e sağ tıklayın ve dosya içeriğini kaydetmek için tarayıcı seçeneklerinizi kullanın.
+   Çıkış metnini ayrı bir tarayıcı penceresinde görmek için **İndir** ' i seçin. Metnin kendisini indirmek için **İndir** ' e sağ tıklayın ve dosya içeriğini kaydetmek için tarayıcı seçeneklerinizi kullanın.
    
 5. Web Işleri listesine gitmek için sayfanın üst kısmındaki **WebJobs** içerik haritası bağlantısını seçin.
 

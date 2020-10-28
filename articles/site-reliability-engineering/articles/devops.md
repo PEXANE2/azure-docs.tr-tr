@@ -8,12 +8,12 @@ ms.service: site-reliability-engineering
 ms.topic: article
 ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: 3d0698f2780a4ccc41eedbde70fddea1766c5f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62872443c386c45d9821053dc901ad8e0055b74f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090338"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674272"
 ---
 # <a name="frequently-asked-questions-whats-the-relationship-between-sre-and-devops"></a>Sık sorulan sorular: SRE ve DevOps arasındaki ilişki nedir?
 
@@ -50,7 +50,7 @@ Hem SRE hem de DevOps için birden çok tanım olduğundan, bu karşılaştırma
 
 daha sonra, SRE için Word 'ün "güvenilirlik" olduğunu söylemek kolay bir işlemdir. Adın ortasında doğru olması, bu talep için bazı harika bir kanıt de sunmaktadır.
 
-[Azure DevOps kaynak merkezi](https://docs.microsoft.com/azure/devops/learn/)'Nden bu DevOps tanımını kullandığımızda:
+[Azure DevOps kaynak merkezi](/azure/devops/learn/)'Nden bu DevOps tanımını kullandığımızda:
 
 > DevOps, son kullanıcılarımıza sürekli değer sunulmasını sağlamak için tasarlanmış kişilerin, süreçlerin ve ürünlerin birleşimidir.
 
@@ -80,4 +80,4 @@ Bu sorunun yanıtı bir "Yes!" emphatic.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Site güvenilirliği Mühendisliği veya DevOps hakkında daha fazla bilgi edinmek mi istiyorsunuz? [Site güvenilirlik mühendisliği hub 'ını](../index.yml) ve [Azure DevOps kaynak merkezi](https://docs.microsoft.com/azure/devops/learn/)' ne göz atın.
+Site güvenilirliği Mühendisliği veya DevOps hakkında daha fazla bilgi edinmek mi istiyorsunuz? [Site güvenilirlik mühendisliği hub 'ını](../index.yml) ve [Azure DevOps kaynak merkezi](/azure/devops/learn/)' ne göz atın.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0a6e27da8f8e5e06e1a37744a078c55a06fe0916
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02ed110cee4c1657089156cf3f78ccbf1f96b756
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543253"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673221"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>Öğretici: GÜVENLI teslım ile Azure Active Directory tümleştirme
 
@@ -27,7 +27,7 @@ Azure AD ile GÜVENLI TESLIMI tümleştirmek aşağıdaki avantajları sağlar:
 * Kullanıcılarınızın Azure AD hesaplarıyla SUNMAYı (çoklu oturum açma) GÜVENLI hale getirmek için otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -61,13 +61,13 @@ Azure AD 'de GÜVENLI teslım tümleştirmesini yapılandırmak için, galerisin
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **GÜVENLI teslim**yazın, sonuç PANELINDEN **güvenli teslim et** ' i seçin ve sonra uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **GÜVENLI teslim** yazın, sonuç PANELINDEN **güvenli teslim et** ' i seçin ve sonra uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
     ![Sonuçlar listesinde GÜVENLI teslım](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test KULLANıCıSıNA göre güvenli teslim ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test KULLANıCıSıNA göre güvenli teslim ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin GÜVENLI teslım olması gerekir.
 
 Azure AD çoklu oturum açmayı GÜVENLI teslım ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açmayı GÜVENLI teslım ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **güvenli teslim** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **güvenli teslim** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -130,7 +130,7 @@ Azure AD çoklu oturum açmayı GÜVENLI teslım ile yapılandırmak için aşa�
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -142,27 +142,27 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, GÜVENLI teslım 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı SEÇIN ve ardından **güvenli teslim et**' i seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı SEÇIN ve ardından **güvenli teslim et** ' i seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **GÜVENLI teslım et**' i seçin.
+2. Uygulamalar listesinde, **GÜVENLI teslım et** ' i seçin.
 
     ![Uygulamalar listesindeki GÜVENLI teslım bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
@@ -178,19 +178,18 @@ Bu bölümde, GÜVENLI teslım 'e erişim vererek Azure çoklu oturum açma öze
 
 ### <a name="create-secure-deliver-test-user"></a>GÜVENLI teslım testi Kullanıcı Oluştur
 
-Bu bölümde, GÜVENLI teslım 'ta Britta Simon adlı bir Kullanıcı oluşturacaksınız. Güvenli teslım platformunda kullanıcıları eklemek için [GÜVENLI teslimat desteği ekibi](mailto:iw-sd-support@fujifilm.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, GÜVENLI teslım 'ta Britta Simon adlı bir Kullanıcı oluşturacaksınız. Güvenli teslım platformunda kullanıcıları eklemek için [GÜVENLI teslimat desteği ekibi](mailto:iw-sd-support@fujifilm.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde GÜVENLI teslım kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız GÜVENLI TESLIMINDE otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde GÜVENLI teslım kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız GÜVENLI TESLIMINDE otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

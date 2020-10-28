@@ -1,18 +1,18 @@
 ---
 title: Kavram-bir hub ve bağlı bileşen mimarisinde bir Azure VMware çözüm dağıtımını tümleştirme
-description: Azure 'da var olan veya yeni bir hub ve bağlı bileşen mimarisinde Azure VMware çözüm dağıtımını tümleştirme önerileri hakkında bilgi edinin.
+description: Azure 'da bir hub ve bağlı bileşen mimarisinde Azure VMware çözüm dağıtımını tümleştirme hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 66c6cc4841b4b36775fda89b29dc588100c3ad87
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/26/2020
+ms.openlocfilehash: 93c11ad9253fe78e1935da7b40e7251788f1f037
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058480"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674694"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware çözümünü bir hub ve bağlı bileşen mimarisinde tümleştirme
 
-Bu makalede, Azure 'da var olan veya yeni bir [hub ve bağlı bileşen mimarisinde](/azure/architecture/reference-architectures/hybrid-networking/shared-services) Azure VMware çözüm dağıtımını tümleştirmeyle ilgili öneriler sağlıyoruz. 
+Bu makalede, Azure 'da var olan veya yeni bir [hub ve bağlı bileşen mimarisinde](/azure/architecture/reference-architectures/hybrid-networking/shared-services) bir Azure VMware çözüm dağıtımını tümleştirme önerileri sağlanır. 
 
 
 Hub ve bağlı bileşen senaryosu, üzerinde iş yükleri içeren bir karma bulut ortamı olduğunu varsayar:
@@ -46,7 +46,7 @@ Mimaride aşağıdaki ana bileşenler bulunur:
 
 
   > [!NOTE]
-  > **S2S VPN konuları:** Azure VMware Çözüm üretim dağıtımları için, VMware HCX ağ gereksinimleri nedeniyle Azure S2S VPN desteklenmez. Ancak, bir PoC dağıtımı için kullanılabilir.
+  > **S2S VPN konuları:** Azure VMware Çözüm üretim dağıtımları için, VMware HCX ağ gereksinimleri nedeniyle Azure S2S VPN desteklenmez. Ancak, bunu bir PoC dağıtımı için kullanabilirsiniz.
 
 
 -   **Hub sanal ağı:** Şirket içi ağınıza ve Azure VMware çözümü özel buluta merkezi bağlantı noktası görevi görür.
@@ -81,9 +81,9 @@ Azure VMware Çözüm ağı ve bağlantı kavramları hakkında daha fazla ayrı
 
 ### <a name="traffic-segmentation"></a>Trafik kesimlemesi
 
-[Azure Güvenlik Duvarı](../firewall/index.yml) , hub sanal ağında dağıtılan hub ve bağlı bileşen topolojisinin merkezi parçasıdır. Trafik kuralları oluşturmak ve farklı ışınsal ve Azure VMware Çözüm iş yükleri arasındaki iletişimi segmentlere ayırmak için Azure Güvenlik Duvarı veya başka bir Azure desteklenen ağ sanal gereci kullanın.
+[Azure Güvenlik Duvarı](../firewall/index.yml) , hub sanal ağında dağıtılan merkez ve bağlı bileşen topolojisinin merkezi parçasıdır. Trafik kuralları oluşturmak ve farklı ışınsal ve Azure VMware Çözüm iş yükleri arasındaki iletişimi segmentlere ayırmak için Azure Güvenlik Duvarı veya başka bir Azure desteklenen ağ sanal gereci kullanın.
 
-Trafiği Azure Güvenlik Duvarı 'na yönlendirmek için yol tabloları oluşturun.  Bağlı olan sanal ağlar için, Azure Güvenlik duvarının iç arabirimine varsayılan yolu ayarlayan bir yol oluşturun, bu şekilde sanal ağdaki bir iş yükünün Azure VMware çözüm adres alanına ulaşması gerektiğinde güvenlik duvarının bunu değerlendirebilmesi ve buna izin vermek veya reddetmek üzere ilgili trafik kuralını uygulamanız gerekir.  
+Trafiği Azure Güvenlik Duvarı 'na yönlendirmek için yol tabloları oluşturun.  Bağlı olan sanal ağlar için, Azure Güvenlik duvarının iç arabirimine varsayılan yolu ayarlayan bir yol oluşturun. Bu şekilde, sanal ağdaki bir iş yükünün Azure VMware çözüm adres alanına ulaşması gerektiğinde, güvenlik duvarı bunu değerlendirebilir ve buna izin vermek veya reddetmek için ilgili trafik kuralını uygulayabilir.  
 
 :::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Azure VMware Çözüm Merkezi ve bağlı bileşen tümleştirme dağıtımı" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
 
@@ -91,7 +91,7 @@ Trafiği Azure Güvenlik Duvarı 'na yönlendirmek için yol tabloları oluştur
 > [!IMPORTANT]
 > **Gatewaysubnet** ayarında 0.0.0.0/0 adres ön ekine sahip bir yol desteklenmez.
 
-Karşılık gelen yol tablosundaki belirli ağların yollarını ayarlayın. Örneğin, Azure VMware Çözüm yönetimine ve iş yüklerinin IP öneklerine, bağlı olan iş yüklerinden ulaşmak için yollar ve tam tersi.
+Karşılık gelen yol tablosundaki belirli ağların yollarını ayarlayın. Örneğin, Azure VMware Çözüm yönetimine ve iş yüklerinden gelen IP öneklerini, bağlı olan iş yüklerinden ve diğer yollardan ulaşmaya yönlendirir.
 
 :::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Azure VMware Çözüm Merkezi ve bağlı bileşen tümleştirme dağıtımı" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
 
@@ -111,7 +111,7 @@ Ayrıntılar ve gereksinimler için [Application Gateway](./protect-azure-vmware
 
 ### <a name="jump-box-and-azure-bastion"></a>Sıçrama kutusu ve Azure savunma
 
-Hub sanal ağı içindeki paylaşılan hizmet alt ağında dağıtılan bir Windows 10 veya Windows Server VM olan atbox ile Azure VMware Çözüm ortamına erişin.
+Azure VMware Çözüm ortamına, hub sanal ağı içindeki paylaşılan hizmet alt ağında dağıtılan bir Windows 10 veya Windows Server VM olan bir geçiş kutusuyla erişin.
 
 >[!IMPORTANT]
 >Azure 'da, Azure VMware çözümünün Internet 'e sunulmasını engellemek için bağlantı kutusu 'na bağlanmanız önerilir. Azure IaaS nesneleri olmadığından Azure VMware Çözüm VM 'lerine bağlanmak için Azure savunma 'yi kullanamazsınız.  
@@ -137,7 +137,7 @@ En iyi yaklaşım, Azure VMware çözümü, şirket içi ve Azure için güvenil
 
 Genel bir tasarım önerisi olarak, hub sanal ağında dağıtılan ve bağlı olan sanal ağlarda, DNS ayarlarında bu Azure DNS sunucularını kullanmak için yapılandırılmış olan en az iki Azure VM 'ye dağıtılan mevcut Azure DNS altyapısını (Bu örnekte Active Directory tümleşik DNS) kullanın.
 
-Azure Özel DNS, Azure Özel DNS bölgesinin sanal ağlarla bağlantılı olduğu yerlerde hala kullanılabilir ve DNS sunucuları, müşteri Azure Özel DNS altyapısını kullanan DNS çalıştıran şirket içi/Azure VMware çözümüne koşullu iletme ile karma çözümleyiciler olarak kullanılır.
+Azure Özel DNS bölgesinin sanal ağa bağlandığı Azure Özel DNS kullanabilirsiniz.  DNS sunucuları, Azure Özel DNS altyapısını kullanarak DNS çalıştıran şirket içi veya Azure VMware çözümüne koşullu iletme ile karma çözümleyiciler olarak kullanılır. 
 
 Azure DNS özel bölgeler için göz önünde bulundurmanız gereken bazı noktalar vardır:
 
@@ -149,7 +149,7 @@ Azure DNS özel bölgeler için göz önünde bulundurmanız gereken bazı nokta
 
 ## <a name="identity-considerations"></a>Kimlik konuları
 
-Kimlik açısından en iyi yaklaşım, paylaşılan hizmet alt ağını kullanarak hub üzerinde en az bir AD etki alanı denetleyicisi dağıtmaktır. Bu, her ikisi de bölge tarafından dağıtılan veya bir VM kullanılabilirlik kümesidir. Şirket içi AD etki alanınızı Azure 'a genişletmek için [Azure mimari merkezi](/azure/architecture/reference-architectures/identity/adds-extend-domain) bakın.
+Kimlik açısından en iyi yaklaşım, hub 'da en az bir AD etki alanı denetleyicisi dağıtmaktır. Bölge tarafından dağıtılan veya VM kullanılabilirlik kümesindeki iki paylaşılan hizmet alt ağını kullanın. Şirket içi AD etki alanınızı Azure 'a genişletmek için [Azure mimari merkezi](/azure/architecture/reference-architectures/identity/adds-extend-domain) bakın.
 
 Ayrıca, vSphere ortamında kimlik ve DNS kaynağı olarak görev yapmak için Azure VMware Çözüm tarafında başka bir etki alanı denetleyicisi dağıtın.
 

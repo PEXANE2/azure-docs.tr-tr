@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 38e4839a41ad8e58e575e552e877303a5105ff36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443674"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674764"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C ve C++ kullanarak SQL veritabanı 'na bağlanma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
 * Etkin bir Azure hesabı. Bir aboneliğiniz yoksa [Ücretsiz Azure Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 * [Visual Studio](https://www.visualstudio.com/downloads/). Bu örneği derlemek ve çalıştırmak için C++ dil bileşenlerini yüklemelisiniz.
-* [Visual Studio Linux geliştirme](https://docs.microsoft.com/cpp/linux/?view=vs-2019). Linux üzerinde geliştiriyorsanız, Visual Studio Linux uzantısını da yüklemelisiniz.
+* [Visual Studio Linux geliştirme](/cpp/linux/?view=vs-2019). Linux üzerinde geliştiriyorsanız, Visual Studio Linux uzantısını da yüklemelisiniz.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Sanal makinelerde Azure SQL veritabanı ve SQL Server
 
@@ -39,7 +39,7 @@ Azure Şu anda SQL Server iş yüklerini barındırmak için iki seçeneğe sahi
 
 ## <a name="data-access-technologies-odbc-and-ole-db"></a><a id="ODBC"></a>Veri erişimi teknolojileri: ODBC ve OLE DB
 
-Azure SQL veritabanı 'na bağlanma farklı değildir ve şu anda veritabanlarına bağlanmanın iki yolu vardır: ODBC (açık veritabanı bağlantısı) ve OLE DB (nesne bağlama ve katıştırma veritabanı). Son yıllarda, Microsoft [Yerel ilişkisel veri erişimi Için ODBC](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/)ile hizalanır. ODBC nispeten basittir ve OLE DB çok daha hızlıdır. Burada yalnızca desteklenmediği uyarısıyla, ODBC 'nin eski bir C stili API kullanması olur.
+Azure SQL veritabanı 'na bağlanma farklı değildir ve şu anda veritabanlarına bağlanmanın iki yolu vardır: ODBC (açık veritabanı bağlantısı) ve OLE DB (nesne bağlama ve katıştırma veritabanı). Son yıllarda, Microsoft [Yerel ilişkisel veri erişimi Için ODBC](/archive/blogs/sqlnativeclient/microsoft-is-aligning-with-odbc-for-native-relational-data-access)ile hizalanır. ODBC nispeten basittir ve OLE DB çok daha hızlıdır. Burada yalnızca desteklenmediği uyarısıyla, ODBC 'nin eski bir C stili API kullanması olur.
 
 ## <a name="step-1--creating-your-azure-sql-database"></a><a id="Create"></a>1. Adım: Azure SQL veritabanınızı oluşturma
 
@@ -143,7 +143,7 @@ GitHub 'da bu makaledeki tüm örnekleri içeren GetStarted çözümünü bulabi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [SQL veritabanı geliştirmeye genel bakış](develop-overview.md) konusunu inceleyin
-* [ODBC API başvurusu](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/) hakkında daha fazla bilgi
+* [ODBC API başvurusu](/sql/odbc/reference/syntax/odbc-api-reference/) hakkında daha fazla bilgi
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

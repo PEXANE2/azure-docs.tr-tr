@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: e9444291c40ef504a674ee18351ba581695d1dd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00f98a5086b9a9bf21054138cf01d26a550338da
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394528"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673847"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager dağıtım modelini kullanarak zorlamalı tünel yapılandırma
 
@@ -53,6 +53,7 @@ Azure 'da Zorlamalı tünel, sanal ağ kullanıcı tanımlı rotalar aracılığ
 * Bu yordam, bir varsayılan yol eklemek üzere bir yönlendirme tablosu oluşturmak için Kullanıcı tanımlı yollar (UDR) kullanır ve ardından bu alt ağlarda Zorlamalı tünel sağlamak için yönlendirme tablosunu VNet alt ağlarınıza ilişkilendirir.
 * Zorlamalı tünelleme, rota tabanlı bir VPN ağ geçidine sahip bir VNet ile ilişkili olmalıdır. Sanal ağa bağlı şirketler arası yerel siteler arasında "varsayılan site" ayarlamanız gerekir. Ayrıca, şirket içi VPN cihazının trafik seçicileri olarak 0.0.0.0/0 kullanılarak yapılandırılması gerekir. 
 * ExpressRoute Zorlamalı tünel bu mekanizma aracılığıyla yapılandırılmaz, ancak bunun yerine ExpressRoute BGP eşleme oturumları aracılığıyla varsayılan bir yol tanıtıarak etkinleştirilir. Daha fazla bilgi için bkz. [ExpressRoute belgeleri](https://azure.microsoft.com/documentation/services/expressroute/).
+* Hem VPN Gateway hem de ExpressRoute Gateway 'i aynı VNet 'te dağıttığındaki ExpressRoute ağ geçidi, yapılandırılmış "varsayılan site" öğesini VNet 'e duyurtacak şekilde Kullanıcı tanımlı yollar (UDR) artık gerekli değildir.
 
 ## <a name="configuration-overview"></a>Yapılandırmaya genel bakış
 

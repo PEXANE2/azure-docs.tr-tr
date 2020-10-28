@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
-ms.openlocfilehash: f8ecfaffd5a8c0c9a4eafd683e4fe2a7714c6e8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c31a20b527dd6f4741d00b8306c0f88b27f2f6b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543066"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672837"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-serraview-space-utilization-software-solutions"></a>Öğretici: Serrayview Space kullanımı yazılım çözümleriyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, Serrampaalanı kullanımı yazılım çözümlerini Azure Activ
 * Kullanıcılarınızın Azure AD hesaplarıyla alan kullanımı yazılım çözümlerini otomatik olarak oturum açmak için etkinleştirin.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -41,7 +41,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Serrampaspace kullanımı yazılım çözümleri **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 
-* Serminview Space kullanımı yazılım çözümlerini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve geri alımını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Serminview Space kullanımı yazılım çözümlerini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve geri alımını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-serraview-space-utilization-software-solutions-from-the-gallery"></a>Galeriden Serkview alanı kullanımı yazılım çözümlerini ekleme
 
@@ -49,15 +49,15 @@ Serrat alanı kullanımı yazılım çözümlerinin Azure AD 'ye tümleştirilme
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Serrampaspace kullanımı yazılım çözümlerini** yazın.
 1. Sonuçlar panelinden **Serrampaspace kullanımı yazılım çözümlerini** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-serraview-space-utilization-software-solutions"></a>Azure AD SSO 'yu, Serrampaspace kullanımı yazılım çözümleri için yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Serüview Space kullanımı yazılım ÇÖZÜMLERIYLE Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ile Serrampaalanı kullanım yazılımı çözümlerinde bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Serüview Space kullanımı yazılım ÇÖZÜMLERIYLE Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ile Serrampaalanı kullanım yazılımı çözümlerinde bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu, Serrampaalanı kullanımı yazılım çözümleriyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -72,8 +72,8 @@ Azure AD SSO 'yu, Serrampaalanı kullanımı yazılım çözümleriyle yapıland
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Serkıview Space kullanımı yazılım çözümleri** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **Serkıview Space kullanımı yazılım çözümleri** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -103,25 +103,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Serüview Space kullanım yazılımı çözümlerine erişim vererek B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Serrampaspace kullanımı yazılım çözümlerini**seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde, **Serrampaspace kullanımı yazılım çözümlerini** seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -135,22 +135,22 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Serüview Space 
 
 ### <a name="create-serraview-space-utilization-software-solutions-test-user"></a>Serrayview alanı kullanımı yazılım çözümlerini test kullanıcısı oluşturma
 
-Bu bölümde, Serrampaalanı kullanımı yazılım çözümlerinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Serrampaspace kullanımı yazılım çözümleri [destek ekibi](mailto:svprodops@serraview.com) ile çalışarak, kullanıcıları Serüview alanı kullanım yazılımı çözüm platformunda ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Serrampaalanı kullanımı yazılım çözümlerinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Serrampaspace kullanımı yazılım çözümleri [destek ekibi](mailto:svprodops@serraview.com) ile çalışarak, kullanıcıları Serüview alanı kullanım yazılımı çözüm platformunda ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Serkview Space kullanımı yazılım çözümleri kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Serkview alanı kullanımı yazılım çözümlerinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Serkview Space kullanımı yazılım çözümleri kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Serkview alanı kullanımı yazılım çözümlerinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile Serrampaalanı kullanımı yazılım çözümlerini deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)

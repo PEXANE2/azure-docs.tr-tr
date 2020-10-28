@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98f2a8fb0ce48dab0e1e5f7610d73d55526969eb
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577518"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675103"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL veritabanı için bir yük devretme grubu yapılandırma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,7 +40,7 @@ Aşağıdaki önkoşulları göz önünde bulundurun:
 
 Yük devretme grubunuzu oluşturun ve Azure portal kullanarak tek veritabanınızı veritabanına ekleyin.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
 1. Yük devretme grubuna eklemek istediğiniz veritabanını seçin.
 1. Sunucu ayarlarını açmak için sunucu **adı** altında sunucunun adını seçin.
 
@@ -50,9 +50,9 @@ Yük devretme grubunuzu oluşturun ve Azure portal kullanarak tek veritabanını
 
    ![Yeni Yük devretme grubu Ekle](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
-1. **Yük devretme grubu** sayfasında, gerekli değerleri girin veya seçin ve ardından **Oluştur**' u seçin.
+1. **Yük devretme grubu** sayfasında, gerekli değerleri girin veya seçin ve ardından **Oluştur** ' u seçin.
 
-   - **Grup Içindeki veritabanları**: yük devretme grubunuza eklemek istediğiniz veritabanını seçin. Veritabanını yük devretme grubuna eklemek, coğrafi çoğaltma işlemini otomatik olarak başlatır.
+   - **Grup Içindeki veritabanları** : yük devretme grubunuza eklemek istediğiniz veritabanını seçin. Veritabanını yük devretme grubuna eklemek, coğrafi çoğaltma işlemini otomatik olarak başlatır.
 
    ![Yük devretme grubuna SQL veritabanı Ekle](./media/auto-failover-group-configure/add-sqldb-to-failover-group.png)
 
@@ -115,7 +115,7 @@ Azure portal veya PowerShell kullanarak yük devretme grubunuzun yük devretmesi
 
 Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna "Azure SQL" yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna "Azure SQL" yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
 1. Yük devretme grubuna eklemek istediğiniz veritabanını seçin.
 
    ![Tek veritabanı için açık sunucu](./media/auto-failover-group-configure/open-sql-db-server.png)
@@ -210,7 +210,7 @@ Azure portal veya PowerShell kullanarak elastik havuzunuz için yük devretme gr
 
 Yük devretme grubunuzu oluşturun ve Azure portal kullanarak elastik havuzunuzu ekleyin.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna "Azure SQL" yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna "Azure SQL" yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
 1. Yük devretme grubuna eklemek istediğiniz elastik havuzu seçin.
 1. **Genel bakış** bölmesinde sunucu **adı** bölümünde sunucu adı ' nı seçerek sunucu ayarlarını açın.
   
@@ -220,7 +220,7 @@ Yük devretme grubunuzu oluşturun ve Azure portal kullanarak elastik havuzunuzu
 
    ![Yeni Yük devretme grubu Ekle](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
-1. **Yük devretme grubu** sayfasında, gerekli değerleri girin veya seçin ve ardından **Oluştur**' u seçin. Yeni bir ikincil sunucu oluşturun ya da var olan bir ikincil sunucuyu seçin.
+1. **Yük devretme grubu** sayfasında, gerekli değerleri girin veya seçin ve ardından **Oluştur** ' u seçin. Yeni bir ikincil sunucu oluşturun ya da var olan bir ikincil sunucuyu seçin.
 
 1. **Grup Içindeki veritabanları** ' nı seçin ve ardından yük devretme grubuna eklemek istediğiniz elastik havuzu seçin. İkincil sunucuda zaten elastik bir havuz yoksa, ikincil sunucuda esnek havuz oluşturmanızı isteyen bir uyarı görüntülenir. Uyarıyı seçin ve ardından ikincil sunucuda elastik havuzu oluşturmak için **Tamam** ' ı seçin.
 
@@ -282,7 +282,7 @@ Azure portal veya PowerShell kullanarak elastik havuzunuzun yük devretmesini te
 
 Yük devretme grubunuzu ikincil sunucuya devreder ve Azure portal kullanarak yeniden devreder.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna "Azure SQL" yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna "Azure SQL" yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
 1. Yük devretme grubuna eklemek istediğiniz elastik havuzu seçin.
 1. **Genel bakış** bölmesinde sunucu **adı** bölümünde sunucu adı ' nı seçerek sunucu ayarlarını açın.
 
@@ -371,11 +371,11 @@ Aşağıdaki önkoşulları göz önünde bulundurun:
 Azure portal kullanarak birincil sanal ağ geçidini oluşturun.
 
 1. [Azure Portal](https://portal.azure.com), kaynak grubunuza gidin ve birincil yönetilen örneğiniz için **sanal ağ** kaynağını seçin.
-1. **Ayarlar** altında **alt ağlar** ' ı seçin ve ardından yeni bir **ağ geçidi alt ağı**eklemeyi seçin. Varsayılan değerleri bırakın.
+1. **Ayarlar** altında **alt ağlar** ' ı seçin ve ardından yeni bir **ağ geçidi alt ağı** eklemeyi seçin. Varsayılan değerleri bırakın.
 
    ![Birincil yönetilen örnek için ağ geçidi ekle](./media/auto-failover-group-configure/add-subnet-gateway-primary-vnet.png)
 
-1. Alt ağ geçidi oluşturulduktan sonra sol gezinti bölmesinden **kaynak oluştur** ' u seçin ve `Virtual network gateway` Arama kutusuna yazın. **Microsoft**tarafından yayınlanan **sanal ağ geçidi** kaynağını seçin.
+1. Alt ağ geçidi oluşturulduktan sonra sol gezinti bölmesinden **kaynak oluştur** ' u seçin ve `Virtual network gateway` Arama kutusuna yazın. **Microsoft** tarafından yayınlanan **sanal ağ geçidi** kaynağını seçin.
 
    ![Yeni bir sanal ağ geçidi oluştur](./media/auto-failover-group-configure/create-virtual-network-gateway.png)
 
@@ -388,12 +388,12 @@ Azure portal kullanarak birincil sanal ağ geçidini oluşturun.
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
     | **Ad** | Sanal ağ geçidinizin adı. |
     | **Bölge** | Birincil yönetilen örneğinizin bulunduğu bölge. |
-    | **Ağ geçidi türü** | **VPN**' yi seçin. |
+    | **Ağ geçidi türü** | **VPN** ' yi seçin. |
     | **VPN türü** | **Rota tabanlı** seçin |
     | **SKU**| Varsayılan bırakın `VpnGw1` . |
     | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
     | **Sanal ağ**| İkincil yönetilen örneğiniz için sanal ağı seçin. |
-    | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
+    | **Genel IP adresi**| **Yeni oluştur** ’u seçin. |
     | **Genel IP adresi adı**| IP adresiniz için bir ad girin. |
     | &nbsp; | &nbsp; |
 
@@ -450,12 +450,12 @@ Aşağıdaki tabloda, ikincil yönetilen örnek için ağ geçidi için gereken 
    | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
    | **Ad** | Sanal ağ geçidinizin adı, örneğin `secondary-mi-gateway` . |
    | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
-   | **Ağ geçidi türü** | **VPN**' yi seçin. |
+   | **Ağ geçidi türü** | **VPN** ' yi seçin. |
    | **VPN türü** | **Rota tabanlı** seçin |
    | **SKU**| Varsayılan bırakın `VpnGw1` . |
    | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
    | **Sanal ağ**| 2. bölümde oluşturulan sanal ağı seçin `vnet-sql-mi-secondary` . |
-   | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
+   | **Genel IP adresi**| **Yeni oluştur** ’u seçin. |
    | **Genel IP adresi adı**| IP adresiniz için gibi bir ad girin `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
 
@@ -509,15 +509,15 @@ Azure portal kullanarak iki ağ geçidi arasında bağlantı oluşturun.
 1. Azure portal **kaynak oluştur** ' u seçin [Azure portal](https://portal.azure.com).
 1. Arama `connection` kutusuna yazın ve ardından arama yapmak için ENTER tuşuna basın. Bu, sizi Microsoft tarafından yayımlanan **bağlantı** kaynağına götürür.
 1. Bağlantınızı oluşturmak için **Oluştur** ' u seçin.
-1. **Temel bilgiler** sekmesinde, aşağıdaki değerleri seçip **Tamam**' ı seçin.
-    1. `VNet-to-VNet` **Bağlantı türü**için seçin.
+1. **Temel bilgiler** sekmesinde, aşağıdaki değerleri seçip **Tamam** ' ı seçin.
+    1. `VNet-to-VNet` **Bağlantı türü** için seçin.
     1. Açılan listeden aboneliğinizi seçin.
     1. Açılan kutuda yönetilen örneğiniz için kaynak grubunu seçin.
     1. Açılan listeden birincil yönetilen örneğinizin konumunu seçin.
-1. **Ayarlar** sekmesinde, aşağıdaki değerleri seçin veya girin ve sonra **Tamam**' ı seçin:
-    1. **İlk sanal ağ geçidi**için, gibi birincil ağ geçidini seçin `Primary-Gateway` .  
-    1. **İkinci sanal ağ geçidi**için ikincil ağ geçidini (gibi) seçin `Secondary-Gateway` .
-    1. **Çift yönlü bağlantı oluştur**' un yanındaki onay kutusunu işaretleyin.
+1. **Ayarlar** sekmesinde, aşağıdaki değerleri seçin veya girin ve sonra **Tamam** ' ı seçin:
+    1. **İlk sanal ağ geçidi** için, gibi birincil ağ geçidini seçin `Primary-Gateway` .  
+    1. **İkinci sanal ağ geçidi** için ikincil ağ geçidini (gibi) seçin `Secondary-Gateway` .
+    1. **Çift yönlü bağlantı oluştur** ' un yanındaki onay kutusunu işaretleyin.
     1. Varsayılan birincil bağlantı adını bırakın ya da seçtiğiniz bir değerle yeniden adlandırın.
     1. Bağlantı için, gibi bir **paylaşılan anahtar (PSK)** sağlayın `mi1m2psk` .
 
@@ -564,9 +564,9 @@ Azure portal veya PowerShell 'i kullanarak yönetilen örneklerinizin yük devre
 
 Azure portal kullanarak, SQL yönetilen örneklerinizin yük devretme grubunu oluşturun.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
 1. Yük devretme grubuna eklemek istediğiniz birincil yönetilen örneği seçin.  
-1. **Ayarlar**altında, **örnek yük devretme grupları** ' na gidin ve sonra **örnek yük devretme grubu** sayfasını açmak için **Grup Ekle** ' yi seçin.
+1. **Ayarlar** altında, **örnek yük devretme grupları** ' na gidin ve sonra **örnek yük devretme grubu** sayfasını açmak için **Grup Ekle** ' yi seçin.
 
    ![Yük devretme grubu ekleme](./media/auto-failover-group-configure/add-failover-group.png)
 
@@ -665,7 +665,7 @@ PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
 
 Yük devretme grubunuza özel bir bağlantı kullanmak için aşağıdakileri yapın:
 
-1. Birincil ve ikincil sunucularınızın [eşleştirilmiş bir bölgede](/azure/best-practices-availability-paired-regions)bulunduğundan emin olun. 
+1. Birincil ve ikincil sunucularınızın [eşleştirilmiş bir bölgede](../../best-practices-availability-paired-regions.md)bulunduğundan emin olun. 
 1. Birincil ve ikincil sunucular için özel uç noktaları, çakışmayan IP adresi alanları olacak şekilde barındırmak için her bölgede sanal ağ ve alt ağ oluşturun. Örneğin, 10.0.0.0/16 birincil sanal ağ adresi aralığı ve 10.0.0.1/16 için ikincil sanal ağ adresi aralığı çakışıyor. Sanal ağ adres aralıkları hakkında daha fazla bilgi için bkz. [Azure sanal ağlarını tasarlama](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)blogu.
 1. [Birincil sunucu için özel bir uç nokta ve Azure özel DNS bölgesi](../../private-link/create-private-endpoint-portal.md#create-a-private-endpoint)oluşturun. 
 1. İkincil sunucu için de özel bir uç nokta oluşturun, ancak bu kez birincil sunucu için oluşturulan Özel DNS bölgeyi yeniden kullanmayı tercih edin. 

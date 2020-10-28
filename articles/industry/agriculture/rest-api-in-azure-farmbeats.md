@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536581"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674512"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure Farmtempts API 'Leri
 
@@ -143,23 +143,23 @@ Bu örnekte, bir grup oluşturulduğunda, giriş yükünde "ad" zorunlu alanı b
 
 Azure Farmtts API 'Lerine, Azure Active Directory bir kullanıcı veya uygulama kaydı tarafından erişilebilir. Azure Active Directory bir uygulama kaydı oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)gidin ve **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt**uygulama kayıtları Azure Active Directory seçin. Alternatif olarak, mevcut bir hesabı kullanabilirsiniz.
+1. [Azure Portal](https://portal.azure.com)gidin ve **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt** uygulama kayıtları Azure Active Directory seçin. Alternatif olarak, mevcut bir hesabı kullanabilirsiniz.
 2. Yeni bir hesap için aşağıdakileri yapın:
 
     - Bir ad girin.
     - **Yalnızca bu kuruluş dizinindeki hesapları (tek kiracı)** seçin.
     - Alanların geri kalanında varsayılan değerleri kullanın.
-    - **Kaydet**’i seçin.
+    - **Kaydet** ’i seçin.
 
 3. Yeni ve var olan uygulama kaydına **genel bakış** bölmesinde şunları yapın:
 
-    - **ISTEMCI kimliğini** ve **Kiracı kimliğini**yakalayın.
-    - Yeni bir istemci parolası oluşturmak ve **Istemci gizliliğini**yakalamak için **Sertifikalar ve gizli** diziler bölümüne gidin.
-    - **Genel Bakış ' a**geri dönün ve **yerel dizinde uygulamayı Yönet ' in**yanındaki bağlantıyı seçin.
-    - **Nesne kimliğini**yakalamak için **Özellikler** ' e gidin.
+    - **ISTEMCI kimliğini** ve **Kiracı kimliğini** yakalayın.
+    - Yeni bir istemci parolası oluşturmak ve **Istemci gizliliğini** yakalamak için **Sertifikalar ve gizli** diziler bölümüne gidin.
+    - **Genel Bakış ' a** geri dönün ve **yerel dizinde uygulamayı Yönet ' in** yanındaki bağlantıyı seçin.
+    - **Nesne kimliğini** yakalamak için **Özellikler** ' e gidin.
 
 4. Veri hub Swagger (https:// <yourdatahub> . azurewebsites.net/swagger/index.html) sayfasına gidin ve şunları yapın:
-    - **Roleatama API**'sine gidin.
+    - **Roleatama API** 'sine gidin.
     - Yeni oluşturduğunuz **nesne kimliği** Için bir **roleatama** NESNESI oluşturmak üzere bir gönderi gerçekleştirin.
  
 ```json
@@ -172,7 +172,7 @@ Azure Farmtts API 'Lerine, Azure Active Directory bir kullanıcı veya uygulama 
 ```
 
   > [!NOTE]
-  > Kullanıcı ekleme ve kayıt Active Directory hakkında daha fazla bilgi için bkz. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+  > Kullanıcı ekleme ve kayıt Active Directory hakkında daha fazla bilgi için bkz. [Azure Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 Önceki adımları tamamladıktan sonra, uygulama kaydınız (istemci), taşıyıcı kimlik doğrulaması aracılığıyla bir erişim belirteci kullanarak Azure Farmtts API 'Lerini çağırabilir.
 

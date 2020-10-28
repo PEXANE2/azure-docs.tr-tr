@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: be5cb1c1e6ff428b3c4d4305c915e07d3880839c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c29e1e3fd42702e0eb02531f995c550738839a9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258396"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673714"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Nasıl yapılır: uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma
 
@@ -34,12 +34,12 @@ Bu uygulama rolleri, uygulamanın kayıt bildiriminde [Azure Portal](https://por
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Azure portal kullanarak uygulama rolleri bildirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin.
 1. **Sık Kullanılanlar** veya **tüm dizinler** listesinde, uygulamanızı kaydetmek istediğiniz Active Directory kiracıyı seçin.
-1. Azure portal, araması yapın ve **Azure Active Directory**seçin.
+1. Azure portal, araması yapın ve **Azure Active Directory** seçin.
 1. **Azure Active Directory** bölmesinde, tüm uygulamalarınızın listesini görüntülemek için **uygulama kayıtları** ' ı seçin.
-1. İçinde uygulama rollerini tanımlamak istediğiniz uygulamayı seçin. Ardından **bildirim**' ı seçin.
+1. İçinde uygulama rollerini tanımlamak istediğiniz uygulamayı seçin. Ardından **bildirim** ' ı seçin.
 1. `appRoles`Ayarı bularak ve tüm uygulama rollerinizi ekleyerek uygulama bildirimini düzenleyin.
 
      > [!NOTE]
@@ -76,7 +76,7 @@ Aşağıdaki örnek, atayabileceğiniz öğesini gösterir `appRoles` `users` .
 > [!NOTE]
 >`displayName`Boşluk içerebilir.
 
-Hedef `users` , `applications` veya her ikisini de hedeflemek için uygulama rolleri tanımlayabilirsiniz. İçin kullanılabilir olduğunda `applications` , uygulama rolleri **Yönet** bölümünde uygulama izinleri olarak görünür > API **Izinleri > API 'Lerim > bir ızın ekleyin > bir API > uygulama izinleri seçin**. Aşağıdaki örnekte, öğesine hedeflenmiş bir uygulama rolü gösterilmektedir `Application` .
+Hedef `users` , `applications` veya her ikisini de hedeflemek için uygulama rolleri tanımlayabilirsiniz. İçin kullanılabilir olduğunda `applications` , uygulama rolleri **Yönet** bölümünde uygulama izinleri olarak görünür > API **Izinleri > API 'Lerim > bir ızın ekleyin > bir API > uygulama izinleri seçin** . Aşağıdaki örnekte, öğesine hedeflenmiş bir uygulama rolü gösterilmektedir `Application` .
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -126,7 +126,7 @@ Uygulamanıza uygulama rolleri ekledikten sonra, bu rollere kullanıcılar ve gr
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Uygulama rollerini kullanarak yetkilendirme ekleme ASP.NET Core Web uygulaması için rol talepleri &](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [Microsoft Identity platform (video) ile uygulamalarınızda yetkilendirme uygulama](https://www.youtube.com/watch?v=LRoc-na27l0)
+- [Microsoft Identity platform (video) ile uygulamalarınızda yetkilendirme uygulama](https://www.youtube.com/watch?v=HdBSBSbgYQQ)
 - [Azure Active Directory, artık grup talepleri ve uygulama rolleriyle birlikte](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory uygulama bildirimi](./reference-app-manifest.md)
 - [Azure AD erişim belirteçleri](access-tokens.md)

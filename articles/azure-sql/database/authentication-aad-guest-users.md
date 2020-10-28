@@ -9,25 +9,25 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
-ms.openlocfilehash: aa74489a962708a1d3d5e6835f684e5cb8fc548b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a4d9fb9f803a497e84fa189d9a89c2d9097bb70
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444339"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675047"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Azure AD konuk kullanıcıları oluşturma ve bir Azure AD yöneticisi olarak ayarlama
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 > [!NOTE]
-> Bu makale **genel önizlemede**.
+> Bu makale **genel önizlemede** .
 
-Azure Active Directory (Azure AD) Konuk kullanıcılar, mevcut Azure AD 'ye diğer Azure Active Directory 'lerden veya bunun dışından aktarılmış kullanıcılardır. Örneğin, Konuk kullanıcılar diğer Azure Active Directory 'lerden veya * \@ Outlook.com*, * \@ hotmail.com*, * \@ Live.com*veya * \@ Gmail.com*gibi hesaplardan kullanıcıları içerebilir. Bu makalede, bir Azure AD Konuk kullanıcısının nasıl oluşturulacağı ve bu kullanıcının Azure SQL mantıksal sunucusu için Azure AD yöneticisi olarak nasıl ayarlanacağı, Konuk kullanıcının Azure AD içindeki bir grubun parçası olması gerekmeden nasıl yapılacağı gösterilir.
+Azure Active Directory (Azure AD) Konuk kullanıcılar, mevcut Azure AD 'ye diğer Azure Active Directory 'lerden veya bunun dışından aktarılmış kullanıcılardır. Örneğin, Konuk kullanıcılar diğer Azure Active Directory 'lerden veya *\@ Outlook.com* , *\@ hotmail.com* , *\@ Live.com* veya *\@ Gmail.com* gibi hesaplardan kullanıcıları içerebilir. Bu makalede, bir Azure AD Konuk kullanıcısının nasıl oluşturulacağı ve bu kullanıcının Azure SQL mantıksal sunucusu için Azure AD yöneticisi olarak nasıl ayarlanacağı, Konuk kullanıcının Azure AD içindeki bir grubun parçası olması gerekmeden nasıl yapılacağı gösterilir.
 
 ## <a name="feature-description"></a>Özellik açıklaması
 
-Bu özellik, yalnızca konuk kullanıcıların Azure AD 'de oluşturulan bir grubun üyesi olduklarında Azure SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE Analytics 'e bağlanmasına izin veren geçerli sınırlamayı durdurur. Belirli bir veritabanında [Kullanıcı oluşturma (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) ifadesini kullanarak el ile bir kullanıcıya eşlenmesi gerekir. Konuk kullanıcıyı içeren Azure AD grubu için bir veritabanı kullanıcısı oluşturulduktan sonra, Konuk Kullanıcı, MFA kimlik doğrulamasıyla Azure Active Directory kullanarak veritabanında oturum açabilir. Bu **genel önizlemenin**bir parçası olarak, Konuk KULLANıCıLAR doğrudan SQL VERITABANı, SQL yönetilen örneği veya Azure SYNAPSE 'e, önce bunları BIR Azure AD grubuna ekleme ve ardından bu Azure AD grubu için bir veritabanı kullanıcısı oluşturma gerekliliği olmadan oluşturulabilir ve doğrudan bağlanabilir.
+Bu özellik, yalnızca konuk kullanıcıların Azure AD 'de oluşturulan bir grubun üyesi olduklarında Azure SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE Analytics 'e bağlanmasına izin veren geçerli sınırlamayı durdurur. Belirli bir veritabanında [Kullanıcı oluşturma (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) ifadesini kullanarak el ile bir kullanıcıya eşlenmesi gerekir. Konuk kullanıcıyı içeren Azure AD grubu için bir veritabanı kullanıcısı oluşturulduktan sonra, Konuk Kullanıcı, MFA kimlik doğrulamasıyla Azure Active Directory kullanarak veritabanında oturum açabilir. Bu **genel önizlemenin** bir parçası olarak, Konuk KULLANıCıLAR doğrudan SQL VERITABANı, SQL yönetilen örneği veya Azure SYNAPSE 'e, önce bunları BIR Azure AD grubuna ekleme ve ardından bu Azure AD grubu için bir veritabanı kullanıcısı oluşturma gerekliliği olmadan oluşturulabilir ve doğrudan bağlanabilir.
 
 Bu özelliğin bir parçası olarak, Azure AD Konuk kullanıcısını doğrudan Azure SQL mantıksal sunucusu için bir AD yöneticisi olarak ayarlama olanağınız da vardır. Konuk kullanıcının bir Azure AD grubunun parçası olduğu mevcut işlevler ve bu grup daha sonra Azure SQL mantıksal sunucusu için Azure AD yöneticisi etkilenmediğinden ayarlanabilir. Bir Azure AD grubunun parçası olan veritabanındaki Konuk kullanıcılar da bu değişiklikten etkilenmez.
 
@@ -59,12 +59,12 @@ Bir Azure AD Konuk kullanıcısını kullanarak veritabanı kullanıcısı oluş
     SELECT * FROM sys.database_principals
     ```
 
-1. `user1@gmail.com` **MFA ile Azure Active Directory**kimlik doğrulama yöntemini kullanarak veritabanını [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Konuk Kullanıcı olarak açın ve oturum açın. Daha fazla bilgi için bkz. [multi-factor Azure Active Directory kimlik doğrulaması kullanma](authentication-mfa-ssms-overview.md).
+1. `user1@gmail.com` **MFA ile Azure Active Directory** kimlik doğrulama yöntemini kullanarak veritabanını [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Konuk Kullanıcı olarak açın ve oturum açın. Daha fazla bilgi için bkz. [multi-factor Azure Active Directory kimlik doğrulaması kullanma](authentication-mfa-ssms-overview.md).
 
 ### <a name="create-guest-user-in-sql-managed-instance"></a>SQL yönetilen örneği 'nde Konuk kullanıcı oluştur
 
 > [!NOTE]
-> SQL yönetilen örneği, Azure AD kullanıcıları için oturum açma işlemlerini ve ayrıca Azure AD dahil veritabanı kullanıcılarını destekler. Aşağıdaki adımlarda, SQL yönetilen örneği 'nde bir Azure AD Konuk kullanıcısı için oturum açma ve Kullanıcı oluşturma işlemleri gösterilmektedir. SQL yönetilen örneği 'nde, [SQL veritabanı ve Azure SYNAPSE 'de Konuk Kullanıcı oluşturma](#create-guest-user-in-sql-database-and-azure-synapse) bölümünde yer alan yöntemi kullanarak [içerilen bir veritabanı kullanıcısı](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) oluşturmayı da tercih edebilirsiniz.
+> SQL yönetilen örneği, Azure AD kullanıcıları için oturum açma işlemlerini ve ayrıca Azure AD dahil veritabanı kullanıcılarını destekler. Aşağıdaki adımlarda, SQL yönetilen örneği 'nde bir Azure AD Konuk kullanıcısı için oturum açma ve Kullanıcı oluşturma işlemleri gösterilmektedir. SQL yönetilen örneği 'nde, [SQL veritabanı ve Azure SYNAPSE 'de Konuk Kullanıcı oluşturma](#create-guest-user-in-sql-database-and-azure-synapse) bölümünde yer alan yöntemi kullanarak [içerilen bir veritabanı kullanıcısı](/sql/relational-databases/security/contained-database-users-making-your-database-portable) oluşturmayı da tercih edebilirsiniz.
 
 1. Konuk kullanıcının (örneğin, `user1@gmail.com` ) Azure AD 'nize zaten eklendiğinden ve SQL yönetilen örnek sunucusu için bir Azure AD yöneticisinin ayarlandığından emin olun. Azure Active Directory kimlik doğrulaması için bir Azure AD yöneticisinin olması gerekir.
 
@@ -90,7 +90,7 @@ Bir Azure AD Konuk kullanıcısını kullanarak veritabanı kullanıcısı oluş
 
 1. Artık Konuk Kullanıcı için oluşturulmuş bir veritabanı kullanıcısı olmalıdır `user1@gmail.com` .
 
-1. `user1@gmail.com` **MFA ile Azure Active Directory**kimlik doğrulama yöntemini kullanarak veritabanını [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Konuk Kullanıcı olarak açın ve oturum açın. Daha fazla bilgi için bkz. [multi-factor Azure Active Directory kimlik doğrulaması kullanma](authentication-mfa-ssms-overview.md).
+1. `user1@gmail.com` **MFA ile Azure Active Directory** kimlik doğrulama yöntemini kullanarak veritabanını [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Konuk Kullanıcı olarak açın ve oturum açın. Daha fazla bilgi için bkz. [multi-factor Azure Active Directory kimlik doğrulaması kullanma](authentication-mfa-ssms-overview.md).
 
 ## <a name="setting-a-guest-user-as-an-azure-ad-admin"></a>Konuk kullanıcıyı Azure AD yöneticisi olarak ayarlama
 
@@ -110,13 +110,13 @@ Azure AD Konuk kullanıcısını SQL mantıksal sunucusu için Azure AD yönetic
     Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName <ResourceGroupName> -ServerName <ServerName> -DisplayName <DisplayNameOfGuestUser>
     ```
 
-    Konuk kullanıcıyı Azure SQL mantıksal sunucunuz için bir Azure AD yöneticisi olarak ayarlamak üzere [az SQL Server ad-admin](https://docs.microsoft.com/cli/azure/sql/server/ad-admin) Azure CLI komutunu da kullanabilirsiniz.
+    Konuk kullanıcıyı Azure SQL mantıksal sunucunuz için bir Azure AD yöneticisi olarak ayarlamak üzere [az SQL Server ad-admin](/cli/azure/sql/server/ad-admin) Azure CLI komutunu da kullanabilirsiniz.
 
 ### <a name="set-azure-ad-admin-for-sql-managed-instance"></a>SQL yönetilen örneği için Azure AD yöneticisi 'ni ayarlama
 
 1. Konuk kullanıcının (örneğin, `user1@gmail.com` ) Azure AD 'nize zaten eklendiğinden emin olun.
 
-1. [Azure Portal](https://portal.azure.com)gidin ve **Azure Active Directory** kaynağına gidin. **Yönet**altında, **Kullanıcılar** bölmesine gidin. Konuk Kullanıcı ' yı seçin ve kaydedin `Object ID` . 
+1. [Azure Portal](https://portal.azure.com)gidin ve **Azure Active Directory** kaynağına gidin. **Yönet** altında, **Kullanıcılar** bölmesine gidin. Konuk Kullanıcı ' yı seçin ve kaydedin `Object ID` . 
 
 1. Konuk kullanıcıyı SQL yönetilen örneğiniz için Azure AD yöneticisi olarak eklemek için aşağıdaki PowerShell komutunu çalıştırın:
 
@@ -129,11 +129,11 @@ Azure AD Konuk kullanıcısını SQL mantıksal sunucusu için Azure AD yönetic
     Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName <ResourceGroupName> -InstanceName "<ManagedInstanceName>" -DisplayName <DisplayNameOfGuestUser> -ObjectId <AADObjectIDOfGuestUser>
     ```
 
-    Konuk kullanıcıyı SQL yönetilen örneğiniz için bir Azure AD yöneticisi olarak ayarlamak üzere [az SQL mı ad-admin](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin) Azure CLI komutunu da kullanabilirsiniz.
+    Konuk kullanıcıyı SQL yönetilen örneğiniz için bir Azure AD yöneticisi olarak ayarlamak üzere [az SQL mı ad-admin](/cli/azure/sql/mi/ad-admin) Azure CLI komutunu da kullanabilirsiniz.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Azure portal, SQL yönetilen örneği için Azure AD yöneticisi olarak bir Azure AD Konuk kullanıcısının seçilmesine engel olan bir sınırlama vardır. * \@ Outlook.com*, * \@ hotmail.com*, * \@ Live.com*veya * \@ Gmail.com*gibi Azure AD 'niz dışındaki Konuk hesaplarında, ad yönetici Seçicisi bu hesapları gösterir, ancak gri renkte görünür ve seçilemez. Azure AD yöneticisi 'ni ayarlamak için yukarıda listelenen [PowerShell veya CLI komutlarını](#setting-a-guest-user-as-an-azure-ad-admin) kullanın. Alternatif olarak, Konuk kullanıcıyı içeren bir Azure AD grubu, SQL yönetilen örneği için Azure AD yöneticisi olarak ayarlanabilir.
+Azure portal, SQL yönetilen örneği için Azure AD yöneticisi olarak bir Azure AD Konuk kullanıcısının seçilmesine engel olan bir sınırlama vardır. *\@ Outlook.com* , *\@ hotmail.com* , *\@ Live.com* veya *\@ Gmail.com* gibi Azure AD 'niz dışındaki Konuk hesaplarında, ad yönetici Seçicisi bu hesapları gösterir, ancak gri renkte görünür ve seçilemez. Azure AD yöneticisi 'ni ayarlamak için yukarıda listelenen [PowerShell veya CLI komutlarını](#setting-a-guest-user-as-an-azure-ad-admin) kullanın. Alternatif olarak, Konuk kullanıcıyı içeren bir Azure AD grubu, SQL yönetilen örneği için Azure AD yöneticisi olarak ayarlanabilir.
 
 Bu özelliğin genel kullanıma sunulmasından önce SQL yönetilen örneği için bu işlev etkinleştirilecek.
 
@@ -141,4 +141,4 @@ Bu özelliğin genel kullanıma sunulmasından önce SQL yönetilen örneği iç
 
 - [Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme](authentication-aad-configure.md)
 - [Multi-Factor Azure Active Directory kimlik doğrulamasını kullanma](authentication-mfa-ssms-overview.md)
-- [Kullanıcı oluşturma (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql)
+- [Kullanıcı oluşturma (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql)

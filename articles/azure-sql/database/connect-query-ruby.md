@@ -5,26 +5,26 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=2 
+ms.custom: sqldbrb=2
 ms.devlang: ruby
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 57e364d8cbd3cb9e1e2996786ee6414b7d7e04a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0434a99d28b4f71594e0ca9ce312087dee5b0ee2
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86504964"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672531"
 ---
 # <a name="quickstart-use-ruby-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için Ruby kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu hızlı başlangıçta, [Ruby](https://www.ruby-lang.org) kullanarak bir veritabanına bağlanma ve Transact-SQL deyimleriyle veri sorgulama işlemlerinin nasıl yapılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -46,17 +46,17 @@ Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahi
   
 - İşletim sisteminiz için Ruby ve ilgili yazılımlar:
   
-  - **MacOS**: homebrew, rbenv ve Ruby-Build, Ruby, FreeTDS ve TinyTDS 'i yükler. [MacOS 'ta SQL Server kullanarak Ruby uygulamaları oluşturma konusunda](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)1,2, 1,3, 1,4, 1,5 ve 2,1 adımlarına bakın.
+  - **MacOS** : homebrew, rbenv ve Ruby-Build, Ruby, FreeTDS ve TinyTDS 'i yükler. [MacOS 'ta SQL Server kullanarak Ruby uygulamaları oluşturma konusunda](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)1,2, 1,3, 1,4, 1,5 ve 2,1 adımlarına bakın.
   
-  - **Ubuntu**: Ruby, rbenv ve Ruby-Build, Ruby, FreeTDS ve TinyTDS için önkoşulları yükler. [Ubuntu üzerinde SQL Server kullanarak Ruby uygulamaları oluşturma konusunda](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)1,2, 1,3, 1,4, 1,5 ve 2,1 adımlarına bakın.
+  - **Ubuntu** : Ruby, rbenv ve Ruby-Build, Ruby, FreeTDS ve TinyTDS için önkoşulları yükler. [Ubuntu üzerinde SQL Server kullanarak Ruby uygulamaları oluşturma konusunda](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)1,2, 1,3, 1,4, 1,5 ve 2,1 adımlarına bakın.
   
-  - **Windows**: Ruby, Ruby devkit ve TinyTDS 'i yükler. Bkz. [Ruby geliştirmesi için geliştirme ortamını yapılandırma](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development).
+  - **Windows** : Ruby, Ruby devkit ve TinyTDS 'i yükler. Bkz. [Ruby geliştirmesi için geliştirme ortamını yapılandırma](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development).
 
 ## <a name="get-server-connection-information"></a>Sunucu bağlantı bilgilerini al
 
 Azure SQL veritabanı 'nda bir veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
@@ -67,7 +67,7 @@ Azure SQL veritabanı 'nda bir veritabanına bağlanmak için gereken bağlantı
 
 ## <a name="create-code-to-query-your-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda veritabanınızı sorgulamak için kod oluşturma
 
-1. Bir metin veya kod düzenleyicisinde *SQLtest. RB*adlı yeni bir dosya oluşturun.
+1. Bir metin veya kod düzenleyicisinde *SQLtest. RB* adlı yeni bir dosya oluşturun.
 
 1. Aşağıdaki kodu ekleyin. ,, Ve için Azure SQL veritabanı 'ndaki veritabanınızdaki değerleri değiştirin `<server>` `<database>` `<username>` `<password>` .
 
@@ -108,4 +108,4 @@ Azure SQL veritabanı 'nda bir veritabanına bağlanmak için gereken bağlantı
 - [Azure SQL veritabanı 'nda ilk veritabanınızı tasarlama](design-first-database-tutorial.md)
 - [TinyTDS için GitHub deposu](https://github.com/rails-sqlserver/tiny_tds)
 - [TinyTDS hakkında sorun bildirin veya soru sorun](https://github.com/rails-sqlserver/tiny_tds/issues)
-- [SQL Server için Ruby sürücüsü](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/)
+- [SQL Server için Ruby sürücüsü](/sql/connect/ruby/ruby-driver-for-sql-server/)

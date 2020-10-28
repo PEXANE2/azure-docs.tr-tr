@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 92a0c7fd3733b5e27c34c6fd0fe157bfb466a0fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 317b530fbaa34ca5689bb505126892e4eba06bd9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444890"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674799"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Coğrafi geri yükleme veya yük devretme için Azure SQL veritabanı güvenliğini yapılandırma ve yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Bu makalede [etkin coğrafi çoğaltma](active-geo-replication-overview.md) ve [
 
 ## <a name="disaster-recovery-with-contained-users"></a>İçerilen kullanıcılarla olağanüstü durum kurtarma
 
-Ana veritabanında oturum açma işlemlerine eşlenmesi gereken geleneksel kullanıcıların aksine, kapsanan bir kullanıcı tamamen veritabanının kendisi tarafından yönetilir. Bunun iki avantajı vardır. Olağanüstü durum kurtarma senaryosunda, kullanıcılar yeni birincil veritabanına bağlanmaya devam edebilir veya veritabanı kullanıcıları yönettiği için ek bir yapılandırma olmadan coğrafi geri yükleme kullanarak Kurtarılan veritabanı. Bu yapılandırmadan bir oturum açma perspektifinden de potansiyel ölçeklenebilirlik ve performans avantajları vardır. Daha fazla bilgi için bkz. [Bağımsız Veritabanı Kullanıcıları - Veritabanınızı Taşınabilir Hale Getirme](https://msdn.microsoft.com/library/ff929188.aspx).
+Ana veritabanında oturum açma işlemlerine eşlenmesi gereken geleneksel kullanıcıların aksine, kapsanan bir kullanıcı tamamen veritabanının kendisi tarafından yönetilir. Bunun iki avantajı vardır. Olağanüstü durum kurtarma senaryosunda, kullanıcılar yeni birincil veritabanına bağlanmaya devam edebilir veya veritabanı kullanıcıları yönettiği için ek bir yapılandırma olmadan coğrafi geri yükleme kullanarak Kurtarılan veritabanı. Bu yapılandırmadan bir oturum açma perspektifinden de potansiyel ölçeklenebilirlik ve performans avantajları vardır. Daha fazla bilgi için bkz. [Bağımsız Veritabanı Kullanıcıları - Veritabanınızı Taşınabilir Hale Getirme](/sql/relational-databases/security/contained-database-users-making-your-database-portable).
 
 Ana ticaret, olağanüstü durum kurtarma işleminin ölçekteki yönetiminde daha zor bir işlemdir. Aynı oturum açma kullanan birden fazla veritabanınız varsa, birden fazla veritabanında kapsanan kullanıcıları kullanarak kimlik bilgilerinin saklanması, kapsanan kullanıcıların avantajlarından faydalanmayabilir. Örneğin, parola döndürme ilkesi, ana veritabanında oturum açma parolasını değiştirmek yerine birden çok veritabanında sürekli olarak değişiklikler yapılmasını gerektirir. Bu nedenle, aynı kullanıcı adını ve parolayı kullanan birden fazla veritabanınız varsa, içerilen kullanıcıların kullanılması önerilmez.
 
@@ -34,7 +34,7 @@ Ana ticaret, olağanüstü durum kurtarma işleminin ölçekteki yönetiminde da
 Oturumlar ve kullanıcılar (kapsanan kullanıcılar yerine) kullanıyorsanız, ana veritabanında aynı oturum açma bilgilerinin mevcut olduğundan emin olmak için ek adımlar gerçekleştirmeniz gerekir. Aşağıdaki bölümlerde, ilgili adımlar ve ek konular ana hatlarıyla verilmiştir.
 
   >[!NOTE]
-  > Veritabanlarınızı yönetmek için Azure Active Directory (AAD) oturum açmaları kullanmak da mümkündür. Daha fazla bilgi için bkz. [Azure SQL oturum açmaları ve kullanıcıları](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
+  > Veritabanlarınızı yönetmek için Azure Active Directory (AAD) oturum açmaları kullanmak da mümkündür. Daha fazla bilgi için bkz. [Azure SQL oturum açmaları ve kullanıcıları](./logins-create-manage.md).
 
 ### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>İkincil veya kurtarılan bir veritabanına Kullanıcı erişimini ayarlama
 
@@ -82,7 +82,7 @@ WHERE [type_desc] = 'SQL_USER'
 ```
 
 > [!NOTE]
-> **INFORMATION_SCHEMA** ve **sys** kullanıcıları *null* SID 'lere sahiptir ve **Konuk** SID değeri **0x00**olur. Veritabanı Oluşturucu **DBManager**üyesi yerine sunucu yöneticisi ise, **dbo** SID 'si *0x01060000000001648000000000048454*ile başlayabilir.
+> **INFORMATION_SCHEMA** ve **sys** kullanıcıları *null* SID 'lere sahiptir ve **Konuk** SID değeri **0x00** olur. Veritabanı Oluşturucu **DBManager** üyesi yerine sunucu yöneticisi ise, **dbo** SID 'si *0x01060000000001648000000000048454* ile başlayabilir.
 
 #### <a name="3-create-the-logins-on-the-target-server"></a>3. oturum açma bilgilerini hedef sunucuda oluşturun
 
@@ -106,7 +106,7 @@ SID = <desired login SID>
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Veritabanı erişimini ve oturum açma bilgilerini yönetme hakkında daha fazla bilgi için bkz. [SQL veritabanı güvenliği: veritabanı erişimini yönetme ve oturum açma güvenliği](logins-create-manage.md).
-* Kapsanan veritabanı kullanıcıları hakkında daha fazla bilgi için bkz. [Kapsanan Veritabanı kullanıcıları-veritabanınızı taşınabilir hale getirme](https://msdn.microsoft.com/library/ff929188.aspx).
+* Kapsanan veritabanı kullanıcıları hakkında daha fazla bilgi için bkz. [Kapsanan Veritabanı kullanıcıları-veritabanınızı taşınabilir hale getirme](/sql/relational-databases/security/contained-database-users-making-your-database-portable).
 * Etkin coğrafi çoğaltma hakkında bilgi edinmek için bkz. [etkin coğrafi çoğaltma](active-geo-replication-overview.md).
 * Otomatik yük devretme grupları hakkında bilgi edinmek için bkz. [otomatik yük devretme grupları](auto-failover-group-overview.md).
 * Coğrafi geri yükleme kullanma hakkında daha fazla bilgi için bkz. [coğrafi geri yükleme](recovery-using-backups.md#geo-restore)

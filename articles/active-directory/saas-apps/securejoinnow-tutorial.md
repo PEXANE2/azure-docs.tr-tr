@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: e6c4cb506d4a218a22a5dd5e92fe09466e0cb0f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 024de5acfbc4e6c4aaa510de84c0bceb6bde2b3d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543178"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672963"
 ---
 # <a name="tutorial-integrate-securew2-joinnow-connector-with-azure-active-directory"></a>Öğretici: SecureW2 JoinNow bağlayıcısını Azure Active Directory ile tümleştirin
 
@@ -26,7 +26,7 @@ Bu öğreticide, SecureW2 JoinNow bağlayıcısını Azure Active Directory (Azu
 * Kullanıcılarınızın Azure AD hesaplarıyla SecureW2 JoinNow bağlayıcısıyla otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -51,15 +51,15 @@ SecureW2 JoinNow bağlayıcısının tümleştirmesini Azure AD 'ye göre yapıl
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **SecureW2 joinnow bağlayıcısını** yazın.
 1. Sonuçlar panelinden **SecureW2 JoinNow bağlayıcısını** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu SecureW2 joinnow bağlayıcısıyla yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve SecureW2 JoinNow Bağlayıcısı içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu SecureW2 joinnow bağlayıcısıyla yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve SecureW2 JoinNow Bağlayıcısı içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu SecureW2 JoinNow Bağlayıcısı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -74,8 +74,8 @@ Azure AD SSO 'yu SecureW2 JoinNow Bağlayıcısı ile yapılandırmak ve test et
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **SecureW2 joinnow bağlayıcı** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **SecureW2 joinnow bağlayıcı** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -104,25 +104,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, SecureW2 JoinNow bağlayıcısının erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **SecureW2 JoinNow Bağlayıcısı**' nı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde **SecureW2 JoinNow Bağlayıcısı** ' nı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -132,19 +132,18 @@ Bu bölümde, SecureW2 JoinNow bağlayıcısının erişimine izin vererek Azure
 
 ### <a name="create-securew2-joinnow-connector-test-user"></a>SecureW2 JoinNow Bağlayıcısı test kullanıcısı oluştur
 
-Bu bölümde, SecureW2 JoinNow bağlayıcısında Britta Simon adlı bir Kullanıcı oluşturacaksınız. SecureW2 JoinNow bağlayıcı platformunda kullanıcıları eklemek için [SecureW2 joinnow Bağlayıcısı destek ekibi](mailto:support@securew2.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, SecureW2 JoinNow bağlayıcısında Britta Simon adlı bir Kullanıcı oluşturacaksınız. SecureW2 JoinNow bağlayıcı platformunda kullanıcıları eklemek için [SecureW2 joinnow Bağlayıcısı destek ekibi](mailto:support@securew2.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde SecureW2 JoinNow bağlayıcı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız SecureW2 JoinNow bağlayıcısında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde SecureW2 JoinNow bağlayıcı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız SecureW2 JoinNow bağlayıcısında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)

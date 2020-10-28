@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 1fa8f6f0382312951905476ad6fee06e180c6f35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85428f682b5a5e179b5c501982749611131c6aed
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543159"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674418"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>Öğretici: kesimle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, segmenti Azure Active Directory (Azure AD) ile tümleştirmeyi 
 * Kullanıcılarınızın Azure AD hesaplarıyla segmentlere ayırmak için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -42,7 +42,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * Segment **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * Segment **, tam zamanında** Kullanıcı sağlamayı destekler
 
-* Segmenti yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve infilini koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Segmenti yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve infilini koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-segment-from-the-gallery"></a>Galeriden segment ekleme
 
@@ -50,15 +50,15 @@ Segmentin Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden, yö
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **segment** yazın.
 1. Sonuçlar panelinden **segment** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-segment"></a>Segment için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu kesimle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve kesimdeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu kesimle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve kesimdeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu kesimle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -73,8 +73,8 @@ Azure AD SSO 'yu kesimle yapılandırmak ve test etmek için aşağıdaki yapı 
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **segment** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **segment** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -104,25 +104,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, segmente erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **segment**' i seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde **segment** ' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -134,11 +134,11 @@ Bu bölümde, segmente erişim izni vererek Azure çoklu oturum açma özelliği
 
 1. Yeni bir Web tarayıcısı penceresinde, segmentinizdeki şirket sitenizde yönetici olarak oturum açın.
 
-1. **Ayarlar simgesine** tıklayın ve **kimlik doğrulaması** ' na gidin ve **Bağlantılar**' a tıklayın.
+1. **Ayarlar simgesine** tıklayın ve **kimlik doğrulaması** ' na gidin ve **Bağlantılar** ' a tıklayın.
 
     ![Segment yapılandırması](./media/segment-tutorial/segment1.PNG)
 
-1. **Yeni bağlantı ekle**' ye tıklayın.
+1. **Yeni bağlantı ekle** ' ye tıklayın.
 
     ![Segment yapılandırması](./media/segment-tutorial/segment2.PNG)
 
@@ -154,7 +154,7 @@ Bu bölümde, segmente erişim izni vererek Azure çoklu oturum açma özelliği
 
     b. * * * * Hedef kitle URL 'SI * * * * değerini kopyalayın ve Azure portal **temel SAML yapılandırması** Iletişim KUTUSUNDAKI **tanımlayıcı URL** kutusuna yapıştırın.
 
-    c. **İleri**' ye tıklayın.
+    c. **İleri** ' ye tıklayın.
 
     ![Segment yapılandırması](./media/segment-tutorial/segment5.PNG)
 
@@ -162,7 +162,7 @@ Bu bölümde, segmente erişim izni vererek Azure çoklu oturum açma özelliği
 
 1. İndirilen sertifika **(base64)** Azure Portal Not defteri ' nden açın ve Içeriği **ortak sertifika** metin kutusuna yapıştırın.
 
-1. **Bağlantıyı Yapılandır**seçeneğine tıklayın.
+1. **Bağlantıyı Yapılandır** seçeneğine tıklayın.
 
 ### <a name="create-segment-test-user"></a>Segment test kullanıcısı oluştur
 
@@ -172,19 +172,18 @@ Bu bölümde, kesiminde B. Simon adlı bir Kullanıcı oluşturulur. Segment, va
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde segment kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız kesimde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde segment kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız kesimde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile segmenti deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
 
-- [Gelişmiş görünürlük ve denetimlerle segmenti koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Gelişmiş görünürlük ve denetimlerle segmenti koruma](/cloud-app-security/proxy-intro-aad)

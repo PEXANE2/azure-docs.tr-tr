@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 6efb96448cc99df95b8f898c9fb7dd3ef166c5ea
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: d1993f89f8b1da4789541006c15380d2145d3d81
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127003"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Öğretici: Seqile tümleştirme Azure Active Directory
 
@@ -27,10 +27,10 @@ Sequr Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Kullanıcılarınızın Azure AD hesaplarıyla SEQ(çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Seqile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -61,13 +61,13 @@ Seq'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden yöneti
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **sequr**yazın, sonuç panelinden **sequr** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **sequr** yazın, sonuç panelinden **sequr** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Sonuç listesinde sequr](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Seqile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre Seqile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Seqiçindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Seqile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açma 'yı Seqile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **sequygulama** tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **sequygulama** tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -133,7 +133,7 @@ Azure AD çoklu oturum açma 'yı Seqile yapılandırmak için aşağıdaki adı
 
     ![Ekran görüntüsü, Gezinti panelinden seçilen tümleştirmeyi gösterir.](./media/sequr-tutorial/configure1.png)
 
-1. Aşağı kaydırarak **Çoklu oturum** açma bölümüne gidin ve **Yönet**' e tıklayın.
+1. Aşağı kaydırarak **Çoklu oturum** açma bölümüne gidin ve **Yönet** ' e tıklayın.
 
     ![Ekran görüntüsü, Yönet düğmesinin seçili olduğu çoklu oturum açma bölümünü gösterir.](./media/sequr-tutorial/configure2.png)
 
@@ -147,13 +147,13 @@ Azure AD çoklu oturum açma 'yı Seqile yapılandırmak için aşağıdaki adı
 
     c. Yapılandırmayı kaydettikten sonra, geçiş durumu değeri oluşturulacaktır. **Geçiş durumu** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünün **geçiş durumu** metin kutusuna yapıştırın.
 
-    d. **Kaydet**’e tıklayın.
+    d. **Kaydet** ’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -165,27 +165,27 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Seq'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **sequr**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **sequr** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Sequr**öğesini seçin.
+2. Uygulamalar listesinde **Sequr** öğesini seçin.
 
     ![Uygulamalar listesindeki Seqbağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
@@ -201,19 +201,18 @@ Bu bölümde, Seq'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
 ### <a name="create-sequr-test-user"></a>Seqtest kullanıcısı oluşturma
 
-Bu bölümde, Sequr 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Seqplatformunda kullanıcıları eklemek için [Seqistemci destek ekibi](mailto:support@sequr.io)ile çalışın   . Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Sequr 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Seqplatformunda kullanıcıları eklemek için [Seqistemci destek ekibi](mailto:support@sequr.io) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde seqkutucuğunu tıklattığınızda, SSO 'yu ayarladığınız Seq'ta otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde seqkutucuğunu tıklattığınızda, SSO 'yu ayarladığınız Seq'ta otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
