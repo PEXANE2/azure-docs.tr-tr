@@ -4,17 +4,17 @@ description: Azure Maliyet Yönetimi + Faturalama özelliklerini kullanarak fatu
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 10/26/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
-ms.custom: ''
-ms.openlocfilehash: 1e5f49fb48cfc9be9cfb6970641ad7b4b3c06fb5
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.custom: contentperfq2
+ms.openlocfilehash: 2c533ea08534444e5bf8d8d57d585e2bf975a93b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131063"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677383"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Azure Maliyet Yönetimi + Faturalama nedir?
 
@@ -43,11 +43,11 @@ Azure’ı kullanmak için kaydolduğunuzda bir ödeme hesabı oluşturulur. Fat
 
 Azure portalı şu anda aşağıdaki ödeme hesapları türünü destekler:
 
-- **Microsoft Online Services Programı**: Azure web sitesi üzerinden Azure’a kaydolduğunuzda, Microsoft Online Services Programı için ayrı bir ödeme hesabı oluşturulur. Örneğin, bir [Ücretsiz Azure Hesabına](https://azure.microsoft.com/offers/ms-azr-0044p/), [kullandıkça öde fiyatlarına tabi hesaba](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [Visual Studio abonesi](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/) olarak kaydolduğunuzda.
+- **Microsoft Online Services Programı** : Azure web sitesi üzerinden Azure’a kaydolduğunuzda, Microsoft Online Services Programı için ayrı bir ödeme hesabı oluşturulur. Örneğin, bir Ücretsiz Azure Hesabına, kullandıkça öde fiyatlarına tabi hesaba veya Visual Studio abonesi olarak kaydolduğunuzda.
 
-- **Kurumsal Anlaşma**: Kuruluşunuz Azure’ı kullanmak için bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) imzaladığında Kurumsal Anlaşma için bir ödeme hesabı oluşturulur.
+- **Kurumsal Anlaşma** : Kuruluşunuz Azure’ı kullanmak için bir Kurumsal Anlaşma (EA) imzaladığında Kurumsal Anlaşma için bir ödeme hesabı oluşturulur.
 
-- **Microsoft Müşteri Sözleşmesi**: Kuruluşunuz bir Microsoft Müşteri Sözleşmesi imzalamak için Microsoft temsilcisiyle çalıştığında Microsoft Müşteri Sözleşmesi için bir ödeme hesabı oluşturulur. Azure web sitesinden [kullandıkça öde fiyatlarına tabi hesaba](https://azure.microsoft.com/offers/ms-azr-0003p/) kaydolan veya [Ücretsiz Azure Hesabını](https://azure.microsoft.com/offers/ms-azr-0044p/) yükselten, belirli bölgelerdeki bazı müşterilerin Microsoft Müşteri Sözleşmesi için ödeme hesabı da olabilir. Daha fazla bilgi için bkz. [Microsoft Müşteri Sözleşmesi için ödeme hesabınızı kullanmaya başlama](./understand/mca-overview.md).
+- **Microsoft Müşteri Sözleşmesi** : Kuruluşunuz bir Microsoft Müşteri Sözleşmesi imzalamak için Microsoft temsilcisiyle çalıştığında Microsoft Müşteri Sözleşmesi için bir ödeme hesabı oluşturulur. Azure web sitesinden kullandıkça öde fiyatlarına tabi hesaba kaydolan veya Ücretsiz Azure Hesabını yükselten, belirli bölgelerdeki bazı müşterilerin Microsoft Müşteri Sözleşmesi için ödeme hesabı da olabilir.
 
 ### <a name="scopes-for-billing-accounts"></a>Ödeme hesapları için kapsamlar
 Kapsam, faturalamayı görüntülemek ve yönetmek için kullandığınız ödeme hesabı içindeki bir düğümdür. Bu kapsam dahilinde faturalama verilerini, ödemeleri, faturaları yönetir ve genel hesap yönetimi gerçekleştirirsiniz.
@@ -83,7 +83,7 @@ Maliyet yönetimi, gelişmiş analizle kurumsal maliyet ve kullanım düzenlerin
 
 Azure portalı veya çeşitli API'leri kullanarak dışarı aktarma otomasyonu yapabilir ve bu yolla maliyet verilerini dış sistemler ve süreçlerle tümleştirebilirsiniz. Otomatik faturalandırma verilerini dışarı aktarma özelliği ve zamanlanmış raporlar da sağlanır.
 
-Azure Maliyet Yönetimi'nin Azure'da tasarruf sağlamanıza nasıl yardımcı olacağı hakkında bilgi edinmek için [Azure Maliyet Yönetimi'ne genel bakış videosunu](https://www.youtube.com/watch?v=el4yN5cHsJ0) izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
+Azure Maliyet Yönetimi'nin Azure'da tasarruf sağlamanıza nasıl yardımcı olacağı hakkında bilgi edinmek için Azure Maliyet Yönetimi'ne genel bakış videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
@@ -101,18 +101,14 @@ Maliyet yönetimi verilerine erişmek veya bu verileri incelemek için dış sis
 
 ### <a name="cloudyn-deprecation"></a>Cloudyn’in kullanımdan kaldırılması
 
-[Cloudyn](./cloudyn/overview.md) Maliyet Yönetimi ile ilgili bir Azure hizmeti ve 2020’nin sonunda kullanımdan kaldırılacak. Mevcut Cloudyn özellikleri mümkün olduğunca doğrudan Azure portalıyla tümleştiriliyor. Şu anda yeni müşteri eklenmiyor ama ürün tümüyle kullanımdan kaldırılana kadar ürünün desteği devam edecek.
+Cloudyn Maliyet Yönetimi ile ilgili bir Azure hizmeti ve 2020’nin sonunda kullanımdan kaldırılacak. Mevcut Cloudyn özellikleri mümkün olduğunca doğrudan Azure portalıyla tümleştiriliyor. Şu anda yeni müşteri eklenmiyor ama ürün tümüyle kullanımdan kaldırılana kadar ürünün desteği devam edecek.
  
-İşletmenizin ihtiyaçlarına göre Azure Maliyet Yönetimi veya Cloudyn kullanmanız gereken durumlar hakkında daha fazla bilgi edinmek için [Azure Maliyet Yönetimi ve Cloudyn videosunu](https://www.youtube.com/watch?v=15DzKPMBRxM) izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
- 
->[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
-
 ### <a name="additional-azure-tools"></a>Ek Azure araçları
 
 Azure'ın, Azure Maliyet Yönetimi + Faturalama özellik kümesi kapsamında yer almayan başka araçları da vardır. Bununla birlikte, bu araçlar maliyet yönetimi işleminde önemli bir rol oynar. Söz konusu araçlar hakkında daha fazla bilgi edinmek için aşağıdaki bağlantılara bakın.
 
 - [Azure Fiyatlandırma Hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/) - Önceden bulut maliyetlerinizi tahmin etmek için bu aracı kullanın.
-- [Azure Geçişi](/azure/cost-management-billing/migrate-services-overview) - Azure yedek çözümünden neler gerektiği hakkında içgörüler elde etmek için geçerli veri merkezi yükünüzü değerlendirin.
+- [Azure Geçişi](/azure/migrate/migrate-services-overview) - Azure yedek çözümünden neler gerektiği hakkında içgörüler elde etmek için geçerli veri merkezi yükünüzü değerlendirin.
 - [Azure Danışmanı](../advisor/advisor-overview.md) - Kullanılmayan sanal makineleri belirleyin ve Azure ayrılmış örnek satın almalarıyla ilgili öneriler alın.
 - [Azure Hibrit Avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) - Tasarruf etmek için geçerli şirket içi Windows Server veya SQL Server lisanslarınızı Azure'da sanal makineler için kullanın.
 

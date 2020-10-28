@@ -3,19 +3,19 @@ title: Azure’da Cloudyn için sık sorulan sorular
 description: Cloudyn portalını kullanarak yaygın dolaylı kurumsal kurulum sorunlarını çözmeyi ve sık sorulan diğer soruları yanıtlamayı öğrenin.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7b78d9d7bf725e3d82c88360c822455de1301ef6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 92a62de4223d2ec6d0441840b90fdce20c656d02
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688037"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546237"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn için sık sorulan sorular
 
@@ -37,7 +37,7 @@ Sorunların çözümü:
 
 1. Kurumsal bayinin hesabınız için _işaretlemeyi_ etkinleştirmesi gerekir. Yönergeler için bkz. [Dolaylı Müşteri Ekleme Kılavuzu](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Cloudyn ile kullanılmak için Azure Kurumsal Anlaşma anahtarını üretirsiniz. Yönergeler için bkz. [Azure EA'nızı Ekleme](quick-register-ea.md#register-with-cloudyn) veya [EA Kayıt Kimliğinizi ve API Anahtarınızı Bulma](https://youtu.be/u_phLs_udig).
+2. Cloudyn ile kullanılmak için Azure Kurumsal Anlaşma anahtarını üretirsiniz.
 
 Yalnızca bir Azure hizmet yöneticisi Cloudyn'i etkinleştirebilir. Ortak yönetici izinleri yeterli değil.
 
@@ -61,10 +61,10 @@ Departman yöneticilerine, hesap sahiplerine ve kurumsal yöneticilere Faturalam
 
 Bir hesabı etkinleştirmek için:
 
-1.    Cloudyn portalında, sağ üst kısımdaki **Ayarlar**’a tıklayın ve **Bulut Hesapları**’nı seçin.
+1.    Cloudyn portalında, sağ üst kısımdaki **Ayarlar** ’a tıklayın ve **Bulut Hesapları** ’nı seçin.
 2.    Microsoft Azure Hesapları sekmesinde **etkinleştirilmiş** aboneliğe sahip olan hesapları bulun.
 3.    Etkinleştirilmemiş hesabın sağ tarafındaki kaleme benzeyen **düzenleme** simgesine tıklayın.
-4.    Kiracı kimliğiniz ve ücret kimliğiniz otomatik olarak algılanır. **İleri**’ye tıklayın.
+4.    Kiracı kimliğiniz ve ücret kimliğiniz otomatik olarak algılanır. **İleri** ’ye tıklayın.
 5.    Azure portalına yeniden yönlendirilirsiniz. Portalda oturum açın ve Cloudyn Toplayıcısına Azure verilerinize erişim izni verin.
 6.    Sonraki adımda Cloudyn Hesapları yönetim sayfasına yeniden yönlendirilirsiniz ve aboneliğiniz **etkin** Hesap Durumu ile güncelleştirilir. Yanında yeşil renkli onay işareti gösterilir.
 7.    Aboneliklerden biri veya daha fazlası için yeşil bir onay işareti simgesi görmezseniz, bu abonelik için okuyucu uygulamasını (CloudynCollector) oluşturma izninizin olmadığı anlamına gelir. Abonelik için daha yüksek izinleri olan bir kullanıcının 3. ve 4. adımları yinelemesi gerekir.  
@@ -86,7 +86,7 @@ Bir kullanıcıya erişim izni verme isteği içeren bir uyarı alırsanız kull
 Kullanıcı hesabını etkinleştirmek için:
 
 1. Cloudyn'i kurmak için kullandığınız Azure yöneticisi kullanıcı hesabını kullanarak Cloudyn'de oturum açın. Yönetici erişimi verilmiş olan bir kullanıcı hesabıyla da oturum açabilirsiniz.
-2. Sağ üst kısımdaki dişli simgesine tıklayın ve **Kullanıcı Yönetimi**'ni seçin.
+2. Sağ üst kısımdaki dişli simgesine tıklayın ve **Kullanıcı Yönetimi** 'ni seçin.
 3. Kullanıcıyı bulun, kalem simgesini seçin ve kullanıcıyı düzenleyin.
 4. **Kullanıcı durumu** bölümünde durumu **Askıya alındı** yerine **Etkin** olarak değiştirin.
 
@@ -114,7 +114,7 @@ Cloudyn aboneliğine ek Kurumsal Anlaşma eklemek için ek varlıklar kullanıl�
 
 CSP'ler için:
 
-Bir varlığa ek CSP hesapları eklemek için yeni varlığı oluştururken **Kurumsal** yerine **MSP Erişimi**'ni seçin. Hesabınız Kurumsal Anlaşma olarak kayıtlıysa ve CSP kimlik bilgileri eklemek istiyorsanız Cloudyn destek ekibinin hesap ayarlarınızı değiştirmesi gerekebilir. Ücretli bir Azure abonesiyseniz, Azure portalında yeni bir destek isteği oluşturabilirsiniz. **Yardım + destek** ve ardından **Yeni destek isteği**'ni seçin.
+Bir varlığa ek CSP hesapları eklemek için yeni varlığı oluştururken **Kurumsal** yerine **MSP Erişimi** 'ni seçin. Hesabınız Kurumsal Anlaşma olarak kayıtlıysa ve CSP kimlik bilgileri eklemek istiyorsanız Cloudyn destek ekibinin hesap ayarlarınızı değiştirmesi gerekebilir. Ücretli bir Azure abonesiyseniz, Azure portalında yeni bir destek isteği oluşturabilirsiniz. **Yardım + destek** ve ardından **Yeni destek isteği** 'ni seçin.
 
 ## <a name="currency-symbols-in-cloudyn-reports"></a>Cloudyn raporlarındaki para birimi simgeleri
 
@@ -128,9 +128,9 @@ Cloudyn, Kurumsal Anlaşma aboneliğinizdeki para birimini otomatik olarak algı
 
 Cloudyn aşağıdaki veri yenileme zaman çizelgelerine sahiptir:
 
-- **Başlangıç**: Ayarladıktan sonra, maliyet verilerinin Cloudyn'de görüntülemesi 24 saate kadar sürebilir. Ayrıca Cloudyn'in boyutlandırma önerilerini görüntülemesi için yeterli verilerin toplanması 10 güne kadar sürebilir.
-- **Günlük**: Cloudyn, her ayın onuncu gününden son gününe kadar bir sonraki gün yaklaşık UTC+3 sonrasında önceki günle ilgili güncel verileri göstermelidir.
-- **Aylık**: Cloudyn, her ayın ilk gününden onuncu gününe kadar yalnızca önceki ayın sonuna kadar olan verilerinizi gösterebilir.
+- **Başlangıç** : Ayarladıktan sonra, maliyet verilerinin Cloudyn'de görüntülemesi 24 saate kadar sürebilir. Ayrıca Cloudyn'in boyutlandırma önerilerini görüntülemesi için yeterli verilerin toplanması 10 güne kadar sürebilir.
+- **Günlük** : Cloudyn, her ayın onuncu gününden son gününe kadar bir sonraki gün yaklaşık UTC+3 sonrasında önceki günle ilgili güncel verileri göstermelidir.
+- **Aylık** : Cloudyn, her ayın ilk gününden onuncu gününe kadar yalnızca önceki ayın sonuna kadar olan verilerinizi gösterebilir.
 
 Cloudyn, önceki güne ait tüm veriler kullanılabilir duruma geldiğinde bunları işler. Önceki günün verileri genellikle Cloudyn'de mevcuttur ancak her gün yaklaşık UTC+3 civarında verilir. Etiketler gibi bazı verileri işlemek için ayrı bir 24 saat sürebilir.
 

@@ -7,14 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 10/26/2020
 ms.author: banders
-ms.openlocfilehash: 95af762e0ff1986f9d1395e787c73b3a886a7a2e
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.custom: contentperfq2
+ms.openlocfilehash: c4a9a981017becd0d9343d9c287a4fe9341d7c43
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653290"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678137"
 ---
 # <a name="tutorial-review-your-individual-azure-subscription-bill"></a>Öğretici: Bireysel Azure aboneliği faturanızı inceleme
 
@@ -32,9 +33,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Ücretli bir *Microsoft Online Services Program* ödeme hesabına sahip olmanız gerekir. Bu hesap, Azure web sitesi üzerinden Azure’a kaydolduğunuzda oluşturulur. Örneğin [kullandıkça öde ücretlerine sahip bir hesabınız](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [Visual Studio aboneliğiniz](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/) olabilir.
+Ücretli bir *Microsoft Online Services Program* ödeme hesabına sahip olmanız gerekir. Bu hesap, Azure web sitesi üzerinden Azure’a kaydolduğunuzda oluşturulur. Örneğin kullandıkça öde ücretlerine sahip bir hesabınız veya Visual Studio aboneliğiniz olabilir.
 
-[Azure Ücretsiz Hesapları](https://azure.microsoft.com/offers/ms-azr-0044p/) için faturalar yalnızca aylık kredi tutarı aşıldığında düzenlenir.
+Azure Ücretsiz Hesapları için faturalar yalnızca aylık kredi tutarı aşıldığında düzenlenir.
 
 Azure'a abone olmanızın üzerinden en az 30 gün geçmiş olmalıdır. Azure sizi fatura döneminizin sonunda faturalar.
 
@@ -48,19 +49,19 @@ Azure'a abone olmanızın üzerinden en az 30 gün geçmiş olmalıdır. Azure s
 
 Kullanım verilerini ve maliyetleri karşılaştırmanın ilk adımı, faturanızı ve kullanım dosyalarınızı indirmektir. Ayrıntılı kullanım CSV dosyası faturalama dönemine ve günlük kullanıma göre ücretlerinizi gösterir. Vergi konusunda bilgi içermez. Dosyaları indirmek için hesap yöneticisi olmanız veya Sahip rolüne sahip olmanız gerekir.
 
-Azure portalında arama kutusuna *abonelikler* yazın ve [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)'e tıklayın.
+Azure portalında arama kutusuna *abonelikler* yazın ve **Abonelikler** 'e tıklayın.
 
 [![Aboneliklere gitme](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
 Abonelikler listesinde aboneliğe tıklayın.
 
-**Faturalama**'nın altında **Faturalar**'a tıklayın.
+**Faturalama** 'nın altında **Faturalar** 'a tıklayın.
 
 Faturalar listesinde indirmek istediğiniz faturayı bulun ve indir simgesine tıklayın. Eski faturaları görüntülemek için zaman aralığı değerini değiştirmeniz gerekebilir. Kullanım ayrıntıları dosyasının ve faturanın oluşturulması birkaç dakika sürebilir.
 
 ![Faturalama dönemini, indirme seçeneğini ve her faturalama dönemi için toplam ücretleri gösteren ekran görüntüsü](./media/review-individual-bill/download-invoice.png)
 
-Kullanımı + Ücretleri İndir penceresinde **CSV dosyasını indir**'e ve **Faturayı indir**'e tıklayın.
+Kullanımı + Ücretleri İndir penceresinde **CSV dosyasını indir** 'e ve **Faturayı indir** 'e tıklayın.
 
 ![Faturayı indir'i ve kullanım sayfasını gösteren ekran görüntüsü](./media/review-individual-bill/usageandinvoice.png)
 
@@ -69,7 +70,7 @@ Kullanımı + Ücretleri İndir penceresinde **CSV dosyasını indir**'e ve **Fa
 - Azure'a abone olmanızın üzerinden 30 gün geçmemiştir.
 - Fatura dönemine ait kullanım yoktur.
 - Fatura henüz düzenlenmemiştir. Fatura döneminin sonuna kadar bekleyin.
-- Faturaları görüntüleme izniniz yoktur. Hesap Yöneticisi değilseniz eski faturaları göremezsiniz. Faturalama bilgilerine erişme hakkında daha fazla bilgi için bkz. [Rolleri kullanarak Azure faturalamasına erişimi yönetme](../manage/manage-billing-access.md).
+- Faturaları görüntüleme izniniz yoktur. Hesap Yöneticisi değilseniz eski faturaları göremezsiniz.
 - Aboneliğinizde Ücretsiz Deneme sürümünüz veya aşmadığınız bir aylık kredi tutarınız varsa, Microsoft Müşteri Sözleşmeniz olmadığı sürece bir fatura almazsınız.
 
 Sonraki adımda ücretleri gözden geçirin. Faturanızda vergiler ve kullanım ücretleriniz gösterilir.
@@ -107,11 +108,9 @@ CSV kullanım bilgileri dosyanıza *MeterName* filtresi uygulayarak faturanızda
 
 Özetlenen *Maliyet* değeri, faturanıza yansıtılan tek kaynağın *kullanım maliyetleri* ile aynı olmalıdır.
 
-Daha fazla bilgi için bkz. [Azure faturanızı anlama](understand-invoice.md) ve [Azure ayrıntılı kullanımınızı anlama](understand-usage.md).
-
 ## <a name="compare-billed-charges-and-usage-in-cost-analysis"></a>Faturaya yansıtılan ücretleri ve maliyet analizindeki kullanımı karşılaştırma
 
-Azure portalındaki maliyet analizi de ücretlerinizi doğrulamanıza yardımcı olabilir. Faturaya yansıtılan kullanım ve ücretlerle ilgili genel bakış için Azure portalındaki [Abonelikler sayfasından](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) aboneliğinizi seçin. Ardından **Maliyet analizi**'ne ve daha sonra görünüm listesinde **Fatura ayrıntıları**'na tıklayın.
+Azure portalındaki maliyet analizi de ücretlerinizi doğrulamanıza yardımcı olabilir. Faturaya yansıtılan kullanım ve ücretlerle ilgili genel bakış için Azure portalındaki Abonelikler sayfasından aboneliğinizi seçin. Ardından **Maliyet analizi** 'ne ve daha sonra görünüm listesinde **Fatura ayrıntıları** 'na tıklayın.
 
 ![Fatura ayrıntıları seçimini gösteren örnek](./media/review-individual-bill/cost-analysis-select-invoice-details.png)
 
@@ -129,7 +128,7 @@ Maliyet analizinde gösterilen maliyetler, faturanıza yansıtılan tek kaynağ�
 
 Dış hizmetler veya market ücretleri, üçüncü taraf yazılımı satıcıları tarafından oluşturulan kaynaklar için geçerlidir. Bu kaynakları Azure Market’ten sağlayabilirsiniz. Örneğin Barracuda Güvenlik Duvarı, üçüncü tarafın kullanıma sunduğu bir Azure Market kaynağıdır. Güvenlik duvarının tüm ücretleri ve bunlara karşılık gelen ölçümler dış hizmet ücretleri olarak görünür.
 
-Dış hizmetlerin ücretleri ayrı faturalanır. Ücretler Azure faturanızda gösterilmez. Daha fazla bilgi edinmek için bkz. [Azure dış hizmet ücretlerinizi anlama](understand-azure-marketplace-charges.md).
+Dış hizmetlerin ücretleri ayrı faturalanır. Ücretler Azure faturanızda gösterilmez.
 
 ### <a name="resources-are-billed-by-usage-meters"></a>Kaynaklar, kullanım ölçümlerine göre faturalandırılır
 
@@ -161,10 +160,6 @@ VM oluşturulduğunda her ölçüm kullanım kayıtları üretmeye başlar. Bu k
 Ödeme yönteminiz olarak bir kredi kartı ayarladıysanız ödeme faturalama döneminin bitişinden sonraki 10 gün içinde otomatik olarak ücretlendirilir. Kredi kartı hesap özetinizde satır öğesi **MSFT Azure** olarak görünür.
 
 Ücretlendirilen kredi kartını değiştirmek için bkz. [Azure’da kredi kartı ekleme, güncelleştirme veya kaldırma](../manage/change-credit-card.md).
-
-[Fatura ile ödemeyi](../manage/pay-by-invoice.md) seçerseniz, ödemenizi faturanızın en altında bulunan konuma gönderin.
-
-Ödemenizin durumunu denetlemek için [bir destek bileti oluşturun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

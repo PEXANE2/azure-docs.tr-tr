@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
 ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "92131148"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Azure için kredi kartı ekleme veya güncelleştirme
@@ -44,13 +44,13 @@ Aboneliğinizin varsayılan kredi kartını değiştirmek için aşağıdaki ad�
 1. **Maliyet Yönetimi + Faturalama** araması yapın.  
     ![Aramayı gösteren ekran görüntüsü](./media/change-credit-card/search.png)
 1. Kredi kartını eklemek istediğiniz aboneliği seçin.
-1. **Ödeme yöntemleri**'ni seçin.  
+1. **Ödeme yöntemleri** 'ni seçin.  
     ![Ödeme yöntemlerini yönet seçeneğinin belirlendiğini gösteren ekran görüntüsü](./media/change-credit-card/payment-methods-blade-x.png)
 1. Sol üst köşede “+” işaretini seçerek kartı ekleyin. Sağ tarafta bir kredi kartı formu görüntülenir.
 1. Kredi kartı ayrıntılarını girin.  
     ![Yeni kart eklemeyi gösteren ekran görüntüsü](./media/change-credit-card/sub-add-new-x.png)
 1. Bu kartın etkin ödeme yönteminiz olmasını sağlamak için, formun üst kısmında **Bunu etkin ödeme yöntemim yap** seçeneğinin yanındaki kutuyu işaretleyin. Bu kart, seçilen abonelik olarak aynı kartı kullanan tüm aboneliklerde etkin ödeme aracınız olur.
-1. **İleri**’yi seçin.
+1. **İleri** ’yi seçin.
 
 ### <a name="change-credit-card-for-a-subscription-to-a-previously-saved-credit-card"></a>Abonelikte kullanılan kredi kartını önceden kaydedilen bir kredi kartıyla değiştirme
 
@@ -60,10 +60,10 @@ Aboneliğinizin varsayılan kredi kartını değiştirmek için aşağıdaki ad�
 1. **Maliyet Yönetimi + Faturalama** araması yapın.  
     ![Aramayı gösteren ekran görüntüsü](./media/change-credit-card/search.png)
 1. Kredi kartını eklemek istediğiniz aboneliği seçin.
-1. **Ödeme yöntemleri**'ni seçin.
+1. **Ödeme yöntemleri** 'ni seçin.
     ![Ödeme yöntemlerini yönet seçeneğinin belirlendiğini gösteren ekran görüntüsü](./media/change-credit-card/payment-methods-blade-x.png)
 1. Etkin ödeme yöntemi olmasını istediğiniz kartın yanındaki kutuyu seçin.
-1. **Etkin olarak ayarla**’yı seçin.
+1. **Etkin olarak ayarla** ’yı seçin.
     ![Kredi kartının seçili olduğunu ve etkin olarak ayarlandığını gösteren ekran görüntüsü](./media/change-credit-card/sub-change-active-x.png)
 
 ### <a name="edit-credit-card-details"></a>Kredi kartı bilgilerini girme
@@ -73,12 +73,12 @@ Kredi kartınız yenilenir ve numara aynı kalırsa, son kullanma tarihi gibi me
 1. [Azure portalında](https://portal.azure.com) Hesap Yöneticisi olarak oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
     ![Aramayı gösteren ekran görüntüsü](./media/change-credit-card/search.png)
-1. **Ödeme yöntemleri**'ni seçin.
+1. **Ödeme yöntemleri** 'ni seçin.
     ![Ödeme yöntemlerini yönet seçeneğinin belirlendiğini gösteren ekran görüntüsü](./media/change-credit-card/payment-methods-blade-x.png)
 1. Düzenlemek istediğiniz kredi kartını seçin. Sağ tarafta bir kredi kartı formu görüntülenir.
     ![Kredi kartının seçili olduğunu gösteren ekran görüntüsü](./media/change-credit-card/edit-card-x.png)
 1. Kredi kartı ayrıntılarını güncelleştirin.
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
 ## <a name="manage-credit-cards-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi için kredi kartlarını yönetme
 
@@ -94,11 +94,11 @@ Kredi kartınızı değiştirmek için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
-1. Soldaki menüde **Faturalama profilleri**’ni seçin.
+1. Soldaki menüde **Faturalama profilleri** ’ni seçin.
 1. Faturalama profilini seçin.
-1. Soldaki menüden **Ödeme yöntemleri**’ni seçin.  
+1. Soldaki menüden **Ödeme yöntemleri** ’ni seçin.  
    ![Menüde ödeme yöntemlerini gösteren ekran görüntüsü](./media/change-credit-card/payment-methods-tab-mca.png)
-1. **Varsayılan ödeme yöntemi** bölümünde **Değiştir**’i seçin.  
+1. **Varsayılan ödeme yöntemi** bölümünde **Değiştir** ’i seçin.  
     :::image type="content" source="./media/change-credit-card/change-payment-method-mca.png" alt-text="Değiştirme seçeneğini gösteren ekran görüntüsü" :::
 1. Sağdaki yeni alanda açılan menüden bir kart seçin veya mavi renkli **Yeni ödeme yöntemi ekleyin** bağlantısını seçerek yeni bir kart ekleyin.
 
@@ -110,14 +110,14 @@ Kredi kartını düzenlemek için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
-1. Soldaki menüde **Faturalama profilleri**’ni seçin.
+1. Soldaki menüde **Faturalama profilleri** ’ni seçin.
 1. Faturalama profilini seçin.
-1. Soldaki menüden **Ödeme yöntemleri**’ni seçin.  
+1. Soldaki menüden **Ödeme yöntemleri** ’ni seçin.  
    ![Menüde ödeme yöntemlerini gösteren ekran görüntüsü](./media/change-credit-card/payment-methods-tab-mca.png)
 1. **Kredi kartlarınız** bölümünde düzenlemek istediğiniz kartı bulun.
 1. Satırın sonundaki üç noktayı (`...`) seçin.  
     :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="Değiştirme seçeneğini gösteren ekran görüntüsü" :::
-1. Kredi kartı bilgilerinizi düzenlemek için bağlam menüsünden **Düzenle**'yi seçin.
+1. Kredi kartı bilgilerinizi düzenlemek için bağlam menüsünden **Düzenle** 'yi seçin.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -143,7 +143,7 @@ Ne yazık ki abonelikleriniz zaten aynı kartı kullanıyorsa, bu abonelikleri f
 
 ### <a name="how-do-i-change-the-tax-id"></a>Vergi numarasını nasıl değiştirebilirim?
 
-Vergi numarası eklemek veya güncelleştirmek için [Azure portalda](https://portal.azure.com) profilinizi güncelleştirin ve **Vergi numarası**’nı seçin. Vergi numarası, vergi muafiyeti hesaplamaları için kullanılır ve faturanızda görünür.
+Vergi numarası eklemek veya güncelleştirmek için [Azure portalda](https://portal.azure.com) profilinizi güncelleştirin ve **Vergi numarası** ’nı seçin. Vergi numarası, vergi muafiyeti hesaplamaları için kullanılır ve faturanızda görünür.
 
 ## <a name="check-the-type-of-your-account"></a>Hesabınızın türünü denetleme
 
