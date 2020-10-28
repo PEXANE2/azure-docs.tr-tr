@@ -8,13 +8,13 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: quickstart
 ms.date: 07/28/2020
-ms.custom: subject-armqs
-ms.openlocfilehash: 3b21353c7e5338c78b9d56e79ac5da3fa7e9af84
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 7d93bd757a39247302a6bc09009a1a814425c32f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687595"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745370"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>Hızlı Başlangıç: ARM şablonuyla bütçe oluşturma
 
@@ -84,27 +84,27 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
    :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="Resource Manager şablonu, Bütçe oluştur, portala dağıt]" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
    
-    * **Abonelik**: Bir Azure aboneliği seçin.
-    * **Kaynak grubu**: Gerekirse mevcut kaynak grubunu seçin veya **Yeni oluştur**'u kullanın.
-    * **Bölge**: Bir Azure bölgesi seçin. Örneğin **Orta ABD**.
-    * **Bütçe Adı**: Bütçe için bir ad girin. Ad, kaynak grubu içinde benzersiz olmalıdır. Yalnızca alfasayısal karakterler, alt çizgi ve kısa çizgi kullanılabilir.
-    * **Tutar**: Bütçeyle izlenecek toplam maliyet tutarını girin.
-    * **Zaman Dilimi**: Bütçenin kapsadığı süreyi girin. İzin verilen değerler Aylık, Üç Aylık ve Yıllık değerleridir. Zaman diliminin sonunda bütçe sıfırlanır.
-    * **Başlangıç Tarihi**: Ayın ilk ayını gösteren başlangıç tarihini YYYY-AA-GG biçiminde girin. Gelecekteki başlangıç tarihleri bugünden en fazla üç ay sonraya denk gelebilir. Saat Dilimi ile geçmiş bir başlangıç tarihi belirtebilirsiniz.
-    * **Bitiş Tarihi**: Bütçenin bitiş tarihini YYYY-AA-GG biçiminde girin. 
-    * **İlk Eşik**: İlk bildirim için eşik değerini girin. Maliyet eşiği aştığında bildirim gönderilir. Bu her zaman yüzde değeridir ve 0 ile 1000 arasında olmalıdır.
-    * **İkinci Eşik**: İkinci bildirim için eşik değerini girin. Maliyet eşiği aştığında bildirim gönderilir. Bu her zaman yüzde değeridir ve 0 ile 1000 arasında olmalıdır.
-    * **İlgili Kişi Rolleri**: Eşik aşıldığında bütçe bildiriminin gönderileceği ilgili kişi rollerinin listesini girin. Varsayılan değerler Sahip, Katkıda Bulunan ve Okuyucu’dur. Beklenen biçim: `["Owner","Contributor","Reader"]`.
-    * **İlgili Kişi E-postaları**: Eşik aşıldığında bütçe bildiriminin gönderileceği e-posta adresleri listesini girin. Beklenen biçim: `["user1@domain.com","user2@domain.com"]`.
-    * **İlgili Kişi Grupları**, eşik aşıldığında bütçe bildiriminin gönderileceği eylem grubu kaynak kimlikleri listesini tam kaynak URI'leri olarak girin. Dize dizileri kabul edilir. Beklenen biçim: `["action group resource ID1","action group resource ID2"]`. Eylem gruplarını kullanmak istemiyorsanız `[]` girin.
-    * **Kaynak Grubu Filtre Değerleri**: Filtrelenecek kaynak grubu adlarının listesini girin. Beklenen biçim: `["Resource Group Name1","Resource Group Name2"]`. Filtre uygulamak istemiyorsanız `[]` girin. 
-    * **Ölçüm Kategorisi Filtre Değerleri**: Azure hizmet ölçümü kategorilerinin listesini girin. Beklenen biçim: `["Meter Category1","Meter Category2"]`. Filtre uygulamak istemediyseniz `[]` girin.
+    * **Abonelik** : Bir Azure aboneliği seçin.
+    * **Kaynak grubu** : Gerekirse mevcut kaynak grubunu seçin veya **Yeni oluştur** 'u kullanın.
+    * **Bölge** : Bir Azure bölgesi seçin. Örneğin **Orta ABD** .
+    * **Bütçe Adı** : Bütçe için bir ad girin. Ad, kaynak grubu içinde benzersiz olmalıdır. Yalnızca alfasayısal karakterler, alt çizgi ve kısa çizgi kullanılabilir.
+    * **Tutar** : Bütçeyle izlenecek toplam maliyet tutarını girin.
+    * **Zaman Dilimi** : Bütçenin kapsadığı süreyi girin. İzin verilen değerler Aylık, Üç Aylık ve Yıllık değerleridir. Zaman diliminin sonunda bütçe sıfırlanır.
+    * **Başlangıç Tarihi** : Ayın ilk ayını gösteren başlangıç tarihini YYYY-AA-GG biçiminde girin. Gelecekteki başlangıç tarihleri bugünden en fazla üç ay sonraya denk gelebilir. Saat Dilimi ile geçmiş bir başlangıç tarihi belirtebilirsiniz.
+    * **Bitiş Tarihi** : Bütçenin bitiş tarihini YYYY-AA-GG biçiminde girin. 
+    * **İlk Eşik** : İlk bildirim için eşik değerini girin. Maliyet eşiği aştığında bildirim gönderilir. Bu her zaman yüzde değeridir ve 0 ile 1000 arasında olmalıdır.
+    * **İkinci Eşik** : İkinci bildirim için eşik değerini girin. Maliyet eşiği aştığında bildirim gönderilir. Bu her zaman yüzde değeridir ve 0 ile 1000 arasında olmalıdır.
+    * **İlgili Kişi Rolleri** : Eşik aşıldığında bütçe bildiriminin gönderileceği ilgili kişi rollerinin listesini girin. Varsayılan değerler Sahip, Katkıda Bulunan ve Okuyucu’dur. Beklenen biçim: `["Owner","Contributor","Reader"]`.
+    * **İlgili Kişi E-postaları** : Eşik aşıldığında bütçe bildiriminin gönderileceği e-posta adresleri listesini girin. Beklenen biçim: `["user1@domain.com","user2@domain.com"]`.
+    * **İlgili Kişi Grupları** , eşik aşıldığında bütçe bildiriminin gönderileceği eylem grubu kaynak kimlikleri listesini tam kaynak URI'leri olarak girin. Dize dizileri kabul edilir. Beklenen biçim: `["action group resource ID1","action group resource ID2"]`. Eylem gruplarını kullanmak istemiyorsanız `[]` girin.
+    * **Kaynak Grubu Filtre Değerleri** : Filtrelenecek kaynak grubu adlarının listesini girin. Beklenen biçim: `["Resource Group Name1","Resource Group Name2"]`. Filtre uygulamak istemiyorsanız `[]` girin. 
+    * **Ölçüm Kategorisi Filtre Değerleri** : Azure hizmet ölçümü kategorilerinin listesini girin. Beklenen biçim: `["Meter Category1","Meter Category2"]`. Filtre uygulamak istemediyseniz `[]` girin.
    
 3. Azure aboneliğinizin türüne bağlı olarak aşağıdaki eylemlerden birini gerçekleştirin:
-   - **İncele ve oluştur**’u seçin.
-   - Hüküm ve koşulları gözden geçirin, **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**’u seçin ve sonra **Satın Al**'ı seçin.
+   - **İncele ve oluştur** ’u seçin.
+   - Hüküm ve koşulları gözden geçirin, **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ’u seçin ve sonra **Satın Al** 'ı seçin.
 
-4. **Gözden geçir + oluştur**'u seçtiyseniz şablonunuz doğrulanır. **Oluştur**’u seçin.  
+4. **Gözden geçir + oluştur** 'u seçtiyseniz şablonunuz doğrulanır. **Oluştur** ’u seçin.  
 
    ![Resource Manager şablonu, bütçe, portala dağıtma bildirimi](./media/quick-create-budget-template/resource-manager-template-portal-deployment-notification.png)
 
@@ -112,7 +112,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-Azure portalını kullanıp **Maliyet Yönetimi + Faturalama** > kapsam seçin > **Bütçeler**’e giderek bütçenin oluşturulduğunu doğrulayabilirsiniz. İsterseniz, bütçeyi görüntülemek için aşağıdaki Azure CLI veya Azure PowerShell betiklerini de kullanabilirsiniz.
+Azure portalını kullanıp **Maliyet Yönetimi + Faturalama** > kapsam seçin > **Bütçeler** ’e giderek bütçenin oluşturulduğunu doğrulayabilirsiniz. İsterseniz, bütçeyi görüntülemek için aşağıdaki Azure CLI veya Azure PowerShell betiklerini de kullanabilirsiniz.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -134,7 +134,7 @@ Bütçeye ihtiyacınız olmadığında, aşağıdaki yöntemlerden birini kullan
 
 ### <a name="azure-portal"></a>Azure portal
 
-**Maliyet Yönetimi + Faturalandırma**’ya gidip bir faturalama kapsamı seçin, **Bütçeler**’den bir bütçe seçin ve sonra **Bütçeyi sil** seçeneğini belirleyin.
+**Maliyet Yönetimi + Faturalandırma** ’ya gidip bir faturalama kapsamı seçin, **Bütçeler** ’den bir bütçe seçin ve sonra **Bütçeyi sil** seçeneğini belirleyin.
 
 ### <a name="command-line"></a>Komut satırı
 
