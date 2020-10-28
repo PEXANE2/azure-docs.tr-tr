@@ -7,14 +7,14 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/01/2020
+ms.date: 10/26/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2dc7458dd905ff84455927c81b4ea93765d4f5cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdc0ae3fef2fb70b7372ab4fb28497ea6a6400a4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88928828"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635471"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Bilişsel Arama veri şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -24,7 +24,10 @@ CMK şifrelemesi [Azure Key Vault](../key-vault/general/overview.md)bağımlıd�
 
 Müşteri tarafından yönetilen anahtarlarla şifreleme, bu nesneler oluşturulduğunda tek tek dizinlere veya eş anlamlı haritalara uygulanır ve arama hizmeti düzeyinin kendisi üzerinde belirtilmez. Yalnızca yeni nesneler şifrelenebilir. Zaten var olan içeriği şifrelenemez.
 
-Anahtarların tümünün aynı anahtar kasasında olması gerekmez. Tek bir arama hizmeti, her biri farklı anahtar kasalarında depolanan, her biri kendi müşteri tarafından yönetilen şifreleme anahtarlarıyla şifrelenen birden çok şifrelenmiş dizini veya eş anlamlı haritaları barındırabilirler. Ayrıca, aynı hizmette, müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmemiş dizinler ve eş anlamlı haritalar da olabilir. 
+Anahtarların tümünün aynı anahtar kasasında olması gerekmez. Tek bir arama hizmeti, her biri farklı anahtar kasalarında depolanan, her biri kendi müşteri tarafından yönetilen şifreleme anahtarlarıyla şifrelenen birden çok şifrelenmiş dizini veya eş anlamlı haritaları barındırabilirler. Ayrıca, aynı hizmette, müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmemiş dizinler ve eş anlamlı haritalar da olabilir.
+
+>[!Important]
+> Müşteri tarafından yönetilen anahtarlar uygularsanız, Anahtar Kasası anahtarlarının rutin olarak dönmesi ve uygulama gizli dizileri ve kaydı Active Directory için katı yordamları izlediğinizden emin olun. Tüm şifrelenmiş içerikleri, eski olanları silmeden önce yeni gizli dizileri ve anahtarları kullanacak şekilde güncelleştirin. Bu adımı kaçırırsanız, içeriğinizin şifresi çözülemez.
 
 ## <a name="double-encryption"></a>Çift şifreleme
 
@@ -40,24 +43,32 @@ Farklı bir bölge veya 1 Ağustos 'Tan önce oluşturulmuş bir hizmet kullanı
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu örnekte aşağıdaki hizmetler ve hizmetler kullanılır. 
+Bu örnekte aşağıdaki araçlar ve hizmetler kullanılır. 
 
-+ [Bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). 
++ [Bir bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)bir hizmet bulun. 
 
-+ Azure Bilişsel Arama ile aynı abonelikte [bir Azure Key Vault kaynağı oluşturun](../key-vault/secrets/quick-create-portal.md#create-a-vault) veya mevcut bir kasayı bulun. Bu özelliğin aynı abonelik gereksinimi vardır.
++ [Azure Key Vault bir kaynak oluşturun](../key-vault/secrets/quick-create-portal.md#create-a-vault) veya var olan bir kaynağı bulun. Hem Key Vault hem de Bilişsel Arama aynı abonelikte olmalıdır. Anahtar kasasında **geçici silme** ve **Temizleme koruması** etkinleştirilmiş olmalıdır.
 
-+ Yapılandırma görevleri için [Azure PowerShell](/powershell/azure/) veya [Azure CLI](/cli/azure/install-azure-cli) kullanılır.
++ Bir uygulamayı kaydetmek ve uygulamanız tarafından kimlik doğrulaması için kullanılan gizli bir dize oluşturmak için [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) . Bir tane yoksa, [Yeni bir kiracı kurun](../active-directory/develop/quickstart-create-new-tenant.md).
 
-+ [Postman](search-get-started-postman.md), [Azure POWERSHELL](./search-get-started-powershell.md) ve [.NET SDK önizlemesi](https://aka.ms/search-sdk-preview) , şifreleme anahtar parametresi içeren dizinler ve eş anlamlı eşlemeler oluşturan REST API çağırmak için kullanılabilir. Şu anda dizinlere veya eş anlamlı haritalara anahtar eklemek için bir portal desteği yoktur.
+Şifrelenmiş nesneyi oluşturabileceğiniz bir arama uygulamasına sahip olmanız gerekir. Bu koda, bir Anahtar Kasası anahtarına ve Active Directory kayıt bilgilerine başvurabileceksiniz. Bu kod, çalışan bir uygulama veya [C# kod örneği DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)gibi prototip kodu olabilir.
 
->[!Note]
-> Müşteri tarafından yönetilen anahtarlarla şifrelemenin doğası nedeniyle, Azure Anahtar Kasası anahtarınız silinirse Azure Bilişsel Arama verilerinizi alamaz. Yanlışlıkla Key Vault anahtar silmeleri nedeniyle oluşan veri kaybını engellemek için, anahtar kasasında geçici silme ve Temizleme korumasının etkinleştirilmesi gerekir. Geçici silme varsayılan olarak etkindir, bu nedenle yalnızca kasıtlı olarak devre dışı bırakılmışsa sorunlarla karşılaşırsınız. Temizleme koruması varsayılan olarak etkin değildir, ancak Azure Bilişsel Arama CMK şifrelemesi için bu gereklidir. Daha fazla bilgi için bkz. [geçici-silme](../key-vault/general/soft-delete-overview.md) ve [Temizleme koruması](../key-vault/general/soft-delete-overview.md#purge-protection) genel bakış.
+> [!TIP]
+> Bir şifreleme anahtarı parametresi içeren dizin ve eş anlamlı eşlemeler oluşturan REST API 'Leri çağırmak için [Postman](search-get-started-postman.md) veya [Azure PowerShell](./search-get-started-powershell.md) kullanabilirsiniz. Şu anda dizinlere veya eş anlamlı haritalara anahtar eklemek için bir portal desteği yoktur.
 
 ## <a name="1---enable-key-recovery"></a>1-anahtar kurtarmayı etkinleştir
 
-Anahtar kasasında **geçici silme** ve **Temizleme koruması** etkinleştirilmiş olmalıdır. Portalı veya aşağıdaki PowerShell veya Azure CLı komutlarını kullanarak bu özellikleri ayarlayabilirsiniz.
+Müşteri tarafından yönetilen anahtarlarla şifrelemenin doğası nedeniyle, Azure Anahtar Kasası anahtarınız silinirse hiç kimse verilerinizi alamaz. Yanlışlıkla Key Vault anahtar silmeleri nedeniyle oluşan veri kaybını engellemek için, anahtar kasasında geçici silme ve Temizleme korumasının etkinleştirilmesi gerekir. Geçici silme varsayılan olarak etkindir, bu nedenle yalnızca kasıtlı olarak devre dışı bırakılmışsa sorunlarla karşılaşırsınız. Temizleme koruması varsayılan olarak etkin değildir, ancak Azure Bilişsel Arama CMK şifrelemesi için bu gereklidir. Daha fazla bilgi için bkz. [geçici-silme](../key-vault/general/soft-delete-overview.md) ve [Temizleme koruması](../key-vault/general/soft-delete-overview.md#purge-protection) genel bakış.
 
-### <a name="using-powershell"></a>PowerShell’i kullanma
+Portal, PowerShell veya Azure CLı komutlarını kullanarak her iki özelliği de ayarlayabilirsiniz.
+
+### <a name="using-azure-portal"></a>Azure portalını kullanma
+
+1. [Azure Portal oturum açın](https://portal.azure.com) ve Anahtar Kasası genel bakış sayfasını açın.
+
+1. **Genel bakış** sayfasında, **temel parçalar** altında, **geçici silme** ve **Temizleme korumasını** etkinleştirin.
+
+### <a name="using-powershell"></a>PowerShell'i kullanma
 
 1. `Connect-AzAccount`Azure kimlik bilgilerinizi kurmak için ' i çalıştırın.
 
@@ -87,98 +98,85 @@ Anahtar kasasında **geçici silme** ve **Temizleme koruması** etkinleştirilmi
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 
-```azurecli-interactive
-az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
-```
++ [Azure CLI yüklemeniz](https://docs.microsoft.com/cli/azure/install-azure-cli)varsa, gerekli özellikleri etkinleştirmek için aşağıdaki komutu çalıştırabilirsiniz.
 
-## <a name="2---create-a-new-key"></a>2-yeni bir anahtar oluşturma
+   ```azurecli-interactive
+   az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
+   ```
 
-Azure Bilişsel Arama içeriğini şifrelemek için mevcut bir anahtar kullanıyorsanız, bu adımı atlayın.
+## <a name="2---create-a-key-in-key-vault"></a>2-Key Vault bir anahtar oluşturma
+
+Azure Key Vault ' de bir anahtarınız zaten varsa bu adımı atlayın.
 
 1. [Azure Portal oturum açın](https://portal.azure.com) ve Anahtar Kasası genel bakış sayfasını açın.
 
-1. Sol gezinti bölmesinden **anahtarlar** ayarını seçin ve **+ Oluştur/içeri aktar**' a tıklayın.
+1. Sol taraftaki **tuşları** seçin ve **+ Oluştur/içeri aktar** ' ı seçin.
 
-1. **Anahtar oluştur** bölmesinde, **Seçenekler**listesinden, anahtar oluşturmak için kullanmak istediğiniz yöntemi seçin. Yeni bir anahtar **oluşturabilir** , var olan bir anahtarı **yükleyebilir** veya bir anahtarın yedeğini seçmek için **yedekleme geri yükleme** ' yi kullanabilirsiniz.
+1. **Anahtar oluştur** bölmesinde, **Seçenekler** listesinden, anahtar oluşturmak için kullanmak istediğiniz yöntemi seçin. Yeni bir anahtar **oluşturabilir** , var olan bir anahtarı **yükleyebilir** veya bir anahtarın yedeğini seçmek için **yedekleme geri yükleme** ' yi kullanabilirsiniz.
 
 1. Anahtarınız için bir **ad** girin ve isteğe bağlı olarak diğer anahtar özelliklerini seçin.
 
-1. Dağıtımı başlatmak için **Oluştur** düğmesine tıklayın.
+1. Dağıtımı başlatmak için **Oluştur** ' u seçin.
 
-Anahtar tanımlayıcısını bir yere unutmayın: Bu, anahtar **değer URI 'si**, **anahtar adı**ve **anahtar sürümünden**oluşur. Azure Bilişsel Arama 'de şifrelenmiş bir dizin tanımlamanız için bunlara ihtiyacınız olacaktır.
- 
-![Yeni bir anahtar kasası anahtarı oluştur](./media/search-manage-encryption-keys/create-new-key-vault-key.png "Yeni bir anahtar kasası anahtarı oluştur")
+1. Anahtar tanımlayıcısını bir yere, anahtar **değer URI 'sinden** , **anahtar adından** ve **anahtar sürümünden** oluşur. Azure Bilişsel Arama 'de şifrelenmiş bir dizin tanımlamak için tanımlayıcıya ihtiyacınız olacaktır.
 
-## <a name="3---create-a-service-identity"></a>3-hizmet kimliği oluşturma
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-key-identifier.png" alt-text="Yeni bir anahtar kasası anahtarı oluştur":::
 
-Arama hizmetinize bir kimlik atamak, arama hizmetinize Key Vault erişim izni vermenizi sağlar. Arama hizmetiniz, Azure Anahtar Kasası 'nda kimlik doğrulaması yapmak için kimliğini kullanacaktır.
+## <a name="3---register-an-app-in-active-directory"></a>3-Active Directory bir uygulamayı kaydetme
 
-Azure Bilişsel Arama, kimlik atamanın iki yolunu destekler: yönetilen bir kimlik veya dışarıdan yönetilen bir Azure Active Directory uygulaması. 
+1. [Azure Portal](https://portal.azure.com), aboneliğiniz için Azure Active Directory kaynağını bulun.
 
-Mümkünse, yönetilen bir kimlik kullanın. Bu, arama hizmetinize bir kimlik atamanın en kolay yoludur ve çoğu senaryoda çalışır. Dizinler ve eş anlamlı haritalar için birden çok anahtar kullanıyorsanız veya çözümünüz kimlik tabanlı kimlik doğrulamasını niteleyen dağıtılmış bir mimaride ise, bu makalenin sonunda açıklanan Gelişmiş [dışarıdan yönetilen Azure Active Directory yaklaşımını](#aad-app) kullanın.
+1. Sol tarafta, **Yönet** altında, **uygulama kayıtları** öğesini seçin ve ardından **Yeni kayıt** ' ı seçin.
 
- Genel olarak, yönetilen bir kimlik, arama hizmetinizin kimlik bilgilerini kodda depolamadan Azure Key Vault kimlik doğrulaması yapmasına olanak sağlar. Bu tür yönetilen kimliğin yaşam döngüsü, yalnızca tek bir yönetilen kimliğe sahip olabilen arama hizmetinizin yaşam döngüsüne bağlıdır. [Yönetilen kimlikler hakkında daha fazla bilgi edinin](../active-directory/managed-identities-azure-resources/overview.md).
+1. Kayda, belki de arama uygulaması adına benzer bir ad verin. **Kaydet** ’i seçin.
 
-1. [Azure Portal oturum açın](https://portal.azure.com) ve arama hizmetine genel bakış sayfasını açın. 
+1. Uygulama kaydı oluşturulduktan sonra uygulama KIMLIĞINI kopyalayın. Bu dizeyi uygulamanıza sağlamanız gerekir. 
 
-1. Sol gezinti bölmesindeki **kimlik** ' e tıklayın, durumunu **Açık**olarak değiştirin ve **Kaydet**' e tıklayın.
+   [Dotnethowtoencryptionusingcmk](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)aracılığıyla adımladıysanız, bu değeri dosyadaki **appsettings.js** yapıştırın.
 
-![Yönetilen bir kimliği etkinleştirme](./media/search-enable-msi/enable-identity-portal.png "Bir kimlik kimliğini etkinleştirme")
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-id.png" alt-text="Yeni bir anahtar kasası anahtarı oluştur":::
+
+1. Ardından, sol taraftaki **sertifikalar & parolaları** ' nı seçin.
+
+1. **Yeni istemci gizli dizisi** ’ni seçin. Gizli dizi için bir görünen ad verin ve **Ekle** ' yi seçin.
+
+1. Uygulama gizli dizesini kopyalayın. Örnek içinde adımlarken, bu değeri dosyadaki **appsettings.js** yapıştırın.
+
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-secret.png" alt-text="Yeni bir anahtar kasası anahtarı oluştur":::
 
 ## <a name="4---grant-key-access-permissions"></a>4-anahtar erişim izinleri verme
 
-Arama hizmetinizin Key Vault anahtarınızı kullanmasını sağlamak için, arama hizmetinize belirli erişim izinlerini vermeniz gerekir.
+Bu adımda Key Vault bir erişim ilkesi oluşturacaksınız. Bu ilke, müşteri tarafından yönetilen anahtarınızı kullanmak için Active Directory izinle kaydettiğiniz uygulamayı verir.
 
 Erişim izinleri belirli bir zamanda iptal edilebilir. Bu Anahtar Kasası 'nı kullanan herhangi bir arama hizmeti dizini veya eş anlamlı eşleme, iptal edildikten sonra kullanılamaz hale gelir. Anahtar Kasası erişim izinlerinin daha sonraki bir zamanda geri yüklenmesi, Dizin \ eş anlamlı eşleme erişimini geri yükler. Daha fazla bilgi için bkz. [bir anahtar kasasına güvenli erişim](../key-vault/general/secure-your-key-vault.md).
 
-1. [Azure Portal oturum açın](https://portal.azure.com) ve Anahtar Kasası genel bakış sayfasını açın. 
+1. Hala Azure portal, Anahtar Kasası **genel bakış** sayfasını açın. 
 
-1. Sol gezinti bölmesinden **erişim ilkeleri** ayarını seçin ve **+ Yeni Ekle**' ye tıklayın.
+1. Sol taraftaki **erişim ilkelerini** seçin ve **+ erişim ilkesi Ekle** ' yi seçin.
 
-   ![Yeni Anahtar Kasası erişim ilkesi Ekle](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "Yeni Anahtar Kasası erişim ilkesi Ekle")
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-add-access-policy.png" alt-text="Yeni bir anahtar kasası anahtarı oluştur":::
 
-1. **Sorumlu Seç** ' e tıklayın ve Azure bilişsel arama hizmetinizi seçin. Yönetilen kimliği etkinleştirdikten sonra adı veya görüntülenen nesne KIMLIĞINE göre arama yapabilirsiniz.
+1. **Sorumlu Seç** ' i seçin ve Active Directory kaydettiğiniz uygulamayı seçin. Adına göre arama yapabilirsiniz.
 
-   ![Anahtar Kasası erişim ilkesi sorumlusunu seçin](./media/search-manage-encryption-keys/select-key-vault-access-policy-principal.png "Anahtar Kasası erişim ilkesi sorumlusunu seçin")
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="Yeni bir anahtar kasası anahtarı oluştur":::
 
-1. **Anahtar izinleri** ' ne tıklayın ve *Al*, *sarmalama tuşu* ve *sarmalama*anahtarı ' nı seçin. Gerekli izinleri hızlıca seçmek için *Azure Data Lake Storage veya Azure depolama* şablonunu kullanabilirsiniz.
+1. **Anahtar izinler** ' de *Al* , *anahtar kaydırmayı kaldır* ve *anahtarı sarmalama* ' i seçin.
 
-   Azure Bilişsel Arama aşağıdaki [erişim izinleriyle](../key-vault/keys/about-keys.md#key-operations)verilmelidir:
+1. **Gizli izinler** ' de *Al* ' ı seçin.
 
-   * *Get* -arama hizmetinizin Key Vault anahtarınızın ortak parçalarını almasına izin verir
-   * *Anahtar Sarla* -arama hizmetinizin iç şifreleme anahtarını korumak için anahtarınızı kullanmasına izin verir
-   * *Anahtar sarmalaması geri al* -arama hizmetinizin iç şifreleme anahtarını sarmalamak için anahtarınızı kullanmasına izin verir
+1. **Sertifika izinleri** ' nde *Al* ' ı seçin.
 
-   ![Anahtar Kasası erişim ilkesi anahtar izinlerini seçin](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "Anahtar Kasası erişim ilkesi anahtar izinlerini seçin")
-
-1. **Gizli izinler**için *Al*' ı seçin.
-
-1. **Sertifika izinleri**için *Al*' ı seçin.
-
-1. **Tamam** ' a tıklayın ve erişim Ilkesi değişikliklerini **kaydedin** .
+1. **Ekle** ' yi ve ardından **Kaydet** ' i seçin.
 
 > [!Important]
-> Azure Bilişsel Arama şifrelenmiş içerik, belirli bir **sürüme**sahip belirli bir Azure Key Vault anahtarı kullanacak şekilde yapılandırılmıştır. Anahtarı veya sürümü değiştirirseniz, önceki key\version. silinmeden **önce** dizin veya eş anlamlı haritanın yeni key\version kullanacak şekilde güncellenmesi gerekir Bunun başarısız olması, anahtar erişimi kaybolduktan sonra içeriğin şifresini çözemeyecek şekilde dizin veya eş anlamlı haritanın kullanılamamasına neden olur.   
+> Azure Bilişsel Arama şifrelenmiş içerik, belirli bir **sürüme** sahip belirli bir Azure Key Vault anahtarı kullanacak şekilde yapılandırılmıştır. Anahtarı veya sürümü değiştirirseniz, önceki key\version. silinmeden **önce** dizin veya eş anlamlı haritanın yeni key\version kullanacak şekilde güncellenmesi gerekir Bunun başarısız olması, anahtar erişimi kaybolduktan sonra içeriğin şifresini çözemeyecek şekilde dizin veya eş anlamlı haritanın kullanılamamasına neden olur.
 
 ## <a name="5---encrypt-content"></a>5-içerik şifreleyin
 
-Bir dizin veya eş anlamlı eşleme üzerinde müşteri tarafından yönetilen anahtar eklemek için [arama REST API](/rest/api/searchservice/) veya SDK 'yı kullanmanız gerekir. Portal, eş anlamlı haritalar veya şifreleme özellikleri sunmaz. Geçerli bir API kullandığınızda, her iki dizin ve eş anlamlı eşleme, üst düzey bir **encryptionKey** özelliğini destekler. 
+Bir dizin veya eş anlamlı eşleme üzerinde müşteri tarafından yönetilen bir anahtar eklemek için, tanımı içeren bir nesne oluşturmak için bir REST API veya SDK kullanın `encryptionKey` .
 
-Anahtar **Kasası URI**'sini, anahtar **adını** ve Anahtar Kasası anahtarınızın **anahtar sürümünü** kullanarak, aşağıdaki gibi bir **encryptionKey** tanımı oluşturun:
+Bu örnek, Azure Key Vault ve Azure Active Directory değerleri ile REST API kullanır:
 
-```json
-{
-  "encryptionKey": {
-    "keyVaultUri": "https://demokeyvault.vault.azure.net",
-    "keyVaultKeyName": "myEncryptionKey",
-    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660"
-  }
-}
-```
-> [!Note] 
-> Bu Anahtar Kasası ayrıntılarının hiçbiri gizli kabul edilmez ve Azure portal ' deki ilgili Azure Key Vault anahtarı sayfasına göz atarak kolayca alınabilir.
-
-Yönetilen bir kimlik kullanmak yerine Key Vault kimlik doğrulaması için AAD uygulaması kullanıyorsanız, şifreleme anahtarınıza AAD uygulama **erişimi kimlik bilgilerini** ekleyin: 
 ```json
 {
   "encryptionKey": {
@@ -193,8 +191,16 @@ Yönetilen bir kimlik kullanmak yerine Key Vault kimlik doğrulaması için AAD 
 }
 ```
 
-## <a name="example-index-encryption"></a>Örnek: Dizin şifreleme
-Burada tek fark, Dizin tanımının bir parçası olarak şifreleme anahtarı ayrıntılarını belirtirken, REST API aracılığıyla yeni dizin oluşturma ayrıntıları [(Azure Bilişsel Arama REST API)](/rest/api/searchservice/create-index)bulunabilir. 
+> [!Note]
+> Bu Anahtar Kasası ayrıntılarının hiçbiri gizli kabul edilmez ve Azure portal ' deki ilgili Azure Key Vault anahtarı sayfasına göz atarak kolayca alınabilir.
+
+## <a name="rest-examples"></a>REST örnekleri
+
+Bu bölümde, şifrelenmiş bir dizin ve eş anlamlı eşleme için tam JSON gösterilmektedir
+
+### <a name="index-encryption"></a>Dizin şifreleme
+
+Burada tek fark, Dizin tanımının bir parçası olarak şifreleme anahtarı ayrıntılarını belirten [Dizin oluşturma (REST API)](/rest/api/searchservice/create-index)yolunda yeni bir REST API dizin oluşturma ayrıntılarından bulunabilir:
 
 ```json
 {
@@ -211,18 +217,23 @@ Burada tek fark, Dizin tanımının bir parçası olarak şifreleme anahtarı ay
   {"name": "Rating", "type": "Edm.Double", "filterable": true, "sortable": true, "facetable": true},
   {"name": "Location", "type": "Edm.GeographyPoint", "filterable": true, "sortable": true},
  ],
- "encryptionKey": {
-   "keyVaultUri": "https://demokeyvault.vault.azure.net",
-   "keyVaultKeyName": "myEncryptionKey",
-   "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660"
- }
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
 }
 ```
+
 Artık dizin oluşturma isteğini gönderebilir ve sonra dizini normal olarak kullanmaya başlayabilirsiniz.
 
-## <a name="example-synonym-map-encryption"></a>Örnek: eş anlamlı eşleme şifrelemesi
+### <a name="synonym-map-encryption"></a>Eş anlamlı eşleme şifrelemesi
 
-REST API aracılığıyla yeni bir eş anlamlı eşleme oluşturma ayrıntıları, burada tek fark, eş anlamlı eşleme tanımının bir parçası olarak şifreleme anahtarı ayrıntılarını belirtirken, [eş anlamlı harita oluşturma (Azure Bilişsel Arama REST API)](/rest/api/searchservice/create-synonym-map)' de bulunabilir: 
+REST API aracılığıyla yeni bir eş anlamlı eşleme oluşturma ayrıntıları, burada tek fark, eş anlamlı eşleme tanımının bir parçası olarak şifreleme anahtarı ayrıntılarını belirtirken, [eş anlamlı harita oluşturma (REST API)](/rest/api/searchservice/create-synonym-map)yolunda bulunabilir: 
 
 ```json
 {   
@@ -233,39 +244,55 @@ REST API aracılığıyla yeni bir eş anlamlı eşleme oluşturma ayrıntılar�
   "encryptionKey": {
     "keyVaultUri": "https://demokeyvault.vault.azure.net",
     "keyVaultKeyName": "myEncryptionKey",
-    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660"
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "activeDirectoryAccessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
   }
 }
 ```
+
 Artık eş anlamlı harita oluşturma isteğini gönderebilir ve normal olarak kullanmaya başlayabilirsiniz.
 
->[!Important] 
-> **EncryptionKey** , mevcut Azure bilişsel arama dizinlerine veya eş anlamlı haritalara eklenemediğinden, üç Anahtar Kasası ayrıntılarının (örneğin, anahtar sürümünü güncelleştirme) her biri için farklı değerler sunarak güncelleştirilmiş olabilir. Yeni bir Key Vault anahtarına veya yeni bir anahtar sürümüne geçiş yaparken, önce anahtarı kullanan tüm Azure Bilişsel Arama dizini veya eş anlamlı Haritası, önceki key\version. silinmeden **önce** yeni key\version kullanacak şekilde güncellenmelidir Bunun başarısız olması, anahtar erişimi kaybolduktan sonra içeriğin şifresini çözemeyeceği için dizin veya eş anlamlı haritanın kullanılamaz hale gelmesine neden olur.   
-> Anahtar Kasası erişim izinlerini daha sonra geri yüklemek, içerik erişimini geri yükler.
-
-## <a name="advanced-use-an-externally-managed-azure-active-directory-application"></a><a name="aad-app"></a> Gelişmiş: dışarıdan yönetilen Azure Active Directory uygulaması kullanma
-
-Yönetilen bir kimlik mümkün olmadığında Azure Bilişsel Arama hizmetiniz için güvenlik sorumlusu olan bir Azure Active Directory uygulaması oluşturabilirsiniz. Özellikle, yönetilen bir kimlik şu koşullarda önemli değildir:
-
-* Anahtar kasasına doğrudan arama hizmeti erişim izinleri verilemez (örneğin, arama hizmeti, Azure Key Vault farklı bir Active Directory kiracısında ise).
-
-* Tek bir arama hizmeti, her anahtar kasasının kimlik doğrulaması için **farklı bir kimlik** kullanması gereken farklı bir anahtar kasasından farklı bir anahtar kullanan birden çok şifrelenmiş ındexes\eş anlamlı haritaları barındırmak için gereklidir. Farklı anahtar kasalarını yönetmek için farklı bir kimlik kullanmak bir gereksinim değildir, yukarıdaki yönetilen kimlik seçeneğini kullanmayı düşünün.  
-
-Azure Bilişsel Arama, bu tür topolojilerle uyum sağlamak için, arama hizmetiniz ve Key Vault arasında kimlik doğrulaması için Azure Active Directory (AAD) uygulamalarının kullanımını destekler.    
-Portalda bir AAD uygulaması oluşturmak için:
-
-1. [Azure Active Directory uygulaması oluşturun](../active-directory/develop/howto-create-service-principal-portal.md).
-
-1. Şifrelenmiş bir dizin oluşturmak için gerekli olacak şekilde [, uygulama kimliği ve kimlik doğrulama anahtarını alın](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) . **Uygulama kimliği** ve **kimlik doğrulama anahtarı**sağlamanız gereken değerler.
-
 >[!Important]
-> Yönetilen kimlik yerine kimlik doğrulaması için bir AAD uygulaması kullanmaya karar verirken, Azure Bilişsel Arama tarafından sizin adınıza AAD uygulamanızı yönetmek için yetkilendirilmemiş olduğunu göz önünde bulundurun ve uygulama kimlik doğrulama anahtarının düzenli olarak dönüşü gibi AAD uygulamanızı yönetmeniz gerekir.
-> Bir AAD uygulamasını veya kimlik doğrulama anahtarını değiştirirken, bu uygulamayı kullanan tüm Azure Bilişsel Arama dizini veya eş anlamlı Haritası, önceki uygulamayı veya yetkilendirme anahtarını silmeden **önce** ve Key Vault erişiminizi iptal etmeden önce yeni uygulama ID\key kullanacak şekilde güncelleştirilmeleri gerekir.
-> Bunun başarısız olması, anahtar erişimi kaybolduktan sonra içeriğin şifresini çözemeyeceği için dizin veya eş anlamlı haritanın kullanılamaz hale gelmesine neden olur.
+> `encryptionKey`Mevcut arama dizinlerine veya eş anlamlı haritalara eklenemediğinden, üç Anahtar Kasası ayrıntılarının (örneğin, anahtar sürümünü güncelleştirme) her biri için farklı değerler sağlanarak güncelleştirilebilirler. Yeni bir Key Vault anahtarına veya yeni bir anahtar sürümüne geçiş yaparken, önce anahtarı kullanan herhangi bir arama dizini veya eş anlamlı eşleme, önceki key\version. silinmeden **önce** yeni key\version kullanacak şekilde güncellenmelidir Bunun başarısız olması, anahtar erişimi kaybolduktan sonra içeriğin şifresini çözemeyeceği için dizin veya eş anlamlı haritanın kullanılamaz hale gelmesine neden olur. Anahtar Kasası erişim izinlerinin daha sonraki bir zamanda geri yüklenmesi, içerik erişimini geri yükler.
+
+## <a name="simpler-alternative-trusted-service"></a>Daha basit alternatif: Güvenilen hizmet
+
+Kiracı yapılandırmasına ve kimlik doğrulama gereksinimlerine bağlı olarak, bir Anahtar Kasası anahtarına erişmenin daha basit bir yaklaşımını uygulayabilirsiniz. Bir Active Directory uygulaması oluşturmak ve kullanmak yerine, sistem tarafından yönetilen bir kimliği etkinleştirerek bir arama hizmetini güvenilir bir hizmet yapabilirsiniz. Ardından, Anahtar Kasası anahtarına erişmek için, güvenilir arama hizmetini, AD ile kaydedilmiş bir uygulama yerine bir güvenlik ilkesi olarak kullanacaksınız.
+
+Bu yaklaşım, uygulama kaydı ve uygulama gizli dizileri için adımları atlamanızı sağlar ve yalnızca Anahtar Kasası bileşenleri (URI, kasa adı, anahtar sürümü) için bir şifreleme anahtarı tanımını basitleştirir.
+
+Genel olarak, yönetilen bir kimlik kimlik bilgilerini kodda (ApplicationSecret veya ApplicationSecret) depolamadan Azure Key Vault kimlik doğrulaması yapmasına olanak sağlar. Bu tür yönetilen kimliğin yaşam döngüsü, yalnızca tek bir yönetilen kimliğe sahip olabilen arama hizmetinizin yaşam döngüsüne bağlıdır. Yönetilen kimliklerin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
+
+1. Arama hizmetinizi güvenilir bir hizmet yapın.
+
+   ![Sistem tarafından atanan yönetilen kimliği aç](./media/search-managed-identities/turn-on-system-assigned-identity.png "Sistem tarafından atanan yönetilen kimliği aç")
+
+1. Azure Key Vault bir erişim ilkesi ayarlarken, ilke olarak güvenilir arama hizmetini seçin (AD-kayıtlı uygulama yerine). Erişim anahtarı izinleri verme adımında belirtildiği gibi aynı izinleri (birden fazla alma, SARMALAMA, GERI saral) atayın.
+
+1. Active Directory özelliklerini atladığında, Basitleştirilmiş bir oluşturma kullanın `encryptionKey` .
+
+    ```json
+    {
+      "encryptionKey": {
+        "keyVaultUri": "https://demokeyvault.vault.azure.net",
+        "keyVaultKeyName": "myEncryptionKey",
+        "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660"
+      }
+    }
+    ```
+
+Bu basitleştirilmiş yaklaşımı benimsemeye engel olacak koşullar şunlardır:
+
++ Anahtar kasasına doğrudan arama hizmeti erişim izinleri verilemez (örneğin, arama hizmeti, Azure Key Vault farklı bir Active Directory kiracısında ise).
+
++ Tek bir arama hizmeti, her anahtar kasasının kimlik doğrulaması için **farklı bir kimlik** kullanması gereken farklı bir anahtar kasasından farklı bir anahtar kullanan birden çok şifrelenmiş ındexes\eş anlamlı haritaları barındırmak için gereklidir. Bir arama hizmeti yalnızca tek bir yönetilen kimliğe sahip olabileceğinden, birden çok kimlik için bir gereksinim, senaryonuza yönelik Basitleştirilmiş yaklaşımı ayırt edebilir.  
 
 ## <a name="work-with-encrypted-content"></a>Şifrelenmiş içerikle çalışma
 
-CMK şifrelemesi sayesinde, ek şifreleme/şifre çözme işi nedeniyle hem dizin oluşturma hem de sorgular için gecikme fark edeceksiniz. Azure Bilişsel Arama şifreleme etkinliğini günlüğe almaz, ancak Anahtar Kasası günlüğü aracılığıyla anahtar erişimini izleyebilirsiniz. Anahtar Kasası kurulumu 'nun bir parçası olarak [günlük kaydını etkinleştirmenizi](../key-vault/general/logging.md) öneririz.
+CMK şifrelemesi sayesinde, ek şifreleme/şifre çözme işi nedeniyle hem dizin oluşturma hem de sorgular için gecikme fark edeceksiniz. Azure Bilişsel Arama şifreleme etkinliğini günlüğe almaz, ancak Anahtar Kasası günlüğü aracılığıyla anahtar erişimini izleyebilirsiniz. Anahtar Kasası yapılandırmasının bir parçası olarak [günlük kaydını etkinleştirmenizi](../key-vault/general/logging.md) öneririz.
 
 Anahtar dönüşünün zaman içinde oluşması beklenmektedir. Anahtarları her döndürdüğünüzde, bu sırayı izlemeniz önemlidir:
 

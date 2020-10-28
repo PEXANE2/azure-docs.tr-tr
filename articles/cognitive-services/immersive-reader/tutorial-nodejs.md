@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
-ms.author: metan
+ms.author: metang
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ac23ad66cadc553095ff869b665a6bba2fba6f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac7bca305b0c23cceb00f97f426b3f68fbea91b3
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262289"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636451"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Öğretici: tam ekran okuyucuyu (Node.js) başlatın
 
-[Genel bakışta](./overview.md), derinlikli okuyucu ne olduğunu ve dil öğrenimi, gelişmekte olan okuyucular ve öğrenme farklılığı olan öğrenciler için okuma kavraışını geliştirmek üzere kendini kanıtlamış tekniklerin nasıl uyguladığını öğrendiniz. Bu öğretici, tam ekran okuyucuyu Başlatan bir Node.js Web uygulamasının nasıl oluşturulacağını ele alır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+[Genel bakışta](./overview.md), derinlikli okuyucu ne olduğunu ve dil öğrenimi, gelişmekte olan okuyucular ve öğrenme farklılığı olan öğrenciler için okuma kavraışını geliştirmek üzere kendini kanıtlamış tekniklerin nasıl uyguladığını öğrendiniz. Bu öğretici, tam ekran okuyucuyu Başlatan bir Node.js Web uygulamasının nasıl oluşturulacağını ele alır. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Express ile Node.js Web uygulaması oluşturma
@@ -32,7 +32,7 @@ ms.locfileid: "91262289"
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Ortam özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
 * [Node.js](https://nodejs.org/) ve [Yarn](https://yarnpkg.com)
@@ -69,7 +69,7 @@ ClientSecret => Azure AD Application Service Principal password
 Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
 ````
 
-Bu değerleri aldıktan sonra, _. env_adlı yeni bir dosya oluşturun ve yukarıdaki özel özellik değerlerinizi sağlayarak aşağıdaki kodu içine yapıştırın. Tırnak işaretlerini veya "{" ve "}" karakterlerini eklemeyin.
+Bu değerleri aldıktan sonra, _. env_ adlı yeni bir dosya oluşturun ve yukarıdaki özel özellik değerlerinizi sağlayarak aşağıdaki kodu içine yapıştırın. Tırnak işaretlerini veya "{" ve "}" karakterlerini eklemeyin.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -133,14 +133,14 @@ module.exports = router;
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>Örnek içerikle modern okuyucu başlatma
 
-1. _Views\layout.exe_' nı açın ve etiketinden önce etiketin altına aşağıdaki kodu ekleyin `head` `body` . Bu `script` Etiketler, [tam ekran okuyucu SDK 'Sını](https://github.com/microsoft/immersive-reader-sdk) ve jQuery 'yi yükler.
+1. _Views\layout.exe_ ' nı açın ve etiketinden önce etiketin altına aşağıdaki kodu ekleyin `head` `body` . Bu `script` Etiketler, [tam ekran okuyucu SDK 'Sını](https://github.com/microsoft/immersive-reader-sdk) ve jQuery 'yi yükler.
 
     ```pug
     script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
-2. _Views\ındex.Pug_dosyasını açın ve içeriğini aşağıdaki kodla değiştirin. Bu kod, sayfayı bazı örnek içerikle doldurur ve tam ekran okuyucuyu Başlatan bir düğme ekler.
+2. _Views\ındex.Pug_ dosyasını açın ve içeriğini aşağıdaki kodla değiştirin. Bu kod, sayfayı bazı örnek içerikle doldurur ve tam ekran okuyucuyu Başlatan bir düğme ekler.
 
     ```pug
     extends layout
@@ -211,13 +211,13 @@ Tam ekran okuyucu birçok farklı dil için destek içerir. Aşağıdaki adımla
     });
     ```
 
-3. Tekrar gidin _http://localhost:3000_ . Sayfada Ispanyolca metin görmeniz gerekir ve **tam ekran okuyucu**' ya tıkladığınızda, tam ekran okuyucu 'da da görünür.
+3. Tekrar gidin _http://localhost:3000_ . Sayfada Ispanyolca metin görmeniz gerekir ve **tam ekran okuyucu** ' ya tıkladığınızda, tam ekran okuyucu 'da da görünür.
 
 ## <a name="specify-the-language-of-the-immersive-reader-interface"></a>Tam ekran okuyucu arabiriminin dilini belirtin
 
 Varsayılan olarak, tam ekran okuyucu arabiriminin dili tarayıcının dil ayarlarıyla eşleşir. Ayrıca, aşağıdaki kodla tam ekran okuyucu arabirimi dilini de belirtebilirsiniz.
 
-1. _Views\ındex.Pug_içinde, çağrısını `ImmersiveReader.launchAsync(token, subdomain, content)` aşağıdaki kodla değiştirin.
+1. _Views\ındex.Pug_ içinde, çağrısını `ImmersiveReader.launchAsync(token, subdomain, content)` aşağıdaki kodla değiştirin.
 
     ```javascript
     const options = {

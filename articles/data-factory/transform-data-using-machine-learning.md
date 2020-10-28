@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/16/2020
-ms.openlocfilehash: dabb7b8cd8023fe88a8c8d6dc507a09623bd11dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50ef97bca0a5359c49ba2f18b1ec789ab076350a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537689"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637743"
 ---
 # <a name="create-a-predictive-pipeline-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Azure Machine Learning Studio (klasik) ve Azure Data Factory kullanarak tahmine dayalı bir işlem hattı oluşturun
 
@@ -27,9 +27,9 @@ ms.locfileid: "86537689"
 
 [Azure Machine Learning Studio (klasik)](https://azure.microsoft.com/documentation/services/machine-learning/) tahmine dayalı analiz çözümleri oluşturmanıza, test etmenize ve dağıtmanıza olanak sağlar. Üst düzey bir görünüm noktasından üç adımda yapılır:
 
-1. **Eğitim denemesi oluşturun**. Bu adımı Azure Machine Learning Studio (klasik) kullanarak yapabilirsiniz. Azure Machine Learning Studio (klasik), eğitim verilerini kullanarak tahmine dayalı analiz modelini eğitme ve test etmek için kullandığınız işbirliğine dayalı bir görsel geliştirme ortamıdır.
-2. Tahmine **dayalı bir Deneyiye dönüştürün**. Modelinize mevcut veriler ile eğitilirken ve yeni veri puanlaması için kullanmaya hazırsanız, Puanlama için denemenizi hazırlayın ve kolaylaştırın.
-3. **Bunu bir Web hizmeti olarak dağıtın**. Puanlama denemenizin bir Azure Web hizmeti olarak yayımlanmasını sağlayabilirsiniz. Bu Web hizmeti uç noktası aracılığıyla modelinize veri gönderebilir ve modelden sonuç tahminleri alabilirsiniz.
+1. **Eğitim denemesi oluşturun** . Bu adımı Azure Machine Learning Studio (klasik) kullanarak yapabilirsiniz. Azure Machine Learning Studio (klasik), eğitim verilerini kullanarak tahmine dayalı analiz modelini eğitme ve test etmek için kullandığınız işbirliğine dayalı bir görsel geliştirme ortamıdır.
+2. Tahmine **dayalı bir Deneyiye dönüştürün** . Modelinize mevcut veriler ile eğitilirken ve yeni veri puanlaması için kullanmaya hazırsanız, Puanlama için denemenizi hazırlayın ve kolaylaştırın.
+3. **Bunu bir Web hizmeti olarak dağıtın** . Puanlama denemenizin bir Azure Web hizmeti olarak yayımlanmasını sağlayabilirsiniz. Bu Web hizmeti uç noktası aracılığıyla modelinize veri gönderebilir ve modelden sonuç tahminleri alabilirsiniz.
 
 ### <a name="data-factory-and-azure-machine-learning-studio-classic-together"></a>Data Factory ve Azure Machine Learning Studio (klasik) birlikte
 Azure Data Factory, tahmine dayalı analiz için yayımlanmış bir [Azure Machine Learning Studio (klasik)](https://azure.microsoft.com/documentation/services/machine-learning) Web hizmeti kullanan işlem hatlarını kolayca oluşturmanızı sağlar. **Toplu yürütme etkinliğini** bir Azure Data Factory işlem hattında kullanarak, toplu işteki verilerde tahmine dayalı hale getirmek için bir Azure Machine Learning Studio (klasik) Web hizmeti çağırabilirsiniz.
@@ -39,7 +39,7 @@ Zaman içinde, Azure Machine Learning Studio (klasik) Puanlama denemeleri 'in ta
 1. Eğitim denemenize (tahmine dayalı deneme) Web hizmeti olarak yayımlayın. Bu adımı, önceki senaryoda, tahmine dayalı denemeyi bir Web hizmeti olarak kullanıma sunmak için Azure Machine Learning Studio (klasik) ' de yapabilirsiniz.
 2. Eğitim denemesinin Web hizmetini çağırmak için Azure Machine Learning Studio (klasik) toplu yürütme etkinliğini kullanın. Temel olarak, hem eğitim Web hizmeti hem de Puanlama Web hizmetini çağırmak için Azure Machine Learning Studio (klasik) toplu yürütme etkinliğini kullanabilirsiniz.
 
-Yeniden eğitim elde ettikten sonra, **Azure Machine Learning Studio (klasik) güncelleştirme kaynak etkinliğini**kullanarak Puanlama Web hizmeti 'ni (Web hizmeti olarak sunulan tahmine dayalı deneme) yeni eğitilen modelle güncelleştirin. Ayrıntılar için bkz. [kaynak güncelleştirme etkinliğini kullanarak modelleri güncelleştirme](update-machine-learning-models.md) .
+Yeniden eğitim elde ettikten sonra, **Azure Machine Learning Studio (klasik) güncelleştirme kaynak etkinliğini** kullanarak Puanlama Web hizmeti 'ni (Web hizmeti olarak sunulan tahmine dayalı deneme) yeni eğitilen modelle güncelleştirin. Ayrıntılar için bkz. [kaynak güncelleştirme etkinliğini kullanarak modelleri güncelleştirme](update-machine-learning-models.md) .
 
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (klasik) bağlı hizmet
 
@@ -130,7 +130,7 @@ Aşağıdaki JSON kod parçacığı Azure Machine Learning Studio (klasik) toplu
 | :---------------- | :--------------------------------------- | :------- |
 | name              | İşlem hattındaki etkinliğin adı     | Evet      |
 | açıklama       | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| tür              | Data Lake Analytics U-SQL etkinliği için etkinlik türü **AzureMLBatchExecution**' dir. | Evet      |
+| tür              | Data Lake Analytics U-SQL etkinliği için etkinlik türü **AzureMLBatchExecution** ' dir. | Evet      |
 | linkedServiceName | Azure Machine Learning Studio (klasik) bağlı hizmetine bağlı hizmetler. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
 | Webservicegirişlerinde  | Azure Machine Learning Studio (klasik) Web hizmeti girişlerinin adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Studio (klasik) Web hizmetinde tanımlanan giriş parametreleriyle eşleşmelidir. Değer, giriş blobu konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | Hayır       |
 | Webserviceçıktılar | Azure Machine Learning Studio (klasik) Web hizmeti çıktılarının adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Studio (klasik) Web hizmetinde tanımlanan çıkış parametreleriyle eşleşmelidir. Değer, çıkış blob konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | Hayır       |
@@ -190,7 +190,7 @@ Bu senaryoda Azure Machine Learning Studio (klasik) Web hizmeti, Azure Blob depo
 }
 ```
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Senaryo 2: çeşitli depolama alanındaki verilere başvurmak için okuyucu/yazıcı modüllerini kullanma denemeleri
-Azure Machine Learning Studio (klasik) denemeleri oluştururken bir diğer yaygın senaryo, veri al ve çıkış veri modüllerini kullanmaktır. Veri Içeri aktarma modülü, bir denemeye veri yüklemek için kullanılır ve çıkış verileri modülü, verileri denemeleri. Veri ve çıkış veri modüllerini Içeri aktarma hakkında daha fazla bilgi için bkz. MSDN kitaplığındaki veri ve [Çıkış verilerini](https://msdn.microsoft.com/library/azure/dn905984.aspx) [içeri aktarma](https://msdn.microsoft.com/library/azure/dn905997.aspx) konuları.
+Azure Machine Learning Studio (klasik) denemeleri oluştururken bir diğer yaygın senaryo, veri al ve çıkış veri modüllerini kullanmaktır. Veri Içeri aktarma modülü, bir denemeye veri yüklemek için kullanılır ve çıkış verileri modülü, verileri denemeleri. Veri ve çıkış veri modüllerini Içeri aktarma hakkında daha fazla bilgi için bkz. MSDN kitaplığındaki veri ve [Çıkış verilerini](/azure/machine-learning/studio-module-reference/export-data) [içeri aktarma](/azure/machine-learning/studio-module-reference/import-data) konuları.
 
 Veri alma ve çıkış verileri modüllerini kullanırken, bu modüllerin her özelliği için bir Web hizmeti parametresi kullanmak iyi bir uygulamadır. Bu Web parametreleri, çalışma zamanı sırasında değerleri yapılandırmanızı sağlar. Örneğin, bir Azure SQL veritabanı kullanan bir Içeri aktarma verileri modülü ile bir deneme oluşturabilirsiniz: XXX.database.windows.net. Web hizmeti dağıtıldıktan sonra, Web hizmetinin tüketicilerinin adlı başka bir mantıksal SQL Server belirtmesini sağlamak istersiniz `YYY.database.windows.net` . Bu değerin yapılandırılmasına izin vermek için bir Web hizmeti parametresi kullanabilirsiniz.
 
@@ -213,7 +213,7 @@ Web hizmeti parametrelerini kullanmak için bir senaryoya göz atalım. Azure Ma
 > [!NOTE]
 > Web hizmeti parametreleri büyük/küçük harfe duyarlıdır; bu nedenle, JSON etkinliğinde belirttiğiniz adların Web hizmeti tarafından açığa çıkanlara eşleştiğinden emin olun.
 
-Yeniden eğitim elde ettikten sonra, **Azure Machine Learning Studio (klasik) güncelleştirme kaynak etkinliğini**kullanarak Puanlama Web hizmeti 'ni (Web hizmeti olarak sunulan tahmine dayalı deneme) yeni eğitilen modelle güncelleştirin. Ayrıntılar için bkz. [kaynak güncelleştirme etkinliğini kullanarak modelleri güncelleştirme](update-machine-learning-models.md) .
+Yeniden eğitim elde ettikten sonra, **Azure Machine Learning Studio (klasik) güncelleştirme kaynak etkinliğini** kullanarak Puanlama Web hizmeti 'ni (Web hizmeti olarak sunulan tahmine dayalı deneme) yeni eğitilen modelle güncelleştirin. Ayrıntılar için bkz. [kaynak güncelleştirme etkinliğini kullanarak modelleri güncelleştirme](update-machine-learning-models.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Verileri başka yollarla nasıl dönüştürebileceğinizi açıklayan aşağıdaki makalelere bakın:

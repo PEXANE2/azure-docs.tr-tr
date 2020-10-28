@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 55a49ac13cdfd3f6157ae7495403f76056e734ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be49d56d301c23791777f4d89e8c6c6fd35d7035
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86184110"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636315"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için Enterprise Edition sağlama
 
@@ -38,7 +38,7 @@ Bu özelliklerden bazıları, Azure-SSIS IR özelleştirmek için ek bileşenler
 | Oracle bağlayıcıları | Oracle bağlantı Yöneticisi, kaynak ve hedef Azure-SSIS IR Enterprise sürümüne önceden yüklenir. Oracle call Interface (OCı) sürücüsünü de yüklemeniz gerekir ve gerekirse Azure-SSIS IR Oracle Transport Network alt Strate (TNS) öğesini yapılandırın. Daha fazla bilgi için bkz. [Azure-SSIS tümleştirmesi çalışma zamanı için özel kurulum](how-to-configure-azure-ssis-ir-custom-setup.md). |
 | Teradata bağlayıcıları | Azure-SSIS IR Enterprise sürümünde Teradata bağlantı yöneticisini, kaynağını ve hedefini, Teradata Parallel Transporter (TPT) API 'sini ve Teradata ODBC sürücüsünü yüklemeniz gerekir. Daha fazla bilgi için bkz. [Azure-SSIS tümleştirmesi çalışma zamanı için özel kurulum](how-to-configure-azure-ssis-ir-custom-setup.md). |
 | SAP BW bağlayıcıları | SAP BW bağlantı Yöneticisi, kaynak ve hedef Azure-SSIS IR Enterprise sürümüne önceden yüklenir. Ayrıca, Azure-SSIS IR SAP BW sürücüsünü de yüklemeniz gerekir. Bu bağlayıcılar SAP BW 7,0 veya önceki sürümleri destekler. SAP BW veya diğer SAP ürünlerinin sonraki sürümlerine bağlanmak için, Azure-SSIS IR üçüncü taraf ISV 'lerden SAP bağlayıcıları satın alabilir ve yükleyebilirsiniz. Ek bileşenleri yükleme hakkında daha fazla bilgi için bkz. [Azure-SSIS tümleştirme çalışma zamanı Için özel kurulum](how-to-configure-azure-ssis-ir-custom-setup.md). |
-| Analysis Services bileşenleri               | Veri araştırma modeli eğitimi hedefi, boyut Işleme hedefi ve bölüm Işleme hedefi, Ayrıca, veri araştırma sorgusu dönüştürmesi, Azure-SSIS IR Enterprise Edition 'da önceden yüklenir. Tüm bu bileşenler SQL Server Analysis Services (SSAS) destekler, ancak yalnızca bölüm Işleme hedefi Azure Analysis Services (AAS) destekler. SSAS 'ye bağlanmak için, [SSSıSDB 'de Windows kimlik doğrulama kimlik bilgilerini de yapılandırmanız](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)gerekir. Bu bileşenlere ek olarak, Analysis Services Execute DDL görevi, Analysis Services Işleme görevi ve veri araştırma sorgusu görevi Azure-SSIS IR Standard/Enterprise sürümüne de önceden yüklenir. |
+| Analysis Services bileşenleri               | Veri araştırma modeli eğitimi hedefi, boyut Işleme hedefi ve bölüm Işleme hedefi, Ayrıca, veri araştırma sorgusu dönüştürmesi, Azure-SSIS IR Enterprise Edition 'da önceden yüklenir. Tüm bu bileşenler SQL Server Analysis Services (SSAS) destekler, ancak yalnızca bölüm Işleme hedefi Azure Analysis Services (AAS) destekler. SSAS 'ye bağlanmak için, [SSSıSDB 'de Windows kimlik doğrulama kimlik bilgilerini de yapılandırmanız](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)gerekir. Bu bileşenlere ek olarak, Analysis Services Execute DDL görevi, Analysis Services Işleme görevi ve veri araştırma sorgusu görevi Azure-SSIS IR Standard/Enterprise sürümüne de önceden yüklenir. |
 | Benzer gruplandırma ve benzer arama dönüşümleri  | Benzer gruplandırma ve benzer arama dönüştürmeleri Azure-SSIS IR Enterprise sürümüne önceden yüklenir. Bu bileşenler, başvuru verilerini depolamak için hem SQL Server hem de Azure SQL veritabanı 'nı destekler. |
 | Terim ayıklama ve terim arama dönüşümleri | Ayıklama ve terim arama dönüştürmeleri terimi Azure-SSIS IR Enterprise sürümüne önceden yüklenir. Bu bileşenler, başvuru verilerini depolamak için hem SQL Server hem de Azure SQL veritabanı 'nı destekler. |
 

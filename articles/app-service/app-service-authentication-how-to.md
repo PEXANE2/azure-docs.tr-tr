@@ -4,12 +4,12 @@ description: Farklı senaryolar için App Service kimlik doğrulaması ve yetkil
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 93c697162bfcb51b77c2e6f48b5824b81070bf51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6120283ec240441cc62cad642bbeda0b735abc0f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816409"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637335"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -170,21 +170,21 @@ Sunucu kodunuzda sağlayıcıya özgü belirteçler istek üstbilgisine eklenir,
 
 Sağlayıcınızın erişim belirtecinin ( [oturum belirteci](#extend-session-token-expiration-grace-period)değil) süresi dolmuşsa, bu belirteci yeniden kullanmadan önce kullanıcıyı yeniden kimlik doğrulaması yapmanız gerekir. `GET`Uygulamanızın uç noktasına bir çağrı yaparak belirteç süre sonundan kaçınabilirsiniz `/.auth/refresh` . Çağrıldığında, App Service kimliği doğrulanmış kullanıcı için [belirteç deposundaki](overview-authentication-authorization.md#token-store) erişim belirteçlerini otomatik olarak yeniler. Uygulama kodunuzun belirteçleri için sonraki istekleri yenilenen belirteçleri alır. Ancak, belirteç yenilemenin çalışması için, belirteç deposu sağlayıcınız için [yenileme belirteçleri](https://auth0.com/learn/refresh-tokens/) içermelidir. Yenileme belirteçlerini almanın yöntemi her sağlayıcı tarafından belgelenmiştir, ancak aşağıdaki liste kısa bir özettir:
 
-- **Google**: `access_type=offline` API çağrın sorgu dizesi parametresini ekleyin `/.auth/login/google` . Mobile Apps SDK kullanıyorsanız, `LogicAsync` aşırı yüklerden birine parametreyi ekleyebilirsiniz (bkz. [Google Refresh belirteçleri](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
-- **Facebook**: yenileme belirteçleri sağlamıyor. Uzun süreli belirteçlerin süresi 60 gün içinde doluyor (bkz. [Facebook süre sonu ve erişim belirteçleri uzantısı](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter**: erişim belirteçlerinin süre sonu yok (bkz. [Twitter OAuth SSS](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
-- **Microsoft hesabı**: [Microsoft hesabı kimlik doğrulaması ayarlarını yapılandırırken](configure-authentication-provider-microsoft.md) `wl.offline_access` kapsamı seçin.
-- **Azure Active Directory**: içinde [https://resources.azure.com](https://resources.azure.com) , aşağıdaki adımları uygulayın:
-    1. Sayfanın üst kısmında **oku/yaz**' ı seçin.
-    2. Sol tarayıcıda, **abonelikler** > * *_ \<subscription\_name_** > **ResourceGroups** > * *_ \<resource\_group\_name> _* * > **sağlayıcıları**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings öğesine tıklayın**' e gidin. 
-    3. **Düzenle**’ye tıklayın.
+- **Google** : `access_type=offline` API çağrın sorgu dizesi parametresini ekleyin `/.auth/login/google` . Mobile Apps SDK kullanıyorsanız, `LogicAsync` aşırı yüklerden birine parametreyi ekleyebilirsiniz (bkz. [Google Refresh belirteçleri](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
+- **Facebook** : yenileme belirteçleri sağlamıyor. Uzun süreli belirteçlerin süresi 60 gün içinde doluyor (bkz. [Facebook süre sonu ve erişim belirteçleri uzantısı](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
+- **Twitter** : erişim belirteçlerinin süre sonu yok (bkz. [Twitter OAuth SSS](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
+- **Microsoft hesabı** : [Microsoft hesabı kimlik doğrulaması ayarlarını yapılandırırken](configure-authentication-provider-microsoft.md) `wl.offline_access` kapsamı seçin.
+- **Azure Active Directory** : içinde [https://resources.azure.com](https://resources.azure.com) , aşağıdaki adımları uygulayın:
+    1. Sayfanın üst kısmında **oku/yaz** ' ı seçin.
+    2. Sol tarayıcıda, **abonelikler** > * * _\<subscription\_name_** > **ResourceGroups** > * *_ \<resource\_group\_name> _* * > **sağlayıcıları**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings öğesine tıklayın** ' e gidin. 
+    3. **Düzenle** ’ye tıklayın.
     4. Aşağıdaki özelliği değiştirin. _\<app\_id>_ Erişmek istediğiniz hizmetin Azure Active Directory uygulama kimliğiyle değiştirin.
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    5. **Yerleştir**' e tıklayın. 
+    5. **Yerleştir** ' e tıklayın. 
 
 Sağlayıcınız yapılandırıldıktan sonra, belirteç deposundaki [erişim belirtecinin yenileme belirtecini ve sona erme zamanını bulabilirsiniz](#retrieve-tokens-in-app-code) . 
 
@@ -221,11 +221,11 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Oturum açma hesaplarının etki alanını sınırlayın
 
-Hem Microsoft hesabı hem de Azure Active Directory birden çok etki alanından oturum açmanızı sağlar. Örneğin, Microsoft hesabı _Outlook.com_, _Live.com_ve _hotmail.com_ hesaplarına izin verir. Azure AD, oturum açma hesapları için herhangi bir sayıda özel etki alanı sağlar. Ancak, kullanıcılarınızı kendi markalı Azure AD oturum açma sayfanıza (örneğin,) doğrudan hızlandırmak isteyebilirsiniz `contoso.com` . Oturum açma hesaplarının etki alanı adını önermek için aşağıdaki adımları izleyin.
+Hem Microsoft hesabı hem de Azure Active Directory birden çok etki alanından oturum açmanızı sağlar. Örneğin, Microsoft hesabı _Outlook.com_ , _Live.com_ ve _hotmail.com_ hesaplarına izin verir. Azure AD, oturum açma hesapları için herhangi bir sayıda özel etki alanı sağlar. Ancak, kullanıcılarınızı kendi markalı Azure AD oturum açma sayfanıza (örneğin,) doğrudan hızlandırmak isteyebilirsiniz `contoso.com` . Oturum açma hesaplarının etki alanı adını önermek için aşağıdaki adımları izleyin.
 
-İçinde [https://resources.azure.com](https://resources.azure.com) , **abonelikler** > * *_ \<subscription\_name_** > **ResourceGroups** > * *_ \<resource\_group\_name> _* * > **sağlayıcıları**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings öğesine tıklayın**' e gidin. 
+İçinde [https://resources.azure.com](https://resources.azure.com) , **abonelikler** > * * _\<subscription\_name_** > **ResourceGroups** > * *_ \<resource\_group\_name> _* * > **sağlayıcıları**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings öğesine tıklayın** ' e gidin. 
 
-**Düzenle**' ye tıklayın, aşağıdaki özelliği değiştirin ve ardından **Yerleştir**' e tıklayın. İstediğiniz _\<domain\_name>_ etki alanı ile değiştirdiğinizden emin olun.
+**Düzenle** ' ye tıklayın, aşağıdaki özelliği değiştirin ve ardından **Yerleştir** ' e tıklayın. İstediğiniz _\<domain\_name>_ etki alanı ile değiştirdiğinizden emin olun.
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
@@ -247,13 +247,13 @@ App Service en basit yetkilendirme durumu (yani, kimliği doğrulanmamış istek
 
 ### <a name="server-level-windows-apps-only"></a>Sunucu düzeyi (yalnızca Windows uygulamaları)
 
-Herhangi bir Windows uygulaması için, *Web.config* dosyasını düzenleyerek IIS Web sunucusunun yetkilendirme davranışını tanımlayabilirsiniz. Linux uygulamaları IIS kullanmaz ve *Web.config*aracılığıyla yapılandırılamaz.
+Herhangi bir Windows uygulaması için, *Web.config* dosyasını düzenleyerek IIS Web sunucusunun yetkilendirme davranışını tanımlayabilirsiniz. Linux uygulamaları IIS kullanmaz ve *Web.config* aracılığıyla yapılandırılamaz.
 
 1. `https://<app-name>.scm.azurewebsites.net/DebugConsole` sayfasına gidin
 
-1. App Service dosyalarınızın tarayıcı Gezgini ' nde, *site/Wwwroot ' ya*gidin. *Web.config* yoksa, **+**  >  **yeni dosya**' yı seçerek oluşturun. 
+1. App Service dosyalarınızın tarayıcı Gezgini ' nde, *site/Wwwroot ' ya* gidin. *Web.config* yoksa, **+**  >  **yeni dosya** ' yı seçerek oluşturun. 
 
-1. *Web.config* düzenlemek için kurşun kalem ' i seçin. Aşağıdaki yapılandırma kodunu ekleyin ve **Kaydet**' e tıklayın. *Web.config* zaten varsa, `<authorization>` öğeyi içindeki her şeyi eklemeniz yeterlidir. Öğesinde izin vermek istediğiniz hesapları ekleyin `<allow>` .
+1. *Web.config* düzenlemek için kurşun kalem ' i seçin. Aşağıdaki yapılandırma kodunu ekleyin ve **Kaydet** ' e tıklayın. *Web.config* zaten varsa, `<authorization>` öğeyi içindeki her şeyi eklemeniz yeterlidir. Öğesinde izin vermek istediğiniz hesapları ekleyin `<allow>` .
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -393,7 +393,7 @@ Aşağıdakiler dosya içinde olası yapılandırma seçeneklerini tüketmektedi
             "graphApiVersion": "v3.3",
             "login": {
                 "scopes": [
-                    "profile",
+                    "public_profile",
                     "email"
                 ]
             },

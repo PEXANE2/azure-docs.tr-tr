@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: c549e8169ad7fc7a5eb7f810d76deb33af0e5f65
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a77b6472ea91a6ba4b6e31d1b7739aae236a1783
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92508987"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636162"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Öğretici: Work.com ile tümleştirme Azure Active Directory
 
@@ -129,11 +129,11 @@ Azure AD çoklu oturum açmayı Work.com ile yapılandırmak için aşağıdaki 
 
 2. **Kurulum** 'a gidin.
    
-    ![Kurulum](./media/work-com-tutorial/ic794108.png "Kurulum")
+    ![Ekran görüntüsü Kullanıcı menüsünden Seçili kurulumu gösterir.](./media/work-com-tutorial/ic794108.png "Kurulum")
 
 3. Sol gezinti bölmesindeki **Yönet** bölümünde, **etki alanı yönetimi** ' ne tıklayarak ilgili bölümü genişletin ve **sonra etki alanım ' a** tıklayarak etki **alanım** sayfasını açın. 
    
-    ![Etki alanım](./media/work-com-tutorial/ic767825.png "Etki alanım")
+    ![Ekran görüntüsü, etki alanım seçili etki alanı yönetimi Yönetim bölmesinde gösterir.](./media/work-com-tutorial/ic767825.png "Etki alanım")
 
 4. Etki alanınızı doğru şekilde ayarlandığını doğrulamak için, bu, " **kullanıcılara dağıtılan 4. adım** " içinde olduğundan emin olun ve " **etki alanı** ayarlarımı" gözden geçirin.
    
@@ -143,7 +143,7 @@ Azure AD çoklu oturum açmayı Work.com ile yapılandırmak için aşağıdaki 
 
 6. **Kurulum** 'a gidin.
     
-    ![Kurulum](./media/work-com-tutorial/ic794108.png "Kurulum")
+    ![Ekran görüntüsü Kullanıcı menüsünden Seçili kurulumu gösterir.](./media/work-com-tutorial/ic794108.png "Kurulum")
 
 7. **Güvenlik denetimleri** menüsünü genişletin ve sonra **tek Sign-On ayarları** ' na tıklayın.
     
@@ -186,15 +186,15 @@ Azure AD çoklu oturum açmayı Work.com ile yapılandırmak için aşağıdaki 
 
 10. Work.com Klasik portalda, sol gezinti bölmesinde, **etki alanı yönetimi** ' ne tıklayarak ilgili bölümü genişletin **ve etki alanım ' a** tıklayarak etki **alanım** sayfasını açın. 
     
-    ![Etki alanım](./media/work-com-tutorial/ic794115.png "Etki alanım")
+    ![Ekran görüntüsü etki alanı yönetiminden seçilen etki alanım 'ı gösterir.](./media/work-com-tutorial/ic794115.png "Etki alanım")
 
 11. **Etki alanım** sayfasında, **oturum açma sayfası markalama** bölümünde **Düzenle** ' ye tıklayın.
     
-    ![Oturum açma sayfası markası](./media/work-com-tutorial/ic767826.png "Oturum açma sayfası markası")
+    ![Ekran görüntüsü, Düzenle ' yi seçebileceğiniz oturum açma sayfası markalama bölümünü gösterir.](./media/work-com-tutorial/ic767826.png "Oturum açma sayfası markası")
 
 12. **Oturum açma sayfası markalama** sayfasında, **kimlik doğrulama HIZMETI** bölümünde **SAML SSO ayarlarınızın** adı görüntülenir. Seçin ve ardından **Kaydet** ' e tıklayın.
     
-    ![Oturum açma sayfası markası](./media/work-com-tutorial/ic784366.png "Oturum açma sayfası markası")
+    ![Ekran görüntüsü; oturum açma sayfası markasını gösterir ve bu da, P P E olan, ayarlarınızın adını seçebilirsiniz.](./media/work-com-tutorial/ic784366.png "Oturum açma sayfası markası")
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -256,11 +256,11 @@ Azure Active Directory kullanıcıların oturum açabilmeleri için, Work.com ' 
 
 2. **Kurulum** 'a gidin.
    
-    ![Kurulum](./media/work-com-tutorial/IC794108.png "Kurulum")
+    ![Ekran görüntüsü Kullanıcı menüsünden Seçili kurulumu gösterir.](./media/work-com-tutorial/ic794108.png "Kurulum")
 
 3. **Kullanıcıları Yönet \>** ' e gidin.
    
-    ![Kullanıcıları Yönet](./media/work-com-tutorial/IC784369.png "Kullanıcıları Yönet")
+    ![Kullanıcıları yönetme](./media/work-com-tutorial/IC784369.png "Kullanıcıları Yönet")
 
 4. **Yeni Kullanıcı** ' ya tıklayın.
    

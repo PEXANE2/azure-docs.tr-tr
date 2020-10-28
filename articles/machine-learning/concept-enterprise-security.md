@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: fef41a177f653dc67835897a48d734400a37a0d0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 60a18591687eb7953063e16397719191eece7844
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496004"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637097"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -111,7 +111,7 @@ Ayrıca, çalışma alanınız için Azure özel bağlantısını etkinleştireb
 ## <a name="data-encryption"></a>Veri şifrelemesi
 
 > [!IMPORTANT]
-> __Eğitim__sırasında üretim sınıfı şifrelemesi için, Microsoft Azure Machine Learning işlem kümesi kullanmayı önerir. Microsoft __, Microsoft__Azure Kubernetes hizmetini kullanarak üretim sınıfı şifrelemesi için önerilir.
+> __Eğitim__ sırasında üretim sınıfı şifrelemesi için, Microsoft Azure Machine Learning işlem kümesi kullanmayı önerir. Microsoft __, Microsoft__ Azure Kubernetes hizmetini kullanarak üretim sınıfı şifrelemesi için önerilir.
 >
 > Azure Machine Learning işlem örneği bir geliştirme/test ortamıdır. Bunu kullanırken, dosya paylaşımında Not defterleri ve betikler gibi dosyalarınızı depolamanızı öneririz. Verileriniz bir veri deposunda depolanmalıdır.
 
@@ -158,12 +158,7 @@ Abonelikinizde müşteri tarafından yönetilen anahtarlarla Cosmos DB bir örne
         > [!NOTE]
         > Bu Anahtar Kasası örneği, çalışma alanını sağladığınızda Azure Machine Learning tarafından oluşturulan anahtar kasasından farklı olabilir. Çalışma alanı için aynı Anahtar Kasası örneğini kullanmak istiyorsanız, [key_vault parametresini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)kullanarak çalışma alanını sağlarken aynı anahtar kasasını geçirin. 
 
-Bu Cosmos DB örnek, aboneliğinizdeki Microsoft tarafından yönetilen bir kaynak grubunda ve ihtiyaç duyacağı tüm kaynaklarla birlikte oluşturulur. Yönetilen kaynak grubu biçiminde adlandırılır `<AML Workspace Resource Group Name><GUID>` . Azure Machine Learning çalışma alanınız özel bir uç nokta kullanıyorsa, Cosmos DB örneği için bir sanal ağ de oluşturulur. Bu sanal ağ Cosmos DB ve Azure Machine Learning arasındaki iletişimin güvenliğini sağlamak için kullanılır.
-
-> [!IMPORTANT]
-> * Bu Cosmos DB örneğini içeren kaynak grubunu veya bu grupta otomatik olarak oluşturulan kaynakları silmeyin. Kaynak grubunu, Cosmos DB örneğini, vb. silmeniz gerekiyorsa, onu kullanan Azure Machine Learning çalışma alanını silmeniz gerekir. Kaynak grubu, Cosmos DB örneği ve diğer otomatik oluşturulan kaynaklar ilişkili çalışma alanı silindiğinde silinir.
-> * Bu Cosmos DB hesabının varsayılan [__Istek birimleri__](../cosmos-db/request-units.md) __8000__' de ayarlanır. Bu değerin değiştirilmesi desteklenmez.
-> * Oluşturulan Cosmos DB örneğiyle birlikte kullanmak için kendi VNet 'i sağlayamezsiniz. Ayrıca sanal ağı değiştiremezsiniz. Örneğin, kullandığı IP adres aralığını değiştiremezsiniz.
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 Anahtarınızı __döndürmenize veya iptal__ etmeniz gerekiyorsa, bunu istediğiniz zaman yapabilirsiniz. Bir anahtar döndürürken Cosmos DB, bekleyen verileri şifrelemek için yeni anahtarı (en son sürüm) kullanmaya başlar. Bir anahtarı iptal ettiğinizde (devre dışı bırakırken), Cosmos DB başarısız isteklerden yararlanır. Genellikle döndürme veya İptalin etkili olması için bir saat sürer.
 
@@ -261,7 +256,7 @@ Microsoft, otomatik Machine Learning gibi hizmetleri kullanırken, birden çok m
 
 ### <a name="metrics"></a>Ölçümler
 
-Azure Machine Learning çalışma alanınızın ölçümlerini görüntülemek ve izlemek için Azure Izleyici ölçümlerini kullanabilirsiniz. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin ve ardından **ölçümler**' i seçin:
+Azure Machine Learning çalışma alanınızın ölçümlerini görüntülemek ve izlemek için Azure Izleyici ölçümlerini kullanabilirsiniz. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin ve ardından **ölçümler** ' i seçin:
 
 [![Bir çalışma alanı için örnek ölçümleri gösteren ekran görüntüsü](media/concept-enterprise-security/workspace-metrics.png)](media/concept-enterprise-security/workspace-metrics-expanded.png#lightbox)
 
@@ -371,8 +366,8 @@ Ayrıntılar aşağıda verilmiştir:
 
 [Azure ilkesi](/azure/governance/policy) , Azure kaynaklarının ilkelerinizle uyumlu olduğundan emin olmanızı sağlayan bir idare aracıdır. Azure Machine Learning, aşağıdaki ilkeleri atayabilirsiniz:
 
-* **Müşteri tarafından yönetilen anahtar**: çalışma alanlarının müşteri tarafından yönetilen anahtar kullanması gerekip gerekmediğini denetleyin veya zorlayın.
-* **Özel bağlantı**: çalışma alanlarının bir sanal ağla iletişim kurmak için özel uç nokta kullanıp kullanmadığını denetleyin.
+* **Müşteri tarafından yönetilen anahtar** : çalışma alanlarının müşteri tarafından yönetilen anahtar kullanması gerekip gerekmediğini denetleyin veya zorlayın.
+* **Özel bağlantı** : çalışma alanlarının bir sanal ağla iletişim kurmak için özel uç nokta kullanıp kullanmadığını denetleyin.
 
 Azure Ilkesi hakkında daha fazla bilgi için bkz. [Azure ilkesi belgeleri](/azure/governance/policy/overview).
 

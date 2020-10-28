@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440516"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635771"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory Hakkında SSS
 
@@ -67,10 +67,10 @@ Kullanıcılar, Data Factory v2 ile arabirim sağlamak için belgelenen REST API
 ### <a name="iterative-development-and-debugging-by-using-visual-tools"></a>Görsel araçları kullanarak yinelemeli geliştirme ve hata ayıklama
 Azure Data Factory görsel araçları, yinelemeli geliştirme ve hata ayıklamayı etkinleştirir. İşlem hatlarınızı, tek bir kod satırı yazmadan işlem hattı tuvalindeki **hata ayıklama** özelliğini kullanarak oluşturabilirsiniz ve test çalıştırmaları yapabilirsiniz. Test çalıştırmalarının sonuçlarını ardışık düzen tuvaliniz **Çıkış** penceresinde görüntüleyebilirsiniz. Test çalıştıralım başarılı olduktan sonra, işlem hattınızı daha fazla etkinlik ekleyebilir ve hata ayıklamaya yinelemeli bir şekilde devam edebilirsiniz. Ayrıca, devam eden test çalıştırmalarınızı iptal edebilirsiniz. 
 
-**Hata Ayıkla**seçmeden önce Data Factory hizmetinde yaptığınız değişiklikleri yayımlamanız gerekmez. Bu, geliştirme, test veya üretim ortamlarında Veri Fabrikası iş akışlarınızı güncelleştirmeden önce yeni eklemelerin veya değişikliklerin beklendiği gibi çalıştığından emin olmak istediğiniz senaryolarda yararlı olacaktır. 
+**Hata Ayıkla** seçmeden önce Data Factory hizmetinde yaptığınız değişiklikleri yayımlamanız gerekmez. Bu, geliştirme, test veya üretim ortamlarında Veri Fabrikası iş akışlarınızı güncelleştirmeden önce yeni eklemelerin veya değişikliklerin beklendiği gibi çalıştığından emin olmak istediğiniz senaryolarda yararlı olacaktır. 
 
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>SSIS paketlerini Azure 'a dağıtma olanağı 
-SSIS iş yüklerinizi taşımak istiyorsanız, bir Data Factory oluşturabilir ve bir Azure-SSIS tümleştirme çalışma zamanı sağlayabilirsiniz. Azure-SSIS Integration Runtime, bulutta SSIS paketlerinizi çalıştırmaya ayrılmış Azure VM 'lerin (düğümler) tam yönetilen bir kümesidir. Adım adım yönergeler için bkz. [SSIS paketlerini Azure 'A dağıtma](tutorial-create-azure-ssis-runtime-portal.md) öğreticisi. 
+SSIS iş yüklerinizi taşımak istiyorsanız, bir Data Factory oluşturabilir ve bir Azure-SSIS tümleştirme çalışma zamanı sağlayabilirsiniz. Azure-SSIS Integration Runtime, bulutta SSIS paketlerinizi çalıştırmaya ayrılmış Azure VM 'lerin (düğümler) tam yönetilen bir kümesidir. Adım adım yönergeler için bkz. [SSIS paketlerini Azure 'A dağıtma](./tutorial-deploy-ssis-packages-azure.md) öğreticisi. 
  
 ### <a name="sdks"></a>SDK’lar
 İleri düzey bir kullanıcıysanız ve bir programlama arabirimi arıyorsanız Data Factory, sık kullandığınız IDE 'yi kullanarak işlem hatlarını yazmak, yönetmek veya izlemek için kullanabileceğiniz zengin bir SDK kümesi sağlar. Dil desteği .NET, PowerShell, Python ve REST içerir.
@@ -95,9 +95,9 @@ Veri fabrikalarınızı PowerShell, SDK veya tarayıcı kullanıcı arabiriminde
 ## <a name="what-is-the-integration-runtime"></a>Tümleştirme çalışma zamanı nedir?
 Integration Runtime, farklı ağ ortamlarında aşağıdaki veri tümleştirme yeteneklerini sağlamak için Azure Data Factory tarafından kullanılan işlem altyapısıdır:
 
-- **Veri taşıma**: veri taşıma için Integration Runtime, verileri kaynak ve hedef veri depoları arasında taşılarken, yerleşik bağlayıcılar, biçim dönüştürme, sütun eşleme, performans ve ölçeklenebilir veri aktarımı için destek sağlar.
-- **Dağıtım etkinlikleri**: dönüştürme için Integration RUNTIME, SSIS paketlerini yerel olarak yürütme yeteneği sağlar.
-- **SSIS paketlerini yürütme**: Integration RUNTIME, SSIS paketlerini yönetilen bir Azure işlem ortamında yerel olarak yürütür. Integration Runtime Ayrıca Azure HDInsight, Azure Machine Learning, SQL veritabanı ve SQL Server gibi çeşitli bilgi işlem hizmetlerinde çalışan dönüştürme etkinliklerinin dağıtımını ve izlenmesini de destekler.
+- **Veri taşıma** : veri taşıma için Integration Runtime, verileri kaynak ve hedef veri depoları arasında taşılarken, yerleşik bağlayıcılar, biçim dönüştürme, sütun eşleme, performans ve ölçeklenebilir veri aktarımı için destek sağlar.
+- **Dağıtım etkinlikleri** : dönüştürme için Integration RUNTIME, SSIS paketlerini yerel olarak yürütme yeteneği sağlar.
+- **SSIS paketlerini yürütme** : Integration RUNTIME, SSIS paketlerini yönetilen bir Azure işlem ortamında yerel olarak yürütür. Integration Runtime Ayrıca Azure HDInsight, Azure Machine Learning, SQL veritabanı ve SQL Server gibi çeşitli bilgi işlem hizmetlerinde çalışan dönüştürme etkinliklerinin dağıtımını ve izlenmesini de destekler.
 
 Tümleştirme çalışma zamanının bir veya daha fazla örneğini verileri taşımak ve dönüştürmek için gerektiği gibi dağıtabilirsiniz. Integration Runtime, Azure genel ağında veya özel bir ağda (Şirket içi, Azure sanal ağı veya Amazon Web Services sanal özel bulut [VPC]) çalıştırılabilir. 
 
@@ -159,7 +159,7 @@ Azure Data Factory fiyatlandırma ayrıntıları için bkz. [Data Factory fiyatl
 Azure Data Factory hakkında en güncel bilgiler için aşağıdaki sitelere gidin:
 
 - [Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-- [Belgeler giriş sayfası](/azure/data-factory)
+- [Belgeler giriş sayfası](./index.yml)
 - [Ürün giriş sayfası](https://azure.microsoft.com/services/data-factory/)
 
 ## <a name="technical-deep-dive"></a>Teknik kapsamlı bakış 

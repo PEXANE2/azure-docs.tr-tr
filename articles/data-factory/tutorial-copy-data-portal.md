@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: becebf5e56840b8430dd8d4a7714229503e677da
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85253977"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637131"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamadan Azure SQL veritabanı 'ndaki bir veritabanına veri kopyalama
 
@@ -39,9 +39,9 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* **Azure depolama hesabı**. Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md).
-* **Azure SQL veritabanı**. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) bölümüne bakın.
+* **Azure aboneliği** . Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
+* **Azure depolama hesabı** . Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md).
+* **Azure SQL veritabanı** . Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) bölümüne bakın.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Bir blob ve SQL tablosu oluşturma
 
@@ -75,31 +75,31 @@ Aşağıdaki adımları uygulayarak öğretici için Blob depolama alanınızı 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Azure hizmetlerinin SQL Server’a erişmesine izin ver. Data Factory’nin SQL Server’ınıza veri yazabilmesi için SQL Server’ınız için **Azure hizmetlerine erişime izin ver** ayarının **AÇIK** olduğundan emin olun. Bu ayarı doğrulamak ve etkinleştirmek için, mantıksal SQL Server > genel bakış > sunucu güvenlik duvarını ayarla ' ya gidin> **Azure hizmetlerine erişime Izin ver** seçeneğini **Açık**olarak ayarlayın.
+1. Azure hizmetlerinin SQL Server’a erişmesine izin ver. Data Factory’nin SQL Server’ınıza veri yazabilmesi için SQL Server’ınız için **Azure hizmetlerine erişime izin ver** ayarının **AÇIK** olduğundan emin olun. Bu ayarı doğrulamak ve etkinleştirmek için, mantıksal SQL Server > genel bakış > sunucu güvenlik duvarını ayarla ' ya gidin> **Azure hizmetlerine erişime Izin ver** seçeneğini **Açık** olarak ayarlayın.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem hattı oluşturmak için Data Factory kullanıcı arabirimini başlatacaksınız.
 
-1. **Microsoft Edge** veya **Google Chrome**'ı açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-2. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory**oluştur ' u seçin.
+1. **Microsoft Edge** veya **Google Chrome** 'ı açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
+2. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory** oluştur ' u seçin.
 3. **Yeni veri fabrikası** sayfasında **Ad** bölümüne **ADFTutorialDataFactory** girin.
 
-   Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Ad değeriyle ilgili bir hata iletisi alırsanız, veri fabrikası için farklı bir ad girin. (örneğin, Adınızadftutorialdatafactory). Data Factory yapıtlarının adlandırma kuralları için bkz.[Data Factory adlandırma kuralları](naming-rules.md).
+   Azure veri fabrikasının adı *genel olarak benzersiz* olmalıdır. Ad değeriyle ilgili bir hata iletisi alırsanız, veri fabrikası için farklı bir ad girin. (örneğin, Adınızadftutorialdatafactory). Data Factory yapıtlarının adlandırma kuralları için bkz.[Data Factory adlandırma kuralları](naming-rules.md).
 
      ![Yeni veri fabrikası](./media/doc-common-process/name-not-available-error.png)
 4. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğinizi** seçin.
 5. **Kaynak Grubu** için aşağıdaki adımlardan birini uygulayın:
 
-    a. **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
+    a. **Var olanı kullan** ’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
 
-    b. **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin. 
+    b. **Yeni oluştur** ’u seçin ve bir kaynak grubunun adını girin. 
          
     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md). 
-6. **Sürüm** bölümünde **V2**'yi seçin.
+6. **Sürüm** bölümünde **V2** 'yi seçin.
 7. **Konum** bölümünden veri fabrikası için bir konum seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları (örneğin, Azure Depolama ve SQL Veritabanı) ve işlemler (örneğin, Azure HDInsight) başka bölgelerde olabilir.
-8. **Oluştur**’u seçin.
+8. **Oluştur** ’u seçin.
 9. Oluşturma işlemi tamamlandıktan sonra, Bildirim Merkezi ' nde bildirimi görürsünüz. Data Factory sayfasına gitmek için **Kaynağa Git** ' i seçin.
-10. Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede başlatmak için **Geliştir ve İzle**’yi seçin.
+10. Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede başlatmak için **Geliştir ve İzle** ’yi seçin.
 
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
@@ -115,7 +115,7 @@ Bu öğreticide işlem hattını oluşturmaya başlayacaksınız. Daha sonra iş
 
    ![İşlem hattı oluşturma](./media/doc-common-process/get-started-page.png)
 
-1. 1. Genel panelinde **Özellikler**altında, **ad**için **copypipeline** ' yı belirtin. Sonra sağ üst köşedeki Özellikler simgesine tıklayarak paneli daraltın.
+1. 1. Genel panelinde **Özellikler** altında, **ad** için **copypipeline** ' yı belirtin. Sonra sağ üst köşedeki Özellikler simgesine tıklayarak paneli daraltın.
 
 1. **Etkinlikler** araç kutusunda **taşıma ve dönüştürme** kategorisini genişletin ve araç kutusundan **veri kopyalama** etkinliğini sürükleyin ve ardışık düzen Tasarımcısı yüzeyine bırakın. **Ad** için **CopyFromBlobToSql** adını belirtin.
 
@@ -124,37 +124,37 @@ Bu öğreticide işlem hattını oluşturmaya başlayacaksınız. Daha sonra iş
 ### <a name="configure-source"></a>Kaynağı yapılandırma
 
 >[!TIP]
->Bu öğreticide, *hesap anahtarını* kaynak veri deponuzu kimlik doğrulama türü olarak kullanacaksınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: *SAS URI 'Si*,*hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties) ilgili bölümlere bakın.
->Veri depolarının gizli dizilerini güvenli bir şekilde depolamak için bir Azure Key Vault kullanılması da önerilir. Ayrıntılı çizimler için [Bu makaleye](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) bakın.
+>Bu öğreticide, *hesap anahtarını* kaynak veri deponuzu kimlik doğrulama türü olarak kullanacaksınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: *SAS URI 'Si* , *hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](./connector-azure-blob-storage.md#linked-service-properties) ilgili bölümlere bakın.
+>Veri depolarının gizli dizilerini güvenli bir şekilde depolamak için bir Azure Key Vault kullanılması da önerilir. Ayrıntılı çizimler için [Bu makaleye](./store-credentials-in-key-vault.md) bakın.
 
 1. **Kaynak** sekmesine gidin. Kaynak veri kümesi oluşturmak için **+ Yeni** seçeneğini belirleyin.
 
-1. **Yeni veri kümesi** Iletişim kutusunda **Azure Blob depolama**' yı seçin ve ardından **devam**' ı seçin. Kaynak veriler bir Blob depolama alanında olduğundan kaynak veri kümesi olarak **Azure Blob Depolama Alanı**'nı seçmeniz gerekir.
+1. **Yeni veri kümesi** Iletişim kutusunda **Azure Blob depolama** ' yı seçin ve ardından **devam** ' ı seçin. Kaynak veriler bir Blob depolama alanında olduğundan kaynak veri kümesi olarak **Azure Blob Depolama Alanı** 'nı seçmeniz gerekir.
 
-1. **Biçim Seç** iletişim kutusunda verilerinizin biçim türünü seçin ve ardından **devam**' ı seçin.
+1. **Biçim Seç** iletişim kutusunda verilerinizin biçim türünü seçin ve ardından **devam** ' ı seçin.
 
-1. **Özellikleri ayarla** Iletişim kutusunda ad Için **sourceblobdataset** girin. **Üst bilgi olarak ilk satır**onay kutusunu seçin. **Bağlı hizmet** metin kutusu altında **+ Yeni**' yi seçin.
+1. **Özellikleri ayarla** Iletişim kutusunda ad Için **sourceblobdataset** girin. **Üst bilgi olarak ilk satır** onay kutusunu seçin. **Bağlı hizmet** metin kutusu altında **+ Yeni** ' yi seçin.
 
 1. **Yeni bağlı hizmet (Azure Blob depolama)** Iletişim kutusunda **AzureStorageLinkedService** as Name yazın, **depolama hesabı adı** listesinden depolama hesabınızı seçin. Bağlantıyı test edin, bağlantılı hizmeti dağıtmak için **Oluştur** ' u seçin.
 
-1. Bağlı hizmet oluşturulduktan sonra, **özelliği ayarla** sayfasına geri gidilmesini sağlar. **Dosya yolu**’nun yanındaki **Gözat** seçeneğini belirleyin.
+1. Bağlı hizmet oluşturulduktan sonra, **özelliği ayarla** sayfasına geri gidilmesini sağlar. **Dosya yolu** ’nun yanındaki **Gözat** seçeneğini belirleyin.
 
-1. **Adföğreticisi/giriş** klasörüne gidin, **emp.txt** dosyasını seçin ve ardından **Tamam**' ı seçin.
+1. **Adföğreticisi/giriş** klasörüne gidin, **emp.txt** dosyasını seçin ve ardından **Tamam** ' ı seçin.
 
-1. **Tamam**’ı seçin. Otomatik olarak işlem hattı sayfasına gider. **Kaynak** sekmesinde **sourceblobdataset** ' in seçili olduğunu onaylayın. Bu sayfadaki verilerin önizlemesini görüntülemek için **Veri önizleme **‘yi seçin.
+1. **Tamam** ’ı seçin. Otomatik olarak işlem hattı sayfasına gider. **Kaynak** sekmesinde **sourceblobdataset** ' in seçili olduğunu onaylayın. Bu sayfadaki verilerin önizlemesini görüntülemek için **Veri önizleme** ‘yi seçin.
 
     ![Kaynak veri kümesi](./media/tutorial-copy-data-portal/source-dataset-selected.png)
 
 ### <a name="configure-sink"></a>Havuzu yapılandırma
 >[!TIP]
->Bu öğreticide, havuz veri deponuzda kimlik doğrulama türü olarak *SQL kimlik doğrulamasını* kullanırsınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: *hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties) ilgili bölümlere bakın.
->Veri depolarının gizli dizilerini güvenli bir şekilde depolamak için bir Azure Key Vault kullanılması da önerilir. Ayrıntılı çizimler için [Bu makaleye](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) bakın.
+>Bu öğreticide, havuz veri deponuzda kimlik doğrulama türü olarak *SQL kimlik doğrulamasını* kullanırsınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: *hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](./connector-azure-sql-database.md#linked-service-properties) ilgili bölümlere bakın.
+>Veri depolarının gizli dizilerini güvenli bir şekilde depolamak için bir Azure Key Vault kullanılması da önerilir. Ayrıntılı çizimler için [Bu makaleye](./store-credentials-in-key-vault.md) bakın.
 
 1. **Havuz** sekmesine gidin ve havuz veri kümesi oluşturmak için **+Yeni** seçeneğini belirleyin.
 
-1. **Yeni veri kümesi** iletişim kutusunda, bağlayıcılar filtrelemek için arama kutusuna "SQL" girin, **Azure SQL veritabanı**' nı seçin ve ardından **devam**' ı seçin. Bu öğreticide verileri bir SQL veritabanına kopyalayacaksınız.
+1. **Yeni veri kümesi** iletişim kutusunda, bağlayıcılar filtrelemek için arama kutusuna "SQL" girin, **Azure SQL veritabanı** ' nı seçin ve ardından **devam** ' ı seçin. Bu öğreticide verileri bir SQL veritabanına kopyalayacaksınız.
 
-1. **Özellikleri ayarla** Iletişim kutusunda ad Için **outputsqldataset** girin. **Bağlı hizmet** açılan listesinden **+ Yeni**' yi seçin. Bağlı hizmeti bir veri kümesi ile ilişkilendirilmelidir. Bağlı hizmetin, Data Factory çalışma zamanında SQL veritabanına bağlanmak için kullandığı bağlantı dizesi vardır. Veri kümesi, verilerin kopyalanacağı kapsayıcıyı, klasörü ve dosyayı (isteğe bağlı) belirtilir.
+1. **Özellikleri ayarla** Iletişim kutusunda ad Için **outputsqldataset** girin. **Bağlı hizmet** açılan listesinden **+ Yeni** ' yi seçin. Bağlı hizmeti bir veri kümesi ile ilişkilendirilmelidir. Bağlı hizmetin, Data Factory çalışma zamanında SQL veritabanına bağlanmak için kullandığı bağlantı dizesi vardır. Veri kümesi, verilerin kopyalanacağı kapsayıcıyı, klasörü ve dosyayı (isteğe bağlı) belirtilir.
 
 1. **Yeni bağlı hizmet (Azure SQL veritabanı)** iletişim kutusunda aşağıdaki adımları uygulayın:
 
@@ -162,50 +162,50 @@ Bu öğreticide işlem hattını oluşturmaya başlayacaksınız. Daha sonra iş
 
     b. **Sunucu adı** bölümünde SQL Server örneğinizi seçin.
 
-    c. **Veritabanı adı**altında, veritabanınızı seçin.
+    c. **Veritabanı adı** altında, veritabanınızı seçin.
 
     d. **Kullanıcı adı** bölümüne kullanıcının adını girin.
 
     e. **Parola** bölümüne kullanıcının parolasını girin.
 
-    f. Bağlantıyı test etmek için **Bağlantıyı sına**’yı seçin.
+    f. Bağlantıyı test etmek için **Bağlantıyı sına** ’yı seçin.
 
     örneğin: Bağlı hizmeti dağıtmak için **Oluştur** ' u seçin.
 
     ![Yeni bağlı hizmeti kaydedin](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. Otomatik olarak **ayarlanan özellikler** iletişim kutusuna gider. **Tablo**’da **[dbo].[emp]** seçeneğini belirleyin. Ardından **Tamam**'ı seçin.
+1. Otomatik olarak **ayarlanan özellikler** iletişim kutusuna gider. **Tablo** ’da **[dbo].[emp]** seçeneğini belirleyin. Ardından **Tamam** ’ı seçin.
 
-1. İşlem hattının bulunduğu sekmeye gidin ve **Havuz Veri Kümesi**’nde **OutputSqlDataset** seçeneğinin belirlendiğinden emin olun.
+1. İşlem hattının bulunduğu sekmeye gidin ve **Havuz Veri Kümesi** ’nde **OutputSqlDataset** seçeneğinin belirlendiğinden emin olun.
 
     ![İşlem hattı sekmesi](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
 
 [Kopyalama etkinliğinde şema eşlemesini](copy-activity-schema-and-type-mapping.md)izleyerek kaynak şemasını isteğe bağlı hedef şemasına eşleyebilirsiniz.
 
 ## <a name="validate-the-pipeline"></a>İşlem hattını doğrulama
-İşlem hattını doğrulamak için araç çubuğundan **Doğrula**'yı seçin.
+İşlem hattını doğrulamak için araç çubuğundan **Doğrula** 'yı seçin.
 
 Sağ üstteki **kod** ' a tıklayarak işlem hattı Ile ilişkili JSON kodunu görebilirsiniz.
 
 ## <a name="debug-and-publish-the-pipeline"></a>İşlem hattında hata ayıklama ve işlem hattını yayımlama
 Yapıtları (bağlı hizmetler, veri kümeleri ve işlem hattı) Data Factory'de veya kendi Azure Repos Git deponuzda yayımlamadan önce işlem hattında hata ayıklayabilirsiniz.
 
-1. İşlem hattında hata ayıklamak için araç çubuğunda **Hata Ayıkla**'yı seçin. Pencerenin altındaki **Çıkış** sekmesinde işlem hattı çalıştırmasının durumu görüntülenir.
+1. İşlem hattında hata ayıklamak için araç çubuğunda **Hata Ayıkla** 'yı seçin. Pencerenin altındaki **Çıkış** sekmesinde işlem hattı çalıştırmasının durumu görüntülenir.
 
-1. İşlem hattı başarıyla çalıştırıldığında, üstteki araç çubuğunda **Tümünü Yayımla**' yı seçin. Bu eylem, oluşturduğunuz varlıkları (veri kümeleri ve işlem hatları) Data Factory'de yayımlar.
+1. İşlem hattı başarıyla çalıştırıldığında, üstteki araç çubuğunda **Tümünü Yayımla** ' yı seçin. Bu eylem, oluşturduğunuz varlıkları (veri kümeleri ve işlem hatları) Data Factory'de yayımlar.
 
-1. **Başarıyla yayımlandı** iletisini görene kadar bekleyin. Bildirim iletilerini görmek için sağ üstteki **Bildirimleri Göster**'e (zil düğmesi) tıklayın.
+1. **Başarıyla yayımlandı** iletisini görene kadar bekleyin. Bildirim iletilerini görmek için sağ üstteki **Bildirimleri Göster** 'e (zil düğmesi) tıklayın.
 
 ## <a name="trigger-the-pipeline-manually"></a>İşlem hattını el ile tetikleme
 Bu adımda, önceki adımda yayımladığınız işlem hattını el ile tetiklersiniz.
 
-1. Araç çubuğunda **Tetikleyici**’yi ve sonra **Şimdi Tetikle**’yi seçin. İşlem **hattı çalıştırma** sayfasında **Tamam**' ı seçin.  
+1. Araç çubuğunda **Tetikleyici** ’yi ve sonra **Şimdi Tetikle** ’yi seçin. İşlem **hattı çalıştırma** sayfasında **Tamam** ' ı seçin.  
 
 1. Soldaki **İzleyici** sekmesine gidin. El ile tetikleme tarafından tetiklenmiş bir işlem hattı çalıştırması görürsünüz. Etkinlik ayrıntılarını görüntülemek ve işlem hattını yeniden çalıştırmak için işlem **hattı adı** sütununun altındaki bağlantıları kullanabilirsiniz.
 
     [![İşlem hattı çalıştırmalarını izleme](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox)
 
-1. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görmek için, işlem **hattı adı** sütununun altındaki **copypipeline** bağlantısını seçin. Bu örnekte yalnızca bir etkinlik bulunur, bu nedenle listede yalnızca bir giriş görürsünüz. Kopyalama işlemi hakkında daha fazla bilgi için **etkınlık adı** sütununun altındaki **Ayrıntılar** bağlantısını (eyegözlük simgesi) seçin. İşlem hattı çalıştırmaları görünümüne dönmek için üstteki **tüm işlem hattı çalıştırmalarını** seçin. Görünümü yenilemek için **Yenile**’yi seçin.
+1. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görmek için, işlem **hattı adı** sütununun altındaki **copypipeline** bağlantısını seçin. Bu örnekte yalnızca bir etkinlik bulunur, bu nedenle listede yalnızca bir giriş görürsünüz. Kopyalama işlemi hakkında daha fazla bilgi için **etkınlık adı** sütununun altındaki **Ayrıntılar** bağlantısını (eyegözlük simgesi) seçin. İşlem hattı çalıştırmaları görünümüne dönmek için üstteki **tüm işlem hattı çalıştırmalarını** seçin. Görünümü yenilemek için **Yenile** ’yi seçin.
 
     [![Etkinlik çalıştırmalarını izleme](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
@@ -216,7 +216,7 @@ Bu zamanlamada, işlem hattı için bir zamanlayıcı tetikleyicisi oluşturacak
 
 1. Sol üstte, izleyici sekmesinin üzerindeki **Yazar** sekmesine gidin.
 
-1. İşlem hattınıza gidin, araç çubuğunda **Tetikleyici**'ye tıklayıp **Yeni/Düzenle**'yi seçin.
+1. İşlem hattınıza gidin, araç çubuğunda **Tetikleyici** 'ye tıklayıp **Yeni/Düzenle** 'yi seçin.
 
 1. **Tetikleyiciler Ekle** iletişim kutusunda **tetikleyici alanı seç** için **+ Yeni** ' yi seçin.
 
@@ -232,16 +232,16 @@ Bu zamanlamada, işlem hattı için bir zamanlayıcı tetikleyicisi oluşturacak
 
     e. **Bitiş zamanı** bölümünü, geçerli tarih/saatten birkaç dakika sonra güncelleştirin. Tetikleyicinin etkinleştirilmesi için, önce sizin değişiklikleri yayımlamanız gerekir. Bunu yalnızca birkaç dakika olarak ayarlarsanız ve daha sonra yayımlamazsanız, tetikleyici çalıştırmayı görmezsiniz.
 
-    f. **Tamam**’ı seçin.
+    f. **Tamam** ’ı seçin.
 
-    örneğin: **Etkin** seçeneği için **Evet**' i seçin.
+    örneğin: **Etkin** seçeneği için **Evet** ' i seçin.
 
-    h. **Tamam**’ı seçin.
+    h. **Tamam** ’ı seçin.
 
     > [!IMPORTANT]
     > Her bir işlem hattı çalıştırması ile bir maliyet ilişkilendirildiğinden bitiş tarihini uygun bir şekilde ayarlayın.
 
-1. **Tetikleyiciyi düzenle** sayfasında, uyarıyı gözden geçirin ve ardından **Kaydet**' i seçin. Bu örnekteki işlem hattı hiçbir parametre almaz.
+1. **Tetikleyiciyi düzenle** sayfasında, uyarıyı gözden geçirin ve ardından **Kaydet** ' i seçin. Bu örnekteki işlem hattı hiçbir parametre almaz.
 
 1. Değişikliği yayımlamak için **Tümünü Yayımla** ' ya tıklayın.
 

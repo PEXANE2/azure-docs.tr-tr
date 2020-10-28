@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.author: metan
-ms.openlocfilehash: ddae4a99964e438c003fe0ff0db91c5808fa7631
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: 31c1ef8d75b4c12e4dd6a360852feb27857ac412
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761116"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636553"
 ---
 # <a name="how-to-store-user-preferences"></a>Kullanıcı tercihlerini depolama
 
-Bu makalede, Kullanıcı **tercihleri**olarak BILINEN Kullanıcı arabirimi ayarlarının, [-Preferences](./reference.md#options) ve [-onpreferenceschanged](./reference.md#options) derinlikli Okuyucu SDK seçenekleri aracılığıyla nasıl depolandığı gösterilmektedir.
+Bu makalede, Kullanıcı **tercihleri** olarak BILINEN Kullanıcı arabirimi ayarlarının, [-Preferences](./reference.md#options) ve [-onpreferenceschanged](./reference.md#options) derinlikli Okuyucu SDK seçenekleri aracılığıyla nasıl depolandığı gösterilmektedir.
 
-Tanýmlama [ıepolicy](./reference.md#cookiepolicy-options) SDK seçeneği *etkin*olarak ayarlandığında, derinlikli okuyucu uygulaması **Kullanıcı tercihlerini** (metin boyutu, Tema rengi, yazı tipi vb.), belirli bir tarayıcı ve cihaza yerel olan tanımlama bilgilerinde depolar. Kullanıcı her ne kadar modern okuyucuyu aynı tarayıcı ve cihazda başlattığında, kullanıcının bu cihazdaki son oturumlarından gelen tercihleriyle birlikte açılır. Ancak Kullanıcı, modern okuyucuyu farklı bir tarayıcı veya cihazda açarsa, ayarlar başlangıçta tam ekran okuyucusu varsayılan ayarlarıyla yapılandırılır ve kullanıcının, kullandıkları her cihaz için tercihlerini yeniden ayarlaması gerekir. `-preferences`Ve `-onPreferencesChanged` modern Okuyucu SDK seçenekleri, uygulamaların, uygulamayı kullandıkları her yerde tutarlı bir deneyim sunacak şekilde, kullanıcıların çeşitli tarayıcılarda ve cihazlarda bir kullanıcının tercihlerini dolaşımını sağlayan bir yol sağlar.
+Tanýmlama [ıepolicy](./reference.md#cookiepolicy-options) SDK seçeneği *etkin* olarak ayarlandığında, derinlikli okuyucu uygulaması **Kullanıcı tercihlerini** (metin boyutu, Tema rengi, yazı tipi vb.), belirli bir tarayıcı ve cihaza yerel olan tanımlama bilgilerinde depolar. Kullanıcı her ne kadar modern okuyucuyu aynı tarayıcı ve cihazda başlattığında, kullanıcının bu cihazdaki son oturumlarından gelen tercihleriyle birlikte açılır. Ancak Kullanıcı, modern okuyucuyu farklı bir tarayıcı veya cihazda açarsa, ayarlar başlangıçta tam ekran okuyucusu varsayılan ayarlarıyla yapılandırılır ve kullanıcının, kullandıkları her cihaz için tercihlerini yeniden ayarlaması gerekir. `-preferences`Ve `-onPreferencesChanged` modern Okuyucu SDK seçenekleri, uygulamaların, uygulamayı kullandıkları her yerde tutarlı bir deneyim sunacak şekilde, kullanıcıların çeşitli tarayıcılarda ve cihazlarda bir kullanıcının tercihlerini dolaşımını sağlayan bir yol sağlar.
 
 İlk olarak, `-onPreferencesChanged` derinlikli okuyucu uygulamasını başlatırken geri arama SDK seçeneğini sağlayarak, tam ekran okuyucu `-preferences` oturumu sırasında Kullanıcı tercihlerini her değiştirilişinde, derinlikli okuyucu ana bilgisayar uygulamasına bir dize gönderir. Ana bilgisayar uygulaması, Kullanıcı tercihlerini kendi sistemlerinde depolamaktan sorumludur. Ardından, aynı kullanıcı tam ekran okuyucuyu yeniden başlattığında, ana bilgisayar uygulaması bu kullanıcının tercihlerini depolama alanından alabilir ve `-preferences` Kullanıcı tercihleri geri yüklendikten sonra bunları, derinlikli okuyucu uygulamasını başlatırken DIZE SDK seçeneği olarak sağlayabilir.
 

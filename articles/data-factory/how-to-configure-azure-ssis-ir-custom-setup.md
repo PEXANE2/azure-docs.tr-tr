@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 10/13/2020
-ms.openlocfilehash: e4708e49ebd45210e381a1b58752bbfa287a9eeb
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 021c3705ff96774583438d261f894ff1bc24c21f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019877"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636332"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için kurulumu özelleştirme
 
@@ -25,11 +25,11 @@ ms.locfileid: "92019877"
 
 Azure Data Factory (ADF) içindeki Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) özel kurulumları aracılığıyla özelleştirebilirsiniz. Azure-SSIS IR sağlama veya yeniden yapılandırma sırasında kendi adımlarınızı eklemenize olanak tanır. 
 
-Özel kurulumları kullanarak, Azure-SSIS IR varsayılan işletim yapılandırmasını veya ortamını değiştirebilirsiniz. Örneğin, ek Windows Hizmetleri başlatmak için dosya paylaşımları için erişim kimlik bilgilerini kalıcı hale getirin veya güçlü şifreleme/daha güvenli ağ protokolü (TLS 1,2) kullanın. Ya da Azure-SSIS IR her bir düğümüne derlemeler, sürücüler veya uzantılar gibi ek bileşenler yükleyebilirsiniz. Bunlar, özel olarak oluşturulmuş, açık kaynak veya üçüncü taraf bileşenleri olabilir. Yerleşik/önceden yüklenmiş bileşenler hakkında daha fazla bilgi için, bkz. [Azure-SSIS IR yerleşik/önceden yüklenmiş bileşenler](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime).
+Özel kurulumları kullanarak, Azure-SSIS IR varsayılan işletim yapılandırmasını veya ortamını değiştirebilirsiniz. Örneğin, ek Windows Hizmetleri başlatmak için dosya paylaşımları için erişim kimlik bilgilerini kalıcı hale getirin veya güçlü şifreleme/daha güvenli ağ protokolü (TLS 1,2) kullanın. Ya da Azure-SSIS IR her bir düğümüne derlemeler, sürücüler veya uzantılar gibi ek bileşenler yükleyebilirsiniz. Bunlar, özel olarak oluşturulmuş, açık kaynak veya üçüncü taraf bileşenleri olabilir. Yerleşik/önceden yüklenmiş bileşenler hakkında daha fazla bilgi için, bkz. [Azure-SSIS IR yerleşik/önceden yüklenmiş bileşenler](./built-in-preinstalled-components-ssis-integration-runtime.md).
 
 Azure-SSIS IR özel kurulumları iki şekilde yapabilirsiniz: 
-* **Komut dosyası Ile standart özel kurulum**: bir betiği ve ilişkili dosyalarını hazırlayın ve hepsini Azure Depolama hesabınızdaki bir blob kapsayıcısına birlikte karşıya yükleyin. Daha sonra, Azure-SSIS IR ayarladığınızda veya yeniden yapılandırdığınızda, kapsayıcınıza yönelik bir paylaşılan erişim Imzası (SAS) Tekdüzen Kaynak tanımlayıcısı (URI) sağlarsınız. Azure-SSIS IR her bir düğüm, komut dosyasını ve ilişkili dosyalarını kapsayıcınızdan indirir ve özel kurulumunuzu yükseltilmiş izinlerle çalıştırır. Özel Kurulum tamamlandığında her düğüm, çalışma ve diğer günlüklerin standart çıkışını kapsayıcınıza yükler.
-* **Komut dosyası olmadan hızlı özel kurulum**: bazı ortak sistem yapılandırma ve Windows komutlarını çalıştırın ya da herhangi bir betiği kullanmadan popüler veya önerilen ek bileşenleri kurun.
+* **Komut dosyası Ile standart özel kurulum** : bir betiği ve ilişkili dosyalarını hazırlayın ve hepsini Azure Depolama hesabınızdaki bir blob kapsayıcısına birlikte karşıya yükleyin. Daha sonra, Azure-SSIS IR ayarladığınızda veya yeniden yapılandırdığınızda, kapsayıcınıza yönelik bir paylaşılan erişim Imzası (SAS) Tekdüzen Kaynak tanımlayıcısı (URI) sağlarsınız. Azure-SSIS IR her bir düğüm, komut dosyasını ve ilişkili dosyalarını kapsayıcınızdan indirir ve özel kurulumunuzu yükseltilmiş izinlerle çalıştırır. Özel Kurulum tamamlandığında her düğüm, çalışma ve diğer günlüklerin standart çıkışını kapsayıcınıza yükler.
+* **Komut dosyası olmadan hızlı özel kurulum** : bazı ortak sistem yapılandırma ve Windows komutlarını çalıştırın ya da herhangi bir betiği kullanmadan popüler veya önerilen ek bileşenleri kurun.
 
 Standart ve hızlı özel kurulumlarla hem ücretsiz (Lisanssız) hem de ücretli (lisanslı) bileşenleri yükleyebilirsiniz. Bağımsız bir yazılım satıcısı (ISV) iseniz, bkz. [Azure-SSIS IR için ücretli veya lisanslı bileşenler geliştirme](how-to-develop-azure-ssis-ir-licensed-components.md).
 
@@ -56,7 +56,7 @@ Azure-SSIS IR özelleştirmek için aşağıdaki öğeler gereklidir:
 
 - [Bir Azure aboneliği](https://azure.microsoft.com/)
 
-- [Azure-SSIS IR sağlama](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)
+- [Azure-SSIS IR sağlama](./tutorial-deploy-ssis-packages-azure.md)
 
 - [Bir Azure depolama hesabı](https://azure.microsoft.com/services/storage/). Express özel kurulumları için gerekli değildir. Standart özel kurulumlarda, özel kurulum komut dosyanızı ve ilişkili dosyalarını bir blob kapsayıcısına yükler ve depolar. Özel Kurulum işlemi aynı zamanda yürütme günlüklerini aynı blob kapsayıcısına yükler.
 
@@ -70,25 +70,25 @@ ADF Kullanıcı arabirimindeki standart özel kurulumlarla Azure-SSIS IR sağlam
 
 1. Özel kurulum komut dosyanızı ve ilişkili dosyalarını (örneğin,. bat,. cmd,. exe,. dll,. msi veya. ps1 dosyaları) hazırlayın.
 
-   * Özel kurulumlarınızın giriş noktası olan *Main. cmd*adlı bir betik dosyanız olmalıdır.  
+   * Özel kurulumlarınızın giriş noktası olan *Main. cmd* adlı bir betik dosyanız olmalıdır.  
    * Betiğin sessizce yürütülmesini sağlamak için, önce yerel makinenizde test etmelisiniz.  
-   * Diğer araçlarla (örneğin, *msiexec.exe*), kapsayıcınıza karşıya yüklenecek ek günlüklerin oluşturulmasını istiyorsanız, `CUSTOM_SETUP_SCRIPT_LOG_DIR` betiklerinizde günlük klasörü olarak önceden tanımlanmış ortam değişkenini belirtin (örneğin, *msiexec/ı xxx.msi/quiet/LV% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ install. log*).
+   * Diğer araçlarla (örneğin, *msiexec.exe* ), kapsayıcınıza karşıya yüklenecek ek günlüklerin oluşturulmasını istiyorsanız, `CUSTOM_SETUP_SCRIPT_LOG_DIR` betiklerinizde günlük klasörü olarak önceden tanımlanmış ortam değişkenini belirtin (örneğin, *msiexec/ı xxx.msi/quiet/LV% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ install. log* ).
 
 1. [Azure Depolama Gezgini](https://storageexplorer.com/)indirin, yükleyin ve açın.
 
-   a. **(Yerel ve bağlı)** altında, **depolama hesapları**' na sağ tıklayın ve ardından **Azure depolama 'ya Bağlan**' ı seçin.
+   a. **(Yerel ve bağlı)** altında, **depolama hesapları** ' na sağ tıklayın ve ardından **Azure depolama 'ya Bağlan** ' ı seçin.
 
       ![Azure Depolama’ya bağlanma](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
-   b. **Depolama hesabı adı ve anahtarı kullan**' ı seçin ve ardından **İleri**' yi seçin.
+   b. **Depolama hesabı adı ve anahtarı kullan** ' ı seçin ve ardından **İleri** ' yi seçin.
 
       ![Depolama hesabı adını ve anahtarını kullanma](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image2.png)
 
-   c. Azure depolama hesabınızın adını ve anahtarınızı girip, **İleri**' yi seçin ve ardından **Bağlan**' ı seçin.
+   c. Azure depolama hesabınızın adını ve anahtarınızı girip, **İleri** ' yi seçin ve ardından **Bağlan** ' ı seçin.
 
       ![Depolama hesabı adını ve anahtarını belirtin](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png)
 
-   d. Bağlı Azure depolama hesabınız altında, **BLOB kapsayıcıları**' na sağ tıklayın, **BLOB kapsayıcısı oluştur**' u seçin ve yeni kapsayıcıyı adlandırın.
+   d. Bağlı Azure depolama hesabınız altında, **BLOB kapsayıcıları** ' na sağ tıklayın, **BLOB kapsayıcısı oluştur** ' u seçin ve yeni kapsayıcıyı adlandırın.
 
       ![Blob kapsayıcısı oluşturma](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
@@ -96,7 +96,7 @@ ADF Kullanıcı arabirimindeki standart özel kurulumlarla Azure-SSIS IR sağlam
 
       ![Blob kapsayıcısına dosya yükleme](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
-   f. Kapsayıcıya sağ tıklayın ve **paylaşılan erişim Imzası al**' ı seçin.
+   f. Kapsayıcıya sağ tıklayın ve **paylaşılan erişim Imzası al** ' ı seçin.
 
       ![Kapsayıcı için paylaşılan erişim Imzasını al](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
@@ -127,39 +127,39 @@ ADF Kullanıcı arabirimindeki Express özel kurulumları ile Azure-SSIS IR sağ
 
 #### <a name="running-cmdkey-command"></a>Cmdkey komutu çalıştırılıyor
 
-Hızlı özel kurulumunuz için **cmdkey komut türünü Çalıştır** ' ı seçerseniz, Azure-SSIS IR Windows cmdkey komutunu çalıştırabilirsiniz. Bunu yapmak için sırasıyla **/Add**, **/User**ve **/Pass** metin kutularına hedeflenen bilgisayar adı veya etki alanı adı, Kullanıcı adı, hesap adı ve parola ya da hesap anahtarınızı girin. Bu, Azure-SSIS IR SQL sunucuları, dosya paylaşımları veya Azure dosyaları için erişim kimlik bilgilerini kalıcı hale getirebilmeniz için izin verir. Örneğin, Azure dosyalarına erişmek için `YourAzureStorageAccountName.file.core.windows.net` `azure\YourAzureStorageAccountName` `YourAzureStorageAccountKey` sırasıyla **/Add**, **/User**ve **/Pass**gibi bir giriş yapabilirsiniz. Bu, yerel makinenizde Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) komutunu çalıştırmaya benzer. Şimdilik cmdkey komutunu çalıştırmak için yalnızca bir hızlı özel kurulum desteklenir. Birden çok cmdkey komutunu çalıştırmak için bunun yerine standart bir özel kurulum kullanın.
+Hızlı özel kurulumunuz için **cmdkey komut türünü Çalıştır** ' ı seçerseniz, Azure-SSIS IR Windows cmdkey komutunu çalıştırabilirsiniz. Bunu yapmak için sırasıyla **/Add** , **/User** ve **/Pass** metin kutularına hedeflenen bilgisayar adı veya etki alanı adı, Kullanıcı adı, hesap adı ve parola ya da hesap anahtarınızı girin. Bu, Azure-SSIS IR SQL sunucuları, dosya paylaşımları veya Azure dosyaları için erişim kimlik bilgilerini kalıcı hale getirebilmeniz için izin verir. Örneğin, Azure dosyalarına erişmek için `YourAzureStorageAccountName.file.core.windows.net` `azure\YourAzureStorageAccountName` `YourAzureStorageAccountKey` sırasıyla **/Add** , **/User** ve **/Pass** gibi bir giriş yapabilirsiniz. Bu, yerel makinenizde Windows [cmdkey](/windows-server/administration/windows-commands/cmdkey) komutunu çalıştırmaya benzer. Şimdilik cmdkey komutunu çalıştırmak için yalnızca bir hızlı özel kurulum desteklenir. Birden çok cmdkey komutunu çalıştırmak için bunun yerine standart bir özel kurulum kullanın.
 
 #### <a name="adding-environment-variables"></a>Ortam değişkenleri ekleme
 
-Hızlı özel kurulumlarınız için **ortam değişkeni Ekle** türünü seçerseniz, Azure-SSIS IR bir Windows ortam değişkeni ekleyebilirsiniz. Bunu yapmak için sırasıyla **değişken adı** ve **değişken değeri** metin kutularında ortam değişkeni adınızı ve değerini girin. Bu, örneğin betik bileşenlerinde/görevlerinde Azure-SSIS IR çalışan paketlerinizde bulunan ortam değişkenini kullanmanıza olanak tanır. Bu, yerel makinenizde Windows [set](https://docs.microsoft.com/windows-server/administration/windows-commands/set_1) komutunu çalıştırmaya benzer.
+Hızlı özel kurulumlarınız için **ortam değişkeni Ekle** türünü seçerseniz, Azure-SSIS IR bir Windows ortam değişkeni ekleyebilirsiniz. Bunu yapmak için sırasıyla **değişken adı** ve **değişken değeri** metin kutularında ortam değişkeni adınızı ve değerini girin. Bu, örneğin betik bileşenlerinde/görevlerinde Azure-SSIS IR çalışan paketlerinizde bulunan ortam değişkenini kullanmanıza olanak tanır. Bu, yerel makinenizde Windows [set](/windows-server/administration/windows-commands/set_1) komutunu çalıştırmaya benzer.
 
 #### <a name="installing-azure-powershell"></a>Azure PowerShell yükleniyor
 
-Hızlı özel kurulumlarınız için **yükleme Azure PowerShell** türünü seçerseniz, Azure-SSIS IR daha az PowerShell modülünü yükleyebilirsiniz. Bunu yapmak için, [desteklenen olanlar listesinden](https://www.powershellgallery.com/stats/packages/Az?groupby=Version)istediğiniz az Module sürüm numarasını (x. y. z) girin. Bu, Azure kaynaklarını (örneğin, [Azure Analysis Services (AAS)](https://docs.microsoft.com/azure/analysis-services/analysis-services-powershell)yönetmek için paketlerinizde Azure PowerShell cmdlet 'leri/betikleri çalıştırmanızı sağlar.
+Hızlı özel kurulumlarınız için **yükleme Azure PowerShell** türünü seçerseniz, Azure-SSIS IR daha az PowerShell modülünü yükleyebilirsiniz. Bunu yapmak için, [desteklenen olanlar listesinden](https://www.powershellgallery.com/stats/packages/Az?groupby=Version)istediğiniz az Module sürüm numarasını (x. y. z) girin. Bu, Azure kaynaklarını (örneğin, [Azure Analysis Services (AAS)](../analysis-services/analysis-services-powershell.md)yönetmek için paketlerinizde Azure PowerShell cmdlet 'leri/betikleri çalıştırmanızı sağlar.
 
 #### <a name="installing-licensed-components"></a>Lisanslı bileşenleri yükleme
 
 Hızlı özel kurulumlarınız için **lisanslı bileşen türünü yükleme** ' yi seçerseniz, **bileşen adı** açılır listesinde ISV iş ortaklarımızın tümleşik bir bileşenini seçebilirsiniz:
 
-   * **Sentryone 'ın 'ın görev fabrikası** bileşenini seçerseniz, Azure-SSIS IR [görev fabrikası](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) paketini sentryone 'ın adresinden yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **2020.1.3**.
+   * **Sentryone 'ın 'ın görev fabrikası** bileşenini seçerseniz, Azure-SSIS IR [görev fabrikası](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) paketini sentryone 'ın adresinden yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **2020.1.3** .
 
-   * **Oh22's HEDDA ' yi seçerseniz. IO** bileşeni, Hedda 'yi yükleyebilirsiniz [. ](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR)Azure-SSIS IR, GÇ veri kalitesi/oh22 'den bileşeni Temizleme. Bunu yapmak için, hizmetini önceden satın almanız gerekir. Geçerli tümleşik sürüm **1.0.14**.
+   * **Oh22's HEDDA ' yi seçerseniz. IO** bileşeni, Hedda 'yi yükleyebilirsiniz [.](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR)Azure-SSIS IR, GÇ veri kalitesi/oh22 'den bileşeni Temizleme. Bunu yapmak için, hizmetini önceden satın almanız gerekir. Geçerli tümleşik sürüm **1.0.14** .
 
-   * **Oh22's SQLPhonetics.net** bileşenini seçerseniz, Azure-SSIS IR [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) veri kalitesini/eşleşen bileşenini oh22 adresinden yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **1.0.45**.
+   * **Oh22's SQLPhonetics.net** bileşenini seçerseniz, Azure-SSIS IR [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) veri kalitesini/eşleşen bileşenini oh22 adresinden yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **1.0.45** .
 
-   * **Kingswaysoft 'un SSIS Tümleştirme Araç Seti** bileşenini seçerseniz, Azure-SSIS IR Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud gibi CRM/ERP/pazarlama/işbirliği uygulamalarına yönelik [SSIS Tümleştirme Araç Seti](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) bağlayıcılarını yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **2020,1**' dir.
+   * **Kingswaysoft 'un SSIS Tümleştirme Araç Seti** bileşenini seçerseniz, Azure-SSIS IR Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud gibi CRM/ERP/pazarlama/işbirliği uygulamalarına yönelik [SSIS Tümleştirme Araç Seti](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) bağlayıcılarını yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **2020,1** ' dir.
 
-   * **Kingswaysoft 'ıN SSIS üretkenlik paketi** bileşenini seçerseniz, Azure-SSIS IR [ssmsoft 'Tan SSIS üretkenlik paketi](https://www.kingswaysoft.com/products/ssis-productivity-pack) paketini yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **20,1**' dir.
+   * **Kingswaysoft 'ıN SSIS üretkenlik paketi** bileşenini seçerseniz, Azure-SSIS IR [ssmsoft 'Tan SSIS üretkenlik paketi](https://www.kingswaysoft.com/products/ssis-productivity-pack) paketini yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **20,1** ' dir.
 
-   * The **Obald yazılımının Xdikkatini** oluştur bileşenini seçerseniz, Azure-SSIS IR The OBALD yazılımından SAP sıstemlerı (ERP, s/4HANA, siyah beyaz) için [xümlik](https://theobald-software.com/en/xtract-is/) bağlayıcı paketini yükleyebilirsiniz. Bunu yapmak için & sürükleyin ve satın aldığınız ürün lisans dosyasını önceden **Lisans dosyası** giriş kutusuna bırakın/karşıya yükleyin. Geçerli tümleşik sürüm **6.1.1.3**.
+   * The **Obald yazılımının Xdikkatini** oluştur bileşenini seçerseniz, Azure-SSIS IR The OBALD yazılımından SAP sıstemlerı (ERP, s/4HANA, siyah beyaz) için [xümlik](https://theobald-software.com/en/xtract-is/) bağlayıcı paketini yükleyebilirsiniz. Bunu yapmak için & sürükleyin ve satın aldığınız ürün lisans dosyasını önceden **Lisans dosyası** giriş kutusuna bırakın/karşıya yükleyin. Geçerli tümleşik sürüm **6.1.1.3** .
 
-   * **Akaydedilmiş geçici tümleştirme hizmeti** bileşenini seçerseniz, Azure-SSIS IR sap ve Salesforce sistemleri Için [tümleştirme hizmeti](https://www.aecorsoft.com/en/products/integrationservice) bağlayıcılarının paketini, akaydedilmiş yazılımdan yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **3.0.00**.
+   * **Akaydedilmiş geçici tümleştirme hizmeti** bileşenini seçerseniz, Azure-SSIS IR sap ve Salesforce sistemleri Için [tümleştirme hizmeti](https://www.aecorsoft.com/en/products/integrationservice) bağlayıcılarının paketini, akaydedilmiş yazılımdan yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **3.0.00** .
 
-   * **CDATA 'NıN SSIS standart paket** bileşenini seçerseniz, Microsoft SharePoint bağlayıcıları gibi CDATA 'dan en popüler bileşenlerin [SSIS standart paket](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) paketini Azure-SSIS IR yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **19,7354**' dir.
+   * **CDATA 'NıN SSIS standart paket** bileşenini seçerseniz, Microsoft SharePoint bağlayıcıları gibi CDATA 'dan en popüler bileşenlerin [SSIS standart paket](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) paketini Azure-SSIS IR yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **19,7354** ' dir.
 
-   * **CDATA 'NıN SSIS genişletilmiş paket** bileşenini seçerseniz, Microsoft Dynamics 365 Business Central bağlayıcıları ve diğer bileşenler gibi CDATA 'dan tüm bileşenlerin [SSIS genişletilmiş paket](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) **paketini Azure-SSIS IR**yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **19,7354**' dir. Büyük boyutu nedeniyle, yükleme zaman aşımını önlemek için lütfen Azure-SSIS IR düğüm başına en az 4 CPU çekirdeğe sahip olduğundan emin olun.
+   * **CDATA 'NıN SSIS genişletilmiş paket** bileşenini seçerseniz, Microsoft Dynamics 365 Business Central bağlayıcıları ve diğer bileşenler gibi CDATA 'dan tüm bileşenlerin [SSIS genişletilmiş paket](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) **paketini Azure-SSIS IR** yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **19,7354** ' dir. Büyük boyutu nedeniyle, yükleme zaman aşımını önlemek için lütfen Azure-SSIS IR düğüm başına en az 4 CPU çekirdeğe sahip olduğundan emin olun.
 
-Eklediğiniz Express özel kurulumları **Gelişmiş ayarlar** sayfasında görünür. Bunları kaldırmak için onay kutularını işaretleyin ve ardından **Sil**' i seçin.
+Eklediğiniz Express özel kurulumları **Gelişmiş ayarlar** sayfasında görünür. Bunları kaldırmak için onay kutularını işaretleyin ve ardından **Sil** ' i seçin.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -273,7 +273,7 @@ Standart özel kurulumların bazı örneklerini görüntülemek ve yeniden kulla
 
 1. Azure Depolama Gezgini kullanarak genel önizleme kapsayımuza bağlanın.
 
-   a. **(Yerel ve bağlı)** altında **depolama hesapları**' na sağ tıklayın, **Azure depolama 'ya Bağlan**' ı seçin, **bir bağlantı dizesi veya paylaşılan erişim imzası URI 'Si kullan**' ı seçin ve ardından **İleri**' yi seçin.
+   a. **(Yerel ve bağlı)** altında **depolama hesapları** ' na sağ tıklayın, **Azure depolama 'ya Bağlan** ' ı seçin, **bir bağlantı dizesi veya paylaşılan erişim imzası URI 'Si kullan** ' ı seçin ve ardından **İleri** ' yi seçin.
 
       ![Paylaşılan erişim Imzasıyla Azure depolama 'ya bağlanma](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 
@@ -283,11 +283,11 @@ Standart özel kurulumların bazı örneklerini görüntülemek ve yeniden kulla
 
       ![Kapsayıcı için paylaşılan erişim Imzasını sağlama](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image10.png)
 
-   c. **İleri**' yi seçin ve ardından **Bağlan**' ı seçin.
+   c. **İleri** ' yi seçin ve ardından **Bağlan** ' ı seçin.
 
    d. Sol bölmede bağlı **publicpreview** kapsayıcısını seçin ve ardından *customsetupscript* klasörüne çift tıklayın. Bu klasörde aşağıdaki öğeler vardır:
 
-      * Azure-SSIS IR her bir düğümüne temel bir görev yüklemeye yönelik özel bir kurulum içeren *örnek* bir klasör. Görev hiçbir şey yapmaz, ancak birkaç saniye uyku moduna geçmez. Klasör, tüm içeriklerin (*gacutil.exe*, *gacutil.exe.config*ve *1033\gacutlrc.dll*), kapsayıcınıza olduğu gibi kopyalanabilmesi için de bir *Gacutil* klasörü içerir.
+      * Azure-SSIS IR her bir düğümüne temel bir görev yüklemeye yönelik özel bir kurulum içeren *örnek* bir klasör. Görev hiçbir şey yapmaz, ancak birkaç saniye uyku moduna geçmez. Klasör, tüm içeriklerin ( *gacutil.exe* , *gacutil.exe.config* ve *1033\gacutlrc.dll* ), kapsayıcınıza olduğu gibi kopyalanabilmesi için de bir *Gacutil* klasörü içerir.
 
       * Gerçek Kullanıcı senaryolarından birkaç özel kurulum örneği içeren bir *Usersenaryolar* klasörü.
 
@@ -295,59 +295,59 @@ Standart özel kurulumların bazı örneklerini görüntülemek ve yeniden kulla
 
    e. Aşağıdaki öğeleri bulmak için *Usersenaryolar* klasörünü çift tıklatın:
 
-      * Azure-SSIS IR her bir düğümüne .NET Framework önceki bir sürümünü yüklemek için özel bir kurulum betiği (*Main. cmd*) içeren BIR *.NET Framework 3,5* klasörü. Bu sürüm bazı özel bileşenler için gerekli olabilir.
+      * Azure-SSIS IR her bir düğümüne .NET Framework önceki bir sürümünü yüklemek için özel bir kurulum betiği ( *Main. cmd* ) içeren BIR *.NET Framework 3,5* klasörü. Bu sürüm bazı özel bileşenler için gerekli olabilir.
 
-      * Azure-SSIS IR her bir düğümüne SQL Server komut satırı yardımcı programları (*MsSqlCmdLnUtils.msi*) yüklemek için özel bir kurulum betiği (*Main. cmd*) içeren bir *bcp* klasörü. Bu yardımcı programlardan biri toplu kopyalama programıdır (*bcp*).
+      * Azure-SSIS IR her bir düğümüne SQL Server komut satırı yardımcı programları ( *MsSqlCmdLnUtils.msi* ) yüklemek için özel bir kurulum betiği ( *Main. cmd* ) içeren bir *bcp* klasörü. Bu yardımcı programlardan biri toplu kopyalama programıdır ( *bcp* ).
 
-      * Kendi DNS sonekini (örneğin, *test.com*), nitelenmemiş tek etiketli bir etki alanı adına eklemek için özel bir kurulum betiği (*Main. cmd*) IÇEREN bir *dns son eki* klasörü ve Azure-SSIS IR DNS sorguları üzerinde kullanmadan önce tam etki alanı adına (FQDN) dönüştürün.
+      * Kendi DNS sonekini (örneğin, *test.com* ), nitelenmemiş tek etiketli bir etki alanı adına eklemek için özel bir kurulum betiği ( *Main. cmd* ) IÇEREN bir *dns son eki* klasörü ve Azure-SSIS IR DNS sorguları üzerinde kullanmadan önce tam etki alanı adına (FQDN) dönüştürün.
 
-      * Azure-SSIS IR her bir düğümüne bazı C# derlemelerini ve kitaplıklarını yüklemek için özel bir kurulum betiği (*Main. cmd*) Içeren bir *Excel* klasörü. Bunları, Excel dosyalarını dinamik olarak okumak ve yazmak için betik görevlerinde kullanabilirsiniz. 
+      * Azure-SSIS IR her bir düğümüne bazı C# derlemelerini ve kitaplıklarını yüklemek için özel bir kurulum betiği ( *Main. cmd* ) Içeren bir *Excel* klasörü. Bunları, Excel dosyalarını dinamik olarak okumak ve yazmak için betik görevlerinde kullanabilirsiniz. 
       
         İlk olarak, [*ExcelDataReader.dll*](https://www.nuget.org/packages/ExcelDataReader/) ve [*DocumentFormat.OpenXml.dll*](https://www.nuget.org/packages/DocumentFormat.OpenXml/)indirin ve ardından Tümünü *Main. cmd* ile birlikte kapsayıcınıza yükleyin. Alternatif olarak, yalnızca standart Excel bağlayıcıları (bağlantı Yöneticisi, kaynak ve hedef) kullanmak istiyorsanız, bunları içeren yeniden dağıtılabilir erişim Azure-SSIS IR önceden yüklenmiş olduğundan, özel bir kuruluma gerek kalmaz.
       
-      * Azure-SSIS IR her bir düğümüne MySQL ODBC sürücülerini yüklemek için özel bir kurulum betiği (*Main. cmd*) Içeren BIR *MySQL ODBC* klasörü. Bu kurulum, MySQL sunucusuna bağlanmak için ODBC bağlayıcılarını (bağlantı Yöneticisi, kaynak ve hedef) kullanmanıza olanak tanır. 
+      * Azure-SSIS IR her bir düğümüne MySQL ODBC sürücülerini yüklemek için özel bir kurulum betiği ( *Main. cmd* ) Içeren BIR *MySQL ODBC* klasörü. Bu kurulum, MySQL sunucusuna bağlanmak için ODBC bağlayıcılarını (bağlantı Yöneticisi, kaynak ve hedef) kullanmanıza olanak tanır. 
      
-        İlk olarak, [MySQL ODBC sürücü yükleyicilerinin en son 64-bit ve 32-bit sürümlerini indirin](https://dev.mysql.com/downloads/connector/odbc/) (örneğin, *mysql-connector-odbc-8.0.13-winx64.msi* ve *mysql-connector-odbc-8.0.13-win32.msi*) ve ardından bunları bir bütün olarak *ana. cmd* ile birlikte kapsayıcınıza yükleyin.
+        İlk olarak, [MySQL ODBC sürücü yükleyicilerinin en son 64-bit ve 32-bit sürümlerini indirin](https://dev.mysql.com/downloads/connector/odbc/) (örneğin, *mysql-connector-odbc-8.0.13-winx64.msi* ve *mysql-connector-odbc-8.0.13-win32.msi* ) ve ardından bunları bir bütün olarak *ana. cmd* ile birlikte kapsayıcınıza yükleyin.
 
-      * Azure-SSIS IR Enterprise Edition 'ın her bir düğümüne Oracle bağlayıcıları ve OCı sürücüsünü yüklemek için özel bir kurulum betiği (*Main. cmd*) ve sessiz yükleme yapılandırma dosyası (*Client. rsp*) içeren bir *Oracle ENTERPRISE* klasörü. Bu kurulum, Oracle sunucusuna bağlanmak için Oracle bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. 
+      * Azure-SSIS IR Enterprise Edition 'ın her bir düğümüne Oracle bağlayıcıları ve OCı sürücüsünü yüklemek için özel bir kurulum betiği ( *Main. cmd* ) ve sessiz yükleme yapılandırma dosyası ( *Client. rsp* ) içeren bir *Oracle ENTERPRISE* klasörü. Bu kurulum, Oracle sunucusuna bağlanmak için Oracle bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. 
       
-        İlk olarak, Microsoft [Indirme merkezi](https://www.microsoft.com/en-us/download/details.aspx?id=55179) 'nden (*AttunitySSISOraAdaptersSetup.msi* ve *AttunitySSISOraAdaptersSetup64.msi*) Microsoft bağlayıcıları v 5.0 ' ı, Oracle 'dan en son Oracle istemcisini (örneğin, *winx64_12102_client.zip*) [indirin.](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) Ardından, bunları bir bütün olarak *Main. cmd* ve *Client. rsp* ile birlikte kapsayıcısına yükleyin. Oracle 'a bağlanmak için TNS kullanırsanız, *tnsnames. ora*'yı indirmeniz, düzenlemeniz ve kapsayıcıya yüklemeniz gerekir. Bu şekilde, kurulum sırasında Oracle yükleme klasörüne kopyalanabilir.
+        İlk olarak, Microsoft [Indirme merkezi](https://www.microsoft.com/en-us/download/details.aspx?id=55179) 'nden ( *AttunitySSISOraAdaptersSetup.msi* ve *AttunitySSISOraAdaptersSetup64.msi* ) Microsoft bağlayıcıları v 5.0 ' ı, Oracle 'dan en son Oracle istemcisini (örneğin, *winx64_12102_client.zip* ) [indirin.](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) Ardından, bunları bir bütün olarak *Main. cmd* ve *Client. rsp* ile birlikte kapsayıcısına yükleyin. Oracle 'a bağlanmak için TNS kullanırsanız, *tnsnames. ora* 'yı indirmeniz, düzenlemeniz ve kapsayıcıya yüklemeniz gerekir. Bu şekilde, kurulum sırasında Oracle yükleme klasörüne kopyalanabilir.
 
-      * Azure-SSIS IR her bir düğümüne Oracle ODP.NET sürücüsünü yüklemek için özel bir kurulum betiği (*Main. cmd*) Içeren BIR *Oracle standart ADO.net* klasörü. Bu kurulum, Oracle sunucusuna bağlanmak için ADO.NET bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. 
+      * Azure-SSIS IR her bir düğümüne Oracle ODP.NET sürücüsünü yüklemek için özel bir kurulum betiği ( *Main. cmd* ) Içeren BIR *Oracle standart ADO.net* klasörü. Bu kurulum, Oracle sunucusuna bağlanmak için ADO.NET bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. 
       
-        İlk olarak, [en son Oracle odp.net sürücüsünü indirin](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) (örneğin, *ODP.NET_Managed_ODAC122cR1.zip*) ve ardından dosyayı *Main. cmd* ile birlikte kapsayıcınıza yükleyin.
+        İlk olarak, [en son Oracle odp.net sürücüsünü indirin](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) (örneğin, *ODP.NET_Managed_ODAC122cR1.zip* ) ve ardından dosyayı *Main. cmd* ile birlikte kapsayıcınıza yükleyin.
        
-      * Azure-SSIS IR Oracle ODBC sürücüsünü, her bir düğüme yüklemek için özel bir kurulum betiği (*Main. cmd*) IÇEREN *Oracle standart ODBC* klasörü. Betik Ayrıca veri kaynağı adı 'nı (DSN) yapılandırır. Bu kurulum, Oracle sunucusuna bağlanmak için ODBC bağlantı Yöneticisi, kaynak ve hedef ya da Power Query bağlantı yöneticisini ve kaynak ODBC veri kaynağı türünü kullanmanıza olanak sağlar. 
+      * Azure-SSIS IR Oracle ODBC sürücüsünü, her bir düğüme yüklemek için özel bir kurulum betiği ( *Main. cmd* ) IÇEREN *Oracle standart ODBC* klasörü. Betik Ayrıca veri kaynağı adı 'nı (DSN) yapılandırır. Bu kurulum, Oracle sunucusuna bağlanmak için ODBC bağlantı Yöneticisi, kaynak ve hedef ya da Power Query bağlantı yöneticisini ve kaynak ODBC veri kaynağı türünü kullanmanıza olanak sağlar. 
       
         İlk olarak, en son Oracle Instant Client 'ı (temel paket veya temel Lite paketi) ve ODBC paketini indirin ve ardından bunları kendi *ana. cmd* ile birlikte kapsayıcınıza yükleyin:
-        * [64 bitlik paketleri indirin](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (temel paket: *instantclient-basic-windows.x64-18.3.0.0.0dbru.zip*; Temel Lite paketi: *instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip*; ODBC paketi: *instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip*) 
-        * [32 bitlik paketleri indirin](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (temel paket: *instantclient-basic-nt-18.3.0.0.0dbru.zip*; Temel Lite paketi: *instantclient-basiclite-nt-18.3.0.0.0dbru.zip*; ODBC paketi: *instantclient-odbc-nt-18.3.0.0.0dbru.zip*)
+        * [64 bitlik paketleri indirin](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (temel paket: *instantclient-basic-windows.x64-18.3.0.0.0dbru.zip* ; Temel Lite paketi: *instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip* ; ODBC paketi: *instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip* ) 
+        * [32 bitlik paketleri indirin](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (temel paket: *instantclient-basic-nt-18.3.0.0.0dbru.zip* ; Temel Lite paketi: *instantclient-basiclite-nt-18.3.0.0.0dbru.zip* ; ODBC paketi: *instantclient-odbc-nt-18.3.0.0.0dbru.zip* )
 
-      * Azure-SSIS IR her bir düğümüne Oracle OLEDB sürücüsünü yüklemek için özel bir kurulum betiği (*Main. cmd*) Içeren BIR *Oracle Standard OLEDB* klasörü. Bu kurulum, Oracle sunucusuna bağlanmak için OLEDB bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. 
+      * Azure-SSIS IR her bir düğümüne Oracle OLEDB sürücüsünü yüklemek için özel bir kurulum betiği ( *Main. cmd* ) Içeren BIR *Oracle Standard OLEDB* klasörü. Bu kurulum, Oracle sunucusuna bağlanmak için OLEDB bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. 
      
-        İlk olarak, [en son Oracle oledb sürücüsünü indirin](https://www.oracle.com/partners/campaign/index-090165.html) (örneğin, *ODAC122010Xcopy_x64.zip*) ve ardından onu *ana. cmd* ile birlikte kapsayıcınıza yükleyin.
+        İlk olarak, [en son Oracle oledb sürücüsünü indirin](https://www.oracle.com/partners/campaign/index-090165.html) (örneğin, *ODAC122010Xcopy_x64.zip* ) ve ardından onu *ana. cmd* ile birlikte kapsayıcınıza yükleyin.
 
-      * Azure-SSIS IR her bir düğümüne PostgreSQL ODBC sürücülerini yüklemek için özel bir kurulum betiği (*Main. cmd*) Içeren bir *PostgreSQL ODBC* klasörü. Bu kurulum, PostgreSQL sunucusuna bağlanmak için ODBC bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. 
+      * Azure-SSIS IR her bir düğümüne PostgreSQL ODBC sürücülerini yüklemek için özel bir kurulum betiği ( *Main. cmd* ) Içeren bir *PostgreSQL ODBC* klasörü. Bu kurulum, PostgreSQL sunucusuna bağlanmak için ODBC bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. 
      
-        İlk olarak, [PostgreSQL ODBC sürücü yükleyicilerinin en son 64-bit ve 32-bit sürümlerini indirin](https://www.postgresql.org/ftp/odbc/versions/msi/) (örneğin, *psqlodbc_x64.msi* ve *psqlodbc_x86.msi*) ve sonra bunları kendi *ana. cmd* ile birlikte kapsayıcınıza yükleyin.
+        İlk olarak, [PostgreSQL ODBC sürücü yükleyicilerinin en son 64-bit ve 32-bit sürümlerini indirin](https://www.postgresql.org/ftp/odbc/versions/msi/) (örneğin, *psqlodbc_x64.msi* ve *psqlodbc_x86.msi* ) ve sonra bunları kendi *ana. cmd* ile birlikte kapsayıcınıza yükleyin.
 
-      * Azure-SSIS IR Enterprise Edition 'ın her bir düğümüne SAP .NET bağlayıcı derlemesini (*librfc32.dll*) yüklemek için özel bir kurulum betiği (*Main. cmd*) içeren *SAP BW* klasörü. Bu kurulum, SAP BW sunucusuna bağlanmak için SAP BW bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. 
+      * Azure-SSIS IR Enterprise Edition 'ın her bir düğümüne SAP .NET bağlayıcı derlemesini ( *librfc32.dll* ) yüklemek için özel bir kurulum betiği ( *Main. cmd* ) içeren *SAP BW* klasörü. Bu kurulum, SAP BW sunucusuna bağlanmak için SAP BW bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. 
       
         İlk olarak, *librfc32.dll* 64 bit veya 32 BIT sürümünü SAP yükleme klasöründen, kapsayıcınıza *Main. cmd* ile birlikte karşıya yükleyin. Daha sonra betik, kurulum sırasında SAP derlemesini *%Windir%\SysWOW64* veya *%Windir%\System32* klasörüne kopyalar.
 
-      * Azure-SSIS IR her bir düğümüne Azure PowerShell yüklemek için özel bir kurulum betiği (*Main. cmd*) Içeren bir *depolama* klasörü. Bu kurulum, [Azure depolama alanınızı yönetmek için Azure PowerShell cmdlet 'leri/betikleri](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell)çalıştıran SSIS paketlerini dağıtmanıza ve çalıştırmanıza olanak tanır. 
+      * Azure-SSIS IR her bir düğümüne Azure PowerShell yüklemek için özel bir kurulum betiği ( *Main. cmd* ) Içeren bir *depolama* klasörü. Bu kurulum, [Azure depolama alanınızı yönetmek için Azure PowerShell cmdlet 'leri/betikleri](../storage/blobs/storage-quickstart-blobs-powershell.md)çalıştıran SSIS paketlerini dağıtmanıza ve çalıştırmanıza olanak tanır. 
       
-        *Main. cmd*dosyasını, bir örnek *AzurePowerShell.msi* (veya en son sürümü kullanın) kopyalayın ve kapsayıcınıza *storage.ps1* . Paketleriniz için bir şablon olarak *PowerShell. dtsx* kullanın. Paket şablonu, değiştirilebilir bir PowerShell betiği (*storage.ps1*) yükleyen bir [Azure Blob indirme görevini](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task)ve komut dosyasını her düğümde yürüten bir [işlem Çalıştır görevi](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/)birleştirir.
+        *Main. cmd* dosyasını, bir örnek *AzurePowerShell.msi* (veya en son sürümü kullanın) kopyalayın ve kapsayıcınıza *storage.ps1* . Paketleriniz için bir şablon olarak *PowerShell. dtsx* kullanın. Paket şablonu, değiştirilebilir bir PowerShell betiği ( *storage.ps1* ) yükleyen bir [Azure Blob indirme görevini](/sql/integration-services/control-flow/azure-blob-download-task)ve komut dosyasını her düğümde yürüten bir [işlem Çalıştır görevi](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/)birleştirir.
 
-      * Özel bir kurulum betiği (*Main. cmd*), ilişkili dosya (*Install. cmd*) ve yükleyici paketleri (*. msi*) içeren bir *Teradata* klasörü. Bu dosyalar, Azure-SSIS IR Enterprise Edition 'ın her bir düğümüne Teradata bağlayıcıları, Teradata Parallel Transporter (TPT) API 'sini ve ODBC sürücüsünü yükler. Bu kurulum, Teradata sunucusuna bağlanmak için Teradata bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. 
+      * Özel bir kurulum betiği ( *Main. cmd* ), ilişkili dosya ( *Install. cmd* ) ve yükleyici paketleri ( *. msi* ) içeren bir *Teradata* klasörü. Bu dosyalar, Azure-SSIS IR Enterprise Edition 'ın her bir düğümüne Teradata bağlayıcıları, Teradata Parallel Transporter (TPT) API 'sini ve ODBC sürücüsünü yükler. Bu kurulum, Teradata sunucusuna bağlanmak için Teradata bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. 
       
-        İlk olarak, [Teradata araçları ve yardımcı programlar 15. x ZIP dosyasını](http://partnerintelligence.teradata.com) (örneğin,  *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip*) indirip daha önce bahsedilen *. cmd* ve *. msi* dosyalarıyla birlikte kapsayıcınıza yükleyin.
+        İlk olarak, [Teradata araçları ve yardımcı programlar 15. x ZIP dosyasını](http://partnerintelligence.teradata.com) (örneğin,  *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip* ) indirip daha önce bahsedilen *. cmd* ve *. msi* dosyalarıyla birlikte kapsayıcınıza yükleyin.
 
-      * Azure-SSIS IR her bir düğümde güçlü şifreleme ve daha güvenli ağ protokolü (TLS 1,2) kullanmak için özel bir kurulum betiği (*Main. cmd*) Içeren bir *TLS 1,2* klasörü. Betik, eski SSL/TLS sürümlerini de devre dışı bırakır.
+      * Azure-SSIS IR her bir düğümde güçlü şifreleme ve daha güvenli ağ protokolü (TLS 1,2) kullanmak için özel bir kurulum betiği ( *Main. cmd* ) Içeren bir *TLS 1,2* klasörü. Betik, eski SSL/TLS sürümlerini de devre dışı bırakır.
 
-      * Azure-SSIS IR her bir düğümüne Zulu OpenJDK yüklemek için özel bir kurulum betiği (*Main. cmd*) ve PowerShell dosyası (*install_openjdk.ps1*) IÇEREN BIR *Zulu OpenJDK* klasörü. Bu kurulum, ORC ve Parquet dosyalarını işlemek için Azure Data Lake Store ve esnek dosya bağlayıcıları kullanmanıza olanak sağlar. Daha fazla bilgi için bkz. [Tümleştirme Hizmetleri Için Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java). 
+      * Azure-SSIS IR her bir düğümüne Zulu OpenJDK yüklemek için özel bir kurulum betiği ( *Main. cmd* ) ve PowerShell dosyası ( *install_openjdk.ps1* ) IÇEREN BIR *Zulu OpenJDK* klasörü. Bu kurulum, ORC ve Parquet dosyalarını işlemek için Azure Data Lake Store ve esnek dosya bağlayıcıları kullanmanıza olanak sağlar. Daha fazla bilgi için bkz. [Tümleştirme Hizmetleri Için Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java). 
       
-        İlk olarak, [en son Zulu OpenJDK 'yi indirin](https://www.azul.com/downloads/zulu/zulu-windows/) (örneğin, *zulu8.33.0.1-jdk8.0.192-win_x64.zip*) ve ardından bunu *Main. cmd* ve *install_openjdk.ps1* birlikte kapsayıcınıza yükleyin.
+        İlk olarak, [en son Zulu OpenJDK 'yi indirin](https://www.azul.com/downloads/zulu/zulu-windows/) (örneğin, *zulu8.33.0.1-jdk8.0.192-win_x64.zip* ) ve ardından bunu *Main. cmd* ve *install_openjdk.ps1* birlikte kapsayıcınıza yükleyin.
 
         ![Kullanıcı senaryoları klasöründeki klasörler](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 

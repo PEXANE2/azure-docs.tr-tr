@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a5bf53597c0706a5ef435d6ab8cc06e14726db8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb0138603cad52c40b3471c60104f091367e88e9
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442488"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636910"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB yükleyin
 > [!NOTE]
@@ -26,11 +26,11 @@ ms.locfileid: "89442488"
 
 [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) , hem ilişkisel hem de ilişkisel olmayan büyük hacimli verileri işleyebilen bulut tabanlı, genişleme bir veritabanıdır.  Yüksek düzeyde paralel işleme (MPP) mimarisi üzerinde geliştirilen Azure SYNAPSE Analytics, kurumsal veri ambarı iş yükleri için optimize edilmiştir.  Depolama ve işlem ölçeğini bağımsız olarak ölçeklendirmeye yönelik esnekliğe sahip bulut esnekliği sunar.
 
-Azure SYNAPSE Analytics 'i kullanmaya başlamak artık **Azure Data Factory**kullanmaktan çok daha kolay.  Azure Data Factory, Azure SYNAPSE Analytics 'i mevcut sisteminizdeki verilerle doldurmak ve Azure SYNAPSE analizini değerlendirirken ve analiz çözümlerinizi oluştururken değerli zamandan tasarruf etmek için kullanılabilen, tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e veri yüklemenin başlıca avantajları aşağıda verilmiştir:
+Azure SYNAPSE Analytics 'i kullanmaya başlamak artık **Azure Data Factory** kullanmaktan çok daha kolay.  Azure Data Factory, Azure SYNAPSE Analytics 'i mevcut sisteminizdeki verilerle doldurmak ve Azure SYNAPSE analizini değerlendirirken ve analiz çözümlerinizi oluştururken değerli zamandan tasarruf etmek için kullanılabilen, tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e veri yüklemenin başlıca avantajları aşağıda verilmiştir:
 
-* **Kolayca ayarlanır**: komut dosyası gerekmeden 5 adımlı sezgisel sihirbaz.
-* **Zengin veri deposu desteği**: zengin bir şirket içi ve bulut tabanlı veri deposu kümesi için yerleşik destek.
-* **Güvenli ve uyumlu**: veriler HTTPS veya ExpressRoute üzerinden aktarılır ve küresel hizmet varlığı, verilerinizin hiçbir şekilde Coğrafi sınırın dışına ayrılmamasını sağlar
+* **Kolayca ayarlanır** : komut dosyası gerekmeden 5 adımlı sezgisel sihirbaz.
+* **Zengin veri deposu desteği** : zengin bir şirket içi ve bulut tabanlı veri deposu kümesi için yerleşik destek.
+* **Güvenli ve uyumlu** : veriler HTTPS veya ExpressRoute üzerinden aktarılır ve küresel hizmet varlığı, verilerinizin hiçbir şekilde Coğrafi sınırın dışına ayrılmamasını sağlar
 * **PolyBase kullanarak benzersiz olmayan performans** : PolyBase kullanarak Azure SYNAPSE Analytics 'e veri taşımanın en verimli yolu vardır. Hazırlama blobu özelliğini kullanarak, PolyBase 'in varsayılan olarak desteklediği Azure Blob depolama alanının yanı sıra tüm veri deposu türlerinden yüksek yük hızları elde edebilirsiniz.
 
 Bu makalede, Azure Blob depolama 'dan Azure SYNAPSE Analytics 'e 1,2 GB/sn 'lik aktarım hızına göre 1 TB 'lık verileri yüklemek için Data Factory kopyalama Sihirbazı 'Nın nasıl kullanılacağı gösterilmektedir.
@@ -56,7 +56,7 @@ Bu makalede kopyalama Sihirbazı kullanılarak Azure SYNAPSE Analytics 'e veri t
     Şimdi oluşturulan dosyaları Azure Blob 'a kopyalayın.  ADF kopyalamayı kullanarak nasıl yapılacağını öğrenmek için [Azure Data Factory kullanarak şirket içi bir dosya sistemine veri taşıma](data-factory-onprem-file-system-connector.md) bölümüne bakın.    
 * Azure SYNAPSE Analytics: Bu deneme, 6.000 DWUs ile oluşturulan Azure SYNAPSE Analytics 'e veri yükler
 
-    Azure SYNAPSE Analytics veritabanı oluşturma hakkında ayrıntılı yönergeler için [Azure SYNAPSE Analytics oluşturma](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) bölümüne bakın.  PolyBase kullanarak Azure SYNAPSE Analytics 'e en iyi olası yük performansını elde etmek için, performans ayarında 6.000 DWUs olan maksimum veri ambarı birimi (DWU) sayısını seçtik.
+    Azure SYNAPSE Analytics veritabanı oluşturma hakkında ayrıntılı yönergeler için [Azure SYNAPSE Analytics oluşturma](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) bölümüne bakın.  PolyBase kullanarak Azure SYNAPSE Analytics 'e en iyi olası yük performansını elde etmek için, performans ayarında 6.000 DWUs olan maksimum veri ambarı birimi (DWU) sayısını seçtik.
 
   > [!NOTE]
   > Azure Blob 'dan yükleme yaparken, veri yükleme performansı, Azure SYNAPSE Analytics için yapılandırdığınız DWU sayısıyla doğrudan orantılıdır:
@@ -79,7 +79,7 @@ Bu makalede kopyalama Sihirbazı kullanılarak Azure SYNAPSE Analytics 'e veri t
 
     Bu deneme, kaynak sınıfını kullanarak verileri Azure SYNAPSE Analytics 'e yükler `xlargerc` .
 
-    En iyi performansı elde etmek için, kaynak sınıfına ait olan bir Azure SYNAPSE Analytics kullanıcısı kullanılarak kopyalama yapılması gerekir `xlargerc` .  Bunun nasıl yapılacağını, [bir Kullanıcı kaynak sınıfı örneğini değiştirme](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)hakkında bilgi edinin.  
+    En iyi performansı elde etmek için, kaynak sınıfına ait olan bir Azure SYNAPSE Analytics kullanıcısı kullanılarak kopyalama yapılması gerekir `xlargerc` .  Bunun nasıl yapılacağını, [bir Kullanıcı kaynak sınıfı örneğini değiştirme](../../synapse-analytics/sql-data-warehouse/resource-classes-for-workload-management.md)hakkında bilgi edinin.  
 * Şu DDL ifadesini çalıştırarak Azure SYNAPSE Analytics veritabanında hedef tablo şeması oluşturun:
 
     ```SQL  
@@ -112,22 +112,22 @@ Bu makalede kopyalama Sihirbazı kullanılarak Azure SYNAPSE Analytics 'e veri t
 
 ## <a name="launch-copy-wizard"></a>Kopyalama Sihirbazı'nı başlatma
 1. [Azure Portal](https://portal.azure.com)oturum açın.
-2. Sol üst köşedeki **kaynak oluştur ' a** tıklayın, **Intelligence + Analytics**' e tıklayın ve **Data Factory**' ye tıklayın.
+2. Sol üst köşedeki **kaynak oluştur ' a** tıklayın, **Intelligence + Analytics** ' e tıklayın ve **Data Factory** ' ye tıklayın.
 3. **Yeni Data Factory** bölmesinde:
 
-   1. **Ad**Için **Loadıntosqldwdatafactory** girin.
-       Azure veri fabrikasının adı genel olarak benzersiz olmalıdır. Şu hatayı alırsanız: **"Loadıntosqldwdatafactory" Veri Fabrikası adı kullanılamıyor**, veri fabrikasının adını değiştirin (örneğin, Yournameloadıntosqldwdatafactory) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](data-factory-naming-rules.md) konusuna bakın.  
-   2. Azure **aboneliğinizi**seçin.
+   1. **Ad** Için **Loadıntosqldwdatafactory** girin.
+       Azure veri fabrikasının adı genel olarak benzersiz olmalıdır. Şu hatayı alırsanız: **"Loadıntosqldwdatafactory" Veri Fabrikası adı kullanılamıyor** , veri fabrikasının adını değiştirin (örneğin, Yournameloadıntosqldwdatafactory) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](data-factory-naming-rules.md) konusuna bakın.  
+   2. Azure **aboneliğinizi** seçin.
    3. Kaynak Grubu için aşağıdaki adımlardan birini uygulayın:
-      1. Var olan bir kaynak grubu seçmek için **Var olanı kullan**’ı seçin.
-      2. Bir kaynak grubunun adını girmek için **Yeni oluştur**’u seçin.
+      1. Var olan bir kaynak grubu seçmek için **Var olanı kullan** ’ı seçin.
+      2. Bir kaynak grubunun adını girmek için **Yeni oluştur** ’u seçin.
    4. Veri fabrikası için bir **konum** seçin.
    5. Dikey pencerenin alt kısmındaki **Panoya sabitle** onay kutusunu seçin.  
-   6. **Oluştur**’a tıklayın.
+   6. **Oluştur** 'a tıklayın.
 4. Oluşturma işlemi tamamlandıktan sonra, aşağıdaki görüntüde gösterildiği gibi **Data Factory** dikey penceresini görürsünüz:
 
    ![Data factory giriş sayfası](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
-5. Data Factory giriş sayfasında **Veri kopyala** kutucuğuna tıklayarak **Kopyalama Sihirbazı**’nı başlatın.
+5. Data Factory giriş sayfasında **Veri kopyala** kutucuğuna tıklayarak **Kopyalama Sihirbazı** ’nı başlatın.
 
    > [!NOTE]
    > Web tarayıcısının "Yetkilendiriliyor..." durumunda takıldığını görürseniz **Üçüncü taraf tanımlama bilgilerini ve site verilerini engelle** ayarını devre dışı bırakın/işaretini kaldırın (ya da) etkin durumda bırakıp **login.microsoftonline.com** için bir özel durum oluşturun ve ardından sihirbazı yeniden başlatmayı deneyin.
@@ -141,49 +141,49 @@ Bu makalede kopyalama Sihirbazı kullanılarak Azure SYNAPSE Analytics 'e veri t
 
 1. **Görev adı** Için **Copyfromblobtoazuressqldatawarehouse** girin
 2. **Şimdi Çalıştır** seçeneğini belirleyin.   
-3. **İleri**’ye tıklayın.  
+3. **İleri** ’ye tıklayın.  
 
     ![Kopyalama Sihirbazı-Özellikler sayfası](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
 ## <a name="step-2-configure-source"></a>2. Adım: kaynağı yapılandırma
 Bu bölümde, 1 TB TPC-H satır öğesi dosyalarını içeren Azure Blob kaynağını yapılandırma adımları gösterilmektedir.
 
-1. Veri deposu olarak **Azure Blob depolama** ' yı seçin ve **İleri**' ye tıklayın.
+1. Veri deposu olarak **Azure Blob depolama** ' yı seçin ve **İleri** ' ye tıklayın.
 
     ![Kopyalama Sihirbazı-kaynak sayfası seçin](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
 
-2. Azure Blob depolama hesabının bağlantı bilgilerini doldurup **İleri**' ye tıklayın.
+2. Azure Blob depolama hesabının bağlantı bilgilerini doldurup **İleri** ' ye tıklayın.
 
     ![Kopyalama Sihirbazı-kaynak bağlantı bilgileri](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-3. TPC-H satır öğesi dosyalarını içeren **klasörü** seçin ve **İleri**' ye tıklayın.
+3. TPC-H satır öğesi dosyalarını içeren **klasörü** seçin ve **İleri** ' ye tıklayın.
 
     ![Kopyalama Sihirbazı-giriş klasörü seç](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-4. **İleri**'ye tıklandıktan sonra, dosya biçimi ayarları otomatik olarak algılanır.  Sütun sınırlayıcısı ', ' varsayılan virgülden değil ' | ' olduğundan emin olmak için işaretleyin.  Verileri önizledikten sonra **İleri** ' ye tıklayın.
+4. **İleri** 'ye tıklandıktan sonra, dosya biçimi ayarları otomatik olarak algılanır.  Sütun sınırlayıcısı ', ' varsayılan virgülden değil ' | ' olduğundan emin olmak için işaretleyin.  Verileri önizledikten sonra **İleri** ' ye tıklayın.
 
     ![Kopyalama Sihirbazı-dosya biçimi ayarları](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>3. Adım: hedefi yapılandırma
 Bu bölümde, `lineitem` Azure SYNAPSE Analytics veritabanında hedef: tablosunun nasıl yapılandırılacağı gösterilmektedir.
 
-1. Hedef depo olarak **Azure SYNAPSE Analytics** ' i seçin ve **İleri**' ye tıklayın.
+1. Hedef depo olarak **Azure SYNAPSE Analytics** ' i seçin ve **İleri** ' ye tıklayın.
 
     ![Kopyalama Sihirbazı-hedef veri deposunu seçin](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Azure SYNAPSE Analytics için bağlantı bilgilerini girin.  Rolün üyesi olan kullanıcıyı belirttiğinizden emin olun `xlargerc` (ayrıntılı yönergeler için **Önkoşullar** bölümüne bakın) ve **İleri**' ye tıklayın.
+2. Azure SYNAPSE Analytics için bağlantı bilgilerini girin.  Rolün üyesi olan kullanıcıyı belirttiğinizden emin olun `xlargerc` (ayrıntılı yönergeler için **Önkoşullar** bölümüne bakın) ve **İleri** ' ye tıklayın.
 
     ![Kopyalama Sihirbazı-hedef bağlantı bilgileri](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-3. Hedef tabloyu seçin ve **İleri**' ye tıklayın.
+3. Hedef tabloyu seçin ve **İleri** ' ye tıklayın.
 
     ![Kopyalama Sihirbazı-tablo eşleme sayfası](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-4. Şema eşleme sayfasında "Sütun eşlemeyi Uygula" seçeneğini işaretsiz bırakın ve **İleri**' ye tıklayın.
+4. Şema eşleme sayfasında "Sütun eşlemeyi Uygula" seçeneğini işaretsiz bırakın ve **İleri** ' ye tıklayın.
 
 ## <a name="step-4-performance-settings"></a>4. Adım: performans ayarları
 
-**PolyBase 'e Izin ver** varsayılan olarak denetlenir.  **İleri**’ye tıklayın.
+**PolyBase 'e Izin ver** varsayılan olarak denetlenir.  **İleri** ’ye tıklayın.
 
 ![Kopyalama Sihirbazı-şema eşleme sayfası](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
@@ -202,7 +202,7 @@ Bu bölümde, `lineitem` Azure SYNAPSE Analytics veritabanında hedef: tablosunu
 
     ![Kopyalama Sihirbazı-başarılı iletişim kutusu](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 Azure SYNAPSE Analytics veritabanınızı çalıştırmaya yönelik birkaç en iyi yöntem aşağıda verilmiştir:
 
 * KÜMELENMIŞ bir COLUMNSTORE DIZININE yüklerken daha büyük bir kaynak sınıfı kullanın.

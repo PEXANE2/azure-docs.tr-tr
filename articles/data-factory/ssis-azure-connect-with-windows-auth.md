@@ -10,25 +10,25 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 5dd8e483751010a6090e0ec415c40d381e978fd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14d016f0deba518f16908492b4fae020b2dcc58c
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84118806"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637556"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Azure'da SSIS paketlerinden Windows kimlik doğrulaması ile veri depolarına ve dosya paylaşımlarına erişme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory (ADF) içinde Azure-SSIS Integration Runtime (IR) üzerinde çalışan SSIS paketlerinden SQL sunucuları, dosya paylaşımları, Azure dosyaları vb. gibi veri depolarına erişmek için Windows kimlik doğrulamasını kullanabilirsiniz. Veri depolarınız, Azure sanal makinelerinde (VM 'Ler) barındırılan veya yönetilen hizmet olarak Azure 'da çalışan şirket içi olabilir. Şirket içinde yer alıyorsa Azure-SSIS IR, şirket içi ağınıza bağlı bir sanal ağa (Microsoft Azure Sanal Ağ) katılmanız gerekir, bkz. [Azure-SSIS IR ekleme Microsoft Azure sanal ağ](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Azure-SSIS IR üzerinde çalışan SSIS paketlerindeki Windows kimlik doğrulaması ile veri depolarına erişmek için dört yöntem vardır:
+Azure Data Factory (ADF) içinde Azure-SSIS Integration Runtime (IR) üzerinde çalışan SSIS paketlerinden SQL sunucuları, dosya paylaşımları, Azure dosyaları vb. gibi veri depolarına erişmek için Windows kimlik doğrulamasını kullanabilirsiniz. Veri depolarınız, Azure sanal makinelerinde (VM 'Ler) barındırılan veya yönetilen hizmet olarak Azure 'da çalışan şirket içi olabilir. Şirket içinde yer alıyorsa Azure-SSIS IR, şirket içi ağınıza bağlı bir sanal ağa (Microsoft Azure Sanal Ağ) katılmanız gerekir, bkz. [Azure-SSIS IR ekleme Microsoft Azure sanal ağ](./join-azure-ssis-integration-runtime-virtual-network.md). Azure-SSIS IR üzerinde çalışan SSIS paketlerindeki Windows kimlik doğrulaması ile veri depolarına erişmek için dört yöntem vardır:
 
 | Bağlantı yöntemi | Etkin kapsam | Kurulum adımı | Paketlerdeki erişim yöntemi | Kimlik bilgisi kümelerinin ve bağlı kaynakların sayısı | Bağlı kaynakların türü | 
 |---|---|---|---|---|---|
-| Etkinlik düzeyi yürütme bağlamı ayarlama | SSIS paketi yürütme etkinliği başına | **Windows kimlik doğrulama** ÖZELLIĞINI, SSIS paketlerini ADF işlem hatları 'nda SSIS paket etkinliklerini yürütme olarak çalıştırırken bir "yürütme/farklı çalıştır" bağlamını ayarlamak için yapılandırın.<br/><br/> Daha fazla bilgi için bkz. [SSIS paketi yürütme etkinliğini yapılandırma](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity). | Dosya paylaşımları veya Azure dosyaları kullanıyorsanız, örneğin, UNC yolu aracılığıyla doğrudan paketlerde kaynaklara erişin: `\\YourFileShareServerName\YourFolderName` veya `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Tüm bağlı kaynaklar için yalnızca bir kimlik bilgisi kümesini destekler | -Şirket içi/Azure VM 'lerinde dosya paylaşımları<br/><br/> -Azure dosyaları, bkz. [Azure dosya paylaşma kullanma](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> -Windows kimlik doğrulaması ile şirket içi/Azure VM 'lerinde SQL Server 'Lar<br/><br/> -Windows kimlik doğrulaması ile diğer kaynaklar |
-| Katalog düzeyinde yürütme bağlamı ayarlama | Azure-SSIS IR başına, ancak etkinlik düzeyi yürütme bağlamı ayarlanırken geçersiz kılınır (yukarıya bakın) | `catalog.set_execution_credential`"Yürütme/farklı çalıştır" bağlamını ayarlamak IÇIN SSSıSDB saklı yordamını yürütün.<br/><br/> Daha fazla bilgi için aşağıdaki makalenin geri kalanına bakın. | Dosya paylaşımları veya Azure dosyaları kullanıyorsanız, örneğin, UNC yolu aracılığıyla doğrudan paketlerde kaynaklara erişin: `\\YourFileShareServerName\YourFolderName` veya `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Tüm bağlı kaynaklar için yalnızca bir kimlik bilgisi kümesini destekler | -Şirket içi/Azure VM 'lerinde dosya paylaşımları<br/><br/> -Azure dosyaları, bkz. [Azure dosya paylaşma kullanma](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> -Windows kimlik doğrulaması ile şirket içi/Azure VM 'lerinde SQL Server 'Lar<br/><br/> -Windows kimlik doğrulaması ile diğer kaynaklar |
-| Komut aracılığıyla kalıcı kimlik bilgileri `cmdkey` | Azure-SSIS IR başına, ancak etkinlik/Katalog düzeyinde yürütme bağlamı ayarlanırken geçersiz kılınır (yukarıya bakın) | `cmdkey` `main.cmd` Dosya paylaşımları veya Azure dosyaları kullanıyorsanız, örneğin, Azure-SSIS IR sağlanırken özel bir kurulum komut dosyasında () komutunu `cmdkey /add:YourFileShareServerName /user:YourDomainName\YourUsername /pass:YourPassword` yürütün. `cmdkey /add:YourAzureStorageAccountName.file.core.windows.net /user:azure\YourAzureStorageAccountName /pass:YourAccessKey`<br/><br/> Daha fazla bilgi için bkz. [Azure-SSIS IR için kurulumu özelleştirme](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup). | Dosya paylaşımları veya Azure dosyaları kullanıyorsanız, örneğin, UNC yolu aracılığıyla doğrudan paketlerde kaynaklara erişin: `\\YourFileShareServerName\YourFolderName` veya `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Farklı bağlı kaynaklar için birden çok kimlik bilgisi kümesini destekleme | -Şirket içi/Azure VM 'lerinde dosya paylaşımları<br/><br/> -Azure dosyaları, bkz. [Azure dosya paylaşma kullanma](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> -Windows kimlik doğrulaması ile şirket içi/Azure VM 'lerinde SQL Server 'Lar<br/><br/> -Windows kimlik doğrulaması ile diğer kaynaklar |
-| Paket yürütme sırasında (kalıcı olmayan) sürücü bağlama | Paket başına | `net use`Paketinizdeki denetim akışının başlangıcına eklenen Işlem yürütme görevinde komutu yürütün, örneğin:`net use D: \\YourFileShareServerName\YourFolderName` | Eşlenen sürücüler aracılığıyla dosya paylaşımlarına erişme | Farklı dosya paylaşımları için birden çok sürücüyü destekleme | -Şirket içi/Azure VM 'lerinde dosya paylaşımları<br/><br/> -Azure dosyaları, bkz. [Azure dosya paylaşma kullanma](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) |
+| Etkinlik düzeyi yürütme bağlamı ayarlama | SSIS paketi yürütme etkinliği başına | **Windows kimlik doğrulama** ÖZELLIĞINI, SSIS paketlerini ADF işlem hatları 'nda SSIS paket etkinliklerini yürütme olarak çalıştırırken bir "yürütme/farklı çalıştır" bağlamını ayarlamak için yapılandırın.<br/><br/> Daha fazla bilgi için bkz. [SSIS paketi yürütme etkinliğini yapılandırma](./how-to-invoke-ssis-package-ssis-activity.md). | Dosya paylaşımları veya Azure dosyaları kullanıyorsanız, örneğin, UNC yolu aracılığıyla doğrudan paketlerde kaynaklara erişin: `\\YourFileShareServerName\YourFolderName` veya `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Tüm bağlı kaynaklar için yalnızca bir kimlik bilgisi kümesini destekler | -Şirket içi/Azure VM 'lerinde dosya paylaşımları<br/><br/> -Azure dosyaları, bkz. [Azure dosya paylaşma kullanma](../storage/files/storage-how-to-use-files-windows.md) <br/><br/> -Windows kimlik doğrulaması ile şirket içi/Azure VM 'lerinde SQL Server 'Lar<br/><br/> -Windows kimlik doğrulaması ile diğer kaynaklar |
+| Katalog düzeyinde yürütme bağlamı ayarlama | Azure-SSIS IR başına, ancak etkinlik düzeyi yürütme bağlamı ayarlanırken geçersiz kılınır (yukarıya bakın) | `catalog.set_execution_credential`"Yürütme/farklı çalıştır" bağlamını ayarlamak IÇIN SSSıSDB saklı yordamını yürütün.<br/><br/> Daha fazla bilgi için aşağıdaki makalenin geri kalanına bakın. | Dosya paylaşımları veya Azure dosyaları kullanıyorsanız, örneğin, UNC yolu aracılığıyla doğrudan paketlerde kaynaklara erişin: `\\YourFileShareServerName\YourFolderName` veya `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Tüm bağlı kaynaklar için yalnızca bir kimlik bilgisi kümesini destekler | -Şirket içi/Azure VM 'lerinde dosya paylaşımları<br/><br/> -Azure dosyaları, bkz. [Azure dosya paylaşma kullanma](../storage/files/storage-how-to-use-files-windows.md) <br/><br/> -Windows kimlik doğrulaması ile şirket içi/Azure VM 'lerinde SQL Server 'Lar<br/><br/> -Windows kimlik doğrulaması ile diğer kaynaklar |
+| Komut aracılığıyla kalıcı kimlik bilgileri `cmdkey` | Azure-SSIS IR başına, ancak etkinlik/Katalog düzeyinde yürütme bağlamı ayarlanırken geçersiz kılınır (yukarıya bakın) | `cmdkey` `main.cmd` Dosya paylaşımları veya Azure dosyaları kullanıyorsanız, örneğin, Azure-SSIS IR sağlanırken özel bir kurulum komut dosyasında () komutunu `cmdkey /add:YourFileShareServerName /user:YourDomainName\YourUsername /pass:YourPassword` yürütün. `cmdkey /add:YourAzureStorageAccountName.file.core.windows.net /user:azure\YourAzureStorageAccountName /pass:YourAccessKey`<br/><br/> Daha fazla bilgi için bkz. [Azure-SSIS IR için kurulumu özelleştirme](./how-to-configure-azure-ssis-ir-custom-setup.md). | Dosya paylaşımları veya Azure dosyaları kullanıyorsanız, örneğin, UNC yolu aracılığıyla doğrudan paketlerde kaynaklara erişin: `\\YourFileShareServerName\YourFolderName` veya `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | Farklı bağlı kaynaklar için birden çok kimlik bilgisi kümesini destekleme | -Şirket içi/Azure VM 'lerinde dosya paylaşımları<br/><br/> -Azure dosyaları, bkz. [Azure dosya paylaşma kullanma](../storage/files/storage-how-to-use-files-windows.md) <br/><br/> -Windows kimlik doğrulaması ile şirket içi/Azure VM 'lerinde SQL Server 'Lar<br/><br/> -Windows kimlik doğrulaması ile diğer kaynaklar |
+| Paket yürütme sırasında (kalıcı olmayan) sürücü bağlama | Paket başına | `net use`Paketinizdeki denetim akışının başlangıcına eklenen Işlem yürütme görevinde komutu yürütün, örneğin:`net use D: \\YourFileShareServerName\YourFolderName` | Eşlenen sürücüler aracılığıyla dosya paylaşımlarına erişme | Farklı dosya paylaşımları için birden çok sürücüyü destekleme | -Şirket içi/Azure VM 'lerinde dosya paylaşımları<br/><br/> -Azure dosyaları, bkz. [Azure dosya paylaşma kullanma](../storage/files/storage-how-to-use-files-windows.md) |
 |||||||
 
 > [!WARNING]
@@ -44,7 +44,7 @@ Windows kimlik doğrulamasını bir SSIS paketinde kullandığınızda yalnızca
 
 Paketlerin Şirket içindeki veri depolarına erişmek için Windows kimlik doğrulamasını kullanmasına izin veren etki alanı kimlik bilgileri sağlamak için aşağıdaki işlemleri yapın:
 
-1. SQL Server Management Studio (SSMS) veya başka bir araçla, SSıSDB barındıran SQL Database/SQL Managed örneğine bağlanın. Daha fazla bilgi için bkz. [Azure 'DA SSıSDB 'ye bağlanma](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. SQL Server Management Studio (SSMS) veya başka bir araçla, SSıSDB barındıran SQL Database/SQL Managed örneğine bağlanın. Daha fazla bilgi için bkz. [Azure 'DA SSıSDB 'ye bağlanma](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Geçerli veritabanı olarak SSSıSDB ile bir sorgu penceresi açın.
 
@@ -60,7 +60,7 @@ Paketlerin Şirket içindeki veri depolarına erişmek için Windows kimlik doğ
 
 Etkin etki alanı kimlik bilgilerini görüntülemek için aşağıdaki işlemleri yapın:
 
-1. SSMS veya başka bir araçla, SSSıSDB barındıran SQL veritabanı/SQL yönetilen örneğine bağlanın. Daha fazla bilgi için bkz. [Azure 'DA SSıSDB 'ye bağlanma](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. SSMS veya başka bir araçla, SSSıSDB barındıran SQL veritabanı/SQL yönetilen örneğine bağlanın. Daha fazla bilgi için bkz. [Azure 'DA SSıSDB 'ye bağlanma](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Geçerli veritabanı olarak SSSıSDB ile bir sorgu penceresi açın.
 
@@ -75,7 +75,7 @@ Etkin etki alanı kimlik bilgilerini görüntülemek için aşağıdaki işlemle
 ### <a name="clear-domain-credentials"></a>Etki alanı kimlik bilgilerini temizle
 Bu makalede açıklandığı gibi verdiğiniz kimlik bilgilerini temizlemek ve kaldırmak için aşağıdaki işlemleri yapın:
 
-1. SSMS veya başka bir araçla, SSSıSDB barındıran SQL veritabanı/SQL yönetilen örneğine bağlanın. Daha fazla bilgi için bkz. [Azure 'DA SSıSDB 'ye bağlanma](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. SSMS veya başka bir araçla, SSSıSDB barındıran SQL veritabanı/SQL yönetilen örneğine bağlanın. Daha fazla bilgi için bkz. [Azure 'DA SSıSDB 'ye bağlanma](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Geçerli veritabanı olarak SSSıSDB ile bir sorgu penceresi açın.
 
@@ -99,15 +99,15 @@ Bu makalede açıklandığı gibi verdiğiniz kimlik bilgilerini temizlemek ve k
 
 3. SSMS 'den, şirket içi SQL Server bağlanıp bağlanamaıp bağlanamayacağını denetleyin.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Azure 'da çalışan paketlerden şirket içi bir SQL Server erişmek için aşağıdaki işlemleri yapın:
 
 1.  SQL Server Yapılandırma Yöneticisi, TCP/IP protokolünü etkinleştirin.
 
-2. Windows Güvenlik Duvarı üzerinden erişime izin ver. Daha fazla bilgi için bkz. [Windows Güvenlik Duvarı 'nı SQL Server erişmek Için yapılandırma](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access).
+2. Windows Güvenlik Duvarı üzerinden erişime izin ver. Daha fazla bilgi için bkz. [Windows Güvenlik Duvarı 'nı SQL Server erişmek Için yapılandırma](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access).
 
-3. Azure-SSIS IR Şirket içindeki SQL Server bağlı bir Microsoft Azure Sanal Ağ ekleyin.  Daha fazla bilgi için bkz. [Azure-SSIS IR Microsoft Azure sanal ağ](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)ekleme.
+3. Azure-SSIS IR Şirket içindeki SQL Server bağlı bir Microsoft Azure Sanal Ağ ekleyin.  Daha fazla bilgi için bkz. [Azure-SSIS IR Microsoft Azure sanal ağ](./join-azure-ssis-integration-runtime-virtual-network.md)ekleme.
 
 4. `catalog.set_execution_credential`Bu makalede açıklandığı gibi kimlik bilgilerini sağlamak IÇIN SSSıSDB saklı yordamını kullanın.
 
@@ -126,13 +126,13 @@ Azure 'da çalışan paketlerden şirket içi bir SQL Server erişmek için aşa
 
 3. Şirket içindeki dosya paylaşımının dizin listesinin döndürülüp döndürülmediğini denetleyin.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Şirket içindeki bir dosya paylaşımıyla Azure 'da çalışan paketlerden erişmek için aşağıdaki işlemleri yapın:
 
 1. Windows Güvenlik Duvarı üzerinden erişime izin ver.
 
-2. Azure-SSIS IR, Şirket içindeki dosya paylaşımıyla bağlantılı bir Microsoft Azure Sanal Ağ ekleyin.  Daha fazla bilgi için bkz. [Azure-SSIS IR Microsoft Azure sanal ağ](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)ekleme.
+2. Azure-SSIS IR, Şirket içindeki dosya paylaşımıyla bağlantılı bir Microsoft Azure Sanal Ağ ekleyin.  Daha fazla bilgi için bkz. [Azure-SSIS IR Microsoft Azure sanal ağ](./join-azure-ssis-integration-runtime-virtual-network.md)ekleme.
 
 3. `catalog.set_execution_credential`Bu makalede açıklandığı gibi kimlik bilgilerini sağlamak IÇIN SSSıSDB saklı yordamını kullanın.
 
@@ -140,7 +140,7 @@ Azure 'da çalışan paketlerden şirket içi bir SQL Server erişmek için aşa
 
 Azure VM 'deki bir dosya paylaşımıyla Azure 'da çalışan paketlerden erişmek için aşağıdaki işlemleri yapın:
 
-1. SSMS veya başka bir araçla, SSSıSDB barındıran SQL veritabanı/SQL yönetilen örneğine bağlanın. Daha fazla bilgi için bkz. [Azure 'DA SSıSDB 'ye bağlanma](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. SSMS veya başka bir araçla, SSSıSDB barındıran SQL veritabanı/SQL yönetilen örneğine bağlanın. Daha fazla bilgi için bkz. [Azure 'DA SSıSDB 'ye bağlanma](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Geçerli veritabanı olarak SSSıSDB ile bir sorgu penceresi açın.
 
@@ -156,7 +156,7 @@ Azure dosyaları hakkında daha fazla bilgi için bkz. [Azure dosyaları](https:
 
 Azure dosyalarındaki bir dosya paylaşımıyla Azure 'da çalışan paketlerden erişmek için aşağıdaki işlemleri yapın:
 
-1. SSMS veya başka bir araçla, SSSıSDB barındıran SQL veritabanı/SQL yönetilen örneğine bağlanın. Daha fazla bilgi için bkz. [Azure 'DA SSıSDB 'ye bağlanma](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. SSMS veya başka bir araçla, SSSıSDB barındıran SQL veritabanı/SQL yönetilen örneğine bağlanın. Daha fazla bilgi için bkz. [Azure 'DA SSıSDB 'ye bağlanma](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Geçerli veritabanı olarak SSSıSDB ile bir sorgu penceresi açın.
 
@@ -168,6 +168,6 @@ Azure dosyalarındaki bir dosya paylaşımıyla Azure 'da çalışan paketlerden
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Paketlerinizi dağıtın. Daha fazla bilgi için bkz. [SSMS Ile Azure 'a BIR SSIS projesi dağıtma](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms).
-- Paketlerinizi çalıştırın. Daha fazla bilgi için bkz. [SSMS Ile Azure 'DA SSIS paketleri çalıştırma](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms).
-- Paketlerinizi zamanlayın. Daha fazla bilgi için bkz. [Azure 'DA SSIS paketlerini zamanlama](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).
+- Paketlerinizi dağıtın. Daha fazla bilgi için bkz. [SSMS Ile Azure 'a BIR SSIS projesi dağıtma](/sql/integration-services/ssis-quickstart-deploy-ssms).
+- Paketlerinizi çalıştırın. Daha fazla bilgi için bkz. [SSMS Ile Azure 'DA SSIS paketleri çalıştırma](/sql/integration-services/ssis-quickstart-run-ssms).
+- Paketlerinizi zamanlayın. Daha fazla bilgi için bkz. [Azure 'DA SSIS paketlerini zamanlama](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).

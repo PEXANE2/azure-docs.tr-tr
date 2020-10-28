@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: b66329ebf101b5b36aee5993151e8b69e92a2bdb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7eac2ed58608ac5814e1f907b863a2977df830d4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520345"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636723"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Öğretici: Wdesk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Wdesk 'i Azure Active Directory (Azure AD) ile tümleştirmeyi 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -48,14 +48,14 @@ Wdesk 'in tümleştirmesini Azure AD ile yapılandırmak için, Galeriden Wdesk 
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **wdesk** yazın.
 1. Sonuçlar panelinden **Wdesk** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre wdesk ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre wdesk ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Wdesk 'teki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD SSO 'yu Wdesk ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
@@ -73,7 +73,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açmayı Wdesk ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **wdesk** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **wdesk** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -87,7 +87,7 @@ Azure AD çoklu oturum açmayı Wdesk ile yapılandırmak için aşağıdaki ad�
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Wdesk etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
 
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açmayı Wdesk ile yapılandırmak için aşağıdaki ad�
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Wdesk etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
 
@@ -120,7 +120,7 @@ Azure AD çoklu oturum açmayı Wdesk ile yapılandırmak için aşağıdaki ad�
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -132,27 +132,27 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Wdesk 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **wdesk**' i seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **wdesk** ' i seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Wdesk**' i seçin.
+2. Uygulamalar listesinde, **Wdesk** ' i seçin.
 
     ![Uygulamalar listesindeki Wdesk bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
@@ -170,25 +170,25 @@ Bu bölümde, Wdesk 'e erişim vererek Azure çoklu oturum açma özelliğini ku
 
 1. Farklı bir Web tarayıcısı penceresinde, Wdesk 'de güvenlik yöneticisi olarak oturum açın.
 
-2. Sol alt tarafta **yönetici** ' ye tıklayın ve **Hesap Yöneticisi**' ni seçin:
+2. Sol alt tarafta **yönetici** ' ye tıklayın ve **Hesap Yöneticisi** ' ni seçin:
  
-     ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+     ![Ekran görüntüsü, Yönetici menüsünden Hesap Yöneticisi ' ni gösterir.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. Wdesk Yöneticisi 'nde **güvenlik**' e gidin ve **SAML**  >  **SAML ayarları**:
+3. Wdesk Yöneticisi 'nde **güvenlik** ' e gidin ve **SAML**  >  **SAML ayarları** :
 
-    ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
+    ![Ekran görüntüsü SAML sekmesinden seçilen SAML ayarlarını gösterir.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
-1. **SAML Kullanıcı kimliği ayarları**altında **SAML Kullanıcı kimliği ' nin Wdesk Kullanıcı adı**' na bakın.
+1. **SAML Kullanıcı kimliği ayarları** altında **SAML Kullanıcı kimliği ' nin Wdesk Kullanıcı adı** ' na bakın.
 
-    ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/wdesk-username.png)
+    ![Ekran görüntüsü, SAML kullanıcısı g Masası Kullanıcı adı ' nı seçebileceğiniz SAML Kullanıcı g/ç ayarlarını gösterir.](./media/wdesk-tutorial/wdesk-username.png)
 
-4. **Genel ayarlar**altında **SAML çoklu oturum açmayı etkinleştir**' i işaretleyin:
+4. **Genel ayarlar** altında **SAML çoklu oturum açmayı etkinleştir** ' i işaretleyin:
 
-    ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
+    ![Ekran görüntüsü, SAML çoklu oturum açmayı etkinleştir ' i seçebileceğiniz SAML ayarlarını Düzenle ' yi gösterir.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
 
-5. **Hizmet sağlayıcı ayrıntıları**' nın altında, aşağıdaki adımları uygulayın:
+5. **Hizmet sağlayıcı ayrıntıları** ' nın altında, aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz hizmet sağlayıcısı ayrıntılarını gösterir.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
 
       a. **Oturum açma URL** 'sini kopyalayın ve Azure Portal oturum açma **URL 'si** metin kutusuna yapıştırın.
    
@@ -200,11 +200,11 @@ Bu bölümde, Wdesk 'e erişim vererek Azure çoklu oturum açma özelliğini ku
 
 6. IDP ayarlarını **Düzenle** iletişim kutusunu açmak Için **IDP ayarlarını yapılandır** öğesine tıklayın. Azure portal kaydettiğiniz **Metadata.xml** dosyasını bulmak Için **Dosya Seç** ' e tıklayın, ardından karşıya yükleyin.
     
-    ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
+    ![Ekran görüntüsü, meta verileri karşıya yükleyebileceğiniz g/ç ayarlarını Düzenle ' ye gösterir.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
-7. **Değişiklikleri Kaydet**' e tıklayın.
+7. **Değişiklikleri Kaydet** ' e tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
+    ![Ekran görüntüsü değişiklikleri Kaydet düğmesini gösterir.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
 ### <a name="create-wdesk-test-user"></a>Wdesk test kullanıcısı oluşturma
 
@@ -214,33 +214,33 @@ Azure AD kullanıcılarının Wdesk 'de oturum açmasını sağlamak için, Wdes
 
 1. Wdesk 'de güvenlik yöneticisi olarak oturum açın.
 
-2. **Yönetici**  >  **hesabı Yöneticisi**' ne gidin.
+2. **Yönetici**  >  **hesabı Yöneticisi** ' ne gidin.
 
-     ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+     ![Ekran görüntüsü, Yönetici menüsünden Hesap Yöneticisi ' ni gösterir.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. **Kişiler**altında **Üyeler** ' e tıklayın.
+3. **Kişiler** altında **Üyeler** ' e tıklayın.
 
 4. Şimdi **üye Ekle iletişim kutusunu** açmak Için **üye Ekle** ' ye tıklayın. 
    
-    ![Azure AD test kullanıcısı oluşturma](./media/wdesk-tutorial/createuser1.png)  
+    ![Ekran görüntüsü üye Ekle ' yi seçebileceğiniz üye sekmesini gösterir.](./media/wdesk-tutorial/createuser1.png)  
 
 5. **Kullanıcı** metin kutusunda, kullanıcının Kullanıcı adını girip b.simon@contoso.com **devam** düğmesine tıklayın.
 
-    ![Azure AD test kullanıcısı oluşturma](./media/wdesk-tutorial/createuser3.png)
+    ![Ekran görüntüsü, Kullanıcı girebileceğiniz üye Ekle iletişim kutusunu gösterir.](./media/wdesk-tutorial/createuser3.png)
 
 6.  Ayrıntıları aşağıda gösterildiği gibi girin:
   
-    ![Azure AD test kullanıcısı oluşturma](./media/wdesk-tutorial/createuser4.png)
+    ![Ekran görüntüsü, bir kullanıcı için temel bilgileri ekleyebileceğiniz üye Ekle iletişim kutusunu gösterir.](./media/wdesk-tutorial/createuser4.png)
  
     a. **E-posta** metin kutusuna kullanıcının e-postasını girin b.simon@contoso.com .
 
-    b. **Ad** metin kutusuna **B**gibi kullanıcının adını girin.
+    b. **Ad** metin kutusuna **B** gibi kullanıcının adını girin.
 
-    c. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
+    c. **Soyadı** metin kutusuna, **Simon** gibi kullanıcı adının soyadını girin.
 
 7. **Üye kaydet** düğmesine tıklayın.  
 
-    ![Azure AD test kullanıcısı oluşturma](./media/wdesk-tutorial/createuser5.png)
+    ![Ekran görüntüsü, üye Kaydet düğmesi ile hoş geldiniz e-postası gönder düğmesini gösterir.](./media/wdesk-tutorial/createuser5.png)
 
 ### <a name="test-sso"></a>Test SSO 'SU 
 

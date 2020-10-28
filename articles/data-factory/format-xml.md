@@ -9,18 +9,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: e0fadf4ac8cea1c8804b17f5549a99bc360e2950
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ca13ef3c6fa5bbd40ee239c50a023beee85a977
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334302"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637182"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure Data Factory XML biçimi
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-**XML dosyalarını ayrıştırmak**istediğinizde bu makaleye uyun. 
+**XML dosyalarını ayrıştırmak** istediğinizde bu makaleye uyun. 
 
 XML biçimi şu bağlayıcılar için desteklenir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure dosya depolama](connector-azure-file-storage.md), [dosya sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md) [,,](connector-hdfs.md), [http](connector-http.md)ve [SFTP](connector-sftp.md). Kaynak olarak desteklenir, ancak havuz değildir.
 
@@ -30,13 +30,13 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik         | Açıklama                                                  | Gerekli |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| tür             | Veri kümesinin Type özelliği **XML**olarak ayarlanmalıdır. | Evet      |
-| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Evet      |
+| tür             | Veri kümesinin Type özelliği **XML** olarak ayarlanmalıdır. | Evet      |
+| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın** . | Evet      |
 | encodingName     | Test dosyalarını okumak/yazmak için kullanılan kodlama türü. <br>İzin verilen değerler şunlardır: "UTF-8", "UTF-16", "UTF-16TO", "UTF-32", "UTF-32TO", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JıS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "" IBM861 "," IBM863 "," IBM864 "," IBM865 "," IBM869 "," IBM870 "," IBM01140 "," IBM01141 "," IBM01142 "," IBM01143 "," IBM01144 "," IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 " , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| Hayır       |
-| nullValue | Null değerin dize gösterimini belirtir.<br/>Varsayılan değer boş bir **dizedir**. | Hayır |
+| nullValue | Null değerin dize gösterimini belirtir.<br/>Varsayılan değer boş bir **dizedir** . | Hayır |
 | sıkıştırma | Dosya sıkıştırmayı yapılandırmak için özellik grubu. Etkinlik yürütmesi sırasında sıkıştırma/açma işlemi yapmak istediğinizde bu bölümü yapılandırın. | Hayır |
-| tür<br>(*altında `compression` *) | XML dosyalarını okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler şunlardır **bzip2**, **gzip**, **söndür**, **zipsöndür**, **targzip**, **Snappy**veya **lz4**. Varsayılan değer sıkıştırılmaz.<br>**Şu anda** kopyalama etkinliği "Snappy" & "lz4" desteklemez ve eşleme veri akışı "zipsöndür" seçeneğini desteklemez.<br>**Note** Örneğin, dosyaları açmak için kopyalama etkinliği **'ni açmak** / **TarGzip** ve dosya tabanlı havuz veri deposuna yazmak için, varsayılan olarak dosyalar klasörüne çıkarılır: `<path specified in dataset>/<folder named as source compressed file>/` , `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` sıkıştırılmış dosyaların adının klasör yapısı olarak korunup korunmayacağını denetlemek için [etkinlik kaynağını kopyalama](#xml-as-source) üzerinde kullanın. | Hayır.  |
-| düzey<br/>(*altında `compression` *) | Sıkıştırma oranı. <br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.<br>- **En iyi**: işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) konusu. | Hayır       |
+| tür<br>( *altında `compression`* ) | XML dosyalarını okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler şunlardır **bzip2** , **gzip** , **söndür** , **zipsöndür** , **targzip** , **Snappy** veya **lz4** . Varsayılan değer sıkıştırılmaz.<br>**Şu anda** kopyalama etkinliği "Snappy" & "lz4" desteklemez ve eşleme veri akışı "zipsöndür" seçeneğini desteklemez.<br>**Note** Örneğin, dosyaları açmak için kopyalama etkinliği **'ni açmak** / **TarGzip** ve dosya tabanlı havuz veri deposuna yazmak için, varsayılan olarak dosyalar klasörüne çıkarılır: `<path specified in dataset>/<folder named as source compressed file>/` , `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` sıkıştırılmış dosyaların adının klasör yapısı olarak korunup korunmayacağını denetlemek için [etkinlik kaynağını kopyalama](#xml-as-source) üzerinde kullanın. | Hayır.  |
+| düzey<br/>( *altında `compression`* ) | Sıkıştırma oranı. <br>İzin verilen değerler **en iyi** veya **en hızlardır** .<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.<br>- **En iyi** : işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](/dotnet/api/system.io.compression.compressionlevel) konusu. | Hayır       |
 
 Azure Blob depolamada bir XML veri kümesi örneği aşağıda verilmiştir:
 
@@ -71,26 +71,26 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="xml-as-source"></a>Kaynak olarak XML
 
-Aşağıdaki özellikler, etkinlik *** \* kaynağını \* *** kopyalama bölümünde desteklenir. [XML Bağlayıcısı davranışından](#xml-connector-behavior)daha fazla bilgi edinin.
+Aşağıdaki özellikler kopyalama etkinliği **_ \_ kaynağı \*** * bölümünde desteklenir. [XML Bağlayıcısı davranışından](#xml-connector-behavior)daha fazla bilgi edinin.
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | Kopyalama etkinliği kaynağının Type özelliği **XMLSource**olarak ayarlanmalıdır. | Evet      |
+| tür          | Kopyalama etkinliği kaynağının Type özelliği **XMLSource** olarak ayarlanmalıdır. | Evet      |
 | formatSettings | Bir özellik grubu. Aşağıdaki **XML okuma ayarları** tablosuna bakın. | Hayır       |
-| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın** . | Hayır       |
 
 Altında desteklenen **XML okuma ayarları** `formatSettings` :
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | FormatSettings türü **XmlReadSettings**olarak ayarlanmalıdır. | Evet      |
+| tür          | FormatSettings türü **XmlReadSettings** olarak ayarlanmalıdır. | Evet      |
 | validationMode | XML şemasının doğrulanması gerekip gerekmediğini belirtir.<br>İzin verilen değerler **none** (varsayılan, doğrulama yok), **XSD** (XSD kullanarak doğrula), **DTD** (DTD kullanarak doğrula). | Hayır |
-| öznitelikleri | XML dosyalarını ayrıştırırken ad alanının etkinleştirilip etkinleştirilmeyeceğini belirtir. İzin verilen değerler: **true** (varsayılan), **false**. | Hayır |
+| öznitelikleri | XML dosyalarını ayrıştırırken ad alanının etkinleştirilip etkinleştirilmeyeceğini belirtir. İzin verilen değerler: **true** (varsayılan), **false** . | Hayır |
 | Namespaceöneklerini | XML dosyası ayrıştırılırken alanları adlandırmak için kullanılan, önek eşleme için ad alanı URI 'SI.<br/>Bir XML dosyasında ad alanı ve ad alanı etkinse, varsayılan olarak, alan adı XML belgesinde olduğu gibidir.<br>Bu haritada ad alanı URI 'SI için tanımlanmış bir öğe varsa, alan adı `prefix:fieldName` . | Hayır |
-| detectDataType | Tamsayı, Çift ve Boole veri türlerinin algılanmayacağı. İzin verilen değerler: **true** (varsayılan), **false**.| Hayır |
+| detectDataType | Tamsayı, Çift ve Boole veri türlerinin algılanmayacağı. İzin verilen değerler: **true** (varsayılan), **false** .| Hayır |
 | compressionProperties | Belirli bir sıkıştırma codec bileşeni için verileri açmak üzere bir özellik grubu. | Hayır       |
-| preserveZipFileNameAsFolder<br>(* `compressionProperties` -> `type` as `ZipDeflateReadSettings` *)  | Giriş veri kümesi **Zipsöndür** sıkıştırma ile yapılandırıldığında geçerlidir. Kaynak ZIP dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory daraltılmış dosyaları içine yazar `<path specified in dataset>/<folder named as source zip file>/` .<br>- **False**olarak ayarlandığında Data Factory ZIP dosyalarını doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak ZIP dosyalarında yinelenen dosya adlarında bulunmadığından emin olun.  | Hayır |
-| preserveCompressionFileNameAsFolder<br>(* `compressionProperties` -> `type` as `TarGZipReadSettings` *) | Giriş veri kümesi **Targzip** sıkıştırması ile yapılandırıldığında geçerlidir. Kaynak sıkıştırılmış dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory, açılan dosyaları içine yazar `<path specified in dataset>/<folder named as source compressed file>/` . <br>- **False**olarak ayarlandığında Data Factory açılan dosyaları doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak dosyalarında yinelenen dosya adlarında bulunmadığından emin olun. | Hayır |
+| preserveZipFileNameAsFolder<br>( *`compressionProperties` -> `type` as `ZipDeflateReadSettings`* )  | Giriş veri kümesi **Zipsöndür** sıkıştırma ile yapılandırıldığında geçerlidir. Kaynak ZIP dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory daraltılmış dosyaları içine yazar `<path specified in dataset>/<folder named as source zip file>/` .<br>- **False** olarak ayarlandığında Data Factory ZIP dosyalarını doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak ZIP dosyalarında yinelenen dosya adlarında bulunmadığından emin olun.  | Hayır |
+| preserveCompressionFileNameAsFolder<br>( *`compressionProperties` -> `type` as `TarGZipReadSettings`* ) | Giriş veri kümesi **Targzip** sıkıştırması ile yapılandırıldığında geçerlidir. Kaynak sıkıştırılmış dosya adının kopyalama sırasında klasör yapısı olarak korunup korunmayacağını gösterir.<br>- **True (varsayılan)** olarak ayarlandığında Data Factory, açılan dosyaları içine yazar `<path specified in dataset>/<folder named as source compressed file>/` . <br>- **False** olarak ayarlandığında Data Factory açılan dosyaları doğrudan öğesine yazar `<path specified in dataset>` . Yarış veya beklenmedik davranışlara engel olmak için farklı kaynak dosyalarında yinelenen dosya adlarında bulunmadığından emin olun. | Hayır |
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
@@ -109,7 +109,7 @@ Aşağıdaki tabloda bir XML kaynağı tarafından desteklenen özellikler liste
 | Tamamlandıktan sonra | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | Hayır | Sil: `true` veya `false` <br> Geçiş `['<from>', '<to>']` | purgeFiles <br>moveFiles |
 | Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | Hayır | Zaman damgası | Modıfıedafter <br>modifiedBefore |
 | Doğrulama modu | XML şemasının doğrulanması gerekip gerekmediğini belirtir. | Hayır | `None` (varsayılan, doğrulama yok)<br>`xsd` (XSD kullanarak doğrula)<br>`dtd` (DTD kullanarak doğrula). | validationMode |
-| Ad Alanları | XML dosyalarını ayrıştırırken ad alanının etkinleştirilip etkinleştirilmeyeceğini belirtir. | Hayır | `true` (varsayılan) veya `false` | öznitelikleri |
+| Ad alanları | XML dosyalarını ayrıştırırken ad alanının etkinleştirilip etkinleştirilmeyeceğini belirtir. | Hayır | `true` (varsayılan) veya `false` | öznitelikleri |
 | Ad alanı ön eki çiftleri | XML dosyası ayrıştırılırken alanları adlandırmak için kullanılan, önek eşleme için ad alanı URI 'SI.<br/>Bir XML dosyasında ad alanı ve ad alanı etkinse, varsayılan olarak, alan adı XML belgesinde olduğu gibidir.<br>Bu haritada ad alanı URI 'SI için tanımlanmış bir öğe varsa, alan adı `prefix:fieldName` . | Hayır | Desenli dizi`['URI1'->'prefix1','URI2'->'prefix2']` | Namespaceöneklerini |
 | Dosya bulunamamış izin ver | True ise bir dosya bulunmazsa bir hata oluşturulmaz | hayır | `true` veya `false` | ıgnorenofilesfound |
 

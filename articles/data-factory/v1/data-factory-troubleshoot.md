@@ -13,12 +13,12 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7afc16beaacee5b75d57c4e4216a105734d20a09
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195910"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637080"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory'de sorun giderme
 > [!NOTE]
@@ -65,9 +65,9 @@ Veri Yönetimi Ağ Geçidi Hızlı Kurulumu için Internet Explorer veya Microso
 Ağ Geçidi makinesinde **veri yönetimi ağ geçidi Configuration Manager** başlatın ve ağ geçidi makinesinden SQL Server bağlantısını test etmek Için **sorun giderme** sekmesini kullanın. Bağlantı/ağ geçidi ile ilgili sorunları gidermeye yönelik ipuçları için bkz. [ağ geçidi sorunlarını giderme](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .   
 
 ### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Sorun: giriş dilimleri sonsuza kadar bekliyor
-Dilimler çeşitli nedenlerden dolayı **bekleme** durumunda olabilir. Yaygın nedenlerinden biri, **External** özelliğinin **true**olarak ayarlanmamalıdır. Azure Data Factory kapsamı dışında üretilen tüm veri kümeleri **External** özelliği ile işaretlenmelidir. Bu özellik, verilerin dış olduğunu ve Veri Fabrikası içindeki herhangi bir işlem hattı tarafından yedeklenmedi olduğunu gösterir. İlgili depoda veriler kullanılabilir duruma geldiğinde veri dilimleri **Hazır** olarak işaretlenir.
+Dilimler çeşitli nedenlerden dolayı **bekleme** durumunda olabilir. Yaygın nedenlerinden biri, **External** özelliğinin **true** olarak ayarlanmamalıdır. Azure Data Factory kapsamı dışında üretilen tüm veri kümeleri **External** özelliği ile işaretlenmelidir. Bu özellik, verilerin dış olduğunu ve Veri Fabrikası içindeki herhangi bir işlem hattı tarafından yedeklenmedi olduğunu gösterir. İlgili depoda veriler kullanılabilir duruma geldiğinde veri dilimleri **Hazır** olarak işaretlenir.
 
-**External** özelliğinin kullanımı ile ilgili olarak aşağıdaki örneğe bakın. External ' i true olarak belirlediğinizde, isteğe bağlı olarak **Externaldata*** belirtebilirsiniz.
+**External** özelliğinin kullanımı ile ilgili olarak aşağıdaki örneğe bakın. External ' i true olarak ayarladığınızda, isteğe bağlı olarak **Externaldata** _ belirtebilirsiniz.
 
 Bu özellikle ilgili daha ayrıntılı bilgiler için [Veri kümeleri](data-factory-create-datasets.md) makalesine bakın.
 
@@ -97,7 +97,7 @@ Bu özellikle ilgili daha ayrıntılı bilgiler için [Veri kümeleri](data-fact
 }
 ```
 
-Hatayı gidermek için girdi tablosunun JSON tanımına **external** özelliğini ve isteğe bağlı **externalData** bölümünü ekleyin ve tabloyu yeniden oluşturun.
+Hatayı gidermek için, _ *External* * özelliğini ve Isteğe bağlı **externaldata** bölümünü giriş tablosunun JSON tanımına ekleyin ve tabloyu yeniden oluşturun.
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>Sorun: karma kopyalama işlemi başarısız oluyor
 Veri Yönetimi ağ geçidini kullanarak şirket içi veri deposuna/üzerinden kopyalama ile ilgili sorunları gidermeye yönelik adımlar için bkz. [ağ geçidi sorunlarını giderme](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) adımları.
@@ -130,9 +130,9 @@ Ayrıntılar için [Azure PowerShell kullanarak izleme Data Factory işlem hatla
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
-[json-scripting-reference]: https://go.microsoft.com/fwlink/?LinkId=516971
+[json-scripting-reference]: /previous-versions/azure/dn835050(v=azure.100)
 
 [azure-portal]: https://portal.azure.com/
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 3f3dd5898518a9788a7079ab903b6f88b9f82989
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d5e20b1fc0ce32eae8dc2888fdda982f0de95d90
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371214"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636655"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanı 
 
@@ -24,10 +24,10 @@ ms.locfileid: "92371214"
 
 Integration Runtime (IR), Azure Data Factory tarafından farklı ağ ortamlarında aşağıdaki veri tümleştirme özelliklerini sunmak için kullanılan işlem altyapısıdır:
 
-- **Veri akışı**: yönetilen Azure işlem ortamında bir [veri akışı](concepts-data-flow-overview.md) yürütün.  
-- **Veri taşıma**: özel ağdaki (Şirket içi veya sanal özel ağ) ortak ağ ve veri depolarında veri depoları arasında veri kopyalama. Yerleşik bağlayıcılar, biçim dönüştürme, sütun eşleme, performanslı ve ölçeklenebilir veri aktarımı desteği sunar.
-- **Etkinlik gönderme**: Azure Databricks, Azure hdınsight, Azure Machine Learning, Azure SQL veritabanı, SQL Server ve daha birçok işlem hizmeti üzerinde çalışan dönüştürme etkinliklerini dağıtma ve izleme.
-- **SSIS paketi yürütme**: SQL Server Integration Services (SSIS) paketlerini yönetilen bir Azure işlem ortamında yerel olarak yürütün.
+- **Veri akışı** : yönetilen Azure işlem ortamında bir [veri akışı](concepts-data-flow-overview.md) yürütün.  
+- **Veri taşıma** : özel ağdaki (Şirket içi veya sanal özel ağ) ortak ağ ve veri depolarında veri depoları arasında veri kopyalama. Yerleşik bağlayıcılar, biçim dönüştürme, sütun eşleme, performanslı ve ölçeklenebilir veri aktarımı desteği sunar.
+- **Etkinlik gönderme** : Azure Databricks, Azure hdınsight, Azure Machine Learning, Azure SQL veritabanı, SQL Server ve daha birçok işlem hizmeti üzerinde çalışan dönüştürme etkinliklerini dağıtma ve izleme.
+- **SSIS paketi yürütme** : SQL Server Integration Services (SSIS) paketlerini yönetilen bir Azure işlem ortamında yerel olarak yürütün.
 
 Data Factory'de etkinlik, gerçekleştirilecek eylemi tanımlar. Bağlı hizmet, bir hedef veri deposunu veya işlem hizmetini tanımlar. Tümleştirme çalışma zamanı, etkinlik ile bağlı Hizmetler arasında köprü görevi görür.  Bağlı hizmet veya etkinlik tarafından başvurulur ve etkinliğin üzerinde çalıştığı ya da dağıtıldığı işlem ortamını sağlar. Bu şekilde etkinlik hedef veri deposuna veya işlem hizmetine en yakın bölgeden en yüksek performansla gerçekleştirilirken güvenlik ve uyum gereksinimleri korunmuş olur.
 
@@ -113,7 +113,7 @@ Daha fazla bilgi için nasıl yapılır kılavuzlarında Azure SSIS IR oluşturm
 
 Azure-SSIS çalışma zamanı hakkında daha fazla bilgi için aşağıdaki makalelere bakın: 
 
-- [Öğretici: SSIS paketlerini Azure’a dağıtma](tutorial-create-azure-ssis-runtime-portal.md). Bu makalede, bir Azure-SSIS IR oluşturmak ve SSIS kataloğunu barındırmak için bir Azure SQL veritabanı kullanması için adım adım yönergeler sağlanmaktadır. 
+- [Öğretici: SSIS paketlerini Azure’a dağıtma](./tutorial-deploy-ssis-packages-azure.md). Bu makalede, bir Azure-SSIS IR oluşturmak ve SSIS kataloğunu barındırmak için bir Azure SQL veritabanı kullanması için adım adım yönergeler sağlanmaktadır. 
 - [Nasıl yapılır: Azure-SSIS tümleştirme çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md). Bu makale öğreticide genişler ve SQL yönetilen örneği kullanma ve IR 'yi bir sanal ağa katma hakkında yönergeler sağlar. 
 - [Azure-SSIS IR’yi izleme](monitor-integration-runtime.md#azure-ssis-integration-runtime). Bu makalede bir Azure-SSIS IR ile ilgili bilgileri ve döndürülen bilgilerdeki durumların açıklamalarını alma işlemi gösterilmektedir. 
 - [Azure-SSIS IR’yi yönetme](manage-azure-ssis-integration-runtime.md). Bu makale bir Azure-SSIS IR’yi durdurma, başlatma veya kaldırma işlemini gösterir. Ayrıca, IR’ye daha fazla düğüm ekleyerek Azure-SSIS IR’nizi ölçeklendirmeyi gösterir. 
@@ -180,9 +180,9 @@ Aşağıdaki şemada Data Factory konum ayarları ve tümleştirme çalışma za
 
 Kopyalama etkinliği için veri akışı yönünü tanımlamak üzere kaynak ve havuz bağlantılı hizmetleri gerektirir. Kopyalama işlemini gerçekleştirmek için kullanılacak olan tümleştirme çalışma zamanı örneğini belirlemek için aşağıdaki mantık kullanılır: 
 
-- **İki bulut veri kaynağı arasında kopyalama**: hem kaynak hem de havuz bağlantılı hizmetler Azure IR KULLANDıĞıNDA, ADF, belirttiğiniz bölgesel Azure IR kullanır ya da Azure IR Otomatik Çözümle 'yi (varsayılan) [tümleştirme çalışma zamanı konumu](#integration-runtime-location) bölümünde açıklandığı şekilde seçin.
-- **Bir bulut veri kaynağından özel ağdaki veri kaynağına kopyalama**: Kaynak veya havuz bağlantılı hizmet noktaları kendinden konak IR birimine işaret ediyorsa kopyalama etkinliği kendinden konak Integration Runtime üzerinde yürütülür.
-- **Özel ağ üzerindeki iki veri kaynağı arasında kopyalama**: Hem kaynak hem de havuz Bağlantılı Hizmetin aynı tümleştirme çalışma zamanı örneğine işaret etmesi gerekir ve kopyalama Etkinliğini yürütmek için bu tümleştirme çalışma zamanı kullanılır.
+- **İki bulut veri kaynağı arasında kopyalama** : hem kaynak hem de havuz bağlantılı hizmetler Azure IR KULLANDıĞıNDA, ADF, belirttiğiniz bölgesel Azure IR kullanır ya da Azure IR Otomatik Çözümle 'yi (varsayılan) [tümleştirme çalışma zamanı konumu](#integration-runtime-location) bölümünde açıklandığı şekilde seçin.
+- **Bir bulut veri kaynağından özel ağdaki veri kaynağına kopyalama** : Kaynak veya havuz bağlantılı hizmet noktaları kendinden konak IR birimine işaret ediyorsa kopyalama etkinliği kendinden konak Integration Runtime üzerinde yürütülür.
+- **Özel ağ üzerindeki iki veri kaynağı arasında kopyalama** : Hem kaynak hem de havuz Bağlantılı Hizmetin aynı tümleştirme çalışma zamanı örneğine işaret etmesi gerekir ve kopyalama Etkinliğini yürütmek için bu tümleştirme çalışma zamanı kullanılır.
 
 ### <a name="lookup-and-getmetadata-activity"></a>Lookup ve GetMetadata etkinliği
 
@@ -202,4 +202,4 @@ Aşağıdaki makalelere bakın:
 
 - [Azure tümleştirme çalışma zamanı oluşturma](create-azure-integration-runtime.md)
 - [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma](create-self-hosted-integration-runtime.md)
-- [Azure-SSIS tümleştirme çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md). Bu makale öğreticide genişler ve SQL yönetilen örneği kullanma ve IR 'yi bir sanal ağa katma hakkında yönergeler sağlar. 
+- [Azure-SSIS tümleştirme çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md). Bu makale öğreticide genişler ve SQL yönetilen örneği kullanma ve IR 'yi bir sanal ağa katma hakkında yönergeler sağlar.

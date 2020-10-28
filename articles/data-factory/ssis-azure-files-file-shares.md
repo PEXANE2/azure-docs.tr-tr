@@ -8,12 +8,12 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 36660854b9a7ae13431545392ef551694b48e97c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2b95e0de642dc17865643ec569e7220fe5581b2
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82628921"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637505"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>Azure 'da dağıtılmış SSIS paketleri ile şirket içinde ve Azure 'da dosya açma ve kaydetme
 
@@ -33,7 +33,7 @@ Yerel dosya sistemlerini kullanan paketleri Azure 'da yüklerken ve kaydıradı�
 
 2. Şirket içi dosya paylaşımlarını bir Azure sanal ağına katın.
 
-3. Azure-SSIS IR aynı sanal ağa katın. Daha fazla bilgi için bkz. [Azure-SSIS tümleştirme çalışma zamanını bir sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+3. Azure-SSIS IR aynı sanal ağa katın. Daha fazla bilgi için bkz. [Azure-SSIS tümleştirme çalışma zamanını bir sanal ağa ekleme](./join-azure-ssis-integration-runtime-virtual-network.md).
 
 4. Windows kimlik doğrulaması kullanan erişim kimlik bilgilerini ayarlayarak Azure-SSIS IR, aynı sanal ağ içindeki şirket içi dosya paylaşımlarına bağlayın. Daha fazla bilgi için bkz. [Windows kimlik doğrulamasıyla veri ve dosya paylaşımlarına bağlanma](ssis-azure-connect-with-windows-auth.md).
 
@@ -51,6 +51,6 @@ Yerel dosya sistemlerini kullanan paketleri Azure 'da yüklerken ve kaydıradı�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Paketlerinizi dağıtın. Daha fazla bilgi için bkz. [SSMS Ile Azure 'a BIR SSIS projesi dağıtma](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms).
-- Paketlerinizi çalıştırın. Daha fazla bilgi için bkz. [SSMS Ile Azure 'DA SSIS paketleri çalıştırma](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms).
-- Paketlerinizi zamanlayın. Daha fazla bilgi için bkz. [Azure 'DA SSIS paketlerini zamanlama](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).
+- Paketlerinizi dağıtın. Daha fazla bilgi için bkz. [SSMS Ile Azure 'a BIR SSIS projesi dağıtma](/sql/integration-services/ssis-quickstart-deploy-ssms).
+- Paketlerinizi çalıştırın. Daha fazla bilgi için bkz. [SSMS Ile Azure 'DA SSIS paketleri çalıştırma](/sql/integration-services/ssis-quickstart-run-ssms).
+- Paketlerinizi zamanlayın. Daha fazla bilgi için bkz. [Azure 'DA SSIS paketlerini zamanlama](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).

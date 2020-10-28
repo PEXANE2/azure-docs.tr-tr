@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 84b2937672212957f7c8e10b8b78ae72b00dd69c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d0e5134da9083e97b3977b05d601c2cfba25f5d4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521603"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636689"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosonlocation"></a>Öğretici: WhosOnLocation ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -133,15 +133,15 @@ Bu bölümde, WhosOnLocation 'a erişim vererek Azure çoklu oturum açma özell
 
 2. **Araçlar**  ->  **hesabı** ' na tıklayın.
 
-    ![WhosOnLocation yapılandırması](./media/WhosOnLocation-tutorial/config1.png)
+    ![Ekran görüntüsü, WhosOnLocation sitesindeki Araçlar menüsünden seçilen hesabı gösterir.](./media/WhosOnLocation-tutorial/config1.png)
 
 3. Sol taraftaki gezginde, **çalışan erişimi** ' ni seçin.
 
-    ![WhosOnLocation yapılandırması](./media/WhosOnLocation-tutorial/config2.png)
+    ![Ekran görüntüsü, hesap profilinden seçilen çalışan erişimini gösterir.](./media/WhosOnLocation-tutorial/config2.png)
 
 4. Aşağıdaki sayfada aşağıdaki adımları gerçekleştirin.
 
-    ![WhosOnLocation yapılandırması](./media/WhosOnLocation-tutorial/config3.png)
+    ![Ekran görüntüsü, Kullanıcı verilerini girebileceğiniz employess Access sekmesini gösterir.](./media/WhosOnLocation-tutorial/config3.png)
 
     a. **SAML Ile çoklu oturum açmayı** **Evet** olarak değiştirin.
 

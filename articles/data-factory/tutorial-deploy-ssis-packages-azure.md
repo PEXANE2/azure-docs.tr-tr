@@ -14,12 +14,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 24ae71206188dc6d60f6a37629ad55ae4d4c1567
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 33f3f599eaf95852b52b5bd3301e44316d18cce5
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015371"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637029"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory 'de Azure-SSIS tümleştirme çalışma zamanını sağlama
 
@@ -30,7 +30,7 @@ Bu öğreticide, Azure Data Factory (ADF) içinde bir Azure-SQL Server Integrati
 - Azure SQL veritabanı sunucusu/yönetilen örneği (proje dağıtım modeli) tarafından barındırılan SSIS kataloğuna (SSıSDB) dağıtılan Paketleri çalıştırma
 - Azure SQL yönetilen örneği (paket dağıtım modeli) tarafından barındırılan dosya sistemine, Azure dosyalarına veya SQL Server veritabanına (MSDB) dağıtılan Paketleri çalıştırma
 
-Bir Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve çalıştırmak için tanıdık araçları kullanabilirsiniz. Bu araçlar zaten Azure özellikli ve [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) ve [Azuredtexec](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-azure-enabled-dtexec)gibi SQL Server veri araçları (ssdt), SQL Server Management Studio (SSMS) ve komut satırı yardımcı programlarını içerir.
+Bir Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve çalıştırmak için tanıdık araçları kullanabilirsiniz. Bu araçlar zaten Azure özellikli ve [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) ve [Azuredtexec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md)gibi SQL Server veri araçları (ssdt), SQL Server Management Studio (SSMS) ve komut satırı yardımcı programlarını içerir.
 
 Azure-SSIS IR’ler hakkında kavramsal bilgiler için bkz. [Azure SSIS tümleştirme çalışma zamanına genel bakış](concepts-integration-runtime.md#azure-ssis-integration-runtime).
 
@@ -44,9 +44,9 @@ Bu öğreticide aşağıdaki adımları tamamlarsınız:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+- **Azure aboneliği** . Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-- **Azure SQL veritabanı sunucusu (isteğe bağlı)**. Henüz bir veritabanı sunucunuz yoksa, başlamadan önce Azure portalında bir tane oluşturun. Data Factory, bu veritabanı sunucusunda SSıSDB örneği oluşturacak. 
+- **Azure SQL veritabanı sunucusu (isteğe bağlı)** . Henüz bir veritabanı sunucunuz yoksa, başlamadan önce Azure portalında bir tane oluşturun. Data Factory, bu veritabanı sunucusunda SSıSDB örneği oluşturacak. 
 
   Veritabanı sunucusunu tümleştirme çalışma zamanı ile aynı Azure bölgesinde oluşturmanız önerilir. Bu yapılandırma, tümleştirme çalışma zamanının yürütme günlüklerini Azure bölgeleriyle çıkmadan SSSıSDB 'ye yazmasını sağlar.
 
@@ -54,13 +54,13 @@ Bu öğreticide aşağıdaki adımları tamamlarsınız:
 
   - Seçili veritabanı sunucusuna bağlı olarak, SSıSDB örneği, elastik havuzun bir parçası olarak veya yönetilen bir örnekte sizin adınıza tek bir veritabanı olarak oluşturulabilir. Bu, genel bir ağda veya bir sanal ağa katılarak erişilebilir. SSıSDB barındıracak veritabanı sunucusu türünü seçme konusunda rehberlik için bkz. [SQL veritabanı ve SQL yönetilen örneği karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance). 
   
-    IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları içeren bir Azure SQL veritabanı sunucusu veya SSıSDB barındırmak için özel uç nokta ile yönetilen bir örnek kullanıyorsanız veya şirket içinde barındırılan bir IR yapılandırmadan şirket içi verilere erişmeniz gerekiyorsa, Azure-SSIS IR bir sanal ağa katılmanız gerekir. Daha fazla bilgi için bkz. [Sanal ağda Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+    IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları içeren bir Azure SQL veritabanı sunucusu veya SSıSDB barındırmak için özel uç nokta ile yönetilen bir örnek kullanıyorsanız veya şirket içinde barındırılan bir IR yapılandırmadan şirket içi verilere erişmeniz gerekiyorsa, Azure-SSIS IR bir sanal ağa katılmanız gerekir. Daha fazla bilgi için bkz. [Sanal ağda Azure-SSIS IR oluşturma](./create-azure-ssis-integration-runtime.md).
 
-  - Veritabanı sunucusu için **Azure hizmetlerine erişime Izin ver** ayarının etkin olduğunu doğrulayın. Bu ayar, IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları içeren bir Azure SQL veritabanı sunucusu veya SSSıSDB barındırmak için özel uç nokta olan yönetilen bir örnek kullandığınızda geçerli değildir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nı güvenli hale getirme](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Bu ayarı PowerShell kullanarak etkinleştirmek için, bkz. [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
+  - Veritabanı sunucusu için **Azure hizmetlerine erişime Izin ver** ayarının etkin olduğunu doğrulayın. Bu ayar, IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları içeren bir Azure SQL veritabanı sunucusu veya SSSıSDB barındırmak için özel uç nokta olan yönetilen bir örnek kullandığınızda geçerli değildir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nı güvenli hale getirme](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules). Bu ayarı PowerShell kullanarak etkinleştirmek için, bkz. [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
 
-  - İstemci makinenin IP adresini veya istemci makinenin IP adresini içeren bir IP adresi aralığını, veritabanı sunucusunun güvenlik duvarı ayarlarındaki istemci IP adresi listesine ekleyin. Daha fazla bilgi için bkz. [Azure SQL Veritabanı'nda sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları yapılandırma](../sql-database/sql-database-firewall-configure.md).
+  - İstemci makinenin IP adresini veya istemci makinenin IP adresini içeren bir IP adresi aralığını, veritabanı sunucusunun güvenlik duvarı ayarlarındaki istemci IP adresi listesine ekleyin. Daha fazla bilgi için bkz. [Azure SQL Veritabanı'nda sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları yapılandırma](../azure-sql/database/firewall-configure.md).
 
-  - Sunucu Yöneticisi kimlik bilgilerinizle SQL kimlik doğrulaması kullanarak veya veri fabrikanızın yönetilen kimliğiyle Azure AD kimlik doğrulamasını kullanarak, veritabanı sunucusuna bağlanabilirsiniz. İkincisi için, veri fabrikanızın yönetilen kimliğini, veritabanı sunucusuna erişim izinleri olan bir Azure AD grubuna eklemeniz gerekir. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+  - Sunucu Yöneticisi kimlik bilgilerinizle SQL kimlik doğrulaması kullanarak veya veri fabrikanızın yönetilen kimliğiyle Azure AD kimlik doğrulamasını kullanarak, veritabanı sunucusuna bağlanabilirsiniz. İkincisi için, veri fabrikanızın yönetilen kimliğini, veritabanı sunucusuna erişim izinleri olan bir Azure AD grubuna eklemeniz gerekir. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure-SSIS IR oluşturma](./create-azure-ssis-integration-runtime.md).
 
   - Veritabanı sunucunuzun zaten bir SSıSDB örneğine sahip olmadığından emin olun. Azure-SSIS IR sağlanması, var olan bir SSıSDB örneğinin kullanımını desteklemez.
 
@@ -69,7 +69,7 @@ Bu öğreticide aşağıdaki adımları tamamlarsınız:
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-Veri fabrikanızı Azure portal aracılığıyla oluşturmak için, [Kullanıcı arabirimi aracılığıyla veri fabrikası oluşturma](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)' daki adım adım yönergeleri izleyin. Oluşturulduktan sonra hızlı erişime izin vermek için, bunu yaparken **panoya sabitle** ' yi seçin. 
+Veri fabrikanızı Azure portal aracılığıyla oluşturmak için, [Kullanıcı arabirimi aracılığıyla veri fabrikası oluşturma](./quickstart-create-data-factory-portal.md#create-a-data-factory)' daki adım adım yönergeleri izleyin. Oluşturulduktan sonra hızlı erişime izin vermek için, bunu yaparken **panoya sabitle** ' yi seçin. 
 
 Data Factory oluşturulduktan sonra, Azure portal genel bakış sayfasını açın. **Başlangıç** sayfasını ayrı bir sekmede açmak için **Yazar & izleyici** kutucuğunu seçin. Burada, Azure-SSIS IR oluşturmaya devam edebilirsiniz.
 
@@ -85,7 +85,7 @@ Data Factory oluşturulduktan sonra, Azure portal genel bakış sayfasını aç�
 
 ### <a name="from-the-authoring-ui"></a>Yazma kullanıcı arabiriminden
 
-1. Azure Data Factory Kullanıcı arabiriminde, **Düzenle** sekmesine geçin ve **Bağlantılar**' ı seçin. Ardından, veri fabrikanızdaki mevcut tümleştirme çalışma zamanlarını görüntülemek için **tümleştirme çalışma zamanları** sekmesine geçin. 
+1. Azure Data Factory Kullanıcı arabiriminde, **Düzenle** sekmesine geçin ve **Bağlantılar** ' ı seçin. Ardından, veri fabrikanızdaki mevcut tümleştirme çalışma zamanlarını görüntülemek için **tümleştirme çalışma zamanları** sekmesine geçin. 
 
    ![Var olan IR’leri görüntüleme seçimleri](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
@@ -93,7 +93,7 @@ Data Factory oluşturulduktan sonra, Azure portal genel bakış sayfasını aç�
 
    ![Menü aracılığıyla tümleştirme çalışma zamanı](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 
-1. **Tümleştirme çalışma zamanı kurulumu** bölmesinde, Azure kutucuğunda **yürütmek üzere var olan SSIS paketlerini** seçin ve ardından **İleri**' yi seçin.
+1. **Tümleştirme çalışma zamanı kurulumu** bölmesinde, Azure kutucuğunda **yürütmek üzere var olan SSIS paketlerini** seçin ve ardından **İleri** ' yi seçin.
 
    ![Tümleştirme çalışma zamanının türünü belirtin](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 
@@ -119,11 +119,11 @@ Data Factory oluşturulduktan sonra, Azure portal genel bakış sayfasını aç�
 
    1. **Node Number** (Düğüm Sayısı) alanında tümleştirme çalışma zamanınızdaki düğüm sayısını seçin. Yalnızca desteklenen düğüm sayıları görüntülenir. Birçok paketi paralel olarak çalıştırmak istiyorsanız çok sayıda düğümü olan büyük bir küme seçin (ölçeği genişletme). 
 
-   1. **Sürüm/lisans**için, tümleştirme çalışma zamanı için SQL Server sürümünü seçin: Standart veya kurumsal. Tümleştirme çalışma zamanı ' nda Gelişmiş özellikleri kullanmak istiyorsanız Kurumsal ' i seçin. 
+   1. **Sürüm/lisans** için, tümleştirme çalışma zamanı için SQL Server sürümünü seçin: Standart veya kurumsal. Tümleştirme çalışma zamanı ' nda Gelişmiş özellikleri kullanmak istiyorsanız Kurumsal ' i seçin. 
 
-   1. Tasarruf **için,** tümleştirme çalışma zamanı için Azure hibrit avantajı seçeneğini belirleyin: **Evet** veya **Hayır**. Karma kullanım ile maliyet tasarruflarından faydalanmak için kendi SQL Server lisansınızı Yazılım Güvencesine getirmek istiyorsanız **Evet** ' i seçin. 
+   1. Tasarruf **için,** tümleştirme çalışma zamanı için Azure hibrit avantajı seçeneğini belirleyin: **Evet** veya **Hayır** . Karma kullanım ile maliyet tasarruflarından faydalanmak için kendi SQL Server lisansınızı Yazılım Güvencesine getirmek istiyorsanız **Evet** ' i seçin. 
 
-   1. **İleri**’yi seçin. 
+   1. **İleri** ’yi seçin. 
 
 ### <a name="deployment-settings-page"></a>Dağıtım ayarları sayfası
 
@@ -133,7 +133,7 @@ Data Factory oluşturulduktan sonra, Azure portal genel bakış sayfasını aç�
 
 **Tümleştirme çalışma zamanı kurulum** bölmesinin **dağıtım ayarları** SAYFASıNDA, paketlerinizi Sssısdb 'ye (proje dağıtım modeli) dağıtmak istiyorsanız, **projelerinizi/paketleri/ortamları/yürütme GÜNLÜKLERINIZI depolamak için Azure SQL veritabanı sunucusu/yönetilen örneği tarafından barındırılan SSIS kataloğunu (sssısdb) oluştur** onay kutusunu seçin. Alternatif olarak, paketlerinizi Azure SQL yönetilen örneği (paket dağıtım modeli) tarafından barındırılan dosya sistemine, Azure dosyalarına veya SQL Server veritabanına (MSDB) dağıtmak istiyorsanız, SSıSDB oluşturma veya onay kutusunu seçme gereksinimi yoktur.
 
-Dağıtım modelinize bakılmaksızın, Azure SQL yönetilen örneği tarafından barındırılan SQL Server Agent paket yürütmelerini düzenlemek ve zamanlamak için kullanmak istiyorsanız, SSıSDB tarafından etkinleştirilir, bu nedenle yine de onay kutusunu seçin. Daha fazla bilgi için bkz. [Azure SQL yönetilen örnek Aracısı aracılığıyla SSIS paket yürütmelerini zamanlama](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent).
+Dağıtım modelinize bakılmaksızın, Azure SQL yönetilen örneği tarafından barındırılan SQL Server Agent paket yürütmelerini düzenlemek ve zamanlamak için kullanmak istiyorsanız, SSıSDB tarafından etkinleştirilir, bu nedenle yine de onay kutusunu seçin. Daha fazla bilgi için bkz. [Azure SQL yönetilen örnek Aracısı aracılığıyla SSIS paket yürütmelerini zamanlama](./how-to-invoke-ssis-package-managed-instance-agent.md).
    
 Onay kutusunu seçerseniz, kendi adınıza oluşturacağınız ve yönetecağımız SSıSDB 'yi barındırmak için kendi veritabanı sunucunuzu getirmek üzere aşağıdaki adımları izleyin.
 
@@ -147,82 +147,82 @@ Onay kutusunu seçerseniz, kendi adınıza oluşturacağınız ve yönetecağım
    
       Seçili veritabanı sunucusuna bağlı olarak, SSıSDB örneği, elastik havuzun bir parçası olarak veya yönetilen bir örnekte sizin adınıza tek bir veritabanı olarak oluşturulabilir. Bu, genel bir ağda veya bir sanal ağa katılarak erişilebilir. SSıSDB barındıracak veritabanı sunucusu türünü seçme konusunda rehberlik için bkz. [SQL veritabanı ve SQL yönetilen örneği karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).   
 
-      SSD 'yi barındırmak için IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları veya özel uç nokta ile yönetilen bir örnek içeren bir Azure SQL veritabanı sunucusu seçerseniz veya şirket içinde barındırılan bir IR yapılandırmadan şirket içi verilere erişmeniz gerekiyorsa, Azure-SSIS IR bir sanal ağa katılmanız gerekir. Daha fazla bilgi için bkz. [Sanal ağda Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+      SSD 'yi barındırmak için IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları veya özel uç nokta ile yönetilen bir örnek içeren bir Azure SQL veritabanı sunucusu seçerseniz veya şirket içinde barındırılan bir IR yapılandırmadan şirket içi verilere erişmeniz gerekiyorsa, Azure-SSIS IR bir sanal ağa katılmanız gerekir. Daha fazla bilgi için bkz. [Sanal ağda Azure-SSIS IR oluşturma](./create-azure-ssis-integration-runtime.md).
 
    1. Veritabanı sunucunuzun SSıSDB 'yi barındıracak kimlik doğrulama yöntemini seçmek için, **ADF 'niz için yönetilen kimlikle Azure AD kimlik doğrulamasını kullan** onay kutusunu seçin. Veri fabrikanızın yönetilen kimliğiyle SQL kimlik doğrulaması ya da Azure AD kimlik doğrulaması ' nı seçersiniz.
 
-      Onay kutusunu seçerseniz, veritabanı sunucunuza erişim izinleri olan bir Azure AD grubuna veri fabrikanızın yönetilen kimliğini eklemeniz gerekir. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+      Onay kutusunu seçerseniz, veritabanı sunucunuza erişim izinleri olan bir Azure AD grubuna veri fabrikanızın yönetilen kimliğini eklemeniz gerekir. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure-SSIS IR oluşturma](./create-azure-ssis-integration-runtime.md).
    
-   1. **Yönetici Kullanıcı adı**IÇIN, SSISDB barındırmak üzere VERITABANı sunucunuzun SQL kimlik doğrulaması Kullanıcı adı ' nı girin. 
+   1. **Yönetici Kullanıcı adı** IÇIN, SSISDB barındırmak üzere VERITABANı sunucunuzun SQL kimlik doğrulaması Kullanıcı adı ' nı girin. 
 
-   1. **Yönetici parolası**IÇIN, SSISDB barındırmak üzere VERITABANı sunucunuzun SQL kimlik doğrulama parolasını girin. 
+   1. **Yönetici parolası** IÇIN, SSISDB barındırmak üzere VERITABANı sunucunuzun SQL kimlik doğrulama parolasını girin. 
 
-   1. **Katalog veritabanı hizmet katmanı**IÇIN, SSISDB barındıracak veritabanı sunucunuzun hizmet katmanını seçin. Temel, standart veya Premium katmanını seçin veya elastik havuz adı seçin.
+   1. **Katalog veritabanı hizmet katmanı** IÇIN, SSISDB barındıracak veritabanı sunucunuzun hizmet katmanını seçin. Temel, standart veya Premium katmanını seçin veya elastik havuz adı seçin.
 
-Uygun olduğunda **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **İleri**' yi seçin.
+Uygun olduğunda **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **İleri** ' yi seçin.
 
 #### <a name="creating-azure-ssis-ir-package-stores"></a>Azure-SSIS IR paket depoları oluşturma
 
 **Tümleştirme çalışma zamanı kurulum** bölmesinin **dağıtım ayarları** sayfasında, msdb, dosya sistemi veya Azure dosyaları 'Na (paket dağıtım modeli) dağıtılan paketlerinizi Azure-SSIS IR paket depolarıyla yönetmek Istiyorsanız, **Azure SQL yönetilen örneği tarafından barındırılan dosya sistemine/Azure DOSYALARıNA/SQL Server veritabanına (msdb) dağıtılan paketlerinizi yönetmek için paket depolarını oluştur** onay kutusunu seçin.
    
-Azure-SSIS IR paket deposu, paketleri içeri/dışarı/dışarı ve dışa aktarmanıza/çalıştırmanıza ve [eskı SSIS paket deposuna](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)benzer SSMS 'ler aracılığıyla çalıştırılan Paketleri izlemenize/durdurmasına izin verir. Daha fazla bilgi için bkz. [Azure-SSIS IR paketi depoları Ile SSIS paketlerini yönetme](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store).
+Azure-SSIS IR paket deposu, paketleri içeri/dışarı/dışarı ve dışa aktarmanıza/çalıştırmanıza ve [eskı SSIS paket deposuna](/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)benzer SSMS 'ler aracılığıyla çalıştırılan Paketleri izlemenize/durdurmasına izin verir. Daha fazla bilgi için bkz. [Azure-SSIS IR paketi depoları Ile SSIS paketlerini yönetme](./azure-ssis-integration-runtime-package-store.md).
    
-Bu onay kutusunu seçerseniz, **Yeni**' yi seçerek Azure-SSIS IR birden çok paket deposu ekleyebilirsiniz. Buna karşılık, bir paket deposu birden çok Azure-SSIS IRS tarafından paylaşılabilir.
+Bu onay kutusunu seçerseniz, **Yeni** ' yi seçerek Azure-SSIS IR birden çok paket deposu ekleyebilirsiniz. Buna karşılık, bir paket deposu birden çok Azure-SSIS IRS tarafından paylaşılabilir.
 
 ![MSDB/dosya sistemi/Azure dosyaları için dağıtım ayarları](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
 
 **Paket deposu Ekle** bölmesinde aşağıdaki adımları izleyin.
    
-   1. **Paket deposu adı**için, paket deponuzın adını girin. 
+   1. **Paket deposu adı** için, paket deponuzın adını girin. 
 
-   1. **Paket deposu bağlı hizmeti**için, paketlerinizin dağıtıldığı dosya sistemi/Azure dosyaları/Azure SQL yönetilen örneği için erişim bilgilerini depolayan mevcut bağlı hizmetinizi seçin veya **Yeni**' yi seçerek yeni bir tane oluşturun. **Yeni bağlı hizmet** bölmesinde aşağıdaki adımları izleyin. 
+   1. **Paket deposu bağlı hizmeti** için, paketlerinizin dağıtıldığı dosya sistemi/Azure dosyaları/Azure SQL yönetilen örneği için erişim bilgilerini depolayan mevcut bağlı hizmetinizi seçin veya **Yeni** ' yi seçerek yeni bir tane oluşturun. **Yeni bağlı hizmet** bölmesinde aşağıdaki adımları izleyin. 
 
       > [!NOTE]
-      > Azure dosyalarına erişmek için **Azure dosya depolama** veya **dosya sistemi** bağlı hizmetlerini kullanabilirsiniz. **Azure dosya depolama** bağlı hizmeti kullanıyorsanız, Azure-SSIS IR paket deposu şimdilik yalnızca **temel** ( **hesap anahtarı** veya **SAS URI**) kimlik doğrulama yöntemini destekler. **Azure dosya depolama** bağlı hizmetinde **temel** kimlik doğrulaması kullanmak için, `?feature.upgradeAzureFileStorage=false` Tarayıcınızda ADF Portal URL 'sine ekleyebilirsiniz. Alternatif olarak, bunun yerine Azure dosyalarına erişmek için **dosya sistemi** bağlı hizmeti ' ni kullanabilirsiniz. 
+      > Azure dosyalarına erişmek için **Azure dosya depolama** veya **dosya sistemi** bağlı hizmetlerini kullanabilirsiniz. **Azure dosya depolama** bağlı hizmeti kullanıyorsanız, Azure-SSIS IR paket deposu şimdilik yalnızca **temel** ( **hesap anahtarı** veya **SAS URI** ) kimlik doğrulama yöntemini destekler. **Azure dosya depolama** bağlı hizmetinde **temel** kimlik doğrulaması kullanmak için, `?feature.upgradeAzureFileStorage=false` Tarayıcınızda ADF Portal URL 'sine ekleyebilirsiniz. Alternatif olarak, bunun yerine Azure dosyalarına erişmek için **dosya sistemi** bağlı hizmeti ' ni kullanabilirsiniz. 
 
       ![Bağlı hizmetler için dağıtım ayarları](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
-      1. **Ad**için, bağlı hizmetinizin adını girin. 
+      1. **Ad** için, bağlı hizmetinizin adını girin. 
          
-      1. **Açıklama**için, bağlı hizmetinizin açıklamasını girin. 
+      1. **Açıklama** için, bağlı hizmetinizin açıklamasını girin. 
          
-      1. **Tür**Için **Azure dosya depolama**, **Azure SQL yönetilen örneği**veya **dosya sistemi**' ni seçin.
+      1. **Tür** Için **Azure dosya depolama** , **Azure SQL yönetilen örneği** veya **dosya sistemi** ' ni seçin.
 
-      1. Her zaman paket depoları için erişim bilgilerini getirmek üzere Azure-SSIS IR kullandığımızdan **Integration Runtime aracılığıyla bağlanmayı**yoksayabilirsiniz.
+      1. Her zaman paket depoları için erişim bilgilerini getirmek üzere Azure-SSIS IR kullandığımızdan **Integration Runtime aracılığıyla bağlanmayı** yoksayabilirsiniz.
 
-      1. **Azure dosya depolama**' yı seçerseniz, aşağıdaki adımları izleyin. 
+      1. **Azure dosya depolama** ' yı seçerseniz, aşağıdaki adımları izleyin. 
 
-         1. **Hesap seçme yöntemi**için **Azure aboneliği ' nden** seçim yapın veya **el ile girin**.
+         1. **Hesap seçme yöntemi** için **Azure aboneliği ' nden** seçim yapın veya **el ile girin** .
          
-         1. **Azure aboneliğinden**seçim yaparsanız ilgili **Azure aboneliğini**, **depolama hesabı adını**ve **Dosya payını**seçin.
+         1. **Azure aboneliğinden** seçim yaparsanız ilgili **Azure aboneliğini** , **depolama hesabı adını** ve **Dosya payını** seçin.
             
-         1. **El Ile gir**' i seçerseniz, `\\<storage account name>.file.core.windows.net\<file share name>` **konak**için, `Azure\<storage account name>` **Kullanıcı adı**için ve `<storage account key>` **parola** için girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
+         1. **El Ile gir** ' i seçerseniz, `\\<storage account name>.file.core.windows.net\<file share name>` **konak** için, `Azure\<storage account name>` **Kullanıcı adı** için ve `<storage account key>` **parola** için girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
 
-      1. **Azure SQL yönetilen örneği**' ni seçerseniz, aşağıdaki adımları izleyin. 
+      1. **Azure SQL yönetilen örneği** ' ni seçerseniz, aşağıdaki adımları izleyin. 
 
          1. El ile veya **Azure Key Vault** gizli olarak depolanacağı **bağlantı dizesini** seçin.
          
-         1. **Bağlantı dizesi**' ni seçerseniz, aşağıdaki adımları uygulayın. 
+         1. **Bağlantı dizesi** ' ni seçerseniz, aşağıdaki adımları uygulayın. 
 
-            1. **Tam etki alanı adı**için, `<server name>.<dns prefix>.database.windows.net` `<server name>.public.<dns prefix>.database.windows.net,3342` sırasıyla Azure SQL yönetilen örneğinizin özel veya genel uç noktasını girin. Özel uç noktayı girerseniz, ADF Kullanıcı arabirimine ulaşamadığından **test bağlantısı** geçerli değildir.
+            1. **Tam etki alanı adı** için, `<server name>.<dns prefix>.database.windows.net` `<server name>.public.<dns prefix>.database.windows.net,3342` sırasıyla Azure SQL yönetilen örneğinizin özel veya genel uç noktasını girin. Özel uç noktayı girerseniz, ADF Kullanıcı arabirimine ulaşamadığından **test bağlantısı** geçerli değildir.
 
-            1. **Veritabanı adı**için girin `msdb` .
+            1. **Veritabanı adı** için girin `msdb` .
                
-            1. **Kimlik doğrulama türü**Için, **SQL kimlik doğrulaması**, **yönetilen kimlik**veya **hizmet sorumlusu**' nı seçin.
+            1. **Kimlik doğrulama türü** Için, **SQL kimlik doğrulaması** , **yönetilen kimlik** veya **hizmet sorumlusu** ' nı seçin.
 
-            1. **SQL kimlik doğrulaması**' nı seçerseniz, Ilgili **Kullanıcı adını** ve **parolayı** girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
+            1. **SQL kimlik doğrulaması** ' nı seçerseniz, Ilgili **Kullanıcı adını** ve **parolayı** girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
 
-            1. **Yönetilen kimlik**' i SEÇERSENIZ, ADF tarafından yönetilen KIMLIĞI Azure SQL yönetilen örneğiniz için erişim izni verin.
+            1. **Yönetilen kimlik** ' i SEÇERSENIZ, ADF tarafından yönetilen KIMLIĞI Azure SQL yönetilen örneğiniz için erişim izni verin.
 
-            1. **Hizmet sorumlusu**' nı seçerseniz, ilgili **hizmet sorumlusu kimliği** ve **hizmet sorumlusu anahtarını** girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
+            1. **Hizmet sorumlusu** ' nı seçerseniz, ilgili **hizmet sorumlusu kimliği** ve **hizmet sorumlusu anahtarını** girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
 
-      1. **Dosya sistemi**' ni seçerseniz, paketlerinizin **konak**için dağıtıldığı klasörün UNC yolunu ve Ilgili **Kullanıcı adı** ve **parolayı** girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
+      1. **Dosya sistemi** ' ni seçerseniz, paketlerinizin **konak** için dağıtıldığı klasörün UNC yolunu ve Ilgili **Kullanıcı adı** ve **parolayı** girin veya gizli dizi olarak depolandığı **Azure Key Vault** seçin.
 
-      1. Uygun olduğunda **test bağlantısı** ' nı seçin ve başarılı olursa **Oluştur**' u seçin.
+      1. Uygun olduğunda **test bağlantısı** ' nı seçin ve başarılı olursa **Oluştur** ' u seçin.
 
-   1. Eklenmiş paket depolarınız **dağıtım ayarları** sayfasında görüntülenir. Bunları kaldırmak için onay kutularını işaretleyin ve ardından **Sil**' i seçin.
+   1. Eklenmiş paket depolarınız **dağıtım ayarları** sayfasında görüntülenir. Bunları kaldırmak için onay kutularını işaretleyin ve ardından **Sil** ' i seçin.
 
-Uygun olduğunda **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **İleri**' yi seçin.
+Uygun olduğunda **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **İleri** ' yi seçin.
 
 ### <a name="advanced-settings-page"></a>Gelişmiş ayarlar sayfası
 
@@ -230,17 +230,17 @@ Uygun olduğunda **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **İ
 
    ![Gelişmiş ayarlar](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
-   1. **Düğüm başına en fazla paralel yürütme**için, tümleştirme çalışma zamanı kümenizde düğüm başına aynı anda çalıştırılacak en fazla paket sayısını seçin. Yalnızca desteklenen paket sayıları görüntülenir. İşlem veya bellek kullanımı yoğun olan tek bir büyük paketi çalıştırmak için birden fazla çekirdek kullanmak istiyorsanız düşük bir sayı seçin. Tek bir çekirdekli bir veya daha fazla küçük paket çalıştırmak istiyorsanız, yüksek bir sayı seçin. 
+   1. **Düğüm başına en fazla paralel yürütme** için, tümleştirme çalışma zamanı kümenizde düğüm başına aynı anda çalıştırılacak en fazla paket sayısını seçin. Yalnızca desteklenen paket sayıları görüntülenir. İşlem veya bellek kullanımı yoğun olan tek bir büyük paketi çalıştırmak için birden fazla çekirdek kullanmak istiyorsanız düşük bir sayı seçin. Tek bir çekirdekli bir veya daha fazla küçük paket çalıştırmak istiyorsanız, yüksek bir sayı seçin. 
 
-   1. Azure-SSIS IR Standard/Express özel kurulumları eklemek isteyip istemediğinizi seçmek için **Azure-SSIS Integration Runtime ek sistem yapılandırması/bileşen yüklemeleri Ile özelleştirin** onay kutusunu seçin. Daha fazla bilgi için bkz. [özel kurulum Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
+   1. Azure-SSIS IR Standard/Express özel kurulumları eklemek isteyip istemediğinizi seçmek için **Azure-SSIS Integration Runtime ek sistem yapılandırması/bileşen yüklemeleri Ile özelleştirin** onay kutusunu seçin. Daha fazla bilgi için bkz. [özel kurulum Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md).
    
    1. **Azure-SSIS Integration Runtime katılması için bir VNET seçin, ADF 'nin belirli ağ kaynaklarını oluşturmasına izin verin ve isteğe bağlı olarak kendi statik ortak IP adreslerinizi getirin** onay kutusunu seçerek Azure-SSIS IR bir sanal ağa katmak isteyip istemediğinizi seçin.
 
-      IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları ile bir Azure SQL veritabanı sunucusu veya SSıSDB barındırmak için özel uç nokta ile yönetilen bir örnek kullanıyorsanız veya şirket içinde barındırılan bir IR yapılandırmadan şirket içi verilere erişim istiyorsanız bu seçeneği belirleyin. Daha fazla bilgi için bkz. [Sanal ağda Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
+      IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları ile bir Azure SQL veritabanı sunucusu veya SSıSDB barındırmak için özel uç nokta ile yönetilen bir örnek kullanıyorsanız veya şirket içinde barındırılan bir IR yapılandırmadan şirket içi verilere erişim istiyorsanız bu seçeneği belirleyin. Daha fazla bilgi için bkz. [Sanal ağda Azure-SSIS IR oluşturma](./create-azure-ssis-integration-runtime.md). 
    
-   1. Azure-SSIS IR için ara sunucu olarak şirket içinde barındırılan bir IR yapılandırmak isteyip istemediğinizi seçmek için Azure-SSIS Integration Runtime onay kutusunu **bir ara sunucu olarak ayarla Self-Hosted Integration Runtime** seçin. Daha fazla bilgi için bkz. [proxy olarak şirket içinde barındırılan BIR IR ayarlama](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis).   
+   1. Azure-SSIS IR için ara sunucu olarak şirket içinde barındırılan bir IR yapılandırmak isteyip istemediğinizi seçmek için Azure-SSIS Integration Runtime onay kutusunu **bir ara sunucu olarak ayarla Self-Hosted Integration Runtime** seçin. Daha fazla bilgi için bkz. [proxy olarak şirket içinde barındırılan BIR IR ayarlama](./self-hosted-integration-runtime-proxy-ssis.md).   
 
-   1. **Devam**’ı seçin. 
+   1. **Devam** ’ı seçin. 
 
 **Tümleştirme çalışma zamanı kurulum** bölmesinin **Özet** sayfasında, tüm sağlama ayarlarını gözden geçirin, önerilen belge bağlantılarına yer işareti ekleyin ve **son** ' u seçerek tümleştirme çalışma zamanının oluşturulmasını başlatın. 
 
@@ -249,11 +249,11 @@ Uygun olduğunda **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **İ
    >
    > SSSıSDB kullanıyorsanız, Data Factory hizmeti SSıSDB 'yi hazırlamak için veritabanı sunucunuza bağlanır. 
    > 
-   > Bir Azure-SSIS IR sağladığınızda, SSIS için yeniden dağıtılabilir ve Azure Özellik paketi de yüklenir. Bu bileşenler, yerleşik bileşenlerin zaten desteklediği veri kaynaklarına ek olarak Excel dosyaları, erişim dosyaları ve çeşitli Azure veri kaynaklarına bağlantı sağlar. Yerleşik/önceden yüklenmiş bileşenler hakkında daha fazla bilgi için, bkz. [Azure-SSIS IR yerleşik/önceden yüklenmiş bileşenler](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime). Yükleyebileceğiniz ek bileşenler hakkında daha fazla bilgi için bkz. [özel ayarlar Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
+   > Bir Azure-SSIS IR sağladığınızda, SSIS için yeniden dağıtılabilir ve Azure Özellik paketi de yüklenir. Bu bileşenler, yerleşik bileşenlerin zaten desteklediği veri kaynaklarına ek olarak Excel dosyaları, erişim dosyaları ve çeşitli Azure veri kaynaklarına bağlantı sağlar. Yerleşik/önceden yüklenmiş bileşenler hakkında daha fazla bilgi için, bkz. [Azure-SSIS IR yerleşik/önceden yüklenmiş bileşenler](./built-in-preinstalled-components-ssis-integration-runtime.md). Yükleyebileceğiniz ek bileşenler hakkında daha fazla bilgi için bkz. [özel ayarlar Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ### <a name="connections-pane"></a>Bağlantılar bölmesi
 
-Hub 'ı **Yönet** ' in **Bağlantılar** bölmesinde, **tümleştirme çalışma zamanları** sayfasına geçin ve **Yenile**' yi seçin. 
+Hub 'ı **Yönet** ' in **Bağlantılar** bölmesinde, **tümleştirme çalışma zamanları** sayfasına geçin ve **Yenile** ' yi seçin. 
 
    ![Bağlantılar bölmesi](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
 
@@ -267,11 +267,11 @@ SSSıSDB kullanıyorsanız, paketlerinizi bu pakete dağıtabilir ve Azure özel
 - Özel uç noktası olan yönetilen bir örnek için sunucu uç noktası biçimi olur `<server name>.<dns prefix>.database.windows.net` .
 - Ortak uç nokta içeren bir yönetilen örnek için sunucu uç noktası biçimi olur `<server name>.public.<dns prefix>.database.windows.net,3342` . 
 
-SSSıSDB kullanmıyorsanız, paketlerinizi Azure SQL yönetilen örneğiniz tarafından barındırılan dosya sistemine, Azure dosyalarına veya MSDB 'ye dağıtabilir ve [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) ve [Azuredtexec](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-azure-enabled-dtexec) komut satırı yardımcı programlarını kullanarak Azure-SSIS IR çalıştırabilirsiniz. 
+SSSıSDB kullanmıyorsanız, paketlerinizi Azure SQL yönetilen örneğiniz tarafından barındırılan dosya sistemine, Azure dosyalarına veya MSDB 'ye dağıtabilir ve [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) ve [Azuredtexec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md) komut satırı yardımcı programlarını kullanarak Azure-SSIS IR çalıştırabilirsiniz. 
 
-Daha fazla bilgi için bkz. [SSIS projelerini/paketlerini dağıtma](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-ver15).
+Daha fazla bilgi için bkz. [SSIS projelerini/paketlerini dağıtma](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-ver15).
 
-Her iki durumda da, Data Factory işlem hatlarında SSIS paketi yürütme etkinliğini kullanarak dağıtılmış paketlerinizi Azure-SSIS IR de çalıştırabilirsiniz. Daha fazla bilgi için bkz. [birinci sınıf Data Factory etkinliği olarak SSIS paketi yürütmeyi çağırma](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Her iki durumda da, Data Factory işlem hatlarında SSIS paketi yürütme etkinliğini kullanarak dağıtılmış paketlerinizi Azure-SSIS IR de çalıştırabilirsiniz. Daha fazla bilgi için bkz. [birinci sınıf Data Factory etkinliği olarak SSIS paketi yürütmeyi çağırma](./how-to-invoke-ssis-package-ssis-activity.md).
 
 Ayrıca bkz. aşağıdaki SSIS belgeleri: 
 
@@ -285,4 +285,4 @@ Ayrıca bkz. aşağıdaki SSIS belgeleri:
 Azure-SSIS tümleştirme çalışma zamanınızı özelleştirme hakkında bilgi edinmek için şu makaleye bakın: 
 
 > [!div class="nextstepaction"]
-> [Azure-SSIS IR özelleştirme](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)
+> [Azure-SSIS IR özelleştirme](./how-to-configure-azure-ssis-ir-custom-setup.md)

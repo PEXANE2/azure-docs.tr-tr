@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e2b7e96934c96dd944e17a1ef1ffb51a6ee89bf4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ed63d148afa6f5674d36cc50c18351b2a06966eb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92360011"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636842"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory örnekleri
 > [!NOTE]
@@ -33,7 +33,7 @@ ms.locfileid: "92360011"
 | [Http veri yükleyici örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Bu örnek, özel .NET etkinliği kullanarak bir HTTP uç noktasından Azure Blob depolama alanına veri indirme örneklerini gösterir. |
 | [Çapraz AppDomain nokta net etkinlik örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Bu örnek, ADF başlatıcısı tarafından kullanılan derleme sürümleriyle sınırlı olmayan özel bir .NET etkinliği yazmanıza izin verir (örneğin, WindowsAzure. Storage v 4.3.0, Newtonsoft.Jsv 6.0. x, vb.). |
 | [R betiği çalıştırma](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Bu örnek, RScript.exe çağırmak için kullanılabilecek Data Factory özel etkinliğini içerir. Bu örnek yalnızca R 'nin yüklü olduğu (isteğe bağlı olmayan) HDInsight kümeniz ile birlikte kullanılabilir. |
-| [HDInsight Hadoop kümesinde Spark işlerini çağırma](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Bu örnek, bir Spark programını çağırmak için MapReduce etkinliğinin nasıl kullanılacağını gösterir. Spark programı yalnızca bir Azure Blob kapsayıcısından diğerine veri kopyalar. |
+| [HDInsight Hadoop kümesinde Spark işlerini çağırma](../tutorial-transform-data-spark-portal.md) |Bu örnek, bir Spark programını çağırmak için MapReduce etkinliğinin nasıl kullanılacağını gösterir. Spark programı yalnızca bir Azure Blob kapsayıcısından diğerine veri kopyalar. |
 | [Azure Machine Learning Studio (klasik) toplu puanlama etkinliği kullanarak Twitter Analizi](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Bu örnekte, Twitter yaklaşım analizi, Puanlama, tahmin vb. gerçekleştiren bir Azure Machine Learning modeli çağırmak için AzureMLBatchScoringActivity 'nin nasıl kullanılacağı gösterilmektedir. |
 | [Özel etkinlik kullanan Twitter Analizi](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Bu örnekte, Twitter yaklaşım analizi, Puanlama, tahmin vb. gerçekleştiren bir Azure Machine Learning modeli çağırmak için özel bir .NET etkinliğinin nasıl kullanılacağı gösterilmektedir. |
 | [Azure Machine Learning için parametreli işlem hatları](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Örnek, her biri, bölge listesinin bu örneğe eklenen bir parameters.txt dosyasından geldiği farklı bir bölge parametresiyle, Puanlama ve yeniden eğitim için N işlem hattı dağıtmak üzere bir uçtan uca C# kodu sağlar. |
@@ -46,7 +46,7 @@ ms.locfileid: "92360011"
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 GitHub üzerinde Data Factory için aşağıdaki Azure Resource Manager şablonları bulabilirsiniz.
 
-| Şablon | Description |
+| Şablon | Açıklama |
 | --- | --- |
 | [Azure Blob depolama alanından Azure SQL veritabanına kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Bu şablonu dağıtmak, verileri belirtilen Azure Blob depolamadan Azure SQL veritabanı 'na kopyalayan bir işlem hattı ile bir Azure veri fabrikası oluşturur |
 | [Salesforce 'tan Azure Blob depolamaya kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Bu şablonu dağıtmak, belirtilen Salesforce hesabından Azure Blob depolama alanına veri kopyalayan bir işlem hattına sahip bir Azure veri fabrikası oluşturur. |
@@ -79,37 +79,37 @@ Veri fabrikanıza örnek işlem hatlarını ve bunlarla ilişkili varlıkları (
 Bilgisayarınızda şunların yüklü olması gerekir:
 
 * Visual Studio 2013 veya Visual Studio 2015
-* Visual Studio 2013 veya Visual Studio 2015 için Azure SDK’sını indirin. [Azure İndirme Sayfası](https://azure.microsoft.com/downloads/)’na gidin ve **.NET** bölümündeki **VS 2013** veya **VS 2015**’e tıklayın.
-* Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Visual Studio 2013 kullanıyorsanız, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar**  ->  **Uzantılar ve güncelleştirmeler**  ->  **çevrimiçi**  ->  **Visual Studio Galerisi**  ->  **Data Factory Microsoft Azure Visual Studio güncelleştirmesi için Araçlar**  ->  **Update**' a tıklayın.
+* Visual Studio 2013 veya Visual Studio 2015 için Azure SDK’sını indirin. [Azure İndirme Sayfası](https://azure.microsoft.com/downloads/)’na gidin ve **.NET** bölümündeki **VS 2013** veya **VS 2015** ’e tıklayın.
+* Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Visual Studio 2013 kullanıyorsanız, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar**  ->  **Uzantılar ve güncelleştirmeler**  ->  **çevrimiçi**  ->  **Visual Studio Galerisi**  ->  **Data Factory Microsoft Azure Visual Studio güncelleştirmesi için Araçlar**  ->  **Update** ' a tıklayın.
 
 ### <a name="use-data-factory-templates"></a>Data Factory şablonları kullanma
-1. Menüdeki **Dosya** ' ya tıklayın, **Yeni**' nin üzerine gelin ve **Proje**' ye tıklayın.
+1. Menüdeki **Dosya** ' ya tıklayın, **Yeni** ' nin üzerine gelin ve **Proje** ' ye tıklayın.
 2. **Yeni Proje** iletişim kutusunda aşağıdaki adımları uygulayın:
 
-   1. **Şablonlar**altında **DataFactory** ' yi seçin.
+   1. **Şablonlar** altında **DataFactory** ' yi seçin.
    2. Sağ bölmedeki **Data Factory şablonlar** ' ı seçin.
    3. Proje için bir **ad** girin.
    4. Proje için bir **konum** seçin.
-   5. **Tamam**'a tıklayın.
+   5. **Tamam** ’a tıklayın.
 
       ![Yeni proje iletişim kutusu](./media/data-factory-samples/vs-new-project-adf-templates.png)
-3. **Data Factory şablonlar** iletişim kutusunda, **kullanım örneği şablonları** bölümünde örnek şablonu seçin ve **İleri**' ye tıklayın. Aşağıdaki adımlar, **Müşteri profil oluşturma** şablonunu kullanma işleminde size yol gösterir. Adımlar diğer örneklere benzerdir.
+3. **Data Factory şablonlar** iletişim kutusunda, **kullanım örneği şablonları** bölümünde örnek şablonu seçin ve **İleri** ' ye tıklayın. Aşağıdaki adımlar, **Müşteri profil oluşturma** şablonunu kullanma işleminde size yol gösterir. Adımlar diğer örneklere benzerdir.
 
     ![Data Factory Şablonlar iletişim kutusu](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
 4. **Data Factory yapılandırma** iletişim kutusunda, **Data Factory temel bilgiler** sayfasında **İleri** ' ye tıklayın.
 5. **Data Factory 'Yi Yapılandır** sayfasında, aşağıdaki adımları uygulayın:
-   1. **Yeni Data Factory oluştur**' u seçin. **Var olan veri fabrikasını kullan**seçeneğini de belirleyebilirsiniz.
+   1. **Yeni Data Factory oluştur** ' u seçin. **Var olan veri fabrikasını kullan** seçeneğini de belirleyebilirsiniz.
    2. Veri Fabrikası için bir **ad** girin.
    3. Veri fabrikasının oluşturulmasını istediğiniz **Azure aboneliğini** seçin.
    4. Veri Fabrikası için **kaynak grubunu** seçin.
-   5. **Bölge**için **Batı ABD**, **Doğu ABD**veya **Kuzey Avrupa** seçin.
-   6. **İleri**’ye tıklayın.
+   5. **Bölge** için **Batı ABD** , **Doğu ABD** veya **Kuzey Avrupa** seçin.
+   6. **İleri** ’ye tıklayın.
 6. **Veri depolarını Yapılandır** sayfasında, **Azure SQL veritabanı** ve **Azure depolama hesabı** 'nda var olan bir veritabanını belirtin (veya) veritabanı/depolama alanı oluşturun ve ileri ' ye tıklayın.
-7. **Işlem yapılandırma** sayfasında, Varsayılanlar ' ı seçin ve **İleri**' ye tıklayın.
-8. **Özet** sayfasında tüm ayarları gözden geçirin ve **İleri**' ye tıklayın.
-9. **Dağıtım durumu** sayfasında, dağıtım bitene kadar bekleyin ve **son**' a tıklayın.
-10. Çözüm Gezgini’nde projeye sağ tıklayın ve ardından **Yayımla**’ya tıklayın.
-11. **Microsoft hesabınızda oturum açın** iletişim kutusunu görmezseniz, Azure aboneliğindeki kimlik bilgilerini hesap için girin ve **oturum aç**’a tıklayın.
+7. **Işlem yapılandırma** sayfasında, Varsayılanlar ' ı seçin ve **İleri** ' ye tıklayın.
+8. **Özet** sayfasında tüm ayarları gözden geçirin ve **İleri** ' ye tıklayın.
+9. **Dağıtım durumu** sayfasında, dağıtım bitene kadar bekleyin ve **son** ' a tıklayın.
+10. Çözüm Gezgini’nde projeye sağ tıklayın ve ardından **Yayımla** ’ya tıklayın.
+11. **Microsoft hesabınızda oturum açın** iletişim kutusunu görmezseniz, Azure aboneliğindeki kimlik bilgilerini hesap için girin ve **oturum aç** ’a tıklayın.
 12. Aşağıdaki iletişim kutusunu göreceksiniz:
 
     ![Yayımla iletişim kutusu](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
@@ -117,9 +117,9 @@ Bilgisayarınızda şunların yüklü olması gerekir:
 
     1. **Mevcut Data Factory seçeneğinin kullanılacağını** onaylayın.
     2. Şablonu kullanırken seçtiğiniz **veri fabrikasını** seçin.
-    3. **Öğeleri Yayımla** sayfasına geçmek için **İleri**’ye tıklayın. (Ad alanından çıkmak için, **İleri** düğmesi devre dışıysa **SEKME** tuşuna basın.)
-14. **Öğeleri Yayımla** sayfasında tüm Data Factory varlıklarının işaretli olmasını sağlayın ve **Özet** sayfasına geçmek için **İleri**’ye tıklayın.     
-15. Özeti gözden geçirin, dağıtım işlemini başlatmak ve **Dağıtım Durumu**’nu görüntülemek için **İleri**’ye tıklayın.
+    3. **Öğeleri Yayımla** sayfasına geçmek için **İleri** ’ye tıklayın. (Ad alanından çıkmak için, **İleri** düğmesi devre dışıysa **SEKME** tuşuna basın.)
+14. **Öğeleri Yayımla** sayfasında tüm Data Factory varlıklarının işaretli olmasını sağlayın ve **Özet** sayfasına geçmek için **İleri** ’ye tıklayın.     
+15. Özeti gözden geçirin, dağıtım işlemini başlatmak ve **Dağıtım Durumu** ’nu görüntülemek için **İleri** ’ye tıklayın.
 16. **Dağıtım Durumu** sayfasında dağıtım sürecinin durumunu görmelisiniz. Dağıtımını gerçekleştirdikten sonra Son'a tıklayın.
 
-Data Factory varlıkları yazmak ve bunları Azure 'Da yayımlamak için Visual Studio 'Yu kullanma hakkında ayrıntılı bilgi için bkz. [ilk veri fabrikanızı derleme (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md) .          
+Data Factory varlıkları yazmak ve bunları Azure 'Da yayımlamak için Visual Studio 'Yu kullanma hakkında ayrıntılı bilgi için bkz. [ilk veri fabrikanızı derleme (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md) .

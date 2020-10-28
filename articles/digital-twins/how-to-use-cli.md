@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c8eabd7d2ef02a92684b51de0bf45bdf7d995421
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 5e4c49e7aea05b6f430860eb6975713f59ad8080
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494462"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635992"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Azure Digital Twins CLI’sini kullanma
 
-Azure Digital TWINS örneğinizi, Azure portal Azure dijital TWINS örneğinizin yönetimine ek olarak, hizmetle birlikte en önemli işlemleri gerçekleştirmek için kullanabileceğiniz bir **komut satırı arabirimi (CLI)** vardır:
+Azure dijital TWINS örneğinizi, Azure portal Azure dijital TWINS örneğinizin yönetimine ek olarak, Azure **[CLI](/cli/azure/what-is-azure-cli) için** , hizmetle birlikte en önemli işlemleri gerçekleştirmek için kullanabileceğiniz bir komut kümesi vardır; örneğin:
 * Azure dijital TWINS örneğini yönetme
 * Modelleri yönetme
 * Dijital TWINS 'yi yönetme
@@ -25,17 +25,32 @@ Azure Digital TWINS örneğinizi, Azure portal Azure dijital TWINS örneğinizin
 * [Yolları](concepts-route-events.md) yönetme
 * Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla [güvenliği](concepts-security.md) yapılandırma
 
+Komut kümesi **az DT** olarak adlandırılır ve [Azure CLI için Azure IoT uzantısının](https://github.com/Azure/azure-iot-cli-extension)bir parçasıdır. Komut kümesi için başvuru belgelerinin bir parçası olarak komutların ve kullanımlarınızın tam listesini görebilirsiniz `az iot` : [ *az DT* komut Reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest).
+
 ## <a name="uses-deploy-and-validate"></a>Kullanır (Dağıt ve Doğrula)
 
 Genellikle örneğinizi yönetmeye ek olarak, CLı de dağıtım ve doğrulama için yararlı bir araçtır.
 * Denetim düzlemi komutları, yeni bir örneğin dağıtımını tekrarlanabilir veya otomatik hale getirmek için kullanılabilir.
 * Veri düzlemi komutları, örneğinizin değerlerini hızlıca denetlemek ve işlemlerin beklendiği gibi tamamlandığını doğrulamak için kullanılabilir.
 
-## <a name="get-the-extension"></a>Uzantıyı al
+## <a name="get-the-command-set"></a>Komut kümesini al
 
-Azure dijital TWINS komutları Azure [CLI Için Azure IoT uzantısının](https://github.com/Azure/azure-iot-cli-extension)bir parçasıdır. Komut kümesi için başvuru belgelerinin bir parçası olarak komutların ve kullanımlarınızın tam listesini görebilirsiniz `az iot` : [ *az DT* komut Reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest).
+Azure dijital TWINS komutları Azure [CLI (Azure-IoT) Için Azure IoT uzantısının](https://github.com/Azure/azure-iot-cli-extension)bir parçasıdır. bu nedenle, `azure-iot` **az DT** komutlarıyla en son uzantıya sahip olduğunuzdan emin olmak için aşağıdaki adımları izleyin.
 
-Bu adımlarla uzantının en son sürümüne sahip olduğunuzdan emin olabilirsiniz. Bu komutları [Azure Cloud Shell](../cloud-shell/overview.md) veya [yerel bir Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)' de çalıştırabilirsiniz.
+### <a name="cli-version-requirements"></a>CLı sürüm gereksinimleri
+
+Azure CLı 'yı PowerShell ile kullanıyorsanız, Uzantı paketi Azure CLı sürümünüzün **2.3.1** veya üzeri olmasını gerektirir.
+
+Bu CLı komutuyla Azure CLı 'nizin sürümünü denetleyebilirsiniz:
+```azurecli
+az --version
+```
+
+Azure CLı 'yı daha yeni bir sürüme yüklemeye veya güncelleştirmeye ilişkin yönergeler için bkz. [*Azure CLI 'Yı yüklemek*](/cli/azure/install-azure-cli).
+
+### <a name="get-the-extension"></a>Uzantıyı al
+
+Bu adımlarla uzantının en son sürümüne sahip olduğunuzdan emin olabilirsiniz `azure-iot` . Bu komutları [Azure Cloud Shell](../cloud-shell/overview.md) veya [yerel bir Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)' de çalıştırabilirsiniz.
 
 [!INCLUDE [digital-twins-cloud-shell-extensions.md](../../includes/digital-twins-cloud-shell-extensions.md)]
 

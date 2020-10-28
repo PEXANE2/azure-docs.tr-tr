@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi için güncelleştirme dağı
 description: Bu makalede, güncelleştirme dağıtımlarının nasıl planlanmakta ve bunların durumlarını incelemesinin nasıl yapılacağı açıklanır.
 services: automation
 ms.subservice: update-management
-ms.date: 10/21/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1f4c04bf4a26e67a905679db23e303c2762d90c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d6594e1cdd7925a4287cf9edbfd5324b427338f4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426409"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637607"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Güncelleştirmeler nasıl dağıtılır ve sonuçlar incelenmek
 
@@ -20,7 +20,7 @@ Her senaryo altında, oluşturduğunuz dağıtım makine veya sunucu ' yı seçt
 
 * İşletim sistemi, makinenin IŞLETIM sistemine göre otomatik olarak önceden seçilir
 * Güncelleştirilecek hedef makine, kendisini otomatik olarak hedeflemek üzere ayarlanmış
-* Zamanlamayı yapılandırırken, **Şimdi güncelleştirmeyi**belirtebilir, bir kez oluşabilir veya yinelenen bir zamanlama kullanabilirsiniz.
+* Zamanlamayı yapılandırırken, **Şimdi güncelleştirmeyi** belirtebilir, bir kez oluşabilir veya yinelenen bir zamanlama kullanabilirsiniz.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -43,11 +43,11 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
 
 2. Güncelleştirme Yönetimi gitmek için, seçtiğiniz kaynağa bağlı olarak:
 
-   * Otomasyon hesabınızı **seçtiyseniz güncelleştirme yönetimi altında** **güncelleştirme yönetimi** ' ne gidin ve **güncelleştirme dağıtımını zamanla**' yı seçin.
-   * Bir Azure VM 'si seçtiyseniz, **Konuk + ana bilgisayar güncelleştirmeleri**' ne gidin ve ardından **güncelleştirme yönetimi git**' i seçin.
-   * Bir yay etkin sunucu seçtiyseniz, **güncelleştirme yönetimi**' a gidin ve **güncelleştirme dağıtımını zamanla**' yı seçin.
+   * Otomasyon hesabınızı **seçtiyseniz güncelleştirme yönetimi altında** **güncelleştirme yönetimi** ' ne gidin ve **güncelleştirme dağıtımını zamanla** ' yı seçin.
+   * Bir Azure VM 'si seçtiyseniz, **Konuk + ana bilgisayar güncelleştirmeleri** ' ne gidin ve ardından **güncelleştirme yönetimi git** ' i seçin.
+   * Bir yay etkin sunucu seçtiyseniz, **güncelleştirme yönetimi** ' a gidin ve **güncelleştirme dağıtımını zamanla** ' yı seçin.
 
-3. **Yeni güncelleştirme dağıtımı**altında, **ad** alanına dağıtımınız için benzersiz bir ad girin.
+3. **Yeni güncelleştirme dağıtımı** altında, **ad** alanına dağıtımınız için benzersiz bir ad girin.
 
 4. Güncelleştirme dağıtımı için hedeflenecek işletim sistemini seçin.
 
@@ -68,7 +68,7 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
 
     Dağıtımınız yalnızca bir seçim kümesi uygulamasa, bir sonraki adımda açıklandığı gibi, **güncelleştirmeleri dahil et/hariç tut** seçeneğini yapılandırırken, önceden seçilmiş tüm güncelleştirme sınıflandırmalarının seçimini kaldırmak gerekir. Bu, hedef makinelere yalnızca bu dağıtıma *dahil* etmek için belirttiğiniz güncelleştirmelerin yüklü olmasını sağlar.
 
-8. Seçili güncelleştirmeleri dağıtıma eklemek veya dağıtımdan dışlamak için **güncelleştirmeleri dahil et/hariç tut** bölgesini kullanın. **Dahil et/hariç tut** sayfasında, dahil etmek veya hariç tutmak istediğiniz KB makalesinin kimlik numaralarını girersiniz.
+8. Seçili güncelleştirmeleri dağıtıma eklemek veya dağıtımdan dışlamak için **güncelleştirmeleri dahil et/hariç tut** bölgesini kullanın. **Dahil et/hariç tut** sayfasında, Windows güncelleştirmelerini dahil etmek veya hariç tutmak için KB makalesinin kimlik numaralarını girersiniz. Desteklenen Linux destekleri için paket adını belirtirsiniz.
 
    > [!IMPORTANT]
    > Dışlamalar geçersiz kılmanın dahil olduğunu unutmayın. Örneğin, bir hariç tutma kuralı tanımlarsanız `*` , güncelleştirme yönetimi tüm düzeltme eklerini veya paketleri yüklemeden dışlar. Dışlanan düzeltme ekleri hala makinelerde eksik olarak gösterilir. Linux makineler için, dışlanan bağımlı paketi olan bir paketi eklerseniz Güncelleştirme Yönetimi ana paketi yüklemez.
@@ -76,12 +76,15 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
    > [!NOTE]
    > Güncelleştirme dağıtımına dahil etmek için yenisiyle değiştirilen güncelleştirmeleri belirtemezsiniz.
 
-9. **Zamanlama ayarları**' nı seçin. Varsayılan başlangıç zamanı, geçerli zamandan 30 dakika sonradır. Başlangıç zamanını en düşük 10 dakika olmak üzere istediğiniz değere ayarlayabilirsiniz.
+   > [!IMPORTANT]
+   > Red Hat Enterprise için çekirdek yükseltmeleri de de en fazla paket olarak gösterilir. Çekirdek yükseltmeleri içeren güncelleştirmeleri dışlayamazsınız Güncelleştirme Yönetimi, bu güncelleştirmeleri uygular.
+
+9. **Zamanlama ayarları** ' nı seçin. Varsayılan başlangıç zamanı, geçerli zamandan 30 dakika sonradır. Başlangıç zamanını en düşük 10 dakika olmak üzere istediğiniz değere ayarlayabilirsiniz.
 
     > [!NOTE]
     > Bu seçenek, bir yay etkin sunucu seçtiyseniz farklılık fark edilir. **Şimdi Güncelleştir** ' i veya gelecek başlangıç saatini 20 dakika olarak seçebilirsiniz.
 
-10. Dağıtımın bir kez mi gerçekleşeceğini, yoksa yinelenen bir zamanlamayı mı kullandığını belirtmek için **yinelemeyi** kullanın, sonra **Tamam**' ı seçin.
+10. Dağıtımın bir kez mi gerçekleşeceğini, yoksa yinelenen bir zamanlamayı mı kullandığını belirtmek için **yinelemeyi** kullanın, sonra **Tamam** ' ı seçin.
 
 11. **Ön betikler + betikleri sonrası** bölgesinde, dağıtımdan önce ve sonra çalıştırılacak betikleri seçin. Daha fazla bilgi için bkz. [betikleri ve son betikleri yönetme](pre-post-scripts.md).
 
@@ -102,14 +105,14 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
     * Yalnızca yeniden Başlat; Bu seçenek güncelleştirmeleri yüklemez
 
     > [!NOTE]
-    > [Yeniden başlatmayı yönetmek için kullanılan kayıt](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) defteri anahtarları altında listelenen kayıt defteri anahtarları, **yeniden başlatma seçenekleri** hiçbir şekilde **yeniden başlatma**olarak ayarlandıysa yeniden başlatma olayına neden olabilir.
+    > [Yeniden başlatmayı yönetmek için kullanılan kayıt](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) defteri anahtarları altında listelenen kayıt defteri anahtarları, **yeniden başlatma seçenekleri** hiçbir şekilde **yeniden başlatma** olarak ayarlandıysa yeniden başlatma olayına neden olabilir.
 
-14. Dağıtım zamanlamasını yapılandırmayı bitirdiğinizde **Oluştur**' u seçin.
+14. Dağıtım zamanlamasını yapılandırmayı bitirdiğinizde **Oluştur** ' u seçin.
 
     ![Güncelleştirme Zamanlama Ayarları bölmesi](./media/deploy-updates/manageupdates-schedule-win.png)
 
     > [!NOTE]
-    > Seçili bir yay etkin sunucu için dağıtım zamanlamasını yapılandırmayı bitirdiğinizde, **gözden geçir + oluştur**' u seçin.
+    > Seçili bir yay etkin sunucu için dağıtım zamanlamasını yapılandırmayı bitirdiğinizde, **gözden geçir + oluştur** ' u seçin.
 
 15. Durum panosu açılır. Oluşturduğunuz dağıtım zamanlamasını göstermek için **dağıtım zamanlamaları** ' nı seçin. En fazla 500 zamanlama listelenir. 500 ' den fazla zamanlama varsa ve tam listeyi gözden geçirmek istiyorsanız, [yazılım güncelleştirme yapılandırması-liste](/rest/api/automation/softwareupdateconfigurations/list) REST API yöntemine bakın. API sürüm 2019-06-01 veya üstünü belirtin.
 
@@ -121,7 +124,7 @@ Bir haftalık güncelleştirme dağıtımı oluşturmak için örnek bir runbook
 
 ## <a name="check-deployment-status"></a>Dağıtım durumunu denetle
 
-Zamanlanan dağıtımınız başladıktan sonra, **güncelleştirme yönetimi**altındaki **Geçmiş** sekmesinde durumunu görebilirsiniz. Dağıtım o anda çalışıyorsa, durum **Sürüyor** şeklinde olur. Dağıtım başarıyla sona erdiğinde durum **başarılı**olarak değişir. Dağıtımda bir veya daha fazla güncelleştirme ile ilgili hata varsa, durum **başarısız**olur.
+Zamanlanan dağıtımınız başladıktan sonra, **güncelleştirme yönetimi** altındaki **Geçmiş** sekmesinde durumunu görebilirsiniz. Dağıtım o anda çalışıyorsa, durum **Sürüyor** şeklinde olur. Dağıtım başarıyla sona erdiğinde durum **başarılı** olarak değişir. Dağıtımda bir veya daha fazla güncelleştirme ile ilgili hata varsa, durum **başarısız** olur.
 
 ## <a name="view-results-of-a-completed-update-deployment"></a>Tamamlanmış bir güncelleştirme dağıtımının sonuçlarını görüntüleme
 
@@ -129,7 +132,7 @@ Dağıtım tamamlandığında, sonuçlarını görmek için bunu seçebilirsiniz
 
 [![Belirli bir dağıtım için dağıtım durumu panosunu Güncelleştir](./media/deploy-updates/manageupdates-view-results.png)](./media/deploy-updates/manageupdates-view-results-expanded.png#lightbox)
 
-**Güncelleştirme sonuçları**altında bir Özet, hedef VM 'lerde toplam güncelleştirme ve dağıtım sonucu sayısını sağlar. Sağ taraftaki tablo, güncelleştirmelerin ayrıntılı bir dökümünü ve her biri için yükleme sonuçlarını gösterir.
+**Güncelleştirme sonuçları** altında bir Özet, hedef VM 'lerde toplam güncelleştirme ve dağıtım sonucu sayısını sağlar. Sağ taraftaki tablo, güncelleştirmelerin ayrıntılı bir dökümünü ve her biri için yükleme sonuçlarını gösterir.
 
 Kullanılabilir değerler şunlardır:
 
@@ -142,7 +145,7 @@ Dağıtımın oluşturduğu tüm günlük girişlerini görmek için **Tüm Gün
 
 Hedef VM 'lerde güncelleştirme dağıtımını yönetmekten sorumlu runbook 'un iş akışını görmek için **Çıkış ' ı** seçin.
 
-Dağıtımla ilgili her türlü hata hakkında ayrıntılı bilgiler için **Hatalar**’ı seçin.
+Dağıtımla ilgili her türlü hata hakkında ayrıntılı bilgiler için **Hatalar** ’ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

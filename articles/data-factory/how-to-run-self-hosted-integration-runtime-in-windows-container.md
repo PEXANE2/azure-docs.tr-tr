@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: d6f292ff89a70de90e6b86f19f73de26963d997f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7035da173102e59aec9c643381bad701d6facf38
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927584"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634547"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>Windows kapsayıcısında Self-Hosted Integration Runtime çalıştırma
 
@@ -26,7 +26,7 @@ Bu makalede, Windows kapsayıcısında Self-Hosted Integration Runtime nasıl ç
 Azure Data Factory, Self-Hosted Integration Runtime resmi Windows kapsayıcı desteğini teslim ediyor. Docker Build kaynak kodunu indirebilir ve oluşturma ve çalıştırma sürecini kendi sürekli teslim işlem hattınızda birleştirebilirsiniz. 
 
 ## <a name="prerequisites"></a>Ön koşullar 
-- [Windows kapsayıcı gereksinimleri](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/system-requirements)
+- [Windows kapsayıcı gereksinimleri](/virtualization/windowscontainers/deploy-containers/system-requirements)
 - Docker sürüm 2,3 ve üzeri 
 - Self-Hosted Integration Runtime sürüm 4.11.7512.1 ve üzeri 
 ## <a name="get-started"></a>başlarken 
@@ -61,7 +61,5 @@ docker run -d -e NODE_NAME="irNodeName" -e AUTH_KEY="IR_AUTHENTICATI
 - Otomatik güncelleştirme 
 
 ### <a name="next-steps"></a>Sonraki adımlar
-- [Azure Data Factory tümleştirme çalışma zamanı kavramlarını](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime)gözden geçirin.
-- [Azure Portal şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmayı](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)öğrenin.
-
-
+- [Azure Data Factory tümleştirme çalışma zamanı kavramlarını](./concepts-integration-runtime.md)gözden geçirin.
+- [Azure Portal şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmayı](./create-self-hosted-integration-runtime.md)öğrenin.

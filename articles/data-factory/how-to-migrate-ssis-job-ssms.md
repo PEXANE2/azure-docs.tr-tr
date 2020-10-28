@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 6b95162d34b706b0bbb3e2940ea214e5a662655d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5566717387f6da375129a0e70c9ad825198d66b7
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984908"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634615"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SSMS ile SQL Server Agent işleri ADF 'ye geçirme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-[Şirket içi SQL Server Integration Services (SSIS) iş YÜKLERINI obsıs 'e taşırken](scenario-ssis-migration-overview.md), SSIS paketleri geçirildikten sonra, SQL Server Agent işlerin iş adımı türü SQL Server Integration Services paketi Azure Data Factory (ADF) işlem hattı/etkinlikleri/SQL Server Management Studio (SSMS) **SSIS iş Geçiş Sihirbazı**aracılığıyla Zamanlayıcı tetiklemeleri aracılığıyla toplu geçiş yapabilirsiniz.
+[Şirket içi SQL Server Integration Services (SSIS) iş YÜKLERINI obsıs 'e taşırken](scenario-ssis-migration-overview.md), SSIS paketleri geçirildikten sonra, SQL Server Agent işlerin iş adımı türü SQL Server Integration Services paketi Azure Data Factory (ADF) işlem hattı/etkinlikleri/SQL Server Management Studio (SSMS) **SSIS iş Geçiş Sihirbazı** aracılığıyla Zamanlayıcı tetiklemeleri aracılığıyla toplu geçiş yapabilirsiniz.
 
 Genel olarak, geçerli iş adımı türlerindeki seçili SQL Aracısı işleri için **SSIS Iş Geçiş Sihirbazı** şunları yapabilir:
 
@@ -33,19 +33,19 @@ Genel olarak, geçerli iş adımı türlerindeki seçili SQL Aracısı işleri i
 
 |SQL Aracısı iş nesnesi  |ADF kaynağı  |Notlar|
 |---------|---------|---------|
-|SQL Aracısı işi|konfigüre     |İşlem hattının adı *Için \<job name> oluşturulur *. <br> <br> Yerleşik aracı işleri geçerli değildir: <li> SSIS sunucu bakım Işi <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
+|SQL Aracısı işi|konfigüre     |İşlem hattının adı *Için \<job name> oluşturulur* . <br> <br> Yerleşik aracı işleri geçerli değildir: <li> SSIS sunucu bakım Işi <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
 |SSIS iş adımı|SSIS paketi yürütme etkinliği|<li> Etkinliğin adı olacaktır \<step name> . <li> İş adımında kullanılan ara sunucu hesabı, bu etkinliğin Windows kimlik doğrulaması olarak geçirilir. <li> İş adımında tanımlanan *32 bit çalışma zamanı kullanımı* hariç *yürütme seçenekleri* , geçiş sırasında yok sayılır. <li> İş adımında tanımlanan *doğrulama* , geçiş sırasında yok sayılacak.|
-|schedule      |zamanlama tetikleyicisi        |Zamanlama tetikleyicisinin adı *Için \<schedule name> oluşturulur *. <br> <br> SQL Aracısı iş zamanlamasında aşağıdaki seçenekler, geçişte yok sayılacak: <li> İkinci düzey Aralık. <li> *SQL Server Agent başladığında otomatik olarak Başlat* <li> *CPU 'Ları her boşta duruma geldiğinde Başlat* <li> *hafta içi* ve *hafta sonu günü*<time zone> <br> Aşağıda, SQL Aracısı iş zamanlaması ADF zamanlama tetikleyicisine geçirildikten sonra farklılıklar verilmiştir: <li> ADF zamanlama tetikleyicisi sonraki çalıştırma, öncül tarafından tetiklenen çalıştırmanın yürütme durumundan bağımsızdır. <li> ADF zamanlama tetikleyicisi yineleme yapılandırması, SQL Aracısı işinde günlük sıklığından farklıdır.|
+|schedule      |zamanlama tetikleyicisi        |Zamanlama tetikleyicisinin adı *Için \<schedule name> oluşturulur* . <br> <br> SQL Aracısı iş zamanlamasında aşağıdaki seçenekler, geçişte yok sayılacak: <li> İkinci düzey Aralık. <li> *SQL Server Agent başladığında otomatik olarak Başlat* <li> *CPU 'Ları her boşta duruma geldiğinde Başlat* <li> *hafta içi* ve *hafta sonu günü*<time zone> <br> Aşağıda, SQL Aracısı iş zamanlaması ADF zamanlama tetikleyicisine geçirildikten sonra farklılıklar verilmiştir: <li> ADF zamanlama tetikleyicisi sonraki çalıştırma, öncül tarafından tetiklenen çalıştırmanın yürütme durumundan bağımsızdır. <li> ADF zamanlama tetikleyicisi yineleme yapılandırması, SQL Aracısı işinde günlük sıklığından farklıdır.|
 
-- Yerel çıkış klasöründe Azure Resource Manager (ARM) şablonları oluşturun ve doğrudan veya sonraki bir sürüme el ile dağıtın. ADF Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için bkz. [Microsoft. DataFactory kaynak türleri](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions).
+- Yerel çıkış klasöründe Azure Resource Manager (ARM) şablonları oluşturun ve doğrudan veya sonraki bir sürüme el ile dağıtın. ADF Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için bkz. [Microsoft. DataFactory kaynak türleri](/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede açıklanan özellik SQL Server Management Studio sürüm 18,5 veya üstünü gerektirir. SSMS 'nin en son sürümünü almak için bkz. [Download SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15).
+Bu makalede açıklanan özellik SQL Server Management Studio sürüm 18,5 veya üstünü gerektirir. SSMS 'nin en son sürümünü almak için bkz. [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15).
 
 ## <a name="migrate-ssis-jobs-to-adf"></a>SSIS işlerini ADF 'ye geçirme
 
-1. SSMS 'de, Nesne Gezgini SQL Server Agent ' i seçin, Işler ' i seçin, ardından sağ tıklayıp **SSIS IŞLERINI ADF 'ye geçir**' i seçin.
+1. SSMS 'de, Nesne Gezgini SQL Server Agent ' i seçin, Işler ' i seçin, ardından sağ tıklayıp **SSIS IŞLERINI ADF 'ye geçir** ' i seçin.
 ![Ekran görüntüsü SQL Server Management Studio Nesne Gezgini gösterir, burada Işler ' i seçebilir ve sonra s s I Işleri bir D F 'ye geçirebilirsiniz.](media/how-to-migrate-ssis-job-ssms/menu.png)
 
 1. Azure 'Da oturum açın, Azure aboneliği, Data Factory ve Integration Runtime seçin. ' Nin geçirilmesi gereken SSIS dosya sistemi paketlerine sahip olması durumunda, paket konumu eşleme adımında kullanılan Azure depolama isteğe bağlıdır.
@@ -53,26 +53,26 @@ Bu makalede açıklanan özellik SQL Server Management Studio sürüm 18,5 veya 
 
 1. SSIS işlerinde SSIS paketlerinin ve yapılandırma dosyalarının yollarını, geçirilen Işlem hatlarının erişebileceği hedef yollarla eşleyin. Bu eşleme adımında şunları yapabilirsiniz:
 
-    1. Bir kaynak klasör seçip **eşleme Ekle**' ye tıklayın.
+    1. Bir kaynak klasör seçip **eşleme Ekle** ' ye tıklayın.
     1. Kaynak klasör yolunu güncelleştirme. Geçerli yollar, paketlerin klasör yolları veya üst klasör yollarıdır.
     1. Hedef klasör yolunu güncelleştirme. Varsayılan, 1. adımda seçilen varsayılan depolama hesabının göreli yoludur.
-    1. Seçili eşlemeyi **silme eşlemesi**aracılığıyla silin.
+    1. Seçili eşlemeyi **silme eşlemesi** aracılığıyla silin.
 ![Ekran görüntüsü, eşleme ekleyebileceğiniz, harita s s paket ve yapılandırma yolları sayfasını gösterir. ](media/how-to-migrate-ssis-job-ssms/step2.png)
  ![ Ekran görüntüsünde, kaynak ve hedef klasör yollarını güncelleştirebileceğiniz harita s s paketi ve yapılandırma yolları görüntülenir.](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
-1. Geçirilecek geçerli işleri seçin ve ilgili *yürütülen SSIS paketi etkinliğinin*ayarlarını yapılandırın.
+1. Geçirilecek geçerli işleri seçin ve ilgili *yürütülen SSIS paketi etkinliğinin* ayarlarını yapılandırın.
 
-    - *Varsayılan ayar*, varsayılan olarak seçilen tüm adımlar için geçerlidir. Her özellik hakkında daha fazla bilgi için, paket konumu *dosya sistemi (paket)* olduğunda [SSIS paketi yürütme etkinliğinin](how-to-invoke-ssis-package-ssis-activity.md) *Ayarlar sekmesi* bölümüne bakın.
+    - *Varsayılan ayar* , varsayılan olarak seçilen tüm adımlar için geçerlidir. Her özellik hakkında daha fazla bilgi için, paket konumu *dosya sistemi (paket)* olduğunda [SSIS paketi yürütme etkinliğinin](how-to-invoke-ssis-package-ssis-activity.md) *Ayarlar sekmesi* bölümüne bakın.
     ![Ekran görüntüsü, ilgili yürütülen SSIS paketi etkinliğinin ayarlarını yapılandırabileceğiniz, S s I Işleri Seç sayfasını gösterir.](media/how-to-migrate-ssis-job-ssms/step3-1.png)
-    - *Adım ayarı*, seçili bir adım için ayarı yapılandırın.
+    - *Adım ayarı* , seçili bir adım için ayarı yapılandırın.
         
-        **Varsayılan ayarı uygula**: varsayılan seçilidir. Ayarı yalnızca seçilen adım için yapılandırmak üzere seçimini kaldırın.  
+        **Varsayılan ayarı uygula** : varsayılan seçilidir. Ayarı yalnızca seçilen adım için yapılandırmak üzere seçimini kaldırın.  
         Diğer özellikler hakkında daha fazla bilgi için, paket konumu *dosya sistemi (paket)* olduğunda [SSIS paketi yürütme etkinliğinin](how-to-invoke-ssis-package-ssis-activity.md) *Ayarlar sekmesi* bölümüne bakın.
     ![Ekran görüntüsü, varsayılan ayarları uygulayabileceğiniz, S s I Işleri Seç sayfasını gösterir.](media/how-to-migrate-ssis-job-ssms/step3-2.png)
 
 1. ARM şablonu oluşturun ve dağıtın.
     1. Geçirilen ADF işlem hatlarının ARM şablonlarının çıkış yolunu seçin veya girin. Klasör yoksa, otomatik olarak oluşturulur.
-    2. **ARM şablonlarını veri fabrikanıza dağıtma**seçeneğini belirleyin:
+    2. **ARM şablonlarını veri fabrikanıza dağıtma** seçeneğini belirleyin:
         - Varsayılan değer seçilmemiş. Oluşturulan ARM şablonlarını daha sonra el ile dağıtabilirsiniz.
         - Oluşturulan ARM şablonlarını Data Factory 'ye doğrudan dağıtmayı seçin.
     ![Ekran görüntüsü geçişi Yapılandır sayfasını gösterir; burada, geçirilen ADF işlem hatlarının ARM şablonlarının çıkış yolunu seçebilir veya girebilirsiniz ve veri fabrikanıza ARM şablonları dağıtma seçeneğini belirleyebilirsiniz.](media/how-to-migrate-ssis-job-ssms/step4.png)

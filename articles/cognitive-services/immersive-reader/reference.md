@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
-ms.author: metan
-ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: f2f5c8193454a3b7fa6be1cea7a1236b613d6c8f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761558"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636536"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Modern okuyucu JavaScript SDK başvurusu (v 1.1)
 
@@ -54,7 +54,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 `Promise<LaunchResponse>`Derinlikli okuyucu yüklendiğinde çözümlenen bir döndürür. `Promise`Bir nesne olarak çözümlenir [`LaunchResponse`](#launchresponse) .
 
-#### <a name="exceptions"></a>Özel Durumlar
+#### <a name="exceptions"></a>Özel durumlar
 
 `Promise` [`Error`](#error) Tam ekran okuyucu yüklenemezse, döndürülen bir nesne ile reddedilir. Daha fazla bilgi için bkz. [hata kodları](#error-codes).
 
@@ -272,7 +272,7 @@ Default value: "text/plain"
 | MIME Türü | Açıklama |
 | --------- | ----------- |
 | metin/düz | Düz metin. |
-| text/html | HTML içeriği. [Daha fazla bilgi edinin](#html-support)|
+| text/html | HTML içeriği. [Daha fazla bilgi](#html-support)|
 | Application/MathML + XML | Matematik biçimlendirme dili (MathML). [Daha fazla bilgi edinin](./how-to/display-math.md).
 | Uygulama/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word. docx biçim belgesi.
 
@@ -314,7 +314,7 @@ Modern okuyucunun belirli davranışlarını yapılandıran özellikler içerir.
 | onExit | İşlev | Modern okuyucu çıktığında yürütülür. |
 | allowFullscreen | Boole | Tam ekran geçiş özelliği (varsayılan değer true 'dur). |
 | hideExitButton | Boole | Tam ekran okuyucunun çıkış düğmesine okunun gizlenmeyeceğini belirtir (varsayılan değer false). Bu, yalnızca tam ekran okuyucudan çıkmak için bir alternatif mekanizma (örn. bir mobil araç çubuğunun geri oku) varsa doğru olmalıdır. |
-| Tanımlama, ıepolicy | [Tanımlama, ıepolicy](#cookiepolicy-options) | Derinlikli okuyucunun tanımlama bilgisi kullanımı için ayarlama (varsayılan, tanımlama bilgileri \ *ilke. Disable*). Bu, ana bilgisayar uygulamasının, AB tanımlama bilgisi uyumluluk Ilkesine uygun olan tüm gerekli Kullanıcı onayını elde etmek için sorumluluğudur. Bkz. [tanımlama bilgisi Ilkesi seçenekleri](#cookiepolicy-options). |
+| Tanımlama, ıepolicy | [Tanımlama, ıepolicy](#cookiepolicy-options) | Derinlikli okuyucunun tanımlama bilgisi kullanımı için ayarlama (varsayılan, tanımlama bilgileri \ *ilke. Disable* ). Bu, ana bilgisayar uygulamasının, AB tanımlama bilgisi uyumluluk Ilkesine uygun olan tüm gerekli Kullanıcı onayını elde etmek için sorumluluğudur. Bkz. [tanımlama bilgisi Ilkesi seçenekleri](#cookiepolicy-options). |
 | disableFirstRun | Boole | İlk çalıştırma deneyimini devre dışı bırakın. |
 | Readaloudoçen'lar | [Readaloudoçen'lar](#readaloudoptions) | Okumayı yüksek sesle yapılandırma seçenekleri. |
 | translationOptions | [TranslationOptions](#translationoptions) | Çeviri yapılandırma seçenekleri. |
@@ -487,7 +487,7 @@ Values available: "Calibri", "Sitka", "ComicSans"
 enum CookiePolicy { Disable, Enable }
 ```
 
-**Aşağıda listelenen ayarlar yalnızca bilgilendirme amaçlıdır**. Tam ekran okuyucu ayarları veya Kullanıcı tercihlerini tanımlama bilgilerinde depolar. Bu *tanımlama* BILGILERI, AB tanımlama bilgisi uyumluluk yasaları ile uyumlu olması için varsayılan olarak tanımlama bilgilerinin kullanılmasını **devre dışı bırakır** . Tanımlama bilgilerini yeniden etkinleştirmek ve tam ekran okuyucusu Kullanıcı tercihleri için varsayılan işlevselliği geri yüklemek istediğinizde, Web sitenizin veya uygulamanızın tanımlama bilgilerini etkinleştirmek üzere kullanıcıdan uygun izni aldığından emin olmanız gerekir. Daha sonra, derinlikli okuyucudaki tanımlama bilgilerini yeniden etkinleştirmek için, kapsamlı bir okuyucu başlatırken *ıepolicy* *. Enable* seçeneğini açıkça ayarlamanız gerekir. Aşağıdaki tabloda, tanımlama bilgisi *ıepolicy* seçeneği etkinken tam ekran derinlikli okuyucu hangi ayarları depoladığını anlatmaktadır.
+**Aşağıda listelenen ayarlar yalnızca bilgilendirme amaçlıdır** . Tam ekran okuyucu ayarları veya Kullanıcı tercihlerini tanımlama bilgilerinde depolar. Bu *tanımlama* BILGILERI, AB tanımlama bilgisi uyumluluk yasaları ile uyumlu olması için varsayılan olarak tanımlama bilgilerinin kullanılmasını **devre dışı bırakır** . Tanımlama bilgilerini yeniden etkinleştirmek ve tam ekran okuyucusu Kullanıcı tercihleri için varsayılan işlevselliği geri yüklemek istediğinizde, Web sitenizin veya uygulamanızın tanımlama bilgilerini etkinleştirmek üzere kullanıcıdan uygun izni aldığından emin olmanız gerekir. Daha sonra, derinlikli okuyucudaki tanımlama bilgilerini yeniden etkinleştirmek için, kapsamlı bir okuyucu başlatırken *ıepolicy* *. Enable* seçeneğini açıkça ayarlamanız gerekir. Aşağıdaki tabloda, tanımlama bilgisi *ıepolicy* seçeneği etkinken tam ekran derinlikli okuyucu hangi ayarları depoladığını anlatmaktadır.
 
 #### <a name="settings-parameters"></a>Ayarlar parametreleri
 

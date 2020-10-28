@@ -10,12 +10,12 @@ ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9615dc358b1c5bed0e48c07c2571ccce05fcdf2e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84659704"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637216"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime oluşturma ve yapılandırma
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -41,27 +41,27 @@ Integration Runtime, **set-AzDataFactoryV2IntegrationRuntime** PowerShell cmdlet
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
-Azure IR için türün **yönetilen**olarak ayarlanması gerekir. Bulutta tam olarak yönetilen bir esnek olduğundan işlem ayrıntılarını belirtmeniz gerekmez. Azure-SSIS IR oluşturmak istediğinizde düğüm boyutu ve düğüm sayısı gibi işlem ayrıntılarını belirtin. Daha fazla bilgi için [Azure-SSIS IR oluşturma ve yapılandırma](create-azure-ssis-integration-runtime.md)konusuna bakın.
+Azure IR için türün **yönetilen** olarak ayarlanması gerekir. Bulutta tam olarak yönetilen bir esnek olduğundan işlem ayrıntılarını belirtmeniz gerekmez. Azure-SSIS IR oluşturmak istediğinizde düğüm boyutu ve düğüm sayısı gibi işlem ayrıntılarını belirtin. Daha fazla bilgi için [Azure-SSIS IR oluşturma ve yapılandırma](create-azure-ssis-integration-runtime.md)konusuna bakın.
 
 Mevcut bir Azure IR, konumunu değiştirmek için Set-AzDataFactoryV2IntegrationRuntime PowerShell cmdlet 'ini kullanarak yapılandırabilirsiniz. Azure IR konumu hakkında daha fazla bilgi için bkz. [Integration Runtime 'A giriş](concepts-integration-runtime.md).
 
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Azure Data Factory Kullanıcı arabirimi aracılığıyla Azure IR oluşturma
 Azure Data Factory Kullanıcı arabirimini kullanarak bir Azure IR oluşturmak için aşağıdaki adımları kullanın.
 
-1. Azure Data Factory Kullanıcı arabiriminin **Başlarken** sayfasında, en soldaki bölmeden [Yönet sekmesini](https://docs.microsoft.com/azure/data-factory/author-management-hub) seçin.
+1. Azure Data Factory Kullanıcı arabiriminin **Başlarken** sayfasında, en soldaki bölmeden [Yönet sekmesini](./author-management-hub.md) seçin.
 
    ![Giriş sayfası Yönet düğmesi](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Sol bölmedeki **tümleştirme çalışma zamanları** ' nı seçin ve ardından **+ Yeni**' yi seçin.
+1. Sol bölmedeki **tümleştirme çalışma zamanları** ' nı seçin ve ardından **+ Yeni** ' yi seçin.
 
    ![Tümleştirme çalışma zamanı oluşturma](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. **Tümleştirme çalışma zamanı kurulumu** sayfasında, **Azure, şirket içinde barındırılan**' ı seçin ve ardından **devam**' ı seçin. 
+1. **Tümleştirme çalışma zamanı kurulumu** sayfasında, **Azure, şirket içinde barındırılan** ' ı seçin ve ardından **devam** ' ı seçin. 
 
-1. Aşağıdaki sayfada **Azure** ' u seçerek bir Azure IR oluşturun ve ardından **devam**' ı seçin.
+1. Aşağıdaki sayfada **Azure** ' u seçerek bir Azure IR oluşturun ve ardından **devam** ' ı seçin.
    ![Tümleştirme çalışma zamanı oluşturma](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
-1. Azure IR için bir ad girin ve **Oluştur**' u seçin.
+1. Azure IR için bir ad girin ve **Oluştur** ' u seçin.
    ![Azure IR oluşturma](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. Oluşturma işlemi tamamlandığında bir açılır bildirim görürsünüz. Tümleştirme çalışma **zamanları** sayfasında, listede yenı oluşturulan IR 'yi görtığınızdan emin olun.
@@ -92,4 +92,3 @@ Diğer tümleştirme çalışma zamanları türlerini oluşturma hakkında aşa�
 
 - [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma](create-self-hosted-integration-runtime.md)
 - [Azure-SSIS tümleştirmesi çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md)
- 

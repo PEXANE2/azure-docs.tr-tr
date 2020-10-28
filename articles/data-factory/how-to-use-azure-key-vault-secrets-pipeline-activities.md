@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 5a662119d9ccf95eac23785c5fe9a787da882531
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1766705e73afab5d15cdb5aa2c5bb1487ad3d7c5
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537404"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634292"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>İşlem hattı etkinliklerinde Azure Key Vault gizli dizilerini kullanma
 
@@ -25,7 +25,7 @@ Kimlik bilgilerini veya gizli değerleri bir Azure Key Vault saklayabilir ve etk
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Factory Için yönetilen kimliğin](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) nasıl çalıştığını öğrenin ve Data Factory 'nizin ilişkili bir tane olduğundan emin olun.
+Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Factory Için yönetilen kimliğin](./data-factory-service-identity.md) nasıl çalıştığını öğrenin ve Data Factory 'nizin ilişkili bir tane olduğundan emin olun.
 
 ## <a name="steps"></a>Adımlar
 
@@ -39,7 +39,7 @@ Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Fact
 
     ![Key Vault erişim ilkeleri](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
-    **Ekle**' ye ve ardından **Kaydet**' e tıklayın.
+    **Ekle** ' ye ve ardından **Kaydet** ' e tıklayın.
 
 3. Key Vault verilerinize giderek gizli dizi tanımlayıcısını kopyalayın.
 
@@ -65,10 +65,10 @@ Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Fact
     > [!CAUTION]
     > Gizli çıkışın düz metin olarak kaydedilmesini engellemek için güvenli çıkış seçeneğini true olarak ayarlayın.  Bu değeri kullanan diğer etkinliklerin, güvenli giriş seçeneğinin true olarak ayarlanmış olması gerekir.
 
-5. Değeri başka bir etkinlikte kullanmak için şu kod ifadesini kullanın ** @activity (' Web1 '). Output. Value**.
+5. Değeri başka bir etkinlikte kullanmak için şu kod ifadesini kullanın **@activity (' Web1 '). Output. Value** .
 
     ![Kod ifadesi](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri depoları ve hesaplar için kimlik bilgilerini depolamak üzere Azure Key Vault nasıl kullanacağınızı öğrenmek için bkz. [Azure Key Vault kimlik bilgilerini depolama](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
+Veri depoları ve hesaplar için kimlik bilgilerini depolamak üzere Azure Key Vault nasıl kullanacağınızı öğrenmek için bkz. [Azure Key Vault kimlik bilgilerini depolama](./store-credentials-in-key-vault.md)

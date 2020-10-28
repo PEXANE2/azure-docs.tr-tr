@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe3fd25753344c5ccfd21310ae01fca9962e3971
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082877"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636077"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Denetimi veri akışları nelerdir?
 
@@ -21,7 +21,7 @@ ms.locfileid: "87082877"
 
 Kuruluşların her gün büyümeye devam eden karmaşık verilerin doğru analizi için veri hazırlama ve denetimi yapması gerekir. Kuruluşların verileri çeşitli iş süreçlerinde kullanabilmesi ve değerin süresini azaltabilmesi için veri hazırlama gereklidir.
 
-Azure Data Factory ' deki wrangling veri akışları, bulut ölçeğinde kod içermeyen veri hazırlığı yapmanıza olanak sağlar. Wrangling veri akışları [Power Query çevrimiçi](https://docs.microsoft.com/power-query/) olarak tümleştirilir ve Data Factory kullanıcıları Için Power Query M işlevlerini kullanılabilir hale getirir.
+Azure Data Factory ' deki wrangling veri akışları, bulut ölçeğinde kod içermeyen veri hazırlığı yapmanıza olanak sağlar. Wrangling veri akışları [Power Query çevrimiçi](/power-query/) olarak tümleştirilir ve Data Factory kullanıcıları Için Power Query M işlevlerini kullanılabilir hale getirir.
 
 Wrangling veri akışı, Power Query çevrimiçi karma düzenleyici tarafından oluşturulan M 'yi bulut ölçek yürütmesi için Spark koduna çevirir.
 

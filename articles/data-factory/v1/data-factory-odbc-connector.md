@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c68b1f4d76a1899ce473c57f3a6d5de1eab71c6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707387"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636876"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory kullanarak ODBC veri depolarından veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -47,9 +47,9 @@ Veri Yönetimi ağ geçidinden ayrı olarak, ağ geçidi makinesine veri deposun
 ## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak ODBC veri deposundan veri taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
 
-İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
+İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı** ' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager şablonu** , **.NET API** ve **REST API** . Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -94,7 +94,7 @@ Aşağıdaki tabloda ODBC bağlantılı hizmetine özgü JSON öğeleri için a�
 }
 ```
 ### <a name="using-basic-authentication-with-encrypted-credentials"></a>Şifrelenmiş kimlik bilgileriyle temel kimlik doğrulaması kullanma
-[Yeni-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) (1,0 sürümünü Azure PowerShell) cmdlet 'ı veya [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0,9 veya önceki Azure PowerShell sürümü) kullanarak kimlik bilgilerini şifreleyebilirsiniz.
+[Yeni-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) (1,0 sürümünü Azure PowerShell) cmdlet 'ı veya [New-AzureDataFactoryEncryptValue](/previous-versions/azure/dn834940(v=azure.100)) (0,9 veya önceki Azure PowerShell sürümü) kullanarak kimlik bilgilerini şifreleyebilirsiniz.
 
 ```json
 {
@@ -293,7 +293,7 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 
 **ODBC kaynağı (RelationalSource) ve BLOB Havuzu (BlobSink) ile işlem hattındaki etkinliği kopyalama**
 
-İşlem hattı, bu giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü, **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
+İşlem hattı, bu giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü, **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink** olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
 
 ```json
 {
@@ -346,7 +346,7 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 1. Yerel kaynak türlerinden .NET türüne Dönüştür
 2. .NET türünden yerel havuz türüne Dönüştür
 
-ODBC veri depolarından verileri taşırken, ODBC veri türleri [ODBC veri türü eşlemeleri](https://msdn.microsoft.com/library/cc668763.aspx) konusunda belirtildiği gibi .net türleriyle eşleştirilir.
+ODBC veri depolarından verileri taşırken, ODBC veri türleri [ODBC veri türü eşlemeleri](/dotnet/framework/data/adonet/odbc-data-type-mappings) konusunda belirtildiği gibi .net türleriyle eşleştirilir.
 
 ## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
 Kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
@@ -357,7 +357,7 @@ Kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara eşleme 
 ## <a name="troubleshoot-connectivity-issues"></a>Bağlantı sorunlarını giderme
 Bağlantı sorunlarını gidermek için **veri yönetimi ağ geçidi Configuration Manager** **Tanılama** sekmesini kullanın.
 
-1. **Veri yönetimi ağ geçidi Configuration Manager**başlatın. Aşağıdaki görüntüde gösterildiği gibi, **Microsoft veri yönetimi ağ geçidi** uygulamasına bir bağlantı bulmak için "C:\Program Files\Microsoft veri yönetimi Gateway\1.0\Shared\ConfigManager.exe" doğrudan (ya da) **ağ geçidini** ara olarak çalıştırabilirsiniz.
+1. **Veri yönetimi ağ geçidi Configuration Manager** başlatın. Aşağıdaki görüntüde gösterildiği gibi, **Microsoft veri yönetimi ağ geçidi** uygulamasına bir bağlantı bulmak için "C:\Program Files\Microsoft veri yönetimi Gateway\1.0\Shared\ConfigManager.exe" doğrudan (ya da) **ağ geçidini** ara olarak çalıştırabilirsiniz.
 
     ![Ağ geçidini ara](./media/data-factory-odbc-connector/search-gateway.png)
 2. **Tanılama** sekmesine geçin.

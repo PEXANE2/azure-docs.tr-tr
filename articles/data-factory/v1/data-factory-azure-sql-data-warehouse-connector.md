@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b7324115c880fb1ee4d5a1730a3b84a289cee4b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55582fb8c4fc80ab005a01ec015035963404e639
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89490148"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637420"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-formerly-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -37,7 +37,7 @@ Bu makalede, Azure SYNAPSE Analytics 'e/verilerine veri taşımak için Azure Da
 
 [!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
 
-Aşağıdaki veri depolarından verileri **Azure SYNAPSE Analytics 'e**kopyalayabilirsiniz:
+Aşağıdaki veri depolarından verileri **Azure SYNAPSE Analytics 'e** kopyalayabilirsiniz:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
@@ -50,13 +50,13 @@ Azure SYNAPSE Analytics Bağlayıcısı temel kimlik doğrulamasını destekler.
 ## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak Azure SYNAPSE Analytics 'e/verilerine veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
-Azure SYNAPSE Analytics 'e/verilerine veri kopyalayan bir işlem hattı oluşturmanın en kolay yolu, veri kopyalama Sihirbazı 'nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir anlatım için bkz. [öğretici: verileri SYNAPSE Analytics 'e yükleme Data Factory](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md) .
+Azure SYNAPSE Analytics 'e/verilerine veri kopyalayan bir işlem hattı oluşturmanın en kolay yolu, veri kopyalama Sihirbazı 'nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir anlatım için bkz. [öğretici: verileri SYNAPSE Analytics 'e yükleme Data Factory](../load-azure-sql-data-warehouse.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager şablonu** , **.NET API** ve **REST API** . Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Bir **Veri Fabrikası**oluşturun. Bir veri fabrikası bir veya daha fazla işlem hattı içerebilir. 
+1. Bir **Veri Fabrikası** oluşturun. Bir veri fabrikası bir veya daha fazla işlem hattı içerebilir. 
 2. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun. Örneğin, bir Azure Blob depolama alanından Azure SYNAPSE Analytics 'e veri kopyalıyorsanız, Azure depolama hesabınızı ve Azure SYNAPSE analizlerinizi veri fabrikanıza bağlamak için iki bağlı hizmet oluşturursunuz. Azure SYNAPSE Analytics 'e özgü bağlı hizmet özellikleri için bkz. [bağlı hizmet özellikleri](#linked-service-properties) bölümü. 
 3. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. Son adımda bahsedilen örnekte, blob kapsayıcısını ve girdi verilerini içeren klasörü belirtmek için bir veri kümesi oluşturursunuz. Ve, blob depolamadan kopyalanmış verileri tutan Azure SYNAPSE Analytics 'te tabloyu belirtmek için başka bir veri kümesi oluşturursunuz. Azure SYNAPSE Analytics 'e özgü veri kümesi özellikleri için bkz. [veri kümesi özellikleri](#dataset-properties) bölümü.
 4. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun. Daha önce bahsedilen örnekte, BlobSource değerini kaynak ve SqlDWSink olarak kopyalama etkinliği için havuz olarak kullanırsınız. Benzer şekilde, Azure SYNAPSE Analytics 'ten Azure Blob depolama alanına kopyalama yapıyorsanız kopyalama etkinliğinde SqlDWSource ve BlobSink kullanın. Azure SYNAPSE Analytics 'e özgü kopyalama etkinliği özellikleri için bkz. [kopyalama etkinliği özellikleri](#copy-activity-properties) bölümü. Bir veri deposunu kaynak veya havuz olarak kullanma hakkında ayrıntılı bilgi için, veri deponuzdaki önceki bölümde yer alan bağlantıya tıklayın.
@@ -74,7 +74,7 @@ Aşağıdaki tabloda, Azure SYNAPSE Analytics bağlı hizmetine özgü JSON öğ
 | Dizisi |ConnectionString özelliği için Azure SYNAPSE Analytics örneğine bağlanmak için gereken bilgileri belirtin. Yalnızca temel kimlik doğrulaması desteklenir. |Evet |
 
 > [!IMPORTANT]
-> Azure [hizmetlerinin sunucuya erişmesine izin](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)vermek IÇIN [Azure SQL veritabanı güvenlik duvarını](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) ve veritabanı sunucusunu yapılandırın. Ayrıca, Data Factory ağ geçidine sahip şirket içi veri kaynaklarından dahil olmak üzere Azure dışından Azure SYNAPSE Analytics 'e veri kopyalıyorsanız, verileri Azure SYNAPSE Analytics 'e gönderen makine için uygun IP adresi aralığını yapılandırın.
+> Azure [hizmetlerinin sunucuya erişmesine izin](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure)vermek IÇIN [Azure SQL veritabanı güvenlik duvarını](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure) ve veritabanı sunucusunu yapılandırın. Ayrıca, Data Factory ağ geçidine sahip şirket içi veri kaynaklarından dahil olmak üzere Azure dışından Azure SYNAPSE Analytics 'e veri kopyalıyorsanız, verileri Azure SYNAPSE Analytics 'e gönderen makine için uygun IP adresi aralığını yapılandırın.
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
@@ -94,7 +94,7 @@ Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, 
 Ancak, etkinliğin typeProperties bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
 
 ### <a name="sqldwsource"></a>SqlDWSource
-Kaynak **Sqldwsource**türünde olduğunda, **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
+Kaynak **Sqldwsource** türünde olduğunda, **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
@@ -146,11 +146,11 @@ GO
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Bir kopyalama etkinliğinin yürütülmesi için belirli bir dilim verilerinin temizlenmesi için bir sorgu belirtin. Ayrıntılar için bkz. [yinelenebilirlik bölümü](#repeatability-during-copy). |Sorgu ekstresi. |Hayır |
 | allowPolyBase |BULKıNSERT mekanizması yerine PolyBase 'in (uygun olduğunda) kullanılıp kullanılmayacağını belirtir. <br/><br/> **PolyBase 'in kullanılması, verileri Azure SYNAPSE Analytics 'e yüklemek için önerilen yoldur.** Kısıtlamalar ve Ayrıntılar için bkz. [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](#use-polybase-to-load-data-into-azure-synapse-analytics) . |Doğru <br/>False (varsayılan) |Hayır |
-| polyBaseSettings |**Allowpolybase** özelliği **true**olarak ayarlandığında belirtilenebilir bir özellik grubu. |&nbsp; |Hayır |
-| rejectValue |Sorgu başarısız olmadan önce reddedilecek satırların sayısını veya yüzdesini belirtir. <br/><br/>[Dış tablo oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) konusunun **bağımsız değişkenler** bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. |0 (varsayılan), 1, 2,... |Hayır |
+| polyBaseSettings |**Allowpolybase** özelliği **true** olarak ayarlandığında belirtilenebilir bir özellik grubu. |&nbsp; |Hayır |
+| rejectValue |Sorgu başarısız olmadan önce reddedilecek satırların sayısını veya yüzdesini belirtir. <br/><br/>[Dış tablo oluşturma (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) konusunun **bağımsız değişkenler** bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. |0 (varsayılan), 1, 2,... |Hayır |
 | rejectType |RejectValue seçeneğinin sabit değer değeri mi yoksa yüzde olarak mı belirtilmediğini belirtir. |Değer (varsayılan), yüzde |Hayır |
 | rejectSampleValue |PolyBase reddedilen satırların yüzdesini yeniden hesaplamadan önce alınacak satır sayısını belirler. |1, 2,... |Evet, **rejectType** **ise** |
-| useTypeDefault |PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin. |True, false (varsayılan) |Hayır |
+| useTypeDefault |PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin. |True, false (varsayılan) |Hayır |
 | writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
 | writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |timespan<br/><br/> Örnek: "00:30:00" (30 dakika). |Hayır |
 
@@ -164,9 +164,9 @@ GO
 ```
 
 ## <a name="use-polybase-to-load-data-into-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'e veri yüklemek için PolyBase kullanma
-**[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** 'in kullanılması, büyük miktarda veriyi yüksek aktarım hızı Ile Azure SYNAPSE Analytics 'e yüklemenin etkili bir yoludur. Varsayılan BULKıNSERT mekanizması yerine PolyBase kullanarak üretilen iş için büyük bir kazanç görebilirsiniz. Bkz. ayrıntılı karşılaştırma ile [kopyalama performansı başvuru numarası](data-factory-copy-activity-performance.md#performance-reference) . Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB yükleme](data-factory-load-sql-data-warehouse.md)bölümüne bakın.
+**[PolyBase](/sql/relational-databases/polybase/polybase-guide)** 'in kullanılması, büyük miktarda veriyi yüksek aktarım hızı Ile Azure SYNAPSE Analytics 'e yüklemenin etkili bir yoludur. Varsayılan BULKıNSERT mekanizması yerine PolyBase kullanarak üretilen iş için büyük bir kazanç görebilirsiniz. Bkz. ayrıntılı karşılaştırma ile [kopyalama performansı başvuru numarası](data-factory-copy-activity-performance.md#performance-reference) . Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB yükleme](data-factory-load-sql-data-warehouse.md)bölümüne bakın.
 
-* Kaynak verileriniz **Azure Blobu veya Azure Data Lake Store**ise ve biçim PolyBase ile uyumluysa, PolyBase kullanarak doğrudan Azure SYNAPSE Analytics 'e kopyalayabilirsiniz. Bkz. **[PolyBase 'i kullanarak doğrudan kopyalama](#direct-copy-using-polybase)** ayrıntıları.
+* Kaynak verileriniz **Azure Blobu veya Azure Data Lake Store** ise ve biçim PolyBase ile uyumluysa, PolyBase kullanarak doğrudan Azure SYNAPSE Analytics 'e kopyalayabilirsiniz. Bkz. **[PolyBase 'i kullanarak doğrudan kopyalama](#direct-copy-using-polybase)** ayrıntıları.
 * Kaynak veri deponuzu ve formatı İlk olarak PolyBase tarafından desteklenmiyorsa, bunun yerine **[PolyBase özelliğini kullanarak hazırlanan kopyayı](#staged-copy-using-polybase)** kullanabilirsiniz. Ayrıca, verileri otomatik olarak PolyBase uyumlu biçime dönüştürerek ve verileri Azure Blob depolamada depolayarak daha iyi bir aktarım hızı sağlar. Daha sonra verileri Azure SYNAPSE Analytics 'e yükler.
 
 `allowPolyBase`Verileri Azure SYNAPSE Analytics 'e kopyalamak Için PolyBase 'i kullanmak Azure Data Factory için aşağıdaki örnekte gösterildiği gibi özelliği **true** olarak ayarlayın. AllowPolyBase 'i true olarak belirlediğinizde, özellik grubunu kullanarak PolyBase 'e özgü özellikleri belirtebilirsiniz `polyBaseSettings` . polyBaseSettings ile kullanabileceğiniz özellikler hakkında ayrıntılı bilgi edinmek için [Sqldwsink](#sqldwsink) bölümüne bakın.
@@ -189,18 +189,18 @@ GO
 Azure SYNAPSE Analytics PolyBase, kaynak olarak ve belirli dosya biçimi gereksinimleriyle Azure Blob ve Azure Data Lake Store (hizmet sorumlusu kullanarak) doğrudan destek. Kaynak verileriniz bu bölümde açıklanan ölçütlere uyuyorsa, PolyBase kullanarak kaynak veri deposundan doğrudan Azure SYNAPSE Analytics 'e kopyalayabilirsiniz. Aksi halde, [PolyBase kullanarak hazırlanmış kopyayı](#staged-copy-using-polybase)kullanabilirsiniz.
 
 > [!TIP]
-> Data Lake Store verileri Azure SYNAPSE Analytics 'e verimli bir şekilde kopyalamak için Azure Data Factory 'tan daha fazla bilgi edinmek için [Azure SYNAPSE Analytics ile Data Lake Store kullanırken verilerin öngörülerini açığa çıkarmak daha da kolay ve kullanışlı hale gelir](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
+> Data Lake Store verileri Azure SYNAPSE Analytics 'e verimli bir şekilde kopyalamak için Azure Data Factory 'tan daha fazla bilgi edinmek için [Azure SYNAPSE Analytics ile Data Lake Store kullanırken verilerin öngörülerini açığa çıkarmak daha da kolay ve kullanışlı hale gelir](/archive/blogs/azuredatalake/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse).
 
 Gereksinimler karşılanmazsa, Azure Data Factory ayarları denetler ve veri taşıma için otomatik olarak BULKıNSERT mekanizmasına geri döner.
 
-1. **Kaynak bağlı hizmet** , **hizmet sorumlusu kimlik doğrulamasıyla**: **azurestorage** veya AzureDataLakeStore türünde.
-2. **Giriş veri kümesi** : **AzureBlob** veya **AzureDataLakeStore**ve Properties altındaki Biçim türü, `type` aşağıdaki yapılandırmalarda **orcformat**, **parquetformat**veya **TextFormat** ' dir:
+1. **Kaynak bağlı hizmet** , **hizmet sorumlusu kimlik doğrulamasıyla** : **azurestorage** veya AzureDataLakeStore türünde.
+2. **Giriş veri kümesi** : **AzureBlob** veya **AzureDataLakeStore** ve Properties altındaki Biçim türü, `type` aşağıdaki yapılandırmalarda **orcformat** , **parquetformat** veya **TextFormat** ' dir:
 
-   1. `rowDelimiter`**\n**olmalıdır.
-   2. `nullValue`**boş dizeye** ayarlanır ("") veya `treatEmptyAsNull` **true**olarak ayarlanır.
-   3. `encodingName`, **varsayılan** değer olan **UTF-8**olarak ayarlanır.
+   1. `rowDelimiter`**\n** olmalıdır.
+   2. `nullValue`**boş dizeye** ayarlanır ("") veya `treatEmptyAsNull` **true** olarak ayarlanır.
+   3. `encodingName`, **varsayılan** değer olan **UTF-8** olarak ayarlanır.
    4. `escapeChar`, `quoteChar` , `firstRowAsHeader` , ve `skipLineCount` belirtilmedi.
-   5. `compression`**sıkıştırma**, **gzip**veya **söndür**olamaz.
+   5. `compression`**sıkıştırma** , **gzip** veya **söndür** olamaz.
 
       ```JSON
       "typeProperties": {
@@ -220,7 +220,7 @@ Gereksinimler karşılanmazsa, Azure Data Factory ayarları denetler ve veri ta�
       ```
 
 3. İşlem hattındaki `skipHeaderLineCount` kopyalama etkinliği Için **Blobsource** veya **AzureDataLakeStore** altında bir ayar yoktur.
-4. İşlem hattındaki `sliceIdentifierColumnName` kopyalama etkinliği Için **Sqldwsink** altında bir ayar yoktur. (PolyBase, tüm verilerin güncelleştirildiğini veya tek bir çalıştırmada hiçbir şey güncelleştirilmediğini garanti eder. **Yinelenebilirlik**ulaşmak için kullanabilirsiniz `sqlWriterCleanupScript` .
+4. İşlem hattındaki `sliceIdentifierColumnName` kopyalama etkinliği Için **Sqldwsink** altında bir ayar yoktur. (PolyBase, tüm verilerin güncelleştirildiğini veya tek bir çalıştırmada hiçbir şey güncelleştirilmediğini garanti eder. **Yinelenebilirlik** ulaşmak için kullanabilirsiniz `sqlWriterCleanupScript` .
 5. `columnMapping`Ilişkili kopyalama etkinliğinde kullanılmıyor.
 
 ### <a name="staged-copy-using-polybase"></a>PolyBase kullanarak hazırlanmış kopya
@@ -260,7 +260,7 @@ Bu özelliği kullanmak için, ara BLOB depolama alanına sahip Azure depolama h
 Aşağıdaki bölümlerde, [Azure SYNAPSE Analytics Için en iyi yöntemler](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)bölümünde bahsedilen diğer en iyi yöntemler sağlanmaktadır.
 
 ### <a name="required-database-permission"></a>Gerekli veritabanı izni
-PolyBase 'i kullanmak için, Azure SYNAPSE Analytics 'e veri yüklemek üzere kullanılan kullanıcının hedef veritabanında ["Control" iznine](https://msdn.microsoft.com/library/ms191291.aspx) sahip olması gerekir. Bunu yapmanın bir yolu, bu kullanıcıyı "db_owner" rolünün bir üyesi olarak eklemektir. [Bu bölümü](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)izleyerek bunu nasıl yapacağınızı öğrenin.
+PolyBase 'i kullanmak için, Azure SYNAPSE Analytics 'e veri yüklemek üzere kullanılan kullanıcının hedef veritabanında ["Control" iznine](/sql/relational-databases/security/permissions-database-engine) sahip olması gerekir. Bunu yapmanın bir yolu, bu kullanıcıyı "db_owner" rolünün bir üyesi olarak eklemektir. [Bu bölümü](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)izleyerek bunu nasıl yapacağınızı öğrenin.
 
 ### <a name="row-size-and-data-type-limitation"></a>Satır boyutu ve veri türü sınırlaması
 PolyBase yükleri **1 MB** 'tan küçük satırları yüklemek ve VARCHR (max), nvarchar (max) veya VARBINARY (max) öğesine yüklenemez. [Buraya](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)bakın.
@@ -268,7 +268,7 @@ PolyBase yükleri **1 MB** 'tan küçük satırları yüklemek ve VARCHR (max), 
 Boyutu 1 MB 'tan büyük olan kaynak verileriniz varsa, kaynak tabloları her birinin en büyük satır boyutunun sınırı aşmadığı birkaç küçük yere bölmek isteyebilirsiniz. Daha sonra daha küçük tablolar PolyBase kullanılarak yüklenebilir ve Azure SYNAPSE Analytics 'te birlikte birleştirilir.
 
 ### <a name="azure-synapse-analytics-resource-class"></a>Azure SYNAPSE Analytics kaynak sınıfı
-Mümkün olan en iyi verimi elde etmek için, PolyBase aracılığıyla Azure SYNAPSE Analytics 'e veri yüklemek üzere kullanılan kullanıcıya daha büyük kaynak sınıfı atamayı göz önünde bulundurun. Bunun nasıl yapılacağını, [bir Kullanıcı kaynak sınıfı örneğini değiştirme](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)hakkında bilgi edinin.
+Mümkün olan en iyi verimi elde etmek için, PolyBase aracılığıyla Azure SYNAPSE Analytics 'e veri yüklemek üzere kullanılan kullanıcıya daha büyük kaynak sınıfı atamayı göz önünde bulundurun. Bunun nasıl yapılacağını, [bir Kullanıcı kaynak sınıfı örneğini değiştirme](../../synapse-analytics/sql-data-warehouse/resource-classes-for-workload-management.md)hakkında bilgi edinin.
 
 ### <a name="tablename-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te tableName
 Aşağıdaki tabloda, şema ve tablo adının çeşitli birleşimleri için veri kümesi JSON içinde **TableName** özelliğinin nasıl belirtilme hakkında örnekler verilmektedir.
@@ -308,7 +308,7 @@ Data Factory, kaynak veri deposunda aynı tablo adına sahip hedef depoda tablo 
 | Sürümleri | Sürümleri |
 | Ondalık | Ondalık |
 | Sayısal | Ondalık |
-| Kayan | Kayan |
+| Float | Float |
 | Para | Para |
 | Gerçek | Gerçek |
 | Küçük para | Küçük para |
@@ -317,7 +317,7 @@ Data Factory, kaynak veri deposunda aynı tablo adına sahip hedef depoda tablo 
 | Tarih | Tarih |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
-| Süre | Süre |
+| Saat | Saat |
 | DateTimeOffset | DateTimeOffset |
 | Girişin | Girişin |
 | Metin | Varchar (8000 'e kadar) |
@@ -340,7 +340,7 @@ Data Factory, kaynak veri deposunda aynı tablo adına sahip hedef depoda tablo 
 
 Verileri Azure SYNAPSE Analytics 'ten & taşırken, SQL türünden .NET türüne ve tam tersi de aşağıdaki eşlemeler kullanılır.
 
-Eşleme, [ADO.NET için SQL Server veri türü eşlemesi](https://msdn.microsoft.com/library/cc716729.aspx)ile aynıdır.
+Eşleme, [ADO.NET için SQL Server veri türü eşlemesi](/dotnet/framework/data/adonet/sql-server-data-type-mappings)ile aynıdır.
 
 | SQL Server veritabanı altyapısı türü | .NET Framework türü |
 | --- | --- |
@@ -354,7 +354,7 @@ Eşleme, [ADO.NET için SQL Server veri türü eşlemesi](https://msdn.microsoft
 | Türünde |DateTimeOffset |
 | Ondalık |Ondalık |
 | FıLESTREAM özniteliği (varbinary (max)) |Byte [] |
-| Kayan |Çift |
+| Float |Çift |
 | image |Byte [] |
 | int |Int32 |
 | etmenize |Ondalık |
@@ -369,7 +369,7 @@ Eşleme, [ADO.NET için SQL Server veri türü eşlemesi](https://msdn.microsoft
 | küçük para |Ondalık |
 | sql_variant |Nesne |
 | metin |Dize, Char [] |
-| saat |TimeSpan |
+| time |TimeSpan |
 | timestamp |Byte [] |
 | tinyint |Bayt |
 | uniqueidentifier |Guid |
@@ -511,7 +511,7 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 
 **SqlDWSource ve BlobSink ile işlem hattındaki etkinliği kopyalama:**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü **sqldwsource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sqlreaderquery** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü **sqldwsource** olarak ayarlanır ve **Havuz** türü **blobsink** olarak ayarlanır. **Sqlreaderquery** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
 
 ```JSON
 {
@@ -695,7 +695,7 @@ Veriler her saat yeni bir bloba alınır (sıklık: saat, Aralık: 1). Blob içi
 ```
 **BlobSource ve SqlDWSink ile işlem hattındaki etkinliği kopyalama:**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü **blobsource** olarak ayarlanır ve **Havuz** türü **sqldwsink**olarak ayarlanır.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü **blobsource** olarak ayarlanır ve **Havuz** türü **sqldwsink** olarak ayarlanır.
 
 ```JSON
 {
@@ -744,7 +744,7 @@ Veriler her saat yeni bir bloba alınır (sıklık: saat, Aralık: 1). Blob içi
   }
 }
 ```
-İzlenecek yol için, Azure SYNAPSE Analytics belgelerindeki [Azure Data Factory](data-factory-load-sql-data-warehouse.md) ve [Azure Data Factory ile verileri yükleme](../../sql-data-warehouse/sql-data-warehouse-get-started-load-with-azure-data-factory.md) makalesine bakın.
+İzlenecek yol için, Azure SYNAPSE Analytics belgelerindeki [Azure Data Factory](data-factory-load-sql-data-warehouse.md) ve [Azure Data Factory ile verileri yükleme](../load-azure-sql-data-warehouse.md) makalesine bakın.
 
 ## <a name="performance-and-tuning"></a>Performans ve ayarlama
 Veri taşıma (kopyalama etkinliği) performansını Azure Data Factory ve en iyileştirmek için çeşitli yollarla etkileyen temel faktörlerle ilgili bilgi edinmek için bkz. [etkinlik performansını kopyalama & ayarlama Kılavuzu](data-factory-copy-activity-performance.md) .

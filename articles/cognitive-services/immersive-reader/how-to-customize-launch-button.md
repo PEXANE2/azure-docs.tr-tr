@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.author: metan
-ms.openlocfilehash: 6461cc60a237cf834226b07db5e1ea6fbbea7a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: 6d6757af6619edd41709a4b8f06ef615cd35bf30
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75946215"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636587"
 ---
 # <a name="how-to-customize-the-immersive-reader-button"></a>Tam ekran okuyucu düğmesini özelleştirme
 
@@ -31,7 +31,7 @@ Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu başlatan düğme için varsayılan
 
 ## <a name="customize-the-button-style"></a>Düğme stilini özelleştirme
 
-`data-button-style`Düğmenin stilini ayarlamak için özniteliğini kullanın. İzin verilen değerler, `icon` , `text` ve `iconAndText` . Varsayılan değer: `icon`.
+`data-button-style`Düğmenin stilini ayarlamak için özniteliğini kullanın. İzin verilen değerler, `icon` , `text` ve `iconAndText` . `icon` varsayılan değerdir.
 
 ### <a name="icon-button"></a>Simge düğmesi
 

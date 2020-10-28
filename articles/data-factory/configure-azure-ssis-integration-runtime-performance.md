@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0fcd61230d68d7b26017237e2b7e0465fcb1f07
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276682"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635329"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Yüksek performans için Azure-SSIS Integration Runtime yapılandırma
 
@@ -118,11 +118,11 @@ Y ekseni, yürütmeyi bir saat içinde tamamlanmış paketlerin sayısıdır. L�
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-**AzureSSISNodeNumber** , tümleştirme çalışma zamanının ölçeklenebilirliğini ayarlar. Tümleştirme çalışma zamanının üretilen işi **AzureSSISNodeNumber**ile orantılıdır. Önce **AzureSSISNodeNumber** değerini küçük bir değere ayarlayın, tümleştirme çalışma zamanının verimini izleyin ve sonra senaryonuz için değeri ayarlayın. Çalışan düğümü sayısını yeniden yapılandırmak için bkz. [Azure-SSIS tümleştirme çalışma zamanını yönetme](manage-azure-ssis-integration-runtime.md).
+**AzureSSISNodeNumber** , tümleştirme çalışma zamanının ölçeklenebilirliğini ayarlar. Tümleştirme çalışma zamanının üretilen işi **AzureSSISNodeNumber** ile orantılıdır. Önce **AzureSSISNodeNumber** değerini küçük bir değere ayarlayın, tümleştirme çalışma zamanının verimini izleyin ve sonra senaryonuz için değeri ayarlayın. Çalışan düğümü sayısını yeniden yapılandırmak için bkz. [Azure-SSIS tümleştirme çalışma zamanını yönetme](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Paketleri çalıştırmak için zaten güçlü bir çalışan düğümü kullanıyorsanız, **Azuressismaxparallelexecutionspernode** öğesinin artırılması, tümleştirme çalışma zamanının genel verimini artırabilir. Maksimum değeri artırmak istiyorsanız, **Azuressismaxparallelexecutionspernode**öğesini güncelleştirmek için Azure PowerShell kullanmanız gerekir. Paketinizin maliyetine ve çalışan düğümlerine yönelik aşağıdaki yapılandırmalara göre uygun değeri tahmin edebilirsiniz. Daha fazla bilgi için bkz. [genel amaçlı sanal makine boyutları](../virtual-machines/windows/sizes-general.md).
+Paketleri çalıştırmak için zaten güçlü bir çalışan düğümü kullanıyorsanız, **Azuressismaxparallelexecutionspernode** öğesinin artırılması, tümleştirme çalışma zamanının genel verimini artırabilir. Maksimum değeri artırmak istiyorsanız, **Azuressismaxparallelexecutionspernode** öğesini güncelleştirmek için Azure PowerShell kullanmanız gerekir. Paketinizin maliyetine ve çalışan düğümlerine yönelik aşağıdaki yapılandırmalara göre uygun değeri tahmin edebilirsiniz. Daha fazla bilgi için bkz. [genel amaçlı sanal makine boyutları](../virtual-machines/sizes-general.md).
 
 | Boyut             | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | Maks NIC / Beklenen ağ performansı (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
@@ -161,7 +161,7 @@ Paketleri çalıştırmak için zaten güçlü bir çalışan düğümü kullan�
 
 -   Günlüğe kaydetme düzeyi Verbose olarak ayarlandıysa S3 gibi daha güçlü bir veritabanı seçin. S3 fiyatlandırma katmanı, resmi olmayan şirket içi testimize göre SSIS paketi yürütmeyi 2 düğüm, 128 paralel sayımlar ve ayrıntılı günlük düzeyi ile destekleyebilir.
 
-Ayrıca, veritabanı [işlem birimi](../sql-database/sql-database-what-is-a-dtu.md) (DTU) kullanım bilgilerine göre veritabanı fiyatlandırma katmanını Azure Portal de ayarlayabilirsiniz.
+Ayrıca, veritabanı [işlem birimi](../azure-sql/database/service-tiers-dtu.md) (DTU) kullanım bilgilerine göre veritabanı fiyatlandırma katmanını Azure Portal de ayarlayabilirsiniz.
 
 ## <a name="design-for-high-performance"></a>Yüksek performans tasarımı
 Azure 'da çalışmak üzere bir SSIS paketi tasarlamak, şirket içi yürütmeye yönelik bir paket tasarlamaktan farklıdır. Aynı pakette birden fazla bağımsız görevi birleştirmek yerine, Azure-SSIS IR daha verimli yürütme için bunları birkaç pakete ayırın. Her paket için bir paket yürütmesi oluşturun, böylece birbirlerinin tamamlanmasını beklemek zorunda kalmaz. Bu yaklaşım, Azure-SSIS tümleştirme çalışma zamanının ölçeklenebilirliğinden faydalanır ve genel üretilen işi geliştirir.

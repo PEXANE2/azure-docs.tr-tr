@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ce41a5928d5b8a7c7df439ce5321cd15f0cc1d5
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417887"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634989"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory Web kancası etkinliği
 
@@ -24,7 +24,7 @@ ms.locfileid: "81417887"
 
 Web kancası etkinliği, özel kodunuzla işlem hattı yürütülmesini denetleyebilir. Web kancası etkinliğiyle, müşterilerin kodu bir uç nokta çağırabilir ve geri çağırma URL 'SI geçirebilir. İşlem hattı çalıştırması, bir sonraki etkinliğe geçmeden önce geri çağırma çağrısını bekler.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -60,9 +60,9 @@ Web kancası etkinliği, özel kodunuzla işlem hattı yürütülmesini denetley
 **yöntemidir** | Hedef uç nokta için REST API yöntemi. | Dize. Desteklenen tür "POST" dır. | Evet |
 **'deki** | Hedef uç nokta ve yol. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Evet |
 **bilgisinde** | İsteğe gönderilen üst bilgiler. İşte bir istek üzerinde dili ve türü ayarlayan bir örnek: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Evet. `Content-Type`Gibi bir üst bilgi `"headers":{ "Content-Type":"application/json"}` gereklidir. |
-**bölümü** | Uç noktaya gönderilen yükü temsil eder. | JSON **değeri JSON** olan geçerli JSON veya bir ifade. İstek yükünün şeması için bkz. [istek yük şeması](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) . | Evet |
-**yetkilendirmesi** | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler şunlardır "temel" ve "ClientCertificate". Daha fazla bilgi için bkz. [Kimlik doğrulaması](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication). Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Hayır |
-**aş** | Etkinliğin **Callbackuri** tarafından çağrılması için belirtilen geri çağırma için bekleyeceği süre. Varsayılan değer 10 dakikadır ("00:10:00"). Değerler, *d*TimeSpan biçimine sahiptir. *SS*:*dd*:*SS*. | Dize | Hayır |
+**bölümü** | Uç noktaya gönderilen yükü temsil eder. | JSON **değeri JSON** olan geçerli JSON veya bir ifade. İstek yükünün şeması için bkz. [istek yük şeması](./control-flow-web-activity.md#request-payload-schema) . | Evet |
+**yetkilendirmesi** | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler şunlardır "temel" ve "ClientCertificate". Daha fazla bilgi için bkz. [Kimlik doğrulaması](./control-flow-web-activity.md#authentication). Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Hayır |
+**aş** | Etkinliğin **Callbackuri** tarafından çağrılması için belirtilen geri çağırma için bekleyeceği süre. Varsayılan değer 10 dakikadır ("00:10:00"). Değerler, *d* TimeSpan biçimine sahiptir. *SS* : *dd* : *SS* . | Dize | Hayır |
 **Geri aramada durum bildir** | Bir kullanıcının Web kancası etkinliğinin başarısız durumunu rapormasına olanak sağlar. | Boole | Hayır |
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
@@ -99,7 +99,7 @@ PFX dosyası ve parola için Base64 olarak kodlanmış içeriği belirtin.
 
 ### <a name="managed-identity"></a>Yönetilen kimlik
 
-Erişim belirtecinin istendiği Kaynak URI 'sini belirtmek için Data Factory 'nin yönetilen kimliğini kullanın. Azure Kaynak yönetimi API 'sini çağırmak için kullanın `https://management.azure.com/` . Yönetilen kimliklerin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure kaynaklarına yönelik yönetilen kimlikler genel bakış](/azure/active-directory/managed-identities-azure-resources/overview).
+Erişim belirtecinin istendiği Kaynak URI 'sini belirtmek için Data Factory 'nin yönetilen kimliğini kullanın. Azure Kaynak yönetimi API 'sini çağırmak için kullanın `https://management.azure.com/` . Yönetilen kimliklerin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure kaynaklarına yönelik yönetilen kimlikler genel bakış](../active-directory/managed-identities-azure-resources/overview.md).
 
 ```json
 "authentication": {
@@ -119,7 +119,7 @@ Data Factory, URL uç noktasına gönderilen gövdede **Callbackuri** ek özelli
 
 Her REST API çağrısı için, uç nokta bir dakika içinde yanıt vermezse istemci zaman aşımına uğrar. Bu davranış, standart HTTP en iyi uygulamadır. Bu sorunu gidermek için 202 bir model uygulayın. Geçerli durumda, uç nokta 202 (kabul edildi) döndürür ve istemci yoklar.
 
-İstekteki bir dakikalık zaman aşımı, etkinlik zaman aşımı ile hiçbir şey yapmaz. İkincisi, **Callbackuri**tarafından belirtilen geri çağırma işlemini beklemek için kullanılır.
+İstekteki bir dakikalık zaman aşımı, etkinlik zaman aşımı ile hiçbir şey yapmaz. İkincisi, **Callbackuri** tarafından belirtilen geri çağırma işlemini beklemek için kullanılır.
 
 Geri çağırma URI 'sine geri geçirilen gövde geçerli bir JSON olmalıdır. `Content-Type`Üstbilgiyi olarak ayarlayın `application/json` .
 

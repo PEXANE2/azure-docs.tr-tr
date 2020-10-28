@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4473df318f65c0e0097aed298d0be57e3bca382b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73666975"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636944"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure portal ve PowerShell 'i kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Bu makalede Azure portal ve PowerShell kullanarak işlem hatlarınızı izleme, 
 > İzleme & yönetimi uygulaması, veri işlem hatlarınızı izlemek ve yönetmek için ve sorunları gidermeye yönelik daha iyi bir destek sağlar. Uygulamayı kullanma hakkında ayrıntılı bilgi için bkz. [izleme ve yönetim uygulamasını kullanarak Data Factory işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-app.md). 
 
 > [!IMPORTANT]
-> Azure Data Factory sürüm 1 artık yeni [Azure izleyici uyarı altyapısını](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)kullanıyor. Eski uyarı altyapısı kullanımdan kaldırılmıştır. Sonuç olarak, sürüm 1 veri fabrikaları için yapılandırılmış mevcut uyarılarınız artık çalışmaz. V1 veri fabrikaları için mevcut uyarılarınız otomatik olarak geçirilmez. Bu uyarıları yeni uyarı altyapısında yeniden oluşturmanız gerekir. Sürüm 1 veri fabrikalarınız için Azure portal oturum açın ve ölçümler üzerinde yeni uyarılar (başarısız çalıştırmalar veya başarılı çalıştırmalar gibi) oluşturmak için **izleyici** ' yi seçin.
+> Azure Data Factory sürüm 1 artık yeni [Azure izleyici uyarı altyapısını](../../azure-monitor/platform/alerts-metric.md)kullanıyor. Eski uyarı altyapısı kullanımdan kaldırılmıştır. Sonuç olarak, sürüm 1 veri fabrikaları için yapılandırılmış mevcut uyarılarınız artık çalışmaz. V1 veri fabrikaları için mevcut uyarılarınız otomatik olarak geçirilmez. Bu uyarıları yeni uyarı altyapısında yeniden oluşturmanız gerekir. Sürüm 1 veri fabrikalarınız için Azure portal oturum açın ve ölçümler üzerinde yeni uyarılar (başarısız çalıştırmalar veya başarılı çalıştırmalar gibi) oluşturmak için **izleyici** ' yi seçin.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -47,7 +47,7 @@ Bu bölümde ayrıca bir veri kümesi diliminin bir durumdan başka bir duruma n
 
 ### <a name="navigate-to-your-data-factory"></a>Veri fabrikanıza gitme
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. Soldaki menüdeki **veri fabrikaları** ' na tıklayın. Bunu görmüyorsanız, **diğer hizmetler >**' a tıklayın ve ardından **zeka + analiz** kategorisi altında **veri fabrikaları** ' na tıklayın.
+2. Soldaki menüdeki **veri fabrikaları** ' na tıklayın. Bunu görmüyorsanız, **diğer hizmetler >** ' a tıklayın ve ardından **zeka + analiz** kategorisi altında **veri fabrikaları** ' na tıklayın.
 
    ![Tüm > veri fabrikalarını inceleyin](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
 3. **Veri fabrikaları** dikey penceresinde ilgilendiğiniz veri fabrikasını seçin.
@@ -163,9 +163,9 @@ Bir veri fabrikası dağıttıktan ve işlem hatları geçerli bir etkin döneme
 
 Data Factory 'deki veri kümesi durumu geçiş akışı şunlardır: bekleme-> sürüyor/devam ediyor (doğrulanıyor)-> Ready/Failed.
 
-Dilim **bekleme** durumunda başlar ve yürütmeden önce önkoşulların karşılanmasını bekler. Sonra, etkinlik yürütülmeye başlar ve dilim **devam ediyor** durumuna geçer. Etkinlik yürütmesi başarılı veya başarısız olabilir. Dilim, yürütmenin sonucuna bağlı olarak, **Ready** veya **Failed**olarak işaretlenir.
+Dilim **bekleme** durumunda başlar ve yürütmeden önce önkoşulların karşılanmasını bekler. Sonra, etkinlik yürütülmeye başlar ve dilim **devam ediyor** durumuna geçer. Etkinlik yürütmesi başarılı veya başarısız olabilir. Dilim, yürütmenin sonucuna bağlı olarak, **Ready** veya **Failed** olarak işaretlenir.
 
-Dilimi, **Ready** veya **başarısız** durumundan **bekleme** durumuna geri dönmek için sıfırlayabilirsiniz. Ayrıca, etkinliğin yürütülmesini ve dilimi işlemesini önleyen, **atlanacak**dilim durumunu da işaretleyebilirsiniz.
+Dilimi, **Ready** veya **başarısız** durumundan **bekleme** durumuna geri dönmek için sıfırlayabilirsiniz. Ayrıca, etkinliğin yürütülmesini ve dilimi işlemesini önleyen, **atlanacak** dilim durumunu da işaretleyebilirsiniz.
 
 ## <a name="pause-and-resume-pipelines"></a>İşlem hatlarını duraklatma ve devam ettirme
 Azure PowerShell kullanarak işlem hatlarınızı yönetebilirsiniz. Örneğin, Azure PowerShell cmdlet 'lerini çalıştırarak işlem hatlarını duraklatabilir ve devam ettirebilirsiniz. 
@@ -205,7 +205,7 @@ Azure Data Factory, Azure portal ve Azure PowerShell kullanarak işlem hatların
 Etkinlik bir işlem hattında başarısız olursa, işlem hattı tarafından üretilen veri kümesi hata nedeniyle hata durumunda olur. Aşağıdaki yöntemleri kullanarak Azure Data Factory hata ayıklama ve sorun giderme işlemleri yapabilirsiniz.
 
 #### <a name="use-the-azure-portal-to-debug-an-error"></a>Hata ayıklamak için Azure portal kullanma
-1. **Tablo** dikey penceresinde, **durumu** **başarısız**olarak ayarlanan sorun dilimine tıklayın.
+1. **Tablo** dikey penceresinde, **durumu** **başarısız** olarak ayarlanan sorun dilimine tıklayın.
 
    ![Sorun dilimiyle tablo dikey penceresi](./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png)
 2. **Veri dilimi** dikey penceresinde başarısız olan etkinlik çalıştırmasına tıklayın.
@@ -216,8 +216,8 @@ Etkinlik bir işlem hattında başarısız olursa, işlem hattı tarafından ür
    ![Etkinlik çalıştırma ayrıntıları dikey penceresi hata ile](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
 #### <a name="use-powershell-to-debug-an-error"></a>Hata ayıklamak için PowerShell 'i kullanma
-1. **PowerShell**’i başlatın.
-2. Dilimleri ve bunların durumlarını görmek için **Get-AzDataFactorySlice** komutunu çalıştırın. Durumu **başarısız**olan bir dilim görmeniz gerekir.        
+1. **PowerShell** ’i başlatın.
+2. Dilimleri ve bunların durumlarını görmek için **Get-AzDataFactorySlice** komutunu çalıştırın. Durumu **başarısız** olan bir dilim görmeniz gerekir.        
 
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
@@ -287,8 +287,8 @@ Bir ilke hatası nedeniyle dilimin doğrulanmasına başarısız olması durumun
 
 ![Hataları düzeltin ve doğrulayın](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
-### <a name="use-azure-powershell"></a>Azure PowerShell kullanma
-**Set-AzDataFactorySliceStatus** cmdlet 'ini kullanarak başarısızlıklarını yeniden çalıştırabilirsiniz. Sözdizimi ve cmdlet ile ilgili diğer ayrıntılar için [set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) konusuna bakın.
+### <a name="use-azure-powershell"></a>Azure PowerShell'i kullanma
+**Set-AzDataFactorySliceStatus** cmdlet 'ini kullanarak başarısızlıklarını yeniden çalıştırabilirsiniz. Sözdizimi ve cmdlet ile ilgili diğer ayrıntılar için [set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-azdatafactoryslicestatus) konusuna bakın.
 
 **Örnek:**
 
@@ -309,7 +309,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![Yeni bir uyarı oluştur](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
-3.  **Uyarı koşulunu**tanımlayın. ( **Kaynak türüne göre filtrele** alanında **veri fabrikaları** ' nı seçtiğinizden emin olun.) Ayrıca, **Boyutlar**için değerler de belirtebilirsiniz.
+3.  **Uyarı koşulunu** tanımlayın. ( **Kaynak türüne göre filtrele** alanında **veri fabrikaları** ' nı seçtiğinizden emin olun.) Ayrıca, **Boyutlar** için değerler de belirtebilirsiniz.
 
     ![Uyarı koşulunu tanımlayın-hedef seçin](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
 
@@ -317,11 +317,11 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![Uyarı koşulunu tanımlayın-uyarı mantığı ekleyin](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
 
-4.  **Uyarı ayrıntılarını**tanımlayın.
+4.  **Uyarı ayrıntılarını** tanımlayın.
 
     ![Uyarı ayrıntılarını tanımlayın](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
 
-5.  **Eylem grubunu**tanımlayın.
+5.  **Eylem grubunu** tanımlayın.
 
     ![Eylem grubunu tanımlayın-Yeni bir eylem grubu oluşturun](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
 

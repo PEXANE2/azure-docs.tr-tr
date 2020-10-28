@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: f48e9f039917fbd7f4437b8a0d3b81e65a0f9b62
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f62e746a189a14838227a40be3bca9d05553a642
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520294"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635805"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Öğretici: Wkispaces ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Wsvahili Paces 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Wgıpaces ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Wempaces 'nin tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeri
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda **wempaces**yazın, sonuç panelinden **wempaces** ' yi seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusunda **wempaces** yazın, sonuç panelinden **wempaces** ' yi seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![Sonuçlar listesinde wöes 'ler](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Wempaces Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre Wempaces Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ile we Paces arasında bir ilişki kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı wie Paces ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açmayı wie Paces ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **Wempaces** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **Wempaces** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -130,7 +130,7 @@ Azure AD çoklu oturum açmayı wie Paces ile yapılandırmak için aşağıdaki
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -142,27 +142,27 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Weripaces 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **we Paces**' yi seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **we Paces** ' yi seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Wkispaces**' yi seçin.
+2. Uygulamalar listesinde, **Wkispaces** ' yi seçin.
 
     ![Uygulamalar listesindeki Wöpaces bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
@@ -184,21 +184,21 @@ Azure AD kullanıcılarının we Paces 'de oturum açmasını sağlamak için bu
 
 1. **Wempaces** şirket sitenizde yönetici olarak oturum açın.
 
-2. **Üyelere**git.
+2. **Üyelere** git.
    
     ![Üyeler](./media/wikispaces-tutorial/ic787193.png "Üyeler")
 
-3. **Kişileri davet et**' e tıklayın.
+3. **Kişileri davet et** ' e tıklayın.
    
-    ![Kişileri davet et](./media/wikispaces-tutorial/ic787194.png "Kişileri davet et")
+    ![Ekran görüntüsü kişileri davet et ' i seçebileceğiniz Üyeler sayfasını gösterir.](./media/wikispaces-tutorial/ic787194.png "Kişileri davet et")
 
 4. **Kişileri davet et** bölümünde aşağıdaki adımları uygulayın:
    
-    ![Kişileri davet et](./media/wikispaces-tutorial/ic787208.png "Kişileri davet et")
+    ![Ekran görüntüsü, Kullanıcı verilerini girebileceğiniz kişileri davet et bölümünü gösterir.](./media/wikispaces-tutorial/ic787208.png "Kişileri davet et")
    
     a. İlgili metin kutularına sağlamak istediğiniz geçerli bir Azure AD hesabının **Kullanıcı adlarını veya e-posta adresini** yazın.
    
-    b. **Gönder**’e tıklayın.  
+    b. **Gönder** ’e tıklayın.  
       
     > [!NOTE]
     > Azure Active Directory hesap sahibi, hesabı etkin olmadan önce onaylamaya yönelik bir bağlantı içeren bir e-posta alır.

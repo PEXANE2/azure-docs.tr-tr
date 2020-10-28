@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: f10ffeae9e583c03831b81da2ecf7c128a5ddc8e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4176c92d48b67b9f9207f22ebd8939b5ec1437ee
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516282"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636757"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Öğretici: Vyarda ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Bir Azure AD ile bir Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini, Lıvyarda ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -69,7 +69,7 @@ Vyarda 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden, y
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, Lıkorumalı bahçe ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak, Lıkorumalı bahçe ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin olması gerekir.
 
 Azure AD çoklu oturum açma 'yı ve korumalı Bahçe 'yi yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -87,7 +87,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açmayı, korumalı bahçe ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **lıvyarda** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **lıvyarda** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -101,7 +101,7 @@ Azure AD çoklu oturum açmayı, korumalı bahçe ile yapılandırmak için aşa
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Açık bahçe etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://secure.vidyard.com/sso/saml/<unique id>/metadata`
 
@@ -109,7 +109,7 @@ Azure AD çoklu oturum açmayı, korumalı bahçe ile yapılandırmak için aşa
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Açık bahçe etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://secure.vidyard.com/sso/saml/<unique id>/login`
 
@@ -136,15 +136,15 @@ Azure AD çoklu oturum açmayı, korumalı bahçe ile yapılandırmak için aşa
 
 2. Güvenli bir panoda **Grup**  >  **güvenliği** ' ni seçin.
 
-    ![Lıyaryarda yapılandırması](./media/vidyard-tutorial/configure1.png)
+    ![Ekran görüntüsü, Lıvyarda yazılım sitesindeki gruptan seçilen güvenliği gösterir.](./media/vidyard-tutorial/configure1.png)
 
 3. **Yeni profil** sekmesine tıklayın.
 
-    ![Lıyaryarda yapılandırması](./media/vidyard-tutorial/configure2.png)
+    ![Ekran görüntüsü yeni profil düğmesini gösterir.](./media/vidyard-tutorial/configure2.png)
 
 4. **SAML yapılandırması** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Lıyaryarda yapılandırması](./media/vidyard-tutorial/configure3.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz SAML yapılandırması bölümünü gösterir.](./media/vidyard-tutorial/configure3.png)
 
     a. Lütfen **profil adı** metin kutusuna genel profil adını girin.
 
@@ -158,22 +158,22 @@ Azure AD çoklu oturum açmayı, korumalı bahçe ile yapılandırmak için aşa
 
     f. **SAML uç noktası URL 'si** metin kutusunda, Azure Portal 'Den kopyalanmış **oturum açma URL** 'sini yapıştırın.
 
-    örneğin: **Onayla**'ya tıklayın.
+    örneğin: **Onayla** 'ya tıklayın.
 
 5. Çoklu oturum açma sekmesinden, var olan bir profilin yanına **ata** ' yı seçin.
 
-    ![Lıyaryarda yapılandırması](./media/vidyard-tutorial/configure4.png)
+    ![Ekran görüntüsünde, Azure A D S S O profili için ata düğmesi gösterilir.](./media/vidyard-tutorial/configure4.png)
 
     > [!NOTE]
     > Bir SSO profili oluşturduktan sonra, bu profili, kullanıcıların Azure üzerinden erişmesi gereken herhangi bir gruba atayın. Kullanıcı atandığı grup içinde yoksa, bir kullanıcı hesabı otomatik olarak oluşturur ve rollerini gerçek zamanlı olarak atar.
 
-6. **Atanacak gruplarda**görünen kuruluş grubunuzu seçin.
+6. **Atanacak gruplarda** görünen kuruluş grubunuzu seçin.
 
-    ![Lıyaryarda yapılandırması](./media/vidyard-tutorial/configure5.png)
+    ![Ekran görüntüsü, grubunuzu seçebileceğiniz, kuruluşlara SAML yapılandırması atama bölümünü gösterir.](./media/vidyard-tutorial/configure5.png)
 
-7. Atanan grupları **Şu anda atanmış gruplar**altında görebilirsiniz. Kuruluşunuz uyarınca grup için bir rol seçin ve **Onayla**' ya tıklayın.
+7. Atanan grupları **Şu anda atanmış gruplar** altında görebilirsiniz. Kuruluşunuz uyarınca grup için bir rol seçin ve **Onayla** ' ya tıklayın.
 
-    ![Lıyaryarda yapılandırması](./media/vidyard-tutorial/configure6.png)
+    ![Ekran görüntüsü, bir rol seçebileceğiniz kuruluşlar için SAML yapılandırması atama bölümünü gösterir.](./media/vidyard-tutorial/configure6.png)
 
     > [!NOTE]
     > Daha fazla bilgi için [Bu belgeye](https://knowledge.vidyard.com/hc/articles/360009990033-SAML-based-Single-Sign-On-SSO-in-Vidyard)bakın.
@@ -182,7 +182,7 @@ Azure AD çoklu oturum açmayı, korumalı bahçe ile yapılandırmak için aşa
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -194,19 +194,19 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, LIG/Azure 'a erişim izni vererek Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' **ı seçin ve**ardından, sonra da
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' **ı seçin ve** ardından, sonra da
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -214,7 +214,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, LIG/Azure 'a er
 
     ![Uygulamalar listesindeki bir Lıyarın bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 

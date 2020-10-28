@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/26/2020
 ms.author: lle
-ms.openlocfilehash: c85e27cedfbcebe7060dfed2f96fc53aea9838c9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 3598db409e5493737753a8a1b03de168af5c664b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629402"
+ms.locfileid: "92637199"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -183,7 +183,7 @@ Aşağıdaki hatadan, derleme sistemini açık bir şekilde görebilirsiniz *. V
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
-GAC hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/dotnet/framework/app-domains/gac)bakın.
+GAC hakkında daha fazla bilgi için [Bu makaleye](/dotnet/framework/app-domains/gac)bakın.
 
 
 ### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Şirket içinde barındırılan IR eksik anahtarını izleme
@@ -468,7 +468,7 @@ Beklenen yanıt aşağıda verilmiştir:
 
 > [!NOTE] 
 > Ara sunucu konuları:
-> *    Proxy sunucusunun Güvenli Alıcılar listesine alınması gerekip gerekmediğini denetleyin. Bu durumda, [Bu etki alanlarının](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) Güvenli Alıcılar listesinde olduğundan emin olun.
+> *    Proxy sunucusunun Güvenli Alıcılar listesine alınması gerekip gerekmediğini denetleyin. Bu durumda, [Bu etki alanlarının](./data-movement-security-considerations.md#firewall-requirements-for-on-premisesprivate-network) Güvenli Alıcılar listesinde olduğundan emin olun.
 > *    "Wu2.frontend.clouddatahub.net/" TLS/SSL sertifikasının proxy sunucusunda güvenilir olup olmadığını denetleyin.
 > *    Proxy üzerinde Active Directory kimlik doğrulaması kullanıyorsanız, hizmet hesabını "Integration Runtime hizmeti" olarak proxy 'ye erişebilen kullanıcı hesabı olarak değiştirin.
 
@@ -632,7 +632,7 @@ Etkilenip etkilenmediğinizi belirleme:
 - Bu belgede açıklanan yaklaşımı kullanarak FQDN adlarına dayalı güvenlik duvarı kuralları tanımlıyorsanız, güvenlik duvarı [yapılandırması ve IP adresi için izin verilenler listesi ayarları](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)konusunda etkilenmiş olursunuz.
 - Ancak şirket güvenlik duvarınızdaki giden IP 'Ler için izin verilenler listesini açık bir şekilde etkinleştirirseniz bu sorundan etkilenmiş olursunuz.
 
-Etkilenmiş olmanız durumunda yapılacak eylem: 8 Kasım 2020 ' e kadar en son Data Factory IP adreslerini kullanmak üzere ağ altyapınızı güncelleştirmek için ağ altyapısı ekibinize bildirin.  En son IP adreslerini indirmek için, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)' na gidin.
+Etkilenmiş olmanız durumunda yapılacak eylem: 8 Kasım 2020 ' e kadar en son Data Factory IP adreslerini kullanmak üzere ağ altyapınızı güncelleştirmek için ağ altyapısı ekibinize bildirin.  En son IP adreslerini indirmek için, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)' na gidin.
 
 ##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>Senaryo 2: müşteri tarafından yönetilen Azure sanal ağı içindeki bir Azure VM üzerinde çalışan kendinden konak Integration Runtime giden iletişim
 Etkilenip etkilenmediğinizi belirleme:
@@ -641,14 +641,14 @@ Etkilenip etkilenmediğinizi belirleme:
  ![Hedef denetimi](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
 - Ancak Azure sanal ağındaki NSG kurallarınız ayarlarınızın giden IP adresleri için izin verilenler listesini açık bir şekilde etkinleştirdiğinizde bu sorundan etkilenmiş olursunuz.
 
-Etkilenmiş olmanız durumunda yapılacak eylem: 8 Kasım 2020 ' e kadar en son Data Factory IP adreslerini kullanmak için, ağ altyapısı ekibinize Azure sanal ağ yapılandırmanızda NSG kurallarını güncelleştirme konusunda bilgilendirin.  En son IP adreslerini indirmek için, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)' na gidin.
+Etkilenmiş olmanız durumunda yapılacak eylem: 8 Kasım 2020 ' e kadar en son Data Factory IP adreslerini kullanmak için, ağ altyapısı ekibinize Azure sanal ağ yapılandırmanızda NSG kurallarını güncelleştirme konusunda bilgilendirin.  En son IP adreslerini indirmek için, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)' na gidin.
 
 ##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>Senaryo 3: müşteri tarafından yönetilen Azure sanal ağı 'nda SSIS Integration Runtime giden iletişim
 - Özel ağınızda SSIS Integration Runtime içeren herhangi bir giden NSG kuralı olup olmadığınızı denetleyin. Giden kısıtlama yoksa, hiçbir etkisi olmaz.
 - Giden kuralı kısıtlamalarınız varsa, hizmet etiketi kullanıp kullanmadığından emin olun. Hizmet etiketi kullanıyorsanız, yeni IP aralıkları var olan hizmet etiketi altında olduğundan herhangi bir şeyi değiştirme veya ekleme gereksinimi yoktur.
 - Ancak Azure sanal ağındaki NSG kurallarınız ayarlarınızın giden IP adresi için izin verilenler listesini açıkça etkinleştirirseniz bu sorundan etkilenmiş olursunuz.
 
-Etkilenmiş olmanız durumunda yapılacak eylem: 8 Kasım 2020 ' e kadar en son Data Factory IP adreslerini kullanmak için, ağ altyapısı ekibinize Azure sanal ağ yapılandırmanızda NSG kurallarını güncelleştirme konusunda bilgilendirin.  En son IP adreslerini indirmek için, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)' na gidin.
+Etkilenmiş olmanız durumunda yapılacak eylem: 8 Kasım 2020 ' e kadar en son Data Factory IP adreslerini kullanmak için, ağ altyapısı ekibinize Azure sanal ağ yapılandırmanızda NSG kurallarını güncelleştirme konusunda bilgilendirin.  En son IP adreslerini indirmek için, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)' na gidin.
 
 ### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>SSLTLS güvenli kanalı için güven ilişkisi kurulamadı 
 
@@ -709,7 +709,7 @@ Sorun giderme konusunda daha fazla yardım için aşağıdaki kaynakları deneyi
 *  [Data Factory blogu](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory Özellik istekleri](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure videoları](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Soru sayfası Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+*  [Soru sayfası Microsoft Q&](/answers/topics/azure-data-factory.html)
 *  [Data Factory için yığın taşma Forumu](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory hakkında Twitter bilgileri](https://twitter.com/hashtag/DataFactory)
 *  [Veri akışları eşleme performans Kılavuzu](concepts-data-flow-performance.md)

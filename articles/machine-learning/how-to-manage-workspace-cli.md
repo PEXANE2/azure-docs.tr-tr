@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fd6fc3ee88d63c1d933d3405437ec1bf49e0432e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 45f9f61712903436d63f483673705650f5470b3f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426351"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635958"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
 
@@ -24,9 +24,9 @@ Bu makalede, Azure CLı kullanarak Azure Machine Learning çalışma alanı olu�
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
+* Bir **Azure aboneliği** . Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-* **Yerel ortamınızdan**bu belgedeki CLI komutlarını kullanmak IÇIN [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)gerekir.
+* **Yerel ortamınızdan** bu belgedeki CLI komutlarını kullanmak IÇIN [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)gerekir.
 
     [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)KULLANıYORSANıZ, CLI tarayıcı aracılığıyla erişilir ve bulutta bulunur.
 
@@ -71,14 +71,14 @@ Azure Machine Learning çalışma alanı aşağıdaki Azure hizmetlerine veya va
 | Hizmet | Var olan bir örneği belirtecek parametre |
 | ---- | ---- |
 | **Azure Kaynak grubu** | `-g <resource-group-name>`
-| **Azure Depolama Hesabı** | `--storage-account <service-id>` |
+| **Azure depolama hesabı** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure Machine Learning çalışma alanı bir kaynak grubu içinde oluşturulmalıdır. Var olan bir kaynak grubunu kullanabilir veya yeni bir tane oluşturabilirsiniz. __Yeni bir kaynak grubu oluşturmak__için aşağıdaki komutu kullanın. `<resource-group-name>`Bu kaynak grubu için kullanılacak adla değiştirin. `<location>`Bu kaynak grubu için kullanılacak Azure bölgesiyle değiştirin:
+Azure Machine Learning çalışma alanı bir kaynak grubu içinde oluşturulmalıdır. Var olan bir kaynak grubunu kullanabilir veya yeni bir tane oluşturabilirsiniz. __Yeni bir kaynak grubu oluşturmak__ için aşağıdaki komutu kullanın. `<resource-group-name>`Bu kaynak grubu için kullanılacak adla değiştirin. `<location>`Bu kaynak grubu için kullanılacak Azure bölgesiyle değiştirin:
 
 > [!TIP]
 > Azure Machine Learning kullanılabildiği bir bölge seçmelisiniz. Bilgi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -107,7 +107,7 @@ Kaynak gruplarıyla çalışma hakkında daha fazla bilgi için bkz. [az Group](
 
 ### <a name="automatically-create-required-resources"></a>Gerekli kaynakları otomatik olarak oluştur
 
-__Hizmetlerin otomatik olarak oluşturulduğu__yeni bir çalışma alanı oluşturmak için aşağıdaki komutu kullanın:
+__Hizmetlerin otomatik olarak oluşturulduğu__ yeni bir çalışma alanı oluşturmak için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -150,7 +150,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 * `--pe-auto-approval`: Çalışma alanına özel uç nokta bağlantılarının otomatik olarak onaylanıp onaylanmayacağı.
 * `--pe-resource-group`: İçinde özel uç nokta oluşturulacak kaynak grubu. Sanal ağı içeren aynı grup olmalıdır.
 * `--pe-vnet-name`: İçinde özel uç nokta oluşturmak için var olan sanal ağ.
-* `--pe-subnet-name`: İçinde özel uç nokta oluşturulacak alt ağın adı. Varsayılan değer: `default`.
+* `--pe-subnet-name`: İçinde özel uç nokta oluşturulacak alt ağın adı. `default` varsayılan değerdir.
 
 Çalışma alanınıza özel bir uç nokta ve sanal ağ kullanma hakkında daha fazla bilgi için bkz. [sanal ağ yalıtımı ve gizliliği genel bakış](how-to-network-security-overview.md).
 
@@ -160,18 +160,17 @@ Varsayılan olarak, çalışma alanının ölçümleri ve meta verileri Microsof
 
 Microsoft tarafından yönetilen anahtarı kullanmak yerine kendi anahtarınızı sağlayın ' i kullanabilirsiniz. Bunun yapılması, ölçümleri ve meta verileri Azure aboneliğinizde depolayan Azure Cosmos DB örneğini oluşturur. `--cmk-keyvault`Anahtarı içeren Azure Key Vault belirtmek ve `--resource-cmk-uri` KASADAKI anahtarın URL 'sini belirtmek için parametresini kullanın.
 
-> [!IMPORTANT]
-> `--cmk-keyvault`Ve parametrelerini kullanmadan önce `--resource-cmk-uri` , önce aşağıdaki eylemleri gerçekleştirmeniz gerekir:
->
-> 1. __Machine Learning uygulamayı__ (kimlik ve erişim yönetimi 'nde) aboneliğinizde katkıda bulunan izinlerle yetkilendirin.
-> 1. [Müşteri tarafından yönetilen anahtarları yapılandırma](/azure/cosmos-db/how-to-setup-cmk) bölümündeki adımları izleyerek şunları yapın:
->     * Azure Cosmos DB sağlayıcıyı kaydetme
->     * Azure Key Vault oluşturma ve yapılandırma
->     * Anahtar oluştur
->
->     Azure Cosmos DB örneğini el ile oluşturmanız gerekmez, bir tane, çalışma alanı oluşturma sırasında sizin için oluşturulur. Bu Azure Cosmos DB örneği, bu düzene göre bir ad kullanılarak ayrı bir kaynak grubunda oluşturulacak: `<your-resource-group-name>_<GUID>` .
->
-> Çalışma alanı oluşturulduktan sonra bu ayarı değiştiremezsiniz. Çalışma alanınız tarafından kullanılan Azure Cosmos DB silerseniz, onu kullanan çalışma alanını da silmeniz gerekir.
+`--cmk-keyvault`Ve parametrelerini kullanmadan önce `--resource-cmk-uri` , önce aşağıdaki eylemleri gerçekleştirmeniz gerekir:
+
+1. __Machine Learning uygulamayı__ (kimlik ve erişim yönetimi 'nde) aboneliğinizde katkıda bulunan izinlerle yetkilendirin.
+1. [Müşteri tarafından yönetilen anahtarları yapılandırma](/azure/cosmos-db/how-to-setup-cmk) bölümündeki adımları izleyerek şunları yapın:
+    * Azure Cosmos DB sağlayıcıyı kaydetme
+    * Azure Key Vault oluşturma ve yapılandırma
+    * Anahtar oluştur
+
+Azure Cosmos DB örneğini el ile oluşturmanız gerekmez, bir tane, çalışma alanı oluşturma sırasında sizin için oluşturulur. Bu Azure Cosmos DB örneği, bu düzene göre bir ad kullanılarak ayrı bir kaynak grubunda oluşturulacak: `<your-resource-group-name>_<GUID>` .
+
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 Çalışma alanınızda Microsoft 'un topladığı verileri sınırlandırmak için `--hbi-workspace` parametresini kullanın. 
 
@@ -187,7 +186,7 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
 > [!IMPORTANT]
 > Var olan tüm kaynakları belirtmeniz gerekmez. Bir veya daha fazla belirtebilirsiniz. Örneğin, var olan bir depolama hesabı belirtebilirsiniz ve çalışma alanı diğer kaynakları oluşturur.
 
-+ **Azure depolama hesabı**: `az storage account show --name <storage-account-name> --query "id"`
++ **Azure depolama hesabı** : `az storage account show --name <storage-account-name> --query "id"`
 
     Bu komuttan gelen yanıt aşağıdaki metne benzer ve depolama hesabınızın KIMLIĞIDIR:
 
@@ -196,7 +195,7 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
     > [!IMPORTANT]
     > Mevcut bir Azure Depolama hesabını kullanmak istiyorsanız, bu bir Premium hesap (Premium_LRS ve Premium_GRS) olamaz. Ayrıca hiyerarşik bir ad alanına sahip olamaz (Azure Data Lake Storage 2. ile kullanılır). Çalışma alanının _varsayılan_ depolama hesabıyla Premium Depolama veya hiyerarşik ad alanı desteklenmez. Premium Storage veya sıradüzensel ad alanını _varsayılan olmayan_ depolama hesaplarıyla birlikte kullanabilirsiniz.
 
-+ **Azure Application Insights**:
++ **Azure Application Insights** :
 
     1. Application Insights uzantısını yükler:
 
@@ -214,13 +213,13 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault** : `az keyvault show --name <key-vault-name> --query "ID"`
 
     Bu komuttan gelen yanıt aşağıdaki metne benzer ve anahtar kasanızın KIMLIĞIDIR:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry** : `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     Bu komuttan gelen yanıt aşağıdaki metne benzer ve kapsayıcı kayıt defterinin KIMLIĞIDIR:
 

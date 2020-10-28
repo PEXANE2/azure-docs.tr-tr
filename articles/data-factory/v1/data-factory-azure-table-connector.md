@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d7802a3fe4fb904aad7fd9257edbf8b10efe127
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84702337"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637437"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Azure tablosuna ve Azure 'a taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -36,9 +36,9 @@ Desteklenen herhangi bir kaynak veri deposundan verileri Azure Tablo depolama al
 ## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak bir Azure Tablo depolama alanına/kaynağından veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
-İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
+İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı** ' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager şablonu** , **.NET API** ve **REST API** . Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz: 
 
@@ -104,7 +104,7 @@ Azure Tablo sütunu tarih saat türünde ise:
 | azureTableDefaultPartitionKeyValue |Havuz tarafından kullanılabilen varsayılan bölüm anahtarı değeri. |Bir dize değeri. |Hayır |
 | azureTablePartitionKeyName |Değerleri bölüm anahtarları olarak kullanılan sütunun adını belirtin. Belirtilmemişse, bölüm anahtarı olarak AzureTableDefaultPartitionKeyValue kullanılır. |Bir sütun adı. |Hayır |
 | azureTableRowKeyName |Sütun değerleri satır anahtarı olarak kullanılan sütunun adını belirtin. Belirtilmezse, her satır için bir GUID kullanın. |Bir sütun adı. |Hayır |
-| azureTableInsertType |Azure tablosuna veri ekleme modu.<br/><br/>Bu özellik, çıkış tablosunda eşleşen bölüm ve satır anahtarlarının değerlerinin değiştirilmesini veya birleştirildiğini denetler. <br/><br/>Bu ayarların (birleştirme ve değiştirme) nasıl çalıştığını öğrenmek için bkz. [varlık ekleme veya birleştirme](https://msdn.microsoft.com/library/azure/hh452241.aspx) ve [varlık ekleme veya değiştirme](https://msdn.microsoft.com/library/azure/hh452242.aspx) konuları. <br/><br> Bu ayar tablo düzeyinde değil, satır düzeyinde uygulanır ve hiçbir seçenek, girişte bulunmayan çıkış tablosundaki satırları silmez. |Birleştir (varsayılan)<br/>değiştirin |Hayır |
+| azureTableInsertType |Azure tablosuna veri ekleme modu.<br/><br/>Bu özellik, çıkış tablosunda eşleşen bölüm ve satır anahtarlarının değerlerinin değiştirilmesini veya birleştirildiğini denetler. <br/><br/>Bu ayarların (birleştirme ve değiştirme) nasıl çalıştığını öğrenmek için bkz. [varlık ekleme veya birleştirme](/rest/api/storageservices/Insert-Or-Merge-Entity) ve [varlık ekleme veya değiştirme](/rest/api/storageservices/Insert-Or-Replace-Entity) konuları. <br/><br> Bu ayar tablo düzeyinde değil, satır düzeyinde uygulanır ve hiçbir seçenek, girişte bulunmayan çıkış tablosundaki satırları silmez. |Birleştir (varsayılan)<br/>değiştirin |Hayır |
 | writeBatchSize |WriteBatchSize veya writeBatchTimeout değeri isabet edildiğinde Azure tablosuna veri ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
 | writeBatchTimeout |WriteBatchSize veya writeBatchTimeout değeri isabet edildiğinde Azure tablosuna veri ekler |timespan<br/><br/>Örnek: "00:20:00" (20 dakika) |Hayır (varsayılan olarak, depolama istemcisi varsayılan zaman aşımı değeri 90 sn) |
 
@@ -155,7 +155,7 @@ Aşağıdaki örnek şunu gösterir:
   }
 }
 ```
-Azure Data Factory, iki tür Azure Storage bağlı hizmetini destekler: **Azurestorage** ve **Azurestorampasas**. Birincisi için, hesap anahtarını ve sonraki bir sürümü içeren bağlantı dizesini belirtirsiniz, paylaşılan erişim Imzası (SAS) URI 'sini belirtirsiniz. Ayrıntılar için [bağlı hizmetler](#linked-service-properties) bölümüne bakın.  
+Azure Data Factory, iki tür Azure Storage bağlı hizmetini destekler: **Azurestorage** ve **Azurestorampasas** . Birincisi için, hesap anahtarını ve sonraki bir sürümü içeren bağlantı dizesini belirtirsiniz, paylaşılan erişim Imzası (SAS) URI 'sini belirtirsiniz. Ayrıntılar için [bağlı hizmetler](#linked-service-properties) bölümüne bakın.  
 
 **Azure tablo giriş veri kümesi:**
 
@@ -250,7 +250,7 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 
 **AzureTableSource ve BlobSink ile işlem hattındaki etkinliği kopyalama:**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **AzureTableSource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **AzureTableSourceQuery** özelliği Ile belirtilen SQL sorgusu, her saat kopyalama için varsayılan bölümden verileri seçer.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **AzureTableSource** olarak ayarlanır ve **Havuz** türü **blobsink** olarak ayarlanır. **AzureTableSourceQuery** özelliği Ile belirtilen SQL sorgusu, her saat kopyalama için varsayılan bölümden verileri seçer.
 
 ```JSON
 {
@@ -323,7 +323,7 @@ Aşağıdaki örnek şunu gösterir:
 }
 ```
 
-Azure Data Factory, iki tür Azure Storage bağlı hizmetini destekler: **Azurestorage** ve **Azurestorampasas**. Birincisi için, hesap anahtarını ve sonraki bir sürümü içeren bağlantı dizesini belirtirsiniz, paylaşılan erişim Imzası (SAS) URI 'sini belirtirsiniz. Ayrıntılar için [bağlı hizmetler](#linked-service-properties) bölümüne bakın.
+Azure Data Factory, iki tür Azure Storage bağlı hizmetini destekler: **Azurestorage** ve **Azurestorampasas** . Birincisi için, hesap anahtarını ve sonraki bir sürümü içeren bağlantı dizesini belirtirsiniz, paylaşılan erişim Imzası (SAS) URI 'sini belirtirsiniz. Ayrıntılar için [bağlı hizmetler](#linked-service-properties) bölümüne bakın.
 
 **Azure Blob giriş veri kümesi:**
 
@@ -417,7 +417,7 @@ Veriler her saat yeni bir bloba alınır (sıklık: saat, Aralık: 1). Blob içi
 
 **BlobSource ve AzureTableSink ile işlem hattındaki etkinliği kopyalama:**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **blobsource** olarak ayarlanır ve **Havuz** türü **AzureTableSink**olarak ayarlanır.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **blobsource** olarak ayarlanır ve **Havuz** türü **AzureTableSink** olarak ayarlanır.
 
 ```JSON
 {
@@ -472,7 +472,7 @@ Veriler her saat yeni bir bloba alınır (sıklık: saat, Aralık: 1). Blob içi
 1. Yerel kaynak türlerinden .NET türüne Dönüştür
 2. .NET türünden yerel havuz türüne Dönüştür
 
-Verileri Azure tablosundan & taşırken Azure Tablo [hizmeti tarafından tanımlanan aşağıdaki eşlemeler](https://msdn.microsoft.com/library/azure/dd179338.aspx) , Azure Tablo OData türlerinden .net türüne ve tam tersi şekilde kullanılır.
+Verileri Azure tablosundan & taşırken Azure Tablo [hizmeti tarafından tanımlanan aşağıdaki eşlemeler](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) , Azure Tablo OData türlerinden .net türüne ve tam tersi şekilde kullanılır.
 
 | OData Veri Türü | .NET türü | Ayrıntılar |
 | --- | --- | --- |

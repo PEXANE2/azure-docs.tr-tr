@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 4a0529248c58f7fa7f962d9d1432411c351c7bdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caec9b802bb347333dd861ebe499f72249d75aa2
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440652"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634786"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory’de kopyalama etkinliğinin hataya dayanıklılığı
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -93,7 +93,7 @@ path | Günlük dosyalarının yolu. | Günlük dosyalarını depolamak için ku
 > - Kaynak veri kümesinde, bir klasör, joker karakter veya dosya listesi olabilen birden çok dosya belirttiğinizde, kopyalama etkinliği belirli hata dosyalarını atlayabilir. Kaynak veri kümesinde hedefe kopyalanacak tek bir dosya belirtilmişse, herhangi bir hata oluştuysa kopyalama etkinliği başarısız olur.
 >
 > Kaynak ve hedef depo arasında tutarsız oldukları doğrulandıktan sonra belirli dosyaları atlamak için:
-> - Veri [tutarlılığı belgesi buradan](https://docs.microsoft.com/azure/data-factory/copy-activity-data-consistency)daha ayrıntılı bilgi edinebilirsiniz.
+> - Veri [tutarlılığı belgesi buradan](./copy-activity-data-consistency.md)daha ayrıntılı bilgi edinebilirsiniz.
 
 ### <a name="monitoring"></a>İzleme 
 
@@ -146,22 +146,22 @@ Yukarıdaki günlükte, ADF kopyalanırken başka bir uygulama bu dosyayı sildi
 ### <a name="supported-scenarios"></a>Desteklenen senaryolar
 Kopyalama etkinliği, uyumsuz tablolu verileri saptamak, atlamak ve günlüğe kaydetmek için üç senaryoyu destekler:
 
-- **Kaynak veri türü ile havuz yerel türü arasında uyumsuzluk**. 
+- **Kaynak veri türü ile havuz yerel türü arasında uyumsuzluk** . 
 
     Örneğin: BLOB depolama alanındaki bir CSV dosyasından, üç INT tür sütunu içeren bir şema tanımına sahip bir SQL veritabanına veri kopyalama. 123.456.789 gibi sayısal veriler içeren CSV dosyası satırları havuz deposuna başarıyla kopyalanır. Ancak, 123.456, ABC gibi sayısal olmayan değerler içeren satırlar uyumsuz olarak algılanır ve atlanır.
 
-- **Kaynak ve havuz arasındaki sütun sayısında uyuşmazlık var**.
+- **Kaynak ve havuz arasındaki sütun sayısında uyuşmazlık var** .
 
     Örneğin: BLOB depolama alanındaki bir CSV dosyasından, altı sütun içeren bir şema tanımına sahip bir SQL veritabanına veri kopyalama. Altı sütun içeren CSV dosyası satırları havuz deposuna başarıyla kopyalanır. Altıdan fazla sütun içeren CSV dosyası satırları uyumsuz olarak algılanır ve atlanır.
 
-- **SQL Server/Azure SQL veritabanı/Azure Cosmos DB yazılırken birincil anahtar ihlali**.
+- **SQL Server/Azure SQL veritabanı/Azure Cosmos DB yazılırken birincil anahtar ihlali** .
 
     Örneğin: bir SQL Server 'dan SQL veritabanı 'na veri kopyalama. Birincil anahtar, havuz SQL veritabanında tanımlanmıştır, ancak kaynak SQL Server 'da böyle bir birincil anahtar tanımlanmamıştır. Kaynakta bulunan yinelenen satırlar havuza kopyalanamıyor. Kopyalama etkinliği yalnızca kaynak verilerin ilk satırını havuza kopyalar. Yinelenen birincil anahtar değerini içeren sonraki kaynak satırlar uyumsuz olarak algılanır ve atlanır.
 
 >[!NOTE]
 >- PolyBase kullanarak Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri yüklemek için, kopyalama etkinliğinde "[Polybasesettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" aracılığıyla ilke reddetme seçeneğini belirterek PolyBase 'in yerel hata toleransı ayarlarını yapılandırın. Aynı zamanda, PolyBase uyumsuz satırları blob veya ADLS 'e aşağıda gösterildiği gibi normal şekilde yeniden yönlendirmeyi etkinleştirebilirsiniz.
 >- Copy etkinliği [Amazon Redshift Unload](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift)komutunu çağırmak üzere yapılandırıldığında bu özellik uygulanmaz.
->- Kopyalama etkinliği [BIR SQL havuzundan saklı yordam](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)çağırmak üzere yapılandırıldığında bu özellik uygulanmaz.
+>- Kopyalama etkinliği [BIR SQL havuzundan saklı yordam](./connector-azure-sql-database.md#invoke-a-stored-procedure-from-a-sql-sink)çağırmak üzere yapılandırıldığında bu özellik uygulanmaz.
 
 ### <a name="configuration"></a>Yapılandırma
 Aşağıdaki örnek, kopyalama etkinliğinde uyumsuz satırları atlamayı yapılandırmak için bir JSON tanımı sağlar:
@@ -298,5 +298,3 @@ Diğer kopyalama etkinliği makalelerine bakın:
 
 - [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
 - [Kopyalama etkinliği performansı](copy-activity-performance.md)
-
-

@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 98e352024ceea322f09947baf1bc759459a2af19
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 089a2e6a0b90c1682e2ebdd146626c93cec35f77
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359977"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636859"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory 'den MapReduce programlarını çağırma
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -26,8 +26,8 @@ ms.locfileid: "92359977"
 > * [MapReduce etkinliği](data-factory-map-reduce.md)
 > * [Hadoop akışı etkinliği](data-factory-hadoop-streaming-activity.md)
 > * [Spark etkinliği](data-factory-spark.md)
-> * [Azure Machine Learning Studio (klasik) Batch yürütme etkinliği](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning Studio (klasik) kaynak güncelleştirme etkinliği](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (klasik) Batch Yürütme Etkinliği](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (klasik) Kaynak Güncelleştirme Etkinliği](data-factory-azure-ml-update-resource-activity.md)
 > * [Saklı Yordam Etkinliği](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL Etkinliği](data-factory-usql-activity.md)
 > * [.NET özel etkinliği](data-factory-use-custom-activities.md)
@@ -49,7 +49,7 @@ HDInsight Pig ve Hive etkinliklerini kullanarak bir işlem hattından Windows/Li
 ## <a name="json-for-hdinsight-mapreduce-activity"></a>HDInsight MapReduce etkinliği için JSON
 HDInsight etkinliğinin JSON tanımında: 
 
-1. **Etkinliğin** **türünü** **HDInsight**olarak ayarlayın.
+1. **Etkinliğin** **türünü** **HDInsight** olarak ayarlayın.
 2. **ClassName** özelliği için sınıfın adını belirtin.
 3. **JarFilePath** özelliği için dosya adı da dahil olmak üzere jar dosyasının yolunu belirtin.
 4. **JarLinkedService** ÖZELLIĞI için jar dosyasını Içeren Azure Blob depolama 'ya başvuran bağlı hizmeti belirtin.   
@@ -183,7 +183,7 @@ Bu örnekteki işlem hattının şu türde yalnızca bir etkinliği vardır: HDI
 
 | Özellik | Notlar |
 |:--- |:--- |
-| tür |Tür **HDInsightMapReduce**olarak ayarlanmalıdır. |
+| tür |Tür **HDInsightMapReduce** olarak ayarlanmalıdır. |
 | Sınıf |Sınıfın adı: **WORDCOUNT** |
 | jarFilePath |Sınıfını içeren jar dosyasının yolu. Aşağıdaki kodu kopyalayıp yapıştırırsanız, kümenin adını değiştirmeyi unutmayın. |
 | jarLinkedService |Jar dosyasını içeren Azure depolama bağlı hizmeti. Bu bağlı hizmet, HDInsight kümesiyle ilişkili depolamayı ifade eder. |
@@ -235,14 +235,14 @@ Bu örnekteki işlem hattının şu türde yalnızca bir etkinliği vardır: HDI
 ## <a name="run-spark-programs"></a>Spark programlarını çalıştırma
 MapReduce etkinliğini kullanarak HDInsight Spark kümenizde Spark programları çalıştırabilirsiniz. Ayrıntılar için bkz. [Azure Data Factory’den Spark programlarını çağırma](data-factory-spark.md).  
 
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [adfgetstartedmonitoring]:data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines 
 
-[Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[Developer Reference]: /previous-versions/azure/dn834987(v=azure.100)
 [Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>Ayrıca Bkz.
@@ -251,4 +251,3 @@ MapReduce etkinliğini kullanarak HDInsight Spark kümenizde Spark programları 
 * [Hadoop akışı etkinliği](data-factory-hadoop-streaming-activity.md)
 * [Spark programları çağırma](data-factory-spark.md)
 * [R betikleri çağırma](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
-

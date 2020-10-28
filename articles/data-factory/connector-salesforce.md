@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/13/2020
-ms.openlocfilehash: 292d80f7fad796b2ee4f80478c55099148d7f855
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a82606be62007816d545942161774e776c38a4e3
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086719"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637301"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri ve Salesforce 'a kopyalama
 
@@ -44,7 +44,7 @@ Salesforce 'tan verileri desteklenen herhangi bir havuz veri deposuna kopyalayab
 
 Salesforce Bağlayıcısı, Salesforce REST/toplu API 'nin üzerine kurulmuştur. Varsayılan olarak, bağlayıcı Salesforce 'tan veri kopyalamak için [V45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) kullanır ve verileri Salesforce 'a kopyalamak için [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) kullanır. Ayrıca, bağlantılı hizmette [ `apiVersion` özelliği](#linked-service-properties) aracılığıyla verileri okumak/yazmak için kullanılan API sürümünü açıkça ayarlayabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Salesforce 'ta API izninin etkinleştirilmiş olması gerekir. Daha fazla bilgi için bkz. [izin kümesine göre Salesforce 'TA API erişimini etkinleştirme](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
 
@@ -69,7 +69,7 @@ Salesforce bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür |Type özelliği **Salesforce**olarak ayarlanmalıdır. |Evet |
+| tür |Type özelliği **Salesforce** olarak ayarlanmalıdır. |Evet |
 | environmentUrl | Salesforce örneğinin URL 'sini belirtin. <br> -Varsayılan değer `"https://login.salesforce.com"` . <br> -Korumalı verileri veri kopyalamak için belirtin `"https://test.salesforce.com"` . <br> -Özel etki alanından veri kopyalamak için, örneğin, `"https://[domain].my.salesforce.com"` . |Hayır |
 | username |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Evet |
 | password |Kullanıcı hesabı için bir parola belirtin.<br/><br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Evet |
@@ -144,11 +144,11 @@ Salesforce bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Salesforce veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Ve Salesforce 'tan verileri kopyalamak için, veri kümesinin Type özelliğini **Salesforceobject**olarak ayarlayın. Aşağıdaki özellikler desteklenir.
+Ve Salesforce 'tan verileri kopyalamak için, veri kümesinin Type özelliğini **Salesforceobject** olarak ayarlayın. Aşağıdaki özellikler desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği **Salesforceobject**olarak ayarlanmalıdır.  | Evet |
+| tür | Type özelliği **Salesforceobject** olarak ayarlanmalıdır.  | Evet |
 | objectApiName | Verilerin alınması için Salesforce nesne adı. | Kaynak için Hayır, havuz için Evet |
 
 > [!IMPORTANT]
@@ -180,7 +180,7 @@ Ve Salesforce 'tan verileri kopyalamak için, veri kümesinin Type özelliğini 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin Type özelliği **Relationaltable**olarak ayarlanmalıdır. | Evet |
+| tür | Veri kümesinin Type özelliği **Relationaltable** olarak ayarlanmalıdır. | Evet |
 | tableName | Salesforce 'daki tablonun adı. | Hayır (etkinlik kaynağında "sorgu" belirtilmişse) |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
@@ -189,13 +189,13 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="salesforce-as-a-source-type"></a>Kaynak türü olarak Salesforce
 
-Salesforce 'tan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Salesforcesource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir.
+Salesforce 'tan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Salesforcesource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği **Salesforcesource**olarak ayarlanmalıdır. | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği **Salesforcesource** olarak ayarlanmalıdır. | Evet |
 | sorgu |Verileri okumak için özel sorguyu kullanın. [Salesforce nesne sorgu dili (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) SORGUSUNU veya SQL-92 sorgusunu kullanabilirsiniz. [Sorgu ipuçları](#query-tips) bölümünde daha fazla ipucu görüntüleyin. Sorgu belirtilmemişse, veri kümesindeki "objectApiName" içinde belirtilen Salesforce nesnesinin tüm verileri alınır. | Hayır (veri kümesindeki "objectApiName" belirtilmişse) |
-| readBehavior | Mevcut kayıtların sorgulanıp sorgulanmayacağını veya silinen kayıtlar dahil olmak üzere tüm kayıtları sorganıp sorgulanmayacağını gösterir. Belirtilmemişse, varsayılan davranış eski ' dir. <br>İzin verilen değerler: **sorgu** (varsayılan), **queryall**.  | Hayır |
+| readBehavior | Mevcut kayıtların sorgulanıp sorgulanmayacağını veya silinen kayıtlar dahil olmak üzere tüm kayıtları sorganıp sorgulanmayacağını gösterir. Belirtilmemişse, varsayılan davranış eski ' dir. <br>İzin verilen değerler: **sorgu** (varsayılan), **queryall** .  | Hayır |
 
 > [!IMPORTANT]
 > Tüm özel nesneler için **API adının** "__C" kısmı gereklidir.
@@ -239,15 +239,15 @@ Salesforce 'tan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü
 
 ### <a name="salesforce-as-a-sink-type"></a>Havuz türü olarak Salesforce
 
-Verileri Salesforce 'a kopyalamak için kopyalama etkinliğindeki havuz türünü **Salesforcesink**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **havuzunu** Kopyala bölümünde desteklenir.
+Verileri Salesforce 'a kopyalamak için kopyalama etkinliğindeki havuz türünü **Salesforcesink** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **havuzunu** Kopyala bölümünde desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği havuzunun Type özelliği **Salesforcesink**olarak ayarlanmalıdır. | Evet |
-| writeBehavior | İşlem için yazma davranışı.<br/>İzin verilen değerler **Insert** ve **upsert**. | Hayır (varsayılan değer ekler) |
+| tür | Kopyalama etkinliği havuzunun Type özelliği **Salesforcesink** olarak ayarlanmalıdır. | Evet |
+| writeBehavior | İşlem için yazma davranışı.<br/>İzin verilen değerler **Insert** ve **upsert** . | Hayır (varsayılan değer ekler) |
 | externalIdFieldName | Upsert işlem için dış KIMLIK alanının adı. Belirtilen alanın Salesforce nesnesinde "dış KIMLIK alanı" olarak tanımlanması gerekir. Karşılık gelen giriş verilerinde NULL değer bulunamaz. | "Upsert" için Evet |
 | writeBatchSize | Her toplu işte Salesforce 'a yazılan verilerin satır sayısı. | Hayır (varsayılan değer 5.000) |
-| ıgnorenullvalues | Bir yazma işlemi sırasında giriş verilerinden NULL değerlerin yoksayılıp yoksayılmayacağını gösterir.<br/>İzin verilen değerler **true** ve **false**şeklindedir.<br>- **Doğru**: bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde verileri hedef nesnede değiştirmeden bırakın. Ekleme işlemi yaparken tanımlanmış bir varsayılan değer ekleyin.<br/>- **Yanlış**: bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde hedef NESNESINDEKI verileri null olarak güncelleştirin. Ekleme işlemi yaparken NULL değer ekleyin. | Hayır (varsayılan değer false) |
+| ıgnorenullvalues | Bir yazma işlemi sırasında giriş verilerinden NULL değerlerin yoksayılıp yoksayılmayacağını gösterir.<br/>İzin verilen değerler **true** ve **false** şeklindedir.<br>- **Doğru** : bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde verileri hedef nesnede değiştirmeden bırakın. Ekleme işlemi yaparken tanımlanmış bir varsayılan değer ekleyin.<br/>- **Yanlış** : bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde hedef NESNESINDEKI verileri null olarak güncelleştirin. Ekleme işlemi yaparken NULL değer ekleyin. | Hayır (varsayılan değer false) |
 
 **Örnek: bir kopyalama etkinliğinde Salesforce havuzu**
 
@@ -298,11 +298,11 @@ Geçici olarak silinen kayıtları Salesforce geri dönüşüm kutusu 'ndan sorg
 
 Salesforce 'tan veri kopyalarken, SOQL sorgusu veya SQL sorgusu kullanabilirsiniz. Bu ikisinin farklı sözdizimi ve işlevsellik desteğine sahip olduğunu ve bunu karıştırmadığını unutmayın. Salesforce tarafından yerel olarak desteklenen SOQL sorgusunu kullanmanız önerilir. Aşağıdaki tabloda başlıca farklılıklar listelenmektedir:
 
-| Sözdizimi | SOQL modu | SQL modu |
+| Syntax | SOQL modu | SQL modu |
 |:--- |:--- |:--- |
 | Sütun seçimi | Sorguda kopyalanacak alanların numaralandırılması gerekir, ör. `SELECT field1, filed2 FROM objectname` | `SELECT *` , sütun seçimine ek olarak desteklenir. |
 | Tırnak işaretleri | Dosyalanmış/nesne adları tırnak içine alınamaz. | Alan/nesne adları tırnak içine alınabilir, ör. `SELECT "id" FROM "Account"` |
-| Tarih saat biçimi |  [Buradaki](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) ayrıntılara ve sonraki bölümde örneklere bakın. | [Buradaki](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) ayrıntılara ve sonraki bölümde örneklere bakın. |
+| Tarih saat biçimi |  [Buradaki](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) ayrıntılara ve sonraki bölümde örneklere bakın. | [Buradaki](/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) ayrıntılara ve sonraki bölümde örneklere bakın. |
 | Boole değerleri | Ve olarak temsil edilir `False` `True` , ör `SELECT … WHERE IsDeleted=True` . | 0 veya 1 olarak temsil edilir, ör `SELECT … WHERE IsDeleted=1` . |
 | Sütun yeniden adlandırma | Desteklenmez. | Desteklenir, örneğin: `SELECT a AS b FROM …` . |
 | İlişki | Desteklenir, `Account_vod__r.nvs_Country__c` ör. | Desteklenmez. |
@@ -311,8 +311,8 @@ Salesforce 'tan veri kopyalarken, SOQL sorgusu veya SQL sorgusu kullanabilirsini
 
 SOQL veya SQL sorgusu belirttiğinizde, tarih saat biçimi farklılığı ile ilgilenyin. Örneğin:
 
-* **Soql örneği**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
-* **SQL örneği**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
+* **Soql örneği** : `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
+* **SQL örneği** : `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
 ### <a name="error-of-malformed_query-truncated"></a>MALFORMED_QUERY hatası: kesildi
 
@@ -326,7 +326,7 @@ Salesforce 'tan verileri kopyaladığınızda, veri türleri Data Factory için 
 |:--- |:--- |
 | Otomatik sayı |Dize |
 | Onay kutusu |Boole |
-| Para Birimi |Ondalık |
+| Para birimi |Ondalık |
 | Tarih |DateTime |
 | Tarih/Saat |DateTime |
 | E-posta |Dize |

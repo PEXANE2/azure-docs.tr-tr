@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe9a50b5557e6165835abf1df67f7486c260c1c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2d69f9f70861799d941bbeaed7eb8d338fa8a5e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195917"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636179"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory kullanarak SQL Server veri taşıma
 
@@ -37,7 +37,7 @@ Bu makalede, SQL Server bir veritabanına veri taşımak için Azure Data Factor
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-Aşağıdaki veri depolarından verileri **bir SQL Server veritabanına**kopyalayabilirsiniz:
+Aşağıdaki veri depolarından verileri **bir SQL Server veritabanına** kopyalayabilirsiniz:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
@@ -54,13 +54,13 @@ Daha iyi performans için SQL Server aynı şirket içi makineye veya bulut VM �
 ## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak SQL Server veritabanına veri taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
 
-İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
+İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı** ' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager şablonu** , **.NET API** ve **REST API** . Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Bir **Veri Fabrikası**oluşturun. Bir veri fabrikası bir veya daha fazla işlem hattı içerebilir.
+1. Bir **Veri Fabrikası** oluşturun. Bir veri fabrikası bir veya daha fazla işlem hattı içerebilir.
 2. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun. Örneğin, bir SQL Server veritabanından Azure Blob depolama alanına veri kopyalıyorsanız, SQL Server veritabanınızı ve Azure Storage hesabınızı veri fabrikanıza bağlamak için iki bağlı hizmet oluşturursunuz. SQL Server veritabanına özgü bağlantılı hizmet özellikleri için bkz. [bağlı hizmet özellikleri](#linked-service-properties) bölümü.
 3. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. Son adımda bahsedilen örnekte, giriş verilerini içeren SQL Server veritabanınızdaki SQL tablosunu belirtmek için bir veri kümesi oluşturursunuz. Ve, blob kapsayıcısını ve SQL Server veritabanından kopyalanmış verileri tutan klasörü belirtmek için başka bir veri kümesi oluşturursunuz. SQL Server veritabanına özgü veri kümesi özellikleri için bkz. [DataSet özellikleri](#dataset-properties) bölümü.
 4. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun. Daha önce bahsedilen örnekte, kopyalama etkinliği için kaynak ve BlobSink olarak SqlSource ' u bir havuz olarak kullanacaksınız. Benzer şekilde, Azure Blob depolama 'dan SQL Server veritabanına kopyalama yapıyorsanız, kopyalama etkinliğinde BlobSource ve SqlSink kullanırsınız. SQL Server veritabanına özgü kopyalama etkinliği özellikleri için bkz. [kopyalama etkinliği özellikleri](#copy-activity-properties) bölümü. Bir veri deposunu kaynak veya havuz olarak kullanma hakkında ayrıntılı bilgi için, veri deponuzdaki önceki bölümde yer alan bağlantıya tıklayın.
@@ -76,13 +76,13 @@ Aşağıdaki tabloda SQL Server bağlı hizmetine özgü JSON öğeleri için a�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür |Type özelliği: **OnPremisesSqlServer**olarak ayarlanmalıdır. |Evet |
+| tür |Type özelliği: **OnPremisesSqlServer** olarak ayarlanmalıdır. |Evet |
 | Dizisi |SQL kimlik doğrulaması veya Windows kimlik doğrulaması kullanarak SQL Server veritabanına bağlanmak için gerekli connectionString bilgilerini belirtin. |Evet |
 | gatewayName |Data Factory hizmetinin SQL Server veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
-| username |Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. Örnek: **DomainName \\ Kullanıcı adı**. |Hayır |
+| username |Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. Örnek: **DomainName \\ Kullanıcı adı** . |Hayır |
 | password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
 
-**New-AzDataFactoryEncryptValue** cmdlet 'ini kullanarak kimlik bilgilerini şifreleyebilir ve aşağıdaki örnekte gösterildiği gibi bunları bağlantı dizesinde kullanabilirsiniz (**encryptedcredential** özelliği):
+**New-AzDataFactoryEncryptValue** cmdlet 'ini kullanarak kimlik bilgilerini şifreleyebilir ve aşağıdaki örnekte gösterildiği gibi bunları bağlantı dizesinde kullanabilirsiniz ( **encryptedcredential** özelliği):
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -136,7 +136,7 @@ TypeProperties bölümü her bir veri kümesi türü için farklıdır ve veri d
 | tableName |Bağlı hizmetin başvurduğu SQL Server veritabanı örneğindeki tablonun veya görünümün adı. |Evet |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Verileri bir SQL Server veritabanından taşıyorsanız, kopyalama etkinliğindeki kaynak türünü **SQLSource**olarak ayarlarsınız. Benzer şekilde, verileri bir SQL Server veritabanına taşıyorsanız, kopyalama etkinliğindeki havuz türünü **Sqlsink**olarak ayarlarsınız. Bu bölüm, SqlSource ve SqlSink tarafından desteklenen özelliklerin bir listesini sağlar.
+Verileri bir SQL Server veritabanından taşıyorsanız, kopyalama etkinliğindeki kaynak türünü **SQLSource** olarak ayarlarsınız. Benzer şekilde, verileri bir SQL Server veritabanına taşıyorsanız, kopyalama etkinliğindeki havuz türünü **Sqlsink** olarak ayarlarsınız. Bu bölüm, SqlSource ve SqlSink tarafından desteklenen özelliklerin bir listesini sağlar.
 
 Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları ve ilkeler gibi özellikler, tüm etkinlik türleri için kullanılabilir.
 
@@ -146,7 +146,7 @@ Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, 
 Ancak, etkinliğin typeProperties bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
 
 ### <a name="sqlsource"></a>SqlSource
-Bir kopyalama etkinliğindeki kaynak **SQLSource**türünde olduğunda, **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
+Bir kopyalama etkinliğindeki kaynak **SQLSource** türünde olduğunda, **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
@@ -161,7 +161,7 @@ Alternatif olarak, **sqlReaderStoredProcedureName** ve **storedProcedureParamete
 SqlReaderQuery veya sqlReaderStoredProcedureName belirtmezseniz, yapı bölümünde tanımlanan sütunlar SQL Server veritabanında çalıştırılacak bir seçme sorgusu oluşturmak için kullanılır. Veri kümesi tanımında yapı yoksa, tablodaki tüm sütunlar seçilir.
 
 > [!NOTE]
-> **SqlReaderStoredProcedureName**kullandığınızda JSON veri kümesindeki **TableName** özelliği için de bir değer belirtmeniz gerekir. Ancak bu tabloda gerçekleştirilen hiçbir doğrulama yoktur.
+> **SqlReaderStoredProcedureName** kullandığınızda JSON veri kümesindeki **TableName** özelliği için de bir değer belirtmeniz gerekir. Ancak bu tabloda gerçekleştirilen hiçbir doğrulama yoktur.
 
 ### <a name="sqlsink"></a>SqlSink
 **Sqlsink** aşağıdaki özellikleri destekler:
@@ -172,7 +172,7 @@ SqlReaderQuery veya sqlReaderStoredProcedureName belirtmezseniz, yapı bölümü
 | writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
 | sqlWriterCleanupScript |Belirli bir dilim verilerinin temizlenmesi gibi, yürütülecek kopyalama etkinliğinin sorgusunu belirtin. Daha fazla bilgi için bkz. [yinelenebilir kopyalama](#repeatable-copy) bölümü. |Sorgu ekstresi. |Hayır |
 | Dilimleyiceıdentifiercolumnname |Yeniden çalıştırıldığında belirli bir dilimin verilerini temizlemek için kullanılan otomatik olarak oluşturulan dilim tanımlayıcısı ile doldurulacak kopyalama etkinliğinin sütun adını belirtin. Daha fazla bilgi için bkz. [yinelenebilir kopyalama](#repeatable-copy) bölümü. |Binary (32) veri türüne sahip bir sütunun sütun adı. |Hayır |
-| sqlWriterStoredProcedureName |Hedef tabloya kaynak verilerinin nasıl uygulanacağını tanımlayan saklı yordamın adı (örneğin, kendi iş mantığınızı kullanarak). <br/><br/>Bu saklı yordamın **toplu iş başına çağrılacağını**aklınızda görürsünüz. Yalnızca bir kez çalıştırılan ve kaynak verilerle hiçbir şey olmayan bir işlem yapmak isterseniz, örneğin Delete/Truncate, `sqlWriterCleanupScript` özelliği kullanın. |Saklı yordamın adı. |Hayır |
+| sqlWriterStoredProcedureName |Hedef tabloya kaynak verilerinin nasıl uygulanacağını tanımlayan saklı yordamın adı (örneğin, kendi iş mantığınızı kullanarak). <br/><br/>Bu saklı yordamın **toplu iş başına çağrılacağını** aklınızda görürsünüz. Yalnızca bir kez çalıştırılan ve kaynak verilerle hiçbir şey olmayan bir işlem yapmak isterseniz, örneğin Delete/Truncate, `sqlWriterCleanupScript` özelliği kullanın. |Saklı yordamın adı. |Hayır |
 | storedProcedureParameters |Saklı yordamın parametreleri. |Ad/değer çiftleri. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. |Hayır |
 | sqlWriterTableType |Saklı yordamda kullanılacak tablo türü adını belirtin. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilirler. |Tablo türü adı. |Hayır |
 
@@ -310,7 +310,7 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 ```
 **Kopyalama etkinliği içeren işlem hattı**
 
-İşlem hattı, bu giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **SQLSource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sqlreaderquery** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
+İşlem hattı, bu giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **SQLSource** olarak ayarlanır ve **Havuz** türü **blobsink** olarak ayarlanır. **Sqlreaderquery** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
 
 ```json
 {
@@ -492,7 +492,7 @@ Veriler her saat yeni bir bloba alınır (sıklık: saat, Aralık: 1). Blob içi
 ```
 **Kopyalama etkinliği içeren işlem hattı**
 
-İşlem hattı, bu giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **blobsource** olarak ayarlanır ve **Havuz** türü **sqlsink**olarak ayarlanır.
+İşlem hattı, bu giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **blobsource** olarak ayarlanır ve **Havuz** türü **sqlsink** olarak ayarlanır.
 
 ```json
 {
@@ -542,20 +542,20 @@ Veriler her saat yeni bir bloba alınır (sıklık: saat, Aralık: 1). Blob içi
 ```
 
 ## <a name="troubleshooting-connection-issues"></a>Bağlantı sorunlarını giderme
-1. SQL Server uzak bağlantıları kabul edecek şekilde yapılandırın. **SQL Server Management Studio**başlatın, **sunucu**' ya sağ tıklayın ve **Özellikler**' e tıklayın. Listeden **Bağlantılar** ' ı seçin ve **sunucuya uzak bağlantılara izin ver**' i işaretleyin.
+1. SQL Server uzak bağlantıları kabul edecek şekilde yapılandırın. **SQL Server Management Studio** başlatın, **sunucu** ' ya sağ tıklayın ve **Özellikler** ' e tıklayın. Listeden **Bağlantılar** ' ı seçin ve **sunucuya uzak bağlantılara izin ver** ' i işaretleyin.
 
     ![Uzak bağlantıları etkinleştir](./media/data-factory-sqlserver-connector/AllowRemoteConnections.png)
 
-    Ayrıntılı adımlar için bkz. [Uzaktan erişim sunucu yapılandırma seçeneğini yapılandırma](https://msdn.microsoft.com/library/ms191464.aspx) .
-2. **SQL Server Yapılandırma Yöneticisi**başlatın. İstediğiniz örnek için **SQL Server ağ yapılandırması** ' nı GENIŞLETIN ve **MSSQLSERVER protokolleri**' ni seçin. Sağ bölmedeki protokolleri görmeniz gerekir. **TCP/IP ' ye** sağ tıklayıp **Etkinleştir**' i tıklayarak TCP/IP 'yi etkinleştirin.
+    Ayrıntılı adımlar için bkz. [Uzaktan erişim sunucu yapılandırma seçeneğini yapılandırma](/sql/database-engine/configure-windows/configure-the-remote-access-server-configuration-option) .
+2. **SQL Server Yapılandırma Yöneticisi** başlatın. İstediğiniz örnek için **SQL Server ağ yapılandırması** ' nı GENIŞLETIN ve **MSSQLSERVER protokolleri** ' ni seçin. Sağ bölmedeki protokolleri görmeniz gerekir. **TCP/IP ' ye** sağ tıklayıp **Etkinleştir** ' i tıklayarak TCP/IP 'yi etkinleştirin.
 
     ![TCP/IP 'yi etkinleştir](./media/data-factory-sqlserver-connector/EnableTCPProptocol.png)
 
-    Bkz. TCP/IP protokolünü etkinleştirmenin ayrıntıları ve alternatif yolları için [sunucu ağ protokolünü etkinleştirme veya devre dışı bırakma](https://msdn.microsoft.com/library/ms191294.aspx) .
+    Bkz. TCP/IP protokolünü etkinleştirmenin ayrıntıları ve alternatif yolları için [sunucu ağ protokolünü etkinleştirme veya devre dışı bırakma](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol) .
 3. Aynı pencerede, TCP/IP **Özellikler** penceresini başlatmak için **TCP/IP** ' ye çift tıklayın.
-4. **IP adresleri** sekmesine geçin. **IPAll** bölümünü görmek için aşağı kaydırın. **TCP bağlantı noktasını**(varsayılan **1433**) göz önünde bulunur.
+4. **IP adresleri** sekmesine geçin. **IPAll** bölümünü görmek için aşağı kaydırın. **TCP bağlantı noktasını** (varsayılan **1433** ) göz önünde bulunur.
 5. Bu bağlantı noktası üzerinden gelen trafiğe izin vermek için makinede **Windows Güvenlik Duvarı için bir kural** oluşturun.
-6. **Bağlantıyı doğrula**: tam nitelikli adı kullanarak SQL Server bağlanmak için, farklı bir makineden SQL Server Management Studio kullanın. Örneğin: " \<machine\> . \<domain\> . Corp. \<company\> . com, 1433. "
+6. **Bağlantıyı doğrula** : tam nitelikli adı kullanarak SQL Server bağlanmak için, farklı bir makineden SQL Server Management Studio kullanın. Örneğin: " \<machine\> . \<domain\> . Corp. \<company\> . com, 1433. "
 
    > [!IMPORTANT]
    > 
@@ -663,7 +663,7 @@ Eşleme, ADO.NET için SQL Server veri türü eşlemesi ile aynıdır.
 | Türünde |DateTimeOffset |
 | Ondalık |Ondalık |
 | FıLESTREAM özniteliği (varbinary (max)) |Byte [] |
-| Kayan |Çift |
+| Float |Çift |
 | image |Byte [] |
 | int |Int32 |
 | etmenize |Ondalık |
@@ -678,7 +678,7 @@ Eşleme, ADO.NET için SQL Server veri türü eşlemesi ile aynıdır.
 | küçük para |Ondalık |
 | sql_variant |Nesne |
 | metin |Dize, Char [] |
-| saat |TimeSpan |
+| time |TimeSpan |
 | timestamp |Byte [] |
 | tinyint |Bayt |
 | uniqueidentifier |Guid |

@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 7183a9c75c78a973b53a9c8c065d62c592b13151
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6c0908d2656d9d6464ae1f94d5b0cd68f759530a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441117"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637352"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -36,6 +36,7 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
 - Yapılandırma Şu anda yalnızca CLı veya REST istekleri kullanılarak gerçekleştirilebilir. Azure portal veya PowerShell kullanamazsınız.
+- ```--export-all-tables```CLI ve REST seçenekleri desteklenmez ve kaldırılacak. Dışarı aktarma kurallarında Tablo listesini açıkça sağlamanız gerekir.
 - Desteklenen tablolar şu anda aşağıdaki [desteklenen tablolar](#supported-tables) bölümünde yer aldığı sınırlandırıldı. Veri dışa aktarma kuralı desteklenmeyen bir tablo içeriyorsa, işlem başarılı olur, ancak bu tablo için hiçbir veri aktarılmaz. Veri dışa aktarma kuralı mevcut olmayan bir tablo içeriyorsa, hata ile başarısız olur ```Table <tableName> does not exist in the workspace.```
 - Log Analytics çalışma alanınız aşağıdakiler dışında herhangi bir bölgede olabilir:
   - İsviçre Kuzey
@@ -63,7 +64,7 @@ Verilerin dışarı aktarılması, hedefin kullanılamaz durumda olması durumun
 ## <a name="export-destinations"></a>Hedefleri dışarı aktar
 
 ### <a name="storage-account"></a>Depolama hesabı
-Veriler her saat için depolama hesaplarına gönderilir. Veri dışa aktarma yapılandırması, depolama hesabındaki her tablo için, adı *ve ardından tablonun adını taşıyan* bir kapsayıcı oluşturur. Örneğin, *securityevent* tablosu, *har-securityevent*adlı bir kapsayıcıya gönderilir.
+Veriler her saat için depolama hesaplarına gönderilir. Veri dışa aktarma yapılandırması, depolama hesabındaki her tablo için, adı *ve ardından tablonun adını taşıyan* bir kapsayıcı oluşturur. Örneğin, *securityevent* tablosu, *har-securityevent* adlı bir kapsayıcıya gönderilir.
 
 Depolama hesabı blob yolu *WorkspaceResourceId =/Subscriptions/Subscription-id/ResourceGroups/ \<resource-group\> /providers/Microsoft.operationalinsights/Workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d = \<two-digit numeric day\> /h = \<two-digit 24-hour clock hour\> /m = 00/PT1H.js'* dir. Ekleme Blobları depolama alanındaki 50K yazmaları ile sınırlı olduğundan, eklenen BLOB sayısı yüksek ise, eklenen Blobların sayısı uzatabilirler. Bu tür bir örnekte Blobların adlandırma deseninin PT1H_ #. JSON olması, burada #, artımlı blob sayısıdır.
 
@@ -74,7 +75,7 @@ Depolama hesabı veri biçimi [JSON hatdır](diagnostic-logs-append-blobs.md). B
 Log Analytics veri dışa aktarma, zaman tabanlı bekletme ilkelerinde *allowProtectedAppendWrites* ayarı etkinse, sabit depolama hesaplarına ekleme Blobları yazabilir. Bu, bir ekleme blobuna yeni blokların yazılmasına izin verir, bu sayede koruma ve uyumluluğu koruma sağlar. Bkz. [korumalı ekleme Blobları yazmasına Izin ver](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
 
 ### <a name="event-hub"></a>Olay hub'ı
-Veriler, Azure Izleyici 'ye ulaştığında neredeyse gerçek zamanlı olarak olay hub 'ınıza gönderilir. Bir olay hub 'ı, adı " *ve ardından tablonun adı ile* dışarı aktarma yaptığınız her veri türü için oluşturulur. Örneğin, *securityevent* tablosu, *har-securityevent*adlı bir olay hub 'ına gönderilir. Dışarı aktarılmış verilerin belirli bir olay hub 'ına ulaşmasını istiyorsanız veya 47 karakter sınırını aşan bir ada sahip bir tablonuz varsa, kendi olay hub 'ınızın adını girip tüm tabloları buna aktarabilirsiniz.
+Veriler, Azure Izleyici 'ye ulaştığında neredeyse gerçek zamanlı olarak olay hub 'ınıza gönderilir. Bir olay hub 'ı, adı " *ve ardından tablonun adı ile* dışarı aktarma yaptığınız her veri türü için oluşturulur. Örneğin, *securityevent* tablosu, *har-securityevent* adlı bir olay hub 'ına gönderilir. Dışarı aktarılmış verilerin belirli bir olay hub 'ına ulaşmasını istiyorsanız veya 47 karakter sınırını aşan bir ada sahip bir tablonuz varsa, kendi olay hub 'ınızın adını girip tanımlanmış tablolar için tüm verileri buna aktarabilirsiniz.
 
 İçe aktarılmış verilerin hacmi genellikle zaman içinde artar ve daha büyük aktarım hızlarını işlemek ve kısıtlama senaryolarından ve veri gecikmesinden kaçınmak için Olay Hub 'ı ölçeğinin artması gerekir. İşleme birimlerinin sayısını otomatik olarak artırmak ve kullanım ihtiyaçlarını karşılamak için Event Hubs otomatik Şişir özelliğini kullanmanız gerekir. Ayrıntılar için bkz. [Azure Event Hubs üretilen iş birimlerini otomatik olarak ölçeklendirme](../../event-hubs/event-hubs-auto-inflate.md) .
 
@@ -98,7 +99,7 @@ Log Analytics verilerini dışarı aktarmaya olanak tanımak için aşağıdaki 
 
 - Microsoft. Insights
 
-Bu kaynak sağlayıcısı muhtemelen çoğu Azure Izleyici kullanıcısı için zaten kayıtlı olacak. Doğrulamak için Azure portal **abonelikler** ' e gidin. Aboneliğinizi seçin ve ardından menüdeki **Ayarlar** bölümünde **kaynak sağlayıcıları** ' na tıklayın. **Microsoft. Insights**'ı bulun. Durumu **kayıtlıysa**, zaten kayıtlı olur. Aksi takdirde, kaydetmek için **Kaydet** ' e tıklayın.
+Bu kaynak sağlayıcısı muhtemelen çoğu Azure Izleyici kullanıcısı için zaten kayıtlı olacak. Doğrulamak için Azure portal **abonelikler** ' e gidin. Aboneliğinizi seçin ve ardından menüdeki **Ayarlar** bölümünde **kaynak sağlayıcıları** ' na tıklayın. **Microsoft. Insights** 'ı bulun. Durumu **kayıtlıysa** , zaten kayıtlı olur. Aksi takdirde, kaydetmek için **Kaydet** ' e tıklayın.
 
 [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/management/resource-providers-and-types.md)bölümünde açıklandığı gibi, bir kaynak sağlayıcısını kaydetmek için de kullanılabilir yöntemlerden birini kullanabilirsiniz. Aşağıda PowerShell kullanan örnek bir komut verilmiştir:
 
@@ -107,13 +108,18 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 ```
 
 ### <a name="allow-trusted-microsoft-services"></a>Güvenilen Microsoft hizmetlerine izin ver
-Depolama hesabınızı seçili ağlardan erişime izin verecek şekilde yapılandırdıysanız, Azure Izleyici 'nin hesaba yazmasına izin vermek için bir özel durum eklemeniz gerekir. Depolama Hesabınıza yönelik **güvenlik duvarları ve sanal ağlardan** , **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver**' i seçin.
+Depolama hesabınızı seçili ağlardan erişime izin verecek şekilde yapılandırdıysanız, Azure Izleyici 'nin hesaba yazmasına izin vermek için bir özel durum eklemeniz gerekir. Depolama Hesabınıza yönelik **güvenlik duvarları ve sanal ağlardan** , **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver** ' i seçin.
 
 [![Depolama hesabı güvenlik duvarları ve sanal ağlar](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
 
 ### <a name="create-or-update-data-export-rule"></a>Veri dışarı aktarma kuralı oluştur veya güncelleştir
-Veri dışa aktarma kuralı, tüm tablolardan veya belirli bir tablo kümesinden tek bir hedefe dışarı aktarılacak verileri tanımlar. Birden çok hedefe göndermeniz gerekiyorsa birden çok kural oluşturun.
+Veri dışa aktarma kuralı, bir tablo kümesi için tek bir hedefe verilecek verileri tanımlar. Her hedef için bir kural oluşturabilirsiniz.
+
+Çalışma alanınızdaki tabloları görüntülemek için aşağıdaki CLı komutunu kullanın. İstediğiniz tabloları kopyalayıp veri dışa aktarma kuralına dahil etmek için yardımcı olabilir.
+```azurecli
+az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
+```
 
 CLı kullanarak bir depolama hesabına veri dışarı aktarma kuralı oluşturmak için aşağıdaki komutu kullanın.
 
@@ -142,8 +148,8 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
             "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name"
         },
         "tablenames": [
-"table1",
-    "table2" 
+            "table1",
+            "table2" 
         ],
         "enable": true
     }
@@ -165,9 +171,26 @@ Aşağıda bir olay hub 'ı için REST isteğinin örnek bir gövdesi verilmişt
         "enable": true
     }
 }
-
 ```
 
+Aşağıda, Olay Hub 'ı adının sağlandığı bir olay hub 'ı için REST isteği için örnek bir gövde verilmiştir. Bu durumda, tüm aktarılmış veriler bu olay hub 'ına gönderilir.
+
+```json
+{
+    "properties": {
+        "destination": {
+            "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.EventHub/namespaces/eventhub-namespaces-name",
+            "metaData": {
+                "EventHubName": "eventhub-name"
+        },
+        "tablenames": [
+            "table1",
+            "table2"
+        ],
+        "enable": true
+    }
+}
+```
 
 ## <a name="view-data-export-configuration"></a>Veri dışarı aktarma yapılandırmasını görüntüle
 CLı kullanarak bir veri dışa aktarma kuralının yapılandırmasını görüntülemek için aşağıdaki komutu kullanın.

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
-ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3af38f4cae53807c7268f00017f02f1325116fb6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74932060"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637063"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell betiği-Azure Data Factory kullanarak buluttaki verileri dönüştürme
 
@@ -25,8 +25,8 @@ Bu örnek PowerShell betiği, bir Azure HDInsight Spark kümesinde Spark program
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
-* **Azure depolama hesabı**. Bir Python betiği ve bir giriş dosyası oluşturun ve bunları Azure depolama 'ya yükleyin. Spark programının çıktısı bu depolama hesabında depolanır. İsteğe bağlı Spark kümesi, birincil depolama alanıyla aynı depolama hesabını kullanır.  
+## <a name="prerequisites"></a>Ön koşullar
+* **Azure depolama hesabı** . Bir Python betiği ve bir giriş dosyası oluşturun ve bunları Azure depolama 'ya yükleyin. Spark programının çıktısı bu depolama hesabında depolanır. İsteğe bağlı Spark kümesi, birincil depolama alanıyla aynı depolama hesabını kullanır.  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Python betiğini Blob Depolama hesabınıza yükleme
 1. Aşağıdaki içerikle **WordCount_Spark. Kopyala** adlı bir Python dosyası oluşturun: 
@@ -54,7 +54,7 @@ Bu örnek PowerShell betiği, bir Azure HDInsight Spark kümesinde Spark program
     if __name__ == "__main__":
         main()
     ```
-2. ** &lt; StorageAccountName &gt; ** ' i Azure depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
+2. **&lt; StorageAccountName &gt;** ' i Azure depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
 3. Azure Blob depolama alanınızda henüz yoksa **adftutorial** adlı bir kapsayıcı oluşturun. 
 4. **Spark** adlı bir klasör oluşturun.
 5. **Spark** klasörünün altında **script** adlı bir alt klasör oluşturun. 
@@ -102,6 +102,6 @@ Bu betik şu komutları kullanır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).
 
 Ek Azure Data Factory PowerShell betiği örnekleri [Azure Data Factory PowerShell örneklerinde](../samples-powershell.md)bulunabilir.

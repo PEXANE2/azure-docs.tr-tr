@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 039afdafdccbefe03b5b366a89256409fda482e9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 37eac4acab7232e44f94e852b1c04c5549447b09
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368868"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637692"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory'de veri dönüştürme
 
@@ -49,7 +49,7 @@ Veri akışlarını eşleme, Azure Data Factory ' de görsel olarak tasarlanan v
 
 ### <a name="wrangling-data-flows"></a>Wrangling veri akışları
 
-Azure Data Factory ' deki wrangling veri akışları, bulut ölçeğinde kod içermeyen veri hazırlığı yapmanıza olanak sağlar. Denetimi veri akışları, [çevrimiçi Power Query](https://docs.microsoft.com/power-query/) ile tümleşir ve Spark yürütmesi aracılığıyla bulut ölçeğinde veriler için Power Query M işlevlerini kullanılabilir hale getirir. Daha fazla bilgi için bkz. [denetimi veri akışları](wrangling-data-flow-overview.md).
+Azure Data Factory ' deki wrangling veri akışları, bulut ölçeğinde kod içermeyen veri hazırlığı yapmanıza olanak sağlar. Denetimi veri akışları, [çevrimiçi Power Query](/power-query/) ile tümleşir ve Spark yürütmesi aracılığıyla bulut ölçeğinde veriler için Power Query M işlevlerini kullanılabilir hale getirir. Daha fazla bilgi için bkz. [denetimi veri akışları](wrangling-data-flow-overview.md).
 
 ## <a name="external-transformations"></a>Dış dönüşümler
 
@@ -103,8 +103,8 @@ R yüklü HDInsight kümenizde R betiklerini çalıştırmak için özel bir etk
 ### <a name="compute-environments"></a>İşlem ortamları
 İşlem ortamı için bağlı bir hizmet oluşturun ve ardından bir dönüştürme etkinliği tanımlarken bağlı hizmeti kullanın. Data Factory tarafından desteklenen iki tür işlem ortamı vardır. 
 
-- **İsteğe**bağlı: Bu durumda, bilgi işlem ortamı Data Factory tarafından tam olarak yönetilir. Bir iş, verileri işlemek ve iş tamamlandığında kaldırılmadan önce Data Factory hizmeti tarafından otomatik olarak oluşturulur. İş yürütme, küme yönetimi ve önyükleme eylemleri için isteğe bağlı işlem ortamının ayrıntılı ayarlarını yapılandırabilir ve kontrol edebilirsiniz. 
-- **Kendinizinkini getir**: Bu durumda, kendi bilgi işlem ortamınızı (örneğin HDInsight kümesi) Data Factory bağlı bir hizmet olarak kaydedebilirsiniz. Bilgi işlem ortamı sizin tarafınızdan yönetilir ve Data Factory hizmeti tarafından etkinlikleri yürütmek için kullanılır. 
+- **İsteğe** bağlı: Bu durumda, bilgi işlem ortamı Data Factory tarafından tam olarak yönetilir. Bir iş, verileri işlemek ve iş tamamlandığında kaldırılmadan önce Data Factory hizmeti tarafından otomatik olarak oluşturulur. İş yürütme, küme yönetimi ve önyükleme eylemleri için isteğe bağlı işlem ortamının ayrıntılı ayarlarını yapılandırabilir ve kontrol edebilirsiniz. 
+- **Kendinizinkini getir** : Bu durumda, kendi bilgi işlem ortamınızı (örneğin HDInsight kümesi) Data Factory bağlı bir hizmet olarak kaydedebilirsiniz. Bilgi işlem ortamı sizin tarafınızdan yönetilir ve Data Factory hizmeti tarafından etkinlikleri yürütmek için kullanılır. 
 
 Data Factory tarafından desteklenen işlem hizmetleri hakkında bilgi edinmek için bkz. [Işlem bağlantılı hizmetleri](compute-linked-services.md) makalesi. 
 

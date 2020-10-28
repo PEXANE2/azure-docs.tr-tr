@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ce40d1a46a6448e678a8a86812d08e9013310d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28169e43d0e6949a16cc56c7e7d5d91d6db1ef57
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086917"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636927"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Azure Data Factory kopyalama sihirbazıyla verileri kolayca kopyalama veya taşıma
 > [!NOTE]
@@ -62,7 +62,7 @@ Sihirbaz, kaynak verileri filtrelemenizi ve yalnızca hedef/havuz veri deposuna 
 ![İfadeleri doğrula](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Azure Blob klasöründeki verilerin filtrelenmesi
-Çalışma zamanında belirlenen klasörden verileri [sistem değişkenlerine](data-factory-functions-variables.md#data-factory-system-variables)göre kopyalamak için klasör yolundaki değişkenleri kullanabilirsiniz. Desteklenen değişkenler şunlardır: **{Year}**, **{Month}**, **{Day}**, **{Hour}**, **{Minute}** ve **{Custom}**. Örnek: ınputfolder/{year}/{month}/{Day}.
+Çalışma zamanında belirlenen klasörden verileri [sistem değişkenlerine](data-factory-functions-variables.md#data-factory-system-variables)göre kopyalamak için klasör yolundaki değişkenleri kullanabilirsiniz. Desteklenen değişkenler şunlardır: **{Year}** , **{Month}** , **{Day}** , **{Hour}** , **{Minute}** ve **{Custom}** . Örnek: ınputfolder/{year}/{month}/{Day}.
 
 Giriş klasörlerinizi aşağıdaki biçimde kullandığınızı varsayalım:
 
@@ -73,11 +73,11 @@ Giriş klasörlerinizi aşağıdaki biçimde kullandığınızı varsayalım:
 ...
 ```
 
-**Dosya veya klasör**için **Araştır** düğmesine tıklayın, bu klasörlerden birine gidin (örneğin, 2016->03->01->02) ve **Seç**' e tıklayın. `2016/03/01/02`Metin kutusunda görmeniz gerekir. Şimdi, **2016** öğesini { **Year}**, **03** ile { **Month**}, **01** ile { **Day**} ve **02** ile **{Hour}** ile değiştirin ve SEKME tuşuna basın. Bu dört değişkenin biçimini seçmek için açılan listeleri görmeniz gerekir:
+**Dosya veya klasör** için **Araştır** düğmesine tıklayın, bu klasörlerden birine gidin (örneğin, 2016->03->01->02) ve **Seç** ' e tıklayın. `2016/03/01/02`Metin kutusunda görmeniz gerekir. Şimdi, **2016** öğesini { **Year}** , **03** ile { **Month** }, **01** ile { **Day** } ve **02** ile **{Hour}** ile değiştirin ve SEKME tuşuna basın. Bu dört değişkenin biçimini seçmek için açılan listeleri görmeniz gerekir:
 
 ![Sistem değişkenlerini kullanma](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Aşağıdaki ekran görüntüsünde gösterildiği gibi, **özel** bir değişken ve [desteklenen biçim dizelerini](https://msdn.microsoft.com/library/8kb3ddd4.aspx)de kullanabilirsiniz. Bu yapıya sahip bir klasör seçmek için, önce **Araştır** düğmesini kullanın. Sonra bir değeri **{Custom}** ile değiştirin ve biçim dizesini girebileceğiniz metin kutusunu görmek için Tab tuşuna basın.     
+Aşağıdaki ekran görüntüsünde gösterildiği gibi, **özel** bir değişken ve [desteklenen biçim dizelerini](/dotnet/standard/base-types/custom-date-and-time-format-strings)de kullanabilirsiniz. Bu yapıya sahip bir klasör seçmek için, önce **Araştır** düğmesini kullanın. Sonra bir değeri **{Custom}** ile değiştirin ve biçim dizesini girebileceğiniz metin kutusunu görmek için Tab tuşuna basın.     
 
 ![Özel değişken kullanma](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
@@ -95,4 +95,3 @@ Tek seferlik kopyalama işlemi, veri hareketini bir kaynaktan hedefe yalnızca b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için Data Factory kopyalama Sihirbazı 'Nı kullanmaya yönelik hızlı bir anlatım için bkz. [öğretici: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md).
-

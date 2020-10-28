@@ -7,18 +7,18 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 4297cc83ab3fa280e15480aefcd5aef8734c65ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee82d3f35b6b2b50b001e065eb81447738526b1c
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531050"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635380"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Eşleme veri akışında derleme ifadeleri
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Eşleme veri akışı ' nda birçok dönüştürme özelliği ifadeler olarak girilir. Bu ifadeler, çalışma zamanında Spark veri türü sonucunu değerlendiren sütun değerleri, parametreler, işlevler, işleçler ve değişmez değerlerdir. Veri akışları eşleme, **Ifade Oluşturucusu**olarak adlandırılan bu ifadeleri oluşturma konusunda size yardımcı olmak için adanmış bir deneyimle sahiptir. Vurgulama, sözdizimi denetimi ve otomatik tamamlama için  [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense) kod tamamlamayı kullanarak, ifade Oluşturucusu, veri akışı oluşturmayı kolay hale getirmek için tasarlanmıştır. Bu makalede, iş mantığınızı etkin bir şekilde oluşturmak için ifade oluşturucusunun nasıl kullanılacağı açıklanmaktadır.
+Eşleme veri akışı ' nda birçok dönüştürme özelliği ifadeler olarak girilir. Bu ifadeler, çalışma zamanında Spark veri türü sonucunu değerlendiren sütun değerleri, parametreler, işlevler, işleçler ve değişmez değerlerdir. Veri akışları eşleme, **Ifade Oluşturucusu** olarak adlandırılan bu ifadeleri oluşturma konusunda size yardımcı olmak için adanmış bir deneyimle sahiptir. Vurgulama, sözdizimi denetimi ve otomatik tamamlama için  [IntelliSense](/visualstudio/ide/using-intellisense) kod tamamlamayı kullanarak, ifade Oluşturucusu, veri akışı oluşturmayı kolay hale getirmek için tasarlanmıştır. Bu makalede, iş mantığınızı etkin bir şekilde oluşturmak için ifade oluşturucusunun nasıl kullanılacağı açıklanmaktadır.
 
 ![İfade Oluşturucusu](media/data-flow/expresion-builder.png "İfade Oluşturucusu")
 
@@ -32,7 +32,7 @@ Eşleme veri akışı ' nda birçok dönüştürme özelliği ifadeler olarak gi
 
 ![Mavi ifade kutusu](media/data-flow/expressionbox.png "İfade Oluşturucusu")
 
-Bir eşleşen veya gruplandırma koşulunda sütunlara başvuru yaptığınızda bir ifade, sütunlardaki değerleri ayıklayabilir. Bir ifade oluşturmak için, **hesaplanan sütun**' u seçin.
+Bir eşleşen veya gruplandırma koşulunda sütunlara başvuru yaptığınızda bir ifade, sütunlardaki değerleri ayıklayabilir. Bir ifade oluşturmak için, **hesaplanan sütun** ' u seçin.
 
 ![Hesaplanan sütun seçeneği](media/data-flow/computedcolumn.png "İfade Oluşturucusu")
 

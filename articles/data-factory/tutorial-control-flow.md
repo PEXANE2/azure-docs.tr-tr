@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 6eaf00679566aa8dfb7a90db95228349c81fcfec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a6fc68ddcb86c7ba768f59519cfb4273d381fab
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983407"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637709"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
 
@@ -40,11 +40,11 @@ Bu öğreticide, aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir
 > * Bir işlem hattı çalıştırması başlatma
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme
 
-Bu öğreticide .NET SDK kullanılır. Azure Data Factory etkileşimde bulunmak için diğer mekanizmaları kullanabilirsiniz. Hızlı başlangıç Data Factory için bkz. [5 dakikalık hızlı](/azure/data-factory/quickstart-create-data-factory-portal)başlangıçlara bakın.
+Bu öğreticide .NET SDK kullanılır. Azure Data Factory etkileşimde bulunmak için diğer mekanizmaları kullanabilirsiniz. Hızlı başlangıç Data Factory için bkz. [5 dakikalık hızlı](./quickstart-create-data-factory-portal.md)başlangıçlara bakın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure depolama hesabı. BLOB depolama alanını kaynak veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, bkz. [depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 * Azure Depolama Gezgini. Bu aracı yüklemek için bkz. [Azure Depolama Gezgini](https://storageexplorer.com/).
@@ -54,33 +54,33 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Data Factory Şu anda kullanılabildiği Azure bölgelerinin listesi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri depoları ve hesaplar diğer bölgelerde olabilir. Depolar Azure Storage ve Azure SQL veritabanı 'nı içerir. Data Factory, ' nin kullandığı HDInsight içerir.
 
-[Azure Active Directory uygulaması oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)bölümünde açıklandığı gibi bir uygulama oluşturun. Aynı makaledeki yönergeleri izleyerek uygulamayı **katkıda bulunan** rolüne atayın. Bu öğreticinin sonraki bölümleri için **uygulama (istemci) kimliği** ve **Dizin (kiracı) kimliği**gibi birkaç değer gerekir.
+[Azure Active Directory uygulaması oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)bölümünde açıklandığı gibi bir uygulama oluşturun. Aynı makaledeki yönergeleri izleyerek uygulamayı **katkıda bulunan** rolüne atayın. Bu öğreticinin sonraki bölümleri için **uygulama (istemci) kimliği** ve **Dizin (kiracı) kimliği** gibi birkaç değer gerekir.
 
 ### <a name="create-a-blob-table"></a>Blob tablosu oluşturma
 
-1. Bir metin düzenleyicisi açın. Aşağıdaki metni kopyalayın ve *input.txt*olarak yerel olarak kaydedin.
+1. Bir metin düzenleyicisi açın. Aşağıdaki metni kopyalayın ve *input.txt* olarak yerel olarak kaydedin.
 
    ```
    Ethel|Berg
    Tamika|Walsh
    ```
 
-1. Azure Depolama Gezgini açın. Depolama hesabınızı genişletin. **Blob Kapsayıcıları**'na sağ tıklayın ve **Blob Kapsayıcısı Oluştur**'u seçin.
+1. Azure Depolama Gezgini açın. Depolama hesabınızı genişletin. **Blob Kapsayıcıları** 'na sağ tıklayın ve **Blob Kapsayıcısı Oluştur** 'u seçin.
 1. Yeni kapsayıcıyı adlandırın *adfv2branch* ve *input.txt* dosyanızı kapsayıcıya eklemek için **karşıya yükle** ' yi seçin.
 
 ## <a name="create-visual-studio-project"></a>Visual Studio projesi oluşturma<a name="create-visual-studio-project"></a>
 
 C# .NET konsol uygulaması oluşturma:
 
-1. Visual Studio 'Yu başlatın ve **Yeni proje oluştur**' u seçin.
-1. **Yeni proje oluştur**bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
-1. Projeyi *ADFv2BranchTutorial*olarak adlandırın.
-1. **.NET Version 4.5.2** veya üstünü seçip **Oluştur**' u seçin.
+1. Visual Studio 'Yu başlatın ve **Yeni proje oluştur** ' u seçin.
+1. **Yeni proje oluştur** bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri** ' yi seçin.
+1. Projeyi *ADFv2BranchTutorial* olarak adlandırın.
+1. **.NET Version 4.5.2** veya üstünü seçip **Oluştur** ' u seçin.
 
 ### <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
-1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin.
-1. **Paket Yöneticisi konsolunda**, paketleri yüklemek için aşağıdaki komutları çalıştırın. Ayrıntılar için [Microsoft. Azure. Management. DataFactory NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) inceleyin.
+1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu** ' nu seçin.
+1. **Paket Yöneticisi konsolunda** , paketleri yüklemek için aşağıdaki komutları çalıştırın. Ayrıntılar için [Microsoft. Azure. Management. DataFactory NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) inceleyin.
 
    ```powershell
    Install-Package Microsoft.Azure.Management.DataFactory
@@ -211,7 +211,7 @@ Bu bölümde, biri kaynak ve bir havuz için olmak üzere iki veri kümesi oluş
 
 ### <a name="create-a-dataset-for-a-source-azure-blob"></a>Kaynak Azure blobu için veri kümesi oluşturma
 
-*Azure blob veri kümesi*oluşturan bir yöntem ekleyin. Desteklenen özellikler ve ayrıntılar hakkında daha fazla bilgi için bkz. [Azure blob veri kümesi özellikleri](connector-azure-blob-storage.md#dataset-properties).
+*Azure blob veri kümesi* oluşturan bir yöntem ekleyin. Desteklenen özellikler ve ayrıntılar hakkında daha fazla bilgi için bkz. [Azure blob veri kümesi özellikleri](connector-azure-blob-storage.md#dataset-properties).
 
 `SourceBlobDatasetDefinition` *Program.cs* dosyanıza bir yöntem ekleyin:
 
@@ -234,9 +234,9 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-Azure Blob’da kaynak verilerini temsil eden bir veri kümesi tanımlayın. Bu blob veri kümesi, önceki adımda desteklenen Azure depolama bağlı hizmetini ifade eder. Blob veri kümesi, kopyalanacak Blobun konumunu açıklar: *FolderPath* ve *filename*.
+Azure Blob’da kaynak verilerini temsil eden bir veri kümesi tanımlayın. Bu blob veri kümesi, önceki adımda desteklenen Azure depolama bağlı hizmetini ifade eder. Blob veri kümesi, kopyalanacak Blobun konumunu açıklar: *FolderPath* ve *filename* .
 
-*FolderPath*için parametrelerin kullanımına dikkat edin. `sourceBlobContainer` parametrenin adı ve ifadesi işlem hattı çalıştırmasında geçirilen değerlerle değiştirilmiştir. Parametreleri tanımlamaya yönelik söz dizimi `@pipeline().parameters.<parameterName>`
+*FolderPath* için parametrelerin kullanımına dikkat edin. `sourceBlobContainer` parametrenin adı ve ifadesi işlem hattı çalıştırmasında geçirilen değerlerle değiştirilmiştir. Parametreleri tanımlamaya yönelik söz dizimi `@pipeline().parameters.<parameterName>`
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Havuz Azure blobu için veri kümesi oluşturma
 
@@ -308,7 +308,7 @@ E-posta göndermeyi tetiklemek için, [Logic Apps](../logic-apps/logic-apps-over
 
 ### <a name="success-email-workflow"></a>Başarı e-postası iş akışı
 
-[Azure Portal](https://portal.azure.com), *Copybaşarısemail*adlı bir Logic Apps iş akışı oluşturun. İş akışı tetikleyicisini olarak tanımlayın `When an HTTP request is received` . İstek tetikleyiciniz için `Request Body JSON Schema` alanını aşağıdaki JSON ile doldurun:
+[Azure Portal](https://portal.azure.com), *Copybaşarısemail* adlı bir Logic Apps iş akışı oluşturun. İş akışı tetikleyicisini olarak tanımlayın `When an HTTP request is received` . İstek tetikleyiciniz için `Request Body JSON Schema` alanını aşağıdaki JSON ile doldurun:
 
 ```json
 {
@@ -344,7 +344,7 @@ Bir eylemi ekleyin `Office 365 Outlook – Send an email` . **E-posta gönder** 
 
 ## <a name="fail-email-workflow"></a>Hata e-postası iş akışı
 
-*Copyfailemail*adlı başka bir Logic Apps iş akışı olarak **copyardılsemail** 'i kopyalayın. İstek tetikleyicisinde `Request Body JSON schema` değeri aynıdır. Hata e-postasına uyarlamak için e-postanızın biçimini `Subject` olarak değiştirin. Aşağıda bir örnek verilmiştir:
+*Copyfailemail* adlı başka bir Logic Apps iş akışı olarak **copyardılsemail** 'i kopyalayın. İstek tetikleyicisinde `Request Body JSON schema` değeri aynıdır. Hata e-postasına uyarlamak için e-postanızın biçimini `Subject` olarak değiştirin. Aşağıda bir örnek verilmiştir:
 
 ![Mantıksal uygulama Tasarımcısı-hata e-postası iş akışı](media/tutorial-control-flow/fail-email-workflow.png)
 
@@ -610,7 +610,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=**_"
   }
 }
 Creating dataset SourceStorageDataset...
@@ -753,7 +753,7 @@ Press any key to exit...
 Bu öğreticide aşağıdaki görevleri yaptınız:
 
 > [!div class="checklist"]
-> * Veri fabrikası oluşturma
+> _ Veri fabrikası oluşturma
 > * Azure Depolama bağlı hizmeti oluşturma
 > * Azure blob veri kümesi oluşturma
 > * Kopyalama etkinliği ve bir web etkinliği içeren işlem hattı oluşturma

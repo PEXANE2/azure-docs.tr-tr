@@ -11,12 +11,12 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2c308bd038f273a7cec0442e42f8a749bc4bb8fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3539b867d8f03d11e7799498d0207a65ac9db7d8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073565"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636638"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure esnek veritabanı Işleriyle SSSıSDB günlüklerini Temizleme
 
@@ -160,7 +160,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
 
 ## <a name="clean-up-logs-with-transact-sql"></a>Transact-SQL ile günlükleri Temizleme
 
-Aşağıdaki örnek Transact-SQL betikleri, SSıSDB günlüğü temizleme için saklı yordamı tetiklemek üzere yeni bir elastik Iş oluşturur. Daha fazla bilgi için bkz. [elastik veritabanı işleri oluşturmak ve yönetmek Için Transact-SQL (T-SQL) kullanma](../sql-database/elastic-jobs-tsql.md).
+Aşağıdaki örnek Transact-SQL betikleri, SSıSDB günlüğü temizleme için saklı yordamı tetiklemek üzere yeni bir elastik Iş oluşturur. Daha fazla bilgi için bkz. [elastik veritabanı işleri oluşturmak ve yönetmek Için Transact-SQL (T-SQL) kullanma](../azure-sql/database/elastic-jobs-tsql-create-manage.md).
 
 1. Sısdbcleanup Iş veritabanı olacak boş bir S0 veya daha yüksek Azure SQL veritabanı oluşturun veya bunları yapın. Ardından [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent)bir elastik iş Aracısı oluşturun.
 
