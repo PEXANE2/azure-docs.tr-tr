@@ -48,8 +48,6 @@
           href: costs/manage-automation.md
         - name: İş ortakları için Maliyet Yönetimi
           href: costs/get-started-partners.md
-        - name: Maliyet Yönetimi ile Cloudyn arasında seçim yapma
-          href: costs/choose-between-azure-cost-management-cloudyn.md
     - name: Rezervasyonlar
       items:
         - name: Azure Ayırmaları nedir?
@@ -440,10 +438,6 @@
           href: cloudyn/overview.md
     - name: Hızlı Başlangıçlar
       items:
-        - name: Maliyet verilerini görüntüleme
-          href: cloudyn/quick-register-azure-sub.md
-        - name: Maliyet verilerini görüntüleme - EA
-          href: cloudyn/quick-register-ea.md
         - name: Maliyet verilerini görüntüleme - CSP
           href: cloudyn/quick-register-csp.md
     - name: Öğreticiler
@@ -468,8 +462,6 @@
           href: cloudyn/activate-subs-accounts.md
         - name: VM'ler için genişletilmiş ölçümler ekleme
           href: cloudyn/azure-vm-extended-metrics.md
-        - name: Google hesabı bağlama
-          href: cloudyn/connect-google-account.md
         - name: AWS hesabı bağlama
           href: cloudyn/connect-aws-account.md
         - name: Depolama hesaplarını yapılandırma

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0f30edeb24f3c4abed6f144f3fb7f755cc08a72
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604419"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629468"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Azure Machine Learning için bir güvenlik duvarının arkasındaki çalışma alanını kullan
 
@@ -63,6 +63,8 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 | **mcr.microsoft.com** | Temel Docker görüntüleri için Microsoft Container Registry |
 | **your-acr-server-name.azurecr.io** | Yalnızca Azure Container Registry sanal ağın arkasında ise gereklidir. Bu yapılandırmada, Microsoft ortamından aboneliğinizdeki ACR örneğine özel bir bağlantı oluşturulur. Azure Machine Learning çalışma alanınız için ACR sunucu adını kullanın. |
 | **\*. notebooks.azure.net** | Azure Machine Learning Studio 'daki Not defterleri için gereklidir. |
+| **\*. file.core.windows.net** | Azure Machine Learning Studio 'daki dosya Gezgini için gereklidir. |
+| **\*. dfs.core.windows.net** | Azure Machine Learning Studio 'daki dosya Gezgini için gereklidir. |
 | **graph.windows.net** | Not defterleri için gerekli |
 
 > [!TIP]
@@ -76,7 +78,7 @@ Bu bölümdeki konaklar, Python paketlerini yüklemek için kullanılır. Geliş
 | ---- | ---- |
 | **anaconda.com**</br>**\*. anaconda.com** | Varsayılan paketleri yüklemek için kullanılır. |
 | **\*. anaconda.org** | Depo verilerini almak için kullanılır. |
-| **pypi.org** | Varsa, varsayılan dizinden bağımlılıkları listelemek için kullanılır ve dizin, Kullanıcı ayarları tarafından üzerine yazılmaz. Dizinin üzerine yazılırsa, ** \* . pythonhosted.org**de izin vermeniz gerekir. |
+| **pypi.org** | Varsa, varsayılan dizinden bağımlılıkları listelemek için kullanılır ve dizin, Kullanıcı ayarları tarafından üzerine yazılmaz. Dizinin üzerine yazılırsa, **\* . pythonhosted.org** de izin vermeniz gerekir. |
 
 ## <a name="r-hosts"></a>R Konakları
 

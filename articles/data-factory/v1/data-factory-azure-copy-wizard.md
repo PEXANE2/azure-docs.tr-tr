@@ -10,17 +10,18 @@ ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2dfb5876922fd53c372afe82ecdfa843179fb135
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf8d847bd4e950ab17cc1f04b52be2589607f99c
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439019"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629502"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory kopyalama Sihirbazı
+
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. 
 
@@ -35,8 +36,6 @@ Bu sihirbaz, çok çeşitli kaynaklardan gelen verileri dakikalar içinde kolayc
 
 > [!NOTE]
 > Verileri bir Azure blobundan Azure SQL veritabanı tablosuna kopyalamak üzere örnek bir işlem hattı oluşturmaya yönelik adım adım yönergeler için, [Kopyalama Sihirbazı öğreticisine](data-factory-copy-data-wizard-tutorial.md)bakın.
->
->
 
 Sihirbaz, farklı veri ve nesne türleri desteğiyle, başlangıçtan itibaren göz önünde bulundurularak büyük verilerle tasarlanmıştır. Yüzlerce klasör, dosya veya tablo taşıyarak Data Factory işlem hatlarını yazabilirsiniz. Sihirbaz otomatik veri önizlemeyi, şema yakalamayı ve eşlemeyi ve veri filtrelemeyi destekler.
 
@@ -50,7 +49,6 @@ Giriş verilerinin şeması, bazı durumlarda çıkış verileri şemasıyla eş
 
 > [!TIP]
 > SQL Server veya Azure SQL veritabanındaki verileri Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalarken, tablo hedef depoda yoksa, kaynak şemasını kullanarak otomatik tablo oluşturmayı destekler Data Factory. [Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e ve bu kaynaklardan veri taşıma](./data-factory-azure-sql-data-warehouse-connector.md)hakkında daha fazla bilgi edinin.
->
 
 Hedef şemadaki bir sütunla eşlenecek kaynak şemadan bir sütun seçmek için açılan listeyi kullanın. Kopyalama Sihirbazı, sütun eşleme örüntüsünün anlaşılmasına çalışır. Bu, sütunların geri kalanına aynı düzeni uygular, böylece şema eşlemesini tamamlamaya yönelik her bir sütunu tek tek seçmeniz gerekmez. İsterseniz, sütunları tek tek eşlemek için açılan listeleri kullanarak bu eşlemeleri geçersiz kılabilirsiniz. Daha fazla sütun eşleştirirken, bu kalıp daha doğru hale gelir. Kopyalama Sihirbazı, her bir düzende güncellenir ve sonunda elde etmek istediğiniz sütun eşlemesi için doğru düzene ulaşır.     
 
@@ -65,7 +63,7 @@ Aşağıdaki ekran görüntüsünde, işlevi ve değişkenini kullanan bir SQL s
 ![İfadeleri doğrula](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Azure Blob klasöründeki verilerin filtrelenmesi
-Çalışma zamanında belirlenen klasörden verileri [sistem değişkenlerine](data-factory-functions-variables.md#data-factory-system-variables)göre kopyalamak için klasör yolundaki değişkenleri kullanabilirsiniz. Desteklenen değişkenler şunlardır: **{Year}**, **{Month}**, **{Day}**, **{Hour}**, **{Minute}** ve **{Custom}**. Örneğin: ınputfolder/{year}/{month}/{Day}.
+Çalışma zamanında belirlenen klasörden verileri [sistem değişkenlerine](data-factory-functions-variables.md#data-factory-system-variables)göre kopyalamak için klasör yolundaki değişkenleri kullanabilirsiniz. Desteklenen değişkenler şunlardır: **{Year}** , **{Month}** , **{Day}** , **{Hour}** , **{Minute}** ve **{Custom}** . Örneğin: ınputfolder/{year}/{month}/{Day}.
 
 Giriş klasörlerinizi aşağıdaki biçimde kullandığınızı varsayalım:
 
@@ -76,7 +74,7 @@ Giriş klasörlerinizi aşağıdaki biçimde kullandığınızı varsayalım:
 ...
 ```
 
-**Dosya veya klasör**için **Araştır** düğmesine tıklayın, bu klasörlerden birine gidin (örneğin, 2016->03->01->02) ve **Seç**' e tıklayın. `2016/03/01/02`Metin kutusunda görmeniz gerekir. Şimdi, **2016** öğesini { **Year}**, **03** ile { **Month**}, **01** ile { **Day**} ve **02** ile **{Hour}** ile değiştirin ve **sekme** tuşuna basın. Bu dört değişkenin biçimini seçmek için açılan listeleri görmeniz gerekir:
+**Dosya veya klasör** için **Araştır** düğmesine tıklayın, bu klasörlerden birine gidin (örneğin, 2016->03->01->02) ve **Seç** ' e tıklayın. `2016/03/01/02`Metin kutusunda görmeniz gerekir. Şimdi, **2016** öğesini { **Year}** , **03** ile { **Month** }, **01** ile { **Day** } ve **02** ile **{Hour}** ile değiştirin ve **sekme** tuşuna basın. Bu dört değişkenin biçimini seçmek için açılan listeleri görmeniz gerekir:
 
 ![Sistem değişkenlerini kullanma](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
@@ -90,6 +88,49 @@ Kopyalama işlemini bir kez veya bir zamanlamaya göre (saatlik, günlük, vb.) 
 Tek seferlik kopyalama işlemi, veri hareketini bir kaynaktan hedefe yalnızca bir kez sağlar. Her boyuttaki ve desteklenen biçimdeki veriler için geçerlidir. Zamanlanan kopya, verileri önceden belirlenmiş bir tekrarda kopyalamanızı sağlar. Zamanlanmış kopyayı yapılandırmak için zengin ayarları (yeniden deneme, zaman aşımı ve uyarılar gibi) kullanabilirsiniz.
 
 ![Zamanlama özellikleri](./media/data-factory-copy-wizard/scheduling-properties.png)
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+Bu bölüm Azure Data Factory içindeki kopyalama Sihirbazı için sık karşılaşılan sorun giderme yöntemlerini anlatıyor.
+
+> [!NOTE] 
+> Bu sorun giderme ipuçları, Data Factory sürüm 1 ' deki kopyalama Sihirbazı 'na uygulanır. Data Factory v2 için bkz. sorun giderme kılavuzu [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-ux-troubleshoot-guide).
+
+### <a name="error-code-unable-to-validate-in-copy-wizard"></a>Hata kodu: kopyalama sihirbazında doğrulanamadı
+
+- **Belirtiler** : kopyalama sihirbazının ilk adımında, "doğrulanamadı" uyarı iletisiyle karşılaşırsınız.
+- **Nedenler** : tüm üçüncü taraf tanımlama bilgileri devre dışı bırakıldığında bu durum oluşabilir.
+- **Çözüm** : 
+    - Internet Explorer veya Microsoft Edge tarayıcısı 'nı kullanın.
+    - Chrome tarayıcısı kullanıyorsanız, *microsoftonline.com* ve *Windows.net* için tanımlama bilgisi özel durumu eklemek için aşağıdaki yönergeleri izleyin.
+        1.  Chrome tarayıcısını açın.
+        2.  Sağ tarafta bulunan wranya veya üç satıra tıklayın (Google Chrome 'u özelleştirin ve denetleyin).
+        3.  **Ayarlar** 'a tıklayın.
+        4.  **Tanımlama bilgilerini** arayın veya Gelişmiş ayarlar altında **Gizlilik** 'e gidin.
+        5.  **Içerik ayarları** ' nı seçin.    
+        6.  Tanımlama bilgileri, **Yerel verilerin ayarlanmasına izin verecek şekilde ayarlanmalıdır (önerilir)** .
+        7.  **Özel durumları Yönet** ' e tıklayın. **Ana bilgisayar adı deseninin** altında aşağıdakileri girin ve **izin ver** ' in davranış ayarlanmış olduğundan emin olun.
+            - login.microsoftonline.com
+            - login.windows.net
+        8.  Tarayıcıyı kapatın ve yeniden başlatın.
+    - Firefox tarayıcısı kullanıyorsanız, tanımlama bilgileri özel durumu eklemek için aşağıdaki yönergeleri izleyin.
+        1. Firefox menüsünden **Araçlar**  >  **Seçenekler** ' e gidin.
+        2. **Gizlilik**  >  **geçmişi** altında geçerli ayarın **Geçmiş için özel ayarları kullanıp** görmeyebilirsiniz.
+        3. **Üçüncü taraf tanımlama bilgilerini kabul et** ' de, geçerli ayarınız **hiçbir** şekilde olmayabilir, ardından aşağıdaki siteleri eklemek için sağdaki **özel durumlar** ' a tıklamanız gerekir.
+            - https://login.microsoftonline.com
+            - https://login.windows.net
+        4.  Tarayıcıyı kapatın ve yeniden başlatın. 
+
+
+### <a name="error-code-unable-to-open-login-page-and-enter-password"></a>Hata kodu: oturum açma sayfası açılamıyor ve parola gir
+
+- **Belirtiler** : kopyalama Sihirbazı sizi oturum açma sayfasına yönlendirir, ancak oturum açma sayfası başarıyla gösterilmez.
+- **Nedenler** : ağ ortamını ofis ağından ev ağına değiştirdiyseniz bu sorun oluşabilir. Tarayıcılarda bazı önbellekler vardır. 
+- **Çözüm** : 
+    1.  Tarayıcıyı kapatın ve yeniden deneyin. Sorun hala varsa sonraki adıma gidin.   
+    2.  Internet Explorer tarayıcısı kullanıyorsanız, özel modda açmayı deneyin ("Ctrl" + "SHIFT" + "P" tuşlarına basın). Chrome tarayıcısı kullanıyorsanız, dosyayı ınbilito modunda açmayı deneyin ("Ctrl" + "SHIFT" + "N" tuşlarına basın). Sorun hala varsa sonraki adıma gidin. 
+    3.  Başka bir tarayıcı kullanmayı deneyin. 
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için Data Factory kopyalama Sihirbazı 'Nı kullanmaya yönelik hızlı bir anlatım için bkz. [öğretici: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md).

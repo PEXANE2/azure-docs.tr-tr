@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: d2465a475371f2cf6b9379d474ccaee324adac10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57915e0b636124265adc8d5f3088cacd20d63746
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90524768"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634020"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory’de Hive etkinliğini kullanarak Azure Sanal Ağ’daki verileri dönüştürme
 
@@ -34,18 +34,18 @@ Bu öğreticide, Azure PowerShell kullanarak Azure Sanal Ağ’daki bir HDInsigh
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure depolama hesabı**. Bir hive betiği oluşturun ve Azure depolama alanına yükleyin. Hive betiğinin çıktısı bu depolama hesabında depolanır. Bu örnekte, HDInsight kümesi bu Azure Depolama hesabını birincil depolama alanı olarak kullanır. 
+- **Azure depolama hesabı** . Bir hive betiği oluşturun ve Azure depolama alanına yükleyin. Hive betiğinin çıktısı bu depolama hesabında depolanır. Bu örnekte, HDInsight kümesi bu Azure Depolama hesabını birincil depolama alanı olarak kullanır. 
 - **Azure sanal ağı.** Bir Azure sanal ağınız yoksa [bu yönergeleri](../virtual-network/quick-create-portal.md) izleyerek bir tane oluşturun. Bu örnekte HDInsight bir Azure Sanal Ağ içindedir. Azure Sanal Ağ’ın örnek yapılandırması aşağıda verilmiştir. 
 
     ![Sanal ağ oluşturma](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
-- **HDInsight kümesi.** Bir HDInsight kümesi oluşturun ve önceki adımda oluşturduğunuz sanal ağa katmak için şu makaleyi izleyin: [Bir Azure Sanal Ağ kullanarak Azure HDInsight’ı genişletme](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Bir sanal ağda HDInsight’ın örnek yapılandırması aşağıda verilmiştir. 
+- **HDInsight kümesi.** Bir HDInsight kümesi oluşturun ve önceki adımda oluşturduğunuz sanal ağa katmak için şu makaleyi izleyin: [Bir Azure Sanal Ağ kullanarak Azure HDInsight’ı genişletme](../hdinsight/hdinsight-plan-virtual-network-deployment.md). Bir sanal ağda HDInsight’ın örnek yapılandırması aşağıda verilmiştir. 
 
     ![Sanal ağda HDInsight](media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png)
-- **Azure PowerShell**. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin.
+- **Azure PowerShell** . [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin.
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Hive betiğini Blob Depolama hesabınıza yükleme
 
@@ -93,7 +93,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. **PowerShell**’i başlatın. Bu hızlı başlangıcın sonuna kadar Azure PowerShell’i açık tutun. Kapatıp yeniden açarsanız komutları yeniden çalıştırmanız gerekir. Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
+2. **PowerShell** ’i başlatın. Bu hızlı başlangıcın sonuna kadar Azure PowerShell’i açık tutun. Kapatıp yeniden açarsanız komutları yeniden çalıştırmanız gerekir. Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics** 'i genişleterek **Data Factory** : [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 
     Aşağıdaki komutu çalıştırın ve Azure portalda oturum açmak için kullandığınız kullanıcı adı ve parolayı girin:
         
@@ -105,7 +105,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
     ```powershell
     Get-AzSubscription
     ```
-    Çalışmak isteğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. **SubscriptionId**’yi Azure aboneliğinizin kimliği ile değiştirin:
+    Çalışmak isteğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. **SubscriptionId** ’yi Azure aboneliğinizin kimliği ile değiştirin:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -186,7 +186,7 @@ Tercih ettiğiniz düzenleyiciyi kullanarak bir JSON dosyası oluşturun, Azure 
 }
 ```
 
-** &lt; AccountName &gt; ve &lt; Accountkey &gt; ** değerlerini Azure depolama hesabınızın adı ve anahtarıyla değiştirin.
+**&lt; AccountName &gt; ve &lt; Accountkey &gt;** değerlerini Azure depolama hesabınızın adı ve anahtarıyla değiştirin.
 
 ### <a name="hdinsight-linked-service"></a>HDInsight bağlı hizmeti
 
@@ -219,9 +219,9 @@ Tercih ettiğiniz düzenleyiciyi kullanarak bir JSON dosyası oluşturun, Azure 
 
 Bağlı hizmet tanımında aşağıdaki özelliklerin değerlerini güncelleştirin:
 
-- **Kullanıcı adı**. Kümeyi oluştururken belirttiğiniz küme oturum açma kullanıcı adı. 
-- **parola**. Kullanıcının parolası.
-- **clusterUri**. HDInsight kümenizin URL 'sini şu biçimde belirtin: `https://<clustername>.azurehdinsight.net` .  Bu makalede, kümeye internet üzerinden erişebildiğiniz varsayılır. Örneğin, `https://clustername.azurehdinsight.net` konumundaki kümeye bağlanabilirsiniz. Bu adres, İnternet'ten erişimi kısıtlamak için ağ güvenlik grupları (NSG) veya kullanıcı tanımlı yollar (UDR) kullandıysanız kullanılabilir olmayan ortak ağ geçidi kullanır. Data Factory’nin işleri Azure Sanal Ağdaki HDInsight kümelerine gönderebilmesi için Azure Sanal Ağınızı URL’nin HDInsight tarafından kullanılan ağ geçidine ait özel IP adresine çözümlenebileceği şekilde yapılandırmanız gerekir.
+- **Kullanıcı adı** . Kümeyi oluştururken belirttiğiniz küme oturum açma kullanıcı adı. 
+- **parola** . Kullanıcının parolası.
+- **clusterUri** . HDInsight kümenizin URL 'sini şu biçimde belirtin: `https://<clustername>.azurehdinsight.net` .  Bu makalede, kümeye internet üzerinden erişebildiğiniz varsayılır. Örneğin, `https://clustername.azurehdinsight.net` konumundaki kümeye bağlanabilirsiniz. Bu adres, İnternet'ten erişimi kısıtlamak için ağ güvenlik grupları (NSG) veya kullanıcı tanımlı yollar (UDR) kullandıysanız kullanılabilir olmayan ortak ağ geçidi kullanır. Data Factory’nin işleri Azure Sanal Ağdaki HDInsight kümelerine gönderebilmesi için Azure Sanal Ağınızı URL’nin HDInsight tarafından kullanılan ağ geçidine ait özel IP adresine çözümlenebileceği şekilde yapılandırmanız gerekir.
 
   1. Azure portalından, HDInsight’ın içinde bulunduğu Sanal Ağı açın. Adı `nic-gateway-0` ile başlayan ağ arabirimini açın. Özel IP adresini not edin. Örneğin, 10.6.0.15. 
   2. Azure sanal ağınızda DNS sunucusu varsa, HDInsight kümesi `https://<clustername>.azurehdinsight.net` URL’sinin `10.6.0.15` hedefine çözümlenebilmesi için DNS kaydını güncelleştirin. Bu, önerilen yaklaşımdır. Azure Sanal Ağınızda bir DNS sunucusu yoksa, şunun gibi bir giriş ekleyerek şirket içinde barındırılan tümleştirme çalışma zamanı düğümleri olarak kaydedilmiş tüm VM’lerin ana bilgisayar dosyalarını (C:\Windows\System32\drivers\etc) düzenleyerek bu sorunu geçici olarak çözebilirsiniz: 
@@ -279,8 +279,8 @@ Bu adımda, Hive etkinliği ile bir işlem hattı oluşturacaksınız. Etkinlik,
 
 Aşağıdaki noktalara dikkat edin:
 
-- **scriptPath**, MyStorageLinkedService için kullandığınız Azure Depolama Hesabında Hive betiğinin yoluna işaret eder. Bu yol büyük/küçük harfe duyarlıdır.
-- **Çıktı**, Hive betiğinde kullanılan bir değişkendir. Azure Depolama hesabınızda var olan bir klasörü işaret etmek için `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` biçimini kullanın. Bu yol büyük/küçük harfe duyarlıdır. 
+- **scriptPath** , MyStorageLinkedService için kullandığınız Azure Depolama Hesabında Hive betiğinin yoluna işaret eder. Bu yol büyük/küçük harfe duyarlıdır.
+- **Çıktı** , Hive betiğinde kullanılan bir değişkendir. Azure Depolama hesabınızda var olan bir klasörü işaret etmek için `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` biçimini kullanın. Bu yol büyük/küçük harfe duyarlıdır. 
 
 JSON dosyalarını oluşturduğunuz klasöre geçin ve işlem hattını dağıtmak için aşağıdaki komutu çalıştırın: 
 
@@ -408,6 +408,3 @@ Azure üzerinde bir Spark kümesi kullanarak veri dönüştürme hakkında bilgi
 
 > [!div class="nextstepaction"]
 >[Data Factory denetim akışında dal oluşturma ve zincirleme](tutorial-control-flow.md)
-
-
-

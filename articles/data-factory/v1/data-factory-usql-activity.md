@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 17e5b5eaea90b5f67ad91f0b09a51b2f1aeffd68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5e53cab30f1adca05652a3b3b7541e12ebebbdb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322624"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631470"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics'te U-SQL betiklerini çalıştırarak verileri dönüştürme 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -48,14 +48,14 @@ Aşağıdaki tabloda JSON tanımında kullanılan genel özellikler için açık
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **türüyle** |Type özelliği: **AzureDataLakeAnalytics**olarak ayarlanmalıdır. |Evet |
-| **Adı** |Azure Data Lake Analytics hesap adı. |Evet |
+| **türüyle** |Type özelliği: **AzureDataLakeAnalytics** olarak ayarlanmalıdır. |Evet |
+| **accountName** |Azure Data Lake Analytics hesap adı. |Evet |
 | **Datalakeanaliz Ticsurı** |Azure Data Lake Analytics URI 'SI. |Hayır |
 | **SubscriptionID** |Azure abonelik kimliği |Hayır (belirtilmemişse, Veri Fabrikası aboneliği kullanılır). |
 | **resourceGroupName** |Azure kaynak grubu adı |Hayır (belirtilmemişse, veri fabrikasının kaynak grubu kullanılır). |
 
 ### <a name="service-principal-authentication-recommended"></a>Hizmet sorumlusu kimlik doğrulaması (önerilir)
-Hizmet sorumlusu kimlik doğrulamasını kullanmak için, bir uygulama varlığını Azure Active Directory (Azure AD) olarak kaydedin ve Data Lake Store erişim izni verin. Ayrıntılı adımlar için bkz. [hizmetten hizmete kimlik doğrulaması](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Bağlı hizmeti tanımlamak için kullandığınız aşağıdaki değerleri unutmayın:
+Hizmet sorumlusu kimlik doğrulamasını kullanmak için, bir uygulama varlığını Azure Active Directory (Azure AD) olarak kaydedin ve Data Lake Store erişim izni verin. Ayrıntılı adımlar için bkz. [hizmetten hizmete kimlik doğrulaması](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md). Bağlı hizmeti tanımlamak için kullandığınız aşağıdaki değerleri unutmayın:
 * Uygulama Kimliği
 * Uygulama anahtarı 
 * Kiracı Kimliği
@@ -114,7 +114,7 @@ Alternatif olarak, aşağıdaki özellikleri belirterek Data Lake Analytics içi
 ```
 
 #### <a name="token-expiration"></a>Belirteç süre sonu
-**Yetkilendir** düğmesini kullanarak oluşturduğunuz yetkilendirme kodu bir süre sonra dolar. Farklı kullanıcı hesabı türlerinin sona erme zamanları için aşağıdaki tabloya bakın. Kimlik doğrulama **belirtecinin süresi dolarsa**aşağıdaki hata iletisini görebilirsiniz: kimlik bilgisi işlemi hatası: INVALID_GRANT-AADSTS70002: kimlik bilgileri doğrulanırken hata oluştu. AADSTS70008: belirtilen erişim izni, zaman aşımına uğradı veya iptal edildi. İzleme KIMLIĞI: d18629e8-af88-43c5-88e3-d8419eb1fca1 bağıntı KIMLIĞI: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 zaman damgası: 2015-12-15 21:09:31Z
+**Yetkilendir** düğmesini kullanarak oluşturduğunuz yetkilendirme kodu bir süre sonra dolar. Farklı kullanıcı hesabı türlerinin sona erme zamanları için aşağıdaki tabloya bakın. Kimlik doğrulama **belirtecinin süresi dolarsa** aşağıdaki hata iletisini görebilirsiniz: kimlik bilgisi işlemi hatası: INVALID_GRANT-AADSTS70002: kimlik bilgileri doğrulanırken hata oluştu. AADSTS70008: belirtilen erişim izni, zaman aşımına uğradı veya iptal edildi. İzleme KIMLIĞI: d18629e8-af88-43c5-88e3-d8419eb1fca1 bağıntı KIMLIĞI: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 zaman damgası: 2015-12-15 21:09:31Z
 
 | Kullanıcı türü | Süre sonu |
 |:--- |:--- |
@@ -148,7 +148,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Kodda kullanılan Data Factory sınıfları hakkında daha fazla bilgi için bkz. [AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)ve [authorizationsessiongetresponse sınıfı](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) konuları. WindowsFormsWebAuthenticationDialog sınıfı için bir başvuru ekleyin: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll. 
+Kodda kullanılan Data Factory sınıfları hakkında daha fazla bilgi için bkz. [AzureDataLakeStoreLinkedService Class](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice), [AzureDataLakeAnalyticsLinkedService Class](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice)ve [authorizationsessiongetresponse sınıfı](/dotnet/api/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse) konuları. WindowsFormsWebAuthenticationDialog sınıfı için bir başvuru ekleyin: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL Etkinliği
 Aşağıdaki JSON kod parçacığı bir Data Lake Analytics U-SQL etkinliğine sahip bir işlem hattı tanımlıyor. Etkinlik tanımı, daha önce oluşturduğunuz Azure Data Lake Analytics bağlı hizmete bir başvuru içerir.   
@@ -208,7 +208,7 @@ Aşağıdaki tabloda, bu etkinliğe özgü özelliklerin adları ve açıklamala
 
 | Özellik            | Açıklama                              | Gerekli                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| tür                | Type özelliği **Datalakeanalticsu-SQL**olarak ayarlanmalıdır. | Evet                                      |
+| tür                | Type özelliği **Datalakeanalticsu-SQL** olarak ayarlanmalıdır. | Evet                                      |
 | linkedServiceName   | Data Factory bağlı hizmet olarak kaydedilen Azure Data Lake Analytics başvurusu | Evet                                      |
 | scriptPath          | U-SQL betiğini içeren klasörün yolu. Dosyanın adı büyük/küçük harfe duyarlıdır. | Hayır (komut dosyası kullanıyorsanız)                   |
 | scriptLinkedService | Betiği içeren depolamayı Data Factory 'ye bağlayan bağlantılı hizmet | Hayır (komut dosyası kullanıyorsanız)                   |
@@ -317,7 +317,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-U-SQL betikindeki ** \@ ın** ve ** \@ Out** parametrelerinin değerleri, ' Parameters ' bölümü kullanılarak ADF tarafından dinamik olarak geçirilir. İşlem hattı tanımındaki ' Parametreler ' bölümüne bakın.
+U-SQL betikindeki **\@ ın** ve **\@ Out** parametrelerinin değerleri, ' Parameters ' bölümü kullanılarak ADF tarafından dinamik olarak geçirilir. İşlem hattı tanımındaki ' Parametreler ' bölümüne bakın.
 
 Azure Data Lake Analytics hizmeti üzerinde çalışan işler için ardışık düzen tanımınızda, Degreeofparalellik ve öncelik gibi diğer özellikleri de belirtebilirsiniz.
 
@@ -340,6 +340,4 @@ Bunun yerine dinamik Parametreler kullanmak mümkündür. Örneğin:
 }
 ```
 
-Bu durumda, giriş dosyaları yine/datalake/Input klasöründen çekilir ve çıkış dosyaları/datalake/output klasöründe oluşturulur. Dosya adları, dilim başlangıç zamanına göre dinamiktir.  
-
-
+Bu durumda, giriş dosyaları yine/datalake/Input klasöründen çekilir ve çıkış dosyaları/datalake/output klasöründe oluşturulur. Dosya adları, dilim başlangıç zamanına göre dinamiktir.

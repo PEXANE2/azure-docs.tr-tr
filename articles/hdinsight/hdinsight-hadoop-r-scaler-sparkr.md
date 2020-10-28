@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 5864a5de8ddec60f2072a28827a870c83ece8b9d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c12398ceacf8495a05037422a6501dc8138abc10
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546050"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628703"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight 'ta ScaleR ve parlak r 'yi birleştirme
 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Başka bir yerde Puanlama
 
-Ayrıca, başka bir platformda Puanlama verileri için model de kullanabiliriz. Bir RDS dosyasına kaydederek ve bu RDS 'yi MIcrosoft SQL Server R Services gibi bir hedef Puanlama ortamına aktarıp içeri aktararak. Puanlanması gereken verilerin faktör düzeylerinin, modelin derlenme ile eşleştiğinden emin olmak önemlidir. Bu eşleştirme, ScaleR 'ın işlevi aracılığıyla modelleme verileriyle ilişkili sütun bilgilerini ayıklayarak kaydederek `rxCreateColInfo()` ve ardından bu sütun bilgilerinin tahmine yönelik giriş veri kaynağına uygulanmasıyla elde edilebilir. Aşağıda, test veri kümesinin birkaç satırını kaydeder ve bu örnekteki sütun bilgilerini tahmin komut dosyasında ayıklar ve kullanın:
+Ayrıca, başka bir platformda Puanlama verileri için model de kullanabiliriz. Bu dosyayı bir RDS dosyasına kaydederek ve sonra RDS 'yi Microsoft SQL Server R Services gibi bir hedef Puanlama ortamına aktararak. Puanlanması gereken verilerin faktör düzeylerinin, modelin derlenme ile eşleştiğinden emin olmak önemlidir. Bu eşleştirme, ScaleR 'ın işlevi aracılığıyla modelleme verileriyle ilişkili sütun bilgilerini ayıklayarak kaydederek `rxCreateColInfo()` ve ardından bu sütun bilgilerinin tahmine yönelik giriş veri kaynağına uygulanmasıyla elde edilebilir. Aşağıdaki kod örneğinde, test veri kümesinin birkaç satırını kaydeder ve tahmin betiğindeki bu örnekteki sütun bilgilerini ayıklar ve kullanabilirsiniz:
 
 ```
 # save the model and a sample of the test dataset 

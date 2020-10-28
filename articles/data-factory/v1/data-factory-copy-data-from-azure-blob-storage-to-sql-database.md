@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6c8c93c8721527d506847e394a02fc4eb5a98c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15bce219b96268124729de2f475e33fc386348a8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85248369"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631742"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Öğretici: Data Factory kullanarak blob depolamadan SQL veritabanına veri kopyalama
 > [!div class="op_single_selector"]
@@ -45,42 +45,42 @@ Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. 
 ## <a name="prerequisites-for-the-tutorial"></a>Öğretici için Önkoşullar
 Bu öğreticiye başlamadan önce aşağıdaki önkoşullara sahip olmanız gerekir:
 
-* **Azure aboneliği**.  Bir aboneliğiniz yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılar için [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/) makalesine bakın.
-* **Azure depolama hesabı**. Bu öğreticide BLOB depolama alanını **kaynak** veri deposu olarak kullanırsınız. bir Azure depolama hesabınız yoksa, oluşturma adımları için [depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın.
-* **Azure SQL veritabanı**. Bu öğreticide Azure SQL veritabanını **hedef** veri deposu olarak kullanırsınız. Azure SQL veritabanı 'nda öğreticide kullanabileceğiniz bir veritabanınız yoksa bir veritabanı oluşturmak için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma ve yapılandırma](../../sql-database/sql-database-get-started.md) .
-* **SQL Server 2012/2014 veya Visual Studio 2013**. Örnek veritabanı oluşturmak ve sonuç verilerini veritabanında görüntülemek için SQL Server Management Studio veya Visual Studio 'Yu kullanırsınız.  
+* **Azure aboneliği** .  Bir aboneliğiniz yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılar için [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/) makalesine bakın.
+* **Azure depolama hesabı** . Bu öğreticide BLOB depolama alanını **kaynak** veri deposu olarak kullanırsınız. bir Azure depolama hesabınız yoksa, oluşturma adımları için [depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın.
+* **Azure SQL veritabanı** . Bu öğreticide Azure SQL veritabanını **hedef** veri deposu olarak kullanırsınız. Azure SQL veritabanı 'nda öğreticide kullanabileceğiniz bir veritabanınız yoksa bir veritabanı oluşturmak için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma ve yapılandırma](../../azure-sql/database/single-database-create-quickstart.md) .
+* **SQL Server 2012/2014 veya Visual Studio 2013** . Örnek veritabanı oluşturmak ve sonuç verilerini veritabanında görüntülemek için SQL Server Management Studio veya Visual Studio 'Yu kullanırsınız.  
 
 ## <a name="collect-blob-storage-account-name-and-key"></a>BLOB depolama hesabı adını ve anahtarını topla
 Bu öğreticiyi yapmak için Azure depolama hesabınızın hesap adı ve hesap anahtarı gereklidir. Azure depolama hesabınız için **Hesap adı** ve **hesap anahtarı** ' nı aklınızda edin.
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. Sol menüdeki **tüm hizmetler** ' e tıklayın ve **depolama hesapları**' nı seçin.
+2. Sol menüdeki **tüm hizmetler** ' e tıklayın ve **depolama hesapları** ' nı seçin.
 
     ![Depolama hesaplarına gözatamazsınız](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
 3. **Depolama hesapları** dikey penceresinde, bu öğreticide kullanmak istediğiniz **Azure Depolama hesabını** seçin.
-4. **Ayarlar**altında **erişim tuşları** bağlantısı ' nı seçin.
+4. **Ayarlar** altında **erişim tuşları** bağlantısı ' nı seçin.
 5. **Depolama hesabı adı** metin kutusu ' nun yanındaki **Kopyala** (görüntü) düğmesine tıklayın ve dosyayı bir yere kaydedin/yapıştırın (örneğin: bir metin dosyası).
-6. **KEY1**' i kopyalamak veya bir yere dönmek için önceki adımı tekrarlayın.
+6. **KEY1** ' i kopyalamak veya bir yere dönmek için önceki adımı tekrarlayın.
 
     ![Depolama erişim anahtarı](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
-7. **X**simgesini tıklayarak tüm dikey pencereleri kapatın.
+7. **X** simgesini tıklayarak tüm dikey pencereleri kapatın.
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL Server, veritabanı, Kullanıcı adlarını toplayın
-Bu öğreticiyi yapmak için mantıksal SQL Server, veritabanı ve kullanıcı adlarına ihtiyacınız vardır. **Sunucu**, **VERITABANı**ve Azure SQL veritabanı için **Kullanıcı** adlarını aklınızda edin.
+Bu öğreticiyi yapmak için mantıksal SQL Server, veritabanı ve kullanıcı adlarına ihtiyacınız vardır. **Sunucu** , **VERITABANı** ve Azure SQL veritabanı için **Kullanıcı** adlarını aklınızda edin.
 
-1. **Azure Portal**, sol taraftaki **tüm hizmetler** ' e tıklayın ve **SQL veritabanları**' nı seçin.
-2. **SQL veritabanları dikey**penceresinde, bu öğreticide kullanmak istediğiniz **veritabanını** seçin. **Veritabanı adını**aklınızda edin.  
-3. **SQL veritabanı** dikey penceresinde **Ayarlar**' ın altında **Özellikler** ' e tıklayın.
-4. **Sunucu adı** ve **Sunucu Yöneticisi oturum açma**değerlerini aklınızda edin.
-5. **X**simgesini tıklayarak tüm dikey pencereleri kapatın.
+1. **Azure Portal** , sol taraftaki **tüm hizmetler** ' e tıklayın ve **SQL veritabanları** ' nı seçin.
+2. **SQL veritabanları dikey** penceresinde, bu öğreticide kullanmak istediğiniz **veritabanını** seçin. **Veritabanı adını** aklınızda edin.  
+3. **SQL veritabanı** dikey penceresinde **Ayarlar** ' ın altında **Özellikler** ' e tıklayın.
+4. **Sunucu adı** ve **Sunucu Yöneticisi oturum açma** değerlerini aklınızda edin.
+5. **X** simgesini tıklayarak tüm dikey pencereleri kapatın.
 
 ## <a name="allow-azure-services-to-access-sql-server"></a>Azure hizmetlerinin SQL Server 'a erişmesine izin ver
 Data Factory hizmetinin sunucunuza erişebilmesi için sunucunuz için **Azure hizmetlerine erişime Izin ver** **ayarının açık olduğundan** emin olun. Bu ayarı doğrulamak ve etkinleştirmek için aşağıdaki adımları uygulayın:
 
-1. Sol taraftaki **tüm hizmetler** hub 'ına tıklayın ve **SQL sunucuları**' na tıklayın.
-2. Sunucunuzu seçin ve **AYARLAR** altındaki **Güvenlik Duvarı**’na tıklayın.
-3. **Güvenlik Duvarı ayarları** dikey penceresinde, **Azure hizmetlerine erişime izin ver** için **AÇIK**’a tıklayın.
-4. **X**simgesini tıklayarak tüm dikey pencereleri kapatın.
+1. Sol taraftaki **tüm hizmetler** hub 'ına tıklayın ve **SQL sunucuları** ' na tıklayın.
+2. Sunucunuzu seçin ve **AYARLAR** altındaki **Güvenlik Duvarı** ’na tıklayın.
+3. **Güvenlik Duvarı ayarları** dikey penceresinde, **Azure hizmetlerine erişime izin ver** için **AÇIK** ’a tıklayın.
+4. **X** simgesini tıklayarak tüm dikey pencereleri kapatın.
 
 ## <a name="prepare-blob-storage-and-sql-database"></a>Blob depolamayı ve SQL veritabanını hazırlama
 Şimdi aşağıdaki adımları gerçekleştirerek Azure Blob depolama alanınızı ve Azure SQL veritabanınızı öğreticiye hazırlayın:  
@@ -107,9 +107,9 @@ Data Factory hizmetinin sunucunuza erişebilmesi için sunucunuz için **Azure h
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Bilgisayarınızda SQL Server 2012/2014 yüklüyse:** sunucunuza bağlanmak ve SQL betiğini çalıştırmak için [SQL Server Management STUDIO kullanarak Azure SQL veritabanı 'nı yönetme](../../sql-database/sql-database-manage-azure-ssms.md) yönergelerini izleyin.
+    **Bilgisayarınızda SQL Server 2012/2014 yüklüyse:** sunucunuza bağlanmak ve SQL betiğini çalıştırmak için [SQL Server Management STUDIO kullanarak Azure SQL veritabanı 'nı yönetme](../../azure-sql/database/single-database-manage.md) yönergelerini izleyin.
 
-    İstemcinizin mantıksal SQL Server 'a erişmesine izin verilmiyorsa, makinenizde (IP adresi) erişime izin vermek için sunucunuzun güvenlik duvarını yapılandırmanız gerekir. Sunucunuza yönelik güvenlik duvarını yapılandırma adımları için [Bu makaleye](../../sql-database/sql-database-configure-firewall-settings.md) bakın.
+    İstemcinizin mantıksal SQL Server 'a erişmesine izin verilmiyorsa, makinenizde (IP adresi) erişime izin vermek için sunucunuzun güvenlik duvarını yapılandırmanız gerekir. Sunucunuza yönelik güvenlik duvarını yapılandırma adımları için [Bu makaleye](../../azure-sql/database/firewall-configure.md) bakın.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 Önkoşulları tamamladınız. Aşağıdaki yollarla bir veri fabrikası oluşturabilirsiniz. Öğreticiyi uygulamak için üstteki aşağı açılan listedeki seçeneklerden birini veya aşağıdaki bağlantıları tıklatın.     

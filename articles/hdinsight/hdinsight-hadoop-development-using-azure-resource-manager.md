@@ -3,17 +3,17 @@ title: HDInsight için Azure Resource Manager araçlarına geçiş
 description: HDInsight kümeleri için Azure Resource Manager geliştirme araçlarına geçiş yapma
 ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.author: hrasheed
-ms.openlocfilehash: deaf98077e0652dac8bb327839ffa2bf34007c9f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 57dec799cbda03e20717a402a88f1d818d9acd92
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546220"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629485"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight kümeleri için Azure Resource Manager tabanlı geliştirme araçlarına geçiş
 
@@ -83,7 +83,7 @@ MapReduce, Apache Hive ve Apache Pig etkileşimli Apache Hadoop diğer yolları 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Azure PowerShell Azure Resource Manager geçiriliyor
 Azure Resource Manager modundaki Azure PowerShell hakkındaki genel bilgiler [Azure Resource Manager ile Azure PowerShell kullanma](../azure-resource-manager/management/manage-resources-powershell.md)bölümünde bulunabilir.
 
-Azure PowerShell Kaynak Yöneticisi cmdlet 'leri ASM cmdlet 'leri ile yan yana yüklenebilir. İki moddan gelen cmdlet 'ler adlarıyla ayırt edilebilir.  Kaynak Yöneticisi modu, { *AzureHDInsight* ' de ASM modunda karşılaştıran cmdlet adlarında *azhdınsight* 'a sahiptir.  Örneğin, *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster* . Parametreler ve anahtarlar haber adlarına sahip olabilir ve Kaynak Yöneticisi kullanırken kullanılabilecek birçok yeni parametre vardır.  Örneğin, birkaç cmdlet *-resourcegroupname* adlı yeni bir anahtar gerektirir. 
+Azure PowerShell Kaynak Yöneticisi cmdlet 'leri ASM cmdlet 'leri ile yan yana yüklenebilir. İki moddan gelen cmdlet 'ler adlarıyla ayırt edilebilir.  Kaynak Yöneticisi modu, eski Azure hizmet yönetimi modunda *AzureHDInsight* ile karşılaştıran cmdlet adlarında *azhdınsight* 'a sahiptir.  Örneğin, *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster* . Parametreler ve anahtarlar haber adlarına sahip olabilir ve Kaynak Yöneticisi kullanırken kullanılabilecek birçok yeni parametre vardır.  Örneğin, birkaç cmdlet *-resourcegroupname* adlı yeni bir anahtar gerektirir.
 
 HDInsight cmdlet 'lerini kullanabilmeniz için önce Azure hesabınıza bağlanmanız ve yeni bir kaynak grubu oluşturmanız gerekir:
 

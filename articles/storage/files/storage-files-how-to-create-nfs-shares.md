@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: d5b394833dbc920612f521b01f4da88af6c3e015
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 293fc1bca47f7c58f89a8dac50cc636be8231d4f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220756"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633510"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS paylaşma oluşturma
 
@@ -27,7 +27,7 @@ Azure dosya paylaşımları, bulutta yaşayan tamamen yönetilen dosya paylaşı
 
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir [dosya depolama hesabı](storage-how-to-create-premium-fileshare.md)oluşturun.
 
@@ -86,7 +86,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 
 Bir dosya depolama hesabı oluşturup ağı yapılandırdığınıza göre, bir NFS dosya paylaşma oluşturabilirsiniz. İşlem SMB paylaşımının oluşturulmasına benzer, ancak paylaşımın oluşturulması sırasında **SMB** yerine **NFS** 'yi seçersiniz.
 
-1. Depolama hesabınıza gidin ve **dosya paylaşımları**' nı seçin.
+1. Depolama hesabınıza gidin ve **dosya paylaşımları** ' nı seçin.
 1. Yeni bir dosya paylaşma oluşturmak için **+ dosya paylaşma** ' yı seçin.
 1. Dosya paylaşımınızı adlandırın, sağlanan kapasiteyi seçin.
 1. **Protokol** için **NFS (Önizleme)** seçeneğini belirleyin.
@@ -96,7 +96,7 @@ Bir dosya depolama hesabı oluşturup ağı yapılandırdığınıza göre, bir 
     - Kök sıkıştırarak-uzak Süper Kullanıcı (root), kök olarak erişim almaz.
     - Tüm sıkıştırarak-tüm Kullanıcı erişimi UID (65534) ve GID (65534) ile eşleştirilir.
     
-1. **Oluştur**’u seçin.
+1. **Oluştur** ’u seçin.
 
     :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="Dosya paylaşma oluşturma dikey penceresinin ekran görüntüsü":::
 
@@ -120,7 +120,7 @@ Bir dosya depolama hesabı oluşturup ağı yapılandırdığınıza göre, bir 
 
 1. ' I kapatın ve ardından PowerShell konsolunu yeniden açın.
 
-1. **Az. Storage** Preview Module sürüm **2.5.2 Parallel sections-Preview**' i yükler.
+1. **Az. Storage** Preview Module sürüm **2.5.2 Parallel sections-Preview** ' i yükler.
 
    ```powershell
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
@@ -152,10 +152,9 @@ Azure CLı ile Premium dosya paylaşma oluşturmak için [az Storage Share Creat
 
 ```azurecli-interactive
 az storage share-rm create \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
+    --storage-account $STORAGEACCT \
     --enabled-protocol NFS \
-    --root-access RootSquash \
+    --root-squash RootSquash \
     --name "myshare" 
 ```
 ---

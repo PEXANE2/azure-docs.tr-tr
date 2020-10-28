@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine yedekleme çözümünü kullanarak 
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 21e4ead8b3302ceef4cc53c126b9eab5784544b4
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1052e7e531f6762de660ba89e22c7fbb0d01f808
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174104"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628771"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure sanal makineleri için seçmeli disk yedekleme ve geri yükleme
 
@@ -46,7 +46,7 @@ az account set -s {subscriptionID}
 
 ### <a name="configure-backup-with-azure-cli"></a>Azure CLı ile yedeklemeyi yapılandırma
 
-Koruma yapılandırma işlemi sırasında, bir **içerme**dışlama parametresiyle disk listesi ayarını belirtmeniz gerekir ve bu,  /  **exclusion** yedeklemeye dahil edilecek veya hariç tutulacak disklerin LUN numaralarına izin verir.
+Koruma yapılandırma işlemi sırasında, bir **içerme** dışlama parametresiyle disk listesi ayarını belirtmeniz gerekir ve bu,  /  **exclusion** yedeklemeye dahil edilecek veya hariç tutulacak disklerin LUN numaralarına izin verir.
 
 ```azurecli
 az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
@@ -192,7 +192,11 @@ Azure PowerShell sürüm 3.7.0 veya üstünü kullandığınızdan emin olun.
 ### <a name="enable-backup-with-powershell"></a>PowerShell ile yedeklemeyi etkinleştir
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -DiskListSetting "Include"/"Exclude" -DisksList[Strings] -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -InclusionDisksList[Strings] -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExclusionDisksList[Strings] -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-configure-backup-with-powershell"></a>PowerShell ile yedekleme yapılandırma sırasında yalnızca işletim sistemi diskini Yedekle
@@ -212,7 +216,11 @@ Aşağıdaki cmdlet 'lerde, alınan **$item** nesnesini **– item** parametresi
 ### <a name="modify-protection-for-already-backed-up-vms-with-powershell"></a>PowerShell ile zaten yedeklenen VM 'Ler için korumayı değiştirme
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Include"/"Exclude" -DisksList[Strings]   -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $item -InclusionDisksList[Strings] -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Item $item -ExclusionDisksList[Strings] -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-modify-protection-with-powershell"></a>PowerShell ile koruma değiştirme sırasında yalnızca işletim sistemi diskini yedekleme
@@ -224,7 +232,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $item  -ExcludeAllDataDisks -Vau
 ### <a name="reset-disk-exclusion-setting-with-powershell"></a>PowerShell ile disk dışlama ayarını sıfırlama
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Reset" -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $item -ResetExclusionSettings -VaultId $targetVault.ID
 ```
 
 ### <a name="restore-selective-disks-with-powershell"></a>Seçmeli diskleri PowerShell ile geri yükleme

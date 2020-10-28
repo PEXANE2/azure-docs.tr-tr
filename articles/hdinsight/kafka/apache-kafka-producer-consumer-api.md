@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: ca796b09f10127c68c5a22ff58f95c89cbda2610
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b942fb321d2bceef64930bea0c660f66747508b6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534405"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629315"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 API’ler hakkında daha fazla bilgi için [Üretici API’si](https://kafka.apache.org/documentation/#producerapi) ve [Tüketici API’si](https://kafka.apache.org/documentation/#consumerapi) hakkında Apache belgelerine bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight kümesinde Apache Kafka. Küme oluşturma hakkında bilgi edinmek için bkz. [HDInsight 'ta Apache Kafka kullanmaya başlama](apache-kafka-get-started.md).
 * [Java geliştirici seti (JDK) sürüm 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) veya OpenJDK gibi bir eşdeğer.
@@ -217,9 +217,9 @@ Kafka içinde depolanan kayıtlar bir bölüm içinde alındıkları sırada dep
 
 ## <a name="common-issues-faced"></a>Karşılaştığı yaygın sorunlar
 
-1. **Konu oluşturma başarısız** Kümeniz kurumsal güvenlik paketi etkinse, [üretici ve tüketici için önceden oluşturulmuş jar dosyalarını](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar)kullanın. ESP jar, [ `DomainJoined-Producer-Consumer` alt dizindeki](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)koddan oluşturulabilir. Üretici ve tüketici özelliklerinin, `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` ESP etkin kümeler için ek bir özelliği Ave unutmayın.
+1. **Konu oluşturma başarısız** Kümeniz kurumsal güvenlik paketi etkinse, [üretici ve tüketici için önceden oluşturulmuş jar dosyalarını](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar)kullanın. ESP jar, [ `DomainJoined-Producer-Consumer` alt dizindeki](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)koddan oluşturulabilir. Üretici ve tüketici özellikleri, `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` ESP etkin kümeler için ek bir özelliğe sahiptir.
 
-2. **ESP etkin kümelerde karşılıklı sorun** Oluşturma ve kullanma işlemleri başarısız olursa ve bir ESP etkin küme kullanıyorsanız, kullanıcının `kafka` Tüm Ranger ilkelerinde mevcut olup olmadığını denetleyin. Mevcut değilse, tüm Ranger ilkelerine ekleyin.
+2. **ESP etkin kümelerde hata** : oluşturma ve kullanma işlemleri başarısız olursa ve bir ESP etkin küme kullanıyorsanız, kullanıcının `kafka` Tüm Ranger ilkelerinde mevcut olup olmadığını denetleyin. Mevcut değilse, tüm Ranger ilkelerine ekleyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

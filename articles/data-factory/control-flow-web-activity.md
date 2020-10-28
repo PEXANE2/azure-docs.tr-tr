@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 95cbb509beba82a14b9f8f8a11c603a6d7b8689d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e74361d6fb3eb1f9708f39f198506d16c7c046c4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87280809"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635108"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory Web etkinliği
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,7 +27,7 @@ Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını
 > [!NOTE]
 > Web Etkinliği hem özel sanal ağda barındırılan URL'leri çağırmak için hem de şirket içinde barındırılan tümleştirme çalışma zamanı tarafından desteklenir. Tümleştirme çalışma zamanının URL uç noktasında bir görüş alanı olmalıdır. 
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -73,7 +73,7 @@ Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
 name | Web etkinliğinin adı | Dize | Evet
-tür | **Webactivity**olarak ayarlanmalıdır. | Dize | Evet
+tür | **Webactivity** olarak ayarlanmalıdır. | Dize | Evet
 method | Hedef uç nokta için REST API yöntemi. | Dize. <br/><br/>Desteklenen türler: "GET", "POST", "PUT" | Evet
 url | Hedef uç nokta ve yol | Dize (veya dize resultType 'ı olan ifade). Etkinlik uç noktadan yanıt almazsa, 1 dakikanın sonunda zaman aşımına uğrar ve hata verir. | Evet
 bilgisinde | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Dize (veya dize resultType 'ı olan ifade) | Evet, Content-Type üst bilgisi gereklidir. `"headers":{ "Content-Type":"application/json"}`
@@ -81,7 +81,7 @@ body | Uç noktaya gönderilen yükü temsil eder.  | Dize (veya dize resultType
 kimlik doğrulaması | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler "Basic, or ClientCertificate" dir. Daha fazla bilgi için bkz. [kimlik doğrulama](#authentication) bölümü. Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Dize (veya dize resultType 'ı olan ifade) | Hayır
 veri kümeleri | Uç noktaya geçirilen veri kümelerinin listesi. | Veri kümesi başvuruları dizisi. Boş bir dizi olabilir. | Evet
 linkedServices | Uç noktaya geçirilen bağlı hizmetlerin listesi. | Bağlı hizmet başvuruları dizisi. Boş bir dizi olabilir. | Evet
-connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolduğunuz özel bir ağda olması halinde) kullanabilirsiniz. Bu özellik belirtilmezse, hizmet varsayılan Azure tümleştirme çalışma zamanını kullanır. | Integration Runtime başvurusu. | Hayır 
+connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](./concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolduğunuz özel bir ağda olması halinde) kullanabilirsiniz. Bu özellik belirtilmezse, hizmet varsayılan Azure tümleştirme çalışma zamanını kullanır. | Integration Runtime başvurusu. | Hayır 
 
 > [!NOTE]
 > Web etkinliğinin çağırdığı REST uç noktaları JSON türünde bir yanıt döndürmelidir. Etkinlik uç noktadan yanıt almazsa, 1 dakikanın sonunda zaman aşımına uğrar ve hata verir.
@@ -130,7 +130,7 @@ PFX dosyası ve parolanın Base64 ile kodlanmış içeriğini belirtin.
 
 ### <a name="managed-identity"></a>Yönetilen Kimlik
 
-Veri Fabrikası için yönetilen kimlik kullanılarak erişim belirtecinin istendiği Kaynak URI 'sini belirtin. Azure Kaynak yönetimi API 'sini çağırmak için kullanın `https://management.azure.com/` . Yönetilen kimliklerin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure kaynaklarına ilişkin Yönetilen kimlikler genel bakış sayfası](/azure/active-directory/managed-identities-azure-resources/overview).
+Veri Fabrikası için yönetilen kimlik kullanılarak erişim belirtecinin istendiği Kaynak URI 'sini belirtin. Azure Kaynak yönetimi API 'sini çağırmak için kullanın `https://management.azure.com/` . Yönetilen kimliklerin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure kaynaklarına ilişkin Yönetilen kimlikler genel bakış sayfası](../active-directory/managed-identities-azure-resources/overview.md).
 
 ```json
 "authentication": {

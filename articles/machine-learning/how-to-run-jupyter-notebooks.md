@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 4373618bacad00675d5f639225c435296010949b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 654c1beb0f8f544219ed802cab92f06055d70960
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221441"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628686"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 
@@ -42,7 +42,7 @@ Azure Machine Learning çalışma alanınızda yeni bir Jupyter Not defteri olu�
 Yeni bir not defteri oluşturmak için: 
 
 1. Çalışma alanınızı [Azure Machine Learning Studio](https://ml.azure.com)'da açın.
-1. Sol tarafta, **Not defterleri**' ni seçin. 
+1. Sol tarafta, **Not defterleri** ' ni seçin. 
 1. **My Files** bölümündeki **User Files** bölümünde **yeni dosya oluştur** simgesini seçin.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Yeni dosya oluştur":::
@@ -50,7 +50,7 @@ Yeni bir not defteri oluşturmak için:
 1. Dosyayı adlandırın. 
 1. Jupyter Notebook dosyaları için dosya türü olarak **Not defteri** ' ni seçin.
 1. Bir dosya dizini seçin.
-1. **Oluştur**’u seçin.
+1. **Oluştur** ’u seçin.
 
 Metin dosyaları da oluşturabilirsiniz.  Dosya türü olarak **metin** ' i seçin ve uzantıyı ada ekleyin (örneğin, myfile.py veya myfile.txt)  
 
@@ -75,14 +75,14 @@ Tüm git işlemlerine, bir Terminal penceresi kullanarak erişebilirsiniz. Tüm 
 Terminale erişmek için:
 
 1. Çalışma alanınızı [Azure Machine Learning Studio](https://ml.azure.com)'da açın.
-1. Sol tarafta, **Not defterleri**' ni seçin.
+1. Sol tarafta, **Not defterleri** ' ni seçin.
 1. Sol taraftaki **Kullanıcı dosyaları** bölümünde yer alan herhangi bir not defteri seçin.  Not defteriniz yoksa, önce [bir not defteri oluşturun](#create)
 1. Bir **işlem** hedefi seçin veya yeni bir tane oluşturun ve çalışır hale gelene kadar bekleyin.
 1. **Açık Terminal** simgesini seçin.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Yeni dosya oluştur":::
 
-1. Simgeyi görmüyorsanız, işlem hedefinin sağındaki **...** ' ı seçin ve ardından **Açık Terminal**' yı seçin.
+1. Simgeyi görmüyorsanız, işlem hedefinin sağındaki **...** ' ı seçin ve ardından **Açık Terminal** ' yı seçin.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Yeni dosya oluştur":::
 
@@ -113,8 +113,8 @@ Ayrıca, Not defteri araç çubuğundan Jupyter veya JupyterLab ' i de başlatab
 
 Etkin sekmelerinize odaklanabilmeniz için, geçerli görünümünüzü genişletmek üzere odak modunu kullanın. Odak modu, Not defterleri dosya gezginini gizler.
 
-1. Odak modunu açmak için Terminal penceresi araç çubuğunda **odak modu**' nu seçin   . Pencere genişenize bağlı olarak, bu, araç çubuğunuza **...** menü öğesinin altında bulunabilir.
-1. Odak modundayken **Standart Görünüm '** ü seçerek standart görünüme geri dönün.
+1. Odak modunu açmak için Terminal penceresi araç çubuğunda **odak modu** ' nu seçin. Pencere genişenize bağlı olarak, bu, araç çubuğunuza **...** menü öğesinin altında bulunabilir.
+1. Odak modundayken **Standart Görünüm '** ü seçerek standart görünüme geri dönün.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Yeni dosya oluştur":::
 
@@ -142,13 +142,13 @@ Yeni Not defteri, toplama için seçtiğiniz hücreyle aynı sonuçları üretme
 
 ### <a name="save-and-checkpoint-a-notebook"></a>Not defteri kaydetme ve kontrol noktası
 
-Azure Machine Learning, bir *ıpynb*dosyası oluşturduğunuzda bir denetim noktası dosyası oluşturur   .
+Azure Machine Learning, bir *ıpynb* dosyası oluşturduğunuzda bir denetim noktası dosyası oluşturur.
 
-Not defteri araç çubuğunda, menüyü seçin ve ardından not defterini el ile kaydetmek için ** &gt; Kaydet ve kontrol noktası dosya** ve not defteriyle ilişkili bir kontrol noktası dosyası eklenir.
+Not defteri araç çubuğunda, menüyü seçin ve ardından not defterini el ile kaydetmek için **&gt; Kaydet ve kontrol noktası dosya** ve not defteriyle ilişkili bir kontrol noktası dosyası eklenir.
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Yeni dosya oluştur":::
 
-Her bir not defteri, her 30 saniyede bir otomatik kaydedilir.Otomatik kaydetme, denetim noktası dosyasını değil yalnızca ilk *ipynb*   dosyasını güncelleştirir.
+Her bir not defteri, her 30 saniyede bir otomatik kaydedilir. Otomatik kaydetme, denetim noktası dosyasını değil yalnızca ilk *ipynb* dosyasını güncelleştirir.
  
 Adlandırılmış bir kontrol noktası oluşturmak ve Not defterini kaydedilmiş bir denetim noktasına dönüştürmek için Not defteri menüsünde **kontrol noktaları** ' nı seçin.
 
@@ -179,8 +179,8 @@ Adlandırılmış bir kontrol noktası oluşturmak ve Not defterini kaydedilmiş
 Bir not defterinden deneme çalıştırmak için önce çalışan bir [işlem örneğine](concept-compute-instance.md)bağlanırsınız. İşlem örneğiniz yoksa, oluşturmak için aşağıdaki adımları kullanın: 
 
 1. **+** Not defteri araç çubuğundan öğesini seçin. 
-2. Işlem adını adlandırın ve bir **sanal makine boyutu**seçin. 
-3. **Oluştur**’u seçin.
+2. Işlem adını adlandırın ve bir **sanal makine boyutu** seçin. 
+3. **Oluştur** ’u seçin.
 4. İşlem örneği not defterine otomatik olarak bağlanır ve artık hücrelerden çalıştırabilirsiniz.
 
 Yalnızca sizin oluşturduğunuz işlem örneklerini görebilir ve kullanabilirsiniz.  **Kullanıcı DOSYALARıNıZ** VM 'den ayrı olarak depolanır ve çalışma alanındaki tüm işlem örnekleri arasında paylaşılır.
@@ -217,7 +217,7 @@ Not defteri, bağlı işlem örneğinde yüklü olan tüm Jupyter çekirdekler '
 1. Not defteri araç çubuğunda [**Terminal aç**](#terminal) ' ı seçin.
 1. Yeni bir ortam oluşturmak için Terminal penceresini kullanın.  Örneğin, aşağıdaki kod oluşturulur `newenv` :
     ```shell
-    conda create --name newenv
+    conda create -y --name newenv
     ```
 1. Ortamı etkinleştirin.  Örneğin, oluşturduktan sonra `newenv` :
 
@@ -227,13 +227,13 @@ Not defteri, bağlı işlem örneğinde yüklü olan tüm Jupyter çekirdekler '
 1. Yeni ortama privand ipykernel paketini yükleyip bu Conda env için bir çekirdek oluşturun
 
     ```shell
-    conda install pip
-    conda install ipykernel
+    conda install -y pip
+    conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 
 > [!NOTE]
-> Bir not defteri içinde paket yönetimi için **% PIP** veya **% Conda** Magic işlevlerini kullanarak paketleri, tüm paketlere (Şu anda çalışan çekirdeklerdeki paketler dahil), tüm paketlere başvuran **! PIP** veya **! Conda** yerine **çalışmakta olan çekirdeğe**otomatik olarak yükler.
+> Bir not defteri içinde paket yönetimi için **% PIP** veya **% Conda** Magic işlevlerini kullanarak paketleri, tüm paketlere (Şu anda çalışan çekirdeklerdeki paketler dahil), tüm paketlere başvuran **! PIP** veya **! Conda** yerine **çalışmakta olan çekirdeğe** otomatik olarak yükler.
 
 [Kullanılabilir Jupyter kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) 'leri yüklenebilir.
 

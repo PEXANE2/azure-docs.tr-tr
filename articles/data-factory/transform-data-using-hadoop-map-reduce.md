@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: ab7bb96c6b367b3520676a36c3d52b49ba90eb26
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7685c2075b371ce22930b14187c27bcb0879c962
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368957"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632031"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Data Factory Hadoop MapReduce etkinliğini kullanarak verileri dönüştürme
 
@@ -64,17 +64,17 @@ HDInsight Pig ve Hive etkinliklerini kullanarak bir işlem hattından HDInsight 
 
 | Özellik          | Açıklama                              | Gerekli |
 | ----------------- | ---------------------------------------- | -------- |
-| name              | Etkinliğin adı                     | Yes      |
-| açıklama       | Etkinliğin ne için kullanıldığını açıklayan metin | No       |
-| tür              | MapReduce etkinliği için etkinlik türü HDinsightMapReduce | Yes      |
-| linkedServiceName | Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
-| Sınıf         | Yürütülecek sınıfın adı         | Yes      |
-| jarLinkedService  | Jar dosyalarını depolamak için kullanılan bir Azure depolama bağlı hizmetine başvuru. Burada yalnızca **[Azure Blob depolama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** ve **[ADLS 2.](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** bağlı hizmetleri desteklenir. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır. | No       |
-| jarFilePath       | JarLinkedService tarafından başvurulan Azure Storage 'da depolanan jar dosyalarının yolunu belirtin. Dosya adı büyük/küçük harfe duyarlıdır. | Yes      |
-| jarlibs           | JarLinkedService içinde tanımlanan Azure depolama alanında depolanan iş tarafından başvurulan jar kitaplık dosyalarının yolunun dize dizisi. Dosya adı büyük/küçük harfe duyarlıdır. | No       |
-| GetDebugInfo      | Günlük dosyalarının HDInsight kümesi tarafından kullanılan Azure depolama 'ya (veya) jarLinkedService tarafından belirtilen şekilde kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | No       |
-| değişkenlerinden         | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | No       |
-| tanımlar           | Hive betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin. | No       |
+| name              | Etkinliğin adı                     | Evet      |
+| açıklama       | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
+| tür              | MapReduce etkinliği için etkinlik türü HDinsightMapReduce | Evet      |
+| linkedServiceName | Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
+| Sınıf         | Yürütülecek sınıfın adı         | Evet      |
+| jarLinkedService  | Jar dosyalarını depolamak için kullanılan bir Azure depolama bağlı hizmetine başvuru. Burada yalnızca **[Azure Blob depolama](./connector-azure-blob-storage.md)** ve **[ADLS 2.](./connector-azure-data-lake-storage.md)** bağlı hizmetleri desteklenir. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır. | Hayır       |
+| jarFilePath       | JarLinkedService tarafından başvurulan Azure Storage 'da depolanan jar dosyalarının yolunu belirtin. Dosya adı büyük/küçük harfe duyarlıdır. | Evet      |
+| jarlibs           | JarLinkedService içinde tanımlanan Azure depolama alanında depolanan iş tarafından başvurulan jar kitaplık dosyalarının yolunun dize dizisi. Dosya adı büyük/küçük harfe duyarlıdır. | Hayır       |
+| GetDebugInfo      | Günlük dosyalarının HDInsight kümesi tarafından kullanılan Azure depolama 'ya (veya) jarLinkedService tarafından belirtilen şekilde kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | Hayır       |
+| değişkenlerinden         | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | Hayır       |
+| tanımlar           | Hive betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin. | Hayır       |
 
 
 
