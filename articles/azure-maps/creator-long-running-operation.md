@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 360fc4af688e393bb8639ee773f0bf0de603a425
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69c5b9d15c0ba3c7c8b6b01643beac1905c404ad
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83598391"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895877"
 ---
 # <a name="creator-long-running-operation-api"></a>Oluşturucu Long-Running Işlem API 'SI
 
-Azure Maps 'taki bazı API 'leri [zaman uyumsuz Request-Reply bir model](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)kullanır. Bu model, Azure haritalar 'ın yüksek oranda kullanılabilir ve hızlı yanıt veren hizmetler sağlamasına olanak sağlar Bu makalede, Azure Map 'in uzun süreli zaman uyumsuz arka plan işlemenin belirli bir uygulanması açıklanmaktadır.
+Azure Maps 'taki bazı API 'leri [zaman uyumsuz Request-Reply bir model](/azure/architecture/patterns/async-request-reply)kullanır. Bu model, Azure haritalar 'ın yüksek oranda kullanılabilir ve hızlı yanıt veren hizmetler sağlamasına olanak sağlar Bu makalede, Azure Map 'in uzun süreli zaman uyumsuz arka plan işlemenin belirli bir uygulanması açıklanmaktadır.
 
 ## <a name="submitting-a-request"></a>İstek gönderiliyor
 

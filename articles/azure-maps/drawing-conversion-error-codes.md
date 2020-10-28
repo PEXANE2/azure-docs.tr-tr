@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04a43e3e2fa9ad77e11f82ff38a144a1de3add78
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361543"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895945"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Çizim dönüştürme hataları ve uyarıları
 
-[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) , karşıya yüklenen çizim paketlerini harita verilerine dönüştürmenize olanak sağlar. Çizim paketleri, [Çizim paketi gereksinimlerine](drawing-requirements.md)bağlı olmalıdır. Bir veya daha fazla gereksinim karşılanmazsa, dönüştürme hizmeti hata veya uyarı döndürür. Bu makalede, dönüştürme hatası ve uyarı kodları listelenmektedir ve bunların nasıl çözüleceği ile ilgili öneriler sunulur. Ayrıca, dönüştürme hizmetinin bu kodları döndürmesini sağlayan bazı çizimler örneklerini de sağlar.
+[Azure haritalar dönüştürme hizmeti](/rest/api/maps/conversion) , karşıya yüklenen çizim paketlerini harita verilerine dönüştürmenize olanak sağlar. Çizim paketleri, [Çizim paketi gereksinimlerine](drawing-requirements.md)bağlı olmalıdır. Bir veya daha fazla gereksinim karşılanmazsa, dönüştürme hizmeti hata veya uyarı döndürür. Bu makalede, dönüştürme hatası ve uyarı kodları listelenmektedir ve bunların nasıl çözüleceği ile ilgili öneriler sunulur. Ayrıca, dönüştürme hizmetinin bu kodları döndürmesini sağlayan bazı çizimler örneklerini de sağlar.
 
 Dönüştürme uyarıları varsa dönüştürme hizmeti başarılı olur. Ancak, tüm uyarıları gözden geçirmeniz ve çözmeniz önerilir. Uyarı, dönüştürmenin bir kısmının yoksayıldığını veya otomatik olarak düzeltildiği anlamına gelir. Uyarıları çözememesi, ikinci süreçlerdeki hatalara neden olabilir.
 
@@ -159,7 +159,7 @@ Bildirim gereksiz veya çakışan nesne özellikleri içerdiğinde **redundantAt
 
 #### <a name="how-to-fix-redundantattribution"></a>*RedundantAttribution nasıl düzeltileceğini*
 
-Bir **redundantAttribution* uyarısını onarmak için, gereksiz veya çakışan nesne özelliklerini kaldırın.
+Bir * *redundantAttribution* uyarısını onarmak için, gereksiz veya çakışan nesne özelliklerini kaldırın.
 
 ### <a name="manifestwarning"></a>**manifestWarning uyarısı**
 
@@ -175,7 +175,7 @@ Bildirim, dönüştürme sırasında kullanılmamış unitProperties veya zonePr
 
 #### <a name="how-to-fix-manifestwarning"></a>*ManifestWarning 'ı çözme*
 
-Bir **Manifestwarning**'ı onarmak için, kullanılmayan `unitProperties` veya `zoneProperties` nesneyi bildirimden kaldırın veya bir birim/bölge etiketini, dönüştürme sırasında Özellikler nesnesinin kullanılması için çizime ekleyin.
+Bir **Manifestwarning** 'ı onarmak için, kullanılmayan `unitProperties` veya `zoneProperties` nesneyi bildirimden kaldırın veya bir birim/bölge etiketini, dönüştürme sırasında Özellikler nesnesinin kullanılması için çizime ekleyin.
 
 ## <a name="wall-warnings"></a>Duvar uyarıları
 
@@ -267,7 +267,7 @@ Aşağıdaki görüntüde etiket içermeyen bir bölge gösterilmektedir.
 
 #### <a name="how-to-fix-zonewarning"></a>*Bölge uyarısını çözme*
 
-Bir bölge **uyarısını**onarmak için, her bir bölgenin tek bir etikete sahip olduğunu doğrulayın.
+Bir bölge **uyarısını** onarmak için, her bir bölgenin tek bir etikete sahip olduğunu doğrulayın.
 
 ## <a name="label-warnings"></a>Etiket uyarıları
 
@@ -291,7 +291,7 @@ Aşağıdaki görüntüde, iki bölgenin içindeki bir etiket gösterilmektedir.
 
 #### <a name="how-to-fix-labelwarning"></a>*LabelWarning 'ı çözme*
 
-Bir **Labelwarning**'ı onarmak için şunları doğrulayın:
+Bir **Labelwarning** 'ı onarmak için şunları doğrulayın:
 
 * Tüm birim etiketleri birim içindedir.
 * Tüm bölge etiketleri bölgeler içindedir.
@@ -311,7 +311,7 @@ ZIP arşivi boşsa bir **invalidArchiveFormat** hatası da oluşur.
 
 Bir **invalidArchiveFormat** hatasını onarmak için şunları doğrulayın:
 
-* Arşiv dosyanızın adı _. zip_' de sona erer.
+* Arşiv dosyanızın adı _. zip_ ' de sona erer.
 * ZIP arşiv verileri içeriyor.
 * ZIP arşivinizi açabilirsiniz.
 
@@ -347,7 +347,7 @@ Bir **ınvaliduserdata** hatasını onarmak için şunları doğrulayın:
 
 #### <a name="how-to-fix-dwgerror"></a>*DwgError 'ı çözme*
 
-Bir **Dwgerror**'ı onarmak için, dosyadaki _manifest.js_ inceleyin ve şunları doğrulayın:
+Bir **Dwgerror** 'ı onarmak için, dosyadaki _manifest.js_ inceleyin ve şunları doğrulayın:
 
 * ZIP arşivinizdeki tüm DWG dosyaları geçerli AutoCAD DWG biçim çizimlerinin her birini AutoCAD 'de açar. Tüm geçersiz çizimleri kaldırın veya onarın.
 * _manifest.jsÜZERINDEKI_ DWG dosyalarının LISTESI, ZIP ARŞIVI içindeki DWG dosyalarıyla eşleşir.
@@ -422,7 +422,7 @@ Aynı düzey sıra sayısı ile birden fazla düzey tanımlandığında, dönü�
 
 #### <a name="how-to-fix-conflict"></a>*Çakışmayı çözme*
 
-Bir **Çakışma** hatasını onarmak için _ üzerindemanifest.js_ inceleyin ve çakışan bilgileri kaldırın.
+Bir **Çakışma** hatasını onarmak için _üzerindemanifest.js_ inceleyin ve çakışan bilgileri kaldırın.
 
 ### <a name="invalidgeoreference"></a>**ınvalidgeoreference**
 

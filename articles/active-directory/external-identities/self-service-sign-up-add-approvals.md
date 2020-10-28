@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d2ff176d7569f6f67c8f0dd37e0073314a07289
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e46dabc665d383279a12fc6bd8eb67475d88a2ea
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441632"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896081"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Self Servis kaydolma 'ya özel bir onay iş akışı ekleme
 
@@ -32,25 +32,25 @@ Bu makale, bir onay sistemiyle nasıl tümleştirileceğini gösteren bir örnek
 Azure AD 'de kimlik doğrulaması yapabilmek ve Kullanıcı oluşturma iznine sahip olmak için onay sisteminizi Azure AD kiracınızda bir uygulama olarak kaydetmeniz gerekir. [Microsoft Graph için kimlik doğrulama ve yetkilendirme temelleri](/graph/auth/auth-concepts)hakkında daha fazla bilgi edinin.
 
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
-2. **Azure hizmetleri**altında **Azure Active Directory**' yi seçin.
-3. Sol menüden **uygulama kayıtları**' yi seçin ve ardından **Yeni kayıt**' ı seçin.
-4. Uygulama için bir **ad** girin, örneğin _kaydolma onayları_.
+2. **Azure hizmetleri** altında **Azure Active Directory** ' yi seçin.
+3. Sol menüden **uygulama kayıtları** ' yi seçin ve ardından **Yeni kayıt** ' ı seçin.
+4. Uygulama için bir **ad** girin, örneğin _kaydolma onayları_ .
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
-5. **Kaydet**’i seçin. Diğer alanları varsayılan olarak bırakabilirsiniz.
+5. **Kaydet** ’i seçin. Diğer alanları varsayılan olarak bırakabilirsiniz.
 
-   ![Uygulama sayfası kaydetme](media/self-service-sign-up-add-approvals/register-approvals-app.png)
+   ![Kaydet düğmesini vurgulayan ekran görüntüsü.](media/self-service-sign-up-add-approvals/register-approvals-app.png)
 
-6. Sol menüdeki **Yönet** ' in altında, **API izinleri**' ni seçin ve **izin Ekle**' yi seçin.
-7. **API Izinleri iste** sayfasında, **Microsoft Graph**' yi seçin ve ardından **Uygulama izinleri**' ni seçin.
-8. **Izinleri Seç**' ın altında **Kullanıcı**' yı genişletin ve ardından **User. ReadWrite. All** onay kutusunu seçin. Bu izin onay sisteminin onay sonrasında Kullanıcı oluşturmasına izin verir. Ardından **Izin Ekle**' yi seçin.
+6. Sol menüdeki **Yönet** ' in altında, **API izinleri** ' ni seçin ve **izin Ekle** ' yi seçin.
+7. **API Izinleri iste** sayfasında, **Microsoft Graph** ' yi seçin ve ardından **Uygulama izinleri** ' ni seçin.
+8. **Izinleri Seç** ' ın altında **Kullanıcı** ' yı genişletin ve ardından **User. ReadWrite. All** onay kutusunu seçin. Bu izin onay sisteminin onay sonrasında Kullanıcı oluşturmasına izin verir. Ardından **Izin Ekle** ' yi seçin.
 
    ![Uygulama sayfası kaydetme](media/self-service-sign-up-add-approvals/request-api-permissions.png)
 
-9. **API izinleri** sayfasında, **(kiracı adınız) Için yönetici onayı ver**' i seçin ve ardından **Evet**' i seçin.
-10. Sol menüdeki **Yönet** ' ın altında **Sertifikalar & gizlilikler**' ı seçin ve ardından **yeni istemci parolası**' nı seçin.
-11. Gizlilik için bir **Açıklama** girin, örneğin _onaylar istemci parolası_ve Istemci parolasının **süresinin dolacağı**süreyi seçin. Ardından **Ekle**'yi seçin.
+9. **API izinleri** sayfasında, **(kiracı adınız) Için yönetici onayı ver** ' i seçin ve ardından **Evet** ' i seçin.
+10. Sol menüdeki **Yönet** ' ın altında **Sertifikalar & gizlilikler** ' ı seçin ve ardından **yeni istemci parolası** ' nı seçin.
+11. Gizlilik için bir **Açıklama** girin, örneğin _onaylar istemci parolası_ ve Istemci parolasının **süresinin dolacağı** süreyi seçin. Ardından **Ekle** 'yi seçin.
 12. İstemci parolasının değerini kopyalayın.
 
     ![İstemci parolasını onay sisteminde kullanılmak üzere kopyalama](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
@@ -61,7 +61,7 @@ Azure AD 'de kimlik doğrulaması yapabilmek ve Kullanıcı oluşturma iznine sa
 
 Daha sonra self servis kaydolma Kullanıcı akışınız için [API bağlayıcıları oluşturacaksınız](self-service-sign-up-add-api-connector.md#create-an-api-connector) . Onay sistemi API 'niz, aşağıda gösterilen örneklerde olduğu gibi iki bağlayıcı ve karşılık gelen uç noktalar gerektirir. Bu API bağlayıcıları şunları yapın:
 
-- Onay **durumunu kontrol edin**. Kullanıcı bir kimlik sağlayıcısı ile oturum açtıktan hemen sonra onay sistemine çağrı gönderin. Bu, kullanıcının var olan onay isteğine sahip olup olmadığını veya zaten reddedildiğini kontrol etmek için bir kimlik sağlayıcısıyla oturum açar. Onay sisteminiz yalnızca otomatik onay kararları alıyorsa, bu API Bağlayıcısı gerekmeyebilir. "Onay durumunu denetleme" API Bağlayıcısı örneği.
+- Onay **durumunu kontrol edin** . Kullanıcı bir kimlik sağlayıcısı ile oturum açtıktan hemen sonra onay sistemine çağrı gönderin. Bu, kullanıcının var olan onay isteğine sahip olup olmadığını veya zaten reddedildiğini kontrol etmek için bir kimlik sağlayıcısıyla oturum açar. Onay sisteminiz yalnızca otomatik onay kararları alıyorsa, bu API Bağlayıcısı gerekmeyebilir. "Onay durumunu denetleme" API Bağlayıcısı örneği.
 
   ![Onay durumu API Bağlayıcısı yapılandırmasını denetle](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
@@ -76,17 +76,17 @@ Bu bağlayıcıları oluşturmak için [API Bağlayıcısı oluşturma](self-ser
 Şimdi aşağıdaki adımlarla API bağlayıcılarını self servis kaydolma Kullanıcı akışına ekleyeceksiniz:
 
 1. [Azure portalda](https://portal.azure.com/) Azure AD yöneticisi olarak oturum açın.
-2. **Azure hizmetleri**altında **Azure Active Directory**' yi seçin.
-3. Sol taraftaki menüden **dış kimlikler**' i seçin.
+2. **Azure hizmetleri** altında **Azure Active Directory** ' yi seçin.
+3. Sol taraftaki menüden **dış kimlikler** ' i seçin.
 4. **Kullanıcı akışları ' nı (Önizleme)** seçin ve ardından API bağlayıcısını etkinleştirmek istediğiniz kullanıcı akışını seçin.
-5. **API bağlayıcıları**' nı seçin ve ardından Kullanıcı akışında aşağıdaki adımlarda ÇAĞıRMAK istediğiniz API uç noktalarını seçin:
+5. **API bağlayıcıları** ' nı seçin ve ardından Kullanıcı akışında aşağıdaki adımlarda ÇAĞıRMAK istediğiniz API uç noktalarını seçin:
 
-   - **Bir kimlik sağlayıcısı ile oturum açtıktan sonra**: onay durumu API bağlayıcısını seçin, örneğin onay _durumunu kontrol edin_.
-   - **Kullanıcı oluşturmadan önce**: onay isteği API bağlayıcısını, örneğin _istek onayı_' nı seçin.
+   - **Bir kimlik sağlayıcısı ile oturum açtıktan sonra** : onay durumu API bağlayıcısını seçin, örneğin onay _durumunu kontrol edin_ .
+   - **Kullanıcı oluşturmadan önce** : onay isteği API bağlayıcısını, örneğin _istek onayı_ ' nı seçin.
 
    ![Kullanıcı akışına API ekleme](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
-6. **Kaydet**’i seçin.
+6. **Kaydet** ’i seçin.
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>API yanıtları ile kaydolma akışını denetleme
 
@@ -207,7 +207,7 @@ API 'ye gönderilen tam talepler, kullanıcıdan hangi bilgilerin toplandığın
 
 **İstek onayı** API uç noktası şu durumlarda bir devamlılık yanıtı döndürmelidir:
 
-- Kullanıcı **_otomatik olarak onaylanabilir_**.
+- Kullanıcı **_otomatik olarak onaylanabilir_** .
 
 Devamlılık yanıtı örneği:
 
@@ -320,13 +320,13 @@ Content-type: application/json
 
 | Parametre                                           | Gerekli | Açıklama                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName                                   | Yes      | , `email` API 'ye gönderilen talep alınarak, `@` karakteri ile değiştirerek ve ile önceden bekleyerek oluşturulabilir `_` `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled                                      | Yes      | Olarak ayarlanmalıdır `true` .                                                                                                                                                 |
-| posta                                                | Yes      | `email`API 'ye gönderilen talebe denktir.                                                                                                               |
-| userType                                            | Yes      | Olmalıdır `Guest` . Bu kullanıcıyı Konuk Kullanıcı olarak belirler.                                                                                                                 |
-| lerinizde                                          | Yes      | Federal kimlik bilgileri.                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | No       | , Ve gibi diğer yerleşik öznitelikler `displayName` `city` . Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | Kullanıcı hakkındaki özel öznitelikler. Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                                                            |
+| userPrincipalName                                   | Evet      | , `email` API 'ye gönderilen talep alınarak, `@` karakteri ile değiştirerek ve ile önceden bekleyerek oluşturulabilir `_` `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Evet      | Olarak ayarlanmalıdır `true` .                                                                                                                                                 |
+| posta                                                | Evet      | `email`API 'ye gönderilen talebe denktir.                                                                                                               |
+| userType                                            | Evet      | Olmalıdır `Guest` . Bu kullanıcıyı Konuk Kullanıcı olarak belirler.                                                                                                                 |
+| lerinizde                                          | Evet      | Federal kimlik bilgileri.                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | Hayır       | , Ve gibi diğer yerleşik öznitelikler `displayName` `city` . Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | Hayır       | Kullanıcı hakkındaki özel öznitelikler. Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Federe Azure Active Directory Kullanıcı için
 

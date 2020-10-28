@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2b776ba64d96d092ad51ad2888b891e19e8b521
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c79942aad2ce450bc22aa0a0cfc32e67a667bd48
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90968879"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895962"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>REST API çağrılarını kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -33,21 +33,24 @@ Bu makalede, Azure Resource Manager REST uç noktasına çağrı yapmak için K�
 - Azure sanal makine ölçek kümesi üzerinde sistem tarafından atanan yönetilen kimliği etkinleştirme ve devre dışı bırakma
 - Azure sanal makine ölçek kümesine Kullanıcı tarafından atanan yönetilen kimlik ekleme ve kaldırma
 
+Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
+
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
-- Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
+- Azure kaynakları için Yönetilen kimlikler hakkında bilgi sahibi değilseniz bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](overview.md). Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik türleri hakkında bilgi edinmek için bkz. [yönetilen kimlik türleri](overview.md#managed-identity-types).
+
 - Bu makaledeki yönetim işlemlerini gerçekleştirmek için, hesabınız aşağıdaki Azure rolü atamalarına ihtiyaç duyuyor:
 
-    > [!NOTE]
-    > Ek Azure AD dizin rolü ataması gerekli değildir.
+  - Sanal makine [katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) bir sanal makine ölçek kümesi oluşturmak ve sistem ve/veya Kullanıcı tarafından atanan yönetilen kimliği bir sanal makine ölçek kümesinden etkinleştirmek ve kaldırmak için.
 
-    - Sanal makine [katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) bir sanal makine ölçek kümesi oluşturmak ve sistem ve/veya Kullanıcı tarafından atanan yönetilen kimliği bir sanal makine ölçek kümesinden etkinleştirmek ve kaldırmak için.
-    - Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için [yönetilen kimlik katılımcısı](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) rolü.
-    - Kullanıcı tarafından atanan bir kimliği ve sanal makine ölçek kümesine atamak ve kaldırmak için [yönetilen kimlik operatörü](../../role-based-access-control/built-in-roles.md#managed-identity-operator) rolü.
-- Bu makaledeki tüm komutları bulutta ya da yerel olarak çalıştırabilirsiniz:
-    - Bulutta çalıştırmak için [Azure Cloud Shell](../../cloud-shell/overview.md)kullanın.
-    - Yerel olarak çalıştırmak için, [kıvrımlı](https://curl.haxx.se/download.html) ve [Azure CLI](/cli/azure/install-azure-cli)'yı yükledikten sonra, sistem veya Kullanıcı tarafından atanan yönetilen kimlikleri yönetmek istediğiniz Azure aboneliğiyle ilişkili bir hesapla [az Login](/cli/azure/reference-index#az-login) kullanarak Azure 'da oturum açın.
+  - Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için [yönetilen kimlik katılımcısı](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) rolü.
+
+  - Kullanıcı tarafından atanan bir kimliği ve sanal makine ölçek kümesine atamak ve kaldırmak için [yönetilen kimlik operatörü](../../role-based-access-control/built-in-roles.md#managed-identity-operator) rolü.
+
+  > [!NOTE]
+  > Ek Azure AD dizin rolü ataması gerekli değildir.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik
 
@@ -63,7 +66,7 @@ Sistem tarafından atanan yönetilen kimlik etkin bir sanal makine ölçek küme
    az group create --name myResourceGroup --location westus
    ```
 
-2. Sanal makine ölçek kümesi için bir [ağ arabirimi](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) oluşturun:
+2. Sanal makine ölçek kümesi için bir [ağ arabirimi](/cli/azure/network/nic#az-network-nic-create) oluşturun:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -75,7 +78,7 @@ Sistem tarafından atanan yönetilen kimlik etkin bir sanal makine ölçek küme
    az account get-access-token
    ``` 
 
-4. Azure Resource Manager REST uç noktasını çağırmak için KıVRıMLı kullanarak bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, değeri tarafından istek gövdesinde tanımlandığı gibi, *Myresourcegroup* Içindeki *myvmss* adlı bir sanal makine ölçek kümesi oluşturur ve sistem tarafından atanan yönetilen kimlik `"identity":{"type":"SystemAssigned"}` . `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
+4. Azure Cloud Shell kullanarak, Azure Resource Manager REST uç noktasını çağırmak için KıVRıMLı kullanarak bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, değeri tarafından istek gövdesinde tanımlandığı gibi, *Myresourcegroup* Içindeki *myvmss* adlı bir sanal makine ölçek kümesi oluşturur ve sistem tarafından atanan yönetilen kimlik `"identity":{"type":"SystemAssigned"}` . `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -167,7 +170,7 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
    az account get-access-token
    ```
 
-2. Sanal makine ölçek kümesinde, `{"identity":{"type":"SystemAssigned"}` *Myvmss*adlı bir sanal makine ölçek kümesi için değere göre belirlenmiş olan sistem tarafından atanan yönetilen kimliği ETKINLEŞTIRMEK üzere Azure Resource Manager REST uç noktasını ÇAĞıRMAK için aşağıdaki kıvrımlı komutunu kullanın.  `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
+2. Sanal makine ölçek kümesinde, `{"identity":{"type":"SystemAssigned"}` *Myvmss* adlı bir sanal makine ölçek kümesi için değere göre belirlenmiş olan sistem tarafından atanan yönetilen kimliği ETKINLEŞTIRMEK üzere Azure Resource Manager REST uç noktasını ÇAĞıRMAK için aşağıdaki kıvrımlı komutunu kullanın.  `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
    
    > [!IMPORTANT]
    > Sanal makine ölçek kümesine atanmış olan, Kullanıcı tarafından atanan yönetilen kimlikleri silmemenizi sağlamak için, bu KıVRıMLı komutunu kullanarak Kullanıcı tarafından atanan yönetilen kimlikleri listeetmeniz gerekir: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Yanıttaki değerde tanımlandığı şekilde, sanal makine ölçek kümesine atanan kullanıcı tarafından atanan yönetilen kimlikleriniz varsa `identity` , sanal makine ölçek kümesinde sistem tarafından atanan yönetilen kimliği etkinleştirirken Kullanıcı tarafından atanan yönetilen kimliklerin nasıl tutulacağını gösteren 3. adıma atlayın.
@@ -278,7 +281,7 @@ Var olan bir sanal makine ölçek kümesinde sistem tarafından atanan bir kimli
    az account get-access-token
    ```
 
-2. Sistem tarafından atanan yönetilen kimliği devre dışı bırakmak için Azure Resource Manager REST uç noktasını çağırmak üzere sanal makine ölçek kümesini KıVRıMLı kullanarak güncelleştirin.  Aşağıdaki örnek, sistem tarafından atanan yönetilen kimliği, `{"identity":{"type":"None"}}` *Myvmss*adlı bir sanal makine ölçek kümesindeki değere göre istek gövdesinde tanımlanan şekilde devre dışı bırakır.  `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
+2. Sistem tarafından atanan yönetilen kimliği devre dışı bırakmak için Azure Resource Manager REST uç noktasını çağırmak üzere sanal makine ölçek kümesini KıVRıMLı kullanarak güncelleştirin.  Aşağıdaki örnek, sistem tarafından atanan yönetilen kimliği, `{"identity":{"type":"None"}}` *Myvmss* adlı bir sanal makine ölçek kümesindeki değere göre istek gövdesinde tanımlanan şekilde devre dışı bırakır.  `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
 
    > [!IMPORTANT]
    > Sanal makine ölçek kümesine atanmış olan, Kullanıcı tarafından atanan yönetilen kimlikleri silmemenizi sağlamak için, bu KıVRıMLı komutunu kullanarak Kullanıcı tarafından atanan yönetilen kimlikleri listeetmeniz gerekir: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Sanal makine ölçek kümesine atanan kullanıcı tarafından atanan yönetilen Kimliğiniz varsa, sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği kaldırırken Kullanıcı tarafından atanan yönetilen kimliklerin nasıl tutulacağını gösteren 3. adıma atlayın.
@@ -308,7 +311,7 @@ Var olan bir sanal makine ölçek kümesinde sistem tarafından atanan bir kimli
     }
    ```
 
-   Kullanıcı tarafından atanan yönetilen kimlikleri olan bir sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği kaldırmak için `SystemAssigned` `{"identity":{"type:" "}}` `UserAssigned` `userAssignedIdentities` **API sürüm 2018-06-01**kullanıyorsanız değeri ve sözlük değerlerini tutarken değeri kaldırın. **API sürüm 2017-12-01** veya önceki bir sürümünü kullanıyorsanız, `identityIds` diziyi saklayın.
+   Kullanıcı tarafından atanan yönetilen kimlikleri olan bir sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği kaldırmak için `SystemAssigned` `{"identity":{"type:" "}}` `UserAssigned` `userAssignedIdentities` **API sürüm 2018-06-01** kullanıyorsanız değeri ve sözlük değerlerini tutarken değeri kaldırın. **API sürüm 2017-12-01** veya önceki bir sürümünü kullanıyorsanız, `identityIds` diziyi saklayın.
 
 ## <a name="user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik
 
@@ -322,7 +325,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
    az account get-access-token
    ```
 
-2. Sanal makine ölçek kümesi için bir [ağ arabirimi](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) oluşturun:
+2. Sanal makine ölçek kümesi için bir [ağ arabirimi](/cli/azure/network/nic#az-network-nic-create) oluşturun:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -539,7 +542,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
 4. Sanal makine ölçek kümesine atanan kullanıcı veya sistem tarafından atanan yönetilen kimliğiniz yoksa, sanal makine ölçek kümesine ilk Kullanıcı tarafından atanan yönetilen kimliği atamak için Azure Resource Manager REST uç noktasını çağırmak üzere aşağıdaki KıVRıMLı komutunu kullanın.  Sanal makine ölçek kümesine atanan bir kullanıcı veya sistem tarafından atanan yönetilen Kimliğiniz varsa, bir sanal makine ölçek kümesine birden çok kullanıcı tarafından atanan yönetilen kimlik ekleme işlemini gösteren 5. adım ' a atlayın.
 
-   Aşağıdaki örnek, Kullanıcı tarafından atanan bir yönetilen kimliği, `ID1` *myresourcegroup*kaynak grubundaki *myvmss* adlı bir sanal makine ölçek kümesine atar.  `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
+   Aşağıdaki örnek, Kullanıcı tarafından atanan bir yönetilen kimliği, `ID1` *myresourcegroup* kaynak grubundaki *myvmss* adlı bir sanal makine ölçek kümesine atar.  `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
 
    **APı SÜRÜMÜ 2018-06-01**
 

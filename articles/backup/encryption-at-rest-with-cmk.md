@@ -3,12 +3,12 @@ title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verile
 description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize nasıl olanak sağladığını öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e3eea4b5f44203b68c1263c0fb3ae843cabbe72
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378296"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895996"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
 
@@ -25,15 +25,15 @@ Bu makalede aşağıdakiler ele alınmaktadır:
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Bu özellik **yalnızca yeni kurtarma hizmetleri kasalarını**şifrelemenizi sağlar. Kayıtlı veya kayıtlı olan öğeleri içeren kasaların hiçbiri desteklenmez.
+- Bu özellik **yalnızca yeni kurtarma hizmetleri kasalarını** şifrelemenizi sağlar. Kayıtlı veya kayıtlı olan öğeleri içeren kasaların hiçbiri desteklenmez.
 
 - Bir kurtarma hizmetleri Kasası için etkinleştirildikten sonra, müşteri tarafından yönetilen anahtarları kullanarak şifreleme, platform tarafından yönetilen anahtarlar (varsayılan) ile geri döndürülemez. Şifreleme anahtarlarını gereksinimlerinize göre değiştirebilirsiniz.
 
-- Bu özellik şu anda **Mars Aracısı 'nı kullanarak yedeklemeyi desteklemiyor**ve aynı şekilde CMK şifreli bir kasa kullanmayabilir. MARS Aracısı Kullanıcı parolası tabanlı bir şifreleme kullanır. Bu özellik, klasik VM 'lerin yedeklenmesini de desteklemez.
+- Bu özellik şu anda **Mars Aracısı 'nı kullanarak yedeklemeyi desteklemiyor** ve aynı şekilde CMK şifreli bir kasa kullanmayabilir. MARS Aracısı Kullanıcı parolası tabanlı bir şifreleme kullanır. Bu özellik, klasik VM 'lerin yedeklenmesini de desteklemez.
 
 - Bu özellik [Azure disk şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)ile ilgili değildir ve BitLocker (Windows için) ve DM-Crypt (Linux için) kullanarak bir VM disklerinin Konuk tabanlı şifrelemesini kullanır
 
-- Kurtarma Hizmetleri Kasası, yalnızca **aynı bölgede**bulunan bir Azure Key Vault depolanan anahtarlarla şifrelenebilir. Ayrıca anahtarlar yalnızca **RSA 2048 anahtar** olmalıdır ve **etkin** durumda olmalıdır.
+- Kurtarma Hizmetleri Kasası, yalnızca **aynı bölgede** bulunan bir Azure Key Vault depolanan anahtarlarla şifrelenebilir. Ayrıca anahtarlar yalnızca **RSA 2048 anahtar** olmalıdır ve **etkin** durumda olmalıdır.
 
 - CMK şifreli kurtarma hizmetleri kasasını kaynak grupları ve abonelikler arasında taşıma Şu anda desteklenmemektedir.
 
@@ -66,7 +66,7 @@ Azure Backup, Azure Key Vault depolanan şifreleme anahtarlarına erişmek üzer
 
     ![Kimlik ayarları](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. **Durumu** **Açık** olarak değiştirin ve **Kaydet**' i seçin.
+1. **Durumu** **Açık** olarak değiştirin ve **Kaydet** ' i seçin.
 
 1. Kasadaki sistem tarafından atanan yönetilen kimlik olan bir nesne KIMLIĞI oluşturulur.
 
@@ -74,11 +74,11 @@ Azure Backup, Azure Key Vault depolanan şifreleme anahtarlarına erişmek üzer
 
 Artık kurtarma hizmetleri kasasının şifreleme anahtarını içeren Azure Key Vault erişmesine izin vermeniz gerekir. Bu, kurtarma hizmetleri kasasının yönetilen kimliğinin Key Vault erişmesine izin verilerek yapılır.
 
-1. Azure Key Vault > **erişim ilkelerine**gidin. **+ Erişim Ilkeleri Ekle**' ye geçin.
+1. Azure Key Vault > **erişim ilkelerine** gidin. **+ Erişim Ilkeleri Ekle** ' ye geçin.
 
     ![Erişim Ilkeleri ekleme](./media/encryption-at-rest-with-cmk/access-policies.png)
 
-1. **Anahtar izinleri**altında **Al**, **Listele**, **anahtar kaydırmayı kaldır** ve **anahtarı sarmalama** işlemlerini seçin. Bu, anahtardaki, izin verilecek eylemleri belirtir.
+1. **Anahtar izinleri** altında **Al** , **Listele** , **anahtar kaydırmayı kaldır** ve **anahtarı sarmalama** işlemlerini seçin. Bu, anahtardaki, izin verilecek eylemleri belirtir.
 
     ![Anahtar izinleri atama](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
@@ -94,7 +94,7 @@ Artık kurtarma hizmetleri kasasının şifreleme anahtarını içeren Azure Key
 
 Şifreleme anahtarınızı depolayan Azure Key Vault **, geçici silme ve Temizleme korumasını etkinleştirmeniz** gerekir. Bunu aşağıda gösterildiği gibi Azure Key Vault kullanıcı arabiriminden yapabilirsiniz. (Alternatif olarak, Key Vault oluşturulurken bu özellikler ayarlanabilir). Bu [Key Vault özellikleri hakkında](../key-vault/general/soft-delete-overview.md)daha fazla bilgi edinin.
 
-![Geçici silme ve Temizleme korumasını etkinleştir](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
+![Geçici silmeyi ve temizleme korumasını etkinleştirme](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 
 Aşağıdaki adımları kullanarak, PowerShell aracılığıyla geçici silme ve Temizleme korumasını de etkinleştirebilirsiniz:
 
@@ -148,7 +148,7 @@ Anahtarı atamak için:
 
     ![Şifreleme ayarları](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. **Şifreleme ayarları**altında **Güncelleştir** ' i seçin.
+1. **Şifreleme ayarları** altında **Güncelleştir** ' i seçin.
 
 1. Şifreleme ayarları bölmesinde, **kendi anahtarınızı kullan** ' ı seçin ve aşağıdaki yollarla anahtarı belirtmek için devam edin. **Kullanmak istediğiniz anahtarın etkin durumda olan bir RSA 2048 anahtarı olduğundan emin olun.**
 
@@ -160,9 +160,9 @@ Anahtarı atamak için:
 
         ![Anahtar kasasından anahtar seçin](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
-1. **Şifreleme anahtarı güncelleştirmesinin Ilerlemesi izleniyor:** Kurtarma Hizmetleri kasasındaki **etkinlik günlüğünü** kullanarak anahtar atamasının ilerlemesini izleyebilirsiniz. Durum yakında **başarılı**olarak değişmelidir. Artık kasanız, belirtilen anahtara sahip tüm verileri KEK olarak şifreler.
+1. **Şifreleme anahtarı güncelleştirmesinin Ilerlemesi izleniyor:** Kurtarma Hizmetleri kasasındaki **etkinlik günlüğünü** kullanarak anahtar atamasının ilerlemesini izleyebilirsiniz. Durum yakında **başarılı** olarak değişmelidir. Artık kasanız, belirtilen anahtara sahip tüm verileri KEK olarak şifreler.
 
     ![Etkinlik günlüğü ile ilerlemeyi izleme](./media/encryption-at-rest-with-cmk/activity-log.png)
 
@@ -184,7 +184,6 @@ Korumayı yapılandırmaya devam etmeden önce aşağıdaki denetim listesinin �
 >[!IMPORTANT]
 > Korumayı yapılandırmaya devam etmeden önce aşağıdaki adımları **başarıyla** tamamlamış olmanız gerekir:
 >
->1. Aboneliğiniz, yedekleme kasanız için müşteri tarafından yönetilen anahtarları kullanacak şekilde etkinleştirildi.
 >1. Yedekleme kasanızı oluşturma
 >1. Yedekleme kasasının sistem tarafından atanan yönetilen kimliğini etkinleştirdi
 >1. Key Vault şifreleme anahtarlarına erişmek için yedekleme kasanıza atanan izinler
@@ -193,7 +192,7 @@ Korumayı yapılandırmaya devam etmeden önce aşağıdaki denetim listesinin �
 >
 >Yukarıdaki adımların tümü onaylanırsa, yalnızca yedeklemeyi yapılandırmaya devam edin.
 
-Müşteri tarafından yönetilen anahtarlarla şifrelenen bir kurtarma hizmetleri kasasındaki yedeklemeleri yapılandırma ve gerçekleştirme işlemi, bu **deneyim üzerinde değişiklik**yapmadan, platform tarafından yönetilen anahtarlar kullanan bir kasaya benzer. Bu, [Azure VM 'lerinin yedeklenmesi](./quick-backup-vm-portal.md) ve bir VM içinde çalışan iş yüklerinin yedeklenmesi için (örneğin, [SAP HANA](./tutorial-backup-sap-hana-db.md), [SQL Server](./tutorial-sql-backup.md) veritabanları) doğru bir durum içerir.
+Müşteri tarafından yönetilen anahtarlarla şifrelenen bir kurtarma hizmetleri kasasındaki yedeklemeleri yapılandırma ve gerçekleştirme işlemi, bu **deneyim üzerinde değişiklik** yapmadan, platform tarafından yönetilen anahtarlar kullanan bir kasaya benzer. Bu, [Azure VM 'lerinin yedeklenmesi](./quick-backup-vm-portal.md) ve bir VM içinde çalışan iş yüklerinin yedeklenmesi için (örneğin, [SAP HANA](./tutorial-backup-sap-hana-db.md), [SQL Server](./tutorial-sql-backup.md) veritabanları) doğru bir durum içerir.
 
 ## <a name="restoring-data-from-backup"></a>Verileri yedeklemeden geri yükleme
 
@@ -215,7 +214,7 @@ Geri yükleme işlemi tamamlandıktan sonra geri yüklenen diski/VM 'yi, geri y�
 
 Disk şifreleme kümesi, aşağıda gösterildiği gibi geri yükleme bölmesindeki şifreleme ayarları altında belirtilir:
 
-1. **Anahtarınızı kullanarak disk (ler) i şifreleyin**, **Evet**' i seçin.
+1. **Anahtarınızı kullanarak disk (ler) i şifreleyin** , **Evet** ' i seçin.
 
 1. Açılan menüden, geri yüklenen diskler için kullanmak istediğiniz DES ' i seçin. **DES 'e erişiminizin olduğundan emin olun.**
 

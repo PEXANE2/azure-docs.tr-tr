@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.custom: subject-armqs
-ms.openlocfilehash: e7c3f2f50d9ac1fb1731f70f7b442ab4a2e44425
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 223006193219afe4179f3161d5e60e6439207b22
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088933"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896064"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak ön kapı oluşturma
 
@@ -40,7 +40,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-front-door-create-basic) alınmıştır.
 
-Bu hızlı başlangıçta, tek bir arka uç ve "/*" ile eşleşen tek bir varsayılan yol ile bir ön kapı yapılandırması oluşturacaksınız. 
+Bu hızlı başlangıçta, tek bir arka uçta ve tek bir varsayılan yol eşleştirmeden bir ön kapı yapılandırması oluşturacaksınız `/*` .
 
 :::code language="json" source="~/quickstart-templates/101-front-door-create-basic/azuredeploy.json":::
 
@@ -50,7 +50,7 @@ Bu hızlı başlangıçta, tek bir arka uç ve "/*" ile eşleşen tek bir varsay
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Azure Cloud Shell açmak için aşağıdaki kod bloğundan **deneyin** ' i seçin ve ardından Azure 'da oturum açmak için yönergeleri izleyin. 
+1. Azure Cloud Shell açmak için aşağıdaki kod bloğundan **deneyin** ' i seçin ve ardından Azure 'da oturum açmak için yönergeleri izleyin.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -69,11 +69,11 @@ Bu hızlı başlangıçta, tek bir arka uç ve "/*" ile eşleşen tek bir varsay
 
 1. PowerShell betiğini kopyalamak için önceki kod bloğundan **Kopyala** ' yı seçin.
 
-1. Kabuk konsol bölmesine sağ tıklayın ve ardından **Yapıştır**' ı seçin.
+1. Kabuk konsol bölmesine sağ tıklayın ve ardından **Yapıştır** ' ı seçin.
 
 1. Değerleri girin.
 
-    Şablon dağıtımı, tek bir arka uçta ön kapı oluşturur. Bu örnekte * <span>Microsoft.</span> com* , **Backenbaddress**olarak kullanılır.
+    Şablon dağıtımı, tek bir arka uçta ön kapı oluşturur. Bu örnekte `microsoft.com` **Backenbaddress** olarak kullanılır.
 
     Kaynak grubu adı, **RG** eklenmiş proje adıdır.
 
@@ -88,7 +88,7 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Sol bölmeden **kaynak grupları** ' nı seçin.
 
@@ -110,8 +110,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta şunu oluşturdunuz:
-* Front Door
+Bu hızlı başlangıçta bir ön kapı oluşturdunuz.
 
 Ön kapıya özel bir etki alanı eklemeyi öğrenmek için ön kapı öğreticilerine geçin.
 

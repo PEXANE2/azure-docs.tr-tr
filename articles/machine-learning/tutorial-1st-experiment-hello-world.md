@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 980347c658c65a0c08dfc50c08f50741fb9a00fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afc851be08e6708efc0138dc45931cda147c67c1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372553"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895894"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Öğretici: "Hello World!" Çalıştır Python betiği (Bölüm 2/4)
 
@@ -142,6 +142,9 @@ Denetim betiğinizi çalıştırın, bu, `hello.py` [Kurulum öğreticisinde](tu
 ```bash
 python 03-run-hello.py
 ```
+
+> [!TIP]
+> Bu kodu çalıştırmak, aboneliğe erişiminizin olmadığı bir hata veriyorsa, bkz. kimlik doğrulama seçenekleri hakkında bilgi için bkz. [çalışma alanına bağlanma](how-to-manage-workspace.md?tab=python#connect-multi-tenant) .
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>Studio 'yu kullanarak kodunuzu bulutta izleyin
 

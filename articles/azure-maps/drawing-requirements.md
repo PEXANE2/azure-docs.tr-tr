@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 1f25aadf716b7768b6122a4fb165466aef7f8a16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053401"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895843"
 ---
 # <a name="drawing-package-requirements"></a>Çizim paketi gereksinimleri
 
-Karşıya yüklenen çizim paketlerini [Azure Maps dönüştürme hizmetini](https://docs.microsoft.com/rest/api/maps/conversion)kullanarak harita verilerine dönüştürebilirsiniz. Bu makalede, dönüştürme API 'SI için çizim paketi gereksinimleri açıklanmaktadır. Örnek bir paket görüntülemek için örnek [Çizim paketini](https://github.com/Azure-Samples/am-creator-indoor-data-examples)indirebilirsiniz.
+Karşıya yüklenen çizim paketlerini [Azure Maps dönüştürme hizmetini](/rest/api/maps/conversion)kullanarak harita verilerine dönüştürebilirsiniz. Bu makalede, dönüştürme API 'SI için çizim paketi gereksinimleri açıklanmaktadır. Örnek bir paket görüntülemek için örnek [Çizim paketini](https://github.com/Azure-Samples/am-creator-indoor-data-examples)indirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Çizim paketi, Autodesk 'nin AutoCAD® yazılımının yerel dosya biçimi olan, DWG biçiminde kaydedilen çizimleri içerir.
 
 Çizim paketindeki çizimleri oluşturmak için herhangi bir CAD yazılımını seçebilirsiniz.  
 
-[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) , çizim paketini harita verilerine dönüştürür. Dönüştürme hizmeti, AutoCAD DWG dosya biçimiyle birlikte kullanılabilir. `AC1032` , DWG dosyalarının iç biçim sürümüdür ve `AC1032` Iç DWG dosya biçimi sürümünü seçmek iyi bir fikirdir.  
+[Azure haritalar dönüştürme hizmeti](/rest/api/maps/conversion) , çizim paketini harita verilerine dönüştürür. Dönüştürme hizmeti, AutoCAD DWG dosya biçimiyle birlikte kullanılabilir. `AC1032` , DWG dosyalarının iç biçim sürümüdür ve `AC1032` Iç DWG dosya biçimi sürümünü seçmek iyi bir fikirdir.  
 
 ## <a name="glossary-of-terms"></a>Terimler sözlüğü
 
@@ -50,13 +50,13 @@ DWG dosyalarını, klasörü içinde herhangi bir şekilde düzenleyebilirsiniz,
 
 ## <a name="dwg-files-requirements"></a>DWG dosyaları gereksinimleri
 
-Her tesis düzeyi için tek bir DWG dosyası gereklidir. Düzeyin verileri tek bir DWG dosyasında bulunmalıdır. Tüm dış başvurular (_xrefs_) üst çizime bağlanmalıdır. Ayrıca, her bir DWG dosyası:
+Her tesis düzeyi için tek bir DWG dosyası gereklidir. Düzeyin verileri tek bir DWG dosyasında bulunmalıdır. Tüm dış başvurular ( _xrefs_ ) üst çizime bağlanmalıdır. Ayrıca, her bir DWG dosyası:
 
-* _Dış_ ve _birim_ katmanları tanımlanmalıdır. İsteğe bağlı olarak, aşağıdaki isteğe bağlı katmanları tanımlayabilir: _duvar_, _kapı_, _Unitlabel_, _Zone_ve _zonelabel_.
+* _Dış_ ve _birim_ katmanları tanımlanmalıdır. İsteğe bağlı olarak, aşağıdaki isteğe bağlı katmanları tanımlayabilir: _duvar_ , _kapı_ , _Unitlabel_ , _Zone_ ve _zonelabel_ .
 * Birden çok düzeyden Özellikler içermemelidir.
 * Birden çok tesisten Özellikler içermemelidir.
 
-[Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) , aşağıdaki özellik SıNıFLARıNı bir DWG dosyasından ayıklayabilir:
+[Azure haritalar dönüştürme hizmeti](/rest/api/maps/conversion) , aşağıdaki özellik SıNıFLARıNı bir DWG dosyasından ayıklayabilir:
 
 * Düzeyler
 * Birimler
@@ -73,11 +73,11 @@ DWG katmanları da aşağıdaki ölçütlere uymalıdır:
 
 * Tüm DWG dosyaları için çizimlerin kaynakları, aynı Enlem ve Boylam ile hizalanmalıdır.
 * Her düzey, diğer düzeyler ile aynı yönde olmalıdır.
-* Otomatik olarak kesişen çokgenler otomatik olarak onarılır ve [Azure Maps dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) bir uyarı oluşturur. Beklenen sonuçlarla eşleşeceğinden, onarılan sonuçları el ile incelemeniz gerekir.
+* Otomatik olarak kesişen çokgenler otomatik olarak onarılır ve [Azure Maps dönüştürme hizmeti](/rest/api/maps/conversion) bir uyarı oluşturur. Beklenen sonuçlarla eşleşeceğinden, onarılan sonuçları el ile incelemeniz gerekir.
 
 Tüm katman varlıkları şu türlerden biri olmalıdır: çizgi, çoklu çizgi, Çokgen, dairesel yay, daire veya metin (tek satırlı). Diğer herhangi bir varlık türü yok sayılır.
 
-Aşağıdaki tabloda, desteklenen varlık türleri ve her katman için desteklenen özellikler özetlenmektedir. Bir katman Desteklenmeyen varlık türleri içeriyorsa, [Azure Maps dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) bu varlıkları yoksayar.  
+Aşağıdaki tabloda, desteklenen varlık türleri ve her katman için desteklenen özellikler özetlenmektedir. Bir katman Desteklenmeyen varlık türleri içeriyorsa, [Azure Maps dönüştürme hizmeti](/rest/api/maps/conversion) bu varlıkları yoksayar.  
 
 | Katman | Varlık türleri | Özellikler |
 | :----- | :-------------------| :-------
@@ -168,11 +168,11 @@ Her düzeyin DWG dosyası bir bölge etiketi katmanı içerebilir. Bu katman, b�
 
 ## <a name="manifest-file-requirements"></a>Bildirim dosyası gereksinimleri
 
-ZIP klasörü, dizinin kök düzeyinde bir bildirim dosyası içermeli ve dosyanın **manifest.jsolarak**adlandırılması gerekir. [Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) 'nin içeriklerini ayrıştırmasına izin vermek için DWG dosyalarını açıklar. Yalnızca bildirimle tanımlanan dosyalar alınır. ZIP klasöründeki, ancak bildirimde düzgün listelenmeyen dosyalar yok sayılır.
+ZIP klasörü, dizinin kök düzeyinde bir bildirim dosyası içermeli ve dosyanın **manifest.jsolarak** adlandırılması gerekir. [Azure haritalar dönüştürme hizmeti](/rest/api/maps/conversion) 'nin içeriklerini ayrıştırmasına izin vermek için DWG dosyalarını açıklar. Yalnızca bildirimle tanımlanan dosyalar alınır. ZIP klasöründeki, ancak bildirimde düzgün listelenmeyen dosyalar yok sayılır.
 
 `buildingLevels`Bildirim dosyasının nesnesindeki dosya yolları ZIP klasörünün köküne göreli olmalıdır. DWG dosya adı, Tesis düzeyinin adıyla tam olarak eşleşmelidir. Örneğin, "Basement" düzeyi için bir DWG dosyası "Basement. dwg" dir. Düzey 2 için bir DWG dosyası "level_2. dwg" olarak adlandırılır. Düzey adınızın bir alanı varsa alt çizgi kullanın.
 
-Bildirim nesnelerini kullandığınızda gereksinimler olsa da, tüm nesneler gerekli değildir. Aşağıdaki tabloda, [Azure Maps dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion)'nin 1,1 sürümü için gerekli ve isteğe bağlı nesneler gösterilmektedir.
+Bildirim nesnelerini kullandığınızda gereksinimler olsa da, tüm nesneler gerekli değildir. Aşağıdaki tabloda, [Azure Maps dönüştürme hizmeti](/rest/api/maps/conversion)'nin 1,1 sürümü için gerekli ve isteğe bağlı nesneler gösterilmektedir.
 
 | Nesne | Gerekli | Açıklama |
 | :----- | :------- | :------- |
@@ -246,15 +246,15 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 |`unitName`    |dize    |true    |Bu kayıtla ilişkilendirilecek birimin adı `unitProperty` . Bu kayıt yalnızca katmanlarda eşleşen bir etiket bulunduğunda geçerlidir `unitName` `unitLabel` . |
 |`categoryName`|    string|    yanlış    |Kategori adı. Kategorilerin tüm listesi için [Kategoriler](https://aka.ms/pa-indoor-spacecategories)' e bakın. |
 |`navigableBy`| dize dizisi |    yanlış    |Birimi geçebileceğini gezinme aracılarının türlerini gösterir. Bu özellik, waybulma yeteneklerini bilgilendirir. İzin verilen değerler: `pedestrian` , `wheelchair` ,, `machine` `bicycle` , `automobile` , `hiredAuto` , `bus` , `railcar` , `emergency` , `ferry` , `boat` , ve `disallowed` .|
-|`routeThroughBehavior`|    string|    yanlış    |Birim için yönlendirme davranışı. İzin verilen değerler, `disallowed` , `allowed` ve `preferred` . Varsayılan değer: `allowed`.|
+|`routeThroughBehavior`|    string|    yanlış    |Birim için yönlendirme davranışı. İzin verilen değerler, `disallowed` , `allowed` ve `preferred` . `allowed` varsayılan değerdir.|
 |`occupants`    |DirectoryInfo nesneleri dizisi |yanlış    |Birim için işanlar listesi. |
 |`nameAlt`|    string|    yanlış|    Birimin alternatif adı. |
 |`nameSubtitle`|    string    |yanlış|    Birimin alt başlığı. |
 |`addressRoomNumber`|    string|    yanlış|    Birimin Oda, birim, Grup veya paket numarası.|
 |`verticalPenetrationCategory`|    string|    yanlış| Bu özellik tanımlandığında, elde edilen özellik bir birim yerine dikey bir sızma (VRT) olur. Sanal ağları yukarıdaki veya altındaki düzeylerdeki diğer VRT özelliklerine gitmek için de kullanabilirsiniz. Dikey penetasyon [Kategori](https://aka.ms/pa-indoor-spacecategories) adıdır. Bu özellik tanımlanmışsa, `categoryName` özelliği ile geçersiz kılınır `verticalPenetrationCategory` . |
-|`verticalPenetrationDirection`|    string|    yanlış    |`verticalPenetrationCategory`Tanımlanmışsa, isteğe bağlı olarak geçerli seyahat yönünü tanımlayın. İzin verilen değerler: `lowToHigh` , `highToLow` , `both` , ve `closed` . Varsayılan değer: `both`.|
+|`verticalPenetrationDirection`|    string|    yanlış    |`verticalPenetrationCategory`Tanımlanmışsa, isteğe bağlı olarak geçerli seyahat yönünü tanımlayın. İzin verilen değerler: `lowToHigh` , `highToLow` , `both` , ve `closed` . `both` varsayılan değerdir.|
 | `nonPublic` | bool | yanlış | Birimin herkese açık olup olmadığını gösterir. |
-| `isRoutable` | bool | yanlış | Bu özellik olarak ayarlandığında `false` , birime veya birime gidemezsiniz. Varsayılan değer: `true`. |
+| `isRoutable` | bool | yanlış | Bu özellik olarak ayarlandığında `false` , birime veya birime gidemezsiniz. `true` varsayılan değerdir. |
 | `isOpenArea` | bool | yanlış | Gezinti aracının, birime eklenmiş bir açmaya gerek kalmadan birimi girmesine izin verir. Varsayılan olarak, bu değer, yer `true` içermeyen birimler için ve yer imiyle birimler için olarak ayarlanır `false` . `isOpenArea` `false` Açık olmayan bir birimde el ile olarak ayarlanması bir uyarı ile sonuçlanır. Bunun nedeni, elde edilen birime gezinme Aracısı tarafından erişilememesi olabilir.|
 
 ### `zoneProperties`
@@ -404,7 +404,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çizim paketiniz gereksinimleri karşıladığında, paketi bir harita veri kümesine dönüştürmek için [Azure Maps dönüştürme hizmetini](https://docs.microsoft.com/rest/api/maps/conversion) kullanabilirsiniz. Daha sonra, ınkapımaps modülünü kullanarak bir ınkapısı eşlemesi oluşturmak için veri kümesini kullanabilirsiniz.
+Çizim paketiniz gereksinimleri karşıladığında, paketi bir harita veri kümesine dönüştürmek için [Azure Maps dönüştürme hizmetini](/rest/api/maps/conversion) kullanabilirsiniz. Daha sonra, ınkapımaps modülünü kullanarak bir ınkapısı eşlemesi oluşturmak için veri kümesini kullanabilirsiniz.
 
 > [!div class="nextstepaction"]
 >[Inkapı haritaları için Oluşturucu](creator-indoor-maps.md)
