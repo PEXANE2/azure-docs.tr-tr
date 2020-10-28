@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5df2f9cd0a47e5a89d7ff2eb12aefe593cae7a8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194454"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631487"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Azure Data Factory varlıkları oluşturmak için şablonları kullanma
 > [!NOTE]
@@ -228,7 +228,7 @@ Dağıtmak istediğiniz belirli işlem hattını ve etkinlikleri tanımlamaya y�
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>Data Factory şablonu parametrize etme
-Parametreleştirmede en iyi uygulamalar için bkz. [Azure Resource Manager şablonları oluşturmak Için en iyi uygulamalar](../../azure-resource-manager/resource-manager-template-best-practices.md). Genellikle, bunun yerine değişkenlerin kullanılabilmesi için parametre kullanımı simge durumuna küçültülmüş olmalıdır. Yalnızca aşağıdaki senaryolarda parametreleri sağlayın:
+Parametreleştirmede en iyi uygulamalar için bkz. [Azure Resource Manager şablonları oluşturmak Için en iyi uygulamalar](../../azure-resource-manager/templates/template-best-practices.md). Genellikle, bunun yerine değişkenlerin kullanılabilmesi için parametre kullanımı simge durumuna küçültülmüş olmalıdır. Yalnızca aşağıdaki senaryolarda parametreleri sağlayın:
 
 * Ayarlar ortama göre farklılık gösterir (örnek: geliştirme, test ve üretim)
 * Gizli dizileri (parolalar gibi)

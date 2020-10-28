@@ -11,12 +11,12 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 28836d0b1109952d8cf81c66b44b1f98d9b770bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8734247a913bdf6a44a9156f6f87705b618f7228
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136057"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632898"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory içinde, şirket içinde barındırılan, paylaşılan bir tümleştirme çalışma zamanı oluşturma
 
@@ -55,9 +55,9 @@ Azure PowerShell kullanarak, şirket içinde barındırılan paylaşılan bir IR
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/). 
+- **Azure aboneliği** . Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/). 
 
-- **Azure PowerShell**. [PowerShellGet Ile Windows üzerinde Azure PowerShell Install](https://docs.microsoft.com/powershell/azure/install-az-ps)içindeki yönergeleri izleyin. Diğer veri fabrikaları ile paylaşılabilen şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturmak için bir betiği çalıştırmak üzere PowerShell 'i kullanırsınız. 
+- **Azure PowerShell** . [PowerShellGet Ile Windows üzerinde Azure PowerShell Install](/powershell/azure/install-az-ps)içindeki yönergeleri izleyin. Diğer veri fabrikaları ile paylaşılabilen şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturmak için bir betiği çalıştırmak üzere PowerShell 'i kullanırsınız. 
 
 > [!NOTE]  
 > Data Factory Şu anda kullanılabildiği Azure bölgelerinin bir listesi için,  [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory)hakkında sizi ilgilendiren bölgeleri seçin.
@@ -66,7 +66,7 @@ Azure PowerShell kullanarak, şirket içinde barındırılan paylaşılan bir IR
 
 1. Windows PowerShell Tümleşik Komut Dosyası Ortamı’nı (ISE) başlatın.
 
-1. Değişken oluşturun. Aşağıdaki betiği kopyalayıp yapıştırın. **SubscriptionName** ve **resourcegroupname**gibi değişkenleri gerçek değerlerle değiştirin: 
+1. Değişken oluşturun. Aşağıdaki betiği kopyalayıp yapıştırın. **SubscriptionName** ve **resourcegroupname** gibi değişkenleri gerçek değerlerle değiştirin: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -99,7 +99,7 @@ Azure PowerShell kullanarak, şirket içinde barındırılan paylaşılan bir IR
     > [!NOTE]  
     > Bu adım isteğe bağlıdır. Zaten bir veri fabrikanızı varsa, bu adımı atlayın. 
 
-    [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek WestEurope konumunda adlı bir kaynak grubu oluşturur `myResourceGroup` : 
+    [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek WestEurope konumunda adlı bir kaynak grubu oluşturur `myResourceGroup` : 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -155,7 +155,7 @@ Yanıt, bu şirket içinde barındırılan tümleştirme çalışma zamanı içi
 #### <a name="create-another-data-factory"></a>Başka bir veri fabrikası oluşturma
 
 > [!NOTE]  
-> Bu adım isteğe bağlıdır. Paylaşmak istediğiniz Data Factory zaten varsa, bu adımı atlayın. Ancak başka veri fabrikasına rol atamaları eklemek veya kaldırmak için, `Microsoft.Authorization/roleAssignments/write` `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) veya [sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)gibi izinlerinizin olması gerekir.
+> Bu adım isteğe bağlıdır. Paylaşmak istediğiniz Data Factory zaten varsa, bu adımı atlayın. Ancak başka veri fabrikasına rol atamaları eklemek veya kaldırmak için, `Microsoft.Authorization/roleAssignments/write` `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator) veya [sahibi](../role-based-access-control/built-in-roles.md#owner)gibi izinlerinizin olması gerekir.
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
@@ -216,6 +216,6 @@ Remove-AzDataFactoryV2IntegrationRuntime `
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Data Factory tümleştirme çalışma zamanı kavramlarını](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime)gözden geçirin.
+- [Azure Data Factory tümleştirme çalışma zamanı kavramlarını](./concepts-integration-runtime.md)gözden geçirin.
 
-- [Azure Portal şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmayı](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)öğrenin.
+- [Azure Portal şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmayı](./create-self-hosted-integration-runtime.md)öğrenin.

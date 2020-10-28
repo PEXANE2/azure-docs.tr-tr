@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
-ms.author: metan
-ms.openlocfilehash: c4aa9c22a0350c5d946d2fd45a983eac34681512
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: metang
+ms.openlocfilehash: 80da6776412e0df7b5b9ae5759ac770c04673992
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91320940"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631079"
 ---
 # <a name="language-support-for-immersive-reader"></a>Modern okuyucu için dil desteği
 
@@ -62,7 +62,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | İngilizce (İrlanda) | en-IE |
 | İngilizce (Yeni Zelanda) | En-NZ |
 | İngilizce (İngiltere) | en-GB |
-| İngilizce (ABD) | tr-TR |
+| İngilizce (ABD) | en-US |
 | Fince | Fi |
 | Fince (Finlandiya) | fi-FI |
 | Fransızca | kesir |
@@ -168,7 +168,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | İngilizce (İrlanda) | en-IE |
 | İngilizce (Yeni Zelanda) | En-NZ |
 | İngilizce (İngiltere) | en-GB |
-| İngilizce (ABD) | tr-TR |
+| İngilizce (ABD) | en-US |
 | Estonya Dili | lale |
 | Fiji Adaları dili | FJ |
 | Filipino | dosyas |
@@ -300,7 +300,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | İngilizce (İrlanda) | en-IE |
 | İngilizce (Yeni Zelanda) | En-NZ |
 | İngilizce (İngiltere) | en-GB |
-| İngilizce (ABD) | tr-TR |
+| İngilizce (ABD) | en-US |
 | Estonya Dili | lale |
 | Fince | Fi |
 | Fince (Finlandiya) | fi-FI |
@@ -397,7 +397,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | İngilizce (İrlanda) | en-IE |
 | İngilizce (Yeni Zelanda) | En-NZ |
 | İngilizce (İngiltere) | en-GB |
-| İngilizce (ABD) | tr-TR |
+| İngilizce (ABD) | en-US |
 | Estonya Dili | lale |
 | Fince | Fi |
 | Fince (Finlandiya) | fi-FI |
@@ -466,7 +466,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | İngilizce (İrlanda) | en-IE |
 | İngilizce (Yeni Zelanda) | En-NZ |
 | İngilizce (İngiltere) | en-GB |
-| İngilizce (ABD) | tr-TR |
+| İngilizce (ABD) | en-US |
 | Fince | Fi |
 | Fince (Finlandiya) | fi-FI |
 | Fransızca | kesir |
@@ -516,7 +516,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | İngilizce (İrlanda) | en-IE |
 | İngilizce (Yeni Zelanda) | En-NZ |
 | İngilizce (İngiltere) | en-GB |
-| İngilizce (ABD) | tr-TR |
+| İngilizce (ABD) | en-US |
 | Fince | Fi |
 | Fince (Finlandiya) | fi-FI |
 | Fransızca | kesir |
@@ -561,7 +561,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | İngilizce (İrlanda) | en-IE |
 | İngilizce (Yeni Zelanda) | En-NZ |
 | İngilizce (İngiltere) | en-GB |
-| İngilizce (ABD) | tr-TR |
+| İngilizce (ABD) | en-US |
 | Fransızca | kesir |
 | Fransızca (Kanada) | fr-CA |
 | Fransızca (Fransa) | fr-FR |

@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 1978cfe6ea117a0d30df938c9e4ba1aeb48314fc
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 4a80b1f9bfa5d477c47e340f1dec1b37e4c69258
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057850"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631062"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -28,7 +28,7 @@ Daha fazla bilgi için bkz. [Azure Resource Manager şablonuyla uygulama dağıt
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
+* Bir **Azure aboneliği** . Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
 * CLı 'dan bir şablon kullanmak için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) ya da [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)gerekir.
 
@@ -59,7 +59,7 @@ Kaynak grubu, Hizmetleri tutan kapsayıcıdır. Azure Machine Learning çalışm
 
     Şablon, çoğu kaynak için seçtiğiniz konumu kullanacaktır. Özel durum, diğer hizmetlerin bulunduğu tüm konumlarda kullanılamayan Application Insights hizmetidir. Kullanılabilir olmayan bir konum seçerseniz, hizmet Orta Güney ABD konumunda oluşturulur.
 
-* Azure Machine Learning çalışma alanının kolay adı olan **Çalışmaalanıadı**.
+* Azure Machine Learning çalışma alanının kolay adı olan **Çalışmaalanıadı** .
 
     > [!NOTE]
     > Çalışma alanı adı büyük/küçük harfe duyarlıdır.
@@ -161,9 +161,11 @@ New-AzResourceGroupDeployment `
 
 Aşağıdaki örnek şablon, üç ayarı olan bir çalışma alanının nasıl oluşturulacağını göstermektedir:
 
-* Çalışma alanı için yüksek gizlilik ayarlarını etkinleştir
-* Çalışma alanı için şifrelemeyi etkinleştir
-* Müşteri tarafından yönetilen anahtarları almak için mevcut bir Azure Key Vault kullanır
+* Çalışma alanı için yüksek gizlilik ayarlarını etkinleştirin. Bu, yeni bir Cosmos DB örneği oluşturur.
+* Çalışma alanı için şifrelemeyi etkinleştirin.
+* , Müşteri tarafından yönetilen anahtarları almak için mevcut bir Azure Key Vault kullanır. Müşteri tarafından yönetilen anahtarlar, çalışma alanı için yeni bir Cosmos DB örneği oluşturmak için kullanılır.
+
+    [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 > [!IMPORTANT]
 > Bir çalışma alanı oluşturulduktan sonra gizli verilerin, şifrelemenin, Anahtar Kasası KIMLIĞININ veya anahtar tanımlayıcılarının ayarlarını değiştiremezsiniz. Bu değerleri değiştirmek için yeni değerleri kullanarak yeni bir çalışma alanı oluşturmanız gerekir.
@@ -217,7 +219,7 @@ __To get the values__ `cmk_keyvault` Bu şablon için gereken (Key Vault kimliğ
 
 Müşteri tarafından yönetilen anahtarların kullanımını etkinleştirmek için, şablonu dağıttığınızda aşağıdaki parametreleri ayarlayın:
 
-* **Encryption_status** **etkin**.
+* **Encryption_status** **etkin** .
 * **cmk_keyvault** `cmk_keyvault` önceki adımlarda elde edilen değere cmk_keyvault.
 * **resource_cmk_uri** `resource_cmk_uri` önceki adımlarda elde edilen değere resource_cmk_uri.
 
@@ -252,7 +254,7 @@ New-AzResourceGroupDeployment `
 
 Müşteri tarafından yönetilen bir anahtar kullanırken Azure Machine Learning, Cosmos DB örneğini içeren ikincil bir kaynak grubu oluşturur. Daha fazla bilgi için bkz. [rest-Cosmos DB şifreleme](concept-enterprise-security.md#encryption-at-rest).
 
-Verileriniz için sağlayabilmeniz için ek bir yapılandırma **confidential_data** parametresini **true**olarak ayarlayasağlamaktır. Bunu yaptığınızda, şunları yapar:
+Verileriniz için sağlayabilmeniz için ek bir yapılandırma **confidential_data** parametresini **true** olarak ayarlayasağlamaktır. Bunu yaptığınızda, şunları yapar:
 
 * , Aboneliğinizde daha önceki kümelerin oluşturulmadığından Azure Machine Learning işlem kümeleri için yerel karalama diskini şifrelemeye başlar. Abonelikte daha önce bir küme oluşturduysanız, işlem kümelerinizde etkin olan boş disk şifrelemesini sağlamak için bir destek bileti açın.
 * Çalıştırmalar arasındaki yerel karalama diskini temizler.
@@ -547,8 +549,8 @@ New-AzResourceGroupDeployment `
    * Bölge: kaynakların oluşturulacağı Azure bölgesini seçin.
    * Çalışma alanı adı: oluşturulacak Azure Machine Learning çalışma alanı için kullanılacak ad. Çalışma alanı adı 3 ile 33 karakter arasında olmalıdır. Yalnızca alfasayısal karakterler ve '-' içerebilir.
    * Konum: kaynakların oluşturulacağı konumu seçin.
-1. __Gözden geçir + oluştur__’u seçin.
-1. __Gözden geçir + oluştur__ ekranında, listelenen hüküm ve koşulları kabul edin ve __Oluştur__' u seçin.
+1. __Gözden geçir ve oluştur__ ’u seçin.
+1. __Gözden geçir + oluştur__ ekranında, listelenen hüküm ve koşulları kabul edin ve __Oluştur__ ' u seçin.
 
 Daha fazla bilgi için bkz. [özel şablondan kaynak dağıtma](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
@@ -653,7 +655,7 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
 
 ### <a name="virtual-network-not-linked-to-private-dns-zone"></a>Sanal ağ özel DNS bölgesine bağlanmadı
 
-Özel bir uç nokta ile bir çalışma alanı oluştururken, şablon __Privatelink.api.azureml.MS__adlı bir özel DNS bölgesi oluşturur. __Sanal ağ bağlantısı__ , bu özel DNS bölgesine otomatik olarak eklenir. Bağlantı yalnızca bir kaynak grubunda oluşturduğunuz ilk çalışma alanı ve özel uç nokta için eklenir; aynı kaynak grubunda özel bir uç nokta ile başka bir sanal ağ ve çalışma alanı oluşturursanız, ikinci sanal ağ özel DNS bölgesine eklenmeyebilir.
+Özel bir uç nokta ile bir çalışma alanı oluştururken, şablon __Privatelink.api.azureml.MS__ adlı bir özel DNS bölgesi oluşturur. __Sanal ağ bağlantısı__ , bu özel DNS bölgesine otomatik olarak eklenir. Bağlantı yalnızca bir kaynak grubunda oluşturduğunuz ilk çalışma alanı ve özel uç nokta için eklenir; aynı kaynak grubunda özel bir uç nokta ile başka bir sanal ağ ve çalışma alanı oluşturursanız, ikinci sanal ağ özel DNS bölgesine eklenmeyebilir.
 
 Özel DNS bölgesi için zaten var olan sanal ağ bağlantılarını görüntülemek için aşağıdaki Azure CLı komutunu kullanın:
 

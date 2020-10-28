@@ -11,36 +11,38 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f78d0b02c9790234a63ef64200dcab72bc64c033
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82629057"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629434"
 ---
-# <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Azure Data Factory ile birden çok kapsayıcıdan dosya kopyalama
+# <a name="copy-multiple-folders-with-azure-data-factory"></a>Birden çok klasörü Azure Data Factory kopyalama
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu makalede, dosya depoları arasında birden çok kapsayıcıdan dosya kopyalamak için kullanabileceğiniz bir çözüm şablonu açıklanmaktadır. Örneğin, Data Lake ' ı AWS S3 'ten Azure Data Lake Store 'e geçirmek için kullanabilirsiniz. Veya, her şeyi bir Azure Blob depolama hesabından diğerine çoğaltmak için şablonu kullanabilirsiniz.
+Bu makalede, her kopyalama etkinliğinin tek bir kapsayıcı veya klasörü kopyalaması beklenen dosya tabanlı mağazalar arasında kapsayıcılar veya klasörler kopyalamak için birden çok kopyalama etkinliği kullanabileceğiniz bir çözüm şablonu açıklanmaktadır. 
 
 > [!NOTE]
 > Tek bir kapsayıcıdan dosya kopyalamak istiyorsanız, tek bir kopyalama etkinliği ile bir işlem hattı oluşturmak için [veri kopyalama aracını](copy-data-tool.md) kullanmak daha etkilidir. Bu makaledeki şablon, bu basit senaryoya yönelik gereksiniminden daha fazla.
 
 ## <a name="about-this-solution-template"></a>Bu çözüm şablonu hakkında
 
-Bu şablon, kaynak depolama deponuzdan kapsayıcıları sıralar. Daha sonra bu kapsayıcıları hedef depoya kopyalar.
+Bu şablon, kaynak depolama deponuzda verilen bir üst klasörden klasörleri sıralar. Ardından, her bir klasörü hedef depoya kopyalar.
 
 Şablon üç etkinlik içerir:
-- **GetMetadata** , kaynak depolama deponuzi tarar ve kapsayıcı listesini alır.
-- **ForEach** , **GetMetadata** etkinliğinden kapsayıcı listesini alır ve sonra liste üzerinde dolaşır ve her kapsayıcıyı kopyalama etkinliğine geçirir.
-- **Kopya** , her kapsayıcıyı kaynak depolama deposundan hedef depoya kopyalar.
+- **GetMetadata** , kaynak depolama deponuzi tarar ve belirtilen bir üst klasörden alt klasör listesini alır.
+- **ForEach** , **GetMetadata** etkinliğinden alt klasör listesini alır ve sonra liste üzerinde dolaşır ve her bir klasörü kopyalama etkinliğine geçirir.
+- **Kopya** , her bir klasörü kaynak depolama deposundan hedef depoya kopyalar.
 
 Şablon aşağıdaki parametreleri tanımlar:
-- *Sourcefilefolder* , kapsayıcıların bir listesini alabileceğiniz veri kaynağı deponuzın klasör yoludur. Yol, birden çok kapsayıcı klasörü içeren kök dizindir. Bu parametrenin varsayılan değeri `sourcefolder` .
-- *Sourcefiledirectory* , veri kaynağı deponuzın kök dizini altındaki alt klasör yoludur. Bu parametrenin varsayılan değeri `subfolder` .
-- *Destinationfilefolder* , dosyaların hedef deponuzda kopyalanacağı klasör yoludur. Bu parametrenin varsayılan değeri `destinationfolder` .
-- *Destinationfiledirectory* , dosyaların hedef deponuzda kopyalanacağı alt klasör yoludur. Bu parametrenin varsayılan değeri `subfolder` .
+- *Sourcefilefolder* , veri kaynağı deponuzu ana klasör yolunun parçasıdır: *sourcefilefolder/sourcefiledirectory* , burada alt klasörlerin bir listesini alabilirsiniz. 
+- *Sourcefiledirectory* , veri kaynağı deponuzu üst klasör yolundan bölümüdür: *sourcefilefolder/sourcefiledirectory* , alt klasörlerin bir listesini alabilir. 
+- *Destinationfilefolder* , dosyaların hedef deponuza kopyalanacağı bir üst klasör yolu: *destinationfilefolder/destinationfiledirectory* bölümüdür. 
+- *Destinationfiledirectory* , dosyaların hedef deponuza kopyalanacağı ana klasör yolunun bir parçasıdır: *destinationfilefolder/destinationfiledirectory* . 
+
+Depolama depoları arasında kök klasörler altında birden çok kapsayıcıyı kopyalamak istiyorsanız, tüm dört parametreyi olarak girebilirsiniz */* . Bunu yaptığınızda, depolama depoları arasında her şeyi çoğaltacaksınız.
 
 ## <a name="how-to-use-this-solution-template"></a>Bu çözüm şablonunu kullanma
 
@@ -52,7 +54,7 @@ Bu şablon, kaynak depolama deponuzdan kapsayıcıları sıralar. Daha sonra bu 
 
     ![Hedefe yeni bir bağlantı oluşturun](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. **Bu şablonu kullan**' ı seçin.
+3. **Bu şablonu kullan** ' ı seçin.
 
     ![Bu şablonu kullan](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
@@ -60,7 +62,7 @@ Bu şablon, kaynak depolama deponuzdan kapsayıcıları sıralar. Daha sonra bu 
 
     ![İşlem hattını gösterme](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
+5. **Hata Ayıkla** ' yı seçin, **parametreleri** girin ve ardından **son** ' u seçin.
 
     ![İşlem hattını çalıştırma](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 

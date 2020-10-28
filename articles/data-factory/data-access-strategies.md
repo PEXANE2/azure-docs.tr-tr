@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: a4d8d7eaed40b876adecb82f339be4a4c434325f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 785381e0a42f2b502e4ea7054753d5f3fb67f385
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616865"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632779"
 ---
 # <a name="data-access-strategies"></a>Veri erişim stratejileri
 
@@ -28,7 +28,7 @@ Genellikle bir bulut veri deposu aşağıdaki mekanizmalardan yararlanarak eriş
 * Kullanıcıları belirli eylemlerle ve verilerle kısıtlayan Yetkilendirme mekanizmaları
 
 > [!TIP]
-> [STATIK IP adres aralığının kullanıma sunulmasıyla](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)birlikte, bulut veri depolarındaki tüm Azure IP adreslerine izin vermek zorunda olmadığınızdan emin olmak Için belirli Azure tümleştirme çalışma zamanı BÖLGESI için IP aralıkları listesine izin verebilirsiniz. Bu şekilde, veri depolarına erişmelerine izin verilen IP adreslerini kısıtlayabilirsiniz.
+> [STATIK IP adres aralığının kullanıma sunulmasıyla](./azure-integration-runtime-ip-addresses.md)birlikte, bulut veri depolarındaki tüm Azure IP adreslerine izin vermek zorunda olmadığınızdan emin olmak Için belirli Azure tümleştirme çalışma zamanı BÖLGESI için IP aralıkları listesine izin verebilirsiniz. Bu şekilde, veri depolarına erişmelerine izin verilen IP adreslerini kısıtlayabilirsiniz.
 
 > [!NOTE] 
 > IP adresi aralıkları Azure Integration Runtime için engellenir ve şu anda yalnızca veri taşıma, işlem hattı ve dış etkinlikler için kullanılır. Yönetilen sanal ağı etkinleştiren veri akışları ve Azure Integration Runtime artık bu IP aralıklarını kullanmaz. 
@@ -37,11 +37,11 @@ Bu pek çok senaryoda çalışmalıdır ve tümleştirme çalışma zamanı baş
 
 ## <a name="data-access-strategies-through-azure-data-factory"></a>Azure Data Factory aracılığıyla veri erişimi stratejileri
 
-* **[Özel bağlantı](https://docs.microsoft.com/azure/private-link/private-link-overview)** -Azure Data Factory yönetilen sanal ağ içinde bir Azure Integration Runtime oluşturabilirsiniz ve desteklenen veri depolarına güvenli bir şekilde bağlanmak için özel uç noktalardan yararlanabilir. Yönetilen sanal ağ ve veri kaynakları arasındaki trafik, Microsoft omurga ağını dolaşır ve genel ağa maruz değildir.
-* **[Güvenilen hizmet](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** -Azure depolama (Blob, ADLS 2.), güvenilen Azure platform hizmetlerinin depolama hesabına güvenli bir şekilde erişmesini sağlayan güvenlik duvarı yapılandırmasını destekler. Güvenilen hizmetler yönetilen kimlik kimlik doğrulamasını zorlar ve bu, yönetilen kimliği kullanarak böyle bir veri fabrikasının bu depolamaya bağlanamamasını sağlar. **[Bu blogda](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)** daha fazla ayrıntı bulabilirsiniz. Bu nedenle, bu son derece güvenlidir ve önerilir. 
+* **[Özel bağlantı](../private-link/private-link-overview.md)** -Azure Data Factory yönetilen sanal ağ içinde bir Azure Integration Runtime oluşturabilirsiniz ve desteklenen veri depolarına güvenli bir şekilde bağlanmak için özel uç noktalardan yararlanabilir. Yönetilen sanal ağ ve veri kaynakları arasındaki trafik, Microsoft omurga ağını dolaşır ve genel ağa maruz değildir.
+* **[Güvenilen hizmet](../storage/common/storage-network-security.md#exceptions)** -Azure depolama (Blob, ADLS 2.), güvenilen Azure platform hizmetlerinin depolama hesabına güvenli bir şekilde erişmesini sağlayan güvenlik duvarı yapılandırmasını destekler. Güvenilen hizmetler yönetilen kimlik kimlik doğrulamasını zorlar ve bu, yönetilen kimliği kullanarak böyle bir veri fabrikasının bu depolamaya bağlanamamasını sağlar. **[Bu blogda](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)** daha fazla ayrıntı bulabilirsiniz. Bu nedenle, bu son derece güvenlidir ve önerilir. 
 * **Benzersiz STATIK IP** -Data Factory bağlayıcıları IÇIN statik IP almak üzere şirket içinde barındırılan bir tümleştirme çalışma zamanı ayarlamanız gerekir. Bu mekanizma, diğer tüm IP adreslerinden erişimi engellemenize de engel olur. 
-* **[STATIK IP aralığı](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)** -Azure INTEGRATION RUNTIME kendi IP adreslerini, depolama ortamınızda listelemek için kullanabilirsiniz (S3, Salesforce, vb.). Veri depolarına bağlanabilecek, ancak kimlik doğrulama/yetkilendirme kurallarına de dayanan IP adreslerini kesinlikle kısıtlar.
-* **[Hizmet etiketi](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** -hizmet etiketi, belirli bir Azure hizmetinden (Azure Data Factory gibi) bir IP adresi ön eki grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir. Sanal ağdaki IaaS barındırılan veri depolarında veri erişimi filtrelendiğinde faydalıdır.
+* **[STATIK IP aralığı](./azure-integration-runtime-ip-addresses.md)** -Azure INTEGRATION RUNTIME kendi IP adreslerini, depolama ortamınızda listelemek için kullanabilirsiniz (S3, Salesforce, vb.). Veri depolarına bağlanabilecek, ancak kimlik doğrulama/yetkilendirme kurallarına de dayanan IP adreslerini kesinlikle kısıtlar.
+* **[Hizmet etiketi](../virtual-network/service-tags-overview.md)** -hizmet etiketi, belirli bir Azure hizmetinden (Azure Data Factory gibi) bir IP adresi ön eki grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir. Sanal ağdaki IaaS barındırılan veri depolarında veri erişimi filtrelendiğinde faydalıdır.
 * **Azure hizmetlerine Izin ver** -bazı hizmetler, bu seçeneği tercih etmeniz durumunda tüm Azure hizmetlerinin bağlanmasına izin vermenizi sağlar. 
 
 Azure Integration Runtime ve şirket içinde barındırılan Integration Runtime veri depolarında desteklenen ağ güvenlik mekanizmaları hakkında daha fazla bilgi için, iki tablonun altına bakın.  
@@ -56,7 +56,7 @@ Azure Integration Runtime ve şirket içinde barındırılan Integration Runtime
     |                              | Azure Dosya Depolama                                  | Evet              | -                   | Evet             | -            | .                    |
     |                              | Azure depolama (blob, ADLS 2.)                     | Evet              | Evet (yalnızca MSI kimlik doğrulaması) | Evet             | -            | .                    |
     |                              | Azure SQL DB, Azure SYNAPSE Analytics), SQL ml  | Evet (yalnızca Azure SQL DB/DW)        | -                   | Evet             | -            | Evet                  |
-    |                              | Azure Key Vault (gizli dizileri/bağlantı dizesi getiriliyor) | evet      | Evet                 | Evet             | -            | -                    |
+    |                              | Azure Key Vault (gizli dizileri/bağlantı dizesi getiriliyor) | yes      | Evet                 | Evet             | -            | -                    |
     | Diğer PaaS/SaaS veri depoları | AWS S3, SalesForce, Google bulut depolama, vb.    | -                | -                   | Evet             | -            | -                    |
     | Azure laaS                   | SQL Server, Oracle, vb.                          | -                | -                   | Evet             | Evet          | -                    |
     | Şirket içi laaS              | SQL Server, Oracle, vb.                          | -                | -                   | Evet             | -            | -                    |
@@ -82,7 +82,7 @@ Azure Integration Runtime ve şirket içinde barındırılan Integration Runtime
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki ilgili makalelere bakın:
-* [Desteklenen veri depoları](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)
-* [' Güvenilir hizmetler ' Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints#trusted-services)
-* [Azure Storage ' güvenilir Microsoft Hizmetleri '](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)
-* [Data Factory için yönetilen kimlik](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)
+* [Desteklenen veri depoları](./copy-activity-overview.md#supported-data-stores-and-formats)
+* [' Güvenilir hizmetler ' Azure Key Vault](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)
+* [Azure Storage ' güvenilir Microsoft Hizmetleri '](../storage/common/storage-network-security.md#trusted-microsoft-services)
+* [Data Factory için yönetilen kimlik](./data-factory-service-identity.md)

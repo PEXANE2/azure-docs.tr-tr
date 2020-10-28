@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: d32c4da4604307bca406f7f5d5e5a94b69efe7ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be98ff2a31e3216088fb9197fab477d9b1088f26
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541841"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634105"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell kullanarak SQL Server birden çok tablodan Azure SQL veritabanı 'na artımlı olarak veri yükleme
 
@@ -42,15 +42,15 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 ## <a name="overview"></a>Genel Bakış
 Bu çözümü oluşturmak için önemli adımlar şunlardır: 
 
-1. **Eşit sütununu seçin**.
+1. **Eşit sütununu seçin** .
 
     Kaynak veri deposundaki her tablo için, her çalıştırma için yeni veya güncelleştirilmiş kayıtları belirleyebilen bir sütun seçin. Normalde, satırlar oluşturulduğunda veya güncelleştirildiğinde seçilen bu sütundaki veriler (örneğin, last_modify_time veya kimlik) artmaya devam eder. Bu sütundaki en büyük değer eşik olarak kullanılır.
 
-2. **Eşik değerini depolamak için veri deposunu hazırlayın**.
+2. **Eşik değerini depolamak için veri deposunu hazırlayın** .
 
     Bu öğreticide, eşik değerini bir SQL veritabanında depolayacaksınız.
 
-3. **Aşağıdaki etkinliklerle bir işlem hattı oluşturun**:
+3. **Aşağıdaki etkinliklerle bir işlem hattı oluşturun** :
     
     a. İşlem hattına parametre olarak geçen kaynak tablosu adlarının bir listesi üzerinden yinelenen bir ForEach eylemi oluşturun. Her kaynak tablosunda, bu tabloya yönelik olarak yüklenen değişiklikleri gerçekleştirmek için aşağıdaki eylemleri çağırır.
 
@@ -67,16 +67,16 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **SQL Server**. Bu öğreticide kaynak veri deposu olarak bir SQL Server veritabanı kullanırsınız. 
-* **Azure SQL veritabanı**. Azure SQL veritabanı 'ndaki bir veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) . 
+* **SQL Server** . Bu öğreticide kaynak veri deposu olarak bir SQL Server veritabanı kullanırsınız. 
+* **Azure SQL veritabanı** . Azure SQL veritabanı 'ndaki bir veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) . 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server veritabanınızda kaynak tabloları oluşturma
 
-1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) veya [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)açın ve SQL Server veritabanınıza bağlanın.
+1. [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) veya [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)açın ve SQL Server veritabanınıza bağlanın.
 
-2. **Sunucu Gezgini (SSMS)** veya **bağlantılar bölmesinde (Azure Data Studio)**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
+2. **Sunucu Gezgini (SSMS)** veya **bağlantılar bölmesinde (Azure Data Studio)** , veritabanına sağ tıklayın ve **Yeni sorgu** ' yı seçin.
 
 3. `customer_table` ve `project_table` adlı tabloları oluşturmak için aşağıdaki SQL komutunu veritabanınızda çalıştırın:
 
@@ -113,9 +113,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Azure SQL veritabanınızda hedef tablolar oluşturma
 
-1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) veya [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)açın ve SQL Server veritabanınıza bağlanın.
+1. [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) veya [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)açın ve SQL Server veritabanınıza bağlanın.
 
-2. **Sunucu Gezgini (SSMS)** veya **bağlantılar bölmesinde (Azure Data Studio)**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
+2. **Sunucu Gezgini (SSMS)** veya **bağlantılar bölmesinde (Azure Data Studio)** , veritabanına sağ tıklayın ve **Yeni sorgu** ' yı seçin.
 
 3. `customer_table` ve `project_table` adlı tabloları oluşturmak için aşağıdaki SQL komutunu veritabanınızda çalıştırın:  
 
@@ -283,7 +283,7 @@ Aşağıdaki noktalara dikkat edin:
 
 * Data Factory örnekleri oluşturmak için, Azure’da oturum açarken kullandığınız kullanıcı hesabı, katkıda bulunan veya sahip rollerinin üyesi ya da bir Azure aboneliğinin yöneticisi olmalıdır.
 
-* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri Fabrikası tarafından kullanılan veri depoları (Azure depolama, SQL veritabanı, SQL yönetilen örneği, vb.) ve işlemler (Azure HDInsight vb.) başka bölgelerde olabilir.
+* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics** 'i genişleterek **Data Factory** : [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri Fabrikası tarafından kullanılan veri depoları (Azure depolama, SQL veritabanı, SQL yönetilen örneği, vb.) ve işlemler (Azure HDInsight vb.) başka bölgelerde olabilir.
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
@@ -814,7 +814,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. **Foreach etkin
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-2. **Tüm hizmetler**’i seçin, *Veri fabrikaları* anahtar sözcüğüyle arama yapın ve **Veri fabrikaları** seçeneğini belirleyin. 
+2. **Tüm hizmetler** ’i seçin, *Veri fabrikaları* anahtar sözcüğüyle arama yapın ve **Veri fabrikaları** seçeneğini belirleyin. 
 
 3. Veri fabrikaları listesinde veri fabrikanızı arayın ve seçerek **Veri fabrikası** sayfasını açın. 
 
@@ -828,7 +828,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. **Foreach etkin
     ![Ekran görüntüsü, ardışık düzen dahil bir veri fabrikası için işlem hattı çalıştırmalarını gösterir.](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 7. Eylemler sütunundaki bağlantıyı seçtiğinizde, **işlem** hattı için tüm etkinlik çalıştırmalarını görürsünüz. 
 
-8. İşlem **hattı çalıştırmaları** görünümüne geri dönmek için **tüm işlem hattı çalıştırmaları**' nı seçin. 
+8. İşlem **hattı çalıştırmaları** görünümüne geri dönmek için **tüm işlem hattı çalıştırmaları** ' nı seçin. 
 
 ## <a name="review-the-results"></a>Sonuçları gözden geçirin
 
@@ -907,9 +907,9 @@ VALUES
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
-2. [İşlem hattını izleme](#monitor-the-pipeline) bölümündeki yönergeleri uygulayarak işlem hattı çalıştırmalarını izleyin. Işlem hattı durumu **devam ederken**, işlem hattı çalıştırmasını iptal etmek için **Eylemler** altında başka bir eylem bağlantısı görürsünüz. 
+2. [İşlem hattını izleme](#monitor-the-pipeline) bölümündeki yönergeleri uygulayarak işlem hattı çalıştırmalarını izleyin. Işlem hattı durumu **devam ederken** , işlem hattı çalıştırmasını iptal etmek için **Eylemler** altında başka bir eylem bağlantısı görürsünüz. 
 
-3. İşlem hattı başarılı olana kadar listeyi yenilemek için **Yenile**’yi seçin. 
+3. İşlem hattı başarılı olana kadar listeyi yenilemek için **Yenile** ’yi seçin. 
 
 4. İsteğe bağlı olarak, bu işlem hattıyla ilişkili tüm eylem çalıştırmalarını görüntülemek için **Eylemler** bölümündeki **Eylem Çalıştırmalarını Göster** bağlantısını seçin. 
 
@@ -994,5 +994,3 @@ Azure üzerinde bir Spark kümesi kullanarak veri dönüştürme hakkında bilgi
 
 > [!div class="nextstepaction"]
 >[Değişiklik İzleme teknolojisini kullanarak Azure SQL Veritabanından Azure Blob depolama alanına verileri artımlı olarak yükleme](tutorial-incremental-copy-change-tracking-feature-powershell.md)
-
-

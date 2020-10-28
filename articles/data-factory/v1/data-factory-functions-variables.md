@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbc7fd22915af1c9645d915a9898679a3a7c30d0
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73667661"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631521"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory Işlevleri ve sistem değişkenleri
 > [!NOTE]
@@ -61,7 +61,7 @@ Veri fabrikasındaki işlevleri, sistem değişkenleriyle birlikte aşağıdaki 
    
     $ $ giriş bağımlılığı ifadelerini belirtmek için gerekli değildir.     
 
-Aşağıdaki örnekte, bir JSON dosyasındaki **Sqlreaderquery** özelliği, işlev tarafından döndürülen bir değere atanır `Text.Format` . Bu örnek ayrıca, etkinlik çalıştırma penceresinin başlangıç saatini temsil eden **Windowstart**adlı bir sistem değişkeni kullanır.
+Aşağıdaki örnekte, bir JSON dosyasındaki **Sqlreaderquery** özelliği, işlev tarafından döndürülen bir değere atanır `Text.Format` . Bu örnek ayrıca, etkinlik çalıştırma penceresinin başlangıç saatini temsil eden **Windowstart** adlı bir sistem değişkeni kullanır.
 
 ```json
 {
@@ -70,16 +70,16 @@ Aşağıdaki örnekte, bir JSON dosyasındaki **Sqlreaderquery** özelliği, iş
 }
 ```
 
-Kullanabileceğiniz farklı biçimlendirme seçeneklerini açıklayan [özel tarih ve saat biçim dizeleri](https://msdn.microsoft.com/library/8kb3ddd4.aspx) konusuna bakın (örneğin: ay vs. yyyy). 
+Kullanabileceğiniz farklı biçimlendirme seçeneklerini açıklayan [özel tarih ve saat biçim dizeleri](/dotnet/standard/base-types/custom-date-and-time-format-strings) konusuna bakın (örneğin: ay vs. yyyy). 
 
 ### <a name="functions"></a>İşlevler
 Aşağıdaki tablolar Azure Data Factory içindeki tüm işlevleri listeler:
 
 | Kategori | İşlev | Parametreler | Açıklama |
 | --- | --- | --- | --- |
-| Süre |AddHours (X, Y) |X: DateTime <br/><br/>Y: int |Verilen saat X 'e Y saat ekler. <br/><br/>Örnek: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| Süre |AddMinutes (X, Y) |X: DateTime <br/><br/>Y: int |X 'e Y dakika ekler.<br/><br/>Örnek: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Süre |Saat başı (X) |X: DateTime |X 'in saat bileşeniyle temsil edilen saatin başlangıç saatini alır. <br/><br/>Örnek: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Saat |AddHours (X, Y) |X: DateTime <br/><br/>Y: int |Verilen saat X 'e Y saat ekler. <br/><br/>Örnek: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| Saat |AddMinutes (X, Y) |X: DateTime <br/><br/>Y: int |X 'e Y dakika ekler.<br/><br/>Örnek: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| Saat |Saat başı (X) |X: DateTime |X 'in saat bileşeniyle temsil edilen saatin başlangıç saatini alır. <br/><br/>Örnek: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Tarih |AddDays (X, Y) |X: DateTime<br/><br/>Y: int |X 'e Y gün ekler. <br/><br/>Örnek: 9/15/2013 12:00:00 PM + 2 gün = 9/17/2013 12:00:00 PM.<br/><br/>Y 'yi negatif bir sayı olarak belirterek gün sayısı çıkarabilirsiniz.<br/><br/>Örnek: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Tarih |Addaylar (X, Y) |X: DateTime<br/><br/>Y: int |X 'e Y ayları ekler.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Y 'yi negatif bir sayı olarak belirterek ayı de çıkarabilirsiniz.<br/><br/>Örnek: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Tarih |Addçeyrekler (X, Y) |X: DateTime <br/><br/>Y: int |X ' e * 3 ay ekler.<br/><br/>Örnek: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
@@ -227,5 +227,4 @@ Aşağıdaki örnekte gösterildiği gibi önceki gündeki verileri bir önceki 
 }
 ```
 
-Kullanabileceğiniz farklı biçimlendirme seçeneklerini açıklayan [özel tarih ve saat biçim dizeleri](https://msdn.microsoft.com/library/8kb3ddd4.aspx) konusuna bakın (örneğin: yy vs. yyyy). 
-
+Kullanabileceğiniz farklı biçimlendirme seçeneklerini açıklayan [özel tarih ve saat biçim dizeleri](/dotnet/standard/base-types/custom-date-and-time-format-strings) konusuna bakın (örneğin: yy vs. yyyy).

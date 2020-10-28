@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3ae12355dddbae40eb84730549ccebcd004ff6be
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: de4661bcfd7106d515480e39dc4660f44f469a3d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371775"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631708"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory-sık sorulan sorular
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "92371775"
 
 ## <a name="general-questions"></a>Genel sorular
 ### <a name="what-is-azure-data-factory"></a>Azure Data Factory nedir?
-Data Factory **, verilerin hareketini ve dönüştürülmesini otomatikleştiren**bulut tabanlı bir veri tümleştirme hizmetidir. Ham malzemeler almak ve bunları mamul mallar halinde dönüştürmek üzere ekipman çalıştıran bir fabrikada olduğu gibi, ham verileri toplayıp bunları kullanıma hazırlama bilgilerine dönüştüren mevcut hizmetleri de Data Factory.
+Data Factory **, verilerin hareketini ve dönüştürülmesini otomatikleştiren** bulut tabanlı bir veri tümleştirme hizmetidir. Ham malzemeler almak ve bunları mamul mallar halinde dönüştürmek üzere ekipman çalıştıran bir fabrikada olduğu gibi, ham verileri toplayıp bunları kullanıma hazırlama bilgilerine dönüştüren mevcut hizmetleri de Data Factory.
 
 Data Factory, verileri şirket içi ve bulut veri depoları arasında taşımak için veri odaklı iş akışları oluşturmanıza olanak tanır ve Azure HDInsight ve Azure Data Lake Analytics gibi işlem hizmetlerini kullanarak verileri işleyebilir/dönüştürebilirsiniz. İhtiyaç duyduğunuz eylemi gerçekleştiren bir işlem hattı oluşturduktan sonra, düzenli aralıklarla (saatlik, günlük, haftalık vb.) çalışacak şekilde zamanlayabilirsiniz.   
 
@@ -41,7 +41,7 @@ Azure Data Factory ilişkin fiyatlandırma ayrıntıları için bkz. [Data Facto
 * HDInsight Hive etkinliğini kullanarak **verileri dönüştürme** hakkında bir öğretici için. Bkz. [Hadoop kümesinde Hive betiği çalıştırarak işlem verileri](data-factory-build-your-first-pipeline.md)
 
 ### <a name="what-is-the-data-factorys-region-availability"></a>Data Factory bölgenin kullanılabilirliği nedir?
-Data Factory **ABD Batı** ve **Kuzey Avrupa**kullanılabilir. Veri fabrikaları tarafından kullanılan işlem ve depolama hizmetleri diğer bölgelerde olabilir. Bkz. [Desteklenen bölgeler](data-factory-introduction.md#supported-regions).
+Data Factory **ABD Batı** ve **Kuzey Avrupa** kullanılabilir. Veri fabrikaları tarafından kullanılan işlem ve depolama hizmetleri diğer bölgelerde olabilir. Bkz. [Desteklenen bölgeler](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Veri fabrikaları/işlem hatları/etkinlik/veri kümeleri için sınırlamalar nelerdir?
 [Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) makalesinin **Azure Data Factory sınırları** bölümüne bakın.
@@ -141,7 +141,7 @@ Yukarıdaki örnekte, otherLinkedServiceName1 ve otherLinkedServiceName2 tanıml
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>Giriş dilimlerim neden kullanılabilir durumda değil?
 Giriş verileri veri fabrikasına (Data Factory tarafından üretilmez) harici olduğunda, genel bir hata giriş veri kümesinde **dış** özelliği **true** olarak ayarlamadır.
 
-Aşağıdaki örnekte, **dataSet1**üzerinde yalnızca **External** ' ı true olarak ayarlamanız gerekir.  
+Aşağıdaki örnekte, **dataSet1** üzerinde yalnızca **External** ' ı true olarak ayarlamanız gerekir.  
 
 **DataFactory1** İşlem hattı 1: DataSet1-> Activity1-> DataSet2-> Activity2-> dataset3 işlem hattı 2: dataset3-> Activity3-> dataset4
 
@@ -205,4 +205,4 @@ Tüm yürütmeleri gerçekten durdurmak istiyorsanız tek yol, işlem hattını 
 [adf-pricing-details]: https://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: https://azure.microsoft.com/pricing/details/hdinsight/
 [hdinsight-alternate-storage]: https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
-[hdinsight-alternate-storage-2]: https://docs.microsoft.com/archive/blogs/cindygross/use-additional-storage-accounts-with-hdinsight-hive
+[hdinsight-alternate-storage-2]: /archive/blogs/cindygross/use-additional-storage-accounts-with-hdinsight-hive

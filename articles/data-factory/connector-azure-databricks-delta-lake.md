@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/28/2020
-ms.openlocfilehash: 4ff1a793b3e8c4fe642aa304f1aa59bd8edefb8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8937cfa5a48903ab53f3015b056a4915240bc525
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405628"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633136"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Azure Databricks Delta Gölü 'a ve Azure Data Factory kullanarak veri kopyalama
 
@@ -46,19 +46,19 @@ Bu Azure Databricks Delta Lake bağlayıcısını kullanmak için, Azure Databri
 
 Databricks kümesinin, kaynak/havuz/hazırlama için kullanılan depolama kapsayıcısı/dosya sistemi ve Delta Gölü tabloları yazmak istediğiniz kapsayıcı/dosya sistemi için Azure Blob veya Azure Data Lake Storage 2. hesabına erişimi olması gerekir.
 
-- **Azure Data Lake Storage 2.** kullanmak Için, Databricks kümesinde Apache Spark yapılandırmasının bir parçası olarak bir **hizmet sorumlusu** veya **depolama hesabı erişim anahtarı** yapılandırabilirsiniz. [Doğrudan hizmet sorumlusu Ile erişim](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) veya [depolama hesabı erişim anahtarını kullanarak doğrudan](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key)erişim bölümündeki adımları izleyin.
+- **Azure Data Lake Storage 2.** kullanmak Için, Databricks kümesinde Apache Spark yapılandırmasının bir parçası olarak bir **hizmet sorumlusu** veya **depolama hesabı erişim anahtarı** yapılandırabilirsiniz. [Doğrudan hizmet sorumlusu Ile erişim](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) veya [depolama hesabı erişim anahtarını kullanarak doğrudan](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key)erişim bölümündeki adımları izleyin.
 
-- **Azure Blob depolamayı**kullanmak için, Apache Spark yapılandırmasının bir parçası olarak Databricks kümesinde bir **depolama hesabı erişim anahtarı** veya **SAS belirteci** yapılandırabilirsiniz. [RDD API 'sini kullanarak Azure Blob depolama erişimi](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)içindeki adımları izleyin.
+- **Azure Blob depolamayı** kullanmak için, Apache Spark yapılandırmasının bir parçası olarak Databricks kümesinde bir **depolama hesabı erişim anahtarı** veya **SAS belirteci** yapılandırabilirsiniz. [RDD API 'sini kullanarak Azure Blob depolama erişimi](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)içindeki adımları izleyin.
 
 Kopyalama etkinliği yürütülürken, yapılandırdığınız küme sonlandırılırsa, Data Factory otomatik olarak başlatılır. Data Factory yazma Kullanıcı arabirimini kullanarak işlem hattını yazarınızda, veri önizleme gibi işlemler için canlı bir kümeniz olması gerekir, Data Factory kümeyi sizin adınıza başlatmayacaktır.
 
 #### <a name="specify-the-cluster-configuration"></a>Küme yapılandırmasını belirtin
 
-1. **Küme modu** açılır penceresinde **Standart**' ı seçin.
+1. **Küme modu** açılır penceresinde **Standart** ' ı seçin.
 
 2. **Databricks Runtime sürüm** açılır penceresinde bir Databricks çalışma zamanı sürümü seçin.
 
-3. [Spark yapılandırmanıza](https://docs.microsoft.com/azure/databricks/clusters/configure#spark-config)aşağıdaki özellikleri ekleyerek [Otomatik iyileştirme](https://docs.microsoft.com/azure/databricks/delta/optimizations/auto-optimize) 'yi açın:
+3. [Spark yapılandırmanıza](/azure/databricks/clusters/configure#spark-config)aşağıdaki özellikleri ekleyerek [Otomatik iyileştirme](/azure/databricks/delta/optimizations/auto-optimize) 'yi açın:
 
    ```
    spark.databricks.delta.optimizeWrite.enabled true
@@ -67,7 +67,7 @@ Kopyalama etkinliği yürütülürken, yapılandırdığınız küme sonlandır�
 
 4. Uygulamanızı tümleştirme ve ölçeklendirme gereksinimlerinize göre yapılandırın.
 
-Küme yapılandırma ayrıntıları için bkz. [kümeleri yapılandırma](https://docs.microsoft.com/azure/databricks/clusters/configure).
+Küme yapılandırma ayrıntıları için bkz. [kümeleri yapılandırma](/azure/databricks/clusters/configure).
 
 ## <a name="get-started"></a>başlarken
 
@@ -81,10 +81,10 @@ Aşağıdaki özellikler Azure Databricks bir Delta Lake bağlı hizmeti için d
 
 | Özellik    | Açıklama                                                  | Gerekli |
 | :---------- | :----------------------------------------------------------- | :------- |
-| tür        | Type özelliği **AzureDatabricksDeltaLake**olarak ayarlanmalıdır. | Evet      |
+| tür        | Type özelliği **AzureDatabricksDeltaLake** olarak ayarlanmalıdır. | Evet      |
 | etki alanı      | Azure Databricks çalışma alanı URL 'sini belirtin, örn. `https://adb-xxxxxxxxx.xx.azuredatabricks.net` . |          |
-| Lclusterıd   | Var olan bir kümenin küme KIMLIĞINI belirtin. Önceden oluşturulmuş bir etkileşimli küme olmalıdır. <br>Databricks çalışma alanı-> kümeleri-> etkileşimli küme adı-> yapılandırma-> etiketleri üzerinde etkileşimli bir kümenin küme KIMLIĞINI bulabilirsiniz. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/databricks/clusters/configure#cluster-tags). |          |
-| accessToken | Azure Databricks kimlik doğrulaması için Data Factory erişim belirteci gereklidir. Erişim belirtecinin databricks çalışma alanından oluşturulması gerekir. Erişim belirtecini bulmak için daha ayrıntılı adımlar [burada](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/authentication#generate-token)bulunabilir. |          |
+| Lclusterıd   | Var olan bir kümenin küme KIMLIĞINI belirtin. Önceden oluşturulmuş bir etkileşimli küme olmalıdır. <br>Databricks çalışma alanı-> kümeleri-> etkileşimli küme adı-> yapılandırma-> etiketleri üzerinde etkileşimli bir kümenin küme KIMLIĞINI bulabilirsiniz. [Daha fazla bilgi edinin](/azure/databricks/clusters/configure#cluster-tags). |          |
+| accessToken | Azure Databricks kimlik doğrulaması için Data Factory erişim belirteci gereklidir. Erişim belirtecinin databricks çalışma alanından oluşturulması gerekir. Erişim belirtecini bulmak için daha ayrıntılı adımlar [burada](/azure/databricks/dev-tools/api/latest/authentication#generate-token)bulunabilir. |          |
 | connectVia  | Veri deposuna bağlanmak için kullanılan [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır       |
 
 **Örnek:**
@@ -114,9 +114,9 @@ Aşağıdaki özellikler Azure Databricks Delta Lake veri kümesi için destekle
 
 | Özellik  | Açıklama                                                  | Gerekli                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| tür      | Veri kümesinin Type özelliği **AzureDatabricksDeltaLakeDataset**olarak ayarlanmalıdır. | Evet                         |
+| tür      | Veri kümesinin Type özelliği **AzureDatabricksDeltaLakeDataset** olarak ayarlanmalıdır. | Evet                         |
 | database | Veritabanının adı. |Kaynak için Hayır, havuz için Evet  |
-| tablo | Delta tablosunun adı. |Kaynak için Hayır, havuz için Evet  |
+| table | Delta tablosunun adı. |Kaynak için Hayır, havuz için Evet  |
 
 **Örnek:**
 
@@ -148,11 +148,11 @@ Azure Databricks Delta Gölü verileri kopyalamak için, etkinlik **kaynağını
 
 | Özellik                     | Açıklama                                                  | Gerekli |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| tür                         | Kopyalama etkinliği kaynağının Type özelliği **AzureDatabricksDeltaLakeSource**olarak ayarlanmalıdır. | Evet      |
+| tür                         | Kopyalama etkinliği kaynağının Type özelliği **AzureDatabricksDeltaLakeSource** olarak ayarlanmalıdır. | Evet      |
 | sorgu          | Verileri okumak için SQL sorgusunu belirtin. Zaman seyahat denetimi için aşağıdaki kalıbı izleyin:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | Hayır       |
 | exportSettings | Delta tablosundan verileri almak için kullanılan gelişmiş ayarlar. | Hayır       |
-| ***Altında `exportSettings` :*** |  |  |
-| tür | Export komutunun türü, **AzureDatabricksDeltaLakeExportCommand**olarak ayarlanır. | Evet |
+| ***Altında `exportSettings` :** _ |  |  |
+| tür | Dışarı aktarma komutunun türü _ * AzureDatabricksDeltaLakeExportCommand * * olarak ayarlanır. | Evet |
 | dateFormat | Tarih türünü Tarih biçimiyle String olarak biçimlendirin. Özel tarih biçimleri, [Tarih saat](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)düzeninde biçimleri izler. Belirtilmemişse, varsayılan değeri kullanır `yyyy-MM-dd` . | Hayır |
 | timestampFormat | Zaman damgası türü, zaman damgası biçimindeki dize olarak biçimlendirilir. Özel tarih biçimleri, [Tarih saat](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)düzeninde biçimleri izler. Belirtilmemişse, varsayılan değeri kullanır `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Hayır |
 
@@ -162,14 +162,14 @@ Havuz veri deponuzu ve formatı bu bölümde açıklanan ölçütlere uyuyorsa, 
 
 - **Havuz bağlantılı hizmeti** , [Azure Blob depolama](connector-azure-blob-storage.md) veya [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md). Hesap kimlik bilgileri Azure Databricks kümesi yapılandırmasında önceden yapılandırılmış olmalıdır, [önkoşullardan](#prerequisites)daha fazla bilgi edinin.
 
-- **Havuz veri biçimi** , aşağıdaki yapılandırmalara sahip olan **Parquet**, **ayrılmış metin**veya **avro** ve dosya yerine bir klasöre işaret ediyor.
+- **Havuz veri biçimi** , aşağıdaki yapılandırmalara sahip olan **Parquet** , **ayrılmış metin** veya **avro** ve dosya yerine bir klasöre işaret ediyor.
 
-    - **Parquet** biçimi için, sıkıştırma codec 'i **none**, **Snappy**veya **gzip**olur.
+    - **Parquet** biçimi için, sıkıştırma codec 'i **none** , **Snappy** veya **gzip** olur.
     - **Sınırlandırılmış metin** biçimi için:
         - `rowDelimiter` herhangi bir tek karakterdir.
-        - `compression`**none**, **bzip2**, **gzip**olabilir.
+        - `compression`**none** , **bzip2** , **gzip** olabilir.
         - `encodingName` UTF-7 desteklenmez.
-    - **Avro** biçimi için, sıkıştırma codec bileşeni **none**, **söndür**veya **Snappy**olur.
+    - **Avro** biçimi için, sıkıştırma codec bileşeni **none** , **söndür** veya **Snappy** olur.
 
 - Kopyalama etkinliği kaynağında `additionalColumns` belirtilmedi.
 - Verileri ayrılmış metne kopyalama, kopyalama etkinliği havuzunda, `fileExtension` ". csv" olması gerekir.
@@ -262,11 +262,11 @@ Azure Databricks Delta Gölü 'a veri kopyalamak için, etkinlik **havuzunu** ko
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | :------------ | :----------------------------------------------------------- | :------- |
-| tür          | Kopyalama etkinliği havuzunun Type özelliği, **AzureDatabricksDeltaLakeSink**olarak ayarlanır. | Evet      |
+| tür          | Kopyalama etkinliği havuzunun Type özelliği, **AzureDatabricksDeltaLakeSink** olarak ayarlanır. | Evet      |
 | Ön Copyscrıpt | Her çalıştırmada Databricks Delta tablosuna veri yazmadan önce çalıştırılacak kopyalama etkinliğinin bir SQL sorgusunu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek veya TRUNCATE TABLE ya da vakum deyimleri eklemek için kullanabilirsiniz. | Hayır       |
 | importSettings | Delta tablosuna veri yazmak için kullanılan gelişmiş ayarlar. | Hayır |
-| ***Altında `importSettings` :*** |                                                              |  |
-| tür | Import komutunun türü, **AzureDatabricksDeltaLakeImportCommand**olarak ayarlanır. | Evet |
+| **_Altında `importSettings` :_* _ |                                                              |  |
+| tür | Import komutunun türü _ * AzureDatabricksDeltaLakeImportCommand * * olarak ayarlanır. | Evet |
 | dateFormat | Dize türünü Tarih biçimiyle biçimlendirin. Özel tarih biçimleri, [Tarih saat](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)düzeninde biçimleri izler. Belirtilmemişse, varsayılan değeri kullanır `yyyy-MM-dd` . | Hayır |
 | timestampFormat | Dizeyi bir zaman damgası biçimiyle zaman damgası türüne biçimlendirin. Özel tarih biçimleri, [Tarih saat](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)düzeninde biçimleri izler. Belirtilmemişse, varsayılan değeri kullanır `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Hayır |
 
@@ -276,14 +276,14 @@ Kaynak veri depoluünüz ve biçimlendirmeniz bu bölümde açıklanan ölçütl
 
 - **Kaynak bağlı hizmet** [Azure Blob depolama](connector-azure-blob-storage.md) veya [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md). Hesap kimlik bilgileri Azure Databricks kümesi yapılandırmasında önceden yapılandırılmış olmalıdır, [önkoşullardan](#prerequisites)daha fazla bilgi edinin.
 
-- **Kaynak veri biçimi** , aşağıdaki yapılandırmalara sahip olan **Parquet**, **ayrılmış metin**veya **avro** ve dosya yerine bir klasöre işaret ediyor.
+- **Kaynak veri biçimi** , aşağıdaki yapılandırmalara sahip olan **Parquet** , **ayrılmış metin** veya **avro** ve dosya yerine bir klasöre işaret ediyor.
 
-    - **Parquet** biçimi için, sıkıştırma codec 'i **none**, **Snappy**veya **gzip**olur.
+    - **Parquet** biçimi için, sıkıştırma codec 'i **none** , **Snappy** veya **gzip** olur.
     - **Sınırlandırılmış metin** biçimi için:
         - `rowDelimiter` Varsayılan olarak veya bir tek karakter.
-        - `compression`**none**, **bzip2**, **gzip**olabilir.
+        - `compression`**none** , **bzip2** , **gzip** olabilir.
         - `encodingName` UTF-7 desteklenmez.
-    - **Avro** biçimi için, sıkıştırma codec bileşeni **none**, **söndür**veya **Snappy**olur.
+    - **Avro** biçimi için, sıkıştırma codec bileşeni **none** , **söndür** veya **Snappy** olur.
 
 - Kopyalama etkinliği kaynağı: 
 
@@ -374,7 +374,7 @@ Bu özelliği kullanmak için, bir [Azure Blob depolama bağlı hizmeti](connect
 
 ## <a name="monitoring"></a>İzleme
 
-Azure Data Factory, diğer bağlayıcılar olarak aynı [kopyalama etkinliği izleme deneyimini](copy-activity-monitoring.md) sağlar. Ayrıca, Delta Gölü 'dan/sürümünden veri yükleme Azure Databricks kümenizde çalışırken, [ayrıntılı küme günlüklerini](https://docs.microsoft.com/azure/databricks/clusters/clusters-manage#--view-cluster-logs) daha da görüntüleyebilir ve [performansı izleyebilirsiniz](https://docs.microsoft.com/azure/databricks/clusters/clusters-manage#--monitor-performance).
+Azure Data Factory, diğer bağlayıcılar olarak aynı [kopyalama etkinliği izleme deneyimini](copy-activity-monitoring.md) sağlar. Ayrıca, Delta Gölü 'dan/sürümünden veri yükleme Azure Databricks kümenizde çalışırken, [ayrıntılı küme günlüklerini](/azure/databricks/clusters/clusters-manage#--view-cluster-logs) daha da görüntüleyebilir ve [performansı izleyebilirsiniz](/azure/databricks/clusters/clusters-manage#--monitor-performance).
 
 ## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 

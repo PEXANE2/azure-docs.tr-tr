@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 6b79b2722438403e29851d3a87929ddc67eef727
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 117b0db4f04c3fd631f6692d288945019507f5c6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123758"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632813"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory için yönetilen kimlik
 
@@ -39,9 +39,9 @@ Data Factory yönetilen kimliği, aşağıdaki özellikleri avantajlarına yöne
 
 Data Factory için yönetilen kimlik şu şekilde oluşturulur:
 
-- **Azure Portal veya PowerShell**aracılığıyla veri fabrikası oluştururken yönetilen kimlik her zaman otomatik olarak oluşturulur.
-- **SDK**aracılığıyla veri fabrikası oluştururken, yönetilen kimlik yalnızca, oluşturma için fabrika nesnesinde "Identity = New factoryıdentity ()" belirtirseniz oluşturulur. Bkz. [.net hızlı başlangıç-veri fabrikası oluşturma](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
-- **REST API**aracılığıyla veri fabrikası oluştururken, yönetilen kimlik yalnızca istek gövdesinde "kimlik" bölümünü belirtirseniz oluşturulur. Bkz. [rest hızlı başlangıç-veri fabrikası oluşturma](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
+- **Azure Portal veya PowerShell** aracılığıyla veri fabrikası oluştururken yönetilen kimlik her zaman otomatik olarak oluşturulur.
+- **SDK** aracılığıyla veri fabrikası oluştururken, yönetilen kimlik yalnızca, oluşturma için fabrika nesnesinde "Identity = New factoryıdentity ()" belirtirseniz oluşturulur. Bkz. [.net hızlı başlangıç-veri fabrikası oluşturma](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
+- **REST API** aracılığıyla veri fabrikası oluştururken, yönetilen kimlik yalnızca istek gövdesinde "kimlik" bölümünü belirtirseniz oluşturulur. Bkz. [rest hızlı başlangıç-veri fabrikası oluşturma](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
 
 Veri fabrikasının [yönetilen kimlik al](#retrieve-managed-identity) yönergesini izleyerek ilişkili bir yönetilen kimliği yoksa, kimlik başlatıcısı aracılığıyla veri fabrikasını programlı bir şekilde güncelleştirerek bir tane açıkça oluşturabilirsiniz:
 
@@ -79,7 +79,7 @@ ProvisioningState : Succeeded
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**İstek gövdesi**: "Identity": {"Type": "SystemAssigned"} ekleyin.
+**İstek gövdesi** : "Identity": {"Type": "SystemAssigned"} ekleyin.
 
 ```json
 {
@@ -92,7 +92,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**Yanıt**: yönetilen kimlik otomatik olarak oluşturulur ve "kimlik" bölümü buna göre doldurulur.
+**Yanıt** : yönetilen kimlik otomatik olarak oluşturulur ve "kimlik" bölümü buna göre doldurulur.
 
 ```json
 {
@@ -117,7 +117,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak yönetilen kimlik oluşturma
 
-**Şablon**: "Identity": {"Type": "SystemAssigned"} ekleyin.
+**Şablon** : "Identity": {"Type": "SystemAssigned"} ekleyin.
 
 ```json
 {
@@ -201,7 +201,7 @@ Yönetilen kimlik sorumlusu KIMLIĞI ve kiracı KIMLIĞI, belirli bir veri fabri
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
 ```
 
-**Yanıt**: aşağıdaki örnekte gösterildiği gibi yanıt alacaksınız. "Kimlik" bölümü buna göre doldurulur.
+**Yanıt** : aşağıdaki örnekte gösterildiği gibi yanıt alacaksınız. "Kimlik" bölümü buna göre doldurulur.
 
 ```json
 {
@@ -252,4 +252,4 @@ Data Factory tarafından yönetilen kimliğin ne zaman ve nasıl kullanılacağ�
 - [Kimlik bilgilerini Azure Key Vault içinde depola](store-credentials-in-key-vault.md)
 - [Azure kaynakları kimlik doğrulaması için Yönetilen kimlikler kullanarak/veya Azure Data Lake Store veri kopyalama](connector-azure-data-lake-store.md)
 
-Veri Fabrikası tarafından yönetilen kimliğin temel aldığı Azure kaynakları için Yönetilen kimlikler hakkında genel bakış için bkz. [Azure kaynakları Için Yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/overview) . 
+Veri Fabrikası tarafından yönetilen kimliğin temel aldığı Azure kaynakları için Yönetilen kimlikler hakkında genel bakış için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) .

@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: a6faac66edaaf047f5ba025e94a1522c2313f9ed
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c21b4d746d763f41f4360cf93f67939bcd6dc49f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546679"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632694"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory için Azure özel bağlantısı
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure özel bağlantısını kullanarak, özel bir uç nokta aracılığıyla Azure 'daki çeşitli hizmet olarak platform (PaaS) dağıtımlarını bağlayabilirsiniz. Özel uç nokta, belirli bir sanal ağ ve alt ağ içindeki özel bir IP adresidir. Özel bağlantı işlevselliğini destekleyen PaaS dağıtımlarının bir listesi için bkz. [özel bağlantı belgeleri](https://docs.microsoft.com/azure/private-link/). 
+Azure özel bağlantısını kullanarak, özel bir uç nokta aracılığıyla Azure 'daki çeşitli hizmet olarak platform (PaaS) dağıtımlarını bağlayabilirsiniz. Özel uç nokta, belirli bir sanal ağ ve alt ağ içindeki özel bir IP adresidir. Özel bağlantı işlevselliğini destekleyen PaaS dağıtımlarının bir listesi için bkz. [özel bağlantı belgeleri](../private-link/index.yml). 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>Müşteri ağları ve Azure Data Factory arasında güvenli iletişim 
 Azure sanal ağını, bulutta ağınızın mantıksal temsili olarak ayarlayabilirsiniz. Bunun yapılması aşağıdaki avantajları sağlar:
@@ -67,7 +67,7 @@ Azure Data Factory hizmetine yönelik iletişimler özel bağlantı üzerinden g
 > Bağlı bir hizmet oluşturduğunuzda, kimlik bilgilerinizin bir Azure Anahtar Kasası 'nda depolandığından emin olun. Aksi takdirde, Azure Data Factory özel bağlantıyı etkinleştirdiğinizde kimlik bilgileri çalışmayacaktır.
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Azure Data Factory için özel bağlantı ayarlama
-[Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)kullanarak özel uç noktalar oluşturabilirsiniz.
+[Azure Portal](../private-link/create-private-endpoint-portal.md)kullanarak özel uç noktalar oluşturabilirsiniz.
 
 Ayrıca, Azure portal Azure Data Factory 'nize giderek aşağıda gösterildiği gibi özel bir uç nokta oluşturabilirsiniz:
 
@@ -89,4 +89,3 @@ Azure Data Factory 'ye Genel erişimi engellemek ve yalnızca özel bağlantı a
 - [Azure Data Factory UI kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-portal.md)
 - [Azure Data Factory'ye giriş](introduction.md)
 - [Azure Data Factory 'de görsel yazma](author-visually.md)
-

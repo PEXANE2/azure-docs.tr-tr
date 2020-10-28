@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 811ba2398b5245be74fd991611ea6a631e0e2b5b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 021497fa7766b7eecfa935d4186ecc98edef8d61
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519199"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633697"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosoffice"></a>Öğretici: WhosOffice ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, WhosOffice 'i Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -51,15 +51,15 @@ WhosOffice tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **WhosOffice** yazın.
 1. Sonuçlar panelinden **WhosOffice** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-whosoffice"></a>WhosOffice için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu WhosOffice ile yapılandırın ve test edin. SSO 'nun çalışması için, WhosOffice içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu WhosOffice ile yapılandırın ve test edin. SSO 'nun çalışması için, WhosOffice içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu WhosOffice ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -74,8 +74,8 @@ Azure AD SSO 'yu WhosOffice ile yapılandırmak ve test etmek için aşağıdaki
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **WhosOffice** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **WhosOffice** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -103,25 +103,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, WhosOffice 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **WhosOffice**' yi seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde **WhosOffice** ' yi seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -133,37 +133,37 @@ Bu bölümde, WhosOffice 'e erişim vererek Azure çoklu oturum açma özelliği
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak WhosOffice Web sitesinde oturum açın.
 
-1. **Ayarlar** ' a tıklayın ve **Şirket**' i seçin.
+1. **Ayarlar** ' a tıklayın ve **Şirket** ' i seçin.
 
-    ![WhosOffice yapılandırması](./media/whosoffice-tutorial/configuration1.png)
+    ![Ekran görüntüsü, ayarlardan seçilen şirketi gösterir.](./media/whosoffice-tutorial/configuration1.png)
 
-1. **Uygulamalar/tümleştirmeler**' e tıklayın.
+1. **Uygulamalar/tümleştirmeler** ' e tıklayın.
 
-    ![WhosOffice yapılandırması](./media/whosoffice-tutorial/configuration2.png)
+    ![Ekran görüntüsünde şirket ayarlarından seçilen uygulamalar/tümleştirmeler gösterilmektedir.](./media/whosoffice-tutorial/configuration2.png)
 
-1. Sağlayıcı açılan menüsünden **Microsoft Azure** ' yi seçin ve **oturum açma sağlayıcısını etkinleştir**' e tıklayın.
+1. Sağlayıcı açılan menüsünden **Microsoft Azure** ' yi seçin ve **oturum açma sağlayıcısını etkinleştir** ' e tıklayın.
 
-    ![WhosOffice yapılandırması](./media/whosoffice-tutorial/configuration3.png)
+    ![Ekran görüntüsü Microsoft Azure için seçilen oturum açma sağlayıcısını etkinleştir ' i gösterir.](./media/whosoffice-tutorial/configuration3.png)
 
 1. İndirilen Federasyon meta veri dosyasını **karşıya yükleme** seçeneğine tıklayarak Azure Portal karşıya yükleyin.
     
-    ![WhosOffice yapılandırması](./media/whosoffice-tutorial/configuration4.png)
+    ![Ekran görüntüsü, meta veri dosyası için karşıya yükleme seçeneğini gösterir.](./media/whosoffice-tutorial/configuration4.png)
 
 ### <a name="create-whosoffice-test-user"></a>WhosOffice test kullanıcısı oluştur
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak WhosOffice Web sitesinde oturum açın.
 
-1. **Ayarlar** ' a tıklayın ve **Kullanıcılar**' ı seçin.
+1. **Ayarlar** ' a tıklayın ve **Kullanıcılar** ' ı seçin.
 
-    ![WhosOffice yapılandırması](./media/whosoffice-tutorial/user1.png)
+    ![Ekran görüntüsü, ayarlardan seçilen kullanıcıları gösterir.](./media/whosoffice-tutorial/user1.png)
 
-1. **Yeni Kullanıcı oluştur**' u seçin.
+1. **Yeni Kullanıcı oluştur** ' u seçin.
 
-    ![WhosOffice yapılandırması](./media/whosoffice-tutorial/user2.png)
+    ![Ekran görüntüsü yeni kullanıcı oluştur ' un seçili olduğunu gösterir.](./media/whosoffice-tutorial/user2.png)
 
 1. Kuruluş gereksiniminize göre kullanıcının gerekli ayrıntılarını sağlayın.
 
-    ![WhosOffice yapılandırması](./media/whosoffice-tutorial/user3.png)
+    ![Ekran görüntüsü, Kullanıcı verilerini girebileceğiniz yeni kullanıcı iletişim kutusunu gösterir.](./media/whosoffice-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

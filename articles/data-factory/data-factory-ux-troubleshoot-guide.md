@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: 9f23155df6d9e63448b35974c331bf78c3e5f90c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bd0421a74679ff0c9498540d722a74ebf3d58af
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426240"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632576"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Azure Data Factory UX sorunlarını giderme
 
@@ -42,7 +42,7 @@ ADF UX Kullanıcı oturumunu kalıcı hale getirmek ve etkileşimli geliştirme 
 
 #### <a name="only-allow-adf-ux-to-use-cookies"></a>Yalnızca ADF UX 'in tanımlama bilgilerini kullanmasına izin ver
 Tüm tanımlama bilgilerine izin vermek istemiyorsanız, isteğe bağlı olarak yalnızca ADF UX 'e izin verebilirsiniz:
-1. **Chrome://Settings/Cookies**adresini ziyaret edin.
+1. **Chrome://Settings/Cookies** adresini ziyaret edin.
 1. **Tanımlama bilgilerini her zaman kullanan siteler** altında **Ekle** seçeneğini belirleyin 
 
     ![Chrome 'daki izin verilen sitelere ADF UX ekleme](media/data-factory-ux-troubleshoot-guide/chrome-only-adf-cookies-1.png)
@@ -63,7 +63,7 @@ Tüm tanımlama bilgilerine izin vermek istemiyorsanız, isteğe bağlı olarak 
 
 Tüm tanımlama bilgilerine izin vermek istemiyorsanız, isteğe bağlı olarak yalnızca ADF UX 'e izin verebilirsiniz:
 
-1. **Edge://settings/content/Cookies**adresini ziyaret edin.
+1. **Edge://settings/content/Cookies** adresini ziyaret edin.
 1. **Izin ver** bölümünde, **Ekle** ve **ADF.Azure.com** sitesi Ekle ' yi seçin. 
 
     ![Kenarda izin verilen sitelere ADF UX ekleme](media/data-factory-ux-troubleshoot-guide/edge-allow-adf-cookies.png)
@@ -71,17 +71,17 @@ Tüm tanımlama bilgilerine izin vermek istemiyorsanız, isteğe bağlı olarak 
 
 ## <a name="connection-failed-on-adf-ux"></a>ADF UX üzerinde bağlantı başarısız oldu
 
-Bazen, **bağlantı sınama**, **Önizleme**, vb. tıkladıktan sonra AŞAĞıDAKI ekran görüntüsüne benzer ADF UX üzerinde "bağlantı başarısız oldu" hataları görürsünüz.
+Bazen, **bağlantı sınama** , **Önizleme** , vb. tıkladıktan sonra AŞAĞıDAKI ekran görüntüsüne benzer ADF UX üzerinde "bağlantı başarısız oldu" hataları görürsünüz.
 
 ![Bağlantı başarısız oldu](media/data-factory-ux-troubleshoot-guide/connection-failed.png)
 
 Bu durumda, önce tarayıcınızda InPrivate Gözatma moduyla aynı işlemi deneyebilirsiniz.
 
-Hala çalışmıyorsa, tarayıcıda **Geliştirici Araçları**açmak için F12 tuşuna basın. **Ağ** sekmesine gidin, **önbelleği devre dışı bırak**' ı işaretleyin, başarısız olan işlemi yeniden deneyin ve başarısız isteği bulun (kırmızı).
+Hala çalışmıyorsa, tarayıcıda **Geliştirici Araçları** açmak için F12 tuşuna basın. **Ağ** sekmesine gidin, **önbelleği devre dışı bırak** ' ı işaretleyin, başarısız olan işlemi yeniden deneyin ve başarısız isteği bulun (kırmızı).
 
 ![Başarısız istek](media/data-factory-ux-troubleshoot-guide/failed-request.png)
 
-Ardından, başarısız isteğin **Istek URL** 'sinden **ana bilgisayar adını** (Bu örnekte **dpnortheurope.svc.DataFactory.Azure.com**) bulun.
+Ardından, başarısız isteğin **Istek URL** 'sinden **ana bilgisayar adını** (Bu örnekte **dpnortheurope.svc.DataFactory.Azure.com** ) bulun.
 
 Tarayıcınızın adres çubuğuna doğrudan **ana bilgisayar adını** yazın. Tarayıcıda 404 görürseniz, bu genellikle istemci tarafın Tamam olduğu ve sorun ADF hizmeti tarafında olduğu anlamına gelir. ADF UX hata iletisindeki **etkınlık kimliği** ile bir destek bileti dosyası.
 
@@ -91,7 +91,7 @@ Aksi takdirde, tarayıcıda aşağıda benzer bir hata görürseniz, bu genellik
 
 ![İstemci tarafı hatası](media/data-factory-ux-troubleshoot-guide/client-side-error.png)
 
-**Komut istemi** ' ni açın ve **nslookup dpnortheurope.svc.DataFactory.Azure.com**yazın. Normal bir yanıt aşağıdaki gibi görünmelidir:
+**Komut istemi** ' ni açın ve **nslookup dpnortheurope.svc.DataFactory.Azure.com** yazın. Normal bir yanıt aşağıdaki gibi görünmelidir:
 
 ![Komut yanıtı 1](media/data-factory-ux-troubleshoot-guide/command-response-1.png)
 
@@ -120,4 +120,4 @@ Daha fazla sorun giderme Yardım için şu kaynakları deneyin:
 * [Data Factory için Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Data Factory hakkında Twitter bilgileri](https://twitter.com/hashtag/DataFactory)
 * [Azure videoları](https://azure.microsoft.com/resources/videos/index/)
-* [Soru sayfası Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+* [Soru sayfası Microsoft Q&](/answers/topics/azure-data-factory.html)

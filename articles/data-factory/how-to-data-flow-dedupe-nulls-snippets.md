@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: makromer
-ms.openlocfilehash: 1c630cdd66fa4f8e609524feb9c3f0bcad9711a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cdb522cc4be83eadd2c60c91c7fee33e7ccc039b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458175"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632456"
 ---
 # <a name="dedupe-rows-and-find-nulls-by-using-data-flow-snippets"></a>Veri akışı parçacıklarını kullanarak satırları kaldırma ve null değerleri bulma
 
@@ -25,7 +25,7 @@ Veri akışlarını eşleme bölümünde kod parçacıkları kullanarak, yinelen
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-1. **Yeni İşlem Hattı**’nı seçin.
+1. **Yeni İşlem Hattı** ’nı seçin.
 
 1. Veri akışı etkinliği ekleyin.
 
@@ -35,9 +35,9 @@ Veri akışlarını eşleme bölümünde kod parçacıkları kullanarak, yinelen
 
     Yinelenenleri kaldırma ve null denetim parçacıkları, veri akışı şema drlarından faydalanan genel desenler kullanır. Kod parçacıkları, veri kümenizdeki tüm şemalarla veya önceden tanımlanmış bir şemaya sahip olmayan veri kümeleriyle çalışır.
 
-1. [Veri akışı betiğinin (DFS)](https://docs.microsoft.com/azure/data-factory/data-flow-script#distinct-row-using-all-columns)"tüm sütunları kullanarak ayrı satır" bölümünde, DistinctRows için kod parçacığını kopyalayın.
+1. [Veri akışı betiğinin (DFS)](./data-flow-script.md#distinct-row-using-all-columns)"tüm sütunları kullanarak ayrı satır" bölümünde, DistinctRows için kod parçacığını kopyalayın.
 
-1. Veri akışı Tasarımcısı Kullanıcı arabiriminizde, veri akışı grafiğinin arkasındaki betik düzenleyicisini açmak için sağ üst köşedeki **betik** düğmesini seçin.
+1. [Veri akışı betiği belgeleri sayfasına gidin ve kod parçacığını ayrı satırlar için kopyalayın.](./data-flow-script.md#distinct-row-using-all-columns)
 
     ![Kaynak parçacığının ekran görüntüsü.](media/data-flow/snippet-adf-3.png)
 
@@ -55,7 +55,7 @@ Veri akışlarını eşleme bölümünde kod parçacıkları kullanarak, yinelen
     
 1. Verilerinizi null ve null olmayan bir akışa sahip bir akışa bölmek için bir kod parçacığı ekleyin. Bunun için:
 
-   a. Kod [parçacığı kitaplığına](https://docs.microsoft.com/azure/data-factory/data-flow-script#check-for-nulls-in-all-columns)geri dönün ve ardından null denetimleri için kodu kopyalayın.
+1. [Kod parçacığı kitaplığına geri dönün ve bu sefer NULL denetimleri için kodu kopyalayın.](./data-flow-script.md#check-for-nulls-in-all-columns)
 
    b. Veri akışı tasarımcısında **betiği** yeniden seçin ve ardından bu yeni dönüştürme kodunu en alta yapıştırın. Bu eylem, bu dönüşümün adını yapıştırılan kod parçacığının önüne yerleştirerek betiği önceki dönüşümünüze bağlar.
 
