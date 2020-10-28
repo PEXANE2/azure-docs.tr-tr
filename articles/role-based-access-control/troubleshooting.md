@@ -14,13 +14,13 @@ ms.topic: troubleshooting
 ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.custom: seohack1
-ms.openlocfilehash: 069c290de0278202b2e20d67f0ce792a0a79c345
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: seohack1, devx-track-azurecli
+ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368239"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741069"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC sorunlarını giderme
 
@@ -120,7 +120,7 @@ Bir Kullanıcı bir rol ataması oluştururken yakın zamanda davet ediyorsanız
 
 Ancak, bu güvenlik sorumlusu son davet edilen bir Kullanıcı değilse, silinen bir güvenlik sorumlusu olabilir. Bir güvenlik sorumlusuna bir rol atarsanız ve daha sonra rol atamasını kaldırmadan bu güvenlik sorumlusunu silerseniz, güvenlik sorumlusu **kimlik bulunamadı** ve **Bilinmeyen** bir tür olarak listelenir.
 
-Bu rol atamasını Azure PowerShell kullanarak listelüyor, boş `DisplayName` ve `ObjectType` **Bilinmeyen**olarak bir küme görebilirsiniz. Örneğin, [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) , aşağıdaki çıktıya benzer bir rol ataması döndürür:
+Bu rol atamasını Azure PowerShell kullanarak listelüyor, boş `DisplayName` ve `ObjectType` **Bilinmeyen** olarak bir küme görebilirsiniz. Örneğin, [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) , aşağıdaki çıktıya benzer bir rol ataması döndürür:
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -229,7 +229,7 @@ Bu öğeler, **sanal makineye** **yazma** erişimi gerektirir:
 * Diskler  
 * Uzantıları  
 
-Bunlar, hem **sanal makineye**hem de **kaynak grubuna** (etki alanı adıyla birlikte) **yazma** erişimi gerektirir:  
+Bunlar, hem **sanal makineye** hem de **kaynak grubuna** (etki alanı adıyla birlikte) **yazma** erişimi gerektirir:  
 
 * Kullanılabilirlik kümesi  
 * Yük dengeli küme  
@@ -239,7 +239,7 @@ Bu kutucukların herhangi birine erişemiyorsanız, yöneticinizden kaynak grubu
 
 ## <a name="azure-functions-and-write-access"></a>Azure Işlevleri ve yazma erişimi
 
-[Azure işlevlerinin](../azure-functions/functions-overview.md) bazı özellikleri yazma erişimi gerektirir. Örneğin, bir kullanıcıya [okuyucu](built-in-roles.md#reader) rolü atanırsa, işlevleri bir işlev uygulamasında görüntüleyemeyecektir. Portal görüntülenir **(erişim yok)**.
+[Azure işlevlerinin](../azure-functions/functions-overview.md) bazı özellikleri yazma erişimi gerektirir. Örneğin, bir kullanıcıya [okuyucu](built-in-roles.md#reader) rolü atanırsa, işlevleri bir işlev uygulamasında görüntüleyemeyecektir. Portal görüntülenir **(erişim yok)** .
 
 ![İşlev uygulamalarına erişim yok](./media/troubleshooting/functionapps-noaccess.png)
 

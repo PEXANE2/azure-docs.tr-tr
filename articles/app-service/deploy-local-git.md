@@ -5,19 +5,19 @@ ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
-ms.custom: seodec18
-ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 9650633e1eaffdb588b3a31cd5a2f305c36e7a25
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77153001"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741302"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service için yerel git dağıtımı
 
 Bu nasıl yapılır Kılavuzu, uygulamanızı yerel bilgisayarınızdaki bir git deposundan [Azure App Service](overview.md) için nasıl dağıtacağınızı gösterir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzundaki adımları takip etmek için:
 
@@ -100,26 +100,26 @@ Hesabınız gerekli izinlere sahipse, uygulamanız için yerel git dağıtımın
 
 Azure Pipelines (Önizleme) ile uygulamanız için yerel git dağıtımını etkinleştirmek için:
 
-1. [Azure Portal](https://portal.azure.com), **uygulama hizmetleri**' ni arayıp seçin. 
+1. [Azure Portal](https://portal.azure.com), **uygulama hizmetleri** ' ni arayıp seçin. 
 
 1. Azure App Service uygulamanızı seçin ve Sol menüdeki **Dağıtım Merkezi** ' ni seçin.
    
-1. **Dağıtım Merkezi** sayfasında **Yerel git**' i seçin ve ardından **devam**' ı seçin. 
+1. **Dağıtım Merkezi** sayfasında **Yerel git** ' i seçin ve ardından **devam** ' ı seçin. 
    
    ![Yerel git ' i seçin ve ardından devam ' ı seçin.](media/app-service-deploy-local-git/portal-enable.png)
    
-1. **Yapı sağlayıcısı** sayfasında **Azure Pipelines (Önizleme)** öğesini seçin ve ardından **devam**' ı seçin. 
+1. **Yapı sağlayıcısı** sayfasında **Azure Pipelines (Önizleme)** öğesini seçin ve ardından **devam** ' ı seçin. 
    
    ![Azure Pipelines (Önizleme) öğesini seçin ve ardından devam ' ı seçin.](media/app-service-deploy-local-git/pipeline-builds.png)
 
-1. **Yapılandır** sayfasında, yeni bir Azure DevOps organizasyonu yapılandırın veya mevcut bir kuruluş belirtip **devam**' ı seçin.
+1. **Yapılandır** sayfasında, yeni bir Azure DevOps organizasyonu yapılandırın veya mevcut bir kuruluş belirtip **devam** ' ı seçin.
    
    > [!NOTE]
    > Mevcut Azure DevOps kuruluşunuz listede yoksa Azure aboneliğinize bağlamanız gerekebilir. Daha fazla bilgi için bkz. [CD yayın işlem hattınızı tanımlama](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd).
    
-1. App Service planı [fiyatlandırma katmanınıza](https://azure.microsoft.com/pricing/details/app-service/plans/)bağlı olarak, **hazırlama sayfasına dağıt** sayfasına bakabilirsiniz. [Dağıtım yuvalarının](deploy-staging-slots.md)etkinleştirilip etkinleştirilmeyeceğini seçin ve ardından **devam**' ı seçin.
+1. App Service planı [fiyatlandırma katmanınıza](https://azure.microsoft.com/pricing/details/app-service/plans/)bağlı olarak, **hazırlama sayfasına dağıt** sayfasına bakabilirsiniz. [Dağıtım yuvalarının](deploy-staging-slots.md)etkinleştirilip etkinleştirilmeyeceğini seçin ve ardından **devam** ' ı seçin.
    
-1. **Özet** sayfasında, ayarları gözden geçirin ve **son**' u seçin.
+1. **Özet** sayfasında, ayarları gözden geçirin ve **son** ' u seçin.
    
 1. Azure işlem hattı kullanılabilir olduğunda, git deposu URL 'sini bir sonraki adımda kullanmak üzere **Dağıtım Merkezi** sayfasından kopyalayın. 
    
@@ -152,7 +152,7 @@ Azure 'da bir App Service uygulamasına yayımlamak için git kullandığınızd
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Sırasında bir dal belirtmediniz veya ' `git push` `push.default` de değer ayarlamadıysanız `.gitconfig` .|`git push`Ana dalı belirterek yeniden çalıştırın: `git push azure master` .|
 |`src refspec [branchname] does not match any.`|' Azure ' uzak üzerinde ana öğe dışında bir dala gönderim girişiminde çalıştınız.|`git push`Ana dalı belirterek yeniden çalıştırın: `git push azure master` .|
 |`RPC failed; result=22, HTTP code = 5xx.`|HTTPS üzerinden büyük bir git deposu göndermeye çalışırsanız bu hata oluşabilir.|Daha büyük olması için yerel makinedeki git yapılandırmasını değiştirin `postBuffer` . Örneğin: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|Bir Node.js uygulamasını, ek gerekli modülleri belirten _package.js_ bir dosya ile dağıttınız.|Hatada `npm ERR!` daha fazla bağlam için bu hatadan önce hata iletilerini gözden geçirin. Aşağıda bu hatanın bilinen nedenleri ve ilgili `npm ERR!` iletiler verilmiştir:<br /><br />**Dosyada hatalı biçimlendirilmiş package.js**: `npm ERR! Couldn't read dependencies.`<br /><br />**Yerel modülün Windows için ikili bir dağıtımı yok**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />veya <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`Error - Changes committed to remote repository but your web app not updated.`|Bir Node.js uygulamasını, ek gerekli modülleri belirten _package.js_ bir dosya ile dağıttınız.|Hatada `npm ERR!` daha fazla bağlam için bu hatadan önce hata iletilerini gözden geçirin. Aşağıda bu hatanın bilinen nedenleri ve ilgili `npm ERR!` iletiler verilmiştir:<br /><br />**Dosyada hatalı biçimlendirilmiş package.js** : `npm ERR! Couldn't read dependencies.`<br /><br />**Yerel modülün Windows için ikili bir dağıtımı yok** :<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />veya <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

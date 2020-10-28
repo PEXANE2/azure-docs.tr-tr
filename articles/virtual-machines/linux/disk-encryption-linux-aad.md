@@ -7,13 +7,13 @@ ms.subservice: security
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
-ms.custom: seodec18
-ms.openlocfilehash: fa01c4a595a08ffdba56d777128431946540eee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: c8228086eb67478d80aa041004e0da3eed71f896
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372680"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741799"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Linux sanal makinelerinde Azure AD ile Azure disk şifrelemesini etkinleştirme (önceki sürüm)
 
@@ -148,7 +148,7 @@ Aşağıdaki tabloda, bir Azure AD istemci KIMLIĞI kullanan mevcut veya çalı�
 | AADClientSecret | Anahtar kasanıza gizli diziler yazma izinleri olan Azure AD uygulamasının istemci gizli anahtarı. |
 | keyVaultName | Anahtarın karşıya yüklenmesi gereken anahtar kasasının adı. Azure CLı komutunu kullanarak edinebilirsiniz `az keyvault show --name "MySecureVault" --query KVresourceGroup` . |
 |  keyEncryptionKeyURL 'Si | Oluşturulan anahtarı şifrelemek için kullanılan anahtar şifreleme anahtarının URL 'SI. **UseExistingKek** açılır listesinde **nokek** ' ı seçerseniz bu parametre isteğe bağlıdır. **UseExistingKek** açılır listesinde **kek** ' yi seçerseniz _Keyencryptionkeyurl_ değerini girmeniz gerekir. |
-| Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Desteklenen geçerli değerler _OS_ veya _All_. (Önkoşul bölümünde daha önce desteklenen Linux dağıtımlarını ve işletim sistemi ve veri diskleri sürümlerini inceleyin.) |
+| Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Desteklenen geçerli değerler _OS_ veya _All_ . (Önkoşul bölümünde daha önce desteklenen Linux dağıtımlarını ve işletim sistemi ve veri diskleri sürümlerini inceleyin.) |
 | sequenceVersion | BitLocker işleminin sıra sürümü. Aynı VM 'de her disk şifreleme işlemi gerçekleştirildiğinde bu sürüm numarasını artırın. |
 | vmName | Şifreleme işleminin gerçekleştirileceği sanal makinenin adı. |
 | passphrase | Veri şifreleme anahtarı olarak güçlü bir parola yazın. |
@@ -180,7 +180,7 @@ EncryptFormatAll seçeneğini kullanmak için, bir Linux sanal makinesini şifre
 
 1. Örnek olarak, [çalışan bir Linux IaaS VM 'sini şifrelemek için Kaynak Yöneticisi şablonunu](https://github.com/vermashi/azure-quickstart-templates/tree/encrypt-format-running-linux-vm/201-encrypt-running-linux-vm)kullanın. 
 2. Azure hızlı başlangıç şablonunda **Azure 'A dağıt** ' ı seçin.
-3. **Encryptionoperation** alanını **Enableencryption** Iken **enableencryptionformatal**olarak değiştirin.
+3. **Encryptionoperation** alanını **Enableencryption** Iken **enableencryptionformatal** olarak değiştirin.
 4. Abonelik, kaynak grubu, kaynak grubu konumu, diğer parametreler, yasal koşullar ve anlaşma ' ı seçin. Mevcut veya çalışan IaaS sanal makinesinde şifrelemeyi etkinleştirmek için **Oluştur** ' u seçin.
 
 
@@ -341,7 +341,7 @@ Azure PowerShell, Azure CLı veya Kaynak Yöneticisi şablonunu kullanarak şifr
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 - **Kaynak Yöneticisi şablonuyla şifrelemeyi devre dışı bırak:** Şifrelemeyi devre dışı bırakmak için [çalışan bir LINUX VM şablonunda şifrelemeyi devre dışı bırak](https://aka.ms/decrypt-linuxvm) ' ı kullanın.
-     1. **Azure 'A dağıt**' ı seçin.
+     1. **Azure 'A dağıt** ' ı seçin.
      2. Abonelik, kaynak grubu, konum, VM, yasal koşullar ve Sözleşme ' yi seçin.
      3. Çalışan bir Windows VM 'de disk şifrelemeyi devre dışı bırakmak için **satın al** ' ı seçin 
 

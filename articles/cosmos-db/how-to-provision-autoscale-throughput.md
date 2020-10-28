@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 823f5f90bc1a72b1df87ee21e37cf39fed0b2340
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 452259015cf78234aa6a96194342de20db9a3724
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486166"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740872"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB-SQL API 'sindeki veritabanı veya kapsayıcıda otomatik ölçeklendirme performansı sağlama
 
@@ -21,7 +21,7 @@ Bu makalede, Azure Cosmos DB SQL API 'sindeki bir veritabanı veya kapsayıcıda
 
 Farklı bir API kullanıyorsanız, üretilen işi sağlamak için [MongoDB Için API](how-to-provision-throughput-mongodb.md), [Cassandra API](how-to-provision-throughput-cassandra.md)ve [Gremlin API](how-to-provision-throughput-gremlin.md) makalelerini inceleyin.
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portal
 
 ### <a name="create-new-database-or-container-with-autoscale"></a>Otomatik ölçeklendirme ile yeni veritabanı veya kapsayıcı oluşturma
 
@@ -29,11 +29,11 @@ Farklı bir API kullanıyorsanız, üretilen işi sağlamak için [MongoDB Için
 
 1. Azure Cosmos DB hesabınıza gidin ve **Veri Gezgini** sekmesini açın.
 
-1. **Yeni kapsayıcı** ' yı seçin. Veritabanınız, Kapsayıcınız ve bölüm anahtarınız için bir ad girin. **Verimlilik**altında, **Otomatik ölçeklendirme** seçeneğini belirleyin ve veritabanının veya kapsayıcının ölçeklendirilmesini istediğiniz [en yüksek aktarım hızını (ru/sn)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) ayarlayın.
+1. **Yeni kapsayıcı** ' yı seçin. Veritabanınız, Kapsayıcınız ve bölüm anahtarınız için bir ad girin. **Verimlilik** altında, **Otomatik ölçeklendirme** seçeneğini belirleyin ve veritabanının veya kapsayıcının ölçeklendirilmesini istediğiniz [en yüksek aktarım hızını (ru/sn)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) ayarlayın.
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Kapsayıcı oluşturma ve otomatik ölçeklendirme sağlanan verimini yapılandırma":::
 
-1. **Tamam**’ı seçin.
+1. **Tamam** ’ı seçin.
 
 Paylaşılan aktarım hızı veritabanında otomatik ölçeklendirme sağlamak için yeni bir veritabanı oluştururken **veritabanı Işleme sağlama** seçeneğini belirleyin. 
 
@@ -48,7 +48,7 @@ Paylaşılan aktarım hızı veritabanında otomatik ölçeklendirme sağlamak i
 
 1. Kapsayıcınız için **ölçek ve ayarlar** ' ı veya veritabanınızın **ölçeğini** seçin.
 
-1. **Ölçek**altında, **Otomatik ölçeklendirme** seçeneğini belirleyin ve **kaydedin**.
+1. **Ölçek** altında, **Otomatik ölçeklendirme** seçeneğini belirleyin ve **kaydedin** .
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Kapsayıcı oluşturma ve otomatik ölçeklendirme sağlanan verimini yapılandırma":::
 

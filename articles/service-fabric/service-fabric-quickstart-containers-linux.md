@@ -3,13 +3,13 @@ title: Azure 'da Service Fabric Linux kapsayıcı uygulaması oluşturma
 description: Bu hızlı başlangıçta uygulamanızla bir Docker görüntüsü oluşturacak, görüntüyü bir kapsayıcı kayıt defterine iletecek ve kapsayıcınızı bir Service Fabric kümesine dağıtacaksınız.
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 27a21a685d8dc4aa92585ce49b21d1986a54209f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 27d9c96643feb805a785e1e535cd8cac2602082b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91541518"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741921"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Hızlı başlangıç: Linux kapsayıcıları Service Fabric'e dağıtma
 
@@ -19,7 +19,7 @@ Bu hızlı başlangıçta, Linux kapsayıcılarını Azure 'da bir Service Fabri
 
 ![Oylama uygulaması web sayfası][quickstartpic]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -89,7 +89,7 @@ Service Fabric, bir kümeyi ve uygulamalarını yönetmek için kullanabileceği
 
 Bu hızlı başlangıçta Service Fabric CLı ve Service Fabric Explorer (bir Web tabanlı araç) kullanacaksınız. Service Fabric Explorer kullanmak için, sertifika PFX dosyasını tarayıcıya aktarmanız gerekir. Varsayılan olarak PFX dosyasının parolası yoktur.
 
-Mozilla Firefox, Ubuntu 16,04 ' de varsayılan tarayıcıdır. Sertifikayı Firefox’a aktarmak için, tarayıcınızın sağ üst köşesindeki menü düğmesine ve ardından **Seçenekler**’e tıklayın. **Tercihler** sayfasında arama kutusunu kullanarak "sertifikalar" terimini arayın. **Sertifikaları Görüntüle**’ye tıklayın, **Sertifikalarınız** sekmesini seçin, **İçeri Aktar**’a tıklayın ve sertifikayı içeri aktarma istemlerini izleyin.
+Mozilla Firefox, Ubuntu 16,04 ' de varsayılan tarayıcıdır. Sertifikayı Firefox’a aktarmak için, tarayıcınızın sağ üst köşesindeki menü düğmesine ve ardından **Seçenekler** ’e tıklayın. **Tercihler** sayfasında arama kutusunu kullanarak "sertifikalar" terimini arayın. **Sertifikaları Görüntüle** ’ye tıklayın, **Sertifikalarınız** sekmesini seçin, **İçeri Aktar** ’a tıklayın ve sertifikayı içeri aktarma istemlerini izleyin.
 
    ![Firefox’ta sertifika yükleme](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
@@ -107,7 +107,7 @@ Mozilla Firefox, Ubuntu 16,04 ' de varsayılan tarayıcıdır. Sertifikayı Fire
     ./install.sh
     ```
 
-3. Bir web tarayıcısı açın ve kümenizin Service Fabric Explorer uç noktasına gidin. Uç nokta şu biçimdedir:  **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer**; Örneğin, `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
+3. Bir web tarayıcısı açın ve kümenizin Service Fabric Explorer uç noktasına gidin. Uç nokta şu biçimdedir:  **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer** ; Örneğin, `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
 
 4. Şimdi oylama uygulama türü ve oluşturduğunuz örnek için bir girdi olduğunu görmek için **uygulamalar** düğümünü genişletin.
 
@@ -132,7 +132,7 @@ Service Fabric, bir hata oluşması durumunda kapsayıcı örneklerinizin kümed
 1. Kümenizde Service Fabric Explorer'ı açın; örneğin, `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`.
 2. Ağaç görünümünde **fabric:/Voting/azurevotefront** düğümüne tıklayın ve bölüm düğümünü (GUID ile gösterilir) genişletin. Ağaç görünümünde kapsayıcının üzerinde çalıştığı düğümleri gösteren düğüm adına dikkat edin; örneğin, `_nodetype_1`.
 3. Ağaç görünümünde **Düğümler** düğümünü genişletin. Kapsayıcıyı çalıştıran düğümün yanındaki üç noktaya (...) tıklayın.
-4. İlgili düğümü yeniden başlatmak için **Yeniden Başlat**'ı seçin ve yeniden başlatma eylemini onaylayın. Yeniden başlatma durumunda kapsayıcıdan kümedeki başka bir düğüme yük devretme gerçekleştirilir.
+4. İlgili düğümü yeniden başlatmak için **Yeniden Başlat** 'ı seçin ve yeniden başlatma eylemini onaylayın. Yeniden başlatma durumunda kapsayıcıdan kümedeki başka bir düğüme yük devretme gerçekleştirilir.
 
     ![Service Fabric Explorer'da düğüm görünümü][sfxquickstartshownodetype]
 
@@ -143,13 +143,13 @@ Hizmet yükünü karşılamak için bir kümedeki Service Fabric hizmetleri kola
 Web ön uç hizmetini ölçeklendirmek için aşağıdaki adımları gerçekleştirin:
 
 1. Kümenizde Service Fabric Explorer'ı açın; örneğin, `https://containertestcluster.eastus.cloudapp.azure.com:19080`.
-2. Ağaç görünümünde **fabric:/Voting/azurevotefront** düğümünün yanındaki üç noktaya tıklayın ve **Hizmeti Ölçeklendir**'i seçin.
+2. Ağaç görünümünde **fabric:/Voting/azurevotefront** düğümünün yanındaki üç noktaya tıklayın ve **Hizmeti Ölçeklendir** 'i seçin.
 
     ![Service Fabric Explorer hizmet ölçeklendirmeyi başlatma][containersquickstartscale]
 
     Şimdi web ön uç hizmetindeki örnek sayısını ölçeklendirebilirsiniz.
 
-3. Rakamı **2** olarak değiştirin ve **Hizmeti Ölçeklendir**'e tıklayın.
+3. Rakamı **2** olarak değiştirin ve **Hizmeti Ölçeklendir** 'e tıklayın.
 4. Ağaç görünümünde **fabric:/Voting/azurevotefront** düğümüne tıklayın ve bölüm düğümünü (GUID ile gösterilir) genişletin.
 
     ![Service Fabric Explorer hizmet ölçeklendirme tamamlandı][containersquickstartscaledone]
@@ -177,8 +177,8 @@ ResourceGroupName="containertestcluster"
 az group delete --name $ResourceGroupName
 ```
 
-Kümenizle çalışmayı tamamladıysanız, sertifikayı sertifika deposundan kaldırabilirsiniz. Örnek:
-- Windows: [Sertifikalar MMC ek bileşenini](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) kullanın. Ek bileşeni eklerken **Kullanıcı hesabım**’ı seçtiğinizden emin olun. `Certificates - Current User\Personal\Certificates` sayfasına gidip sertifikayı kaldırın.
+Kümenizle çalışmayı tamamladıysanız, sertifikayı sertifika deposundan kaldırabilirsiniz. Örneğin:
+- Windows: [Sertifikalar MMC ek bileşenini](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) kullanın. Ek bileşeni eklerken **Kullanıcı hesabım** ’ı seçtiğinizden emin olun. `Certificates - Current User\Personal\Certificates` sayfasına gidip sertifikayı kaldırın.
 - Mac: Anahtarlık uygulamasını kullanın.
 - Ubuntu: Sertifikaları görüntülemek ve sertifikayı kaldırmak için kullandığınız adımları izleyin.
 

@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: 661147769d8ae845066e912a84118c9fd3f93486
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: dd5d05ff6ed2368308f90f61ea0a6f107e43acd7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674916"
+ms.locfileid: "92740779"
 ---
 # <a name="weather-partner-integration"></a>Hava durumu iş ortağı tümleştirmesi
 
@@ -180,7 +180,7 @@ Bağlayıcı Docker 'ın meta verilerde güncelleştirme gönderebilme özelliğ
 
 ## <a name="weather-data-telemetry-specifications"></a>Hava durumu verileri (telemetri) belirtimleri
 
-Hava durumu verileri, işlenmek üzere bir Azure Olay Hub 'ına gönderilen kurallı bir iletiyle eşleştirilir. Azure EventHub, bağlı cihazlardan ve uygulamalardan gerçek zamanlı veri (telemetri) alımı sağlayan bir hizmettir. Hava durumu verilerini Farmtts 'e göndermek için, bir olay hub 'ına Farmtts 'de ileti gönderen bir istemci oluşturmanız gerekir. Telemetri gönderme hakkında daha fazla bilgi için bkz. [bir olay hub 'ına telemetri gönderme](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+Hava durumu verileri, işlenmek üzere bir Azure Olay Hub 'ına gönderilen kurallı bir iletiyle eşleştirilir. Azure Event Hubs, bağlı cihazlardan ve uygulamalardan gerçek zamanlı veri (telemetri) alımı sağlayan bir hizmettir. Hava durumu verilerini Farmtts 'e göndermek için, bir olay hub 'ına Farmtts 'de ileti gönderen bir istemci oluşturmanız gerekir. Telemetri gönderme hakkında daha fazla bilgi için bkz. [bir olay hub 'ına telemetri gönderme](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 Aşağıda, belirtilen bir olay hub 'ına bir istemci olarak telemetri gönderen örnek bir Python kodu verilmiştir.
 

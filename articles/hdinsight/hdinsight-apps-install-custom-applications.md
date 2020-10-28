@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/29/2019
-ms.openlocfilehash: 4757ebc61f980a0d035a248940cba0d1824cf153
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d110f4ee0248b6ea069c6033dd69840eec1a18f3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547869"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741611"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'ta özel Apache Hadoop uygulamaları yüklemeyi
 
@@ -21,7 +21,7 @@ Bu makalede, Azure HDInsight 'a Azure portal yayımlanmayan bir [Apache Hadoop](
 
 An HDInsight uygulama, kullanıcıların bir HDInsight kümesine yükleyebir uygulamadır.  Bu uygulamalar Microsoft veya bağımsız yazılım satıcıları (ISV) tarafından ya da sizin tarafınızdan geliştirilebilir.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 HDInsight uygulamalarını mevcut bir HDInsight kümesine yüklemek istiyorsanız bir HDInsight kümesine sahip olmanız gerekir. Küme oluşturmak için bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md). HDInsight uygulamalarını ayrıca bir HDInsight kümesi oluştururken yükleyebilirsiniz.
 
@@ -77,7 +77,7 @@ Uygulama yüklemesini doğrulamak için Azure portalında uygulama durumunu dene
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Uygulamayı yüklediğiniz kümeyi seçin.
 1. **Ayarlar** menüsünde, **uygulamalar** ' ı seçin.
 1. Özellikleri görüntülemek için listeden **ton** ' ı seçin.  
@@ -125,7 +125,7 @@ Uygulama yüklemesi başarısız olursa, üç konumdan hata iletilerini ve hata 
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Uygulamayı yüklediğiniz kümeyi seçin.
 1. **Ayarlar** menüsünde, **uygulamalar** ' ı seçin.
 1. Kaldırmak istediğiniz uygulamaya sağ tıklayın ve ardından **Sil** ' i seçin.

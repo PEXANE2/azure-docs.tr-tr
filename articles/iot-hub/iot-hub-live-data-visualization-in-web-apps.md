@@ -11,12 +11,13 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: c6452d1c5c9792e8d021838635686e8621629ff2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: 35df99d0a30b0952521281fa0d6bb95ce0509695
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146674"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741002"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Azure IoT Hub 'ınızdaki gerçek zamanlı algılayıcı verilerini bir Web uygulamasında görselleştirin
 
@@ -252,7 +253,7 @@ Bu örnekle ilgili herhangi bir sorun yaşıyorsanız, aşağıdaki bölümlerde
 
 ### <a name="azure-app-service-issues"></a>Azure App Service sorunları
 
-* Azure portal, Web uygulamanıza gidin. Sol bölmedeki **izleme** altında **App Service Günlükler**' i seçin. **Uygulama günlüğünü (dosya sistemi)** açın, **düzeyi** hata olarak ayarlayın ve ardından **Kaydet**' i seçin. Ardından **günlük akışı** ' nı açın ( **izleme**altında).
+* Azure portal, Web uygulamanıza gidin. Sol bölmedeki **izleme** altında **App Service Günlükler** ' i seçin. **Uygulama günlüğünü (dosya sistemi)** açın, **düzeyi** hata olarak ayarlayın ve ardından **Kaydet** ' i seçin. Ardından **günlük akışı** ' nı açın ( **izleme** altında).
 
 * Web uygulamanızdan Azure portal, **geliştirme araçları**  altında  **konsol** ' ı seçin ve ve NPM sürümlerini ve ile doğrulayın `node -v` `npm -v` .
 

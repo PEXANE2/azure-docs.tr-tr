@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 8980505ac34e32a29403060a7cf3cfaec077d8af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 89118f13bc009ce60d4fd1c82dfe7688bf1e551b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336709"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741267"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Öğretici: Python 'da bir sanal makine ile Azure Key Vault kullanma
 
@@ -34,7 +34,7 @@ Başlamadan önce [temel kavramları Key Vault](basic-concepts.md)okuyun.
 
 Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Windows, Mac ve Linux için:
   * [Git](https://git-scm.com/downloads)
@@ -64,9 +64,9 @@ Aşağıdaki yöntemlerden birini kullanarak **myvm** ADLı bir VM oluşturun:
 |--|--|
 | [Azure CLI](../../virtual-machines/linux/quick-create-cli.md) | [Azure CLI](../../virtual-machines/windows/quick-create-cli.md) |
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
-| [Azure portalındaki](../../virtual-machines/linux/quick-create-portal.md) | [Azure portal](../../virtual-machines/windows/quick-create-portal.md) |
+| [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [Azure portal](../../virtual-machines/windows/quick-create-portal.md) |
 
-Azure CLı kullanarak bir Linux VM oluşturmak için [az VM Create](/cli/azure/vm) komutunu kullanın.  Aşağıdaki örnek, *azureuser*adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys`Parametresi, otomatik olarak BIR SSH anahtarı oluşturmak ve varsayılan anahtar konumuna (*~/PST*) koymak için kullanılır. 
+Azure CLı kullanarak bir Linux VM oluşturmak için [az VM Create](/cli/azure/vm) komutunu kullanın.  Aşağıdaki örnek, *azureuser* adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys`Parametresi, otomatik olarak BIR SSH anahtarı oluşturmak ve varsayılan anahtar konumuna ( *~/PST* ) koymak için kullanılır. 
 
 ```azurecli-interactive
 az vm create \
@@ -129,7 +129,7 @@ pip3 install azure.identity
 
 ## <a name="create-and-edit-the-sample-python-script"></a>Örnek Python betiği oluşturma ve düzenleme
 
-Sanal makinede, **Sample.py**adlı bir Python dosyası oluşturun. Dosyayı aşağıdaki kodu içerecek şekilde düzenleyin: "<-Unique-keykasa-adı>" değerini anahtar kasanızın adıyla değiştirin:
+Sanal makinede, **Sample.py** adlı bir Python dosyası oluşturun. Dosyayı aşağıdaki kodu içerecek şekilde düzenleyin: "<-Unique-keykasa-adı>" değerini anahtar kasanızın adıyla değiştirin:
 
 ```python
 from azure.keyvault.secrets import SecretClient
@@ -148,7 +148,7 @@ print(f"The value of secret '{secretName}' in '{keyVaultName}' is: '{retrieved_s
 
 ## <a name="run-the-sample-python-app"></a>Örnek Python uygulamasını çalıştırma
 
-Son olarak, **Sample.py**çalıştırın. Hepsi iyi gittiğinden, gizli anahtar değerini döndürmelidir:
+Son olarak, **Sample.py** çalıştırın. Hepsi iyi gittiğinden, gizli anahtar değerini döndürmelidir:
 
 ```bash
 python3 sample.py

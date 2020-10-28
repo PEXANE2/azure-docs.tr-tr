@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: a1d89def944529235a0141d7e700049f15d1d0a7
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 8eb042b214ba1e4aea1eda1c65996d55ddde216e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424979"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741890"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 
@@ -25,8 +25,8 @@ Azure Machine Learning çalışma alanınızda ve Web Hizmetleri olarak dağıt�
 
 Genel olarak, Azure Machine Learning ile kullanabileceğiniz iki tür kimlik doğrulaması vardır:
 
-* __Etkileşimli__: hesabınızı doğrudan kimlik doğrulamak veya kimlik doğrulama için kullanılan bir belirteç almak üzere Azure Active Directory ' de kullanırsınız. Etkileşimli kimlik doğrulaması deneme ve yinelemeli geliştirme sırasında kullanılır. Ya da kaynaklara erişimi (bir Web hizmeti gibi) Kullanıcı başına temelinde denetlemek istediğiniz yerdir.
-* __Hizmet sorumlusu__: Azure Active Directory ' de bir hizmet sorumlusu hesabı oluşturur ve bir belirteç almak veya bir belirteci almak için kullanın. Hizmet sorumlusu, Kullanıcı etkileşimi gerektirmeden hizmette kimlik doğrulaması yapmak için otomatik bir işlem gerektiğinde kullanılır. Örneğin, eğitim kodu her değiştiğinde bir modeli gösteren ve test eden bir sürekli tümleştirme ve dağıtım betiği. Hizmetin kimliğini doğrulamak için son kullanıcının gerekli olmasını istemiyorsanız bir Web hizmetinde kimlik doğrulaması yapmak için bir belirteç almak üzere bir hizmet sorumlusu de kullanabilirsiniz. Ya da son kullanıcı kimlik doğrulamasının Azure Active Directory kullanarak doğrudan gerçekleştirilmediğini.
+* __Etkileşimli__ : hesabınızı doğrudan kimlik doğrulamak veya kimlik doğrulama için kullanılan bir belirteç almak üzere Azure Active Directory ' de kullanırsınız. Etkileşimli kimlik doğrulaması deneme ve yinelemeli geliştirme sırasında kullanılır. Ya da kaynaklara erişimi (bir Web hizmeti gibi) Kullanıcı başına temelinde denetlemek istediğiniz yerdir.
+* __Hizmet sorumlusu__ : Azure Active Directory ' de bir hizmet sorumlusu hesabı oluşturur ve bir belirteç almak veya bir belirteci almak için kullanın. Hizmet sorumlusu, Kullanıcı etkileşimi gerektirmeden hizmette kimlik doğrulaması yapmak için otomatik bir işlem gerektiğinde kullanılır. Örneğin, eğitim kodu her değiştiğinde bir modeli gösteren ve test eden bir sürekli tümleştirme ve dağıtım betiği. Hizmetin kimliğini doğrulamak için son kullanıcının gerekli olmasını istemiyorsanız bir Web hizmetinde kimlik doğrulaması yapmak için bir belirteç almak üzere bir hizmet sorumlusu de kullanabilirsiniz. Ya da son kullanıcı kimlik doğrulamasının Azure Active Directory kullanarak doğrudan gerçekleştirilmediğini.
 
 Kullanılan kimlik doğrulama türü ne olursa olsun, kaynaklara izin verilen erişim düzeyini kapsam altına almak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılır. Örneğin, dağıtılan bir modelin erişim belirtecini almak için kullanılan bir hesabın yalnızca çalışma alanına okuma erişimi olması gerekir. Azure RBAC hakkında daha fazla bilgi için bkz. [Azure Machine Learning erişimi yönetme](how-to-assign-roles.md).
 
@@ -285,8 +285,8 @@ Değişken, `token_response` belirteci ve sona erme saati gibi ilişkili meta ve
 
 Azure Machine Learning tarafından oluşturulan model dağıtımları iki kimlik doğrulama yöntemi sağlar:
 
-* **anahtar tabanlı**: Web hizmetinde kimlik doğrulaması yapmak için statik anahtar kullanılır.
-* **belirteç tabanlı**: bir geçici belirtecin çalışma alanından alınması ve Web hizmetinde kimlik doğrulaması yapmak için kullanılması gerekir. Bu belirtecin bir süre sonra süresi dolar ve Web hizmetiyle çalışmaya devam etmek için yenilenmesi gerekir.
+* **anahtar tabanlı** : Web hizmetinde kimlik doğrulaması yapmak için statik anahtar kullanılır.
+* **belirteç tabanlı** : bir geçici belirtecin çalışma alanından alınması ve Web hizmetinde kimlik doğrulaması yapmak için kullanılması gerekir. Bu belirtecin bir süre sonra süresi dolar ve Web hizmetiyle çalışmaya devam etmek için yenilenmesi gerekir.
 
     > [!NOTE]
     > Belirteç tabanlı kimlik doğrulaması yalnızca Azure Kubernetes hizmetine dağıtılmasında kullanılabilir.
@@ -319,7 +319,7 @@ aci_service = Model.deploy(workspace=ws,
 aci_service.wait_for_deployment(True)
 ```
 
-Kimlik doğrulama anahtarlarını getirmek için kullanın `aci_service.get_keys()` . Bir anahtarı yeniden oluşturmak için, `regen_key()` işlevini kullanın ve **birincil** ya da **İkincil**olarak geçirin.
+Kimlik doğrulama anahtarlarını getirmek için kullanın `aci_service.get_keys()` . Bir anahtarı yeniden oluşturmak için, `regen_key()` işlevini kullanın ve **birincil** ya da **İkincil** olarak geçirin.
 
 ```python
 aci_service.regen_key("Primary")
@@ -335,7 +335,7 @@ Bir Web hizmeti için belirteç kimlik doğrulamasını etkinleştirdiğinizde, 
 
 * Belirteç kimlik doğrulaması, Azure Kubernetes hizmetine dağıtırken **Varsayılan olarak devre dışıdır** .
 * Azure Container Instances ' a dağıtırken belirteç kimlik doğrulaması **desteklenmez** .
-* Belirteç kimlik doğrulaması **, anahtar tabanlı kimlik doğrulama ile aynı anda kullanılamaz**.
+* Belirteç kimlik doğrulaması **, anahtar tabanlı kimlik doğrulama ile aynı anda kullanılamaz** .
 
 Belirteç kimlik doğrulamasını denetlemek için, `token_auth_enabled` bir dağıtım oluştururken veya güncelleştirdiğinizde parametresini kullanın:
 

@@ -3,14 +3,14 @@ title: 'Hızlı başlangıç: Python uygulaması oluşturma'
 description: İlk Python uygulamanızı App Service bir Linux kapsayıcısına dağıtarak Azure App Service kullanmaya başlayın.
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.custom: seo-python-october2019, cli-validate, devx-track-python
+ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: 8a0cce6dd68513380759319c378d15aeb0e029c3
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 8f48f31cdaaa555e0a8f6f0fd4756bb61a9f417d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91813194"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741100"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
@@ -114,13 +114,13 @@ cd python-docs-hello-django
     flask run
     ```
     
-    Varsayılan olarak sunucu, uygulamanın giriş modülünün örnekte kullanılan *app.py*içinde olduğunu varsayar. (Farklı bir modül adı kullanırsanız, `FLASK_APP` ortam değişkenini bu ad olarak ayarlayın.)
+    Varsayılan olarak sunucu, uygulamanın giriş modülünün örnekte kullanılan *app.py* içinde olduğunu varsayar. (Farklı bir modül adı kullanırsanız, `FLASK_APP` ortam değişkenini bu ad olarak ayarlayın.)
 
 1. Bir Web tarayıcısı açın ve konumundaki örnek uygulamaya gidin `http://localhost:5000/` . Uygulama **Merhaba, dünya!** iletisini görüntüler.
 
     ![Örnek bir Python uygulamasını yerel olarak çalıştırma](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
-1. Terminal pencerenizde, **Ctrl** + geliştirme sunucusundan çıkmak için CTRL**C** tuşuna basın.
+1. Terminal pencerenizde, **Ctrl** + geliştirme sunucusundan çıkmak için CTRL **C** tuşuna basın.
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
@@ -142,14 +142,14 @@ cd python-docs-hello-django
 
     ![Örnek bir Python uygulamasını yerel olarak çalıştırma](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
-1. Terminal pencerenizde, **Ctrl** + geliştirme sunucusundan çıkmak için CTRL**C** tuşuna basın.
+1. Terminal pencerenizde, **Ctrl** + geliştirme sunucusundan çıkmak için CTRL **C** tuşuna basın.
 ::: zone-end
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="deploy-the-sample"></a>Örneği dağıtma
 
-Şu komutu kullanarak kodu yerel klasörünüzde (*Python-docs-Hello-World*) dağıtın `az webapp up` :
+Şu komutu kullanarak kodu yerel klasörünüzde ( *Python-docs-Hello-World* ) dağıtın `az webapp up` :
 
 ```azurecli
 az webapp up --sku F1 --name <app-name>
@@ -157,7 +157,7 @@ az webapp up --sku F1 --name <app-name>
 
 - `az`Komut tanınmazsa, [Ilk ortamınızı ayarlama](#set-up-your-initial-environment)bölümünde AÇıKLANDıĞı gibi Azure CLI 'nin yüklü olduğundan emin olun.
 - `webapp`Azure CLI sürümünüz 2.0.80 veya üzeri olduğundan, komut tanınmazsa. Aksi takdirde, [en son sürümü yükler](/cli/azure/install-azure-cli).
-- `<app_name>`Tüm Azure genelinde benzersiz olan bir adla değiştirin (*geçerli karakterler `a-z` , `0-9` ve `-` *). İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
+- `<app_name>`Tüm Azure genelinde benzersiz olan bir adla değiştirin ( *geçerli karakterler `a-z` , `0-9` ve `-`* ). İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
 - `--sku F1`Bağımsız değişkeni, ücretsiz fiyatlandırma katmanında Web uygulaması oluşturur. Saatlik maliyet içeren daha hızlı bir Premium katmanı kullanmak için bu bağımsız değişkeni atlayın.
 - İsteğe bağlı olarak `--location <location-name>` `<location_name>` , kullanılabilir bir Azure bölgesi olan bağımsız değişkeni ekleyebilirsiniz. Komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
 - "Uygulamanızın çalışma zamanı yığınını otomatik olarak algılamamız" hatasını görürseniz, bu komutu *requirements.txt* dosyasını içeren *Python-docs-Hello-World* klasöründe (Flask) veya *Python-docs-Hello-Docgo* klasöründe (docgo) çalıştırdığınızdan emin olun. (Bkz. [az WebApp up (GitHub) ile otomatik algılama sorunlarını giderme](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) .)
@@ -244,7 +244,7 @@ Günlük akışını istediğiniz zaman durdurmak için terminalde **CTRL** + **
 
 ## <a name="manage-the-azure-app"></a>Azure uygulamasını yönetme
 
-Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" target="_blank">Azure Portal</a> gidin. **Uygulama hizmetleri**' ni arayıp seçin.
+Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" target="_blank">Azure Portal</a> gidin. **Uygulama hizmetleri** ' ni arayıp seçin.
 
 ![Azure portal uygulama hizmetleri 'ne gidin](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
 
