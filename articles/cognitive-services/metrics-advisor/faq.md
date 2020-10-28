@@ -10,22 +10,18 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: mbullwin
-ms.openlocfilehash: 6b5292ca7e1220b60b1b2a2501b3150550da8db9
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: da4dc3579630d641fcbc1d4321b56de0cc09d555
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131692"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893586"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Ölçüm Danışmanı sık sorulan sorular
 
 ### <a name="what-is-the-cost-of-my-instance"></a>Örneðimin maliyeti nedir?
 
 Şu anda, önizleme sırasında örneğinizi kullanma maliyeti yoktur.
-
-### <a name="why-is-the-demo-website-readonly"></a>Tanıtım Web sitesi neden salt okunur?
-
-[Tanıtım Web sitesi](https://anomaly-detector.azurewebsites.net/) genel kullanıma sunulmuştur. Bu örnek, verileri yanlışlıkla karşıya yüklemeyi engellemek için salt okunurdur.
 
 ### <a name="why-cant-i-create-the-resource-the-pricing-tier-is-unavailable-and-it-says-you-have-already-created-1-s0-for-this-subscription"></a>Kaynağı neden oluşturamıyorum? "Fiyatlandırma katmanı" kullanılamıyor ve "Bu abonelik için zaten 1 S0 oluşturdunuz" diyor musunuz?
 
@@ -141,9 +137,8 @@ Tanılama sayfasındaki **olay ağacı** Aracı, tüm topoloji yerine yalnızca 
  
 Örneğin, bir anomali oluştuğunda, anomali `Service = S2 | Data Center = DC2 | Machine = M5` 'in sapması, `Service= S2` aynı zamanda anomali 'i tespit eden üst düğümü etkiler, ancak anomali, tüm veri merkezini `DC2` ve üzerinde tüm hizmetleri etkilemez `M5` . Olay ağacı aşağıdaki ekran görüntüsünde olduğu gibi oluşturulur, en üst anomali, üzerine yakalanır `Service = S2` ve kök neden, iki yolda de analiz edilebilir `Service = S2 | Data Center = DC2 | Machine = M5` .
 
- :::image type="content" source="media/root-cause-paths.png" alt-text="5, bir ortak düğüm etiketlendirilerek birlikte kenarları ile bağlanmış iki farklı yol içeren köşeler etiketlendi. En üst anomali, Service = S2 üzerine yakalanır ve kök nedeni, her ikisi de Service = S2 öğesine yol açabilecek iki yol tarafından analiz edilebilir. Veri merkezi = DC2 | Makine = M5" lightbox="media/root-cause-paths.png":::
+ :::image type="content" source="media/root-cause-paths.png" alt-text="5 ' te, S2 ile etiketlenmiş ortak bir düğüm ile birbirine bağlı iki farklı yol içeren köşeler etiketlendi. En üst anomali, Service = S2 üzerine yakalanır ve kök nedeni, her ikisi de Service = S2 öğesine yol açabilecek iki yol tarafından analiz edilebilir. Veri merkezi = DC2 | Makine = M5" lightbox="media/root-cause-paths.png":::
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 - [Ölçüm danışmanına genel bakış](overview.md)
-- [Demo sitesini deneyin](quickstarts/explore-demo.md)
 - [Web portalını kullanma](quickstarts/web-portal.md)

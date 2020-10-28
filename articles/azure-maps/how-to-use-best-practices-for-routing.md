@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874603"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895554"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route hizmeti için en iyi yöntemler
 
-Azure haritalar 'daki yol yönleri ve yol Matrisi API 'Leri [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) , istenen her bir rota için tahmini varış zamanlarını (Etas) hesaplamak üzere kullanılabilir. Yönlendirme API 'Leri, gerçek zamanlı trafik bilgileri ve geçmiş trafik verileri gibi faktörleri, haftanın istenen günü ve günün saati için tipik yol hızları gibi düşünün. API 'Ler, zaman veya mesafeden başlayarak, tek seferde birden çok hedefe veya en iyi duruma getirilmiş sıraya göre sunulan en kısa veya en hızlı yolları döndürür. Kullanıcılar ayrıca, waltlar, bıyıva ve kamyonlar gibi ticari araçlar için özel yollar ve Ayrıntılar isteyebilir. Bu makalede, Azure haritalar [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route)çağırmak için en iyi yöntemleri paylaşacağız ve nasıl yapılacağını öğreneceksiniz:
+Azure haritalar 'daki yol yönleri ve yol Matrisi API 'Leri [yönlendirme hizmeti](/rest/api/maps/route) , istenen her bir rota için tahmini varış zamanlarını (Etas) hesaplamak üzere kullanılabilir. Yönlendirme API 'Leri, gerçek zamanlı trafik bilgileri ve geçmiş trafik verileri gibi faktörleri, haftanın istenen günü ve günün saati için tipik yol hızları gibi düşünün. API 'Ler, zaman veya mesafeden başlayarak, tek seferde birden çok hedefe veya en iyi duruma getirilmiş sıraya göre sunulan en kısa veya en hızlı yolları döndürür. Kullanıcılar ayrıca, waltlar, bıyıva ve kamyonlar gibi ticari araçlar için özel yollar ve Ayrıntılar isteyebilir. Bu makalede, Azure haritalar [yönlendirme hizmeti](/rest/api/maps/route)çağırmak için en iyi yöntemleri paylaşacağız ve nasıl yapılacağını öğreneceksiniz:
 
  * Yol yönleri API 'Leri ve matris yönlendirme API 'SI arasında seçim yapın
  * Gerçek zamanlı ve geçmiş trafik verileri temelinde geçmişe ait ve tahmin edilebilir seyahat zamanları isteme
@@ -27,9 +27,9 @@ Azure haritalar 'daki yol yönleri ve yol Matrisi API 'Leri [yönlendirme hizmet
  * Bir veya daha fazla durdurulduğunda (waypoints) oluşan bir rota isteyin
  * Her bir durdurmayı (Waypoint) ziyaret etmek için en iyi sırayı elde etmek üzere bir veya daha fazla durak yolunu en iyi hale getirin
  * Destekleyici noktaları kullanarak alternatif yolları iyileştirin. Örneğin, elektrik araç doldurma istasyonunu geçiren alternatif yollar sunun.
- * Azure Maps web SDK ile [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) kullanma
+ * Azure Maps web SDK ile [yönlendirme hizmeti](/rest/api/maps/route) kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
@@ -113,7 +113,7 @@ Aşağıdaki ikinci örnekte, gerçek zamanlı bir yönlendirme isteği sunuyoru
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
-Yanıt aşağıda gösterildiği gibi bir Özet içerir. Congesler nedeniyle, **trafficDelaysInSeconds** değeri sıfırdan büyük. Ayrıca, **historicTrafficTravelTimeInSeconds**' den büyük.
+Yanıt aşağıda gösterildiği gibi bir Özet içerir. Congesler nedeniyle, **trafficDelaysInSeconds** değeri sıfırdan büyük. Ayrıca, **historicTrafficTravelTimeInSeconds** ' den büyük.
 
 ```json
 "summary": {
@@ -140,7 +140,7 @@ Aşağıdaki görüntüde `points` öğesi gösterilmektedir.
 
 ![Genişletilmiş noktaları öğesi](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
-Yol yönleri API 'Leri, **Komutctionstype** parametresini belirterek kullanılabilecek farklı yönergelerin biçimlerini destekler. Kolay bilgisayar işlemeye yönelik yönergeleri biçimlendirmek için, **Komutctionstype = Coded**kullanın. Yönergeleri kullanıcı için metin olarak göstermek için **Komutctionstype = etiketli** ' i kullanın. Ayrıca, yönergelerin bazı öğelerinin işaretlendiği ve yönergedeki özel biçimlendirmeyle birlikte sunulan yönergeler metin olarak biçimlendirilebilir. Daha fazla bilgi için [desteklenen yönerge türleri listesine](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype)bakın.
+Yol yönleri API 'Leri, **Komutctionstype** parametresini belirterek kullanılabilecek farklı yönergelerin biçimlerini destekler. Kolay bilgisayar işlemeye yönelik yönergeleri biçimlendirmek için, **Komutctionstype = Coded** kullanın. Yönergeleri kullanıcı için metin olarak göstermek için **Komutctionstype = etiketli** ' i kullanın. Ayrıca, yönergelerin bazı öğelerinin işaretlendiği ve yönergedeki özel biçimlendirmeyle birlikte sunulan yönergeler metin olarak biçimlendirilebilir. Daha fazla bilgi için [desteklenen yönerge türleri listesine](/rest/api/maps/route/postroutedirections#routeinstructionstype)bakın.
 
 Yönergeler istendiğinde, yanıt adlı yeni bir öğesi döndürür `guidance` . `guidance`Öğesi iki bilgi parçasını tutar: açma yönü ve özetlenen yönergeler.
 
@@ -186,7 +186,7 @@ Aşağıdaki yanıt, sınıf 1 tehlikeli bir malzemeden daha az tehlikeli olan s
 
 ## <a name="request-traffic-information-along-a-route"></a>Yol üzerinde trafik bilgilerini isteme
 
-Azure haritalar yol yönü API 'Leri ile, geliştiriciler istekteki parametreyi ekleyerek her bir bölüm türü için Ayrıntılar talep edebilir `sectionType` . Örneğin, her trafik sıkışıklığı kesimine yönelik hız bilgilerini isteyebilirsiniz. İstediğiniz çeşitli ayrıntılar hakkında bilgi edinmek için [sectionType anahtarının değer listesine](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype) bakın.
+Azure haritalar yol yönü API 'Leri ile, geliştiriciler istekteki parametreyi ekleyerek her bir bölüm türü için Ayrıntılar talep edebilir `sectionType` . Örneğin, her trafik sıkışıklığı kesimine yönelik hız bilgilerini isteyebilirsiniz. İstediğiniz çeşitli ayrıntılar hakkında bilgi edinmek için [sectionType anahtarının değer listesine](/rest/api/maps/route/getroutedirections#sectiontype) bakın.
 
 ### <a name="sample-query"></a>Örnek sorgu
 
@@ -208,13 +208,13 @@ Bu seçenek, aşağıdaki görüntüde olduğu gibi, Haritayı işlerken bölüm
 
 Azure haritalar şu anda iki yol iyileştirmesi sağlar:
 
-* Geçiş noktaları sırasını değiştirmeden, istenen yol türüne göre iyileştirmeler. [Desteklenen yol türlerini buradan](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routetype) bulabilirsiniz
+* Geçiş noktaları sırasını değiştirmeden, istenen yol türüne göre iyileştirmeler. [Desteklenen yol türlerini buradan](/rest/api/maps/route/postroutedirections#routetype) bulabilirsiniz
 
 * Her durdurmayı ziyaret etmek için en iyi sırayı elde etmek üzere waypoints sırasını değiştiren seyahat problemine iyileştirmesi
 
 Çoklu durduran yönlendirme için, tek bir rota isteğinde en fazla 150 waypoints belirtilebilir. Başlangıç ve bitiş koordinat konumları, gidiş dönüş ile aynı olacak şekilde aynı olabilir. Ancak rota hesaplamasını yapmak için en az bir ek yol sağlamanız gerekir. Kaynak ve hedef koordinatları arasındaki içindeki sorguya waypoints eklenebilir.
 
-Verilen waypoints 'i ziyaret etmek için en iyi sırayı iyileştirmek istiyorsanız **computeBestOrder = true değerini**belirtmeniz gerekir. Bu senaryo, seyahat problemine iyileştirme sorunu olarak da bilinir.
+Verilen waypoints 'i ziyaret etmek için en iyi sırayı iyileştirmek istiyorsanız **computeBestOrder = true değerini** belirtmeniz gerekir. Bu senaryo, seyahat problemine iyileştirme sorunu olarak da bilinir.
 
 ### <a name="sample-query"></a>Örnek sorgu
 
@@ -262,11 +262,11 @@ En iyi yol şu Yön noktası sırasına sahiptir: 0, 5, 1, 2, 4, 3 ve 6.
 Bir başvuru yolu için sıfır veya daha fazla alternatif yol hesaplamak üzere bir yolu yeniden oluşturmak istediğiniz durumlara sahip olabilirsiniz. Örneğin, perakende deponuzu yönlendiren müşterilere alternatif yollar göstermek isteyebilirsiniz. Bu durumda, destekleyici noktaları kullanarak bir konumu sapgetirmeniz gerekir. Bir konumu sapma adımları aşağıda verilmiştir:
 
 1. Bir yolu olduğu gibi hesapla ve yol yanıtından yolu al
-2. Yol yolunda istenen konumları bulmak için yol yolunu kullanın. Örneğin, Azure Maps for [Interest API 'sini](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi) kullanabilir veya kendi verilerinizi veritabanınızda sorgulayabilirsiniz.  
+2. Yol yolunda istenen konumları bulmak için yol yolunu kullanın. Örneğin, Azure Maps for [Interest API 'sini](/rest/api/maps/search/getsearchpoi) kullanabilir veya kendi verilerinizi veritabanınızda sorgulayabilirsiniz.  
 3. Yolun başlangıcından uzaklığına göre konumları sıralama
-4. Bu konumları, [yol yönlerini gönder API](https://docs.microsoft.com/rest/api/maps/route/postroutedirections)'sine yeni bir rota isteğinde destekleme noktaları olarak ekleyin. Destekleyici noktaları hakkında daha fazla bilgi edinmek için bkz. [yol yönlerini gönderme API 'si belgeleri](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints). 
+4. Bu konumları, [yol yönlerini gönder API](/rest/api/maps/route/postroutedirections)'sine yeni bir rota isteğinde destekleme noktaları olarak ekleyin. Destekleyici noktaları hakkında daha fazla bilgi edinmek için bkz. [yol yönlerini gönderme API 'si belgeleri](/rest/api/maps/route/postroutedirections#supportingpoints). 
 
-[Yol yönlerini gönder API](https://docs.microsoft.com/rest/api/maps/route/postroutedirections)'sini çağırırken, en düşük sapma süresini veya uzaklık kısıtlamalarını destekleme noktalarıyla birlikte ayarlayabilirsiniz. Alternatif yollar sunmak istiyorsanız, bu parametreleri kullanın, ancak seyahat süresini de sınırlandırmak istersiniz. Bu kısıtlamalar kullanıldığında, alternatif yollar, kaynak noktasındaki başvuru yolunu verilen zaman veya mesafe için izler. Diğer bir deyişle, diğer yollar verilen kısıtlamalara göre başvuru rotasına göre ayrılmış.
+[Yol yönlerini gönder API](/rest/api/maps/route/postroutedirections)'sini çağırırken, en düşük sapma süresini veya uzaklık kısıtlamalarını destekleme noktalarıyla birlikte ayarlayabilirsiniz. Alternatif yollar sunmak istiyorsanız, bu parametreleri kullanın, ancak seyahat süresini de sınırlandırmak istersiniz. Bu kısıtlamalar kullanıldığında, alternatif yollar, kaynak noktasındaki başvuru yolunu verilen zaman veya mesafe için izler. Diğer bir deyişle, diğer yollar verilen kısıtlamalara göre başvuru rotasına göre ayrılmış.
 
 Aşağıdaki görüntüde, zaman ve mesafe için belirtilen Sapma limitleriyle alternatif yolların oluşturulmasına yönelik bir örnek verilmiştir.
 
@@ -274,20 +274,20 @@ Aşağıdaki görüntüde, zaman ve mesafe için belirtilen Sapma limitleriyle a
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Yönlendirme hizmetini bir Web uygulamasında kullanma
 
-Azure Haritalar Web SDK 'Sı bir [hizmet modülü](https://docs.microsoft.com/javascript/api/azure-maps-rest/)sağlar. Bu modül, JavaScript veya TypeScript kullanarak Web veya Node.js uygulamalarında Azure Maps REST API 'Lerini kullanmayı kolaylaştıran bir yardımcı kitaplıktır. Hizmet modülü, haritada döndürülen yolları işlemek için kullanılabilir. Modül, hangi API 'nin GET ve POST istekleri ile kullanılacağını otomatik olarak belirler.
+Azure Haritalar Web SDK 'Sı bir [hizmet modülü](/javascript/api/azure-maps-rest/)sağlar. Bu modül, JavaScript veya TypeScript kullanarak Web veya Node.js uygulamalarında Azure Maps REST API 'Lerini kullanmayı kolaylaştıran bir yardımcı kitaplıktır. Hizmet modülü, haritada döndürülen yolları işlemek için kullanılabilir. Modül, hangi API 'nin GET ve POST istekleri ile kullanılacağını otomatik olarak belirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için lütfen bkz.
 
 > [!div class="nextstepaction"]
-> [Azure Haritalar Yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route)
+> [Azure Haritalar Yönlendirme hizmeti](/rest/api/maps/route)
 
 > [!div class="nextstepaction"]
-> [Hizmet modülünü kullanma](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)
+> [Hizmet modülünü kullanma](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [Haritada rota göster](https://docs.microsoft.com/azure/azure-maps/map-route)
+> [Haritada rota göster](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [Azure haritalar NPM paketi](https://www.npmjs.com/package/azure-maps-rest  )

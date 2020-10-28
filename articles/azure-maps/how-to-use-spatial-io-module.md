@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 61ea102d0e020f7890da1ae86cdfbb5c3db8f51b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e64df21b31d686b72b210d2c62956745350891f5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335305"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895401"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure haritalar uzamsal GÇ modülünü kullanma
 
-Azure Haritalar Web SDK 'Sı, uzamsal verileri JavaScript veya TypeScript kullanarak Azure Maps web SDK 'Sı ile tümleştiren **uzamsal GÇ modülünü**sağlar. Bu modüldeki güçlü özellikler geliştiricilerin şunları yapmasına izin verir:
+Azure Haritalar Web SDK 'Sı, uzamsal verileri JavaScript veya TypeScript kullanarak Azure Maps web SDK 'Sı ile tümleştiren **uzamsal GÇ modülünü** sağlar. Bu modüldeki güçlü özellikler geliştiricilerin şunları yapmasına izin verir:
 
 - [Sık kullanılan uzamsal veri dosyalarını okuyun ve yazın](spatial-io-read-write-spatial-data.md). Desteklenen dosya biçimleri şunlardır: KML, KMZ, GPX, GeoRSS, GML, GeoJSON ve uzamsal bilgiler içeren sütunlar içeren CSV dosyaları. Well-Known metin (WKT) de destekler.
 - [Open Geospatial Consortium (OGC) hizmetlerine bağlanın ve Azure Maps web SDK ile tümleştirin. Harita üzerinde katman olarak Web harita Hizmetleri (WMS) ve Web harita kutucuk Hizmetleri 'ni (WMTS) kaplama](spatial-io-add-ogc-map-layer.md).
@@ -38,9 +38,9 @@ Bu videoda, Azure Maps web SDK 'sında uzamsal GÇ modülüne ilişkin bir genel
 > [!WARNING]
 > Yalnızca güvendiğiniz bir kaynaktan gelen veri ve Hizmetleri, özellikle de başka bir etki alanından başvuru yapıyorsanız kullanın. Uzamsal GÇ modülü, riski en aza indirmek için gereken adımları ele alır, ancak en güvenli yaklaşım, uygulamanıza yönelik herhangi bir desteklenmeyen veriye izin vermez. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Uzamsal GÇ modülünü kullanabilmeniz için önce [bir Azure haritalar hesabı](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account) oluşturmanız ve [hesabınız için birincil abonelik anahtarını almanız](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)gerekir.
+Uzamsal GÇ modülünü kullanabilmeniz için önce [bir Azure haritalar hesabı](./quick-demo-map-app.md#create-an-azure-maps-account) oluşturmanız ve [hesabınız için birincil abonelik anahtarını almanız](./quick-demo-map-app.md#get-the-primary-key-for-your-account)gerekir.
 
 ## <a name="installing-the-spatial-io-module"></a>Uzamsal GÇ modülünü yükleme
 
@@ -68,7 +68,7 @@ Azure Maps uzamsal GÇ modülünü iki seçenekten birini kullanarak yükleyebil
 
 1. Yeni bir HTML dosyası oluşturun.
 
-2. Azure Haritalar Web SDK 'sını yükleyin ve harita denetimini başlatın. Ayrıntılar için bkz. [Azure Maps harita denetim](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) Kılavuzu. Bu adımla işiniz bittiğinde, HTML dosyanız şuna benzemelidir:
+2. Azure Haritalar Web SDK 'sını yükleyin ve harita denetimini başlatın. Ayrıntılar için bkz. [Azure Maps harita denetim](./how-to-use-map-control.md) Kılavuzu. Bu adımla işiniz bittiğinde, HTML dosyanız şuna benzemelidir:
 
     ```html
     <!DOCTYPE html>
@@ -256,4 +256,4 @@ Burada gösterilen özellik, uzamsal GÇ modülünde kullanılabilen birçok öz
 Azure Maps uzamsal GÇ belgelerine başvurun:
 
 > [!div class="nextstepaction"]
-> [Azure haritalar uzamsal GÇ paketi](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)
+> [Azure haritalar uzamsal GÇ paketi](/javascript/api/azure-maps-spatial-io/)

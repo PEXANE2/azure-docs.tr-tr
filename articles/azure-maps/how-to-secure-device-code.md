@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e62a5c984afb434b8c47b5ee8c5c66c61485dbfc
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090446"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895639"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Azure AD ve Azure haritalar REST API 'Leri ile giriş kısıtlı bir cihazın güvenliğini sağlama
 
@@ -25,42 +25,42 @@ Bu kılavuzda, gizli dizileri güvenli bir şekilde depolayabilen veya tarayıc�
 ## <a name="create-an-application-registration-in-azure-ad"></a>Azure AD 'de uygulama kaydı oluşturma
 
 > [!NOTE]
-> * **Önkoşul okuma:** [Senaryo: Web API 'lerini çağıran masaüstü uygulaması](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview)
+> * **Önkoşul okuma:** [Senaryo: Web API 'lerini çağıran masaüstü uygulaması](../active-directory/develop/scenario-desktop-overview.md)
 > * Aşağıdaki senaryo, belirteç almak için bir Web tarayıcısı içermeyen cihaz kod akışını kullanır.
 
 Azure AD oturum açma özelliğini etkinleştirmek için Azure AD 'de cihaz tabanlı uygulamayı oluşturun. Bu uygulamaya Azure Maps REST API 'Leri erişimi verilecektir.
 
-1. Azure Portal Azure hizmetleri listesinde, **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt**uygulama kayıtları Azure Active Directory ' ni seçin.  
+1. Azure Portal Azure hizmetleri listesinde, **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt** uygulama kayıtları Azure Active Directory ' ni seçin.  
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama kaydı](./media/how-to-manage-authentication/app-registration.png)
 
-2. Bir **ad**girin, **bu kuruluş dizininde yalnızca** **Desteklenen hesap türü**olarak hesaplar ' ı seçin. **Yeniden yönlendirme URI 'Lerinde** **ortak istemci/yerel (mobil & Masaüstü)** belirtin ve ardından `https://login.microsoftonline.com/common/oauth2/nativeclient` değere ekleyin. Daha fazla ayrıntı için lütfen bkz. [Web API 'lerini çağıran Azure AD masaüstü uygulaması: uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration). Ardından uygulamayı **kaydedin** .
+2. Bir **ad** girin, **bu kuruluş dizininde yalnızca** **Desteklenen hesap türü** olarak hesaplar ' ı seçin. **Yeniden yönlendirme URI 'Lerinde** **ortak istemci/yerel (mobil & Masaüstü)** belirtin ve ardından `https://login.microsoftonline.com/common/oauth2/nativeclient` değere ekleyin. Daha fazla ayrıntı için lütfen bkz. [Web API 'lerini çağıran Azure AD masaüstü uygulaması: uygulama kaydı](../active-directory/develop/scenario-desktop-app-registration.md). Ardından uygulamayı **kaydedin** .
 
     > [!div class="mx-imgBorder"]
     > ![Ad ve yeniden yönlendirme URI 'si için uygulama kaydı ayrıntılarını ekleyin](./media/azure-maps-authentication/devicecode-app-registration.png)
 
-3. **Kimlik doğrulaması** ' na gidin ve **uygulamayı ortak istemci olarak değerlendir**' i etkinleştirin. Bu, Azure AD ile cihaz kodu kimlik doğrulamasını etkinleştirir.
+3. **Kimlik doğrulaması** ' na gidin ve **uygulamayı ortak istemci olarak değerlendir** ' i etkinleştirin. Bu, Azure AD ile cihaz kodu kimlik doğrulamasını etkinleştirir.
     
     > [!div class="mx-imgBorder"]
     > ![Uygulama kaydını ortak istemci olarak etkinleştir](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  Azure haritalar 'a temsil edilen API izinleri atamak için uygulamaya gidin. Ardından **API izinleri**  >  **bir izin Ekle**' yi seçin. **Kuruluşumun kullandığı API 'ler**altında **Azure haritaları**' nı arayıp seçin.
+4.  Azure haritalar 'a temsil edilen API izinleri atamak için uygulamaya gidin. Ardından **API izinleri**  >  **bir izin Ekle** ' yi seçin. **Kuruluşumun kullandığı API 'ler** altında **Azure haritaları** ' nı arayıp seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama API 'SI izinleri ekleme](./media/how-to-manage-authentication/app-permissions.png)
 
-5. **Azure haritalar**' ın yanındaki onay kutusunu işaretleyin ve ardından **izin Ekle**' yi seçin.
+5. **Azure haritalar** ' ın yanındaki onay kutusunu işaretleyin ve ardından **izin Ekle** ' yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama API 'SI izinlerini seçin](./media/how-to-manage-authentication/select-app-permissions.png)
 
 6. Kullanıcılar veya gruplar için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) yapılandırın. Bkz. [Kullanıcılar Için Azure Maps 'e rol tabanlı erişim verme](#grant-role-based-access-for-users-to-azure-maps).
 
-7. Uygulamada belirteç akışı almak için kod ekleyin, uygulama ayrıntıları için bkz. [cihaz kodu akışı](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token#device-code-flow). Belirteçleri alırken, `user_impersonation` önceki adımlarda seçili olan kapsama başvurun:
+7. Uygulamada belirteç akışı almak için kod ekleyin, uygulama ayrıntıları için bkz. [cihaz kodu akışı](../active-directory/develop/scenario-desktop-acquire-token.md#device-code-flow). Belirteçleri alırken, `user_impersonation` önceki adımlarda seçili olan kapsama başvurun:
 
 > [!Tip]
-> Erişim belirteçleri almak için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanın. Bkz [. Web API 'lerini çağıran masaüstü uygulamasında öneriler: kod yapılandırma](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-configuration)
+> Erişim belirteçleri almak için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanın. Bkz [. Web API 'lerini çağıran masaüstü uygulamasında öneriler: kod yapılandırma](../active-directory/develop/scenario-desktop-app-configuration.md)
 
 8. Azure AD 'den alınan belirteç ile HTTP isteğini ve geçerli bir HTTP istemcisiyle istek gönderilmesini oluşturun.
 

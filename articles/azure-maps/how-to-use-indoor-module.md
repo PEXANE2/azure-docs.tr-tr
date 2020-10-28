@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: d006ec692a2345f6b79c4be29446340cf4af6095
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d852d17bdf11ea45f833e3d59cacb435166827fe
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335356"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895469"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Azure Maps ınkapısı haritaları modülünü kullanma
 
 Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azure Maps ınkapısı* modülü, Azure haritalar Oluşturucu 'da oluşturulan ınkapıların işlemesini sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Oluşturucu kaynağı oluşturma](how-to-manage-creator.md)
@@ -56,7 +56,7 @@ Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azu
 
 ## <a name="instantiate-the-map-object"></a>Map nesnesinin örneğini oluşturma
 
-İlk olarak bir *Map nesnesi*oluşturun. *Map nesnesi* , *ınkapılı Manager* nesnesinin örneğini oluşturmak için bir sonraki adımda kullanılacaktır.  Aşağıdaki kod, *Map nesnesinin*örneğini oluşturmayı gösterir:
+İlk olarak bir *Map nesnesi* oluşturun. *Map nesnesi* , *ınkapılı Manager* nesnesinin örneğini oluşturmak için bir sonraki adımda kullanılacaktır.  Aşağıdaki kod, *Map nesnesinin* örneğini oluşturmayı gösterir:
 
 ```javascript
 const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
@@ -77,7 +77,7 @@ const map = new atlas.Map("map-id", {
 
 ## <a name="instantiate-the-indoor-manager"></a>Inkapılı yöneticinin örneğini oluşturma
 
-Kutucukların ınkapaklı tilesets ve Map stilini yüklemek için, *ınkapılı yöneticinin*örneğini oluşturmanız gerekir. *Map nesnesini* ve karşılık gelen öğesini sağlayarak *ınkapısı yöneticisinin* örneğini oluşturun `tilesetId` . [Dinamik harita](indoor-map-dynamic-styling.md)stilini desteklemek istiyorsanız, öğesini geçirmeniz gerekir `statesetId` . `statesetId`Değişken adı büyük/küçük harfe duyarlıdır. Kodunuzun aşağıdaki JavaScript gibi olması gerekir.
+Kutucukların ınkapaklı tilesets ve Map stilini yüklemek için, *ınkapılı yöneticinin* örneğini oluşturmanız gerekir. *Map nesnesini* ve karşılık gelen öğesini sağlayarak *ınkapısı yöneticisinin* örneğini oluşturun `tilesetId` . [Dinamik harita](indoor-map-dynamic-styling.md)stilini desteklemek istiyorsanız, öğesini geçirmeniz gerekir `statesetId` . `statesetId`Değişken adı büyük/küçük harfe duyarlıdır. Kodunuzun aşağıdaki JavaScript gibi olması gerekir.
 
 ```javascript
 const tilesetId = "";
@@ -89,7 +89,7 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 });
 ```
 
-Sağladığınız durum verilerinin yoklanmasını etkinleştirmek için `statesetId` ve çağrısını sağlamanız gerekir `indoorManager.setDynamicStyling(true)` . Yoklama durumu verileri dinamik özelliklerin veya *durumların*durumunu dinamik olarak güncelleştirmenize olanak tanır. Örneğin, oda gibi bir özelliğin adlı dinamik bir özelliği (*durum*) olabilir `occupancy` . Uygulamanız, görsel harita içindeki değişikliği yansıtacak şekilde herhangi bir *durum* değişikliğini yoklamak isteyebilir. Aşağıdaki kod, durum yoklamasını nasıl etkinleştireceğinizi göstermektedir:
+Sağladığınız durum verilerinin yoklanmasını etkinleştirmek için `statesetId` ve çağrısını sağlamanız gerekir `indoorManager.setDynamicStyling(true)` . Yoklama durumu verileri dinamik özelliklerin veya *durumların* durumunu dinamik olarak güncelleştirmenize olanak tanır. Örneğin, oda gibi bir özelliğin adlı dinamik bir özelliği ( *durum* ) olabilir `occupancy` . Uygulamanız, görsel harita içindeki değişikliği yansıtacak şekilde herhangi bir *durum* değişikliğini yoklamak isteyebilir. Aşağıdaki kod, durum yoklamasını nasıl etkinleştireceğinizi göstermektedir:
 
 ```javascript
 const tilesetId = "";
@@ -107,7 +107,7 @@ if (statesetId.length > 0) {
 
 ## <a name="indoor-level-picker-control"></a>Inkapısı düzeyi seçici denetimi
 
- *Inkapıdüzeyi seçici* denetimi, işlenmiş haritanın düzeyini değiştirmenize izin verir. Inkapılı Yönetim *Seçicisi* denetimini *ınkapısı Yöneticisi*aracılığıyla isteğe bağlı olarak başlatabilirsiniz. Aşağıda, düzey denetim seçiciyi başlatmak için kod verilmiştir:
+ *Inkapıdüzeyi seçici* denetimi, işlenmiş haritanın düzeyini değiştirmenize izin verir. Inkapılı Yönetim *Seçicisi* denetimini *ınkapısı Yöneticisi* aracılığıyla isteğe bağlı olarak başlatabilirsiniz. Aşağıda, düzey denetim seçiciyi başlatmak için kod verilmiştir:
 
 ```javascript
 const levelControl = new atlas.control.LevelControl({ position: "top-right" });
@@ -116,7 +116,7 @@ indoorManager.setOptions({ levelControl });
 
 ## <a name="indoor-events"></a>Inkapılı olaylar
 
- *Azure Maps ınkapısı* modülü *harita nesnesi* olaylarını destekler. *Harita nesnesi* olay dinleyicileri, bir düzey veya tesis değiştirildiğinde çağrılır. Bir düzey veya tesis değiştirildiğinde kodu çalıştırmak istiyorsanız, kodunuzu olay dinleyicisine koyun. Aşağıdaki kod, *eşleme nesnesine*olay dinleyicilerinin nasıl ekleneceğini gösterir.
+ *Azure Maps ınkapısı* modülü *harita nesnesi* olaylarını destekler. *Harita nesnesi* olay dinleyicileri, bir düzey veya tesis değiştirildiğinde çağrılır. Bir düzey veya tesis değiştirildiğinde kodu çalıştırmak istiyorsanız, kodunuzu olay dinleyicisine koyun. Aşağıdaki kod, *eşleme nesnesine* olay dinleyicilerinin nasıl ekleneceğini gösterir.
 
 ```javascript
 map.events.add("levelchanged", indoorManager, (eventData) => {
@@ -144,10 +144,10 @@ Bu örnek, Web uygulamanızda *Azure Maps ınkapısı* modülünü nasıl kullan
 
 3. HTML üstbilgisinde *Azure Maps ınkapısı* modülü JavaScript ve stil sayfası stillerine başvurun.
 
-4. *Harita nesnesi*başlatın. *Map nesnesi* aşağıdaki seçenekleri destekler:
+4. *Harita nesnesi* başlatın. *Map nesnesi* aşağıdaki seçenekleri destekler:
     - `Subscription key` Azure haritalar birincil abonelik anahtarınız.
     - `center` ınkapıeşlem merkezi konumunuz için bir enlem ve Boylam tanımlar. `center`İçin bir değer sağlamak istemiyorsanız, için bir değer girin `bounds` . Biçim şöyle görünmelidir `center` : [-122,13315, 47,63637].
-    - `bounds` , tileset eşleme verilerini kapsayan en küçük dikdörtgen şekildir. `bounds`İçin bir değer ayarlamak istemiyorsanız, için bir değer ayarlayın `center` . [Tileset LISTE API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)'sini çağırarak harita sınırlarınızı bulabilirsiniz. Tileset API 'SI, `bbox` ayrıştırılabilir ve atayabileceğiniz öğesini döndürür `bounds` . Biçim şöyle görünmelidir `bounds` : [# Batı, # Güney, # Doğu, # Kuzey].
+    - `bounds` , tileset eşleme verilerini kapsayan en küçük dikdörtgen şekildir. `bounds`İçin bir değer ayarlamak istemiyorsanız, için bir değer ayarlayın `center` . [Tileset LISTE API](/rest/api/maps/tileset/listpreview)'sini çağırarak harita sınırlarınızı bulabilirsiniz. Tileset API 'SI, `bbox` ayrıştırılabilir ve atayabileceğiniz öğesini döndürür `bounds` . Biçim şöyle görünmelidir `bounds` : [# Batı, # Güney, # Doğu, # Kuzey].
     - `style` arka planın rengini ayarlamanıza olanak sağlar. Beyaz bir arka planı göstermek için `style` "boş" olarak tanımlayın.
     - `zoom` Haritanız için en düşük ve en yüksek yakınlaştırma düzeylerini belirtmenize olanak tanır.
 
@@ -257,4 +257,4 @@ Haritalarınız için daha fazla veri ekleme hakkında daha fazla bilgi edinin:
 > [Inkapı haritaları dinamik stil oluşturma](indoor-map-dynamic-styling.md)
 
 > [!div class="nextstepaction"]
-> [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kod örnekleri](/samples/browse/?products=azure-maps)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e1104a3821e94fe3f0ae1271301f1e36bba613d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: e10ca98e0c9257187288d02483ed81915a7b321d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516265"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894772"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Öğretici: Ziflow ile tümleştirme Azure Active Directory
 
@@ -61,13 +61,13 @@ Ziflow 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Galeriden Zifl
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **ziflow**yazın, sonuç panelinden **ziflow** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **ziflow** yazın, sonuç panelinden **ziflow** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde ziflow](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre, Ziflow ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre, Ziflow ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Ziflow içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Ziflow ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açma 'yı Ziflow ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **ziflow** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **ziflow** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -126,11 +126,11 @@ Azure AD çoklu oturum açma 'yı Ziflow ile yapılandırmak için aşağıdaki 
 
 1. Farklı bir Web tarayıcısı penceresinde, bir güvenlik yöneticisi olarak Ziflow 'da oturum açın.
 
-2. Sağ üst köşedeki avatar öğesine tıklayın ve sonra **Hesabı Yönet**' e tıklayın.
+2. Sağ üst köşedeki avatar öğesine tıklayın ve sonra **Hesabı Yönet** ' e tıklayın.
 
     ![Ziflow yapılandırma yönetimi](./media/ziflow-tutorial/tutorial_ziflow_manage.png)
 
-3. Sol üst kısımdaki **Çoklu oturum açma**' ya tıklayın.
+3. Sol üst kısımdaki **Çoklu oturum açma** ' ya tıklayın.
 
     ![Ziflow yapılandırma Işareti](./media/ziflow-tutorial/tutorial_ziflow_signon.png)
 
@@ -138,13 +138,13 @@ Azure AD çoklu oturum açma 'yı Ziflow ile yapılandırmak için aşağıdaki 
 
     ![Ziflow yapılandırma tek](./media/ziflow-tutorial/tutorial_ziflow_page.png)
 
-    a. **SAML 2.0**olarak **tür** ' ı seçin.
+    a. **SAML 2.0** olarak **tür** ' ı seçin.
 
-    b. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    c. Azure portal indirmiş olduğunuz Base-64 kodlu sertifikayı **x509 Imzalama sertifikasına**yükleyin.
+    c. Azure portal indirmiş olduğunuz Base-64 kodlu sertifikayı **x509 Imzalama sertifikasına** yükleyin.
 
-    d. Oturumu Kapat **URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
+    d. Oturumu Kapat **URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
     e. **Tanımlayıcı sağlayıcınız Için yapılandırma ayarlarından** , vurgulanan benzersiz kimlik değerini kopyalayın ve Azure Portal ' de **temel SAML yapılandırmasındaki** tanımlayıcıyı ve oturum açma URL 'sini ekleyin.
 
@@ -152,7 +152,7 @@ Azure AD çoklu oturum açma 'yı Ziflow ile yapılandırmak için aşağıdaki 
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -164,27 +164,27 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Ziflow 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **ziflow**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **ziflow** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Ziflow**' ı seçin.
+2. Uygulamalar listesinde, **Ziflow** ' ı seçin.
 
     ![Uygulamalar listesindeki Ziflow bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
@@ -210,13 +210,13 @@ Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin
 
     ![Ziflow yapılandırma kişileri](./media/ziflow-tutorial/tutorial_ziflow_people.png)
 
-3. **Ekle** ' ye ve ardından **Kullanıcı Ekle**' ye tıklayın.
+3. **Ekle** ' ye ve ardından **Kullanıcı Ekle** ' ye tıklayın.
 
-    ![Ziflow yapılandırması kullanıcı ekleme](./media/ziflow-tutorial/tutorial_ziflow_add.png)
+    ![Ekran görüntüsü Kullanıcı Ekle seçeneğinin seçili olduğunu gösterir.](./media/ziflow-tutorial/tutorial_ziflow_add.png)
 
 4. **Kullanıcı Ekle** açılır penceresinde aşağıdaki adımları uygulayın:
 
-    ![Ziflow yapılandırması kullanıcı ekleme](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı Ekle iletişim kutusunu gösterir.](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
 
     a. **E-posta** metin kutusuna kullanıcının e-postasını girin brittasimon@contoso.com .
 
@@ -226,7 +226,7 @@ Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin
 
     d. Ziflow rolünüzü seçin.
 
-    e. **1 Kullanıcı Ekle**' ye tıklayın.
+    e. **1 Kullanıcı Ekle** ' ye tıklayın.
 
     > [!NOTE]
     > Azure Active Directory hesap sahibi bir e-posta alır ve etkin hale gelmeden önce hesaplarını doğrulamak için bir bağlantıyı izler.

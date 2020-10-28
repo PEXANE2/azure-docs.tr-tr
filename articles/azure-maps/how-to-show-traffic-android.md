@@ -8,20 +8,20 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc37f2b3f603262f67a46746187df6e4b5a494b5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272965"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895537"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritadaki trafik verilerini gösterme Android SDK
 
 Akış verileri ve olay verileri, haritada görüntülenebilen iki trafik verisi türüdür. Bu kılavuzda her iki trafik verisi türünün nasıl görüntüleneceği gösterilmektedir. Olaylar verileri, kurulumlarını, yol kapanışları ve kazalardan dolayı gibi şeyler için nokta ve hat tabanlı verilerden oluşur. Akış verileri, yolda trafik akışı hakkında ölçümleri gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Haritada trafiği gösterebilmeniz için önce [bir Azure hesabı](quick-demo-map-app.md#create-an-azure-maps-account)oluşturmanız ve [bir abonelik anahtarı edinmeniz](quick-demo-map-app.md#get-the-primary-key-for-your-account)gerekir. Ardından, [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz ve bir harita yüklemeniz gerekir.
+Haritada trafiği gösterebilmeniz için önce [bir Azure hesabı](quick-demo-map-app.md#create-an-azure-maps-account)oluşturmanız ve [bir abonelik anahtarı edinmeniz](quick-demo-map-app.md#get-the-primary-key-for-your-account)gerekir. Ardından, [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) yüklemeniz ve bir harita yüklemeniz gerekir.
 
 ## <a name="incidents-traffic-data"></a>Olaylar trafik verileri
 
@@ -73,7 +73,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 Belirli bir özelliğin olaylarını almak için aşağıdaki kodu kullanabilirsiniz. Bir özelliğe tıklandığında, kod mantığı olayları denetler ve olay hakkında bir ileti oluşturur. Ayrıntılar ile ekranın alt kısmında bir ileti görüntülenir.
 
-1. İlk olarak, aşağıdaki gibi görünmesi için **kay > düzen > activity_main.xml**düzenlemeniz gerekir. , `mapcontrol_centerLat` `mapcontrol_centerLng` Ve `mapcontrol_zoom` değerlerini istediğiniz değerlerle değiştirebilirsiniz. Geri çek, yakınlaştırma düzeyi 0 ile 22 arasında bir değerdir. Yakınlaştırma düzeyinde 0, dünyanın tamamı tek bir kutucuğa sığar.
+1. İlk olarak, aşağıdaki gibi görünmesi için **kay > düzen > activity_main.xml** düzenlemeniz gerekir. , `mapcontrol_centerLat` `mapcontrol_centerLng` Ve `mapcontrol_zoom` değerlerini istediğiniz değerlerle değiştirebilirsiniz. Geri çek, yakınlaştırma düzeyi 0 ile 22 arasında bir değerdir. Yakınlaştırma düzeyinde 0, dünyanın tamamı tek bir kutucuğa sığar.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>

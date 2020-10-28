@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: devx-track-js
-ms.openlocfilehash: 4368e71e0ae6185214a0e3e15773fbe1aef375de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e07b614e87ed5dad94cf9bc5994e78071187839
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335322"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895435"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Azure haritalar Hizmetleri modülünü kullanma
 
-Azure Haritalar Web SDK 'Sı bir *hizmet modülü*sağlar. Bu modül, JavaScript veya TypeScript kullanarak Web veya Node.js uygulamalarında Azure Maps REST hizmetlerini kullanmayı kolaylaştıran bir yardımcı kitaplıktır.
+Azure Haritalar Web SDK 'Sı bir *hizmet modülü* sağlar. Bu modül, JavaScript veya TypeScript kullanarak Web veya Node.js uygulamalarında Azure Maps REST hizmetlerini kullanmayı kolaylaştıran bir yardımcı kitaplıktır.
 
 ## <a name="use-the-services-module-in-a-webpage"></a>Bir Web sayfasında hizmetler modülünü kullanma
 
@@ -191,19 +191,19 @@ Azure haritalar REST hizmetlerine doğrudan erişiyorsanız, URL etki alanını 
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [MapsURL 'Si](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.mapsurl)
+> [MapsURL 'Si](/javascript/api/azure-maps-rest/atlas.service.mapsurl)
 
 > [!div class="nextstepaction"]
-> [SearchURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl)
+> [SearchURL](/javascript/api/azure-maps-rest/atlas.service.searchurl)
 
 > [!div class="nextstepaction"]
-> [RouteURL 'Si](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl)
+> [RouteURL 'Si](/javascript/api/azure-maps-rest/atlas.service.routeurl)
 
 > [!div class="nextstepaction"]
-> [SubscriptionKeyCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.subscriptionkeycredential)
+> [SubscriptionKeyCredential](/javascript/api/azure-maps-rest/atlas.service.subscriptionkeycredential)
 
 > [!div class="nextstepaction"]
-> [TokenCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.tokencredential)
+> [TokenCredential](/javascript/api/azure-maps-rest/atlas.service.tokencredential)
 
 Hizmetler modülünü kullanan daha fazla kod örneği için şu makalelere bakın:
 

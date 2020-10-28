@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: be6d508da15b7c403259bd66c86c3b3e72ff2f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 647a8fc25f27ef7f441ed7459ecd543d4f35581e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089282"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895282"
 ---
 # <a name="show-search-results-on-the-map"></a>Haritada arama sonuçlarını göster
 
 Bu makalede, ilgilendiğiniz konumun nasıl aranacağı ve arama sonuçlarının haritada gösterilmesi gösterilmektedir.
 
-İlgi çekici bir konum aramak için iki yol vardır. Bir yol, bir arama isteği oluşturmak için hizmet modülünü kullanmaktır. Diğer bir yöntem de, [Fetch API](https://fetch.spec.whatwg.org/)aracılığıyla Azure 'da [benzer arama API 'si Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) için bir arama isteği yapmanın bir yoludur. Her iki yol da aşağıda ele alınmıştır.
+İlgi çekici bir konum aramak için iki yol vardır. Bir yol, bir arama isteği oluşturmak için hizmet modülünü kullanmaktır. Diğer bir yöntem de, [Fetch API](https://fetch.spec.whatwg.org/)aracılığıyla Azure 'da [benzer arama API 'si Maps](/rest/api/maps/search/getsearchfuzzy) için bir arama isteği yapmanın bir yoludur. Her iki yol da aşağıda ele alınmıştır.
 
 ## <a name="make-a-search-request-via-service-module"></a>Hizmet modülü aracılığıyla bir arama isteği oluşturma
 
@@ -29,15 +29,15 @@ Bu makalede, ilgilendiğiniz konumun nasıl aranacağı ve arama sonuçlarının
 
 Yukarıdaki kodda, ilk blok bir harita nesnesi oluşturur ve kimlik doğrulama mekanizmasını erişim belirtecini kullanacak şekilde ayarlar. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.
 
-İkinci kod bloğu, `TokenCredential` erişim belirteciyle Azure Maps 'A http isteklerinin kimliğini doğrulamak için bir oluşturur. Ardından `TokenCredential` `atlas.service.MapsURL.newPipeline()` ' a geçirir ve bir işlem [hattı](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) örneği oluşturur. , `searchURL` Azure Maps [arama](https://docs.microsoft.com/rest/api/maps/search) işlemlerine yönelik bir URL 'yi temsil eder.
+İkinci kod bloğu, `TokenCredential` erişim belirteciyle Azure Maps 'A http isteklerinin kimliğini doğrulamak için bir oluşturur. Ardından `TokenCredential` `atlas.service.MapsURL.newPipeline()` ' a geçirir ve bir işlem [hattı](/javascript/api/azure-maps-rest/atlas.service.pipeline) örneği oluşturur. , `searchURL` Azure Maps [arama](/rest/api/maps/search) işlemlerine yönelik bir URL 'yi temsil eder.
 
-Üçüncü kod bloğu, [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) sınıfını kullanarak bir veri kaynağı nesnesi oluşturur ve buna arama sonuçları ekler. Bir [sembol katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer) , [veri kaynağında](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) kaydırılan nokta tabanlı verileri haritada semboller olarak oluşturmak için metin veya simgeleri kullanır.  Daha sonra bir sembol katmanı oluşturulur. Veri kaynağı, daha sonra haritaya eklenen sembol katmanına eklenir.
+Üçüncü kod bloğu, [DataSource](/javascript/api/azure-maps-control/atlas.source.datasource) sınıfını kullanarak bir veri kaynağı nesnesi oluşturur ve buna arama sonuçları ekler. Bir [sembol katmanı](/javascript/api/azure-maps-control/atlas.layer.symbollayer) , [veri kaynağında](/javascript/api/azure-maps-control/atlas.source.datasource) kaydırılan nokta tabanlı verileri haritada semboller olarak oluşturmak için metin veya simgeleri kullanır.  Daha sonra bir sembol katmanı oluşturulur. Veri kaynağı, daha sonra haritaya eklenen sembol katmanına eklenir.
 
-Dördüncü kod bloğu, [hizmet modülündeki](how-to-use-services-module.md) [searchbulanık](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) yöntemi kullanır. Bu, ilgilendiğiniz noktayı aramak için [aramayı al benzer REST API 'si](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) aracılığıyla ücretsiz form metin araması gerçekleştirmenize olanak tanır. Aranan bir API 'ye yönelik istekleri al, benzer girişlerin herhangi bir birleşimini işleyebilir. Yanıttan bir GeoJSON Özellik koleksiyonu daha sonra yöntemi kullanılarak ayıklanır `geojson.getFeatures()` ve veri kaynağına eklenir ve bu da otomatik olarak, sembol katmanı aracılığıyla haritada işlenen verilere neden olur.
+Dördüncü kod bloğu, [hizmet modülündeki](how-to-use-services-module.md) [searchbulanık](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) yöntemi kullanır. Bu, ilgilendiğiniz noktayı aramak için [aramayı al benzer REST API 'si](/rest/api/maps/search/getsearchfuzzy) aracılığıyla ücretsiz form metin araması gerçekleştirmenize olanak tanır. Aranan bir API 'ye yönelik istekleri al, benzer girişlerin herhangi bir birleşimini işleyebilir. Yanıttan bir GeoJSON Özellik koleksiyonu daha sonra yöntemi kullanılarak ayıklanır `geojson.getFeatures()` ve veri kaynağına eklenir ve bu da otomatik olarak, sembol katmanı aracılığıyla haritada işlenen verilere neden olur.
 
-Son kod bloğu haritanın [setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliğini kullanarak haritanın kamera sınırlarını ayarlar.
+Son kod bloğu haritanın [setcamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliğini kullanarak haritanın kamera sınırlarını ayarlar.
 
-Arama isteği, veri kaynağı, sembol katmanı ve kamera sınırları, haritanın [olay dinleyicisinin](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events) içindedir. Sonuçların haritanın tam olarak yüklenip yüklenmesiyle emin olmak istiyoruz.
+Arama isteği, veri kaynağı, sembol katmanı ve kamera sınırları, haritanın [olay dinleyicisinin](/javascript/api/azure-maps-control/atlas.map#events) içindedir. Sonuçların haritanın tam olarak yüklenip yüklenmesiyle emin olmak istiyoruz.
 
 
 ## <a name="make-a-search-request-via-fetch-api"></a>Fetch API aracılığıyla bir arama isteği oluşturma
@@ -49,28 +49,28 @@ Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur. Kimlik doğrula
 
 İkinci kod bloğu, bir arama isteği oluşturmak için bir URL oluşturur. Ayrıca, arama sonuçları için sınırları ve PIN 'leri depolamak üzere iki dizi oluşturur.
 
-Üçüncü kod bloğu, [Fetch API](https://fetch.spec.whatwg.org/)'sini kullanır. [Fetch API](https://fetch.spec.whatwg.org/) 'Si, Azure Maps 'a bir istek oluşturmak Için, [benzer arama API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) 'sine, ilgilendiğiniz noktaları aramasını sağlamak için kullanılır. Benzer arama API 'SI, benzer girişlerin herhangi bir birleşimini işleyebilir. Ardından arama yanıtını işler ve ayrıştırır ve sonuç sabitleyicileri Searchpin dizisine ekler.
+Üçüncü kod bloğu, [Fetch API](https://fetch.spec.whatwg.org/)'sini kullanır. [Fetch API](https://fetch.spec.whatwg.org/) 'Si, Azure Maps 'a bir istek oluşturmak Için, [benzer arama API](/rest/api/maps/search/getsearchfuzzy) 'sine, ilgilendiğiniz noktaları aramasını sağlamak için kullanılır. Benzer arama API 'SI, benzer girişlerin herhangi bir birleşimini işleyebilir. Ardından arama yanıtını işler ve ayrıştırır ve sonuç sabitleyicileri Searchpin dizisine ekler.
 
-Dördüncü kod bloğu, [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) sınıfını kullanarak bir veri kaynağı nesnesi oluşturur. Kodda, kaynak nesnesine arama sonuçları ekleyeceğiz. Bir [sembol katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer) , [veri kaynağında](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) kaydırılan nokta tabanlı verileri haritada semboller olarak oluşturmak için metin veya simgeleri kullanır. Daha sonra bir sembol katmanı oluşturulur. Veri kaynağı, daha sonra haritaya eklenen sembol katmanına eklenir.
+Dördüncü kod bloğu, [DataSource](/javascript/api/azure-maps-control/atlas.source.datasource) sınıfını kullanarak bir veri kaynağı nesnesi oluşturur. Kodda, kaynak nesnesine arama sonuçları ekleyeceğiz. Bir [sembol katmanı](/javascript/api/azure-maps-control/atlas.layer.symbollayer) , [veri kaynağında](/javascript/api/azure-maps-control/atlas.source.datasource) kaydırılan nokta tabanlı verileri haritada semboller olarak oluşturmak için metin veya simgeleri kullanır. Daha sonra bir sembol katmanı oluşturulur. Veri kaynağı, daha sonra haritaya eklenen sembol katmanına eklenir.
 
-Son kod bloğu bir [BoundingBox](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.boundingbox) nesnesi oluşturur. Sonuç dizisini kullanır ve sonra haritanın [Setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)' i kullanarak haritanın kamera sınırlarını ayarlar. Daha sonra sonuç PIN 'lerini işler.
+Son kod bloğu bir [BoundingBox](/javascript/api/azure-maps-control/atlas.data.boundingbox) nesnesi oluşturur. Sonuç dizisini kullanır ve sonra haritanın [Setcamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)' i kullanarak haritanın kamera sınırlarını ayarlar. Daha sonra sonuç PIN 'lerini işler.
 
-Arama isteği, veri kaynağı, sembol katmanı ve kamera sınırları, eşlemenin tam olarak yüklendikten sonra sonuçların görüntülendiğinden emin olmak için haritanın [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events) içinde ayarlanır.
+Arama isteği, veri kaynağı, sembol katmanı ve kamera sınırları, eşlemenin tam olarak yüklendikten sonra sonuçların görüntülendiğinden emin olmak için haritanın [olay dinleyicisi](/javascript/api/azure-maps-control/atlas.map#events) içinde ayarlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
 > [Arama hizmetini kullanmaya yönelik en iyi uygulamalar](how-to-use-best-practices-for-search.md)
 
-**Benzer arama**hakkında daha fazla bilgi edinin:
+**Benzer arama** hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Azure Maps benzer arama API 'SI](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
+> [Azure Maps benzer arama API 'SI](/rest/api/maps/search/getsearchfuzzy)
 
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Harita](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Harita](/javascript/api/azure-maps-control/atlas.map)
 
 Tam kod örnekleri için aşağıdaki makalelere bakın:
 

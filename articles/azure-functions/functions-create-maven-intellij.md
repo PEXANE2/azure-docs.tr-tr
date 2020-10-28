@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 19deaa7656cc86d534278464dba1041267ef15b0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 149d0ae99975628239f8b08f3987947a99e01cbb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105048"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893242"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java ve IntelliJ ile ilk Azure işlevinizi oluşturma
 
@@ -37,26 +37,26 @@ Java ve IntelliJ ile bir işlev geliştirmek için aşağıdaki yazılımı yük
 
 ## <a name="installation-and-sign-in"></a>Yükleme ve Oturum Açma
 
-1. IntelliJ IDEA'nın Ayarlar/Tercihler iletişim kutusunda (Ctrl+Alt+S) **Eklentiler**’i seçin. Sonra **Marketplace**’de **Azure Toolkit for IntelliJ**’yi bulun ve **Yükle**’ye tıklayın. Yüklendikten sonra **Yeniden Başlat**’a tıklayarak eklentiyi etkinleştirin. 
+1. IntelliJ IDEA'nın Ayarlar/Tercihler iletişim kutusunda (Ctrl+Alt+S) **Eklentiler** ’i seçin. Sonra **Marketplace** ’de **Azure Toolkit for IntelliJ** ’yi bulun ve **Yükle** ’ye tıklayın. Yüklendikten sonra **Yeniden Başlat** ’a tıklayarak eklentiyi etkinleştirin. 
 
     ![Marketplace’de Azure Toolkit for IntelliJ eklentisi][marketplace]
 
-2. Azure hesabınızda oturum açmak için kenar çubuğunda **Azure Gezgini**’ni açın ve sonra üstteki çubukta **Azure Oturum Açma** simgesine (veya IDEA menüsünden **Araçlar/Azure/Azure Oturum Açma**) tıklayın.
+2. Azure hesabınızda oturum açmak için kenar çubuğunda **Azure Gezgini** ’ni açın ve sonra üstteki çubukta **Azure Oturum Açma** simgesine (veya IDEA menüsünden **Araçlar/Azure/Azure Oturum Açma** ) tıklayın.
     ![IntelliJ Azure Oturum Açma komutu][intellij-azure-login]
 
-3. **Azure Oturum Açma** penceresinde **Cihaz Oturumu**’nu seçin ve ardından **Oturum aç**’a tıklayın ([diğer oturum açma seçenekleri](/azure/developer/java/toolkit-for-intellij/sign-in-instructions)).
+3. **Azure Oturum Açma** penceresinde **Cihaz Oturumu** ’nu seçin ve ardından **Oturum aç** ’a tıklayın ( [diğer oturum açma seçenekleri](/azure/developer/java/toolkit-for-intellij/sign-in-instructions)).
 
    ![Cihaz oturumu’nun seçili olduğu Azure Oturum Açma penceresi][intellij-azure-popup]
 
-4. **Azure Cihaz Oturum Açma** iletişim kutusunda **Kopyala ve Aç**’a tıklayın.
+4. **Azure Cihaz Oturum Açma** iletişim kutusunda **Kopyala ve Aç** ’a tıklayın.
 
    ![Azure Oturum Açma İletişim Kutusu penceresi][intellij-azure-copycode]
 
-5. Tarayıcıda cihaz kodunuzu yapıştırın (son adımda **Kopyala ve Aç**’a tıkladığınızda kopyalanmış olan kod) ve ardından **İleri**’ye tıklayın.
+5. Tarayıcıda cihaz kodunuzu yapıştırın (son adımda **Kopyala ve Aç** ’a tıkladığınızda kopyalanmış olan kod) ve ardından **İleri** ’ye tıklayın.
 
    ![Cihaz oturumu tarayıcısı][intellij-azure-link-ms-account]
 
-6. **Abonelik Seç** iletişim kutusunda kullanmak istediğiniz abonelikleri seçin ve sonra **Tamam**’a tıklayın.
+6. **Abonelik Seç** iletişim kutusunda kullanmak istediğiniz abonelikleri seçin ve sonra **Tamam** ’a tıklayın.
 
    ![Abonelik Seç iletişim kutusu][intellij-azure-login-select-subs]
    
@@ -64,17 +64,17 @@ Java ve IntelliJ ile bir işlev geliştirmek için aşağıdaki yazılımı yük
 
 Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Azure Toolkit for IntelliJ kullanırsınız. Bu makalenin ilerleyen kısımlarında, işlev kodunuzu Azure 'a yayımlayacaksınız. 
 
-1. IntelliJ karşılama iletişim kutusunu açın, yeni *proje oluştur* ' u seçerek yeni bir proje Sihirbazı açın, *Azure işlevleri*' ni seçin.
+1. IntelliJ karşılama iletişim kutusunu açın, yeni *proje oluştur* ' u seçerek yeni bir proje Sihirbazı açın, *Azure işlevleri* ' ni seçin.
 
     ![İşlevler projesi oluştur](media/functions-create-first-java-intellij/create-functions-project.png)
 
-1. *Http tetikleyicisi*' ni seçin ve ardından *İleri* ' ye tıklayın ve aşağıdaki sayfalardaki tüm yapılandırmalara gitmek için Sihirbazı izleyin; projenizin konumunu doğrulayın ve *son*' a tıklayın. Intellj fıkrı daha sonra yeni projenizi açacak.
+1. *Http tetikleyicisi* ' ni seçin ve ardından *İleri* ' ye tıklayın ve aşağıdaki sayfalardaki tüm yapılandırmalara gitmek için Sihirbazı izleyin; projenizin konumunu doğrulayın ve *son* ' a tıklayın. Intellj fıkrı daha sonra yeni projenizi açacak.
 
     ![İşlev oluşturma proje sonu](media/functions-create-first-java-intellij/create-functions-project-finish.png)
 
 ## <a name="run-the-function-app-locally"></a>İşlev Uygulaması yerel olarak çalıştırma
 
-1. `src/main/java/org/example/functions/HttpTriggerFunction.java`Oluşturulan kodu görmek için bölümüne gidin. *17*. satırın yanında, bir yeşil *çalışma* düğmesi olduğunu fark edeceksiniz ve *' Azure-Function-sınavu Çalıştır... '* seçeneğini belirlediğinizde, işlev uygulamanızın bir kaç günlükle yerel olarak çalıştığını görürsünüz.
+1. `src/main/java/org/example/functions/HttpTriggerFunction.java`Oluşturulan kodu görmek için bölümüne gidin. *17* . satırın yanında, bir yeşil *çalışma* düğmesi olduğunu fark edeceksiniz ve *' Azure-Function-sınavu Çalıştır... '* seçeneğini belirlediğinizde, işlev uygulamanızın bir kaç günlükle yerel olarak çalıştığını görürsünüz.
 
     ![Yerel çalıştırma işlevleri projesi](media/functions-create-first-java-intellij/local-run-functions-project.png)
 
@@ -94,7 +94,7 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Azure Toolkit
 
     ![Yerel hata ayıklama işlevleri düğmesi](media/functions-create-first-java-intellij/local-debug-functions-button.png)
 
-1. Bir kesme noktası eklemek için dosyanın *20* . satırına tıklayın, `src/main/java/org/example/functions/HttpTriggerFunction.java` uç noktaya yeniden erişin, `http://localhost:7071/api/HttpTrigger-Java?name=Azure` kesme noktasının isabet olduğunu fark edersiniz. *adım*, *izleme*, *değerlendirme*gibi daha fazla hata ayıklama özelliğini deneyebilirsiniz. Durdur düğmesine tıklayarak hata ayıklama oturumunu durdurun.
+1. Bir kesme noktası eklemek için dosyanın *20* . satırına tıklayın, `src/main/java/org/example/functions/HttpTriggerFunction.java` uç noktaya yeniden erişin, `http://localhost:7071/api/HttpTrigger-Java?name=Azure` kesme noktasının isabet olduğunu fark edersiniz. *adım* , *izleme* , *değerlendirme* gibi daha fazla hata ayıklama özelliğini deneyebilirsiniz. Durdur düğmesine tıklayarak hata ayıklama oturumunu durdurun.
 
     ![Yerel hata ayıklama işlevleri sonu](media/functions-create-first-java-intellij/local-debug-functions-break.png)
 
@@ -104,7 +104,7 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Azure Toolkit
 
     ![İşlevleri Azure 'a dağıtma](media/functions-create-first-java-intellij/deploy-functions-to-azure.png)
 
-1. Henüz bir İşlev Uygulaması yoksa, *kullanılabilir bir Işlev yok ' a tıklayın, yeni bir tane oluşturmak için tıklayın*.
+1. Henüz bir İşlev Uygulaması yoksa, *kullanılabilir bir Işlev yok ' a tıklayın, yeni bir tane oluşturmak için tıklayın* .
 
     ![Azure uygulama oluşturmak için işlevleri dağıtma](media/functions-create-first-java-intellij/deploy-functions-create-app.png)
 
@@ -114,13 +114,13 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Azure Toolkit
 
 1. Dağıtmak istediğiniz işlev uygulamasını seçin (az önce oluşturduğunuz yeni işlev uygulaması otomatik olarak seçilir). İşlevlerinizi dağıtmak için *Çalıştır* ' a tıklayın.
 
-    ![Azure çalıştırmasına işlevleri dağıtma](media/functions-create-first-java-intellij/deploy-functions-run.png)
+    ![Ekran görüntüsünde Azure Işlevleri dağıtma iletişim kutusu gösterilir.](media/functions-create-first-java-intellij/deploy-functions-run.png)
 
     ![Azure günlüğüne işlevleri dağıtma](media/functions-create-first-java-intellij/deploy-functions-log.png)
 
 ## <a name="manage-azure-functions-from-idea"></a>Azure Işlevlerini fıkır olarak yönetme
 
-1. İşlevlerinizi *Azure Explorer* ile yönetebilirsiniz. *işlev uygulaması*' ye tıkladığınızda, tüm işlevlerinizi burada görürsünüz.
+1. İşlevlerinizi *Azure Explorer* ile yönetebilirsiniz. *işlev uygulaması* ' ye tıkladığınızda, tüm işlevlerinizi burada görürsünüz.
 
     ![Gezgin 'de işlevleri görüntüleme](media/functions-create-first-java-intellij/explorer-view-functions.png)
 
@@ -128,19 +128,19 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Azure Toolkit
 
     ![İşlev özelliklerini göster](media/functions-create-first-java-intellij/explorer-functions-show-properties.png)
 
-1. *Httptrigger-Java*işlevinizi sağ tıklatın ve *tetikleyici işlevi*' ni SEÇIN, tarayıcının tetikleyici URL 'si ile açıldığını görürsünüz.
+1. *Httptrigger-Java* işlevinizi sağ tıklatın ve *tetikleyici işlevi* ' ni SEÇIN, tarayıcının tetikleyici URL 'si ile açıldığını görürsünüz.
 
-    ![Azure çalıştırmasına işlevleri dağıtma](media/functions-create-first-java-intellij/explorer-trigger-functions.png)
+    ![Ekran görüntüsü U R L ile bir tarayıcı gösterir.](media/functions-create-first-java-intellij/explorer-trigger-functions.png)
 
 ## <a name="add-more-functions-to-the-project"></a>Projeye daha fazla Işlev ekleyin
 
-1. *Org. example. Functions* paketine sağ tıklayın ve *New-> Azure Function Class*' ı seçin. 
+1. *Org. example. Functions* paketine sağ tıklayın ve *New-> Azure Function Class* ' ı seçin. 
 
     ![Proje girişine işlevler ekleyin](media/functions-create-first-java-intellij/add-functions-entry.png)
 
 1. *Httptest* sınıf adı ' nı doldurup *httptrigger* ' ı seçin işlev sınıfı oluşturma sihirbazında, oluşturmak için *Tamam* ' a tıklayın, bu şekilde, istediğiniz gibi yeni işlevler oluşturabilirsiniz.
 
-    ![Projeye işlev Ekle tetikleyiciyi seçin](media/functions-create-first-java-intellij/add-functions-trigger.png)
+    ![Ekran görüntüsü Işlev sınıfı oluştur iletişim kutusunu gösterir.](media/functions-create-first-java-intellij/add-functions-trigger.png)
     
     ![Proje çıkışına işlevler ekleyin](media/functions-create-first-java-intellij/add-functions-output.png)
 
@@ -148,7 +148,7 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Azure Toolkit
 
 1. Azure Explorer 'da Azure Işlevlerini silme
       
-      ![Projeye işlev Ekle tetikleyiciyi seçin](media/functions-create-first-java-intellij/delete-function.png)
+      ![Ekran görüntüsü bağlam menüsünden Seçileni Sil ' i gösterir.](media/functions-create-first-java-intellij/delete-function.png)
       
 
 ## <a name="next-steps"></a>Sonraki adımlar

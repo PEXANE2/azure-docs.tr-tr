@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 6059f0b3c102fed04c52b87a2c7c226d508184c1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4973a5f1311de23cf54e401a52fb083f497687a3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519070"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894517"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>Öğretici: Zendesk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -49,14 +49,14 @@ Zendesk 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden, y
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Zendesk** yazın.
 1. Sonuçlar panelinden **Zendesk** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-sso-for-zendesk"></a>Zendesk için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Zendesk ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Zendesk içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Zendesk ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Zendesk içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Zendesk ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -71,8 +71,8 @@ Azure AD SSO 'yu Zendesk ile yapılandırmak ve test etmek için aşağıdaki ya
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Zendesk** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **Zendesk** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -90,7 +90,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Zendesk uygulaması, SAML onaylamalarını belirli bir biçimde bekliyor. Zorunlu SAML özniteliği yoktur ancak isteğe bağlı olarak, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden Yönetim yapabilirsiniz. **SAML Ile tek Sign-On ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, düzenleme simgesi seçili olan kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
     > [!NOTE]
     > Uzantı özniteliklerini, Azure AD 'de olmayan öznitelikleri varsayılan olarak eklemek için kullanabilirsiniz. **Zendesk** 'in kabul ettiği SAML özniteliklerinin tüm listesini almak için [SAML Içinde ayarlayabilirler Kullanıcı öznitelikleri](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-) ' ne tıklayın.
@@ -111,25 +111,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Zendesk 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Zendesk**' i seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde **Zendesk** ' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -139,9 +139,9 @@ Bu bölümde, Zendesk 'e erişim vererek Azure çoklu oturum açma özelliğini 
 
 ## <a name="configure-zendesk-sso"></a>Zendesk SSO 'yu yapılandırma
 
-1. Bu yapılandırmayı **Zendesk**içinde otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Bu yapılandırmayı **Zendesk** içinde otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-    ![image](./media/target-process-tutorial/install_extension.png)
+    ![Ekran görüntüsü uzantıyı yükler düğmesini gösterir.](./media/target-process-tutorial/install_extension.png)
 
 1. Tarayıcıya Uzantı eklendikten sonra, **Kurulum Zendesk** öğesine tıkladığınızda sizi Zendesk uygulamasına yönlendirirsiniz. Buradan, Zendesk 'de oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
 
@@ -151,11 +151,11 @@ Bu bölümde, Zendesk 'e erişim vererek Azure çoklu oturum açma özelliğini 
 
 1. **Zendesk Yönetim merkezinde** **güvenlik** sekmesinde **güvenlik ayarları** ' na tıklayın.
 
-    ![Güvenlik](./media/zendesk-tutorial/settings.png "Güvenlik")
+    ![Ekran görüntüsünde, güvenlik ayarları seçiliyken Zendesk Yönetim Merkezi görüntülenir.](./media/zendesk-tutorial/settings.png "Güvenlik")
 
-1. **Çoklu oturum açma** sayfasına gidin ve **SAML**'da **Düzenle** ' ye tıklayın.
+1. **Çoklu oturum açma** sayfasına gidin ve **SAML** 'da **Düzenle** ' ye tıklayın.
 
-    ![Güvenlik](./media/zendesk-tutorial/saml-sso.png "Güvenlik")
+    ![Ekran görüntüsü, Düzenle seçiliyken çoklu oturum açma sayfasını gösterir.](./media/zendesk-tutorial/saml-sso.png "Güvenlik")
 
 1. **SSO** sayfasında aşağıdaki adımları gerçekleştirin.
 
@@ -167,7 +167,7 @@ Bu bölümde, Zendesk 'e erişim vererek Azure çoklu oturum açma özelliğini 
 
     c. **Uzaktan oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
-    d. **Kaydet**’e tıklayın.
+    d. **Kaydet** ’e tıklayın.
 
 ### <a name="create-zendesk-test-user"></a>Zendesk test kullanıcısı oluşturma
 

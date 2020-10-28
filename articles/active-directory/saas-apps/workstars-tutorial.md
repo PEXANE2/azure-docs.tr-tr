@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: dce05bbdaf00fe15d5809b4d353f57c2bbd55b40
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9f53072b106bedb8e49ba7f3728f39137f848a58
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520073"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Öğretici: Iş yıldızlarla Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Iş yıldızlarını Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Iş yıldızları ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -128,13 +128,13 @@ Azure AD çoklu oturum açma 'yı çalışma yıldıza göre yapılandırmak iç
 
 2. Ana araç çubuğunda, **Ayarlar** ' a tıklayın.
 
-    ![Çalışma yıldızları ayarları](./media/workstars-tutorial/tutorial_workstars_sett.png)
+    ![Ekran görüntüsü ayarlar düğmesini gösterir.](./media/workstars-tutorial/tutorial_workstars_sett.png)
 
 3. **Oturum açma**  >  **ayarları** ' na gidin.
 
     ![İş yıldızları oturum açma](./media/workstars-tutorial/tutorial_workstars_signon.png)
 
-    ![Çalışma yıldızları ayarları](./media/workstars-tutorial/tutorial_workstars_settings.png)
+    ![Ekran görüntüsü, ayarları seçebileceğiniz çoklu oturum açma bölümünü gösterir.](./media/workstars-tutorial/tutorial_workstars_settings.png)
 
 4. **Çoklu oturum açma (SAML)-ayarlar** sayfasında, aşağıdaki adımları uygulayın:
     

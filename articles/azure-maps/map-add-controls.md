@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 08a3b72bb137713721345ecb52cf4e1bb7afcdc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a225d4ea19cccea114e47cc61a8055d28e8cd99
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310773"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895299"
 ---
 # <a name="add-controls-to-a-map"></a>Haritaya denetim ekleme
 
-Bu makalede, bir haritaya denetimleri nasıl ekleyeceğiniz gösterilir. Ayrıca, tüm denetimlerle ve [Stil seçiciyle](https://docs.microsoft.com/azure/azure-maps/choose-map-style)bir harita oluşturmayı öğreneceksiniz.
+Bu makalede, bir haritaya denetimleri nasıl ekleyeceğiniz gösterilir. Ayrıca, tüm denetimlerle ve [Stil seçiciyle](./choose-map-style.md)bir harita oluşturmayı öğreneceksiniz.
 
 ## <a name="add-zoom-control"></a>Yakınlaştırma denetimi Ekle
 
@@ -142,4 +142,3 @@ Tam kod için aşağıdaki makalelere bakın:
 
 > [!div class="nextstepaction"]
 > [Baloncuk katmanı ekleme](map-add-bubble-layer.md)
-

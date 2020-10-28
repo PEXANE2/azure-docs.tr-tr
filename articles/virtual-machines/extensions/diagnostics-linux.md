@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448191"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893412"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama Uzantısı’nı kullanma
 
@@ -39,6 +39,9 @@ Bu uzantı, hem Azure dağıtım modelleriyle birlikte çalışmaktadır.
 ## <a name="installing-the-extension-in-your-vm"></a>Uzantıyı sanal makinenize yükleme
 
 Bu uzantıyı Azure PowerShell cmdlet 'lerini, Azure CLı betikleri, ARM şablonlarını veya Azure portal kullanarak etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [uzantı özellikleri](features-linux.md).
+
+>[!NOTE]
+>Tanılama sanal makine uzantısının belirli bileşenleri, [log ANALYTICS VM Uzantısı](./oms-linux.md)'nda da gönderilir. Bu mimaride, her iki uzantı aynı ARM şablonunda örneklendiğinden çakışmalar meydana çıkabilir. Bu yükleme zamanı çakışmalarını önlemek için, uzantıların sırayla yüklendiğinden emin olmak için [ `dependsOn` yönergesini](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) kullanın. Uzantılar her iki sırayla yüklenebilir.
 
 Bu yükleme yönergeleri ve [indirilebilir bir örnek yapılandırma](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) lad 3,0 'yi şu şekilde yapılandırın:
 
@@ -65,10 +68,10 @@ Desteklenen dağıtımlar ve sürümler:
 - 9, 8, 7
 - RHEL 7, 6.7 +
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-* **Azure Linux Aracısı sürüm 2.2.0 veya üzeri**. Azure VM Linux Galeri görüntülerinin çoğu, sürüm 2.2.7 veya üstünü içerir. `/usr/sbin/waagent -version`VM 'de yüklü sürümü onaylamak için ' i çalıştırın. VM, Konuk aracısının eski bir sürümünü çalıştırıyorsa, güncelleştirmek için [Bu yönergeleri](./update-linux-agent.md) izleyin.
-* **Azure CLI**. Makinenizde [Azure CLI ortamını ayarlayın](/cli/azure/install-azure-cli) .
+* **Azure Linux Aracısı sürüm 2.2.0 veya üzeri** . Azure VM Linux Galeri görüntülerinin çoğu, sürüm 2.2.7 veya üstünü içerir. `/usr/sbin/waagent -version`VM 'de yüklü sürümü onaylamak için ' i çalıştırın. VM, Konuk aracısının eski bir sürümünü çalıştırıyorsa, güncelleştirmek için [Bu yönergeleri](./update-linux-agent.md) izleyin.
+* **Azure CLI** . Makinenizde [Azure CLI ortamını ayarlayın](/cli/azure/install-azure-cli) .
 * Henüz yoksa wget komutu: komutunu çalıştırın `sudo apt-get install wget` .
 * Mevcut bir Azure aboneliği ve verilerin depolanması için mevcut bir genel amaçlı depolama hesabı.  Genel amaçlı depolama hesapları, gereken tablo depolamayı destekler.  BLOB depolama hesabı çalışmayacak.
 
@@ -172,7 +175,7 @@ Korumalı veya ortak ayarlarınızı değiştirdikten sonra aynı komutu çalı�
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>Uzantının önceki sürümlerinden geçiş
 
-Uzantının en son sürümü **3,0**' dir. **Tüm eski sürümler (2. x) kullanım dışıdır ve 31 temmuz 2018 tarihinde veya sonrasında yayımdan kaldırılmış olabilir**.
+Uzantının en son sürümü **3,0** ' dir. **Tüm eski sürümler (2. x) kullanım dışıdır ve 31 temmuz 2018 tarihinde veya sonrasında yayımdan kaldırılmış olabilir** .
 
 > [!IMPORTANT]
 > Bu uzantı, uzantının yapılandırmasındaki son değişiklikleri tanıtır. Uzantının güvenliğini artırmak için bu tür bir değişiklik yapılmıştır; Sonuç olarak, 2. x ile geriye dönük uyumluluk korunamadı. Ayrıca, bu uzantının uzantı yayımcısı 2. x sürümleri için yayımcıdan farklıdır.
@@ -202,7 +205,7 @@ Bu yapılandırma bilgileri kümesi, genel görünümden korunması gereken hass
 }
 ```
 
-Name | Değer
+Ad | Değer
 ---- | -----
 storageAccountName | Verilerin uzantı tarafından yazıldığı depolama hesabının adı.
 storageAccountEndPoint | seçim Depolama hesabının bulunduğu bulutu tanımlayan uç nokta. Bu ayar yoksa, LAD varsayılan olarak Azure genel bulutu 'na sahiptir `https://core.windows.net` . Azure Almanya, Azure Kamu veya Azure Çin 'de bir depolama hesabı kullanmak için bu değeri uygun şekilde ayarlayın.
@@ -461,7 +464,7 @@ Bu isteğe bağlı bölüm, rastgele [OMI](https://github.com/Microsoft/omi) sor
 ------- | -----
 ad alanı | seçim Sorgunun yürütülmesi gereken OMı ad alanı. Belirtilmemişse, varsayılan değer, [System Center platformlar arası sağlayıcılar](https://github.com/Microsoft/SCXcore)tarafından uygulanan "root/SCX" dır.
 sorgu | Yürütülecek OMı sorgusu.
-tablo | seçim Azure Storage tablosu, belirtilen depolama hesabında (bkz. [korumalı ayarlar](#protected-settings)).
+table | seçim Azure Storage tablosu, belirtilen depolama hesabında (bkz. [korumalı ayarlar](#protected-settings)).
 frequency | seçim Sorgunun yürütülmesi arasındaki saniye sayısı. Varsayılan değer 300 ' dir (5 dakika); minimum değer 15 saniyedir.
 yapma | seçim Ham örnek ölçüm sonuçlarının yayımlanması gereken ek havuz adlarının virgülle ayrılmış bir listesi. Bu ham örneklerin toplaması, uzantı veya Azure ölçümleri tarafından hesaplanmadı.
 
@@ -487,7 +490,7 @@ Günlük dosyalarının yakalanmasını denetler. LAD, dosyaya yazıldığı ve 
 Öğe | Değer
 ------- | -----
  dosyası | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez. ' Omsagent ' Kullanıcı hesabının dosya yoluna okuma erişimi olmalıdır.
-tablo | seçim Belirtilen depolama hesabında (korumalı yapılandırmada belirtildiği gibi), dosyanın "Tail" içindeki yeni satırların yazıldığı Azure Storage tablosu.
+table | seçim Belirtilen depolama hesabında (korumalı yapılandırmada belirtildiği gibi), dosyanın "Tail" içindeki yeni satırların yazıldığı Azure Storage tablosu.
 yapma | seçim Günlük satırlarının gönderildiği ek havuz adlarının virgülle ayrılmış bir listesi.
 
 "Table" veya "Havuzlar" ya da her ikisi de belirtilmelidir.
@@ -578,7 +581,7 @@ TransfersPerSecond | Saniye başına okuma veya yazma işlemi
 
 Tüm dosya sistemleri genelinde toplanmış değerler, ayarıyla elde edilebilir `"condition": "IsAggregate=True"` . "/Mnt" gibi belirli bir bağlı dosya sisteminin değerleri ayarıyla elde edilebilir `"condition": 'Name="/mnt"'` . 
 
-**Note**: JSON yerine Azure portalını kullanıyorsanız, doğru koşul alanı formu adı = '/mnt ' olur
+**Note** : JSON yerine Azure portalını kullanıyorsanız, doğru koşul alanı formu adı = '/mnt ' olur
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>Disk sınıfı için yerleşik ölçümler
 

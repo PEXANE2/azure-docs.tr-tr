@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: f26f4569fb9d4350216cfb92ce6afe6893cb8a4c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c143a5af40097039c70c58adba4cb21f687d3fa6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92506284"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893191"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>Öğretici: PlanMyLeave ile tümleştirme Azure Active Directory
 
@@ -63,13 +63,13 @@ PlanMyLeave 'ın Azure AD 'nin tümleştirilmesini yapılandırmak için Galeri 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **planmyleave**yazın ve sonuç panelinden **planmyleave** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **planmyleave** yazın ve sonuç panelinden **planmyleave** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde PlanMyLeave](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre PlanMyLeave ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre PlanMyLeave ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve PlanMyLeave içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı PlanMyLeave ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -87,7 +87,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açmayı PlanMyLeave ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **planmyleave** Uygulama tümleştirmesini sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **planmyleave** Uygulama tümleştirmesini sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -128,13 +128,13 @@ Azure AD çoklu oturum açmayı PlanMyLeave ile yapılandırmak için aşağıda
 
 1. Farklı bir Web tarayıcısı penceresinde, PlanMyLeave kiracınızda yönetici olarak oturum açın.
 
-2. **Sistem kurulumuna**gidin. Ardından **güvenlik yönetimi** bölümünde **Şirket SAML ayarları** ' na tıklayın.
+2. **Sistem kurulumuna** gidin. Ardından **güvenlik yönetimi** bölümünde **Şirket SAML ayarları** ' na tıklayın.
 
-    ![Uygulama tarafında tek Sign-On yapılandırma](./media/planmyleave-tutorial/tutorial_planmyleave_002.png) 
+    !["Güvenlik yönetimi" bölümünün vurgulandığı "sistem kurulumu" sayfasını ve "Şirket S A M L ayarları" eylemini gösteren ekran görüntüsü.](./media/planmyleave-tutorial/tutorial_planmyleave_002.png) 
 
 3. **SAML ayarları** bölümünde Düzenleyici simgesi ' ne tıklayın.
 
-    ![Uygulama tarafında tek Sign-On yapılandırma](./media/planmyleave-tutorial/tutorial_planmyleave_003.png)
+    ![Bölümün sağ üst köşesinde "Düzenleyici" simgesi seçili olan "S A M L ayarları" bölümünü gösteren ekran görüntüsü.](./media/planmyleave-tutorial/tutorial_planmyleave_003.png)
 
 4. **SAML ayarlarını Güncelleştir** bölümünde aşağıdaki adımları uygulayın:
 
@@ -144,15 +144,15 @@ Azure AD çoklu oturum açmayı PlanMyLeave ile yapılandırmak için aşağıda
 
     b.  İndirilen meta verilerinizi açın,  **X509Certificate** değerini kopyalayın ve sonra **sertifika** metin kutusuna yapıştırın.
 
-    c. "**Etkin**" i "**Evet**" olarak ayarlayın.
+    c. " **Etkin** " i " **Evet** " olarak ayarlayın.
 
-    d. **Kaydet**’e tıklayın. 
+    d. **Kaydet** ’e tıklayın. 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -164,28 +164,28 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, PlanMyLeave 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra **planmyleave**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin, sonra **planmyleave** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Planmyleave**' ı seçin.
+2. Uygulamalar listesinde **Planmyleave** ' ı seçin.
 
     ![Uygulamalar listesindeki PlanMyLeave bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 

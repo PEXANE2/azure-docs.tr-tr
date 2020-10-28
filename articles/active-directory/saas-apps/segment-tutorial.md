@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 85428f682b5a5e179b5c501982749611131c6aed
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fe8acfd1bfd14f339a0109cab215b8a9ab65256f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674418"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893957"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>Öğretici: kesimle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, segmenti Azure Active Directory (Azure AD) ile tümleştirmeyi 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -136,19 +136,19 @@ Bu bölümde, segmente erişim izni vererek Azure çoklu oturum açma özelliği
 
 1. **Ayarlar simgesine** tıklayın ve **kimlik doğrulaması** ' na gidin ve **Bağlantılar** ' a tıklayın.
 
-    ![Segment yapılandırması](./media/segment-tutorial/segment1.PNG)
+    !["Ayarlar" simgesinin seçili olduğunu gösteren ekran görüntüsü ve "kimlik doğrulama" menüsünden "bağlantılar" seçilidir.](./media/segment-tutorial/segment1.PNG)
 
 1. **Yeni bağlantı ekle** ' ye tıklayın.
 
-    ![Segment yapılandırması](./media/segment-tutorial/segment2.PNG)
+    !["Yeni bağlantı ekle" düğmesinin seçili olduğu "bağlantılar" bölümünü gösteren ekran görüntüsü.](./media/segment-tutorial/segment2.PNG)
 
 1. Yapılandırma bağlantısı olarak **SAML 2,0** ' i seçin ve **Bağlantı Seç** düğmesine tıklayın.
 
-    ![Segment yapılandırması](./media/segment-tutorial/segment3.PNG)
+    !["Bağlantı Seç" bölümünün "S A M L 2,0" ve "bağlantı Seç" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/segment-tutorial/segment3.PNG)
 
 1. Aşağıdaki sayfada aşağıdaki adımları gerçekleştirin:
 
-    ![Segment yapılandırması](./media/segment-tutorial/segment4.PNG)
+    !["Tek Sign-On U R L" ve "Izleyici U R L" metin kutuları vurgulanmış ve "Ileri" düğmesi seçili olan "kimlik sağlayıcısını Yapılandır" sayfasını gösteren ekran görüntüsü.](./media/segment-tutorial/segment4.PNG)
 
     a. **Tek Sign-On URL** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** iletişim kutusundaki **yanıt URL 'si** kutusuna yapıştırın.
 

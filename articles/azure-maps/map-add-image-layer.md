@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 4116028cc8c4668c897d7de7bbffb607b5e5daba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43de832095e2c2dd674a156da914ed26f1e472d0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310552"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892953"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Haritaya görüntü katmanı ekleme
 
@@ -27,7 +27,7 @@ Bu makalede bir görüntünün sabit bir koordinat kümesiyle nasıl kaplama yap
 * Hava durumu radar resimleri
 
 > [!TIP]
-> Bir [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer) , bir harita üzerindeki görüntüyü kaplama için kolay bir yoldur. Tarayıcıların büyük bir görüntüyü yükleme güçlüğü olabileceğini unutmayın. Bu durumda, görüntünüzü kutucuklara bölmek ve bir [Tilelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)olarak haritaya yüklemek göz önünde bulundurun.
+> Bir [ımagelayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) , bir harita üzerindeki görüntüyü kaplama için kolay bir yoldur. Tarayıcıların büyük bir görüntüyü yükleme güçlüğü olabileceğini unutmayın. Bu durumda, görüntünüzü kutucuklara bölmek ve bir [Tilelayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer)olarak haritaya yüklemek göz önünde bulundurun.
 
 Görüntü katmanı aşağıdaki görüntü biçimlerini destekler:
 
@@ -38,7 +38,7 @@ Görüntü katmanı aşağıdaki görüntü biçimlerini destekler:
 
 ## <a name="add-an-image-layer"></a>Görüntü katmanı ekleme
 
-Aşağıdaki kod, haritadaki [1922 ' den bir Newark, New Jersey haritasının](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) bir görüntüsünü yer paylaşımlı olarak yer alır. Bir [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer) , BIR görüntüye URL geçirerek ve biçimdeki dört köşelerin koordinatları ile oluşturulur `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` .
+Aşağıdaki kod, haritadaki [1922 ' den bir Newark, New Jersey haritasının](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) bir görüntüsünü yer paylaşımlı olarak yer alır. Bir [ımagelayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) , BIR görüntüye URL geçirerek ve biçimdeki dört köşelerin koordinatları ile oluşturulur `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` .
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -64,7 +64,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 Bu örnek, KML zemin kaplama bilgilerinin haritada görüntü katmanı olarak nasıl ekleneceğini gösterir. KML zemin Yerpaylaşımları, Kuzey, Güney, Doğu ve Batı koordinatları ve saat yönünde bir döndürme sağlar. Ancak, görüntü katmanı görüntünün her köşesi için koordinatları bekler. Bu örnekteki KML zemin kaplaması, Chartres Cathedral içindir ve [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)'dan kaynaklıdır.
 
-Kod, `getCoordinatesFromEdges` [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer) sınıfından statik işlevi kullanır. KML zemin kaplamanın Kuzey, Güney, Doğu, Batı ve döndürme bilgilerini kullanarak görüntünün dört köşesini hesaplar.
+Kod, `getCoordinatesFromEdges` [ımagelayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) sınıfından statik işlevi kullanır. KML zemin kaplamanın Kuzey, Güney, Doğu, Batı ve döndürme bilgilerini kullanarak görüntünün dört köşesini hesaplar.
 
 <br/>
 
@@ -85,10 +85,10 @@ Görüntü katmanında birçok stil seçeneği vardır. İşte denemek için bir
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Imagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+> [Imagelayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 > [!div class="nextstepaction"]
-> [Imagelayeroptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions)
+> [Imagelayeroptions](/javascript/api/azure-maps-control/atlas.imagelayeroptions)
 
 Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makalelere bakın:
 

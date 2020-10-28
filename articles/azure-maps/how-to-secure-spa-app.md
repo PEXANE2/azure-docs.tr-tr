@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 000f6a80a2cee14abc3d954de479dd87b1edf876
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c39104912c99b199d38cf489bb61d64e83b89286
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090259"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895605"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Etkileşimli olmayan oturum açma ile tek sayfalı bir uygulamanın güvenliğini sağlama
 
@@ -30,15 +30,15 @@ Aşağıdaki kılavuz, Kullanıcı Azure AD 'de oturum açarken Azure Maps uygul
 
 Azure AD 'den kimlik doğrulamasından sorumlu bir güvenli Web hizmeti uygulaması oluşturun. 
 
-1. Azure portal bir işlev oluşturun. Daha fazla bilgi için bkz. [Azure Işlevi oluşturma](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function).
+1. Azure portal bir işlev oluşturun. Daha fazla bilgi için bkz. [Azure Işlevi oluşturma](../azure-functions/functions-create-first-azure-function.md).
 
-2. Azure işlevindeki CORS ilkesini tek sayfalı Web uygulaması tarafından erişilebilir olacak şekilde yapılandırın. Bu, tarayıcı istemcilerinin Web uygulamanızın izin verilen kaynaklarına güvenmemesini sağlar. Bkz. [CORS Işlevselliği ekleme](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api#add-cors-functionality).
+2. Azure işlevindeki CORS ilkesini tek sayfalı Web uygulaması tarafından erişilebilir olacak şekilde yapılandırın. Bu, tarayıcı istemcilerinin Web uygulamanızın izin verilen kaynaklarına güvenmemesini sağlar. Bkz. [CORS Işlevselliği ekleme](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
-3. Azure AD 'de kimlik doğrulaması yapmak için bir hizmet sorumlusu oluşturulmasını etkinleştirmek üzere Azure işlevinde [sistem tarafından atanan bir kimlik ekleyin](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) .  
+3. Azure AD 'de kimlik doğrulaması yapmak için bir hizmet sorumlusu oluşturulmasını etkinleştirmek üzere Azure işlevinde [sistem tarafından atanan bir kimlik ekleyin](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) .  
 
 4. Azure haritalar hesabına sistem tarafından atanan kimlik için rol tabanlı erişim verin. Ayrıntılar için bkz. [rol tabanlı erişim verme](#grant-role-based-access) .
 
-5. Desteklenen mekanizmalardan veya REST protokolden biriyle sistem tarafından atanan kimlik kullanarak Azure Maps erişim belirteçlerini almak için Azure işlevi için kod yazın. Bkz. [Azure kaynakları için belirteçleri alma](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
+5. Desteklenen mekanizmalardan veya REST protokolden biriyle sistem tarafından atanan kimlik kullanarak Azure Maps erişim belirteçlerini almak için Azure işlevi için kod yazın. Bkz. [Azure kaynakları için belirteçleri alma](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
 
     Örnek REST protokol örneği:
 
@@ -64,8 +64,8 @@ Azure AD 'den kimlik doğrulamasından sorumlu bir güvenli Web hizmeti uygulama
 
 6. Azure işlevi HttpTrigger için güvenliği yapılandırma
 
-   * [İşlev erişim anahtarı oluşturma](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#authorization-keys)
-   * Üretimde Azure işlevi için [GÜVENLI HTTP uç noktası](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production) .
+   * [İşlev erişim anahtarı oluşturma](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#authorization-keys)
+   * Üretimde Azure işlevi için [GÜVENLI HTTP uç noktası](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production) .
    
 7. Web uygulaması Azure Maps web SDK 'sını yapılandırın. 
 
@@ -102,25 +102,25 @@ Azure AD 'den kimlik doğrulamasından sorumlu bir güvenli Web hizmeti uygulama
 
 ## <a name="grant-role-based-access"></a>Rol tabanlı erişim verme
 
-Sistem tarafından atanan kimliği bir veya daha fazla Azure rol tanımına atayarak *Azure rol tabanlı erişim denetimi (Azure RBAC)* erişimi verirsiniz. Azure haritalar için kullanılabilen Azure rol tanımlarını görüntülemek için **erişim denetimi 'ne (IAM)** gidin. **Roller**' i seçin ve ardından *Azure Maps*ile başlayan roller için arama yapın.
+Sistem tarafından atanan kimliği bir veya daha fazla Azure rol tanımına atayarak *Azure rol tabanlı erişim denetimi (Azure RBAC)* erişimi verirsiniz. Azure haritalar için kullanılabilen Azure rol tanımlarını görüntülemek için **erişim denetimi 'ne (IAM)** gidin. **Roller** ' i seçin ve ardından *Azure Maps* ile başlayan roller için arama yapın.
 
-1. **Azure haritalar hesabınıza**gidin. **Erişim denetimi (IAM)**  >  **rol atamasını**seçin.
+1. **Azure haritalar hesabınıza** gidin. **Erişim denetimi (IAM)**  >  **rol atamasını** seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Azure RBAC kullanarak erişim verme](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. **Rol atamaları** sekmesinde, **rol**altında **Azure Maps veri okuyucusu** veya **Azure haritalar veri katılımcısı**gibi yerleşik bir Azure Maps rol tanımı seçin. **Erişim ata**altında **işlev uygulaması**' yi seçin. Asıl ada göre ' yi seçin. Sonra **Kaydet**'i seçin.
+2. **Rol atamaları** sekmesinde, **rol** altında **Azure Maps veri okuyucusu** veya **Azure haritalar veri katılımcısı** gibi yerleşik bir Azure Maps rol tanımı seçin. **Erişim ata** altında **işlev uygulaması** ' yi seçin. Asıl ada göre ' yi seçin. Sonra **Kaydet** 'i seçin.
 
-   * [Rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)ile ilgili ayrıntılara bakın.
+   * [Rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md)ile ilgili ayrıntılara bakın.
 
 > [!WARNING]
-> Azure Maps yerleşik rol tanımları birçok Azure haritalar REST API 'Lerine çok büyük bir yetkilendirme erişimi sağlar. API 'Lerin en düşük düzeyde erişimini kısıtlamak için bkz. [özel rol tanımı oluşturma ve sistem tarafından atanan kimliği](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) özel rol tanımına atama. Bu, uygulamanın Azure Maps 'e erişmesi için gereken en düşük ayrıcalığa olanak sağlar.
+> Azure Maps yerleşik rol tanımları birçok Azure haritalar REST API 'Lerine çok büyük bir yetkilendirme erişimi sağlar. API 'Lerin en düşük düzeyde erişimini kısıtlamak için bkz. [özel rol tanımı oluşturma ve sistem tarafından atanan kimliği](../role-based-access-control/custom-roles.md) özel rol tanımına atama. Bu, uygulamanın Azure Maps 'e erişmesi için gereken en düşük ayrıcalığa olanak sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Tek sayfalı uygulama senaryosuna daha fazla anlama:
 > [!div class="nextstepaction"]
-> [Tek sayfalı uygulama](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview)
+> [Tek sayfalı uygulama](../active-directory/develop/scenario-spa-overview.md)
 
 Azure haritalar hesabınız için API kullanım ölçümlerini bulun:
 > [!div class="nextstepaction"]

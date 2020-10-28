@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ec62461e5a12f0c566becdfc7d9a1464433ee656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88afb380f1aabf0c91e9d5abb0430972743eb6c2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311028"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895758"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Bir raster eşlemesinde özel verileri işleme
 
-Bu makalede, bir raster haritasının üzerine Yerpaylaşımları sağlamak için görüntü oluşturma işleviyle [statik görüntü hizmetinin](https://docs.microsoft.com/rest/api/maps/render/getmapimage)nasıl kullanılacağı açıklanmaktadır. Görüntü birleştirme, özel Pushpin, etiket ve geometri Yerpaylaşımları gibi ek verilerle bir raster kutucuğu geri alma özelliği içerir.
+Bu makalede, bir raster haritasının üzerine Yerpaylaşımları sağlamak için görüntü oluşturma işleviyle [statik görüntü hizmetinin](/rest/api/maps/render/getmapimage)nasıl kullanılacağı açıklanmaktadır. Görüntü birleştirme, özel Pushpin, etiket ve geometri Yerpaylaşımları gibi ek verilerle bir raster kutucuğu geri alma özelliği içerir.
 
-Özel pushpın 'leri, etiketleri ve geometri yer paylaşımlarını işlemek için Postman uygulamasını kullanabilirsiniz. Yer paylaşımlarını depolamak ve işlemek için Azure Maps [veri hizmeti API 'lerini](https://docs.microsoft.com/rest/api/maps/data) kullanabilirsiniz.
+Özel pushpın 'leri, etiketleri ve geometri yer paylaşımlarını işlemek için Postman uygulamasını kullanabilirsiniz. Yer paylaşımlarını depolamak ve işlemek için Azure Maps [veri hizmeti API 'lerini](/rest/api/maps/data) kullanabilirsiniz.
 
 > [!Tip]
 > Azure Haritalar Web SDK 'sını kullanarak, bir Web sayfasında statik görüntü hizmetini kullanmaktan daha basit bir harita göstermek için çok daha uygun maliyetli hale gelir. Web SDK 'Sı harita kutucukları kullanır ve Kullanıcı haritayı yakınlaştırıp yakınlaşmadığı takdirde, genellikle harita yükü başına bir işlemin yalnızca bir bölümünü oluşturur. Azure Maps web SDK 'sının yatay kaydırmayı ve yakınlaştırmasını devre dışı bırakma seçenekleri olduğunu unutmayın. Ayrıca, Azure Maps web SDK 'Sı statik bir harita Web hizmetinden daha zengin bir veri görselleştirme seçenekleri kümesi sağlar.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma
 
@@ -41,9 +41,9 @@ Azure haritalar hesabı S0 katmanı, parametrenin yalnızca tek bir örneğini d
 
 Pushpın 'leri etiketlerle ve özel bir görüntüyle işlemek için şu adımları izleyin:
 
-1. İsteklerin depolayabileceği bir koleksiyon oluşturun. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin. Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin. 
+1. İsteklerin depolayabileceği bir koleksiyon oluşturun. Postman uygulamasında **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **koleksiyon** ' ı seçin. Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin. 
 
-2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Pushpin 'ler için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin. Sonra **Kaydet**' i seçin.
+2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. Pushpin 'ler için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin. Sonra **Kaydet** ' i seçin.
     
     ![Postman 'da istek oluşturma](./media/how-to-render-custom-data/postman-new.png)
 
@@ -62,7 +62,7 @@ Pushpın 'leri etiketlerle ve özel bir görüntüyle işlemek için şu adımla
 > [!Note]
 > Bu bölümdeki yordam, fiyatlandırma katmanı S1 ' te bir Azure Maps hesabı gerektirir.
 
-Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)'sini kullanarak yolu ve PIN konum bilgilerini elde edebilirsiniz. Yolu ve PIN verilerini karşıya yüklemek için aşağıdaki adımları izleyin.
+Ayrıca, [veri yükleme API](/rest/api/maps/data/uploadpreview)'sini kullanarak yolu ve PIN konum bilgilerini elde edebilirsiniz. Yolu ve PIN verilerini karşıya yüklemek için aşağıdaki adımları izleyin.
 
 1. Postman uygulamasında, önceki bölümde oluşturduğunuz koleksiyonda yeni bir sekme açın. Oluşturucu sekmesinde HTTP POST yöntemini seçin ve POST isteği yapmak için aşağıdaki URL 'YI girin:
 
@@ -172,7 +172,7 @@ Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploa
 > Bu bölümdeki yordam, fiyatlandırma katmanı S1 ' te bir Azure Maps hesabı gerektirir.
 
 
-[Yol parametresiyle](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)stil değiştiricilerini kullanarak bir çokgenin görünümünü değiştirebilirsiniz.
+[Yol parametresiyle](/rest/api/maps/render/getmapimage#uri-parameters)stil değiştiricilerini kullanarak bir çokgenin görünümünü değiştirebilirsiniz.
 
 1. Postman uygulamasında daha önce oluşturduğunuz koleksiyonda yeni bir sekme açın. Oluşturucu sekmesinde HTTP Al yöntemini seçin ve renk ve opaklık ile bir çokgen işlemek için bir GET isteği yapılandırmak üzere aşağıdaki URL 'YI girin:
     
@@ -192,7 +192,7 @@ Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploa
 > Bu bölümdeki yordam, fiyatlandırma katmanı S1 ' te bir Azure Maps hesabı gerektirir.
 
 
-PIN 'lerin görünümünü stil değiştiricileri ekleyerek değiştirebilirsiniz. Örneğin, raptik ve etiketlerini daha büyük veya küçük hale getirmek için `sc` "stil Ölçeği" değiştiricisini kullanın. Bu değiştirici sıfırdan büyük bir değer alır. 1 değeri standart ölçeğe sahiptir. 1 ' den büyük değerler, PIN 'leri daha büyük yapar ve 1 ' den küçük değerler bunları daha küçük hale getirir. Stil değiştiriciler hakkında daha fazla bilgi için bkz. [statik görüntü hizmeti yol parametreleri](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+PIN 'lerin görünümünü stil değiştiricileri ekleyerek değiştirebilirsiniz. Örneğin, raptik ve etiketlerini daha büyük veya küçük hale getirmek için `sc` "stil Ölçeği" değiştiricisini kullanın. Bu değiştirici sıfırdan büyük bir değer alır. 1 değeri standart ölçeğe sahiptir. 1 ' den büyük değerler, PIN 'leri daha büyük yapar ve 1 ' den küçük değerler bunları daha küçük hale getirir. Stil değiştiriciler hakkında daha fazla bilgi için bkz. [statik görüntü hizmeti yol parametreleri](/rest/api/maps/render/getmapimage#uri-parameters).
 
 
 Özel etiketlerle bir daire ve Pushpin işlemek için aşağıdaki adımları izleyin:
@@ -222,6 +222,5 @@ Benzer şekilde, diğer stil değiştiricilerini değiştirebilir, ekleyebilir v
 ## <a name="next-steps"></a>Sonraki adımlar
 
 
-* [Azure haritalar harita görüntüsünü Al API](https://docs.microsoft.com/rest/api/maps/render/getmapimage) belgelerini inceleyin.
-* Azure haritalar veri hizmeti hakkında daha fazla bilgi edinmek için bkz. [hizmet belgeleri](https://docs.microsoft.com/rest/api/maps/data).
-
+* [Azure haritalar harita görüntüsünü Al API](/rest/api/maps/render/getmapimage) belgelerini inceleyin.
+* Azure haritalar veri hizmeti hakkında daha fazla bilgi edinmek için bkz. [hizmet belgeleri](/rest/api/maps/data).

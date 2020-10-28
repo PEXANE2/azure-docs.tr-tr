@@ -11,21 +11,16 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: c0fe3c3808709de732bec8ce0599d380094405e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e01721b4b414455b47a394087192696e1ecb025
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368490"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892743"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Öğretici: geliştirme ortamınızda Azure Machine Learning kullanmaya başlayın (Bölüm 1/4)
 
-Bu *dört bölümden oluşan öğretici serisinde*, Azure bulut platformunda Azure Machine Learning ve işlerin temel aldığı Python Machine Learning görevlerinin temellerini öğrenirsiniz. Bu görevler arasında şunlar yer alır:
-
-1. Machine Learning için bir çalışma alanı ve yerel geliştirici ortamınızı ayarlayın.
-2. Python için Azure Machine Learning SDK kullanarak bulutta kod çalıştırın.
-3. Model eğitimi için kullandığınız Python ortamını yönetin.
-4. Verileri Azure 'a yükleyin ve eğitiminde bu verileri kullanın.
+Bu *dört bölümden oluşan öğretici serisinde* , Azure bulut platformunda Azure Machine Learning ve işlerin temel aldığı Python Machine Learning görevlerinin temellerini öğrenirsiniz. 
 
 Bu öğretici serisinin 1. bölümünde şunları yapmanız gerekir:
 
@@ -36,20 +31,22 @@ Bu öğretici serisinin 1. bölümünde şunları yapmanız gerekir:
 > * Yerel geliştirme ortamınızı yapılandırın.
 > * Bir işlem kümesi ayarlayın.
 
->[!NOTE]
-> Bu öğretici serisi, işlem yoğunluklu ve/veya reproducibility gerektiren Python *işleri tabanlı* makine öğrenimi görevlerine uygun Azure Machine Learning kavramlara odaklanır. Machine Learning görevleriniz bu profile uymuyorsa, Azure Machine Learning ilerlemek için [bir Azure Machine Learning işlem örneğinde Jupyıter veya RStudio işlevini](tutorial-1st-experiment-sdk-setup.md) kullanın.
+> [!NOTE]
+> Bu öğretici serisi, işlem yoğunluklu ve/veya reproducibility gerektiren Python *işleri tabanlı* makine öğrenimi görevlerine uygun Azure Machine Learning kavramlara odaklanır. Araştırmacı iş akışıyla daha fazla ilgileniyorsanız, bunun yerine [Azure Machine Learning işlem örneği üzerinde jupi veya RStudio](tutorial-1st-experiment-sdk-setup.md)kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning](https://aka.ms/AMLFree)deneyin.
 - Python ve [Machine Learning kavramlarıyla](concept-azure-machine-learning-architecture.md)benzerlik. Ortamları, eğitimi ve Puanlama örnekleri içerir.
-- Yerel bir geliştirme ortamı: Python yüklü bir dizüstü bilgisayar ve en sevdiğiniz IDE 'niz (örneğin, Visual Studio Code, Pylt veya Jupyter).
+- Visual Studio Code, Jupyıter veya Pydüğme gibi yerel geliştirme ortamı.
+- Python (sürüm 3,5 ile 3,7 arasında).
+
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK 'sını yükler
 
 Bu öğreticide, Python için Azure Machine Learning SDK 'sını kullanırız.
 
-Bu öğreticide kullanmak üzere bir ortam ayarlamak için size bildiğiniz (örneğin, Conda ve PIP) araçları kullanabilirsiniz. PIP ile Python için Azure Machine Learning SDK 'sını ortama yükler:
+Bu öğreticide kullanmak üzere bir Python ortamı ayarlamak için en tanıdık araçları (örneğin, Conda ve PIP) kullanabilirsiniz. PIP kullanarak Python için Azure Machine Learning SDK 'sını Python ortamınıza yüklemeyin:
 
 ```bash
 pip install azureml-sdk
@@ -79,7 +76,7 @@ tutorial
 Kodu etkileşimli bir oturumda veya bir Python dosyası olarak çalıştırabilirsiniz.
 
 >[!NOTE]
-> Yerel bir geliştirme ortamı (örneğin, dizüstü bilgisayar) kullandığınızda, aşağıdaki kodu ilk kez çalıştırdığınızda bir *cihaz kodu* kullanarak çalışma alanınızda kimlik doğrulaması yapmanız istenir. Ekrandaki yönergeleri takip edin.
+> Yerel bir geliştirme ortamı (örneğin, bilgisayarınız) kullandığınızda, aşağıdaki kodu ilk kez çalıştırdığınızda bir *cihaz kodu* kullanarak çalışma alanınızda kimlik doğrulaması yapmanız istenir. Ekrandaki yönergeleri takip edin.
 
 ```python
 # tutorial/01-create-workspace.py
@@ -102,7 +99,11 @@ cd <path/to/tutorial>
 python ./01-create-workspace.py
 ```
 
-Yukarıdaki kod parçacığını çalıştırdıktan sonra klasör yapınız şöyle görünür:
+> [!TIP]
+> Bu kodu çalıştırmak, aboneliğe erişiminizin olmadığı bir hata veriyorsa, bkz. kimlik doğrulama seçenekleri hakkında bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md?tab=python#create-multi-tenant) .
+
+
+*01-Create-Workspace.py* başarıyla çalıştırdıktan sonra klasör yapınız şöyle görünür:
 
 ```markdown
 tutorial
@@ -139,8 +140,7 @@ try:
     print('Found existing cluster, use it.')
 except ComputeTargetException:
     compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
-                                                            max_nodes=4, 
-                                                            idle_seconds_before_scaledown=2400)
+                                                           idle_seconds_before_scaledown=2400)
     cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
 
 cpu_cluster.wait_for_completion(show_output=True)
@@ -174,7 +174,13 @@ Bu kurulum öğreticisinde şunları yapabilirsiniz:
 - Yerel geliştirme ortamınızı ayarlayın.
 - Azure Machine Learning işlem kümesi oluşturuldu.
 
-Bir sonraki öğreticide, Azure Machine Learning işlem kümesine bir betik göndermenizi adım adım ilerlereceğiz.
+Bu öğreticinin diğer bölümlerinde şunları öğreneceksiniz:
+
+* Bölüm 2. Python için Azure Machine Learning SDK kullanarak bulutta kod çalıştırın.
+* Bölüm 3. Model eğitimi için kullandığınız Python ortamını yönetin.
+* Bölüm 4. Verileri Azure 'a yükleyin ve eğitiminde bu verileri kullanın.
+
+Azure Machine Learning işlem kümesine bir betik göndermeyi adım adım incelemek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Öğretici: "Hello World!" Çalıştır Azure 'da Python betiği](tutorial-1st-experiment-hello-world.md)

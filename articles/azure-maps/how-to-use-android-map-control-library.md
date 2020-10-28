@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2cda543781118a19ba4999e774b96ae81857f442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd2c714c2e16cb8a7a9c530e8e458c33218b1c2b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330936"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895503"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanmaya başlama Android SDK
 
 Azure Maps Android SDK, Android için bir vektör eşleme kitaplığıdır. Bu makale, Azure Maps Android SDK yükleme ve eşleme yükleme işlemlerinde size rehberlik eder.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma
 
@@ -36,10 +36,10 @@ Azure Haritalar Android SDK yüklemeden önce Android Studio indirin ve boş bir
 
 İlk olarak, boş bir etkinliğe sahip yeni bir proje oluşturun. Android Studio projesi oluşturmak için aşağıdaki adımları uygulayın:
 
-1. **Projenizi seçin**altında **telefon ve tablet**' yı seçin. Uygulamanız bu form faktörüyle çalışır.
-2. **Telefon ve tablet** sekmesinde **boş etkinlik**' i seçin ve ardından **İleri**' yi seçin.
-3. **Projenizi yapılandırın**altında, `API 21: Android 5.0.0 (Lollipop)` En düşük SDK olarak öğesini seçin. Bu, Azure Maps Android SDK tarafından desteklenen en eski sürümdür.
-4. Varsayılanı kabul edin `Activity Name` ve `Layout Name` **son**' u seçin.
+1. **Projenizi seçin** altında **telefon ve tablet** ' yı seçin. Uygulamanız bu form faktörüyle çalışır.
+2. **Telefon ve tablet** sekmesinde **boş etkinlik** ' i seçin ve ardından **İleri** ' yi seçin.
+3. **Projenizi yapılandırın** altında, `API 21: Android 5.0.0 (Lollipop)` En düşük SDK olarak öğesini seçin. Bu, Azure Maps Android SDK tarafından desteklenen en eski sürümdür.
+4. Varsayılanı kabul edin `Activity Name` ve `Layout Name` **son** ' u seçin.
 
 Android Studio yükleme ve yeni bir proje oluşturma hakkında daha fazla yardım için [Android Studio belgelerine](https://developer.android.com/studio/intro/) bakın.
 
@@ -47,7 +47,7 @@ Android Studio yükleme ve yeni bir proje oluşturma hakkında daha fazla yardı
 
 ## <a name="set-up-a-virtual-device"></a>Sanal cihaz ayarlama
 
-Android Studio, bilgisayarınızda bir sanal Android cihaz ayarlamanıza olanak sağlar. Bunun yapılması, geliştirme sırasında uygulamanızı test etmenize yardımcı olabilir. Bir sanal cihaz ayarlamak için, proje ekranınızın sağ üst köşesindeki Android sanal cihaz (AVD) Yöneticisi simgesini seçin ve ardından **sanal cihaz oluştur**' u seçin. Ayrıca, araç çubuğundan **Araçlar**  >  **Android**  >  **AVD Yöneticisi** ' ni seçerek AVD yöneticisine da ulaşabilirsiniz. **Telefonlar** kategorisinde, **Nexus 5x**' i seçin ve ardından **İleri**' yi seçin.
+Android Studio, bilgisayarınızda bir sanal Android cihaz ayarlamanıza olanak sağlar. Bunun yapılması, geliştirme sırasında uygulamanızı test etmenize yardımcı olabilir. Bir sanal cihaz ayarlamak için, proje ekranınızın sağ üst köşesindeki Android sanal cihaz (AVD) Yöneticisi simgesini seçin ve ardından **sanal cihaz oluştur** ' u seçin. Ayrıca, araç çubuğundan **Araçlar**  >  **Android**  >  **AVD Yöneticisi** ' ni seçerek AVD yöneticisine da ulaşabilirsiniz. **Telefonlar** kategorisinde, **Nexus 5x** ' i seçin ve ardından **İleri** ' yi seçin.
 
 [Android Studio belgelerinde](https://developer.android.com/studio/run/managing-avds)bir AVD ayarlama hakkında daha fazla bilgi edinebilirsiniz.
 
@@ -57,7 +57,7 @@ Android Studio, bilgisayarınızda bir sanal Android cihaz ayarlamanıza olanak 
 
 Uygulamanızı oluşturmanın bir sonraki adımı Android SDK Azure haritalar 'ı yüklemektir. SDK 'Yı yüklemek için şu adımları uygulayın:
 
-1. En üst düzey **Build. Gradle** dosyasını açın ve aşağıdaki kodu **tüm projeler**, **depolar** bloğu bölümüne ekleyin:
+1. En üst düzey **Build. Gradle** dosyasını açın ve aşağıdaki kodu **tüm projeler** , **depolar** bloğu bölümüne ekleyin:
 
     ```
     maven {
@@ -83,7 +83,7 @@ Uygulamanızı oluşturmanın bir sonraki adımı Android SDK Azure haritalar '�
         implementation "com.microsoft.azure.maps:mapcontrol:0.4"
         ```
     
-    4. Araç çubuğunda **dosyasına** gidin ve ardından **projeyi Gradle dosyalarıyla Eşitle**' ye tıklayın.
+    4. Araç çubuğunda **dosyasına** gidin ve ardından **projeyi Gradle dosyalarıyla Eşitle** ' ye tıklayın.
 3. Ana etkinliğe bir harita parçası ekleyin (Res \> Düzen \> etkinliği \_main.xml):
     
     ```XML
@@ -299,7 +299,7 @@ Haritada kaplama verileri eklemeyi öğrenin:
 > [Android haritasına sembol katmanı ekleme](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Android haritasına şekil ekleme](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Android haritasına şekil ekleme](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Android haritalar 'da harita stillerini değiştirme](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Android haritalar 'da harita stillerini değiştirme](./set-android-map-styles.md)

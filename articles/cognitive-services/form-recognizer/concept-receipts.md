@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 0382c7c7f7d068ea227397ae7accf4bc410de04a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16d90aea8edc47750dfb7e64de7b50885971f632
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761456"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893695"
 ---
 # <a name="receipt-concepts"></a>Makbuz kavramları
 
@@ -437,7 +437,7 @@ Makbuz API 'SI ile ayıklanan veriler çeşitli görevleri gerçekleştirmek iç
 
 Genellikle iş giderlerinin dosyalanması, girişlerin görüntülerinden verileri el ile girerek harcama süresini içerir. Alındı API 'SI ile bu işlemi kısmen otomatikleştirebilmek ve alındılarınızı hızlıca analiz etmek için ayıklanan alanları kullanabilirsiniz.  
 
-Makbuz API 'sinin basit bir JSON çıkışı olduğundan, ayıklanan alan değerlerini birden çok şekilde kullanabilirsiniz. Gider raporlarını önceden doldurmak için dahili gider uygulamalarıyla tümleştirin. Bu senaryo hakkında daha fazla bilgi edinmek için Acumatika 'ın alındı API 'sini kullanarak, daha [az bir işleme raporlama yapmasını](https://customers.microsoft.com/en-us/story/762684-acumatica-partner-professional-services-azure)öğrenin.  
+Makbuz API 'sinin basit bir JSON çıkışı olduğundan, ayıklanan alan değerlerini birden çok şekilde kullanabilirsiniz. Gider raporlarını önceden doldurmak için dahili gider uygulamalarıyla tümleştirin. Bu senaryo hakkında daha fazla bilgi edinmek için Acumatika 'ın alındı API 'sini kullanarak, daha [az bir işleme raporlama yapmasını](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)öğrenin.  
 
 ### <a name="auditing-and-accounting"></a>Denetim ve hesaplama 
 

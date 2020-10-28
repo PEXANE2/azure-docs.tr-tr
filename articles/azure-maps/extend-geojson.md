@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: e6cfbef3751a7b4256f689af0e5b3524ae6fa878
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87a5dec2582796c6703bfb37b76e26e53a1192c0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037465"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895792"
 ---
 # <a name="extended-geojson-geometries"></a>Genişletilmiş GeoJSON geometrileri
 
@@ -29,7 +29,7 @@ Azure Maps, coğrafi özelliklerin içinde ve üzerinde arama yapmak için güç
 * Seçeneğinin
 * Poligon
 
-Bazı Azure Maps API 'Leri, [geojson belirtiminin][1]parçası olmayan geometrileri kabul eder. Örneğin, geometri API 'si [Içinde arama](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) , daire ve çokgenler kabul eder.
+Bazı Azure Maps API 'Leri, [geojson belirtiminin][1]parçası olmayan geometrileri kabul eder. Örneğin, geometri API 'si [Içinde arama](/rest/api/maps/search/postsearchinsidegeometry) , daire ve çokgenler kabul eder.
 
 Bu makalede, Azure eşlemelerinin belirli geometrileri göstermek için [geojson belirtimini][1] nasıl genişlettiği hakkında ayrıntılı bir açıklama sunulmaktadır.
 

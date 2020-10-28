@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: a0347e76a39be8bada9ec59eb8accef17e784951
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ea53eda3863ea5164142fa0d37fff7be365a4d5c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738125"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894109"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -1832,7 +1832,7 @@ Azure yönetilen diskler, eklendiği sanal makinenin hata etki alanına otomatik
 
 Azure altyapı HA ve depolama hesapları kullanan bir SAP NetWeaver sisteminin örnek mimarisi şuna benzeyebilir:
 
-![SAP uygulamasına daha yüksek kullanılabilirlik elde etmek için Azure altyapı HA kullanma][planning-guide-figure-2900]
+![Azure altyapı HA ve depolama hesapları kullanan bir SAP NetWeaver sistemi gösteren diyagram.][planning-guide-figure-2900]
 
 Azure altyapı HA ve yönetilen diskler kullanan bir SAP NetWeaver sisteminin örnek mimarisi şuna benzeyebilir:
 
@@ -1892,7 +1892,7 @@ Yalnızca yönetilmeyen diskler: birçok SAP sistemini dağıtırken ve dağıt�
 
 ##### <a name="windows-logologo_windows-ha-on-windows"></a>![Windows logosu.][Logo_Windows] Windows 'da HA
 
-![Azure IaaS 'de SQL Server SAP NetWeaver Application HA mimarisi][planning-guide-figure-3200]
+![Azure IaaS 'de SQL Server SAP NetWeaver Application HA mimarisini gösteren diyagram.][planning-guide-figure-3200]
 
 Aşağıdaki Azure yapıları, altyapı sorunları ve ana bilgisayar düzeltme eki uygulama ile etkisini en aza indirmek için SAP NetWeaver sistemi için kullanılır:
 

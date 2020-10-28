@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: bbd46237e0b3b21b822b088c545c91f678a8034e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cbe6adc37025f0b727fa5f5d3ace46ed34afaa9e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792302"
+ms.locfileid: "92895231"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Güvenlik Merkezi tetikleyicilerine yönelik yanıtları otomatikleştirin
 
@@ -205,5 +205,5 @@ Bu makalede Logic Apps oluşturma, güvenlik merkezi 'nde yürütmesini otomatik
 - [Azure Güvenlik Merkezi'nde güvenlik önerileri](security-center-recommendations.md)
 - [Azure Güvenlik Merkezi'nde güvenlik uyarıları](security-center-alerts-overview.md)
 - [Azure Logic Apps hakkında](../logic-apps/logic-apps-overview.md)
-- [Logic Apps bağlayıcıları](/connectors/)
+- [Azure Logic Apps için Bağlayıcılar](../connectors/apis-list.md)
 - [İş akışı otomasyonu veri türleri şemaları](https://aka.ms/ASCAutomationSchemas)

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322304"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893990"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarısı kuralları için Kaynak Yöneticisi şablonu örnekleri
 
@@ -712,10 +712,10 @@ Bu örnekte, uyarı kuralı, **işlem** ölçümü Için **responseType** ve **a
 2. **Apiname** -farklı bir zaman serisi yalnızca **GetBlob** ve **PutBlob** boyut değerleri için izlenir.
 
 Örneğin, bu uyarı kuralı tarafından izlenen olası zaman serisinin bir birkaçı şunlardır:
-- Ölçüm = *işlemler*, responseType = *başarılı*, Apiname = *GetBlob*
-- Metric = *işlemler*, responseType = *başarılı*, Apiname = *PutBlob*
-- Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *GetBlob*
-- Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *PutBlob*
+- Ölçüm = *işlemler* , responseType = *başarılı* , Apiname = *GetBlob*
+- Metric = *işlemler* , responseType = *başarılı* , Apiname = *PutBlob*
+- Metric = *işlemler* , responseType = *sunucu zaman aşımı* , Apiname = *GetBlob*
+- Metric = *işlemler* , responseType = *sunucu zaman aşımı* , Apiname = *PutBlob*
 
 ### <a name="template-file"></a>Şablon dosyası
 
@@ -903,10 +903,10 @@ Bu örnekte, uyarı kuralı, **işlem** ölçümü Için **responseType** ve **a
 2. **Apiname** -farklı bir zaman serisi yalnızca **GetBlob** ve **PutBlob** boyut değerleri için izlenir.
 
 Örneğin, bu uyarı kuralı tarafından izlenen olası zaman serisinin bir birkaçı şunlardır:
-- Ölçüm = *işlemler*, responseType = *başarılı*, Apiname = *GetBlob*
-- Metric = *işlemler*, responseType = *başarılı*, Apiname = *PutBlob*
-- Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *GetBlob*
-- Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *PutBlob*
+- Ölçüm = *işlemler* , responseType = *başarılı* , Apiname = *GetBlob*
+- Metric = *işlemler* , responseType = *başarılı* , Apiname = *PutBlob*
+- Metric = *işlemler* , responseType = *sunucu zaman aşımı* , Apiname = *GetBlob*
+- Metric = *işlemler* , responseType = *sunucu zaman aşımı* , Apiname = *PutBlob*
 
 >[!NOTE]
 > Dinamik eşikleri kullanan ölçüm uyarısı kuralları için şu anda birden çok ölçüt desteklenmiyor.
@@ -3132,7 +3132,7 @@ Bu örnek, bir abonelikte bulunan bir Azure bölgesindeki sanal makinelerin bir 
 > [!NOTE]
 > `&amp`; & için HTML varlık başvurusudur. URL parametreleri hala tek bir & ayrılmıştır, ancak URL 'nin HTML 'de bahsetmeniz halinde bunu kodlamanız gerekir. Bu nedenle, pingURL parametre değerindeki "&" varsa, ";" ile kaçış yapmanız gerekir `&amp`
 
-### <a name="parameter-file"></a>Parametre dosyası
+### <a name="template-file"></a>Şablon dosyası
 
 ```json
 {
@@ -3234,8 +3234,6 @@ Bu örnek, bir abonelikte bulunan bir Azure bölgesindeki sanal makinelerin bir 
 }
 ```
 
-
-
 ### <a name="parameter-file"></a>Parametre dosyası
 
 ```json
@@ -3254,12 +3252,53 @@ Bu örnek, bir abonelikte bulunan bir Azure bölgesindeki sanal makinelerin bir 
         },
         "location": {
             "value": "Replace with the location of your Application Insights resource"
-        }
+        },
+        "pingText": {
+            "defaultValue": "Optional parameter that allows you to perform a content-match for the presence of a specific string within the content returned from a pingURL response",
+            "type": "String"
+        },
     }
 }
 ```
 
+İçerik eşleştirme parametresinin ek yapılandırması, `pingText` `Configuration/Webtest` şablon dosyasının bölümünde denetlenir. Özellikle aşağıdaki bölümde:
 
+```xml
+<RuleParameter Name=\"FindText\" Value=\"',parameters('pingText'), '\" />
+<RuleParameter Name=\"IgnoreCase\" Value=\"False\" />
+<RuleParameter Name=\"UseRegularExpression\" Value=\"False\" /> 
+<RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />
+```
+### <a name="test-locations"></a>Test konumları
+
+|Id                  | Bölge           |
+|:-------------------|:-----------------|
+| `emea-nl-ams-azr`  | West Europe      |
+| `us-ca-sjc-azr`    | Batı ABD          |
+| `emea-ru-msa-edge` | Güney Birleşik Krallık         |
+| `emea-se-sto-edge` | Batı Birleşik Krallık          |
+| `apac-sg-sin-azr`  | Güneydoğu Asya   |
+| `us-tx-sn1-azr`    | Orta Güney ABD |
+| `us-il-ch1-azr`    | Orta Kuzey ABD |
+| `emea-gb-db3-azr`  | Kuzey Avrupa     |
+| `apac-jp-kaw-edge` | Doğu Japonya       |
+| `emea-fr-pra-edge` | Orta Fransa   |
+| `emea-ch-zrh-edge` | Güney Fransa     |
+| `us-va-ash-azr`    | Doğu ABD          |
+| `apac-hk-hkn-azr`  | Doğu Asya        |
+| `us-fl-mia-edge`   | Central US       |
+| `latam-br-gru-edge`| Brezilya Güney      |
+| `emea-au-syd-edge` | Doğu Avustralya   |
+
+### <a name="us-government-test-locations"></a>ABD kamu test konumları
+
+|Id                    | Bölge           |
+|----------------------|------------------|
+| `usgov-va-azr`       | `USGov Virginia` |
+| `usgov-phx-azr`      | `USGov Arizona`  |
+| `usgov-tx-azr`       | `USGov Texas`    |
+| `usgov-ddeast-azr`   | `USDoD East`     |
+| `usgov-ddcentral-azr`| `USDoD Central`  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

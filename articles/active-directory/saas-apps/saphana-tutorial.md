@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 3d3a3a068a4efb2dea7d7df4bc2b88e2c33dc18b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 748566cf5b25157fcb8a2938a3f4bd307c930874
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672138"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Öğretici: SAP HANA ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ SAP HANA Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini SAP HANA ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -121,13 +121,13 @@ Azure AD çoklu oturum açmayı SAP HANA ile yapılandırmak için aşağıdaki 
 
 5. SAP HANA uygulama, SAML onaylamalarını belirli bir biçimde bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile tek Sign-On ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    !["Düzenle" simgesi seçili "Kullanıcı öznitelikleri" bölümünü gösteren ekran görüntüsü.](common/edit-attribute.png)
 
 6. **Kullanıcı öznitelikleri & talepler** Iletişim kutusundaki **Kullanıcı öznitelikleri** bölümünde aşağıdaki adımları uygulayın:
  
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **Düzenle simgesine** tıklayın.
 
-    ![image](./media/saphana-tutorial/tutorial_usermail.png)
+    !["Düzenle" simgesi seçili "Kullanıcı öznitelikleri & talepleri" iletişim kutusunu gösteren ekran görüntüsü.](./media/saphana-tutorial/tutorial_usermail.png)
 
     ![image](./media/saphana-tutorial/tutorial_usermailedit.png)
 
@@ -154,7 +154,7 @@ Azure AD çoklu oturum açmayı SAP HANA ile yapılandırmak için aşağıdaki 
 
     a. **Kimlik sağlayıcı bilgileri ekle** bölmesinde meta veri XML içeriğini (Azure Portal Indirdiğiniz) **meta veriler** kutusuna yapıştırın.
 
-    ![Kimlik sağlayıcısı ayarları ekle](./media/saphana-tutorial/sap2.png)
+    !["Meta veriler" ve "ad" kutuları vurgulanmış olan "kimlik sağlayıcı bilgilerini ekle" bölmesini gösteren ekran görüntüsü.](./media/saphana-tutorial/sap2.png)
 
     b. XML belgesinin içeriği geçerliyse, ayrıştırma işlemi, **genel veri** ekran alanındaki **konu, varlık kimliği ve veren** alanları için gereken bilgileri ayıklar. Ayrıca, **hedef** ekran alanındaki URL alanları için gereken bilgileri (örneğin, **temel URL ve tekeroturum URL 'si (*)** alanlarını da ayıklar.
 

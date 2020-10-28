@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 19db4fb0d75369a0f272eef1180e86f47d45d284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21fd5f5c94b56f2f63d0e90d9982edd60a2d95d6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335339"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895452"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Haritalar harita denetimini kullanma
 
 Harita Denetimi istemci tarafı JavaScript kitaplığı, haritalar ve katıştırılmış Azure haritaları işlevlerini Web veya mobil uygulamanıza işletirmesini sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Harita Denetimi bir Web sayfasında kullanmak için aşağıdaki önkoşulların birine sahip olmanız gerekir:
 
 * [Azure haritalar hesabı oluşturun](quick-demo-map-app.md#create-an-azure-maps-account) ve birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
 
-* [Kimlik doğrulama seçenekleriyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)Azure ACTIVE DIRECTORY (AAD) kimlik bilgilerinizi alın.
+* [Kimlik doğrulama seçenekleriyle](/javascript/api/azure-maps-control/atlas.authenticationoptions)Azure ACTIVE DIRECTORY (AAD) kimlik bilgilerinizi alın.
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Web sayfasında yeni eşleme oluşturma
 
@@ -75,7 +75,7 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
     </style>
    ```
 
-4. Sayfanın gövdesinde bir `<div>` öğe ekleyin ve bunu `id` **myMap**' den verin.
+4. Sayfanın gövdesinde bir `<div>` öğe ekleyin ve bunu `id` **myMap** ' den verin.
 
    ```HTML
     <body onload="InitMap()">
@@ -83,7 +83,7 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
     </body>
    ```
 
-5. Şimdi harita denetimini başlatacağız. Denetimin kimliğini doğrulamak için bir Azure Maps abonelik anahtarınız olması veya [kimlik doğrulama seçenekleriyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)Azure ACTIVE DIRECTORY (AAD) kimlik bilgileri kullanmanız gerekir.
+5. Şimdi harita denetimini başlatacağız. Denetimin kimliğini doğrulamak için bir Azure Maps abonelik anahtarınız olması veya [kimlik doğrulama seçenekleriyle](/javascript/api/azure-maps-control/atlas.authenticationoptions)Azure ACTIVE DIRECTORY (AAD) kimlik bilgileri kullanmanız gerekir.
 
     Kimlik doğrulaması için bir abonelik anahtarı kullanıyorsanız, aşağıdaki betik öğesini kopyalayın ve `<head>` öğesinin içine ve ilk öğenin altına yapıştırın `<script>` . `<Your Azure Maps Key>`Azure haritalar birincil abonelik anahtarınızla değiştirin.
 
@@ -279,7 +279,7 @@ Haritanızda daha fazla veri eklemek için:
 > [Harita oluşturma](map-create.md)
 
 > [!div class="nextstepaction"]
-> [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kod örnekleri](/samples/browse/?products=azure-maps)
 
 Azure Active Directory (AAD) Azure Maps ile nasıl tümleştirileceğini gösteren örneklerin listesi için bkz.:
 

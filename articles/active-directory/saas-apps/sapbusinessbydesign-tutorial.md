@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 91c0eaf5b1e614e185747cd9ae2c32e7f4f7a707
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6d04601cb11e57f50c82680077793aef1b816bfa
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672058"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895172"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Öğretici: SAP Business ByDesign ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ SAP Business ByDesign 'ı Azure AD ile tümleştirmek aşağıdaki avantajları 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SAP Business ByDesign ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -110,11 +110,11 @@ SAP Business ByDesign ile Azure AD çoklu oturum açma 'yı yapılandırmak içi
 
 5. SAP Business ByDesign uygulaması, SAML onaylamalarını belirli bir biçimde bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile tek Sign-On ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    !["Düzenle" düğmesi seçili "Kullanıcı öznitelikleri" iletişim kutusunu gösteren ekran görüntüsü.](common/edit-attribute.png)
 
 6. **Ad tanımlayıcı değerini** düzenlemek için **Düzenle** simgesine tıklayın.
 
-    ![image](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
+    !["Düzenle" simgesi seçili "Kullanıcı öznitelikleri & talepleri" sayfasını gösteren ekran görüntüsü.](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
 
 7. **Kullanıcı taleplerini Yönet** bölümünde aşağıdaki adımları uygulayın: ![ görüntü](media/sapbusinessbydesign-tutorial/mail-prefix2.png)
 
@@ -148,7 +148,7 @@ SAP Business ByDesign ile Azure AD çoklu oturum açma 'yı yapılandırmak içi
 
 3. **Yeni kimlik sağlayıcısı** ' na tıklayın ve Azure Portal indirdiğiniz meta veri xml dosyasını seçin. Meta verileri içeri aktararak, sistem gerekli imza sertifikasını ve şifreleme sertifikasını otomatik olarak karşıya yükler.
 
-    ![Tek Sign-On yapılandırma](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
+    !["Kimlik sağlayıcısı" sekmesi seçiliyken "çoklu oturum açmayı yapılandırma" sayfasını ve "yeni kimlik sağlayıcısı" eylemini gösteren ekran görüntüsü.](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
 
 4. **Onaylama tüketici hizmeti URL 'SINI** SAML isteğine dahil etmek Için, **onaylama tüketici hizmeti URL 'sini dahil et** ' i seçin.
 
@@ -158,7 +158,7 @@ SAP Business ByDesign ile Azure AD çoklu oturum açma 'yı yapılandırmak içi
 
 7. **Sistemim** sekmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
+    !["Sistemim" sekmesi seçiliyken "çoklu oturum açmayı yapılandırma" sayfasını gösteren ekran görüntüsü.](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
 
 8. **Azure AD oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 

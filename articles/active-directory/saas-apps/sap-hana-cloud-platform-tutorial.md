@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: be3634ea051c99acf7b706da266179c93a1be861
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2d87be085331c174b58e2a475e18efa54a78cfea
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676666"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Öğretici: SAP Cloud Platform ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ SAP Cloud Platform ile Azure AD arasında tümleştirme aşağıdaki avantajlar�
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini SAP Cloud Platform ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -150,7 +150,7 @@ Azure AD çoklu oturum açmayı SAP Cloud Platform ile yapılandırmak için aş
 
 3. Güven Yönetimi bölümünde, **yerel hizmet sağlayıcısı** altında aşağıdaki adımları gerçekleştirin:
 
-    ![Güven yönetimi](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Güven yönetimi")
+    !["Yerel hizmet sağlayıcısı" sekmesi seçili ve tüm metin kutularının vurgulandığı "güven yönetimi" bölümünü gösteren ekran görüntüsü.](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Güven yönetimi")
    
     a. **Düzenle** ’ye tıklayın.
 
@@ -178,7 +178,7 @@ Azure AD çoklu oturum açmayı SAP Cloud Platform ile yapılandırmak için aş
 
 5. **Güvenilen kimlik sağlayıcısı** sekmesine tıklayın ve ardından **güvenilen kimlik sağlayıcısı ekle** ' ye tıklayın.
    
-    ![Güven yönetimi](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Güven yönetimi")
+    !["Güvenilir kimlik sağlayıcısı" sekmesi seçili "güven yönetimi" sayfasını gösteren ekran görüntüsü.](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Güven yönetimi")
    
     >[!NOTE]
     >Güvenilen kimlik sağlayıcılarının listesini yönetmek için, yerel hizmet sağlayıcısı bölümünde özel yapılandırma türünü seçmiş olmanız gerekir. Varsayılan yapılandırma türü için, SAP KIMLIĞI hizmetine düzenlenemeyen ve örtük bir güveniniz vardır. Hiçbiri için herhangi bir güven ayarı yoktur.

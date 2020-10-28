@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: d8bf94bf0048efee05864b951429239de2def87a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a2065286581b6e7de61e4d1a29382b98563cdbb8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669393"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895070"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>Öğretici: ScaleX Kurumsal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, ScaleX kurumsal Azure Active Directory (Azure AD) ile nasıl t�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -148,11 +148,11 @@ Bu bölümde, ScaleX kurumsal erişimine izin vererek Azure çoklu oturum açma 
     > [!NOTE]
     > Contoso yalnızca bir örnektir. Bunun gerçek şirket adı olması gerekir.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/scalex-enterprise-tutorial/Test_Admin.png)
+    ![Sağ üst taraftaki menüden seçilen örnek şirket adını gösteren ekran görüntüsü.](./media/scalex-enterprise-tutorial/Test_Admin.png)
 
 1. Üstteki menüden **tümleştirmeler** ' i seçin ve **Çoklu oturum açma** ' yı seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/scalex-enterprise-tutorial/admin_sso.png) 
+    ![Açılan menüden "tümleştirmeler" seçili ve "çoklu oturum açma" gösteren ekran görüntüsü.](./media/scalex-enterprise-tutorial/admin_sso.png) 
 
 1. Formu aşağıdaki gibi doldurun:
 

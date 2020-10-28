@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 011b4bddb6a9d83b96f01764288005f6210ae824
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4d6274f3e1356a8ff8a997e830f0ebee43f50cff
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515489"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Öğretici: PolicyStat ile tümleştirme Azure Active Directory
 
@@ -66,13 +66,13 @@ PolicyStat 'ın Azure AD ile tümleştirilmesini yapılandırmak için Galeriden
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **PolicyStat**yazın, sonuç panelinden **PolicyStat** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **PolicyStat** yazın, sonuç panelinden **PolicyStat** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde PolicyStat](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre PolicyStat ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre PolicyStat ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve PolicyStat içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -89,7 +89,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **PolicyStat** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **PolicyStat** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -118,31 +118,31 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
 
 5. PolicyStat uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. **Kullanıcı öznitelikleri** iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    !["Düzenle" simgesi seçili "Kullanıcı öznitelikleri" iletişim kutusunu gösteren ekran görüntüsü.](common/edit-attribute.png)
 
 6. PolicyStat uygulaması, yukarıdakine ek olarak, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Adı | Kaynak özniteliği |
+    | Ad | Kaynak özniteliği |
     |------------------- | -------------------- |
     | 'sini | Extractmailprefıx ([mail]) |
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
     
-    ![image](common/new-save-attribute.png)
+    !["Yeni talep Ekle" ve "Kaydet" eylemlerinin vurgulandığı "Kullanıcı talepleri" bölümünü gösteren ekran görüntüsü.](common/new-save-attribute.png)
 
-    ![image](./media/policystat-tutorial/attribute01.png)
+    !["Ad", "dönüşüm" ve "parametre" metin kutuları vurgulanmış ve "Kaydet" düğmesi seçili olan "Kullanıcı taleplerini Yönet" iletişim kutusunu gösteren ekran görüntüsü.](./media/policystat-tutorial/attribute01.png)
 
     b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 
     c. **Ad alanını** boş bırakın.
 
-    d. **Dönüşüm**olarak kaynak ' ı seçin.
+    d. **Dönüşüm** olarak kaynak ' ı seçin.
 
     e. **Dönüştürme** listesinden, bu satır için gösterilen öznitelik değerini yazın.
     
     f. **Parameter 1** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
-    örneğin: **Kaydet**’e tıklayın.
+    örneğin: **Kaydet** ’e tıklayın.
 
 7. **PolicyStat ayarlama** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
@@ -162,17 +162,17 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
    
     ![Yönetici Menüsü](./media/policystat-tutorial/ic808633.png "Yönetici Menüsü")
 
-3. **IDP meta verilerinize**tıklayın ve sonra **IDP meta verileri** bölümünde aşağıdaki adımları uygulayın:
+3. **IDP meta verilerinize** tıklayın ve sonra **IDP meta verileri** bölümünde aşağıdaki adımları uygulayın:
    
-    ![Tek Sign-On yapılandırması](./media/policystat-tutorial/ic808636.png "Tek Sign-On yapılandırması")
+    !["I D P meta verilerini" seçtiğiniz ekran görüntüsü.](./media/policystat-tutorial/ic808636.png "Tek Sign-On yapılandırması")
    
     a. İndirilen meta veri dosyanızı açın, içeriği kopyalayın ve ardından **kimlik sağlayıcısı meta verileri** metin kutusuna yapıştırın.
 
-    b. **Değişiklikleri Kaydet**’e tıklayın.
+    b. **Değişiklikleri Kaydet** ’e tıklayın.
 
-4. **Öznitelikleri Yapılandır**' a tıklayın ve ardından **öznitelikleri Yapılandır** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Öznitelikleri Yapılandır** ' a tıklayın ve ardından **öznitelikleri Yapılandır** bölümünde aşağıdaki adımları gerçekleştirin:
    
-    a. **Kullanıcı adı özniteliği** metin kutusuna **uid**yazın.
+    a. **Kullanıcı adı özniteliği** metin kutusuna **uid** yazın.
 
     b. **First Name öznitelik** metin kutusunda, Azure 'Dan ad özniteliği talep adınızı yazın **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** .
 
@@ -180,9 +180,9 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
 
     d. **E-posta özniteliği** metin kutusunda, Azure 'Dan e-posta öznitelik talep adınızı yazın **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .
 
-    e. **Değişiklikleri Kaydet**’e tıklayın.
+    e. **Değişiklikleri Kaydet** ’e tıklayın.
 
-5. **Kurulum** bölümünde **Çoklu oturum açma tümleştirmesini etkinleştir**' i seçin.
+5. **Kurulum** bölümünde **Çoklu oturum açma tümleştirmesini etkinleştir** ' i seçin.
    
     ![Tek Sign-On yapılandırması](./media/policystat-tutorial/ic808634.png "Tek Sign-On yapılandırması")
 
@@ -191,15 +191,15 @@ PolicyStat ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
 
 Bu bölümde, PolicyStat 'a erişim vererek kendi hesabınızı Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştirirsiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **PolicyStat**' yi seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **PolicyStat** ' yi seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **PolicyStat**' yi seçin.
+2. Uygulamalar listesinde **PolicyStat** ' yi seçin.
 
     ![Uygulamalar listesindeki PolicyStat bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 

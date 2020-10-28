@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 579294388dbcf9f785ef41e06505c14b6767565f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6d8a2bfe20d0e7b52dcd60127b3666f0c21a792
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83677965"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895809"
 ---
 # <a name="manage-azure-maps-creator"></a>Azure haritalar oluşturucuyu yönetme
 
@@ -25,19 +25,19 @@ Bu makale, bir Azure haritalar hesabındaki bir Oluşturucu kaynağı oluşturma
 
 1. [Azure portalda](https://portal.azure.com) oturum açma
 
-2. Azure haritalar hesabınızı seçin. Azure haritalar hesabınızı **son kaynaklar**altında göremiyorsanız Azure Portal menüsüne gidin. **Tüm kaynaklar**’ı seçin. Azure haritalar hesabınızı bulun ve seçin.
+2. Azure haritalar hesabınızı seçin. Azure haritalar hesabınızı **son kaynaklar** altında göremiyorsanız Azure Portal menüsüne gidin. **Tüm kaynaklar** ’ı seçin. Azure haritalar hesabınızı bulun ve seçin.
 
     ![Azure haritalar Portalı giriş sayfası](./media/how-to-manage-creator/select-maps-account.png)
 
-3. Azure haritalar hesabı sayfasından sonra **Oluşturucu**altındaki **genel bakış** seçeneğine gidin. Azure haritalar Oluşturucu kaynağı oluşturmak için  **Oluştur**  ' a tıklayın.
+3. Azure haritalar hesabı sayfasından sonra **Oluşturucu** altındaki **genel bakış** seçeneğine gidin. Azure haritalar Oluşturucu kaynağı oluşturmak için  **Oluştur**  ' a tıklayın.
 
     ![Azure haritalar Oluşturucu oluşturma sayfası](./media/how-to-manage-creator/creator-blade-settings.png)
 
-4. Oluşturucu kaynağınız için ad ve konum girin. Şu anda, Oluşturucu yalnızca Birleşik Devletler desteklenir. **Gözden geçir ve oluştur**’a tıklayın.
+4. Oluşturucu kaynağınız için ad ve konum girin. Şu anda, Oluşturucu yalnızca Birleşik Devletler desteklenir. **Gözden geçir ve oluştur** ’a tıklayın.
 
    ![Oluşturucu hesap bilgilerini girin sayfası](./media/how-to-manage-creator/creator-creation-dialog.png)
 
-5. Ayarlarınızı gözden geçirin ve **Oluştur**' a tıklayın.
+5. Ayarlarınızı gözden geçirin ve **Oluştur** ' a tıklayın.
 
     ![Oluşturucu hesabı ayarları sayfasını Onayla](./media/how-to-manage-creator/creator-create-dialog.png)
 
@@ -45,7 +45,7 @@ Bu makale, bir Azure haritalar hesabındaki bir Oluşturucu kaynağı oluşturma
 
    ![Kaynak dağıtım durumu sayfası](./media/how-to-manage-creator/creator-resource-created.png)
 
-7. **Kaynağa git**'e tıklayın. Oluşturucu kaynak görünümü sayfanız, Oluşturucu kaynağınızın ve seçilen demografik bölgesinin durumunu gösterir.
+7. **Kaynağa git** 'e tıklayın. Oluşturucu kaynak görünümü sayfanız, Oluşturucu kaynağınızın ve seçilen demografik bölgesinin durumunu gösterir.
 
     ![Oluşturan durum sayfası](./media/how-to-manage-creator/creator-resource-view.png)
 
@@ -54,7 +54,7 @@ Bu makale, bir Azure haritalar hesabındaki bir Oluşturucu kaynağı oluşturma
 
 ## <a name="delete-creator-resource"></a>Oluşturucu kaynağını Sil
 
-Oluşturan kaynağını silmek için Azure haritalar hesabınıza gidin. **Oluşturucu**altında **Genel Bakış ' ı** seçin. **Sil** düğmesine tıklayın.
+Oluşturan kaynağını silmek için Azure haritalar hesabınıza gidin. **Oluşturucu** altında **Genel Bakış ' ı** seçin. **Sil** düğmesine tıklayın.
 
 >[!WARNING]
 >Azure haritalar hesabınızın Oluşturucu kaynağını sildiğinizde, Oluşturucu Hizmetleri kullanılarak oluşturulan veri kümelerini, tilekümelerini ve özellik statesets 'leri de silersiniz.
@@ -69,7 +69,7 @@ Oluşturan kaynağını silmek için Azure haritalar hesabınıza gidin. **Oluş
 
 Creator, Azure Maps Access Control (ıAM) ayarlarını devralır. Veri erişimi için tüm API çağrılarının kimlik doğrulama ve yetkilendirme kurallarıyla gönderilmesi gerekir.
 
-Oluşturucu kullanım verileri, Azure Haritalar kullanım grafiklerinize ve etkinlik günlüğüne eklenir.  Daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
+Oluşturucu kullanım verileri, Azure Haritalar kullanım grafiklerinize ve etkinlik günlüğüne eklenir.  Daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
 ## <a name="access-to-creator-services"></a>Oluşturucu hizmetlerine erişim
 

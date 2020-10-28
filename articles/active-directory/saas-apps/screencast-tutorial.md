@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/15/2019
 ms.author: jeedes
-ms.openlocfilehash: eae60ba9aabe417e986c7637ce700302bfe6c7bf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2b0c42046df716c8ae65046e5f3314817da0a17e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676570"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893806"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>Öğretici: ekran kaydı-O-tek ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile ekran kaydı-O-tek tümle
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -139,13 +139,13 @@ Bu bölümde, ekran kaydı-O-tek ' e erişim izni vererek Azure çoklu oturum a�
 
 1. **Erişim sayfası** bölümünde **Kurulum** ' a tıklayın.
 
-    ![Erişim](./media/screencast-tutorial/tutorial_screencast_setup.png)
+    !["Kurulum" düğmesinin seçili olduğu "erişim sayfası" bölümünü gösteren ekran görüntüsü.](./media/screencast-tutorial/tutorial_screencast_setup.png)
 
 1. **Kurulum erişimi sayfasında** , aşağıdaki adımları gerçekleştirin.
 
-1. **Erişim URL 'si** bölümüne, belirtilen metin kutusuna InstanceName yazın.
+1. **Erişim URL 'si** bölümünün altında, belirtilen metin kutusuna InstanceName yazın.
 
-    ![Erişim](./media/screencast-tutorial/tutorial_screencast_access.png)
+    ![Örnek adı metin kutusu vurgulanmış şekilde "Access U R L" bölümünü gösteren ekran görüntüsü.](./media/screencast-tutorial/tutorial_screencast_access.png)
 
 1. **SAML Kullanıcı kısıtlaması (isteğe bağlı)** bölümünde **etki alanı kullanıcısı gerektir** ' i seçin.
 

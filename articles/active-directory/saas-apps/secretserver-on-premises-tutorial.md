@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9540922619864b0c239a22422bab5f6bf178e5fe
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a87bf24c3555f2e6a259064b56b1b630f4abfe27
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678410"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895006"
 ---
 # <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>Öğretici: Secret Server (On-Premises) Azure Active Directory ile tümleştirin
 
@@ -28,7 +28,7 @@ Bu öğreticide, Secret Server (On-Premises) Azure Active Directory (Azure AD) i
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -98,7 +98,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![İmzalama seçenekleri](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
+    !["Sertifika (base64" "Indir" eylemi seçiliyken "S A M L Imzalama sertifikası" bölümünü gösteren ekran görüntüsü.)](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
 
 1. **Imza seçeneğini** belirtin **SAML yanıtı ve onaylama olarak imzala** .
 

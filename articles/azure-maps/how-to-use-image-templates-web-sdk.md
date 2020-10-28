@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: f43c0086cfd6e51e0fbcd5d30911aa6c8e9a6518
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f455a1132a0f63e1ba3eb5d2a57a1f9bfa9a867
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335560"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895690"
 ---
 # <a name="how-to-use-image-templates"></a>Görüntü şablonlarını kullanma
 
@@ -24,7 +24,7 @@ Görüntüler, HTML işaretçileri ve Azure Maps web SDK içindeki çeşitli kat
  - Çokgen katmanları, bir doldur örüntüsünün görüntüsü ile oluşturulabilir. 
  - HTML işaretçileri, görüntüleri ve diğer HTML öğelerini kullanarak noktaları işleyebilir.
 
-Katmanlarla iyi bir performans sağlamak için görüntüleri, işlemeden önce harita görüntüsü Sprite kaynağına yükleyin. SymbolLayer [Iconoptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions), varsayılan olarak harita görüntüsü Sprite öğesine, el ile birkaç işaret görüntüsünü önceden yükler. Bu işaret görüntüleri ve daha fazlası SVG şablonları olarak kullanılabilir. Özel ölçeklendirmeleri olan veya müşteri birincil ve ikincil renk olarak kullanılan görüntüler oluşturmak için kullanılabilir. Toplamda 42 görüntü şablonu sağlanır: 27 sembol simgeleri ve 15 Çokgen dolgusu desenleri.
+Katmanlarla iyi bir performans sağlamak için görüntüleri, işlemeden önce harita görüntüsü Sprite kaynağına yükleyin. SymbolLayer [Iconoptions](/javascript/api/azure-maps-control/atlas.iconoptions), varsayılan olarak harita görüntüsü Sprite öğesine, el ile birkaç işaret görüntüsünü önceden yükler. Bu işaret görüntüleri ve daha fazlası SVG şablonları olarak kullanılabilir. Özel ölçeklendirmeleri olan veya müşteri birincil ve ikincil renk olarak kullanılan görüntüler oluşturmak için kullanılabilir. Toplamda 42 görüntü şablonu sağlanır: 27 sembol simgeleri ve 15 Çokgen dolgusu desenleri.
 
 Görüntü şablonları, işlevi kullanılarak harita görüntüsü Sprite kaynaklarına eklenebilir `map.imageSprite.createFromTemplate` . Bu işlev, en fazla beş parametrenin geçirilmesine izin verir;
 
@@ -119,7 +119,7 @@ Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremap
 
 Uygulamanız farklı simgelerle aynı simgeyi kullanıyorsa veya ek görüntü şablonları ekleyen bir modül oluşturuyorsanız, bu simgeleri Azure Maps web SDK 'sına kolayca ekleyebilir ve alabilirsiniz. Ad alanı üzerinde aşağıdaki statik işlevleri kullanın `atlas` .
 
-| Adı | Dönüş Türü | Açıklama | 
+| Ad | Dönüş Türü | Açıklama | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Atlas ad alanına özel bir SVG resim şablonu ekler. |
 |  `getImageTemplate(templateName: string, scale?: number)`| string | Bir SVG şablonunu ada göre alır. |
@@ -514,10 +514,10 @@ Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Imabir Pritemanager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagespritemanager)
+> [Imabir Pritemanager](/javascript/api/azure-maps-control/atlas.imagespritemanager)
 
 > [!div class="nextstepaction"]
-> [Atlas ad alanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#functions
+> [Atlas ad alanı](/javascript/api/azure-maps-control/atlas#functions
 )
 
 Görüntü şablonlarının kullanılabileceği daha fazla kod örneği için aşağıdaki makalelere bakın:

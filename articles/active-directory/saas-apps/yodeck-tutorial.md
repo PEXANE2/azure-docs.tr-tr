@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: e9be10a121b223c7eeb3957c34cf42c1abe7646e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 68e961336d7e86f9983fea49044137894ab0f985
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519984"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Öğretici: Yodestesi tümleştirme Azure Active Directory
 
@@ -61,13 +61,13 @@ Yodestesi Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden yönetil
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **yodestesi**yazın, sonuç panelinden **yodestesi** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **yodestesi** yazın, sonuç panelinden **yodestesi** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![Sonuçlar listesinde yodestesi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre yodestesi ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre yodestesi ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin kurulması gerekir.
 
 Yodestesi Azure AD çoklu oturum açma 'yı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Yodestesi Azure AD çoklu oturum açma 'yı yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **yodestesi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **yodestesi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -105,7 +105,7 @@ Yodestesi Azure AD çoklu oturum açma 'yı yapılandırmak için aşağıdaki a
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![image](common/both-preintegrated-signon.png)
+    ![Ekran görüntüsünde, meta veri dosyası yükleme bağlantısıyla temel SAML yapılandırması gösterilir.](common/both-preintegrated-signon.png)
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://app.yodeck.com/login`
 
@@ -115,9 +115,9 @@ Yodestesi Azure AD çoklu oturum açma 'yı yapılandırmak için aşağıdaki a
 
 ### <a name="configure-yodeck-single-sign-on"></a>Yodestesi tek Sign-On yapılandırma
 
-1. **Yodestesi**içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. **Yodestesi** içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek** üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-    ![image](./media/target-process-tutorial/install_extension.png)
+    ![Ekran görüntüsü uzantıyı yükler düğmesini gösterir.](./media/target-process-tutorial/install_extension.png)
 
 1. Tarayıcıya uzantı ekledikten sonra, **Kurulum yodestesi** ' ne tıklayın, sizi yodestesi uygulamasına yönlendirir. Buradan, oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-5 adımlarını otomatikleştirecektir.
 
@@ -127,27 +127,27 @@ Yodestesi Azure AD çoklu oturum açma 'yı yapılandırmak için aşağıdaki a
 
 1. Farklı bir Web tarayıcısı penceresinde, Yodestesi şirket sitenizde yönetici olarak oturum açın.
 
-1. **Kullanıcı ayarları** seçeneğine tıklayın ve sayfanın sağ üst köşesini, **Hesap ayarları**' nı seçin.
+1. **Kullanıcı ayarları** seçeneğine tıklayın ve sayfanın sağ üst köşesini, **Hesap ayarları** ' nı seçin.
 
-    ![Yodestesi yapılandırma](./media/yodeck-tutorial/configure1.png)
+    ![Ekran görüntüsünde Kullanıcı için hesap ayarları seçili görüntülenir.](./media/yodeck-tutorial/configure1.png)
 
 1. **SAML** ' yi seçin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Yodestesi yapılandırma](./media/yodeck-tutorial/configure2.png)
+    ![Ekran görüntüsü, bu adımları gerçekleştirebileceğiniz SAML sekmesini gösterir.](./media/yodeck-tutorial/configure2.png)
 
-    a. **URL 'Den Içeri aktar**' ı seçin.
+    a. **URL 'Den Içeri aktar** ' ı seçin.
 
-    b. **URL** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın ve **içeri aktar**' a tıklayın.
+    b. **URL** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın ve **içeri aktar** ' a tıklayın.
     
-    c. **Uygulama Federasyon meta verileri URL 'sini**içeri aktardıktan sonra, kalan alanlar otomatik olarak doldurulur.
+    c. **Uygulama Federasyon meta verileri URL 'sini** içeri aktardıktan sonra, kalan alanlar otomatik olarak doldurulur.
 
-    d. **Kaydet**’e tıklayın.
+    d. **Kaydet** ’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -159,27 +159,27 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Yoya erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **yodestesi**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **yodestesi** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Yodestesi**' ı seçin.
+2. Uygulamalar listesinde **Yodestesi** ' ı seçin.
 
     ![Uygulamalar listesindeki Yodestesi bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
@@ -201,27 +201,27 @@ Azure AD kullanıcılarının Yodestesi oturum açmasını sağlamak için, bu k
 
 1. Yodestesi şirket sitenizde yönetici olarak oturum açın.
 
-2. **Kullanıcı ayarları** seçeneği ' ne tıklayın ve sayfanın sağ üst köşesini form ve **Kullanıcılar**' ı seçin.
+2. **Kullanıcı ayarları** seçeneği ' ne tıklayın ve sayfanın sağ üst köşesini form ve **Kullanıcılar** ' ı seçin.
 
-    ![Çalışan Ekle](./media/yodeck-tutorial/user1.png)
+    ![Ekran görüntüsü Kullanıcı için seçilen kullanıcıları gösterir.](./media/yodeck-tutorial/user1.png)
 
 3. **+ Kullanıcı** ' ya tıklayarak **kullanıcı ayrıntıları** sekmesini açın.
 
-    ![Çalışan Ekle](./media/yodeck-tutorial/user2.png)
+    ![Ekran görüntüsü kullanıcılar düğmesini gösterir.](./media/yodeck-tutorial/user2.png)
 
 4. **Kullanıcı ayrıntıları** iletişim sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çalışan Ekle](./media/yodeck-tutorial/user3.png)
+    ![Ekran görüntüsü, bu adımları gerçekleştirebileceğiniz kullanıcı ayrıntıları sekmesini gösterir.](./media/yodeck-tutorial/user3.png)
 
-    a. **Ilk ad** metin kutusuna, **Britta**gibi kullanıcının adını yazın.
+    a. **Ilk ad** metin kutusuna, **Britta** gibi kullanıcının adını yazın.
 
-    b. **Soyadı** metin kutusunda, **Simon**gibi kullanıcı adının soyadını yazın.
+    b. **Soyadı** metin kutusunda, **Simon** gibi kullanıcı adının soyadını yazın.
 
     c. **E-posta** metin kutusuna, gibi kullanıcının e-posta adresini yazın brittasimon@contoso.com .
 
     d. Kuruluş gereksiniminize göre uygun **Hesap izinleri** seçeneğini belirleyin.
     
-    e. **Kaydet**’e tıklayın.
+    e. **Kaydet** ’e tıklayın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

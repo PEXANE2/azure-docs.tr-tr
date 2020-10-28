@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 266ad613a4966b26fc4a6ddffbb7b4196aa937b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2274a551542b06996941b49e7d047baf3e8b3ca
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372111"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894041"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure portal kullanarak Azure kaynaklarını yönetme
 
@@ -29,22 +29,22 @@ Kaynak Yöneticisi şablonu oluşturduktan sonra, Azure kaynaklarınızı dağı
 
 ## <a name="open-resources"></a>Açık kaynaklar
 
-Azure kaynakları, Azure hizmetleri ve kaynak grupları tarafından düzenlenir. Aşağıdaki yordamlarda **mystorage0207**adlı bir depolama hesabının nasıl açılacağı gösterilmektedir. Sanal makine, **mystorage0207rg**adlı bir kaynak grubunda bulunur.
+Azure kaynakları, Azure hizmetleri ve kaynak grupları tarafından düzenlenir. Aşağıdaki yordamlarda **mystorage0207** adlı bir depolama hesabının nasıl açılacağı gösterilmektedir. Sanal makine, **mystorage0207rg** adlı bir kaynak grubunda bulunur.
 
 Bir kaynağı hizmet türüne göre açmak için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Sol bölmede Azure hizmeti ' ni seçin. Bu durumda, **depolama hesapları**.  Listelenen hizmeti görmüyorsanız, **tüm hizmetler**' i seçin ve ardından hizmet türünü seçin.
+2. Sol bölmede Azure hizmeti ' ni seçin. Bu durumda, **depolama hesapları** .  Listelenen hizmeti görmüyorsanız, **tüm hizmetler** ' i seçin ve ardından hizmet türünü seçin.
 
     ![Portalda Azure kaynağını açın](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
 
 3. Açmak istediğiniz kaynağı seçin.
 
-    ![Portalda Azure kaynağını açın](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
+    ![Seçilen kaynağı vurgulayan ekran görüntüsü.](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
 
     Bir depolama hesabı şöyle görünür:
 
-    ![Portalda Azure kaynağını açın](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
+    ![Depolama hesabının nasıl göründüğünü gösteren ekran görüntüsü.](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
 
 Kaynak grubuna göre bir kaynağı açmak için:
 
@@ -63,17 +63,17 @@ Ekran görüntüsü, bir Azure sanal makinesi için yönetim seçeneklerini gös
 ## <a name="delete-resources"></a>Kaynakları silme
 
 1. Kaynağı portalda açın. Adımlar için bkz. [kaynakları açma](#open-resources).
-2. **Sil**’i seçin. Aşağıdaki ekran görüntüsünde, bir sanal makine için yönetim seçenekleri gösterilmektedir.
+2. **Sil** ’i seçin. Aşağıdaki ekran görüntüsünde, bir sanal makine için yönetim seçenekleri gösterilmektedir.
 
     ![Azure kaynağını Sil](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
-3. Silmeyi onaylamak için kaynağın adını yazın ve ardından **Sil**' i seçin.
+3. Silmeyi onaylamak için kaynağın adını yazın ve ardından **Sil** ' i seçin.
 
 Kaynakların silinmesini Azure Resource Manager nasıl sipariş Azure Resource Manager hakkında daha fazla bilgi için bkz. [kaynak grubu silme](delete-resource-group.md).
 
 ## <a name="move-resources"></a>Kaynakları taşıma
 
 1. Kaynağı portalda açın. Adımlar için bkz. [kaynakları açma](#open-resources).
-2. **Taşı**' yı seçin. Aşağıdaki ekran görüntüsünde bir depolama hesabının yönetim seçenekleri gösterilmektedir.
+2. **Taşı** ' yı seçin. Aşağıdaki ekran görüntüsünde bir depolama hesabının yönetim seçenekleri gösterilmektedir.
 
     ![Azure kaynağını taşıma](./media/manage-resources-portal/manage-azure-resources-portal-move-resource.png)
 3. **Başka bir kaynak grubuna geçme** veya gereksinimlerinize bağlı olarak **başka bir aboneliğe taşıma** ' yı seçin.
@@ -85,10 +85,10 @@ Daha fazla bilgi için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe ta�
 Kilitleme, kuruluşunuzdaki diğer kullanıcıların Azure aboneliği, kaynak grubu veya kaynak gibi önemli kaynakları yanlışlıkla silmesini veya değiştirmelerini engeller. 
 
 1. Kaynağı portalda açın. Adımlar için bkz. [kaynakları açma](#open-resources).
-2. **Kilitleri**seçin. Aşağıdaki ekran görüntüsünde bir depolama hesabının yönetim seçenekleri gösterilmektedir.
+2. **Kilitleri** seçin. Aşağıdaki ekran görüntüsünde bir depolama hesabının yönetim seçenekleri gösterilmektedir.
 
     ![Azure kaynağını kilitle](./media/manage-resources-portal/manage-azure-resources-portal-lock-resource.png)
-3. **Ekle**' yi seçin ve ardından kilit özelliklerini belirtin.
+3. **Ekle** ' yi seçin ve ardından kilit özelliklerini belirtin.
 
 Daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](lock-resources.md).
 
@@ -97,10 +97,10 @@ Daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](l
 Etiketleme, kaynak grubunuzun ve kaynaklarınızın mantıksal olarak düzenlenmesine yardımcı olur. 
 
 1. Kaynağı portalda açın. Adımlar için bkz. [kaynakları açma](#open-resources).
-2. **Etiketler**'i seçin. Aşağıdaki ekran görüntüsünde bir depolama hesabının yönetim seçenekleri gösterilmektedir.
+2. **Etiketler** 'i seçin. Aşağıdaki ekran görüntüsünde bir depolama hesabının yönetim seçenekleri gösterilmektedir.
 
     ![Azure kaynağını etiketleme](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
-3. Etiket özelliklerini belirtin ve ardından **Kaydet**' i seçin.
+3. Etiket özelliklerini belirtin ve ardından **Kaydet** ' i seçin.
 
 Daha fazla bilgi için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](tag-resources.md#portal).
 

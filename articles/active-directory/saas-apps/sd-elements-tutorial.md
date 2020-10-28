@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 4442d7cb83ef28b1483c5156e2655deb793b3b16
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a9bcda4affa19cf8793cd078fdc5b96d842eb42b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678427"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893677"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>Öğretici: SD öğeleriyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide SD öğelerini Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -143,7 +143,7 @@ Bu bölümde, SD öğelerine erişim vererek Azure çoklu oturum açma özelliğ
 
 1. Üstteki menüde, **sistem** ' e ve ardından **Çoklu oturum açma** ' ya tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
+    ![Açılır listeden "sistem" seçili ve "çoklu oturum açma" gösteren ekran görüntüsü.](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
 1. **Tek Sign-On ayarları** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
@@ -167,11 +167,11 @@ Bu bölümün amacı SD öğelerinde B. Simon adlı bir Kullanıcı oluşturmakt
 
 1. Üstteki menüden **Kullanıcı yönetimi** ' ne ve ardından **Kullanıcılar** ' a tıklayın.
 
-    ![SD öğeleri test kullanıcısı oluşturma](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
+    !["Kullanıcı Yönetimi" açılır listesinden "kullanıcılar" ın seçili olduğunu gösteren ekran görüntüsü.](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
 1. **Yeni Kullanıcı Ekle** ' ye tıklayın.
 
-    ![SD öğeleri test kullanıcısı oluşturma](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
+    !["Yeni Kullanıcı Ekle" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
 
 1. **Yeni Kullanıcı Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 

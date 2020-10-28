@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: c701371a3f2f1430cf68a9164ba4ce4e6441c5c6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 89c703f6bb956409c97c36c6507519f4e884fcf2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519121"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892766"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Öğretici: Zoho ile tümleştirme Azure Active Directory
 
@@ -61,13 +61,13 @@ Zoho 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeri 'den y�
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Zoho**yazın, sonuç panelinden **Zoho** ' ı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **Zoho** yazın, sonuç panelinden **Zoho** ' ı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![Sonuç listesinde Zoho](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Zoho Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre Zoho Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Zoho içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı, Zoho ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açmayı Zoho ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **Zoho** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **Zoho** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -124,7 +124,7 @@ Azure AD çoklu oturum açmayı Zoho ile yapılandırmak için aşağıdaki adı
 
 1. Farklı bir Web tarayıcısı penceresinde, Zoho mail şirket sitenizde yönetici olarak oturum açın.
 
-2. **Denetim Masası**'na gidin.
+2. **Denetim Masası** 'na gidin.
    
     ![Denetim Masası](./media/zoho-mail-tutorial/ic789607.png "Denetim Masası")
 
@@ -144,15 +144,15 @@ Azure AD çoklu oturum açmayı Zoho ile yapılandırmak için aşağıdaki adı
        
     d. Not defteri 'nde Azure portal indirilen Base-64 kodlu sertifikanızı açın, bu içeriği panonuza kopyalayın ve sonra **PublicKey** metin kutusuna yapıştırın.
    
-    e. **Algoritma**olarak **RSA**' yı seçin.
+    e. **Algoritma** olarak **RSA** ' yı seçin.
    
-    f. **Tamam**’a tıklayın.
+    f. **Tamam** ’a tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -164,28 +164,28 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Zotta 'ın, Zoho 'a erişim vererek çoklu oturum açma özelliğini kullanmasını sağlayabilirsiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Zoho**' i seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **Zoho** ' i seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, bir yazın ve **Zoho**' ı seçin.
+2. Uygulamalar listesinde, bir yazın ve **Zoho** ' ı seçin.
 
     ![Uygulamalar listesindeki Zoho bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
@@ -210,25 +210,25 @@ Azure AD kullanıcılarının, Zoho postasına oturum açmasını sağlamak içi
 
 1. **Zoho mail** şirket sitenizde yönetici olarak oturum açın.
 
-1. **Denetim Masası \> posta & docs**' a gidin.
+1. **Denetim Masası \> posta & docs** ' a gidin.
 
-1. **Kullanıcı ayrıntıları \> Kullanıcı Ekle**' ye gidin.
+1. **Kullanıcı ayrıntıları \> Kullanıcı Ekle** ' ye gidin.
    
-    ![Kullanıcı Ekle](./media/zoho-mail-tutorial/ic789611.png "Kullanıcı Ekleme")
+    ![Ekran görüntüsü, Zoho mail sitesini Kullanıcı ayrıntılarına ve seçili Kullanıcı Ekle ' ye gösterir.](./media/zoho-mail-tutorial/ic789611.png "Kullanıcı Ekleme")
 
 1. **Kullanıcı Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
-    ![Kullanıcı Ekle](./media/zoho-mail-tutorial/ic789612.png "Kullanıcı Ekleme")
+    ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz Kullanıcı Ekle iletişim kutusunu gösterir.](./media/zoho-mail-tutorial/ic789612.png "Kullanıcı Ekleme")
    
-    a. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi yazın.
+    a. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta** gibi yazın.
 
-    b. **Soyadı** metin kutusunda, **Simon**gibi kullanıcı adının soyadını yazın.
+    b. **Soyadı** metin kutusunda, **Simon** gibi kullanıcı adının soyadını yazın.
 
-    c. **E-posta kimliği** metin kutusuna, **brittasıon \@ contoso.com**gibi kullanıcının e-posta kimliğini yazın.
+    c. **E-posta kimliği** metin kutusuna, **brittasıon \@ contoso.com** gibi kullanıcının e-posta kimliğini yazın.
 
     d. **Parola** metin kutusuna kullanıcının parolasını girin.
    
-    e. **Tamam**’a tıklayın.  
+    e. **Tamam** ’a tıklayın.  
       
     > [!NOTE]
     > Azure Active Directory hesap sahibi, hesabı etkin olmadan önce onaylamak için bağlantı içeren bir e-posta alır.

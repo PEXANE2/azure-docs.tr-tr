@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 03c290f73c5afb9973aadb0159239d025e2adcad
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f729828627fdb0be18f220d34227aac756ed4e13
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520022"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894925"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Öğretici: XaitPorter ile tümleştirme Azure Active Directory
 
@@ -61,13 +61,13 @@ Xaıporter 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeride
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **xaitporter**yazın, sonuç panelinden **xaitporter** ' ı seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna, **xaitporter** yazın, sonuç panelinden **xaitporter** ' ı seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![Sonuçlar listesinde bir XaitPorter](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına dayanarak, Xaıporter ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına dayanarak, Xaıporter ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilişkili kullanıcı arasındaki bir bağlantı ilişkisinin olması gerekir.
 
 Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **Xaitporter** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **Xaitporter** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -116,7 +116,7 @@ Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak için aşağıda
 
 ### <a name="configure-xaitporter-single-sign-on"></a>Xaıporter tek Sign-On yapılandırma
 
-1. Bu yapılandırmayı, Xaılanter içinde otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Bu yapılandırmayı, Xaılanter içinde otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -126,31 +126,31 @@ Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak için aşağıda
 
 3. XaitPorter 'ı el ile ayarlamak isterseniz, yeni bir Web tarayıcısı penceresi açın ve bir yönetici olarak, XaitPorter şirket sitenizde oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. **Yönetici**' ye tıklayın.
+4. **Yönetici** ' ye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/xaitporter-tutorial/user1.png)
+    ![Ekran görüntüsü, XaitPorter sitesinde yöneticinin seçili olduğunu gösterir.](./media/xaitporter-tutorial/user1.png)
 
 5. **Sistem Kurulum** açılır listesinden **Çoklu oturum açmayı Yönet '** i seçin.
 
-    ![Tek Sign-On yapılandırma](./media/xaitporter-tutorial/user2.png)
+    ![Ekran görüntüsü, sistem kurulumundan seçilen tek Sign-On Yönet ' i gösterir.](./media/xaitporter-tutorial/user2.png)
 
 6. **Çoklu oturum açmayı Yönet** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/xaitporter-tutorial/user3.png)
+    ![Ekran görüntüsü, bu adımları gerçekleştirebileceğiniz çoklu oturum açmayı yönetme bölümünü gösterir.](./media/xaitporter-tutorial/user3.png)
 
-    a. **Tek Sign-On kimlik doğrulamasını etkinleştir**' i seçin.
+    a. **Tek Sign-On kimlik doğrulamasını etkinleştir** ' i seçin.
 
-    b. **Kimlik sağlayıcısı ayarları** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta verileri URL 'Sini** yapıştırın ve **getir**' e tıklayın.
+    b. **Kimlik sağlayıcısı ayarları** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta verileri URL 'Sini** yapıştırın ve **getir** ' e tıklayın.
 
-    c. **Kullanıcıları oto oluşturmayı etkinleştir**' i seçin.
+    c. **Kullanıcıları oto oluşturmayı etkinleştir** ' i seçin.
 
-    d. **Tamam**’a tıklayın.
+    d. **Tamam** ’a tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -162,27 +162,27 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, XaitPorter 'a erişim vererek Britta Simon 'u Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştirirsiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **xaitporter**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **xaitporter** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Xaitporter**' ı seçin.
+2. Uygulamalar listesinde, **Xaitporter** ' ı seçin.
 
     ![Uygulamalar listesindeki Xaıporter bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 

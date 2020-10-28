@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 3128bc587a555b3766e1fad289edc8c11c195001
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 087e2d7f2db8f27378b54675095e97256d6aae9b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672052"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895135"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Öğretici: Sauce Labs ile tümleştirme Azure Active Directory-mobil ve Web testi
 
@@ -30,7 +30,7 @@ Azure AD ile Sauce laboratuvarlarını tümleştirme-mobil ve Web testi aşağı
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Sauce Labs ile, mobil ve Web testi ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -122,15 +122,15 @@ Azure AD çoklu oturum açma 'yı Sauce Labs-mobil ve Web testi ile yapılandır
 
 2. **Kullanıcı simgesine** tıklayın ve **Takım Yönetimi** sekmesini seçin.
 
-    ![Tek Sign-On yapılandırma](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
+    !["Kullanıcı" simgesini ve "ekip yönetimi" açılan ekranının seçili olduğunu gösteren ekran görüntüsü.](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
 
 3. Metin kutusuna **etki alanı adınızı** girin.
 
-    ![Tek Sign-On yapılandırma](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
+    ![Metin kutusunda örnek bir etki alanı adı gösteren ekran görüntüsü.](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
 
 4. **Yapılandır** sekmesini tıklatın.
 
-    ![Tek Sign-On yapılandırma](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
+    !["Çoklu oturum açma etkinleştirildi" altında seçili "Yapılandır" sekmesini gösteren ekran görüntüsü.](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
 
 5. **Çoklu oturum açmayı Yapılandır** bölümünde aşağıdaki adımları gerçekleştirin.
 
