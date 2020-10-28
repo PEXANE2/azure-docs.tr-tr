@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: eb71c5eda66d3d11385577da7142970f4fbcbad2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0bda32aaab301fe9ed685f0bfd6d4596fab4e5db
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474861"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789021"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Depolama için Azure Defender 'ı yapılandırma
 
@@ -37,7 +37,7 @@ Aşağıdaki listede, depolama için Azure Defender 'ın kullanılabilirliği ö
 
 - Yayın durumu:
   - [BLOB depolama](https://azure.microsoft.com/services/storage/blobs/) (genel kullanılabilirlik)
-  - [Azure dosyaları](/azure/storage/files/storage-files-introduction) (genel kullanılabilirlik)
+  - [Azure dosyaları](../files/storage-files-introduction.md) (genel kullanılabilirlik)
   - Azure Data Lake Storage 2. (genel kullanılabilirlik)
 - Larının<br>
     Ticari bulutlar ✔<br>
@@ -53,10 +53,10 @@ Azure Defender 'ı depolama için aşağıdaki bölümlerde açıklanan çeşitl
 Azure Güvenlik Merkezi 'nde Standart katmana abone olduğunuzda, Azure Defender tüm depolama hesaplarınızda otomatik olarak ayarlanır. Belirli bir abonelik kapsamındaki depolama hesaplarınız için Azure Defender 'ı aşağıdaki gibi etkinleştirebilir veya devre dışı bırakabilirsiniz:
 
 1. Azure portal **Azure Güvenlik Merkezi 'ni** başlatın [Azure portal](https://portal.azure.com).
-1. Ana menüden **Yönetim**altında, **fiyatlandırma & ayarları**' nı seçin.
+1. Ana menüden **Yönetim** altında, **fiyatlandırma & ayarları** ' nı seçin.
 1. Azure Defender 'ı etkinleştirmek veya devre dışı bırakmak istediğiniz aboneliği seçin.
 1. Abonelik için Azure Defender 'ı etkinleştirmek üzere **Azure Defender '** ı seçin.
-1. **Kaynak türüne göre Azure Defender planı seç**' in altında, **depolama** satırını bulun ve **plan** sütununda **etkin** ' i seçin.
+1. **Kaynak türüne göre Azure Defender planı seç** ' in altında, **depolama** satırını bulun ve **plan** sütununda **etkin** ' i seçin.
 1. Yaptığınız değişiklikleri kaydedin.
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-security-center.png" alt-text="Güvenlik Merkezi 'nde depolama için Azure Defender 'ı nasıl etkinleştireceğinizi gösteren ekran görüntüsü":::
@@ -66,8 +66,8 @@ Azure Defender artık bu abonelikteki tüm depolama hesapları için etkinleşti
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com/)başlatın.
-1. Depolama hesabınıza gidin. **Ayarlar**altında **Gelişmiş güvenlik**' i seçin.
-1. **Depolama Için Azure Defender 'ı etkinleştir**' i seçin.
+1. Depolama hesabınıza gidin. **Ayarlar** altında **Gelişmiş güvenlik** ' i seçin.
+1. **Depolama Için Azure Defender 'ı etkinleştir** ' i seçin.
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Güvenlik Merkezi 'nde depolama için Azure Defender 'ı nasıl etkinleştireceğinizi gösteren ekran görüntüsü":::
 
@@ -138,4 +138,4 @@ Uyarılar, depolama hesaplarına erişmeye veya açıktan yararlanmaya yönelik 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure depolama hesaplarında Günlükler](/rest/api/storageservices/About-Storage-Analytics-Logging) hakkında daha fazla bilgi edinin
-- [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md) hakkında daha fazla bilgi edinin
+- [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md) hakkında daha fazla bilgi edinin

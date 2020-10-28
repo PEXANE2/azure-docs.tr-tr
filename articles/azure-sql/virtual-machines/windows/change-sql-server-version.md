@@ -14,14 +14,14 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ec7ed958ac045c68fd7b616903f401dd07d8166
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293382"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789837"
 ---
-# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM'deki SQL Server sürümünü yerinde değiştirme
+# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM 'de SQL Server sürümünün yerinde değiştirilmesi
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
@@ -32,7 +32,7 @@ Bu makalede, Microsoft Azure bir Windows sanal makinesinde (VM) Microsoft SQL Se
 SQL Server yerinde yükseltmesi yapmak için aşağıdaki koşullar geçerlidir:
 
 - SQL Server istenen sürümünün Kurulum medyası gereklidir. [Yazılım Güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)'ne sahip olan müşteriler, yükleme medyasını [Toplu Lisanslama Merkezi](https://www.microsoft.com/Licensing/servicecenter/default.aspx)'nden alabilir. Yazılım Güvencesi sahibi olmayan müşteriler, SQL Server daha sonraki bir sürümü olan (genellikle C:\SQLServerFull içinde bulunur) bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir.
-- Sürüm yükseltmeleri, [destek yükseltme yollarını](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)izlemelidir.
+- Sürüm yükseltmeleri, [destek yükseltme yollarını](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)izlemelidir.
 
 ## <a name="planning-for-version-change"></a>Sürüm değişikliğini planlama
 
@@ -40,34 +40,34 @@ Sürüm değişikliğini yapmadan önce aşağıdaki öğeleri incelemenizi öne
 
 1. Yükseltmeyi planladığınız sürümdeki yenilikleri inceleyin:
 
-   - [SQL 2019](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-ver15?view=sql-server-ver15) ' deki yenilikler
-   - [SQL 2017](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-ver15) ' deki yenilikler
-   - [SQL 2016](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-ver15) ' deki yenilikler
-   - [SQL 2014](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-2014) ' deki yenilikler
+   - [SQL 2019](/sql/sql-server/what-s-new-in-sql-server-ver15?view=sql-server-ver15) ' deki yenilikler
+   - [SQL 2017](/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-ver15) ' deki yenilikler
+   - [SQL 2016](/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-ver15) ' deki yenilikler
+   - [SQL 2014](/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-2014) ' deki yenilikler
 
-1. Yükseltmenin etkisini en aza indirmek için veritabanı uyumluluk modlarını kullanabilmeniz için, değiştirilecek sürümün [Uyumluluk sertifikasını](https://docs.microsoft.com/sql/database-engine/install-windows/compatibility-certification?view=sql-server-ver15) kontrol etmenizi öneririz.
+1. Yükseltmenin etkisini en aza indirmek için veritabanı uyumluluk modlarını kullanabilmeniz için, değiştirilecek sürümün [Uyumluluk sertifikasını](/sql/database-engine/install-windows/compatibility-certification?view=sql-server-ver15) kontrol etmenizi öneririz.
 1. Başarılı bir sonuç sağlamaya yardımcı olması için aşağıdaki makalelere göz atın:
 
    - [Video: modernize SQL Server | Pam Lahoud & Pedro Loümler | 20 yıllık GEÇIŞ](https://www.youtube.com/watch?v=5RPkuQHcxxs&feature=youtu.be)
-   - [AB testi için Veritabanı Yükseltme Deneyimi Yardımcısı](https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-ver15)
-   - [Sorgu Ayarlama Yardımcısı 'Nı kullanarak veritabanlarını yükseltme](https://docs.microsoft.com/sql/relational-databases/performance/upgrade-dbcompat-using-qta?view=sql-server-ver15)
-   - [Veritabanı uyumluluk düzeyini değiştirme ve sorgu deposunu kullanma](https://docs.microsoft.com/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store?view=sql-server-ver15)
+   - [AB testi için Veritabanı Yükseltme Deneyimi Yardımcısı](/sql/dea/database-experimentation-assistant-overview?view=sql-server-ver15)
+   - [Sorgu Ayarlama Yardımcısı 'Nı kullanarak veritabanlarını yükseltme](/sql/relational-databases/performance/upgrade-dbcompat-using-qta?view=sql-server-ver15)
+   - [Veritabanı uyumluluk düzeyini değiştirme ve sorgu deposunu kullanma](/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store?view=sql-server-ver15)
 
 ## <a name="upgrade-sql-version"></a>SQL sürümünü yükselt
 
 > [!WARNING]
 > SQL Server sürümünü yükseltmek, Analysis Services ve R hizmetleri gibi ilişkili hizmetlere ek olarak hizmeti SQL Server yeniden başlatacak.
 
-SQL Server sürümünü yükseltmek için, SQL Server [yükseltme yolunu destekleyecek](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15) sonraki sürüm için SQL Server Kurulum medyasını edinin ve aşağıdaki adımları uygulayın:
+SQL Server sürümünü yükseltmek için, SQL Server [yükseltme yolunu destekleyecek](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15) sonraki sürüm için SQL Server Kurulum medyasını edinin ve aşağıdaki adımları uygulayın:
 
 1. İşlemi başlamadan önce sistem (tempdb hariç) ve kullanıcı veritabanları dahil veritabanlarını yedekleyin. Ayrıca, Azure Backup Hizmetleri 'ni kullanarak uygulamayla tutarlı bir VM düzeyi yedekleme de oluşturabilirsiniz.
 1. SQL Server yükleme medyasından Setup.exe başlatın.
-1. Yükleme Sihirbazı SQL Server yükleme merkezini başlatır. Mevcut bir SQL Server örneğini yükseltmek için, gezinti bölmesinde **yükleme** ' yi seçin ve ardından **SQL Server önceki bir sürümünden Yükselt**' i seçin.
+1. Yükleme Sihirbazı SQL Server yükleme merkezini başlatır. Mevcut bir SQL Server örneğini yükseltmek için, gezinti bölmesinde **yükleme** ' yi seçin ve ardından **SQL Server önceki bir sürümünden Yükselt** ' i seçin.
 
    :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="SQL Server sürümünü yükseltmek için seçim":::
 
-1. **Ürün anahtarı** sayfasında, SQL Server ücretsiz sürümüne yükseltme yapıp kullanmayacağınızı veya ürünün üretim sürümü IÇIN bir PID anahtarınız olduğunu göstermek için bir seçenek belirleyin. Daha fazla bilgi için, bkz. [SQL Server 2019 (15. x)](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) ve [desteklenen sürüm ve sürüm yükseltmeleri (SQL Server 2016)](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15).
-1. **Yükseltmeye hazırlanma** sayfasına ulaşana kadar **İleri** ' yi seçin ve ardından **Yükselt**' i seçin. Değişiklik etkinleşirken kurulum penceresi birkaç dakika yanıt vermeyi durdurabilir. **Komple** bir sayfa, yükseltmenin tamamlandığını doğrulayacaktır. Yükseltme için adım adım bir yordam için, [Tüm yordama](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)bakın.
+1. **Ürün anahtarı** sayfasında, SQL Server ücretsiz sürümüne yükseltme yapıp kullanmayacağınızı veya ürünün üretim sürümü IÇIN bir PID anahtarınız olduğunu göstermek için bir seçenek belirleyin. Daha fazla bilgi için, bkz. [SQL Server 2019 (15. x)](/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) ve [desteklenen sürüm ve sürüm yükseltmeleri (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15).
+1. **Yükseltmeye hazırlanma** sayfasına ulaşana kadar **İleri** ' yi seçin ve ardından **Yükselt** ' i seçin. Değişiklik etkinleşirken kurulum penceresi birkaç dakika yanıt vermeyi durdurabilir. **Komple** bir sayfa, yükseltmenin tamamlandığını doğrulayacaktır. Yükseltme için adım adım bir yordam için, [Tüm yordama](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)bakın.
 
    :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="SQL Server sürümünü yükseltmek için seçim":::
 
@@ -118,7 +118,7 @@ SQL Server sürümünü değiştirdikten sonra, SQL Server sürümünü görünt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Windows VM 'de SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)

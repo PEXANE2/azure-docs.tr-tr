@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: fbde77de0ad8698ff82b80b440ae1d4bdcae1f36
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427010"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790279"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Salt okuma sorgusu iş yüklerini boşaltmak için salt okuma çoğaltmaları kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,7 +36,7 @@ Yeni Premium, İş Açısından Kritik ve hiper ölçekli veritabanlarında, *ok
 > [!NOTE]
 > Yönetilen örneğin İş Açısından Kritik hizmet katmanında okuma ölçeği genişletme her zaman etkindir.
 
-SQL bağlantı dizeniz ile yapılandırıldıysa `ApplicationIntent=ReadOnly` , uygulama o veritabanının veya yönetilen örneğin salt okunurdur bir çoğaltmasına yönlendirilir. Özelliğini kullanma hakkında daha fazla bilgi için `ApplicationIntent` bkz. [uygulama hedefini belirtme](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
+SQL bağlantı dizeniz ile yapılandırıldıysa `ApplicationIntent=ReadOnly` , uygulama o veritabanının veya yönetilen örneğin salt okunurdur bir çoğaltmasına yönlendirilir. Özelliğini kullanma hakkında daha fazla bilgi için `ApplicationIntent` bkz. [uygulama hedefini belirtme](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
 Uygulamanın SQL bağlantı dizesindeki ayarından bağımsız olarak birincil çoğaltmaya bağlanmasını sağlamak isterseniz `ApplicationIntent` , veritabanını oluştururken veya yapılandırmasını değiştirmeksizin, okuma ölçeğini açıkça devre dışı bırakmanız gerekir. Örneğin, veritabanınızı standart veya Genel Amaçlı katmanından Premium, İş Açısından Kritik veya hiper ölçekli katmana yükseltirsiniz ve tüm bağlantılarınızın birincil çoğaltmaya gitmeye devam etmesini sağlamak istiyorsanız, okuma ölçeğini devre dışı bırakın. Devre dışı bırakma hakkında daha fazla bilgi için bkz. [okuma ölçeğini etkinleştirme ve devre dışı bırakma](#enable-and-disable-read-scale-out).
 
@@ -85,18 +85,18 @@ Bir salt okuma çoğaltmasına bağlanıldığında, dinamik yönetim görünüm
 
 Yaygın olarak kullanılan görünümler şunlardır:
 
-| Name | Amaç |
+| Ad | Amaç |
 |:---|:---|
-|[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Son saat için CPU, veri GÇ ve hizmet hedefi sınırlarına göre günlük yazma kullanımı dahil olmak üzere kaynak kullanım ölçümleri sağlar.|
-|[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Veritabanı altyapısı örneği için toplam bekleme istatistikleri sağlar. |
-|[sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Çoğaltma sistem durumu ve eşitleme istatistikleri sağlar. Sıra boyutunu Yinele ve yineleme oranı, salt okuma çoğaltmasında veri gecikmesi göstergesi olarak hizmeti sunar. |
-|[sys.dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Veritabanı altyapısı performans sayaçlarını sağlar.|
-|[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Yürütmeler sayısı, kullanılan CPU süresi vb. gibi sorgu başına yürütme istatistikleri sağlar.|
-|[sys.dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Önbelleğe alınmış sorgu planları sağlar. |
-|[sys.dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Önbelleğe alınmış bir sorgu planı için sorgu metni sağlar.|
-|[sys.dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Sorgular yürütülürken gerçek zamanlı sorgu ilerleme durumu sağlar.|
-|[sys.dm_exec_query_plan_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Bir sorgu için çalışma zamanı İstatistikleri dahil olmak üzere, bilinen son gerçek yürütme planını sağlar.|
-|[sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Tüm veritabanı dosyaları için depolama ıOPS, aktarım hızı ve gecikme süresi istatistikleri sağlar. |
+|[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Son saat için CPU, veri GÇ ve hizmet hedefi sınırlarına göre günlük yazma kullanımı dahil olmak üzere kaynak kullanım ölçümleri sağlar.|
+|[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Veritabanı altyapısı örneği için toplam bekleme istatistikleri sağlar. |
+|[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Çoğaltma sistem durumu ve eşitleme istatistikleri sağlar. Sıra boyutunu Yinele ve yineleme oranı, salt okuma çoğaltmasında veri gecikmesi göstergesi olarak hizmeti sunar. |
+|[sys.dm_os_performance_counters](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Veritabanı altyapısı performans sayaçlarını sağlar.|
+|[sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Yürütmeler sayısı, kullanılan CPU süresi vb. gibi sorgu başına yürütme istatistikleri sağlar.|
+|[sys.dm_exec_query_plan ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Önbelleğe alınmış sorgu planları sağlar. |
+|[sys.dm_exec_sql_text ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Önbelleğe alınmış bir sorgu planı için sorgu metni sağlar.|
+|[sys.dm_exec_query_profiles](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Sorgular yürütülürken gerçek zamanlı sorgu ilerleme durumu sağlar.|
+|[sys.dm_exec_query_plan_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Bir sorgu için çalışma zamanı İstatistikleri dahil olmak üzere, bilinen son gerçek yürütme planını sağlar.|
+|[sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Tüm veritabanı dosyaları için depolama ıOPS, aktarım hızı ve gecikme süresi istatistikleri sağlar. |
 
 > [!NOTE]
 > `sys.resource_stats` `sys.elastic_pool_resource_stats` Mantıksal ana veritabanındaki ve DMVs, birincil çoğaltmanın kaynak kullanım verilerini döndürür.
@@ -109,13 +109,13 @@ Birincil çoğaltmadan bir oturum tanımına dayalı bir salt okuma çoğaltmas�
 
 ### <a name="transaction-isolation-level-on-read-only-replicas"></a>Salt okuma çoğaltmalarda işlem yalıtım düzeyi
 
-Salt okuma çoğaltmaları üzerinde çalışan sorgular her zaman [anlık görüntü](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) işlem yalıtım düzeyine eşlenir. Anlık görüntü yalıtımı, okuyucuların yazarları engellediği senaryolara engel olmak için satır sürümü oluşturmayı kullanır.
+Salt okuma çoğaltmaları üzerinde çalışan sorgular her zaman [anlık görüntü](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) işlem yalıtım düzeyine eşlenir. Anlık görüntü yalıtımı, okuyucuların yazarları engellediği senaryolara engel olmak için satır sürümü oluşturmayı kullanır.
 
-Nadir durumlarda, bir anlık görüntü yalıtım işlemi başka bir eşzamanlı işlemde değiştirilmiş nesne meta verilerine erişirse, "%. * ls" veritabanında anlık görüntü yalıtımı işlemi başarısız [3961](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)olabilir, çünkü deyimin eriştiği nesne, bu işlemin başlamasından bu yana başka bir eşzamanlı IŞLEMDE bir DDL ifadesiyle değiştirilmiştir. Meta verilerde sürüm bilgisi olmadığından işleme izin verilmedi. Anlık görüntü yalıtımıyla karıştırıldığında, meta verilere yönelik eşzamanlı güncelleştirme tutarsızlığa neden olabilir. "
+Nadir durumlarda, bir anlık görüntü yalıtım işlemi başka bir eşzamanlı işlemde değiştirilmiş nesne meta verilerine erişirse, "%. * ls" veritabanında anlık görüntü yalıtımı işlemi başarısız [3961](/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)olabilir, çünkü deyimin eriştiği nesne, bu işlemin başlamasından bu yana başka bir eşzamanlı IŞLEMDE bir DDL ifadesiyle değiştirilmiştir. Meta verilerde sürüm bilgisi olmadığından işleme izin verilmedi. Anlık görüntü yalıtımıyla karıştırıldığında, meta verilere yönelik eşzamanlı güncelleştirme tutarsızlığa neden olabilir. "
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>Salt okuma çoğaltmalarda uzun süre çalışan sorgular
 
-Salt okuma çoğaltmalarda çalıştırılan sorguların sorguda başvurulan nesneler için meta verilere erişmesi gerekir (tablolar, dizinler, istatistikler, vb.) Nadir durumlarda, bir sorgu salt okuma çoğaltmasındaki aynı nesne üzerinde bir kilit tuttuğunda, birincil çoğaltmada bir meta veri nesnesi değiştirilirse, sorgu birincil çoğaltmadaki salt okuma çoğaltmasına değişiklikler uygulayan işlemi [engelleyebilir](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) . Bu tür bir sorgu uzun bir süre çalıştırmak olsaydı, salt okuma çoğaltmasının birincil çoğaltmayla önemli ölçüde eşitlenmemesine neden olur. 
+Salt okuma çoğaltmalarda çalıştırılan sorguların sorguda başvurulan nesneler için meta verilere erişmesi gerekir (tablolar, dizinler, istatistikler, vb.) Nadir durumlarda, bir sorgu salt okuma çoğaltmasındaki aynı nesne üzerinde bir kilit tuttuğunda, birincil çoğaltmada bir meta veri nesnesi değiştirilirse, sorgu birincil çoğaltmadaki salt okuma çoğaltmasına değişiklikler uygulayan işlemi [engelleyebilir](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) . Bu tür bir sorgu uzun bir süre çalıştırmak olsaydı, salt okuma çoğaltmasının birincil çoğaltmayla önemli ölçüde eşitlenmemesine neden olur. 
 
 Salt okuma çoğaltması üzerinde uzun süre çalışan bir sorgu bu tür engellemeye neden oluyorsa, otomatik olarak sonlandırılır ve oturum, "yüksek öncelikli bir DDL işlemi nedeniyle oturumunuz kesildi" 1219 hatasını alır.
 
@@ -123,7 +123,7 @@ Salt okuma çoğaltması üzerinde uzun süre çalışan bir sorgu bu tür engel
 > Sorguları salt bir çoğaltmada çalıştırırken 3961 hatası veya 1219 hatası alırsanız, sorguyu yeniden deneyin.
 
 > [!TIP]
-> Premium ve İş Açısından Kritik hizmet katmanlarında, salt okunurdur bir kopyaya bağlanıldığında, `redo_queue_size` `redo_rate` [sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV içindeki ve sütunları, salt okuma çoğaltmasındaki veri gecikmesi göstergesi olarak hizmet veren veri eşitleme işlemini izlemek için kullanılabilir.
+> Premium ve İş Açısından Kritik hizmet katmanlarında, salt okunurdur bir kopyaya bağlanıldığında, `redo_queue_size` `redo_rate` [sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV içindeki ve sütunları, salt okuma çoğaltmasındaki veri gecikmesi göstergesi olarak hizmet veren veri eşitleme işlemini izlemek için kullanılabilir.
 > 
 
 ## <a name="enable-and-disable-read-scale-out"></a>Okuma ölçeğini etkinleştirme ve devre dışı bırakma
@@ -144,7 +144,7 @@ Veritabanı **yapılandırma** dikey penceresinde okuma ölçeği genişletme ay
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager modülü hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Azure Resource Manager modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azure Resource Manager modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
 
-Azure PowerShell 'de okuma ölçeğini yönetme, Aralık 2016 Azure PowerShell yayını veya daha yenisini gerektirir. En yeni PowerShell sürümü için bkz. [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Azure PowerShell 'de okuma ölçeğini yönetme, Aralık 2016 Azure PowerShell yayını veya daha yenisini gerektirir. En yeni PowerShell sürümü için bkz. [Azure PowerShell](/powershell/azure/install-az-ps).
 
 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) cmdlet 'ini çağırarak ve parametresi için istenen değeri (veya) geçirerek Azure PowerShell okuma ölçeğini devre dışı bırakabilir veya yeniden etkinleştirebilirsiniz `Enabled` `Disabled` `-ReadScale` .
 
@@ -180,7 +180,7 @@ Body: {
 }
 ```
 
-Daha fazla bilgi için bkz. [veritabanları-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
+Daha fazla bilgi için bkz. [veritabanları-oluştur veya Güncelleştir](/rest/api/sql/databases/createorupdate).
 
 ## <a name="using-the-tempdb-database-on-a-read-only-replica"></a>`tempdb`Veritabanını salt bir çoğaltma çoğaltması üzerinde kullanma
 

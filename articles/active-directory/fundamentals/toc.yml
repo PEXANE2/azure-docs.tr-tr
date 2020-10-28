@@ -79,6 +79,8 @@
               href: sync-ldap.md
             - name: SCIM eşitlemesi
               href: sync-scim.md
+        - name: Azure’da kullanılan yetkililere sertifika sağlama
+          href: certificate-authorities.md
     - name: Dağıtım kılavuzu
       items:
         - name: 'Dağıtım 30, 90 ve sonrası'

@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 6758aed67949032bb93086527623b60af33e716e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c364fe7fa0ac4dd70a01a75478289ea861dee7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079566"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790840"
 ---
 # <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>Yönetilen bir örnek oluşturmak için PowerShell 'i Azure Resource Manager şablonuyla kullanma
 
@@ -41,12 +41,12 @@ Azure PowerShell komutlar, önceden tanımlanmış bir Azure Resource Manager ş
 
 Örnek adı, SQL Yöneticisi Kullanıcı adı, VNet/subnet ve harmanlama daha sonra değiştirilemez. Diğer örnek özellikleri değiştirilebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örnek, [geçerli bir ağ ortamı oluşturduğunuzu](../virtual-network-subnet-create-arm-template.md) veya yönetilen örneğiniz için [mevcut bir VNET 'i değiştirdiğinizi](../vnet-existing-add-subnet.md) varsayar. Gerekirse, ayrı bir [Azure Resource Manager şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment)kullanarak ağ ortamını hazırlayabilirsiniz. 
 
 
-Örnek [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) ve [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork)cmdlet 'lerini kullanır, bu nedenle aşağıdaki PowerShell modüllerini yüklediğinizden emin olun:
+Örnek [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)cmdlet 'lerini kullanır, bu nedenle aşağıdaki PowerShell modüllerini yüklediğinizden emin olun:
 
 ```powershell
 Install-Module Az.Network

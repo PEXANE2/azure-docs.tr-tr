@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0f9d2affe39eaf74d4c0a537658d655a0c150d7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439784"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789582"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Bulutta yeni DBA: geçişten sonra Azure SQL veritabanı 'nı yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -101,8 +101,8 @@ SQL veritabanı, güvenlik ve gizliliği çok önemli bir şekilde alır. SQL ve
 
 SQL veritabanı 'nda sunulan iki kimlik doğrulama yöntemi vardır:
 
-- [Azure Active Directory kimlik doğrulaması](authentication-aad-overview.md)
-- [SQL kimlik doğrulaması](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
+- [Azure Active Directory Kimlik Doğrulaması](authentication-aad-overview.md)
+- [SQL kimlik doğrulaması](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 Geleneksel Windows kimlik doğrulaması desteklenmez. Azure Active Directory (Azure AD) merkezi bir kimlik ve erişim yönetimi hizmetidir. Bu sayesinde, kuruluşunuzdaki tüm personele çok rahat bir oturum açma erişimi (SSO) sağlayabilirsiniz. Bu anlamı, kimlik bilgilerinin daha basit kimlik doğrulama için tüm Azure hizmetleri genelinde paylaşılmasıdır. 
 
@@ -113,7 +113,7 @@ Azure AD, Azure [Multi-Factor Authentication](authentication-mfa-ssms-overview.m
 |Azure 'da Azure Active Directory (Azure AD) kullanmayı tercih etme|[SQL kimlik doğrulaması](security-overview.md) kullan|
 |Şirket içi SQL Server kullanılan AD|[Ad 'Yi Azure AD Ile Federasyonun](../../active-directory/hybrid/whatis-hybrid-identity.md)ve Azure AD kimlik doğrulamasını kullanın. Bununla birlikte, çoklu oturum açma kullanabilirsiniz.|
 |Multi-Factor Authentication zorunlu kılmak gerekir|[Microsoft koşullu erişimi](conditional-access-configure.md)ile ilke olarak Multi-Factor Authentication gerektir ve [MULTI-Factor AUTHENTICATION desteğiyle Azure AD evrensel kimlik doğrulaması](authentication-mfa-ssms-overview.md)kullanın.|
-|Microsoft hesaplarından (live.com, outlook.com) veya diğer etki alanlarından (gmail.com) Konuk hesapları vardır|Azure AD [B2B Işbirliğinin](../../active-directory/b2b/what-is-b2b.md)kullanıldığı SQL veritabanı/veri ambarı 'NDA [Azure AD evrensel kimlik doğrulaması](authentication-mfa-ssms-overview.md) kullanın.|
+|Microsoft hesaplarından (live.com, outlook.com) veya diğer etki alanlarından (gmail.com) Konuk hesapları vardır|Azure AD [B2B Işbirliğinin](../../active-directory/external-identities/what-is-b2b.md)kullanıldığı SQL veritabanı/veri ambarı 'NDA [Azure AD evrensel kimlik doğrulaması](authentication-mfa-ssms-overview.md) kullanın.|
 |, Federasyon etki alanındaki Azure AD kimlik bilgilerinizi kullanarak Windows 'da oturum açar|[Azure AD Tümleşik kimlik doğrulaması](authentication-aad-configure.md)kullanın.|
 |Azure ile federe olmayan bir etki alanındaki kimlik bilgilerini kullanarak Windows 'da oturum açar|[Azure AD Tümleşik kimlik doğrulaması](authentication-aad-configure.md)kullanın.|
 |SQL veritabanı veya Azure SYNAPSE Analytics 'e bağlanması gereken orta katman hizmetlere sahip|[Azure AD Tümleşik kimlik doğrulaması](authentication-aad-configure.md)kullanın.|
@@ -223,7 +223,7 @@ ExpressRoute Ayrıca, ek ücret ödemeden satın aldığınız bant genişliği 
 
 - [Express Route 'a giriş](../../expressroute/expressroute-introduction.md)
 - [Önkoşullar](../../expressroute/expressroute-prerequisites.md)
-- [İş akışları](../../expressroute/expressroute-workflows.md)
+- [İş Akışları](../../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL veritabanı, herhangi bir düzenleme gereksinimleriyle uyumludur ve kendi Kuruluşumun uyumluluğuyla nasıl yardımcı olur?
 
@@ -320,11 +320,11 @@ SQL veritabanı, belirli veri bozulması sınıflarının otomatik olarak ve ver
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database-using-the-azure-portal"></a>Azure portal kullanarak verileri SQL veritabanından BACPAC dosyaları olarak dışarı ve içeri aktarma Nasıl yaparım?
 
-- **Dışarı aktarma**: Azure SQL veritabanı 'nda veritabanınızı Azure Portal bacpac dosyası olarak dışarı aktarabilirsiniz.
+- **Dışarı aktarma** : Azure SQL veritabanı 'nda veritabanınızı Azure Portal bacpac dosyası olarak dışarı aktarabilirsiniz.
 
    ![veritabanı dışarı aktarma](./media/manage-data-after-migrating-to-database/database-export1.png)
 
-- **Içeri aktarma**: ayrıca, Azure Portal kullanarak VERILERI BIR bacpac dosyası olarak Azure SQL veritabanı 'nda veritabanınıza aktarabilirsiniz.
+- **Içeri aktarma** : ayrıca, Azure Portal kullanarak VERILERI BIR bacpac dosyası olarak Azure SQL veritabanı 'nda veritabanınıza aktarabilirsiniz.
 
    ![veritabanı içeri aktarma](./media/manage-data-after-migrating-to-database/import1.png)
 

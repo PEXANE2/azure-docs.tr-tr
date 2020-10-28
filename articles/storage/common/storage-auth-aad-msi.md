@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2914a0e9b4c38cff01222ac9a9bffc99827d7162
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 16ac28e46e9231918f433c0e9eb077cb0d8cf230
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488750"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791180"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimliklerle blob ve kuyruk verilerine erişim yetkisi verme
 
@@ -28,7 +28,7 @@ Bu makalede, Azure kaynakları için Yönetilen kimlikler kullanarak bir Azure V
 
 VM 'nizden blob 'lara ve kuyruklara erişim yetkisi vermek üzere Azure kaynakları için Yönetilen kimlikler kullanabilmeniz için önce VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirmeniz gerekir. Azure kaynakları için yönetilen kimliklerin nasıl etkinleştireceğinizi öğrenmek için şu makalelerden birine bakın:
 
-- [Azure portalındaki](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure portalındaki](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager şablonu](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -163,6 +163,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure RBAC ile depolama verilerine erişim haklarını yönetin](storage-auth-aad-rbac.md).
+- [Azure RBAC ile depolama verilerine erişim haklarını yönetin](./storage-auth-aad-rbac-portal.md).
 - [Azure AD 'yi depolama uygulamalarıyla kullanın](storage-auth-aad-app.md).
 - [Blob verilerine erişmek için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma](../blobs/authorize-active-directory-powershell.md)

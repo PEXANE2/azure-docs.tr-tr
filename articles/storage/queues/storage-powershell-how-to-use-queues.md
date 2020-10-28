@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d1f758390a270f072bc08e13d1d542e08e4df553
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e558b8ca6498b8419ce6d7ce5ff1b161c05ef3c6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425548"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791146"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell ile Azure Kuyruk depolama işlemleri gerçekleştirme
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Konumların listesini al
 
-Kullanmak istediğiniz konumdan emin değilseniz, kullanılabilir konumları listeleyebilirsiniz. Liste görüntülendikten sonra, kullanmak istediğiniz öğeyi bulun. Bu alıştırma, **eastus**kullanır. Bunu daha sonra kullanmak üzere değişken **konumunda** saklayın.
+Kullanmak istediğiniz konumdan emin değilseniz, kullanılabilir konumları listeleyebilirsiniz. Liste görüntülendikten sonra, kullanmak istediğiniz öğeyi bulun. Bu alıştırma, **eastus** kullanır. Bunu daha sonra kullanmak üzere değişken **konumunda** saklayın.
 
 ```powershell
 Get-AzLocation | Select-Object Location
@@ -86,7 +86,7 @@ $queueName = "howtoqueue"
 $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
-Azure kuyruk hizmeti için adlandırma kuralları hakkında daha fazla bilgi için bkz. [adlandırma sıraları ve meta verileri](https://msdn.microsoft.com/library/azure/dd179349.aspx).
+Azure kuyruk hizmeti için adlandırma kuralları hakkında daha fazla bilgi için bkz. [adlandırma sıraları ve meta verileri](/rest/api/storageservices/Naming-Queues-and-Metadata).
 
 ## <a name="retrieve-a-queue"></a>Kuyruğu alma
 
@@ -131,9 +131,9 @@ $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 Bu **geçersiz zaman aşımı** , iletinin işlenmek üzere yeniden kullanılabilmesi için önce ne kadar süreyle görünmez kalabileceğini tanımlar. Varsayılan değer 30 saniyedir.
 
-Kodunuz, sıradaki bir iletiyi iki adımda okur. [Microsoft. Azure. Storage. Queue. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) yöntemini çağırdığınızda sıradaki bir sonraki iletiyi alırsınız. **GetMessage**’dan dönen bir ileti bu kuyruktaki kod okuyan iletilere karşı görünmez olur. İletiyi kuyruktan kaldırmayı tamamlaması için [Microsoft. Azure. Storage. Queue. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) yöntemini çağırın.
+Kodunuz, sıradaki bir iletiyi iki adımda okur. [Microsoft. Azure. Storage. Queue. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) yöntemini çağırdığınızda sıradaki bir sonraki iletiyi alırsınız. **GetMessage** ’dan dönen bir ileti bu kuyruktaki kod okuyan iletilere karşı görünmez olur. İletiyi kuyruktan kaldırmayı tamamlaması için [Microsoft. Azure. Storage. Queue. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) yöntemini çağırın.
 
-Aşağıdaki örnekte, üç kuyruk iletisini okuyun ve ardından 10 saniye (geçersiz zaman aşımı) bekleyin. Ardından, bu üç iletiyi yeniden okuyarak, **deleteMessage**çağırarak iletileri okuduktan sonra silin. İletiler silindikten sonra kuyruğu okumaya çalışırsanız, $queueMessage NULL olarak döndürülür.
+Aşağıdaki örnekte, üç kuyruk iletisini okuyun ve ardından 10 saniye (geçersiz zaman aşımı) bekleyin. Ardından, bu üç iletiyi yeniden okuyarak, **deleteMessage** çağırarak iletileri okuduktan sonra silin. İletiler silindikten sonra kuyruğu okumaya çalışırsanız, $queueMessage NULL olarak döndürülür.
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue

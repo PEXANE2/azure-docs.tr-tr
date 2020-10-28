@@ -12,13 +12,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 78414e26836d1547fe195a0a7844b6a98bb0dfc8
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: a85c1326501a362371d3bc961f5c5ae448e8d22e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168265"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790092"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırmak için PowerShell veya az CLı kullanın 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,13 +29,13 @@ Kullanılabilirlik grubunun dağıtımı SQL Server Management Studio (SSMS) vey
 
 Bu makalede, kullanılabilirlik grubu ortamını yapılandırmak için PowerShell ve az CLı kullanılırken, ayrıca [Azure Portal](availability-group-azure-portal-configure.md), [Azure hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)veya [el ile](availability-group-manually-configure-tutorial.md) de yapılabilir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Her zaman açık kullanılabilirlik grubunu yapılandırmak için aşağıdaki önkoşullara sahip olmanız gerekir: 
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
 - Etki alanı denetleyicisi olan bir kaynak grubu. 
-- Azure 'daki bir veya daha fazla etki alanına katılmış VM, *aynı* kullanılabilirlik KÜMESINDE veya [SQL VM kaynak sağlayıcısına kaydedilmiş](sql-vm-resource-provider-register.md) *farklı* kullanılabilirlik bölgelerinde [SQL Server 2016 (veya üzeri) Enterprise Edition çalıştırıyor](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .  
+- Azure 'daki bir veya daha fazla etki alanına katılmış VM, *aynı* kullanılabilirlik KÜMESINDE veya [SQL VM kaynak sağlayıcısına kaydedilmiş](sql-vm-resource-provider-register.md) *farklı* kullanılabilirlik bölgelerinde [SQL Server 2016 (veya üzeri) Enterprise Edition çalıştırıyor](./create-sql-vm-portal.md) .  
 - [PowerShell](/powershell/scripting/install/installing-powershell) veya [Azure CLI](/cli/azure/install-azure-cli)'nin en son sürümü. 
 - Kullanılabilir iki (herhangi bir varlık tarafından kullanılmayan) IP adresleri. Bunlardan biri iç yük dengeleyiciye yöneliktir. Diğeri, kullanılabilirlik grubu ile aynı alt ağda bulunan kullanılabilirlik grubu dinleyicisine yöneliktir. Var olan bir yük dengeleyiciyi kullanıyorsanız, kullanılabilirlik grubu dinleyicisi için yalnızca bir kullanılabilir IP adresine sahip olmanız gerekir. 
 
@@ -64,7 +64,7 @@ az storage account create -n <name> -g <resource group name> -l <region> `
 ```
 
 >[!TIP]
-> `az sql: 'vm' is not in the 'az sql' command group`Azure CLI 'nın eski bir sürümünü kullanıyorsanız bu hatayı görebilirsiniz. Bu hatayı almak için [Azure CLI 'nın en son sürümünü](https://docs.microsoft.com/cli/azure/install-azure-cli-windows) indirin.
+> `az sql: 'vm' is not in the 'az sql' command group`Azure CLI 'nın eski bir sürümünü kullanıyorsanız bu hatayı görebilirsiniz. Bu hatayı almak için [Azure CLI 'nın en son sürümünü](/cli/azure/install-azure-cli-windows) indirin.
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -84,7 +84,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ## <a name="define-cluster-metadata"></a>Küme meta verilerini tanımlama
 
-Azure CLı [az SQL VM Group](https://docs.microsoft.com/cli/azure/sql/vm/group) komut grubu, kullanılabilirlik grubunu barındıran Windows Server yük devretme KÜMESI (wsfc) hizmetinin meta verilerini yönetir. Küme meta verileri Active Directory etki alanını, küme hesaplarını, bulut tanığı olarak kullanılacak depolama hesaplarını ve SQL Server sürümünü içerir. İlk SQL Server VM eklendiğinde kümenin tanımlandığı şekilde oluşturulması için WSFC meta verilerini tanımlamak için [az SQL VM Group Create](https://docs.microsoft.com/cli/azure/sql/vm/group#az-sql-vm-group-create) kullanın. 
+Azure CLı [az SQL VM Group](/cli/azure/sql/vm/group) komut grubu, kullanılabilirlik grubunu barındıran Windows Server yük devretme KÜMESI (wsfc) hizmetinin meta verilerini yönetir. Küme meta verileri Active Directory etki alanını, küme hesaplarını, bulut tanığı olarak kullanılacak depolama hesaplarını ve SQL Server sürümünü içerir. İlk SQL Server VM eklendiğinde kümenin tanımlandığı şekilde oluşturulması için WSFC meta verilerini tanımlamak için [az SQL VM Group Create](/cli/azure/sql/vm/group#az-sql-vm-group-create) kullanın. 
 
 Aşağıdaki kod parçacığı, küme için meta verileri tanımlar:
 
@@ -129,7 +129,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ## <a name="add-vms-to-the-cluster"></a>Kümeye VM ekleme
 
-Kümeye ilk SQL Server VM eklendiğinde küme oluşturulur. [Az SQL VM Add-Group](https://docs.microsoft.com/cli/azure/sql/vm#az-sql-vm-add-to-group) komutu, kümeyi daha önce verilen adla oluşturur, küme rolünü SQL Server VM 'lerine ekler ve kümeye ekler. Komutun sonraki kullanımları `az sql vm add-to-group` Yeni oluşturulan kümeye daha fazla SQL Server VM ekler. 
+Kümeye ilk SQL Server VM eklendiğinde küme oluşturulur. [Az SQL VM Add-Group](/cli/azure/sql/vm#az-sql-vm-add-to-group) komutu, kümeyi daha önce verilen adla oluşturur, küme rolünü SQL Server VM 'lerine ekler ve kümeye ekler. Komutun sonraki kullanımları `az sql vm add-to-group` Yeni oluşturulan kümeye daha fazla SQL Server VM ekler. 
 
 Aşağıdaki kod parçacığı kümeyi oluşturur ve ilk SQL Server VM buna ekler: 
 
@@ -240,7 +240,7 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 ---
 
 >[!IMPORTANT]
-> Her bir SQL Server VM genel IP kaynağının standart yük dengeleyiciye uyumlu olması için standart bir SKU 'SU olmalıdır. SANAL makinenizin genel IP kaynağının SKU 'sunu belirlemek için, **kaynak grubu**' na gidin, istediğiniz SQL Server VM IÇIN **genel IP adresi** kaynağınızı seçin ve **genel bakış** bölmesinde **SKU** altındaki değeri bulun.  
+> Her bir SQL Server VM genel IP kaynağının standart yük dengeleyiciye uyumlu olması için standart bir SKU 'SU olmalıdır. SANAL makinenizin genel IP kaynağının SKU 'sunu belirlemek için, **kaynak grubu** ' na gidin, istediğiniz SQL Server VM IÇIN **genel IP adresi** kaynağınızı seçin ve **genel bakış** bölmesinde **SKU** altındaki değeri bulun.  
 
 ## <a name="create-listener"></a>Dinleyici oluştur
 
@@ -250,7 +250,7 @@ Kullanılabilirlik grubunu el ile oluşturduktan sonra [az SQL VM AG-Listener](/
    1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin. 
    1. Sanal ağ kaynağını seçin. 
    1. **Ayarlar** bölmesinde **Özellikler** ' i seçin. 
-   1. Sanal ağın kaynak KIMLIĞINI belirleyip `/subnets/<subnetname>` alt ağ kaynak kimliği oluşturmak için sonuna ekleyin. Örnek:
+   1. Sanal ağın kaynak KIMLIĞINI belirleyip `/subnets/<subnetname>` alt ağ kaynak kimliği oluşturmak için sonuna ekleyin. Örneğin:
       - Sanal ağ kaynak KIMLIĞINIZ: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
       - Alt ağ adınız: `default`
       - Bu nedenle, alt ağ kaynak KIMLIĞINIZ: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`
@@ -510,7 +510,7 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
+Daha fazla bilgi için aşağıdaki makalelere bakın: 
 
 * [SQL Server VM 'lerine genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [SQL Server VM 'Ler için SSS](frequently-asked-questions-faq.md)
@@ -521,4 +521,4 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 * [Kullanılabilirlik grubu &#40;SQL Server Yönetimi&#41;](/sql/database-engine/availability-groups/windows/administration-of-an-availability-group-sql-server)   
 * [Kullanılabilirlik gruplarının izlenmesi &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/monitoring-of-availability-groups-sql-server)
 * [Her zaman açık kullanılabilirlik grupları için Transact-SQL deyimlerine genel bakış &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/transact-sql-statements-for-always-on-availability-groups)   
-* [Her zaman açık kullanılabilirlik grupları için PowerShell cmdlet 'lerine genel bakış &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)  
+* [Her zaman açık kullanılabilirlik grupları için PowerShell cmdlet 'lerine genel bakış &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)

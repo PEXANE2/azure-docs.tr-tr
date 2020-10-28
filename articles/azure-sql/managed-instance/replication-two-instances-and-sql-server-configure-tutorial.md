@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: ff29e93149c618bb7d6df6b4477cc79fcf4b53d2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8173d53a5d4cac899b22f51a001f6e373f102236
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058565"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790806"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Öğretici: Azure SQL yönetilen örneği ve SQL Server arasında işlemsel çoğaltmayı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ Bu öğretici, deneyimli bir hedef kitle için tasarlanmıştır ve kullanıcın
 
 
 > [!NOTE]
-> Bu makalede, Azure SQL yönetilen örneği 'nde [İşlemsel çoğaltmanın](/sql/relational-databases/replication/transactional/transactional-replication) kullanımı açıklanmaktadır. Her bir örnek için tamamen okunabilir çoğaltmalar oluşturmanıza olanak sağlayan bir Azure SQL yönetilen örnek özelliği olan [Yük devretme grupları](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)ile ilgisiz değildir. [Yük devretme gruplarıyla işlemsel çoğaltmayı](replication-transactional-overview.md#with-failover-groups)yapılandırırken ek hususlar vardır.
+> Bu makalede, Azure SQL yönetilen örneği 'nde [İşlemsel çoğaltmanın](/sql/relational-databases/replication/transactional/transactional-replication) kullanımı açıklanmaktadır. Her bir örnek için tamamen okunabilir çoğaltmalar oluşturmanıza olanak sağlayan bir Azure SQL yönetilen örnek özelliği olan [Yük devretme grupları](../database/auto-failover-group-overview.md)ile ilgisiz değildir. [Yük devretme gruplarıyla işlemsel çoğaltmayı](replication-transactional-overview.md#with-failover-groups)yapılandırırken ek hususlar vardır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -69,7 +69,7 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 [Azure Portal](https://portal.azure.com)kullanarak bu yeni kaynak grubu içinde iki yönetilen örnek oluşturun.
 
 - Yayımcı yönetilen örneğinin adı `sql-mi-publisher` (rastgele seçim için birkaç karakterle birlikte) olmalıdır ve sanal ağın adı olmalıdır `vnet-sql-mi-publisher` .
-- Dağıtımcı yönetilen örneğinin adı `sql-mi-distributor` (rastgele seçim için birkaç karakterle birlikte) olmalıdır ve _Yayımcı tarafından yönetilen örnekle aynı sanal ağda_olmalıdır.
+- Dağıtımcı yönetilen örneğinin adı `sql-mi-distributor` (rastgele seçim için birkaç karakterle birlikte) olmalıdır ve _Yayımcı tarafından yönetilen örnekle aynı sanal ağda_ olmalıdır.
 
    ![Dağıtıcı için yayımcı VNet 'i kullanma](./media/replication-two-instances-and-sql-server-configure-tutorial/use-same-vnet-for-distributor.png)
 
@@ -155,11 +155,11 @@ VNet eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS)
 
    ![Özel DNS bölgesi oluştur](./media/replication-two-instances-and-sql-server-configure-tutorial/create-private-dns-zone.png)
 
-1. **Gözden geçir + oluştur**’u seçin. Özel DNS bölgeniz için parametreleri gözden geçirin ve ardından **Oluştur** ' u seçerek kaynağı oluşturun.
+1. **Gözden geçir ve oluştur** ’u seçin. Özel DNS bölgeniz için parametreleri gözden geçirin ve ardından **Oluştur** ' u seçerek kaynağı oluşturun.
 
 ### <a name="create-an-a-record"></a>Bir kayıt oluştur
 
-1. Yeni **özel DNS bölgenize** gidin ve **genel bakış**' ı seçin.
+1. Yeni **özel DNS bölgenize** gidin ve **genel bakış** ' ı seçin.
 1. **+ Kayıt kümesi** ' ni seçerek yeni bir kayıt oluşturun.
 1. SQL Server VM adının yanı sıra özel iç IP adresini de belirtin.
 
@@ -169,11 +169,11 @@ VNet eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS)
 
 ### <a name="link-the-virtual-network"></a>Sanal ağı bağlama
 
-1. Yeni **özel DNS bölgenize** gidin ve **sanal ağ bağlantıları**' nı seçin.
-1. **+ Ekle**'yi seçin.
+1. Yeni **özel DNS bölgenize** gidin ve **sanal ağ bağlantıları** ' nı seçin.
+1. **+ Ekle** 'yi seçin.
 1. Bağlantı için gibi bir ad girin `Pub-link` .
 1. Açılır listeden aboneliğinizi seçin ve ardından yayımcı yönetilen örneğiniz için sanal ağı seçin.
-1. **Otomatik kaydolmayı etkinleştir ' in**yanındaki kutuyu işaretleyin.
+1. **Otomatik kaydolmayı etkinleştir ' in** yanındaki kutuyu işaretleyin.
 
    ![VNet bağlantısı oluştur](./media/replication-two-instances-and-sql-server-configure-tutorial/configure-vnet-link.png)
 
@@ -182,7 +182,7 @@ VNet eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS)
 
 ## <a name="create-an-azure-storage-account"></a>Azure depolama hesabı oluşturma
 
-Çalışma dizini için [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) ve ardından depolama hesabı içinde bir [dosya paylaşma](../../storage/files/storage-how-to-create-file-share.md) oluşturun.
+Çalışma dizini için [bir Azure depolama hesabı oluşturun](../../storage/common/storage-account-create.md#create-a-storage-account) ve ardından depolama hesabı içinde bir [dosya paylaşma](../../storage/files/storage-how-to-create-file-share.md) oluşturun.
 
 Dosya paylaşımının yolunu şu biçimde kopyalayın: `\\storage-account-name.file.core.windows.net\file-share-name`
 
@@ -210,7 +210,7 @@ GO
 -- Drop database if it exists
 IF EXISTS (SELECT * FROM sys.sysdatabases WHERE name = 'ReplTutorial')
 BEGIN
-    DROP DATABASE ReplTutorial
+    DROP DATABASE ReplTutorial
 END
 GO
 
@@ -283,14 +283,14 @@ Dağıtım yapılandırıldıktan sonra yayını oluşturabilirsiniz. Bunu yapma
 
 1. SQL Server üzerinde SQL Server Management Studio başlatın.
 1. `sql-mi-publisher`Yönetilen örneğe bağlanın.
-1. **Nesne Gezgini**, **çoğaltma** düğümünü genişletin ve **Yerel yayın** klasörüne sağ tıklayın. **Yeni yayın seç...**.
+1. **Nesne Gezgini** , **çoğaltma** düğümünü genişletin ve **Yerel yayın** klasörüne sağ tıklayın. **Yeni yayın seç...** .
 1. **İleri ' yi** seçerek hoş geldiniz sayfasının ötesine geçin.
-1. **Yayın veritabanı** sayfasında, `ReplTutorial` daha önce oluşturduğunuz veritabanını seçin. **İleri**’yi seçin.
-1. **Yayın türü** sayfasında **işlem yayını**' nı seçin. **İleri**’yi seçin.
-1. **Makaleler** sayfasında, **Tablolar**' ın yanındaki kutuyu işaretleyin. **İleri**’yi seçin.
+1. **Yayın veritabanı** sayfasında, `ReplTutorial` daha önce oluşturduğunuz veritabanını seçin. **İleri** ’yi seçin.
+1. **Yayın türü** sayfasında **işlem yayını** ' nı seçin. **İleri** ’yi seçin.
+1. **Makaleler** sayfasında, **Tablolar** ' ın yanındaki kutuyu işaretleyin. **İleri** ’yi seçin.
 1. **Tablo satırlarını filtrele** sayfasında herhangi bir filtre eklemeden **İleri** ' yi seçin.
-1. Anlık görüntü **Aracısı** sayfasında, anlık görüntü oluştur ' un yanındaki kutuyu işaretleyin **ve abonelikleri başlatmak için anlık görüntüyü kullanılabilir tutun**. **İleri**’yi seçin.
-1. **Aracı Güvenlik** sayfasında **güvenlik ayarları...** öğesini seçin. Anlık görüntü Aracısı için kullanmak üzere SQL Server oturum açma kimlik bilgilerini sağlayın ve yayımcıya bağlanın. **Anlık görüntü Aracısı güvenlik** sayfasını kapatmak için **Tamam ' ı** seçin. **İleri**’yi seçin.
+1. Anlık görüntü **Aracısı** sayfasında, anlık görüntü oluştur ' un yanındaki kutuyu işaretleyin **ve abonelikleri başlatmak için anlık görüntüyü kullanılabilir tutun** . **İleri** ’yi seçin.
+1. **Aracı Güvenlik** sayfasında **güvenlik ayarları...** öğesini seçin. Anlık görüntü Aracısı için kullanmak üzere SQL Server oturum açma kimlik bilgilerini sağlayın ve yayımcıya bağlanın. **Anlık görüntü Aracısı güvenlik** sayfasını kapatmak için **Tamam ' ı** seçin. **İleri** ’yi seçin.
 
    ![Snapshot Agent güvenliğini yapılandırma](./media/replication-two-instances-and-sql-server-configure-tutorial/snapshot-agent-security.png)
 
@@ -352,9 +352,9 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin.
-1. Yönetilen örnekleri seçin ve ardından **Sil**' i seçin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. Bu işlemin tamamlanması biraz zaman alabilir ve tamamlanana kadar *sanal kümeyi* ya da başka herhangi bir bağımlı kaynağı silemeyeceksiniz. Yönetilen örneğinizin silindiğini onaylamak için **etkinlik** sekmesindeki silmeyi izleyin.
-1. Yönetilen örnek silindikten sonra, *sanal kümeyi* kaynak grubunuzda seçip **Sil**' i seçerek silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin.
-1. Kalan kaynakları silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin.
+1. Yönetilen örnekleri seçin ve ardından **Sil** ' i seçin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil** ' i seçin. Bu işlemin tamamlanması biraz zaman alabilir ve tamamlanana kadar *sanal kümeyi* ya da başka herhangi bir bağımlı kaynağı silemeyeceksiniz. Yönetilen örneğinizin silindiğini onaylamak için **etkinlik** sekmesindeki silmeyi izleyin.
+1. Yönetilen örnek silindikten sonra, *sanal kümeyi* kaynak grubunuzda seçip **Sil** ' i seçerek silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil** ' i seçin.
+1. Kalan kaynakları silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil** ' i seçin.
 1. Kaynak grubunu Sil ' i seçerek kaynak **grubunu Sil ' i seçin,** kaynak grubunun adını yazın ve Sil ' i `myResourceGroup` seçin. **Delete**
 
 ## <a name="known-errors"></a>Bilinen hatalar
@@ -414,7 +414,7 @@ Veritabanınızı güvenli hale getirme yöntemlerinin kapsamlı bir listesi iç
 - [Tehdit algılama](threat-detection-configure.md)
 - [Dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking)
 - [Satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security)
-- [Saydam veri şifrelemesi (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
+- [Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>SQL yönetilen örnek özellikleri
 

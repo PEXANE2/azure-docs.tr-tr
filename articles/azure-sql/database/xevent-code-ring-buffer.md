@@ -11,27 +11,27 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d73efd7a64d0118cea11ca9b0a35f659ce7fee6a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619840"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791299"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL veritabanı 'nda genişletilmiş olaylar için halka arabelleği hedef kodu
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Sınama sırasında genişletilmiş bir olay için en kolay hızlı bir şekilde bilgi yakalamak ve raporlamak için bir kod örneği istersiniz. Genişletilmiş olay verileri için en kolay hedef, [halka arabelleği hedefidir](https://msdn.microsoft.com/library/ff878182.aspx).
+Sınama sırasında genişletilmiş bir olay için en kolay hızlı bir şekilde bilgi yakalamak ve raporlamak için bir kod örneği istersiniz. Genişletilmiş olay verileri için en kolay hedef, [halka arabelleği hedefidir](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130)).
 
 Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 
 1. Göstermek üzere verileri içeren bir tablo oluşturur.
-2. Var olan genişletilmiş bir olay için bir oturum oluşturur, yani **SqlServer.sql_statement_starting**.
+2. Var olan genişletilmiş bir olay için bir oturum oluşturur, yani **SqlServer.sql_statement_starting** .
 
-   * Olay, belirli bir Update dize içeren SQL deyimleriyle sınırlıdır: **'% Update tabEmployee% ' gibi bir deyim**.
-   * Olayın çıkışını halka arabelleği türünde bir hedefe göndermeyi seçer, yani  **package0.ring_buffer**.
+   * Olay, belirli bir Update dize içeren SQL deyimleriyle sınırlıdır: **'% Update tabEmployee% ' gibi bir deyim** .
+   * Olayın çıkışını halka arabelleği türünde bir hedefe göndermeyi seçer, yani  **package0.ring_buffer** .
 3. Olay oturumunu başlatır.
 4. Birkaç basit SQL UPDATE deyimi yayınlar.
 5. Halka arabelleğinden olay çıktısını almak için bir SQL SELECT ifadesiyle karşılaşır.
@@ -50,7 +50,7 @@ Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 * SQL Server Management Studio (ssms.exe), ideal olarak en son aylık güncelleştirme sürümü.
   En son ssms.exe şuradan indirebilirsiniz:
   
-  * [SQL Server Management Studio indirme](https://msdn.microsoft.com/library/mt238290.aspx)başlıklı konu.
+  * [SQL Server Management Studio indirme](/sql/ssms/download-sql-server-management-studio-ssms)başlıklı konu.
   * [İndirmenin doğrudan bağlantısı.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Kod örneği
@@ -218,9 +218,9 @@ GO
 
 `ssms.exe`Kod örneğini çalıştırmak için kullandık.
 
-Sonuçları görüntülemek için **target_data_XML**sütun başlığı altındaki hücreyi tıkladık.
+Sonuçları görüntülemek için **target_data_XML** sütun başlığı altındaki hücreyi tıkladık.
 
-Ardından sonuçlar bölmesinde, sütun üst bilgisi **target_data_XML**altındaki hücreyi tıkladık. Bu, sonuç hücresinin içeriğinin XML olarak görüntülendiği ssms.exe başka bir dosya sekmesi oluşturulmasını ister.
+Ardından sonuçlar bölmesinde, sütun üst bilgisi **target_data_XML** altındaki hücreyi tıkladık. Bu, sonuç hücresinin içeriğinin XML olarak görüntülendiği ssms.exe başka bir dosya sekmesi oluşturulmasını ister.
 
 Çıktı aşağıdaki blokta gösterilmiştir. Uzun görünüyor ancak yalnızca iki **\<event>** öğe.
 
@@ -349,6 +349,6 @@ Genişletilmiş olaylara yönelik diğer kod örnek konuları aşağıdaki bağl
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->

@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 1e8810e8b0c02aec33f55fb8f0689eec3c5bad8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efea5d6548814dc0f165bab9281e5234f3eae925
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616712"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791333"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -89,7 +89,7 @@ Azure SQL veritabanı için sanal ağ kuralları özelliği aşağıdaki sınır
 
 Azure SQL veritabanı için hizmet uç noktaları kullanırken aşağıdaki noktaları gözden geçirin:
 
-- **Azure SQL veritabanı genel IP 'Lerine giden**: ağ güvenlik grupları (NSG 'ler), bağlantıya izin vermek IÇIN Azure SQL veritabanı 'na açık olmalıdır. Bunu Azure SQL veritabanı için NSG [hizmet etiketlerini](../../virtual-network/security-overview.md#service-tags) kullanarak yapabilirsiniz.
+- **Azure SQL veritabanı genel IP 'Lerine giden** : ağ güvenlik grupları (NSG 'ler), bağlantıya izin vermek IÇIN Azure SQL veritabanı 'na açık olmalıdır. Bunu Azure SQL veritabanı için NSG [hizmet etiketlerini](../../virtual-network/network-security-groups-overview.md#service-tags) kullanarak yapabilirsiniz.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -112,9 +112,9 @@ PolyBase ve COPY deyimleri, yüksek aktarım hızı verileri alımı için Azure
 
 #### <a name="prerequisites"></a>Ön koşullar
 
-- Bu [kılavuzu](https://docs.microsoft.com/powershell/azure/install-az-ps) kullanarak Azure PowerShell'i yükleyin.
-- Genel amaçlı v1 veya blob depolama hesabınız varsa öncelikle bu [kılavuzda](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) yer alan adımları izleyerek genel amaçlı v2 sürümüne yükseltmeniz gerekir.
-- Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsünde **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin vermeniz** gerekir. Bu yapılandırmayı etkinleştirmek, PolyBase ve COPY deyimlerinin, ağ trafiğinin Azure omurgasında kaldığı güçlü kimlik doğrulaması kullanarak depolama hesabına bağlanmasına imkan tanır. Daha fazla bilgi için bu [kılavuza](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) bakın.
+- Bu [kılavuzu](/powershell/azure/install-az-ps) kullanarak Azure PowerShell'i yükleyin.
+- Genel amaçlı v1 veya blob depolama hesabınız varsa öncelikle bu [kılavuzda](../../storage/common/storage-account-upgrade.md) yer alan adımları izleyerek genel amaçlı v2 sürümüne yükseltmeniz gerekir.
+- Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsünde **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin vermeniz** gerekir. Bu yapılandırmayı etkinleştirmek, PolyBase ve COPY deyimlerinin, ağ trafiğinin Azure omurgasında kaldığı güçlü kimlik doğrulaması kullanarak depolama hesabına bağlanmasına imkan tanır. Daha fazla bilgi için bu [kılavuza](../../storage/common/storage-network-security.md#exceptions) bakın.
 
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
@@ -129,21 +129,21 @@ PolyBase ve COPY deyimleri, yüksek aktarım hızı verileri alımı için Azure
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-1. Bu [Kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)kullanarak **genel amaçlı v2 depolama hesabı** oluşturun.
+1. Bu [Kılavuzu](../../storage/common/storage-account-create.md)kullanarak **genel amaçlı v2 depolama hesabı** oluşturun.
 
    > [!NOTE]
    >
-   > - Genel amaçlı bir v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)kullanarak **v2 'ye yükseltmeniz** gerekir.
-   > - Azure Data Lake Storage 2. ile ilgili bilinen sorunlar için lütfen bu [kılavuza](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)bakın.
+   > - Genel amaçlı bir v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](../../storage/common/storage-account-upgrade.md)kullanarak **v2 'ye yükseltmeniz** gerekir.
+   > - Azure Data Lake Storage 2. ile ilgili bilinen sorunlar için lütfen bu [kılavuza](../../storage/blobs/data-lake-storage-known-issues.md)bakın.
 
-1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. #1 adım Azure Active Directory (AAD) ile kaydettiğiniz Azure SYNAPSE analizlerinizi barındıran sunucuya **Depolama Blobu verileri katkıda bulunan** Azure rolü atayın.
+1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle** ' yi seçin. #1 adım Azure Active Directory (AAD) ile kaydettiğiniz Azure SYNAPSE analizlerinizi barındıran sunucuya **Depolama Blobu verileri katkıda bulunan** Azure rolü atayın.
 
    > [!NOTE]
-   > Yalnızca depolama hesabında sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)bakın.
+   > Yalnızca depolama hesabında sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](../../role-based-access-control/built-in-roles.md)bakın.
   
 1. **Azure depolama hesabına PolyBase bağlantısı:**
 
-   1. Daha önce oluşturmadıysanız bir veritabanı **[ana anahtarı](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** oluşturun:
+   1. Daha önce oluşturmadıysanız bir veritabanı **[ana anahtarı](/sql/t-sql/statements/create-master-key-transact-sql)** oluşturun:
 
        ```sql
        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
@@ -157,7 +157,7 @@ PolyBase ve COPY deyimleri, yüksek aktarım hızı verileri alımı için Azure
 
        > [!NOTE]
        >
-       > - Bu mekanizma, kapsamakta olan [yönetilen kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) kullandığından Azure depolama erişim anahtarı ile gizli dizi belirtilmesi gerekmez.
+       > - Bu mekanizma, kapsamakta olan [yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md) kullandığından Azure depolama erişim anahtarı ile gizli dizi belirtilmesi gerekmez.
        > - PolyBase bağlantısının VNet ile güvenli hale getirilmiş Azure Storage hesabıyla çalışması için KIMLIK adı **' yönetilen hizmet kimliği '** olmalıdır.
 
    1. `abfss://`PolyBase kullanarak genel amaçlı v2 depolama hesabınıza bağlanmak için şemayla dış veri kaynağı oluşturun:
@@ -168,11 +168,11 @@ PolyBase ve COPY deyimleri, yüksek aktarım hızı verileri alımı için Azure
 
        > [!NOTE]
        >
-       > - Genel amaçlı v1 veya blob depolama hesabıyla ilişkili dış tablolar zaten varsa, önce bu dış tabloları bırakmalısınız, ardından karşılık gelen dış veri kaynağını bırakmalısınız. Ardından `abfss://` , yukarıdaki gibi genel amaçlı v2 depolama hesabına bağlanma ve bu yeni dış veri kaynağını kullanarak tüm dış tabloları yeniden oluşturma düzenine sahip dış veri kaynağı oluşturun. Her türlü dış tablo için oluşturma komut dosyaları oluşturmak için [komut dosyaları oluşturma ve Yayımlama Sihirbazı 'nı](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) kullanabilirsiniz.
-       > - Düzen hakkında daha fazla bilgi için `abfss://` Bu [kılavuza](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)bakın.
-       > - Dış VERI kaynağı oluşturma hakkında daha fazla bilgi için bu [kılavuza](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)bakın.
+       > - Genel amaçlı v1 veya blob depolama hesabıyla ilişkili dış tablolar zaten varsa, önce bu dış tabloları bırakmalısınız, ardından karşılık gelen dış veri kaynağını bırakmalısınız. Ardından `abfss://` , yukarıdaki gibi genel amaçlı v2 depolama hesabına bağlanma ve bu yeni dış veri kaynağını kullanarak tüm dış tabloları yeniden oluşturma düzenine sahip dış veri kaynağı oluşturun. Her türlü dış tablo için oluşturma komut dosyaları oluşturmak için [komut dosyaları oluşturma ve Yayımlama Sihirbazı 'nı](/sql/ssms/scripting/generate-and-publish-scripts-wizard) kullanabilirsiniz.
+       > - Düzen hakkında daha fazla bilgi için `abfss://` Bu [kılavuza](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md)bakın.
+       > - Dış VERI kaynağı oluşturma hakkında daha fazla bilgi için bu [kılavuza](/sql/t-sql/statements/create-external-data-source-transact-sql)bakın.
 
-   1. [Dış tablolar](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)kullanarak normal şekilde sorgulama.
+   1. [Dış tablolar](/sql/t-sql/statements/create-external-table-transact-sql)kullanarak normal şekilde sorgulama.
 
 ### <a name="azure-sql-database-blob-auditing"></a>Azure SQL veritabanı blobu denetimi
 
@@ -188,11 +188,11 @@ Yalnızca bir güvenlik duvarı kuralı ayarlamak sunucunun güvenliğinin sağl
 
 ## <a name="errors-40914-and-40615"></a>Hatalar 40914 ve 40615
 
-Bağlantı hatası 40914, Azure portal güvenlik duvarı bölmesinde belirtilen *sanal ağ kuralları*ile ilgilidir. Hata 40615 benzerdir, ancak güvenlik duvarındaki *IP adresi kurallarıyla* ilgilidir.
+Bağlantı hatası 40914, Azure portal güvenlik duvarı bölmesinde belirtilen *sanal ağ kuralları* ile ilgilidir. Hata 40615 benzerdir, ancak güvenlik duvarındaki *IP adresi kurallarıyla* ilgilidir.
 
 ### <a name="error-40914"></a>Hata 40914
 
-*İleti metni:* Oturum açma tarafından istenen '*[sunucu-adı]*' sunucusu açılamıyor. İstemcinin sunucuya erişmesine izin verilmiyor.
+*İleti metni:* Oturum açma tarafından istenen ' *[sunucu-adı]* ' sunucusu açılamıyor. İstemcinin sunucuya erişmesine izin verilmiyor.
 
 *Hata açıklaması:* İstemci, sanal ağ sunucusu uç noktaları olan bir alt ağda bulunur. Ancak sunucuda, veritabanıyla iletişim kurmak için gereken alt ağa izin veren bir sanal ağ kuralı yok.
 
@@ -210,7 +210,7 @@ Bağlantı hatası 40914, Azure portal güvenlik duvarı bölmesinde belirtilen 
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>Portal, bir sanal ağ kuralı oluşturabilir
 
-Bu bölümde, Azure SQL veritabanı 'nda veritabanınızda bir *sanal ağ kuralı* oluşturmak için [Azure Portal][http-azure-portal-link-ref-477t] nasıl kullanabileceğiniz gösterilmektedir. Kural, veritabanınıza, *sanal ağ hizmeti uç noktası*olarak etiketlenmiş belirli bir alt ağdan gelen iletişimi kabul etmesini söyler.
+Bu bölümde, Azure SQL veritabanı 'nda veritabanınızda bir *sanal ağ kuralı* oluşturmak için [Azure Portal][http-azure-portal-link-ref-477t] nasıl kullanabileceğiniz gösterilmektedir. Kural, veritabanınıza, *sanal ağ hizmeti uç noktası* olarak etiketlenmiş belirli bir alt ağdan gelen iletişimi kabul etmesini söyler.
 
 > [!NOTE]
 > Sunucunuzun VNet güvenlik duvarı kurallarına bir hizmet uç noktası eklemek istiyorsanız, önce alt ağ için hizmet uç noktalarının açık olduğundan emin olun.
@@ -231,16 +231,16 @@ Dahili olarak, SQL VNet eylemleri için PowerShell cmdlet 'leri REST API 'Leri �
 
 Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *türü adıyla* etiketlenmiş bir alt ağa sahip olmanız gerekir.
 
-- İlgili uç nokta türü adı **Microsoft. SQL**' dir.
+- İlgili uç nokta türü adı **Microsoft. SQL** ' dir.
 - Alt ağınız tür adıyla etiketlenmemişse, bkz. [alt ağınızın bir uç nokta olduğunu doğrulayın][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100].
 
 <a name="a-portal-steps-for-vnet-rule-200"></a>
 
 ## <a name="azure-portal-steps"></a>Azure portal adımları
 
-1. [Azure portalında][http-azure-portal-link-ref-477t] oturum açın.
+1. [Azure Portal][http-azure-portal-link-ref-477t]’ında oturum açın.
 
-2. **SQL Server 'lar**için arama yapın ve ardından sunucunuzu seçin. **Güvenlik altında güvenlik** **duvarları ve sanal ağlar**' ı seçin.
+2. **SQL Server 'lar** için arama yapın ve ardından sunucunuzu seçin. **Güvenlik altında güvenlik** **duvarları ve sanal ağlar** ' ı seçin.
 
 3. **Azure hizmetleri denetimine erişime Izin ver** denetimini kapalı olarak ayarlayın.
 
@@ -255,7 +255,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 
     > [!TIP]
     > Alt ağınız için doğru **Adres önekini** dahil etmeniz gerekir. Değeri portalda bulabilirsiniz.
-    > Tüm **kaynaklara** git &gt; **Tüm** &gt; **sanal ağlar**. Filtre, sanal ağlarınızı görüntüler. Sanal ağınıza ve ardından **alt ağlar**' a tıklayın. **Adres aralığı** sütunu, Ihtiyacınız olan adres ön ekine sahiptir.
+    > Tüm **kaynaklara** git &gt; **Tüm** &gt; **sanal ağlar** . Filtre, sanal ağlarınızı görüntüler. Sanal ağınıza ve ardından **alt ağlar** ' a tıklayın. **Adres aralığı** sütunu, Ihtiyacınız olan adres ön ekine sahiptir.
 
     ![Yeni kural için alanları doldur.][image-portal-firewall-create-update-vnet-rule-20-png]
 
@@ -298,12 +298,12 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 [sql-db-vnet-service-endpoint-rule-powershell-md-52d]:scripts/vnet-service-endpoint-rule-powershell-create.md
 [sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]:scripts/vnet-service-endpoint-rule-powershell-create.md#a-verify-subnet-is-endpoint-ps-100
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
-[vm-virtual-network-service-endpoints-overview-649d]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
+[vm-virtual-network-service-endpoints-overview-649d]: ../../virtual-network/virtual-network-service-endpoints-overview.md
 [vpn-gateway-indexmd-608y]: ../../vpn-gateway/index.yml
 
 <!-- Link references, to text, Outside this GitHub repo (HTTP). -->
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
-[rest-api-virtual-network-rules-operations-862r]: https://docs.microsoft.com/rest/api/sql/virtualnetworkrules
+[rest-api-virtual-network-rules-operations-862r]: /rest/api/sql/virtualnetworkrules
 
 <!-- ??2
 #### Syntax related articles

@@ -11,23 +11,23 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
 ms.date: 09/30/2020
-ms.openlocfilehash: 6c8d048d43a16191cc7b1245ad2d686ba2ca22ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e5ab1f07473a2572f7fb228139da8670fd6269c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596968"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790364"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Veritabanı ve Azure SQL Yönetilen Örneği'nde izleme ve performansı ayarlama
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bir veritabanının performansını izlemek için, belirli bir hizmet katmanını ve performans düzeyini seçerken seçtiğiniz veritabanı performansı düzeyine göre iş yükünüz tarafından kullanılan CPU ve GÇ kaynaklarını izlemeye başlayın. Bunu gerçekleştirmek için Azure SQL veritabanı ve Azure SQL yönetilen örneği, Azure portal görüntülenebilecek veya şu SQL Server yönetim araçlarından birini kullanarak kaynak ölçümleri yayar: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) ya da [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
+Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bir veritabanının performansını izlemek için, belirli bir hizmet katmanını ve performans düzeyini seçerken seçtiğiniz veritabanı performansı düzeyine göre iş yükünüz tarafından kullanılan CPU ve GÇ kaynaklarını izlemeye başlayın. Bunu gerçekleştirmek için Azure SQL veritabanı ve Azure SQL yönetilen örneği, Azure portal görüntülenebilecek veya şu SQL Server yönetim araçlarından birini kullanarak kaynak ölçümleri yayar: [Azure Data Studio](/sql/azure-data-studio/what-is) ya da [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS).
 
 Azure SQL veritabanı, performansı artırmak için akıllı performans ayarlama önerilerini ve otomatik ayarlama seçeneklerini sağlamak üzere çeşitli veritabanı danışmanları sağlar. Ayrıca, Sorgu Performansı İçgörüleri tek ve havuza alınmış veritabanları için en fazla CPU ve GÇ kullanımından sorumlu sorgular hakkındaki ayrıntıları gösterir.
 
 Azure SQL veritabanı ve Azure SQL yönetilen örneği, sorun gidermede ve veritabanlarınızın ve çözümlerin performansını en üst düzeye çıkarmak için yapay zeka tarafından desteklenen gelişmiş izleme ve ayarlama özellikleri sağlar. Bu [akıllı içgörüler](intelligent-insights-overview.md) ve diğer veritabanı kaynak günlüklerinin ve ölçümlerinin [akış dışa aktarılmasını](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) , özellikle de [SQL Analytics](../../azure-monitor/insights/azure-sql.md)'i kullanarak, tüketim ve analiz için birkaç hedefden birine yapılandırmayı seçebilirsiniz. Azure SQL Analytics, tüm veritabanlarınızın performansını ölçek ve birden çok abonelik arasında tek bir görünümde izlemek için gelişmiş bir bulut izleme çözümüdür. Dışarı aktarmak istediğiniz günlüklerin ve ölçümlerin bir listesi için bkz. [dışarı aktarma için tanılama telemetrisi](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)
 
-SQL Server, SQL veritabanı ve SQL yönetilen örneğinin, [sorgu deposu](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) ve [dinamik yönetim görünümleri (DMVs)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)gibi faydalanma konusunda kendi izleme ve tanılama özelliklerine sahiptir. Çeşitli performans sorunlarını izlemek için bkz. komut dosyaları için [DMVs kullanarak izleme](monitoring-with-dmvs.md) .
+SQL Server, SQL veritabanı ve SQL yönetilen örneğinin, [sorgu deposu](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) ve [dinamik yönetim görünümleri (DMVs)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)gibi faydalanma konusunda kendi izleme ve tanılama özelliklerine sahiptir. Çeşitli performans sorunlarını izlemek için bkz. komut dosyaları için [DMVs kullanarak izleme](monitoring-with-dmvs.md) .
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Azure portal özellikleri izleme ve ayarlama
 
@@ -44,7 +44,7 @@ Azure portal, Azure SQL veritabanı ve Azure SQL yönetilen örneği, kaynak öl
 
 ### <a name="database-advisors-in-azure-sql-database"></a>Azure SQL veritabanı 'nda veritabanı danışmanları
 
-Azure SQL veritabanı, tek ve havuza alınmış veritabanları için performans ayarlama önerilerini sağlayan [veritabanı danışmanlarını](database-advisor-implement-performance-recommendations.md) içerir. Bu öneriler, Azure portal ve [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseadvisor)kullanılarak kullanılabilir. Ayrıca, [otomatik ayarlamayı](automatic-tuning-overview.md) ETKINLEŞTIREREK Azure SQL veritabanı 'nın bu ayarlama önerilerini otomatik olarak uygulayabilmesini sağlayabilirsiniz.
+Azure SQL veritabanı, tek ve havuza alınmış veritabanları için performans ayarlama önerilerini sağlayan [veritabanı danışmanlarını](database-advisor-implement-performance-recommendations.md) içerir. Bu öneriler, Azure portal ve [PowerShell](/powershell/module/az.sql/get-azsqldatabaseadvisor)kullanılarak kullanılabilir. Ayrıca, [otomatik ayarlamayı](automatic-tuning-overview.md) ETKINLEŞTIREREK Azure SQL veritabanı 'nın bu ayarlama önerilerini otomatik olarak uygulayabilmesini sağlayabilirsiniz.
 
 ### <a name="query-performance-insight-in-azure-sql-database"></a>Azure SQL veritabanı 'nda Sorgu Performansı İçgörüleri
 
@@ -99,29 +99,29 @@ Tanılama ayarlarını, tek veritabanları, havuza alınmış veritabanları, el
 
 ### <a name="log-analytics-workspace-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanı
 
-Ölçümleri ve kaynak günlüklerini [Azure izleyici 'de bir Log Analytics çalışma alanına](../../azure-monitor/platform/resource-logs-collect-workspace.md)akışını sağlayabilirsiniz. Burada akan veriler, performans raporları, uyarılar ve risk azaltma önerilerini içeren veritabanlarınızı akıllı olarak izlemeye yönelik yalnızca bir bulut izleme çözümü olan [SQL Analytics](../../azure-monitor/insights/azure-sql.md)tarafından tüketilebilir. Bir Log Analytics çalışma alanına akan veriler, toplanan diğer izleme verileriyle analiz edilebilir ve ayrıca uyarılar ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmanızı sağlar.
+Ölçümleri ve kaynak günlüklerini [Azure izleyici 'de bir Log Analytics çalışma alanına](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)akışını sağlayabilirsiniz. Burada akan veriler, performans raporları, uyarılar ve risk azaltma önerilerini içeren veritabanlarınızı akıllı olarak izlemeye yönelik yalnızca bir bulut izleme çözümü olan [SQL Analytics](../../azure-monitor/insights/azure-sql.md)tarafından tüketilebilir. Bir Log Analytics çalışma alanına akan veriler, toplanan diğer izleme verileriyle analiz edilebilir ve ayrıca uyarılar ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmanızı sağlar.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-[Azure Event Hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)ölçümleri ve kaynak günlüklerini akışla aktarabilirsiniz. Aşağıdaki işlevleri sağlamak için Olay Hub 'larına yönelik tanılama telemetrisini akışa alma:
+[Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)ölçümleri ve kaynak günlüklerini akışla aktarabilirsiniz. Aşağıdaki işlevleri sağlamak için Olay Hub 'larına yönelik tanılama telemetrisini akışa alma:
 
-- **Üçüncü taraf günlüğe kaydetme ve telemetri sistemlerine akış günlükleri**
+- **Günlüklerin üçüncü taraf günlük ve telemetri sistemlerine akışını yapın**
 
   Günlük verilerini bir üçüncü taraf SıEM veya Log Analytics aracına yöneltmek için tüm ölçümleri ve kaynak günlüklerinizi tek bir olay hub 'ına akışla.
-- **Özel telemetri ve günlüğe kaydetme platformu oluşturma**
+- **Özel telemetri ve günlük platformu oluşturma**
 
   Olay Hub 'larının yüksek düzeyde ölçeklenebilir yayımla-abone ol yapısı, ölçümleri ve kaynak günlüklerini özel bir telemetri platformunda esnek bir şekilde içe almanızı sağlar. Ayrıntılar için bkz. [Event Hubs Azure 'Da küresel ölçekli telemetri platformunu tasarlama ve boyutlandırma](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
-- **Power BI veri akışı yaparak hizmet durumunu görüntüleyin**
+- **Power BI'a veri akışı yaparak hizmet durumunu görüntüleme**
 
-  Tanılama verilerinizi Azure hizmetlerinizden neredeyse gerçek zamanlı içgörüler halinde dönüştürmek için Event Hubs, Stream Analytics ve Power BI kullanın. Bkz. [Stream Analytics ve Power BI: Bu çözümdeki Ayrıntılar için veri akışı için gerçek zamanlı analiz panosu](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-power-bi-dashboard) .
+  Tanılama verilerinizi Azure hizmetlerinizden neredeyse gerçek zamanlı içgörüler halinde dönüştürmek için Event Hubs, Stream Analytics ve Power BI kullanın. Bkz. [Stream Analytics ve Power BI: Bu çözümdeki Ayrıntılar için veri akışı için gerçek zamanlı analiz panosu](../../stream-analytics/stream-analytics-power-bi-dashboard.md) .
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Depolama
 
-[Azure depolama](../../azure-monitor/platform/resource-logs-collect-storage.md)'ya ölçüm ve kaynak günlükleri akışı yapın. Önceki iki akış seçeneğinin maliyetinin bir bölümü boyunca çok miktarda tanılama telemetrisini arşivlemek için Azure Storage 'ı kullanın.
+[Azure depolama](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)'ya ölçüm ve kaynak günlükleri akışı yapın. Önceki iki akış seçeneğinin maliyetinin bir bölümü boyunca çok miktarda tanılama telemetrisini arşivlemek için Azure Storage 'ı kullanın.
 
 ## <a name="use-extended-events"></a>Genişletilmiş olayları kullanma 
 
-Ayrıca, Gelişmiş izleme ve sorun giderme için SQL Server [Genişletilmiş olayları](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) da kullanabilirsiniz. Genişletilmiş olaylar mimarisi, kullanıcıların sorunları gidermek veya bir performans sorunu tanımlamak için gereken kadar çok veya az veri toplamasına olanak sağlar. Azure SQL veritabanı 'nda genişletilmiş olayları kullanma hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda genişletilmiş olaylar](xevent-db-diff-from-svr.md).
+Ayrıca, Gelişmiş izleme ve sorun giderme için SQL Server [Genişletilmiş olayları](/sql/relational-databases/extended-events/extended-events) da kullanabilirsiniz. Genişletilmiş olaylar mimarisi, kullanıcıların sorunları gidermek veya bir performans sorunu tanımlamak için gereken kadar çok veya az veri toplamasına olanak sağlar. Azure SQL veritabanı 'nda genişletilmiş olayları kullanma hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda genişletilmiş olaylar](xevent-db-diff-from-svr.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

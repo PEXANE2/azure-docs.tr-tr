@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a59e498435aab7b3e3e2ecf2e6096c044550a1b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628375"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791265"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uygulamanızı Azure SQL Yönetilen Örneği'ne bağlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ Sanal ağları bağlamak için iki seçenek vardır:
 Eşleme, Microsoft omurga ağını kullandığından tercih edilir, bu nedenle bağlantı perspektifinden, eşlenmiş bir sanal ağdaki ve aynı sanal ağdaki sanal makineler arasındaki gecikmede fark yoktur. Sanal ağ eşlemesi, aynı bölgedeki ağlar arasında desteklenmelidir. Genel sanal ağ eşleme, aşağıdaki notta açıklanan sınırlandıranlarla de desteklenir.  
 
 > [!IMPORTANT]
-> [9/22/2020 tarihinde yeni oluşturulan sanal kümeler için genel sanal ağ eşlemesi duyuruldu](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Diğer bir deyişle, duyuru tarihinden sonra boş alt ağlarda oluşturulan SQL yönetilen örnekleri ve bu alt ağlarda oluşturulan tüm sonraki yönetilen örnekler için genel sanal ağ eşlemesi desteklenir. Diğer tüm SQL yönetilen örnekler için eşleme desteği, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
+> [9/22/2020 tarihinde yeni oluşturulan sanal kümeler için genel sanal ağ eşlemesi duyuruldu](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Diğer bir deyişle, duyuru tarihinden sonra boş alt ağlarda oluşturulan SQL yönetilen örnekleri ve bu alt ağlarda oluşturulan tüm sonraki yönetilen örnekler için genel sanal ağ eşlemesi desteklenir. Diğer tüm SQL yönetilen örnekler için eşleme desteği, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
 
 ## <a name="connect-from-on-premises"></a>Şirket içinden Bağlan 
 
@@ -71,10 +71,10 @@ Müşteriler tarafından uygulanan başka bir senaryo, bir VPN ağ geçidinin ay
 
 ![Sanal ağ eşleme](./media/connect-application-instance/vnet-peering.png)
 
-Temel altyapıyı ayarladıktan sonra, VPN ağ geçidinin SQL yönetilen örneği barındıran sanal ağdaki IP adreslerini görebilmesi için bazı ayarları değiştirmeniz gerekir. Bunu yapmak için, **eşleme ayarları**altında aşağıdaki belirli değişiklikleri yapın.
+Temel altyapıyı ayarladıktan sonra, VPN ağ geçidinin SQL yönetilen örneği barındıran sanal ağdaki IP adreslerini görebilmesi için bazı ayarları değiştirmeniz gerekir. Bunu yapmak için, **eşleme ayarları** altında aşağıdaki belirli değişiklikleri yapın.
 
-1. VPN ağ geçidini barındıran sanal ağda, eşlemeler **' e gidin**, SQL yönetilen örneği için eşlenen sanal ağ bağlantısına gidin ve **ağ geçidi aktarımına izin ver**' e tıklayın.
-2. SQL yönetilen örneğini barındıran sanal **ağda, eşlemeler ' e gidin**, VPN ağ geçidinin eşlenen sanal ağ bağlantısına gidin ve **uzak ağ geçitlerini kullan**' a tıklayın.
+1. VPN ağ geçidini barındıran sanal ağda, eşlemeler **' e gidin** , SQL yönetilen örneği için eşlenen sanal ağ bağlantısına gidin ve **ağ geçidi aktarımına izin ver** ' e tıklayın.
+2. SQL yönetilen örneğini barındıran sanal **ağda, eşlemeler ' e gidin** , VPN ağ geçidinin eşlenen sanal ağ bağlantısına gidin ve **uzak ağ geçitlerini kullan** ' a tıklayın.
 
 ## <a name="connect-azure-app-service"></a>Azure App Service Bağlan 
 
@@ -151,8 +151,8 @@ SQL yönetilen örneğine bağlanmak istiyorsanız, araçların ve sürücüleri
 |JDBC sürücüsü| 6.4.0 |
 |Node.js sürücüsü| 2.1.1 |
 |OLEDB sürücüsü| 18.0.2.0 |
-|SSMS| 18,0 veya [üzeri](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) veya üzeri |
+|SSMS| 18,0 veya [üzeri](/sql/ssms/download-sql-server-management-studio-ssms) |
+|[SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) veya üzeri |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

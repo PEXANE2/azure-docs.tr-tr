@@ -9,16 +9,16 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e71e56b9da06bfd8f3be24481efd619b788a8839
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822270"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789684"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Yönetim kaynaklarına erişmek için Azure depolama kaynak sağlayıcısını kullanma
 
-Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure depolama kaynak sağlayıcısı, Azure Resource Manager dayalı ve Azure Storage yönetim kaynaklarına erişim sağlayan bir hizmettir. Depolama hesapları, Özel uç noktaları ve hesap erişim anahtarları gibi kaynakları oluşturmak, güncelleştirmek, yönetmek ve silmek için Azure depolama kaynak sağlayıcısını kullanabilirsiniz. Azure Resource Manager hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](/azure/azure-resource-manager/resource-group-overview).
+Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure depolama kaynak sağlayıcısı, Azure Resource Manager dayalı ve Azure Storage yönetim kaynaklarına erişim sağlayan bir hizmettir. Depolama hesapları, Özel uç noktaları ve hesap erişim anahtarları gibi kaynakları oluşturmak, güncelleştirmek, yönetmek ve silmek için Azure depolama kaynak sağlayıcısını kullanabilirsiniz. Azure Resource Manager hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
 
 Bir depolama hesabı oluşturma veya silme veya bir abonelikteki depolama hesaplarının bir listesini alma gibi eylemleri gerçekleştirmek için Azure depolama kaynak sağlayıcısını kullanabilirsiniz. Azure depolama kaynak sağlayıcısı 'na karşı istekleri yetkilendirmek için Azure Active Directory (Azure AD) kullanın. Bu makalede, yönetim kaynaklarına izinlerin nasıl atanacağı açıklanır ve Azure depolama kaynak sağlayıcısı 'na karşı isteklerin nasıl yapılacağını gösteren örneklere işaret eder.
 
@@ -32,9 +32,9 @@ Azure depolama, istekleri blob ve kuyruk depolamaya göre yetkilendirmek için A
 
 ## <a name="assign-management-permissions-with-azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC) ile yönetim izinleri atama
 
-Her Azure aboneliğinin kullanıcıları, grupları ve uygulamaları yöneten ilişkili bir Azure Active Directory vardır. Bir Kullanıcı, Grup veya uygulama [Microsoft Identity platform](/azure/active-directory/develop/)bağlamında güvenlik sorumlusu olarak da adlandırılır. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak Active Directory tanımlı bir güvenlik sorumlusu için bir abonelikteki kaynaklara erişim izni verebilirsiniz.
+Her Azure aboneliğinin kullanıcıları, grupları ve uygulamaları yöneten ilişkili bir Azure Active Directory vardır. Bir Kullanıcı, Grup veya uygulama [Microsoft Identity platform](../../active-directory/develop/index.yml)bağlamında güvenlik sorumlusu olarak da adlandırılır. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak Active Directory tanımlı bir güvenlik sorumlusu için bir abonelikteki kaynaklara erişim izni verebilirsiniz.
 
-Bir Azure rolünü bir güvenlik sorumlusuna atadığınızda, rol tarafından verilen izinlerin etkin olduğu kapsamı da belirtirsiniz. Yönetim işlemleri için abonelik, kaynak grubu veya depolama hesabı düzeyinde bir rol atayabilirsiniz. [Azure Portal](https://portal.azure.com/), [Azure CLI araçları](../../cli-install-nodejs.md), [PowerShell](/powershell/azure/)veya [Azure depolama kaynak sağlayıcısı REST API](/rest/api/storagerp)kullanarak bir Azure rolünü güvenlik sorumlusuna atayabilirsiniz.
+Bir Azure rolünü bir güvenlik sorumlusuna atadığınızda, rol tarafından verilen izinlerin etkin olduğu kapsamı da belirtirsiniz. Yönetim işlemleri için abonelik, kaynak grubu veya depolama hesabı düzeyinde bir rol atayabilirsiniz. [Azure Portal](https://portal.azure.com/), [Azure CLI araçları](/cli/azure/install-classic-cli), [PowerShell](/powershell/azure/)veya [Azure depolama kaynak sağlayıcısı REST API](/rest/api/storagerp)kullanarak bir Azure rolünü güvenlik sorumlusuna atayabilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md) ve [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -53,7 +53,7 @@ Depolama yönetimi işlemlerini çağırma izinleri veren yerleşik roller, aşa
 | **Kullanıcı Erişimi Yöneticisi** | , Depolama hesabına erişimi yönetebilir.   | Evet, bir güvenlik sorumlusunun kendilerine ve başkalarına herhangi bir izin atamasını sağlar. |
 | **Sanal Makine Katılımcısı** | , Bağlı oldukları depolama hesabını değil, sanal makineleri yönetebilir.   | Evet, depolama hesabı anahtarlarını görüntülemek ve yeniden oluşturmak için izinler sağlar. |
 
-Tablodaki üçüncü sütun, yerleşik rolün **Microsoft. Storage/storageAccounts/ListKeys/Action**' i destekleyip desteklemediğini gösterir. Bu eylem, depolama hesabı anahtarlarını okuma ve yeniden oluşturma izinleri verir. Azure depolama yönetimi kaynaklarına erişim izinleri, verilere erişim izinlerini de içermez. Ancak, bir kullanıcının hesap anahtarlarına erişimi varsa, paylaşılan anahtar yetkilendirmesi aracılığıyla Azure Storage verilerine erişmek için hesap anahtarlarını kullanabilirler.
+Tablodaki üçüncü sütun, yerleşik rolün **Microsoft. Storage/storageAccounts/ListKeys/Action** ' i destekleyip desteklemediğini gösterir. Bu eylem, depolama hesabı anahtarlarını okuma ve yeniden oluşturma izinleri verir. Azure depolama yönetimi kaynaklarına erişim izinleri, verilere erişim izinlerini de içermez. Ancak, bir kullanıcının hesap anahtarlarına erişimi varsa, paylaşılan anahtar yetkilendirmesi aracılığıyla Azure Storage verilerine erişmek için hesap anahtarlarını kullanabilirler.
 
 ### <a name="custom-roles-for-management-operations"></a>Yönetim işlemleri için özel roller
 
@@ -76,6 +76,6 @@ Azure dağıtım modelleri hakkında daha fazla bilgi için bkz. [Kaynak Yöneti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Resource Manager genel bakış](/azure/azure-resource-manager/resource-group-overview)
+- [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md)
 - [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md)
 - [Azure depolama kaynak sağlayıcısı için ölçeklenebilirlik hedefleri](scalability-targets-resource-provider.md)

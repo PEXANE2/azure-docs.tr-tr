@@ -17,13 +17,13 @@
     - name: Yenilikler
       items:
         - name: Sürüm notları
-          displayName: changelog
+          displayName: 'changelog, news'
           href: release-notes.md
         - name: Yaklaşan önemli değişiklikler
-          displayName: 'release notes, changelog'
+          displayName: 'release notes, changelog, news'
           href: upcoming-changes.md
         - name: Arşivlenmiş sürüm notları (altı aydan daha eski)
-          displayName: changelog
+          displayName: 'changelog, news'
           href: release-notes-archive.md
     - name: Güvenlik Merkezi temelleri
       items:
@@ -92,6 +92,7 @@
     - name: E-posta bildirimlerini ayarlama
       href: security-center-provide-security-contact-details.md
     - name: ARM şablonuyla uyarıya otomatik yanıt oluşturma
+      displayName: Resource Manager
       href: quickstart-automation-alert.md
 - name: Öğreticiler
   items:
@@ -238,6 +239,7 @@
           displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
           href: export-to-siem.md
         - name: Log Analytics çalışma alanına veya Azure Olay Hub'ına aktarma
+          displayName: continuous
           href: continuous-export.md
         - name: Tüm uyarıları içeren CSV raporunu indirme
           href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations

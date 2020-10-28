@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 194625ab43dbb161d2b04352d715a44a1328a888
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fdeddfb0a09151ea010d4e95a2954200dd9371dc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503343"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791435"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -44,9 +44,9 @@ Veri eşitleme, verileri eşitlemek için bir hub ve bağlı bileşen topolojisi
 Bir eşitleme grubu aşağıdaki özelliklere sahiptir:
 
 - **Eşitleme şeması** hangi verilerin eşitlendiğini açıklar.
-- **Eşitleme yönü** iki yönlü olabilir veya yalnızca bir yönde akabilir. Diğer bir deyişle, eşitleme yönü *hub*veya *hub 'a üye*ya da her ikisi de olabilir.
+- **Eşitleme yönü** iki yönlü olabilir veya yalnızca bir yönde akabilir. Diğer bir deyişle, eşitleme yönü *hub* veya *hub 'a üye* ya da her ikisi de olabilir.
 - Eşitleme **aralığı** , eşitlemenin ne sıklıkla oluştuğunu açıklar.
-- **Çakışma çözümleme ilkesi** , *hub WINS* veya *üye WINS*olabilen bir grup düzeyi ilkesidir.
+- **Çakışma çözümleme ilkesi** , *hub WINS* veya *üye WINS* olabilen bir grup düzeyi ilkesidir.
 
 ## <a name="when-to-use"></a>Kullanılması gereken durumlar
 
@@ -62,7 +62,7 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 |----------|----------------------------|
 | Olağanüstü Durum Kurtarma | [Azure coğrafi olarak yedekli yedeklemeler](automated-backups-overview.md) |
 | Ölçeği oku | [Salt okunurdur ve salt okuma sorgu iş yüklerinin yükünü dengelemek için salt okuma çoğaltmaları kullanın (Önizleme)](read-scale-out.md) |
-| ETL (OLTP-OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) veya [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
+| ETL (OLTP-OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) veya [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
 | SQL Server 'den Azure SQL veritabanı 'na geçiş | [Azure Veritabanı Geçiş Hizmeti](https://azure.microsoft.com/services/database-migration/) |
 |||
 
@@ -72,9 +72,9 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 
 - **Veri değişikliklerini izleme:** Veri eşitleme, INSERT, Update ve DELETE tetikleyicilerini kullanarak değişiklikleri izler. Değişiklikler, Kullanıcı veritabanındaki bir yan tabloya kaydedilir. BULK INSERT varsayılan olarak Tetikleyicileri tetikleyeceğini unutmayın. FIRE_TRIGGERS belirtilmemişse, hiçbir ekleme tetikleyicisi yürütülmez. Veri eşitleme 'nin Bu eklemeleri izleyebilmesi için FIRE_TRIGGERS seçeneğini ekleyin. 
 - **Veriler eşitleniyor:** Veri eşitleme, hub ve bağlı bileşen modelinde tasarlanmıştır. Hub her üyeyle tek tek eşitlenir. Hub 'daki değişiklikler üyeye indirilir ve Üyeden yapılan değişiklikler hub 'a yüklenir.
-- **Çakışmalar çözümleniyor:** Veri eşitleme, çakışma çözümü, *Merkez WINS* veya *üye WINS*için iki seçenek sunar.
-  - *Merkez WINS*' i seçerseniz, hub 'daki değişiklikler her zaman üyenin değişikliklerinin üzerine yazar.
-  - *Üye WINS*' i seçerseniz, üyedeki değişiklikler hub 'daki değişiklikler üzerine yazılır. Birden fazla üye varsa, son değer öncelikle hangi üyenin eşitlendiği üzerinde değişir.
+- **Çakışmalar çözümleniyor:** Veri eşitleme, çakışma çözümü, *Merkez WINS* veya *üye WINS* için iki seçenek sunar.
+  - *Merkez WINS* ' i seçerseniz, hub 'daki değişiklikler her zaman üyenin değişikliklerinin üzerine yazar.
+  - *Üye WINS* ' i seçerseniz, üyedeki değişiklikler hub 'daki değişiklikler üzerine yazılır. Birden fazla üye varsa, son değer öncelikle hangi üyenin eşitlendiği üzerinde değişir.
 
 ## <a name="compare-with-transactional-replication"></a>Işlemsel çoğaltma ile karşılaştırın
 
@@ -101,7 +101,7 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 
 ### <a name="did-something-go-wrong"></a>Bir sorun oluştu
 
-- [Azure SQL Data Sync ile ilgili sorun giderme](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [Azure SQL Data Sync ile ilgili sorun giderme](./sql-data-sync-troubleshoot.md)
 
 ## <a name="consistency-and-performance"></a>Tutarlılık ve performans
 
@@ -126,7 +126,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 > - Eşit bir sorun bildirmese de, hub ve üye arasındaki veriler kaybolabilir.
 > - Birincil anahtar değişikliği nedeniyle izleme tablosu kaynaktan mevcut olmayan bir satır içerdiğinden eşitleme başarısız olabilir.
 
-- Hem eşitleme üyeleri hem de Hub için anlık görüntü yalıtımının etkinleştirilmesi gerekir. Daha fazla bilgi için bkz. [SQL Server'da Anlık Görüntü Yalıtımı](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- Hem eşitleme üyeleri hem de Hub için anlık görüntü yalıtımının etkinleştirilmesi gerekir. Daha fazla bilgi için bkz. [SQL Server'da Anlık Görüntü Yalıtımı](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Genel sınırlamalar
 
@@ -175,8 +175,8 @@ Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları e�
 
 Eşitleme grubu oluşturulduğunda, veri eşitleme hizmetinin hub veritabanına bağlanması gerekir. Eşitleme grubunu oluşturduğunuzda, Azure SQL Server 'ın ayarlarında aşağıdaki yapılandırma olmalıdır `Firewalls and virtual networks` :
 
- * *Ortak ağ erişimini reddetme* *devre dışı*olarak ayarlanmalıdır.
- * *Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver* ' in *Evet*olarak ayarlanması veya [veri eşitleme hizmeti tarafından kullanılan IP adresleri](network-access-controls-overview.md#data-sync)için IP kuralları oluşturmanız gerekir.
+ * *Ortak ağ erişimini reddetme* *devre dışı* olarak ayarlanmalıdır.
+ * *Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver* ' in *Evet* olarak ayarlanması veya [veri eşitleme hizmeti tarafından kullanılan IP adresleri](network-access-controls-overview.md#data-sync)için IP kuralları oluşturmanız gerekir.
 
 Eşitleme grubu oluşturulup sağlandıktan sonra bu ayarları devre dışı bırakabilirsiniz. Eşitleme Aracısı doğrudan hub veritabanına bağlanır ve aracının hub sunucusuna erişmesine izin vermek için sunucunun [güvenlik DUVARı IP kurallarını](firewall-configure.md) veya [Özel uç noktalarını](private-endpoint-overview.md) kullanabilirsiniz.
 
@@ -240,7 +240,7 @@ Federasyon kök veritabanı SQL Data Sync hizmetinde herhangi bir kısıtlama ol
 
 ### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>Kendi veritabanınızı getir (BYOD) özelliğini kullanarak Dynamics 365 ' den aktarılmış verileri eşitlemek için veri eşitlemeyi kullanabilir miyim?
 
-Dynamics 365 kendi veritabanınızı getir özelliği, yöneticilerin veri varlıklarını uygulamadan kendi Microsoft Azure SQL veritabanı 'na dışarı aktarmanıza olanak tanır. Veri eşitleme, veriler **artımlı gönderim** kullanılarak aktarılıyorsa (tam gönderim desteklenmez) ve **hedef veritabanında Tetikleyicileri etkinleştir** **Evet**olarak ayarlanırsa, bu verileri diğer veritabanlarına eşitlemek için kullanılabilir.
+Dynamics 365 kendi veritabanınızı getir özelliği, yöneticilerin veri varlıklarını uygulamadan kendi Microsoft Azure SQL veritabanı 'na dışarı aktarmanıza olanak tanır. Veri eşitleme, veriler **artımlı gönderim** kullanılarak aktarılıyorsa (tam gönderim desteklenmez) ve **hedef veritabanında Tetikleyicileri etkinleştir** **Evet** olarak ayarlanırsa, bu verileri diğer veritabanlarına eşitlemek için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -248,20 +248,19 @@ Dynamics 365 kendi veritabanınızı getir özelliği, yöneticilerin veri varl�
 
 Bir eşitleme grubundaki bir veritabanının şemasını güncelleştirmeniz mı gerekiyor? Şema değişiklikleri otomatik olarak çoğaltılmaz. Bazı çözümler için aşağıdaki makalelere bakın:
 
-- [Azure 'da SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin](../../sql-database/sql-database-update-sync-schema.md)
+- [Azure 'da SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin](./sql-data-sync-update-sync-schema.md)
 - [Mevcut bir eşitleme grubunda eşitleme şemasını güncelleştirmek için PowerShell kullanma](scripts/update-sync-schema-in-sync-group.md)
 
 ### <a name="monitor-and-troubleshoot"></a>İzleme ve sorun giderme
 
 SQL Data Sync beklendiği gibi yapılıyor mu? Etkinliği izlemek ve sorunları gidermek için aşağıdaki makalelere bakın:
 
-- [Azure Izleyici günlükleriyle SQL Data Sync izleme](../../sql-database/sql-database-sync-monitor-oms.md)
-- [Azure SQL Data Sync ile ilgili sorun giderme](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [Azure Izleyici günlükleriyle SQL Data Sync izleme](./monitor-tune-overview.md)
+- [Azure SQL Data Sync ile ilgili sorun giderme](./sql-data-sync-troubleshoot.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Azure SQL veritabanı hakkında daha fazla bilgi
 
 Azure SQL veritabanı hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [SQL Veritabanı'na Genel Bakış](sql-database-paas-overview.md)
-- [Veritabanı Yaşam Döngüsü Yönetimi](https://msdn.microsoft.com/library/jj907294.aspx)
- 
+- [Veritabanı Yaşam Döngüsü Yönetimi](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

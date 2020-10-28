@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 2e751a77d40403c7bdd4644e8e6fb03ff89063e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a46e47d6e12d52113bf63342c84a58ca98743d0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335080"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789616"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Azure SQL veritabanında veritabanları için dosya alanını yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,13 +40,13 @@ Aşağıdaki senaryolarda dosya alanı kullanımının izlenmesi ve veri dosyala
 
 Azure portal görüntülendiği en fazla depolama alanı ölçümü ve aşağıdaki API 'Ler yalnızca kullanılan veri sayfalarının boyutunu ölçer:
 
-- PowerShell [Get-ölçümleri](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric) dahil Azure Resource Manager tabanlı ölçüm API 'leri
-- T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- PowerShell [Get-ölçümleri](/powershell/module/az.monitor/get-azmetric) dahil Azure Resource Manager tabanlı ölçüm API 'leri
+- T-SQL: [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Ancak aşağıdaki API 'Ler Ayrıca veritabanları ve elastik havuzlar için ayrılan alan boyutunu ölçer:
 
-- T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL:  [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Veri dosyalarını küçültme
 
@@ -148,7 +148,7 @@ Havuzdaki her bir veritabanı için ayrılan alanı belirlemeye yönelik sorgu s
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir. Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
 
-PowerShell betiği SQL Server PowerShell modülünü gerektiriyor. yüklemek için [PowerShell modülünü indirme](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) bölümüne bakın.
+PowerShell betiği SQL Server PowerShell modülünü gerektiriyor. yüklemek için [PowerShell modülünü indirme](/sql/powershell/download-sql-server-ps-module) bölümüne bakın.
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -214,7 +214,7 @@ DBCC SHRINKDATABASE (N'db1')
 
 Bu komut, çalışırken veritabanı performansını etkileyebilir ve mümkünse düşük kullanım dönemlerinde çalıştırılmalıdır.  
 
-Bu komut hakkında daha fazla bilgi için bkz. [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
+Bu komut hakkında daha fazla bilgi için bkz. [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
 
 ### <a name="auto-shrink"></a>Otomatik küçültme
 
@@ -226,11 +226,11 @@ Otomatik küçültmeyi etkinleştirmek için aşağıdaki komutta veritabanını
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-Bu komut hakkında daha fazla bilgi için bkz. [VERITABANı kümesi](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) seçenekleri.
+Bu komut hakkında daha fazla bilgi için bkz. [VERITABANı kümesi](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) seçenekleri.
 
 ### <a name="rebuild-indexes"></a>Dizinleri yeniden oluştur
 
-Veritabanı veri dosyaları daraltıladıktan sonra, dizinler parçalanabilir ve performans iyileştirmesi verimliliğini kaybedebilir. Performans düşüşü gerçekleşirse, veritabanı dizinlerini yeniden oluşturmayı düşünün. Parçalama ve dizinleri yeniden oluşturma hakkında daha fazla bilgi için bkz. [dizinleri yeniden düzenleme ve yeniden oluşturma](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+Veritabanı veri dosyaları daraltıladıktan sonra, dizinler parçalanabilir ve performans iyileştirmesi verimliliğini kaybedebilir. Performans düşüşü gerçekleşirse, veritabanı dizinlerini yeniden oluşturmayı düşünün. Parçalama ve dizinleri yeniden oluşturma hakkında daha fazla bilgi için bkz. [dizinleri yeniden düzenleme ve yeniden oluşturma](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

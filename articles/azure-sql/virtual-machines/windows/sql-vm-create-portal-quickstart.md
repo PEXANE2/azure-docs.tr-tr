@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb10e85b07037805d59dcba91ff20a4bc2a6574e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d7d82db7fc8a39a0865e80ee7873ee849627c583
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84667650"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791078"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Windows sanal makinesinde 2017 SQL Server oluşturun
 
@@ -43,13 +43,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Hesabınızı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna *Azure SQL* yazın.
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna *Azure SQL* yazın.
 1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **SQL sanal makineler** kutucuğunda **Ayrıntıları göster** ' i seçerek ek bilgileri görüntüleyebilirsiniz.
 1. Açılan menüden **ücretsiz SQL Server Lisansı: Windows Server 2016 üzerinde SQL Server 2017 Developer '** ı seçin.
 
    ![Yeni arama penceresi](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
 
-1. **Oluştur**’u seçin.
+1. **Oluştur** ’u seçin.
 
    ![Yeni arama penceresi](./media/sql-vm-create-portal-quickstart/create-sql-2017-vm-image.png)
 
@@ -61,20 +61,20 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
    ![Abonelik](./media/sql-vm-create-portal-quickstart/basics-project-details.png)
 
-1. **Örnek ayrıntıları**:
-    1. **Sanal makine adı**Için _sqlvm_ yazın. 
-    1. **Bölgeniz**için bir konum seçin. 
-    1. Bu hızlı başlangıç amacıyla **kullanılabilirlik seçeneklerini** _hiçbir altyapı yedekliliği olmadan_ayarlayın. Kullanılabilirlik seçenekleri hakkında daha fazla bilgi edinmek için bkz. [kullanılabilirlik](../../../virtual-machines/windows/availability.md). 
-    1. **Görüntü** listesinde _Ücretsiz SQL Server Lisansı: Windows Server 2016 üzerinde SQL Server 2017 Developer_' ı seçin. 
+1. **Örnek ayrıntıları** :
+    1. **Sanal makine adı** Için _sqlvm_ yazın. 
+    1. **Bölgeniz** için bir konum seçin. 
+    1. Bu hızlı başlangıç amacıyla **kullanılabilirlik seçeneklerini** _hiçbir altyapı yedekliliği olmadan_ ayarlayın. Kullanılabilirlik seçenekleri hakkında daha fazla bilgi edinmek için bkz. [kullanılabilirlik](../../../virtual-machines/availability.md). 
+    1. **Görüntü** listesinde _Ücretsiz SQL Server Lisansı: Windows Server 2016 üzerinde SQL Server 2017 Developer_ ' ı seçin. 
     1. Sanal makine **boyutunun** **boyutunu değiştirmeyi** seçin ve **a2 temel** teklifini seçin. Beklenmedik ücretleri engellemek için, bu kaynaklarla işiniz bittiğinde kaynaklarınızı temizlediğinizden emin olun. 
 
    ![Örnek ayrıntıları](./media/sql-vm-create-portal-quickstart/basics-instance-details.png)
 
-1. **Yönetici hesabı**altında _azureuser_ ve Password gibi bir Kullanıcı adı sağlayın. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.
+1. **Yönetici hesabı** altında _azureuser_ ve Password gibi bir Kullanıcı adı sağlayın. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.
 
    ![Yönetici hesabı](./media/sql-vm-create-portal-quickstart/basics-administrator-account.png)
 
-1. **Gelen bağlantı noktası kuralları**altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılır listeden **RDP (3389)** öğesini seçin. 
+1. **Gelen bağlantı noktası kuralları** altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılır listeden **RDP (3389)** öğesini seçin. 
 
    ![Gelen bağlantı noktası kuralları](./media/sql-vm-create-portal-quickstart/basics-inbound-port-rules.png)
 
@@ -82,13 +82,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 **SQL Server ayarları** sekmesinde aşağıdaki seçenekleri yapılandırın:
 
-1. **Güvenlik & ağı**altında, **SQL bağlantısı** için _Genel (Internet_) seçeneğini belirleyin ve `1401` genel senaryoda iyi bilinen bir bağlantı noktası numarası kullanmaktan kaçınmak için bağlantı noktasını olarak değiştirin. 
-1. **SQL kimlik doğrulaması**altında **Etkinleştir**' i seçin. SQL oturum açma kimlik bilgileri, VM için yapılandırdığınız Kullanıcı adı ve parolaya ayarlanır. [**Azure Key Vault tümleştirme**](azure-key-vault-integration-configure.md)için varsayılan ayarı kullanın. **Depolama yapılandırması** temel SQL Server VM görüntüsü için kullanılamaz, ancak [depolama yapılandırmasındaki](storage-configuration.md#new-vms)diğer görüntüler için kullanılabilir seçenekler hakkında daha fazla bilgi edinebilirsiniz.  
+1. **Güvenlik & ağı** altında, **SQL bağlantısı** için _Genel (Internet_ ) seçeneğini belirleyin ve `1401` genel senaryoda iyi bilinen bir bağlantı noktası numarası kullanmaktan kaçınmak için bağlantı noktasını olarak değiştirin. 
+1. **SQL kimlik doğrulaması** altında **Etkinleştir** ' i seçin. SQL oturum açma kimlik bilgileri, VM için yapılandırdığınız Kullanıcı adı ve parolaya ayarlanır. [**Azure Key Vault tümleştirme**](azure-key-vault-integration-configure.md)için varsayılan ayarı kullanın. **Depolama yapılandırması** temel SQL Server VM görüntüsü için kullanılamaz, ancak [depolama yapılandırmasındaki](storage-configuration.md#new-vms)diğer görüntüler için kullanılabilir seçenekler hakkında daha fazla bilgi edinebilirsiniz.  
 
    ![SQL Server güvenlik ayarları](./media/sql-vm-create-portal-quickstart/sql-server-settings.png)
 
 
-1. Gerekirse diğer ayarları değiştirin ve ardından **gözden geçir + oluştur**' u seçin. 
+1. Gerekirse diğer ayarları değiştirin ve ardından **gözden geçir + oluştur** ' u seçin. 
 
    ![Gözden geçirme ve oluşturma](./media/sql-vm-create-portal-quickstart/review-create.png)
 
@@ -106,15 +106,15 @@ Azure portalından dağıtımı izleyebilirsiniz. Ekranın üst kısmındaki **B
 1. Internet 'e bağlı farklı bir bilgisayarda [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)öğesini açın.
 
 
-1. **Sunucuya Bağlan** veya **Veritabanı Altyapısına Bağlan** iletişim kutusunda **Sunucu adı** değerini düzenleyin. Sanal makinenizin genel IP adresini girin. Daha sonra bir virgül ekleyin ve yeni VM 'yi yapılandırdığınızda belirttiğiniz özel bağlantı noktasını (**1401**) ekleyin. Örneğin, `11.22.33.444,1401`.
+1. **Sunucuya Bağlan** veya **Veritabanı Altyapısına Bağlan** iletişim kutusunda **Sunucu adı** değerini düzenleyin. Sanal makinenizin genel IP adresini girin. Daha sonra bir virgül ekleyin ve yeni VM 'yi yapılandırdığınızda belirttiğiniz özel bağlantı noktasını ( **1401** ) ekleyin. Örneğin, `11.22.33.444,1401`.
 
-1. **Kimlik Doğrulaması** kutusunda **SQL Server Kimlik Doğrulaması**’nı seçin.
+1. **Kimlik Doğrulaması** kutusunda **SQL Server Kimlik Doğrulaması** ’nı seçin.
 
 1. **Oturum Aç** kutusuna geçerli bir SQL oturum açma adı yazın.
 
 1. **Parola** kutusuna oturum açma parolasını yazın.
 
-1. **Bağlan**'ı seçin.
+1. **Bağlan** ’ı seçin.
 
     ![ssms bağlanma](./media/sql-vm-create-portal-quickstart/ssms-connect.png)
 

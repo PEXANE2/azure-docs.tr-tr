@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 8459ab364fc0af15dd1a1b0035e4ce27d192f7a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfc3abd30fad3e86544430e5a4ecb8510e77c9e5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293467"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789939"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server için iş sürekliliği ve HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,7 +54,7 @@ Her zaman açık kullanılabilirlik gruplarıyla veritabanı düzeyinde SQL Serv
 
 | Teknoloji | Örnek mimarilerin |
 | --- | --- |
-| **Kullanılabilirlik grupları** |Aynı bölgedeki Azure VM 'lerinde çalışan kullanılabilirlik çoğaltmaları, yüksek kullanılabilirlik sağlar. Windows Yük Devretme Kümelemesi bir Active Directory etki alanı gerektirdiğinden bir etki alanı denetleyicisi VM 'si yapılandırmanız gerekir.<br/><br/> Daha yüksek artıklık ve kullanılabilirlik için, Azure VM 'Leri [kullanılabilirlik grubuna genel bakış](availability-group-overview.md)bölümünde belgelendiği gibi farklı [kullanılabilirlik bölgelerinde](../../../availability-zones/az-overview.md) dağıtılabilir. Bir kullanılabilirlik grubundaki SQL Server VM 'Ler Kullanılabilirlik alanlarına dağıtılmışsa, [Azure SQL VM CLI](availability-group-az-cli-configure.md) ve [Azure hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md) makalelerinde belgelendiği gibi, dinleyici için [Azure Standart Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) kullanın.<br/> ![Kullanılabilirlik grupları](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik grupları yapılandırma (GUI)](availability-group-azure-marketplace-template-configure.md). |
+| **Kullanılabilirlik grupları** |Aynı bölgedeki Azure VM 'lerinde çalışan kullanılabilirlik çoğaltmaları, yüksek kullanılabilirlik sağlar. Windows Yük Devretme Kümelemesi bir Active Directory etki alanı gerektirdiğinden bir etki alanı denetleyicisi VM 'si yapılandırmanız gerekir.<br/><br/> Daha yüksek artıklık ve kullanılabilirlik için, Azure VM 'Leri [kullanılabilirlik grubuna genel bakış](availability-group-overview.md)bölümünde belgelendiği gibi farklı [kullanılabilirlik bölgelerinde](../../../availability-zones/az-overview.md) dağıtılabilir. Bir kullanılabilirlik grubundaki SQL Server VM 'Ler Kullanılabilirlik alanlarına dağıtılmışsa, [Azure SQL VM CLI](./availability-group-az-commandline-configure.md) ve [Azure hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md) makalelerinde belgelendiği gibi, dinleyici için [Azure Standart Load Balancer](../../../load-balancer/load-balancer-overview.md) kullanın.<br/> ![Kullanılabilirlik grupları](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik grupları yapılandırma (GUI)](./availability-group-quickstart-template-configure.md). |
 | **Yük devretme kümesi örnekleri** |Yük devretme kümesi örnekleri SQL Server VM 'lerde desteklenir. FCı özelliği paylaşılan depolama gerektirdiğinden, Azure VM 'lerinde SQL Server beş çözüm çalışır: <br/><br/> -Windows Server 2019 için [Azure paylaşılan diskler](failover-cluster-instance-azure-shared-disks-manually-configure.md) kullanma. Paylaşılan yönetilen diskler aynı anda birden çok sanal makineye yönetilen bir disk eklemeye imkan tanıyan bir Azure ürünüdür. Kümedeki VM 'Ler, kümelenmiş uygulama tarafından seçilen ayırmayı temel alarak, SCSI kalıcı ayırmaları (SCSI PR) aracılığıyla bağlı diskinize okuyabilir veya yazabilir. SCSI PR, şirket içi bir depolama alanı ağı (SAN) üzerinde çalışan uygulamalar tarafından kullanılan sektör standardı bir depolama çözümüdür. Yönetilen bir diskte SCSI PR 'nin etkinleştirilmesi, bu uygulamaları olduğu gibi Azure 'a geçirmenize olanak sağlar. <br/><br/>-Windows Server 2016 ve üzeri için yazılım tabanlı bir sanal SAN sağlamak üzere [depolama alanları doğrudan \( S2D \) ](failover-cluster-instance-storage-spaces-direct-manually-configure.md) kullanma.<br/><br/>-Windows Server 2012 ve üzeri için [Premium dosya paylaşımının](failover-cluster-instance-premium-file-share-manually-configure.md) kullanılması. Premium dosya paylaşımları SSD destekli, sürekli düşük gecikme süresine sahip ve FCı ile kullanım için tam olarak desteklenmektedir.<br/><br/>-Kümeleme için bir iş ortağı çözümü tarafından desteklenen depolamayı kullanma. SIOS veri Man kullanan belirli bir örnek için bkz. blog girdisi [Yük Devretme Kümelemesi ve SIOS veri Man](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/).<br/><br/>-Azure ExpressRoute aracılığıyla uzak bir Iscsı hedefi için paylaşılan blok depolama kullanılıyor. Örneğin, NetApp özel depolama (NPS), Azure VM 'lerine Equinx ile ExpressRoute aracılığıyla bir Iscsı hedefi sunar.<br/><br/>Microsoft iş ortaklarının paylaşılan depolama ve veri çoğaltma çözümleri için, yük devretmeyle ilgili verilere erişme hakkında herhangi bir sorun için satıcıya başvurun.<br/><br/>||
 
 ## <a name="azure-only-disaster-recovery-solutions"></a>Yalnızca Azure: olağanüstü durum kurtarma çözümleri
@@ -90,7 +90,7 @@ Aşağıdaki görüntüde kurulum, 12 çekirdek kullanan bir şirket içi SQL Se
 
 Daha fazla bilgi için [ürün lisanslama koşullarına](https://www.microsoft.com/licensing/product-licensing/products)bakın. 
 
-Bu avantajı etkinleştirmek için [SQL Server sanal makine kaynağına](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)gidin. **Ayarlar**altında **Yapılandır** ' ı seçin ve ardından **SQL Server Lisansı**altında **olağanüstü durum kurtarma** seçeneğini belirleyin. Bu SQL Server VM pasif bir çoğaltma olarak kullanılacağını onaylamak için onay kutusunu işaretleyin ve ardından ayarlarınızı kaydetmek için **Uygula** ' yı seçin. 
+Bu avantajı etkinleştirmek için [SQL Server sanal makine kaynağına](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)gidin. **Ayarlar** altında **Yapılandır** ' ı seçin ve ardından **SQL Server Lisansı** altında **olağanüstü durum kurtarma** seçeneğini belirleyin. Bu SQL Server VM pasif bir çoğaltma olarak kullanılacağını onaylamak için onay kutusunu işaretleyin ve ardından ayarlarınızı kaydetmek için **Uygula** ' yı seçin. 
 
 ![Azure 'da olağanüstü durum kurtarma çoğaltması yapılandırma](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/dr-replica-in-portal.png)
 
@@ -101,12 +101,12 @@ Azure VM 'Leri, depolama ve ağ, şirket içi, sanallaştırılmamış BT altyap
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Kullanılabilirlik kümesindeki yüksek kullanılabilirlik düğümleri
 Azure 'daki kullanılabilirlik kümeleri, yüksek kullanılabilirliğe sahip düğümleri ayrı hata etki alanlarına ve güncelleştirme etki alanlarına yerleştirmenizi sağlar. Azure platformu, kullanılabilirlik kümesindeki her bir sanal makineye bir güncelleştirme etki alanı ve bir hata etki alanı atar. Bir veri merkezi içindeki bu yapılandırma, planlı veya plansız bir bakım olayı sırasında en az bir sanal makinenin kullanılabilir olmasını sağlar ve yüzde 99,95 Azure SLA 'sını karşılar. 
 
-Yüksek kullanılabilirliğe sahip bir kurulum yapılandırmak için, bakım olayı sırasında uygulama veya veri kaybını önlemek üzere tüm katılan SQL Server sanal makinelerini aynı Kullanılabilirlik kümesine yerleştirin. Aynı Kullanılabilirlik kümesine yalnızca aynı bulut hizmetindeki düğümler katılabilir. Daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../../../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Yüksek kullanılabilirliğe sahip bir kurulum yapılandırmak için, bakım olayı sırasında uygulama veya veri kaybını önlemek üzere tüm katılan SQL Server sanal makinelerini aynı Kullanılabilirlik kümesine yerleştirin. Aynı Kullanılabilirlik kümesine yalnızca aynı bulut hizmetindeki düğümler katılabilir. Daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>Kullanılabilirlik bölgesindeki yüksek kullanılabilirlik düğümleri
 Kullanılabilirlik alanları, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her bölge, bağımsız güç, soğutma ve ağ ile donatılmış bir veya daha fazla veri merkezinden oluşur. Bölge içindeki kullanılabilirlik bölgelerinin fiziksel ayrımı, en az bir sanal makinenin kullanılabilir olduğundan ve yüzde 99,99 Azure SLA 'Sı karşıladığından emin olarak veri merkezi hatalarından uygulama ve verilerin korunmasına yardımcı olur. 
 
-Yüksek kullanılabilirliği yapılandırmak için, katılan SQL Server sanal makinelerin bölgedeki kullanılabilirlik bölgelerine yayılmasını sağlar. Kullanılabilirlik alanları arasında ağdan ağa aktarımlar için ek ücretler uygulanır. Daha fazla bilgi için bkz. [kullanılabilirlik alanları](/azure/availability-zones/az-overview). 
+Yüksek kullanılabilirliği yapılandırmak için, katılan SQL Server sanal makinelerin bölgedeki kullanılabilirlik bölgelerine yayılmasını sağlar. Kullanılabilirlik alanları arasında ağdan ağa aktarımlar için ek ücretler uygulanır. Daha fazla bilgi için bkz. [kullanılabilirlik alanları](../../../availability-zones/az-overview.md). 
 
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>Azure ağlarında yük devretme kümesi davranışı
@@ -123,7 +123,7 @@ Azure 'daki RFC uyumlu olmayan DHCP hizmeti, belirli yük devretme kümesi yapı
 
 Küme ağ adını çevrimiçi duruma getirmek için, küme ağ adına kullanılmayan bir statik IP adresi atayarak bu senaryodan kaçınabilirsiniz. Örneğin, 169.254.1.1 gibi bir bağlantı yerel IP adresi kullanabilirsiniz. Bu işlemi basitleştirmek için bkz. [Azure 'Da Windows Yük devretme kümesini kullanılabilirlik grupları Için yapılandırma](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx).
 
-Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik grupları yapılandırma (GUI)](availability-group-azure-marketplace-template-configure.md).
+Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik grupları yapılandırma (GUI)](./availability-group-quickstart-template-configure.md).
 
 ### <a name="support-for-availability-group-listeners"></a>Kullanılabilirlik grubu dinleyicileri desteği
 Kullanılabilirlik grubu dinleyicileri, Windows Server 2012 ve üstünü çalıştıran Azure VM 'lerinde desteklenir. Bu destek, kullanılabilirlik grubu düğümleri olan Azure VM 'lerde etkin olan yük dengeli uç noktaların kullanımı ile mümkün hale getirilir. Dinleyicilerinin hem Azure 'da hem de şirket içinde çalışan istemci uygulamaları için çalışması için özel yapılandırma adımlarını izlemeniz gerekir.
@@ -136,7 +136,7 @@ Kullanılabilirlik grubu birden çok Azure alt ağına yayılmışsa (örneğin,
 Yalnızca hizmet örneğine doğrudan bağlanarak her bir kullanılabilirlik çoğaltmasına ayrı olarak bağlanabilirsiniz. Ayrıca, kullanılabilirlik grupları veritabanı yansıtma istemcileriyle geriye dönük olarak uyumlu olduğundan, çoğaltmalar veritabanı yansıtmaya benzer şekilde yapılandırıldığı sürece veritabanı yansıtma ortakları gibi kullanılabilirlik çoğaltmalarına bağlanabilirsiniz:
 
 * Bir birincil çoğaltma ve bir ikincil çoğaltma bulunur.
-* İkincil çoğaltma okunabilir olmayan (**okunabilir ikincil** seçenek **Hayır**olarak ayarlanır) olarak yapılandırılmıştır.
+* İkincil çoğaltma okunabilir olmayan ( **okunabilir ikincil** seçenek **Hayır** olarak ayarlanır) olarak yapılandırılmıştır.
 
 ADO.NET veya SQL Server Native Client kullanarak bu veritabanı yansıtma benzeri yapılandırmaya karşılık gelen bir örnek istemci bağlantı dizesi aşağıda verilmiştir:
 
@@ -146,11 +146,11 @@ Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=Avail
 
 İstemci bağlantısı hakkında daha fazla bilgi için bkz.
 
-* [SQL Server Native Client ile bağlantı dizesi anahtar sözcükleri kullanma](https://msdn.microsoft.com/library/ms130822.aspx)
-* [Istemcileri bir veritabanı yansıtma oturumuna bağlama (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
-* [Karma BT 'de kullanılabilirlik grubu dinleyicisine bağlanma](https://docs.microsoft.com/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
-* [Kullanılabilirlik grubu dinleyicileri, Istemci bağlantısı ve uygulama yük devretmesi (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
-* [Kullanılabilirlik gruplarıyla Database-Mirroring bağlantı dizelerini kullanma](https://technet.microsoft.com/library/hh213417.aspx)
+* [SQL Server Native Client ile bağlantı dizesi anahtar sözcükleri kullanma](/sql/relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client)
+* [Istemcileri bir veritabanı yansıtma oturumuna bağlama (SQL Server)](/sql/database-engine/database-mirroring/connect-clients-to-a-database-mirroring-session-sql-server)
+* [Karma BT 'de kullanılabilirlik grubu dinleyicisine bağlanma](/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
+* [Kullanılabilirlik grubu dinleyicileri, Istemci bağlantısı ve uygulama yük devretmesi (SQL Server)](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
+* [Kullanılabilirlik gruplarıyla Database-Mirroring bağlantı dizelerini kullanma](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
 
 ### <a name="network-latency-in-hybrid-it"></a>Karma BT 'de ağ gecikmesi
 Şirket içi ağınız ve Azure arasında yüksek ağ gecikme süresi olabileceğini varsayımıyla HADR çözümünüzü dağıtın. Çoğaltmaları Azure 'a dağıttığınızda eşitleme modu için zaman uyumlu tamamlama yerine zaman uyumsuz yürütmeyi kullanın. Hem şirket içinde hem de Azure 'da veritabanı yansıtma sunucuları dağıttığınızda, yüksek performanslı mod yerine yüksek performanslı modu kullanın.
@@ -162,8 +162,4 @@ Depolama hesabında Coğrafi çoğaltmayı devre dışı bırakma seçeneğiniz 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir [kullanılabilirlik grubunun](availability-group-overview.md) veya [Yük devretme kümesi örneğinin](failover-cluster-instance-overview.md) işletmeniz için en iyi iş sürekliliği çözümü olup olmadığına karar verin. Daha sonra ortamınızı yüksek kullanılabilirlik ve olağanüstü durum kurtarma için yapılandırmaya yönelik [en iyi uygulamaları](hadr-cluster-best-practices.md) gözden geçirin. 
-
-
-
-
+Bir [kullanılabilirlik grubunun](availability-group-overview.md) veya [Yük devretme kümesi örneğinin](failover-cluster-instance-overview.md) işletmeniz için en iyi iş sürekliliği çözümü olup olmadığına karar verin. Daha sonra ortamınızı yüksek kullanılabilirlik ve olağanüstü durum kurtarma için yapılandırmaya yönelik [en iyi uygulamaları](hadr-cluster-best-practices.md) gözden geçirin.

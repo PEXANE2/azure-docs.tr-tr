@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: 959a58a38861075c6509fe57136d8991eeb98ce6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b51746326c2df81e2dd2bdc72bf2a9ab72b649b5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588204"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790568"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Geliştirme ve test için Azure depolama öykünücüsünü kullanma
 
@@ -95,7 +95,7 @@ Depolama öykünücüsünü yükleyip başlattığınızda, kodunuzu buna karş�
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-Bağlantı dizeleri hakkında daha fazla bilgi için bkz. [Azure Storage bağlantı dizelerini yapılandırma](../storage-configure-connection-string.md).
+Bağlantı dizeleri hakkında daha fazla bilgi için bkz. [Azure Storage bağlantı dizelerini yapılandırma](./storage-configure-connection-string.md).
 
 ### <a name="authorize-with-a-shared-access-signature"></a>Paylaşılan erişim imzasıyla yetkilendirme
 
@@ -161,7 +161,7 @@ Sürüm 3,1 ' den başlayarak, depolama öykünücüsü Okuma Erişimli Coğrafi
 `http://127.0.0.1:10000/myaccount-secondary/mycontainer/myblob.txt`
 
 > [!NOTE]
-> Depolama öykünücüsüyle ikincil öğesine programlı erişim için, .NET sürüm 3,2 veya üzeri için depolama Istemcisi kitaplığı 'nı kullanın. Ayrıntılar için bkz. [.NET için Microsoft Azure depolama Istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn261237.aspx) .
+> Depolama öykünücüsüyle ikincil öğesine programlı erişim için, .NET sürüm 3,2 veya üzeri için depolama Istemcisi kitaplığı 'nı kullanın. Ayrıntılar için bkz. [.NET için Microsoft Azure depolama Istemci kitaplığı](/previous-versions/azure/dn261237(v=azure.100)) .
 >
 >
 
@@ -182,13 +182,13 @@ Sürüm 3,0 ' den başlayarak, depolama öykünücüsünü başlattığınızda 
 
 Seçenek listesini görüntülemek için komut satırına `/help` yazın.
 
-| Seçenek | Açıklama | Komut | Bağımsız değişkenler |
+| Seçenek | Açıklama | Komut | Arguments |
 | --- | --- | --- | --- |
-| **Başlangıç** |Depolama öykünücüsünü başlatır. |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess*: yeni bir işlem oluşturmak yerine öykünücüyü geçerli işlemde başlatın. |
+| **Başlangıç** |Depolama öykünücüsünü başlatır. |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess* : yeni bir işlem oluşturmak yerine öykünücüyü geçerli işlemde başlatın. |
 | **Durdur** |Depolama öykünücüsünü sonlandırır. |`AzureStorageEmulator.exe stop` | |
 | **Durum** |Depolama öykünücüsünün durumunu yazdırır. |`AzureStorageEmulator.exe status` | |
-| **Temizle** |Komut satırında belirtilen tüm hizmetlerde verileri temizler. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*BLOB*: blob verilerini temizler. <br/>*kuyruk*: kuyruk verilerini temizler. <br/>*tablo*: tablo verilerini temizler. <br/>*Tümü*: tüm hizmetlerde tüm verileri temizler. |
-| **Init** |Öykünücüyü ayarlamak için bir kerelik başlatma işlemi yapar. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-Server sunucuadi InstanceName*: SQL örneğini barındıran sunucuyu belirtir. <br/>*-SQLInstance InstanceName*: varsayılan sunucu ÖRNEĞINDE kullanılacak SQL örneğinin adını belirtir. <br/>*-forcecoluştur*: zaten mevcut olsa bile SQL veritabanı oluşturmayı zorlar. <br/>*-skipcreate*: SQL veritabanı oluşturmayı atlar. Bu,-forcecoluştur 'a göre önceliklidir.<br/>*-reserveports*: HIZMETLERLE ilişkili http bağlantı noktalarını ayırmaya çalışır.<br/>*-unreserveports*: HIZMETLERLE ilişkili http bağlantı noktaları için ayırmaları kaldırmaya çalışır. Bu,-reserveports üzerinden önceliklidir.<br/>*-InProcess*: yeni bir işlem oluşturmak yerine geçerli işlemde başlatmayı gerçekleştirir. Bağlantı noktası ayırmalarını değiştirmek için geçerli işlem yükseltilmiş izinlerle başlatılmalıdır. |
+| **Temizle** |Komut satırında belirtilen tüm hizmetlerde verileri temizler. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*BLOB* : blob verilerini temizler. <br/>*kuyruk* : kuyruk verilerini temizler. <br/>*tablo* : tablo verilerini temizler. <br/>*Tümü* : tüm hizmetlerde tüm verileri temizler. |
+| **Init** |Öykünücüyü ayarlamak için bir kerelik başlatma işlemi yapar. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-Server sunucuadi InstanceName* : SQL örneğini barındıran sunucuyu belirtir. <br/>*-SQLInstance InstanceName* : varsayılan sunucu ÖRNEĞINDE kullanılacak SQL örneğinin adını belirtir. <br/>*-forcecoluştur* : zaten mevcut olsa bile SQL veritabanı oluşturmayı zorlar. <br/>*-skipcreate* : SQL veritabanı oluşturmayı atlar. Bu,-forcecoluştur 'a göre önceliklidir.<br/>*-reserveports* : HIZMETLERLE ilişkili http bağlantı noktalarını ayırmaya çalışır.<br/>*-unreserveports* : HIZMETLERLE ilişkili http bağlantı noktaları için ayırmaları kaldırmaya çalışır. Bu,-reserveports üzerinden önceliklidir.<br/>*-InProcess* : yeni bir işlem oluşturmak yerine geçerli işlemde başlatmayı gerçekleştirir. Bağlantı noktası ayırmalarını değiştirmek için geçerli işlem yükseltilmiş izinlerle başlatılmalıdır. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Depolama öykünücüsü ile Azure depolama arasındaki farklar
 
@@ -310,7 +310,7 @@ Depolama öykünücüsü yerel bir Öykünülmüş ortam olduğundan, öykünüc
 
 ### <a name="version-40"></a>Sürüm 4,0
 
-* Depolama öykünücüsü yürütülebilir dosyası *AzureStorageEmulator.exe*olarak yeniden adlandırıldı.
+* Depolama öykünücüsü yürütülebilir dosyası *AzureStorageEmulator.exe* olarak yeniden adlandırıldı.
 
 ### <a name="version-32"></a>Sürüm 3,2
 
@@ -329,7 +329,7 @@ Depolama öykünücüsü yerel bir Öykünülmüş ortam olduğundan, öykünüc
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Platformlar arası, topluluk tarafından tutulan açık kaynaklı depolama öykünücüsü [Azurıite](https://github.com/azure/azurite)'yi değerlendirin. 
-* [.NET kullanan Azure depolama örnekleri](../storage-samples-dotnet.md) , uygulamanızı geliştirirken kullanabileceğiniz çeşitli kod örneklerinin bağlantılarını içerir.
+* [.NET kullanan Azure depolama örnekleri](./storage-samples-dotnet.md) , uygulamanızı geliştirirken kullanabileceğiniz çeşitli kod örneklerinin bağlantılarını içerir.
 * Bulut depolama hesabınızda ve depolama öykünücüsünde kaynaklarla çalışmak için [Microsoft Azure Depolama Gezgini](https://storageexplorer.com) kullanabilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca Bkz.

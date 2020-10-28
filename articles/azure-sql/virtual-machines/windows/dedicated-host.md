@@ -13,20 +13,20 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 140d95aeb7baf4b342044bc178d108239236229b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bb80abc35aedcdf0b46cefa279e477739cf1df6b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677676"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789803"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Azure adanmış bir konakta SQL Server VM çalıştırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Bu makalede, [Azure adanmış ana bilgisayarı](/azure/virtual-machines/windows/dedicated-hosts)ile SQL Server sanal MAKINESI (VM) kullanmanın özellikleri ayrıntılı olarak açıklanır. Azure adanmış ana bilgisayar hakkında ek bilgilere, [Azure adanmış ana bilgisayarı tanıtma](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/)blog gönderisine ulaşabilirsiniz. 
+Bu makalede, [Azure adanmış ana bilgisayarı](../../../virtual-machines/dedicated-hosts.md)ile SQL Server sanal MAKINESI (VM) kullanmanın özellikleri ayrıntılı olarak açıklanır. Azure adanmış ana bilgisayar hakkında ek bilgilere, [Azure adanmış ana bilgisayarı tanıtma](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/)blog gönderisine ulaşabilirsiniz. 
 
 ## <a name="overview"></a>Genel Bakış
-[Azure adanmış ana bilgisayar](/azure/virtual-machines/windows/dedicated-hosts) , bir veya daha fazla sanal makineyi bir Azure aboneliğine ayrılmış olarak barındırabilecek fiziksel sunucular sağlayan bir hizmettir. Adanmış konaklar, Microsoft 'un bir kaynak olarak sağlanmış olan veri merkezlerinde kullanılan fiziksel sunuculardır. Bir bölge, kullanılabilirlik alanı ve hata etki alanı içinde adanmış konaklar sağlayabilirsiniz. Daha sonra, gereksinimlerinizi en iyi şekilde karşılayan her yapılandırma için VM 'Leri doğrudan sağlanan konaklarınıza yerleştirebilirsiniz.
+[Azure adanmış ana bilgisayar](../../../virtual-machines/dedicated-hosts.md) , bir veya daha fazla sanal makineyi bir Azure aboneliğine ayrılmış olarak barındırabilecek fiziksel sunucular sağlayan bir hizmettir. Adanmış konaklar, Microsoft 'un bir kaynak olarak sağlanmış olan veri merkezlerinde kullanılan fiziksel sunuculardır. Bir bölge, kullanılabilirlik alanı ve hata etki alanı içinde adanmış konaklar sağlayabilirsiniz. Daha sonra, gereksinimlerinizi en iyi şekilde karşılayan her yapılandırma için VM 'Leri doğrudan sağlanan konaklarınıza yerleştirebilirsiniz.
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -54,7 +54,7 @@ Mevcut SQL Server lisanslarını kullanmaya yönelik konak düzeyi seçenekleri:
 
 
 ## <a name="provisioning"></a>Sağlama  
-Adanmış konağa SQL Server VM sağlama diğer Azure sanal makinenden farklı değildir. [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), [Azure Portal](../../../virtual-machines/windows/dedicated-hosts-portal.md)ve [Azure CLI](../../../virtual-machines/linux/dedicated-hosts-cli.md)kullanarak bunu yapabilirsiniz.
+Adanmış konağa SQL Server VM sağlama diğer Azure sanal makinenden farklı değildir. [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), [Azure Portal](../../../virtual-machines/dedicated-hosts-portal.md)ve [Azure CLI](../../../virtual-machines/linux/dedicated-hosts-cli.md)kullanarak bunu yapabilirsiniz.
 
 Ayrılmış konağa mevcut bir SQL Server VM ekleme işleminin kapalı kalması gerekir, ancak verileri etkilemeyecektir ve veri kaybı olmayacaktır. Nonetheless, sistem veritabanları da dahil olmak üzere tüm veritabanlarının taşımadan önce yedeklenmesi gerekir.
 
@@ -78,5 +78,3 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 * [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)
 * [Windows VM üzerinde SQL Server için fiyatlandırma Kılavuzu](pricing-guidance.md)
 * [Windows VM 'de SQL Server için sürüm notları](doc-changes-updates-release-notes.md)
-
-

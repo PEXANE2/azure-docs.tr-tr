@@ -13,14 +13,14 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 06587d80851839188f8d8dcfa870d331e8fa96d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 997e867798922975757a588ef50248f0d09a96e0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293365"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789854"
 ---
-# <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM 'de SQL Server Edition yerinde değişiklik
+# <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM'deki SQL Server sürümünü yerinde değiştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bu makalede, Azure 'da bir Windows sanal makinesinde SQL Server sürümünün nasıl değiştirileceği açıklanır. 
@@ -34,7 +34,7 @@ SQL Server sürümü dahili olarak SQL Server VM değiştirildikten sonra, Fatur
 SQL Server sürümünde yerinde bir değişiklik yapmak için şunlar gerekir: 
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
-- [SQL VM kaynak sağlayıcısına](sql-vm-resource-provider-register.md)kayıtlı [Windows SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
+- [SQL VM kaynak sağlayıcısına](sql-vm-resource-provider-register.md)kayıtlı [Windows SQL Server VM](./create-sql-vm-portal.md) .
 - SQL Server **istenen sürümü** ile medyayı kurun. [Yazılım Güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)'ne sahip olan müşteriler, yükleme medyasını [Toplu Lisanslama Merkezi](https://www.microsoft.com/Licensing/servicecenter/default.aspx)'nden alabilir. Yazılım Güvencesi sahibi olmayan müşteriler, istenen sürümü olan (genellikle içinde bulunan) bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir `C:\SQLServerFull` . 
 
 
@@ -50,7 +50,7 @@ SQL Server sürümünü yükseltmek için, istenen SQL Server sürümü için SQ
 
    ![SQL Server sürümünü yükseltmek için seçim](./media/change-sql-server-edition/edition-upgrade.png)
 
-1. **Yükseltmeye hazırlanma** sayfasına ulaşana kadar **İleri** ' yi seçin ve ardından **Yükselt**' i seçin. Değişiklik etkinleşirken kurulum penceresi birkaç dakika yanıt vermeyi durdurabilir. **Tamamlanmış** bir sayfa, sürüm yükseltmeniz işleminin bittiğini doğrulayacaktır. 
+1. **Yükseltmeye hazırlanma** sayfasına ulaşana kadar **İleri** ' yi seçin ve ardından **Yükselt** ' i seçin. Değişiklik etkinleşirken kurulum penceresi birkaç dakika yanıt vermeyi durdurabilir. **Tamamlanmış** bir sayfa, sürüm yükseltmeniz işleminin bittiğini doğrulayacaktır. 
 
 SQL Server sürümü yükseltildikten sonra, Azure portal SQL Server sanal makinesinin sürüm özelliğini değiştirin. Bu işlem, bu VM ile ilişkili meta verileri ve faturaları güncelleştirir.
 
@@ -75,11 +75,11 @@ SQL Server sürümü indirgendikten sonra, Azure portal SQL Server sanal makines
 
 ## <a name="change-edition-in-portal"></a>Portalda sürümü Değiştir 
 
-Yükleme medyasını kullanarak SQL Server sürümünü değiştirmişseniz ve SQL Server VM [SQL VM kaynak sağlayıcısı](sql-vm-resource-provider-register.md)ile kaydolduktan sonra, faturalama amacıyla SQL Server VM sürüm özelliğini değiştirmek için Azure Portal kullanabilirsiniz. Bunu yapmak için şu adımları uygulayın: 
+Yükleme medyasını kullanarak SQL Server sürümünü değiştirmişseniz ve SQL Server VM [SQL VM kaynak sağlayıcısı](sql-vm-resource-provider-register.md)ile kaydolduktan sonra, faturalama amacıyla SQL Server VM sürüm özelliğini değiştirmek için Azure Portal kullanabilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin: 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 1. SQL Server sanal makine kaynağına gidin. 
-1. **Ayarlar**altında **Yapılandır**' ı seçin. Ardından, **Sürüm**' ün altındaki açılan listeden istediğiniz SQL Server sürümünüzü seçin. 
+1. **Ayarlar** altında **Yapılandır** ' ı seçin. Ardından, **Sürüm** ' ün altındaki açılan listeden istediğiniz SQL Server sürümünüzü seçin. 
 
    ![Sürüm meta verilerini değiştirme](./media/change-sql-server-edition/edition-change-in-portal.png)
 
@@ -96,11 +96,9 @@ Yükleme medyasını kullanarak SQL Server sürümünü değiştirmişseniz ve S
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
+Daha fazla bilgi için aşağıdaki makalelere bakın: 
 
 * [Windows VM 'de SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)
 * [Windows VM üzerinde SQL Server için fiyatlandırma Kılavuzu](pricing-guidance.md)
 * [Windows VM 'de SQL Server için sürüm notları](doc-changes-updates-release-notes.md)
-
-

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6f1a94ae070419c38efb481e8f3967aec6a212d0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 61ccc0231989589836e00088b9ca03d0cb49baca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533963"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790959"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service erişim kısıtlamaları
 
@@ -24,7 +24,11 @@ Uygulamanıza bir istek yapıldığında, KIMDEN adresi erişim kısıtlamaları
 
 Erişim kısıtlamaları özelliği, kodunuzun çalıştırıldığı çalışanların ana bilgisayarlarının yukarı akış olan App Service ön uç rollerinde uygulanır. Bu nedenle, erişim kısıtlamaları etkin bir ağ ACL 'lardır.
 
-Bir Azure sanal ağından (VNet) Web uygulamanıza erişimi kısıtlama özelliği, [hizmet uç noktaları][serviceendpoints]olarak adlandırılır. Hizmet uç noktaları, seçilen alt ağlardan çok kiracılı bir hizmete erişimi sınırlamanıza olanak tanır. Hem ağ tarafında hem de etkinleştirildiği hizmette etkin olmalıdır. App Service Ortamı barındırılan uygulamalarla trafiği kısıtlamak için çalışmaz. Bir App Service Ortamı kullanıyorsanız, uygulamanıza erişimi IP adresi kurallarıyla kontrol edebilirsiniz.
+Bir Azure sanal ağından (VNet) Web uygulamanıza erişimi kısıtlama özelliği, [hizmet uç noktaları][serviceendpoints]olarak adlandırılır. Hizmet uç noktaları, seçilen alt ağlardan çok kiracılı bir hizmete erişimi sınırlamanıza olanak tanır. App Service Ortamı barındırılan uygulamalarla trafiği kısıtlamak için çalışmaz. Bir App Service Ortamı kullanıyorsanız, uygulamanıza erişimi IP adresi kurallarıyla kontrol edebilirsiniz.
+
+> [!NOTE]
+> Hizmet uç noktaları hem ağ tarafında hem de üzerinde etkinleştirilmiş Azure hizmeti için etkin olmalıdır. Hizmet uç noktalarını destekleyen Azure hizmetlerinin bir listesi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md).
+>
 
 ![erişim kısıtlamaları akışı](media/app-service-ip-restrictions/access-restrictions-flow.png)
 

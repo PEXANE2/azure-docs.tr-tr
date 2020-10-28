@@ -4,24 +4,24 @@ description: Azure SQL yönetilen örneği Saydam Veri Şifrelemesi bir veritaba
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
-ms.openlocfilehash: 08adfd7b69d580f6a231f13f9fb2793d828e16a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80ff16156348db9c3a209757b48b7d54615d9104
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618191"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790704"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>TDE korumalı bir veritabanının sertifikasını Azure SQL yönetilen örneği 'ne geçirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Yerel geri yükleme seçeneğini kullanarak [Saydam veri şifrelemesi (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) ile korunan bir VERITABANıNı Azure SQL yönetilen örneğine geçirdiğinizde, SQL Server örneğinden karşılık gelen sertifikanın veritabanı geri yüklemeden önce geçirilmesi gerekir. Bu makalede, sertifikayı Azure SQL yönetilen örneği 'ne el ile geçirme işleminde izlenecek yol gösterilmektedir:
+Yerel geri yükleme seçeneğini kullanarak [Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) ile korunan bir VERITABANıNı Azure SQL yönetilen örneğine geçirdiğinizde, SQL Server örneğinden karşılık gelen sertifikanın veritabanı geri yüklemeden önce geçirilmesi gerekir. Bu makalede, sertifikayı Azure SQL yönetilen örneği 'ne el ile geçirme işleminde izlenecek yol gösterilmektedir:
 
 > [!div class="checklist"]
 >
@@ -38,20 +38,20 @@ Hem TDE korumalı bir veritabanının hem de karşılık gelen sertifikanın sor
 
 Bu makaledeki adımları tamamlayabilmeniz için şu önkoşullar gereklidir:
 
-* Şirket içi sunucuya veya dosya olarak dışarı aktarılan sertifikaya erişimi olan başka bir bilgisayara yüklenmiş [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) komut satırı aracı. Pvk2Pfx Aracı, kendi içinde bulunan bir komut satırı ortamı olan [Kurumsal Windows Sürücü Seti](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk)'nin bir parçasıdır.
+* Şirket içi sunucuya veya dosya olarak dışarı aktarılan sertifikaya erişimi olan başka bir bilgisayara yüklenmiş [Pvk2Pfx](/windows-hardware/drivers/devtest/pvk2pfx) komut satırı aracı. Pvk2Pfx Aracı, kendi içinde bulunan bir komut satırı ortamı olan [Kurumsal Windows Sürücü Seti](/windows-hardware/drivers/download-the-wdk)'nin bir parçasıdır.
 * [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) sürüm 5.0 veya üstü yüklenmiş olmalıdır.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aşağıdakilere sahip olduğunuzdan emin olun:
 
-* Azure PowerShell modül [yüklendi ve güncelleştirildi](https://docs.microsoft.com/powershell/azure/install-az-ps).
+* Azure PowerShell modül [yüklendi ve güncelleştirildi](/powershell/azure/install-az-ps).
 * [Az. SQL modülü](https://www.powershellgallery.com/packages/Az.Sql).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL yönetilen örneği tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Resource Manager modülü Azure SQL yönetilen örneği tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
 Modülü yüklemek/güncelleştirmek için PowerShell 'de aşağıdaki komutları çalıştırın:
 
@@ -125,7 +125,7 @@ Sertifika SQL Server yerel makine sertifika deposunda tutuluyorsa, bu, aşağıd
 
 2. Sertifikalar MMC ek bileşeninde, sertifikaların listesini görmek için kişisel > sertifikaları yolunu genişletin.
 
-3. Sertifikaya sağ tıklayın ve **dışarı aktar**' a tıklayın.
+3. Sertifikaya sağ tıklayın ve **dışarı aktar** ' a tıklayın.
 
 4. Sertifikayı ve özel anahtarı bir. pfx biçimine aktarmak için Sihirbazı izleyin.
 
@@ -160,7 +160,7 @@ Sertifika SQL Server yerel makine sertifika deposunda tutuluyorsa, bu, aşağıd
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Önce *. pfx* dosyanız Ile [bir Azure Anahtar Kasası ayarlamanız](/azure/key-vault/key-vault-manage-with-cli2) gerekir.
+Önce *. pfx* dosyanız Ile [bir Azure Anahtar Kasası ayarlamanız](../../key-vault/general/manage-with-cli2.md) gerekir.
 
 1. PowerShell’deki hazırlık adımlarını başlatın:
 

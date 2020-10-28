@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: a335f6ac015397ba2b2634d0d604c194a768260a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76bb4ffb4ebeb01baf8236d6be84c900b23ffbc0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283250"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790823"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL yönetilen örneği (Önizleme) ile işlemsel çoğaltma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,11 +35,11 @@ Azure SQL yönetilen örneğinde yapılan değişiklikleri şu şekilde gönderm
 - Azure SQL yönetilen örneği 'nde örnek veritabanı
 
   > [!NOTE]
-  > Azure SQL yönetilen örneği 'nin tüm özelliklerini kullanmak için [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)en son sürümlerini kullanmanız gerekir.
+  > Azure SQL yönetilen örneği 'nin tüm özelliklerini kullanmak için [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)en son sürümlerini kullanmanız gerekir.
 
 ### <a name="components"></a>Bileşenler
 
-Aşağıdaki resimde gösterildiği gibi, işlemsel çoğaltma 'daki anahtar bileşenleri **Yayımcı**, **dağıtıcı**ve **abone**' dir:  
+Aşağıdaki resimde gösterildiği gibi, işlemsel çoğaltma 'daki anahtar bileşenleri **Yayımcı** , **dağıtıcı** ve **abone** ' dir:  
 
 ![SQL veritabanı ile çoğaltma](./media/replication-transactional-overview/replication-to-sql-database.png)
 
@@ -65,21 +65,21 @@ Azure SQL yönetilen örneği, aşağıdaki SQL Server sürümlerinden abone olm
 
    > [!NOTE]
    >
-   > - Azure 'da nesnelere yayımlamayı desteklemeyen diğer SQL Server sürümleri için, verileri SQL Server yeni sürümlerine taşımak üzere yeniden [Yayımlama verileri](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) yöntemini kullanmak mümkündür.
+   > - Azure 'da nesnelere yayımlamayı desteklemeyen diğer SQL Server sürümleri için, verileri SQL Server yeni sürümlerine taşımak üzere yeniden [Yayımlama verileri](/sql/relational-databases/replication/republish-data) yöntemini kullanmak mümkündür.
    > - Daha eski bir sürümü kullanarak çoğaltmayı yapılandırma denemesi, hata numarası MSSQL_REPL20084 (işlem aboneye bağlanamaz.) ve MSSQ_REPL40532 ( \<name> oturum açma tarafından istenen sunucu açılamıyor. Oturum açılamadı.)
 
 ### <a name="types-of-replication"></a>Çoğaltma türleri
 
-Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)vardır:
+Farklı [çoğaltma türleri](/sql/relational-databases/replication/types-of-replication)vardır:
 
 | Çoğaltma | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| [**Standart Işlem**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Evet |
-| [**Anlık Görüntü**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Evet|
-| [**Birleştirme çoğaltması**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Hayır | Hayır|
-| [**Eşler arası**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Hayır | Hayır|
-| [**Çift yönlü**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Evet|
-| [**Güncelleştirilebilir abonelikler**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Hayır | Hayır|
+| [**Standart Işlem**](/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Evet |
+| [**Anlık Görüntü**](/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Evet|
+| [**Birleştirme çoğaltması**](/sql/relational-databases/replication/merge/merge-replication) | Hayır | Hayır|
+| [**Eşler arası**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Hayır | Hayır|
+| [**Çift yönlü**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Evet|
+| [**Güncelleştirilebilir abonelikler**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Hayır | Hayır|
 | &nbsp; | &nbsp; | &nbsp; |
 
 ### <a name="supportability-matrix"></a>Desteklenebilirlik matrisi
@@ -148,7 +148,7 @@ Bu yapılandırmada, Azure SQL veritabanı veya Azure SQL yönetilen örneği i�
 - Sanal ağlar farklıysa, çoğaltma katılımcılarının sanal ağları arasındaki VPN eşlemesini yapılandırın.
 
 > [!NOTE]
-> Dağıtıcı bir Azure SQL yönetilen örnek veritabanı olduğunda ve abone şirket içinde olduğunda, giden ağ güvenlik grubu (NSG) bağlantı noktası 445 engellenirse, bir Azure depolama dosyasına bağlanırken 53 hatasıyla karşılaşabilirsiniz. Bu sorunu çözmek için [vNet NSG 'Yi güncelleştirin](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) .
+> Dağıtıcı bir Azure SQL yönetilen örnek veritabanı olduğunda ve abone şirket içinde olduğunda, giden ağ güvenlik grubu (NSG) bağlantı noktası 445 engellenirse, bir Azure depolama dosyasına bağlanırken 53 hatasıyla karşılaşabilirsiniz. Bu sorunu çözmek için [vNet NSG 'Yi güncelleştirin](../../storage/files/storage-troubleshoot-windows-file-connection-problems.md) .
 
 ## <a name="with-failover-groups"></a>Yük devretme gruplarıyla
 
@@ -196,16 +196,16 @@ Bir yük devretme grubundaki bir **abone** örneğinde coğrafi çoğaltma etkin
 
 - [SQL yönetilen örnek yayımcısı ve abonesi arasında çoğaltmayı yapılandırma](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [SQL yönetilen örnek yayımcısı, SQL yönetilen örnek dağıtıcısı ve SQL Server abonesi arasında çoğaltmayı yapılandırma](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
-- [Bir yayın oluşturun](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-- [Create a push subscription](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) Abone olarak sunucu adını (örneğin `N'azuresqldbdns.database.windows.net` , hedef VERITABANı olarak Azure SQL veritabanı adı (örneğin **AdventureWorks**) kullanarak bir anında iletme aboneliği oluşturun. )
+- [Bir yayın oluşturun](/sql/relational-databases/replication/publish/create-a-publication).
+- [Create a push subscription](/sql/relational-databases/replication/create-a-push-subscription) Abone olarak sunucu adını (örneğin `N'azuresqldbdns.database.windows.net` , hedef VERITABANı olarak Azure SQL veritabanı adı (örneğin **AdventureWorks** ) kullanarak bir anında iletme aboneliği oluşturun. )
 
 ## <a name="see-also"></a>Ayrıca bkz.  
 
 - [SQL yönetilen örneği ve bir yük devretme grubu ile çoğaltma](transact-sql-tsql-differences-sql-server.md#replication)
 - [SQL Veritabanına Çoğaltma](../database/replication-to-sql-database.md)
 - [Yönetilen örneğe çoğaltma](../managed-instance/replication-between-two-instances-configure-tutorial.md)
-- [Yayın oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Itme aboneliği oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Çoğaltma Türleri](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [İzleme (çoğaltma)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [Abonelik başlatma](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [Yayın oluşturma](/sql/relational-databases/replication/publish/create-a-publication)
+- [Itme aboneliği oluşturma](/sql/relational-databases/replication/create-a-push-subscription/)
+- [Çoğaltma Türleri](/sql/relational-databases/replication/types-of-replication)
+- [İzleme (çoğaltma)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Abonelik başlatma](/sql/relational-databases/replication/initialize-a-subscription)

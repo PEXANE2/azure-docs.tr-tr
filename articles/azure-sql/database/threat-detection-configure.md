@@ -10,17 +10,17 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: 678de4354012dcea5b954980109fd71c1004aca4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68ab5c820f3a67a7fd332557d47918d2a7aa4b62
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619296"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789429"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Azure SQL veritabanı için Gelişmiş tehdit koruması yapılandırma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL veritabanı için [Gelişmiş tehdit koruması](threat-detection-overview.md) , veritabanları için olağan dışı ve olası zararlı girişimleri gösteren anormal etkinlikleri algılar. Gelişmiş tehdit koruması, **OLASı SQL ekleme**, **olağan dışı konum veya veri merkezinden erişim**, **bilinmeyen bir sorumlu veya zararlı uygulamadan ERIŞIM**ve **deneme yanılma SQL kimlik bilgilerini** belirleyebilir. [Gelişmiş tehdit koruması uyarıları](threat-detection-overview.md#alerts)hakkında daha fazla ayrıntı için bkz..
+Azure SQL veritabanı için [Gelişmiş tehdit koruması](threat-detection-overview.md) , veritabanları için olağan dışı ve olası zararlı girişimleri gösteren anormal etkinlikleri algılar. Gelişmiş tehdit koruması, **OLASı SQL ekleme** , **olağan dışı konum veya veri merkezinden erişim** , **bilinmeyen bir sorumlu veya zararlı uygulamadan ERIŞIM** ve **deneme yanılma SQL kimlik bilgilerini** belirleyebilir. [Gelişmiş tehdit koruması uyarıları](threat-detection-overview.md#alerts)hakkında daha fazla ayrıntı için bkz..
 
 Algılanan tehditler hakkında [e-posta bildirimleri](threat-detection-overview.md#explore-detection-of-a-suspicious-event) veya [Azure Portal](threat-detection-overview.md#explore-alerts-in-the-azure-portal) ile ilgili bildirimler alabilirsiniz
 
@@ -29,11 +29,11 @@ Algılanan tehditler hakkında [e-posta bildirimleri](threat-detection-overview.
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Azure portal Gelişmiş tehdit koruması ayarlama
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Korumak istediğiniz sunucunun yapılandırma sayfasına gidin. Güvenlik ayarları ' nda **Güvenlik Merkezi**' ni seçin.
+2. Korumak istediğiniz sunucunun yapılandırma sayfasına gidin. Güvenlik ayarları ' nda **Güvenlik Merkezi** ' ni seçin.
 3. **Azure Defender** yapılandırma sayfasında:
 
    - Sunucuda Azure Defender 'ı etkinleştirin.
-   - **Gelişmiş tehdit koruması ayarları**' nda, **uyarıları gönder** metin kutusunda, anormal veritabanı etkinliklerinin algılanması üzerine güvenlik uyarılarını alacak e-postaların listesini belirtin.
+   - **Gelişmiş tehdit koruması ayarları** ' nda, **uyarıları gönder** metin kutusunda, anormal veritabanı etkinliklerinin algılanması üzerine güvenlik uyarılarını alacak e-postaların listesini belirtin.
 
 ## <a name="set-up-advanced-threat-protection-using-powershell"></a>PowerShell'i kullanarak Gelişmiş Tehdit Korumasını ayarlama
 
@@ -45,5 +45,5 @@ Betik örneği için bkz. [PowerShell kullanarak denetim ve Gelişmiş tehdit ko
 - Gelişmiş tehdit koruması hakkında daha fazla bilgi için bkz. [SQL yönetilen örneği](../managed-instance/threat-detection-configure.md).  
 - [SQL Için Azure Defender](azure-defender-for-sql.md)hakkında daha fazla bilgi edinin.
 - [Denetim](../../azure-sql/database/auditing-overview.md) hakkında daha fazla bilgi edinin
-- [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin
-- Fiyatlandırma hakkında daha fazla bilgi için bkz. [SQL Veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/sql-database/)  
+- [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md) hakkında daha fazla bilgi edinin
+- Fiyatlandırma hakkında daha fazla bilgi için bkz. [SQL Veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/sql-database/)

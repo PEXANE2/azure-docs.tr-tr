@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 0c6ca03f535201059f107d6b53bc423b92d1c1c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f04e4b5a44dccdc3aaeabe6b4144836b0be7354c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073367"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790789"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-managed-instance-database-to-another-geo-region"></a>Azure SQL yönetilen örnek veritabanını başka bir coğrafi bölgeye geri yüklemek için PowerShell 'i kullanma
 
@@ -75,7 +75,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/New-AzResourceGroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
+| [New-AzResourceGroup](/powershell/module/az.resources/New-AzResourceGroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [Get-Azsqlınstancedatabasegeobackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | SQL yönetilen örnek veritabanının coğrafi olarak yedekli bir yedeklemesini oluşturur. |
 | [Restore-Azsqlınstancedatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Coğrafi yedeklemeden SQL yönetilen örneği üzerinde bir veritabanı oluşturur. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |

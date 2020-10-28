@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f7b1255553334bfaa75c5c0c96ecd36afa2c27f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be063105db2384f566e7c94d9f2e7a2bd808b15f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293774"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790143"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure Sanal Makinelerinde SQL Server'a Genel Bakış (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "91293774"
 
 Azure sanal makinelerinde SQL Server, şirket içi donanımları yönetmek zorunda kalmadan bulutta SQL Server tam sürümlerini kullanmanıza olanak sağlar. SQL Server VM’leri, kullandıkça ödeme yaptığınızda lisanslama maliyetlerini de basitleştirir.
 
-Azure sanal makineleri dünyanın birçok farklı [coğrafi bölgesinde](https://azure.microsoft.com/regions/) çalışır. Bu makineler, ayrıca çeşitli [makine boyutları](../../../virtual-machines/windows/sizes.md) sunar. Sanal makine resim galerisi, doğru sürüm ve işletim sistemiyle bir SQL Server VM’i oluşturmanızı sağlar. Bu, sanal makineleri birçok farklı SQL Server iş yükleri için iyi bir seçenek yapar. 
+Azure sanal makineleri dünyanın birçok farklı [coğrafi bölgesinde](https://azure.microsoft.com/regions/) çalışır. Bu makineler, ayrıca çeşitli [makine boyutları](../../../virtual-machines/sizes.md) sunar. Sanal makine resim galerisi, doğru sürüm ve işletim sistemiyle bir SQL Server VM’i oluşturmanızı sağlar. Bu, sanal makineleri birçok farklı SQL Server iş yükleri için iyi bir seçenek yapar. 
 
 Azure SQL 'e yeni başladıysanız, derinlemesine Azure [SQL video serimizin](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)Azure *VM 'sine genel bakış videosunu SQL Server* inceleyin:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
@@ -55,7 +55,7 @@ Kullanmaya başlamak için, gerekli olan sürüm ve işletim sisteminizle birlik
 
 Linux üzerinde SQL Server yapılandırdığınızda, veritabanı motoru paketini ve sonra gereksinimlerinize bağlı olarak birkaç isteğe bağlı paketi yüklersiniz. SQL Server için Linux sanal makine görüntüleri birçok paketi otomatik olarak sizin için yükler. Aşağıdaki tabloda her dağıtımda yüklenen paketler gösterilmektedir.
 
-| Dağıtım | [Veritabanı altyapısı](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Araçlar](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server Aracısı](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Tam metin arama](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA eklentisi](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
+| Dağıtım | [Veritabanı altyapısı](/sql/linux/sql-server-linux-setup) | [Araçlar](/sql/linux/sql-server-linux-setup-tools) | [SQL Server Aracısı](/sql/linux/sql-server-linux-setup-sql-agent) | [Tam metin arama](/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](/sql/linux/sql-server-linux-setup-ssis) | [HA eklentisi](/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
 | RHEL | ![RHEL ve veritabanı altyapısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve araçlar](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve SQL Server Aracısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve tam metin araması](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve HA eklentisi](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 | SLES | ![SLES ve veritabanı altyapısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES ve araçlar](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES ve SQL Server Aracısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES ve tam metin araması](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES ve SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![SLES ve HA eklentisi](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
@@ -79,7 +79,7 @@ Linux üzerinde SQL Server yapılandırdığınızda, veritabanı motoru paketin
 
 ### <a name="sql"></a>SQL
 
-* [Linux üzerinde SQL Server belgeleri](https://docs.microsoft.com/sql/linux)
+* [Linux üzerinde SQL Server belgeleri](/sql/linux)
 * [Azure SQL Veritabanı karşılaştırması](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

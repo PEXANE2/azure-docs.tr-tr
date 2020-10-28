@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 8e64e1a63b01e900988c999321423dfe92df00c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14031118a93f5760b302e4d2b76334205be6d087
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335085"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789633"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Öğretici: coğrafi olarak dağıtılmış bir veritabanı uygulama (Azure SQL veritabanı)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
 Öğreticiyi tamamlayabilmeniz için aşağıdaki öğeleri yüklediğinizden emin olun:
 
@@ -120,7 +120,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 * * *
 
-Coğrafi çoğaltma ayarları Azure Portal Ayrıca, veritabanınızı seçip **Ayarlar**  >  **coğrafi çoğaltma**ayarları ' nı seçerek de değiştirebilirsiniz.
+Coğrafi çoğaltma ayarları Azure Portal Ayrıca, veritabanınızı seçip **Ayarlar**  >  **coğrafi çoğaltma** ayarları ' nı seçerek de değiştirebilirsiniz.
 
 ![Coğrafi çoğaltma ayarları](./media/geo-distributed-application-configure-tutorial/geo-replication.png)
 
@@ -132,7 +132,7 @@ Coğrafi çoğaltma ayarları Azure Portal Ayrıca, veritabanınızı seçip **A
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. **Y** yazın ve **ENTER**tuşuna basın.
+1. **Y** yazın ve **ENTER** tuşuna basın.
 
 1. Dizinleri yeni proje ile değiştirin.
 

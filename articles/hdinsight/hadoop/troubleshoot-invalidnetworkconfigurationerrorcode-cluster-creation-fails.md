@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f30f92df505abeff108f8d1c503cb33162d2e409
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0eb9afc179f1dd2559f0db7b212f6b3a1da15824
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533555"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790925"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Azure HDInsight 'ta küme oluşturma işlemi ınvalidnetworkconfigurationerrorcode ile başarısız oluyor
 
@@ -68,6 +68,19 @@ Azure Storage ve SQL 'in sabit IP adresleri yok, bu nedenle bu hizmetlere erişi
 
     Tanımlı yollar varsa, kümenin dağıtıldığı bölgenin IP adresleri için yolların bulunduğundan emin olun ve her bir rotanın **Nexthoptype** 'ı **Internet** 'dir. Belirtilen makalede belgelenen her bir gerekli IP adresi için bir rota tanımlanmış olmalıdır.
 
+## <a name="failed-to-establish-an-outbound-connection-from-the-cluster-for-the-communication-with-the-hdinsight-resource-provider-please-ensure-that-outbound-connectivity-is-allowed"></a>"HDInsight kaynak sağlayıcısıyla iletişim için kümeden giden bir bağlantı kurulamadı. Lütfen giden bağlantıya izin verildiğinden emin olun. "
+
+### <a name="issue"></a>Sorun
+
+Hata açıklaması içerir "HDInsight kaynak sağlayıcısıyla iletişim için kümeden giden bağlantı kurulamadı. Lütfen giden bağlantıya izin verildiğinden emin olun. "
+
+### <a name="cause"></a>Nedeni
+
+Özel bağlantılı HDInsight kümeleri kullanırken, kümeden giden erişim, HDInsight kaynak sağlayıcısına bağlantı kurulmasına izin verecek şekilde yapılandırılmalıdır.
+
+### <a name="resolution"></a>Çözüm
+
+* Bu sorunu çözmek için [özel bağlantı kurulumu](../hdinsight-private-link.md) 'Nda HDInsight özel bağlantı kurulum adımlarına bakın
 ---
 
 ## <a name="virtual-network-configuration-is-not-compatible-with-hdinsight-requirement"></a>"Sanal ağ yapılandırması HDInsight gereksinimi ile uyumlu değil"

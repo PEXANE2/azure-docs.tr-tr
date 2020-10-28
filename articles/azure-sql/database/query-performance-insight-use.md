@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: be7e4a641e5b5ac2ef755037142cfd8063d66b5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c88b777e08bc165caefa14fe28d43c498e3fefcd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448888"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790381"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL veritabanı için Sorgu Performansı İçgörüleri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Sorgu Performansı İçgörüleri, tek ve havuza alınmış veritabanları için akıllı sorgu analizi sağlar. İş yükünüzün en üstteki kaynak tüketme ve uzun süre çalışan sorguları belirlemesine yardımcı olur. Bu, genel iş yükü performansını iyileştirmek için optimize edilecek sorguları bulmanıza ve için ödemeniz gereken kaynağı verimli bir şekilde kullanmanıza yardımcı olur. Sorgu Performansı İçgörüleri, aşağıdakileri sağlayarak veritabanı performansını sorun gidermeye daha az zaman harcamanıza yardımcı olur:
+Sorgu Performansı İçgörüleri tek veritabanı ve havuza alınmış veritabanları için akıllı sorgu analizi sağlar. İş yükünüzdeki en çok kaynak tüketen ve uzun süre çalışan sorguları belirlemeye yardımcı olur. Genel olarak iş yükü performansını geliştirmek ve karşılığını ödediğiniz kaynağı verimli kullanmak için iyileştirilecek sorguları bulmanıza yardım eder. Sorgu Performansı İçgörüleri, aşağıdakileri sağlayarak veritabanı performansını sorun gidermeye daha az zaman harcamanıza yardımcı olur:
 
 * Veritabanları kaynağınız (DTU) tüketiminize daha derin Öngörüler
 * CPU, süre ve yürütme sayısına göre en iyi veritabanı sorgularının ayrıntıları (performans iyileştirmeleri için olası ayarlama adayları)
@@ -32,7 +32,7 @@ Sorgu Performansı İçgörüleri, tek ve havuza alınmış veritabanları için
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Sorgu Performansı İçgörüleri, veritabanınızda [sorgu deposunun](https://msdn.microsoft.com/library/dn817826.aspx) etkin olmasını gerektirir. Azure SQL veritabanı 'ndaki tüm veritabanları için varsayılan olarak otomatik olarak etkinleştirilir. Sorgu deposu çalışmıyorsa, Azure portal etkinleştirmek isteyip istemeyecektir.
+Sorgu Performansı İçgörüleri, veritabanınızda [sorgu deposunun](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) etkin olmasını gerektirir. Azure SQL veritabanı 'ndaki tüm veritabanları için varsayılan olarak otomatik olarak etkinleştirilir. Sorgu deposu çalışmıyorsa, Azure portal etkinleştirmek isteyip istemeyecektir.
 
 > [!NOTE]
 > "Sorgu deposu bu veritabanında düzgün şekilde yapılandırılmamışsa" ileti portalda görüntülenirse, bkz. [sorgu deposu yapılandırmasını iyileştirme](#optimize-the-query-store-configuration).
@@ -41,15 +41,15 @@ Sorgu Performansı İçgörüleri, veritabanınızda [sorgu deposunun](https://m
 
 Sorgu Performansı İçgörüleri kullanmak için aşağıdaki [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) izinlerinizin olması gerekir:
 
-* En üstteki kaynak kullanan sorguları ve grafikleri görüntülemek için **okuyucu**, **sahip**, **katkıda bulunan**, **SQL DB katılımcısı**veya **SQL Server katkıda** bulunan izinleri gereklidir.
-* Sorgu metnini görüntülemek için **sahip**, **katkıda**bulunan, **SQL DB katılımcısı**veya **SQL Server katkıda** bulunan izinleri gereklidir.
+* En üstteki kaynak kullanan sorguları ve grafikleri görüntülemek için **okuyucu** , **sahip** , **katkıda bulunan** , **SQL DB katılımcısı** veya **SQL Server katkıda** bulunan izinleri gereklidir.
+* Sorgu metnini görüntülemek için **sahip** , **katkıda** bulunan, **SQL DB katılımcısı** veya **SQL Server katkıda** bulunan izinleri gereklidir.
 
 ## <a name="use-query-performance-insight"></a>Sorgu Performansı İçgörüleri’ni kullanma
 
 Sorgu Performansı İçgörüleri kullanımı kolaydır:
 
 1. [Azure Portal](https://portal.azure.com/) açın ve incelemek istediğiniz bir veritabanını bulun.
-2. Sol taraftaki menüden, **akıllı performans**  >  **sorgu performansı içgörüleri**açın.
+2. Sol taraftaki menüden, **akıllı performans**  >  **sorgu performansı içgörüleri** açın.
   
    ![Menüdeki Sorgu Performansı İçgörüleri](./media/query-performance-insight-use/tile.png)
 
@@ -61,7 +61,7 @@ Sorgu Performansı İçgörüleri kullanımı kolaydır:
    ![Performans panosu](./media/query-performance-insight-use/performance.png)
 
 > [!NOTE]
-> Azure SQL veritabanı 'nın Sorgu Performansı İçgörüleri bilgileri işlemesi için Query Store 'un birkaç saat veri yakalamasına ihtiyacı vardır. Veritabanında etkinlik yoksa veya sorgu deposu belirli bir süre içinde etkin değilse, Sorgu Performansı İçgörüleri bu zaman aralığını görüntülediğinde grafikler boş olur. Sorgu deposunu, çalışmıyorsa istediğiniz zaman etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [sorgu deposu Ile en iyi uygulamalar](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store).
+> Azure SQL veritabanı 'nın Sorgu Performansı İçgörüleri bilgileri işlemesi için Query Store 'un birkaç saat veri yakalamasına ihtiyacı vardır. Veritabanında etkinlik yoksa veya sorgu deposu belirli bir süre içinde etkin değilse, Sorgu Performansı İçgörüleri bu zaman aralığını görüntülediğinde grafikler boş olur. Sorgu deposunu, çalışmıyorsa istediğiniz zaman etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [sorgu deposu Ile en iyi uygulamalar](/sql/relational-databases/performance/best-practice-with-the-query-store).
 >
 
 Veritabanı performans önerileri için Sorgu Performansı İçgörüleri gezinti dikey penceresinde [öneriler](database-advisor-implement-performance-recommendations.md) ' i seçin.
@@ -85,9 +85,9 @@ Varsayılan olarak, Sorgu Performansı İçgörüleri ilk kez açtığınızda e
    >
    > Daha ayrıntılı bir karşılaştırma için (bir dakikaya kadar) özel bir DTU kullanım grafiği oluşturmayı düşünün:
    >
-   > 1. Azure Portal **Azure SQL veritabanı**  >  **izleme**' yi seçin.
-   > 2. **Ölçümler**’i seçin.
-   > 3. **+ Grafik Ekle ' yi**seçin.
+   > 1. Azure Portal **Azure SQL veritabanı**  >  **izleme** ' yi seçin.
+   > 2. **Ölçümler** ’i seçin.
+   > 3. **+ Grafik Ekle ' yi** seçin.
    > 4. Grafikteki DTU yüzdesini seçin.
    > 5. Ayrıca, sol üst menüden **son 24 saat** ' i seçin ve bir dakika olarak değiştirin.
    >
@@ -160,7 +160,7 @@ Uzun süre çalışan sorgular, kaynakları daha uzun süre kilitlemek, diğer k
 Uzun süre çalışan sorguları belirlemek için:
 
 1. Seçili veritabanı için Sorgu Performansı İçgörüleri **özel** sekmesini açın.
-2. Ölçümleri **süre**olarak değiştirin.
+2. Ölçümleri **süre** olarak değiştirin.
 3. Sorgu sayısını ve gözlemme aralığını seçin.
 4. Toplama işlevini seçin:
 
@@ -177,9 +177,9 @@ Uzun süre çalışan sorguları belirlemek için:
    >
    > Veritabanı DTU kullanımını daha fazla ayrıntı ile (bir dakikaya kadar) anlamak için Azure portal özel bir grafik oluşturmayı düşünün:
    >
-   > 1. **Azure SQL veritabanı**  >  **izleme**'yi seçin.
-   > 2. **Ölçümler**’i seçin.
-   > 3. **+ Grafik Ekle ' yi**seçin.
+   > 1. **Azure SQL veritabanı**  >  **izleme** 'yi seçin.
+   > 2. **Ölçümler** ’i seçin.
+   > 3. **+ Grafik Ekle ' yi** seçin.
    > 4. Grafikteki DTU yüzdesini seçin.
    > 5. Ayrıca, sol üst menüden **son 24 saat** ' i seçin ve bir dakika olarak değiştirin.
    >
@@ -197,7 +197,7 @@ Bazı durumlarda, yüksek bir yürütme sayısı daha fazla ağ gidiş dönüşl
 Sık yürütülen ("geveze") sorgularını belirlemek için:
 
 1. Seçili veritabanı için Sorgu Performansı İçgörüleri **özel** sekmesini açın.
-2. Ölçümleri **yürütme sayısı**olarak değiştirin.
+2. Ölçümleri **yürütme sayısı** olarak değiştirin.
 3. Sorgu sayısını ve gözlemme aralığını seçin.
 4. Özelleştirilmiş görünümü görmek için **git >** düğmesini seçin.
 
@@ -232,22 +232,22 @@ Bu iletiler genellikle sorgu deposu yeni veri toplayamıyorum görüntülenir.
 
    ![Sorgu deposu ayrıntıları](./media/query-performance-insight-use/qds-off.png)
 
-İkinci durum, sorgu deposu etkinleştirilmediğinde veya parametreler en iyi şekilde ayarlanamadığında oluşur. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) veya Azure Portal tarafından sunulan aşağıdaki komutları çalıştırarak bekletme ve yakalama ilkesini değiştirebilir ve ayrıca sorgu deposunu etkinleştirebilirsiniz.
+İkinci durum, sorgu deposu etkinleştirilmediğinde veya parametreler en iyi şekilde ayarlanamadığında oluşur. [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) veya Azure Portal tarafından sunulan aşağıdaki komutları çalıştırarak bekletme ve yakalama ilkesini değiştirebilir ve ayrıca sorgu deposunu etkinleştirebilirsiniz.
 
 ### <a name="recommended-retention-and-capture-policy"></a>Önerilen bekletme ve yakalama ilkesi
 
 İki tür bekletme ilkesi vardır:
 
-* **Boyut tabanlı**: Bu ilke **Otomatik**olarak ayarlandıysa, en büyük boyuta yaklaştıklarında verileri otomatik olarak temizler.
-* **Zaman tabanlı**: Bu ilke varsayılan olarak 30 güne ayarlanır. Sorgu deposunda boş alan biterse, 30 günden eski olan sorgu bilgilerini silecektir.
+* **Boyut tabanlı** : Bu ilke **Otomatik** olarak ayarlandıysa, en büyük boyuta yaklaştıklarında verileri otomatik olarak temizler.
+* **Zaman tabanlı** : Bu ilke varsayılan olarak 30 güne ayarlanır. Sorgu deposunda boş alan biterse, 30 günden eski olan sorgu bilgilerini silecektir.
 
 Yakalama ilkesini şu şekilde ayarlayabilirsiniz:
 
-* **Tümü**: sorgu deposu tüm sorguları yakalar.
-* **Otomatik**: sorgu deposu seyrek olarak derleme ve yürütme süresine sahip seyrek sorguları ve sorguları yoksayar. Yürütme sayısı, derleme süresi ve çalışma zamanı süresi eşikleri dahili olarak belirlenir. Bu varsayılan seçenektir.
-* **Hiçbiri**: sorgu deposu yeni sorgular yakalamayı durduruyor, ancak zaten yakalanan sorgulara yönelik çalışma zamanı istatistikleri yine de toplanmaktadır.
+* **Tümü** : sorgu deposu tüm sorguları yakalar.
+* **Otomatik** : sorgu deposu seyrek olarak derleme ve yürütme süresine sahip seyrek sorguları ve sorguları yoksayar. Yürütme sayısı, derleme süresi ve çalışma zamanı süresi eşikleri dahili olarak belirlenir. Bu varsayılan seçenektir.
+* **Hiçbiri** : sorgu deposu yeni sorgular yakalamayı durduruyor, ancak zaten yakalanan sorgulara yönelik çalışma zamanı istatistikleri yine de toplanmaktadır.
 
-[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) veya Azure Portal aşağıdaki komutları yürüterek tüm ilkelerin **Otomatik** olarak ve temizleme ilkesini 30 güne ayarlamamız önerilir. ( `YourDB` Veritabanı adıyla değiştirin.)
+[SSMS](/sql/ssms/download-sql-server-management-studio-ssms) veya Azure Portal aşağıdaki komutları yürüterek tüm ilkelerin **Otomatik** olarak ve temizleme ilkesini 30 güne ayarlamamız önerilir. ( `YourDB` Veritabanı adıyla değiştirin.)
 
 ```sql
     ALTER DATABASE [YourDB]
@@ -260,7 +260,7 @@ Yakalama ilkesini şu şekilde ayarlayabilirsiniz:
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
 ```
 
-[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) veya Azure Portal aracılığıyla bir veritabanına bağlanarak sorgu deposunun boyutunu artırın ve aşağıdaki sorguyu çalıştırın. ( `YourDB` Veritabanı adıyla değiştirin.)
+[SSMS](/sql/ssms/download-sql-server-management-studio-ssms) veya Azure Portal aracılığıyla bir veritabanına bağlanarak sorgu deposunun boyutunu artırın ve aşağıdaki sorguyu çalıştırın. ( `YourDB` Veritabanı adıyla değiştirin.)
 
 ```SQL
     ALTER DATABASE [YourDB]

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 6649a8d470a75922aac423bf0b411163bdd79f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91a0ea19f53d1da7631154cb71f96e495cc93857
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449091"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789004"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Key Vault için Azure Defender 'a giriş
 
@@ -55,5 +55,5 @@ Bu makalede, Key Vault için Azure Defender hakkında bilgi edindiniz.
 İlgili malzemeler için aşağıdaki makalelere bakın: 
 
 - [Güvenlik uyarılarını Key Vault](alerts-reference.md#alerts-azurekv)--tüm Azure Güvenlik Merkezi uyarıları için başvuru tablosunun Key Vault bölümü
-- [Uyarıları SıEM 'ye aktarma](continuous-export.md)
+- [Güvenlik Merkezi verilerini sürekli dışa aktarma](continuous-export.md)
 - [Azure Defender 'dan uyarıları gösterme](alerts-suppression-rules.md)

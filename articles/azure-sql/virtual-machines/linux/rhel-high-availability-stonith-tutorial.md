@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06442e861a247f545ca6f22ecc82e5f5dc910553
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358993"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790245"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "91358993"
 > [!NOTE]
 > Bu öğreticide RHEL 7,6 ile SQL Server 2017 kullanıyoruz, ancak yüksek kullanılabilirliği yapılandırmak için RHEL 7 veya RHEL 8 ' de SQL Server 2019 kullanmak mümkündür. Pacemake kümesini ve kullanılabilirlik grubu kaynaklarını yapılandırma komutları RHEL 8 ' de değişmiştir ve doğru komutlar hakkında daha fazla bilgi için [kullanılabilirlik grubu kaynağı](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) ve RHEL 8 kaynakları oluşturma makalesine bakmak isteyeceksiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > - Yeni bir kaynak grubu, kullanılabilirlik kümesi ve Linux sanal makineleri (VM 'Ler) oluşturma
@@ -242,7 +242,7 @@ Komut tamamlandıktan sonra aşağıdaki sonuçları almanız gerekir:
     done
     ```
 
-Yukarıdaki komut, VM 'Leri oluşturur ve bu VM 'Ler için varsayılan bir sanal ağ oluşturur. Farklı yapılandırmalara ilişkin daha fazla bilgi için, [az VM Create](https://docs.microsoft.com/cli/azure/vm) makalesine bakın.
+Yukarıdaki komut, VM 'Leri oluşturur ve bu VM 'Ler için varsayılan bir sanal ağ oluşturur. Farklı yapılandırmalara ilişkin daha fazla bilgi için, [az VM Create](/cli/azure/vm) makalesine bakın.
 
 Her VM için komut tamamlandıktan sonra aşağıdaki gibi sonuçlar almanız gerekir:
 
@@ -304,7 +304,7 @@ Her bir VM düğümüne bağlanın ve HA 'yi etkinleştirmek için aşağıdaki 
 1. Aşağıdaki komutları kullanarak pacemaker paketlerini tüm düğümlerde güncelleştirin ve bu paketleri yüklersiniz:
 
     > [!NOTE]
-    > **Nmap** , AĞıNıZDA kullanılabilir IP adreslerini bulmak için bir araç olarak bu komut bloğunun bir parçası olarak yüklenir. **Nmap**'i yüklemek zorunda değilsiniz, ancak bu öğreticide daha sonra yararlı olacak.
+    > **Nmap** , AĞıNıZDA kullanılabilir IP adreslerini bulmak için bir araç olarak bu komut bloğunun bir parçası olarak yüklenir. **Nmap** 'i yüklemek zorunda değilsiniz, ancak bu öğreticide daha sonra yararlı olacak.
 
     ```bash
     sudo yum update -y
@@ -489,11 +489,11 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  3. [ **Uygulama kayıtları** tıklayın](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. **Yeni kayıt** öğesine tıklayın
  5. Gibi bir **ad** girin `<resourceGroupName>-app` , **yalnızca bu kuruluş dizinindeki hesapları** seçin
- 6. Uygulama türü **Web**' i seçin, bir oturum açma URL 'si girin (örneğin, http://localhost) Ekle ' ye tıklayın. Oturum açma URL 'SI kullanılmaz ve geçerli bir URL olabilir. İşiniz bittiğinde **Kaydet** ' e tıklayın.
+ 6. Uygulama türü **Web** ' i seçin, bir oturum açma URL 'si girin (örneğin, http://localhost) Ekle ' ye tıklayın. Oturum açma URL 'SI kullanılmaz ve geçerli bir URL olabilir. İşiniz bittiğinde **Kaydet** ' e tıklayın.
  7. Yeni uygulama kaydınız için **sertifikaları ve gizli** dizileri seçip **yeni istemci parolası** ' na tıklayın.
  8. Yeni anahtar için bir açıklama girin (istemci gizli anahtarı), **hiçbir zaman süre sonu** seçeneğini belirleyip **Ekle** ' ye tıklayın
  9. Gizli dizi değerini yazın. Hizmet sorumlusu için parola olarak kullanılır
-10. **Genel bakış**'ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda oturum açma KIMLIĞI) olarak kullanılır
+10. **Genel bakış** 'ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda oturum açma KIMLIĞI) olarak kullanılır
  
 ### <a name="create-a-custom-role-for-the-fence-agent"></a>Çit Aracısı için özel bir rol oluşturma
 
@@ -571,7 +571,7 @@ Aşağıdaki çıkışı görmeniz gerekir:
 5. **Rol ataması Ekle** ' ye tıklayın
 6. `Linux Fence Agent Role-<username>` **Rol** listesinden rolü seçin
 7. **Seç** listesinde, yukarıda oluşturduğunuz uygulamanın adını girin.`<resourceGroupName>-app`
-8. **Kaydet**’e tıklayın
+8. **Kaydet** ’e tıklayın
 9. Tüm küme düğümü için yukarıdaki adımları tekrarlayın.
 
 ### <a name="create-the-stonith-devices"></a>STONITH cihazlarını oluşturma
@@ -682,7 +682,7 @@ Aşağıdaki çıkışı görmeniz gerekir:
            └─11640 /opt/mssql/bin/sqlservr
 ```
 
-## <a name="configure-an-availability-group"></a>Kullanılabilirlik grubu yapılandırma
+## <a name="configure-an-availability-group"></a>Kullanılabilirlik grubunu yapılandırma
 
 Sanal makinelerinize yönelik SQL Server Always on kullanılabilirlik grubunu yapılandırmak için aşağıdaki adımları kullanın. Daha fazla bilgi için bkz. [Linux üzerinde yüksek kullanılabilirlik için SQL Server Always on kullanılabilirlik grupları yapılandırma](/sql/linux/sql-server-linux-availability-group-configure-ha)
 

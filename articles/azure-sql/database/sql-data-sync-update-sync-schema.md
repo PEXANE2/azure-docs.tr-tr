@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/14/2018
-ms.openlocfilehash: fb64348e53dc92ef8f5830f2649afdf9eca3a9ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9997ea737b96185b31a7f51996a396fb5fc46c4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616491"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790194"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Azure SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ INSERT INTO SchemaChanges (SqlStmt, Description)
     VALUES (EVENTDATA().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'nvarchar(max)'), 'From DDL trigger')
 ```
 
-Tetikleyici, her ALTER TABLE komutu için şema değişiklik izleme tablosuna bir kayıt ekler. Bu örnek, veri eşitleme hizmeti tarafından büyük olasılıkla yapıldığından, şema **DataSync**altında yapılan şema değişikliklerinin çoğaltılmasını önlemek için bir filtre ekler. Yalnızca belirli şema değişiklik türlerini çoğaltmak istiyorsanız daha fazla filtre ekleyin.
+Tetikleyici, her ALTER TABLE komutu için şema değişiklik izleme tablosuna bir kayıt ekler. Bu örnek, veri eşitleme hizmeti tarafından büyük olasılıkla yapıldığından, şema **DataSync** altında yapılan şema değişikliklerinin çoğaltılmasını önlemek için bir filtre ekler. Yalnızca belirli şema değişiklik türlerini çoğaltmak istiyorsanız daha fazla filtre ekleyin.
 
 Diğer şema değişikliği türlerini çoğaltmak için daha fazla tetikleyici de ekleyebilirsiniz. Örneğin, değişiklikleri saklı yordamlara çoğaltmak için CREATE_PROCEDURE, ALTER_PROCEDURE ve DROP_PROCEDURE Tetikleyicileri oluşturun.
 
@@ -231,7 +231,7 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
         -  [PowerShell kullanarak Azure SQL veritabanındaki bir veritabanı ile SQL Server örneğindeki bir veritabanı arasında eşitleme](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Veri eşitleme Aracısı- [Azure SQL Data Sync Için veri eşitleme Aracısı](sql-data-sync-agent-overview.md)
 -   En iyi uygulamalar- [Azure SQL Data Sync Için en iyi yöntemler](sql-data-sync-best-practices.md)
--   İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](sql-data-sync-monitor-sync.md)
+-   İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](./monitor-tune-overview.md)
 -   Sorun giderme- [Azure SQL Data Sync sorunlarını giderme]()
 -   Eşitleme şemasını güncelleştirme
     -   PowerShell ile- [varolan bir eşitleme grubundaki eşitleme şemasını güncelleştirmek Için PowerShell kullanın](scripts/update-sync-schema-in-sync-group.md)

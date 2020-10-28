@@ -12,14 +12,14 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34f71dfeb0b4e5f94d953137fd45777bf14baa4e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618129"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790772"
 ---
-# <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL yönetilen örnek kaynak sınırlarına genel bakış
+# <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Yönetilen Örneği kaynak sınırlarına genel bakış
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Bu makalede, Azure SQL yönetilen örneği için teknik özelliklere ve kaynak sınırlarına genel bir bakış sağlanır ve bu sınırlara bir artış isteme hakkında bilgi sağlanır.
@@ -82,7 +82,7 @@ SQL yönetilen örneği iki hizmet katmanına sahiptir: [genel amaçlı](../data
 | Depolama GÇ gecikmesi (yaklaşık) | 5-10 MS | 1-2 MS |
 | Bellek içi OLTP | Desteklenmez | Kullanılabilir, [Boyut sanal çekirdek sayısına bağlıdır](#in-memory-oltp-available-space) |
 | En fazla oturum sayısı | 30000 | 30000 |
-| Maksimum eş zamanlı çalışan (istek) | 4. nesil: 210 * sanal çekirdek sayısı + 800<br>5. nesil: 105 * sanal çekirdek sayısı + 800 | 4. nesil: 210 * sanal çekirdek sayısı + 800<br>5. nesil: 105 * sanal çekirdek sayısı + 800 |
+| Maksimum eş zamanlı çalışan (istek) | 4\. Nesil: 210 * sanal çekirdek sayısı + 800<br>5\. Nesil: 105 * sanal çekirdek sayısı + 800 | 4\. Nesil: 210 * sanal çekirdek sayısı + 800<br>5\. Nesil: 105 * sanal çekirdek sayısı + 800 |
 | [Salt okuma çoğaltmaları](../database/read-scale-out.md) | 0 | 1 (fiyata dahildir) |
 | İşlem yalıtımı | 5. nesil<br/>-80 sanal çekirdekler için desteklenir<br/>-diğer boyutlar için desteklenmez<br/><br/>Kullanımdan kaldırılması nedeniyle 4. nesil desteklenmiyor|5. nesil<br/>-60, 64, 80 sanal çekirdekler için desteklenir<br/>-diğer boyutlar için desteklenmez<br/><br/>Kullanımdan kaldırılması nedeniyle 4. nesil desteklenmiyor|
 
@@ -120,7 +120,7 @@ SQL yönetilen örneği şu anda yalnızca aşağıdaki abonelik türlerinde da�
 
 - [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 - [Kullandıkça öde](https://azure.microsoft.com/offers/ms-azr-0003p/)
-- [Bulut hizmeti sağlayıcısı (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
+- [Bulut hizmeti sağlayıcısı (CSP)](/partner-center/csp-documents-and-learning-resources)
 - [Kurumsal Geliştirme ve Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [Kullandıkça Öde Geliştirme ve Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio aboneleri için aylık Azure kredisine sahip abonelikler](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
@@ -132,8 +132,8 @@ SQL yönetilen örneği şu anda yalnızca aşağıdaki abonelik türlerinde da�
 
 Desteklenen Abonelik türleri, bölge başına sınırlı sayıda kaynak içerebilir. SQL yönetilen örneği, Azure bölgesi başına iki varsayılan sınıra sahiptir (bir abonelik türü türüne göre Azure portal özel bir [destek isteği](../database/quota-increase-request.md) oluşturarak isteğe bağlı olarak artırılabilir:
 
-- **Alt ağ sınırı**: SQL yönetilen örnek örneklerinin tek bir bölgede dağıtıldığı alt ağların en fazla sayısı.
-- **Vcore birim sınırı**: tek bir bölgedeki tüm örneklerde dağıtılabilecek en fazla Vcore birimi sayısı. Bir GP sanal çekirdeği bir vCore birimi kullanır ve bir BC sanal çekirdek 4 sanal çekirdek birimi alır. Toplam örnek sayısı, sanal çekirdek birim sınırının içinde olduğu sürece sınırlı değildir.
+- **Alt ağ sınırı** : SQL yönetilen örnek örneklerinin tek bir bölgede dağıtıldığı alt ağların en fazla sayısı.
+- **Vcore birim sınırı** : tek bir bölgedeki tüm örneklerde dağıtılabilecek en fazla Vcore birimi sayısı. Bir GP sanal çekirdeği bir vCore birimi kullanır ve bir BC sanal çekirdek 4 sanal çekirdek birimi alır. Toplam örnek sayısı, sanal çekirdek birim sınırının içinde olduğu sürece sınırlı değildir.
 
 > [!Note]
 > Bu sınırlar varsayılan ayarlar değildir ve teknik sınırlamalardır. Geçerli bölgede daha fazla örneğe ihtiyaç duyuyorsanız, Azure portal özel bir [destek isteği](../database/quota-increase-request.md) oluşturularak sınırlar artırılabilir. Alternatif olarak, destek istekleri göndermeden başka bir Azure bölgesinde SQL yönetilen örneğinin yeni örneklerini oluşturabilirsiniz.
@@ -146,11 +146,11 @@ Aşağıdaki tabloda desteklenen Abonelik türleri için **varsayılan bölgesel
 |CSP |8 (bazı bölgelerde 15 * *)|960 (bazı bölgelerde 1440 * *)|
 |Kullandıkça Öde geliştirme ve test|3|320|
 |Kurumsal Geliştirme ve Test|3|320|
-|UC|8 (bazı bölgelerde 15 * *)|960 (bazı bölgelerde 1440 * *)|
+|EA|8 (bazı bölgelerde 15 * *)|960 (bazı bölgelerde 1440 * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional ve MSDN Platformları|2|32|
 
-\* Dağıtımları planlama bölümünde, lütfen İş Açısından Kritik (BC) hizmet katmanının dört (4) kat daha fazla sanal çekirdek kapasitesi Genel Amaçlı (GP) hizmet katmanından gerektirdiğini göz önünde bulundurun. Örneğin: 1 GP vCore = 1 sanal çekirdek birim ve 1 BC sanal çekirdek = 4 sanal çekirdek birimi. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, SQL yönetilen örneğinin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına**eşit veya daha düşük olmalıdır.
+\* Dağıtımları planlama bölümünde, lütfen İş Açısından Kritik (BC) hizmet katmanının dört (4) kat daha fazla sanal çekirdek kapasitesi Genel Amaçlı (GP) hizmet katmanından gerektirdiğini göz önünde bulundurun. Örneğin: 1 GP vCore = 1 sanal çekirdek birim ve 1 BC sanal çekirdek = 4 sanal çekirdek birimi. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, SQL yönetilen örneğinin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına** eşit veya daha düşük olmalıdır.
 
 \*\* Daha büyük alt ağ ve sanal çekirdek limitleri şu bölgelerde kullanılabilir: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa, Batı ABD 2.
 

@@ -18,6 +18,7 @@
         - name: Genel bölge oluşturma - CLI
           href: dns-getstarted-cli.md
         - name: Genel bölge oluşturma - ARM Şablonu
+          displayName: Resource Manager
           href: dns-get-started-template.md
     - name: Özel DNS
       items:

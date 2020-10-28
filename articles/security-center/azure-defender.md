@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c354447625d58f65615f8d3efb596e7a723e0bbf
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 002c718466b9e13d2f92fbea6dd055eb13d4d3a7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331694"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789123"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 'a giriş
 
@@ -20,7 +20,7 @@ Azure Güvenlik Merkezi 'nin özellikleri, bulut güvenliğinin iki geniş kapsa
 
 - **Bulut güvenliği gönderme yönetimi (CSPM)** -Güvenlik Merkezi, tüm Azure kullanıcıları için **ücretsiz** olarak kullanılabilir. Ücretsiz deneyim, güvenli puan, Azure makinelerinizdeki güvenlik yapılandırması yapılandırmalarını, varlık envanterinizi ve daha fazlasını içeren CSPM özelliklerini içerir. Karma bulut durunuzu güçlendirin ve yerleşik ilkelerle uyumluluğu izlemek için bu CSPM özelliklerini kullanın.
 
-- **Bulut iş yükü koruması (CWP)** -Güvenlik Merkezi 'nin tümleşik bulut iş yükü koruma platformu (cwpp), **Azure Defender**, Azure ve hibrit kaynaklarınızı ve iş yüklerinizi gelişmiş, akıllı ve korumalı hale getirir. Azure Defender 'ın etkinleştirilmesi, bu sayfada açıklanan ek güvenlik özelliklerinin bir aralığını sunar. Yerleşik ilkelere ek olarak, herhangi bir Azure Defender planını etkinleştirdiğinizde, özel ilkeler ve girişimler ekleyebilirsiniz. Uyumluluğun gerçek anlamda özelleştirilmiş bir görünümü için NıST ve Azure CIS gibi mevzuat standartları ve Azure Güvenlik kıyaslaması ekleyebilirsiniz.
+- **Bulut iş yükü koruması (CWP)** -Güvenlik Merkezi 'nin tümleşik bulut iş yükü koruma platformu (cwpp), **Azure Defender** , Azure ve hibrit kaynaklarınızı ve iş yüklerinizi gelişmiş, akıllı ve korumalı hale getirir. Azure Defender 'ın etkinleştirilmesi, bu sayfada açıklanan ek güvenlik özelliklerinin bir aralığını sunar. Yerleşik ilkelere ek olarak, herhangi bir Azure Defender planını etkinleştirdiğinizde, özel ilkeler ve girişimler ekleyebilirsiniz. Uyumluluğun gerçek anlamda özelleştirilmiş bir görünümü için NıST ve Azure CIS gibi mevzuat standartları ve Azure Güvenlik kıyaslaması ekleyebilirsiniz.
 
 Güvenlik Merkezi 'ndeki Azure Defender panosu, ortamınız için CWP özelliklerinin görünürlüğünü ve denetimini sağlar:
 
@@ -65,7 +65,7 @@ Korumayı, diğer bulutlarda veya şirket içinde bulunan sanal makinelere ve SQ
 
 Azure Defender, ortamınızın herhangi bir alanında bir tehdit algıladığında bir uyarı oluşturur. Bu uyarılar, etkilenen kaynakların ayrıntılarını, önerilen düzeltme adımlarını ve bazı durumlarda bir mantıksal uygulamayı yanıt olarak tetiklemeye yönelik bir seçenek anlatmaktadır.
 
-Bir uyarının Güvenlik Merkezi tarafından oluşturulup oluşturulmayacağını veya Güvenlik Merkezi tarafından bir tümleşik güvenlik ürününden alınıp alınmayacağını, dışarı aktarabilirsiniz. Uyarılarınızı Azure Sentinel 'e, herhangi bir üçüncü taraf SıEM 'e veya herhangi bir harici araca aktarmak için [uyarıları BIR SıEM 'ye aktarma](continuous-export.md)konusundaki yönergeleri izleyin.
+Bir uyarının Güvenlik Merkezi tarafından oluşturulup oluşturulmayacağını veya Güvenlik Merkezi tarafından bir tümleşik güvenlik ürününden alınıp alınmayacağını, dışarı aktarabilirsiniz. Uyarılarınızı Azure Sentinel 'e, herhangi bir üçüncü taraf SıEM 'e veya herhangi bir harici araca aktarmak için, [BIR SıEM, SOAR veya BT hizmet yönetimi çözümüne akış uyarıları](export-to-siem.md)içindeki yönergeleri izleyin.
 
 > [!NOTE]
 > Farklı kaynaklardaki uyarıların görünmesi farklı miktarda zaman alabilir. Örneğin, ağ trafiğinin analizini gerektiren uyarıların, sanal makinelerde çalışan şüpheli işlemlerle ilgili uyarılardan görünmesi daha uzun sürebilir.

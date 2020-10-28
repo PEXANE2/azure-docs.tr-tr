@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: b89b8cc58cb48770b9b42036f8b834cc1bf11b8b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5cfd76d6b2f6bb9429a7605ac05adb23d87a80d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441139"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790891"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Azure SQL veritabanı ve Azure SYNAPSE Analytics için, TDE koruyucusu sunucu d�
 > Müşteri tarafından yönetilen TDE kullanmaya başlamak isteyen hizmet tarafından yönetilen TDE kullanan bu işlemler için veriler, geçiş işlemi sırasında şifrelenmiş olarak kalır ve veritabanı dosyalarının kapalı kalması veya yeniden şifrelenmesi gerekmez. Hizmet tarafından yönetilen anahtardan müşterinin yönettiği bir anahtara geçiş yapmak, hızlı ve çevrimiçi bir işlem olan DEK ' ın yeniden şifrelenmesini gerektirir.
 
 > [!NOTE]
-> Azure SQL müşterilerinin bekleyen verilerin iki katmanını kullanmasını sağlamak için platform tarafından yönetilen anahtarlarla altyapı şifrelemesi (AES-256 şifreleme algoritması kullanılarak) kullanıma alınıyor. Bu, zaten mevcut olan, müşteri tarafından yönetilen anahtarlarla birlikte, bekleyen bir şifreleme katmanını de sağlar. Azure SQL veritabanı ve yönetilen örnek için, altyapı şifrelemesi açık olduğunda, ana veritabanı ve diğer sistem veritabanları dahil olmak üzere tüm veritabanları şifrelenir. Şu anda müşterilerin bu özelliğe erişim istemesi gerekir. Bu özellik ile ilgileniyorsanız, iletişim kurun AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
+> <a id="doubleencryption"></a> Azure SQL müşterilerinin bekleyen verilerin iki katmanını kullanmasını sağlamak için platform tarafından yönetilen anahtarlarla altyapı şifrelemesi (AES-256 şifreleme algoritması kullanılarak) kullanıma alınıyor. Bu, zaten mevcut olan, müşteri tarafından yönetilen anahtarlarla birlikte, bekleyen bir şifreleme katmanını de sağlar. Azure SQL veritabanı ve yönetilen örnek için, altyapı şifrelemesi açık olduğunda, ana veritabanı ve diğer sistem veritabanları dahil olmak üzere tüm veritabanları şifrelenir. Şu anda müşterilerin bu özelliğe erişim istemesi gerekir. Bu özellik ile ilgileniyorsanız, iletişim kurun AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Müşteri tarafından yönetilen TDE 'nın avantajları
 
@@ -82,7 +82,7 @@ Denetçiler, günlük etkinleştirildiyse Anahtar Kasası AuditEvent günlükler
 
 - Azure Active Directory kimliğini kullanarak sunucuya veya yönetilen örnek için anahtar kasasına (Get, wrapKey, unwrapKey) erişim izni verin. Azure portal kullanılırken, Azure AD kimliği otomatik olarak oluşturulur. PowerShell veya CLı kullanırken, Azure AD kimliğinin açık bir şekilde oluşturulması ve tamamlanmasının doğrulanması gerekir. PowerShell kullanırken ayrıntılı adım adım yönergeler için bkz. [bYok Ile TDE yapılandırma](transparent-data-encryption-byok-configure.md) ve [SQL yönetilen örneği için bYok Ile TDE yapılandırma](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) .
 
-- AKV ile güvenlik duvarı kullanırken, *Güvenilen Microsoft hizmetlerinin güvenlik duvarını atlamasına Izin ver*seçeneğini etkinleştirmeniz gerekir.
+- AKV ile güvenlik duvarı kullanırken, *Güvenilen Microsoft hizmetlerinin güvenlik duvarını atlamasına Izin ver* seçeneğini etkinleştirmeniz gerekir.
 
 ### <a name="requirements-for-configuring-tde-protector"></a>TDE koruyucusunu yapılandırma gereksinimleri
 
@@ -95,7 +95,7 @@ Denetçiler, günlük etkinleştirildiyse Anahtar Kasası AuditEvent günlükler
 - Anahtar kasasında mevcut anahtarı içeri aktarıyorsanız, bu dosyayı desteklenen dosya biçimlerinde (. pfx,. bYok veya. Backup) sağladığınızdan emin olun.
 
 > [!NOTE]
-> Azure SQL artık, yönetilen bir HSM 'de TDE koruyucusu olarak depolanan bir RSA anahtarının kullanılmasını desteklemektedir. Bu özellik **genel önizlemede**. Azure Key Vault yönetilen HSM, FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'leri kullanarak bulut uygulamalarınızın şifreleme anahtarlarını korumanıza olanak sağlayan, tam olarak yönetilen, yüksek oranda kullanılabilir, tek kiracılı ve standartlara uygun bir bulut hizmetidir. [Yönetilen HSM](https://aka.ms/mhsm)'ler hakkında daha fazla bilgi edinin.
+> Azure SQL artık, yönetilen bir HSM 'de TDE koruyucusu olarak depolanan bir RSA anahtarının kullanılmasını desteklemektedir. Bu özellik **genel önizlemede** . Azure Key Vault yönetilen HSM, FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'leri kullanarak bulut uygulamalarınızın şifreleme anahtarlarını korumanıza olanak sağlayan, tam olarak yönetilen, yüksek oranda kullanılabilir, tek kiracılı ve standartlara uygun bir bulut hizmetidir. [Yönetilen HSM](../../key-vault/managed-hsm/index.yml)'ler hakkında daha fazla bilgi edinin.
 
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>Müşteri tarafından yönetilen TDE yapılandırılırken öneriler
@@ -106,7 +106,7 @@ Denetçiler, günlük etkinleştirildiyse Anahtar Kasası AuditEvent günlükler
 
 - Bu kritik kaynağı kimlerin silebilen ve yanlışlıkla veya yetkisiz silme işleminin önlenmesi için anahtar kasasında bir kaynak kilidi ayarlayın. [Kaynak kilitleri](../../azure-resource-manager/management/lock-resources.md)hakkında daha fazla bilgi edinin.
 
-- Tüm şifreleme anahtarlarında denetim ve raporlamayı etkinleştir: Anahtar Kasası, diğer güvenlik bilgilerine ve olay yönetim araçlarına eklemek kolay olan Günlükler sağlar. Operations Management Suite [Log Analytics](../../azure-monitor/insights/azure-key-vault.md) , zaten tümleştirilmiş bir hizmetin bir örneğidir.
+- Tüm şifreleme anahtarlarında denetim ve raporlamayı etkinleştir: Anahtar Kasası, diğer güvenlik bilgilerine ve olay yönetim araçlarına eklemek kolay olan Günlükler sağlar. Operations Management Suite [Log Analytics](../../azure-monitor/insights/key-vault-insights-overview.md) , zaten tümleştirilmiş bir hizmetin bir örneğidir.
 
 - Her bir sunucuyu farklı bölgelerde bulunan iki anahtar kasası ile bağlayın ve şifrelenmiş veritabanlarının yüksek oranda kullanılabilirliğini sağlamak için aynı anahtar malzemesini tutun. Yalnızca aynı bölgedeki anahtar kasasındaki anahtarı TDE koruyucusu ile işaretleyin. Aynı bölgedeki anahtar kasasını etkileyen bir kesinti varsa, sistem otomatik olarak uzak bölgedeki anahtar kasasına geçiş yapar.
 
@@ -126,7 +126,7 @@ Denetçiler, günlük etkinleştirildiyse Anahtar Kasası AuditEvent günlükler
 
 ## <a name="inaccessible-tde-protector"></a>Erişilemeyen TDE koruyucusu
 
-Saydam veri şifrelemesi, müşteri tarafından yönetilen anahtar kullanacak şekilde yapılandırıldığında, veritabanının çevrimiçi kalması için TDE koruyucusuna sürekli erişim gerekir. Sunucu, AKV 'de müşteri tarafından yönetilen TDE koruyucusuna erişimi kaybederse, 10 dakikalık bir veritabanı, ilgili hata iletisiyle tüm bağlantıları reddetmeye başlar ve durumunu *erişilemez*olarak değiştirir. Erişilemeyen durumdaki bir veritabanında izin verilen tek eylem, onu siliyor.
+Saydam veri şifrelemesi, müşteri tarafından yönetilen anahtar kullanacak şekilde yapılandırıldığında, veritabanının çevrimiçi kalması için TDE koruyucusuna sürekli erişim gerekir. Sunucu, AKV 'de müşteri tarafından yönetilen TDE koruyucusuna erişimi kaybederse, 10 dakikalık bir veritabanı, ilgili hata iletisiyle tüm bağlantıları reddetmeye başlar ve durumunu *erişilemez* olarak değiştirir. Erişilemeyen durumdaki bir veritabanında izin verilen tek eylem, onu siliyor.
 
 > [!NOTE]
 > Zaman aralıklı bir ağ kesintisi nedeniyle veritabanına erişilemezse, hiçbir eylem gerekmez ve veritabanları otomatik olarak yeniden çevrimiçi olur.
@@ -146,7 +146,7 @@ Aşağıda, erişilemeyen bir veritabanını yeniden çevrimiçi hale getirmek i
 
 Anahtar Kasası 'na yeterli erişim haklarına sahip birinin yanlışlıkla bu anahtara sunucu erişimini devre dışı bırakmasından kaynaklanabilir:
 
-- anahtar kasasının *Get*, *wrapKey*, *unwrapKey* izinleri sunucudan iptal ediliyor
+- anahtar kasasının *Get* , *wrapKey* , *unwrapKey* izinleri sunucudan iptal ediliyor
 
 - anahtar siliniyor
 
@@ -163,7 +163,7 @@ Anahtar Kasası 'na yeterli erişim haklarına sahip birinin yanlışlıkla bu a
 Veritabanı durumunu izlemek ve TDE koruyucu erişimi kaybı nedeniyle uyarı etkinleştirmek için aşağıdaki Azure özelliklerini yapılandırın:
 
 - [Azure Kaynak durumu](../../service-health/resource-health-overview.md). Veritabanına ilk bağlantı reddedildikten sonra TDE koruyucusu erişimi kayıp olan erişilemeyen bir veritabanı "kullanılamaz" olarak gösterilir.
-- Müşteri tarafından yönetilen anahtar kasasındaki TDE koruyucuya erişim başarısız olduğunda [etkinlik günlüğü](../../service-health/alerts-activity-log-service-notifications.md) etkinlik günlüğüne eklenir.  Bu olaylar için uyarı oluşturulması mümkün olan en kısa sürede erişimi yeniden etkinleştirmenizi sağlar.
+- Müşteri tarafından yönetilen anahtar kasasındaki TDE koruyucuya erişim başarısız olduğunda [etkinlik günlüğü](../../service-health/alerts-activity-log-service-notifications-portal.md) etkinlik günlüğüne eklenir.  Bu olaylar için uyarı oluşturulması mümkün olan en kısa sürede erişimi yeniden etkinleştirmenizi sağlar.
 - [Eylem grupları](../../azure-monitor/platform/action-groups.md) , tercihlerinize, örn. e-posta/SMS/Push/Voice, Logic App, Web KANCASı, ISM veya Otomasyon Runbook 'una göre bildirim ve uyarı göndermek için tanımlanabilir.
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>Müşteri tarafından yönetilen TDE ile veritabanı yedekleme ve geri yükleme

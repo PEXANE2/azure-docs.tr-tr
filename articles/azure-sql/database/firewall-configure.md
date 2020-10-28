@@ -12,20 +12,20 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 9b6b0ee6fa33ecd0d677d7d075236517d85d4ab7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 802c126548a6fa7062a262e2f939c9a214480794
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335152"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789650"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL veritabanı ve Azure SYNAPSE IP güvenlik duvarı kuralları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Azure SQL veritabanı veya *te yapılandırılmış MySQLServer*adlı Azure SYNAPSE Analytics 'te yeni bir sunucu oluşturduğunuzda, örneğin, sunucu düzeyinde bir güvenlik duvarı sunucu için genel uç noktaya ( *MySQLServer.Database.Windows.net*adresinden erişilebilen) tüm erişimi engeller. Basitlik için *SQL veritabanı* hem SQL veritabanı hem de Azure SYNAPSE Analytics 'e (eskı adıyla SQL veri ambarı) başvurmak için kullanılır.
+Azure SQL veritabanı veya *te yapılandırılmış MySQLServer* adlı Azure SYNAPSE Analytics 'te yeni bir sunucu oluşturduğunuzda, örneğin, sunucu düzeyinde bir güvenlik duvarı sunucu için genel uç noktaya ( *MySQLServer.Database.Windows.net* adresinden erişilebilen) tüm erişimi engeller. Basitlik için *SQL veritabanı* hem SQL veritabanı hem de Azure SYNAPSE Analytics 'e (eskı adıyla SQL veri ambarı) başvurmak için kullanılır.
 
 > [!IMPORTANT]
-> Bu *Makale,* *Azure SQL yönetilen örneği*için geçerlidir. Ağ yapılandırması hakkında daha fazla bilgi için bkz. [uygulamanızı Azure SQL yönetilen örneğine bağlama](../managed-instance/connect-application-instance.md).
+> Bu *Makale,* *Azure SQL yönetilen örneği* için geçerlidir. Ağ yapılandırması hakkında daha fazla bilgi için bkz. [uygulamanızı Azure SQL yönetilen örneğine bağlama](../managed-instance/connect-application-instance.md).
 >
 > Azure SYNAPSE yalnızca sunucu düzeyinde IP güvenlik duvarı kurallarını destekler. Veritabanı düzeyinde IP güvenlik duvarı kurallarını desteklemez.
 
@@ -50,7 +50,7 @@ Veritabanı düzeyinde IP güvenlik duvarı kuralları, istemcilerin belirli (g�
   
 - Yalnızca Transact-SQL deyimlerini kullanarak ve yalnızca ilk sunucu düzeyinde güvenlik duvarını yapılandırdıktan sonra, ana ve kullanıcı veritabanları için veritabanı düzeyinde IP güvenlik duvarı kuralları oluşturabilir ve yönetebilirsiniz.
 - Veritabanı düzeyi IP güvenlik duvarı kuralında sunucu düzeyi IP güvenlik duvarı kuralında aralığın dışında bir IP adresi aralığı belirtirseniz, yalnızca veritabanı düzeyinde IP adresi olan istemciler veritabanına erişebilir.
-- Bir veritabanı için en fazla 128 veritabanı düzeyinde IP güvenlik duvarı kuralına sahip olabilirsiniz. Veritabanı düzeyinde IP güvenlik duvarı kurallarını yapılandırma hakkında daha fazla bilgi için, bu makalenin devamındaki örneğe bakın ve [sp_set_database_firewall_rule (Azure SQL veritabanı)](https://msdn.microsoft.com/library/dn270010.aspx)bölümüne bakın.
+- Bir veritabanı için en fazla 128 veritabanı düzeyinde IP güvenlik duvarı kuralına sahip olabilirsiniz. Veritabanı düzeyinde IP güvenlik duvarı kurallarını yapılandırma hakkında daha fazla bilgi için, bu makalenin devamındaki örneğe bakın ve [sp_set_database_firewall_rule (Azure SQL veritabanı)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)bölümüne bakın.
 
 ### <a name="recommendations-for-how-to-set-firewall-rules"></a>Güvenlik duvarı kuralları ayarlama önerileri
 
@@ -63,11 +63,11 @@ Mümkün olduğunda veritabanı düzeyinde IP güvenlik duvarı kuralları kulla
 
 *Tek bir veritabanının kullanıcıları başka bir veritabanından tamamen yalıtılmalıdır mi?*
 
-Yanıt *Evet*ise, erişim izni vermek için VERITABANı düzeyinde IP güvenlik duvarı kurallarını kullanın. Bu yöntem, tüm veritabanlarına güvenlik duvarı üzerinden erişime izin veren sunucu düzeyi IP güvenlik duvarı kurallarını kullanmaktan kaçınır. Bu, savunlarınızın derinliğini azaltır.
+Yanıt *Evet* ise, erişim izni vermek için VERITABANı düzeyinde IP güvenlik duvarı kurallarını kullanın. Bu yöntem, tüm veritabanlarına güvenlik duvarı üzerinden erişime izin veren sunucu düzeyi IP güvenlik duvarı kurallarını kullanmaktan kaçınır. Bu, savunlarınızın derinliğini azaltır.
 
 *IP adreslerindeki kullanıcıların tüm veritabanlarına erişmesi gerekiyor mu?*
 
-Yanıt *Evet*Ise, IP güvenlik duvarı kurallarını yapılandırmak istediğiniz zaman sayısını azaltmak için sunucu düzeyi IP güvenlik duvarı kurallarını kullanın.
+Yanıt *Evet* Ise, IP güvenlik duvarı kurallarını yapılandırmak istediğiniz zaman sayısını azaltmak için sunucu düzeyi IP güvenlik duvarı kurallarını kullanın.
 
 *IP güvenlik duvarı kurallarını yapılandıran kişi veya takım yalnızca Azure portal, PowerShell veya REST API erişim sahibi olabilir mi?*
 
@@ -107,18 +107,18 @@ Azure içinde barındırılan uygulamaların SQL sunucunuza bağlanmasına izin 
 
 Azure SQL Server için IP güvenlik duvarı kuralı oluşturmak ve yönetmek istiyorsanız şu rollerden birine sahip olmanız gerekir:
 
-- [SQL Server katkıda](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor) bulunan rolünde
-- [SQL Güvenlik Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) rolünde
+- [SQL Server katkıda](../../role-based-access-control/built-in-roles.md#sql-server-contributor) bulunan rolünde
+- [SQL Güvenlik Yöneticisi](../../role-based-access-control/built-in-roles.md#sql-security-manager) rolünde
 - Azure SQL Server içeren kaynağın sahibi
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>IP güvenlik duvarı kuralları oluşturma ve yönetme
 
-[Azure Portal](https://portal.azure.com/) veya program aracılığıyla [Azure POWERSHELL](https://docs.microsoft.com/powershell/module/az.sql), [azure CLI](https://docs.microsoft.com/cli/azure/sql/server/firewall-rule)veya bir Azure [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)kullanarak ilk sunucu düzeyi güvenlik duvarı ayarını oluşturursunuz. Bu yöntemleri veya Transact-SQL ' i kullanarak diğer sunucu düzeyi IP güvenlik duvarı kuralları oluşturur ve yönetirsiniz.
+[Azure Portal](https://portal.azure.com/) veya program aracılığıyla [Azure POWERSHELL](/powershell/module/az.sql), [azure CLI](/cli/azure/sql/server/firewall-rule)veya bir Azure [REST API](/rest/api/sql/firewallrules/createorupdate)kullanarak ilk sunucu düzeyi güvenlik duvarı ayarını oluşturursunuz. Bu yöntemleri veya Transact-SQL ' i kullanarak diğer sunucu düzeyi IP güvenlik duvarı kuralları oluşturur ve yönetirsiniz.
 
 > [!IMPORTANT]
 > Veritabanı düzeyi IP güvenlik duvarı kuralları yalnızca Transact-SQL kullanılarak oluşturulabilir ve yönetilebilir.
 
-Performansı artırmak için sunucu düzeyinde IP güvenlik duvarı kuralları veritabanı düzeyinde geçici olarak önbelleğe alınır. Önbelleği yenilemek için bkz. [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
+Performansı artırmak için sunucu düzeyinde IP güvenlik duvarı kuralları veritabanı düzeyinde geçici olarak önbelleğe alınır. Önbelleği yenilemek için bkz. [DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql).
 
 > [!TIP]
 > Sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı değişikliklerini denetlemek için [veritabanı denetimini](../../azure-sql/database/auditing-overview.md) kullanabilirsiniz.
@@ -138,17 +138,17 @@ Azure portal sunucu düzeyinde bir IP güvenlik duvarı kuralı ayarlamak için 
 
     Sunucu için **güvenlik duvarı ayarları** sayfası açılır.
 
-2. Kullanmakta olduğunuz bilgisayarın IP adresini eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin ve ardından **Kaydet**' i seçin. Geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+2. Kullanmakta olduğunuz bilgisayarın IP adresini eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin ve ardından **Kaydet** ' i seçin. Geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
     ![Sunucu düzeyi IP güvenlik duvarı kuralını ayarla](./media/firewall-configure/sql-database-server-firewall-settings.png)
 
 #### <a name="from-the-server-overview-page"></a>Sunucuya genel bakış sayfasından
 
-Sunucunuzun genel bakış sayfası açılır. Tam sunucu adını (örneğin, *mynewserver20170403.Database.Windows.net*) gösterir ve daha fazla yapılandırma seçeneği sunar.
+Sunucunuzun genel bakış sayfası açılır. Tam sunucu adını (örneğin, *mynewserver20170403.Database.Windows.net* ) gösterir ve daha fazla yapılandırma seçeneği sunar.
 
 1. Bu sayfadan bir sunucu düzeyi kuralı ayarlamak için, sol taraftaki **Ayarlar** menüsünden **güvenlik duvarı** ' nı seçin.
 
-2. Kullanmakta olduğunuz bilgisayarın IP adresini eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin ve ardından **Kaydet**' i seçin. Geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+2. Kullanmakta olduğunuz bilgisayarın IP adresini eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin ve ardından **Kaydet** ' i seçin. Geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>IP güvenlik duvarı kurallarını yönetmek için Transact-SQL kullanma
 
@@ -161,7 +161,7 @@ Sunucunuzun genel bakış sayfası açılır. Tam sunucu adını (örneğin, *my
 | [sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) |Veritabanı |Veritabanı düzeyinde IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |
 | [sp_delete_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database) |Veritabanları |Veritabanı düzeyinde IP güvenlik duvarı kurallarını kaldırır |
 
-Aşağıdaki örnek, mevcut kuralları gözden geçirir, *contoso*sunucusunda bir IP adresi aralığı sunar ve bir IP güvenlik duvarı kuralını siler:
+Aşağıdaki örnek, mevcut kuralları gözden geçirir, *contoso* sunucusunda bir IP adresi aralığı sunar ve bir IP güvenlik duvarı kuralını siler:
 
 ```sql
 SELECT * FROM sys.firewall_rules ORDER BY name;
@@ -174,7 +174,7 @@ EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
    @start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
 ```
 
-Sunucu düzeyinde bir IP güvenlik duvarı kuralını silmek için *sp_delete_firewall_rule* saklı yordamını yürütün. Aşağıdaki örnek *ContosoFirewallRule*kuralını siler:
+Sunucu düzeyinde bir IP güvenlik duvarı kuralını silmek için *sp_delete_firewall_rule* saklı yordamını yürütün. Aşağıdaki örnek *ContosoFirewallRule* kuralını siler:
 
 ```sql
 EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
@@ -232,10 +232,10 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 | API | Düzey | Açıklama |
 | --- | --- | --- |
-| [Güvenlik duvarı kurallarını Listele](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Sunucu |Geçerli sunucu düzeyi IP güvenlik duvarı kurallarını görüntüler |
-| [Güvenlik duvarı kuralları oluşturma veya güncelleştirme](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |
-| [Güvenlik duvarı kurallarını Sil](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kurallarını kaldırır |
-| [Güvenlik duvarı kuralları al](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Sunucu | Sunucu düzeyi IP güvenlik duvarı kurallarını alır |
+| [Güvenlik duvarı kurallarını Listele](/rest/api/sql/firewallrules/listbyserver) |Sunucu |Geçerli sunucu düzeyi IP güvenlik duvarı kurallarını görüntüler |
+| [Güvenlik duvarı kuralları oluşturma veya güncelleştirme](/rest/api/sql/firewallrules/createorupdate) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |
+| [Güvenlik duvarı kurallarını Sil](/rest/api/sql/firewallrules/delete) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kurallarını kaldırır |
+| [Güvenlik duvarı kuralları al](/rest/api/sql/firewallrules/get) | Sunucu | Sunucu düzeyi IP güvenlik duvarı kurallarını alır |
 
 ## <a name="troubleshoot-the-database-firewall"></a>Veritabanı güvenlik duvarı sorunlarını giderme
 

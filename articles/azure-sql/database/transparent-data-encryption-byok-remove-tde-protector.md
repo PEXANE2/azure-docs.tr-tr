@@ -5,19 +5,19 @@ description: Kendi anahtarını getir (BYOK) desteği ile TDE kullanarak Azure S
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 77f2312438f3f9db7aa4e0dc7cc0f672644a87c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 657e3967d9e34147364114cec4d946e900f60032
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617426"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791384"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell kullanarak Saydam Veri Şifrelemesi (TDE) koruyucusunu kaldırma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,16 +26,16 @@ ms.locfileid: "91617426"
 Bu konuda, Azure Key Vault-Kendi Anahtarını Getir (BYOK) desteği 'nde müşteri tarafından yönetilen anahtarlarla TDE kullanan Azure SQL veritabanı veya Azure SYNAPSE Analytics 'e yönelik olası riskli bir TDE korumasına nasıl yanıt verileceğini açıklanmaktadır. TDE için BYOK desteği hakkında daha fazla bilgi edinmek için [genel bakış sayfasına](transparent-data-encryption-byok-overview.md)bakın.
 
 > [!CAUTION]
-> Bu makalede özetlenen yordamlar yalnızca olağanüstü durumlarda veya test ortamlarında yapılmalıdır. Azure Key Vault ' den etkin olarak kullanılan TDE koruyucuları silmek **veritabanının kullanılamaz hale gelmesine**neden olacak şekilde adımları dikkatle gözden geçirin.
+> Bu makalede özetlenen yordamlar yalnızca olağanüstü durumlarda veya test ortamlarında yapılmalıdır. Azure Key Vault ' den etkin olarak kullanılan TDE koruyucuları silmek **veritabanının kullanılamaz hale gelmesine** neden olacak şekilde adımları dikkatle gözden geçirin.
 
 Bir anahtarın tehlikeye atılmaya şüphelenildiği durumlarda, bir hizmet veya kullanıcının anahtara yetkisiz erişimi olması gibi, anahtarın silinmesi en iyisidir.
 
-Key Vault ' de TDE koruyucusu silindikten sonra, en fazla 10 dakika içinde tüm şifreli veritabanlarının karşılık gelen hata iletisiyle tüm bağlantıları reddetmesinin ve durumunu [erişilemez](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector)olarak değiştirmesinin başlayacağı göz önünde bulundurun.
+Key Vault ' de TDE koruyucusu silindikten sonra, en fazla 10 dakika içinde tüm şifreli veritabanlarının karşılık gelen hata iletisiyle tüm bağlantıları reddetmesinin ve durumunu [erişilemez](./transparent-data-encryption-byok-overview.md#inaccessible-tde-protector)olarak değiştirmesinin başlayacağı göz önünde bulundurun.
 
 Bu nasıl yapılır Kılavuzu, güvenliği aşılmış bir olay yanıtından sonra istenen sonuca bağlı olarak iki yaklaşımdan geçer:
 
-- Azure SQL veritabanı/Azure SYNAPSE Analytics 'teki veritabanlarını **erişilemez**hale getirmek için.
-- Azure SQL veritabanı/Azure Azure SYNAPSE Analytics 'te (eski adıyla SQL veri ambarı) veritabanlarını **erişilmez**hale getirin.
+- Azure SQL veritabanı/Azure SYNAPSE Analytics 'teki veritabanlarını **erişilemez** hale getirmek için.
+- Azure SQL veritabanı/Azure Azure SYNAPSE Analytics 'te (eski adıyla SQL veri ambarı) veritabanlarını **erişilmez** hale getirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -45,7 +45,7 @@ Bu nasıl yapılır Kılavuzu, güvenliği aşılmış bir olay yanıtından son
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
- Az modülü yükleme yönergeleri için bkz. [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps). Belirli cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
+ Az modülü yükleme yönergeleri için bkz. [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps). Belirli cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/).
 
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager (RM) modülü hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
@@ -79,11 +79,11 @@ Alternatif olarak, PowerShell veya Azure CLı 'yi de kullanabilirsiniz:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-**Get-AzureRmSqlServerKeyVaultKey**PowerShell komutu,   sorguda kullanılan TDE koruyucunun parmak izini sağlar, böylece saklanacak anahtarları ve Akv 'de hangi anahtarların silineceğini görebilirsiniz. Yalnızca, veritabanı tarafından artık kullanılmayan anahtarlar Azure Key Vault güvenle silinebilir.
+**Get-AzureRmSqlServerKeyVaultKey** PowerShell komutu,   sorguda kullanılan TDE koruyucunun parmak izini sağlar, böylece saklanacak anahtarları ve Akv 'de hangi anahtarların silineceğini görebilirsiniz. Yalnızca, veritabanı tarafından artık kullanılmayan anahtarlar Azure Key Vault güvenle silinebilir.
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-**Az SQL Server Key Show**PowerShell komutu,   sorguda kullanılan TDE koruyucunun parmak izini sağlar, böylece saklanacak anahtarları ve Akv 'de hangi anahtarların silineceğini görebilirsiniz. Yalnızca, veritabanı tarafından artık kullanılmayan anahtarlar Azure Key Vault güvenle silinebilir.
+**Az SQL Server Key Show** PowerShell komutu,   sorguda kullanılan TDE koruyucunun parmak izini sağlar, böylece saklanacak anahtarları ve Akv 'de hangi anahtarların silineceğini görebilirsiniz. Yalnızca, veritabanı tarafından artık kullanılmayan anahtarlar Azure Key Vault güvenle silinebilir.
 
 * * *
 

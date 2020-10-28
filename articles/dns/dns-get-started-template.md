@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 09/8/2020
 ms.author: duau
 ms.custom: subject-armqs
-ms.openlocfilehash: 986258631d47989e5be5e738da86f844283ce706
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 24460167e2279e7d3001d0bc16d050beb5b55289
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093829"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791010"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure DNS bölgesi ve kaydı oluşturma
 
-Bu hızlı başlangıçta, içinde bir kayıt ile bir DNS bölgesi oluşturmak için bir Azure Resource Manager şablonunun (ARM şablonu) nasıl kullanılacağı açıklanmaktadır.
+Bu hızlı başlangıçta, içindeki bir kayıt ile bir DNS bölgesi oluşturmak için bir Azure Resource Manager şablonunun (ARM şablonu) nasıl kullanılacağı açıklanmaktadır `A` .
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,20 +34,20 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-azure-dns-new-zone) alınmıştır.
 
-Bu hızlı başlangıçta, * <span>azukarşılandığından ickstart</span> sonekine sahıp benzersiz bir DNS bölgesi oluşturacaksınız. Kuruluş*. İki IP adresine işaret eden *bir* kayıt da bölgeye yerleştirilecek.
+Bu hızlı başlangıçta, soneki olan benzersiz bir DNS bölgesi oluşturacaksınız `azurequickstart.org` . `A`Ikı IP adresine işaret eden bir kayıt da bölgeye yerleştirilecek.
 
 :::code language="json" source="~/quickstart-templates/101-azure-dns-new-zone/azuredeploy.json":::
 
 Şablonda iki Azure kaynağı tanımlanmış:
 
-* [**Microsoft. Network/dnsZones**](/azure/templates/microsoft.network/dnsZones)
-* [**Microsoft. Network/dnsZones/A**](/azure/templates/microsoft.network/dnsZones/A) (bölgedeki bir kayıt oluşturmak için kullanılır)
+- [**Microsoft. Network/dnsZones**](/azure/templates/microsoft.network/dnsZones)
+- [**Microsoft. Network/dnsZones/A**](/azure/templates/microsoft.network/dnsZones/A): bölgede bir kayıt oluşturmak için kullanılır `A` .
 
 Azure Traffic Manager ile ilgili daha fazla şablon bulmak için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Azure Cloud Shell açmak için aşağıdaki kod bloğundan **deneyin** ' i seçin ve ardından Azure 'da oturum açmak için yönergeleri izleyin. 
+1. Azure Cloud Shell açmak için aşağıdaki kod bloğundan **deneyin** ' i seçin ve ardından Azure 'da oturum açmak için yönergeleri izleyin.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -66,11 +66,11 @@ Azure Traffic Manager ile ilgili daha fazla şablon bulmak için bkz. [Azure hı
 
 1. PowerShell betiğini kopyalamak için önceki kod bloğundan **Kopyala** ' yı seçin.
 
-1. Kabuk konsol bölmesine sağ tıklayın ve ardından **Yapıştır**' ı seçin.
+1. Kabuk konsol bölmesine sağ tıklayın ve ardından **Yapıştır** ' ı seçin.
 
 1. Değerleri girin.
 
-    Şablon dağıtımı, iki IP adresini işaret eden bir kayıt içeren bir bölge oluşturur. Kaynak grubu adı, **RG** eklenmiş proje adıdır.
+    Şablon dağıtımı, `A` ıkı IP adresini işaret eden bir kayıt içeren bir bölge oluşturur. Kaynak grubu adı, **RG** eklenmiş proje adıdır.
 
     Şablonun dağıtılması birkaç saniye sürer. Tamamlandığında, çıkış şuna benzerdir:
 
@@ -80,7 +80,7 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Sol bölmeden **kaynak grupları** ' nı seçin.
 
@@ -90,7 +90,7 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
     :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Azure DNS bölgesi Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
 
-1. ** <span>Azukarşılandığından ickstart</span> sonekine sahip DNS bölgesini seçin. **bölgenin, **1.2.3.4** ve **1.2.3.5**değerine başvuran bir kayıt ile düzgün **bir** şekilde oluşturulduğunu doğrulamak için kuruluş.
+1. `azurequickstart.org`Bölgesinin `A` ve değerine başvuran bir kayıtla düzgün şekilde oluşturulduğunu doğrulamak için, öğesinin SONEKINE sahip DNS bölgesini seçin `1.2.3.4` `1.2.3.5` .
 
     :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Azure DNS bölgesi Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
 
@@ -98,13 +98,13 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
 1. Bir komut istemi açın ve aşağıdaki komutu çalıştırın:
 
-   ```
+   ```cmd
    nslookup www.<dns zone name> <name server name>
    ```
 
-   Örnek:
+   Örneğin:
 
-   ```
+   ```cmd
    nslookup www.2lwynbseszpam.azurequickstart.org ns1-09.azure-dns.com.
    ```
 
@@ -112,7 +112,7 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
     :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Azure DNS bölgesi Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
 
-**Www<span>. 2lwazbseszpam. azukarşılandığından ickstart</span> ana bilgisayar adı. Kuruluş** , yalnızca yapılandırdığınız gibi **1.2.3.4** ve **1.2.3.5**olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular.
+Ana bilgisayar adı `www.2lwynbseszpam.azurequickstart.org` `1.2.3.4` `1.2.3.5` , yapılandırdığınız gibi ve olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -127,10 +127,11 @@ Remove-AzResourceGroup -Name <your resource group name>
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu hızlı başlangıçta şunu oluşturdunuz:
-* DNS bölgesi
-* A kaydı
 
-İlk DNS bölgenizi ve Azure Resource Manager şablonu kullanarak kaydınızı oluşturduğunuza göre, özel bir etki alanında bir Web uygulaması için kayıtlar oluşturabilirsiniz.
+- DNS bölgesi
+- `A` kayıtlar
+
+Artık ilk DNS bölgenizi ve bir ARM şablonu kullanarak kaydınızı oluşturduğunuza göre, özel bir etki alanında bir Web uygulaması için kayıtlar oluşturabilirsiniz.
 
 > [!div class="nextstepaction"]
 > [Özel etki alanında web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)

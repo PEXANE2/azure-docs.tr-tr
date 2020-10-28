@@ -11,17 +11,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 1d4c29cdb9cf24f87df4acc3556b318a1079810a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f8c296860fc36772a85039e27c86a72614c2a50
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443612"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791061"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure portal ile SQL veritabanı dinamik veri maskeleme ile çalışmaya başlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bu makalede, Azure portal ile [dinamik veri maskeleme](dynamic-data-masking-overview.md) 'nin nasıl uygulanacağı gösterilmektedir. Ayrıca, [Azure SQL veritabanı cmdlet 'lerini](https://docs.microsoft.com/powershell/module/az.sql/) veya [REST API](https://docs.microsoft.com/rest/api/sql/)kullanarak dinamik veri maskeleme uygulayabilirsiniz.
+Bu makalede, Azure portal ile [dinamik veri maskeleme](dynamic-data-masking-overview.md) 'nin nasıl uygulanacağı gösterilmektedir. Ayrıca, [Azure SQL veritabanı cmdlet 'lerini](/powershell/module/az.sql/) veya [REST API](/rest/api/sql/)kullanarak dinamik veri maskeleme uygulayabilirsiniz.
 
 > [!NOTE]
 > Bu özellik Azure SYNAPSE için Portal (PowerShell veya REST API) veya SQL yönetilen örneği kullanılarak ayarlanamaz. Daha fazla bilgi için bkz. [dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking).
@@ -42,7 +42,7 @@ Bu makalede, Azure portal ile [dinamik veri maskeleme](dynamic-data-masking-over
 
     ![Maske kuralı Yapılandırması Ekle sayfasını gösteren ekran görüntüsü.](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
 
-6. Maskeleme için belirlenen alanı tanımlamak için **Şemayı**, **tabloyu** ve **sütunu** seçin.
+6. Maskeleme için belirlenen alanı tanımlamak için **Şemayı** , **tabloyu** ve **sütunu** seçin.
 7. Gizli veri maskeleme kategorileri listesinden **maske oluşturmayı seçin** .
 
     ![Nasıl maske seçin bölümünün altında hassas veri maskeleme kategorilerini gösteren ekran görüntüsü.](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)
@@ -60,4 +60,4 @@ Bu makalede, Azure portal ile [dinamik veri maskeleme](dynamic-data-masking-over
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Dinamik veri maskeleme 'ye genel bakış için bkz. [dinamik veri maskeleme](dynamic-data-masking-overview.md).
-- Ayrıca, [Azure SQL veritabanı cmdlet 'lerini](https://docs.microsoft.com/powershell/module/az.sql/) veya [REST API](https://docs.microsoft.com/rest/api/sql/)kullanarak dinamik veri maskeleme uygulayabilirsiniz.
+- Ayrıca, [Azure SQL veritabanı cmdlet 'lerini](/powershell/module/az.sql/) veya [REST API](/rest/api/sql/)kullanarak dinamik veri maskeleme uygulayabilirsiniz.

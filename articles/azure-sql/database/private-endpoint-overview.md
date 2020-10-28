@@ -9,20 +9,20 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 088300d4b6f92886310315b67763536e39cbb019
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319478"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789531"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için Azure özel bağlantısı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Özel bağlantı, Azure 'daki çeşitli PaaS hizmetlerine **özel bir uç nokta**aracılığıyla bağlanmanızı sağlar. Özel bağlantı işlevselliğini destekleyen PaaS hizmetlerinin bir listesi için [özel bağlantı belgeleri](../../private-link/index.yml) sayfasına gidin. Özel uç nokta, belirli bir [sanal](../../virtual-network/virtual-networks-overview.md) ağ ve alt ağ içindeki özel bir IP adresidir.
+Özel bağlantı, Azure 'daki çeşitli PaaS hizmetlerine **özel bir uç nokta** aracılığıyla bağlanmanızı sağlar. Özel bağlantı işlevselliğini destekleyen PaaS hizmetlerinin bir listesi için [özel bağlantı belgeleri](../../private-link/index.yml) sayfasına gidin. Özel uç nokta, belirli bir [sanal](../../virtual-network/virtual-networks-overview.md) ağ ve alt ağ içindeki özel bir IP adresidir.
 
 > [!IMPORTANT]
-> Bu makale hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) için geçerlidir. Basitlik için, ' Database ' terimi, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te her iki veritabanına başvurur. Benzer şekilde, ' Server ' öğesine yapılan tüm başvurular, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i barındıran [MANTıKSAL SQL Server](logical-servers.md) 'a başvurmaktadır. Bu *Makale,* **Azure SQL yönetilen örneği**için geçerlidir.
+> Bu makale hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) için geçerlidir. Basitlik için, ' Database ' terimi, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te her iki veritabanına başvurur. Benzer şekilde, ' Server ' öğesine yapılan tüm başvurular, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i barındıran [MANTıKSAL SQL Server](logical-servers.md) 'a başvurmaktadır. Bu *Makale,* **Azure SQL yönetilen örneği** için geçerlidir.
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Azure SQL veritabanı için özel bağlantı ayarlama 
 
@@ -75,7 +75,7 @@ Bu senaryo için, Windows Server 2016 çalıştıran bir Azure sanal makinesi (V
 
 ### <a name="check-connectivity-using-telnet"></a>Telnet kullanarak bağlantıyı denetleme
 
-[Telnet Client](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29) , bağlantıyı test etmek için kullanılabilen bir Windows özelliğidir. Windows işletim sisteminin sürümüne bağlı olarak, bu özelliği açıkça etkinleştirmeniz gerekebilir. 
+[Telnet Client](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29) , bağlantıyı test etmek için kullanılabilen bir Windows özelliğidir. Windows işletim sisteminin sürümüne bağlı olarak, bu özelliği açıkça etkinleştirmeniz gerekebilir. 
 
 Telnet 'i yükledikten sonra bir komut Istemi penceresi açın. Telnet komutunu çalıştırın ve SQL veritabanı 'nda veritabanının IP adresini ve özel uç noktasını belirtin.
 
@@ -145,11 +145,11 @@ Azure SQL veritabanı 'nda veri ayıklama, veritabanı yöneticisi gibi yetkili 
 
 SQL veritabanı 'nda bir veritabanına bağlanan bir Azure sanal makinesi içinde SQL Server Management Studio (SSMS) çalıştıran bir kullanıcıya sahip bir senaryo düşünün. Bu veritabanı Batı ABD veri merkezinde. Aşağıdaki örnekte, ağ erişim denetimleri kullanılarak SQL veritabanı 'ndaki genel uç noktalarla erişimin nasıl sınırlandıralınacağını gösterilmektedir.
 
-1. Azure hizmetlerinin **kapalı**çalışmasına izin ver ayarını yaparak, genel uç nokta aracılığıyla SQL veritabanı 'Na tüm Azure hizmet trafiğini devre dışı bırakın. Sunucu ve veritabanı düzeyinde güvenlik duvarı kurallarında IP adresine izin verilmediğinden emin olun. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri](network-access-controls-overview.md).
+1. Azure hizmetlerinin **kapalı** çalışmasına izin ver ayarını yaparak, genel uç nokta aracılığıyla SQL veritabanı 'Na tüm Azure hizmet trafiğini devre dışı bırakın. Sunucu ve veritabanı düzeyinde güvenlik duvarı kurallarında IP adresine izin verilmediğinden emin olun. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri](network-access-controls-overview.md).
 1. Yalnızca VM 'nin özel IP adresini kullanarak SQL veritabanı 'ndaki veritabanına giden trafiğe izin verin. Daha fazla bilgi için [hizmet uç noktası](vnet-service-endpoint-rule-overview.md) ve [sanal ağ güvenlik duvarı kuralları](firewall-configure.md)makalesine bakın.
 1. Azure VM 'de, [ağ güvenlik grupları (NSG 'ler)](../../virtual-network/manage-network-security-group.md) ve hizmet etiketleri kullanarak giden bağlantı kapsamını aşağıda gösterildiği gibi daraltın
     - Hizmet etiketi = SQL için trafiğe izin veren bir NSG kuralı belirtin. WestUs-yalnızca Batı ABD SQL veritabanı 'na bağlantıya izin veriliyor
-    - Hizmet etiketi = SQL-tüm bölgelerde SQL veritabanı bağlantılarını reddetmek için bir NSG kuralı ( **daha yüksek önceliğe**sahip) belirtin
+    - Hizmet etiketi = SQL-tüm bölgelerde SQL veritabanı bağlantılarını reddetmek için bir NSG kuralı ( **daha yüksek önceliğe** sahip) belirtin
 
 Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki SQL veritabanındaki bir veritabanına bağlanabilir. Ancak, bağlantı SQL veritabanı 'ndaki tek bir veritabanıyla sınırlı değildir. VM, aboneliğin parçası olmayan veritabanları da dahil olmak üzere Batı ABD bölgesindeki herhangi bir veritabanına hala bağlanabilir. Yukarıdaki senaryodaki veri taşalım kapsamını belirli bir bölgeye azalttık, ancak bunu tamamen ortadan kaldırdık.
 

@@ -13,6 +13,7 @@
     - name: ExpressRoute bağlantı hattı oluşturma - CLI
       href: howto-circuit-cli.md
     - name: ExpressRoute bağlantı hattı oluşturma - ARM şablonu
+      displayName: Resource Manager
       href: quickstart-create-expressroute-vnet-template.md
   expanded: true
 - name: Öğreticiler

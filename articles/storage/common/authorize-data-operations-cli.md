@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 66815dac145c8c30b770e831a002f6a0ee093675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be5729320f27e38907c4de6844bf3126cf41747b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714573"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789667"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Azure CLı ile blob veya kuyruk verilerine erişim yetkisi verme seçeneğini belirleyin
 
@@ -43,7 +43,7 @@ Parametresini kullanmak için `--auth-mode` Azure CLI sürüm 2.0.46 veya üstü
 
 Azure CLı 'da Azure AD kimlik bilgileriyle oturum açtığınızda bir OAuth 2,0 erişim belirteci döndürülür. Bu belirteç, sonraki veri işlemlerini blob veya kuyruk depolamaya göre yetkilendirmek için Azure CLı tarafından otomatik olarak kullanılır. Desteklenen işlemler için artık komutuyla bir hesap anahtarını veya SAS belirtecini iletmeniz gerekmez.
 
-Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla Azure AD güvenlik sorumlusuna blob ve kuyruk verilerine izinler atayabilirsiniz. Azure depolama 'daki Azure rolleri hakkında daha fazla bilgi için bkz. Azure [RBAC Ile Azure depolama verilerine erişim haklarını yönetme](storage-auth-aad-rbac.md).
+Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla Azure AD güvenlik sorumlusuna blob ve kuyruk verilerine izinler atayabilirsiniz. Azure depolama 'daki Azure rolleri hakkında daha fazla bilgi için bkz. Azure [RBAC Ile Azure depolama verilerine erişim haklarını yönetme](./storage-auth-aad-rbac-portal.md).
 
 ### <a name="permissions-for-calling-data-operations"></a>Veri işlemlerini çağırma izinleri
 
@@ -55,7 +55,7 @@ Bir kapsayıcı veya kuyruktaki her bir Azure depolama işlemi için gereken izi
 
 Aşağıdaki örnekte Azure AD kimlik bilgilerinizi kullanarak Azure CLı 'dan nasıl kapsayıcı oluşturacağınız gösterilmektedir. Kapsayıcıyı oluşturmak için Azure CLı 'da oturum açmanız gerekir ve bir kaynak grubu ve bir depolama hesabı gerekir. Bu kaynakları oluşturma hakkında bilgi edinmek için bkz. [hızlı başlangıç: Azure CLI ile Blobları oluşturma, indirme ve listeleme](../blobs/storage-quickstart-blobs-cli.md).
 
-1. Kapsayıcıyı oluşturmadan önce, [Depolama Blobu veri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) rolünü kendinize atayın. Hesap sahibi olsanız bile, depolama hesabında veri işlemleri gerçekleştirmek için açık izinlere sahip olmanız gerekir. Azure rolleri atama hakkında daha fazla bilgi için bkz. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](storage-auth-aad-rbac.md).
+1. Kapsayıcıyı oluşturmadan önce, [Depolama Blobu veri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) rolünü kendinize atayın. Hesap sahibi olsanız bile, depolama hesabında veri işlemleri gerçekleştirmek için açık izinlere sahip olmanız gerekir. Azure rolleri atama hakkında daha fazla bilgi için bkz. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](./storage-auth-aad-rbac-portal.md).
 
     > [!IMPORTANT]
     > Azure rolü atamalarının yayılması birkaç dakika sürebilir.

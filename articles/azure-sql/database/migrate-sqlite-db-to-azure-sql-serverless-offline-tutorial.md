@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 6e60403344a0341b4aee74a001287c09ba67e114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448900"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790415"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>SQLite veritabanınızı Azure SQL veritabanı sunucusuz 'a geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,13 +53,13 @@ Aşağıdaki adımları izledikten sonra, veritabanınız Azure SQL veritabanı 
     - ADF (Azure portal hizmetten yazar ve Izleyici) başlatılıyor
     - Soldaki "yazar" sekmesine (mavi kurşun kalem) tıklayın
     - Bağlantılar ' a (alt sol), sonra tümleştirme çalışma zamanları
-    - Yeni Self-Hosted Integration Runtime ekleyin, bir ad verin, *seçenek 2*' yi seçin.
+    - Yeni Self-Hosted Integration Runtime ekleyin, bir ad verin, *seçenek 2* ' yi seçin.
 
 5. Data Factory kaynak SQLite veritabanı için yeni bir bağlı hizmet oluşturun.
 
     ![Azure Data Factory 'de boş bağlı hizmetler dikey penceresini gösteren ekran görüntüsü](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create.png)
 
-6. **Bağlantılar**' ın altında, **bağlantılı hizmet**altında **Yeni**' ye tıklayın.
+6. **Bağlantılar** ' ın altında, **bağlantılı hizmet** altında **Yeni** ' ye tıklayın.
 
 7. "ODBC" bağlayıcısını arayıp seçin
 
@@ -109,4 +109,4 @@ Aşağıdaki adımları izledikten sonra, veritabanınız Azure SQL veritabanı 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Başlamak için bkz. [hızlı başlangıç: Azure SQL veritabanı 'nda Azure Portal kullanarak tek bir veritabanı oluşturma](single-database-create-quickstart.md).
-- Kaynak sınırları için bkz. [sunucusuz işlem katmanı kaynak sınırları](../../sql-database/sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).
+- Kaynak sınırları için bkz. [sunucusuz işlem katmanı kaynak sınırları](./resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).

@@ -12,17 +12,17 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: d2ea14356bf85c795769f1d406f1571f36adaa38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31a47b9032ac014fa4eedde343d03d4fd343ff02
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617929"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790670"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde Gelişmiş tehdit koruması yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-[Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md) Için [Gelişmiş tehdit koruması](../database/threat-detection-overview.md) , veritabanları için olağandışı ve olası zararlı girişimleri gösteren anormal etkinlikleri algılar. Gelişmiş tehdit koruması, **OLASı SQL ekleme**, **olağan dışı konum veya veri merkezinden erişim**, **bilinmeyen bir sorumlu veya zararlı uygulamadan ERIŞIM**ve **deneme yanılma SQL kimlik bilgilerini** belirleyebilir. [Gelişmiş tehdit koruması uyarıları](../database/threat-detection-overview.md#alerts)hakkında daha fazla ayrıntı için bkz..
+[Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md) Için [Gelişmiş tehdit koruması](../database/threat-detection-overview.md) , veritabanları için olağandışı ve olası zararlı girişimleri gösteren anormal etkinlikleri algılar. Gelişmiş tehdit koruması, **OLASı SQL ekleme** , **olağan dışı konum veya veri merkezinden erişim** , **bilinmeyen bir sorumlu veya zararlı uygulamadan ERIŞIM** ve **deneme yanılma SQL kimlik bilgilerini** belirleyebilir. [Gelişmiş tehdit koruması uyarıları](../database/threat-detection-overview.md#alerts)hakkında daha fazla ayrıntı için bkz..
 
 Algılanan tehditler hakkında [e-posta bildirimleri](../database/threat-detection-overview.md#explore-detection-of-a-suspicious-event) veya [Azure Portal](../database/threat-detection-overview.md#explore-alerts-in-the-azure-portal) ile ilgili bildirimler alabilirsiniz
 
@@ -31,7 +31,7 @@ Algılanan tehditler hakkında [e-posta bildirimleri](../database/threat-detecti
 ##  <a name="azure-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com)oturum açın. 
-2. Korumak istediğiniz SQL yönetilen örneği örneğinin yapılandırma sayfasına gidin. **Güvenlik**altında **Güvenlik Merkezi**' ni seçin.
+2. Korumak istediğiniz SQL yönetilen örneği örneğinin yapılandırma sayfasına gidin. **Güvenlik** altında **Güvenlik Merkezi** ' ni seçin.
 3. SQL için Azure Defender yapılandırma sayfasında
    - SQL **için Azure Defender 'ı açın** .
    - Anormal veritabanı etkinliklerinin algılanması üzerine güvenlik uyarıları almak için **e-posta listesini** yapılandırın.
@@ -44,5 +44,5 @@ Algılanan tehditler hakkında [e-posta bildirimleri](../database/threat-detecti
 - [Gelişmiş tehdit koruması](../database/threat-detection-overview.md)hakkında daha fazla bilgi edinin.
 - Yönetilen örnekler hakkında bilgi edinin, bkz. [Azure SQL yönetilen örneği nedir](sql-managed-instance-paas-overview.md).
 - [Azure SQL veritabanı Için Gelişmiş tehdit koruması](../database/threat-detection-configure.md)hakkında daha fazla bilgi edinin.
-- [SQL yönetilen örnek denetimi](https://go.microsoft.com/fwlink/?linkid=869430)hakkında daha fazla bilgi edinin.
-- [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro)hakkında daha fazla bilgi edinin.
+- [SQL yönetilen örnek denetimi](./auditing-configure.md)hakkında daha fazla bilgi edinin.
+- [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)hakkında daha fazla bilgi edinin.

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3a715538afba181a067e4cecd8c1941a76ae36d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb55274800b239cf0e1e942647ae0c65b321b862
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298873"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790058"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Bir veya daha fazla Always on kullanılabilirlik grubu dinleyicisi yapılandırma-Kaynak Yöneticisi
 
@@ -30,7 +30,7 @@ Bu belgede aşağıdaki görevlerden birini yapmak için PowerShell 'in nasıl k
 
 Kullanılabilirlik grubu dinleyicisi, istemcilerin veritabanı erişimi için bağlanacağı bir sanal ağ adıdır. Azure sanal makinelerinde, yük dengeleyici dinleyicinin IP adresini tutar. Yük dengeleyici, trafiği araştırma bağlantı noktasında dinleme yapan SQL Server örneğine yönlendirir. Genellikle bir kullanılabilirlik grubu, iç yük dengeleyici kullanır. Bir Azure iç yük dengeleyici bir veya daha fazla IP adresini barındırabilirler. Her IP adresi belirli bir yoklama bağlantı noktası kullanır. 
 
-Bir iç yük dengeleyiciye birden çok IP adresi atama özelliği Azure 'da yenidir ve yalnızca Kaynak Yöneticisi modelinde kullanılabilir. Bu görevi gerçekleştirmek için, Kaynak Yöneticisi modelindeki Azure sanal makinelerinde dağıtılmış bir SQL Server kullanılabilirlik grubunuz olması gerekir. SQL Server sanal makinelerin her ikisi de aynı Kullanılabilirlik kümesine ait olmalıdır. Azure Resource Manager ' de kullanılabilirlik grubunu otomatik olarak oluşturmak için [Microsoft şablonunu](availability-group-azure-marketplace-template-configure.md) kullanabilirsiniz. Bu şablon, sizin için iç yük dengeleyici dahil olmak üzere kullanılabilirlik grubunu otomatik olarak oluşturur. İsterseniz, [her zaman açık kullanılabilirlik grubunu el ile yapılandırabilirsiniz](availability-group-manually-configure-tutorial.md).
+Bir iç yük dengeleyiciye birden çok IP adresi atama özelliği Azure 'da yenidir ve yalnızca Kaynak Yöneticisi modelinde kullanılabilir. Bu görevi gerçekleştirmek için, Kaynak Yöneticisi modelindeki Azure sanal makinelerinde dağıtılmış bir SQL Server kullanılabilirlik grubunuz olması gerekir. SQL Server sanal makinelerin her ikisi de aynı Kullanılabilirlik kümesine ait olmalıdır. Azure Resource Manager ' de kullanılabilirlik grubunu otomatik olarak oluşturmak için [Microsoft şablonunu](./availability-group-quickstart-template-configure.md) kullanabilirsiniz. Bu şablon, sizin için iç yük dengeleyici dahil olmak üzere kullanılabilirlik grubunu otomatik olarak oluşturur. İsterseniz, [her zaman açık kullanılabilirlik grubunu el ile yapılandırabilirsiniz](availability-group-manually-configure-tutorial.md).
 
 Bu makaledeki adımları tamamlayabilmeniz için kullanılabilirlik gruplarının zaten yapılandırılmış olması gerekir.  
 
@@ -49,11 +49,11 @@ Bu makaledeki örneklerde Azure PowerShell Module sürümü 5.4.1 kullanılarak 
 
 PowerShell modülünüzün 5.4.1 veya üzeri olduğunu doğrulayın.
 
-Bkz. [Azure PowerShell modülünü Install](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps).
 
 ## <a name="configure-the-windows-firewall"></a>Windows güvenlik duvarını yapılandırma
 
-Windows güvenlik duvarını SQL Server erişimine izin verecek şekilde yapılandırın. Güvenlik duvarı kuralları SQL Server örneği ve dinleyici araştırması tarafından kullanılan bağlantı noktalarına TCP bağlantılarına izin verir. Ayrıntılı yönergeler için bkz. [veritabanı altyapısı erişimi için bir Windows Güvenlik Duvarı yapılandırma](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). SQL Server bağlantı noktası ve yoklama bağlantı noktası için bir gelen kuralı oluşturun.
+Windows güvenlik duvarını SQL Server erişimine izin verecek şekilde yapılandırın. Güvenlik duvarı kuralları SQL Server örneği ve dinleyici araştırması tarafından kullanılan bağlantı noktalarına TCP bağlantılarına izin verir. Ayrıntılı yönergeler için bkz. [veritabanı altyapısı erişimi için bir Windows Güvenlik Duvarı yapılandırma](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access#Anchor_1). SQL Server bağlantı noktası ve yoklama bağlantı noktası için bir gelen kuralı oluşturun.
 
 Azure ağ güvenlik grubuyla erişimi kısıtladığınız takdirde, izin ver kurallarının arka uç SQL Server VM IP adreslerini ve ağ dinleyicisi için yük dengeleyici kayan IP adreslerini ve varsa küme çekirdek IP adresini içerdiğinden emin olun.
 
@@ -61,10 +61,10 @@ Azure ağ güvenlik grubuyla erişimi kısıtladığınız takdirde, izin ver ku
 
 [Azure yük dengeleyici](../../../load-balancer/load-balancer-overview.md) iki SKU 'da kullanılabilir: temel & standart. Standart yük dengeleyici önerilir. Sanal makineler bir kullanılabilirlik kümesinde ise, temel yük dengeleyiciye izin verilir. Sanal makineler bir kullanılabilirlik bölgeindeyse standart yük dengeleyici gereklidir. Standart yük dengeleyici, tüm VM IP adreslerinin standart IP adreslerini kullanmasını gerektirir.
 
-Bir kullanılabilirlik grubu için geçerli [Microsoft şablonu](availability-group-azure-marketplace-template-configure.md) , temel IP adresleriyle temel bir yük dengeleyici kullanır.
+Bir kullanılabilirlik grubu için geçerli [Microsoft şablonu](./availability-group-quickstart-template-configure.md) , temel IP adresleriyle temel bir yük dengeleyici kullanır.
 
    > [!NOTE]
-   > Bulut tanığı için standart yük dengeleyici ve Azure Storage kullanıyorsanız, bir [hizmet uç noktası](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) yapılandırmanız gerekir. 
+   > Bulut tanığı için standart yük dengeleyici ve Azure Storage kullanıyorsanız, bir [hizmet uç noktası](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network) yapılandırmanız gerekir. 
    > 
 
 Bu makaledeki örneklerde standart yük dengeleyici verilmiştir. Örneklerde, komut dosyası içerir `-sku Standard` .
@@ -82,7 +82,7 @@ $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Örnek betik: PowerShell ile iç yük dengeleyici oluşturma
 
 > [!NOTE]
-> Kullanılabilirlik grubunuzu [Microsoft şablonuyla](availability-group-azure-marketplace-template-configure.md)oluşturduysanız, iç yük dengeleyici zaten oluşturulmuştur.
+> Kullanılabilirlik grubunuzu [Microsoft şablonuyla](./availability-group-quickstart-template-configure.md)oluşturduysanız, iç yük dengeleyici zaten oluşturulmuştur.
 
 Aşağıdaki PowerShell betiği, bir iç yük dengeleyici oluşturur, Yük Dengeleme kurallarını yapılandırır ve yük dengeleyici için bir IP adresi ayarlar. Betiği çalıştırmak için Windows PowerShell ISE açın ve betiği Betik bölmesine yapıştırın. `Connect-AzAccount`PowerShell 'de oturum açmak için kullanın. Birden çok Azure aboneliğiniz varsa, `Select-AzSubscription` aboneliği ayarlamak için kullanın. 
 
@@ -144,7 +144,7 @@ Birden fazla kullanılabilirlik grubu kullanmak için yük dengeleyicisine ek bi
 > SQL Server kullanılabilirlik grupları için, her IP adresi için belirli bir yoklama bağlantı noktası gerekir. Örneğin, bir yük dengeleyicideki bir IP adresi araştırma bağlantı noktası 59999 ' i kullanıyorsa, bu yük dengeleyicide başka IP adresleri araştırma bağlantı noktası 59999 ' i kullanabilir.
 
 * Yük dengeleyici sınırları hakkında daha fazla bilgi için bkz. [ağ sınırları](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)altında **yük dengeleyici başına özel ön uç IP 'si** Azure Resource Manager.
-* Kullanılabilirlik grubu sınırları hakkında daha fazla bilgi için bkz. [kısıtlamalar (kullanılabilirlik grupları)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
+* Kullanılabilirlik grubu sınırları hakkında daha fazla bilgi için bkz. [kısıtlamalar (kullanılabilirlik grupları)](/sql/database-engine/availability-groups/windows/prereqs-restrictions-recommendations-always-on-availability#RestrictionsAG).
 
 Aşağıdaki betik var olan bir yük dengeleyiciye yeni bir IP adresi ekler. ILB, Yük Dengeleme ön uç bağlantı noktası için dinleyici bağlantı noktasını kullanır. Bu bağlantı noktası SQL Server dinlediği bağlantı noktası olabilir. SQL Server varsayılan örnekleri için bağlantı noktası 1433 ' dir. Bir kullanılabilirlik grubunun Yük Dengeleme kuralı, bir kayan IP (doğrudan sunucu dönüşü) gerektirir, bu nedenle arka uç bağlantı noktası ön uç bağlantı noktasıyla aynı olur. Ortamınızın değişkenlerini güncelleştirin. 
 
@@ -195,11 +195,11 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. SQL Server Management Studio başlatın ve birincil çoğaltmaya bağlanın.
 
-1. **AlwaysOn yüksek kullanılabilirlik**  >  **kullanılabilirlik grupları**  >  **kullanılabilirlik grubu dinleyicileri**' ne gidin. 
+1. **AlwaysOn yüksek kullanılabilirlik**  >  **kullanılabilirlik grupları**  >  **kullanılabilirlik grubu dinleyicileri** ' ne gidin. 
 
-1. Artık Yük Devretme Kümesi Yöneticisi oluşturduğunuz dinleyici adını görmeniz gerekir. Dinleyici adına sağ tıklayın ve **Özellikler**' i seçin.
+1. Artık Yük Devretme Kümesi Yöneticisi oluşturduğunuz dinleyici adını görmeniz gerekir. Dinleyici adına sağ tıklayın ve **Özellikler** ' i seçin.
 
-1. **Bağlantı noktası** kutusunda, daha önce kullandığınız $EndpointPort kullanarak kullanılabilirlik grubu dinleyicisinin bağlantı noktası numarasını belirtin (1433 varsayılandır) ve ardından **Tamam**' ı seçin.
+1. **Bağlantı noktası** kutusunda, daha önce kullandığınız $EndpointPort kullanarak kullanılabilirlik grubu dinleyicisinin bağlantı noktası numarasını belirtin (1433 varsayılandır) ve ardından **Tamam** ' ı seçin.
 
 ## <a name="test-the-connection-to-the-listener"></a>Dinleyiciyle bağlantıyı test etme
 
@@ -222,7 +222,7 @@ Bağlantıyı test etmek için:
 SQLCMD bağlantısı, birincil çoğaltmayı barındıran SQL Server her örneğine otomatik olarak bağlanır. 
 
 > [!NOTE]
-> Belirttiğiniz bağlantı noktasının her iki SQL Server güvenlik duvarında açık olduğundan emin olun. Her iki sunucu da kullandığınız TCP bağlantı noktası için bir gelen kuralı gerektirir. Daha fazla bilgi için bkz. [güvenlik duvarı kuralı ekleme veya düzenleme](https://technet.microsoft.com/library/cc753558.aspx). 
+> Belirttiğiniz bağlantı noktasının her iki SQL Server güvenlik duvarında açık olduğundan emin olun. Her iki sunucu da kullandığınız TCP bağlantı noktası için bir gelen kuralı gerektirir. Daha fazla bilgi için bkz. [güvenlik duvarı kuralı ekleme veya düzenleme](/previous-versions/orphan-topics/ws.11/cc753558(v=ws.11)). 
 > 
 
 ## <a name="guidelines-and-limitations"></a>Yönergeler ve sınırlamalar
@@ -236,7 +236,7 @@ SQLCMD bağlantısı, birincil çoğaltmayı barındıran SQL Server her örneğ
   - AG dinleyicisi için yük dengeleyici kayan IP adresleri
   - Varsa, küme çekirdek IP adresi.
 
-* Bulut tanığı için Azure depolama ile standart yük dengeleyici kullanırken bir hizmet uç noktası oluşturun. Daha fazla bilgi için bkz. [sanal ağdan erişim verme](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
+* Bulut tanığı için Azure depolama ile standart yük dengeleyici kullanırken bir hizmet uç noktası oluşturun. Daha fazla bilgi için bkz. [sanal ağdan erişim verme](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network).
 
 ## <a name="for-more-information"></a>Daha fazla bilgi edinmek için
 
@@ -246,9 +246,9 @@ Daha fazla bilgi için bkz. [Azure VM 'de Always on kullanılabilirlik grubunu e
 
 Azure sanal makineleri için bir iç yük dengeleyici oluşturmak için aşağıdaki PowerShell cmdlet 'lerini kullanın.
 
-* [New-AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) bir yük dengeleyici oluşturur. 
-* [New-Azloadbalancerfrontendıpconfig](https://msdn.microsoft.com/library/mt603510.aspx) , yük dengeleyici için bir ön uç IP yapılandırması oluşturur. 
-* [New-AzLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) , bir yük dengeleyici için bir kural yapılandırması oluşturur. 
-* [New-Azloadbalancerbackendadddresspoolconfig](https://msdn.microsoft.com/library/mt603791.aspx) , bir yük dengeleyici için arka uç adres havuzu yapılandırması oluşturur. 
-* [New-AzLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) , yük dengeleyici için bir araştırma yapılandırması oluşturur.
-* [Remove-AzLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) bir Azure Kaynak grubundaki yük dengeleyiciyi kaldırır.
+* [New-AzLoadBalancer](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancer) bir yük dengeleyici oluşturur. 
+* [New-Azloadbalancerfrontendıpconfig](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancerFrontendIpConfig) , yük dengeleyici için bir ön uç IP yapılandırması oluşturur. 
+* [New-AzLoadBalancerRuleConfig](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancerRuleConfig) , bir yük dengeleyici için bir kural yapılandırması oluşturur. 
+* [New-Azloadbalancerbackendadddresspoolconfig](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancerBackendAddressPoolConfig) , bir yük dengeleyici için arka uç adres havuzu yapılandırması oluşturur. 
+* [New-AzLoadBalancerProbeConfig](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancerProbeConfig) , yük dengeleyici için bir araştırma yapılandırması oluşturur.
+* [Remove-AzLoadBalancer](/powershell/module/Azurerm.Network/Remove-AzureRmLoadBalancer) bir Azure Kaynak grubundaki yük dengeleyiciyi kaldırır.

@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 552b3f55632e817cc4669ce5da41b1e127c7d808
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283879"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788630"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Öğretici: Azure AD Server sorumlularını (oturum açma) kullanarak Azure SQL yönetilen örneği 'nde güvenlik
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ Azure SQL yönetilen örneği, en son SQL Server (Enterprise Edition) veritaban�
 - Rol tabanlı Üyelikler ve izinlerle yetkilendirmeyi kullanma
 - Güvenlik özelliklerini etkinleştir
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -41,7 +41,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Daha fazla bilgi edinmek için bkz. [Azure SQL yönetilen örneğine genel bakış](sql-managed-instance-paas-overview.md). 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
@@ -74,7 +74,7 @@ SQL yönetilen örneğine bağlanma örnekleri için aşağıdaki makalelere bak
 
 1. `sysadmin` [SQL Server Management Studio](point-to-site-p2s-configure.md#connect-with-ssms)kullanarak, SQL yönetilen örneği Için BIR veya Azure AD yöneticisi olan standart bir SQL oturum açma HESABı (Azure AD) kullanarak yönetilen örneğiniz üzerinde oturum açın.
 
-2. **Nesne Gezgini**, sunucuya sağ tıklayın ve **Yeni sorgu**' yı seçin.
+2. **Nesne Gezgini** , sunucuya sağ tıklayın ve **Yeni sorgu** ' yı seçin.
 
 3. Sorgu penceresinde, yerel bir Azure AD hesabı için oturum açma oluşturmak üzere aşağıdaki sözdizimini kullanın:
 
@@ -120,14 +120,14 @@ Diğer Azure AD sunucu sorumlularını (oturum açma) oluşturmak için, SQL Ser
 
 - Yeni oluşturulan Azure AD sunucu sorumlusuna (oturum açma) diğer Azure AD kullanıcıları, grupları veya uygulamaları için başka oturumlar oluşturma olanağı sağlamak için, oturum açma `sysadmin` veya sunucu rolüne izin verin `securityadmin` .
 - Diğer Azure AD Server sorumlularını (oturum açma) oluşturmak için, en azından Azure AD sunucu sorumlusuna (oturum açma) **herhangi BIR oturum açma** izninin verilmesi gerekir.
-- Varsayılan olarak, ana sunucuda yeni oluşturulan Azure AD Server sorumlularına (oturum açma) verilen standart izin: **SQL 'e bağlanın** ve **herhangi bir veritabanını görüntüleyin**.
+- Varsayılan olarak, ana sunucuda yeni oluşturulan Azure AD Server sorumlularına (oturum açma) verilen standart izin: **SQL 'e bağlanın** ve **herhangi bir veritabanını görüntüleyin** .
 - `sysadmin`Sunucu rolü, yönetilen bir örnek içinde çok sayıda Azure AD Server sorumlularına (oturum açma) verilebilir.
 
 Oturumu `sysadmin` sunucu rolüne eklemek için:
 
 1. Yönetilen örnek içinde yeniden oturum açın veya mevcut bağlantıyı Azure AD yöneticisi veya olan SQL sorumlusu ile kullanın `sysadmin` .
 
-1. **Nesne Gezgini**, sunucuya sağ tıklayın ve **Yeni sorgu**' yı seçin.
+1. **Nesne Gezgini** , sunucuya sağ tıklayın ve **Yeni sorgu** ' yı seçin.
 
 1. `sysadmin`Aşağıdaki T-SQL söz dizimini kullanarak sunucu rolüne Azure ad sunucusu sorumlusu (oturum açma) verin:
 
@@ -145,7 +145,7 @@ Oturumu `sysadmin` sunucu rolüne eklemek için:
 
 ## <a name="create-additional-azure-ad-server-principals-logins-using-ssms"></a>SSMS kullanarak ek Azure AD sunucu sorumluları (oturum açma) oluşturma
 
-Azure AD Server sorumlusu (oturum açma) oluşturulduktan ve ayrıcalıklarla sağlandıktan sonra `sysadmin` , bu oturum açma, **oturum oluştur**Ile **From dış sağlayıcı** yan tümcesini kullanarak ek oturum açma işlemleri oluşturabilir.
+Azure AD Server sorumlusu (oturum açma) oluşturulduktan ve ayrıcalıklarla sağlandıktan sonra `sysadmin` , bu oturum açma, **oturum oluştur** Ile **From dış sağlayıcı** yan tümcesini kullanarak ek oturum açma işlemleri oluşturabilir.
 
 1. SQL Server Management Studio kullanarak, Azure AD sunucusu sorumlusu (oturum açma) ile yönetilen örneğe bağlanın. SQL yönetilen örnek ana bilgisayar adınızı girin. SSMS 'de kimlik doğrulaması için bir Azure AD hesabıyla oturum açarken seçebileceğiniz üç seçenek vardır:
 
@@ -157,11 +157,11 @@ Azure AD Server sorumlusu (oturum açma) oluşturulduktan ve ayrıcalıklarla sa
 
      Daha fazla bilgi için bkz. [evrensel kimlik doğrulaması (Multi-Factor Authentication IÇIN SSMS desteği)](../database/authentication-mfa-ssms-overview.md).
 
-1. **MFA desteğiyle Active Directory-Universal**' i seçin. Bu, Multi-Factor Authentication bir oturum açma penceresi getirir. Azure AD parolanızla oturum açın.
+1. **MFA desteğiyle Active Directory-Universal** ' i seçin. Bu, Multi-Factor Authentication bir oturum açma penceresi getirir. Azure AD parolanızla oturum açın.
 
     ![Parola gir alanında imleç ile Multi-Factor Authentication oturum açma penceresinin ekran görüntüsü.](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
-1. SSMS **Nesne Gezgini**, sunucuya sağ tıklayın ve **Yeni sorgu**' yı seçin.
+1. SSMS **Nesne Gezgini** , sunucuya sağ tıklayın ve **Yeni sorgu** ' yı seçin.
 1. Sorgu penceresinde, başka bir Azure AD hesabı için oturum açma oluşturmak üzere aşağıdaki sözdizimini kullanın:
 
     ```sql
@@ -183,8 +183,8 @@ Azure AD Server sorumlusu (oturum açma) oluşturulduktan ve ayrıcalıklarla sa
     ```
 
 1. [Veritabanı oluştur](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) sözdizimini kullanarak yönetilen örnekte bir veritabanı oluşturun. Bu veritabanı, sonraki bölümde kullanıcı oturumlarını test etmek için kullanılacaktır.
-    1. **Nesne Gezgini**, sunucuya sağ tıklayın ve **Yeni sorgu**' yı seçin.
-    1. Sorgu penceresinde, **Mymitestdb**adlı bir veritabanı oluşturmak için aşağıdaki sözdizimini kullanın.
+    1. **Nesne Gezgini** , sunucuya sağ tıklayın ve **Yeni sorgu** ' yı seçin.
+    1. Sorgu penceresinde, **Mymitestdb** adlı bir veritabanı oluşturmak için aşağıdaki sözdizimini kullanın.
 
         ```sql
         CREATE DATABASE MyMITestDB;
@@ -205,7 +205,7 @@ Azure AD Server sorumlusu (oturum açma) oluşturulduktan ve ayrıcalıklarla sa
     ```
 
 1. Test olarak, yönetilen örnekte yeni oluşturulan oturum açma veya grupla oturum açın. Yönetilen örneğe yeni bir bağlantı açın ve kimlik doğrulaması sırasında yeni oturum açma bilgilerini kullanın.
-1. **Nesne Gezgini**, sunucuya sağ tıklayın ve yeni bağlantı Için **Yeni sorgu** ' yı seçin.
+1. **Nesne Gezgini** , sunucuya sağ tıklayın ve yeni bağlantı Için **Yeni sorgu** ' yı seçin.
 1. Aşağıdaki komutu yürüterek yeni oluşturulan Azure AD sunucusu sorumlusu (oturum açma) için sunucu izinlerini denetleyin:
 
       ```sql
@@ -220,7 +220,7 @@ Azure AD Server sorumlusu (oturum açma) oluşturulduktan ve ayrıcalıklarla sa
 
 Tek tek veritabanlarına yönelik yetkilendirmeler, SQL yönetilen örneğinde SQL Server veritabanlarında olduğu gibi aynı şekilde çalışmaktadır. Bir Kullanıcı, veritabanında var olan bir oturum açma işleminden oluşturulabilir ve bu veritabanı üzerindeki izinlerle veya bir veritabanı rolüne eklenebilir.
 
-Artık **Mymitestdb**adlı bir veritabanı oluşturduğumuz ve yalnızca varsayılan izinlere sahip olan bir oturum açma işlemi, sonraki adım bu oturum açma işleminden bir Kullanıcı oluşturmaktır. Şu anda, oturum açma yönetilen örneğe bağlanabilir ve tüm veritabanlarını görebilir, ancak veritabanlarıyla etkileşim kurabilir. Varsayılan izinleri olan Azure AD hesabıyla oturum açarsanız ve yeni oluşturulan veritabanını genişletmeyi denerseniz, aşağıdaki hatayı görürsünüz:
+Artık **Mymitestdb** adlı bir veritabanı oluşturduğumuz ve yalnızca varsayılan izinlere sahip olan bir oturum açma işlemi, sonraki adım bu oturum açma işleminden bir Kullanıcı oluşturmaktır. Şu anda, oturum açma yönetilen örneğe bağlanabilir ve tüm veritabanlarını görebilir, ancak veritabanlarıyla etkileşim kurabilir. Varsayılan izinleri olan Azure AD hesabıyla oturum açarsanız ve yeni oluşturulan veritabanını genişletmeyi denerseniz, aşağıdaki hatayı görürsünüz:
 
 ![S S M Nesne Gezgini, "MyMITestDB veritabanı erişilebilir değil ' i okuyan bir hata iletisinin ekran görüntüsü. (Objecbir) ".](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
@@ -229,7 +229,7 @@ Veritabanı izinleri verme hakkında daha fazla bilgi için bkz. [veritabanı al
 ### <a name="create-an-azure-ad-user-and-create-a-sample-table"></a>Azure AD kullanıcısı oluşturma ve örnek tablo oluşturma
 
 1. SQL Server Management Studio kullanarak bir hesabı kullanarak yönetilen örnekte oturum açın `sysadmin` .
-1. **Nesne Gezgini**, sunucuya sağ tıklayın ve **Yeni sorgu**' yı seçin.
+1. **Nesne Gezgini** , sunucuya sağ tıklayın ve **Yeni sorgu** ' yı seçin.
 1. Sorgu penceresinde, bir Azure AD sunucusu sorumlusundan (oturum açma) bir Azure AD kullanıcısı oluşturmak için aşağıdaki sözdizimini kullanın:
 
     ```sql
@@ -262,7 +262,7 @@ Veritabanı izinleri verme hakkında daha fazla bilgi için bkz. [veritabanı al
     *Mygroup* 'a ait olan tüm kullanıcılar **Mymitestdb** veritabanına erişebilir.
 
     > [!IMPORTANT]
-    > Bir Azure AD sunucu sorumlusu 'ndan (oturum açma) bir **Kullanıcı** oluştururken, user_name **oturum açma**işleminden aynı login_name olarak belirtin.
+    > Bir Azure AD sunucu sorumlusu 'ndan (oturum açma) bir **Kullanıcı** oluştururken, user_name **oturum açma** işleminden aynı login_name olarak belirtin.
 
     Daha fazla bilgi için bkz. [Kullanıcı oluşturma](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current).
 
@@ -295,7 +295,7 @@ Kullanıcının veritabanındaki verileri görmesini sağlamak için kullanıcı
 
 1. SQL Server Management Studio kullanarak bir hesabı kullanarak yönetilen örnekte oturum açın `sysadmin` .
 
-1. **Nesne Gezgini**, sunucuya sağ tıklayın ve **Yeni sorgu**' yı seçin.
+1. **Nesne Gezgini** , sunucuya sağ tıklayın ve **Yeni sorgu** ' yı seçin.
 
 1. `db_datareader`Aşağıdaki T-SQL söz dizimini kullanarak Azure AD kullanıcısına veritabanı rolü verin:
 
@@ -347,7 +347,7 @@ SQL yönetilen örneği, Azure AD sunucu düzeyi sorumlularının (oturum açma)
 
 1. SQL Server Management Studio kullanarak bir hesabı kullanarak yönetilen örnekte oturum açın `sysadmin` .
 
-1. **Nesne Gezgini**, sunucuya sağ tıklayın ve **Yeni sorgu**' yı seçin.
+1. **Nesne Gezgini** , sunucuya sağ tıklayın ve **Yeni sorgu** ' yı seçin.
 
 1. Sorgu penceresinde, yeni bir saklı yordam oluşturmak için aşağıdaki komutu kullanın:
 
@@ -361,7 +361,7 @@ SQL yönetilen örneği, Azure AD sunucu düzeyi sorumlularının (oturum açma)
     GO
     ```
 
-1. Saklı yordamı yürütürken taklit ettiğiniz kullanıcının **bob \@ aadsqlmi.net**olduğunu görmek için aşağıdaki komutu kullanın.
+1. Saklı yordamı yürütürken taklit ettiğiniz kullanıcının **bob \@ aadsqlmi.net** olduğunu görmek için aşağıdaki komutu kullanın.
 
     ```sql
     Exec dbo.usp_Demo
@@ -388,8 +388,8 @@ SQL yönetilen örneği, Azure AD sunucu düzeyi sorumlularının (oturum açma)
 Azure AD Server sorumlularını (oturum açmalar) içeren Azure AD hesapları için çapraz veritabanı sorguları desteklenir. Bir Azure AD grubuyla veritabanları arası sorguyu test etmek için başka bir veritabanı ve tablo oluşturmanız gerekir. Zaten varsa başka bir veritabanı ve tablo oluşturmayı atlayabilirsiniz.
 
 1. SQL Server Management Studio kullanarak bir hesabı kullanarak yönetilen örnekte oturum açın `sysadmin` .
-1. **Nesne Gezgini**, sunucuya sağ tıklayın ve **Yeni sorgu**' yı seçin.
-1. Sorgu penceresinde, **MyMITestDB2** adlı bir veritabanı ve **TestTable2**adlı tablo oluşturmak için aşağıdaki komutu kullanın:
+1. **Nesne Gezgini** , sunucuya sağ tıklayın ve **Yeni sorgu** ' yı seçin.
+1. Sorgu penceresinde, **MyMITestDB2** adlı bir veritabanı ve **TestTable2** adlı tablo oluşturmak için aşağıdaki komutu kullanın:
 
     ```sql
     CREATE DATABASE MyMITestDB2;
@@ -405,7 +405,7 @@ Azure AD Server sorumlularını (oturum açmalar) içeren Azure AD hesapları i�
     );
     ```
 
-1. Yeni bir sorgu penceresinde, yeni veritabanı **MyMITestDB2**Kullanıcı _grubunu_ oluşturmak için aşağıdaki komutu yürütün ve bu VERITABANıNDA _mygroup_'a SELECT izinleri verin:
+1. Yeni bir sorgu penceresinde, yeni veritabanı **MyMITestDB2** Kullanıcı _grubunu_ oluşturmak için aşağıdaki komutu yürütün ve bu VERITABANıNDA _mygroup_ 'a SELECT izinleri verin:
 
     ```sql
     USE MyMITestDB2
@@ -416,7 +416,7 @@ Azure AD Server sorumlularını (oturum açmalar) içeren Azure AD hesapları i�
     GO
     ```
 
-1. Azure AD grubu _mygroup_'un bir üyesi olarak SQL Server Management Studio kullanarak yönetilen örnekte oturum açın. Yeni bir sorgu penceresi açın ve veritabanları arası SELECT ifadesini yürütün:
+1. Azure AD grubu _mygroup_ 'un bir üyesi olarak SQL Server Management Studio kullanarak yönetilen örnekte oturum açın. Yeni bir sorgu penceresi açın ve veritabanları arası SELECT ifadesini yürütün:
 
     ```sql
     USE MyMITestDB
@@ -424,7 +424,7 @@ Azure AD Server sorumlularını (oturum açmalar) içeren Azure AD hesapları i�
     GO
     ```
 
-    **TestTable2**'deki tablo sonuçlarını görmeniz gerekir.
+    **TestTable2** 'deki tablo sonuçlarını görmeniz gerekir.
 
 ## <a name="additional-supported-scenarios"></a>Desteklenen ek senaryolar
 
@@ -447,7 +447,7 @@ Veritabanınızı güvenli hale getirmeye yönelik yolların kapsamlı bir liste
 - [Tehdit algılama](threat-detection-configure.md)
 - [Dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking)
 - [Satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security)
-- [Saydam veri şifrelemesi (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
+- [Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>SQL yönetilen örnek özellikleri
 

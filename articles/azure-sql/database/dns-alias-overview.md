@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: d208a9b9f8e1cc16e2c72aa825a2daf88ad00176
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4be3f8c6cd416743c2d1118cf2de01073c3022ff
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86145657"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790500"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL veritabanı için DNS diğer adı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -60,7 +60,7 @@ Aşağıdaki özellikler, sunucunuzun her bir DNS diğer adı için geçerlidir:
 - *Sunucu gereklidir:* Bir DNS diğer adı, tam olarak bir sunucuya başvurmadığı ve sunucu zaten var olmalıdır. Güncelleştirilmiş bir diğer ad, her zaman tam olarak bir mevcut sunucuya başvurmalıdır.
   - Bir sunucuyu bıraktığınızda, Azure sistemi sunucuya başvuran tüm DNS diğer adlarını da bırakır.
 - *Hiçbir bölgeye bağlanmadı:* DNS diğer adları bir bölgeye bağlanmamış. Herhangi bir DNS diğer adı, herhangi bir coğrafi bölgede yer alan bir sunucuya başvuracak şekilde güncelleştirilemeyebilir.
-  - Ancak diğer bir sunucuya başvuracak bir diğer ad güncelleştirilirken her iki sunucu da aynı Azure *aboneliğinde*bulunmalıdır.
+  - Ancak diğer bir sunucuya başvuracak bir diğer ad güncelleştirilirken her iki sunucu da aynı Azure *aboneliğinde* bulunmalıdır.
 - *İzinler:* Bir DNS diğer adını yönetmek için, kullanıcının *sunucu katılımcısı* izinlerinin veya daha yüksek olması gerekir. Daha fazla bilgi için [Azure portal Role-Based Access Control kullanmaya başlama](../../role-based-access-control/overview.md)bölümüne bakın.
 
 ## <a name="manage-your-dns-aliases"></a>DNS diğer adlarınızı yönetin
@@ -71,7 +71,7 @@ Hem REST API 'Leri hem de PowerShell cmdlet 'leri, DNS diğer adlarını program
 
 REST API 'Leri için belgeler aşağıdaki Web konumlarına yakın bir yerde mevcuttur:
 
-- [Azure SQL veritabanı REST API](https://docs.microsoft.com/rest/api/sql/)
+- [Azure SQL veritabanı REST API](/rest/api/sql/)
 
 Ayrıca REST API 'Leri GitHub ' da görülebilir:
 
@@ -83,7 +83,7 @@ Ayrıca REST API 'Leri GitHub ' da görülebilir:
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Resource Manager modülü hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
 REST API 'leri çağıran PowerShell cmdlet 'leri kullanılabilir.
 
@@ -93,10 +93,10 @@ DNS diğer adlarını yönetmek için kullanılan PowerShell cmdlet 'lerinin kod
 
 Kod örneğinde kullanılan cmdlet 'ler şunlardır:
 
-- [New-Azsqlserverdnsalıas](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Azure SQL veritabanı hizmet sisteminde yenı bir DNS diğer adı oluşturur. Diğer ad sunucu 1 ' e başvurur.
-- [Get-Azsqlserverdnsalıas](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): sunucu 1 ' e atanan tüm DNS diğer adlarını alın ve listeleyin.
-- [Set-Azsqlserverdnsalıas](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): diğer adın, sunucu 1 ' den sunucu 2 ' ye başvuracak şekilde yapılandırıldığı sunucu adını değiştirir.
-- [Remove-Azsqlserverdnsalıas](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): DNS diğer adını sunucu 2 ' den diğer ad adını kullanarak kaldırın.
+- [New-Azsqlserverdnsalıas](/powershell/module/az.Sql/New-azSqlServerDnsAlias): Azure SQL veritabanı hizmet sisteminde yenı bir DNS diğer adı oluşturur. Diğer ad sunucu 1 ' e başvurur.
+- [Get-Azsqlserverdnsalıas](/powershell/module/az.Sql/Get-azSqlServerDnsAlias): sunucu 1 ' e atanan tüm DNS diğer adlarını alın ve listeleyin.
+- [Set-Azsqlserverdnsalıas](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): diğer adın, sunucu 1 ' den sunucu 2 ' ye başvuracak şekilde yapılandırıldığı sunucu adını değiştirir.
+- [Remove-Azsqlserverdnsalıas](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): DNS diğer adını sunucu 2 ' den diğer ad adını kullanarak kaldırın.
 
 ## <a name="limitations-during-preview"></a>Önizleme sırasında sınırlamalar
 
@@ -104,7 +104,7 @@ Kod örneğinde kullanılan cmdlet 'ler şunlardır:
 
 - *2 dakikaya kadar gecikme:* Bir DNS diğer adının güncellenmesi veya kaldırılması 2 dakikaya kadar sürer.
   - Kısa bir gecikmeden bağımsız olarak, diğer ad eski sunucuya yönelik istemci bağlantılarını hemen sonlandırır.
-- *DNS araması:* Şimdilik, belirli bir DNS diğer adının ne olduğunu kontrol etmenin tek yetkili yolu, [DNS araması](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup)gerçekleştirmektedir.
+- *DNS araması:* Şimdilik, belirli bir DNS diğer adının ne olduğunu kontrol etmenin tek yetkili yolu, [DNS araması](/windows-server/administration/windows-commands/nslookup)gerçekleştirmektedir.
 - _Tablo denetimi desteklenmiyor:_ Bir veritabanında *tablo denetimi* etkinleştirilmiş BIR sunucuda DNS diğer adı kullanamazsınız.
   - Tablo denetimi kullanım dışıdır.
   - [BLOB denetimine](../../azure-sql/database/auditing-overview.md)taşımanızı öneririz.
@@ -112,8 +112,8 @@ Kod örneğinde kullanılan cmdlet 'ler şunlardır:
 ## <a name="related-resources"></a>İlgili kaynaklar
 
 - Olağanüstü durum kurtarma dahil olmak üzere [Azure SQL veritabanı ile iş sürekliliği 'Ne genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md).
-- [Azure REST API başvurusu](https://docs.microsoft.com/rest/api/azure/)
-- [Sunucu DNS diğer adları API 'SI](https://docs.microsoft.com/rest/api/sql/serverdnsaliases)
+- [Azure REST API başvurusu](/rest/api/azure/)
+- [Sunucu DNS diğer adları API 'SI](/rest/api/sql/serverdnsaliases)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

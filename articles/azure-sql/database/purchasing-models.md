@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: a5760d3daaa13a5ed16230e1ffb7fe3691455e09
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427037"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788834"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>VCore ve DTU satın alma modelleri arasında seçim yapın-Azure SQL veritabanı ve SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -127,7 +127,7 @@ Mevcut bir havuza, veritabanı kapalı kalma süresi olmadan ve havuzdaki verita
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Bir iş yükü için gereken DTU sayısını belirleme
 
-Mevcut bir şirket içi veya SQL Server sanal makine iş yükünü SQL veritabanına geçirmek istiyorsanız, gerekli DTU sayısını yaklaşık olarak tahmin etmek için [DTU Hesaplayıcı](https://dtucalculator.azurewebsites.net/) ' ı kullanın. Mevcut bir SQL veritabanı iş yükü için, veritabanı-kaynak tüketiminizi (DTU 'Lar) anlamak üzere [Query-Performance Insights](query-performance-insight-use.md) 'ı kullanın ve iş yükünüzü iyileştirmek için daha derin Öngörüler elde edin. [Sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamik yönetim görünümü (DMV), son saatin kaynak tüketimini görüntülemenize olanak sağlar. [Sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Katalog görünümü son 14 güne ait kaynak tüketimini görüntüler, ancak beş dakikalık Ortalamalar için daha düşük bir hassaside.
+Mevcut bir şirket içi veya SQL Server sanal makine iş yükünü SQL veritabanına geçirmek istiyorsanız, gerekli DTU sayısını yaklaşık olarak tahmin etmek için [DTU Hesaplayıcı](https://dtucalculator.azurewebsites.net/) ' ı kullanın. Mevcut bir SQL veritabanı iş yükü için, veritabanı-kaynak tüketiminizi (DTU 'Lar) anlamak üzere [Query-Performance Insights](query-performance-insight-use.md) 'ı kullanın ve iş yükünüzü iyileştirmek için daha derin Öngörüler elde edin. [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamik yönetim görünümü (DMV), son saatin kaynak tüketimini görüntülemenize olanak sağlar. [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Katalog görünümü son 14 güne ait kaynak tüketimini görüntüler, ancak beş dakikalık Ortalamalar için daha düşük bir hassaside.
 
 ### <a name="determine-dtu-utilization"></a>DTU kullanımını belirleme
 
@@ -135,7 +135,7 @@ Bir veritabanının veya elastik havuzun DTU/eDTU sınırına göre DTU/eDTU kul
 
 `avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
 
-Bu formülün giriş değerleri [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)ve [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMVs 'den elde edilebilir. Diğer bir deyişle, bir veritabanının veya elastik havuzun DTU/eDTU sınırına yönelik DTU/eDTU kullanımının yüzdesini öğrenmek için aşağıdakilerden en büyük yüzde değerini seçin: `avg_cpu_percent` , `avg_data_io_percent` , ve `avg_log_write_percent` belirli bir noktada.
+Bu formülün giriş değerleri [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)ve [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMVs 'den elde edilebilir. Diğer bir deyişle, bir veritabanının veya elastik havuzun DTU/eDTU sınırına yönelik DTU/eDTU kullanımının yüzdesini öğrenmek için aşağıdakilerden en büyük yüzde değerini seçin: `avg_cpu_percent` , `avg_data_io_percent` , ve `avg_log_write_percent` belirli bir noktada.
 
 > [!NOTE]
 > Bir veritabanının DTU sınırı, CPU, okuma, yazma ve veritabanı tarafından kullanılabilir bellek tarafından belirlenir. Ancak, SQL veritabanı altyapısı performansı artırmak için genellikle veri önbelleği için tüm kullanılabilir belleği kullandığından, `avg_memory_usage_percent` geçerli veritabanı yüküne bakılmaksızın değer genellikle yüzde 100 ' e yakın olur. Bu nedenle, bellek, DTU sınırını dolaylı olarak etkilese de, DTU kullanım formülünde kullanılmaz.
@@ -150,13 +150,13 @@ DTU tabanlı satın alma modelinde, müşteriler veritabanları için kullanıla
 
 Örneğin, bir veritabanı farklı bir hizmet hedefine göre yukarı veya aşağı ölçeklendirildiğinde ya da bir veri merkezindeki geçerli altyapı kapasite sınırlarına yaklaşıyorsa ya da o anda kullanılmakta olan donanım kullanım ömrü nedeniyle kullanımdan bulunursa, bir veritabanı farklı bir donanım oluşturmaya taşınabilir.
 
-Bir veritabanı farklı bir donanıma taşınırsa, iş yükü performansı değişebilir. DTU modeli, hizmet hedefi (DTU sayısı) aynı kaldığı sürece, [DTU kıyaslama](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) iş yükünün işleme ve yanıt süresinin, veritabanı farklı bir donanım oluşturmaya giderken önemli ölçüde aynı kalacağından emin olur.
+Bir veritabanı farklı bir donanıma taşınırsa, iş yükü performansı değişebilir. DTU modeli, hizmet hedefi (DTU sayısı) aynı kaldığı sürece, [DTU kıyaslama](./service-tiers-dtu.md#dtu-benchmark) iş yükünün işleme ve yanıt süresinin, veritabanı farklı bir donanım oluşturmaya giderken önemli ölçüde aynı kalacağından emin olur.
 
 Ancak, Azure SQL veritabanı 'nda çalışan çok sayıda müşteri iş yüklerinin tamamında, aynı hizmet hedefi için farklı donanımlar kullanmanın etkisi daha fazla olabilir. Farklı iş yükleri, farklı donanım yapılandırma ve özelliklerinden faydalanır. Bu nedenle, DTU kıyaslamalarından başka iş yükleri için, veritabanı bir donanım oluşturma işleminden diğerine taşınırsa performans farklılıklarını görmek mümkündür.
 
 Örneğin, ağ gecikmesine duyarlı bir uygulama, 5. nesil 'de hızlandırılmış ağ kullanımı nedeniyle 5. nesil Hardware vs. 4. nesil üzerinde daha iyi performans görebilir, ancak yoğun okuma GÇ kullanan bir uygulama, 5. nesil üzerinde çekirdek oranına göre daha yüksek bir bellek nedeniyle 4. nesil donanımında daha iyi performans sağlayabilir.
 
-Donanım değişiklikleri veya veritabanları için donanım oluşturma seçimini denetlemek isteyen müşteriler iş yüklerine duyarlı olan müşteriler, veritabanı oluşturma ve ölçekleme sırasında tercih edilen donanım üretimini seçmek için [Vcore](service-tiers-vcore.md) modelini kullanabilir. Sanal çekirdek modelinde her bir her bir hizmet hedefinin kaynak limitleri her bir donanım oluşturma işlemi için, hem [tek veritabanları](resource-limits-vcore-single-databases.md) hem de [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için belgelenmiştir. Sanal çekirdek modelindeki donanım oluşturmaları hakkında daha fazla bilgi için bkz. [donanım nesilleri](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
+Donanım değişiklikleri veya veritabanları için donanım oluşturma seçimini denetlemek isteyen müşteriler iş yüklerine duyarlı olan müşteriler, veritabanı oluşturma ve ölçekleme sırasında tercih edilen donanım üretimini seçmek için [Vcore](service-tiers-vcore.md) modelini kullanabilir. Sanal çekirdek modelinde her bir her bir hizmet hedefinin kaynak limitleri her bir donanım oluşturma işlemi için, hem [tek veritabanları](resource-limits-vcore-single-databases.md) hem de [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için belgelenmiştir. Sanal çekirdek modelindeki donanım oluşturmaları hakkında daha fazla bilgi için bkz. [donanım nesilleri](./service-tiers-vcore.md#hardware-generations).
 
 ## <a name="frequently-asked-questions-faqs"></a>Sık sorulan sorular (SSS)
 

@@ -2,7 +2,7 @@
 title: DNS diğer adı (PowerShell & Azure CLı)
 description: PowerShell ve Azure CLı cmdlet 'leri, istemci yapılandırmasına dokunmanıza gerek kalmadan yeni istemci bağlantılarını Azure 'daki farklı bir SQL Server 'a yönlendirmenizi sağlar.
 keywords: DNS SQL veritabanı
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
-ms.openlocfilehash: c1006cce4125adf67b9e3009bf8e27c0123acfd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02cfd839ed1b75fd85553f2e5a5150cadc29ff8e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443629"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790466"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>DNS diğer adı için PowerShell Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -52,14 +52,14 @@ Kodu çalıştırmak için, yer tutucu değerlerini sisteminizdeki gerçek değe
 
 Kullanılan cmdlet 'ler şunlardır:
 
-- [New-Azsqlserverdnsalıas](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Azure SQL veritabanı hizmet SISTEMINDE bir DNS diğer adı oluşturur. Diğer ad sunucu 1 ' e başvurur.
-- [Get-Azsqlserverdnsalıas](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): sunucu 1 ' e atanan tüm diğer adları alın ve listeleyin.
-- [Set-Azsqlserverdnsalıas](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): diğer adın, sunucu 1 ' den sunucu 2 ' ye başvuracak şekilde yapılandırıldığı sunucu adını değiştirir.
-- [Remove-Azsqlserverdnsalıas](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): diğer adı kullanarak sunucu 2 ' den diğer adı kaldırın.
+- [New-Azsqlserverdnsalıas](/powershell/module/az.Sql/New-azSqlServerDnsAlias): Azure SQL veritabanı hizmet SISTEMINDE bir DNS diğer adı oluşturur. Diğer ad sunucu 1 ' e başvurur.
+- [Get-Azsqlserverdnsalıas](/powershell/module/az.Sql/Get-azSqlServerDnsAlias): sunucu 1 ' e atanan tüm diğer adları alın ve listeleyin.
+- [Set-Azsqlserverdnsalıas](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): diğer adın, sunucu 1 ' den sunucu 2 ' ye başvuracak şekilde yapılandırıldığı sunucu adını değiştirir.
+- [Remove-Azsqlserverdnsalıas](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): diğer adı kullanarak sunucu 2 ' den diğer adı kaldırın.
 
 Yüklemek veya yükseltmek için bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps).
 
-`Get-Module -ListAvailable Az`Sürümü bulmak için *PowerShell \_ise.exe*içinde kullanın.
+`Get-Module -ListAvailable Az`Sürümü bulmak için *PowerShell \_ise.exe* içinde kullanın.
 
 ```powershell
 $subscriptionName = '<subscriptionName>';
@@ -98,10 +98,10 @@ Remove-AzSqlServerDnsAlias –ResourceGroupName $resourceGroupName2 -ServerName 
 
 Kullanılan komutlar şunlardır:
 
-- [az SQL Server DNS-Alias Create](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): sunucu IÇIN bir DNS diğer adı oluşturur. Diğer ad sunucu 1 ' e başvurur.
-- [az SQL Server DNS-Alias Show](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Server 1 ' e atanan tüm diğer adları alın ve listeleyin.
-- [az SQL Server DNS-Alias set](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): sunucu 1 ' den sunucu 2 ' ye başvurmak için diğer adın yapılandırıldığı sunucu adını değiştirir.
-- [az SQL Server DNS-alias delete](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): diğer adı kullanarak sunucu 2 ' den diğer adı kaldırın.
+- [az SQL Server DNS-Alias Create](/powershell/module/az.Sql/New-azSqlServerDnsAlias): sunucu IÇIN bir DNS diğer adı oluşturur. Diğer ad sunucu 1 ' e başvurur.
+- [az SQL Server DNS-Alias Show](/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Server 1 ' e atanan tüm diğer adları alın ve listeleyin.
+- [az SQL Server DNS-Alias set](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): sunucu 1 ' den sunucu 2 ' ye başvurmak için diğer adın yapılandırıldığı sunucu adını değiştirir.
+- [az SQL Server DNS-alias delete](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): diğer adı kullanarak sunucu 2 ' den diğer adı kaldırın.
 
 Yüklemek veya yükseltmek için bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
@@ -142,4 +142,4 @@ az sql server dns-alias delete –-resource-group $resourceGroupName2 --server $
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL veritabanı için DNS diğer adı özelliğinin tam açıklaması için bkz. [Azure SQL veritabanı Için DNS diğer adı](../../sql-database/dns-alias-overview.md).
+SQL veritabanı için DNS diğer adı özelliğinin tam açıklaması için bkz. [Azure SQL veritabanı Için DNS diğer adı](./dns-alias-overview.md).

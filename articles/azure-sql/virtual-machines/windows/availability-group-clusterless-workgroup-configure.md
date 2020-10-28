@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 43b0f64a1d88a71b221fac240392dc71b93eef76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bfea42c6fca3369485ccf7a47158f7420df9c9c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298845"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790041"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Çalışma grubu kullanılabilirlik grubunu yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -53,14 +53,14 @@ Bu adımda, her iki sunucu için de DNS sonekini yapılandırın. Örneğin, `ag
 DNS sonekini yapılandırmak için aşağıdaki adımları izleyin:
 
 1. İlk düğümünüz için RDP ve Sunucu Yöneticisi açın. 
-1. **Yerel sunucu** ' yı seçin ve ardından **bilgisayar adı**bölümünde sanal makinenizin adını seçin. 
+1. **Yerel sunucu** ' yı seçin ve ardından **bilgisayar adı** bölümünde sanal makinenizin adını seçin. 
 1. **Bu bilgisayarı yeniden adlandırmak Için** **Değiştir..** . öğesini seçin... 
 1. Çalışma grubu adının adını, şöyle bir anlamlı olacak şekilde değiştirin `AGWORKGROUP` : 
 
    ![Çalışma grubu adını değiştir](./media/availability-group-clusterless-workgroup-configure/1-change-workgroup-name.png)
 
 1. **DNS son eki ve NetBIOS bilgisayar adı** iletişim kutusunu açmak Için **daha fazla...** seçeneğini belirleyin. 
-1. DNS son ekinin adını **Bu bilgisayarın BIRINCIL DNS son eki**altına yazın (gibi) `ag.wgcluster.example.com` ve ardından **Tamam**' ı seçin: 
+1. DNS son ekinin adını **Bu bilgisayarın BIRINCIL DNS son eki** altına yazın (gibi) `ag.wgcluster.example.com` ve ardından **Tamam** ' ı seçin: 
 
    ![DNS son eki Ekle](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
@@ -107,20 +107,20 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 Bu adımda, yük devretme kümesi oluşturacaksınız. Bu adımları tanımıyorsanız, bunları [Yük devretme kümesi öğreticiden](failover-cluster-instance-storage-spaces-direct-manually-configure.md)izleyebilirsiniz.
 
 Öğretici ve bir çalışma grubu kümesi için yapılması gerekenler arasındaki önemli farklılıklar:
-- **Depolama**işaretini kaldırın ve küme doğrulamayı çalıştırırken **depolama alanları doğrudan** . 
+- **Depolama** işaretini kaldırın ve küme doğrulamayı çalıştırırken **depolama alanları doğrudan** . 
 - Kümeye düğüm eklerken, tam adı şu şekilde ekleyin:
    - `AGNode1.ag.wgcluster.example.com`
    - `AGNode2.ag.wgcluster.example.com`
-- **Tüm uygun depolamayı kümeye ekle**seçeneğinin işaretini kaldırın. 
+- **Tüm uygun depolamayı kümeye ekle** seçeneğinin işaretini kaldırın. 
 
-Küme oluşturulduktan sonra bir statik küme IP adresi atayın. Bunu yapmak için şu adımları uygulayın:
+Küme oluşturulduktan sonra bir statik küme IP adresi atayın. Bunu yapmak için aşağıdaki adımları izleyin:
 
-1. Düğümlerden birinde, **Yük devretme kümesi Yöneticisi**açın, kümeyi seçin, **küme çekirdek kaynakları** altında, ** \<ClusterNam> ad** ' a sağ tıklayın ve ardından **Özellikler**' i seçin. 
+1. Düğümlerden birinde, **Yük devretme kümesi Yöneticisi** açın, kümeyi seçin, **küme çekirdek kaynakları** altında, **\<ClusterNam> ad** ' a sağ tıklayın ve ardından **Özellikler** ' i seçin. 
 
    ![Küme adı için başlatma özellikleri](./media/availability-group-clusterless-workgroup-configure/5-launch-cluster-name-properties.png)
 
-1. **IP adresleri** altında IP adresini seçin ve **Düzenle**' yi seçin. 
-1. **Statik kullan**' ı seçin, kümenin IP adresini belirtin ve ardından **Tamam**' ı seçin: 
+1. **IP adresleri** altında IP adresini seçin ve **Düzenle** ' yi seçin. 
+1. **Statik kullan** ' ı seçin, kümenin IP adresini belirtin ve ardından **Tamam** ' ı seçin: 
 
    ![Küme için statik bir IP adresi sağlayın](./media/availability-group-clusterless-workgroup-configure/6-provide-static-ip-for-cluster.png)
 
@@ -184,7 +184,7 @@ Bu adımda, bir SQL oturum açmanın şifreli uç noktada kullandığı sertifik
 
 İkinci düğümü yapılandırmak için aşağıdaki adımları izleyin: 
 
-1. İkinci düğüme, gibi **SQL Server Management Studio**bağlayın `AGNode2` . 
+1. İkinci düğüme, gibi **SQL Server Management Studio** bağlayın `AGNode2` . 
 1. Yeni bir **sorgu** penceresinde, karmaşık ve güvenli bir parolaya güncelleştirdikten sonra aşağıdaki Transact-SQL (T-SQL) ifadesini çalıştırın: 
 
    ```sql
@@ -277,7 +277,7 @@ GO
 
 Kümede başka bir düğüm varsa, ilgili sertifikayı ve Kullanıcı adlarını değiştirerek bu adımları da yineleyin. 
 
-## <a name="configure-an-availability-group"></a>Kullanılabilirlik grubu yapılandırma
+## <a name="configure-an-availability-group"></a>Kullanılabilirlik grubunu yapılandırma
 
 Bu adımda, kullanılabilirlik grubunuzu yapılandırın ve veritabanlarınızı ona ekleyin. Şu an bir dinleyici oluşturmayın. Adımlara alışkın değilseniz, [kullanılabilirlik grubu öğreticisi](availability-group-manually-configure-tutorial.md#create-the-availability-group)' ne bakın. Her şeyin olması gerektiği şekilde çalıştığını doğrulamak için bir yük devretme ve yeniden çalışma işlemi başlattığınızdan emin olun. 
 
@@ -291,6 +291,4 @@ Bu son adımda, [Azure Portal](availability-group-load-balancer-portal-configure
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanılabilirlik grubunu yapılandırmak için [az SQL VM CLI](availability-group-az-cli-configure.md) de kullanabilirsiniz. 
-
-
+Kullanılabilirlik grubunu yapılandırmak için [az SQL VM CLI](./availability-group-az-commandline-configure.md) de kullanabilirsiniz.

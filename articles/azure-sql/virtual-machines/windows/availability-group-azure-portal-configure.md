@@ -12,13 +12,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8634efa1e8e5ab8a3b962b711ec8dfcdac4e6ced
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: 3a8086c75a7125b744730de83c760db44ce222e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164577"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790109"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu (Önizleme) yapılandırmak üzere Azure portal kullanma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,13 +32,13 @@ Bu özellik şu anda önizleme sürümündedir.
 Bu makalede kullanılabilirlik grubu ortamını yapılandırmak için Azure portal kullanılırken, [PowerShell veya Azure CLI](availability-group-az-commandline-configure.md), [Azure hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)veya [el ile](availability-group-manually-configure-tutorial.md) de yapılabilir. 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure portal kullanarak her zaman açık kullanılabilirlik grubu yapılandırmak için aşağıdaki önkoşullara sahip olmanız gerekir: 
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
 - Etki alanı denetleyicisi olan bir kaynak grubu. 
-- Azure 'daki bir veya daha fazla etki alanına katılmış [VM 'ler SQL Server 2016 (veya üzeri) Enterprise Edition](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) 'ı *,* [SQL VM kaynak sağlayıcısına tam yönetilebilirlik modunda kaydedilmiş](sql-vm-resource-provider-register.md) ve her bir VM 'de SQL Server hizmeti için aynı etki alanı hesabını kullanıyor. *different*
+- Azure 'daki bir veya daha fazla etki alanına katılmış [VM 'ler SQL Server 2016 (veya üzeri) Enterprise Edition](./create-sql-vm-portal.md) 'ı *,* [SQL VM kaynak sağlayıcısına tam yönetilebilirlik modunda kaydedilmiş](sql-vm-resource-provider-register.md) ve her bir VM 'de SQL Server hizmeti için aynı etki alanı hesabını kullanıyor. *different*
 - Kullanılabilir iki (herhangi bir varlık tarafından kullanılmayan) IP adresleri. Bunlardan biri iç yük dengeleyiciye yöneliktir. Diğeri, kullanılabilirlik grubu ile aynı alt ağda bulunan kullanılabilirlik grubu dinleyicisine yöneliktir. Var olan bir yük dengeleyiciyi kullanıyorsanız, kullanılabilirlik grubu dinleyicisi için yalnızca bir kullanılabilir IP adresine sahip olmanız gerekir. 
 
 ## <a name="permissions"></a>İzinler
@@ -61,7 +61,7 @@ Zaten mevcut bir kümeniz yoksa, aşağıdaki adımlarla Azure portal kullanarak
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. [SQL sanal makineler](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağına gidin. 
-1. **Ayarlar**altında **yüksek kullanılabilirlik** ' i seçin. 
+1. **Ayarlar** altında **yüksek kullanılabilirlik** ' i seçin. 
 1. **Windows Yük devretme kümesini Yapılandır** sayfasını açmak Için **+ Yeni Windows Server yük devretme kümesi ' ni** seçin.  
 
    :::image type="content" source="media/availability-group-az-portal-configure/create-new-cluster.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
@@ -70,7 +70,7 @@ Zaten mevcut bir kümeniz yoksa, aşağıdaki adımlarla Azure portal kullanarak
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
-1. SQL Server hizmet hesabının [kimlik bilgilerini](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) ve SQL Server hizmeti için kullanılan hesaptan farklı olmaları durumunda küme işlecini ve önyükleme hesaplarını sağlamak Için **Windows Server yük devretme kümesi kimlik bilgilerini** genişletin. 
+1. SQL Server hizmet hesabının [kimlik bilgilerini](/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) ve SQL Server hizmeti için kullanılan hesaptan farklı olmaları durumunda küme işlecini ve önyükleme hesaplarını sağlamak Için **Windows Server yük devretme kümesi kimlik bilgilerini** genişletin. 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur"
     ```
@@ -85,7 +85,7 @@ Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. [SQL sanal makineler](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağına gidin. 
-1. **Ayarlar**altında **yüksek kullanılabilirlik** ' i seçin. 
+1. **Ayarlar** altında **yüksek kullanılabilirlik** ' i seçin. 
 1. **Mevcut Windows Server yük devretme kümesini** ekleme ' yi seçerek **Windows Server yük devretme kümesi** ekleme sayfasını açın. 
 
    :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
@@ -102,7 +102,7 @@ Kümeniz oluşturulduktan veya eklendi olduktan sonra, Azure portal kullanarak k
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. [SQL sanal makineler](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağına gidin. 
-1. **Ayarlar**altında **yüksek kullanılabilirlik** ' i seçin. 
+1. **Ayarlar** altında **yüksek kullanılabilirlik** ' i seçin. 
 1. **Kullanılabilirlik grubu oluştur** sayfasını açmak Için **+ Yeni Always on kullanılabilirlik grubu '** nu seçin.
 
    :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
@@ -138,8 +138,8 @@ SQL Server Management Studio kullanarak kullanılabilirlik grubunuza veritabanla
 1. Uzak Masaüstü Bağlantısı (RDP) gibi tercih ettiğiniz yöntemi kullanarak SQL Server sanal makinelerinizdeki birine bağlanın. 
 1. SQL Server Management Studio (SSMS) açın.
 1. SQL Server örneğine bağlanın. 
-1. **Nesne Gezgini**' de **her zaman yüksek kullanılabilirlik '** i genişletin.
-1. **Kullanılabilirlik grupları**' nı genişletin, kullanılabilirlik grubunuza sağ tıklayıp **veritabanı eklemeyi seçin...**.
+1. **Nesne Gezgini** ' de **her zaman yüksek kullanılabilirlik '** i genişletin.
+1. **Kullanılabilirlik grupları** ' nı genişletin, kullanılabilirlik grubunuza sağ tıklayıp **veritabanı eklemeyi seçin...** .
 
    :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
@@ -157,7 +157,7 @@ Kümeye daha fazla SQL Server VM eklemek için şu adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. [SQL sanal makineler](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağına gidin. 
-1. **Ayarlar**altında **yüksek kullanılabilirlik** ' i seçin. 
+1. **Ayarlar** altında **yüksek kullanılabilirlik** ' i seçin. 
 1. Windows Server yük devretme kümesini **Yapılandır** sayfasını açmak Için **Windows Server yük devretme kümesini Yapılandır** ' ı seçin. 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
@@ -172,7 +172,7 @@ Kümeye daha fazla SQL Server VM eklemek için şu adımları izleyin:
 ## <a name="modify-availability-group"></a>Kullanılabilirlik grubunu değiştir 
 
 
-Kullanılabilirlik grubuna **daha fazla çoğaltma ekleyebilir** , **dinleyiciyi yapılandırabilir**veya kullanılabilirlik grubunuzun yanındaki üç nokta (...) simgesini seçerek Azure Portal **yüksek kullanılabilirlik** sayfasından **dinleyiciyi silebilirsiniz** : 
+Kullanılabilirlik grubuna **daha fazla çoğaltma ekleyebilir** , **dinleyiciyi yapılandırabilir** veya kullanılabilirlik grubunuzun yanındaki üç nokta (...) simgesini seçerek Azure Portal **yüksek kullanılabilirlik** sayfasından **dinleyiciyi silebilirsiniz** : 
 
 :::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Portalda + yeni kümeyi seçerek yeni küme oluştur":::
 
@@ -245,7 +245,7 @@ Dağıtımın günlüklerini görüntülemek ve dağıtım geçmişini denetleme
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kaynak grubunuza gidin.
-1. **Ayarlar**altında **dağıtımlar** ' ı seçin.
+1. **Ayarlar** altında **dağıtımlar** ' ı seçin.
 1. Dağıtım hakkında daha fazla bilgi edinmek için ilgilendiğiniz dağıtımı seçin. 
 
 

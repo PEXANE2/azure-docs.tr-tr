@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/11/2019
-ms.openlocfilehash: 06763624231fde344990da6d0a4639bcccdedf00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41f3505388e72fba15277067a94cf4e473008f20
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448862"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790432"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Azure SQL Veritabanı’na SQL Server veritabanı geçişi
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,11 +41,11 @@ Aşağıdaki liste, bu yöntemi kullanarak tek veya havuza alınmış bir verita
 
   ![VSSSDT geçiş şeması](./media/migrate-to-database-from-sql-server/azure-sql-migration-sql-db.png)
 
-1. [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)en son sürümünü kullanarak veritabanını uyumluluk için [değerlendirin](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) .
+1. [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)en son sürümünü kullanarak veritabanını uyumluluk için [değerlendirin](/sql/dma/dma-assesssqlonprem) .
 2. Transact-SQL betikleri halinde tüm gerekli düzeltmeleri hazırlayın.
-3. Geçirilen kaynak veritabanının işlemsel olarak tutarlı bir kopyasını oluşturun veya geçiş gerçekleşirken kaynak veritabanında gerçekleştirilen yeni işlemleri durdurur. Bu ikinci seçeneği yerine getirmek için yöntemler istemci bağlantısını devre dışı bırakmayı veya bir [veritabanı anlık görüntüsü](https://msdn.microsoft.com/library/ms175876.aspx)oluşturmayı içerir. Geçişten sonra, geçirilen veritabanlarını geçiş için kesme noktası sonrasında gerçekleşen değişikliklerle güncelleştirmek için işlemsel çoğaltmayı kullanabilirsiniz. Bkz. [Işlem geçişini kullanarak geçirme](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication).  
+3. Geçirilen kaynak veritabanının işlemsel olarak tutarlı bir kopyasını oluşturun veya geçiş gerçekleşirken kaynak veritabanında gerçekleştirilen yeni işlemleri durdurur. Bu ikinci seçeneği yerine getirmek için yöntemler istemci bağlantısını devre dışı bırakmayı veya bir [veritabanı anlık görüntüsü](/sql/relational-databases/databases/create-a-database-snapshot-transact-sql)oluşturmayı içerir. Geçişten sonra, geçirilen veritabanlarını geçiş için kesme noktası sonrasında gerçekleşen değişikliklerle güncelleştirmek için işlemsel çoğaltmayı kullanabilirsiniz. Bkz. [Işlem geçişini kullanarak geçirme](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication).  
 4. Düzeltmeleri veritabanı kopyasına uygulamak için Transact-SQL betiklerini dağıtın.
-5. Data Migration Yardımcısı kullanarak veritabanı kopyasını Azure SQL veritabanı 'nda yeni bir veritabanına [geçirin](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql) .
+5. Data Migration Yardımcısı kullanarak veritabanı kopyasını Azure SQL veritabanı 'nda yeni bir veritabanına [geçirin](/sql/dma/dma-migrateonpremsql) .
 
 > [!NOTE]
 > DMA kullanmak yerine BACPAC dosyasını da kullanabilirsiniz. Bkz. [BACPAC dosyasını Azure SQL veritabanı 'nda yeni bir veritabanına aktarma](database-import.md).
@@ -63,11 +63,11 @@ Aşağıdaki liste, içeri aktarma işlemi sırasında en iyi performans için �
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>Geçiş tamamlandıktan sonra performansı en iyi duruma getirme
 
-Geçiş tamamlandıktan sonra tam tarama ile [istatistikleri güncelleştirin](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql).
+Geçiş tamamlandıktan sonra tam tarama ile [istatistikleri güncelleştirin](/sql/t-sql/statements/update-statistics-transact-sql).
 
 ## <a name="method-2-use-transactional-replication"></a>Yöntem 2: İşlem Çoğaltma Kullanma
 
-Geçiş gerçekleşirken SQL Server veritabanınızı üretimden kaldırmak için, geçiş çözümünüz olarak SQL Server işlemsel çoğaltmayı kullanabilirsiniz. Bu yöntemi kullanmak için, kaynak veritabanının [işlem çoğaltma gereksinimlerini](https://msdn.microsoft.com/library/mt589530.aspx) karşılaması ve Azure SQL Veritabanı ile uyumlu olması gerekir. Her zaman açık olan SQL çoğaltma hakkında daha fazla bilgi için bkz. [Always on kullanılabilirlik grupları Için çoğaltmayı yapılandırma (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
+Geçiş gerçekleşirken SQL Server veritabanınızı üretimden kaldırmak için, geçiş çözümünüz olarak SQL Server işlemsel çoğaltmayı kullanabilirsiniz. Bu yöntemi kullanmak için, kaynak veritabanının [işlem çoğaltma gereksinimlerini](./replication-to-sql-database.md) karşılaması ve Azure SQL Veritabanı ile uyumlu olması gerekir. Her zaman açık olan SQL çoğaltma hakkında daha fazla bilgi için bkz. [Always on kullanılabilirlik grupları Için çoğaltmayı yapılandırma (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
 
 Bu çözümü kullanmak için, Azure SQL veritabanı 'nda veritabanını, geçirmek istediğiniz SQL Server örneğine abone olarak yapılandırırsınız. Yeni işlemler gerçekleşmeye devam ederken, işlem çoğaltma dağıtıcısı, veritabanındaki eşitlenecek verileri eşitler (yayımcı).
 
@@ -108,22 +108,21 @@ SQL veritabanına geçiş için bazı ipuçları ve farklılıklar
 Hem kaynak veritabanındaki SQL Server sürümüne hem de geçirdiğiniz veritabanının karmaşıklığına bağlı olarak karşılaşabileceğiniz çok çeşitli uyumluluk sorunları vardır. Eski SQL Server sürümlerinde daha fazla uyumluluk sorunları algılanabilir. Aşağıdaki kaynakları kullanabilir ve ek olarak istediğiniz arama motorunu kullanarak hedefli bir İnternet araması yapabilirsiniz:
 
 - [Azure SQL Veritabanında desteklenmeyen SQL Server veritabanı özellikleri](transact-sql-tsql-differences-sql-server.md)
-- [SQL Server 2016'da Artık Sağlanmayan Veritabanı Altyapısı İşlevleri](https://msdn.microsoft.com/library/ms144262%28v=sql.130%29)
-- [SQL Server 2014'te Artık Sağlanmayan Veritabanı Altyapısı İşlevleri](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
-- [SQL Server 2012'de Artık Sağlanmayan Veritabanı Altyapısı İşlevleri](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
-- [SQL Server 2008 R2'de Artık Sağlanmayan Veritabanı Altyapısı İşlevleri](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
-- [SQL Server 2005'te Artık Sağlanmayan Veritabanı Altyapısı İşlevleri](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
+- [SQL Server 2016'da Artık Sağlanmayan Veritabanı Altyapısı İşlevleri](/sql/database-engine/discontinued-database-engine-functionality-in-sql-server)
+- [SQL Server 2014'te Artık Sağlanmayan Veritabanı Altyapısı İşlevleri](/sql/database-engine/discontinued-database-engine-functionality-in-sql-server?viewFallbackFrom=sql-server-2014)
+- [SQL Server 2012'de Artık Sağlanmayan Veritabanı Altyapısı İşlevleri](/previous-versions/sql/sql-server-2012/ms144262(v=sql.110))
+- [SQL Server 2008 R2'de Artık Sağlanmayan Veritabanı Altyapısı İşlevleri](/previous-versions/sql/sql-server-2008-r2/ms144262(v=sql.105))
+- [SQL Server 2005'te Artık Sağlanmayan Veritabanı Altyapısı İşlevleri](/previous-versions/sql/sql-server-2005/ms144262(v=sql.90))
 
-Internet 'i aramaya ve bu kaynakları kullanmaya ek olarak, [Azure SQL veritabanı veya StackOverflow Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-sql-database.html) kullanın. [StackOverflow](https://stackoverflow.com/)
+Internet 'i aramaya ve bu kaynakları kullanmaya ek olarak, [Azure SQL veritabanı veya StackOverflow Için Microsoft Q&soru sayfasını](/answers/topics/azure-sql-database.html) kullanın. [StackOverflow](https://stackoverflow.com/)
 
 > [!IMPORTANT]
 > Azure SQL yönetilen örneği, mevcut bir SQL Server örneğini ve veritabanlarını en az uyumluluk sorunu olmadan geçirmenize olanak sağlar. Bkz. [yönetilen örnek nedir](../managed-instance/sql-managed-instance-paas-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Geçiş sırasında tempdb kullanımını izlemek](https://blogs.msdn.microsoft.com/azuresqlemea/2016/12/28/lesson-learned-10-monitoring-tempdb-usage/) için Azure SQL EMEA Mühendisleri blogundaki betiği kullanın.
-- [Geçiş devam ederken veritabanınızın işlem günlüğü alanını izlemek](https://docs.microsoft.com/archive/blogs/azuresqlemea/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database) için Azure SQL EMEA Mühendisleri blogundaki betiği kullanın.
-- BACPAC dosyalarını kullanarak geçiş hakkında bir SQL Server Müşteri Danışmanlık Ekibi blogu için bkz. [BACPAC Dosyalarını kullanarak SQL Server’dan Azure SQL Veritabanına Geçiş](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
-- Geçişten sonra UTC saati ile çalışma hakkında daha fazla bilgi için bkz. [Yerel saat diliminiz için varsayılan saat dilimini değiştirme](https://blogs.msdn.microsoft.com/azuresqlemea/2016/07/27/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone/).
-- Geçişten sonra veritabanının varsayılan dilini değiştirme hakkında daha fazla bilgi için bkz. [Azure SQL Veritabanının varsayılan dilini değiştirme](https://blogs.msdn.microsoft.com/azuresqlemea/2017/01/13/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database/).
- 
+- [Geçiş sırasında tempdb kullanımını izlemek](/archive/blogs/azuresqlemea/lesson-learned-10-monitoring-tempdb-usage) için Azure SQL EMEA Mühendisleri blogundaki betiği kullanın.
+- [Geçiş devam ederken veritabanınızın işlem günlüğü alanını izlemek](/archive/blogs/azuresqlemea/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database) için Azure SQL EMEA Mühendisleri blogundaki betiği kullanın.
+- BACPAC dosyalarını kullanarak geçiş hakkında bir SQL Server Müşteri Danışmanlık Ekibi blogu için bkz. [BACPAC Dosyalarını kullanarak SQL Server’dan Azure SQL Veritabanına Geçiş](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files).
+- Geçişten sonra UTC saati ile çalışma hakkında daha fazla bilgi için bkz. [Yerel saat diliminiz için varsayılan saat dilimini değiştirme](/archive/blogs/azuresqlemea/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone).
+- Geçişten sonra veritabanının varsayılan dilini değiştirme hakkında daha fazla bilgi için bkz. [Azure SQL Veritabanının varsayılan dilini değiştirme](/archive/blogs/azuresqlemea/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database).

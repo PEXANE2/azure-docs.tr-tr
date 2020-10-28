@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 09/26/2019
-ms.openlocfilehash: 2f2e8c6be128e5004769dca2f42a6c8013510cde
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf606af0425c04873dadcf47932c806a1099942a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91325241"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788715"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Hızlı başlangıç: yönetilen SQL yönetilen örneği oluşturma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,10 +34,10 @@ Yönetilen bir örnek oluşturmak için aşağıdaki adımları izleyin:
 
 Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
-1. Azure portal sol menüsünde **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna **Azure SQL** ' i girin.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. Azure portal sol menüsünde **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna **Azure SQL** ' i girin.
 1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **SQL yönetilen örnekler** kutucuğunda **Ayrıntıları göster** ' i seçerek Azure SQL yönetilen örneği hakkındaki ek bilgileri görüntüleyebilirsiniz.
-1. **Oluştur**’u seçin.
+1. **Oluştur** ’u seçin.
 
    ![Yönetilen örnek oluşturma](./media/instance-create-quickstart/create-managed-instance.png)
 
@@ -64,7 +64,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
 
    ![Yönetilen örnek formu](./media/instance-create-quickstart/mi-create-tab-configure-performance.png)
 
-- SQL yönetilen örneği oluşturmadan önce Seçimlerinizi gözden geçirmek için, **gözden geçir + oluştur**seçeneğini belirleyebilirsiniz. Ya da Ileri ' yi seçerek ağ seçeneklerini yapılandırın **: ağ**.
+- SQL yönetilen örneği oluşturmadan önce Seçimlerinizi gözden geçirmek için, **gözden geçir + oluştur** seçeneğini belirleyebilirsiniz. Ya da Ileri ' yi seçerek ağ seçeneklerini yapılandırın **: ağ** .
 
 ### <a name="networking-tab"></a>Ağ sekmesi
 
@@ -78,10 +78,10 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
    | ------ | --------------- | ----------- |
    | **Sanal ağ** | **Yeni sanal ağ** ya da geçerli bir sanal ağ ve alt ağ oluştur ' u seçin.| Bir ağ veya alt ağ kullanılamaz durumdaysa, yeni yönetilen örnek için bir hedef olarak seçmeden önce [ağ gereksinimlerini karşılamak üzere değiştirilmesi](vnet-existing-add-subnet.md) gerekir. SQL yönetilen örneği için ağ ortamını yapılandırma gereksinimleri hakkında bilgi için bkz. [SQL yönetilen örneği için sanal ağ yapılandırma](connectivity-architecture-overview.md). |
    | **Bağlantı türü** | Proxy ve yeniden yönlendirme bağlantı türü arasında seçim yapın.|Bağlantı türleri hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örnek bağlantı türü](../database/connectivity-architecture.md#connection-policy).|
-   | **Genel uç nokta**  | **Etkinleştir**’i seçin. | Yönetilen bir örneğin genel veri uç noktası üzerinden erişilebilir olması için bu seçeneği etkinleştirmeniz gerekir. | 
-   | **Erişime Izin ver** ( **genel uç nokta** etkinse) | Seçeneklerden birini belirleyin.   |Portal deneyimi, bir güvenlik grubunu genel bir uç nokta ile yapılandırmaya izin vermez. </br> </br> Senaryonuza bağlı olarak, aşağıdaki seçeneklerden birini seçin: </br> <ul> <li>**Azure hizmetleri**: Power BI veya başka bir çok kiracılı hizmetten bağlanırken bu seçeneği öneririz. </li> <li> **Internet**: yönetilen bir örneği hızlı bir şekilde çalıştırmak istediğinizde test amaçları için kullanın. Bunu üretim ortamları için önermiyoruz. </li> <li> **Erişim yok**: Bu seçenek bir **reddetme** güvenlik kuralı oluşturur. Yönetilen bir örneği ortak bir uç nokta aracılığıyla erişilebilir hale getirmek için bu kuralı değiştirin. </li> </ul> </br> Genel uç nokta güvenliği hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örneğini genel bir uç noktayla güvenli bir şekilde kullanma](public-endpoint-overview.md).|
+   | **Genel uç nokta**  | **Etkinleştir** ’i seçin. | Yönetilen bir örneğin genel veri uç noktası üzerinden erişilebilir olması için bu seçeneği etkinleştirmeniz gerekir. | 
+   | **Erişime Izin ver** ( **genel uç nokta** etkinse) | Seçeneklerden birini belirleyin.   |Portal deneyimi, bir güvenlik grubunu genel bir uç nokta ile yapılandırmaya izin vermez. </br> </br> Senaryonuza bağlı olarak, aşağıdaki seçeneklerden birini seçin: </br> <ul> <li>**Azure hizmetleri** : Power BI veya başka bir çok kiracılı hizmetten bağlanırken bu seçeneği öneririz. </li> <li> **Internet** : yönetilen bir örneği hızlı bir şekilde çalıştırmak istediğinizde test amaçları için kullanın. Bunu üretim ortamları için önermiyoruz. </li> <li> **Erişim yok** : Bu seçenek bir **reddetme** güvenlik kuralı oluşturur. Yönetilen bir örneği ortak bir uç nokta aracılığıyla erişilebilir hale getirmek için bu kuralı değiştirin. </li> </ul> </br> Genel uç nokta güvenliği hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örneğini genel bir uç noktayla güvenli bir şekilde kullanma](public-endpoint-overview.md).|
 
-- Yönetilen bir örnek oluşturmadan önce Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. Ya da Ileri ' yi seçerek daha fazla özel ayar yapılandırın **: ek ayarlar**.
+- Yönetilen bir örnek oluşturmadan önce Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. Ya da Ileri ' yi seçerek daha fazla özel ayar yapılandırın **: ek ayarlar** .
 
 ### <a name="additional-settings"></a>Ek ayarlar
 
@@ -93,10 +93,10 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
 
    | Ayar| Önerilen değer | Açıklama |
    | ------ | --------------- | ----------- |
-   | **Harmanlama** | Yönetilen örneğiniz için kullanmak istediğiniz harmanlamayı seçin. SQL Server veritabanlarını geçirirseniz, kullanarak kaynak harmanlamasını denetleyin `SELECT SERVERPROPERTY(N'Collation')` ve bu değeri kullanın.| Harmanlamalar hakkında daha fazla bilgi için bkz. [sunucu harmanlamasını ayarlama veya değiştirme](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
+   | **Harmanlama** | Yönetilen örneğiniz için kullanmak istediğiniz harmanlamayı seçin. SQL Server veritabanlarını geçirirseniz, kullanarak kaynak harmanlamasını denetleyin `SELECT SERVERPROPERTY(N'Collation')` ve bu değeri kullanın.| Harmanlamalar hakkında daha fazla bilgi için bkz. [sunucu harmanlamasını ayarlama veya değiştirme](/sql/relational-databases/collations/set-or-change-the-server-collation).|   
    | **Saat dilimi** | Yönetilen örneğin gözleneceği saat dilimini seçin.|Daha fazla bilgi için bkz. [saat dilimleri](timezones-overview.md).|
-   | **Yük devretme ikincili olarak kullan** | **Evet** seçeneğini belirleyin. | Yönetilen örneği yük devretme grubu ikincil olarak kullanmak için bu seçeneği etkinleştirin.|
-   | **BIRINCIL SQL yönetilen örneği** ( **Yük devretme Ikincili olarak kullan** **Evet**olarak ayarlanırsa) | Oluşturmakta olduğunuz yönetilen örnekle aynı DNS bölgesine katılacak mevcut bir birincil yönetilen örnek seçin. | Bu adım, yük devretme grubunun oluşturma sonrası yapılandırmasını etkinleştirecektir. Daha fazla bilgi için bkz. [öğretici: bir yük devretme grubuna yönetilen örnek ekleme](failover-group-add-instance-tutorial.md).|
+   | **Yük devretme ikincili olarak kullan** | **Evet** ’i seçin. | Yönetilen örneği yük devretme grubu ikincil olarak kullanmak için bu seçeneği etkinleştirin.|
+   | **BIRINCIL SQL yönetilen örneği** ( **Yük devretme Ikincili olarak kullan** **Evet** olarak ayarlanırsa) | Oluşturmakta olduğunuz yönetilen örnekle aynı DNS bölgesine katılacak mevcut bir birincil yönetilen örnek seçin. | Bu adım, yük devretme grubunun oluşturma sonrası yapılandırmasını etkinleştirecektir. Daha fazla bilgi için bkz. [öğretici: bir yük devretme grubuna yönetilen örnek ekleme](failover-group-add-instance-tutorial.md).|
 
 ## <a name="review--create"></a>Gözden geçirme ve oluşturma
 
@@ -120,7 +120,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
 > [!TIP]
 > Web tarayıcınızı kapattıysanız veya dağıtım ilerleme ekranından uzaklaşmanız durumunda dağıtım ilerleme durumunu bulmak için aşağıdaki adımları izleyin:
 > 1. Azure portal, SQL yönetilen örneği dağıtmakta olduğunuz kaynak grubunu ( **temel bilgiler** sekmesinde) açın.
-> 2. **Dağıtımlar**' ı seçin.
+> 2. **Dağıtımlar** ' ı seçin.
 > 3. Sürmekte olan SQL yönetilen örnek dağıtım işlemini seçin.
 
 > [!IMPORTANT]
@@ -173,7 +173,7 @@ SQL yönetilen örneğine bağlanmak için, ana bilgisayar adını ve tam etki a
 
    ![Konak adı](./media/instance-create-quickstart/host-name.png)
 
-   Kopyalanmış değer SQL yönetilen örneğine bağlanmak için kullanılabilecek bir tam etki alanı adı (FQDN) temsil eder. Şu adrese benzer bir örnek: *your_host_name. a1b2c3d4e5f6. Database. Windows. net*.
+   Kopyalanmış değer SQL yönetilen örneğine bağlanmak için kullanılabilecek bir tam etki alanı adı (FQDN) temsil eder. Şu adrese benzer bir örnek: *your_host_name. a1b2c3d4e5f6. Database. Windows. net* .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bb3fd9136f78a332a22f973d211dec748c4fb260
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bf17f85892691fe930d3d4b1e12846da8f9dc58
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317081"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789820"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server sağlamak için Azure PowerShell kullanma
 
@@ -135,7 +135,7 @@ Sanal makine için kullanılacak SQL Server görüntüsünü tanımlamak için a
    Get-AzVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
    ```
 
-1. Bu öğretici için SQL Server 2017 Developer Edition 'ı (**SQLDev**) kullanın. Geliştirici sürümü, test ve geliştirme için serbestçe lisanslanır ve yalnızca VM 'yi çalıştırmanın maliyeti için ödeme yaparsınız.
+1. Bu öğretici için SQL Server 2017 Developer Edition 'ı ( **SQLDev** ) kullanın. Geliştirici sürümü, test ve geliştirme için serbestçe lisanslanır ve yalnızca VM 'yi çalıştırmanın maliyeti için ödeme yaparsınız.
 
    ```powershell
    $Sku = "SQLDEV"
@@ -143,7 +143,7 @@ Sanal makine için kullanılacak SQL Server görüntüsünü tanımlamak için a
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Kaynak Yöneticisi dağıtım modeliyle, oluşturduğunuz ilk nesne kaynak grubudur. [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini kullanarak bir Azure Kaynak grubu ve kaynakları oluşturun. Kaynak grubu adı ve konumu için daha önce oluşturduğunuz değişkenleri belirtin.
+Kaynak Yöneticisi dağıtım modeliyle, oluşturduğunuz ilk nesne kaynak grubudur. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini kullanarak bir Azure Kaynak grubu ve kaynakları oluşturun. Kaynak grubu adı ve konumu için daha önce oluşturduğunuz değişkenleri belirtin.
 
 Yeni kaynak grubunuzu oluşturmak için bu cmdlet 'i çalıştırın.
 
@@ -153,7 +153,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-Sanal makine, işletim sistemi diski ve SQL Server veri ve günlük dosyaları için depolama kaynakları gerektirir. Kolaylık olması için her ikisi için tek bir disk oluşturacaksınız. SQL Server verilerinizi ve günlük dosyalarını ayrılmış disklere yerleştirmek için [Add-Azure disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) cmdlet 'ini kullanarak daha sonra ek diskler ekleyebilirsiniz. Yeni kaynak grubunuzda standart bir depolama hesabı oluşturmak için [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanın. Depolama hesabı adı, depolama SKU adı ve konum için daha önce oluşturduğunuz değişkenleri belirtin.
+Sanal makine, işletim sistemi diski ve SQL Server veri ve günlük dosyaları için depolama kaynakları gerektirir. Kolaylık olması için her ikisi için tek bir disk oluşturacaksınız. SQL Server verilerinizi ve günlük dosyalarını ayrılmış disklere yerleştirmek için [Add-Azure disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) cmdlet 'ini kullanarak daha sonra ek diskler ekleyebilirsiniz. Yeni kaynak grubunuzda standart bir depolama hesabı oluşturmak için [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanın. Depolama hesabı adı, depolama SKU adı ve konum için daha önce oluşturduğunuz değişkenleri belirtin.
 
 Yeni depolama hesabınızı oluşturmak için bu cmdlet 'i çalıştırın.
 
@@ -176,7 +176,7 @@ Sanal makine, ağ bağlantısı için birkaç ağ kaynağı gerektirir.
 
 ### <a name="create-a-virtual-network-subnet-configuration"></a>Sanal ağ alt ağı yapılandırması oluşturma
 
-Sanal ağınız için bir alt ağ yapılandırması oluşturarak başlayın. Bu öğretici için, [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) cmdlet 'ini kullanarak bir varsayılan alt ağ oluşturun. Alt ağ adı ve adres ön eki için daha önce oluşturduğunuz değişkenleri belirtin.
+Sanal ağınız için bir alt ağ yapılandırması oluşturarak başlayın. Bu öğretici için, [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) cmdlet 'ini kullanarak bir varsayılan alt ağ oluşturun. Alt ağ adı ve adres ön eki için daha önce oluşturduğunuz değişkenleri belirtin.
 
 > [!NOTE]
 > Bu cmdlet 'i kullanarak sanal ağ alt ağı yapılandırmasının ek özelliklerini tanımlayabilirsiniz, ancak Bu öğreticinin kapsamı dışındadır.
@@ -189,7 +189,7 @@ $SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefi
 
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-Sonra, [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) cmdlet 'ini kullanarak yeni kaynak grubunuzda Sanal ağınızı oluşturun. Ad, konum ve adres ön eki için daha önce oluşturduğunuz değişkenleri belirtin. Önceki adımda tanımladığınız alt ağ yapılandırmasını kullanın.
+Sonra, [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) cmdlet 'ini kullanarak yeni kaynak grubunuzda Sanal ağınızı oluşturun. Ad, konum ve adres ön eki için daha önce oluşturduğunuz değişkenleri belirtin. Önceki adımda tanımladığınız alt ağ yapılandırmasını kullanın.
 
 Sanal ağınızı oluşturmak için bu cmdlet 'i çalıştırın.
 
@@ -201,7 +201,7 @@ $VNet = New-AzVirtualNetwork -Name $VNetName `
 
 ### <a name="create-the-public-ip-address"></a>Genel IP adresini oluşturma
 
-Sanal ağınız tanımlandığına göre, sanal makine bağlantısı için bir IP adresi yapılandırmanız gerekir. Bu öğreticide, Internet bağlantısını desteklemek için dinamik IP adresleme 'yi kullanarak genel bir IP adresi oluşturun. Yeni kaynak grubunuzda genel IP adresini oluşturmak için [New-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) cmdlet 'ini kullanın. Ad, konum, ayırma yöntemi ve DNS etki alanı adı etiketi için daha önce oluşturduğunuz değişkenleri belirtin.
+Sanal ağınız tanımlandığına göre, sanal makine bağlantısı için bir IP adresi yapılandırmanız gerekir. Bu öğreticide, Internet bağlantısını desteklemek için dinamik IP adresleme 'yi kullanarak genel bir IP adresi oluşturun. Yeni kaynak grubunuzda genel IP adresini oluşturmak için [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) cmdlet 'ini kullanın. Ad, konum, ayırma yöntemi ve DNS etki alanı adı etiketi için daha önce oluşturduğunuz değişkenleri belirtin.
 
 > [!NOTE]
 > Bu cmdlet 'i kullanarak genel IP adresinin ek özelliklerini tanımlayabilirsiniz, ancak bu ilk öğreticinin kapsamı dışındadır. Ayrıca, Bu öğreticinin kapsamı dışında bir özel adres veya bir adresi de oluşturabilirsiniz.
@@ -243,7 +243,7 @@ VM 'yi ve SQL Server trafiği güvenli hale getirmek için bir ağ güvenlik gru
 
 ### <a name="create-the-network-interface"></a>Ağ arabirimini oluşturma
 
-Artık sanal makineniz için ağ arabirimini oluşturmaya hazırsınız. Yeni kaynak grubunuzda ağ arabirimini oluşturmak için [New-Aznetworkınterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) cmdlet 'ini kullanın. Daha önce tanımlanan adı, konumu, alt ağı ve genel IP adresini belirtin.
+Artık sanal makineniz için ağ arabirimini oluşturmaya hazırsınız. Yeni kaynak grubunuzda ağ arabirimini oluşturmak için [New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface) cmdlet 'ini kullanın. Daha önce tanımlanan adı, konumu, alt ağı ve genel IP adresini belirtin.
 
 Ağ arabiriminizi oluşturmak için bu cmdlet 'i çalıştırın.
 
@@ -265,7 +265,7 @@ Depolama ve ağ kaynakları tanımlandığına göre, sanal makine için işlem 
 
 ### <a name="create-the-vm-object"></a>VM nesnesi oluşturma
 
-Sanal makine boyutunu belirterek başlayın. Bu öğretici için bir DS13 belirtin. Yapılandırılabilir bir sanal makine nesnesi oluşturmak için [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) cmdlet 'ini kullanın. Ad ve boyut için daha önce oluşturduğunuz değişkenleri belirtin.
+Sanal makine boyutunu belirterek başlayın. Bu öğretici için bir DS13 belirtin. Yapılandırılabilir bir sanal makine nesnesi oluşturmak için [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) cmdlet 'ini kullanın. Ad ve boyut için daha önce oluşturduğunuz değişkenleri belirtin.
 
 Sanal makine nesnesini oluşturmak için bu cmdlet 'i çalıştırın.
 
@@ -275,7 +275,7 @@ $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 
 ### <a name="create-a-credential-object-to-hold-the-name-and-password-for-the-local-administrator-credentials"></a>Yerel yönetici kimlik bilgileri için adı ve parolayı tutacak bir kimlik bilgisi nesnesi oluşturun
 
-Sanal makine için işletim sistemi özelliklerini ayarlamadan önce, yerel yönetici hesabının kimlik bilgilerini güvenli bir dize olarak sağlamanız gerekir. Bunu gerçekleştirmek için [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) cmdlet 'ini kullanın.
+Sanal makine için işletim sistemi özelliklerini ayarlamadan önce, yerel yönetici hesabının kimlik bilgilerini güvenli bir dize olarak sağlamanız gerekir. Bunu gerçekleştirmek için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) cmdlet 'ini kullanın.
 
 Aşağıdaki cmdlet 'i çalıştırın. PowerShell kimlik bilgileri istek penceresine VM 'nin yerel yönetici adını ve parolasını yazmanız gerekir.
 
@@ -285,7 +285,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>Sanal makine için işletim sistemi özelliklerini ayarla
 
-Artık, sanal makinenin işletim sistemi özelliklerini [set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) cmdlet 'i ile ayarlamaya hazırsınız.
+Artık, sanal makinenin işletim sistemi özelliklerini [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) cmdlet 'i ile ayarlamaya hazırsınız.
 
 - İşletim sisteminin türünü Windows olarak ayarlayın.
 - [Sanal makine aracısının](../../../virtual-machines/extensions/agent-windows.md) yüklenmesini gerektir.
@@ -302,7 +302,7 @@ $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine `
 
 ### <a name="add-the-network-interface-to-the-virtual-machine"></a>Ağ arabirimini sanal makineye Ekle
 
-Ardından, daha önce tanımladığınız değişkeni kullanarak ağ arabirimini eklemek için [Add-Azvmnetworkınterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) cmdlet 'ini kullanın.
+Ardından, daha önce tanımladığınız değişkeni kullanarak ağ arabirimini eklemek için [Add-Azvmnetworkınterface](/powershell/module/az.compute/add-azvmnetworkinterface) cmdlet 'ini kullanın.
 
 Sanal makinenizin ağ arabirimini ayarlamak için bu cmdlet 'i çalıştırın.
 
@@ -322,7 +322,7 @@ $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDis
 
 ### <a name="set-the-operating-system-disk-properties-for-the-virtual-machine"></a>Sanal makine için işletim sistemi diski özelliklerini ayarla
 
-Sonra, [set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) cmdlet 'ini kullanarak sanal makine için işletim sistemi disk özelliklerini ayarlayın. 
+Sonra, [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) cmdlet 'ini kullanarak sanal makine için işletim sistemi disk özelliklerini ayarlayın. 
 
 - Sanal makinenin işletim sisteminin bir görüntüden gelmesini belirtin.
 - Önbelleğe almayı salt okunurdur (SQL Server aynı diske yüklenmekte olduğundan) ayarlayın.
@@ -337,7 +337,7 @@ $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name `
 
 ### <a name="specify-the-platform-image-for-the-virtual-machine"></a>Sanal makine için platform görüntüsünü belirtin
 
-Son yapılandırma adımı, sanal makineniz için platform görüntüsünü belirtmektir. Bu öğretici için en son SQL Server 2016 CTP görüntüsünü kullanın. Bu görüntüyü daha önce tanımladığınız değişkenlerle birlikte kullanmak için [set-Azvmsourceımage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) cmdlet 'ini kullanın.
+Son yapılandırma adımı, sanal makineniz için platform görüntüsünü belirtmektir. Bu öğretici için en son SQL Server 2016 CTP görüntüsünü kullanın. Bu görüntüyü daha önce tanımladığınız değişkenlerle birlikte kullanmak için [set-Azvmsourceımage](/powershell/module/az.compute/set-azvmsourceimage) cmdlet 'ini kullanın.
 
 Sanal makinenizin platform görüntüsünü belirtmek için bu cmdlet 'i çalıştırın.
 
@@ -349,7 +349,7 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine `
 
 ## <a name="create-the-sql-vm"></a>SQL VM'sini oluşturma
 
-Yapılandırma adımlarını tamamladığınıza göre, sanal makineyi oluşturmaya hazırsınız demektir. Tanımladığınız değişkenleri kullanarak sanal makineyi oluşturmak için [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'ini kullanın.
+Yapılandırma adımlarını tamamladığınıza göre, sanal makineyi oluşturmaya hazırsınız demektir. Tanımladığınız değişkenleri kullanarak sanal makineyi oluşturmak için [New-AzVM](/powershell/module/az.compute/new-azvm) cmdlet 'ini kullanın.
 
 > [!TIP]
 > Sanal makine oluşturulması birkaç dakika sürebilir.

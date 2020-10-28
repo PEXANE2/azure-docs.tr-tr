@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 46d8aab74f658b039fe07acab82f324ec6ad731f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8c94e36a1a6d1f675e9d6a7dde456dbf6eb8897
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777080"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791367"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>SQL veritabanı ve SQL yönetilen örneği 'nde geçici bağlantı hatalarıyla ilgili sorunları giderme
 
@@ -31,7 +31,7 @@ Bu makalede, bağlantı hatalarının ve istemci uygulamanızın Azure SQL verit
 
 Geçici hata olarak da bilinen geçici bir hata, kendisini en kısa sürede çözümleyen bir hataya sahiptir. Geçici hataların geçici bir nedeni, Azure sisteminin çeşitli iş yüklerinin daha iyi yük dengelenmesi için donanım kaynaklarını hızlı bir şekilde kaydırır. Bu yeniden yapılandırma olaylarının çoğu 60 saniyeden az bir süre içinde tamamlanır. Bu yeniden yapılandırma süresi boyunca, SQL veritabanı 'nda veritabanınıza bağlanma sorunlarıyla karşılaşabilirsiniz. Veritabanınıza bağlanan uygulamalar, bu geçici hataların beklenildiği için oluşturulmalıdır. Bunları işlemek için, kullanıcıların uygulama hataları olarak kullanıcılara sunulmasını sağlamak yerine, yeniden deneme mantığını uygulayın.
 
-İstemci programınız ADO.NET kullanıyorsa, programınız **SqlException**throw tarafından geçici hata ile bildirilir.
+İstemci programınız ADO.NET kullanıyorsa, programınız **SqlException** throw tarafından geçici hata ile bildirilir.
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -70,7 +70,7 @@ Bazen geçici bir hatayla karşılaşan istemci programları, yeniden deneme man
 
 İlk yeniden denemeden önce 5 saniye beklemeniz önerilir. 5 saniyelik riskden daha kısa bir gecikme sonrasında bulut hizmeti 'nin yeniden denenmesi. Sonraki her yeniden deneme için, gecikme en fazla 60 saniyeye kadar üstel olarak artar.
 
-ADO.NET kullanan istemciler için engelleme süresi hakkında bir tartışma için bkz. [bağlantı havuzu (ADO.net)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
+ADO.NET kullanan istemciler için engelleme süresi hakkında bir tartışma için bkz. [bağlantı havuzu (ADO.net)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 Ayrıca, programın kendiliğinden sonlandırmadan önce en fazla yeniden deneme sayısını ayarlamak isteyebilirsiniz.
 
@@ -126,17 +126,17 @@ Bu testi pratik hale getirmek için programınız programın şunları yapmasın
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>Bağlantı yeniden deneme için .NET SqlConnection parametreleri
 
-İstemci programınız **System. Data. SqlClient. SqlConnection**.NET Framework Class ' ı kullanarak SQL veritabanında veritabanınıza bağlanıyorsa, bağlantı yeniden deneme özelliğini kullanabilmeniz için .NET 4.6.1 veya üstünü (veya .NET Core) kullanın. Özelliği hakkında daha fazla bilgi için bkz. [SqlConnection. ConnectionString özelliği](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true).
+İstemci programınız **System. Data. SqlClient. SqlConnection** .NET Framework Class ' ı kullanarak SQL veritabanında veritabanınıza bağlanıyorsa, bağlantı yeniden deneme özelliğini kullanabilmeniz için .NET 4.6.1 veya üstünü (veya .NET Core) kullanın. Özelliği hakkında daha fazla bilgi için bkz. [SqlConnection. ConnectionString özelliği](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
 
-**SqlConnection** nesneniz için [bağlantı dizesi](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) oluşturduğunuzda, değerleri aşağıdaki parametreler arasında koordine edin:
+**SqlConnection** nesneniz için [bağlantı dizesi](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring) oluşturduğunuzda, değerleri aşağıdaki parametreler arasında koordine edin:
 
-- **ConnectRetryCount**: &nbsp; &nbsp; varsayılan 1 ' dir. Aralık 0 ile 255 arasındadır.
-- **ConnectRetryInterval**: &nbsp; &nbsp; varsayılan değer 10 saniyedir. Aralık 1 ile 60 arasındadır.
-- **Bağlantı zaman aşımı**: &nbsp; &nbsp; varsayılan 15 saniyedir. Aralık 0 ile 2147483647 arasındadır.
+- **ConnectRetryCount** : &nbsp; &nbsp; varsayılan 1 ' dir. Aralık 0 ile 255 arasındadır.
+- **ConnectRetryInterval** : &nbsp; &nbsp; varsayılan değer 10 saniyedir. Aralık 1 ile 60 arasındadır.
+- **Bağlantı zaman aşımı** : &nbsp; &nbsp; varsayılan 15 saniyedir. Aralık 0 ile 2147483647 arasındadır.
 
 Özellikle, seçtiğiniz değerler aşağıdaki eşitliği doğru hale getirir: bağlantı zaman aşımı = ConnectRetryCount * Connectionretryınterval
 
@@ -189,7 +189,7 @@ Genellikle, istemci programınızı barındıran bilgisayardaki giden iletişim 
 Örneğin, istemci programınız bir Windows bilgisayarında barındırılıyorsa, 1433 numaralı bağlantı noktasını açmak için konakta Windows Güvenlik Duvarı 'nı kullanabilirsiniz.
 
 1. Denetim Masası'nı açın.
-2. **Tüm Denetim Masası öğeleri**  >  **Windows Güvenlik Duvarı**  >  **Gelişmiş ayarlar**  >  **giden kuralları**  >  **Eylemler**  >  **Yeni kural**' ı seçin.
+2. **Tüm Denetim Masası öğeleri**  >  **Windows Güvenlik Duvarı**  >  **Gelişmiş ayarlar**  >  **giden kuralları**  >  **Eylemler**  >  **Yeni kural** ' ı seçin.
 
 İstemci programınız bir Azure sanal makinesinde (VM) barındırılıyorsa, [ADO.NET 4,5 ve SQL veritabanı için 1433 ' den sonraki bağlantı noktalarını](adonet-v12-develop-direct-route-ports.md)okuyun.
 
@@ -227,7 +227,7 @@ Programınız SQL veritabanı 'nda veritabanınıza bağlanamıyorsa, tek bir ta
 Herhangi bir Windows bilgisayarında, bu yardımcı programları deneyebilirsiniz:
 
 - ADO.NET kullanarak bağlanan SQL Server Management Studio (ssms.exe)
-- `sqlcmd.exe`, [ODBC](https://msdn.microsoft.com/library/jj730308.aspx) kullanarak bağlanan
+- `sqlcmd.exe`, [ODBC](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server) kullanarak bağlanan
 
 Programınız bağlandıktan sonra, kısa bir SQL SELECT sorgusunun çalışıp çalışmadığını test edin.
 
@@ -268,7 +268,7 @@ Aralıklı bir sorun bazen gün veya hafta içinde genel bir düzenin algılanma
 
 İstemciniz, karşılaştığı tüm hataları günlüğe kaydederek bir tanılamada yardımcı olabilir. Günlük girişlerini SQL veritabanı 'nın kendisini kendi kendine kaydettiği hata verileriyle ilişkilendirebileceksiniz.
 
-Enterprise Library 6 (EntLib60), günlüğe kaydetmeye yardımcı olacak .NET yönetilen sınıfları sağlar. Daha fazla bilgi için bkz. [5-bir günlüğün altına düşme kadar kolay: günlük uygulama bloğunu kullanın](https://msdn.microsoft.com/library/dn440731.aspx).
+Enterprise Library 6 (EntLib60), günlüğe kaydetmeye yardımcı olacak .NET yönetilen sınıfları sağlar. Daha fazla bilgi için bkz. [5-bir günlüğün altına düşme kadar kolay: günlük uygulama bloğunu kullanın](/previous-versions/msp-n-p/dn440731(v=pandp.60)).
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
@@ -278,8 +278,8 @@ Hata günlüklerini ve diğer bilgileri sorgulayan bazı Transact-SQL SELECT dey
 
 | Günlük sorgusu | Açıklama |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx) görünümü, geçici hatalara veya bağlantı hatalarına neden olabilecek bazı olaylar hakkında bilgi sunar.<br/><br/>İdeal olarak, **start_time** veya **end_time** değerlerini, istemci programınızın sorun yaşadığında ilgili bilgilerle ilişkilendirebiliriz.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) görünümü, ek Tanılamalar için toplanan olay türleri sayısını sağlar.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys.event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database) görünümü, geçici hatalara veya bağlantı hatalarına neden olabilecek bazı olaylar hakkında bilgi sunar.<br/><br/>İdeal olarak, **start_time** veya **end_time** değerlerini, istemci programınızın sorun yaşadığında ilgili bilgilerle ilişkilendirebiliriz.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database) görünümü, ek Tanılamalar için toplanan olay türleri sayısını sağlar.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
@@ -326,9 +326,9 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 ## <a name="enterprise-library-6"></a>Kuruluş kitaplığı 6
 
-Enterprise Library 6 (EntLib60), biri SQL veritabanı olan bulut hizmetlerinden oluşan güçlü istemcileri uygulamanıza yardımcı olan bir .NET sınıfları çerçevesidir. EntLib60 'in yardımcı olduğu her bir alana adanmış konuları bulmak için bkz. [Enterprise Library 6-nisan 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
+Enterprise Library 6 (EntLib60), biri SQL veritabanı olan bulut hizmetlerinden oluşan güçlü istemcileri uygulamanıza yardımcı olan bir .NET sınıfları çerçevesidir. EntLib60 'in yardımcı olduğu her bir alana adanmış konuları bulmak için bkz. [Enterprise Library 6-nisan 2013](/previous-versions/msp-n-p/dn169621(v=pandp.10)).
 
-Geçici hataları işlemek için yeniden deneme mantığı, EntLib60 'in yardımcı olabilecek tek bir alandır. Daha fazla bilgi için bkz. [4-Perseverance, tüm üç aylık gizlilik: geçici hata Işleme uygulama bloğunu kullanma](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
+Geçici hataları işlemek için yeniden deneme mantığı, EntLib60 'in yardımcı olabilecek tek bir alandır. Daha fazla bilgi için bkz. [4-Perseverance, tüm üç aylık gizlilik: geçici hata Işleme uygulama bloğunu kullanma](/previous-versions/msp-n-p/dn440719(v=pandp.60)).
 
 > [!NOTE]
 > EntLib60 için kaynak kodu, [Indirme merkezinden](https://go.microsoft.com/fwlink/p/?LinkID=290898)genel karşıdan yükleme için kullanılabilir. Microsoft 'un EntLib 'e daha fazla özellik güncelleştirmesi veya bakım güncelleştirmesi yapma planı yoktur.
@@ -337,9 +337,9 @@ Geçici hataları işlemek için yeniden deneme mantığı, EntLib60 'in yardım
 
 ### <a name="entlib60-classes-for-transient-errors-and-retry"></a>Geçici hatalar için EntLib60 sınıfları ve yeniden dene
 
-Aşağıdaki EntLib60 sınıfları, yeniden deneme mantığı için özellikle kullanışlıdır. Bu sınıfların tümü, **Microsoft. Yöntemler. EnterpriseLibrary. TransientFaultHandling**ad alanı altında veya altında bulunur.
+Aşağıdaki EntLib60 sınıfları, yeniden deneme mantığı için özellikle kullanışlıdır. Bu sınıfların tümü, **Microsoft. Yöntemler. EnterpriseLibrary. TransientFaultHandling** ad alanı altında veya altında bulunur.
 
-**Microsoft. Yöntemler. EnterpriseLibrary. TransientFaultHandling**ad alanında:
+**Microsoft. Yöntemler. EnterpriseLibrary. TransientFaultHandling** ad alanında:
 
 - **Retrypolicy** sınıfı
   - **ExecuteAction** yöntemi
@@ -348,7 +348,7 @@ Aşağıdaki EntLib60 sınıfları, yeniden deneme mantığı için özellikle k
 - **Reliablesqlconnection** sınıfı
   - **ExecuteCommand** yöntemi
 
-**Microsoft. Yöntemler. EnterpriseLibrary. TransientFaultHandling. TestSupport**ad alanında:
+**Microsoft. Yöntemler. EnterpriseLibrary. TransientFaultHandling. TestSupport** ad alanında:
 
 - **AlwaysTransientErrorDetectionStrategy** sınıfı
 - **NeverTransientErrorDetectionStrategy** sınıfı
@@ -369,7 +369,7 @@ EntLib60 hakkındaki bilgilerin bazı bağlantıları aşağıda verilmiştir:
   - Hata ayıklama ve izleme için yararlı olan bağlamsal bilgileri, ayrıca denetim ve genel günlük gereksinimlerini toplayın.
 - Günlüğe kaydetme bloğu, hedef günlük deposunun konumu ve türü ne olursa olsun, uygulama kodunun tutarlı olması için günlük hedefinden günlük oluşturma işlevini soyutlar.
 
-Daha fazla bilgi için bkz. [5-bir günlüğün altına düşme kadar kolay: günlük uygulama bloğunu kullanın](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx).
+Daha fazla bilgi için bkz. [5-bir günlüğün altına düşme kadar kolay: günlük uygulama bloğunu kullanın](/previous-versions/msp-n-p/dn440731(v=pandp.60)).
 
 <a id="entlib60-istransient-method-source-code" name="entlib60-istransient-method-source-code"></a>
 
@@ -446,11 +446,11 @@ public bool IsTransient(Exception ex)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [SQL veritabanı ve SQL Server için bağlantı kitaplıkları](connect-query-content-reference-guide.md#libraries)
-- [Bağlantı havuzu (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
+- [Bağlantı havuzu (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)
 - Yeniden deneme, yalnızca bir şey için yeniden deneme davranışı ekleme görevini basitleştirmek için [ *Retrying* Python 'Da yazılmış bir Apache 2,0 lisanslı genel amaçlı yeniden deneme kitaplığıdır](https://pypi.python.org/pypi/retrying) .
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 
-[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
+[step-4-connect-resiliently-to-sql-with-php-p42h]: /sql/connect/php/step-4-connect-resiliently-to-sql-with-php

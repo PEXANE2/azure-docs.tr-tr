@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a7026757651d1b0510293101203f41a651c7b851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ac4f41a36a2a18a65816be5ea74e88d0b364294
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850974"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789072"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>App Service için Azure Defender 'a giriş
 
@@ -50,7 +50,7 @@ Azure App Service planınızı App Service Azure Defender ile korumak için:
 Güvenlik Merkezi, App Service ile yerel olarak tümleşiktir ve dağıtım ve ekleme gereksinimini ortadan kaldırır; tümleştirme saydamdır.
 
 >[!NOTE]
-> Fiyatlandırma ve Ayarlar sayfasında, **kaynak miktarlarınız**için bir dizi örnek listelenir. Bu, Fiyatlandırma Katmanı sayfasını açtığınız sırada çalışan Bu abonelikteki tüm App Service planlardaki toplam işlem örneği sayısını temsil eder.
+> Fiyatlandırma ve Ayarlar sayfasında, **kaynak miktarlarınız** için bir dizi örnek listelenir. Bu, Fiyatlandırma Katmanı sayfasını açtığınız sırada çalışan Bu abonelikteki tüm App Service planlardaki toplam işlem örneği sayısını temsil eder.
 >
 > Azure App Service çeşitli planlar sunmaktadır. App Service planınız bir Web uygulamasının çalışması için işlem kaynakları kümesini tanımlar. Bunlar geleneksel web barındırma içindeki sunucu grupları ile eşdeğerdir. Bir veya daha fazla uygulama aynı bilgi işlem kaynaklarında (veya aynı App Service planında) çalışacak şekilde yapılandırılabilir.
 >
@@ -64,7 +64,7 @@ Bu makalede, App Service için Azure Defender hakkında bilgi edindiniz.
 
 İlgili malzemeler için aşağıdaki makalelere bakın: 
 
-- Bir uyarının Güvenlik Merkezi tarafından oluşturulup oluşturulmadığı veya Güvenlik Merkezi tarafından farklı bir güvenlik ürününden alınıp alınmayacağı, dışarı aktarabilirsiniz. Uyarılarınızı Azure Sentinel 'e, herhangi bir üçüncü taraf SıEM 'e veya herhangi bir harici araca aktarmak için [uyarıları BIR SıEM 'ye aktarma](continuous-export.md)konusundaki yönergeleri izleyin.
+- Bir uyarının Güvenlik Merkezi tarafından oluşturulup oluşturulmadığı veya Güvenlik Merkezi tarafından farklı bir güvenlik ürününden alınıp alınmayacağı, dışarı aktarabilirsiniz. Uyarılarınızı Azure Sentinel 'e, herhangi bir üçüncü taraf SıEM 'e veya herhangi bir harici araca aktarmak için, [BIR SıEM, SOAR veya BT hizmet yönetimi çözümüne akış uyarıları](export-to-siem.md)içindeki yönergeleri izleyin.
 - Azure App Service uyarılarının listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-azureappserv)bakın.
 - App Service planları hakkında daha fazla bilgi için bkz. [App Service planları](https://azure.microsoft.com/pricing/details/app-service/plans/).
 - > [!div class="nextstepaction"]

@@ -10,12 +10,12 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: aa4bcee7a2eaf5e6ec11b9066ed6eca6b33bdba1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcf11ef9b64a02383aad5175c19c5db58c3c39cf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284134"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791350"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile bağlantı sorunlarını ve diğer hataları giderme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,19 +24,19 @@ Azure SQL veritabanı veya Azure SQL yönetilen örneği bağlantısı başarıs
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Geçici hata hata iletileri (40197, 40613 ve diğerleri)
 
-Azure altyapısının SQL Veritabanı hizmetinde ağır iş yükleri ortaya çıktığında sunucuları dinamik olarak yeniden yapılandırabilme özelliği vardır.  Bu dinamik davranış, istemci programınızın veritabanı veya örnekle olan bağlantısını kaybetmesine neden olabilir. Bu tür bir hata koşuluna *geçici*bir hata denir. Planlanmış bir olay (örneğin, yazılım yükseltmesi) veya plansız bir olay (örneğin, bir işlem kilitlenmesi veya yük dengeleme) nedeniyle veritabanı yeniden yapılandırma olayları meydana gelir. En yeniden yapılandırma olaylarının çoğu genellikle kısa süreli olur ve en çok 60 saniyeden kısa bir süre içinde tamamlanmalıdır. Ancak, büyük bir işlemin uzun süre çalışan bir kurtarmaya neden olduğu gibi, bu olayların zaman zaman tamamlanması daha uzun sürebilir. Aşağıdaki tabloda, SQL veritabanına bağlanırken uygulamaların alabileceği çeşitli geçici hatalar listelenmektedir
+Azure altyapısının SQL Veritabanı hizmetinde ağır iş yükleri ortaya çıktığında sunucuları dinamik olarak yeniden yapılandırabilme özelliği vardır.  Bu dinamik davranış, istemci programınızın veritabanı veya örnekle olan bağlantısını kaybetmesine neden olabilir. Bu tür bir hata koşuluna *geçici* bir hata denir. Planlanmış bir olay (örneğin, yazılım yükseltmesi) veya plansız bir olay (örneğin, bir işlem kilitlenmesi veya yük dengeleme) nedeniyle veritabanı yeniden yapılandırma olayları meydana gelir. En yeniden yapılandırma olaylarının çoğu genellikle kısa süreli olur ve en çok 60 saniyeden kısa bir süre içinde tamamlanmalıdır. Ancak, büyük bir işlemin uzun süre çalışan bir kurtarmaya neden olduğu gibi, bu olayların zaman zaman tamamlanması daha uzun sürebilir. Aşağıdaki tabloda, SQL veritabanına bağlanırken uygulamaların alabileceği çeşitli geçici hatalar listelenmektedir
 
 ### <a name="list-of-transient-fault-error-codes"></a>Geçici hata hata kodları listesi
 
 | Hata kodu | Önem Derecesi | Açıklama |
 | ---:| ---:|:--- |
-| 4060 |16 |Oturum açma tarafından istenen "%. &#x2a;ls" veritabanı açılamıyor. Oturum açılamadı. Daha fazla bilgi için bkz. [hatalar 4000-4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
+| 4060 |16 |Oturum açma tarafından istenen "%. &#x2a;ls" veritabanı açılamıyor. Oturum açılamadı. Daha fazla bilgi için bkz. [hatalar 4000-4999](/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
 | 40197 |17 |Hizmet, isteğinizi işlerken bir hatayla karşılaştı. Lütfen tekrar deneyin. Hata kodu% d.<br/><br/>Yazılım veya donanım yükseltmeleri, donanım hataları veya diğer yük devretme sorunları nedeniyle bu hatayı alırsınız. 40197 hatası iletisi içinde gömülü hata kodu (% d), hata veya yük devretme türü hakkında ek bilgiler sağlar. Hata kodlarının bazı örnekleri 40020 40197, 40143, 40166 ve 40540 hata koduna katıştırılır.<br/><br/>Yeniden bağlanma, sizi veritabanınızın sağlıklı bir kopyasına otomatik olarak bağlar. Uygulamanız hata 40197 ' i yakalamalı, sorun giderme için ileti içinde katıştırılmış hata kodunu (% d) günlüğe kaydedin ve kaynaklar kullanılabilir olana kadar SQL veritabanı 'na yeniden bağlanmayı deneyin ve bağlantınız yeniden oluşturulur. Daha fazla bilgi için bkz. [geçici hatalar](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
 | 40501 |20 |Hizmet şu an meşgul. 10 saniye sonra isteği yeniden deneyin. Olay KIMLIĞI:% ls. Kod:% d. Daha fazla bilgi için bkz. <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md).|
 | 40613 |17 |'%. &#x2a;ls ' sunucusundaki '%. &#x2a;ls ' veritabanı şu anda kullanılamıyor. Lütfen bağlantıyı daha sonra yeniden deneyin. Sorun devam ederse, müşteri desteğine başvurun ve '%. &#x2a;ls ' öğesinin oturum izleme KIMLIĞINI sağlayın.<br/><br/> Bu hata, veritabanında zaten var olan bir ayrılmış yönetici bağlantısı (DAC) varsa meydana gelebilir. Daha fazla bilgi için bkz. [geçici hatalar](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
 | 49918 |16 |İsteği işlenemiyor. İsteği işlemek için yeterli kaynak yok.<br/><br/>Hizmet şu an meşgul. Lütfen isteği daha sonra yeniden deneyin. Daha fazla bilgi için bkz. <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). |
-| 49919 |16 |Oluşturma veya güncelleştirme isteği işlenemiyor. "% Ld" aboneliği için çok fazla sayıda oluşturma veya güncelleştirme işlemi sürüyor.<br/><br/>Hizmet, aboneliğiniz veya sunucunuz için birden çok oluşturma veya güncelleştirme isteğini işlemekle meşgul. İstekler Şu anda kaynak iyileştirmesi için engelleniyor. Bekleyen işlemler için sorgu [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) . Bekleyen oluşturma veya güncelleştirme isteklerinin tamamlanmasını bekleyin veya bekleyen isteklerinizin birini silip isteğinizi daha sonra yeniden deneyin. Daha fazla bilgi için bkz. <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). |
-| 49920 |16 |İsteği işlenemiyor. "% Ld" aboneliği için çok fazla işlem devam ediyor.<br/><br/>Hizmet, bu abonelik için birden çok isteği işlemekle meşgul. İstekler Şu anda kaynak iyileştirmesi için engelleniyor. İşlem durumu için sorgu [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) . Bekleyen istekler tamamlanana kadar bekleyin veya bekleyen isteklerinizin birini silip isteğinizi daha sonra yeniden deneyin. Daha fazla bilgi için bkz. <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). |
+| 49919 |16 |Oluşturma veya güncelleştirme isteği işlenemiyor. "% Ld" aboneliği için çok fazla sayıda oluşturma veya güncelleştirme işlemi sürüyor.<br/><br/>Hizmet, aboneliğiniz veya sunucunuz için birden çok oluşturma veya güncelleştirme isteğini işlemekle meşgul. İstekler Şu anda kaynak iyileştirmesi için engelleniyor. Bekleyen işlemler için sorgu [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) . Bekleyen oluşturma veya güncelleştirme isteklerinin tamamlanmasını bekleyin veya bekleyen isteklerinizin birini silip isteğinizi daha sonra yeniden deneyin. Daha fazla bilgi için bkz. <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). |
+| 49920 |16 |İsteği işlenemiyor. "% Ld" aboneliği için çok fazla işlem devam ediyor.<br/><br/>Hizmet, bu abonelik için birden çok isteği işlemekle meşgul. İstekler Şu anda kaynak iyileştirmesi için engelleniyor. İşlem durumu için sorgu [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) . Bekleyen istekler tamamlanana kadar bekleyin veya bekleyen isteklerinizin birini silip isteğinizi daha sonra yeniden deneyin. Daha fazla bilgi için bkz. <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). |
 | 4221 |16 |' HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING ' üzerinde uzun bekleme nedeniyle okuma-ikincil için oturum açma başarısız oldu. Çoğaltma geri dönüştürüldüğünde, uçuşdaki işlemler için satır sürümleri eksik olduğundan, çoğaltma oturum açma için kullanılamıyor. Bu sorun, birincil çoğaltmadaki etkin işlemler geri alınarak veya uygulanırken çözülebilir. Bu koşulun oluşumları, birincil üzerinde uzun yazma işlemlerinden kaçınılarak en aza indirgenebilir. |
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Geçici bağlantı sorunlarını giderme adımları
@@ -52,12 +52,12 @@ Azure altyapısının SQL Veritabanı hizmetinde ağır iş yükleri ortaya çı
 
 Yeniden deneme mantığına ait kod örnekleri için bkz.:
 
-- [Dayanıklı bağlantısı 'i ADO.NET ile SQL 'e bağlama](https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net)
-- [PHP ile dayanıklı bağlantısı 'i SQL 'e bağlama](https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+- [Dayanıklı bağlantısı 'i ADO.NET ile SQL 'e bağlama](/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net)
+- [PHP ile dayanıklı bağlantısı 'i SQL 'e bağlama](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
 
 Uygulamanızda geçici hataları işleme hakkında daha fazla bilgi için, [SQL veritabanı 'na geçici bağlantı hatalarını giderme](troubleshoot-common-connectivity-issues.md) makalesini inceleyin
 
-ADO.NET kullanan istemciler için *engelleme süresi* hakkında bir tartışma, [bağlantı havuzu 'nda (ADO.net)](https://msdn.microsoft.com/library/8xx3tyca.aspx)kullanılabilir.
+ADO.NET kullanan istemciler için *engelleme süresi* hakkında bir tartışma, [bağlantı havuzu 'nda (ADO.net)](/dotnet/framework/data/adonet/sql-server-connection-pooling)kullanılabilir.
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-your-server"></a>Sunucunuza bağlantı kurulurken ağla ilgili veya örneğe özgü bir hata oluştu
 
@@ -119,7 +119,7 @@ Genellikle, hizmet Yöneticisi oturum açma kimlik bilgilerini eklemek için aş
 4. SQL oturum açma Kullanıcı adı yoksa, aşağıdaki adımları izleyerek oluşturun:
 
    1. SSMS 'de **güvenlik** ' e çift tıklayarak genişletin.
-   2. **Oturum açmalar**' a sağ tıklayın ve ardından **yeni oturum açma**' yı seçin.
+   2. **Oturum açmalar** ' a sağ tıklayın ve ardından **yeni oturum açma** ' yı seçin.
    3. Oluşturulan betikte yer tutucuları olan aşağıdaki SQL sorgusunu düzenleyin ve çalıştırın:
 
    ```sql
@@ -128,10 +128,10 @@ Genellikle, hizmet Yöneticisi oturum açma kimlik bilgilerini eklemek için aş
    GO
    ```
 
-5. **Veritabanı**' na çift tıklayın.
+5. **Veritabanı** ' na çift tıklayın.
 6. Kullanıcı iznini vermek istediğiniz veritabanını seçin.
-7. **Güvenlik**' e çift tıklayın.
-8. **Kullanıcılar**' a sağ tıklayın ve ardından **Yeni Kullanıcı**' yı seçin.
+7. **Güvenlik** ' e çift tıklayın.
+8. **Kullanıcılar** ' a sağ tıklayın ve ardından **Yeni Kullanıcı** ' yı seçin.
 9. Oluşturulan betikte yer tutucuları olan aşağıdaki SQL sorgusunu düzenleyin ve çalıştırın:
 
    ```sql
@@ -148,7 +148,7 @@ Genellikle, hizmet Yöneticisi oturum açma kimlik bilgilerini eklemek için aş
    > [!NOTE]
    > Belirli `sp_addrolemember` kullanıcıları belirli veritabanı rollerine eşlemek için de kullanabilirsiniz.
 
-Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda veritabanlarını ve oturum açma Işlemlerini yönetme](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
+Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda veritabanlarını ve oturum açma Işlemlerini yönetme](./logins-create-manage.md).
 
 ## <a name="connection-timeout-expired-errors"></a>Bağlantı zaman aşımı süresi doldu hataları
 
@@ -185,7 +185,7 @@ Bu sorunu geçici olarak çözmek için aşağıdaki yöntemlerden birini deneyi
   > [!NOTE]
   > Bu, sorunu çözemeyebilir bir en az aList yaklaşımdır.
 
-1. Tüm engelleyici istekleri görmek için [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) görünümünü denetlemek üzere aşağıdaki SQL sorgusunu çalıştırın:
+1. Tüm engelleyici istekleri görmek için [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) görünümünü denetlemek üzere aşağıdaki SQL sorgusunu çalıştırın:
 
    ```sql
    SELECT * FROM dm_exec_requests
@@ -194,13 +194,13 @@ Bu sorunu geçici olarak çözmek için aşağıdaki yöntemlerden birini deneyi
 2. Baş engelleyicisinin **giriş arabelleğini** belirleme.
 3. Baş engelleyici sorgusunu ayarlayın.
 
-   Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+   Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 Veritabanı, adresleme ve uzun süre çalışan sorgulara rağmen sürekli olarak sınırına ulaşırsa, daha fazla kaynak [sürümü](https://azure.microsoft.com/pricing/details/sql-database/)olan bir sürüme yükseltmeyi göz önünde bulundurun.
 
-Dinamik yönetim görünümleri hakkında daha fazla bilgi için bkz. [sistem dinamik yönetim görünümleri](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
+Dinamik yönetim görünümleri hakkında daha fazla bilgi için bkz. [sistem dinamik yönetim görünümleri](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
 
-Veritabanı limitleri hakkında daha fazla bilgi için bkz.  [sunucular Için SQL veritabanı kaynak sınırları](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server).
+Veritabanı limitleri hakkında daha fazla bilgi için bkz.  [sunucular Için SQL veritabanı kaynak sınırları](./resource-limits-logical-server.md).
 
 ### <a name="error-10929-resource-id-1"></a>Hata 10929: kaynak KIMLIĞI: 1
 
@@ -212,7 +212,7 @@ Veritabanı limitleri hakkında daha fazla bilgi için bkz.  [sunucular Için SQ
 
 Bu bir altyapı azaltma hatası, kaynak limitlerinin aşıldığını belirten bir gösterge.
 
-Kaynak limitleri hakkında daha fazla bilgi için bkz. [MANTıKSAL SQL Server Kaynak sınırları](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server).
+Kaynak limitleri hakkında daha fazla bilgi için bkz. [MANTıKSAL SQL Server Kaynak sınırları](./resource-limits-logical-server.md).
 
 ### <a name="error-40544-the-database-has-reached-its-size-quota"></a>Hata 40544: veritabanı boyut kotasına ulaştı
 
@@ -242,7 +242,7 @@ Aşağıdaki adımlar, sorunu geçici olarak gidermenize veya size ek seçenekle
 
    - Normal veritabanı temizleme etkinliklerini gerçekleştirin. Örneğin, kesme/silme veya SQL Server Integration Services (SSIS) veya toplu kopyalama programı (bcp) yardımcı programını kullanarak istenmeyen verileri temizleyin.
    - Verileri bölümleyin veya silin, dizinleri bırakın veya olası çözümler için belgelere başvurun.
-   - Veritabanı Ölçeklendirme için bkz. [tek veritabanı kaynaklarını ölçeklendirme](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-scale) ve [elastik havuz kaynaklarını ölçeklendirme](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool-scale).
+   - Veritabanı Ölçeklendirme için bkz. [tek veritabanı kaynaklarını ölçeklendirme](./single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](./elastic-pool-scale.md).
 
 ### <a name="error-40549-session-is-terminated-because-you-have-a-long-running-transaction"></a>Hata 40549: uzun süre çalışan bir işlem olduğu için oturum sonlandırıldı
 
@@ -259,9 +259,9 @@ Bu hatayla sürekli olarak karşılaşırsanız, bu adımları izleyerek sorunu 
 2. Uzun süre çalışan sorgunun giriş arabelleğini belirleme.
 3. Sorguyu ayarlayın.
 
-Ayrıca, sorgularınızı toplu olarak da düşünün. Toplu işleme hakkında bilgi için bkz. [SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance).
+Ayrıca, sorgularınızı toplu olarak da düşünün. Toplu işleme hakkında bilgi için bkz. [SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma](../performance-improve-use-batching.md).
 
-Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Hata 40551: çok sayıda TEMPDB kullanımı nedeniyle oturum sonlandırıldı
 
@@ -292,7 +292,7 @@ Toplu işlem veya birden çok daha küçük işleme bölme uygulayarak hemen üz
 
 Bu sorunu geçici olarak çözmek için sorguyu iyileştirmeden çalışın.
 
-Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>Ek kaynak idare hata iletileri tablosu
 
@@ -303,7 +303,7 @@ Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel ç
 | 40544 |20 |Veritabanı boyut kotasına ulaştı. Verileri bölümleyin veya silin, dizinleri bırakın veya olası çözümler için belgelere başvurun. Veritabanı Ölçeklendirme için bkz. [tek veritabanı kaynaklarını ölçeklendirme](single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).|
 | 40549 |16 |Uzun süre çalışan bir işlem olduğu için oturum sonlandırıldı. İşleminizi kısaltmayı deneyin. Toplu işleme hakkında bilgi için bkz. [SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma](../performance-improve-use-batching.md).|
 | 40550 |16 |Oturum çok fazla kilit elde ettiğinden sonlandırıldı. Tek bir işlemde daha az sayıda satır okumayı veya değiştirmeyi deneyin. Toplu işleme hakkında bilgi için bkz. [SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma](../performance-improve-use-batching.md).|
-| 40551 |16 |Aşırı kullanım nedeniyle oturum sonlandırıldı `TEMPDB` . Geçici tablo alanı kullanımını azaltmak için sorgunuzu değiştirmeyi deneyin.<br/><br/>Geçici nesneler kullanıyorsanız, `TEMPDB` geçici nesneleri oturum için artık gerekli olmadıklarında bırakarak veritabanında alandan tasarruf edin. SQL veritabanı 'nda tempdb kullanımı hakkında daha fazla bilgi için bkz. [SQL veritabanı 'Nda tempdb veritabanı](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
+| 40551 |16 |Aşırı kullanım nedeniyle oturum sonlandırıldı `TEMPDB` . Geçici tablo alanı kullanımını azaltmak için sorgunuzu değiştirmeyi deneyin.<br/><br/>Geçici nesneler kullanıyorsanız, `TEMPDB` geçici nesneleri oturum için artık gerekli olmadıklarında bırakarak veritabanında alandan tasarruf edin. SQL veritabanı 'nda tempdb kullanımı hakkında daha fazla bilgi için bkz. [SQL veritabanı 'Nda tempdb veritabanı](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
 | 40552 |16 |Aşırı işlem günlüğü alanı kullanımı nedeniyle oturum sonlandırıldı. Tek bir işlemde daha az sayıda satır değiştirmeyi deneyin. Toplu işleme hakkında bilgi için bkz. [SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma](../performance-improve-use-batching.md).<br/><br/>Yardımcı programını veya sınıfını kullanarak toplu eklemeler yaparsanız, `bcp.exe` `System.Data.SqlClient.SqlBulkCopy` her bir `-b batchsize` `BatchSize` işlemde sunucuya kopyalanmış satır sayısını sınırlamak için veya seçeneklerini kullanmayı deneyin. İfadesiyle bir dizini `ALTER INDEX` yeniden oluşturuyorsanız seçeneğini kullanmayı deneyin `REBUILD WITH ONLINE = ON` . Sanal çekirdek satın alma modeli için işlem günlüğü boyutları hakkında bilgi için bkz.: <br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md).|
 | 40553 |16 |Aşırı bellek kullanımı nedeniyle oturum sonlandırıldı. Daha az satır işlemek için sorgunuzu değiştirmeyi deneyin.<br/><br/>`ORDER BY` `GROUP BY` Transact-SQL kodunuzda ve işlem sayısını azaltmak sorgunuzun bellek gereksinimlerini azaltır. Veritabanı Ölçeklendirme için bkz. [tek veritabanı kaynaklarını ölçeklendirme](single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).|
 
@@ -340,8 +340,8 @@ Bu sorun, hesabın ana veritabanına erişim izni olmadığı için oluşur. Anc
 
 Bu sorunu çözmek için şu adımları izleyin:
 
-1. SSMS oturum açma ekranında **Seçenekler**' i ve ardından **bağlantı özellikleri**' ni seçin.
-2. **Veritabanına Bağlan** alanına, kullanıcının varsayılan veritabanı adını varsayılan oturum açma veritabanı olarak girin ve sonra **Bağlan**' ı seçin.
+1. SSMS oturum açma ekranında **Seçenekler** ' i ve ardından **bağlantı özellikleri** ' ni seçin.
+2. **Veritabanına Bağlan** alanına, kullanıcının varsayılan veritabanı adını varsayılan oturum açma veritabanı olarak girin ve sonra **Bağlan** ' ı seçin.
 
    ![Bağlantı özellikleri](./media/troubleshoot-common-errors-issues/cannot-open-database-master.png)
 
@@ -356,7 +356,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-Özel durum sorgu sorunları tarafından tetiklendiğinde, aşağıdakine benzer bir çağrı yığını görürsünüz ( **SqlCommand** sınıfının başvurusunu unutmayın). Bu durumda, [sorgularınızı ayarlayın](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+Özel durum sorgu sorunları tarafından tetiklendiğinde, aşağıdakine benzer bir çağrı yığını görürsünüz ( **SqlCommand** sınıfının başvurusunu unutmayın). Bu durumda, [sorgularınızı ayarlayın](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -367,28 +367,28 @@ ClientConnectionId:<Client connection ID>
 İnce ayar performansı hakkında ek yönergeler için aşağıdaki kaynaklara bakın:
 
 - [Azure SQL dizinlerini ve istatistiklerini koruma](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/How-to-maintain-Azure-SQL-Indexes-and-Statistics/ba-p/368787)
-- [Azure SQL veritabanı 'nda el ile ayarlama sorgusu performansı](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance)
-- [Dinamik yönetim görünümlerini kullanarak performans Azure SQL veritabanı 'nı izleme](https://docs.microsoft.com/azure/sql-database/sql-database-monitoring-with-dmvs)
-- [Azure SQL veritabanı 'nda sorgu deposunu çalıştırma](https://docs.microsoft.com/azure/sql-database/sql-database-operate-query-store)
+- [Azure SQL veritabanı 'nda el ile ayarlama sorgusu performansı](./performance-guidance.md)
+- [Dinamik yönetim görünümlerini kullanarak performans Azure SQL veritabanı 'nı izleme](./monitoring-with-dmvs.md)
+- [Azure SQL veritabanı 'nda sorgu deposunu çalıştırma](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 
 ## <a name="steps-to-fix-common-connection-issues"></a>Yaygın bağlantı sorunlarını giderme adımları
 
-1. TCP/IP 'nin uygulama sunucusunda bir istemci protokolü olarak etkinleştirildiğinden emin olun. Daha fazla bilgi için bkz. [istemci protokollerini yapılandırma](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-client-protocols). SQL araçları yüklü olmayan uygulama sunucularında, **cliconfg.exe** (SQL Server istemci ağ yardımcı programı) çalıştırarak TCP/IP 'nin etkinleştirildiğini doğrulayın.
+1. TCP/IP 'nin uygulama sunucusunda bir istemci protokolü olarak etkinleştirildiğinden emin olun. Daha fazla bilgi için bkz. [istemci protokollerini yapılandırma](/sql/database-engine/configure-windows/configure-client-protocols). SQL araçları yüklü olmayan uygulama sunucularında, **cliconfg.exe** (SQL Server istemci ağ yardımcı programı) çalıştırarak TCP/IP 'nin etkinleştirildiğini doğrulayın.
 2. Doğru yapılandırıldığından emin olmak için uygulamanın bağlantı dizesini denetleyin. Örneğin, bağlantı dizesinin doğru bağlantı noktasını (1433) ve tam sunucu adını belirttiğinden emin olun.
-Bkz. [bağlantı bilgilerini al](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms#get-sql-server-connection-information).
+Bkz. [bağlantı bilgilerini al](./connect-query-ssms.md#get-server-connection-information).
 3. Bağlantı zaman aşımı değerini artırmayı deneyin. En az 30 saniyelik bir bağlantı zaman aşımı kullanmanızı öneririz.
-4. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms), bir UDL dosyası, ping veya Telnet kullanarak uygulama sunucusu Ile Azure SQL veritabanı arasındaki bağlantıyı test edin. Daha fazla bilgi için bkz. bağlantı sorunlarını [giderme](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server) ve [bağlantı sorunları için tanılama](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues#diagnostics).
+4. [SQL Server Management Studio (SSMS)](./connect-query-ssms.md), bir UDL dosyası, ping veya Telnet kullanarak uygulama sunucusu Ile Azure SQL veritabanı arasındaki bağlantıyı test edin. Daha fazla bilgi için bkz. bağlantı sorunlarını [giderme](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server) ve [bağlantı sorunları için tanılama](./troubleshoot-common-connectivity-issues.md#diagnostics).
 
    > [!NOTE]
    > Sorun giderme adımı olarak, farklı bir istemci bilgisayardaki bağlantıyı da sınayabilirsiniz.
 
-5. En iyi uygulama olarak, yeniden deneme mantığının yerinde olduğundan emin olun. Yeniden deneme mantığı hakkında daha fazla bilgi için bkz. [SQL veritabanında geçici hata ve bağlantı hatalarını giderme](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues).
+5. En iyi uygulama olarak, yeniden deneme mantığının yerinde olduğundan emin olun. Yeniden deneme mantığı hakkında daha fazla bilgi için bkz. [SQL veritabanında geçici hata ve bağlantı hatalarını giderme](./troubleshoot-common-connectivity-issues.md).
 
 Bu adımlar sorununuzu gidermezse daha fazla veri toplamayı deneyin ve desteğe başvurun. Uygulamanız bir bulut hizmeti ise günlüğe kaydetmeyi etkinleştirin. Bu adım, hatanın UTC zaman damgasını döndürür. Ayrıca, SQL veritabanı izleme KIMLIĞINI döndürür. [Microsoft Müşteri Destek Hizmetleri](https://azure.microsoft.com/support/options/) , bu bilgileri kullanabilir.
 
-Günlüğe kaydetmenin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/).
+Günlüğe kaydetmenin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme](../../app-service/troubleshoot-diagnostic-logs.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure SQL veritabanı bağlantı mimarisi](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture)
-- [Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)
+- [Azure SQL veritabanı bağlantı mimarisi](./connectivity-architecture.md)
+- [Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri](./network-access-controls-overview.md)

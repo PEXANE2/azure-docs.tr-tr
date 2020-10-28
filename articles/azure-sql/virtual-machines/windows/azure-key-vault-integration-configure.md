@@ -14,26 +14,26 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7fab8db1fcc02e26d1b19d3889414565ff56351b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fca190d4818dc2ee8d598a3a1d3535ba7132398
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293586"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789973"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-vms-resource-manager"></a>Azure VM 'lerinde SQL Server için Azure Key Vault tümleştirmesini yapılandırma (Kaynak Yöneticisi)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-[Saydam veri şifrelemesi (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [sütun DÜZEYINDE şifreleme (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)ve [yedekleme şifrelemesi](https://msdn.microsoft.com/library/dn449489.aspx)gibi birden çok SQL Server şifreleme özelliği vardır. Bu şifreleme biçimleri, şifreleme için kullandığınız şifreleme anahtarlarını yönetmenizi ve depolamanızı gerektirir. Azure Key Vault hizmeti, bu anahtarların güvenli ve yüksek oranda kullanılabilir bir konumda güvenliğini ve yönetimini geliştirmek için tasarlanmıştır. [SQL Server Bağlayıcısı](https://www.microsoft.com/download/details.aspx?id=45344) , SQL Server Azure Key Vault bu anahtarları kullanmasına olanak sağlar.
+[Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption), [sütun DÜZEYINDE şifreleme (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql)ve [yedekleme şifrelemesi](/sql/relational-databases/backup-restore/backup-encryption)gibi birden çok SQL Server şifreleme özelliği vardır. Bu şifreleme biçimleri, şifreleme için kullandığınız şifreleme anahtarlarını yönetmenizi ve depolamanızı gerektirir. Azure Key Vault hizmeti, bu anahtarların güvenli ve yüksek oranda kullanılabilir bir konumda güvenliğini ve yönetimini geliştirmek için tasarlanmıştır. [SQL Server Bağlayıcısı](https://www.microsoft.com/download/details.aspx?id=45344) , SQL Server Azure Key Vault bu anahtarları kullanmasına olanak sağlar.
 
-Şirket içi SQL Server çalıştırıyorsanız, Şirket [içi SQL Server örneğinden Azure Key Vault erişmek](https://msdn.microsoft.com/library/dn198405.aspx)için izleyebileceğiniz adımlar vardır. Ancak, Azure VM 'lerinde SQL Server için *Azure Key Vault tümleştirme* özelliğini kullanarak zamandan tasarruf edebilirsiniz.
+Şirket içi SQL Server çalıştırıyorsanız, Şirket [içi SQL Server örneğinden Azure Key Vault erişmek](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server)için izleyebileceğiniz adımlar vardır. Ancak, Azure VM 'lerinde SQL Server için *Azure Key Vault tümleştirme* özelliğini kullanarak zamandan tasarruf edebilirsiniz.
 
 Bu özellik etkinleştirildiğinde, SQL Server Bağlayıcısı otomatik olarak yüklenir, EKM sağlayıcısını Azure Key Vault erişim için yapılandırır ve kasanıza erişmenize izin veren kimlik bilgisini oluşturur. Daha önce bahsedilen şirket içi belgelerdeki adımlara bakarsanız, bu özelliğin 2 ve 3. adımları otomatikleştirdiği hakkında bilgi alabilirsiniz. Hala el ile yapmanız gereken tek şey, anahtar kasasını ve anahtarları oluşturmaktır. Buradan, SQL Server VM kurulumunun tamamı otomatikleştirilebilir. Bu özellik bu kurulumu tamamladıktan sonra, veritabanlarınızı veya yedeklemelerinizi normal şekilde şifrelemeye başlamak için Transact-SQL (T-SQL) deyimlerini çalıştırabilirsiniz.
 
 [!INCLUDE [Prepare for Key Vault integration](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
 
   >[!NOTE]
-  > Genişletilebilir anahtar yönetimi (EKM) sağlayıcısı sürüm 1.0.4.0, [SQL hizmet olarak altyapı (IaaS) uzantısı](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)aracılığıyla SQL Server VM yüklenir. SQL IaaS uzantısını yükseltmek, sağlayıcı sürümünü güncelleştirmeyecektir. Lütfen EKM sağlayıcısı sürümünü gerekirse (örneğin, bir SQL yönetilen örneği 'ne geçiş yaparken) el ile yükseltmeyi düşünün.
+  > Genişletilebilir anahtar yönetimi (EKM) sağlayıcısı sürüm 1.0.4.0, [SQL hizmet olarak altyapı (IaaS) uzantısı](./sql-server-iaas-agent-extension-automate-management.md)aracılığıyla SQL Server VM yüklenir. SQL IaaS uzantısını yükseltmek, sağlayıcı sürümünü güncelleştirmeyecektir. Lütfen EKM sağlayıcısı sürümünü gerekirse (örneğin, bir SQL yönetilen örneği 'ne geçiş yaparken) el ile yükseltmeyi düşünün.
 
 
 ## <a name="enabling-and-configuring-key-vault-integration"></a>Key Vault Tümleştirmesini Etkinleştirme ve yapılandırma
@@ -50,7 +50,7 @@ Sağlama hakkında ayrıntılı yönergeler için bkz. [Azure Portal BIR SQL san
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Mevcut SQL sanal makineleri için [SQL sanal makineler](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) kaynağınızı açın ve **Ayarlar**altında **güvenlik** ' i seçin. Azure Key Vault tümleştirmesini etkinleştirmek için **Etkinleştir** ' i seçin. 
+Mevcut SQL sanal makineleri için [SQL sanal makineler](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) kaynağınızı açın ve **Ayarlar** altında **güvenlik** ' i seçin. Azure Key Vault tümleştirmesini etkinleştirmek için **Etkinleştir** ' i seçin. 
 
 ![Mevcut VM 'Ler için SQL Key Vault tümleştirmesi](./media/azure-key-vault-integration-configure/azure-sql-rm-akv-existing-vms.png)
 

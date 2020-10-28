@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 26d4080e20fb8d00ec4d276e56e09170001d2b8e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 4919abd29ecf10c9116257750374ef53b4bd9d16
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166548"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789922"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server her zaman kullanılabilirlik grubu
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Aşağıdaki diyagramda Azure VM 'lerinde SQL Server için bir kullanılabilirli
 
 ## <a name="vm-redundancy"></a>VM artıklığı 
 
-Yedeklilik ve yüksek kullanılabilirliği artırmak için SQL Server VM 'Lerin aynı [kullanılabilirlik kümesinde](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)veya farklı [kullanılabilirlik bölgelerinde](/azure/availability-zones/az-overview)olması gerekir.
+Yedeklilik ve yüksek kullanılabilirliği artırmak için SQL Server VM 'Lerin aynı [kullanılabilirlik kümesinde](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)veya farklı [kullanılabilirlik bölgelerinde](../../../availability-zones/az-overview.md)olması gerekir.
 
 Kullanılabilirlik kümesi, aynı Kullanılabilirlik alanında iki Arasız olarak yapılandırılan kaynakların gruplandırmasıdır. Bu, dağıtım toplaması sırasında gruptaki birden fazla kaynağın etkilenmelerini engeller. 
 
@@ -74,22 +74,22 @@ Azure VM 'lerinde SQL Server için bir kullanılabilirlik grubu dağıtmaya yön
 
 Aşağıdaki tabloda kullanılabilir seçeneklerin karşılaştırması verilmiştir: 
 
-| |**[Azure portal](availability-group-azure-portal-configure.md)**|**[Azure CLı/PowerShell](availability-group-az-cli-configure.md)**|**[Hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)**|**[El ile](availability-group-manually-configure-prerequisites-tutorial.md)** | 
+| |**[Azure portal](availability-group-azure-portal-configure.md)**|**[Azure CLı/PowerShell](./availability-group-az-commandline-configure.md)**|**[Hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)**|**[El ile](availability-group-manually-configure-prerequisites-tutorial.md)** | 
 |---------|---------|---------|--------- |---------|
 |**SQL Server sürümü** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server yayını** |Kurumsal |Kurumsal |Kurumsal |Kurumsal, standart|
 |**Windows Server sürümü**| 2016 + | 2016 + | 2016 + | Tümü| 
-|**Sizin için kümeyi oluşturur**|Yes|Yes | Yes |Hayır|
-|**Sizin için kullanılabilirlik grubunu oluşturur** |Yes |Hayır|Hayır|Hayır|
-|**Bağımsız olarak dinleyici ve yük dengeleyici oluşturur** |Hayır|Hayır|Hayır|Yes|
-|**Bu yöntem kullanılarak DNN dinleyicisi oluşturulabilir mi?**|Hayır|Hayır|Hayır|Yes|
+|**Sizin için kümeyi oluşturur**|Evet|Evet | Evet |Hayır|
+|**Sizin için kullanılabilirlik grubunu oluşturur** |Evet |Hayır|Hayır|Hayır|
+|**Bağımsız olarak dinleyici ve yük dengeleyici oluşturur** |Hayır|Hayır|Hayır|Evet|
+|**Bu yöntem kullanılarak DNN dinleyicisi oluşturulabilir mi?**|Hayır|Hayır|Hayır|Evet|
 |**Wsfc çekirdek yapılandırması**|Bulut tanığı|Bulut tanığı|Bulut tanığı|Tümü|
-|**Birden çok bölgeye sahip DR** |Hayır|Hayır|Hayır|Yes|
-|**Multisubnet desteği** |Yes|Yes|Yes|Yes|
-|**Mevcut bir AD için destek**|Yes|Yes|Yes|Yes|
-|**Aynı bölgede multizone ile DR**|Yes|Yes|Yes|Yes|
-|**AD olmadan dağıtılmış AG**|Hayır|Hayır|Hayır|Yes|
-|**Küme olmadan dağıtılmış AG** |Hayır|Hayır|Hayır|Yes|
+|**Birden çok bölgeye sahip DR** |Hayır|Hayır|Hayır|Evet|
+|**Multisubnet desteği** |Evet|Evet|Evet|Evet|
+|**Mevcut bir AD için destek**|Evet|Evet|Evet|Evet|
+|**Aynı bölgede multizone ile DR**|Evet|Evet|Evet|Evet|
+|**AD olmadan dağıtılmış AG**|Hayır|Hayır|Hayır|Evet|
+|**Küme olmadan dağıtılmış AG** |Hayır|Hayır|Hayır|Evet|
 ||||||
 
 
@@ -100,6 +100,6 @@ Azure IaaS VM konuk yük devretme kümesinde sunucu başına (küme düğümü) 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[HADR en iyi yöntemlerini](hadr-cluster-best-practices.md) gözden geçirin ve [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](availability-group-az-cli-configure.md), [hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md) veya [el ile](availability-group-manually-configure-prerequisites-tutorial.md)kullanılabilirlik grubunuzu dağıtmaya başlayın.
+[HADR en iyi yöntemlerini](hadr-cluster-best-practices.md) gözden geçirin ve [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md) veya [el ile](availability-group-manually-configure-prerequisites-tutorial.md)kullanılabilirlik grubunuzu dağıtmaya başlayın.
 
-Alternatif olarak, bir [kümesiz kullanılabilirlik grubunu](availability-group-clusterless-workgroup-configure.md) veya bir kullanılabilirlik grubunu [birden çok bölgeye](availability-group-manually-configure-multiple-regions.md)dağıtabilirsiniz. 
+Alternatif olarak, bir [kümesiz kullanılabilirlik grubunu](availability-group-clusterless-workgroup-configure.md) veya bir kullanılabilirlik grubunu [birden çok bölgeye](availability-group-manually-configure-multiple-regions.md)dağıtabilirsiniz.

@@ -12,19 +12,19 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 10/12/2020
-ms.openlocfilehash: 878fa9f576e50fb53e648d3bf39f98558d6e880a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8fbbd7a2aabc9de417f1eefd2513edba3119bfc0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441122"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791401"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics için saydam veri şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 [Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) , bekleyen verileri şifreleyerek kötü amaçlı çevrimdışı etkinlik tehditlerine KARŞı Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE analizlerinin korunmasına yardımcı olur. Bu özellik bütün bir veritabanı, yedekleri ve işlem günlüğü dosyaları için gerçek zamanlı şifreleme ve şifre çözme işlemlerini gerçekleştirir ve uygulamada değişiklik yapmayı gerektirmez. Varsayılan olarak, TDE, tüm yeni dağıtılan SQL veritabanları için etkinleştirilmiştir ve Azure SQL veritabanı, Azure SQL yönetilen örneği 'nin eski veritabanları için el ile etkinleştirilmelidir. TDE, Azure SYNAPSE Analytics için el ile etkinleştirilmelidir.
 
-TDE, verilerin sayfa düzeyindeki gerçek zamanlı g/ç şifrelemesini ve şifresini çözmeyi gerçekleştirir. Okunarak belleğe alınan her sayfanın şifresi çözülür ve sayfalar diske yazılmadan önce şifrelenir. TDE, veritabanı şifreleme anahtarı (DEK) adlı bir simetrik anahtar kullanarak veritabanının tamamının depolanmasını şifreler. Veritabanı başlangıcında, şifrelenen DEK şifresi çözülür ve veritabanı dosyalarının şifresini çözmek ve SQL Server veritabanı altyapısı işleminde yeniden şifrelemek için kullanılır. DEK, TDE koruyucusu tarafından korunur. TDE koruyucusu, hizmet tarafından yönetilen bir sertifika (hizmet tarafından yönetilen saydam veri şifrelemesi) veya [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) depolanan bir asimetrik anahtardır (müşteri tarafından yönetilen saydam veri şifrelemesi).
+TDE, verilerin sayfa düzeyindeki gerçek zamanlı g/ç şifrelemesini ve şifresini çözmeyi gerçekleştirir. Okunarak belleğe alınan her sayfanın şifresi çözülür ve sayfalar diske yazılmadan önce şifrelenir. TDE, veritabanı şifreleme anahtarı (DEK) adlı bir simetrik anahtar kullanarak veritabanının tamamının depolanmasını şifreler. Veritabanı başlangıcında, şifrelenen DEK şifresi çözülür ve veritabanı dosyalarının şifresini çözmek ve SQL Server veritabanı altyapısı işleminde yeniden şifrelemek için kullanılır. DEK, TDE koruyucusu tarafından korunur. TDE koruyucusu, hizmet tarafından yönetilen bir sertifika (hizmet tarafından yönetilen saydam veri şifrelemesi) veya [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md) depolanan bir asimetrik anahtardır (müşteri tarafından yönetilen saydam veri şifrelemesi).
 
 Azure SQL veritabanı ve Azure SYNAPSE için, TDE koruyucusu [sunucu](logical-servers.md) düzeyinde ayarlanır ve bu sunucuyla ilişkili tüm veritabanları tarafından devralınır. Azure SQL yönetilen örneği için, TDE koruyucusu örnek düzeyinde ayarlanır ve bu örnekteki tüm şifreli veritabanları tarafından devralınır. *Sunucu* terimi, farklı belirtilmedikçe, bu belge boyunca hem sunucu hem de örneğe başvurur.
 
@@ -32,7 +32,7 @@ Azure SQL veritabanı ve Azure SYNAPSE için, TDE koruyucusu [sunucu](logical-se
 > SQL veritabanı 'ndaki yeni oluşturulan tüm veritabanları, hizmet tarafından yönetilen saydam veri şifrelemesi kullanılarak varsayılan olarak şifrelenir. 2017 Mayıs 'tan önce oluşturulan mevcut SQL veritabanları ve geri yükleme, coğrafi çoğaltma ve veritabanı kopyası kullanılarak oluşturulan SQL veritabanları varsayılan olarak şifrelenmez. 2019 Şubat 'tan önce oluşturulan mevcut SQL yönetilen örnek veritabanları varsayılan olarak şifrelenmez. Restore aracılığıyla oluşturulan SQL yönetilen örnek veritabanları, kaynaktan şifreleme durumunu devralma.
 
 > [!NOTE]
-> TDE, Azure SQL veritabanı ve Azure SQL yönetilen örneğindeki **ana** veritabanı gibi sistem veritabanlarını şifrelemek için kullanılamaz. **Ana** veritabanı, Kullanıcı veritabanlarında TDE işlemleri gerçekleştirmek için gereken nesneleri içerir.
+> TDE, Azure SQL veritabanı ve Azure SQL yönetilen örneğindeki **ana** veritabanı gibi sistem veritabanlarını şifrelemek için kullanılamaz. **Ana** veritabanı, Kullanıcı veritabanlarında TDE işlemleri gerçekleştirmek için gereken nesneleri içerir. Gizli verilerin sistem veritabanlarında depolanması önerilir. [Altyapı şifrelemesi](transparent-data-encryption-byok-overview.md#doubleencryption) , ana dahil sistem veritabanlarını şifreleyen bir şekilde kullanıma sunulmuştur. 
 
 ## <a name="service-managed-transparent-data-encryption"></a>Hizmet tarafından yönetilen saydam veri şifrelemesi
 
@@ -42,7 +42,7 @@ Microsoft ayrıca, coğrafi çoğaltma ve geri yükleme için gerektiğinde anah
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>Müşteri tarafından yönetilen saydam veri şifrelemesi-Kendi Anahtarını Getir
 
-Ayrıca, müşteri tarafından yönetilen TDE, TDE için Kendi Anahtarını Getir (BYOK) desteği olarak adlandırılır. Bu senaryoda, 1 ' i şifreleyen TDE koruyucu, müşterinin sahip olduğu ve yönetilen bir Azure Key Vault (Azure 'un bulut tabanlı dış anahtar yönetim sistemi) depolanan ve anahtar kasasını hiçbir şekilde bırakmayan, müşteri tarafından yönetilen bir asimetrik anahtardır. TDE koruyucusu, [Anahtar Kasası tarafından oluşturulabilir veya](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) şirket içi donanım güvenlik modülü (HSM) cihazından anahtar kasasına aktarılabilir. SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE 'in, DEK şifresini çözmek ve şifrelemek için müşterinin sahip olduğu anahtar kasasında izin verilmesi gerekir. Sunucu için Anahtar Kasası izinleri iptal edildiğinde, bir veritabanına erişilemez ve tüm veriler şifrelenir
+Ayrıca, müşteri tarafından yönetilen TDE, TDE için Kendi Anahtarını Getir (BYOK) desteği olarak adlandırılır. Bu senaryoda, 1 ' i şifreleyen TDE koruyucu, müşterinin sahip olduğu ve yönetilen bir Azure Key Vault (Azure 'un bulut tabanlı dış anahtar yönetim sistemi) depolanan ve anahtar kasasını hiçbir şekilde bırakmayan, müşteri tarafından yönetilen bir asimetrik anahtardır. TDE koruyucusu, [Anahtar Kasası tarafından oluşturulabilir veya](../../key-vault/keys/hsm-protected-keys.md) şirket içi donanım güvenlik modülü (HSM) cihazından anahtar kasasına aktarılabilir. SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE 'in, DEK şifresini çözmek ve şifrelemek için müşterinin sahip olduğu anahtar kasasında izin verilmesi gerekir. Sunucu için Anahtar Kasası izinleri iptal edildiğinde, bir veritabanına erişilemez ve tüm veriler şifrelenir
 
 TDE Azure Key Vault tümleştirmeyle, kullanıcılar anahtar döndürmeler, Anahtar Kasası izinleri, anahtar yedeklemeleri dahil olmak üzere önemli yönetim görevlerini denetleyebilir ve Azure Key Vault işlevselliğini kullanarak tüm TDE koruyucuda denetim/raporlamayı etkinleştirebilir. Key Vault merkezi anahtar yönetimi sağlar, tam olarak izlenen HSM 'leri kullanır ve güvenlik ilkeleriyle uyumluluğu karşılamak için anahtar ve veri yönetimi arasında görev ayrımı sağlar.
 Azure SQL veritabanı ve Azure SYNAPSE için BYOK hakkında daha fazla bilgi için bkz. [Azure Key Vault tümleştirme Ile saydam veri şifreleme](transparent-data-encryption-byok-overview.md).
@@ -91,7 +91,7 @@ PowerShell 'i kullanarak TDE yönetin.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Resource Manager modülü hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
 TDE PowerShell 'i yapılandırmak için Azure sahibi, katkıda bulunan veya SQL güvenlik yöneticisi olarak bağlı olmanız gerekir.
 
@@ -101,14 +101,14 @@ Azure SQL veritabanı ve Azure SYNAPSE için aşağıdaki cmdlet 'leri kullanın
 
 | Cmdlet | Açıklama |
 | --- | --- |
-| [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |Bir veritabanı için saydam veri şifrelemeyi etkinleştirilir veya devre dışı bırakır.|
-| [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |Bir veritabanı için saydam veri şifreleme durumunu alır. |
-| [Get-AzSqlDatabaseTransparentDataEncryptionActivity](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryptionactivity) |Bir veritabanı için şifreleme ilerleme durumunu denetler. |
-| [Add-AzSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/az.sql/add-azsqlserverkeyvaultkey) |Bir sunucuya Key Vault anahtarı ekler. |
-| [Get-AzSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverkeyvaultkey) |Bir sunucu için Key Vault anahtarlarını alır  |
-| [Set-AzSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) |Bir sunucu için saydam veri şifreleme koruyucusunu ayarlar. |
-| [Get-AzSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) |Saydam veri şifreleme koruyucusunu alır |
-| [Remove-AzSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) |Bir Key Vault anahtarı sunucudan kaldırır. |
+| [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |Bir veritabanı için saydam veri şifrelemeyi etkinleştirilir veya devre dışı bırakır.|
+| [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |Bir veritabanı için saydam veri şifreleme durumunu alır. |
+| [Get-AzSqlDatabaseTransparentDataEncryptionActivity](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryptionactivity) |Bir veritabanı için şifreleme ilerleme durumunu denetler. |
+| [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) |Bir sunucuya Key Vault anahtarı ekler. |
+| [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) |Bir sunucu için Key Vault anahtarlarını alır  |
+| [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) |Bir sunucu için saydam veri şifreleme koruyucusunu ayarlar. |
+| [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) |Saydam veri şifreleme koruyucusunu alır |
+| [Remove-AzSqlServerKeyVaultKey](/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) |Bir Key Vault anahtarı sunucudan kaldırır. |
 |  | |
 
 > [!IMPORTANT]
@@ -138,17 +138,17 @@ Azure SQL veritabanı ve Azure SYNAPSE için aşağıdaki komut kümesini kullan
 
 | Komut | Açıklama |
 | --- | --- |
-|[Sunucu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Bir sunucuya Azure Active Directory kimliği ekler. (Key Vault erişim vermek için kullanılır)|
-|[Sunucu anahtarı oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|Bir sunucuya Key Vault anahtarı ekler.|
-|[Sunucu anahtarını Sil](https://docs.microsoft.com/rest/api/sql/serverkeys/delete)|Bir Key Vault anahtarı sunucudan kaldırır. |
-|[Sunucu anahtarlarını al](https://docs.microsoft.com/rest/api/sql/serverkeys/get)|Bir sunucudan belirli bir Key Vault anahtarını alır.|
-|[Sunucu anahtarlarını sunucuya göre Listele](https://docs.microsoft.com/rest/api/sql/serverkeys/listbyserver)|Bir sunucu için Key Vault anahtarlarını alır. |
-|[Şifreleme koruyucusu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/createorupdate)|Bir sunucu için TDE koruyucuyu ayarlar.|
-|[Şifreleme koruyucusunu al](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/get)|Bir sunucu için TDE koruyucuyu alır.|
-|[Şifreleme koruyucularını sunucuya göre Listele](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/listbyserver)|Bir sunucunun TDE koruyucularını alır. |
-|[Saydam Veri Şifrelemesi yapılandırma oluşturma veya güncelleştirme](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/createorupdate)|Bir veritabanı için TDE TDE devre dışı bırakır|
-|[Saydam Veri Şifrelemesi yapılandırmasını al](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|Bir veritabanı için TDE yapılandırmasını alır.|
-|[Saydam Veri Şifrelemesi yapılandırma sonuçlarını Listele](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|Bir veritabanı için şifreleme sonucunu alır.|
+|[Sunucu oluştur veya güncelleştir](/rest/api/sql/servers/createorupdate)|Bir sunucuya Azure Active Directory kimliği ekler. (Key Vault erişim vermek için kullanılır)|
+|[Sunucu anahtarı oluştur veya güncelleştir](/rest/api/sql/serverkeys/createorupdate)|Bir sunucuya Key Vault anahtarı ekler.|
+|[Sunucu anahtarını Sil](/rest/api/sql/serverkeys/delete)|Bir Key Vault anahtarı sunucudan kaldırır. |
+|[Sunucu anahtarlarını al](/rest/api/sql/serverkeys/get)|Bir sunucudan belirli bir Key Vault anahtarını alır.|
+|[Sunucu anahtarlarını sunucuya göre Listele](/rest/api/sql/serverkeys/listbyserver)|Bir sunucu için Key Vault anahtarlarını alır. |
+|[Şifreleme koruyucusu oluştur veya güncelleştir](/rest/api/sql/encryptionprotectors/createorupdate)|Bir sunucu için TDE koruyucuyu ayarlar.|
+|[Şifreleme koruyucusunu al](/rest/api/sql/encryptionprotectors/get)|Bir sunucu için TDE koruyucuyu alır.|
+|[Şifreleme koruyucularını sunucuya göre Listele](/rest/api/sql/encryptionprotectors/listbyserver)|Bir sunucunun TDE koruyucularını alır. |
+|[Saydam Veri Şifrelemesi yapılandırma oluşturma veya güncelleştirme](/rest/api/sql/transparentdataencryptions/createorupdate)|Bir veritabanı için TDE TDE devre dışı bırakır|
+|[Saydam Veri Şifrelemesi yapılandırmasını al](/rest/api/sql/transparentdataencryptions/get)|Bir veritabanı için TDE yapılandırmasını alır.|
+|[Saydam Veri Şifrelemesi yapılandırma sonuçlarını Listele](/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|Bir veritabanı için şifreleme sonucunu alır.|
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 
@@ -156,4 +156,4 @@ Azure SQL veritabanı ve Azure SYNAPSE için aşağıdaki komut kümesini kullan
 - TDE genel bir açıklaması için bkz. [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE için BYOK desteği ile TDE hakkında daha fazla bilgi edinmek için [kendi anahtarını getir desteğiyle saydam veri şifrelemesi](transparent-data-encryption-byok-overview.md)bölümüne bakın.
 - Kendi Anahtarını Getir desteği ile TDE kullanmaya başlamak için, Key Vault ' de [kendi anahtarınızı kullanarak](transparent-data-encryption-byok-configure.md)nasıl yapılır Kılavuzu ' na bakın.
-- Key Vault hakkında daha fazla bilgi için bkz. [bir anahtar kasasına güvenli erişim](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).
+- Key Vault hakkında daha fazla bilgi için bkz. [bir anahtar kasasına güvenli erişim](../../key-vault/general/secure-your-key-vault.md).

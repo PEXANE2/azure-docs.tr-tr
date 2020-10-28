@@ -8,18 +8,18 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f969c30033604cb4b331b5ed86d992af371f9c75
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 154a7b17fc09c55e83b65eef8d479904c36e87eb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490824"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791197"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Öğretici: AzCopy ile şirket içi verileri bulut depolamaya geçirme
 
 AzCopy; basit komutlar kullanılarak Azure Blob depolamaya, Azure Dosyaları’na ve Azure Tablosu depolama alanına veya bunlardan veri kopyalamaya yönelik bir komut satırı aracıdır. Komutlar, en iyi performans için tasarlanmıştır. AzCopy ile bir dosya sistemi ile depolama hesabı arasında veya depolama hesapları arasında verileri kopyalayabilirsiniz. AzCopy, yerel verileri (şirket içi) bir depolama hesabına kopyalamak için kullanılabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Depolama hesabı oluşturma. 
@@ -29,11 +29,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için AzCopy 'in en son sürümünü indirin. Bkz. [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md).
 
-Windows kullanıyorsanız bu öğreticide görev zamanlamak için kullanılan [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) uygulamasını edinmeniz gerekir. Linux kullanıcıları bunun yerine crontab komutunu kullanacaktır.
+Windows kullanıyorsanız bu öğreticide görev zamanlamak için kullanılan [Schtasks](/windows/win32/taskschd/schtasks) uygulamasını edinmeniz gerekir. Linux kullanıcıları bunun yerine crontab komutunu kullanacaktır.
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -44,7 +44,7 @@ Windows kullanıyorsanız bu öğreticide görev zamanlamak için kullanılan [S
 Kapsayıcı oluşturmak için şu adımları izleyin:
 
 1. Ana sayfadan **Depolama hesapları** düğmesini seçin ve oluşturduğunuz depolama hesabını seçin.
-2. **Hizmetler** bölümünden **Bloblar**’ı seçin ve sonra **Kapsayıcı**’yı seçin.
+2. **Hizmetler** bölümünden **Bloblar** ’ı seçin ve sonra **Kapsayıcı** ’yı seçin.
 
    ![Kapsayıcı oluşturmayı gösteren ekran görüntüsü](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
  
@@ -62,7 +62,7 @@ AzCopy dosyasını bilgisayarınızda herhangi bir yere yerleştirin. Bilgisayar
 
 ## <a name="authenticate-with-azure-ad"></a>Azure AD ile kimlik doğrulaması
 
-İlk olarak, [Depolama Blobu veri katılımcısı](/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) rolünü kimliğinize atayın. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](/azure/storage/common/storage-auth-aad-rbac-portal)konusuna bakın.
+İlk olarak, [Depolama Blobu veri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) rolünü kimliğinize atayın. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](./storage-auth-aad-rbac-portal.md)konusuna bakın.
 
 Ardından, bir komut istemi açın, aşağıdaki komutu yazın ve ENTER tuşuna basın.
 
@@ -78,7 +78,7 @@ Oturum açma penceresi görüntülenir. Bu pencerede, Azure hesabı kimlik bilgi
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Bir klasörün içeriğini Blob depolama alanına yükleme
 
-AzCopy komutunu kullanarak, bir klasördeki tüm dosyaları, [Windows](/azure/storage/common/storage-use-azcopy) veya [Linux](/azure/storage/common/storage-use-azcopy-linux) üzerindeki Blob depolama alanına yükleyebilirsiniz. Bir klasördeki tüm blobları karşıya yüklemek için aşağıdaki AzCopy komutunu girin:
+AzCopy komutunu kullanarak, bir klasördeki tüm dosyaları, [Windows](./storage-use-azcopy-v10.md) veya [Linux](./storage-use-azcopy-v10.md) üzerindeki Blob depolama alanına yükleyebilirsiniz. Bir klasördeki tüm blobları karşıya yüklemek için aşağıdaki AzCopy komutunu girin:
 
 ```AzCopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
@@ -135,9 +135,9 @@ azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycont
 
 ---
 
-Bu öğreticide, Windows üzerinde zamanlanmış görev oluşturmak için [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) kullanılır. Linux üzerinde bir sıralanmış iş oluşturmak için [Crontab](http://crontab.org/) komutu kullanılır.
+Bu öğreticide, Windows üzerinde zamanlanmış görev oluşturmak için [Schtasks](/windows/win32/taskschd/schtasks) kullanılır. Linux üzerinde bir sıralanmış iş oluşturmak için [Crontab](http://crontab.org/) komutu kullanılır.
 
- **Schtasks**, bir yöneticinin yerel veya uzak bilgisayarda zamanlanmış görevler oluşturmasına, silmesine, sorgulamasına, değiştirmesine, çalıştırmasına ve sonlandırmasına olanak sağlar. **Cron**, Linux ve Unix kullanıcılarının [sıralanmış iş ifadeleri](https://en.wikipedia.org/wiki/Cron#CRON_expression) kullanarak belirtilen bir tarih ve saatte komutları veya betikleri çalıştırmasına olanak sağlar.
+ **Schtasks** , bir yöneticinin yerel veya uzak bilgisayarda zamanlanmış görevler oluşturmasına, silmesine, sorgulamasına, değiştirmesine, çalıştırmasına ve sonlandırmasına olanak sağlar. **Cron** , Linux ve Unix kullanıcılarının [sıralanmış iş ifadeleri](https://en.wikipedia.org/wiki/Cron#CRON_expression) kullanarak belirtilen bir tarih ve saatte komutları veya betikleri çalıştırmasına olanak sağlar.
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -166,7 +166,7 @@ Komut:
 - Görev adını belirtmek için `/TN` parametresini kullanır.
 - `script.bat` dosyasının yolunu belirtmek için `/TR` parametresini kullanır.
 
-Windows üzerinde zamanlanmış görev oluşturma hakkında daha fazla bilgi için bkz. [Schtasks](https://technet.microsoft.com/library/cc772785(v=ws.10).aspx#BKMK_minutes).
+Windows üzerinde zamanlanmış görev oluşturma hakkında daha fazla bilgi için bkz. [Schtasks](/previous-versions/orphan-topics/ws.10/cc772785(v=ws.10)#BKMK_minutes).
 
 ---
 
@@ -176,7 +176,7 @@ Zamanlanmış görevin/sıralanmış işin düzgün şekilde çalıştığını 
 
 Şirket içi verileri Azure Depolama’ya (veya tam tersi) taşıma yolları hakkında daha fazla bilgi edinmek için bkz.:
 
-* [Azure Depolamadan/Depolamaya veri taşıma](/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
+* [Azure Depolamadan/Depolamaya veri taşıma](./storage-choose-data-transfer-solution.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).  
 
 AzCopy hakkında daha fazla bilgi için şu makalelerden birine bakın:
 

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1b42e9ea06d13271c277ff254b41f10a1ff07e14
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973318"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790619"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -114,7 +114,7 @@ SQL yönetilen örneği dosya paylaşımlarına ve Windows klasörlerine erişem
 
 Bkz. SERTIFIKA ve [yedekleme sertifikası](/sql/t-sql/statements/backup-certificate-transact-sql) [oluşturma](/sql/t-sql/statements/create-certificate-transact-sql) . 
  
-**Geçici çözüm**: sertifika yedeklemesi oluşturmak ve yedeklemeyi geri yüklemek yerine [sertifika ikili içeriğini ve özel anahtarı alın, bunu. SQL dosyası olarak depolayın ve ikiliden oluşturun](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
+**Geçici çözüm** : sertifika yedeklemesi oluşturmak ve yedeklemeyi geri yüklemek yerine [sertifika ikili içeriğini ve özel anahtarı alın, bunu. SQL dosyası olarak depolayın ve ikiliden oluşturun](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  
@@ -153,7 +153,7 @@ SQL yönetilen örneği dosyalara erişemez, bu nedenle şifreleme sağlayıcıl
 - Veritabanı sahibi olarak Azure AD grubuna eşlenmiş bir Azure AD oturum açmanın ayarlanması desteklenmez.
 - Diğer Azure AD sorumlularını kullanarak Azure AD sunucu düzeyi sorumluları 'nın kimliğe bürünme işlemi, [execute as](/sql/t-sql/statements/execute-as-transact-sql) yan tümcesi gibi desteklenir. FARKLı ÇALıŞTıR sınırlamaları şunlardır:
 
-  - Ad, oturum açma adından farklı olduğunda Azure AD kullanıcıları için Kullanıcı tarafından desteklenmez. Örneğin, kullanıcının LOGIN [] adlı Kullanıcı oluşturma [myAadUser] sözdizimi aracılığıyla oluşturulduğu john@contoso.com ve kimliğe bürünme özelliği, exec as user = _myaaduser_aracılığıyla denendiğinde bir örnektir. Bir Azure AD sunucu sorumlusu 'ndan (oturum açma) bir **Kullanıcı** oluşturduğunuzda, user_name **oturum açma**işleminden aynı login_name olarak belirtin.
+  - Ad, oturum açma adından farklı olduğunda Azure AD kullanıcıları için Kullanıcı tarafından desteklenmez. Örneğin, kullanıcının LOGIN [] adlı Kullanıcı oluşturma [myAadUser] sözdizimi aracılığıyla oluşturulduğu john@contoso.com ve kimliğe bürünme özelliği, exec as user = _myaaduser_ aracılığıyla denendiğinde bir örnektir. Bir Azure AD sunucu sorumlusu 'ndan (oturum açma) bir **Kullanıcı** oluşturduğunuzda, user_name **oturum açma** işleminden aynı login_name olarak belirtin.
   - Yalnızca rolün parçası olan SQL Server düzeyi sorumlular (oturumlar), `sysadmin` Azure AD sorumlularını hedefleyen aşağıdaki işlemleri yürütebilir:
 
     - KULLANıCı OLARAK YÜRÜT
@@ -220,7 +220,7 @@ Daha fazla bilgi için bkz. [alter database set Partner, TANıK ayarla](/sql/t-s
 
 - Birden çok günlük dosyası desteklenmez.
 - Bellek içi nesneler Genel Amaçlı hizmeti katmanında desteklenmez. 
-- Her veritabanı için en fazla 280 dosya Genel Amaçlı örnek başına 280 dosya sınırı vardır. Genel Amaçlı katmanındaki veriler ve günlük dosyaları bu sınıra doğru sayılır. [İş açısından kritik katmanı veritabanı başına 32.767 dosyasını destekler](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+- Her veritabanı için en fazla 280 dosya Genel Amaçlı örnek başına 280 dosya sınırı vardır. Genel Amaçlı katmanındaki veriler ve günlük dosyaları bu sınıra doğru sayılır. [İş açısından kritik katmanı veritabanı başına 32.767 dosyasını destekler](./resource-limits.md#service-tier-characteristics).
 - Veritabanı FILESTREAM verileri içeren dosya gruplarını içeremez. . Bak veri içeriyorsa geri yükleme başarısız olur `FILESTREAM` . 
 - Her dosya Azure Blob depolama alanına yerleştirilir. Dosya başına GÇ ve aktarım hızı her bir dosyanın boyutuna bağlıdır.
 
@@ -354,17 +354,17 @@ SQL Server ' de etkinleştirilen DBCC deyimleri SQL yönetilen örneği 'nde des
 ### <a name="distributed-transactions"></a>Dağıtılmış işlemler
 
 [Dağıtılmış işlemler](../database/elastic-transactions-overview.md) için kısmi destek şu anda genel önizlemededir. Desteklenen senaryolar şunlardır:
-* Katılımcıların yalnızca [sunucu güven grubunun](https://aka.ms/mitrusted-groups)parçası olan Azure SQL yönetilen örnekleri olduğu işlemler.
+* Katılımcıların yalnızca [sunucu güven grubunun](./server-trust-group-overview.md)parçası olan Azure SQL yönetilen örnekleri olduğu işlemler.
 * .NET (TransactionScope sınıfı) ve Transact-SQL ' den başlatılan işlemler.
 
 Azure SQL yönetilen örneği şu anda MSDTC şirket içi veya Azure sanal makinelerinde düzenli olarak desteklenen diğer senaryoları desteklemez.
 
 ### <a name="extended-events"></a>Genişletilmiş Olaylar
 
-Genişletilmiş olaylar (XEvents) için Windows 'a özgü bazı hedefler desteklenmez:
+Genişletilmiş Olaylar (XEvents) için Windows'a özgü bazı hedefler desteklenmez:
 
-- `etw_classic_sync`Hedef desteklenmiyor. `.xel`Azure Blob depolamada dosyaları depolayın. [Etw_classic_sync hedefi](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target)' ne bakın.
-- `event_file`Hedef desteklenmiyor. `.xel`Azure Blob depolamada dosyaları depolayın. [Event_file hedefi](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target)' ne bakın.
+- `etw_classic_sync`Hedef desteklenmiyor. `.xel`Azure Blob depolamada dosyaları depolayın. Bkz. [etw_classic_sync hedefi](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
+- `event_file`Hedef desteklenmiyor. `.xel`Azure Blob depolamada dosyaları depolayın. Bkz. [event_file hedefi](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Dış kitaplıklar
 
@@ -482,7 +482,7 @@ Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](/sql
   - `remote proc trans`
 - `sp_execute_external_scripts` desteklenmez. Bkz. [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
 - `xp_cmdshell` desteklenmez. Bkz. [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
-- `Extended stored procedures`, ve içeren desteklenmez `sp_addextendedproc`   `sp_dropextendedproc` . Bkz. [genişletilmiş saklı yordamlar](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
+- `Extended stored procedures` , ve içeren desteklenmez `sp_addextendedproc` `sp_dropextendedproc` . Bkz. [genişletilmiş saklı yordamlar](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db` ve `sp_detach_db` desteklenmez. Bkz. [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)ve [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
 ### <a name="system-functions-and-variables"></a>Sistem işlevleri ve değişkenler
@@ -527,13 +527,13 @@ SQL yönetilen örneğindeki aşağıdaki MSDB şemaları, kendi önceden tanım
 
 - Genel roller
   - TargetServersRole
-- [Düzeltilen veritabanı rolleri](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [Düzeltilen veritabanı rolleri](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
   - SQLAgentUserRole
   - SQLAgentReaderRole
   - SQLAgentOperatorRole
-- [DatabaseMail rolleri](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+- [DatabaseMail rolleri](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
   - DatabaseMailUserRole
-- [Tümleştirme Hizmetleri rolleri](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+- [Tümleştirme Hizmetleri rolleri](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
   - db_ssisadmin
   - db_ssisltduser
   - db_ssisoperator
@@ -543,7 +543,7 @@ SQL yönetilen örneğindeki aşağıdaki MSDB şemaları, kendi önceden tanım
 
 ### <a name="error-logs"></a>Hata günlükleri
 
-SQL yönetilen örneği, ayrıntılı bilgileri hata günlüklerine koyar. Hata günlüğünde günlüğe kaydedilen çok sayıda iç sistem olayı vardır. İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için, Azure Data Studio için [SQL yönetilen örneği – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) veya [SQL yönetilen örnek uzantısı (Önizleme)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) konusuna bakın.
+SQL yönetilen örneği, ayrıntılı bilgileri hata günlüklerine koyar. Hata günlüğünde günlüğe kaydedilen çok sayıda iç sistem olayı vardır. İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için, Azure Data Studio için [SQL yönetilen örneği – sp_readmierrorlog](/archive/blogs/sqlcat/azure-sql-db-managed-instance-sp_readmierrorlog) veya [SQL yönetilen örnek uzantısı (Önizleme)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) konusuna bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

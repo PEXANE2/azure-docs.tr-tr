@@ -2,13 +2,13 @@
 title: Sık sorulan sorular-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs ve yanıtları hakkında sık sorulan soruların (SSS) bir listesi sunulmaktadır.
 ms.topic: article
-ms.date: 10/23/2020
-ms.openlocfilehash: c95016064ecc9bbfc091138863c8215feeec50b4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 10/27/2020
+ms.openlocfilehash: 051122c2030683eb2f3c57191dbbfa3bfd2bf6b7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518033"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789378"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs sık sorulan sorular
 
@@ -184,8 +184,19 @@ Bir ad alanındaki tüm olay hub 'larının toplam **Çıkış** üretilen işi 
 
 Giriş ve çıkış kotaları ayrı ayrı uygulanır; böylece hiçbir Gönderen olay tüketiminin yavaşlamasına veya bir alıcı olayların bir olay hub 'ına gönderilmesini engelleyebilir.
 
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Ayrılan/seçili olabilecek üretilen iş birimi sayısı (DTU 'lar) için bir sınır var mıdır?
-Çok kiracılı bir teklifte, üretilen iş birimleri 40 'e kadar büyüyebilir (portalda en fazla 20 lik seçebilirsiniz ve aynı ad alanında, bu alanı 40 ' ye kadar yükseltmek için bir destek bileti oluşturabilirsiniz). Event Hubs 40 ' nin ötesinde, **Event Hubs ayrılmış kümeleri**olarak adlandırılan kaynak/kapasite tabanlı modeli sunar. Adanmış kümeler kapasite birimlerinde (cu düzeyinde kapsanır) satılır.
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-reservedselected"></a>Ayrılan/seçili olabilecek üretilen iş birimi sayısı için bir sınır var mıdır?
+
+Azure portal temel veya Standart katman ad alanı oluştururken ad alanı için en fazla 20 ' yi seçebilirsiniz. Bunu **tam** 40 bir şekilde yükseltmek için bir  [destek isteği](../azure-portal/supportability/how-to-create-azure-support-request.md)gönderebilirsiniz.  
+
+1. **Olay veri yolu ad alanı** sayfasında, sol taraftaki menüden **Yeni destek isteği** ' ni seçin. 
+1. **Yeni destek isteği** sayfasında, aşağıdaki adımları izleyin:
+    1. **Özet** için, sorunu birkaç sözcükten açıklama. 
+    1. **Sorun türü** için **Kota** ' i seçin. 
+    1. **Sorun alt türü** için, **Aktarım hızı birimi artışı veya azaltma isteği** ' ni seçin. 
+    
+        :::image type="content" source="./media/event-hubs-faq/support-request-throughput-units.png" alt-text="Destek isteği sayfası":::
+
+Event Hubs 40 ' nin ötesinde, Event Hubs Ayrılmış kümeleri olarak adlandırılan kaynak/kapasite tabanlı modeli sunar. Adanmış kümeler kapasite birimlerinde (cu düzeyinde kapsanır) satılır. Daha fazla bilgi için bkz. [Event Hubs ayrılmış-genel bakış](event-hubs-dedicated-overview.md).
 
 ## <a name="dedicated-clusters"></a>Ayrılmış kümeler
 
@@ -199,7 +210,7 @@ Event Hubs adanmış bir küme ayarlamaya yönelik adım adım yönergeler ve da
 [!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
 
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="partitions"></a>Bölümler
 
 ### <a name="how-many-partitions-do-i-need"></a>Kaç bölüme ihtiyacım var?
 Bölüm sayısı, oluşturma sırasında belirtilmiştir ve 1 ile 32 arasında olmalıdır. Bölüm sayısı değiştirilemez olmadığından, bölüm sayısını ayarlarken uzun vadeli ölçeği dikkate almanız gerekir. Bölümler, tüketen uygulamalarda gerekli aşağı akış paralelliğiyle ilişkili bir veri düzenleme mekanizmasıdır. Bir olay hub'ındaki bölüm sayısı, sahip olmayı beklediğiniz eşzamanlı okuyucu sayısıyla doğrudan ilgilidir. Bölümler hakkında daha fazla bilgi için bkz. [bölümler](event-hubs-features.md#partitions).
@@ -209,6 +220,21 @@ Oluşturma sırasında 32 olan mümkün olan en yüksek değer olarak ayarlamak 
 Event Hubs, Tüketici grubu başına tek bir bölüm okuyucusuna izin verecek şekilde tasarlanmıştır. Çoğu kullanım durumunda, varsayılan dört bölüm ayarı yeterlidir. Olay işlemenin ölçeğini ölçeklendirmek istiyorsanız ek bölümler eklemeyi göz önünde bulundurmanız gerekebilir. Bir bölümde belirli bir işleme sınırı yoktur, ancak ad uzayındaki toplam aktarım hızı, üretilen iş birimi sayısıyla sınırlıdır. Ad uzayındaki üretilen iş birimi sayısını artırdıkça, ek bölümlerin, eşzamanlı okuyucuların en yüksek aktarım hızını elde etmelerini sağlamak isteyebilirsiniz.
 
 Ancak, uygulamanızın belirli bir bölüme benzeşim içeren bir modeliniz varsa, bölüm sayısının artırılması sizin için herhangi bir avantaj olmayabilir. Daha fazla bilgi için bkz. [kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md).
+
+### <a name="increase-partitions"></a>Bölümleri artırma
+Bir destek isteği göndererek bölüm sayısının 40 ' e (tam) yükseldiğini isteyebilirsiniz. 
+
+1. **Olay veri yolu ad alanı** sayfasında, sol taraftaki menüden **Yeni destek isteği** ' ni seçin. 
+1. **Yeni destek isteği** sayfasında, aşağıdaki adımları izleyin:
+    1. **Özet** için, sorunu birkaç sözcükten açıklama. 
+    1. **Sorun türü** için **Kota** ' i seçin. 
+    1. **Sorun alt türü** için, **bölüm değişikliği isteği** ' ni seçin. 
+    
+        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="Destek isteği sayfası":::
+
+Bölüm sayısı tam olarak 40 yükseltilebilir. Bu durumda, Ayrıca, 40 sayısının de arttığı bir artış vardır. Daha sonra TU limitini <= 20 ' ye düşürürseniz, en yüksek bölüm sayısı da 32 olarak azaltılır. 
+
+Bölümler Olay Hub 'ı düzeyinde uygulandığından ve hub oluşturulduktan sonra sabit olmaları nedeniyle bölümlerdeki azalmaları var olan olay hub 'larını etkilemez. 
 
 ## <a name="pricing"></a>Fiyatlandırma
 

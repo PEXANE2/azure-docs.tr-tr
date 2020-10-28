@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 21909a9c7a1edda5059b9e83cf8dda243862b966
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b57303a1c9fdba2bea8637bef6c148622087a8d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88660216"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789786"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak SQL Server VM oluşturma
 
@@ -58,26 +58,26 @@ Azure VM şablonlarındaki daha fazla SQL Server [hızlı başlangıç şablonu 
 
 2. Aşağıdaki değerleri seçin veya girin.
 
-    * **Abonelik**: bir Azure aboneliği seçin.
-    * **Kaynak grubu**: SQL Server VM hazırlanan kaynak grubu. 
-    * **Bölge**: bir bölge seçin.  Örneğin **Orta ABD**.
-    * **Sanal makine adı**: SQL Server sanal makine için bir ad girin. 
-    * **Sanal makine boyutu**: açılan kutudan sanal makineniz için uygun boyutu seçin.
-    * **Var olan sanal ağ adı**: SQL Server VM hazırlanan sanal ağın adını girin. 
-    * **Mevcut VNET kaynak grubu**: sanal ağınızın hazırlandığı kaynak grubunu girin. 
-    * **Mevcut alt ağ adı**: hazırlanmış alt ağınızın adı. 
-    * **Görüntü teklifi**: iş gereksinimlerinize en uygun SQL Server ve Windows Server görüntüsünü seçin. 
-    * **SQL SKU 'su**: iş gereksinimlerinize en uygun SQL Server SKU sürümünü seçin. 
-    * **Yönetici Kullanıcı adı**: sanal makinenin yöneticisinin Kullanıcı adı. 
-    * **Yönetici parolası**: VM yönetici hesabı tarafından kullanılan parola. 
-    * **Depolama Iş yükü türü**: işinizle en iyi şekilde eşleşen iş yükünün depolama türü. 
-    * **SQL veri diskleri sayısı**: veri dosyaları için kullanılan SQL Server disk sayısı.  
-    * **Veri yolu**: SQL Server veri dosyalarının yolu. 
-    * **SQL günlük diskleri sayısı**: günlük dosyaları için kullanılan SQL Server disk sayısı. 
-    * **Günlük yolu**: SQL Server günlük dosyalarının yolu. 
-    * **Konum**: tüm kaynakların konumu, bu değer varsayılan olarak kalmalıdır `[resourceGroup().location]` . 
+    * **Abonelik** : bir Azure aboneliği seçin.
+    * **Kaynak grubu** : SQL Server VM hazırlanan kaynak grubu. 
+    * **Bölge** : bir bölge seçin.  Örneğin **Orta ABD** .
+    * **Sanal makine adı** : SQL Server sanal makine için bir ad girin. 
+    * **Sanal makine boyutu** : açılan kutudan sanal makineniz için uygun boyutu seçin.
+    * **Var olan sanal ağ adı** : SQL Server VM hazırlanan sanal ağın adını girin. 
+    * **Mevcut VNET kaynak grubu** : sanal ağınızın hazırlandığı kaynak grubunu girin. 
+    * **Mevcut alt ağ adı** : hazırlanmış alt ağınızın adı. 
+    * **Görüntü teklifi** : iş gereksinimlerinize en uygun SQL Server ve Windows Server görüntüsünü seçin. 
+    * **SQL SKU 'su** : iş gereksinimlerinize en uygun SQL Server SKU sürümünü seçin. 
+    * **Yönetici Kullanıcı adı** : sanal makinenin yöneticisinin Kullanıcı adı. 
+    * **Yönetici parolası** : VM yönetici hesabı tarafından kullanılan parola. 
+    * **Depolama Iş yükü türü** : işinizle en iyi şekilde eşleşen iş yükünün depolama türü. 
+    * **SQL veri diskleri sayısı** : veri dosyaları için kullanılan SQL Server disk sayısı.  
+    * **Veri yolu** : SQL Server veri dosyalarının yolu. 
+    * **SQL günlük diskleri sayısı** : günlük dosyaları için kullanılan SQL Server disk sayısı. 
+    * **Günlük yolu** : SQL Server günlük dosyalarının yolu. 
+    * **Konum** : tüm kaynakların konumu, bu değer varsayılan olarak kalmalıdır `[resourceGroup().location]` . 
 
-3. **Gözden geçir ve oluştur**’u seçin. SQL Server VM başarıyla dağıtıldıktan sonra bir bildirim alırsınız.
+3. **Gözden geçir ve oluştur** ’u seçin. SQL Server VM başarıyla dağıtıldıktan sonra bir bildirim alırsınız.
 
 Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../../../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -120,7 +120,7 @@ Write-Host "Press [ENTER] to continue..."
 Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, bkz.:
 
 > [!div class="nextstepaction"]
-> [ Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [ Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 SQL Server VM dağıtmanın diğer yolları için bkz.: 
 - [Azure Portal](create-sql-vm-portal.md)

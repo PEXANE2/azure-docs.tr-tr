@@ -12,16 +12,16 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 4afb6844512bd59a5c377d826267a748837ed855
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: be327fabdffc0f98dc0449b51e7e4d73651d80d8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952004"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789497"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri
 
-Azure SQL veritabanı ve Azure SYNAPSE Analytics için [Azure Portal](single-database-create-quickstart.md) BIR mantıksal SQL Server oluşturduğunuzda sonuç, *yourservername.Database.Windows.net*biçiminde genel bir uç noktasıdır.
+Azure SQL veritabanı ve Azure SYNAPSE Analytics için [Azure Portal](single-database-create-quickstart.md) BIR mantıksal SQL Server oluşturduğunuzda sonuç, *yourservername.Database.Windows.net* biçiminde genel bir uç noktasıdır.
 
 Ortak uç nokta aracılığıyla bir veritabanına erişime izin vermek için aşağıdaki ağ erişim denetimlerini kullanabilirsiniz:
 
@@ -34,7 +34,7 @@ Ayrıca, [sanal ağlardan](../../virtual-network/virtual-networks-overview.md) v
 - Özel bağlantı: belirli bir sanal ağ içindeki [MANTıKSAL SQL Server](logical-servers.md) için özel bir uç nokta oluşturmak için bu özelliği kullanın
 
 > [!IMPORTANT]
-> Bu *Makale,* **SQL yönetilen örneği**için geçerlidir. Ağ yapılandırması hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örneğine bağlanma](../managed-instance/connect-application-instance.md) .
+> Bu *Makale,* **SQL yönetilen örneği** için geçerlidir. Ağ yapılandırması hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örneğine bağlanma](../managed-instance/connect-application-instance.md) .
 
 Bu erişim denetimlerine ilişkin üst düzey bir açıklama ve ne yapacaklarınız için aşağıdaki videoya bakın:
 
@@ -42,13 +42,13 @@ Bu erişim denetimlerine ilişkin üst düzey bir açıklama ve ne yapacakların
 
 ## <a name="allow-azure-services"></a>Azure hizmetlerine izin ver
 
-Yeni bir mantıksal SQL Server oluşturma sırasında [Azure Portal](single-database-create-quickstart.md)varsayılan olarak, bu ayar **kapalı**olarak ayarlanır. Bu ayar, genel hizmet uç noktası kullanılarak bağlantıya izin verildiğinde görüntülenir.
+Yeni bir mantıksal SQL Server oluşturma sırasında [Azure Portal](single-database-create-quickstart.md)varsayılan olarak, bu ayar **kapalı** olarak ayarlanır. Bu ayar, genel hizmet uç noktası kullanılarak bağlantıya izin verildiğinde görüntülenir.
 
 Bu ayarı, mantıksal SQL Server aşağıdaki gibi oluşturulduktan sonra güvenlik duvarı bölmesi aracılığıyla da değiştirebilirsiniz.
   
 ![Sunucu güvenlik duvarını yönetme ekran görüntüsü][2]
 
-**Açık**olarak ayarlandığında sunucunuz Azure sınırının içindeki tüm kaynaklardan gelen iletişimlere izin verir, bu da aboneliğinizin bir parçası olmayabilir veya olmayabilir.
+**Açık** olarak ayarlandığında sunucunuz Azure sınırının içindeki tüm kaynaklardan gelen iletişimlere izin verir, bu da aboneliğinizin bir parçası olmayabilir veya olmayabilir.
 
 Çoğu durumda, **Açık** ayarı, çoğu müşterinin izin verilenden daha fazla izne sahiptir. Bu ayarı **kapalı** olarak ayarlamak ve daha kısıtlayıcı IP güvenlik duvarı kuralları veya sanal ağ güvenlik duvarı kuralları ile değiştirmek isteyebilirsiniz. 
 
@@ -56,11 +56,11 @@ Ancak bunun yapılması, Azure 'da sanal ağınızın bir parçası olmayan ve b
 
 ### <a name="import-export-service"></a>İçeri aktarma hizmeti al
 
-**Azure hizmetlerine erişime Izin ver** **devre dışı**bırakıldığında içeri aktarma hizmeti çalışmıyor. Bununla birlikte, [bir Azure VM 'den sqlpackage.exe el ile çalıştırarak veya](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) DACFX API kullanarak doğrudan kodunuzda dışarı aktarmayı gerçekleştirerek soruna geçici bir çözüm bulabilirsiniz.
+**Azure hizmetlerine erişime Izin ver** **devre dışı** bırakıldığında içeri aktarma hizmeti çalışmıyor. Bununla birlikte, [bir Azure VM 'den sqlpackage.exe el ile çalıştırarak veya](./database-import-export-azure-services-off.md) DACFX API kullanarak doğrudan kodunuzda dışarı aktarmayı gerçekleştirerek soruna geçici bir çözüm bulabilirsiniz.
 
 ### <a name="data-sync"></a>Data Sync
 
-Veri eşitleme özelliğini **Azure hizmetlerine erişime Izin ver** özelliği **kapalı**olarak kullanmak için, **hub** VERITABANıNı barındıran bölgenin **SQL hizmeti etiketinden** [IP adresleri eklemek](firewall-create-server-level-portal-quickstart.md) üzere ayrı ayrı güvenlik duvarı kuralı girdileri oluşturmanız gerekir.
+Veri eşitleme özelliğini **Azure hizmetlerine erişime Izin ver** özelliği **kapalı** olarak kullanmak için, **hub** VERITABANıNı barındıran bölgenin **SQL hizmeti etiketinden** [IP adresleri eklemek](firewall-create-server-level-portal-quickstart.md) üzere ayrı ayrı güvenlik duvarı kuralı girdileri oluşturmanız gerekir.
 Bu sunucu düzeyi güvenlik duvarı kurallarını hem **hub** 'ı hem de **üye** veritabanlarını (farklı bölgelerde olabilir) barındıran sunuculara ekleyin
 
 Batı ABD bölgenin SQL hizmeti etiketine karşılık gelen IP adreslerini oluşturmak için aşağıdaki PowerShell betiğini kullanın
@@ -110,7 +110,7 @@ IP tabanlı güvenlik duvarı, Azure 'daki mantıksal SQL Server 'ın, istemci m
 
 ## <a name="virtual-network-firewall-rules"></a>Sanal ağ güvenlik duvarı kuralları
 
-Sunucu güvenlik duvarı, IP kurallarına ek olarak *sanal ağ kurallarını*tanımlamanızı sağlar.  
+Sunucu güvenlik duvarı, IP kurallarına ek olarak *sanal ağ kurallarını* tanımlamanızı sağlar.  
 Daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı Için sanal ağ hizmet uç noktaları ve kuralları](vnet-service-endpoint-rule-overview.md) . bu videoyu izleyin:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
@@ -121,9 +121,9 @@ Sanal ağ güvenlik duvarı kurallarını araştırırken aşağıdaki Azure ağ
 
 **Sanal ağ:** Azure aboneliğinizle ilişkili sanal ağlarınız olabilir
 
-**Alt ağ:** Bir sanal ağ, **alt ağlar**içerir. Sahip olduğunuz tüm Azure sanal makineleri (VM 'Ler) alt ağlara atanır. Bir alt ağ birden çok VM veya başka işlem düğümü içerebilir. Ağınızı erişime izin verecek şekilde yapılandırmadığınız müddetçe, sanal ağınızın dışındaki işlem düğümleri sanal ağınıza erişemez.
+**Alt ağ:** Bir sanal ağ, **alt ağlar** içerir. Sahip olduğunuz tüm Azure sanal makineleri (VM 'Ler) alt ağlara atanır. Bir alt ağ birden çok VM veya başka işlem düğümü içerebilir. Ağınızı erişime izin verecek şekilde yapılandırmadığınız müddetçe, sanal ağınızın dışındaki işlem düğümleri sanal ağınıza erişemez.
 
-**Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası](../../virtual-network/virtual-network-service-endpoints-overview.md) , özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağıdır. Bu makalede, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL**tür adı ile ilgileniyoruz.
+**Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası](../../virtual-network/virtual-network-service-endpoints-overview.md) , özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağıdır. Bu makalede, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL** tür adı ile ilgileniyoruz.
 
 **Sanal ağ kuralı:** Sunucunuz için bir sanal ağ kuralı, sunucunuzun erişim denetim listesinde (ACL) listelenen bir alt ağıdır. SQL veritabanında veritabanınızın ACL 'sinde olması için, alt ağ **Microsoft. SQL** tür adını içermelidir. Bir sanal ağ kuralı, sunucunuza alt ağdaki her düğümden gelen iletişimleri kabul etmesini söyler.
 
@@ -140,7 +140,7 @@ Sanal ağ kuralları, VM 'lerinizi içeren belirli bir alt ağdan erişimi kurma
 
 ## <a name="private-link"></a>Özel Bağlantı
 
-Özel bağlantı, **özel bir uç nokta**aracılığıyla bir sunucuya bağlanmanızı sağlar. Özel uç nokta, belirli bir [sanal ağ](../../virtual-network/virtual-networks-overview.md) ve alt ağ içindeki özel bir IP adresidir.
+Özel bağlantı, **özel bir uç nokta** aracılığıyla bir sunucuya bağlanmanızı sağlar. Özel uç nokta, belirli bir [sanal ağ](../../virtual-network/virtual-networks-overview.md) ve alt ağ içindeki özel bir IP adresidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -148,7 +148,7 @@ Sanal ağ kuralları, VM 'lerinizi içeren belirli bir alt ağdan erişimi kurma
 
 - Sunucu düzeyinde bir sanal ağ güvenlik duvarı kuralı oluşturmaya yönelik hızlı başlangıç için bkz. [Azure SQL veritabanı Için sanal ağ hizmet uç noktaları ve kuralları](vnet-service-endpoint-rule-overview.md).
 
-- Açık kaynaklı veya üçüncü taraf uygulamalardan SQL veritabanındaki bir veritabanına bağlanma konusunda yardım için bkz. [SQL veritabanı Için istemci hızlı başlangıç kodu örnekleri](https://msdn.microsoft.com/library/azure/ee336282.aspx).
+- Açık kaynaklı veya üçüncü taraf uygulamalardan SQL veritabanındaki bir veritabanına bağlanma konusunda yardım için bkz. [SQL veritabanı Için istemci hızlı başlangıç kodu örnekleri](/previous-versions/azure/ee336282(v=azure.100)).
 
 - Açmanız gerekebilecek ek bağlantı noktaları hakkında daha fazla bilgi için bkz **. SQL veritabanı:** [ADO.NET 4,5 ve SQL veritabanı için 1433 ' den sonraki bağlantı noktalarının](adonet-v12-develop-direct-route-ports.md) iç içe geçmiş bölümü
 
@@ -159,4 +159,3 @@ Sanal ağ kuralları, VM 'lerinizi içeren belirli bir alt ağdan erişimi kurma
 <!--Image references-->
 [1]: media/quickstart-create-single-database/new-server2.png
 [2]: media/quickstart-create-single-database/manage-server-firewall.png
- 

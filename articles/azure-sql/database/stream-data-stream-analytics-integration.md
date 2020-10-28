@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 640dcfc49d1b467cbb852e8b07b113c1180daf7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b796d6689db143cf59ae4ca0a180c2c7c317b7bd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617103"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789446"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Azure Stream Analytics tümleştirme kullanarak Azure SQL veritabanı 'na veri akışı (Önizleme)
 
@@ -43,22 +43,22 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
 ## <a name="configure-stream-analytics-integration"></a>Stream Analytics tümleştirmesini yapılandırma
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Akış verilerinizi almak istediğiniz veritabanına gidin. **Stream Analytics (Önizleme)** öğesini seçin.
 
     ![Stream Analytics](./media/stream-data-stream-analytics-integration/stream-analytics.png)
 
-3. Akış verilerinizi bu veritabanına alma işlemini başlatmak için **Oluştur** ' u seçin ve akış işinize bir ad verin ve ardından **İleri: giriş**' i seçin.
+3. Akış verilerinizi bu veritabanına alma işlemini başlatmak için **Oluştur** ' u seçin ve akış işinize bir ad verin ve ardından **İleri: giriş** ' i seçin.
 
     ![Stream Analytics iş temel bilgilerini yapılandırma](./media/stream-data-stream-analytics-integration/create-job.png)
 
-4. Olaylarınızın kaynak ayrıntılarını girin ve ardından **İleri: çıkış**' ı seçin.
+4. Olaylarınızın kaynak ayrıntılarını girin ve ardından **İleri: çıkış** ' ı seçin.
 
-   - **Giriş türü**: Olay Hub 'ı/IoT Hub
-   - **Giriş diğer adı**: olay kaynağınızı tanımlamak için bir ad girin
-   - **Abonelik**: Azure SQL veritabanı aboneliğiyle aynı
-   - **Olay Hub 'ı ad alanı**: ad alanı adı
-   - **Olay Hub 'ı adı**: seçili ad alanı içindeki olay hub 'ının adı
+   - **Giriş türü** : Olay Hub 'ı/IoT Hub
+   - **Giriş diğer adı** : olay kaynağınızı tanımlamak için bir ad girin
+   - **Abonelik** : Azure SQL veritabanı aboneliğiyle aynı
+   - **Olay Hub 'ı ad alanı** : ad alanı adı
+   - **Olay Hub 'ı adı** : seçili ad alanı içindeki olay hub 'ının adı
    - **Olay Hub 'ı ilke adı** (yeni oluşturulacak varsayılan): Ilke adı verme
    - **Olay Hub 'ı Tüketici grubu** (yeni oluşturulacak varsayılan): Tüketici grubu adı verme  
 
@@ -66,10 +66,10 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
      ![Stream Analytics iş çıktısını yapılandırma](./media/stream-data-stream-analytics-integration/create-job-output.png)
 
-5. Akış verilerinizi almak istediğiniz tabloyu seçin. İşiniz bittiğinde **Oluştur**' u seçin.
+5. Akış verilerinizi almak istediğiniz tabloyu seçin. İşiniz bittiğinde **Oluştur** ' u seçin.
 
-   - **Kullanıcı adı**, **parola**: SQL Server kimlik doğrulaması için kimlik bilgilerinizi girin. **Doğrula**'yı seçin.
-   - **Tablo**: **Yeni oluştur** ' u seçin veya **var olanı kullanın**. Bu akışta **Oluştur**' u seçlim. Bu, Stream Analytics işini başlattığınızda yeni bir tablo oluşturur.
+   - **Kullanıcı adı** , **parola** : SQL Server kimlik doğrulaması için kimlik bilgilerinizi girin. **Doğrula** 'yı seçin.
+   - **Tablo** : **Yeni oluştur** ' u seçin veya **var olanı kullanın** . Bu akışta **Oluştur** ' u seçlim. Bu, Stream Analytics işini başlattığınızda yeni bir tablo oluşturur.
 
      ![Stream Analytics işi oluştur](./media/stream-data-stream-analytics-integration/create.png)
 
@@ -78,7 +78,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
    - Veri aldığınız **giriş** (giriş olayları kaynağı)  
    - Dönüştürülmüş verileri depolayacak olan **çıktı** (çıkış tablosu)
    - SELECT ifadesiyle örnek [Saql sorgusu](../../stream-analytics/stream-analytics-stream-analytics-query-patterns.md) .
-   - **Giriş önizleme**: giriş olayları kaynağından en son gelen verilerin anlık görüntüsünü gösterir.
+   - **Giriş önizleme** : giriş olayları kaynağından en son gelen verilerin anlık görüntüsünü gösterir.
      - Verilerinizde serileştirme türü otomatik olarak algılanır (JSON/CSV). Bunu, JSON/CSV/AVRO ile el ile değiştirebilirsiniz.
      - Gelen verileri tablo biçiminde veya ham biçimde önizleyebilirsiniz.
      - Gösterilen veriniz güncel değilse, en son olayları görmek için **Yenile** ' yi seçin.
@@ -87,43 +87,42 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
      ![test sorgusu](./media/stream-data-stream-analytics-integration/test-query.png)
 
-   - **Test sonuçları**: **Test sorgusunu** seçin ve akış sorgunuzun sonuçlarını görebilirsiniz
+   - **Test sonuçları** : **Test sorgusunu** seçin ve akış sorgunuzun sonuçlarını görebilirsiniz
 
      ![test sonuçları](./media/stream-data-stream-analytics-integration/test-results.png)
 
-   - **Test sonuçları şeması**: test ettikten sonra akış sorgunuzun sonuçlarının şemasını gösterir. Test sonuçları şemasının çıkış şemanız ile eşleştiğinden emin olun.
+   - **Test sonuçları şeması** : test ettikten sonra akış sorgunuzun sonuçlarının şemasını gösterir. Test sonuçları şemasının çıkış şemanız ile eşleştiğinden emin olun.
 
      ![test sonuçları şeması](./media/stream-data-stream-analytics-integration/test-results-schema.png)
 
-   - **Çıkış şeması**: Bu, 5. adımda (yeni veya var olan) seçtiğiniz tablonun şemasını içerir.
+   - **Çıkış şeması** : Bu, 5. adımda (yeni veya var olan) seçtiğiniz tablonun şemasını içerir.
 
       - Yeni oluştur: 5. adımda bu seçeneği belirlediyseniz, akış işini başlatana kadar şemayı henüz görmezsiniz. Yeni bir tablo oluştururken uygun tablo dizinini seçin. Tablo dizini oluşturma hakkında daha fazla bilgi için, bkz. [kümelenmiş ve kümelenmemiş dizinler](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described/).
       - Mevcut olanı kullan: 5. adımda bu seçeneği belirlediyseniz seçili tablonun şemasını görürsünüz.
 
-7. Sorguyu test etmeyi bitirdiğinizde & sorguyu **Kaydet**' i seçin. Dönüştürülmüş verileri SQL tablosuna almaya başlamak için **Stream Analytics Işini Başlat** ' ı seçin. Aşağıdaki alanları sonlandırdıktan sonra işi **başlatın** .
-   - **Çıkış başlangıç zamanı**: Bu, işin ilk çıktısının saatini tanımlar.  
+7. Sorguyu test etmeyi bitirdiğinizde & sorguyu **Kaydet** ' i seçin. Dönüştürülmüş verileri SQL tablosuna almaya başlamak için **Stream Analytics Işini Başlat** ' ı seçin. Aşağıdaki alanları sonlandırdıktan sonra işi **başlatın** .
+   - **Çıkış başlangıç zamanı** : Bu, işin ilk çıktısının saatini tanımlar.  
      - Şimdi: iş şimdi başlayacak ve yeni gelen verileri işleyecek.
      - Özel: iş şimdi başlayacaktır, ancak belirli bir zaman noktasından (geçmişte veya gelecekte olabilir) veri işleyecek. Daha fazla bilgi için bkz. [Azure Stream Analytics işi başlatma](../../stream-analytics/start-job.md).
-   - **Akış birimleri**: Azure Stream Analytics, verileri hizmette işlemek için gereken Akış Birimi sayısına göre fiyatlandırılır. Daha fazla bilgi için bkz. [Azure Stream Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/stream-analytics/).
-   - **Çıkış verileri hata işleme**:  
+   - **Akış birimleri** : Azure Stream Analytics, verileri hizmette işlemek için gereken Akış Birimi sayısına göre fiyatlandırılır. Daha fazla bilgi için bkz. [Azure Stream Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/stream-analytics/).
+   - **Çıkış verileri hata işleme** :  
      - Yeniden deneme: bir hata oluştuğunda, yazma başarılı olana kadar olayın süresiz olarak yazılmasına yeniden denemeler Azure Stream Analytics. Yeniden denemeler için zaman aşımı yok. Sonuç olarak, sonraki tüm olayların yeniden denenecek olay tarafından işlenmesi engellenir. Bu seçenek, varsayılan çıkış hatası işleme ilkesidir.
      - Bırak: Azure Stream Analytics, veri dönüştürme hatasıyla sonuçlanan tüm çıktı olaylarını bırakacak. Bırakılan olaylar daha sonra yeniden işlenmek üzere kurtarılamaz. Tüm geçici hatalar (örneğin, ağ hataları), ilke yapılandırmasından oluşan çıkış hatası işleme ne olursa olsun yeniden denenir.
-   - **SQL veritabanı çıkış ayarları**: tabloya birden çok yazıcı ile tam paralel topolojiyi etkinleştirmek için önceki sorgu adımlarınızın bölümleme şemasını devralma seçeneği. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'na Azure Stream Analytics çıktısı](../../stream-analytics/stream-analytics-sql-output-perf.md).
-   - **En fazla yığın sayısı**: her toplu ekleme hareketiyle gönderilen kayıt sayısı için önerilen üst sınır.  
+   - **SQL veritabanı çıkış ayarları** : tabloya birden çok yazıcı ile tam paralel topolojiyi etkinleştirmek için önceki sorgu adımlarınızın bölümleme şemasını devralma seçeneği. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'na Azure Stream Analytics çıktısı](../../stream-analytics/stream-analytics-sql-output-perf.md).
+   - **En fazla yığın sayısı** : her toplu ekleme hareketiyle gönderilen kayıt sayısı için önerilen üst sınır.  
     Çıkış hatası işleme hakkında daha fazla bilgi için bkz. [Azure Stream Analytics çıkış hatası ilkeleri](../../stream-analytics/stream-analytics-output-error-policy.md).  
 
      ![işi Başlat](./media/stream-data-stream-analytics-integration/start-job.png)
 
 8. İşi başlattığınızda, çalışmakta olan işi listede görürsünüz ve aşağıdaki eylemleri gerçekleştirebilirsiniz:
-   - **Işi Başlat/Durdur**: iş çalışıyorsa işi durdurabilirsiniz. İş durdurulmuşsa, işi başlatabilirsiniz.
-   - **Işi Düzenle**: sorguyu düzenleyebilirsiniz. İş EX 'de daha fazla değişiklik yapmak istiyorsanız, daha fazla giriş/çıkış ekleyin ve sonra Stream Analytics içinde işi açın. İş çalışırken Düzenle seçeneği devre dışıdır.
-   - **Önizleme çıkış tablosu**: SQL sorgu Düzenleyicisi 'nde tablonun önizlemesini yapabilirsiniz.
-   - **Stream Analytics açın**: işin izleme, hata ayıklama ayrıntılarını görüntülemek için Stream Analytics açın.
+   - **Işi Başlat/Durdur** : iş çalışıyorsa işi durdurabilirsiniz. İş durdurulmuşsa, işi başlatabilirsiniz.
+   - **Işi Düzenle** : sorguyu düzenleyebilirsiniz. İş EX 'de daha fazla değişiklik yapmak istiyorsanız, daha fazla giriş/çıkış ekleyin ve sonra Stream Analytics içinde işi açın. İş çalışırken Düzenle seçeneği devre dışıdır.
+   - **Önizleme çıkış tablosu** : SQL sorgu Düzenleyicisi 'nde tablonun önizlemesini yapabilirsiniz.
+   - **Stream Analytics açın** : işin izleme, hata ayıklama ayrıntılarını görüntülemek için Stream Analytics açın.
 
      ![Stream Analytics işleri](./media/stream-data-stream-analytics-integration/jobs.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Stream Analytics belgeleri](https://docs.microsoft.com/azure/stream-analytics/)
+- [Azure Stream Analytics belgeleri](../../stream-analytics/index.yml)
 - [Azure Stream Analytics çözüm desenleri](../../stream-analytics/stream-analytics-solution-patterns.md)
- 

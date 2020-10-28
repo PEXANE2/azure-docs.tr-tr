@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/23/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b01208c67610ff220df1654d10211472e0eed61f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 416fb9fc4ce0622a710f2c119942edc4986ddd06
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426854"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790585"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API’leri ile geliştirme
 
@@ -32,8 +32,8 @@ Bu makalede, Media Services v3 ile geliştirirken varlıklar ve API 'Ler için u
 
 Media Services kaynaklarına ve Media Services API'sine erişim yetkisi almak için önce kimliğinizi doğrulamanız gerekir. Media Services, [Azure Active Directory (Azure AD) tabanlı](../../active-directory/fundamentals/active-directory-whatis.md) kimlik doğrulamasını destekler. İki yaygın kimlik doğrulaması seçeneği vardır:
  
-* **Hizmet sorumlusu kimlik doğrulaması**: Hizmetin kimliğini doğrulamak için kullanılır (örneğin: web uygulamaları, işlev uygulamaları, API ve mikro hizmetler). Bu kimlik doğrulama yöntemini yaygın olarak kullanan uygulamalar deamon hizmetleri, orta katman hizmetleri veya zamanlanmış işler çalıştıran uygulamalardır. Örneğin, Web uygulamaları için her zaman bir hizmet sorumlusu ile Media Services bağlanan bir orta katman olmalıdır.
-* **Kullanıcı kimlik doğrulaması**: Uygulamayı Media Services kaynaklarıyla etkileşim kurmak amacıyla kullanan bir kişinin kimliğini doğrulamak için kullanılır. Etkileşimli uygulamanın önce kullanıcıdan kimlik bilgilerini istemesi gerekir. Yetkili kullanıcılar tarafından kodlama işlerini veya canlı akışı izlemek için kullanılan yönetim konsolu uygulaması bunun bir örneğidir.
+* **Hizmet sorumlusu kimlik doğrulaması** : Hizmetin kimliğini doğrulamak için kullanılır (örneğin: web uygulamaları, işlev uygulamaları, API ve mikro hizmetler). Bu kimlik doğrulama yöntemini yaygın olarak kullanan uygulamalar deamon hizmetleri, orta katman hizmetleri veya zamanlanmış işler çalıştıran uygulamalardır. Örneğin, Web uygulamaları için her zaman bir hizmet sorumlusu ile Media Services bağlanan bir orta katman olmalıdır.
+* **Kullanıcı kimlik doğrulaması** : Uygulamayı Media Services kaynaklarıyla etkileşim kurmak amacıyla kullanan bir kişinin kimliğini doğrulamak için kullanılır. Etkileşimli uygulamanın önce kullanıcıdan kimlik bilgilerini istemesi gerekir. Yetkili kullanıcılar tarafından kodlama işlerini veya canlı akışı izlemek için kullanılan yönetim konsolu uygulaması bunun bir örneğidir.
 
 Media Services API'si, REST API isteklerinde bulunan kullanıcının veya uygulamanın Media Services hesabı kaynağına erişimi olmasını ve **Katkıda Bulunan** veya **Sahip** rolü kullanmasını gerektirir. **Okuyucu** rolüyle API'ye erişilebilir ama yalnızca **Get** veya **List** işlemleri kullanılabilir. Daha fazla bilgi için bkz. [Media Services hesapları Için Azure rol tabanlı erişim denetimi (Azure RBAC)](rbac-overview.md).
 
@@ -109,11 +109,11 @@ Media Services, aşağıdaki uzun süren işlemlere sahiptir:
 * [Streammingendpoint 'i durdur](/rest/api/media/streamingendpoints/stop)
 * [Streammingendpoint ölçeklendirin](/rest/api/media/streamingendpoints/scale)
 
-Uzun bir işlemin başarılı gönderimi sırasında, ' 202 kabul edildi ' ve döndürülen işlem KIMLIĞINI kullanarak işlem tamamlamayı yoklamalıdır.
+Uzun bir işlemin başarılı gönderimi sırasında, ' 201 oluşturuldu ' alırsınız ve döndürülen işlem KIMLIĞINI kullanarak işlem tamamlamayı yoklamanız gerekir.
 
 [Zaman uyumsuz Azure işlemlerini izle](../../azure-resource-manager/management/async-operations.md) makalesinde, yanıtta döndürülen değerler aracılığıyla zaman uyumsuz Azure işlemlerinin durumunun nasıl izleneceği ayrıntılı olarak açıklanmaktadır.
 
-Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzun süreli bir işlem desteklenir. Başlatıldıktan sonra, uzun süre çalışan bir işlem, aynı LiveEvent veya ilgili canlı çıkışlar üzerinde sonraki uzun süreli bir işlem başlatmadan önce tamamlanmalıdır. Birden çok canlı çıkışı olan canlı olaylar için, başka bir canlı çıkışta uzun süre çalışan bir işlemi tetiklemeden önce, bir canlı çıkışta uzun süre çalışan bir işlemin tamamlanmasını beklemiş olmanız gerekir. 
+Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzun süreli bir işlem desteklenir. Başlatıldıktan sonra, uzun süre çalışan bir işlem, aynı LiveEvent veya ilgili canlı çıkışlar üzerinde sonraki uzun süreli bir işlem başlatmadan önce tamamlanmalıdır. Birden çok canlı çıkışı olan canlı olaylar için, başka bir canlı çıkışta uzun süre çalışan bir işlemi tetiklemeden önce, bir canlı çıkışta uzun süre çalışan bir işlemin tamamlanmasını beklemiş olmanız gerekir.
 
 ## <a name="sdks"></a>SDK’lar
 

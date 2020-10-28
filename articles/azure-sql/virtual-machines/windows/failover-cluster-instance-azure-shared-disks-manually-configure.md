@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: e1c14dc2917185ab4a9237cf0b873b5ad609738e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: dd9b84c379f368e4cb4bcf1b5122e394456cd9e8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168248"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789769"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ Bu makalede, Azure sanal makinelerinde (VM) SQL Server ile Azure paylaşılan di
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
@@ -44,7 +44,7 @@ Paylaşılan disk özelliği etkinken yönetilen bir Premium SSD diski dağıtı
 Aşağıdakileri yaparak bir Azure Paylaşılan diski ekleyin: 
 
 
-1. Aşağıdaki betiği *SharedDiskConfig.js*olarak kaydedin: 
+1. Aşağıdaki betiği *SharedDiskConfig.js* olarak kaydedin: 
 
    ```JSON
    { 
@@ -86,7 +86,7 @@ Aşağıdakileri yaparak bir Azure Paylaşılan diski ekleyin:
    ```
 
 
-2. PowerShell kullanarak * üzerindeSharedDiskConfig.js* çalıştırın: 
+2. PowerShell kullanarak *üzerindeSharedDiskConfig.js* çalıştırın: 
 
    ```powershell
    $rgName = < specify your resource group name>
@@ -151,17 +151,17 @@ Kümeyi Kullanıcı arabiriminde veya PowerShell kullanarak doğrulayın.
 
 Kullanıcı arabirimini kullanarak kümeyi doğrulamak için sanal makinelerden birinde şunları yapın:
 
-1. **Sunucu Yöneticisi**altında **Araçlar**' ı seçin ve **Yük devretme kümesi Yöneticisi**' i seçin.
-1. **Yük devretme kümesi Yöneticisi**altında **eylem**' i seçin ve ardından **Yapılandırmayı Doğrula**' yı seçin.
-1. **İleri**’yi seçin.
-1. **Sunucu veya küme Seç**altında, her iki sanal makinenin adını da girin.
-1. **Test seçenekleri**altında **yalnızca Seçdiğim Testleri Çalıştır**' ı seçin. 
-1. **İleri**’yi seçin.
-1. **Test seçimi**altında, **depolama** *hariç* tüm testleri seçin
+1. **Sunucu Yöneticisi** altında **Araçlar** ' ı seçin ve **Yük devretme kümesi Yöneticisi** ' i seçin.
+1. **Yük devretme kümesi Yöneticisi** altında **eylem** ' i seçin ve ardından **Yapılandırmayı Doğrula** ' yı seçin.
+1. **İleri** ’yi seçin.
+1. **Sunucu veya küme Seç** altında, her iki sanal makinenin adını da girin.
+1. **Test seçenekleri** altında **yalnızca Seçdiğim Testleri Çalıştır** ' ı seçin. 
+1. **İleri** ’yi seçin.
+1. **Test seçimi** altında, **depolama** *hariç* tüm testleri seçin
 
 ## <a name="test-cluster-failover"></a>Test kümesi yük devretmesi
 
-Kümenizin yük devretmesini test edin. **Yük devretme kümesi Yöneticisi**, kümenize sağ tıklayın, **diğer eylemler**' i  >  **taşıyın çekirdek küme kaynağı**  >  **Seç düğümünü**seçin ve ardından kümenin diğer düğümünü seçin. Çekirdek küme kaynağını kümenin her düğümüne taşıyın ve ardından birincil düğüme geri taşıyın. Kümeyi her düğüme başarıyla taşıyabiliyorsanız SQL Server yüklemeye hazırsınız demektir.  
+Kümenizin yük devretmesini test edin. **Yük devretme kümesi Yöneticisi** , kümenize sağ tıklayın, **diğer eylemler** ' i  >  **taşıyın çekirdek küme kaynağı**  >  **Seç düğümünü** seçin ve ardından kümenin diğer düğümünü seçin. Çekirdek küme kaynağını kümenin her düğümüne taşıyın ve ardından birincil düğüme geri taşıyın. Kümeyi her düğüme başarıyla taşıyabiliyorsanız SQL Server yüklemeye hazırsınız demektir.  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Çekirdek kaynağı diğer düğümlere taşıyarak küme yük devretmesini test etme":::
 
@@ -171,15 +171,15 @@ Yük devretme kümesini ve depolama dahil tüm küme bileşenlerini yapılandır
 
 1. Uzak Masaüstü Protokolü (RDP) kullanarak ilk sanal makineye bağlanın.
 
-1. **Yük devretme kümesi Yöneticisi**, tüm çekirdek küme kaynaklarının ilk sanal makinede olduğundan emin olun. Gerekirse, tüm kaynakları bu sanal makineye taşıyın.
+1. **Yük devretme kümesi Yöneticisi** , tüm çekirdek küme kaynaklarının ilk sanal makinede olduğundan emin olun. Gerekirse, tüm kaynakları bu sanal makineye taşıyın.
 
 1. Yükleme medyasını bulun. Sanal makine Azure Marketi görüntülerinden birini kullanıyorsa medya konumunda bulunur `C:\SQLServer_<version number>_Full` . 
 
-1. **Kurulum 'u**seçin.
+1. **Kurulum 'u** seçin.
 
-1. **SQL Server Yükleme Merkezi**'nde **yükleme**' yi seçin.
+1. **SQL Server Yükleme Merkezi** 'nde **yükleme** ' yi seçin.
 
-1. **Yeni SQL Server yük devretme kümesi yüklemesi ' ni**seçin. SQL Server FCı 'yi yüklemek için sihirbazdaki yönergeleri izleyin.
+1. **Yeni SQL Server yük devretme kümesi yüklemesi ' ni** seçin. SQL Server FCı 'yi yüklemek için sihirbazdaki yönergeleri izleyin.
 
 FCı veri dizinlerinin Azure Paylaşılan disklerinde olması gerekir. 
 
@@ -187,12 +187,12 @@ FCı veri dizinlerinin Azure Paylaşılan disklerinde olması gerekir.
 
 1. Kurulum, ilk düğümde FCı 'yı yükledikten sonra, RDP kullanarak ikinci düğüme bağlanın.
 
-1. **SQL Server yükleme merkezini**açın ve ardından **yükleme**' yi seçin.
+1. **SQL Server yükleme merkezini** açın ve ardından **yükleme** ' yi seçin.
 
-1. **SQL Server yük devretme kümesine düğüm Ekle**' yi seçin. SQL Server yüklemek ve sunucuyu FCı 'ye eklemek için sihirbazdaki yönergeleri izleyin.
+1. **SQL Server yük devretme kümesine düğüm Ekle** ' yi seçin. SQL Server yüklemek ve sunucuyu FCı 'ye eklemek için sihirbazdaki yönergeleri izleyin.
 
    >[!NOTE]
-   >SQL Server içeren bir Azure Marketi Galeri görüntüsü kullandıysanız, görüntüye SQL Server Araçlar eklenmiştir. Bu görüntülerden birini kullanmıyorsanız, SQL Server araçlarını ayrı olarak yükleyebilirsiniz. Daha fazla bilgi için bkz. [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+   >SQL Server içeren bir Azure Marketi Galeri görüntüsü kullandıysanız, görüntüye SQL Server Araçlar eklenmiştir. Bu görüntülerden birini kullanmıyorsanız, SQL Server araçlarını ayrı olarak yükleyebilirsiniz. Daha fazla bilgi için bkz. [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
    >
 
 ## <a name="register-with-the-sql-vm-rp"></a>SQL VM RP ile kaydolun

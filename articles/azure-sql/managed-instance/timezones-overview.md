@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: bf0cfd70c9850cc6a5ff4482b494d68700022ad8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978382"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790636"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde saat dilimleri
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,7 +51,7 @@ Yeni bir örnek için parametreler girdiğinizde, desteklenen saat dilimleri lis
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 
-Örnek oluşturma sırasında saat dilimini ayarlamak için [Kaynak Yöneticisi şablonunuzda](https://aka.ms/sql-mi-create-arm-posh) TimeZoneId özelliğini belirtin.
+Örnek oluşturma sırasında saat dilimini ayarlamak için [Kaynak Yöneticisi şablonunuzda](./scripts/create-powershell-azure-resource-manager-template.md) TimeZoneId özelliğini belirtin.
 
 ```json
 "properties": {
@@ -95,7 +95,7 @@ Bir yük devretme grubundaki birincil ve ikincil bir örnek genelinde aynı saat
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Mevcut yönetilen Örneğin saat dilimi değiştirilemez. Geçici bir çözüm olarak, uygun saat dilimine sahip yeni bir yönetilen örnek oluşturun ve ardından el ile yedekleme ve geri yükleme gerçekleştirin ya da önerdiğimiz bir [süre içinde, bir çapraz örnek zaman geri yükleme](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database)gerçekleştirin.
+- Mevcut yönetilen Örneğin saat dilimi değiştirilemez. Geçici bir çözüm olarak, uygun saat dilimine sahip yeni bir yönetilen örnek oluşturun ve ardından el ile yedekleme ve geri yükleme gerçekleştirin ya da önerdiğimiz bir [süre içinde, bir çapraz örnek zaman geri yükleme](./point-in-time-restore.md?tabs=azure-portal#restore-an-existing-database)gerçekleştirin.
 - SQL Server Agent işlerden başlatılan dış işlemler, örneğin saat dilimini gözlemlemektir.
 
 ## <a name="list-of-supported-time-zones"></a>Desteklenen saat dilimlerinin listesi
@@ -243,7 +243,7 @@ Bir yük devretme grubundaki birincil ve ikincil bir örnek genelinde aynı saat
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 
-- [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
-- [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)
-- [AT saat dılımı (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [CURRENT_TIMEZONE (Transact-SQL)](/sql/t-sql/functions/current-timezone-transact-sql)
+- [CURRENT_TIMEZONE_ID (Transact-SQL)](/sql/t-sql/functions/current-timezone-id-transact-sql)
+- [AT saat dılımı (Transact-SQL)](/sql/t-sql/queries/at-time-zone-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

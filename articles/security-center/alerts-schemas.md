@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: f9b3be69ab57c0abf7523169303def899f325229
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341949"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789225"
 ---
 # <a name="security-alerts-schemas"></a>Güvenlik uyarıları şemaları
 
@@ -25,7 +25,7 @@ Aboneliğiniz Azure Defender 'ı etkinleştirmişse Güvenlik Merkezi, kaynaklar
 Bu güvenlik uyarılarını Azure Güvenlik Merkezi 'nin **tehdit koruması** sayfalarında veya gibi dış araçlarla görüntüleyebilirsiniz:
 
 - [Azure Sentinel](../sentinel/index.yml) -Microsoft 'un bulutu-NATIVE SIEM. Sentinel Bağlayıcısı, Azure Güvenlik Merkezi 'ndeki uyarıları alır ve Azure Sentinel için [Log Analytics çalışma alanına](../azure-monitor/learn/quick-create-workspace.md) gönderir.
-- Üçüncü taraf Sıems- [Azure Event Hubs](../event-hubs/index.yml)'a veri göndermek Için Güvenlik Merkezi 'nin [sürekli dışarı aktarma](continuous-export.md) araçları 'nı kullanın. Ardından, Olay Hub 'ınızı verilerinizi bir üçüncü taraf SıEM ile tümleştirin.
+- Üçüncü taraf Sıems- [Azure Event Hubs](../event-hubs/index.yml)veri gönderme. Ardından, Olay Hub 'ınızı verilerinizi bir üçüncü taraf SıEM ile tümleştirin. [SıEM, SOAR veya BT hizmet yönetimi çözümüne akış uyarıları](export-to-siem.md)hakkında daha fazla bilgi edinin.
 - [REST API](/rest/api/securitycenter/) -uyarılara erişmek için REST API kullanıyorsanız, [çevrimiçi uyarılar API 'si belgelerine](/rest/api/securitycenter/alerts)bakın.
 
 Uyarıları tüketmek için herhangi bir programlama yöntemi kullanıyorsanız, sizin için uygun olan alanları bulmak için doğru şemaya ihtiyacınız olacaktır. Ayrıca, bir olay hub 'ına veriyorsanız veya genel HTTP bağlayıcılarıyla Iş akışı Otomasyonu tetiklemeye çalışıyorsanız, JSON nesnelerini doğru şekilde ayrıştırmak için şemaları kullanın.
@@ -46,8 +46,9 @@ Aşağıda, iletilen uyarı olaylarının şemasını bulacaksınız:
 - Güvenlik Merkezi 'nin iş akışı Otomasyonu 'nda yapılandırılmış Azure Logic App örnekleri
 - Güvenlik Merkezi 'nin sürekli dışarı aktarma özelliğini kullanan Azure Olay Hub 'ı
 
-İş akışı Otomasyonu özelliği hakkında daha fazla bilgi için bkz. [uyarıların ve önerilerin yanıtlarını otomatikleştirme](workflow-automation.md).
-Sürekli dışa aktarma hakkında daha fazla bilgi için bkz. [uyarıları ve önerileri dışarı aktarma](continuous-export.md).
+İş akışı Otomasyonu özelliği hakkında daha fazla bilgi için bkz. [Güvenlik Merkezi tetikleyicilerine yanıtları otomatikleştirme](workflow-automation.md).
+
+Sürekli dışa aktarma hakkında daha fazla bilgi için bkz. [Güvenlik Merkezi verilerini sürekli dışa aktarma](continuous-export.md).
 
 [!INCLUDE [Workflow schema](../../includes/security-center-alerts-schema-workflow-automation.md)]
 
@@ -185,5 +186,5 @@ Dışındaki güvenlik merkezi 'nden güvenlik uyarılarına erişme yolları ha
 
 - [Azure Sentinel](../sentinel/index.yml) -Microsoft 'un bulutu-NATIVE SIEM
 - [Azure Event Hubs](../event-hubs/index.yml) -Microsoft 'un tam olarak yönetilen, gerçek zamanlı veri alma hizmeti
-- Güvenlik Merkezi 'nin [sürekli dışarı aktarma özelliği](continuous-export.md)
+- [Güvenlik Merkezi verilerini sürekli dışa aktarma](continuous-export.md)
 - [Log Analytics çalışma alanları](../azure-monitor/learn/quick-create-workspace.md) -Azure izleyici, günlük verilerini, veri ve yapılandırma bilgilerini içeren bir kapsayıcı olan bir Log Analytics çalışma alanında depolar

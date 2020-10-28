@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: c8f73c0789cd0211deeb66af5c7300a81d7b1be0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c89dc28a330e319e18a6289e5f6759c56e46ae8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619823"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791282"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Azure SQL veritabanı 'nda genişletilmiş olaylar 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ Azure SQL veritabanı 'ndaki genişletilmiş olaylar özellik kümesi, SQL Serve
 Genişletilmiş olaylar hakkında ek bilgilere şu adresten ulaşılabilir:
 
 - [Hızlı başlangıç: SQL Server genişletilmiş olaylar](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)
-- [Genişletilmiş olaylar](/sql/relational-databases/extended-events/extended-events)
+- [Genişletilmiş Olaylar](/sql/relational-databases/extended-events/extended-events)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -71,7 +71,7 @@ Aşağıdaki öğelerin önceki pozlaması, olay dosyasını [hedef](#AzureXEven
 
 ## <a name="new-catalog-views"></a>Yeni Katalog görünümleri
 
-Genişletilmiş olaylar özelliği, çeşitli [Katalog görünümleri](https://msdn.microsoft.com/library/ms174365.aspx)tarafından desteklenir. Katalog görünümleri, geçerli veritabanında kullanıcı tarafından oluşturulan olay oturumlarının *meta verilerini veya tanımlarını* size bildirir. Görünümler, etkin olay oturumlarının örnekleri hakkında bilgi döndürmez.
+Genişletilmiş olaylar özelliği, çeşitli [Katalog görünümleri](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql)tarafından desteklenir. Katalog görünümleri, geçerli veritabanında kullanıcı tarafından oluşturulan olay oturumlarının *meta verilerini veya tanımlarını* size bildirir. Görünümler, etkin olay oturumlarının örnekleri hakkında bilgi döndürmez.
 
 | Adı<br/>Katalog görünümü | Açıklama |
 |:--- |:--- |
@@ -81,11 +81,11 @@ Genişletilmiş olaylar özelliği, çeşitli [Katalog görünümleri](https://m
 | **sys.database_event_session_targets** |Olay oturumu için her olay hedefi için bir satır döndürür. |
 | **sys.database_event_sessions** |Veritabanındaki her olay oturumu için bir satır döndürür. |
 
-Microsoft SQL Server, benzer katalog görünümlerinde. * \_ Database*yerine *. Server \_ * adı yer alır. Ad deseninin **sys.server_event_%** olduğu görülüyor.
+Microsoft SQL Server, benzer katalog görünümlerinde. *\_ Database* yerine *. Server \_* adı yer alır. Ad deseninin **sys.server_event_%** olduğu görülüyor.
 
-## <a name="new-dynamic-management-views-dmvs"></a>Yeni dinamik yönetim görünümleri [(DMVs)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>Yeni dinamik yönetim görünümleri [(DMVs)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
-Azure SQL veritabanı, genişletilmiş olayları destekleyen [dinamik yönetim görünümlerine (DMVs)](https://msdn.microsoft.com/library/bb677293.aspx) sahiptir. DMVs, *etkin* olay oturumları hakkında bilgi ister.
+Azure SQL veritabanı, genişletilmiş olayları destekleyen [dinamik yönetim görünümlerine (DMVs)](/sql/relational-databases/system-dynamic-management-views/extended-events-dynamic-management-views) sahiptir. DMVs, *etkin* olay oturumları hakkında bilgi ister.
 
 | DMV adı | Açıklama |
 |:--- |:--- |
@@ -95,9 +95,9 @@ Azure SQL veritabanı, genişletilmiş olayları destekleyen [dinamik yönetim g
 | **sys.dm_xe_database_session_targets** |Oturum hedefleri hakkında bilgi döndürür. |
 | **sys.dm_xe_database_sessions** |Geçerli veritabanı kapsamındaki her olay oturumu için bir satır döndürür. |
 
-Microsoft SQL Server, benzer Katalog görünümleri adın * \_ veritabanı* bölümü olmadan adlandırılır, örneğin:
+Microsoft SQL Server, benzer Katalog görünümleri adın *\_ veritabanı* bölümü olmadan adlandırılır, örneğin:
 
-- ad yerine **sys.dm_xe_sessions**<br/>**sys.dm_xe_database_sessions**.
+- ad yerine **sys.dm_xe_sessions**<br/>**sys.dm_xe_database_sessions** .
 
 ### <a name="dmvs-common-to-both"></a>Her ikisine de genel olarak DMVs
 
@@ -140,11 +140,11 @@ SELECT
 
 Azure SQL veritabanı 'nda olay oturumlarınızdan sonuçları yakalayabileceğiniz hedefler şunlardır:
 
-- [Halka arabelleği hedefi](https://msdn.microsoft.com/library/ff878182.aspx) -olay verilerini kısaca bellekte tutar.
-- [Olay sayacı hedefi](https://msdn.microsoft.com/library/ff878025.aspx) -bir genişletilmiş olaylar oturumu sırasında oluşan tüm olayları sayar.
-- [Olay dosyası hedefi](https://msdn.microsoft.com/library/ff878115.aspx) -bir Azure depolama kapsayıcısına tam arabellekleri yazar.
+- [Halka arabelleği hedefi](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130)) -olay verilerini kısaca bellekte tutar.
+- [Olay sayacı hedefi](/previous-versions/sql/sql-server-2016/ff878025(v=sql.130)) -bir genişletilmiş olaylar oturumu sırasında oluşan tüm olayları sayar.
+- [Olay dosyası hedefi](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) -bir Azure depolama kapsayıcısına tam arabellekleri yazar.
 
-[Windows Için olay izleme (ETW)](https://msdn.microsoft.com/library/ms751538.aspx) API 'Si, Azure SQL veritabanı 'nda genişletilmiş olaylar için kullanılamaz.
+[Windows Için olay izleme (ETW)](/dotnet/framework/wcf/samples/etw-tracing) API 'Si, Azure SQL veritabanı 'nda genişletilmiş olaylar için kullanılamaz.
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
@@ -183,11 +183,11 @@ Bellek üst sınırının zorlandığını belirten bir hata iletisi alırsanız
 ## <a name="related-links"></a>İlgili bağlantılar
 
 - [Azure depolama ile Azure PowerShell kullanma](/powershell/module/az.storage/).
-- [Azure depolama cmdlet 'Leri](https://docs.microsoft.com/powershell/module/Azure.Storage)
+- [Azure depolama cmdlet 'Leri](/powershell/module/Azure.Storage)
 - [Azure Storage ile Azure PowerShell’i kullanma](/powershell/module/az.storage/)
 - [.NET 'ten blob depolamayı kullanma](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
-- [Olay oturumu oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE CREDENTIAL (Transact-SQL)](/sql/t-sql/statements/create-credential-transact-sql)
+- [Olay oturumu oluşturma (Transact-SQL)](/sql/t-sql/statements/create-event-session-transact-sql)
 - [Microsoft SQL Server 'da genişletilmiş olaylar hakkında Kehayias ' blog gönderileri](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 - Azure *hizmet güncelleştirmeleri* Web sayfası, parametre tarafından Azure SQL veritabanı 'na göre daha dar:
   - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
@@ -195,6 +195,6 @@ Bellek üst sınırının zorlandığını belirten bir hata iletisi alırsanız
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->

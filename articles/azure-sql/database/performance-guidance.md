@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: jrasnick
 ms.date: 03/10/2020
-ms.openlocfilehash: 54a6293a29a407a7014aafb66587dcb01fc13337
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 773f011e0c79dc7b246ddc4a737914c15fe0f2f6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645797"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789548"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde performans için uygulamaları ve veritabanlarını ayarlama
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -122,7 +122,7 @@ Oluşturulduktan sonra, aynı SELECT açıklaması tarama yerine bir arama kulla
 
 ![Düzeltilen dizinler içeren bir sorgu planı](./media/performance-guidance/query_plan_corrected_indexes.png)
 
-Temel Öngörüler, paylaşılan bir emtia sisteminin GÇ kapasitesinin, ayrılmış bir sunucu makinesinden daha fazla sınırlı olması. Hizmet katmanlarının her işlem boyutu için kaynakların en büyük avantajlarından yararlanmak üzere gereksiz GÇ 'yi en aza indirmeden bir Premium vardır. Uygun fiziksel veritabanı tasarım seçimleri, bireysel sorguların gecikmesini önemli ölçüde iyileştirebilir, ölçek birimi başına işlenen eşzamanlı isteklerin verimini artırır ve sorguyu karşılamak için gereken maliyetleri en aza indirir. Eksik dizin DMVs hakkında daha fazla bilgi için bkz. [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+Temel Öngörüler, paylaşılan bir emtia sisteminin GÇ kapasitesinin, ayrılmış bir sunucu makinesinden daha fazla sınırlı olması. Hizmet katmanlarının her işlem boyutu için kaynakların en büyük avantajlarından yararlanmak üzere gereksiz GÇ 'yi en aza indirmeden bir Premium vardır. Uygun fiziksel veritabanı tasarım seçimleri, bireysel sorguların gecikmesini önemli ölçüde iyileştirebilir, ölçek birimi başına işlenen eşzamanlı isteklerin verimini artırır ve sorguyu karşılamak için gereken maliyetleri en aza indirir. Eksik dizin DMVs hakkında daha fazla bilgi için bkz. [sys.dm_db_missing_index_details](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-missing-index-details-transact-sql).
 
 ### <a name="query-tuning-and-hinting"></a>Sorgu ayarlama ve ipuçcu
 
@@ -232,7 +232,7 @@ ORDER BY start_time DESC
 
 Bir testin kaynağının başka bir testten daha fazla veya daha az kaynak kullanıp kullanmadığını öğrenmek için **sys.resource_stats** inceleyebilirsiniz. Verileri karşılaştırdığınızda, testlerin zamanlamasını **sys.resource_stats** görünümünde aynı 5 dakikalık pencerede kalmayacak şekilde ayırın. Alıştırma hedefi, en yoğun kaynakları en aza indirmek için kullanılan toplam kaynak miktarını en aza indirmektir. Genellikle, gecikme için kod parçasını iyileştirmek kaynak tüketimini de azaltır. Bir uygulamada yaptığınız değişikliklerin gerekli olduğundan ve değişikliklerin uygulamada sorgu ipuçları kullanıyor olabilecek bir kişiye ait müşteri deneyimini olumsuz şekilde etkilemediğinden emin olun.
 
-Bir iş yükünün yinelenen sorgular kümesi varsa, genellikle, veritabanını barındırmak için gereken en düşük kaynak boyutu birimini barındıracağından plan seçimlerinizin optimizasyonu ve doğrulanması mantıklı olur. Bunu doğruladıktan sonra, bunların düşürülmediğinden emin olmanıza yardımcı olacak planları bazen yeniden inceleyin. [Sorgu ipuçları (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx)hakkında daha fazla bilgi edinebilirsiniz.
+Bir iş yükünün yinelenen sorgular kümesi varsa, genellikle, veritabanını barındırmak için gereken en düşük kaynak boyutu birimini barındıracağından plan seçimlerinizin optimizasyonu ve doğrulanması mantıklı olur. Bunu doğruladıktan sonra, bunların düşürülmediğinden emin olmanıza yardımcı olacak planları bazen yeniden inceleyin. [Sorgu ipuçları (Transact-SQL)](/sql/t-sql/queries/hints-transact-sql-query)hakkında daha fazla bilgi edinebilirsiniz.
 
 ### <a name="very-large-database-architectures"></a>Çok büyük veritabanı mimarileri
 
