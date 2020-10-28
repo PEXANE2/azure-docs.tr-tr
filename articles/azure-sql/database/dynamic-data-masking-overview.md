@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/04/2020
 tags: azure-synpase
-ms.openlocfilehash: 0689cea221142ec9c9bdbb18ab82fab00a3e2fe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5442ddab5b4925e40250e63833a634006db7aead
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398621"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781456"
 ---
 # <a name="dynamic-data-masking"></a>Dinamik veri maskeleme 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -34,7 +34,7 @@ SQL veritabanı yapılandırma bölmesinizdeki **güvenlik** altında **dinamik 
 
 ### <a name="dynamic-data-masking-permissions"></a>Dinamik veri maskeleme izinleri
 
-Dinamik veri maskeleme, Azure SQL veritabanı yöneticisi, Sunucu Yöneticisi veya [SQL Güvenlik Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) rolleri tarafından yapılandırılabilir.
+Dinamik veri maskeleme, Azure SQL veritabanı yöneticisi, Sunucu Yöneticisi veya [SQL Güvenlik Yöneticisi](../../role-based-access-control/built-in-roles.md#sql-security-manager) rolleri tarafından yapılandırılabilir.
 
 ### <a name="dynamic-data-masking-policy"></a>Dinamik veri maskeleme ilkesi
 
@@ -44,7 +44,7 @@ Dinamik veri maskeleme, Azure SQL veritabanı yöneticisi, Sunucu Yöneticisi ve
 
 | Maskeleme işlevi | Maskeleme mantığı |
 | --- | --- |
-| **Varsayılanını** |**Belirlenen alanların veri türlerine göre tam maskeleme**<br/><br/>• Alanın boyutu dize veri türleri için 4 karakterden azsa XXXX veya daha az XS kullanın (nchar, ntext, nvarchar).<br/>• Sayısal veri türleri için sıfır değeri kullanın (BigInt, bit, Decimal, INT, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Tarih/saat veri türleri için 01-01-1900 kullanın (Date, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• SQL değişkeni için geçerli türün varsayılan değeri kullanılır.<br/>• XML için belge \<masked/> kullanılır.<br/>• Özel veri türleri (timestamp tablosu, HierarchyID, GUID, binary, Image, varbinary uzamsal türler) için boş bir değer kullanın. |
+| **Varsayılan** |**Belirlenen alanların veri türlerine göre tam maskeleme**<br/><br/>• Alanın boyutu dize veri türleri için 4 karakterden azsa XXXX veya daha az XS kullanın (nchar, ntext, nvarchar).<br/>• Sayısal veri türleri için sıfır değeri kullanın (BigInt, bit, Decimal, INT, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Tarih/saat veri türleri için 01-01-1900 kullanın (Date, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• SQL değişkeni için geçerli türün varsayılan değeri kullanılır.<br/>• XML için belge \<masked/> kullanılır.<br/>• Özel veri türleri (timestamp tablosu, HierarchyID, GUID, binary, Image, varbinary uzamsal türler) için boş bir değer kullanın. |
 | **Kredi kartı** |**Belirlenen alanların son dört basamağını sunan maskeleme yöntemi** ve bir kredi kartı biçiminde önek olarak bir sabit dize ekler.<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **E-posta** |**İlk harfi kullanıma sunan maskeleme yöntemi ve** bir e-posta adresi biçiminde bir sabit dize öneki kullanarak etki alanını xxx.com ile değiştirir.<br/><br/>aXX@XXXX.com |
 | **Rastgele sayı** |Maske yöntemi, seçilen sınırlara ve gerçek veri türlerine göre **rastgele bir sayı üretir** . Belirlenen sınırlar eşitse, maskeleme işlevi sabit bir sayıdır.<br/><br/>![Rastgele bir sayı oluşturmak için maskeleme yöntemini gösteren ekran görüntüsü.](./media/dynamic-data-masking-overview/1_DDM_Random_number.png) |
@@ -60,15 +60,15 @@ DDM öneriler altyapısı, veritabanınızdaki belirli alanları potansiyel olar
 
 ### <a name="data-masking-policies"></a>Veri maskeleme ilkeleri
 
-- [Get-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingPolicy)
-- [Set-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingPolicy)
+- [Get-AzSqlDatabaseDataMaskingPolicy](/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingPolicy)
+- [Set-AzSqlDatabaseDataMaskingPolicy](/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingPolicy)
 
 ### <a name="data-masking-rules"></a>Veri maskeleme kuralları
 
-- [Get-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingRule)
-- [New-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/New-AzSqlDatabaseDataMaskingRule)
-- [Remove-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Remove-AzSqlDatabaseDataMaskingRule)
-- [Set-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingRule)
+- [Get-AzSqlDatabaseDataMaskingRule](/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingRule)
+- [New-AzSqlDatabaseDataMaskingRule](/powershell/module/az.sql/New-AzSqlDatabaseDataMaskingRule)
+- [Remove-AzSqlDatabaseDataMaskingRule](/powershell/module/az.sql/Remove-AzSqlDatabaseDataMaskingRule)
+- [Set-AzSqlDatabaseDataMaskingRule](/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingRule)
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-rest-api"></a>REST API kullanarak veritabanınız için dinamik veri maskeleme ayarlayın
 
@@ -76,10 +76,10 @@ Veri maskeleme ilkesini ve kurallarını programlı bir şekilde yönetmek için
 
 ### <a name="data-masking-policies"></a>Veri maskeleme ilkeleri
 
-- [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): veritabanı veri maskeleme ilkesi oluşturur veya güncelleştirir.
-- [Get](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get): bir veritabanı veri maskeleme ilkesi alır. 
+- [Oluştur veya Güncelleştir](/rest/api/sql/datamaskingpolicies/createorupdate): veritabanı veri maskeleme ilkesi oluşturur veya güncelleştirir.
+- [Get](/rest/api/sql/datamaskingpolicies/get): bir veritabanı veri maskeleme ilkesi alır. 
 
 ### <a name="data-masking-rules"></a>Veri maskeleme kuralları
 
-- [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/datamaskingrules/createorupdate): bir veritabanı veri maskeleme kuralı oluşturur veya güncelleştirir.
-- [Veritabanına göre Listele](https://docs.microsoft.com/rest/api/sql/datamaskingrules/listbydatabase): veritabanı veri maskeleme kurallarının bir listesini alır.
+- [Oluştur veya Güncelleştir](/rest/api/sql/datamaskingrules/createorupdate): bir veritabanı veri maskeleme kuralı oluşturur veya güncelleştirir.
+- [Veritabanına göre Listele](/rest/api/sql/datamaskingrules/listbydatabase): veritabanı veri maskeleme kurallarının bir listesini alır.

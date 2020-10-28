@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 092981f9d74a3f9f18c491ca6cee539a29e73c83
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998132"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782510"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Azure SQL yönetilen örnek yönetimi işlemlerini iptal etme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -75,7 +75,7 @@ Azure portal kullanarak yönetim işlemlerini iptal etmek için şu adımları i
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Zaten yüklü Azure PowerShell yoksa, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Zaten yüklü Azure PowerShell yoksa, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps).
 
 Bir yönetim işlemini iptal etmek için, yönetim işlemi adı belirtmeniz gerekir. Bu nedenle, önce işlem listesini almak için Get komutunu kullanın ve ardından işlemi özel olarak iptal edin.
 
@@ -93,7 +93,7 @@ foreach ($mo in $managementOperations ) {
 }
 ```
 
-Ayrıntılı komutların açıklaması için bkz. [Get-Azsqlınstanceoperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation) ve [stop-azsqlınstanceoperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation).
+Ayrıntılı komutların açıklaması için bkz. [Get-Azsqlınstanceoperation](/powershell/module/az.sql/get-azsqlinstanceoperation) ve [stop-azsqlınstanceoperation](/powershell/module/az.sql/stop-azsqlinstanceoperation).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -110,13 +110,13 @@ az sql mi op cancel -g yourResourceGroupName --mi yourInstanceName -n $operation
 done
 ```
 
-Ayrıntılı komutların açıklaması için bkz. [az SQL mı op](https://docs.microsoft.com/cli/azure/sql/mi/op).
+Ayrıntılı komutların açıklaması için bkz. [az SQL mı op](/cli/azure/sql/mi/op).
 
 ---
 
 ## <a name="canceled-deployment-request"></a>Dağıtım isteği iptal edildi
 
-API sürüm 2020-02-02 ile örnek oluşturma isteği kabul edildiğinde örnek, dağıtım işleminin ilerlemesi (yönetilen örnek durumu **sağlama**) ne olduğuna bakılmaksızın, kaynak olarak mevcut olmaya başlar. Örnek dağıtım isteğini iptal ederseniz (yeni örnek oluşturma), yönetilen örnek **sağlama** durumundan **failedtocreate**durumuna geçer.
+API sürüm 2020-02-02 ile örnek oluşturma isteği kabul edildiğinde örnek, dağıtım işleminin ilerlemesi (yönetilen örnek durumu **sağlama** ) ne olduğuna bakılmaksızın, kaynak olarak mevcut olmaya başlar. Örnek dağıtım isteğini iptal ederseniz (yeni örnek oluşturma), yönetilen örnek **sağlama** durumundan **failedtocreate** durumuna geçer.
 
 Oluşturmakta olan örnekler yine de kaynak olarak mevcuttur: 
 

@@ -38,7 +38,9 @@
           href: quickstart-v2-aspnet-webapp.md
         - name: ASP.NET Core
           href: quickstart-v2-aspnet-core-webapp.md
-        - name: NodeJS
+        - name: Node.js - MSAL | Önizleme
+          href: quickstart-v2-nodejs-webapp-msal.md
+        - name: Node.js - Passport.js
           href: quickstart-v2-nodejs-webapp.md
           displayName: OIDC
         - name: Java
@@ -477,7 +479,7 @@
       items:
         - name: Genel Bakış
           href: authentication-national-cloud.md
-        - name: Kimlik doğrulaması
+        - name: Kimlik Doğrulaması
           href: msal-national-cloud.md
     - name: Otomatik kullanıcı sağlama (SCIM)
       items:

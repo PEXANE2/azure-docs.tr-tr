@@ -84,3 +84,7 @@
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: policy-reference.md
+- name: Kaynaklar
+  items:
+    - name: Azure Arc hızlı başlangıç
+      href: 'https://github.com/microsoft/azure_arc'

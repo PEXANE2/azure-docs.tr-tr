@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab77c8cf563c315768ad1c16089d8d939c085322
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325173"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782663"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Azure SQL yönetilen örnek Havuzu (Önizleme) nedir?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Ayrıca, örnek havuzlar aynı alt ağda birden çok örnek havuzu ve birden ço
 
 Örnek havuzlar aşağıdaki avantajları sağlar:
 
-1. 2 sanal çekirdek örnekleri barındırma özelliği. * \* Yalnızca örnek havuzlardaki örnekler için*.
+1. 2 sanal çekirdek örnekleri barındırma özelliği. *\* Yalnızca örnek havuzlardaki örnekler için* .
 2. Öngörülebilir ve hızlı örnek dağıtım süresi (5 dakikaya kadar).
 3. En az IP adresi ayırması.
 
@@ -59,9 +59,9 @@ Aşağıdaki listede, örnek havuzlarının göz önünde bulundurulması gereke
 
 ## <a name="architecture"></a>Mimari
 
-Örnek havuzlarının normal (*tek*) yönetilen örneklere benzer bir mimarisi vardır.  [Azure sanal ağları içindeki dağıtımları](../../virtual-network/virtual-network-for-azure-services.md)desteklemek   ve müşterilere yalıtım ve güvenlik sağlamak için, örnek havuzları [sanal kümelere](connectivity-architecture-overview.md#high-level-connectivity-architecture)da güvenir. Sanal kümeler, müşterinin sanal ağ alt ağı içinde dağıtılan ayrılmış bir yalıtılmış sanal makine kümesini temsil eder.
+Örnek havuzlarının normal ( *tek* ) yönetilen örneklere benzer bir mimarisi vardır. [Azure sanal ağları içindeki dağıtımları](../../virtual-network/virtual-network-for-azure-services.md) desteklemek ve müşterilere yalıtım ve güvenlik sağlamak için, örnek havuzları [sanal kümelere](connectivity-architecture-overview.md#high-level-connectivity-architecture)da güvenir. Sanal kümeler, müşterinin sanal ağ alt ağı içinde dağıtılan ayrılmış bir yalıtılmış sanal makine kümesini temsil eder.
 
-İki dağıtım modeli arasındaki temel fark, örnek havuzların [Windows iş nesneleri](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)kullanılarak yönetilen aynı sanal makine düğümünde birden çok SQL Server işlem dağıtımına izin verişleridir, tek örnekler her zaman bir sanal makine düğümünde yer alır.
+İki dağıtım modeli arasındaki temel fark, örnek havuzların [Windows iş nesneleri](/windows/desktop/ProcThread/job-objects)kullanılarak yönetilen aynı sanal makine düğümünde birden çok SQL Server işlem dağıtımına izin verişleridir, tek örnekler her zaman bir sanal makine düğümünde yer alır.
 
 Aşağıdaki diyagramda, aynı alt ağda dağıtılan bir örnek havuz ve iki tekil örnek gösterilmektedir ve her iki dağıtım modeli için de ana mimari ayrıntıları gösterilmektedir:
 
@@ -76,7 +76,7 @@ Her örnek havuz, altında ayrı bir sanal küme oluşturur. Bir havuz içindeki
 - Örnek havuzları yalnızca 5. nesil donanımında kullanılabilir.
 - Bir havuz içindeki yönetilen örnekler ayrılmış CPU ve RAM 'e sahiptir, bu nedenle tüm örneklerde toplanan sanal çekirdek sayısı, havuza ayrılan sanal çekirdekler sayısından küçük veya ona eşit olmalıdır.
 - Tüm [örnek düzeyi sınırları](resource-limits.md#service-tier-characteristics) , bir havuz içinde oluşturulan örneklere uygulanır.
-- Örnek düzeyi limitlerinin yanı sıra, *örnek havuzu düzeyinde*uygulanan iki sınır de vardır:
+- Örnek düzeyi limitlerinin yanı sıra, *örnek havuzu düzeyinde* uygulanan iki sınır de vardır:
   - Havuz başına toplam depolama boyutu (8 TB).
   - Havuz başına toplam veritabanı sayısı (100).
 - Örnek havuzunda dağıtılan örnekler için AAD Yöneticisi ayarlanamaz, bu nedenle AAD kimlik doğrulaması kullanılamaz.
@@ -113,7 +113,7 @@ Belirli değerleri (örneğin, örnek düzeyi harmanlama, saat dilimi, veri traf
 
 Havuzlardaki yönetilen örneklerin ayrılmış sanal çekirdek ve RAM 'i olsa da, yerel disk (tempdb kullanımı için) ve ağ kaynakları paylaşır. Büyük olasılıkla, havuzda birden çok örnek aynı anda yüksek kaynak tüketimine sahip olursa *gürültülü komşu* efektini denemek mümkündür. Bu davranışı gözlemlerseniz, bu örnekleri daha büyük bir havuza veya tek örnek olarak dağıtmaya göz önünde bulundurun.
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Bir havuzda dağıtılan örnekler aynı sanal makineyi paylaştığından, daha yüksek güvenlik riskleri sunan özellikleri devre dışı bırakmayı veya bu özelliklere yönelik erişim izinlerini güvenli bir şekilde kontrol etmek isteyebilirsiniz. Örneğin, CLR tümleştirmesi, yerel yedekleme ve geri yükleme, veritabanı e-postası vb.
 
@@ -137,8 +137,8 @@ Havuzun sanal çekirdek fiyatı, bu havuzda kaç örnek dağıtıldığına bak�
 
 İşlem fiyatı (sanal çekirdekler cinsinden ölçülür) için, iki fiyatlandırma seçeneği mevcuttur:
 
-  1. *Lisans dahil*: SQL Server lisans fiyatları dahildir. Bu, Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını uygulamalarını seçen müşteriler içindir.
-  2. *Azure hibrit avantajı*: SQL Server için Azure hibrit avantajı içeren daha düşük bir fiyat. Müşteriler, Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını kullanarak bu fiyatı kabul edebilir. Uygunluk ve diğer ayrıntılar için bkz. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/).
+  1. *Lisans dahil* : SQL Server lisans fiyatları dahildir. Bu, Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını uygulamalarını seçen müşteriler içindir.
+  2. *Azure hibrit avantajı* : SQL Server için Azure hibrit avantajı içeren daha düşük bir fiyat. Müşteriler, Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını kullanarak bu fiyatı kabul edebilir. Uygunluk ve diğer ayrıntılar için bkz. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Bir havuzdaki tek tek örnekler için farklı fiyatlandırma seçeneklerinin ayarlanması mümkün değildir. Üst havuzdaki tüm örnekler, lisans dahil fiyattan veya Azure Hibrit Avantajı fiyattan olmalıdır. Havuzun lisans modeli, havuz oluşturulduktan sonra değiştirilebilir.
 

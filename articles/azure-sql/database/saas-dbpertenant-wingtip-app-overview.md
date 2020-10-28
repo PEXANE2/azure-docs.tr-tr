@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: d291adcf53469825f32b664cb7f4ffdb0bbf244b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3abfffcfb47a9530b6a04762624eee9d6ee9bc81
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441026"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780470"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı modelini kullanan çok kiracılı bir SaaS uygulamasına giriş
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,11 +43,11 @@ Uygulamayı dağıttıktan sonra, ilk dağıtımda derleme yapan aşağıdaki ö
 | Öğretici | Açıklama |
 |:--|:--|
 | [SQL Database çok kiracılı SaaS uygulaması örneği için rehberlik ve ipuçları](saas-tenancy-wingtip-app-guidance-tips.md) | Uygulamanın bölümlerini hazırlamak için PowerShell betiklerini indirip çalıştırın. |
-|[Wingtip SaaS uygulamasını dağıtma ve araştırma](../../sql-database/saas-dbpertenant-get-started-deploy.md)|  Azure aboneliğiniz ile Wingtip SaaS uygulamasını dağıtın ve araştırın. |
-|[Kiracılar sağlama ve Katalog](../../sql-database/saas-dbpertenant-provision-and-catalog.md)| Uygulamanın kiracılar için bir Katalog veritabanı kullanarak nasıl bağlanacağını ve kataloğun kiracılar verilerini nasıl eşlediğini öğrenin. |
-|[Performansı izleme ve yönetme](../../sql-database/saas-dbpertenant-performance-monitoring.md)| SQL Database 'in izleme özelliklerini kullanmayı ve performans eşikleri aşıldığında uyarıları ayarlamayı öğrenin. |
-|[Azure İzleyici günlükleri ile izleme](../../sql-database/saas-dbpertenant-log-analytics.md) | Birden çok havuzda büyük miktarlarda kaynağı izlemek için [Azure izleyici günlüklerini](../../azure-monitor/log-query/log-query-overview.md) nasıl kullanacağınızı öğrenin. |
-|[Tek bir kiracıyı geri yükleme](../../sql-database/saas-dbpertenant-restore-single-tenant.md)| Bir kiracı veritabanını zaman içinde önceki bir noktaya geri yüklemeyi öğrenin. Ayrıca, var olan kiracı veritabanını çevrimiçi bırakan bir paralel veritabanına nasıl geri yükleyeceğinizi öğrenin. |
+|[Wingtip SaaS uygulamasını dağıtma ve araştırma](./saas-dbpertenant-get-started-deploy.md)|  Azure aboneliğiniz ile Wingtip SaaS uygulamasını dağıtın ve araştırın. |
+|[Kiracılar sağlama ve Katalog](./saas-dbpertenant-provision-and-catalog.md)| Uygulamanın kiracılar için bir Katalog veritabanı kullanarak nasıl bağlanacağını ve kataloğun kiracılar verilerini nasıl eşlediğini öğrenin. |
+|[Performansı izleme ve yönetme](./saas-dbpertenant-performance-monitoring.md)| SQL Database 'in izleme özelliklerini kullanmayı ve performans eşikleri aşıldığında uyarıları ayarlamayı öğrenin. |
+|[Azure İzleyici günlükleri ile izleme](./saas-dbpertenant-log-analytics.md) | Birden çok havuzda büyük miktarlarda kaynağı izlemek için [Azure izleyici günlüklerini](../../azure-monitor/log-query/log-query-overview.md) nasıl kullanacağınızı öğrenin. |
+|[Tek bir kiracıyı geri yükleme](./saas-dbpertenant-restore-single-tenant.md)| Bir kiracı veritabanını zaman içinde önceki bir noktaya geri yüklemeyi öğrenin. Ayrıca, var olan kiracı veritabanını çevrimiçi bırakan bir paralel veritabanına nasıl geri yükleyeceğinizi öğrenin. |
 |[Kiracı veritabanı şemasını yönet](saas-tenancy-schema-management.md)| Tüm kiracı veritabanlarında şemayı güncelleştirme ve başvuru verilerini güncelleştirme hakkında bilgi edinin. |
 |[Çapraz kiracı dağıtılmış sorguları Çalıştır](saas-tenancy-cross-tenant-reporting.md) | Geçici analiz veritabanı oluşturun ve tüm kiracılar genelinde gerçek zamanlı dağıtılmış sorgular çalıştırın.  |
 |[Ayıklanan kiracı verileri üzerinde analiz Çalıştır](saas-tenancy-tenant-analytics.md) | Kiracı verilerini bir analiz veritabanına veya çevrimdışı analiz sorguları için veri ambarına ayıklayın. |
@@ -56,4 +56,4 @@ Uygulamayı dağıttıktan sonra, ilk dağıtımda derleme yapan aşağıdaki ö
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Wingtip bilet SaaS uygulaması örneğini dağıtırken ve kullandığınızda genel rehberlik ve ipuçları](saas-tenancy-wingtip-app-guidance-tips.md)
-- [Wingtip SaaS uygulamasını dağıtma](../../sql-database/saas-dbpertenant-get-started-deploy.md)
+- [Wingtip SaaS uygulamasını dağıtma](./saas-dbpertenant-get-started-deploy.md)

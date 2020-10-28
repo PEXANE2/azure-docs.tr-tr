@@ -317,16 +317,10 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: Azure CLI kullanma
               href: iot-hub-configure-file-upload-cli.md
-        - name: Azure İzleyicisi'nde ölçümler
-          href: iot-hub-metrics.md
-        - name: Tanılama günlükleri ayarlama
-          href: iot-hub-monitor-resource-health.md
         - name: X.509 sertifikası ile merkezinizi güvenli hale getirme
           href: iot-hub-security-x509-get-started.md
         - name: IoT hub’ı yükseltme
           href: iot-hub-upgrade.md
-        - name: İleti izlemeyi etkinleştirme
-          href: iot-hub-distributed-tracing.md
         - name: IP filtrelemeyi yapılandırma
           href: iot-hub-ip-filtering.md
         - name: Genel ağ erişimini yönetme
@@ -339,6 +333,16 @@
               href: iot-hub-automatic-device-management-cli.md
         - name: IoT cihazlarını toplu içeri ve dışarı aktarma
           href: iot-hub-bulk-identity-mgmt.md
+    - name: İzleme
+      items:
+        - name: IoT Hub’ı izleme
+          href: monitor-iot-hub.md
+        - name: İzleme verileri başvurusu
+          href: monitor-iot-hub-reference.md
+        - name: İleti izlemeyi etkinleştirme
+          href: iot-hub-distributed-tracing.md
+        - name: IoT Hub hizmet ve kaynak durumu
+          href: iot-hub-azure-service-health-integration.md
     - name: Gerçek cihaz kullanma
       items:
         - name: Çevrimiçi simülatör kullanma
@@ -422,7 +426,7 @@
               href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub

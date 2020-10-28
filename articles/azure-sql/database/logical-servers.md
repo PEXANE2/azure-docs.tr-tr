@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: abb8f42e7fe4ffe6e933f466202247c73ece129a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38133a63d65e45a4d1c83e9752dcaa01a86da33e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441723"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782901"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Azure SQL veritabanı ve Azure SYNAPSE 'de mantıksal SQL Server nedir?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -34,7 +34,7 @@ SQL veritabanı ve Azure 'da bir sunucu SYNAPSE:
 - Veritabanları, elastik havuzlar ve veri ambarları için üst kaynaktır
 - Veritabanları, elastik havuzlar ve veri ambarı veritabanı için bir ad alanı sağlar
 - Güçlü yaşam süresi semantiğinin bulunduğu mantıksal bir kapsayıcıdır; bir sunucuyu silin ve veritabanlarını, elastik havuzları ve SQK havuzlarını siler
-- [Azure rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/overview) -bir sunucu içindeki veritabanları, elastik havuzlar ve veri ambarı veritabanı, sunucudan erişim haklarını devralır
+- [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) -bir sunucu içindeki veritabanları, elastik havuzlar ve veri ambarı veritabanı, sunucudan erişim haklarını devralır
 - , Azure Kaynak Yönetimi amaçları için veritabanları, elastik havuzlar ve veri ambarı veritabanı kimliğinin yüksek sıralı bir öğesidir (bkz. veritabanları ve havuzlar için URL şeması)
 - Bir bölgedeki kaynakları birlikte bulundurur
 - Veritabanı erişimi için bağlantı uç noktası sağlar (`<serverName>`.database.windows.net)
@@ -83,7 +83,7 @@ Var olan bir veritabanını yönetmek için **SQL veritabanları** sayfasına gi
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Resource Manager modülü hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
 Azure PowerShell ile sunucu, veritabanları ve güvenlik duvarları oluşturup yönetmek için aşağıdaki PowerShell cmdlet 'lerini kullanın. PowerShell 'i yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-az-ps). Elastik havuzlar oluşturma ve yönetme için bkz. [elastik havuzlar](elastic-pool-overview.md).
 
@@ -96,7 +96,7 @@ Azure PowerShell ile sunucu, veritabanları ve güvenlik duvarları oluşturup y
 |[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)|Bir kaynak grubu oluşturur|
 |[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|Sunucu oluşturur|
 |[Get-AzSqlServer](/powershell/module/az.sql/get-azsqlserver)|Sunucular hakkında bilgi döndürür|
-|[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)|Bir sunucunun özelliklerini değiştirir|
+|[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver)|Bir sunucunun özelliklerini değiştirir|
 |[Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)|Bir sunucuyu kaldırır|
 |[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)|Sunucu düzeyinde bir güvenlik duvarı kuralı oluşturur |
 |[Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|Bir sunucu için güvenlik duvarı kurallarını alır|
@@ -110,7 +110,7 @@ Azure PowerShell ile sunucu, veritabanları ve güvenlik duvarları oluşturup y
 
 ## <a name="manage-servers-databases-and-firewalls-using-the-azure-cli"></a>Azure CLı kullanarak sunucuları, veritabanlarını ve güvenlik duvarlarını yönetme
 
-[Azure CLI](/cli/azure)ile sunucu, veritabanları ve güvenlik duvarları oluşturup yönetmek Için AŞAĞıDAKI [Azure CLI SQL veritabanı](/cli/azure/sql/db) komutlarını kullanın. CLI’yi tarayıcınızda çalıştırmak için [Cloud Shell](/azure/cloud-shell/overview) kullanın veya macOS, Linux ya da Windows’da [yükleyin](/cli/azure/install-azure-cli). Elastik havuzlar oluşturma ve yönetme için bkz. [elastik havuzlar](elastic-pool-overview.md).
+[Azure CLI](/cli/azure)ile sunucu, veritabanları ve güvenlik duvarları oluşturup yönetmek Için AŞAĞıDAKI [Azure CLI SQL veritabanı](/cli/azure/sql/db) komutlarını kullanın. CLI’yi tarayıcınızda çalıştırmak için [Cloud Shell](../../cloud-shell/overview.md) kullanın veya macOS, Linux ya da Windows’da [yükleyin](/cli/azure/install-azure-cli). Elastik havuzlar oluşturma ve yönetme için bkz. [elastik havuzlar](elastic-pool-overview.md).
 
 | Cmdlet | Açıklama |
 | --- | --- |
@@ -150,7 +150,7 @@ Transact-SQL ile sunucu, veritabanları ve güvenlik duvarları oluşturup yöne
 |[VERITABANı oluşturma (Azure SQL veritabanı)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Azure SQL veritabanı 'nda yeni bir veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
 |[VERITABANı oluşturma (Azure SYNAPSE)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Azure SYNAPSE 'te yeni bir veri ambarı veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
 | [ALTER DATABASE (Azure SQL veritabanı)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Veritabanını veya elastik havuzu değiştirir. |
-|[ALTER DATABASE (Azure SYNAPSE Analytics)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Azure SYNAPSE 'de bir veri ambarı veritabanını değiştirir.|
+|[ALTER DATABASE (Azure SYNAPSE Analytics)](/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Azure SYNAPSE 'de bir veri ambarı veritabanını değiştirir.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Bir veritabanını siler.|
 |[sys.database_service_objectives (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Bir veritabanı için sürüm (hizmet katmanı), hizmet hedefi (Fiyatlandırma Katmanı) ve elastik havuz adı döndürür. Bir sunucu için ana veritabanında oturum açarsa, tüm veritabanlarına bilgi döndürür. Azure SYNAPSE için ana veritabanına bağlı olmanız gerekir.|
 |[sys.dm_db_resource_stats (Azure SQL veritabanı)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Azure SQL veritabanı 'nda bir veritabanı için CPU, GÇ ve bellek tüketimi döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyede bir satır vardır.|
@@ -173,22 +173,22 @@ Sunucu, veritabanı ve güvenlik duvarı oluşturmak ve yönetmek için bu REST 
 
 | Komut | Açıklama |
 | --- | --- |
-|[Sunucular-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Yeni bir sunucu oluşturur veya güncelleştirir.|
-|[Sunucular-Sil](https://docs.microsoft.com/rest/api/sql/servers/delete)|Bir sunucuyu siler.|
-|[Sunucular-al](https://docs.microsoft.com/rest/api/sql/servers/get)|Bir sunucu alır.|
-|[Sunucular-liste](https://docs.microsoft.com/rest/api/sql/servers/list)|Sunucu listesini döndürür.|
-|[Sunucular-kaynak grubuna göre Listele](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Bir kaynak grubundaki sunucuların listesini döndürür.|
-|[Sunucular-Güncelleştir](https://docs.microsoft.com/rest/api/sql/servers/update)|Var olan bir sunucuyu güncelleştirir.|
-|[Veritabanları-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Yeni bir veritabanı oluşturur veya var olan bir veritabanını güncelleştirir.|
-|[Veritabanları-Sil](https://docs.microsoft.com/rest/api/sql/databases/delete)|Bir veritabanını siler.|
-|[Veritabanları-al](https://docs.microsoft.com/rest/api/sql/databases/get)|Bir veritabanını alır.|
-|[Veritabanları-elastik havuza göre Listele](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Elastik havuzdaki veritabanlarının listesini döndürür.|
-|[Veritabanları-sunucuya göre listeleme](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Bir sunucudaki veritabanlarının listesini döndürür.|
-|[Veritabanları-Güncelleştir](https://docs.microsoft.com/rest/api/sql/databases/update)|Var olan bir veritabanını güncelleştirir.|
-|[Güvenlik duvarı kuralları-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|Bir güvenlik duvarı kuralı oluşturur veya güncelleştirir.|
-|[Güvenlik duvarı kuralları-Sil](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|Bir güvenlik duvarı kuralını siler.|
-|[Güvenlik duvarı kuralları-al](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Bir güvenlik duvarı kuralı alır.|
-|[Güvenlik duvarı kuralları-sunucuya göre Listele](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|Güvenlik Duvarı kurallarının bir listesini döndürür.|
+|[Sunucular-oluştur veya güncelleştir](/rest/api/sql/servers/createorupdate)|Yeni bir sunucu oluşturur veya güncelleştirir.|
+|[Sunucular-Sil](/rest/api/sql/servers/delete)|Bir sunucuyu siler.|
+|[Sunucular-al](/rest/api/sql/servers/get)|Bir sunucu alır.|
+|[Sunucular-liste](/rest/api/sql/servers/list)|Sunucu listesini döndürür.|
+|[Sunucular-kaynak grubuna göre Listele](/rest/api/sql/servers/listbyresourcegroup)|Bir kaynak grubundaki sunucuların listesini döndürür.|
+|[Sunucular-Güncelleştir](/rest/api/sql/servers/update)|Var olan bir sunucuyu güncelleştirir.|
+|[Veritabanları-oluştur veya güncelleştir](/rest/api/sql/databases/createorupdate)|Yeni bir veritabanı oluşturur veya var olan bir veritabanını güncelleştirir.|
+|[Veritabanları-Sil](/rest/api/sql/databases/delete)|Bir veritabanını siler.|
+|[Veritabanları-al](/rest/api/sql/databases/get)|Bir veritabanını alır.|
+|[Veritabanları-elastik havuza göre Listele](/rest/api/sql/databases/listbyelasticpool)|Elastik havuzdaki veritabanlarının listesini döndürür.|
+|[Veritabanları-sunucuya göre listeleme](/rest/api/sql/databases/listbyserver)|Bir sunucudaki veritabanlarının listesini döndürür.|
+|[Veritabanları-Güncelleştir](/rest/api/sql/databases/update)|Var olan bir veritabanını güncelleştirir.|
+|[Güvenlik duvarı kuralları-oluştur veya güncelleştir](/rest/api/sql/firewallrules/createorupdate)|Bir güvenlik duvarı kuralı oluşturur veya güncelleştirir.|
+|[Güvenlik duvarı kuralları-Sil](/rest/api/sql/firewallrules/delete)|Bir güvenlik duvarı kuralını siler.|
+|[Güvenlik duvarı kuralları-al](/rest/api/sql/firewallrules/get)|Bir güvenlik duvarı kuralı alır.|
+|[Güvenlik duvarı kuralları-sunucuya göre Listele](/rest/api/sql/firewallrules/listbyserver)|Güvenlik Duvarı kurallarının bir listesini döndürür.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

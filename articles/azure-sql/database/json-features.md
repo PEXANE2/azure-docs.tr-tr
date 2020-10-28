@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 04/19/2020
-ms.openlocfilehash: 53428a542bb8d8d546e68f63aaf80ee40f2b0874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4258c60335a13a6c0f27588aac1c6cdb185fcf6a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450249"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782817"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde JSON özellikleriyle çalışmaya başlama
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -196,6 +196,4 @@ JSON dizisi olarak biçimlendirilen ve saklı yordama bir parametre olarak belir
 
 JSON ile uygulamanıza nasıl tümleştirileceğini öğrenmek için şu kaynaklara göz atın:
 
-JSON ile uygulamanıza tümleştirme hakkında çeşitli senaryolar hakkında daha fazla bilgi edinmek için bu [Channel 9 videosundaki](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) tanıtımlar bölümüne bakın veya [JSON blog gönderilerinde](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases)kullanım durumuyla eşleşen bir senaryo bulun.
-
-
+JSON ile uygulamanıza tümleştirme hakkında çeşitli senaryolar hakkında daha fazla bilgi edinmek için bu [Channel 9 videosundaki](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) tanıtımlar bölümüne bakın veya [JSON blog gönderilerinde](/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases)kullanım durumuyla eşleşen bir senaryo bulun.

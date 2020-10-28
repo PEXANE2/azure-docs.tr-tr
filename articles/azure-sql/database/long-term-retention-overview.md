@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 05/18/2019
-ms.openlocfilehash: 83d3bb78ef27af377b0a8c5edf75f658a0ca93e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8250fc39fe58168ddc13b7bcf5c040b57d5e92fb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450228"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782629"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Uzun süreli saklama-Azure SQL veritabanı ve Azure SQL yönetilen örneği
 
@@ -26,7 +26,7 @@ Birçok uygulamanın, Azure SQL veritabanı ve Azure SQL yönetilen örnek [Otom
 Azure SQL veritabanı için uzun süreli saklama etkinleştirilebilir ve Azure SQL yönetilen örneği için sınırlı genel önizlemede bulunabilir. Bu makalede uzun süreli saklama hakkında kavramsal bir genel bakış sunulmaktadır. Uzun süreli saklama yapılandırmak için bkz. [Azure SQL VERITABANı LTR 'Yi yapılandırma](long-term-backup-retention-configure.md) ve [Azure SQL yönetilen örnek LTR 'yi yapılandırma](../managed-instance/long-term-backup-retention-configure.md). 
 
 > [!NOTE]
-> [Yalnızca kopya veritabanı yedeklerini](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) 35 gün daha fazla LTR 'e alternatif olarak ZAMANLAMAK Için SQL Agent işlerini kullanabilirsiniz.
+> [Yalnızca kopya veritabanı yedeklerini](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) 35 gün daha fazla LTR 'e alternatif olarak ZAMANLAMAK Için SQL Agent işlerini kullanabilirsiniz.
 
 
 ## <a name="how-long-term-retention-works"></a>Uzun vadeli bekletme nasıl kullanılır?
@@ -36,7 +36,7 @@ Uzun süreli yedek saklama (LTR), nokta-saat geri yüklemeyi (ıNR) etkinleştir
 LTR özelliğini etkinleştirmek için, dört parametre birleşimini kullanarak bir ilke tanımlayabilirsiniz: haftalık yedekleme bekletme (W), aylık yedekleme bekletme (e), yıllık yedekleme bekletme (Y) ve yılın haftası (WeekOfYear). W belirtirseniz, her hafta bir yedekleme uzun vadeli depolamaya kopyalanacaktır. D belirtirseniz, her ayın ilk yedeklemesi uzun vadeli depolamaya kopyalanacaktır. Y belirtirseniz, WeekOfYear tarafından belirtilen hafta boyunca bir yedekleme uzun vadeli depolamaya kopyalanacaktır. Belirtilen WeekOfYear, ilke yapılandırıldığında, ilk LTR yedeklemesi aşağıdaki yılda oluşturulur. Her yedekleme, LTR yedeklemesi oluşturulduğunda yapılandırılan ilke parametrelerine göre uzun vadeli depolamada tutulur.
 
 > [!NOTE]
-> LTR ilkesinde yapılan herhangi bir değişiklik yalnızca gelecekteki yedeklemeler için geçerlidir. Örneğin, haftalık yedekleme bekletme (W), aylık yedekleme bekletme (e) veya yıllık yedekleme bekletme (Y) değiştirilirse, yeni bekletme ayarı yalnızca yeni yedeklemeler için geçerlidir. Mevcut yedeklemelerin saklama süresi değiştirilmez. Amacınız, saklama süresi dolmadan eski LTR yedeklemeleri silmek istiyorsanız [yedeklemeleri el ile silmeniz](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure#delete-ltr-backups)gerekir.
+> LTR ilkesinde yapılan herhangi bir değişiklik yalnızca gelecekteki yedeklemeler için geçerlidir. Örneğin, haftalık yedekleme bekletme (W), aylık yedekleme bekletme (e) veya yıllık yedekleme bekletme (Y) değiştirilirse, yeni bekletme ayarı yalnızca yeni yedeklemeler için geçerlidir. Mevcut yedeklemelerin saklama süresi değiştirilmez. Amacınız, saklama süresi dolmadan eski LTR yedeklemeleri silmek istiyorsanız [yedeklemeleri el ile silmeniz](./long-term-backup-retention-configure.md#delete-ltr-backups)gerekir.
 > 
 
 LTR ilkesinin örnekleri:
@@ -99,4 +99,3 @@ Bir veritabanını LTR depolamadan geri yüklemek için belirli bir yedeklemeyi 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Veritabanı yedeklemeleri verileri yanlışlıkla bozulma veya silme işlemlerini koruduğundan, herhangi bir iş sürekliliği ve olağanüstü durum kurtarma stratejisinin önemli bir parçasıdır. Diğer SQL veritabanı iş sürekliliği çözümleri hakkında bilgi edinmek için bkz. [iş sürekliliği genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md).
- 

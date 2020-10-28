@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3851e6a784d244b101c2c71c67b4b2c9a8f5cbee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 497e714289c834e026c6b9b767ed2b7af5442783
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618950"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780844"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı modelini kullanan çok kiracılı SaaS uygulamasını dağıtma ve araştırma
 
@@ -24,7 +24,7 @@ ms.locfileid: "91618950"
 
 Bu öğreticide, Wingtip bilet SaaS veritabanı kiracı başına uygulaması (Wingtip) dağıtıp araştırdığınızda. Uygulama, birden çok kiracının verilerini depolamak için kiracı başına veritabanı modelini kullanır. Uygulama, Azure SQL veritabanı 'nın SaaS senaryolarını etkinleştirmeyi kolaylaştıran özelliklerini göstermek üzere tasarlanmıştır.
 
-**Azure 'A dağıt**seçeneğini belirledikten beş dakika sonra, çok kiracılı bir SaaS uygulamanız vardır. Uygulama, Azure SQL veritabanı 'nda çalışan bir veritabanını içerir. Uygulama, her biri kendi veritabanına sahip olan üç örnek kiracıyla dağıtılır. Tüm veritabanları bir SQL elastik havuzuna dağıtılır. Uygulama, Azure aboneliğinize dağıtılır. Uygulamanın tek tek bileşenleriyle keşfetmeye ve bunlarla çalışmaya yönelik tam erişime sahip olursunuz. Uygulama C# kaynak kodu ve yönetim betikleri [Wingtipbilet ssaas-DbPerTenant GitHub][github-wingtip-dpt]deposunda mevcuttur.
+**Azure 'A dağıt** seçeneğini belirledikten beş dakika sonra, çok kiracılı bir SaaS uygulamanız vardır. Uygulama, Azure SQL veritabanı 'nda çalışan bir veritabanını içerir. Uygulama, her biri kendi veritabanına sahip olan üç örnek kiracıyla dağıtılır. Tüm veritabanları bir SQL elastik havuzuna dağıtılır. Uygulama, Azure aboneliğinize dağıtılır. Uygulamanın tek tek bileşenleriyle keşfetmeye ve bunlarla çalışmaya yönelik tam erişime sahip olursunuz. Uygulama C# kaynak kodu ve yönetim betikleri [Wingtipbilet ssaas-DbPerTenant GitHub][github-wingtip-dpt]deposunda mevcuttur.
 
 Bu öğreticide şunları öğrenirsiniz:
 
@@ -32,7 +32,7 @@ Bu öğreticide şunları öğrenirsiniz:
 > - Wingtip SaaS uygulamasını dağıtma.
 > - Uygulama kaynak kodu ve yönetim betikleri nereden alınır?
 > - Uygulamayı oluşturan sunucular, havuzlar ve veritabanları hakkında.
-> - Kiracılar, *katalogla*verileri ile eşlenir.
+> - Kiracılar, *katalogla* verileri ile eşlenir.
 > - Yeni bir kiracı sağlama.
 > - Uygulamadaki kiracı etkinliğini izleme.
 
@@ -40,7 +40,7 @@ Bu öğreticide şunları öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlayabilmeniz için Azure PowerShell yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Bu öğreticiyi tamamlayabilmeniz için Azure PowerShell yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](/powershell/azure/get-started-azureps).
 
 ## <a name="deploy-the-wingtip-tickets-saas-application"></a>Wingtip bilet SaaS uygulamasını dağıtma
 
@@ -48,14 +48,14 @@ Bu öğreticiyi tamamlayabilmeniz için Azure PowerShell yüklü olduğundan emi
 
 Bu bölümün adımlarında, kaynak adlarının genel olarak benzersiz olduğundan emin olmak için kullanılan bir kullanıcı değeri sağlarsınız. Ayrıca, uygulamanın bir dağıtımı tarafından oluşturulan tüm kaynakları içeren kaynak grubu için bir ad sağlarsınız. Ann Finley adlı kurgusal bir kişi için şunları öneririz:
 
-- **User**: *AF1* , Ann 'ın baş harflerinden ve bir basamağdan oluşur. Uygulamayı ikinci kez dağıtırsanız, farklı bir değer kullanın. Örnek olarak AF2.
-- **Kaynak grubu**: *Wingtip-DPT-AF1* , bu, kiracı başına veritabanı uygulaması olduğunu gösterir. Kaynak grubu adını içerdiği kaynakların adlarıyla ilişkilendirmek için AF1 Kullanıcı adını ekleyin.
+- **User** : *AF1* , Ann 'ın baş harflerinden ve bir basamağdan oluşur. Uygulamayı ikinci kez dağıtırsanız, farklı bir değer kullanın. Örnek olarak AF2.
+- **Kaynak grubu** : *Wingtip-DPT-AF1* , bu, kiracı başına veritabanı uygulaması olduğunu gösterir. Kaynak grubu adını içerdiği kaynakların adlarıyla ilişkilendirmek için AF1 Kullanıcı adını ekleyin.
 
 Adlarınızı şimdi seçin ve bunları aşağı yazın.
 
 ### <a name="steps"></a>Adımlar
 
-1. Azure portal, Wingtip bilet SaaS veritabanının kiracı başına Dağıtım şablonunu açmak için, **Azure 'A dağıt**' ı seçin.
+1. Azure portal, Wingtip bilet SaaS veritabanının kiracı başına Dağıtım şablonunu açmak için, **Azure 'A dağıt** ' ı seçin.
 
    [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
@@ -64,15 +64,15 @@ Adlarınızı şimdi seçin ve bunları aşağı yazın.
     > [!IMPORTANT]
     > Bazı kimlik doğrulama ve sunucu güvenlik duvarları, tanıtım amacıyla güvenli şekilde güvenli değildir. Yeni bir kaynak grubu oluşturmanızı öneririz. Mevcut kaynak gruplarını, sunucuları veya havuzları kullanmayın. Bu uygulamayı, betikleri veya üretim için dağıtılan kaynakları kullanmayın. İlgili faturalandırmayı durdurmak için uygulamayla işiniz bittiğinde bu kaynak grubunu silin.
 
-    - **Kaynak grubu**: **Yeni oluştur**' u seçin ve kaynak grubu için daha önce seçtiğiniz benzersiz adı belirtin.
-    - **Konum**: açılan listeden bir konum seçin.
-    - **Kullanıcı**: daha önce seçtiğiniz Kullanıcı adı değerini kullanın.
+    - **Kaynak grubu** : **Yeni oluştur** ' u seçin ve kaynak grubu için daha önce seçtiğiniz benzersiz adı belirtin.
+    - **Konum** : açılan listeden bir konum seçin.
+    - **Kullanıcı** : daha önce seçtiğiniz Kullanıcı adı değerini kullanın.
 
 1. Uygulamayı dağıtın.
 
     a. Hüküm ve koşulları kabul etmek için seçin.
 
-    b. **Satın al**'ı seçin.
+    b. **Satın al** 'ı seçin.
 
 1. Dağıtım durumunu izlemek için **Bildirimler** ' i (arama kutusunun sağındaki zil simgesi) seçin. Wingtip bilet SaaS uygulamasının dağıtımı yaklaşık beş dakika sürer.
 
@@ -86,11 +86,11 @@ Uygulama dağıtıldıktan sonra, kaynak kodu ve yönetim betikleri ' ni indirin
 > . Zip dosyaları bir dış kaynaktan indirilip ayıklandığında, yürütülebilir dosyalar (betikler ve DLL 'Ler) Windows tarafından engelleniyor olabilir. Betikleri Ayıklamadan önce. zip dosyasının engelini kaldırma adımlarını izleyin. Engellemeyi kaldırma, betiklerin çalışmasına izin verilmesini sağlar.
 
 1. [Wingtipbilet ssaas-DbPerTenant GitHub][github-wingtip-dpt]deposuna göz atabilirsiniz.
-1. **Clone or download**'u (Kopyala veya indir) seçin.
-1. **ZIP 'ı indir**' i seçin ve dosyayı kaydedin.
-1. **WingtipTicketsSaaS-DbPerTenant-master.zip** dosyasına sağ tıklayın ve ardından **Özellikler**' i seçin.
-1. **Genel** sekmesinde, Uygula **Kaldır**' ı seçin  >  **Apply**.
-1. **Tamam**' ı seçin ve dosyaları ayıklayın
+1. **Clone or download** 'u (Kopyala veya indir) seçin.
+1. **ZIP 'ı indir** ' i seçin ve dosyayı kaydedin.
+1. **WingtipTicketsSaaS-DbPerTenant-master.zip** dosyasına sağ tıklayın ve ardından **Özellikler** ' i seçin.
+1. **Genel** sekmesinde, Uygula **Kaldır** ' ı seçin  >  **Apply** .
+1. **Tamam** ' ı seçin ve dosyaları ayıklayın
 
 Betikler.. \\ . içinde bulunur. Wingtipbilet ssaas-DbPerTenant-Master \\ Learning modülleri klasörü.
 
@@ -122,7 +122,7 @@ Merkezi bir **Olay Hub 'ı** sayfası, dağıtımınızdaki kiracılar için ba�
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-Wingtip Application, gelen isteklerin dağıtımını denetlemek için [*Azure Traffic Manager*](../../traffic-manager/traffic-manager-overview.md) kullanır. Belirli bir kiracının Olaylar sayfasına erişim URL 'SI aşağıdaki biçimi kullanır:
+Wingtip Application, gelen isteklerin dağıtımını denetlemek için [*Azure Traffic Manager*](../../traffic-manager/traffic-manager-overview.md) kullanır. Belirli bir kiracının Olaylar sayfasına erişim URL 'SI aşağıdaki biçimi kullanır:
 
 - http://events.wingtip-dpt.&lt; user &gt; . trafficmanager.net/fabrikamjazzclub
 
@@ -130,8 +130,8 @@ Wingtip Application, gelen isteklerin dağıtımını denetlemek için [*Azure 
 
     | URL bölümü        | Açıklama       |
     | :-------------- | :---------------- |
-    | olaylar. Wingtip-DPT | Wingtip uygulamasının olaylar bölümü.<br /><br /> *-DPT* , Wingtip bilet 'nin *kiracı başına veritabanı* uygulamasını diğer uygulamalardan ayırır. Bu örnek, *tek* kiracılı kiracı (*-sa*) veya *çok kiracılı veritabanı* (*-MT*) uygulamalarından örnektir. |
-    | . * &lt; Kullanıcı &gt; * | örnekteki *AF1* . |
+    | olaylar. Wingtip-DPT | Wingtip uygulamasının olaylar bölümü.<br /><br /> *-DPT* , Wingtip bilet 'nin *kiracı başına veritabanı* uygulamasını diğer uygulamalardan ayırır. Bu örnek, *tek* kiracılı kiracı ( *-sa* ) veya *çok kiracılı veritabanı* ( *-MT* ) uygulamalarından örnektir. |
+    | . *&lt; Kullanıcı &gt;* | örnekteki *AF1* . |
     | . trafficmanager.net/ | Traffic Manager, temel URL. |
     | fabrikamjazzclub | Fabrikam Cakulüler adlı kiracıyı tanımlar. |
     | &nbsp; | &nbsp; |
@@ -139,14 +139,14 @@ Wingtip Application, gelen isteklerin dağıtımını denetlemek için [*Azure 
 - Kiracı adı, olaylar uygulamasına göre URL 'den ayrıştırılır.
 - Kiracı adı bir anahtar oluşturmak için kullanılır.
 - Anahtar, kiracının veritabanının konumunu almak için kataloğa erişmek üzere kullanılır.
-  - Katalog, parça *eşleme yönetimi*kullanılarak uygulanır.
+  - Katalog, parça *eşleme yönetimi* kullanılarak uygulanır.
 - Olay Hub 'ı, her kiracı için olaylar listesi sayfa URL 'Lerini oluşturmak üzere katalogda genişletilmiş meta verileri kullanır.
 
-Bir üretim ortamında, genellikle [*Şirket İnternet etki alanını*](../../traffic-manager/traffic-manager-point-internet-domain.md)   Traffic Manager DNS adına işaret etmek IÇIN bir CNAME DNS kaydı oluşturursunuz.
+Bir üretim ortamında, genellikle [*Şirket İnternet etki alanını*](../../traffic-manager/traffic-manager-point-internet-domain.md) Traffic Manager DNS adına işaret etmek IÇIN BIR CNAME DNS kaydı oluşturursunuz.
 
 > [!NOTE]
 > Traffic Manager 'ın kullanılması bu öğreticide hemen açık olmayabilir. Bu öğretici serisinin amacı, karmaşık bir üretim ortamının ölçeğini işleyebilen desenleri göstermektir. Böyle bir durumda, örneğin, dünya genelinde dağıtılmış birden çok Web uygulamanız vardır ve veritabanları ile birlikte yer alır ve Traffic Manager 'ın bu örnekler arasında yönlendirme yapması gerekir.
-Traffic Manager 'ın kullanımını gösteren başka öğreticiler kümesi, [coğrafi geri yükleme](../../sql-database/saas-dbpertenant-dr-geo-restore.md) ve [coğrafi çoğaltma](../../sql-database/saas-dbpertenant-dr-geo-replication.md) öğreticilerinde de bulunur. Bu öğreticilerde Traffic Manager, bölgesel bir kesinti olması durumunda SaaS uygulamasının bir kurtarma örneğine geçiş yapmak için kullanılır.
+Traffic Manager 'ın kullanımını gösteren başka öğreticiler kümesi, [coğrafi geri yükleme](./saas-dbpertenant-dr-geo-restore.md) ve [coğrafi çoğaltma](./saas-dbpertenant-dr-geo-replication.md) öğreticilerinde de bulunur. Bu öğreticilerde Traffic Manager, bölgesel bir kesinti olması durumunda SaaS uygulamasının bir kurtarma örneğine geçiş yapmak için kullanılır.
 
 ## <a name="start-generating-load-on-the-tenant-databases"></a>Kiracı veritabanları üzerinde yük oluşturmaya başlama
 
@@ -181,9 +181,9 @@ Arka plan işlerini denetlemek ve izlemek isterseniz, aşağıdaki cmdlet 'leri 
 3. *LoadGenerator.ps1* her kiracı veritabanı için bir arka plan PowerShell işi başlatır:
 
     - Varsayılan olarak, arka plan işleri 120 dakika boyunca çalışır.
-    - Her iş, *sp_CpuLoadGenerator*yürüterek bir KIRACı veritabanında CPU tabanlı yüke neden olur. Yükün yoğunluğu ve süresi öğesine bağlı olarak değişir `$DemoScenario` .
+    - Her iş, *sp_CpuLoadGenerator* yürüterek bir KIRACı veritabanında CPU tabanlı yüke neden olur. Yükün yoğunluğu ve süresi öğesine bağlı olarak değişir `$DemoScenario` .
     - yüksek CPU yüküne neden olan bir SQL SELECT ifadesinin etrafında döngüler *sp_CpuLoadGenerator* . SEÇIM sorunları arasındaki zaman aralığı, denetlenebilir bir CPU yükü oluşturmak için parametre değerlerine göre değişir. Yük düzeyleri ve aralıklar daha gerçekçi yükün benzetimini yapmak için rasgeledir.
-    - Bu. SQL dosyası *Wingtiptenantdb \\ dbo \\ StoredProcedures \\ *altında depolanır.
+    - Bu. SQL dosyası *Wingtiptenantdb \\ dbo \\ StoredProcedures \\* altında depolanır.
 
 4. İse `$OneTime = $false` , yük Oluşturucu arka plan işlerini başlatır ve çalışmaya devam eder. Her 10 saniyede, sağlanan tüm yeni kiracılar için izler. Ayarlarsanız `$OneTime = $true` , LoadGenerator arka plan işlerini başlatır ve ardından ön planda çalışmayı sonlandırır. Bu öğretici için, bırakın `$OneTime = $false` .
 
@@ -200,11 +200,11 @@ Sonraki bölüme geçmeden önce, iş çağırma durumunda yük oluşturucuyu ç
 İlk dağıtım üç örnek kiracı oluşturur. Şimdi, dağıtılan uygulamanın etkisini görmek için başka bir kiracı oluşturursunuz. Wingtip App 'te yeni kiracılar sağlamak için iş akışı, [sağlama ve Katalog öğreticisinde](saas-dbpertenant-provision-and-catalog.md)açıklanmaktadır. Bu aşamada, bir dakikadan kısa süren yeni bir kiracı oluşturacaksınız.
 
 1. Yeni bir PowerShell ıSE açın.
-2. Aç... \\ Modules\Provision ve Katalog \\ *Demo-ProvisionAndCatalog.ps1*öğrenme.
+2. Aç... \\ Modules\Provision ve Katalog \\ *Demo-ProvisionAndCatalog.ps1* öğrenme.
 3. Betiği çalıştırmak için F5 tuşuna basın. Şimdilik varsayılan değerleri bırakın.
 
    > [!NOTE]
-   > Birçok Wingtip SaaS komut dosyası, diğer betiklerdeki işlevleri çağırmak için Klasörlere gözatıp *$PSScriptRoot* kullanır. Bu değişken yalnızca, tam komut dosyası F5 tuşuna basılarak yürütüldüğünde değerlendirilir.Bir seçimi F8 ile vurgulama ve çalıştırma, hatalara neden olabilir. Betikleri çalıştırmak için F5 'e basın.
+   > Birçok Wingtip SaaS komut dosyası, diğer betiklerdeki işlevleri çağırmak için Klasörlere gözatıp *$PSScriptRoot* kullanır. Bu değişken yalnızca, tam komut dosyası F5 tuşuna basılarak yürütüldüğünde değerlendirilir. Bir seçimi F8 ile vurgulama ve çalıştırma, hatalara neden olabilir. Betikleri çalıştırmak için F5 'e basın.
 
 Yeni kiracı veritabanı:
 
@@ -222,7 +222,7 @@ Yeni kiracının listede görünmesini sağlamak için olaylar hub 'ını yenile
 
 Kiracıların koleksiyonuna karşı bir yük çalıştırmaya başladığınıza göre, dağıtılmış kaynaklara göz atalım.
 
-1.  [Azure Portal](https://portal.azure.com), SQL Server listenize gidin. Ardından **Catalog-DPT- &lt; user &gt; ** sunucusunu açın.
+1. [Azure Portal](https://portal.azure.com), SQL Server listenize gidin. Ardından **Catalog-DPT- &lt; user &gt;** sunucusunu açın.
     - Katalog sunucusu, **tenantcatalog** ve **basetenantdb** olmak üzere iki veritabanı içerir (yeni kiracılar oluşturmak için kopyalanmış bir şablon veritabanı).
 
    ![Ekran görüntüsünde, iki veritabanına sahip bir katalog sunucusuna genel bakış sayfası gösterilir.](./media/saas-dbpertenant-get-started-deploy/databases.png)
@@ -242,11 +242,11 @@ Kiracıların koleksiyonuna karşı bir yük çalıştırmaya başladığınıza
 
 *LoadGenerator.ps1* birkaç dakika çalıştıktan sonra, bazı izleme özelliklerine bakmaya başlamak için yeterli veri bulunmalıdır. Bu yetenekler havuzlar ve veritabanları içinde yerleşik olarak bulunur.
 
-**Tenants1-DPT- &lt; &gt; User**sunucusuna gidin ve havuzun kaynak kullanımını görüntülemek için **Pool1** ' yi seçin. Aşağıdaki grafiklerde, yük Oluşturucu bir saat boyunca çalışır.
+**Tenants1-DPT- &lt; &gt; User** sunucusuna gidin ve havuzun kaynak kullanımını görüntülemek için **Pool1** ' yi seçin. Aşağıdaki grafiklerde, yük Oluşturucu bir saat boyunca çalışır.
 
    ![Havuzu izle](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
-- **Kaynak kullanımı**etiketli ilk grafik, havuz eDTU kullanımını gösterir.
+- **Kaynak kullanımı** etiketli ilk grafik, havuz eDTU kullanımını gösterir.
 - İkinci grafik, havuzdaki beş etkin veritabanının eDTU kullanımını gösterir.
 
 İki grafik, elastik havuzların ve SQL veritabanının öngörülemeyen SaaS uygulaması iş yüklerine iyi uygun olduğunu gösterir. Grafiklerde dört veritabanının her biri 40 eDTU 'ya kadar olan her şey olduğunu ve ancak tüm veritabanlarının 50-eDTU havuzu tarafından rahat bir şekilde desteklenecek olduğunu gösterir. 50-eDTU havuzu daha ağır iş yüklerini destekleyebilir. Veritabanları tek veritabanları olarak sağlandıysa, her birinin bursts 'yi desteklemek için S2 (50 DTU) olması gerekir. Dört adet tek S2 veritabanının maliyeti, havuzun fiyatının neredeyse üç katı olur. Gerçek dünyada durumlarda SQL veritabanı müşterileri, 200 eDTU havuzlarında en fazla 500 veritabanı çalıştırır. Daha fazla bilgi için bkz. [performans izleme öğreticisi](saas-dbpertenant-performance-monitoring.md).
@@ -254,9 +254,9 @@ Kiracıların koleksiyonuna karşı bir yük çalıştırmaya başladığınıza
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 - Daha fazla bilgi için bkz. [Wingtip bilet SaaS veritabanı kiracı başına uygulama üzerinde derleme yapan ek öğreticiler](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
-- Elastik havuzlar hakkında bilgi edinmek için bkz. [Azure SQL elastik havuzu nedir?](elastic-pool-overview.md).
-- Elastik işler hakkında bilgi edinmek için bkz. [ölçekli bulut veritabanlarını yönetme](../../sql-database/elastic-jobs-overview.md).
-- Çok kiracılı SaaS uygulamaları hakkında bilgi edinmek için bkz. [çok kiracılı SaaS uygulamaları Için tasarım desenleri](saas-tenancy-app-design-patterns.md).
+- Elastik havuzlar hakkında bilgi edinmek için bkz. [Azure SQL elastik havuzu nedir?](elastic-pool-overview.md).
+- Elastik işler hakkında bilgi edinmek için bkz. [ölçekli bulut veritabanlarını yönetme](./elastic-jobs-overview.md).
+- Çok kiracılı SaaS uygulamaları hakkında bilgi edinmek için bkz. [çok kiracılı SaaS uygulamaları Için tasarım desenleri](saas-tenancy-app-design-patterns.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -265,7 +265,7 @@ Bu öğreticide şunları öğrendiniz:
 > [!div class="checklist"]
 > - Wingtip bilet SaaS uygulamasını dağıtma.
 > - Uygulamayı oluşturan sunucular, havuzlar ve veritabanları hakkında.
-> - Kiracılar, *katalogla*verileri ile eşlenir.
+> - Kiracılar, *katalogla* verileri ile eşlenir.
 > - Yeni kiracılar sağlama.
 > - Kiracı etkinliğini izlemek için havuz kullanımını görüntüleme.
 > - İlgili faturalandırmayı durdurmak için örnek kaynakları silme.

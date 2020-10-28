@@ -79,6 +79,8 @@
           href: configure-cross-origin-resource-sharing.md
         - name: Dışarı aktarmayı yapılandırma
           href: configure-export-data.md
+        - name: Özel Bağlantı’yı yapılandırma
+          href: configure-private-link.md
     - name: Verileri dışarı aktarma
       expanded: false
       items:

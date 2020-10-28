@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 73b48f8bcb4ec6facfebfc62d03ee5cd8237f504
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7bb4cca6f58cb4ad0722c1407d2ef3062c3747e2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490807"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781966"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Temel Azure depolama hizmetlerine giriş
 
@@ -46,7 +46,7 @@ Aşağıdaki tabloda dosyalar, Bloblar, diskler, kuyruklar ve tablolar karşıla
 | **Azure Dosyaları** |, Sektör standart sunucu Ileti bloğu (SMB) protokolü aracılığıyla herhangi bir yerden erişebileceğiniz tam olarak yönetilen bulut dosya paylaşımları sunar.<br><br>Azure dosya paylaşımlarını buluttan veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarından bağlayabilirsiniz. | Azure 'da çalışan ve diğer uygulamalar arasında veri paylaşmak için yerel dosya sistemi API 'Lerini zaten kullanan bir uygulamayı buluta "kaldırmak ve kaydırmak" istiyorsunuz.<br/><br/>Şirket içi dosya sunucularını veya NAS cihazlarını değiştirmek veya eklemek istiyorsunuz.<br><br> Birçok sanal makineden erişilmesi gereken geliştirme ve hata ayıklama araçlarını depolamak istiyorsunuz. |
 | **Azure Blobları** | Yapılandırılmamış verilerin, Blok Bloblarında çok büyük ölçekte depolanmasına ve erişilmesine izin verir.<br/><br/>Ayrıca kurumsal büyük veri analizi çözümleri için [Azure Data Lake Storage 2.](../blobs/data-lake-storage-introduction.md) destekler. | Uygulamanızın akış ve rastgele erişim senaryolarını desteklemesini istiyorsunuz.<br/><br/>Uygulama verilerine dilediğiniz yerden erişebilmek istiyorsunuz.<br/><br/>Azure 'da bir kurumsal veri Gölü oluşturmak ve büyük veri analizi gerçekleştirmek istiyorsunuz. |
 | **Azure Diskleri** | Verilerin kalıcı olarak depolanmasına ve bağlı bir sanal sabit diskten erişilmesine izin verir. | Kalıcı disklere veri okumak ve yazmak için yerel dosya sistemi API 'Leri kullanan uygulamaları "kaldırmak ve kaydırmak" istiyorsunuz.<br/><br/>Diskin eklendiği sanal makinenin dışından erişilmesi gerekmeyen verileri depolamak istiyorsunuz.. |
-| **Azure Kuyrukları** | Uygulama bileşenleri arasında zaman uyumsuz ileti sıraya alma olanağı sağlar. | Uygulama bileşenlerini ayırmak ve aralarında iletişim kurmak için zaman uyumsuz mesajlaşma kullanmak istiyorsunuz.<br><br>Kuyruk depolama alanını Service Bus kuyruklardan ne zaman kullanacağınızı öğrenmek için bkz. [depolama kuyrukları ve Service Bus kuyrukları-karşılaştırılan ve](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)benzerlikler. |
+| **Azure Kuyrukları** | Uygulama bileşenleri arasında zaman uyumsuz ileti sıraya alma olanağı sağlar. | Uygulama bileşenlerini ayırmak ve aralarında iletişim kurmak için zaman uyumsuz mesajlaşma kullanmak istiyorsunuz.<br><br>Kuyruk depolama alanını Service Bus kuyruklardan ne zaman kullanacağınızı öğrenmek için bkz. [depolama kuyrukları ve Service Bus kuyrukları-karşılaştırılan ve](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)benzerlikler. |
 | **Azure Tabloları** | Yapılandırılmış NoSQL verilerini bulutta depolamanıza izin vererek, şemaya daha az tasarıma sahip bir anahtar/öznitelik deposu sağlayabilirsiniz. | Web uygulamaları için Kullanıcı verileri, adres defterleri, cihaz bilgileri veya hizmetinizin gerektirdiği diğer meta veri türleri gibi esnek veri kümelerini depolamak istiyorsunuz. <br/><br/>Azure Cosmos DB Tablo API'si tablo depolamanın ne zaman kullanılacağı konusunda rehberlik için, bkz. [Azure Cosmos DB tablo API'si ve Azure Tablo depolama Ile geliştirme](../../cosmos-db/table-support.md). |
 
 ## <a name="blob-storage"></a>Blob depolama
@@ -91,9 +91,9 @@ Azure Kuyruk hizmeti, iletileri depolamak ve almak için kullanılır. Kuyruk il
 
 Azure Kuyrukları hakkında daha fazla bilgi için bkz. [Kuyruklara Giriş](../queues/storage-queues-introduction.md).
 
-## <a name="table-storage"></a>Table Storage
+## <a name="table-storage"></a>Tablo depolama
 
-Azure Tablo depolama artık Azure Cosmos DB’nin bir parçasıdır. Azure Tablo depolama belgelerini görmek için bkz. [Azure Tablo Depolamaya Genel Bakış](../tables/table-storage-overview.md). Mevcut Azure Tablo depolama hizmetine ek olarak, aktarım hızı için iyileştirilmiş tablolar, genel dağıtım ve otomatik ikincil dizinler sağlayan yeni bir Azure Cosmos DB Tablo API'si teklifi vardır. Daha fazla bilgi edinmek ve yeni Premium deneyimi denemek için bkz. [Azure Cosmos DB tablo API'si](https://aka.ms/premiumtables).
+Azure Tablo depolama artık Azure Cosmos DB’nin bir parçasıdır. Azure Tablo depolama belgelerini görmek için bkz. [Azure Tablo Depolamaya Genel Bakış](../tables/table-storage-overview.md). Mevcut Azure Tablo depolama hizmetine ek olarak, aktarım hızı için iyileştirilmiş tablolar, genel dağıtım ve otomatik ikincil dizinler sağlayan yeni bir Azure Cosmos DB Tablo API'si teklifi vardır. Daha fazla bilgi edinmek ve yeni Premium deneyimi denemek için bkz. [Azure Cosmos DB tablo API'si](../../cosmos-db/table-introduction.md).
 
 Tablo depolama hakkında daha fazla bilgi için bkz. [Azure Tablo depolamaya genel bakış](../tables/table-storage-overview.md).
 
@@ -115,7 +115,7 @@ Azure depolama 'ya yönelik her isteğin yetkilendirilmiş olması gerekir. Azur
 - **Azure dosyaları için SMB üzerinden Azure AD yetkilendirmesi.** Azure dosyaları, Azure Active Directory Domain Services (Azure AD DS) veya şirket içi Active Directory Domain Services (Önizleme) aracılığıyla SMB (sunucu Ileti bloğu) üzerinden kimlik tabanlı yetkilendirmeyi destekler. Etki alanına katılmış Windows VM 'leriniz, Azure AD kimlik bilgilerini kullanarak Azure dosya paylaşımlarına erişebilir. Daha fazla bilgi için bkz. [Azure dosyalarına genel bakış SMB erişimi için kimlik tabanlı kimlik doğrulama desteği](../files/storage-files-active-directory-overview.md) ve [bir Azure dosyaları dağıtımı için planlama](../files/storage-files-planning.md#identity).
 - **Paylaşılan anahtarla yetkilendirme.** Azure Depolama Blobu, dosyalar, kuyruk ve tablo Hizmetleri, paylaşılan anahtarla yetkilendirmeyi destekler. Paylaşılan anahtar yetkilendirmesi kullanan bir istemci, depolama hesabı erişim anahtarı kullanılarak imzalanan her isteği içeren bir üst bilgi geçirir. Daha fazla bilgi için bkz. [paylaşılan anahtarla yetkilendirme](/rest/api/storageservices/authorize-with-shared-key).
 - **Paylaşılan erişim imzalarını (SAS) kullanarak yetkilendirme.** Paylaşılan erişim imzası (SAS), bir depolama kaynağının URI 'sine eklenebileceği bir güvenlik belirteci içeren bir dizedir. Güvenlik belirteci, izinler ve erişim aralığı gibi kısıtlamaları kapsüller. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](storage-sas-overview.md).
-- **Kapsayıcılara ve bloblara anonim erişim.** Bir kapsayıcı ve Blobları herkese açık olabilir. Bir kapsayıcının veya Blobun genel olduğunu belirttiğinizde, herkes onu anonim olarak okuyabilir; kimlik doğrulaması gerekmiyor. Daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](../blobs/storage-manage-access-to-resources.md).
+- **Kapsayıcılara ve bloblara anonim erişim.** Bir kapsayıcı ve Blobları herkese açık olabilir. Bir kapsayıcının veya Blobun genel olduğunu belirttiğinizde, herkes onu anonim olarak okuyabilir; kimlik doğrulaması gerekmiyor. Daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](../blobs/anonymous-read-access-configure.md).
 
 ## <a name="encryption"></a>Şifreleme
 
@@ -131,7 +131,7 @@ Azure depolama istemci kitaplıkları, istemci kitaplığından, verileri kablo 
 
 ## <a name="redundancy"></a>Yedeklilik
 
-Verilerinizin dayanıklı olduğundan emin olmak için, Azure depolama verilerinizin birden çok kopyasını depolar. Depolama hesabınızı ayarlarken bir artıklık seçeneği belirleyin. Daha fazla bilgi için bkz. [Azure Depolama yedekliliği](/azure/storage/common/storage-redundancy?toc=/azure/storage/blobs/toc.json).
+Verilerinizin dayanıklı olduğundan emin olmak için, Azure depolama verilerinizin birden çok kopyasını depolar. Depolama hesabınızı ayarlarken bir artıklık seçeneği belirleyin. Daha fazla bilgi için bkz. [Azure Depolama yedekliliği](./storage-redundancy.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json).
 
 ## <a name="transfer-data-to-and-from-azure-storage"></a>Azure Storage 'a veri aktarma
 
@@ -160,7 +160,7 @@ Bir depolama hesabındaki kaynaklara, HTTP/HTTPS istekleri yapan herhangi bir di
 
 - [Depolama Kaynak Sağlayıcısı REST API’si](/rest/api/storagerp/)
 - [.NET için Depolama Kaynak Sağlayıcısı İstemci Kitaplığı](/dotnet/api/overview/azure/storage/management)
-- [Depolama Hizmet Yönetimi REST API'si (Klasik)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
+- [Depolama Hizmet Yönetimi REST API'si (Klasik)](/previous-versions/azure/reference/ee460790(v=azure.100))
 
 ### <a name="azure-storage-data-movement-api-and-library-references"></a>Azure Depolama veri taşıma API’si ve kitaplık başvuruları
 

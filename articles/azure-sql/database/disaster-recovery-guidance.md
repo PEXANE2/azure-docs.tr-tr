@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/21/2019
-ms.openlocfilehash: e88c1b976ce1de0ce0be4b6a5f85af6790802323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4a6802829d230cebc460df1409b7655534a5b8e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321637"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783003"
 ---
 # <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL veritabanınızı veya yük devretmesini ikincil bir duruma geri yükleme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -62,7 +62,7 @@ Kurtarma işlemi uygulamayı etkiler. DNS kullanılarak SQL bağlantı dizesinin
 
 Uygulama toleransına kapalı kalma süresi ve olası iş sorumluluğına bağlı olarak, aşağıdaki kurtarma seçeneklerini göz önünde bulundurmanız gerekir.
 
-En son coğrafi çoğaltılan geri yükleme noktasını almak için [kurtarılabilir veritabanını al](https://msdn.microsoft.com/library/dn800985.aspx) (*lastavailablebackupdate*) kullanın.
+En son coğrafi çoğaltılan geri yükleme noktasını almak için [kurtarılabilir veritabanını al](/previous-versions/azure/reference/dn800985(v=azure.100)) ( *lastavailablebackupdate* ) kullanın.
 
 ## <a name="wait-for-service-recovery"></a>Hizmet kurtarmayı bekle
 

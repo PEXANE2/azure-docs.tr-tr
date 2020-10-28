@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: ca458bebf75f8e77774236166704794b817b7c3f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 940ea0ac471604b22c64dc008eebd8b580121cf7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167143"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782748"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics 'e veritabanı erişimi verme
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -39,27 +39,27 @@ Bu makalede şunları öğreneceksiniz:
 [**Kimlik doğrulama**](security-overview.md#authentication) , kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Kullanıcı bir kullanıcı hesabı kullanarak bir veritabanına bağlanır.
 Bir Kullanıcı bir veritabanına bağlanmaya çalıştığında, bir kullanıcı hesabı ve kimlik doğrulama bilgileri sağlarlar. Kullanıcının kimliği, aşağıdaki iki kimlik doğrulama yönteminden birini kullanarak doğrulanır:
 
-- [SQL kimlik doğrulaması](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication).
+- [SQL kimlik doğrulaması](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication).
 
   Bu kimlik doğrulama yöntemiyle kullanıcı bir bağlantı kurmak için bir kullanıcı hesabı adı ve ilişkili parola gönderir. Bu parola, bir oturum açma ile bağlantılı veya bir oturum açma ile bağlantılı *olmayan* Kullanıcı hesaplarını içeren veritabanında depolanan kullanıcı hesapları için ana veritabanında depolanır.
 - [Azure Active Directory Kimlik Doğrulaması](authentication-aad-overview.md)
 
   Bu kimlik doğrulama yöntemiyle kullanıcı, bir kullanıcı hesabı adı ve hizmetin Azure Active Directory (Azure AD) ' de depolanan kimlik bilgisi bilgilerini kullandığı istekleri gönderir.
 
-**Oturum açmalar ve kullanıcılar**: bir veritabanındaki bir kullanıcı hesabı, ana veritabanında depolanan bir oturum ile ilişkilendirilebilir veya ayrı bir veritabanında depolanan bir Kullanıcı adı olabilir.
+**Oturum açmalar ve kullanıcılar** : bir veritabanındaki bir kullanıcı hesabı, ana veritabanında depolanan bir oturum ile ilişkilendirilebilir veya ayrı bir veritabanında depolanan bir Kullanıcı adı olabilir.
 
 - **Oturum açma** , ana veritabanında bir veya daha fazla veritabanında bulunan bir kullanıcı hesabının bağlanacağı bireysel bir hesaptır. Oturum açma hesabında, kullanıcı hesabının kimlik bilgileri oturum açma hesabıyla depolanır.
 - **Kullanıcı hesabı** , herhangi bir veritabanında bir oturum açma ile bağlantılı olan, ancak olması gereken tek bir hesaptır. Oturum açmaya bağlantılı olmayan bir kullanıcı hesabında kimlik bilgileri kullanıcı hesabında depolanır.
 
-Veri erişimi ve çeşitli eylemleri gerçekleştirme [**yetkilendirmesi**](security-overview.md#authorization) , veritabanı rolleri ve açık izinler kullanılarak yönetilir. Yetkilendirme, bir kullanıcıya atanan izinleri ifade eder ve kullanıcının ne yapmasına izin verileceğini belirler. Yetkilendirme, Kullanıcı hesabınızın veritabanı [rolü üyelikleri](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) ve [nesne düzeyi izinleri](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)tarafından denetlenir. En iyi uygulama olarak, kullanıcılarınıza gerekli olan en düşük ayrıcalıkları tanımanız gerekir.
+Veri erişimi ve çeşitli eylemleri gerçekleştirme [**yetkilendirmesi**](security-overview.md#authorization) , veritabanı rolleri ve açık izinler kullanılarak yönetilir. Yetkilendirme, bir kullanıcıya atanan izinleri ifade eder ve kullanıcının ne yapmasına izin verileceğini belirler. Yetkilendirme, Kullanıcı hesabınızın veritabanı [rolü üyelikleri](/sql/relational-databases/security/authentication-access/database-level-roles) ve [nesne düzeyi izinleri](/sql/relational-databases/security/permissions-database-engine)tarafından denetlenir. En iyi uygulama olarak, kullanıcılarınıza gerekli olan en düşük ayrıcalıkları tanımanız gerekir.
 
 ## <a name="existing-logins-and-user-accounts-after-creating-a-new-database"></a>Yeni bir veritabanı oluşturduktan sonra mevcut oturumlar ve Kullanıcı hesapları
 
-Azure SQL 'i ilk kez dağıttığınızda, bu oturum açma için yönetici oturumu ve ilişkili bir parola belirtirsiniz. Bu yönetim hesabına **Sunucu Yöneticisi**adı verilir. Dağıtım sırasında, ana ve Kullanıcı veritabanlarındaki oturum açma ve kullanıcıların aşağıdaki yapılandırması oluşur:
+Azure SQL 'i ilk kez dağıttığınızda, bu oturum açma için yönetici oturumu ve ilişkili bir parola belirtirsiniz. Bu yönetim hesabına **Sunucu Yöneticisi** adı verilir. Dağıtım sırasında, ana ve Kullanıcı veritabanlarındaki oturum açma ve kullanıcıların aşağıdaki yapılandırması oluşur:
 
-- Yönetim ayrıcalıklarına sahip bir SQL oturumu açma, belirttiğiniz oturum açma adı kullanılarak oluşturulur. [Oturum açma](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) , SQL VERITABANı, SQL yönetilen örneği ve Azure SYNAPSE 'da oturum açmak için bireysel bir kullanıcı hesabıdır.
-- Bu oturum açma, tüm veritabanlarında [sunucu düzeyi sorumlusu](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)olarak tam yönetim izinleri verilmesini ister. Oturum açma tüm kullanılabilir izinlere sahiptir ve bunlarla sınırlı olamaz. SQL yönetilen örneğinde, bu oturum açma [sysadmin sabit sunucu rolüne](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) eklenir (Bu rol Azure SQL veritabanında bulunmaz).
-- [user account](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) `dbo` Bu oturum için her kullanıcı veritabanında çağrılan bir kullanıcı hesabı oluşturulur. [Dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) kullanıcısı veritabanında tüm veritabanı izinlerine sahiptir ve `db_owner` sabit veritabanı rolüne eşlenir. Ek sabit veritabanı rolleri bu makalenin ilerleyen kısımlarında ele alınmıştır.
+- Yönetim ayrıcalıklarına sahip bir SQL oturumu açma, belirttiğiniz oturum açma adı kullanılarak oluşturulur. [Oturum açma](/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) , SQL VERITABANı, SQL yönetilen örneği ve Azure SYNAPSE 'da oturum açmak için bireysel bir kullanıcı hesabıdır.
+- Bu oturum açma, tüm veritabanlarında [sunucu düzeyi sorumlusu](/sql/relational-databases/security/authentication-access/principals-database-engine)olarak tam yönetim izinleri verilmesini ister. Oturum açma tüm kullanılabilir izinlere sahiptir ve bunlarla sınırlı olamaz. SQL yönetilen örneğinde, bu oturum açma [sysadmin sabit sunucu rolüne](/sql/relational-databases/security/authentication-access/server-level-roles) eklenir (Bu rol Azure SQL veritabanında bulunmaz).
+- [user account](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) `dbo` Bu oturum için her kullanıcı veritabanında çağrılan bir kullanıcı hesabı oluşturulur. [Dbo](/sql/relational-databases/security/authentication-access/principals-database-engine) kullanıcısı veritabanında tüm veritabanı izinlerine sahiptir ve `db_owner` sabit veritabanı rolüne eşlenir. Ek sabit veritabanı rolleri bu makalenin ilerleyen kısımlarında ele alınmıştır.
 
 Bir veritabanının yönetici hesaplarını belirlemek için, Azure portal açın ve sunucunuzun veya yönetilen örneğinizin **Özellikler** sekmesine gidin.
 
@@ -68,7 +68,7 @@ Bir veritabanının yönetici hesaplarını belirlemek için, Azure portal açı
 ![Özellikler menü seçeneğini vurgulayan ekran görüntüsü.](./media/logins-create-manage/sql-admins2.png)
 
 > [!IMPORTANT]
-> Yönetici oturum açma adı oluşturulduktan sonra değiştirilemez. Sunucu yöneticisinin parolasını sıfırlamak için [Azure Portal](https://portal.azure.com)gidin, **SQL sunucuları**' na tıklayın, listeden sunucuyu seçin ve ardından **Parolayı Sıfırla**' ya tıklayın. SQL yönetilen örneği parolasını sıfırlamak için Azure portal gidin, örneğe tıklayın ve **Parolayı Sıfırla**' ya tıklayın. PowerShell veya Azure CLı 'yi de kullanabilirsiniz.
+> Yönetici oturum açma adı oluşturulduktan sonra değiştirilemez. Sunucu yöneticisinin parolasını sıfırlamak için [Azure Portal](https://portal.azure.com)gidin, **SQL sunucuları** ' na tıklayın, listeden sunucuyu seçin ve ardından **Parolayı Sıfırla** ' ya tıklayın. SQL yönetilen örneği parolasını sıfırlamak için Azure portal gidin, örneğe tıklayın ve **Parolayı Sıfırla** ' ya tıklayın. PowerShell veya Azure CLı 'yi de kullanabilirsiniz.
 
 ## <a name="create-additional-logins-and-users-having-administrative-permissions"></a>Yönetici izinlerine sahip ek oturumlar ve kullanıcılar oluşturun
 
@@ -84,19 +84,19 @@ Bu noktada, sunucunuz veya yönetilen örneğiniz yalnızca tek bir SQL oturum a
 - **SQL yönetilen örneği 'nde, tam yönetici izinleriyle SQL oturumları oluşturun**
 
   - Ana veritabanında ek bir SQL oturum açma oluşturun.
-  - [Alter Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) deyimini kullanarak [sysadmin sabit sunucu rolüne](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) oturum açma ekleyin. Bu oturum açma tam yönetim izinlerine sahip olacaktır.
+  - [Alter Server role](/sql/t-sql/statements/alter-server-role-transact-sql) deyimini kullanarak [sysadmin sabit sunucu rolüne](/sql/relational-databases/security/authentication-access/server-level-roles) oturum açma ekleyin. Bu oturum açma tam yönetim izinlerine sahip olacaktır.
   - Alternatif olarak, [create LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) sözdizimini kullanarak BIR [Azure AD oturum açma bilgisi](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) oluşturun.
 
 - **SQL veritabanı 'nda, sınırlı yönetim izinleriyle SQL oturumları oluşturun**
 
   - Ana veritabanında ek bir SQL oturum açma oluşturun.
   - Ana veritabanında bu yeni oturum açmayla ilişkili bir kullanıcı hesabı oluşturun.
-  - `dbmanager` `loginmanager` Alter role deyimini kullanarak veritabanında, role veya her ikisine de Kullanıcı hesabını ekleyin `master` (Azure SYNAPSE [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) için [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) deyimini kullanın).
+  - `dbmanager` `loginmanager` Alter role deyimini kullanarak veritabanında, role veya her ikisine de Kullanıcı hesabını ekleyin `master` (Azure SYNAPSE [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql) için [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) deyimini kullanın).
 
   > [!NOTE]
   > `dbmanager` ve `loginmanager` rolleri, SQL yönetilen örnek dağıtımlarıyla ilgili **değildir** .
 
-  Azure SQL veritabanı için bu [özel ana veritabanı rollerinin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) üyeleri veritabanları oluşturma ve yönetme veya oturum açma işlemleri oluşturma ve Yönetme yetkisine sahiptir. Rolün üyesi olan bir kullanıcı tarafından oluşturulan veritabanlarında `dbmanager` , üye `db_owner` sabit veritabanı rolüne eşlenir ve bu veritabanını oturum açıp `dbo` Kullanıcı hesabını kullanarak yönetebilir. Bu rollerin, ana veritabanı dışında açık izinleri yoktur.
+  Azure SQL veritabanı için bu [özel ana veritabanı rollerinin](/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) üyeleri veritabanları oluşturma ve yönetme veya oturum açma işlemleri oluşturma ve Yönetme yetkisine sahiptir. Rolün üyesi olan bir kullanıcı tarafından oluşturulan veritabanlarında `dbmanager` , üye `db_owner` sabit veritabanı rolüne eşlenir ve bu veritabanını oturum açıp `dbo` Kullanıcı hesabını kullanarak yönetebilir. Bu rollerin, ana veritabanı dışında açık izinleri yoktur.
 
   > [!IMPORTANT]
   > SQL veritabanında tam yönetici izinleriyle ek bir SQL oturumu oluşturamazsınız.
@@ -122,10 +122,10 @@ Yönetici olmayan kullanıcılar için, iki yöntemden birini kullanarak hesap o
 
 Oturum açma ve Kullanıcı oluşturma işlemlerini gösteren örnekler için bkz.:
 
-- [Azure SQL veritabanı için oturum açma oluştur](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
-- [Azure SQL yönetilen örneği için oturum açma oluştur](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
-- [Azure SYNAPSE için oturum açma oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
-- [Kullanıcı oluştur](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql#examples)
+- [Azure SQL veritabanı için oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
+- [Azure SQL yönetilen örneği için oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
+- [Azure SYNAPSE için oturum açma oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [Kullanıcı oluştur](/sql/t-sql/statements/create-user-transact-sql#examples)
 - [Azure AD kapsanan kullanıcılar oluşturuluyor](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)
 
 > [!TIP]
@@ -137,19 +137,19 @@ Bir veritabanında bir oturum açma ya da kapsanan Kullanıcı olarak bir kullan
 
 - **Düzeltilen veritabanı rolleri**
 
-  Kullanıcı hesabını bir [sabit veritabanı rolüne](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)ekleyin. Her biri tanımlanmış bir izin kümesine sahip 9 sabit veritabanı rolü vardır. En yaygın sabit veritabanı rolleri şunlardır: **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter**ve **db_denydatareader**. Birkaç kullanıcıya tam izin vermek için genelde **db_owner** kullanılır. Diğer sabit veritabanı rolleri, geliştirme aşamasında basit bir veritabanını hızlı bir şekilde kullanıma almak için kullanışlıdır ancak çoğu üretim veritabanı için önerilmez. Örneğin, **db_datareader** sabit veritabanı rolü, veritabanı içindeki her tabloya okuma erişimi verir ve bu, kesinlikle gereklidir.
+  Kullanıcı hesabını bir [sabit veritabanı rolüne](/sql/relational-databases/security/authentication-access/database-level-roles)ekleyin. Her biri tanımlanmış bir izin kümesine sahip 9 sabit veritabanı rolü vardır. En yaygın sabit veritabanı rolleri şunlardır: **db_owner** , **db_ddladmin** , **db_datawriter** , **db_datareader** , **db_denydatawriter** ve **db_denydatareader** . Birkaç kullanıcıya tam izin vermek için genelde **db_owner** kullanılır. Diğer sabit veritabanı rolleri, geliştirme aşamasında basit bir veritabanını hızlı bir şekilde kullanıma almak için kullanışlıdır ancak çoğu üretim veritabanı için önerilmez. Örneğin, **db_datareader** sabit veritabanı rolü, veritabanı içindeki her tabloya okuma erişimi verir ve bu, kesinlikle gereklidir.
 
   - Sabit bir veritabanı rolüne kullanıcı eklemek için:
 
-    - Azure SQL veritabanı 'nda [alter role](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) deyimini kullanın. Örnekler için bkz. [alter role örnekleri](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql#examples)
-    - Azure SYNAPSE, [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ifadesini kullanın. Örnekler için bkz. [sp_addrolemember örnekleri](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql).
+    - Azure SQL veritabanı 'nda [alter role](/sql/t-sql/statements/alter-role-transact-sql) deyimini kullanın. Örnekler için bkz. [alter role örnekleri](/sql/t-sql/statements/alter-role-transact-sql#examples)
+    - Azure SYNAPSE, [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ifadesini kullanın. Örnekler için bkz. [sp_addrolemember örnekleri](/sql/t-sql/statements/alter-role-transact-sql).
 
 - **Özel veritabanı rolü**
 
-  [Create role](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql) ifadesini kullanarak özel bir veritabanı rolü oluşturun. Özel bir rol, kendi Kullanıcı tanımlı veritabanı rollerinizi oluşturmanıza ve her bir role iş ihtiyacı için gereken en az izni sağlamanıza olanak sağlar. Ardından, özel Role Kullanıcı ekleyebilirsiniz. Birden fazla rolün üyesi olan kullanıcılar, tüm rollerin izinlerine sahip olur.
+  [Create role](/sql/t-sql/statements/create-role-transact-sql) ifadesini kullanarak özel bir veritabanı rolü oluşturun. Özel bir rol, kendi Kullanıcı tanımlı veritabanı rollerinizi oluşturmanıza ve her bir role iş ihtiyacı için gereken en az izni sağlamanıza olanak sağlar. Ardından, özel Role Kullanıcı ekleyebilirsiniz. Birden fazla rolün üyesi olan kullanıcılar, tüm rollerin izinlerine sahip olur.
 - **İzinleri doğrudan verme**
 
-  Kullanıcı hesabı [izinlerini](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) doğrudan verin. SQL Veritabanında ayrı ayrı verilebilen veya reddedilebilen 100'den fazla izin vardır. Bu izinlerin çoğu iç içe geçmiş haldedir. Örneğin, bir şemada için verilen `UPDATE` izni, o şema içindeki tüm tablolar için `UPDATE` iznini de içerir. Çoğu izin sisteminde olduğu gibi bir iznin reddedilmesi, aynı iznin verilme durumunu geçersiz kılar. İç içe geçmiş yapısı ve izin sayısı nedeniyle, veritabanınızı doğru şekilde korumak için uygun bir izin sistemi tasarlamak uzun ve dikkatli bir çalışma gerektirebilir. [İzinler (Veritabanı Altyapısı)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) ile başlayın ve izinlerin [poster boyutundaki tablosunu](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png) inceleyin.
+  Kullanıcı hesabı [izinlerini](/sql/relational-databases/security/permissions-database-engine) doğrudan verin. SQL Veritabanında ayrı ayrı verilebilen veya reddedilebilen 100'den fazla izin vardır. Bu izinlerin çoğu iç içe geçmiş haldedir. Örneğin, bir şemada için verilen `UPDATE` izni, o şema içindeki tüm tablolar için `UPDATE` iznini de içerir. Çoğu izin sisteminde olduğu gibi bir iznin reddedilmesi, aynı iznin verilme durumunu geçersiz kılar. İç içe geçmiş yapısı ve izin sayısı nedeniyle, veritabanınızı doğru şekilde korumak için uygun bir izin sistemi tasarlamak uzun ve dikkatli bir çalışma gerektirebilir. [İzinler (Veritabanı Altyapısı)](/sql/relational-databases/security/permissions-database-engine) ile başlayın ve izinlerin [poster boyutundaki tablosunu](/sql/relational-databases/security/media/database-engine-permissions.png) inceleyin.
 
 ## <a name="using-groups"></a>Grupları kullanma
 
@@ -164,10 +164,10 @@ Verimli erişim yönetimi, bireysel kullanıcılar yerine Active Directory güve
 
 İzinleri sınırlamak veya yükseltmek için kullanılabilen aşağıdaki özellikleri tanımanız gerekir:
 
-- [Kimliğe Bürünme](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server) ve [modül imzalama](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server) ile izinler geçici olarak ve güvenli bir şekilde artırılabilir.
-- [Satır Düzeyinde Güvenlik](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) ile bir kullanıcının erişebileceği satırlar sınırlandırılabilir.
+- [Kimliğe Bürünme](/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server) ve [modül imzalama](/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server) ile izinler geçici olarak ve güvenli bir şekilde artırılabilir.
+- [Satır Düzeyinde Güvenlik](/sql/relational-databases/security/row-level-security) ile bir kullanıcının erişebileceği satırlar sınırlandırılabilir.
 - [Veri Maskeleme](dynamic-data-masking-overview.md) ile hassas verilerin kapsamı sınırlandırılabilir.
-- [Saklı yordamlar](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) ile veritabanında gerçekleştirilebilecek eylemler sınırlandırılabilir.
+- [Saklı yordamlar](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) ile veritabanında gerçekleştirilebilecek eylemler sınırlandırılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

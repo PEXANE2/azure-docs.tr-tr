@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 5544a6985ca357688b2585fa29c6dc63546c3e8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de504cc4209aea19925c4c3e2385c7feabceedeb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014965"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781626"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure Kuyruk depolama başvurusu
 
@@ -25,8 +25,8 @@ Aşağıdaki tabloda, Azure kuyruk depolama .NET API 'Leri için başvuru ve ör
 
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure. Storage. Queues ad alanı](/dotnet/api/azure.storage.queues) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/) | [Hızlı başlangıç: .NET için Azure kuyruk depolama istemci kitaplığı V12](/azure/storage/queues/storage-quickstart-queues-dotnet) |
-| 11. x | [Microsoft. Azure. Storage. Queue ad alanı](/dotnet/api/microsoft.azure.storage.queue) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/) | [Hızlı başlangıç: bir kuyruğu yönetmek için .NET için Azure depolama SDK v11 kullanın](/azure/storage/queues/storage-quickstart-queues-dotnet-legacy) |
+| 12. x | [Azure. Storage. Queues ad alanı](/dotnet/api/azure.storage.queues) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/) | [Hızlı başlangıç: .NET için Azure kuyruk depolama istemci kitaplığı V12](./storage-quickstart-queues-dotnet.md) |
+| 11. x | [Microsoft. Azure. Storage. Queue ad alanı](/dotnet/api/microsoft.azure.storage.queue) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/) | [Hızlı başlangıç: bir kuyruğu yönetmek için .NET için Azure depolama SDK v11 kullanın](./storage-quickstart-queues-dotnet-legacy.md) |
 
 ### <a name="storage-management"></a>Depolama yönetimi
 
@@ -50,8 +50,8 @@ Aşağıdaki tabloda, Azure kuyruk depolaması Java API 'Leri için başvuru ve 
 
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Java için Azure depolama kuyruğu istemci kitaplığı](/java/api/overview/azure/storage-queue-readme) | [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Hızlı başlangıç: Java için Azure kuyruk depolama istemci kitaplığı V12](/azure/storage/queues/storage-quickstart-queues-java) |
-| 8.x | [com. Microsoft. Azure. Storage. Queue](/java/api/com.microsoft.azure.storage.queue) | [Paket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Hızlı başlangıç: Java V8 SDK ile Blobları yönetme](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
+| 12. x | [Java için Azure depolama kuyruğu istemci kitaplığı](/java/api/overview/azure/storage-queue-readme) | [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Hızlı başlangıç: Java için Azure kuyruk depolama istemci kitaplığı V12](./storage-quickstart-queues-java.md) |
+| 8.x | [com. Microsoft. Azure. Storage. Queue](/java/api/com.microsoft.azure.storage.queue) | [Paket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Hızlı başlangıç: Java V8 SDK ile Blobları yönetme](../blobs/storage-quickstart-blobs-java-legacy.md) |
 
 ### <a name="storage-management"></a>Depolama yönetimi
 
@@ -67,8 +67,8 @@ Aşağıdaki tabloda, Azure kuyruk depolama Python API 'Leri için başvuru ve �
 
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Python için Azure Storage istemci kitaplıkları V12](/azure/developer/python/sdk/storage/overview) | [Paket (Pypı)](https://pypi.org/project/azure-storage-queue/) | [Hızlı başlangıç: Python için Azure kuyruk depolama istemci kitaplığı V12](/azure/storage/queues/storage-quickstart-queues-python) |
-| 2.x | [Python için Azure Storage istemci kitaplıkları v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Paket (Pypı)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Python 'dan Azure kuyruk depolama v 2.1 kullanma](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
+| 12. x | [Python için Azure Storage istemci kitaplıkları V12](/azure/developer/python/sdk/storage/overview) | [Paket (Pypı)](https://pypi.org/project/azure-storage-queue/) | [Hızlı başlangıç: Python için Azure kuyruk depolama istemci kitaplığı V12](./storage-quickstart-queues-python.md) |
+| 2.x | [Python için Azure Storage istemci kitaplıkları v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Paket (Pypı)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Python 'dan Azure kuyruk depolama v 2.1 kullanma](./storage-python-how-to-use-queue-storage.md) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript istemci kitaplıkları
 
@@ -76,8 +76,8 @@ Aşağıdaki tabloda, Azure kuyruk depolama JavaScript API 'Leri için başvuru 
 
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [JavaScript için Azure depolama kuyruğu istemci kitaplığı](/javascript/api/overview/azure/storage-queue-readme) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-queue) | [Hızlı başlangıç: JavaScript için Azure kuyruk depolama istemci kitaplığı V12](/azure/storage/queues/storage-quickstart-queues-nodejs) |
-| 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy&preserve-view=true) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Node.jskuyrukları oluşturmak ve silmek için Azure kuyruk hizmetini kullanın ](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
+| 12. x | [JavaScript için Azure depolama kuyruğu istemci kitaplığı](/javascript/api/overview/azure/storage-queue-readme) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-queue) | [Hızlı başlangıç: JavaScript için Azure kuyruk depolama istemci kitaplığı V12](./storage-quickstart-queues-nodejs.md) |
+| 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy&preserve-view=true) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Node.jskuyrukları oluşturmak ve silmek için Azure kuyruk hizmetini kullanın ](./storage-nodejs-how-to-use-queues.md) |
 
 ## <a name="rest-apis"></a>REST API'leri
 

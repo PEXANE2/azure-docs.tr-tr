@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 787ee50dc04337d82940973d47af454264629afe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a078ba6147d4d874a890f406563111b6fdb82ed6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619806"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780912"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-azure-sql-database-saas-app"></a>Azure Izleyici günlüklerini çok kiracılı bir Azure SQL veritabanı SaaS uygulamasıyla ayarlama ve kullanma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bu öğreticide, elastik havuzları ve veritabanlarını izlemek için [Azure izleyici günlüklerini](/azure/log-analytics/log-analytics-overview) ayarlayıp kullanacaksınız. Bu öğretici, [performans izleme ve yönetim öğreticisini](saas-dbpertenant-performance-monitoring.md)oluşturur. Azure Izleyici günlüklerinin, Azure portal belirtilen izleme ve uyarı sayısını artırmak için nasıl kullanılacağını gösterir. Azure Izleyici günlükleri binlerce elastik havuzun izlenmesini ve yüzlerce binlerce veritabanını izlemeyi destekler. Azure Izleyici günlükleri, birden çok Azure aboneliği arasında farklı uygulamaların ve Azure hizmetlerinin izlenmesini tümleştirebilen tek bir izleme çözümü sağlar.
+Bu öğreticide, elastik havuzları ve veritabanlarını izlemek için [Azure izleyici günlüklerini](../../azure-monitor/log-query/log-query-overview.md) ayarlayıp kullanacaksınız. Bu öğretici, [performans izleme ve yönetim öğreticisini](saas-dbpertenant-performance-monitoring.md)oluşturur. Azure Izleyici günlüklerinin, Azure portal belirtilen izleme ve uyarı sayısını artırmak için nasıl kullanılacağını gösterir. Azure Izleyici günlükleri binlerce elastik havuzun izlenmesini ve yüzlerce binlerce veritabanını izlemeyi destekler. Azure Izleyici günlükleri, birden çok Azure aboneliği arasında farklı uygulamaların ve Azure hizmetlerinin izlenmesini tümleştirebilen tek bir izleme çözümü sağlar.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -33,8 +33,8 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
-* Her kiracı için Wingtip bilet SaaS veritabanı uygulaması dağıtılır. Beş dakikadan kısa bir süre içinde dağıtmak için bkz. [Wingtip bilet SaaS veritabanı kiracı başına uygulama](../../sql-database/saas-dbpertenant-get-started-deploy.md).
-* Azure PowerShell’in yüklendiğinden. Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Her kiracı için Wingtip bilet SaaS veritabanı uygulaması dağıtılır. Beş dakikadan kısa bir süre içinde dağıtmak için bkz. [Wingtip bilet SaaS veritabanı kiracı başına uygulama](./saas-dbpertenant-get-started-deploy.md).
+* Azure PowerShell’in yüklendiğinden. Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](/powershell/azure/get-started-azureps).
 
 SaaS senaryoları ve desenlerinin tartışılması ve bir izleme çözümünde gereksinimleri nasıl etkilediği hakkında bilgi için bkz. [performans izleme ve yönetim öğreticisi](saas-dbpertenant-performance-monitoring.md) .
 
@@ -48,16 +48,16 @@ OMS çalışma alanları artık Log Analytics çalışma alanları olarak adland
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Kiracılarınız üzerinde bir iş yükünü taklit ederek Performans Tanılama verileri oluşturun 
 
-1. PowerShell ıSE 'de öğesini açın *. \\ Wingtipbilet ssaas-MultiTenantDb-Master \\ Learning modülleri \\ performans Izleme ve Yönetim \\Demo-PerformanceMonitoringAndManagement.ps1*. Bu öğreticide yük oluşturma senaryolarından birkaçını çalıştırmak isteyebileceğiniz için bu betiği açık tutun.
+1. PowerShell ıSE 'de öğesini açın *. \\ Wingtipbilet ssaas-MultiTenantDb-Master \\ Learning modülleri \\ performans Izleme ve Yönetim \\Demo-PerformanceMonitoringAndManagement.ps1* . Bu öğreticide yük oluşturma senaryolarından birkaçını çalıştırmak isteyebileceğiniz için bu betiği açık tutun.
 1. Daha önce yapmadıysanız, izleme bağlamını daha ilginç hale getirmek için bir Grup kiracı sağlayın. Bu işlem birkaç dakika sürer.
 
-   a. **$DemoScenario = 1**ayarlayın, _kiracı grubu sağlayın_.
+   a. **$DemoScenario = 1** ayarlayın, _kiracı grubu sağlayın_ .
 
    b. Betiği çalıştırmak ve ek 17 kiracılar dağıtmak için F5 'e basın.
 
 1. Şimdi, tüm kiracılarda benzetimli yük çalıştırmak için yük oluşturucuyu başlatın.
 
-    a. **$DemoScenario = 2**olarak ayarlayın, _Normal yoğunluk yükü oluşturun (yaklaşık 30 DTU)_.
+    a. **$DemoScenario = 2** olarak ayarlayın, _Normal yoğunluk yükü oluşturun (yaklaşık 30 DTU)_ .
 
     b. Betiği çalıştırmak için F5 tuşuna basın.
 
@@ -69,7 +69,7 @@ Wingtip biletleri SaaS çok kiracılı veritabanı betikleri ve uygulama kaynak 
 
 Azure Izleyici, yapılandırılması gereken ayrı bir hizmettir. Azure Izleyici günlükleri bir Log Analytics çalışma alanında günlük verilerini, telemetri ve ölçümleri toplar. Azure 'daki diğer kaynaklarda olduğu gibi, bir Log Analytics çalışma alanı oluşturulmalıdır. Çalışma alanının, izlediği uygulamalarla aynı kaynak grubunda oluşturulması gerekmez. Bunun yapılması genellikle en mantıklı hale gelir. Wingtip bilet uygulaması için, çalışma alanının uygulamayla silindiğinden emin olmak için tek bir kaynak grubu kullanın.
 
-1. PowerShell ıSE 'de öğesini açın *. \\ Wingtipbilet ssaas-MultiTenantDb-Master \\ Learning modülleri \\ performans Izleme ve yönetim \\ Log Analytics \\Demo-LogAnalytics.ps1*.
+1. PowerShell ıSE 'de öğesini açın *. \\ Wingtipbilet ssaas-MultiTenantDb-Master \\ Learning modülleri \\ performans Izleme ve yönetim \\ Log Analytics \\Demo-LogAnalytics.ps1* .
 1. Betiği çalıştırmak için F5 tuşuna basın.
 
 Artık Azure portal Azure Izleyici günlüklerini açabilirsiniz. Log Analytics çalışma alanında telemetri toplamak ve görünür hale getirmek birkaç dakika sürer. Sistemi tanılama verilerini toplama işlemi ne kadar uzun olursa, deneyim daha ilginç olur. 
@@ -83,7 +83,7 @@ Bu alıştırmada, veritabanları ve havuzlar için toplanan Telemetriyi görmek
 
    ![Log Analytics çalışma alanını aç](./media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-1. _Wtploganalytics- &lt; user &gt; _adlı çalışma alanını seçin.
+1. _Wtploganalytics- &lt; user &gt;_ adlı çalışma alanını seçin.
 
 1. Azure portal Log Analytics çözümünü açmak için **Genel Bakış ' ı** seçin.
 
@@ -102,7 +102,7 @@ Bu alıştırmada, veritabanları ve havuzlar için toplanan Telemetriyi görmek
 
     ![Log Analytics panosu](./media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
 
-1. Zaman aralığını değiştirmek için filtre ayarını değiştirin. Bu öğretici için **Son 1 saat**' i seçin.
+1. Zaman aralığını değiştirmek için filtre ayarını değiştirin. Bu öğretici için **Son 1 saat** ' i seçin.
 
     ![Zaman filtresi](./media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
@@ -135,7 +135,7 @@ Log Analytics çalışma alanında, günlük ve ölçüm verilerini daha fazla i
 
 Azure Izleyici günlüklerinde izleme ve uyarı verme, Azure portal her kaynak üzerinde tanımlanan uyarıdan farklı olarak çalışma alanındaki veriler üzerindeki sorguları temel alır. Uyarıları sorgulara dayandırarak, veritabanı başına bir tane tanımlamak yerine tüm veritabanlarına bakabilmeniz için tek bir uyarı tanımlayabilirsiniz. Sorgular yalnızca çalışma alanında bulunan verilerle sınırlıdır.
 
-Azure Izleyici günlüklerini kullanarak uyarıları sorgulama ve ayarlama hakkında daha fazla bilgi için bkz. [Azure izleyici günlüklerinde uyarı kurallarıyla çalışma](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
+Azure Izleyici günlüklerini kullanarak uyarıları sorgulama ve ayarlama hakkında daha fazla bilgi için bkz. [Azure izleyici günlüklerinde uyarı kurallarıyla çalışma](../../azure-monitor/platform/alerts-metric.md).
 
 Çalışma alanındaki veri hacmine bağlı olarak SQL veritabanı ücretleri için Azure Izleyici günlükleri. Bu öğreticide, günde 500 MB ile sınırlı olan ücretsiz bir çalışma alanı oluşturdunuz. Bu sınıra ulaşıldığında, veriler artık çalışma alanına eklenmez.
 
@@ -153,4 +153,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [İlk Wingtip bilet SaaS veritabanı kiracı başına uygulama dağıtımı üzerinde derleme yapan ek öğreticiler](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Azure Izleyici günlükleri](../../azure-monitor/insights/azure-sql.md)
+* [Azure İzleyici günlükleri](../../azure-monitor/insights/azure-sql.md)

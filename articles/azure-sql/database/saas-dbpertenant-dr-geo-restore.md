@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 620a5dad7966347667e0a0a50eb30d562ab700b2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: daccbd9dfb3ed628d8a3e604cbb9af4045f1ebe6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330113"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780895"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Bir çok kiracılı SaaS uygulamasını veritabanı yedeklemelerinden kurtarmak için coğrafi geri yükleme kullanın
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ Bu öğretici hem geri yükleme hem de repama iş akışlarını araştırır. A
 
 Bu öğreticiye başlamadan önce aşağıdaki önkoşulları doldurun:
 * Kiracı uygulaması başına Wingtip bilet SaaS veritabanını dağıtın. Beş dakikadan kısa bir süre içinde dağıtmak için bkz. [kiracı uygulaması başına Wingtip bilet SaaS veritabanını dağıtma ve](saas-dbpertenant-get-started-deploy.md)İnceleme. 
-* Azure PowerShell'i yükleyin. Ayrıntılar için bkz. [Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)kullanmaya başlama.
+* Azure PowerShell'i yükleyin. Ayrıntılar için bkz. [Azure PowerShell](/powershell/azure/get-started-azureps)kullanmaya başlama.
 
 ## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>Coğrafi geri yükleme kurtarma düzenine giriş
 
@@ -58,17 +58,17 @@ Olağanüstü durum kurtarma (DR), uyumluluk nedenleri veya iş sürekliliği gi
  * Kesinti çözümlendiğinde kiracılar için en az etkiyle veritabanlarını özgün bölgelerine yeniden boyar.  
 
 > [!NOTE]
-> Uygulama, uygulamanın dağıtıldığı bölgenin eşleştirilmiş bölgesine kurtarılır. Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).   
+> Uygulama, uygulamanın dağıtıldığı bölgenin eşleştirilmiş bölgesine kurtarılır. Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](../../best-practices-availability-paired-regions.md).   
 
 Bu öğretici, Azure SQL veritabanı ve Azure platformunun özelliklerini kullanarak bu sorunları ele alır:
 
-* Tüm gerekli kapasiteyi mümkün olduğunca hızlı bir şekilde ayırmak için [şablonlar Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template). Azure Resource Manager şablonlar, kurtarma bölgesindeki özgün sunucuların ve elastik havuzların ayna görüntüsünü sağlamak için kullanılır. Yeni kiracılar sağlamak için ayrı bir sunucu ve havuz de oluşturulur.
+* Tüm gerekli kapasiteyi mümkün olduğunca hızlı bir şekilde ayırmak için [şablonlar Azure Resource Manager](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md). Azure Resource Manager şablonlar, kurtarma bölgesindeki özgün sunucuların ve elastik havuzların ayna görüntüsünü sağlamak için kullanılır. Yeni kiracılar sağlamak için ayrı bir sunucu ve havuz de oluşturulur.
 * Kiracı veritabanı kataloğu oluşturmak ve sürdürmek için [elastik veritabanı Istemci kitaplığı](elastic-database-client-library.md) (edcl). Genişletilmiş Katalog, düzenli aralıklarla yenilenen havuz ve veritabanı yapılandırma bilgilerini içerir.
 * Kurtarma ve geri alma sırasında katalogdaki veritabanı konumu girdilerini sürdürmek için EDCL 'nin parça [Yönetimi kurtarma özellikleri](elastic-database-recovery-manager.md) .  
 * [Coğrafi geri yükleme](../../key-vault/general/disaster-recovery-guidance.md), Katalog ve kiracı veritabanlarını otomatik olarak korunan coğrafi olarak yedekli yedeklerden kurtarmak için. 
-* Kiracı öncelikli sırada gönderilen [zaman uyumsuz geri yükleme işlemleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations), sistem tarafından her havuz için sıraya alınır ve havuzun aşırı yüklü olmaması için toplu olarak işlenir. Bu işlemler gerekirse, yürütme sırasında veya sırasında iptal edilebilir.   
+* Kiracı öncelikli sırada gönderilen [zaman uyumsuz geri yükleme işlemleri](../../azure-resource-manager/management/async-operations.md), sistem tarafından her havuz için sıraya alınır ve havuzun aşırı yüklü olmaması için toplu olarak işlenir. Bu işlemler gerekirse, yürütme sırasında veya sırasında iptal edilebilir.   
 * [Coğrafi çoğaltma](active-geo-replication-overview.md), kesintiden sonra veritabanlarını özgün bölgeye yeniden boyar. Coğrafi Çoğaltma kullandığınızda, kiracı üzerinde veri kaybı ve en az etkisi yoktur.
-* Katalog eşitleme işleminin, konumundan bağımsız olarak etkin kataloğa bağlanmasına izin vermek için [SQL Server DNS diğer adları](../../sql-database/dns-alias-overview.md).  
+* Katalog eşitleme işleminin, konumundan bağımsız olarak etkin kataloğa bağlanmasına izin vermek için [SQL Server DNS diğer adları](./dns-alias-overview.md).  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>Olağanüstü durum kurtarma betiklerini al
 
@@ -104,7 +104,7 @@ Kurtarma işlemine başlamadan önce, uygulamanın normal sağlıklı durumunu g
 Bu görevde, sunucuların, elastik havuzların ve veritabanlarının yapılandırmasını kiracı kataloğuna eşitlemek için bir işlem başlatabilirsiniz. Bu bilgiler daha sonra kurtarma bölgesinde bir yansıtma görüntüsü ortamı yapılandırmak için kullanılır.
 
 > [!IMPORTANT]
-> Kolaylık olması için, eşitleme işlemi ve uzun süre çalışan diğer kurtarma ve geri alma işlemleri bu örneklerde, istemci kullanıcı oturumu açma bölümünde çalışan yerel PowerShell işleri veya oturumları olarak uygulanır. Oturum açtığınızda verilen kimlik doğrulama belirteçleri birkaç saat sonra sona erdiğinde ve işler başarısız olur. Bir üretim senaryosunda, uzun süre çalışan süreçler, bir hizmet sorumlusu altında çalışan bazı tür güvenilir Azure hizmetleri olarak uygulanmalıdır. Bkz. [sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
+> Kolaylık olması için, eşitleme işlemi ve uzun süre çalışan diğer kurtarma ve geri alma işlemleri bu örneklerde, istemci kullanıcı oturumu açma bölümünde çalışan yerel PowerShell işleri veya oturumları olarak uygulanır. Oturum açtığınızda verilen kimlik doğrulama belirteçleri birkaç saat sonra sona erdiğinde ve işler başarısız olur. Bir üretim senaryosunda, uzun süre çalışan süreçler, bir hizmet sorumlusu altında çalışan bazı tür güvenilir Azure hizmetleri olarak uygulanmalıdır. Bkz. [sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). 
 
 1. PowerShell ıSE 'de. ..\Learning Modules\userconfig.exe dosyasını açın. `<resourcegroup>` `<user>` 10 ve 11. satırları, uygulamayı dağıtırken kullanılan değerle değiştirin. Dosyayı kaydedin.
 
@@ -180,7 +180,7 @@ Uygulamanın dağıtıldığı bölgede bir kesinti olduğunu düşünün ve kur
 
     * Komut dosyası yeni bir PowerShell penceresinde açılır ve sonra paralel olarak çalışan bir PowerShell işleri kümesini başlatır. Bu işler, sunucuları, havuzları ve veritabanlarını kurtarma bölgesine geri yükler.
 
-    * Kurtarma bölgesi, uygulamayı dağıttığınız Azure bölgesiyle ilişkili eşleştirilmiş bölgedir. Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
+    * Kurtarma bölgesi, uygulamayı dağıttığınız Azure bölgesiyle ilişkili eşleştirilmiş bölgedir. Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](../../best-practices-availability-paired-regions.md). 
 
 3. Kurtarma işleminin durumunu PowerShell penceresinde izleyin.
 
@@ -374,7 +374,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Bir uygulamanın kiracı kataloğuna yeniden yapılandırma olmadan bağlanmasını sağlamak için bir DNS diğer adı kullanın.
 > * Bir kesinti çözümlendikten sonra kurtarılan veritabanlarını özgün bölgelerine yeniden eklemek için Coğrafi çoğaltmayı kullanın.
 
-Büyük ölçekli çok kiracılı bir uygulamayı kurtarmak için gereken süreyi önemli ölçüde azaltmak üzere Coğrafi çoğaltmayı nasıl kullanacağınızı öğrenmek için, [çok kiracılı SaaS uygulaması için veritabanı coğrafi çoğaltma öğreticisini kullanarak olağanüstü durum kurtarmayı](../../sql-database/saas-dbpertenant-dr-geo-replication.md) deneyin.
+Büyük ölçekli çok kiracılı bir uygulamayı kurtarmak için gereken süreyi önemli ölçüde azaltmak üzere Coğrafi çoğaltmayı nasıl kullanacağınızı öğrenmek için, [çok kiracılı SaaS uygulaması için veritabanı coğrafi çoğaltma öğreticisini kullanarak olağanüstü durum kurtarmayı](./saas-dbpertenant-dr-geo-replication.md) deneyin.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

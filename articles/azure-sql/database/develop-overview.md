@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ea3456dbd1d0942cba48c97d70982ae088d73f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254064"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782986"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>Uygulama geliştirmeye genel bakış-SQL veritabanı & SQL yönetilen örneği
 
@@ -27,7 +27,7 @@ Bu makalede, bir geliştiricinin Azure 'da veritabanınıza bağlanmak için kod
 
 Azure SQL veritabanı 'na bağlanmak ve veritabanını sorgulamak için çeşitli [programlama dillerini ve platformlarını](connect-query-content-reference-guide.md) kullanabilirsiniz. Veritabanına bağlanmak için kullanabileceğiniz [örnek uygulamalar](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) bulabilirsiniz.
 
-[Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/)gibi açık kaynaklı araçlardan yararlanabilirsiniz. Ayrıca, Azure SQL Veritabanı [Visual Studio](https://www.visualstudio.com/downloads/) ve [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) gibi Microsoft araçlarıyla birlikte çalışır. Ayrıca, Azure portal, PowerShell ve REST API 'Lerini kullanarak ek üretkenlik elde etmenize yardımcı olabilirsiniz.
+[Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/)gibi açık kaynaklı araçlardan yararlanabilirsiniz. Ayrıca, Azure SQL Veritabanı [Visual Studio](https://www.visualstudio.com/downloads/) ve [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) gibi Microsoft araçlarıyla birlikte çalışır. Ayrıca, Azure portal, PowerShell ve REST API 'Lerini kullanarak ek üretkenlik elde etmenize yardımcı olabilirsiniz.
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
@@ -39,7 +39,7 @@ Azure SQL veritabanı 'na erişim, oturum açmalar ve güvenlik duvarları ile k
 
 İstemci bağlantısı mantığınızda varsayılan zaman aşımını 30 saniye olacak şekilde geçersiz kılın. 15 saniyelik varsayılan değer, internet kullanan bağlantılar için çok kısadır.
 
-[Bağlantı havuzu](https://msdn.microsoft.com/library/8xx3tyca.aspx) kullanıyorsanız programınız etkin olarak kullanmadığında ve yeniden kullanma hazırlığı yapmadığında bağlantıyı kapatın.
+[Bağlantı havuzu](/dotnet/framework/data/adonet/sql-server-connection-pooling) kullanıyorsanız programınız etkin olarak kullanmadığında ve yeniden kullanma hazırlığı yapmadığında bağlantıyı kapatın.
 
 Herhangi bir altyapı veya bağlantı hatası işlemi geri alabileceğinden uzun süredir çalışan işlemlerden kaçının. Mümkünse, işlemi birden çok küçük harekette ayırın ve [performansı artırmak için toplu](../performance-improve-use-batching.md)işlem kullanın.
 

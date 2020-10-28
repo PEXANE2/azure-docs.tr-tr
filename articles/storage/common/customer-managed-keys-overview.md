@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 993c0bdf1e8e29a7cff9bd1cad60bf78386b16a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b474ae184374a2c91dcba15517048556686ec35
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578232"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782238"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarlar
 
@@ -65,7 +65,7 @@ Azure depolama şifrelemesini bir anahtar kasasındaki müşteri tarafından yö
 > [!IMPORTANT]
 > Müşteri tarafından yönetilen anahtarlar, Azure AD 'nin bir özelliği olan Azure kaynakları için yönetilen kimliklere bağımlıdır. Yönetilen kimlikler Şu anda çapraz dizin senaryolarını desteklemez. Azure portal müşteri tarafından yönetilen anahtarları yapılandırırken, yönetilen bir kimlik, kapakları altında depolama hesabınıza otomatik olarak atanır. Daha sonra aboneliği, kaynak grubunu veya depolama hesabını bir Azure AD dizininden diğerine taşırsanız, depolama hesabıyla ilişkili yönetilen kimlik yeni kiracıya aktarılmaz, bu nedenle müşterinin yönettiği anahtarlar artık çalışmayabilir. Daha fazla bilgi için bkz. SSS 'de **Azure AD dizinleri arasında bir abonelik aktarma** [ve Azure kaynakları için yönetilen kimliklerle ilgili bilinen sorunlar](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).  
 
-Azure depolama şifrelemesi, 2048, 3072 ve 4096 boyutlarının RSA ve RSA-HSM anahtarlarını destekler. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault anahtarlar** .
+Azure depolama şifrelemesi, 2048, 3072 ve 4096 boyutlarının RSA ve RSA-HSM anahtarlarını destekler. Anahtarlar hakkında daha fazla bilgi için bkz. [anahtarlar hakkında](../../key-vault/keys/about-keys.md).
 
 Anahtar kasasının veya yönetilen HSM 'nin kullanılması, ilişkili maliyetlere sahiptir. Daha fazla bilgi için bkz. [Key Vault fiyatlandırması](https://azure.microsoft.com/pricing/details/key-vault/).
 
@@ -109,7 +109,7 @@ Bu işlemleri yeniden çağırmak için, müşteri tarafından yönetilen anahta
 
 Bu bölümde listelenmeyen tüm veri işlemleri, müşteri tarafından yönetilen anahtarlar iptal edildiğinde veya bir anahtar devre dışı bırakıldıktan veya silindikten sonra devam edebilir.
 
-Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için [PowerShell](storage-encryption-keys-powershell.md#revoke-customer-managed-keys) veya [Azure CLI](storage-encryption-keys-cli.md#revoke-customer-managed-keys)kullanın.
+Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için [PowerShell](./customer-managed-keys-configure-key-vault.md#revoke-customer-managed-keys) veya [Azure CLI](./customer-managed-keys-configure-key-vault.md#revoke-customer-managed-keys)kullanın.
 
 ## <a name="customer-managed-keys-for-azure-managed-disks"></a>Azure yönetilen diskler için müşteri tarafından yönetilen anahtarlar
 

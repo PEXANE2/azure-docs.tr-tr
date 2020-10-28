@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: f3d691692553a8201b3e3eccfaead82a2cbb9ca0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a5c0d8bb47b337b0415565a0b6dad5c6822d0b94
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479706"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781745"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -292,7 +292,7 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 **--S2S-Handle-geçersiz-Metadata** dize, geçersiz meta veri anahtarlarının nasıl işleneceğini belirtir. Kullanılabilir seçenekler: Excludeifgeçersiz, Failifgeçersiz, Renameifgeçersiz. (varsayılan `ExcludeIfInvalid` ). (varsayılan "Excludeifgeçersiz")
 
-**--S2S-Preserve-Access-Tier**   Hizmetten hizmete kopyalama sırasında erişim katmanını koruyun. Hedef depolama hesabının erişim katmanını ayarlamayı desteklediğinden emin olmak için [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](/azure/storage/blobs/storage-blob-storage-tiers) ' na bakın. Erişim katmanını ayarlamanın desteklenme durumlarında, erişim katmanını kopyalamayı atlamak için s2sPreserveAccessTier = false kullanın. (varsayılan `true` ).  (varsayılan "true")
+**--S2S-Preserve-Access-Tier**   Hizmetten hizmete kopyalama sırasında erişim katmanını koruyun. Hedef depolama hesabının erişim katmanını ayarlamayı desteklediğinden emin olmak için [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../blobs/storage-blob-storage-tiers.md) ' na bakın. Erişim katmanını ayarlamanın desteklenme durumlarında, erişim katmanını kopyalamayı atlamak için s2sPreserveAccessTier = false kullanın. (varsayılan `true` ).  (varsayılan "true")
 
 **--S2S-Preserve-Özellikler**   Hizmetten hizmete kopyalama sırasında tam özellikleri koruyun. AWS S3 ve Azure dosya için tek dosya kaynağı için liste işlemi, nesnelerin ve dosyaların tam özelliklerini döndürmez. Tam özellikleri korumak için AzCopy, nesne veya dosya başına bir ek istek göndermelidir. (varsayılan doğru)
 
@@ -300,7 +300,7 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 **--Cap-Mbps float**   Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.
 
-**--komut çıktısının çıkış türü** dize biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer: `text`. (varsayılan "metin")
+**--komut çıktısının çıkış türü** dize biçimi. Seçenekler şunlardır: Text, JSON. `text` varsayılan değerdir. (varsayılan "metin")
 
 **--Güvenilen-Microsoft-Suffixes** dizesi Azure Active Directory oturum açma belirteçlerinin gönderilebileceği ek etki alanı soneklerini belirtir.  Varsayılan değer: `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`. Burada listelenenler varsayılan olarak eklenir. Güvenlik için yalnızca Microsoft Azure etki alanlarını Buraya yerleştirmeniz gerekir. Birden çok girişi noktalı virgülle ayırın.
 

@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: bdb021bc0247972fa29975c62bc9214e3b474e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f76d2079b7ed5aacbf835540ea92febd034e2d0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998065"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782459"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Azure SQL yönetilen örnek yönetimi işlemlerini izleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -62,9 +62,9 @@ Bunlar API 'lardır:
 
 | Komut | Açıklama |
 | --- | --- |
-|[Yönetilen örnek Işlemleri-Get](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|Yönetilen bir örnek üzerinde bir yönetim işlemi alır.|
-|[Yönetilen örnek Işlemleri-Iptal](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|Yönetilen örnekteki zaman uyumsuz işlemi iptal eder.|
-|[Yönetilen örnek Işlemleri-yönetilen örneğe göre listeleme](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Yönetilen örnek üzerinde gerçekleştirilen işlemlerin listesini alır.|
+|[Yönetilen örnek Işlemleri-Get](/rest/api/sql/managedinstanceoperations/get)|Yönetilen bir örnek üzerinde bir yönetim işlemi alır.|
+|[Yönetilen örnek Işlemleri-Iptal](/rest/api/sql/managedinstanceoperations/cancel)|Yönetilen örnekteki zaman uyumsuz işlemi iptal eder.|
+|[Yönetilen örnek Işlemleri-yönetilen örneğe göre listeleme](/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Yönetilen örnek üzerinde gerçekleştirilen işlemlerin listesini alır.|
 
 > [!NOTE]
 > İşlem listesinde yönetilen örnek oluşturma işlemini görmek için API sürüm 2020-02-02 ' i kullanın. Bu, Azure portal ve en son PowerShell ve Azure CLı paketlerinde kullanılan varsayılan sürümdür.
@@ -98,7 +98,7 @@ $managementOperations = Get-AzSqlInstanceOperation `
     -ManagedInstanceName $managedInstance  -ResourceGroupName $resourceGroup
 ```
 
-Ayrıntılı komutların açıklaması için bkz. [Get-Azsqlınstanceoperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation).
+Ayrıntılı komutların açıklaması için bkz. [Get-Azsqlınstanceoperation](/powershell/module/az.sql/get-azsqlinstanceoperation).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -108,7 +108,7 @@ Az SQL mı op listesi, yönetilen örnek üzerinde gerçekleştirilen işlemleri
 az sql mi op list -g yourResourceGroupName --mi yourInstanceName 
 ```
 
-Ayrıntılı komutların açıklaması için bkz. [az SQL mı op](https://docs.microsoft.com/cli/azure/sql/mi/op).
+Ayrıntılı komutların açıklaması için bkz. [az SQL mı op](/cli/azure/sql/mi/op).
 
 ---
 

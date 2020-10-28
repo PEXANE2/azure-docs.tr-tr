@@ -110,7 +110,7 @@
         - name: Azure Resource Manager şablonu
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
-    - name: Yük Dengeleyici için TCP boşta kalma zaman aşımı yapılandırma
+    - name: TCP sıfırlama ve boşta zaman aşımını yapılandırma
       href: load-balancer-tcp-idle-timeout.md
     - name: Load Balancer için dağıtım modunu yapılandırma
       href: load-balancer-distribution-mode.md

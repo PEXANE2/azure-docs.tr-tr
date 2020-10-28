@@ -20,7 +20,7 @@
           href: get-started-analyze-sql-on-demand.md
         - name: 5 Depolama hesabındaki verileri analiz etme
           href: get-started-analyze-storage.md
-        - name: 6 İşlem hatları ile düzenleme
+        - name: 6 İşlem hatlarıyla tümleştirme
           href: get-started-pipelines.md
         - name: 7 Power BI ile görselleştirme
           href: get-started-visualize-power-bi.md
@@ -42,7 +42,8 @@
       href: quickstart-create-workspace-cli.md
     - name: Azure PowerShell’i kullanarak Synapse çalışma alanı oluşturma
       href: quickstart-create-workspace-powershell.md
-    - name: Şablonla dağıtma
+    - name: ARM şablonuyla dağıtma
+      displayName: Resource Manager
       href: quickstart-deployment-template-workspaces.md
     - name: Power BI çalışma alanına bağlanma
       href: quickstart-power-bi.md
@@ -168,7 +169,7 @@
               href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Kendi anahtarını getir ile TDE
               href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Tümleştirme ve düzenleme
+    - name: Tümleştirme
       items:
         - name: İşlem hattı ve etkinlik
           href: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -558,7 +559,7 @@
               href: ../data-factory/data-flow-unpivot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Pencere
               href: ../data-factory/data-flow-window.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Tümleştirme ve Düzenleme
+    - name: Tümleştirme
       items:
         - name: Yazma
           items:
@@ -893,8 +894,6 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Bağlayıcı sorunlarını giderme
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Veri Kopyalama aracında sorun giderme
-              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Şirket içinde barındırılan tümleştirme çalışma zamanlarında sorun giderme
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Synapse çalışma alanlarına araç bağlama

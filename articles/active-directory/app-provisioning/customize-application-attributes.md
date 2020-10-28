@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: 159a473b2b164d1f0692864e26f6127d9faf8287
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bf88782cf771c01a6a167d4584ad86dc69795c59
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069883"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781490"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kullanıcı hazırlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler
 
@@ -90,7 +90,7 @@ ServiceNow, Box ve G Suite gibi seçilen sayıda uygulama, Grup nesneleri ve Kul
 
 ![Örnek, sağlanan grup ve Kullanıcı nesneleri ile ServiceNow 'ı gösterir](./media/customize-application-attributes/24.png)
 
-Grup sağlama, **eşlemeler**altında Grup eşlemesi seçilerek etkinleştirilebilir veya devre dışı bırakılabilir ve bu ayar, **öznitelik eşleme** ekranında istediğiniz **seçeneğe ayarlanabilir.**
+Grup sağlama, **eşlemeler** altında Grup eşlemesi seçilerek etkinleştirilebilir veya devre dışı bırakılabilir ve bu ayar, **öznitelik eşleme** ekranında istediğiniz **seçeneğe ayarlanabilir.**
 
 Grup nesnelerinin bir parçası olarak sağlanan öznitelikler, daha önce açıklanan Kullanıcı nesneleriyle aynı şekilde özelleştirilebilir. 
 
@@ -107,9 +107,12 @@ Ancak, bazı uygulamalar özel öznitelikleri destekler ve Azure AD sağlama hiz
 
 - Salesforce
 - ServiceNow
-- Workday
+- Active Directory/Workday için Workday Azure Active Directory
+- Azure Active Directory için Active Directory/başarılı faktörlerin başarılı olması
 - Azure Active Directory ([Azure AD Graph API varsayılan öznitelikleri](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) ve özel dizin uzantıları desteklenir)
 - [Çekirdek şemasında](https://tools.ietf.org/html/rfc7643) tanımlanan özniteliklerin eklenmesi gereken [SCIM 2,0](https://tools.ietf.org/html/rfc7643)' ı destekleyen uygulamalar
+- Workday veya başarılı faktörlerdeki Azure Active Directory geri yazma için, desteklenen öznitelikler (XPATH ve JSONPath) için ilgili meta veriler güncelleştirildi, ancak varsayılan şemaya dahil olanların ötesinde yeni iş günü veya başarılı etken öznitelikleri eklemek desteklenmez
+
 
 > [!NOTE]
 > Desteklenen özniteliklerin listesinin düzenlenmesiyle yalnızca, uygulamalarının ve sistemlerinin şemasını özelleştiren Yöneticiler için önerilir ve özel özniteliklerinin nasıl tanımlandıkları hakkında ilk bilgiye sahip olmanız gerekir. Bu, bazen bir uygulama veya sistem tarafından sunulan API 'Ler ve geliştirici araçları hakkında daha fazla benzerlik gerektirir.
@@ -133,16 +136,16 @@ Desteklenen özniteliklerin listesi düzenlenirken aşağıdaki özellikler sağ
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>SCıM uyumlu bir uygulamaya özel uzantı özniteliği sağlama
 SCıM RFC, çekirdek Kullanıcı ve grup şeması tanımlar, Ayrıca, şema uzantılarının uygulamanızın ihtiyaçlarını karşılamasına izin verir. Bir SCıM uygulamasına özel bir öznitelik eklemek için:
-   1. [Azure Active Directory portalında](https://aad.portal.azure.com)oturum açın, **Kurumsal uygulamalar**' ı seçin, uygulamanızı seçin ve **sağlama**' yı seçin.
-   2. **Eşlemeler**altında, özel bir öznitelik eklemek istediğiniz nesneyi (Kullanıcı veya grup) seçin.
-   3. Sayfanın alt kısmındaki **Gelişmiş seçenekleri göster**' i seçin.
-   4. **Appname için öznitelik listesini düzenle**' yi seçin.
-   5. Öznitelik listesinin en altında, belirtilen alanlara özel öznitelikle ilgili bilgileri girin. Sonra **öznitelik Ekle**' yi seçin.
+   1. [Azure Active Directory portalında](https://aad.portal.azure.com)oturum açın, **Kurumsal uygulamalar** ' ı seçin, uygulamanızı seçin ve **sağlama** ' yı seçin.
+   2. **Eşlemeler** altında, özel bir öznitelik eklemek istediğiniz nesneyi (Kullanıcı veya grup) seçin.
+   3. Sayfanın alt kısmındaki **Gelişmiş seçenekleri göster** ' i seçin.
+   4. **Appname için öznitelik listesini düzenle** ' yi seçin.
+   5. Öznitelik listesinin en altında, belirtilen alanlara özel öznitelikle ilgili bilgileri girin. Sonra **öznitelik Ekle** ' yi seçin.
 
 SCıM uygulamaları için, öznitelik adı aşağıdaki örnekte gösterilen modele uymalıdır. "CustomExtensionName" ve "CustomAttribute", uygulamanızın gereksinimlerine göre özelleştirilebilir, örneğin:  
  * urn: IETF: params: Scim: schemas: EXTENSION: CustomExtensionName: 2.0: Kullanıcı: CustomAttribute 
  * urn: IETF: params: Scim: schemas: EXTENSION: 2.0: CustomExtensionName: CustomAttribute  
- * urn: IETF: params: Scim: schemas: EXTENSION: CustomExtensionName: 2.0: User. CustomAttributeName: Value
+ * urn: IETF: params: Scim: schemas: EXTENSION: CustomExtensionName: 2.0: Kullanıcı: CustomAttributeName: Value
 
 Bu yönergeler yalnızca SCıM özellikli uygulamalar için geçerlidir. ServiceNow ve Salesforce gibi uygulamalar, SCıM kullanılarak Azure AD ile tümleştirilebilir ve bu nedenle özel bir öznitelik eklerken bu özel ad alanı gerektirmez.
 
@@ -174,7 +177,7 @@ Bu yönergeler yalnızca SCıM özellikli uygulamalar için geçerlidir. Service
        "displayName": "John Smith"
      }
    },
-     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User": {
      "CustomAttribute": "701984",
    },
    "meta": {

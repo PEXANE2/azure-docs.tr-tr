@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362138"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780963"
 ---
 # <a name="replication-to-azure-sql-database"></a>Azure SQL veritabanı 'na çoğaltma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "91362138"
 Bir Azure SQL veritabanını, tek yönlü bir işlem veya anlık görüntü çoğaltma topolojisinde anında iletme abonesi olarak yapılandırabilirsiniz.
 
 > [!NOTE]
-> Bu makalede, Azure SQL veritabanı 'nda [İşlemsel çoğaltmanın](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) kullanımı açıklanmaktadır. Tek tek veritabanlarının tam okunabilir çoğaltmalarını oluşturmanızı sağlayan bir Azure SQL veritabanı özelliği olan [etkin coğrafi çoğaltma](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)ile ilgili değildir.
+> Bu makalede, Azure SQL veritabanı 'nda [İşlemsel çoğaltmanın](/sql/relational-databases/replication/transactional/transactional-replication) kullanımı açıklanmaktadır. Tek tek veritabanlarının tam okunabilir çoğaltmalarını oluşturmanızı sağlayan bir Azure SQL veritabanı özelliği olan [etkin coğrafi çoğaltma](./active-geo-replication-overview.md)ile ilgili değildir.
 
 ## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
   
@@ -50,16 +50,16 @@ Azure SQL veritabanı 'nın tüm özelliklerini kullanmak için, en son [SQL Ser
 
 ### <a name="types-of-replication"></a>Çoğaltma türleri
 
-Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)vardır:
+Farklı [çoğaltma türleri](/sql/relational-databases/replication/types-of-replication)vardır:
 
 | Çoğaltma | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| [**Standart Işlem**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Evet | 
-| [**Anlık Görüntü**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Evet|
-| [**Birleştirme çoğaltması**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Hayır | Hayır|
-| [**Eşler arası**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Hayır | Hayır|
-| [**Çift yönlü**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Evet|
-| [**Güncelleştirilebilir abonelikler**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Hayır | Hayır|
+| [**Standart Işlem**](/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Evet | 
+| [**Anlık Görüntü**](/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Evet|
+| [**Birleştirme çoğaltması**](/sql/relational-databases/replication/merge/merge-replication) | Hayır | Hayır|
+| [**Eşler arası**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Hayır | Hayır|
+| [**Çift yönlü**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Evet|
+| [**Güncelleştirilebilir abonelikler**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Hayır | Hayır|
 | &nbsp; | &nbsp; | &nbsp; |
 
   
@@ -126,14 +126,14 @@ Azure SQL veritabanı abonelikleri için aşağıdaki seçenekler desteklenmez:
 
 Yayın ve gönderme temelli bir abonelik oluşturun. Daha fazla bilgi için bkz.
   
-- [Yayın oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- Abone olarak sunucu adını (örneğin, **Nazurestodbdns. Database. Windows. net '**) ve Azure SQL veritabanı adını hedef veritabanı (örneğin **AdventureWorks**) olarak kullanarak [bir anında iletme aboneliği oluşturun](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) .  
+- [Yayın oluşturma](/sql/relational-databases/replication/publish/create-a-publication)
+- Abone olarak sunucu adını (örneğin, **Nazurestodbdns. Database. Windows. net '** ) ve Azure SQL veritabanı adını hedef veritabanı (örneğin **AdventureWorks** ) olarak kullanarak [bir anında iletme aboneliği oluşturun](/sql/relational-databases/replication/create-a-push-subscription/) .  
 
 ## <a name="see-also"></a>Ayrıca Bkz.  
 
 - [İşlem çoğaltması](../managed-instance/replication-transactional-overview.md)
-- [Yayın oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Itme aboneliği oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Çoğaltma Türleri](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [İzleme (çoğaltma)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [Abonelik başlatma](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [Yayın oluşturma](/sql/relational-databases/replication/publish/create-a-publication)
+- [Itme aboneliği oluşturma](/sql/relational-databases/replication/create-a-push-subscription/)
+- [Çoğaltma Türleri](/sql/relational-databases/replication/types-of-replication)
+- [İzleme (çoğaltma)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Abonelik başlatma](/sql/relational-databases/replication/initialize-a-subscription)

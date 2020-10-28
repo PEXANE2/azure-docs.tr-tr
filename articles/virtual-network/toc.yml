@@ -240,6 +240,8 @@
               href: virtual-network-public-ip-address.md
             - name: Genel IP ön ekini yönetme
               href: manage-public-ip-address-prefix.md
+            - name: Genel IP adreslerini yükseltme
+              href: virtual-network-public-ip-address-upgrade.md
             - name: NIC’lerden IP adresi ekleme veya kaldırma
               href: virtual-network-network-interface-addresses.md
             - name: Yönlendirme tercihi

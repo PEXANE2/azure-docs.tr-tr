@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: f0f5069ca063f95cb845921c0d716b6c013c9e83
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c809a1ae525fb7fab6dceebb3241e229e8a0284e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479757"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781847"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Azure Blob depolama için maliyetleri planlayın ve yönetin
 
@@ -56,19 +56,19 @@ Bu bölüm, her bir seçeneği daha ayrıntılı bir şekilde ele alır.
 
 Azure Depolama ayrılmış kapasitesine sahip blob verileri için depolama maliyetlerine para tasarrufu sağlayabilirsiniz. Azure Depolama ayrılmış kapasitesi, bir yıl veya üç yıl için bir ayırmaya kayıt yaptığınızda, blok Blobları için kapasite ve standart depolama hesaplarında Azure Data Lake Storage 2. verileri için bir indirim sağlar. Ayırma, ayırma dönemi için sabit miktarda depolama kapasitesi sağlar. Azure Depolama ayrılmış kapasitesi, blok Blobları ve Azure Data Lake Storage 2. verileri için kapasite maliyetlerinizi önemli ölçüde azaltabilir. 
 
-Daha fazla bilgi için bkz. [ayrılmış kapasiteye sahip BLOB depolama için maliyetleri iyileştirme](/azure/storage/blobs/storage-blob-reserved-capacity).
+Daha fazla bilgi için bkz. [ayrılmış kapasiteye sahip BLOB depolama için maliyetleri iyileştirme](../blobs/storage-blob-reserved-capacity.md).
 
 #### <a name="organize-data-into-access-tiers"></a>Verileri erişim katmanlarında düzenleme
 
 En uygun maliyetli erişim katmanlarına blob verileri yerleştirerek maliyetleri azaltabilirsiniz. Veri kullanımı etrafında maliyetlerinizi iyileştirmek için tasarlanan üç katmandan seçim yapın. Örneğin, *sık kullanılan* katmanın depolama maliyeti daha yüksektir, ancak erişim maliyeti düşüktür. Bu nedenle, verilere sık sık erişmeyi planlıyorsanız, etkin katman en uygun maliyetli seçim olabilir. Verilere daha seyrek erişim planlıyorsanız, veri depolama maliyetini azaltırken, *soğuk* veya *Arşiv* katmanı en mantıklı hale gelebilir.    
 
-Daha fazla bilgi edinmek için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal).
+Daha fazla bilgi edinmek için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../blobs/storage-blob-storage-tiers.md?tabs=azure-portal).
 
 #### <a name="automatically-move-data-between-access-tiers"></a>Erişim katmanları arasında verileri otomatik olarak taşıma
 
 En fazla paradan tasarruf etmek için verileri katmanlar arasında düzenli aralıklarla taşımak için yaşam döngüsü yönetimi ilkelerini kullanın. Bu ilkeler, belirttiğiniz kuralları kullanarak verileri öğesine taşıyabilir. Örneğin, blob 90 gün içinde değiştirilmediyse Blobları arşiv katmanına taşınan bir kural oluşturabilirsiniz. Verilerinizin erişim katmanını ayarlayarak ilkeler oluşturarak, gereksinimlerinize uygun en az maliyetli depolama seçeneklerini tasarlayabilirsiniz.
 
-Daha fazla bilgi için bkz [. Azure Blob depolama yaşam döngüsünü yönetme](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
+Daha fazla bilgi için bkz [. Azure Blob depolama yaşam döngüsünü yönetme](../blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
 ## <a name="create-budgets"></a>Bütçe oluşturma
 
@@ -87,11 +87,11 @@ Azure depolama maliyetlerini maliyet analizi 'nde görüntülemek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. **Maliyet yönetimi + faturalandırma** penceresini açın, menüden **maliyet yönetimi** ' ni seçin ve ardından **Maliyet Analizi**' ni seçin. Daha sonra **kapsam** açılan listesinden belirli bir aboneliğin kapsamını değiştirebilirsiniz.
+2. **Maliyet yönetimi + faturalandırma** penceresini açın, menüden **maliyet yönetimi** ' ni seçin ve ardından **Maliyet Analizi** ' ni seçin. Daha sonra **kapsam** açılan listesinden belirli bir aboneliğin kapsamını değiştirebilirsiniz.
 
    ![Kapsamı gösteren ekran görüntüsü](./media/storage-plan-manage-costs/cost-analysis-pane.png)
 
-4. Yalnızca Azure Storage maliyetlerini görüntülemek için **Filtre Ekle** ' yi ve ardından **hizmet adı**' nı seçin. Sonra listeden **depolama** ' yı seçin. 
+4. Yalnızca Azure Storage maliyetlerini görüntülemek için **Filtre Ekle** ' yi ve ardından **hizmet adı** ' nı seçin. Sonra listeden **depolama** ' yı seçin. 
 
    Yalnızca Azure depolama 'nın maliyetlerini gösteren bir örnek aşağıda verilmiştir:
 

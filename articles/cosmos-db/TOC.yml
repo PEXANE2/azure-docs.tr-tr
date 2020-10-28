@@ -59,13 +59,13 @@
         - name: Rol tabanlı erişim denetimi
           displayName: rbac
           href: role-based-access-control.md
+        - name: Azure İlkesi desteği
+          href: policy.md
         - name: Azure İlkesi’ne göre güvenlik denetimleri
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Güvenlik temeli
           href: security-baseline.md
-        - name: Azure İlkesi desteği
-          href: policy.md
     - name: Azure Synapse Link ile analiz
       items:
         - name: Cosmos DB için Azure Synapse Link
@@ -202,11 +202,14 @@
           href: templates-samples-sql.md
     - name: Kavramlar
       items:
-        - name: Belge verilerini modelleme
-          displayName: document
-          href: modeling-data.md
-        - name: Bölümleme
+        - name: Modelleme ve bölümleme
           items:
+            - name: Belge verilerini modelleme
+              displayName: document
+              href: modeling-data.md
+            - name: Modelleme ve bölümleme - gerçek örnek
+              displayName: 'model, partition, example'
+              href: how-to-model-partition-example.md
             - name: Yapay bölüm anahtarı
               href: synthetic-partition-keys.md
         - name: SQL sorgusu
@@ -631,13 +634,13 @@
           items:
             - name: Sağlanan aktarım hızı
               items:
-                - name: Kapsayıcıda standart (el ile) aktarım hızı sağlama
+                - name: Standart (el ile) aktarım hızı sağlama - kapsayıcı
                   displayName: 'request units, RUs, RU, collection level'
                   href: how-to-provision-container-throughput.md
-                - name: Veritabanında standart (el ile) aktarım hızı sağlama
+                - name: Standart (el ile) aktarım hızı sağlama - veritabanı
                   displayName: 'request units, RUs, RU, shared throughput, database level'
                   href: how-to-provision-database-throughput.md
-                - name: Bir veritabanı veya kapsayıcıda otomatik ölçeklendirme aktarım hızı sağlama
+                - name: Otomatik ölçeklendirme aktarım hızı sağlama - veritabanı veya kapsayıcı
                   displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
                   href: how-to-provision-autoscale-throughput.md
                 - name: Cosmos kapasite planlayıcısı ile RU/sn’yi tahmin etme
@@ -657,9 +660,6 @@
               href: large-partition-keys.md
             - name: Kapsayıcı sorgulama
               href: how-to-query-container.md
-            - name: Veri modelleme ve bölümleme - gerçek örnek
-              displayName: 'model, partition, example'
-              href: how-to-model-partition-example.md
             - name: Bölümlenmiş kapsayıcılara geçme
               href: migrate-containers-partitioned-to-nonpartitioned.md
             - name: Yaşam süresini yapılandırma
@@ -1179,8 +1179,6 @@
       items:
         - name: Yanıt Üst Bilgileri
           href: gremlin-headers.md
-        - name: Sınırlar
-          href: gremlin-limits.md
         - name: REST kaynak sağlayıcısı
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
         - name: Resource Manager şablonu

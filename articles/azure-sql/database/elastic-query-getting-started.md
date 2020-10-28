@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 10be0fc28b53d114a8ff87f01980513ce1759dec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 586dad7439cc57ed2c863ee5f6692e12f7a78c50
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443313"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781235"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Ölçekli bulut veritabanları arasında rapor (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Burada, birden fazla parça ile birlikte bir parça eşleme Yöneticisi oluştur
 1. [Örnek uygulamayı indirme ve çalıştırma](elastic-scale-get-started.md#download-and-run-the-sample-app-1)makalesindeki adımları Izleyerek **elastik veritabanı araçları** örnek uygulamasını derleyin ve çalıştırın. Tüm adımları tamamladıktan sonra aşağıdaki komut istemi görüntülenir:
 
     ![komut istemi][1]
-2. Komut penceresinde, "1" yazın ve **ENTER**tuşuna basın. Bu, parça eşleme yöneticisini oluşturur ve sunucuya iki parçalama ekler. Ardından "3" yazın ve **ENTER**tuşuna basın. eylemi dört kez tekrarlayın. Bu, parçalara örnek veri satırları ekler.
+2. Komut penceresinde, "1" yazın ve **ENTER** tuşuna basın. Bu, parça eşleme yöneticisini oluşturur ve sunucuya iki parçalama ekler. Ardından "3" yazın ve **ENTER** tuşuna basın. eylemi dört kez tekrarlayın. Bu, parçalara örnek veri satırları ekler.
 3. [Azure Portal](https://portal.azure.com) , sunucunuzda üç yeni veritabanı göstermelidir:
 
    ![Visual Studio onayı][2]
@@ -121,13 +121,13 @@ Sorgunun tüm parçalardan sonuçları topladığına ve aşağıdaki çıktıy�
 
 1. Excel 2013 ' i başlatın.
 2. **Veri** şeridine gidin.
-3. **Diğer kaynaklardan** öğesine tıklayın ve **SQL Server**' ye tıklayın.
+3. **Diğer kaynaklardan** öğesine tıklayın ve **SQL Server** ' ye tıklayın.
 
    ![Diğer kaynaklardan Excel içeri aktarma][5]
-4. **Veri bağlantısı Sihirbazı** 'nda sunucu adını ve oturum açma kimlik bilgilerini yazın. Ardından **İleri**'ye tıklayın.
-5. İletişim kutusunda istediğiniz **verileri içeren veritabanını seçin**, **Elaun dbquery** veritabanını seçin.
-6. Liste görünümünde **Customers** tablosunu seçin ve **İleri**' ye tıklayın. Ardından, **Son**'a tıklayın.
-7. **Veri al** formunda, **çalışma kitabınızda bu verileri nasıl görüntülemek Istediğinizi seçin**altında **tablo** ' yı seçin ve **Tamam**' ı tıklatın.
+4. **Veri bağlantısı Sihirbazı** 'nda sunucu adını ve oturum açma kimlik bilgilerini yazın. Ardından **İleri** 'ye tıklayın.
+5. İletişim kutusunda istediğiniz **verileri içeren veritabanını seçin** , **Elaun dbquery** veritabanını seçin.
+6. Liste görünümünde **Customers** tablosunu seçin ve **İleri** ' ye tıklayın. Ardından, **Son** 'a tıklayın.
+7. **Veri al** formunda, **çalışma kitabınızda bu verileri nasıl görüntülemek Istediğinizi seçin** altında **tablo** ' yı seçin ve **Tamam** ' ı tıklatın.
 
 **Müşteriler** tablosundaki tüm satırlar, farklı parçalar halinde saklanan Excel sayfasını doldurur.
 
@@ -144,7 +144,7 @@ Fiyatlandırma bilgileri için bkz. [SQL Veritabanı Fiyatlandırma ayrıntılar
 * Dikey bölümleme öğreticisi için bkz. [çapraz veritabanı sorgusuna Başlarken (dikey bölümlendirme)](elastic-query-getting-started-vertical.md).
 * Dikey olarak bölümlenmiş verilere yönelik sözdizimi ve örnek sorgular için bkz. [dikey olarak bölümlenmiş verileri sorgulama)](elastic-query-vertical-partitioning.md)
 * Yatay olarak bölümlenmiş veriler için sözdizimi ve örnek sorgular için bkz. [yatay olarak bölümlenmiş verileri sorgulama)](elastic-query-horizontal-partitioning.md)
-* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
+* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
 
 
 <!--Image references-->

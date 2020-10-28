@@ -13,7 +13,7 @@
       href: invite-users.md
 - name: Öğreticiler
   items:
-    - name: Azure'a Bağlanma
+    - name: Azure’a bağlı yeni bir hesap oluşturma
       href: connect-to-azure.md
     - name: Video Indexer API'sini kullanma
       href: video-indexer-use-apis.md

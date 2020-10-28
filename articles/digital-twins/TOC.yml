@@ -107,7 +107,7 @@
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights ile tümleştirme
           href: how-to-integrate-time-series-insights.md
-    - name: Sorun giderme
+    - name: İzleme ve sorun giderme
       items:
         - name: Ölçümleri Azure İzleyici’de görüntüleme
           href: troubleshoot-metrics.md
@@ -115,6 +115,8 @@
           href: troubleshoot-diagnostics.md
         - name: Uyarıları etkinleştirme
           href: troubleshoot-alerts.md
+        - name: Kaynak durumunu anlama
+          href: troubleshoot-resource-health.md
         - name: Bilinen sorunlar
           href: troubleshoot-known-issues.md
         - name: Sorun çözme
@@ -144,7 +146,7 @@
             - name: Java SDK - başvuru
               href: /java/api/overview/azure/digitaltwins/management?view=azure-java-preview
             - name: Java SDK - kaynak
-              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins'
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31'
             - name: JavaScript SDK'sı
               href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
             - name: JavaScript SDK’sı - kaynak
@@ -152,9 +154,11 @@
             - name: Python SDK'sı
               href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
             - name: Python SDK - kaynak
-              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins'
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK'sı
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
+            - name: Go - kaynak
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
         - name: Veri düzlemi
           items:
             - name: Swagger

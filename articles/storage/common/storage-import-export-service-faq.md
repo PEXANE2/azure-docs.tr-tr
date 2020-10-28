@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d2e50502c8c3e37c5d48359079e2e72c13feea4a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 17a29621d3d70d56745d2e51e0ce80974876a9ef
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487883"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782170"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Içeri/dışarı aktarma hizmeti: sık sorulan sorular
 
@@ -55,13 +55,13 @@ Hayır. Verileri içeri aktarmak için kullanılan tüm sürücüler Azure Waım
 
 ### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Dışarı aktarma işi oluştururken disk hazırlığı gerçekleştirmem gerekir mi?
 
-Hayır. Bazı ön denetimler önerilir. Gereken disk sayısını denetlemek için Waımportexport aracının önizleme dışarı aktar komutunu kullanın. Daha fazla bilgi için bkz. [bir dışarı aktarma işi Için sürücü kullanımının önizlemesi](https://msdn.microsoft.com/library/azure/dn722414.aspx). Bu komut, kullanacağınız sürücülerin boyutuna bağlı olarak seçili Blobların sürücü kullanımının önizlemesini yapmanıza yardımcı olur. Ayrıca, dışa aktarma işi için gönderilen sabit sürücüden okuyup okuyup yazverecağınızı kontrol edin.
+Hayır. Bazı ön denetimler önerilir. Gereken disk sayısını denetlemek için Waımportexport aracının önizleme dışarı aktar komutunu kullanın. Daha fazla bilgi için bkz. [bir dışarı aktarma işi Için sürücü kullanımının önizlemesi](/previous-versions/azure/storage/common/storage-import-export-tool-previewing-drive-usage-export-v1). Bu komut, kullanacağınız sürücülerin boyutuna bağlı olarak seçili Blobların sürücü kullanımının önizlemesini yapmanıza yardımcı olur. Ayrıca, dışa aktarma işi için gönderilen sabit sürücüden okuyup okuyup yazverecağınızı kontrol edin.
 
 ## <a name="importexport-jobs"></a>İşleri içeri/dışarı aktarma
 
 ### <a name="can-i-cancel-my-job"></a>İşimi iptal edebilir miyim?
 
-Evet. Durumu **oluştururken** veya **teslim**edildiğinde bir işi iptal edebilirsiniz. Bu aşamaların ötesinde iş iptal edilemez ve son aşamaya kadar devam eder.
+Evet. Durumu **oluştururken** veya **teslim** edildiğinde bir işi iptal edebilirsiniz. Bu aşamaların ötesinde iş iptal edilemez ve son aşamaya kadar devam eder.
 
 ### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Azure portal tamamlanan işlerin durumunu ne kadar görüntüleyebilirim?
 
@@ -132,7 +132,7 @@ Hayır. Tüm sürücüler BitLocker ile şifrelenir.
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Bu hizmet tarafından içeri aktarılan verilere nasıl erişebilirim?
 
-Azure depolama hesabınızın altındaki verilere erişmek için Azure portal veya [Depolama Gezgini](/azure/vs-azure-tools-storage-manage-with-storage-explorer) kullanın.  
+Azure depolama hesabınızın altındaki verilere erişmek için Azure portal veya [Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md) kullanın.  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>İçeri aktarma işlemi tamamlandıktan sonra, verileri depolama hesabında nasıl görünür? Dizin hiyerarşim korunuyor mu?
 
@@ -144,7 +144,7 @@ Bir sabit sürücüyü içeri aktarma işi için hazırlarken, hedef veri kümes
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Waımportexport Aracı, 32 bitlik işletim sistemleriyle uyumludur mi?
 
-Hayır. Waımportexport aracı yalnızca 64 bitlik Windows işletim sistemleriyle uyumludur. Desteklenen işletim SISTEMININ tüm listesi için [desteklenen Işletim sistemlerine](/azure/storage/common/storage-import-export-requirements)gidin.
+Hayır. Waımportexport aracı yalnızca 64 bitlik Windows işletim sistemleriyle uyumludur. Desteklenen işletim SISTEMININ tüm listesi için [desteklenen Işletim sistemlerine](./storage-import-export-requirements.md)gidin.
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure Içeri/dışarı aktarma tarafından desteklenen maksimum Blok Blobu ve Sayfa Blobu boyutu nedir?
 

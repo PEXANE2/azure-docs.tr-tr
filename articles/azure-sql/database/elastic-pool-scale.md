@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 09/16/2020
-ms.openlocfilehash: 2792a93748600d71c37972058c8e496928543c9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 947d842860452425f8b30fbdaf9558c2a94a89a2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330715"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781218"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Azure SQL veritabanı 'nda elastik havuz kaynaklarını ölçeklendirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Bu makalede, Azure SQL veritabanı 'nda esnek havuzlar ve havuza alınmış veri
 
 ## <a name="change-compute-resources-vcores-or-dtus"></a>İşlem kaynaklarını değiştirme (sanal çekirdekler veya DTU 'Lar)
 
-Sanal çekirdekler veya eDTU sayısını ilk kez seçtikten sonra, [Azure Portal](elastic-pool-manage.md#azure-portal), [POWERSHELL](/powershell/module/az.sql/Get-AzSqlElasticPool), [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update)kullanarak gerçek deneyime bağlı olarak elastik bir havuzun ölçeğini dinamik olarak veya azaltabilirsiniz.
+Sanal çekirdekler veya eDTU sayısını ilk kez seçtikten sonra, [Azure Portal](elastic-pool-manage.md#azure-portal), [POWERSHELL](/powershell/module/az.sql/Get-AzSqlElasticPool), [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)veya [REST API](/rest/api/sql/elasticpools/update)kullanarak gerçek deneyime bağlı olarak elastik bir havuzun ölçeğini dinamik olarak veya azaltabilirsiniz.
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirmenin veya işlem boyutunun yeniden boyutlandırmasından etkileri
 
@@ -57,7 +57,7 @@ Hizmet katmanını değiştirmek, tek bir veritabanının veya elastik havuzun i
 >
 > - Hizmet katmanını değiştirme veya elastik havuz için işlem yeniden oluşturma durumunda, havuzdaki tüm veritabanları genelinde kullanılan alanın toplamı, tahmini hesaplamak için kullanılmalıdır.
 > - Bir veritabanını elastik bir havuza taşımak durumunda, elastik havuz tarafından kullanılan alana değil, yalnızca veritabanı tarafından kullanılan alan gecikmeyi etkiler.
-> - Standart ve Genel Amaçlı elastik havuzlar için, elastik havuzun içine/dışına veya elastik havuzlar arasında bir veritabanı taşıma gecikmesi, esnek havuz Premium dosya paylaşma ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) depolaması kullanıyorsa Veritabanı boyutuyla orantılıdır. Bir havuzun PFS depolama kullanıp kullanmadığını anlamak için, havuzdaki herhangi bir veritabanı bağlamında aşağıdaki sorguyu yürütün. AccountType sütunundaki değer `PremiumFileStorage` veya ise `PremiumFileStorage-ZRS` , havuz PFS depolaması kullanıyor demektir.
+> - Standart ve Genel Amaçlı elastik havuzlar için, elastik havuzun içine/dışına veya elastik havuzlar arasında bir veritabanı taşıma gecikmesi, esnek havuz Premium dosya paylaşma ([PFS](../../storage/files/storage-files-introduction.md)) depolaması kullanıyorsa Veritabanı boyutuyla orantılıdır. Bir havuzun PFS depolama kullanıp kullanmadığını anlamak için, havuzdaki herhangi bir veritabanı bağlamında aşağıdaki sorguyu yürütün. AccountType sütunundaki değer `PremiumFileStorage` veya ise `PremiumFileStorage-ZRS` , havuz PFS depolaması kullanıyor demektir.
 
 ```sql
 SELECT s.file_id,
@@ -69,7 +69,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
 
 > [!TIP]
-> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [stop-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [stop-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirirken veya işlem boyutunu yeniden oluştururken dikkat edilecek ek noktalar
 
@@ -100,7 +100,7 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 ### <a name="dtu-based-purchasing-model"></a>DTU tabanlı satın alma modeli
 
 - Elastik havuz için eDTU fiyatı, ek ücret ödemeden belirli miktarda depolama alanı içerir. Dahil edilen miktarın ötesinde daha fazla depolama alanı, 250 GB ile 1 TB arasında artan maksimum boyut sınırına kadar ek bir maliyet ve sonra da 1 TB 'ın üzerinde 256 GB 'lık artışlarla sağlanabilir. Dahil edilen depolama miktarları ve maksimum boyut sınırları için bkz. [elastik havuz: depolama boyutları ve işlem boyutları](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
-- Esnek havuz için ek depolama, [Azure Portal](elastic-pool-manage.md#azure-portal), [POWERSHELL](/powershell/module/az.sql/Get-AzSqlElasticPool), [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update)kullanılarak en büyük boyutu arttırılarak sağlanabilir.
+- Esnek havuz için ek depolama, [Azure Portal](elastic-pool-manage.md#azure-portal), [POWERSHELL](/powershell/module/az.sql/Get-AzSqlElasticPool), [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)veya [REST API](/rest/api/sql/elasticpools/update)kullanılarak en büyük boyutu arttırılarak sağlanabilir.
 - Elastik havuz için ek depolama alanı fiyatı, ek depolama miktarıdır ve hizmet katmanının ek depolama birimi fiyatıyla çarpılır. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]

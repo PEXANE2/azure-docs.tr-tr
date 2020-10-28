@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: dc2047832f8cfbf31c04c84eb7a70fee6631fa4b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ffe5a1d0c9bbdbc416ecce7c36b3710339c4f059
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330130"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781031"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Veritabanı coğrafi çoğaltma kullanarak çok kiracılı SaaS uygulaması için olağanüstü durum kurtarma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Bu öğretici hem yük devretme hem de yeniden çalışma iş akışlarını ara
 
 Bu öğreticiye başlamadan önce, aşağıdaki önkoşulların tamamlandığından emin olun:
 * Kiracı uygulaması başına Wingtip bilet SaaS veritabanı dağıtılır. Beş dakikadan kısa bir süre içinde dağıtmak için bkz [. kiracı uygulaması başına Wingtip bilet SaaS veritabanını dağıtma ve araştırma](saas-dbpertenant-get-started-deploy.md)  
-* Azure PowerShell’in yüklendiğinden. Ayrıntılar için bkz. [Azure PowerShell’i kullanmaya başlama](https://docs.microsoft.com/powershell/azure/get-started-azureps)
+* Azure PowerShell’in yüklendiğinden. Ayrıntılar için bkz. [Azure PowerShell’i kullanmaya başlama](/powershell/azure/get-started-azureps)
 
 ## <a name="introduction-to-the-geo-replication-recovery-pattern"></a>Coğrafi çoğaltma kurtarma düzenine giriş
 
@@ -66,11 +66,11 @@ Coğrafi çoğaltmayı temel alan bir DR planı üç ayrı bölümden oluşur:
 
 Bu öğreticide, Azure SQL veritabanı ve Azure platformunun özellikleri kullanılarak bu sorunlar ele alınır:
 
-* Tüm gerekli kapasiteyi mümkün olduğunca hızlı bir şekilde ayırmak için [şablonlar Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template). Azure Resource Manager şablonlar, kurtarma bölgesindeki üretim sunucularının ve elastik havuzların ayna görüntüsünü sağlamak için kullanılır.
+* Tüm gerekli kapasiteyi mümkün olduğunca hızlı bir şekilde ayırmak için [şablonlar Azure Resource Manager](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md). Azure Resource Manager şablonlar, kurtarma bölgesindeki üretim sunucularının ve elastik havuzların ayna görüntüsünü sağlamak için kullanılır.
 * [Coğrafi çoğaltma](active-geo-replication-overview.md), tüm veritabanları için zaman uyumsuz olarak çoğaltılan salt okunurdur. Kesinti sırasında, kurtarma bölgesindeki çoğaltmalara yük devreder.  Kesinti çözümlendikten sonra, özgün bölgedeki veritabanlarına veri kaybı olmadan geri dönebilirsiniz.
-* Çok sayıda veritabanı için yük devretme süresini en aza indirmek amacıyla kiracı öncelikli sırada gönderilen [zaman uyumsuz](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) yük devretme işlemleri.
+* Çok sayıda veritabanı için yük devretme süresini en aza indirmek amacıyla kiracı öncelikli sırada gönderilen [zaman uyumsuz](../../azure-resource-manager/management/async-operations.md) yük devretme işlemleri.
 * Kurtarma ve geri dönüştürme sırasında katalogdaki veritabanı girişlerini değiştirmek için parça [Yönetimi kurtarma özellikleri](elastic-database-recovery-manager.md). Bu özellikler, uygulamanın, uygulamayı yeniden yapılandırmadan bağımsız olarak kiracı veritabanlarına bağlanmasına izin verir.
-* Uygulamanın hangi bölgeden çalıştığı ile bağımsız olarak yeni kiracıların sorunsuz sağlanmasını sağlamak için [SQL Server DNS diğer adları](../../sql-database/dns-alias-overview.md). DNS diğer adları, katalog eşitleme işleminin, konumundan bağımsız olarak etkin kataloğa bağlanmasına izin vermek için de kullanılır.
+* Uygulamanın hangi bölgeden çalıştığı ile bağımsız olarak yeni kiracıların sorunsuz sağlanmasını sağlamak için [SQL Server DNS diğer adları](./dns-alias-overview.md). DNS diğer adları, katalog eşitleme işleminin, konumundan bağımsız olarak etkin kataloğa bağlanmasına izin vermek için de kullanılır.
 
 ## <a name="get-the-disaster-recovery-scripts"></a>Olağanüstü durum kurtarma betiklerini al 
 
@@ -85,7 +85,7 @@ Bu öğreticide, ilk olarak Wingtip bilet uygulamasının ve veritabanlarının 
 Daha sonra, ayrı bir yeniden bir geri alma adımında, kurtarma bölgesindeki Katalog ve kiracı veritabanlarının sürümünü özgün bölgeye devreder. Uygulama ve veritabanları, yeniden onarımlama boyunca kullanılabilir kalır. Bu tamamlandığında, uygulama özgün bölgede tamamen işlevseldir.
 
 > [!Note]
-> Uygulama, uygulamanın dağıtıldığı bölgenin _eşleştirilmiş bölgesine_ kurtarılır. Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+> Uygulama, uygulamanın dağıtıldığı bölgenin _eşleştirilmiş bölgesine_ kurtarılır. Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](../../best-practices-availability-paired-regions.md).
 
 ## <a name="review-the-healthy-state-of-the-application"></a>Uygulamanın sağlıklı durumunu gözden geçirin
 
@@ -106,12 +106,12 @@ Kurtarma işlemine başlamadan önce, uygulamanın normal sağlıklı durumunu g
 Bu görevde, sunucuların, elastik havuzların ve veritabanlarının yapılandırmalarını kiracı kataloğu 'nda eşitlenen bir işlem başlatabilirsiniz. İşlem bu bilgileri katalogda güncel tutar.  İşlem, özgün bölgede veya kurtarma bölgesinde olan etkin katalogla birlikte kullanılır. Yapılandırma bilgileri, kurtarma ortamının orijinal ortamla tutarlı olduğundan emin olmak için kurtarma sürecinin bir parçası olarak ve daha sonra özgün bölgenin kurtarma ortamında yapılan değişikliklerle tutarlı hale getirildiğinden emin olmak için, daha sonra yeniden repama sırasında kullanılır. Katalog, kiracı kaynaklarının kurtarma durumunu izlemek için de kullanılır
 
 > [!IMPORTANT]
-> Kolaylık olması için, eşitleme işlemi ve diğer uzun süre çalışan kurtarma ve geri alma işlemleri bu öğreticilerde, istemci kullanıcı oturumu açma bölümünde çalışan yerel PowerShell işleri veya oturumları olarak uygulanır. Oturum açtığınızda verilen kimlik doğrulama belirteçleri, birkaç saat sonra sona erer ve sonra işler başarısız olur. Bir üretim senaryosunda, uzun süre çalışan süreçler, bir hizmet sorumlusu altında çalışan bazı tür güvenilir Azure hizmetleri olarak uygulanmalıdır. Bkz. [sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal).
+> Kolaylık olması için, eşitleme işlemi ve diğer uzun süre çalışan kurtarma ve geri alma işlemleri bu öğreticilerde, istemci kullanıcı oturumu açma bölümünde çalışan yerel PowerShell işleri veya oturumları olarak uygulanır. Oturum açtığınızda verilen kimlik doğrulama belirteçleri, birkaç saat sonra sona erer ve sonra işler başarısız olur. Bir üretim senaryosunda, uzun süre çalışan süreçler, bir hizmet sorumlusu altında çalışan bazı tür güvenilir Azure hizmetleri olarak uygulanmalıdır. Bkz. [sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
-1. _PowerShell ISE_'de. ..\Learning Modules\userconfig.exe dosyasını açın. `<resourcegroup>` `<user>` 10 ve 11. satırları, uygulamayı dağıtırken kullanılan değerle değiştirin.  Dosyayı kaydedin!
+1. _PowerShell ISE_ 'de. ..\Learning Modules\userconfig.exe dosyasını açın. `<resourcegroup>` `<user>` 10 ve 11. satırları, uygulamayı dağıtırken kullanılan değerle değiştirin.  Dosyayı kaydedin!
 
-2. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği açın ve şunları ayarlayın:
-    * **$DemoScenario = 1**, kiracı sunucusunu eşitlenen bir arka plan işi başlatın ve yapılandırma bilgilerini katalogla havuzlayın
+2. *PowerShell ISE* 'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği açın ve şunları ayarlayın:
+    * **$DemoScenario = 1** , kiracı sunucusunu eşitlenen bir arka plan işi başlatın ve yapılandırma bilgilerini katalogla havuzlayın
 
 3. Eşitleme betiğini çalıştırmak için **F5** tuşuna basın. Kiracı kaynaklarının yapılandırmasını eşitlemek için yeni bir PowerShell oturumu açılır.
 ![Kiracı kaynaklarının yapılandırmasını eşitlemek için açılan yeni PowerShell oturumunu gösteren ekran görüntüsü.](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
@@ -128,10 +128,10 @@ Bu görevde, yinelenen bir uygulama örneği dağıtan ve kataloğu ve tüm kira
 > [!Note]
 > Bu öğretici, Wingtip bilet örnek uygulamasına coğrafi çoğaltma koruması ekler. Coğrafi çoğaltma kullanan bir uygulama için bir üretim senaryosunda, her kiracı, coğrafi olarak çoğaltılan bir veritabanıyla birlikte kaynak olarak sağlanabilir. Bkz. [Azure SQL veritabanı 'nı kullanarak yüksek oranda kullanılabilir hizmetler tasarlama](designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
 
-1. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği ' ni açın ve aşağıdaki değerleri ayarlayın:
-    * **$DemoScenario = 2**, yansıtma görüntüsü kurtarma ortamı oluşturma ve Katalog ve kiracı veritabanlarını çoğaltma
+1. *PowerShell ISE* 'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği ' ni açın ve aşağıdaki değerleri ayarlayın:
+    * **$DemoScenario = 2** , yansıtma görüntüsü kurtarma ortamı oluşturma ve Katalog ve kiracı veritabanlarını çoğaltma
 
-2. Betiği çalıştırmak için **F5**'e basın. Çoğaltmaları oluşturmak için yeni bir PowerShell oturumu açıldı.
+2. Betiği çalıştırmak için **F5** 'e basın. Çoğaltmaları oluşturmak için yeni bir PowerShell oturumu açıldı.
 ![Eşitleme işlemi](./media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
 
 ## <a name="review-the-normal-application-state"></a>Normal uygulama durumunu gözden geçirme
@@ -181,12 +181,12 @@ Kurtarma betiği aşağıdaki görevleri gerçekleştirir:
 
 Şimdi uygulamanın dağıtıldığı bölgede bir kesinti olduğunu ve kurtarma betiğini çalıştırmayı düşünün:
 
-1. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği ' ni açın ve aşağıdaki değerleri ayarlayın:
-    * **$DemoScenario = 3**, çoğaltmaya yük devreterek uygulamayı bir kurtarma bölgesine kurtarın
+1. *PowerShell ISE* 'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği ' ni açın ve aşağıdaki değerleri ayarlayın:
+    * **$DemoScenario = 3** , çoğaltmaya yük devreterek uygulamayı bir kurtarma bölgesine kurtarın
 
-2. Betiği çalıştırmak için **F5**'e basın.  
+2. Betiği çalıştırmak için **F5** 'e basın.  
     * Komut dosyası yeni bir PowerShell penceresinde açılır ve sonra paralel olarak çalışan bir dizi PowerShell işi başlatır. Bu işler, kiracı veritabanlarının yükünü kurtarma bölgesine devreder.
-    * Kurtarma bölgesi, uygulamayı dağıttığınız Azure bölgesiyle ilişkili _eşleştirilmiş bölgedir_ . Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
+    * Kurtarma bölgesi, uygulamayı dağıttığınız Azure bölgesiyle ilişkili _eşleştirilmiş bölgedir_ . Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](../../best-practices-availability-paired-regions.md). 
 
 3. Kurtarma işleminin durumunu PowerShell penceresinde izleyin.
     ![Yük devretme işlemi](./media/saas-dbpertenant-dr-geo-replication/failover-process.png)
@@ -212,8 +212,8 @@ Uygulama uç noktası Traffic Manager devre dışı bırakılsa da, uygulama kul
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>Kurtarma bölgesinde yeni bir kiracı sağlayın
 Tüm mevcut kiracı veritabanlarının yük devretmemesine karşın, kurtarma bölgesinde yeni kiracılar sağlayabilirsiniz.  
 
-1. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiğini açın ve aşağıdaki özelliği ayarlayın:
-    * **$DemoScenario = 4**, kurtarma bölgesinde yeni bir kiracı sağlayın
+1. *PowerShell ISE* 'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiğini açın ve aşağıdaki özelliği ayarlayın:
+    * **$DemoScenario = 4** , kurtarma bölgesinde yeni bir kiracı sağlayın
 
 2. Betiği çalıştırmak ve yeni kiracıyı sağlamak için **F5** tuşuna basın. 
 
@@ -239,11 +239,11 @@ Kurtarma işlemi tamamlandığında, uygulama ve tüm kiracılar kurtarma bölge
    * Katalog ve tenants1 sunucularının kurtarma sürümleri ve _Kurtarma_ son eki.  Bu sunuculardaki geri yüklenen Katalog ve kiracı veritabanlarının hepsi özgün bölgede kullanılan adlara sahiptir.
 
    * _Tenants2-DPT- &lt; Kullanıcı &gt; -Kurtarma_ SQL Server.  Bu sunucu, kesinti sırasında yeni kiracılar sağlamak için kullanılır.
-   * Olaylar uygulamasının kurtarma örneği olan, _-Wingtip-DPT- &lt; recoveryregion &gt; - &lt; kullanıcısı&gt_; adlı App Service. 
+   * Olaylar uygulamasının kurtarma örneği olan, _-Wingtip-DPT- &lt; recoveryregion &gt; - &lt; kullanıcısı&gt_ ; adlı App Service. 
 
      ![Azure kurtarma kaynakları](./media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
-4. _Tenants2-DPT- &lt; user &gt; -Recovery_ SQL Server 'ı açın.  _Hawthornhall_ veritabanı ve elastik havuz, _Pool1_içerdiğini unutmayın.  _Hawthornhall_ veritabanı, _Pool1_ elastik havuzda esnek veritabanı olarak yapılandırılır.
+4. _Tenants2-DPT- &lt; user &gt; -Recovery_ SQL Server 'ı açın.  _Hawthornhall_ veritabanı ve elastik havuz, _Pool1_ içerdiğini unutmayın.  _Hawthornhall_ veritabanı, _Pool1_ elastik havuzda esnek veritabanı olarak yapılandırılır.
 
 5. Kaynak grubuna geri gidin ve _tenants1-DPT- &lt; user &gt; -Recovery_ sunucusunda contoso Concert salonu veritabanına tıklayın. Sol tarafta Geo-Replication ' a tıklayın.
     
@@ -253,7 +253,7 @@ Kurtarma işlemi tamamlandığında, uygulama ve tüm kiracılar kurtarma bölge
 Bu görevde, kiracı veritabanlarından birini güncelleştirin. 
 
 1. Tarayıcınızda, contoso Concert salonu için olaylar listesini bulun ve son olay adını göz önünde bulun.
-2. *PowerShell ISE*'de,. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği içinde aşağıdaki değeri ayarlayın:
+2. *PowerShell ISE* 'de,. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği içinde aşağıdaki değeri ayarlayın:
     * **$DemoScenario = 5** Kurtarma bölgesindeki bir kiracıdan bir olayı silme
 3. Betiği yürütmek için **F5** 'e basın
 4. Contoso Concert salyamı olayları sayfasını ( http://events.wingtip-dpt.&lt ; user &gt; . trafficmanager.net/contosoconcerthall- &lt; Kullanıcı &gt; , dağıtımınızın Kullanıcı değeri ile değiştirin) yenileyip son olayın silindiğini görürsünüz.
@@ -278,14 +278,14 @@ Yük devretme, veritabanını özgün bölgeye etkin bir şekilde taşıdıkça.
 ### <a name="run-the-repatriation-script"></a>Repama betiğini çalıştırma
 Şimdi kesinti çözümlendiğini ve repama betiğini çalıştırmayı düşünün.
 
-1. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği.
+1. *PowerShell ISE* 'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği.
 
 2. Katalog eşitleme işleminin hala PowerShell örneğinde çalıştığını doğrulayın.  Gerekirse, şu ayarları yaparak yeniden başlatın:
-    * **$DemoScenario = 1**, kiracı sunucusu, havuz ve veritabanı yapılandırma bilgilerini katalogla eşitlemeye başlayın
-    * Betiği çalıştırmak için **F5**'e basın.
+    * **$DemoScenario = 1** , kiracı sunucusu, havuz ve veritabanı yapılandırma bilgilerini katalogla eşitlemeye başlayın
+    * Betiği çalıştırmak için **F5** 'e basın.
 
 3.  Ardından, yeniden deneme işlemini başlatmak için şunu ayarlayın:
-    * **$DemoScenario = 6**, uygulamayı özgün bölgesine yeniden boyar
+    * **$DemoScenario = 6** , uygulamayı özgün bölgesine yeniden boyar
     * Kurtarma betiğini yeni bir PowerShell penceresinde çalıştırmak için **F5** tuşuna basın.  Repama, birkaç dakika sürer ve PowerShell penceresinde izlenebilir.
     ![Repama işlemi](./media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 

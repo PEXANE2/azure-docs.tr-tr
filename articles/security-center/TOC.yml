@@ -14,9 +14,17 @@
           href: security-center-services.md
         - name: Azure PaaS kaynakları için özellik kapsamı
           href: features-paas.md
-    - name: Güvenlik Merkezi’ndeki yenilikler
-      displayName: release notes
-      href: release-notes.md
+    - name: Yenilikler
+      items:
+        - name: Sürüm notları
+          displayName: changelog
+          href: release-notes.md
+        - name: Yaklaşan önemli değişiklikler
+          displayName: 'release notes, changelog'
+          href: upcoming-changes.md
+        - name: Arşivlenmiş sürüm notları (altı aydan daha eski)
+          displayName: changelog
+          href: release-notes-archive.md
     - name: Güvenlik Merkezi temelleri
       items:
         - name: Güvenlik Merkezi’ne genel bakış
@@ -217,8 +225,13 @@
         - name: Bilgi koruma ilkesini özelleştirme
           href: security-center-info-protection-policy.md
     - name: Kapsayıcı kayıt defterleri için Azure Defender’ı kullanma
-      displayName: 'ACR, registry, images'
-      href: defender-for-container-registries-usage.md
+      items:
+        - name: Kayıt defteri görüntülerinizi güvenlik açıkları için tarama
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md
+        - name: Görüntülerde belirli güvenlik açığı bulgularını devre dışı bırakma
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md#disable-specific-findings-preview
     - name: Uyarıları ve önerileri dışarı aktarma
       items:
         - name: 'SIEM, SOAR veya ITSM''ye aktarma'
@@ -272,8 +285,6 @@
           href: faq-vms.md
         - name: Mevcut Azure Log Analytics kullanıcıları
           href: faq-azure-monitor-logs.md
-    - name: Güvenlik Merkezi’ndeki yeniliklerin arşivi
-      href: release-notes-archive.md
     - name: Azure yol haritası blogu
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Uç nokta koruma değerlendirmesi ve önerileri
