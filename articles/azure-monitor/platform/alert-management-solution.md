@@ -6,26 +6,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: 26943971eeee96ed831c5d524868a2342891d594
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: adc29916c6b674531d7b0e8fcdd4e151b4a17bde
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108414"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677569"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics Uyarı Yönetimi çözümü
 
 ![Uyarı Yönetimi simgesi](media/alert-management-solution/icon.png)
 
-> [!NOTE]
->  Azure Izleyici, [System Center Operations Manager, Zabbix veya Nagios gibi izleme araçlarıyla](./alerts-managing-nagios-zabbix-scom.md?toc=%252fazure%252fazure-monitor%252ftoc.json)oluşturulanlar da dahil olmak üzere, [uyarılarınızı ölçeklendirmeye](./alerts-overview.md)yönelik gelişmiş özellikleri desteklemektedir.
->  
-
-
 Uyarı Yönetimi çözümü, Log Analytics Deponuzdaki tüm uyarıları çözümlemenize yardımcı olur.  Bu uyarılar, [Log Analytics tarafından oluşturulan](./alerts-overview.md) veya [Nagios ya da Zabbix 'ten içeri aktarılan](../learn/quick-collect-linux-computer.md)kaynaklar dahil olmak üzere çeşitli kaynaklardan gelmiş olabilir. Çözüm Ayrıca, [bağlı System Center Operations Manager yönetim gruplarından](./om-agents.md)gelen uyarıları içeri aktarır.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Çözüm, Log Analytics deposundaki kayıtlarla birlikte **çalışarak, bu**kayıtları toplamak için hangi yapılandırmanın gerekli olduğunu yapmanız gerekir.
+Çözüm, Log Analytics deposundaki kayıtlarla birlikte **çalışarak, bu** kayıtları toplamak için hangi yapılandırmanın gerekli olduğunu yapmanız gerekir.
 
 - Log Analytics uyarılar için, doğrudan depoda uyarı kayıtları oluşturmak üzere [Uyarı kuralları oluşturun](./alerts-overview.md) .
 - Nagios ve Zabbix uyarıları için, [Bu sunucuları](../learn/quick-collect-linux-computer.md) Log Analytics Uyarıları gönderecek şekilde yapılandırın.
@@ -45,7 +40,7 @@ System Center Operations Manager yönetim grubunuz Log Analytics çalışma alan
 ### <a name="agents"></a>Aracılar
 Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı Kaynak | Destek | Description |
+| Bağlı Kaynak | Destek | Açıklama |
 |:--- |:--- |:--- |
 | [Windows aracıları](agent-windows.md) | Hayır |Doğrudan Windows aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Windows aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir. |
 | [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır |Doğrudan Linux aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Linux aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir.  Nagios ve Zabbix uyarıları, Linux Aracısı gerektiren sunuculardan toplanır. |
@@ -68,7 +63,7 @@ Uyarı Yönetimi çözümünü Log Analytics çalışma alanınıza eklediğiniz
 | Kritik Uyarılar |Uyarı adına göre gruplandırılmış kritik önem derecesine sahip tüm uyarılar.  Bu uyarının tüm kayıtlarını döndüren bir günlük araması çalıştırmak için bir uyarı adına tıklayın. |
 | Uyarı uyarıları |Uyarı adına göre gruplandırılmış bir uyarı önem derecesine sahip tüm uyarılar.  Bu uyarının tüm kayıtlarını döndüren bir günlük araması çalıştırmak için bir uyarı adına tıklayın. |
 | Etkin System Center Operations Manager uyarıları |Uyarıyı oluşturan kaynağa *kapalı* olarak gruplandırılmış dışında bir durum ile Operations Manager toplanan tüm uyarılar. |
-| Tüm etkin uyarılar |Uyarı adına göre gruplandırılan tüm önem derecesine sahip tüm uyarılar. Yalnızca *kapalı*dışında bir durum Operations Manager uyarıları içerir. |
+| Tüm etkin uyarılar |Uyarı adına göre gruplandırılan tüm önem derecesine sahip tüm uyarılar. Yalnızca *kapalı* dışında bir durum Operations Manager uyarıları içerir. |
 
 Sağa kaydırırsanız panoda, uyarı verileri için [günlük araması](../log-query/log-query-overview.md) gerçekleştirmek üzere tıkladığınız birkaç ortak sorgu listelenir.
 
@@ -76,9 +71,9 @@ Sağa kaydırırsanız panoda, uyarı verileri için [günlük araması](../log-
 
 
 ## <a name="log-analytics-records"></a>Log Analytics kayıtları
-Uyarı Yönetimi çözümü, bir **Uyarı**türü ile tüm kayıtları analiz eder.  Nagios veya Zabbix öğesinden Log Analytics tarafından oluşturulan veya toplanan uyarılar doğrudan çözüm tarafından toplanmaz.
+Uyarı Yönetimi çözümü, bir **Uyarı** türü ile tüm kayıtları analiz eder.  Nagios veya Zabbix öğesinden Log Analytics tarafından oluşturulan veya toplanan uyarılar doğrudan çözüm tarafından toplanmaz.
 
-Çözüm, uyarıları System Center Operations Manager içeri aktarır ve her biri için bir **Uyarı** türü ve **Opsmanager**dir için karşılık gelen bir kayıt oluşturur.  Bu kayıtlar aşağıdaki tablodaki özelliklere sahiptir:  
+Çözüm, uyarıları System Center Operations Manager içeri aktarır ve her biri için bir **Uyarı** türü ve **Opsmanager** dir için karşılık gelen bir kayıt oluşturur.  Bu kayıtlar aşağıdaki tablodaki özelliklere sahiptir:  
 
 | Özellik | Açıklama |
 |:--- |:--- |
@@ -106,7 +101,7 @@ Uyarı Yönetimi çözümü, bir **Uyarı**türü ile tüm kayıtları analiz ed
 ## <a name="sample-log-searches"></a>Örnek günlük aramaları
 Aşağıdaki tabloda, bu çözüm tarafından toplanan uyarı kayıtları için örnek günlük aramaları sunulmaktadır: 
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 |:---|:---|
 | Uyarı &#124; WHERE dir = = "OpsManager" ve Alertönem derecesi = = "Error" ve TimeRaised > önce (24h) |Son 24 saatte oluşturulan kritik uyarılar |
 | Uyarı &#124;, Alertönem derecesi = = "Warning" ve TimeRaised > önce (24 h) |Son 24 saat boyunca oluşan uyarı uyarıları |

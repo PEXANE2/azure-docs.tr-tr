@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: a69332f1534e32a85ce084289dd00533612cc282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eedc3dc1422d4eb6dcce80766077e8056f8509cf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327570"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678045"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Veritabanı'nda iş sürekliliğine genel bakış
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ SQL veritabanı ve SQL yönetilen örneği, çeşitli planlanmamış senaryolar�
 
 - [Zamana bağlı tablolar](../temporal-tables.md) satır sürümlerini herhangi bir noktadan geri yüklemenize olanak sağlar.
 - [Yerleşik otomatik yedeklemeler](automated-backups-overview.md) ve [zaman içinde geri yükleme](recovery-using-backups.md#point-in-time-restore) , tüm veritabanını yapılandırılan saklama süresi içinde 35 güne kadar bir zaman noktasına geri yüklemenize olanak sağlar.
-- Silinen bir veritabanını, **sunucu silinmediği**zaman silinmiş [bir noktaya geri yükleyebilirsiniz](recovery-using-backups.md#deleted-database-restore) .
+- Silinen bir veritabanını, **sunucu silinmediği** zaman silinmiş [bir noktaya geri yükleyebilirsiniz](recovery-using-backups.md#deleted-database-restore) .
 - [Uzun süreli yedek saklama](long-term-retention-overview.md) , yedeklemeleri 10 yıla kadar tutmanıza olanak sağlar. Bu, SQL yönetilen örneği için sınırlı genel önizleme aşamasındadır
 - [Etkin coğrafi çoğaltma](active-geo-replication-overview.md) , veri merkezi kesintisi veya uygulama yükseltmesi durumunda okunabilir çoğaltmalar oluşturmanıza ve herhangi bir çoğaltmaya el ile yük devretmenize olanak sağlar.
 - [Otomatik yük devretme grubu](auto-failover-group-overview.md#terminology-and-capabilities) , bir veri merkezi kesintisi durumunda uygulamanın otomatik olarak kurtarılmasını sağlar.
@@ -141,7 +141,7 @@ Bu iki kurtarma sisteminden herhangi biriyle gerçekleştirilen kurtarma işlemi
 
 - İstemcileri ve istemci uygulamalarını yeni sunucuya ve geri yüklenen veritabanına yeniden yönlendirin.
 - Uygun kuralları etkinleştirmek üzere kullanıcıların bağlanabilmesi veya [veritabanı düzeyinde güvenlik duvarlarını](firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) kullanabilmesi için uygun sunucu düzeyinde IP Güvenlik Duvarı kurallarının yapıldığından emin olun.
-- Uygun oturum açma ve ana veritabanı düzeyi izinlerinin yerinde olduğundan emin olun (veya [Kapsanan kullanıcıları](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)kullanın).
+- Uygun oturum açma ve ana veritabanı düzeyi izinlerinin yerinde olduğundan emin olun (veya [Kapsanan kullanıcıları](/sql/relational-databases/security/contained-database-users-making-your-database-portable)kullanın).
 - Uygun şekilde denetimi yapılandırın.
 - Uyarıları uygun şekilde yapılandırın.
 

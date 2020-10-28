@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 6deb7b535c3876ae8a8e83174b97a75582e82e58
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: dc8aa50c5c4ecb5e4b56a7e49453c266dad28818
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996432"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678091"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal ile SAP Çözümleri için Azure Izleyici dağıtma
 
@@ -24,7 +24,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-monitoring-resource"></a>İzleme kaynağı oluştur
 
-1. **Azure Marketi**'Nden **SAP Çözümleri için Azure İzleyicisi** ' ni seçin.
+1. **Azure Marketi** 'Nden **SAP Çözümleri için Azure İzleyicisi** ' ni seçin.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-1.png" alt-text="Görüntüde, Azure Marketi 'nden SAP Çözümleri için Azure Izleyicisi teklifinin seçilmesi gösterilmektedir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-1.png":::
 
@@ -47,15 +47,18 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 2. **Sağlayıcı Ekle** ' yi seçin ve açılan listeden **SAP HANA** seçin. 
 
+   > [!IMPORTANT]
+   > SAP HANA sağlayıcının SAP HANA ' Ana ' düğümü için yapılandırıldığından emin olun.
+
 3. HANA sunucusu için özel IP 'yi girin.
 
 4. Kullanmak istediğiniz veritabanı kiracının adını girin. Herhangi bir kiracıyı seçebilirsiniz, ancak daha geniş bir izleme alanı dizisi sağladığından **SystemDB** kullanılması önerilir. 
 
-5. HANA veritabanınıza ilişkin SQL bağlantı noktası numarasını girin. Bağlantı noktası numarası **[3]**[  +  **örnek #]**  +  **[13]** veya **[3]**[  +  **örnek #]**[  +  **15]** biçiminde olmalıdır. Örneğin, 30013 veya 30015. 
+5. HANA veritabanınıza ilişkin SQL bağlantı noktası numarasını girin. Bağlantı noktası numarası **[3]** [  +  **örnek #]**  +  **[13]** veya **[3]** [  +  **örnek #]** [  +  **15]** biçiminde olmalıdır. Örneğin, 30013 veya 30015. 
 
 6. Kullanmak istediğiniz veritabanı kullanıcı adını girin. Veritabanı kullanıcısına, **izleme** ve **Katalog okuma** rollerinin atanmış olduğundan emin olun. 
 
-7. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
+7. İşiniz bittiğinde **Sağlayıcı Ekle** ' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Görüntüde, Azure Marketi 'nden SAP Çözümleri için Azure Izleyicisi teklifinin seçilmesi gösterilmektedir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
@@ -70,7 +73,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
  
 3. Sistem KIMLIĞINI (SID), ana bilgisayar adını ve küme adını girin.
 
-4. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
+4. İşiniz bittiğinde **Sağlayıcı Ekle** ' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Görüntüde, Azure Marketi 'nden SAP Çözümleri için Azure Izleyicisi teklifinin seçilmesi gösterilmektedir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
 
@@ -108,7 +111,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 3. Microsoft SQL Server ile ilişkili bilgileri kullanarak alanları doldurun. 
 
-4. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
+4. İşiniz bittiğinde **Sağlayıcı Ekle** ' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Görüntüde, Azure Marketi 'nden SAP Çözümleri için Azure Izleyicisi teklifinin seçilmesi gösterilmektedir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 0261c495ad08000f9041390658e0f19954b71669
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 124c8fca569365a4b892dc325518f45c7f98900c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517030"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675920"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Öğretici: AI Oluşturucu ile form işleme uygulaması oluşturma
 
@@ -23,14 +23,14 @@ ms.locfileid: "92517030"
 > [!NOTE]
 > Bu proje bir [Microsoft Learn modülü](https://docs.microsoft.com/learn/modules/get-started-with-form-processing/)olarak da kullanılabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Form işleme AI modeli oluşturma
 > * Modelinizi eğitme
 > * Azure Power Apps veya Power otomatikleştirmek 'de kullanmak için modelinizi yayımlayın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Eğitim/test verileri için kullanılan aynı türden en az beş form kümesi. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [eğitim verileri kümesi oluşturma](./build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2128080) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
 * Bir Power Apps veya güç otomatikleştirme lisansı- [lisanslama kılavuzuna](https://go.microsoft.com/fwlink/?linkid=2085130)bakın. Lisansın [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/)içermesi gerekir.
@@ -40,10 +40,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="create-a-form-processing-project"></a>Form işleme projesi oluşturma
 
 1. [Power Apps](https://make.powerapps.com/) veya [Power otomatikleştirmeye](https://flow.microsoft.com/signin)gidin ve kuruluş hesabınızla oturum açın.
-1. Sol bölmede **AI Oluşturucu**  >  **derlemesi**' ni seçin.
+1. Sol bölmede **AI Oluşturucu**  >  **derlemesi** ' ni seçin.
 1. **Form işleme** kartını seçin.
 1. Modelinize bir ad yazın.
-1. **Oluştur**’u seçin.
+1. **Oluştur** ’u seçin.
 
 ## <a name="upload-and-analyze-documents"></a>Belgeleri karşıya yükleme ve analiz etme
 
@@ -61,15 +61,15 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ### <a name="upload-your-documents"></a>Belgelerinizi karşıya yükleme
 
-1. **Belge ekle**'yi seçin, en az beş belge seçin ve ardından **Karşıya yükle**'yi seçin.
-1. Karşıya yükleme tamamlandıktan sonra **Kapat**' ı seçin.
-1. Ardından **Çözümle**' yi seçin.
+1. **Belge ekle** 'yi seçin, en az beş belge seçin ve ardından **Karşıya yükle** 'yi seçin.
+1. Karşıya yükleme tamamlandıktan sonra **Kapat** ' ı seçin.
+1. Ardından **Çözümle** ' yi seçin.
 
 > [!NOTE] 
 > Bu belgeleri karşıya yükledikten sonra aralarından bazılarını kaldırabilir veya yenilerini yükleyebilirsiniz.
 
 > [!div class="mx-imgBorder"]
-> ![Belge Ekle sayfası](./media/tutorial-ai-builder/add-documents-page.png)
+> ![Belge Ekle düğmesini vurgulayan ekran görüntüsü.](./media/tutorial-ai-builder/add-documents-page.png)
 
 ### <a name="analyze-your-documents"></a>Belgelerinizi analiz etme
 
@@ -89,8 +89,8 @@ Alan seçimi sayfasında, sizin için gereken alanları seçersiniz:
 
     Algılanan bir alana tıkladığınızda, aşağıdaki bilgiler görüntülenir:
 
-    - **Alan adı**: algılanan alanın etiketinin adı.
-    - **Alan değeri**: algılanan alanın değeri.
+    - **Alan adı** : algılanan alanın etiketinin adı.
+    - **Alan değeri** : algılanan alanın değeri.
 
 > [!div class="mx-imgBorder"]
 > ![etiketleme sayfası](./media/tutorial-ai-builder/select-fields-page.png)
@@ -101,16 +101,16 @@ Etiketlemek istediğiniz alan model tarafından otomatik olarak algılanmadıysa
 
 ## <a name="train-your-model"></a>Modelinizi eğitme
 
-1. Seçtiğiniz form alanlarını denetlemek için **İleri**'yi seçin. Her şey yolunda görünüyorsa modelinizi eğitmek için **Eğit**'i seçin.
+1. Seçtiğiniz form alanlarını denetlemek için **İleri** 'yi seçin. Her şey yolunda görünüyorsa modelinizi eğitmek için **Eğit** 'i seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Eğitim sayfası](./media/tutorial-ai-builder/summary-train-page.png)
-1. Eğitim tamamlandıktan sonra **Eğitim tamamlandı** ekranında **Ayrıntılar sayfasına git**'i seçin.
+1. Eğitim tamamlandıktan sonra **Eğitim tamamlandı** ekranında **Ayrıntılar sayfasına git** 'i seçin.
 ## <a name="quick-test-your-model"></a>Modelinizi hızlıca test etme
 
 Ayrıntılar sayfasında modelinizi yayımlamadan veya kullanmadan önce test edebilirsiniz:
 
-1. Ayrıntılar sayfasında **Hızlı test**'i seçin.
+1. Ayrıntılar sayfasında **Hızlı test** 'i seçin.
 2. Test dosyanızı karşıya yüklemek için bir belgeyi sürükleyip bırakabilir veya **cihazımın karşıya yükle** ' yi seçebilirsiniz. Hızlı test sonuçları birkaç saniye içinde görüntüler.
 3. Başka bir testi çalıştırmak veya işiniz bittiğinde **kapatmak** Için **baştan başla** ' yı seçebilirsiniz.
 
@@ -120,7 +120,7 @@ Belirli alanlar için hatalı sonuçlar veya düşük güvenilirlik puanları al
 
 - Her alanda farklı değerlere sahip formları kullanarak yeniden eğitme.
 - Daha büyük bir eğitim belgeleri kümesi kullanarak yeniden eğitme. Ne kadar çok belge etiketlerseniz, daha fazla AI Oluşturucusu alanları daha iyi tanımanıza daha fazla bilgi sağlar.
-- PDF dosyalarını yalnızca ile eğitelecek belirli sayfaları seçerek iyileştirebilirsiniz. **Print**  >  Belgenizdeki belirli sayfaları seçmek için**PDF 'ye Yazdır** seçeneğini kullanın.
+- PDF dosyalarını yalnızca ile eğitelecek belirli sayfaları seçerek iyileştirebilirsiniz. **Print**  >  Belgenizdeki belirli sayfaları seçmek için **PDF 'ye Yazdır** seçeneğini kullanın.
 
 ## <a name="publish-your-model"></a>Modelinizi yayımlama
 

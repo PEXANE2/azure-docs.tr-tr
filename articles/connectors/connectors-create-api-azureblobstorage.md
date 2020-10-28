@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 34608a085c0d60e0ce07e5d198622f80a43f8b38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd23ff0f5ad9912440d38903a344011b069aaf16
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284090"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677724"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Azure Blob depolamada Bloblar oluşturma ve yönetme
 
@@ -29,7 +29,7 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
 ## <a name="limits"></a>Sınırlar
 
-* Varsayılan olarak, Azure Blob depolama eylemleri *50 MB veya daha küçük*olan dosyaları okuyabilir veya yazabilir. 50 MB 'den büyük ancak 1024 MB 'a kadar olan dosyaları işlemek için Azure Blob depolama eylemleri [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)desteği sağlar. **BLOB Içeriğini al** eylemi, örtük olarak parçalama kullanır.
+* Varsayılan olarak, Azure Blob depolama eylemleri *50 MB veya daha küçük* olan dosyaları okuyabilir veya yazabilir. 50 MB 'den büyük ancak 1024 MB 'a kadar olan dosyaları işlemek için Azure Blob depolama eylemleri [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)desteği sağlar. **BLOB Içeriğini al** eylemi, örtük olarak parçalama kullanır.
 
 * Azure Blob depolama Tetikleyicileri parçalama desteği vermez. Dosya içeriği istenirken Tetikleyiciler yalnızca 50 MB veya daha küçük olan dosyaları seçer. 50 MB 'tan büyük dosyaları almak için şu modele uyun:
 
@@ -73,7 +73,7 @@ Bu örnek, depolama kapsayıcıınızda bir blob 'un özellikleri eklendiğinde 
 
    3. Tetikleyicinin klasör değişikliklerini ne sıklıkta denetlemesini istediğinizi belirlemek için aralığı ve sıklığı seçin.
 
-4. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+4. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet** ' i seçin.
 
 5. Şimdi, tetikleyici sonuçlarıyla gerçekleştirmek istediğiniz görevler için mantıksal uygulamanıza bir veya daha fazla eylem eklemeye devam edin.
 
@@ -85,11 +85,11 @@ Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın. Bu örnek Azure portal kullanır.
 
-2. Mantıksal uygulama Tasarımcısı ' nda, tetikleyici veya eylem altında **yeni adım**' ı seçin.
+2. Mantıksal uygulama Tasarımcısı ' nda, tetikleyici veya eylem altında **yeni adım** ' ı seçin.
 
    ![Logic App iş akışına yeni adım Ekle](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
-   Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve **Eylem Ekle**' yi seçin.
+   Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve **Eylem Ekle** ' yi seçin.
 
 3. Arama kutusuna filtreniz olarak "Azure Blob" yazın. Eylemler listesinden istediğiniz eylemi seçin.
 
@@ -108,7 +108,7 @@ Ya da bağlantınız zaten varsa, eylem için gerekli bilgileri sağlayın.
 
    2. Blob 'un **kimlik** numarasına göre istediğiniz dosyayı bulun ve seçin. Bu **kimlik** numarasını, daha önce açıklanan BLOB depolama tetikleyicisi tarafından döndürülen Blobun meta verilerinde bulabilirsiniz.
 
-5. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+5. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet** ' i seçin.
 Mantıksal uygulamanızı test etmek için, seçili klasörde bir blob bulunduğundan emin olun.
 
 Bu örnek yalnızca bir Blobun içeriğini alır. İçeriği görüntülemek için başka bir bağlayıcı kullanarak blob ile dosya oluşturan başka bir eylem ekleyin. Örneğin, blob içeriklerine dayalı bir dosya oluşturan OneDrive eylemi ekleyin.
@@ -124,7 +124,7 @@ Bu örnek yalnızca bir Blobun içeriğini alır. İçeriği görüntülemek iç
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
    | **Bağlantı adı** | Evet | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
-   | **Depolama Hesabı** | Evet | <*depolama hesabı*> | Listeden depolama hesabınızı seçin. |
+   | **Depolama hesabı** | Evet | <*depolama hesabı*> | Listeden depolama hesabınızı seçin. |
    ||||
 
    Örneğin:
@@ -183,9 +183,9 @@ Microsoft 'a güvenilen hizmetlere bir güvenlik duvarı aracılığıyla bir de
 
 Özel durum ve yönetilen kimlik desteğini ayarlamak için aşağıdaki genel adımları izleyin:
 
-1. Depolama hesabınızda, **Ayarlar**altında **güvenlik duvarları ve sanal ağlar**' ı seçin. **Erişime Izin ver**' in altında, ilgili ayarların görünmesi için **Seçili ağlar** seçeneğini belirleyin.
+1. Depolama hesabınızda, **Ayarlar** altında **güvenlik duvarları ve sanal ağlar** ' ı seçin. **Erişime Izin ver** ' in altında, ilgili ayarların görünmesi için **Seçili ağlar** seçeneğini belirleyin.
 
-1. **Özel durumlar**altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver**' i seçin ve ardından **Kaydet**' i seçin.
+1. **Özel durumlar** altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver** ' i seçin ve ardından **Kaydet** ' i seçin.
 
    ![Microsoft güvenilen hizmetlerine izin veren özel durum seçin](./media/connectors-create-api-azureblobstorage/allow-trusted-services-firewall.png)
 
@@ -202,9 +202,8 @@ Microsoft 'a güvenilen hizmetlere bir güvenlik duvarı aracılığıyla bir de
 
 ### <a name="access-storage-accounts-through-azure-api-management"></a>Azure API Management aracılığıyla depolama hesaplarına erişin
 
-[API Management](../api-management/api-management-key-concepts.md)için adanmış bir katman kullanıyorsanız, API Management kullanarak depolama API 'sini önyükleyebilir ve güvenlik duvarı ÜZERINDEN ikinci IP adreslerine izin verebilirsiniz. Temel olarak, API Management tarafından kullanılan Azure sanal ağını depolama hesabının güvenlik duvarı ayarına ekleyin. Daha sonra Azure depolama API 'Lerini çağırmak için API Management eylemini veya HTTP eylemini kullanabilirsiniz. Ancak, bu seçeneği belirlerseniz, kimlik doğrulama işlemini kendiniz işlemeniz gerekir. Daha fazla bilgi için bkz. [basit kurumsal tümleştirme mimarisi](https://aka.ms/aisarch).
+[API Management](../api-management/api-management-key-concepts.md)için adanmış bir katman kullanıyorsanız, API Management kullanarak depolama API 'sini önyükleyebilir ve güvenlik duvarı ÜZERINDEN ikinci IP adreslerine izin verebilirsiniz. Temel olarak, API Management tarafından kullanılan Azure sanal ağını depolama hesabının güvenlik duvarı ayarına ekleyin. Daha sonra Azure depolama API 'Lerini çağırmak için API Management eylemini veya HTTP eylemini kullanabilirsiniz. Ancak, bu seçeneği belirlerseniz, kimlik doğrulama işlemini kendiniz işlemeniz gerekir. Daha fazla bilgi için bkz. [basit kurumsal tümleştirme mimarisi](/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin
-

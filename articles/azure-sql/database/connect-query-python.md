@@ -12,19 +12,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5257e8730830c6b51808d5d014bc3bdec6036bfe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3cbda70fd836482448aa381f6e781ed15666f2c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87843989"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675167"
 ---
 # <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için Python kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu hızlı başlangıçta Python kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanır ve T-SQL deyimlerini kullanarak verileri sorgulayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır:
 
@@ -45,7 +45,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır
 
   # <a name="macos"></a>[macOS](#tab/macos)
 
-  Homebrew ve Python 'u, ODBC sürücüsünü ve SQLCMD 'yi ve SQL Server için Python sürücüsünü yüklemek için [macOS 'ta SQL Server kullanarak Python uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)bölümünde **1,2**, **1,3**ve **2,1** adımlarını kullanın.
+  Homebrew ve Python 'u, ODBC sürücüsünü ve SQLCMD 'yi ve SQL Server için Python sürücüsünü yüklemek için [macOS 'ta SQL Server kullanarak Python uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)bölümünde **1,2** , **1,3** ve **2,1** adımlarını kullanın.
 
   Daha fazla bilgi için bkz. [macOS 'Ta MICROSOFT ODBC sürücüsü](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
 
@@ -81,7 +81,7 @@ Python ve Azure SQL veritabanı 'nda veritabanını daha fazla incelemek için b
 
 Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
@@ -92,7 +92,7 @@ Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bil
 
 ## <a name="create-code-to-query-your-database"></a>Veritabanınızı sorgulamak için kod oluşturma 
 
-1. Bir metin düzenleyicisinde, *SQLtest.py*adlı yeni bir dosya oluşturun.  
+1. Bir metin düzenleyicisinde, *SQLtest.py* adlı yeni bir dosya oluşturun.  
    
 1. Aşağıdaki kodu ekleyin. ,, Ve için kendi değerlerinizi yerine koyun \<server> \<database> \<username> \<password> .
    
@@ -130,6 +130,5 @@ Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bil
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure SQL veritabanı 'nda ilk veritabanınızı tasarlama](design-first-database-tutorial.md)
-- [SQL Server için Microsoft Python sürücüleri](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)
+- [SQL Server için Microsoft Python sürücüleri](/sql/connect/python/python-driver-for-sql-server/)
 - [Python Geliştirici Merkezi](https://azure.microsoft.com/develop/python/?v=17.23h)
-

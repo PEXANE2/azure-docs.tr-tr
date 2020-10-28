@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7d7dc8564ee35bcd8bfd92d996d07e1d0c365806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776502"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678370"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Bilgi Bankası 'nda önerilen etkin öğrenme sorularını kabul edin
 
@@ -22,15 +22,15 @@ Etkin öğrenme, öneriyi onayladıktan sonra bilgi bankasını veya Arama Hizme
 
 ## <a name="turn-on-active-learning"></a>Etkin öğrenmeyi açma
 
-Önerilen soruları görmek için Soru-Cevap Oluşturma kaynağınız için [etkin öğrenmeyi açmanız](use-active-learning.md) gerekir.
+Önerilen soruları görmek için Soru-Cevap Oluşturma kaynağınız için [etkin öğrenmeyi açmanız](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/active-learning-suggestions) gerekir.
 
 ## <a name="view-suggested-questions"></a>Önerilen soruları görüntüleyin
 
-1. Önerilen soruları görmek için Bilgi Bankası **Düzenle** sayfasında, **seçenekleri görüntüle**' yi seçin ve ardından **etkin öğrenme önerilerini göster**' i seçin.
+1. Önerilen soruları görmek için Bilgi Bankası **Düzenle** sayfasında, **seçenekleri görüntüle** ' yi seçin ve ardından **etkin öğrenme önerilerini göster** ' i seçin.
 
     [![Portalın düzenleme bölümünde, etkin öğrenmesinin yeni soru alternatiflerini görmek için önerileri göster ' i seçin.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. Yalnızca önerilere **göre filtrele**' yi seçerek önerileri göstermek için bilgi bankasını soru ve yanıt çiftleri ile filtreleyin.
+1. Yalnızca önerilere **göre filtrele** ' yi seçerek önerileri göstermek için bilgi bankasını soru ve yanıt çiftleri ile filtreleyin.
 
     [![Önerilere göre filtrele ' ye tıklayarak yalnızca etkin öğrenme 'nın önerilen soru alternatiflerini görüntüleyin.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
@@ -145,7 +145,7 @@ JSON gövdesi çeşitli ayarlara sahiptir:
 |`feedbackRecords`|array|Geri bildirim listesi.|
 |`userId`|string|Önerilen soruları kabul eden kişinin Kullanıcı KIMLIĞI. Kullanıcı KIMLIĞI biçimi size ait. Örneğin, bir e-posta adresi, mimarinizdeki geçerli bir kullanıcı KIMLIĞI olabilir. İsteğe bağlı.|
 |`userQuestion`|string|Kullanıcının sorgusunun tam metni. Gereklidir.|
-|`qnaID`|number|[Generateanswer yanıtında](metadata-generateanswer-usage.md#generateanswer-response-properties)bulunan soru kimliği. |
+|`qnaID`|sayı|[Generateanswer yanıtında](metadata-generateanswer-usage.md#generateanswer-response-properties)bulunan soru kimliği. |
 
 Örnek bir JSON gövdesi şöyle görünür:
 
@@ -337,7 +337,7 @@ Bu uygulamayı yeniden içeri aktardığınızda, etkin öğrenme bilgileri topl
 
 
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 Etkin öğrenimi kullanırken en iyi uygulamalar için bkz. [en iyi uygulamalar](../Concepts/best-practices.md#active-learning).
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c3630105e70ac28e7e9041aa9d5400f724401a5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 50188ad5fea0ee34a6896f0045e3bbcbfb553aaa
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210408"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677299"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Otomasyon hesabından Değişiklik İzleme ve Stok özelliğini etkinleştirme
 
@@ -19,7 +19,7 @@ Bu makalede, ortamınızdaki VM 'Ler için [değişiklik izleme ve envanteri](ov
 > [!NOTE]
 > Değişiklik İzleme ve envanteri etkinleştirirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * Makineleri yönetmek için [Otomasyon hesabı](../index.yml).
@@ -31,7 +31,7 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 
 ## <a name="enable-change-tracking-and-inventory"></a>Değişiklik İzlemeyi ve Sayımı Etkinleştirme
 
-1. Otomasyon hesabınıza gidin ve **yapılandırma yönetimi**altında **Envanter** veya **değişiklik izleme** ' yi seçin.
+1. Otomasyon hesabınıza gidin ve **yapılandırma yönetimi** altında **Envanter** veya **değişiklik izleme** ' yi seçin.
 
 2. Log Analytics çalışma alanını ve otomasyon hesabını seçip Değişiklik İzleme ve stoku etkinleştirmek için **Etkinleştir** ' e tıklayın. Kurulumun tamamlanabilmesi 15 dakika sürer.
 
@@ -39,7 +39,7 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 
 ## <a name="enable-azure-vms"></a>Azure VM 'lerini etkinleştirin
 
-1. Otomasyon hesabınızdan, **yapılandırma yönetimi**altında **Envanter** veya **değişiklik izleme** ' yi seçin.
+1. Otomasyon hesabınızdan, **yapılandırma yönetimi** altında **Envanter** veya **değişiklik izleme** ' yi seçin.
 
 2. **+ Azure VM 'Leri Ekle** ' ye tıklayın ve listeden bir veya daha fazla VM seçin. Etkin olmayan sanal makineler gri, seçilemez ve seçilemiyor. Azure VM 'Ler, Otomasyon hesabınızın konumu ne olduğuna bakılmaksızın herhangi bir bölgede bulunabilir. 
 
@@ -49,25 +49,25 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 
 ## <a name="enable-non-azure-vms"></a>Azure dışı VM 'Leri etkinleştirme
 
-Azure 'da bulunmayan makinelerin el ile eklenmesi gerekir.
+Azure 'da bulunmayan makinelerin el ile eklenmesi gerekir. Windows veya Linux için Log Analytics aracısını, önce makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak ve ardından Azure ilkesi 'ni kullanarak, [ *Linux* veya *Windows* Azure Arc makineler yerleşik ilkesine dağıtım Log Analytics aracısını](../../governance/policy/samples/built-in-policies.md#monitoring) atamak için önerilir. Makineleri VM'ler için Azure İzleyici de izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
 
-1. Otomasyon hesabınızdan, **yapılandırma yönetimi**altında **Envanter** veya **değişiklik izleme** ' yi seçin.
+1. Otomasyon hesabınızdan, **yapılandırma yönetimi** altında **Envanter** veya **değişiklik izleme** ' yi seçin.
 
-2. **Azure dışı makine Ekle**' ye tıklayın. Bu eylem, makinenin Değişiklik İzleme ve envanter işlemlerine raporlamaya başlayabilmesi [için Log Analytics aracısını Windows için yüklemek ve yapılandırmak üzere yönergeler](../../azure-monitor/platform/log-analytics-agent.md) içeren yeni bir tarayıcı penceresi açar. Şu anda Operations Manager tarafından yönetilen bir makine etkinleştiriyorsanız, yeni bir aracı gerekli değildir ve çalışma alanı bilgileri mevcut aracıya girilir.
+2. **Azure dışı makine Ekle** ' ye tıklayın. Bu eylem, makinenin Değişiklik İzleme ve envanter işlemlerine raporlamaya başlayabilmesi [için Log Analytics aracısını Windows için yüklemek ve yapılandırmak üzere yönergeler](../../azure-monitor/platform/log-analytics-agent.md) içeren yeni bir tarayıcı penceresi açar. Şu anda Operations Manager tarafından yönetilen bir makine etkinleştiriyorsanız, yeni bir aracı gerekli değildir ve çalışma alanı bilgileri mevcut aracıya girilir.
 
 ## <a name="enable-machines-in-the-workspace"></a>Çalışma alanındaki makineleri etkinleştir
 
 Çalışma alanınıza zaten rapor veren el ile yüklenen makineler veya makineler Değişiklik İzleme için Azure Otomasyonu 'na eklenmelidir ve stokun etkinleştirilmesi gerekir.
 
-1. Otomasyon hesabınızdan, **yapılandırma yönetimi**altında **Envanter** veya **değişiklik izleme** ' yi seçin.
+1. Otomasyon hesabınızdan, **yapılandırma yönetimi** altında **Envanter** veya **değişiklik izleme** ' yi seçin.
 
-2. **Makineleri Yönet**' i seçin. Daha önce **tüm mevcut ve gelecekteki makinelerde etkinleştir** seçeneğini belirlediyseniz, **makineleri Yönet** seçeneği gri olabilir
+2. **Makineleri Yönet** ' i seçin. Daha önce **tüm mevcut ve gelecekteki makinelerde etkinleştir** seçeneğini belirlediyseniz, **makineleri Yönet** seçeneği gri olabilir
 
     ![Kayıtlı aramalar](media/enable-from-automation-account/manage-machines.png)
 
 3. Tüm kullanılabilir makineler için Değişiklik İzleme ve stoku etkinleştirmek üzere **makineleri Yönet** sayfasında **kullanılabilir tüm makinelerde etkinleştir** ' i seçin. Bu eylem, tek başına makineleri eklemek için denetimi devre dışı bırakır ve çalışma alanına raporlayan tüm makineleri, bilgisayar grubu kayıtlı arama sorgusuna ekler. Seçildiğinde, bu eylem **makineleri Yönet** seçeneğini devre dışı bırakır.
 
-4. Tüm kullanılabilir makineler ve gelecekteki makineler için özelliği etkinleştirmek üzere **tüm kullanılabilir ve gelecekteki makinelerde etkinleştir**' i seçin. Bu seçenek, kayıtlı arama ve kapsam yapılandırmasını çalışma alanından siler ve çalışma alanına raporlama yapan tüm Azure ve Azure dışı makineler için özelliği açar. Seçildiğinde, bu eylem, hiçbir kapsam yapılandırması bulunmadığından **makineleri Yönet** seçeneğini kalıcı olarak devre dışı bırakır.
+4. Tüm kullanılabilir makineler ve gelecekteki makineler için özelliği etkinleştirmek üzere **tüm kullanılabilir ve gelecekteki makinelerde etkinleştir** ' i seçin. Bu seçenek, kayıtlı arama ve kapsam yapılandırmasını çalışma alanından siler ve çalışma alanına raporlama yapan tüm Azure ve Azure dışı makineler için özelliği açar. Seçildiğinde, bu eylem, hiçbir kapsam yapılandırması bulunmadığından **makineleri Yönet** seçeneğini kalıcı olarak devre dışı bırakır.
 
     > [!NOTE]
     > Bu seçenek Log Analytics içindeki kayıtlı arama ve kapsam yapılandırmasını sildiği için, bu seçeneği seçmeden önce Log Analytics çalışma alanındaki tüm silme kilitlerini kaldırmak önemlidir. Bunu yapmazsanız, bu seçenek yapılandırmaların kaldırılmasına neden olur ve bunları el ile kaldırmanız gerekir.

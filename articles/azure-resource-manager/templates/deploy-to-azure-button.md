@@ -2,17 +2,24 @@
 title: Azure'a Dağıt düğmesi
 description: Bir GitHub deposundan Azure Resource Manager şablonları dağıtmak için düğmeyi kullanın.
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 62a0a8b0336d9a7fcf00efb172775b9606bcef98
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079465"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675389"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>GitHub deposundan şablon dağıtmak için bir dağıtım düğmesi kullanın
 
-Bu makalede, bir GitHub deposundan şablon dağıtmak için **Azure 'Da dağıtma** düğmesinin nasıl kullanılacağı açıklanır. Düğmeyi doğrudan GitHub deponuzdaki README.md dosyasına veya depoya başvuran bir Web sayfasına ekleyebilirsiniz. Bu yöntem yalnızca kaynak grubu düzeyi dağıtımını destekler.
+Bu makalede, bir GitHub deposundan şablon dağıtmak için **Azure 'Da dağıtma** düğmesinin nasıl kullanılacağı açıklanır. Düğme doğrudan GitHub deponuzdaki README.md dosyasına eklenebilir. İsterseniz, depoya başvuran bir Web sayfasına düğmeyi de ekleyebilirsiniz.
+
+Dağıtım kapsamı, şablon şemasına göre belirlenir. Daha fazla bilgi için bkz.
+
+* [kaynak grupları](deploy-to-resource-group.md)
+* [Aboneliklerin](deploy-to-subscription.md)
+* [Yönetim grupları](deploy-to-management-group.md)
+* [kiracılar](deploy-to-tenant.md).
 
 ## <a name="use-common-image"></a>Ortak görüntü kullan
 
@@ -28,7 +35,7 @@ Görüntü şöyle görünür:
 
 ## <a name="create-url-for-deploying-template"></a>Şablon dağıtmak için URL Oluştur
 
-Şablonunuzun URL 'sini oluşturmak için, deponuzdaki şablonun ham URL 'SI ile başlayın. Ham URL 'yi görmek için **RAW**' ı seçin.
+Şablonunuzun URL 'sini oluşturmak için, deponuzdaki şablonun ham URL 'SI ile başlayın. Ham URL 'yi görmek için **RAW** ' ı seçin.
 
 :::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="Ham Seç":::
 
@@ -38,7 +45,7 @@ URL biçimi:
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Sonra URL 'yi kodlayın. Çevrimiçi bir kodlayıcı kullanabilir veya bir komut çalıştırabilirsiniz. Aşağıdaki PowerShell örneği, bir değeri nasıl bir değerin kodlayagösterdiğini gösterir.
+Ardından, URL 'yi bir URL kodlu değere dönüştürün. Çevrimiçi bir kodlayıcı kullanabilir veya bir komut çalıştırabilirsiniz. Aşağıdaki PowerShell örneği, bir değeri nasıl bir değerin kodlayagösterdiğini gösterir.
 
 ```powershell
 [uri]::EscapeDataString($url)

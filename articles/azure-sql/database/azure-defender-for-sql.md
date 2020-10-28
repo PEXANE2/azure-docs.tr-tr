@@ -12,12 +12,12 @@ manager: rkarlin
 author: memildin
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: d567876e0210c025fa34c5b82791eafe4cdff561
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d147303df43c4f86843df518c71316e6a97b6671
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372162"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678087"
 ---
 # <a name="azure-defender-for-sql"></a>SQL için Azure Defender
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -31,7 +31,7 @@ Azure Defender, SQL güvenlik açığı değerlendirmesi ve Gelişmiş tehdit ko
 - [Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md) , olası veritabanı güvenlik açıklarını düzeltebileceğiniz, izleyebileceğiniz ve bu sorunları gidermenize yardımcı olabilecek, kolay yapılandırmalı bir hizmettir. Güvenlik durumlarınızın görünürlüğünü sağlar ve güvenlik sorunlarını çözmek ve veritabanınızın Fortifications artırılmasına yönelik eylem yapılabilir adımları içerir.
 - [Gelişmiş Tehdit Koruması](threat-detection-overview.md), veritabanlarınıza erişme veya bunları kullanma konusunda olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri belirler. Veritabanınızı sürekli şüpheli etkinlikler için izler ve olası güvenlik açıkları, Azure SQL ekleme saldırıları ve anormal veritabanı erişim desenleri hakkında anında güvenlik uyarıları sağlar. Gelişmiş Tehdit Koruması uyarıları, şüpheli etkinliğin ayrıntılarının yanı sıra tehdidi araştırmak ve ortadan kaldırmak için önerilen eylemleri de içerir.
 
-Bu dahil edilen tüm özellikleri etkinleştirmek için SQL için Azure Defender 'ı etkinleştirin. Tek tıklamayla Azure Defender ' ı [sunucunuzdaki](logical-servers.md) tüm veritabanları için Azure 'DA veya SQL yönetilen Örneğinizde etkinleştirebilirsiniz. Azure Defender ayarlarının etkinleştirilmesi veya yönetilmesi, [SQL Güvenlik Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) rolüne veya veritabanı ya da Sunucu Yöneticisi rollerinden birine ait olmalıdır.
+SQL için Azure Defender'ı bir kez etkinleştirdiğinizde dahil edilen tüm bu özellikleri de etkinleştirirsiniz. Tek tıklamayla Azure Defender ' ı [sunucunuzdaki](logical-servers.md) tüm veritabanları için Azure 'DA veya SQL yönetilen Örneğinizde etkinleştirebilirsiniz. Azure Defender ayarlarının etkinleştirilmesi veya yönetilmesi, [SQL Güvenlik Yöneticisi](../../role-based-access-control/built-in-roles.md#sql-security-manager) rolüne veya veritabanı ya da Sunucu Yöneticisi rollerinden birine ait olmalıdır.
 
 SQL fiyatlandırması için Azure Defender hakkında daha fazla bilgi için [Azure Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/)bakın.
 
@@ -62,10 +62,10 @@ Belirli bir veritabanı için Azure Defender ayarlarını geçersiz kılmak üze
 
 Onay kutusu seçildikten sonra bu veritabanı için ilgili ayarları yapılandırabilirsiniz.
 
-Sunucunuzun veya yönetilen örneğinizin SQL ayarlarına yönelik Azure Defender, Azure Defender veritabanı bölmesinden de erişilebilir. Ana Azure Defender bölmesindeki **Ayarlar** ' a ve ardından **SQL Server ayarları için Azure Defender**' ı görüntüle ' ye tıklayın.
+Sunucunuzun veya yönetilen örneğinizin SQL ayarlarına yönelik Azure Defender, Azure Defender veritabanı bölmesinden de erişilebilir. Ana Azure Defender bölmesindeki **Ayarlar** ' a ve ardından **SQL Server ayarları için Azure Defender** ' ı görüntüle ' ye tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md) hakkında daha fazla bilgi
 - [Gelişmiş tehdit koruması](threat-detection-configure.md) hakkında daha fazla bilgi edinin
-- [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin
+- [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md) hakkında daha fazla bilgi edinin

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fbd523a38b3c4860316e45b8b7c03a17de19499
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75614532"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678339"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code ile C# Service Fabric uygulamaları geliştirme
 
@@ -18,7 +18,7 @@ ms.locfileid: "75614532"
 
 Bu makalede Visual Studio Code kullanarak bir .NET Core Service Fabric uygulamasının nasıl oluşturulacağı, dağıtılacağı ve hata ayıklamanın nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, VS Code için Service Fabric Reliable Services uzantısı ve geliştirme ortamınız için gereken tüm bağımlılıklar VS Code, zaten yüklemiş olduğunuz varsayılır. Daha fazla bilgi için bkz [. Başlarken](./service-fabric-get-started-vs-code.md#prerequisites).
 
@@ -34,7 +34,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-st
 ## <a name="open-the-application-in-vs-code"></a>Uygulamayı VS Code açın
 
 ### <a name="windows"></a>Windows
-Başlat menüsünde VS Code simgesine sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin. Hata ayıklayıcıyı hizmetlerinize eklemek için VS Code yönetici olarak çalıştırmanız gerekir.
+Başlat menüsünde VS Code simgesine sağ tıklayın ve **yönetici olarak çalıştır** ' ı seçin. Hata ayıklayıcıyı hizmetlerinize eklemek için VS Code yönetici olarak çalıştırmanız gerekir.
 
 ### <a name="linux"></a>Linux
 Terminal kullanarak, uygulamanın yerel olarak kopyalandığı dizinden/service-fabric-dotnet-core-getting-started/Services/CounterService yoluna gidin.
@@ -57,7 +57,7 @@ Uygulama artık VS Code çalışma alanınızda görünmelidir.
 ## <a name="deploy-the-application-to-the-local-cluster"></a>Uygulamayı yerel kümeye dağıtma
 Uygulamayı oluşturduktan sonra yerel kümeye dağıtabilirsiniz. 
 
-1. **Komut paletinden** **Service Fabric: Deploy Application (localhost) komutunu**seçin. Install işleminin çıktısı tümleşik terminale gönderilir.
+1. **Komut paletinden** **Service Fabric: Deploy Application (localhost) komutunu** seçin. Install işleminin çıktısı tümleşik terminale gönderilir.
 
    ![Uygulama komutunu VS Code içinde dağıt](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
@@ -74,7 +74,7 @@ Uygulamayı yerel kümeye dağıtmaya birlikte, uygulamayı uzak bir Azure Servi
 
 1. Uygulamanızı yukarıdaki yönergeleri kullanarak oluşturduğunuzdan emin olun. Oluşturulan yapılandırma dosyasını, `Cloud.json` yayımlamak istediğiniz uzak kümenin ayrıntılarıyla güncelleştirin.
 
-2. **Komut paletinden** **Service Fabric: uygulamayı Yayımla komutunu**seçin. Install işleminin çıktısı tümleşik terminale gönderilir.
+2. **Komut paletinden** **Service Fabric: uygulamayı Yayımla komutunu** seçin. Install işleminin çıktısı tümleşik terminale gönderilir.
 
    ![Uygulama komutunu VS Code içinde Yayımla](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
@@ -91,7 +91,7 @@ Bir kesme noktası ve hata ayıklama ayarlamak için aşağıdaki adımları izl
 
 2. Hata ayıklama yapılandırması menüsünden **.NET Core Ekle** ' yi seçin.
 
-   ![VS Code çalışma alanında hata ayıklama simgesi](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
+   ![Hata ayıklama yapılandırma menüsünde .NET Core Iliştirmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
 3. Service Fabric Explorer bir tarayıcıda açın: http: \/ /localhost: 19080/Explorer. Onay hizmetinin üzerinde çalıştığı birincil düğümü öğrenmek için **uygulamalar** ' a tıklayın ve ayrıntıya gidin. Aşağıdaki görüntüde, CounterService 'in birincil düğümünün düğüm 0 ' dır.
 

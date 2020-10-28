@@ -1,23 +1,23 @@
 ---
 title: Görüntü İşleme 'den OCR Docker Kapsayıcıları okuma
 titleSuffix: Azure Cognitive Services
-description: Resimlerden metin ve şirket içi ve Şirket içindeki metinleri ayıklamak için Görüntü İşleme 'dan OCR Docker kapsayıcılarını oku ' nı kullanın.
+description: Şirket içindeki görüntülerden ve belgelerden metin çıkarmak için Görüntü İşleme 'dan OCR Docker kapsayıcılarını oku ' nı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: Şirket içi, OCR, Docker, kapsayıcı
-ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07440b99d887ee6cb4b6d505ed7fb79f4c12c784
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536384"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677193"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Okuma OCR Docker kapsayıcılarını (Önizleme) yükler 
 
@@ -27,10 +27,12 @@ Kapsayıcılar, Görüntü İşleme API’lerini kendi ortamınızda çalıştı
 
 *Okuma* OCR KAPSAYıCıSı, JPEG, PNG, BMP, PDF ve TIFF dosya biçimleri desteğiyle, görüntülerden ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamanızı sağlar. Daha fazla bilgi için bkz. [okuma API 'si belgeleri](concept-recognizing-text.md#read-api).
 
-## <a name="read-3x-containers"></a>3. x kapsayıcılarını oku
-Önizleme aşamasında 3. x kapsayıcılarının iki sürümü mevcuttur. Her iki sürüm de önceki kapsayıcı için ek doğruluk ve özellikler sağlar.
+## <a name="read-31-container"></a>3,1 kapsayıcısını oku
 
-Okuma 3,0-Önizleme kapsayıcısı şunları sağlar:
+> [!NOTE]
+> Okuma 3,0-Önizleme kapsayıcısı kullanım dışı bırakılmıştır. 
+
+Okuma 3,1-Önizleme kapsayıcısı şunları sağlar:
 * Gelişmiş doğruluk için yeni modeller.
 * Aynı belge içinde birden çok dil için destek
 * Şunları destekler: Felemenkçe, Ingilizce, Fransızca, Almanca, Italyanca, Portekizce ve Ispanyolca.
@@ -38,14 +40,11 @@ Okuma 3,0-Önizleme kapsayıcısı şunları sağlar:
 * Daha büyük belgeler ve görüntüler için destek.
 * Güven puanları 0 ' dan 1 ' e kadar.
 * Hem yazdırma hem de el yazısı metin içeren belgeler için destek
-
-Okuma 3,1-Önizleme kapsayıcısı, ek özelliklerle v 3.0-Preview ile aynı avantajları sağlar:
-
 * Basitleştirilmiş Çince ve Japonca desteği.
 * yazdırılmış ve el yazısı metin için güven puanları ve Etiketler. 
 * Belgedeki yalnızca seçili olan sayfadan metin ayıklama özelliği.
 
-Hangi kapsayıcı sürümünün kullanılacağını değerlendirirken, v 3.1-Önizleme 'nin daha önceki bir önizleme durumunda olduğunu unutmayın. Bugün okuma 2,0 kapsayıcıları kullanıyorsanız, yeni sürümlerdeki değişiklikler hakkında bilgi edinmek için [geçiş kılavuzuna](read-container-migration-guide.md) bakın.
+Bugün okuma 2,0 kapsayıcıları kullanıyorsanız, yeni sürümlerdeki değişiklikler hakkında bilgi edinmek için [geçiş kılavuzuna](read-container-migration-guide.md) bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -53,9 +52,9 @@ Kapsayıcıları kullanmadan önce aşağıdaki önkoşulları karşılamanız g
 
 |Gerekli|Amaç|
 |--|--|
-|Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) üzerinde Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
+|Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) üzerinde Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> **Windows 'da** Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
 |Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının yanı sıra temel komutlar hakkında bilgi sahibi olmanız gerekir `docker` .| 
-|Görüntü İşleme kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>Uç nokta URI 'SI olan bir Azure **görüntü işleme** kaynağı ve ilişkili API anahtarı. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}**: **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}**: **genel bakış** sayfasında belirtilen bitiş noktası|
+|Görüntü İşleme kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>Uç nokta URI 'SI olan bir Azure **görüntü işleme** kaynağı ve ilişkili API anahtarı. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}** : **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **genel bakış** sayfasında belirtilen bitiş noktası|
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
@@ -93,7 +92,6 @@ Okuma için kapsayıcı görüntüleri kullanılabilir.
 | Kapsayıcı | Container Registry/depo/görüntü adı |
 |-----------|------------|
 | Okuma 2,0-Önizleme | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Okuma 3,0-Önizleme | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
 | Okuma 3,1-Önizleme | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)Bir kapsayıcı görüntüsünü indirmek için komutunu kullanın.
@@ -104,12 +102,6 @@ Okuma için kapsayıcı görüntüleri kullanılabilir.
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
-```
-
-# <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
-
-```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview
 ```
 
 # <a name="version-20-preview"></a>[Sürüm 2,0-Önizleme](#tab/version-2)
@@ -152,24 +144,6 @@ ApiKey={API_KEY}
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
-# <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-
-```
-
-Şu komut:
-
-* Kapsayıcı görüntüsünden okuma kapsayıcısını çalıştırır.
-* 8 CPU çekirdeği ve 18 gigabayt (GB) bellek ayırır.
-* TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
-* Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
-
 # <a name="version-20-preview"></a>[Sürüm 2,0-Önizleme](#tab/version-2)
 
 ```bash
@@ -195,7 +169,7 @@ Komuta [examples](./computer-vision-resource-container-config.md#example-docker-
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Kapsayıcıyı çalıştırmak için, ve seçenekleri belirtilmelidir; Aksi takdirde kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
 
-Daha yüksek aktarım hızına ihtiyacınız varsa (örneğin, çok sayfalı dosyaları işlerken), [Azure depolama](https://docs.microsoft.com/azure/storage/common/storage-account-create) ve [Azure kuyruğu](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction)kullanarak [bir Kubernetes kümesine](deploy-computer-vision-on-premises.md)birden çok v 3.0 veya v 3.1 kapsayıcısı dağıtmanızı düşünün.
+Daha yüksek aktarım hızına ihtiyacınız varsa (örneğin, çok sayfalı dosyaları işlerken), [Azure depolama](https://docs.microsoft.com/azure/storage/common/storage-account-create) ve [Azure kuyruğu](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction)kullanarak [bir Kubernetes kümesinde](deploy-computer-vision-on-premises.md)birden çok kapsayıcı dağıtmaya göz önünde bulundurun.
 
 İşleme için görüntüleri depolamak üzere Azure Storage kullanıyorsanız, kapsayıcıyı çağırırken kullanılacak bir [bağlantı dizesi](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string) oluşturabilirsiniz.
 
@@ -219,10 +193,6 @@ Kapsayıcı REST tabanlı sorgu tahmin uç noktası API’lerini sağlar.
 
 Kapsayıcı API’leri için `http://localhost:5000` konağını kullanın. Swagger yolunu şurada görebilirsiniz: `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` .
 
-# <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
-
-Kapsayıcı API’leri için `http://localhost:5000` konağını kullanın. Swagger yolunu şurada görebilirsiniz: `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` .
-
 # <a name="version-20-preview"></a>[Sürüm 2,0-Önizleme](#tab/version-2)
 
 Kapsayıcı API’leri için `http://localhost:5000` konağını kullanın. Swagger yolunu şurada görebilirsiniz: `http://localhost:5000/swagger/vision-v2.0-preview-read/swagger.json` .
@@ -237,7 +207,7 @@ Kapsayıcı API’leri için `http://localhost:5000` konağını kullanın. Swag
 `POST /vision/v3.1/read/analyze` `GET /vision/v3.1/read/operations/{operationId}` Görüntü işleme hizmetinin ilgili Rest işlemlerini nasıl kullandığına benzer şekilde bir görüntüyü zaman uyumsuz olarak okumak için konser içindeki ve işlemlerini kullanabilirsiniz. Zaman uyumsuz POST yöntemi, `operationId` HTTP GET isteğine tanımlayıcı olarak kullanılan bir döndürür.
 
 
-Swagger kullanıcı arabiriminden, `asyncBatchAnalyze` tarayıcıda genişletmek için öğesini seçin. Ardından **deneyin**  >  **dosyayı**seçin öğesini seçin. Bu örnekte, aşağıdaki görüntüyü kullanacağız:
+Swagger kullanıcı arabiriminden, `asyncBatchAnalyze` tarayıcıda genişletmek için öğesini seçin. Ardından **deneyin**  >  **dosyayı** seçin öğesini seçin. Bu örnekte, aşağıdaki görüntüyü kullanacağız:
 
 ![sekmeler vs alanları](media/tabs-vs-spaces.png)
 
@@ -310,80 +280,11 @@ Zaman uyumsuz GÖNDERI başarıyla çalıştırıldığında, bir **HTTP 202** d
 }
 ```
 
-# <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
-
-`POST /vision/v3.0/read/analyze` `GET /vision/v3.0/read/operations/{operationId}` Görüntü işleme hizmetinin ilgili Rest işlemlerini nasıl kullandığına benzer şekilde bir görüntüyü zaman uyumsuz olarak okumak için konser içindeki ve işlemlerini kullanabilirsiniz. Zaman uyumsuz POST yöntemi, `operationId` HTTP GET isteğine tanımlayıcı olarak kullanılan bir döndürür.
-
-Swagger kullanıcı arabiriminden, `asyncBatchAnalyze` tarayıcıda genişletmek için öğesini seçin. Ardından **deneyin**  >  **dosyayı**seçin öğesini seçin. Bu örnekte, aşağıdaki görüntüyü kullanacağız:
-
-![sekmeler vs alanları](media/tabs-vs-spaces.png)
-
-Zaman uyumsuz GÖNDERI başarıyla çalıştırıldığında, bir **HTTP 202** durum kodu döndürür. Yanıtın bir parçası olarak, `operation-location` isteğin sonuç uç noktasını tutan bir üst bilgi vardır.
-
-```http
- content-length: 0
- date: Fri, 04 Sep 2020 16:23:01 GMT
- operation-location: http://localhost:5000/vision/v3.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
- server: Kestrel
-```
-
-, `operation-location` Tam URL 'dir ve bır http get aracılığıyla erişilir. Önceki görüntüden URL 'yi yürütmenin JSON yanıtı aşağıda verilmiştir `operation-location` :
-
-```json
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-09-02T10:24:49Z",
-  "lastUpdatedDateTime": "2020-09-02T10:24:50Z",
-  "analyzeResult": {
-    "version": "3.0.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 2.12,
-        "width": 502,
-        "height": 252,
-        "unit": "pixel",
-        "language": "",
-        "lines": [
-          {
-            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
-            "text": "Tabs vs",
-            "words": [
-              {
-                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
-                "text": "Tabs",
-                "confidence": 0.981
-              },
-              {
-                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
-                "text": "vs",
-                "confidence": 0.958
-              }
-            ]
-          },
-          {
-            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
-            "text": "paces",
-            "words": [
-              {
-                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
-                "text": "paces",
-                "confidence": 0.918
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
 # <a name="version-20-preview"></a>[Sürüm 2,0-Önizleme](#tab/version-2)
 
 `POST /vision/v2.0/read/core/asyncBatchAnalyze` `GET /vision/v2.0/read/operations/{operationId}` Görüntü işleme hizmetinin ilgili Rest işlemlerini nasıl kullandığına benzer şekilde bir görüntüyü zaman uyumsuz olarak okumak için konser içindeki ve işlemlerini kullanabilirsiniz. Zaman uyumsuz POST yöntemi, `operationId` HTTP GET isteğine tanımlayıcı olarak kullanılan bir döndürür.
 
-Swagger kullanıcı arabiriminden, `asyncBatchAnalyze` tarayıcıda genişletmek için öğesini seçin. Ardından **deneyin**  >  **dosyayı**seçin öğesini seçin. Bu örnekte, aşağıdaki görüntüyü kullanacağız:
+Swagger kullanıcı arabiriminden, `asyncBatchAnalyze` tarayıcıda genişletmek için öğesini seçin. Ardından **deneyin**  >  **dosyayı** seçin öğesini seçin. Bu örnekte, aşağıdaki görüntüyü kullanacağız:
 
 ![sekmeler vs alanları](media/tabs-vs-spaces.png)
 
@@ -453,10 +354,6 @@ Bir görüntüyü eşzamanlı olarak okumak için aşağıdaki işlemi kullanabi
 
 `POST /vision/v3.1/read/syncAnalyze` 
 
-# <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
-
-`POST /vision/v3.0/read/syncAnalyze`
-
 # <a name="version-20-preview"></a>[Sürüm 2,0-Önizleme](#tab/version-2)
 
 `POST /vision/v2.0/read/core/Analyze`
@@ -485,7 +382,7 @@ Kapsayıcıyı bir çıkış [bağlaması](./computer-vision-resource-container-
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Bilişsel hizmetler kapsayıcıları, Azure hesabınızdaki ilgili kaynağı kullanarak faturalandırma bilgilerini Azure 'a gönderir.
 

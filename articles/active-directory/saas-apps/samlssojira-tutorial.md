@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 44077c2685ce78b7ba1ea140a34dd75dcf5c7c46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b947ad28283912e0ba75debd8f4471d693be888
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543474"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675538"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Öğretici: çözüm GmbH ile Jira için SAML SSO ile tümleştirme Azure Active Directory
 
@@ -27,7 +27,7 @@ Azure AD ile bir çözüm GmbH ile Jira tarafından sağlanan SAML SSO 'SU tüml
 * Kullanıcılarınızın cira tarafından çözümleme GmbH (çoklu oturum açma) için SAML SSO 'yu kullanarak Azure AD hesaplarıyla otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -45,7 +45,7 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 ## <a name="adding-an-enterprise-application-for-single-sign-on"></a>Çoklu oturum açma için kurumsal uygulama ekleme
 
-Azure AD 'de çoklu oturum açmayı ayarlamak için yeni bir kurumsal uygulama eklemeniz gerekir. Galeride, bu için önceden yapılandırılmış bir uygulama önayarı vardır, bu, **cira tarafından çözümleme GmbH Için SAML SSO 'su**.
+Azure AD 'de çoklu oturum açmayı ayarlamak için yeni bir kurumsal uygulama eklemeniz gerekir. Galeride, bu için önceden yapılandırılmış bir uygulama önayarı vardır, bu, **cira tarafından çözümleme GmbH Için SAML SSO 'su** .
 
 **Galeriden, cira tarafından çözüm GmbH için SAML SSO 'SU eklemek için aşağıdaki adımları uygulayın:**
 
@@ -53,7 +53,7 @@ Azure AD 'de çoklu oturum açmayı ayarlamak için yeni bir kurumsal uygulama e
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve ardından **tüm uygulamalar**' a tıklayın.
+2. **Kurumsal uygulamalar** ' a gidin ve ardından **tüm uygulamalar** ' a tıklayın.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Azure AD 'de çoklu oturum açmayı ayarlamak için yeni bir kurumsal uygulama e
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Jira by Resolution GmbH Için SAML SSO**yazın, sonuç panelinden **cira tarafından Resolution GmbH için SAML SSO** 'yu seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın. Ayrıca kurumsal uygulamanın adını da değiştirebilirsiniz.
+4. Arama kutusuna **Jira by Resolution GmbH Için SAML SSO** yazın, sonuç panelinden **cira tarafından Resolution GmbH için SAML SSO** 'yu seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın. Ayrıca kurumsal uygulamanın adını da değiştirebilirsiniz.
 
      ![Sonuç listesinde Jira tarafından çözüm GmbH için SAML SSO 'SU](common/search-new-app.png)
 
 ## <a name="configure-and-test-single-sign-on-with-the-saml-sso-plugin-and-azure-ad"></a>SAML SSO eklentisi ve Azure AD ile çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, bir Azure AD kullanıcısı için Jira 'da çoklu oturum açmayı test edecek ve yapılandıracaksınız. Bu, **Britta Simon**adlı bir test kullanıcısı için yapılır.
+Bu bölümde, bir Azure AD kullanıcısı için Jira 'da çoklu oturum açmayı test edecek ve yapılandıracaksınız. Bu, **Britta Simon** adlı bir test kullanıcısı için yapılır.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve çözümleme GmbH ile ilgili SAML SSO 'SU ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirmeniz gerekir:
@@ -89,7 +89,7 @@ Jira tarafından çözümleme GmbH için SAML SSO ile çoklu oturum açmayı yap
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. **Çoklu oturum açma yöntemi seç**için, çoklu oturum açmayı etkinleştirmek üzere **SAML** modunu seçin.
+2. **Çoklu oturum açma yöntemi seç** için, çoklu oturum açmayı etkinleştirmek üzere **SAML** modunu seçin.
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
@@ -122,7 +122,7 @@ Jira tarafından çözümleme GmbH için SAML SSO ile çoklu oturum açmayı yap
 
 1. Farklı bir Web tarayıcısı penceresinde, Jira örneğiniz için yönetici olarak oturum açın.
 
-2. Sağ tarafta dişli üzerine gelin ve **Uygulamaları Yönet**' e tıklayın.
+2. Sağ tarafta dişli üzerine gelin ve **Uygulamaları Yönet** ' e tıklayın.
     
     ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/addon1.png)
 
@@ -140,7 +140,7 @@ Jira tarafından çözümleme GmbH için SAML SSO ile çoklu oturum açmayı yap
 
     ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/store-3.png)
 
-6. Ardından **Yönet**' e tıklayın.
+6. Ardından **Yönet** ' e tıklayın.
 
     ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/store-4.png)
     
@@ -162,9 +162,9 @@ Jira tarafından çözümleme GmbH için SAML SSO ile çoklu oturum açmayı yap
     
     c. Kimlik sağlayıcısı (ör. Azure AD) için (isteğe bağlı) bir **Açıklama** ekleyin.
     
-    d. **İleri**’ye tıklayın.
+    d. **İleri** ’ye tıklayın.
     
-11. **Kimlik sağlayıcısı yapılandırma** sayfasında **İleri**' ye tıklayın.
+11. **Kimlik sağlayıcısı yapılandırma** sayfasında **İleri** ' ye tıklayın.
  
     ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/addon5b.png)
 
@@ -200,7 +200,7 @@ Jira tarafından çözümleme GmbH için SAML SSO ile çoklu oturum açmayı yap
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır. Kullanıcıyla, çoklu oturum açmayı test edersiniz.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -208,35 +208,35 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. **Kullanıcı özellikleri**' nde aşağıdaki adımları gerçekleştirin:
+3. **Kullanıcı özellikleri** ' nde aşağıdaki adımları gerçekleştirin:
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Britta Simon**girin.
+    a. **Ad** alanına **Britta Simon** girin.
   
     b. **Kullanıcı adı** alanına, girin <b>BrittaSimon@contoso.com</b> .
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, kurumsal uygulamaya Britta Simon ekleyerek çoklu oturum açmayı kullanmasına izin verir.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin. 
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin. 
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, Bu öğreticinin başlangıcında oluşturduğunuz kurumsal uygulamayı arayın. Öğreticinin adımlarını izlediyseniz, bu, **cira tarafından çözüm GmbH Için SAML SSO**adı verilir. Başka bir ad verildiyse, bu adı arayın.
+2. Uygulamalar listesinde, Bu öğreticinin başlangıcında oluşturduğunuz kurumsal uygulamayı arayın. Öğreticinin adımlarını izlediyseniz, bu, **cira tarafından çözüm GmbH Için SAML SSO** adı verilir. Başka bir ad verildiyse, bu adı arayın.
 
     ![Uygulamalar listesindeki Jira by Resolution GmbH bağlantısı için SAML SSO](common/all-applications.png)
 
-3. Sol bölmede **Kullanıcılar ve gruplar**' a tıklayın.
+3. Sol bölmede **Kullanıcılar ve gruplar** ' a tıklayın.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. **Kullanıcı Ekle** ' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
@@ -254,7 +254,7 @@ Azure AD kullanıcılarının, cira tarafından çözüm GmbH için SAML SSO 'ya
 
 1. Jira örneğinde yönetici olarak oturum açın.
 
-2. Dişli 'nin üzerine gelin ve **Kullanıcı yönetimi**' ni seçin.
+2. Dişli 'nin üzerine gelin ve **Kullanıcı yönetimi** ' ni seçin.
 
    ![Çalışan Ekle](./media/samlssojira-tutorial/user1.png)
 
@@ -262,7 +262,7 @@ Azure AD kullanıcılarının, cira tarafından çözüm GmbH için SAML SSO 'ya
 
     ![Çalışan Ekle](./media/samlssojira-tutorial/user2.png) 
 
-4. **Kullanıcı yönetimi** sekmesi bölümünde **Kullanıcı oluştur**' a tıklayın.
+4. **Kullanıcı yönetimi** sekmesi bölümünde **Kullanıcı oluştur** ' a tıklayın.
 
     ![Çalışan Ekle](./media/samlssojira-tutorial/user3-new.png) 
 
@@ -272,7 +272,7 @@ Azure AD kullanıcılarının, cira tarafından çözüm GmbH için SAML SSO 'ya
 
     a. **E-posta adresi** metin kutusuna kullanıcının e-posta adresini yazın: <b>BrittaSimon@contoso.com</b> .
 
-    b. **Tam ad** metin kutusuna kullanıcının tam adını yazın: **Britta Simon**.
+    b. **Tam ad** metin kutusuna kullanıcının tam adını yazın: **Britta Simon** .
 
     c. Kullanıcı **adı** metin kutusuna kullanıcının e-posta adresini yazın: <b>BrittaSimon@contoso.com</b> . 
 
@@ -284,25 +284,25 @@ Azure AD kullanıcılarının, cira tarafından çözüm GmbH için SAML SSO 'ya
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Jira tarafından çözüm GmbH için SAML SSO 'SU ' ne tıkladığınızda, SSO 'yu ayarladığınız bir çözüm GmbH tarafından Jira tarafından otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Jira tarafından çözüm GmbH için SAML SSO 'SU ' ne tıkladığınızda, SSO 'yu ayarladığınız bir çözüm GmbH tarafından Jira tarafından otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 Ayrıca, öğesine gittiğinizde çoklu oturum açmayı test edebilirsiniz `https://<server-base-url>/plugins/servlet/samlsso` . **\<server-base-url>** JIRA örneğinizin temel URL 'si ile değiştirin.
 
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>Jira için çoklu oturum açma yeniden yönlendirmeyi etkinleştirme
 
-Daha önce bölümünde belirtildiği gibi, çoklu oturum açmayı tetiklemenin Şu anda iki yolu vardır. **Azure Portal** kullanarak ya da **Jira örneğiniz için özel bir bağlantı**kullanarak. Çözüme göre SAML SSO eklentisi GmbH, yalnızca **Jira örneğinizi gösteren herhangi BIR URL 'ye erişerek**çoklu oturum açmayı tetiklemeniz de sağlar.
+Daha önce bölümünde belirtildiği gibi, çoklu oturum açmayı tetiklemenin Şu anda iki yolu vardır. **Azure Portal** kullanarak ya da **Jira örneğiniz için özel bir bağlantı** kullanarak. Çözüme göre SAML SSO eklentisi GmbH, yalnızca **Jira örneğinizi gösteren herhangi BIR URL 'ye erişerek** çoklu oturum açmayı tetiklemeniz de sağlar.
 
 Temelde, Jira 'ya erişen tüm kullanıcılar, eklentisindeki bir seçenek etkinleştirildikten sonra çoklu oturum açma 'ya yönlendirilir.
 
-SSO yeniden yönlendirmeyi etkinleştirmek için, **Jira örneğiniz**içinde aşağıdakileri yapın:
+SSO yeniden yönlendirmeyi etkinleştirmek için, **Jira örneğiniz** içinde aşağıdakileri yapın:
 
 1. Jira içindeki SAML SSO eklentisinin yapılandırma sayfasına erişin.
 1. Sol panelde **yeniden yönlendirme** ' ye tıklayın.
 
    ![Sol gezinmede yeniden yönlendirme bağlantısını vurgulayan Jira SAML SingleSignOn Plugin yapılandırma sayfasının kısmi ekran görüntüsü.](./media/samlssojira-tutorial/ssore1.png)
 
-1. Değer **SSO yeniden yönlendirmeyi etkinleştirin**.
+1. Değer **SSO yeniden yönlendirmeyi etkinleştirin** .
 
    ![Jira SAML SingleSignOn Plugin yapılandırma sayfasının, seçili "SSO yeniden yönlendirmeyi etkinleştir" onay kutusunu vurgulayan kısmi ekran görüntüsü.](./media/samlssojira-tutorial/ssore2.png) 
 
@@ -313,9 +313,8 @@ Seçeneği etkinleştirdikten sonra, ' ye gidildiğinde **Nosso etkinleştir** s
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

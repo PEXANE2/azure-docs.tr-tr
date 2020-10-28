@@ -3,13 +3,13 @@ title: 'Hızlı başlangıç: JavaScript ile bir yönetim grubu oluşturma'
 description: Bu hızlı başlangıçta, kaynaklarınızı bir kaynak hiyerarşisinde düzenlemek üzere bir yönetim grubu oluşturmak için JavaScript kullanırsınız.
 ms.date: 09/30/2020
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7a234a6619eafd650451ae5d6bce37388c824f33
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: devx-track-js
+ms.openlocfilehash: 965e4b8f81a26cab8f6e34cab3e51d6a97f5a6a6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91604697"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676225"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>Hızlı başlangıç: JavaScript ile bir yönetim grubu oluşturma
 
@@ -17,7 +17,7 @@ Yönetim grupları, birden çok abonelik üzerinde erişimi, ilkeyi ve uyumlulu�
 
 Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. Dizininiz için Azure 'da yönetim grupları hizmetini ayarlamak için ilk kez çalışan süreçler vardır. İşlem tamamlandığında bir bildirim alırsınız. Daha fazla bilgi için bkz. [yönetim gruplarının ilk kurulumu](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -90,7 +90,7 @@ JavaScript 'i Azure Kaynak Grafiği 'ni sorgulamak üzere etkinleştirmek için,
    node index.js --groupID "<NEW_MG_GROUP_ID>" --displayName "<NEW_MG_FRIENDLY_NAME>"
    ```
 
-   Her bir belirteç `<>` yer tutucusunu, sırasıyla _YÖNETIM grubu kimliğiniz_ ve _Yönetim grubu kolay adı_ile değiştirdiğinizden emin olun.
+   Her bir belirteç `<>` yer tutucusunu, sırasıyla _YÖNETIM grubu kimliğiniz_ ve _Yönetim grubu kolay adı_ ile değiştirdiğinizden emin olun.
 
    Betik kimlik doğrulamaya çalıştığında, terminalde aşağıdaki iletiye benzer bir ileti görüntülenir:
 

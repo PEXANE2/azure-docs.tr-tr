@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: b1836b1d0dc69a2a0b186a54974895eb0d8cd91a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6ca7a444f2a3d4babe220548edb10bd37784be7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265499"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678122"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services kotaları ve limitleri
@@ -32,7 +32,7 @@ Bu makalede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure M
 
 | Kaynak | Varsayılan Sınır |
 | --- | --- |
-| Tek bir abonelikteki [hesapları Media Services](media-services-account-concept.md) | 25 (sabit) |
+| Tek bir abonelikteki [hesapları Media Services](media-services-account-concept.md) | 100 (düzeltildi) |
 
 ## <a name="asset-limits"></a>Varlık sınırları
 
@@ -90,7 +90,7 @@ Toplam kayıt sayısı maksimum kotanın altında olsa da, hesabınızdaki 90 g�
 
 | Kaynak | Varsayılan Sınır |
 | --- | --- |
-| Media Services hesap başına [akış uç noktaları](streaming-endpoint-concept.md) (durdurulmuş veya çalışıyor)|2 |
+| Media Services hesap başına [akış uç noktaları](streaming-endpoint-concept.md) (durdurulmuş veya çalışıyor) | 2 |
 | Premium akış birimleri | 10 |
 | [Dinamik Bildirim Filtreleri](filters-dynamic-manifest-overview.md)|100|
 | [Akış Ilkeleri](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
@@ -102,14 +102,14 @@ Toplam kayıt sayısı maksimum kotanın altında olsa da, hesabınızdaki 90 g�
 
 ## <a name="protection-limits"></a>Koruma sınırları
 
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
-| [Içerik anahtarı ilkesi](content-key-policy-concept.md) başına seçenekler |30 | 
+| Kaynak | Varsayılan Sınır |
+| --- | --- |
+| [Içerik anahtarı ilkesi](content-key-policy-concept.md) başına seçenekler |30 |
 | Hesap başına Media Services anahtar teslim hizmetindeki her bir DRM türü için aylık lisans sayısı|1.000.000|
 
 ## <a name="support-ticket"></a>Destek bileti
 
-Düzeltilmeyen kaynaklar için bir [destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açarak kotaların ortaya çıkarılmasını isteyebilirsiniz. İsteğe bağlı istenen kota değişiklikleri, kullanım örneği senaryoları ve gerekli bölgeler üzerinde ayrıntılı bilgi ekleyin. <br/>Daha yüksek sınırlar elde etmek için başka Azure Media Services hesapları **oluşturmayın**.
+Düzeltilmeyen kaynaklar için bir [destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açarak kotaların ortaya çıkarılmasını isteyebilirsiniz. İsteğe bağlı istenen kota değişiklikleri, kullanım örneği senaryoları ve gerekli bölgeler üzerinde ayrıntılı bilgi ekleyin. <br/>Daha yüksek sınırlar elde etmek için başka Azure Media Services hesapları **oluşturmayın** .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

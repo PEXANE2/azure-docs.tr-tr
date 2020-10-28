@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 147247c663311cfb3e05a986c6fb2bffbb41158b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269752"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675209"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınıza (ıSE) kaynak ekleme
 
@@ -34,7 +34,7 @@ Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network
 
 Tümleştirme hizmeti ortamınızda (ıSE) çalışan Logic Apps oluşturmak için aşağıdaki adımları izleyin:
 
-1. Henüz açık değilse, ıSE 'nizi bulun ve açın. Ise menüsünde, **Ayarlar**' ın altında **Logic Apps**  >  **Ekle**' yi seçin.
+1. Henüz açık değilse, ıSE 'nizi bulun ve açın. Ise menüsünde, **Ayarlar** ' ın altında **Logic Apps**  >  **Ekle** ' yi seçin.
 
    ![ISE 'ye yeni mantıksal uygulama ekleme](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
@@ -47,10 +47,10 @@ Tümleştirme hizmeti ortamınızda (ıSE) çalışan Logic Apps oluşturmak iç
    | **Ad** | Evet | Oluşturulacak mantıksal uygulamanın adı |
    | **Abonelik** | Evet | Kullanılacak Azure aboneliğinin adı |
    | **Kaynak grubu** | Evet | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
-   | **Konum** | Evet | **Tümleştirme hizmeti ortamları**altında, henüz seçilmemişse kullanılacak Ise 'yi seçin. <p><p> **Önemli**: mantıksal uygulamalarınızı bir tümleştirme hesabıyla birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
+   | **Konum** | Evet | **Tümleştirme hizmeti ortamları** altında, henüz seçilmemişse kullanılacak Ise 'yi seçin. <p><p> **Önemli** : mantıksal uygulamalarınızı bir tümleştirme hesabıyla birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
    ||||
 
-1. İşiniz bittiğinde **Oluştur**'u seçin.
+1. İşiniz bittiğinde **Oluştur** 'u seçin.
 
 1. [Mantıksal uygulamanızı her zamanki şekilde oluşturmaya](../logic-apps/quickstart-create-first-logic-app-workflow.md)devam edin.
 
@@ -66,7 +66,7 @@ Oluşturma sırasında seçilen [ıSE SKU 'su](../logic-apps/connect-virtual-net
 
 ISE kullanan bir tümleştirme hesabı oluşturmak için aşağıdaki adımları izleyin:
 
-1. Henüz açık değilse, ıSE 'nizi bulun ve açın. Ise menüsünde, **Ayarlar**' ın altında **tümleştirme hesapları**  >  **Ekle**' yi seçin.
+1. Henüz açık değilse, ıSE 'nizi bulun ve açın. Ise menüsünde, **Ayarlar** ' ın altında **tümleştirme hesapları**  >  **Ekle** ' yi seçin.
 
    ![ISE 'ye yeni tümleştirme hesabı ekleme](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
@@ -80,10 +80,10 @@ ISE kullanan bir tümleştirme hesabı oluşturmak için aşağıdaki adımları
    | **Abonelik** | Evet | Kullanmak istediğiniz Azure aboneliğinin adı |
    | **Kaynak grubu** | Evet | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
    | **Fiyatlandırma katmanı** | Evet | Tümleştirme hesabı için kullanılacak Fiyatlandırma Katmanı |
-   | **Konum** | Evet | **Tümleştirme hizmeti ortamları**' nın altında, mantıksal uygulamalarınızın kullandığı Ise 'yi seçin, daha önce seçilmemişse. <p><p> **Önemli**: Tümleştirme hesabınızı Logic Apps ile birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
+   | **Konum** | Evet | **Tümleştirme hizmeti ortamları** ' nın altında, mantıksal uygulamalarınızın kullandığı Ise 'yi seçin, daha önce seçilmemişse. <p><p> **Önemli** : Tümleştirme hesabınızı Logic Apps ile birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
    ||||
 
-1. İşiniz bittiğinde **Oluştur**'u seçin.
+1. İşiniz bittiğinde **Oluştur** 'u seçin.
 
 1. [Mantıksal uygulamanızı, her zamanki şekilde tümleştirme hesabınıza bağlayın](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
@@ -95,13 +95,27 @@ ISE kullanan bir tümleştirme hesabı oluşturmak için aşağıdaki adımları
 
 ## <a name="add-ise-connectors"></a>ISE bağlayıcıları ekleme
 
-ISE 'nizi oluşturduktan sonra sunulan Microsoft tarafından yönetilen bağlayıcılar, mantıksal uygulama Tasarımcısı 'ndaki bağlayıcı seçicisinde otomatik olarak görünmez. Bu ıSE bağlayıcılarını kullanabilmeniz için, mantıksal uygulama Tasarımcısı 'nda görünmesi için bu bağlayıcıları el ile eklemeniz ve ıSE 'ye dağıtmanız gerekir.
+ISE 'nizi oluşturduktan sonra, yönetilen ıSE bağlayıcıları mantıksal uygulama Tasarımcısı 'ndaki bağlayıcı seçicisinde otomatik olarak görünmez. Bu ıSE bağlayıcılarını kullanabilmeniz için, mantıksal uygulama Tasarımcısı 'nda görünmesi için bu bağlayıcıları el ile eklemeniz ve ıSE 'ye dağıtmanız gerekir.
 
-1. ISE menüsünde, **Ayarlar**' ın altında, **yönetilen bağlayıcılar**' ı seçin. Araç çubuğunda **Ekle**' yi seçin.
+> [!IMPORTANT]
+> Yönetilen ıSE bağlayıcıları Şu anda [etiketleri](../azure-resource-manager/management/tag-support.md)desteklemezler. Etiketlemeyi zorlayan bir ilke ayarlarsanız, ıSE bağlayıcıları eklemeye çalışmak bu örneğe benzer bir hata vererek başarısız olabilir:
+> 
+> ```json
+> {
+>    "error": { 
+>       "code": "IntergrationServiceEnvironmentManagedApiDefinitionTagsNotSupported", 
+>       "message": "The tags are not supported in the managed API 'azureblob'."
+>    }
+> }
+> ```
+> 
+> Bu nedenle, ıSE bağlayıcıları eklemek için ilkenizi devre dışı bırakmanız veya kaldırmanız gerekir. 
+
+1. ISE menüsünde, **Ayarlar** ' ın altında, **yönetilen bağlayıcılar** ' ı seçin. Araç çubuğunda **Ekle** ' yi seçin.
 
    ![Yönetilen bağlayıcıları görüntüleme](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. **Yeni bir yönetilen bağlayıcı Ekle** bölmesinde, **bağlayıcı bul** listesini açın. Kullanmak istediğiniz, ancak henüz ıSE dağıtımı yapılmamış olan ıSE bağlayıcısını seçin. **Oluştur**’u seçin.
+1. **Yeni bir yönetilen bağlayıcı Ekle** bölmesinde, **bağlayıcı bul** listesini açın. Kullanmak istediğiniz, ancak henüz ıSE dağıtımı yapılmamış olan ıSE bağlayıcısını seçin. **Oluştur** ’u seçin.
 
    ![ISE 'de dağıtmak istediğiniz ıSE bağlayıcısını seçin](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
@@ -113,17 +127,17 @@ ISE 'nizi oluşturduktan sonra sunulan Microsoft tarafından yönetilen bağlay�
 
 ISE 'de özel bağlayıcılar kullanmak için, bu özel bağlayıcıları doğrudan ıSE içinden oluşturun.
 
-1. Henüz açık değilse, ıSE 'nizi bulun ve açın. Ise menüsünde, **Ayarlar**' ın altında **özel bağlayıcılar**  >  **Ekle**' yi seçin.
+1. Henüz açık değilse, ıSE 'nizi bulun ve açın. Ise menüsünde, **Ayarlar** ' ın altında **özel bağlayıcılar**  >  **Ekle** ' yi seçin.
 
    ![Özel bağlayıcı oluşturma](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 
 1. Özel Bağlayıcınız için kullanılacak ad, Azure aboneliği ve Azure kaynak grubunu (yeni veya var olan) sağlayın.
 
-1. **Konum** listesinden, **tümleştirme hizmeti ortamları** bölümünde, mantıksal uygulamalarınızın kullandığı Ise 'yi seçin ve **Oluştur**' u seçin, örneğin:
+1. **Konum** listesinden, **tümleştirme hizmeti ortamları** bölümünde, mantıksal uygulamalarınızın kullandığı Ise 'yi seçin ve **Oluştur** ' u seçin, örneğin:
 
    ![Örnek bilgiler seçiliyken "Logic Apps özel bağlayıcı oluştur" penceresinin gösterildiği ekran görüntüsü.](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
-1. Yeni özel bağlayıcınızı seçin ve ardından **Düzenle**' yi seçin, örneğin:
+1. Yeni özel bağlayıcınızı seçin ve ardından **Düzenle** ' yi seçin, örneğin:
 
    ![Özel bağlayıcıyı seçme ve düzenleme](./media/add-artifacts-integration-service-environment-ise/edit-custom-connectors.png)
 

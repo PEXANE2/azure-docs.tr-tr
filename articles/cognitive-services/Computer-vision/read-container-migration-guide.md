@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 09/21/2020
+ms.date: 10/23/2020
 ms.author: aahi
-ms.openlocfilehash: 856e73181ee02fe2bb21c4317ec8c733e2536d53
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 14b4e7217b6e902023e5e82f8dbd404e43b36ef0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973134"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676160"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Read v3. x OCR kapsayıcılarına geçiş
 
@@ -29,21 +29,11 @@ Görüntü İşleme okuma OCR kapsayıcısının 2. sürümünü kullanıyorsan�
 
 ## <a name="api-changes"></a>API değişiklikleri
 
-Read v3. x kapsayıcıları Görüntü İşleme API'si sürüm 3 ' ü kullanır ve aşağıdaki uç noktalara sahiptir:
-
-#### <a name="version-31-preview"></a>[Sürüm 3,1-Önizleme](#tab/version-3-1)
+Okuma v 3.1 kapsayıcısı Görüntü İşleme API'si sürüm 3 ' ü kullanır ve aşağıdaki uç noktalara sahiptir:
 
 * `/vision/v3.1-preview.2/read/analyzeResults/{operationId}`
 * `/vision/v3.1-preview.2/read/analyze`
 * `/vision/v3.1-preview.2/read/syncAnalyze`
-
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
-
-* `/vision/v3.0/read/analyzeResults/{operationId}`
-* `/vision/v3.0/read/analyze`
-* `/vision/v3.0/read/syncAnalyze`
-
----
 
 Uygulamalarınızı bulut tabanlı okuma API 'sinin sürüm 3 ' ü kullanacak şekilde güncelleştirme hakkında ayrıntılı bilgi için bkz. [v3 REST API geçiş kılavuzu görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/upgrade-api-versions) . Bu bilgiler kapsayıcı için de geçerlidir. Eşitleme işlemlerinin yalnızca kapsayıcılar için desteklendiğini unutmayın.
 
@@ -53,8 +43,7 @@ Gereksinimler ve öneriler, 29 satır ve toplam 803 karakter içeren taranmış 
 
 |Kapsayıcı  |Minimum | Önerilen  |
 |---------|---------|------|
-|Okuma 3,0-Önizleme     | 8 çekirdek, 16 GB bellek         | 8 çekirdek, 24 GB bellek
-|Okuma 3,1-Önizleme | 8 çekirdek, 16 GB bellek         | 8 çekirdek, 24 GB bellek
+|Okuma 3,1-Önizleme | 8 çekirdek, 16 GB bellek         | 8 çekirdek, 24 GB bellek |
 
 Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.
 

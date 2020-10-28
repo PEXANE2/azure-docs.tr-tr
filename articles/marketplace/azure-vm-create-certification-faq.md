@@ -7,14 +7,14 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 14360ab7668248f39c8ad0916eb964ffe11f7959
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 25eaca08202bd01ad4777fdb73eb75abff458c29
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331303"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677907"
 ---
-# <a name="vm-certification-troubleshooting"></a>VM sertifikası sorunlarını giderme
+# <a name="vm-certification-troubleshooting"></a>VM sertifikasyonu sorunlarını giderme
 
 Sanal makine (VM) görüntünüzü Azure Market 'e yayımladığınızda, Azure ekibi, onun önyükleme, güvenlik ve Azure uyumluluğunu sağlamak için onu doğrular. Yüksek kaliteli testlerin herhangi biri başarısız olursa, yayımlama başarısız olur ve sorunu açıklayan bir hata iletisi alırsınız.
 
@@ -29,13 +29,16 @@ Görüntünüzü güncelleştirmelerle yeniden yayımlamak için bir istek gönd
 
 Bu hata, başka bir yayımcıya ait olan ve görüntüyü güncelleştirdiğiniz bir temel görüntü kullandığınızda oluşur. Bu durumda, görüntünüzü yayımlamanıza izin verilmez.
 
-Bu sorunu onarmak için, görüntüyü Azure Marketi 'nden alın ve üzerinde değişiklikler yapın. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Bu sorunu onarmak için, görüntüyü Azure Marketi 'nden alın ve üzerinde değişiklikler yapın. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Linux görüntüleri](../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows görüntüleri](azure-vm-create-using-approved-base.md)
 
 > [!Note]
 > Azure Marketi 'nden alınmamış bir Linux temel görüntüsü kullanıyorsanız, ilk bölümü 2048 KB 'ye göre kaydırabilirsiniz. Bu, yeni faturalandırma bilgileri eklemek için biçimlendirilmemiş alanın kullanılmasına izin verir ve Azure 'un VM 'nizi Azure Marketi 'ne yayımlamasına olanak sağlar.  
+
+> [!Note]
+> Market 'ten alınmamış bir Linux temel görüntüsü kullanıyorsanız, ilk bölümü 2048 KB 'ye göre kaydırabilirsiniz. Bu, yeni faturalandırma bilgileri eklemek için biçimlendirilmemiş alanın kullanılmasına izin verir ve Azure 'un VM 'nizi Market 'e yayımlamasına olanak sağlar.  
 
 ## <a name="vm-extension-failure"></a>VM Uzantısı hatası
 
@@ -44,18 +47,18 @@ Resminizin VM uzantılarını destekleyip desteklemediğini kontrol edin.
 VM uzantılarını etkinleştirmek için aşağıdakileri yapın:
 
 1. Linux VM 'nizi seçin.
-1. **Tanılama ayarları**' na gidin.
-1. **Depolama hesabını**güncelleştirerek taban matrislerini etkinleştirin.
-1. **Kaydet**’i seçin.
+1. **Tanılama ayarları** ' na gidin.
+1. **Depolama hesabını** güncelleştirerek taban matrislerini etkinleştirin.
+1. **Kaydet** ’i seçin.
 
    ![Konuk düzeyinde izlemeyi etkinleştir](./media/create-vm/vm-certification-issues-solutions-1.png)
 
 VM uzantılarının düzgün etkinleştirildiğini doğrulamak için aşağıdakileri yapın:
 
-1. VM 'de **VM uzantıları** sekmesini seçin ve ardından **Linux Tanılama uzantısının**durumunu doğrulayın.
+1. VM 'de **VM uzantıları** sekmesini seçin ve ardından **Linux Tanılama uzantısının** durumunu doğrulayın.
 1. 
-    * Durum *sağlama başarılı*olursa, uzantılar test çalışması geçirilir.  
-    * Durum *sağlama başarısız*olursa, uzantılar test çalışması başarısız olur ve sağlamlaştırılmış bayrağını ayarlamanız gerekir.
+    * Durum *sağlama başarılı* olursa, uzantılar test çalışması geçirilir.  
+    * Durum *sağlama başarısız* olursa, uzantılar test çalışması başarısız olur ve sağlamlaştırılmış bayrağını ayarlamanız gerekir.
 
       ![Sağlamanın başarılı olduğunu gösteren ekran görüntüsü](./media/create-vm/vm-certification-issues-solutions-2.png)
 
@@ -67,7 +70,7 @@ Teklifinizi göndermeden önce VM sağlama sürecini dikkatli bir şekilde izled
 
 Sağlama sorunları aşağıdaki başarısızlık senaryolarını içerebilir:
 
-|Senaryo|Hata|Neden|Çözüm|
+|Senaryo|Hata|Nedeni|Çözüm|
 |---|---|---|---|
 |1|Geçersiz sanal sabit disk (VHD)|VHD altbilgisinde belirtilen tanımlama bilgisi değeri yanlışsa, VHD geçersiz olarak kabul edilir.|Görüntüyü yeniden oluşturun ve isteği iletin.|
 |2|Geçersiz blob türü|Kullanılan blok, bir sayfa türü yerine bir blob türü olduğundan VM sağlama başarısız oldu.|Görüntüyü yeniden oluşturun ve isteği iletin.|
@@ -120,8 +123,8 @@ Aşağıdaki tabloda, önceki test çalışmaları yürütülürken bulunan yayg
 |---|---|---|---|
 |1|Linux Aracısı sürüm test çalışması|En düşük Linux Aracısı sürümü 2.2.41 veya üzeri. Bu gereksinim 1 Mayıs 2020 ' den itibaren zorunludur.|Lütfen Linux Aracısı sürümünü güncelleştirin ve 2,241 veya üzeri olmalıdır. Daha fazla bilgi için [Linux Aracısı sürüm güncelleştirme sayfasını](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)ziyaret edebilirsiniz.|
 |2|Bash geçmiş test çalışması|Gönderilen görüntinizdeki Bash geçmişinin boyutu 1 kilobayt (KB) daha büyükse bir hata görürsünüz. Potansiyel olarak hassas bilgilerin Bash geçmiş dosyanızda yakalandığından emin olmak için Boyut 1 KB 'a kısıtlanır.|Bu sorunu çözmek için, VHD 'yi başka bir çalışan VM 'ye bağlayın ve istediğiniz değişiklikleri yapın (örneğin, *. bash* geçmiş dosyalarını silin), boyutu 1 KB 'tan küçük veya buna eşit olacak şekilde küçültün.|
-|3|Gerekli çekirdek parametresi test çalışması|**Konsolun** değeri **ttyS0**olarak ayarlanmadıysa bu hatayı alırsınız. Aşağıdaki komutu çalıştırarak kontrol edin:<br>`cat /proc/cmdline`|**Konsolun** değerini **ttyS0**olarak ayarlayın ve isteği yeniden gönderin.|
-|4|ClientAlive Interval test çalışması|Araç seti sonucu, bu test çalışması için başarısız bir sonuç veriyorsa **ClientAliveInterval**için uygun olmayan bir değer vardır.|**ClientAliveInterval** değerini 235 ' e eşit veya daha küçük olarak ayarlayın ve sonra isteği yeniden gönderin.|
+|3|Gerekli çekirdek parametresi test çalışması|**Konsolun** değeri **ttyS0** olarak ayarlanmadıysa bu hatayı alırsınız. Aşağıdaki komutu çalıştırarak kontrol edin:<br>`cat /proc/cmdline`|**Konsolun** değerini **ttyS0** olarak ayarlayın ve isteği yeniden gönderin.|
+|4|ClientAlive Interval test çalışması|Araç seti sonucu, bu test çalışması için başarısız bir sonuç veriyorsa **ClientAliveInterval** için uygun olmayan bir değer vardır.|**ClientAliveInterval** değerini 235 ' e eşit veya daha küçük olarak ayarlayın ve sonra isteği yeniden gönderin.|
 
 ### <a name="windows-test-cases"></a>Windows test çalışmaları
 
@@ -148,7 +151,7 @@ Aşağıdaki tabloda, test doğrulamasının bir açıklamasıyla birlikte, ara�
 |17|Kablosuz LAN Hizmeti|Kablosuz LAN Hizmeti. Bu sunucu özelliği henüz desteklenmiyor. Uygulamanın bu özelliğe bağımlı olmaması gerekir.|
 |
 
-Önceki test durumlarında tüm hatalarda karşılaşırsanız, çözüm için tablodaki **Açıklama** sütununa bakın. Daha fazla bilgiye ihtiyacınız varsa destek ekibine başvurun.
+Önceki test durumlarında tüm hatalarda karşılaşırsanız, çözüm için tablodaki **Açıklama** sütununa bakın. Daha fazla bilgiye ihtiyacınız varsa destek ekibine başvurun. 
 
 ## <a name="data-disk-size-verification"></a>Veri diski boyut doğrulaması
 
@@ -181,7 +184,7 @@ VM 'Ler temeldeki işletim sistemine erişime izin verse de VHD boyutunun VHD i�
 
 WannaCry virüsü ile ilgili olası bir saldırıyı engellemek için tüm Windows yansıma isteklerinin en son düzeltme ekiyle güncelleştirildiğinden emin olun.
 
-İşletim sistemi ayrıntısı için Windows Server düzeltme eki uygulanan sürümü ve destekleyeceği en düşük sürümü denetlemek için aşağıdaki tabloya bakın:
+İşletim sistemi ayrıntısı için Windows Server düzeltme eki uygulanan sürümü ve destekleyeceği en düşük sürümü denetlemek için aşağıdaki tabloya bakın: 
 
 Görüntü dosyası sürümü veya ' den doğrulanabilir `C:\windows\system32\drivers\srv.sys` `srv2.sys` .
 
@@ -205,13 +208,13 @@ Bir Linux görüntüsü gönderdiğinizde, isteğiniz çekirdek sürümü sorunl
 
 Görüntünüz aşağıdaki çekirdek sürümlerinden biriyle yüklenmezse, doğru düzeltme ekleriyle güncelleştirin. Görüntü, gereken bu düzeltme ekleriyle güncelleştirildikten sonra destek ekibinin gerekli onayını iste:
 
-- CVE-2019-11477
-- CVE-2019-11478
+- CVE-2019-11477 
+- CVE-2019-11478 
 - CVE-2019-11479
 
 |İşletim sistemi ailesi|Sürüm|Çekirdek|
 |---|---|---|
-|Ubuntu|14,04 LTS|4.4.0-151.552|
+|Ubuntu|14,04 LTS|4.4.0-151.552| 
 ||14,04 LTS|4.15.0-1049-*-Azure|
 ||16,04 LTS|4.15.0-1049|
 ||18,04 LTS|4.18.0-1023|
@@ -242,7 +245,7 @@ Görüntünüz aşağıdaki çekirdek sürümlerinden biriyle yüklenmezse, doğ
 ||SLES15|4.12.14-5.30.1 (çekirdek-Azure)|
 ||SAP için SLES15|4.12.14-5.30.1 (çekirdek-Azure)|
 ||SLES15SP1|4.12.14-5.30.1 (çekirdek-Azure)|
-|Oracle|6,10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3
+|Oracle|6,10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
 ||7.0-7.5|UEK3 3.8.13-118.35.2<br>UEK4 4.1.12-124.28.3<br>RHCK yukarıdaki RHEL 'yi izler|
 ||7,6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
 |CoreOS kararlı 2079.6.0|4.19.43*|
@@ -267,13 +270,22 @@ VM 'deki test çalışmalarını çalıştırırken erişim reddedildi sorunlar�
 
 Kendi kendine test çalışmalarının çalıştığı hesap için doğru erişimin etkinleştirilip etkinleştirilmediğini denetleyin. Erişim etkinleştirilmemişse, test çalışmalarını çalıştırmak için etkinleştirin. Erişimi etkinleştirmek istemiyorsanız, kendi test çalışması sonuçlarını destek ekibi ile paylaşabilirsiniz.
 
-## <a name="download-failure"></a>İndirme hatası
+Sertifika işlemi için SSH devre dışı görüntüyle isteğinizi göndermek istiyorsanız lütfen aşağıdaki adımları izleyin
 
+1. Görüntinizdeki Azure araç setini yürütün. (Lütfen [en son araç setini](https://aka.ms/AzureCertificationTestTool) indirin
+
+2. Bir [destek bileti](https://aka.ms/marketplacepublishersupport)oluşturup araç seti raporunu iliştirin ve teklif ayrıntıları-teklif adı, yayımcı adı, plan KIMLIĞI/SKU ve sürüm bilgilerini sağlayın.
+
+3. Lütfen sertifika isteğinizi yeniden gönderebilirsiniz...
+
+
+## <a name="download-failure"></a>İndirme hatası
+    
 Paylaşılan erişim imzası (SAS) URL 'SI kullanarak VM görüntüsünü indirdiğinizde ortaya çıkan herhangi bir sorun için aşağıdaki tabloya bakın.
 
-|Senaryo|Hata|Neden|Çözüm|
+|Senaryo|Hata|Nedeni|Çözüm|
 |---|---|---|---|
-|1|Blob bulunamadı|VHD silinmiş ya da belirtilen konumdan taşınmış olabilir.||
+|1|Blob bulunamadı|VHD silinmiş ya da belirtilen konumdan taşınmış olabilir.|| 
 |2|Kullanılan blob|VHD başka bir iç işlem tarafından kullanılıyor.|Bir SAS URL 'SI kullanarak karşıdan yüklerken VHD 'nin kullanılan bir durumda olması gerekir.|
 |3|Geçersiz SAS URL 'SI|VHD için ilişkili SAS URL 'SI yanlış.|Doğru SAS URL 'sini alın.|
 |4|Geçersiz imza|VHD için ilişkili SAS URL 'SI yanlış.|Doğru SAS URL 'sini alın.|
@@ -288,13 +300,98 @@ VHD 'yi gönderdiğinizde, VHD 'nin ilk 2048 KB 'sinin boş olduğundan emin olu
 >[!NOTE]
 >* Azure Marketi 'nden alınan Azure Windows temel görüntülerinin üzerine yerleştirilmiş olanlar gibi bazı özel görüntüler için, faturalandırma etiketi varsa ve dahili kullanılabilir değerlerimizle eşleşiyorsa, bir faturalandırma etiketi olup olmadığını ve MB bölümünü yoksayabilirsiniz.
 
+
+## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-on-an-empty-vhd"></a>Boş bir VHD üzerinde Ilk MB (2048 KB) bölüm oluşturma adımları (yalnızca Linux için)
+
+1. Adım: herhangi bir türde VM oluşturun (örnek: Ubuntu, sent OS, vb.). Gerekli alanları doldurup "Ileri: diskler>" \ öğesine tıklayın.
+![Sonraki: diskler komutu](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+2. Adım: Yukarıdaki VM için yönetilmeyen bir disk oluşturun.
+![Yönetilmeyen disk oluşturma](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+Lütfen varsayılan değerlerle gidebileceğinizi veya NIC, NSG ve genel IP gibi alanlar için herhangi bir değer belirtebilirsiniz.
+
+3. Adım: VM 'yi oluşturduktan sonra, aşağıda gösterildiği gibi sol taraftaki "diskler" e tıklayın ve ardından ![ "diskler" e tıklayın](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+4. Adım: aşağıda gösterildiği gibi bölüm tablosu oluşturmak için VHD 'yi veri diski ile yukarıdaki VM 'ye bağlayın.
+![VHD 'nizi iliştirme](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+Veri diski Ekle ' ye tıklayın-var olan blob > > VHD depolama hesabınıza > kapsayıcıya tarayın-> VHD 'YI seçin > aşağıdaki gibi Tamam 'a tıklayın \
+![VHD 'YI seçin](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+VHD 'niz veri diski LUN 0 olarak eklenir ve disk eklendikten sonra lütfen VM 'yi yeniden başlatın
+
+5. Adım: VM 'yi yeniden başlattıktan sonra, Putty (veya başka bir istemci) kullanarak VM 'de oturum açın ve kök erişimi kazanmak için "sudo-i" komutunu çalıştırın.
+
+![VM 'de oturum açma](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+6. Adım: VHD 'niz üzerinde bölüm oluşturmak için aşağıdaki adımları Izleyin.
+
+a) Fdisk/dev/sdb komutunu yazın
+
+b) VHD 'nizden mevcut bölüm listesini görüntülemek Için p yazın.
+
+c) VHD 'niz içindeki mevcut tüm bölümleri silmek için d yazın (gerekli değilse, bu adımı atlayabilirsiniz) ![ var olan tüm bölümleri Sil](./media/create-vm/vm-certification-issues-solutions-21.png)
+
+d) yeni bölüm oluşturmak için n yazın ve (birincil bölüm) için p 'yi seçin.
+
+e) lütfen "Ilk sektör" değeri olarak 2048 girin ve varsayılan değer alacak şekilde "son sektör" olarak bırakabilirsiniz. Lütfen tüm verilerin 2048 KB 'ye kadar silineceğini unutmayın.
+           
+>[!NOTE]
+>* Lütfen bölümü mevcut verilerin yukarısında oluşturmak, 2048 KB 'ye kadar silindiğine ve bu nedenle yukarıdaki komutu yürütmeden önce VHD 'nin bir yedeğini almanız önerilir.
+
+Lütfen başvurunuz için aşağıdaki ekran görüntüsünü bulun.
+![Silinen veriler](./media/create-vm/vm-certification-issues-solutions-22.png)
+
+f) bölüm oluşturulmasını onaylamak için w yazın. 
+
+![Bölüm oluşturma](./media/create-vm/vm-certification-issues-solutions-23.png)
+
+g) n Fdisk/dev/sdb komutunu çalıştırıp p yazarak bölüm tablosunu doğrulayabilirsiniz, ardından aşağıda gösterildiği gibi, bölüm 2048 fark değeri ile oluşturulur. 
+
+ ![2048 kayması](./media/create-vm/vm-certification-issues-solutions-24.png)
+
+7. Adım: lütfen VHD 'yi VM 'den ayırın ve VM 'yi silin.
+
+         
+## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-by-moving-the-existing-data-on-vhd"></a>VHD 'deki mevcut verileri taşıyarak Ilk MB (2048 KB) bölüm oluşturma adımları (yalnızca Linux için)
+
+1. Adım: herhangi bir türde VM oluşturun (örnek: Ubuntu, sent OS, vb.). Gerekli alanları doldurup "Ileri: diskler>" \ öğesine tıklayın.
+!["Ileri: diskler>" seçeneğine tıklayın](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+2. Adım: Yukarıdaki VM için yönetilmeyen bir disk oluşturun.
+![Yönetilmeyen disk oluşturma](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+Lütfen varsayılan değerlerle gidebileceğinizi veya NIC, NSG ve genel IP gibi alanlar için herhangi bir değer belirtebilirsiniz.
+
+3. Adım: VM 'yi oluşturduktan sonra, aşağıda gösterildiği gibi sol taraftaki "diskler" e tıklayın ve ardından ![ "diskler" e tıklayın](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+4. Adım: aşağıda gösterildiği gibi bölüm tablosu oluşturmak için VHD 'yi veri diski ile yukarıdaki VM 'ye bağlayın.
+![Bölüm tablosu](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+Veri diski Ekle ' ye tıklayın-var olan blob > > VHD depolama hesabınıza > kapsayıcıya tarayın-> VHD 'YI seçin > aşağıdaki gibi Tamam 'a tıklayın \
+![VHD 'YI seçin](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+VHD 'niz veri diski LUN 0 olarak eklenir ve disk eklendikten sonra lütfen VM 'yi yeniden başlatın
+
+5. Adım: VM 'yi yeniden başlattıktan sonra, PuTTY kullanarak VM 'de oturum açın ve kök erişimi kazanmak için "sudo-i" komutunu çalıştırın. \
+![Yeniden başlatmadan sonra oturum aç](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+6. Adım: lütfen "+ 1M" komut yankısını okuyun sfdisk--Move-Data/dev/SDC-N 1 ![ Execute komutu](./media/create-vm/vm-certification-issues-solutions-25.png)
+
+>[!NOTE]
+>* Lütfen yukarıdaki komutun tamamlanması, diskin boyutuna bağlı olduğundan daha fazla zaman alabilir
+
+7. Adım: lütfen VHD 'yi VM 'den ayırın ve VM 'yi silin.
+
+
 ## <a name="default-credentials"></a>Varsayılan kimlik bilgileri
 
 Varsayılan kimlik bilgilerinin gönderilen VHD ile gönderilmediğinden her zaman emin olun. Varsayılan kimlik bilgilerini ekleme, VHD 'nin güvenlik tehditlerine karşı daha savunmasız olmasını sağlar. Bunun yerine, VHD 'YI gönderdiğinizde kendi kimlik bilgilerinizi oluşturun.
   
 ## <a name="datadisk-mapped-incorrectly"></a>Veri diski yanlış eşlendi
 
-Bir istek birden çok veri diski ile gönderildiğinde, ancak sırası sıralı değilse, bu bir eşleme sorunu olarak kabul edilir. Örneğin, üç veri diski varsa, numaralandırma sırası *0, 1, 2*olmalıdır. Diğer herhangi bir sıra, eşleme sorunu olarak kabul edilir.
+Bir istek birden çok veri diski ile gönderildiğinde, ancak sırası sıralı değilse, bu bir eşleme sorunu olarak kabul edilir. Örneğin, üç veri diski varsa, numaralandırma sırası *0, 1, 2* olmalıdır. Diğer herhangi bir sıra, eşleme sorunu olarak kabul edilir.
 
 İsteği veri disklerinin doğru sıralaması ile yeniden gönderin.
 
@@ -306,11 +403,11 @@ Bir görüntü oluşturulduğunda, bu, yanlış işletim sistemi etiketine eşle
 
 Azure Marketi 'nden alınan tüm görüntülerin yeniden kullanılabilmesi için işletim sistemi VHD 'sinin genelleştirilmesi gerekir.
 
-* **Linux**için aşağıdaki Işlem BIR Linux sanal makinesini genelleştirir ve ayrı bir VM olarak yeniden dağıtır.
+* **Linux** için aşağıdaki Işlem BIR Linux sanal makinesini genelleştirir ve ayrı bir VM olarak yeniden dağıtır.
 
   SSH penceresinde, aşağıdaki komutu girin: `sudo waagent -deprovision+user`
 
-* **Windows**için, kullanarak Windows görüntülerini genelleştirdiğinizde `sysreptool` .
+* **Windows** için, kullanarak Windows görüntülerini genelleştirdiğinizde `sysreptool` .
 
 Bu araç hakkında daha fazla bilgi için bkz. [Sistem Hazırlama (Sysprep) genel bakış]( https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
@@ -318,7 +415,7 @@ Bu araç hakkında daha fazla bilgi için bkz. [Sistem Hazırlama (Sysprep) gene
 
 Veri diskiyle ilgili hatalara yönelik çözümler için aşağıdaki tabloyu kullanın:
 
-|Hata|Neden|Çözüm|
+|Hata|Nedeni|Çözüm|
 |---|---|---|
 |`DataDisk- InvalidUrl:`|Bu hata, teklif gönderildiğinde mantıksal birim numarası (LUN) için belirtilen geçersiz bir sayı nedeniyle meydana gelebilir.|Veri diski için LUN numarası sırasının Iş Ortağı Merkezi 'nde olduğunu doğrulayın.|
 |`DataDisk- NotFound:`|Bu hata, belirtilen bir SAS URL 'sinde bulunmayan bir veri diski nedeniyle meydana gelebilir.|Veri diskinin istekte belirtilen SAS URL 'sinde bulunduğundan emin olun.|
@@ -326,7 +423,7 @@ Veri diskiyle ilgili hatalara yönelik çözümler için aşağıdaki tabloyu ku
 
 ## <a name="remote-access-issue"></a>Uzaktan erişim sorunu
 
-Windows görüntüsü için Uzak Masaüstü Protokolü (RDP) seçeneği etkinleştirilmemişse, bu hatayı alırsınız.
+Windows görüntüsü için Uzak Masaüstü Protokolü (RDP) seçeneği etkinleştirilmemişse, bu hatayı alırsınız. 
 
 Göndermeden önce Windows görüntüleri için RDP erişimini etkinleştirin.
 
@@ -404,28 +501,28 @@ Bir güvenlik açığı veya açıktan yararlanan bir VM görüntüsünü deği�
 Bu adımları tamamlayabilmeniz için, eklemek istediğiniz VM görüntüsü için teknik varlıkları hazırlamanız gerekir. Daha fazla bilgi için bkz. [onaylı bir temel kullanarak sanal makine oluşturma](azure-vm-create-using-approved-base.md) veya [kendi görüntünüzü kullanarak bir sanal makıne oluşturma](azure-vm-create-using-own-image.md)ve [VM Görüntünüz için bir SAS URI 'si](azure-vm-get-sas-uri.md)oluşturma.
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış** ' ı seçin.
 3. **Teklif diğer adı** sütununda teklifi seçin.
 4. **Plana genel bakış** sekmesinde, **ad** sütununda, VM 'yi eklemek istediğiniz planı seçin.
-5. **Teknik yapılandırma** sekmesinde, **VM GÖRÜNTÜLERI** altında **+ VM görüntüsü Ekle**' yi seçin.
+5. **Teknik yapılandırma** sekmesinde, **VM GÖRÜNTÜLERI** altında **+ VM görüntüsü Ekle** ' yi seçin.
 
 > [!NOTE]
 > Tek seferde bir plana yalnızca bir VM görüntüsü ekleyebilirsiniz. Birden çok VM görüntüsü eklemek için, sonraki VM görüntüsünü eklemeden önce, ilk birini canlı yayımlayın.
 
 6. Görüntülenen kutulara yeni bir disk sürümü ve sanal makine görüntüsü belirtin.
-7. **Taslağı kaydet**'i seçin.
+7. **Taslağı kaydet** 'i seçin.
 
 VM görüntüsünü güvenlik güvenlik açığıyla birlikte kaldırmak için aşağıdaki sonraki bölüme geçin.
 
 #### <a name="remove-the-vm-image-with-the-security-vulnerability-or-exploit"></a>VM görüntüsünü güvenlik açığı veya açıktan yararlanmaya kaldırma
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış** ' ı seçin.
 3. **Teklif diğer adı** sütununda teklifi seçin.
 4. **Plana genel bakış** sekmesinde, **ad** sütununda, kaldırmak istediğiniz VM 'yi içeren planı seçin.
-5. **Teknik yapılandırma** sekmesinde, **VM görüntüleri** altında, kaldırmak istediğiniz VM görüntüsünün yanındaki VM görüntüsünü **Kaldır**' ı seçin.
-6. Görüntülenen iletişim kutusunda **devam**' ı seçin.
-7. **Taslağı kaydet**'i seçin.
+5. **Teknik yapılandırma** sekmesinde, **VM görüntüleri** altında, kaldırmak istediğiniz VM görüntüsünün yanındaki VM görüntüsünü **Kaldır** ' ı seçin.
+6. Görüntülenen iletişim kutusunda **devam** ' ı seçin.
+7. **Taslağı kaydet** 'i seçin.
 
 Teklifi yeniden yayımlamak için aşağıdaki sonraki bölüme geçin.
 
@@ -433,12 +530,12 @@ Teklifi yeniden yayımlamak için aşağıdaki sonraki bölüme geçin.
 
 1. **Gözden geçir ve Yayımla '** yı seçin.
 2. Sertifika ekibine herhangi bir bilgi sağlamanız gerekiyorsa, **sertifikayı sertifika notları** kutusuna ekleyin.
-3. **Yayımla**’yı seçin.
+3. **Yayımla** ’yı seçin.
 
 Yayımlama işlemini gerçekleştirmek için bkz. [teklifleri inceleme ve yayımlama](review-publish-offer.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [VM teklif özelliklerini yapılandırma](azure-vm-create-properties.md)
+- [VM teklifi özelliklerini yapılandırma](azure-vm-create-properties.md)
 - [Etkin Market 'teki ödüller](partner-center-portal/marketplace-rewards.md)
 - Geliştirme için sorularınız veya geri bildiriminiz varsa, Iş Ortağı Merkezi [desteğiyle](https://aka.ms/marketplacepublishersupport)iletişim kurun.

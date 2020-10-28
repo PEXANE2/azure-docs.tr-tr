@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a1ae0971b016ed226351167cfabfca7d3cafd19f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82220a63cfe470344951e4276bc9eaccd9600428
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905414"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677347"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Performans için Azure Data Lake Storage 2. iyileştirin
 
@@ -27,7 +27,7 @@ Data Lake Storage 2., tüm analiz senaryosu için gerekli aktarım hızını sa�
 
 Kaynak sistemden Data Lake Storage 2. verileri alırken, kaynak donanımın, kaynak ağ donanımının ve Data Lake Storage 2. ağ bağlantısının performans sorunu olduğunu göz önünde bulundurmanız önemlidir.  
 
-![Data Lake Storage 2. performans](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
+![Kaynak sistemden Data Lake Storage 2. verileri alırken dikkate alınması gereken faktörleri gösteren diyagram.](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
 Veri hareketinin bu faktörlerden etkilenmemesini sağlamak önemlidir.
 
@@ -45,9 +45,9 @@ Yukarıdaki kaynak donanım ve ağ bağlantısı sorunlarını giderdikten sonra
 
 | Araç               | Ayarlar     | Daha fazla ayrıntı                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| DistCp            | -a (Eşleyici)   | [Bağlantısının](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| Paralellkopyalar    | [Bağlantısının](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-ı (Mapper)    |   [Bağlantısının](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| DistCp            | -a (Eşleyici)   | [Bağlantı](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| Paralellkopyalar    | [Bağlantı](../../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. Block. size,-ı (Mapper)    |   [Bağlantı](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Veri kümesini yapı
 
@@ -107,7 +107,7 @@ HDInsight kümesi içinde, kapsayıcıların sayısını artırmak ve tüm kulla
 
 **Kümeyi daha fazla düğüm ve/veya daha büyük boyutlu VM 'Ler ile çalıştırın.**  Daha büyük bir küme, aşağıdaki resimde gösterildiği gibi daha fazla YARN kapsayıcısı çalıştırmanızı sağlar.
 
-![Data Lake Storage 2. performans](./media/data-lake-storage-performance-tuning-guidance/VM.png)
+![Daha büyük bir kümenin daha fazla YARN kapsayıcısı çalıştırmanızı nasıl etkinleştirecağınızı gösteren diyagram.](./media/data-lake-storage-performance-tuning-guidance/VM.png)
 
 **Daha fazla ağ bant genişliğine sahip VM 'Leri kullanın.**  Data Lake Storage 2. aktarım hızına kıyasla daha az ağ bant genişliği varsa, ağ bant genişliği miktarı bir performans sorunu olabilir.  Farklı VM 'Lerde farklı ağ bant genişliği boyutları olacaktır.  Olası en büyük ağ bant genişliğine sahip bir VM türü seçin.
 
@@ -115,7 +115,7 @@ HDInsight kümesi içinde, kapsayıcıların sayısını artırmak ve tüm kulla
 
 **Daha küçük YARN kapsayıcıları kullanın.**  Aynı miktarda kaynakla daha fazla kapsayıcı oluşturmak için her bir YARN kapsayıcısının boyutunu küçültün.
 
-![Data Lake Storage 2. performans](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
+![Daha fazla kapsayıcı oluşturmak için her bir YARN kapsayıcısının boyutunu azaltdığınızda sonucu gösteren diyagram.](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
 
 İş yükünüze bağlı olarak, gereken en az YARN kapsayıcı boyutu her zaman olacaktır. Çok küçük bir kapsayıcı seçerseniz, işleriniz bellek dışı sorunlara çalışacaktır. Genellikle YARN kapsayıcıları 1 GB 'tan küçük olmamalıdır. 3GB YARN kapsayıcıları görmek yaygındır. Bazı iş yükleri için daha büyük YARN kapsayıcıları gerekebilir.  
 
@@ -125,7 +125,7 @@ HDInsight kümesi içinde, kapsayıcıların sayısını artırmak ve tüm kulla
 
 **Tüm kullanılabilir kapsayıcıları kullanın.**  Tüm kaynakların kullanılabilmesi için kullanılabilir kapsayıcı sayısına eşit veya daha büyük olacak görev sayısını ayarlayın.
 
-![Data Lake Storage 2. performans](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
+![Tüm kapsayıcıların kullanımını gösteren diyagram.](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
 
 **Başarısız görevler maliyetlidir.** Her görevin işlemek için büyük miktarda veri varsa, bir görevin başarısızlığı pahalı bir yeniden denemeye neden olur.  Bu nedenle, her biri az miktarda veri işleyen daha fazla görev oluşturmak daha iyidir.
 

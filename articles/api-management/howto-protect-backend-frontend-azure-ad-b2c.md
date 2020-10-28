@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
-ms.custom: fasttrack-new
-ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: fasttrack-new, devx-track-js
+ms.openlocfilehash: aa3bce73d2a91538dff0fdeb9e0eb814d878459a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253703"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676016"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>OAuth 2,0, Azure Active Directory B2C ve Azure API Management ile SPA arka ucunu koruyun
 
@@ -31,7 +31,7 @@ API Management, Azure Işlevleri ve Azure AD B2C ile basitleştirilmiş bir sena
 
 Derinlemesine savunma için, yeniden bitiş API 'SI içinde yeniden belirteç doğrulamak üzere EasyAuth ' i kullanırız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaledeki adımları izlemek için, şunları yapmanız gerekir:
 * Ön uç JS tek sayfalı uygulamayı barındırmak için bir Azure (StorageV2) Genel Amaçlı v2 depolama hesabı
 * Azure API Management örneği 
@@ -180,7 +180,7 @@ IP kısıtlamaları paneline CıDR biçimli adres blokları eklemeniz gerekir. A
    > Artık Işlev API 'niz, API Yönetimi veya adresiniz aracılığıyla değil herhangi bir yerden çağrılabilir olmamalıdır.
    
 ## <a name="import-the-function-app-definition"></a>İşlev uygulaması tanımını içeri aktarma
-1. *API Management dikey penceresini*açın ve sonra *örneğinizi*açın.
+1. *API Management dikey penceresini* açın ve sonra *örneğinizi* açın.
 1. Örneğinizin API Management bölümündeki API dikey penceresini seçin.
 1. ' Yeni bir API Ekle ' bölmesinden ' İşlev Uygulaması ' öğesini seçin ve ardından açılan pencerenin üst kısmından ' tam ' seçeneğini belirleyin.
 1. Araştır ' a tıklayın, içinde API barındırmakta olduğunuz işlev uygulamasını seçin ve Seç ' e tıklayın.

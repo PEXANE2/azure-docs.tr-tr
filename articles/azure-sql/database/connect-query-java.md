@@ -10,24 +10,24 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 829a106a643c10626a65855152375c349cd76f9a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d00caa91e7b6a19edbb6ac2d38fcea1e2a0d5f05
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87833598"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676859"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>Azure SQL veritabanı ile Java ve JDBC kullanma
 
-Bu konu başlığı altında, [Azure SQL veritabanı](https://docs.microsoft.com/azure/sql-database/)'nda bilgi depolamak ve almak için Java ve [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) kullanan bir örnek uygulama oluşturma gösterilmektedir.
+Bu konu başlığı altında, [Azure SQL veritabanı](/azure/sql-database/)'nda bilgi depolamak ve almak için Java ve [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) kullanan bir örnek uygulama oluşturma gösterilmektedir.
 
 JDBC, geleneksel ilişkisel veritabanlarına bağlanmak için standart Java API 'sidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure hesabı. Hiç kimse yoksa [ücretsiz deneme sürümü alın](https://azure.microsoft.com/free/).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) veya [Azure CLI](/cli/azure/install-azure-cli). Otomatik olarak oturum açabileceksiniz ve ihtiyacınız olan tüm araçlara erişebilmek için Azure Cloud Shell önerilir.
-- Desteklenen bir [Java Development Kit](https://aka.ms/azure-jdks), sürüm 8 (Azure Cloud Shell içinde bulunur).
+- [Azure Cloud Shell](../../cloud-shell/quickstart.md) veya [Azure CLI](/cli/azure/install-azure-cli). Otomatik olarak oturum açabileceksiniz ve ihtiyacınız olan tüm araçlara erişebilmek için Azure Cloud Shell önerilir.
+- Desteklenen bir [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), sürüm 8 (Azure Cloud Shell içinde bulunur).
 - [Apache Maven](https://maven.apache.org/) derleme aracı.
 
 ## <a name="prepare-the-working-environment"></a>Çalışma ortamını hazırlama
@@ -69,7 +69,7 @@ az group create \
 Oluşturacağız ilk şey, yönetilen bir Azure SQL veritabanı sunucusudur.
 
 > [!NOTE]
-> Hızlı başlangıçta Azure SQL veritabanı sunucuları oluşturma hakkında daha ayrıntılı bilgi edinebilirsiniz [: Azure SQL veritabanı tek veritabanı oluşturma](/azure/sql-database/sql-database-single-database-get-started).
+> Hızlı başlangıçta Azure SQL veritabanı sunucuları oluşturma hakkında daha ayrıntılı bilgi edinebilirsiniz [: Azure SQL veritabanı tek veritabanı oluşturma](./single-database-create-quickstart.md).
 
 [Azure Cloud Shell](https://shell.azure.com/)' de aşağıdaki komutu çalıştırın:
 
@@ -498,4 +498,4 @@ az group delete \
 
 - [Azure SQL veritabanı 'nda ilk veritabanınızı tasarlama](design-first-database-tutorial.md)  
 - [SQL Server için Microsoft JDBC sürücüsü](https://github.com/microsoft/mssql-jdbc)  
-- [Sorun bildirin/soru sorun](https://github.com/microsoft/mssql-jdbc/issues)  
+- [Sorun bildirin/soru sorun](https://github.com/microsoft/mssql-jdbc/issues)

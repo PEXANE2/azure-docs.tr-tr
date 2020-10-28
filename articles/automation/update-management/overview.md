@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
 description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 09/23/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 92d8c52ee9da1df67be27ea0867e788e2aaed37b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 217ccbcef28545710ea0875a318bcf5b4b555825
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222933"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677707"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
@@ -18,15 +18,18 @@ Azure 'da, şirket içi ortamlarda ve diğer bulut ortamlarında Windows ve Linu
 
 Aşağıdaki yollarla VM 'Ler için Güncelleştirme Yönetimi etkinleştirebilirsiniz:
 
-* Azure [Otomasyonu hesabınızdan](enable-from-automation-account.md) bir veya daha fazla Azure ve Azure dışı makine için.
-* Azure [Arc etkin sunucularla](../../azure-arc/servers/overview.md) (Önizleme) kayıtlı makineler veya sunucular dahil olmak üzere Azure dışı makineler için el ile.
-* Tek bir Azure VM için Azure portal sanal makine sayfasından. Bu senaryo, [Linux](../../virtual-machines/linux/tutorial-config-management.md#enable-update-management) ve [Windows](../../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM 'leri için kullanılabilir.
-* [Birden çok Azure VM](enable-from-portal.md) Için Azure Portal sanal makineler sayfasında bunları seçerek.
+- Azure [Otomasyonu hesabınızdan](enable-from-automation-account.md) bir veya daha fazla Azure ve Azure dışı makine için.
+
+- Azure [Arc etkin sunucularına](../../azure-arc/servers/overview.md)kayıtlı makineler veya sunucular dahil olmak üzere Azure olmayan makineler için el ile.
+
+- Tek bir Azure VM için Azure portal [sanal makine sayfasından](enable-from-vm.md) . Bu senaryo, Linux ve Windows VM 'Leri için kullanılabilir.
+
+- [Birden çok Azure VM](enable-from-portal.md) Için Azure Portal sanal makineler sayfasında bunları seçerek.
 
 > [!NOTE]
 > Güncelleştirme Yönetimi, Otomasyon hesabınıza bir Log Analytics çalışma alanı bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için bkz. [Azure çalışma alanı eşlemeleri](../how-to/region-mappings.md). Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgedeki VM 'Leri yönetme özelliğini etkilemez.
 
-[Azure Resource Manager şablonu](enable-from-template.md) , güncelleştirme yönetimi yeni veya mevcut bir Otomasyon hesabına ve aboneliğinizdeki Log Analytics çalışma alanına dağıtmanıza yardımcı olmak için kullanılabilir.
+Yeni veya mevcut bir Otomasyon hesabında ve aboneliğinizdeki Log Analytics çalışma alanında Güncelleştirme Yönetimi özelliğini etkinleştirmenize yardımcı olacak bir [Azure Resource Manager şablonu](enable-from-template.md) kullanılabilir. Özelliği ile Azure veya Azure dışı VM 'Leri etkinleştirmez, bu adım daha önce listelenen yöntemlerden birini kullanarak daha sonra gerçekleştirilir.
 
 > [!NOTE]
 > Azure Otomasyonu 'ndan özel betikleri çalıştırmak için Güncelleştirme Yönetimi ile yapılandırılmış bir makine kullanamazsınız. Bu makine, yalnızca Microsoft tarafından imzalanmış güncelleştirme betiğini çalıştırabilir.
@@ -106,7 +109,7 @@ Aşağıdaki bilgiler işletim sistemine özgü istemci gereksinimlerini açıkl
 
 #### <a name="windows"></a>Windows
 
-Windows aracılarının bir WSUS sunucusuyla iletişim kuracak şekilde yapılandırılması veya Microsoft Update erişmesi gerekir. Windows için Log Analytics aracısının nasıl yükleneceği hakkında bilgi için bkz. [Windows bilgisayarlarını Azure izleyici 'ye bağlama](../../azure-monitor/platform/agent-windows.md).
+Windows aracılarının bir WSUS sunucusuyla iletişim kuracak şekilde yapılandırılması veya Microsoft Update erişmesi gerekir. Windows için Log Analytics aracısının nasıl yükleneceği hakkında bilgi için bkz. [Windows bilgisayarlarını Azure izleyici 'ye bağlama](../../azure-monitor/platform/agent-windows.md). Hibrit makineler için, önce makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak ve ardından Azure ilkesi 'ni kullanarak, [dağıtım Log Analytics aracısını Windows Azure Arc machines](../../governance/policy/samples/built-in-policies.md#monitoring) yerleşik ilkesine atamak için Windows için Log Analytics Aracısı 'nı yüklemenizi öneririz. Makineleri VM'ler için Azure İzleyici de izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
 
 Güncelleştirme Yönetimi, Microsoft uç nokta Configuration Manager ile kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz. [Windows uç nokta Configuration Manager ile güncelleştirme yönetimi tümleştirme](mecmintegration.md). [Windows için Log Analytics Aracısı](../../azure-monitor/platform/agent-windows.md) , Configuration Manager ortamınızdaki siteler tarafından yönetilen Windows sunucuları için gereklidir. 
 
@@ -122,7 +125,7 @@ Linux için makinenin, özel veya genel olarak bir güncelleştirme deposuna eri
 > [!NOTE]
 > Linux makinelerin güncelleştirme değerlendirmesi yalnızca belirli bölgelerde desteklenir. Otomasyon hesabı ve Log Analytics çalışma alanı [eşlemeleri tablosuna](../how-to/region-mappings.md#supported-mappings)bakın.
 
-Linux için Log Analytics aracısını yükleme ve en son sürümü indirme hakkında daha fazla bilgi için bkz. [Linux için Log Analytics Aracısı](../../azure-monitor/platform/agent-linux.md).
+Linux için Log Analytics aracısını yükleme ve en son sürümü indirme hakkında daha fazla bilgi için bkz. [Linux için Log Analytics Aracısı](../../azure-monitor/platform/agent-linux.md). Hibrit makineler için, önce makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak ve ardından Azure ilkesi 'ni kullanarak, [Linux Azure Arc machines yerleşik Ilkesine Log Analytics aracısını dağıtmak](../../governance/policy/samples/built-in-policies.md#monitoring) üzere Windows için Log Analytics aracısını yüklemenizi öneririz. Makineleri VM'ler için Azure İzleyici de izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
 
 Azure Marketi 'nde bulunan isteğe bağlı Red Hat Enterprise Linux (RHEL) görüntülerinden oluşturulan VM 'Ler, Azure 'da dağıtılan [Red Hat güncelleştirme altyapısına (rhuı)](../../virtual-machines/workloads/redhat/redhat-rhui.md) erişmek için kaydedilir. Diğer tüm Linux dağıtımı, dağıtım tarafından desteklenen yöntemler kullanılarak dağıtımın çevrimiçi dosya deposundan güncelleştirilmeleri gerekir.
 

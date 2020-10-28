@@ -7,17 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 918ba128eca8ebf8b452c0f1126e4b7e611542d8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 10/22/2020
+ms.openlocfilehash: 5935bc3f59585b19fc3b45bdfd567bb1f9404234
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514478"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675574"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmeti için API anahtarları oluşturma ve yönetme
 
-Bir arama hizmetine yapılan tüm istekler için özel olarak hizmetiniz için üretilmiş bir salt okunurdur api anahtarı gerekir. API anahtarı, arama hizmeti uç noktanıza erişimin kimliğini doğrulamak için tek mekanizmadır ve her isteğe eklenmelidir. [Rest çözümlerinde](search-get-started-postman.md), API anahtarı genellikle bir istek üst bilgisinde belirtilir. [.Net çözümlerinde](search-howto-dotnet-sdk.md#core-scenarios), bir anahtar genellikle yapılandırma ayarı olarak belirtilir ve [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient)üzerinde [kimlik bilgileri](/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (yönetici anahtarı) veya [searchcredentials](/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (sorgu anahtarı) olarak geçirilir.
+Bir arama hizmetine yönelik tüm isteklerin `api-key` , özellikle hizmetinize özel olarak oluşturulmuş bir salt okuma ihtiyacı vardır. , `api-key` Arama hizmeti uç noktanıza erişimin kimliğini doğrulamak için tek mekanizmadır ve her isteğe eklenmelidir. 
+
++ [Rest çözümlerinde](search-get-started-postman.md), API anahtarı genellikle bir istek üstbilgisinde belirtilir
+
++ [.Net çözümlerinde](search-howto-dotnet-sdk.md), genellikle bir anahtar yapılandırma ayarı olarak belirtilir ve sonra bir [AzureKeyCredential](/dotnet/api/azure.azurekeycredential) olarak geçirilir
 
 Anahtarlar, hizmet sağlama sırasında arama hizmetinize oluşturulur. [Azure Portal](https://portal.azure.com)anahtar değerlerini görüntüleyebilir ve elde edebilirsiniz.
 
@@ -43,9 +47,9 @@ Arama hizmetinize erişmek için iki tür anahtar kullanılır: yönetici (okuma
 
 Portalda veya [yönetim REST API](/rest/api/searchmanagement/)erişim tuşları elde edebilirsiniz. Daha fazla bilgi için bkz. [yönetici ve sorgu API-anahtarlarını yönetme](search-security-api-keys.md).
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Aboneliğiniz için [arama hizmetlerini](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  listeleyin.
-3. Hizmeti seçin ve genel bakış sayfasında, **Settings**  > Yönetim ve sorgu anahtarlarını görüntülemek için ayarlar**anahtarlar** ' a tıklayın.
+3. Hizmeti seçin ve genel bakış sayfasında, **Settings**  > Yönetim ve sorgu anahtarlarını görüntülemek için ayarlar **anahtarlar** ' a tıklayın.
 
    :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="Portal sayfası, ayarları alma, anahtarlar bölümü" border="false":::
 
@@ -55,10 +59,10 @@ Sorgu anahtarları bir belge koleksiyonunu hedefleyen işlemler için bir dizin 
 
 İstemci uygulamalarında erişimi ve işlemleri kısıtlamak, hizmetinizdeki arama varlıklarının korunması için gereklidir. İstemci uygulamasından kaynaklanan herhangi bir sorgu için yönetici anahtarı yerine her zaman bir sorgu anahtarı kullanın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Aboneliğiniz için [arama hizmetlerini](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  listeleyin.
-3. Hizmeti seçin ve genel bakış sayfasında **Ayarlar**  > **anahtarlar**' a tıklayın.
-4. **Sorgu anahtarlarını Yönet**' e tıklayın.
+3. Hizmeti seçin ve genel bakış sayfasında **Ayarlar**  > **anahtarlar** ' a tıklayın.
+4. **Sorgu anahtarlarını Yönet** ' e tıklayın.
 5. Hizmetiniz için önceden oluşturulmuş olan sorgu anahtarını kullanın veya en çok 50 yeni sorgu anahtarı oluşturun. Varsayılan sorgu anahtarı adlandırılmamış, ancak yönetilebilirlik için ek sorgu anahtarları adlandırılmış olabilir.
 
    :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="Portal sayfası, ayarları alma, anahtarlar bölümü" border="false":::

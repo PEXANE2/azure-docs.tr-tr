@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 2fdaaf153f242a25e1ad9d8f926d6ac77d285df2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64bef8a1cd4353ed9602c36cf728a0d727458251
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444915"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675133"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanı ve Azure SYNAPSE Analytics için uyarı oluşturma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -45,7 +45,7 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz
 * [Azure portal](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Komut satırı arabirimi (CLı)](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Azure İzleyici REST API'si](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure İzleyici REST API'si](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure portal bir ölçümde uyarı kuralı oluşturma
 
@@ -57,14 +57,14 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz
 3. **Kural oluştur** sayfasını açmak için **Yeni uyarı kuralı** düğmesini seçin.
   ![Kural Oluştur](./media/alerts-insights-configure-portal/create-rule.png)
 
-4. **Koşul** bölümünde **Ekle**' ye tıklayın.
+4. **Koşul** bölümünde **Ekle** ' ye tıklayın.
   ![Koşulu tanımla](./media/alerts-insights-configure-portal/create-rule.png)
 5. **Sinyal mantığını Yapılandır** sayfasında bir sinyal seçin.
   ![Sinyal Seç](./media/alerts-insights-configure-portal/select-signal.png)
-6. **CPU yüzdesi**gibi bir sinyal seçtikten sonra **sinyal mantığını Yapılandır** sayfası görünür.
+6. **CPU yüzdesi** gibi bir sinyal seçtikten sonra **sinyal mantığını Yapılandır** sayfası görünür.
   ![Sinyal mantığını yapılandırma](./media/alerts-insights-configure-portal/configure-signal-logic.png)
-7. Bu sayfada, bu eşik türü, işleç, toplama türü, eşik değeri, toplama ayrıntı düzeyi ve değerlendirme sıklığını yapılandırın. Sonra da **Bitti**’ye tıklayın.
-8. **Oluşturma kuralında**, var olan bir **Eylem grubunu** seçin veya yeni bir grup oluşturun. Bir eylem grubu, bir uyarı koşulu oluştuğunda gerçekleştirilecek eylemi tanımlamanızı sağlar.
+7. Bu sayfada, bu eşik türü, işleç, toplama türü, eşik değeri, toplama ayrıntı düzeyi ve değerlendirme sıklığını yapılandırın. Sonra da **Bitti** ’ye tıklayın.
+8. **Oluşturma kuralında** , var olan bir **Eylem grubunu** seçin veya yeni bir grup oluşturun. Bir eylem grubu, bir uyarı koşulu oluştuğunda gerçekleştirilecek eylemi tanımlamanızı sağlar.
   ![Eylem grubunu tanımla](./media/alerts-insights-configure-portal/action-group.png)
 
 9. Kural için bir ad tanımlayın, isteğe bağlı bir açıklama sağlayın, kural için bir önem düzeyi seçin, kural oluşturulduktan sonra kuralın etkinleştirilip etkinleştirilmeyeceğini seçin ve ardından ölçüm kuralı uyarısı oluşturmak için **kural uyarısı oluştur** ' a tıklayın.

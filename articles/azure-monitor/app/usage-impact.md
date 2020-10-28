@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: fffb83fe680572c2448323a61b767a401c9a4834
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7393c36099795bbc989ae4b690100284d53f08e5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323715"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678390"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights ile etki analizi
 
-Etki, yük sürelerinin ve diğer özelliklerin uygulamanızın çeşitli bölümleri için dönüştürme oranlarını nasıl etkilediğini analiz eder. Daha hassas bir şekilde koymak için, **sayfa görünümü**, **özel olay**veya **istek** için **herhangi bir boyutun** farklı bir **sayfa görünümü** veya **özel olay**kullanımını nasıl etkilediğini bulur. 
+Etki, yük sürelerinin ve diğer özelliklerin uygulamanızın çeşitli bölümleri için dönüştürme oranlarını nasıl etkilediğini analiz eder. Daha hassas bir şekilde koymak için, **sayfa görünümü** , **özel olay** veya **istek** için **herhangi bir boyutun** farklı bir **sayfa görünümü** veya **özel olay** kullanımını nasıl etkilediğini bulur. 
 
 ![Etki aracı](./media/usage-impact/0001-impact.png)
 
@@ -36,10 +36,10 @@ Ancak performansın çözümlenmesi yalnızca bir etki alanının özellik alt k
 
 Etki aracı ile soruları cevaplamak için bir başlangıç sayfa görünümü, özel olay veya istek seçin.
 
-![Etki aracı](./media/usage-impact/0002-dropdown.png)
+![İlk sayfa görünümü, özel olay veya isteğin nerede seçeceğini gösteren ekran görüntüsü.](./media/usage-impact/0002-dropdown.png)
 
 1. **Sayfa görünümü** açılır listesinden bir sayfa görünümü seçin.
-2. Varsayılan **süre** seçiminde (Bu bağlam **süresinde** , **sayfa yükleme süresi**için bir diğer ad) açılan listesini **Çözümle** ' ye bırakın.
+2. Varsayılan **süre** seçiminde (Bu bağlam **süresinde** , **sayfa yükleme süresi** için bir diğer ad) açılan listesini **Çözümle** ' ye bırakın.
 3. , Açılan menü **kullanımını etkiler** için bir özel olay seçin. Bu olay, 1. adımda seçtiğiniz sayfa görünümündeki bir UI öğesine karşılık gelmelidir.
 
 ![Sonuçların ekran görüntüsü](./media/usage-impact/0003-results.png)
@@ -65,18 +65,18 @@ Bu, Impact Aracı, [Pearson bağıntı katsayısını](https://en.wikipedia.org/
 
 Etki çözümlemenin nasıl çalıştığına ilişkin temel döküm aşağıdaki gibidir:
 
-Let _A_ = ilk açılan pencerede seçtiğiniz ana sayfa görünümü/özel olay/istek. (**Sayfa görünümü için**).
+Let _A_ = ilk açılan pencerede seçtiğiniz ana sayfa görünümü/özel olay/istek. ( **Sayfa görünümü için** ).
 
-Let _B_ = seçtiğiniz ikincil sayfa görünümü/özel olay (**kullanımını etkiler**).
+Let _B_ = seçtiğiniz ikincil sayfa görünümü/özel olay ( **kullanımını etkiler** ).
 
-Etki, seçilen zaman aralığındaki kullanıcılardan gelen tüm oturumların bir örneğine bakar. Her bir oturum için, her _bir bir_' ın her oluşumunu arar.
+Etki, seçilen zaman aralığındaki kullanıcılardan gelen tüm oturumların bir örneğine bakar. Her bir oturum için, her _bir bir_ ' ın her oluşumunu arar.
 
 Oturumlar daha sonra İki koşuldan birine göre iki farklı _alt oturum_ türüne ayrılır:
 
-- Dönüştürülen bir alt oturum, _b_ olayından biten bir oturumdan oluşur ve _b_'den önce oluşan _tüm olayları_ kapsar.
-- Dönüştürülmeyen _bir_alt oturum, _B_terminali olmadan meydana geldiğinde oluşur.
+- Dönüştürülen bir alt oturum, _b_ olayından biten bir oturumdan oluşur ve _b_ 'den önce oluşan _tüm olayları_ kapsar.
+- Dönüştürülmeyen _bir_ alt oturum, _B_ terminali olmadan meydana geldiğinde oluşur.
 
-Etkili bir şekilde hesaplama, ölçüm veya boyuta göre analiz edilip etmediğimiz temel alınarak değişir. Bir alt oturumdaki tüm _A_içindeki ölçümler için ortalaması alınır. Yani, her _bir_ katkıda bulunan _1/N_ değerini _B_ 'ye atanan değere göre boyutlar için _n_ , alt oturumdaki _A_'nın sayısıdır.
+Etkili bir şekilde hesaplama, ölçüm veya boyuta göre analiz edilip etmediğimiz temel alınarak değişir. Bir alt oturumdaki tüm _A_ içindeki ölçümler için ortalaması alınır. Yani, her _bir_ katkıda bulunan _1/N_ değerini _B_ 'ye atanan değere göre boyutlar için _n_ , alt oturumdaki _A_ 'nın sayısıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

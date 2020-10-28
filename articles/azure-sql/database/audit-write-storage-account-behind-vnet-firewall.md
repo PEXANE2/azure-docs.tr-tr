@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 74926411b659cf5973b03b2caca58d7666803f9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f916fdcf632cc369d1fb7e2faefad6dddafd1e15
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444539"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677243"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet ve güvenlik duvarının arkasındaki depolama hesabına yönelik denetim yazma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -41,16 +41,16 @@ VNet veya güvenlik duvarının arkasındaki bir depolama hesabına yazma deneti
 >
 > * Genel amaçlı v2 depolama hesabı. Genel amaçlı bir v1 veya blob depolama hesabınız varsa, [genel amaçlı v2 depolama hesabına yükseltin](../../storage/common/storage-account-upgrade.md). Daha fazla bilgi için bkz. [depolama hesabı türleri](../../storage/common/storage-account-overview.md#types-of-storage-accounts).
 > * Depolama hesabının aynı abonelikte ve [MANTıKSAL SQL Server](logical-servers.md)ile aynı konumda olması gerekir.
-> * Azure depolama hesabı gerekir `Allow trusted Microsoft services to access this storage account` . Bunu depolama hesabı **güvenlik duvarları ve sanal ağlarda**ayarlayın.
+> * Azure depolama hesabı gerekir `Allow trusted Microsoft services to access this storage account` . Bunu depolama hesabı **güvenlik duvarları ve sanal ağlarda** ayarlayın.
 > * `Microsoft.Authorization/roleAssignments/write`Seçili depolama hesabı üzerinde izninizin olması gerekir. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="configure-in-azure-portal"></a>Azure portalında yapılandırma
 
 Aboneliğinizle [Azure Portal](https://portal.azure.com) bağlayın. Kaynak grubuna ve sunucusuna gidin.
 
-1. Güvenlik başlığı altında **Denetim** ' e tıklayın. **Açık**seçeneğini belirleyin.
+1. Güvenlik başlığı altında **Denetim** ' e tıklayın. **Açık** seçeneğini belirleyin.
 
-2. **Depolama**’yı seçin. Günlüklerin kaydedileceği depolama hesabını seçin. Depolama hesabı, [Önkoşullar](#prerequisites)bölümünde listelenen gereksinimlere uymalıdır.
+2. **Depolama** ’yı seçin. Günlüklerin kaydedileceği depolama hesabını seçin. Depolama hesabı, [Önkoşullar](#prerequisites)bölümünde listelenen gereksinimlere uymalıdır.
 
 3. Açık **depolama ayrıntıları**
 
@@ -61,7 +61,7 @@ Aboneliğinizle [Azure Portal](https://portal.azure.com) bağlayın. Kaynak grub
   >
   >Bu iletiyi görmüyorsanız, depolama hesabı bir sanal ağın arkasında değildir.
 
-4. Bekletme dönemi için gün sayısını seçin. Daha sonra, **Tamam**'a tıklayın. Saklama süresinden daha eski Günlükler silinir.
+4. Bekletme dönemi için gün sayısını seçin. Daha sonra, **Tamam** 'a tıklayın. Saklama süresinden daha eski Günlükler silinir.
 
 5. Denetim ayarlarınızda **Kaydet** ' i seçin.
 
@@ -93,7 +93,7 @@ SQL denetimini, bir VNet veya güvenlik duvarının arkasındaki bir depolama he
    Set-AzSqlServer -ResourceGroupName <your resource group> -ServerName <azure server name> -AssignIdentity
    ```
 
-   [**REST API**](https://docs.microsoft.com/rest/api/sql/servers/createorupdate):
+   [**REST API**](/rest/api/sql/servers/createorupdate):
 
    Örnek istek
 
@@ -117,12 +117,12 @@ SQL denetimini, bir VNet veya güvenlik duvarının arkasındaki bir depolama he
    }
    ```
 
-2. [Azure portalını](https://portal.azure.com) açın. Depolama hesabınıza gidin. **Access Control (IAM)** öğesini bulun ve **rol ataması Ekle**' ye tıklayın. Önceki adımda olduğu gibi Azure Active Directory (Azure AD) ile kaydettiğiniz veritabanını barındıran sunucuya **Depolama Blobu verileri katılımcısı** Azure rolü atayın.
+2. [Azure portalını](https://portal.azure.com) açın. Depolama hesabınıza gidin. **Access Control (IAM)** öğesini bulun ve **rol ataması Ekle** ' ye tıklayın. Önceki adımda olduğu gibi Azure Active Directory (Azure AD) ile kaydettiğiniz veritabanını barındıran sunucuya **Depolama Blobu verileri katılımcısı** Azure rolü atayın.
 
    > [!NOTE]
    > Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md)' ne bakın.
 
-3. *Storageaccountaccesskey*belirtmeden [sunucunun blob denetim ilkesini](/rest/api/sql/server%20auditing%20settings/createorupdate)yapılandırın:
+3. *Storageaccountaccesskey* belirtmeden [sunucunun blob denetim ilkesini](/rest/api/sql/server%20auditing%20settings/createorupdate)yapılandırın:
 
    Örnek istek
 

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 40c851e5ff5fc83ccf6b6d67e319bb97bd860bd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 140d95aeb7baf4b342044bc178d108239236229b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669112"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677676"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Azure adanmış bir konakta SQL Server VM çalıştırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,15 +30,14 @@ Bu makalede, [Azure adanmış ana bilgisayarı](/azure/virtual-machines/windows/
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-- Aşağıdaki VM Serisi destekleniyor: DSv3 ve ESv3. 
+- Tüm VM serileri adanmış konaklarda desteklenmez ve VM Serisi kullanılabilirliği bölgeye göre farklılık gösterir. Daha fazla bilgi için bkz. [Azure adanmış konaklara genel bakış](../../../virtual-machines/dedicated-hosts.md).
 
 ## <a name="licensing"></a>Lisanslama
 
 SQL Server VM Azure ayrılmış bir konağa yerleştirdiğinizde iki farklı lisans seçeneği arasından seçim yapabilirsiniz. 
 
-  - **SQL VM lisanslama**: Bu, her SQL Server VM lisansı için ayrı olarak ödediğiniz mevcut lisanslama seçeneğidir. 
-  - **Adanmış konak lisanslama**: Azure adanmış ana bilgisayar için sunulan yeni lisanslama modeli, SQL Server lisanslarının paketlenmiş ve ana bilgisayar düzeyinde için ödendiği yerdir. 
+  - **SQL VM lisanslama** : Bu, her SQL Server VM lisansı için ayrı olarak ödediğiniz mevcut lisanslama seçeneğidir. 
+  - **Adanmış konak lisanslama** : Azure adanmış ana bilgisayar için sunulan yeni lisanslama modeli, SQL Server lisanslarının paketlenmiş ve ana bilgisayar düzeyinde için ödendiği yerdir. 
 
 
 Mevcut SQL Server lisanslarını kullanmaya yönelik konak düzeyi seçenekleri: 
@@ -73,7 +72,7 @@ Y: müşteriler, Azure Hibrit Avantajı kullanarak Azure adanmış ana bilgisaya
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
+Daha fazla bilgi için aşağıdaki makalelere bakın: 
 
 * [Windows VM 'de SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)

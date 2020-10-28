@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a3afb12ac831d87b03d0bb16d1b7ef553f1bb906
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8ffdcd0615913649e80b20f6873d005f4ad4410
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90006828"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675990"
 ---
 # <a name="how-to-author-and-sign-an-attestation-policy"></a>Kanıtlama ilkesi yazma ve imzalama
 
@@ -36,7 +36,7 @@ issuancerules
  
 İlke dosyası, yukarıda görüldüğü gibi üç parçaya sahiptir:
 
-- **Sürüm**: sürüm, izlenen dilbilgisinin sürüm numarasıdır. 
+- **Sürüm** : sürüm, izlenen dilbilgisinin sürüm numarasıdır. 
 
     ```
     version=MajorVersion.MinorVersion   
@@ -44,9 +44,9 @@ issuancerules
 
     Şu anda desteklenen tek sürüm 1,0 sürümüdür.
 
-- **authorizationrules**: Azure kanıtlama 'nın **ıssuancerules**'e ilerlemeniz gerekip gerekmediğini belirlemek için, ilk olarak denetlenecek talep kuralları koleksiyonu. Talep kuralları tanımlandıkları sırada geçerlidir.
+- **authorizationrules** : Azure kanıtlama 'nın **ıssuancerules** 'e ilerlemeniz gerekip gerekmediğini belirlemek için, ilk olarak denetlenecek talep kuralları koleksiyonu. Talep kuralları tanımlandıkları sırada geçerlidir.
 
-- **ıssuancerules**: ilkede tanımlanan kanıtlama sonucuna ek bilgi eklemek için değerlendirilecek bir talep kuralları koleksiyonu. Talep kuralları tanımlandıkları sırada uygulanır ve ayrıca isteğe bağlıdır.
+- **ıssuancerules** : ilkede tanımlanan kanıtlama sonucuna ek bilgi eklemek için değerlendirilecek bir talep kuralları koleksiyonu. Talep kuralları tanımlandıkları sırada uygulanır ve ayrıca isteğe bağlıdır.
 
 Daha fazla bilgi için bkz. [talep ve talep kuralları](claim-rule-grammar.md) .
    
@@ -54,7 +54,7 @@ Daha fazla bilgi için bkz. [talep ve talep kuralları](claim-rule-grammar.md) .
 
 1. Yeni bir dosya oluşturun.
 1. Sürüme dosya ekleyin.
-1. **Authorizationrules** ve **ıssuancerules**için bölüm ekleyin.
+1. **Authorizationrules** ve **ıssuancerules** için bölüm ekleyin.
 
   ```
   version=1.0;
@@ -84,9 +84,9 @@ Daha fazla bilgi için bkz. [talep ve talep kuralları](claim-rule-grammar.md) .
   };
   ```
 
-  Gelen talep kümesi, tür, değer ve veren ile eşleşen bir talep içeriyorsa, Permit () eylemi ilke altyapısına **ıssuancerules**'yi işlemesini söyler.
+  Gelen talep kümesi, tür, değer ve veren ile eşleşen bir talep içeriyorsa, Permit () eylemi ilke altyapısına **ıssuancerules** 'yi işlemesini söyler.
   
-5. **Issuancerules**'e talep kuralları ekleyin.
+5. **Issuancerules** 'e talep kuralları ekleyin.
 
   ```
   version=1.0;
@@ -128,8 +128,8 @@ Bir ilke dosyası oluşturduktan sonra, bir ilkeyi JWS biçiminde karşıya yük
      ```
 
 2. Seçim İlkeyi imzalayın. Azure kanıtlama aşağıdaki algoritmaları destekler:
-     - **Hiçbiri**: ilke yükünü imzamayın.
-     - **RS256**: ilke yükünü imzalamak için desteklenen algoritma
+     - **Hiçbiri** : ilke yükünü imzamayın.
+     - **RS256** : ilke yükünü imzalamak için desteklenen algoritma
 
 3. JWS 'yi karşıya yükleyin ve ilkeyi doğrulayın.
      - İlke dosyası sözdizimi hatalarından muaf değilse, ilke dosyası hizmet tarafından kabul edilir.
@@ -172,4 +172,4 @@ print(encoded.decode('utf-8'))
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [PowerShell kullanarak Azure kanıtlama ayarlama](quickstart-powershell.md)
-- [Kod örneklerini kullanarak bir SGX kuşatma atturuntest](https://docs.microsoft.com/samples/browse/?expanded=azure&terms=attestation)
+- [Kod örneklerini kullanarak bir SGX kuşatma atturuntest](/samples/browse/?expanded=azure&terms=attestation)

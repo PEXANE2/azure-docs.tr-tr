@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/15/2019
 ms.author: jeedes
-ms.openlocfilehash: e56684c30d243e0b7848355234fef896ccd220ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eae60ba9aabe417e986c7637ce700302bfe6c7bf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543304"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676570"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>Öğretici: ekran kaydı-O-tek ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile ekran kaydı-O-tek tümle
 * Kullanıcılarınızın Azure AD hesaplarıyla ekran tabanlı olarak otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -48,14 +48,14 @@ Ekran kaydı-O-tek ile Azure AD 'ye tümleştirmeyi yapılandırmak için, Galer
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **ekran kaydı-O-matik** yazın.
 1. Sonuçlar panelinden **tek başına ekran kaydı** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-screencast-o-matic"></a>Ekran kaydı için Azure AD çoklu oturum açmayı yapılandırma ve test etme-O-tek
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu ekran kaydı-O-tek ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ekran kaydı-O-tek içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu ekran kaydı-O-tek ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ekran kaydı-O-tek içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu ekran kaydı-O-tek ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -70,8 +70,8 @@ Azure AD SSO 'yu ekran kaydı-O-tek ile yapılandırmak ve test etmek için aşa
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **ekran kaydı-O-tek başına** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **ekran kaydı-O-tek başına** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -95,25 +95,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, ekran kaydı-O-tek ' e erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **ekran kaydı-O-tek**' ı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde, **ekran kaydı-O-tek** ' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -123,7 +123,7 @@ Bu bölümde, ekran kaydı-O-tek ' e erişim izni vererek Azure çoklu oturum a�
 
 ## <a name="configure-screencast-o-matic-sso"></a>Ekran kaydı-O-tek başına SSO yapılandırma
 
-1. Bu yapılandırmayı, ekran kaydı-O-tek içinde otomatik hale getirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Bu yapılandırmayı, ekran kaydı-O-tek içinde otomatik hale getirmek için, **uzantıyı yüklemeniz** ' ne tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -133,15 +133,15 @@ Bu bölümde, ekran kaydı-O-tek ' e erişim izni vererek Azure çoklu oturum a�
 
 1. Ekran kaydı-O-el ile kurulumu yapmak istiyorsanız yeni bir Web tarayıcısı penceresi açın ve bir yönetici olarak ekran kaydı-O-tek şirket sitesinde oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-1. **Aboneliğe**tıklayın.
+1. **Aboneliğe** tıklayın.
 
     ![Abonelik](./media/screencast-tutorial/tutorial_screencast_sub.png)
 
-1. **Erişim sayfası** bölümünde **Kurulum**' a tıklayın.
+1. **Erişim sayfası** bölümünde **Kurulum** ' a tıklayın.
 
     ![Erişim](./media/screencast-tutorial/tutorial_screencast_setup.png)
 
-1. **Kurulum erişimi sayfasında**, aşağıdaki adımları gerçekleştirin.
+1. **Kurulum erişimi sayfasında** , aşağıdaki adımları gerçekleştirin.
 
 1. **Erişim URL 'si** bölümüne, belirtilen metin kutusuna InstanceName yazın.
 
@@ -151,7 +151,7 @@ Bu bölümde, ekran kaydı-O-tek ' e erişim izni vererek Azure çoklu oturum a�
 
 1. Azure portal 'den indirdiğiniz meta verileri karşıya yüklemek için **IDP meta VERI XML dosyasını karşıya yükle** **' ye tıklayın** .
 
-1. **Tamam**'a tıklayın.
+1. **Tamam** ’a tıklayın.
 
     ![Erişim](./media/screencast-tutorial/tutorial_screencast_save.png)
 
@@ -163,14 +163,14 @@ Bu bölümde, ekran kaydı-O-tek içinde Britta Simon adlı bir Kullanıcı olu�
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde ekran kaydı-O-tek kutucuğunu tıklattığınızda, SSO 'yu ayarladığınız ekran kaydı-O-kendiliğinden ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde ekran kaydı-O-tek kutucuğunu tıklattığınızda, SSO 'yu ayarladığınız ekran kaydı-O-kendiliğinden ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
 - [Azure AD ile ekran kaydı-O-tek ' i deneyin](https://aad.portal.azure.com/)

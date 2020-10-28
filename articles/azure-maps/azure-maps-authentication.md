@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3ad4724280039f2820611a621186d8174e9af986
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ecbbb9580a9a79ae52320ea53a4831ac8ef57f8b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091415"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678179"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Haritalar ile kimlik doğrulaması
 
@@ -90,7 +90,7 @@ Azure RBAC 'yi yapılandırırken bir güvenlik sorumlusu seçer ve bir rol atam
 
 Uygulama senaryolarını desteklemek için aşağıdaki rol tanımı türleri mevcuttur.
 
-| Azure rol tanımı       | Description                                                                                              |
+| Azure rol tanımı       | Açıklama                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Azure haritalar veri okuyucu      | Sabit Azure haritaları REST API 'Lerine erişim sağlar.                                                       |
 | Azure haritalar veri Katılımcısı | Kesilebilir Azure Maps REST API 'Lerine erişim sağlar. Değiştirici, eylemler tarafından tanımlanır: yazma ve silme. |
@@ -104,7 +104,7 @@ Azure haritalar REST API 'Lerinde yazma veya silme eylemlerini gerçekleştirmek
 | Oluşturucu            | Azure haritalar veri Katılımcısı |
 | Uzamsal            | Azure haritalar veri Katılımcısı |
 
-Azure RBAC ayarlarınızı görüntüleme hakkında daha fazla bilgi için bkz. Azure [RBAC for Azure Maps nasıl yapılandırılır](https://aka.ms/amrbac).
+Azure RBAC ayarlarınızı görüntüleme hakkında daha fazla bilgi için bkz. Azure [RBAC for Azure Maps nasıl yapılandırılır](./how-to-manage-authentication.md).
 
 #### <a name="custom-role-definitions"></a>Özel rol tanımları
 

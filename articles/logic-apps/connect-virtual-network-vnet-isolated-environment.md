@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: 7fee95a435b477639fe2b98cf2c9cbf500df5941
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 10/25/2020
+ms.openlocfilehash: cf8ce541c069f78adbb138fa38e2efc506e095ea
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310012"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675188"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -67,9 +67,9 @@ Ayrıca, [örnek Azure Resource Manager hızlı başlangıç şablonunu](https:/
 
   * Ya da [Zorlamalı tünel](../firewall/forced-tunneling.md)Ile [ExpressRoute](../expressroute/expressroute-introduction.md) 'u kullanmak istiyorsanız, aşağıdaki belirli yolu içeren [bir yol tablosu oluşturmanız](../virtual-network/manage-route-table.md) ve yol tablosunu Ise tarafından kullanılan her alt ağa bağlamanız gerekir:
 
-    **Ad**: <*yol adı*><br>
-    **Adres ön eki**: 0.0.0.0/0<br>
-    **Sonraki durak**: Internet
+    **Ad** : < *yol adı*><br>
+    **Adres ön eki** : 0.0.0.0/0<br>
+    **Sonraki durak** : Internet
     
     Bu belirli yol tablosu, Logic Apps bileşenlerinin Azure depolama ve Azure SQL VERITABANı gibi diğer bağımlı Azure hizmetleriyle iletişim kurabilmesi için gereklidir. Bu yol hakkında daha fazla bilgi için bkz. [0.0.0.0/0 adres ön eki](../virtual-network/virtual-networks-udr-overview.md#default-route). ExpressRoute ile Zorlamalı tünel kullanmıyorsanız, bu özel yol tablosuna gerek kalmaz.
     
@@ -116,8 +116,8 @@ Bu tabloda, ıSE 'nizin erişilebilir olması ve bu bağlantı noktalarının am
 
 | Amaç | Kaynak hizmet etiketi veya IP adresleri | Kaynak bağlantı noktaları | Hedef hizmet etiketi veya IP adresleri | Hedef bağlantı noktaları | Notlar |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
-| Sanal ağ içinde ıntersubnet iletişimi | ISE alt ağları ile sanal ağın adres alanı | * | ISE alt ağları ile sanal ağın adres alanı | * | Sanal ağınızdaki alt ağlar *arasında* akış için gereken trafik. <p><p>**Önemli**: her bir alt ağdaki *Bileşenler* arasında akış yapılacak trafik için, her alt ağ içinde tüm bağlantı noktalarını açtığınızdan emin olun. |
-| İs <p>Mantıksal uygulamanıza yönelik iletişim <p><p>Mantıksal uygulama için geçmişi çalıştırır| İç ıSE: <br>**VirtualNetwork** <p><p>Dış ıSE: **Internet** veya **notlara** bakın | * | **VirtualNetwork** | 443 | **Internet** Service etiketini kullanmak yerine, bu ÖĞELERIN kaynak IP adresini belirtebilirsiniz: <p><p>-Mantıksal uygulamanızda herhangi bir istek tetikleyicisi veya Web kancası çağıran bilgisayar veya hizmet <p>-Mantıksal uygulama çalıştırma geçmişine erişmek istediğiniz bilgisayar veya hizmet <p><p>**Önemli**: Bu bağlantı noktasını kapatmak veya engellemek, istek Tetikleyicileri veya Web kancaları olan Logic Apps çağrılarını engeller. Ayrıca, çalışma geçmişinde her adımın giriş ve çıkışlara erişmenizi de engellemiş olursunuz. Ancak, mantıksal uygulama çalıştırmaları geçmişine erişim engellenmiyor.|
+| Sanal ağ içinde ıntersubnet iletişimi | ISE alt ağları ile sanal ağın adres alanı | * | ISE alt ağları ile sanal ağın adres alanı | * | Sanal ağınızdaki alt ağlar *arasında* akış için gereken trafik. <p><p>**Önemli** : her bir alt ağdaki *Bileşenler* arasında akış yapılacak trafik için, her alt ağ içinde tüm bağlantı noktalarını açtığınızdan emin olun. |
+| İs <p>Mantıksal uygulamanıza yönelik iletişim <p><p>Mantıksal uygulama için geçmişi çalıştırır| İç ıSE: <br>**VirtualNetwork** <p><p>Dış ıSE: **Internet** veya **notlara** bakın | * | **VirtualNetwork** | 443 | **Internet** Service etiketini kullanmak yerine, bu ÖĞELERIN kaynak IP adresini belirtebilirsiniz: <p><p>-Mantıksal uygulamanızda herhangi bir istek tetikleyicisi veya Web kancası çağıran bilgisayar veya hizmet <p>-Mantıksal uygulama çalıştırma geçmişine erişmek istediğiniz bilgisayar veya hizmet <p><p>**Önemli** : Bu bağlantı noktasını kapatmak veya engellemek, istek Tetikleyicileri veya Web kancaları olan Logic Apps çağrılarını engeller. Ayrıca, çalışma geçmişinde her adımın giriş ve çıkışlara erişmenizi de engellemiş olursunuz. Ancak, mantıksal uygulama çalıştırmaları geçmişine erişim engellenmiyor.|
 | Logic Apps Designer-Dynamic özellikleri | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | İstekler, bu bölge için Logic Apps erişim uç noktasının [gelen IP adreslerinden](../logic-apps/logic-apps-limits-and-config.md#inbound) gelir. |
 | Bağlayıcı dağıtımı | **AzureConnectors** | * | **VirtualNetwork** | 454 | Bağlayıcıları dağıtmak ve güncelleştirmek için gereklidir. Bu bağlantı noktasını kapatmak veya engellemek, ıSE dağıtımlarının başarısız olmasına neden olur ve bağlayıcı güncelleştirmelerini ve düzeltmelerini engeller. |
 | Ağ durumu denetimi | **LogicApps** | * | **VirtualNetwork** | 454 | İstekler, bu bölge için Logic Apps erişim uç noktasının [gelen IP adreslerinden](../logic-apps/logic-apps-limits-and-config.md#inbound) ve [giden IP adreslerinden](../logic-apps/logic-apps-limits-and-config.md#outbound) gelir. |
@@ -131,7 +131,7 @@ Bu tabloda, ıSE 'nizin erişilebilir olması ve bu bağlantı noktalarının am
 
 | Amaç | Kaynak hizmet etiketi veya IP adresleri | Kaynak bağlantı noktaları | Hedef hizmet etiketi veya IP adresleri | Hedef bağlantı noktaları | Notlar |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
-| Sanal ağ içinde ıntersubnet iletişimi | ISE alt ağları ile sanal ağın adres alanı | * | ISE alt ağları ile sanal ağın adres alanı | * | Sanal ağınızdaki alt ağlar *arasında* akış için gereken trafik. <p><p>**Önemli**: her bir alt ağdaki *Bileşenler* arasında akış yapılacak trafik için, her alt ağ içinde tüm bağlantı noktalarını açtığınızdan emin olun. |
+| Sanal ağ içinde ıntersubnet iletişimi | ISE alt ağları ile sanal ağın adres alanı | * | ISE alt ağları ile sanal ağın adres alanı | * | Sanal ağınızdaki alt ağlar *arasında* akış için gereken trafik. <p><p>**Önemli** : her bir alt ağdaki *Bileşenler* arasında akış yapılacak trafik için, her alt ağ içinde tüm bağlantı noktalarını açtığınızdan emin olun. |
 | Mantıksal uygulamanızdan iletişim | **VirtualNetwork** | * | Hedefe göre farklılık gösterir | 80, 443 | Hedef, mantıksal uygulamanızın iletişim kurması gereken dış hizmetin uç noktalarına göre farklılık gösterir. |
 | Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80, 443 ||
 | Azure depolama bağımlılığı | **VirtualNetwork** | * | **Depolama** | 80, 443, 445 ||
@@ -176,15 +176,15 @@ Bu bağımlılıklar için erişime izin vermezseniz, ıSE dağıtımınız baş
 
 ## <a name="create-your-ise"></a>ISE'nizi oluşturun
 
-1. [Azure Portal](https://portal.azure.com), ana Azure Arama kutusuna `integration service environments` filtreniz olarak girin ve **tümleştirme hizmeti ortamları**' nı seçin.
+1. [Azure Portal](https://portal.azure.com), ana Azure Arama kutusuna `integration service environments` filtreniz olarak girin ve **tümleştirme hizmeti ortamları** ' nı seçin.
 
    !["Tümleştirme hizmeti ortamları" nı bulun ve seçin](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
 
-1. **Tümleştirme hizmeti ortamları** bölmesinde **Ekle**' yi seçin.
+1. **Tümleştirme hizmeti ortamları** bölmesinde **Ekle** ' yi seçin.
 
    ![Tümleştirme hizmeti ortamı oluşturmak için "Ekle" yi seçin](./media/connect-virtual-network-vnet-isolated-environment/add-integration-service-environment.png)
 
-1. Ortamınız için bu ayrıntıları girin ve ardından **gözden geçir + oluştur**' u seçin. Örneğin:
+1. Ortamınız için bu ayrıntıları girin ve ardından **gözden geçir + oluştur** ' u seçin. Örneğin:
 
    ![Ortam ayrıntılarını sağlama](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
@@ -194,11 +194,11 @@ Bu bağımlılıklar için erişime izin vermezseniz, ıSE dağıtımınız baş
    | **Kaynak grubu** | Evet | <*Azure-Resource-Group-Name*> | Ortamınızı oluşturmak istediğiniz yeni veya mevcut bir Azure Kaynak grubu |
    | **Tümleştirme hizmeti ortam adı** | Evet | <*ortam-adı*> | Yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi () `_` ve nokta () içerebilen Ise adınız `.` . |
    | **Konum** | Evet | <*Azure-Datacenter-Region*> | Ortamınızı dağıtacağınız Azure veri merkezi bölgesi |
-   | **SKU** | Evet | **Premium** veya **Geliştirici (SLA yok)** | Oluşturulacak ve kullanılacak ıSE SKU 'SU. Bu SKU 'Lar arasındaki farklar için bkz. [Ise SKU 'ları](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Önemli**: Bu seçenek yalnızca Ise oluşturma sırasında kullanılabilir ve daha sonra değiştirilemez. |
+   | **SKU** | Evet | **Premium** veya **Geliştirici (SLA yok)** | Oluşturulacak ve kullanılacak ıSE SKU 'SU. Bu SKU 'Lar arasındaki farklar için bkz. [Ise SKU 'ları](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Önemli** : Bu seçenek yalnızca Ise oluşturma sırasında kullanılabilir ve daha sonra değiştirilemez. |
    | **Ek kapasite** | Premium: <br>Evet <p><p>Tasarımcı <br>Uygulanamaz | Premium: <br>0 ila 10 <p><p>Tasarımcı <br>Uygulanamaz | Bu ıSE kaynağı için kullanılacak ek işleme birimi sayısı. Oluşturulduktan sonra kapasite eklemek için, bkz. [Ise kapasitesi ekleme](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). |
-   | **Erişim uç noktası** | Evet | **İç** veya **dış** | ISE için kullanılacak erişim uç noktalarının türü. Bu uç noktalar, işinizdeki Logic Apps 'teki istek veya Web kancasının, sanal ağınızın dışından çağrı alıp almamadığını belirtir. <p><p>Seçiminiz, mantıksal uygulama çalışma geçmişinizdeki girdileri ve çıkışları görüntüleme ve erişme şeklini de etkiler. Daha fazla bilgi için bkz. [Ise uç noktası erişimi](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Önemli**: yalnızca Ise oluşturma sırasında erişim uç noktasını seçebilir ve bu seçeneği daha sonra değiştiremezsiniz. |
-   | **Sanal ağ** | Evet | <*Azure-sanal-ağ-adı*> | Ortamınızı eklemek istediğiniz Azure sanal ağı, bu ortamdaki Logic Apps 'in sanal ağınıza erişebilmesi için kullanabilirsiniz. Ağınız yoksa, [önce bir Azure sanal ağı oluşturun](../virtual-network/quick-create-portal.md). <p><p>**Önemli**: Bu ekleme işlemini *yalnızca* Ise 'nizi oluştururken gerçekleştirebilirsiniz. |
-   | **Alt ağlar** | Evet | <*alt ağ-kaynak listesi*> | ISE, ortamınızda kaynak oluşturup dağıtmak için gereken dört *boş* alt ağ gerektirir ve bağlayıcılar ve performans için önbelleğe alma gibi dahili Logic Apps bileşenleri tarafından kullanılır. <p>**Önemli**: alt [ağlarınızı oluşturmak için bu adımlarla devam etmeden önce alt ağ gereksinimlerini gözden geçirdiğinizden](#create-subnet)emin olun. |
+   | **Erişim uç noktası** | Evet | **İç** veya **dış** | ISE için kullanılacak erişim uç noktalarının türü. Bu uç noktalar, işinizdeki Logic Apps 'teki istek veya Web kancasının, sanal ağınızın dışından çağrı alıp almamadığını belirtir. <p><p>Seçiminiz, mantıksal uygulama çalışma geçmişinizdeki girdileri ve çıkışları görüntüleme ve erişme şeklini de etkiler. Daha fazla bilgi için bkz. [Ise uç noktası erişimi](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Önemli** : yalnızca Ise oluşturma sırasında erişim uç noktasını seçebilir ve bu seçeneği daha sonra değiştiremezsiniz. |
+   | **Sanal ağ** | Evet | <*Azure-sanal-ağ-adı*> | Ortamınızı eklemek istediğiniz Azure sanal ağı, bu ortamdaki Logic Apps 'in sanal ağınıza erişebilmesi için kullanabilirsiniz. Ağınız yoksa, [önce bir Azure sanal ağı oluşturun](../virtual-network/quick-create-portal.md). <p><p>**Önemli** : Bu ekleme işlemini *yalnızca* Ise 'nizi oluştururken gerçekleştirebilirsiniz. |
+   | **Alt ağlar** | Evet | <*alt ağ-kaynak listesi*> | ISE, ortamınızda kaynak oluşturup dağıtmak için gereken dört *boş* alt ağ gerektirir ve bağlayıcılar ve performans için önbelleğe alma gibi dahili Logic Apps bileşenleri tarafından kullanılır. <p>**Önemli** : alt [ağlarınızı oluşturmak için bu adımlarla devam etmeden önce alt ağ gereksinimlerini gözden geçirdiğinizden](#create-subnet)emin olun. |
    |||||
 
    <a name="create-subnet"></a>
@@ -227,26 +227,26 @@ Bu bağımlılıklar için erişime izin vermezseniz, ıSE dağıtımınız baş
 
    * [ExpressRoute](../expressroute/expressroute-introduction.md)kullanırsanız, aşağıdaki rotayı içeren [bir yol tablosu oluşturmanız](../virtual-network/manage-route-table.md) ve bu tabloyu, Ise tarafından kullanılan her alt ağ ile bağlamanız gerekir:
 
-     **Ad**: <*yol adı*><br>
-     **Adres ön eki**: 0.0.0.0/0<br>
-     **Sonraki durak**: Internet
+     **Ad** : < *yol adı*><br>
+     **Adres ön eki** : 0.0.0.0/0<br>
+     **Sonraki durak** : Internet
 
-   1. **Alt ağlar** listesinde, **alt ağ yapılandırmasını Yönet**' i seçin.
+   1. **Alt ağlar** listesinde, **alt ağ yapılandırmasını Yönet** ' i seçin.
 
       ![Alt ağ yapılandırmasını yönetme](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet-configuration.png)
 
-   1. **Alt ağlar** bölmesinde **alt ağ**' ı seçin.
+   1. **Alt ağlar** bölmesinde **alt ağ** ' ı seçin.
 
       ![Dört boş alt ağ ekleyin](./media/connect-virtual-network-vnet-isolated-environment/add-empty-subnets.png)
 
    1. **Alt ağ ekle** bölmesinde, bu bilgileri sağlayın.
 
-      * **Ad**: alt ağınızın adı
-      * **Adres aralığı (CIDR bloğu)**: alt ağınızın sanal AĞıNıZDA ve CIDR biçimindeki aralığı
+      * **Ad** : alt ağınızın adı
+      * **Adres aralığı (CIDR bloğu)** : alt ağınızın sanal AĞıNıZDA ve CIDR biçimindeki aralığı
 
       ![Alt ağ ayrıntıları ekleme](./media/connect-virtual-network-vnet-isolated-environment/provide-subnet-details.png)
 
-   1. İşiniz bittiğinde **Tamam**’ı seçin.
+   1. İşiniz bittiğinde **Tamam** ’ı seçin.
 
    1. Üç alt ağ için bu adımları tekrarlayın.
 
@@ -255,7 +255,7 @@ Bu bağımlılıklar için erişime izin vermezseniz, ıSE dağıtımınız baş
 
    Alt ağlar oluşturma hakkında daha fazla bilgi için bkz. [sanal ağ alt ağı ekleme](../virtual-network/virtual-network-manage-subnet.md).
 
-1. Azure, ıSE bilgilerinizi başarıyla doğruladıktan sonra **Oluştur**' u seçin, örneğin:
+1. Azure, ıSE bilgilerinizi başarıyla doğruladıktan sonra **Oluştur** ' u seçin, örneğin:
 
    ![Doğrulama başarılı olduktan sonra "Oluştur" u seçin](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
 
@@ -280,25 +280,18 @@ Bu bağımlılıklar için erişime izin vermezseniz, ıSE dağıtımınız baş
 
 1. ISE 'nizin ağ durumunu denetlemek için bkz. [tümleştirme hizmeti ortamınızı yönetme](../logic-apps/ise-manage-integration-service-environment.md#check-network-health).
 
+   > [!CAUTION]
+   > ISE 'nin ağı sağlıksız hale gelirse, ıSE 'niz tarafından kullanılan dahili App Service Ortamı (ASE) de sağlıksız hale gelebilir. ASE, yedi günden daha uzun bir süre boyunca uygun değilse, ASE askıya alınır. Bu durumu çözümlemek için, sanal ağ kurulumunuzu denetleyin. Bulduğunuz sorunları çözün ve ardından ıSE 'nizi yeniden başlatın. Aksi takdirde, 90 gün sonra askıya alınan ASE silinir ve ıSE kullanılamaz hale gelir. Bu nedenle, gerekli trafiğe izin vermek için ıSE 'nizi sağlıklı tutduğunuzdan emin olun.
+   > 
+   > Daha fazla bilgi için şu konulara bakın:
+   >
+   > * [Azure App Service tanılamada genel bakış](../app-service/overview-diagnostics.md)
+   > * [Azure App Service Ortamı için ileti günlüğe kaydetme](../app-service/environment/using-an-ase.md#logging)
+
 1. Çalışma ortamınızda mantıksal uygulamalar ve diğer yapıtlar oluşturmaya başlamak için bkz. [Integration Service ortamlarına kaynak ekleme](../logic-apps/add-artifacts-integration-service-environment-ise.md).
 
    > [!IMPORTANT]
-   > ISE 'nizi oluşturduktan sonra kullanılabilir hale gelen yönetilen ıSE bağlayıcıları, mantıksal uygulama Tasarımcısı 'ndaki bağlayıcı seçicisinde otomatik olarak görünmez. Bu ıSE bağlayıcılarını kullanabilmeniz için, mantıksal uygulama Tasarımcısı 'nda görünmesi için [Bu BAĞLAYıCıLARı Ise 'nize](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment) el ile eklemeniz gerekir.
-
-   > [!IMPORTANT]
-   > Yönetilen ıSE bağlayıcıları Şu anda [etiketleri](../azure-resource-manager/management/tag-support.md)desteklemiyor. Etiketlemeyi zorlayan bir ilke ayarlarsanız ıSE bağlayıcıları eklenmeye çalışılıyor  
-   > Bu örneğe benzer bir hata ile başarısız olabilir: 
-   > 
-   > ```json
-   > {
-   >    "error": { 
-   >       "code": "IntergrationServiceEnvironmentManagedApiDefinitionTagsNotSupported", 
-   >       "message": "The tags are not supported in the managed API 'azureblob'."
-   >    }
-   > }
-   > ```
-   > ISE bağlayıcıları eklemek için ilkenizi devre dışı bırakmanız veya kaldırmanız gerekir.
-   > 
+   > ISE 'nizi oluşturduktan sonra, yönetilen ıSE bağlayıcıları kullanabilmeniz için kullanılabilir hale gelir, ancak mantıksal uygulama Tasarımcısı 'ndaki bağlayıcı seçicisinde otomatik olarak görünmez. Bu ıSE bağlayıcılarını kullanabilmeniz için, mantıksal uygulama Tasarımcısı 'nda görünmesi için [Bu bağlayıcıları el ile eklemeniz ve ıSE 'ye dağıtmanız](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment) gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

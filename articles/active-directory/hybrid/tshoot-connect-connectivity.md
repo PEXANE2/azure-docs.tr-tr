@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: efca190f3dad1c0a323aa56ffd68b8b2597b5862
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 56e9820c5e3a750a35b7271b86750df00eb4784e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370228"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677058"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD bağlantısı sorunlarını giderme
 Bu makalede, Azure AD Connect ile Azure AD arasındaki bağlantının nasıl çalıştığı ve bağlantı sorunlarını nasıl giderebileceğiniz açıklanır. Bu sorunlar büyük olasılıkla ara sunucu içeren bir ortamda görülebilir.
@@ -44,7 +44,7 @@ Proxy sunucusunda gerekli URL 'Lerin açılması da gerekir. Resmi liste, [Offic
 
 Bu URL 'Lerde, her bir Azure AD 'ye bağlanabilmek için aşağıdaki tablo, tam olarak en düşük üyeliktir. Bu liste, parola geri yazma veya Azure AD Connect Health gibi isteğe bağlı özellikler içermez. İlk yapılandırma için sorun gidermeye yardımcı olmak üzere burada belgelenmiştir.
 
-| URL | Bağlantı noktası | Description |
+| URL | Bağlantı noktası | Açıklama |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL listelerini indirmek için kullanılır. |
 | \*. verisign.com |HTTP/80 |CRL listelerini indirmek için kullanılır. |
@@ -52,9 +52,17 @@ Bu URL 'Lerde, her bir Azure AD 'ye bağlanabilmek için aşağıdaki tablo, tam
 | \*.windows.net |HTTPS/443 |Azure AD 'de oturum açmak için kullanılır. |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |MFA için kullanılır. |
 | \*.microsoftonline.com |HTTPS/443 |Azure AD dizininizi yapılandırmak ve verileri içeri/dışarı aktarmak için kullanılır. |
+| \*. crl3.digicert.com |HTTP/80 |Sertifikaları doğrulamak için kullanılır. |
+| \*. crl4.digicert.com |HTTP/80 |Sertifikaları doğrulamak için kullanılır. |
+| \*. ocsp.digicert.com |HTTP/80 |Sertifikaları doğrulamak için kullanılır. |
+| \*. www.d-trust.net |HTTP/80 |Sertifikaları doğrulamak için kullanılır. |
+| \*. root-c3-ca2-2009.ocsp.d-trust.net |HTTP/80 |Sertifikaları doğrulamak için kullanılır. |
+| \*. crl.microsoft.com |HTTP/80 |Sertifikaları doğrulamak için kullanılır. |
+| \*. oneocsp.microsoft.com |HTTP/80 |Sertifikaları doğrulamak için kullanılır. |
+| \*. ocsp.msocsp.com |HTTP/80 |Sertifikaları doğrulamak için kullanılır. |
 
 ## <a name="errors-in-the-wizard"></a>Sihirbazdaki hatalar
-Yükleme Sihirbazı iki farklı güvenlik bağlamı kullanıyor. **Azure AD 'ye bağlanma**sayfasında, şu anda oturum açmış olan kullanıcıyı kullanıyor. **Yapılandırma**sayfasında, [eşitleme altyapısı için hizmeti çalıştıran hesapla](reference-connect-accounts-permissions.md#adsync-service-account)değişiklik yapılır. Bir sorun varsa, proxy yapılandırması Global olduğundan, bu durum büyük olasılıkla sihirbazda **Azure AD 'ye Bağlan** sayfasında bulunur.
+Yükleme Sihirbazı iki farklı güvenlik bağlamı kullanıyor. **Azure AD 'ye bağlanma** sayfasında, şu anda oturum açmış olan kullanıcıyı kullanıyor. **Yapılandırma** sayfasında, [eşitleme altyapısı için hizmeti çalıştıran hesapla](reference-connect-accounts-permissions.md#adsync-service-account)değişiklik yapılır. Bir sorun varsa, proxy yapılandırması Global olduğundan, bu durum büyük olasılıkla sihirbazda **Azure AD 'ye Bağlan** sayfasında bulunur.
 
 Aşağıdaki sorunlar, Yükleme sihirbazında karşılaştığınız en yaygın hatalardır.
 
@@ -87,7 +95,7 @@ PowerShell ara sunucuya bağlanmak için machine.config dosyasındaki yapıland�
 
 Proxy doğru yapılandırılmışsa, bir başarı durumu almalısınız: ![ proxy doğru yapılandırıldığında başarı durumunu gösteren ekran görüntüsü.](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
-**Uzak sunucuya bağlanamıyorsanız**, PowerShell proxy kullanılmadan doğrudan çağrı yapmayı DENIYOR veya DNS doğru şekilde yapılandırılmamış. **machine.config** dosyasının doğru yapılandırıldığından emin olun.
+**Uzak sunucuya bağlanamıyorsanız** , PowerShell proxy kullanılmadan doğrudan çağrı yapmayı DENIYOR veya DNS doğru şekilde yapılandırılmamış. **machine.config** dosyasının doğru yapılandırıldığından emin olun.
 ![bağlanılamıyor](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
 
 Proxy doğru yapılandırılmamışsa bir hata alırsınız: ![ proxy200 ](./media/tshoot-connect-connectivity/invokewebrequest403.png)
@@ -109,7 +117,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 * Adminwebservice ve provisioningapı uç noktaları bulma uç noktalardır ve kullanılacak gerçek uç noktayı bulmak için kullanılır. Bu uç noktalar, bölgenize bağlı olarak farklılık açmış.
 
 ### <a name="reference-proxy-logs"></a>Ara sunucu günlüklerine başvur
-İşte gerçek bir ara sunucu günlüğünden ve Yükleme Sihirbazı sayfasından alındığı yerden bir döküm alındı (aynı uç noktaya yinelenen girdiler kaldırılmıştır). Bu bölüm, kendi proxy 'niz ve ağ günlüklerinizin bir başvurusu olarak kullanılabilir. Gerçek uç noktalar ortamınızda farklı olabilir (Bu URL 'Lerde *italik*olarak).
+İşte gerçek bir ara sunucu günlüğünden ve Yükleme Sihirbazı sayfasından alındığı yerden bir döküm alındı (aynı uç noktaya yinelenen girdiler kaldırılmıştır). Bu bölüm, kendi proxy 'niz ve ağ günlüklerinizin bir başvurusu olarak kullanılabilir. Gerçek uç noktalar ortamınızda farklı olabilir (Bu URL 'Lerde *italik* olarak).
 
 **Azure AD'ye Bağlanma**
 
@@ -117,26 +125,26 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |connect://*bba800-bağlayıcısını*. microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect:// *bba800-bağlayıcısını* . microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:33 |connect://*bwsc02-Relay*. microsoftonline.com:443 |
+| 1/11/2016 8:33 |connect:// *bwsc02-Relay* . microsoftonline.com:443 |
 
 **Yapılandır**
 
 | Saat | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |connect://*bba800-bağlayıcısını*. microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect:// *bba800-bağlayıcısını* . microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba900-bağlayıcısını*. microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect:// *bba900-bağlayıcısını* . microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba800-bağlayıcısını*. microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect:// *bba800-bağlayıcısını* . microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:46 |connect://*bwsc02-Relay*. microsoftonline.com:443 |
+| 1/11/2016 8:46 |connect:// *bwsc02-Relay* . microsoftonline.com:443 |
 
 **İlk eşitleme**
 
@@ -144,8 +152,8 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba900-bağlayıcısını*. microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba800-bağlayıcısını*. microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect:// *bba900-bağlayıcısını* . microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect:// *bba800-bağlayıcısını* . microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>Kimlik Doğrulama hataları
 Bu bölümde, ADAL (Azure AD Connect tarafından kullanılan kimlik doğrulama kitaplığı) ve PowerShell aracılığıyla döndürülebilecek hatalar ele alınmaktadır. Açıklanan hata, sonraki adımlarınızı anlamanıza yardımcı olmalıdır.
@@ -219,7 +227,7 @@ Kimlik doğrulama başarılı oldu. Şirket bilgileri Azure AD 'den alınamadı.
 Kimlik doğrulama başarılı oldu. Azure AD 'den etki alanı bilgileri alınamadı.
 
 ### <a name="unspecified-authentication-failure"></a>Belirtilmeyen kimlik doğrulama hatası
-Yükleme sihirbazında beklenmeyen bir hata olarak gösteriliyor. **Okul veya kuruluş hesabı**yerine bir **Microsoft hesabı** kullanmayı denerseniz, bu durum oluşabilir.
+Yükleme sihirbazında beklenmeyen bir hata olarak gösteriliyor. **Okul veya kuruluş hesabı** yerine bir **Microsoft hesabı** kullanmayı denerseniz, bu durum oluşabilir.
 
 ## <a name="troubleshooting-steps-for-previous-releases"></a>Önceki sürümler için sorun giderme adımları.
 Yayın numarası 1.1.105.0 (2016 ' de yayımlanmıştır) ile başlayan yayınlar sayesinde, oturum açma Yardımcısı kullanımdan kaldırıldı. Bu bölüm ve yapılandırma artık gerekli değildir, ancak başvuru olarak tutulur.

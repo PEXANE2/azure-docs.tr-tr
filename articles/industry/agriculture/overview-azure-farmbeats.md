@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d9882f23096e19435566323de4d0ebaf7c0af3ef
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b08013e9d015d3c987c0032761bebccd4b57ec72
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331932"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678033"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure Farmtts 'ye Genel Bakış (Önizleme)
 
 Azure Farm, Azure Marketi 'nde bulunan işletmeden işletmeye yönelik bir tekliftir. Sağlayıcılar arasında belirsiz veri kümelerinin toplanmasının mümkün olduğunu belirler. Azure Farmtts, fkullanılan veri kümelerine göre yapay zeka (AI) veya Machine Learning (ML) modelleri oluşturmanıza olanak sağlar. Azure Farmcts 'yi kullanarak, büyük ölçekli işletmeler, veri mühendisinin belirsiz bir şekilde kaldırılması yerine temel değere odaklanabilir.
 
 > [!NOTE]
-> Azure Farmtts Şu anda genel önizlemededir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure Farmtts, bir hizmet düzeyi sözleşmesi olmadan sağlanır. Destek için [Azure Farmtts destek forumu](https://aka.ms/farmbeatssupport) ' nu kullanın.
+> Azure Farmtts Şu anda genel önizlemededir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure Farmtts, bir hizmet düzeyi sözleşmesi olmadan sağlanır. Destek için [Azure Farmtts destek forumu](/answers/topics/azure-farmbeats.html) ' nu kullanın.
 
 ![Proje grubu ları](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
@@ -66,7 +66,7 @@ Bir yönetici, Azure Farm'e veri sağlayıcıları olarak birden çok iş ortağ
 Azure Farmtts hiçbir ek ücret ödemeden sunulur ve yalnızca kullandığınız Azure kaynakları için ödeme yaparsınız. Teklif hakkında daha fazla bilgi edinmek için aşağıdaki kaynakları kullanabilirsiniz:
 
 - [Azure farmtts blogumuzu](https://aka.ms/farmbeatsblog)ziyaret ederek en son Azure farmm haberleri hakkında bilgi sahibi olun.
-- [Azure Farmtts destek forumumuza](https://aka.ms/farmbeatssupport)bir soru göndererek yardım isteyin.
+- [Azure Farmtts destek forumumuza](/answers/topics/azure-farmbeats.html)bir soru göndererek yardım isteyin.
 - [Azure Farmtts geri bildirim forumumuzda](https://aka.ms/farmbeatsfeedback)bir özellik fikrini naklederek veya oylayarak geri bildirim sağlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

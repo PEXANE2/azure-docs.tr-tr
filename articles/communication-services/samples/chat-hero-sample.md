@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9be94183fc34c2dbee3503d21e2e643d5296a82b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461133"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677423"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Grup sohbeti Hero örneği ile çalışmaya başlama
 
@@ -56,9 +56,9 @@ Görünen adınızı ve Emoji yapılandırıldıktan sonra sohbet oturumuna kat�
 
 Ana sohbet ekranının bileşenleri:
 
-- **Ana sohbet alanı**: Bu, kullanıcıların ileti gönderebildiği ve aldığı temel sohbet deneyimidir. İleti göndermek için, giriş alanını kullanabilir ve ENTER tuşuna basabilir (ya da Gönder düğmesini kullanabilirsiniz). Alınan sohbet iletileri, doğru ad ve Emoji ile gönderici tarafından kategorilere ayrılmıştır. Sohbet alanında iki tür bildirim görürsünüz: 1) bir Kullanıcı yazarken ve 2) iletiler için gönderme ve okuma bildirimleri yazma.
-- **Üst bilgi**: Bu, kullanıcının sohbet iş parçacığının başlığını ve katılımcı ve ayarlar yan çubuklarının konumunu değiştirmeye yönelik denetimleri ve sohbet oturumundan çıkmak için bir Bırak düğmesini göremeyeceği yerdir.
-- **Yan çubuk**: burada katılımcılar ve ayar bilgileri, üstbilgideki denetimler kullanılarak açıldığında gösterilir. Katılımcılar yan çubuğu, sohbetteki katılımcılar listesini ve katılımcıları sohbet oturumuna davet etmek için bir bağlantı içerir. Ayarlar yan çubuğu, sohbet iş parçacığı başlığını yapılandırmanıza olanak tanır. 
+- **Ana sohbet alanı** : Bu, kullanıcıların ileti gönderebildiği ve aldığı temel sohbet deneyimidir. İleti göndermek için, giriş alanını kullanabilir ve ENTER tuşuna basabilir (ya da Gönder düğmesini kullanabilirsiniz). Alınan sohbet iletileri, doğru ad ve Emoji ile gönderici tarafından kategorilere ayrılmıştır. Sohbet alanında iki tür bildirim görürsünüz: 1) bir Kullanıcı yazarken ve 2) iletiler için gönderme ve okuma bildirimleri yazma.
+- **Üst bilgi** : Bu, kullanıcının sohbet iş parçacığının başlığını ve katılımcı ve ayarlar yan çubuklarının konumunu değiştirmeye yönelik denetimleri ve sohbet oturumundan çıkmak için bir Bırak düğmesini göremeyeceği yerdir.
+- **Yan çubuk** : burada katılımcılar ve ayar bilgileri, üstbilgideki denetimler kullanılarak açıldığında gösterilir. Katılımcılar yan çubuğu, sohbetteki katılımcılar listesini ve katılımcıları sohbet oturumuna davet etmek için bir bağlantı içerir. Ayarlar yan çubuğu, sohbet iş parçacığı başlığını yapılandırmanıza olanak tanır. 
 
 Aşağıda, önkoşulları ve örneği ayarlama adımlarını hakkında daha fazla bilgi bulacaksınız.
 
@@ -81,7 +81,7 @@ Birden çok kullanıcı sohbetini benzetirmek için sohbet URL 'siyle birden faz
 ## <a name="before-running-the-sample-for-the-first-time"></a>Örneği ilk kez çalıştırmadan önce
 
 1. PowerShell, Windows Terminal, komut Istemi veya eşdeğer bir örnek açın ve örneği kopyalamak istediğiniz dizine gidin.
-2. `git clone https://github.com/Azure/Communication.git`
+2. `git clone https://github.com/Azure-Samples/communication-services-web-chat-hero.git`
 3. Azure portal alın `Connection String` . Bağlantı dizeleri hakkında daha fazla bilgi için bkz. [Azure Iletişim kaynakları oluşturma](../quickstarts/create-communication-resource.md)
 4. ' I aldıktan sonra `Connection String` , sohbet klasörünün altında bulunan dosyadaki **sohbet/appsettings.js** dosyasına bağlantı dizesini ekleyin. Bağlantı dizenizi şu değişkende girin: `ResourceConnectionString` .
 
@@ -111,7 +111,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 >[!div class="nextstepaction"] 
 >[GitHub 'dan örneği indirin](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Sohbet kavramları](../concepts/chat/concepts.md) hakkında bilgi edinin
 - [Sohbet istemci kitaplığımızı](../concepts/chat/sdk-features.md) öğrenmeye

@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c64112e30bdaf0da2218177bd2737c3ebe688b0c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627236"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675287"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Bunlara ek olarak, otomatik yük devretme grupları, yük devretme sırasında d
 
 Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, bir sunucu veya yönetilen örnek üzerinde veritabanlarını etkileyen herhangi bir kesinti otomatik yük devretmeye neden olur. Şunu kullanarak otomatik yük devretme grubunu yönetebilirsiniz:
 
-- [Azure portalındaki](geo-distributed-application-configure-tutorial.md)
+- [Azure Portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLı: yük devretme grubu](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: yük devretme grubu](scripts/add-database-to-failover-group-powershell.md)
 - [REST API: yük devretme grubu](/rest/api/sql/failovergroups).
@@ -243,7 +243,7 @@ Her örnek kendi VNet 'inde yalıtılmış olduğundan, bu VNET 'ler arasındaki
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Farklı aboneliklerdeki yönetilen örnekler arasında yük devretme grubu oluşturma
 
-Abonelikler aynı [Azure Active Directory kiracısıyla](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)ilişkili olduğu sürece, iki farklı abonelikteki SQL yönetilen örnekleri arasında bir yük devretme grubu oluşturabilirsiniz. PowerShell API 'sini kullanırken, `PartnerSubscriptionId` IKINCIL SQL yönetilen örneği için parametresini belirterek bunu yapabilirsiniz. REST API kullanırken, parametreye dahil edilen her örnek KIMLIĞI `properties.managedInstancePairs` kendi SubscriptionID değerine sahip olabilir.
+Abonelikler aynı [Azure Active Directory kiracısıyla](../../active-directory/fundamentals/active-directory-whatis.md#terminology)ilişkili olduğu sürece, iki farklı abonelikteki SQL yönetilen örnekleri arasında bir yük devretme grubu oluşturabilirsiniz. PowerShell API 'sini kullanırken, `PartnerSubscriptionId` IKINCIL SQL yönetilen örneği için parametresini belirterek bunu yapabilirsiniz. REST API kullanırken, parametreye dahil edilen her örnek KIMLIĞI `properties.managedInstancePairs` kendi SubscriptionID değerine sahip olabilir.
   
 > [!IMPORTANT]
 > Azure portal, farklı aboneliklerde yük devretme gruplarının oluşturulmasını desteklemez. Ayrıca, farklı abonelikler ve/veya kaynak gruplarındaki mevcut yük devretme grupları için yük devretme, birincil SQL yönetilen örneğinden Portal aracılığıyla el ile başlatılamaz. Bunun yerine yük devretmeyi coğrafi olarak ikincil örnekten başlatın.
@@ -341,8 +341,8 @@ SQL veritabanı veya SQL yönetilen örneğindeki veritabanınıza erişimi kıs
 1. [Genel IP oluşturma](../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 2. [Ortak yük dengeleyici oluşturun](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) ve genel IP 'yi buna atayın.
 3. Ön uç bileşenleriniz için [bir sanal ağ ve sanal makine oluşturma](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)
-4. [Ağ güvenlik grubu oluşturun](../../virtual-network/security-overview.md) ve gelen bağlantıları yapılandırın.
-5. Giden bağlantıların ' SQL ' [hizmet etiketi](../../virtual-network/security-overview.md#service-tags)KULLANıLARAK Azure SQL veritabanı 'na açık olduğundan emin olun.
+4. [Ağ güvenlik grubu oluşturun](../../virtual-network/network-security-groups-overview.md) ve gelen bağlantıları yapılandırın.
+5. Giden bağlantıların ' SQL ' [hizmet etiketi](../../virtual-network/network-security-groups-overview.md#service-tags)KULLANıLARAK Azure SQL veritabanı 'na açık olduğundan emin olun.
 6. Adım 1 ' de oluşturduğunuz genel IP adresinden gelen trafiğe izin vermek için bir [SQL veritabanı güvenlik duvarı kuralı](firewall-configure.md) oluşturun.
 
 Giden erişimin nasıl yapılandırılacağı ve güvenlik duvarı kurallarında hangi IP 'nin kullanılacağı hakkında daha fazla bilgi için bkz. [yük dengeleyici giden bağlantıları](../../load-balancer/load-balancer-outbound-connections.md).
@@ -362,7 +362,7 @@ Yukarıdaki yapılandırma, otomatik yük devretmenin ön uç bileşenlerinden g
 - SQL yönetilen örneği örnekleri tarafından kullanılan sanal ağların bir [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [Express rotası](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)aracılığıyla bağlanması gerekir. İki sanal ağ şirket içi ağı üzerinden bağlandığında 5022 ve 11000-11999 numaralı bağlantı noktalarını engelleyen bir güvenlik duvarı kuralı olmadığından emin olun. Küresel VNet eşlemesi, aşağıdaki notta açıklanan kısıtlamayla desteklenir.
 
    > [!IMPORTANT]
-   > [9/22/2020 tarihinde yeni oluşturulan sanal kümeler için genel sanal ağ eşlemesi duyuruldu](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Diğer bir deyişle, duyuru tarihinden sonra boş alt ağlarda oluşturulan SQL yönetilen örnekleri ve bu alt ağlarda oluşturulan tüm sonraki yönetilen örnekler için genel sanal ağ eşlemesi desteklenir. Diğer tüm SQL yönetilen örnekler için eşleme desteği, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
+   > [9/22/2020 tarihinde yeni oluşturulan sanal kümeler için genel sanal ağ eşlemesi duyuruldu](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Diğer bir deyişle, duyuru tarihinden sonra boş alt ağlarda oluşturulan SQL yönetilen örnekleri ve bu alt ağlarda oluşturulan tüm sonraki yönetilen örnekler için genel sanal ağ eşlemesi desteklenir. Diğer tüm SQL yönetilen örnekler için eşleme desteği, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
 
 - İki SQL yönetilen örnek sanal ağı, çakışan IP adreslerine sahip olamaz.
 - Ağ Güvenlik Gruplarınızı (NSG), 5022 numaralı ve 11000~12000 aralığındaki bağlantı noktalarının diğer yönetilen örneğin alt ağından gelen ve giden bağlantılara açık olmasını sağlayacak şekilde ayarlamalısınız. Bunun amacı örnekler arasında çoğaltma trafiğine olanak tanımaktır.
@@ -406,7 +406,7 @@ Aşağıdaki sınırlamalara dikkat edin:
 
 ## <a name="programmatically-managing-failover-groups"></a>Yük devretme gruplarını programlı olarak yönetme
 
-Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğrafi çoğaltma de Azure PowerShell ve REST API kullanılarak programlı bir şekilde yönetilebilir. Aşağıdaki tablolarda kullanılabilen komut kümesi açıklanır. Etkin coğrafi çoğaltma, [Azure SQL veritabanı REST API](https://docs.microsoft.com/rest/api/sql/) ve [Azure PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/azure/)dahil olmak üzere yönetim için Azure Resource Manager API 'ler kümesi içerir. Bu API 'Ler, kaynak gruplarının kullanımını gerektirir ve rol tabanlı güvenliği (RBAC) destekler. Erişim rollerinin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md).
+Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğrafi çoğaltma de Azure PowerShell ve REST API kullanılarak programlı bir şekilde yönetilebilir. Aşağıdaki tablolarda kullanılabilen komut kümesi açıklanır. Etkin coğrafi çoğaltma, [Azure SQL veritabanı REST API](/rest/api/sql/) ve [Azure PowerShell cmdlet 'leri](/powershell/azure/)dahil olmak üzere yönetim için Azure Resource Manager API 'ler kümesi içerir. Bu API 'Ler, kaynak gruplarının kullanımını gerektirir ve rol tabanlı güvenliği (RBAC) destekler. Erişim rollerinin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="manage-sql-database-failover"></a>SQL veritabanı yük devretmesini yönetme
 
@@ -435,13 +435,13 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 | API | Açıklama |
 | --- | --- |
-| [Yük devretme grubu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Yük devretme grubu oluşturur veya güncelleştirir |
-| [Yük devretme grubunu sil](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Yük devretme grubunu sunucudan kaldırır |
-| [Yük devretme (planlı)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Tam veri eşitlemesi ile geçerli birincil sunucudan ikincil sunucuya yük devretmeyi tetikler.|
-| [Yük devretmeyi zorla veri kaybına Izin ver](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | Verileri eşitlemeden geçerli birincil sunucudan ikincil sunucuya yük devretmeyi tetikler. Bu işlem, veri kaybına neden olabilir. |
-| [Yük devretme grubunu al](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Bir yük devretme grubunun yapılandırmasını alır. |
-| [Yük devretme gruplarını sunucuya göre Listele](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Bir sunucudaki yük devretme gruplarını listeler. |
-| [Yük devretme grubunu Güncelleştir](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Bir yük devretme grubunun yapılandırmasını güncelleştirir. |
+| [Yük devretme grubu oluştur veya güncelleştir](/rest/api/sql/failovergroups/createorupdate) | Yük devretme grubu oluşturur veya güncelleştirir |
+| [Yük devretme grubunu sil](/rest/api/sql/failovergroups/delete) | Yük devretme grubunu sunucudan kaldırır |
+| [Yük devretme (planlı)](/rest/api/sql/failovergroups/failover) | Tam veri eşitlemesi ile geçerli birincil sunucudan ikincil sunucuya yük devretmeyi tetikler.|
+| [Yük devretmeyi zorla veri kaybına Izin ver](/rest/api/sql/failovergroups/forcefailoverallowdataloss) | Verileri eşitlemeden geçerli birincil sunucudan ikincil sunucuya yük devretmeyi tetikler. Bu işlem, veri kaybına neden olabilir. |
+| [Yük devretme grubunu al](/rest/api/sql/failovergroups/get) | Bir yük devretme grubunun yapılandırmasını alır. |
+| [Yük devretme gruplarını sunucuya göre Listele](/rest/api/sql/failovergroups/listbyserver) | Bir sunucudaki yük devretme gruplarını listeler. |
+| [Yük devretme grubunu Güncelleştir](/rest/api/sql/failovergroups/update) | Bir yük devretme grubunun yapılandırmasını güncelleştirir. |
 
 ---
 
@@ -473,12 +473,12 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 | API | Açıklama |
 | --- | --- |
-| [Yük devretme grubu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Bir yük devretme grubunun yapılandırmasını oluşturur veya güncelleştirir |
-| [Yük devretme grubunu sil](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Yük devretme grubunu örnekten kaldırır |
-| [Yük devretme (planlı)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Tam veri eşitlemesi ile bu örneğe geçerli birincil örnekten yük devretmeyi tetikler. |
-| [Yük devretmeyi zorla veri kaybına Izin ver](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Verileri eşitlemeden geçerli birincil örnekten ikincil örneğe yük devretmeyi tetikler. Bu işlem, veri kaybına neden olabilir. |
-| [Yük devretme grubunu al](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | bir yük devretme grubunun yapılandırmasını alır. |
-| [Yük devretme gruplarını listeleme-konuma göre listeleme](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Bir konumdaki yük devretme gruplarını listeler. |
+| [Yük devretme grubu oluştur veya güncelleştir](/rest/api/sql/instancefailovergroups/createorupdate) | Bir yük devretme grubunun yapılandırmasını oluşturur veya güncelleştirir |
+| [Yük devretme grubunu sil](/rest/api/sql/instancefailovergroups/delete) | Yük devretme grubunu örnekten kaldırır |
+| [Yük devretme (planlı)](/rest/api/sql/instancefailovergroups/failover) | Tam veri eşitlemesi ile bu örneğe geçerli birincil örnekten yük devretmeyi tetikler. |
+| [Yük devretmeyi zorla veri kaybına Izin ver](/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Verileri eşitlemeden geçerli birincil örnekten ikincil örneğe yük devretmeyi tetikler. Bu işlem, veri kaybına neden olabilir. |
+| [Yük devretme grubunu al](/rest/api/sql/instancefailovergroups/get) | bir yük devretme grubunun yapılandırmasını alır. |
+| [Yük devretme gruplarını listeleme-konuma göre listeleme](/rest/api/sql/instancefailovergroups/listbylocation) | Bir konumdaki yük devretme gruplarını listeler. |
 
 ---
 

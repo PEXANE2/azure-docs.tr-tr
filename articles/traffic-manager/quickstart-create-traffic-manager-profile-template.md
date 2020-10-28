@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: duau
 ms.date: 09/01/2020
-ms.openlocfilehash: dbdb6a255fdf0214103a0011f25b0a6d25014e69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ec569781a6318062810358c2c5e17ba71efc4f71
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89299159"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676013"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Traffic Manager profili oluşturma
 
@@ -43,7 +43,7 @@ Azure Traffic Manager ile ilgili daha fazla şablon bulmak için bkz. [Azure hı
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Azure Cloud Shell açmak için aşağıdaki kod bloğundan **deneyin** ' i seçin ve ardından Azure 'da oturum açmak için yönergeleri izleyin. 
+1. Azure Cloud Shell açmak için aşağıdaki kod bloğundan **deneyin** ' i seçin ve ardından Azure 'da oturum açmak için yönergeleri izleyin.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -62,11 +62,11 @@ Azure Traffic Manager ile ilgili daha fazla şablon bulmak için bkz. [Azure hı
 
 1. PowerShell betiğini kopyalamak için önceki kod bloğundan **Kopyala** ' yı seçin.
 
-1. Kabuk konsol bölmesine sağ tıklayın ve ardından **Yapıştır**' ı seçin.
+1. Kabuk konsol bölmesine sağ tıklayın ve ardından **Yapıştır** ' ı seçin.
 
 1. Değerleri girin.
 
-    Şablon dağıtımı iki dış uç nokta içeren bir profil oluşturur. **Endpoint1** , **Kuzey Avrupa**konumu ile *w<span>ww. Microsoft</span>. com* ' un hedef uç noktasını kullanır. **Endpoint2** , **Orta Güney ABD**konumu ile *d<span>OCS. Microsoft</span>. com* ' un hedef uç noktasını kullanır. 
+    Şablon dağıtımı iki dış uç nokta içeren bir profil oluşturur. **Endpoint1** , `www.microsoft.com` **Kuzey Avrupa** konum ile bir hedef uç noktası kullanır. **Endpoint2** , `docs.microsoft.com` **Orta Güney ABD** konum ile bir hedef uç noktası kullanır.
 
     Kaynak grubu adı, **RG** eklenmiş proje adıdır.
 
@@ -87,21 +87,23 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
     Get-AzTrafficManagerProfile -Name ExternalEndpointExample -ResourceGroupName $resourceGroupName | Select RelativeDnsName
     ```
 
-    **Relativednsname** değerini kopyalayın. Traffic Manager profilinizin DNS adı *<* relativednsname *>. trafficmanager.net*. 
+    **Relativednsname** değerini kopyalayın. Traffic Manager profilinizin DNS adı `<relativednsname>.trafficmanager.net` .
 
-1. Yerel bir PowerShell 'den **{relativednsname}** değişkenini *<* relativednsname *>. trafficmanager.net*ile değiştirerek aşağıdaki komutu çalıştırın.
+1. Yerel bir PowerShell 'den **{Relativednsname}** değişkenini ile değiştirerek aşağıdaki komutu çalıştırın `<relativednsname>.trafficmanager.net` .
 
     ```powershell
     Resolve-DnsName -Name {relativeDNSname} | Select-Object NameHost | Select -First 1
     ```
-    Size hangi bölgeye yaklaşdığına bağlı olarak, *w<span>ww. Microsoft</span>. com* veya *d<span>OCS. Microsoft</span>. com* ' un bir namehost 'u almalısınız.
 
-1. Diğer uç noktaya çözümleneceğini denetlemek için, son adımda aldığınız hedefin uç noktasını devre dışı bırakın. Sırasıyla *w<span>ww. Microsoft</span>. com* veya *d<span>OCS. Microsoft</span>. com* ' un hedefini devre dışı bırakmak için, **{EndpointName}** öğesini **endpoint1** veya **endpoint2** ile değiştirin.
+    `www.microsoft.com` `docs.microsoft.com` Size hangi bölgeye yaklaşdığına bağlı olarak ya da bir namehost almalısınız.
+
+1. Diğer uç noktaya çözümleneceğini denetlemek için, son adımda aldığınız hedefin uç noktasını devre dışı bırakın. Hedefi veya daha önce devre dışı bırakmak için **{EndpointName}** öğesini **endpoint1** veya **endpoint2** ile değiştirin `www.microsoft.com` `docs.microsoft.com` .
 
     ```azurepowershell-interactive
     Disable-AzTrafficManagerEndpoint -Name {endpointName} -Type ExternalEndpoints -ProfileName ExternalEndpointExample -ResourceGroupName $resourceGroupName -Force
     ```
-1. 2. adımdaki komutu bir yerel PowerShell içinde yeniden çalıştırın. Bu kez diğer uç nokta için diğer ad konağını almalısınız. 
+
+1. 2. adımdaki komutu bir yerel PowerShell içinde yeniden çalıştırın. Bu kez diğer uç nokta için diğer ad konağını almalısınız.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -115,8 +117,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta şunu oluşturdunuz:
-* Traffic Manager profili
+Bu hızlı başlangıçta bir Traffic Manager profili oluşturdunuz.
 
 Yönlendirme trafiği hakkında daha fazla bilgi edinmek için Traffic Manager öğreticilerine geçin.
 

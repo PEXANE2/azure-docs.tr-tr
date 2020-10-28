@@ -1,20 +1,20 @@
 ---
 title: DoD etki düzeyi 4 şema örnek denetimlerini Yazdır
 description: DOD etkisi düzeyi 4 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
-ms.date: 09/17/2020
+ms.date: 10/26/2020
 ms.topic: sample
-ms.openlocfilehash: 433e77775fdd28032db27c017fe370ab32074a95
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 376ddd68373026a93eaf08774cee0a1f8ce06bec
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929532"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675742"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>DOD etkisi düzeyi 4 şema örneğinin denetim eşlemesi
 
 Aşağıdaki makalede, savunma etkisi düzeyi 4 (DoD IL4) şeması 'nın Azure şemaları bölümünün DoD etkisi düzeyi 4 denetimlerine nasıl eşleştiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [DOD bulut bilgi Işlem güvenlik gereksinimleri Kılavuzu (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf). Savunma bilgi sistemleri Kurumu (DıŞA), DoD bulut bilgi Işlem güvenlik gereksinimleri Kılavuzu ' nu (SRG) geliştirmekten ve korumadan sorumlu olan ABD Savunma Bakanlığı (DoD) bir ajansudur. SRG, DoD bilgilerini, sistemleri ve uygulamaları barındıran bulut hizmeti sağlayıcılarının (CSP 'Ler) temel güvenlik gereksinimlerini ve DoD 'nin bulut hizmetleri kullanımı için tanımlar.  
 
-Aşağıdaki eşlemeler **DOD etki düzeyi 4** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, önizlemeyi bulun ve seçin ** \[ \] : DOD etki düzeyi 4** yerleşik ilke girişimi.
+Aşağıdaki eşlemeler **DOD etki düzeyi 4** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, önizlemeyi bulun ve seçin **\[ \] : DOD etki düzeyi 4** yerleşik ilke girişimi.
 
 > [!IMPORTANT]
 > Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ile bir veya daha fazla ilke arasında genellikle bire bir veya tam eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-4/control-mapping.md)bakın.

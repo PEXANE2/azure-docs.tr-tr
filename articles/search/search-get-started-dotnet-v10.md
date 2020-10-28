@@ -8,24 +8,25 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ce676c8966f67aeb233b2b9daf3f8f1c57327e6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6dd64ae8b7b7307d7dcd510d1fdb877365c6f36
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462097"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675962"
 ---
-# <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>Hızlı başlangıç: Microsoft. Azure. Search ile v10 arasındaki istemci kitaplığını kullanarak bir arama dizini oluşturma
+# <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>Hızlı başlangıç: eski Microsoft. Azure. Search ile v10 arasındaki istemci kitaplığını kullanarak bir arama dizini oluşturma
 
-Bu makale, eski Microsoft. Azure. Search (sürüm 10) istemci kitaplığı için artık Azure.Search.Documstalar (sürüm 11) istemci kitaplığı tarafından yerine geçen C# hızlı başlangıcının yerini almıştır. Microsoft. Azure. Search kitaplıklarını kullanan mevcut arama çözümleriniz varsa, bu API 'Ler hakkında bilgi edinmek için bu hızlı başlangıcı kullanabilirsiniz. 
+Bu makale, eski [**Microsoft. Azure. Search**](/dotnet/api/overview/azure/search/client10) (sürüm 10) istemci kitaplığı için artık [**Azure.Search.Documstalar**](/dotnet/api/overview/azure/search.documents-readme) (sürüm 11) istemci kitaplığı tarafından yerine geçen C# hızlı başlangıcının yerini almıştır.
 
-Yeni çözümler için yeni Azure.Search.Documlar kitaplığını öneririz. Giriş için bkz. [hızlı başlangıç: Azure.Search.Documstalar kitaplığı kullanarak arama dizini oluşturma](search-get-started-dotnet.md).
+> [!NOTE]
+> Mevcut veya daha açık geliştirme projeleriniz varsa sürüm 10 ' u kullanmaya devam edebilirsiniz. Ancak yeni projeler için veya yeni özellikleri kullanmak için [Yeni kitaplığa](/dotnet/api/overview/azure/search.documents-readme)geçiş yapmanız gerekir.
 
 ## <a name="about-this-quickstart"></a>Bu hızlı başlangıç hakkında
 
-C# ' de Visual Studio ve [Microsoft. Azure. Search istemci kitaplıklarını](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)kullanarak bir Azure bilişsel arama dizini oluşturan, yükleyen ve sorgulayan bir .NET Core konsol uygulaması oluşturun. 
+C# ' de Visual Studio ve [Microsoft. Azure. Search istemci kitaplıklarını](/dotnet/api/overview/azure/search/client10)kullanarak bir Azure bilişsel arama dizini oluşturan, yükleyen ve sorgulayan bir .NET Core konsol uygulaması oluşturun. 
 
 Bu makalede, uygulamasının nasıl oluşturulacağı açıklanmaktadır. Ayrıca [tüm uygulamayı indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10).
 
@@ -50,7 +51,7 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-2. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+2. **Ayarlar**  >  **anahtarlar** ' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
    Sorgu anahtarını da alın. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
 
@@ -68,9 +69,9 @@ Visual Studio 'Yu açıp .NET Core üzerinde çalışabilen yeni bir konsol uygu
 
 Bu proje için NuGet paketinin sürüm 10 ' u `Microsoft.Azure.Search` ve en son `Microsoft.Extensions.Configuration.Json` NuGet paketini kullanın.
 
-1. **Araçlar**  >  **NuGet Paket Yöneticisi**' nde **çözüm için NuGet Paketlerini Yönet...** seçeneğini belirleyin. 
+1. **Araçlar**  >  **NuGet Paket Yöneticisi** ' nde **çözüm için NuGet Paketlerini Yönet...** seçeneğini belirleyin. 
 
-1. **Gözat**’a tıklayın.
+1. **Gözat** ’a tıklayın.
 
 1. `Microsoft.Azure.Search`Sürüm 10 ' u arayın ve seçin.
 
@@ -85,9 +86,9 @@ Bu proje için NuGet paketinin sürüm 10 ' u `Microsoft.Azure.Search` ve en son
 
 1. Yeni öğe Ekle ' de, "JSON" sözcüğünü, JSON ile ilgili öğe türlerinin bir listesini döndürecek şekilde aratın.
 
-1. **JSON dosyası**seçin, "appsettings.jsüzerinde" dosyasını adlandırın ve **Ekle**' ye tıklayın. 
+1. **JSON dosyası** seçin, "appsettings.jsüzerinde" dosyasını adlandırın ve **Ekle** ' ye tıklayın. 
 
-1. Dosyayı çıkış dizininize ekleyin. appsettings.jsüzerinde sağ tıklayın ve **Özellikler**' i seçin. **Çıkış Dizinine Kopyala**' da, **daha yeniyse kopyala**' yı seçin.
+1. Dosyayı çıkış dizininize ekleyin. appsettings.jsüzerinde sağ tıklayın ve **Özellikler** ' i seçin. **Çıkış Dizinine Kopyala** ' da, **daha yeniyse kopyala** ' yı seçin.
 
 1. Aşağıdaki JSON 'ı yeni JSON dosyanıza kopyalayın. 
 
@@ -103,7 +104,7 @@ Bu proje için NuGet paketinin sürüm 10 ' u `Microsoft.Azure.Search` ve en son
 
 ### <a name="add-class-method-files-to-your-project"></a>Sınıf Ekle ". Yöntem "projenize dosya
 
-Bu adım, konsolda anlamlı bir çıktı üretmek için gereklidir. Sonuçlar konsol penceresine yazdırılırken, otel nesnesinden bağımsız alanlar dizeler olarak döndürülmelidir. Bu adım, bu görevi gerçekleştirmek için [ToString ()](/dotnet/api/system.object.tostring?view=netframework-4.8) uygular, bu da gerekli kodu iki yeni dosyaya kopyalayarak bunu yapar.
+Bu adım, konsolda anlamlı bir çıktı üretmek için gereklidir. Sonuçlar konsol penceresine yazdırılırken, otel nesnesinden bağımsız alanlar dizeler olarak döndürülmelidir. Bu adım, bu görevi gerçekleştirmek için [ToString ()](/dotnet/api/system.object.tostring) uygular, bu da gerekli kodu iki yeni dosyaya kopyalayarak bunu yapar.
 
 1. Projenize iki boş sınıf tanımı ekleyin: Address.Methods.cs, Hotel.Methods.cs
 
@@ -198,15 +199,15 @@ Oteller dizini basit ve karmaşık alanlardan oluşur; burada basit bir alan "Ho
     Alanındaki öznitelikler bir uygulamada nasıl kullanıldığını belirleme. Örneğin, `IsSearchable` özniteliğin tam metin aramasına dahil olması gereken her alana atanması gerekir. 
     
     > [!NOTE]
-    > .NET SDK 'sında, alanları,, ve olarak açıkça adlandırılmalıdır [`IsSearchable`](/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet) [`IsFilterable`](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) [`IsSortable`](/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet) [`IsFacetable`](/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet) . Bu davranış, veri türüne göre (örneğin, basit dize alanları otomatik olarak aranabilir), açıkça atısyonu sağlayan REST API farklıdır.
+    > .NET SDK 'sında, alanları,, ve olarak açıkça adlandırılmalıdır [`IsSearchable`](/dotnet/api/microsoft.azure.search.models.field.issearchable) [`IsFilterable`](/dotnet/api/microsoft.azure.search.models.field.isfilterable) [`IsSortable`](/dotnet/api/microsoft.azure.search.models.field.issortable) [`IsFacetable`](/dotnet/api/microsoft.azure.search.models.field.isfacetable) . Bu davranış, veri türüne göre (örneğin, basit dize alanları otomatik olarak aranabilir), açıkça atısyonu sağlayan REST API farklıdır.
 
     Türünde dizininizdeki tek bir alan `string` , her belgeyi benzersiz bir şekilde tanımlayan *anahtar* alanı olmalıdır. Bu şemada, anahtar `HotelId` .
 
-    Bu dizinde, açıklama alanları [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) varsayılan standart Lucene Çözümleyicisi 'ni geçersiz kılmak istediğinizde belirtilen isteğe bağlı özelliği kullanır. `description_fr`Alan, Fransızca metin depoladığı Için Fransızca Lucene Çözümleyicisi ([frlucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)) kullanıyor. , `description` İsteğe bağlı Microsoft dil Çözümleyicisi 'ni ([enmicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)) kullanıyor.
+    Bu dizinde, açıklama alanları [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer) varsayılan standart Lucene Çözümleyicisi 'ni geçersiz kılmak istediğinizde belirtilen isteğe bağlı özelliği kullanır. `description_fr`Alan, Fransızca metin depoladığı Için Fransızca Lucene Çözümleyicisi ([frlucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene)) kullanıyor. , `description` İsteğe bağlı Microsoft dil Çözümleyicisi 'ni ([enmicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft)) kullanıyor.
 
-1. Program.cs ' de, [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) uygulamanın yapılandırma dosyasında (appsettings.jsüzerinde) depolanan değerleri kullanarak hizmete bağlanmak için sınıfın bir örneğini oluşturun. 
+1. Program.cs ' de, [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient) uygulamanın yapılandırma dosyasında (appsettings.jsüzerinde) depolanan değerleri kullanarak hizmete bağlanmak için sınıfın bir örneğini oluşturun. 
 
-   `SearchServiceClient` , [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) Azure bilişsel arama dizinleri oluşturmak, listelemek, güncelleştirmek veya silmek için ihtiyaç duyduğunuz tüm yöntemleri sağlayan bir özelliğine sahiptir. 
+   `SearchServiceClient` , [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes) Azure bilişsel arama dizinleri oluşturmak, listelemek, güncelleştirmek veya silmek için ihtiyaç duyduğunuz tüm yöntemleri sağlayan bir özelliğine sahiptir. 
 
     ```csharp
     using System;
@@ -306,7 +307,7 @@ Oteller dizini basit ve karmaşık alanlardan oluşur; burada basit bir alan "Ho
 
 Azure Bilişsel Arama 'de belgeler, sorguların dizin oluşturma ve çıkışlara yönelik giriş olan veri yapılarıdır. Bir dış veri kaynağından elde edilen belge girişleri bir veritabanındaki satırlar, blob depolamada Bloblar veya diskteki JSON belgeleri olabilir. Bu örnekte, bir kısayol çekiyoruz ve JSON belgelerini kodun kendisinde dört otel için katıştırıyoruz. 
 
-Belgeler karşıya yüklenirken bir nesne kullanmanız gerekir [`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) . `IndexBatch` [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) , Her biri bir belge içeren bir nesne ve Azure bilişsel arama hangi eyleme ([karşıya yükleme, birleştirme, silme ve mergeorupload](search-what-is-data-import.md#indexing-actions)) söyleyen bir özelliği içerir.
+Belgeler karşıya yüklenirken bir nesne kullanmanız gerekir [`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch) . `IndexBatch` [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction) , Her biri bir belge içeren bir nesne ve Azure bilişsel arama hangi eyleme ([karşıya yükleme, birleştirme, silme ve mergeorupload](search-what-is-data-import.md#indexing-actions)) söyleyen bir özelliği içerir.
 
 1. Program.cs içinde bir dizi belge ve Dizin eylemi oluşturun ve sonra diziyi öğesine geçirin `IndexBatch` . Aşağıdaki belgeler, otel ve adres sınıfları tarafından tanımlanan otel-hızlı başlangıç dizinine uygundur.
 
@@ -428,7 +429,7 @@ Belgeler karşıya yüklenirken bir nesne kullanmanız gerekir [`IndexBatch`](/d
     }
     ```
 
-    `IndexBatch`Nesneyi başlattığınızda, nesneyi çağırarak onu dizine gönderebilirsiniz [`Documents.Index`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) [`SearchIndexClient`](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) . `Documents` , `SearchIndexClient` dizininizdeki belgeleri eklemek, değiştirmek, silmek veya sorgulamak için yöntemler sağlayan öğesinin bir özelliğidir.
+    `IndexBatch`Nesneyi başlattığınızda, nesneyi çağırarak onu dizine gönderebilirsiniz [`Documents.Index`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index) [`SearchIndexClient`](/dotnet/api/microsoft.azure.search.searchindexclient) . `Documents` , `SearchIndexClient` dizininizdeki belgeleri eklemek, değiştirmek, silmek veya sorgulamak için yöntemler sağlayan öğesinin bir özelliğidir.
 
     `try` / `catch` Yöntemine yapılan çağrı, `Index` hizmetiniz ağır yük altındaysa meydana gelebilen dizin oluşturma başarısızlıklarını yakalar. Üretim kodunda, başarısız olan belgelerin dizinlenmesini erteleyebilir ve yeniden deneyebilir veya örnek olarak oturum açıp devam edebilir ya da uygulamanızın veri tutarlılığı gereksinimlerini karşılayan başka bir şekilde işleyebilir.
 
@@ -446,16 +447,15 @@ Belgeler karşıya yüklenirken bir nesne kullanmanız gerekir [`IndexBatch`](/d
 
     Proje başarıyla oluþturulup, bir konsol penceresi açılır ve durum iletileri, bu kez belge yükleme hakkında bir iletiyle birlikte görüntülenir. Azure portal, arama hizmeti **genel bakış** sayfasında, otel-hızlı başlangıç dizininde artık 4 belge olmalıdır.
 
-Belge işleme hakkında daha fazla bilgi için, [".NET SDK belgeleri nasıl Işler?](search-howto-dotnet-sdk.md#how-dotnet-handles-documents)" başlığına bakın.
+Belge işleme hakkında daha fazla bilgi için, [".NET SDK belgeleri nasıl Işler?](search-howto-dotnet-sdk-v10.md#how-dotnet-handles-documents)" başlığına bakın.
 
 ## <a name="3---search-an-index"></a>3 - Dizin arama
 
 İlk belge dizine eklendiğinde sorgu sonuçları elde edebilirsiniz, ancak dizininizin gerçek testi tüm belgelerin dizinlenene kadar beklemeniz gerekir. 
 
-Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgular için [`Search`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search?view=azure-dotnet
-) yöntemini kullanın. Bu yöntem, arama metninin yanı sıra diğer [parametreleri](/dotnet/api/microsoft.azure.search.models.searchparameters?view=azure-dotnet)de alır. 
+Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgular için [`Search`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search) yöntemini kullanın. Bu yöntem, arama metninin yanı sıra diğer [parametreleri](/dotnet/api/microsoft.azure.search.models.searchparameters)de alır. 
 
-[`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1?view=azure-dotnet)Sınıfı sonuçları temsil eder.
+[`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)Sınıfı sonuçları temsil eder.
 
 
 1. Program.cs içinde, arama sonuçlarını konsola yazdıran bir WriteDocuments yöntemi oluşturun.

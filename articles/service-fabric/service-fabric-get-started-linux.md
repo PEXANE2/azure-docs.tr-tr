@@ -4,12 +4,12 @@ description: Linux üzerinde çalışma zamanını ve SDK'yı yükleyip yerel bi
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f8639287ea65347319cb438a5ff6e8c96c8279e1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168418"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675277"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux üzerinde geliştirme ortamınızı hazırlama
 > [!div class="op_single_selector"]
@@ -17,14 +17,14 @@ ms.locfileid: "92168418"
 > * [Linux](service-fabric-get-started-linux.md)
 > * [Mac OS X](service-fabric-get-started-mac.md)
 
-Linux geliştirme makinenizde (Azure Service Fabric uygulamaları) [Service-Fabric-Application-model.md] dağıtmak ve çalıştırmak için çalışma zamanını ve ortak SDK 'Yı yüklemelisiniz. Ayrıca isteğe bağlı Java ve .NET Core geliştirme SDK'larını yükleyebilirsiniz. 
+Linux geliştirme makinenizde [Azure Service Fabric uygulamaları](service-fabric-application-model.md) dağıtıp çalıştırmak için çalışma zamanını ve ortak SDK'yı yükleyin. Ayrıca isteğe bağlı Java ve .NET Core geliştirme SDK'larını yükleyebilirsiniz. 
 
-Bu makaledeki adımlarda, Linux 'ta yerel olarak yüklediğiniz veya (Service Fabric OneBox kapsayıcı görüntüsü) [] (örn.) kullandığınızda varsayılmaktadır https://hub.docker.com/_/microsoft-service-fabric-onebox `mcr.microsoft.com/service-fabric/onebox:u18` .
+Bu makaledeki adımlarda, Linux 'ta yerel olarak yüklediğiniz veya [Service Fabric OneBox kapsayıcı görüntüsünü](https://hub.docker.com/_/microsoft-service-fabric-onebox)(örn.) kullandığınız varsayılır `mcr.microsoft.com/service-fabric/onebox:u18` .
 
 Bulutta veya şirket içinde barındırılan Service Fabric varlıklarını Azure Service Fabric komut satırı arabirimi (CLı) ile yönetebilirsiniz. CLI'yi yükleme hakkında bilgi için bkz. [Service Fabric CLI'sini ayarlama](./service-fabric-cli.md).
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Geliştirme için şu işletim sistemi sürümleri desteklenir.
 
@@ -298,21 +298,21 @@ Service Fabric için Eclipse eklentisini Java EE Geliştiricileri veya Java Geli
 > 
 > Ubuntu üzerinde, paket yükleyici (`apt` veya `apt-get`) kullanmak yerine doğrudan Eclipse sitesinden yükleme yapılmasını öneririz. Böylece, Eclipse’in en güncel sürümünü elde etmeniz sağlanır. Java EE Geliştiricileri için veya Java Geliştiricileri için Eclipse IDE’yi yükleyebilirsiniz.
 
-1. Eclipse’te, Eclipse Neon veya sonraki bir sürümünün ve Buildship 2.2.1 veya sonraki bir sürümünün yüklü olduğundan emin olun. **Help**  >  **Çakışan Küreler**  >  **Yükleme ayrıntıları**hakkında Yardım ' i seçerek yüklü bileşenlerin sürümlerini denetleyin. [Eclipse Buildship: Gradle için Eclipse eklentileri][buildship-update] bölümünde sağlanan yönergelerden yararlanarak Buildship’i güncelleştirebilirsiniz.
+1. Eclipse’te, Eclipse Neon veya sonraki bir sürümünün ve Buildship 2.2.1 veya sonraki bir sürümünün yüklü olduğundan emin olun. **Help**  >  **Çakışan Küreler**  >  **Yükleme ayrıntıları** hakkında Yardım ' i seçerek yüklü bileşenlerin sürümlerini denetleyin. [Eclipse Buildship: Gradle için Eclipse eklentileri][buildship-update] bölümünde sağlanan yönergelerden yararlanarak Buildship’i güncelleştirebilirsiniz.
 
-2. Service Fabric eklentisini yüklemek için **Yardım**  >  **yeni yazılım yüklemesi**' ni seçin.
+2. Service Fabric eklentisini yüklemek için **Yardım**  >  **yeni yazılım yüklemesi** ' ni seçin.
 
-3. **Birlikte çalış** kutusuna **https: \/ /DL.Microsoft.com/Eclipse**girin.
+3. **Birlikte çalış** kutusuna **https: \/ /DL.Microsoft.com/Eclipse** girin.
 
-4. **Ekle**’yi seçin.
+4. **Ekle** ’yi seçin.
 
     ![Kullanılabilir Yazılım sayfası][sf-eclipse-plugin]
 
-5. **ServiceFabric** eklentisini ve ardından **İleri**’yi seçin.
+5. **ServiceFabric** eklentisini ve ardından **İleri** ’yi seçin.
 
 6. Yükleme adımlarını gerçekleştirin. Ardından son kullanıcı lisans sözleşmesini kabul edin.
 
-Service Fabric Eclipse eklentisi zaten yüklüyse, en yeni sürümü kullandığınızdan emin olun. **Help**  >  **Çakışan Küreler**  >  **Yükleme ayrıntıları**hakkında yardım seçerek denetleyin. Ardından, yüklü eklentiler listesinde Service Fabric aratın. Daha yeni bir sürüm varsa **Güncelleştir** ' i seçin.
+Service Fabric Eclipse eklentisi zaten yüklüyse, en yeni sürümü kullandığınızdan emin olun. **Help**  >  **Çakışan Küreler**  >  **Yükleme ayrıntıları** hakkında yardım seçerek denetleyin. Ardından, yüklü eklentiler listesinde Service Fabric aratın. Daha yeni bir sürüm varsa **Güncelleştir** ' i seçin.
 
 Daha fazla bilgi için bkz. [Eclipse Java uygulama geliştirmesi için Service Fabric eklentisi](service-fabric-get-started-eclipse.md).
 

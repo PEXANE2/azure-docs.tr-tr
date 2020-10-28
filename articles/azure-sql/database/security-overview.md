@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
-ms.date: 09/21/2020
-ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.openlocfilehash: bb9e17a4befcdcf1a322734c6cc5d75d653f23e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321433"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676146"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL veritabanı ve SQL yönetilen örnek güvenlik özelliklerine genel bakış
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,11 +52,11 @@ IP güvenlik duvarı kuralları, her isteğin kaynak IP adresine göre veritaban
 
 Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Azure SQL veritabanı ve SQL yönetilen örneği iki tür kimlik doğrulamasını destekler:
 
-- **SQL kimlik doğrulaması**:
+- **SQL kimlik doğrulaması** :
 
     SQL kimlik doğrulaması, Kullanıcı adı ve parola kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği ile bağlantı kurulurken bir kullanıcının kimlik doğrulamasını ifade eder. Sunucu oluşturulurken Kullanıcı adı ve parola ile **Sunucu Yöneticisi** oturum açma belirtilmelidir. Bu kimlik bilgilerini kullanarak **Sunucu Yöneticisi** , veritabanı sahibi olarak bu sunucu veya örnekteki herhangi bir veritabanında kimlik doğrulaması yapabilir. Bundan sonra, ek SQL oturum açmaları ve kullanıcılar, kullanıcıların Kullanıcı adı ve parola kullanarak bağlanmasına olanak tanıyan Sunucu Yöneticisi tarafından oluşturulabilir.
 
-- **Azure Active Directory kimlik doğrulaması**:
+- **Azure Active Directory kimlik doğrulaması** :
 
     Azure Active Directory kimlik doğrulaması, Azure [SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) ve [Azure SYNAPSE ANALYTICS](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'e Azure Active Directory (Azure AD) kimlikleri kullanılarak bağlanma mekanizmasıdır. Azure AD kimlik doğrulaması, yöneticilerin diğer Azure hizmetleriyle birlikte veritabanı kullanıcılarının kimliklerini ve izinlerini tek bir merkezi konumda merkezi olarak yönetmesine olanak tanır. Bu, parola depolamanın en az düzeyde bir kısmını içerir ve merkezi parola döndürme ilkelerini sunar.
 
@@ -97,13 +97,13 @@ Gelişmiş tehdit koruması, olağan dışı davranışları ve veritabanlarına
 
 ### <a name="transport-layer-security-encryption-in-transit"></a>Aktarım Katmanı Güvenliği (iletim içi şifreleme)
 
-[Aktarım Katmanı Güvenliği (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)ile hareket halindeki VERILERI şifreleyerek SQL VERITABANı ve SQL yönetilen örneği güvenli müşteri verileri.
+[Aktarım Katmanı Güvenliği (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)ile hareket halindeki VERILERI şifreleyerek SQL VERITABANı, SQL yönetilen örneği ve Azure SYNAPSE Analytics güvenli müşteri verileri.
 
-SQL veritabanı ve SQL yönetilen örneği, tüm bağlantılar için her zaman şifreleme (SSL/TLS) uygular. Bu, bağlantı dizesinde **şifreleme** veya **TrustServerCertificate** ayarından bağımsız olarak, tüm verilerin istemci ve sunucu arasında "geçişte" şifrelendiğinden emin olmanızı sağlar.
+Tüm bağlantılar için SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE şifrelemeyi (SSL/TLS) her zaman uygular. Bu, bağlantı dizesinde **şifreleme** veya **TrustServerCertificate** ayarından bağımsız olarak, tüm verilerin istemci ve sunucu arasında "geçişte" şifrelendiğinden emin olmanızı sağlar.
 
 En iyi yöntem olarak, uygulama tarafından kullanılan bağlantı dizesinde, şifreli bir bağlantı belirtmeniz ve sunucu sertifikasına _**güvenmemeniz**_ önerilir. Bu, uygulamanızı sunucu sertifikasını doğrulamaya zorlar ve böylece uygulamanızın ortadaki tür saldırılarına karşı savunmasız kalmasına engel olur.
 
-Örneğin, ADO.NET sürücüsünü kullanırken bu,  **encrypt = true** ve **TrustServerCertificate = false**aracılığıyla gerçekleştirilir. Bağlantı dizenizi Azure portal elde ediyorsanız, doğru ayarlara sahip olur.
+Örneğin, ADO.NET sürücüsünü kullanırken bu,  **encrypt = true** ve **TrustServerCertificate = false** aracılığıyla gerçekleştirilir. Bağlantı dizenizi Azure portal elde ediyorsanız, doğru ayarlara sahip olur.
 
 > [!IMPORTANT]
 > Bazı Microsoft dışı sürücülerin, çalışması için varsayılan olarak TLS veya daha eski bir TLS sürümünü (<1,2) kullanabileceğini unutmayın. Bu durumda sunucu yine de veritabanınıza bağlanmanızı sağlar. Ancak, özellikle hassas verileri depoluiyorsanız, bu tür sürücülere ve uygulamanın SQL veritabanına bağlanmasına izin vermenin güvenlik risklerini değerlendirmenizi öneririz.
@@ -112,7 +112,7 @@ En iyi yöntem olarak, uygulama tarafından kullanılan bağlantı dizesinde, ş
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>Saydam Veri Şifrelemesi (bekleyen şifreleme)
 
-[Azure SQL veritabanı ve SQL yönetilen örneği için saydam veri şifrelemesi (TDE),](transparent-data-encryption-tde-overview.md) bekleyen verilerin ham dosyalara veya yedeklemelere izinsiz veya çevrimdışı erişimden korunmasına yardımcı olmak için bir güvenlik katmanı ekler. Yaygın senaryolar, veri merkezi hırsızlığı veya disk sürücüleri ve yedekleme bantları gibi donanım veya ortamların güvenli bir şekilde çıkarılması içerir.TDE, uygulama geliştiricilerinin mevcut uygulamalarda herhangi bir değişiklik yapmasını gerektirmeyen bir AES şifreleme algoritması kullanarak tüm veritabanını şifreler.
+[SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics Için saydam veri şifrelemesi (TDE),](transparent-data-encryption-tde-overview.md) bekleyen verilerin ham dosyalara veya yedeklemelere izinsiz veya çevrimdışı erişimden korunmasına yardımcı olmak için bir güvenlik katmanı ekler. Yaygın senaryolar, veri merkezi hırsızlığı veya disk sürücüleri ve yedekleme bantları gibi donanım veya ortamların güvenli bir şekilde çıkarılması içerir.TDE, uygulama geliştiricilerinin mevcut uygulamalarda herhangi bir değişiklik yapmasını gerektirmeyen bir AES şifreleme algoritması kullanarak tüm veritabanını şifreler.
 
 Azure 'da, yeni oluşturulan tüm veritabanları varsayılan olarak şifrelenir ve veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur.  Sertifika bakımı ve döndürme, hizmet tarafından yönetilir ve kullanıcıdan giriş gerektirmez. Şifreleme anahtarlarının denetimini almayı tercih eden müşteriler [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md)anahtarlarını yönetebilir.
 

@@ -3,13 +3,13 @@ title: Yeni bir Azure Kubernetes hizmeti (AKS) kümesini izleme | Microsoft Docs
 description: Kapsayıcılar için Azure Izleyici aboneliğine sahip yeni bir Azure Kubernetes hizmeti (AKS) kümesi için izlemeyi nasıl etkinleştireceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.custom: devx-track-terraform
-ms.openlocfilehash: 7706df4f457167f5bb4d17f1d506594615364380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-terraform, devx-track-azurecli
+ms.openlocfilehash: 19c4a88cee8776136593b041e94dd14c7c9c28d6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320332"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735080"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Yeni bir Azure Kubernetes hizmeti (AKS) kümesini izlemeyi etkinleştir
 
@@ -34,12 +34,12 @@ Azure CLı ile oluşturulan yeni bir AKS kümesinin izlenmesini etkinleştirmek 
 >[!NOTE]
 >Terrayform kullanmayı seçerseniz, Teraform Azure RM Provider sürüm 1.17.0 veya üstünü çalıştırıyor olmanız gerekir.
 
-Çalışma alanına kapsayıcılar için Azure Izleyici eklemek için, [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) dahil ederek [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) ve **oms_agent**belirterek profili doldurun. 
+Çalışma alanına kapsayıcılar için Azure Izleyici eklemek için, [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) dahil ederek [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) ve **oms_agent** belirterek profili doldurun. 
 
 İzlemeyi etkinleştirdikten ve tüm yapılandırma görevleri başarıyla tamamlandıktan sonra, kümenizin performansını iki şekilde izleyebilirsiniz:
 
 * Sol bölmedeki **sistem durumu** ' nu seçerek doğrudan aks kümesinde.
-* Seçili küme için AKS kümesi sayfasında bulunan **kapsayıcı öngörülerini izle** kutucuğunu seçin. Azure Izleyici 'de, sol bölmede **sistem durumu**' nu seçin. 
+* Seçili küme için AKS kümesi sayfasında bulunan **kapsayıcı öngörülerini izle** kutucuğunu seçin. Azure Izleyici 'de, sol bölmede **sistem durumu** ' nu seçin. 
 
   ![AKS 'teki kapsayıcılar için Azure Izleyicisini seçme seçenekleri](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 356353da639ab97a1a4e5483abf56050f5a236f8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078202"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676053"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Azure Logic Apps için çalışma durumunu izleme, tetikleyici geçmişini gözden geçirme ve uyarı ayarlama
 
@@ -20,7 +20,7 @@ ms.locfileid: "87078202"
 Gerçek zamanlı olay izleme ve daha zengin hata ayıklama için, [Azure izleyici günlüklerini](../azure-monitor/overview.md)kullanarak mantıksal uygulamanız için tanılama günlüğü ayarlayın. Bu Azure hizmeti, kullanılabilirliğini ve performansını daha kolay koruyabilmeniz için bulutunuzu ve şirket içi ortamlarınızı izlemenize yardımcı olur. Daha sonra olayları tetikleme, olayları çalıştırma ve eylem olayları gibi olayları bulabilir ve görüntüleyebilirsiniz. Bu bilgileri [Azure izleyici günlüklerinde](../azure-monitor/platform/data-platform-logs.md)depolayarak, bu bilgileri bulmanıza ve çözümlemenize yardımcı olan [günlük sorguları](../azure-monitor/log-query/log-query-overview.md) oluşturabilirsiniz. Bu tanılama verilerini Azure depolama ve Azure Event Hubs gibi diğer Azure hizmetleriyle de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici kullanarak mantıksal uygulamaları izleme](../logic-apps/monitor-logic-apps-log-analytics.md).
 
 > [!NOTE]
-> Logic Apps, bir [iç erişim uç noktası](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)kullanmak üzere oluşturulmuş bir [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) çalışıyorsa, Logic App 'in çalıştırma geçmişinden gelen giriş ve çıkışları *yalnızca sanal ağınızın*içinden görüntüleyebilir ve erişebilirsiniz. Özel uç noktalar ve çalıştırma geçmişine erişmek istediğiniz bilgisayar arasında ağ bağlantısına sahip olduğunuzdan emin olun. Örneğin, istemci bilgisayarınız ıSE 'nin sanal ağı içinde veya ıSE 'nin sanal ağına bağlı bir sanal ağ içinde (örneğin, eşleme veya bir sanal özel ağ) bulunabilir. Daha fazla bilgi için bkz. [Ise uç noktası erişimi](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). 
+> Logic Apps, bir [iç erişim uç noktası](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)kullanmak üzere oluşturulmuş bir [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) çalışıyorsa, Logic App 'in çalıştırma geçmişinden gelen giriş ve çıkışları *yalnızca sanal ağınızın* içinden görüntüleyebilir ve erişebilirsiniz. Özel uç noktalar ve çalıştırma geçmişine erişmek istediğiniz bilgisayar arasında ağ bağlantısına sahip olduğunuzdan emin olun. Örneğin, istemci bilgisayarınız ıSE 'nin sanal ağı içinde veya ıSE 'nin sanal ağına bağlı bir sanal ağ içinde (örneğin, eşleme veya bir sanal özel ağ) bulunabilir. Daha fazla bilgi için bkz. [Ise uç noktası erişimi](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). 
 
 <a name="review-runs-history"></a>
 
@@ -30,7 +30,7 @@ Tetikleyici bir öğe veya olay için her tetiklendiğinde, Logic Apps altyapıs
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı bulun ve açın.
 
-   Mantıksal uygulamanızı bulmak için, ana Azure Arama kutusuna girin `logic apps` ve ardından **Logic Apps**' yi seçin.
+   Mantıksal uygulamanızı bulmak için, ana Azure Arama kutusuna girin `logic apps` ve ardından **Logic Apps** ' yi seçin.
 
    !["Logic Apps" hizmetini bul ve Seç](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -38,24 +38,29 @@ Tetikleyici bir öğe veya olay için her tetiklendiğinde, Logic Apps altyapıs
 
    ![Aboneliklerle ilişkili Logic Apps 'i görüntüleme](./media/monitor-logic-apps/logic-apps-list-in-subscription.png)
 
-1. Mantıksal uygulamanızı seçin ve **genel bakış**' ı seçin.
+1. Mantıksal uygulamanızı seçin ve **genel bakış** ' ı seçin.
 
-   Genel Bakış bölmesinde, **çalışma geçmişi**altında, mantıksal uygulamanız için tüm geçmiş, geçerli ve bekleme çalıştırmaları görüntülenir. Listede birçok çalıştırma görünüyorsa ve istediğiniz girişi bulamıyorsanız listeyi filtrelemeyi deneyin. Beklediğiniz verileri bulamazsanız, araç çubuğunda **Yenile** ' yi seçmeyi deneyin.
+   Genel Bakış bölmesinde, **çalışma geçmişi** altında, mantıksal uygulamanız için tüm geçmiş, geçerli ve bekleme çalıştırmaları görüntülenir. Listede birçok çalıştırma görünüyorsa ve istediğiniz girişi bulamıyorsanız listeyi filtrelemeyi deneyin.
+
+   > [!TIP]
+   > Çalıştırma durumu görünmezse, **Yenile** ' yi seçerek genel bakış sayfasını yenilemeyi deneyin. Karşılanmayan ölçütler veya veri bulma nedeniyle atlanan bir tetikleyici için çalıştırma gerçekleşilmedi.
 
    ![Genel bakış, çalışma geçmişi ve diğer mantıksal uygulama bilgileri](./media/monitor-logic-apps/overview-pane-logic-app-details-run-history.png)
 
-   Mantıksal uygulama çalıştırması için olası durumlar şunlardır:
+   Olası çalıştırma durumları şunlardır:
 
-   | Durum | Açıklama |
-   |--------|-------------|
-   | **Yürütüldükten** | İş akışı çalışıyor ancak iptal isteği alındı |
-   | **Başarısız** | En az bir eylem başarısız oldu ve hata işlemek için iş akışında sonraki hiçbir eylem ayarlanmadı |
-   | **Çalışma** | İş akışı şu anda çalışıyor. <p>Bu durum, kısıtlanmış iş akışları için veya geçerli fiyatlandırma planı nedeniyle da görünebilir. Daha fazla bilgi için [fiyatlandırma sayfasındaki eylem sınırlarına](https://azure.microsoft.com/pricing/details/logic-apps/)bakın. [Tanılama günlüğü](../logic-apps/monitor-logic-apps.md)ayarlarsanız, gerçekleşen tüm kısıtlama olayları hakkında bilgi alabilirsiniz. |
-   | **Başarılı** | Tüm eylemler başarılı oldu. <p>**Unutmayın**: belirli bir eylemde herhangi bir hata meydana gelirse, iş akışındaki sonraki bir eylem bu hatayı işledi. |
-   | **Bekleme** | İş akışı başlatılmamış veya örneğin, hala çalışmakta olan önceki bir iş akışı nedeniyle duraklatıldı. |
+   | Çalışma durumu | Açıklama |
+   |------------|-------------|
+   | **İptal edildi** | Çalıştırma, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
+   | **Yürütüldükten** | Çalıştırma tetiklendi ve başlatıldı, ancak bir iptal isteği alındı. |
+   | **Başarısız** | Çalıştırmada en az bir eylem başarısız oldu. Hata işlemek için iş akışında sonraki hiçbir eylem ayarlanmadı. |
+   | **Çalışma** | Çalıştırma tetiklendi ve devam ediyor, ancak bu durum [eylem sınırları](logic-apps-limits-and-config.md) veya [geçerli fiyatlandırma planı](https://azure.microsoft.com/pricing/details/logic-apps/)nedeniyle kısıtlanan bir çalıştırma için de görünebilir. <p><p>**İpucu** : [tanılama günlüğü](monitor-logic-apps-log-analytics.md)ayarlarsanız, gerçekleşen tüm kısıtlama olayları hakkında bilgi edinebilirsiniz. |
+   | **Başarılı** | Çalıştırma başarılı oldu. Herhangi bir eylem başarısız olursa, iş akışındaki sonraki bir eylem bu hatayı işledi. |
+   | **Zaman aşımına uğradı** | Geçerli süre, [ **gün cinsinden çalışma geçmişi tutma** ayarı](logic-apps-limits-and-config.md#run-duration-retention-limits)tarafından denetlenen çalışma süresi sınırını aştığından çalıştırma zaman aşımına uğradı. Bir çalıştırmanın süresi, çalışma başlangıç zamanı ve çalıştırma süresi sınırı kullanılarak bu başlangıç saatinde hesaplanır. <p><p>**Note** : çalıştırmanın süresi Ayrıca, [ **gün cinsinden çalıştırma geçmişi tutma**](logic-apps-limits-and-config.md#run-duration-retention-limits)tarafından da denetlenen geçerli *çalışma geçmişi saklama sınırını* aşarsa, çalıştırma, günlük temizleme işi tarafından temizlenir. Çalışma zamanının zaman aşımına uğrayıp tamamlanmayacağı, saklama dönemi her zaman çalıştırmanın başlangıç zamanı ve *geçerli* saklama limiti kullanılarak hesaplanır. Bu nedenle, bir uçuş çalışmasının süre sınırını azaltmanız durumunda çalıştırma zaman aşımına uğrar. Ancak çalıştırma, çalıştırma geçmişinden, çalışma süresinin bekletme sınırını aşıp aşılmadığını temel alarak, çalışır durumda kalır veya temizlenir. |
+   | **Bekleme** | Çalışan, hala çalışmakta olan önceki bir iş akışı örneği nedeniyle başlatılmış veya duraklatılmış. |
    |||
 
-1. Belirli bir çalıştırmaya ilişkin adımları ve diğer bilgileri gözden geçirmek için, çalışma **geçmişi**altında, o çalıştırmayı seçin.
+1. Belirli bir çalıştırmaya ilişkin adımları ve diğer bilgileri gözden geçirmek için, çalışma **geçmişi** altında, o çalıştırmayı seçin.
 
    ![Gözden geçirmek için belirli bir çalıştırma seçin](./media/monitor-logic-apps/select-specific-logic-app-run.png)
 
@@ -63,7 +68,7 @@ Tetikleyici bir öğe veya olay için her tetiklendiğinde, Logic Apps altyapıs
 
    ![Belirli bir çalıştırmada her eylem](./media/monitor-logic-apps/logic-app-run-pane.png)
 
-   Bu bilgileri liste formunda görüntülemek için, **mantıksal uygulama çalıştırma** araç çubuğunda, **Çalıştır ayrıntıları**' nı seçin.
+   Bu bilgileri liste formunda görüntülemek için, **mantıksal uygulama çalıştırma** araç çubuğunda, **Çalıştır ayrıntıları** ' nı seçin.
 
    ![Araç çubuğunda "ayrıntıları Çalıştır" ı seçin](./media/monitor-logic-apps/select-run-details-on-toolbar.png)
 
@@ -96,7 +101,7 @@ Her mantıksal uygulama çalıştırması bir tetikleyici ile başlar. Tetikleyi
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı bulun ve açın.
 
-   Mantıksal uygulamanızı bulmak için, ana Azure Arama kutusuna girin `logic apps` ve ardından **Logic Apps**' yi seçin.
+   Mantıksal uygulamanızı bulmak için, ana Azure Arama kutusuna girin `logic apps` ve ardından **Logic Apps** ' yi seçin.
 
    !["Logic Apps" hizmetini bul ve Seç](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -104,9 +109,9 @@ Her mantıksal uygulama çalıştırması bir tetikleyici ile başlar. Tetikleyi
 
    ![Aboneliklerle ilişkili Logic Apps 'i görüntüleme](./media/monitor-logic-apps/logic-apps-list-in-subscription.png)
 
-1. Mantıksal uygulamanızı seçin ve **genel bakış**' ı seçin.
+1. Mantıksal uygulamanızı seçin ve **genel bakış** ' ı seçin.
 
-1. Mantıksal uygulamanızın menüsünde **genel bakış**' ı seçin. **Özet** bölümünde, **değerlendirme**altında, **tetikleyici geçmişini göster**' i seçin.
+1. Mantıksal uygulamanızın menüsünde **genel bakış** ' ı seçin. **Özet** bölümünde, **değerlendirme** altında, **tetikleyici geçmişini göster** ' i seçin.
 
    ![Mantıksal uygulamanız için tetikleyici geçmişini görüntüleme](./media/monitor-logic-apps/overview-pane-logic-app-details-trigger-history.png)
 
@@ -114,17 +119,17 @@ Her mantıksal uygulama çalıştırması bir tetikleyici ile başlar. Tetikleyi
 
    ![Farklı öğeler için birden çok tetikleyici denemesi](./media/monitor-logic-apps/logic-app-trigger-history.png)
 
-   Tetikleyici girişimi için olası durumlar şunlardır:
+   Olası tetikleyici deneme durumları şunlardır:
 
-   | Durum | Açıklama |
-   |--------|-------------|
-   | **Başarısız** | Bir hata oluşmuştur. Başarısız bir tetikleyici için oluşturulan hata iletilerini gözden geçirmek için, bu tetikleyici denemesini seçin ve **çıktılar**' i seçin. Örneğin, geçerli olmayan girişler bulabilirsiniz. |
-   | **Atlandı** | Tetikleyici bitiş noktasını denetledi ancak hiç veri bulmadı. |
-   | **Başarılı** | Tetikleyici bitiş noktasını denetledi ve kullanılabilir verileri buldu. Genellikle, bu durum yanında "tetiklenen" bir durum da görünür. Aksi takdirde, tetikleyici tanımında karşılanmayan bir koşul veya `SplitOn` komut olabilir. <p>Bu durum el ile tetikleyici, yineleme tetikleyicisi veya yoklama tetikleyicisi için uygulanabilir. Bir tetikleyici başarıyla çalıştırılabilir, ancak eylemler işlenmeyen hatalar üretmediğinde, çalıştırma yine de başarısız olabilir. |
+   | Tetikleyici durumu | Açıklama |
+   |----------------|-------------|
+   | **Başarısız** | Bir hata oluşmuştur. Başarısız bir tetikleyici için oluşturulan hata iletilerini gözden geçirmek için, bu tetikleyici denemesini seçin ve **çıktılar** ' i seçin. Örneğin, geçerli olmayan girişler bulabilirsiniz. |
+   | **Atlandı** | Tetikleyici bitiş noktasını denetledi ancak belirtilen ölçütlere uyan hiçbir veri bulamadı. |
+   | **Başarılı** | Tetikleyici bitiş noktasını denetledi ve kullanılabilir verileri buldu. Genellikle, bu durum yanında **tetiklenen** bir durum da görünür. Aksi takdirde, tetikleyici tanımında karşılanmayan bir koşul veya `SplitOn` komut olabilir. <p><p>Bu durum el ile tetikleyici, yineleme tetikleyicisi veya yoklama tetikleyicisi için uygulanabilir. Bir tetikleyici başarıyla çalıştırılabilir, ancak eylemler işlenmeyen hatalar üretmediğinde, çalıştırma yine de başarısız olabilir. |
    |||
 
    > [!TIP]
-   > Bir sonraki tekrarmayı beklemeden Tetikleyiciyi yeniden denetleyebilirsiniz. Genel Bakış araç çubuğunda **tetikleyiciyi Çalıştır**' ı seçin ve sonra da bir denetimi zorlayan tetikleyiciyi seçin. Ya da Logic Apps Tasarımcı araç çubuğunda **Çalıştır** ' ı seçin.
+   > Bir sonraki tekrarmayı beklemeden Tetikleyiciyi yeniden denetleyebilirsiniz. Genel Bakış araç çubuğunda **tetikleyiciyi Çalıştır** ' ı seçin ve sonra da bir denetimi zorlayan tetikleyiciyi seçin. Ya da Logic Apps Tasarımcı araç çubuğunda **Çalıştır** ' ı seçin.
 
 1. Belirli bir tetikleyici girişimi hakkında bilgileri görüntülemek için, tetikleyici bölmesinde, bu tetikleyici olayını seçin. Listede çok sayıda tetikleme denemesi görünüyorsa ve istediğiniz girişi bulamazsanız, listeyi filtrelemeyi deneyin. Beklediğiniz verileri bulamazsanız, araç çubuğunda **Yenile** ' yi seçmeyi deneyin.
 
@@ -140,11 +145,11 @@ Her mantıksal uygulama çalıştırması bir tetikleyici ile başlar. Tetikleyi
 
 Belirli ölçümleri temel alan veya mantıksal uygulamanızın eşiklerini aşan uyarıları almak için [Azure izleyici 'de uyarıları](../azure-monitor/platform/alerts-overview.md)ayarlayın. [Azure 'da ölçümler](../azure-monitor/platform/data-platform.md)hakkında bilgi edinin. [Azure izleyici](../azure-monitor/log-query/log-query-overview.md)'yi kullanmadan uyarıları ayarlamak için aşağıdaki adımları izleyin.
 
-1. Mantıksal uygulama menünüzde **izleme**altında **Uyarılar**  >  **Yeni uyarı kuralı**' nı seçin.
+1. Mantıksal uygulama menünüzde **izleme** altında **Uyarılar**  >  **Yeni uyarı kuralı** ' nı seçin.
 
    ![Mantıksal uygulamanız için bir uyarı ekleyin](./media/monitor-logic-apps/add-new-alert-rule.png)
 
-1. **Kural oluştur** bölmesindeki **kaynak**altında, henüz seçili değilse mantıksal uygulamanızı seçin. **Koşul**' ın altında, uyarıyı tetikleyen koşulu tanımlayabilmeniz için **Ekle** ' yi seçin.
+1. **Kural oluştur** bölmesindeki **kaynak** altında, henüz seçili değilse mantıksal uygulamanızı seçin. **Koşul** ' ın altında, uyarıyı tetikleyen koşulu tanımlayabilmeniz için **Ekle** ' yi seçin.
 
    ![Kural için bir koşul ekleyin](./media/monitor-logic-apps/add-condition-for-rule.png)
 
@@ -156,19 +161,19 @@ Belirli ölçümleri temel alan veya mantıksal uygulamanızın eşiklerini aşa
 
       ![Uyarı oluşturmak için sinyal seçin](./media/monitor-logic-apps/find-and-select-signal.png)
 
-   1. Seçilen sinyal için açılan bilgi bölmesinde, **Uyarı mantığı**altında, koşulınızı ayarlayın, örneğin:
+   1. Seçilen sinyal için açılan bilgi bölmesinde, **Uyarı mantığı** altında, koşulınızı ayarlayın, örneğin:
 
-   1. **İşleci**için **büyüktür veya eşittir**' i seçin.
+   1. **İşleci** için **büyüktür veya eşittir** ' i seçin.
 
-   1. **Toplama türü**Için, **sayım**' ı seçin.
+   1. **Toplama türü** Için, **sayım** ' ı seçin.
 
-   1. **Eşik değeri**için girin `1` .
+   1. **Eşik değeri** için girin `1` .
 
-   1. **Koşul önizlemesi**altında, koşullarınızın doğru göründüğünü onaylayın.
+   1. **Koşul önizlemesi** altında, koşullarınızın doğru göründüğünü onaylayın.
 
-   1. **Temelinde değerlendirilen**altında, uyarı kuralını çalıştırmaya yönelik aralığı ve sıklığı ayarlayın. **Toplama ayrıntı düzeyi (süre)** için verileri gruplandırmak için dönemi seçin. **Değerlendirme sıklığı**için, koşulu ne sıklıkta denetlemek istediğinizi seçin.
+   1. **Temelinde değerlendirilen** altında, uyarı kuralını çalıştırmaya yönelik aralığı ve sıklığı ayarlayın. **Toplama ayrıntı düzeyi (süre)** için verileri gruplandırmak için dönemi seçin. **Değerlendirme sıklığı** için, koşulu ne sıklıkta denetlemek istediğinizi seçin.
 
-   1. Hazırsanız, **bitti**' yi seçin.
+   1. Hazırsanız, **bitti** ' yi seçin.
 
    İşte bu durum:
 
@@ -180,7 +185,7 @@ Belirli ölçümleri temel alan veya mantıksal uygulamanızın eşiklerini aşa
 
 1. Uyarınız için bir ad, isteğe bağlı açıklama ve önem düzeyi belirtin. **Oluşturma sırasında kuralı etkinleştir** ayarını açık bırakın ya da kuralı etkinleştirmeye hazırsanız devre dışı bırakın.
 
-1. İşiniz bittiğinde **Uyarı kuralı oluştur**' u seçin.
+1. İşiniz bittiğinde **Uyarı kuralı oluştur** ' u seçin.
 
 > [!TIP]
 > Bir uyarıdan mantıksal uygulama çalıştırmak için, bu örnekler gibi görevler gerçekleştirmenize olanak sağlayan [istek tetikleyicisini](../connectors/connectors-native-reqres.md) iş akışınıza dahil edebilirsiniz:

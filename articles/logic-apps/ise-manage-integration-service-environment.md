@@ -5,27 +5,29 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: 41dc4e97e847e9e7d9863631cdb20b72d3f35d9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/25/2020
+ms.openlocfilehash: 4df9543e5e747de640562b7e5be224e257e0cfd1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269378"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676116"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Tümleştirme hizmeti ortamınızı (ISE) Azure Logic Apps ile yönetme
 
 Bu makalede, [tümleştirme hizmeti ortamınız (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)için yönetim görevlerinin nasıl gerçekleştirileceği gösterilmektedir, örneğin:
 
 * Mantıksal uygulamalar, bağlantılar, tümleştirme hesapları ve çalışma ortamınızdaki bağlayıcılar gibi kaynakları yönetin.
+
 * ISE 'nin ağ sistem durumunu kontrol edin.
+
 * Kapasite ekleyin, ıSE 'nizi yeniden başlatın veya ıSE 'yi silin, bu konudaki adımları izleyin. Bu yapıtları ıSE 'nize eklemek için bkz. [Integration Service ortamınıza yapıt ekleme](../logic-apps/add-artifacts-integration-service-environment-ise.md).
 
 ## <a name="view-your-ise"></a>ISE 'nizi görüntüleme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-1. Portalın arama kutusuna "tümleştirme hizmeti ortamları" yazın ve ardından **tümleştirme hizmeti ortamları**' nı seçin.
+1. Portalın arama kutusuna "tümleştirme hizmeti ortamları" yazın ve ardından **tümleştirme hizmeti ortamları** ' nı seçin.
 
    ![Tümleştirme hizmeti ortamlarını bulun](./media/ise-manage-integration-service-environment/find-integration-service-environment.png)
 
@@ -39,9 +41,17 @@ Bu makalede, [tümleştirme hizmeti ortamınız (ıSE)](../logic-apps/connect-vi
 
 ## <a name="check-network-health"></a>Ağ durumunu denetle
 
-ISE menüsünde **Ayarlar**' ın altında **ağ durumu**' nu seçin. Bu bölmede, alt ağlarınızın sistem durumu ve diğer hizmetlere giden bağımlılıklarınız gösterilir.
+ISE menüsünde **Ayarlar** ' ın altında **ağ durumu** ' nu seçin. Bu bölmede, alt ağlarınızın sistem durumu ve diğer hizmetlere giden bağımlılıklarınız gösterilir.
 
 ![Ağ durumunu denetle](./media/ise-manage-integration-service-environment/ise-check-network-health.png)
+
+> [!CAUTION]
+> ISE 'nin ağı sağlıksız hale gelirse, ıSE 'niz tarafından kullanılan dahili App Service Ortamı (ASE) de sağlıksız hale gelebilir. ASE, yedi günden daha uzun bir süre boyunca uygun değilse, ASE askıya alınır. Bu durumu çözümlemek için, sanal ağ kurulumunuzu denetleyin. Bulduğunuz sorunları çözün ve ardından ıSE 'nizi yeniden başlatın. Aksi takdirde, 90 gün sonra askıya alınan ASE silinir ve ıSE kullanılamaz hale gelir. Bu nedenle, gerekli trafiğe izin vermek için ıSE 'nizi sağlıklı tutduğunuzdan emin olun.
+> 
+> Daha fazla bilgi için şu konulara bakın:
+>
+> * [Azure App Service tanılamada genel bakış](../app-service/overview-diagnostics.md)
+> * [Azure App Service Ortamı için ileti günlüğe kaydetme](../app-service/environment/using-an-ase.md#logging)
 
 <a name="find-logic-apps"></a>
 
@@ -49,11 +59,11 @@ ISE menüsünde **Ayarlar**' ın altında **ağ durumu**' nu seçin. Bu bölmede
 
 ISE 'de olan Logic Apps 'i görüntüleyebilir ve yönetebilirsiniz.
 
-1. ISE menüsünde, **Ayarlar**' ın altında **Logic Apps**' i seçin.
+1. ISE menüsünde, **Ayarlar** ' ın altında **Logic Apps** ' i seçin.
 
    ![Mantıksal uygulamaları görüntüleme](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
-1. Artık ihtiyacınız olmayan Logic Apps 'i kaldırmak için bu Logic Apps ' i seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
+1. Artık ihtiyacınız olmayan Logic Apps 'i kaldırmak için bu Logic Apps ' i seçin ve **Sil** ' i seçin. Silmek istediğinizi onaylamak için **Evet** ' i seçin.
 
 > [!NOTE]
 > Bir alt mantıksal uygulamayı silip yeniden oluşturursanız, ana mantıksal uygulamayı yeniden kaydetmeniz gerekir. Yeniden oluşturulan alt uygulamanın farklı meta verileri olacak.
@@ -65,11 +75,11 @@ ISE 'de olan Logic Apps 'i görüntüleyebilir ve yönetebilirsiniz.
 
 ISE 'de çalışan Logic Apps tarafından oluşturulan bağlantıları görüntüleyebilir ve yönetebilirsiniz.
 
-1. ISE menüsünde **Ayarlar**' ın altında **API bağlantıları**' nı seçin.
+1. ISE menüsünde **Ayarlar** ' ın altında **API bağlantıları** ' nı seçin.
 
    ![API bağlantılarını görüntüle](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
 
-1. Artık ihtiyacınız olmayan bağlantıları kaldırmak için bu bağlantıları seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
+1. Artık ihtiyacınız olmayan bağlantıları kaldırmak için bu bağlantıları seçin ve **Sil** ' i seçin. Silmek istediğinizi onaylamak için **Evet** ' i seçin.
 
 <a name="manage-api-connectors"></a>
 
@@ -77,11 +87,11 @@ ISE 'de çalışan Logic Apps tarafından oluşturulan bağlantıları görünt�
 
 ISE 'nize dağıtılan API bağlayıcılarını görüntüleyebilir ve yönetebilirsiniz.
 
-1. ISE menüsünde, **Ayarlar**' ın altında, **yönetilen bağlayıcılar**' ı seçin.
+1. ISE menüsünde, **Ayarlar** ' ın altında, **yönetilen bağlayıcılar** ' ı seçin.
 
    ![Yönetilen bağlayıcıları görüntüleme](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
 
-1. ISE 'de kullanılabilir olmasını istemediğiniz bağlayıcıları kaldırmak için bu bağlayıcıları seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
+1. ISE 'de kullanılabilir olmasını istemediğiniz bağlayıcıları kaldırmak için bu bağlayıcıları seçin ve **Sil** ' i seçin. Silmek istediğinizi onaylamak için **Evet** ' i seçin.
 
 <a name="find-custom-connectors"></a>
 
@@ -89,21 +99,21 @@ ISE 'nize dağıtılan API bağlayıcılarını görüntüleyebilir ve yönetebi
 
 ISE 'nize dağıttığınız özel bağlayıcıları görüntüleyebilir ve yönetebilirsiniz.
 
-1. ISE menüsünde **Ayarlar**' ın altında **özel bağlayıcılar**' ı seçin.
+1. ISE menüsünde **Ayarlar** ' ın altında **özel bağlayıcılar** ' ı seçin.
 
    ![Özel bağlayıcıları bulma](./media/ise-manage-integration-service-environment/ise-find-custom-connectors.png)
 
-1. Artık ihtiyacınız olmayan özel bağlayıcıları kaldırmak için bu Bağlayıcılar ' ı seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
+1. Artık ihtiyacınız olmayan özel bağlayıcıları kaldırmak için bu Bağlayıcılar ' ı seçin ve **Sil** ' i seçin. Silmek istediğinizi onaylamak için **Evet** ' i seçin.
 
 <a name="find-integration-accounts"></a>
 
 ## <a name="manage-integration-accounts"></a>Tümleştirme hesaplarını yönetme
 
-1. ISE menüsünde **Ayarlar**' ın altında **tümleştirme hesapları**' nı seçin.
+1. ISE menüsünde **Ayarlar** ' ın altında **tümleştirme hesapları** ' nı seçin.
 
    ![Tümleştirme hesaplarını bul](./media/ise-manage-integration-service-environment/ise-find-integration-accounts.png)
 
-1. Artık gerekmeyen tümleştirme hesaplarını ıSE bilgisayarınızdan kaldırmak için bu tümleştirme hesaplarını seçin ve **Sil**' i seçin.
+1. Artık gerekmeyen tümleştirme hesaplarını ıSE bilgisayarınızdan kaldırmak için bu tümleştirme hesaplarını seçin ve **Sil** ' i seçin.
 
 <a name="add-capacity"></a>
 
@@ -113,11 +123,11 @@ Premium ıSE temel birimi sabit kapasiteye sahiptir, bu nedenle daha fazla işle
 
 1. [Azure Portal](https://portal.azure.com), Ise 'ye gidin.
 
-1. ISE 'nizin kullanım ve performans ölçümlerini gözden geçirmek için, ıSE menüsünde **genel bakış**' ı seçin.
+1. ISE 'nizin kullanım ve performans ölçümlerini gözden geçirmek için, ıSE menüsünde **genel bakış** ' ı seçin.
 
    ![ISE için kullanımı görüntüleme](./media/ise-manage-integration-service-environment/integration-service-environment-usage.png)
 
-1. **Ayarlar**altında **ölçeği Genişlet**' i seçin. **Yapılandır** bölmesinde, şu seçeneklerden birini seçin:
+1. **Ayarlar** altında **ölçeği Genişlet** ' i seçin. **Yapılandır** bölmesinde, şu seçeneklerden birini seçin:
 
    * [**El ile ölçeklendirme**](#manual-scale): kullanmak istediğiniz işleme birimi sayısına göre ölçeklendirin.
    * [**Özel otomatik ölçeklendirme**](#custom-autoscale): çeşitli ölçütlerden seçerek ve bu ölçütü karşılamak için eşik koşullarını belirterek performans ölçümlerine göre ölçeklendirin.
@@ -128,37 +138,37 @@ Premium ıSE temel birimi sabit kapasiteye sahiptir, bu nedenle daha fazla işle
 
 ### <a name="manual-scale"></a>El ile ölçeklendirme
 
-1. **El ile ölçek**seçeneğini belirledikten sonra **ek kapasite**için, kullanmak istediğiniz ölçekleme birimi sayısını seçin.
+1. **El ile ölçek** seçeneğini belirledikten sonra **ek kapasite** için, kullanmak istediğiniz ölçekleme birimi sayısını seçin.
 
    ![İstediğiniz ölçekleme türünü seçin](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
 
-1. İşiniz bittiğinde **Kaydet**'i seçin.
+1. İşiniz bittiğinde **Kaydet** 'i seçin.
 
 <a name="custom-autoscale"></a>
 
 ### <a name="custom-autoscale"></a>Özel otomatik ölçeklendirme
 
-1. Otomatik **Otomatik ölçeklendirme**seçeneğini belirledikten sonra **Otomatik ölçeklendirme ayarı adı**için, ayarınız için bir ad girin ve isteğe bağlı olarak, ayarın ait olduğu Azure kaynak grubunu seçin.
+1. Otomatik **Otomatik ölçeklendirme** seçeneğini belirledikten sonra **Otomatik ölçeklendirme ayarı adı** için, ayarınız için bir ad girin ve isteğe bağlı olarak, ayarın ait olduğu Azure kaynak grubunu seçin.
 
    ![Otomatik ölçeklendirme ayarı için ad belirtin ve kaynak grubunu seçin](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
 
-1. **Varsayılan** koşul için, **ölçüm temelinde ölçek** ' i veya **belirli bir örnek sayısına göre ölçeklendirin**' ı seçin.
+1. **Varsayılan** koşul için, **ölçüm temelinde ölçek** ' i veya **belirli bir örnek sayısına göre ölçeklendirin** ' ı seçin.
 
    * Örnek tabanlı ' i seçerseniz, işleme birimlerinin numarasını 0 ile 10 arasında bir değer olacak şekilde girin.
 
    * Ölçüm tabanlı ' i seçerseniz, aşağıdaki adımları izleyin:
 
-     1. **Kurallar** bölümünde **Kural Ekle**' yi seçin.
+     1. **Kurallar** bölümünde **Kural Ekle** ' yi seçin.
 
      1. **Kural ölçekleme** bölmesinde, kural tetiklendiğinde gerçekleştirilecek ölçütlerinizi ve eyleminizi ayarlayın.
 
-     1. **Örnek sınırları**için şu değerleri belirtin:
+     1. **Örnek sınırları** için şu değerleri belirtin:
 
-        * **En az**: kullanılacak en düşük işleme birimi sayısı
-        * **Maksimum**: kullanılacak en fazla işleme birimi sayısı
-        * **Varsayılan**: kaynak ölçümleri okunurken herhangi bir sorun meydana geliyorsa ve geçerli kapasite varsayılan kapasitenin altındaysa, otomatik ölçeklendirme varsayılan işlem birimi sayısına göre ölçeklendirilir. Ancak, geçerli kapasite varsayılan kapasiteyi aşarsa, otomatik ölçeklendirme içinde ölçeklenmez.
+        * **En az** : kullanılacak en düşük işleme birimi sayısı
+        * **Maksimum** : kullanılacak en fazla işleme birimi sayısı
+        * **Varsayılan** : kaynak ölçümleri okunurken herhangi bir sorun meydana geliyorsa ve geçerli kapasite varsayılan kapasitenin altındaysa, otomatik ölçeklendirme varsayılan işlem birimi sayısına göre ölçeklendirilir. Ancak, geçerli kapasite varsayılan kapasiteyi aşarsa, otomatik ölçeklendirme içinde ölçeklenmez.
 
-1. Başka bir koşul eklemek için **Ölçek koşulu Ekle**' yi seçin.
+1. Başka bir koşul eklemek için **Ölçek koşulu Ekle** ' yi seçin.
 
 1. Otomatik ölçeklendirme ayarlarınızla işiniz bittiğinde değişikliklerinizi kaydedin.
 
@@ -170,7 +180,7 @@ DNS sunucunuzu veya DNS sunucusu ayarlarını değiştirirseniz, ıSE 'nin bu de
 
 1. [Azure Portal](https://portal.azure.com), Ise 'ye gidin.
 
-1. ISE menüsünde **genel bakış**' ı seçin. Genel Bakış araç çubuğunda **yeniden başlatın**.
+1. ISE menüsünde **genel bakış** ' ı seçin. Genel Bakış araç çubuğunda **yeniden başlatın** .
 
    ![Tümleştirme hizmeti ortamını yeniden Başlat](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
 

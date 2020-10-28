@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dc0aee2e6c1b06850ffd0385626955a9798e7aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: 658e7f206f892c9dc241aab228aa933884f95b94
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257325"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675632"
 ---
 # <a name="scenario-single-page-application"></a>Senaryo: tek sayfalı uygulama
 
@@ -38,7 +38,7 @@ Microsoft Identity platformu, tek sayfalı uygulamaların kullanıcılara oturum
 
 ![Tek sayfalı uygulamalar-kimlik doğrulama](./media/scenarios/spa-app-auth.svg)
 
-- [OAuth 2,0 örtük akış](./v2-oauth2-implicit-grant-flow.md). Örtük verme akışı, uygulamanın **kimlik** ve **erişim** belirteçleri almasına izin verir. Yetkilendirme kodu akışından farklı olarak, örtük verme akışı bir **yenileme belirteci**döndürmez.
+- [OAuth 2,0 örtük akış](./v2-oauth2-implicit-grant-flow.md). Örtük verme akışı, uygulamanın **kimlik** ve **erişim** belirteçleri almasına izin verir. Yetkilendirme kodu akışından farklı olarak, örtük verme akışı bir **yenileme belirteci** döndürmez.
 
 ![Tek sayfalı uygulamalar-örtük](./media/scenarios/spa-app.svg)
 

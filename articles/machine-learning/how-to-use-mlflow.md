@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3fb177afa804788632f22d24bbd376d64cbe1c9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a81e60e3bb7a1b0f34a29ccd9cebf3d82279027e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250700"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676653"
 ---
 # <a name="track-experiment-runs-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Deneme çalışmalarını izleyin ve ML modellerini MLflow ve Azure Machine Learning (Önizleme) ile dağıtın
 
@@ -50,7 +50,7 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 
  MLflow Izleme yalnızca [Azure Machine Learning Python SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)aracılığıyla kullanılabilen ölçüm günlüğü ve yapıt depolama işlevleri sunar.
 
-| Özellik | MLflow Izleme & dağıtımı | Python SDK Azure Machine Learning |  Azure Machine Learning CLı | Azure Machine Learning Studio|
+| Yetenek | MLflow Izleme & dağıtımı | Python SDK Azure Machine Learning |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | Çalışma alanını yönet |   | ✓ | ✓ | ✓ |
 | Veri depolarını kullanma  |   | ✓ | ✓ | |
@@ -353,13 +353,16 @@ Hizmet dağıtımı birkaç dakika sürebilir.
 
 1. Listeden oluşturduğunuz kaynak grubunu seçin.
 
-1. **Kaynak grubunu sil**'i seçin.
+1. **Kaynak grubunu sil** 'i seçin.
 
-1. Kaynak grubu adını girin. Ardından **Sil**’i seçin.
+1. Kaynak grubu adını girin. Ardından **Sil** ’i seçin.
 
 ## <a name="example-notebooks"></a>Örnek not defterleri
 
 [Azure ML Not defterleri Ile Mlflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) , bu makalede sunulan kavramları gösterir ve genişletir.
+
+> [!NOTE]
+> Mlflow kullanarak bir topluluk odaklı örnek deposu şurada bulunabilir: https://github.com/Azure/azureml-examples .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

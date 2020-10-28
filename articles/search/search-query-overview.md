@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: bae4cb72201bbc1653db5bb549d67531bda71d50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 0c05db39e02a6bc2a7fa5d62b8b891626eb0d241
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537727"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675806"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de sorgu türleri ve bileşimi
 
@@ -59,9 +59,9 @@ Bu [Hızlı başlangıcı otel demo dizini oluşturmak için](search-get-started
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>Sorgu işlemleri dizin tarafından nasıl etkinleştirilir
 
-Dizin tasarımı ve sorgu tasarımı Azure Bilişsel Arama sıkı bir şekilde bağlanmış. En baştan haberdar olmak için önemli bir olgu, *dizin şemasının*her bir alanda bulunan özniteliklerle, oluşturabileceğiniz sorgu türünü belirler. 
+Dizin tasarımı ve sorgu tasarımı Azure Bilişsel Arama sıkı bir şekilde bağlanmış. En baştan haberdar olmak için önemli bir olgu, *dizin şemasının* her bir alanda bulunan özniteliklerle, oluşturabileceğiniz sorgu türünü belirler. 
 
-Bir alandaki dizin öznitelikleri, izin verilen işlemleri ayarlar; bir alanın dizinde *aranabilir* olup olmadığı, sonuçlarda *alınabilir* , *sıralanabilir*, *filtrelenebilir*ve benzeri. Örnek sorgu dizesinde, `"$orderby": "Rating"` yalnızca derecelendirme alanı dizin şemasında *sıralanabilir* olarak işaretlendiğinden geçerlidir. 
+Bir alandaki dizin öznitelikleri, izin verilen işlemleri ayarlar; bir alanın dizinde *aranabilir* olup olmadığı, sonuçlarda *alınabilir* , *sıralanabilir* , *filtrelenebilir* ve benzeri. Örnek sorgu dizesinde, `"$orderby": "Rating"` yalnızca derecelendirme alanı dizin şemasında *sıralanabilir* olarak işaretlendiğinden geçerlidir. 
 
 ![Otel örneği için Dizin tanımı](./media/search-query-overview/hotel-sample-index-definition.png "Otel örneği için Dizin tanımı")
 
@@ -79,7 +79,7 @@ Bir sorgu isteğindeki gerekli öğeler aşağıdaki bileşenleri içerir:
 + Sabit ve Kullanıcı tanımlı bileşenleri içeren bir URL olarak ifade edilen hizmet uç noktası ve Dizin belgeleri koleksiyonu: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
 + **`api-version`** (Yalnızca REST), API 'nin birden fazla sürümü her zaman kullanılabilir olduğundan gereklidir. 
 + **`api-key`** ya bir sorgu ya da yönetici API anahtarı, hizmetinize yönelik isteğin kimliğini doğrular.
-+ **`queryType`**, basit veya tam, yerleşik varsayılan basit sözdizimi kullanıyorsanız atlanabilir.
++ **`queryType`** , basit veya tam, yerleşik varsayılan basit sözdizimi kullanıyorsanız atlanabilir.
 + **`search`** ya da **`filter`** boş bir arama gerçekleştirmek istiyorsanız bu parametre belirtilmeyen bir eşleşme ölçütü sağlar. Her iki sorgu türü de basit ayrıştırıcı açısından ele alınmıştır ancak gelişmiş sorgular bile karmaşık sorgu ifadelerini geçirmek için arama parametresi gerektirir.
 
 Diğer tüm arama parametreleri isteğe bağlıdır. Özniteliklerin tam listesi için bkz. [Dizin oluşturma (REST)](/rest/api/searchservice/create-index). İşlemler sırasında parametrelerin nasıl kullanıldığına daha yakından bakmak için, [tam metin aramasının Azure bilişsel arama 'de nasıl çalıştığını](search-lucene-query-architecture.md)görün.
@@ -92,7 +92,7 @@ Aşağıdaki tabloda sorguları göndermek için API 'Ler ve araç tabanlı yakl
 |-------------|-------------|
 | [Arama Gezgini (portal)](search-explorer.md) | Dizin ve API-sürüm seçimleri için bir arama çubuğu ve seçenekler sağlar. Sonuçlar JSON belgeleri olarak döndürülür. Araştırma, test ve doğrulama için önerilir. <br/>[Daha fazla bilgi edinin.](search-get-started-portal.md#query-index) | 
 | [Postman veya diğer REST araçları](search-get-started-postman.md) | Web test araçları, REST çağrılarını formülletmenin çok iyi bir seçimdir. REST API Azure Bilişsel Arama tüm olası işlemleri destekler. Bu makalede, Azure Bilişsel Arama istek göndermek için HTTP istek üst bilgisini ve gövdesini ayarlamayı öğrenin.  |
-| [Searchındexclient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient) | Azure Bilişsel Arama dizinini sorgulamak için kullanılabilen istemci.  <br/>[Daha fazla bilgi edinin.](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Azure Bilişsel Arama dizinini sorgulamak için kullanılabilen istemci.  <br/>[Daha fazla bilgi edinin.](search-howto-dotnet-sdk.md)  |
 | [Belgelerde ara (REST API)](/rest/api/searchservice/search-documents) | Ek giriş için sorgu parametrelerini kullanarak bir dizinde GET veya POST yöntemleri.  |
 
 ## <a name="choose-a-parser-simple--full"></a>Ayrıştırıcı seçin: basit | tümünü
@@ -159,7 +159,7 @@ Sayfalama arama sonuçları hakkında daha fazla bilgi edinmek [Için bkz. Azure
 ### <a name="ordering-results"></a>Sonuçları sıralama
 Bir arama sorgusu için sonuçları alırken, Azure Bilişsel Arama belirli bir alandaki değerlere göre sıralanmış sonuçlara hizmet verebilir. Azure Bilişsel Arama, varsayılan olarak, arama sonuçlarını [tf-ıDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)' den türetilen her bir belgenin arama puanı derecesine göre sıralar.
 
-Azure Bilişsel Arama 'nin sonuçlarınızı arama puanı dışında bir değere göre sıralanmış olarak döndürmesini istiyorsanız **`orderby`** arama parametresini kullanabilirsiniz. **`orderby`** Alan adlarını ve jeo-uzamsal değerler [** `geo.distance()` işlevine**](query-odata-filter-orderby-syntax.md) çağrıları dahil etmek için parametresinin değerini belirtebilirsiniz. `asc`Sonuçların artan sırada istendiğini belirtmek ve **`desc`** sonuçların azalan sırada istendiğini belirtmek için, her ifadeye sonra gelebilir. Artan sıralama varsayılandır.
+Azure Bilişsel Arama 'nin sonuçlarınızı arama puanı dışında bir değere göre sıralanmış olarak döndürmesini istiyorsanız **`orderby`** arama parametresini kullanabilirsiniz. **`orderby`** Alan adlarını ve jeo-uzamsal değerler [**`geo.distance()` işlevine**](query-odata-filter-orderby-syntax.md) çağrıları dahil etmek için parametresinin değerini belirtebilirsiniz. `asc`Sonuçların artan sırada istendiğini belirtmek ve **`desc`** sonuçların azalan sırada istendiğini belirtmek için, her ifadeye sonra gelebilir. Artan sıralama varsayılandır.
 
 
 ### <a name="hit-highlighting"></a>İsabet vurgulama

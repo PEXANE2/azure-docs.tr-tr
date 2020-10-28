@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: ad80f68c1ab3b3583c5a22de49b77211571f345e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ba0c53b9d0b9791364f532d999d86c74fa21177
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443978"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678063"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics ile koşullu erişim
 
@@ -37,21 +37,21 @@ Aşağıdaki adımlarda, koşullu erişim (CA) ilkesini zorlamak için Azure SQL
 > [!NOTE]
 > Aşağıdaki örnekte Azure SQL veritabanı kullanılmaktadır, ancak koşullu erişimi yapılandırmak istediğiniz uygun ürünü seçmeniz gerekir.
 
-1. Azure portal oturum açın, **Azure Active Directory**' i seçin ve **koşullu erişim**' i seçin. Daha fazla bilgi için bkz. [koşullu erişim teknik başvurusu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
+1. Azure portal oturum açın, **Azure Active Directory** ' i seçin ve **koşullu erişim** ' i seçin. Daha fazla bilgi için bkz. [koşullu erişim teknik başvurusu Azure Active Directory](../../active-directory/conditional-access/concept-conditional-access-conditions.md).  
    ![Koşullu erişim dikey penceresi](./media/conditional-access-configure/conditional-access-blade.png)
 
-2. **Koşullu erişim ilkeleri** dikey penceresinde **Yeni ilke**' yi tıklatın, bir ad girin ve **kuralları Yapılandır**' ı tıklatın.  
-3. **Atamalar**' ın altında **Kullanıcılar ve gruplar**' ı seçin, **Kullanıcılar ve gruplar**' ı seçin ve ardından koşullu erişim için kullanıcıyı veya grubu seçin. **Seç**' e ve ardından seçiminizi kabul etmek için **bitti** ' ye tıklayın.  
+2. **Koşullu erişim ilkeleri** dikey penceresinde **Yeni ilke** ' yi tıklatın, bir ad girin ve **kuralları Yapılandır** ' ı tıklatın.  
+3. **Atamalar** ' ın altında **Kullanıcılar ve gruplar** ' ı seçin, **Kullanıcılar ve gruplar** ' ı seçin ve ardından koşullu erişim için kullanıcıyı veya grubu seçin. **Seç** ' e ve ardından seçiminizi kabul etmek için **bitti** ' ye tıklayın.  
    ![kullanıcıları ve grupları seçin](./media/conditional-access-configure/select-users-and-groups.png)  
 
-4. **Bulut uygulamaları**' nı seçin, **Uygulama Seç**' e tıklayın. Koşullu erişim için kullanılabilen tüm uygulamaları görürsünüz. **Azure SQL veritabanı**' nı seçin, alt kısımdaki **Seç**' e tıklayın ve ardından **bitti**' ye tıklayın.  
+4. **Bulut uygulamaları** ' nı seçin, **Uygulama Seç** ' e tıklayın. Koşullu erişim için kullanılabilen tüm uygulamaları görürsünüz. **Azure SQL veritabanı** ' nı seçin, alt kısımdaki **Seç** ' e tıklayın ve ardından **bitti** ' ye tıklayın.  
    ![SQL veritabanı seçin](./media/conditional-access-configure/select-sql-database.png)  
    Aşağıdaki üçüncü ekran görüntüsünde listelenen **Azure SQL veritabanı** 'nı bulamıyorsanız, aşağıdaki adımları izleyin:
    - Azure AD yönetici hesabı ile SSMS 'yi kullanarak Azure SQL veritabanı 'nda veritabanınıza bağlanın.  
    - Yürütün `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER` .  
    - Azure AD 'de oturum açın ve Azure SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE 'ın Azure AD örneğindeki uygulamalarda listelendiğini doğrulayın.  
 
-5. **Erişim denetimleri**' ni seçin, **izin ver**' i seçin ve ardından uygulamak istediğiniz ilkeyi kontrol edin. Bu örnekte, **çok faktörlü kimlik doğrulaması gerektir**' i seçeceğiz.  
+5. **Erişim denetimleri** ' ni seçin, **izin ver** ' i seçin ve ardından uygulamak istediğiniz ilkeyi kontrol edin. Bu örnekte, **çok faktörlü kimlik doğrulaması gerektir** ' i seçeceğiz.  
    ![erişim ver ' i seçin](./media/conditional-access-configure/grant-access.png)  
 
 ## <a name="summary"></a>Özet

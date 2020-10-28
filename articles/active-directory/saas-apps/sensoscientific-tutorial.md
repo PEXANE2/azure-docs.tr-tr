@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 61807f90caad9e6be2a25e54dcaa837595afc729
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27512ac694f20544f1fdd5b79b27d7bf2cabdd66
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543188"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675497"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>Öğretici: Sensobilimsel kablosuz sıcaklık Izleme sistemiyle Azure Active Directory tümleştirme
 
@@ -27,7 +27,7 @@ Sensobilimsel kablosuz sıcaklık Izleme sistemini Azure AD ile tümleştirmek a
 * Kullanıcılarınızın Azure AD hesaplarıyla Sensobilimsel kablosuz sıcaklık Izleme sistemine (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -61,13 +61,13 @@ Sensobilimsel kablosuz sıcaklık Izleme sisteminin tümleştirmesini Azure AD i
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Sensobilimsel kablosuz sıcaklık Izleme sistemi**yazın, sonuç panelinden **Sensobilimsel kablosuz sıcaklık izleme sistemi** ' ni seçin ve ardından uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **Sensobilimsel kablosuz sıcaklık Izleme sistemi** yazın, sonuç panelinden **Sensobilimsel kablosuz sıcaklık izleme sistemi** ' ni seçin ve ardından uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
     ![Sonuç listesinde Sensobilimsel kablosuz sıcaklık Izleme sistemi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayanarak Sensobilimsel kablosuz sıcaklık Izleme SISTEMIYLE Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına dayanarak Sensobilimsel kablosuz sıcaklık Izleme SISTEMIYLE Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Sensobilimsel kablosuz sıcaklık Izleme sistemindeki ilgili Kullanıcı arasındaki bağlantı ilişkisi kurulmalıdır.
 
 Azure AD çoklu oturum açmayı, Sensobilimsel kablosuz sıcaklık Izleme sistemiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açmayı Sensobilimsel kablosuz sıcaklık Izleme sistemiyle yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **Sensobilimsel kablosuz sıcaklık izleme sistemi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **Sensobilimsel kablosuz sıcaklık izleme sistemi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -133,13 +133,13 @@ Azure AD çoklu oturum açmayı Sensobilimsel kablosuz sıcaklık Izleme sistemi
 
     e. Azure portal indirdiğiniz sertifikaya gözatıp buradan karşıya yükleyin.
 
-    f. **Kaydet**’e tıklayın.
+    f. **Kaydet** ’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -151,27 +151,27 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Sensobilimsel kablosuz sıcaklık Izleme sistemine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Sensobilimsel kablosuz sıcaklık izleme sistemi**' ni seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **Sensobilimsel kablosuz sıcaklık izleme sistemi** ' ni seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Sensobilimsel kablosuz sıcaklık Izleme sistemi**' ni seçin.
+2. Uygulamalar listesinde **Sensobilimsel kablosuz sıcaklık Izleme sistemi** ' ni seçin.
 
     ![Uygulamalar listesinde Sensobilimsel kablosuz sıcaklık Izleme sistemi bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
@@ -187,19 +187,18 @@ Bu bölümde, Sensobilimsel kablosuz sıcaklık Izleme sistemine erişim vererek
 
 ### <a name="create-sensoscientific-wireless-temperature-monitoring-system-test-user"></a>Sensobilimsel kablosuz sıcaklık Izleme sistem testi kullanıcısı oluşturma
 
-Azure AD kullanıcılarının Sensobilimsel kablosuz sıcaklık Izleme sisteminde oturum açmasını sağlamak için, Sensobilimsel kablosuz sıcaklık Izleme sistemine sağlanması gerekir. Duysobilimsel kablosuz sıcaklık Izleme sistemi platformunda kullanıcıları eklemek için [Sensobilimsel kablosuz sıcaklık Izleme sistemi destek ekibi](https://www.sensoscientific.com/contact-us/)ile çalışın   . Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Azure AD kullanıcılarının Sensobilimsel kablosuz sıcaklık Izleme sisteminde oturum açmasını sağlamak için, Sensobilimsel kablosuz sıcaklık Izleme sistemine sağlanması gerekir. Duysobilimsel kablosuz sıcaklık Izleme sistemi platformunda kullanıcıları eklemek için [Sensobilimsel kablosuz sıcaklık Izleme sistemi destek ekibi](https://www.sensoscientific.com/contact-us/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Sensobilimsel kablosuz sıcaklık Izleme sistemi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Sensobilimsel kablosuz sıcaklık Izleme sisteminde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Sensobilimsel kablosuz sıcaklık Izleme sistemi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Sensobilimsel kablosuz sıcaklık Izleme sisteminde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

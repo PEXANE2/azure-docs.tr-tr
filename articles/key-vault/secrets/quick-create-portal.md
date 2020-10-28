@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 126df6e7f4d227c20c2173a1e2d4c0d7361b043f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 080e2daf5065c0762fb039a84e62580e5c915ddb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962454"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735170"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalı kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
 
 Azure Key Vault, gizli diziler için güvenli bir depolama sağlayan bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Azure anahtar kasaları Azure portalı aracılığıyla oluşturulup yönetilebilir. Bu hızlı başlangıçta, bir anahtar kasası oluşturacak ve ardından bir gizli diziyi depolamak için kullanacaksınız. Key Vault hakkında daha fazla bilgi için [Genel Bakış](../general/overview.md) bölümünü inceleyin.
 
-Gizli diziler hakkında daha fazla bilgi için bkz. (about-secrets.md).
+Gizli diziler hakkında daha fazla bilgi için bkz. [parolalar hakkında](about-secrets.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -34,25 +34,26 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
-1. Azure portal menüsünde veya **giriş** sayfasından **kaynak oluştur**' u seçin.
-2. Arama kutusuna **Key Vault**girin.
-3. Sonuç listesinden **Key Vault**’u seçin.
-4. Key Vault bölümünde **Oluştur**’u seçin.
+1. Azure portal menüsünde veya **giriş** sayfasından **kaynak oluştur** ' u seçin.
+2. Arama kutusuna **Key Vault** girin.
+3. Sonuç listesinden **Key Vault** ’u seçin.
+4. Key Vault bölümünde **Oluştur** ’u seçin.
 5. **Anahtar kasası oluşturma** bölümünde aşağıdaki bilgileri sağlayın:
-    - **Ad**: Benzersiz bir ad gereklidir. Bu hızlı başlangıçta **contoso-vault2**kullanıyoruz. 
-    - **Abonelik**: Bir abonelik seçin.
-    - **Kaynak grubu**altında **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
+    - **Ad** : Benzersiz bir ad gereklidir. Bu hızlı başlangıçta **contoso-vault2** kullanıyoruz. 
+    - **Abonelik** : Bir abonelik seçin.
+    - **Kaynak grubu** altında **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
     - **Konum** aşağı açılan menüsünde bir konum seçin.
     - Diğer seçenekleri varsayılan değerlerinde bırakın.
-6. Yukarıdaki bilgileri girdikten sonra **Oluştur**’u seçin.
+6. Yukarıdaki bilgileri girdikten sonra **Oluştur** ’u seçin.
 
 Aşağıda listelenen iki özelliği not edin:
 
-* **Kasa Adı**: Örnekte bu değer **Contoso-Vault2** şeklindedir. Bu adı diğer adımlar için kullanacaksınız.
-* **Kasa URI’si**: Örnekte bu: https://contoso-vault2.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
+* **Kasa Adı** : Örnekte bu değer **Contoso-Vault2** şeklindedir. Bu adı diğer adımlar için kullanacaksınız.
+* **Kasa URI’si** : Örnekte bu: https://contoso-vault2.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
-Azure CLI ve PowerShell ile Key Vault de oluşturabilirsiniz: [Create Key Vault using PowerShell](../general/quick-create-powershell.md) 
- [Azure CLI kullanarak PowerShell oluşturma Key Vault](../general/quick-create-cli.md) kullanarak Key Vault oluşturma
+Ayrıca, Azure CLı ve PowerShell ile Key Vault de oluşturabilirsiniz:
+- [PowerShell kullanarak Key Vault oluşturma](../general/quick-create-powershell.md)
+- [Azure CLı kullanarak Key Vault oluşturma](../general/quick-create-cli.md)
 
 Bu noktada Azure hesabınız, bu yeni anahtar kasasında işlemler gerçekleştirmeye yetkili olan tek hesaptır.
 
@@ -62,13 +63,13 @@ Bu noktada Azure hesabınız, bu yeni anahtar kasasında işlemler gerçekleşti
 
 Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu örnekte, bir uygulama tarafından kullanılabilecek bir gizli dizi ekleyeceğiz. Parola, **Examplepassword** olarak adlandırılır ve **hVFkk965BuUv** değerini bu değerde depolarız.
 
-1. Key Vault Özellikler sayfalarında **gizli**dizileri ' ni seçin.
-2. **Oluştur/İçeri Aktar**’a tıklayın.
+1. Key Vault Özellikler sayfalarında **gizli** dizileri ' ni seçin.
+2. **Oluştur/İçeri Aktar** ’a tıklayın.
 3. **Bir gizli dizi oluştur** ekranında aşağıdaki değerleri seçin:
-    - **Karşıya yükleme seçenekleri**: El ile.
-    - **Ad**: ExamplePassword.
-    - **Değer**: hVFkk965BuUv
-    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**'a tıklayın.
+    - **Karşıya yükleme seçenekleri** : El ile.
+    - **Ad** : ExamplePassword.
+    - **Değer** : hVFkk965BuUv
+    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur** 'a tıklayın.
 
 Gizli dizinin başarıyla oluşturulduğunu belirten iletiyi aldıktan sonra listede gizli diziye tıklayabilirsiniz. 
 
@@ -88,8 +89,8 @@ Diğer Key Vault hızlı başlangıçları ve öğreticileri bu hızlı başlang
 Artık gerek kalmadığında kaynak grubunu silin; bunu yaptığınızda Key Vault ve ilgili kaynaklar silinir. Kaynak grubunu portal aracılığıyla silmek için:
 
 1. Portalın üst kısmındaki Arama kutusuna kaynak grubunuzun adını girin. Bu hızlı başlangıçta kullanılan kaynak grubunu arama sonuçlarında gördüğünüzde seçin.
-2. **Kaynak grubunu sil**'i seçin.
-3. **KAYNAK GRUBU ADINI YAZIN:** kutusuna kaynak grubunun adını yazın ve **Sil**’i seçin.
+2. **Kaynak grubunu sil** 'i seçin.
+3. **KAYNAK GRUBU ADINI YAZIN:** kutusuna kaynak grubunun adını yazın ve **Sil** ’i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

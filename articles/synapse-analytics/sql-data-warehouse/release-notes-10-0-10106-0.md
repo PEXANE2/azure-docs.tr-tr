@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3c941139b12fdf19bf1080b4dddecb8ab761568
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458000"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676126"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure SYNAPSE Analytics sürüm notları
 
@@ -39,6 +39,13 @@ Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="oct-2020"></a>Eki 2020
+
+| Hizmet geliştirmeleri | Ayrıntılar |
+| --- | --- |
+|**T-SQL satır Içi Table-Valued Işlevleri (Önizleme)**|Bu sürümle birlikte, artık Transact-SQL ile satır içi tablo değerli işlevler oluşturabilir ve sonuçlarını bir tablo gibi sorgulayabilirsiniz. Bu özellik şu anda önizleme aşamasındadır ve GA 'de araç çubuğunda desteklenecektir. Daha fazla bilgi için bkz. [create FUNCTION (Azure SYNAPSE Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest).|
+|**BIrLEŞTIr komutu (Önizleme)**|Artık bir hedef tabloda, bir kaynak tabloyla bir birleşimin sonuçlarından INSERT, Update veya delete işlemleri çalıştırabilirsiniz. Örneğin, bir tablodaki satırları diğer tabloda bulunan farklılıklara göre ekleyerek, güncelleştirerek veya silerek iki tabloyu da eşitlenebilir.  Ayrıntılar için [birleştirmeyi](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) denetleyin.|
 
 ## <a name="aug-2020"></a>Ağu 2020
 

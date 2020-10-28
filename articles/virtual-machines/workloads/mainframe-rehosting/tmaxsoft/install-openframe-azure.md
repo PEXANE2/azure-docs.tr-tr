@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: bd5b20d8e713e07b52eb1d6cbc57f01b9e5c1a95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9189be5f2f513cd27fe8783d6a1825aac016522c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987481"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677734"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Azure 'da TmaxSoft OpenFrame 'i yükle
 
@@ -118,15 +118,15 @@ OpenFrame ortamını çeşitli dağıtım düzenlerini kullanarak ayarlayabilirs
 
 1. Azure portal gidin <https://portal.azure.com> ve hesabınızda oturum açın.
 
-2. **Sanal makineler**'e tıklayın.
+2. **Sanal makineler** 'e tıklayın.
 
     ![Azure portal kaynak listesi](media/vm-01.png)
 
-3. **Ekle**'ye tıklayın.
+3. **Ekle** 'ye tıklayın.
 
     ![Azure portal seçenek Ekle](media/vm-02.png)
 
-4. **Işletim sistemlerinin**sağında **daha fazla**' ya tıklayın.
+4. **Işletim sistemlerinin** sağında **daha fazla** ' ya tıklayın.
 
      ![Azure portal daha fazla seçenek](media/vm-03.png)
 
@@ -134,12 +134,12 @@ OpenFrame ortamını çeşitli dağıtım düzenlerini kullanarak ayarlayabilirs
 
      ![Azure portal işletim sistemi seçenekleri](media/vm-04.png)
 
-6. **Temel bilgiler** için **ad**, **Kullanıcı adı**, **kimlik doğrulama türü**, **abonelik** (Kullandıkça öde ' ın AWS) ve **kaynak grubunun** (var olan bir tane kullanın veya bir tmaxsoft grubu oluşturun) girin.
+6. **Temel bilgiler** için **ad** , **Kullanıcı adı** , **kimlik doğrulama türü** , **abonelik** (Kullandıkça öde ' ın AWS) ve **kaynak grubunun** (var olan bir tane kullanın veya bir tmaxsoft grubu oluşturun) girin.
 
-7. Tamamlandığında ( **kimlik doğrulama türü**için ortak/özel anahtar çifti dahil), **Gönder**' e tıklayın.
+7. Tamamlandığında ( **kimlik doğrulama türü** için ortak/özel anahtar çifti dahil), **Gönder** ' e tıklayın.
 
 > [!NOTE]
-> **Kimlik doğrulama türü**için SSH ortak anahtarı kullanılıyorsa, ortak/özel anahtar çiftini oluşturmak için sonraki bölümdeki adımlara bakın ve ardından buradaki adımları sürdürebilirsiniz.
+> **Kimlik doğrulama türü** için SSH ortak anahtarı kullanılıyorsa, ortak/özel anahtar çiftini oluşturmak için sonraki bölümdeki adımlara bakın ve ardından buradaki adımları sürdürebilirsiniz.
 
 ### <a name="generate-a-publicprivate-key-pair"></a>Ortak/özel anahtar çifti oluşturma
 
@@ -164,7 +164,7 @@ Yeni kişilere VM 'ye erişim izni verirken:
 
 3.  **Generate** (Oluştur) düğmesine tıklayın.
 
-    ![PuTTY anahtar Oluşturucu iletişim kutusu](media/puttygen-02.png)
+    ![PuTTY anahtar Oluşturucu iletişim kutusunu gösteren ve Oluştur düğmesini vurgulayan ekran görüntüsü.](media/puttygen-02.png)
 
 4.  Kuşak olduktan sonra, ortak anahtarı ve özel anahtarı kaydedin. Ortak anahtarın içeriğini, **sanal makine \> temelleri oluştur** bölmesinin **SSH ortak anahtarı** bölümüne yapıştırın (önceki bölümde 6 ve 7. adımlarda gösterilmektedir).
 
@@ -183,23 +183,23 @@ Yeni kişilere VM 'ye erişim izni verirken:
 
 4. Seçimlerinizi iletin. Azure, VM 'yi dağıtmaya başlar. Bu işlem genellikle birkaç dakika sürer.
 
-5. VM dağıtıldığında, yapılandırma sırasında seçilen tüm ayarları gösteren Pano görüntülenir. **Genel IP adresini**bir yere getirin.
+5. VM dağıtıldığında, yapılandırma sırasında seçilen tüm ayarları gösteren Pano görüntülenir. **Genel IP adresini** bir yere getirin.
 
     ![Azure panosunda Tmax](media/create-vm-03.png)
 
 6. PuTTY’yi açın.
 
-7. **Ana bilgisayar adı**için, Kullanıcı adınızı ve KOPYALADıĞıNıZ genel IP adresini yazın. Örneğin, **Kullanıcı adı \@ publicıp**.
+7. **Ana bilgisayar adı** için, Kullanıcı adınızı ve KOPYALADıĞıNıZ genel IP adresini yazın. Örneğin, **Kullanıcı adı \@ publicıp** .
 
-    ![PuTTY yapılandırması iletişim kutusu](media/putty-01.png)
+    ![PuTTY yapılandırması iletişim kutusunu gösteren ve ana bilgisayar adı (veya IP adresi) alanını vurgulayan ekran görüntüsü.](media/putty-01.png)
 
-8. **Kategori** kutusunda **bağlantı \> SSH \> kimlik doğrulaması**' na tıklayın. **Özel anahtar** dosyanızın yolunu belirtin.
+8. **Kategori** kutusunda **bağlantı \> SSH \> kimlik doğrulaması** ' na tıklayın. **Özel anahtar** dosyanızın yolunu belirtin.
 
     ![PuTTY yapılandırması iletişim kutusu](media/putty-02.png)
 
 9. PuTTY penceresini başlatmak için **Aç** ' a tıklayın. Başarılı olursa, Azure 'da çalışan yeni CentOS sanal makinenize bağlanırsınız.
 
-10. Kök kullanıcı olarak oturum açmak için **sudo Bash**yazın.
+10. Kök kullanıcı olarak oturum açmak için **sudo Bash** yazın.
 
     ![Komut penceresinde kök kullanıcı oturumu açma](media/putty-03.png)
 
@@ -1359,7 +1359,7 @@ JEUS 'yi yüklemeden önce, JEABD 'yi yüklemek için gereken kitaplıkları ve 
      [oframe7@ofdemo setup]$ . .bash_profile
      ```
 
-11. *Isteğe bağlı*. JEUS bileşenlerinin kolay bir şekilde kapatılmasını ve önyüklemesi için bir diğer ad oluşturun:
+11. *Isteğe bağlı* . JEUS bileşenlerinin kolay bir şekilde kapatılmasını ve önyüklemesi için bir diğer ad oluşturun:
 
      ```     
      # JEUS alias
@@ -1389,11 +1389,11 @@ JEUS 'yi yüklemeden önce, JEABD 'yi yüklemek için gereken kitaplıkları ve 
      > [!NOTE]
      > Bağlantı noktası güvenliği ile ilgili herhangi bir sorunla karşılaşırsanız 9736 numaralı bağlantı noktasını açın veya güvenlik duvarını () devre dışı bırakın `systemctl stop firewall` .
 
-14. Sunucu1 için ana bilgisayar adını değiştirmek için **kilitle & Düzenle**' ye tıklayın ve ardından **Sunucu1**' e tıklayın. Sunucu penceresinde, ana bilgisayar adını aşağıdaki gibi değiştirin:
+14. Sunucu1 için ana bilgisayar adını değiştirmek için **kilitle & Düzenle** ' ye tıklayın ve ardından **Sunucu1** ' e tıklayın. Sunucu penceresinde, ana bilgisayar adını aşağıdaki gibi değiştirin:
 
-    1.  **Düğdüğün** **ofdemo**'e geçin.
+    1.  **Düğdüğün** **ofdemo** 'e geçin.
     2.  Pencerenin sağ tarafındaki **Tamam** ' a tıklayın.
-    3.  Pencerenin sol alt tarafında bulunan **Değişiklikleri Uygula** ' ya tıklayın ve açıklama Için *ana bilgisayar adı değişikliğini*girin.
+    3.  Pencerenin sol alt tarafında bulunan **Değişiklikleri Uygula** ' ya tıklayın ve açıklama Için *ana bilgisayar adı değişikliğini* girin.
 
     ![JEUS WebAdmin ekranı](media/jeus-02.png)
 

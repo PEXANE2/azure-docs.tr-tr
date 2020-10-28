@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d25cdce2670de64fecc8590a2f5f833c10d2df69
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6050dd43b91299cd776d1121d7398f46e95bc096
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315997"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678205"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile Azure kanıtlama ayarlama
 
@@ -231,4 +231,4 @@ Cmdlet 'ler ve parametreleri hakkında daha fazla bilgi için bkz. [Azure kanıt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kanıtlama ilkesi yazma ve imzalama](author-sign-policy.md)
-- [Kod örneklerini kullanarak bir SGX kuşatma atturuntest](https://docs.microsoft.com/samples/browse/?expanded=azure&terms=attestation)
+- [Kod örneklerini kullanarak bir SGX kuşatma atturuntest](/samples/browse/?expanded=azure&terms=attestation)

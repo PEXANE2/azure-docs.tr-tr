@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bdfb1ca21860f1dc338f85a82caf643f9f7be6d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89280188"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678173"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory geçişli kimlik doğrulaması: hızlı başlangıç
 
@@ -72,9 +72,9 @@ Aşağıdaki önkoşulların yerinde olduğundan emin olun.
      | **8080** (isteğe bağlı) | Bağlantı noktası 443 kullanılamıyorsa, kimlik doğrulama aracıları, 8080 numaralı bağlantı noktası üzerinden her on dakikada bir durum bildirir. Bu durum Azure AD portalında görüntülenir. 8080 numaralı bağlantı noktası Kullanıcı oturum açma işlemleri _için kullanılmaz._ |
      
      Güvenlik duvarınız, kaynak kullanıcılara göre kuralları zorlarsa, ağ hizmeti olarak çalışan Windows hizmetlerinden gelen trafik için bu bağlantı noktalarını açın.
-   - Güvenlik duvarınız veya proxy DNS beyaz listeye izin veriyorsa, ** \* . msappproxy.net** ve ** \* . ServiceBus.Windows.net**öğesine bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin.
+   - Güvenlik duvarınız veya proxy DNS beyaz listeye izin veriyorsa, **\* . msappproxy.net** ve **\* . ServiceBus.Windows.net** öğesine bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin.
    - Kimlik doğrulama aracılarınızın ilk kayıt için **login.Windows.net** ve **login.microsoftonline.com** 'e erişmesi gerekir. Bu URL 'Ler için güvenlik duvarınızı da açın.
-   - Sertifika doğrulaması için şu URL 'Leri engellemeyi kaldırın: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**ve **www \. Microsoft.com:80**. Bu URL 'Ler diğer Microsoft ürünleriyle sertifika doğrulaması için kullanıldığından, bu URL 'Lerin engeli kaldırılmış olabilir.
+    - Sertifika doğrulaması için şu URL 'Leri engellemeyi kaldırın: **crl3.DigiCert.com:80** , **crl4.DigiCert.com:80** , **ocsp.digicert.com:80** , **www \. d-trust.net:80** , **root-C3-CA2-2009.OCSP.d-Trust.net:80** , **CRL.Microsoft.com:80** , **oneocsp.Microsoft.com:80** ve **OCSP.msocsp.com:80** . Bu URL 'Ler diğer Microsoft ürünleriyle sertifika doğrulaması için kullanıldığından, bu URL 'Lerin engeli kaldırılmış olabilir.
 
 ### <a name="azure-government-cloud-prerequisite"></a>Azure Kamu Bulutu önkoşulu
 Adım 2 ile Azure AD Connect aracılığıyla doğrudan kimlik doğrulamayı etkinleştirmeden önce, Azure portal PTA aracısının en son sürümünü indirin.  Aracınızın 1.5.1742.0 sürümleri olduğundan emin olmanız gerekir **.** üzeri için derlenmiş olmalıdır.  Aracınızı doğrulamak için bkz. [yükseltme kimlik doğrulama aracıları](how-to-connect-pta-upgrade-preview-authentication-agents.md)
@@ -88,11 +88,11 @@ Aracının en son sürümünü indirdikten sonra, Azure AD Connect aracılığı
 >[!IMPORTANT]
 >Azure AD Connect birincil veya hazırlama sunucusu üzerinde doğrudan kimlik doğrulamasını etkinleştirebilirsiniz. Birincil sunucudan etkinleştirmeniz önemle önerilir. Gelecekte bir Azure AD Connect hazırlama sunucusu ayarlıyorsanız, oturum açma seçeneği olarak geçişli kimlik doğrulaması ' nı seçerek devam etmeniz **gerekir** ; başka bir seçenek belirlendiğinde, Kiracıdaki geçişli kimlik doğrulaması **devre dışı** bırakılır ve birincil sunucudaki ayar geçersiz kılınır.
 
-İlk kez Azure AD Connect yüklüyorsanız, [özel yükleme yolunu](how-to-connect-install-custom.md)seçin. **Kullanıcı oturum açma** sayfasında, **oturum açma yöntemi**olarak **geçişli kimlik doğrulaması** ' nı seçin. Başarılı bir şekilde tamamlandığında, Azure AD Connect ile aynı sunucuya bir geçişli kimlik doğrulama Aracısı yüklenir. Ek olarak, kiracınızda doğrudan kimlik doğrulama özelliği etkinleştirilmiştir.
+İlk kez Azure AD Connect yüklüyorsanız, [özel yükleme yolunu](how-to-connect-install-custom.md)seçin. **Kullanıcı oturum açma** sayfasında, **oturum açma yöntemi** olarak **geçişli kimlik doğrulaması** ' nı seçin. Başarılı bir şekilde tamamlandığında, Azure AD Connect ile aynı sunucuya bir geçişli kimlik doğrulama Aracısı yüklenir. Ek olarak, kiracınızda doğrudan kimlik doğrulama özelliği etkinleştirilmiştir.
 
 ![Azure AD Connect: Kullanıcı oturumu açma](./media/how-to-connect-pta-quick-start/sso3.png)
 
-Azure AD Connect, [hızlı yükleme](how-to-connect-install-express.md) veya [özel yükleme](how-to-connect-install-custom.md) yolunu kullanarak zaten yüklediyseniz, Azure AD Connect **Kullanıcı oturum açma görevini Değiştir** ' i seçin ve ardından **İleri**' yi seçin. Ardından oturum açma yöntemi olarak **geçişli kimlik doğrulaması** ' nı seçin. Başarılı bir şekilde tamamlandığında, bir geçişli kimlik doğrulama Aracısı, Azure AD Connect aynı sunucuya yüklenir ve bu özellik kiracınızda etkinleştirilir.
+Azure AD Connect, [hızlı yükleme](how-to-connect-install-express.md) veya [özel yükleme](how-to-connect-install-custom.md) yolunu kullanarak zaten yüklediyseniz, Azure AD Connect **Kullanıcı oturum açma görevini Değiştir** ' i seçin ve ardından **İleri** ' yi seçin. Ardından oturum açma yöntemi olarak **geçişli kimlik doğrulaması** ' nı seçin. Başarılı bir şekilde tamamlandığında, bir geçişli kimlik doğrulama Aracısı, Azure AD Connect aynı sunucuya yüklenir ve bu özellik kiracınızda etkinleştirilir.
 
 ![Azure AD Connect: Kullanıcı oturumunu değiştirme](./media/how-to-connect-pta-quick-start/changeusersignin.png)
 
@@ -105,9 +105,9 @@ Doğrudan kimlik doğrulamayı doğru şekilde etkinleştirdiğinizi doğrulamak
 
 1. [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) kiracınızın genel yönetici kimlik bilgileriyle oturum açın.
 2. Sol bölmedeki **Azure Active Directory** seçin.
-3. **Azure AD Connect**seçin.
-4. **Geçişli kimlik doğrulaması** özelliğinin **etkin**olarak göründüğünü doğrulayın.
-5. **Doğrudan kimlik doğrulaması**' nı seçin. **Geçişli kimlik doğrulaması** bölmesi, kimlik doğrulama aracılarınızın yüklendiği sunucuları listeler.
+3. **Azure AD Connect** seçin.
+4. **Geçişli kimlik doğrulaması** özelliğinin **etkin** olarak göründüğünü doğrulayın.
+5. **Doğrudan kimlik doğrulaması** ' nı seçin. **Geçişli kimlik doğrulaması** bölmesi, kimlik doğrulama aracılarınızın yüklendiği sunucuları listeler.
 
 ![Azure Active Directory Yönetim Merkezi: Azure AD Connect bölmesi](./media/how-to-connect-pta-quick-start/pta7.png)
 
@@ -134,7 +134,7 @@ Başlamak için, kimlik doğrulama Aracısı yazılımını indirmek için aşa�
 
 1. Kimlik doğrulama aracısının en son sürümünü (sürüm 1.5.193.0 veya üzeri) indirmek için, kiracınızın genel yönetici kimlik bilgilerinizle [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
 2. Sol bölmedeki **Azure Active Directory** seçin.
-3. **Azure AD Connect**' yi seçin, **geçişli kimlik doğrulaması**' nı seçin ve ardından **aracıyı indir**' i seçin.
+3. **Azure AD Connect** ' yi seçin, **geçişli kimlik doğrulaması** ' nı seçin ve ardından **aracıyı indir** ' i seçin.
 4. **Koşulları kabul & indir** düğmesini seçin.
 
 ![Azure Active Directory Yönetim Merkezi: kimlik doğrulama aracısını Indir düğmesi](./media/how-to-connect-pta-quick-start/pta9.png)
@@ -166,7 +166,7 @@ Tek başına kimlik doğrulama aracısını dağıtmanın iki yolu vardır:
   ```
 
 >[!IMPORTANT]
->Bir sanal makinede bir kimlik doğrulama Aracısı yüklüyse, başka bir kimlik doğrulama Aracısı kurmak için sanal makineyi klonlamamanız gerekir. Bu yöntem **desteklenmiyor**.
+>Bir sanal makinede bir kimlik doğrulama Aracısı yüklüyse, başka bir kimlik doğrulama Aracısı kurmak için sanal makineyi klonlamamanız gerekir. Bu yöntem **desteklenmiyor** .
 
 ## <a name="step-5-configure-smart-lockout-capability"></a>5. Adım: akıllı kilitleme özelliğini yapılandırma
 

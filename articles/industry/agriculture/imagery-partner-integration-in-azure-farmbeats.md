@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82613294"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675946"
 ---
 # <a name="imagery-partner-integration"></a>Görüntüleme iş ortağı tümleştirmesi
 
@@ -43,9 +43,9 @@ API 'Ler Swagger teknik belgelerini içerir. API 'Ler ve karşılık gelen istek
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Farmtts Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD) kullanır. Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar. 
+Farmtts Microsoft Azure [Active Directory](../../app-service/overview-authentication-authorization.md) (Azure AD) kullanır. Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar. 
 
-Azure AD hakkında daha fazla bilgi için bkz. [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
+Azure AD hakkında daha fazla bilgi için bkz. [Azure Active Directory](../../app-service/overview-authentication-authorization.md).   
 
 Farmrets veri hub 'ı, aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır:
 
@@ -138,10 +138,10 @@ JSON, rastgele veri yapılarının basit bir metin gösterimini sağlayan, dilde
 
 1.  Karşıya yüklenecek olan Imagery türüne uygun olarak, aşağıdaki alanlar için yeni bir genişletilmiş tür oluşturun:
 
-    - **Sahne kaynağı**: örneğin, drone_partner_name
-    - **Sahne türü**: Örneğin, drone
-    - **Sahne dosyası türü**: Örneğin, Chlorophyll dizini
-    - **Sahne dosyası Içerik türü**: Örneğin, görüntü/TIFF
+    - **Sahne kaynağı** : örneğin, drone_partner_name
+    - **Sahne türü** : Örneğin, drone
+    - **Sahne dosyası türü** : Örneğin, Chlorophyll dizini
+    - **Sahne dosyası Içerik türü** : Örneğin, görüntü/TIFF
 
 2.  Azure Farmtts sistemi içinden grupların listesini almak için/gruplar API 'sini çağırın.
 3.  Müşteriyi, gruplar listesinden tek bir grup seçebilme olanağı sağlar.

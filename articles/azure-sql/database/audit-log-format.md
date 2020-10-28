@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
-ms.openlocfilehash: 49e885862a49bb3bbea718566ee5389e6b08e860
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4da14c1fbdaf71018e62b0f97e288a66edef5c8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444605"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677278"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL veritabanı denetim günlüğü biçimi
 
@@ -89,8 +89,8 @@ Denetim olayları, denetim yapılandırması sırasında tanımlanan Log Analyti
 | target_server_principal_name | target_server_principal_name_s | Eylemin hedef oturum açması. Geçerli değilse NULL | döndürmeli | string |
 | target_server_principal_sid | target_server_principal_sid_s | Hedef oturum açmanın SID 'SI. Geçerli değilse NULL | ikili | string |
 | transaction_id | transaction_id_d | Yalnızca SQL Server (2016 ile başlayarak)-Azure SQL veritabanı için 0 | bigint | int |
-| user_defined_event_id | user_defined_event_id_d | Sp_audit_write bir bağımsız değişken olarak Kullanıcı tanımlı olay KIMLIĞI geçirildi. Sistem olayları için NULL (varsayılan) ve Kullanıcı tanımlı olay için sıfır olmayan değer. Daha fazla bilgi için bkz. [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
-| user_defined_information | user_defined_information_s | Sp_audit_write için bir bağımsız değişken olarak geçirilen kullanıcı tanımlı bilgiler. Sistem olayları için NULL (varsayılan) ve Kullanıcı tanımlı olay için sıfır olmayan değer. Daha fazla bilgi için bkz. [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar (4000) | string |
+| user_defined_event_id | user_defined_event_id_d | Sp_audit_write bir bağımsız değişken olarak Kullanıcı tanımlı olay KIMLIĞI geçirildi. Sistem olayları için NULL (varsayılan) ve Kullanıcı tanımlı olay için sıfır olmayan değer. Daha fazla bilgi için bkz. [sp_audit_write (Transact-SQL)](/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
+| user_defined_information | user_defined_information_s | Sp_audit_write için bir bağımsız değişken olarak geçirilen kullanıcı tanımlı bilgiler. Sistem olayları için NULL (varsayılan) ve Kullanıcı tanımlı olay için sıfır olmayan değer. Daha fazla bilgi için bkz. [sp_audit_write (Transact-SQL)](/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar (4000) | string |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

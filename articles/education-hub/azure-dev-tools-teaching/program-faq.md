@@ -7,12 +7,12 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89567818"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675700"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Eğitim Merkezi hakkında sık sorulan sorular
 
@@ -46,7 +46,7 @@ Kalan kredilerinizi [Azure sponsorships portalında](https://www.microsoftazures
 
 ### <a name="what-is-microsoft-learn"></a>Microsoft Learn nedir?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) , Azure teknolojilerini kendi hızınızda öğrenmenizi sağlayan ücretsiz, çevrimiçi bir öğrenme platformudur. Öğrenme yolları, temel bilgiler ile başlayabilmeniz için modülleri birleştirerek gerçek zamanlı zorlukları ele alan gelişmiş yöntemlere geçmenize olanak tanır.
+[Microsoft Learn](/learn/) , Azure teknolojilerini kendi hızınızda öğrenmenizi sağlayan ücretsiz, çevrimiçi bir öğrenme platformudur. Öğrenme yolları, temel bilgiler ile başlayabilmeniz için modülleri birleştirerek gerçek zamanlı zorlukları ele alan gelişmiş yöntemlere geçmenize olanak tanır.
 
 ### <a name="can-azure-for-students-be-used-for-production-or-only-for-development"></a>Öğrenciler için Azure, üretim için mi yoksa yalnızca geliştirme için mi kullanılabilir?
 
@@ -97,7 +97,7 @@ Bu yazılımı [Eğitim Merkezi](https://ms.portal.azure.com/#blade/Microsoft_Az
 
 ### <a name="what-is-microsoft-learn"></a>Microsoft Learn nedir?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) , Azure teknolojilerini kendi hızınızda öğrenmenizi sağlayan ücretsiz, çevrimiçi bir öğrenme platformudur. Öğrenme yolları, temel bilgileri kullanmaya başlamanız için modülleri birleştirir ve sonra gerçek güçlükleri ele alan gelişmiş yöntemlere geçmenize olanak tanır.
+[Microsoft Learn](/learn/) , Azure teknolojilerini kendi hızınızda öğrenmenizi sağlayan ücretsiz, çevrimiçi bir öğrenme platformudur. Öğrenme yolları, temel bilgileri kullanmaya başlamanız için modülleri birleştirir ve sonra gerçek güçlükleri ele alan gelişmiş yöntemlere geçmenize olanak tanır.
 
 ## <a name="azure-academic-grant"></a>Azure akademik Izni
 
@@ -252,8 +252,8 @@ Hala oturum açmadıysanız, abonelik yöneticinizle görüşün. Abonelik yöne
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>Nasıl yaparım? abone kimliğimi bulun mi?
 
-- **Programa ilk kez kaydolmanız durumunda**: abone kimliği numaranız aldığınız abonelik hoş geldiniz e-postadır.
-- **Aboneliğinizi yenilediyseniz**: abone kimliğiniz, abonelik yöneticisinin aldığı yenileme e-postadır.
+- **Programa ilk kez kaydolmanız durumunda** : abone kimliği numaranız aldığınız abonelik hoş geldiniz e-postadır.
+- **Aboneliğinizi yenilediyseniz** : abone kimliğiniz, abonelik yöneticisinin aldığı yenileme e-postadır.
 
 Abone KIMLIĞINIZ aynı zamanda Visual Studio abonelik Portalı ' nda de bulunur. Oturum açtıktan sonra **Hesabım** sayfasında **Aboneliğimin** altına bakın.
 
@@ -282,7 +282,7 @@ Bu anımsatıcı e-postalarını almazsanız ve aboneliğinizin süreleri dolaca
 
 Alternatif olarak, [eğitim Için Azure geliştirme araçları-Yenile sayfasına](https://portal.azureforeducation.microsoft.com/)gidin ve yenileme işlemini tamamlayın.
 
-Aboneliğinizin sona erme tarihini denetlemek için [eğitim Için Azure geliştirme araçları portalı](https://azureforeducation.microsoft.com/account/Subscriptions)' na gidin ve **abonelikler**' e bakın.
+Aboneliğinizin sona erme tarihini denetlemek için [eğitim Için Azure geliştirme araçları portalı](https://azureforeducation.microsoft.com/account/Subscriptions)' na gidin ve **abonelikler** ' e bakın.
 
 ### <a name="what-if-i-need-more-help"></a>Daha fazla yardıma ihtiyacım varsa ne olur?
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: 9b34a2435486a905923e783153ccae97628193a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be966a651df0c896ac7e1973d7783bb7fb686be3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443759"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676497"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure hizmetlerinin sunucuya erişmesine izin vermeden bir Azure SQL veritabanını içeri veya dışarı aktarma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Bu makalede, *Azure hizmetlerinin* sunucuda *devre dışı* olarak AYARLANDıĞ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="create-the-azure-virtual-machine"></a>Azure sanal makinesini oluşturma
 
@@ -46,30 +46,30 @@ Aşağıdaki adımlarda, Uzak Masaüstü bağlantısı kullanarak sanal makineni
 
    ![Ekran görüntüsünde, Bağlan düğmesine sahip bir sanal makineye genel bakış sayfası gösterilir.](./media/database-import-export-azure-services-off/vm.png)  
 
-2. **Bağlan**'ı seçin.
+2. **Bağlan** ’ı seçin.
 
    Bir Uzak Masaüstü Protokolü dosya (. rdp dosyası) formu, sanal makinenin genel IP adresi ve bağlantı noktası numarasıyla birlikte görüntülenir.
 
    ![RDP formu](./media/database-import-export-azure-services-off/rdp.png)  
 
-3. **RDP Dosyasını İndir**’i seçin.
+3. **RDP Dosyasını İndir** ’i seçin.
 
    > [!NOTE]
    > Sanal makinenize bağlanmak için SSH de kullanabilirsiniz.
 
 4. **Sanal makine bağlantısı** formunu kapatın.
 5. VM'nize bağlanmak için indirilen RDP dosyasını açın.
-6. İstendiğinde, **Bağlan**' ı seçin. Mac bilgisayarlarda, Mac App Store’dan bu [Uzak Masaüstü İstemcisi](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12) gibi bir RDP istemcisi indirmeniz gerekir.
+6. İstendiğinde, **Bağlan** ' ı seçin. Mac bilgisayarlarda, Mac App Store’dan bu [Uzak Masaüstü İstemcisi](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12) gibi bir RDP istemcisi indirmeniz gerekir.
 
-7. Sanal makineyi oluştururken belirttiğiniz kullanıcı adını ve parolayı girip **Tamam**' ı seçin.
+7. Sanal makineyi oluştururken belirttiğiniz kullanıcı adını ve parolayı girip **Tamam** ' ı seçin.
 
 8. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bağlantıya devam etmek için **Evet** ' i veya **devam et** ' i seçin.
 
 ## <a name="install-sqlpackage"></a>SqlPackage 'i yükler
 
-[SqlPackage 'in en son sürümünü indirip yükleyin](https://docs.microsoft.com/sql/tools/sqlpackage-download).
+[SqlPackage 'in en son sürümünü indirip yükleyin](/sql/tools/sqlpackage-download).
 
-Daha fazla bilgi için bkz. [SqlPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage).
+Daha fazla bilgi için bkz. [SqlPackage.exe](/sql/tools/sqlpackage).
 
 ## <a name="create-a-firewall-rule-to-allow-the-vm-access-to-the-database"></a>Veritabanına VM erişimine izin vermek için bir güvenlik duvarı kuralı oluşturma
 
@@ -77,7 +77,7 @@ Sanal makinenin genel IP adresini sunucunun güvenlik duvarına ekleyin.
 
 Aşağıdaki adımlarda, sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur ve sanal makine bağlantısı etkinleştirilir.
 
-1. Sol taraftaki menüden **SQL veritabanları** ' nı seçin ve ardından **SQL veritabanları** sayfasında veritabanınızı seçin. Veritabanınızın genel bakış sayfası açılır ve tam sunucu adı (örneğin, **ServerName.Database.Windows.net**) görüntülenerek daha fazla yapılandırma seçeneği sunulur.
+1. Sol taraftaki menüden **SQL veritabanları** ' nı seçin ve ardından **SQL veritabanları** sayfasında veritabanınızı seçin. Veritabanınızın genel bakış sayfası açılır ve tam sunucu adı (örneğin, **ServerName.Database.Windows.net** ) görüntülenerek daha fazla yapılandırma seçeneği sunulur.
 
 2. Sunucunuza ve veritabanlarına bağlanırken kullanmak için bu tam sunucu adını kopyalayın.
 
@@ -89,15 +89,15 @@ Aşağıdaki adımlarda, sanal makinenizin genel IP adresi için sunucu düzeyin
 
 4. Sanal makinenizin genel IP adresini yeni bir sunucu düzeyi IP güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin. Sunucu düzeyinde bir IP güvenlik duvarı kuralı, tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir.
 
-5. **Kaydet**’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+5. **Kaydet** ’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
 6. **Güvenlik duvarı ayarları** sayfasını kapatın.
 
 ## <a name="export-a-database-using-sqlpackage"></a>SqlPackage kullanarak bir veritabanını dışarı aktarma
 
-[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) komut satırı yardımcı programını kullanarak BIR Azure SQL veritabanını dışarı aktarmak için bkz. [dışarı aktarma parametreleri ve özellikleri](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties). SqlPackage yardımcı programı, en son [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)sürümleriyle birlikte gelir veya [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)'in en son sürümünü indirebilirsiniz.
+[SqlPackage](/sql/tools/sqlpackage) komut satırı yardımcı programını kullanarak BIR Azure SQL veritabanını dışarı aktarmak için bkz. [dışarı aktarma parametreleri ve özellikleri](/sql/tools/sqlpackage#export-parameters-and-properties). SqlPackage yardımcı programı, en son [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları](/sql/ssdt/download-sql-server-data-tools-ssdt)sürümleriyle birlikte gelir veya [SqlPackage](/sql/tools/sqlpackage-download)'in en son sürümünü indirebilirsiniz.
 
-Çoğu üretim ortamında, ölçek ve performans için SqlPackage yardımcı programının kullanılmasını öneririz. BACPAC dosyalarını kullanarak geçiş hakkında bir SQL Server Müşteri Danışmanlık Ekibi blogu için bkz. [BACPAC Dosyalarını kullanarak SQL Server’dan Azure SQL Veritabanına Geçiş](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+Çoğu üretim ortamında, ölçek ve performans için SqlPackage yardımcı programının kullanılmasını öneririz. BACPAC dosyalarını kullanarak geçiş hakkında bir SQL Server Müşteri Danışmanlık Ekibi blogu için bkz. [BACPAC Dosyalarını kullanarak SQL Server’dan Azure SQL Veritabanına Geçiş](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files).
 
 Bu örnekte, Active Directory evrensel kimlik doğrulamasıyla SqlPackage.exe kullanarak bir veritabanını dışarı aktarma işlemi gösterilmektedir. Ortamınıza özgü değerlerle değiştirin.
 
@@ -107,9 +107,9 @@ SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.da
 
 ## <a name="import-a-database-using-sqlpackage"></a>SqlPackage kullanarak bir veritabanını içeri aktarma
 
-[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) komut satırı yardımcı programını kullanarak bir SQL Server veritabanını içeri aktarmak için, bkz. [içeri aktarma parametreleri ve özellikleri](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage en son [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)sahiptir. [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)'in en son sürümünü de indirebilirsiniz.
+[SqlPackage](/sql/tools/sqlpackage) komut satırı yardımcı programını kullanarak bir SQL Server veritabanını içeri aktarmak için, bkz. [içeri aktarma parametreleri ve özellikleri](/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage en son [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları](/sql/ssdt/download-sql-server-data-tools-ssdt)sahiptir. [SqlPackage](/sql/tools/sqlpackage-download)'in en son sürümünü de indirebilirsiniz.
 
-Ölçek ve performans için, Azure portal kullanmak yerine, çoğu üretim ortamında SqlPackage kullanılması önerilir. Dosya kullanarak geçiş hakkında bir SQL Server müşteri danışmanlık ekibi blogu için `BACPAC` , bkz. [bacpac dosyalarını kullanarak SQL Server Azure SQL veritabanı 'na geçirme](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+Ölçek ve performans için, Azure portal kullanmak yerine, çoğu üretim ortamında SqlPackage kullanılması önerilir. Dosya kullanarak geçiş hakkında bir SQL Server müşteri danışmanlık ekibi blogu için `BACPAC` , bkz. [bacpac dosyalarını kullanarak SQL Server Azure SQL veritabanı 'na geçirme](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files).
 
 Aşağıdaki SqlPackage komutu, **AdventureWorks2017** veritabanını yerel depolamadan BIR Azure SQL veritabanına aktarır. **Premium** hizmet katmanı ve **P6** hizmeti hedefi ile **myMigratedDatabase** adlı yeni bir veritabanı oluşturur. Bu değerleri ortamınıza uygun şekilde değiştirin.
 
@@ -141,11 +141,11 @@ En iyi performansı elde etmek için aşağıdaki stratejileri deneyebilirsiniz:
 
 ## <a name="store-the-imported-or-exported-bacpac-file"></a>İçeri aktarılmış veya aktarılmış olarak depolayın. BACPAC dosyası
 
-İçin. BACPAC dosyası [Azure Blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)'Larında veya [Azure dosyalarında](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)depolanabilir.
+İçin. BACPAC dosyası [Azure Blob](../../storage/blobs/storage-blobs-overview.md)'Larında veya [Azure dosyalarında](../../storage/files/storage-files-introduction.md)depolanabilir.
 
 En iyi performansı elde etmek için Azure dosyaları 'nı kullanın. SqlPackage, Azure dosyalarına doğrudan erişebilmeleri için dosya sistemiyle çalışır.
 
-Maliyeti azaltmak için, Azure Bloblarını kullanın ve bu, Premium bir Azure dosya paylaşımından maliyeti azaltır. Ancak, öğesini kopyalamanız gerekir [. ](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) İçeri veya dışarı aktarma işleminden önce blob ve yerel dosya sistemi arasında BACPAC dosyası. Sonuç olarak, işlem daha uzun sürer.
+Maliyeti azaltmak için, Azure Bloblarını kullanın ve bu, Premium bir Azure dosya paylaşımından maliyeti azaltır. Ancak, öğesini kopyalamanız gerekir [. ](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) İçeri veya dışarı aktarma işleminden önce blob ve yerel dosya sistemi arasında BACPAC dosyası. Sonuç olarak, işlem daha uzun sürer.
 
 Yüklemek veya indirmek için. BACPAC dosyaları, bkz. [AzCopy ve BLOB Storage ile veri aktarma](../../storage/common/storage-use-azcopy-blobs.md)ve [AzCopy ve dosya depolama ile veri aktarma](../../storage/common/storage-use-azcopy-files.md).
 
@@ -156,4 +156,4 @@ Ortamınıza bağlı olarak, [Azure depolama güvenlik duvarlarını ve sanal a�
 - İçeri aktarılan bir SQL veritabanına bağlanma ve sorgu yapma hakkında bilgi edinmek için bkz. [hızlı başlangıç: Azure SQL veritabanı: verileri bağlamak ve sorgulamak için SQL Server Management Studio kullanın](connect-query-ssms.md).
 - BACPAC dosyalarını kullanarak geçiş hakkında bir SQL Server Müşteri Danışmanlık Ekibi blogu için bkz. [BACPAC Dosyalarını kullanarak SQL Server’dan Azure SQL Veritabanına Geçiş](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407).
 - Performans önerileri de dahil olmak üzere tüm SQL Server veritabanı geçiş süreci hakkında bir tartışma için bkz. [Azure SQL veritabanı 'na SQL Server veritabanı geçişi](migrate-to-database-from-sql-server.md).
-- Depolama anahtarlarını ve paylaşılan erişim imzalarını güvenli bir şekilde yönetme ve paylaşma hakkında bilgi edinmek için bkz. [Azure Storage Güvenlik Kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
+- Depolama anahtarlarını ve paylaşılan erişim imzalarını güvenli bir şekilde yönetme ve paylaşma hakkında bilgi edinmek için bkz. [Azure Storage Güvenlik Kılavuzu](../../storage/blobs/security-recommendations.md).

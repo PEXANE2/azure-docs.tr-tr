@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: a3382f93990612b0ab34eb0848cbf3d6577c44ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a9a8f3fe7422468ff2c8886dff7415322cf70f0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087943"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676874"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>ServiceNow eşitleme sorunlarını el ile çözme
 
@@ -23,16 +23,16 @@ Bağlantıyı yeniden etkinleştirmek ve belirteci yenilemek için aşağıdaki 
 
 1. Üst arama başlığında çözümü arayın ve ilgili çözümleri seçin
 
-    ![Yeni bağlantı](media/itsmc-resync-servicenow/solution-search-8bit.png)
+    ![En üstteki arama başlığını ve ilgili çözümlerin nerede seçdiğinin gösterildiği ekran görüntüsü.](media/itsmc-resync-servicenow/solution-search-8bit.png)
 
 1. Çözüm ekranında, abonelik filtresindeki "Tümünü Seç" i seçin ve ardından "ServiceDesk" olarak filtreleyin
 
-    ![Yeni bağlantı](media/itsmc-resync-servicenow/solutions-list-8bit.png)
+    ![Tümünü Seç ' in nerede ve ServiceDesk tarafından filtreleneceğini gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/solutions-list-8bit.png)
 
 1. ITSM bağlantınızın çözümünü seçin.
 1. Sol başlıkta ıTSM bağlantısı ' nı seçin.
 
-    ![Yeni bağlantı](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
+    ![ITSM bağlantılarının nerede seçdiğinin gösterildiği ekran görüntüsü.](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
 
 1. Listedeki her bağlayıcıyı seçin. 
     1. Yapılandırmak için bağlayıcı adına tıklayın
@@ -42,7 +42,7 @@ Bağlantıyı yeniden etkinleştirmek ve belirteci yenilemek için aşağıdaki 
 
     1. Eşitle 'ye tıklayın
 
-       ![Yeni bağlantı](media/itsmc-resync-servicenow/resync-8bit2.png)
+       ![Eşitle düğmesini vurgulayan ekran görüntüsü.](media/itsmc-resync-servicenow/resync-8bit2.png)
 
     1. Kaydet 'e tıklayın
 
