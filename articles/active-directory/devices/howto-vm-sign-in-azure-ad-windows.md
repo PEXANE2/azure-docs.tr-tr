@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85bbdff2f7e67434a3e21aaf51af96c1e851eb0d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826668"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740190"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -81,12 +81,12 @@ Windows Server 2019 Datacenter veya Windows 10 1809 ve üzeri VM görüntüleri 
 
 Azure AD oturum açma ile Azure 'da bir Windows Server 2019 Datacenter VM oluşturmak için: 
 
-1. VM oluşturma erişimi olan bir hesapla [Azure Portal](https://portal.azure.com)oturum açın ve **+ kaynak oluştur**' u seçin.
+1. VM oluşturma erişimi olan bir hesapla [Azure Portal](https://portal.azure.com)oturum açın ve **+ kaynak oluştur** ' u seçin.
 1. Market arama çubuğunu aramak için **Windows Server** yazın.
    1. **Windows Server** ' a tıklayın ve yazılım planı seç açılan listesinden **Windows Server 2019 Datacenter** ' ı seçin.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur** 'a tıklayın.
 1. "Yönetim" sekmesinde, Azure Active Directory bölümü altındaki **AAD kimlik bilgileri (Önizleme) Ile** **Açık '** a oturum açma seçeneğini etkinleştirin.
-1. Kimlik bölümünün altında **sistem tarafından atanan yönetilen kimliğin** **Açık**olarak ayarlandığından emin olun. Bu eylem, Azure AD kimlik bilgileriyle oturum açma özelliğini etkinleştirdikten sonra otomatik olarak gerçekleşmelidir.
+1. Kimlik bölümünün altında **sistem tarafından atanan yönetilen kimliğin** **Açık** olarak ayarlandığından emin olun. Bu eylem, Azure AD kimlik bilgileriyle oturum açma özelliğini etkinleştirdikten sonra otomatik olarak gerçekleşmelidir.
 1. Sanal makine oluşturma deneyiminden geri dönün. Bu önizleme sırasında, VM için bir Yönetici Kullanıcı adı ve parola oluşturmanız gerekecektir.
 
 ![Azure AD kimlik bilgileriyle oturum açma VM oluşturma](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-login-with-azure-ad.png)
@@ -146,8 +146,8 @@ az vm extension set \
 
 VM 'yi oluşturduğunuza göre, VM 'de kimlerin oturum Açabili belirleyebilmek için Azure RBAC ilkesini yapılandırmanız gerekir. VM oturum açma yetkisini yetkilendirmek için iki Azure rolü kullanılır:
 
-- **Sanal Makine Yöneticisi oturum açma**: Bu role atanmış kullanıcılar yönetici ayrıcalıklarına sahip bir Azure sanal makinesinde oturum açabilir.
-- **Sanal makine Kullanıcı oturumu açma**: Bu role atanmış kullanıcılar, normal kullanıcı ayrıcalıklarına sahip bir Azure sanal makinesinde oturum açabilir.
+- **Sanal Makine Yöneticisi oturum açma** : Bu role atanmış kullanıcılar yönetici ayrıcalıklarına sahip bir Azure sanal makinesinde oturum açabilir.
+- **Sanal makine Kullanıcı oturumu açma** : Bu role atanmış kullanıcılar, normal kullanıcı ayrıcalıklarına sahip bir Azure sanal makinesinde oturum açabilir.
 
 > [!NOTE]
 > Bir kullanıcının VM 'de RDP üzerinden oturum açmasına izin vermek için, sanal makine Yöneticisi oturum açma veya sanal makine Kullanıcı oturum açma rolünü atamanız gerekir. Bir VM için atanan sahip veya katkıda bulunan rollerinin bulunduğu bir Azure kullanıcısının, sanal makinede RDP üzerinden oturum açma ayrıcalıkları otomatik olarak yoktur. Bu, sanal makineleri denetleyen kişi kümesi arasında, sanal makinelere erişebilen kişiler kümesiyle denetlenen ayırma sağlamaktır.
@@ -163,10 +163,10 @@ Azure AD özellikli Windows Server 2019 Datacenter VM 'leriniz için rol atamala
 
 1. Belirli bir sanal makineye genel bakış sayfasına gidin
 1. Menü seçeneklerinden **erişim denetimi (IAM)** seçeneğini belirleyin
-1. Rol ataması Ekle bölmesini açmak için **Ekle**, **rol ataması Ekle** ' yi seçin.
-1. **Rol** açılan listesinde, **sanal makine yöneticisi oturumu** veya **sanal makine Kullanıcı oturumu açma**gibi bir rol seçin.
+1. Rol ataması Ekle bölmesini açmak için **Ekle** , **rol ataması Ekle** ' yi seçin.
+1. **Rol** açılan listesinde, **sanal makine yöneticisi oturumu** veya **sanal makine Kullanıcı oturumu açma** gibi bir rol seçin.
 1. **Seç** alanında, bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik seçin. Listede güvenlik sorumlusunu görmüyorsanız **Seç** kutusuna giriş yaparak dizinde görünen ad, e-posta adresi ve nesne tanımlayıcısı arayabilirsiniz.
-1. Rolü atamak için **Kaydet**' i seçin.
+1. Rolü atamak için **Kaydet** ' i seçin.
 
 Birkaç dakika sonra, güvenlik sorumlusu seçili kapsamda role atanır.
 
@@ -214,7 +214,7 @@ Azure AD 'yi kullanarak Windows Server 2019 sanal makinenizde oturum açmak içi
 
 1. Azure AD oturum açma özelliği ile etkinleştirilen sanal makinenin genel bakış sayfasına gidin.
 1. **Bağlan** ' ı seçerek sanal makine bağlantısı dikey penceresini açın.
-1. **RDP Dosyasını İndir**’i seçin.
+1. **RDP Dosyasını İndir** ’i seçin.
 1. Uzak Masaüstü Bağlantısı istemcisini başlatmak için **Aç** ' ı seçin.
 1. Windows oturum açma iletişim kutusunu başlatmak için **Bağlan** ' ı seçin.
 1. Azure AD kimlik bilgilerinizi kullanarak oturum açın.

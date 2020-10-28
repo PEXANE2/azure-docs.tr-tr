@@ -7,13 +7,13 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.custom: devx-track-csharp
-ms.openlocfilehash: fc1154a3d4cefc84f223810a1972dd85673a6b3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 48b8737fc37a183405f42b958e38c328a2ce7cb8
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530905"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739582"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Özel ayırma ilkeleri kullanma
 
@@ -23,16 +23,16 @@ ms.locfileid: "90530905"
 
 Örneğin, bir cihazın sağlama sırasında kullandığı sertifikayı incelemek ve cihazı bir sertifika özelliğine dayalı bir IoT Hub 'ına atamak isteyebilirsiniz. Ya da cihazlarınıza yönelik bir veritabanında depolanan bilgilere sahip olabilirsiniz ve bir cihazın hangi IoT Hub 'ına atanması gerektiğini öğrenmek için veritabanını sorgulamak gerekir.
 
-Bu makalede, C# dilinde yazılmış bir Azure Işlevi kullanan özel bir ayırma ilkesi gösterilmektedir. *Contoso Toalar bölümünü* ve *contoso ısı pumps bölümünü*temsil eden iki yeni IoT Hub 'ı oluşturulur. Sağlanması istenen cihazların sağlanması için kabul edilebilmesi için aşağıdaki son eklerle birine sahip bir kayıt KIMLIĞI olmalıdır:
+Bu makalede, C# dilinde yazılmış bir Azure Işlevi kullanan özel bir ayırma ilkesi gösterilmektedir. *Contoso Toalar bölümünü* ve *contoso ısı pumps bölümünü* temsil eden iki yeni IoT Hub 'ı oluşturulur. Sağlanması istenen cihazların sağlanması için kabul edilebilmesi için aşağıdaki son eklerle birine sahip bir kayıt KIMLIĞI olmalıdır:
 
-* **-contoso-tstrsd-007**: contoso Toave bölüm
-* **-contoso-hpsd-088**: contoso ısı pumps bölüm
+* **-contoso-tstrsd-007** : contoso Toave bölüm
+* **-contoso-hpsd-088** : contoso ısı pumps bölüm
 
 Cihazlar kayıt KIMLIĞI üzerinde bu gerekli soneklerin birine göre sağlanacak. Bu cihazlar, [Azure IoT C SDK 'sına](https://github.com/Azure/azure-iot-sdk-c)dahil olan bir sağlama örneği kullanılarak benzetilecektir.
 
 Bu makalede aşağıdaki adımları gerçekleştirirsiniz:
 
-* İki contoso bölüm IoT Hub 'ı oluşturmak için Azure CLı 'yi kullanma (**contoso Toalar bölümü** ve **contoso ısı pumps bölümü**)
+* İki contoso bölüm IoT Hub 'ı oluşturmak için Azure CLı 'yi kullanma ( **contoso Toalar bölümü** ve **contoso ısı pumps bölümü** )
 * Özel ayırma ilkesi için bir Azure Işlevi kullanarak yeni bir grup kaydı oluşturma
 * İki cihaz benzetimleri için cihaz anahtarları oluşturun.
 * Azure IoT C SDK 'Sı için geliştirme ortamını ayarlama
@@ -52,7 +52,7 @@ Aşağıdaki Önkoşullar bir Windows geliştirme ortamı içindir. Linux veya m
 
 ## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>Sağlama hizmetini ve iki divisiıot hub 'ı oluşturma
 
-Bu bölümde, **contoso Toalar bölümünü** ve **contoso ısı pumps bölümünü**temsil eden bir sağlama hizmeti ve iki IoT hub 'ı oluşturmak için Azure Cloud Shell kullanırsınız.
+Bu bölümde, **contoso Toalar bölümünü** ve **contoso ısı pumps bölümünü** temsil eden bir sağlama hizmeti ve iki IoT hub 'ı oluşturmak için Azure Cloud Shell kullanırsınız.
 
 > [!TIP]
 > Bu makalede kullanılan komutlar, Batı ABD konumundaki sağlama hizmetini ve diğer kaynakları oluşturur. Kaynaklarınızın, cihaz sağlama hizmeti 'ni destekleyen en yakın bölgede oluşturulmasını öneririz. `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` komutunu çalıştırarak veya [Azure Durumu](https://azure.microsoft.com/status/) sayfasına gidip "Cihaz Sağlama Hizmeti" için arama yaparak kullanılabilir konumların listesini görüntüleyebilirsiniz. Komutlarda, konumlar tek bir sözcük veya çok sözcüklü biçimde belirtilebilir; Örneğin: westus, Batı ABD, Batı ABD, vb. Değer büyük/küçük harfe duyarlı değildir. Konumu belirtirken birden çok sözcük biçimini kullanırsanız, değeri çift tırnak içine alın; örneğin, `-- location "West US"`.
@@ -66,9 +66,9 @@ Bu bölümde, **contoso Toalar bölümünü** ve **contoso ısı pumps bölümü
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. [Az IoT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) komutuyla bir cihaz sağlama hizmeti oluşturmak için Azure Cloud Shell kullanın. Sağlama hizmeti *contoso-US-Resource-Group*' a eklenecektir.
+2. [Az IoT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) komutuyla bir cihaz sağlama hizmeti oluşturmak için Azure Cloud Shell kullanın. Sağlama hizmeti *contoso-US-Resource-Group* ' a eklenecektir.
 
-    Aşağıdaki örnek, *westus* konumunda *contoso-sağlama-Service-1098* adlı bir sağlama hizmeti oluşturur. Benzersiz bir hizmet adı kullanmanız gerekir. Hizmet adında **1098**yerine kendi son ekini oluşturun.
+    Aşağıdaki örnek, *westus* konumunda *contoso-sağlama-Service-1098* adlı bir sağlama hizmeti oluşturur. Benzersiz bir hizmet adı kullanmanız gerekir. Hizmet adında **1098** yerine kendi son ekini oluşturun.
 
     ```azurecli-interactive 
     az iot dps create --name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --location westus
@@ -76,9 +76,9 @@ Bu bölümde, **contoso Toalar bölümünü** ve **contoso ısı pumps bölümü
 
     Bu komutun tamamlanması birkaç dakika sürebilir.
 
-3. [Az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutuyla **contoso Toave bölüm** IoT hub 'ını oluşturmak için Azure Cloud Shell kullanın. IoT Hub 'ı *contoso-US-Resource-Group*' a eklenecektir.
+3. [Az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutuyla **contoso Toave bölüm** IoT hub 'ını oluşturmak için Azure Cloud Shell kullanın. IoT Hub 'ı *contoso-US-Resource-Group* ' a eklenecektir.
 
-    Aşağıdaki örnek, *westus* konumunda *contoso-TOA,-hub-1098* adlı bir IoT Hub 'ı oluşturur. Benzersiz bir hub adı kullanmanız gerekir. Merkez adında **1098**yerine kendi son ekini oluşturun. Özel ayırma ilkesi için örnek kod `-toasters-` hub adında olmalıdır.
+    Aşağıdaki örnek, *westus* konumunda *contoso-TOA,-hub-1098* adlı bir IoT Hub 'ı oluşturur. Benzersiz bir hub adı kullanmanız gerekir. Merkez adında **1098** yerine kendi son ekini oluşturun. Özel ayırma ilkesi için örnek kod `-toasters-` hub adında olmalıdır.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -86,9 +86,9 @@ Bu bölümde, **contoso Toalar bölümünü** ve **contoso ısı pumps bölümü
 
     Bu komutun tamamlanması birkaç dakika sürebilir.
 
-4. [Az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutuyla **contoso ısı pumps bölüm** IoT hub 'ını oluşturmak için Azure Cloud Shell kullanın. Bu IoT Hub 'ı, *contoso-US-Resource-Group*' a da eklenecektir.
+4. [Az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutuyla **contoso ısı pumps bölüm** IoT hub 'ını oluşturmak için Azure Cloud Shell kullanın. Bu IoT Hub 'ı, *contoso-US-Resource-Group* ' a da eklenecektir.
 
-    Aşağıdaki örnek, *westus* konumunda *contoso-heatpumps-hub-1098* adlı bir IoT Hub 'ı oluşturur. Benzersiz bir hub adı kullanmanız gerekir. Merkez adında **1098**yerine kendi son ekini oluşturun. Özel ayırma ilkesi için örnek kod `-heatpumps-` hub adında olmalıdır.
+    Aşağıdaki örnek, *westus* konumunda *contoso-heatpumps-hub-1098* adlı bir IoT Hub 'ı oluşturur. Benzersiz bir hub adı kullanmanız gerekir. Merkez adında **1098** yerine kendi son ekini oluşturun. Özel ayırma ilkesi için örnek kod `-heatpumps-` hub adında olmalıdır.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -98,44 +98,44 @@ Bu bölümde, **contoso Toalar bölümünü** ve **contoso ısı pumps bölümü
 
 ## <a name="create-the-custom-allocation-function"></a>Özel ayırma işlevini oluşturma
 
-Bu bölümde, özel ayırma ilkenizi uygulayan bir Azure işlevi oluşturacaksınız. Bu işlev, kayıt KIMLIĞI **-contoso-tstrsd-007** veya **-contoso-hpsd-088**dizesini içerip içermediğini temel alarak bir cihazın ne kadar kolay bir şekilde kaydedilmesi gerektiğini belirler. Ayrıca, cihazın bir Toaster veya ısı göndericisi olup olmadığına bağlı olarak cihaz ikizi başlangıç durumunu da ayarlar.
+Bu bölümde, özel ayırma ilkenizi uygulayan bir Azure işlevi oluşturacaksınız. Bu işlev, kayıt KIMLIĞI **-contoso-tstrsd-007** veya **-contoso-hpsd-088** dizesini içerip içermediğini temel alarak bir cihazın ne kadar kolay bir şekilde kaydedilmesi gerektiğini belirler. Ayrıca, cihazın bir Toaster veya ısı göndericisi olup olmadığına bağlı olarak cihaz ikizi başlangıç durumunu da ayarlar.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Giriş sayfanızda **+ kaynak oluştur**' u seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Giriş sayfanızda **+ kaynak oluştur** ' u seçin.
 
-2. Market aramasını *Ara* kutusuna "işlev uygulaması" yazın. Aşağı açılan listeden **işlev uygulaması**' yi seçin ve ardından **Oluştur**' u seçin.
+2. Market aramasını *Ara* kutusuna "işlev uygulaması" yazın. Aşağı açılan listeden **işlev uygulaması** ' yi seçin ve ardından **Oluştur** ' u seçin.
 
-3. **İşlev uygulaması** Oluştur sayfasında, **temel bilgiler** sekmesinde, yeni işlev uygulamanız için aşağıdaki ayarları girin ve **gözden geçir + oluştur**' u seçin:
+3. **İşlev uygulaması** Oluştur sayfasında, **temel bilgiler** sekmesinde, yeni işlev uygulamanız için aşağıdaki ayarları girin ve **gözden geçir + oluştur** ' u seçin:
 
-    **Kaynak grubu**: Bu makalede oluşturulan tüm kaynakların birlikte tutulması için **contoso-US-Resource-Group** ' u seçin.
+    **Kaynak grubu** : Bu makalede oluşturulan tüm kaynakların birlikte tutulması için **contoso-US-Resource-Group** ' u seçin.
 
-    **İşlev uygulaması adı**: benzersiz bir işlev uygulama adı girin. Bu örnek **contoso-Function-App-1098**' i kullanır.
+    **İşlev uygulaması adı** : benzersiz bir işlev uygulama adı girin. Bu örnek **contoso-Function-App-1098** ' i kullanır.
 
-    **Yayımla**: **kodun** seçildiğini doğrulayın.
+    **Yayımla** : **kodun** seçildiğini doğrulayın.
 
-    **Çalışma zamanı yığını**: açılan listeden **.NET Core** ' u seçin.
+    **Çalışma zamanı yığını** : açılan listeden **.NET Core** ' u seçin.
 
-    **Bölge**: kaynak grubağınız ile aynı bölgeyi seçin. Bu örnek **Batı ABD**kullanır.
+    **Bölge** : kaynak grubağınız ile aynı bölgeyi seçin. Bu örnek **Batı ABD** kullanır.
 
     > [!NOTE]
-    > Varsayılan olarak, Application Insights etkindir. Bu makale için Application Insights gerekli değildir, ancak özel ayırma ile karşılaştığınız sorunları anlamanıza ve araştırmanıza yardımcı olabilir. İsterseniz, **izleme** sekmesini seçip **Etkinleştir Application Insights**için **Hayır** ' ı seçerek Application Insights devre dışı bırakabilirsiniz.
+    > Varsayılan olarak, Application Insights etkindir. Bu makale için Application Insights gerekli değildir, ancak özel ayırma ile karşılaştığınız sorunları anlamanıza ve araştırmanıza yardımcı olabilir. İsterseniz, **izleme** sekmesini seçip **Etkinleştir Application Insights** için **Hayır** ' ı seçerek Application Insights devre dışı bırakabilirsiniz.
 
     ![Özel ayırma işlevini barındırmak için Azure İşlev Uygulaması oluşturma](./media/how-to-use-custom-allocation-policies/create-function-app.png)
 
-4. İşlev uygulamasını oluşturmak için **Özet** sayfasında **Oluştur** ' u seçin. Dağıtım birkaç dakika sürebilir. Tamamlandığında **Kaynağa Git**' i seçin.
+4. İşlev uygulamasını oluşturmak için **Özet** sayfasında **Oluştur** ' u seçin. Dağıtım birkaç dakika sürebilir. Tamamlandığında **Kaynağa Git** ' i seçin.
 
 5. İşlev uygulamasına **genel bakış** sayfasının sol bölmesinde, **+** Yeni bir Işlev eklemek için **işlevler** ' in ileri ' yi seçin.
 
     ![İşlev Uygulaması bir işlev ekleyin](./media/how-to-use-custom-allocation-policies/create-function.png)
 
-6. **.Net Için Azure işlevleri-Başlarken** sayfasında, **bir dağıtım ortamı Seç** adımı için **Portal içi** kutucuğunu seçin ve ardından **devam**' ı seçin.
+6. **.Net Için Azure işlevleri-Başlarken** sayfasında, **bir dağıtım ortamı Seç** adımı için **Portal içi** kutucuğunu seçin ve ardından **devam** ' ı seçin.
 
     ![Portal geliştirme ortamını seçin](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
 
-7. Bir sonraki sayfada, **Işlev oluşturma** adımı Için **Web kancası + API** kutucuğunu seçin ve ardından **Oluştur**' u seçin. **HttpTrigger1** adlı bir işlev oluşturulur ve Portal **Run. CSX** kod dosyasının içeriğini görüntüler.
+7. Bir sonraki sayfada, **Işlev oluşturma** adımı Için **Web kancası + API** kutucuğunu seçin ve ardından **Oluştur** ' u seçin. **HttpTrigger1** adlı bir işlev oluşturulur ve Portal **Run. CSX** kod dosyasının içeriğini görüntüler.
 
 8. Gerekli NuGet paketlerine başvur. İlk cihaz ikizi oluşturmak için, özel ayırma işlevi barındırma ortamına yüklenmesi gereken iki NuGet paketinde tanımlanan sınıfları kullanır. Azure Işlevleri ile, NuGet paketlerine bir *function. Host* dosyası kullanılarak başvurulur. Bu adımda, bir *işlev. ana bilgisayar* dosyasını kaydedip karşıya yüklersiniz.
 
-    1. Aşağıdaki satırları en sevdiğiniz düzenleyiciye kopyalayın ve dosyayı bilgisayarınıza *function. Host*olarak kaydedin.
+    1. Aşağıdaki satırları en sevdiğiniz düzenleyiciye kopyalayın ve dosyayı bilgisayarınıza *function. Host* olarak kaydedin.
 
         ```xml
         <Project Sdk="Microsoft.NET.Sdk">  
@@ -153,11 +153,11 @@ Bu bölümde, özel ayırma ilkenizi uygulayan bir Azure işlevi oluşturacaksı
 
         ![Görünüm dosyalarını aç](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
 
-    3. **Karşıya yükle**' yi seçin, **function. proj** dosyasına gidin ve dosyayı karşıya yüklemek için **Aç** ' ı seçin.
+    3. **Karşıya yükle** ' yi seçin, **function. proj** dosyasına gidin ve dosyayı karşıya yüklemek için **Aç** ' ı seçin.
 
         ![Karşıya dosya yükle ' yi seçin](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
 
-9. **HttpTrigger1** işlevi için kodu aşağıdaki kodla değiştirin ve **Kaydet**' i seçin:
+9. **HttpTrigger1** işlevi için kodu aşağıdaki kodla değiştirin ve **Kaydet** ' i seçin:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -304,39 +304,39 @@ Bu bölümde, özel ayırma ilkesini kullanan yeni bir kayıt grubu oluşturacak
 
 2. Sol bölmedeki kayıtları **Yönet** ' i seçin ve ardından sayfanın en üstündeki **kayıt grubu Ekle** düğmesini seçin.
 
-3. **Kayıt grubu Ekle**sayfasında, aşağıdaki bilgileri girin ve **Kaydet** düğmesini seçin.
+3. **Kayıt grubu Ekle** sayfasında, aşağıdaki bilgileri girin ve **Kaydet** düğmesini seçin.
 
-    **Grup adı**: **contoso-özel-ayrılan cihazları**girin.
+    **Grup adı** : **contoso-özel-ayrılan cihazları** girin.
 
-    **Kanıtlama türü**: **simetrik anahtar**seçin.
+    **Kanıtlama türü** : **simetrik anahtar** seçin.
 
-    **Anahtarları otomatik oluştur**: Bu onay kutusu zaten denetlenmelidir.
+    **Anahtarları otomatik oluştur** : Bu onay kutusu zaten denetlenmelidir.
 
-    **Cihazları hub 'lara nasıl atamak Istediğinizi seçin**: özel ' i seçin **(Azure işlevi kullanın)**.
+    **Cihazları hub 'lara nasıl atamak Istediğinizi seçin** : özel ' i seçin **(Azure işlevi kullanın)** .
 
     ![Simetrik anahtar kanıtlama için özel ayırma kayıt grubu ekleme](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. Yeni bir IoT Hub 'ınızı bağlamak için **kayıt grubu Ekle**' ye **Yeni bir IoT Hub 'ı bağla** ' yı seçin.
+4. Yeni bir IoT Hub 'ınızı bağlamak için **kayıt grubu Ekle** ' ye **Yeni bir IoT Hub 'ı bağla** ' yı seçin.
 
     Bu adımı, her iki sizin de IoT Hub 'larınız için yürütün.
 
-    **Abonelik**: birden fazla aboneliğiniz varsa, daha fazla IoT Hub 'ını oluşturduğunuz aboneliği seçin.
+    **Abonelik** : birden fazla aboneliğiniz varsa, daha fazla IoT Hub 'ını oluşturduğunuz aboneliği seçin.
 
-    **IoT Hub**: oluşturduğunuz bir veya daha fazla hub 'dan birini seçin.
+    **IoT Hub** : oluşturduğunuz bir veya daha fazla hub 'dan birini seçin.
 
-    **Erişim ilkesi**: **ıothubowner**öğesini seçin.
+    **Erişim ilkesi** : **ıothubowner** öğesini seçin.
 
     ![Kaynak IoT Hub 'larını sağlama hizmeti ile bağlama](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
 
-5. **Kayıt grubu Ekle**sayfasında, her Iki bir IoT Hub 'ı bağlantısı kurulduktan sonra, bunları aşağıda gösterildiği gibi kayıt grubu için IoT Hub grubu olarak seçmeniz gerekir:
+5. **Kayıt grubu Ekle** sayfasında, her Iki bir IoT Hub 'ı bağlantısı kurulduktan sonra, bunları aşağıda gösterildiği gibi kayıt grubu için IoT Hub grubu olarak seçmeniz gerekir:
 
     ![Kayıt için DivisionaL hub grubunu oluşturma](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
 
-6. **Kayıt grubu Ekle**sayfasında, **Azure işlevi seçin** bölümüne gidin, önceki bölümde oluşturduğunuz işlev uygulamasını seçin. Ardından, oluşturduğunuz işlevi seçin ve kayıt grubunu kaydetmek için Kaydet ' i seçin.
+6. **Kayıt grubu Ekle** sayfasında, **Azure işlevi seçin** bölümüne gidin, önceki bölümde oluşturduğunuz işlev uygulamasını seçin. Ardından, oluşturduğunuz işlevi seçin ve kayıt grubunu kaydetmek için Kaydet ' i seçin.
 
     ![İşlevi seçin ve kayıt grubunu kaydedin](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
 
-7. Kayıt kaydedildikten sonra yeniden açın ve **birincil anahtarı**bir yere getirin. Anahtarların oluşturulması için önce kaydı kaydetmelisiniz. Bu anahtar, daha sonra sanal cihazlar için benzersiz cihaz anahtarları oluşturmak üzere kullanılacaktır.
+7. Kayıt kaydedildikten sonra yeniden açın ve **birincil anahtarı** bir yere getirin. Anahtarların oluşturulması için önce kaydı kaydetmelisiniz. Bu anahtar, daha sonra sanal cihazlar için benzersiz cihaz anahtarları oluşturmak üzere kullanılacaktır.
 
 ## <a name="derive-unique-device-keys"></a>Benzersiz cihaz anahtarları türet
 
@@ -471,7 +471,7 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bi
     azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
-3. Visual Studio'nun *Çözüm Gezgini* penceresinde **Sağlama\_Örnekleri** klasörüne gidin. **prov\_dev\_client\_sample** adlı örnek projeyi genişletin. **Kaynak Dosyalar**'ı genişletin ve **prov\_dev\_client\_sample.c** dosyasını açın.
+3. Visual Studio'nun *Çözüm Gezgini* penceresinde **Sağlama\_Örnekleri** klasörüne gidin. **prov\_dev\_client\_sample** adlı örnek projeyi genişletin. **Kaynak Dosyalar** 'ı genişletin ve **prov\_dev\_client\_sample.c** dosyasını açın.
 
 4. `id_scope` sabitini bulun ve değeri daha önce kopyalamış olduğunuz **Kimlik Kapsamı** değerinizle değiştirin. 
 
@@ -488,7 +488,7 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bi
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. **prov\_dev\_client\_sample** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin.
+6. **prov\_dev\_client\_sample** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla** ’yı seçin.
 
 ### <a name="simulate-the-contoso-toaster-device"></a>Contoso Toaster cihazının benzetimini yapma
 
@@ -508,7 +508,7 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bi
 
     Dosyayı kaydedin.
 
-2. Çözümü çalıştırmak için Visual Studio menüsünde Hata **ayıklama**  >  **olmadan Başlat** ' ı seçin. Projeyi yeniden oluşturmak için istemde, çalıştırmadan önce projeyi yeniden derlemek için **Evet**' i seçin.
+2. Çözümü çalıştırmak için Visual Studio menüsünde Hata **ayıklama**  >  **olmadan Başlat** ' ı seçin. Projeyi yeniden oluşturmak için istemde, çalıştırmadan önce projeyi yeniden derlemek için **Evet** ' i seçin.
 
     Aşağıdaki çıktı, sanal dağıtım ilkesi tarafından TOAO IoT Hub 'ına atanacak olan benzetim hizmeti örneğine başarıyla önyükleme ve bu cihaza bağlanma sağlayan bir örnektir.
 
@@ -572,7 +572,7 @@ Aşağıdaki tabloda, beklenen senaryolar ve alabileceği sonuç hata kodları g
 
 Bu makalede oluşturulan kaynaklarla çalışmaya devam etmeyi planlıyorsanız, bunları bırakabilirsiniz. Kaynakları kullanmaya devam etmeyi planlamıyorsanız, gereksiz ücretlerden kaçınmak için bu makalede oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
 
-Buradaki adımlarda, bu makaledeki tüm kaynakları **contoso-US-Resource-Group**adlı aynı kaynak grubunda belirtildiği şekilde oluşturduğunuz varsayılır.
+Buradaki adımlarda, bu makaledeki tüm kaynakları **contoso-US-Resource-Group** adlı aynı kaynak grubunda belirtildiği şekilde oluşturduğunuz varsayılır.
 
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. IoT Hub'ı tutmak istediğiniz kaynakların bulunduğu mevcut bir kaynak grubunda oluşturduysanız kaynak grubunu silmek yerine IoT Hub kaynağını silin.
@@ -580,13 +580,13 @@ Buradaki adımlarda, bu makaledeki tüm kaynakları **contoso-US-Resource-Group*
 
 Kaynak grubunu ada göre silmek için:
 
-1. [Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
+1. [Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları** ’nı seçin.
 
-2. **Ada göre filtrele...** metin kutusuna kaynaklarınızı içeren kaynak grubunun adını yazın, **contoso-US-Resource-Group**. 
+2. **Ada göre filtrele...** metin kutusuna kaynaklarınızı içeren kaynak grubunun adını yazın, **contoso-US-Resource-Group** . 
 
-3. Sonuç listesinde kaynak grubunuzun sağında **.** .. ' ı seçin ve **kaynak grubunu silin**.
+3. Sonuç listesinde kaynak grubunuzun sağında **.** .. ' ı seçin ve **kaynak grubunu silin** .
 
-4. Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yeniden yazın ve ardından **Sil**' i seçin. Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
+4. Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yeniden yazın ve ardından **Sil** ' i seçin. Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

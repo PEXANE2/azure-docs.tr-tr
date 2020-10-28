@@ -3,13 +3,13 @@ title: Öğretici-çok adımlı ACR görevi
 description: Bu öğreticide, bir git deposuna kaynak kodu kaydederken, bulutta kapsayıcı görüntülerini derlemek, çalıştırmak ve göndermek üzere bir Azure Container Registry görevinin otomatik olarak tetiklenmesi hakkında bilgi edineceksiniz.
 ms.topic: tutorial
 ms.date: 05/09/2019
-ms.custom: seodec18, mvc
-ms.openlocfilehash: ff32b3095638af6b2b246b99a5dc9219e0020782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 6ba3b276c68885a0811ee445d965c486f158d193
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78402309"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739603"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Öğretici: kaynak kodu kaydederken bulutta çok adımlı bir kapsayıcı iş akışını çalıştırın
 
@@ -316,7 +316,7 @@ Bu çok adımlı görev şunları yapar:
 
 ### <a name="task-command"></a>Görev komutu
 
-Daha önce tanımlanan kabuk ortam değişkenlerini kullanarak, aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek görevi oluşturun. Kayıt defterinizin adını *mycontainerregistrydate*için yerine koyun.
+Daha önce tanımlanan kabuk ortam değişkenlerini kullanarak, aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek görevi oluşturun. Kayıt defterinizin adını *mycontainerregistrydate* için yerine koyun.
 
 ```azurecli-interactive
 az acr task create \

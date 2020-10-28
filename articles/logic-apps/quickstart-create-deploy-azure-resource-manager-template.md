@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, subject-armqs
+ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 06/30/2020
-ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 689582d73e29cb60cc2ee5294b568b5db2f73244
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87078134"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739338"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak mantıksal uygulama iş akışı oluşturma ve dağıtma
 
@@ -78,7 +78,7 @@ Hızlı başlangıç şablonunu dağıtmak için kullanmak istediğiniz seçene�
 
    ![Hızlı başlangıç şablonu için bilgi sağlama](./media/quickstart-create-deploy-azure-resource-manager-template/create-logic-app-template-portal.png)
 
-1. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin.
+1. İşiniz bittiğinde, **gözden geçir + oluştur** ' u seçin.
 
 1. [Dağıtılan kaynakları İnceleme](#review-deployed-resources)bölümündeki adımlarla devam edin.
 
@@ -135,7 +135,7 @@ Daha fazla bilgi için şu konulara bakın:
    | `resourceGroupName` | Oluşturulacak Azure Kaynak grubunun adı. Bu örnekte, kullanılır `Check-Azure-Status-RG` . |
    |||
 
-   Örnek:
+   Örneğin:
 
    ```http
    PUT https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourcegroups/Check-Azure-Status-RG?api-version=2019-10-01
@@ -159,7 +159,7 @@ Daha fazla bilgi için şu konulara bakın:
    | `deploymentName` | Dağıtımınız için kullanılacak ad. Bu örnekte, kullanılır `Check-Azure-Status-LA` . |
    |||
 
-   Örnek:
+   Örneğin:
 
    ```http
    PUT https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourcegroups/Check-Azure-Status-RG/providers/Microsoft.Resources/deployments/Check-Azure-Status-LA?api-version=2019-10-01
@@ -194,7 +194,7 @@ Daha fazla bilgi için şu konulara bakın:
    | `mode` | <*dağıtım modu*> | Artımlı bir güncelleştirme çalıştırın veya güncelleştirmeyi tamamen yapın. Bu örnek `Incremental` , varsayılan değer olan ' ı kullanır. Daha fazla bilgi için bkz. [Azure Resource Manager Dağıtım modları](../azure-resource-manager/templates/deployment-modes.md). |
    |||
 
-   Örnek:
+   Örneğin:
 
    ```json
    {
@@ -234,7 +234,7 @@ Mantıksal uygulamayı görüntülemek için Azure portal kullanabilir, Azure CL
 
 1. Mantıksal uygulama Tasarımcısı açıldığında, hızlı başlangıç şablonu tarafından oluşturulan mantıksal uygulamayı gözden geçirin.
 
-1. Mantıksal uygulamayı test etmek için tasarımcı araç çubuğunda **Çalıştır**' ı seçin.
+1. Mantıksal uygulamayı test etmek için tasarımcı araç çubuğunda **Çalıştır** ' ı seçin.
 
 ### <a name="cli"></a>[CLI](#tab/azure-cli)
 
@@ -270,7 +270,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 | `workflowName` | Dağıttığınız mantıksal uygulamanın adı. Bu örnekte, kullanılır `Check-Azure-Status-LA` . |
 |||
 
-Örnek:
+Örneğin:
 
 ```http
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG/providers/Microsoft.Logic/workflows/Check-Azure-Status-LA?api-version=2016-06-01
@@ -288,7 +288,7 @@ Sonraki hızlı başlangıçlarla ve öğreticilerle çalışmaya devam etmeyi p
 
 1. Azure portal, bu örnekte yer alan silmek istediğiniz kaynak grubunu bulun ve seçin `Check-Azure-Status-RG` .
 
-1. Kaynak grubu menüsünde, henüz seçili değilse **genel bakış** ' ı seçin. Genel Bakış sayfasında, **kaynak grubunu sil**' i seçin.
+1. Kaynak grubu menüsünde, henüz seçili değilse **genel bakış** ' ı seçin. Genel Bakış sayfasında, **kaynak grubunu sil** ' i seçin.
 
 1. Onaylamak için kaynak grubunun adını girin.
 
@@ -327,7 +327,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourcegroup
 | `resourceGroupName` | Hızlı başlangıç şablonunu dağıttığınız Azure Kaynak grubunun adı. Bu örnekte, kullanılır `Check-Azure-Status-RG` . |
 |||
 
-Örnek:
+Örneğin:
 
 ```http
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG?api-version=2019-10-01

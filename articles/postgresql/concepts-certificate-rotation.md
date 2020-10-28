@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 65357642d940453b5bbfabf2fbb726ca909ce6f5
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0eec1538814b93c024fe6a5aa34ee73c4c09184c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173124"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740430"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı 'nın tek sunucu değişikliği için kök CA 'daki değişiklikleri anlama
 
@@ -52,11 +52,11 @@ Sertifikaların beklenmedik şekilde iptal edildiği veya bir sertifikayı günc
 *   Hem **Baltimorecyıbertrustroot** hem de **DigiCertGlobalRootG2** sertifikaları dahil olmak üzere bir birleştirilmiş CA sertifika deposu oluşturun.
     *   DefaultJavaSSLFactory kullanan Java (PostgreSQL JDBC) kullanıcıları için şunu çalıştırın:
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias PostgreSQLServerCACert  -file D:\BaltimoreCyberTrustRoot.crt.pem  -keystore truststore -storepass password -noprompt
           ```
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias PostgreSQLServerCACert2  -file D:\DigiCertGlobalRootG2.crt.pem -keystore truststore -storepass password  -noprompt
           ```
 
@@ -133,7 +133,7 @@ Bu güncelleştirme bir istemci tarafı değişikliği olduğundan, istemci Ço�
 Sunucuya bağlanmak için SSL bağlantısı kullanıp kullandığınızı doğrulamak için [SSL doğrulaması](concepts-ssl-connection-security.md#applications-that-require-certificate-verification-for-tls-connectivity)' na başvurun.
 
 ### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. sertifika dosyasında DigiCertGlobalRootG2 zaten varsa gerekli bir eylem var mı?
-Hayır. Sertifika dosyanızda zaten **DigiCertGlobalRootG2**varsa herhangi bir eylem gerekmez.
+Hayır. Sertifika dosyanızda zaten **DigiCertGlobalRootG2** varsa herhangi bir eylem gerekmez.
 
 ### <a name="14-what-is-you-are-using-docker-image-of-pgbouncer-sidecar-provided-by-microsoft"></a>14. Microsoft tarafından sunulan pgbouncer sepet 'ın Docker görüntüsünü kullanıyorsunuz?
 Hem [**Baltimore**](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) hem de [**DigiCert**](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) 'yi destekleyen yeni bir Docker görüntüsü [burada aşağıda verilmiştir](https://hub.docker.com/_/microsoft-azure-oss-db-tools-pgbouncer-sidecar) (en son etiket). 15 Şubat 2021 ' den itibaren bağlantının kesintiye uğramasını önlemek için bu yeni görüntüyü çekebilirsiniz. 

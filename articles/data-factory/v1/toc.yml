@@ -200,7 +200,7 @@
     - name: Örnek Olay İncelemeleri
       href: data-factory-customer-case-studies.md
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+      href: /answers/topics/azure-data-factory.html
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: Fiyatlandırma hesaplayıcı

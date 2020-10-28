@@ -13,6 +13,7 @@
     - name: Traffic Manager profili oluşturma - Azure CLI
       href: quickstart-create-traffic-manager-profile-cli.md
     - name: Traffic Manager profili oluşturma - ARM Şablonu
+      displayName: Resource Manager
       href: quickstart-create-traffic-manager-profile-template.md
   expanded: true
 - name: Öğreticiler

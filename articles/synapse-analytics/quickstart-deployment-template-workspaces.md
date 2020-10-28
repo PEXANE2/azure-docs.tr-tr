@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Azure SYNAPSE çalışma alanı Azure Resource Manager şablonu oluşturma'
-description: Azure Resource Manager şablonu kullanarak bir Synapse çalışma alanı oluşturmayı öğrenin.
+description: Azure Resource Manager şablonu kullanarak bir Synapse çalışma alanı oluşturmayı öğrenin (ARM şablonu).
 services: azure-resource-manager
 author: julieMSFT
 ms.service: azure-resource-manager
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
-ms.openlocfilehash: 6ae5c4f20cc42ee3865726973a81e2ba90aeaf33
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093846"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740372"
 ---
-# <a name="quickstart-create-an-azure-synapse-workspace-using-a-deployment-template"></a>Hızlı başlangıç: dağıtım şablonu kullanarak Azure SYNAPSE çalışma alanı oluşturma
+# <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure SYNAPSE çalışma alanı oluşturma
 
 Bu Azure Resource Manager şablonu (ARM şablonu), temel alınan Data Lake Storage bir Azure SYNAPSE çalışma alanı oluşturur. Azure SYNAPSE çalışma alanı, Azure SYNAPSE Analytics 'teki analiz işlemlerine yönelik güvenli kılınabilir bir işbirliği sınırıdır.
 
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-**Görselleştir** bağlantısını aşağıdaki gibi seçerek şablonu gözden geçirebilirsiniz:
+**Görselleştir** bağlantısını seçerek şablonu gözden geçirebilirsiniz. Sonra **Şablonu Düzenle** ' yi seçin.
 
 [![Görselleştirme](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
@@ -43,25 +43,25 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 1. Azure 'da oturum açmak ve şablonu açmak için aşağıdaki görüntüyü seçin. Bu şablon bir Synapse çalışma alanı oluşturur.
-   
+
    [![Azure 2 ' ye dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
 1. Aşağıdaki değerleri girin veya güncelleştirin:
 
-   * **Abonelik**: bir Azure aboneliği seçin.
-   * **Kaynak grubu**: **Yeni oluştur** ' u seçin ve kaynak grubu için benzersiz bir ad girin ve **Tamam**' ı seçin. Yeni bir kaynak grubu, kaynak temizlemeyi kolaylaştırır.
-   * **Bölge**: bir bölge seçin.  Örneğin **Orta ABD**.
-   * **Ad**: çalışma alanınız için bir ad girin.
-   * **SQL Yöneticisi oturum açma**: SQL Server için yönetici kullanıcı adını girin.
-   * **SQL yönetici parolası**: SQL Server için yönetici parolasını girin.
-   * **Etiket değerleri**: varsayılanı kabul edin. 
-   * **Gözden geçirin ve oluşturun**: seçin.
-   * **Oluştur**: seç.
+   - **Abonelik** : bir Azure aboneliği seçin.
+   - **Kaynak grubu** : **Yeni oluştur** ' u seçin ve kaynak grubu için benzersiz bir ad girin ve **Tamam** ' ı seçin. Yeni bir kaynak grubu, kaynak temizlemeyi kolaylaştırır.
+   - **Bölge** : bir bölge seçin.  Örneğin **Orta ABD** .
+   - **Ad** : çalışma alanınız için bir ad girin.
+   - **SQL Yöneticisi oturum açma** : SQL Server için yönetici kullanıcı adını girin.
+   - **SQL yönetici parolası** : SQL Server için yönetici parolasını girin.
+   - **Etiket değerleri** : varsayılanı kabul edin.
+   - **Gözden geçirin ve oluşturun** : seçin.
+   - **Oluştur** : seç.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure SYNAPSE Analytics ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
 
-- [Azure SYNAPSE Analytics 'e genel bakış](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) konusunu okuyun 
+- [Azure SYNAPSE Analytics 'e genel bakış](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) konusunu okuyun
 - [Azure Resource Manager](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin
 - [İlk ARM şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

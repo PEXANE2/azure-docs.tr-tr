@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 27a58fc66de31fef272ab2f2c2bfaa9896a07d4b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210438"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740157"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Geliştirdiğiniz mobil uygulamalarda çoklu oturum açma ve uygulama koruma ilkelerini destekleme
 
@@ -47,7 +47,7 @@ Uygulamanızda çoklu oturum açmayı uygulamak için en iyi seçenek, [Microsof
 
 İOS uygulamaları için, MSAL kullanarak oturum açma işlemlerini nasıl ayarlayabileceğine ve [ÇEŞITLI SSO SENARYOLARıNDA msal yapılandırmasına kılavuzluk](single-sign-on-macos-ios.md)eden bir [hızlı başlangıç](quickstart-v2-ios.md) sunuyoruz.
 
-Android uygulamaları için, MSAL kullanarak oturum açma işlemlerini ayarlamayı ve [aracılı kimlik doğrulama](brokered-auth.md) veya [Yetkilendirme aracılarını](authorization-agents.md)kullanma kılavuzunu gösteren bir [hızlı başlangıç](quickstart-v2-android.md) sunuyoruz.
+Android uygulamaları için, MSAL kullanarak oturum açma işlemlerini ayarlamayı ve [msal kullanarak Android 'de uygulamalar arası SSO 'yu nasıl etkinleştireceğinizi](msal-android-single-sign-on.md)gösteren bir [hızlı başlangıç](quickstart-v2-android.md) sunuyoruz.
 
 ### <a name="use-the-system-web-browser"></a>Sistem Web tarayıcısını kullanma
 

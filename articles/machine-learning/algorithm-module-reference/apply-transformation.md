@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/05/2020
-ms.openlocfilehash: 7573abbbee479bfb0d1710beba3b95d084a5e657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.openlocfilehash: a5db3935ae445ee7dcf8129eb1d4c75fcb64302f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898885"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739213"
 ---
 # <a name="apply-transformation-module"></a>Dönüştürme modülünü Uygula
 
 Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
-Bir giriş veri kümesini önceden hesaplanan bir dönüşüme göre değiştirmek için bu modülü kullanın.
+Bir giriş veri kümesini önceden hesaplanan bir dönüşüme göre değiştirmek için bu modülü kullanın. Bu modül, çıkarım işlem hatlarında dönüşümleri güncelleştirmeniz gerekiyorsa ' de gereklidir.
 
 Örneğin, **normalize verileri** modülünü kullanarak eğitim verilerinizi normalleştirmek için z puanları kullandıysanız, Puanlama aşamasında eğitim için hesaplanmış z puanı değerini de kullanmak istersiniz. Azure Machine Learning ' de, normalleştirme yöntemini bir dönüşüm olarak kaydedebilir ve sonra, Puanlama yapmadan önce giriş verilerine z puanı uygulamak için **dönüştürme uygula** ' yı kullanabilirsiniz.
 
@@ -46,7 +46,14 @@ Tasarımcı veri dönüştürmelerini diğer işlem hatlarında kullanabilmeniz 
   
 1. İstenen modülün veri kümesi çıkışını, **uygulama dönüştürme** modülünün doğru giriş bağlantı noktasına bağlayın.
   
-1. Yeni veri kümesine bir dönüşüm uygulamak için işlem hattını çalıştırın.  
+1. Yeni veri kümesine bir dönüşüm uygulamak için işlem hattını gönderebilirsiniz.  
+
+> [!IMPORTANT]
+> Eğitim işlem hatlarında güncelleştirilmiş dönüşümün, çıkarım işlem hatları 'nda da uygun olduğundan emin olmak için, eğitim ardışık düzeninde her değişiklik olduğunda aşağıdaki adımları izlemeniz gerekir:
+> 1. Eğitim ardışık düzeninde, [sütun Seç dönüştürmesinin](select-columns-transform.md) çıkışını bir veri kümesi olarak kaydedin.
+> ![Modül çıkışının veri kümesini Kaydet](media/module/select-columns-transform-register-dataset.png)
+> 1. Çıkarım ardışık düzeninde, **TD** modülünü kaldırın ve önceki adımda kayıtlı veri kümesiyle değiştirin.
+> ![TD modülünü Değiştir](media/module/replace-tranformation-directory.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

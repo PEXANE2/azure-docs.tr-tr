@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: dc8aa50c5c4ecb5e4b56a7e49453c266dad28818
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 4b0e54c434f68a8a26f49b6ba0c1010e93d36ad6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678091"
+ms.locfileid: "92739894"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal ile SAP Çözümleri için Azure Izleyici dağıtma
 
@@ -54,7 +54,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 4. Kullanmak istediğiniz veritabanı kiracının adını girin. Herhangi bir kiracıyı seçebilirsiniz, ancak daha geniş bir izleme alanı dizisi sağladığından **SystemDB** kullanılması önerilir. 
 
-5. HANA veritabanınıza ilişkin SQL bağlantı noktası numarasını girin. Bağlantı noktası numarası **[3]** [  +  **örnek #]**  +  **[13]** veya **[3]** [  +  **örnek #]** [  +  **15]** biçiminde olmalıdır. Örneğin, 30013 veya 30015. 
+5. HANA veritabanınıza ilişkin SQL bağlantı noktası numarasını girin. Bağlantı noktası numarası **[3]** [  +  **örnek #]**  +  **[13]** biçiminde olmalıdır. Örneğin, 30013. 
 
 6. Kullanmak istediğiniz veritabanı kullanıcı adını girin. Veritabanı kullanıcısına, **izleme** ve **Katalog okuma** rollerinin atanmış olduğundan emin olun. 
 

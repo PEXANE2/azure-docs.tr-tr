@@ -3,13 +3,13 @@ title: Öğretici-özel temel görüntü güncelleştirmesine göre görüntü o
 description: Bu öğreticide, başka bir özel Azure Container Registry 'de bir temel görüntü güncelleştirilirken buluttaki kapsayıcı görüntüsü yapılarını otomatik olarak tetiklemek üzere bir Azure Container Registry görevi yapılandırırsınız.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: 09b795981c1afe497e6adbb14f4f62d45293f0e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 7dda7c54c51c31e750083f302ca558ff7ef548ee
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271011"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739560"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>Öğretici: bir temel görüntü başka bir özel kapsayıcı kayıt defterinde güncelleştirildiği zaman kapsayıcı görüntüsü derlemelerini otomatikleştirin 
 
@@ -30,7 +30,7 @@ Bu öğreticide:
 
 Azure CLı 'yı yerel olarak kullanmak istiyorsanız, Azure CLı sürüm **2.0.68** veya sonraki bir sürümün yüklü olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI’yı yükleme][azure-cli].
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="complete-the-previous-tutorials"></a>Önceki öğreticileri tamamlama
 
@@ -78,7 +78,7 @@ Bu öğreticide, ACR göreviniz bir Dockerfile dosyasında belirtilen bir uygula
 
 ## <a name="build-the-base-image"></a>Temel görüntü oluşturma
 
-[Az ACR Build][az-acr-build]kullanarak bir ACR görevler *hızlı göreviyle*temel görüntü oluşturarak başlayın. Serinin [ilk öğreticisinde](container-registry-tutorial-quick-task.md) açıklandığı gibi, bu işlem yalnızca görüntüyü oluşturmakla kalmaz, oluşturma başarılı olduysa bunu kapsayıcınızın kayıt defterine de gönderir. Bu örnekte görüntü, temel görüntü kayıt defterine gönderilir.
+[Az ACR Build][az-acr-build]kullanarak bir ACR görevler *hızlı göreviyle* temel görüntü oluşturarak başlayın. Serinin [ilk öğreticisinde](container-registry-tutorial-quick-task.md) açıklandığı gibi, bu işlem yalnızca görüntüyü oluşturmakla kalmaz, oluşturma başarılı olduysa bunu kapsayıcınızın kayıt defterine de gönderir. Bu örnekte görüntü, temel görüntü kayıt defterine gönderilir.
 
 ```azurecli-interactive
 az acr build --registry $BASE_ACR --image baseimages/node:9-alpine --file Dockerfile-base .

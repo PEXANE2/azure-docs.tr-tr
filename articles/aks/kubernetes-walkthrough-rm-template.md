@@ -4,13 +4,13 @@ description: Azure Resource Manager şablonu kullanarak bir Kubernetes kümesini
 services: container-service
 ms.topic: quickstart
 ms.date: 09/11/2020
-ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 2695126b8ad515735907558e3c316b87ac5dfbdc
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc,subject-armqs, devx-track-azurecli
+ms.openlocfilehash: f0ef1c32035eed26c0717364bda030b6b7662b3e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070750"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740279"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -88,22 +88,22 @@ Daha fazla AKS örneği için bkz. [aks hızlı başlangıç şablonları][aks-q
 
 2. Aşağıdaki değerleri seçin veya girin.
 
-    Bu hızlı başlangıçta, *Işletim sistemi disk boyutu GB*, *Aracı sayısı*, *Aracı VM boyutu*, *Işletim sistemi türü*ve *Kubernetes sürümü*için varsayılan değerleri bırakın. Aşağıdaki şablon parametreleri için kendi değerlerinizi sağlayın:
+    Bu hızlı başlangıçta, *Işletim sistemi disk boyutu GB* , *Aracı sayısı* , *Aracı VM boyutu* , *Işletim sistemi türü* ve *Kubernetes sürümü* için varsayılan değerleri bırakın. Aşağıdaki şablon parametreleri için kendi değerlerinizi sağlayın:
 
-    * **Abonelik**: bir Azure aboneliği seçin.
-    * **Kaynak grubu**: **Yeni oluştur**' u seçin. Kaynak grubu için *Myresourcegroup*gibi benzersiz bir ad girin ve ardından **Tamam**' ı seçin.
-    * **Konum**: **Doğu ABD**gibi bir konum seçin.
-    * **Küme adı**: aks kümesi Için *Myakscluster*gibi benzersiz bir ad girin.
-    * **DNS ön eki**: kümeniz için *myakscluster*gibi benzersiz bir DNS öneki girin.
-    * **Linux Yöneticisi Kullanıcı adı**: SSH kullanarak bağlanmak için *azureuser*gibi bir Kullanıcı adı girin.
-    * **Ssh rsa ortak anahtarı**: SSH anahtar çiftin *genel* bölümünü kopyalayıp yapıştırın (varsayılan olarak, *~/. ssh/id_rsa. pub*içeriğini).
-    * **Hizmet sorumlusu Istemci kimliği**: hizmet sorumlusunun *AppID* 'sini kopyalayıp `az ad sp create-for-rbac` komuttan yapıştırın.
-    * **Hizmet sorumlusu Istemci parolası**: hizmet sorumlusunun *parolasını* kopyalayıp yapıştırın `az ad sp create-for-rbac` .
-    * **Yukarıdaki hüküm ve koşullar durumunu kabul ediyorum**: kabul etmek için bu kutuyu işaretleyin.
+    * **Abonelik** : bir Azure aboneliği seçin.
+    * **Kaynak grubu** : **Yeni oluştur** ' u seçin. Kaynak grubu için *Myresourcegroup* gibi benzersiz bir ad girin ve ardından **Tamam** ' ı seçin.
+    * **Konum** : **Doğu ABD** gibi bir konum seçin.
+    * **Küme adı** : aks kümesi Için *Myakscluster* gibi benzersiz bir ad girin.
+    * **DNS ön eki** : kümeniz için *myakscluster* gibi benzersiz bir DNS öneki girin.
+    * **Linux Yöneticisi Kullanıcı adı** : SSH kullanarak bağlanmak için *azureuser* gibi bir Kullanıcı adı girin.
+    * **Ssh rsa ortak anahtarı** : SSH anahtar çiftin *genel* bölümünü kopyalayıp yapıştırın (varsayılan olarak, *~/. ssh/id_rsa. pub* içeriğini).
+    * **Hizmet sorumlusu Istemci kimliği** : hizmet sorumlusunun *AppID* 'sini kopyalayıp `az ad sp create-for-rbac` komuttan yapıştırın.
+    * **Hizmet sorumlusu Istemci parolası** : hizmet sorumlusunun *parolasını* kopyalayıp yapıştırın `az ad sp create-for-rbac` .
+    * **Yukarıdaki hüküm ve koşullar durumunu kabul ediyorum** : kabul etmek için bu kutuyu işaretleyin.
 
     ![Portalda Azure Kubernetes hizmet kümesi oluşturmak için şablon Kaynak Yöneticisi](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
-3. **Satın al**'ı seçin.
+3. **Satın al** 'ı seçin.
 
 AKS kümesinin oluşturulması birkaç dakika sürer. Sonraki adıma geçmeden önce kümenin başarılı bir şekilde dağıtılmasını bekleyin.
 
@@ -129,7 +129,7 @@ Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu ku
 kubectl get nodes
 ```
 
-Aşağıdaki örnek çıktı, önceki adımlarda oluşturulan düğümleri gösterir. Tüm düğümlerin durumunun *hazırlanmaya*çalıştığından emin olun:
+Aşağıdaki örnek çıktı, önceki adımlarda oluşturulan düğümleri gösterir. Tüm düğümlerin durumunun *hazırlanmaya* çalıştığından emin olun:
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -247,7 +247,7 @@ deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
-### <a name="test-the-application"></a>Uygulamayı test etme
+### <a name="test-the-application"></a>Uygulamayı test edin
 
 Uygulama çalıştığında, bir Kubernetes hizmeti, uygulamanın ön ucuna internet 'e koyar. Bu işlemin tamamlanması birkaç dakika sürebilir.
 
@@ -257,7 +257,7 @@ Uygulama çalıştığında, bir Kubernetes hizmeti, uygulamanın ön ucuna inte
 kubectl get service azure-vote-front --watch
 ```
 
-Başlangıçta *Azure-oyönme* hizmeti IÇIN *dış IP* , *Beklemede*olarak gösterilir.
+Başlangıçta *Azure-oyönme* hizmeti IÇIN *dış IP* , *Beklemede* olarak gösterilir.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE

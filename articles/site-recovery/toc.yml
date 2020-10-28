@@ -48,22 +48,6 @@
           href: tutorial-dr-drill-azure.md
         - name: Azure'a yük devretme
           href: vmware-azure-tutorial-failover-failback.md
-    - name: Azure VMware Çözümü ile Azure’a olağanüstü durum kurtarma
-      items:
-        - name: Azure’u hazırlama
-          href: avs-tutorial-prepare-azure.md
-        - name: Azure VMware Çözümü hazırlama
-          href: avs-tutorial-prepare-avs.md
-        - name: Çoğaltmayı ayarlama
-          href: avs-tutorial-replication.md
-        - name: Olağanüstü durum kurtarma tatbikatı çalıştırma
-          href: avs-tutorial-dr-drill-azure.md
-        - name: Azure'a yük devretme
-          href: avs-tutorial-failover.md
-        - name: Sanal makineleri yeniden koruma
-          href: avs-tutorial-reprotect.md
-        - name: Azure’dan yeniden çalışma
-          href: avs-tutorial-failback.md
     - name: Azure'a Hyper-V VM olağanüstü durum kurtarma
       items:
         - name: Azure’u hazırlama
@@ -164,7 +148,7 @@
       href: recovery-plan-overview.md
     - name: Azure’a geçiş hakkında
       href: migrate-overview.md
-    - name: Site Recovery ile Azure rol tabanlı erişim denetimi hakkında
+    - name: Site Recovery ile rol tabanlı erişim denetimi hakkında
       href: site-recovery-role-based-linked-access-control.md
     - name: İkincil bir şirket içi siteye olağanüstü durum kurtarma hakkında
       items:
@@ -176,6 +160,10 @@
           href: hyper-v-vmm-secondary-support-matrix.md
         - name: Hyper-V VM'den ikincil siteye mimarisi
           href: hyper-v-vmm-architecture.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl Yapılır Kılavuzları
   items:
     - name: Azure’dan Azure’a olağanüstü durum kurtarma
@@ -276,7 +264,7 @@
               href: vmware-azure-enable-replication.md
             - name: Diskleri çoğaltmanın dışında tutma
               href: vmware-azure-exclude-disk.md
-            - name: İzlenecek yol-VMware VM’leri için çoğaltmayı çok kiracılı bir şekilde ve CSP ile ayarlama
+            - name: İzlenecek yol-VMWare VM’leri için çoğaltmayı çok kiracılı bir şekilde ve CSP ile ayarlama
               href: vmware-azure-multi-tenant-csp-disaster-recovery.md
         - name: Yük devretme ve yeniden çalışma işlemlerini çalıştırma
           items:

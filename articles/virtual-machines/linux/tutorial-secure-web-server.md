@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 7964f96afc59464c28cabb9e1d5c7961fc765a3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 4a790c51cd0caa2c81275e7eafdd663f2f2f0116
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86501781"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740201"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Öğretici: Azure 'daki bir Linux sanal makinesinde bulunan ve Key Vault depolanan TLS/SSL sertifikaları ile Web sunucusunun güvenliğini sağlama
 Web sunucularının güvenliğini sağlamak için, daha önce Güvenli Yuva Katmanı (SSL) olarak bilinen bir Aktarım Katmanı Güvenliği (TLS), sertifika Web trafiğini şifrelemek için kullanılabilir. Bu TLS/SSL sertifikaları Azure Key Vault depolanabilir ve Azure 'da Linux sanal makinelerine (VM 'Ler) sertifikaların güvenli bir şekilde dağıtılmasına izin verebilir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -135,7 +135,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>Güvenli web uygulamasını sınama
-Artık bir Web tarayıcısı açıp adres çubuğuna *https: \/ \/ \<publicIpAddress> * yazabilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
+Artık bir Web tarayıcısı açıp adres çubuğuna *https: \/ \/ \<publicIpAddress>* yazabilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
 
 ![Web tarayıcısı güvenlik uyarısını kabul edin](./media/tutorial-secure-web-server/browser-warning.png)
 

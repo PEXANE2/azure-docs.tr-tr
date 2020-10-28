@@ -3,13 +3,13 @@ title: Öğretici-coğrafi olarak çoğaltılan kayıt defteri oluşturma
 description: Bir Azure Container Registry oluşturun, coğrafi çoğaltma yapılandırın, bir Docker görüntüsü hazırlayın ve bunu kayıt defterine dağıtın. Üç bölümden oluşan bir serinin birinci bölümü.
 ms.topic: tutorial
 ms.date: 06/30/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 854b4eb35694f7498d0dc70567b19ccfdf7c8c82
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: c473e3cd891214c2c5789bd43b0d293cb25d660a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148400"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739479"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Öğretici: Coğrafi çoğaltmalı Azure Container Registry’yi hazırlama
 
@@ -42,18 +42,18 @@ Bu öğreticide, Premium hizmet katmanında bir Azure Kapsayıcı kayıt defteri
 > [!TIP]
 > Daha önce bir kayıt defteri oluşturduysanız ve yükseltmeniz gerekiyorsa bkz. [katmanları değiştirme](container-registry-skus.md#changing-tiers). 
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-Azure Container Registry **kaynak kapsayıcıları oluştur**' u seçin  >  **Containers**  >  **Azure Container Registry**.
+Azure Container Registry **kaynak kapsayıcıları oluştur** ' u seçin  >  **Containers**  >  **Azure Container Registry** .
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="Azure portalında kapsayıcı kayıt defteri oluşturma":::
 
 Yeni kayıt defterinizi aşağıdaki ayarlarla yapılandırın. **Temel bilgiler** sekmesinde:
 
-* **Kayıt defteri adı**: Azure’da genel olarak benzersiz olan ve 5-50 alfasayısal karakterden oluşan bir kayıt defteri adı oluşturun
-* **Kaynak grubu**: **Yeni oluştur** > `myResourceGroup`
-* **Konum**: `West US`
-* **SKU**: `Premium` (coğrafi çoğaltma için gereklidir)
+* **Kayıt defteri adı** : Azure’da genel olarak benzersiz olan ve 5-50 alfasayısal karakterden oluşan bir kayıt defteri adı oluşturun
+* **Kaynak grubu** : **Yeni oluştur** > `myResourceGroup`
+* **Konum** : `West US`
+* **SKU** : `Premium` (coğrafi çoğaltma için gereklidir)
 
 Kayıt defteri örneğini oluşturmak için **gözden geçir + oluştur** seçeneğini belirleyip **Oluştur** ' u seçin.
 
@@ -68,7 +68,7 @@ Bu öğreticinin geri kalan aşamalarında, seçtiğiniz kapsayıcı **Kayıt de
 
 Premium kayıt defterine sahip olduğunuza göre coğrafi çoğaltmayı yapılandırabilirsiniz. Sonraki öğreticide iki bölgede çalıştırılacak şekilde yapılandıracağınız web uygulamanız, en yakın kayıt defterinden kapsayıcı görüntülerini çeker.
 
-Azure portal yeni kapsayıcı Kayıt defterinize gidin ve **Hizmetler**bölümünden **çoğaltmalar** ' ı seçin:
+Azure portal yeni kapsayıcı Kayıt defterinize gidin ve **Hizmetler** bölümünden **çoğaltmalar** ' ı seçin:
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Azure portalında kapsayıcı kayıt defteri oluşturma":::
 
@@ -76,7 +76,7 @@ Coğrafi çoğaltma için uygun Azure bölgelerinin yeşil altıgenlerle temsil 
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Azure portalında kapsayıcı kayıt defteri oluşturma":::
 
-Yeşil altıgeni seçip ardından **Çoğaltma oluştur** bölümünden **Oluştur**’u seçerek Doğu ABD bölgesine kayıt defterinizi çoğaltın:
+Yeşil altıgeni seçip ardından **Çoğaltma oluştur** bölümünden **Oluştur** ’u seçerek Doğu ABD bölgesine kayıt defterinizi çoğaltın:
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Azure portalında kapsayıcı kayıt defteri oluşturma":::
 
@@ -89,7 +89,7 @@ Yeşil altıgeni seçip ardından **Çoğaltma oluştur** bölümünden **Oluşt
 
 Sonraki öğreticilerde, kayıt defterinden doğrudan Kapsayıcılar için Web App bir kapsayıcı görüntüsü dağıtırsınız. Bu özelliği etkinleştirmek için kayıt defterinin [yönetici hesabını](container-registry-authentication.md#admin-account)da etkinleştirmeniz gerekir.
 
-Azure portal yeni kapsayıcı Kayıt defterinize gidin ve **Ayarlar**altında **erişim anahtarları** ' nı seçin. **Yönetici kullanıcı** altında **Etkinleştir**’i seçin.
+Azure portal yeni kapsayıcı Kayıt defterinize gidin ve **Ayarlar** altında **erişim anahtarları** ' nı seçin. **Yönetici kullanıcı** altında **Etkinleştir** ’i seçin.
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Azure portalında kapsayıcı kayıt defteri oluşturma":::
 

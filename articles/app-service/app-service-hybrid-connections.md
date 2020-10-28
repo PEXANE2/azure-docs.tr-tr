@@ -6,13 +6,13 @@ ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 1cb86f77a6ffcbb0fb45b3a57b57de531822f2b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, fasttrack-edit, devx-track-azurecli
+ms.openlocfilehash: c7900341cfcda52dafcb269b833f5ad8dd0f55b7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742613"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739757"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hibrit Bağlantılar
 
@@ -56,15 +56,15 @@ Karma Bağlantılar ile yapaistemediğiniz şeyler şunlardır:
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Uygulamanıza Karma Bağlantılar ekleme ve oluşturma ##
 
-Karma bağlantı oluşturmak için [Azure Portal][portal] gidin ve uygulamanızı seçin. **Networking**  >  **Karma bağlantı uç noktalarınızı**ağ oluşturma ' yı seçin. Burada, uygulamanız için yapılandırılmış Karma Bağlantılar görebilirsiniz.  
+Karma bağlantı oluşturmak için [Azure Portal][portal] gidin ve uygulamanızı seçin. **Networking**  >  **Karma bağlantı uç noktalarınızı** ağ oluşturma ' yı seçin. Burada, uygulamanız için yapılandırılmış Karma Bağlantılar görebilirsiniz.  
 
 ![Karma bağlantı listesinin ekran görüntüsü][2]
 
-Yeni bir karma bağlantı eklemek için **karma bağlantı ekle**' yi seçin.  Zaten oluşturduğunuz Karma Bağlantılar bir liste görürsünüz. Uygulamanıza bir veya daha fazla uygulama eklemek için istediğiniz olanları seçin ve ardından **Seçili karma bağlantı ekle**' yi seçin.  
+Yeni bir karma bağlantı eklemek için **karma bağlantı ekle** ' yi seçin.  Zaten oluşturduğunuz Karma Bağlantılar bir liste görürsünüz. Uygulamanıza bir veya daha fazla uygulama eklemek için istediğiniz olanları seçin ve ardından **Seçili karma bağlantı ekle** ' yi seçin.  
 
 ![Karma bağlantı portalının ekran görüntüsü][3]
 
-Yeni bir karma bağlantı oluşturmak istiyorsanız **yeni karma bağlantı oluştur**' u seçin. Şunu belirtin: 
+Yeni bir karma bağlantı oluşturmak istiyorsanız **yeni karma bağlantı oluştur** ' u seçin. Şunu belirtin: 
 
 - Karma bağlantı adı.
 - Uç nokta ana bilgisayar adı.
@@ -75,7 +75,7 @@ Yeni bir karma bağlantı oluşturmak istiyorsanız **yeni karma bağlantı olu�
 
 Her karma bağlantı bir Service Bus ad alanına bağlıdır ve her Service Bus ad alanı bir Azure bölgesinde bulunur. Ağ üzerinden oluşan gecikmeyi önlemek için, uygulamanızla aynı bölgede bir Service Bus ad alanı kullanmayı denemek önemlidir.
 
-Karma bağlantınızı uygulamanızdan kaldırmak istiyorsanız, sağ tıklayın ve **bağlantıyı kes**' i seçin.  
+Karma bağlantınızı uygulamanızdan kaldırmak istiyorsanız, sağ tıklayın ve **bağlantıyı kes** ' i seçin.  
 
 Bir karma bağlantı uygulamanıza eklendiğinde, bunu seçerek ayrıntıları görebilirsiniz. 
 
@@ -113,7 +113,7 @@ App Service plan SKU gereksinimi olmasının yanı sıra, Karma Bağlantılar ku
 
 ## <a name="hybrid-connection-manager"></a>Karma Bağlantı Yöneticisi ##
 
-Karma Bağlantılar özelliği, karma bağlantı uç noktanızı barındıran ağda bir geçiş aracısı gerektirir. Bu geçiş aracısına Karma Bağlantı Yöneticisi (HCM) denir. [Azure Portal][portal]uygulamanızdaki HCM 'yi indirmek için, **Networking**  >  **karma bağlantı uç noktalarınızı ağ yapılandırma**' yı seçin.  
+Karma Bağlantılar özelliği, karma bağlantı uç noktanızı barındıran ağda bir geçiş aracısı gerektirir. Bu geçiş aracısına Karma Bağlantı Yöneticisi (HCM) denir. [Azure Portal][portal]uygulamanızdaki HCM 'yi indirmek için, **Networking**  >  **karma bağlantı uç noktalarınızı ağ yapılandırma** ' yı seçin.  
 
 Bu araç Windows Server 2012 ve üzeri sürümlerde çalışır. HCM bir hizmet olarak çalışır ve 443 numaralı bağlantı noktasında giden Azure Relay bağlanır.  
 
@@ -126,7 +126,7 @@ HCM Kullanıcı arabirimini başlattığınızda gördüğünüz ilk şey, HCM '
 HCM 'nize bir veya daha fazla Karma Bağlantılar eklemek için:
 
 1. HCM Kullanıcı arabirimini başlatın.
-2. **Başka bir karma bağlantı Yapılandır**' ı seçin.
+2. **Başka bir karma bağlantı Yapılandır** ' ı seçin.
 ![Yeni Karma Bağlantılar yapılandırma ekran görüntüsü][8]
 
 1. Aboneliklerinizle Karma Bağlantılar sağlamak için Azure hesabınızla oturum açın. HCM bunun ötesinde Azure hesabınızı kullanmaya devam etmez. 
@@ -134,7 +134,7 @@ HCM 'nize bir veya daha fazla Karma Bağlantılar eklemek için:
 1. HCM 'nin geçişine istediğiniz Karma Bağlantılar seçin.
 ![Karma Bağlantılar ekran görüntüsü][9]
 
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
 Artık eklediğiniz Karma Bağlantılar görebilirsiniz. Ayrıca, ayrıntıları görmek için yapılandırılmış karma bağlantıyı seçebilirsiniz.
 
@@ -160,7 +160,7 @@ Aboneliğiniz dışındaki birinin belirli bir karma bağlantı için bir HCM ö
 
 ![Karma bağlantı el ile ekleme][11]
 
-### <a name="upgrade"></a>Yükseltme ###
+### <a name="upgrade"></a>Upgrade ###
 
 Sorunları gidermek veya iyileştirmeler sağlamak için Karma Bağlantı Yöneticisi düzenli güncelleştirmeler vardır. Yükseltmeler yayınlandığında, HCM Kullanıcı arabiriminde bir açılan pencere görünür. Yükseltmenin uygulanması değişiklikleri uygular ve HCM 'yi yeniden başlatır. 
 
@@ -201,7 +201,7 @@ Geçişe erişimi olan herkes, `Reader` Azure Portal Web uygulamasına eklemeye 
 
 ## <a name="troubleshooting"></a>Sorun giderme ##
 
-"Bağlı" durumu, en az bir HCM 'nin bu karma bağlantıyla yapılandırıldığı ve Azure 'a ulaşabilme anlamına gelir. Karma bağlantınızın durumu **bağlı**değilse, karma bağlantınız Azure erişimi olan herhangi bir HCM 'de yapılandırılmamıştır.
+"Bağlı" durumu, en az bir HCM 'nin bu karma bağlantıyla yapılandırıldığı ve Azure 'a ulaşabilme anlamına gelir. Karma bağlantınızın durumu **bağlı** değilse, karma bağlantınız Azure erişimi olan herhangi bir HCM 'de yapılandırılmamıştır.
 
 İstemcilerin uç noktalara bağlanamadığı birincil neden, uç noktanın DNS adı yerine bir IP adresi kullanılarak belirtilme nedenidir. Uygulamanız istenen uç noktaya ulaşamadıysanız ve bir IP adresi kullandıysanız, HCM 'nin çalıştığı konakta geçerli olan bir DNS adı kullanmaya geçiş yapın. Ayrıca, HCM 'nin çalıştığı konakta DNS adının düzgün şekilde çözümlendiğini kontrol edin. HCM 'nin karma bağlantı uç noktasında çalıştığı konaktan bağlantı olduğunu doğrulayın.  
 
