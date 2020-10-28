@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 1b947ad28283912e0ba75debd8f4471d693be888
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fe241a3fd74e1421f1bd3d39087fe776ee7b61d9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675538"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891712"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Öğretici: çözüm GmbH ile Jira için SAML SSO ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile bir çözüm GmbH ile Jira tarafından sağlanan SAML SSO 'SU tüml
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Cira tarafından çözüm GmbH için Azure AD tümleştirmesini ve SAML SSO 'yu yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -99,7 +99,7 @@ Jira tarafından çözümleme GmbH için SAML SSO ile çoklu oturum açmayı yap
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
 
-    ![Cira tarafından çözüm GmbH etki alanı ve URL 'Ler çoklu oturum açma bilgileri için SAML SSO](common/idp-intiated.png)
+    !["Tanımlayıcı" ve "Yanıtla U R L" metin kutuları vurgulanmış ve "Kaydet" düğmesi seçili olan "temel S A M L yapılandırma" bölümünü gösteren ekran görüntüsü.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/samlsso`
 
@@ -124,37 +124,37 @@ Jira tarafından çözümleme GmbH için SAML SSO ile çoklu oturum açmayı yap
 
 2. Sağ tarafta dişli üzerine gelin ve **Uygulamaları Yönet** ' e tıklayın.
     
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/addon1.png)
+    !["COG" simgesine işaret eden oku ve açılan listeden "Uygulamaları Yönet" i gösteren ekran görüntüsü.](./media/samlssojira-tutorial/addon1.png)
 
 3. Yönetici erişimi sayfasına yönlendiriliyorsunuz, **parolayı** girin ve **Onayla** düğmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/addon2.png)
+    !["Yönetici erişimi" sayfasını gösteren ekran görüntüsü.](./media/samlssojira-tutorial/addon2.png)
 
 4. Jira genellikle sizi Atlasısize Market 'e yönlendirir. Aksi takdirde, sol panelde **yeni uygulamalar bul** ' a tıklayın. **JIRA Için SAML çoklu oturum açma (SSO)** araması YAPıN ve SAML eklentisini yüklemek için **Install** düğmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/store.png)
+    !["A m L tek oturum açma (S S O) Jira, a m L/S S O" uygulaması için "Install" düğmesine işaret eden bir oka sahip "JIRA için Atlasıra marketi" sayfasını gösteren ekran görüntüsü.](./media/samlssojira-tutorial/store.png)
 
 5. Eklenti yüklemesi başlar. İşlem tamamlandığında **Kapat** düğmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/store-2.png)
+    !["Yükleme" iletişim kutusunu gösteren ekran görüntüsü.](./media/samlssojira-tutorial/store-2.png)
 
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/store-3.png)
+    !["Yüklü ve hazırlanmaya başlamaya!" gösteren ekran görüntüsü "Kapat" düğmesi seçili iletişim kutusu.](./media/samlssojira-tutorial/store-3.png)
 
 6. Ardından **Yönet** ' e tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/store-4.png)
+    !["Yönet" düğmesinin seçili olduğu "S a M L Single Sign on (S O) Jira, S A m L/S S O" uygulamasını gösteren ekran görüntüsü.](./media/samlssojira-tutorial/store-4.png)
     
 8. Daha sonra, yeni yüklenen eklentiyi yapılandırmak için **Yapılandır** ' a tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/store-5.png)
+    !["Uygulamaları Yönet" sayfasını gösteren ekran görüntüsü "Configure a m L Teksignon for Jira" uygulaması için "Yapılandır" düğmesi seçilidir.](./media/samlssojira-tutorial/store-5.png)
 
 9. Azure AD 'yi yeni bir kimlik sağlayıcısı olarak yapılandırmak için **SAML SingleSignOn eklenti yapılandırma** sihirbazında **Yeni IDP Ekle** ' ye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/addon4.png) 
+    ![Ekran görüntüsünde, "yeni ı d P ekle" düğmesi seçiliyken "hoş geldiniz" sayfası görüntülenir.](./media/samlssojira-tutorial/addon4.png) 
 
 10. **SAML kimlik sağlayıcınızı seçin** sayfasında aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/addon5a.png)
+    !["I d P Type" ve "Name" metin kutuları vurgulanmış ve "Ileri" düğmesi seçili olan "S A M L-m kimlik sağlayıcısını seçin" sayfasını gösteren ekran görüntüsü.](./media/samlssojira-tutorial/addon5a.png)
  
     a. **Azure AD** 'Yi IDP türü olarak ayarlayın.
     
@@ -166,11 +166,11 @@ Jira tarafından çözümleme GmbH için SAML SSO ile çoklu oturum açmayı yap
     
 11. **Kimlik sağlayıcısı yapılandırma** sayfasında **İleri** ' ye tıklayın.
  
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/addon5b.png)
+    !["Kimlik sağlayıcısı yapılandırması" sayfasını gösteren ekran görüntüsü.](./media/samlssojira-tutorial/addon5b.png)
 
 12. **SAML IDP meta verilerini Içeri aktar** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/addon5c.png)
+    !["Meta veri X M L dosyası seçin" eyleminin seçili olduğu "a M L L L P meta verilerini Içeri aktar" sayfasını gösteren ekran görüntüsü.](./media/samlssojira-tutorial/addon5c.png)
 
     a. **Meta VERI XML dosyası seç** düğmesine tıklayın ve daha önce Indirdiğiniz **Federasyon meta veri XML** dosyasını seçin.
 
@@ -182,19 +182,19 @@ Jira tarafından çözümleme GmbH için SAML SSO ile çoklu oturum açmayı yap
     
 13. **Kullanıcı kimliği özniteliği ve dönüştürme** sayfasında, **İleri** düğmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/addon5d.png)
+    !["Ileri" düğmesi seçili "Kullanıcı I D özniteliği ve dönüşümü" sayfasını gösteren ekran görüntüsü.](./media/samlssojira-tutorial/addon5d.png)
     
 14. **Kullanıcı oluşturma ve güncelleştirme** sayfasında, Ayarları Kaydet ' in **yanındaki & kaydet** ' e tıklayın.
     
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/addon6a.png)
+    !["Kullanıcı oluşturma ve güncelleştirme" sayfasını "& sonrakini Kaydet" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/samlssojira-tutorial/addon6a.png)
     
 15. **Ayarlarınızı test** etme sayfasında, şimdi için Kullanıcı testini atlamak üzere **testi atla & el ile yapılandır** ' ı tıklatın. Bu, sonraki bölümde gerçekleştirilecek ve Azure portal bazı ayarlar gerektirir.
     
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/addon6b.png)
+    !["Test & el ile yapılandırmayı atla" düğmesinin seçili olduğu "ayarlarınızı test etme" sayfasını gösteren ekran görüntüsü.](./media/samlssojira-tutorial/addon6b.png)
     
 16. Uyarıyı atlamak için **Tamam** ' ı tıklatın.
     
-    ![Tek Sign-On yapılandırma](./media/samlssojira-tutorial/addon6c.png)
+    !["O K" düğmesinin seçili olduğu uyarı iletişim kutusunu gösteren ekran görüntüsü.](./media/samlssojira-tutorial/addon6c.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -256,15 +256,15 @@ Azure AD kullanıcılarının, cira tarafından çözüm GmbH için SAML SSO 'ya
 
 2. Dişli 'nin üzerine gelin ve **Kullanıcı yönetimi** ' ni seçin.
 
-   ![Çalışan Ekle](./media/samlssojira-tutorial/user1.png)
+   ![Açılan ekran görüntüsü, açılan listeden "Kullanıcı Yönetimi" simgesine işaret eden "COG" simgesine işaret eden bir görüntüler.](./media/samlssojira-tutorial/user1.png)
 
 3. Yönetici erişimi sayfasına yönlendiriliyorsunuz, **parolayı** girin ve **Onayla** düğmesine tıklayın.
 
-    ![Çalışan Ekle](./media/samlssojira-tutorial/user2.png) 
+    !["Parola" metin kutusu vurgulanmış "yönetici erişimi" sayfasını gösteren ekran görüntüsü.](./media/samlssojira-tutorial/user2.png) 
 
 4. **Kullanıcı yönetimi** sekmesi bölümünde **Kullanıcı oluştur** ' a tıklayın.
 
-    ![Çalışan Ekle](./media/samlssojira-tutorial/user3-new.png) 
+    !["Kullanıcı oluşturma" düğmesinin seçili olduğu "Kullanıcı Yönetimi" sekmesini gösteren ekran görüntüsü.](./media/samlssojira-tutorial/user3-new.png) 
 
 5. **"Yeni Kullanıcı Oluştur"** iletişim sayfasında aşağıdaki adımları gerçekleştirin. Kullanıcıyı Azure AD 'de tam olarak şöyle oluşturmanız gerekir:
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 62aa8f966126d95af003478e7f43d3ccea2b48cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 833b6413cc5dfde1129075a286e5fe93a06e159f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310416"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890930"
 ---
 # <a name="create-a-map"></a>Harita oluşturma
 
@@ -22,7 +22,7 @@ Bu makalede harita oluşturma ve Haritayı canlandırma yolları gösterilmekted
 
 ## <a name="loading-a-map"></a>Harita yükleme
 
-Eşleme yüklemek için, [Map sınıfının](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)yeni bir örneğini oluşturun. Haritayı başlatırken, Haritayı işlemek için bir DIV öğe KIMLIĞI geçirin ve eşleme yüklenirken kullanılacak bir seçenek kümesi geçirin. Ad alanında varsayılan kimlik doğrulama bilgileri belirtilmemişse `atlas` , eşleme yüklenirken bu bilgilerin eşleme seçeneklerinde belirtilmesi gerekir. Eşleme, performans için birkaç kaynağı zaman uyumsuz olarak yükler. Bu nedenle, eşleme örneğini oluşturduktan sonra `ready` haritaya bir veya olayı ekleyin `load` ve ardından eşleme ile etkileşimde bulunan ek kodu olay işleyicisine ekleyin. Bu `ready` olay, haritada programlı olarak bir şekilde etkileşim altına almak için yeterli miktarda kaynak yüklendiği anda ateşlenir. `load`İlk harita görünümü tamamen yüklemeyi tamamladıktan sonra olay ateşlenir. 
+Eşleme yüklemek için, [Map sınıfının](/javascript/api/azure-maps-control/atlas.map)yeni bir örneğini oluşturun. Haritayı başlatırken, Haritayı işlemek için bir DIV öğe KIMLIĞI geçirin ve eşleme yüklenirken kullanılacak bir seçenek kümesi geçirin. Ad alanında varsayılan kimlik doğrulama bilgileri belirtilmemişse `atlas` , eşleme yüklenirken bu bilgilerin eşleme seçeneklerinde belirtilmesi gerekir. Eşleme, performans için birkaç kaynağı zaman uyumsuz olarak yükler. Bu nedenle, eşleme örneğini oluşturduktan sonra `ready` haritaya bir veya olayı ekleyin `load` ve ardından eşleme ile etkileşimde bulunan ek kodu olay işleyicisine ekleyin. Bu `ready` olay, haritada programlı olarak bir şekilde etkileşim altına almak için yeterli miktarda kaynak yüklendiği anda ateşlenir. `load`İlk harita görünümü tamamen yüklemeyi tamamladıktan sonra olay ateşlenir. 
 
 <br/>
 
@@ -48,10 +48,10 @@ Codepen üzerinde Azure Maps () için bkz. <a href='https://codepen.io/azuremaps
 
 Bir harita oluştururken, eşlemenin aşağıda listelenen şekilde nasıl çalıştığını özelleştirmek için geçirilebilecek birkaç farklı seçenek türü vardır.
 
-- [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions) ve [CameraBoundOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraboundsoptions) , haritanın görüntülemesi gereken alanı belirtmek için kullanılır.
-- [Serviceoptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) , eşlemenin Haritayı destekleyen hizmetlerle nasıl etkileşime gireceğini belirtmek için kullanılır.
-- Stil [seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) , haritanın biçimlendirilmiş ve işlenmiş olması gerektiğini belirtmek için kullanılır.
-- [Userınteractionoptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions) , kullanıcının haritada etkileşim kurarken eşlemenin nasıl ulaşması gerektiğini belirtmek için kullanılır. 
+- [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) ve [CameraBoundOptions](/javascript/api/azure-maps-control/atlas.cameraboundsoptions) , haritanın görüntülemesi gereken alanı belirtmek için kullanılır.
+- [Serviceoptions](/javascript/api/azure-maps-control/atlas.serviceoptions) , eşlemenin Haritayı destekleyen hizmetlerle nasıl etkileşime gireceğini belirtmek için kullanılır.
+- Stil [seçenekleri](/javascript/api/azure-maps-control/atlas.styleoptions) , haritanın biçimlendirilmiş ve işlenmiş olması gerektiğini belirtmek için kullanılır.
+- [Userınteractionoptions](/javascript/api/azure-maps-control/atlas.userinteractionoptions) , kullanıcının haritada etkileşim kurarken eşlemenin nasıl ulaşması gerektiğini belirtmek için kullanılır. 
 
 Bu seçenekler, eşleme yüklendikten sonra,,, ve işlevleri kullanılarak da güncelleştirilir `setCamera` `setServiceOptions` `setStyle` `setUserInteraction` . 
 
@@ -81,7 +81,7 @@ map.setCamera({
 });
 ```
 
-Aşağıdaki kodda bir [harita nesnesi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) oluşturulur ve Ortala ve Yakınlaştır seçenekleri ayarlanır. Orta ve yakınlaştırma düzeyi gibi harita özellikleri [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions)'in bir parçasıdır.
+Aşağıdaki kodda bir [harita nesnesi](/javascript/api/azure-maps-control/atlas.map) oluşturulur ve Ortala ve Yakınlaştır seçenekleri ayarlanır. Orta ve yakınlaştırma düzeyi gibi harita özellikleri [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)'in bir parçasıdır.
 
 <br/>
 
@@ -101,7 +101,7 @@ map.setCamera({
 });
 ```
 
-Aşağıdaki kodda, ile bir [Map nesnesi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) oluşturulur `new atlas.Map()` . Gibi eşleme özellikleri `CameraBoundsOptions` , Map sınıfının [setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) işlevi aracılığıyla tanımlanabilir. Sınırlar ve doldurma özellikleri kullanılarak ayarlanır `setCamera` .
+Aşağıdaki kodda, ile bir [Map nesnesi](/javascript/api/azure-maps-control/atlas.map) oluşturulur `new atlas.Map()` . Gibi eşleme özellikleri `CameraBoundsOptions` , Map sınıfının [setcamera](/javascript/api/azure-maps-control/atlas.map) işlevi aracılığıyla tanımlanabilir. Sınırlar ve doldurma özellikleri kullanılarak ayarlanır `setCamera` .
 
 <br/>
 
@@ -110,7 +110,7 @@ Aşağıdaki kodda, ile bir [Map nesnesi](https://docs.microsoft.com/javascript/
 
 ### <a name="animate-map-view"></a>Harita görünümüne animasyon ekleme
 
-Haritanın kamera seçeneklerini ayarlarken [animasyon seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.animationoptions) de ayarlanabilir. Bu seçenekler, kameranın taşınması için gereken animasyon türünü ve süreyi belirtir.
+Haritanın kamera seçeneklerini ayarlarken [animasyon seçenekleri](/javascript/api/azure-maps-control/atlas.animationoptions) de ayarlanabilir. Bu seçenekler, kameranın taşınması için gereken animasyon türünü ve süreyi belirtir.
 
 ```javascript
 map.setCamera({
@@ -135,7 +135,7 @@ Bazen harita denetimi tarafından yapılan HTTP isteklerini değiştirmek faydal
 - Kutucuk isteklerine ek üstbilgiler ekleyin. Bu, genellikle parola korumalı hizmetler için yapılır.
 - Proxy hizmeti üzerinden istekleri çalıştırmak için URL 'Leri değiştirin.
 
-Eşlemenin [hizmet seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) , `transformRequest` eşleme tarafından yapılan tüm istekleri yapılmadan önce değiştirmek için kullanılabilecek bir öğesine sahip. `transformRequest`Bu seçenek, iki parametre alan bir işlevdir; bir dize URL 'si ve isteğin ne için kullanıldığını gösteren bir kaynak türü dizesi. Bu işlev [requestParameters](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.requestparameters) sonucunu döndürmelidir.
+Eşlemenin [hizmet seçenekleri](/javascript/api/azure-maps-control/atlas.serviceoptions) , `transformRequest` eşleme tarafından yapılan tüm istekleri yapılmadan önce değiştirmek için kullanılabilecek bir öğesine sahip. `transformRequest`Bu seçenek, iki parametre alan bir işlevdir; bir dize URL 'si ve isteğin ne için kullanıldığını gösteren bir kaynak türü dizesi. Bu işlev [requestParameters](/javascript/api/azure-maps-control/atlas.requestparameters) sonucunu döndürmelidir.
 
 ```JavaScript
 transformRequest: (url: string, resourceType: string) => RequestParameters
@@ -171,7 +171,7 @@ var map = new atlas.Map('myMap', {
 
 ## <a name="try-out-the-code"></a>Kodu deneyin
 
-Kod örneklerine bakın. **Js sekmesinin** içindeki JavaScript kodunu düzenleyebilir ve **sonuç sekmesinde**harita görünümü değişikliklerini görebilirsiniz. Ayrıca, sağ üst köşede yer **alan CodePen 'Da Düzenle**' yi tıklatabilir ve kodu CodePen ' da değiştirebilirsiniz.
+Kod örneklerine bakın. **Js sekmesinin** içindeki JavaScript kodunu düzenleyebilir ve **sonuç sekmesinde** harita görünümü değişikliklerini görebilirsiniz. Ayrıca, sağ üst köşede yer **alan CodePen 'Da Düzenle** ' yi tıklatabilir ve kodu CodePen ' da değiştirebilirsiniz.
 
 <a id="relatedReference"></a>
 
@@ -180,7 +180,7 @@ Kod örneklerine bakın. **Js sekmesinin** içindeki JavaScript kodunu düzenley
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Harita](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Harita](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)
@@ -197,4 +197,4 @@ Uygulamanıza işlevsellik eklemek için bkz. kod örnekleri:
 > [Haritaya denetim ekleme](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kod örnekleri](/samples/browse/?products=azure-maps)

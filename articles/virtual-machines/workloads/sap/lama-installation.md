@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 5e20863cd971a55142283676fe035d3238520ae1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be7cfef5c7121d918c375dae216d293d9d56526b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361373"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890488"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure için SAP LaMa bağlayıcısı
 
@@ -181,7 +181,7 @@ SAP Note [2343511]bölümünde listelendiği gibi Oracle veritabanları için de
 
 Oracle veritabanı/Oracle,/Home/oraod1 ve/Home/Oracle için disklere ihtiyaç duyuyor
 
-![Linux 'ta Oracle veritabanı](media/lama/sap-lama-db-ora-lnx.png)
+![Linux üzerinde bir Oracle veritabanı ve ihtiyaç duyacağı diskler gösteren diyagram.](media/lama/sap-lama-db-ora-lnx.png)
 
 #### <a name="manual-deployment-for-microsoft-sql-server"></a>Microsoft SQL Server için el ile dağıtım
 
@@ -274,7 +274,7 @@ SAP yazılım sağlama Yöneticisi 'Ni (SWPM) başlatabilmeniz için, yoks 'nin 
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-ascs -n 255.255.255.128
 ```
 
-SPM 'yi çalıştırın ve *ascs örnek ana bilgisayar adı*için *AH1-ascs* kullanın.
+SPM 'yi çalıştırın ve *ascs örnek ana bilgisayar adı* için *AH1-ascs* kullanın.
 
 ![Linux logosu.][Logo_Linux] Linux  
 Aşağıdaki profile parametresini,/usr/SAP/hostctrl/exe/host_profile konumunda bulunan SAP konak Aracısı profiline ekleyin. Daha fazla bilgi için bkz. SAP Note [2628497].
@@ -319,7 +319,7 @@ NetApp hesabında, kapasite havuzu her havuzun disk boyutunu ve türünü belirt
 
 ![SAP 'nin NetApp kapasite havuzunu oluşturma ](media/lama/sap-lama-capacitypool-list.png)
 
-NFS birimleri artık tanımlanabilir. Tek bir havuzdaki birden fazla sistem için birimler olacağı için, kendi kendine açıklayan bir adlandırma düzeni seçilmelidir. SID ekleme ilgili birimleri birlikte gruplamak için yardımcı olur. Yoks ve as örneği için aşağıdaki takmalar gereklidir: */sapmnt/ \<SID\> *, */usr/SAP/ \<SID\> *ve */Home/ \<sid\> ADM*. İsteğe bağlı olarak, */usr/SAP/Trans* , en azından bir yatay 'ın tüm sistemleri tarafından kullanılan merkezi aktarım dizini için gereklidir.
+NFS birimleri artık tanımlanabilir. Tek bir havuzdaki birden fazla sistem için birimler olacağı için, kendi kendine açıklayan bir adlandırma düzeni seçilmelidir. SID ekleme ilgili birimleri birlikte gruplamak için yardımcı olur. Yoks ve as örneği için aşağıdaki takmalar gereklidir: */sapmnt/ \<SID\>* , */usr/SAP/ \<SID\>* ve */Home/ \<sid\> ADM* . İsteğe bağlı olarak, */usr/SAP/Trans* , en azından bir yatay 'ın tüm sistemleri tarafından kullanılan merkezi aktarım dizini için gereklidir.
 
 > [!NOTE]
 > BETA aşamasında birimlerin adı, abonelik içinde benzersiz olmalıdır.
@@ -381,7 +381,7 @@ HANA kiracısına bağlanmak için uygulama sunucuları tarafından kullanılan 
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-db -n 255.255.255.128
 ```
 
-HANA sanal makinesinde değil, uygulama sunucusu sanal makinesinde SWPM 'nin veritabanı örneği yüklemesini çalıştırın. *SAP sistemi için Iletişim veritabanı*'Ndaki *veritabanı ana bilgisayarı* için *AH1-DB* kullanın.
+HANA sanal makinesinde değil, uygulama sunucusu sanal makinesinde SWPM 'nin veritabanı örneği yüklemesini çalıştırın. *SAP sistemi için Iletişim veritabanı* 'Ndaki *veritabanı ana bilgisayarı* için *AH1-DB* kullanın.
 
 #### <a name="install-sap-netweaver-application-server-for-sap-hana"></a>SAP HANA için SAP NetWeaver uygulama sunucusunu yükler
 
@@ -436,7 +436,7 @@ SAP yazılım sağlama Yöneticisi 'Ni (SWPM) başlatabilmeniz için, yoks 'nin 
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-ascs -n 255.255.255.128
 ```
 
-SPM 'yi çalıştırın ve *ascs örnek ana bilgisayar adı*için *AS1-ascs* kullanın.
+SPM 'yi çalıştırın ve *ascs örnek ana bilgisayar adı* için *AS1-ascs* kullanın.
 
 #### <a name="install-sql-server"></a>SQL Server Yükleme
 
@@ -447,9 +447,9 @@ Veritabanının sanal ana bilgisayar adının IP adresini bir ağ arabirimine ek
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db -n 255.255.255.128
 ```
 
-SQL Server sanal makinesinde SWPM veritabanı örneği yüklemesini çalıştırın. SQL Server bağlanmak için kullanılan ana bilgisayar adını geçersiz kılmak için SAPINST_USE_HOSTNAME =*AS1-DB* kullanın. Sanal makineyi Azure Resource Manager şablonu kullanarak dağıttıysanız, veritabanı veri dosyaları için kullanılan dizini *C:\sql\data* ve veritabanı günlük dosyası için *c:\SQL\LOG*olarak ayarladığınızdan emin olun.
+SQL Server sanal makinesinde SWPM veritabanı örneği yüklemesini çalıştırın. SQL Server bağlanmak için kullanılan ana bilgisayar adını geçersiz kılmak için SAPINST_USE_HOSTNAME = *AS1-DB* kullanın. Sanal makineyi Azure Resource Manager şablonu kullanarak dağıttıysanız, veritabanı veri dosyaları için kullanılan dizini *C:\sql\data* ve veritabanı günlük dosyası için *c:\SQL\LOG* olarak ayarladığınızdan emin olun.
 
-*NT AUTHORITY\SYSTEM* kullanıcısının SQL Server erişimi olduğundan ve sunucu rolü *sysadmin*olduğundan emin olun. Daha fazla bilgi için bkz. SAP Note [1877727] ve [2562184].
+*NT AUTHORITY\SYSTEM* kullanıcısının SQL Server erişimi olduğundan ve sunucu rolü *sysadmin* olduğundan emin olun. Daha fazla bilgi için bkz. SAP Note [1877727] ve [2562184].
 
 #### <a name="install-sap-netweaver-application-server"></a>SAP NetWeaver uygulama sunucusunu yükler
 

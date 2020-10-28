@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici aracı veri toplamayı yapılandırma
 description: Bu makalede stdout/stderr ve ortam değişkenleri günlük toplamayı denetlemek için kapsayıcılar aracısının Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 1644e541ee873a5bb058dd9bde2b82a907a400ff
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f21b841bc129012b684d2a1c59eb72989fe9e0e0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320403"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890505"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici'de aracı veri koleksiyonunu yapılandırma
 
@@ -57,7 +57,7 @@ ConfigMaps genel bir liste ve aracıya yalnızca bir ConfigMap uygulanmış olab
 
 ConfigMap yapılandırma dosyanızı yapılandırmak ve kümenize dağıtmak için aşağıdaki adımları gerçekleştirin.
 
-1. [ConfigMap YAML dosyasını şablon](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-agentconfig.yaml) olarak indirin ve kapsayıcı-AZM-MS-agentconfig. YAML olarak kaydedin. 
+1. [ConfigMap YAML dosyasını şablon](https://aka.ms/container-azm-ms-agentconfig) olarak indirin ve kapsayıcı-AZM-MS-agentconfig. YAML olarak kaydedin. 
 
    > [!NOTE]
    > ConfigMap şablonu kümede zaten varolduğundan, Azure Red Hat OpenShift ile çalışırken bu adım gerekli değildir.
@@ -101,7 +101,7 @@ Yapılandırma değişikliklerini uygulamayla ilgili hatalar İnceleme için de 
     config::error::Exception while parsing config map for log collection/env variable settings: \nparse error on value \"$\" ($end), using defaults, please check config map for errors
     ```
 
-- Log Analytics çalışma alanınızdaki **KubeMonAgentEvents** tablosundan. Veriler, yapılandırma hataları için *hata* önem derecesine sahip saatte bir gönderilir. Herhangi bir hata yoksa, tablodaki *girişte, hiçbir hata raporlayan önem derecesine*sahip veriler olur. **Etiketler** özelliği, hatanın oluştuğu Pod ve kapsayıcı kimliği ve ayrıca ilk oluşum, son oluşum ve Son saatteki sayı hakkında daha fazla bilgi içerir.
+- Log Analytics çalışma alanınızdaki **KubeMonAgentEvents** tablosundan. Veriler, yapılandırma hataları için *hata* önem derecesine sahip saatte bir gönderilir. Herhangi bir hata yoksa, tablodaki *girişte, hiçbir hata raporlayan önem derecesine* sahip veriler olur. **Etiketler** özelliği, hatanın oluştuğu Pod ve kapsayıcı kimliği ve ayrıca ilk oluşum, son oluşum ve Son saatteki sayı hakkında daha fazla bilgi içerir.
 
 - Azure Red Hat OpenShift ile, OpenShift-Azure-Logging günlük koleksiyonunun etkinleştirilip etkinleştirilmediğini doğrulamak üzere **ContainerLog** tablosunu arayarak omsagent günlüklerini kontrol edin.
 

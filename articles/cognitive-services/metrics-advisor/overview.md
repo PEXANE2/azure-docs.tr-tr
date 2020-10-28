@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 858bf042593045059c988ae1b2796b063b33bb6e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 1a57660733b7257b224c38a55059f1bf069495a0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047582"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890264"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Ölçüm Danışmanı (Önizleme) nedir? 
 
@@ -53,16 +53,14 @@ Anomali algılandığında, ölçüm Danışmanı, e-posta kancaları, Web kanca
 İş akışı basittir: verilerinizi ekledikten sonra anomali algılamayı hassas şekilde ayarlayabilir ve senaryonuza uyacak şekilde yapılandırma oluşturabilirsiniz.
 
 1. Ölçüm Danışmanı için [bir Azure kaynağı oluşturun](../cognitive-services-apis-create-account.md) . 
-2. Önceden yapılandırılmış örnek verilerle bir örnek ölçüm Danışmanı örneği görmek için demo sitesini deneyin. 
-3. Web portalını kullanarak ilk monitörünüzü oluşturun.
+2. Web portalını kullanarak ilk monitörünüzü oluşturun.
     1. Verilerinizi ekleme
     2. Anomali algılama için ince ayar yapma
     3. Uyarılara abone olma
     4. Tanılama öngörülerini görüntüleme
-1. Örneğinizi özelleştirmek için REST API kullanın.
+3. Örneğinizi özelleştirmek için REST API kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Demo sitesini](quickstarts/explore-demo.md)deneyin.
 * Hızlı başlangıcı keşfet: [Web 'de ilk ölçümünüzün izlenmesi](quickstarts/web-portal.md).
 * Hızlı başlangıcı keşfet: [çözümünüzü özelleştirmek IÇIN REST API 'Lerini kullanın](quickstarts/rest-api.md).

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 3f6786ad8b7a9a635770be378e3efd0716be2428
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519665"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891511"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -44,11 +44,13 @@ Sanal makinelerinizde Azure oto yönetimi 'ni etkinleştirmeyi denemeden önce g
 - Yalnızca Windows Server VM 'Leri
 - VM 'Ler çalışıyor olmalıdır
 - VM 'Ler desteklenen bir bölgede olmalıdır
-- Kullanıcının doğru izinleri olması gerekir
-- VM 'Ler farklı bir abonelikte bulunan bir Log Analytics çalışma alanına bağlanmalıdır
+- Kullanıcının doğru izinleri olması gerekir (aşağıdaki paragrafa bakın)
 - Oto yönetimi şu anda korumalı alan aboneliklerini desteklemiyor
 
-Mevcut bir oto Yönet hesabı kullanarak, oto yönetimini etkinleştirmek için **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte.
+Mevcut bir oto Yönet hesabı kullanarak VM 'lerde oto yönetimi 'ni etkinleştirmek için VM 'lerinizi içeren kaynak grubunda **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aboneliğiniz üzerinde aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte. 
+
+> [!NOTE]
+> Farklı bir abonelikte bulunan bir çalışma alanına bağlı bir sanal makinede, oto yönetimi 'ni kullanmak istiyorsanız, her bir abonelikte yukarıda açıklanan izinlere sahip olmanız gerekir.
 
 Ayrıca, oto yönetimi 'nin yalnızca şu bölgelerde bulunan Windows VM 'Leri desteklediğini unutmayın: Batı Avrupa, Doğu ABD, Batı ABD 2, Kanada Orta, Orta Batı ABD.
 
@@ -67,7 +69,7 @@ Bu hizmetlerin tümü için otomatik olarak, otomatik yapılandırma, izleme iç
 
 Azure portal, var olan bir sanal makinede ya da yeni bir sanal makine oluştururken, oto yönetimini etkinleştirebilirsiniz. Bu işlemin kısa adımları için, [sanal makineler Için oto yönetimi hızlı](quick-create-virtual-machines-portal.md)başlangıcı ' na göz atın.
 
-SANAL makineniz için Automanage 'u ilk kez etkinleştirdiğinizde, **automanage: Azure sanal makine en iyi yöntemleri**için Azure Portal araması yapabilirsiniz. **Mevcut VM 'de etkinleştir**' e tıklayın, eklemek Istediğiniz VM 'leri seçin, **Seç**' e tıklayın, **Etkinleştir**' e tıklayın ve işiniz bitti demektir.
+SANAL makineniz için Automanage 'u ilk kez etkinleştirdiğinizde, **automanage: Azure sanal makine en iyi yöntemleri** için Azure Portal araması yapabilirsiniz. **Mevcut VM 'de etkinleştir** ' e tıklayın, eklemek Istediğiniz VM 'leri seçin, **Seç** ' e tıklayın, **Etkinleştir** ' e tıklayın ve işiniz bitti demektir.
 
 Bu hizmetleri yönetmek için bu VM ile etkileşimde bulunabilmeniz gereken tek zaman, sanal makinenizin düzeltilmesi için denediğimiz olaydır, ancak bunu yapamadı. VM 'nizi başarılı bir şekilde düzeltmemiz durumunda sizi uyarmadan yine de uyumluluğa geri getirilecektir.
 
@@ -105,7 +107,7 @@ Otomatikmanage hesabı, güvenlik bağlamına veya otomatik işlemlerin oluştu�
 Azure portal deneyiminde, sanal makinelerinizdeki oto yönetimini etkinleştirirken, el ile Yönet hesabı atamanıza veya el ile oluşturmanıza imkan tanıyan, **Azure VM en iyi uygulama** dikey penceresinde gelişmiş bir açılan menü bulunur.
 
 > [!NOTE]
-> Mevcut bir oto Yönet hesabı kullanarak, oto yönetimini etkinleştirmek için **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte.
+> Mevcut bir oto Yönet hesabı kullanarak VM 'lerde oto yönetimi 'ni etkinleştirmek için VM 'lerinizi içeren kaynak grubunda **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aboneliğiniz üzerinde aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte.
 
 
 ## <a name="status-of-vms"></a>VM 'lerin durumu
@@ -121,7 +123,7 @@ Listelenen her VM için şu ayrıntılar görüntülenir: ad, yapılandırma pro
 - *Yapılandırıldı* -VM yapılandırıldı ve bir DRT algılanmadı
 - *Başarısız* -VM 'de düzeltebilecekler ve düzeltilemedi
 
-**Durumu** *başarısız*olarak görürseniz, sanal makinenizin bulunduğu kaynak grubu aracılığıyla dağıtımda sorun giderebilirsiniz. **Kaynak grupları**' na gidin, kaynak grubunuzu seçin, **dağıtımlar** ' a tıklayın ve hata ayrıntılarıyla birlikte *başarısız* durumuna bakın.
+**Durumu** *başarısız* olarak görürseniz, sanal makinenizin bulunduğu kaynak grubu aracılığıyla dağıtımda sorun giderebilirsiniz. **Kaynak grupları** ' na gidin, kaynak grubunuzu seçin, **dağıtımlar** ' a tıklayın ve hata ayrıntılarıyla birlikte *başarısız* durumuna bakın.
 
 
 ## <a name="disabling-automanage-for-vms"></a>VM 'Ler için oto yönetimini devre dışı bırakma
@@ -132,7 +134,7 @@ Azure portal bu işlemleri yapmak için otomatik olarak yönetilen tüm sanal **
 
 :::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Hizmetleri akıllıca ekleyin.":::
 
-Kabul etmiş önce **devre dışı bırakmak**için ortaya çıkan açılan pencerede iletiyi dikkatle okuyun.
+Kabul etmiş önce **devre dışı bırakmak** için ortaya çıkan açılan pencerede iletiyi dikkatle okuyun.
 
 > [!NOTE]
 > Bir VM 'de oto yönetimini devre dışı bırakmak aşağıdaki davranışa neden olur:

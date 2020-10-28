@@ -1,41 +1,33 @@
 ---
-title: "VNet 'e birden çok VPN Gateway siteden siteye bağlantı ekleme: Azure portalı"
+title: "VNet 'e birden çok VPN Gateway siteden siteye bağlantı ekleme: Azure portal"
 description: Mevcut bağlantısı olan bir VPN ağ geçidine çok siteli S2S bağlantıları ekleme
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.workload: infrastructure-services
-ms.date: 09/02/2020
+ms.date: 10/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: ec2516010768eded939b0ffa44c197f102c7766b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "89401206"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890177"
 ---
-# <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Mevcut bir VPN Ağ Geçidi bağlantısı ile bir VNet 'e siteden siteye bağlantı ekleme
+# <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>VNet 'e ek S2S bağlantısı ekleme: Azure portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klasik)](vpn-gateway-multi-site.md)
 >
-> 
 
-Bu makale, Azure portal kullanarak mevcut bağlantısı olan bir VPN ağ geçidine siteden siteye (S2S) bağlantıları eklemenize yardımcı olur. Bu bağlantı türü genellikle "çok siteli" bir yapılandırma olarak adlandırılır. Zaten bir S2S bağlantısı, Noktadan siteye bağlantısı veya VNet-VNet bağlantısı olan bir VNet 'e S2S bağlantısı ekleyebilirsiniz. Bağlantı eklerken bazı sınırlamalar vardır. Yapılandırmanızı başlatmadan önce doğrulamak için bu makaledeki [başlamadan önce](#before) bölümüne bakın. 
+Bu makale, var olan bağlantısı olan bir VPN ağ geçidine siteden siteye (S2S) bağlantılar eklemenize yardımcı olur. Bu mimari genellikle "çok siteli" bir yapılandırma olarak adlandırılır. Zaten bir S2S bağlantısı, Noktadan siteye bağlantısı veya VNet-VNet bağlantısı olan bir VNet 'e S2S bağlantısı ekleyebilirsiniz. Bağlantı eklerken bazı sınırlamalar vardır. Yapılandırmanızı başlatmadan önce doğrulamak için bu makaledeki [önkoşulları](#before) bölümüne bakın.
 
 Bu makale, RouteBased VPN ağ geçidi olan Kaynak Yöneticisi sanal ağlar için geçerlidir. Bu adımlar, yeni ExpressRoute/siteden siteye birlikte var olan bağlantı yapılandırmalarına yönelik olarak geçerli değildir. Ancak, zaten var olan bir birlikte bulunan yapılandırmaya yalnızca yeni bir VPN bağlantısı ekliyorsanız, bu adımları kullanabilirsiniz. Birlikte var olan bağlantılar hakkında bilgi için bkz. [ExpressRoute/S2S birlikte var bağlantıları](../expressroute/expressroute-howto-coexist-resource-manager.md) .
 
-### <a name="deployment-models-and-methods"></a>Dağıtım modelleri ve yöntemleri
-[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+## <a name="prerequisites"></a><a name="before"></a>Önkoşullar
 
-Bu tablo, bu yapılandırma için yeni makaleler ve ek araçlar kullanılabilir hale geldiğinde güncelleştiririz. Bir makale kullanılabildiğinde, bu tablodan doğrudan buna bağlantı veriyoruz.
-
-[!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
-
-## <a name="before-you-begin"></a><a name="before"></a>Başlamadan önce
 Aşağıdaki öğeleri doğrulayın:
 
 * Yeni bir birlikte var olan ExpressRoute ve VPN Gateway yapılandırması yapılandırmadığınızda.
@@ -45,47 +37,49 @@ Aşağıdaki öğeleri doğrulayın:
 * Uyumlu VPN cihazınız ve onu yapılandırabilecek birisi var. Bkz. [VPN Cihazları Hakkında](vpn-gateway-about-vpn-devices.md). VPN cihazınızı yapılandırma konusuyla veya şirket içi ağ yapılandırmanızdaki IP adresi aralıklarıyla ilgili fazla bilginiz yoksa size bu ayrıntıları sağlayabilecek biriyle çalışmanız gerekir.
 * VPN cihazınız için dışarıdan kullanıma açık bir genel IP adresiniz vardır.
 
-## <a name="part-1---configure-a-connection"></a><a name="part1"></a>1. kısım-bağlantı yapılandırma
+## <a name="configure-a-connection"></a><a name="configure"></a>Bağlantı yapılandırma
+
 1. Tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve gerekiyorsa Azure hesabınızda oturum açın.
-2. **Tüm kaynaklar** ' a tıklayın ve kaynak listesinden **sanal ağ geçidinizi** bulun ve tıklatın.
-3. **Sanal ağ geçidi** sayfasında **Bağlantılar**' a tıklayın.
-   
-    ![Bağlantılar sayfası](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Bağlantılar sayfası")<br>
-4. **Bağlantılar** sayfasında **+ Ekle**' ye tıklayın.
-   
-    ![Bağlantı Ekle düğmesi](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Bağlantı Ekle düğmesi")<br>
-5. **Bağlantı ekle** sayfasında, aşağıdaki alanları doldurun:
-   
+1. **Tüm kaynaklar** ' ı seçin ve kaynak listesinden **sanal ağ geçidinizi** bulun ve seçin.
+1. **Sanal ağ geçidi** sayfasında **Bağlantılar** ' ı seçin.
+
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connections.png" alt-text="VPN Gateway bağlantıları":::
+1. **Bağlantılar** sayfasında **+ Ekle** ' yi seçin.
+1. Bu, **bağlantı ekle** sayfasını açar.
+
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="VPN Gateway bağlantıları":::
+1. **Bağlantı ekle** sayfasında, aşağıdaki alanları doldurun:
+
    * **Ad:** Bağlantısını oluşturmakta olduğunuz siteye vermek istediğiniz ad.
    * **Bağlantı türü:** **Siteden siteye (IPSec)** seçeneğini belirleyin.
-     
-     ![Bağlantı sayfası ekle](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Bağlantı sayfası ekle")<br>
 
-## <a name="part-2---add-a-local-network-gateway"></a><a name="part2"></a>Bölüm 2-yerel ağ geçidi ekleme
-1. **Yerel ağ geçidi** ' ne tıklayın ** _yerel ağ geçidi seçin_*_. Bu, _* yerel ağ geçidini Seç sayfasını açar** .
-   
-    ![Yerel ağ geçidi seçin](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Yerel ağ geçidi seçin")<br>
-2. **Yeni oluştur** ' **a tıklayarak Yerel ağ geçidi oluştur** sayfasını açın.
-   
-    ![Yerel ağ geçidi Oluştur sayfası](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Yerel ağ geçidi oluştur")<br>
-3. **Yerel ağ geçidi oluştur** sayfasında, aşağıdaki alanları doldurun:
-   
+## <a name="add-a-local-network-gateway"></a><a name="local"></a>Yerel ağ geçidi ekleme
+
+1. **Yerel ağ geçidi** alanı için **_yerel ağ geçidi seçin_ _ ' i seçin *. Bu, _* yerel ağ geçidi Seç sayfasını açar** .
+1. **+ Yeni oluştur** ' u seçerek **yerel ağ geçidi oluştur** sayfasını açın.
+
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="VPN Gateway bağlantıları":::
+1. **Yerel ağ geçidi oluştur** sayfasında, aşağıdaki alanları doldurun:
+
    * **Ad:** Yerel ağ geçidi kaynağına vermek istediğiniz ad.
-   * **IP adresi:** Bağlanmak istediğiniz sitedeki VPN cihazının genel IP adresi.
+   * **Uç nokta:** Bağlanmak istediğiniz sitedeki VPN cihazının genel IP adresi veya uç noktanın FQDN 'SI.
    * **Adres alanı:** Yeni yerel ağ sitesine yönlendirilmesini istediğiniz adres alanı.
-4. Değişiklikleri kaydetmek için **yerel ağ geçidi oluştur** sayfasında **Tamam** ' a tıklayın.
+1. Değişiklikleri kaydetmek için **yerel ağ geçidi oluştur** sayfasında **Tamam ' ı** seçin.
 
-## <a name="part-3---add-the-shared-key-and-create-the-connection"></a><a name="part3"></a>3. kısım-paylaşılan anahtarı ekleme ve bağlantıyı oluşturma
-1. **Bağlantı ekle** sayfasında, bağlantınızı oluşturmak için kullanmak istediğiniz paylaşılan anahtarı ekleyin. VPN cihazınızdan paylaşılan anahtarı alabilir veya buradan bir tane oluşturun ve ardından VPN cihazınızı aynı paylaşılan anahtarı kullanacak şekilde yapılandırabilirsiniz. Önemli olan şey, anahtarların tamamen aynı olmasıdır.
-   
-    ![Paylaşılan anahtar](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "Paylaşılan anahtar")<br>
-2. Sayfanın alt kısmındaki bağlantıyı oluşturmak için **Tamam** ' ı tıklatın.
+## <a name="add-the-shared-key"></a><a name="part3"></a>Paylaşılan anahtarı ekleme
 
-## <a name="part-4---verify-the-vpn-connection"></a><a name="part4"></a>4. Bölüm-VPN bağlantısını doğrulama
+1. Yerel ağ geçidini oluşturduktan sonra **bağlantı ekle** sayfasına dönün.
+1. Kalan alanları doldurun. **Paylaşılan anahtar (PSK)** için, PAYLAŞıLAN anahtarı VPN cihazınızdan alabilir veya buradan bir tane oluşturun ve ardından VPN cihazınızı aynı paylaşılan anahtarı kullanacak şekilde yapılandırabilirsiniz. Önemli olan şey, anahtarların tamamen aynı olmasıdır.
 
+## <a name="create-the-connection"></a><a name="create"></a>Bağlantıyı oluşturma
 
-[!INCLUDE [vpn-gateway-verify-connection-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+1. Sayfanın alt kısmındaki bağlantıyı oluşturmak için **Tamam** ' ı seçin. Bağlantı hemen oluşturmaya başlar.
+1. Bağlantı tamamlandıktan sonra, onu görüntüleyebilir ve doğrulayabilirsiniz.
+
+## <a name="view-and-verify-the-vpn-connection"></a><a name="verify"></a>VPN bağlantısını görüntüleme ve doğrulama
+
+[!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için bkz. [sanal makineler öğrenme yolu](/learn/paths/deploy-a-website-with-azure-virtual-machines/) .
+Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için bkz. [sanal makinelerin öğrenme yolları](/learn/paths/deploy-a-website-with-azure-virtual-machines/).

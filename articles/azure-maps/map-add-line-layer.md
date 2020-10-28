@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: c1968df19ebc62d47da77b0338d93ceb5f49f2c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cf2f4876d62572ace118562fe5760f2b4010fa5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310535"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891168"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Haritaya bir çizgi katmanı ekleyin
 
@@ -23,7 +23,7 @@ Bir çizgi katmanı `LineString` `MultiLineString` , haritada yollar veya rotala
 > [!TIP]
 > Çizgi katmanları, varsayılan olarak çokgenler koordinatlarını ve bir veri kaynağındaki satırları de işler. Katmanı yalnızca, LineString özelliklerinin, `filter` katman özelliğini olarak ayarlayın `['==', ['geometry-type'], 'LineString']` veya `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` çok kanallı dize özelliklerini de dahil etmek istiyorsanız, bu katmanı sınırlamak için.
 
-Aşağıdaki kod, bir satırın nasıl oluşturulacağını gösterir. Satırı bir veri kaynağına ekleyin ve ardından [linelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer) sınıfını kullanarak bir çizgi katmanı ile işleme koyun.
+Aşağıdaki kod, bir satırın nasıl oluşturulacağını gösterir. Satırı bir veri kaynağına ekleyin ve ardından [linelayer](/javascript/api/azure-maps-control/atlas.layer.linelayer) sınıfını kullanarak bir çizgi katmanı ile işleme koyun.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -88,7 +88,7 @@ Codepen 'da Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer) 
+> [LineLayer](/javascript/api/azure-maps-control/atlas.layer.linelayer) 
 
 > [!div class="nextstepaction"]
 > [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)

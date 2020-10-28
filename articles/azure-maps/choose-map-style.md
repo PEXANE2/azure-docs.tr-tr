@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: e993e3086ac63a6e9d5b8372327e35016b36239f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2d7c9e39cb3eb14a2c2c6a7b13e37f3a526184b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285171"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889808"
 ---
 # <a name="change-the-style-of-the-map"></a>Haritanın stilini değiştirme
 
-Harita denetimi birçok farklı harita [stili seçeneğini](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) ve [temel harita stillerini](supported-map-styles.md)destekler. Harita denetimi başlatıldığında tüm stiller ayarlanabilir. Ya da harita denetiminin işlevini kullanarak stiller ayarlayabilirsiniz `setStyle` . Bu makalede, bu stil seçeneklerinin haritanın görünümünü özelleştirmek için nasıl kullanılacağı gösterilmektedir. Ayrıca, haritada stil seçici denetimini nasıl uygulayacağınızı öğreneceksiniz. Stil Seçici denetimi, kullanıcının farklı temel stiller arasında geçiş yapmasına olanak tanır.
+Harita denetimi birçok farklı harita [stili seçeneğini](/javascript/api/azure-maps-control/atlas.styleoptions) ve [temel harita stillerini](supported-map-styles.md)destekler. Harita denetimi başlatıldığında tüm stiller ayarlanabilir. Ya da harita denetiminin işlevini kullanarak stiller ayarlayabilirsiniz `setStyle` . Bu makalede, bu stil seçeneklerinin haritanın görünümünü özelleştirmek için nasıl kullanılacağı gösterilmektedir. Ayrıca, haritada stil seçici denetimini nasıl uygulayacağınızı öğreneceksiniz. Stil Seçici denetimi, kullanıcının farklı temel stiller arasında geçiş yapmasına olanak tanır.
 
 ## <a name="set-map-style-options"></a>Harita stili seçeneklerini ayarla
 
-Stil seçenekleri, Web denetimi başlatma sırasında ayarlanabilir. Ya da harita denetiminin işlevini çağırarak stil seçeneklerini güncelleştirebilirsiniz `setStyle` . Tüm kullanılabilir stil seçeneklerini görmek için bkz. [stil seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions).
+Stil seçenekleri, Web denetimi başlatma sırasında ayarlanabilir. Ya da harita denetiminin işlevini çağırarak stil seçeneklerini güncelleştirebilirsiniz `setStyle` . Tüm kullanılabilir stil seçeneklerini görmek için bkz. [stil seçenekleri](/javascript/api/azure-maps-control/atlas.styleoptions).
 
 ```javascript
 //Set the style options when creating the map.
@@ -82,7 +82,7 @@ Temel harita stili, `setStyle` işlevi kullanılarak ve `style` farklı bir teme
 map.setStyle({ style: 'satellite' });
 ```
 
-Aşağıdaki kodda, bir eşleme örneği yüklendikten sonra, eşleme stili, ' den `grayscale_dark` `satellite` [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) işlevi kullanılarak güncelleştirilir.
+Aşağıdaki kodda, bir eşleme örneği yüklendikten sonra, eşleme stili, ' den `grayscale_dark` `satellite` [setStyle](/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) işlevi kullanılarak güncelleştirilir.
 
 <br/>
 
@@ -93,7 +93,7 @@ Aşağıdaki kodda, bir eşleme örneği yüklendikten sonra, eşleme stili, ' d
 
 Stil Seçici denetimi, son kullanıcı tarafından taban stilleri arasında geçiş yapmak için kullanılabilecek bir açılır pencere paneli ile kullanımı kolay bir düğme sağlar.
 
-Stil seçicisinin iki farklı düzen seçeneği vardır: `icon` ve `list` . Ayrıca, stil Seçici iki farklı stil Seçici denetim seçeneği seçmenizi sağlar `style` : `light` ve `dark` . Bu örnekte, stil Seçici `icon` düzeni kullanır ve simgeler biçiminde temel harita stillerinin seçim listesini görüntüler. Stil denetimi Seçicisi aşağıdaki temel Stil kümesini içerir: `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` . Stil Seçici denetim seçenekleri hakkında daha fazla bilgi için bkz. [Stil denetimi seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions).
+Stil seçicisinin iki farklı düzen seçeneği vardır: `icon` ve `list` . Ayrıca, stil Seçici iki farklı stil Seçici denetim seçeneği seçmenizi sağlar `style` : `light` ve `dark` . Bu örnekte, stil Seçici `icon` düzeni kullanır ve simgeler biçiminde temel harita stillerinin seçim listesini görüntüler. Stil denetimi Seçicisi aşağıdaki temel Stil kümesini içerir: `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` . Stil Seçici denetim seçenekleri hakkında daha fazla bilgi için bkz. [Stil denetimi seçenekleri](/javascript/api/azure-maps-control/atlas.stylecontroloptions).
 
 Aşağıdaki görüntüde, düzen içinde gösterilen stil Seçici denetimi gösterilmektedir `icon` .
 
@@ -118,16 +118,16 @@ Aşağıdaki kod, varsayılan temel stil listesini geçersiz kılmayı gösterir
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinmek için:
 
 > [!div class="nextstepaction"]
-> [Harita](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Harita](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)
+> [StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions)
 
 > [!div class="nextstepaction"]
-> [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol)
+> [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol)
 
 > [!div class="nextstepaction"]
-> [StyleControlOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)
+> [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
 Haritalar için denetimler ekleyin:
 

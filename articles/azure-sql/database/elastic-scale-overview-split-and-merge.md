@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a646ffe1d306d7ea13da002715d5bd9b907107b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84047527"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793475"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Ölçeği genişletilen bulut veritabanları arasında veri taşıma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -177,7 +177,7 @@ Bölünmüş birleştirme hizmetinin geçerli uygulanması aşağıdaki gereksin
 - İstek işleme sürecinde, bazı kıardı verileri hem kaynak hem de hedef parça üzerinde bulunabilir. Bu, kıarde hareketi sırasında hatalara karşı korunmak için gereklidir. Bölünmüş birleştirme ile parça eşleme tümleştirmesi, parça eşlemesindeki **Openconnectionforkey** yöntemi kullanılarak veriye bağımlı yönlendirme API 'leri üzerinden bağlantıların tutarsız bir ara durum görmemesini sağlar. Ancak, **Openconnectionforkey** metodunu kullanmadan kaynak veya hedef parçalara bağlanırken, ayırma/birleştirme/taşıma istekleri devam edildiğinde tutarsız ara durumlar görünebilir. Bu bağlantılar, bağlantının temelindeki zamanlamaya veya parçaya göre kısmi veya yinelenen sonuçları gösterebilir. Bu kısıtlama Şu anda elastik ölçekli çok parçalı-sorgular tarafından yapılan bağlantıları içerir.
 - Bölünmüş birleştirme hizmeti için meta veri veritabanı farklı roller arasında paylaşılmamalıdır. Örneğin, hazırlama aşamasında çalışan bölünmüş birleştirme hizmetinin bir rolü, üretim rolünden farklı bir meta veri veritabanına işaret ediyor olmalıdır.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Bölünmüş birleştirme hizmeti Microsoft Azure aboneliğinizde bir bulut hizmeti olarak çalışır. Bu nedenle, bulut hizmetleri için ücretler hizmet örneğiniz için geçerlidir. Bölünmüş/birleştirme/taşıma işlemleri sıklıkla gerçekleştirmediğiniz takdirde, bölünmüş birleştirme bulut hizmetinizi silmeniz önerilir. Bu, çalışan veya dağıtılan bulut hizmeti örneklerinin maliyetlerini kaydeder. Her bölme veya birleştirme işlemini gerçekleştirmeniz gerektiğinde, kolayca çalıştırılabilir yapılandırmayı yeniden dağıtabilir ve başlatabilirsiniz.
 
@@ -220,7 +220,7 @@ Bölünmüş birleştirme hizmeti, izleme ve Tanılama için Azure SDK 2,5 temel
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Resource Manager modülü hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
 NuGet paketi tarafından sunulan Web ve çalışan rolleri için tanılama yapılandırmasını kullanarak izlemeyi ve tanılamayı etkinleştirmek için Azure PowerShell kullanarak aşağıdaki komutları çalıştırın:
 
@@ -244,7 +244,7 @@ Tanılama ayarlarını yapılandırma ve dağıtma hakkında daha fazla bilgiye 
 
 ## <a name="retrieve-diagnostics"></a>Tanılamayı al
 
-Sunucu Gezgini ağacının Azure bölümünde Visual Studio Sunucu Gezgini tanılamalara kolayca erişebilirsiniz. Bir Visual Studio örneği açın ve menü çubuğunda görüntüle ' ye tıklayın ve Sunucu Gezgini. Azure aboneliğinize bağlanmak için Azure simgesine tıklayın. Azure-> Storage-> `<your storage account>` -> tabloları-> WADLogsTable 'a gidin. Daha fazla bilgi için bkz. [Sunucu Gezgini](https://msdn.microsoft.com/library/x603htbk.aspx).
+Sunucu Gezgini ağacının Azure bölümünde Visual Studio Sunucu Gezgini tanılamalara kolayca erişebilirsiniz. Bir Visual Studio örneği açın ve menü çubuğunda görüntüle ' ye tıklayın ve Sunucu Gezgini. Azure aboneliğinize bağlanmak için Azure simgesine tıklayın. Azure-> Storage-> `<your storage account>` -> tabloları-> WADLogsTable 'a gidin. Daha fazla bilgi için bkz. [Sunucu Gezgini](/previous-versions/x603htbk(v=vs.140)).
 
 ![WADLogsTable][2]
 

@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/15/2020
-ms.openlocfilehash: 5845ab6419d6914b9221df1ae1280d31aba0ae7a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 10/27/2020
+ms.openlocfilehash: 6354b0a1df9d8c331de0731b230d628ac4e435df
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737530"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891396"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
@@ -68,6 +68,10 @@ Aşağıdaki videoda, metin ile ayrılmış dosya türleri için birçok farklı
 **Şema** kayması: [şema DRFT](concepts-data-flow-schema-drift.md) , sütun değişikliklerini açıkça tanımlamaya gerek kalmadan veri akışlarınızda esnek şemaları yerel olarak işleme Data Factory yeteneğidir. Havuz veri şemasında tanımlandıklarınızın üzerine ek sütunlar yazmak için **şema bitsede Izin ver** ' i etkinleştirin.
 
 **Şemayı doğrula** : şemayı doğrula seçilirse, gelen kaynak şemasının herhangi bir sütunu kaynak projeksiyonda bulunamazsa veya veri türleri eşleşmiyorsa veri akışı başarısız olur. Kaynak verilerin tanımlı projeksiyonun sözleşmesini karşıladığından zorlamak için bu ayarı kullanın. Bu, sütun adlarının veya türlerin değiştiğini bildirmek için veritabanı kaynak senaryolarında yararlı olur.
+
+**Tempdb kullan:** Varsayılan olarak Data Factory, verileri yükleme işleminin bir parçası olarak depolamak için genel geçici bir tablo kullanacaktır. Alternatif olarak, "TempDB kullan" seçeneğinin işaretini kaldırın ve bunun yerine, geçici saklama tablosunu bu havuz için kullanılmakta olan veritabanında bulunan bir kullanıcı veritabanında depolamasını Data Factory isteyebilirsiniz.
+
+!['Nin](media/data-flow/tempdb.png "'Nin")
 
 ## <a name="field-mapping"></a>Alan eşlemesi
 

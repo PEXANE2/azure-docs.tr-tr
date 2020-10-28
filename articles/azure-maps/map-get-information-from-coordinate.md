@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: af31ab04653beb440655c4ab1a75946bed17c01b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31e4004379340912051204786da592fe33a5bd63
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285103"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890760"
 ---
 # <a name="get-information-from-a-coordinate"></a>Bir koordinattan bilgi alma
 
 Bu makalede, tıklanan bir açılan konumun adresini gösteren bir ters adres aramasının nasıl yapılacağı gösterilmektedir.
 
-Ters adres araması yapmak için iki yol vardır. Bir yol, [Azure Maps ters adres ARAMASı API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 'sini bir hizmet modülü aracılığıyla sorgulamanızı sağlar. Diğer bir deyişle, bir adres bulmak için [Azure Maps ters adres ARAMASı API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 'sine bir istek yapmak üzere [Fetch API](https://fetch.spec.whatwg.org/) 'sini kullanmak bu şekilde kullanılır. Her iki yol da aşağıda verilmiştir.
+Ters adres araması yapmak için iki yol vardır. Bir yol, [Azure Maps ters adres ARAMASı API](/rest/api/maps/search/getsearchaddressreverse) 'sini bir hizmet modülü aracılığıyla sorgulamanızı sağlar. Diğer bir deyişle, bir adres bulmak için [Azure Maps ters adres ARAMASı API](/rest/api/maps/search/getsearchaddressreverse) 'sine bir istek yapmak üzere [Fetch API](https://fetch.spec.whatwg.org/) 'sini kullanmak bu şekilde kullanılır. Her iki yol da aşağıda verilmiştir.
 
 ## <a name="make-a-reverse-search-request-via-service-module"></a>Hizmet modülü aracılığıyla ters arama isteği oluşturma
 
@@ -29,15 +29,15 @@ Ters adres araması yapmak için iki yol vardır. Bir yol, [Azure Maps ters adre
 
 Yukarıdaki kodda, ilk blok bir harita nesnesi oluşturur ve kimlik doğrulama mekanizmasını erişim belirtecini kullanacak şekilde ayarlar. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.
 
-İkinci kod bloğu, `TokenCredential` erişim belirteciyle Azure Maps 'A http isteklerinin kimliğini doğrulamak için bir oluşturur. Ardından `TokenCredential` `atlas.service.MapsURL.newPipeline()` ' a geçirir ve bir işlem [hattı](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) örneği oluşturur. , `searchURL` Azure Maps [arama](https://docs.microsoft.com/rest/api/maps/search) işlemlerine yönelik bir URL 'yi temsil eder.
+İkinci kod bloğu, `TokenCredential` erişim belirteciyle Azure Maps 'A http isteklerinin kimliğini doğrulamak için bir oluşturur. Ardından `TokenCredential` `atlas.service.MapsURL.newPipeline()` ' a geçirir ve bir işlem [hattı](/javascript/api/azure-maps-rest/atlas.service.pipeline) örneği oluşturur. , `searchURL` Azure Maps [arama](/rest/api/maps/search) işlemlerine yönelik bir URL 'yi temsil eder.
 
-Üçüncü kod bloğu fare imlecinin stilini bir işaretçiye güncelleştirir ve bir [açılan](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup#open) nesne oluşturur. Yönergeler için [haritada açılan pencere Ekle '](./map-add-popup.md) ye bakabilirsiniz.
+Üçüncü kod bloğu fare imlecinin stilini bir işaretçiye güncelleştirir ve bir [açılan](/javascript/api/azure-maps-control/atlas.popup#open) nesne oluşturur. Yönergeler için [haritada açılan pencere Ekle '](./map-add-popup.md) ye bakabilirsiniz.
 
-Dördüncü kod bloğu, fare tıklaması [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)ekler. Tetiklendiğinde, tıklanan noktanın koordinatları ile bir arama sorgusu oluşturur. Daha sonra, koordinat adresi için [arama adresini al ters API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 'sini sorgulamak üzere [getsearchaddressreverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-)yöntemini kullanır. Daha sonra bir GeoJSON Özellik koleksiyonu, `geojson.getFeatures()` yanıttan yöntemi kullanılarak ayıklanır.
+Dördüncü kod bloğu, fare tıklaması [olay dinleyicisi](/javascript/api/azure-maps-control/atlas.map#events)ekler. Tetiklendiğinde, tıklanan noktanın koordinatları ile bir arama sorgusu oluşturur. Daha sonra, koordinat adresi için [arama adresini al ters API](/rest/api/maps/search/getsearchaddressreverse) 'sini sorgulamak üzere [getsearchaddressreverse](/javascript/api/azure-maps-rest/atlas.service.searchurl#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-)yöntemini kullanır. Daha sonra bir GeoJSON Özellik koleksiyonu, `geojson.getFeatures()` yanıttan yöntemi kullanılarak ayıklanır.
 
 Beşinci kod bloğu, tıklanan koordinat konumunun yanıt adresini görüntüleyen HTML açılan içeriğini ayarlar.
 
-İmleç değişikliği, açılan nesne ve Click olayının hepsi haritanın [yükleme olayı dinleyicisinde](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)oluşturulur. Bu kod yapısı, koordinat bilgilerini almadan önce haritanın tam olarak yüklenmesini sağlar.
+İmleç değişikliği, açılan nesne ve Click olayının hepsi haritanın [yükleme olayı dinleyicisinde](/javascript/api/azure-maps-control/atlas.map#events)oluşturulur. Bu kod yapısı, koordinat bilgilerini almadan önce haritanın tam olarak yüklenmesini sağlar.
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>Fetch API aracılığıyla ters arama isteği oluşturma
 
@@ -48,11 +48,11 @@ Fetch kullanarak bu konum için ters coğrafi kod isteği oluşturmak üzere har
 
 Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur ve kimlik doğrulama mekanizmasını erişim belirtecini kullanacak şekilde ayarlar. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.
 
-İkinci kod bloğu fare imlecinin stilini bir işaretçiye güncelleştirir. Bir [açılır](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup#open) nesne oluşturur. Yönergeler için [haritada açılan pencere Ekle '](./map-add-popup.md) ye bakabilirsiniz.
+İkinci kod bloğu fare imlecinin stilini bir işaretçiye güncelleştirir. Bir [açılır](/javascript/api/azure-maps-control/atlas.popup#open) nesne oluşturur. Yönergeler için [haritada açılan pencere Ekle '](./map-add-popup.md) ye bakabilirsiniz.
 
-Üçüncü kod bloğu fare tıklamaları için bir olay dinleyicisi ekler. Fare tıklamasından sonra, tıklanan koordinat adresi için [Azure Maps ters adres ARAMASı API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 'sini sorgulamak üzere [Fetch API](https://fetch.spec.whatwg.org/) 'sini kullanır. Başarılı bir yanıt için, tıklanan konumun adresini toplar. Açılır sınıfın [SetOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup#setoptions-popupoptions-) işlevini kullanarak açılan içeriği ve konumu tanımlar.
+Üçüncü kod bloğu fare tıklamaları için bir olay dinleyicisi ekler. Fare tıklamasından sonra, tıklanan koordinat adresi için [Azure Maps ters adres ARAMASı API](/rest/api/maps/search/getsearchaddressreverse) 'sini sorgulamak üzere [Fetch API](https://fetch.spec.whatwg.org/) 'sini kullanır. Başarılı bir yanıt için, tıklanan konumun adresini toplar. Açılır sınıfın [SetOptions](/javascript/api/azure-maps-control/atlas.popup#setoptions-popupoptions-) işlevini kullanarak açılan içeriği ve konumu tanımlar.
 
-İmleç değişikliği, açılan nesne ve Click olayının hepsi haritanın [yükleme olayı dinleyicisinde](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)oluşturulur. Bu kod yapısı, koordinat bilgilerini almadan önce haritanın tam olarak yüklenmesini sağlar.
+İmleç değişikliği, açılan nesne ve Click olayının hepsi haritanın [yükleme olayı dinleyicisinde](/javascript/api/azure-maps-control/atlas.map#events)oluşturulur. Bu kod yapısı, koordinat bilgilerini almadan önce haritanın tam olarak yüklenmesini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -62,10 +62,10 @@ Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur ve kimlik doğru
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Harita](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Harita](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Açılan Pencere](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
+> [Açılan Pencere](/javascript/api/azure-maps-control/atlas.popup)
 
 Tam kod örnekleri için aşağıdaki makalelere bakın:
 

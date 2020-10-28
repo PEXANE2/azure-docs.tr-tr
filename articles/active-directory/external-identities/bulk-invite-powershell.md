@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89e24d9ff76184c36aee5c14f15f9713b30f6f1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e047f11cc243ab1a36a8c61dd1b229d9e115115
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87906005"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892494"
 ---
 # <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Öğretici: Azure AD B2B işbirliği kullanıcılarını toplu olarak davet etmek için PowerShell 'i kullanma
 
@@ -29,7 +29,7 @@ ms.locfileid: "87906005"
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="install-the-latest-azureadpreview-module"></a>En son AzureADPreview modülünü yükleme
 
@@ -95,7 +95,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 ## <a name="send-bulk-invitations"></a>Toplu davet gönderme
 
-Davet göndermek için aşağıdaki PowerShell betiğini çalıştırın (burada **c:\bulkinvite\invitations.csv**, CSV dosyasının yoludur):
+Davet göndermek için aşağıdaki PowerShell betiğini çalıştırın (burada **c:\bulkinvite\invitations.csv** , CSV dosyasının yoludur):
 
 ```powershell
 $invitations = import-csv c:\bulkinvite\invitations.csv
@@ -116,7 +116,7 @@ foreach ($email in $invitations)
 
 Betik, Invitations.csv dosyasındaki e-posta adreslerine bir davet gönderir. Her bir kullanıcı için aşağıdakine benzer bir çıktı görmeniz gerekir:
 
-![Kullanıcı kabulünün beklemede olduğunu gösteren PowerShell çıktısı](media/tutorial-bulk-invite/B2BBulkImport.png)
+![Bekleyen Kullanıcı kabulü içeren PowerShell çıkışını gösteren ekran görüntüsü.](media/tutorial-bulk-invite/B2BBulkImport.png)
 
 ## <a name="verify-users-exist-in-the-directory"></a>Kullanıcıların dizinde mevcut olduğunu doğrulama
 
@@ -126,7 +126,7 @@ Davet edilen kullanıcıların Azure AD'ye eklendiğini doğrulamak için aşağ
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-Bir Kullanıcı asıl adı (UPN) ile, davet ettiğiniz kullanıcıları *emadresi*#EXT # etki biçiminde görmeniz gerekir \@ *domain*. Örneğin, *lstokes_fabrikam. com # ext # \@ contoso.onmicrosoft.com*, burada contoso.onmicrosoft.com, davetleri gönderdiğiniz kuruluştur.
+Bir Kullanıcı asıl adı (UPN) ile, davet ettiğiniz kullanıcıları *emadresi* #EXT # etki biçiminde görmeniz gerekir \@ *domain* . Örneğin, *lstokes_fabrikam. com # ext # \@ contoso.onmicrosoft.com* , burada contoso.onmicrosoft.com, davetleri gönderdiğiniz kuruluştur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

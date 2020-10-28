@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yap�
 description: Bu makalede, Azure Stack veya başka bir ortamda barındırılan Kubernetes kümelerini izlemek üzere kapsayıcılar için Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 2d2522118fddcebcb2ca922ed455011e394fac45
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d481af07013c0a5b4c5a381527c6f555400a2559
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994444"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890471"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yapılandırma
 
@@ -16,14 +16,12 @@ Kapsayıcılar için Azure Izleyici, Azure 'da barındırılan kendinden yöneti
 
 ## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
 
-Aşağıdaki konfigürasyonlar, kapsayıcılar için Azure Izleyici ile resmi olarak desteklenir.
+Aşağıdaki konfigürasyonlar, kapsayıcılar için Azure Izleyici ile resmi olarak desteklenir. Farklı bir Kubernetes ve işletim sistemi sürümü sürümüne sahipseniz lütfen adresine bir e-posta gönderin askcoin@microsoft.com .
 
 - Lý
 
     - Şirket içi Kubernetes
-    
-    - Azure 'da AKS altyapısı ve Azure Stack. Daha fazla bilgi için bkz. [Azure Stack aks altyapısı](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
-    
+    - Azure 'da AKS altyapısı ve Azure Stack. Daha fazla bilgi için bkz. [Azure Stack aks altyapısı](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true)
     - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) sürüm 4 ve üzeri, şirket içi veya diğer bulut ortamları.
 
 - Kubernetes ve destek ilkesi sürümleri [desteklenen aks](../../aks/supported-kubernetes-versions.md)sürümleriyle aynıdır.
@@ -110,7 +108,7 @@ DosyacontainerSolutionParams.jsiçindeki parametre değeri için gereken Log Ana
     Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
-    **SubscriptionID**değerini kopyalayın.
+    **SubscriptionID** değerini kopyalayın.
 
 2. Aşağıdaki komutu kullanarak Log Analytics çalışma alanını barındıran aboneliğe geçin:
 
@@ -124,7 +122,7 @@ DosyacontainerSolutionParams.jsiçindeki parametre değeri için gereken Log Ana
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    Çıktıda, çalışma alanı adını bulun ve alan **kimliği**altında bu Log Analytics çalışma alanının tam kaynak kimliğini kopyalayın.
+    Çıktıda, çalışma alanı adını bulun ve alan **kimliği** altında bu Log Analytics çalışma alanının tam kaynak kimliğini kopyalayın.
 
 4. Aşağıdaki JSON söz dizimini kopyalayıp dosyanıza yapıştırın:
 
@@ -204,7 +202,7 @@ DosyacontainerSolutionParams.jsiçindeki parametre değeri için gereken Log Ana
     }
     ```
 
-7. Adım 3 ' te kopyaladığınız değeri kullanarak **workspaceResourceId** değerlerini düzenleyin ve **WorkspaceRegion** for the Azure CLI komutunu çalıştırdıktan sonra **bölge** değerini kopyalayın [az Monitor Log-Analytics Workspace Show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list).
+7. Adım 3 ' te kopyaladığınız değeri kullanarak **workspaceResourceId** değerlerini düzenleyin ve **WorkspaceRegion** for the Azure CLI komutunu çalıştırdıktan sonra **bölge** değerini kopyalayın [az Monitor Log-Analytics Workspace Show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list&preserve-view=true).
 
 8. Bu dosyayı yerel bir klasöre containerSolutionParams.jsolarak kaydedin.
 
@@ -260,13 +258,13 @@ Bu bölümde, kapsayıcılar için Azure Izleyici için Kapsayıcılı aracıyı
 
     `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
 
-    Çıktıda, alan **adı**altında çalışma alanı adını bulun ve sonra bu Log Analytics çalışma alanının çalışma alanı kimliğini **CustomerID**alanı altında kopyalayın.
+    Çıktıda, alan **adı** altında çalışma alanı adını bulun ve sonra bu Log Analytics çalışma alanının çalışma alanı kimliğini **CustomerID** alanı altında kopyalayın.
 
 2. Çalışma alanı için birincil anahtarı tanımlamak üzere aşağıdaki komutu çalıştırın:
 
     `az monitor log-analytics workspace get-shared-keys --resource-group <resourceGroupName> --workspace-name <logAnalyticsWorkspaceName>`
 
-    Çıktıda, **Primarysharedkey**alanının altındaki birincil anahtarı bulun ve değeri kopyalayın.
+    Çıktıda, **Primarysharedkey** alanının altındaki birincil anahtarı bulun ve değeri kopyalayın.
 
 >[!NOTE]
 >Aşağıdaki komutlar yalnızca Held sürüm 2 için geçerlidir. `--name`Parametresinin kullanımı, Held sürüm 3 ile geçerli değildir. 
@@ -277,14 +275,14 @@ Bu bölümde, kapsayıcılar için Azure Izleyici için Kapsayıcılı aracıyı
 3. Aşağıdaki komutu çalıştırarak Azure grafik deposunu yerel listenize ekleyin:
 
     ```
-    helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+    helm repo add microsoft https://microsoft.github.io/charts/repo
     ````
 
 4. Aşağıdaki komutu çalıştırarak grafiği yüklersiniz:
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
+    --set omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<my_prod_cluster> microsoft/azuremonitor-containers
     ```
 
     Log Analytics çalışma alanı Azure Çin 21Vianet ' de ise aşağıdaki komutu çalıştırın:
@@ -305,7 +303,7 @@ Bu bölümde, kapsayıcılar için Azure Izleyici için Kapsayıcılı aracıyı
 
 AKS motoru küme belirtimi json dosyasında API modeli olarak da adlandırılan bir eklenti belirtebilirsiniz. Bu eklenti içinde, `WorkspaceGUID` `WorkspaceKey` toplanan izleme verilerinin depolandığı Log Analytics çalışma alanının Base64 kodlamalı sürümünü sağlayın. `WorkspaceGUID` `WorkspaceKey` Önceki bölümde 1 ve 2. adımları kullanarak ve ' i bulabilirsiniz.
 
-Azure Stack hub kümesi için desteklenen API tanımları, bu örnekte [kubernetes-container-monitoring_existing_workspace_id_and_key.js](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json)bulunabilir. Özellikle, **Kubernetesconfig**içinde **addons** özelliğini bulabilirsiniz:
+Azure Stack hub kümesi için desteklenen API tanımları, bu örnekte [kubernetes-container-monitoring_existing_workspace_id_and_key.js](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json)bulunabilir. Özellikle, **Kubernetesconfig** içinde **addons** özelliğini bulabilirsiniz:
 
 ```json
 "orchestratorType": "Kubernetes",
@@ -351,11 +349,11 @@ Ara sunucu yapılandırma değeri aşağıdaki sözdizimine sahiptir: `[protocol
 
 Örnek: `omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
 
-Protokolü **http**olarak BELIRTIRSENIZ, http istekleri SSL/TLS güvenli bağlantı kullanılarak oluşturulur. Ara sunucunuzun SSL/TLS protokollerini desteklemesi gerekir.
+Protokolü **http** olarak BELIRTIRSENIZ, http istekleri SSL/TLS güvenli bağlantı kullanılarak oluşturulur. Ara sunucunuzun SSL/TLS protokollerini desteklemesi gerekir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Karma Kubernetes kümeniz için izlemeyi etkinleştirmeye çalışırken bir hatayla karşılaşırsanız, PowerShell betiği [TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) kopyalayın ve bilgisayarınızdaki bir klasöre kaydedin. Bu betik, karşılaşılan sorunları algılamaya ve gidermeye yardımcı olmak için sağlanır. Algılama ve düzeltme girişimi için tasarlanan sorunlar şunlardır:
+Karma Kubernetes kümeniz için izlemeyi etkinleştirmeye çalışırken bir hatayla karşılaşırsanız, PowerShell betiği [TroubleshootError_nonAzureK8s.ps1](https://aka.ms/troubleshoot-non-azure-k8s) kopyalayın ve bilgisayarınızdaki bir klasöre kaydedin. Bu betik, karşılaşılan sorunları algılamaya ve gidermeye yardımcı olmak için sağlanır. Algılama ve düzeltme girişimi için tasarlanan sorunlar şunlardır:
 
 - Belirtilen Log Analytics çalışma alanı geçerli
 - Log Analytics çalışma alanı, kapsayıcılar için Azure Izleyici çözümü ile yapılandırılır. Aksi takdirde, çalışma alanını yapılandırın.

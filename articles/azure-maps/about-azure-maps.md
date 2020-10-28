@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 082695069a66efb3919be0667407ba73d963c572
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91285341"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889961"
 ---
 # <a name="what-is-azure-maps"></a>Azure Haritalar nedir?
 
@@ -60,29 +60,29 @@ Azure Maps, Azure uygulamalarınıza coğrafi içerik sağlayabilen aşağıdaki
 
 ### <a name="data-service"></a>Veri hizmeti
 
-Haritalar için veriler zorunludur. Uzamsal işlemler veya görüntü kompozisyonu ile kullanmak üzere Jeo uzamsal verileri karşıya yüklemek ve depolamak için veri hizmetini kullanın.  Müşteri verilerini Azure Maps hizmetine yaklaştırma gecikme süresini azaltır, üretkenliği artırabilir ve uygulamalarınızda yeni senaryolar oluşturur. Bu hizmetle ilgili ayrıntılar için bkz. [Data Service belgeleri](https://docs.microsoft.com/rest/api/maps/data).
+Haritalar için veriler zorunludur. Uzamsal işlemler veya görüntü kompozisyonu ile kullanmak üzere Jeo uzamsal verileri karşıya yüklemek ve depolamak için veri hizmetini kullanın.  Müşteri verilerini Azure Maps hizmetine yaklaştırma gecikme süresini azaltır, üretkenliği artırabilir ve uygulamalarınızda yeni senaryolar oluşturur. Bu hizmetle ilgili ayrıntılar için bkz. [Data Service belgeleri](/rest/api/maps/data).
 
 ### <a name="geolocation-service"></a>Coğrafi Konum hizmeti
 
 Bir IP adresi için alınan iki harfli ülke/bölge kodunu önizlemek üzere coğrafi konum hizmetini kullanın. Bu hizmet, coğrafi konuma göre özelleştirilmiş uygulama içeriği sağlayarak kullanıcı deneyimini geliştirmenize yardımcı olabilir.
 
-Daha fazla ayrıntı için [coğrafi konum hizmeti belgelerini](https://docs.microsoft.com/rest/api/maps/geolocation)okuyun.
+Daha fazla ayrıntı için [coğrafi konum hizmeti belgelerini](/rest/api/maps/geolocation)okuyun.
 
 ### <a name="mobility-service"></a>Mobility hizmeti
 
 Azure haritalar Mobility hizmeti, aktarım yönlendirme ve yakın ortak aktarım için arama gibi genel aktarım özelliklerine sahip uygulamalar için geliştirme süresini geliştirir. Kullanıcılar, aktarım duraklarının, satırların ve zamanlamalarla ilgili ayrıntılı bilgi alabilir. Mobility hizmeti ayrıca kullanıcıların durdurma ve çizgi geometrileri, duruyor, satırlar ve hizmet alanlarıyla ilgili uyarıları ve gerçek zamanlı genel transit ve hizmet uyarılarını almasına olanak tanır. Ayrıca, Mobility hizmeti çok kalıcı seyahat planlama seçenekleriyle yönlendirme özellikleri sağlar. Çoklu kalıcı seyahat planlaması, tek seyahat halinde yürüyen, Bicycling ve genel aktarım seçeneklerini içerir. Kullanıcılar, ayrıntılı çok kalıcı adım adım yolculuk de erişebilir.
 
-Hizmet hakkında daha fazla bilgi edinmek için bkz. [Mobility hizmeti belgeleri](https://docs.microsoft.com/rest/api/maps/mobility).
+Hizmet hakkında daha fazla bilgi edinmek için bkz. [Mobility hizmeti belgeleri](/rest/api/maps/mobility).
 
 ### <a name="render-service"></a>İşleme hizmeti
 
-Şu anda önizleme aşamasında olan [render Service v2](https://docs.microsoft.com/rest/api/maps/renderv2) , [Get Map kutucuğu v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)'sinin yeni bir sürümünü sunmaktadır. Get Map kutucuğu v2 API 'SI artık müşterilerin Azure haritalar Oluşturucu kullanılarak oluşturulan Azure Maps yol kutucukları, hava durumu kutucukları veya harita kutucukları istemesine olanak tanır. Yeni Get Map kutucuğu v2 API 'sini kullanmanız önerilir.  
+Şu anda önizleme aşamasında olan [render Service v2](/rest/api/maps/renderv2) , [Get Map kutucuğu v2 API](/rest/api/maps/renderv2/getmaptilepreview)'sinin yeni bir sürümünü sunmaktadır. Get Map kutucuğu v2 API 'SI artık müşterilerin Azure haritalar Oluşturucu kullanılarak oluşturulan Azure Maps yol kutucukları, hava durumu kutucukları veya harita kutucukları istemesine olanak tanır. Yeni Get Map kutucuğu v2 API 'sini kullanmanız önerilir.  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Azure Maps web SDK kullanılarak oluşturulan popülasyon değişikliğinin örnek Haritası":::
 
-Daha fazla ayrıntı için, [işleme hizmeti v2 belgelerini](https://docs.microsoft.com/rest/api/maps/renderv2)okuyun.
+Daha fazla ayrıntı için, [işleme hizmeti v2 belgelerini](/rest/api/maps/renderv2)okuyun.
 
-GA (genel kullanılabilirlik) olan Işleme hizmeti v1 hakkında daha fazla bilgi edinmek için bkz. [hizmet v1 belgeleri işleme](https://docs.microsoft.com/rest/api/maps/render).  
+GA (genel kullanılabilirlik) olan Işleme hizmeti v1 hakkında daha fazla bilgi edinmek için bkz. [hizmet v1 belgeleri işleme](/rest/api/maps/render).  
 
 ### <a name="route-service"></a>Yönlendirme hizmeti
 
@@ -96,7 +96,7 @@ Rota hizmeti, Gelişmiş küme özellikleri sunar, örneğin:
 * Bir çıkış ve hedef kümesi arasındaki seyahat süresi ve mesafenin matrisleri.
 * Kullanıcıların zaman veya yakıt gereksinimlerine göre geçebileceği rotaları veya uzaklıkları bulma.
 
-Yönlendirme özellikleri hakkında ayrıntılı bilgi için [route hizmeti belgelerini](https://docs.microsoft.com/rest/api/maps/route)okuyun.
+Yönlendirme özellikleri hakkında ayrıntılı bilgi için [route hizmeti belgelerini](/rest/api/maps/route)okuyun.
 
 ### <a name="search-service"></a>Arama hizmeti
 
@@ -111,13 +111,13 @@ Arama hizmeti Ayrıca, gibi gelişmiş özellikler de sağlar:
 * Arama istekleri grubunu toplu olarak oluşturma.
 * Elektrik araç doldurma istasyonlarını ve Ilgi noktası (POı) verilerini marka adına göre arayın.
 
-Arama özellikleri hakkında daha fazla bilgi için [Arama hizmeti belgelerini](https://docs.microsoft.com/rest/api/maps/search)okuyun.
+Arama özellikleri hakkında daha fazla bilgi için [Arama hizmeti belgelerini](/rest/api/maps/search)okuyun.
 
 ### <a name="spatial-service"></a>Uzamsal hizmet
 
 Uzamsal hizmet, müşterilerin zaman ve alanda oluşan devam eden olayları bilgilendirmesine yardımcı olmak için konum bilgilerini hızlıca analiz eder. Neredeyse gerçek zamanlı analizler ve olayların modellenmesi sağlar.
 
-Hizmet, müşterilerin konum zekasını ortak Jeo uzamsal matematik hesaplamaları kitaplığıyla geliştirmesini sağlar. Yaygın hesaplamalar, en yakın nokta, büyük daire uzaklığı ve arabellekleri içerir. Hizmet ve çeşitli özellikler hakkında daha fazla bilgi edinmek için, [uzamsal hizmet belgelerini](https://docs.microsoft.com/rest/api/maps/spatial)okuyun.
+Hizmet, müşterilerin konum zekasını ortak Jeo uzamsal matematik hesaplamaları kitaplığıyla geliştirmesini sağlar. Yaygın hesaplamalar, en yakın nokta, büyük daire uzaklığı ve arabellekleri içerir. Hizmet ve çeşitli özellikler hakkında daha fazla bilgi edinmek için, [uzamsal hizmet belgelerini](/rest/api/maps/spatial)okuyun.
 
 ### <a name="timezone-service"></a>Saat dilimi hizmeti
 
@@ -155,7 +155,7 @@ Saat dilimi hizmetine bir sorgu için tipik bir JSON yanıtı aşağıdaki örne
 }
 ```
 
-Bu hizmetle ilgili ayrıntılar için [saat dilimi hizmeti belgelerini](https://docs.microsoft.com/rest/api/maps/timezone)okuyun.
+Bu hizmetle ilgili ayrıntılar için [saat dilimi hizmeti belgelerini](/rest/api/maps/timezone)okuyun.
 
 ### <a name="traffic-service"></a>Trafik hizmeti
 
@@ -166,15 +166,15 @@ Trafik hizmeti, geliştiricilerin trafik bilgileri gerektiren Web uygulamaları 
 
 ![Trafik bilgilerine sahip bir harita örneği](media/about-azure-maps/intro_traffic.png)
 
-Daha fazla bilgi için bkz. [trafik hizmeti belgeleri](https://docs.microsoft.com/rest/api/maps/traffic).
+Daha fazla bilgi için bkz. [trafik hizmeti belgeleri](/rest/api/maps/traffic).
 
 ### <a name="weather-service"></a>Hava durumu hizmeti
 
 Hava durumu hizmeti, geliştiricilerin belirli bir konum için hava durumu bilgilerini almak üzere kullanabileceği API 'Ler sunar. Bilgiler, gözlem tarihi ve saati, hava durumu koşullarının kısa açıklaması, hava durumu simgesi, yağış gösterge bayrakları, sıcaklık ve rüzgar hızı bilgilerinin ayrıntılarını içerir. ™ Sıcaklık ve UV dizini gibi ek ayrıntılar da döndürülür.
 
-Geliştiriciler, belirli bir rota hakkında hava durumu bilgilerini almak için [Hava durumu ve rota API](https://docs.microsoft.com/rest/api/maps/weather/getweatheralongroutepreview) 'sini kullanabilir. Ayrıca hizmet, bir veya daha ağır yağmur gibi hava durumu riskleri tarafından etkilenen waypoints için hava durumu bildirimleri oluşturmayı destekler.
+Geliştiriciler, belirli bir rota hakkında hava durumu bilgilerini almak için [Hava durumu ve rota API](/rest/api/maps/weather/getweatheralongroutepreview) 'sini kullanabilir. Ayrıca hizmet, bir veya daha ağır yağmur gibi hava durumu riskleri tarafından etkilenen waypoints için hava durumu bildirimleri oluşturmayı destekler.
 
-[Get Map kutucuğu v2 API 'si](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) , geçmiş, güncel ve gelecekteki radar ve uydu kutucukları isteyebilmeniz için izin verir.
+[Get Map kutucuğu v2 API 'si](/rest/api/maps/renderv2/getmaptilepreview) , geçmiş, güncel ve gelecekteki radar ve uydu kutucukları isteyebilmeniz için izin verir.
 
 ![Gerçek zamanlı hava durumu radar kutucukları ile harita örneği](media/about-azure-maps/intro_weather.png)
 
@@ -184,21 +184,21 @@ Haritalar Oluşturucu hizmeti, geliştiricilerin, ınkapımap verilerine dayalı
 
 Haritalar Oluşturucu üç çekirdek hizmeti sağlar:
 
-* [Veri kümesi hizmeti](https://docs.microsoft.com/rest/api/maps/dataset). Dönüştürülmüş bir çizim paketi verilerinden bir veri kümesi oluşturmak için veri kümesi hizmetini kullanın. Paket gereksinimlerini çizme hakkında daha fazla bilgi için bkz. çizim paketi gereksinimleri.
+* [Veri kümesi hizmeti](/rest/api/maps/dataset). Dönüştürülmüş bir çizim paketi verilerinden bir veri kümesi oluşturmak için veri kümesi hizmetini kullanın. Paket gereksinimlerini çizme hakkında daha fazla bilgi için bkz. çizim paketi gereksinimleri.
 
-* [Dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/dataset). Bir DWG tasarım dosyasını, ınkapımaps için çizim paketi verilerine dönüştürmek için dönüştürme hizmetini kullanın.
+* [Dönüştürme hizmeti](/rest/api/maps/dataset). Bir DWG tasarım dosyasını, ınkapımaps için çizim paketi verilerine dönüştürmek için dönüştürme hizmetini kullanın.
 
-* [Tileset hizmeti](https://docs.microsoft.com/rest/api/maps/tileset). Bir veri kümesinin vektör tabanlı temsilini oluşturmak için tileset hizmetini kullanın. Uygulamalar, veri kümesinin görsel kutucuk tabanlı görünümünü sunmak için bir tileset kullanabilir.
+* [Tileset hizmeti](/rest/api/maps/tileset). Bir veri kümesinin vektör tabanlı temsilini oluşturmak için tileset hizmetini kullanın. Uygulamalar, veri kümesinin görsel kutucuk tabanlı görünümünü sunmak için bir tileset kullanabilir.
 
-* [Özellik durumu hizmeti](https://docs.microsoft.com/rest/api/maps/featurestate). Dinamik harita stillendirilmesini desteklemek için özellik durumu hizmetini kullanın. Dinamik harita stili, uygulamaların IoT sistemleri tarafından sunulan alanlara gerçek zamanlı olayları yansıtmaları sağlar.
+* [Özellik durumu hizmeti](/rest/api/maps/featurestate). Dinamik harita stillendirilmesini desteklemek için özellik durumu hizmetini kullanın. Dinamik harita stili, uygulamaların IoT sistemleri tarafından sunulan alanlara gerçek zamanlı olayları yansıtmaları sağlar.
 
-* [WFS hizmeti](https://docs.microsoft.com/rest/api/maps/featurestate). Inkapımap verilerinizi sorgulamak için WFS hizmetini kullanın. WFS hizmeti, tek bir veri kümesini sorgulamak için [Open GEOSPATIAL CONSORTIUM API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) standartlarını izler.
+* [WFS hizmeti](/rest/api/maps/featurestate). Inkapımap verilerinizi sorgulamak için WFS hizmetini kullanın. WFS hizmeti, tek bir veri kümesini sorgulamak için [Open GEOSPATIAL CONSORTIUM API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) standartlarını izler.
 
 ## <a name="programming-model"></a>Programlama modeli
 
-Azure haritalar, taşınabilirlik için geliştirilmiştir ve platformlar arası uygulamalar geliştirmenize yardımcı olabilir. Dil belirsiz bir programlama modeli kullanır ve [REST API 'ler](https://docs.microsoft.com/rest/api/maps/)aracılığıyla JSON çıkışını destekler.
+Azure haritalar, taşınabilirlik için geliştirilmiştir ve platformlar arası uygulamalar geliştirmenize yardımcı olabilir. Dil belirsiz bir programlama modeli kullanır ve [REST API 'ler](/rest/api/maps/)aracılığıyla JSON çıkışını destekler.
 
-Ayrıca, Azure Maps basit bir programlama modeliyle kullanışlı bir [JavaScript harita denetimi](https://docs.microsoft.com/javascript/api/azure-maps-control) sunar. Geliştirme, hem Web uygulamaları hem de mobil uygulamalar için hızlı ve kolaydır.
+Ayrıca, Azure Maps basit bir programlama modeliyle kullanışlı bir [JavaScript harita denetimi](/javascript/api/azure-maps-control) sunar. Geliştirme, hem Web uygulamaları hem de mobil uygulamalar için hızlı ve kolaydır.
 
 ## <a name="power-bi-visual"></a>Power BI görseli
 

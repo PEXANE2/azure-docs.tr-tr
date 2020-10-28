@@ -6,18 +6,18 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: d2a936a6acb6491c57cb1460c83ec0253561b102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae2bc6e87f0b694e949057280233c19e0b98132c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445670"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892239"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-chromebook"></a>Bir Kmebook üzerinde Uzak Masaüstü Protokolü kullanarak bir VM 'ye bağlanma
 Bu bölümde, bir öğrencinin RDP kullanarak bir Kmebook 'tan bir derslik laboratuvar VM 'sine nasıl bağlanabildiği gösterilmektedir.
 
 ## <a name="install-microsoft-remote-desktop-on-a-chromebook"></a>Bir Kmebook 'a Microsoft Uzak Masaüstü yüklemesi
-1. Kmebook 'inizdeki uygulama mağazasını açın ve **Microsoft Uzak Masaüstü**arayın.
+1. Kmebook 'inizdeki uygulama mağazasını açın ve **Microsoft Uzak Masaüstü** arayın.
 
     ![Microsoft Uzak Masaüstü](./media/how-to-use-classroom-lab/install-ms-remote-desktop-chromebook.png)
 1. En son Microsoft Uzak Masaüstü sürümünü yükler. 
@@ -28,7 +28,7 @@ Bu bölümde, bir öğrencinin RDP kullanarak bir Kmebook 'tan bir derslik labor
     ![VM’ye bağlanma](./media/how-to-use-classroom-lab/connect-vm-chromebook.png)
 
 1. İstendiğinde parolanızı girin.
-    ![VM’ye bağlanma](./media/how-to-use-classroom-lab/password-chromebook.png)
+    ![Kullanıcı adınızı ve parolanızı girdiğiniz oturum açma ekranını gösteren ekran görüntüsü.](./media/how-to-use-classroom-lab/password-chromebook.png)
 
 
 1. Aşağıdaki uyarıyı alırsanız **devam** ' ı seçin. 

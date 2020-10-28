@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 169ad40e32f688ae20a9d02f61db161844b1254a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87309350"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890522"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Application Insights akıllı algılama kurallarını yönetme
 
@@ -21,12 +21,12 @@ Bu yöntem, Azure Resource Manager otomasyonu ile yeni Application Insights kayn
 ## <a name="smart-detection-rule-configuration"></a>Akıllı algılama kuralı yapılandırması
 
 Akıllı algılama kuralı için aşağıdaki ayarları yapılandırabilirsiniz:
-- Kural etkinse (varsayılan değer **true**'dur.)
-- E-postaların, aboneliğin [Izleme okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader) ile ilişkili kullanıcılara gönderilmesi ve bir algılama bulunduğunda [katkıda bulunan rollerinin izlenmesi](../../role-based-access-control/built-in-roles.md#monitoring-contributor) gerekir (varsayılan değer **true**'dur.)
+- Kural etkinse (varsayılan değer **true** 'dur.)
+- E-postaların, aboneliğin [Izleme okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader) ile ilişkili kullanıcılara gönderilmesi ve bir algılama bulunduğunda [katkıda bulunan rollerinin izlenmesi](../../role-based-access-control/built-in-roles.md#monitoring-contributor) gerekir (varsayılan değer **true** 'dur.)
 - Bir algılama bulunduğunda bildirim alması gereken ek e-posta alıcıları.
-    -  _Önizleme_olarak Işaretlenen akıllı algılama kuralları için e-posta yapılandırması kullanılamaz.
+    -  _Önizleme_ olarak Işaretlenen akıllı algılama kuralları için e-posta yapılandırması kullanılamaz.
 
-Azure Resource Manager aracılığıyla kural ayarlarını yapılandırmaya izin vermek için, akıllı algılama kuralı yapılandırması artık **ProactiveDetectionConfigs**adlı Application Insights kaynağında iç kaynak olarak kullanılabilir.
+Azure Resource Manager aracılığıyla kural ayarlarını yapılandırmaya izin vermek için, akıllı algılama kuralı yapılandırması artık **ProactiveDetectionConfigs** adlı Application Insights kaynağında iç kaynak olarak kullanılabilir.
 En fazla esneklik için, her akıllı algılama kuralı benzersiz bildirim ayarlarıyla yapılandırılabilir.
 
 ## <a name="examples"></a>Örnekler
@@ -44,7 +44,7 @@ Application Insights kaynak adını değiştirdiğinizden ve ilgili akıllı alg
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -75,7 +75,7 @@ Application Insights kaynak adını değiştirdiğinizden ve ilgili akıllı alg
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -106,7 +106,7 @@ Application Insights kaynak adını değiştirdiğinizden ve ilgili akıllı alg
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -120,7 +120,7 @@ Application Insights kaynak adını değiştirdiğinizden ve ilgili akıllı alg
           "properties": {
             "name": "longdependencyduration",
             "sendEmailsToSubscriptionOwners": true,
-            "customEmails": ['alice@contoso.com', 'bob@contoso.com'],
+            "customEmails": ["alice@contoso.com", "bob@contoso.com"],
             "enabled": true
           }
         }

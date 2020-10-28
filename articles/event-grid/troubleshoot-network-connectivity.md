@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 5eb40d464fb718f0bd6dffe0d00f6420f4ea4995
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b93d7a110889192bb5be6fffa56a73758d6faa2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119013"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892324"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Bağlantı sorunlarını giderme-Azure Event Grid
 
@@ -22,7 +22,7 @@ Bu makalede Azure Event Grid bağlantı sorunlarını gidermeye yönelik ipuçla
 
 Uygulama, olay kılavuzuna hiç bağlanamıyorsa, sorunu gidermek için bu bölümdeki adımları izleyin.
 
-### <a name="check-if-there-is-a-service-outage"></a>Hizmet kesintisi olup olmadığını denetleyin
+### <a name="check-if-theres-a-service-outage"></a>Hizmet kesintisi olup olmadığını denetleyin
 
 [Azure hizmet durumu sitesinde](https://azure.microsoft.com/status/)Azure Event Grid hizmet kesintisi olup olmadığını denetleyin.
 
@@ -50,12 +50,14 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 Azure ile çalışırken, bazı durumlarda kurumsal güvenlik duvarınızdaki veya ara ortamınızdaki belirli IP adresi aralıklarına veya URL 'Lerine, kullanmakta olduğunuz veya kullanmaya çalıştığınız tüm Azure hizmetlerine erişim izni vermeniz gerekir. Event Grid tarafından kullanılan IP adreslerinde trafiğe izin verildiğini doğrulayın. Azure Event Grid tarafından kullanılan IP adresleri için: bkz. [Azure IP aralıkları ve hizmet etiketleri-genel bulut](https://www.microsoft.com/download/details.aspx?id=56519) ve [hizmet etiketi-AzureEventGrid](network-security.md#service-tags).
 
+[Azure IP aralıkları ve hizmet etiketleri-genel bulut](https://www.microsoft.com/download/details.aspx?id=56519) belgesi ayrıca **bölgeye göre** IP adreslerini listeler. **Konunun bölgesi** ve şirket güvenlik duvarınız veya ara sunucunuzda **eşleştirilmiş bölge** için adres aralıklarına izin verebilirsiniz. Bölgenin eşleştirilmiş bir bölgesi için bkz. [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşleştirilmiş bölgeleri](/azure/best-practices-availability-paired-regions). 
+
 > [!NOTE]
 > Yeni IP adresleri AzureEventGrid Service etiketine eklenebilse de, her zamanki gibi. Bu nedenle, hizmet etiketlerinde haftalık bir denetim yapmanız iyi olur.
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Ağ güvenlik gruplarında AzureEventGrid Service etiketine izin verildiğini doğrulayın
 
-Uygulamanız bir alt ağ içinde çalışıyorsa ve ilişkili bir ağ güvenlik grubu varsa, internet giden ya da AzureEventGrid hizmet etiketine izin verilip verilmeyeceğini onaylayın. Lütfen bkz. [hizmet etiketleri](../virtual-network/service-tags-overview.md)
+Uygulamanız bir alt ağ içinde çalışıyorsa ve ilişkili bir ağ güvenlik grubu varsa, internet giden ya da AzureEventGrid hizmet etiketine izin verilip verilmeyeceğini onaylayın. Bkz. [hizmet etiketleri](../virtual-network/service-tags-overview.md)
 
 ### <a name="check-the-ip-firewall-settings-for-your-topicdomain"></a>Konağınız/etki alanınız için IP güvenlik duvarı ayarlarını denetleyin
 
@@ -63,13 +65,13 @@ Uygulamanın üzerinde çalıştığı makinenin genel IP adresinin EventGrid ko
 
 Varsayılan olarak, Event Grid konular/etki alanları, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece internet 'ten erişilebilir. IP güvenlik duvarı ile bunu, [CIDR (sınıfsız Inter-Domain yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir IPv4 adresi veya IPv4 adres aralıkları kümesiyle sınırlayabilirsiniz.
 
-IP güvenlik duvarı kuralları Event Grid konusu/etki alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokolü kullanarak istemcilerden gelen tüm bağlantılara uygulanır. Event Grid konusu/etki alanında izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimleri yasaklanmış olarak reddedilir. Yanıt, IP kuralından bahsetmiyor.
+IP güvenlik duvarı kuralları Event Grid konusu/etki alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokolü kullanarak istemcilerden gelen tüm bağlantılara uygulanır. Event Grid konusu/etki alanında izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimleri yasaklanmış olarak reddedilir. Yanıt, IP kuralından bahsetmez.
 
 Daha fazla bilgi için bkz. [bir Azure Event Grid konusu/etki alanı IÇIN IP güvenlik duvarı kurallarını yapılandırma](configure-firewall.md).
 
 #### <a name="find-the-ip-addresses-blocked-by-ip-firewall"></a>IP güvenlik duvarı tarafından engellenen IP adreslerini bulma
 
-Tanılama günlüklerini [etkinleştirmek](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-a-custom-topic)Event Grid konu/etki alanı tanılama günlüklerini etkinleştirin. Reddedilen bağlantı için IP adresi görüntülenir.
+Tanılama günlüklerini [etkinleştirmek](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-a-custom-topic)Event Grid konu/etki alanı tanılama günlüklerini etkinleştirin. Reddedilen bağlantının IP adresini görürsünüz.
 
 ```json
 {
@@ -83,7 +85,7 @@ Tanılama günlüklerini [etkinleştirmek](enable-diagnostic-logs-topic.md#enabl
 
 ### <a name="check-if-the-eventgrid-topicdomain-can-be-accessed-using-only-a-private-endpoint"></a>EventGrid konusuna/etki alanına yalnızca özel bir uç nokta kullanılarak erişilip erişilemeyeceğini denetleyin
 
-Event Grid konusu/etki alanı yalnızca özel uç nokta aracılığıyla erişilebilir olacak şekilde yapılandırıldıysa, istemci uygulamanın konuya/etki alanına özel uç nokta üzerinden eriştiğini doğrulayın. Bunu onaylamak için, istemci uygulamasının bir alt ağ içinde çalışıp çalışmadığını ve ilgili alt ağdaki Event Grid konu/etki alanı için özel bir uç nokta olup olmadığını denetleyin.
+Event Grid konusu/etki alanı yalnızca özel uç nokta aracılığıyla erişilebilir olacak şekilde yapılandırıldıysa, istemci uygulamanın konuya/etki alanına özel uç nokta üzerinden eriştiğini doğrulayın. Onaylamak için, istemci uygulamasının bir alt ağ içinde çalışıp çalışmadığını ve ilgili alt ağdaki Event Grid konu/etki alanı için özel bir uç nokta olduğunu denetleyin.
 
 [Azure özel bağlantı hizmeti](../private-link/private-link-overview.md) , sanal ağınızdaki **özel bir uç nokta** üzerinden Azure Event Grid erişmenizi sağlar. Özel uç nokta, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute veya VPN bağlantıları ya da genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağı örneğine bağlanarak, erişim denetimi için en yüksek düzeyde ayrıntı düzeyi sağlayabilirsiniz.
 

@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ad5c2b973a74bc9fa0f6ca2f59f92a26b666e7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714960"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891474"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>VM 'Ler için Azure oto yönetimi hakkında sık sorulan sorular
 
 Bu makalede, [sanal makineler Için Azure oto yönetimi](automanage-virtual-machines.md)hakkında en yaygın soruların yanıtları sağlanmaktadır.
 
-Azure sorununuz bu makalede giderilmemişse, [MSDN ve Stack Overflow](https://azure.microsoft.com/support/forums/)Azure forumlarını ziyaret edin. Sorununuzu bu forumlara gönderebilir veya [ @AzureSupport Twitter 'da](https://twitter.com/AzureSupport)ilan edebilirsiniz. Ayrıca, bir Azure destek isteği de gönderebilirsiniz. Destek isteği göndermek için [Azure Desteği sayfasında](https://azure.microsoft.com/support/options/) **Destek Al**' ı seçin.
+Azure sorununuz bu makalede giderilmemişse, [MSDN ve Stack Overflow](https://azure.microsoft.com/support/forums/)Azure forumlarını ziyaret edin. Sorununuzu bu forumlara gönderebilir veya [ @AzureSupport Twitter 'da](https://twitter.com/AzureSupport)ilan edebilirsiniz. Ayrıca, bir Azure destek isteği de gönderebilirsiniz. Destek isteği göndermek için [Azure Desteği sayfasında](https://azure.microsoft.com/support/options/) **Destek Al** ' ı seçin.
 
 
 ## <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
@@ -32,7 +32,6 @@ Aşağıda, Azure oto yönetimi 'ni etkinleştirme önkoşulları verilmiştir:
 - VM 'Ler desteklenen bir bölgede olmalıdır
 - Kullanıcının doğru izinleri olması gerekir
 - Yalnızca ölçek olmayan küme VM 'Leri
-- VM 'Ler farklı bir abonelikte bulunan bir Log Analytics çalışma alanına bağlanmalıdır
 - Oto yönetimi şu anda korumalı alan aboneliklerini desteklemiyor
 
 **Oto yönetimi etkinleştirmek için hangi Azure RBAC izni gerekir?**
@@ -106,7 +105,7 @@ Hayır, tekrar Yönet bunu yeniden yapılandırmayacak. Bu hizmetle ilişkili ka
 
 **Neden sanal makinelerimin, oto Yönet portalında başarısız bir durumu var?**
 
-Durumu *başarısız*olarak GÖRÜRSENIZ, sanal makinenizin bulunduğu kaynak grubu aracılığıyla dağıtımda sorun giderebilirsiniz. **Kaynak grupları**' na gidin, kaynak grubunuzu seçin, **dağıtımlar** ' a tıklayın ve hata ayrıntılarıyla birlikte *başarısız* durumuna bakın.
+Durumu *başarısız* olarak GÖRÜRSENIZ, sanal makinenizin bulunduğu kaynak grubu aracılığıyla dağıtımda sorun giderebilirsiniz. **Kaynak grupları** ' na gidin, kaynak grubunuzu seçin, **dağıtımlar** ' a tıklayın ve hata ayrıntılarıyla birlikte *başarısız* durumuna bakın.
 
 **Oto yönetimi için nasıl sorun giderme desteği alabilirim?**
 

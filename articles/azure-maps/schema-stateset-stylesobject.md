@@ -8,16 +8,16 @@ ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4b085fbc6e330d38b59fce0c494f672b00c712b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb4e49e6c0e3f011015d40b8eca036d5218674c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85120530"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891708"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>Dinamik haritalar için StylesObject şeması başvuru kılavuzu
 
-Bu makale, için JSON şemasına ve sözdizimine yönelik başvuru kılavuzudur `StylesObject` . , `StylesObject` `StyleObject` Stateset stillerini temsil eden bir dizidir. Stateset stillerinizi ınkapımap veri özelliklerine uygulamak için Azure Maps Oluşturucu [özelliği durum hizmetini](https://docs.microsoft.com/rest/api/maps/featurestate) kullanın. Stateset stillerinizi oluşturduktan ve bunları ınkapımap özellikleriyle ilişkilendirdikten sonra, bunları dinamik ınkapılı haritalar oluşturmak için kullanabilirsiniz. Dinamik ınkapılı haritalar oluşturma hakkında daha fazla bilgi için bkz. [creator ınkapımaps için dinamik stil uygulama](indoor-map-dynamic-styling.md).
+Bu makale, için JSON şemasına ve sözdizimine yönelik başvuru kılavuzudur `StylesObject` . , `StylesObject` `StyleObject` Stateset stillerini temsil eden bir dizidir. Stateset stillerinizi ınkapımap veri özelliklerine uygulamak için Azure Maps Oluşturucu [özelliği durum hizmetini](/rest/api/maps/featurestate) kullanın. Stateset stillerinizi oluşturduktan ve bunları ınkapımap özellikleriyle ilişkilendirdikten sonra, bunları dinamik ınkapılı haritalar oluşturmak için kullanabilirsiniz. Dinamik ınkapılı haritalar oluşturma hakkında daha fazla bilgi için bkz. [creator ınkapımaps için dinamik stil uygulama](indoor-map-dynamic-styling.md).
 
 ## <a name="styleobject"></a>StyleObject
 

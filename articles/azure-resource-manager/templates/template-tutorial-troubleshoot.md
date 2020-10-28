@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0da6c614572e73a00db1087621eaca3bd790aad6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119353"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891814"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Öğretici: ARM şablon dağıtımlarının sorunlarını giderme
 
@@ -33,7 +33,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -43,14 +43,14 @@ Bu makaleyi tamamlamak için gerekenler:
 
 [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/) [Standart depolama hesabı oluşturma](https://azure.microsoft.com/resources/templates/101-storage-account-create/) adlı bir şablon açın ve iki şablon sorunu kurun.
 
-1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
-2. **Dosya adı**’na şu URL’yi yapıştırın:
+1. Visual Studio Code **Dosya** > **Aç dosya** ' yı seçin.
+2. **Dosya adı** ’na şu URL’yi yapıştırın:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 
-3. Dosyayı açmak için **Aç**’ı seçin.
+3. Dosyayı açmak için **Aç** ’ı seçin.
 4. **Apiversion** satırını şu satıra değiştirin:
 
     ```json
@@ -60,7 +60,7 @@ Bu makaleyi tamamlamak için gerekenler:
     - **apiVersion1** geçersiz öğe adı. Bu bir doğrulama hatasıdır.
     - API sürümü "2018-07-01" olacaktır.  Bu bir dağıtım hatasıdır.
 
-5. Dosyayı **File** > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya**farklı kaydet** **'** i seçin.
+5. Dosyayı **File** > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya **farklı kaydet** **'** i seçin.
 
 ## <a name="troubleshoot-the-validation-error"></a>Doğrulama hatası sorunlarını giderme
 
@@ -72,9 +72,9 @@ Kabuktan şuna benzer bir hata alacaksınız:
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-Hata iletisi, sorunun **apiVersion1**olduğunu gösterir.
+Hata iletisi, sorunun **apiVersion1** olduğunu gösterir.
 
-**ApiVersion1** to **apiversion**ile değiştirerek sorunu düzeltmek için Visual Studio Code kullanın ve şablonu kaydedin.
+**ApiVersion1** to **apiversion** ile değiştirerek sorunu düzeltmek için Visual Studio Code kullanın ve şablonu kaydedin.
 
 ## <a name="troubleshoot-the-deployment-error"></a>Dağıtım hatası sorunlarını giderme
 
@@ -93,22 +93,22 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 Dağıtım hatası, aşağıdaki yordam kullanılarak Azure portal bulunabilir:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. Kaynak **grupları** ' nı ve ardından kaynak grubu adı ' nı seçerek kaynak grubunu açın. **Dağıtım**altında **1 başarısız** olduğunu göreceksiniz.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. Kaynak **grupları** ' nı ve ardından kaynak grubu adı ' nı seçerek kaynak grubunu açın. **Dağıtım** altında **1 başarısız** olduğunu göreceksiniz.
 
-    ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
-3. **Hata ayrıntılarını**seçin.
+    ![Başarısız dağıtımı vurgulayan ekran görüntüsü.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
+3. **Hata ayrıntılarını** seçin.
 
-    ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
+    ![Hata ayrıntıları bağlantısını vurgulayan ekran görüntüsü.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
     Hata iletisi, daha önce gösterilenle aynıdır:
 
-    ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
+    ![Hata ayrıntılarını gösteren ekran görüntüsü.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
 
 Ayrıca, etkinlik günlüklerinden hatayı bulabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. **İzleme**  >  **etkinlik günlüğü**' nü seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. **İzleme**  >  **etkinlik günlüğü** ' nü seçin.
 3. Günlüğü bulmak için filtreleri kullanın.
 
     ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)
