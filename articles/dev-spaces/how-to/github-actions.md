@@ -6,13 +6,13 @@ ms.topic: conceptual
 description: GitHub eylemleri ve Azure Dev Spaces kullanarak doğrudan Azure Kubernetes hizmetindeki çekme isteğinden yapılan değişiklikleri gözden geçirin ve test edin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, GitHub eylemleri, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.custom: devx-track-js
-ms.openlocfilehash: 8c11150105db7a7bb48d20992dcc259cb5d87752
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973113"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748135"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
 
@@ -53,7 +53,7 @@ Sonraki bir adımda kullanıldığından, çıkışta *Loginserver* değerini ka
 
 ## <a name="create-a-service-principal-for-authentication"></a>Kimlik doğrulaması için bir hizmet sorumlusu oluşturma
 
-Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örnek:
+Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örneğin:
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
@@ -88,31 +88,31 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 > [!IMPORTANT]
 > Deponuz için GitHub eylemlerinin etkinleştirilmiş olması gerekir. Deponuzdaki GitHub eylemlerini etkinleştirmek için GitHub 'daki deponuza gidin, eylemler sekmesine tıklayın ve bu depo için eylemleri etkinleştirmeyi seçin.
 
-Ele geçirilen deponuza gidin ve *Ayarlar*' a tıklayın. Sol kenar çubuğundaki *sırlar* ' a tıklayın. Yeni gizli dizi *Ekle* ' ye tıklayarak aşağıdaki her bir parolayı ekleyin:
+Ele geçirilen deponuza gidin ve *Ayarlar* ' a tıklayın. Sol kenar çubuğundaki *sırlar* ' a tıklayın. Yeni gizli dizi *Ekle* ' ye tıklayarak aşağıdaki her bir parolayı ekleyin:
 
-1. *AZURE_CREDENTIALS*: hizmet sorumlusu oluşturma işleminden tümüyle çıkış.
-1. *RESOURCE_GROUP*: Bu örnekte *MYRESOURCEGROUP*olan aks kümeniz için kaynak grubu.
-1. *CLUSTER_NAME*: Bu örnekte *MYAKS*olan aks Kümenizin adı.
-1. *CONTAINER_REGISTRY*: ACR Için *loginserver* .
-1. *Ana bilgisayar*: *<MASTER_SPACE>. <APP_NAME>. <HOST_SUFFIX *>olan geliştirme alanınız için ana bilgisayar. Bu örnekte, *dev.bikesharingweb.fedcab0987.EUS.azds.io*.
-1. *IMAGE_PULL_SECRET*: kullanmak istediğiniz gizli dizi adı, örneğin *demo-gizli*.
-1. *MASTER_SPACE*: Bu örnekte *dev*olan üst geliştirme alanının adı.
-1. *REGISTRY_USERNAME*: hizmet sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından *ClientID* .
-1. *REGISTRY_PASSWORD*: hizmet sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından *ClientSecret* .
+1. *AZURE_CREDENTIALS* : hizmet sorumlusu oluşturma işleminden tümüyle çıkış.
+1. *RESOURCE_GROUP* : Bu örnekte *MYRESOURCEGROUP* olan aks kümeniz için kaynak grubu.
+1. *CLUSTER_NAME* : Bu örnekte *MYAKS* olan aks Kümenizin adı.
+1. *CONTAINER_REGISTRY* : ACR Için *loginserver* .
+1. *Ana bilgisayar* : *<MASTER_SPACE>. <APP_NAME>. <HOST_SUFFIX* >olan geliştirme alanınız için ana bilgisayar. Bu örnekte, *dev.bikesharingweb.fedcab0987.EUS.azds.io* .
+1. *IMAGE_PULL_SECRET* : kullanmak istediğiniz gizli dizi adı, örneğin *demo-gizli* .
+1. *MASTER_SPACE* : Bu örnekte *dev* olan üst geliştirme alanının adı.
+1. *REGISTRY_USERNAME* : hizmet sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından *ClientID* .
+1. *REGISTRY_PASSWORD* : hizmet sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından *ClientSecret* .
 
 > [!NOTE]
 > Tüm bu gizlilikler GitHub eylemi tarafından kullanılır ve [. GitHub/iş akışları/bisiklet. yıml][github-action-yaml]içinde yapılandırılır.
 
-İsteğe bağlı olarak, çekme isteği birleştirildikten sonra ana alanı güncelleştirmek istiyorsanız, bu örnekte *dev.gateway.fedcab0987.eus.azds.io* *MASTER_SPACE>. GATEWAY. <HOST_SUFFIX><* formunu alan *GATEWAY_HOST* gizli anahtarını ekleyin. Değişikliklerinizi çatalınızdaki ana dalda birleştirdiğinizde, tüm uygulamanızı yeniden oluşturup ana geliştirme alanında çalıştırmak için başka bir eylem çalıştırılır. Bu örnekte, ana alan *dev*olur. Bu eylem [. GitHub/iş akışları/bıkesharing. yıml][github-action-bikesharing-yaml]içinde yapılandırılır.
+İsteğe bağlı olarak, çekme isteği birleştirildikten sonra ana alanı güncelleştirmek istiyorsanız, bu örnekte *dev.gateway.fedcab0987.eus.azds.io* *MASTER_SPACE>. GATEWAY. <HOST_SUFFIX><* formunu alan *GATEWAY_HOST* gizli anahtarını ekleyin. Değişikliklerinizi çatalınızdaki ana dalda birleştirdiğinizde, tüm uygulamanızı yeniden oluşturup ana geliştirme alanında çalıştırmak için başka bir eylem çalıştırılır. Bu örnekte, ana alan *dev* olur. Bu eylem [. GitHub/iş akışları/bıkesharing. yıml][github-action-bikesharing-yaml]içinde yapılandırılır.
 
-Ayrıca, çekme yaptığınız değişikliklerin bir en alt alanda çalışmasını istiyorsanız, *MASTER_SPACE* ve *konak* sırları güncelleştirin. Örneğin, uygulamanız geliştirme */azureuser1*bir alt alan *dev 'da çalışıyorsa* , çekme isteği *dev/azureuser1*alt alanında çalışır:
+Ayrıca, çekme yaptığınız değişikliklerin bir en alt alanda çalışmasını istiyorsanız, *MASTER_SPACE* ve *konak* sırları güncelleştirin. Örneğin, uygulamanız geliştirme */azureuser1* bir alt alan *dev 'da çalışıyorsa* , çekme isteği *dev/azureuser1* alt alanında çalışır:
 
-* *MASTER_SPACE* , üst alan olarak istediğiniz alt alana güncelleştirin, bu örnekte *azureuser1*.
-* *Ana bilgisayarı* *<GRANDPARENT_SPACE>. <APP_NAME>. <* HOST_SUFFIX>, bu örnekte *dev.bikesharingweb.fedcab0987.EUS.azds.io*.
+* *MASTER_SPACE* , üst alan olarak istediğiniz alt alana güncelleştirin, bu örnekte *azureuser1* .
+* *Ana bilgisayarı* *<GRANDPARENT_SPACE>. <APP_NAME>. <* HOST_SUFFIX>, bu örnekte *dev.bikesharingweb.fedcab0987.EUS.azds.io* .
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Kod değişiklikleri için yeni dal oluştur
 
-`BikeSharingApp/`' A gidin ve *Bisiklet görüntüleri*adlı yeni bir dal oluşturun.
+`BikeSharingApp/`' A gidin ve *Bisiklet görüntüleri* adlı yeni bir dal oluşturun.
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
@@ -162,7 +162,7 @@ Eylem tamamlandıktan sonra, çekme isteğindeki değişiklikleri temel alan yen
 
 Açıklamadan URL 'YI açarak *bıkesharingweb* hizmetine gidin. Kullanıcı olarak *Aurelia Briggs (müşteri)* öğesini seçin ve ardından kiralamak istediğiniz bir bisiklet seçin. Bisiklet için yer tutucu görüntüsünü artık görmediğinizi doğrulayın.
 
-Değişikliklerinizi çatalınızdaki *ana* dalda birleştirirseniz, uygulamanın tamamını üst geliştirme alanında yeniden oluşturmak ve çalıştırmak için başka bir eylem çalıştırılır. Bu örnekte, üst alan *dev*olur. Bu eylem [. GitHub/iş akışları/bıkesharing. yıml][github-action-bikesharing-yaml]içinde yapılandırılır.
+Değişikliklerinizi çatalınızdaki *ana* dalda birleştirirseniz, uygulamanın tamamını üst geliştirme alanında yeniden oluşturmak ve çalıştırmak için başka bir eylem çalıştırılır. Bu örnekte, üst alan *dev* olur. Bu eylem [. GitHub/iş akışları/bıkesharing. yıml][github-action-bikesharing-yaml]içinde yapılandırılır.
 
 ## <a name="clean-up-your-azure-resources"></a>Azure kaynaklarınızı Temizleme
 

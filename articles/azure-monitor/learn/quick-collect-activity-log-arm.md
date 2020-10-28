@@ -3,20 +3,20 @@ title: Azure Resource Manager şablonu kullanarak Log Analytics çalışma alan�
 description: Bir Log Analytics çalışma alanı ve Azure Izleyici günlüklerine etkinlik günlüğü göndermek için bir tanılama ayarı oluşturmak için ARM şablonları kullanın.
 ms.subservice: logs
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 552df72901b9fde7acedd554b429f3a2ce0f671b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: abcaee8cffd36e22c918b9d82f37370df1d61c26
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631860"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747036"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Log Analytics çalışma alanına Azure etkinlik günlüğü gönderme
 
-Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir platform Günlüğliğidir. Bu, bir kaynağın değiştirildiği veya bir sanal makinenin başlatıldığı zaman gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Bu hızlı başlangıçta, [günlük sorguları](../log-query/log-query-overview.md) ve [günlük uyarıları](../platform/alerts-log-query.md) ve [çalışma kitapları](../platform/workbooks-overview.md)gibi diğer özellikleri etkinleştirmek üzere bir Log Analytics çalışma alanı ve etkinlik günlüğünü Azure izleyici GÜNLÜKLERINE göndermek için Azure Resource Manager şablonlarının (ARM şablonları) nasıl kullanılacağı gösterilmektedir.
+Etkinlik günlüğü Azure'da abonelik düzeyi olaylarıyla ilgili içgörüler sağlayan bir platform günlüğüdür. Bir kaynağın ne zaman değiştirildiği veya sanal makinenin ne zaman başlatıldığı gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Bu hızlı başlangıçta, [günlük sorguları](../log-query/log-query-overview.md) ve [günlük uyarıları](../platform/alerts-log-query.md) ve [çalışma kitapları](../platform/workbooks-overview.md)gibi diğer özellikleri etkinleştirmek üzere bir Log Analytics çalışma alanı ve etkinlik günlüğünü Azure izleyici GÜNLÜKLERINE göndermek için Azure Resource Manager şablonlarının (ARM şablonları) nasıl kullanılacağı gösterilmektedir.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -29,7 +29,7 @@ Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngör�
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Aşağıdaki şablon boş bir Log Analytics çalışma alanı oluşturur. Bu şablonu *CreateWorkspace.js*olarak kaydedin.
+Aşağıdaki şablon boş bir Log Analytics çalışma alanı oluşturur. Bu şablonu *CreateWorkspace.js* olarak kaydedin.
 
 ```json
 {
@@ -134,7 +134,7 @@ Bu şablon bir kaynağı tanımlar:
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
-CLı ve PowerShell kullanarak aşağıdaki örnekler gibi [BIR ARM şablonunu dağıtmak](../../azure-resource-manager/templates/deploy-portal.md) için herhangi bir standart yöntemi kullanarak şablonu dağıtın. **Kaynak grubu**, **çalışmaalanıadı**ve **konum** için örnek değerleri, ortamınız için uygun değerlerle değiştirin. Çalışma alanı adı tüm Azure abonelikleri arasında benzersiz olmalıdır.
+CLı ve PowerShell kullanarak aşağıdaki örnekler gibi [BIR ARM şablonunu dağıtmak](../../azure-resource-manager/templates/deploy-portal.md) için herhangi bir standart yöntemi kullanarak şablonu dağıtın. **Kaynak grubu** , **çalışmaalanıadı** ve **konum** için örnek değerleri, ortamınız için uygun değerlerle değiştirin. Çalışma alanı adı tüm Azure abonelikleri arasında benzersiz olmalıdır.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -180,7 +180,7 @@ Get-AzOperationalInsightsWorkspace -Name my-workspace-01 -ResourceGroupName my-r
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Aşağıdaki şablon, bir Log Analytics çalışma alanına etkinlik günlüğü gönderen bir tanılama ayarı oluşturur. Bu şablonu *CreateDiagnosticSetting.js*olarak kaydedin.
+Aşağıdaki şablon, bir Log Analytics çalışma alanına etkinlik günlüğü gönderen bir tanılama ayarı oluşturur. Bu şablonu *CreateDiagnosticSetting.js* olarak kaydedin.
 
 ```json
 {
@@ -248,7 +248,7 @@ Bu şablon bir kaynağı tanımlar:
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
-CLı ve PowerShell kullanarak aşağıdaki örnekler gibi [BIR ARM şablonunu dağıtmak](../../azure-resource-manager/templates/deploy-portal.md) için herhangi bir standart yöntemi kullanarak şablonu dağıtın. **Kaynak grubu**, **çalışmaalanıadı**ve **konum** için örnek değerleri, ortamınız için uygun değerlerle değiştirin. Çalışma alanı adı tüm Azure abonelikleri arasında benzersiz olmalıdır.
+CLı ve PowerShell kullanarak aşağıdaki örnekler gibi [BIR ARM şablonunu dağıtmak](../../azure-resource-manager/templates/deploy-portal.md) için herhangi bir standart yöntemi kullanarak şablonu dağıtın. **Kaynak grubu** , **çalışmaalanıadı** ve **konum** için örnek değerleri, ortamınız için uygun değerlerle değiştirin. Çalışma alanı adı tüm Azure abonelikleri arasında benzersiz olmalıdır.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -281,7 +281,7 @@ Log Analytics çalışma alanına yalnızca yeni etkinlik günlüğü girdileri 
 
 ## <a name="retrieve-data-with-a-log-query"></a>Günlük sorgusuyla veri alma
 
-Çalışma alanından veri almak için Log Analytics kullanmak üzere Azure portal kullanın. Azure portal için arama yapın ve ardından **izleyici**' yi seçin.
+Çalışma alanından veri almak için Log Analytics kullanmak üzere Azure portal kullanın. Azure portal için arama yapın ve ardından **izleyici** ' yi seçin.
 
 ![Azure portal](media/quick-collect-activity-log/azure-portal-monitor.png)
 
@@ -289,7 +289,7 @@ Log Analytics çalışma alanına yalnızca yeni etkinlik günlüğü girdileri 
 
 ![Log Analytics kapsamı](media/quick-collect-activity-log/log-analytics-scope.png)
 
-Sorgu penceresinde, yazın `AzureActivity` ve **Çalıştır**' a tıklayın. Bu, etkinlik günlüğünden gönderilen tüm kayıtları içeren *AzureActivity* tablosundaki tüm kayıtları döndüren basit bir sorgudur.
+Sorgu penceresinde, yazın `AzureActivity` ve **Çalıştır** ' a tıklayın. Bu, etkinlik günlüğünden gönderilen tüm kayıtları içeren *AzureActivity* tablosundaki tüm kayıtları döndüren basit bir sorgudur.
 
 ![Basit sorgu](media/quick-collect-activity-log/query-01.png)
 

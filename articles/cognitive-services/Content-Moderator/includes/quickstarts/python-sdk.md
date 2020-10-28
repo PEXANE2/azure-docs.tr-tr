@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: bea422514b109f446ee30633b0074730f9b89af0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 64a9143e7a425b35e37f23b233c91b8e7bb70169
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91332599"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755540"
 ---
 Python için Azure Content Moderator istemci kitaplığı ile çalışmaya başlayın. PiPy paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
@@ -24,47 +24,50 @@ Content Moderator, rahatsız edici, riskli veya başka türlü istenmeyen içeri
 
 Python için Content Moderator istemci kitaplığını şu şekilde kullanın:
 
-* [Orta metin](#moderate-text)
-* [Özel terimler listesi kullanma](#use-a-custom-terms-list)
-* [Orta görüntüler](#moderate-images)
-* [Özel görüntü listesi kullanma](#use-a-custom-image-list)
-* [İnceleme oluştur](#create-a-review)
+* Orta metin
+* Özel terimler listesi kullanma
+* Orta görüntüler
+* Özel görüntü listesi kullanma
+* İnceleme oluştur
 
 [Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
+* Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir Content moderator kaynağı oluşturun Content moderator bir kaynak oluşturun. Dağıtım için bekleyin ve **Kaynağa Git** düğmesine tıklayın.
+    * Uygulamanızı Content Moderator bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
-## <a name="create-a-content-moderator-resource"></a>Content Moderator kaynağı oluşturma
 
-Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak Content moderator için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
+## <a name="setting-up"></a>Ayarlanıyor
 
-* [Azure Portal](https://portal.azure.com/) kaynağı görüntüleyin
+### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
-Kaynağından bir anahtar aldıktan sonra anahtar ve sırasıyla adlı uç nokta URL 'SI için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `CONTENT_MODERATOR_SUBSCRIPTION_KEY` `CONTENT_MODERATOR_ENDPOINT` .
- 
-## <a name="create-a-new-python-script"></a>Yeni bir Python betiği oluştur
+Python yükledikten sonra, Content Moderator istemci kitaplığını aşağıdaki komutla yükleyebilirsiniz:
+
+```console
+pip install --upgrade azure-cognitiveservices-vision-contentmoderator
+```
+
+### <a name="create-a-new-python-application"></a>Yeni bir Python uygulaması oluşturma
 
 Yeni bir Python betiği oluşturun ve tercih ettiğiniz düzenleyicide veya IDE 'de açın. Ardından, aşağıdaki `import` deyimlerini dosyanın en üstüne ekleyin.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imports)]
 
-Daha sonra, kaynağın uç nokta konumu ve anahtarı ortam değişkenleri olarak bir değişken oluşturun. 
+> [!TIP]
+> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py)'da bulabilirsiniz.
+
+Sonra, kaynağınızın uç nokta konumu ve anahtarı için değişkenler oluşturun.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_vars)]
 
-> [!NOTE]
-> Uygulamayı başlattıktan sonra ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
-
-## <a name="install-the-client-library"></a>İstemci kitaplığını yükler
-
-Content Moderator istemci kitaplığını aşağıdaki komutla yükleyebilirsiniz:
-
-```console
-pip install --upgrade azure-cognitiveservices-vision-contentmoderator
-```
+> [!IMPORTANT]
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz Content moderator kaynak başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
+>
+> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Örneğin, [Azure Anahtar Kasası](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
 ## <a name="object-model"></a>Nesne modeli
 
@@ -89,9 +92,6 @@ Bu kod parçacıkları, Python için Content Moderator istemci kitaplığı ile 
 * [İnceleme oluştur](#create-a-review)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
-
-> [!NOTE]
-> Bu hızlı başlangıç, Content Moderator anahtarınız ve uç noktanız için [ortam değişkenleri oluşturduğunuzu](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) varsayar.
 
 Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir [Biliveservicescredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [Contentmoderatorclient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 

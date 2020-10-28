@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f8ad2558c664d1a8b577f01b707200d416d5348a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6da2aa645549920cce2f5c0cfe8a32c98dc04708
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078910"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746129"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında Özellik bayraklarını kullanma
 
@@ -107,7 +107,7 @@ ASP.NET Core uygulamanızı uygulama yapılandırmasına bağlanmanın en kolay 
               .UseStartup<Startup>();
    ```
 
-2. *Startup.cs* `Configure` ASP.NET Core Web uygulaması istekleri almaya devam ederken, özellik bayrağı değerlerinin yinelenen bir aralıkta yenilenmesini sağlamak üzere bir ara yazılım eklemek için Startup.cs açın ve yöntemi güncelleştirin.
+2. *Startup.cs* ' i açın ve `Configure` adlı yerleşik ara yazılımı eklemek için yöntemi güncelleştirin `UseAzureAppConfiguration` . Bu ara yazılım, ASP.NET Core Web uygulaması istekleri almaya devam ederken, özellik bayrağı değerlerinin yinelenen bir aralıkta yenilenmesini sağlar.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -132,7 +132,7 @@ config.AddAzureAppConfiguration(options => {
 
 Her özellik bayrağının iki bölümü vardır: bir özelliğin durumunun *Açık* olup olmadığını değerlendirmek için kullanılan bir veya daha fazla filtrenin adı ve listesi (yani, değeri olduğunda `True` ). Bir filtre, bir özelliğin açılması gerektiğinde kullanım durumunu tanımlar.
 
-Bir özellik bayrağının birden çok filtresi olduğunda, filtrenin etkin olması gerektiğini belirlerken filtre listesine bir düzen eklenir. Bu noktada, özellik bayrağı *Açık*ve kalan filtre sonuçları atlanır. Filtre yoksa, özelliğin etkinleştirilmesi gerektiğini gösteriyorsa, özellik bayrağı *kapalıdır*.
+Bir özellik bayrağının birden çok filtresi olduğunda, filtrenin etkin olması gerektiğini belirlerken filtre listesine bir düzen eklenir. Bu noktada, özellik bayrağı *Açık* ve kalan filtre sonuçları atlanır. Filtre yoksa, özelliğin etkinleştirilmesi gerektiğini gösteriyorsa, özellik bayrağı *kapalıdır* .
 
 Özellik Yöneticisi özellik bayrakları için yapılandırma kaynağı olarak *appsettings.js* destekler. Aşağıdaki örnekte, bir JSON dosyasında özellik bayraklarının nasıl ayarlanacağı gösterilmektedir:
 
@@ -155,9 +155,9 @@ Bir özellik bayrağının birden çok filtresi olduğunda, filtrenin etkin olma
 
 Kurala göre, `FeatureManagement` Bu JSON belgesinin bölümü Özellik bayrağı ayarları için kullanılır. Önceki örnekte, içinde kendi filtreleri tanımlanmış olan üç özellik bayrakları gösterilmektedir `EnabledFor` :
 
-* `FeatureA`*Açık*.
-* `FeatureB`*kapalıdır*.
-* `FeatureC` özelliği olan adlı bir filtre belirtir `Percentage` `Parameters` . `Percentage` , yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` `FeatureC` bayrağın *Açık*olması için yüzde 50 olasılık değerini belirtir.
+* `FeatureA`*Açık* .
+* `FeatureB`*kapalıdır* .
+* `FeatureC` özelliği olan adlı bir filtre belirtir `Percentage` `Parameters` . `Percentage` , yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` `FeatureC` bayrağın *Açık* olması için yüzde 50 olasılık değerini belirtir.
 
 ## <a name="feature-flag-references"></a>Özellik bayrağı başvuruları
 
@@ -174,7 +174,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Özellik bayrağı denetimleri
 
-Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık*olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örnek:
+Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık* olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örneğin:
 
 ```csharp
 IFeatureManager featureManager;
@@ -227,7 +227,7 @@ public IActionResult Index()
 }
 ```
 
-Denetim özelliği bayrağı *kapalı*olduğu IÇIN bir MVC denetleyicisi veya eylemi engellendiğinde, kayıtlı bir `IDisabledFeaturesHandler` arabirim çağırılır. Varsayılan `IDisabledFeaturesHandler` arabirim, yanıt gövdesi olmayan istemciye 404 durum kodu döndürür.
+Denetim özelliği bayrağı *kapalı* olduğu IÇIN bir MVC denetleyicisi veya eylemi engellendiğinde, kayıtlı bir `IDisabledFeaturesHandler` arabirim çağırılır. Varsayılan `IDisabledFeaturesHandler` arabirim, yanıt gövdesi olmayan istemciye 404 durum kodu döndürür.
 
 ## <a name="mvc-views"></a>MVC görünümleri
 

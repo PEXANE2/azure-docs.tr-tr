@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: afe6562357f1d5558fdb2ac8cb0eb53cd3422d48
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e5792f63025c0be4d9f67a6971707618f12cc8ce
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92499089"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755896"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -18,7 +18,7 @@ Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyab
 
 Örnek koda doğrudan atlamak istiyorsanız GitHub 'da [JavaScript hızlı başlangıç örneklerine](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node) bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free).
 
@@ -32,7 +32,7 @@ class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 Ayrıca, hedef ortama bağlı olarak, aşağıdakilerden birini kullanın:
 
-# <a name="script"></a>[SCRIPT](#tab/script)
+# <a name="script"></a>[betik](#tab/script)
 
 <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span>microsoft.cognitiveservices.speech.sdk.bundle.jsdosyası için konuşma SDK 'sını</a> indirip ayıklayın ve HTML dosyanıza erişilebilen bir klasöre yerleştirin. *microsoft.cognitiveservices.speech.sdk.bundle.js*
 
@@ -41,15 +41,7 @@ Ayrıca, hedef ortama bağlı olarak, aşağıdakilerden birini kullanın:
 ```
 
 > [!TIP]
-> Bir Web tarayıcısını hedefliyorsanız ve etiketini kullanıyorsanız, `<script>` `sdk` ön ek gerekli değildir. `sdk`Ön ek, modülü adlandırmak için kullanılan bir diğer addır `require` .
-
-# <a name="import"></a>[aktarmaya](#tab/import)
-
-```javascript
-import * from "microsoft-cognitiveservices-speech-sdk";
-```
-
-Hakkında daha fazla bilgi için `import` bkz. <a href="https://javascript.info/import-export" target="_blank">dışa ve <span class="docon docon-navigate-external x-hidden-focus"></span> içeri aktarma </a>.
+> Bir Web tarayıcısını hedefliyorsanız ve `<script>` etiketini kullanıyorsanız; `sdk` sınıflara başvurulduğunda önek gerekli değildir. `sdk`Ön ek, modülü adlandırmak için kullanılan bir diğer addır `require` .
 
 # <a name="require"></a>[gerektirir](#tab/require)
 
@@ -66,7 +58,7 @@ Hakkında daha fazla bilgi için `require` bkz. <a href="https://nodejs.org/en/k
 Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir. [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true)Anahtarınızı ve bölgenizi kullanarak bir oluşturun. Bölge tanımlarınızı bulmak için [bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın.
 
 ```javascript
-const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
 Şunları başlatabilmeniz için birkaç farklı yol vardır [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) :
@@ -83,45 +75,85 @@ const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourS
 Cihaz mikrofonunuzu kullanarak konuşmayı tanımak için bir `AudioConfig` kullanarak oluşturun `fromDefaultMicrophoneInput()` . Ardından, ve ' yi geçirerek bir başlatın [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) `speechConfig` `audioConfig` .
 
 ```javascript
-const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
-const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
-console.log('Speak into your microphone.');
-recognizer.recognizeOnceAsync(result => {
-    console.log(`RECOGNIZED: Text=${result.text}`);
-});
+function fromMic() {
+    let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+    
+    console.log('Speak into your microphone.');
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+    });
+}
+fromMic();
 ```
 
 *Belirli* bir ses giriş cihazını kullanmak istiyorsanız, IÇINDE cihaz kimliği belirtmeniz gerekir `AudioConfig` . Ses giriş cihazınız için [CIHAZ kimliğini nasıl alabileceğinizi](../../../how-to-select-audio-input-devices.md) öğrenin.
 
-## <a name="recognize-from-file-nodejs-only"></a>Dosyadan tanı (yalnızca Node.js)
+## <a name="recognize-from-file"></a>Dosyadan tanı 
 
-Konuşmayı kullanmak yerine bir ses dosyasından konuşmayı tanımak istiyorsanız, yine de sağlamanız gerekir `AudioConfig` . Ancak, [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) öğesini çağırmak yerine, `fromDefaultMicrophoneInput()` `fromWavFileInput()` dosya yolunu çağırır ve geçitirsiniz.
+# <a name="browser"></a>[Tarayıcı](#tab/browser)
 
-```javascript
-const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
-const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-
-recognizer.recognizeOnceAsync(result => {
-    console.log(`RECOGNIZED: Text=${result.text}`);
-});
-```
-
-## <a name="recognize-speech"></a>Konuşma tanıma
-
-JavaScript için konuşma SDK 'Sı için [tanıyıcı sınıfı](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) , konuşma tanıma için kullanabileceğiniz birkaç yöntem sunar.
-
-### <a name="single-shot-recognition"></a>Tek atışı tanıma
-
-Tek basamaklı tanıma, tek bir söylik zaman uyumsuz olarak tanır. Tek bir utterüance 'in sonunda, sonda sessizlik dinlemesi veya en fazla 15 saniyelik ses işlenene kadar belirlenir. Şu kullanılarak zaman uyumsuz tek kararlı tanıma örneği aşağıda verilmiştir [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync) :
+Tarayıcı tabanlı bir JavaScript ortamında bir ses dosyasından konuşmayı tanımak için, `fromWavFileInput()` bir oluşturmak için işlevini kullanın [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) . İşlev bir `fromWavFileInput()` JavaScript [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) nesnesini parametre olarak bekliyor.
 
 ```javascript
-recognizer.recognizeOnceAsync(result => {
-    // Interact with result
-});
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+
+function fromFile() {
+    // wavByteContent should be a byte array of the raw wav content
+    let file = new File([wavByteContent]);
+    let audioConfig = sdk.AudioConfig.fromWavFileInput(file);
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+    
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+    });
+}
+fromFile();
 ```
 
-Sonucu işlemek için bazı kodlar yazmanız gerekir. Bu örnek şunları değerlendirir [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognitionresult?view=azure-node-latest&preserve-view=true#reason) :
+# <a name="nodejs"></a>[Node.js](#tab/node)
+
+Node.js bir ses dosyasından konuşmayı tanımak için, bir gönderme akışı kullanan alternatif bir tasarım deseninin kullanılması gerekir, çünkü JavaScript [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) nesnesi bir Node.js çalışma zamanında kullanılamaz. Aşağıdaki kod:
+
+* Kullanarak bir gönderme akışı oluşturur `createPushStream()`
+* `.wav`Bir okuma akışı oluşturarak dosyayı açar ve gönderme akışına yazar
+* Gönderim akışını kullanarak bir ses yapılandırması oluşturur
+
+```javascript
+const fs = require('fs');
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+
+function fromFile() {
+    let pushStream = sdk.AudioInputStream.createPushStream();
+
+    fs.createReadStream("YourAudioFile.wav").on('data', function(arrayBuffer) {
+        pushStream.write(arrayBuffer.slice());
+    }).on('end', function() {
+        pushStream.close();
+    });
+ 
+    let audioConfig = sdk.AudioConfig.fromStreamInput(pushStream);
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+        recognizer.close();
+    });
+}
+fromFile();
+```
+
+Giriş olarak gönderme akışı kullanmak, dosya akışının konumunun *verilerin başlangıcına* ayarlandığını varsayar ve üst bilgileri atlar. Üst bilgi atlanmadığında API bazı durumlarda çalışmaya devam eder, ancak en iyi sonuçlar için üst bilgileri okumak ve konumu ses verilerinin başlangıcına ayarlamak için mantık uygulamayı düşünün.
+
+---
+
+## <a name="error-handling"></a>Hata işleme
+
+Önceki örneklerde, ' den tanınan metin alınır `result.text` , ancak hataları ve diğer yanıtları işlemek için, sonucu işlemek üzere bazı kodlar yazmanız gerekir. Aşağıdaki kod, özelliğini değerlendirir [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognitionresult?view=azure-node-latest&preserve-view=true#reason) ve:
 
 * Tanınma sonucunu yazdırır: `ResultReason.RecognizedSpeech`
 * Bir tanıma eşleşmesi yoksa, kullanıcıyı bilgilendirin: `ResultReason.NoMatch`
@@ -131,7 +163,6 @@ Sonucu işlemek için bazı kodlar yazmanız gerekir. Bu örnek şunları değer
 switch (result.reason) {
     case ResultReason.RecognizedSpeech:
         console.log(`RECOGNIZED: Text=${result.text}`);
-        console.log("    Intent not recognized.");
         break;
     case ResultReason.NoMatch:
         console.log("NOMATCH: Speech could not be recognized.");
@@ -149,17 +180,19 @@ switch (result.reason) {
     }
 ```
 
-### <a name="continuous-recognition"></a>Sürekli tanıma
+## <a name="continuous-recognition"></a>Sürekli tanıma
 
-Sürekli tanıma, tek kararlı tanıma göre biraz daha karmaşıktır. `Recognizing` `Recognized` Tanıma sonuçlarını almak için,, ve olaylarına abone olmanızı gerektirir `Canceled` . Tanımayı durdurmak için çağrısı yapmanız gerekir [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync) . İşte, bir ses giriş dosyasında sürekli tanımanın nasıl gerçekleştirilebileceğini gösteren bir örnek.
+Önceki örneklerde tek bir söylik tanınabilmesi için tek kararlı tanıma kullanılır. Tek bir utterüance 'in sonunda, sonda sessizlik dinlemesi veya en fazla 15 saniyelik ses işlenene kadar belirlenir.
 
-Girişi tanımlayarak ve şunu başlatarak başlayalım [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) :
+Bunun aksine, sürekli tanıma, tanımanın ne zaman durdurulacağını **denetlemek** istediğinizde kullanılır. `Recognizing` `Recognized` Tanıma sonuçlarını almak için,, ve olaylarına abone olmanızı gerektirir `Canceled` . Tanımayı durdurmak için çağrısı yapmanız gerekir [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync) . İşte, bir ses giriş dosyasında sürekli tanımanın nasıl gerçekleştirilebileceğini gösteren bir örnek.
+
+Girişi tanımlayarak ve şunu başlatarak başlayın [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) :
 
 ```javascript
-const recognizer = new SpeechRecognizer(speechConfig);
+const recognizer = new sdk.SpeechRecognizer(speechConfig);
 ```
 
-Kaynağından gönderilen olaylara abone edeceğiz [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) .
+Sonra, öğesinden gönderilen olaylara abone olun [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) .
 
 * [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizing): Ara tanıma sonuçları içeren olaylar için sinyal.
 * [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognized): Son tanıma sonuçlarını içeren olaylar için sinyal (başarılı bir tanıma denemesi olduğunu gösterir).
@@ -198,13 +231,12 @@ recognizer.sessionStopped = (s, e) => {
 };
 ```
 
-Her şey ayarlandığında, çağırabiliriz [`startContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#startcontinuousrecognitionasync) .
+Her şey ayarlandığında, tanımayı Başlat ' ı çağırın [`startContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#startcontinuousrecognitionasync) .
 
 ```javascript
-// Starts continuous recognition. Uses stopContinuousRecognitionAsync() to stop recognition.
 recognizer.startContinuousRecognitionAsync();
 
-// Something later can call, stops recognition.
+// make the following call at some point to stop recognition.
 // recognizer.StopContinuousRecognitionAsync();
 ```
 
@@ -240,7 +272,7 @@ Bir tümcecik listesi kullanmak için, önce bir [`PhraseListGrammar`](https://d
 Herhangi bir değişiklik [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest&preserve-view=true) , bir sonraki tanıma göre veya konuşma hizmetine yeniden bağlanmaya sonra devreye girer.
 
 ```javascript
-const phraseList = PhraseListGrammar.fromRecognizer(recognizer);
+const phraseList = sdk.PhraseListGrammar.fromRecognizer(recognizer);
 phraseList.addPhrase("Supercalifragilisticexpialidocious");
 ```
 

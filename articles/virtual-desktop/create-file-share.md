@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aad5ebaf7eef5b404f7849b79694facf1efd01b4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8f8086aced26fc46fb1430df074082e8c3365baa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519448"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746822"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure dosyaları ve AD DS bir profil kapsayıcısı oluşturun
 
@@ -19,7 +19,7 @@ Bu makalede, var olan bir Windows sanal masaüstü konak havuzunda bir etki alan
 
 Bu işlem, bir şirket içi dizin hizmeti olan Active Directory Domain Services (AD DS) kullanır. Azure AD DS ile FSLogix profil kapsayıcısı oluşturma hakkında bilgi arıyorsanız bkz. [Azure dosyaları Ile fslogix profil kapsayıcısı oluşturma](create-profile-container-adds.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, etki alanı denetleyicinizin Azure ile eşitlendiğinden ve oturum konaklarınızın bağlı olduğu Azure sanal ağı 'ndan (VNET) çözümleneceğinden emin olun.
 
@@ -33,18 +33,18 @@ Bir depolama hesabı ayarlamak için:
 
 2. Arama çubuğunda **depolama hesabı** araması yapın.
 
-3. **+Ekle**’yi seçin.
+3. **+Ekle** ’yi seçin.
 
 4. **Depolama hesabı oluşturma** sayfasına aşağıdaki bilgileri girin:
 
     - Yeni bir kaynak grubu oluşturma.
     - Depolama hesabınız için benzersiz bir ad girin.
-    - **Konum**Için, Windows sanal masaüstü ana bilgisayar havuzuyla aynı konumu seçmenizi öneririz.
-    - **Performans** alanında **Standart**’ı seçin. (IOPS gereksinimlerinize bağlı olarak. Daha fazla bilgi için bkz. [Windows sanal masaüstündeki FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).)
-    - **Hesap türü**için **StorageV2** veya **FileStorage** (yalnızca performans katmanı Premium ise kullanılabilir) seçeneğini belirleyin.
-    - **Çoğaltma**Için **yerel olarak yedekli depolama (LRS)** seçeneğini belirleyin.
+    - **Konum** Için, Windows sanal masaüstü ana bilgisayar havuzuyla aynı konumu seçmenizi öneririz.
+    - **Performans** alanında **Standart** ’ı seçin. (IOPS gereksinimlerinize bağlı olarak. Daha fazla bilgi için bkz. [Windows sanal masaüstündeki FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).)
+    - **Hesap türü** için **StorageV2** veya **FileStorage** (yalnızca performans katmanı Premium ise kullanılabilir) seçeneğini belirleyin.
+    - **Çoğaltma** Için **yerel olarak yedekli depolama (LRS)** seçeneğini belirleyin.
 
-5. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin ve ardından **Oluştur**' u seçin.
+5. İşiniz bittiğinde, **gözden geçir + oluştur** ' u seçin ve ardından **Oluştur** ' u seçin.
 
 Daha ayrıntılı yapılandırma yönergelerine ihtiyacınız varsa, bkz. [Bölgesel kullanılabilirlik](../storage/files/storage-files-identity-auth-active-directory-enable.md#regional-availability).
 
@@ -54,13 +54,13 @@ Ardından, bir Azure dosya paylaşımının oluşturulması gerekir.
 
 Dosya paylaşımı oluşturmak için:
 
-1. **Kaynağa git**’i seçin.
+1. **Kaynağa git** ’i seçin.
 
-2. Genel bakış sayfasından **Dosya paylaşımları**’nı seçin.
+2. Genel bakış sayfasından **Dosya paylaşımları** ’nı seçin.
 
-3. **+ Dosya paylaşımları**' nı seçin, **profiller**adlı yeni bir dosya paylaşımı oluşturun, ardından uygun bir kota girin veya hiçbir kota olmaması için alanı boş bırakın.
+3. **+ Dosya paylaşımları** ' nı seçin, **profiller** adlı yeni bir dosya paylaşımı oluşturun, ardından uygun bir kota girin veya hiçbir kota olmaması için alanı boş bırakın.
 
-4. **Oluştur**’u seçin.
+4. **Oluştur** ’u seçin.
 
 ## <a name="enable-active-directory-authentication"></a>Active Directory kimlik doğrulamasını etkinleştir
 
@@ -68,9 +68,9 @@ Sonra, Active Directory (AD) kimlik doğrulamasını etkinleştirmeniz gerekir. 
 
 1. Etki alanına katılmış VM 'ye Uzak Masaüstü Protokolü.
 
-2. AzFilesHybrid modülünü yüklemek ve kimlik doğrulamasını etkinleştirmek için [Azure dosya paylaşımlarınız Için azure AD DS kimlik doğrulamasını etkinleştirme](../storage/files/storage-files-identity-ad-ds-enable.md) bölümündeki yönergeleri izleyin.
+2. AzFilesHybrid modülünü yüklemek ve kimlik doğrulamasını etkinleştirmek için [Azure dosya paylaşımlarınız için AD DS kimlik doğrulamasını etkinleştirme](../storage/files/storage-files-identity-ad-ds-enable.md) bölümündeki yönergeleri izleyin.
 
-3.  Azure portal açın, depolama hesabınızı açın, **yapılandırma**' yı seçin ve **Active Directory (ad)** **etkin**olarak ayarlandığını onaylayın.
+3.  Azure portal açın, depolama hesabınızı açın, **yapılandırma** ' yı seçin ve **Active Directory (ad)** **etkin** olarak ayarlandığını onaylayın.
 
      > [!div class="mx-imgBorder"]
      > ![Azure Active Directory (AD) özellikli yapılandırma sayfasının ekran görüntüsü.](media/active-directory-enabled.png)
@@ -92,17 +92,17 @@ Azure rol tabanlı erişim denetimi (Azure RBAC) izinleri atamak için:
 
 2. [Depolama hesabı ayarlama](#set-up-a-storage-account)bölümünde oluşturduğunuz depolama hesabını açın.
 
-3. **Dosya paylaşımları**' nı seçin ve ardından kullanmayı planladığınız dosya paylaşımının adını seçin.
+3. **Dosya paylaşımları** ' nı seçin ve ardından kullanmayı planladığınız dosya paylaşımının adını seçin.
 
 4. **Access Control (IAM)** seçeneğini belirleyin.
 
-5. **Rol ataması Ekle**' yi seçin.
+5. **Rol ataması Ekle** ' yi seçin.
 
 6. **Rol ataması Ekle** sekmesinde, yönetici hesabı Için **depolama dosyası veri SMB paylaşma yükseltilmiş katılımcısı** ' ı seçin.
 
      Aynı yönergeleri izleyerek kullanıcılara FSLogix profilleri için gerekli izinleri atayın. Bununla birlikte, 5. adıma geldiğinizde bunun yerine **depolama dosya VERI SMB payı katılımcısı** ' nı seçin.
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Azure dosya paylaşımında Kullanıcı izinleri atama
 
@@ -121,7 +121,7 @@ UNC yolunu buradan edinebilirsiniz:
 
 2. [Depolama hesabı ayarlama](#set-up-a-storage-account)bölümünde oluşturduğunuz depolama hesabını açın.
 
-3. **Ayarlar**' ı ve ardından **Özellikler**' i seçin.
+3. **Ayarlar** ' ı ve ardından **Özellikler** ' i seçin.
 
 4. **Birincil dosya hizmeti uç noktası** URI 'sini tercih ettiğiniz metin düzenleyicisine kopyalayın.
 
@@ -141,7 +141,7 @@ Depolama hesabı anahtarını almak için:
 
 2. [Depolama hesabı ayarlama](#set-up-a-storage-account)bölümünde oluşturduğunuz depolama hesabını açın.
 
-3. **Depolama hesabı** sekmesinde **erişim tuşları**' nı seçin.
+3. **Depolama hesabı** sekmesinde **erişim tuşları** ' nı seçin.
 
 4. **KEY1** veya **key2** dosyalarını yerel makinenizde bir dosyaya kopyalayın.
 
@@ -200,13 +200,13 @@ Oturum konağı VM örneğinizde FSLogix'i yapılandırmak için:
 
 5. [Profil kapsayıcı kayıt defteri ayarlarını yapılandırma](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings) sayfasındaki yönergeleri izleyin:
 
-    - **Bilgisayar**  >  **HKEY_LOCAL_MACHINE**  >  **yazılım**  >  **fslogix**sayfasına gidin.
+    - **Bilgisayar**  >  **HKEY_LOCAL_MACHINE**  >  **yazılım**  >  **fslogix** sayfasına gidin.
 
     - Bir **profil** anahtarı oluşturun.
 
     - **Enabled,** 1 DEĞERI olan DWORD oluşturun.
 
-    - **Vhdlocations oluşturma, MULTI_SZ**.
+    - **Vhdlocations oluşturma, MULTI_SZ** .
 
     - **Vhdlocations** değerini [UNC yolunu Al](#get-the-unc-path)bölümünde oluşturduğunuz UNC yoluna ayarlayın.
 

@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
-ms.custom: mvc
-ms.openlocfilehash: 4eab701d22f579a816aa95bd43a74fd9ea07d9e4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 1b9e4d1f1b989caa317384292d013af255530f11
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490246"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748072"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Azure Red Hat OpenShift 4 kümesi için Azure Active Directory kimlik doğrulamasını yapılandırma (portal)
 
@@ -36,7 +36,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 Azure portal oturum açın ve [uygulama kayıtları dikey penceresine](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)gidin ve yeni **kayıt** ' a tıklayarak yeni bir uygulama oluşturun.
 
-Uygulama için bir ad sağlayın (örneğin, **Aro-azuread-auth**) ve daha önce aldığınız OAuth geri arama URL 'si değerini kullanarak **yeniden yönlendirme URI** 'sini girin.
+Uygulama için bir ad sağlayın (örneğin, **Aro-azuread-auth** ) ve daha önce aldığınız OAuth geri arama URL 'si değerini kullanarak **yeniden yönlendirme URI** 'sini girin.
 
 ![Yeni uygulama kaydı](media/aro4-ad-registerapp.png)
 
@@ -44,7 +44,7 @@ Uygulama için bir ad sağlayın (örneğin, **Aro-azuread-auth**) ve daha önce
 
 ![Gizli anahtar oluşturma](media/aro4-ad-clientsecret.png)
 
-**Genel Bakış ' a** gidin ve **uygulamanın (istemci) kimliğini** ve **Dizin (kiracı) kimliğini**unutmayın. Daha sonraki bir aşamada ihtiyacınız olacak.
+**Genel Bakış ' a** gidin ve **uygulamanın (istemci) kimliğini** ve **Dizin (kiracı) kimliğini** unutmayın. Daha sonraki bir aşamada ihtiyacınız olacak.
 
 ![Uygulama (istemci) ve dizin (kiracı) kimliklerini alma](media/aro4-ad-ids.png)
 
@@ -60,7 +60,7 @@ Uygulama geliştiricileri, kendi uygulamalarına hangi talepler gönderilmesini 
 
 OpenShift 'i `email` talebi kullanacak ve `upn` `upn` Azure ACTIVE DIRECTORY tarafından döndürülen kimlik belirtecinin parçası olarak ekleyerek tercih edilen Kullanıcı adını ayarlamak için yapılandıracağız.
 
-**Belirteç yapılandırması (Önizleme)** bölümüne gidin ve **Isteğe bağlı talep Ekle**' ye tıklayın. **Kimlik** ' i seçin ve ardından **e-posta** ve **UPN** taleplerini denetleyin.
+**Belirteç yapılandırması (Önizleme)** bölümüne gidin ve **Isteğe bağlı talep Ekle** ' ye tıklayın. **Kimlik** ' i seçin ve ardından **e-posta** ve **UPN** taleplerini denetleyin.
 
 ![Eklenen e-posta ve UPN taleplerini gösteren ekran görüntüsü.](media/aro4-ad-tokens.png)
 
@@ -100,12 +100,12 @@ Aşağıdaki komutu çalıştırarak küme konsolu URL 'sini bulabilirsiniz, ş�
 
 Konsol URL 'sini bir tarayıcıda başlatın ve kimlik bilgilerini kullanarak oturum açın `kubeadmin` .
 
-**Yönetim**' e gidin, **küme ayarları**' na tıklayın ve ardından **genel yapılandırma** sekmesini seçin. **OAuth**Seç ' e gidin.
+**Yönetim** ' e gidin, **küme ayarları** ' na tıklayın ve ardından **genel yapılandırma** sekmesini seçin. **OAuth** Seç ' e gidin.
 
-Aşağı kaydırarak **kimlik sağlayıcıları** altında **Ekle** ' yi seçin ve **OpenID Connect**' i seçin.
+Aşağı kaydırarak **kimlik sağlayıcıları** altında **Ekle** ' yi seçin ve **OpenID Connect** ' i seçin.
 ![Kimlik sağlayıcıları açılan listesinden OpenID Connect ' i seçin](media/aro4-oauth-idpdrop.png)
 
-Adı **AAD**olarak, **ISTEMCI kimliğini** **uygulama kimliği** ve **istemci parolası**olarak girin. **Veren URL 'si** şöyle biçimlendirilir: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Yer tutucusunu, daha önce aldığınız kiracı KIMLIĞIYLE değiştirin.
+Adı **AAD** olarak, **ISTEMCI kimliğini** **uygulama kimliği** ve **istemci parolası** olarak girin. **Veren URL 'si** şöyle biçimlendirilir: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Yer tutucusunu, daha önce aldığınız kiracı KIMLIĞIYLE değiştirin.
 
 ![OAuth ayrıntılarını doldur](media/aro4-oauth-idp-1.png)
 
@@ -115,6 +115,6 @@ Aşağı kaydırarak **talepler** bölümüne gidin ve **tercih edilen Kullanıc
 
 ## <a name="verify-login-through-azure-active-directory"></a>Azure Active Directory aracılığıyla oturum açmayı doğrula
 
-Artık OpenShift web konsolunun oturumunu kapatıp yeniden oturum açmayı denerseniz **AAD**ile oturum açma için yeni bir seçenek sunulur. Birkaç dakika beklemeniz gerekebilir.
+Artık OpenShift web konsolunun oturumunu kapatıp yeniden oturum açmayı denerseniz **AAD** ile oturum açma için yeni bir seçenek sunulur. Birkaç dakika beklemeniz gerekebilir.
 
 ![Azure Active Directory seçeneği ile oturum açma ekranı](media/aro4-login-2.png)

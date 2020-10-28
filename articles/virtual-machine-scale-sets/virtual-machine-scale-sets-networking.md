@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: c93f8e50b0437f9ac1569b8abe19bd0b5174ea8d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 234834af4fcf4ad809f548d171a4c1c406d85895
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363972"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747836"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için ağ hizmeti
 
@@ -132,7 +132,7 @@ Genel olarak, Azure ölçek kümesi sanal makinelerinin kendi genel IP adresleri
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Sanal makine başına bir genel IP ile ölçek kümesi oluşturma
 CLI ile her sanal makineye bir genel IP adresi atayan bir ölçek kümesi oluşturmak için, **vmss create** komutuna **--public-ip-per-vm** parametresini ekleyin. 
 
-Azure şablonu kullanarak bir ölçek kümesi oluşturmak için, Microsoft. COMPUTE/virtualMachineScaleSets kaynağının API sürümünün en az **2017-03-30**olduğundan emin olun ve ölçek kümesi ipconfigurations bölümüne **Publicıpaddressconfiguration** JSON özelliği ekleyin. Örneğin:
+Azure şablonu kullanarak bir ölçek kümesi oluşturmak için, Microsoft. COMPUTE/virtualMachineScaleSets kaynağının API sürümünün en az **2017-03-30** olduğundan emin olun ve ölçek kümesi ipconfigurations bölümüne **Publicıpaddressconfiguration** JSON özelliği ekleyin. Örneğin:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -165,12 +165,12 @@ Ayrıca, ölçek kümesi sanal makinelerine atanan genel IP adreslerini, [Azure 
 [Azure Kaynak Gezgini](https://resources.azure.com)'ni sorgulamak için:
 
 1. Bir web tarayıcısında [Azure Kaynak Gezgini](https://resources.azure.com)'ni açın.
-1. Sol taraftaki *abonelikler*'i, yanındaki *+* işaretine tıklayarak genişletin. *Abonelikler* altında yalnızca bir öğeniz varsa zaten genişletilmiştir.
+1. Sol taraftaki *abonelikler* 'i, yanındaki *+* işaretine tıklayarak genişletin. *Abonelikler* altında yalnızca bir öğeniz varsa zaten genişletilmiştir.
 1. Aboneliğinizi genişletin.
 1. Kaynak grubunuzu genişletin.
-1. *Sağlayıcılar*'ı genişletin.
-1. *Microsoft.Compute*'u genişletin.
-1. *virtualMachineScaleSets*'i genişletin.
+1. *Sağlayıcılar* 'ı genişletin.
+1. *Microsoft. COMPUTE* ' ı genişletin.
+1. *virtualMachineScaleSets* 'i genişletin.
 1. Ölçek kümenizi genişletin.
 1. *publicipaddresses* üzerine tıklayın.
 

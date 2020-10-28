@@ -4,18 +4,18 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 800dc50f82fa47228f1a88a143c5b515168812a6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91745417"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755431"
 ---
-| Kaynak | Ücretsiz | Shared | Temel | Standart | Premium (v3) | Yalıtılmış </th> |
+| Kaynak | Ücretsiz | Paylaşılan | Temel | Standart | Premium (v3) | Yalıtılmış </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Azure App Service plan](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> başına [Web, mobil veya API Apps](https://azure.microsoft.com/services/app-service/) |10 |100 |Sınırsız<sup>2</sup> |Sınırsız<sup>2</sup> |Sınırsız<sup>2</sup> |Sınırsız<sup>2</sup>|
 | [App Service planı](../articles/app-service/overview-hosting-plans.md) |Bölge başına 10 |kaynak grubu başına 10 |kaynak grubu başına 100 |kaynak grubu başına 100 |kaynak grubu başına 100 |kaynak grubu başına 100|
-| İşlem örneği türü |Shared |Shared |Adanmış<sup>3</sup> |Adanmış<sup>3</sup> |Adanmış<sup>3</sup></p> |Adanmış<sup>3</sup>|
+| İşlem örneği türü |Paylaşılan |Paylaşılan |Adanmış<sup>3</sup> |Adanmış<sup>3</sup> |Adanmış<sup>3</sup></p> |Adanmış<sup>3</sup>|
 | [Ölçeği](../articles/app-service/manage-scale-up.md) genişletme (en fazla örnek) |1 paylaşılan |1 paylaşılan |3 ayrılmış<sup>3</sup> |10 adanmış<sup>3</sup> |30 ayrılmış<sup>3</sup>|100 adanmış<sup>4</sup>|
 | Depolama<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> 250 GB 'tan fazla için bir destek isteği gönderebilirsiniz. |1 TB<sup>5</sup> <br/><br/> Kullanılabilir depolama kotası 999 GB 'dir. |
 | CPU süresi (5 dakika)<sup>6</sup> |3 dakika |3 dakika |Sınırsız, standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/) öde</a> |Sınırsız, standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/) öde</a> |Sınırsız, standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/) öde</a> |Sınırsız, standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/) öde</a>|
@@ -32,6 +32,7 @@ ms.locfileid: "91745417"
 | Karma bağlantılar | | | plan başına 5 | plan başına 25 | Uygulama başına 200 | Uygulama başına 200 |
 | [Sanal Ağ tümleştirmesi](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | Tümleşik yük dengeleyici | |X |X |X |X |X<sup>10</sup> |
+| [Erişim kısıtlamaları](../articles/app-service/networking-features.md#access-restrictions) | Uygulama başına 512 kural | Uygulama başına 512 kural | Uygulama başına 512 kural | Uygulama başına 512 kural | Uygulama başına 512 kural | Uygulama başına 512 kural |
 | [Her zaman açık](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [Zamanlanan yedeklemeler](../articles/app-service/manage-backup.md) | | | | Her 2 saatte bir zamanlanan yedeklemeler, günde en fazla 12 yedekleme (el ile + zamanlanmış) | Her saat zamanlanan yedeklemeler, günde en fazla 50 yedekleme (el ile + zamanlanmış) | Her saat zamanlanan yedeklemeler, günde en fazla 50 yedekleme (el ile + zamanlanmış) |
 | [Otomatik Ölçeklendirme](../articles/app-service/manage-scale-up.md) | | | |X |X |X |

@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 8d11fada41d0152b44be6cb0cdef41e68808689b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: f7c5dbaf30965fdd5f438f0351cfa2cd60e05b70
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967513"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746554"
 ---
 # <a name="secure-access-to-application-data"></a>Uygulama verilerine güvenli erişim
 
@@ -31,7 +31,7 @@ Serinin üçüncü bölümünde şunları öğrenirsiniz:
 
 [Azure blob depolama](../common/storage-introduction.md#blob-storage), uygulamalara ilişkin dosyaları depolamak için sağlam bir hizmet sağlar. Bu öğretici, bir web uygulamasından depolama hesabınıza erişim güvenliğinin nasıl sağlanacağını göstermek için [önceki konuyu][previous-tutorial] genişletir. İşiniz bittiğinde görüntüler şifrelenir ve web uygulaması, küçük resimlere erişmek için güvenli SAS belirteçlerini kullanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için önceki şu Depolama öğreticisini tamamlamış olmanız gerekir: [Karşıya yüklenen görüntüleri yeniden boyutlandırmayı Event Grid kullanarak otomatikleştirme][previous-tutorial].
 

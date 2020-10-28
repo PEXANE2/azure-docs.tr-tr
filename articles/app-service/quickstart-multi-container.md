@@ -6,13 +6,13 @@ author: msangapu-msft
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 562185697f8f80fc52b06be80a9f15271f16c0a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: c67d4dbb68048d273b1f9acd83a8460447e5abe4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961474"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748913"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Docker Compose yapılandırma kullanarak çok Kapsayıcılı (Önizleme) uygulama oluşturma
 
@@ -129,7 +129,7 @@ Dağıtılan uygulamaya göz atmak için (`http://<app_name>.azurewebsites.net`)
 
 ![Kapsayıcılar için Web App üzerinde örnek çok kapsayıcılı uygulama][1]
 
-**Tebrikler**, kapsayıcılar için Web App içinde çok kapsayıcılı bir uygulama oluşturdunuz.
+**Tebrikler** , kapsayıcılar için Web App içinde çok kapsayıcılı bir uygulama oluşturdunuz.
 
 [!INCLUDE [Clean-up section](../../includes/cli-script-clean-up.md)]
 

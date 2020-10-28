@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 97551ac63066f7064c16a001d9ce1f6bc31465ec
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e53937122b8721aff5db435ac447b686ea16643
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80586571"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748686"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Hızlı başlangıç: bir C# proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
@@ -47,7 +47,7 @@ Aşağıdaki şekilde, bu örnekteki cihaz yerel ve hizmet yerel proxy uygulamal
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'lar için desteklenmektedir:
 
@@ -81,7 +81,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Kullanıcının kimliğini doğrulamak için kullanılan cihazdaki geçerli bir kullanıcı hesabı ve kimlik bilgisi (Windows veya Linux).
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -195,7 +195,7 @@ Hizmet tarafındaki konsol çıkışı (hizmet yerel proxy uygulaması 2222 numa
 
 ![Hizmet-yerel proxy uygulama çıkışı](./media/quickstart-device-streams-proxy-csharp/service-console-output.png)
 
-*IP_address: 22*' de ssh daemon 'a bağlanan cihaz yerel proxy uygulamasında konsol çıktısı:
+*IP_address: 22* ' de ssh daemon 'a bağlanan cihaz yerel proxy uygulamasında konsol çıktısı:
 
 ![Cihaz-yerel proxy uygulama çıkışı](./media/quickstart-device-streams-proxy-csharp/device-console-output.png)
 

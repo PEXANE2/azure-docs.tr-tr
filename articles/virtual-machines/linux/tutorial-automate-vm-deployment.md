@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 57e336093ece0906033b86cefe72ed9f2b940573
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 456c42dc0b25e168744ce283cddbd63b877813ab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279357"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747156"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Öğretici - Azure’da ilk önyüklemede bir Linux sanal makinesini özelleştirmek için cloud-init kullanma
 
@@ -43,12 +43,12 @@ Azure’a sağladıkları görüntülere cloud-init’in dahil edilmesini ve bu 
 
 | Publisher | Sunduğu | SKU | Sürüm | Cloud-init Ready |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18,04-LTS |en son |evet | 
-|Canonical |UbuntuServer |16.04-LTS |en son |evet | 
-|Canonical |UbuntuServer |14.04.5-LTS |en son |evet |
-|CoreOS |CoreOS |Dengeli |en son |evet |
+|Canonical |UbuntuServer |18,04-LTS |en son |yes | 
+|Canonical |UbuntuServer |16.04-LTS |en son |yes | 
+|Canonical |UbuntuServer |14.04.5-LTS |en son |yes |
+|CoreOS |CoreOS |Dengeli |en son |yes |
 |OpenLogic 7,6 |CentOS |7-CI |en son |preview |
-|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |evet |
+|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |yes |
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
 
 
@@ -129,7 +129,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>Web uygulamasını test etme
-Artık bir Web tarayıcısı açıp adres çubuğuna *http: \/ \/ \<publicIpAddress> * yazabilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Node.js uygulamanız, aşağıdaki örnekte olduğu gibi görüntülenir:
+Artık bir Web tarayıcısı açıp adres çubuğuna *http: \/ \/ \<publicIpAddress>* yazabilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Node.js uygulamanız, aşağıdaki örnekte olduğu gibi görüntülenir:
 
 ![Çalışan NGINX sitesini görüntüleme](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -260,7 +260,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>Güvenli web uygulamasını test etme
-Artık bir Web tarayıcısı açıp adres çubuğuna *https: \/ \/ \<publicIpAddress> * yazabilirsiniz. Önceki VM oluşturma işleminin çıkışında gösterildiği gibi kendi genel IP adresinizi girin. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
+Artık bir Web tarayıcısı açıp adres çubuğuna *https: \/ \/ \<publicIpAddress>* yazabilirsiniz. Önceki VM oluşturma işleminin çıkışında gösterildiği gibi kendi genel IP adresinizi girin. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
 
 ![Web tarayıcısı güvenlik uyarısını kabul edin](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: contperfq1
-ms.openlocfilehash: f64e3459863cc7b7ffddfae824f9c4012802a457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperfq1, devx-track-azurecli
+ms.openlocfilehash: 906ec80ecc198675fdb5b163403267be1d13de00
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500326"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746842"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure dosyalarında Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme
 
@@ -39,7 +39,7 @@ Azure dosya paylaşımları için SMB üzerinden Azure AD 'yi etkinleştirmeden 
 
     Azure AD kimlik bilgileriyle kimlik doğrulamasını desteklemek için, Azure AD kiracınız için Azure AD Domain Services etkinleştirmeniz gerekir. Azure AD kiracısı yöneticisi değilseniz, yöneticiye başvurun ve [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirmek](../../active-directory-domain-services/tutorial-create-instance.md)için adım adım yönergeleri izleyin.
 
-    Azure AD DS dağıtımının tamamlanabilmesi için genellikle yaklaşık 15 dakika sürer. Bir sonraki adıma geçmeden önce, Azure AD DS sistem durumunun **çalıştığını**, Parola karması eşitlemesi etkinken çalıştığını doğrulayın.
+    Azure AD DS dağıtımının tamamlanabilmesi için genellikle yaklaşık 15 dakika sürer. Bir sonraki adıma geçmeden önce, Azure AD DS sistem durumunun **çalıştığını** , Parola karması eşitlemesi etkinken çalıştığını doğrulayın.
 
 1.  **Etki alanı-Azure AD DS ile bir Azure VM 'ye katın.**
 
@@ -87,9 +87,9 @@ Azure AD DS kimlik doğrulamasını yalnızca Azure AD DS Azure AD kiracınıza 
 [Azure Portal](https://portal.azure.com)SMB üzerinden Azure AD DS kimlik doğrulamasını etkinleştirmek için şu adımları izleyin:
 
 1. Azure portal, mevcut depolama hesabınıza gidin veya [bir depolama hesabı oluşturun](../common/storage-account-create.md).
-1. **Ayarlar** bölümünde **yapılandırma**' yı seçin.
-1. **Dosya paylaşımları Için kimlik tabanlı erişim** altında **Azure Active Directory etki alanı HIZMETI 'nın (AAD DS)** **etkin**olarak değiştirin.
-1. **Kaydet**’i seçin.
+1. **Ayarlar** bölümünde **yapılandırma** ' yı seçin.
+1. **Dosya paylaşımları Için kimlik tabanlı erişim** altında **Azure Active Directory etki alanı HIZMETI 'nın (AAD DS)** **etkin** olarak değiştirin.
+1. **Kaydet** ’i seçin.
 
 Aşağıdaki görüntüde, depolama hesabınız için SMB üzerinden Azure AD DS kimlik doğrulamasının nasıl etkinleştirileceği gösterilmektedir.
 
@@ -99,7 +99,7 @@ Aşağıdaki görüntüde, depolama hesabınız için SMB üzerinden Azure AD DS
 
 Azure PowerShell SMB üzerinden Azure AD DS kimlik doğrulamasını etkinleştirmek için en son az modülünü (2,4 veya daha yeni) veya az. Storage modülünü (1,5 veya daha yeni bir sürüm). PowerShell 'i yükleme hakkında daha fazla bilgi için bkz. [PowerShellGet Ile Windows 'da Azure PowerShell yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-Yeni bir depolama hesabı oluşturmak için [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)' ı çağırın ve sonra **Enableazureactivedirectorydomainservicesforfile** parametresini **true**olarak ayarlayın. Aşağıdaki örnekte, yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. (Önceki önizleme modülünü kullanıyorsanız, özelliği etkinleştirme parametresi **Enableazurefilesaadıntegrationforsmb**' dir.)
+Yeni bir depolama hesabı oluşturmak için [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)' ı çağırın ve sonra **Enableazureactivedirectorydomainservicesforfile** parametresini **true** olarak ayarlayın. Aşağıdaki örnekte, yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. (Önceki önizleme modülünü kullanıyorsanız, özelliği etkinleştirme parametresi **Enableazurefilesaadıntegrationforsmb** ' dir.)
 
 ```powershell
 # Create a new storage account
@@ -125,7 +125,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 Azure CLı ile SMB üzerinden Azure AD kimlik doğrulamasını etkinleştirmek için en son CLı sürümünü (sürüm 2.0.70 veya üzeri) yüklemelisiniz. Azure CLı yükleme hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Yeni bir depolama hesabı oluşturmak için [az Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)çağırın ve `--enable-files-aadds` özelliği **true**olarak ayarlayın. Aşağıdaki örnekte, yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. (Önceki önizleme modülünü kullanıyorsanız, özellik etkinleştirme parametresi **Dosya-AAD**' dir.)
+Yeni bir depolama hesabı oluşturmak için [az Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)çağırın ve `--enable-files-aadds` özelliği **true** olarak ayarlayın. Aşağıdaki örnekte, yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. (Önceki önizleme modülünü kullanıyorsanız, özellik etkinleştirme parametresi **Dosya-AAD** ' dir.)
 
 ```azurecli-interactive
 # Create a new storage account

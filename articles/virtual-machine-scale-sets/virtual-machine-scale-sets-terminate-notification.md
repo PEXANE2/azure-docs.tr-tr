@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: d4b31eb59ed0bae2afe408546ece66eacade9ddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: c4d6de1b3406e6d82bdac5ff9b5c72a2286da988
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603841"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747741"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure sanal makine ölçek kümesi örnekleri için bildirimi sonlandırma
 Ölçek kümesi örnekleri, örnek sonlandırma bildirimleri almak için kabul edebilir ve Sonlandırma işlemine önceden tanımlanmış bir gecikme zaman aşımı kümesi ayarlayabilir. Sonlandırma bildirimi, yeniden başlatmalar ve yeniden dağıtım gibi kesin işlemleri bildirimleri ve ertelerini sağlayan Azure Metadata Service – [zamanlanan olaylar](../virtual-machines/windows/scheduled-events.md)aracılığıyla gönderilir. Çözüm başka bir olay – Terminate – Zamanlanan Olaylar listesine ekler ve Terminate olayının ilişkili gecikmesi, kullanıcılar tarafından ölçek kümesi modeli yapılandırmalarında belirtilen gecikme sınırına bağlıdır.
@@ -28,11 +28,11 @@ Aşağıdaki örneklerde açıklandığı şekilde ölçek kümesi örnekleriniz
 
 Aşağıdaki adımlar yeni bir ölçek kümesi oluştururken sonlandırma bildirimini etkinleştirir. 
 
-1. **Sanal makine ölçek kümelerine**gidin.
+1. **Sanal makine ölçek kümelerine** gidin.
 1. Yeni bir ölçek kümesi oluşturmak için **+ Ekle** ' yi seçin.
 1. **Yönetim** sekmesine gidin. 
 1. **Örnek sonlandırma** bölümünü bulun.
-1. **Örnek sonlandırma bildirimi**için **Açık**' ı seçin.
+1. **Örnek sonlandırma bildirimi** için **Açık** ' ı seçin.
 1. **Sonlandırma gecikmesi (dakika)** için, istenen varsayılan zaman aşımını ayarlayın.
 1. Yeni ölçek kümesini oluşturmayı tamamladığınızda, **gözden geçir + oluştur** düğmesini seçin. 
 
@@ -63,9 +63,9 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 
 ```
 
-Yukarıdaki blok, ölçek kümesindeki tüm örneklerde herhangi bir sonlandırma işlemi için 5 dakikadan ( *PT5M*tarafından belirtildiği gibi) bir zaman aşımı gecikmesi belirtir. *Notbeforetimeout* alanı ISO 8601 biçiminde 5 ile 15 dakika arasında herhangi bir değer alabilir. Sonlandırma işlemi için varsayılan zaman aşımını, yukarıda açıklanan *Sonlandırmaenocertificate* altında bulunan *notbeforetimeout* özelliğini değiştirerek değiştirebilirsiniz.
+Yukarıdaki blok, ölçek kümesindeki tüm örneklerde herhangi bir sonlandırma işlemi için 5 dakikadan ( *PT5M* tarafından belirtildiği gibi) bir zaman aşımı gecikmesi belirtir. *Notbeforetimeout* alanı ISO 8601 biçiminde 5 ile 15 dakika arasında herhangi bir değer alabilir. Sonlandırma işlemi için varsayılan zaman aşımını, yukarıda açıklanan *Sonlandırmaenocertificate* altında bulunan *notbeforetimeout* özelliğini değiştirerek değiştirebilirsiniz.
 
-Ölçek kümesi modelinde *scheduledEventsProfile* etkinleştirildikten ve *notbeforetimeout*ayarını yaptıktan sonra, değişiklikleri yansıtmak için tek tek örnekleri [en son modele](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) güncelleştirin.
+Ölçek kümesi modelinde *scheduledEventsProfile* etkinleştirildikten ve *notbeforetimeout* ayarını yaptıktan sonra, değişiklikleri yansıtmak için tek tek örnekleri [en son modele](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) güncelleştirin.
 
 > [!NOTE]
 >Ölçek kümesi örneklerinde sonlandırma bildirimleri yalnızca API sürüm 2019-03-01 ve üstü ile etkinleştirilebilir
@@ -197,7 +197,7 @@ Zamanlanan Olaylar aracılığıyla herhangi bir **sonlandırma** olayı almıyo
 >'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>Hatalı NotBefore ile sonlandırma olayı alma  
-Ölçek kümesi modelinde *scheduledEventsProfile* etkinleştirildikten ve *notbeforetimeout*ayarını yaptıktan sonra, değişiklikleri yansıtmak için tek tek örnekleri [en son modele](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) güncelleştirin.
+Ölçek kümesi modelinde *scheduledEventsProfile* etkinleştirildikten ve *notbeforetimeout* ayarını yaptıktan sonra, değişiklikleri yansıtmak için tek tek örnekleri [en son modele](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) güncelleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Uygulamanızı sanal makine ölçek kümelerinde [dağıtmayı](virtual-machine-scale-sets-deploy-app.md) öğrenin.

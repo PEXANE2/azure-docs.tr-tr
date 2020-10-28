@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 05/04/2020
+ms.date: 10/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95c55f92304ddd3ec2b3d44d4f07fb64ab815c6d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86276132"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755640"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Hangi bölgeler kullanılabilir?
 
@@ -45,6 +45,10 @@ Hem RDP hem de SSH, kullanım tabanlı bir protokoldür. Oturumların yüksek ku
 
 Şu anda yalnızca metin kopyalama/yapıştırma işlemi desteklenir. Dosya kopyalama gibi özellikler gösterilmez. Yeni özelliklerle ilgili geri bildirimlerinizi [Azure Bastion Geri Bildirim sayfasında](https://feedback.azure.com/forums/217313-networking?category_id=367303) bizimle paylaşabilirsiniz.
 
+### <a name="does-bastion-hardening-work-with-aadj-vm-extension-joined-vms"></a><a name="aadj"></a>Savunma, sanal makine Uzantısı ile birleştirilmiş VM 'lerle çalışır mı?
+
+Bu özellik, Azure AD kullanıcıları kullanan, ASıFATı VM uzantısına katılmış makinelerde çalışmaz. Daha fazla bilgi için bkz. [Windows Azure VM 'leri ve Azure AD](../articles/active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#requirements).
+
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Hangi tarayıcılar destekleniyor?
 
 Windows üzerinde Microsoft Edge tarayıcısını veya Google Chrome 'u kullanın. Apple Mac için Google Chrome tarayıcısı ' nı kullanın. Microsoft Edge Kmıum, sırasıyla hem Windows hem de Mac 'te desteklenir.
@@ -66,7 +70,7 @@ Bir bağlantı oluşturmak için aşağıdaki roller gereklidir:
 Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://aka.ms/BastionHostPricing).
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Azure savunma, Azure 'da barındırılan VM 'lerde yönetim amacıyla bir RDS CAL gerektiriyor mu?
-Hayır, Azure 'da Windows Server VM 'lerine erişim yalnızca yönetim amacıyla kullanıldığında bir [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) gerektirmez.
+Hayır, Azure 'da Windows Server VM 'lerine erişim yalnızca yönetim amacıyla kullanıldığında bir [RDS CAL](https://www.microsoft.com/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) gerektirmez.
 
 ### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Uzak oturum sırasında hangi klavye düzenleri destekleniyor?
 

@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 609f6d5fd0bf75b1a2056c01c8d22ae9e08ab9cb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563701"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746833"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) ve [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System) (Önizleme) aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -22,7 +22,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 1. Bu makalenin açıklamalar bölümü.
 2. [Microsoft Q&Azure depolama Için bir soru sayfası](https://docs.microsoft.com/answers/topics/azure-file-storage.html).
 3. [Azure dosyaları UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. Microsoft Desteği. Yeni bir destek isteği oluşturmak için, Azure portal **Yardım** sekmesinde **Yardım + Destek** düğmesini seçin ve ardından **Yeni destek isteği**' ni seçin.
+4. Microsoft Desteği. Yeni bir destek isteği oluşturmak için, Azure portal **Yardım** sekmesinde **Yardım + Destek** düğmesini seçin ve ardından **Yeni destek isteği** ' ni seçin.
 
 ## <a name="general"></a>Genel
 * <a id="why-files-useful"></a>
@@ -107,7 +107,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
     Performans, ortam ayarlarınıza, yapılandırmanıza ve bu bir ilk eşitleme veya devam eden bir eşitleme olup olmadığına göre değişir. Daha fazla bilgi için bkz. [Azure dosya eşitleme performans ölçümleri](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
 
 * <a id="afs-conflict-resolution"></a>**Aynı dosya yaklaşık olarak aynı anda iki sunucuda değiştirilirse ne olur?**  
-    Azure Dosya Eşitleme basit bir çakışma çözümü stratejisi kullanır: aynı anda iki uç noktada değiştirilen dosyalarda her iki değişikliği de tutuyoruz. En son yazılan değişiklik özgün dosya adını tutar. Eski dosya (LastWriteTime tarafından belirlenir), dosya adının sonuna bir uç nokta adı ve çakışma numarası içerir. Sunucu uç noktaları için uç nokta adı sunucunun adıdır. Bulut uç noktaları için uç nokta adı **bulut**olur. Ad bu taksonomiyi izler: 
+    Azure Dosya Eşitleme basit bir çakışma çözümü stratejisi kullanır: aynı anda iki uç noktada değiştirilen dosyalarda her iki değişikliği de tutuyoruz. En son yazılan değişiklik özgün dosya adını tutar. Eski dosya (LastWriteTime tarafından belirlenir), dosya adının sonuna bir uç nokta adı ve çakışma numarası içerir. Sunucu uç noktaları için uç nokta adı sunucunun adıdır. Bulut uç noktaları için uç nokta adı **bulut** olur. Ad bu taksonomiyi izler: 
    
     \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
@@ -257,7 +257,25 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 * <a id="ad-multiple-forest"></a>
 **Azure dosya paylaşımları için şirket içi AD DS kimlik doğrulaması, birden çok orman kullanarak bir AD DS ortamıyla tümleştirmeyi destekliyor mu?**    
 
-    Azure dosyaları şirket içi AD DS kimlik doğrulaması yalnızca depolama hesabının kaydedildiği etki alanı hizmetinin ormanı ile tümleşir. Başka bir ormandaki kimlik doğrulamasını desteklemek için ortamınızda bir orman güveni doğru şekilde yapılandırılmış olmalıdır. Azure dosyalarının, kimlik doğrulaması için AD DS bir kimlik (bilgisayar veya hizmet oturum açma hesabı) oluşturduğu düzenli bir dosya sunucusu ile neredeyse AD DS kaydetme şekli. Tek fark, depolama hesabının kayıtlı SPN 'si, etki alanı sonekiyle eşleşmeyen "file.core.windows.net" ile sona erecek. Farklı etki alanı son eki nedeniyle birden çok orman kimlik doğrulamasını etkinleştirmek için DNS yönlendirme ilkenize yönelik herhangi bir güncelleştirmenin gerekli olup olmadığını görmek için etki alanı yöneticinize başvurun.
+    Azure dosyaları şirket içi AD DS kimlik doğrulaması yalnızca depolama hesabının kaydedildiği etki alanı hizmetinin ormanı ile tümleşir. Başka bir ormandaki kimlik doğrulamasını desteklemek için ortamınızda bir orman güveni doğru şekilde yapılandırılmış olmalıdır. Azure dosyalarının, kimlik doğrulaması için AD DS bir kimlik (bilgisayar veya hizmet oturum açma hesabı) oluşturduğu düzenli bir dosya sunucusu ile neredeyse AD DS kaydetme şekli. Tek fark, depolama hesabının kayıtlı SPN 'si, etki alanı sonekiyle eşleşmeyen "file.core.windows.net" ile sona erecek. Farklı etki alanı son eki nedeniyle birden çok orman kimlik doğrulamasını etkinleştirmek için sonek yönlendirme ilkenize yönelik herhangi bir güncelleştirmenin gerekli olup olmadığını görmek için etki alanı yöneticinize başvurun. Sonek yönlendirme ilkesini yapılandırmak için aşağıda bir örnek sağlıyoruz.
+    
+    Örnek: Orman A etki alanındaki kullanıcılar, B ormanında bir etki alanında kayıtlı depolama hesabıyla bir dosya paylaşımıyla erişmek istediğinizde, bu otomatik olarak çalışmayacaktır çünkü depolama hesabının hizmet sorumlusu, A ormanındaki herhangi bir etki alanının sonekiyle eşleşen bir sonekine sahip değildir. "File.core.windows.net" özel son eki için A Ormanı A ormanına bir sonek yönlendirme kuralını el ile yapılandırarak bu sorunu ele alabilirsiniz.
+    İlk olarak, B ormanına yeni bir özel sonek eklemeniz gerekir. yapılandırmayı değiştirmek için uygun yönetim izinlerine sahip olduğunuzdan emin olun, ardından aşağıdaki adımları uygulayın:   
+    1. B ormanına katılmış bir makine etki alanında oturum açma
+    2.  "Active Directory etki alanları ve Güvenleri" konsolunu açın
+    3.  "Active Directory etki alanları ve Güvenleri" ne sağ tıklayın
+    4.  "Özellikler" e tıklayın
+    5.  "Ekle" ye tıklayın
+    6.  UPN sonekleri olarak "file.core.windows.net" ekleyin
+    7.  Sihirbazı kapatmak için "Uygula" ve ardından "Tamam" seçeneğine tıklayın
+    
+    Sonra, A ormanına son ek yönlendirme kuralını ekleyerek B ormanına yeniden yönlendirir.
+    1.  A ormanına katılmış bir makine etki alanında oturum açma
+    2.  "Active Directory etki alanları ve Güvenleri" konsolunu açın
+    3.  Dosya paylaşımında erişmek istediğiniz etki alanına sağ tıklayın, ardından "güvenler" sekmesine tıklayın ve giden güvenlerden orman B etki alanı ' nı seçin. İki orman arasında güven yapılandırmadıysanız, önce güveni ayarlamanız gerekir
+    4.  "Özellikler..." seçeneğine tıklayın sonra "ad soneki yönlendirmesi"
+    5.  "*. File.core.windows.net" surfdüzeltmesini göster ' i işaretleyin. Aksi takdirde, ' Yenile ' seçeneğine tıklayın
+    6.  "*. File.core.windows.net" öğesini seçin, ardından "etkinleştir" ve "Uygula" seçeneğine tıklayın
 
 * <a id=""></a>
 **Azure dosyaları AD DS kimlik doğrulaması için hangi bölgeler kullanılabilir?**

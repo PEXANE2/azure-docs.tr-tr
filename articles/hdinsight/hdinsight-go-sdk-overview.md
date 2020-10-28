@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.date: 01/03/2020
-ms.openlocfilehash: d46f20f33e2627525f8f7f5b08bdaa2875626940
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6fdd7b9e5fda92bd75e54ea5b4aad6a3ba6ecbea
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541987"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748749"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>Go için HDInsight SDK (Önizleme)
 
@@ -25,7 +25,7 @@ Go için HDInsight SDK 'Sı, HDInsight kümelerinizi yönetmenize imkan tanıyan
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir [ `go get` araç](https://github.com/golang/go/wiki/GoGetTools).
 * [Git](https://golang.org/dl/).
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 GOPATH konumundan şunu çalıştırın `go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
 
-## <a name="authentication"></a>Kimlik Doğrulama
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Önce SDK 'nın Azure aboneliğinizle doğrulanması gerekir.  Hizmet sorumlusu oluşturmak için aşağıdaki örneği izleyin ve kimlik doğrulaması için kullanın. Bu yapıldıktan sonra, `ClustersClient` yönetim işlemleri gerçekleştirmek için kullanılabilecek çok sayıda işlev (aşağıdaki bölümlerde özetlenen) içeren bir örneğine sahip olacaksınız.
 

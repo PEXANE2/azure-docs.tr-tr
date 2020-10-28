@@ -5,13 +5,13 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmak için nasıl yapılandırılacağını öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.custom: devx-track-js
-ms.openlocfilehash: a30dae3b65a7e877dc20b4d6fae8de338024d3c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: fb45c310d306813dc10b667db6ce36048eccf217
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973062"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746124"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Özel bir traefik giriş denetleyicisi kullanma ve https 'yi yapılandırma
 
@@ -102,8 +102,8 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 [Values. YAML][values-yaml] dosyasını açın ve aşağıdaki güncelleştirmeleri yapın:
-* *<REPLACE_ME_WITH_HOST_SUFFIX>* tüm örneklerini traefik ile değiştirin *. MY_CUSTOM_DOMAIN* *MY_CUSTOM_DOMAIN*için etki alanınızı kullanma. 
-* *Kubernetes.io/ingress.class: traefik # özel*giriş ile *Kubernetes.io/ingress.class: traefik-azds # dev Spaces* ile değiştirin. 
+* *<REPLACE_ME_WITH_HOST_SUFFIX>* tüm örneklerini traefik ile değiştirin *. MY_CUSTOM_DOMAIN* *MY_CUSTOM_DOMAIN* için etki alanınızı kullanma. 
+* *Kubernetes.io/ingress.class: traefik # özel* giriş ile *Kubernetes.io/ingress.class: traefik-azds # dev Spaces* ile değiştirin. 
 
 Aşağıda güncelleştirilmiş bir dosyaya örnek verilmiştir `values.yaml` :
 
@@ -212,7 +212,7 @@ spec:
 ```
 
 > [!NOTE]
-> Test için, *Kümevereninizi*için kullanabileceğiniz bir [hazırlama sunucusu][letsencrypt-staging-issuer] da vardır.
+> Test için, *Kümevereninizi* için kullanabileceğiniz bir [hazırlama sunucusu][letsencrypt-staging-issuer] da vardır.
 
 `kubectl`Uygulamak için kullanın `letsencrypt-clusterissuer.yaml` .
 
@@ -220,7 +220,7 @@ spec:
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-Önceki *traefik* *Clusterrole* ve *clusterrolebinding*' i KALDıRıN, sonra traefik öğesini kullanarak https kullanacak şekilde yükseltin `helm` .
+Önceki *traefik* *Clusterrole* ve *clusterrolebinding* ' i KALDıRıN, sonra traefik öğesini kullanarak https kullanacak şekilde yükseltin `helm` .
 
 > [!NOTE]
 > AKS kümenizde RBAC etkinleştirilmediyse, *--set RBAC. Enabled = true* parametresini kaldırın.
@@ -262,7 +262,7 @@ az network dns record-set a remove-record \
     --ipv4-address PREVIOUS_EXTERNAL_IP
 ```
 
-Yukarıdaki örnek, *PREVIOUS_EXTERNAL_IP*kullanmak için *MY_CUSTOM_DOMAIN* DNS bölgesindeki *bir* kaydı güncelleştirir.
+Yukarıdaki örnek, *PREVIOUS_EXTERNAL_IP* kullanmak için *MY_CUSTOM_DOMAIN* DNS bölgesindeki *bir* kaydı güncelleştirir.
 
 , *CERT-Manager* ve https kullanımına ilişkin ayrıntıları dahil etmek için [values. YAML][values-yaml] 'yi güncelleştirin. Aşağıda güncelleştirilmiş bir dosyaya örnek verilmiştir `values.yaml` :
 
@@ -306,13 +306,13 @@ helm upgrade bikesharingsampleapp . --namespace dev --atomic
 > [!IMPORTANT]
 > DNS değişikliklerinin tamamlanması ve örnek uygulamanızın erişilebilir olması 30 dakika veya daha uzun sürebilir.
 
-Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örnek:
+Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örneğin:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernetes.io/ingress.Class* için *Traefik* ve *$ (hostsuffix)* özel etki alanınızı kullanacak şekilde güncelleştirin. Örnek:
+Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernetes.io/ingress.Class* için *Traefik* ve *$ (hostsuffix)* özel etki alanınızı kullanacak şekilde güncelleştirin. Örneğin:
 
 ```yaml
 ...

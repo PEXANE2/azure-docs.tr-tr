@@ -13,13 +13,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 3cdb7796f3f8c877f130f47b971dc66c113c4d36
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 849f25f6fdd3fef2e1ebca7dae397d96e6849f10
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070121"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748857"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Öğretici: Java Spring uygulamasındaki Key Vault başvurularını kullanma
 
@@ -41,7 +41,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Key Vault depolanan bir değere başvuran bir uygulama yapılandırma anahtarı oluşturun.
 > * Bu anahtarın değerine bir Java Spring uygulamasından erişin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Sürüm 8 ile desteklenen bir [Java Geliştirme Seti (JDK)](/java/azure/jdk) .
@@ -52,16 +52,16 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 1. Azure portal, sol üst köşedeki **kaynak oluştur** seçeneğini belirleyin:
 
     ![Anahtar Kasası oluşturma işlemi tamamlandıktan sonra çıkış](./media/quickstarts/search-services.png)
-1. Arama kutusuna **Key Vault**girin.
+1. Arama kutusuna **Key Vault** girin.
 1. Sonuçlar listesinden sol taraftaki **Anahtar kasaları** ' nı seçin.
-1. **Anahtar kasaları**' nda **Ekle**' yi seçin.
-1. **Anahtar Kasası oluşturma**' da sağ tarafta aşağıdaki bilgileri sağlayın:
+1. **Anahtar kasaları** ' nda **Ekle** ' yi seçin.
+1. **Anahtar Kasası oluşturma** ' da sağ tarafta aşağıdaki bilgileri sağlayın:
     * Abonelik seçmek için **abonelik** ' ı seçin.
-    * **Kaynak grubu**' nda **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
-    * **Anahtar Kasası adında**, benzersiz bir ad gereklidir. Bu öğretici için **contoso-vault2**girin.
+    * **Kaynak grubu** ' nda **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
+    * **Anahtar Kasası adında** , benzersiz bir ad gereklidir. Bu öğretici için **contoso-vault2** girin.
     * **Bölge** açılan listesinde bir konum seçin.
 1. Diğer **Anahtar Kasası oluşturma** seçeneklerini varsayılan değerleriyle bırakın.
-1. **Oluştur**’u seçin.
+1. **Oluştur** ’u seçin.
 
 Bu noktada, Azure hesabınız, bu yeni kasaya erişme yetkisine sahip tek bir hesaptır.
 
@@ -69,28 +69,28 @@ Bu noktada, Azure hesabınız, bu yeni kasaya erişme yetkisine sahip tek bir he
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault’a gizli dizi ekleme
 
-Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmeniz gerekir. Bu durumda, Key Vault alımı test etmek için kullanabileceğiniz bir ileti ekleyin. İleti **ileti**olarak adlandırılır ve "Hello 'dan Key Vault" değerini depolar.
+Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmeniz gerekir. Bu durumda, Key Vault alımı test etmek için kullanabileceğiniz bir ileti ekleyin. İleti **ileti** olarak adlandırılır ve "Hello 'dan Key Vault" değerini depolar.
 
-1. Key Vault Özellikler sayfalarında **gizli**dizileri ' ni seçin.
-1. **Oluştur/Içeri aktar**' ı seçin.
+1. Key Vault Özellikler sayfalarında **gizli** dizileri ' ni seçin.
+1. **Oluştur/Içeri aktar** ' ı seçin.
 1. Gizli dizi **Oluştur** bölmesinde aşağıdaki değerleri girin:
-    * **Karşıya yükleme seçenekleri**: **el ile**girin.
-    * **Ad**: **ileti**girin.
-    * **Değer**: **Key Vault Merhaba**yazın.
+    * **Karşıya yükleme seçenekleri** : **el ile** girin.
+    * **Ad** : **ileti** girin.
+    * **Değer** : **Key Vault Merhaba** yazın.
 1. Diğerini varsayılan değerleriyle **gizli bir özellikler oluşturmamaya** ayrılın.
-1. **Oluştur**’u seçin.
+1. **Oluştur** ’u seçin.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Uygulama yapılandırmasına Key Vault başvurusu ekleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar** ' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
-1. **Yapılandırma Gezgini**' ni seçin.
+1. **Yapılandırma Gezgini** ' ni seçin.
 
-1. **+**  >  **Anahtar Kasası başvurusu**oluştur ' u seçin ve ardından aşağıdaki değerleri belirtin:
-    * **Anahtar**: **/Application/config.asp keyvaultmessage** seçin
-    * **Etiket**: Bu değeri boş bırakın.
-    * **Abonelik**, **kaynak grubu**ve **Anahtar Kasası**: önceki bölümde oluşturduğunuz anahtar kasasındaki değerlere karşılık gelen değerleri girin.
-    * **Gizli**: önceki bölümde oluşturduğunuz gizli anahtar adlı **iletiyi** seçin.
+1. **+**  >  **Anahtar Kasası başvurusu** oluştur ' u seçin ve ardından aşağıdaki değerleri belirtin:
+    * **Anahtar** : **/Application/config.asp keyvaultmessage** seçin
+    * **Etiket** : Bu değeri boş bırakın.
+    * **Abonelik** , **kaynak grubu** ve **Anahtar Kasası** : önceki bölümde oluşturduğunuz anahtar kasasındaki değerlere karşılık gelen değerleri girin.
+    * **Gizli** : önceki bölümde oluşturduğunuz gizli anahtar adlı **iletiyi** seçin.
 
 ## <a name="connect-to-key-vault"></a>Key Vault Bağlan
 
@@ -129,7 +129,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET**ve **AZURE_TENANT_ID**ortam değişkenlerini oluşturun. Önceki adımlarda görüntülenen hizmet sorumlusunun değerlerini kullanın. Komut satırında aşağıdaki komutları çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
+1. **AZURE_CLIENT_ID** , **AZURE_CLIENT_SECRET** ve **AZURE_TENANT_ID** ortam değişkenlerini oluşturun. Önceki adımlarda görüntülenen hizmet sorumlusunun değerlerini kullanın. Komut satırında aşağıdaki komutları çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
     ```cmd
     setx AZURE_CLIENT_ID "clientId"
@@ -159,7 +159,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Kodunuzu Key Vault bir başvuru kullanacak şekilde güncelleştirin
 
-1. **APP_CONFIGURATION_ENDPOINT**adlı bir ortam değişkeni oluşturun. Değerini, uygulama yapılandırma deponuzın uç noktasına ayarlayın. Uç noktayı Azure portal **erişim tuşları** dikey penceresinde bulabilirsiniz. Değişikliğin etkili olması için komut istemi ' ni yeniden başlatın. 
+1. **APP_CONFIGURATION_ENDPOINT** adlı bir ortam değişkeni oluşturun. Değerini, uygulama yapılandırma deponuzın uç noktasına ayarlayın. Uç noktayı Azure portal **erişim tuşları** dikey penceresinde bulabilirsiniz. Değişikliğin etkili olması için komut istemi ' ni yeniden başlatın. 
 
 
 1. *Resources* klasöründe *Bootstrap. Properties* ' i açın. Bu dosyayı **APP_CONFIGURATION_ENDPOINT** değerini kullanacak şekilde güncelleştirin. Bu dosyadaki bir bağlantı dizesine olan başvuruları kaldırın. 
@@ -168,7 +168,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
     ```
 
-1. *MessageProperties. Java*' yı açın. *Keyvaultmessage*adlı yeni bir değişken ekleyin:
+1. *MessageProperties. Java* ' yı açın. *Keyvaultmessage* adlı yeni bir değişken ekleyin:
 
     ```java
     private String keyVaultMessage;
@@ -182,7 +182,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     }
     ```
 
-1. *Hellocontroller. Java*' yı açın. Key Vault alınan iletiyi dahil etmek için *GetMessage* yöntemini güncelleştirin.
+1. *Hellocontroller. Java* ' yı açın. Key Vault alınan iletiyi dahil etmek için *GetMessage* yöntemini güncelleştirin.
 
     ```java
     @GetMapping
@@ -220,7 +220,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     }
     ```
 
-1. *Appconfiguration. Java*adlı yeni bir dosya oluşturun. Ve aşağıdaki kodu ekleyin.
+1. *Appconfiguration. Java* adlı yeni bir dosya oluşturun. Ve aşağıdaki kodu ekleyin.
 
     ```java
     package com.example.demo;

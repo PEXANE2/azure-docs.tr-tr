@@ -7,17 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: ba3eae9b48650a549c3bb91bdf5e9a76cfbbe3b7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a9aa51e46595c7c65b1f83776eb72caca13e0180
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963083"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755442"
 ---
 > [!IMPORTANT]
-> * Form tanıyıcı SDK 'Sı Şu anda, ' ın tanıyıcı hizmeti 'nin v 2.0 'ı hedefliyor.
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Aşağıdaki başvuru belgelerine bakın. 
 
 [Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-ai-formrecognizer)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
@@ -25,11 +24,36 @@ ms.locfileid: "91963083"
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
-* Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları ( *sample_data.zip*indir ve Ayıkla) kullanabilirsiniz.
-* [Python 2,7, veya 3,5 veya üzeri](https://www.python.org/)
-* Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+* [Python 3.x](https://www.python.org/)
+* Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları ( *sample_data.zip* indir ve Ayıkla) kullanabilirsiniz.
+* Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+
+## <a name="setting-up"></a>Ayarlanıyor
+
+### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
+
+Python yükledikten sonra, form tanıyıcı istemci kitaplığı 'nın en son sürümünü ile yükleyebilirsiniz:
+
+```console
+pip install azure-ai-formrecognizer
+```
+
+### <a name="create-a-new-python-application"></a>Yeni bir Python uygulaması oluşturma
+
+Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir Python uygulaması oluşturun. Ardından aşağıdaki kitaplıkları içeri aktarın.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_imports)]
+
+> [!TIP]
+> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py)'da bulabilirsiniz.
+
+
+Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_creds)]
+
 
 ## <a name="object-model"></a>Nesne modeli 
 
@@ -53,35 +77,6 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 > [!NOTE]
 > Modeller ayrıca [form tanıyıcı etiketleme aracı](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)gibi bir grafik kullanıcı arabirimi kullanılarak eğitilmiş olabilir.
 
-## <a name="setting-up"></a>Ayarlanıyor
-
-### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
-
-Python yükledikten sonra, form tanıyıcı istemci kitaplığı 'nın en son sürümünü ile yükleyebilirsiniz:
-
-```console
-pip install azure-ai-formrecognizer
-```
-
-### <a name="create-a-new-python-application"></a>Yeni bir Python uygulaması oluşturma
-
-Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir Python uygulaması oluşturun. Ardından aşağıdaki kitaplıkları içeri aktarın. Hem eğitim hem de form tanıma için gereken kitaplıkları içeri aktardığınızı aklınızda bulundurun.
-
-```python
-import os
-from azure.core.exceptions import ResourceNotFoundError
-from azure.ai.formrecognizer import FormRecognizerClient
-from azure.ai.formrecognizer import FormTrainingClient
-from azure.core.credentials import AzureKeyCredential
-```
-
-Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. 
-
-```python
-endpoint = "<paste-your-form-recognizer-endpoint-here>"
-key = "<paste-your-form-recognizer-key-here>"
-```
-
 ## <a name="code-examples"></a>Kod örnekleri
 
 Bu kod parçacıkları, Python için form tanıyıcı istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
@@ -96,23 +91,19 @@ Bu kod parçacıkları, Python için form tanıyıcı istemci kitaplığı ile a
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Burada, yukarıda tanımladığınız abonelik değişkenlerini kullanarak iki istemci nesnesinin kimlik doğrulamasını yapacaksınız. Bir `AzureKeyCredential` nesnesi kullanacaksınız, gerekırse API anahtarını yeni istemci nesneleri oluşturmadan güncelleştirebilirsiniz.
+Burada, yukarıda tanımladığınız abonelik değişkenlerini kullanarak iki istemci nesnesinin kimlik doğrulamasını yapacaksınız. Gerektiğinde, API anahtarını yeni istemci nesneleri oluşturmadan güncelleştirebilmeniz için bir **AzureKeyCredential** nesnesi kullanacaksınız.
 
-```python
-form_recognizer_client = FormRecognizerClient(endpoint, AzureKeyCredential(key))
-form_training_client = FormTrainingClient(endpoint, AzureKeyCredential(key))
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_auth)]
+
 
 ## <a name="get-assets-for-testing"></a>Test için varlıkları al
 
-Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/python/api/azure-ai-formrecognizer) ilgili yöntemlere ve [örneklere](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)bakın.
-
-Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerekecektir.
-* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+Eğitim ve test verileriniz için URL 'lere başvuru eklemeniz gerekir.
+* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al** ' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur** ' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Aşağıdaki örneklerde bulunan ( [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) ' da de mevcuttur) ve giriş görüntülerini kullanarak, blob depolamada tek BIR BELGENIN SAS URL 'sini almak için yukarıdaki adımları kullanabilirsiniz. 
 
 > [!NOTE]
-> Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/python/api/azure-ai-formrecognizer)ilgili yöntemlere bakın.
+> Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/python/api/azure-ai-formrecognizer) ilgili yöntemlere ve [örneklere](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)bakın.
 
 ## <a name="recognize-form-content"></a>Form içeriğini tanı
 
@@ -120,21 +111,10 @@ Bir modeli eğmenize gerek kalmadan belgeler içindeki tabloları, çizgileri ve
 
 Belirli bir URL 'deki bir dosyanın içeriğini tanımak için `begin_recognize_content` yöntemini kullanın. Döndürülen değer bir `FormPage` nesne koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod bu nesneler boyunca yinelenir ve ayıklanan anahtar/değer çiftlerini ve tablo verilerini yazdırır.
 
-```Python
-formUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/forms/Invoice_1.pdf"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
-poller = form_recognizer_client.begin_recognize_content_from_url(formUrl)
-page = poller.result()
 
-table = page[0].tables[0] # page 1, table 1
-print("Table found on page {}:".format(table.page_number))
-for cell in table.cells:
-    print("Cell text: {}".format(cell.text))
-    print("Location: {}".format(cell.bounding_box))
-    print("Confidence score: {}\n".format(cell.confidence))
-```
-
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Table found on page 1:
@@ -162,25 +142,10 @@ Confidence score: 1.0
 
 Bu bölümde, önceden eğitilen bir makbuz modeli kullanılarak ABD makbuzlarından ortak alanların nasıl tanınıp ayıklanacağı gösterilmektedir. Bir URL 'den alındıları tanımak için `begin_recognize_receipts_from_url` yöntemini kullanın. 
 
-```python
-receiptUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/receipt/contoso-receipt.png"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
-poller = form_recognizer_client.begin_recognize_receipts_from_url(receiptUrl)
-result = poller.result()
 
-for receipt in result:
-    for name, field in receipt.fields.items():
-        if name == "Items":
-            print("Receipt Items:")
-            for idx, items in enumerate(field.value):
-                print("...Item #{}".format(idx + 1))
-                for item_name, item in items.value.items():
-                    print("......{}: {} has confidence {}".format(item_name, item.value, item.confidence))
-        else:
-            print("{}: {} has confidence {}".format(name, field.value, field.confidence))
-```
-
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 ReceiptType: Itemized has confidence 0.659
@@ -215,42 +180,10 @@ Eğitim belgelerini el ile etiketlemeden özel modellerinizde bulunan tüm alanl
 
 Aşağıdaki kod, `begin_training` belirli bir belge kümesi üzerinde bir modeli eğitme işleviyle birlikte eğitim istemcisini kullanır. Döndürülen `CustomFormModel` nesne, modelin tanıyabileceği form türleri ve her form türünden ayıklayabileceği alanlar hakkında bilgiler içerir. Aşağıdaki kod bloğu bu bilgileri konsola yazdırır.
 
-```python
-# To train a model you need an Azure Storage account.
-# Use the SAS URL to access your training files.
-trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_train)]
 
-poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=False)
-model = poller.result()
 
-print("Model ID: {}".format(model.model_id))
-print("Status: {}".format(model.status))
-print("Training started on: {}".format(model.training_started_on))
-print("Training completed on: {}".format(model.training_completed_on))
-
-print("\nRecognized fields:")
-for submodel in model.submodels:
-    print(
-        "The submodel with form type '{}' has recognized the following fields: {}".format(
-            submodel.form_type,
-            ", ".join(
-                [
-                    field.label if field.label else name
-                    for name, field in submodel.fields.items()
-                ]
-            ),
-        )
-    )
-
-# Training result information
-for doc in model.training_documents:
-    print("Document name: {}".format(doc.name))
-    print("Document status: {}".format(doc.status))
-    print("Document page count: {}".format(doc.page_count))
-    print("Document errors: {}".format(doc.errors))
-```
-
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır.
 
@@ -291,42 +224,9 @@ Ayrıca, eğitim belgelerini el ile etiketleyerek özel modeller de eğitebilirs
 > [!IMPORTANT]
 > Etiketlerle eğitebilmeniz için, `\<filename\>.pdf.labels.json` eğitim belgelerinin yanı sıra BLOB depolama kapsayıcıda özel etiket bilgi dosyalarına () sahip olmanız gerekir. [Form tanıyıcı örnek etiketleme aracı](../../quickstarts/label-tool.md) , bu etiket dosyalarını oluşturmanıza yardımcı olmak için bir kullanıcı arabirimi sağlar. Bunu yaptıktan sonra `begin_training` işlevi, *use_training_labels* parametresi olarak ayarlanmış şekilde çağırabilirsiniz `true` .
 
-```python
-# To train a model you need an Azure Storage account.
-# Use the SAS URL to access your training files.
-trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_trainlabels)]
 
-poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=True)
-model = poller.result()
-
-print("Model ID: {}".format(model.model_id))
-print("Status: {}".format(model.status))
-print("Training started on: {}".format(model.training_started_on))
-print("Training completed on: {}".format(model.training_completed_on))
-
-print("\nRecognized fields:")
-for submodel in model.submodels:
-    print(
-        "The submodel with form type '{}' has recognized the following fields: {}".format(
-            submodel.form_type,
-            ", ".join(
-                [
-                    field.label if field.label else name
-                    for name, field in submodel.fields.items()
-                ]
-            ),
-        )
-    )
-
-# Training result information
-for doc in model.training_documents:
-    print("Document name: {}".format(doc.name))
-    print("Document status: {}".format(doc.status))
-    print("Document page count: {}".format(doc.page_count))
-    print("Document errors: {}".format(doc.errors))
-```
-
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır.
 
@@ -370,26 +270,10 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 
 `begin_recognize_custom_forms_from_url`Yöntemini kullanacaksınız. Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod, analiz sonuçlarını konsola yazdırır. Her tanınan alanı ve karşılık gelen değeri, Güvenirlik puanı ile birlikte yazdırır.
 
-```python
-# Model ID from when you trained your model.
-model_id = "<your custom model id>"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_analyze)]
 
-poller = form_recognizer_client.begin_recognize_custom_forms_from_url(
-    model_id=model_id, form_url=formUrl)
-result = poller.result()
 
-for recognized_form in result:
-    print("Form type: {}".format(recognized_form.form_type))
-    for name, field in recognized_form.fields.items():
-        print("Field '{}' has label '{}' with value '{}' and a confidence score of {}".format(
-            name,
-            field.label_data.text if field.label_data else name,
-            field.value,
-            field.confidence
-        ))
-```
-
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Önceki örnekteki modeli kullanarak aşağıdaki çıktı sağlanır.
 
@@ -420,14 +304,10 @@ Bu bölümde, hesabınızda depolanan özel modellerin nasıl yönetileceği gö
 
 Aşağıdaki kod bloğu, form tanıyıcı hesabınıza kaç modelin kaydedildiğini denetler ve hesap limitine göre karşılaştırır.
 
-```python
-account_properties = form_training_client.get_account_properties()
-print("Our account has {} custom models, and we can have at most {} custom models".format(
-    account_properties.custom_model_count, account_properties.custom_model_limit
-))
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_count)]
 
-### <a name="output"></a>Çıktı
+
+### <a name="output"></a>Çıkış
 
 ```console
 Our account has 5 custom models, and we can have at most 5000 custom models
@@ -437,20 +317,10 @@ Our account has 5 custom models, and we can have at most 5000 custom models
 
 Aşağıdaki kod bloğu, hesabınızdaki geçerli modelleri listeler ve ayrıntılarını konsola yazdırır. Ayrıca ilk modele bir başvuru kaydeder.
 
-```python
-# Next, we get a paged list of all of our custom models
-custom_models = form_training_client.list_custom_models()
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_list)]
 
-print("We have models with the following ids:")
 
-# Let's pull out the first model
-first_model = next(custom_models)
-print(first_model.model_id)
-for model in custom_models:
-    print(model.model_id)
-```
-
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu, sınama hesabı için bir örnek çıktıdır.
 
@@ -467,17 +337,10 @@ c6309148-6b64-4fef-aea0-d39521452699
 
 Aşağıdaki kod bloğu, önceki bölümden kaydedilen model KIMLIĞINI kullanır ve model hakkındaki ayrıntıları almak için onu kullanır.
 
-```python
-model_id = "<model_id from the Train a Model sample>"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_getmodel)]
 
-custom_model = form_training_client.get_custom_model(model_id=model_id)
-print("Model ID: {}".format(custom_model.model_id))
-print("Status: {}".format(custom_model.status))
-print("Training started on: {}".format(custom_model.training_started_on))
-print("Training completed on: {}".format(custom_model.training_completed_on))
-```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu, önceki örnekte oluşturulan özel modelin örnek çıktıdır.
 
@@ -492,18 +355,12 @@ Training completed on: 2020-08-20 23:20:57+00:00
 
 Ayrıca, KIMLIĞINE başvurarak hesabınızdan bir modeli silebilirsiniz. Bu kod, önceki bölümde kullanılan modeli siler.
 
-```python
-form_training_client.delete_model(model_id=custom_model.model_id)
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_delete)]
 
-try:
-    form_training_client.get_custom_model(model_id=custom_model.model_id)
-except ResourceNotFoundError:
-    print("Successfully deleted model with id {}".format(custom_model.model_id))
-```
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Bu komutla bu hızlı başlangıçta okuduğunuz herhangi bir işlev ile uygulamayı dilediğiniz zaman çalıştırabilirsiniz:
+Uygulamayı `python` hızlı başlangıç dosyanızdaki komutla çalıştırın.
 
 ```console
 python quickstart-file.py
@@ -522,38 +379,18 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 
 Form tanıyıcı istemci kitaplığı, [Azure Core](https://aka.ms/azsdk-python-azure-core)'da tanımlanan özel durumları yükseltir.
 
-## <a name="logging"></a>Günlüğe Kaydetme
+### <a name="logging"></a>Günlüğe Kaydetme
 
 Bu kitaplık günlüğe kaydetmek için [Standart günlük kitaplığını](https://docs.python.org/3/library/logging.html) kullanır. HTTP oturumları (URL 'Ler, üstbilgiler vb.) hakkındaki temel bilgiler BILGI düzeyinde günlüğe kaydedilir.
 
 İstek/yanıt gövdeleri ve redaksiyonu kaldırma üst bilgileri de dahil olmak üzere ayrıntılı hata ayıklama düzeyinde günlüğe kaydetme, `logging_enable` anahtar sözcük bağımsız değişkeni olan bir istemcide etkinleştirilebilir:
 
-```python
-import sys
-import logging
-from azure.ai.formrecognizer import FormRecognizerClient
-from azure.core.credentials import AzureKeyCredential
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerLogging.py?name=snippet_logging)]
 
-# Create a logger for the 'azure' SDK
-logger = logging.getLogger('azure')
-logger.setLevel(logging.DEBUG)
-
-# Configure a console output
-handler = logging.StreamHandler(stream=sys.stdout)
-logger.addHandler(handler)
-
-endpoint = "https://<my-custom-subdomain>.cognitiveservices.azure.com/"
-credential = AzureKeyCredential("<api_key>")
-
-# This client will log detailed information about its HTTP sessions, at DEBUG level
-form_recognizer_client = FormRecognizerClient(endpoint, credential, logging_enable=True)
-```
 
 Benzer şekilde, `logging_enable` istemci için etkinleştirilmediğinde bile tek bir işlem için ayrıntılı günlük kaydını etkinleştirebilir:
 
-```python
-poller = form_recognizer_client.begin_recognize_receipts(receipt, logging_enable=True)
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerLogging.py?name=snippet_example)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -562,6 +399,5 @@ Bu hızlı başlangıçta, modelleri eğitmek ve formları farklı yollarla anal
 > [!div class="nextstepaction"]
 > [Eğitim verileri kümesi oluşturma](../../build-training-data-set.md)
 
-## <a name="see-also"></a>Ayrıca bkz.
-
 * [Form Tanıma nedir?](../../overview.md)
+* Bu kılavuzun örnek kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py)' da bulunabilir.

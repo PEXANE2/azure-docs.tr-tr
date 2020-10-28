@@ -14,13 +14,14 @@ ms.custom:
 - seo-java-september2019
 - mqtt
 - devx-track-java
+- devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: 2865d0fc082244e1b135275ecda58edc5649d82b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 915199a619ff7596596b92362de38338bda03029
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150729"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747546"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Hızlı başlangıç: Java ile Azure IoT Hub 'ına bağlı bir cihazı denetleme
 
@@ -28,11 +29,11 @@ ms.locfileid: "92150729"
 
 Bu hızlı başlangıçta, bir Java uygulamasıyla Azure IoT Hub bağlı olan sanal cihazı denetlemek için doğrudan bir yöntem kullanırsınız. IoT Hub, IoT cihazlarınızı buluttan yönetmenize ve depolama ya da işleme için yüksek hacimli cihaz telemetrisine sahip olan bir Azure hizmetidir. IoT hub’ınıza bağlı bir cihazın davranışını uzaktan değiştirmek için doğrudan yöntemler kullanabilirsiniz. Bu hızlı başlangıçta iki Java uygulaması kullanılmaktadır: arka uç uygulamasından çağrılan doğrudan yöntemlere ve sanal cihazdaki doğrudan yöntemini çağıran bir hizmet uygulamasına yanıt veren bir sanal cihaz uygulaması.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* Java SE Development Kit 8. [Azure ve Azure Stack Için Java uzun süreli destek](/java/azure/jdk/?view=azure-java-stable), **uzun süreli destek**altında **Java 8**' i seçin.
+* Java SE Development Kit 8. [Azure ve Azure Stack Için Java uzun süreli destek](/java/azure/jdk/?view=azure-java-stable), **uzun süreli destek** altında **Java 8** ' i seçin.
 
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 
@@ -78,9 +79,9 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
-   **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+   **Youriothubname** : aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
-   **Myjavadevice**: Bu, kaydetmekte olduğunuz cihazın adıdır. Gösterildiği gibi **Myjavadevice** kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz, bu adı da bu makalede kullanmanız gerekir ve bunları çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
+   **Myjavadevice** : Bu, kaydetmekte olduğunuz cihazın adıdır. Gösterildiği gibi **Myjavadevice** kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz, bu adı da bu makalede kullanmanız gerekir ve bunları çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -89,7 +90,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 2. Yeni kaydettiğiniz cihazın _cihaz bağlantı dizesini_ almak için aşağıdaki komutları Azure Cloud Shell'de çalıştırın:
 
-   **Youriothubname**: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+   **Youriothubname** : Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -108,7 +109,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 Arka uç uygulamasının IoT hub’ınıza bağlanmasına ve iletileri almasına olanak sağlamak için bir _hizmet bağlantı dizesi_ de gerekir. Aşağıdaki komut, IoT hub'ınız için hizmeti bağlantı dizesini alır:
 
-**Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+**Youriothubname** : aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
 ```azurecli-interactive
 az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -128,7 +129,7 @@ Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlan�
 
 2. **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** dosyasını istediğiniz bir metin düzenleyicide açın.
 
-    Değişkenin değerini, `connString` daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Ardından **SimulatedDevice. Java**' da yaptığınız değişiklikleri kaydedin.
+    Değişkenin değerini, `connString` daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Ardından **SimulatedDevice. Java** ' da yaptığınız değişiklikleri kaydedin.
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve simülasyon cihazı uygulamasını derleyin:
 
@@ -154,7 +155,7 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
 
 2. **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** dosyasını istediğiniz bir metin düzenleyicide açın.
 
-    Değişkenin değerini, `iotHubConnectionString` daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Ardından **Backendadpplication. Java**' da yaptığınız değişiklikleri kaydedin.
+    Değişkenin değerini, `iotHubConnectionString` daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Ardından **Backendadpplication. Java** ' da yaptığınız değişiklikleri kaydedin.
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve arka uç uygulamasını derleyin:
 

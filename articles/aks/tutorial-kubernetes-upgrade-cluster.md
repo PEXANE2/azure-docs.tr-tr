@@ -4,13 +4,13 @@ description: Bu Azure Kubernetes Service (AKS) öğreticisinde var olan bir AKS 
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: c41f6dbd3b85125ef290539040819ffa1833ef6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 2e9af5dcc00d8cadd0528d56ee73bc6aeba149d7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629651"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747735"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) Kubernetes’i yükseltme
 
@@ -37,7 +37,7 @@ Bir kümeyi yükseltmeden önce, [az aks get-upgrades][] komutunu kullanarak han
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Aşağıdaki örnekte, geçerli sürüm *1.15.11*' dir ve kullanılabilir sürümler *yükseltmeler*altında gösterilir.
+Aşağıdaki örnekte, geçerli sürüm *1.15.11* ' dir ve kullanılabilir sürümler *yükseltmeler* altında gösterilir.
 
 ```json
 {
@@ -80,9 +80,9 @@ az aks upgrade \
 ```
 
 > [!NOTE]
-> Aynı anda yalnızca bir ikincil sürüm yükseltmesi yapabilirsiniz. Örneğin, *1.14. x* ' den *1.15. x*' e yükseltebilirsiniz, ancak *1.14. x* ' ten doğrudan *1.16. x* ' e yükseltemezsiniz. *1.14. x* ' den *1.16. x*' e yükseltmek için, ilk olarak *1.14. x* ' ten *1.15. x*' e yükseltin, sonra *1.15. x* ' den *1.16.* x ' e yükseltme gerçekleştirin
+> Aynı anda yalnızca bir ikincil sürüm yükseltmesi yapabilirsiniz. Örneğin, *1.14. x* ' den *1.15. x* ' e yükseltebilirsiniz, ancak *1.14. x* ' ten doğrudan *1.16. x* ' e yükseltemezsiniz. *1.14. x* ' den *1.16. x* ' e yükseltmek için, ilk olarak *1.14. x* ' ten *1.15. x* ' e yükseltin, sonra *1.15. x* ' den *1.16.* x ' e yükseltme gerçekleştirin
 
-Aşağıdaki sıkıştırılmış örnek çıktı, *1.16.8*sürümüne yükseltmenin sonucunu gösterir. *Kubernetesversion* 'ın artık *1.16.8*rapordığına dikkat edin:
+Aşağıdaki sıkıştırılmış örnek çıktı, *1.16.8* sürümüne yükseltmenin sonucunu gösterir. *Kubernetesversion* 'ın artık *1.16.8* rapordığına dikkat edin:
 
 ```json
 {
@@ -115,7 +115,7 @@ Aşağıdaki sıkıştırılmış örnek çıktı, *1.16.8*sürümüne yükseltm
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Aşağıdaki örnek çıktıda, AKS kümesi çalıştırıldığı *Kubernetesversion 1.16.8*gösterilmektedir:
+Aşağıdaki örnek çıktıda, AKS kümesi çalıştırıldığı *Kubernetesversion 1.16.8* gösterilmektedir:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn

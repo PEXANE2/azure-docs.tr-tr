@@ -3,13 +3,13 @@ title: '& çekme Docker görüntüsü gönder'
 description: Docker CLI’yı kullanarak Azure’da özel bir kapsayıcı kayıt defterine Docker görüntüleri itme ve kapsayıcıdan görüntü çekme
 ms.topic: article
 ms.date: 01/23/2019
-ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurecli
+ms.openlocfilehash: 067b5749332c2c41b86d22e7de60083d5f61a442
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74456363"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746622"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI’yı kullanarak özel bir Dockler kapsayıcı kayıt defterine ilk görüntünüzü itme
 
@@ -17,14 +17,14 @@ Azure kapsayıcısı kayıt defteri, [Docker Hub](https://hub.docker.com/)’ın
 
 Aşağıdaki adımlarda, genel Docker Hub kayıt defterinden resmi bir [NGINX görüntüsü](https://store.docker.com/images/nginx) indirir, özel Azure Container kayıt defteriniz için etiketleyerek Kayıt defterinize gönderirsiniz ve sonra kayıt defterinden çekebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure kapsayıcısı kayıt defteri** -Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturun. Örneğin, [Azure Portal](container-registry-get-started-portal.md) veya [Azure CLI](container-registry-get-started-azure-cli.md)'yi kullanın.
 * **DOCKER CLI** -Ayrıca Docker 'ın yerel olarak yüklü olması gerekir. Docker [macOS][docker-mac], [Windows][docker-windows] veya [Linux][docker-linux]'ta Docker'ı kolayca yapılandırmanızı sağlayan paketler sağlar.
 
 ## <a name="log-in-to-a-registry"></a>Kayıt defterinde oturum açma
 
-Özel kapsayıcı kayıt defterinizde [kimlik doğrulamanın birkaç yolu](container-registry-authentication.md) vardır. Komut satırında çalışırken önerilen yöntem, [az ACR Login](/cli/azure/acr?view=azure-cli-latest#az-acr-login)Azure CLI komutuna sahip olur. Örneğin, *myregistry*adlı bir kayıt defterinde oturum açmak için:
+Özel kapsayıcı kayıt defterinizde [kimlik doğrulamanın birkaç yolu](container-registry-authentication.md) vardır. Komut satırında çalışırken önerilen yöntem, [az ACR Login](/cli/azure/acr?view=azure-cli-latest#az-acr-login)Azure CLI komutuna sahip olur. Örneğin, *myregistry* adlı bir kayıt defterinde oturum açmak için:
 
 ```azurecli
 az acr login --name myregistry
@@ -39,7 +39,7 @@ docker login myregistry.azurecr.io
 Her iki komut de `Login Succeeded` tamamlandığında döndürülür.
 
 > [!TIP]
-> `docker login`' İ kullanırken ve Kayıt defterinize göndermek üzere resimleri etiketlediğinizde, her zaman tam olarak nitelenmiş kayıt defteri adını (tümü küçük harf) belirtin. Bu makaledeki örneklerde, tam nitelikli ad *myregistry.azurecr.io*' dir.
+> `docker login`' İ kullanırken ve Kayıt defterinize göndermek üzere resimleri etiketlediğinizde, her zaman tam olarak nitelenmiş kayıt defteri adını (tümü küçük harf) belirtin. Bu makaledeki örneklerde, tam nitelikli ad *myregistry.azurecr.io* ' dir.
 
 ## <a name="pull-the-official-nginx-image"></a>Resmi NGINX görüntüsünü çekme
 

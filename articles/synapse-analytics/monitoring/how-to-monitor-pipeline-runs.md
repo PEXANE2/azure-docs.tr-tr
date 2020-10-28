@@ -6,19 +6,19 @@ author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: monitoring
-ms.date: 04/15/2020
+ms.date: 10/27/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 7676f4aeeb9485ce5e3a702027884bc54d79a863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61d860def7209908e65e9456a4bcde87eed522fc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387328"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746391"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Çalışma alanı işlem hattı çalıştırmalarını izlemek için SYNAPSE Studio 'Yu kullanma
 
-Azure SYNAPSE Analytics ile çözümünüzdeki veri taşıma, veri dönüştürme ve işlem etkinliklerini otomatikleştirebilen ve düzenleyen karmaşık işlem hatları oluşturabilirsiniz. Bu işlem hatlarını SYNAPSE Studio (Önizleme) kullanarak yazabilir ve izleyebilirsiniz.
+Azure SYNAPSE Analytics ile, çözümünüzde veri taşıma, veri dönüştürme ve işlem etkinliklerini otomatikleştirebilen ve tümleştirebilen karmaşık işlem hatları oluşturabilirsiniz. Bu işlem hatlarını SYNAPSE Studio (Önizleme) kullanarak yazabilir ve izleyebilirsiniz.
 
 Bu makalede, işlem hatlarınızın en son durumunu, sorunlarını ve ilerlemesini görmenizi sağlayan işlem hattı çalıştırmalarınızın nasıl izleneceği açıklanır.
 

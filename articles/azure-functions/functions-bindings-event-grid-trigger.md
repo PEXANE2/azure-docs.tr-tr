@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 3bbe704e6223bb04a17af7109c61875ca3b21bf9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88214129"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748185"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Event Grid tetikleyicisi
 
@@ -401,7 +401,7 @@ Event Grid HTTP isteklerini almaya başlamak için, işlevi çağıran uç nokta
 
 ### <a name="azure-portal"></a>Azure portal
 
-Event Grid tetikleyicisiyle Azure portal geliştirdiğiniz işlevlerde **tümleştirme** ' i seçin, ardından **Event Grid tetikleyiciyi** seçin ve **Event Grid aboneliği oluştur**' u seçin.
+Event Grid tetikleyicisiyle Azure portal geliştirdiğiniz işlevlerde **tümleştirme** ' i seçin, ardından **Event Grid tetikleyiciyi** seçin ve **Event Grid aboneliği oluştur** ' u seçin.
 
 :::image type="content" source="media/functions-bindings-event-grid/portal-sub-create.png" alt-text="Portalda tetiklemek için yeni bir olay aboneliği bağlayın.":::
 
@@ -514,7 +514,7 @@ Testi tamamladıktan sonra, uç noktayı güncelleştirerek üretim için aynı 
 
 Olay iletilerini yakalamayı basitleştirmek için, olay iletilerini görüntüleyen [önceden oluşturulmuş bir Web uygulaması](https://github.com/Azure-Samples/azure-event-grid-viewer) dağıtabilirsiniz. Dağıtılan çözüm bir App Service planı, App Service web uygulaması ve GitHub'dan kaynak kod içerir.
 
-Çözümü aboneliğinize dağıtmak için **Azure'a Dağıt**'ı seçin. Azure portalında parametre değerlerini girin.
+Çözümü aboneliğinize dağıtmak için **Azure'a Dağıt** 'ı seçin. Azure portalında parametre değerlerini girin.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Azure." /></a>
 

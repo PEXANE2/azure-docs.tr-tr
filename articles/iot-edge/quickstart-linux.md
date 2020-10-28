@@ -8,13 +8,13 @@ ms.date: 06/30/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: ee267bda44cde77cf5d3434cd75eecaf34bd5264
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3328fa7d71138ba75fac0c2aed11d7a85081d03a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978858"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748712"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma
 
@@ -55,7 +55,7 @@ Bulut kaynakları:
    az group create --name IoTEdgeResources --location westus2
    ```
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 Azure CLı ile IoT Hub 'ı oluşturarak hızlı başlangıcı başlatın.
 
@@ -141,7 +141,7 @@ Bu şablon aşağıdaki parametreleri alır:
 | **dnsLabelPrefix** | Sanal makinenin ana bilgisayar adını oluşturmak için kullanılacak dize. **-Edge-VM** örneğini kullanın veya yeni bir dize belirtin. |
 | **adminUsername** | Sanal makinenin yönetici hesabı için bir Kullanıcı adı. Örnek **azureUser** kullanın veya yeni bir Kullanıcı adı sağlayın. |
 | **deviceConnectionString** | Sanal makinede IoT Edge çalışma zamanını yapılandırmak için kullanılan IoT Hub cihaz kimliğinden bağlantı dizesi. Bu parametre içindeki CLı komutu sizin için bağlantı dizesini dönüştürür. Yer tutucu metnini IoT Hub 'ınızın adıyla değiştirin. |
-| **authenticationType** | Yönetici hesabı için kimlik doğrulama yöntemi. Bu hızlı başlangıç, **parola** kimlik doğrulaması kullanır, ancak bu parametreyi **sshpublickey**olarak da ayarlayabilirsiniz. |
+| **authenticationType** | Yönetici hesabı için kimlik doğrulama yöntemi. Bu hızlı başlangıç, **parola** kimlik doğrulaması kullanır, ancak bu parametreyi **sshpublickey** olarak da ayarlayabilirsiniz. |
 | **adminPasswordOrKey** | Yönetici hesabı için SSH anahtarının parolası veya değeri. Yer tutucu metnini güvenli bir parola ile değiştirin. Parolanız en az 12 karakter uzunluğunda olmalı ve şunlardan üç tane olmalıdır: küçük harfli karakterler, büyük harfler, rakamlar ve özel karakterler. |
 
 Dağıtım tamamlandıktan sonra, CLı 'de sanal makineye bağlanmak için SSH bilgilerini içeren JSON biçimli çıkış almalısınız. **Çıktılar** bölümünün **ortak SSH** girişinin değerini kopyalayın:

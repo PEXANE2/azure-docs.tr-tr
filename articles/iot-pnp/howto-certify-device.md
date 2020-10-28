@@ -5,15 +5,15 @@ author: konichi3
 ms.author: koichih
 ms.date: 08/21/2020
 ms.topic: how-to
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5cdee274ebc815b23b8ce59e8b9eca90d00e3818
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b20dab7719e4c55c5868032db3178bb7baaddda0
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042975"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748487"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>IoT Tak Çalıştır cihazlarına sertifika verme
 
@@ -182,7 +182,7 @@ Modelleri Azure IoT ortak modeli deposuna yayımlamak için hesabınızın [Micr
 
 Bir cihazı onaylamak için, önce yeni bir proje oluşturmanız gerekir.
 
-[Sertifika portalına](https://aka.ms/acdp)gidin. **Projeler** sayfasında *+ Yeni proje oluştur*' u seçin. Ardından proje için bir ad, cihaz adı girin ve bir cihaz sınıfı seçin.
+[Sertifika portalına](https://aka.ms/acdp)gidin. **Projeler** sayfasında *+ Yeni proje oluştur* ' u seçin. Ardından proje için bir ad, cihaz adı girin ve bir cihaz sınıfı seçin.
 
 Sertifika işlemi sırasında verdiğiniz ürün bilgileri dört kategoriye ayrılır:
 

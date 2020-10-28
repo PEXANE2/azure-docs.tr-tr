@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions
-ms.openlocfilehash: 3c6aa408ab3e89c367fca0701773b35fb9b41bb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 1ebfa137357e60a1f462ef90c6430cbf0cb5b968
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460807"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746593"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Kapsayıcılar için geçici silme (Önizleme)
 
@@ -57,7 +57,7 @@ Kapsayıcı geçici silme, aşağıdaki depolama hesabı türleri için kullanı
 - BLOB depolama hesaplarını engelle
 - Blob Storage hesapları
 
-Depolama Hesabınız genel amaçlı bir v1 hesabıdır, genel amaçlı v2 hesabına yükseltmek için Azure portal kullanın. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).
+Depolama Hesabınız genel amaçlı bir v1 hesabıdır, genel amaçlı v2 hesabına yükseltmek için Azure portal kullanın. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).
 
 Azure Data Lake Storage 2. ile kullanım için etkinleştirilmiş hiyerarşik bir ad alanı olan depolama hesapları da desteklenir.
 

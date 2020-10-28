@@ -4,13 +4,13 @@ description: Bu Azure Kubernetes Service (AKS) öğreticisinde bir AKS kümesi o
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: e78dcb3b7ba503011ec83058d9ad765815ef66a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 55af44f498492136b2ae03c7e23fce3676aa8e22
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576362"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747085"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Hızlı Başlangıç: Azure Kubernetes Hizmeti (AKS) kümesini dağıtma
 
@@ -65,7 +65,7 @@ az aks install-cli
 
 ## <a name="connect-to-cluster-using-kubectl"></a>kubectl istemcisini kullanarak kümeye bağlanma
 
-`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials][] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup*Içinde *Myakscluster* adlı aks kümesinin kimlik bilgilerini alır:
+`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials][] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup* Içinde *Myakscluster* adlı aks kümesinin kimlik bilgilerini alır:
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

@@ -9,15 +9,15 @@ ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: aca3c9c52260d3ea2ab8def37566377fa67e712d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ca74c5f54cfb513f4611fafc40d34378707ff949
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705937"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746485"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Hızlı başlangıç: Azure CDN profili ve uç nokta ARM şablonu oluşturma
 
@@ -40,7 +40,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 Bu şablon, şunu oluşturacak şekilde yapılandırıldı:
 
 * Profil
-* Uç Noktası
+* Uç Nokta
 
 :::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json":::
 
@@ -84,7 +84,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Sol bölmeden **kaynak grupları** ' nı seçin.
 
@@ -115,14 +115,14 @@ Remove-AzResourceGroup -Name myResourceGroupCDN
 
 ### <a name="portal"></a>Portal
 
-Artık gerekli olmadığında kaynak grubunu, CDN profilini ve tüm ilgili kaynakları silin. CDN profili ve uç noktası içeren **Myresourcegroupcdn** kaynak grubunu seçin ve **Sil**' i seçin.
+Artık gerekli olmadığında kaynak grubunu, CDN profilini ve tüm ilgili kaynakları silin. CDN profili ve uç noktası içeren **Myresourcegroupcdn** kaynak grubunu seçin ve **Sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu hızlı başlangıçta şunu oluşturdunuz:
 
 * CDN profili
-* Uç Noktası
+* Uç Nokta
 
 Azure CDN ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 

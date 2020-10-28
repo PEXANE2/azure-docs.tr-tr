@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 997d74b1afc59e72b2c3fe7a7d47166d5efb8715
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 69571afceddab61c2a6134516e237facfb7a5073
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89072987"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746890"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Stream Analytics işi oluşturma
 
@@ -78,7 +78,7 @@ Aşağıdaki Azure CLı kod bloğu, iş için gereken giriş verilerini hazırla
     az account set --subscription "<your subscription>"
     ```
 
-2. [Az IoT Hub Create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) komutunu kullanarak bir IoT Hub oluşturun. Bu örnek, **MyASAIoTHub**adlı bir IoT Hub oluşturur. IoT Hub adları benzersiz olduğundan, kendi IoT Hub adınızla birlikte getirmeniz gerekir. Aboneliğiniz ile kullanılabilirse ücretsiz katmanı kullanmak için SKU 'YU F1 olarak ayarlayın. Aksi takdirde, sonraki en düşük katmanı seçin.
+2. [Az IoT Hub Create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) komutunu kullanarak bir IoT Hub oluşturun. Bu örnek, **MyASAIoTHub** adlı bir IoT Hub oluşturur. IoT Hub adları benzersiz olduğundan, kendi IoT Hub adınızla birlikte getirmeniz gerekir. Aboneliğiniz ile kullanılabilirse ücretsiz katmanı kullanmak için SKU 'YU F1 olarak ayarlayın. Aksi takdirde, sonraki en düşük katmanı seçin.
 
     ```azurecli
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
@@ -90,7 +90,7 @@ Aşağıdaki Azure CLı kod bloğu, iş için gereken giriş verilerini hazırla
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-3. [Az ıothub Device-Identity Create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) komutunu kullanarak IoT Hub bir cihaz ekleyin. Bu örnek, **MyASAIoTDevice**adlı bir cihaz oluşturur.
+3. [Az ıothub Device-Identity Create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) komutunu kullanarak IoT Hub bir cihaz ekleyin. Bu örnek, **MyASAIoTDevice** adlı bir cihaz oluşturur.
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
@@ -304,7 +304,7 @@ New-AzStreamAnalyticsTransformation `
 
 2. 15. satırdaki yer tutucusunu, önceki bölümde kaydettiğiniz tüm Azure IoT Hub cihaz bağlantı dizesi ile değiştirin.
 
-3. **Çalıştır**'a tıklayın. Çıktıda, IoT Hub gönderilen algılayıcı verileri ve iletileri gösterilmelidir.
+3. **Çalıştır** 'a tıklayın. Çıktıda, IoT Hub gönderilen algılayıcı verileri ve iletileri gösterilmelidir.
 
     ![Raspberry Pi Azure IoT Çevrimiçi Simülatörü](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

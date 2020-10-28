@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812871"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746408"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics veri koruma 
 
@@ -59,24 +59,20 @@ Tüm düzenlenmiş sektörlerde veya ortamlarda uyumluluk yükümlülüklerinizi
 
 Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşağıdaki adımları kullanın. Bu yapılandırma, depolama hesabınızdan değil, Stream Analytics işinden yapılır.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin. 
 
-1.  **Analytics**   > Sonuçlar listesinden analiz **Stream Analytics işi**' ni seçin   . 
+1.  **Analytics**   > Sonuçlar listesinden analiz **Stream Analytics işi** ' ni seçin   . 
 
 1. Stream Analytics işi sayfasını, ad, bölge ve ölçek gibi gerekli ayrıntılarla doldurun. 
 
-1. *Depolama hesabımın bu iş için ihtiyaç duyduğu tüm özel veri varlıklarını güvenli*bir şekilde belirten onay kutusunu seçin.
+1. *Depolama hesabımın bu iş için ihtiyaç duyduğu tüm özel veri varlıklarını güvenli* bir şekilde belirten onay kutusunu seçin.
 
 1. Aboneliğinizden bir depolama hesabı seçin. Bu ayarın işin yaşam döngüsü boyunca değiştirilemeyeceğini unutmayın. 
 
    ![Özel veri depolama hesabı ayarları](./media/data-protection/storage-account-create.png)
 
-
-
-### <a name="known-issues"></a>Bilinen sorunlar
-Şu anda, müşteri tarafından yönetilen anahtarı kullanan bir işin, herhangi bir giriş veya çıkış için kimlik doğrulaması yapmak üzere yönetilen kimlik kullanırken hatalara karşı çalıştığı bilinen bir sınırlama vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

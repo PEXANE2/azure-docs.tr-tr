@@ -1,39 +1,39 @@
 ---
-author: Juliako
+author: IngridAtMicrosoft
 ms.service: media-services
 ms.topic: include
-ms.date: 03/31/2020
-ms.author: juliako
-ms.openlocfilehash: d6ff823951e6474a35a514036f02c0aabb17bf01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.author: inhenkel
+ms.openlocfilehash: 84aa07ef282dd7100043f7e9bfcc97cb3b3673a5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82997721"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755954"
 ---
 > [!NOTE]
 > Düzeltilmeyen kaynaklar için, kotalarda artış istemek üzere bir destek bileti açın. Daha yüksek limitleri elde etmeye yönelik bir denemede ek Azure Media Services hesapları oluşturmayın.
 
 ### <a name="account-limits"></a>Hesap sınırları
 
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
-| Tek bir abonelikteki hesapları Media Services | 25 (sabit) |
+| Kaynak | Varsayılan Sınır |
+| --- | --- |
+| Tek bir abonelikteki hesapları Media Services | 100 (düzeltildi) |
 
 ### <a name="asset-limits"></a>Varlık sınırları
 
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
+| Kaynak | Varsayılan Sınır |
+| --- | --- |
 | Media Services hesap başına varlık sayısı | 1.000.000|
 
 ### <a name="storage-media-limits"></a>Depolama (medya) sınırları
 
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
+| Kaynak | Varsayılan Sınır |
+| --- | --- |
 | Dosya boyutu| Bazı senaryolarda, Media Services ' de işlenmek üzere desteklenen en büyük dosya boyutu sınırı vardır. <sup>(1</sup> |
 | Depolama hesapları | 100<sup>(2)</sup> (Sabit) |
 
-<sup>1</sup> tek bir blob için desteklenen en büyük boyut Şu anda Azure Blob depolamada 5 TB 'a kadar. Ek sınırlar, hizmet tarafından kullanılan VM boyutlarına göre Media Services geçerlidir. Boyut sınırı, karşıya yüklediğiniz dosyalar ve ayrıca Media Services işleme sonucu olarak oluşturulan dosyalar için geçerlidir (kodlama veya çözümleme). Kaynak dosyanız 260 GB 'tan büyükse, Işiniz muhtemelen başarısız olur. 
+<sup>1</sup> tek bir blob için desteklenen en büyük boyut Şu anda Azure Blob depolamada 5 TB 'a kadar. Ek sınırlar, hizmet tarafından kullanılan VM boyutlarına göre Media Services geçerlidir. Boyut sınırı, karşıya yüklediğiniz dosyalar ve ayrıca Media Services işleme sonucu olarak oluşturulan dosyalar için geçerlidir (kodlama veya çözümleme). Kaynak dosyanız 260 GB 'tan büyükse, Işiniz muhtemelen başarısız olur.
 
 Aşağıdaki tabloda S1, S2 ve S3 medya ayrılmış birimleri üzerindeki sınırlar gösterilmektedir. Kaynak dosyanız tabloda tanımlanan sınırlardan daha büyükse, kodlama işiniz başarısız olur. Uzun süreli 4K çözümleme kaynaklarını kodlarsanız, gereken performansı elde etmek için S3 medya ayrılmış birimlerini kullanmanız gerekir. S3 medya ayrılmış birimlerindeki 260 GB sınırından büyük 4K içeriğiniz varsa bir destek bileti açın.
 
@@ -47,8 +47,8 @@ Aşağıdaki tabloda S1, S2 ve S3 medya ayrılmış birimleri üzerindeki sını
 
 ### <a name="jobs-encoding--analyzing-limits"></a>İşler (kodlama & analiz) sınırları
 
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
+| Kaynak | Varsayılan Sınır |
+| --- | --- |
 | Media Services hesap başına iş sayısı | 500.000 <sup>(3)</sup> (Sabit)|
 | Iş başına iş girişleri | 50 (düzeltildi)|
 | Iş başına iş çıkışları | 20 (Sabit) |
@@ -62,8 +62,8 @@ Toplam kayıt sayısı maksimum kotanın altında olsa da, hesabınızdaki 90 g�
 
 ### <a name="live-streaming-limits"></a>Canlı akış sınırları
 
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
+| Kaynak | Varsayılan Sınır |
+| --- | --- |
 | Media Services hesap başına canlı olaylar <sup>(4)</sup> |5|
 | Canlı olay başına canlı çıktılar |3 <sup>(5)</sup> |
 | En büyük canlı çıkış süresi | [DVR penceresinin boyutu](../articles/media-services/latest/live-event-cloud-dvr.md) |
@@ -74,9 +74,9 @@ Toplam kayıt sayısı maksimum kotanın altında olsa da, hesabınızdaki 90 g�
 
 ### <a name="packaging--delivery-limits"></a>Paketleme & teslim limitleri
 
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
-| Media Services hesap başına akış uç noktaları (durdurulmuş veya çalışıyor)|2 (Sabit)|
+| Kaynak | Varsayılan Sınır |
+| --- | --- |
+| Media Services hesap başına akış uç noktaları (durdurulmuş veya çalışıyor)| 2 |
 | Dinamik Bildirim Filtreleri|100|
 | Akış İlkeleri | 100 <sup>(6)</sup> |
 | Tek seferde bir varlıkla ilişkili benzersiz akış Konumlandırıcı | 100<sup>(7)</sup> (Sabit) |
@@ -87,11 +87,11 @@ Toplam kayıt sayısı maksimum kotanın altında olsa da, hesabınızdaki 90 g�
 
 ### <a name="protection-limits"></a>Koruma sınırları
 
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
-| Içerik anahtarı Ilkesi başına seçenekler |30 | 
+| Kaynak | Varsayılan Sınır |
+| --- | --- |
+| Içerik anahtarı Ilkesi başına seçenekler | 30 |
 | Hesap başına Media Services anahtar teslim hizmetindeki her bir DRM türü için aylık lisans sayısı|1.000.000|
 
 ### <a name="support-ticket"></a>Destek bileti
 
-Düzeltilmeyen kaynaklar için bir [destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açarak kotaların ortaya çıkarılmasını isteyebilirsiniz. İsteğe bağlı istenen kota değişiklikleri, kullanım örneği senaryoları ve gerekli bölgeler üzerinde ayrıntılı bilgi ekleyin. <br/>Daha yüksek sınırlar elde etmek için başka Azure Media Services hesapları **oluşturmayın**.
+Düzeltilmeyen kaynaklar için bir [destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açarak kotaların ortaya çıkarılmasını isteyebilirsiniz. İsteğe bağlı istenen kota değişiklikleri, kullanım örneği senaryoları ve gerekli bölgeler üzerinde ayrıntılı bilgi ekleyin. <br/>Daha yüksek sınırlar elde etmek için başka Azure Media Services hesapları **oluşturmayın** .

@@ -3,13 +3,13 @@ title: Öğretici-Azure Backup ile bir sanal makineye dosya geri yükleme
 description: Backup ve Recovery Services ile bir Azure sanal makinesinde nasıl dosya düzeyinde geri yüklemeler gerçekleştirileceğini öğrenin.
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.custom: mvc
-ms.openlocfilehash: 6684e8717bad47248b539ecf70d135a46f459a4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: cf55b9d64d7d716aee9862b0e1e3e24966629286
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325000"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746702"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Azure’da dosyaları sanal makineye geri yükleme
 
@@ -25,7 +25,7 @@ Azure Backup, coğrafi olarak yedekli kurtarma kasalarında depolanan kurtarma n
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLı sürüm 2.0.18 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici için Azure Backup ile korunmuş olan bir Linux sanal makinesi gerekir. Yanlışlıkla dosya silme ve kurtarma işleminin benzetimini yapmak için bir web sunucusundan bir sayfayı silin. Bir web sunucusu çalıştıran ve Azure Backup ile korunan bir Linux sanal makinesine ihtiyacınız varsa bkz. [CLI ile Azure’da bir sanal makineyi yedekleme](quick-backup-vm-cli.md).
 
@@ -77,7 +77,7 @@ Yanlışlıkla bir dosyayı siler veya dosya üzerinde değişiklik yaparsanız,
 
 Dosyalarınızı geri yüklemek için Azure Backup, yerel dosya olarak kurtarma noktanızı bağlayan sanal makinenizde çalıştırılacak bir betik sağlar. Bu yerel sürücüye göz atabilir, sanal makineye dosyaları geri yükleyebilir, ardından kurtarma noktasının bağlantısını kesebilirsiniz. Azure Backup, zamanlama ve bekletme için atanan ilke temelinde verilerinizi yedeklemeye devam eder.
 
-1. Sanal makinenize yönelik kurtarma noktalarını listelemek için [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) komutunu kullanın. Bu örnekte, *Myrecoveryserviceskasasında*korunan *MYVM* adlı sanal makine için en son kurtarma noktasını seçtik:
+1. Sanal makinenize yönelik kurtarma noktalarını listelemek için [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) komutunu kullanın. Bu örnekte, *Myrecoveryserviceskasasında* korunan *MYVM* adlı sanal makine için en son kurtarma noktasını seçtik:
 
     ```azurecli-interactive
     az backup recoverypoint list \
@@ -89,7 +89,7 @@ Dosyalarınızı geri yüklemek için Azure Backup, yerel dosya olarak kurtarma 
         --output tsv
     ```
 
-2. Kurtarma noktasını sanal makinenize bağlayan veya takan betiği almak için [az backup restore files mount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-mount-rp) komutunu kullanın. Aşağıdaki örnek, *Myrecoveryserviceskasasında*korunan *MYVM* adlı sanal makine için betiği edinir.
+2. Kurtarma noktasını sanal makinenize bağlayan veya takan betiği almak için [az backup restore files mount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-mount-rp) komutunu kullanın. Aşağıdaki örnek, *Myrecoveryserviceskasasında* korunan *MYVM* adlı sanal makine için betiği edinir.
 
     *myRecoveryPointName* değerini, önceki komutta aldığınız kurtarma noktasının adıyla değiştirin:
 

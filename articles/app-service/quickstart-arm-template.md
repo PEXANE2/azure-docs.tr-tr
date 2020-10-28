@@ -6,14 +6,14 @@ ms.author: msangapu
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 173c6ff8bb4bcee7ecc40f9f277fae0e4cb8dd13
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c8542bfe3d1393917a63e4a1feae7d6dfc223031
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152356"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746182"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak App Service uygulaması oluşturma
 
@@ -23,11 +23,11 @@ Azure Resource Manager şablonu (ARM şablonu) ve Cloud Shell [Azure CLI](/cli/a
 
 Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
 
-**Linux**'ta dağıtmak için aşağıdaki düğmeyi kullanın:
+**Linux** 'ta dağıtmak için aşağıdaki düğmeyi kullanın:
 
 [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-linux%2Fazuredeploy.json)
 
-**Windows**'a dağıtmak için aşağıdaki düğmeyi kullanın:
+**Windows** 'a dağıtmak için aşağıdaki düğmeyi kullanın:
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-windows%2Fazuredeploy.json)
 
@@ -49,14 +49,14 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 Bu şablon, kolaylık olması için önceden tanımlanmış birkaç parametre içerir. Parametre Varsayılanları ve bunların açıklamaları için aşağıdaki tabloya bakın:
 
-| Parametreler | Tür    | Varsayılan değer                | Description |
+| Parametreler | Tür    | Varsayılan değer                | Açıklama |
 |------------|---------|------------------------------|-------------|
-| webAppName | dize  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Uygulama adı |
-| location   | dize  | "[[resourceGroup (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Uygulama bölgesi |
-| isteyin        | dize  | F1                         | Örnek boyutu (F1 = ücretsiz katman) |
-| language   | dize  | .net                       | Programlama dili yığını (.net, php, Node, HTML) |
+| webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Uygulama adı |
+| location   | string  | "[[resourceGroup (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Uygulama bölgesi |
+| isteyin        | string  | F1                         | Örnek boyutu (F1 = ücretsiz katman) |
+| language   | string  | .net                       | Programlama dili yığını (.net, php, Node, HTML) |
 | helloWorld | boolean | Yanlış                        | Doğru = "Merhaba Dünya" uygulamasını dağıt |
-| repoUrl    | dize  | " "                          | Dış git deposu (isteğe bağlı) |
+| repoUrl    | string  | " "                          | Dış git deposu (isteğe bağlı) |
 ::: zone-end
 ::: zone pivot="platform-linux"
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-app-service-docs-linux) alınmıştır. Linux üzerinde bir App Service planı ve bir App Service uygulaması dağıtır. App Service tüm desteklenen programlama dilleri ile uyumludur.
@@ -70,13 +70,13 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 Bu şablon, kolaylık olması için önceden tanımlanmış birkaç parametre içerir. Parametre Varsayılanları ve bunların açıklamaları için aşağıdaki tabloya bakın:
 
-| Parametreler | Tür    | Varsayılan değer                | Description |
+| Parametreler | Tür    | Varsayılan değer                | Açıklama |
 |------------|---------|------------------------------|-------------|
-| webAppName | dize  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Uygulama adı |
-| location   | dize  | "[[resourceGroup (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Uygulama bölgesi |
-| isteyin        | dize  | F1                         | Örnek boyutu (F1 = ücretsiz katman) |
-| linuxFxVersion   | dize  | "DOTNETCORE&#124;3,0        | "Programlama dil yığını &#124; sürümü" |
-| repoUrl    | dize  | " "                          | Dış git deposu (isteğe bağlı) |
+| webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Uygulama adı |
+| location   | string  | "[[resourceGroup (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Uygulama bölgesi |
+| isteyin        | string  | F1                         | Örnek boyutu (F1 = ücretsiz katman) |
+| linuxFxVersion   | string  | "DOTNETCORE&#124;3,0        | "Programlama dil yığını &#124; sürümü" |
+| repoUrl    | string  | " "                          | Dış git deposu (isteğe bağlı) |
 
 ---
 ::: zone-end
@@ -133,19 +133,19 @@ Artık gerekli olmadığında [kaynak grubunu silin](../azure-resource-manager/m
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Yerel Git’ten dağıtım](deploy-local-git.md)
+> [Yerel Git’ten dağıtım](deploy-local-git.md)
 
 > [!div class="nextstepaction"]
-> [SQL Veritabanı ile ASP.NET Core](tutorial-dotnetcore-sqldb-app.md)
+> [SQL Veritabanı ile ASP.NET Core](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
-> [Postgres ile Python](tutorial-python-postgresql-app.md)
+> [Postgres ile Python](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [MySQL ile PHP](tutorial-php-mysql-app.md)
+> [MySQL ile PHP](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Java ile Azure SQL veritabanı 'na bağlanma](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
+> [Java ile Azure SQL veritabanı 'na bağlanma](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
 
 > [!div class="nextstepaction"]
-> [Özel etki alanı eşleme](app-service-web-tutorial-custom-domain.md)
+> [Özel etki alanı eşleme](app-service-web-tutorial-custom-domain.md)

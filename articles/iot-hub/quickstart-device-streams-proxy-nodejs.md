@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, devx-track-js
+ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c54a112a85ad930dde524ba4293a3ad0b700a22f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 86b5c1dc396a755d898f0c3c332ab59933236afe
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91303106"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747451"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Hızlı başlangıç: Node.js proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
@@ -22,7 +22,7 @@ ms.locfileid: "91303106"
 
 Bu hızlı başlangıçta, cihaza bir cihaz akışı üzerinden gönderilmek üzere Secure Shell (SSH) ve Uzak Masaüstü Protokolü (RDP) trafiğinin etkinleştireceğinizi görürsünüz. Azure IoT Hub cihaz akışları, hizmet ve cihaz uygulamalarının güvenli ve güvenlik duvarı kullanımı kolay bir şekilde iletişim kurmasına olanak tanır. Bu hızlı başlangıçta hizmet tarafında çalışan bir Node.js proxy uygulamasının yürütülmesi açıklanmaktadır. Genel Önizleme sırasında, Node.js SDK yalnızca hizmet tarafında cihaz akışlarını destekler. Sonuç olarak, bu hızlı başlangıçta yalnızca hizmet yerel proxy uygulamasını çalıştırmaya yönelik yönergeler ele alınmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir C# proxy uygulaması kullanarak bir C proxy uygulaması kullanarak veya [IoT Hub cihaz akışları ÜZERINDEN SSH ve RDP 'yi](./quickstart-device-streams-proxy-csharp.md)etkinleştirerek [IoT Hub CIHAZ akışları ÜZERINDEN SSH ve RDP 'yi etkinleştirme](./quickstart-device-streams-proxy-c.md) işleminin tamamlanması.
 
@@ -60,7 +60,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 Önceki [Hızlı Başlangıç: Bir cihazdan IoT hub’a telemetri gönderme](quickstart-send-telemetry-node.md) öğreticisini tamamladıysanız bu adımı atlayabilirsiniz.
 
@@ -82,7 +82,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu b�
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-1. Arka uç uygulamasının IoT Hub 'ınıza bağlanmasını ve iletileri almanızı sağlamak için bir *hizmet bağlantı dizesi*de gereklidir. Aşağıdaki komut, IoT Hub 'ınız için dizeyi alır:
+1. Arka uç uygulamasının IoT Hub 'ınıza bağlanmasını ve iletileri almanızı sağlamak için bir *hizmet bağlantı dizesi* de gereklidir. Aşağıdaki komut, IoT Hub 'ınız için dizeyi alır:
 
    > [!NOTE]
    > *Youriothubname* yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.

@@ -3,13 +3,13 @@ title: Öğretici-Azure CLı ile VM 'Yi geri yükleme
 description: Yedekleme ve Kurtarma Hizmetleri ile Azure’da bir diskin nasıl geri yükleneceğini ve kurtarılan bir sanal makinenin nasıl oluşturulacağını öğrenin.
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.custom: mvc
-ms.openlocfilehash: 861c911e84c9de02467d443751902e71d2504422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 2d8ce7ab6d5a3ab244d0292ffe52847f18ea8795
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325003"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746748"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Azure CLI ile bir VM’yi geri yükleme
 
@@ -27,7 +27,7 @@ Disk geri yüklemek ve kurtarılmış bir VM oluşturmak üzere PowerShell kulla
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLı sürüm 2.0.18 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici için Azure Backup ile korunmuş olan bir Linux sanal makinesi gerekir. Yanlışlıkla bir sanal makineyi silme ve kurtarma işleminin benzetimini yapmak için, bir kurtarma noktasındaki diskten bir sanal makine oluşturursunuz. Azure Backup ile korunan bir Linux sanal makinesine ihtiyacınız varsa bkz. [CLI ile Azure’da bir sanal makineyi yedekleme](quick-backup-vm-cli.md).
 
@@ -74,7 +74,7 @@ Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yön
         --sku Standard_LRS
     ```
 
-2. [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) komutuyla kurtarma noktanızdan diski geri yükleyin. *mystorageaccount* değerini, önceki komutta oluşturduğunuz depolama hesabının adıyla değiştirin. *Myrecoverypointname* değerini, önceki [az Backup RecoveryPoint List](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) komutunun çıktısında edindiğiniz kurtarma noktası adıyla değiştirin. ***Ayrıca, yönetilen disklerin geri yüklendiği hedef kaynak grubunu da sağlayın***.
+2. [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) komutuyla kurtarma noktanızdan diski geri yükleyin. *mystorageaccount* değerini, önceki komutta oluşturduğunuz depolama hesabının adıyla değiştirin. *Myrecoverypointname* değerini, önceki [az Backup RecoveryPoint List](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) komutunun çıktısında edindiğiniz kurtarma noktası adıyla değiştirin. ***Ayrıca, yönetilen disklerin _ öğesine geri yüklendiği hedef kaynak grubunu belirtin** .
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -88,7 +88,7 @@ Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yön
     ```
 
     > [!WARNING]
-    > **Target-Resource-Group** sağlanmazsa, yönetilen diskler, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yüklenir. Diskleri geri yüklemek için geçen süre tamamen verilen depolama hesabına bağlı olduğundan, bu geri yükleme saatine önemli sonuçlara sahip olur. Yalnızca Target-Resource-Group parametresi verildiğinde anında geri yükleme avantajını elde edersiniz. Yönetilen diskleri yönetilmeyen olarak geri yüklemek için amaç, **hedef-kaynak grubu** parametresini sağlamamıştır ve bunun yerine, aşağıda gösterildiği gibi, **yönetilmeyen disk parametresini geri yükle** parametresini sağlar. Bu parametre az 3.4.0 onenlerden kullanılabilir.
+    > _ *Target-Resource-Group* * sağlanmazsa, yönetilen diskler, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yüklenir. Diskleri geri yüklemek için geçen süre tamamen verilen depolama hesabına bağlı olduğundan, bu geri yükleme saatine önemli sonuçlara sahip olur. Yalnızca Target-Resource-Group parametresi verildiğinde anında geri yükleme avantajını elde edersiniz. Yönetilen diskleri yönetilmeyen olarak geri yüklemek için amaç, **hedef-kaynak grubu** parametresini sağlamamıştır ve bunun yerine, aşağıda gösterildiği gibi, **yönetilmeyen disk parametresini geri yükle** parametresini sağlar. Bu parametre az 3.4.0 onenlerden kullanılabilir.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -164,7 +164,7 @@ a0a8e5e6  Backup           Completed   myvm         2017-09-19T03:09:21  0:15:26
 fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31.191807
 ```
 
-Geri yükleme işi raporlarının *durumu* *tamamlandığında*, gerekli bilgiler (VM yapılandırması ve dağıtım şablonu) depolama hesabına geri yüklendi.
+Geri yükleme işi raporlarının *durumu* *tamamlandığında* , gerekli bilgiler (VM yapılandırması ve dağıtım şablonu) depolama hesabına geri yüklendi.
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>Geri yüklenen diskten sanal makine oluşturma
 

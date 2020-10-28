@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: e89676505bc211d01a4327f8816a048218e579fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10599b47d55a0b4ea1eb79cda3c31a2479efb7c0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828955"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755452"
 ---
 Bir Azure sanal makinesine çok sayıda veri diski ekleyebilirsiniz. Bir sanal makinenin veri disklerinin ölçeklenebilirlik ve performans hedeflerine bağlı olarak, performans ve kapasite gereksinimlerinizi karşılamak için gereken disk sayısını ve türünü belirleyebilirsiniz.
 
@@ -18,7 +18,7 @@ Bir Azure sanal makinesine çok sayıda veri diski ekleyebilirsiniz. Bir sanal m
 
 **Azure yönetilen diskler için:**
 
-Aşağıdaki tabloda, abonelik başına bölge başına düşen kaynak sayısı için varsayılan ve en fazla limit gösterilmektedir. Kaynak grubu başına yönetilen disk sayısı, anlık görüntüler ve görüntüler için bir sınır yoktur.  
+Aşağıdaki tabloda, abonelik başına bölge başına düşen kaynak sayısı için varsayılan ve en fazla limit gösterilmektedir. Sınırlar, platform tarafından yönetilen anahtarlarla veya müşteri tarafından yönetilen anahtarlarla şifrelenen disklere bakılmaksızın aynı kalır. Kaynak grubu başına yönetilen disk sayısı, anlık görüntüler ve görüntüler için bir sınır yoktur.  
 
 > | Kaynak | Sınır |
 > | --- | --- |

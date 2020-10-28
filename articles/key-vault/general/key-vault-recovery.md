@@ -8,12 +8,12 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: a0fe5c2af42e8d8095963e29149e1338cc064c90
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: fbeb6f5f223642c09183c149188c6717c1f33a8e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495197"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748491"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>Geçici silme ve Temizleme korumasını etkinleştirme
 
@@ -23,11 +23,11 @@ Bu makalede Azure Key Vault, geçici silme ve Temizleme korumasının iki kurtar
 
 Geçici silme ve Temizleme koruması iki farklı Anahtar Kasası kurtarma özellikleridir.
 > [!IMPORTANT]
-> Tüm Anahtar kasaları üzerinde etkin olması için geçici silme koruması gerekir. Geçici silme korumasını devre dışı bırakma özelliği, Aralık 2020 ' den kullanım dışı olacaktır. Lütfen tam ayrıntılara bakın [ **here**.](soft-delete-change.md)
+> Tüm Anahtar kasaları üzerinde etkin olması için geçici silme koruması gerekir. Geçici silme korumasını devre dışı bırakma özelliği, Aralık 2020 ' den kullanım dışı olacaktır. Lütfen tam ayrıntılara bakın [ **here** .](soft-delete-change.md)
 
 **Geçici silme** , Anahtar Kasası içinde depolanan anahtar kasası ve anahtarlarınızın, Sırlarınızın ve sertifikaların yanlışlıkla silinmesini engellemek için tasarlanmıştır. Geri dönüşüm kutusu gibi geçici silme düşünün. Bir anahtar kasasını veya bir Anahtar Kasası nesnesini sildiğinizde, kullanıcı yapılandırılabilir bir saklama süresi veya varsayılan 90 gün için kurtarılabilir olarak kalır. Geçici olarak silinen durumdaki Anahtar kasaları **de silinebilir, bu da** kalıcı olarak silinir. Bu, anahtar kasalarını ve Anahtar Kasası nesnelerini aynı adla yeniden oluşturmanızı sağlar. Anahtar kasalarını ve nesneleri kurtarmak ve silmek, yükseltilmiş erişim ilkesi izinleri gerektirir. **Geçici silme etkinleştirildikten sonra devre dışı bırakılamaz.**
 
-**Anahtar Kasası adlarının genel olarak benzersiz**olduğunu ve bu nedenle, geçici olarak silinen durumunda anahtar kasası ile aynı ada sahip bir Anahtar Kasası oluşturamayabilmeniz önemlidir. Benzer şekilde, anahtarlar, gizlilikler ve sertifikaların adları bir Anahtar Kasası içinde benzersizdir. Geçici olarak silinen durumunda diğeri ile aynı ada sahip bir gizli dizi, anahtar veya sertifika oluşturamazsınız.
+**Anahtar Kasası adlarının genel olarak benzersiz** olduğunu ve bu nedenle, geçici olarak silinen durumunda anahtar kasası ile aynı ada sahip bir Anahtar Kasası oluşturamayabilmeniz önemlidir. Benzer şekilde, anahtarlar, gizlilikler ve sertifikaların adları bir Anahtar Kasası içinde benzersizdir. Geçici olarak silinen durumunda diğeri ile aynı ada sahip bir gizli dizi, anahtar veya sertifika oluşturamazsınız.
 
 **Temizleme koruması** , kötü amaçlı bir Insider tarafından anahtar kasasının, anahtarlarınızın, Sırlarınızın ve sertifikalarınızın silinmesini engellemek için tasarlanmıştır. Bunu, zaman tabanlı bir kilide geri dönüşüm kutusu olarak düşünün. Yapılandırılabilir Bekletme dönemi boyunca herhangi bir noktada öğeleri kurtarabilirsiniz. **Bekletme süresi sona erdiğinde bir anahtar kasasını kalıcı olarak silemez veya temizleyemezsiniz.** Bekletme süresi, anahtar kasasını geçtiğinde veya Anahtar Kasası nesnesi otomatik olarak temizlenir.
 
@@ -241,14 +241,6 @@ Geçici silme ve Temizleme koruması iki farklı Anahtar Kasası kurtarma özell
 
     ```powershell
     Get-AzKeyVault -VaultName "ContosoVault"
-    ```
-
-* Anahtar kasasında geçici silme özelliğini etkinleştirme
-
-    ```powershell
-    ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
-
-    Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
 
 * Anahtar kasasını Sil

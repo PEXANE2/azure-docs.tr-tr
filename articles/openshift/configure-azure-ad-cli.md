@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
-ms.custom: mvc
-ms.openlocfilehash: fd6ea0749cce154ae20479bc54ef9b7374a69d0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 03ecd0e11df5fa20f134b6fd87baf788078a2203
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469431"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748038"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Red Hat OpenShift 4 kümesi için Azure Active Directory kimlik doğrulamasını yapılandırma (CLı)
 
@@ -21,7 +21,7 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CL
 
 Azure Active Directory uygulamasını yapılandırmak için kullanılacak olan kümenize özel URL 'Leri alın.
 
-Kümenin OAuth geri çağırma URL 'sini oluşturun ve **Oauthcallbackurl**değişkenine depolayın. Kaynak grubunuzun adı ve **Aro-Cluster** ' i kümenizin **adıyla değiştirdiğinizden emin** olun.
+Kümenin OAuth geri çağırma URL 'sini oluşturun ve **Oauthcallbackurl** değişkenine depolayın. Kaynak grubunuzun adı ve **Aro-Cluster** ' i kümenizin **adıyla değiştirdiğinizden emin** olun.
 
 > [!NOTE]
 > `AAD`OAuth geri çağırma URL 'sindeki bölüm, daha sonra kurulumunu yaptığınız OAuth kimlik sağlayıcısı adıyla eşleşmelidir.
@@ -210,6 +210,6 @@ oauth.config.openshift.io/cluster configured
 
 ## <a name="verify-login-through-azure-active-directory"></a>Azure Active Directory aracılığıyla oturum açmayı doğrula
 
-Artık OpenShift web konsolunun oturumunu kapatıp tekrar oturum açmayı denerseniz **AAD**ile oturum açma için yeni bir seçenek sunulur. Birkaç dakika beklemeniz gerekebilir.
+Artık OpenShift web konsolunun oturumunu kapatıp tekrar oturum açmayı denerseniz **AAD** ile oturum açma için yeni bir seçenek sunulur. Birkaç dakika beklemeniz gerekebilir.
 
 ![Azure Active Directory seçeneği ile oturum açma ekranı](media/aro4-login-2.png)

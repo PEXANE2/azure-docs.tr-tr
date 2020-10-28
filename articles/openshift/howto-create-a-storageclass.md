@@ -1,5 +1,5 @@
 ---
-title: Azure Red Hat OpenShift 4 üzerinde Azure dosyaları StorageClass oluşturma
+title: Azure Red Hat OpenShift 4 üzerinde bir Azure Dosyalar StorageClass oluşturma
 description: Azure Red Hat OpenShift üzerinde bir Azure dosyaları StorageClass oluşturma hakkında bilgi edinin
 ms.service: container-service
 ms.topic: article
@@ -8,14 +8,14 @@ author: grantomation
 ms.author: b-grodel
 keywords: Aro, OpenShift, az Aro, Red hat, CLI, Azure dosyası
 ms.custom: mvc
-ms.openlocfilehash: c0d809324baa095b2ce8262170289e0dfec8bfd1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a7415a481b133c2f528ba4636c0297ce5cfa23a7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428956"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747883"
 ---
-# <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 üzerinde Azure dosyaları StorageClass oluşturma
+# <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 üzerinde bir Azure Dosyalar StorageClass oluşturma
 
 Bu makalede, Azure Red Hat OpenShift 4 için Azure dosyalarını kullanarak ReadWriteMany (RWX) depolama alanını dinamik olarak sağlayan bir StorageClass oluşturacaksınız. Şunları öğreneceksiniz:
 
@@ -32,7 +32,7 @@ Aboneliğinize bir Azure Red Hat OpenShift 4 kümesi dağıtın, bkz. [Azure Red
 
 ### <a name="set-up-azure-storage-account"></a>Azure depolama hesabı ayarlama
 
-Bu adım, Azure Red Hat OpenShift kümesinin kaynak grubu dışında bir kaynak grubu oluşturur. Bu kaynak grubu, Azure Red Hat OpenShift 'in dinamik hazırlayıcı tarafından oluşturulan Azure dosya paylaşımlarını içerecektir.
+Bu adım, Azure Red Hat OpenShift (ARO) kümesinin kaynak grubu dışında bir kaynak grubu oluşturur. Bu kaynak grubu, Azure Red Hat OpenShift 'in dinamik hazırlayıcı tarafından oluşturulan Azure dosya paylaşımlarını içerecektir.
 
 ```bash
 AZURE_FILES_RESOURCE_GROUP=aro_azure_files

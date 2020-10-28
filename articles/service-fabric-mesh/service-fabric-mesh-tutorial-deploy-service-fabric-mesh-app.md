@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 6305bdd8c892bb0323cd4f7dc61b7ad22652ed73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter , devx-track-azurecli
+ms.openlocfilehash: 51e5fd29d16c3f927dc9b89d9c7145a16f4fd49f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842742"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748250"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Öğretici: Service Fabric Mesh uygulaması dağıtma
 
@@ -33,7 +33,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -59,13 +59,13 @@ Ardından **Service Fabric Uygulamasını Yayımla** iletişim kutusunu görecek
 
 ![Visual Studio Service Fabric Mesh yayımla iletişim kutusu](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-Azure hesabınızı ve aboneliğinizi seçin. Bir **konum**seçin. Bu makalede **Doğu ABD** kullanılmıştır.
+Azure hesabınızı ve aboneliğinizi seçin. Bir **konum** seçin. Bu makalede **Doğu ABD** kullanılmıştır.
 
-**Kaynak grubu**altında öğesini seçin **\<Create New Resource Group...>** . Yeni bir kaynak grubu oluşturabileceğiniz bir iletişim kutusu açılır. Bu makalede **Doğu ABD** konumu kullanılmış ve grup **sfmeshTutorial1RG** olarak adlandırılmıştır (kuruluşunuzda aynı aboneliği kullanan birden fazla kullanıcı varsa benzersiz bir grup adı seçin).  **Oluştur**'a bastığınızda kaynak grubu oluşturulur ve yayımla iletişim kutusu açılır.
+**Kaynak grubu** altında öğesini seçin **\<Create New Resource Group...>** . Yeni bir kaynak grubu oluşturabileceğiniz bir iletişim kutusu açılır. Bu makalede **Doğu ABD** konumu kullanılmış ve grup **sfmeshTutorial1RG** olarak adlandırılmıştır (kuruluşunuzda aynı aboneliği kullanan birden fazla kullanıcı varsa benzersiz bir grup adı seçin).  **Oluştur** 'a bastığınızda kaynak grubu oluşturulur ve yayımla iletişim kutusu açılır.
 
 ![Visual Studio Service Fabric Mesh yeni kaynak grubu iletişim kutusu](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-**Service Fabric uygulamayı Yayımla** iletişim kutusuna geri dönün **Azure Container Registry**altında öğesini seçin **\<Create New Container Registry...>** . **Container Registry Oluştur** iletişim kutusunda **Container registry adı** için benzersiz bir ad girin. Bir **Konum** belirtin (bu öğreticide **Doğu ABD** kullanılmıştır). Açılan menüden önceki adımda oluşturduğunuz **Kaynak grubu** adını seçin, örneğin **sfmeshTutorial1RG**. **SKU** değerini **Temel**’e ayarladıktan sonra **Oluştur**’a basarak özel Azure kapsayıcı kayıt defterini kapatıp yayımlama iletişim kutusuna geri dönün.
+**Service Fabric uygulamayı Yayımla** iletişim kutusuna geri dönün **Azure Container Registry** altında öğesini seçin **\<Create New Container Registry...>** . **Container Registry Oluştur** iletişim kutusunda **Container registry adı** için benzersiz bir ad girin. Bir **Konum** belirtin (bu öğreticide **Doğu ABD** kullanılmıştır). Açılan menüden önceki adımda oluşturduğunuz **Kaynak grubu** adını seçin, örneğin **sfmeshTutorial1RG** . **SKU** değerini **Temel** ’e ayarladıktan sonra **Oluştur** ’a basarak özel Azure kapsayıcı kayıt defterini kapatıp yayımlama iletişim kutusuna geri dönün.
 
 ![Visual Studio Service Fabric Mesh yeni kapsayıcı kayıt defteri iletişim kutusu](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 

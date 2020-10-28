@@ -3,13 +3,13 @@ title: Yaygın sorunları giderme
 description: Dağıtım, çalıştırma veya yönetme Azure Container Instances sık karşılaşılan sorunları giderme hakkında bilgi edinin
 ms.topic: article
 ms.date: 06/25/2020
-ms.custom: mvc
-ms.openlocfilehash: b31f29cdc9cd15ebf3ba88769095bfd0ef2628d2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: ac75fff3b088a7d595de2b27c92126ce592aff47
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148616"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746923"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances'taki sık karşılaşılan sorunları giderme
 
@@ -213,7 +213,7 @@ Azure Container Instances, kapsayıcı görüntnınızda yapılandırdığınız
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Komut çıkışında kapsayıcı grubunun IP adresini bulun `az container create` . **IP**değerini arayın. 
+1. Komut çıkışında kapsayıcı grubunun IP adresini bulun `az container create` . **IP** değerini arayın. 
 1. Kapsayıcı başarıyla sağlandıktan sonra, tarayıcınızda kapsayıcı uygulamasının IP adresine ve bağlantı noktasına gidin, örneğin: `192.0.2.0:9000` . 
 
     "Hoş geldiniz Azure Container Instances!" görmeniz gerekir Web uygulaması tarafından görünen ileti.

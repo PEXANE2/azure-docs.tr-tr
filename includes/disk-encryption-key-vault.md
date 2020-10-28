@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: msmbaldwin
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
-ms.custom: include file
-ms.openlocfilehash: 234aa602cccb90d130e4d4b6aca375726ca29f0d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 489ee630deb56aef6c004067f29779053fbcd3e7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91989461"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755856"
 ---
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -63,8 +63,8 @@ New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourc
 
 Ayrıca, [Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)kullanarak bir anahtar kasası da oluşturabilirsiniz.
 
-1. Azure hızlı başlangıç şablonunda **Azure 'A dağıt**' a tıklayın.
-2. Abonelik, kaynak grubu, kaynak grubu konumu, Key Vault adı, nesne KIMLIĞI, yasal koşullar ve anlaşma ' ı seçin ve ardından **satın al**' a tıklayın. 
+1. Azure hızlı başlangıç şablonunda **Azure 'A dağıt** ' a tıklayın.
+2. Abonelik, kaynak grubu, kaynak grubu konumu, Key Vault adı, nesne KIMLIĞI, yasal koşullar ve anlaşma ' ı seçin ve ardından **satın al** ' a tıklayın. 
 
 
 ##  <a name="set-key-vault-advanced-access-policies"></a>Anahtar kasası gelişmiş erişim ilkelerini ayarlama
@@ -117,10 +117,10 @@ Anahtar Kasası için disk şifrelemeyi etkinleştirmek üzere [az keykasatıon 
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. Anahtar kasanızı seçin, **erişim ilkeleri**' ne gidin ve **Gelişmiş erişim Ilkelerini göstermek için tıklayın**.
-2. **Birim şifrelemesi Için Azure disk şifrelemesi 'ne erişimi etkinleştir**etiketli kutuyu seçin.
-3. **Dağıtım Için Azure sanal makinelerine erişimi etkinleştir** ' i seçin ve/veya gerekirse **şablon dağıtımı Için Azure Resource Manager erişimi etkinleştirin**. 
-4. **Kaydet**’e tıklayın.
+1. Anahtar kasanızı seçin, **erişim ilkeleri** ' ne gidin ve **Gelişmiş erişim Ilkelerini göstermek için tıklayın** .
+2. **Birim şifrelemesi Için Azure disk şifrelemesi 'ne erişimi etkinleştir** etiketli kutuyu seçin.
+3. **Dağıtım Için Azure sanal makinelerine erişimi etkinleştir** ' i seçin ve/veya gerekirse **şablon dağıtımı Için Azure Resource Manager erişimi etkinleştirin** . 
+4. **Kaydet** ’e tıklayın.
 
     ![Azure Anahtar Kasası Gelişmiş erişim ilkeleri](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
 

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020
+ms.custom: seoapr2020, devx-track-azurecli
 ms.date: 09/02/2020
-ms.openlocfilehash: b3ff84f3f648ad08769a36a791f1679a0a57bc73
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 35c3901e9a48523a10c1a6aacbc52e6c165e278f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546254"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748697"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 
@@ -133,7 +133,7 @@ Betik eylemi betikleri aşağıdaki yardımcı programlar aracılığıyla kulla
 
 HDInsight, HDInsight kümelerine aşağıdaki bileşenleri yüklemek için komut dosyaları sağlar:
 
-| Name | Komut Dosyası |
+| Ad | Komut Dosyası |
 | --- | --- |
 | Azure depolama hesabı ekleme |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Bkz. [HDInsight 'a ek depolama hesapları ekleme](hdinsight-hadoop-add-storage.md). |
 | Ton 'yi yükler |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Bkz. [HDInsight Hadoop kümelerinde ton 'U yükleyip kullanma](hdinsight-hadoop-hue-linux.md). |
@@ -158,7 +158,7 @@ Bu bölümde, HDInsight kümesi oluştururken betik eylemlerini kullanmanın far
     | Özellik | Değer |
     | --- | --- |
     | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__ ' i seçin. Aksi takdirde, belirtilen betiklerin birini seçin. |
-    | Name |Betik eylemi için bir ad belirtin. |
+    | Ad |Betik eylemi için bir ad belirtin. |
     | Bash betiği URI 'SI |Betiğin URI 'sini belirtin. |
     | Baş/çalışan/ZooKeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head** , **Worker** veya **ZooKeeper** . |
     | Parametreler |Komut dosyası için gerekliyse parametreleri belirtin. |
@@ -232,7 +232,7 @@ Bu bölümde, çalışan bir kümeye betik eylemlerinin nasıl uygulanacağı a�
     | Özellik | Değer |
     | --- | --- |
     | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__ ' i seçin. Aksi takdirde, bir belirtilen betiği seçin. |
-    | Name |Betik eylemi için bir ad belirtin. |
+    | Ad |Betik eylemi için bir ad belirtin. |
     | Bash betiği URI 'SI |Betiğin URI 'sini belirtin. |
     | Baş/çalışan/Zookeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head** , **Worker** veya **ZooKeeper** . |
     | Parametreler |Komut dosyası için gerekliyse parametreleri belirtin. |

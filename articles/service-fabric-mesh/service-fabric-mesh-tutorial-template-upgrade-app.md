@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: eea00fe80b71f97ea280a3a76de5012175bcd61c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 331830c50206d14f7894aa837b483656de4222f2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841994"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747846"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Öğretici: Service Fabric Mesh’te çalışan Service Fabric uygulamasını yükseltme
 
@@ -32,7 +32,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 

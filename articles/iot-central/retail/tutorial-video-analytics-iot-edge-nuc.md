@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: c41a6679009f1467c5bcd04d9629ef9256238e00
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b74c7c3e9678c89edbe90d648520b9526c8fb569
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127054"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748649"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Öğretici: video analizi için IoT Edge örneği oluşturma (Intel NUC)
 
@@ -33,7 +33,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * IoT Edge ağ geçidini kurma
 > * Yerel bir ONVıF-uyumlu kamerayı Intel NUC cihazınıza bağlama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Başlamadan önce, Azure IoT Central (YOLO v3) veya [azure IoT Central (OpenVINO &trade; ) öğreticisinde bir video analizi oluşturmanız](tutorial-video-analytics-create-app-openvino.md)için önceki [bir canlı video analizi uygulaması oluşturun](./tutorial-video-analytics-create-app-yolo-v3.md) .
 * Linux çalıştıran Intel NUC gibi bir cihaz, Docker kapsayıcılarını çalıştırabilecek ve video analizlerini çalıştırmak için yeterli işleme gücüne sahip.
@@ -117,7 +117,7 @@ IoT Central uygulamanıza kaydolmak ve bağlanmak için IoT Edge yapılandırın
 
 1. `{scope_id}`Önceki öğreticideki *scratchpad.txt* dosyasında bir Note oluşturduğunuz **kimlik kapsamıyla** değiştirin.
 
-1. `{registration_id}`Önceki öğreticide oluşturduğunuz cihaz *LVA-Gateway-001*ile değiştirin.
+1. `{registration_id}`Önceki öğreticide oluşturduğunuz cihaz *LVA-Gateway-001* ile değiştirin.
 
 1. `{symmetric_key}` **LVA-Gateway-001** cihazının **birincil anahtarıyla** değiştirin, önceki öğreticideki *scratchpad.txt* dosyasında bir değişiklik yaptınız.
 
@@ -140,7 +140,7 @@ IoT Central uygulamanıza kaydolmak ve bağlanmak için IoT Edge yapılandırın
 
 IoT Edge modüller doğru başlatılmazsa, bkz. [IoT Edge cihazınızda sorun giderme](../../iot-edge/troubleshoot.md).
 
-## <a name="collect-the-rstp-stream-from-your-camera"></a>Kameranızdan RSTP akışını toplayın
+## <a name="collect-the-rtsp-stream-from-your-camera"></a>Kameranızdan RTSP akışını toplayın
 
 IoT Edge cihazınıza bağlı olan kameraların RTSP akış URL 'Lerini belirler, örneğin:
 

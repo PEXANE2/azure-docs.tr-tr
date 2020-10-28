@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: 44796fd3330d1f5670eb47589a34158464f0202d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5b39e1988a798adde8a07a39d7724f50d7a4f851
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678279"
+ms.locfileid: "92755645"
 ---
 Python için Özel Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve görüntü sınıflandırma modeli oluşturmak için örnek kodu deneyin. Bir proje oluşturacak, Etiketler ekleyecek, projeyi eğtireceksiniz ve projenin tahmin uç nokta URL 'sini programlı bir şekilde test etmek üzere kullanacaksınız. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
@@ -114,7 +114,7 @@ Projeye örnek görüntüleri eklemek için etiket oluşturduktan sonra aşağı
 [!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_tags)]
 
 > [!NOTE]
-> Bilişsel hizmetler Python SDK örnek deposunu indirdiğiniz yere bağlı olarak görüntülerin yolunu değiştirmeniz gerekir.
+> Bilişsel hizmetler Python SDK 'Sı örnek deposunu indirdiğiniz yere bağlı olarak görüntülerin yolunu değiştirmeniz gerekir.
 
 ## <a name="train-the-project"></a>Projeyi eğitme
 

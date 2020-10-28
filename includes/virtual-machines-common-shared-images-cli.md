@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/24/2020
 ms.author: cynthn
-ms.custom: include file
-ms.openlocfilehash: b49dc6ef2bfee311bc3ca524a5ccb0a4e4b5ca9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 58f38f5fe5544f01636d5fd2b2393025e5cb01ab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84793651"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755471"
 ---
 ## <a name="create-an-image-gallery"></a>Görüntü galerisi oluşturma 
 
@@ -21,7 +21,7 @@ Görüntü Galerisi, görüntü paylaşımını etkinleştirmek için kullanıla
 
 Galeri adı için izin verilen karakterler büyük veya küçük harflerden, rakamlardan, noktalardan ve noktalardan oluşur. Galeri adı tire içeremez.   Galeri adları, aboneliğiniz dahilinde benzersiz olmalıdır. 
 
-[Az Sig Create](/cli/azure/sig#az-sig-create)kullanarak bir görüntü galerisi oluşturun. Aşağıdaki örnek, *Doğu ABD*Içinde *mygallerrg* adlı Galeri adlı bir kaynak grubu ve *MyGallery*adlı bir galeri oluşturur.
+[Az Sig Create](/cli/azure/sig#az-sig-create)kullanarak bir görüntü galerisi oluşturun. Aşağıdaki örnek, *Doğu ABD* Içinde *mygallerrg* adlı Galeri adlı bir kaynak grubu ve *MyGallery* adlı bir galeri oluşturur.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus

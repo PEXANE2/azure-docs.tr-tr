@@ -3,14 +3,14 @@ title: UI tanımı öğeleri oluşturma
 description: Azure portal için Kullanıcı arabirimi tanımları oluştururken kullanılacak öğeleri açıklar.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 10/27/2020
 ms.author: tomfitz
-ms.openlocfilehash: 8b6c6e78c64f83ca39a29f319a103e893d8d8b38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3ba36fc3aaa98aec54b6c70cd416c589be27cfa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88923730"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747366"
 ---
 # <a name="createuidefinition-elements"></a>Createuıdefinition öğeleri
 
@@ -42,7 +42,7 @@ Bu makalede bir Createuıdefinition öğesinin tüm desteklenen öğelerinin şe
 | Ipucuna | Hayır | Öğenin araç ipucunda görüntülenecek metin. Benzer şekilde `label` , bazı öğeler birden çok araç ipucu dizesini destekler. Satır içi bağlantılar markın sözdizimi kullanılarak gömülebilir.
 | kısıtlamaları | Hayır | Öğesinin doğrulama davranışını özelleştirmek için kullanılan bir veya daha fazla özellik. Kısıtlamaların desteklenen özellikleri öğe türüne göre farklılık gösterir. Bazı öğe türleri doğrulama davranışının özelleştirilmesini desteklemez ve bu nedenle kısıtlama özelliğine sahip değildir. |
 | seçenekler | Hayır | Öğesinin davranışını özelleştiren ek özellikler. Benzer şekilde `constraints` , desteklenen özellikler öğe türüne göre farklılık gösterir. |
-| görüne | Hayır | Öğenin görüntülenip görüntülenmeyeceğini gösterir. İse `true` , öğesi ve ilgili alt öğeleri görüntülenir. Varsayılan değer: `true`. Bu özelliğin değerini dinamik olarak denetlemek için [mantıksal işlevleri](create-uidefinition-functions.md#logical-functions) kullanın.
+| görüne | Hayır | Öğenin görüntülenip görüntülenmeyeceğini gösterir. İse `true` , öğesi ve ilgili alt öğeleri görüntülenir. `true` varsayılan değerdir. Bu özelliğin değerini dinamik olarak denetlemek için [mantıksal işlevleri](create-uidefinition-functions.md#logical-functions) kullanın.
 
 ## <a name="elements"></a>Öğeler
 
@@ -63,6 +63,7 @@ Her bir öğe için belge, Kullanıcı arabirimi örneği, şema, öğe (genelli
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
+- [Microsoft. Keykasası. KeyVaultCertificateSelector](microsoft-keyvault-keyvaultcertificateselector.md)
 - [Microsoft. Managedıdentity. ıdentityselector](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
@@ -70,6 +71,7 @@ Her bir öğe için belge, Kullanıcı arabirimi örneği, şema, öğe (genelli
 - [Microsoft. Solutions. ResourceSelector](microsoft-solutions-resourceselector.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
+- [Microsoft. Storage. StorageBlobSelector](microsoft-storage-storageblobselector.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

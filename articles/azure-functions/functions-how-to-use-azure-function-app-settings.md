@@ -4,13 +4,13 @@ description: Azure işlevi uygulama ayarlarını yapılandırmayı öğrenin.
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: cc996988-fb4f-47, devx-track-azurecli
+ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83122315"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746160"
 ---
 # <a name="manage-your-function-app"></a>İşlev uygulamanızı yönetme 
 
@@ -29,11 +29,11 @@ Bu makalede, işlev uygulamalarınızın nasıl yapılandırılacağı ve yönet
 
 1. Başlamak için [Azure Portal] gidin ve Azure hesabınızda oturum açın. Portalın üst kısmındaki arama çubuğunda, işlev uygulamanızın adını girin ve listeden seçin. 
 
-2. Sol bölmedeki **Ayarlar** ' ın altında **yapılandırma**' yı seçin.
+2. Sol bölmedeki **Ayarlar** ' ın altında **yapılandırma** ' yı seçin.
 
     :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure portal işlev uygulamasına genel bakış":::
 
-Özel bakış sayfasından, özellikle **[uygulama ayarları](#settings)** ve **[platform özellikleri](#platform-features)**' nde, işlev uygulamanızı yönetmek için ihtiyacınız olan her şeye gidebilirsiniz.
+Özel bakış sayfasından, özellikle **[uygulama ayarları](#settings)** ve **[platform özellikleri](#platform-features)** ' nde, işlev uygulamanızı yönetmek için ihtiyacınız olan her şeye gidebilirsiniz.
 
 ## <a name="application-settings"></a><a name="settings"></a>Uygulama ayarları
 
@@ -149,4 +149,4 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 + [Azure Işlevleri için sürekli dağıtım](functions-continuous-deployment.md)
 
 [Azure CLI]: /cli/azure/
-[Azure portalındaki]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

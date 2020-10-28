@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 4a1bb3346d50825dcab799477794cb138ac2de91
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 72120f6937c65ca6f7a94d34122e41ae3b4a4ef5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91326295"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746446"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Hızlı başlangıç: Node.js ve Azure/Service-Bus paketiyle Service Bus konuları ve abonelikleri kullanma
 Bu öğreticide, bir Service Bus konuya ileti göndermek ve yeni paketi kullanarak bir Service Bus aboneliğinden ileti almak için Node.js bir program yazmayı öğreneceksiniz [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Bu paket, [rest çalışma zamanı API 'leri Service Bus](/rest/api/servicebus/service-bus-runtime-rest)kullanılan daha eski [Azure-SB](https://www.npmjs.com/package/azure-sb) paketi olan daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md) kullanır. Örnekler JavaScript 'e yazılır.
@@ -23,7 +23,7 @@ Bu öğreticide, bir Service Bus konuya ileti göndermek ve yeni paketi kullanar
 
 > [!NOTE]
 > - Bu öğretici, [NodeJS](https://nodejs.org/)kullanarak kopyalayıp çalıştırabileceğiniz örneklerle çalışır. Node.js uygulamasının nasıl oluşturulacağı hakkında yönergeler için, bkz. [Azure Web sitesinde bir Node.js uygulaması oluşturma ve dağıtma](../app-service/quickstart-nodejs.md)veya [ Windows PowerShell kullanarak bulut hizmetiNode.js](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
-> - Yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paket henüz topcıs ve abonelik oluşturmayı desteklemiyor. [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus)Program aracılığıyla onları oluşturmak istiyorsanız lütfen paketi kullanın.
+> - Yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paket henüz konu ve abonelik oluşturmayı desteklemiyor. [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus)Program aracılığıyla onları oluşturmak istiyorsanız lütfen paketi kullanın.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Paketi yüklemek için Düğüm Paket Yöneticisi’ni (NPM) kullanma
 Service Bus için NPM paketini yüklemek için, yolunda bulunan bir komut istemi açın `npm` , dizini örneklerinizin olmasını istediğiniz klasörle değiştirin ve ardından bu komutu çalıştırın.

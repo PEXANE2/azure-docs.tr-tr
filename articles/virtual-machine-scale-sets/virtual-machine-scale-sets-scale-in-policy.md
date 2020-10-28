@@ -9,13 +9,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 02/26/2020
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: 479bbfaf8468329cd515799e5822497df2bb4c1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 9ca6310705d54d563aae746ab2dbfe6cb412e6a9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83125171"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747797"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri ile özel ölçeklendirme ilkeleri kullanma
 
@@ -57,7 +57,7 @@ Bir ölçek genişletme İlkesi, sanal makine ölçek kümesi modelinde aşağı
  
 Aşağıdaki adımlar, yeni bir ölçek kümesi oluştururken ölçek genişletme ilkesini tanımlar. 
  
-1. **Sanal makine ölçek kümelerine**gidin.
+1. **Sanal makine ölçek kümelerine** gidin.
 1. Yeni bir ölçek kümesi oluşturmak için **+ Ekle** ' yi seçin.
 1. **Ölçeklendirme** sekmesine gidin. 
 1. **Ölçek genişletme İlkesi** bölümünü bulun.
@@ -83,7 +83,7 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 ```
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Bir kaynak grubu oluşturun ve ardından, *Oldestvm*olarak ayarlanan ölçek genişletme ilkesiyle yeni bir ölçek kümesi oluşturun.
+Bir kaynak grubu oluşturun ve ardından, *Oldestvm* olarak ayarlanan ölçek genişletme ilkesiyle yeni bir ölçek kümesi oluşturun.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "<VMSS location>"
@@ -96,7 +96,7 @@ New-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Aşağıdaki örnek, yeni bir ölçek kümesi oluştururken bir ölçek genişletme İlkesi ekler. İlk olarak bir kaynak grubu oluşturun ve ardından *Oldestvm*olarak ölçek genişletme ilkesiyle yeni bir ölçek kümesi oluşturun. 
+Aşağıdaki örnek, yeni bir ölçek kümesi oluştururken bir ölçek genişletme İlkesi ekler. İlk olarak bir kaynak grubu oluşturun ve ardından *Oldestvm* olarak ölçek genişletme ilkesiyle yeni bir ölçek kümesi oluşturun. 
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -138,7 +138,7 @@ Mevcut bir ölçek kümesinin ölçek değiştirme ilkesini Azure portal aracıl
 1. Var olan bir sanal makine ölçek kümesinde, sol taraftaki menüden **ölçekleme** ' ı seçin.
 1. **Ölçek genişletme İlkesi** sekmesini seçin.
 1. Açılan listeden bir ölçek genişletme İlkesi seçin.
-1. İşiniz bittiğinde **Kaydet**‘i seçin. 
+1. İşiniz bittiğinde **Kaydet** ‘i seçin. 
 
 ### <a name="using-api"></a>API'yi kullanma
 
@@ -211,12 +211,12 @@ Aşağıdaki örneklerde, bir sanal makine ölçek kümesinin, bir ölçek olay�
 | Olay                 | /Ay içinde örnek kimlikleri  | Bölge 2 içinde örnek kimlikleri  | Bölge 3 içinde örnek kimlikleri  | Ölçek seçimi                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | Başlangıç               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
-| Ölçek-ın              | 3, 4, 5, 10            | ***2***, 6, 9, 11      | 1, 7, 8                | Bölge 3 en eski VM 'ye sahip olsa bile Bölge 1 ve 2 arasında seçim yapın. Bu bölgedeki en eski VM olduğundan, VM2 Bölge 2 silin.   |
-| Ölçek-ın              | ***3***, 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | En eski VM Bölge 3 olmasına rağmen Bölge 1 seçin. Bu bölgedeki en eski VM olduğundan, VM3 Bölge 1 silin.                  |
-| Ölçek-ın              | 4, 5, 10               | 6, 9, 11               | ***1***, 7, 8          | Bölgeler dengelenir. Ölçek kümesindeki en eski VM olduğundan Bölge 3 VM1 silin.                                               |
-| Ölçek-ın              | ***4***, 5, 10         | 6, 9, 11               | 7, 8                   | Bölge 1 ve Bölge 2 arasında seçim yapın. İki bölge genelinde en eski VM olduğundan Bölge 1 VM4 silin.                              |
-| Ölçek-ın              | 5, 10                  | ***6***, 9, 11         | 7, 8                   | En eski VM Bölge 1 olmasına rağmen Bölge 2 seçin. Bu bölgedeki en eski VM olduğundan Bölge 1 VM6 silin.                    |
-| Ölçek-ın              | ***5***, 10            | 9, 11                  | 7, 8                   | Bölgeler dengelenir. Ölçek kümesindeki en eski VM olduğundan Bölge 1 VM5 silin.                                                |
+| Ölçek-ın              | 3, 4, 5, 10            | **_2_* _, 6, 9, 11      | 1, 7, 8                | Bölge 3 en eski VM 'ye sahip olsa bile Bölge 1 ve 2 arasında seçim yapın. Bu bölgedeki en eski VM olduğundan, VM2 Bölge 2 silin.   |
+| Ölçek-ın              | _*_3_*_ , 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | En eski VM Bölge 3 olmasına rağmen Bölge 1 seçin. Bu bölgedeki en eski VM olduğundan, VM3 Bölge 1 silin.                  |
+| Ölçek-ın              | 4, 5, 10               | 6, 9, 11               | _*_1_*_ , 7, 8          | Bölgeler dengelenir. Ölçek kümesindeki en eski VM olduğundan Bölge 3 VM1 silin.                                               |
+| Ölçek-ın              | _*_4_*_ , 5, 10         | 6, 9, 11               | 7, 8                   | Bölge 1 ve Bölge 2 arasında seçim yapın. İki bölge genelinde en eski VM olduğundan Bölge 1 VM4 silin.                              |
+| Ölçek-ın              | 5, 10                  | _*_6_*_ , 9, 11         | 7, 8                   | En eski VM Bölge 1 olmasına rağmen Bölge 2 seçin. Bu bölgedeki en eski VM olduğundan Bölge 1 VM6 silin.                    |
+| Ölçek-ın              | _*_5_*_ , 10            | 9, 11                  | 7, 8                   | Bölgeler dengelenir. Ölçek kümesindeki en eski VM olduğundan Bölge 1 VM5 silin.                                                |
 
 Ölçeklendirilmemiş sanal makine ölçek kümeleri için, ilke, ölçek kümesi genelinde silinmek üzere en eski VM 'yi seçer. "Protected" sanal makinesi silinmek üzere atlanacak.
 
@@ -225,12 +225,12 @@ Aşağıdaki örneklerde, bir sanal makine ölçek kümesinin, bir ölçek olay�
 | Olay                 | /Ay içinde örnek kimlikleri  | Bölge 2 içinde örnek kimlikleri  | Bölge 3 içinde örnek kimlikleri  | Ölçek seçimi                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | Başlangıç               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
-| Ölçek-ın              | 3, 4, 5, 10            | 2, 6, 9, ***11***      | 1, 7, 8                | Bölge 1 ve 2 arasında seçim yapın. İki bölge genelinde en yeni VM olduğundan Bölge 2 VM11 silin.                                |
-| Ölçek-ın              | 3, 4, 5, ***10***      | 2, 6, 9                | 1, 7, 8                | Diğer iki bölgede daha fazla VM 'ye sahip olduğundan Bölge 1 seçin. Bu bölgedeki en yeni VM olduğundan Bölge 1 VM10 silin.          |
-| Ölçek-ın              | 3, 4, 5                | 2, 6, ***9***          | 1, 7, 8                | Bölgeler dengelenir. Ölçek kümesindeki en yeni VM olduğundan Bölge 2 VM9 silin.                                                |
-| Ölçek-ın              | 3, 4, 5                | 2, 6                   | 1, 7, ***8***          | Bölge 1 ve Bölge 3 arasında seçim yapın. Bu bölgedeki en yeni VM olduğundan Bölge 3 VM8 silin.                                      |
-| Ölçek-ın              | 3, 4, ***5***          | 2, 6                   | 1, 7                   | Bölge 3 en yeni VM 'ye sahip olmasına rağmen Bölge 1 seçin. Bu bölgedeki en yeni VM olduğundan Bölge 1 VM5 silin.                    |
-| Ölçek-ın              | 3, 4                   | 2, 6                   | 1, ***7***             | Bölgeler dengelenir. Ölçek kümesindeki en yeni VM olduğundan Bölge 3 VM7 silin.                                                |
+| Ölçek-ın              | 3, 4, 5, 10            | 2, 6, 9, _*_11_*_      | 1, 7, 8                | Bölge 1 ve 2 arasında seçim yapın. İki bölge genelinde en yeni VM olduğundan Bölge 2 VM11 silin.                                |
+| Ölçek-ın              | 3, 4, 5, _*_10_*_      | 2, 6, 9                | 1, 7, 8                | Diğer iki bölgede daha fazla VM 'ye sahip olduğundan Bölge 1 seçin. Bu bölgedeki en yeni VM olduğundan Bölge 1 VM10 silin.          |
+| Ölçek-ın              | 3, 4, 5                | 2, 6, _*_9_*_          | 1, 7, 8                | Bölgeler dengelenir. Ölçek kümesindeki en yeni VM olduğundan Bölge 2 VM9 silin.                                                |
+| Ölçek-ın              | 3, 4, 5                | 2, 6                   | 1, 7, _*_8_*_          | Bölge 1 ve Bölge 3 arasında seçim yapın. Bu bölgedeki en yeni VM olduğundan Bölge 3 VM8 silin.                                      |
+| Ölçek-ın              | 3, 4, _*_5_*_          | 2, 6                   | 1, 7                   | Bölge 3 en yeni VM 'ye sahip olmasına rağmen Bölge 1 seçin. Bu bölgedeki en yeni VM olduğundan Bölge 1 VM5 silin.                    |
+| Ölçek-ın              | 3, 4                   | 2, 6                   | 1, _ *_7_**             | Bölgeler dengelenir. Ölçek kümesindeki en yeni VM olduğundan Bölge 3 VM7 silin.                                                |
 
 Ölçeklendirilmemiş sanal makine ölçek kümeleri için, ilke, ölçek kümesi genelinde silinmek üzere en yeni VM 'yi seçer. "Protected" sanal makinesi silinmek üzere atlanacak. 
 

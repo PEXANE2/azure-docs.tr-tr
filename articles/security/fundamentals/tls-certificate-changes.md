@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9337349914748a38152b97cab50e15afbab3040e
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 45cad20a2e32640cabf4c57ce6411fcd5ab67da3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495869"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748232"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS sertifikası değişiklikleri  
 
@@ -27,7 +27,7 @@ Microsoft, Azure hizmetlerini farklı bir kök sertifika yetkilisi (CA) kümesin
 - Mevcut Azure uç noktaları, 13 Ağustos 2020 ' den itibaren aşamalı bir şekilde geçiş yapacaktır.
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) ve [DPS](/azure/iot-dps/) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
 - [Azure depolama](/azure/storage) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
-
+- [Redsıs Için Azure önbelleği](/azure/azure-cache-for-redis) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](../../azure-cache-for-redis/cache-whats-new.md).
 > [!IMPORTANT]
 > Müşterilerin, Azure hizmetlerine bağlanmaya çalışırken bağlantı başarısızlıklarını engellemek için bu değişiklikten sonra uygulama (ler) i güncelleştirmeleri güncelleştirmesi gerekebilir.
 
@@ -67,11 +67,11 @@ Uygulamanızın etkilenip etkilendiğinin algılanması için bazı yollar şunl
 - Azure API 'Leri veya diğer Azure hizmetleriyle tümleşen bir uygulamanız varsa ve sertifika sabitleme kullanıyorsa emin değilseniz, uygulama satıcısına danışın.
 
 - Azure hizmetleriyle iletişim kuran farklı işletim sistemleri ve dil çalışma zamanları, sertifika zincirini bu yeni köklerle doğru şekilde oluşturmak için ek adımlar gerektirebilir:
-    - **Linux**: birçok dağıtım,/etc/SSL/certsa CA eklemenizi gerektirir. Belirli yönergeler için dağıtım belgelerine bakın.
-    - **Java**: Java anahtar deposunun yukarıda listelenen CA 'ları içerdiğinden emin olun.
-    - **Bağlantısı kesilmiş ortamlarda çalışan Windows**: bağlantısı kesilmiş ortamlarda çalışan sistemlerin, güvenilen kök sertifika yetkilileri deposuna yeni köklerin ve ara sertifika yetkilileri deposuna eklenmiş olan hammaddeleri olması gerekir.
-    - **Android**: cihazınızın ve Android sürümünün belgelerini denetleyin.
-    - **Diğer donanım aygıtları, özellikle IoT**: cihaz üreticisine başvurun.
+    - **Linux** : birçok dağıtım,/etc/SSL/certsa CA eklemenizi gerektirir. Belirli yönergeler için dağıtım belgelerine bakın.
+    - **Java** : Java anahtar deposunun yukarıda listelenen CA 'ları içerdiğinden emin olun.
+    - **Bağlantısı kesilmiş ortamlarda çalışan Windows** : bağlantısı kesilmiş ortamlarda çalışan sistemlerin, güvenilen kök sertifika yetkilileri deposuna yeni köklerin ve ara sertifika yetkilileri deposuna eklenmiş olan hammaddeleri olması gerekir.
+    - **Android** : cihazınızın ve Android sürümünün belgelerini denetleyin.
+    - **Diğer donanım aygıtları, özellikle IoT** : cihaz üreticisine başvurun.
 
 - Güvenlik Duvarı kurallarının yalnızca belirli sertifika Iptal listesi (CRL) indirme ve/veya çevrimiçi sertifika durumu Protokolü (OCSP) doğrulama konumlarına giden çağrılara izin verecek şekilde ayarlandığı bir ortamınız varsa. Aşağıdaki CRL ve OCSP URL 'Lerine izin vermeniz gerekir:
 

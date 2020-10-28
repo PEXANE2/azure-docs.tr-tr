@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/26/2020
 ms.author: duau
-ms.openlocfilehash: 52f0b3a09b4c58bd9123308a508e08f8ca15e230
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8032833df3e0912bab93bd9ccc695c4ca6688e69
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633527"
+ms.locfileid: "92748107"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute bağlantı iş ortakları ve eşleme konumları
 
@@ -105,7 +105,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **du datamena** |Desteklenir |Desteklenir | Dubai2 |
 | **eir** |Desteklenir |Desteklenir |Dublin|
 | **[Epsilon genel Iletişimler](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Desteklenir |Desteklenir |Singapur, Singapur2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Desteklenir |Desteklenir |Amsterdam, Atlanta, Berlin, Chicago, Dallas, Dublin, Frankfurt, Geneva, Hong Kong ÖIB, Londra, London2, Los Angeles, Los Angeles2, Melbourne, Miamı, Milan, New York, Osaka, Paris, Sao Paulo, Seattle, Silicon Valley, Singapur, Stockholm, Sidney, Tokyo, Toron, Washington DC |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Desteklenir |Desteklenir |Amsterdam, Atlanta, Berlin, Chicago, Dallas, Dublin, Frankfurt, Geneva, Hong Kong ÖIB, Londra, London2, Los Angeles, Los Angeles2, Melbourne, Miamı, Milan, New York, Osaka, Paris, Sao Paulo, Seattle, Silicon Valley, Singapur, Stockholm, Sidney, Tokyo, Toron, Washington, Zurich |
 | **Etisalat UAE** |Desteklenir |Desteklenir |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Dublin, Frankfurt, Londra |
 | **FarEasTone** |Desteklenir |Desteklenir |Taipei|

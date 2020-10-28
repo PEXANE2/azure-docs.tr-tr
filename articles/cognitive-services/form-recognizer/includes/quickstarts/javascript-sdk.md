@@ -7,18 +7,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5e5d7c48508cc13d2ad36906df7d31c8926c75f1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b839d35c27e86a754c19faff65039d350a66c6bd
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963099"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755482"
 ---
 > [!IMPORTANT]
-> * Form tanıyıcı SDK 'Sı Şu anda, ' ın tanıyıcı hizmeti 'nin v 2.0 'ı hedefliyor.
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Aşağıdaki başvuru belgelerine bakın. 
 
 [Başvuru belgeleri](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/ai-form-recognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
@@ -26,9 +25,9 @@ ms.locfileid: "91963099"
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
-* Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları ( *sample_data.zip*indir ve Ayıkla) kullanabilirsiniz.
 * [Node.js](https://nodejs.org/) geçerli sürümü
-* Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+* Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları ( *sample_data.zip* indir ve Ayıkla) kullanabilirsiniz.
+* Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
@@ -48,13 +47,6 @@ mkdir myapp && cd myapp
 npm init
 ```
 
-Adlı bir dosya oluşturun `index.js` , açın ve aşağıdaki kitaplıkları içeri aktarın:
-
-```javascript
-const { FormRecognizerClient, FormTrainingClient, AzureKeyCredential } = require("@azure/ai-form-recognizer");
-const fs = require("fs");
-```
-
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
 `ai-form-recognizer`NPM paketini yüklerken:
@@ -64,6 +56,23 @@ npm install @azure/ai-form-recognizer
 ```
 
 Uygulamanızın `package.json` dosyası bağımlılıklarla güncelleştirilir.
+
+Adlı bir dosya oluşturun `index.js` , açın ve aşağıdaki kitaplıkları içeri aktarın:
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_imports)]
+
+
+> [!TIP]
+> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/FormRecognizer/FormRecognizerQuickstart.js)'da bulabilirsiniz.
+
+Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. 
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_creds)]
+
+> [!IMPORTANT]
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz [ürün adı] kaynağı başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
+>
+> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) makalesine bakın.
 
 ## <a name="object-model"></a>Nesne modeli 
 
@@ -101,64 +110,29 @@ Bu kod parçacıkları, JavaScript için form tanıyıcı istemci kitaplığı i
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Uygulamanızda, kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. 
 
-```javascript
-// You will need to set these environment variables or edit the following values
-const endpoint = "<paste-your-form-recognizer-endpoint-here>";
-const apiKey = "<paste-your-form-recognizer-key-here>";
-```
 
-Daha sonra tanımladığınız abonelik değişkenlerini kullanarak bir istemci nesnesinin kimliğini doğrulayın. Bir `AzureKeyCredential` nesnesi kullanacaksınız, gerekırse API anahtarını yeni istemci nesneleri oluşturmadan güncelleştirebilirsiniz. Ayrıca bir eğitim istemci nesnesi de oluşturacaksınız.
+Tanımladığınız abonelik değişkenlerini kullanarak istemci nesnesinin kimliğini doğrular. Bir `AzureKeyCredential` nesnesi kullanacaksınız, gerekırse API anahtarını yeni istemci nesneleri oluşturmadan güncelleştirebilirsiniz. Ayrıca bir eğitim istemci nesnesi de oluşturacaksınız.
 
-```javascript
-const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
-const client = new FormRecognizerClient(endpoint, new AzureKeyCredential(apiKey));
-```
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_auth)]
+
 
 ## <a name="get-assets-for-testing"></a>Test için varlıkları al
 
-Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) ilgili yöntemlere ve [örneklere](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)bakın.
-
 Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerekecektir.
-* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
-* Aşağıdaki örneklerde bulunan ( [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) ' da de mevcuttur) ve giriş görüntülerini kullanarak, blob depolamada tek BIR BELGENIN SAS URL 'sini almak için yukarıdaki adımları kullanabilirsiniz. 
+* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al** ' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur** ' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* Aşağıdaki örneklerde bulunan ( [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets)üzerinde de mevcuttur) ve giriş görüntülerini kullanarak, blob depolamada tek BIR BELGENIN SAS URL 'sini almak için yukarıdaki adımları kullanabilirsiniz. 
 
 > [!NOTE]
-> Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)ilgili yöntemlere bakın.
+> Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/) ilgili yöntemlere ve [örneklere](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)bakın.
 
 ## <a name="recognize-form-content"></a>Form içeriğini tanı
 
 Bir modeli eğmenize gerek kalmadan belgeler içindeki tabloları, çizgileri ve sözcükleri tanımak için form tanıyıcıyı kullanabilirsiniz. Belirli bir URI 'deki bir dosyanın içeriğini tanımak için `beginRecognizeContentFromUrl` yöntemini kullanın.
 
-```javascript
-async function recognizeContent() {
-    const formUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/forms/Invoice_1.pdf";
-    const poller = await client.beginRecognizeContentFromUrl(formUrl);
-    const pages = await poller.pollUntilDone();
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_getcontent)]
 
-    if (!pages || pages.length === 0) {
-        throw new Error("Expecting non-empty list of pages!");
-    }
-
-    for (const page of pages) {
-        console.log(
-            `Page ${page.pageNumber}: width ${page.width} and height ${page.height} with unit ${page.unit}`
-        );
-        for (const table of page.tables) {
-            for (const cell of table.cells) {
-                console.log(`cell [${cell.rowIndex},${cell.columnIndex}] has text ${cell.text}`);
-            }
-        }
-    }
-}
-
-recognizeContent().catch((err) => {
-    console.error("The sample encountered an error:", err);
-});
-```
-
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Page 1: width 8.5 and height 11 with unit inch
@@ -180,57 +154,10 @@ Bu bölümde, önceden eğitilen bir makbuz modeli kullanılarak ABD makbuzları
 
 Bir URI 'den alındıları tanımak için `beginRecognizeReceiptsFromUrl` yöntemini kullanın. Aşağıdaki kod, belirtilen URI 'ye bir alındısı işler ve ana alanları ve değerleri konsola yazdırır.
 
-```javascript
-async function recognizeReceipt() {
-    receiptUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/receipt/contoso-receipt.png";
-    const client = new FormRecognizerClient(endpoint, new AzureKeyCredential(apiKey));
-    const poller = await client.beginRecognizeReceiptsFromUrl(receiptUrl, {
-        onProgress: (state) => { console.log(`status: ${state.status}`); }
-    });
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
 
-    const receipts = await poller.pollUntilDone();
 
-    if (!receipts || receipts.length <= 0) {
-        throw new Error("Expecting at lease one receipt in analysis result");
-    }
-
-    const receipt = receipts[0];
-    console.log("First receipt:");
-    const receiptTypeField = receipt.fields["ReceiptType"];
-    if (receiptTypeField.valueType === "string") {
-        console.log(`  Receipt Type: '${receiptTypeField.value || "<missing>"}', with confidence of ${receiptTypeField.confidence}`);
-    }
-    const merchantNameField = receipt.fields["MerchantName"];
-    if (merchantNameField.valueType === "string") {
-        console.log(`  Merchant Name: '${merchantNameField.value || "<missing>"}', with confidence of ${merchantNameField.confidence}`);
-    }
-    const transactionDate = receipt.fields["TransactionDate"];
-    if (transactionDate.valueType === "date") {
-        console.log(`  Transaction Date: '${transactionDate.value || "<missing>"}', with confidence of ${transactionDate.confidence}`);
-    }
-    const itemsField = receipt.fields["Items"];
-    if (itemsField.valueType === "array") {
-        for (const itemField of itemsField.value || []) {
-            if (itemField.valueType === "object") {
-                const itemNameField = itemField.value["Name"];
-                if (itemNameField.valueType === "string") {
-                    console.log(`    Item Name: '${itemNameField.value || "<missing>"}', with confidence of ${itemNameField.confidence}`);
-                }
-            }
-        }
-    }
-    const totalField = receipt.fields["Total"];
-    if (totalField.valueType === "number") {
-        console.log(`  Total: '${totalField.value || "<missing>"}', with confidence of ${totalField.confidence}`);
-    }
-}
-
-recognizeReceipt().catch((err) => {
-    console.error("The sample encountered an error:", err);
-});
-```
-
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 status: notStarted
@@ -258,55 +185,12 @@ Eğitim belgelerini el ile etiketlemeden özel modellerinizde bulunan tüm alanl
 
 Aşağıdaki işlev belirli bir belge kümesi üzerinde bir model alır ve modelin durumunu konsola yazdırır. 
 
-```javascript
-async function trainModel() {
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_train)]
 
-    const containerSasUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
-    const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
 
-    const poller = await trainingClient.beginTraining(containerSasUrl, false, {
-        onProgress: (state) => { console.log(`training status: ${state.status}`); }
-    });
-    const model = await poller.pollUntilDone();
+### <a name="output"></a>Çıkış
 
-    if (!model) {
-        throw new Error("Expecting valid training result!");
-    }
-
-    console.log(`Model ID: ${model.modelId}`);
-    console.log(`Status: ${model.status}`);
-    console.log(`Training started on: ${model.trainingStartedOn}`);
-    console.log(`Training completed on: ${model.trainingCompletedOn}`);
-
-    if (model.submodels) {
-        for (const submodel of model.submodels) {
-            // since the training data is unlabeled, we are unable to return the accuracy of this model
-            console.log("We have recognized the following fields");
-            for (const key in submodel.fields) {
-                const field = submodel.fields[key];
-                console.log(`The model found field '${field.name}'`);
-            }
-        }
-    }
-    // Training document information
-    if (model.trainingDocuments) {
-        for (const doc of model.trainingDocuments) {
-            console.log(`Document name: ${doc.name}`);
-            console.log(`Document status: ${doc.status}`);
-            console.log(`Document page count: ${doc.pageCount}`);
-            console.log(`Document errors: ${doc.errors}`);
-        }
-    }
-}
-
-trainModel().catch((err) => {
-    console.error("The sample encountered an error:", err);
-});
-```
-
-### <a name="output"></a>Çıktı
-
-Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır. Bu örnek çıkış okunabilirlik için kesildi.
+Bu, [JavaScript SDK 'sında](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer)kullanılabilen eğitim verileriyle eğitilen bir modelin çıktıdır. Bu örnek çıkış okunabilirlik için kesildi.
 
 ```console
 training status: creating
@@ -344,55 +228,12 @@ Document errors:
 
 Ayrıca, eğitim belgelerini el ile etiketleyerek özel modeller de eğitebilirsiniz. Etiketlerle eğitim, bazı senaryolarda daha iyi performansa yol açar. Etiketlerle eğitebilmeniz için, `\<filename\>.pdf.labels.json` eğitim belgelerinin yanı sıra BLOB depolama kapsayıcıda özel etiket bilgi dosyalarına () sahip olmanız gerekir. [Form tanıyıcı örnek etiketleme aracı](../../quickstarts/label-tool.md) , bu etiket dosyalarını oluşturmanıza yardımcı olmak için bir kullanıcı arabirimi sağlar. Bunu yaptıktan sonra, `beginTraining` `uselabels` parametresini olarak ayarlanan parametre ile çağırabilirsiniz `true` .
 
-```javascript
-async function trainModelLabels() {
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_trainlabels)]
 
-    const containerSasUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
-    const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
 
-    const poller = await trainingClient.beginTraining(containerSasUrl, true, {
-        onProgress: (state) => { console.log(`training status: ${state.status}`); }
-    });
-    const model = await poller.pollUntilDone();
+### <a name="output"></a>Çıkış 
 
-    if (!model) {
-        throw new Error("Expecting valid training result!");
-    }
-
-    console.log(`Model ID: ${model.modelId}`);
-    console.log(`Status: ${model.status}`);
-    console.log(`Training started on: ${model.trainingStartedOn}`);
-    console.log(`Training completed on: ${model.trainingCompletedOn}`);
-
-    if (model.submodels) {
-        for (const submodel of model.submodels) {
-            // since the training data is unlabeled, we are unable to return the accuracy of this model
-            console.log("We have recognized the following fields");
-            for (const key in submodel.fields) {
-                const field = submodel.fields[key];
-                console.log(`The model found field '${field.name}'`);
-            }
-        }
-    }
-    // Training document information
-    if (model.trainingDocuments) {
-        for (const doc of model.trainingDocuments) {
-            console.log(`Document name: ${doc.name}`);
-            console.log(`Document status: ${doc.status}`);
-            console.log(`Document page count: ${doc.pageCount}`);
-            console.log(`Document errors: ${doc.errors}`);
-        }
-    }
-}
-
-trainModelLabels().catch((err) => {
-    console.error("The sample encountered an error:", err);
-});
-```
-
-### <a name="output"></a>Çıktı 
-
-Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır. Bu örnek çıkış okunabilirlik için kesildi.
+Bu, [JavaScript SDK 'sında](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)kullanılabilen eğitim verileriyle eğitilen bir modelin çıktıdır. Bu örnek çıkış okunabilirlik için kesildi.
 
 ```console
 training status: creating
@@ -431,49 +272,10 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 
 `beginRecognizeCustomFormsFromUrl`Yöntemini kullanacaksınız. Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: gönderilen belgedeki her sayfa için bir tane.
 
-```javascript
-async function recognizeCustom() {
-    // Model ID from when you trained your model.
-    const modelId = "<modelId>";
-    const formUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/forms/Invoice_1.pdf";
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_analyze)]
 
-    const client = new FormRecognizerClient(endpoint, new AzureKeyCredential(apiKey));
-    const poller = await client.beginRecognizeCustomForms(modelId, formUrl, {
-        onProgress: (state) => { console.log(`status: ${state.status}`); }
-    });
-    const forms = await poller.pollUntilDone();
 
-    console.log("Forms:");
-    for (const form of forms || []) {
-        console.log(`${form.formType}, page range: ${form.pageRange}`);
-        console.log("Pages:");
-        for (const page of form.pages || []) {
-            console.log(`Page number: ${page.pageNumber}`);
-            console.log("Tables");
-            for (const table of page.tables || []) {
-                for (const cell of table.cells) {
-                    console.log(`cell (${cell.rowIndex},${cell.columnIndex}) ${cell.text}`);
-                }
-            }
-        }
-
-        console.log("Fields:");
-        for (const fieldName in form.fields) {
-            // each field is of type FormField
-            const field = form.fields[fieldName];
-            console.log(
-                `Field ${fieldName} has value '${field.value}' with a confidence score of ${field.confidence}`
-            );
-        }
-    }
-}
-
-recognizeCustom().catch((err) => {
-    console.error("The sample encountered an error:", err);
-});
-```
-
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 status: notStarted
@@ -515,29 +317,21 @@ Field Total has value 'undefined' with a confidence score of undefined
 
 Bu bölümde, hesabınızda depolanan özel modellerin nasıl yönetileceği gösterilmektedir. Aşağıdaki kod, örnek olarak tek bir işlevde tüm model yönetimi görevlerini yapar. 
 
+### <a name="get-number-of-models"></a>Model sayısını Al
+
+Aşağıdaki kod bloğu, hesabınızdaki geçerli model sayısını alır.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_count)]
+
+
 ### <a name="get-list-of-models-in-account"></a>Hesaptaki modellerin listesini al
 
-Aşağıdaki kod bloğu, hesabınızdaki kullanılabilir modellerin tam listesini, modelin oluşturulma ve geçerli durumu hakkında bilgiler dahil olmak üzere sağlar.
+Aşağıdaki kod bloğu, hesabınızdaki kullanılabilir modellerin tam listesini, modelin ne zaman oluşturulduğu ve geçerli durumu hakkında bilgi içerir.
 
-```javascript
-async function listModels() {
-    const client = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_list)]
 
-    // returns an async iteratable iterator that supports paging
-    const result = client.listCustomModels();
-    let i = 0;
-    for await (const modelInfo of result) {
-        console.log(`model ${i++}:`);
-        console.log(modelInfo);
-    }
-}
 
-listModels().catch((err) => {
-    console.error("The sample encountered an error:", err);
-});
-```
-
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 model 0:
@@ -570,54 +364,14 @@ model 3:
 }
 ```
 
-### <a name="get-list-of-model-ids"></a>Model kimliklerinin listesini al
-
-Bu kod bloğu, modellerin ve model kimliklerinin bir listesini sağlar.
-
-```javascript
-async function listModelIds(){
-    const client = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
-    // using `iter.next()`
-    i = 1;
-    let iter = client.listCustomModels();
-    let modelItem = await iter.next();
-    while (!modelItem.done) {
-        console.log(`model ${i++}: ${modelItem.value.modelId}`);
-        modelItem = await iter.next();
-    }
-}
-```
-
-### <a name="output"></a>Çıktı
-
-```console
-model 1: 453cc2e6-e3eb-4e9f-aab6-e1ac7b87e09e
-model 2: 628739de-779c-473d-8214-d35c72d3d4f7
-model 3: 789b1b37-4cc3-4e36-8665-9dde68618072
-```
-
 ### <a name="get-list-of-model-ids-by-page"></a>Sayfaya göre model kimliklerinin listesini al
 
 Bu kod bloğu model ve model kimliklerinin sayfalandırılmış bir listesini sağlar.
 
-```javascript
-async function listModelsByPage(){
-    const client = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
-    // using `byPage()`
-    i = 1;
-    for await (const response of client.listCustomModels().byPage()) {
-        for (const modelInfo of response.modelList) {
-            console.log(`model ${i++}: ${modelInfo.modelId}`);
-        }
-    }
-}
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_listpages)]
 
-listModelsByPage().catch((err) => {
-    console.error("The sample encountered an error:", err);
-});
-```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 model 1: 453cc2e6-e3eb-4e9f-aab6-e1ac7b87e09e
@@ -625,23 +379,21 @@ model 2: 628739de-779c-473d-8214-d35c72d3d4f7
 model 3: 789b1b37-4cc3-4e36-8665-9dde68618072
 ```
 
+### <a name="get-model-by-id"></a>Modeli KIMLIĞE göre al
+
+Aşağıdaki işlev bir model KIMLIĞI alır ve eşleşen model nesnesini alır. Bu işlev varsayılan olarak çağrılmaz.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_getmodel)]
+
+
 ### <a name="delete-a-model-from-the-resource-account"></a>Kaynak hesabındaki bir modeli silme
 
-Ayrıca, KIMLIĞINE başvurarak hesabınızdan bir modeli silebilirsiniz. Bu kod, önceki bölümde kullanılan modeli siler.
+Ayrıca, KIMLIĞINE başvurarak hesabınızdan bir modeli silebilirsiniz. Bu işlev, belirtilen KIMLIĞE sahip modeli siler. Bu işlev varsayılan olarak çağrılmaz.
 
-```javascript
-    await client.deleteModel(firstModel.modelId);
-    try {
-        const deleted = await trainingClient.deleteModel(firstModel.modelId);
-        console.log(deleted);
-    } catch (err) {
-        // Expected
-        console.log(`Model with id ${firstModel.modelId} has been deleted`);
-    }
-}
-```
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_delete)]
 
-### <a name="output"></a>Çıktı
+
+### <a name="output"></a>Çıkış
 
 ```console
 Model with id 789b1b37-4cc3-4e36-8665-9dde68618072 has been deleted
@@ -649,7 +401,7 @@ Model with id 789b1b37-4cc3-4e36-8665-9dde68618072 has been deleted
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Bu komutla bu hızlı başlangıçta okuduğunuz herhangi bir işlev ile uygulamayı dilediğiniz zaman çalıştırabilirsiniz:
+Uygulamayı `node` hızlı başlangıç dosyanızdaki komutla çalıştırın.
 
 ```console
 node index.js
@@ -676,7 +428,7 @@ Günlüklerin nasıl etkinleştirileceği hakkında daha ayrıntılı yönergele
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, modelleri eğitmek ve formları farklı yollarla analiz etmek için tanıyıcı Python istemci kitaplığı formunu kullandınız. Daha sonra, daha iyi eğitim veri kümesi oluşturma ve daha doğru modeller üretme hakkında ipuçları edinin.
+Bu hızlı başlangıçta, modelleri farklı yollarla eğitmek ve analiz etmek için, tanıyıcı JavaScript istemci kitaplığı formunu kullandınız. Daha sonra, daha iyi eğitim veri kümesi oluşturma ve daha doğru modeller üretme hakkında ipuçları edinin.
 
 > [!div class="nextstepaction"]
 > [Eğitim verileri kümesi oluşturma](../../build-training-data-set.md)
@@ -684,3 +436,4 @@ Bu hızlı başlangıçta, modelleri eğitmek ve formları farklı yollarla anal
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Form Tanıma nedir?](../../overview.md)
+* Bu kılavuzun örnek kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/FormRecognizer/FormRecognizerQuickstart.js)' da bulunabilir.

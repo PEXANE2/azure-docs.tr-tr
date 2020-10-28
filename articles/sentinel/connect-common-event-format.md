@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: d63893ab219854a270652da38c474e3ccad83abc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dae8ce6cbad1ae08898ae439c1f621bef185b5df
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630517"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747897"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ortak olay biçimini kullanarak dış çözümünüzü bağlama
 
@@ -42,9 +42,9 @@ Alternatif olarak, başka bir bulutta veya şirket içi bir makinede bir VM kull
 
  ![Şirket içi CEF](./media/connect-cef/cef-syslog-onprem.png)
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
-Makinenin güvenliğini kuruluşunuzun güvenlik ilkesine göre yapılandırdığınızdan emin olun. Örneğin, ağınızı kurumsal ağ güvenlik ilkenize göre olacak şekilde yapılandırabilir ve gereksinimlerinize göre uyum sağlamak için arka plan programındaki bağlantı noktalarını ve protokolleri değiştirmelisiniz. Aşağıdaki yönergeleri kullanarak makinenizin güvenlik yapılandırmasını geliştirebilirsiniz:  [Azure 'Da GÜVENLI VM](../virtual-machines/security-policy.md), [ağ güvenliği için en iyi uygulamalar](../security/fundamentals/network-best-practices.md).
+Makinenin güvenliğini kuruluşunuzun güvenlik ilkesine göre yapılandırdığınızdan emin olun. Örneğin, ağınızı kurumsal ağ güvenlik ilkenize göre olacak şekilde yapılandırabilir ve gereksinimlerinize göre uyum sağlamak için arka plan programındaki bağlantı noktalarını ve protokolleri değiştirmelisiniz. Aşağıdaki yönergeleri kullanarak makinenizin güvenlik yapılandırmasını geliştirebilirsiniz:  [Azure 'Da GÜVENLI VM](../virtual-machines/security-policy.md), [ağ güvenliği için en iyi uygulamalar](../security/fundamentals/network-best-practices.md).
 
 Syslog kaynağı ve Syslog Ileticisi arasındaki TLS iletişimini kullanmak için Syslog Daemon 'u (rsyslog veya Syslog-ng) TLS 'de iletişim kurmak üzere yapılandırmanız gerekir: TLS [-rsyslog Ile Syslog trafiğini şifreleme](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [günlük iletilerini TLS – Syslog-NG ile şifreleme](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
  
@@ -55,14 +55,14 @@ Proxy olarak kullandığınız Linux makinenin aşağıdaki işletim sistemlerin
 - 64 bit
   - CentOS 7 ve alt sürümleri ve üzeri (6 değil)
   - Amazon Linux 2017,09
-  - Oracle Linux 6 ve 7
+  - Oracle Linux 7
   - Red Hat Enterprise Linux (RHEL) Server 7 ve alt sürümleri ve üzeri (6 değil)
   - Borçlu GNU/Linux 8 ve 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS ve 18,04 LTS
   - SUSE Linux Enterprise Server 12
 - 32 bit
    - CentOS 7
-   - Oracle Linux 6
+   - Oracle Linux 7
    - Red Hat Enterprise Linux Server 7
    - Borçlu GNU/Linux 8 ve 9
    - Ubuntu Linux 14,04 LTS ve 16,04 LTS
@@ -79,7 +79,7 @@ Makinenizin aynı zamanda aşağıdaki gereksinimleri karşıladığından emin 
 - İzinler
     - Makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır. 
 - Yazılım gereksinimleri
-    - Makinenizde çalışan Python (2,7 veya üzeri) olduğundan emin olun
+    - Makinenizde Python 2,7 ' in çalıştığından emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

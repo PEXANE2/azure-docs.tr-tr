@@ -8,16 +8,16 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 16c9c103053c0cd36273feb84cd9b07fcf2627bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: ffa2a3a921e988b92ad90831041a6fb4d321bc42
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87830640"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747813"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Büyük sanal makine ölçek kümeleri ile çalışma
-Artık, 1000 adede kadar VM kapasiteli Azure [sanal makine ölçek kümeleri](./index.yml) oluşturabilirsiniz. Bu belgede _büyük bir sanal makine ölçek kümesi_, 100’den fazla VM'yi ölçeklendirme kapasitesine sahip bir ölçek kümesi olarak tanımlanır. Bu özellik bir ölçek kümesi özelliği ile ayarlanır (_singlePlacementGroup=False_). 
+Artık, 1000 adede kadar VM kapasiteli Azure [sanal makine ölçek kümeleri](./index.yml) oluşturabilirsiniz. Bu belgede _büyük bir sanal makine ölçek kümesi_ , 100’den fazla VM'yi ölçeklendirme kapasitesine sahip bir ölçek kümesi olarak tanımlanır. Bu özellik bir ölçek kümesi özelliği ile ayarlanır ( _singlePlacementGroup=False_ ). 
 
 Büyük ölçek kümelerinin yük dengeleme ve hata etki alanları gibi bazı özellikleri, standart bir ölçek kümesinden farklı davranır. Bu belgede büyük ölçek kümelerinin özellikleri ve bunları uygulamalarınızda başarıyla kullanabilmeniz için bilmeniz gerekenler açıklanmaktadır. 
 
@@ -80,7 +80,7 @@ Bir Azure Resource Manager şablonu oluşturarak büyük bir ölçek kümesi olu
 Büyük bir ölçek kümesi şablonunun tamamen bir örneği için bkz [https://github.com/gbowerman/azure-myriad/blob/main/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/main/bigtest/bigbottle.json) ..
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>Mevcut bir ölçek kümesini birden fazla yerleştirme grubuna yayılacak şekilde dönüştürme
-Mevcut bir sanal makine ölçek kümesini 100’den fazla VM ölçeklendirebilecek kapasiteye getirmek için, ölçek kümesi modelinde _singplePlacementGroup_ özelliğini _false_ olarak ayarlamanız gerekir. Bu özelliğin değiştirilmesini [Azure Kaynak Gezgini](https://resources.azure.com/) ile test edebilirsiniz. Mevcut bir ölçek kümesini bulun, _Düzenle_’yi seçin ve _singlePlacementGroup_ özelliğini değiştirin. Bu özelliği görmüyorsanız, ölçek kümesini Microsoft.Compute API’sinin daha eski bir sürümüyle görüntülüyor olabilirsiniz.
+Mevcut bir sanal makine ölçek kümesini 100’den fazla VM ölçeklendirebilecek kapasiteye getirmek için, ölçek kümesi modelinde _singplePlacementGroup_ özelliğini _false_ olarak ayarlamanız gerekir. Bu özelliğin değiştirilmesini [Azure Kaynak Gezgini](https://resources.azure.com/) ile test edebilirsiniz. Mevcut bir ölçek kümesini bulun, _Düzenle_ ’yi seçin ve _singlePlacementGroup_ özelliğini değiştirin. Bu özelliği görmüyorsanız, ölçek kümesini Microsoft.Compute API’sinin daha eski bir sürümüyle görüntülüyor olabilirsiniz.
 
 > [!NOTE]
 > Tek bir yerleştirme grubunu destekleyen bir ölçek kümesini (varsayılan davranış), birden fazla yerleştirme grubunu destekleyecek şekilde değiştirebilirsiniz, ancak zıt yönde değiştiremezsiniz. Bu nedenle, dönüştürmeden önce büyük ölçek kümelerinin özelliklerini anladığınızdan emin olun.

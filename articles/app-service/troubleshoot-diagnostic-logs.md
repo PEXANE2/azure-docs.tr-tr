@@ -4,13 +4,13 @@ description: Tanılama günlüğünü etkinleştirme ve uygulamanıza izleme ekl
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
-ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
+ms.openlocfilehash: 7b27aae712843ece27fd61927c4bfecff00399fa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264380"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747026"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -25,7 +25,7 @@ Bu makalede tanılama günlükleri ile çalışmak için [Azure Portal](https://
 
 |Tür|Platform|Konum|Açıklama|
 |-|-|-|-|
-| Uygulama günlüğüne kaydetme | Windows, Linux | App Service dosya sistemi ve/veya Azure depolama Blobları | Uygulama kodunuz tarafından oluşturulan iletileri günlüğe kaydeder. İletiler seçtiğiniz Web çerçevesi tarafından veya Dilinizdeki standart günlük modelini kullanarak doğrudan uygulama kodunuzda oluşturulabilir. Her ileti şu kategorilerden birine atanır: **kritik**, **hata**, **Uyarı**, **bilgi**, **hata ayıklama**ve **izleme**. Uygulama günlüğünü etkinleştirdiğinizde önem düzeyini ayarlayarak günlüğün ne kadar ayrıntılı olmasını istediğinizi seçebilirsiniz.|
+| Uygulama günlüğüne kaydetme | Windows, Linux | App Service dosya sistemi ve/veya Azure depolama Blobları | Uygulama kodunuz tarafından oluşturulan iletileri günlüğe kaydeder. İletiler seçtiğiniz Web çerçevesi tarafından veya Dilinizdeki standart günlük modelini kullanarak doğrudan uygulama kodunuzda oluşturulabilir. Her ileti şu kategorilerden birine atanır: **kritik** , **hata** , **Uyarı** , **bilgi** , **hata ayıklama** ve **izleme** . Uygulama günlüğünü etkinleştirdiğinizde önem düzeyini ayarlayarak günlüğün ne kadar ayrıntılı olmasını istediğinizi seçebilirsiniz.|
 | Web sunucusu günlüğü| Windows | App Service dosya sistemi veya Azure depolama Blobları| [W3C Genişletilmiş günlük dosyası biçimindeki](/windows/desktop/Http/w3c-logging)ham http istek verileri. Her günlük iletisi HTTP yöntemi, kaynak URI, istemci IP, istemci bağlantı noktası, Kullanıcı Aracısı, yanıt kodu vb. gibi verileri içerir. |
 | Ayrıntılı hata Iletileri| Windows | App Service dosya sistemi | İstemci tarayıcısına gönderilen *. htm* hata sayfalarının kopyaları. Güvenlik nedenleriyle, ayrıntılı hata sayfaları üretimde istemcilere gönderilmemelidir, ancak App Service HTTP kodu 400 veya üzerini içeren bir uygulama hatası oluştuğunda hata sayfasını kaydedebilirler. Sayfa, sunucunun neden hata kodunu döndürdüğünü belirlemede yardımcı olabilecek bilgiler içerebilir. |
 | Başarısız istek izleme | Windows | App Service dosya sistemi | İsteği işlemek için kullanılan IIS bileşenlerinin izlenmesi ve her bileşende geçen süre dahil olmak üzere, başarısız istekler hakkında ayrıntılı izleme bilgileri. Site performansını artırmak veya belirli bir HTTP hatasını yalıtmak istiyorsanız yararlı olur. XML günlük dosyasını içeren her başarısız istek için bir klasör oluşturulur ve günlük dosyasını ile görüntülemek için XSL stil sayfası. |
@@ -42,7 +42,7 @@ Bu makalede tanılama günlükleri ile çalışmak için [Azure Portal](https://
 > [!NOTE]
 > BLOB depolama için uygulama günlüğü, depolama hesaplarını yalnızca App Service ile aynı bölgede kullanabilir
 
-[Azure Portal](https://portal.azure.com)Windows uygulamaları için uygulama günlüğünü etkinleştirmek üzere uygulamanıza gidin ve **App Service Günlükler**' i seçin.
+[Azure Portal](https://portal.azure.com)Windows uygulamaları için uygulama günlüğünü etkinleştirmek üzere uygulamanıza gidin ve **App Service Günlükler** ' i seçin.
 
 **Uygulama günlüğü (dosya sistemi)** veya **uygulama günlüğü (blob)** ya da her ikisi için **Açık** seçeneğini belirleyin. 
 
@@ -53,56 +53,56 @@ Bu makalede tanılama günlükleri ile çalışmak için [Azure Portal](https://
 >
 > Ayrıca, [depolama hesabınızın erişim anahtarlarını](../storage/common/storage-account-create.md)yeniden oluşturursanız, ilgili günlük yapılandırmasını, güncelleştirilmiş erişim anahtarlarını kullanacak şekilde sıfırlamanız gerekir. Bunu yapmak için:
 >
-> 1. **Yapılandır** sekmesinde ilgili günlük özelliğini **kapalı**olarak ayarlayın. Ayarınızı kaydedin.
+> 1. **Yapılandır** sekmesinde ilgili günlük özelliğini **kapalı** olarak ayarlayın. Ayarınızı kaydedin.
 > 2. Depolama hesabı blobuna yeniden günlük kaydını etkinleştirin. Ayarınızı kaydedin.
 >
 >
 
-Günlüğe kaydedilecek ayrıntı düzeyini veya **düzeyi**seçin. Aşağıdaki tabloda her düzeyde bulunan günlük kategorileri gösterilmektedir:
+Günlüğe kaydedilecek ayrıntı düzeyini veya **düzeyi** seçin. Aşağıdaki tabloda her düzeyde bulunan günlük kategorileri gösterilmektedir:
 
 | Düzey | Dahil edilen Kategoriler |
 |-|-|
 |**Devre dışı** | Yok |
 |**Hata** | Hata, kritik |
-|**Warning** | Uyarı, hata, kritik|
+|**Uyarı** | Uyarı, hata, kritik|
 |**Bilgi** | Bilgi, uyarı, hata, kritik|
 |**Seçeneini** | Trace, Debug, Info, uyarı, hata, kritik (tüm kategoriler) |
 
-İşiniz bittiğinde **Kaydet**' i seçin.
+İşiniz bittiğinde **Kaydet** ' i seçin.
 
 ## <a name="enable-application-logging-linuxcontainer"></a>Uygulama günlüğünü etkinleştir (Linux/container)
 
-[Azure Portal](https://portal.azure.com)Linux uygulamaları veya özel kapsayıcı uygulamaları için uygulama günlüğünü etkinleştirmek üzere uygulamanıza gidin ve **App Service Günlükler**' i seçin.
+[Azure Portal](https://portal.azure.com)Linux uygulamaları veya özel kapsayıcı uygulamaları için uygulama günlüğünü etkinleştirmek üzere uygulamanıza gidin ve **App Service Günlükler** ' i seçin.
 
-**Uygulama günlüğü**' nde **dosya sistemi**' ni seçin.
+**Uygulama günlüğü** ' nde **dosya sistemi** ' ni seçin.
 
 **Kota (MB)** alanında uygulama günlükleri için disk kotasını belirtin. **Bekletme süresi (gün)** alanında günlüklerin saklanacağı gün sayısını ayarlayın.
 
-İşiniz bittiğinde **Kaydet**' i seçin.
+İşiniz bittiğinde **Kaydet** ' i seçin.
 
 ## <a name="enable-web-server-logging"></a>Web sunucusu günlüğünü etkinleştir
 
-[Azure Portal](https://portal.azure.com)Windows uygulamaları için Web sunucusu günlüğünü etkinleştirmek üzere uygulamanıza gidin ve **App Service Günlükler**' i seçin.
+[Azure Portal](https://portal.azure.com)Windows uygulamaları için Web sunucusu günlüğünü etkinleştirmek üzere uygulamanıza gidin ve **App Service Günlükler** ' i seçin.
 
-**Web sunucusu günlüğü**için günlükleri blob depolamada depolamak üzere **depolama** ' yı veya App Service dosya sisteminde günlükleri depolamak için **dosya sistemi** ' ni seçin. 
+**Web sunucusu günlüğü** için günlükleri blob depolamada depolamak üzere **depolama** ' yı veya App Service dosya sisteminde günlükleri depolamak için **dosya sistemi** ' ni seçin. 
 
 **Bekletme süresi (gün)** alanında günlüklerin saklanacağı gün sayısını ayarlayın.
 
 > [!NOTE]
 > [Depolama hesabınızın erişim anahtarlarını](../storage/common/storage-account-create.md)yeniden oluşturursanız, güncelleştirilmiş anahtarları kullanmak için ilgili günlük yapılandırmasını sıfırlamanız gerekir. Bunu yapmak için:
 >
-> 1. **Yapılandır** sekmesinde ilgili günlük özelliğini **kapalı**olarak ayarlayın. Ayarınızı kaydedin.
+> 1. **Yapılandır** sekmesinde ilgili günlük özelliğini **kapalı** olarak ayarlayın. Ayarınızı kaydedin.
 > 2. Depolama hesabı blobuna yeniden günlük kaydını etkinleştirin. Ayarınızı kaydedin.
 >
 >
 
-İşiniz bittiğinde **Kaydet**' i seçin.
+İşiniz bittiğinde **Kaydet** ' i seçin.
 
 ## <a name="log-detailed-errors"></a>Ayrıntılı hataları günlüğe kaydet
 
-[Azure Portal](https://portal.azure.com)Windows uygulamaları için hata sayfasını veya başarısız istek izlemeyi kaydetmek için, uygulamanıza gidin ve **App Service Günlükler**' i seçin.
+[Azure Portal](https://portal.azure.com)Windows uygulamaları için hata sayfasını veya başarısız istek izlemeyi kaydetmek için, uygulamanıza gidin ve **App Service Günlükler** ' i seçin.
 
-**Ayrıntılı hata günlüğü** veya **başarısız Istek izleme**altında **Açık**' ı seçin ve ardından **Kaydet**' i seçin.
+**Ayrıntılı hata günlüğü** veya **başarısız Istek izleme** altında **Açık** ' ı seçin ve ardından **Kaydet** ' i seçin.
 
 Her iki günlük türü de App Service dosya sisteminde depolanır. 50 ' e kadar hata (dosya/klasör) korunur. HTML dosyaları sayısı 50 ' i aşarsa, en eski 26 hata otomatik olarak silinir.
 
@@ -128,7 +128,7 @@ Günlükleri gerçek zamanlı olarak akışa almadan önce istediğiniz günlük
 
 ### <a name="in-azure-portal"></a>Azure portal
 
-[Azure Portal](https://portal.azure.com)günlükleri akışa almak için uygulamanıza gidin ve **günlük akışı**' nı seçin. 
+[Azure Portal](https://portal.azure.com)günlükleri akışa almak için uygulamanıza gidin ve **günlük akışı** ' nı seçin. 
 
 ### <a name="in-cloud-shell"></a>Cloud Shell
 
@@ -170,7 +170,7 @@ Windows uygulamaları için, ZIP dosyası App Service dosya sistemindeki *D:\hom
 |-|-|-|
 | **Uygulama günlükleri** |*/LogFiles/Application/* | Bir veya daha fazla metin dosyası içeriyor. Günlük iletilerinin biçimi kullandığınız günlük sağlayıcısına bağlıdır. |
 | **Başarısız Istek Izlemeleri** | */LogFiles/W3SVC # # # # # # # # #/* | XML dosyalarını ve bir XSL dosyasını içerir. Biçimli XML dosyalarını tarayıcıda görüntüleyebilirsiniz. |
-| **Ayrıntılı hata günlükleri** | */LogFiles/DetailedErrors/* | HTM hata dosyalarını içerir. HTM dosyalarını tarayıcıda görüntüleyebilirsiniz.<br/>Başarısız istek izlemelerini görüntülemenin bir başka yolu da portalda uygulama sayfanıza gitmenin bir yoludur. Sol menüden **Tanıla ve sorunları çöz**' ü seçin, sonra **başarısız istek izleme günlüklerini**arayın ve ardından istediğiniz izlemeye gözatıp görüntülemek için simgeye tıklayın. |
+| **Ayrıntılı hata günlükleri** | */LogFiles/DetailedErrors/* | HTM hata dosyalarını içerir. HTM dosyalarını tarayıcıda görüntüleyebilirsiniz.<br/>Başarısız istek izlemelerini görüntülemenin bir başka yolu da portalda uygulama sayfanıza gitmenin bir yoludur. Sol menüden **Tanıla ve sorunları çöz** ' ü seçin, sonra **başarısız istek izleme günlüklerini** arayın ve ardından istediğiniz izlemeye gözatıp görüntülemek için simgeye tıklayın. |
 | **Web sunucusu günlükleri** | */LogFiles/http/RawLogs/* | [W3C Genişletilmiş günlük dosyası biçimi](/windows/desktop/Http/w3c-logging)kullanılarak biçimlendirilen metin dosyalarını içerir. Bu bilgiler, bir metin düzenleyici veya [günlük ayrıştırıcısı](https://go.microsoft.com/fwlink/?LinkId=246619)gibi bir yardımcı program kullanılarak okunabilir.<br/>App Service `s-computername` ,, `s-ip` veya alanlarını desteklemez `cs-version` . |
 | **Dağıtım günlükleri** | */LogFiles/git/* ve */Deployments/* | Ayrıca, iç dağıtım işlemlerine ve git dağıtımları günlüklerine göre oluşturulan günlükleri içerir. |
 
@@ -189,7 +189,7 @@ Aşağıdaki tabloda desteklenen günlük türleri ve açıklamaları gösterilm
 |-|-|-|-|-|-|
 | AppServiceConsoleLogs | TBA dili | TBA dili | Evet | Evet | Standart çıkış ve standart hata |
 | AppServiceHTTPLogs | Evet | TBA dili | Evet | Evet | Web sunucusu günlükleri |
-| AppServiceEnvironmentPlatformLogs | Evet | Yok | Evet | Evet | App Service Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
+| AppServiceEnvironmentPlatformLogs | Evet | YOK | Evet | Evet | App Service Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
 | AppServiceAuditLogs | Evet | TBA dili | Evet | Evet | FTP ve kudu aracılığıyla oturum açma etkinliği |
 | AppServiceFileAuditLogs | Evet | TBA dili | TBA dili | TBA dili | Site içeriğinde yapılan dosya değişiklikleri; yalnızca Premium katmanı ve üzeri için kullanılabilir |
 | AppServiceAppLogs | ASP .NET | TBA dili | Java & & Tomcat | Java & & Tomcat | Uygulama günlükleri |

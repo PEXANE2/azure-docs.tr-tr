@@ -3,13 +3,13 @@ title: Azure dosyaları birimini kapsayıcı grubuna bağlama
 description: Azure Container Instances ile devam etmek için bir Azure dosyaları birimini nasıl bağlayacağınızı öğrenin
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: mvc
-ms.openlocfilehash: eaf5e0704ba2ea4f0e0a30d61e4ae1d2ad1bf58d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 5ca619ac3ae93ee238d019b64ecccc975b7c8e3b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259466"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746865"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances'ta Azure dosya paylaşımı bağlama
 
@@ -235,7 +235,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 
 Bir kapsayıcı örneğinde birden fazla birimi bağlamak için, bir [Azure Resource Manager şablonu](/azure/templates/microsoft.containerinstance/containergroups), YAML dosyası veya başka bir programlama yöntemi kullanarak dağıtmanız gerekir. Bir şablon veya YAML dosyası kullanmak için, `volumes` dosyanın bölümündeki diziyi doldurarak paylaşma ayrıntılarını sağlayın ve birimleri tanımlayın `properties` . 
 
-Örneğin, depolama hesabı *Mystorageaccount*içinde *Share1* ve *Share2* adlı iki Azure dosya paylaşımı oluşturduysanız, `volumes` Kaynak Yöneticisi şablondaki dizi aşağıdakine benzer şekilde görünür:
+Örneğin, depolama hesabı *Mystorageaccount* içinde *Share1* ve *Share2* adlı iki Azure dosya paylaşımı oluşturduysanız, `volumes` Kaynak Yöneticisi şablondaki dizi aşağıdakine benzer şekilde görünür:
 
 ```JSON
 "volumes": [{
@@ -256,7 +256,7 @@ Bir kapsayıcı örneğinde birden fazla birimi bağlamak için, bir [Azure Reso
 }]
 ```
 
-Sonra, kapsayıcı grubundaki birimleri bağlamak istediğiniz her bir kapsayıcı için, `volumeMounts` diziyi `properties` kapsayıcı tanımının bölümünde doldurun. Örneğin, bu iki birimi bağlar, daha önce tanımlanan *myvolume1* ve *myvolume2*.
+Sonra, kapsayıcı grubundaki birimleri bağlamak istediğiniz her bir kapsayıcı için, `volumeMounts` diziyi `properties` kapsayıcı tanımının bölümünde doldurun. Örneğin, bu iki birimi bağlar, daha önce tanımlanan *myvolume1* ve *myvolume2* .
 
 ```JSON
 "volumeMounts": [{

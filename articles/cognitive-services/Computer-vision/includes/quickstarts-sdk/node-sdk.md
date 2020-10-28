@@ -7,28 +7,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: include
-ms.date: 01/22/2020
+ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a390e86fa3835b6ee401b899e7dad7a7eb8d01f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: af6db76a5d752396ca965c5ed98682ebcab7da6a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548124"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755846"
 ---
 <a name="HOLTop"></a>
 
 [Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision)  |  [Örnekler](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Node.js](https://nodejs.org/) geçerli sürümü
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı Görüntü İşleme hizmetine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
-* Sırasıyla ve olarak adlandırılan anahtar ve uç nokta URL 'SI için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
+
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -48,7 +48,7 @@ npm init
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
-`ms-rest-azure`Ve `@azure/cognitiveservices-computervision` NPM paketlerini yüklerken:
+`ms-rest-azure`Ve `@azure/cognitiveservices-computervision` NPM paketini yüklerken:
 
 ```console
 npm install @azure/cognitiveservices-computervision
@@ -56,17 +56,21 @@ npm install @azure/cognitiveservices-computervision
 
 Uygulamanızın `package.json` dosyası bağımlılıklarla güncelleştirilir.
 
-### <a name="prepare-the-nodejs-script"></a>Node.js betiğini hazırlama
-
 Yeni bir dosya oluşturun, *index.js* ve bir metin düzenleyicisinde açın. Aşağıdaki içeri aktarma deyimlerini ekleyin.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imports)]
 
-Ardından, bir işlev tanımlayın `computerVision` ve birincil işlev ve geri çağırma işlevi ile zaman uyumsuz bir seri bildirin. Hızlı başlangıç kodunuzu birincil işleve ekleyecek ve `computerVision` betiğin en altında çağıracaksınız.
+> [!TIP]
+> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js)'da bulabilirsiniz.
 
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
+Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_end)]
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_vars)]
+
+> [!IMPORTANT]
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz [ürün adı] kaynağı başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
+>
+> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) makalesine bakın.
 
 ## <a name="object-model"></a>Nesne modeli
 
@@ -87,13 +91,16 @@ Bu kod parçacıkları, Node.js için Görüntü İşleme istemci kitaplığı i
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_vars)]
 
 Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtar ve uç noktanızla bir [Apikeycredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.apikeycredentials?view=azure-python) nesnesi oluşturun ve bunu bir [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) nesnesi oluşturmak için kullanın.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_client)]
+
+Ardından, bir işlev tanımlayın `computerVision` ve birincil işlev ve geri çağırma işlevi ile zaman uyumsuz bir seri bildirin. Hızlı başlangıç kodunuzu birincil işleve ekleyecek ve `computerVision` betiğin en altında çağıracaksınız. Bu hızlı başlangıçta kodun geri kalanı işlevin içinde gider `computerVision` .
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_end)]
 
 ## <a name="analyze-an-image"></a>Resim çözümleme
 

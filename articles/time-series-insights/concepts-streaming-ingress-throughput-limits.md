@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d1d071a36531ed5f159543e33e9ac043160cd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f6cd943e381d53c36867ce960cd99552f3aea6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650774"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746528"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Akış alma performansı sınırları
 
@@ -28,9 +28,9 @@ Azure Time Series Insights Gen2 akış veri giriş sınırlamaları aşağıda a
 
 Genel olarak giriş fiyatları, kuruluşunuzda bulunan cihazların sayısı, olay egörev sıklığı ve her olayın boyutu olarak görüntülenir:
 
-* **Cihazların sayısı** × **olay emisi sıklığı** **her olayın boyutu**.
+* **Cihazların sayısı** × **olay emisi sıklığı** **her olayın boyutu** .
 
-Varsayılan olarak, Azure Time Series Insights Gen2, gelen verileri **Azure Time Series Insights Gen2 ortamı başına saniyede 1 megabayta (Mbps) kadar**bir hızda alabilir. [Hub bölümü başına](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)ek sınırlamalar vardır.
+Varsayılan olarak, Azure Time Series Insights Gen2, gelen verileri **Azure Time Series Insights Gen2 ortamı başına saniyede 1 megabayta (Mbps) kadar** bir hızda alabilir. [Hub bölümü başına](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)ek sınırlamalar vardır.
 
 > [!TIP]
 >
@@ -41,7 +41,7 @@ Varsayılan olarak, Azure Time Series Insights Gen2, gelen verileri **Azure Time
 
     Contoso Shipping, dakikada üç kez bir olay sunan 100.000 cihaza sahiptir. Bir olayın boyutu 200 bayttır. Bunlar, Azure Time Series Insights Gen2 olay kaynağı olarak dört bölümden oluşan bir IoT Hub kullanıyor.
 
-  * Azure Time Series Insights Gen2 ortamı için alım oranı şu şekilde olacaktır: **100.000 cihaz * 200 bayt/olay * (3/60 olay/sn) = 1 MB**/sn.
+  * Azure Time Series Insights Gen2 ortamı için alım oranı şu şekilde olacaktır: **100.000 cihaz * 200 bayt/olay * (3/60 olay/sn) = 1 MB** /sn.
     * Dengeli bölüm varsayıldığında, bölüm başına alım oranı 0,25 MBps olur.
     * Contoso sevkiyat alım oranı, ölçek sınırlamaları dahilinde olacaktır.
 
@@ -49,7 +49,7 @@ Varsayılan olarak, Azure Time Series Insights Gen2, gelen verileri **Azure Time
 
     Contoso Fleet Analytics, her saniye bir olay sunan 40.000 cihaza sahiptir. Bunlar, Azure Time Series Insights Gen2 olay kaynağı olarak 2 bölüm sayısıyla bir olay hub 'ı kullanıyor. Bir olayın boyutu 200 bayttır.
 
-  * Ortam alma hızı şu şekilde olacaktır: **40.000 cihaz * 200 bayt/olay * 1 olay/sn = 8 Mbps**.
+  * Ortam alma hızı şu şekilde olacaktır: **40.000 cihaz * 200 bayt/olay * 1 olay/sn = 8 Mbps** .
     * Dengeli bölümler varsayıldığında, bölüm başına hız 4 MBps olur.
     * Contoso Fleet Analizi ' alım oranı, ortam ve bölüm sınırlarının üzerinde. Gen2 Azure portal aracılığıyla, ortamları için alma hızını artırmak için Azure Time Series Insights bir istek gönderebilir ve sınırlar dahilinde daha fazla bölüm içeren bir olay hub 'ı oluşturabilir.
 
@@ -66,7 +66,7 @@ Event Hubs bölümlendirme en iyi uygulamaları için [kaç bölümden Ihtiyacı
 
 Azure Time Series Insights Gen2 ortamınız için yeni bir hub oluşturuyor ya da var olanı kullanarak, sınırlar dahilinde olup olmadığını anlamak için bölüm başına alma hızınızı hesaplamanız gerekir.
 
-Azure Time Series Insights Gen2 Şu anda **0,5 MB/sn 'lik bölüm sınırına göre genel olarak**belirlenmiştir.
+Azure Time Series Insights Gen2 Şu anda **0,5 MB/sn 'lik bölüm sınırına göre genel olarak** belirlenmiştir.
 
 ### <a name="iot-hub-specific-considerations"></a>IoT Hub özgü konular
 
@@ -74,7 +74,7 @@ Bir cihaz IoT Hub oluşturulduğunda, kalıcı olarak bir bölüme atanır. Bunu
 
 Sabit bir bölüm ataması Ayrıca, IoT Hub aşağı akış 'dan gönderilen verileri gösteren Azure Time Series Insights Gen2 örneklerini de etkiler. Birden çok cihazdan gelen iletiler hub 'a aynı ağ geçidi cihaz KIMLIĞI kullanılarak iletildiğinde, bu, bölüm başına ölçek limitlerini aşan büyük olasılıkla aynı anda aynı bölüme ulaşabilirler.
 
-**Etki**:
+**Etki** :
 
 * Tek bir bölüm, sınır üzerinden sürekli alma oranı yaşıyorsa, IoT Hub veri saklama süresi aşılmadan önce Azure Time Series Insights Gen2 tüm cihaz telemetrisini eşitlememesi mümkündür. Sonuç olarak, giriş sınırları sürekli olarak aşılırsa gönderilen veriler kaybolabilir.
 

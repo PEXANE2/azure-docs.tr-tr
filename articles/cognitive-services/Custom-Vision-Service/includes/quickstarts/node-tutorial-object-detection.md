@@ -2,32 +2,57 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 09/15/2020
+ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: b0dc5553828b9dd31b297df076857332e9cbd881
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7bbbb823cd62b8004a6681005add60037b023031
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327467"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755811"
 ---
 Bu kılavuzda, bir nesne algılama modeli oluşturmak için Node.js Özel Görüntü İşleme istemci kitaplığını kullanmaya başlamanıza yardımcı olacak yönergeler ve örnek kod sunulmaktadır. Bir proje oluşturacak, Etiketler ekleyecek, projeyi eğtireceksiniz ve projenin tahmin uç nokta URL 'sini programlı bir şekilde test etmek üzere kullanacaksınız. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
 > [!NOTE]
 > Bir nesne _algılama modelini kod yazmadan derlemek_ ve eğitebilmek istiyorsanız, bunun yerine [tarayıcı tabanlı kılavuza](../../get-started-build-detector.md) bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+.NET için Özel Görüntü İşleme istemci kitaplığı 'nı kullanın:
 
-- [Node.js 8](https://www.nodejs.org/en/download/) veya üzeri yüklü.
-- [NPM](https://www.npmjs.com/) yüklendi.
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Yeni bir Özel Görüntü İşleme projesi oluşturma
+* Projeye Etiketler ekleyin
+* Görüntüleri karşıya yükleme ve etiketleme
+* Projeyi eğitme
+* Geçerli yinelemeyi Yayımla
+* Tahmin uç noktasını test etme
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
-
-[!INCLUDE [node-get-images](../../includes/node-get-images.md)]
+Başvuru belgeleri [(eğitim)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(tahmin)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | Kitaplık kaynak kodu [(eğitim)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(tahmin)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Paket (NPM) ( [eğitim)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(tahmin)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction)  |  [örnekleri](https://docs.microsoft.com/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
 
 
-## <a name="install-the-custom-vision-client-library"></a>Özel Görüntü İşleme istemci kitaplığını yükler
+## <a name="prerequisites"></a>Ön koşullar
+
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* [Node.js](https://nodejs.org/) geçerli sürümü
+* Azure aboneliğiniz olduktan sonra bir Özel Görüntü İşleme kaynak oluşturun ve bir <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> eğitim ve tahmin kaynağı oluşturmak ve anahtarlarınızı ve uç noktanızı almak için Azure Portal özel görüntü işleme bir kaynak oluşturun. Dağıtım için bekleyin ve **Kaynağa Git** düğmesine tıklayın.
+    * Uygulamanızı Özel Görüntü İşleme bağlamak için oluşturduğunuz kaynaklarda anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+
+## <a name="setting-up"></a>Ayarlanıyor
+
+### <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
+
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin. 
+
+```console
+mkdir myapp && cd myapp
+```
+
+`npm init`Bir dosya ile bir düğüm uygulaması oluşturmak için komutunu çalıştırın `package.json` . 
+
+```console
+npm init
+```
+
+### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
 Node.js için Özel Görüntü İşleme bir görüntü analizi uygulaması yazmak için Özel Görüntü İşleme NPM paketlerine ihtiyacınız olacaktır. Bunları yüklemek için PowerShell 'de aşağıdaki komutu çalıştırın:
 
@@ -36,197 +61,124 @@ npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
 
-## <a name="add-the-code"></a>Kod ekleme
+Uygulamanızın `package.json` dosyası bağımlılıklarla güncelleştirilir.
 
-Tercih ettiğiniz proje dizininizde *sample.js* adlı yeni bir dosya oluşturun.
+Adlı bir dosya oluşturun `index.js` ve aşağıdaki kitaplıkları içeri aktarın:
 
-## <a name="create-the-custom-vision-project"></a>Özel Görüntü İşleme projesi oluşturma
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_imports)]
 
-Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin ve sampleDataRoot Path değerini görüntü klasörü yolunuza ayarlayın. Uç nokta değerinin [Customvision.ai](https://www.customvision.ai/)adresinde oluşturduğunuz eğitim ve tahmin uç noktalarıyla eşleştiğinden emin olun. Nesne algılama ve görüntü sınıflandırma projesi oluşturma arasındaki farkın **CreateProject** çağrısında belirtilen etki alanı olduğunu unutmayın.
+> [!TIP]
+> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js)'da bulabilirsiniz.
 
-```javascript
-const fs = require('fs');
-const util = require('util');
-const TrainingApi = require("@azure/cognitiveservices-customvision-training");
-const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");
-const msRest = require("@azure/ms-rest-js");
+Kaynağınızın Azure uç noktası ve anahtarları için değişkenler oluşturun. 
 
-const setTimeoutPromise = util.promisify(setTimeout);
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_creds)]
 
-const trainingKey = "<your training key>";
-const predictionKey = "<your prediction key>";
-const predictionResourceId = "<your prediction resource id>";
-const sampleDataRoot = "<path to image files>";
+> [!IMPORTANT]
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz [ürün adı] kaynağı başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
+>
+> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) makalesine bakın.
 
-const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
+Ayrıca, zaman uyumsuz çağrılar için proje adınız ve zaman aşımı parametresi alanları ekleyin.
 
-const publishIterationName = "detectModel";
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_vars)]
 
-const credentials = new msRest.ApiKeyCredentials({ inHeader: { "Training-key": trainingKey } });
-const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
+## <a name="object-model"></a>Nesne modeli
 
-/* Helper function to let us use await inside a forEach loop.
- * This lets us insert delays between image uploads to accommodate the rate limit.
- */
-async function asyncForEach (array, callback) {
-    for (let i = 0; i < array.length; i++) {
-        await callback(array[i], i, array);
-    }
-}
+|Ad|Açıklama|
+|---|---|
+|[TrainingAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | Bu sınıf, modellerinizin oluşturulmasını, eğitimini ve yayımlanmasını işler. |
+|[PredictionAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| Bu sınıf, nesne algılama tahminlerinin modellerinizin sorgulanmasını işler.|
+|[Tahmin](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction?view=azure-node-latest)| Bu arabirim tek bir görüntüde tek bir tahmin tanımlar. Nesne KIMLIĞI ve adı ve Güvenirlik puanı özelliklerini içerir.|
 
-(async () => {
-    console.log("Creating project...");
-    const domains = await trainer.getDomains()
-    const objDetectDomain = domains.find(domain => domain.type === "ObjectDetection");
-    const sampleProject = await trainer.createProject("Sample Obj Detection Project", { domainId: objDetectDomain.id });
-```
+## <a name="code-examples"></a>Kod örnekleri
 
-## <a name="create-tags-in-the-project"></a>Projede etiketler oluşturma
+Bu kod parçacıkları, JavaScript için Özel Görüntü İşleme istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
 
-Projenize sınıflandırma etiketleri oluşturmak için, *sample.js*sonuna aşağıdaki kodu ekleyin:
+* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
+* [Yeni bir Özel Görüntü İşleme projesi oluşturma](#create-a-new-custom-vision-project)
+* [Projeye Etiketler ekleyin](#add-tags-to-the-project)
+* [Görüntüleri karşıya yükleme ve etiketleme](#upload-and-tag-images)
+* [Projeyi eğitme](#train-the-project)
+* [Geçerli yinelemeyi Yayımla](#publish-the-current-iteration)
+* [Tahmin uç noktasını test etme](#test-the-prediction-endpoint)
 
-```javascript
-    const forkTag = await trainer.createTag(sampleProject.id, "Fork");
-    const scissorsTag = await trainer.createTag(sampleProject.id, "Scissors");
-```
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+
+Uç noktanız ve anahtarınızla istemci nesneleri oluşturun. Anahtarınızla bir **Apikeycredentials** nesnesi oluşturun ve bir [Trainingapiclient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) ve [PredictionAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_auth)]
+
+## <a name="add-helper-function"></a>Yardımcı işlevi Ekle
+
+Birden çok zaman uyumsuz çağrı yapmaya yardımcı olmak için aşağıdaki işlevi ekleyin. Bunu daha sonra kullanabilirsiniz.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_auth)]
+
+## <a name="create-a-new-custom-vision-project"></a>Yeni bir Özel Görüntü İşleme projesi oluşturma
+
+Tüm Özel Görüntü İşleme işlev çağrılarınızı içeren yeni bir işlev başlatın. Yeni bir Özel Görüntü İşleme Hizmeti projesi oluşturmak için aşağıdaki kodu ekleyin.
+
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_create)]
+
+## <a name="create-a-new-custom-vision-project"></a>Yeni bir Özel Görüntü İşleme projesi oluşturma
+
+Tüm Özel Görüntü İşleme işlev çağrılarınızı içeren yeni bir işlev başlatın. Yeni bir Özel Görüntü İşleme Hizmeti projesi oluşturmak için aşağıdaki kodu ekleyin.
+
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_create)]
 
 ## <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
 
-Nesne algılama projelerinde resimleri etiketlediğinizde, her etiketlenmiş nesnenin bölgesini normalleştirilmiş koordinatları kullanarak belirtmeniz gerekir. 
+İlk olarak, bu proje için örnek görüntüleri indirin. [Örnek görüntüler klasörünün](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ObjectDetection/Images) içeriğini yerel cihazınıza kaydedin.
+
+Projeye örnek görüntüleri eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. Bu kod, her görüntüyü ilgili etiketiyle birlikte karşıya yükler. Nesne algılama projelerinde resimleri etiketlediğinizde, her etiketlenmiş nesnenin bölgesini normalleştirilmiş koordinatları kullanarak belirtmeniz gerekir. Bu öğreticide, bölgeler kod ile satır içi olarak kodlanmıştır. Bölgeler, sınırlayıcı kutuyu normalleştirilmiş koordinatlarıyla belirtir ve koordinatlar şu sırayla verilir: sol, üst, genişlik, yükseklik. Tek bir toplu işte en fazla 64 görüntü yükleyebilirsiniz.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_upload)]
+
+
+> [!IMPORTANT]
+> Bilişsel `sampleDataRoot` Hizmetler Python SDK 'Sı örnekleri deposunu indirdiğiniz yere bağlı olarak, görüntülerin yolunu () değiştirmeniz gerekir.
 
 > [!NOTE]
 > Bölgelerin koordinatlarını işaretlemek için bir tıklama ve sürükleme yardımcı programına sahip değilseniz, [Customvision.ai](https://www.customvision.ai/)adresindeki Web Kullanıcı arabirimini kullanabilirsiniz. Bu örnekte, koordinatlar zaten sağlanmış.
 
-Projeye görüntüler, etiket ve bölgeler eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. Bu öğretici için, bölgelerin kod ile satır içi doğrudan eklendiğini unutmayın. Bölgeler, sınırlayıcı kutuyu normalleştirilmiş koordinatlarıyla belirtir ve koordinatlar şu sırayla verilir: sol, üst, genişlik, yükseklik. Tek bir toplu işte en fazla 64 görüntü yükleyebilirsiniz.
 
-```javascript
-const forkImageRegions = {
-    "fork_1.jpg": [0.145833328, 0.3509314, 0.5894608, 0.238562092],
-    "fork_2.jpg": [0.294117659, 0.216944471, 0.534313738, 0.5980392],
-    "fork_3.jpg": [0.09191177, 0.0682516545, 0.757352948, 0.6143791],
-    "fork_4.jpg": [0.254901975, 0.185898721, 0.5232843, 0.594771266],
-    "fork_5.jpg": [0.2365196, 0.128709182, 0.5845588, 0.71405226],
-    "fork_6.jpg": [0.115196079, 0.133611143, 0.676470637, 0.6993464],
-    "fork_7.jpg": [0.164215669, 0.31008172, 0.767156839, 0.410130739],
-    "fork_8.jpg": [0.118872553, 0.318251669, 0.817401946, 0.225490168],
-    "fork_9.jpg": [0.18259804, 0.2136765, 0.6335784, 0.643790841],
-    "fork_10.jpg": [0.05269608, 0.282303959, 0.8088235, 0.452614367],
-    "fork_11.jpg": [0.05759804, 0.0894935, 0.9007353, 0.3251634],
-    "fork_12.jpg": [0.3345588, 0.07315363, 0.375, 0.9150327],
-    "fork_13.jpg": [0.269607842, 0.194068655, 0.4093137, 0.6732026],
-    "fork_14.jpg": [0.143382356, 0.218578458, 0.7977941, 0.295751631],
-    "fork_15.jpg": [0.19240196, 0.0633497, 0.5710784, 0.8398692],
-    "fork_16.jpg": [0.140931368, 0.480016381, 0.6838235, 0.240196079],
-    "fork_17.jpg": [0.305147052, 0.2512582, 0.4791667, 0.5408496],
-    "fork_18.jpg": [0.234068632, 0.445702642, 0.6127451, 0.344771236],
-    "fork_19.jpg": [0.219362751, 0.141781077, 0.5919118, 0.6683006],
-    "fork_20.jpg": [0.180147052, 0.239820287, 0.6887255, 0.235294119]
-};
+## <a name="train-the-project"></a>Projeyi eğitme
 
-const scissorsImageRegions = {
-    "scissors_1.jpg": [0.4007353, 0.194068655, 0.259803921, 0.6617647],
-    "scissors_2.jpg": [0.426470578, 0.185898721, 0.172794119, 0.5539216],
-    "scissors_3.jpg": [0.289215684, 0.259428144, 0.403186262, 0.421568632],
-    "scissors_4.jpg": [0.343137264, 0.105833367, 0.332107842, 0.8055556],
-    "scissors_5.jpg": [0.3125, 0.09766343, 0.435049027, 0.71405226],
-    "scissors_6.jpg": [0.379901975, 0.24308826, 0.32107842, 0.5718954],
-    "scissors_7.jpg": [0.341911763, 0.20714055, 0.3137255, 0.6356209],
-    "scissors_8.jpg": [0.231617644, 0.08459154, 0.504901946, 0.8480392],
-    "scissors_9.jpg": [0.170343131, 0.332957536, 0.767156839, 0.403594762],
-    "scissors_10.jpg": [0.204656869, 0.120539248, 0.5245098, 0.743464053],
-    "scissors_11.jpg": [0.05514706, 0.159754932, 0.799019635, 0.730392158],
-    "scissors_12.jpg": [0.265931368, 0.169558853, 0.5061275, 0.606209159],
-    "scissors_13.jpg": [0.241421565, 0.184264734, 0.448529422, 0.6830065],
-    "scissors_14.jpg": [0.05759804, 0.05027781, 0.75, 0.882352948],
-    "scissors_15.jpg": [0.191176474, 0.169558853, 0.6936275, 0.6748366],
-    "scissors_16.jpg": [0.1004902, 0.279036, 0.6911765, 0.477124184],
-    "scissors_17.jpg": [0.2720588, 0.131977156, 0.4987745, 0.6911765],
-    "scissors_18.jpg": [0.180147052, 0.112369314, 0.6262255, 0.6666667],
-    "scissors_19.jpg": [0.333333343, 0.0274019931, 0.443627447, 0.852941155],
-    "scissors_20.jpg": [0.158088237, 0.04047389, 0.6691176, 0.843137264]
-};
+Bu kod tahmin modelinin ilk yinelemesini oluşturur. 
 
-console.log("Adding images...");
-let fileUploadPromises = [];
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_train)]
 
-const forkDir = `${sampleDataRoot}/Fork`;
-const forkFiles = fs.readdirSync(forkDir);
 
-await asyncForEach(forkFiles, async (file) => {
-    const region = { tagId : forkTag.id, left : forkImageRegions[file][0], top : forkImageRegions[file][1], width : forkImageRegions[file][2], height : forkImageRegions[file][3] };
-    const entry = { name : file, contents : fs.readFileSync(`${forkDir}/${file}`), regions : [region] };
-    const batch = { images : [entry] };
-    // Wait one second to accommodate rate limit.
-    await setTimeoutPromise(1000, null);
-    fileUploadPromises.push(trainer.createImagesFromFiles(sampleProject.id, batch));
-});
+## <a name="publish-the-current-iteration"></a>Geçerli yinelemeyi Yayımla
 
-const scissorsDir = `${sampleDataRoot}/Scissors`;
-const scissorsFiles = fs.readdirSync(scissorsDir);
+Bu kod, eğitilen yinelemeyi tahmin uç noktasına yayınlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin uç noktasında kullanılamaz.
 
-await asyncForEach(scissorsFiles, async (file) => {
-    const region = { tagId : scissorsTag.id, left : scissorsImageRegions[file][0], top : scissorsImageRegions[file][1], width : scissorsImageRegions[file][2], height : scissorsImageRegions[file][3] };
-    const entry = { name : file, contents : fs.readFileSync(`${scissorsDir}/${file}`), regions : [region] };
-    const batch = { images : [entry] };
-    // Wait one second to accommodate rate limit.
-    await setTimeoutPromise(1000, null);
-    fileUploadPromises.push(trainer.createImagesFromFiles(sampleProject.id, batch));
-});
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_publish)]
 
-await Promise.all(fileUploadPromises);
-```
 
-## <a name="train-and-publish-the-project"></a>Projeyi eğitme ve yayımlama
+## <a name="test-the-prediction-endpoint"></a>Tahmin uç noktasını test etme
 
-Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve ardından bu yinelemeyi tahmin uç noktasına yayınlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin uç noktasında kullanılamaz.
+Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için aşağıdaki kodu işlevinizin içine ekleyin. 
 
-```javascript
-console.log("Training...");
-let trainingIteration = await trainer.trainProject(sampleProject.id);
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_test)]
 
-// Wait for training to complete
-console.log("Training started...");
-while (trainingIteration.status == "Training") {
-    console.log("Training status: " + trainingIteration.status);
-    // wait for one second
-    await setTimeoutPromise(1000, null);
-    trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
-}
-console.log("Training status: " + trainingIteration.status);
+Sonra Özel Görüntü İşleme işlevinizi kapatın ve çağırın.
 
-// Publish the iteration to the end point
-await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
-```
-
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Tahmin uç noktasında yayımlanmış yinelemeyi edinme ve kullanma
-
-Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın sonuna aşağıdaki kodu ekleyin:
-
-```javascript
-    const predictor_credentials = new msRest.ApiKeyCredentials({ inHeader: { "Prediction-key": predictionKey } });
-    const predictor = new PredictionApi.PredictionAPIClient(predictor_credentials, endPoint);
-
-    const testFile = fs.readFileSync(`${sampleDataRoot}/Test/test_od_image.jpg`);
-
-    const results = await predictor.detectImage(sampleProject.id, publishIterationName, testFile)
-
-    // Show results
-    console.log("Results:");
-    results.predictions.forEach(predictedResult => {
-        console.log(`\t ${predictedResult.tagName}: ${(predictedResult.probability * 100.0).toFixed(2)}% ${predictedResult.boundingBox.left},${predictedResult.boundingBox.top},${predictedResult.boundingBox.width},${predictedResult.boundingBox.height}`);
-    });
-})()
-```
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_function_close)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-*sample.js*çalıştırın.
+Uygulamayı `node` hızlı başlangıç dosyanızdaki komutla çalıştırın.
 
 ```shell
-node sample.js
+node index.js
 ```
 
-Uygulamanın çıkışı konsolda görüntülenmelidir. Ardından test görüntüsünün (**samples/vision/images/Test** yolunda bulunur) uygun etiketlendiğini ve algılama bölgesinin doğru olduğunu onaylayabilirsiniz.
+Uygulamanın çıkışı konsolda görüntülenmelidir. Daha sonra test görüntüsünün ( **<sampleDataRoot> /Test/** içinde bulunur) uygun şekilde etiketlendiğini ve algılama bölgesinin doğru olduğunu doğrulayabilirsiniz. Ayrıca [Özel Görüntü İşleme web sitesine](https://customvision.ai) geri dönebilir ve yeni oluşturulan projenizin geçerli durumunu görebilirsiniz.
+
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 
@@ -238,5 +190,6 @@ Artık koddaki nesne algılama işleminin her adımını tamamladınız. Bu örn
 > [Modeli test etme ve yeniden eğitme](../../test-your-model.md)
 
 * [Özel Görüntü İşleme nedir?](../../overview.md)
+* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js) 'da bulunabilir
 * [SDK başvuru belgeleri (eğitim)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
 * [SDK başvuru belgeleri (tahmin)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

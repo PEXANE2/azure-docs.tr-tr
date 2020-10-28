@@ -8,80 +8,61 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 03/05/2020
-ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/01/2020
+ms.openlocfilehash: 3470f969034a051b17e762b685a89c0f910e0cbb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78399098"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747128"
 ---
-# <a name="monitoring-azure-machine-learning"></a>İzleme Azure Machine Learning
+# <a name="monitor-azure-machine-learning"></a>Azure Machine Learning'i izleme
 
-Bu makalede, Azure Machine Learning tarafından oluşturulan izleme verileri açıklanmaktadır. Ayrıca, verilerinizi çözümlemek ve uyarıları tanımlamak için Azure Izleyicisini nasıl kullanabileceğinizi açıklar.
+Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure Machine Learning tarafından oluşturulan izleme verileri ve Azure Izleyici ile bu verileri çözümleme ve uyarma açıklanır.
 
 > [!TIP]
-> Bu belgedeki bilgiler birincil olarak yöneticiler içindir, çünkü Azure Machine Learning izlemeyi açıklar. Bir veri bilimcu veya geliştiricisiyseniz ve model eğitim çalışmalarınız için özel bilgileri izlemek istiyorsanız aşağıdaki belgelere bakın:
+> Bu belgedeki bilgiler birincil olarak yöneticiler içindir, çünkü Azure Machine Learning *çalışma alanı* düzeyinde izlemeyi açıklar. Bir veri bilimcu veya geliştiricisiyseniz ve *model eğitim çalışmalarınız* için özel bilgileri izlemek istiyorsanız aşağıdaki belgelere bakın:
 >
 > * [Eğitim çalıştırmalarını başlatın, izleyin ve iptal edin](how-to-manage-runs.md)
 > * [Eğitim çalıştırmaları için günlük ölçümleri](how-to-track-experiments.md)
 > * [MLflow ile denemeleri izleme](how-to-use-mlflow.md)
 > * [TensorBoard ile çalıştırmaları görselleştirme](how-to-monitor-tensorboard.md)
 
-## <a name="azure-monitor"></a>Azure İzleyici
+## <a name="what-is-azure-monitor"></a>Azure İzleyici nedir?
 
-Azure 'da tam yığın izleme hizmeti olan Azure Izleyici 'yi kullanarak verileri izleme Azure Machine Learning günlüğe kaydeder. Azure Izleyici, Azure kaynaklarınızı izlemeye yönelik kapsamlı bir özellik kümesi sağlar. Ayrıca, diğer bulutlardaki ve Şirket içindeki kaynakları da izleyebilir.
+Azure Machine Learning Azure 'da tam yığın izleme hizmeti olan [Azure izleyici](/azure/azure-monitor/overview)'yi kullanarak izleme verileri oluşturur. Azure Izleyici, Azure kaynaklarınızı izlemeye yönelik kapsamlı bir özellik kümesi sağlar. Ayrıca, diğer bulutlardaki ve Şirket içindeki kaynakları da izleyebilir.
 
-İzleme özelliklerine genel bir bakış sağlayan [Azure izleyici genel bakış](/azure/azure-monitor/overview)makalesini başlatın. Aşağıdaki bölümlerde, Azure Machine Learning ile Azure Izleyici kullanma hakkında daha fazla bilgi sunarak bu bilgiler yer alır.
+Aşağıdaki kavramları açıklayan Azure [izleyici Ile Azure kaynaklarını izleme](/azure/azure-monitor/insights/monitor-azure-resource)makalesini başlatın:
 
-Azure Izleyici ile ilişkili maliyetleri anlamak için bkz. [kullanım ve tahmini maliyetler](/azure/azure-monitor/platform/usage-estimated-costs). Verilerinizin Azure Izleyici 'de görünmesi için geçen süreyi anlamak için bkz. [günlük verisi alma süresi](/azure/azure-monitor/platform/data-ingestion-time).
+- Azure İzleyici nedir?
+- İzleme ile ilişkili maliyetler
+- Azure 'da toplanan verileri izleme
+- Veri toplamayı yapılandırma
+- İzleme verilerini analiz etmek ve uyarı vermek için Azure 'da standart araçlar
+
+Aşağıdaki bölümler, Azure Machine Learning için toplanan belirli verileri açıklayarak bu makalede derleme oluşturur. Bu bölümler, veri toplamayı yapılandırmak ve bu verileri Azure araçlarıyla çözümlemek için örnekler de sağlar.
+
+> [!TIP]
+> Azure Izleyici ile ilişkili maliyetleri anlamak için bkz. [kullanım ve tahmini maliyetler](/azure/azure-monitor/platform/usage-estimated-costs). Verilerinizin Azure Izleyici 'de görünmesi için geçen süreyi anlamak için bkz. [günlük verisi alma süresi](/azure/azure-monitor/platform/data-ingestion-time).
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Azure Machine Learning verileri izleme
 
-Azure Machine Learning, [Azure kaynaklarından gelen verileri izleme](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data)bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. Azure Machine Learning tarafından oluşturulan günlüklere ve ölçümlere ilişkin ayrıntılı bir başvuru için bkz. [Azure Machine Learning izleme verileri başvurusu](monitor-resource-reference.md) .
+Azure Machine Learning, [Azure kaynaklarından gelen verileri izleme](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources)bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. 
 
-## <a name="analyzing-metric-data"></a>Ölçüm verileri çözümleniyor
+Azure Machine Learning tarafından oluşturulan günlüklere ve ölçümlere ilişkin ayrıntılı bir başvuru için bkz. [Azure Machine Learning izleme verileri başvurusu](monitor-resource-reference.md) .
 
-**Azure izleyici** menüsünden **ölçümler** ' i açarak Azure Machine Learning ölçümlerini çözümleyebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](/azure/azure-monitor/platform/metrics-getting-started) kullanmaya başlama.
+<a id="configuration"></a>
 
-Azure Machine Learning tüm ölçümler, **Machine Learning hizmet çalışma**alanında yer alan ad alanıdır.
+## <a name="collection-and-routing"></a>Toplama ve yönlendirme
 
-![Machine Learning hizmeti çalışma alanı seçili Ölçüm Gezgini](./media/monitor-azure-machine-learning/metrics.png)
+Platform ölçümleri ve etkinlik günlüğü otomatik olarak toplanır ve depolanır, ancak bir tanılama ayarı kullanılarak başka konumlara yönlendirilebilir.  
 
-### <a name="filtering-and-splitting"></a>Filtreleme ve bölme
+Kaynak günlükleri, bir tanılama ayarı oluşturup bunları bir veya daha fazla konuma yönlendirene kadar toplanmaz ve depolanmaz.
 
-Boyutları destekleyen ölçümler için bir boyut değeri kullanarak filtre uygulayabilirsiniz. Örneğin, bir **küme adı** Için **etkin çekirdekleri** filtreleme `cpu-cluster` . 
-
-Ayrıca, ölçümün farklı segmentlerinin birbirleriyle nasıl karşılaştırılacağını görselleştirmek için bir ölçümü boyuta göre ayırabilirsiniz. Örneğin, ardışık düzen **adım türünü** bölerek işlem hattında kullanılan adımların türlerin sayısını görebilirsiniz.
-
-Filtreleme ve bölme hakkında daha fazla bilgi için bkz. [Azure izleyici 'Nin gelişmiş özellikleri](/azure/azure-monitor/platform/metrics-charts).
-
-## <a name="alerts"></a>Uyarılar
-
-**Azure izleyici** menüsünden **uyarıları** açarak Azure Machine Learning uyarılara erişebilirsiniz. Uyarı oluşturma hakkında ayrıntılı bilgi için bkz. [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](/azure/azure-monitor/platform/alerts-metric) .
-
-Aşağıdaki tabloda Azure Machine Learning için ortak ve önerilen ölçüm uyarısı kuralları listelenmektedir:
-
-| Uyarı türü | Koşul | Açıklama |
-|:---|:---|:---|
-| Model Dağıtımı başarısız oldu | Toplama türü: Toplam, Işleç: büyüktür, eşik değeri: 0 | Bir veya daha fazla model dağıtımı başarısız olduğunda |
-| Kota kullanım yüzdesi | Toplama türü: Average, Işleç: büyüktür, eşik değeri: 90| Kota kullanım yüzdesi %90 ' den büyük olduğunda |
-| Kullanılamayan düğümler | Toplama türü: Toplam, Işleç: büyüktür, eşik değeri: 0 | Bir veya daha fazla kullanılamayan düğüm olduğunda |
-
-## <a name="configuration"></a>Yapılandırma
+Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmaya yönelik ayrıntılı süreç için [Azure 'da platform günlüklerini ve ölçümlerini toplamak üzere tanılama ayarı oluşturma](/azure/azure-monitor/platform/diagnostic-settings) konusuna bakın. Bir tanılama ayarı oluşturduğunuzda hangi günlük kategorilerinin toplanacağını belirlersiniz. Azure Machine Learning kategorileri [Azure Machine Learning izleme veri başvurusunda](monitor-resource-reference.md#resource-logs)listelenmiştir.
 
 > [!IMPORTANT]
-> __Azure Machine Learning ölçümlerinin yapılandırılması gerekmez__, bunlar otomatik olarak toplanır ve izleme ve uyarı için ölçüm Gezgini kullanılabilir.
-
-Aşağıdaki işlevleri yapılandırmak için bir tanılama ayarı ekleyebilirsiniz:
-
-* Günlük ve ölçüm bilgilerini bir Azure depolama hesabına arşivleme.
-* Günlük ve ölçüm bilgilerini bir Azure Olay Hub 'ına akış.
-* Günlük ve ölçüm bilgilerini Azure Izleyici Log Analytics gönderin.
-
-Bu ayarları etkinleştirmek, ek Azure Hizmetleri (depolama hesabı, Olay Hub 'ı veya Log Analytics) gerektirir ve bu da maliyetinizi artırabilir. Tahmini maliyeti hesaplamak için [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator)' ı ziyaret edin.
-
-Tanılama ayarı oluşturma hakkında daha fazla bilgi için bkz. [Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](/azure/azure-monitor/platform/diagnostic-settings).
+> Bu ayarları etkinleştirmek, ek Azure Hizmetleri (depolama hesabı, Olay Hub 'ı veya Log Analytics) gerektirir ve bu da maliyetinizi artırabilir. Tahmini maliyeti hesaplamak için [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator)' ı ziyaret edin.
 
 Azure Machine Learning için aşağıdaki günlükleri yapılandırabilirsiniz:
 
@@ -94,9 +75,32 @@ Azure Machine Learning için aşağıdaki günlükleri yapılandırabilirsiniz:
 > [!NOTE]
 > Bir tanılama ayarında ölçümleri etkinleştirdiğinizde, boyut bilgisi şu anda bir depolama hesabına, Olay Hub 'ına veya Log Analytics 'e gönderilen bilgilerin bir parçası olarak dahil edilmez.
 
-## <a name="analyzing-log-data"></a>Günlük verileri çözümleniyor
+Toplayacağınız ölçümler ve Günlükler aşağıdaki bölümlerde ele alınmıştır.
 
-Azure Izleyici Log Analytics kullanmak için bir tanılama yapılandırması oluşturmanız ve __Log Analytics bilgi gönderilmesini__etkinleştirmeniz gerekir. Daha fazla bilgi için [yapılandırma](#configuration) bölümüne bakın.
+## <a name="analyzing-metrics"></a>Ölçümler çözümleniyor
+
+**Azure izleyici** menüsünden **ölçümler** ' i açarak, Azure Machine Learning ölçümlerini, diğer Azure hizmetlerinden alınan ölçümlerle birlikte analiz edebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](/azure/azure-monitor/platform/metrics-getting-started) kullanmaya başlama.
+
+Toplanan platform ölçümlerinin bir listesi için bkz. [izleme Azure Machine Learning veri başvuru ölçümleri](monitor-resource-reference.md#metrics).
+
+Azure Machine Learning tüm ölçümler, **Machine Learning hizmet çalışma** alanında yer alan ad alanıdır.
+
+![Machine Learning hizmeti çalışma alanı seçili Ölçüm Gezgini](./media/monitor-azure-machine-learning/metrics.png)
+
+Başvuru için, [Azure izleyici 'de desteklenen tüm kaynak ölçümlerinin](/azure/azure-monitor/platform/metrics-supported)bir listesini görebilirsiniz.
+
+### <a name="filtering-and-splitting"></a>Filtreleme ve bölme
+
+Boyutları destekleyen ölçümler için bir boyut değeri kullanarak filtre uygulayabilirsiniz. Örneğin, bir **küme adı** Için **etkin çekirdekleri** filtreleme `cpu-cluster` . 
+
+Ayrıca, ölçümün farklı segmentlerinin birbirleriyle nasıl karşılaştırılacağını görselleştirmek için bir ölçümü boyuta göre ayırabilirsiniz. Örneğin, ardışık düzen **adım türünü** bölerek işlem hattında kullanılan adımların türlerin sayısını görebilirsiniz.
+
+Filtreleme ve bölme hakkında daha fazla bilgi için bkz. [Azure izleyici 'Nin gelişmiş özellikleri](/azure/azure-monitor/platform/metrics-charts).
+
+<a id="analyzing-log-data"></a>
+## <a name="analyzing-logs"></a>Günlükler çözümleniyor
+
+Azure Izleyici Log Analytics kullanmak için bir tanılama yapılandırması oluşturmanız ve __Log Analytics bilgi gönderilmesini__ etkinleştirmeniz gerekir. Daha fazla bilgi için [koleksiyon ve yönlendirme](#collection-and-routing) bölümüne bakın.
 
 Azure Izleyici günlüklerindeki veriler, her tablo kendi benzersiz özelliklerine sahip olan tablolarda depolanır. Azure Machine Learning, verileri aşağıdaki tablolarda depolar:
 
@@ -111,7 +115,10 @@ Azure Izleyici günlüklerindeki veriler, her tablo kendi benzersiz özellikleri
 
 Günlükler ve ölçümler hakkında ayrıntılı bir başvuru için bkz. [Azure Machine Learning izleme verileri başvurusu](monitor-resource-reference.md).
 
-### <a name="sample-queries"></a>Örnek sorgular
+### <a name="sample-kusto-queries"></a>Örnek kusto sorguları
+
+> [!IMPORTANT]
+> [Hizmet-adı] menüsünden **Günlükler** ' i seçtiğinizde Log Analytics, sorgu kapsamı geçerli Azure Machine Learning çalışma alanına ayarlanmış olarak açılır. Bu, günlük sorgularının yalnızca bu kaynaktaki verileri dahil olacağı anlamına gelir. Diğer çalışma alanlarından veya diğer Azure hizmetlerinden verileri içeren bir sorgu çalıştırmak istiyorsanız, **Azure izleyici** menüsünden **Günlükler** ' i seçin. Ayrıntılar için bkz. [Azure izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics](/azure/azure-monitor/log-query/scope/) .
 
 Aşağıda, Azure Machine Learning kaynaklarınızı izlemenize yardımcı olması için kullanabileceğiniz sorgular verilmiştir: 
 
@@ -147,8 +154,20 @@ Aşağıda, Azure Machine Learning kaynaklarınızı izlemenize yardımcı olmas
     | distinct NodeId
     ```
 
+## <a name="alerts"></a>Uyarılar
+
+**Azure izleyici** menüsünden **uyarıları** açarak Azure Machine Learning uyarılara erişebilirsiniz. Uyarı oluşturma hakkında ayrıntılı bilgi için bkz. [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](/azure/azure-monitor/platform/alerts-metric) .
+
+Aşağıdaki tabloda Azure Machine Learning için ortak ve önerilen ölçüm uyarısı kuralları listelenmektedir:
+
+| Uyarı türü | Koşul | Açıklama |
+|:---|:---|:---|
+| Model Dağıtımı başarısız oldu | Toplama türü: Toplam, Işleç: büyüktür, eşik değeri: 0 | Bir veya daha fazla model dağıtımı başarısız olduğunda |
+| Kota kullanım yüzdesi | Toplama türü: Average, Işleç: büyüktür, eşik değeri: 90| Kota kullanım yüzdesi %90 ' den büyük olduğunda |
+| Kullanılamayan düğümler | Toplama türü: Toplam, Işleç: büyüktür, eşik değeri: 0 | Bir veya daha fazla kullanılamayan düğüm olduğunda |
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Günlüklerin ve ölçümlerin bir başvurusu için bkz. [Azure Machine Learning izleme verileri başvurusu](monitor-resource-reference.md).
+- Günlüklerin ve ölçümlerin bir başvurusu için bkz. [izleme Azure Machine Learning veri başvurusu](monitor-resource-reference.md).
 - Azure Machine Learning ilgili kotalarla çalışma hakkında daha fazla bilgi için bkz. [Azure kaynakları için kotaları yönetme ve isteme](how-to-manage-quotas.md).
 - Azure kaynaklarını izleme hakkında daha fazla bilgi için bkz. Azure [izleyici Ile Azure kaynaklarını izleme](/azure/azure-monitor/insights/monitor-azure-resource).

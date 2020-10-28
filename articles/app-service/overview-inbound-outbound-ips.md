@@ -3,13 +3,13 @@ title: Gelen/giden IP adresleri
 description: Gelen ve giden IP adreslerinin Azure App Service, ne zaman değişdikleri ve uygulamanızın adreslerini nasıl bulacağınızı öğrenin.
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18
-ms.openlocfilehash: 8fa9fec9219cfd85a8a0b25f50835425766d9043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050701"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746159"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service gelen ve giden IP adresleri
 
@@ -51,7 +51,7 @@ Aşağıdaki eylemlerden birini gerçekleştirdiğinizde uygulamanız için gide
 
 - Bir uygulamayı silip farklı bir kaynak grubunda yeniden oluşturun (dağıtım birimi değişebilir).
 - Kaynak grubu _ve_ bölge kombinasyondaki son uygulamayı silin ve yeniden oluşturun (dağıtım birimi değişebilir).
-- Uygulamanızı daha düşük Katmanlar (**temel**, **Standart**ve **Premium**) ve **Premium v2** katmanı (IP adresleri kümeden eklenebilir veya kümeden çıkarılan) arasında ölçeklendirin.
+- Uygulamanızı daha düşük Katmanlar ( **temel** , **Standart** ve **Premium** ) ve **Premium v2** katmanı (IP adresleri kümeden eklenebilir veya kümeden çıkarılan) arasında ölçeklendirin.
 
 Fiyatlandırma katmanlarından bağımsız olarak, uygulamanızın kullanabileceği tüm olası giden IP adresleri kümesini, `possibleOutboundIpAddresses` özelliği arayarak veya Azure Portal **Özellikler** dikey PENCERESINDE **ek giden IP adresleri** alanında bulabilirsiniz. Bkz. [giden IP 'Leri bulma](#find-outbound-ips).
 

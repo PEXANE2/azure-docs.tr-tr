@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: d94b0815ebe7660d6daef97db0c2a1bef7977ed8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 06b56566108bb482109d02d8d4f9db66dc2a6995
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548181"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755887"
 ---
 > [!IMPORTANT]
 > Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır.
 
 [Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual STUDIO IDE](https://visualstudio.microsoft.com/vs/) veya [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
@@ -63,6 +63,7 @@ Build succeeded.
  0 Error(s)
 ...
 ```
+---
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler 
 
@@ -71,8 +72,6 @@ Uygulama dizini içinde, aşağıdaki komutla .NET için [ürün adı] istemci K
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
-
----
 
 > [!TIP]
 > Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)'da bulabilirsiniz.

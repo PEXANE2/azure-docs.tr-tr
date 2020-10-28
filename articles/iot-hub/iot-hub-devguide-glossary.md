@@ -11,12 +11,13 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 30ce2247207b34ab63df5b32b2a96f27256afdbb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+- devx-track-azurecli
+ms.openlocfilehash: 3a75b3622ebc2085dac898e2a06e09f16466cbf5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547801"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746604"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub terimlerin sözlüğü
 
@@ -74,7 +75,7 @@ Bir IoT Hub ile etkileşime geçen [arka uç uygulamaları](#back-end-app) oluş
 
 [Service Bus](../service-bus-messaging/index.yml) , şirket içi çözümlere bulut ile bağlanmanıza yardımcı olan kurumsal mesajlaşma ve geçişli iletişim ile bulut özellikli iletişim sağlar. Bazı IoT Hub öğreticileri Service Bus [kuyrukları](../service-bus-messaging/service-bus-messaging-overview.md)kullanır.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 [Azure depolama](../storage/common/storage-introduction.md) , bulut depolama çözümüdür. Yapılandırılmamış nesne verilerini depolamak için kullanabileceğiniz blob Storage hizmetini içerir. Bazı IoT Hub öğreticileri blob Storage kullanır.
 

@@ -5,13 +5,13 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces özel bir NGıNX giriş denetleyicisi kullanmak üzere yapılandırmayı ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmayı öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.custom: devx-track-js
-ms.openlocfilehash: 1ef462171199ce818b6146efbe705cca30b24564
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: e1918b5ce9c0fdba81174f0b36fd1ce51d0df70a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973096"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748814"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Özel NGıNX giriş denetleyicisi kullanma ve HTTPS 'yi yapılandırma
 
@@ -58,7 +58,7 @@ helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
 
 > [!NOTE]
-> Yukarıdaki örnek, giriş denetleyiciniz için genel bir uç nokta oluşturur. Bunun yerine giriş denetleyicinizde özel bir uç nokta kullanmanız gerekiyorsa, *--set Controller. Service. açıklamalarını ekleyin. " Service \\ . Beta \\ . Kubernetes \\ . IO/Azure-Load-dengeleyici-Internal "= true* parametresi, *helk install* komutuna. Örnek:
+> Yukarıdaki örnek, giriş denetleyiciniz için genel bir uç nokta oluşturur. Bunun yerine giriş denetleyicinizde özel bir uç nokta kullanmanız gerekiyorsa, *--set Controller. Service. açıklamalarını ekleyin. " Service \\ . Beta \\ . Kubernetes \\ . IO/Azure-Load-dengeleyici-Internal "= true* parametresi, *helk install* komutuna. Örneğin:
 > ```console
 > helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
 > ```
@@ -100,8 +100,8 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 [Values. YAML][values-yaml] dosyasını açın ve aşağıdaki güncelleştirmeleri yapın:
-* *<REPLACE_ME_WITH_HOST_SUFFIX>* tüm örneklerini *NGINX ile değiştirin. MY_CUSTOM_DOMAIN* *MY_CUSTOM_DOMAIN*için etki alanınızı kullanma. 
-* *Kubernetes.io/ingress.class: traefik-azds # dev Spaces-* *Kubernetes.io/ingress.class: NGINX # Custom*girişi ile değiştirin. 
+* *<REPLACE_ME_WITH_HOST_SUFFIX>* tüm örneklerini *NGINX ile değiştirin. MY_CUSTOM_DOMAIN* *MY_CUSTOM_DOMAIN* için etki alanınızı kullanma. 
+* *Kubernetes.io/ingress.class: traefik-azds # dev Spaces-* *Kubernetes.io/ingress.class: NGINX # Custom* girişi ile değiştirin. 
 
 Aşağıda güncelleştirilmiş bir dosyaya örnek verilmiştir `values.yaml` :
 
@@ -210,7 +210,7 @@ spec:
 ```
 
 > [!NOTE]
-> Test için, *Kümevereninizi*için kullanabileceğiniz bir [hazırlama sunucusu][letsencrypt-staging-issuer] da vardır.
+> Test için, *Kümevereninizi* için kullanabileceğiniz bir [hazırlama sunucusu][letsencrypt-staging-issuer] da vardır.
 
 `kubectl`Uygulamak için kullanın `letsencrypt-clusterissuer.yaml` .
 
@@ -255,7 +255,7 @@ gateway:
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
-*Geliştirme/azureuser1* alt alanındaki örnek uygulamaya gıdın ve HTTPS kullanmak üzere yönlendirildiğini unutmayın. Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örnek:
+*Geliştirme/azureuser1* alt alanındaki örnek uygulamaya gıdın ve HTTPS kullanmak üzere yönlendirildiğini unutmayın. Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örneğin:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.

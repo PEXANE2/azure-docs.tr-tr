@@ -3,13 +3,13 @@ title: Kapsayıcı grubunu Azure sanal ağı 'na dağıtma
 description: Azure komut satırı arabirimini kullanarak bir kapsayıcı grubunu yeni veya mevcut bir Azure sanal ağına dağıtmayı öğrenin.
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: f8f61bc74f79c1712c3c662be66384c5ef689eb7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518135"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746891"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Kapsayıcı örneklerini Azure sanal ağına dağıtma
 
@@ -69,7 +69,7 @@ Mevcut bir sanal ağa bir kapsayıcı grubu dağıtmak için:
 
 Aşağıdaki örnek, daha önce oluşturulan aynı alt ağa ikinci bir kapsayıcı grubu dağıtır ve iki kapsayıcı örneği arasındaki iletişimi doğrular.
 
-İlk olarak, dağıttığınız ilk kapsayıcı grubunun IP adresini alın, *AppContainer*:
+İlk olarak, dağıttığınız ilk kapsayıcı grubunun IP adresini alın, *AppContainer* :
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -83,7 +83,7 @@ az container show --resource-group myResourceGroup \
 10.0.0.4
 ```
 
-Şimdi, `CONTAINER_GROUP_IP` komutuyla ALDıĞıNıZ IP 'ye ayarlayın `az container show` ve aşağıdaki `az container create` komutu yürütün. Bu ikinci kapsayıcı, *commchecker*, alp Linux tabanlı bir görüntü çalıştırır ve `wget` ilk kapsayıcı grubunun özel alt ağ IP adresine karşı yürütülür.
+Şimdi, `CONTAINER_GROUP_IP` komutuyla ALDıĞıNıZ IP 'ye ayarlayın `az container show` ve aşağıdaki `az container create` komutu yürütün. Bu ikinci kapsayıcı, *commchecker* , alp Linux tabanlı bir görüntü çalıştırır ve `wget` ilk kapsayıcı grubunun özel alt ağ IP adresine karşı yürütülür.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-address>
@@ -139,7 +139,7 @@ az network profile list --resource-group myResourceGroup \
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-Ağ profili KIMLIĞI ' ne sahip olduktan sonra, aşağıdaki YAML 'yi *VNET-Deploy-aci. YAML*adlı yeni bir dosyaya kopyalayın. Altında `networkProfile` , `id` değerini az önce aldığınız kimlikle değiştirin, ardından dosyayı kaydedin. Bu YAML, sanal ağınızda *appcontaineryaml* adlı bir kapsayıcı grubu oluşturur.
+Ağ profili KIMLIĞI ' ne sahip olduktan sonra, aşağıdaki YAML 'yi *VNET-Deploy-aci. YAML* adlı yeni bir dosyaya kopyalayın. Altında `networkProfile` , `id` değerini az önce aldığınız kimlikle değiştirin, ardından dosyayı kaydedin. Bu YAML, sanal ağınızda *appcontaineryaml* adlı bir kapsayıcı grubu oluşturur.
 
 ```YAML
 apiVersion: '2019-12-01'
@@ -204,7 +204,7 @@ Bu özellik şu anda daha önce oluşturduğunuz ağ kaynaklarını silmek için
 Betiği yürütmeden önce, `RES_GROUP` değişkenini, silinmesi gereken sanal ağı ve alt ağı içeren kaynak grubu adı olarak ayarlayın. Daha önce önerilen adı kullanmıyorsanız, sanal ağın adını güncelleştirin `aci-vnet` . Komut dosyası bash kabuğu için biçimlendirilir. PowerShell veya komut Istemi gibi başka bir kabuğu tercih ediyorsanız, değişken atamasını ve erişimcileri buna uygun şekilde ayarlamanız gerekir.
 
 > [!WARNING]
-> Bu betik kaynakları siler! Sanal ağı ve içerdiği tüm alt ağları siler. Bu betiği çalıştırmadan önce, içerdiği tüm alt ağlar da dahil olmak üzere sanal ağdaki kaynakların *hiçbirine* artık ihtiyacınız olmadığından emin olun. **Bu kaynaklar**silindikten sonra kurtarılamaz.
+> Bu betik kaynakları siler! Sanal ağı ve içerdiği tüm alt ağları siler. Bu betiği çalıştırmadan önce, içerdiği tüm alt ağlar da dahil olmak üzere sanal ağdaki kaynakların *hiçbirine* artık ihtiyacınız olmadığından emin olun. **Bu kaynaklar** silindikten sonra kurtarılamaz.
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group

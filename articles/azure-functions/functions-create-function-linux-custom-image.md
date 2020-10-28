@@ -3,14 +3,14 @@ title: Linux üzerinde özel görüntü kullanarak Azure Işlevleri oluşturma
 description: Özel bir Linux görüntüsü üzerinde çalışan Azure İşlevleri oluşturmayı öğrenin.
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
+ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 4de4f52dae236502a087116aa72424641220c628
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 846599414c0bca95a3f41e127dc01e06d0fd43f9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517098"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747095"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
 
@@ -20,7 +20,7 @@ Bu öğreticide, bir Linux temel görüntüsü kullanarak kodunuzu oluşturup Az
 
 [Linux üzerinde barındırılan ilk işlevinizi oluşturma](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)konusunda açıklandığı gibi varsayılan bir Azure App Service kapsayıcısını de kullanabilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Functions Core Tools kullanarak bir işlev uygulaması ve Dockerfile oluşturun.
@@ -112,7 +112,7 @@ Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değe
 
 `Y`Onaylamak için yazın veya ENTER tuşuna basın.
 
-Maven, proje dosyalarını, bu örnekte olduğu gibi, _ArtifactId_adında yeni bir klasörde oluşturur `fabrikam-functions` . 
+Maven, proje dosyalarını, bu örnekte olduğu gibi, _ArtifactId_ adında yeni bir klasörde oluşturur `fabrikam-functions` . 
 ::: zone-end
 `--docker`Seçeneği, `Dockerfile` Azure işlevleri ve seçilen çalışma zamanı ile kullanılmak üzere uygun bir özel kapsayıcıyı tanımlayan proje için bir oluşturur.
 
@@ -128,7 +128,7 @@ cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişken işlevinizin benzersiz adıdır ve `--template` bağımsız değişken işlevin tetikleyicisini belirtir. `func new` Projenin seçtiği dile uygun bir kod dosyası ve * üzerindefunction.js*adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturun.
+Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişken işlevinizin benzersiz adıdır ve `--template` bağımsız değişken işlevin tetikleyicisini belirtir. `func new` Projenin seçtiği dile uygun bir kod dosyası ve *üzerindefunction.js* adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturun.
 
 ```
 func new --name HttpExample --template "HTTP trigger"
@@ -159,7 +159,7 @@ mvn azure-functions:run
 ::: zone-end
 `HttpExample`Uç noktanın çıktıda göründüğünü gördüğünüzde öğesine gidin `http://localhost:7071/api/HttpExample?name=Functions` . Tarayıcı `Functions` , sorgu parametresine sağlanan değeri gösteren bir "Merhaba" iletisi görüntülemelidir `name` .
 
-**Ctrl** - Konağı durdurmak için CTRL**C** 'yi kullanın.
+**Ctrl** - Konağı durdurmak için CTRL **C** 'yi kullanın.
 
 ## <a name="build-the-container-image-and-test-locally"></a>Kapsayıcı görüntüsünü oluşturma ve yerel olarak test etme
 
@@ -180,7 +180,7 @@ docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, bir tarayıcı açın `http://localhost:8080` ve aşağıda gösterilen yer tutucu görüntüsünü görüntülemesi gerekir. Bu noktada, işleviniz Azure 'da olduğu gibi yerel kapsayıcıda çalıştığı ve bu, özelliği ile birlikte *function.js* tanımlı bir erişim anahtarı tarafından korunduğu için görüntü bu noktada görünür `"authLevel": "function"` . Kapsayıcı henüz Azure 'da bir işlev uygulamasına yayımlanmadı, bu nedenle anahtar henüz kullanılamıyor. Yerel kapsayıcıya karşı test etmek istiyorsanız Docker 'ı durdurun, yetkilendirme özelliğini olarak değiştirin `"authLevel": "anonymous"` , görüntüyü yeniden derleyin ve Docker 'ı yeniden başlatın. Sonra `"authLevel": "function"` *function.jsüzerinde*sıfırlayın. Daha fazla bilgi için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
+Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, bir tarayıcı açın `http://localhost:8080` ve aşağıda gösterilen yer tutucu görüntüsünü görüntülemesi gerekir. Bu noktada, işleviniz Azure 'da olduğu gibi yerel kapsayıcıda çalıştığı ve bu, özelliği ile birlikte *function.js* tanımlı bir erişim anahtarı tarafından korunduğu için görüntü bu noktada görünür `"authLevel": "function"` . Kapsayıcı henüz Azure 'da bir işlev uygulamasına yayımlanmadı, bu nedenle anahtar henüz kullanılamıyor. Yerel kapsayıcıya karşı test etmek istiyorsanız Docker 'ı durdurun, yetkilendirme özelliğini olarak değiştirin `"authLevel": "anonymous"` , görüntüyü yeniden derleyin ve Docker 'ı yeniden başlatın. Sonra `"authLevel": "function"` *function.jsüzerinde* sıfırlayın. Daha fazla bilgi için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
 ![Kapsayıcının yerel olarak çalıştığını gösteren yer tutucu resim](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -189,7 +189,7 @@ Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, bir tarayıcı 
 Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, `http://localhost:8080/api/HttpExample?name=Functions` daha önce olduğu gibi aynı "Merhaba" iletisini görüntülemesi gereken öğesine gidin. Maven arşiv ETYPE, anonim yetkilendirme kullanan bir HTTP ile tetiklenen bir işlev oluşturduğundan, kapsayıcıda çalışıyor olsa bile işlevi çağırabilirsiniz. 
 ::: zone-end  
 
-Kapsayıcıda işlev uygulamasını doğruladıktan sonra, **CTRL**C ile Docker 'ı durdurun + **C**.
+Kapsayıcıda işlev uygulamasını doğruladıktan sonra, **CTRL** C ile Docker 'ı durdurun + **C** .
 
 ## <a name="push-the-image-to-docker-hub"></a>Görüntüyü Docker Hub 'a gönderme
 
@@ -302,16 +302,16 @@ Azure 'da işlev uygulamasına dağıtılan görüntü ile, artık işlevi HTTP 
 
     # <a name="portal"></a>[Portal](#tab/portal)
 
-    1. Azure portal oturum açın, **işlev uygulaması**arayıp seçin.
+    1. Azure portal oturum açın, **işlev uygulaması** arayıp seçin.
 
     1. Doğrulamak istediğiniz işlevi seçin.
 
-    1. Sol gezinti panelinde **işlevler**' i seçin ve ardından doğrulamak istediğiniz işlevi seçin.
+    1. Sol gezinti panelinde **işlevler** ' i seçin ve ardından doğrulamak istediğiniz işlevi seçin.
 
         ![Azure portal işlevinizi seçin](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
 
     
-    1. **Işlev URL 'Sini al**' ı seçin.
+    1. **Işlev URL 'Sini al** ' ı seçin.
 
         ![Azure portal işlev URL 'sini alın](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
@@ -375,7 +375,7 @@ Kayıt defterinde görüntüyü güncelleştirdiğinizde bir görüntü dağıt�
 
 1. Dağıtım Web kancası URL 'sini panoya kopyalayın.
 
-1. [Docker Hub 'ını](https://hub.docker.com/)açın, oturum açın ve gezinti çubuğunda **depolar** ' ı seçin. Görüntü bulun ve seçin, **Web kancaları** sekmesini seçin, **Web kancası adı**belirtin, URL 'nizi **Web kancası URL 'sine**yapıştırın ve sonra **Oluştur**' u seçin:
+1. [Docker Hub 'ını](https://hub.docker.com/)açın, oturum açın ve gezinti çubuğunda **depolar** ' ı seçin. Görüntü bulun ve seçin, **Web kancaları** sekmesini seçin, **Web kancası adı** belirtin, URL 'nizi **Web kancası URL 'sine** yapıştırın ve sonra **Oluştur** ' u seçin:
 
     ![Web kancasını DockerHub depoya ekleme](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
@@ -441,7 +441,7 @@ SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. SSH et
 
 ## <a name="write-to-an-azure-storage-queue"></a>Azure depolama kuyruğuna yazma
 
-Azure Işlevleri, kendi tümleştirme kodunuzu yazmak zorunda kalmadan işlevlerinizi diğer Azure hizmetleri ve kaynaklarına bağlamanıza olanak tanır. Hem giriş hem de çıktıyı temsil eden bu *bağlamalar*, işlev tanımı içinde bildirilmiştir. Bağlamalardan alınan veriler işleve parametre olarak sağlanır. *Tetikleyici* özel bir giriş bağlama türüdür. Bir işlevde yalnızca bir tetikleyici olsa da, birden çok giriş ve çıkış bağlaması olabilir. Daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
+Azure Işlevleri, kendi tümleştirme kodunuzu yazmak zorunda kalmadan işlevlerinizi diğer Azure hizmetleri ve kaynaklarına bağlamanıza olanak tanır. Hem giriş hem de çıktıyı temsil eden bu *bağlamalar* , işlev tanımı içinde bildirilmiştir. Bağlamalardan alınan veriler işleve parametre olarak sağlanır. *Tetikleyici* özel bir giriş bağlama türüdür. Bir işlevde yalnızca bir tetikleyici olsa da, birden çok giriş ve çıkış bağlaması olabilir. Daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
 
 Bu bölümde, işlevinizi bir Azure depolama kuyruğu ile tümleştirme işlemi gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, verileri bir HTTP isteğinden kuyruktaki bir iletiye yazar.
 

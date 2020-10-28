@@ -7,13 +7,13 @@ ms.subservice: security
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: cf7e596c8ed057a3244ed2b12de59d02c4ba2cae
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: baa6e10d33d1c0a1a9c367baa8888fdfb5a47c01
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977944"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746228"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM'lerinde Azure Disk Şifrelemesi senaryoları
 
@@ -123,7 +123,7 @@ Azure 'da çalışan bir IaaS sanal makinesinde şifrelemeyi etkinleştirmek iç
 [Çalışan bir WINDOWS VM 'yi şifrelemek için Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)kullanarak Azure 'da var olan veya çalışan IaaS Windows VM 'lerinde disk şifrelemeyi etkinleştirebilirsiniz.
 
 
-1. Azure hızlı başlangıç şablonunda **Azure 'A dağıt**' a tıklayın.
+1. Azure hızlı başlangıç şablonunda **Azure 'A dağıt** ' a tıklayın.
 
 2. Abonelik, kaynak grubu, konum, ayarlar, yasal koşullar ve Sözleşme ' yi seçin. Mevcut veya çalışan IaaS VM üzerinde şifrelemeyi etkinleştirmek için **satın al** ' a tıklayın.
 
@@ -135,7 +135,7 @@ Aşağıdaki tabloda mevcut veya çalışan VM 'Ler için Kaynak Yöneticisi şa
 | keyVaultName | BitLocker anahtarının yüklenmesi gereken anahtar kasasının adı. Bunu, cmdlet 'ini `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` veya Azure CLI komutunu kullanarak edinebilirsiniz `az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | Anahtar kasasını içeren kaynak grubunun adı|
 |  keyEncryptionKeyURL 'Si | Anahtar şifreleme anahtarının https:// &lt; keykasaadı &gt; . Vault.Azure.net/Key/ &lt; anahtar-adı biçimindeki URL 'si &gt; . Bir KEK kullanmak istemiyorsanız, bu alanı boş bırakın. |
-| Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Geçerli değerler _Işletim sistemi_, _veri_ve _hepsi_. 
+| Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Geçerli değerler _Işletim sistemi_ , _veri_ ve _hepsi_ . 
 | forceUpdateTag | İşlemin zorla çalışması gereken her seferinde GUID gibi benzersiz bir değer geçirin. |
 | resizeOSDisk | Sistem birimini bölmeden önce IŞLETIM sistemi bölümünün tam işletim sistemi VHD 'SI kaplamaya yeniden boyutlandırılması gerekir. |
 | location | Tüm kaynakların konumu. |
