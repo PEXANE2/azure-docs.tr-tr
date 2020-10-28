@@ -10,12 +10,12 @@ ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3f2fa6cffd63811df596c8fca80afdc888a0eea9
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091619"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783887"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage bağlantı dizelerini yapılandırma
 
@@ -35,7 +35,7 @@ Azure depolama 'ya yapılan istekleri yetkilendirmek için uygulamanızın çal�
 
 * Bağlantı dizenizi bir ortam değişkeninde saklayabilirsiniz.
 * Masaüstünde veya cihazda çalışan bir uygulama, bağlantı dizesini bir **app.config** veya **web.config** dosyasında saklayabilir. Bağlantı dizesini bu dosyalardaki **appSettings** bölümüne ekleyin.
-* Azure bulut hizmetinde çalışan bir uygulama, bağlantı dizesini [Azure hizmet yapılandırma şeması (. cscfg) dosyasında](https://msdn.microsoft.com/library/ee758710.aspx)saklayabilir. Bağlantı dizesini hizmet yapılandırma dosyasının **ConfigurationSettings** bölümüne ekleyin.
+* Azure bulut hizmetinde çalışan bir uygulama, bağlantı dizesini [Azure hizmet yapılandırma şeması (. cscfg) dosyasında](/previous-versions/azure/reference/ee758710(v=azure.100))saklayabilir. Bağlantı dizesini hizmet yapılandırma dosyasının **ConfigurationSettings** bölümüne ekleyin.
 
 Bağlantı dizenizi bir yapılandırma dosyasında depolamak, bağlantı dizesinin [Azurite depolama öykünücüsü](../common/storage-use-azurite.md) ve buluttaki bir Azure depolama hesabı arasında geçiş yapmak için güncelleştirilmesini kolaylaştırır. Yalnızca hedef ortamınıza işaret etmek için bağlantı dizesini düzenlemeniz gerekir.
 
@@ -57,10 +57,10 @@ Azure depolama hesabınız için bir bağlantı dizesi oluşturmak için aşağ�
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-Azure Storage bir bağlantı dizesinde hem HTTP hem de HTTPS destekler, ancak *https kesinlikle önerilir*.
+Azure Storage bir bağlantı dizesinde hem HTTP hem de HTTPS destekler, ancak *https kesinlikle önerilir* .
 
 > [!TIP]
-> Depolama hesabınızın bağlantı dizelerini [Azure Portal](https://portal.azure.com)bulabilirsiniz. **SETTINGS**  >  Birincil ve ikincil erişim anahtarlarına yönelik bağlantı dizelerini görmek için, depolama hesabınızın menü dikey penceresindeki ayarlar**erişim anahtarlarına** gidin.
+> Depolama hesabınızın bağlantı dizelerini [Azure Portal](https://portal.azure.com)bulabilirsiniz. **SETTINGS**  >  Birincil ve ikincil erişim anahtarlarına yönelik bağlantı dizelerini görmek için, depolama hesabınızın menü dikey penceresindeki ayarlar **erişim anahtarlarına** gidin.
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Paylaşılan erişim imzasını kullanarak bağlantı dizesi oluşturma

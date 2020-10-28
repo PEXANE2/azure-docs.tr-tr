@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: ee1b4da6f02623346d078b9812c99e5093dc2691
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76b4408b2f8c631453281ecf6f214d49318252a3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408224"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785060"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service zaman aralıklı giden bağlantı hatalarıyla ilgili sorunları giderme
 
-Bu makale, [Azure App Service](./overview.md)aralıklı bağlantı hatalarını ve ilgili performans sorunlarını gidermenize yardımcı olur. Bu konu, kaynak adresi ağ çevirisi (SNAT) bağlantı noktalarının tükenmesi ve sorun giderme yöntemleri hakkında daha fazla bilgi sağlayacaktır. Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı dosyası. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+Bu makale, [Azure App Service](./overview.md)aralıklı bağlantı hatalarını ve ilgili performans sorunlarını gidermenize yardımcı olur. Bu konu, kaynak adresi ağ çevirisi (SNAT) bağlantı noktalarının tükenmesi ve sorun giderme yöntemleri hakkında daha fazla bilgi sağlayacaktır. Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı dosyası. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al** ' ı seçin.
 
 ## <a name="symptoms"></a>Belirtiler
 
@@ -130,7 +130,7 @@ Uygulamanın nedenini hızlı bir şekilde tespit etmek için yeterince bilginiz
 
 SNAT bağlantı noktası ayırma bilgilerini bulmak için [App Service tanılamayı](./overview-diagnostics.md) kullanabilir ve bir App SERVICE sitesinin SNAT bağlantı noktası ayırma ölçüsünü gözlemleyebilirsiniz. SNAT bağlantı noktası ayırma bilgilerini bulmak için aşağıdaki adımları izleyin:
 
-1. App Service tanılama 'ya erişmek için, App Service Web uygulamanıza veya [Azure portal](https://portal.azure.com/)App Service ortamı gidin. Sol gezinti bölmesinde **Tanıla ve sorunları çöz**' ü seçin.
+1. App Service tanılama 'ya erişmek için, App Service Web uygulamanıza veya [Azure portal](https://portal.azure.com/)App Service ortamı gidin. Sol gezinti bölmesinde **Tanıla ve sorunları çöz** ' ü seçin.
 2. Kullanılabilirlik ve performans kategorisi seçin
 3. Kategori altındaki kullanılabilir kutucuklar listesinden SNAT bağlantı noktası Tükenme Kutucuğu ' nı seçin. Uygulama, bu işlemi 128 altına saklayacağız.
 İhtiyacınız varsa, yine de bir destek bileti açabilirsiniz ve Destek Mühendisi sizin için arka uca olan ölçüyü alır.

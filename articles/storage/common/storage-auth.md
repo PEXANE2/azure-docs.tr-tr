@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 806222fc522c548fd58935812d705e12c9b3cee1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d86f862dcf7973ef3e7c42b069d6734ac95274a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714421"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784106"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Azure depolama 'daki verilere erişimi yetkilendirme
 
@@ -25,7 +25,7 @@ Aşağıdaki tabloda, Azure depolama 'nın kaynaklara erişimi yetkilendirmek i�
 
 | Azure yapıtı | Paylaşılan anahtar (depolama hesabı anahtarı) | Paylaşılan erişim imzası (SAS) | Azure Active Directory (Azure AD) | Şirket içi Active Directory Domain Services (Önizleme) | Anonim genel okuma erişimi |
 | -------------- | -------------------------------- | ----------------------------- | --------------------------------- | ------------------------------------------------------ | ---------------------------- |
-|Azure Blobları     |[Desteklenir](/rest/api/storageservices/authorize-with-shared-key/)         |[Desteklenir](storage-sas-overview.md)         |[Desteklenir](storage-auth-aad.md)         |Desteklenmez|[Desteklenir](../blobs/storage-manage-access-to-resources.md)         |
+|Azure Blobları     |[Desteklenir](/rest/api/storageservices/authorize-with-shared-key/)         |[Desteklenir](storage-sas-overview.md)         |[Desteklenir](storage-auth-aad.md)         |Desteklenmez|[Desteklenir](../blobs/anonymous-read-access-configure.md)         |
 |Azure dosyaları (SMB)     |[Desteklenir](/rest/api/storageservices/authorize-with-shared-key/)         |Desteklenmez         |[Yalnızca AAD etki alanı Hizmetleri ile desteklenir](../files/storage-files-active-directory-overview.md)         |[Desteklenir, kimlik bilgilerinin Azure AD ile eşitlenmesi gerekir](../files/storage-files-active-directory-overview.md)|Desteklenmez         |
 |Azure dosyaları (REST)     |[Desteklenir](/rest/api/storageservices/authorize-with-shared-key/)         |[Desteklenir](storage-sas-overview.md)         |Desteklenmez         |Desteklenmez |Desteklenmez         |
 |Azure Kuyrukları     |[Desteklenir](/rest/api/storageservices/authorize-with-shared-key/)         |[Desteklenir](storage-sas-overview.md)         |[Desteklenir](storage-auth-aad.md)         |Desteklenmiyor | Desteklenmez         |
@@ -41,7 +41,7 @@ Her yetkilendirme seçeneği kısaca aşağıda açıklanmıştır:
 
 - Bloblar, dosyalar, kuyruklar ve tablolar için **paylaşılan anahtar yetkilendirmesi** . Paylaşılan anahtar kullanan bir istemci, depolama hesabı erişim anahtarı kullanılarak imzalanan her isteği içeren bir üst bilgi geçirir. Daha fazla bilgi için bkz. [paylaşılan anahtarla yetkilendirme](/rest/api/storageservices/authorize-with-shared-key/).
 - Bloblar, dosyalar, kuyruklar ve tablolar için **paylaşılan erişim imzaları** . Paylaşılan erişim imzaları (SAS), bir depolama hesabındaki kaynaklara sınırlı temsilci erişimi sağlar. İmzanın geçerli olduğu zaman aralığına veya izin verdiği izinlere yönelik kısıtlamalar, erişimi yönetme konusunda esneklik sağlar. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](storage-sas-overview.md).
-- Kapsayıcılar ve BLOB 'lar için **anonim genel okuma erişimi** . Yetkilendirme gerekli değildir. Daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](../blobs/storage-manage-access-to-resources.md).  
+- Kapsayıcılar ve BLOB 'lar için **anonim genel okuma erişimi** . Yetkilendirme gerekli değildir. Daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](../blobs/anonymous-read-access-configure.md).  
 
 Varsayılan olarak, Azure Storage 'daki tüm kaynaklar güvenli hale getirilir ve yalnızca hesap sahibi tarafından kullanılabilir. İstemcilere Depolama hesabınızdaki kaynaklara erişim izni vermek için yukarıda özetlenen yetkilendirme stratejilerinden birini kullanabilseniz de, Microsoft en yüksek güvenlik ve kullanım kolaylığı için mümkün olduğunda Azure AD 'nin kullanılmasını önerir.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 38e1fc7f062908f8c4a4b9aa903ca09dd7fb9ea5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: fcaf427c2e0ab275a5a6e08306dda785bca690d6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342340"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784176"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Güvenlik Merkezi hazırlığı yol haritası
 Bu belge, Azure Güvenlik Merkezi ile çalışmaya başlamanıza yardımcı olacak bir hazırlık yol haritası sağlar.
@@ -78,7 +78,7 @@ Videolar
 
 Makaleler    
 * [Olay yanıtı için Azure Güvenlik Merkezi’ni kullanma](./tutorial-security-incident.md)
-* [Iş akışı otomasyonu ile yanıtı otomatikleştirin](workflow-automation.md)
+* [Güvenlik Merkezi tetikleyicilerine yanıt vermek için Otomasyonu kullanma](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Gelişmiş bulut savunması
 

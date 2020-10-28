@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 008991a6eda8a2eac9e7a39074c9e0bddb0c51b5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488716"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784108"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Depolama Kaynaklarını C++ dilinde listeleme
 
@@ -59,8 +59,8 @@ Bu nedenle, tüm nesneleri tek bir yanıtta listelemek pratik değildir. Bunun y
 
 Bölümlenmiş bir listeleme işleminin yanıtı şunları içerir:
 
-* liste API 'sine tek bir çağrı için döndürülen sonuç kümesini içeren *_segment*.
-* sonraki sonuçların bir sonraki sayfasına ulaşmak için bir sonraki çağrıya geçirilen *continuation_token*. Döndürülecek daha fazla sonuç olmadığında devamlılık belirteci null olur.
+* liste API 'sine tek bir çağrı için döndürülen sonuç kümesini içeren *_segment* .
+* sonraki sonuçların bir sonraki sayfasına ulaşmak için bir sonraki çağrıya geçirilen *continuation_token* . Döndürülecek daha fazla sonuç olmadığında devamlılık belirteci null olur.
 
 Örneğin, bir kapsayıcıdaki tüm Blobları listelemek için tipik bir çağrı aşağıdaki kod parçacığı gibi görünebilir. Kod, [örneklerimizde](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)mevcuttur:
 
@@ -198,7 +198,7 @@ Azure depolama ve C++ için Istemci kitaplığı hakkında daha fazla bilgi içi
 
 * [C++ ' dan blob depolamayı kullanma](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [C++ ' dan Tablo Depolamayı kullanma](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [C++’tan Kuyruk Depolama kullanma](../storage-c-plus-plus-how-to-use-queues.md)
+* [C++’tan Kuyruk Depolama kullanma](../queues/storage-c-plus-plus-how-to-use-queues.md)
 * [C++ API belgeleri için Azure Storage Istemci kitaplığı.](https://azure.github.io/azure-storage-cpp/)
 * [Azure Depolama Ekibi Blogu](/archive/blogs/windowsazurestorage/)
 * [Azure depolama belgeleri](https://azure.microsoft.com/documentation/services/storage/)

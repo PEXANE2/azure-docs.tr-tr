@@ -13,12 +13,12 @@ ms.author: ronmat
 ms.reviewer: vanto, sstein
 ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: bf228d31180f5c2223fde7433d2d9b335e2b8853
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83b9515e16fcf2c2158586297545206d57e1a6e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284168"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785128"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics için Gelişmiş tehdit koruması
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -35,7 +35,7 @@ Tam araştırma deneyimi için, Azure Depolama hesabınızdaki bir denetim günl
 
 ## <a name="alerts"></a>Uyarılar
 
-Azure SQL veritabanı için Gelişmiş tehdit koruması, veritabanları için olağan dışı ve olası zararlı girişimleri gösteren anormal etkinlikleri algılar. Azure SQL veritabanı için uyarıların bir listesi için bkz. [Azure Güvenlik Merkezi 'NDE SQL veritabanı ve Azure SYNAPSE Analytics (eski ADıYLA SQL veri ambarı) uyarıları](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-sql-db-and-warehouse).
+Azure SQL veritabanı için Gelişmiş tehdit koruması, veritabanları için olağan dışı ve olası zararlı girişimleri gösteren anormal etkinlikleri algılar. Azure SQL veritabanı için uyarıların bir listesi için bkz. [Azure Güvenlik Merkezi 'NDE SQL veritabanı ve Azure SYNAPSE Analytics (eski ADıYLA SQL veri ambarı) uyarıları](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse).
 
 ## <a name="explore-detection-of-a-suspicious-event"></a>Şüpheli bir olayın algılanmasını keşfet
 
@@ -65,5 +65,5 @@ Gelişmiş tehdit koruması, uyarılarını [Azure Güvenlik Merkezi](https://az
 - [Azure SQL yönetilen örneği 'Nde Gelişmiş tehdit koruması](../managed-instance/threat-detection-configure.md)hakkında daha fazla bilgi edinin.
 - [SQL Için Azure Defender](azure-defender-for-sql.md)hakkında daha fazla bilgi edinin.
 - [Azure SQL veritabanı denetimi](../../azure-sql/database/auditing-overview.md) hakkında daha fazla bilgi edinin
-- [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin
-- Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure SQL Veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/sql-database/)  
+- [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md) hakkında daha fazla bilgi edinin
+- Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure SQL Veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/sql-database/)

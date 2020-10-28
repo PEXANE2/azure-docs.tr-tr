@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a16199891c00e2b8133aebebd1eaa6488423896c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 286a4f47d542a500fb49f022f3c647088ebad637
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487900"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784227"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Depolama hesabının çoğaltma yöntemini değiştirme
 
@@ -123,30 +123,30 @@ Microsoft canlı geçiş isteğinizi anında işler ama canlı bir geçişin ne 
 
 [Azure Destek Portalı](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)aracılığıyla dinamik geçiş isteğinde bulunabilir. Portaldan ZRS 'ye dönüştürmek istediğiniz depolama hesabını seçin.
 
-1. **Yeni destek isteği ' ni**seçin.
+1. **Yeni destek isteği ' ni** seçin.
 2. Hesap bilgilerinizi temel alan **temel bilgileri** doldurun: 
-    - **Sorun türü**: **Teknik**' i seçin.
-    - **Hizmet**: **hizmetlerimi** ve **depolama hesabı yönetimi**seçin.
-    - **Kaynak**: ZRS 'ye dönüştürmek istediğiniz kaynağı seçin.
-3. **İleri**’yi seçin.
+    - **Sorun türü** : **Teknik** ' i seçin.
+    - **Hizmet** : **hizmetlerimi** ve **depolama hesabı yönetimi** seçin.
+    - **Kaynak** : ZRS 'ye dönüştürmek istediğiniz kaynağı seçin.
+3. **İleri** ’yi seçin.
 4. **Sorun** bölümünün aşağıdaki değerlerini belirtin:
-    - **Önem derecesi**: varsayılan değeri olduğu gibi bırakın.
-    - **Sorun türü**: **veri geçişini**seçin.
-    - **Kategori**: **ZRS 'ye geçir**' i seçin.
-    - **Başlık**: Örneğin, **ZRS hesabı geçişi**gibi açıklayıcı bir başlık yazın.
-    - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, bölgedeki [LRS, GRS] öğesinden ZRS 'ye geçiş yapmak istiyorum \_ \_ .
-5. **İleri**’yi seçin.
+    - **Önem derecesi** : varsayılan değeri olduğu gibi bırakın.
+    - **Sorun türü** : **veri geçişini** seçin.
+    - **Kategori** : **ZRS 'ye geçir** ' i seçin.
+    - **Başlık** : Örneğin, **ZRS hesabı geçişi** gibi açıklayıcı bir başlık yazın.
+    - **Ayrıntılar** : **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, bölgedeki [LRS, GRS] öğesinden ZRS 'ye geçiş yapmak istiyorum \_ \_ .
+5. **İleri** ’yi seçin.
 6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
-7. **Oluştur**’u seçin.
+7. **Oluştur** ’u seçin.
 
 Bir destek kişisi sizinle iletişim kuracaktır ve ihtiyacınız olan herhangi bir yardımı sağlar.
 
 > [!NOTE]
 > Dinamik geçiş, Premium dosya paylaşımları için şu anda desteklenmiyor. Şu anda yalnızca el ile kopyalama veya taşıma işlemi destekleniyor.
 >
-> GZRS depolama hesapları Şu anda arşiv katmanını desteklemez. Daha fazla ayrıntı için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](/azure/storage/blobs/storage-blob-storage-tiers) .
+> GZRS depolama hesapları Şu anda arşiv katmanını desteklemez. Daha fazla ayrıntı için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../blobs/storage-blob-storage-tiers.md) .
 >
-> Yönetilen diskler yalnızca LRS için kullanılabilir ve ZRS 'ye geçirilemez. Standart HDD 'de standart SSD ile yönetilen diskler için anlık görüntüler ve görüntüler saklayabilir ve [LRS ve ZRS seçenekleri arasından seçim](https://azure.microsoft.com/pricing/details/managed-disks/)yapabilirsiniz. Kullanılabilirlik kümeleriyle tümleştirme hakkında daha fazla bilgi için bkz. [Azure yönetilen disklere giriş](/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
+> Yönetilen diskler yalnızca LRS için kullanılabilir ve ZRS 'ye geçirilemez. Standart HDD 'de standart SSD ile yönetilen diskler için anlık görüntüler ve görüntüler saklayabilir ve [LRS ve ZRS seçenekleri arasından seçim](https://azure.microsoft.com/pricing/details/managed-disks/)yapabilirsiniz. Kullanılabilirlik kümeleriyle tümleştirme hakkında daha fazla bilgi için bkz. [Azure yönetilen disklere giriş](../../virtual-machines/managed-disks-overview.md#integration-with-availability-sets).
 
 ## <a name="switch-from-zrs-classic"></a>ZRS klasik 'den geçiş
 
@@ -165,7 +165,7 @@ ZRS klasik depolama hesabınızı, ZRS 'nin kullanılabildiği bölgelerde Azure
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
-Azure portal ZRS 'ye yükseltmek için hesabın **yapılandırma** ayarlarına gidin ve **Yükselt**' i seçin:
+Azure portal ZRS 'ye yükseltmek için hesabın **yapılandırma** ayarlarına gidin ve **Yükselt** ' i seçin:
 
 ![Portalda ZRS Klasik'i ZRS'ye yükseltme](media/redundancy-migration/portal-zrs-classic-upgrade.png)
 

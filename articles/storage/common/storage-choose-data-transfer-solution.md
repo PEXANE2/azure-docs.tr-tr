@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 08f677c23cce6eb840a1caee15dcddf6c8311517
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 11ea9c759bdb4bb2b837028407ce6e83f6e25a8c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488699"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784057"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Veri aktarımı için bir Azure çözümü seçme
 
@@ -71,14 +71,14 @@ Ayrıca, Azure portal 'de Azure depolama hesabınıza gidebilir ve **veri aktar�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Depolama Gezgini bir giriş alın](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
-- [AzCopy 'e genel bakış konusunu okuyun](/azure/storage/common/storage-use-azcopy-v10).
+- [AzCopy 'e genel bakış konusunu okuyun](./storage-use-azcopy-v10.md).
 - [Hızlı başlangıç: PowerShell ile Blobları karşıya yükleme, indirme ve listeleme](../blobs/storage-quickstart-blobs-powershell.md)
 - [Hızlı başlangıç: Azure CLı ile Bloblar oluşturma, indirme ve listeleme](../blobs/storage-quickstart-blobs-cli.md)
 - Şunları öğrenin:
 
-    - [Çevrimdışı aktarımlar için Azure Data Box, Azure Data Box disk ve Azure Data Box Heavy](/azure/databox/).
-    - [Çevrimiçi aktarımlar için Azure Data Box Gateway ve Azure Stack Edge](/azure/databox-online/).
-- [Azure Data Factory ne olduğunu öğrenin](/azure/data-factory/copy-activity-overview).
+    - [Çevrimdışı aktarımlar için Azure Data Box, Azure Data Box disk ve Azure Data Box Heavy](../../databox/index.yml).
+    - [Çevrimiçi aktarımlar için Azure Data Box Gateway ve Azure Stack Edge](../../databox-online/index.yml).
+- [Azure Data Factory ne olduğunu öğrenin](../../data-factory/copy-activity-overview.md).
 - Veri aktarmak için REST API 'Lerini kullanma
 
     - [.NET 'te](/dotnet/api/overview/azure/storage)

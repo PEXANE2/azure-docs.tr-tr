@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d7bff1bc85e0dec78a69422d126b86f61b7704
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87276933"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783989"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Olağanüstü durum kurtarma ve depolama hesabı yükünü devretme
 
@@ -54,9 +54,9 @@ Uygulamanızı, başlangıçtan itibaren yüksek kullanılabilirlik için tasarl
 Ayrıca, Azure depolama verileriniz için yüksek kullanılabilirlik sağlamak üzere bu en iyi yöntemleri göz önünde bulundurun:
 
 - **Diskler:** Azure sanal makineleriniz tarafından kullanılan VM disklerini yedeklemek için [Azure Backup](https://azure.microsoft.com/services/backup/) kullanın. Ayrıca, bölgesel bir olağanüstü durum durumunda sanal makinelerinizi korumak için [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) kullanmayı göz önünde bulundurun.
-- **Blok Blobları:** Nesne düzeyinde silme ve üzerine yazma işlemlerini korumak için [geçici silme](../blobs/storage-blob-soft-delete.md) özelliğini açın veya [azcopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)veya [Azure veri taşıma kitaplığı](storage-use-data-movement-library.md)'nı kullanarak blok Blobları farklı bir bölgedeki başka bir depolama hesabına kopyalayın.
-- **Dosyalar:** Dosyalarınızı farklı bir bölgedeki başka bir depolama hesabına kopyalamak için [AzCopy](storage-use-azcopy.md) veya [Azure PowerShell](/powershell/module/az.storage/) kullanın.
-- **Tablolar:** farklı bir bölgedeki başka bir depolama hesabına tablo verilerini dışarı aktarmak Için [AzCopy](storage-use-azcopy.md) kullanın.
+- **Blok Blobları:** Nesne düzeyinde silme ve üzerine yazma işlemlerini korumak için [geçici silme](../blobs/soft-delete-blob-overview.md) özelliğini açın veya [azcopy](./storage-use-azcopy-v10.md), [Azure PowerShell](/powershell/module/az.storage/)veya [Azure veri taşıma kitaplığı](storage-use-data-movement-library.md)'nı kullanarak blok Blobları farklı bir bölgedeki başka bir depolama hesabına kopyalayın.
+- **Dosyalar:** Dosyalarınızı farklı bir bölgedeki başka bir depolama hesabına kopyalamak için [AzCopy](./storage-use-azcopy-v10.md) veya [Azure PowerShell](/powershell/module/az.storage/) kullanın.
+- **Tablolar:** farklı bir bölgedeki başka bir depolama hesabına tablo verilerini dışarı aktarmak Için [AzCopy](./storage-use-azcopy-v10.md) kullanın.
 
 ## <a name="track-outages"></a>Kesintileri izleme
 
@@ -132,7 +132,7 @@ Azure depolama kaynak sağlayıcısı yük devretmediğinden, [konum](/dotnet/ap
 
 ### <a name="azure-virtual-machines"></a>Azure sanal makineleri
 
-Azure sanal makineleri (VM 'Ler), hesap yük devretmesi kapsamında yük devreder. Birincil bölge kullanılamaz duruma gelirse ve ikincil bölgeye yük devretmek, yük devretmeden sonra VM 'Leri yeniden oluşturmanız gerekir. Ayrıca, hesap yük devretmesi ile ilişkili potansiyel bir veri kaybı vardır. Microsoft, Azure 'daki sanal makinelere özgü aşağıdaki [yüksek kullanılabilirlik](../../virtual-machines/windows/manage-availability.md) ve [olağanüstü durum kurtarma](../../virtual-machines/windows/backup-recovery.md) kılavuzunu önerir.
+Azure sanal makineleri (VM 'Ler), hesap yük devretmesi kapsamında yük devreder. Birincil bölge kullanılamaz duruma gelirse ve ikincil bölgeye yük devretmek, yük devretmeden sonra VM 'Leri yeniden oluşturmanız gerekir. Ayrıca, hesap yük devretmesi ile ilişkili potansiyel bir veri kaybı vardır. Microsoft, Azure 'daki sanal makinelere özgü aşağıdaki [yüksek kullanılabilirlik](../../virtual-machines/manage-availability.md) ve [olağanüstü durum kurtarma](../../virtual-machines/backup-recovery.md) kılavuzunu önerir.
 
 ### <a name="azure-unmanaged-disks"></a>Azure yönetilmeyen diskler
 
@@ -162,7 +162,7 @@ Hesap yük devretmesi için aşağıdaki özellikler ve hizmetler desteklenmez:
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Yük devretme alternatifi olarak verileri kopyalama
 
-Depolama Hesabınız ikinciye okuma erişimi için yapılandırılmışsa, uygulamanızı ikincil uç noktadan okumak üzere tasarlayabilirsiniz. Birincil bölgedeki bir kesinti olması durumunda yük devredememeyi tercih ediyorsanız, İkincil bölgedeki depolama hesabınızdan verileri etkilenmeyen bir bölgedeki başka bir depolama hesabına kopyalamak için [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)veya [Azure veri taşıma kitaplığı](../common/storage-use-data-movement-library.md) gibi araçları kullanabilirsiniz. Daha sonra hem okuma hem de yazma kullanılabilirliği için uygulamalarınızı bu depolama hesabına işaret edebilirsiniz.
+Depolama Hesabınız ikinciye okuma erişimi için yapılandırılmışsa, uygulamanızı ikincil uç noktadan okumak üzere tasarlayabilirsiniz. Birincil bölgedeki bir kesinti olması durumunda yük devredememeyi tercih ediyorsanız, İkincil bölgedeki depolama hesabınızdan verileri etkilenmeyen bir bölgedeki başka bir depolama hesabına kopyalamak için [AzCopy](./storage-use-azcopy-v10.md), [Azure PowerShell](/powershell/module/az.storage/)veya [Azure veri taşıma kitaplığı](../common/storage-use-data-movement-library.md) gibi araçları kullanabilirsiniz. Daha sonra hem okuma hem de yazma kullanılabilirliği için uygulamalarınızı bu depolama hesabına işaret edebilirsiniz.
 
 > [!CAUTION]
 > Hesap yük devretmesi, veri geçiş stratejinizin bir parçası olarak kullanılmamalıdır.

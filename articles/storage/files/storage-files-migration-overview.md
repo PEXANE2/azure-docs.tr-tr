@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654268"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785621"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure dosya paylaşımlarına geçirme
 
@@ -34,8 +34,8 @@ Herhangi bir geçişte anahtar, dosyalarınızı geçerli depolama konumlarında
 
 Bir dosyanın iki temel bileşeni aşağıda verilmiştir:
 
-- **Veri akışı**: dosya içeriğini depolayan bir dosyanın veri akışı.
-- **Dosya meta verileri**: dosya meta verileri aşağıdaki alt bileşenlere sahiptir:
+- **Veri akışı** : dosya içeriğini depolayan bir dosyanın veri akışı.
+- **Dosya meta verileri** : dosya meta verileri aşağıdaki alt bileşenlere sahiptir:
    * Salt okuma gibi dosya öznitelikleri
    * *NTFS izinleri* veya *dosya ve klasör ACL 'leri* olarak başvurulabilen dosya izinleri
    * Zaman damgaları, en önemlisi oluşturma ve son değiştirilme zaman damgaları
@@ -111,7 +111,7 @@ Microsoft ve diğerleri tarafından kullanılabilen birkaç dosya kopyalama arac
 
     Aracı ilk kez çalıştırdığınızda verilerin toplu bölümünü kopyalar. Bu ilk çalıştırma en son bir kez sürebilir. Bu, genellikle veri kaynağını iş işlemleriniz için çevrimdışı duruma almak istediğinizden daha uzun sürer.
 
-    Kaynağı bir hedefe yansıtarak ( **Robocopy/MIR**'de olduğu gibi), aracı aynı kaynak ve hedefte bir kez daha çalıştırabilirsiniz. Yalnızca önceki çalıştırdıktan sonra gerçekleşen kaynak değişikliklerini taşıması gerektiğinden, çalıştırma çok daha hızlıdır. Kopyalama aracını bu şekilde yeniden çalıştırmak, kapalı kalma süresini önemli ölçüde azaltabilir.
+    Kaynağı bir hedefe yansıtarak ( **Robocopy/MIR** 'de olduğu gibi), aracı aynı kaynak ve hedefte bir kez daha çalıştırabilirsiniz. Yalnızca önceki çalıştırdıktan sonra gerçekleşen kaynak değişikliklerini taşıması gerektiğinden, çalıştırma çok daha hızlıdır. Kopyalama aracını bu şekilde yeniden çalıştırmak, kapalı kalma süresini önemli ölçüde azaltabilir.
 
 Aşağıdaki tabloda, Microsoft araçları ve Azure dosya paylaşımları için geçerli uygunluğu sınıflandırmaktadır:
 
@@ -121,7 +121,7 @@ Aşağıdaki tabloda, Microsoft araçları ve Azure dosya paylaşımları için 
 |![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure Dosya Eşitleme | Azure dosya paylaşımları ile yerel olarak tümleşiktir. | Tam doğruluk. * |
 |![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| Depolama geçiş hizmeti | Dolaylı olarak desteklenir. Azure dosya paylaşımları, SMS hedef sunucularına ağ sürücüleri olarak takılabilir. | Tam doğruluk. * |
 |![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, sürüm 10,4 veya üzeri| Destekleniyor. | Tam doğruluk. * |
-|![Tam olarak önerilmez](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Destekleniyor. | Meta verileri kopyalamaz. [Data Box, Azure dosya eşitleme birlikte kullanılabilir](storage-sync-offline-data-transfer.md). |
+|![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Destekleniyor. | DataBox artık meta verileri tam olarak destekliyor. [Data Box Ayrıca, Azure dosya eşitleme birlikte kullanılabilir](storage-sync-offline-data-transfer.md). |
 |![Tam olarak önerilmez](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Depolama Gezgini, sürüm 1,14 | Destekleniyor. | ACL 'Leri kopyalamaz. Zaman damgalarını destekler.  |
 |![Önerilmez](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Destekleniyor. | Meta verileri kopyalamaz. |
 |||||

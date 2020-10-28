@@ -8,12 +8,12 @@ ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9b9f68737ca714c0661ffb008347149235886c68
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b6be3c0f3b7ff8e44bd9dda089c803a27e883383
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90015033"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783445"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Hızlı başlangıç: Java için Azure kuyruk depolama istemci kitaplığı V12
 
@@ -33,14 +33,14 @@ Ek kaynaklar:
 * [API başvuru belgeleri](/java/api/overview/azure/storage-queue-readme)
 * [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
 * [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [Örnekler](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Örnekler](../common/storage-samples-java.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Java Development Kit (JDK)](/java/azure/jdk/) sürüm 8 veya üstü
 * [Apache Maven](https://maven.apache.org/download.cgi)
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](/azure/storage/common/storage-quickstart-create-account)
+* Azure depolama hesabı- [depolama hesabı oluşturma](../common/storage-account-create.md)
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -48,9 +48,9 @@ Bu bölüm, Java için Azure kuyruk depolama istemci kitaplığı V12 ile çalı
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-Kuyruklar adlı bir Java uygulaması oluşturma *-hızlı başlangıç-V12*.
+Kuyruklar adlı bir Java uygulaması oluşturma *-hızlı başlangıç-V12* .
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), Maven kullanarak *Kuyruklar-hızlı başlangıç-V12*adlı yeni bir konsol uygulaması oluşturun. "Hello World!" oluşturmak için aşağıdaki **MVN** komutunu yazın Java projesi.
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), Maven kullanarak *Kuyruklar-hızlı başlangıç-V12* adlı yeni bir konsol uygulaması oluşturun. "Hello World!" oluşturmak için aşağıdaki **MVN** komutunu yazın Java projesi.
 
    ```console
    mvn archetype:generate -DgroupId=com.queues.quickstart \

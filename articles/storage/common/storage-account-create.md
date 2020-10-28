@@ -10,12 +10,12 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f1cdd04be4b5774944f70e551221a08261aef22d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488903"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784363"
 ---
 # <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -76,7 +76,7 @@ Yok.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -199,7 +199,7 @@ Farklı bir çoğaltma seçeneği ile genel amaçlı v2 depolama hesabı oluştu
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-Bir depolama hesabı oluşturmak üzere bir Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell veya Azure CLı kullanabilirsiniz. Bu nasıl yapılır makalesinde kullanılan şablon [Azure Resource Manager hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Betikleri çalıştırmak için **dene** ' yi seçerek Azure Cloud Shell açın. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin.
+Bir depolama hesabı oluşturmak üzere bir Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell veya Azure CLı kullanabilirsiniz. Bu nasıl yapılır makalesinde kullanılan şablon [Azure Resource Manager hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Betikleri çalıştırmak için **dene** ' yi seçerek Azure Cloud Shell açın. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır** ' ı seçin.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -223,7 +223,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 Bu şablonu değiştirme veya yenilerini oluşturma hakkında bilgi edinmek için bkz.:
 
-- [Azure Resource Manager belgeleri](/azure/azure-resource-manager/).
+- [Azure Resource Manager belgeleri](../../azure-resource-manager/index.yml).
 - [Depolama hesabı şablon başvurusu](/azure/templates/microsoft.storage/allversions).
 - [Ek depolama hesabı şablonu örnekleri](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage).
 
@@ -236,7 +236,7 @@ Bir depolama hesabını silmek, hesaptaki tüm veriler de dahil olmak üzere tü
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com)depolama hesabına gidin.
-1. **Sil**'e tıklayın.
+1. **Sil** 'e tıklayın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -279,7 +279,7 @@ Alternatif olarak, depolama hesabını ve bu kaynak grubundaki diğer kaynaklar�
 > [!WARNING]
 > Silinen depolama hesabını geri yüklemek veya silme işlemi öncesinde içinde yer alan içerikleri almak mümkün değildir. Hesabı silmeden önce kaydetmek istediğiniz şeyleri yedeklediğinizden emin olun. Bu ayrıca hesaptaki tüm kaynaklar için geçerlidir; bir blob, tablo, kuyruk veya dosya sildiğinizde bu işlem kalıcı olarak gerçekleştirilir.
 >
-> Bir Azure sanal makinesiyle ilişkili bir depolama hesabını silmeye çalışırsanız, depolama hesabının kullanımda olduğu hakkında bir hata alabilirsiniz. Bu hatayla ilgili sorun giderme konusunda yardım için bkz. [depolama hesaplarını silerken hata giderme](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
+> Bir Azure sanal makinesiyle ilişkili bir depolama hesabını silmeye çalışırsanız, depolama hesabının kullanımda olduğu hakkında bir hata alabilirsiniz. Bu hatayla ilgili sorun giderme konusunda yardım için bkz. [depolama hesaplarını silerken hata giderme](../../virtual-machines/troubleshooting/index.yml).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

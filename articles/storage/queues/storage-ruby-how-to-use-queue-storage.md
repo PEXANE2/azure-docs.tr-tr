@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: bb7619500cc142eca52ca0a1a6e0b670e6b8f51a
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7270ea589d82c09081aec5d81d1cd0b50b1b8a9f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425466"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785587"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Ruby’den Kuyruk depolama kullanma
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -22,14 +22,14 @@ ms.locfileid: "92425466"
 
 ## <a name="overview"></a>Genel Bakış
 Bu kılavuzda, Microsoft Azure kuyruğu depolama hizmetini kullanarak yaygın senaryoların nasıl gerçekleştirileceği gösterilmektedir. Örnekler, Ruby Azure API 'SI kullanılarak yazılır.
-Kapsanan senaryolar sıra iletilerini **ekleme**, göz **atma**, **alma**ve **silme** , Ayrıca kuyruk **oluşturma ve silme**içerir.
+Kapsanan senaryolar sıra iletilerini **ekleme** , göz **atma** , **alma** ve **silme** , Ayrıca kuyruk **oluşturma ve silme** içerir.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Ruby uygulaması oluşturma
-Ruby uygulaması oluşturun. Yönergeler için bkz. [Linux üzerinde App Service Ruby uygulaması oluşturma](/azure/app-service/quickstart-ruby).
+Ruby uygulaması oluşturun. Yönergeler için bkz. [Linux üzerinde App Service Ruby uygulaması oluşturma](../../app-service/quickstart-ruby.md).
 
 ## <a name="configure-your-application-to-access-storage"></a>Uygulamanızı depolamaya erişecek şekilde yapılandırma
 Azure Storage 'ı kullanmak için, depolama REST hizmetleriyle iletişim kuran bir dizi kullanışlı kitaplık içeren Ruby Azure paketini indirmeniz ve kullanmanız gerekir.
@@ -46,7 +46,7 @@ require "azure"
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>Azure depolama bağlantısı kurma
-Azure modülü, Azure depolama hesabına bağlanmak için gereken bilgiler için Azure ** \_ depolama \_ hesabı** ve **Azure \_ depolama \_ ACCESS_KEY** ortam değişkenlerini okur. Bu ortam değişkenleri ayarlanmamışsa, aşağıdaki kodla **Azure:: QueueService** ' i kullanmadan önce hesap bilgilerini belirtmeniz gerekir:
+Azure modülü, Azure depolama hesabına bağlanmak için gereken bilgiler için Azure **\_ depolama \_ hesabı** ve **Azure \_ depolama \_ ACCESS_KEY** ortam değişkenlerini okur. Bu ortam değişkenleri ayarlanmamışsa, aşağıdaki kodla **Azure:: QueueService** ' i kullanmadan önce hesap bilgilerini belirtmeniz gerekir:
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
@@ -57,7 +57,7 @@ Bu değerleri Azure portalında bir klasik veya Kaynak Yöneticisi depolama hesa
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 2. Kullanmak istediğiniz depolama hesabına gidin.
-3. Sağdaki Ayarlar dikey penceresinde **Erişim Anahtarları**'na tıklayın.
+3. Sağdaki Ayarlar dikey penceresinde **Erişim Anahtarları** 'na tıklayın.
 4. Açılan Erişim anahtarları dikey penceresinde, 1. ve 2. erişim anahtarını göreceksiniz. Bunlardan birini kullanabilirsiniz. 
 5. Anahtarı panoya kopyalamak için Kopyala simgesine tıklayın. 
 

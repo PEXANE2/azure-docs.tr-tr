@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: de14cf8cc79b4e1387950a2ae048da41738f5db1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d58f89aa87a39d12b2d6f6a3a91254a653a088
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589946"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784669"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Key Vault için HSM korumalı anahtarları içeri aktarma (nCipher)
 
@@ -231,7 +231,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
 ---
 
 
-İndirilen BYOK araç takımının bütünlüğünü doğrulamak için, Azure PowerShell oturumunuzda, [Get-FileHash](https://technet.microsoft.com/library/dn520872.aspx) cmdlet 'ini kullanın.
+İndirilen BYOK araç takımının bütünlüğünü doğrulamak için, Azure PowerShell oturumunuzda, [Get-FileHash](/powershell/module/microsoft.powershell.utility/get-filehash) cmdlet 'ini kullanın.
 
    ```powershell
    Get-FileHash KeyVault-BYOK-Tools-*.zip
@@ -243,7 +243,7 @@ Araç takımı şunları içerir:
 * **BYok-SecurityWorld-pkg-** ile başlayan bir ada sahip bir güvenlik dünyası paketi.
 * Verifykeypackage.py adlı bir Python betiği **.**
 * **KeyTransferRemote.exe** ve Ilişkili dll 'ler adlı bir komut satırı yürütülebilir dosyası.
-* vcredist_x64.exe adlı Visual C++ yeniden dağıtılabilir paket ** .**
+* vcredist_x64.exe adlı Visual C++ yeniden dağıtılabilir paket **.**
 
 Paketi bir USB sürücüye veya başka bir taşınabilir depolama cihazına kopyalayın.
 
@@ -255,7 +255,7 @@ Bu ikinci adımda, bir ağa (Internet veya iç ağınız) bağlı olmayan iş is
 
 NCipher destek yazılımını bir Windows bilgisayara yükleyip bu bilgisayara bir nCipher nShield HSM ekleyin.
 
-NCipher araçlarının yolunuzda (**% nfast_home% \ bin**) olduğundan emin olun. Örneğin, aşağıdakini yazın:
+NCipher araçlarının yolunuzda ( **% nfast_home% \ bin** ) olduğundan emin olun. Örneğin, aşağıdakini yazın:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
@@ -436,7 +436,7 @@ Bu komutu çalıştırdığınızda, aşağıdaki yönergeleri kullanın:
 * **ident** ve **plainname** için *contosokey* değerini bir dize değeriyle değiştirin. Yönetim üst kafalarını en aza indirmek ve hata riskini azaltmak için, her ikisi için de aynı değeri kullanmanızı öneririz. Ida **değeri** yalnızca rakamlar, tireler ve küçük harf karakterler içermelidir.
 * Bu örnekte pubexp (varsayılan) boş bırakılmıştır, ancak belirli bir değer belirtebilirsiniz. Daha fazla bilgi için [nCipher belgelerine bakın.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
 
-Bu komut,% NFAST_KMDATA% \ yerel klasörünüzde, **key_simple_** **başlayan ve ardından** komutta belirtilen bir ad olan bir ada sahip bir simgeleştirilmiş anahtar dosyası oluşturur. Örneğin: **key_simple_contosokey**. Bu dosya şifreli bir anahtar içerir.
+Bu komut,% NFAST_KMDATA% \ yerel klasörünüzde, **key_simple_** **başlayan ve ardından** komutta belirtilen bir ad olan bir ada sahip bir simgeleştirilmiş anahtar dosyası oluşturur. Örneğin: **key_simple_contosokey** . Bu dosya şifreli bir anahtar içerir.
 
 Bu Simgeleştirilmiş Anahtar Dosyasını güvenli bir yere yedekleyin.
 
@@ -668,7 +668,7 @@ Bu komutu çalıştırdığınızda, aşağıdaki yönergeleri kullanın:
 * *SubscriptionID* değerini, anahtar kasanızı içeren Azure aboneliğinin kimliğiyle değiştirin. Bu değeri daha önce elde edersiniz **: adım 1,2:** [Internet 'e bağlı Iş istasyonunuzu hazırlama](#step-1-prepare-your-internet-connected-workstation) ADıMıNDAN Azure abonelik Kimliğinizi alın.
 * *ContosoFirstHSMKey* değerini çıkış dosyası adınız için kullanılan bir etiketle değiştirin.
 
-Bu başarıyla tamamlandığında, **Sonuç: başarılı** ' i görüntüler ve geçerli klasörde şu ada sahip yeni bir dosya vardır: KeyTransferPackage-*ContosoFirstHSMkey*. bYok
+Bu başarıyla tamamlandığında, **Sonuç: başarılı** ' i görüntüler ve geçerli klasörde şu ada sahip yeni bir dosya vardır: KeyTransferPackage- *ContosoFirstHSMkey* . bYok
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Adım 4,3: anahtar aktarım paketinizi Internet 'e bağlı iş istasyonuna kopyalama
 

@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 33249da6772d146de3e5e7351bc82c203674ddff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba4ef77dee8eb3cad753aca54a77aeedd166f142
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532146"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784567"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM korumalı anahtarları Key Vault’a içeri aktarma
 
@@ -43,4 +43,4 @@ HSM korumalı anahtarların Key Vault aktarmak, kullandığınız HSMs 'ye bağl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Anahtarlarınız için güvenlik, dayanıklılık ve izleme sağlamak üzere [en iyi Key Vault uygulamaları](../general/best-practices.md) izleyin.
-* Yeni BYOK yönteminin tamamen açıklaması için [bYok belirtimine](https://docs.microsoft.com/azure/key-vault/keys/byok-specification) başvurun
+* Yeni BYOK yönteminin tamamen açıklaması için [bYok belirtimine](./byok-specification.md) başvurun

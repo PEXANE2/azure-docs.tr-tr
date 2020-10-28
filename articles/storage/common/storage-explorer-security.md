@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: b403a960016be3795857ddd5645eb73e53e83bd6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 283ec9999f9b4362035b6770383984efb0879d49
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488614"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783768"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Depolama Gezgini Güvenlik Kılavuzu
 
@@ -44,13 +44,13 @@ Bu bölümde, depolama kaynaklarınızın güvenliğini sağlamak için kullanı
 
 #### <a name="azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC)
 
-Azure [rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/overview) , Azure kaynaklarınız üzerinde ayrıntılı erişim denetimi sağlar. Azure rolleri ve izinleri Azure portal yönetilebilir.
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure kaynaklarınız üzerinde ayrıntılı erişim denetimi sağlar. Azure rolleri ve izinleri Azure portal yönetilebilir.
 
 Depolama Gezgini, depolama hesaplarına, bloblara ve kuyruklara Azure RBAC erişimini destekler. Dosya paylaşımlarına veya tablolara erişmeniz gerekiyorsa, depolama hesabı anahtarlarını listeleme izni veren Azure rolleri atamanız gerekir.
 
 #### <a name="access-control-lists-acls"></a>Erişim denetim listeleri (ACL’ler)
 
-[Erişim denetim listeleri (ACL 'ler)](/azure/storage/blobs/data-lake-storage-access-control) ADLS 2. blob kapsayıcılarında dosya ve klasör düzeyinde erişimi denetlemenize olanak tanır. Depolama Gezgini kullanarak ACL 'Leri yönetebilirsiniz.
+[Erişim denetim listeleri (ACL 'ler)](../blobs/data-lake-storage-access-control.md) ADLS 2. blob kapsayıcılarında dosya ve klasör düzeyinde erişimi denetlemenize olanak tanır. Depolama Gezgini kullanarak ACL 'Leri yönetebilirsiniz.
 
 ### <a name="shared-access-signatures-sas"></a>Paylaşılan erişim imzaları (SAS)
 
@@ -81,7 +81,7 @@ Depolama hesabı anahtarları, depolama hesabındaki hizmetlere ve kaynaklara s�
 
 Bazı Azure rolleri, depolama hesabı anahtarlarını alma izni verir. Bu rollere sahip kişiler, Azure RBAC tarafından verilen veya reddedilen izinleri etkili bir şekilde atlayabilirler. Gerekli olmadığı takdirde bu izni vermemenizi öneririz.
 
-Depolama Gezgini isteklerin kimliğini doğrulamak için, varsa depolama hesabı anahtarlarını kullanmaya çalışacaktır. Ayarlar ' da bu özelliği devre dışı bırakabilirsiniz (**hizmetler > depolama hesapları > anahtarların kullanımını devre dışı bırakın**). Bazı özellikler, klasik depolama hesaplarıyla çalışma gibi Azure RBAC 'yi desteklemez. Bu tür özellikler hala anahtar gerektirir ve bu ayardan etkilenmez.
+Depolama Gezgini isteklerin kimliğini doğrulamak için, varsa depolama hesabı anahtarlarını kullanmaya çalışacaktır. Ayarlar ' da bu özelliği devre dışı bırakabilirsiniz ( **hizmetler > depolama hesapları > anahtarların kullanımını devre dışı bırakın** ). Bazı özellikler, klasik depolama hesaplarıyla çalışma gibi Azure RBAC 'yi desteklemez. Bu tür özellikler hala anahtar gerektirir ve bu ayardan etkilenmez.
 
 Depolama kaynaklarınıza erişmek için anahtarları kullanmanız gerekiyorsa aşağıdaki yönergeleri öneririz:
 
@@ -102,4 +102,4 @@ Bir blob kapsayıcısı için genel erişimi etkinleştirirken aşağıdaki yön
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Güvenlik önerileri](/azure/storage/blobs/security-recommendations)
+- [Güvenlik önerileri](../blobs/security-recommendations.md)

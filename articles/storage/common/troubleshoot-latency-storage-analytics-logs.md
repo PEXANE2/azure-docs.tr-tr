@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 6c29fd00a19c930995d748027b2ec04eaa12a5ec
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5f04a20b347e2672d9699551885f5dd16ceaa99c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480658"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785604"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Depolama Analizi günlüklerini kullanarak gecikme sorunlarını giderme
 
@@ -27,7 +27,7 @@ Aşağıdaki adımlarda, Azure Storage analitik günlüklerini kullanarak gecikm
 
 ## <a name="recommended-steps"></a>Önerilen adımlar
 
-1. [Depolama Analizi günlüklerini](/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data)indirin.
+1. [Depolama Analizi günlüklerini](./storage-analytics-logging.md#download-storage-logging-log-data)indirin.
 
 2. Ham biçim günlüklerini tablo biçimine dönüştürmek için aşağıdaki PowerShell betiğini kullanın:
 
@@ -99,10 +99,10 @@ Aşağıdaki adımlarda, Azure Storage analitik günlüklerini kullanarak gecikm
 
    | Blob türü |RequestStatus =<br>Başarılı|RequestStatus =<br>'LARıNıN NetworkError|Öneri|
    |---|---|---|---|
-   |GetBlob|Yes|Hayır|[**GetBlob işlemi:** RequestStatus = başarılı](#getblob-operation-requeststatus--success)|
-   |GetBlob|Hayır|Yes|[**GetBlob işlemi:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob|Yes|Hayır|[**PUT işlemi:** RequestStatus = başarılı](#put-operation-requeststatus--success)|
-   |PutBlob|Hayır|Yes|[**PUT işlemi:** RequestStatus = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|Evet|Hayır|[**GetBlob işlemi:** RequestStatus = başarılı](#getblob-operation-requeststatus--success)|
+   |GetBlob|Hayır|Evet|[**GetBlob işlemi:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|Evet|Hayır|[**PUT işlemi:** RequestStatus = başarılı](#put-operation-requeststatus--success)|
+   |PutBlob|Hayır|Evet|[**PUT işlemi:** RequestStatus = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>Durum sonuçları
 
@@ -114,7 +114,7 @@ Aşağıdaki adımlarda, Azure Storage analitik günlüklerini kullanarak gecikm
 * Server-Latency
 * Client-Latency
 
-**RequestStatus = Success**Ile bir **GetBlob Işleminde** , **Istemci gecikmesi**için **en uzun süre** harcanması durumunda bu, Azure depolama 'nın istemciye veri yazma sırasında büyük bir süre harcadığını gösterir. Bu gecikme Client-Side bir sorunu gösterir.
+**RequestStatus = Success** Ile bir **GetBlob Işleminde** , **Istemci gecikmesi** için **en uzun süre** harcanması durumunda bu, Azure depolama 'nın istemciye veri yazma sırasında büyük bir süre harcadığını gösterir. Bu gecikme Client-Side bir sorunu gösterir.
 
 **Önerilen**
 
@@ -129,7 +129,7 @@ Aşağıdaki adımlarda, Azure Storage analitik günlüklerini kullanarak gecikm
 * Server-Latency
 * Client-Latency
 
-**RequestStatus = (SAS) NetworkError**Ile bir **GetBlob Işleminde** , **Istemci gecikmesi**için **en uzun süre** harcaniyorsa en yaygın sorun, depolama hizmetindeki zaman aşımı süresi dolmadan önce istemcinin bağlantısının kesilmesi durumundadır.
+**RequestStatus = (SAS) NetworkError** Ile bir **GetBlob Işleminde** , **Istemci gecikmesi** için **en uzun süre** harcaniyorsa en yaygın sorun, depolama hizmetindeki zaman aşımı süresi dolmadan önce istemcinin bağlantısının kesilmesi durumundadır.
 
 **Önerilen**
 
@@ -144,7 +144,7 @@ Aşağıdaki adımlarda, Azure Storage analitik günlüklerini kullanarak gecikm
 * Server-Latency
 * Client-Latency
 
-**RequestStatus = Success**Ile bir **PUT Işleminde** , **Istemci gecikmesi**için **en uzun süre** harcanması durumunda bu, istemcinin Azure depolama 'ya veri göndermek için daha fazla zaman aldığını gösterir. Bu gecikme Client-Side bir sorunu gösterir.
+**RequestStatus = Success** Ile bir **PUT Işleminde** , **Istemci gecikmesi** için **en uzun süre** harcanması durumunda bu, istemcinin Azure depolama 'ya veri göndermek için daha fazla zaman aldığını gösterir. Bu gecikme Client-Side bir sorunu gösterir.
 
 **Önerilen**
 
@@ -159,10 +159,9 @@ Aşağıdaki adımlarda, Azure Storage analitik günlüklerini kullanarak gecikm
 * Server-Latency
 * Client-Latency
 
-**Istek durumu = (SAS) NetworkError**Ile bir **PutBlob Işleminde** , **Istemci gecikmesi**için **en uzun süre** harcaniyorsa, en sık karşılaşılan sorun, depolama hizmetindeki zaman aşımı süresi dolmadan önce istemcinin bağlantısının kesilmesi durumundadır.
+**Istek durumu = (SAS) NetworkError** Ile bir **PutBlob Işleminde** , **Istemci gecikmesi** için **en uzun süre** harcaniyorsa, en sık karşılaşılan sorun, depolama hizmetindeki zaman aşımı süresi dolmadan önce istemcinin bağlantısının kesilmesi durumundadır.
 
 **Önerilen**
 
 * İstemcinin depolama hizmetinden ne zaman ve ne zaman bağlantısını kesmediğini anlamak için, istemcinizdeki kodu araştırın.
 * İstemciden gelen ağ bağlantısı sorunlarını araştırmak için Wireshark, Microsoft Ileti Çözümleyicisi veya Tcping kullanın.
-

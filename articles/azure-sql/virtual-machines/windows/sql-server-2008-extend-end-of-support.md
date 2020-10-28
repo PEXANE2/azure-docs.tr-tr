@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 48288ed3765fa939fc56a4469f64070315c4c6aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbfc4619e8af86a89b82f32ff3bc9a39c92b355a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84668755"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784873"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure ile SQL Server 2008 ve SQL Server 2008 R2 desteğini genişletme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +40,7 @@ SQL Server 2008 ' de olan müşterilerin, SQL Server 2008 R2 'ye kendi kendine y
 Azure Marketi aracılığıyla dağıtılan görüntüler SQL IaaS uzantısı önceden yüklenmiş olarak gelir. SQL IaaS uzantısı, esnek lisanslama ve otomatik düzeltme eki uygulama gereksinimidir. Otomatik olarak yüklenen VM 'Leri dağıtan müşterilerin SQL IaaS uzantısını el ile yüklemesi gerekir. SQL IaaS uzantısı Windows Server 2008 ' de desteklenmez.
 
 > [!NOTE]
-> Dikey pencere **oluşturma** ve **yönetme** SQL Server, Azure Portal SQL Server 2008 R2 görüntüsüyle çalışacak olsa da, aşağıdaki özellikler _desteklenmez_: otomatik yedeklemeler, Azure Key Vault tümleştirme, R Hizmetleri ve depolama yapılandırması.
+> Dikey pencere **oluşturma** ve **yönetme** SQL Server, Azure Portal SQL Server 2008 R2 görüntüsüyle çalışacak olsa da, aşağıdaki özellikler _desteklenmez_ : otomatik yedeklemeler, Azure Key Vault tümleştirme, R Hizmetleri ve depolama yapılandırması.
 
 ## <a name="licensing"></a>Lisanslama
 Kullandıkça Öde SQL Server 2008 R2 dağıtımları [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)'e dönüştürülebilir.
@@ -54,21 +54,21 @@ El ile yedekleme/geri yükleme yöntemleriyle EOS SQL Server örneklerini bir Az
 
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
 
-Toplu geçişler için [Azure Site Recovery](/azure/site-recovery/site-recovery-overview) hizmetini öneririz. Azure Site Recovery, müşteriler şirket içinden Azure VM 'ye SQL Server dahil olmak üzere tüm VM 'leri çoğaltabilirler.
+Toplu geçişler için [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) hizmetini öneririz. Azure Site Recovery, müşteriler şirket içinden Azure VM 'ye SQL Server dahil olmak üzere tüm VM 'leri çoğaltabilirler.
 
 SQL Server, kurtarmayı güvence altına almak için uygulamayla tutarlı Azure Site Recovery anlık görüntüler gerektirir. Azure Site Recovery, en az 1 saatlik aralığa sahip uygulamayla tutarlı anlık görüntüleri destekler. Azure Site Recovery geçişleri olan SQL Server için mümkün olan en düşük kurtarma noktası hedefi (RPO) 1 saattir. Kurtarma süresi hedefi (RTO) 2 saat ve kurtarma zamanı SQL Server.
 
 ### <a name="database-migration-service"></a>Veritabanı Geçiş Hizmeti
 
-[Azure veritabanı geçiş hizmeti](/azure/dms/dms-overview) , SQL Server 2012 sürümüne veya sonrasına yükselterek şirket Içinden BIR Azure VM 'ye geçiş yapıyorsanız müşteriler için bir seçenektir.
+[Azure veritabanı geçiş hizmeti](../../../dms/dms-overview.md) , SQL Server 2012 sürümüne veya sonrasına yükselterek şirket Içinden BIR Azure VM 'ye geçiş yapıyorsanız müşteriler için bir seçenektir.
 
 ## <a name="disaster-recovery"></a>Olağanüstü durum kurtarma
 
 Azure VM 'de EOS SQL Server için olağanüstü durum kurtarma çözümleri şunlardır:
 
-- **Yedeklemeleri SQL Server**: Azure Backup kullanarak eos SQL Server 2008 ve 2008 R2 'yi fidye, yanlışlıkla silme, 15 dakikalık RPO ve zaman içinde kurtarma ile bozulmaya karşı korumaya yardımcı olmak için kullanın. Daha ayrıntılı bilgi için [Bu makaleye](https://docs.microsoft.com/azure/backup/sql-support-matrix#scenario-support)bakın.
-- **Günlük aktarma**: RTO 'ı azaltmak için sürekli geri yüklemeler içeren başka bir bölgede veya Azure bölgesinde bir günlük aktarma çoğaltması oluşturabilirsiniz. Günlük dağıtımını el ile yapılandırmanız gerekir.
-- **Azure Site Recovery**: sanal makinenizin Azure Site Recovery çoğaltma aracılığıyla bölgeler ve bölgeler arasında çoğaltılmasını sağlayabilirsiniz. SQL Server, olağanüstü bir durum oluşması durumunda kurtarma sağlamak için uygulamayla tutarlı anlık görüntüler gerektirir. Azure Site Recovery, EOS SQL Server olağanüstü durum kurtarma için en az 1 saatlik RPO ve 2 saat (artı SQL Server kurtarma süresi) sağlar.
+- **Yedeklemeleri SQL Server** : Azure Backup kullanarak eos SQL Server 2008 ve 2008 R2 'yi fidye, yanlışlıkla silme, 15 dakikalık RPO ve zaman içinde kurtarma ile bozulmaya karşı korumaya yardımcı olmak için kullanın. Daha ayrıntılı bilgi için [Bu makaleye](../../../backup/sql-support-matrix.md#scenario-support)bakın.
+- **Günlük aktarma** : RTO 'ı azaltmak için sürekli geri yüklemeler içeren başka bir bölgede veya Azure bölgesinde bir günlük aktarma çoğaltması oluşturabilirsiniz. Günlük dağıtımını el ile yapılandırmanız gerekir.
+- **Azure Site Recovery** : sanal makinenizin Azure Site Recovery çoğaltma aracılığıyla bölgeler ve bölgeler arasında çoğaltılmasını sağlayabilirsiniz. SQL Server, olağanüstü bir durum oluşması durumunda kurtarma sağlamak için uygulamayla tutarlı anlık görüntüler gerektirir. Azure Site Recovery, EOS SQL Server olağanüstü durum kurtarma için en az 1 saatlik RPO ve 2 saat (artı SQL Server kurtarma süresi) sağlar.
 
 ## <a name="security-patching"></a>Güvenlik Düzeltme eki uygulama
 SQL Server VM 'Ler için genişletilmiş güvenlik güncelleştirmeleri, SQL Server VM SQL VM [kaynak sağlayıcısına](sql-vm-resource-provider-register.md)kaydedildikten sonra Microsoft Update kanalları aracılığıyla dağıtılır. Düzeltme ekleri el ile veya otomatik olarak indirilebilir.

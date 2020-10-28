@@ -9,23 +9,23 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: a21d0db383e8c563f0b187061a95ac818dd2a4f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 803dc4d1a7b78df891780eb741cba4e57ab2d5dc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998069"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784431"
 ---
 # <a name="managed-hsm-access-control"></a>Yönetilen HSM erişim denetimi
 
 > [!NOTE]
-> Key Vault kaynak sağlayıcısı iki kaynak türünü destekler: **kasa** ve **yönetilen HSM**'ler. Bu makalede açıklanan erişim denetimi yalnızca **yönetilen HSM**'ler için geçerlidir. Yönetilen HSM için erişim denetimi hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama](../general/rbac-guide.md).
+> Key Vault kaynak sağlayıcısı iki kaynak türünü destekler: **kasa** ve **yönetilen HSM** 'ler. Bu makalede açıklanan erişim denetimi yalnızca **yönetilen HSM** 'ler için geçerlidir. Yönetilen HSM için erişim denetimi hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama](../general/rbac-guide.md).
 
 Azure Key Vault yönetilen HSM, şifreleme anahtarlarını koruyan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamalara ve kullanıcılara erişmesine izin vererek yönetilen HSM 'lerinizdeki erişimi güvenli hale getirmeniz gerekir. Bu makalede, yönetilen HSM erişim denetimi modeline bir genel bakış sunulmaktadır. Kimlik doğrulama ve yetkilendirmeyi açıklar ve yönetilen HSM 'lerinizde erişimin güvenliğini nasıl sağlayabileceğinizi açıklar.
 
 ## <a name="access-control-model"></a>Erişim denetimi modeli
 
-Yönetilen bir HSM 'ye erişim iki arabirim aracılığıyla denetlenir: **Yönetim düzlemi** ve **veri düzlemi**. Yönetim düzlemi, HSM 'yi yönettiğiniz yerdir. Bu düzlemdeki işlemler, yönetilen HSM 'leri oluşturma ve silmeyi ve yönetilen HSM özelliklerini almayı içerir. Veri düzlemi, HSM ile desteklenen şifreleme anahtarları olan yönetilen bir HSM 'de depolanan verilerle birlikte çalıştığınız yerdir. Şifreleme işlemleri gerçekleştirmek için anahtarları ekleyebilir, silebilir, değiştirebilir ve kullanabilirsiniz, anahtarlara erişimi denetlemek için rol atamalarını yönetebilir, tam bir HSM yedeklemesi oluşturabilir, tam yedeklemeyi geri yükleyebilir ve veri düzlemi arabiriminden güvenlik etki alanını yönetebilirsiniz.
+Yönetilen bir HSM 'ye erişim iki arabirim aracılığıyla denetlenir: **Yönetim düzlemi** ve **veri düzlemi** . Yönetim düzlemi, HSM 'yi yönettiğiniz yerdir. Bu düzlemdeki işlemler, yönetilen HSM 'leri oluşturma ve silmeyi ve yönetilen HSM özelliklerini almayı içerir. Veri düzlemi, HSM ile desteklenen şifreleme anahtarları olan yönetilen bir HSM 'de depolanan verilerle birlikte çalıştığınız yerdir. Şifreleme işlemleri gerçekleştirmek için anahtarları ekleyebilir, silebilir, değiştirebilir ve kullanabilirsiniz, anahtarlara erişimi denetlemek için rol atamalarını yönetebilir, tam bir HSM yedeklemesi oluşturabilir, tam yedeklemeyi geri yükleyebilir ve veri düzlemi arabiriminden güvenlik etki alanını yönetebilirsiniz.
 
 Her iki düzlemde yönetilen bir HSM 'ye erişmek için, tüm Arayanların uygun kimlik doğrulaması ve yetkilendirmesi olması gerekir. Kimlik doğrulama, arayanın kimliğini belirler. Yetkilendirme, çağıranın hangi işlemleri yürütebileceğini belirler. Bir çağıran, Azure Active Directory-Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik içinde tanımlanan [güvenlik sorumlularından](../../role-based-access-control/overview.md#security-principal) herhangi biri olabilir.
 
@@ -46,7 +46,7 @@ Her iki düzlem için de izin modeli aynı söz dizimini (RBAC) kullanır, ancak
 
 Bir Azure aboneliğinde yönetilen bir HSM oluşturduğunuzda, aboneliğin Azure Active Directory kiracısıyla otomatik olarak ilişkilendirilir. Her iki düzlemdeki tüm çağıranlar bu kiracıya kaydedilmelidir ve yönetilen HSM 'ye erişmek için kimlik doğrulaması yapılmalıdır.
 
-Uygulama, herhangi bir düzlemi çağrılmadan önce Azure Active Directory kimliğini doğrular. Uygulama, uygulama türüne bağlı olarak desteklenen herhangi bir [kimlik doğrulama yöntemini](../../active-directory/develop/authentication-scenarios.md) kullanabilir. Uygulama, erişim kazanmak için düzlemdeki bir kaynak için bir belirteç alır. Kaynak, Azure ortamına göre yönetim veya veri düzleminde bir uç noktadır. Uygulama belirteci kullanır ve yönetilen HSM uç noktasına bir REST API isteği gönderir. Daha fazla bilgi edinmek için [tüm kimlik doğrulama akışını](../../active-directory/develop/v2-oauth2-auth-code-flow.md)gözden geçirin.
+Uygulama, herhangi bir düzlemi çağrılmadan önce Azure Active Directory kimliğini doğrular. Uygulama, uygulama türüne bağlı olarak desteklenen herhangi bir [kimlik doğrulama yöntemini](../../active-directory/develop/authentication-vs-authorization.md) kullanabilir. Uygulama, erişim kazanmak için düzlemdeki bir kaynak için bir belirteç alır. Kaynak, Azure ortamına göre yönetim veya veri düzleminde bir uç noktadır. Uygulama belirteci kullanır ve yönetilen HSM uç noktasına bir REST API isteği gönderir. Daha fazla bilgi edinmek için [tüm kimlik doğrulama akışını](../../active-directory/develop/v2-oauth2-auth-code-flow.md)gözden geçirin.
 
 Her iki düzlemde tek bir kimlik doğrulama mekanizması kullanımının çeşitli avantajları vardır:
 
@@ -63,18 +63,18 @@ Aşağıdaki tabloda yönetim ve veri düzlemleri için uç noktalar gösterilme
 | Erişim &nbsp; düzlemi | Erişim uç noktaları | İşlemler | Erişim denetimi mekanizması |
 | --- | --- | --- | --- |
 | Yönetim düzlemi | **Genel**<br> management.azure.com:443<br> | Yönetilen HSM 'ler oluşturun, okuyun, güncelleştirin, silin ve taşıyın<br>Yönetilen HSM etiketlerini ayarla | Azure RBAC |
-| Veri düzlemi | **Genel**<br> &lt;HSM-Name &gt; . Vault.Azure.net:443<br> | **Anahtarlar**: şifre çözme, şifreleme,<br> sarmalama geri alma, sarmalama, doğrulama, imzalama, alma, listeleme, güncelleştirme, oluşturma, içeri aktarma, silme, yedekleme, geri yükleme, Temizleme<br/><br/> **Veri düzlemi rol yönetimi (YÖNETILEN HSM yerel RBAC) * * *: rol tanımlarını listeleme, rol atama, rol atamalarını silme, özel roller <br/> <br/> tanımlama** Yedekleme/geri yükleme **: yedekleme, geri yükleme, durum yedekleme/geri <br/> <br/> yükleme işlemleri **güvenlik etki alanı * *: güvenlik etki alanını indirme ve karşıya yükleme | Yönetilen HSM yerel RBAC |
+| Veri düzlemi | **Genel**<br> &lt;HSM-Name &gt; . Vault.Azure.net:443<br> | **Anahtarlar** : şifre çözme, şifreleme,<br> sarmalama geri alma, sarmalama, doğrulama, imzalama, alma, listeleme, güncelleştirme, oluşturma, içeri aktarma, silme, yedekleme, geri yükleme, Temizleme<br/><br/> **Veri düzlemi rol yönetimi (yönetilen HSM yerel RBAC)**_: rol tanımlarını listeleme, rol atama, rol atamalarını silme, özel rolleri <br/> <br/> tanımlama_ * yedekleme/geri yükleme **: yedekleme, geri yükleme, durum yedekleme/geri yükleme <br/> <br/> işlemleri** güvenlik etki alanı * *: güvenlik etki alanını indirme ve karşıya yükleme | Yönetilen HSM yerel RBAC |
 |||||
 ## <a name="management-plane-and-azure-rbac"></a>Yönetim düzlemi ve Azure RBAC
 
-Yönetim düzleminde, bir çağıranın yürütebileceği işlemleri yetkilendirmek için Azure RBAC 'yi kullanırsınız. RBAC modelinde, her Azure aboneliğinin bir Azure Active Directory örneği vardır. Bu dizinden kullanıcılara, gruplara ve uygulamalara erişim izni verirsiniz. Azure aboneliğindeki Azure Resource Manager dağıtım modelini kullanan kaynakları yönetmek için erişim izni verilir. Erişim vermek için [Azure Portal](https://portal.azure.com/), [Azure CLI](../../cli-install-nodejs.md), [Azure PowerShell](/powershell/azureps-cmdlets-docs)veya [Azure Resource Manager REST API 'lerini](https://msdn.microsoft.com/library/azure/dn906885.aspx)kullanın.
+Yönetim düzleminde, bir çağıranın yürütebileceği işlemleri yetkilendirmek için Azure RBAC 'yi kullanırsınız. RBAC modelinde, her Azure aboneliğinin bir Azure Active Directory örneği vardır. Bu dizinden kullanıcılara, gruplara ve uygulamalara erişim izni verirsiniz. Azure aboneliğindeki Azure Resource Manager dağıtım modelini kullanan kaynakları yönetmek için erişim izni verilir. Erişim vermek için [Azure Portal](https://portal.azure.com/), [Azure CLI](/cli/azure/install-classic-cli), [Azure PowerShell](/powershell/azureps-cmdlets-docs)veya [Azure Resource Manager REST API 'lerini](/rest/api/authorization/roleassignments)kullanın.
 
 Bir kaynak grubunda bir Anahtar Kasası oluşturup Azure Active Directory kullanarak erişimi yönetebilirsiniz. Kullanıcılara veya gruplara bir kaynak grubundaki anahtar kasalarını yönetme yeteneği vermiş olursunuz. Uygun RBAC rolleri atayarak erişimi belirli bir kapsam düzeyinde verirsiniz. Anahtar kasalarını yönetmek üzere bir kullanıcıya erişim izni vermek için, belirli bir kapsamdaki kullanıcıya önceden tanımlanmış bir `key vault Contributor` rol atarsınız. Aşağıdaki kapsamlar düzeyleri RBAC rolüne atanabilir:
 
-- **Yönetim grubu**: abonelik düzeyinde atanan bir RBAC rolü, o yönetim grubundaki tüm abonelikler için geçerlidir.
-- **Abonelik**: abonelik düzeyinde atanan bir RBAC rolü, bu aboneliğin içindeki tüm kaynak grupları ve kaynaklar için geçerlidir.
-- **Kaynak grubu**: kaynak grubu düzeyinde atanan bir RBAC rolü, kaynak grubundaki tüm kaynaklar için geçerlidir.
-- **Belirli kaynak**: belirli bir kaynak IÇIN atanan RBAC rolü bu kaynak için geçerlidir. Bu durumda, kaynak belirli bir Anahtar Kasası olur.
+- **Yönetim grubu** : abonelik düzeyinde atanan bir RBAC rolü, o yönetim grubundaki tüm abonelikler için geçerlidir.
+- **Abonelik** : abonelik düzeyinde atanan bir RBAC rolü, bu aboneliğin içindeki tüm kaynak grupları ve kaynaklar için geçerlidir.
+- **Kaynak grubu** : kaynak grubu düzeyinde atanan bir RBAC rolü, kaynak grubundaki tüm kaynaklar için geçerlidir.
+- **Belirli kaynak** : belirli bir kaynak IÇIN atanan RBAC rolü bu kaynak için geçerlidir. Bu durumda, kaynak belirli bir Anahtar Kasası olur.
 
 Önceden tanımlanmış birkaç rol vardır. Önceden tanımlanmış bir rol gereksinimlerinize uygun değilse, kendi rolünüzü tanımlayabilirsiniz. Daha fazla bilgi için bkz. [RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md).
 
@@ -82,8 +82,8 @@ Bir kaynak grubunda bir Anahtar Kasası oluşturup Azure Active Directory kullan
 
 Bir rol atayarak belirli önemli işlemleri yürütmek için bir güvenlik sorumlusu erişimi verirsiniz. Her rol ataması için, bu atamanın uygulandığı bir rol ve kapsam belirtmeniz gerekir. Yönetilen HSM yerel RBAC için iki kapsam mevcuttur.
 
-- **"/" veya "/Keys"**: HSM düzeyi kapsamı. Bu kapsamda bir rolün atandığı güvenlik sorumluları, yönetilen HSM 'deki tüm nesneler (anahtarlar) için rolde tanımlanan işlemleri gerçekleştirebilir.
-- **"/Keys/ &lt; Key-Name &gt; "**: anahtar düzeyi kapsamı. Bu kapsamda bir rolün atandığı güvenlik sorumluları, yalnızca belirtilen anahtarın tüm sürümleri için bu rolde tanımlanan işlemleri gerçekleştirebilir.
+- **"/" veya "/Keys"** : HSM düzeyi kapsamı. Bu kapsamda bir rolün atandığı güvenlik sorumluları, yönetilen HSM 'deki tüm nesneler (anahtarlar) için rolde tanımlanan işlemleri gerçekleştirebilir.
+- **"/Keys/ &lt; Key-Name &gt; "** : anahtar düzeyi kapsamı. Bu kapsamda bir rolün atandığı güvenlik sorumluları, yalnızca belirtilen anahtarın tüm sürümleri için bu rolde tanımlanan işlemleri gerçekleştirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

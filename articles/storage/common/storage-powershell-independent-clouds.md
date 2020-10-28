@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b610a5537d110a4046bd42ac86f5c938aeafe953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072970"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783581"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>PowerShell kullanarak Azure bağımsız bulutlarında depolamayı yönetme
 
@@ -51,7 +51,7 @@ Bağlanmak istediğiniz buluta erişimi olan hesabınızda oturum açın ve orta
 Connect-AzAccount –Environment AzureUSGovernment
 ```
 
-Çin bulutuna erişmek için **AzureChinaCloud**ortamını kullanın. Almanya bulutuna erişmek için **AzureGermanCloud**kullanın.
+Çin bulutuna erişmek için **AzureChinaCloud** ortamını kullanın. Almanya bulutuna erişmek için **AzureGermanCloud** kullanın.
 
 Bu noktada, bir depolama hesabı veya başka bir kaynak oluşturmak için konum listesine ihtiyacınız varsa, [Get-AzLocation](/powershell/module/az.resources/get-azlocation)kullanarak seçilen bulut için kullanılabilir konumları sorgulayabilirsiniz.
 
@@ -69,7 +69,7 @@ Aşağıdaki tabloda, Almanya bulutu için döndürülen konumlar gösterilmekte
 
 ## <a name="endpoint-suffix"></a>Uç nokta soneki
 
-Bu ortamların her biri için uç nokta soneki, Azure genel uç noktasından farklıdır. Örneğin, Azure genel için blob uç nokta soneki **BLOB.Core.Windows.net**. Kamu Bulutu için blob Endpoint suffix **BLOB.Core.usgovcloudapi.net**.
+Bu ortamların her biri için uç nokta soneki, Azure genel uç noktasından farklıdır. Örneğin, Azure genel için blob uç nokta soneki **BLOB.Core.Windows.net** . Kamu Bulutu için blob Endpoint suffix **BLOB.Core.usgovcloudapi.net** .
 
 ### <a name="get-endpoint-using-get-azenvironment"></a>Get-AzEnvironment kullanarak uç nokta al
 
@@ -85,7 +85,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 Bu komut aşağıdaki sonuçları döndürür.
 
-| Adı| StorageEndpointSuffix|
+| Ad| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
@@ -102,7 +102,7 @@ Sonuçlar aşağıdaki değerlere benzer:
 
 |Özellik Adı|Değer|
 |----|----|
-| Adı | `AzureGermanCloud` |
+| Ad | `AzureGermanCloud` |
 | EnableAdfsAuthentication | `False` |
 | Activedirectoryserviceendpointresourceı | `http://management.core.cloudapi.de/` |
 | Gallerurl 'Si | `https://gallery.cloudapi.de/` |
@@ -167,7 +167,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [PowerShell oturumları arasında kullanıcı oturumlarını sürdürme](/powershell/azure/context-persistence)
-* [Azure Kamu depolama](../../azure-government/documentation-government-services-storage.md)
+* [Azure Kamu depolama](../../azure-government/compare-azure-government-global-azure.md)
 * [Microsoft Azure Kamu Geliştirici Kılavuzu](../../azure-government/documentation-government-developer-guide.md)
 * [Azure Çin 21Vianet uygulamaları için geliştirici notları](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 * [Azure Almanya belgeleri](../../germany/germany-welcome.md)

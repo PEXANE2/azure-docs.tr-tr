@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 83b71d46c3d6b1612728b2bd81c6acede6d0559b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8bffe0c3871eae12f3b875a96301136d11dfc516
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488631"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783802"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -23,7 +23,7 @@ Bu kılavuzda, Depolama Gezgini yaygın olarak görülen sorunlara yönelik çö
 
 ## <a name="azure-rbac-permissions-issues"></a>Azure RBAC izinleri sorunları
 
-Azure rol tabanlı erişim denetimi [Azure RBAC](/azure/role-based-access-control/overview) , _rol_olarak izin kümelerini birleştirerek Azure kaynakları için yüksek düzeyde ayrıntılı erişim yönetimine izin verebilir. Azure RBAC çalışma Depolama Gezgini en iyi şekilde yararlanmak için bazı stratejiler aşağıda verilmiştir.
+Azure rol tabanlı erişim denetimi [Azure RBAC](../../role-based-access-control/overview.md) , _rol_ olarak izin kümelerini birleştirerek Azure kaynakları için yüksek düzeyde ayrıntılı erişim yönetimine izin verebilir. Azure RBAC çalışma Depolama Gezgini en iyi şekilde yararlanmak için bazı stratejiler aşağıda verilmiştir.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Nasıl yaparım? Depolama Gezgini kaynaklarıma eriş mi?
 
@@ -46,7 +46,7 @@ Kaynaklardan veri okuma erişimi veren en az bir rol atanması gerekir. Örneği
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Kaynaklarımı Depolama Gezgini görmek için neden bir yönetim katmanı rolüne ihtiyacım var?
 
-Azure Storage iki erişim katmanına sahiptir: _Yönetim_ ve _veri_. Abonelikler ve depolama hesaplarına yönetim katmanı üzerinden erişilir. Kapsayıcılar, Bloblar ve diğer veri kaynaklarına veri katmanı üzerinden erişilir. Örneğin, Azure 'daki depolama hesaplarınızın bir listesini almak istiyorsanız Yönetim uç noktasına bir istek gönderirsiniz. Bir hesapta blob kapsayıcıları listesini isterseniz, uygun hizmet uç noktasına bir istek gönderirsiniz.
+Azure Storage iki erişim katmanına sahiptir: _Yönetim_ ve _veri_ . Abonelikler ve depolama hesaplarına yönetim katmanı üzerinden erişilir. Kapsayıcılar, Bloblar ve diğer veri kaynaklarına veri katmanı üzerinden erişilir. Örneğin, Azure 'daki depolama hesaplarınızın bir listesini almak istiyorsanız Yönetim uç noktasına bir istek gönderirsiniz. Bir hesapta blob kapsayıcıları listesini isterseniz, uygun hizmet uç noktasına bir istek gönderirsiniz.
 
 Azure rolleri, size yönetim veya veri katmanı erişimi için izin verebilir. Örneğin, okuyucu rolü, yönetim katmanı kaynaklarına salt okuma erişimi verir.
 
@@ -65,30 +65,30 @@ Blob kapsayıcılarına veya kuyruklara erişmek istiyorsanız, Azure kimlik bil
 3. İliştirmekte olduğunuz kaynakla ilişkili kullanıcı hesabı ve kiracıyı seçin. İleri'ye tıklayın.
 4. Kaynak türünü seçin, kaynağın URL 'sini girin ve bağlantı için benzersiz bir görünen ad girin. İleri'ye tıklayın. Bağlan'a tıklayın.
 
-Diğer kaynak türleri için şu anda Azure RBAC ile ilgili bir çözümünüz yoktur. Geçici bir çözüm olarak, [kaynağına eklemek](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)IÇIN BIR SAS URI 'si isteyebilirsiniz.
+Diğer kaynak türleri için şu anda Azure RBAC ile ilgili bir çözümünüz yoktur. Geçici bir çözüm olarak, [kaynağına eklemek](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri)IÇIN BIR SAS URI 'si isteyebilirsiniz.
 
 ### <a name="recommended-azure-built-in-roles"></a>Önerilen Azure yerleşik rolleri
 
 Depolama Gezgini kullanmak için gereken izinleri sağlayabilecek çeşitli Azure yerleşik rolleri vardır. Bu rollerden bazıları şunlardır:
-- [Sahip](/azure/role-based-access-control/built-in-roles#owner): kaynaklara erişim dahil olmak üzere her şeyi yönetin. **Note**: Bu rol size anahtar erişimi verecektir.
-- [Katkıda bulunan](/azure/role-based-access-control/built-in-roles#contributor): kaynaklara erişimi hariç her şeyi yönetin. **Note**: Bu rol size anahtar erişimi verecektir.
-- [Okuyucu](/azure/role-based-access-control/built-in-roles#reader): kaynakları okuyun ve listeleyin.
-- [Depolama hesabı katılımcısı](/azure/role-based-access-control/built-in-roles#storage-account-contributor): depolama hesaplarının tam yönetimi. **Note**: Bu rol size anahtar erişimi verecektir.
-- [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): Azure depolama blob kapsayıcılarına ve verilerine tam erişim.
-- [Depolama Blobu verileri katılımcısı](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): Azure depolama kapsayıcıları ve bloblarını okuma, yazma ve silme.
-- [Depolama Blobu veri okuyucusu](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin.
+- [Sahip](../../role-based-access-control/built-in-roles.md#owner): kaynaklara erişim dahil olmak üzere her şeyi yönetin. **Note** : Bu rol size anahtar erişimi verecektir.
+- [Katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor): kaynaklara erişimi hariç her şeyi yönetin. **Note** : Bu rol size anahtar erişimi verecektir.
+- [Okuyucu](../../role-based-access-control/built-in-roles.md#reader): kaynakları okuyun ve listeleyin.
+- [Depolama hesabı katılımcısı](../../role-based-access-control/built-in-roles.md#storage-account-contributor): depolama hesaplarının tam yönetimi. **Note** : Bu rol size anahtar erişimi verecektir.
+- [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Azure depolama blob kapsayıcılarına ve verilerine tam erişim.
+- [Depolama Blobu verileri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Azure depolama kapsayıcıları ve bloblarını okuma, yazma ve silme.
+- [Depolama Blobu veri okuyucusu](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin.
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hata: sertifika zincirinde otomatik olarak imzalanan sertifika (ve benzer hatalar)
 
 Sertifika hataları genellikle aşağıdaki durumlardan birinde oluşur:
 
-- Uygulama, _saydam bir ara sunucu_aracılığıyla bağlandı. Bu, bir sunucunun (örneğin, şirket sunucunuz) HTTPS trafiğini kesintiye uğradığını, şifresini çözmesini ve kendinden imzalı bir sertifika kullanarak şifrelediğinden bu anlamına gelir.
+- Uygulama, _saydam bir ara sunucu_ aracılığıyla bağlandı. Bu, bir sunucunun (örneğin, şirket sunucunuz) HTTPS trafiğini kesintiye uğradığını, şifresini çözmesini ve kendinden imzalı bir sertifika kullanarak şifrelediğinden bu anlamına gelir.
 - Aldığınız HTTPS iletilerine otomatik olarak imzalanan bir TLS/SSL sertifikası ekleme bir uygulama çalıştırıyorsunuz. Sertifika ekleme uygulamaları, virüsten koruma ve ağ trafiği İnceleme yazılımlarını içerir.
 
 Depolama Gezgini kendinden imzalı veya güvenilmeyen bir sertifikayı gördüğünde, alınan HTTPS iletisinin değiştirilip değiştirilmediğini artık bilmez. Otomatik olarak imzalanan sertifikanın bir kopyasına sahipseniz, aşağıdaki adımları izleyerek Depolama Gezgini güveneceği konusunda talimat verebilirsiniz:
 
 1. Sertifikanın Base-64 kodlamalı bir X. 509.440 (. cer) kopyasını edinin.
-2. **Edit**  >  **SSL sertifikalarını**Düzenle  >  **sertifikaları içeri aktar**' a gidin ve ardından dosya seçicisini kullanarak. cer dosyasını bulun, seçin ve açın.
+2. **Edit**  >  **SSL sertifikalarını** Düzenle  >  **sertifikaları içeri aktar** ' a gidin ve ardından dosya seçicisini kullanarak. cer dosyasını bulun, seçin ve açın.
 
 Bu sorun, birden fazla sertifika (kök ve ara) varsa da oluşabilir. Bu hatayı onarmak için her iki sertifikanın de eklenmesi gerekir.
 
@@ -98,12 +98,12 @@ Sertifikanın nereden geldiği konusunda emin değilseniz, bulmak için aşağı
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html): tüm hafif sürümler yeterli olmalıdır.
     * Mac ve Linux: işletim sisteminize eklenmelidir.
 2. OpenSSL 'yi çalıştırın.
-    * Windows: yükleme dizinini açın, **/bin/** seçin ve ardından **openssl.exe**öğesine çift tıklayın.
+    * Windows: yükleme dizinini açın, **/bin/** seçin ve ardından **openssl.exe** öğesine çift tıklayın.
     * Mac ve Linux: `openssl` terminalden çalıştırın.
 3. Şu komutu çalıştırın: `s_client -showcerts -connect microsoft.com:443`.
 4. Otomatik olarak imzalanan sertifikaları bulun. Hangi sertifikaların kendinden imzalandığına ilişkin emin değilseniz, konunun ve verenin aynı olduğu her yerde dikkat edin `("s:")` `("i:")` .
 5. Her biri için otomatik olarak imzalanan sertifikalar bulduğunuzda, (ve dahil) her şeyi `-----BEGIN CERTIFICATE-----` `-----END CERTIFICATE-----` Yeni bir. cer dosyasına kopyalayıp yapıştırın.
-6. Depolama Gezgini açın ve **Edit**  >  **SSL sertifikalarını**düzenlemek için  >  **sertifikaları içeri aktarın**' a gidin. Ardından, oluşturduğunuz. cer dosyalarını bulmak, seçmek ve açmak için dosya seçiciyi kullanın.
+6. Depolama Gezgini açın ve **Edit**  >  **SSL sertifikalarını** düzenlemek için  >  **sertifikaları içeri aktarın** ' a gidin. Ardından, oluşturduğunuz. cer dosyalarını bulmak, seçmek ve açmak için dosya seçiciyi kullanın.
 
 Bu adımları izleyerek kendinden imzalı bir sertifika bulamıyorsanız, geri bildirim aracı aracılığıyla bizimle iletişim kurun. Bayrağını kullanarak komut satırından Depolama Gezgini de açabilirsiniz `--ignore-certificate-errors` . Bu bayrağıyla açıldığında, Depolama Gezgini sertifika hatalarını yoksayar.
 
@@ -113,7 +113,7 @@ Bu adımları izleyerek kendinden imzalı bir sertifika bulamıyorsanız, geri b
 
 Active Directory Federasyon Hizmetleri (AD FS) (AD FS), elektron tarafından desteklenmeyen bir yeniden yönlendirme gerçekleştirmeyi Depolama Gezgini istem yaparken, boş oturum açma iletişim kutuları çoğu zaman oluşur. Bu sorunu geçici olarak çözmek için, oturum açma için cihaz kod akışını kullanmayı deneyebilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin:
 
-1. Sol dikey araç çubuğunda **Ayarlar**' ı açın. Ayarlar panelinde **uygulama**  >  **oturum açma**' ya gidin. **Cihaz kod akışı oturum açma**özelliğini etkinleştir.
+1. Sol dikey araç çubuğunda **Ayarlar** ' ı açın. Ayarlar panelinde **uygulama**  >  **oturum açma** ' ya gidin. **Cihaz kod akışı oturum açma** özelliğini etkinleştir.
 2. **Bağlan** iletişim kutusunu açın (sol taraftaki dikey çubukta bulunan tak simgesi veya hesap panelinde **Hesap Ekle** ' yi seçerek).
 3. Oturum açmak istediğiniz ortamı seçin.
 4. **Oturum aç '** ı seçin.
@@ -130,7 +130,7 @@ Bir yeniden kimlik doğrulaması döngüsünde veya hesaplarınızdan birinin UP
 
 1. Tüm hesapları kaldırın ve ardından Depolama Gezgini kapatın.
 2. Öğesini silin. Makinenizden IdentityService klasörü. Windows üzerinde, klasörü konumunda bulunur `C:\users\<username>\AppData\Local` . Mac ve Linux için, klasörü Kullanıcı dizininizin kökünde bulabilirsiniz.
-3. Mac veya Linux çalıştırıyorsanız, işletim sisteminizin keystore ' dan Microsoft. Developer. IdentityService girişini de silmeniz gerekir. Mac üzerinde, anahtar deposu *GNOME Anahtarlık* uygulamasıdır. Linux 'ta, uygulama genellikle _kimlik anahtarlığı_olarak adlandırılır ancak ad, dağıtıma bağlı olarak farklılık gösterebilir.
+3. Mac veya Linux çalıştırıyorsanız, işletim sisteminizin keystore ' dan Microsoft. Developer. IdentityService girişini de silmeniz gerekir. Mac üzerinde, anahtar deposu *GNOME Anahtarlık* uygulamasıdır. Linux 'ta, uygulama genellikle _kimlik anahtarlığı_ olarak adlandırılır ancak ad, dağıtıma bağlı olarak farklılık gösterebilir.
 
 ### <a name="conditional-access"></a>Koşullu Erişim
 
@@ -141,7 +141,7 @@ Depolama Gezgini tarafından kullanılan Azure AD kitaplığındaki bir sınırl
 MacOS anahtarlığı bazen Depolama Gezgini kimlik doğrulama kitaplığı için soruna neden olan bir durum girebilir. Anahtarlığı bu durumdan dışarı almak için aşağıdaki adımları izleyin:
 
 1. Depolama Gezgini kapatın.
-2. Anahtarlık açın (komut + ara çubuğuna basın, **Anahtarlık**yazın ve ENTER tuşuna basın).
+2. Anahtarlık açın (komut + ara çubuğuna basın, **Anahtarlık** yazın ve ENTER tuşuna basın).
 3. "Oturum açma" Anahtarışını seçin.
 4. Anahtarlık kilidini kilitlemek için asma kilit simgesini seçin. (İşlem tamamlandığında, asma kilidi kilitli olarak görünür. Bu işlem, açtığınız uygulamalara bağlı olarak birkaç saniye sürebilir).
 
@@ -238,8 +238,8 @@ Hesap anahtarlarını görürseniz, sorunu çözmenize yardımcı olması için 
 
 Özel bir bağlantı eklemeye çalıştığınızda bu hata iletisini alırsanız, yerel kimlik bilgileri Yöneticisi 'nde depolanan bağlantı verileri bozulmuş olabilir. Bu sorunu geçici olarak çözmek için bozuk yerel bağlantılarınızı silmeyi ve sonra yeniden eklemeyi deneyin:
 
-1. Depolama Gezgini başlatın. Menüden, **Yardım**  >  **Geliştirici Araçları**seçeneğine gidin.
-2. Açılan pencerede, **uygulama** sekmesinde, **File://**> **yerel depolama** (sol taraf) seçeneğine gidin.
+1. Depolama Gezgini başlatın. Menüden, **Yardım**  >  **Geliştirici Araçları** seçeneğine gidin.
+2. Açılan pencerede, **uygulama** sekmesinde, **File://** > **yerel depolama** (sol taraf) seçeneğine gidin.
 3. Sorun yaşadığınız bağlantı türüne bağlı olarak, anahtarını bulun ve sonra değerini bir metin düzenleyicisine kopyalayın. Değer, aşağıdaki gibi özel bağlantı adlarınızın bir dizisidir:
     * Depolama hesapları
         * `StorageExplorer_CustomConnections_Accounts_v1`
@@ -265,13 +265,13 @@ Tüm bağlantılarınız bittikten sonra, geri eklenmemiş tüm bağlantı adlar
 # <a name="windows"></a>[Windows](#tab/Windows)
 
 1. **Başlat** menüsünde **kimlik bilgileri Yöneticisi** ' ni arayın ve açın.
-2. **Windows kimlik bilgileri**' ne gidin.
-3. **Genel kimlik bilgileri**altında, anahtarına sahip olan girişleri arayın `<connection_type_key>/<corrupted_connection_name>` (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
+2. **Windows kimlik bilgileri** ' ne gidin.
+3. **Genel kimlik bilgileri** altında, anahtarına sahip olan girişleri arayın `<connection_type_key>/<corrupted_connection_name>` (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 4. Bu girişleri silip bağlantıları yeniden ekleyin.
 
 # <a name="macos"></a>[macOS](#tab/macOS)
 
-1. Spotlight (komut + ara çubuğu) öğesini açın ve **Anahtarlık erişimi**arayın.
+1. Spotlight (komut + ara çubuğu) öğesini açın ve **Anahtarlık erişimi** arayın.
 2. Anahtarına sahip olan girişleri arayın `<connection_type_key>/<corrupted_connection_name>` (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 3. Bu girişleri silip bağlantıları yeniden ekleyin.
 

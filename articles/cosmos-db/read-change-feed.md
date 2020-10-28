@@ -5,18 +5,18 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 399f81a5246633912d1e17a13492e404119e362f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0252af90a6afb5b2a59620afaa61702f208991e7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282069"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785264"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB değişiklik akışını okuma
 
-Anında iletme modeli veya çekme modeli kullanarak Azure Cosmos DB değişiklik akışı ile çalışabilirsiniz. Bir anında iletme modeliyle, bir sunucu (değişiklik akışı işlemcisi), bu çalışmayı işlemek için iş mantığı olan bir istemciye işi gönderir. Ancak, son işlenen çalışmanın çalışma ve depolama durumunu denetleme karmaşıklığı sunucuda işlenir.
+Anında iletme modeli veya çekme modeli kullanarak Azure Cosmos DB değişiklik akışı ile çalışabilirsiniz. Bir anında iletme modeliyle, değişiklik akışı işlemcisi bu çalışmayı işlemek için iş mantığı olan bir istemciye işi gönderir. Ancak, son işlenen çalışmanın çalışma ve depolama durumunu denetleme karmaşıklığı, değişiklik akışı işlemcisi içinde işlenir.
 
 Bir çekme modeliyle, istemci işi sunucudan çekmeniz gerekir. Bu durumda, yalnızca çalışmayı işlemek için iş mantığı yoktur, ancak son işlenen iş için durumu depolar, birden fazla istemci genelinde yük dengelemeyi işleme, paralel olarak çalışmayı işleme ve hataları işleme.
 
@@ -27,7 +27,7 @@ Azure Cosmos DB değişiklik akışından okurken, endişelenmenize gerek duymay
 - Değişiklikleri kullanan birden çok istemci arasında yük dengeleme. Örneğin, bir istemci, değişiklikleri işlemeye devam edemiyor ve diğeri kullanılabilir kapasiteye sahip olamaz.
 - [Hataları işleme](change-feed-processor.md#error-handling). Örneğin, kodda işlenmeyen bir özel durum veya geçici ağ sorunu sonrasında doğru şekilde işlenen başarısız değişiklikleri otomatik olarak yeniden deniyor.
 
-Azure Cosmos DB değişiklik akışını kullanan senaryoların çoğu, push model seçeneklerinden birini kullanacaktır. Ancak, çekme modelinin ek düşük düzey denetimini isteyebileceğiniz bazı senaryolar vardır. Bu modüller şunlardır:
+Azure Cosmos DB değişiklik akışını kullanan senaryoların çoğu, push model seçeneklerinden birini kullanacaktır. Ancak, çekme modelinin ek düşük düzey denetimini isteyebileceğiniz bazı senaryolar vardır. Bunlar:
 
 - Belirli bir bölüm anahtarından değişiklikler okunuyor
 - İstemcinizin işlenmek üzere değişiklikleri alacağı hızların denetlenmesi
@@ -68,7 +68,7 @@ Değişiklik akışı işlemcisiyle yaptığınız gibi, değişikliklerin birde
 Çekme modeliyle yerleşik "en az bir kez" teslim garantisi yoktur. Çekme modeli, hataları nasıl işlemek istediğinize karar vermek için düşük düzeyde denetim sağlar.
 
 > [!NOTE]
-> Değişiklik akışı çekme modeli, şu anda yalnızca [Azure Cosmos DB .NET SDK sürümünde önizlemededir](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.13.0-preview) . Önizleme henüz diğer SDK sürümleri için kullanılamaz.
+> Değişiklik akışı çekme modeli, şu anda yalnızca [Azure Cosmos DB .NET SDK sürümünde önizlemededir](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview) . Önizleme henüz diğer SDK sürümleri için kullanılamaz.
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Cassandra ve MongoDB API 'Lerinde akışı değiştirme
 

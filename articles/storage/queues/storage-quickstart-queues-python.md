@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 057b20d9c14b9a25a1e713d25796e1f0ac93daaa
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 57fc0ebc10158b41539d4802aa6a8ebdd466dd90
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428041"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783309"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Hızlı başlangıç: Python için Azure kuyruk depolama istemci kitaplığı V12
 
@@ -34,12 +34,12 @@ Ek kaynaklar:
 * [API başvuru belgeleri](/python/api/azure-storage-queue/index)
 * [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
 * [Paket (Python paket dizini)](https://pypi.org/project/azure-storage-queue/)
-* [Örnekler](/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Örnekler](../common/storage-samples-python.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](/azure/storage/common/storage-quickstart-create-account)
+* Azure depolama hesabı- [depolama hesabı oluşturma](../common/storage-account-create.md)
 * İşletim sisteminiz için [Python](https://www.python.org/downloads/) -2,7, 3,5 veya üzeri
 
 ## <a name="setting-up"></a>Ayarlanıyor
@@ -48,7 +48,7 @@ Bu bölüm, Python için Azure kuyruk depolama istemci kitaplığı V12 ile çal
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-Kuyruklar adlı bir Python uygulaması oluşturma *-hızlı başlangıç-V12*.
+Kuyruklar adlı bir Python uygulaması oluşturma *-hızlı başlangıç-V12* .
 
 1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), proje için yeni bir dizin oluşturun.
 

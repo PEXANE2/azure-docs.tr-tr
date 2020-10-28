@@ -9,12 +9,12 @@ ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 96e06e31ae3c963459a0f6b4772147197913b52a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2eed5a8ad783d325ef040b3a358e80a6517f08e8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488597"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783649"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -60,15 +60,15 @@ Varsayılan olarak, depolama hesapları herhangi bir ağ üzerindeki istemcilerd
 
 Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için varsayılan ağ erişim kurallarını yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
-1. **Güvenlik duvarları ve sanal ağlar**adlı ayarlar menüsüne tıklayın.
+1. **Güvenlik duvarları ve sanal ağlar** adlı ayarlar menüsüne tıklayın.
 
-1. Erişimi varsayılan olarak reddetmek için, **Seçili ağlardan**erişime izin ver ' i seçin. Tüm ağlardan gelen trafiğe izin vermek için **Tüm ağlardan** erişime izin vermeyi seçin.
+1. Erişimi varsayılan olarak reddetmek için, **Seçili ağlardan** erişime izin ver ' i seçin. Tüm ağlardan gelen trafiğe izin vermek için **Tüm ağlardan** erişime izin vermeyi seçin.
 
-1. Değişikliklerinizi uygulamak için **Kaydet**’e tıklayın.
+1. Değişikliklerinizi uygulamak için **Kaydet** ’e tıklayın.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -118,13 +118,13 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için v
 
 Depolama hesaplarını yalnızca belirli alt ağlardan erişime izin verecek şekilde yapılandırabilirsiniz. İzin verilen alt ağlar, farklı bir Azure Active Directory kiracısına ait abonelikler de dahil olmak üzere, aynı abonelikte bulunan bir VNet 'e veya farklı bir aboneliğe ait olabilir.
 
-VNet içinde Azure depolama için bir [hizmet uç noktası](/azure/virtual-network/virtual-network-service-endpoints-overview) etkinleştirin. Hizmet uç noktası, trafiği VNet 'ten Azure depolama hizmetine en uygun bir yol üzerinden yönlendirir. Alt ağın ve sanal ağın kimlikleri de her istekle birlikte iletilir. Yöneticiler daha sonra depolama hesabı için ağ kurallarını, isteklerin bir sanal ağdaki belirli alt ağlardan alınmasına izin veren ağ kurallarını yapılandırabilir. Bu ağ kuralları aracılığıyla erişim izni verilen istemciler, verileri erişmek için depolama hesabının yetkilendirme gereksinimlerini karşılamaya devam etmelidir.
+VNet içinde Azure depolama için bir [hizmet uç noktası](../../virtual-network/virtual-network-service-endpoints-overview.md) etkinleştirin. Hizmet uç noktası, trafiği VNet 'ten Azure depolama hizmetine en uygun bir yol üzerinden yönlendirir. Alt ağın ve sanal ağın kimlikleri de her istekle birlikte iletilir. Yöneticiler daha sonra depolama hesabı için ağ kurallarını, isteklerin bir sanal ağdaki belirli alt ağlardan alınmasına izin veren ağ kurallarını yapılandırabilir. Bu ağ kuralları aracılığıyla erişim izni verilen istemciler, verileri erişmek için depolama hesabının yetkilendirme gereksinimlerini karşılamaya devam etmelidir.
 
 Her depolama hesabı, [IP ağ kuralları](#grant-access-from-an-internet-ip-range)ile birleştirilebilir en fazla 200 sanal ağ kuralını destekler.
 
 ### <a name="available-virtual-network-regions"></a>Kullanılabilir sanal ağ bölgeleri
 
-Genel olarak, hizmet uç noktaları aynı Azure bölgesindeki sanal ağlar ve hizmet örnekleri arasında çalışır. Azure depolama ile hizmet uç noktaları kullanılırken, bu kapsam [eşleştirilmiş bölgeyi](/azure/best-practices-availability-paired-regions)dahil etmek için büyür. Hizmet uç noktaları bölgesel yük devretme sırasında sürekliliği ve salt Erişimli Coğrafi olarak yedekli depolama (RA-GRS) örneklerine erişim sağlar. Bir sanal ağdan bir depolama hesabına erişim izni veren ağ kuralları da herhangi bir RA-GRS örneğine erişim sağlar.
+Genel olarak, hizmet uç noktaları aynı Azure bölgesindeki sanal ağlar ve hizmet örnekleri arasında çalışır. Azure depolama ile hizmet uç noktaları kullanılırken, bu kapsam [eşleştirilmiş bölgeyi](../../best-practices-availability-paired-regions.md)dahil etmek için büyür. Hizmet uç noktaları bölgesel yük devretme sırasında sürekliliği ve salt Erişimli Coğrafi olarak yedekli depolama (RA-GRS) örneklerine erişim sağlar. Bir sanal ağdan bir depolama hesabına erişim izni veren ağ kuralları da herhangi bir RA-GRS örneğine erişim sağlar.
 
 Bölgesel bir kesinti sırasında olağanüstü durum kurtarma için planlama yaparken, sanal ağları eşleştirilmiş bölgede önceden oluşturmalısınız. Bu alternatif sanal ağlardan erişim sağlayan ağ kuralları ile Azure depolama için hizmet uç noktalarını etkinleştirin. Ardından bu kuralları coğrafi olarak yedekli depolama hesaplarınıza uygulayın.
 
@@ -144,24 +144,24 @@ Depolama hesabı ve erişim verilen sanal ağlar, farklı bir Azure AD kiracıs�
 
 Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için sanal ağ kurallarını yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
-1. **Güvenlik duvarları ve sanal ağlar**adlı ayarlar menüsüne tıklayın.
+1. **Güvenlik duvarları ve sanal ağlar** adlı ayarlar menüsüne tıklayın.
 
-1. **Seçili ağlardan**erişime izin vermeyi seçtiğinizden emin olun.
+1. **Seçili ağlardan** erişime izin vermeyi seçtiğinizden emin olun.
 
-1. Yeni bir ağ kuralıyla bir sanal ağa erişim vermek için, **sanal ağlar**altında **var olan sanal ağı ekle**' ye tıklayın, **sanal ağlar** ve **alt ağlar** seçeneklerini belirleyin ve ardından **Ekle**' ye tıklayın. Yeni bir sanal ağ oluşturmak ve bu ağa erişim vermek için **Yeni sanal ağ ekle**' ye tıklayın. Yeni sanal ağı oluşturmak için gereken bilgileri girin ve ardından **Oluştur**' a tıklayın.
+1. Yeni bir ağ kuralıyla bir sanal ağa erişim vermek için, **sanal ağlar** altında **var olan sanal ağı ekle** ' ye tıklayın, **sanal ağlar** ve **alt ağlar** seçeneklerini belirleyin ve ardından **Ekle** ' ye tıklayın. Yeni bir sanal ağ oluşturmak ve bu ağa erişim vermek için **Yeni sanal ağ ekle** ' ye tıklayın. Yeni sanal ağı oluşturmak için gereken bilgileri girin ve ardından **Oluştur** ' a tıklayın.
 
     > [!NOTE]
     > Azure Storage için bir hizmet uç noktası, seçilen sanal ağ ve alt ağlar için önceden yapılandırılmadıysa, bu işlemin bir parçası olarak yapılandırabilirsiniz.
     >
     > Şu anda, kural oluşturma sırasında seçim için yalnızca aynı Azure Active Directory kiracıya ait olan sanal ağlar gösterilir. Başka bir kiracıya ait bir sanal ağdaki bir alt ağa erişim vermek için lütfen PowerShell, CLı veya REST API 'Leri kullanın.
 
-1. Bir sanal ağ veya alt ağ kuralını kaldırmak için **.** .. öğesine tıklayarak sanal ağ veya alt ağ için bağlam menüsünü açın ve **Kaldır**' a tıklayın.
+1. Bir sanal ağ veya alt ağ kuralını kaldırmak için **.** .. öğesine tıklayarak sanal ağ veya alt ağ için bağlam menüsünü açın ve **Kaldır** ' a tıklayın.
 
-1. Değişikliklerinizi uygulamak için **Kaydet**’e tıklayın.
+1. Değişikliklerinizi uygulamak için **Kaydet** ’e tıklayın.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -197,7 +197,7 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için s
     ```
 
 > [!IMPORTANT]
-> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet**olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
+> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet** olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -235,18 +235,18 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için s
     ```
 
 > [!IMPORTANT]
-> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet**olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
+> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet** olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>İnternet IP aralığından erişim izni verme
 
 Depolama hesaplarını, belirli genel İnternet IP adresi aralıklarından erişime izin verecek şekilde yapılandırabilirsiniz. Bu yapılandırma, belirli Internet tabanlı hizmetlere ve şirket içi ağlara erişim verir ve genel İnternet trafiğini engeller.
 
-*16.17.18.0/24* biçiminde veya *16.17.18.19*gibi ayrı IP adresleri olarak [CIDR gösterimini](https://tools.ietf.org/html/rfc4632) kullanarak izin verilen internet adres aralıklarını sağlayın.
+*16.17.18.0/24* biçiminde veya *16.17.18.19* gibi ayrı IP adresleri olarak [CIDR gösterimini](https://tools.ietf.org/html/rfc4632) kullanarak izin verilen internet adres aralıklarını sağlayın.
 
    > [!NOTE]
    > "/31" veya "/32" önek boyutları kullanılarak küçük adres aralıkları desteklenmez. Bu aralıklar tek tek IP adresi kuralları kullanılarak yapılandırılmalıdır.
 
-IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına ( [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)' de tanımlandığı gıbı) IP kurallarında izin verilmez. Özel ağlarda, _10. *_, _172,16. *_  -  _172,31. *_ ve _192,168. *_ ile başlayan adresler bulunur.
+IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına ( [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)' de tanımlandığı gıbı) IP kurallarında izin verilmez. Özel ağlarda, _10. *_ , _172,16. *_  -  _172,31. *_ ve _192,168. *_ ile başlayan adresler bulunur.
 
    > [!NOTE]
    > IP ağ kurallarının, depolama hesabıyla aynı Azure bölgesinden kaynaklanan isteklere etkisi yoktur. Aynı bölge isteklerine izin vermek için [sanal ağ kurallarını](#grant-access-from-a-virtual-network) kullanın.
@@ -262,25 +262,25 @@ Her depolama hesabı en fazla 200 IP ağ kuralını destekler.
 
 Şirket içi ağlarınızdan bir IP ağ kuralıyla depolama hesabınıza erişim izni vermek için ağınız tarafından kullanılan internet 'e yönelik IP adreslerini belirlemeniz gerekir. Yardım için ağ yöneticinize başvurun.
 
-Şirket içinde genel eşleme veya Microsoft eşlemesi için [ExpressRoute](/azure/expressroute/expressroute-introduction) kullanıyorsanız, kullanılan NAT IP adreslerini belirlemeniz gerekir. Ortak eşleme için, her bir ExpressRoute varsayılan olarak bağlantı hattında trafik Microsoft Azure omurga ağına girdiğinde Azure hizmet trafiğine uygulanan iki NAT IP adresi kullanılır. Microsoft eşlemesi için, kullanılan NAT IP adresleri müşteri tarafından sağlanmış veya hizmet sağlayıcısı tarafından sağlanır. Hizmet kaynaklarınıza erişime izin vermek için, bu genel IP adreslerine kaynak IP güvenlik duvarı ayarında izin vermeniz gerekir. Ortak eşleme ExpressRoute bağlantı hattı IP adreslerinizi bulmak için Azure portalında [ExpressRoute ile bir destek bileti açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). [ExpressRoute genel ve Microsoft eşlemesi için NAT](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering) hakkında daha fazla bilgi edinin.
+Şirket içinde genel eşleme veya Microsoft eşlemesi için [ExpressRoute](../../expressroute/expressroute-introduction.md) kullanıyorsanız, kullanılan NAT IP adreslerini belirlemeniz gerekir. Ortak eşleme için, her bir ExpressRoute varsayılan olarak bağlantı hattında trafik Microsoft Azure omurga ağına girdiğinde Azure hizmet trafiğine uygulanan iki NAT IP adresi kullanılır. Microsoft eşlemesi için, kullanılan NAT IP adresleri müşteri tarafından sağlanmış veya hizmet sağlayıcısı tarafından sağlanır. Hizmet kaynaklarınıza erişime izin vermek için, bu genel IP adreslerine kaynak IP güvenlik duvarı ayarında izin vermeniz gerekir. Ortak eşleme ExpressRoute bağlantı hattı IP adreslerinizi bulmak için Azure portalında [ExpressRoute ile bir destek bileti açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). [ExpressRoute genel ve Microsoft eşlemesi için NAT](../../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering) hakkında daha fazla bilgi edinin.
 
 ### <a name="managing-ip-network-rules"></a>IP ağ kurallarını yönetme
 
 Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için IP ağ kurallarını yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
-1. **Güvenlik duvarları ve sanal ağlar**adlı ayarlar menüsüne tıklayın.
+1. **Güvenlik duvarları ve sanal ağlar** adlı ayarlar menüsüne tıklayın.
 
-1. **Seçili ağlardan**erişime izin vermeyi seçtiğinizden emin olun.
+1. **Seçili ağlardan** erişime izin vermeyi seçtiğinizden emin olun.
 
-1. Bir internet IP aralığına erişim vermek için, **güvenlik duvarı**  >  **adres aralığı**altına IP adresini veya adres aralığını (CIDR biçiminde) girin.
+1. Bir internet IP aralığına erişim vermek için, **güvenlik duvarı**  >  **adres aralığı** altına IP adresini veya adres aralığını (CIDR biçiminde) girin.
 
 1. Bir IP ağ kuralını kaldırmak için, adres aralığının yanındaki çöp kutusu simgesine tıklayın.
 
-1. Değişikliklerinizi uygulamak için **Kaydet**’e tıklayın.
+1. Değişikliklerinizi uygulamak için **Kaydet** ’e tıklayın.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -317,7 +317,7 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için I
     ```
 
 > [!IMPORTANT]
-> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet**olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
+> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet** olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -354,11 +354,11 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için I
     ```
 
 > [!IMPORTANT]
-> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet**olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
+> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet** olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
 
 ## <a name="exceptions"></a>Özel durumlar
 
-Ağ kuralları, çoğu senaryo için Uygulamalarınız ve verileriniz arasındaki bağlantılar için güvenli bir ortam oluşturmaya yardımcı olur. Ancak bazı uygulamalar, sanal ağ veya IP adresi kuralları aracılığıyla benzersiz olarak yalıtılmamış Azure hizmetlerine bağımlıdır. Ancak, tam uygulama işlevselliğini etkinleştirmek için bu hizmetler depolama alanına verilmelidir. Bu gibi durumlarda, **_güvenilir Microsoft hizmetlerine Izin ver..._* seçeneğini kullanabilirsiniz. _ Bu tür hizmetlerin verilerinize, günlüklerine veya analizlerinize erişmesini sağlamak için ayarı.
+Ağ kuralları, çoğu senaryo için Uygulamalarınız ve verileriniz arasındaki bağlantılar için güvenli bir ortam oluşturmaya yardımcı olur. Ancak bazı uygulamalar, sanal ağ veya IP adresi kuralları aracılığıyla benzersiz olarak yalıtılmamış Azure hizmetlerine bağımlıdır. Ancak, tam uygulama işlevselliğini etkinleştirmek için bu hizmetler depolama alanına verilmelidir. Bu gibi durumlarda, * *_güvenilir Microsoft hizmetlerine Izin ver..._* seçeneğini kullanabilirsiniz. _ Bu tür hizmetlerin verilerinize, günlüklerine veya analizlerinize erişmesini sağlamak için ayarı.
 
 ### <a name="trusted-microsoft-services"></a>Güvenilen Microsoft Hizmetleri
 
@@ -372,55 +372,55 @@ Bazı Microsoft Hizmetleri, ağ kurallarınıza dahil olmayan ağlardan çalış
 
 | Hizmet                  | Kaynak sağlayıcısı adı     | İzin verilen işlemler                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
-| Azure Backup             | Microsoft. RecoveryServices | IAAS sanal makinelerinde yedeklemeleri çalıştırın ve yönetilmeyen diskleri geri yükler. (yönetilen diskler için gerekli değildir). [Daha fazla bilgi edinin](/azure/backup/backup-introduction-to-azure-backup). |
-| Azure Data Box           | Microsoft. DataBox          | Data Box kullanarak Azure 'a veri aktarmayı sağlar. [Daha fazla bilgi edinin](/azure/databox/data-box-overview). |
+| Azure Backup             | Microsoft. RecoveryServices | IAAS sanal makinelerinde yedeklemeleri çalıştırın ve yönetilmeyen diskleri geri yükler. (yönetilen diskler için gerekli değildir). [Daha fazla bilgi edinin](../../backup/backup-overview.md). |
+| Azure Data Box           | Microsoft. DataBox          | Data Box kullanarak Azure 'a veri aktarmayı sağlar. [Daha fazla bilgi edinin](../../databox/data-box-overview.md). |
 | Azure DevTest Labs       | Microsoft. DevTestLab       | Özel görüntü oluşturma ve yapıt yüklemesi. [Daha fazla bilgi edinin](../../devtest-labs/devtest-lab-overview.md). |
-| Azure Event Grid         | Microsoft. EventGrid        | Blob Storage olay yayımlamayı etkinleştirin ve Event Grid depolama sıralarında yayımlamaya izin verin. [BLOB depolama olayları](/azure/event-grid/event-sources) ve [kuyruklarda yayımlama](/azure/event-grid/event-handlers)hakkında bilgi edinin. |
-| Azure Event Hubs         | Microsoft. EventHub         | Event Hubs yakalama ile verileri arşivleme. [Daha Fazla Bilgi Edinin](/azure/event-hubs/event-hubs-capture-overview). |
-| Azure Dosya Eşitleme          | Microsoft. Storagessync      | Şirket içi dosya sunucunuzu Azure dosya paylaşımları için bir önbelleğe dönüştürmenizi sağlar. Çok siteli eşitleme, hızlı olağanüstü durum kurtarma ve bulut tarafı yedekleme için izin verme. [Daha fazla bilgi edinin](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft. HDInsight        | Yeni bir HDInsight kümesi için varsayılan dosya sisteminin başlangıçtaki içeriğini sağlayın. [Daha fazla bilgi edinin](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
-| Azure Içeri aktarma dışarı aktarma      | Microsoft. ımportexport     | Azure Storage Içeri/dışarı aktarma hizmeti kullanılarak verilerin Azure depolama 'ya aktarılmasını veya Azure Storage 'dan dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](/azure/storage/common/storage-import-export-service).  |
-| Azure İzleyici            | Microsoft. Insights         | Kaynak günlükleri, Azure Active Directory oturum açma ve denetim günlükleri ve Microsoft Intune Günlükler dahil olmak üzere, izleme verilerinin güvenli bir depolama hesabına yazılmasına izin verir. [Daha fazla bilgi edinin](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
-| Azure ağı         | Microsoft.Network          | Ağ Izleyicisi ve Trafik Analizi hizmetleri dahil olmak üzere ağ trafiği günlüklerini depolayın ve çözümleyin. [Daha fazla bilgi edinin](/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
-| Azure Site Recovery      | Microsoft. Sıterecovery     | Güvenlik Duvarı özellikli önbellek, kaynak veya hedef depolama hesapları kullanırken Azure IaaS sanal makinelerinin olağanüstü durum kurtarma için çoğaltmayı etkinleştirin.  [Daha fazla bilgi edinin](/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
+| Azure Event Grid         | Microsoft. EventGrid        | Blob Storage olay yayımlamayı etkinleştirin ve Event Grid depolama sıralarında yayımlamaya izin verin. [BLOB depolama olayları](../../event-grid/overview.md#event-sources) ve [kuyruklarda yayımlama](../../event-grid/event-handlers.md)hakkında bilgi edinin. |
+| Azure Event Hubs         | Microsoft. EventHub         | Event Hubs yakalama ile verileri arşivleme. [Daha Fazla Bilgi Edinin](../../event-hubs/event-hubs-capture-overview.md). |
+| Azure Dosya Eşitleme          | Microsoft. Storagessync      | Şirket içi dosya sunucunuzu Azure dosya paylaşımları için bir önbelleğe dönüştürmenizi sağlar. Çok siteli eşitleme, hızlı olağanüstü durum kurtarma ve bulut tarafı yedekleme için izin verme. [Daha fazla bilgi](../files/storage-sync-files-planning.md) |
+| Azure HDInsight          | Microsoft. HDInsight        | Yeni bir HDInsight kümesi için varsayılan dosya sisteminin başlangıçtaki içeriğini sağlayın. [Daha fazla bilgi edinin](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). |
+| Azure Içeri aktarma dışarı aktarma      | Microsoft. ımportexport     | Azure Storage Içeri/dışarı aktarma hizmeti kullanılarak verilerin Azure depolama 'ya aktarılmasını veya Azure Storage 'dan dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](./storage-import-export-service.md).  |
+| Azure İzleyici            | Microsoft. Insights         | Kaynak günlükleri, Azure Active Directory oturum açma ve denetim günlükleri ve Microsoft Intune Günlükler dahil olmak üzere, izleme verilerinin güvenli bir depolama hesabına yazılmasına izin verir. [Daha fazla bilgi edinin](../../azure-monitor/platform/roles-permissions-security.md). |
+| Azure ağı         | Microsoft.Network          | Ağ Izleyicisi ve Trafik Analizi hizmetleri dahil olmak üzere ağ trafiği günlüklerini depolayın ve çözümleyin. [Daha fazla bilgi edinin](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). |
+| Azure Site Recovery      | Microsoft. Sıterecovery     | Güvenlik Duvarı özellikli önbellek, kaynak veya hedef depolama hesapları kullanırken Azure IaaS sanal makinelerinin olağanüstü durum kurtarma için çoğaltmayı etkinleştirin.  [Daha fazla bilgi edinin](../../site-recovery/azure-to-azure-tutorial-enable-replication.md). |
 
 **Güvenilen Microsoft hizmetlerine Izin ver...** ayarı Ayrıca, bu kaynak örneği için [sistem tarafından atanan yönetilen kimliğe](../../active-directory/managed-identities-azure-resources/overview.md) açıkça [bir Azure rolü atarsanız](storage-auth-aad.md#assign-azure-roles-for-access-rights) , aşağıdaki hizmetlerin belirli bir örneğinin depolama hesabına erişmesini sağlar. Bu durumda, örnek için erişim kapsamı yönetilen kimliğe atanan Azure rolüne karşılık gelir.
 
 | Hizmet                        | Kaynak sağlayıcısı adı                 | Amaç            |
 | :----------------------------- | :------------------------------------- | :----------------- |
-| Azure API Management           | Microsoft.ApiManagement/service        | İlkeler kullanılarak güvenlik duvarının arkasındaki depolama hesaplarına API Yönetimi hizmeti erişimi sağlar. [Daha fazla bilgi edinin](/azure/api-management/api-management-authentication-policies#use-managed-identity-in-send-request-policy). |
+| Azure API Management           | Microsoft.ApiManagement/service        | İlkeler kullanılarak güvenlik duvarının arkasındaki depolama hesaplarına API Yönetimi hizmeti erişimi sağlar. [Daha fazla bilgi edinin](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy). |
 | Azure Bilişsel Arama         | Microsoft. Search/searchServices        | Bilişsel Arama hizmetlerinin dizin oluşturma, işleme ve sorgulama için depolama hesaplarına erişmesine olanak sağlar. |
 | Azure Container Registry Görevleri | Microsoft. ContainerRegistry/kayıt defterleri | ACR görevleri, kapsayıcı görüntüleri oluştururken depolama hesaplarına erişebilir. |
 | Azure Data Factory             | Microsoft. DataFactory/Factory        | ADF çalışma zamanı aracılığıyla depolama hesaplarına erişime izin verir. |
 | Azure Veri Paylaşımı               | Microsoft. DataShare/hesapları           | Veri paylaşımından depolama hesaplarına erişime izin verir. |
-| Azure IoT Hub                  | Microsoft. Devices/IotHubs              | IoT Hub 'ından gelen verilerin blob depolamaya yazılmasına izin verir. [Daha fazla bilgi edinin](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
-| Azure Logic Apps               | Microsoft. Logic/iş akışları              | Mantıksal uygulamaların depolama hesaplarına erişmesini sağlar. [Daha fazla bilgi edinin](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity). |
-| Azure Machine Learning Hizmeti | Microsoft.MachineLearningServices      | Yetkili Azure Machine Learning çalışma alanları BLOB depolama alanına deneme çıkış, model ve Günlükler yazar ve verileri okur. [Daha fazla bilgi edinin](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
-| Azure Synapse Analytics (eski adı SQL Veri Ambarı)       | Microsoft.Sql                          | COPY ifadesini veya PolyBase 'i kullanarak belirli SQL veritabanlarından verilerin içeri ve dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
-| Azure SQL Veritabanı       | Microsoft.Sql                          | Depolama hesaplarından verilerin [içeri aktarılması](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) ve denetim verilerinin güvenlik duvarının arkasındaki depolama hesaplarına [yazılmasına](/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall) izin verir. |
-| Azure Stream Analytics         | Microsoft. StreamAnalytics             | Akış işindeki verilerin blob depolamaya yazılmasına izin verir. [Daha fazla bilgi edinin](/azure/stream-analytics/blob-output-managed-identity). |
+| Azure IoT Hub                  | Microsoft. Devices/IotHubs              | IoT Hub 'ından gelen verilerin blob depolamaya yazılmasına izin verir. [Daha fazla bilgi](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
+| Azure Logic Apps               | Microsoft. Logic/iş akışları              | Mantıksal uygulamaların depolama hesaplarına erişmesini sağlar. [Daha fazla bilgi edinin](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
+| Azure Machine Learning Hizmeti | Microsoft.MachineLearningServices      | Yetkili Azure Machine Learning çalışma alanları BLOB depolama alanına deneme çıkış, model ve Günlükler yazar ve verileri okur. [Daha fazla bilgi edinin](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). | 
+| Azure Synapse Analytics (eski adı SQL Veri Ambarı)       | Microsoft.Sql                          | COPY ifadesini veya PolyBase 'i kullanarak belirli SQL veritabanlarından verilerin içeri ve dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
+| Azure SQL Veritabanı       | Microsoft.Sql                          | Depolama hesaplarından verilerin [içeri aktarılması](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) ve denetim verilerinin güvenlik duvarının arkasındaki depolama hesaplarına [yazılmasına](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) izin verir. |
+| Azure Stream Analytics         | Microsoft. StreamAnalytics             | Akış işindeki verilerin blob depolamaya yazılmasına izin verir. [Daha fazla bilgi edinin](../../stream-analytics/blob-output-managed-identity.md). |
 | Azure Synapse Analytics        | Microsoft. SYNAPSE/çalışma alanları          | SYNAPSE Analytics 'ten Azure Storage 'daki verilere erişimi sağlar. |
 
 
 ### <a name="storage-analytics-data-access"></a>Depolama Analizi veri erişimi
 
-Bazı durumlarda, ağ sınırının dışında kaynak günlüklerine ve ölçümlere erişimi de gereklidir. Depolama hesabına güvenilen hizmetler erişimi yapılandırılırken, günlük dosyaları, ölçüm tabloları veya her ikisi için okuma erişimine izin verebilirsiniz. [Depolama analizi ile çalışma hakkında daha fazla bilgi edinin.](/azure/storage/storage-analytics)
+Bazı durumlarda, ağ sınırının dışında kaynak günlüklerine ve ölçümlere erişimi de gereklidir. Depolama hesabına güvenilen hizmetler erişimi yapılandırılırken, günlük dosyaları, ölçüm tabloları veya her ikisi için okuma erişimine izin verebilirsiniz. [Depolama analizi ile çalışma hakkında daha fazla bilgi edinin.](./storage-analytics.md)
 
 ### <a name="managing-exceptions"></a>Özel durumları yönetme
 
 Ağ kuralı özel durumlarını Azure portal, PowerShell veya Azure CLı v2 aracılığıyla yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
-1. **Güvenlik duvarları ve sanal ağlar**adlı ayarlar menüsüne tıklayın.
+1. **Güvenlik duvarları ve sanal ağlar** adlı ayarlar menüsüne tıklayın.
 
-1. **Seçili ağlardan**erişime izin vermeyi seçtiğinizden emin olun.
+1. **Seçili ağlardan** erişime izin vermeyi seçtiğinizden emin olun.
 
-1. **Özel durumlar**' ın altında, vermek istediğiniz özel durumları seçin.
+1. **Özel durumlar** ' ın altında, vermek istediğiniz özel durumları seçin.
 
-1. Değişikliklerinizi uygulamak için **Kaydet**’e tıklayın.
+1. Değişikliklerinizi uygulamak için **Kaydet** ’e tıklayın.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -445,7 +445,7 @@ Ağ kuralı özel durumlarını Azure portal, PowerShell veya Azure CLı v2 arac
     ```
 
 > [!IMPORTANT]
-> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet**olarak ayarladığınızdan emin olun veya özel durumların kaldırılması etkisizdir.
+> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet** olarak ayarladığınızdan emin olun veya özel durumların kaldırılması etkisizdir.
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -470,10 +470,10 @@ Ağ kuralı özel durumlarını Azure portal, PowerShell veya Azure CLı v2 arac
     ```
 
 > [!IMPORTANT]
-> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet**olarak ayarladığınızdan emin olun veya özel durumların kaldırılması etkisizdir.
+> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet** olarak ayarladığınızdan emin olun veya özel durumların kaldırılması etkisizdir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Hizmet uç noktalarında](/azure/virtual-network/virtual-network-service-endpoints-overview)Azure ağ hizmeti uç noktaları hakkında daha fazla bilgi edinin.
+[Hizmet uç noktalarında](../../virtual-network/virtual-network-service-endpoints-overview.md)Azure ağ hizmeti uç noktaları hakkında daha fazla bilgi edinin.
 
 Azure [Storage Güvenlik Kılavuzu](../blobs/security-recommendations.md)'Nda Azure Storage Security 'de daha ayrıntılı bilgi edinin.

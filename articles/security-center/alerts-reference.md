@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: memildin
-ms.openlocfilehash: 3273324044f5d99a2400eee5325d3adb20f4ac0c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: f98927e71a675cc6264c413ba07b3cf689b91560
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631385"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784295"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları - başvuru kılavuzu
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Defender 'dan alabileceğiniz güvenlik uyarıları listelenm
 
 Bu uyarılara nasıl yanıt verileceğini öğrenmek için bkz. [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md).
 
-Uyarıları (ve önerileri) dışa aktarma hakkında bilgi edinmek için bkz. [güvenlik uyarılarını ve önerilerini dışarı aktarma (Önizleme)](continuous-export.md).
+Uyarıların (ve önerilerin) nasıl dışarı aktarılacağını öğrenmek için bkz. [Güvenlik Merkezi verilerini sürekli dışa aktarma](continuous-export.md).
 
 Bu sayfanın en altında, bu uyarıların amaçlarını kategorilere ayırmak için kullanılan Azure Güvenlik Merkezi Kill zincirini açıklayan bir tablo vardır. 
 
@@ -462,4 +462,4 @@ Uyarılar hakkında daha fazla bilgi edinmek için aşağıdakilere bakın:
 
 - [Azure Güvenlik Merkezi'nde güvenlik uyarıları](security-center-alerts-overview.md)
 - [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md)
-- [Güvenlik uyarılarını ve önerilerini dışarı aktarma (Önizleme)](continuous-export.md)
+- [Güvenlik Merkezi verilerini sürekli dışa aktarma](continuous-export.md)

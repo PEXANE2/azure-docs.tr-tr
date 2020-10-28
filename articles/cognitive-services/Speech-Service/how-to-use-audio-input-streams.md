@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3c8d3162e13c31204ed317edc653756b04ef8dd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3baedd49843c7721b6dba464054d5535b4c4f1cd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934132"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785349"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Konuşma SDK 'Sı ses girişi akış API 'SI hakkında
 
@@ -26,7 +26,7 @@ Ses giriş akışları kullanılırken aşağıdaki adımlar gereklidir:
 
 - Ses akışının biçimini belirler. Biçim, konuşma SDK 'Sı ve konuşma hizmeti tarafından desteklenmelidir. Şu anda yalnızca aşağıdaki yapılandırma desteklenir:
 
-  PCM biçimindeki ses örnekleri, bir kanal, örnek başına 16 bit, 8000 veya 16000 örnek/saniye (16000 veya 32000 bayt/saniye), iki blok hizalanır (örnek için doldurma dahil olmak üzere 16 bit).
+  Ses örnekleri, PCM biçiminde, bir kanal, örnek başına 16 bit, 8000 veya 16000 örnek/saniye (16000 veya 32000 bayt), iki blok hizalı (örnek için doldurma dahil olmak üzere 16 bit).
 
   Ses biçimini oluşturmak için SDK 'daki karşılık gelen kod şöyle görünür:
 
@@ -37,7 +37,7 @@ Ses giriş akışları kullanılırken aşağıdaki adımlar gereklidir:
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
-- Kodunuzun ham ses verilerini bu belirtimlere göre sağlaya, emin olun. Ses kaynağı verileriniz desteklenen biçimleriyle eşleşmiyorsa, sesin gerekli biçime dönüştürülmesi gerekir.
+- Kodunuzun ham ses verilerini bu belirtimlere göre sağladığından emin olun. Ayrıca, 16 bit örneklerin küçük endian biçiminde gelmesini güvence altına alabilirsiniz. İmzalı örnekler de desteklenir. Ses kaynağı verileriniz desteklenen biçimleriyle eşleşmiyorsa, sesin gerekli biçime dönüştürülmesi gerekir.
 
 - Öğesinden türetilmiş kendi ses giriş akışı sınıfınızı oluşturun `PullAudioInputStreamCallback` . `Read()`Ve üyelerini uygulayın `Close()` . Tam işlev imzası dile bağımlıdır, ancak kod şu kod örneğine benzer şekilde görünür:
 

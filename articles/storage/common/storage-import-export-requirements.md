@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d17b9cdebf06e7d754a23a7224bbe3dba1a2832c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87276406"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783615"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure İçeri/Dışarı Aktarma için sistem gereksinimleri
 
@@ -50,7 +50,7 @@ Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure Storage hesapla
 Her iş, yalnızca bir depolama hesabından veri aktarmak için kullanılabilir. Diğer bir deyişle, tek bir içeri/dışarı aktarma işi birden çok depolama hesabı arasında yayılamaz. Yeni bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-account-create.md).
 
 > [!IMPORTANT]
-> [Sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md)   özelliğinin etkinleştirildiği depolama hesapları için, [içeri/dışarı aktarma](/azure/storage/common/storage-network-security) hizmetinin Azure 'dan/dışarı/dışarı aktarma Işlemini gerçekleştirmesini sağlamak Için **güvenilir Microsoft hizmetlerine izin ver...** ayarını kullanın.
+> [Sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md) özelliğinin etkinleştirildiği depolama hesapları Için, [Içeri/dışarı aktarma](./storage-network-security.md) hizmetinin Azure 'dan/dışarı/dışarı aktarma işlemini gerçekleştirmesini sağlamak Için **güvenilir Microsoft hizmetlerine izin ver...** ayarını kullanın.
 
 ## <a name="supported-storage-types"></a>Desteklenen depolama türleri
 
@@ -59,7 +59,7 @@ Aşağıdaki Depolama türleri listesi Azure Içeri/dışarı aktarma hizmeti il
 
 |İş  |Depolama hizmeti |Desteklenir  |Desteklenmez  |
 |---------|---------|---------|---------|
-|İçeri Aktarma     |  Azure Blob depolama <br><br> Azure Dosya Depolama       | Blok Blobları ve sayfa Blobları desteklenir <br><br> Desteklenen dosyalar          |
+|İçeri Aktar     |  Azure Blob depolama <br><br> Azure Dosya Depolama       | Blok Blobları ve sayfa Blobları desteklenir <br><br> Desteklenen dosyalar          |
 |Dışarı Aktarma     |   Azure Blob depolama       | Blok Blobları, sayfa Blobları ve ekleme Blobları desteklenir         | Azure dosyaları desteklenmiyor
 
 
@@ -94,4 +94,4 @@ Waımportexport aracını kullanarak sabit sürücüleri hazırlarken ve veriler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [AzCopy komut satırı yardımcı programı ile veri aktarımı](storage-use-azcopy.md)
+* [AzCopy komut satırı yardımcı programı ile veri aktarımı](./storage-use-azcopy-v10.md)
