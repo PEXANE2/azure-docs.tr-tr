@@ -2,18 +2,18 @@
 title: Hızlı başlangıç-Java için Azure Key Vault istemci kitaplığı
 description: Azure SDK istemci kitaplıkları için hızlı başlangıçlara yazmak üzere biçim ve içerik ölçütleri sağlar.
 author: msmbaldwin
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 87d7bbaa40226e02726b92cf7f7705c8028149f7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f4008b43c487f9dd1c8cfe5e5b67a250ff849daf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019639"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786216"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Hızlı başlangıç: Java için Azure Key Vault gizli istemci kitaplığı
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta, bir Linux Terminal penceresinde [Azure CLI](/cli/azur
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
-Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için Azure CLı ile Azure Identity Library kullanıyor. Geliştiriciler, çağrılarının kimliğini doğrulamak için Visual Studio veya Visual Studio Code de kullanabilir. daha fazla bilgi için bkz [. Azure Identity istemci kitaplığı ile Istemci kimlik doğrulaması](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
+Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için Azure CLı ile Azure Identity Library kullanıyor. Geliştiriciler, çağrılarının kimliğini doğrulamak için Visual Studio veya Visual Studio Code de kullanabilir. daha fazla bilgi için bkz [. Azure Identity istemci kitaplığı ile Istemci kimlik doğrulaması](/java/api/overview/azure/identity-readme)
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 46eee878ba8cf1d12edf262241d5df8ef8ccc82f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 423fd0f91de3e936e2920d57e5bc606bb86a2437
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442928"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786726"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanmaya başlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -98,23 +98,23 @@ Kitaplığı yüklemek için [Microsoft. Azure. SQLDatabase. Elaol Scale. Client
 Tebrikler! SQL veritabanı 'nda elastik veritabanı araçlarını kullanarak ilk parçalı uygulamanızı başarıyla oluşturup çalıştırın. Veritabanınıza bağlanmak için Visual Studio 'Yu veya SQL Server Management Studio kullanın ve örneğin oluşturulan parçalara hızlıca göz atın. Yeni örnek parça veritabanları ve örneğin oluşturduğu bir parça eşleme Yöneticisi veritabanı fark edeceksiniz.
 
 > [!IMPORTANT]
-> Azure ve SQL veritabanı güncelleştirmeleriyle eşitlenmiş olarak kalmak için Management Studio her zaman en son sürümünü kullanmanızı öneririz. [SQL Server Management Studio’yu güncelleyin](https://msdn.microsoft.com/library/mt238290.aspx).
+> Azure ve SQL veritabanı güncelleştirmeleriyle eşitlenmiş olarak kalmak için Management Studio her zaman en son sürümünü kullanmanızı öneririz. [SQL Server Management Studio’yu güncelleyin](/sql/ssms/download-sql-server-management-studio-ssms).
 
 ## <a name="key-pieces-of-the-code-sample"></a>Kod örneğinin temel parçaları
 
-* **Parçaları ve parça haritalarını yönetme**: kod, *ShardManagementUtils.cs* dosyasındaki parçalar, aralıklar ve eşlemelerle çalışmayı gösterir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).  
+* **Parçaları ve parça haritalarını yönetme** : kod, *ShardManagementUtils.cs* dosyasındaki parçalar, aralıklar ve eşlemelerle çalışmayı gösterir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).  
 
-* **Verilere bağımlı yönlendirme**: işlemlerin sağ parçaya yönlendirilmesi *DataDependentRoutingSample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [verilere bağımlı yönlendirme](https://go.microsoft.com/?linkid=9862596).
+* **Verilere bağımlı yönlendirme** : işlemlerin sağ parçaya yönlendirilmesi *DataDependentRoutingSample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [verilere bağımlı yönlendirme](https://go.microsoft.com/?linkid=9862596).
 
-* **Birden çok parça üzerinde sorgulama**: parçalar arasında sorgulama *MultiShardQuerySample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [çok parçalı sorgulama](https://go.microsoft.com/?linkid=9862597).
+* **Birden çok parça üzerinde sorgulama** : parçalar arasında sorgulama *MultiShardQuerySample.cs* dosyasında gösterilmiştir. Daha fazla bilgi için bkz. [çok parçalı sorgulama](https://go.microsoft.com/?linkid=9862597).
 
-* **Boş parçalar ekleniyor**: yeni boş parçaların eklenmesi, *CreateShardSample.cs* dosyasındaki kod tarafından gerçekleştirilir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).
+* **Boş parçalar ekleniyor** : yeni boş parçaların eklenmesi, *CreateShardSample.cs* dosyasındaki kod tarafından gerçekleştirilir. Daha fazla bilgi için bkz. parça [eşleme yöneticisiyle veritabanlarını genişletme](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Diğer elastik ölçeklendirme işlemleri
 
-* **Var olan bir parçayı bölme: parçalara**ayırma özelliği bölünmüş birleştirme aracı tarafından sağlanır. Daha fazla bilgi için bkz. [ölçekli bulut veritabanları arasında veri taşıma](elastic-scale-overview-split-and-merge.md).
+* **Var olan bir parçayı bölme: parçalara** ayırma özelliği bölünmüş birleştirme aracı tarafından sağlanır. Daha fazla bilgi için bkz. [ölçekli bulut veritabanları arasında veri taşıma](elastic-scale-overview-split-and-merge.md).
 
-* **Mevcut parçaları birleştirme: parça**birleştirmesi, bölünmüş birleştirme aracı kullanılarak da gerçekleştirilir. Daha fazla bilgi için bkz. [ölçekli bulut veritabanları arasında veri taşıma](elastic-scale-overview-split-and-merge.md).
+* **Mevcut parçaları birleştirme: parça** birleştirmesi, bölünmüş birleştirme aracı kullanılarak da gerçekleştirilir. Daha fazla bilgi için bkz. [ölçekli bulut veritabanları arasında veri taşıma](elastic-scale-overview-split-and-merge.md).
 
 ## <a name="cost"></a>Maliyet
 
@@ -134,7 +134,7 @@ Elastik veritabanı araçları hakkında daha fazla bilgi için aşağıdaki mak
   * [Betik merkezinde parça esnekliği](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [elastik ölçek duyurusu](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * Channel 9: [elastik ölçeğe genel bakış videosu](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* Tartışma Forumu: [Microsoft Q&Azure SQL veritabanı için soru sayfası](https://docs.microsoft.com/answers/topics/azure-sql-database.html)
+* Tartışma Forumu: [Microsoft Q&Azure SQL veritabanı için soru sayfası](/answers/topics/azure-sql-database.html)
 * Performansı ölçmek için: parça [eşleme Yöneticisi Için performans sayaçları](elastic-database-client-library.md)
 
 <!--Anchors-->

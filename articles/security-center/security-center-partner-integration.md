@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 039fabbbb04f352042973f559e34a3c3a77e7500
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: cf297cdeec88a31950d007246f987957db80e247
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340436"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785893"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki tümleşik güvenlik çözümleri
 Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini yönetmenize ve yenilerini eklemenize yardımcı olur.
@@ -26,9 +26,9 @@ Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini y
 ## <a name="integrated-azure-security-solutions"></a>Tümleşik Azure güvenlik çözümleri
 Güvenlik Merkezi, Azure'daki tümleşik güvenlik çözümlerini etkinleştirmeyi kolaylaştırır. Faydaları şunlardır:
 
-- **Basitleştirilmiş dağıtım**: Güvenlik Merkezi, tümleşik iş ortağı çözümlerinin kolay bir şekilde sağlanmasını mümkün kılar. Güvenlik Merkezi, kötü amaçlı yazılımdan koruma ve güvenlik açığı değerlendirmesi gibi çözümler için sanal makinelerinizde aracıyı temin edebilir. Güvenlik Duvarı gereçlerinde, Güvenlik Merkezi için gereken ağ yapılandırmasının büyük bir bölümü olabilir.
-- **Tümleşik algılamalar**: İş ortağı çözümlerinden gelen güvenlik olayları otomatik olarak toplanır, birleştirilir ve Güvenlik Merkezi uyarıları ve olaylarının bir parçası olarak görüntülenir. Gelişmiş tehdit algılama özellikleri sağlanması amacıyla, bu olaylar diğer kaynaklardan alınan algılamalarla da birleştirilir.
-- **Birleşik sistem durumu izleme ve yönetim**: Müşteriler tüm iş ortağı çözümlerini bir bakışta izlemek için tümleşik sistem durumu olaylarını kullanabilir. İş ortağı çözümü kullanarak gelişmiş kuruluma kolayca erişim olanağıyla temel yapılandırma seçeneği sunulur.
+- **Basitleştirilmiş dağıtım** : Güvenlik Merkezi, tümleşik iş ortağı çözümlerinin kolay bir şekilde sağlanmasını mümkün kılar. Güvenlik Merkezi, kötü amaçlı yazılımdan koruma ve güvenlik açığı değerlendirmesi gibi çözümler için sanal makinelerinizde aracıyı temin edebilir. Güvenlik Duvarı gereçlerinde, Güvenlik Merkezi için gereken ağ yapılandırmasının büyük bir bölümü olabilir.
+- **Tümleşik algılamalar** : İş ortağı çözümlerinden gelen güvenlik olayları otomatik olarak toplanır, birleştirilir ve Güvenlik Merkezi uyarıları ve olaylarının bir parçası olarak görüntülenir. Gelişmiş tehdit algılama özellikleri sağlanması amacıyla, bu olaylar diğer kaynaklardan alınan algılamalarla da birleştirilir.
+- **Birleşik sistem durumu izleme ve yönetim** : Müşteriler tüm iş ortağı çözümlerini bir bakışta izlemek için tümleşik sistem durumu olaylarını kullanabilir. İş ortağı çözümü kullanarak gelişmiş kuruluma kolayca erişim olanağıyla temel yapılandırma seçeneği sunulur.
 
 Şu anda, tümleşik güvenlik çözümleri [Qualys](https://www.qualys.com/public-cloud/#azure) ve [Rapid7](https://www.rapid7.com/products/insightvm/) ve Microsoft Application Gateway Web uygulaması güvenlik duvarı tarafından güvenlik açığı değerlendirmesi içerir.
 
@@ -49,9 +49,9 @@ Güvenlik Merkezinden dağıtılan Azure güvenlik çözümleri otomatik olarak 
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Tümleşik Azure güvenlik çözümlerini ve diğer veri kaynaklarını yönetme
 
-1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/), **Güvenlik Merkezi**'ni açın.
+1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/), **Güvenlik Merkezi** 'ni açın.
 
-1. Güvenlik Merkezi menüsünden **güvenlik çözümleri**' ni seçin.
+1. Güvenlik Merkezi menüsünden **güvenlik çözümleri** ' ni seçin.
 
 **Güvenlik çözümleri** sayfasında, tümleşik Azure güvenlik çözümlerinin durumunu görebilir ve temel yönetim görevlerini çalıştırabilirsiniz.
 
@@ -95,7 +95,7 @@ Güvenlik Merkezi ile tümleştirilecek ve güvenlik uyarıları hakkında bildi
 
 ### <a name="add-data-sources"></a>Veri kaynağı ekleme
 
-**Veri kaynakları ekleyin** bölümünde bağlanabilecek diğer veri kaynakları bulunur. Bu kaynaklardan veri ekleme talimatları için **EKLE**'ye tıklayın.
+**Veri kaynakları ekleyin** bölümünde bağlanabilecek diğer veri kaynakları bulunur. Bu kaynaklardan veri ekleme talimatları için **EKLE** 'ye tıklayın.
 
 ![Veri kaynakları](./media/security-center-partner-integration/add-data-sources.png)
 
@@ -105,5 +105,5 @@ Güvenlik Merkezi ile tümleştirilecek ve güvenlik uyarıları hakkında bildi
 
 Bu makalede, Güvenlik Merkezi'nde iş ortağı çözümlerinin nasıl tümleştirileceğini öğrendiniz. İlgili bilgiler için aşağıdaki makalelere bakın:
 
-* [Güvenlik uyarılarını ve önerilerini dışarı aktarın](continuous-export.md). Azure Sentinel veya başka bir SıEM ile tümleştirme ayarlamayı öğrenin.
+* [Güvenlik Merkezi verilerini sürekli dışa aktarın](continuous-export.md). Azure Sentinel veya başka bir SıEM ile tümleştirme ayarlamayı öğrenin.
 * [Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md). Azure kaynaklarınızı durumunu izleme hakkında bilgi edinin.

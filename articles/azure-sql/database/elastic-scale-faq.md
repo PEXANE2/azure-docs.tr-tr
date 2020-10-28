@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 8998f03fa44529a5f006936a01f711a279178245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e15a8dc5e9f918c630397d6d6593f5bf561755
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84045686"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786913"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Elastik veritabanı araçları sık sorulan sorular (SSS)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,11 +39,11 @@ Elastik veritabanı istemci kitaplığı kullanmak herhangi bir maliyet uygulama
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Uygulamalarımı her başlattığımda parça eşleme Yöneticisi oluşturup parçaları doldurmanız gerekir
 
-Hayır — parça eşleme yöneticisinin oluşturulması (örneğin, [Shardmapmanagerfactory. CreateSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) tek seferlik bir işlemdir.  Uygulamanız uygulama başlangıç zamanı sırasında [Shardmapmanagerfactory. TryGetSqlShardMapManager ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) çağrısını kullanmalıdır.  Uygulama etki alanı başına yalnızca bir tür çağrı olmalıdır.
+Hayır — parça eşleme yöneticisinin oluşturulması (örneğin, [Shardmapmanagerfactory. CreateSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) tek seferlik bir işlemdir.  Uygulamanız uygulama başlangıç zamanı sırasında [Shardmapmanagerfactory. TryGetSqlShardMapManager ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) çağrısını kullanmalıdır.  Uygulama etki alanı başına yalnızca bir tür çağrı olmalıdır.
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Elastik veritabanı araçlarını kullanma hakkında sorularım var, bunların cevaplanmasını nasıl edinebilirim?
 
-Lütfen [SQL veritabanı Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-sql-database.html)bize ulaşın.
+Lütfen [SQL veritabanı Için Microsoft Q&soru sayfasında](/answers/topics/azure-sql-database.html)bize ulaşın.
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Bir parçalama anahtarı kullanarak bir veritabanı bağlantısı aldığımda, aynı parça üzerindeki diğer parçalara ayırma anahtarları için de verileri sorgulayabilir.  Bu, tasarıma göre
 

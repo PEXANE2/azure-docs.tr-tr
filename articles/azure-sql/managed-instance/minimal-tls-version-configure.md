@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: 2dbd4b9af3db122703a7f2b4e0140ec3305f1c3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17d430946f3cba1aa4680d1eaf8979fa4338bc22
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620061"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788409"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde en düşük TLS sürümünü yapılandırma
 Minimum [Aktarım Katmanı Güvenliği (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) sürümü ayarı, MÜŞTERILERIN Azure SQL yönetilen örneği tarafından kullanılan TLS sürümünü denetlemesine olanak tanır.
@@ -37,7 +37,7 @@ Login failed with invalid TLS version
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Aşağıdaki betik [Azure PowerShell modülünü](/powershell/azure/install-az-ps)gerektiriyor.
+> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Aşağıdaki betik [Azure PowerShell modülünü](/powershell/azure/install-az-ps)gerektiriyor.
 
 Aşağıdaki PowerShell betiği, `Get` örnek düzeyinde nasıl ve `Set` **en az TLS sürümü** özelliğinin olduğunu gösterir:
 
@@ -52,7 +52,7 @@ Set-AzSqlInstance -Name sql-instance-name -ResourceGroupName resource-group -Min
 ## <a name="set-minimal-tls-version-via-azure-cli"></a>Azure CLı ile en az TLS sürümü ayarlama
 
 > [!IMPORTANT]
-> Bu bölümdeki tüm betikler [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)gerektirir.
+> Bu bölümdeki tüm betikler [Azure CLI](/cli/azure/install-azure-cli)gerektirir.
 
 ### <a name="azure-cli-in-a-bash-shell"></a>Bash kabuğu 'nda Azure CLı
 

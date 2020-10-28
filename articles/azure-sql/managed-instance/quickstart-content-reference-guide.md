@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 7c7268aa361c77f1d466ab7a58b74aa91090dc4b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ae2f2b8b9b6f3bc934321b13dcefeff46e43b089
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84708578"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788171"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği ile çalışmaya başlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,16 +44,16 @@ Aşağıdaki hızlı başlangıçlarda hızlı bir şekilde bir SQL yönetilen �
   > - Ayrıca, yerel ağınızdan Express Route veya siteden siteye bağlantı kullanabilirsiniz, ancak bu yaklaşımlar bu hızlı başlangıçların kapsamındadır.
   > - Saklama süresini 0 ' dan (sınırsız saklama) başka herhangi bir değere değiştirirseniz, lütfen bekletme 'nin yalnızca bekletme değeri değiştirildikten sonra yazılan günlüklere uygulanacağını unutmayın (bekletme etkin olduktan sonra bile, bekletme olarak sınırsız olarak ayarlandığında zaman içinde yazılır).
 
-SQL yönetilen örneği 'nin el ile oluşturulmasına alternatif olarak, bu işlemi betik ve otomatikleştirebilmek için [PowerShell](scripts/create-configure-managed-instance-powershell.md), [Kaynak Yöneticisi şablonuyla POWERSHELL](scripts/create-powershell-azure-resource-manager-template.md)veya [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) kullanabilirsiniz.
+SQL yönetilen örneği 'nin el ile oluşturulmasına alternatif olarak, bu işlemi betik ve otomatikleştirebilmek için [PowerShell](scripts/create-configure-managed-instance-powershell.md), [Kaynak Yöneticisi şablonuyla POWERSHELL](scripts/create-powershell-azure-resource-manager-template.md)veya [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) kullanabilirsiniz.
 
 ### <a name="migrate-your-databases"></a>Veritabanlarınızı geçirin
 
-Bir SQL yönetilen örneği oluşturup erişimi yapılandırdıktan sonra, SQL Server veritabanlarınızı geçirmeye başlayabilirsiniz. Kaynak veritabanında geçirmek istediğiniz desteklenmeyen özelliklerden bazıları varsa geçiş başarısız olabilir. Hatalardan kaçınmak ve uyumluluğu denetlemek için [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) kullanarak SQL Server veritabanlarınızı çözümleyebilir ve [FILESTREAM](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) veya birden çok günlük dosyasının varlığı gibi bir SQL yönetilen örneğine geçişi engelleyebilen herhangi bir sorun bulabilirsiniz. Bu sorunları çöziyorsanız, veritabanlarınız SQL yönetilen örneği 'ne geçirmeye hazırız. [Veritabanı yükseltme deneyimi Yardımcısı](/sql/dea/database-experimentation-assistant-overview) , iş yükünüzü SQL Server KAYDEDIP bir SQL yönetilen örneği üzerinde yürütebilen, bir SQL yönetilen örneği 'ne geçiş yaparsanız herhangi bir performans sorunu olduğunu belirleyebilecek başka bir kullanışlı araçtır.
+Bir SQL yönetilen örneği oluşturup erişimi yapılandırdıktan sonra, SQL Server veritabanlarınızı geçirmeye başlayabilirsiniz. Kaynak veritabanında geçirmek istediğiniz desteklenmeyen özelliklerden bazıları varsa geçiş başarısız olabilir. Hatalardan kaçınmak ve uyumluluğu denetlemek için [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) kullanarak SQL Server veritabanlarınızı çözümleyebilir ve [FILESTREAM](/sql/relational-databases/blob/filestream-sql-server) veya birden çok günlük dosyasının varlığı gibi bir SQL yönetilen örneğine geçişi engelleyebilen herhangi bir sorun bulabilirsiniz. Bu sorunları çöziyorsanız, veritabanlarınız SQL yönetilen örneği 'ne geçirmeye hazırız. [Veritabanı yükseltme deneyimi Yardımcısı](/sql/dea/database-experimentation-assistant-overview) , iş yükünüzü SQL Server KAYDEDIP bir SQL yönetilen örneği üzerinde yürütebilen, bir SQL yönetilen örneği 'ne geçiş yaparsanız herhangi bir performans sorunu olduğunu belirleyebilecek başka bir kullanışlı araçtır.
 
 Veritabanınızı bir SQL yönetilen örneğine geçirebilmeniz için, yerel SQL Server geri yükleme yeteneklerini kullanarak bir veritabanını bir dosyadaki SQL yönetilen örneğine geri yükleyebilirsiniz `.bak` . Bu yöntemi, şirket içi veya Azure sanal makinelerinde yüklü SQL Server veritabanı altyapısından veritabanları geçirmek için kullanabilirsiniz. Hızlı başlangıç için bkz. [SQL tarafından yönetilen bir örneğe yedekten geri yükleme](restore-sample-database-quickstart.md). Bu hızlı başlangıçta `.bak` `RESTORE` Transact-SQL komutunu kullanarak Azure Blob depolama alanında depolanan bir dosyadan geri yükleme yapabilirsiniz.
 
 > [!TIP]
-> `BACKUP`Azure Blob depolamada veritabanınızın bir yedeğini oluşturmak için Transact-SQL komutunu kullanmak için bkz. [SQL Server yedekleme URL 'si](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
+> `BACKUP`Azure Blob depolamada veritabanınızın bir yedeğini oluşturmak için Transact-SQL komutunu kullanmak için bkz. [SQL Server yedekleme URL 'si](/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
 Bu hızlı başlangıç, veritabanı yedeklemesini bir SQL yönetilen örneği için hızlıca oluşturmanıza, yapılandırmanıza ve geri yüklemenize olanak tanır. Bazı senaryolarda, SQL yönetilen örneği ve gerekli ağ ortamının dağıtımını özelleştirmeniz ya da otomatik hale getirmeniz gerekir. Bu senaryolar aşağıda açıklanacaktır.
 
@@ -72,7 +72,7 @@ Daha önce bahsedilen hızlı başlangıçlarda, bir SQL yönetilen örneğini h
 Ancak, üretim veritabanınızı geçirmek veya bazı performans testi için kullanmak istediğiniz geliştirme/test veritabanlarını geçirmek için, şunlar gibi bazı ek teknikler kullanmayı göz önünde bulundurmanız gerekir:
 
 - Performans testi-kaynak SQL Server Örneğiniz üzerinde temel performans ölçümlerini ölçmelisiniz ve bunları veritabanını geçirdiğiniz hedef SQL yönetilen örneği üzerindeki performans ölçümleriyle karşılaştırmalısınız. [Performans karşılaştırması için en iyi uygulamalar](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210)hakkında daha fazla bilgi edinin.
-- Çevrimiçi geçiş- `RESTORE` Bu makalede açıklandığı gibi, veritabanlarının geri yüklenmesini beklemeniz gerekir (ve henüz depolanmıyorsa Azure Blob depolama alanına kopyalanabilir). Bu, özellikle daha büyük veritabanları için uygulamanızın bazı kesintilerine neden olur. Üretim veritabanınızı taşımak için [veri geçiş hizmeti 'ni (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) kullanarak veritabanınızı en düşük kapalı kalma süresiyle geçirin. DMS, kaynak veritabanınızda yapılan değişiklikleri geri yüklenmekte olan SQL yönetilen örnek veritabanına artırarak bunu gerçekleştirir. Bu şekilde, uygulamanızı kaynaktan hedef veritabanına en az kapalı kalma süresi ile hızlıca geçirebilirsiniz.
+- Çevrimiçi geçiş- `RESTORE` Bu makalede açıklandığı gibi, veritabanlarının geri yüklenmesini beklemeniz gerekir (ve henüz depolanmıyorsa Azure Blob depolama alanına kopyalanabilir). Bu, özellikle daha büyük veritabanları için uygulamanızın bazı kesintilerine neden olur. Üretim veritabanınızı taşımak için [veri geçiş hizmeti 'ni (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%252fazure%252fsql-database%252ftoc.json) kullanarak veritabanınızı en düşük kapalı kalma süresiyle geçirin. DMS, kaynak veritabanınızda yapılan değişiklikleri geri yüklenmekte olan SQL yönetilen örnek veritabanına artırarak bunu gerçekleştirir. Bu şekilde, uygulamanızı kaynaktan hedef veritabanına en az kapalı kalma süresi ile hızlıca geçirebilirsiniz.
 
 [Önerilen geçiş süreci](migrate-to-instance-from-sql-server.md)hakkında daha fazla bilgi edinin.
 

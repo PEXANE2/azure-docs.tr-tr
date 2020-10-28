@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: 02b0ee4d572290436cc45bab73921ae1298bc72f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b9f0b3219a75900a44a73ca0fc3e453f023bddb8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359008"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787168"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Öğretici: güvenlik uyarılarını önceliklendirme, araştırın ve yanıtlayın
 Güvenlik Merkezi, bulut kaynaklarınızda potansiyel olabilecek kötü amaçlı etkinlikler hakkında sizi uyarmak için gelişmiş analiz ve tehdit bilgilerini kullanarak hibrit bulut iş yüklerinizi sürekli çözümler. Ayrıca, uyarıları diğer güvenlik ürünleri ve hizmetlerinden Güvenlik Merkezi 'ne tümleştirebilirsiniz. Bir uyarı oluşturulduktan sonra olası güvenlik sorununu araştırmak ve düzeltmek için Swift eylemi gerekir. 
@@ -49,7 +49,7 @@ Uyarıları **güvenlik uyarıları** sayfasından önceliklendirin:
 Güvenlik uyarılarını önceliklendirme sırasında, uyarıları daha yüksek önem derecesine sahip uyarılara göre uyarı önem derecesine göre önceliklendirin. [Uyarıların nasıl sınıflandırıldığı](security-center-alerts-overview.md#how-are-alerts-classified)konusunda uyarılar önem derecesi hakkında daha fazla bilgi edinin.
 
 > [!TIP]
-> Azure Güvenlik Merkezi 'ni, Azure Sentinel dahil en popüler SıEM çözümlerine bağlayabilirsiniz ve istediğiniz araçtan uyarıları kullanabilirsiniz. [Uyarıları BIR SıEM 'ye aktarma](continuous-export.md)hakkında daha fazla bilgi edinin.
+> Azure Güvenlik Merkezi 'ni, Azure Sentinel dahil en popüler SıEM çözümlerine bağlayabilirsiniz ve istediğiniz araçtan uyarıları kullanabilirsiniz. [SıEM, SOAR veya BT hizmet yönetimi çözümüne akış uyarıları](export-to-siem.md)hakkında daha fazla bilgi edinin.
 
 
 ## <a name="investigate-a-security-alert"></a>Güvenlik uyarısını araştırın
@@ -87,14 +87,14 @@ Bir uyarıyı araştırdıktan ve kapsamını belirledikten sonra, Azure Güvenl
 1.  Otomatikleştirilmiş yanıt adımlarıyla bir mantıksal uygulamayı tetiklemek için **otomatik yanıtı Tetikle** bölümünü kullanın.
 1.  Algılanan etkinlik kötü amaçlı *değilse* , **benzer Uyarıları Gizle** bölümünü kullanarak bu türden gelecek uyarıları gizleyebilirsiniz.
 
-1.  Uyarı araştırmasını tamamlayıp uygun şekilde yanıtladığınızda, durumu **kapatıldı**olarak değiştirin.
+1.  Uyarı araştırmasını tamamlayıp uygun şekilde yanıtladığınızda, durumu **kapatıldı** olarak değiştirin.
 
     :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Güvenlik uyarıları listesi sayfası":::
 
     Bu, uyarıyı ana uyarılar listesinden kaldırır. **Kapatılan** durum ile tüm uyarıları görüntülemek için uyarılar listesi sayfasından filtreyi kullanabilirsiniz.
 
 1.  Microsoft 'a uyarı hakkında geri bildirim sağlamanızı öneriyoruz:
-    1. Uyarı **yararlı** veya **faydalı**olarak işaretleniyor.
+    1. Uyarı **yararlı** veya **faydalı** olarak işaretleniyor.
     1. Bir neden seçin ve açıklama ekleyin.
 
         :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Güvenlik uyarıları listesi sayfası":::
@@ -108,11 +108,11 @@ Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı ba�
 
 Devam etmeyi planlamıyorsanız veya bu özelliklerden birini devre dışı bırakmak istiyorsanız:
 
-1. Güvenlik Merkezi ana menüsüne dönüp **fiyatlandırma ve ayarlar**' ı seçin.
+1. Güvenlik Merkezi ana menüsüne dönüp **fiyatlandırma ve ayarlar** ' ı seçin.
 1. Uygun aboneliği seçin.
-1. Düşürme için **Azure Defender kapalı**' yı seçin.
-1. Otomatik sağlamayı devre dışı bırakmak için, **veri toplama** sayfasını açın ve **otomatik sağlamayı** **kapalı**olarak ayarlayın.
-4. **Kaydet**’i seçin.
+1. Düşürme için **Azure Defender kapalı** ' yı seçin.
+1. Otomatik sağlamayı devre dışı bırakmak için, **veri toplama** sayfasını açın ve **otomatik sağlamayı** **kapalı** olarak ayarlayın.
+4. **Kaydet** ’i seçin.
 
 >[!NOTE]
 > Otomatik sağlamayı devre dışı bırakmak, zaten aracısına sahip olan Azure VM 'lerinden Log Analytics aracısını kaldırmaz. Otomatik sağlamanın devre dışı bırakılması, kaynaklarınızın güvenliğinin izlenmesini kısıtlar.

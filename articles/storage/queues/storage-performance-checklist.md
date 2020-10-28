@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b9aadf7d9cd27763cafb878d0b35d13a140a304
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f6e10d3e5b33a07c223a3913bba0b220df2ff64
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89008412"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787389"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Kuyruk depolama için performans ve ölçeklenebilirlik denetim listesi
 
@@ -52,7 +52,7 @@ Bu makale, sıra depolama uygulamanızı geliştirirken izleyebileceğiniz bir d
 
 Uygulamanız ölçeklenebilirlik hedeflerinin herhangi birini yaklaşırsa veya aşarsa, daha fazla işlem gecikmeleri veya azaltmasıyla karşılaşabilirler. Azure Storage uygulamanızı kısıtsalken, hizmet 503 (sunucu meşgul) veya 500 (Işlem zaman aşımı) hata kodları döndürmeye başlar. Ölçeklenebilirlik hedefleri sınırları içinde kalarak bu hatalardan kaçınmak, uygulamanızın performansını artırmanın önemli bir parçasıdır.
 
-Kuyruk hizmeti ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
+Kuyruk hizmeti ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](./scalability-targets.md#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>En fazla depolama hesabı sayısı
 
@@ -128,7 +128,7 @@ Herhangi bir bağlantıyı açmadan önce bağlantı sınırını ayarlayın.
 
 Diğer programlama dilleri için, bağlantı sınırının nasıl ayarlanacağını öğrenmek için bu dilin belgelerine bakın.  
 
-Daha fazla bilgi için [Web Hizmetleri: eşzamanlı bağlantılar](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)' a bakın.  
+Daha fazla bilgi için [Web Hizmetleri: eşzamanlı bağlantılar](/archive/blogs/darrenj/web-services-concurrent-connections)' a bakın.  
 
 ### <a name="increase-minimum-number-of-threads"></a>En az iş parçacığı sayısını artır
 
@@ -146,7 +146,7 @@ Paralellik performansı performans için harika olsa da, sınırsız paralellik 
 
 ## <a name="client-libraries-and-tools"></a>İstemci kitaplıkları ve araçları
 
-En iyi performans için, her zaman Microsoft tarafından sunulan en son istemci kitaplıklarını ve araçları kullanın. Azure depolama istemci kitaplıkları, çeşitli diller için kullanılabilir. Azure depolama, PowerShell ve Azure CLı 'yı da destekler. Microsoft bu istemci kitaplıklarını ve araçları göz önünde bulundurularak etkin bir şekilde geliştirir, en son hizmet sürümleriyle güncel tutar ve kendini kanıtlamış performans uygulamalarının çoğunu dahili olarak işlemesini sağlar. Daha fazla bilgi için bkz. [Azure depolama başvurusu belgeleri](/azure/storage/#reference).
+En iyi performans için, her zaman Microsoft tarafından sunulan en son istemci kitaplıklarını ve araçları kullanın. Azure depolama istemci kitaplıkları, çeşitli diller için kullanılabilir. Azure depolama, PowerShell ve Azure CLı 'yı da destekler. Microsoft bu istemci kitaplıklarını ve araçları göz önünde bulundurularak etkin bir şekilde geliştirir, en son hizmet sürümleriyle güncel tutar ve kendini kanıtlamış performans uygulamalarının çoğunu dahili olarak işlemesini sağlar. Daha fazla bilgi için bkz. [Azure depolama başvurusu belgeleri](./reference.md).
 
 ## <a name="handle-service-errors"></a>Hizmet hatalarını işleme
 

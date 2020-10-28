@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 2829b1c71aebcc97452fc658e6509e4fae42da8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a1035f8a213a6ce02dd3252ff7d3ddea46faf7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616814"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786590"
 ---
 # <a name="in-memory-sample"></a>In-Memory örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -49,7 +49,7 @@ Daha fazla uyarlaması için, In-Memory OLTP için daha görsel açıdan daha ç
 
 1. [Azure Portal](https://portal.azure.com/)sunucuda bir Premium veya iş açısından kritik veritabanı oluşturun. **Kaynağı** AdventureWorksLT örnek veritabanına ayarlayın. Ayrıntılı yönergeler için bkz. [Azure SQL veritabanı 'nda ilk veritabanınızı oluşturma](database/single-database-create-quickstart.md).
 
-2. Veritabanına SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx)ile bağlanın.
+2. Veritabanına SQL Server Management Studio [(SSMS.exe)](/sql/ssms/download-sql-server-management-studio-ssms)ile bağlanın.
 
 3. [Bellek ıçı OLTP Transact-SQL betiğini](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) panonuza kopyalayın. T-SQL betiği, 1. adımda oluşturduğunuz AdventureWorksLT örnek veritabanında gerekli In-Memory nesnelerini oluşturur.
 
@@ -74,7 +74,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 
 ### <a name="about-the-created-memory-optimized-items"></a>Oluşturulan bellek için iyileştirilmiş öğeler hakkında
 
-**Tablolar**: örnek, bellek için iyileştirilmiş aşağıdaki tabloları içerir:
+**Tablolar** : örnek, bellek için iyileştirilmiş aşağıdaki tabloları içerir:
 
 - SalesLT.Product_inmem
 - SalesLT.SalesOrderHeader_inmem
@@ -82,7 +82,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 - Demo. DemoSalesOrderHeaderSeed
 - Demo. DemoSalesOrderDetailSeed
 
-Bellek için iyileştirilmiş tabloları SSMS içindeki **Nesne Gezgini** aracılığıyla inceleyebilirsiniz. Sağ tıklama **tabloları**  >  **filtre**  >  **filtresi ayarları**  >  **bellek için iyileştirilmiştir**. Değer 1 ' e eşittir.
+Bellek için iyileştirilmiş tabloları SSMS içindeki **Nesne Gezgini** aracılığıyla inceleyebilirsiniz. Sağ tıklama **tabloları**  >  **filtre**  >  **filtresi ayarları**  >  **bellek için iyileştirilmiştir** . Değer 1 ' e eşittir.
 
 Ya da katalog görünümlerini sorgulayabilirsiniz, örneğin:
 
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**Yerel koda derlenmiş saklı yordam**: bir Katalog görünümü sorgusu aracılığıyla SalesLT.usp_InsertSalesOrder_inmem inceleyebilirsiniz:
+**Yerel koda derlenmiş saklı yordam** : bir Katalog görünümü sorgusu aracılığıyla SalesLT.usp_InsertSalesOrder_inmem inceleyebilirsiniz:
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -122,7 +122,7 @@ Ancak, her şeyin çalıştığından emin olmak için-N10 ve-R50 gibi çok daha
 
 Bu bölümde ostress.exe komut satırımızda gömülü olan T-SQL betiği görüntülenir. Betik, daha önce yüklediğiniz T-SQL betiği tarafından oluşturulan öğeleri kullanır.
 
-Aşağıdaki betik, aşağıdaki bellek için iyileştirilmiş *tablolara*beş satır içeren bir örnek satış siparişi ekler:
+Aşağıdaki betik, aşağıdaki bellek için iyileştirilmiş *tablolara* beş satır içeren bir örnek satış siparişi ekler:
 
 - SalesLT.SalesOrderHeader_inmem
 - SalesLT.SalesOrderDetail_inmem
@@ -150,7 +150,7 @@ begin;
 end
 ```
 
-Önceki T-SQL komut dosyasının *_ondisk* sürümünü ostress.exe için yapmak üzere, *_inmem* alt dizenin her ikisini de *_ondisk*ile değiştirmelisiniz. Bu değişiklikler, tabloların ve saklı yordamların adlarını etkiler.
+Önceki T-SQL komut dosyasının *_ondisk* sürümünü ostress.exe için yapmak üzere, *_inmem* alt dizenin her ikisini de *_ondisk* ile değiştirmelisiniz. Bu değişiklikler, tabloların ve saklı yordamların adlarını etkiler.
 
 #### <a name="install-rml-utilities-and-ostress"></a>RML yardımcı programlarını ve `ostress`
 
@@ -160,8 +160,8 @@ VM 'de veya seçtiğiniz herhangi bir konakta, yeniden yürütme biçimlendirme 
 
 Daha fazla bilgi için bkz.
 
-- [In-Memory OLTP Için örnek veritabanında](https://msdn.microsoft.com/library/mt465764.aspx)ostress.exe tartışma.
-- [In-Memory OLTP Için örnek veritabanı](https://msdn.microsoft.com/library/mt465764.aspx).
+- [In-Memory OLTP Için örnek veritabanında](/sql/relational-databases/in-memory-oltp/sample-database-for-in-memory-oltp)ostress.exe tartışma.
+- [In-Memory OLTP Için örnek veritabanı](/sql/relational-databases/in-memory-oltp/sample-database-for-in-memory-oltp).
 - [ostress.exeyüklemek için blog ](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
 
 <!--
@@ -205,7 +205,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
-#### <a name="reset-edit-for-_ondisk-then-rerun"></a>*_Ondisk*için sıfırlayın, düzenleyin ve yeniden çalıştırın
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>*_Ondisk* için sıfırlayın, düzenleyin ve yeniden çalıştırın
 
 *_İnmem* çalıştırıldıktan sonra, *_ondisk* çalıştırmak için aşağıdaki adımları gerçekleştirin:
 
@@ -215,7 +215,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Tüm *_inmem* değiştirmek için ostress.exe komut satırını düzenleyin *_ondisk*.
+2. Tüm *_inmem* değiştirmek için ostress.exe komut satırını düzenleyin *_ondisk* .
 
 3. İkinci kez ostress.exe yeniden çalıştırın ve süre sonucunu yakalayın.
 
@@ -233,7 +233,7 @@ In-Memory testleriniz, bu uyarlaması iş yükü için, veritabanı ile aynı Az
 
 Bu bölümde, bir columnstore dizini kullanırken geleneksel b-ağaç dizinine karşı GÇ ve istatistik sonuçlarını karşılaştırırsınız.
 
-OLTP iş yükünde gerçek zamanlı analizler için, kümelenmemiş bir columnstore dizini kullanmak genellikle en iyisidir. Ayrıntılar için bkz. [açıklanan columnstore dizinleri](https://msdn.microsoft.com/library/gg492088.aspx).
+OLTP iş yükünde gerçek zamanlı analizler için, kümelenmemiş bir columnstore dizini kullanmak genellikle en iyisidir. Ayrıntılar için bkz. [açıklanan columnstore dizinleri](/sql/relational-databases/indexes/columnstore-indexes-overview).
 
 ### <a name="prepare-the-columnstore-analytics-test"></a>Columnstore Analytics testini hazırlama
 
@@ -335,7 +335,7 @@ P2 fiyatlandırma katmanının bulunduğu bir veritabanında, geleneksel dizin i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı Başlangıç 1: daha hızlı T-SQL performansı için OLTP teknolojilerini In-Memory](https://msdn.microsoft.com/library/mt694156.aspx)
+- [Hızlı Başlangıç 1: daha hızlı T-SQL performansı için OLTP teknolojilerini In-Memory](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp)
 
 - [Mevcut bir Azure SQL uygulamasında In-Memory OLTP kullanma](in-memory-oltp-configure.md)
 
@@ -349,24 +349,24 @@ P2 fiyatlandırma katmanının bulunduğu bir veritabanında, geleneksel dizin i
 
 - [Azure SQL veritabanı blog gönderisine bellek içi OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-- [In-Memory OLTP hakkında bilgi edinin](https://msdn.microsoft.com/library/dn133186.aspx)
+- [In-Memory OLTP hakkında bilgi edinin](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 
-- [Columnstore dizinleri hakkında bilgi edinin](https://msdn.microsoft.com/library/gg492088.aspx)
+- [Columnstore dizinleri hakkında bilgi edinin](/sql/relational-databases/indexes/columnstore-indexes-overview)
 
-- [Gerçek zamanlı operasyonel çözümlemeler hakkında bilgi edinin](https://msdn.microsoft.com/library/dn817827.aspx)
+- [Gerçek zamanlı operasyonel çözümlemeler hakkında bilgi edinin](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
 
-- Bkz. [yaygın Iş yükü desenleri ve geçiş konuları](https://msdn.microsoft.com/library/dn673538.aspx) (In-Memory OLTP yaygın olarak önemli performans kazancı sağlayan iş yükü düzenlerini açıklar)
+- Bkz. [yaygın Iş yükü desenleri ve geçiş konuları](/previous-versions/dn673538(v=msdn.10)) (In-Memory OLTP yaygın olarak önemli performans kazancı sağlayan iş yükü düzenlerini açıklar)
 
 #### <a name="application-design"></a>Uygulama tasarımı
 
-- [Bellek içi OLTP (bellek Içi Iyileştirme)](https://msdn.microsoft.com/library/dn133186.aspx)
+- [Bellek içi OLTP (bellek Içi Iyileştirme)](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 
 - [Mevcut bir Azure SQL uygulamasında In-Memory OLTP kullanma](in-memory-oltp-configure.md)
 
 #### <a name="tools"></a>Araçlar
 
-- [Azure portalındaki](https://portal.azure.com/)
+- [Azure Portal](https://portal.azure.com/)
 
-- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
+- [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)
 
-- [SQL Server Veri Araçları (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+- [SQL Server Veri Araçları (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)

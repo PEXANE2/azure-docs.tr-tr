@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: 99d477bb9e8291721022e276c5933ec0ef7f1e37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84defa0704c44bb0ed4564195725f7dd1c42312c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936019"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788069"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Öğretici: Azure Bloblarından aranabilir içerik oluşturmak için REST ve AI kullanma
 
@@ -30,7 +30,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için Postman ve [ara
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + [Azure Depolama](https://azure.microsoft.com/services/storage/)
 + [Postman masaüstü uygulaması](https://www.getpostman.com/)
@@ -43,7 +43,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Bu [OneDrive klasörünü](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) açın ve sol üst köşedeki dosyaları bilgisayarınıza kopyalamak için **İndir** ' e tıklayın. 
 
-1. ZIP dosyasına sağ tıklayın ve **Tümünü Ayıkla**' yı seçin. Çeşitli türlerde 14 dosya vardır. Bu alıştırma için 7 kullanacaksınız.
+1. ZIP dosyasına sağ tıklayın ve **Tümünü Ayıkla** ' yı seçin. Çeşitli türlerde 14 dosya vardır. Bu alıştırma için 7 kullanacaksınız.
 
 ## <a name="1---create-services"></a>1-hizmet oluşturma
 
@@ -53,7 +53,7 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 ### <a name="start-with-azure-storage"></a>Azure Storage 'ı kullanmaya başlama
 
-1. [Azure Portal oturum açın](https://portal.azure.com/) ve **+ kaynak oluştur**' a tıklayın.
+1. [Azure Portal oturum açın](https://portal.azure.com/) ve **+ kaynak oluştur** ' a tıklayın.
 
 1. *Depolama hesabı* araması yapın ve Microsoft 'un depolama hesabı teklifi ' ni seçin.
 
@@ -61,13 +61,13 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 1. Temel bilgiler sekmesinde, aşağıdaki öğeler gereklidir. Diğer her şey için varsayılanları kabul edin.
 
-   + **Kaynak grubu**. Mevcut bir tane seçin veya yeni bir tane oluşturun, ancak bunları topluca yönetebilmeniz için tüm hizmetler için aynı grubu kullanın.
+   + **Kaynak grubu** . Mevcut bir tane seçin veya yeni bir tane oluşturun, ancak bunları topluca yönetebilmeniz için tüm hizmetler için aynı grubu kullanın.
 
-   + **Depolama hesabı adı**. Aynı türde birden fazla kaynağınız olabileceğini düşünüyorsanız, tür ve bölgeye göre belirsizliği ortadan kaldırmak için adı kullanın, örneğin *blobstoragewestus*. 
+   + **Depolama hesabı adı** . Aynı türde birden fazla kaynağınız olabileceğini düşünüyorsanız, tür ve bölgeye göre belirsizliği ortadan kaldırmak için adı kullanın, örneğin *blobstoragewestus* . 
 
-   + **Konum**. Mümkünse, Azure Bilişsel Arama ve bilişsel hizmetler için kullanılan aynı konumu seçin. Tek bir konum, bant genişliği ücretlerini oylar.
+   + **Konum** . Mümkünse, Azure Bilişsel Arama ve bilişsel hizmetler için kullanılan aynı konumu seçin. Tek bir konum, bant genişliği ücretlerini oylar.
 
-   + **Hesap türü**. Varsayılan, *StorageV2 (genel amaçlı v2)* seçeneğini belirleyin.
+   + **Hesap türü** . Varsayılan, *StorageV2 (genel amaçlı v2)* seçeneğini belirleyin.
 
 1. Hizmeti oluşturmak için **gözden geçir + oluştur** ' a tıklayın.
 
@@ -75,7 +75,7 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 1. **Bloblar** hizmeti ' ne tıklayın.
 
-1. Bir kapsayıcı oluşturmak ve *COG-Search-demo*olarak adlandırmak Için **+ kapsayıcı** ' ya tıklayın.
+1. Bir kapsayıcı oluşturmak ve *COG-Search-demo* olarak adlandırmak Için **+ kapsayıcı** ' ya tıklayın.
 
 1. *COG-Search-demo* ' i seçin ve ardından yükleme dosyalarını kaydettiğiniz klasörü açmak Için **karşıya yükle** ' ye tıklayın. Görüntü olmayan dosyaların tümünü seçin. 7 dosyasına sahip olmanız gerekir. Karşıya yüklemek için **Tamam** 'ı tıklatın.
 
@@ -111,11 +111,11 @@ Azure Blob depolamada olduğu gibi, erişim anahtarını toplamak için biraz za
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetinize **genel bakış** sayfasında, arama hizmetinizin adını alın. Uç nokta URL 'sini inceleyerek hizmet adınızı doğrulayabilirsiniz. Uç nokta URL 'niz olsaydı `https://mydemo.search.windows.net` , hizmet adınız olur `mydemo` .
 
-2. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+2. **Ayarlar**  >  **anahtarlar** ' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
    Sorgu anahtarını da alın. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
 
-   ![Hizmet adı ve yönetici ve sorgu anahtarlarını alın](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![Hizmet adı ve yönetici ve sorgu anahtarlarını alın](media/search-get-started-javascript/service-name-and-keys.png)
 
 Tüm istekler, hizmetinize gönderilen her isteğin üstbilgisinde bir API anahtarı gerektirir. Geçerli bir anahtar, istek başına, isteği gönderen uygulama ve onu işleyen hizmet arasında güven oluşturur.
 
@@ -123,7 +123,7 @@ Tüm istekler, hizmetinize gönderilen her isteğin üstbilgisinde bir API anaht
 
 Postman’i başlatın ve bir HTTP isteği ayarlayın. Bu aracı hakkında bilginiz varsa bkz. [Postman kullanarak Azure BILIŞSEL arama REST API 'Lerini araştırma](search-get-started-postman.md).
 
-Bu öğreticide kullanılan istek metotları **gönderi**, **PUT**ve **Get**. Arama hizmetinize dört API çağrısı yapmak için yöntemlerini kullanacaksınız: bir veri kaynağı, bir beceri, dizin ve Dizin Oluşturucu oluşturun.
+Bu öğreticide kullanılan istek metotları **gönderi** , **PUT** ve **Get** . Arama hizmetinize dört API çağrısı yapmak için yöntemlerini kullanacaksınız: bir veri kaynağı, bir beceri, dizin ve Dizin Oluşturucu oluşturun.
 
 Üst bilgiler ' de, "Content-Type" olarak ayarlayın `application/json` ve `api-key` Azure bilişsel arama hizmetinizin yönetim API anahtarı olarak ayarlayın. Üst bilgileri ayarladıktan sonra bu alýþtýrmadaki her istek için kullanabilirsiniz.
 
@@ -143,7 +143,7 @@ Azure Bilişsel Arama 'de, dizin oluşturma (veya veri alımı) sırasında AI i
    https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2020-06-30
    ```
 
-1. İstek **gövdesi**' nde, aşağıdaki JSON tanımını kopyalayın ve öğesini `connectionString` depolama hesabınızın gerçek bağlantısıyla değiştirin. 
+1. İstek **gövdesi** ' nde, aşağıdaki JSON tanımını kopyalayın ve öğesini `connectionString` depolama hesabınızın gerçek bağlantısıyla değiştirin. 
 
    Kapsayıcı adını da düzenlemeyi unutmayın. Önceki bir adımda kapsayıcı adı için "COG-Search-demo" önerilir.
 
@@ -173,11 +173,11 @@ Bir 403 veya 404 hatası aldıysanız, istek yapısını denetleyin: `api-versio
     https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-sd?api-version=2020-06-30
     ```
 
-1. İstek **gövdesi**' nde, aşağıdaki JSON tanımını kopyalayın. Bu beceri, aşağıdaki yerleşik becerilerden oluşur.
+1. İstek **gövdesi** ' nde, aşağıdaki JSON tanımını kopyalayın. Bu beceri, aşağıdaki yerleşik becerilerden oluşur.
 
    | İmde                 | Açıklama    |
    |-----------------------|----------------|
-   | [Varlık Tanıma](cognitive-search-skill-entity-recognition.md) | Kişilerin, kuruluşların ve konumların adlarını blob kapsayıcısındaki içerikten ayıklar. |
+   | [Varlık tanıma](cognitive-search-skill-entity-recognition.md) | Kişilerin, kuruluşların ve konumların adlarını blob kapsayıcısındaki içerikten ayıklar. |
    | [Dil Algılama](cognitive-search-skill-language-detection.md) | İçeriğin dilini algılar. |
    | [Metin Bölme](cognitive-search-skill-textsplit.md)  | Anahtar tümceciği ayıklama becerisi çağrılmadan önce büyük içeriği daha küçük parçalara ayırır. Anahtar tümcecik ayıklama, 50.000 veya daha az karakterden oluşan girişi kabul eder. Bu sınıra uymak için örnek dosyaların birkaç tanesinin bölünmesi gerekir. |
    | [Anahtar İfade Ayıklama](cognitive-search-skill-keyphrases.md) | En üstteki anahtar tümceleri çeker. |
@@ -258,7 +258,7 @@ Bir [Dizin](/rest/api/searchservice/create-index) , içeriğinizin fiziksel ifad
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2020-06-30
    ```
 
-1. İstek **gövdesi**' nde aşağıdaki JSON tanımını kopyalayın. `content`Alan, belgenin kendisini depolar. , Ve için ek alanlar, `languageCode` `keyPhrases` `organizations` beceri tarafından oluşturulan yeni bilgileri (alanlar ve değerler) temsil eder.
+1. İstek **gövdesi** ' nde aşağıdaki JSON tanımını kopyalayın. `content`Alan, belgenin kendisini depolar. , Ve için ek alanlar, `languageCode` `keyPhrases` `organizations` beceri tarafından oluşturulan yeni bilgileri (alanlar ve değerler) temsil eder.
 
     ```json
     {
@@ -342,7 +342,7 @@ Bir [Dizin](/rest/api/searchservice/create-index) , içeriğinizin fiziksel ifad
    https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
    ```
 
-1. İstek **gövdesi**' nde, aşağıdaki JSON tanımını kopyalayın. Alan eşleme öğelerine dikkat edin; Bu eşlemeler veri akışını tanımladıklarından önemlidir. 
+1. İstek **gövdesi** ' nde, aşağıdaki JSON tanımını kopyalayın. Alan eşleme öğelerine dikkat edin; Bu eşlemeler veri akışını tanımladıklarından önemlidir. 
 
    , `fieldMappings` Bir dizindeki hedef alanlara veri kaynağından içerik gönderen beceri önce işlenir. Dizine var olan, değiştirilmemiş içeriği göndermek için alan eşlemelerini kullanacaksınız. Alan adları ve türleri her iki uçta da aynıysa, hiçbir eşleme gerekmez.
 

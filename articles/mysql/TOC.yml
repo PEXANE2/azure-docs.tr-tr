@@ -474,6 +474,10 @@
               href: flexible-server/concepts-audit-logs.md
             - name: Ölçümler
               href: flexible-server/concepts-monitoring.md
+        - name: Çoğaltma
+          items:
+            - name: Okuma amaçlı çoğaltmalar
+              href: flexible-server/concepts-read-replicas.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Sunucu yönetme
@@ -536,6 +540,16 @@
               items:
                 - name: Azure portal
                   href: flexible-server/how-to-configure-audit-logs-portal.md
+        - name: Sunucuyu yeniden başlatma
+          items:
+            - name: Azure portal
+              href: flexible-server/how-to-restart-server-portal.md
+        - name: Çoğaltma
+          items:
+            - name: Azure portalda okuma amaçlı çoğaltma oluşturma
+              href: flexible-server/how-to-read-replicas-portal.md
+            - name: Azure CLI'de okuma amaçlı çoğaltma oluşturma
+              href: flexible-server/how-to-read-replicas-cli.md
         - name: Sorun giderme
           items:
             - name: Bağlantı hataları

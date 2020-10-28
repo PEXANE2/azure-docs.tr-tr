@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 34265552122c1f8d1bcbbcfe95948683a5750a71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea1cc022cbea7dbf3d1fa12cb83cfe3084b28560
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531012"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788098"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Öğretici: Azure Bloblarından aranabilir içerik oluşturmak için Python ve AI kullanma
 
@@ -32,7 +32,7 @@ Bu öğretici aşağıdaki görevleri gerçekleştirmek için Python ve [arama R
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + [Azure Depolama](https://azure.microsoft.com/services/storage/)
 + [Anaconda 3,7](https://www.anaconda.com/distribution/#download-section)
@@ -45,7 +45,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Bu [OneDrive klasörünü](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) açın ve sol üst köşedeki dosyaları bilgisayarınıza kopyalamak için **İndir** ' e tıklayın. 
 
-1. ZIP dosyasına sağ tıklayın ve **Tümünü Ayıkla**' yı seçin. Çeşitli türlerde 14 dosya vardır. Bu alıştırma için 7 kullanacaksınız.
+1. ZIP dosyasına sağ tıklayın ve **Tümünü Ayıkla** ' yı seçin. Çeşitli türlerde 14 dosya vardır. Bu alıştırma için 7 kullanacaksınız.
 
 ## <a name="1---create-services"></a>1-hizmet oluşturma
 
@@ -55,7 +55,7 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 ### <a name="start-with-azure-storage"></a>Azure Storage 'ı kullanmaya başlama
 
-1. [Azure Portal oturum açın](https://portal.azure.com/) ve **+ kaynak oluştur**' a tıklayın.
+1. [Azure Portal oturum açın](https://portal.azure.com/) ve **+ kaynak oluştur** ' a tıklayın.
 
 1. *Depolama hesabı* araması yapın ve Microsoft 'un depolama hesabı teklifi ' ni seçin.
 
@@ -63,13 +63,13 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 1. Temel bilgiler sekmesinde, aşağıdaki öğeler gereklidir. Diğer her şey için varsayılanları kabul edin.
 
-   + **Kaynak grubu**. Mevcut bir tane seçin veya yeni bir tane oluşturun, ancak bunları topluca yönetebilmeniz için tüm hizmetler için aynı grubu kullanın.
+   + **Kaynak grubu** . Mevcut bir tane seçin veya yeni bir tane oluşturun, ancak bunları topluca yönetebilmeniz için tüm hizmetler için aynı grubu kullanın.
 
-   + **Depolama hesabı adı**. Aynı türde birden fazla kaynağınız olabileceğini düşünüyorsanız, tür ve bölgeye göre belirsizliği ortadan kaldırmak için adı kullanın, örneğin *blobstoragewestus*. 
+   + **Depolama hesabı adı** . Aynı türde birden fazla kaynağınız olabileceğini düşünüyorsanız, tür ve bölgeye göre belirsizliği ortadan kaldırmak için adı kullanın, örneğin *blobstoragewestus* . 
 
-   + **Konum**. Mümkünse, Azure Bilişsel Arama ve bilişsel hizmetler için kullanılan aynı konumu seçin. Tek bir konum, bant genişliği ücretlerini oylar.
+   + **Konum** . Mümkünse, Azure Bilişsel Arama ve bilişsel hizmetler için kullanılan aynı konumu seçin. Tek bir konum, bant genişliği ücretlerini oylar.
 
-   + **Hesap türü**. Varsayılan, *StorageV2 (genel amaçlı v2)* seçeneğini belirleyin.
+   + **Hesap türü** . Varsayılan, *StorageV2 (genel amaçlı v2)* seçeneğini belirleyin.
 
 1. Hizmeti oluşturmak için **gözden geçir + oluştur** ' a tıklayın.
 
@@ -77,7 +77,7 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 1. **Bloblar** hizmeti ' ne tıklayın.
 
-1. Bir kapsayıcı oluşturmak ve *COG-Search-demo*olarak adlandırmak Için **+ kapsayıcı** ' ya tıklayın.
+1. Bir kapsayıcı oluşturmak ve *COG-Search-demo* olarak adlandırmak Için **+ kapsayıcı** ' ya tıklayın.
 
 1. *COG-Search-demo* ' i seçin ve ardından yükleme dosyalarını kaydettiğiniz klasörü açmak Için **karşıya yükle** ' ye tıklayın. Görüntü olmayan dosyaların tümünü seçin. 7 dosyasına sahip olmanız gerekir. Karşıya yüklemek için **Tamam** 'ı tıklatın.
 
@@ -113,11 +113,11 @@ Azure Blob depolamada olduğu gibi, erişim anahtarını toplamak için biraz za
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetinize **genel bakış** sayfasında, arama hizmetinizin adını alın. Uç nokta URL 'sini inceleyerek hizmet adınızı doğrulayabilirsiniz. Uç nokta URL 'niz olsaydı `https://mydemo.search.windows.net` , hizmet adınız olur `mydemo` .
 
-2. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+2. **Ayarlar**  >  **anahtarlar** ' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
    Sorgu anahtarını da alın. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
 
-   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Depolama hesabı oluştur" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 Tüm istekler, hizmetinize gönderilen her isteğin üstbilgisinde bir API anahtarı gerektirir. Geçerli bir anahtar, istek başına, isteği gönderen uygulama ve onu işleyen hizmet arasında güven oluşturur.
 

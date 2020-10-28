@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6072c71fa675bd203e94f3f42814a1183b12ae8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d2d28a525f38aad3f48e439992a23abde0b7718
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597973"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786080"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>SAS tanımı oluştur ve paylaşılan erişim imza belirteçlerini kodda getir
 
@@ -23,7 +23,7 @@ Depolama hesabınızı, Anahtar Kasanızda depolanan paylaşılan erişim imzas�
 > [!NOTE]
 > Paylaşılan anahtar yetkilendirmesi üzerinde üstün güvenlik ve kullanım kolaylığı sağlamak üzere depolama hesabınızı güvenli hale getirmek için [rol tabanlı Access Control (RBAC)](../../storage/common/storage-auth-aad.md) kullanmanızı öneririz.
 
-Bu makalede bir SAS tanımı oluşturan ve SAS belirteçlerini getiren .NET kodu örnekleri sağlanmaktadır. Key Vault yönetilen depolama hesapları için oluşturulan istemci dahil olmak üzere, tüm ayrıntılar için bkz. [sharelink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/) örneğimize bakın. SAS belirteçlerini oluşturma ve depolama hakkında daha fazla bilgi için bkz. [Key Vault ve Azure CLI ile depolama hesabı anahtarlarını yönetme](overview-storage-keys.md) veya [Key Vault ve Azure PowerShell depolama hesabı anahtarlarını yönetme](overview-storage-keys-powershell.md).
+Bu makalede bir SAS tanımı oluşturan ve SAS belirteçlerini getiren .NET kodu örnekleri sağlanmaktadır. Key Vault yönetilen depolama hesapları için oluşturulan istemci dahil olmak üzere, tüm ayrıntılar için bkz. [sharelink](/samples/azure/azure-sdk-for-net/share-link/) örneğimize bakın. SAS belirteçlerini oluşturma ve depolama hakkında daha fazla bilgi için bkz. [Key Vault ve Azure CLI ile depolama hesabı anahtarlarını yönetme](overview-storage-keys.md) veya [Key Vault ve Azure PowerShell depolama hesabı anahtarlarını yönetme](overview-storage-keys-powershell.md).
 
 ## <a name="code-samples"></a>Kod örnekleri
 
@@ -41,7 +41,7 @@ SAS tanımı oluşturulduktan sonra, kullanarak gizli dizileri gibi SAS belirte�
 
 Paylaşılan erişim imza belirtecinizin kullanım süreleri dolarsa, yeni bir tane oluşturmak için aynı parolayı yeniden getirebilirsiniz.
 
-Azure depolama hizmetlerine erişmek için Key Vault SAS belirtecinden alınan kullanımı hakkında kılavuz için bkz. [bir hesap SAS kullanarak blob hizmetine erişim](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+Azure depolama hizmetlerine erişmek için Key Vault SAS belirtecinden alınan kullanımı hakkında kılavuz için bkz. [bir hesap SAS kullanarak blob hizmetine erişim](../../storage/common/storage-account-sas-create-dotnet.md#use-an-account-sas-from-a-client)
 
 > [!NOTE]
 > Bir anahtarın tehlikeye girdiği ve normal döndürme süresinden daha hızlı bir şekilde dönebilmeniz için, uygulamanızın depolama alanından 403 alırsa, SAS 'yi yenilemeye hazır olması gerekir. 

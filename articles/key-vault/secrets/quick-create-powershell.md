@@ -7,15 +7,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurepowershell
 ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6ef7b17efc1f18009edffbacb2578f94fcf40b1c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 1b70a8330f6350ef66244ae03e89f685162df5c7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743038"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786335"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
 
@@ -25,10 +25,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üzerini gerektirir. `$PSVersionTable.PSVersion`Sürümü bulmak için yazın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Login-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici, Azure PowerShell modül sürümü 5.0.0 veya üzeri bir sürüm gerektirir. `$PSVersionTable.PSVersion`Sürümü bulmak için yazın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ```azurepowershell-interactive
-Login-AzAccount
+Connect-AzAccount
 ```
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
@@ -55,14 +55,14 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 
 Bu cmdlet’in çıktısı, yeni oluşturulan anahtar kasasının özelliklerini gösterir. Aşağıda listelenen iki özelliği not edin:
 
-* **Kasa Adı**: Örnekte bu değer **Contoso-Vault2** şeklindedir. Bu adı diğer Anahtar Kasası cmdlet'leri için kullanacaksınız.
-* **Kasa URI’si**: Örnekte bu değer https://Contoso-Vault2.vault.azure.net/ şeklindedir. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
+* **Kasa Adı** : Örnekte bu değer **Contoso-Vault2** şeklindedir. Bu adı diğer Anahtar Kasası cmdlet'leri için kullanacaksınız.
+* **Kasa URI’si** : Örnekte bu değer https://Contoso-Vault2.vault.azure.net/ şeklindedir. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
 Kasa oluşturma sonrasında Azure hesabınız bu yeni kasa üzerinde herhangi bir işlem yapmasına izin verilen tek hesaptır.
 
 ## <a name="give-your-user-account-permissions-to-manage-secrets-in-key-vault"></a>Key Vault içinde gizli dizileri yönetmek için Kullanıcı hesabınıza izin verin
 
-Key Vault erişim ilkesini güncelleştirmek ve Kullanıcı hesabınıza gizli izinler vermek için Azure PowerShell set-AzKeyVaultAccessPolicy cmdlet 'ini kullanın.
+Key Vault erişim ilkesini güncelleştirmek ve Kullanıcı hesabınıza gizli izinler vermek için Azure PowerShell Set-AzKeyVaultAccessPolicy cmdlet 'ini kullanın.
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy -VaultName 'Contoso-Vault2' -UserPrincipalName 'user@domain.com' -PermissionsToSecrets get,set,delete
 ```
@@ -86,7 +86,7 @@ $secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePasswor
 Gizli dizi içindeki değeri düz metin olarak görüntülemek için:
 
 ```azurepowershell-interactive
-(Get-AzKeyVaultSecret -vaultName "Contoso-Vault2" -name "ExamplePassword").SecretValueText
+(Get-AzKeyVaultSecret -VaultName "Contoso-Vault2" -Name "ExamplePassword").SecretValue | ConvertFrom-SecureString -AsPlainText
 ```
 
 Artık bir Key Vault oluşturdunuz, bir gizli dizli depoladınız ve bunu aldınız.
@@ -106,5 +106,5 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 Bu hızlı başlangıçta bir Key Vault oluşturup bir gizli dizi depoladınız. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
-- [Azure PowerShell Key Vault cmdlet 'lerine](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault) yönelik başvuruya bakın
+- [Azure PowerShell Key Vault cmdlet 'lerine](/powershell/module/az.keyvault/#key_vault) yönelik başvuruya bakın
 - [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 340cdd97e7097a9fe6f0653d9f50f5a5cc41f890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da7a80842bec68fde8cc44401bb04c2dd061741f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740947"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787967"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Bloblarından AI tarafından oluşturulan aranabilir içerik
 
@@ -36,7 +36,7 @@ Bu öğretici, bir veri kaynağı, dizin, Dizin Oluşturucu ve beceri oluşturma
 
 Beceri, Bilişsel Hizmetler API'si dayalı yerleşik becerileri kullanır. İşlem hattındaki adımlarda, resimlerde optik karakter tanıma (OCR), metinde dil algılama, anahtar ifade ayıklama ve varlık tanıma (kuruluşlar) bulunur. Yeni bilgiler sorgularda, modellerle ve filtrelerinizde kullanabileceğiniz yeni alanlara depolanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * [Azure.Search.Doc10. x NuGet paketi](https://www.nuget.org/packages/Azure.Search.Documents) 
@@ -46,13 +46,13 @@ Beceri, Bilişsel Hizmetler API'si dayalı yerleşik becerileri kullanır. İşl
 > [!Note]
 > Bu öğretici için ücretsiz arama hizmetini kullanabilirsiniz. Ücretsiz arama hizmeti, sizi üç Dizin, üç Dizin Oluşturucu ve üç veri kaynağı ile sınırlandırır. Bu öğreticide hepsinden birer tane oluşturulur. Başlamadan önce, hizmetinize yeni kaynakları kabul etmek için yeriniz olduğundan emin olun.
 
-## <a name="download-sample-data"></a>Örnek verileri indirme data
+## <a name="download-sample-data"></a>Örnek verileri indirme
 
 Örnek veriler, daha sonraki bir adımda Azure Blob depolamaya karşıya yükleyeceğiniz, karışık içerik türünden oluşan 14 dosyadan oluşur.
 
 1. Bu [OneDrive klasörünü](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) açın ve sol üst köşedeki dosyaları bilgisayarınıza kopyalamak için **İndir** ' e tıklayın. 
 
-1. ZIP dosyasına sağ tıklayın ve **Tümünü Ayıkla**' yı seçin. Çeşitli türlerde 14 dosya vardır. Bu alıştırma için 7 kullanacaksınız.
+1. ZIP dosyasına sağ tıklayın ve **Tümünü Ayıkla** ' yı seçin. Çeşitli türlerde 14 dosya vardır. Bu alıştırma için 7 kullanacaksınız.
 
 Ayrıca, Bu öğreticinin kaynak kodunu indirebilirsiniz. Kaynak kodu, [Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) deposundaki **öğretici-AI-Enrichment/v11** klasöründedir.
 
@@ -64,7 +64,7 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 ### <a name="start-with-azure-storage"></a>Azure Storage 'ı kullanmaya başlama
 
-1. [Azure Portal oturum açın](https://portal.azure.com/) ve **+ kaynak oluştur**' a tıklayın.
+1. [Azure Portal oturum açın](https://portal.azure.com/) ve **+ kaynak oluştur** ' a tıklayın.
 
 1. *Depolama hesabı* araması yapın ve Microsoft 'un depolama hesabı teklifi ' ni seçin.
 
@@ -72,13 +72,13 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 1. Temel bilgiler sekmesinde, aşağıdaki öğeler gereklidir. Diğer her şey için varsayılanları kabul edin.
 
-   * **Kaynak grubu**. Mevcut bir tane seçin veya yeni bir tane oluşturun, ancak bunları topluca yönetebilmeniz için tüm hizmetler için aynı grubu kullanın.
+   * **Kaynak grubu** . Mevcut bir tane seçin veya yeni bir tane oluşturun, ancak bunları topluca yönetebilmeniz için tüm hizmetler için aynı grubu kullanın.
 
-   * **Depolama hesabı adı**. Aynı türde birden fazla kaynağınız olabileceğini düşünüyorsanız, tür ve bölgeye göre belirsizliği ortadan kaldırmak için adı kullanın, örneğin *blobstoragewestus*. 
+   * **Depolama hesabı adı** . Aynı türde birden fazla kaynağınız olabileceğini düşünüyorsanız, tür ve bölgeye göre belirsizliği ortadan kaldırmak için adı kullanın, örneğin *blobstoragewestus* . 
 
-   * **Konum**. Mümkünse, Azure Bilişsel Arama ve bilişsel hizmetler için kullanılan aynı konumu seçin. Tek bir konum, bant genişliği ücretlerini oylar.
+   * **Konum** . Mümkünse, Azure Bilişsel Arama ve bilişsel hizmetler için kullanılan aynı konumu seçin. Tek bir konum, bant genişliği ücretlerini oylar.
 
-   * **Hesap türü**. Varsayılan, *StorageV2 (genel amaçlı v2)* seçeneğini belirleyin.
+   * **Hesap türü** . Varsayılan, *StorageV2 (genel amaçlı v2)* seçeneğini belirleyin.
 
 1. Hizmeti oluşturmak için **gözden geçir + oluştur** ' a tıklayın.
 
@@ -86,7 +86,7 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 1. **Bloblar** hizmeti ' ne tıklayın.
 
-1. Bir kapsayıcı oluşturmak ve *COG-Search-demo*olarak adlandırmak Için **+ kapsayıcı** ' ya tıklayın.
+1. Bir kapsayıcı oluşturmak ve *COG-Search-demo* olarak adlandırmak Için **+ kapsayıcı** ' ya tıklayın.
 
 1. *COG-Search-demo* ' i seçin ve ardından yükleme dosyalarını kaydettiğiniz klasörü açmak Için **karşıya yükle** ' ye tıklayın. Tüm on dört dosyayı seçip karşıya yüklemek üzere **Tamam** ' a tıklayın.
 
@@ -124,11 +124,11 @@ Azure Bilişsel Arama hizmetiyle etkileşim kurmak için hizmet URL 'SI ve eriş
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı kopyalayın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+1. **Ayarlar**  >  **anahtarlar** ' da, hizmette tam haklar için bir yönetici anahtarı kopyalayın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
    Sorgu anahtarını da alın. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
 
-   ![Hizmet adı ve yönetici ve sorgu anahtarlarını alın](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![Hizmet adı ve yönetici ve sorgu anahtarlarını alın](media/search-get-started-javascript/service-name-and-keys.png)
 
 İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
@@ -146,7 +146,7 @@ Bu proje için, `Azure.Search.Documents` ve en son sürümünün sürüm 11 ' i 
 
 1. [Azure.Search.Doc](https://www.nuget.org/packages/Azure.Search.Documents)için göz atabilirsiniz.
 
-1. En son sürümü seçip, ardından **yükler**' i tıklatın.
+1. En son sürümü seçip, ardından **yükler** ' i tıklatın.
 
 1. [Microsoft.Extensions.Configurlama](https://www.nuget.org/packages/Microsoft.Extensions.Configuration) ve [Microsoft.Extensions.Configuration.Js](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json)yüklemek için önceki adımları tekrarlayın.
 
@@ -154,11 +154,11 @@ Bu proje için, `Azure.Search.Documents` ve en son sürümünün sürüm 11 ' i 
 
 1. Çözüm Gezgini projenize sağ tıklayıp **Add**  >  **Yeni öğe Ekle...** seçeneğini belirleyin. 
 
-1. Dosyayı adlandırın `appsettings.json` ve **Ekle**' yi seçin. 
+1. Dosyayı adlandırın `appsettings.json` ve **Ekle** ' yi seçin. 
 
 1. Bu dosyayı çıkış dizininize dahil edin.
-    1. Sağ tıklayın `appsettings.json` ve **Özellikler**' i seçin. 
-    1. **Daha yeniyse**, **çıkış dizinine kopyalanacak kopya** değerini değiştirin.
+    1. Sağ tıklayın `appsettings.json` ve **Özellikler** ' i seçin. 
+    1. **Daha yeniyse** , **çıkış dizinine kopyalanacak kopya** değerini değiştirin.
 
 1. Aşağıdaki JSON dosyasını yeni JSON dosyanıza kopyalayın.
 
@@ -173,7 +173,7 @@ Bu proje için, `Azure.Search.Documents` ve en son sürümünün sürüm 11 ' i 
 
 Arama hizmetinizi ve BLOB depolama hesabı bilgilerinizi ekleyin. Bu bilgileri, önceki bölümde belirtilen hizmet sağlama adımlarından alabileceğiniz şekilde geri çekin.
 
-**Searchserviceuri**için tam URL 'yi girin.
+**Searchserviceuri** için tam URL 'yi girin.
 
 ### <a name="add-namespaces"></a>Ad alanı Ekle
 
@@ -285,7 +285,7 @@ SearchIndexerDataSourceConnection dataSource = CreateOrUpdateDataSource(indexerC
 
 ### <a name="step-2-create-a-skillset"></a>2. Adım: beceri oluşturma
 
-Bu bölümde, verilerinize uygulamak istediğiniz bir zenginleştirme adımları kümesi tanımlarsınız. Her bir zenginleştirme adımını bir *yetenek* ve bir *beceri*, enzenginleştirme adımları kümesi olarak adlandırılır. Bu öğretici, beceri için yerleşik bilişsel [becerileri](cognitive-search-predefined-skills.md) kullanır:
+Bu bölümde, verilerinize uygulamak istediğiniz bir zenginleştirme adımları kümesi tanımlarsınız. Her bir zenginleştirme adımını bir *yetenek* ve bir *beceri* , enzenginleştirme adımları kümesi olarak adlandırılır. Bu öğretici, beceri için yerleşik bilişsel [becerileri](cognitive-search-predefined-skills.md) kullanır:
 
 * Görüntü dosyalarında yazdırılmış ve el yazısı metinleri tanımak için [optik karakter tanıma](cognitive-search-skill-ocr.md) .
 
@@ -580,7 +580,7 @@ Bu çalışmada aşağıdaki alanlar ve alan türleri kullanılır:
 
 Bu dizinin alanları bir model sınıfı kullanılarak tanımlanır. Model sınıfının her özelliği karşılık gelen dizin alanının aramayla ilgili davranışlarını belirleyen özniteliklere sahiptir. 
 
-Model sınıfını yeni bir C# dosyasına ekleyeceğiz. Projenize sağ tıklayın ve **Add**  >  **Yeni öğe Ekle...** seçeneğini belirleyin, "sınıf" seçeneğini belirleyip dosyayı adlandırın ve `DemoIndex.cs` ardından **Ekle**' yi seçin.
+Model sınıfını yeni bir C# dosyasına ekleyeceğiz. Projenize sağ tıklayın ve **Add**  >  **Yeni öğe Ekle...** seçeneğini belirleyin, "sınıf" seçeneğini belirleyip dosyayı adlandırın ve `DemoIndex.cs` ardından **Ekle** ' yi seçin.
 
 `Azure.Search.Documents.Indexes`Ve ad alanlarından türleri kullanmak istediğinizi belirttiğinizden emin olun `System.Text.Json.Serialization` .
 
@@ -826,13 +826,13 @@ Azure Bilişsel Arama öğretici konsol uygulamalarında, sonuçları döndüren
 
 En kolay seçenek portalda [Arama Gezgini](search-explorer.md) ' dir. İlk olarak, tüm belgeleri döndüren boş bir sorgu ya da işlem hattı tarafından oluşturulan yeni alan içeriğini döndüren daha hedeflenmiş bir arama çalıştırabilirsiniz. 
 
-1. Azure portal, Genel Bakış sayfasında, **dizinler**' i seçin.
+1. Azure portal, Genel Bakış sayfasında, **dizinler** ' i seçin.
 
 1. **`demoindex`** Listede bulun. 14 belge olmalıdır. Belge sayısı sıfırsa, Dizin Oluşturucu hala çalışıyor ya da sayfa henüz yenilenmedi. 
 
 1. **`demoindex`** seçeneğini belirleyin. Arama Gezgini ilk sekmedir.
 
-1. İlk belge yüklendikten hemen sonra içerik aranabilir olur. İçeriğin mevcut olduğunu doğrulamak için, **Ara**' ya tıklayarak belirtilmeyen bir sorgu çalıştırın. Bu sorgu, şu anda dizine alınmış tüm belgeleri döndürür ve bu, dizinin neleri içerdiğini bir fikir verir.
+1. İlk belge yüklendikten hemen sonra içerik aranabilir olur. İçeriğin mevcut olduğunu doğrulamak için, **Ara** ' ya tıklayarak belirtilmeyen bir sorgu çalıştırın. Bu sorgu, şu anda dizine alınmış tüm belgeleri döndürür ve bu, dizinin neleri içerdiğini bir fikir verir.
 
 1. Daha sonra, daha yönetilebilir sonuçlar için aşağıdaki dizeyi yapıştırın: `search=*&$select=id, languageCode, organizations`
 

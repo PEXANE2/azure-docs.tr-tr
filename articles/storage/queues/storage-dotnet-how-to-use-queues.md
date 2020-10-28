@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c07ad6e631482b47da674549e976953842cf983e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb53181355e292a885e8ffc2ac7c8a3aa48adaae
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855931"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787474"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET kullanarak Azure Kuyruk Depolamaya başlayın
 
@@ -50,9 +50,9 @@ Visual Studio'da yeni bir Windows konsol uygulaması oluşturun. Aşağıdaki ad
 1. **Dosya**  >  **Yeni**  >  **Proje** ' yi seçin
 2. **Platform**  >  **pencerelerini** seçin
 3. **Konsol uygulaması Seç (.NET Framework)**
-4. **İleri**’yi seçin
+4. **İleri** ’yi seçin
 5. **Proje adı** alanına uygulamanız için bir ad girin
-6. **Oluştur**’u seçin
+6. **Oluştur** ’u seçin
 
 Bu öğreticideki tüm kod örnekleri konsol uygulamanızın **program.cs** dosyasının **Main ()** yöntemine eklenebilir.
 
@@ -69,9 +69,9 @@ Bu öğreticiyi tamamlayabilmeniz için projenizde aşağıdaki dört pakete ba�
 - [.Net Için Azure depolama kuyruğu kitaplığı](https://www.nuget.org/packages/Azure.Storage.Queues/): Bu paket, bir istemci tarafından erişilebilecek iletileri depolamak Için azure depolama kuyruk hizmeti birlikte çalışmaya izin verebilir.
 - [.NET için Configuration Manager kitaplığı](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/): Bu paket, istemci uygulamaları için yapılandırma dosyalarına erişim sağlar.
 
-Bu paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları izleyin:
+Bu paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları uygulayın:
 
-1. **Çözüm Gezgini**' de projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
+1. **Çözüm Gezgini** ' de projenize sağ tıklayın ve **NuGet Paketlerini Yönet** ' i seçin.
 1. **Gözatmayı** Seç
 1. Çevrimiçi olarak "Azure. Storage. Queues" araması yapın ve depolama istemci kitaplığı 'nı ve bağımlılıklarını yüklemek için **yüklemeyi** seçin. Bu işlem, kuyruk kitaplığının bağımlılıkları olan Azure. Storage. Common ve Azure. Core kitaplıklarını da yükler.
 1. Çevrimiçi olarak "System.Configuration.ConfigurationManager" araması yapın ve Configuration Manager yüklemek için **yüklemeyi** seçin.
@@ -84,9 +84,9 @@ Bu öğreticiyi tamamlayabilmeniz için projenizde aşağıdaki üç pakete baş
 - [.NET için Microsoft Azure depolama kuyruk kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Bu istemci kitaplığı, bir istemci tarafından erişilebilecek iletileri depolamak için Microsoft Azure depolama kuyruk hizmeti birlikte çalışmaya izin verebilir.
 - [.NET için Microsoft Azure Configuration Manager Kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Bu paket, uygulamanızın nerede çalıştığına bakmaksızın yapılandırma dosyasından bağlantı dizesini ayrıştırmak için bir sınıf sağlar.
 
-Bu paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları izleyin:
+Bu paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları uygulayın:
 
-1. **Çözüm Gezgini**' de projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
+1. **Çözüm Gezgini** ' de projenize sağ tıklayın ve **NuGet Paketlerini Yönet** ' i seçin.
 1. **Gözatmayı** Seç
 1. Çevrimiçi olarak "Microsoft. Azure. Storage. Queue" araması yapın ve depolama istemci kitaplığı 'nı ve bağımlılıklarını yüklemek için **yüklemeyi** seçin. Bu, kuyruk kitaplığının bağımlılığı olan Microsoft. Azure. Storage. Common kitaplığını da yükler.
 1. Çevrimiçi olarak "Microsoft.Azure.ConfigurationManager" araması yapın ve Azure Configuration Manager yüklemek için **yüklemeyi** seçin.
@@ -113,7 +113,7 @@ Depolama hizmetlerine erişim için uç noktaları ve kimlik bilgilerini yapıla
 
 1. [Azure Portal](https://portal.azure.com)gidin.
 2. Depolama hesabınızı bulun.
-3. Depolama hesabına genel bakışın **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. Hesap erişim anahtarlarınız ve her bir anahtar için tam bağlantı dizesi görüntülenir.
+3. Depolama hesabına genel bakışın **Ayarlar** bölümünde **Erişim anahtarları** ’nı seçin. Hesap erişim anahtarlarınız ve her bir anahtar için tam bağlantı dizesi görüntülenir.
 4. **key1** bölümünde **Bağlantı dizesi** değerini bulun ve **Kopyala** düğmesine tıklayarak bağlantı dizesini kopyalayın. Sonraki adımda bir ortam değişkenine bağlantı dizesini ekleyeceksiniz.
 
     ![Azure portalından bağlantı dizesinin kopyalanmasını gösteren ekran görüntüsü](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
@@ -349,7 +349,7 @@ queue.DeleteMessage(retrievedMessage);
 
 ## <a name="use-async-await-pattern-with-common-queue-storage-apis"></a>Genel Kuyruk depolama API’leri ile Zaman Uyumsuz-Bekleme yöntemini kullanma
 
-Bu örnek, genel Kuyruk depolama API’leri ile Zaman Uyumsuz-Bekleme yönteminin nasıl kullanılacağını gösterir. Örnek, her yönteme eklenen *Async* soneki ile belirtildiği şekilde kullanılan yöntemlerin her birinin zaman uyumsuz sürümlerini çağırır. Zaman uyumsuz bir yöntem kullanıldığında, zaman uyumsuz-bekleme yöntemi çağrı tamamlanana kadar yerel çalıştırmayı askıya alır. Bu davranış geçerli iş parçacığının başka işler yapmasını sağlar ve böylece performans sorunlarını engellemeye yardımcı olur, uygulamanızın genel yanıt hızını iyileştirir. .NET’te Zaman Uyumsuz-Bekleme yönteminin kullanılması ile ilgili daha fazla ayrıntı için bkz. [Zaman Uyumsuz ve Bekleme (C# ve Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx).
+Bu örnek, genel Kuyruk depolama API’leri ile Zaman Uyumsuz-Bekleme yönteminin nasıl kullanılacağını gösterir. Örnek, her yönteme eklenen *Async* soneki ile belirtildiği şekilde kullanılan yöntemlerin her birinin zaman uyumsuz sürümlerini çağırır. Zaman uyumsuz bir yöntem kullanıldığında, zaman uyumsuz-bekleme yöntemi çağrı tamamlanana kadar yerel çalıştırmayı askıya alır. Bu davranış geçerli iş parçacığının başka işler yapmasını sağlar ve böylece performans sorunlarını engellemeye yardımcı olur, uygulamanızın genel yanıt hızını iyileştirir. .NET’te Zaman Uyumsuz-Bekleme yönteminin kullanılması ile ilgili daha fazla ayrıntı için bkz. [Zaman Uyumsuz ve Bekleme (C# ve Visual Basic)](/previous-versions/hh191443(v=vs.140)).
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -489,10 +489,10 @@ queue.Delete();
 Kuyruk depolamanın temellerini öğrendiğinize göre, daha karmaşık depolama görevleri hakkında daha fazla bilgi edinmek için bu bağlantıları takip edin:
 
 - Kullanılabilir API’ler ile ilgili eksiksiz bilgiler için Kuyruk hizmeti başvuru belgelerini görüntüleyin:
-  - [.NET için depolama Istemci kitaplığı başvurusu](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [REST API başvurusu](https://msdn.microsoft.com/library/azure/dd179355)
+  - [.NET için depolama Istemci kitaplığı başvurusu](/dotnet/api/overview/azure/storage)
+  - [REST API başvurusu](/rest/api/storageservices/)
 - Azure’da veri depolama ile ilgili ek seçenekler hakkında daha fazla bilgi edinmek için daha fazla özellik kılavuzu görüntüleyin.
-  - Yapılandırılmış verileri depolamak için [.NET kullanarak Azure Table Storage’ı kullanmaya başlayın](../../cosmos-db/table-storage-how-to-use-dotnet.md).
-  - Yapılandırılmamış verileri depolamak için [.NET kullanarak Azure Blob Storage’ı kullanmaya başlayın](../blobs/storage-dotnet-how-to-use-blobs.md).
+  - Yapılandırılmış verileri depolamak için [.NET kullanarak Azure Table Storage’ı kullanmaya başlayın](../../cosmos-db/tutorial-develop-table-dotnet.md).
+  - Yapılandırılmamış verileri depolamak için [.NET kullanarak Azure Blob Storage’ı kullanmaya başlayın](../blobs/storage-quickstart-blobs-dotnet.md).
   - İlişkisel verileri depolamak için [.NET (C#) kullanarak SQL Veritabanı'na bağlanın](../../azure-sql/database/connect-query-dotnet-core.md).
 - [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) kullanarak Azure Storage ile birlikte çalışmak üzere yazdığınız kodları nasıl sadeleştireceğinizi öğrenin.

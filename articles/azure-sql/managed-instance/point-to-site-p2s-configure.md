@@ -12,25 +12,25 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: d04d29b82ecf09d1ee52986fc40687e5511573da
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331915"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788375"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Hızlı başlangıç: şirket içi Azure SQL yönetilen örneği ile noktadan siteye bağlantı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Bu hızlı başlangıçta, bir şirket içi istemci bilgisayarından Noktadan siteye bağlantı üzerinden [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) kullanarak Azure SQL yönetilen örneği 'ne nasıl bağlanacağı gösterilmektedir. Noktadan siteye bağlantılar hakkında bilgi için bkz. [noktadan sıteye VPN hakkında](../../vpn-gateway/point-to-site-about.md).
+Bu hızlı başlangıçta, bir şirket içi istemci bilgisayarından Noktadan siteye bağlantı üzerinden [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS) kullanarak Azure SQL yönetilen örneği 'ne nasıl bağlanacağı gösterilmektedir. Noktadan siteye bağlantılar hakkında bilgi için bkz. [noktadan sıteye VPN hakkında](../../vpn-gateway/point-to-site-about.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç:
 
 - ,  [Yönetilen bir örnek oluşturmak](instance-create-quickstart.md) için başlangıç noktası olarak oluşturulan kaynakları kullanır.
-- , Şirket içi istemci bilgisayarınızda PowerShell 5,1 ve Azure PowerShell 1.4.0 veya üstünü gerektirir. Gerekirse, [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)yönergelerine bakın.
-- Şirket içi istemci bilgisayarınızda [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) 'nin en yeni sürümünü gerektirir.
+- , Şirket içi istemci bilgisayarınızda PowerShell 5,1 ve Azure PowerShell 1.4.0 veya üstünü gerektirir. Gerekirse, [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps#install-the-azure-powershell-module)yönergelerine bakın.
+- Şirket içi istemci bilgisayarınızda [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) 'nin en yeni sürümünü gerektirir.
 
 ## <a name="attach-a-vpn-gateway-to-a-virtual-network"></a>Bir sanal ağa VPN ağ geçidi iliştirme
 
@@ -65,29 +65,29 @@ Bu hızlı başlangıç:
 
 ## <a name="create-a-vpn-connection"></a>VPN bağlantısı oluşturma
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Sanal ağ geçidini oluşturduğunuz kaynak grubunu açın ve sonra sanal ağ geçidi kaynağını açın.
-3. **Noktadan siteye yapılandırma** ' yı seçin ve ardından **VPN istemcisini indir**' i seçin.
+3. **Noktadan siteye yapılandırma** ' yı seçin ve ardından **VPN istemcisini indir** ' i seçin.
 
     ![VPN istemcisini indir](./media/point-to-site-p2s-configure/download-vpn-client.png)  
 4. Şirket içi istemci bilgisayarınızda, ZIP dosyasındaki dosyaları ayıklayın ve ardından ayıklanan dosyaların bulunduğu klasörü açın.
 5. **WindowsAmd64** klasörünü açın ve **VpnClientSetupAmd64.exe** dosyasını açın.
-6. **PC 'niz korumalı bir Windows** iletisi alırsanız, **daha fazla bilgi** ' ye ve **yine de Çalıştır**' a tıklayın.
+6. **PC 'niz korumalı bir Windows** iletisi alırsanız, **daha fazla bilgi** ' ye ve **yine de Çalıştır** ' a tıklayın.
 
     ![VPN istemcisi 'ni yükler](./media/point-to-site-p2s-configure/vpn-client-defender.png)
-7. Kullanıcı Hesabı Denetimi iletişim kutusunda, devam etmek için **Evet**'e tıklayın.
+7. Kullanıcı Hesabı Denetimi iletişim kutusunda, devam etmek için **Evet** 'e tıklayın.
 8. Sanal ağınıza başvuran iletişim kutusunda, sanal ağınızın VPN istemcisini yüklemek için **Evet** ' i seçin.
 
 ## <a name="connect-to-the-vpn-connection"></a>VPN bağlantısına Bağlan
 
-1. Şirket içi istemci bilgisayarınızda **ağ & Internet** 'Te bulunan **VPN** 'ye gidin ve bu VNET Ile bağlantı kurmak için SQL yönetilen örnek Sanal ağınızı seçin. Aşağıdaki görüntüde VNet, **Mynewvnet**olarak adlandırılmıştır.
+1. Şirket içi istemci bilgisayarınızda **ağ & Internet** 'Te bulunan **VPN** 'ye gidin ve bu VNET Ile bağlantı kurmak için SQL yönetilen örnek Sanal ağınızı seçin. Aşağıdaki görüntüde VNet, **Mynewvnet** olarak adlandırılmıştır.
 
     ![VPN bağlantısı](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. **Bağlan**’ı seçin.
-3. İletişim kutusunda **Bağlan**' ı seçin.
+2. **Bağlan** ’ı seçin.
+3. İletişim kutusunda **Bağlan** ' ı seçin.
 
     ![Bağlan düğmesini vurgulayan ekran görüntüsü.](./media/point-to-site-p2s-configure/vpn-connection2.png)  
-4. Bağlantı Yöneticisi 'nin yol tablonuzu güncelleştirmek için yükseltilmiş ayrıcalıklara ihtiyacı olması istendiğinde **devam**' ı seçin.
+4. Bağlantı Yöneticisi 'nin yol tablonuzu güncelleştirmek için yükseltilmiş ayrıcalıklara ihtiyacı olması istendiğinde **devam** ' ı seçin.
 5. Devam etmek için Kullanıcı hesabı denetimi iletişim kutusunda **Evet** ' i seçin.
 
    SQL yönetilen örnek VNet 'iniz için bir VPN bağlantısı oluşturdunuz.
@@ -98,7 +98,7 @@ Bu hızlı başlangıç:
 
 1. Şirket içi istemci bilgisayarında SQL Server Management Studio açın.
 2. **Sunucuya Bağlan** iletişim kutusunda, **sunucu adı** kutusuna yönetilen örneğiniz için tam **ana bilgisayar adını** girin.
-3. **SQL Server kimlik doğrulaması**' nı seçin, Kullanıcı adınızı ve parolanızı girin ve ardından **Bağlan**' ı seçin.
+3. **SQL Server kimlik doğrulaması** ' nı seçin, Kullanıcı adınızı ve parolanızı girin ve ardından **Bağlan** ' ı seçin.
 
     ![SSMS bağlantısı](./media/point-to-site-p2s-configure/ssms-connect.png)  
 

@@ -70,6 +70,8 @@
       href: my-account-portal-sign-ins-page.md
     - name: Portal ayarlarınızı değiştirme
       href: my-account-portal-settings.md
+    - name: Kuruluş değiştirme
+      href: cross-tenant-switcher.md
 - name: Güvenlik bilgileri yardımı
   items:
     - name: Oturum açma sırasında güvenlik bilgileri ekleme

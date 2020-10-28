@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: e1d1ffbf198a4e4c2574f93919ef98e36a90004a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b40afce24fad6bd793a625b11dc5a84f1f021ace
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567001"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786505"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için sık sorulan sorular
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +64,7 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
 
    > [!NOTE]
-   > Azure VM 'lerdeki SQL Server, özel Genelleştirilmiş görüntülerden dağıtılan olanlar da dahil olmak üzere, uyumluluk gereksinimlerini karşılamak ve otomatik düzeltme eki uygulama ve otomatik yedekleme gibi isteğe bağlı özelliklerden yararlanmak için [SQL VM kaynak sağlayıcısı 'na kaydedilmelidir](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash) . Kaynak sağlayıcısı her bir SQL Server VM için [lisans türünü belirtmenizi](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal) de sağlar.
+   > Azure VM 'lerdeki SQL Server, özel Genelleştirilmiş görüntülerden dağıtılan olanlar da dahil olmak üzere, uyumluluk gereksinimlerini karşılamak ve otomatik düzeltme eki uygulama ve otomatik yedekleme gibi isteğe bağlı özelliklerden yararlanmak için [SQL VM kaynak sağlayıcısı 'na kaydedilmelidir](./sql-vm-resource-provider-register.md?tabs=azure-cli%252cbash) . Kaynak sağlayıcısı her bir SQL Server VM için [lisans türünü belirtmenizi](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal) de sağlar.
 
 1. **SQL Server VM dağıtmak için kendi VHD 'mi kullanabilir miyim?**
 
@@ -145,11 +145,11 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
  
    Evet, SQL Server VM genel buluta, klasik model değil Kaynak Yöneticisi modeli kullanılarak dağıtıldığı sürece. Diğer tüm müşteriler yeni SQL Server VM kaynak sağlayıcısına kaydolayamaz. Ancak, yalnızca [yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3) avantajı olan müşteriler bir SQL Server VM [Azure hibrit avantajı (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) etkinleştirerek kendi lisansını kullanabilir. 
 
-1. **VM kaynağı taşındığında veya bırakıldığında kaynak sağlayıcısı (_Microsoft. SqlVirtualMachine_) kaynağına ne olur?** 
+1. **VM kaynağı taşındığında veya bırakıldığında kaynak sağlayıcısı ( _Microsoft. SqlVirtualMachine_ ) kaynağına ne olur?** 
 
    Microsoft. COMPUTE/VirtualMachine kaynağı bırakılır veya taşındığında, ilişkili Microsoft. SqlVirtualMachine kaynağına işlem zaman uyumsuz olarak çoğaltılır.
 
-1. **Kaynak sağlayıcısı (_Microsoft. SqlVirtualMachine_) kaynağı bırakıldığında VM 'ye ne olur?**
+1. **Kaynak sağlayıcısı ( _Microsoft. SqlVirtualMachine_ ) kaynağı bırakıldığında VM 'ye ne olur?**
 
     Microsoft. SqlVirtualMachine kaynağı bırakıldığında Microsoft. COMPUTE/VirtualMachine kaynağı etkilenmez. Ancak, lisans değişiklikleri varsayılan olarak orijinal görüntü kaynağına geri gönderilir. 
 
@@ -169,13 +169,13 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
 
 1. **SQL Server'ın varsayılan örneğini kaldırabilir miyim?**
 
-   Evet, ama bazı noktaları dikkate almalısınız. İlk olarak, SQL Server ilişkili faturalandırma VM 'nin lisans modeline bağlı olarak devam edebilir. İkincisi, önceki cevap ' de belirtildiği gibi, [SQL Server IaaS Aracısı uzantısına](sql-server-iaas-agent-extension-automate-management.md)güvenen özellikler vardır. IaaS uzantısını kaldırmadan varsayılan örneği de kaldırırsanız, uzantı varsayılan örneği aramaya devam eder ve olay günlüğü hataları oluşturabilir. Bu hatalar şu iki kaynaktan alınır: **Microsoft SQL Server kimlik bilgileri yönetimi** ve **ıaas Aracısı Microsoft SQL Server**. Hatalardan biri aşağıdakine benzer olabilir:
+   Evet, ama bazı noktaları dikkate almalısınız. İlk olarak, SQL Server ilişkili faturalandırma VM 'nin lisans modeline bağlı olarak devam edebilir. İkincisi, önceki cevap ' de belirtildiği gibi, [SQL Server IaaS Aracısı uzantısına](sql-server-iaas-agent-extension-automate-management.md)güvenen özellikler vardır. IaaS uzantısını kaldırmadan varsayılan örneği de kaldırırsanız, uzantı varsayılan örneği aramaya devam eder ve olay günlüğü hataları oluşturabilir. Bu hatalar şu iki kaynaktan alınır: **Microsoft SQL Server kimlik bilgileri yönetimi** ve **ıaas Aracısı Microsoft SQL Server** . Hatalardan biri aşağıdakine benzer olabilir:
 
       SQL Server ile bağlantı kurulmaya çalışılırken ağ ile ilişkili veya örneğe özgü bir hata oluştu. Sunucu bulunamadı veya erişilebilir değildi.
 
    Varsayılan örneği kaldırmaya karar verirseniz Ayrıca [SQL Server IaaS Aracısı uzantısını](sql-server-iaas-agent-extension-automate-management.md) da kaldırın. 
 
-1. **IaaS uzantılı SQL Server adlandırılmış bir örneğini kullanabilir miyim**?
+1. **IaaS uzantılı SQL Server adlandırılmış bir örneğini kullanabilir miyim** ?
    
    Evet, adlandırılmış örnek SQL Server tek örnek ise ve özgün varsayılan örnek [düzgün şekilde kaldırılmışsa](sql-server-iaas-agent-extension-automate-management.md#install-on-a-vm-with-a-single-named-sql-server-instance). Varsayılan örnek yoksa ve tek bir SQL Server VM birden çok adlandırılmış örnek varsa, SQL Server IaaS Aracısı uzantısı yüklenemeyecektir. 
 
@@ -210,7 +210,7 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
 
 1. **SQL Server 2008/2008 R2 örneğinden SQL Server VM kaynak sağlayıcısına kaydettikten sonra yükseltebilir miyim?**
 
-   Evet. SQL Server sürümünü yükseltmek için herhangi bir kurulum medyası kullanabilir ve sonra [SQL IaaS uzantı modınızı](sql-vm-resource-provider-register.md#management-modes) _aracıdan_ _tam_' a yükseltebilirsiniz. Bunun yapılması, Portal yönetilebilirliği, otomatik yedeklemeler ve otomatik düzeltme eki uygulama gibi SQL IaaS uzantısının tüm avantajlarına erişmenizi sağlayacaktır. 
+   Evet. SQL Server sürümünü yükseltmek için herhangi bir kurulum medyası kullanabilir ve sonra [SQL IaaS uzantı modınızı](sql-vm-resource-provider-register.md#management-modes) _aracıdan_ _tam_ ' a yükseltebilirsiniz. Bunun yapılması, Portal yönetilebilirliği, otomatik yedeklemeler ve otomatik düzeltme eki uygulama gibi SQL IaaS uzantısının tüm avantajlarına erişmenizi sağlayacaktır. 
 
 1. **Destek süresi sona eren SQL Server 2008 ve SQL Server 2008 R2 örneklerim için ücretsiz genişletilmiş güvenlik güncelleştirmelerini nasıl edinebilirim?**
 
@@ -241,7 +241,7 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
 
 ## <a name="resources"></a>Kaynaklar
 
-**Windows VM 'leri**:
+**Windows VM 'leri** :
 
 * [Windows VM 'de SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 'de SQL Server sağlama](create-sql-vm-portal.md)
@@ -250,9 +250,9 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
 * [Azure sanal makinelerinde SQL Server için en iyi performans uygulamaları](performance-guidelines-best-practices.md)
 * [Azure sanal makinelerinde SQL Server için uygulama desenleri ve geliştirme stratejileri](application-patterns-development-strategies.md)
 
-**Linux VM 'leri**:
+**Linux VM 'leri** :
 
 * [Linux VM 'de SQL Server genel bakış](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Linux VM üzerinde SQL Server sağlama](../linux/sql-vm-create-portal-quickstart.md)
 * [SSS (Linux)](../linux/frequently-asked-questions-faq.md)
-* [Linux üzerinde SQL Server belgeleri](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [Linux üzerinde SQL Server belgeleri](/sql/linux/sql-server-linux-overview)

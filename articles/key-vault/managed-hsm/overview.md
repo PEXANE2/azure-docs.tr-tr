@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 09/15/2020
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: e98b21d5afebdbd2654d032493b92eb5e6e7fdc6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d2d5d6ad23f5e6a2cac2dc97904154d5912573b0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91320566"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787933"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Azure Key Vault Managed HSM (Önizleme) nedir?
 
@@ -24,21 +24,21 @@ Azure Key Vault yönetilen HSM, **fıps 140-2 düzey 3** tarafından doğrulanan
 
 ### <a name="fully-managed-highly-available-single-tenant-hsm-as-a-service"></a>Tam olarak yönetilen, yüksek oranda kullanılabilir, tek kiracılı HSM hizmet olarak
 
-- **Tam olarak yönetilen**: HSM sağlama, yapılandırma, düzeltme eki uygulama ve bakım hizmet tarafından gerçekleştirilir. 
+- **Tam olarak yönetilen** : HSM sağlama, yapılandırma, düzeltme eki uygulama ve bakım hizmet tarafından gerçekleştirilir. 
 - **Yüksek oranda kullanılabilir ve bölge** dayanıklı (kullanılabilirlik alanları desteklenir): her HSM kümesi, en az iki kullanılabilirlik bölgesi arasında yayılan bırden çok HSM bölümden oluşur. Donanım başarısız olursa, HSM kümenizin üye bölümleri otomatik olarak sağlıklı düğümlere geçirilir.
-- **Tek kiracılı**: her BIR yönetilen HSM örneği tek bir müşteriye ayrılmıştır ve bırden çok HSM bölümünün kümesinden oluşur. Her HSM kümesi, her müşterinin HSM kümesini şifreli olarak yalıtan, müşteriye özgü ayrı bir güvenlik etki alanı kullanır.
+- **Tek kiracılı** : her BIR yönetilen HSM örneği tek bir müşteriye ayrılmıştır ve bırden çok HSM bölümünün kümesinden oluşur. Her HSM kümesi, her müşterinin HSM kümesini şifreli olarak yalıtan, müşteriye özgü ayrı bir güvenlik etki alanı kullanır.
 
 
 ### <a name="access-control-enhanced-data-protection--compliance"></a>Erişim denetimi, gelişmiş veri koruma & uyumluluğu
 
-- **Merkezi anahtar yönetimi**: kuruluşunuzda kritik ve yüksek değerli anahtarları tek bir yerde yönetin. Anahtar izinleri başına ayrıntılı olarak, ' en az ayrıcalıklı erişim ' prensibi her bir anahtara erişimi denetleyin.
-- **Yalıtılmış erişim denetimi**: yönetilen HSM "yerel RBAC" erişim denetimi modeli, belirlenen HSM küme yöneticilerinin, yönetim grubu, abonelik veya kaynak grubu yöneticilerinin geçersiz kılınamamasına karşın, hsms üzerinde tamamen denetime sahip olmasını sağlar.
-- **Fıps 140-2 düzey 3 doğrulanan HSM**'ler: FIPS ((Federal Information Protection standart)) 140-2 düzey 3 tarafından doğrulanan HSM 'lerle verilerinizi koruyun ve uyumluluk gereksinimlerini karşılayın. Yönetilen HSM 'ler, Marvell LiquidSecurity HSM bağdaştırıcılarını kullanır.
-- **İzleme ve denetim**: Azure izleyici ile tam olarak tümleşik. Tüm etkinliklerin Azure Izleyici aracılığıyla tüm günlüklerini alın. Analiz ve uyarılar için Azure Log Analytics kullanın.
+- **Merkezi anahtar yönetimi** : kuruluşunuzda kritik ve yüksek değerli anahtarları tek bir yerde yönetin. Anahtar izinleri başına ayrıntılı olarak, ' en az ayrıcalıklı erişim ' prensibi her bir anahtara erişimi denetleyin.
+- **Yalıtılmış erişim denetimi** : yönetilen HSM "yerel RBAC" erişim denetimi modeli, belirlenen HSM küme yöneticilerinin, yönetim grubu, abonelik veya kaynak grubu yöneticilerinin geçersiz kılınamamasına karşın, hsms üzerinde tamamen denetime sahip olmasını sağlar.
+- **Fıps 140-2 düzey 3 doğrulanan HSM** 'ler: FIPS ((Federal Information Protection standart)) 140-2 düzey 3 tarafından doğrulanan HSM 'lerle verilerinizi koruyun ve uyumluluk gereksinimlerini karşılayın. Yönetilen HSM 'ler, Marvell LiquidSecurity HSM bağdaştırıcılarını kullanır.
+- **İzleme ve denetim** : Azure izleyici ile tam olarak tümleşik. Tüm etkinliklerin Azure Izleyici aracılığıyla tüm günlüklerini alın. Analiz ve uyarılar için Azure Log Analytics kullanın.
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>Azure ve Microsoft PaaS/SaaS hizmetleriyle tümleşik 
 
-- [Azure depolama](../../storage/common/encryption-customer-managed-keys.md), [azure SQL](../../azure-sql/database/transparent-data-encryption-byok-overview.md)ve [Azure Information Protection](/azure/information-protection/byok-price-restrictions)gibi Azure hizmetlerinde bekleyen verileri şifrelemek için ( [bYok](hsm-protected-keys-byok.md)) anahtarlarını oluşturun (veya bu anahtarları kullanarak içeri aktarın).
+- [Azure depolama](../../storage/common/customer-managed-keys-overview.md), [azure SQL](../../azure-sql/database/transparent-data-encryption-byok-overview.md)ve [Azure Information Protection](/azure/information-protection/byok-price-restrictions)gibi Azure hizmetlerinde bekleyen verileri şifrelemek için ( [bYok](hsm-protected-keys-byok.md)) anahtarlarını oluşturun (veya bu anahtarları kullanarak içeri aktarın).
 
 ### <a name="uses-same-api-and-management-interfaces-as-key-vault"></a>Key Vault aynı API ve yönetim arabirimlerini kullanır
 

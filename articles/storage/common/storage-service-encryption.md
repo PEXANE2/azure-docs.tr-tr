@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f56da93d0ea0f346e73b34990d8ec4c222bb8813
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: bc0a556841c3c6ee91ae472087aaaf7c74009b67
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488580"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785791"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Bekleyen veri için Azure Depolama şifrelemesi
 
@@ -38,7 +38,7 @@ Azure yönetilen diskler için şifreleme ve anahtar yönetimi hakkında daha fa
 
 Yeni bir depolama hesabındaki veriler varsayılan olarak Microsoft tarafından yönetilen anahtarlarla şifrelenir. Verilerinizin şifrelenmesi için Microsoft tarafından yönetilen anahtarları kullanmaya devam edebilir veya kendi anahtarlarınız ile şifrelemeyi yönetebilirsiniz. Şifrelemeyi kendi anahtarlarınız ile yönetmeyi seçerseniz iki seçeneğiniz vardır. Her iki tür anahtar yönetimi veya her ikisini de kullanabilirsiniz:
 
-- Blob depolamadaki ve Azure dosyalarındaki verileri şifrelemek ve şifrelerini çözmek için, *müşteri tarafından yönetilen bir anahtar* belirtebilirsiniz. <sup>1, 2</sup> müşteri tarafından yönetilen anahtarların Azure Key Vault veya Azure Key Vault yönetilen donanım güvenlik MODELI (HSM) (Önizleme) içinde depolanması gerekir. Müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için bkz. [Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları kullanma](encryption-customer-managed-keys.md).
+- Blob depolamadaki ve Azure dosyalarındaki verileri şifrelemek ve şifrelerini çözmek için, *müşteri tarafından yönetilen bir anahtar* belirtebilirsiniz. <sup>1, 2</sup> müşteri tarafından yönetilen anahtarların Azure Key Vault veya Azure Key Vault yönetilen donanım güvenlik MODELI (HSM) (Önizleme) içinde depolanması gerekir. Müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için bkz. [Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları kullanma](./customer-managed-keys-overview.md).
 - BLOB depolama işlemlerinde, *müşteri tarafından sağlanmış bir anahtar* belirtebilirsiniz. Blob depolamaya karşı okuma veya yazma isteği yapan bir istemci, blob verilerinin şifrelenme ve şifresinin çözülmesi üzerinde ayrıntılı denetim isteğine yönelik bir şifreleme anahtarı içerebilir. Müşteri tarafından sunulan anahtarlar hakkında daha fazla bilgi için bkz. [BLOB depolama için istekte bir şifreleme anahtarı sağlama](../blobs/encryption-customer-provided-keys.md).
 
 Aşağıdaki tabloda, Azure depolama şifrelemesi için anahtar yönetim seçenekleri karşılaştırılmaktadır.
@@ -101,8 +101,8 @@ Bir şifreleme kapsamı devre dışı bırakıldığında, artık bu için fatur
 
 Şifreleme kapsamınız Azure Key Vault için müşteri tarafından yönetilen anahtarlarla korunuyorsa, şifreleme kapsamını devre dışı bırakmak için anahtar kasasında ilişkili anahtarı da silebilirsiniz. Azure Key Vault içindeki müşteri tarafından yönetilen anahtarların geçici silme ve Temizleme koruması ile korunduğunu ve silinen bir anahtarın bu özellikler tarafından tanımlanan davranışa tabi olduğunu aklınızda bulundurun. Daha fazla bilgi için Azure Key Vault belgelerinde aşağıdaki konulardan birine bakın:
 
-- [PowerShell ile geçici silmeyi kullanma](../../key-vault/general/soft-delete-powershell.md)
-- [CLı ile geçici silmeyi kullanma](../../key-vault/general/soft-delete-cli.md)
+- [PowerShell ile geçici silmeyi kullanma](../../key-vault/general/key-vault-recovery.md)
+- [CLı ile geçici silmeyi kullanma](../../key-vault/general/key-vault-recovery.md)
 
 > [!NOTE]
 > Bir şifreleme kapsamının silinmesi mümkün değildir.

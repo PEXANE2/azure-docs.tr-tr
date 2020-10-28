@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 5e40a3f6e6f30926d8ea70d235f3b44e87ea55fc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7fe5b8da0b6dfa69d04a5ad152aa34a8686d854f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746042"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786114"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault gizli istemci kitaplığı
 
@@ -24,14 +24,14 @@ Python için Azure Key Vault gizli istemci kitaplığı ile çalışmaya başlay
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Python 2.7 + veya 3.5.3 +](https://docs.microsoft.com/azure/developer/python/configure-local-development-environment)
+- [Python 2.7 + veya 3.5.3 +](/azure/developer/python/configure-local-development-environment)
 - [Azure CLI](/cli/azure/install-azure-cli)
 
 Bu hızlı başlangıçta, [Azure CLI](/cli/azure/install-azure-cli) 'Yi bir Linux Terminal penceresinde çalıştırdığınız varsayılır.
 
 
 ## <a name="set-up-your-local-environment"></a>Yerel ortamınızı ayarlama
-Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için Azure CLı ile Azure Identity Library kullanıyor. Geliştiriciler, aramalarını doğrulamak için Visual Studio veya Visual Studio Code de kullanabilir. daha fazla bilgi için bkz. [Azure Identity istemci kitaplığı ile Istemci kimlik doğrulaması](https://docs.microsoft.com/java/api/overview/azure/identity-readme).
+Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için Azure CLı ile Azure Identity Library kullanıyor. Geliştiriciler, aramalarını doğrulamak için Visual Studio veya Visual Studio Code de kullanabilir. daha fazla bilgi için bkz. [Azure Identity istemci kitaplığı ile Istemci kimlik doğrulaması](/java/api/overview/azure/identity-readme).
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

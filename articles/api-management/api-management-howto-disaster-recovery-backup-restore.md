@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 0eb38dbb01e1e7d820159a5085b262dae3c04e8f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1a1e9c394f3665845b1f2bbbd605322b43f5f25d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075340"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787236"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma
 
@@ -61,28 +61,28 @@ Azure Resource Manager kullanan kaynaklarda yaptığınız tüm görevlerin aşa
     > [!NOTE]
     > Azure Active Directory varsayılan dizin hesabınıza görünmüyorsa, hesabınıza gerekli izinleri vermek için Azure aboneliğinin yöneticisine başvurun.
 
-3. **Yeni uygulama kaydı**’na tıklayın.
+3. **Yeni uygulama kaydı** ’na tıklayın.
 
     Sağ tarafta **Oluştur** penceresi görünür. Bu, AAD uygulamasının ilgili bilgilerini girdiğiniz yerdir.
 
 4. Uygulama için bir ad girin.
-5. Uygulama türü için **Yerel**' i seçin.
+5. Uygulama türü için **Yerel** ' i seçin.
 6. Yeniden yönlendirme URI 'si gibi bir yer tutucu URL 'si girin `http://resources` , çünkü bu gerekli bir alandır, ancak değer daha sonra kullanılmaz. **Redirect URI** Uygulamayı kaydetmek için onay kutusuna tıklayın.
-7. **Oluştur**’a tıklayın.
+7. **Oluştur** 'a tıklayın.
 
 ### <a name="add-an-application"></a>Uygulama ekleme
 
-1. Uygulama oluşturulduktan sonra **API izinleri**' ne tıklayın.
-2. **+ Izin Ekle**' ye tıklayın.
-4. **Microsoft API 'Leri Seç**' e basın.
-5. **Azure hizmet yönetimi**'ni seçin.
-6. **Seç**' e basın.
+1. Uygulama oluşturulduktan sonra **API izinleri** ' ne tıklayın.
+2. **+ Izin Ekle** ' ye tıklayın.
+4. **Microsoft API 'Leri Seç** ' e basın.
+5. **Azure hizmet yönetimi** 'ni seçin.
+6. **Seç** ' e basın.
 
     ![İzin ekleme](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
-7. Yeni eklenen uygulamanın yanındaki **temsilci izinleri** ' ne tıklayın, **Azure hizmet yönetimi 'ne (Önizleme) erişim**kutusunu işaretleyin.
-8. **Seç**' e basın.
-9. **Izin ver**' e tıklayın.
+7. Yeni eklenen uygulamanın yanındaki **temsilci izinleri** ' ne tıklayın, **Azure hizmet yönetimi 'ne (Önizleme) erişim** kutusunu işaretleyin.
+8. **Seç** ' e basın.
+9. **Izin ver** ' e tıklayın.
 
 ### <a name="configuring-your-app"></a>Uygulamanızı yapılandırma
 
@@ -115,7 +115,7 @@ namespace GetTokenResourceManagerRequests
 
 `{tenant id}` `{application id}` `{redirect uri}` Aşağıdaki yönergeleri kullanarak, ve değiştirin:
 
-1. `{tenant id}`Oluşturduğunuz Azure Active Directory uygulamasının KIRACı kimliğiyle değiştirin. **Uygulama kayıtları**  ->  **uç noktalar**' a tıklayarak kimliğe erişebilirsiniz.
+1. `{tenant id}`Oluşturduğunuz Azure Active Directory uygulamasının KIRACı kimliğiyle değiştirin. **Uygulama kayıtları**  ->  **uç noktalar** ' a tıklayarak kimliğe erişebilirsiniz.
 
     ![Uç Noktalar][api-management-endpoint]
 
@@ -152,7 +152,7 @@ burada:
 -   `subscriptionId` -Yedeklemeye çalıştığınız API Management hizmeti tutan aboneliğin KIMLIĞI
 -   `resourceGroupName` -Azure API Management hizmetinizin kaynak grubunun adı
 -   `serviceName` -oluşturma sırasında belirtilen bir yedeği yaptığınız API Management hizmetin adı
--   `api-version` -ile Değiştir `2018-06-01-preview`
+-   `api-version` -ile Değiştir `2019-12-01`
 
 İsteğin gövdesinde, hedef Azure depolama hesabı adı, erişim anahtarı, blob kapsayıcısı adı ve yedekleme adı ' nı belirtin:
 
@@ -171,10 +171,10 @@ Yedekleme, tamamlanması bir dakikadan uzun süreolabilecek uzun süredir çalı
 
 #### <a name="constraints-when-making-backup-or-restore-request"></a>Yedekleme veya geri yükleme isteği yapılırken kısıtlamalar
 
--   İstek gövdesinde belirtilen **kapsayıcı** **mevcut olmalıdır**.
+-   İstek gövdesinde belirtilen **kapsayıcı** **mevcut olmalıdır** .
 -   Yedekleme devam ederken, hizmette SKU yükseltme veya düşürme, etki alanı adında değişiklik ve daha fazlası gibi **yönetim değişikliklerinden kaçının** .
 -   Bir yedeklemenin geri yüklenmesi yalnızca, oluşturulduktan sonra **30 gün boyunca garanti edilir** .
--   Yedekleme işlemi sırasında hizmet yapılandırmasında yapılan **değişiklikler** (örneğin, API 'ler, ilkeler ve geliştirici portalı görünümü), **yedeklemeden dışlanmayabilir ve kaybolacaktır**.
+-   Yedekleme işlemi sırasında hizmet yapılandırmasında yapılan **değişiklikler** (örneğin, API 'ler, ilkeler ve geliştirici portalı görünümü), **yedeklemeden dışlanmayabilir ve kaybolacaktır** .
 -   [Güvenlik duvarı][azure-storage-ip-firewall] etkinleştirilmişse denetim düzlemine Azure Storage hesabı 'Na erişime **izin verin** . Müşteri, yedekleme veya geri yükleme için depolama hesabındaki [Azure API Management Denetim DÜZLEMI IP adresleri][control-plane-ip-address] kümesini açmalı. Bunun nedeni, Azure depolama 'ya yönelik isteklerin Işlem > (Azure API yönetim denetim düzlemi) genel bir IP 'ye karşı bir şekilde değil. Çapraz bölge depolama isteği yeniden oluşturulacak.
 
 #### <a name="what-is-not-backed-up"></a>Yedeklenmeyen
@@ -202,7 +202,7 @@ burada:
 -   `subscriptionId` -Bir yedeği geri yüklemekte olduğunuz API Management hizmetini tutan aboneliğin KIMLIĞI
 -   `resourceGroupName` -bir yedeği geri yüklemekte olduğunuz Azure API Management hizmetini tutan kaynak grubunun adı
 -   `serviceName` -Yükleme sırasında belirtilen API Management hizmetin adı
--   `api-version` -ile Değiştir `2018-06-01-preview`
+-   `api-version` -ile Değiştir `api-version=2019-12-01`
 
 İsteğin gövdesinde, yedekleme dosyası konumunu belirtin. Diğer bir deyişle, Azure depolama hesabı adı, erişim anahtarı, blob kapsayıcısı adı ve yedekleme adını ekleyin:
 
@@ -222,7 +222,7 @@ Restore, tamamlanması 30 veya daha fazla dakika süren uzun süredir çalışan
 > [!IMPORTANT]
 > Geri yüklenen hizmetin **SKU 'su** , geri yüklenmekte olan yedeklenen hizmetin SKU 'su **ile aynı olmalıdır** .
 >
-> Geri yükleme işlemi devam ederken hizmet yapılandırmasında yapılan **değişiklikler** (örneğin, API 'ler, ilkeler, geliştirici portalı görünümü) **üzerine yazılabilir**.
+> Geri yükleme işlemi devam ederken hizmet yapılandırmasında yapılan **değişiklikler** (örneğin, API 'ler, ilkeler, geliştirici portalı görünümü) **üzerine yazılabilir** .
 
 <!-- Dummy comment added to suppress markdown lint warning -->
 

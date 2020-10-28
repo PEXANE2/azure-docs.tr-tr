@@ -10,19 +10,19 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: f3708885759a6a353742fe89b4454b39496aeeab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73fa4d4988c7a036dc1d2eb7dc81c3c1c5d77026
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619993"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788290"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde ortak uç noktayı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-[Yönetilen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) örnek için genel uç nokta, yönetilen örneğiniz için [sanal ağ](../../virtual-network/virtual-networks-overview.md)dışından veri erişimi sağlar. Yönetilen örneğinize Power BI, Azure App Service veya şirket içi ağ gibi çok kiracılı Azure hizmetlerinden erişebilirsiniz. Yönetilen bir örnekteki ortak uç noktayı kullanarak, VPN işleme sorunlarından kaçınmanıza yardımcı olabilecek bir VPN kullanmanız gerekmez.
+[Yönetilen](./sql-managed-instance-paas-overview.md) örnek için genel uç nokta, yönetilen örneğiniz için [sanal ağ](../../virtual-network/virtual-networks-overview.md)dışından veri erişimi sağlar. Yönetilen örneğinize Power BI, Azure App Service veya şirket içi ağ gibi çok kiracılı Azure hizmetlerinden erişebilirsiniz. Yönetilen bir örnekteki ortak uç noktayı kullanarak, VPN işleme sorunlarından kaçınmanıza yardımcı olabilecek bir VPN kullanmanız gerekmez.
 
-Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+Bu makalede şunları yapmayı öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Yönetilen örnek genel uç nokta bağlantı dizesi alınıyor
 
 1. Ortak uç nokta için etkinleştirilen yönetilen örnek yapılandırma sayfasına gidin. **Ayarlar** Yapılandırması altındaki **bağlantı dizeleri** sekmesini seçin.
-1. Genel uç nokta ana bilgisayar adının <mi_name> biçiminde geldiğini unutmayın. **Public**. <dns_zone>. Database.Windows.net ve bağlantı için kullanılan bağlantı noktası 3342.
+1. Genel uç nokta ana bilgisayar adının <mi_name> biçiminde geldiğini unutmayın. **Public** . <dns_zone>. Database.Windows.net ve bağlantı için kullanılan bağlantı noktası 3342.
 
     ![Ekran görüntüsü, genel ve özel uç noktalarınız için bağlantı dizelerini gösterir.](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

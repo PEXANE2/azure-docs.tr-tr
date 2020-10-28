@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: db4383526874c98f717c5f166b296d814724184a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b4bc291c21ca1ccabec3cfd9544deaa5d45fcf51
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044644"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787202"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure dijital TWINS sorunlarını giderme: ölçümler
 
@@ -26,19 +26,19 @@ Bu makalede açıklanan ölçümler, Azure aboneliğinizdeki Azure dijital TWINS
 
 2. [Azure Portal](https://portal.azure.com) Azure dijital TWINS örneğinizi bulun (adını Portal arama çubuğuna yazarak bu sayfayı açabilirsiniz). 
 
-    Örneğin menüsünden **ölçümler**' i seçin.
+    Örneğin menüsünden **ölçümler** ' i seçin.
    
     :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="Azure dijital TWINS için ölçüm sayfasını gösteren ekran görüntüsü":::
 
     Bu sayfa, Azure dijital TWINS örneğiniz için ölçümleri görüntüler. Ayrıca, listeden görmek istediklerinizi seçerek ölçümlerinizin özel görünümlerini de oluşturabilirsiniz.
     
-3. Menüdeki **Tanılama ayarları** ' nı ve ardından **Tanılama ayarı Ekle**' yi seçerek ölçüm verilerinizi bir Event Hubs uç noktasına veya bir Azure depolama hesabına gönderebilirsiniz.
+3. Menüdeki **Tanılama ayarları** ' nı ve ardından **Tanılama ayarı Ekle** ' yi seçerek ölçüm verilerinizi bir Event Hubs uç noktasına veya bir Azure depolama hesabına gönderebilirsiniz.
 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Azure dijital TWINS için ölçüm sayfasını gösteren ekran görüntüsü":::
 
     Bu işlem hakkında daha fazla bilgi için bkz. [*sorun giderme: tanılamayı ayarlama*](troubleshoot-diagnostics.md).
 
-4. Menüden **Uyarılar** ' ı ve sonra **+ Yeni uyarı kuralı**' nı seçerek ölçüm verilerinize yönelik uyarıları ayarlamayı tercih edebilirsiniz.
+4. Menüden **Uyarılar** ' ı ve sonra **+ Yeni uyarı kuralı** ' nı seçerek ölçüm verilerinize yönelik uyarıları ayarlamayı tercih edebilirsiniz.
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Azure dijital TWINS için ölçüm sayfasını gösteren ekran görüntüsü":::
 
     Bu işlem hakkında daha fazla bilgi için bkz. [*sorun giderme: uyarıları ayarlama*](troubleshoot-alerts.md).
@@ -55,22 +55,22 @@ API istekleriyle yapılacak ölçümler:
 
 | Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
-| ApiRequests | API Istekleri (Önizleme) | Sayı | Toplam | Dijital TWINS okuma, yazma, silme ve sorgu işlemleri için yapılan API Isteklerinin sayısı. |  Yetkilendirmesi <br>Çalışmasını <br>Protocol <br>Durum kodu, <br>Durum kodu sınıfı, <br>Durum metni |
-| ApiRequestsFailureRate | API Isteği başarısızlık oranı (Önizleme) | Yüzde | Ortalama | Dijital TWINS okuma, yazma, silme ve sorgu işlemleri için bir iç hata (500) yanıt kodu veren örneğiniz için hizmetin aldığı API isteklerinin yüzdesi. | Yetkilendirmesi <br>Çalışmasını <br>Protocol <br>Durum kodu, <br>Durum kodu sınıfı, <br>Durum metni
-| Apirequestslatlik | API Istekleri gecikmesi (Önizleme) | Mayacak | Ortalama | API istekleri için yanıt süresi. Bu, hizmet, dijital TWINS okuma, yazma, silme ve sorgu işlemleri için başarılı/başarısız sonucu gönderene kadar Azure Digital TWINS tarafından isteğin alındığı zamana başvurur. | Yetkilendirmesi <br>Çalışmasını <br>Protokol |
+| ApiRequests | API İstekleri | Count | Toplam | Dijital TWINS okuma, yazma, silme ve sorgu işlemleri için yapılan API Isteklerinin sayısı. |  Yetkilendirmesi <br>Çalışmasını <br>Protocol <br>Durum kodu, <br>Durum kodu sınıfı, <br>Durum metni |
+| ApiRequestsFailureRate | API Isteği başarısızlık oranı | Yüzde | Ortalama | Dijital TWINS okuma, yazma, silme ve sorgu işlemleri için bir iç hata (500) yanıt kodu veren örneğiniz için hizmetin aldığı API isteklerinin yüzdesi. | Yetkilendirmesi <br>Çalışmasını <br>Protocol <br>Durum kodu, <br>Durum kodu sınıfı, <br>Durum metni
+| Apirequestslatlik | API Istekleri gecikmesi | Mayacak | Ortalama | API istekleri için yanıt süresi. Bu, hizmet, dijital TWINS okuma, yazma, silme ve sorgu işlemleri için başarılı/başarısız sonucu gönderene kadar Azure Digital TWINS tarafından isteğin alındığı zamana başvurur. | Yetkilendirmesi <br>Çalışmasını <br>Protokol |
 
 #### <a name="billing-metrics"></a>Faturalandırma ölçümleri
 
 Faturalandırma ile yapılacak ölçümler:
 
 >[!NOTE]
-> Önizleme süresince **faturalandırma sıfır maliyetlidir**. Bu ölçümler seçilebilir listede görüntülenmeye devam ederken, önizleme sırasında uygulanmaz ve hizmet Önizleme dışına çıkana kadar sıfır olarak kalır.
+> Önizleme süresince **faturalandırma sıfır maliyetlidir** . Bu ölçümler seçilebilir listede görüntülenmeye devam ederken, önizleme sırasında uygulanmaz ve hizmet Önizleme dışına çıkana kadar sıfır olarak kalır.
 
 | Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
-| BillingApiOperations | Faturalama API 'SI Işlemleri (Önizleme) | Sayı | Toplam | Azure Digital TWINS hizmetinde yapılan tüm API isteklerinin sayısı için faturalandırma ölçümü. | Ölçüm kimliği |
-| Billingiletide Işlendi | Işlenen faturalama Iletileri (Önizleme) | Sayı | Toplam | Azure dijital TWINS 'den dış uç noktalara gönderilen ileti sayısı için faturalandırma ölçümü.<br><br>Faturalama amacıyla tek bir ileti olarak kabul edilebilmesi için yükün 1 KB 'den büyük olmaması gerekir. Bundan büyük yük, 1 KB 'lık artışlarla ek iletiler olarak sayılır (Bu nedenle 1 ile 2 KB arasında bir ileti 2 ileti olarak sayılır, 2 ile 3 KB arasında bir ileti 3 ileti olur ve bu şekilde devam eder).<br>Bu kısıtlama, yanıtlar için de geçerlidir. bu nedenle yanıt gövdesinde 1,5 KB döndüren bir çağrı, örneğin, 2 işlem olarak faturalandırılacaktır. | Ölçüm kimliği |
-| BillingQueryUnits | Faturalama sorgu birimleri (Önizleme) | Sayı | Toplam | Sorgu birimlerinin sayısı, sorgu yürütmek için tüketilen, hizmet kaynağı kullanımının dahili olarak hesaplanan bir ölçümüdür. Sorgu birimlerini ölçmek için bir yardımcı API de mevcuttur: [Querychargehelper sınıfı](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | Ölçüm kimliği |
+| BillingApiOperations | Faturalandırma API 'SI Işlemleri | Count | Toplam | Azure Digital TWINS hizmetinde yapılan tüm API isteklerinin sayısı için faturalandırma ölçümü. | Ölçüm kimliği |
+| Billingiletide Işlendi | Işlenen faturalandırma Iletileri | Count | Toplam | Azure dijital TWINS 'den dış uç noktalara gönderilen ileti sayısı için faturalandırma ölçümü.<br><br>Faturalama amacıyla tek bir ileti olarak kabul edilebilmesi için yükün 1 KB 'den büyük olmaması gerekir. Bundan büyük yük, 1 KB 'lık artışlarla ek iletiler olarak sayılır (Bu nedenle 1 ile 2 KB arasında bir ileti 2 ileti olarak sayılır, 2 ile 3 KB arasında bir ileti 3 ileti olur ve bu şekilde devam eder).<br>Bu kısıtlama, yanıtlar için de geçerlidir. bu nedenle yanıt gövdesinde 1,5 KB döndüren bir çağrı, örneğin, 2 işlem olarak faturalandırılacaktır. | Ölçüm kimliği |
+| BillingQueryUnits | Faturalama sorgu birimleri | Count | Toplam | Sorgu birimlerinin sayısı, sorgu yürütmek için tüketilen, hizmet kaynağı kullanımının dahili olarak hesaplanan bir ölçümüdür. Sorgu birimlerini ölçmek için bir yardımcı API de mevcuttur: [Querychargehelper sınıfı](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | Ölçüm kimliği |
 
 #### <a name="ingress-metrics"></a>Giriş ölçümleri
 
@@ -78,9 +78,9 @@ Veri girişi ile ilgili ölçümler:
 
 | Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
-| Inressevents | Giriş olayları (Önizleme) | Sayı | Toplam | Azure dijital TWINS 'e gelen telemetri olaylarının sayısı. | Sonuç |
-| Inresyettsfailurerate | Giriş olayları hata oranı (Önizleme) | Yüzde | Ortalama | Hizmetin bir iç hata (500) yanıt kodu döndürdüğü gelen telemetri olaylarının yüzdesi. | Sonuç |
-| Ingresseventsla | Giriş olayları gecikmesi (Önizleme) | Mayacak | Ortalama | Bir olayın Azure dijital TWINS tarafından yumurtada ayrılmaya hazırlandığında, hizmetin bir başarı/başarısızlık sonucu gönderdiği zaman. | Sonuç |
+| Inressevents | Giriş olayları | Count | Toplam | Azure dijital TWINS 'e gelen telemetri olaylarının sayısı. | Sonuç |
+| Inresyettsfailurerate | Giriş olayları başarısızlık oranı | Yüzde | Ortalama | Hizmetin bir iç hata (500) yanıt kodu döndürdüğü gelen telemetri olaylarının yüzdesi. | Sonuç |
+| Ingresseventsla | Giriş olayları gecikmesi | Mayacak | Ortalama | Bir olayın Azure dijital TWINS tarafından yumurtada ayrılmaya hazırlandığında, hizmetin bir başarı/başarısızlık sonucu gönderdiği zaman. | Sonuç |
 
 #### <a name="routing-metrics"></a>Yönlendirme ölçümleri
 
@@ -88,9 +88,9 @@ Yönlendirme ile yapmak zorunda olan ölçümler:
 
 | Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
-| Iletime yönlendirildi | Yönlendirilen iletiler (Önizleme) | Sayı | Toplam | Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine yönlendirilen ileti sayısı. | Uç nokta türü, <br>Sonuç |
-| RoutingFailureRate | Yönlendirme hatası oranı (Önizleme) | Yüzde | Ortalama | Azure dijital TWINS 'den, Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine yönlendirildikleri için hataya neden olan olayların yüzdesi. | Uç nokta türü, <br>Sonuç |
-| RoutingLatency | Yönlendirme gecikmesi (Önizleme) | Mayacak | Ortalama | Azure dijital TWINS 'den, Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine gönderildiğinde bir olay arasında geçen süre. | Uç nokta türü, <br>Sonuç |
+| Iletime yönlendirildi | Yönlendirilen iletiler | Count | Toplam | Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine yönlendirilen ileti sayısı. | Uç nokta türü, <br>Sonuç |
+| RoutingFailureRate | Yönlendirme başarısızlık oranı | Yüzde | Ortalama | Azure dijital TWINS 'den, Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine yönlendirildikleri için hataya neden olan olayların yüzdesi. | Uç nokta türü, <br>Sonuç |
+| RoutingLatency | Yönlendirme gecikmesi | Mayacak | Ortalama | Azure dijital TWINS 'den, Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine gönderildiğinde bir olay arasında geçen süre. | Uç nokta türü, <br>Sonuç |
 
 ## <a name="dimensions"></a>Boyutlar
 

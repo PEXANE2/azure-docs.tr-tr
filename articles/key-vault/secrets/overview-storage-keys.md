@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 26e1852058383ef1e4cc4b3b604e1bdc79d60e14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58b4a8c445548c711c2ad76c2d983acaec11ca7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612192"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786284"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault ve Azure CLı ile depolama hesabı anahtarlarını yönetme
 
@@ -32,13 +32,13 @@ Yönetilen depolama hesabı anahtar özelliğini kullandığınızda, aşağıda
 
 Microsoft 'un bulut tabanlı kimlik ve erişim yönetimi hizmeti olan Azure Active Directory (Azure AD) ile Azure depolama tümleştirmesi kullanmanızı öneririz. Azure AD tümleştirmesi, Azure [Blobları ve kuyrukları](../../storage/common/storage-auth-aad.md)için kullanılabilir ve Azure depolama 'ya OAuth2 belirteç tabanlı erişim sağlar (tıpkı Azure Key Vault gibi).
 
-Azure AD, depolama hesabı kimlik bilgileri yerine bir uygulama veya Kullanıcı kimliği kullanarak istemci uygulamanızın kimliğini doğrulayabilmeniz için izin verir. Azure 'da çalıştırdığınızda [Azure ad yönetilen kimliğini](/azure/active-directory/managed-identities-azure-resources/) kullanabilirsiniz. Yönetilen kimlikler, istemci kimlik doğrulaması gereksinimini ortadan kaldırır ve uygulamanızda veya uygulamanızdaki kimlik bilgilerini depolar.
+Azure AD, depolama hesabı kimlik bilgileri yerine bir uygulama veya Kullanıcı kimliği kullanarak istemci uygulamanızın kimliğini doğrulayabilmeniz için izin verir. Azure 'da çalıştırdığınızda [Azure ad yönetilen kimliğini](../../active-directory/managed-identities-azure-resources/index.yml) kullanabilirsiniz. Yönetilen kimlikler, istemci kimlik doğrulaması gereksinimini ortadan kaldırır ve uygulamanızda veya uygulamanızdaki kimlik bilgilerini depolar.
 
 Azure AD, Key Vault tarafından da desteklenen yetkilendirmeyi yönetmek için rol tabanlı erişim denetimi 'ni (RBAC) kullanır.
 
 ## <a name="service-principal-application-id"></a>Hizmet sorumlusu uygulama KIMLIĞI
 
-Bir Azure AD kiracısı, kayıtlı her uygulamayı bir [hizmet sorumlusu](/azure/active-directory/develop/developer-glossary#service-principal-object)ile sağlar. Hizmet sorumlusu, RBAC aracılığıyla diğer Azure kaynaklarına erişim için yetkilendirme kurulumu sırasında kullanılan uygulama KIMLIĞI olarak görev yapar.
+Bir Azure AD kiracısı, kayıtlı her uygulamayı bir [hizmet sorumlusu](../../active-directory/develop/developer-glossary.md#service-principal-object)ile sağlar. Hizmet sorumlusu, RBAC aracılığıyla diğer Azure kaynaklarına erişim için yetkilendirme kurulumu sırasında kullanılan uygulama KIMLIĞI olarak görev yapar.
 
 Key Vault, tüm Azure AD kiracılarında önceden kaydedilmiş bir Microsoft uygulamasıdır. Key Vault, her bir Azure bulutu 'nda aynı uygulama KIMLIĞI altına kaydedilir.
 
@@ -53,7 +53,7 @@ Key Vault, tüm Azure AD kiracılarında önceden kaydedilmiş bir Microsoft uyg
 Bu kılavuzu gerçekleştirmek için, önce aşağıdakileri yapmanız gerekir:
 
 - [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli).
-- [Anahtar Kasası oluşturma](quick-create-cli.md)
+- [Anahtar kasası oluşturma](quick-create-cli.md)
 - [Bir Azure depolama hesabı oluşturun](../../storage/common/storage-account-create.md?tabs=azure-cli). Depolama hesabı adı yalnızca küçük harfler ve rakamlar kullanmalıdır. Adın uzunluğu 3 ile 24 karakter arasında olmalıdır.
       
 ## <a name="manage-storage-account-keys"></a>Depolama hesabı anahtarlarını yönetme
@@ -163,6 +163,6 @@ Bu komutun çıktısı, SAS tanım dizenizi olarak gösterir `value` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Anahtarlar, gizli diziler ve sertifikalar](https://docs.microsoft.com/rest/api/keyvault/)hakkında daha fazla bilgi edinin.
-- [Azure Key Vault ekip bloguna](https://blogs.technet.microsoft.com/kv/)ilişkin makaleleri gözden geçirin.
-- Bkz. [keykasası depolama](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest) başvurusu belgeleri.
+- [Anahtarlar, gizli diziler ve sertifikalar](/rest/api/keyvault/)hakkında daha fazla bilgi edinin.
+- [Azure Key Vault ekip bloguna](/archive/blogs/kv/)ilişkin makaleleri gözden geçirin.
+- Bkz. [keykasası depolama](/cli/azure/keyvault/storage?view=azure-cli-latest) başvurusu belgeleri.

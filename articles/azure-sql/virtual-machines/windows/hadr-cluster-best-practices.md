@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167959"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786437"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Küme yapılandırması en iyi yöntemleri (Azure VM'leri üzerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ Disk tanığı olarak bir Azure Paylaşılan diski yapılandırın.
 Başlamak için bkz. [disk tanığını yapılandırma](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Desteklenen işletim sistemi**: tümü   
+**Desteklenen işletim sistemi** : tümü   
 
 
 ### <a name="cloud-witness"></a>Bulut tanığı
@@ -66,7 +66,7 @@ Bulut tanığı, küme çekirdeği üzerinde oy sağlamak için Microsoft Azure 
 Başlamak için bkz. [bulut tanığını yapılandırma](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp).
 
 
-**Desteklenen işletim sistemi**: Windows Server 2016 ve üzeri   
+**Desteklenen işletim sistemi** : Windows Server 2016 ve üzeri   
 
 
 ### <a name="file-share-witness"></a>Dosya paylaşımı tanığı
@@ -78,7 +78,7 @@ Azure dosya paylaşımından kullanacaksanız, [Premium dosya paylaşımının b
 Başlamak için bkz. [dosya paylaşma tanığını yapılandırma](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Desteklenen işletim sistemi**: Windows Server 2012 ve üzeri   
+**Desteklenen işletim sistemi** : Windows Server 2012 ve üzeri   
 
 ## <a name="connectivity"></a>Bağlantı
 
@@ -89,7 +89,7 @@ Trafiği, Azure VM 'lerinde SQL Server yük devretme kümesi örneğinin VNN 'a�
 
 Aşağıdaki tabloda HADR bağlantısı Supportability karşılaştırılır: 
 
-| |**Sanal Ağ Adı (VNN)**  |**Dağıtılmış Ağ Adı (DNN)**  |
+| |**Sanal ağ adı (VNN)**  |**Dağıtılmış ağ adı (DNN)**  |
 |---------|---------|---------|
 |**En düşük işletim sistemi sürümü**| Tümü | Windows Server 2016 |
 |**En düşük SQL Server sürümü** |Tümü |SQL Server 2019 CU2 UYGULAMAZSANıZ (FCı için)<br/> SQL Server 2019 CU8 (AG için)|
@@ -104,9 +104,9 @@ Yük dengeleyiciyi kullanırken hafif bir yük devretme gecikmesi vardır, çün
 
 Başlamak için, [Yük devretme kümesi örneği](failover-cluster-instance-vnn-azure-load-balancer-configure.md) veya bir [kullanılabilirlik grubu](availability-group-vnn-azure-load-balancer-configure.md) için Azure Load Balancer yapılandırmayı öğrenin
 
-**Desteklenen işletim sistemi**: tümü   
-**Desteklenen SQL sürümü**: tümü   
-**Desteklenen HADR çözümü**: yük devretme kümesi örneği ve kullanılabilirlik grubu   
+**Desteklenen işletim sistemi** : tümü   
+**Desteklenen SQL sürümü** : tümü   
+**Desteklenen HADR çözümü** : yük devretme kümesi örneği ve kullanılabilirlik grubu   
 
 
 ### <a name="distributed-network-name-dnn"></a>Dağıtılmış Ağ Adı (DNN)
@@ -124,9 +124,9 @@ Mümkün olduğunda bir yük dengeleyicide dağıtılmış ağ adı önerilir:
 
 Başlamak için, [bir yük devretme kümesi örneği](failover-cluster-instance-distributed-network-name-dnn-configure.md) veya bir [kullanılabilirlik grubu](availability-group-distributed-network-name-dnn-listener-configure.md) için dağıtılmış ağ adı kaynağı yapılandırmayı öğrenin
 
-**Desteklenen işletim sistemi**: Windows Server 2016 ve üzeri   
-**Desteklenen SQL sürümü**: SQL Server 2019 CU2 uygulamazsanız (FCI) ve SQL Server 2019 CU8 (AG)   
-**Desteklenen HADR çözümü**: yük devretme kümesi örneği ve kullanılabilirlik grubu   
+**Desteklenen işletim sistemi** : Windows Server 2016 ve üzeri   
+**Desteklenen SQL sürümü** : SQL Server 2019 CU2 uygulamazsanız (FCI) ve SQL Server 2019 CU8 (AG)   
+**Desteklenen HADR çözümü** : yük devretme kümesi örneği ve kullanılabilirlik grubu   
 
 
 ## <a name="limitations"></a>Sınırlamalar
@@ -135,7 +135,7 @@ FCı veya kullanılabilirlik gruplarıyla çalışırken ve Azure sanal makinele
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure sanal makineleri, kümelenmiş paylaşılan birimler (CSV) ve [azure standart Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) ya da Azure paylaşılan diskler kullanan SQL Server VM 'lerde depolama Ile Windows Server 2019 ' de Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) ' i destekler. 
+Azure sanal makineleri, kümelenmiş paylaşılan birimler (CSV) ve [azure standart Load Balancer](../../../load-balancer/load-balancer-overview.md) ya da Azure paylaşılan diskler kullanan SQL Server VM 'lerde depolama Ile Windows Server 2019 ' de Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) ' i destekler. 
 
 Azure sanal makinelerde, kümelenmiş paylaşılan birimlerde Windows Server 2016 veya önceki sürümlerde MSDTC desteklenmez çünkü:
 
@@ -145,5 +145,4 @@ Azure sanal makinelerde, kümelenmiş paylaşılan birimlerde Windows Server 201
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çözümünüz için uygun en iyi uygulamaları belirledikten sonra, [SQL Server VM FCI için hazırlarken](failover-cluster-instance-prepare-vm.md) veya [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](availability-group-az-cli-configure.md)veya [Azure hızlı başlangıç şablonlarını](availability-group-quickstart-template-configure.md)kullanarak kullanılabilirlik grubunuzu oluşturarak başlayın. 
-
+Çözümünüz için uygun en iyi uygulamaları belirledikten sonra, [SQL Server VM FCI için hazırlarken](failover-cluster-instance-prepare-vm.md) veya [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)veya [Azure hızlı başlangıç şablonlarını](availability-group-quickstart-template-configure.md)kullanarak kullanılabilirlik grubunuzu oluşturarak başlayın.

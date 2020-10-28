@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: de6a416666866a4089d22f2fa047dc860c922d3c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 36c15907c0f45befacf35389652f6d91c0ab1958
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341252"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787916"
 ---
 # <a name="planning-and-operations-guide"></a>Planlama ve işlemler kılavuzu
 Bu kılavuz, Azure Güvenlik Merkezi 'ni kullanmayı planlayan bilgi teknolojisi (BT) uzmanları, BT mimarları, bilgi güvenliği analistleri ve bulut yöneticileri içindir.
@@ -71,8 +71,8 @@ Güvenlik Merkezi, bu çok çeşitli sorumlulukları karşılamak için kişiler
 
 Güvenlik Merkezi, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabilen [yerleşik roller](../role-based-access-control/built-in-roles.md) sağlayan [Azure rol tabanlı erişim denetimi 'NI (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)kullanır. Bir kullanıcı Güvenlik Merkezi’ni açtığında, yalnızca erişimi olan kaynaklarla ilişkili bilgileri görüntüleyebilir. Bu da bir kaynağın ait olduğu abonelik veya kaynak grubu için kullanıcıya Sahip, Katkıda Bulunan veya Okuyucu rolünün atandığı anlamına gelir. Bu rollere ek olarak iki özel Güvenlik Merkezi rolü vardır:
 
-- **Güvenlik okuyucusu**: Bu role ait kullanıcı; öneriler, uyarılar, ilke ve sistem durumunu içeren Güvenlik Merkezi yapılandırmalarını yalnızca görüntüleyebilir, herhangi bir değişiklik yapamaz.
-- **Güvenlik yöneticisi**: Güvenlik okuyucusu ile aynıdır, ancak aynı zamanda güvenlik ilkesini güncelleştirebilir ve öneriler ile uyarıları kapatabilir.
+- **Güvenlik okuyucusu** : Bu role ait kullanıcı; öneriler, uyarılar, ilke ve sistem durumunu içeren Güvenlik Merkezi yapılandırmalarını yalnızca görüntüleyebilir, herhangi bir değişiklik yapamaz.
+- **Güvenlik yöneticisi** : Güvenlik okuyucusu ile aynıdır, ancak aynı zamanda güvenlik ilkesini güncelleştirebilir ve öneriler ile uyarıları kapatabilir.
 
 Yukarıda açıklanan Güvenlik Merkezi rolleri, Azure’un Depolama, Web ve Mobil veya Nesnelerin İnterneti gibi diğer hizmet alanlarına erişemez.
 
@@ -207,9 +207,9 @@ Bu makale kendi olay yanıtı planınızı oluşturmanıza yardımcı olmaya yö
 
 Güvenlik Merkezi Uyarılarını aşağıdaki aşamalar sırasında kullanabilirsiniz:
 
-* **Algılama**: bir veya daha fazla kaynakta şüpheli bir etkinliği tanımlayın.
-* **Değerlendirme**: şüpheli etkinlik hakkında daha fazla bilgi edinmek için ilk değerlendirmeyi gerçekleştirin.
-* **Tanılama**: sorunu çözmeye yönelik teknik yordamı yürütmek için düzeltme adımlarını kullanın.
+* **Algılama** : bir veya daha fazla kaynakta şüpheli bir etkinliği tanımlayın.
+* **Değerlendirme** : şüpheli etkinlik hakkında daha fazla bilgi edinmek için ilk değerlendirmeyi gerçekleştirin.
+* **Tanılama** : sorunu çözmeye yönelik teknik yordamı yürütmek için düzeltme adımlarını kullanın.
 
 Her Güvenlik Uyarısı, saldırının yapısını daha iyi anlamanız ve olası risk azaltmalarını önermek için kullanılabilecek bilgiler sağlar. Ayrıca bazı uyarılar, daha fazla bilgi veya Azure'daki diğer bilgi kaynakları için bağlantılar sağlar. Verilen bilgileri daha fazla araştırma ya da risk azaltma için kullanabilir ve ayrıca çalışma alanınızda depolanmış güvenlikle ilgili verileri arayabilirsiniz.
 
@@ -219,7 +219,7 @@ Aşağıdaki örnek, gerçekleşmekte olan şüpheli bir RDP etkinliğini göste
 
 Bu sayfa, saldırının gerçekleştiği zaman, kaynak ana bilgisayar adı, hedef VM ile ilgili ayrıntıları gösterir ve ayrıca öneri adımları sunar. Bazı durumlarda, saldırının kaynak bilgileri boş olabilir. Bu türden bir davranış hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi Uyarıları'nda Eksik Kaynak Bilgileri](/archive/blogs/azuresecurity/missing-source-information-in-azure-security-center-alerts).
 
-Güvenliği aşılmış sistemi tanımladıktan sonra, daha önce oluşturulmuş bir [Iş akışı Otomasyonu](workflow-automation.md) çalıştırabilirsiniz. Bunlar, bir uyarı tarafından tetiklendiğinde Güvenlik Merkezi 'nden yürütülebilecek yordamlar topluluğudur.
+Güvenliği aşılmış sistemi tanımladıktan sonra, daha önce oluşturulmuş bir [iş akışı Otomasyonu](workflow-automation.md) çalıştırabilirsiniz. Bunlar, bir uyarı tarafından tetiklendiğinde Güvenlik Merkezi 'nden yürütülebilecek yordamlar topluluğudur.
 
 [Azure Güvenlik Merkezi 'Nden yararlanma Microsoft Operations Management Suite & bir olay yanıtı videosu için](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) , bu aşamaların her birinde güvenlik merkezi 'nin nasıl kullanılabileceğini gösteren bazı gösteriler görebilirsiniz.
 

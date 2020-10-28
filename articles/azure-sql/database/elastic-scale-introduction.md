@@ -9,12 +9,12 @@ ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 1ec9884dbb8c3d02caaa7d8621905a32e7b1e36a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eb7984097b4edf34ed2f0214e1453246e12916f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84047548"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786760"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Veritabanı ile ölçek genişletme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "84047548"
 * [Elastik veritabanı bölünmüş birleştirme aracı](elastic-scale-overview-split-and-merge.md): verileri parçalı veritabanları arasında taşıdı. Bu araç, verileri çok kiracılı bir veritabanından tek kiracılı bir veritabanına (veya tam tersi) taşımak için faydalıdır. Bkz. [elastik veritabanı Split-Merge araç öğreticisi](elastic-scale-configure-deploy-split-and-merge.md).
 * [Elastik veritabanı işleri](elastic-jobs-overview.md): Azure SQL veritabanı 'nda çok sayıda veritabanını yönetmek için işleri kullanın. İşleri kullanarak şema değişiklikleri, kimlik bilgileri yönetimi, başvuru veri güncelleştirmeleri, performans verileri toplama veya kiracı (müşteri) telemetri koleksiyonu gibi yönetim işlemlerini kolayca gerçekleştirin.
 * [Elastik veritabanı sorgusu](elastic-query-overview.md) (Önizleme): birden çok veritabanına yayılan bir Transact-SQL sorgusu çalıştırmanızı sağlar. Bu, Excel, Power BI, Tableau vb. gibi raporlama araçlarına bağlantı sağlar.
-* [Elastik işlemler](elastic-transactions-overview.md): Bu özellik, birkaç veritabanına yayılan işlemleri çalıştırmanızı sağlar. Esnek veritabanı işlemleri, ADO .NET kullanan .NET uygulamalarında kullanılabilir ve [System. Transaction sınıflarını](https://msdn.microsoft.com/library/system.transactions.aspx)kullanarak tanıdık programlama deneyimiyle tümleştirilebilir.
+* [Elastik işlemler](elastic-transactions-overview.md): Bu özellik, birkaç veritabanına yayılan işlemleri çalıştırmanızı sağlar. Esnek veritabanı işlemleri, ADO .NET kullanan .NET uygulamalarında kullanılabilir ve [System. Transaction sınıflarını](/dotnet/api/system.transactions)kullanarak tanıdık programlama deneyimiyle tümleştirilebilir.
 
 Aşağıdaki grafikte, bir veritabanı koleksiyonuyla ilişkili **elastik veritabanı özelliklerini** içeren bir mimari gösterilmektedir.
 
@@ -33,7 +33,7 @@ Bu grafikte, veritabanının renkleri şemaları temsil eder. Aynı renge sahip 
 
 1. **SQL veritabanlarının** bir kümesi, Azure 'da parça mimarisi kullanılarak barındırılır.
 2. **Elastik veritabanı istemci kitaplığı** , parça kümesini yönetmek için kullanılır.
-3. Veritabanlarının bir alt kümesi, **elastik bir havuza**konur. (Bkz. [Havuz nedir?](elastic-pool-overview.md)).
+3. Veritabanlarının bir alt kümesi, **elastik bir havuza** konur. (Bkz. [Havuz nedir?](elastic-pool-overview.md)).
 4. **Esnek veritabanı işi** , tüm veritabanlarına göre zamanlanmış veya geçici T-SQL betikleri çalıştırır.
 5. **Bölünmüş birleştirme aracı** , verileri bir parçadan diğerine taşımak için kullanılır.
 6. **Elastik veritabanı sorgusu** , parça kümesindeki tüm veritabanlarına yayılan bir sorgu yazmanızı sağlar.
@@ -104,4 +104,3 @@ Elastik havuzun özelliklerini görmek için bkz. [elastik havuz Için fiyat ve 
 [2]:./media/elastic-scale-introduction/h_versus_vert.png
 [3]:./media/elastic-scale-introduction/overview.png
 [4]:./media/elastic-scale-introduction/single_v_multi_tenant.png
-

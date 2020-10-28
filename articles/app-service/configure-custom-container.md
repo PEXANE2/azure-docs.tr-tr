@@ -4,14 +4,14 @@ description: Azure App Service bir özel kapsayıcıyı yapılandırmayı öğre
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 5b1bf9b205fc1eb90c6eeae3a101def764381213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264584"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787066"
 ---
-# <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service için özel kapsayıcı yapılandırma
+# <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service için özel kapsayıcıyı yapılandırma
 
 Bu makalede, Azure App Service üzerinde çalıştırmak için özel bir kapsayıcının nasıl yapılandırılacağı gösterilir.
 
@@ -212,7 +212,7 @@ Docker günlüklerine erişmenin birkaç yolu vardır:
 
 ### <a name="in-azure-portal"></a>Azure portal
 
-Docker günlükleri, uygulamanızdaki **kapsayıcı ayarları** sayfasında portalda görüntülenir. Günlükler kesilir, ancak **İndir**' i tıklayarak tüm günlükleri indirebilirsiniz. 
+Docker günlükleri, uygulamanızdaki **kapsayıcı ayarları** sayfasında portalda görüntülenir. Günlükler kesilir, ancak **İndir** ' i tıklayarak tüm günlükleri indirebilirsiniz. 
 
 ### <a name="from-the-kudu-console"></a>Kudu konsolundan
 
@@ -272,7 +272,7 @@ Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
 
 ## <a name="customize-health-ping-behavior"></a>Sağlık ping davranışını özelleştirme
 
-App Service kapsayıcı başlatıldığında ve bir HTTP ping işlemine yanıt verdiğinde kapsayıcının başarıyla başlatılacağını kabul eder. Durum ping isteği, üstbilgiyi kaplar `User-Agent= "App Service Hyper-V Container Availability Check"` . Kapsayıcı başlatılır ancak belirli bir süre sonra ping komutuna yanıt vermezse App Service, kapsayıcının başlamadığını belirten Docker günlüğünde bir olay günlüğe kaydeder. 
+App Service kapsayıcı başlatıldığında ve bir HTTP ping işlemine yanıt verdiğinde kapsayıcının başarıyla başlatılacağını kabul eder. Durum ping isteği, üstbilgiyi içerir `User-Agent= "App Service Hyper-V Container Availability Check"` . Kapsayıcı başlatılır ancak belirli bir süre sonra ping komutuna yanıt vermezse App Service, kapsayıcının başlamadığını belirten Docker günlüğünde bir olay günlüğe kaydeder. 
 
 Uygulamanız Kaynak yoğunluklu ise, kapsayıcı HTTP pingine zamanında yanıt vermemeyebilir. HTTP ping işlemleri başarısız olduğunda eylemleri denetlemek için `CONTAINER_AVAILABILITY_CHECK_MODE` uygulama ayarını ayarlayın. [Cloud Shell](https://shell.azure.com)aracılığıyla ayarlayabilirsiniz. Bash 'de:
 

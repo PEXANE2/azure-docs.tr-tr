@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: e17c7d6618d67d66c89875696c5c529af3a85ea9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75ca0438336825bf8d4bbdc6e08eca109f430fde
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440554"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785927"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama
 
@@ -46,7 +46,7 @@ Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları 
 
    ![Güvenlik Merkezi'nde Güvenlik uyarıları](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-1. Gösterilen uyarıları filtrelemek için **filtre**' ye tıklayın ve açılan **filtre** dikey penceresinde, uygulamak istediğiniz filtre seçeneklerini belirleyin. Liste seçili filtreye göre güncelleştirilir. Filtreleme çok faydalı olabilir. Örneğin, sistemde olası bir ihlali araştırdığınız için son 24 saatte oluşan güvenlik uyarılarını ele almak isteyebilirsiniz.
+1. Gösterilen uyarıları filtrelemek için **filtre** ' ye tıklayın ve açılan **filtre** dikey penceresinde, uygulamak istediğiniz filtre seçeneklerini belirleyin. Liste seçili filtreye göre güncelleştirilir. Filtreleme çok faydalı olabilir. Örneğin, sistemde olası bir ihlali araştırdığınız için son 24 saatte oluşan güvenlik uyarılarını ele almak isteyebilirsiniz.
 
     ![Güvenlik Merkezi'nde uyarıları filtreleme](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
 
@@ -80,4 +80,4 @@ Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları 
 Bu belgede, güvenlik uyarılarını görüntülemeyi öğrendiniz. İlgili malzemeler için aşağıdaki sayfalara bakın:
 
 - [Uyarı gizleme kurallarını yapılandırma](alerts-suppression-rules.md)
-- [İş akışı otomasyonu ile uyarı ve önerilerin yanıtlarını otomatikleştirin](workflow-automation.md)
+- [Güvenlik Merkezi tetikleyicilerine yönelik yanıtları otomatikleştirin](workflow-automation.md)

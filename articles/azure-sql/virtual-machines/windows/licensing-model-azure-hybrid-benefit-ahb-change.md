@@ -13,18 +13,18 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b09d808201d58b571b2fe5ceb2e228d4e1c21d11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28ab0a158507e3f29ecfdc026203d92d71877633
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316962"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786522"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure'da SQL sanal makinesi için lisans modelini değiştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 
-Bu makalede, Azure 'daki bir SQL Server sanal makinesi (VM) için lisans modelinin, **Microsoft. SqlVirtualMachine**adlı yeni SQL Server VM kaynak sağlayıcısını kullanarak nasıl değiştirileceği açıklanır.
+Bu makalede, Azure 'daki bir SQL Server sanal makinesi (VM) için lisans modelinin, **Microsoft. SqlVirtualMachine** adlı yeni SQL Server VM kaynak sağlayıcısını kullanarak nasıl değiştirileceği açıklanır.
 
 SQL Server barındıran bir VM için üç lisans modeli vardır: Kullandıkça öde, Azure Hibrit Avantajı (AHB) ve olağanüstü durum kurtarma (DR). SQL Server VM lisans modelini, Azure portal, Azure CLı veya PowerShell kullanarak değiştirebilirsiniz. 
 
@@ -49,7 +49,7 @@ SQL Server lisans türü, VM sağlandığında veya daha sonra dilediğiniz zama
 SQL Server VM lisanslama modelinin değiştirilmesi aşağıdaki gereksinimlere sahiptir: 
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
-- [SQL VM kaynak sağlayıcısına](sql-vm-resource-provider-register.md)kayıtlı bir [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
+- [SQL VM kaynak sağlayıcısına](sql-vm-resource-provider-register.md)kayıtlı bir [SQL Server VM](./create-sql-vm-portal.md) .
 - [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanmak için bir gereksinimdir. 
 
 
@@ -62,7 +62,7 @@ SQL Server VM lisanslama modelinin değiştirilmesi aşağıdaki gereksinimlere 
 Lisans modelini doğrudan portaldan değiştirebilirsiniz: 
 
 1. [Azure Portal](https://portal.azure.com) açın ve SQL Server VM [SQL sanal makineler kaynağını](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) açın. 
-1. **Ayarlar**altında **Yapılandır** ' ı seçin. 
+1. **Ayarlar** altında **Yapılandır** ' ı seçin. 
 1. **Azure hibrit avantajı** seçeneğini belirleyin ve yazılım güvencesi ile SQL Server lisansınızın olduğunu onaylamak için onay kutusunu işaretleyin. 
 1. **Yapılandır** sayfasının alt kısmındaki **Uygula** ' yı seçin. 
 
@@ -83,7 +83,7 @@ Azure CLı 'yi, lisans modelinizi değiştirmek için kullanabilirsiniz.
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
-**Kullandıkça Öde**: 
+**Kullandıkça Öde** : 
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -174,11 +174,9 @@ Bu hata, birden fazla NIC içeren sanal makinelerde oluşur. Lisanslama modelini
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
+Daha fazla bilgi için aşağıdaki makalelere bakın: 
 
 * [Windows VM 'de SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)
 * [Windows VM üzerinde SQL Server için fiyatlandırma Kılavuzu](pricing-guidance.md)
 * [Windows VM 'de SQL Server için sürüm notları](../../database/doc-changes-updates-release-notes.md)
-
-

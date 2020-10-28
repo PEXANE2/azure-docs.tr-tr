@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e7775f289e0221862d11c585ae85a5b0bc6cc27
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887660"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788559"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL yönetilen örneğine örnek geçişi SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Yüksek düzeyde, veritabanı geçiş işlemi şöyle görünür:
 
 İlk olarak, SQL yönetilen örneğinin uygulamanızın veritabanı gereksinimleriyle uyumlu olup olmadığını saptayın. SQL yönetilen örneği, SQL Server kullanan mevcut uygulamaların çoğunluğu için kolay yükseltme ve kaydırma geçişi sağlamak üzere tasarlanmıştır. Ancak bazen henüz desteklenmeyen özellikler veya yetenekler gerektirebilir, geçici çözüm uygulama maliyeti de çok yüksektir.
 
-Azure SQL veritabanında veritabanı işlevselliğini etkileyen olası uyumluluk sorunlarını algılamak için [Data Migration Yardımcısı](https://docs.microsoft.com/sql/dma/dma-overview) kullanın. Bazı bildirilmiş engelleme sorunları varsa, [Azure VM 'de SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)gibi alternatif bir seçeneği göz önünde bulundurmanız gerekebilir. İşte bazı örnekler:
+Azure SQL veritabanında veritabanı işlevselliğini etkileyen olası uyumluluk sorunlarını algılamak için [Data Migration Yardımcısı](/sql/dma/dma-overview) kullanın. Bazı bildirilmiş engelleme sorunları varsa, [Azure VM 'de SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)gibi alternatif bir seçeneği göz önünde bulundurmanız gerekebilir. İşte bazı örnekler:
 
 - İşletim sistemine veya dosya sistemine doğrudan erişim istiyorsanız, örneğin, SQL Server ile aynı sanal makineye üçüncü taraf veya özel aracılar yüklemek için.
 - FILESTREAM/FileTable, PolyBase ve platformlar arası işlemler gibi hala desteklenmeyen özelliklerde kesin bağımlılığı varsa.
@@ -69,8 +69,8 @@ Performans temeli, ortalama/en fazla CPU kullanımı, ortalama/en fazla disk GÇ
 SQL Server Örneğinizde ölçmeye ihtiyacınız olan parametrelerden bazıları şunlardır:
 
 - [SQL Server Örneğiniz ÜZERINDEKI CPU kullanımını izleyin](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) ve ortalama ve en yoğun CPU kullanımını kaydedin.
-- [SQL Server Örneğiniz üzerinde bellek kullanımını izleyin](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) ve arabellek havuzu, plan önbelleği, sütun deposu havuzu, [bellek içi OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)vb. gibi farklı bileşenler tarafından kullanılan bellek miktarını saptayın. Ayrıca, sayfa ömrü erkeklerin bellek performans sayacının ortalama ve en yüksek değerlerini de bulmanız gerekir.
-- [Sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) görünümü veya [performans sayaçlarını](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage)kullanarak kaynak SQL Server örneğinde disk GÇ kullanımını izleyin.
+- [SQL Server Örneğiniz üzerinde bellek kullanımını izleyin](/sql/relational-databases/performance-monitor/monitor-memory-usage) ve arabellek havuzu, plan önbelleği, sütun deposu havuzu, [bellek içi OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)vb. gibi farklı bileşenler tarafından kullanılan bellek miktarını saptayın. Ayrıca, sayfa ömrü erkeklerin bellek performans sayacının ortalama ve en yüksek değerlerini de bulmanız gerekir.
+- [Sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) görünümü veya [performans sayaçlarını](/sql/relational-databases/performance-monitor/monitor-disk-usage)kullanarak kaynak SQL Server örneğinde disk GÇ kullanımını izleyin.
 - Bir SQL Server 2016 + sürümünden geçiş yapıyorsanız dinamik yönetim görünümlerini veya sorgu deposunu inceleyerek iş yükünü ve sorgu performansını veya SQL Server örneğinizi izleyin. Yönetilen örnek üzerinde çalışan sorgularla karşılaştırmak için iş yükünüzün en önemli sorgularının ortalama süresini ve CPU kullanımını belirler.
 
 > [!Note]
@@ -116,7 +116,7 @@ SQL yönetilen örneği aşağıdaki veritabanı geçiş seçeneklerini destekle
 
 [Azure veritabanı geçiş hizmeti](../../dms/dms-overview.md) , birden çok veritabanı kaynağından Azure veri platformları arasında kesintisiz geçiş sağlamak için tasarlanan, tam olarak yönetilen bir hizmettir. Bu hizmet, var olan üçüncü taraf ve SQL Server veritabanlarını Azure 'a taşımak için gereken görevleri basitleştirir. Genel önizlemede dağıtım seçenekleri Azure SQL veritabanı 'ndaki veritabanlarını ve bir Azure sanal makinesinde SQL Server veritabanlarını içerir. Veritabanı geçiş hizmeti, kurumsal iş yükleriniz için önerilen geçiş yöntemidir.
 
-Şirket içinde SQL Server SQL Server Integration Services (SSIS) kullanırsanız, veritabanı geçiş hizmeti, SSIS paketlerini depolayan SSIS kataloğunu (SSSıSDB) geçirmeyi henüz desteklememektedir, ancak paketleri buna yeniden dağıtmanıza olanak sağlamak için, yönetilen bir örnekte yeni bir SSıSDB oluşturacak şekilde Azure Data Factory içinde Azure-SSIS Integration Runtime (IR) sağlayabilirsiniz. Bkz. [oluşturma Azure-SSIS IR Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+Şirket içinde SQL Server SQL Server Integration Services (SSIS) kullanırsanız, veritabanı geçiş hizmeti, SSIS paketlerini depolayan SSIS kataloğunu (SSSıSDB) geçirmeyi henüz desteklememektedir, ancak paketleri buna yeniden dağıtmanıza olanak sağlamak için, yönetilen bir örnekte yeni bir SSıSDB oluşturacak şekilde Azure Data Factory içinde Azure-SSIS Integration Runtime (IR) sağlayabilirsiniz. Bkz. [oluşturma Azure-SSIS IR Azure Data Factory](../../data-factory/create-azure-ssis-integration-runtime.md).
 
 Bu senaryo ve veritabanı geçiş hizmeti için yapılandırma adımları hakkında daha fazla bilgi edinmek için, bkz. Şirket [içi veritabanınızı veritabanı geçiş hizmetini kullanarak yönetilen örneğe geçirme](../../dms/tutorial-sql-server-to-managed-instance.md).  
 
@@ -133,8 +133,8 @@ Aşağıdaki tabloda, çalıştırdığınız kaynak SQL Server sürümüne bağ
 |Adım|SQL altyapısı ve sürümü|Yedekleme/geri yükleme yöntemi|
 |---|---|---|
 |Azure depolama 'ya yedeklemeyi yerleştirme|2012 SP1 'den önce CU2 UYGULAMAZSANıZ|. Bak dosyasını doğrudan Azure Storage 'a yükleme|
-||2012 SP1 CU2 UYGULAMAZSANıZ-2016|[KIMLIK bilgisi sözdizimi ile](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) kullanım dışı kullanarak doğrudan yedekleme|
-||2016 ve üzeri|[SAS KIMLIK bilgisiyle](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url) kullanarak doğrudan yedekleme|
+||2012 SP1 CU2 UYGULAMAZSANıZ-2016|[KIMLIK bilgisi sözdizimi ile](/sql/t-sql/statements/restore-statements-transact-sql) kullanım dışı kullanarak doğrudan yedekleme|
+||2016 ve üzeri|[SAS KIMLIK bilgisiyle](/sql/relational-databases/backup-restore/sql-server-backup-to-url) kullanarak doğrudan yedekleme|
 |Azure depolama 'dan yönetilen bir örneğe geri yükleme|[SAS KIMLIK BILGISIYLE URL 'den GERI yükleme](restore-sample-database-quickstart.md)|
 
 > [!IMPORTANT]
@@ -164,7 +164,7 @@ Bir önkoşul olarak, aşağıdaki etkinlikleri tamamladığınızdan emin olun:
 - Çeşitli örnek, veritabanı, tempdb ayarları ve konfigürasyonları inceleyerek, yönetilen örnekteki ayarlarınızı kaynak SQL Server örneğindeki ayarlarla hizalayın. İlk performans karşılaştırmayı çalıştırmadan önce uyumluluk düzeyleri veya şifreleme gibi ayarları değiştirdiğinizden emin olun veya etkinleştirdiğiniz yeni özelliklerden bazılarının bazı sorguları etkileyebileceğini riski kabul edin. Geçiş risklerini azaltmak için, veritabanı uyumluluk düzeyini yalnızca performans izleme sonrasında değiştirin.
 - Daha iyi performans elde etmek için dosyaların boyutunu önceden ayırma gibi [genel amaçlı için en iyi depolama uygulama kılavuzunu](https://techcommunity.microsoft.com)uygulayın.
 - [Yönetilen bir örnek ve SQL Server arasındaki performans farklılıklarına neden olabilecek temel ortam farklılıkları](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)hakkında bilgi edinin ve performansı etkileyebilecek riskleri tanımlayabilir.
-- Yönetilen örneğiniz üzerinde etkinleştirilmiş sorgu deposunu ve otomatik ayarlamayı sakladığınızdan emin olun. Bu özellikler iş yükü performansını ölçmenize ve olası performans sorunlarını otomatik olarak düzeltmenize olanak sağlar. [Daha yeni bir SQL Server sürümüne yükseltme sırasında performans kararlılığını koruyun](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)bölümünde açıklandığı gibi, veritabanı uyumluluk düzeyi değişikliğinden önce ve sonra iş yükü performansı hakkında bilgi almak için en iyi aracı olarak sorgu deposunu nasıl kullanacağınızı öğrenin.
+- Yönetilen örneğiniz üzerinde etkinleştirilmiş sorgu deposunu ve otomatik ayarlamayı sakladığınızdan emin olun. Bu özellikler iş yükü performansını ölçmenize ve olası performans sorunlarını otomatik olarak düzeltmenize olanak sağlar. [Daha yeni bir SQL Server sürümüne yükseltme sırasında performans kararlılığını koruyun](/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)bölümünde açıklandığı gibi, veritabanı uyumluluk düzeyi değişikliğinden önce ve sonra iş yükü performansı hakkında bilgi almak için en iyi aracı olarak sorgu deposunu nasıl kullanacağınızı öğrenin.
 Şirket içi ortamınızdan mümkün olduğunca uygun olan ortamı hazırladıktan sonra, iş yükünüzü çalıştırmaya başlayabilir ve performansı ölçebilir. Ölçüm süreci, [kaynak SQL Server örneğindeki iş yükü ölçülerinizin temel performansını](#create-a-performance-baseline)oluştururken ölçülmüş parametrelerin aynısını içermelidir.
 Sonuç olarak, performans parametrelerini taban çizgisiyle karşılaştırmalı ve kritik farklılıkları belirlemeniz gerekir.
 
@@ -194,16 +194,16 @@ SQL yönetilen örneği, izleme ve sorun giderme için çok sayıda gelişmiş a
 
 Tam olarak yönetilen bir platformda olduğunuzda ve iş yükü performanslarını SQL Server iş yükü performansından eşleştirdiğini doğruladıktan sonra, hizmetin bir parçası olarak otomatik olarak sunulan avantajları kullanın.
 
-Geçiş sırasında yönetilen örnekte bazı değişiklikler yapmasanız bile, en son veritabanı altyapısı geliştirmelerinden faydalanmak için örneğinizi çalıştırırken yeni özelliklerden bazılarını açmanız çok yüksektir. Bazı değişiklikler yalnızca [veritabanı uyumluluk düzeyi değiştirildikten](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)sonra etkinleştirilir.
+Geçiş sırasında yönetilen örnekte bazı değişiklikler yapmasanız bile, en son veritabanı altyapısı geliştirmelerinden faydalanmak için örneğinizi çalıştırırken yeni özelliklerden bazılarını açmanız çok yüksektir. Bazı değişiklikler yalnızca [veritabanı uyumluluk düzeyi değiştirildikten](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)sonra etkinleştirilir.
 
 Örneğin, yönetilen örnek üzerinde yedeklemeler oluşturmanız gerekmez; hizmet yedeklemeleri sizin için otomatik olarak gerçekleştirir. Yedeklemeleri zamanlama, alma ve yönetme konusunda artık endişelenmeniz gerekmez. SQL yönetilen örneği, bu bekletme döneminde zaman içindeki herhangi bir noktaya geri yükleme olanağını, zaman içindeki bir [noktaya kurtarma (sür)](../database/recovery-using-backups.md#point-in-time-restore)kullanarak sağlar. Ayrıca [, yüksek kullanılabilirlik yerleşik olarak oluşturulduğu](../database/high-availability-sla.md) için yüksek kullanılabilirlik ayarlama konusunda endişelenmeniz gerekmez.
 
-Güvenliği güçlendirmek için [Azure Active Directory kimlik doğrulaması](../database/security-overview.md), [Denetim](auditing-configure.md), [tehdit algılama](../database/azure-defender-for-sql.md), [satır düzeyi güvenlik](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)ve [dinamik veri maskeleme](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)kullanmayı göz önünde bulundurun.
+Güvenliği güçlendirmek için [Azure Active Directory kimlik doğrulaması](../database/security-overview.md), [Denetim](auditing-configure.md), [tehdit algılama](../database/azure-defender-for-sql.md), [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security)ve [dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking)kullanmayı göz önünde bulundurun.
 
-Yönetilen bir örnek, gelişmiş yönetim ve güvenlik özelliklerine ek olarak, [iş yükünüzü izlemenize ve ayarlamanıza](../database/monitor-tune-overview.md)yardımcı olabilecek bir dizi gelişmiş araç sağlar. [Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) , büyük bir yönetilen örnek kümesini izlemenizi ve çok sayıda örnek ve veritabanının izlenmesini merkezileştirmenizi sağlar. Yönetilen örneklerde [otomatik ayarlama](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) , SQL planı yürütme istatistiklerinizin performansını sürekli olarak izler ve belirlenen performans sorunlarını otomatik olarak düzeltir.
+Yönetilen bir örnek, gelişmiş yönetim ve güvenlik özelliklerine ek olarak, [iş yükünüzü izlemenize ve ayarlamanıza](../database/monitor-tune-overview.md)yardımcı olabilecek bir dizi gelişmiş araç sağlar. [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) , büyük bir yönetilen örnek kümesini izlemenizi ve çok sayıda örnek ve veritabanının izlenmesini merkezileştirmenizi sağlar. Yönetilen örneklerde [otomatik ayarlama](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) , SQL planı yürütme istatistiklerinizin performansını sürekli olarak izler ve belirlenen performans sorunlarını otomatik olarak düzeltir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure SQL yönetilen örneği hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örneği nedir?](sql-managed-instance-paas-overview.md).
 - Yedekten geri yükleme içeren bir öğretici için bkz. [yönetilen örnek oluşturma](instance-create-quickstart.md).
-- Veritabanı geçiş hizmeti 'ni kullanarak geçişi gösteren öğretici için, bkz. Şirket [içi veritabanınızı Azure SQL yönetilen örneğine veritabanı geçiş hizmetini kullanarak geçirme](../../dms/tutorial-sql-server-to-managed-instance.md).  
+- Veritabanı geçiş hizmeti 'ni kullanarak geçişi gösteren öğretici için, bkz. Şirket [içi veritabanınızı Azure SQL yönetilen örneğine veritabanı geçiş hizmetini kullanarak geçirme](../../dms/tutorial-sql-server-to-managed-instance.md).

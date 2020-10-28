@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 9b4d0fadf157ce1eef6821ccbc32f5725aea611f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31be497d017cb60de6f46d7657889c9c1fabef4a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616525"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788358"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Azure SQL yönetilen örneğindeki bir veritabanını önceki bir zaman noktasına geri yükleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,7 +46,7 @@ Aşağıdaki tabloda, SQL yönetilen örneği için zaman içinde geri yükleme 
 
 |           |Mevcut VERITABANıNı SQL yönetilen örneği 'nin aynı örneğine geri yükleme| Var olan VERITABANıNı başka bir SQL yönetilen örneğine geri yükleme|Bırakılan DB 'yi aynı SQL yönetilen örneğine geri yükleme|Bırakılan VERITABANıNı başka bir SQL yönetilen örneğine geri yükleme|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure portalındaki**| Evet|Hayır |Evet|Hayır|
+|**Azure Portal**| Evet|Hayır |Evet|Hayır|
 |**Azure CLI**|Evet |Evet |Hayır|Hayır|
 |**PowerShell**| Evet|Evet |Evet|Evet|
 
@@ -56,7 +56,7 @@ Azure portal, PowerShell veya Azure CLı kullanarak mevcut bir veritabanını ay
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 2. SQL yönetilen örneğinize gidin ve geri yüklemek istediğiniz veritabanını seçin.
 3. Veritabanı sayfasında **geri yükle** ' yi seçin:
 
@@ -67,7 +67,7 @@ Azure portal, PowerShell veya Azure CLı kullanarak mevcut bir veritabanını ay
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Zaten yüklü Azure PowerShell yoksa, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Zaten yüklü Azure PowerShell yoksa, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps).
 
 Veritabanını PowerShell kullanarak geri yüklemek için aşağıdaki komutta parametre değerlerini belirtin. Ardından şu komutu çalıştırın:
 
@@ -106,7 +106,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceName $targetInstanceName 
 ```
 
-Ayrıntılar için bkz. [restore-Azsqlınstancedatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase).
+Ayrıntılar için bkz. [restore-Azsqlınstancedatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-Kullanılabilir parametrelerin ayrıntılı bir açıklaması için bkz. [SQL yönetilen örneği 'nde bir veritabanını geri yüklemek Için CLI belgeleri](https://docs.microsoft.com/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore).
+Kullanılabilir parametrelerin ayrıntılı bir açıklaması için bkz. [SQL yönetilen örneği 'nde bir veritabanını geri yüklemek Için CLI belgeleri](/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore).
 
 ---
 
@@ -139,7 +139,7 @@ Silinen bir veritabanının geri yüklenmesi, PowerShell veya Azure portal kulla
 ### <a name="portal"></a>Portal 
 
 
-Azure portal kullanarak yönetilen bir veritabanını kurtarmak için SQL yönetilen örnek genel bakış sayfasını açın ve **silinen veritabanları**' nı seçin. Geri yüklemek istediğiniz silinmiş bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
+Azure portal kullanarak yönetilen bir veritabanını kurtarmak için SQL yönetilen örnek genel bakış sayfasını açın ve **silinen veritabanları** ' nı seçin. Geri yüklemek istediğiniz silinmiş bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
 
   ![Silinen Azure SQL örneği veritabanını geri yükleme ekran görüntüsü](./media/point-in-time-restore/restore-deleted-sql-managed-instance-annotated.png)
 
@@ -205,13 +205,13 @@ DROP DATABASE WorldWideImporters;
 
 SQL yönetilen örneğindeki veritabanınıza bağlanmak için aşağıdaki yöntemlerden birini kullanın:
 
-- [Bir Azure sanal makinesi aracılığıyla SSMS/Azure Data Studio](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [Noktadan siteye](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Genel uç nokta](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Bir Azure sanal makinesi aracılığıyla SSMS/Azure Data Studio](./connect-vm-instance-configure.md)
+- [Noktadan siteye](./point-to-site-p2s-configure.md)
+- [Genel uç nokta](./public-endpoint-configure.md)
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal, SQL yönetilen örneğinden veritabanını seçin ve **Sil**' i seçin.
+Azure portal, SQL yönetilen örneğinden veritabanını seçin ve **Sil** ' i seçin.
 
    ![Azure portal kullanarak bir veritabanını silme](./media/point-in-time-restore/delete-database-from-mi.png)
 
@@ -247,9 +247,9 @@ ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 
 SQL yönetilen örneği 'nde veritabanınıza bağlanmak için aşağıdaki yöntemlerden birini kullanın:
 
-- [Azure sanal makinesi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [Noktadan siteye](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Genel uç nokta](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Azure sanal makinesi](./connect-vm-instance-configure.md)
+- [Noktadan siteye](./point-to-site-p2s-configure.md)
+- [Genel uç nokta](./public-endpoint-configure.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

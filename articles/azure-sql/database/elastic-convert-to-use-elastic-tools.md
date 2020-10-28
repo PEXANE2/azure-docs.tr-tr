@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 95afd0b9117caca4b531c453417217d8a8de7c7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6ad8b4c80f4b9c2fdb3c1a14209dcf0febc89e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443472"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787151"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Ölçeği genişletmek için mevcut veritabanlarını geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -72,7 +72,7 @@ Tek kiracılı bir model için bir **liste eşleme** parça haritası oluşturun
 
 ![Liste eşleme][1]
 
-Çok kiracılı model tek bir veritabanına birkaç kiracı atar (ve kiracılar gruplarını birden çok veritabanı arasında dağıtabilirsiniz). Her kiracının küçük veri ihtiyaçlarına sahip olmasını beklediğinde bu modeli kullanın. Bu modelde, **Aralık eşleme**kullanarak bir veritabanına kiracı aralığı atayın.
+Çok kiracılı model tek bir veritabanına birkaç kiracı atar (ve kiracılar gruplarını birden çok veritabanı arasında dağıtabilirsiniz). Her kiracının küçük veri ihtiyaçlarına sahip olmasını beklediğinde bu modeli kullanın. Bu modelde, **Aralık eşleme** kullanarak bir veritabanına kiracı aralığı atayın.
 
 ![Aralık eşleme][2]
 
@@ -168,7 +168,7 @@ Verileri çok kiracılı bir modelden tek bir kiracı modeline taşımak için b
 
 ## <a name="questions-and-feature-requests"></a>Sorular ve özellik istekleri
 
-Sorular için, [SQL veritabanı Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-sql-database.html) kullanın ve özellik istekleri Için bunları [SQL veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)ekleyin.
+Sorular için, [SQL veritabanı Için Microsoft Q&soru sayfasını](/answers/topics/azure-sql-database.html) kullanın ve özellik istekleri Için bunları [SQL veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)ekleyin.
 
 <!--Image references-->
 [1]: ./media/elastic-convert-to-use-elastic-tools/listmapping.png

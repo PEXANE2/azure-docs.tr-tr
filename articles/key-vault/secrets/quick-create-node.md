@@ -7,21 +7,21 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-js
-ms.openlocfilehash: 045589d3b1f0e376eaf854562d271a4483702997
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 35713a2e854cf65054d162ce0191bf2dfde4e90b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047905"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786148"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-javascript-v4"></a>Hızlı başlangıç: JavaScript için Azure Key Vault istemci kitaplığı (v4)
 
 JavaScript için Azure Key Vault gizli istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
 
-[API başvuru belgeleri](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[API başvuru belgeleri](/javascript/api/overview/azure/key-vault-index)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - İşletim sisteminiz için geçerli [Node.js](https://nodejs.org) .
@@ -30,7 +30,7 @@ JavaScript için Azure Key Vault gizli istemci kitaplığı ile çalışmaya ba�
 Bu hızlı başlangıçta, [Azure CLI](/cli/azure/install-azure-cli) 'Yi bir Linux Terminal penceresinde çalıştırdığınız varsayılır.
 
 ## <a name="setting-up"></a>Ayarlanıyor
-Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için Azure CLı ile Azure Identity Library kullanıyor. Geliştiriciler, aramalarını doğrulamak için Visual Studio veya Visual Studio Code de kullanabilir. daha fazla bilgi için bkz. [Azure Identity istemci kitaplığı ile Istemci kimlik doğrulaması](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme).
+Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için Azure CLı ile Azure Identity Library kullanıyor. Geliştiriciler, aramalarını doğrulamak için Visual Studio veya Visual Studio Code de kullanabilir. daha fazla bilgi için bkz. [Azure Identity istemci kitaplığı ile Istemci kimlik doğrulaması](/javascript/api/overview/azure/identity-readme).
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
