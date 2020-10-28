@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/26/2020
 ms.author: memildin
-ms.openlocfilehash: bf89135d3b5d33936d0b5d4142e966fa3f8f52b9
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: ba0c68589f7ea4b32970e3ad81fea5175b998dc7
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92559049"
+ms.locfileid: "92629162"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -78,7 +78,7 @@ Aşağıdaki 29 yeni öneriler, kıyaslama kapsamını artırmak için Güvenlik
 
 İlgili bağlantılar:
 
-- [Azure Güvenlik Karşılaştırması hakkında daha fazla bilgi edinin](../security/benchmarks/introduction.md).
+- [Azure Güvenlik kıyaslaması hakkında daha fazla bilgi](../security/benchmarks/introduction.md)
 - [Azure API Apps hakkında daha fazla bilgi](../app-service/app-service-web-tutorial-rest-api.md)
 - [Azure işlev uygulamaları hakkında daha fazla bilgi edinin](../azure-functions/functions-overview.md)
 - [Azure Web Apps hakkında daha fazla bilgi](../app-service/overview.md)
@@ -88,4 +88,4 @@ Aşağıdaki 29 yeni öneriler, kıyaslama kapsamını artırmak için Güvenlik
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Üründe yapılan son değişiklikler için bkz. [Azure Güvenlik Merkezi 'ndeki](release-notes.md)yenilikler.
+Üründe yapılan son değişiklikler için bkz. [Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?](release-notes.md).

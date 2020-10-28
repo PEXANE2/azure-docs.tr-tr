@@ -23,7 +23,7 @@ Depolama otomatik büyüme [, sunucunuzun depolama sınırına ulaşmasını](./
 > [!IMPORTANT]
 > Depolamanın yalnızca yukarı ölçeklenebileceğinden, aşağı doğru ölçeklenemediğini unutmayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 

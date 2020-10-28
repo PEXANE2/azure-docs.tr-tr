@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: be2aa75fb7c532d48188493b2ed09adc8b141b6a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: fe358e35f2d68a3e55e9d9bb4ac57a13f42085e3
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340028"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629247"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Tam zamanında (JIT) VM erişimini anlama
 
@@ -66,6 +66,10 @@ Güvenlik Merkezi JıT 'ten faydalanabilir bir makine bulduğunda, bu makineyi �
 ## <a name="faq---questions-about-just-in-time-virtual-machine-access"></a>SSS-tam zamanında sanal makine erişimi ile ilgili sorular
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>JıT 'i yapılandırmak ve kullanmak için hangi izinler gereklidir?
+
+JıT, abonelik üzerinde [sunucular Için Azure Defender 'ın](defender-for-servers-introduction.md) etkinleştirilmesini gerektirir. 
+
+**Reader** ve **securityreader** ROLLERININ her ikisi de JIT durumunu ve parametrelerini görüntüleyebilir.
 
 JıT ile çalışabilebilmeniz gereken özel Roller oluşturmak istiyorsanız aşağıdaki tablodaki ayrıntılara ihtiyacınız olacaktır.
 

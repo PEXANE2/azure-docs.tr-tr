@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 86d89dc6973e61f0cff80b5c65a8c5b836485575
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e485065588fefa95868df9865f317de54e6ef020
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216540"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628788"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C ile tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme
 
@@ -34,7 +34,7 @@ Serideki [sonraki öğretici](tutorial-single-page-app-webapi.md) , kod ÖRNEĞI
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticideki adımlara devam etmeden önce aşağıdaki Azure AD B2C kaynaklara sahip olmanız gerekir:
 
@@ -55,24 +55,24 @@ Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birle�
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları**öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
-1. **Web**altında **URI Ekle** bağlantısını seçin, girin `http://localhost:6420` .
-1. **Örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** için henüz seçili değilse onay kutularını seçin ve ardından **Kaydet**' i seçin.
-1. **Genel bakış**'ı seçin.
+1. Sol menüden **Azure AD B2C** ' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
+1. **Uygulama kayıtları** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
+1. **Web** altında **URI Ekle** bağlantısını seçin, girin `http://localhost:6420` .
+1. **Örtük izin** ' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** için henüz seçili değilse onay kutularını seçin ve ardından **Kaydet** ' i seçin.
+1. **Genel bakış** 'ı seçin.
 1. Tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
-1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C** ' i arayıp seçin.
 1. **Uygulamalar (eski)** öğesini seçin ve ardından *WebApp1* uygulamasını seçin.
-1. **Yanıt URL 'si**altında, ekleyin `http://localhost:6420` .
-1. **Kaydet**’i seçin.
-1. Özellikler sayfasında, **uygulama kimliğini**kaydedin. Uygulama KIMLIĞI ' ni, tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde sonraki bir adımda kullanırsınız.
+1. **Yanıt URL 'si** altında, ekleyin `http://localhost:6420` .
+1. **Kaydet** ’i seçin.
+1. Özellikler sayfasında, **uygulama kimliğini** kaydedin. Uygulama KIMLIĞI ' ni, tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde sonraki bir adımda kullanırsınız.
 
 * * *
 
@@ -93,7 +93,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 1. *authConfig.js* dosyasını *javascriptspa* klasörü içinde açın.
 1. `msalConfig`Nesnede, Güncelleştir:
     * `clientId` önceki bir adımda kaydettiğiniz **uygulama (istemci) kimliğine** sahip değer ile
-    * `authority` Azure AD B2C kiracı adınızla URI ve önkoşulların bir parçası olarak oluşturduğunuz kaydolma/oturum açma Kullanıcı akışının adı (örneğin, *B2C_1_signupsignin1*)
+    * `authority` Azure AD B2C kiracı adınızla URI ve önkoşulların bir parçası olarak oluşturduğunuz kaydolma/oturum açma Kullanıcı akışının adı (örneğin, *B2C_1_signupsignin1* )
 
     ```javascript
     const msalConfig = {
@@ -117,9 +117,75 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     };
     ```
 
+1. `authConfig.js`Dosyayı *Javascriptspa* klasörü içinde açın.
+1. `msalConfig`Nesnede, Güncelleştir:
+    * `clientId`önceki bir adımda kaydettiğiniz **uygulama (istemci) kimliğiyle**
+    * `authority` Azure AD B2C kiracı adınızla URI ve önkoşulların bir parçası olarak oluşturduğunuz kaydolma/oturum açma Kullanıcı akışının adı (örneğin, *B2C_1_signupsignin1* )
+1. `policies.js` dosyasını açın.
+1. Ve için girdileri bulun `names` `authorities` ve adım 2 ' de oluşturduğunuz ilkelerin adlarıyla uygun şekilde değiştirin. `fabrikamb2c.onmicrosoft.com`Örneğin, Azure AD B2C kiracınızın adıyla değiştirin `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>` .
+1. `apiConfig.js` dosyasını açın.
+1. Kapsamların atamasını bulun `b2cScopes` ve URL 'yi, Web API 'si için oluşturduğunuz kapsam URL 'si ile değiştirin (örneğin,) `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]` .
+1. API URL 'SI için atamayı bulun `webApi` ve geçerlI URL 'yi, 4. adımda Web API 'nizi DAĞıTTıĞıNıZ URL ile değiştirin `webApi: http://localhost:5000/hello` .
+
+Elde edilen kodunuz aşağıdaki gibi görünmelidir:
+
+### <a name="authconfigjs"></a>authConfig.js
+
+```javascript
+const msalConfig = {
+  auth: {
+    clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902",
+    authority: b2cPolicies.authorities.signUpSignIn.authority,
+    validateAuthority: false
+  },
+  cache: {
+    cacheLocation: "localStorage",
+    storeAuthStateInCookie: true
+  }
+};
+
+const loginRequest = {
+  scopes: ["openid", "profile"],
+};
+
+const tokenRequest = {
+  scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
+};
+```
+### <a name="policiesjs"></a>policies.js
+
+```javascript
+const b2cPolicies = {
+    names: {
+        signUpSignIn: "b2c_1_susi",
+        forgotPassword: "b2c_1_reset",
+        editProfile: "b2c_1_edit_profile"
+    },
+    authorities: {
+        signUpSignIn: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi",
+        },
+        forgotPassword: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset",
+        },
+        editProfile: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile"
+        }
+    },
+}
+```
+### <a name="apiconfigjs"></a>apiConfig.js
+
+```javascript
+const apiConfig = {
+  b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"],
+  webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
+};
+```
+
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-1. Bir konsol penceresi açın ve örneği içeren dizine geçin. Örnek:
+1. Bir konsol penceresi açın ve örneği içeren dizine geçin. Örneğin:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -154,7 +220,7 @@ Bu örnek uygulama kaydolma, oturum açma ve parola sıfırlama 'yı destekler. 
 
 1. Azure AD B2C dizininde yerel bir hesap oluşturmak için **Oluştur** ' u seçin.
 
-**Oluştur**' u seçtiğinizde, uygulama, oturum açmış kullanıcının adını gösterir.
+**Oluştur** ' u seçtiğinizde, uygulama, oturum açmış kullanıcının adını gösterir.
 
 :::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="Yerel olarak çalışan tek sayfalı uygulamayı gösteren Web tarayıcısı":::
 

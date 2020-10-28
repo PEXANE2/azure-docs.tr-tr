@@ -62,6 +62,8 @@
         - name: Azure İlkesi’ne göre güvenlik denetimleri
           displayName: 'regulatory, compliance, standards, domains'
           href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+    - name: Azure Key Vault günlüğü
+      href: logging.md
     - name: Bildirimler
       items:
         - name: Azure Event Grid ile izleme
@@ -122,8 +124,6 @@
           href: alert.md
         - name: Azure Key Vault’u Azure İlkesiyle tümleştirme
           href: azure-policy.md
-        - name: Azure Key Vault günlüğü
-          href: logging.md
         - name: Azure Event Grid ve Logic Apps aracılığıyla bildirim alma
           href: event-grid-logicapps.md
         - name: Azure Event Grid ve Azure Otomasyonu aracılığıyla bildirim alma

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202866"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628669"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -24,7 +24,7 @@ ms.locfileid: "85202866"
 
 [Kendi kendini onaylanan teknik profillerinin](self-asserted-technical-profile.md)görünümünü özelleştirebilirsiniz. Azure Active Directory B2C (Azure AD B2C), kodu müşterinizin tarayıcısında çalıştırır ve çıkış noktaları arası kaynak paylaşımı (CORS) adlı modern bir yaklaşım kullanır.
 
-Kullanıcı arabirimini özelleştirmek için, özelleştirilmiş HTML içeriğiyle **ContentDefinition** ÖĞESINDE bir URL belirtirsiniz. Kendi kendine onaylanan teknik profilde veya **Orchestrationstep**bu içerik tanımı tanımlayıcısını işaret edersiniz. İçerik tanımı, yüklenecek yerelleştirilmiş kaynakların listesini belirten bir **Localizedresourcesreferences** öğesi içerebilir. Azure AD B2C, Kullanıcı arabirimi öğelerini URL 'nizden yüklenen HTML içeriğiyle birleştirir ve ardından sayfayı kullanıcıya görüntüler.
+Kullanıcı arabirimini özelleştirmek için, özelleştirilmiş HTML içeriğiyle **ContentDefinition** ÖĞESINDE bir URL belirtirsiniz. Kendi kendine onaylanan teknik profilde veya **Orchestrationstep** bu içerik tanımı tanımlayıcısını işaret edersiniz. İçerik tanımı, yüklenecek yerelleştirilmiş kaynakların listesini belirten bir **Localizedresourcesreferences** öğesi içerebilir. Azure AD B2C, Kullanıcı arabirimi öğelerini URL 'nizden yüklenen HTML içeriğiyle birleştirir ve ardından sayfayı kullanıcıya görüntüler.
 
 **ContentDefinitions** öğesi, Kullanıcı yolculuğunda kullanılabilen HTML5 şablonlarının URL 'lerini içerir. HTML5 sayfa URI 'SI, belirtilen kullanıcı arabirimi adımı için kullanılır. Örneğin, oturum açma veya kaydolma, parola sıfırlama veya hata sayfaları. HTML5 dosyası için LoadUri 'yi geçersiz kılarak görünümü değiştirebilirsiniz. Gereksinimlerinize göre yeni içerik tanımları oluşturabilirsiniz. Bu öğe, [Yerelleştirme](localization.md) öğesinde belirtilen yerelleştirme tanımlayıcısına bir yerelleştirilmiş kaynaklar başvurusu içerebilir.
 
@@ -72,7 +72,7 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 | LoadUri | 1:1 | İçerik tanımının HTML5 sayfasının URL 'sini içeren bir dize. |
 | RecoveryUri | 1:1 | İçerik tanımıyla ilgili bir hata görüntülemek için HTML sayfasının URL 'sini içeren bir dize. Şu anda kullanılmıyor, değer olmalıdır `~/common/default_page_error.html` . |
 | DataUri | 1:1 | Adım için çağrılacak Kullanıcı deneyimini sağlayan bir HTML dosyasının göreli URL 'sini içeren bir dize. |
-| Meta veri | 0:1 | İçerik tanımı tarafından kullanılan meta verileri içeren bir anahtar/değer çiftleri koleksiyonu. |
+| Meta Veriler | 0:1 | İçerik tanımı tarafından kullanılan meta verileri içeren bir anahtar/değer çiftleri koleksiyonu. |
 | LocalizedResourcesReferences | 0:1 | Yerelleştirilmiş kaynaklar koleksiyonu başvuruları. Bir kullanıcı arabirimi ve talepler özniteliği yerelleştirmesini özelleştirmek için bu öğeyi kullanın. |
 
 ### <a name="datauri"></a>DataUri
@@ -111,7 +111,7 @@ Aşağıdaki örnek, sürümünün **Dataurı** 'sini göstermektedir `selfasser
 
 #### <a name="migrating-to-page-layout"></a>Sayfa düzenine geçiriliyor
 
-Değerin biçimi şu kelimeyi içermelidir: `contract` _urn: com: Microsoft: AAD: B2C: Elements:**anlaşma**:p Age-Name: Version_. Özel ilkeleriniz içinde eski bir **veri URI** değeri kullanan bir sayfa düzeni belirtmek için, yeni biçime geçiş yapmak üzere aşağıdaki tabloyu kullanın.
+Değerin biçimi şu kelimeyi içermelidir: `contract` _urn: com: Microsoft: AAD: B2C: Elements: **anlaşma** :p Age-Name: Version_ . Özel ilkeleriniz içinde eski bir **veri URI** değeri kullanan bir sayfa düzeni belirtmek için, yeni biçime geçiş yapmak üzere aşağıdaki tabloyu kullanın.
 
 | Eski DataUri değeri | Yeni DataUri değeri |
 | ----------------- | ----------------- |
@@ -126,8 +126,41 @@ Değerin biçimi şu kelimeyi içermelidir: `contract` _urn: com: Microsoft: AAD
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+Aşağıdaki örnekte, sayfa sözleşmesiyle birlikte içerik tanımı tanımlayıcıları ve karşılık gelen **veri URI 'si** gösterilmektedir: 
 
-### <a name="metadata"></a>Meta veri
+```xml
+<ContentDefinitions>
+  <ContentDefinition Id="api.error">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections.signup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.signuporsignin">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted.profileupdate">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountsignup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountpasswordreset">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.phonefactor">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0</DataUri>
+  </ContentDefinition>
+</ContentDefinitions>
+```
+
+### <a name="metadata"></a>Meta Veriler
 
 **Meta veri** öğesi aşağıdaki öğeleri içerir:
 

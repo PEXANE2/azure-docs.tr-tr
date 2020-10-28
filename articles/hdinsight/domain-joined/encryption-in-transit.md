@@ -7,27 +7,27 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 85382ecd627ec8afc63a85de0debd98f94a89849
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544894"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628992"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Azure HDInsight için iletim sırasında IPSec şifrelemesi
 
 Bu makalede, Azure HDInsight küme düğümleri arasındaki iletişim için iletim sırasında Şifrelemenin uygulanması ele alınmaktadır.
 
 > [!Note]
-> Şu bölgeler için aktarım sırasında şifreleme Şu anda etkin: Doğu ABD, Orta Güney ABD, Batı ABD2. 
+> Şu bölgeler için aktarım sırasında şifreleme Şu anda etkin: Doğu ABD, Orta Güney ABD, Batı ABD2.
 
 ## <a name="background"></a>Arka Plan
 
 Azure HDInsight, kurumsal verilerinizi güvenli hale getirmek için çeşitli güvenlik özellikleri sunar. Bu çözümler, çevre güvenliği, kimlik doğrulama, yetkilendirme, denetim, şifreleme ve uyumluluk gibi değerler altında gruplandırılır. Şifreleme, hem bekleyen hem de aktarım sırasında verilere uygulanabilir.
 
-Bekleyen şifreleme, Azure depolama hesaplarında sunucu tarafı şifrelemesi ve HDInsight kümenizin bir parçası olan Azure VM 'lerinde disk şifrelemesi kapsamında yer alır.
+Bekleyen şifreleme, Azure depolama hesaplarında sunucu tarafı şifrelemenin yanı sıra HDInsight kümenizin bir parçası olan Azure VM 'lerinde disk şifrelemesi de kapsamına alınmıştır.
 
-HDInsight 'ta geçiş sırasında verilerin şifrelenmesi, küme ağ geçitlerini ve küme düğümleri arasında [Internet Protokolü güvenliği (IPSec)](https://en.wikipedia.org/wiki/IPsec) Için [Aktarım KATMANı güvenliği (TLS)](../transport-layer-security.md) ile elde edilir. IPSec isteğe bağlı olarak tüm baş düğümler, çalışan düğümleri, kenar düğümleri ve Zookeeper düğümleri arasında etkinleştirilebilir. Windows tabanlı VM 'Ler ve kümedeki diğer Linux tabanlı düğümler olan ağ geçidi veya [kimlik Aracısı](./identity-broker.md) düğümleri arasındaki trafik için etkin değildir.
+HDInsight 'ta geçiş sırasında verilerin şifrelenmesi, küme ağ geçitleri ve [Internet Protokolü güvenliğine (IPSec)](https://wikipedia.org/wiki/IPsec) küme düğümleri arasında erişmek Için [Aktarım KATMANı güvenliği (TLS)](../transport-layer-security.md) ile elde edilir. IPSec isteğe bağlı olarak tüm baş düğümler, çalışan düğümleri, kenar düğümleri ve Zookeeper düğümleri arasında etkinleştirilebilir. Windows tabanlı VM 'Ler ve kümedeki diğer Linux tabanlı düğümler olan ağ geçidi veya [kimlik Aracısı](./identity-broker.md) düğümleri arasındaki trafik için etkin değildir.
 
 ## <a name="enable-encryption-in-transit"></a>İletimde şifrelemeyi etkinleştir
 
@@ -40,7 +40,7 @@ Azure portal kullanarak geçiş özelliği etkinken şifreleme ile yeni bir küm
 
     :::image type="content" source="media/encryption-in-transit/create-cluster-security-networking-tab.png" alt-text="Küme oluşturma-güvenlik ve ağ sekmesi.":::
 
-1. **Güvenlik + ağ** sekmesinde, **yoldaki şifrelemeyi etkinleştir** onay kutusunu işaretleyin.
+1. **Güvenlik + ağ** sekmesinde, **Transit şifrelemeyi etkinleştir** onay kutusunu seçin.
 
     :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Küme oluşturma-güvenlik ve ağ sekmesi.":::
 

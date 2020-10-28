@@ -50,7 +50,7 @@ Azure Cosmos DB bir sorguyu en iyileştirirken, ilk adım her zaman sorgunuzun [
 
 Sorgu ölçümlerini aldıktan sonra, sorgularınızın **çıktı belge sayısıyla** **alınan belge sayısını** karşılaştırın. Bu makaleyi gözden geçirmek üzere ilgili bölümleri belirlemek için bu karşılaştırmayı kullanın.
 
-**Alınan belge sayısı** , sorgu altyapısının yüklemek için gereken belge sayısıdır. **Çıktı belgesi sayısı** , sorgunun sonuçları için gereken belge sayısıdır. **Alınan belge sayısı** önemli ölçüde **çıkış belgesi**sayısından fazlaysa, sorgunuzun bir dizini kullanmayan ve tarama yapmak için gerekli olan en az bir bölümü vardı.
+**Alınan belge sayısı** , sorgu altyapısının yüklemek için gereken belge sayısıdır. **Çıktı belgesi sayısı** , sorgunun sonuçları için gereken belge sayısıdır. **Alınan belge sayısı** önemli ölçüde **çıkış belgesi** sayısından fazlaysa, sorgunuzun bir dizini kullanmayan ve tarama yapmak için gerekli olan en az bir bölümü vardı.
 
 Senaryonuza yönelik ilgili sorgu iyileştirmelerini anlamak için aşağıdaki bölümlere bakın.
 
@@ -92,7 +92,7 @@ Senaryonuza yönelik ilgili sorgu iyileştirmelerini anlamak için aşağıdaki 
 
 ## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Alınan belge sayısı, çıkış belgesi sayısını aşarsa sorgular
 
- **Alınan belge sayısı** , sorgu altyapısının yüklemek için gereken belge sayısıdır. **Çıktı belgesi sayısı** , sorgu tarafından döndürülen belge sayısıdır. **Alınan belge sayısı** önemli ölçüde **çıkış belgesi**sayısından fazlaysa, sorgunuzun bir dizini kullanmayan ve tarama yapmak için gerekli olan en az bir bölümü vardı.
+ **Alınan belge sayısı** , sorgu altyapısının yüklemek için gereken belge sayısıdır. **Çıktı belgesi sayısı** , sorgu tarafından döndürülen belge sayısıdır. **Alınan belge sayısı** önemli ölçüde **çıkış belgesi** sayısından fazlaysa, sorgunuzun bir dizini kullanmayan ve tarama yapmak için gerekli olan en az bir bölümü vardı.
 
 Aşağıda, dizin tarafından tamamen hizmet edilmemiş tarama sorgusunun bir örneği verilmiştir:
 
@@ -384,7 +384,7 @@ Etiketler dizisindeki yalnızca bir öğenin filtreyle eşleştiğini ve hem nut
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Alınan belge sayısı, çıkış belgesi sayısına eşit olan sorgular
 
-**Alınan belge sayısı** yaklaşık olarak **çıktı belge sayısına**eşitse, sorgu altyapısının çok sayıda gereksiz belgeyi taraması gerekmez. Anahtar sözcüğünü kullananlar gibi birçok sorgu için `TOP` , **alınan belge sayısı** , **çıkış belgesi sayısını** 1 ' den fazla olabilir. Bunun için endişelenmeniz gerekmez.
+**Alınan belge sayısı** yaklaşık olarak **çıktı belge sayısına** eşitse, sorgu altyapısının çok sayıda gereksiz belgeyi taraması gerekmez. Anahtar sözcüğünü kullananlar gibi birçok sorgu için `TOP` , **alınan belge sayısı** , **çıkış belgesi sayısını** 1 ' den fazla olabilir. Bunun için endişelenmeniz gerekmez.
 
 ### <a name="minimize-cross-partition-queries"></a>Çapraz bölüm sorgularını en aza indir
 

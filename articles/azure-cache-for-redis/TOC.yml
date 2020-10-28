@@ -40,7 +40,7 @@
     - name: Java Spring
       items:
         - name: Spring Boot Başlatıcı uygulaması kullanma
-          href: cache-java-spring-boot-initializer-with-redis-cache.md
+          href: /azure/developer/java/spring-framework/configure-spring-boot-initializer-java-app-with-redis-cache
     - name: Puan tabloları oluşturma
       href: cache-web-app-cache-aside-leaderboard.md
     - name: Makine öğrenmesi modeli dağıtma
@@ -67,7 +67,7 @@
         - name: Güvenlik temeli
           href: security-baseline.md
     - name: Önbelleğe alma mimarisi
-      href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+      href: /azure/architecture/best-practices/caching?toc=%252fazure%252fredis-cache%252ftoc.json
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Planlama
@@ -169,7 +169,7 @@
     - name: Azure CLI
       href: /cli/azure/redis
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/redis/'
+      href: /rest/api/redis/
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.cache/allversions
     - name: Azure İlkesi yerleşik ilkeler
@@ -184,7 +184,7 @@
     - name: Videolar
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-cache-redis.html'
+      href: /answers/topics/azure-cache-redis.html
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Microsoft Learn ile becerilerinizi geliştirin

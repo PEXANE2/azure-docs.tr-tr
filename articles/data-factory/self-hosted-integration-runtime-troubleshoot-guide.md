@@ -5,14 +5,14 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/22/2020
+ms.date: 10/26/2020
 ms.author: lle
-ms.openlocfilehash: d35dd94c8aa264c9b4dd679d3b50f3783acb2fde
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c85e27cedfbcebe7060dfed2f96fc53aea9838c9
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427240"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629402"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -34,13 +34,13 @@ Bu makalede Azure Data Factory içindeki şirket içinde barındırılan tümle�
 
     ![Günlükleri Gönder](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
 
-1. Göndermek istediğiniz günlükleri seçebilirsiniz. *Şirket içinde BARıNDıRıLAN IR*için, başarısız etkinlikle ilgili günlükleri veya şirket IÇINDE barındırılan IR düğümündeki tüm günlükleri karşıya yükleyebilirsiniz. *PAYLAŞıLAN IR*için yalnızca başarısız etkinlikle ilgili günlükleri karşıya yükleyebilirsiniz.
+1. Göndermek istediğiniz günlükleri seçebilirsiniz. *Şirket içinde BARıNDıRıLAN IR* için, başarısız etkinlikle ilgili günlükleri veya şirket IÇINDE barındırılan IR düğümündeki tüm günlükleri karşıya yükleyebilirsiniz. *PAYLAŞıLAN IR* için yalnızca başarısız etkinlikle ilgili günlükleri karşıya yükleyebilirsiniz.
 
     ![Günlükleri Seç](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
 
 1. Günlükler karşıya yüklendiğinde, sorunu çözmeye yönelik daha fazla yardıma ihtiyacınız varsa rapor KIMLIĞININ bir kaydını saklayın.
 
-    ![Günlükleri karşıya yükle](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+    ![Günlükleri karşıya yükleme](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
 
 > [!NOTE]
 > Günlük görüntüleme ve karşıya yükleme istekleri, tüm çevrimiçi şirket içinde barındırılan IR örneklerinde yürütülür. Lütfen tüm şirket içinde barındırılan IR örneklerinin eksik Günlükler olması durumunda çevrimiçi olduğundan emin olun. 
@@ -52,7 +52,7 @@ Bu makalede Azure Data Factory içindeki şirket içinde barındırılan tümle�
 
 #### <a name="symptoms"></a>Belirtiler
 
-TLS/SSL sertifikası seçildikten sonra **Şirket içinde barındırılan IR Configuration Manager** -> **İntranete uzaktan erişim**'den TLS/SSL sertifikasını (gelişmiş) etkinleştirmeye çalışırken aşağıdaki hata gösteriliyor:
+TLS/SSL sertifikası seçildikten sonra **Şirket içinde barındırılan IR Configuration Manager** -> **İntranete uzaktan erişim** 'den TLS/SSL sertifikasını (gelişmiş) etkinleştirmeye çalışırken aşağıdaki hata gösteriliyor:
 
 `Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was ‘abc.microsoft.com’ but the remote endpoint provided DNS claim ‘microsoft.com’. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity ‘microsoft.com’ as the Identity property of EndpointAddress when creating channel proxy.`
 
@@ -65,7 +65,7 @@ Bu WCF'de bilinen bir sorundur: WCF TLS/SSL doğrulaması SAN içinde yalnızca 
 #### <a name="resolution"></a>Çözüm
 
 Joker sertifika Azure Data Factory v2 Şirket İçinde Barındırılan IR'de desteklenir. Bu sorun normalde SSL sertifikası doğru olmadığı için oluşur. SAN'deki son DNSName doğru olmalıdır. Bunu doğrulamak için aşağıdaki adımları izleyin. 
-1.  Yönetim Konsolu 'Nu açın, sertifika ayrıntılarından hem *Konu* hem de *konu alternatif adını* iki kez kontrol edin. Yukarıdaki durumda, örneğin "DNS Name = microsoft.com.com" olan *konu alternatif adındaki*son öğe geçerli değildir.
+1.  Yönetim Konsolu 'Nu açın, sertifika ayrıntılarından hem *Konu* hem de *konu alternatif adını* iki kez kontrol edin. Yukarıdaki durumda, örneğin "DNS Name = microsoft.com.com" olan *konu alternatif adındaki* son öğe geçerli değildir.
 2.  Yanlış DNS adını kaldırmak için sertifika sorunu şirketine başvurun.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Eşzamanlı işleri sınırlama sorunu
@@ -102,7 +102,7 @@ SSL/TLS el sıkışmasıyla ilgili olayları işlerken, sertifika zinciri doğru
 
 - X. 509.440 sertifika zinciri derleme hatası sorunlarını gidermek için hızlı ve sezgisel bir yol aşağıda verilmiştir.
  
-    1. Doğrulanması gereken sertifikayı dışarı aktarın. Bilgisayar sertifikasını yönetme bölümüne gidin, denetlemek istediğiniz sertifikayı bulun ve **Tüm görevler** -> **Dışarı aktar**'a sağ tıklayın.
+    1. Doğrulanması gereken sertifikayı dışarı aktarın. Bilgisayar sertifikasını yönetme bölümüne gidin, denetlemek istediğiniz sertifikayı bulun ve **Tüm görevler** -> **Dışarı aktar** 'a sağ tıklayın.
     
         ![Görevleri dışarı aktar](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
@@ -164,14 +164,14 @@ SSL/TLS el sıkışmasıyla ilgili olayları işlerken, sertifika zinciri doğru
 
 > [!TIP] 
 > Aşağıdaki ekran görüntüsünde gösterilen şekilde filtre ayarlayabilirsiniz.
-> Bu, dll **System. ValueTuple** 'nin GAC ile ilgili klasörde veya *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway*veya *c:\Program Files\Microsoft Integration Runtime\4.0\Shared* klasöründe yer aldığı konusunda bize söyler.
+> Bu, dll **System. ValueTuple** 'nin GAC ile ilgili klasörde veya *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* veya *c:\Program Files\Microsoft Integration Runtime\4.0\Shared* klasöründe yer aldığı konusunda bize söyler.
 > Temelde dll'yi önce *GAC* klasöründen, ardından *Shared* ve son olarak da *Gateway* klasöründen yükler. Bu nedenle dll'yi yararlı olabilecek herhangi bir yola koyabilirsiniz.
 
 ![Filtreleri ayarlama](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
 #### <a name="resolution"></a>Çözüm
 
-**System.ValueTuple.dll** *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway\DataScan* klasöründe bulunduğunu görebilirsiniz. Sorunu çözmek **System.ValueTuple.dll** içinSystem.ValueTuple.dll*C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* klasörüne kopyalayın.
+**System.ValueTuple.dll** *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway\DataScan* klasöründe bulunduğunu görebilirsiniz. Sorunu çözmek **System.ValueTuple.dll** içinSystem.ValueTuple.dll *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* klasörüne kopyalayın.
 
 Diğer eksik dosya veya derleme sorunlarını çözmek için de aynı yöntemi kullanabilirsiniz.
 
@@ -179,7 +179,7 @@ Diğer eksik dosya veya derleme sorunlarını çözmek için de aynı yöntemi k
 
 *%Windir%\Microsoft.NET\assembly* ve *%windir%\assembly* altında System.ValueTuple.dll görmenizin nedeni, .net davranışının olmasının nedenidir. 
 
-Aşağıdaki hatadan, derleme sistemini açık bir şekilde görebilirsiniz *. ValueTuple* yok. Bu nedenle, uygulama derlemeyi *System.ValueTuple.dll*denetlemeye çalıştığında böyle bir sorun oluşur.
+Aşağıdaki hatadan, derleme sistemini açık bir şekilde görebilirsiniz *. ValueTuple* yok. Bu nedenle, uygulama derlemeyi *System.ValueTuple.dll* denetlemeye çalıştığında böyle bir sorun oluşur.
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
@@ -201,7 +201,7 @@ GAC hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/do
 
 #### <a name="resolution"></a>Çözüm
 
-Yukarıdaki nedenlerin hiçbiri geçerli değilse, şu klasöre gidebilirsiniz: *%ProgramData%\microsoft\data Transfer\DataManagementGateway*ve **yapılandırma** adlı dosyanın silinip silinmediğini kontrol edebilirsiniz. Silinmişse, [buradaki](https://www.netwrix.com/how_to_detect_who_deleted_file.html) yönergeleri izleyerek dosyayı kimin sildiğini denetleyin.
+Yukarıdaki nedenlerin hiçbiri geçerli değilse, şu klasöre gidebilirsiniz: *%ProgramData%\microsoft\data Transfer\DataManagementGateway* ve **yapılandırma** adlı dosyanın silinip silinmediğini kontrol edebilirsiniz. Silinmişse, [buradaki](https://www.netwrix.com/how_to_detect_who_deleted_file.html) yönergeleri izleyerek dosyayı kimin sildiğini denetleyin.
 
 ![Yapılandırma dosyasını denetle](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
@@ -210,7 +210,7 @@ Yukarıdaki nedenlerin hiçbiri geçerli değilse, şu klasöre gidebilirsiniz: 
 
 #### <a name="symptoms"></a>Belirtiler
 
-Hem kaynak hem de hedef veri deposunda Şirket içinde barındırılan IR'ler oluşturulduktan sonra bir kopyalamayı bitirmek için iki IR'yi birbirine bağlamak istiyorsunuz. Veri depoları farklı VNET 'lerde yapılandırılmışsa veya ağ geçidi mekanizmasını anlamadıklarında, şunun gibi hatalarla karşılaşmanız gerekir: *kaynak sürücüsü hedef IR 'de bulunamıyor*; *hedef IR tarafından kaynağa erişilemiyor*.
+Hem kaynak hem de hedef veri deposunda Şirket içinde barındırılan IR'ler oluşturulduktan sonra bir kopyalamayı bitirmek için iki IR'yi birbirine bağlamak istiyorsunuz. Veri depoları farklı VNET 'lerde yapılandırılmışsa veya ağ geçidi mekanizmasını anlamadıklarında, şunun gibi hatalarla karşılaşmanız gerekir: *kaynak sürücüsü hedef IR 'de bulunamıyor* ; *hedef IR tarafından kaynağa erişilemiyor* .
  
 #### <a name="cause"></a>Nedeni
 
@@ -288,14 +288,14 @@ Hatayı denetlemek için Integration Runtime olay günlüğüne gidin.
 
 ![IR olay günlüğü](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
 
-Hata, *UnauthorizedAccessException*' dan sonra gösteriyorsa, aşağıdaki yönergeleri izleyin:
+Hata, *UnauthorizedAccessException* ' dan sonra gösteriyorsa, aşağıdaki yönergeleri izleyin:
 
 
 1. Windows hizmeti panelinde *Diahostservice* oturum açma hizmeti hesabını denetleyin.
 
     ![Oturum açma hizmeti hesabı](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-2. Oturum açma hizmeti hesabının şu klasör üzerinde R/W iznine sahip olup olmadığını denetleyin: *%ProgramData%\microsoft\datatransfer\datamanagementgateway*.
+2. Oturum açma hizmeti hesabının şu klasör üzerinde R/W iznine sahip olup olmadığını denetleyin: *%ProgramData%\microsoft\datatransfer\datamanagementgateway* .
 
     - Varsayılan olarak, hizmet oturum açma hesabı değiştirilmediyseniz, R/W iznine sahip olmalıdır.
 
@@ -305,7 +305,7 @@ Hata, *UnauthorizedAccessException*' dan sonra gösteriyorsa, aşağıdaki yöne
         1. Temizle geçerli şirket içinde barındırılan IR 'yi kaldırın.
         1. Şirket içinde barındırılan IR bitlerini yükler.
         1. Hizmet hesabını değiştirmek için aşağıdaki yönergeleri izleyin: 
-            1. Selfhosted IR yükleme klasörüne gidin, klasöre geçin: *Microsoft Integration Runtime\4.0\Shared*.
+            1. Selfhosted IR yükleme klasörüne gidin, klasöre geçin: *Microsoft Integration Runtime\4.0\Shared* .
             1. Yükseltilmiş ayrıcalık kullanarak bir komut satırı başlatın. *\<user>* Ve *\<password>* kendi Kullanıcı adınızı ve parolanızı değiştirin ve ardından aşağıdaki komutu çalıştırın:
                        
                 ```
@@ -325,7 +325,7 @@ Hata, *UnauthorizedAccessException*' dan sonra gösteriyorsa, aşağıdaki yöne
             1. IR hizmeti oturum açma hesabı için yerel/etki alanı kullanıcısı ' nı kullanabilirsiniz.            
         1. Integration Runtime kaydedin.
 
-Hata şöyle görünüyorsa: *' Integration Runtime Service ' (DIAHostService) hizmeti başlatılamadı. Sistem hizmetlerini başlatmak için yeterli ayrıcalıklara sahip olduğunuzu doğrulayın*, aşağıdaki yönergeleri izleyin:
+Hata şöyle görünüyorsa: *' Integration Runtime Service ' (DIAHostService) hizmeti başlatılamadı. Sistem hizmetlerini başlatmak için yeterli ayrıcalıklara sahip olduğunuzu doğrulayın* , aşağıdaki yönergeleri izleyin:
 
 1. Windows hizmeti panelinde *Diahostservice* oturum açma hizmeti hesabını denetleyin.
    
@@ -351,7 +351,7 @@ Büyük/küçük bir çözünürlükte iki desenden hiçbiri uygulamanızda yoks
 
 #### <a name="cause"></a>Nedeni
 
-*Integration Runtime 3,0*' nin yayımlanmasından sonra, bir temizleyici ve daha güvenli bir ortamı etkinleştirmek için mevcut bir Integration Runtime düğümündeki **Kaydet** düğmesi kaldırılmıştır. Herhangi bir Integration Runtime'a (çevrimiçi veya değil) düğüm kaydedildiyse, bu düğümü başka bir Integration Runtime'a yeniden kaydetmek için önceki düğümün yüklemesini kaldırmalı ve sonra düğümü yükleyip kaydetmelisiniz.
+*Integration Runtime 3,0* ' nin yayımlanmasından sonra, bir temizleyici ve daha güvenli bir ortamı etkinleştirmek için mevcut bir Integration Runtime düğümündeki **Kaydet** düğmesi kaldırılmıştır. Herhangi bir Integration Runtime'a (çevrimiçi veya değil) düğüm kaydedildiyse, bu düğümü başka bir Integration Runtime'a yeniden kaydetmek için önceki düğümün yüklemesini kaldırmalı ve sonra düğümü yükleyip kaydetmelisiniz.
 
 #### <a name="resolution"></a>Çözüm
 
@@ -431,7 +431,7 @@ Yükleme Windows Installer hizmetine bağlıdır. Yükleme sorununa neden olabil
     ```
         
    > [!NOTE]     
-   > Data Factory konumunuza bağlı olarak hizmet URL 'SI farklılık gösterebilir. Hizmet URL 'sini **ADF Kullanıcı arabirimi**  >  **bağlantıları**  >  **tümleştirme çalışma zamanları**altında bulabilirsiniz  >  **Şirket içinde barındırılan IR**  >  **düğümlerini**düzenleme  >  **hizmeti URL 'lerini**düzenleyin.
+   > Data Factory konumunuza bağlı olarak hizmet URL 'SI farklılık gösterebilir. Hizmet URL 'sini **ADF Kullanıcı arabirimi**  >  **bağlantıları**  >  **tümleştirme çalışma zamanları** altında bulabilirsiniz  >  **Şirket içinde barındırılan IR**  >  **düğümlerini** düzenleme  >  **hizmeti URL 'lerini** düzenleyin.
             
     Beklenen yanıt aşağıda verilmiştir:
             
@@ -484,7 +484,7 @@ Bu davranış, düğümler birbirleriyle iletişim kuramıyorsa oluşur.
 
 #### <a name="resolution"></a>Çözüm
 
-1. Düğüm tarafından barındırılan VM 'de oturum açın. **Uygulama ve hizmet günlükleri**altında  >  **Integration Runtime**, Olay Görüntüleyicisi açın ve tüm hata günlüklerini filtreleyin.
+1. Düğüm tarafından barındırılan VM 'de oturum açın. **Uygulama ve hizmet günlükleri** altında  >  **Integration Runtime** , Olay Görüntüleyicisi açın ve tüm hata günlüklerini filtreleyin.
 
 1. Hata günlüğünde aşağıdaki hatayı içerip içermediğini kontrol edin: 
     
@@ -569,7 +569,7 @@ Netmon izlemesini alın ve daha fazla analiz edin.
  
     *Linux sistem A 'dan TTL 64 ile ağ paketi-> B TTL 64 eksi 1 = 63-> C TTL 63, eksi 1 = 62-> TTL 62 eksi 1 = 61 kendinden konak IR*
 
-- İdeal durumda, TTL 128 olur, bu da Windows sisteminin Data Factory çalıştırdığı anlamına gelir. Aşağıdaki örnekte gösterildiği gibi, *128 – 107 = 21 atlamaları*, TCP 3 el sıkışması sırasında paketin Data Factory 21 ' den kendınden konak IR 'ye gönderildiği anlamına gelir.
+- İdeal durumda, TTL 128 olur, bu da Windows sisteminin Data Factory çalıştırdığı anlamına gelir. Aşağıdaki örnekte gösterildiği gibi, *128 – 107 = 21 atlamaları* , TCP 3 el sıkışması sırasında paketin Data Factory 21 ' den kendınden konak IR 'ye gönderildiği anlamına gelir.
  
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
@@ -587,11 +587,11 @@ Netmon Trace ile Telnet **8.8.8.8 888** ' i topladığınızda, izlemeyi aşağ�
 ![Netmon Trace 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
  
 
-Bu, **888**numaralı bağlantı noktasına bağlı olarak **8.8.8.8** sunucu tarafında TCP bağlantısı yapamayacağı anlamına gelir; bu nedenle, burada iki **synyeniden aktarım** ek paketi görürsünüz. Kaynak **self-konak2** , ilk pakette **8.8.8.8** ile bağlantı kuramadı, çünkü bağlantı kurmak için devam edecektir.
+Bu, **888** numaralı bağlantı noktasına bağlı olarak **8.8.8.8** sunucu tarafında TCP bağlantısı yapamayacağı anlamına gelir; bu nedenle, burada iki **synyeniden aktarım** ek paketi görürsünüz. Kaynak **self-konak2** , ilk pakette **8.8.8.8** ile bağlantı kuramadı, çünkü bağlantı kurmak için devam edecektir.
 
 > [!TIP]
-> - **Yükleme filtresi**  ->  **Standart filtre**  ->  **adresleri**  ->  **IPv4 adresleri**' ne tıklayabilirsiniz.
-> - Giriş **IPv4. Address = = 8.8.8.8** as Filter ve **Uygula**' ya tıklayın. Bundan sonra, yalnızca yerel makineden hedef **8.8.8.8**iletişimi görürsünüz.
+> - **Yükleme filtresi**  ->  **Standart filtre**  ->  **adresleri**  ->  **IPv4 adresleri** ' ne tıklayabilirsiniz.
+> - Giriş **IPv4. Address = = 8.8.8.8** as Filter ve **Uygula** ' ya tıklayın. Bundan sonra, yalnızca yerel makineden hedef **8.8.8.8** iletişimi görürsünüz.
 
 ![adresleri filtrele 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
         
@@ -630,7 +630,7 @@ Bu bildirim aşağıdaki senaryoları etkiler:
 ##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>Senaryo 1: Şirket güvenlik duvarının arkasındaki şirket içinde çalışan, şirket içinde barındırılan Integration Runtime giden iletişim
 Etkilenip etkilenmediğinizi belirleme:
 - Bu belgede açıklanan yaklaşımı kullanarak FQDN adlarına dayalı güvenlik duvarı kuralları tanımlıyorsanız, güvenlik duvarı [yapılandırması ve IP adresi için izin verilenler listesi ayarları](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)konusunda etkilenmiş olursunuz.
-- Ancak şirket güvenlik duvarınızdaki giden IP 'Leri açık bir şekilde listelemek istiyorsanız bu sorundan etkilenmiş olursunuz.
+- Ancak şirket güvenlik duvarınızdaki giden IP 'Ler için izin verilenler listesini açık bir şekilde etkinleştirirseniz bu sorundan etkilenmiş olursunuz.
 
 Etkilenmiş olmanız durumunda yapılacak eylem: 8 Kasım 2020 ' e kadar en son Data Factory IP adreslerini kullanmak üzere ağ altyapınızı güncelleştirmek için ağ altyapısı ekibinize bildirin.  En son IP adreslerini indirmek için, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)' na gidin.
 
@@ -639,16 +639,55 @@ Etkilenip etkilenmediğinizi belirleme:
 - Özel ağınızda kendi kendine barındırılan Integration Runtime içeren giden NSG kurallarınız olup olmadığını denetleyin. Giden kısıtlama yoksa, hiçbir etkisi olmaz.
 - Giden kuralı kısıtlamalarınız varsa, hizmet etiketi kullanıp kullanmadığından emin olun. Hizmet etiketi kullanıyorsanız, yeni IP aralıkları var olan hizmet etiketi altında olduğundan herhangi bir şeyi değiştirme veya ekleme gereksinimi yoktur. 
  ![Hedef denetimi](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
-- Ancak, giden IP adreslerini Azure sanal ağındaki NSG kuralları ayarınız üzerinde açık bir şekilde listeediyorsanız etkilenmiş olursunuz.
+- Ancak Azure sanal ağındaki NSG kurallarınız ayarlarınızın giden IP adresleri için izin verilenler listesini açık bir şekilde etkinleştirdiğinizde bu sorundan etkilenmiş olursunuz.
 
 Etkilenmiş olmanız durumunda yapılacak eylem: 8 Kasım 2020 ' e kadar en son Data Factory IP adreslerini kullanmak için, ağ altyapısı ekibinize Azure sanal ağ yapılandırmanızda NSG kurallarını güncelleştirme konusunda bilgilendirin.  En son IP adreslerini indirmek için, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)' na gidin.
 
 ##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>Senaryo 3: müşteri tarafından yönetilen Azure sanal ağı 'nda SSIS Integration Runtime giden iletişim
 - Özel ağınızda SSIS Integration Runtime içeren herhangi bir giden NSG kuralı olup olmadığınızı denetleyin. Giden kısıtlama yoksa, hiçbir etkisi olmaz.
 - Giden kuralı kısıtlamalarınız varsa, hizmet etiketi kullanıp kullanmadığından emin olun. Hizmet etiketi kullanıyorsanız, yeni IP aralıkları var olan hizmet etiketi altında olduğundan herhangi bir şeyi değiştirme veya ekleme gereksinimi yoktur.
-- Ancak, giden IP adresini Azure sanal ağındaki NSG kuralları ayarınız üzerinde açık bir şekilde listelemek istiyorsanız bu sorundan etkilenmiş olursunuz.
+- Ancak Azure sanal ağındaki NSG kurallarınız ayarlarınızın giden IP adresi için izin verilenler listesini açıkça etkinleştirirseniz bu sorundan etkilenmiş olursunuz.
 
 Etkilenmiş olmanız durumunda yapılacak eylem: 8 Kasım 2020 ' e kadar en son Data Factory IP adreslerini kullanmak için, ağ altyapısı ekibinize Azure sanal ağ yapılandırmanızda NSG kurallarını güncelleştirme konusunda bilgilendirin.  En son IP adreslerini indirmek için, [hizmet ETIKETLERI IP aralığı indirme bağlantısı](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)' na gidin.
+
+### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>SSLTLS güvenli kanalı için güven ilişkisi kurulamadı 
+
+#### <a name="symptoms"></a>Belirtiler
+
+Şirket içinde barındırılan IR, ADF hizmetine bağlanamadı.
+
+CustomLogEvent tablosundaki SHıR olay günlüğünü veya istemci bildirim günlüklerini denetleyerek aşağıdaki hata iletisi bulunur:
+
+`The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.The remote certificate is invalid according to the validation procedure.`
+
+ADF hizmetinin sunucu sertifikasını denetleme:
+
+En basit yöntem, ADF hizmeti URL 'sini tarayıcıda açmak, örneğin, https://eu.frontend.clouddatahub.net/ shır 'nin yüklü olduğu makinede açmak ve ardından sunucu sertifikası bilgilerini görüntülemek için kullanılır:
+
+  ![ADF hizmetinin sunucu sertifikasını denetle](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
+
+  ![Sunucu sertifika yolunu denetle](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png)
+
+#### <a name="cause"></a>Nedeni
+
+Bu sorunun iki olası nedeni:
+
+- ADF hizmeti sunucu sertifikasının kök CA 'sı, SHıR 'nin yüklü olduğu makinede güvenilir değil. 
+- Ortamınızda proxy kullanıyorsunuz ve ADF hizmetinin sunucu sertifikası ara sunucu tarafından değiştirilirken, değiştirilmiş sunucu sertifikasına, SHıR 'nin yüklendiği makine tarafından güvenilmez.
+
+#### <a name="solution"></a>Çözüm
+
+- 1. nedenden dolayı, ADF sunucu sertifikasının ve Sertifika zincirinin, SHıR 'nin yüklü olduğu makine tarafından güvenilir olduğundan emin olun.
+- 2. nedenden dolayı, SHıR makinesindeki değiştirilmiş kök CA 'ya güvenin veya proxy 'yi ADF sunucu sertifikasını değiştirmek üzere yapılandırın.
+
+Windows 'daki bir sertifikaya güvenmek için Ayrıntılar için [Bu makaleye](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) bakın.
+
+#### <a name="additional-info"></a>Ek bilgiler
+DigiCert tarafından imzalanmış yeni bir SSL sertifikası kullanıma sunuyoruz, lütfen DigiCert genel kök G2 'nin güvenilir kök CA 'da olup olmadığını denetleyin.
+
+  ![DigiCert genel kök G2](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
+
+Aksi takdirde, [buradan](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )indirin. 
 
 ## <a name="self-hosted-ir-sharing"></a>Şirket içinde barındırılan IR paylaşımı
 

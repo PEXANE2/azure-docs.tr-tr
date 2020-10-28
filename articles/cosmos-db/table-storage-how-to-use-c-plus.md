@@ -98,7 +98,7 @@ Uygulamanızı yerel Windows tabanlı bilgisayarınızda test etmek için [Azure
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Azure Storage öykünücüsü 'nü başlatmak için Windows masaüstünüzden, **Başlat** düğmesini veya Windows anahtarını seçin. *Microsoft Azure depolama öykünücüsü*girin ve çalıştırın. Daha fazla bilgi için bkz. [geliştirme ve test Için Azure depolama öykünücüsünü kullanma](../storage/common/storage-use-emulator.md).
+Azure Storage öykünücüsü 'nü başlatmak için Windows masaüstünüzden, **Başlat** düğmesini veya Windows anahtarını seçin. *Microsoft Azure depolama öykünücüsü* girin ve çalıştırın. Daha fazla bilgi için bkz. [geliştirme ve test Için Azure depolama öykünücüsünü kullanma](../storage/common/storage-use-emulator.md).
 
 ### <a name="retrieve-your-connection-string"></a>Bağlantı dizenizi alma
 
@@ -499,11 +499,11 @@ else
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Visual Studio Community Edition için, projeniz *storage_account. h* ve *Table. h*gibi içerme dosyaları nedeniyle derleme hataları alıyorsa, **/Permissive-** derleyici anahtarını kaldırın:
+Visual Studio Community Edition için, projeniz *storage_account. h* ve *Table. h* gibi içerme dosyaları nedeniyle derleme hataları alıyorsa, **/Permissive-** derleyici anahtarını kaldırın:
 
-1. **Çözüm Gezgini**’nde projenize sağ tıklayın ve **Özellikler**’i seçin.
-1. **Özellik Sayfaları** iletişim kutusunda **Yapılandırma Özellikleri**’ni, **C/C++**’yi genişletin ve **Dil**’i seçin.
-1. **Uyumluluk modu**’nu **Hayır** olarak ayarlayın.
+1. **Çözüm Gezgini** ’nde projenize sağ tıklayın ve **Özellikler** ’i seçin.
+1. **Özellik Sayfaları** iletişim kutusunda **Yapılandırma Özellikleri** ’ni, **C/C++** ’yi genişletin ve **Dil** ’i seçin.
+1. **Uyumluluk modu** ’nu **Hayır** olarak ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

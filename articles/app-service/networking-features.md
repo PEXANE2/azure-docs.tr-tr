@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 860b1ac1713ac7afb7db2643d68974b399b5236b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9b75df9df2e81f01543b407b019c752c77ee6807
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207075"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628839"
 ---
 # <a name="app-service-networking-features"></a>App Service ağ özellikleri
 
@@ -28,7 +28,8 @@ Azure App Service dağıtılmış bir sistemdir. Gelen HTTP/HTTPS isteklerini i�
 |---------------------|-------------------|
 | Uygulama tarafından atanan adres | Karma Bağlantılar |
 | Erişim kısıtlamaları | Ağ Geçidi gerekli VNet tümleştirmesi |
-| Hizmet Uç Noktaları | Sanal Ağ Tümleştirmesi |
+| Hizmet uç noktaları | Sanal Ağ Tümleştirmesi |
+| Özel uç noktalar ||
 
 Aksi belirtilmedikçe tüm özellikler birlikte kullanılabilir. Çeşitli sorunlarınızı çözümlemek için özellikleri karıştırabilirsiniz.
 
@@ -41,9 +42,9 @@ Belirli bir kullanım durumu için, sorunu çözmenin birkaç yolu olabilir.  Ku
 | Uygulamanız için IP tabanlı SSL gereksinimlerini destekleme | uygulama tarafından atanan adres |
 | Paylaştırılmamış, uygulamanız için adanmış gelen adres | uygulama tarafından atanan adres |
 | Uygulamanıza erişimi iyi tanımlanmış bir adres kümesinden sınırlayın | Erişim kısıtlamaları |
-| VNet 'teki kaynaklardan uygulamama erişimi kısıtla | Hizmet Uç Noktaları </br> ıLB ATıCı </br> Özel uç noktalar |
+| VNet 'teki kaynaklardan uygulamama erişimi kısıtla | Hizmet uç noktaları </br> ıLB ATıCı </br> Özel uç noktalar |
 | Uygulamamın sanal ağı 'nda özel bir IP 'de kullanıma sunulması | ıLB ATıCı </br> Özel uç noktalar </br> Hizmet uç noktalarına sahip bir Application Gateway gelen için özel IP |
-| Uygulamamı bir Web uygulaması güvenlik duvarı (WAF) ile koruma | Application Gateway + ıLB Ao </br> Özel uç noktalarla Application Gateway </br> Hizmet uç noktaları ile Application Gateway </br> Erişim kısıtlamalarına sahip Azure ön kapısı |
+| Uygulamamı bir Web uygulaması güvenlik duvarı (WAF) ile koruma | Application Gateway + ıLB Ao </br> Özel uç noktalarla Application Gateway </br> Hizmet uç noktalarıyla Application Gateway </br> Erişim kısıtlamalarına sahip Azure ön kapısı |
 | Farklı bölgelerde uygulamalarıma trafik yükünü dengelemek | Erişim kısıtlamalarına sahip Azure ön kapısı | 
 | Aynı bölgedeki Yük Dengeleme trafiği | [Hizmet uç noktalarıyla Application Gateway][appgwserviceendpoints] | 
 
@@ -89,20 +90,23 @@ Uygulama tarafından atanan bir adres kullandığınızda, trafiğiniz hala App 
 
 ### <a name="access-restrictions"></a>Erişim kısıtlamaları 
 
-Erişim kısıtlamaları özelliği, **gelen** ISTEKLERI kaynak IP adresine göre filtrelemenizi sağlar. Filtreleme eylemi, uygulamalarınızın çalıştığı çalışan rollerden yukarı akış olan ön uç rollerde gerçekleşir. Ön uç rolleri çalışanlardan yukarı akış olduğundan, erişim kısıtlamaları özelliği uygulamalarınız için ağ düzeyinde koruma olarak kabul edilebilir. Özelliği, öncelik sırasına göre değerlendirilen izin verme ve reddetme adres bloklarının bir listesini oluşturmanızı sağlar. Azure ağı 'nda bulunan ağ güvenlik grubu (NSG) özelliğine benzer.  Bu özelliği bir ate veya çok kiracılı hizmette kullanabilirsiniz. ILB Ao ile birlikte kullanıldığında, erişimi özel adres bloklarından kısıtlayabilirsiniz.
+Erişim kısıtlamaları özelliği **gelen** istekleri filtrelemenizi sağlar. Filtreleme eylemi, uygulamalarınızın çalıştığı çalışan rollerden yukarı akış olan ön uç rollerde gerçekleşir. Ön uç rolleri çalışanlardan yukarı akış olduğundan, erişim kısıtlamaları özelliği uygulamalarınız için ağ düzeyinde koruma olarak kabul edilebilir. Özelliği, öncelik sırasına göre değerlendirilen izin verme ve reddetme kurallarının bir listesini oluşturmanızı sağlar. Azure ağı 'nda bulunan ağ güvenlik grubu (NSG) özelliğine benzer.  Bu özelliği bir ate veya çok kiracılı hizmette kullanabilirsiniz. ILB Ao veya özel uç nokta ile kullanıldığında, erişimi özel adres bloklarından kısıtlayabilirsiniz.
+> [!NOTE]
+> Uygulama başına en fazla 512 erişim kısıtlama kuralı yapılandırılabilir. 
 
 ![Erişim kısıtlamaları](media/networking-features/access-restrictions.png)
+#### <a name="ip-based-access-restriction-rules"></a>IP tabanlı erişim kısıtlama kuralları
 
-Erişim kısıtlamaları özelliği, uygulamanıza ulaşmak için kullanılabilecek IP adreslerini kısıtlamak istediğiniz senaryolarda yardımcı olur. Bu özellik için kullanım örnekleri arasında:
+IP tabanlı erişim kısıtlamaları özelliği, uygulamanıza ulaşmak için kullanılabilecek IP adreslerini kısıtlamak istediğiniz senaryolarda yardımcı olur. Hem IPv4, hem IPv6 desteklenir. Bu özellik için kullanım örnekleri arasında:
 
 * Uygulamanıza erişimi iyi tanımlanmış bir adres kümesinden sınırlayın 
-* Azure ön kapısı gibi bir yük dengeleme hizmetinden gelen erişimi kısıtlayın. Gelen trafiğinizi Azure ön kapısına kilitlemek isterseniz, 147.243.0.0/16 ' dan trafiğe izin veren kurallar oluşturun ve 2a01:111:2050::/44. 
+* Azure ön kapısı gibi bir yük dengeleme hizmetinden gelen erişimi kısıtla
 
 ![Ön kapılı erişim kısıtlamaları](media/networking-features/access-restrictions-afd.png)
 
-Uygulamanıza erişimi yalnızca Azure sanal ağınızdaki (VNet) kaynaklardan ulaşılabilen şekilde kilitlemek istiyorsanız, kaynağınızın VNet 'iniz üzerinde olduğu her şey için statik bir genel adrese ihtiyacınız vardır. Kaynakların ortak bir adresi yoksa, bunun yerine hizmet uç noktaları özelliğini kullanmanız gerekir. [Erişim kısıtlamalarını yapılandırma][iprestrictions]hakkında öğreticiyle bu özelliği etkinleştirmeyi öğrenin.
+[Erişim kısıtlamalarını yapılandırma][iprestrictions]hakkında öğreticiyle bu özelliği etkinleştirmeyi öğrenin.
 
-### <a name="service-endpoints"></a>Hizmet uç noktaları
+#### <a name="service-endpoint-based-access-restriction-rules"></a>Hizmet uç noktası tabanlı erişim kısıtlama kuralları
 
 Hizmet uç noktaları, kaynak adresin seçtiğiniz bir alt ağ kümesinden gelmesi için uygulamanıza **gelen** erişimi kilitlemenize imkan tanır. Bu özellik IP erişim kısıtlamalarıyla birlikte çalışmaktadır. Hizmet uç noktaları, uzaktan hata ayıklama ile uyumlu değildir. Uygulamanızda uzaktan hata ayıklamayı kullanmak için, istemciniz hizmet uç noktaları etkinleştirilmiş bir alt ağda olamaz. Hizmet uç noktaları, IP erişim kısıtlamalarıyla aynı kullanıcı deneyiminde ayarlanır. Sanal ağlarınızdaki alt ağların yanı sıra ortak adresleri de içeren erişim kuralları için izin verme/reddetme listesi oluşturabilirsiniz. Bu özellik gibi senaryoları destekler:
 
@@ -115,7 +119,7 @@ Hizmet uç noktaları, kaynak adresin seçtiğiniz bir alt ağ kümesinden gelme
 
 Hizmet [uç noktası erişim kısıtlamalarını yapılandırma][serviceendpoints] konusundaki öğreticide uygulamanızla hizmet uç noktalarını yapılandırma hakkında daha fazla bilgi edinebilirsiniz
 
-### <a name="private-endpoints"></a>Özel Uç Noktalar
+### <a name="private-endpoints"></a>Özel uç noktalar
 
 Özel uç nokta, Web uygulamanıza Azure özel bağlantısı tarafından özel olarak ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan özel bir IP adresi kullanarak Web uygulamasını sanal ağınıza etkin bir şekilde getiriyor. Bu özellik yalnızca Web uygulamanıza **gelen** akışlara yöneliktir.
 [Azure Web App için özel uç noktaları kullanma][privateendpoints]
@@ -225,7 +229,7 @@ Bu dağıtım stili size internet 'e giden trafik için özel bir adres vermeyeb
 
 ### <a name="create-multi-tier-applications"></a>Çok katmanlı uygulamalar oluşturma
 
-Çok katmanlı bir uygulama, API arka uç uygulamalarına yalnızca ön uç katmanından erişilebilecekleri bir uygulamadır. Çok katmanlı bir uygulama oluşturmanın iki yolu vardır. Her ikisi de ön uç Web uygulamanızı VNet 'teki bir alt ağla bağlamak için VNet tümleştirmesini kullanarak başlayın. Bu, Web uygulamanızın sanal ağınıza çağrı yapmasını sağlar. Ön uç uygulamanız VNet 'e bağlandıktan sonra API uygulamanıza erişimin nasıl kilitleneceği üzerinde seçim yapmanız gerekir.  Seçenekleriniz şunlardır:
+Çok katmanlı bir uygulama, API arka uç uygulamalarına yalnızca ön uç katmanından erişilebilecekleri bir uygulamadır. Çok katmanlı bir uygulama oluşturmanın iki yolu vardır. Her ikisi de ön uç Web uygulamanızı VNet 'teki bir alt ağla bağlamak için VNet tümleştirmesini kullanarak başlayın. Bu, Web uygulamanızın sanal ağınıza çağrı yapmasını sağlar. Ön uç uygulamanız VNet 'e bağlandıktan sonra API uygulamanıza erişimin nasıl kilitleneceği üzerinde seçim yapmanız gerekir.  Şunları yapabilirsiniz:
 
 * hem ön uç hem de API uygulamasını aynı ıLB Ao 'da barındırın ve ön uç uygulamayı bir Application Gateway ile internet 'te kullanıma sunma
 * ön ucu çok kiracılı hizmette ve bir ıLB Ao 'da arka uçta barındırma
@@ -243,7 +247,7 @@ Yalnızca ön uç Web uygulamanız tarafından kullanılan alt ağdan gelen traf
 
 İki teknik arasındaki dengeler şunlardır:
 
-* Hizmet uç noktaları ile, tümleştirme alt ağına yalnızca API uygulamanıza yönelik trafiğin güvenliğini sağlayın. Bu, API uygulamasını güvenli bir şekilde korur, ancak ön uç uygulamanızdan App Service diğer uygulamalara bir veri nfilme olasılığı da vardır.
+* hizmet uç noktaları ile, tümleştirme alt ağına yalnızca API uygulamanıza yönelik trafiğin güvenliğini sağlayın. Bu, API uygulamasını güvenli bir şekilde korur, ancak ön uç uygulamanızdan App Service diğer uygulamalara bir veri nfilme olasılığı da vardır.
 * Özel uç noktalar oynatma sırasında iki alt ağa sahip olursunuz. Bu karmaşıklık 'e ekler. Ayrıca, Özel uç nokta üst düzey bir kaynaktır ve yönetmek için daha fazla bilgi ekler. Özel uç noktaları kullanmanın avantajı, veri taşması olasılıklarına sahip değildir. 
 
 İki yöntem de birden çok ön uç ile çalışır. Küçük ölçekte, ön uç tümleştirme alt ağında API uygulaması için hizmet uç noktalarını etkinleştirdiğiniz için hizmet uç noktalarının kullanımı çok daha kolay. Daha fazla ön uç uygulaması eklerken, tümleştirme alt ağıyla her API uygulamasını hizmet uç noktalarına sahip olacak şekilde ayarlamanız gerekir. Özel uç noktalar sayesinde, özel bir uç nokta ayarlamasından sonra API uygulamalarınızda herhangi bir şeyi değiştirmeniz gerekmez. 

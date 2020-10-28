@@ -24,7 +24,7 @@ HDInsight kümesi faturalandırması küme oluşturulduğunda başlar ve küme s
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Sol menüden **Tüm Service**  >  **Analytics**  >  **HDInsight kümelerine** gidin ve kümenizi seçin.
 

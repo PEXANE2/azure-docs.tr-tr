@@ -37,7 +37,7 @@ Bu öğreticide şunları yapacaksınız:
 > * Kapsayıcıya öğe ekleyin.
 > * Öğeler, kapsayıcı ve veritabanı üzerinde temel işlemleri gerçekleştirin.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 
@@ -85,7 +85,7 @@ Artık uygulamanız mevcut olduğuna göre, Azure Cosmos DB konuştuğunu unutma
 
 1. *config.js* dosyasını en sevdiğiniz metin düzenleyicisinde açın.
 
-1. Aşağıdaki kod parçacığını kopyalayıp *config.js* dosyasına yapıştırın ve özellikleri `endpoint` ve `key` Azure Cosmos DB uç nokta URI 'si ve birincil anahtarınızı ayarlayın. Veritabanı, kapsayıcı adları **Görevler** ve **öğeler**olarak ayarlanır. Bu uygulama için kullanacağınız bölüm anahtarı **/category**' dir.
+1. Aşağıdaki kod parçacığını kopyalayıp *config.js* dosyasına yapıştırın ve özellikleri `endpoint` ve `key` Azure Cosmos DB uç nokta URI 'si ve birincil anahtarınızı ayarlayın. Veritabanı, kapsayıcı adları **Görevler** ve **öğeler** olarak ayarlanır. Bu uygulama için kullanacağınız bölüm anahtarı **/category** ' dir.
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
@@ -93,7 +93,7 @@ Artık uygulamanız mevcut olduğuna göre, Azure Cosmos DB konuştuğunu unutma
 
    :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="Azure portaldan anahtarları alma ekran görüntüsü":::
 
-JavaScript SDK 'Sı genel terimler *kapsayıcısını* ve *öğesini*kullanır. Bir kapsayıcı koleksiyon, grafik veya tablo olabilir. Öğe de kapsayıcının içinde bulunan belge, kenar/köşe veya satır olabilir. Önceki kod parçacığında, `module.exports = config;` kod, *app.js* dosyası içinde başvurabilmeniz için yapılandırma nesnesini dışarı aktarmak için kullanılır.
+JavaScript SDK 'Sı genel terimler *kapsayıcısını* ve *öğesini* kullanır. Bir kapsayıcı koleksiyon, grafik veya tablo olabilir. Öğe de kapsayıcının içinde bulunan belge, kenar/köşe veya satır olabilir. Önceki kod parçacığında, `module.exports = config;` kod, *app.js* dosyası içinde başvurabilmeniz için yapılandırma nesnesini dışarı aktarmak için kullanılır.
 
 ## <a name="create-a-database-and-a-container"></a>Veritabanı ve kapsayıcı oluşturma
 
@@ -123,7 +123,7 @@ JavaScript SDK 'Sı genel terimler *kapsayıcısını* ve *öğesini*kullanır. 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateClientObjectDatabaseContainer":::
 
 > [!Note]
-> **Cosmos DB öykünücüye**bağlanıyorsanız, düğüm IŞLEMINIZ için TLS doğrulamasını devre dışı bırakın:
+> **Cosmos DB öykünücüye** bağlanıyorsanız, düğüm IŞLEMINIZ için TLS doğrulamasını devre dışı bırakın:
 >   ```javascript
 >   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 >   const client = new CosmosClient({ endpoint, key });
@@ -216,7 +216,7 @@ node app.js
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu kaynaklara artık ihtiyaç duyulmadığında, kaynak grubunu, Azure Cosmos DB hesabı ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için Azure Cosmos DB hesabı için kullandığınız kaynak grubunu seçin, **Sil**' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
+Bu kaynaklara artık ihtiyaç duyulmadığında, kaynak grubunu, Azure Cosmos DB hesabı ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için Azure Cosmos DB hesabı için kullandığınız kaynak grubunu seçin, **Sil** ' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

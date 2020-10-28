@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: c392ad7a098116a8f2224d6844d38dc40e01d753
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f7959b639b75d912d44670c8b00a7327cb7857d6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545999"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629451"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight ile betik eylemi geliştirme
 
@@ -239,7 +239,7 @@ Aşağıdaki yardımcılar betiğinizdeki kullanım için kullanılabilir:
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Kaynak URI 'den belirtilen dosya yoluna bir dosya indirir. Varsayılan olarak, varolan bir dosyanın üzerine yazmaz. |
 | `untar_file TARFILE DESTDIR` |Bir tar dosyasını (kullanarak `-xf` ) hedef dizine ayıklar. |
-| `test_is_headnode` |Bir küme başdüğümü üzerinde çalıştırıldıysa 1 döndürür. Aksi takdirde, 0. |
+| `test_is_headnode` |Betik bir küme baş düğümünde çalıştırıldıysa 1 döndürür. Aksi takdirde, 0. |
 | `test_is_datanode` |Geçerli düğüm bir veri (çalışan) düğümüdür, 1 döndürür. Aksi takdirde, 0. |
 | `test_is_first_datanode` |Geçerli düğüm ilk veri (çalışan) düğümüdür (workernode0 adlı), bir 1 döndürür. Aksi takdirde, 0. |
 | `get_headnodes` |Kümedeki baş tam etki alanı adını döndürün. Adlar virgülle ayrılır. Hatada boş bir dize döndürüldü. |
@@ -268,7 +268,7 @@ Bir ortam değişkenini ayarlamak aşağıdaki ifade tarafından gerçekleştiri
 VARIABLENAME=value
 ```
 
-Burada VARIABLENAME değişkenin adıdır. Değişkenine erişmek için kullanın `$VARIABLENAME` . Örneğin, bir Konumsal parametre tarafından belirtilen bir değeri parola adlı bir ortam değişkeni olarak atamak için aşağıdaki ifadeyi kullanın:
+Yukarıdaki örnekte, `VARIABLENAME` değişkenin adıdır. Değişkenine erişmek için kullanın `$VARIABLENAME` . Örneğin, bir Konumsal parametre tarafından belirtilen bir değeri parola adlı bir ortam değişkeni olarak atamak için aşağıdaki ifadeyi kullanın:
 
 ```bash
 PASSWORD=$1

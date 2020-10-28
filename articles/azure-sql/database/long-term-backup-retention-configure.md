@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/14/2020
-ms.openlocfilehash: a9ff0219a9b811cae15f9b34ec85240d303ab841
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7c66c37be1d200a73aa04854f946946b69c6b76
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450276"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629145"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Aşağıdaki bölümlerde, uzun süreli saklama 'yi yapılandırmak, uzun sürel
 
 SQL veritabanını, [Otomatik yedeklemeleri](long-term-retention-overview.md) hizmet katmanınızın saklama süresinden daha uzun bir süre koruyacak şekilde yapılandırabilirsiniz.
 
-1. Azure portal, SQL Server örneğinizi seçin ve ardından **Yedeklemeleri Yönet**' e tıklayın. **Ilkeleri Yapılandır** sekmesinde, uzun süreli yedek saklama ilkelerini ayarlamak veya değiştirmek istediğiniz veritabanının onay kutusunu seçin. Veritabanının yanındaki onay kutusu seçili değilse, ilkeye yönelik değişiklikler bu veritabanına uygulanmaz.  
+1. Azure portal, SQL Server örneğinizi seçin ve ardından **Yedeklemeleri Yönet** ' e tıklayın. **Ilkeleri Yapılandır** sekmesinde, uzun süreli yedek saklama ilkelerini ayarlamak veya değiştirmek istediğiniz veritabanının onay kutusunu seçin. Veritabanının yanındaki onay kutusu seçili değilse, ilkeye yönelik değişiklikler bu veritabanına uygulanmaz.  
 
    ![Yedeklemeleri Yönet bağlantısı](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
 
@@ -39,7 +39,7 @@ SQL veritabanını, [Otomatik yedeklemeleri](long-term-retention-overview.md) hi
 
    ![ilkeleri yapılandırma](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
 
-3. Tamamlandığında, **Uygula**' ya tıklayın.
+3. Tamamlandığında, **Uygula** ' ya tıklayın.
 
 > [!IMPORTANT]
 > Uzun süreli yedek saklama ilkesini etkinleştirdiğinizde, ilk yedeklemenin görünür olması ve geri yükleme için kullanılabilir olması 7 güne kadar sürebilir. LTR yedekleme cadans ayrıntıları için bkz. [uzun süreli yedek saklama](long-term-retention-overview.md).
@@ -48,7 +48,7 @@ SQL veritabanını, [Otomatik yedeklemeleri](long-term-retention-overview.md) hi
 
 Bir LTR ilkesiyle belirli bir veritabanı için tutulan yedeklemeleri görüntüleyin ve bu yedeklerden geri yükleyin.
 
-1. Azure portal, sunucunuzu seçin ve ardından **Yedeklemeleri Yönet**' e tıklayın. **Kullanılabilir yedeklemeler** sekmesinde, kullanılabilir yedeklemeleri görmek istediğiniz veritabanını seçin.
+1. Azure portal, sunucunuzu seçin ve ardından **Yedeklemeleri Yönet** ' e tıklayın. **Kullanılabilir yedeklemeler** sekmesinde, kullanılabilir yedeklemeleri görmek istediğiniz veritabanını seçin.
 
    ![Veritabanı Seç](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
 
@@ -71,7 +71,7 @@ Bir LTR ilkesiyle belirli bir veritabanı için tutulan yedeklemeleri görüntü
 > [!NOTE]
 > Buradan [var olan veritabanına kopyalamak için geri yüklenen veritabanından veri ayıklama veya var olan veritabanını silerek geri yüklenen veritabanının adını var olan veritabanının adıyla değiştirme](recovery-using-backups.md#point-in-time-restore) gibi görevleri gerçekleştirmek için SQL Server Management Studio kullanarak geri yüklenen veritabanına bağlanabilirsiniz.
 
-## <a name="using-powershell"></a>PowerShell’i kullanma
+## <a name="using-powershell"></a>PowerShell'i kullanma
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -82,7 +82,7 @@ Aşağıdaki bölümlerde, PowerShell kullanarak uzun süreli yedek saklama, Azu
 
 ### <a name="azure-roles-to-manage-long-term-retention"></a>Uzun süreli saklama yönetimi için Azure rolleri
 
-**Get-AzSqlDatabaseLongTermRetentionBackup** ve **restore-azsqldatabase**için aşağıdaki rollerden birine sahip olmanız gerekir:
+**Get-AzSqlDatabaseLongTermRetentionBackup** ve **restore-azsqldatabase** için aşağıdaki rollerden birine sahip olmanız gerekir:
 
 - Abonelik sahibi rolü veya
 - SQL Server katkıda bulunan rolü veya
@@ -90,7 +90,7 @@ Aşağıdaki bölümlerde, PowerShell kullanarak uzun süreli yedek saklama, Azu
 
    Microsoft. SQL/Locations/longTermRetentionBackups/Read Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionBackups/Read Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/Read
 
-**Remove-AzSqlDatabaseLongTermRetentionBackup**için aşağıdaki rollerden birine sahip olmanız gerekir:
+**Remove-AzSqlDatabaseLongTermRetentionBackup** için aşağıdaki rollerden birine sahip olmanız gerekir:
 
 - Abonelik sahibi rolü veya
 - Aşağıdaki izne sahip özel rol:
@@ -200,6 +200,9 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 > [!NOTE]
 > Buradan var olan veritabanına kopyalamak için geri yüklenen veritabanından veri ayıklama veya var olan veritabanını silerek geri yüklenen veritabanının adını var olan veritabanının adıyla değiştirme gibi görevleri gerçekleştirmek için SQL Server Management Studio kullanarak geri yüklenen veritabanına bağlanabilirsiniz. Bkz. [zaman noktası geri yükleme](recovery-using-backups.md#point-in-time-restore).
+
+## <a name="limitations"></a>Sınırlamalar
+- Bir LTR yedeklemesinden geri yüklerken, okuma ölçeği özelliği devre dışıdır. Etkinleştirmek için geri yüklenen veritabanında ölçeği okuyun, oluşturulduktan sonra veritabanını güncelleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

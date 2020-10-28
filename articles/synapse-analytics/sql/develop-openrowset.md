@@ -127,7 +127,7 @@ Verilerin yolunu oluşturan unstructured_data_path mutlak veya göreli bir yol o
  Depolama alanınızı, okumak istediğiniz klasörü veya dosyayı işaret eden bir yolu belirtir. Yol bir kapsayıcıya veya klasöre işaret ediyorsa, tüm dosyalar söz konusu kapsayıcı veya klasörden okunacaktır. Alt klasörlerdeki dosyalar dahil değildir. 
 
  Birden çok dosya veya klasörü hedeflemek için joker karakterler kullanabilirsiniz. Ardışık olmayan birden çok joker karakter kullanımına izin verilir.
-Aşağıda, */CSV/popülasyonu*ile başlayan tüm klasörlerden *popülasyon* ile başlayan tüm *CSV* dosyalarını okuyan bir örnek verilmiştir:  
+Aşağıda, */CSV/popülasyonu* ile başlayan tüm klasörlerden *popülasyon* ile başlayan tüm *CSV* dosyalarını okuyan bir örnek verilmiştir:  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 Bir klasör olarak unstructured_data_path belirtirseniz, bir SQL isteğe bağlı sorgusu bu klasörden dosyaları alır. 
@@ -170,7 +170,7 @@ WITH (
 
 FIELDSONLANDıRıCı = ' field_terminator '
 
-Kullanılacak alan sonlandırıcıyı belirtir. Varsayılan alan Sonlandırıcı virgüldür ("**,**").
+Kullanılacak alan sonlandırıcıyı belirtir. Varsayılan alan Sonlandırıcı virgüldür (" **,** ").
 
 ROWSONLANDıRıCı = ' row_terminator ' '
 
