@@ -8,12 +8,13 @@ ms.author: jehollan
 ms.custom:
 - references_regions
 - fasttrack-edit
-ms.openlocfilehash: aaf5cb70e3099d84a54a22fa291f8f3ab9e0daa6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+- devx-track-azurecli
+ms.openlocfilehash: 7efcff5709995898a6ec950dfea6450f7e0dd48d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490756"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736804"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
 
@@ -47,14 +48,14 @@ Premium planda, uygulamanızın belirtilen sayıda örnek üzerinde her zaman ku
 > [!NOTE]
 > Her Premium planda her zaman en az bir adet etkin (Faturalanan) örnek olacaktır.
 
-**İşlev uygulaması**seçtiğiniz, **platform özellikleri** sekmesine giderek ve **Ölçek Genişletme** seçeneklerini belirleyerek Azure Portal her zaman hazır örneklerin sayısını yapılandırabilirsiniz. İşlev uygulaması düzenleme penceresinde, her zaman kullanılabilir örnekler o uygulamaya özeldir.
+**İşlev uygulaması** seçtiğiniz, **platform özellikleri** sekmesine giderek ve **Ölçek Genişletme** seçeneklerini belirleyerek Azure Portal her zaman hazır örneklerin sayısını yapılandırabilirsiniz. İşlev uygulaması düzenleme penceresinde, her zaman kullanılabilir örnekler o uygulamaya özeldir.
 
 ![Elastik ölçek ayarları](./media/functions-premium-plan/scale-out.png)
 
 Azure CLı ile bir uygulama için her zaman kullanılabilir örnekleri de yapılandırabilirsiniz.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites 
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites
 ```
 
 #### <a name="pre-warmed-instances"></a>Önceden çarpımış örnekler
@@ -68,7 +69,7 @@ Bu örnek, her zaman kullanıma yönelik örneklerin ve önceden çarpımış ö
 Azure CLı kullanarak bir uygulama için önceden çarpımış örnek sayısını değiştirebilirsiniz.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites 
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
 ```
 
 #### <a name="maximum-instances-for-an-app"></a>Bir uygulama için en fazla örnek
@@ -99,7 +100,7 @@ Planı oluşturduğunuzda, iki plan boyutu ayarı vardır: minimum örnek sayıs
 
 Uygulamanız her zaman hazır örneklerin ötesinde örnekler gerektiriyorsa, örnek sayısı maksimum patlama sınırına aşana kadar ölçeği ölçeklendirmeye devam edebilir.  Plan boyutlarınızın ötesinde, yalnızca çalışırken ve size ayrılan durumlar için faturalandırılırsınız.  Uygulamanızı, tanımlanan maksimum sınırına göre ölçeklendirirken en iyi çabayı yapacağız.
 
-Plan veya bu plana dağıtılan bir işlev uygulamasındaki **Ölçek Genişletme** seçeneklerini ( **platform özellikleri**altında) seçerek Azure Portal plan boyutunu ve en yüksek özellikleri yapılandırabilirsiniz.
+Plan veya bu plana dağıtılan bir işlev uygulamasındaki **Ölçek Genişletme** seçeneklerini ( **platform özellikleri** altında) seçerek Azure Portal plan boyutunu ve en yüksek özellikleri yapılandırabilirsiniz.
 
 Azure CLı 'den en fazla patlama sınırını de artırabilirsiniz:
 
@@ -122,7 +123,7 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 ### <a name="available-instance-skus"></a>Kullanılabilir örnek SKU 'Ları
 
-Planınızı oluştururken veya ölçeklendirirken üç örnek boyutu arasından seçim yapabilirsiniz.  Her bir örneğin size ayrıldığı toplam çekirdek sayısı ve bellek için faturalandırılırsınız.  Uygulamanız gerektiğinde birden çok örneğe otomatik olarak ölçeklenebilirler.  
+Planınızı oluştururken veya ölçeklendirirken üç örnek boyutu arasından seçim yapabilirsiniz.  Her bir örneğin size ayrıldığı toplam çekirdek sayısı ve bellek için faturalandırılırsınız.  Uygulamanız gerektiğinde birden çok örneğe otomatik olarak ölçeklenebilirler.
 
 |SKU|Çekirdekler|Bellek|Depolama|
 |--|--|--|--|
@@ -146,7 +147,7 @@ Işlevlerin tüm bölgesel kullanılabilirliğine buradan bakın: [Azure.com](ht
 |Orta Avustralya| 100 | Kullanılamaz |
 |Orta Avustralya 2| 100 | Kullanılamaz |
 |Doğu Avustralya| 100 | 20 |
-|Güneydoğu Avustralya | 100 | 20 |
+|Avustralya Güneydoğu | 100 | 20 |
 |Brezilya Güney| 100 | 20 |
 |Orta Kanada| 100 | 20 |
 |Central US| 100 | 20 |

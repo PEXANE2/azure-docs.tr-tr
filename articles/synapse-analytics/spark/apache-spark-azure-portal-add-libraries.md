@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 02f627c9f606ced7e1b0d991e5053dab17050292
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31201bb7168910915ee33d4361bf944e7669db66
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826732"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737984"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için kitaplıkları yönetme
 
@@ -58,7 +58,7 @@ Havuz oluşturma sırasında kitaplıkları Spark havuzuna (Önizleme) yüklemek
    
 3. Sayfanın **paketler** bölümündeki dosya seçicisini kullanarak ortam yapılandırma dosyasını karşıya yükleyin. 
    
-![Havuz oluşturma sırasında Python kitaplıklarını ekleme](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "Python kitaplıklarını ekleme")
+    ![Havuz oluşturma sırasında Python kitaplıklarını ekleme](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "Python kitaplıklarını ekleme")
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>Paketleri SYNAPSE çalışma alanından yükler
@@ -68,11 +68,11 @@ Azure SYNAPSE Analytics portalından Spark havuzuna (Önizleme) güncelleştirme
    
 2.  Azure portal Azure SYNAPSE Analytics çalışma alanınızı başlatın.
 
-3.  Ana Gezinti panelinden **Yönet** ' i seçin ve ardından **Apache Spark havuzları**' nı seçin.
+3.  Ana Gezinti panelinden **Yönet** ' i seçin ve ardından **Apache Spark havuzları** ' nı seçin.
    
 4. Tek bir Spark havuzu seçin ve sayfanın  **paketler** bölümündeki dosya seçicisini kullanarak ortam yapılandırma dosyasını karşıya yükleyin.
 
-![SYNAPSE 'e Python kitaplıkları ekleme](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png "Python kitaplıklarını ekleme")
+    ![SYNAPSE 'e Python kitaplıkları ekleme](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>Azure portal paketleri yükler
 Bir kitaplığı bir Spark havuzuna (Önizleme) doğrudan Azure portal yüklemek için:
@@ -85,7 +85,7 @@ Bir kitaplığı bir Spark havuzuna (Önizleme) doğrudan Azure portal yüklemek
 
  4. Dosya seçiciyi kullanarak ortam yapılandırma dosyasını karşıya yükleyin.
 
-![Ortam yapılandırma dosyasını karşıya yükle düğmesinin vurgualdığı ekran görüntüsü.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python kitaplıklarını ekleme")
+    ![Ortam yapılandırma dosyasını karşıya yükle düğmesinin vurgualdığı ekran görüntüsü.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python kitaplıklarını ekleme")
 
 ### <a name="verify-installed-libraries"></a>Yüklü kitaplıkları doğrulama
 
@@ -106,13 +106,13 @@ Bir kitaplığı güncelleştirmek veya kaldırmak için:
 
 3. **Paketler** bölümüne gidin ve yeni bir ortam yapılandırma dosyası yükleyin
    
-4. Değişikliklerinizi kaydettikten sonra, etkin oturumları sonlandırdıktan sonra havuzun yeniden başlatılmasına izin verin. İsteğe bağlı olarak, **Yeni ayarları zorlamak**için onay kutusunu seçerek etkin oturumları sona erdirmek için zorlayabilirsiniz.
+4. Değişikliklerinizi kaydettikten sonra, etkin oturumları sonlandırdıktan sonra havuzun yeniden başlatılmasına izin verin. İsteğe bağlı olarak, **Yeni ayarları zorlamak** için onay kutusunu seçerek etkin oturumları sona erdirmek için zorlayabilirsiniz.
 
-![Python kitaplıklarını ekleme](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Python kitaplıklarını ekleme")
+    ![Python kitaplıklarını ekleme](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Python kitaplıklarını ekleme")
    
 
 > [!IMPORTANT]
-> **Yeni ayarları zorlama**seçeneğini belirleyerek seçili Spark havuzunun tüm geçerli oturumlarını sonlandıracaksınız. Oturumlar sona erdikten sonra, havuzun yeniden başlatılmasını beklemeniz gerekir. 
+> **Yeni ayarları zorlama** seçeneğini belirleyerek seçili Spark havuzunun tüm geçerli oturumlarını sonlandıracaksınız. Oturumlar sona erdikten sonra, havuzun yeniden başlatılmasını beklemeniz gerekir. 
 >
 > Bu ayar işaretlenmezse, geçerli Spark oturumunun bitmesini beklemeniz veya el ile durdurmanız gerekir. Oturum sona erdikten sonra havuzun yeniden başlatılmasına izin vermek gerekir. 
 

@@ -6,21 +6,21 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 29eb99d9e009d58c44be8f9d2e5d9fa01d117092
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 173e6541b4113a5d2e71d76b3b939a69d5224b5a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092962"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735599"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Hızlı başlangıç: Azure yay bulutuna uygulama oluşturma ve dağıtma
 
 ::: zone pivot="programming-language-csharp"
 Bu hızlı başlangıçta, Azure CLı kullanarak mikro hizmet uygulamalarını derleyin ve Azure Spring Cloud 'a dağıtırsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu serideki önceki hızlı başlangıçlarını doldurun:
 
@@ -160,9 +160,9 @@ Uygulamayı test etmek için bir tarayıcıdan uygulamaya bir HTTP GET isteği g
    az spring-cloud app show --name solar-system-weather | grep url
    ```
 
-## <a name="test-the-application"></a>Uygulamayı test etme
+## <a name="test-the-application"></a>Uygulamayı test edin
 
-Uygulamaya bir GET isteği gönderin `solar-system-weather` . Bir tarayıcıda, sonuna eklenen genel URL 'ye gidin `/weatherforecast` . Örnek:
+Uygulamaya bir GET isteği gönderin `solar-system-weather` . Bir tarayıcıda, sonuna eklenen genel URL 'ye gidin `/weatherforecast` . Örneğin:
 
 ```
 https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
@@ -185,7 +185,7 @@ Bu belgede, aşağıdaki kullanılarak mikro hizmet uygulamalarının Azure Spri
 
 Azure CLı veya Maven kullanarak dağıtımdan önce [Azure Spring Cloud 'ın bir örneğini](spring-cloud-quickstart-provision-service-instance.md) sağlayan örnekleri tamamlayın ve [yapılandırma sunucusunu ayarlayın](spring-cloud-quickstart-setup-config-server.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [JDK 8 ' i yükler](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
@@ -222,7 +222,7 @@ Projenin derlenmesi yaklaşık 5 dakika sürer. Tamamlandıktan sonra, ilgili kl
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. Önceki adımda oluşturulan JAR dosyalarını kullanarak Azure Spring Cloud mikro hizmetleri oluşturun. Üç uygulama oluşturacaksınız: **Gateway**, **AUTH-Service**ve **Account-Service**.
+1. Önceki adımda oluşturulan JAR dosyalarını kullanarak Azure Spring Cloud mikro hizmetleri oluşturun. Üç uygulama oluşturacaksınız: **Gateway** , **AUTH-Service** ve **Account-Service** .
 
     ```azurecli
     az spring-cloud app create --name gateway
@@ -306,23 +306,23 @@ Bir Web tarayıcısı aracılığıyla uygulamaya erişmek için bir yönteme ih
 ### <a name="deploy-gateway-app-to-azure-spring-cloud"></a>Ağ Geçidi uygulamasını Azure Spring Cloud 'a dağıtma
 Azure 'a dağıtmak için Azure Toolkit for IntelliJ Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir. Oturum açma ayrıntıları için bkz. [yükleme ve oturum açma](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
-1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure**  ->  **yay bulutu 'na Azure dağıtımı**' nı seçin.
+1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure**  ->  **yay bulutu 'na Azure dağıtımı** ' nı seçin.
 
     ![Azure 'a dağıtma 1](media/spring-cloud-intellij-howto/revision-deploy-to-azure-1.png)
 
 1. **Ad** alanına, var olan ada *: ağ geçidini* ekleyin. **Name**
-1. **Yapıt** metin kutusunda, *com. pınmetriölçümleri: Gateway: 1.0-Snapshot*' ı seçin.
+1. **Yapıt** metin kutusunda, *com. pınmetriölçümleri: Gateway: 1.0-Snapshot* ' ı seçin.
 1. **Abonelik** metin kutusunda aboneliğinizi doğrulayın.
 1. **Yay bulutu** metin kutusunda, [Azure Spring Cloud Instance sağlama](./spring-cloud-quickstart-provision-service-instance.md)bölümünde oluşturduğunuz Azure Spring Cloud örneğini seçin.
-1. **Genel uç noktayı** *Etkinleştir*olarak ayarlayın.
+1. **Genel uç noktayı** *Etkinleştir* olarak ayarlayın.
 1. **Uygulama:** metin kutusunda **uygulama oluştur...** seçeneğini belirleyin.
-1. *Ağ geçidini*girin, ardından **Tamam**' a tıklayın.
+1. *Ağ geçidini* girin, ardından **Tamam** ' a tıklayın.
 
     ![Azure 'a dağıtma Tamam](media/spring-cloud-intellij-howto/revision-deploy-to-azure-2.png)
 
-1. İletişim kutusunun **başlatma öncesi** bölümünde *Maven hedefini Çalıştır*' a çift tıklayın.
+1. İletişim kutusunun **başlatma öncesi** bölümünde *Maven hedefini Çalıştır* ' a çift tıklayın.
 1. **Çalışma dizini** metin kutusunda, *Pize ölçümleri/ağ geçidi* klasörüne gidin.
-1. **Komut satırı** metin kutusuna *Package-dskiptests*yazın. **Tamam**'a tıklayın.
+1. **Komut satırı** metin kutusuna *Package-dskiptests* yazın. **Tamam** ’a tıklayın.
 1. **Azure yay bulut uygulaması dağıtma** iletişim kutusunun alt kısmındaki **Çalıştır** düğmesine tıklayarak dağıtımı başlatın. Eklenti uygulamada komutunu çalıştırır `mvn package` `gateway` ve komut tarafından oluşturulan jar 'yi dağıtır `package` .
 
 ### <a name="deploy-auth-service-and-account-service-apps-to-azure-spring-cloud"></a>Azure yay bulutuna auth-Service ve Account-Service uygulamaları dağıtma
@@ -330,7 +330,7 @@ Azure 'a dağıtmak için Azure Toolkit for IntelliJ Azure hesabınızla oturum 
 
 1. Uygulamayı tanımlamak için **adı** ve **yapıtı** değiştirin `auth-service` .
 1. **Uygulama:** metin kutusunda, uygulamalar oluşturmak Için **uygulama oluştur...** seçeneğini belirleyin `auth-service` .
-1. **Ortak uç nokta** seçeneğinin *devre dışı*olarak ayarlandığını doğrulayın.
+1. **Ortak uç nokta** seçeneğinin *devre dışı* olarak ayarlandığını doğrulayın.
 1. İletişim kutusunun **başlatma öncesi** bölümünde, **çalışma dizinini** *pıbu ölçümler/auth-Service* klasörüne geçirin.
 1. **Azure yay bulut uygulaması dağıtma** iletişim kutusunun alt kısmındaki **Çalıştır** düğmesine tıklayarak dağıtımı başlatın. 
 1. Yapılandırmak ve dağıtmak için bu yordamları tekrarlayın `account-service` .

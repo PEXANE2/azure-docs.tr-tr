@@ -4,13 +4,13 @@ description: Azure Container Registry 'den kapsayıcı görüntülerini çekerek
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: mvc
-ms.openlocfilehash: d5ba56271950c2d14c7fbf0b9154afb371bcbabc
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: cca1001f0f84f4e4fc87df233f872fc1efdb3267
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173655"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736738"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry’den Azure Container Instances’a dağıtma
 
@@ -18,9 +18,9 @@ ms.locfileid: "92173655"
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-**Azure Container Registry**: Bu makaledeki adımları tamamlayabilmeniz Için bir Azure Container Registry 'ye ve kayıt defterinde en az bir kapsayıcı görüntüsüne ihtiyacınız vardır. Bir kayıt defterine ihtiyacınız varsa bkz. [Azure CLI kullanarak kapsayıcı kayıt defteri oluşturma](../container-registry/container-registry-get-started-azure-cli.md).
+**Azure Container Registry** : Bu makaledeki adımları tamamlayabilmeniz Için bir Azure Container Registry 'ye ve kayıt defterinde en az bir kapsayıcı görüntüsüne ihtiyacınız vardır. Bir kayıt defterine ihtiyacınız varsa bkz. [Azure CLI kullanarak kapsayıcı kayıt defteri oluşturma](../container-registry/container-registry-get-started-azure-cli.md).
 
-**Azure CLI**: Bu makaledeki komut satırı ÖRNEKLERI [Azure CLI](/cli/azure/) 'Yi kullanır ve bash kabuğu için biçimlendirilir. [Azure CLI](/cli/azure/install-azure-cli) 'yı yerel olarak yükleyebilir veya [Azure Cloud Shell][cloud-shell-bash]kullanabilirsiniz.
+**Azure CLI** : Bu makaledeki komut satırı ÖRNEKLERI [Azure CLI](/cli/azure/) 'Yi kullanır ve bash kabuğu için biçimlendirilir. [Azure CLI](/cli/azure/install-azure-cli) 'yı yerel olarak yükleyebilir veya [Azure Cloud Shell][cloud-shell-bash]kullanabilirsiniz.
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -70,7 +70,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-`--role`Yukarıdaki komutta bağımsız değişken hizmet sorumlusunu, BT 'nin kayıt defterine yalnızca çekme erişimi veren *acrpull* rolüyle yapılandırır. Hem itme hem de çekme erişimi sağlamak için `--role` bağımsız değişkenini *acrpush*olarak değiştirin.
+`--role`Yukarıdaki komutta bağımsız değişken hizmet sorumlusunu, BT 'nin kayıt defterine yalnızca çekme erişimi veren *acrpull* rolüyle yapılandırır. Hem itme hem de çekme erişimi sağlamak için `--role` bağımsız değişkenini *acrpush* olarak değiştirin.
 
 Ardından, hizmet sorumlusunun *AppID* 'sini kasada depolayın, bu kullanıcı kimlik doğrulaması için Azure Container Registry geçirdiğiniz **Kullanıcı** adıdır.
 
@@ -147,9 +147,9 @@ Azure Container Registry 'de kapsayıcı görüntülerini korudıysanız, Azure 
 
 1. Azure portal, kapsayıcı Kayıt defterinize gidin.
 
-1. Yönetici hesabının etkinleştirildiğini doğrulamak için **erişim anahtarları**' nı seçin ve **Yönetici Kullanıcı** altında **Etkinleştir**' i seçin.
+1. Yönetici hesabının etkinleştirildiğini doğrulamak için **erişim anahtarları** ' nı seçin ve **Yönetici Kullanıcı** altında **Etkinleştir** ' i seçin.
 
-1. **Depolar**' ı seçin, sonra dağıtmak istediğiniz depoyu seçin, dağıtmak istediğiniz kapsayıcı görüntüsünün etiketine sağ tıklayın ve **örneği Çalıştır**' ı seçin.
+1. **Depolar** ' ı seçin, sonra dağıtmak istediğiniz depoyu seçin, dağıtmak istediğiniz kapsayıcı görüntüsünün etiketine sağ tıklayın ve **örneği Çalıştır** ' ı seçin.
 
     ![Azure portal Azure Container Registry içindeki "örneği Çalıştır"][acr-runinstance-contextmenu]
 

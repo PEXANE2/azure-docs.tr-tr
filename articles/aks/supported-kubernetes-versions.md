@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: a36eb588c7128f13fb21b368d308ed00171fbb4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a10340d4c2bd2811204af41fba5b32cbe9c4e905
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335543"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735062"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
@@ -95,7 +95,7 @@ New Supported Version List
 
 `kubectl` [Kubectl Için Kubernetes destek ilkesiyle](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl)tutarlı olan *kuin-apiserver* sürümünüze göre daha eski veya daha yeni bir sürümünü kullanabilirsiniz.
 
-Örneğin, *ku1,18* to *-apiserver* *1,17*ise, *1.16* `kubectl` Bu *kuin-apiserver*ile 1,16 arası sürümlerini kullanabilirsiniz.
+Örneğin, *ku1,18* to *-apiserver* *1,17* ise, *1.16* `kubectl` Bu *kuin-apiserver* ile 1,16 arası sürümlerini kullanabilirsiniz.
 
 Sürümünüzü yüklemek veya güncelleştirmek için `kubectl` ' i çalıştırın `az aks install-cli` .
 
@@ -121,7 +121,7 @@ Hatanın veya güvenlik sorununun önem derecesine bağlı olarak belirli düzel
 
 ## <a name="azure-portal-and-cli-versions"></a>Azure portal ve CLı sürümleri
 
-Portal 'da veya Azure CLı ile bir AKS kümesi dağıttığınızda, küme, N-1 alt sürümüne ve en son düzeltme ekine varsayılan olarak ayarlanır. Örneğin, AKS, *1.17. a*, *1.17. b*, *1.16. c*, *1.16. d*, *1.15. e*ve *1.15. f*' i destekliyorsa, seçilen varsayılan sürüm *1.16. c*' dir.
+Portal 'da veya Azure CLı ile bir AKS kümesi dağıttığınızda, küme, N-1 alt sürümüne ve en son düzeltme ekine varsayılan olarak ayarlanır. Örneğin, AKS, *1.17. a* , *1.17. b* , *1.16. c* , *1.16. d* , *1.15. e* ve *1.15. f* ' i destekliyorsa, seçilen varsayılan sürüm *1.16. c* ' dir.
 
 Aboneliğiniz ve bölgeniz için şu anda hangi sürümlerin kullanılabildiğini öğrenmek için [az aks get-versions][az-aks-get-versions] komutunu kullanın. Aşağıdaki örnek *EastUS* bölgesi Için kullanılabilir Kubernetes sürümlerini listeler:
 
@@ -135,11 +135,12 @@ Son sürüm geçmişi için [buraya](https://en.wikipedia.org/wiki/Kubernetes#Hi
 
 |  K8s sürümü | Yukarı akış yayını  | AKS önizlemesi  | AKS GA  | Yaşam sonu |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.16  | Eyl-19-19  | Ocak 2019   | Mar 2020  | 1,19 GA | 
+| 1.16  | Eyl-19-19  | Ocak 2019   | Mar 2020  | Ocak 2021 * | 
 | 1,17  | Ara-09-19  | Ocak 2019   | 2020 Tem  | 1,20 GA | 
 | 1,18  | Mar-23-20  | Mayıs 2020   | Ağu 2020  | 1,21 GA | 
 | 1,19  | Ağu-04-20  | Eyl 2020   | Kas 2020  | 1,22 GA | 
 | 1.20  | Ara-08-20  | Ocak 2021   | Mar 2021  | 1,23 GA | 
+\* Tatil mevsimi nedeniyle AKS, 1,16 ' den itibaren 2020 ' e kadar ' ye 2021 kadar olan yaşam süresini genişletmekle [Daha fazla bilgi edinin](https://github.com/Azure/AKS/releases/tag/2020-10-12)
 
 ## <a name="faq"></a>SSS
 
@@ -176,7 +177,7 @@ Denetim düzlemi tüm düğüm havuzlarındaki sürümlerin bir penceresi içind
 
 Desteklenen bir AKS kümesini yükselttiğinizde, Kubernetes ikincil sürümleri atlanamaz. Örneğin, *1.12. x*  ->  *1.13. x* veya *1.13. x*  ->  *1.14. x* arasındaki yükseltmelere izin verilir, ancak *1.12. x*  ->  *1.14. x* değildir.
 
-Yükseltmek için, *1.12. x*  ->  *1.14. x*sürümünden önce *1.12. x*  ->  *1.13. x*sürümünden yükseltme yapın ve ardından *1.13. x*  ->  *1.14. x*'den yükseltme yapın.
+Yükseltmek için, *1.12. x*  ->  *1.14. x* sürümünden önce *1.12. x*  ->  *1.13. x* sürümünden yükseltme yapın ve ardından *1.13. x*  ->  *1.14. x* 'den yükseltme yapın.
 
 Birden çok sürüm atlanması yalnızca desteklenmeyen bir sürümden desteklenen bir sürüme yükseltilirken yapılabilir. Örneğin, desteklenmeyen bir *1,10. x* sürümünden yükseltme > desteklenen bir *1.15. x* tamamlanabilir.
 

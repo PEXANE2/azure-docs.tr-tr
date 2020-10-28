@@ -6,16 +6,16 @@ author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 05/01/2020
+ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d0063594309dc7a1c12c61b6dd18fec1d93f1082
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 02f304af10ae1907326d3f77f318a058155a4c21
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893093"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738762"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio (Önizleme) Not defterleri oluşturma, geliştirme ve bakımını yapma
 
@@ -32,7 +32,7 @@ Bu makalede, Azure SYNAPSE Studio 'da Not defterlerinin nasıl kullanılacağı 
 
 ## <a name="create-a-notebook"></a>Not defteri oluşturma
 
-Bir not defteri oluşturmanın iki yolu vardır. Yeni bir not defteri oluşturabilir veya var olan bir not defterini **Nesne Gezgini**bir Azure SYNAPSE çalışma alanına aktarabilirsiniz. Azure SYNAPSE Studio Not defterleri, standart Jupyter Notebook IPYNB dosyalarını algılayabilir.
+Bir not defteri oluşturmanın iki yolu vardır. Yeni bir not defteri oluşturabilir veya var olan bir not defterini **Nesne Gezgini** bir Azure SYNAPSE çalışma alanına aktarabilirsiniz. Azure SYNAPSE Studio Not defterleri, standart Jupyter Notebook IPYNB dosyalarını algılayabilir.
 
 ![İçeri aktarma Not Defteri Oluştur](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
@@ -44,11 +44,11 @@ Not defterleri, bağımsız olarak veya grup olarak çalıştırılan kod veya m
 
 Not defterinize yeni bir hücre eklemenin birden çok yolu vardır.
 
-1. Sol üst **+ hücre** düğmesini genişletin ve **kod hücresi Ekle** ya da **metin hücresi Ekle**' yi seçin.
+1. Sol üst **+ hücre** düğmesini genişletin ve **kod hücresi Ekle** ya da **metin hücresi Ekle** ' yi seçin.
 
     ![Ekle-hücre-düğme](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
 
-2. İki hücre arasındaki alanın üzerine gelin ve **Kod Ekle** veya **metin ekle**' yi seçin.
+2. İki hücre arasındaki alanın üzerine gelin ve **Kod Ekle** veya **metin ekle** ' yi seçin.
 
     ![boşluk Ekle-boşluk](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
@@ -142,7 +142,7 @@ En sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta (...) simge
 
 ### <a name="delete-a-cell"></a>Bir hücreyi silme
 
-Bir hücreyi silmek için, en sağdaki Ek hücre eylemleri menüsüne erişmek üzere üç nokta (...) simgesini seçin ve ardından **hücreyi Sil**' i seçin. 
+Bir hücreyi silmek için, en sağdaki Ek hücre eylemleri menüsüne erişmek üzere üç nokta (...) simgesini seçin ve ardından **hücreyi Sil** ' i seçin. 
 
 [Komut modu altında kısayol tuşlarını](#shortcut-keys-under-command-mode)da kullanabilirsiniz. Geçerli hücreyi silmek için **d, d** tuşuna basın.
   
@@ -167,12 +167,12 @@ Kod hücrelerini Not defterinizde tek seferde veya tümünde çalıştırabilirs
 
 Bir hücrede kodu çalıştırmanın birkaç yolu vardır.
 
-1. Çalıştırmak istediğiniz hücreye gelin ve **hücreyi Çalıştır** düğmesini seçin veya **CTRL + ENTER**tuşlarına basın.
+1. Çalıştırmak istediğiniz hücreye gelin ve **hücreyi Çalıştır** düğmesini seçin veya **CTRL + ENTER** tuşlarına basın.
 
    ![1. çalışma hücresi](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
 
 
-2. En sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta (**...**) simgesini seçin. Ardından, **hücreyi Çalıştır**' ı seçin.
+2. En sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta ( **...** ) simgesini seçin. Ardından, **hücreyi Çalıştır** ' ı seçin.
 
    ![çalışma-2](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
    
@@ -186,7 +186,7 @@ Geçerli not defterindeki tüm hücreleri sırayla çalıştırmak için **Tüm�
 
 ### <a name="run-all-cells-above-or-below"></a>Yukarıdaki veya altındaki tüm hücreleri Çalıştır
 
-En sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta (**...**) simgesini seçin. Ardından, geçerli sıradaki tüm hücreleri çalıştırmak için **yukarıdaki hücreleri Çalıştır** ' ı seçin. Sıradaki geçerli olan tüm hücreleri çalıştırmak için **aşağıdaki hücreleri Çalıştır** ' ı seçin.
+En sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta ( **...** ) simgesini seçin. Ardından, geçerli sıradaki tüm hücreleri çalıştırmak için **yukarıdaki hücreleri Çalıştır** ' ı seçin. Sıradaki geçerli olan tüm hücreleri çalıştırmak için **aşağıdaki hücreleri Çalıştır** ' ı seçin.
 
    ![çalışma--veya-aşağı hücreleri](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
@@ -211,7 +211,7 @@ Her iş veya aşama başına görev sayısı, Spark işinizin paralel düzeyini 
 
 ### <a name="spark-session-config"></a>Spark oturum yapılandırması
 
-**Yapılandırma oturumunda**geçerli Spark oturumuna verilecek yürüticilere zaman aşımı süresini, sayısını ve bunların boyutunu belirtebilirsiniz. Spark oturumunu yeniden başlatmak, yapılandırma değişikliklerinin etkili olması içindir. Tüm önbelleğe alınmış Not defteri değişkenleri temizlenir.
+**Yapılandırma oturumunda** geçerli Spark oturumuna verilecek yürüticilere zaman aşımı süresini, sayısını ve bunların boyutunu belirtebilirsiniz. Spark oturumunu yeniden başlatmak, yapılandırma değişikliklerinin etkili olması içindir. Tüm önbelleğe alınmış Not defteri değişkenleri temizlenir.
 
 [![oturum yönetimi](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
 
@@ -275,7 +275,7 @@ Birincil depolama hesabındaki verilere doğrudan erişebilirsiniz. Gizli anahta
 
 ### <a name="produce-rendered-table-view"></a>İşlenmiş tablo görünümü üret
 
-Bir çubuk grafik, çizgi grafik, pasta grafiği, dağılım grafiği ve alan grafiği oluşturma seçeneğiyle tablolu bir sonuç görünümü sağlanır. Verilerinizi kod yazmak zorunda kalmadan görselleştirebilirsiniz. Grafikler, **grafik seçeneklerinde**özelleştirilebilir. 
+Bir çubuk grafik, çizgi grafik, pasta grafiği, dağılım grafiği ve alan grafiği oluşturma seçeneğiyle tablolu bir sonuç görünümü sağlanır. Verilerinizi kod yazmak zorunda kalmadan görselleştirebilirsiniz. Grafikler, **grafik seçeneklerinde** özelleştirilebilir. 
 
 **%% SQL** Magic komutlarının çıkışı, işlenen tablo görünümünde varsayılan olarak görünür. <code>display(df)</code>İşlenmiş tablo görünümünü oluşturmak Için Spark dataframe, Pandas Dataframe, List veya dayanıklı Dağıtılmış veri kümeleri (RDD) işlevini çağırabilirsiniz.
 
@@ -294,9 +294,9 @@ Sütun <code>display(df, summary = True)</code> adı, sütun türü, benzersiz d
 
 ### <a name="render-html-or-interactive-libraries"></a>HTML veya etkileşimli kitaplıkları işleme
 
-HTML kodunu, **displayhtml ()** kullanarak **bokeh**gibi JavaScript, CSS, D3 veya etkileşimli kitaplıklar dahil olmak üzere işleyebilirsiniz.
+HTML kodunu, **displayhtml ()** kullanarak **bokeh** gibi JavaScript, CSS, D3 veya etkileşimli kitaplıklar dahil olmak üzere işleyebilirsiniz.
 
-Aşağıdaki resim **bokeh**kullanarak bir harita üzerinde karakter çizme örneğidir.
+Aşağıdaki resim **bokeh** kullanarak bir harita üzerinde karakter çizme örneğidir.
 
    ![bokeh-örnek](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
    
@@ -357,7 +357,7 @@ Kullanılabilir satır mıknatıcs: [% lsmagic](https://ipython.readthedocs.io/e
 Kullanılabilir hücre mıknatıcs: [%% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeIt](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture),%% [WriteFile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile),% [% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages), [%% CSharp](#use-multiple-languages)
 
 
-## <a name="orchestrate-notebook"></a>Not defterini düzenleme
+## <a name="integrate-a-notebook"></a>Bir not defterini tümleştirme
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>İşlem hattına Not defteri ekleme
 

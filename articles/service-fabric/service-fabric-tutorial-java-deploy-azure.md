@@ -3,13 +3,13 @@ title: Azure 'da bir Service Fabric kümesine Java uygulaması dağıtma
 description: Bu öğreticide, Java Service Fabric uygulamasının bir Azure Service Fabric kümesine nasıl dağıtılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 3e00e478e20fbd0bc4ff6ed17b330f0d16488be6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 89c49ae530b7a4716bc6e8bf0ea6ccb011847eb8
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532067"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738913"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure’da bir Service Fabric kümesine Java uygulamasını dağıtma
 
@@ -30,7 +30,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-java-elk.md)
 > * [CI/CD ayarlama](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -162,7 +162,7 @@ Aşağıdaki adımlar, bir Service Fabric kümesinde uygulamanızı dağıtmak i
 
     EventHubs için SAS URL 'niz yapıyı izler: `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>` . Örneğin, `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
 
-12. sfdeploy.parameters.jsdosya * üzerinde* açın ve yukarıdaki adımlardan aşağıdaki içerikleri değiştirin. [SAS-URL-STORAGE-ACCOUNT] 8. adımda belirtilmiştir. [SAS-URL-EVENT-HUBS] 11. adımda belirtilmiştir.
+12. sfdeploy.parameters.jsdosya *üzerinde* açın ve yukarıdaki adımlardan aşağıdaki içerikleri değiştirin. [SAS-URL-STORAGE-ACCOUNT] 8. adımda belirtilmiştir. [SAS-URL-EVENT-HUBS] 11. adımda belirtilmiştir.
 
     ```json
     "applicationDiagnosticsStorageAccountName": {
@@ -177,7 +177,7 @@ Aşağıdaki adımlar, bir Service Fabric kümesinde uygulamanızı dağıtmak i
     ```
 
 13. **sfdeploy.parameters.json** dosyasını açın. Aşağıdaki parametreleri değiştirin ve dosyayı kaydedin.
-    - **clusterName**. Yalnızca küçük harf ve sayısal değer kullanın.
+    - **clusterName** . Yalnızca küçük harf ve sayısal değer kullanın.
     - **adminUserName** (boş olmayan bir değer)
     - **adminPassword** (boş olmayan bir değer)
 

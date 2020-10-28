@@ -7,14 +7,14 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: fdfa8c767757aa17983a28d0d586698551326fe4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8bd9a45ec7c43d9338dec184afd784d2b163c410
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545336"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735964"
 ---
-# <a name="create-an-azure-cache-for-redis-using-an-arm-template"></a>ARM şablonunu kullanarak Redsıs için Azure önbelleği oluşturma
+# <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Redsıs için Azure önbelleği oluşturma
 
 Reda için Azure önbelleği dağıtan bir Azure Resource Manager şablonu (ARM şablonu) oluşturmayı öğrenin. Önbellek, tanılama verilerini korumak için mevcut bir depolama hesabıyla birlikte kullanılabilir. Ayrıca, hangi kaynakların dağıtıldığını ve dağıtım yürütüldüğünde belirtilen parametrelerin nasıl tanımlanacağını nasıl tanımlayacağınızı öğreneceksiniz. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz. Şu anda, Tanılama ayarları bir abonelik için aynı bölgedeki tüm önbellekler için paylaşılır. Bölgedeki bir önbelleğin güncelleştirilmesi bölgedeki diğer tüm önbellekleri etkiler.
 
@@ -66,7 +66,7 @@ En son şablonları denetlemek için bkz. [Azure hızlı başlangıç şablonlar
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Oluşturduğunuz redo önbelleğini açın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

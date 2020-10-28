@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
-ms.openlocfilehash: 4e380fdcd72ab21f00272536b9f08145dcb09bc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03e05eb2bc56a07c2bda3d3fb224012abb3c9e4a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81728809"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735932"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub Geliştirici Kılavuzu
 
@@ -52,7 +52,7 @@ Bu IoT Hub Geliştirici Kılavuzu aşağıdaki makaleleri içerir:
 
 * [Bir cihazdan dosya yükleme](iot-hub-devguide-file-upload.md) bir cihazdan nasıl dosya yükleyebileceğinizi açıklar. Makale ayrıca karşıya yükleme işleminin göndereme bildirimleri gibi konular hakkında bilgiler içerir.
 
-* [' Deki cihaz kimliklerini yönetme IoT Hub](iot-hub-devguide-identity-registry.md)her bir IoT Hub 'ının kimlik kayıt defterinin depoladığı bilgileri açıklar. Makalede ayrıca nasıl erişebileceğiniz ve değiştirileceği açıklanır.
+* [' Deki cihaz kimliklerini yönetme IoT Hub](iot-hub-devguide-identity-registry.md) her bir IoT Hub 'ının kimlik kayıt defterinin depoladığı bilgileri açıklar. Makalede ayrıca nasıl erişebileceğiniz ve değiştirileceği açıklanır.
 
 * [IoT Hub erişimi denetim](iot-hub-devguide-security.md) , hem cihazlar hem de bulut bileşenleri için IoT Hub işlevselliğine erişim vermek üzere kullanılan güvenlik modelini açıklar. Makale, belirteç ve X. 509.952 sertifikaları kullanma hakkında bilgi ve izin verdiğiniz izinlerin ayrıntılarını içerir.
 

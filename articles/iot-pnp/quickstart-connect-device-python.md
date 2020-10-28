@@ -7,13 +7,13 @@ ms.date: 7/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: 187a0598dfc26394d1fd48e67d83ef7e98ef6226
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 065e65c0c8ccf61dd67da19fd5a94d4506db73ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91574050"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737308"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-python"></a>Hızlı başlangıç: örnek bir IoT Tak ve Kullan cihaz uygulamasını IoT Hub 'ye bağlama (Python)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91574050"
 
 Bu hızlı başlangıçta örnek bir IoT Tak ve Kullan cihaz uygulaması oluşturma, IoT Hub 'ınıza bağlama ve Azure IoT Explorer aracını kullanarak gönderdiği Telemetriyi görüntüleme gösterilmektedir. Örnek uygulama Python için yazılmıştır ve Python için Azure IoT Hub cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -37,7 +37,7 @@ Yerel Python ortamınızda paketini aşağıdaki gibi yüklemelisiniz:
 pip install azure-iot-device
 ```
 
-Python SDK IoT deposunu kopyalayın ve **asıl**kullanıma çekin:
+Python SDK IoT deposunu kopyalayın ve **asıl** kullanıma çekin:
 
 ```cmd/sh
 git clone https://github.com/Azure/azure-iot-sdk-python

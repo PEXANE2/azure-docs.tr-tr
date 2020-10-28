@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
-ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: eb7439bc84eaa4bfba58be1059a19ddadfc6a93e
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
+ms.openlocfilehash: 20f0d6a9d87caa8e95e7f9fa0b29ff45ed1195c2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496024"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735480"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning ınvenli bir ortamın güvenliğini sağlama
 
@@ -26,7 +26,7 @@ Bu makale, bir Azure Machine Learning iş akışını güvenli hale getirmek iç
 
 Bu serideki diğer makalelere göz atın:
 
-[1. VNET genel bakış](how-to-network-security-overview.md)  >  [çalışma alanı](how-to-secure-workspace-vnet.md)3 ' ü güvenceye alın  >  [. Eğitim ortamının](how-to-secure-training-vnet.md)4 ' ü koruyun  >  **. Invenli ortam**5 ' i güvenli hale getirin  >  [. Studio işlevselliğini etkinleştir](how-to-enable-studio-virtual-network.md)
+[1. VNET genel bakış](how-to-network-security-overview.md)  >  [çalışma alanı](how-to-secure-workspace-vnet.md)3 ' ü güvenceye alın  >  [. Eğitim ortamının](how-to-secure-training-vnet.md)4 ' ü koruyun  >  **. Invenli ortam** 5 ' i güvenli hale getirin  >  [. Studio işlevselliğini etkinleştir](how-to-enable-studio-virtual-network.md)
 
 Bu makalede, bir sanal ağda aşağıdaki ınırm kaynaklarını güvenli hale getirme hakkında bilgi edineceksiniz:
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ Bu makalede, bir sanal ağda aşağıdaki ınırm kaynaklarını güvenli hale g
 > - Azure Container Instances (ACI)
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
@@ -68,7 +68,7 @@ Bir sanal ağdaki AKS 'leri çalışma alanınıza eklemek için aşağıdaki ad
 
 1. Merkezden __çıkarım kümeleri__ ' ni seçin ve ardından öğesini seçin __+__ .
 
-1. __Yeni çıkarım kümesi__ Iletişim kutusunda __ağ yapılandırması__altında __Gelişmiş__ ' i seçin.
+1. __Yeni çıkarım kümesi__ Iletişim kutusunda __ağ yapılandırması__ altında __Gelişmiş__ ' i seçin.
 
 1. Bu işlem kaynağını bir sanal ağ kullanacak şekilde yapılandırmak için aşağıdaki eylemleri gerçekleştirin:
 
@@ -119,8 +119,8 @@ Oluşturma işlemi tamamlandığında, bir sanal ağın arkasındaki AKS kümesi
 
 AKS kümesinden ve sanal ağa giden trafiği yalıtmak için iki yaklaşım vardır:
 
-* __Özel AKS kümesi__: Bu yaklaşım, dağıtım/yönetim işlemleri için kümeyle iletişimin güvenliğini sağlamak üzere Azure özel bağlantısını kullanır.
-* __Iç aks yük dengeleyici__: Bu yaklaşım, sanal ağ içinde özel bir IP kullanmak üzere dağıtımlarınız için uç noktayı yapılandırır.
+* __Özel AKS kümesi__ : Bu yaklaşım, dağıtım/yönetim işlemleri için kümeyle iletişimin güvenliğini sağlamak üzere Azure özel bağlantısını kullanır.
+* __Iç aks yük dengeleyici__ : Bu yaklaşım, sanal ağ içinde özel bir IP kullanmak üzere dağıtımlarınız için uç noktayı yapılandırır.
 
 > [!WARNING]
 > İç yük dengeleyici, kubenet kullanan bir AKS kümesiyle çalışmaz. Aynı anda bir iç yük dengeleyici ve özel bir AKS kümesi kullanmak istiyorsanız, özel AKS kümenizi Azure Container Networking Interface (CNı) ile yapılandırın. Daha fazla bilgi için bkz. Azure [Kubernetes hizmetinde Azure CNI ağını yapılandırma](../aks/configure-azure-cni.md).
@@ -138,7 +138,7 @@ Varsayılan olarak, AKS kümelerinin, genel IP adreslerine sahip bir denetim dü
 
 Varsayılan olarak, AKS dağıtımları [ortak yük dengeleyici](../aks/load-balancer-standard.md)kullanır. Bu bölümde, AKS 'in iç yük dengeleyiciyi kullanmak üzere nasıl yapılandırılacağını öğreneceksiniz. Ön uç olarak yalnızca özel IP 'Lere izin verilen bir iç (veya özel) yük dengeleyici kullanılır. İç yük dengeleyiciler, bir sanal ağ içindeki trafiğin yükünü dengelemek için kullanılır
 
-Bir özel yük dengeleyici, AKS 'in _iç yük dengeleyiciyi_kullanacak şekilde yapılandırılması ile etkinleştirilir. 
+Bir özel yük dengeleyici, AKS 'in _iç yük dengeleyiciyi_ kullanacak şekilde yapılandırılması ile etkinleştirilir. 
 
 #### <a name="network-contributor-role"></a>Ağ katılımcısı rolü
 
@@ -147,7 +147,7 @@ Bir özel yük dengeleyici, AKS 'in _iç yük dengeleyiciyi_kullanacak şekilde 
 >
 > Kimliği ağ katılımcısı olarak eklemek için aşağıdaki adımları kullanın:
 
-1. AKS için hizmet sorumlusu veya yönetilen kimlik KIMLIĞINI bulmak için aşağıdaki Azure CLı komutlarını kullanın. `<aks-cluster-name>`Kümenin adıyla değiştirin. `<resource-group-name>` _, Aks kümesini içeren_kaynak grubunun adıyla değiştirin:
+1. AKS için hizmet sorumlusu veya yönetilen kimlik KIMLIĞINI bulmak için aşağıdaki Azure CLı komutlarını kullanın. `<aks-cluster-name>`Kümenin adıyla değiştirin. `<resource-group-name>` _, Aks kümesini içeren_ kaynak grubunun adıyla değiştirin:
 
     ```azurecli-interactive
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
@@ -159,7 +159,7 @@ Bir özel yük dengeleyici, AKS 'in _iç yük dengeleyiciyi_kullanacak şekilde 
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
     ```
 
-1. Sanal ağınızı içeren kaynak grubunun KIMLIĞINI bulmak için aşağıdaki komutu kullanın. `<resource-group-name>` _Sanal ağı içeren_kaynak grubunun adıyla değiştirin:
+1. Sanal ağınızı içeren kaynak grubunun KIMLIĞINI bulmak için aşağıdaki komutu kullanın. `<resource-group-name>` _Sanal ağı içeren_ kaynak grubunun adıyla değiştirin:
 
     ```azurecli-interactive
     az group show -n <resource-group-name> --query id

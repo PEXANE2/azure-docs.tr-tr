@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2020
-ms.openlocfilehash: 81ce3fae74a14c91db23c991ab0b53accd6568a6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 5845ab6419d6914b9221df1ae1280d31aba0ae7a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107717"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737530"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
@@ -26,19 +26,19 @@ Her havuz dönüştürmesi, tam olarak bir Azure Data Factory veri kümesi nesne
 
 ## <a name="inline-datasets"></a>Satır içi veri kümeleri
 
-Bir havuz dönüştürmesi oluştururken, havuz bilgilerinizin bir veri kümesi nesnesi içinde mi yoksa havuz dönüşümünde mi tanımlandığını seçin. Çoğu biçim yalnızca bir veya diğeri ile kullanılabilir. Belirli bir bağlayıcıyı nasıl kullanacağınızı öğrenmek için lütfen uygun bağlayıcı belgesine başvurun.
+Bir havuz dönüştürmesi oluşturduğunuzda, havuz bilgilerinizin bir veri kümesi nesnesi içinde mi yoksa havuz dönüştürmesi içinde mi tanımlandığını seçin. Çoğu biçim yalnızca bir veya diğeri içinde kullanılabilir. Belirli bir bağlayıcıyı nasıl kullanacağınızı öğrenmek için ilgili bağlayıcı belgesine bakın.
 
-Bir biçim hem satır içi hem de bir veri kümesi nesnesinde destekleniyorsa, her ikisine de faydalanır. Veri kümesi nesneleri, diğer veri akışlarında ve kopyalama gibi etkinliklerde yararlanılabilir olabilecek yeniden kullanılabilir varlıklardır. Bunlar özellikle sıkı bir şema kullanılırken kullanışlıdır. Veri kümeleri Spark tabanlı değildir ve bazen havuz dönüşümünde belirli ayarları veya şema projeksiyonunu geçersiz kılmanız gerekebilir.
+Bir biçim hem satır içi hem de bir veri kümesi nesnesinde destekleniyorsa, her ikisine de faydalanır. Veri kümesi nesneleri, diğer veri akışlarında ve kopyalama gibi etkinliklerde kullanılabilen yeniden kullanılabilir varlıklardır. Bu yeniden kullanılabilir varlıklar özellikle sıkı bir şema kullandığınızda kullanışlıdır. Veri kümeleri Spark temelli değildir. Bazen, havuz dönüşümünde belirli ayarları veya şema projeksiyonunu geçersiz kılmanız gerekebilir.
 
-Esnek şemalar, tek kapalı havuz örnekleri veya parametreli havuzlar kullanılırken satır içi veri kümeleri önerilir. Havuzunuzu yoğun şekilde parametreleştirmiş ise, satır içi veri kümeleri "kukla" bir nesne oluşturmanıza izin verir. Satır içi veri kümeleri Spark 'a dayalıdır ve özellikleri veri akışına yereldir.
+Esnek şemalar, tek kapalı havuz örnekleri veya parametreli havuzlar kullandığınızda satır içi veri kümeleri önerilir. Havuzunuzu yoğun şekilde parametreleştirmiş ise, satır içi veri kümeleri "kukla" bir nesne oluşturmanıza izin verir. Satır içi veri kümeleri Spark 'a dayalıdır ve özellikleri veri akışına yereldir.
 
-Satır içi veri kümesi kullanmak için, **Havuz türü** seçicisinde istediğiniz biçimi seçin. Bir havuz veri kümesi seçmek yerine, bağlanmak istediğiniz bağlı hizmeti seçersiniz.
+Satır içi veri kümesi kullanmak için **Havuz türü** seçicisinde istediğiniz biçimi seçin. Bir havuz veri kümesi seçmek yerine, bağlanmak istediğiniz bağlı hizmeti seçersiniz.
 
-![Satır içi veri kümesi](media/data-flow/inline-selector.png "Satır içi veri kümesi")
+![Satır Içi seçili öğesini gösteren ekran görüntüsü.](media/data-flow/inline-selector.png "Satır Içi seçili öğesini gösteren ekran görüntüsü.")
 
 ##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> Desteklenen havuz türleri
 
-Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını izler ve Azure 'da tümü olan *hazırlama* veri kümeleri ile birlikte kullanılır. Şu anda aşağıdaki veri kümeleri bir kaynak dönüşümünde kullanılabilir:
+Veri akışı eşleme, ayıklama, yükleme ve dönüştürme (ELT) yaklaşımını izler ve Azure 'da tümü olan *hazırlama* veri kümeleri ile birlikte kullanılır. Şu anda, aşağıdaki veri kümeleri bir kaynak dönüşümünde kullanılabilir.
 
 | Bağlayıcı | Biçimlendir | Veri kümesi/satır içi |
 | --------- | ------ | -------------- |
@@ -48,38 +48,38 @@ Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını i
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Veritabanı](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL yönetilen örneği (Önizleme)](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
-Bu bağlayıcılara özgü ayarlar **Ayarlar** sekmesinde bulunur. Bu ayarlara ilişkin bilgi ve veri akışı betiği örnekleri bağlayıcı belgelerinde bulunur. 
+Bu bağlayıcılara özgü ayarlar **Ayarlar** sekmesinde bulunur. Bu ayarlara ilişkin bilgi ve veri akışı betiği örnekleri bağlayıcı belgelerinde bulunur.
 
-Azure Data Factory’nin [90’ın üzerinde yerel bağlayıcıya](connector-overview.md) erişimi vardır. Veri akışınızdan diğer kaynaklara veri yazmak için kopyalama etkinliğini kullanarak bu verileri desteklenen bir alıcıdan yükleyin.
+Azure Data Factory, 90 ' den fazla [Yerel](connector-overview.md)bağlayıcıya erişebilir. Veri akışınızdan diğer kaynaklara veri yazmak için kopyalama etkinliğini kullanarak bu verileri desteklenen bir alıcıdan yükleyin.
 
 ## <a name="sink-settings"></a>Havuz ayarları
 
-Havuz ekledikten sonra, **Havuz** sekmesi aracılığıyla yapılandırın. Burada, havuzlarınızın yazdığı veri kümesini seçebilir veya oluşturabilirsiniz. Veri kümesi parametrelerinin geliştirme değerleri [hata ayıklama ayarlarında](concepts-data-flow-debug-mode.md) yapılandırılabilir (hata ayıklama modunun açık olması gerekir).
+Bir havuz ekledikten sonra, **Havuz** sekmesi aracılığıyla yapılandırın. Burada, havuzlarınızın yazdığı veri kümesini seçebilir veya oluşturabilirsiniz. Veri kümesi parametrelerinin geliştirme değerleri [hata ayıklama ayarlarında](concepts-data-flow-debug-mode.md)yapılandırılabilir. (Hata ayıklama modunun açık olması gerekir.)
 
-Aşağıda, metin ile ayrılmış dosya türleri için birçok farklı havuz seçeneği açıklayan bir video verilmiştir:
+Aşağıdaki videoda, metin ile ayrılmış dosya türleri için birçok farklı havuz seçeneği açıklanmaktadır.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
-![Havuz ayarları](media/data-flow/sink-settings.png "Havuz ayarları")
+![Havuz ayarlarını gösteren ekran görüntüsü.](media/data-flow/sink-settings.png "Havuz ayarlarını gösteren ekran görüntüsü.")
 
-**Şema DRFT:** [şema drını](concepts-data-flow-schema-drift.md) , veri akışlarınızda, sütun değişikliklerini açıkça tanımlamaya gerek kalmadan, esnek şemaları yerel olarak işleyebilme yeteneğidir. Havuz veri şemasında tanımlananla ilgili ek sütunları üzerine yazmak için **şema bitsede Izin ver** ' i etkinleştirin.
+**Şema** kayması: [şema DRFT](concepts-data-flow-schema-drift.md) , sütun değişikliklerini açıkça tanımlamaya gerek kalmadan veri akışlarınızda esnek şemaları yerel olarak işleme Data Factory yeteneğidir. Havuz veri şemasında tanımlandıklarınızın üzerine ek sütunlar yazmak için **şema bitsede Izin ver** ' i etkinleştirin.
 
-**Şemayı doğrula:** Şemayı doğrula seçilirse, gelen kaynak şemasının herhangi bir sütunu kaynak projeksiyonda bulunamazsa veya veri türleri eşleşmiyorsa veri akışı başarısız olur. Kaynak verilerin tanımlı projeksiyonun sözleşmesini karşıladığından zorlamak için bu ayarı kullanın. Sütun adlarının veya türlerin değiştiğini bildirmek için veritabanı kaynak senaryolarında çok yararlı olur.
+**Şemayı doğrula** : şemayı doğrula seçilirse, gelen kaynak şemasının herhangi bir sütunu kaynak projeksiyonda bulunamazsa veya veri türleri eşleşmiyorsa veri akışı başarısız olur. Kaynak verilerin tanımlı projeksiyonun sözleşmesini karşıladığından zorlamak için bu ayarı kullanın. Bu, sütun adlarının veya türlerin değiştiğini bildirmek için veritabanı kaynak senaryolarında yararlı olur.
 
 ## <a name="field-mapping"></a>Alan eşlemesi
 
-Bir seçim dönüşümüne benzer şekilde, havuzun **eşleme** sekmesinde, hangi gelen sütunların yazılacağını seçebilirsiniz. Varsayılan olarak, düzeltebilecekler sütunları dahil olmak üzere tüm giriş sütunları eşlenir. Bu, **otomatik eşleme**olarak bilinir.
+Bir seçim dönüşümüne benzer şekilde, havuzun **eşleme** sekmesinde hangi gelen sütunların yazılacağını seçebilirsiniz. Varsayılan olarak, düzeltebilecekler sütunları dahil olmak üzere tüm giriş sütunları eşlenir. Bu davranış, *automaas* olarak bilinir.
 
-Otomatik eşlemeyi devre dışı bırakırsanız, sabit sütun tabanlı eşlemeler ya da kural tabanlı eşlemeler ekleme seçeneğine sahip olacaksınız. Kural tabanlı eşlemeler, sabit eşleme mantıksal ve fiziksel sütun adlarını eşleyebileceğiniz sırada eşleşen ifadeler yazmanıza izin verir. Kural tabanlı eşleme hakkında daha fazla bilgi için bkz. [eşleme veri akışındaki sütun desenleri](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
+Automakapatmadan sonra, sabit sütun tabanlı eşlemeler veya kural tabanlı eşlemeler ekleyebilirsiniz. Kural tabanlı eşlemelerle, desenler eşleştirme ile ifadeler yazabilirsiniz. Sabit eşleme, mantıksal ve fiziksel sütun adlarını eşler. Kural tabanlı eşleme hakkında daha fazla bilgi için bkz. [eşleme veri akışındaki sütun desenleri](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
 
 ## <a name="custom-sink-ordering"></a>Özel havuz sıralaması
 
-Varsayılan olarak, veriler belirleyici olmayan bir sırada birden çok havuza yazılır. Dönüştürme mantığı tamamlandığından ve havuz sıralaması her bir çalıştırmayı farklı olabileceğinden, yürütme altyapısı verileri paralel olarak yazar. Havuz sıralamasını belirtmek ve tam olarak belirtmek için, veri akışının Genel sekmesinde **özel havuz sıralamasını** etkinleştirin. Etkinleştirildiğinde, havuzlar artan sırada sırayla yazılır.
+Varsayılan olarak, veriler belirleyici olmayan bir sırada birden çok havuza yazılır. Yürütme altyapısı, dönüştürme mantığı tamamlanana kadar verileri paralel olarak yazar ve havuz sıralaması her bir çalıştırmaya göre değişiklik gösterebilir. Tam bir havuz sıralaması belirtmek için, veri akışının **genel** sekmesinde **özel havuz sıralamasını** etkinleştirin. Etkinleştirildiğinde, havuzlar artan sırada sırayla yazılır.
 
-![Özel havuz sıralaması](media/data-flow/custom-sink-ordering.png "Özel havuz sıralaması")
+![Özel havuz sıralamasını gösteren ekran görüntüsü.](media/data-flow/custom-sink-ordering.png "Özel havuz sıralamasını gösteren ekran görüntüsü.")
 
 ## <a name="data-preview-in-sink"></a>Havuzda veri önizleme
 

@@ -3,13 +3,13 @@ title: Cloud Native Buildpack ile görüntü oluşturma
 description: Bir uygulamadan kapsayıcı görüntüsü oluşturmak için az ACR Pack Build komutunu kullanın ve Dockerfile kullanmadan Azure Container Registry gönderin.
 ms.topic: article
 ms.date: 10/24/2019
-ms.custom: devx-track-js
-ms.openlocfilehash: cad7d5c066dd8c8a7468833cb67e6085f067417a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 264fc7314c78088ebfefb9ddb8edbe38fa16581a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262119"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736629"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Cloud Native Buildpack kullanarak bir uygulamadan görüntü oluşturma ve gönderme
 
@@ -85,7 +85,7 @@ Görüntü başarıyla oluşturulduktan sonra, yüklüyse Docker ile çalıştı
 az acr login --name myregistry
 ```
 
-Çalışma *kimliği*için görüntü etiketinizi değiştirerek görüntüyü çalıştırın:
+Çalışma *kimliği* için görüntü etiketinizi değiştirerek görüntüyü çalıştırın:
 
 ```console
 docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid

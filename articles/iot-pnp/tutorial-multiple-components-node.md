@@ -7,13 +7,13 @@ ms.date: 07/10/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: devx-track-js
-ms.openlocfilehash: ea7b1ba159aa5d11a20ff565390ce0b24e38c1d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 2f0bf3b4b6e7091222b98e1743f0fb4f431fdd12
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577195"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736044"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-nodejs"></a>Öğretici: bir örnek IoT Tak ve Kullan birden çok bileşen cihaz uygulamasını IoT Hub 'ye bağlama (Node.js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91577195"
 
 Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, bunları IoT Hub 'ınıza bağlama ve Azure IoT Gezgini aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama Node.js için yazılmıştır ve Node.js için Azure IoT Hub cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -105,7 +105,7 @@ Bu işlem, örnekleri klasöründe çalıştırmak için gereken ilgili NPM dosy
 
   - `desiredPropertyPatchListener`Özellik güncelleştirmelerini dinlemek için kullanır.
 
-  - Tüm dinleyicileri ve görevleri devre dışı bırakır ve **q** veya **q**tuşlarına bastığınızda döngüden çıkar.
+  - Tüm dinleyicileri ve görevleri devre dışı bırakır ve **q** veya **q** tuşlarına bastığınızda döngüden çıkar.
 
 [!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
 

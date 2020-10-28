@@ -6,16 +6,16 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 4b2f819edd875130c57d487536691b4588dcc71f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfc554a57e99fa4ccd66b1bbeec0be46e463988f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772677"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738642"
 ---
 # <a name="monitoring-azure-files"></a>Azure dosyalarını izleme
 
@@ -51,20 +51,9 @@ Azure Izleyici 'de ölçümler ve Günlükler yalnızca depolama hesaplarını A
 
 ## <a name="collection-and-routing"></a>Toplama ve yönlendirme
 
-Platform ölçümleri ve etkinlik günlüğü otomatik olarak toplanır, ancak bir tanılama ayarı kullanılarak diğer konumlara yönlendirilebilir. Kaynak günlüklerini toplamak için bir tanılama ayarı oluşturmanız gerekir. 
+Platform ölçümleri ve etkinlik günlüğü otomatik olarak toplanır, ancak bir tanılama ayarı kullanılarak diğer konumlara yönlendirilebilir. 
 
-> [!NOTE]
-> Azure Izleyici 'de Azure depolama günlükleri genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Önizlemeye kaydolmak için [Bu sayfaya](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)bakın. Bu önizleme, blob 'lar (Azure Data Lake Storage 2.), dosyalar, kuyruklar, tablolar, genel amaçlı v1 için Premium Depolama hesapları ve genel amaçlı v2 depolama hesapları için günlük Günlükler sunar. Klasik depolama hesapları desteklenmez.
-
-Azure portal, Azure CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmak için bkz. [Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../../azure-monitor/platform/diagnostic-settings.md). 
-
-Bir tanılama ayarı oluşturan Azure Resource Manager şablonu görmek için bkz. [Azure depolama Için tanılama ayarı](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage).
-
-Bir tanılama ayarı oluşturduğunuzda bir blob, kuyruk, tablo veya dosya gibi günlükleri etkinleştirmek istediğiniz depolama türünü seçin. Azure dosyaları için **Dosya**' yı seçin. 
-
-Azure portal tanılama ayarını oluşturursanız, kaynağı listeden seçebilirsiniz. PowerShell veya Azure CLı kullanıyorsanız, Azure dosyaları uç noktasının kaynak KIMLIĞINI kullanmanız gerekir. Depolama hesabınızın **Özellikler** sayfasını açarak Azure Portal kaynak kimliğini bulabilirsiniz.
-
-Günlükleri toplamak istediğiniz aşağıdaki işlem kategorisinden birini de belirtmeniz gerekir. 
+Kaynak günlüklerini toplamak için bir tanılama ayarı oluşturmanız gerekir. Ayarı oluşturduğunuzda, günlüklerini etkinleştirmek istediğiniz depolama türü olarak **Dosya** ' yı seçin. Ardından, günlüklerini toplamak istediğiniz aşağıdaki işlem kategorisinden birini belirtin. 
 
 | Kategori | Açıklama |
 |:---|:---|
@@ -73,6 +62,191 @@ Günlükleri toplamak istediğiniz aşağıdaki işlem kategorisinden birini de 
 | StorageDelete | Nesneler üzerinde silme işlemleri. |
 
 Günlüğe kaydedilen SMB ve REST işlemlerinin listesini almak için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
+
+## <a name="creating-a-diagnostic-setting"></a>Tanılama ayarı oluşturma
+
+Azure portal, PowerShell, Azure CLı veya bir Azure Resource Manager şablonunu kullanarak bir tanılama ayarı oluşturabilirsiniz. 
+
+Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../../azure-monitor/platform/diagnostic-settings.md).
+
+### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+
+1. Azure portalında oturum açın.
+
+2. Depolama hesabınıza gidin.
+
+3. **İzleme** bölümünde **Tanılama ayarları (Önizleme)** öğesine tıklayın.
+
+   > [!div class="mx-imgBorder"]
+   > ![Portal-tanılama günlükleri](media/storage-files-monitoring/diagnostic-logs-settings-pane.png)   
+
+4. Günlüklerini etkinleştirmek istediğiniz depolama türü olarak **Dosya** ' yı seçin.
+
+5. **Tanılama ayarı Ekle** ' ye tıklayın.
+
+   > [!div class="mx-imgBorder"]
+   > ![Portal-kaynak günlükleri-tanılama ayarı ekleme](media/storage-files-monitoring/diagnostic-logs-settings-pane-2.png)
+
+   **Tanılama ayarları** sayfası görüntülenir.
+
+   > [!div class="mx-imgBorder"]
+   > ![Kaynak günlükleri sayfası](media/storage-files-monitoring/diagnostic-logs-page.png)
+
+6. Sayfanın **ad** alanına bu kaynak günlüğü ayarı için bir ad girin. Ardından, kütüğe kaydedilmesini istediğiniz işlemleri (okuma, yazma ve silme işlemleri) ve günlüklerin gönderilmesini istediğiniz yeri seçin.
+
+#### <a name="archive-logs-to-a-storage-account"></a>Günlükleri bir depolama hesabına Arşivle
+
+1. **Depolama hesabı Arşivi** onay kutusunu seçin ve ardından **Yapılandır** düğmesine tıklayın.
+
+   > [!div class="mx-imgBorder"]   
+   > ![Tanılama ayarları sayfa arşiv depolaması](media/storage-files-monitoring/diagnostic-logs-settings-pane-archive-storage.png)
+
+2. **Depolama hesabı** açılan listesinde, günlüklerinizi arşivlemek istediğiniz depolama hesabını seçin, **Tamam** düğmesine tıklayın ve ardından **Kaydet** düğmesine tıklayın.
+
+   > [!NOTE]
+   > Verme hedefi olarak bir depolama hesabı seçmeden önce, depolama hesabındaki önkoşulları anlamak için bkz. [Azure Kaynak günlüklerini arşivleme](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage) .
+
+#### <a name="stream-logs-to-azure-event-hubs"></a>Günlükleri Azure Event Hubs akış
+
+1. **Bir olay hub 'ı Için akış** onay kutusunu seçin ve ardından **Yapılandır** düğmesine tıklayın.
+
+2. **Bir olay hub 'ı seçin** bölmesinde günlüklerinizi akışa almak istediğiniz olay hub 'ının ad alanını, adını ve ilke adını seçin. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Tanılama ayarları sayfası Olay Hub 'ı](media/storage-files-monitoring/diagnostic-logs-settings-pane-event-hub.png)
+
+3. **Tamam** düğmesine tıklayın ve ardından **Kaydet** düğmesine tıklayın.
+
+#### <a name="send-logs-to-azure-log-analytics"></a>Azure Log Analytics günlük gönder
+
+1. **Log Analytics gönder** onay kutusunu seçin, bir Log Analytics çalışma alanı seçin ve ardından **Kaydet** düğmesine tıklayın.
+
+   > [!div class="mx-imgBorder"]   
+   > ![Tanılama ayarları sayfa günlüğü Analizi](media/storage-files-monitoring/diagnostic-logs-settings-pane-log-analytics.png)
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Bir Windows PowerShell komut penceresi açın ve komutunu kullanarak Azure aboneliğinizde oturum açın `Connect-AzAccount` . Ardından ekrandaki yönergeleri izleyin.
+
+   ```powershell
+   Connect-AzAccount
+   ```
+
+2. Etkin aboneliğinizi, günlük kaydını etkinleştirmek istediğiniz depolama hesabının aboneliğine ayarlayın.
+
+   ```powershell
+   Set-AzContext -SubscriptionId <subscription-id>
+   ```
+
+#### <a name="archive-logs-to-a-storage-account"></a>Günlükleri bir depolama hesabına Arşivle
+
+[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 'ini parametresiyle birlikte kullanarak günlükleri etkinleştirin `StorageAccountId` .
+
+```powershell
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+```
+
+`<storage-service-resource--id>`Bu kod parçacığındaki yer tutucuyu Azure dosya hizmetinin kaynak kimliğiyle değiştirin. Depolama hesabınızın **Özellikler** sayfasını açarak Azure Portal kaynak kimliğini bulabilirsiniz.
+
+`StorageRead` `StorageWrite` `StorageDelete` **Kategori** parametresinin değeri için, ve kullanabilirsiniz.
+
+Aşağıda bir örnek verilmiştir:
+
+`Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
+
+Her parametrenin açıklaması için bkz. [Azure PowerShell aracılığıyla Azure Kaynak günlüklerini arşivleme](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-azure-powershell).
+
+#### <a name="stream-logs-to-an-event-hub"></a>Günlükleri bir olay hub 'ına akış
+
+[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 'ini parametresiyle kullanarak günlükleri etkinleştirin `EventHubAuthorizationRuleId` .
+
+```powershell
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+```
+
+Aşağıda bir örnek verilmiştir:
+
+`Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
+
+Her parametrenin açıklaması için bkz. [PowerShell cmdlet 'leri aracılığıyla Event Hubs Için akış verileri](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-powershell-cmdlets).
+
+#### <a name="send-logs-to-log-analytics"></a>Günlükleri Log Analytics’e gönderme
+
+[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 'ini parametresiyle kullanarak günlükleri etkinleştirin `WorkspaceId` .
+
+```powershell
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+```
+
+Aşağıda bir örnek verilmiştir:
+
+`Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
+
+Daha fazla bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanına Azure Kaynak günlüklerini akış](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. İlk olarak, [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)açın veya Azure CLI 'yı yerel olarak [yüklediyseniz](https://docs.microsoft.com/cli/azure/install-azure-cli) , Windows PowerShell gibi bir komut konsol uygulaması açın.
+
+2. Kimliğiniz birden fazla abonelikle ilişkiliyse, etkin aboneliğinizi günlüklerini etkinleştirmek istediğiniz depolama hesabının aboneliğine ayarlayın.
+
+   ```azurecli-interactive
+   az account set --subscription <subscription-id>
+   ```
+
+   `<subscription-id>`Yer tutucu değerini ABONELIĞINIZIN kimliğiyle değiştirin.
+
+#### <a name="archive-logs-to-a-storage-account"></a>Günlükleri bir depolama hesabına Arşivle
+
+[Az Monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) komutunu kullanarak günlükleri etkinleştirin.
+
+```azurecli-interactive
+az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+```
+
+`<storage-service-resource--id>`Bu kod parçacığındaki yer tutucuyu kaynak kimliği BLOB depolama hizmeti ile değiştirin. Depolama hesabınızın **Özellikler** sayfasını açarak Azure Portal kaynak kimliğini bulabilirsiniz.
+
+`StorageRead` `StorageWrite` `StorageDelete` **Kategori** parametresinin değeri için, ve kullanabilirsiniz.
+
+Aşağıda bir örnek verilmiştir:
+
+`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
+
+Her parametrenin açıklaması için bkz. [Azure CLI aracılığıyla arşiv kaynak günlükleri](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-the-azure-cli).
+
+#### <a name="stream-logs-to-an-event-hub"></a>Günlükleri bir olay hub 'ına akış
+
+[Az Monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) komutunu kullanarak günlükleri etkinleştirin.
+
+```azurecli-interactive
+az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+```
+
+Aşağıda bir örnek verilmiştir:
+
+`az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
+
+Her parametrenin açıklaması için bkz. [Azure CLI aracılığıyla Event Hubs Için akış verileri](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-azure-cli).
+
+#### <a name="send-logs-to-log-analytics"></a>Günlükleri Log Analytics’e gönderme
+
+[Az Monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) komutunu kullanarak günlükleri etkinleştirin.
+
+```azurecli-interactive
+az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
+```
+
+Aşağıda bir örnek verilmiştir:
+
+`az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
+
+ Daha fazla bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanına Azure Kaynak günlüklerini akış](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
+
+### <a name="template"></a>[Şablon](#tab/template)
+
+Bir tanılama ayarı oluşturan Azure Resource Manager şablonunu görüntülemek için bkz. [Azure Storage Için tanılama ayarı](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage).
+
+---
 
 ## <a name="analyzing-metrics"></a>Ölçümler çözümleniyor
 
@@ -132,7 +306,7 @@ Depolama hesabınızın veya Azure dosyaları hizmetinin ölçüm değerlerini o
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+### <a name="net"></a>[.NET](#tab/azure-portal)
 
 Azure Izleyici, ölçüm tanımını ve değerlerini okumak için [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) sağlar. [Örnek kod](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) , SDK 'nın farklı parametrelerle nasıl kullanılacağını gösterir. `0.18.0-preview`Depolama ölçümleri için veya sonraki bir sürümü kullanmanız gerekir.
  
@@ -272,6 +446,10 @@ Aşağıdaki örnek, Multidimension destekleyen ölçümde ölçüm verilerinin 
 
 ```
 
+# <a name="template"></a>[Şablon](#tab/template)
+
+Yok.
+
 ---
 
 ## <a name="analyzing-logs"></a>Günlükler çözümleniyor
@@ -283,7 +461,7 @@ Günlüğe kaydedilen SMB ve REST işlemlerinin listesini almak için bkz. [depo
 > [!NOTE]
 > Azure Izleyici 'de Azure depolama günlükleri genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Önizlemeye kaydolmak için [Bu sayfaya](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)bakın. Bu önizleme, blob 'lar (Azure Data Lake Storage 2.), dosyalar, kuyruklar, tablolar, genel amaçlı v1 için Premium Depolama hesapları ve genel amaçlı v2 depolama hesapları için günlük Günlükler sunar. Klasik depolama hesapları desteklenmez.
 
-Günlük girişleri yalnızca hizmet uç noktasında yapılan istekler varsa oluşturulur. Örneğin, bir depolama hesabının dosya uç noktasında etkinliği varsa ancak tablo veya sıra uç noktalarında etkinlik varsa, yalnızca dosya hizmetine ait günlükler oluşturulur. Azure depolama günlükleri, başarılı ve başarısız istekler hakkında bir depolama hizmetine ilişkin ayrıntılı bilgiler içerir. Bu bilgileri kullanarak istekleri ayrı ayrı izleyebilir ve depolama hizmetiyle ilgili sorunları tanılayabilirsiniz. İstekler en iyi çaba temelinde günlüğe kaydedilir.
+Günlük girişleri yalnızca hizmet uç noktasında yapılan istekler varsa oluşturulur. Örneğin, bir depolama hesabının dosya uç noktasında etkinliği varsa ancak tablo ya da sıra uç noktalarında etkinlik varsa, yalnızca Azure dosya hizmeti 'ne ait günlükler oluşturulur. Azure depolama günlükleri, başarılı ve başarısız istekler hakkında bir depolama hizmetine ilişkin ayrıntılı bilgiler içerir. Bu bilgileri kullanarak istekleri ayrı ayrı izleyebilir ve depolama hizmetiyle ilgili sorunları tanılayabilirsiniz. İstekler en iyi çaba temelinde günlüğe kaydedilir.
 
 ### <a name="log-authenticated-requests"></a>Kimliği doğrulanmış istekleri günlüğe yaz
 
@@ -395,9 +573,9 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 
 1. **Azure Portal** **depolama hesabınıza** gidin. 
 
-2. **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
+2. **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı** ' na tıklayın.
 
-3. **Kaynağı Düzenle**' ye tıklayın, **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. 
+3. **Kaynağı Düzenle** ' ye tıklayın, **dosya kaynağı türünü** seçin ve **bitti** ' ye tıklayın. 
 
 4. **Koşul Seç** ' e tıklayın ve uyarı için aşağıdaki bilgileri sağlayın: 
 
@@ -407,7 +585,7 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 
 5. **Eylem grubunu Seç** ' e tıklayın ve var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) ekleyin.
 
-6. Uyarı **kuralının adı**, **açıklaması**ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+6. Uyarı **kuralının adı** , **açıklaması** ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 
 7. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
 
@@ -417,68 +595,68 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 ### <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Dosya paylaşma kısıtlandığında uyarı oluşturma
 
 1. **Azure Portal** **depolama hesabınıza** gidin.
-2. **İzleme** bölümünde **Uyarılar**' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
-3. **Kaynağı Düzenle**' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. Örneğin, depolama hesabı adı ise `contoso` `contoso/file` kaynağı seçin.
+2. **İzleme** bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı** ' na tıklayın.
+3. **Kaynağı Düzenle** ' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti** ' ye tıklayın. Örneğin, depolama hesabı adı ise `contoso` `contoso/file` kaynağı seçin.
 4. Koşul eklemek için **Koşul Seç** ' e tıklayın.
 5. Depolama hesabı için desteklenen sinyallerin bir listesini göreceksiniz, **işlem** ölçümünü seçin.
-6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılan düğmesine tıklayın ve **yanıt türü**' nü seçin.
+6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılan düğmesine tıklayın ve **yanıt türü** ' nü seçin.
 7. **Boyut değerleri** açılan listesi ' ne tıklayın ve **başarılı olarak daraltma** (SMB Için) veya **CLIENTKıSıTLAR lingerror** (REST için) öğesini seçin.
 
    > [!NOTE]
-   > Başarılı bir kısıtlama veya Clientazaltıngerror boyut değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir. Boyut değerini eklemek için **boyut değerleri** açılan listesi ' nin yanına **özel değer Ekle** ' ye tıklayın, başarılı ' i **daraltma** veya **clientkısıtınror**yazın, **Tamam** ' a tıklayın ve ardından #7 adımını tekrarlayın.
+   > Başarılı bir kısıtlama veya Clientazaltıngerror boyut değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir. Boyut değerini eklemek için **boyut değerleri** açılan listesi ' nin yanına **özel değer Ekle** ' ye tıklayın, başarılı ' i **daraltma** veya **clientkısıtınror** yazın, **Tamam** ' a tıklayın ve ardından #7 adımını tekrarlayın.
 
-8. **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
+8. **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşma** ' yı seçin.
 9. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
 
    > [!NOTE]
-   > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri**seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
+   > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri** seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
 
-10. **Uyarı parametrelerini** tanımlayın (eşik değeri, işleç, toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti**' ye tıklayın.
+10. **Uyarı parametrelerini** tanımlayın (eşik değeri, işleç, toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti** ' ye tıklayın.
 
     > [!TIP]
     > Statik bir eşik kullanıyorsanız, ölçüm grafiği dosya paylaşımının kısıtlandığı durumlarda makul bir eşik değeri belirlemesine yardımcı olabilir. Dinamik bir eşik kullanıyorsanız, ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler.
 
 11. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir **eylem grubu** (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
-12. Uyarı **kuralı adı**, * * açıklama ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+12. Uyarı **kuralı adı** , * * açıklama ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 13. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-size-is-80-of-capacity"></a>Azure dosya paylaşımının boyutu kapasitenin %80 ise uyarı oluşturma
 
 1. **Azure Portal** **depolama hesabınıza** gidin.
-2. **İzleme** bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
-3. **Kaynağı Düzenle**' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. Örneğin, depolama hesabı adı ise `contoso` `contoso/file` kaynağı seçin.
+2. **İzleme** bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı** ' na tıklayın.
+3. **Kaynağı Düzenle** ' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti** ' ye tıklayın. Örneğin, depolama hesabı adı ise `contoso` `contoso/file` kaynağı seçin.
 4. Koşul eklemek için **Koşul Seç** ' e tıklayın.
 5. Depolama hesabı için desteklenen sinyallerin bir listesini göreceksiniz, **dosya kapasitesi** ölçümünü seçin.
-6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılır düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
+6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılır düğmesine tıklayın ve **dosya paylaşma** ' yı seçin.
 7. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
 
    > [!NOTE]
-   > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri**seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Standart dosya paylaşımları için uyarılar, depolama hesabındaki tüm dosya paylaşımlarını temel alır. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
+   > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri** seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Standart dosya paylaşımları için uyarılar, depolama hesabındaki tüm dosya paylaşımlarını temel alır. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
 
 8. **Eşik değerini** bayt cinsinden girin. Örneğin, dosya paylaşımının boyutu 100 TiB ise ve dosya paylaşımının boyutu kapasitenin %80 olduğunda bir uyarı almak istiyorsanız, bayt cinsinden eşik değeri 87960930222080.
-9. **Uyarı parametrelerinin** geri kalanını tanımlayın (toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti**' ye tıklayın.
+9. **Uyarı parametrelerinin** geri kalanını tanımlayın (toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti** ' ye tıklayın.
 10. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) eklemek için eylem grubunu Seç ' e tıklayın.
-11. Uyarı **kuralı adı**, * * açıklama ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+11. Uyarı **kuralı adı** , * * açıklama ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 12. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-egress-has-exceeded-500-gib-in-a-day"></a>Azure dosya paylaşımının çıkışı günde 500 GiB 'yi aşarsa uyarı oluşturma
 
 1. **Azure Portal** **depolama hesabınıza** gidin.
-2. Izleme bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
-3. **Kaynağı Düzenle**' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. Örneğin, depolama hesabı adı contoso ise, contoso/dosya kaynağını seçin.
+2. Izleme bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı** ' na tıklayın.
+3. **Kaynağı Düzenle** ' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti** ' ye tıklayın. Örneğin, depolama hesabı adı contoso ise, contoso/dosya kaynağını seçin.
 4. Koşul eklemek için **Koşul Seç** ' e tıklayın.
 5. Depolama hesabı için desteklenen sinyallerin bir listesini göreceksiniz, **Çıkış** ölçümünü seçin.
-6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılır düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
+6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılır düğmesine tıklayın ve **dosya paylaşma** ' yı seçin.
 7. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
 
    > [!NOTE]
-   > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri**seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Standart dosya paylaşımları için uyarılar, depolama hesabındaki tüm dosya paylaşımlarını temel alır. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
+   > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri** seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Standart dosya paylaşımları için uyarılar, depolama hesabındaki tüm dosya paylaşımlarını temel alır. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
 
 8. Eşik değeri için **536870912000** bayt girin. 
-9. **Toplama ayrıntı düzeyi** açılan düğmesine tıklayın ve **24 saat**' i seçin.
-10. **Değerlendirme sıklığını** seçin ve **bitti ' ye tıklayın**.
+9. **Toplama ayrıntı düzeyi** açılan düğmesine tıklayın ve **24 saat** ' i seçin.
+10. **Değerlendirme sıklığını** seçin ve **bitti ' ye tıklayın** .
 11. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir **eylem grubu** (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
-12. Uyarı **kuralı adı**, * * açıklama ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+12. Uyarı **kuralı adı** , * * açıklama ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 13. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

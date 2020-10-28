@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: ce6f0ff97b1dfa8757b05b13dff653a1d34f4531
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6629f02178b7c00ccc849e2ccfc3f0a48f419a7f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315283"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735560"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Azure Geçişi ile geçiş planı oluşturma
 
@@ -20,7 +20,7 @@ Bu makalede [, Azure geçişi Ile Azure](migrate-services-overview.md)'a geçiş
 - Azure geçişi hakkında [genel sorular](resources-faq.md)
 - [Azure geçişi](common-questions-appliance.md) gereci hakkında sorular
 - [Sunucu geçişi](common-questions-server-migration.md) hakkında sorular
-- [Azure geçişi forumundaki](https://aka.ms/AzureMigrateForum) soruların yanıtlarını alın
+- [Azure geçişi forumundaki](https://docs.microsoft.com/answers/topics/azure-migrate.html) soruların yanıtlarını alın
 
 ## <a name="define-the-goals-of-cloud-migration"></a>Bulut geçişinin hedeflerini tanımlama
 
@@ -75,13 +75,13 @@ Azure, bulut kapasitenizi zaman içinde yeniden boyutlandırmak için esneklik s
 ### <a name="readiness-and-suitability-analysis-for-azure"></a>Azure için hazırlık ve uygunluk Analizi
 Azure VM değerlendirmesi raporunu dışarı aktarın ve VM 'nin Azure için hazır olduğunu anlamak için aşağıdaki hazırlık kategorilerine göre filtreleme yapın:
 
-- **Azure Için hazırlanma**: Bu makineleri, herhangi bir değişiklik yapmadan Azure 'a geçirebilirsiniz  
+- **Azure Için hazırlanma** : Bu makineleri, herhangi bir değişiklik yapmadan Azure 'a geçirebilirsiniz  
 
-- **Azure Için koşullu**olarak kullanılabilir: Bu makineleri Azure 'a geçirebilirsiniz, ancak değerlendirmede belirtilen düzeltme yönergelerine göre bu sunucularda küçük değişikliklere ihtiyaç duyarsınız
+- **Azure Için koşullu** olarak kullanılabilir: Bu makineleri Azure 'a geçirebilirsiniz, ancak değerlendirmede belirtilen düzeltme yönergelerine göre bu sunucularda küçük değişikliklere ihtiyaç duyarsınız
 
-- **Azure için hazırlanma**: Bu makineleri Azure 'a geçirmezsiniz ve geçişten önce düzeltme yönergelerine göre sorunları çözmeniz gerekir
+- **Azure için hazırlanma** : Bu makineleri Azure 'a geçirmezsiniz ve geçişten önce düzeltme yönergelerine göre sorunları çözmeniz gerekir
 
-- **Hazır olma bilinmiyor**: Azure geçişi, yetersiz meta veri nedeniyle makinenin hazır olduğunu belirleyemiyor
+- **Hazır olma bilinmiyor** : Azure geçişi, yetersiz meta veri nedeniyle makinenin hazır olduğunu belirleyemiyor
 
 Veritabanı değerlendirmelerini kullanarak, SQL Server verilerinizi Azure SQL veritabanı 'na veya Azure SQL yönetilen örneklerine geçirme hazırlığını değerlendirebilirsiniz. SQL Server örneklerinizin her biri için geçiş hazırlık durumu yüzdesini görebilirsiniz. Ayrıca, örneklerin her biri için Azure 'da önerilen hedefi, olası geçiş engelleyicileri, önemli değişiklikler sayısını, Azure SQL DB/Azure SQL VM için hazırlık ve uyumluluk düzeyini görebilirsiniz. Geçiş engelleyicileri ve bunları gidermeye yönelik önerilerin etkisini anlamak için daha ayrıntılı bilgi alabilirsiniz.
 
@@ -95,19 +95,19 @@ Makine Azure için hazırlanıyor olarak işaretlendikten sonra sunucu değerlen
 
 Değerlendirmelerinde *performans tabanlı* sağ boyutlandırma seçeneği, Azure için iş yüklerini iyileştirmenize olanak tanır. Maliyet tasarrufu sağlamaya yardımcı olmak için birkaç başka farklı şekilde göz atabilirsiniz:
 
-- **Ayrılmış örnekler**: ayrılmış örneklerle, Windows ve Linux (VM) ' de 1 yıl veya 3 yıllık koşullarla Kullandıkça Öde fiyatlandırmasıyla karşılaştırıldığında maliyetleri önemli ölçüde azaltabilirsiniz.
+- **Ayrılmış örnekler** : ayrılmış örneklerle, Windows ve Linux (VM) ' de 1 yıl veya 3 yıllık koşullarla Kullandıkça Öde fiyatlandırmasıyla karşılaştırıldığında maliyetleri önemli ölçüde azaltabilirsiniz.
 
-- **Azure hibrit avantajları**: Yazılım Güvencesi kapsamındaki Windows Server şirket Içi lisanslarını Azure 'a getirebilir ve ayrılmış örnekler seçenekleriyle birleştirebilirsiniz
+- **Azure hibrit avantajları** : Yazılım Güvencesi kapsamındaki Windows Server şirket Içi lisanslarını Azure 'a getirebilir ve ayrılmış örnekler seçenekleriyle birleştirebilirsiniz
 
-- **Kurumsal anlaşma teklif (EA)**: kurumsal anlaşma, aboneliğiniz için geçerli olan yerleşik tasarruflar sunar
+- **Kurumsal anlaşma teklif (EA)** : kurumsal anlaşma, aboneliğiniz için geçerli olan yerleşik tasarruflar sunar
 
-- **Teklifler**: birden çok Azure teklifi vardır. örneğin, Kullandıkça Öde Geliştirme ve Test ve Kurumsal Geliştirme ve test geliştirme veya test VM 'leri için daha düşük ücretler sağlar
+- **Teklifler** : birden çok Azure teklifi vardır. örneğin, Kullandıkça Öde Geliştirme ve Test ve Kurumsal Geliştirme ve test geliştirme veya test VM 'leri için daha düşük ücretler sağlar
 
-- **VM çalışma süresi**: Azure VM 'lerinin maliyetlerinizi azaltmak için çalışacağı gün başına gün ve saat başına gün ve saat olarak bir süre (RI için uygulanamaz) belirtebilirsiniz
+- **VM çalışma süresi** : Azure VM 'lerinin maliyetlerinizi azaltmak için çalışacağı gün başına gün ve saat başına gün ve saat olarak bir süre (RI için uygulanamaz) belirtebilirsiniz
 
-- **Hedef bölge**: bir coğrafya içindeki belirli bir bölgeye geçiş yapmak daha uygun maliyetli olabileceğinden karşılaştırmak için farklı bölgelerde birden fazla değerlendirme oluşturabilirsiniz
+- **Hedef bölge** : bir coğrafya içindeki belirli bir bölgeye geçiş yapmak daha uygun maliyetli olabileceğinden karşılaştırmak için farklı bölgelerde birden fazla değerlendirme oluşturabilirsiniz
 
-- **Performans tabanlı öneriler**: en iyi uygulama olarak, bulut maliyetlerini kaydetmenize yardımcı olacak doğru Azure VM önerilerini kullanmayı deneyin
+- **Performans tabanlı öneriler** : en iyi uygulama olarak, bulut maliyetlerini kaydetmenize yardımcı olacak doğru Azure VM önerilerini kullanmayı deneyin
 
 ### <a name="visualize-data"></a>Verileri görselleştirme
 
@@ -125,7 +125,7 @@ Geçiş kararınızı almak için tüm önemli bilgilere sahip olduğunuza göre
 
 Önerilen bazı geçiş stratejileri şunlardır:
 
-- **Hızlı WINS 'Nizi önceliklendirin**: değerlendirme raporlarını, tam olarak kullanıma yönelik sunucular ve veritabanları ve Azure 'a geçiş için en az çaba gerektiren düşük asılı meyve 'yi belirlemek için kullanabilirsiniz:
+- **Hızlı WINS 'Nizi önceliklendirin** : değerlendirme raporlarını, tam olarak kullanıma yönelik sunucular ve veritabanları ve Azure 'a geçiş için en az çaba gerektiren düşük asılı meyve 'yi belirlemek için kullanabilirsiniz:
     - Azure İçin Hazır: değerlendirme raporunuzu dışarı aktarın ve "Azure için hazırlanma" olan tüm makineleri filtreleyin. Bu, Azure geçişi: sunucu geçiş aracı ile kaldırıp kaydırabileceğiniz ilk makine grubunuz olabilir.
     - İşletim sistemi destek bitişi: değerlendirme raporunuzu dışarı aktarın ve Windows Server 2008 ve Windows Server 2008 R2 işletim sistemlerini çalıştıran tüm makineleri filtreleyin. Bu SKU 'Lar destek bitleridir ve yalnızca Azure, Azure 'a geçirdiğinizde ücretsiz 3 yıllık güvenlik güncelleştirmeleri sağlar. Ayrılmış örnekleri birleştirdiğinizde, Azure Hibrit Avantajı ve kullandığınızda, kaydetme çok daha yüksek olabilir.
     - SQL Server Geçişi: Azure geçişi 'ni kullanarak Azure SQL veritabanlarına yönelik veritabanlarını geçirmek için veritabanı değerlendirmesi önerilerini kullanın: veritabanı geçişi ve Azure geçişi: sunucu geçişi kullanarak Azure SQL VM için kullanıma yönelik veritabanları.
@@ -133,9 +133,9 @@ Geçiş kararınızı almak için tüm önemli bilgilere sahip olduğunuza göre
     - Aşırı sağlanan VM 'Ler: değerlendirme raporunuzu dışarı aktarın ve düşük CPU kullanımı (%) kullanarak makineleri filtreleyin. ve bellek kullanımı (%).  Bu fırsatı kullanarak Azure 'da doğru bir sanal makineye geçiş yapabilir ve az kullanılan kaynaklar için ödeme yaptığınız şeyleri kaydedebilirsiniz.
     - Kapasite kısıtlamaları: yüksek CPU kullanımı (%) ile değerlendirme raporunuzu dışarı aktarın ve makineleri filtreleyin. ve bellek kullanımı (%).  Fazla kullanılabilir VM 'Lerin kesilmesini önler ve Azure 'a taşıyarak performansı artırabilir ve talebi karşılamak için otomatik ölçeklendirme özelliğinden yararlanabilirsiniz. Ayrıca, disk ıOPS ve aktarım hızını çözümleyerek ve gereksinimlerinize en uygun olan önerilen disk türünü bularak depolama kısıtlamalarını anlamak için değerlendirme raporuna göz atabilirsiniz.
 
-- **Küçük bir başlangıç yapın ve ardından büyük**bir risk ve daha az karmaşık olan uygulamaları ve iş yüklerini, geçiş stratejinizde güvenle oluşturmak için kullanmaya başlayın. Ayrıca, pilot geçişlerinizde geliştirme ve test ortamı iş yüklerini bulmak ve geçirmek için kuruluşların CMDB depolarıyla Azure geçişi değerlendirme önerilerinizi de kesişeedebilirsiniz. Üretim iş yüklerini geçirirken, bu pil'lerden gelen dersleri kullanılabilir.  
+- **Küçük bir başlangıç yapın ve ardından büyük** bir risk ve daha az karmaşık olan uygulamaları ve iş yüklerini, geçiş stratejinizde güvenle oluşturmak için kullanmaya başlayın. Ayrıca, pilot geçişlerinizde geliştirme ve test ortamı iş yüklerini bulmak ve geçirmek için kuruluşların CMDB depolarıyla Azure geçişi değerlendirme önerilerinizi de kesişeedebilirsiniz. Üretim iş yüklerini geçirirken, bu pil'lerden gelen dersleri kullanılabilir.  
 
-- **Mevzuata/sektör gereksinimlerinizle uyumlu**: Azure, en büyük uyumluluk portföyünü sektörde ve tekliflerin derinliğine göre sektör genelinde tutar. Azure 'a geçişlerinizi önceliklendirmenize ve ulusal, bölgesel ve sektöre özgü standartlarla ve yasalarınıza uyum sağlamak için bunu bir fırsat olarak kullanın. Bu özellikle, iş açısından kritik veya hassas bilgileri tutan ya da belirli durumlarda yapılan standartlar ve yönetmelikler en fazla değişebilir ve bu durumda, daha fazla değişiklik yapılmasını zorlaştırıyor.  
+- **Mevzuata/sektör gereksinimlerinizle uyumlu** : Azure, en büyük uyumluluk portföyünü sektörde ve tekliflerin derinliğine göre sektör genelinde tutar. Azure 'a geçişlerinizi önceliklendirmenize ve ulusal, bölgesel ve sektöre özgü standartlarla ve yasalarınıza uyum sağlamak için bunu bir fırsat olarak kullanın. Bu özellikle, iş açısından kritik veya hassas bilgileri tutan ya da belirli durumlarda yapılan standartlar ve yönetmelikler en fazla değişebilir ve bu durumda, daha fazla değişiklik yapılmasını zorlaştırıyor.  
 
 ## <a name="finalize-the-migration-planandprepare-formigration"></a>Geçiş planını sonlandırma ve geçiş için hazırlanma
 

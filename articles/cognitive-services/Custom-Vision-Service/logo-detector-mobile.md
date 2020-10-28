@@ -10,13 +10,13 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b56824e386709bd330339f1f6acfd2812e040de
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: d7d66e247c6a6240bd6fde08612b8eb770bd3b92
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150930"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737544"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Öğretici: kamera resimlerde Azure hizmet logolarını tanıma
 
@@ -31,7 +31,7 @@ Bu öğreticide şunları nasıl yapacağınızı gösterilecek:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)
 - Visual Studio için Xamarin iş yükü (bkz. [Xamarin 'ı yükleme](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
@@ -154,7 +154,7 @@ Uygulamayı çalıştırmak için aşağıdaki adımları izleyin:
 1. İlk ekranda, hizmet sorumlusu istemci KIMLIĞI, kiracı KIMLIĞI ve parolanızı girin. **Oturum aç** düğmesini seçin.
 
     > [!NOTE]
-    > Bazı Öykünücülerde, **oturum açma** düğmesi bu adımda etkinleştirilmemiş olabilir. Bu durumda, uygulamayı durdurun, *kaynak/VisualProvision/Pages/LoginPage. xaml* dosyasını açın, `Button` **oturum açma düğmesi**etiketli öğeyi bulun, aşağıdaki satırı kaldırın ve uygulamayı yeniden çalıştırın.
+    > Bazı Öykünücülerde, **oturum açma** düğmesi bu adımda etkinleştirilmemiş olabilir. Bu durumda, uygulamayı durdurun, *kaynak/VisualProvision/Pages/LoginPage. xaml* dosyasını açın, `Button` **oturum açma düğmesi** etiketli öğeyi bulun, aşağıdaki satırı kaldırın ve uygulamayı yeniden çalıştırın.
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```
@@ -176,7 +176,7 @@ Uygulamayı çalıştırmak için aşağıdaki adımları izleyin:
 
 Bu senaryonun tüm adımlarını izlediyseniz ve Azure hizmetlerini hesabınıza dağıtmak için uygulamayı kullandıysanız, [Azure Portal](https://ms.portal.azure.com/)gidin. Burada, kullanmak istemediğiniz Hizmetleri iptal edin.
 
-Özel Görüntü İşleme ile kendi nesne algılama projenizi oluşturmayı planlıyorsanız, bu öğreticide oluşturduğunuz logo algılama projesini silmek isteyebilirsiniz. Özel Görüntü İşleme ücretsiz bir abonelik yalnızca iki proje için izin verir. Logo algılama projesini silmek için, [özel görüntü işleme web sitesinde](https://customvision.ai) **Projeler** ' i açın ve **yeni projem**altında çöp kutusu simgesini seçin.
+Özel Görüntü İşleme ile kendi nesne algılama projenizi oluşturmayı planlıyorsanız, bu öğreticide oluşturduğunuz logo algılama projesini silmek isteyebilirsiniz. Özel Görüntü İşleme ücretsiz bir abonelik yalnızca iki proje için izin verir. Logo algılama projesini silmek için, [özel görüntü işleme web sitesinde](https://customvision.ai) **Projeler** ' i açın ve **yeni projem** altında çöp kutusu simgesini seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

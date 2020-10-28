@@ -6,16 +6,16 @@ ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
 ms.topic: how-to
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
-ms.openlocfilehash: 4bf3ee75c9445856fb8a2ce789a3f2f345e720fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d3989b3c477a35d602f1ccf3e45d6f597f5d78d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84701673"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737395"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Azure CLı kullanarak Azure DNS 'de DNS kayıtlarını ve kayıt kümelerini yönetme
 
@@ -60,7 +60,7 @@ az network dns record-set a add-record --resource-group myresourcegroup --zone-n
 
 ## <a name="create-a-dns-record-set"></a>DNS kayıt kümesi oluşturma
 
-Yukarıdaki örneklerde, DNS kaydı var olan bir kayıt kümesine eklenmiştir ya da kayıt kümesi *örtük olarak*oluşturulmuştur. Kayıt kümesini kayıt eklemeden önce *açıkça* de oluşturabilirsiniz. Azure DNS, DNS kayıtları oluşturmadan önce DNS adını ayırmak için bir yer tutucu görevi gören ' Empty ' kayıt kümelerini destekler. Boş kayıt kümeleri Azure DNS Denetim düzlemine görünür, ancak Azure DNS ad sunucularında görünmez.
+Yukarıdaki örneklerde, DNS kaydı var olan bir kayıt kümesine eklenmiştir ya da kayıt kümesi *örtük olarak* oluşturulmuştur. Kayıt kümesini kayıt eklemeden önce *açıkça* de oluşturabilirsiniz. Azure DNS, DNS kayıtları oluşturmadan önce DNS adını ayırmak için bir yer tutucu görevi gören ' Empty ' kayıt kümelerini destekler. Boş kayıt kümeleri Azure DNS Denetim düzlemine görünür, ancak Azure DNS ad sunucularında görünmez.
 
 Kayıt kümeleri, komutu kullanılarak oluşturulur `az network dns record-set <record-type> create` . Yardım için bkz. `az network dns record-set <record-type> create --help`.
 
@@ -137,7 +137,7 @@ az network dns record-set ptr add-record --resource-group myresourcegroup --zone
 
 ### <a name="create-an-srv-record"></a>Bir SRV kaydı oluşturma
 
-Bir [SRV kayıt kümesi](dns-zones-records.md#srv-records)oluştururken, kayıt kümesi adında * \_ hizmeti* ve * \_ Protokolü* belirtin. \@Tepesinde bölgesinde BIR SRV kayıt kümesi oluşturulurken kayıt kümesi adına "" eklemeniz gerekmez.
+Bir [SRV kayıt kümesi](dns-zones-records.md#srv-records)oluştururken, kayıt kümesi adında *\_ hizmeti* ve *\_ Protokolü* belirtin. \@Tepesinde bölgesinde BIR SRV kayıt kümesi oluşturulurken kayıt kümesi adına "" eklemeniz gerekmez.
 
 ```azurecli
 az network dns record-set srv add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
@@ -157,7 +157,7 @@ Varolan bir kayıt kümesini almak için kullanın `az network dns record-set <r
 
 Kayıt veya kayıt kümesi oluştururken, verilen kayıt kümesi adı *göreli* bir ad olmalıdır, yani bölge adını hariç tutmalıdır. Kayıt türünü, kayıt kümesini içeren bölgeyi ve bölgeyi içeren kaynak grubunu da belirtmeniz gerekir.
 
-Aşağıdaki örnek, *Myresourcegroup*kaynak grubundaki bölge *contoso.com* From A türündeki *www* kaydını alır:
+Aşağıdaki örnek, *Myresourcegroup* kaynak grubundaki bölge *contoso.com* From A türündeki *www* kaydını alır:
 
 ```azurecli
 az network dns record-set a show --resource-group myresourcegroup --zone-name contoso.com --name www
@@ -167,7 +167,7 @@ az network dns record-set a show --resource-group myresourcegroup --zone-name co
 
 Komutunu kullanarak, bir DNS bölgesindeki tüm kayıtları listeleyebilirsiniz `az network dns record-set list` . Yardım için bkz. `az network dns record-set list --help`.
 
-Bu örnek, ad veya kayıt türünden bağımsız olarak *Myresourcegroup*kaynak grubundaki *contoso.com*bölgesindeki tüm kayıt kümelerini döndürür:
+Bu örnek, ad veya kayıt türünden bağımsız olarak *Myresourcegroup* kaynak grubundaki *contoso.com* bölgesindeki tüm kayıt kümelerini döndürür:
 
 ```azurecli
 az network dns record-set list --resource-group myresourcegroup --zone-name contoso.com
@@ -193,7 +193,7 @@ Bu komut bir kayıt kümesinden bir DNS kaydını siler. Bir kayıt kümesindeki
 
 Öğesini kullanarak bir kayıt oluştururken aynı parametreleri kullanarak, silinecek kaydı ve silinecek bölgeyi belirtmeniz gerekir `az network dns record-set <record-type> add-record` . Bu parametreler, [DNS kaydı oluşturma](#create-a-dns-record) ve yukarıdaki [diğer türlerin kayıtlarını oluşturma](#create-records-of-other-types) konularında açıklanmaktadır.
 
-Aşağıdaki örnek, *Myresourcegroup*kaynak grubundaki *contoso.com*bölgesinde *www* adlı kayıt kümesinden ' 1.2.3.4 ' değerine sahip bir kaydı siler.
+Aşağıdaki örnek, *Myresourcegroup* kaynak grubundaki *contoso.com* bölgesinde *www* adlı kayıt kümesinden ' 1.2.3.4 ' değerine sahip bir kaydı siler.
 
 ```azurecli
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "www" --ipv4-address 1.2.3.4
@@ -222,7 +222,7 @@ Diğer birçok kayıt türünün aksine, CNAME kayıt kümesi yalnızca tek bir 
 
 Bunun yerine, CNAME kaydını değiştirmek için kullanın `az network dns record-set cname set-record` . Yardım için bkz. `az network dns record-set cname set-record --help`
 
-Örnek, *Myresourcegroup*kaynak grubundaki *contoso.com* *bölgesinde bulunan CNAME kayıt kümesini,* varolan değeri yerine ' www.fabrikam.net ' öğesine işaret etmek üzere değiştirir:
+Örnek, *Myresourcegroup* kaynak grubundaki *contoso.com* *bölgesinde bulunan CNAME kayıt kümesini,* varolan değeri yerine ' www.fabrikam.net ' öğesine işaret etmek üzere değiştirir:
 
 ```azurecli
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.fabrikam.net
@@ -234,7 +234,7 @@ Diğer birçok kayıt türünün aksine, CNAME kayıt kümesi yalnızca tek bir 
 
 Bunun yerine, SOA kaydını değiştirmek için kullanın `az network dns record-set soa update` . Yardım için bkz. `az network dns record-set soa update --help`.
 
-Aşağıdaki örnekte, *Myresourcegroup*kaynak grubundaki *contoso.com* bölgesi için SOA kaydının ' email ' özelliğinin nasıl ayarlanacağı gösterilmektedir:
+Aşağıdaki örnekte, *Myresourcegroup* kaynak grubundaki *contoso.com* bölgesi için SOA kaydının ' email ' özelliğinin nasıl ayarlanacağı gösterilmektedir:
 
 ```azurecli
 az network dns record-set soa update --resource-group myresourcegroup --zone-name contoso.com --email admin.contoso.com
@@ -281,7 +281,7 @@ Kayıt kümeleri, komutu kullanılarak silinebilir `az network dns record-set <r
 > [!NOTE]
 > Tepesinde () bölgesinde SOA ve NS kayıt kümelerini silemezsiniz `--name "@"` .  Bunlar, bölge oluşturulduğunda otomatik olarak oluşturulur ve bölge silindiğinde otomatik olarak silinir.
 
-Aşağıdaki örnek, *Myresourcegroup*kaynak grubundaki *contoso.com* alan içindeki *www* adlı kayıt kümesini siler:
+Aşağıdaki örnek, *Myresourcegroup* kaynak grubundaki *contoso.com* alan içindeki *www* adlı kayıt kümesini siler:
 
 ```azurecli
 az network dns record-set a delete --resource-group myresourcegroup --zone-name contoso.com --name www

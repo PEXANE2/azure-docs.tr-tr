@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3c2b2ce5bd9af60d6d1fd4ac066681ee8473521
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4100640fd619d9d971ac1c7083eedef8e2125fc3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249459"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738269"
 ---
 # <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure SYNAPSE çalışma alanı yönetilen kimliği (Önizleme)
 
@@ -32,7 +32,7 @@ Azure kaynakları için Yönetilen kimlikler, daha önce Yönetilen Hizmet Kimli
 >[!NOTE]
 >Bu çalışma alanı yönetilen kimliği, bu belgenin geri kalanı aracılığıyla yönetilen kimlik olarak anılacaktır.
 
-Azure SYNAPSE, işlem hatlarını düzenlemek için yönetilen kimliği kullanır. Yönetilen kimlik yaşam döngüsü doğrudan Azure SYNAPSE çalışma alanına bağlıdır. Azure SYNAPSE çalışma alanını silerseniz yönetilen kimlik de temizlenir.
+Azure SYNAPSE, işlem hatlarını bütünleştirmek için yönetilen kimliği kullanır. Yönetilen kimlik yaşam döngüsü doğrudan Azure SYNAPSE çalışma alanına bağlıdır. Azure SYNAPSE çalışma alanını silerseniz yönetilen kimlik de temizlenir.
 
 Çalışma alanı yönetilen kimliği, işlem hatlarında işlemler gerçekleştirmek için izinlere ihtiyaç duyuyor. İzinleri verirken yönetilen kimliği bulmak için nesne KIMLIĞINI veya Azure SYNAPSE çalışma alanı adınızı kullanabilirsiniz.
 
@@ -48,11 +48,11 @@ Yönetilen kimlik bilgilerini Azure SYNAPSE Studio 'dan yönetilen kimlik doğru
 
 ![Bağlı hizmet oluşturma 1](./media/synapse-workspace-managed-identity/workspace-managed-identity-2.png)
 
-**Yeni bağlı hizmet** penceresinde *Azure Data Lake Storage 2.* yazın. Aşağıdaki listeden **Azure Data Lake Storage 2.** kaynak türünü seçin ve **devam**' ı seçin.
+**Yeni bağlı hizmet** penceresinde *Azure Data Lake Storage 2.* yazın. Aşağıdaki listeden **Azure Data Lake Storage 2.** kaynak türünü seçin ve **devam** ' ı seçin.
 
 ![Bağlı hizmet oluşturma 2](./media/synapse-workspace-managed-identity/workspace-managed-identity-3.png)
 
-Sonraki pencerede, **kimlik doğrulama yöntemi**Için **yönetilen kimlik** ' i seçin. Yönetilen kimliğin **adını** ve **nesne kimliğini**görürsünüz.
+Sonraki pencerede, **kimlik doğrulama yöntemi** Için **yönetilen kimlik** ' i seçin. Yönetilen kimliğin **adını** ve **nesne kimliğini** görürsünüz.
 
 ![Bağlı hizmet oluşturma 3](./media/synapse-workspace-managed-identity/workspace-managed-identity-4.png)
 

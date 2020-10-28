@@ -1,23 +1,23 @@
 ---
 title: Temsil edilen kaynakları ölçeklendirmeye göre izleme
 description: Azure Izleyici günlüklerini, yönettiğiniz müşteri kiracılarında ölçeklenebilir bir şekilde nasıl verimli bir şekilde kullanacağınızı öğrenin.
-ms.date: 08/12/2020
+ms.date: 10/26/2020
 ms.topic: how-to
-ms.openlocfilehash: fdd0147737da47613d6b7ef1bf6005e4c03de0dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e5c98b3b62a8fbc953a29cf51ac527e5de21110
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163297"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735839"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Temsil edilen kaynakları ölçeklendirmeye göre izleme
 
 Hizmet sağlayıcı olarak, [Azure açık Thouse](../overview.md)için birden fazla müşteri kiracısından eklendi olabilirsiniz. Azure Mathouse, hizmet sağlayıcılarının aynı anda birkaç kiracıda bir ölçekte işlem gerçekleştirmesine olanak sağlayarak yönetim görevlerini daha verimli hale getirir.
 
-Bu konu başlığı altında, [Azure Izleyici günlüklerinin](../../azure-monitor/platform/data-platform-logs.md) yönettiğiniz müşteri kiracılarında ölçeklenebilir bir şekilde nasıl kullanılacağı gösterilmektedir.
+Bu konu başlığı altında, [Azure Izleyici günlüklerinin](../../azure-monitor/platform/data-platform-logs.md) yönettiğiniz müşteri kiracılarında ölçeklenebilir bir şekilde nasıl kullanılacağı gösterilmektedir. Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, bu kılavuz [birden çok kiracıyı yönetmek Için Azure açık Thouse kullanan kuruluşlar](../concepts/enterprise.md)için de geçerlidir.
 
-> [!TIP]
-> Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, bu kılavuz [birden çok kiracıyı yönetmek Için Azure açık Thouse kullanan kuruluşlar](../concepts/enterprise.md)için de geçerlidir.
+> [!NOTE]
+> Yönetim kiracılarınızdaki kullanıcılara, temsilcili müşteri aboneliklerinizde [Log Analytics çalışma alanlarını yönetmek için gerekli rollerin](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) verildiğinden emin olun.
 
 ## <a name="create-log-analytics-workspaces"></a>Log Analytics çalışma alanları oluşturma
 
@@ -26,6 +26,9 @@ Veri toplamak için Log Analytics çalışma alanları oluşturmanız gerekir. B
 Bu çalışma alanlarını doğrudan müşteri kiracılarında oluşturmanız önerilir. Bu şekilde, verileri kendi içine aktarılması yerine kiracılarında kalır. Bu Ayrıca, Log Analytics tarafından desteklenen herhangi bir kaynak ve hizmetin merkezi olarak izlenmesini sağlar ve bu sayede izlediğiniz veri türlerine daha fazla esneklik sunar.
 
 [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)kullanarak veya [Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md)kullanarak [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)kullanarak Log Analytics çalışma alanı oluşturabilirsiniz.
+
+> [!IMPORTANT]
+> Tüm çalışma alanları müşteri kiracısında oluşturulsa da Microsoft. Insights kaynak sağlayıcısı 'nın, yönetim kiracısındaki bir abonelikte kayıtlı olması gerekir.
 
 ## <a name="deploy-policies-that-log-data"></a>Verileri günlüğe kaydetme ilkeleri dağıtma
 

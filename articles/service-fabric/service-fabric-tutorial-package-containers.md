@@ -3,13 +3,13 @@ title: Kapsayıcıları paketleme ve dağıtma
 description: Bu öğreticide, Yeoman kullanarak Azure Service Fabric uygulaması tanımı oluşturmayı ve uygulamayı paketlemeyi öğrenirsiniz.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 5840539b6c51a0070a98f03dbda3c596fd5c2516
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 995291a783d14a6d2db8ed8319c720f55c009d91
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539886"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738848"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Öğretici: Yeoman'ı kullanarak kapsayıcıları Service Fabric uygulaması olarak paketleme ve dağıtma
 
@@ -23,7 +23,7 @@ Bu öğretici, bir dizinin ikinci bölümüdür. Bu öğreticide, bir şablon ol
 > * Uygulamayı dağıtma ve çalıştırma
 > * Uygulamayı temizleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu öğretici serisinin [1. Bölümünde](service-fabric-tutorial-create-container-images.md) oluşturulup Azure Container Registry’ye gönderilen kapsayıcı görüntüleri kullanılır.
 * Linux geliştirme ortamı [ayarlanmıştır](service-fabric-tutorial-create-container-images.md).
@@ -99,7 +99,7 @@ Kullanılan hizmeti eklemeye yönelik girişlerin tümü aşağıda gösterilmek
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-Bu öğreticinin geri kalanında **TestContainer** dizininde çalışacağız. Örneğin, *./TestContainer/TestContainer*. Bu dizinde aşağıdakiler bulunmalıdır.
+Bu öğreticinin geri kalanında **TestContainer** dizininde çalışacağız. Örneğin, *./TestContainer/TestContainer* . Bu dizinde aşağıdakiler bulunmalıdır.
 
 ```bash
 $ ls

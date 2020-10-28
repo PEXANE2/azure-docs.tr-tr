@@ -8,27 +8,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/17/2020
+ms.date: 10/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 53d41b5024b29a8c6c394d65a3ce36f8bb878fc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b82edf39185067e4c761c7598b159a655dfc370c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90524989"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735404"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeniden yönlendirme URL 'Lerini b2clogin.com olarak ayarlayın
 
-Azure Active Directory B2C (Azure AD B2C) uygulamanızda kaydolma ve oturum açma için bir kimlik sağlayıcısı ayarladığınızda, bir yeniden yönlendirme URL 'SI belirtmeniz gerekir. Artık Azure AD B2C, uygulamalarınızda ve API 'Lerinde Kullanıcı kimliğini doğrulamaya yönelik *login.microsoftonline.com* başvurmamalıdır. Bunun yerine, tüm yeni uygulamalar için *b2clogin.com* kullanın ve mevcut uygulamaları *login.microsoftonline.com* ' den *b2clogin.com*' ye geçirin.
+Azure Active Directory B2C (Azure AD B2C) uygulamanızda kaydolma ve oturum açma için bir kimlik sağlayıcısı ayarladığınızda, bir yeniden yönlendirme URL 'SI belirtmeniz gerekir. Artık Azure AD B2C, uygulamalarınızda ve API 'Lerinde Kullanıcı kimliğini doğrulamaya yönelik *login.microsoftonline.com* başvurmamalıdır. Bunun yerine, tüm yeni uygulamalar için *b2clogin.com* kullanın ve mevcut uygulamaları *login.microsoftonline.com* ' den *b2clogin.com* ' ye geçirin.
 
 ## <a name="deprecation-of-loginmicrosoftonlinecom"></a>Login.microsoftonline.com kullanımdan kaldırma
 
-04 Aralık 2019 ' de, login.microsoftonline.com desteğinin zamanlanan emekliliğinizi Azure AD B2C **04 aralık 2020**tarihinde duyurduk:
+**Ekim 2020 güncelleştirmesi:** İlk olarak bildirilen ve 04 Aralık 2020 tarihini karşılayamayacak kiracılar için bir yetkisiz kullanım süresi uzatıyoruz. Login.microsoftonline.com 'ın kullanımdan kaldırılması artık **14 ocak 2021** ' den önce gerçekleşmeyecektir.
 
-[Azure Active Directory B2C kullanımdan kalklogin.microsoftonline.com](https://azure.microsoft.com/updates/b2c-deprecate-msol/)
-
-Login.microsoftonline.com 'ın kullanımdan kaldırılması, 04 Aralık 2020 ' deki tüm Azure AD B2C kiracılar için geçerli olur ve bu da b2clogin.com 'e geçiş için bir (1) yıl. 04 Aralık 2019 ' den sonra oluşturulan yeni kiracılar, login.microsoftonline.com 'dan gelen istekleri kabul etmez. Tüm işlevler, b2clogin.com uç noktasında aynı kalır.
+**Arka plan** : 04 Aralık 2019 ' de, başlangıçta Login.microsoftonline.com desteğinin zamanlanan kullanımdan kaldırılmasıyla Azure AD B2C 04 Aralık 2020 tarihinde [duyurduk](https://azure.microsoft.com/updates/b2c-deprecate-msol/) . Bu, var olan kiracılar için bir (1) yıl b2clogin.com 'e geçiş için verilmiştir. 04 Aralık 2019 ' den sonra oluşturulan yeni kiracılar, login.microsoftonline.com 'dan gelen istekleri kabul etmez. Tüm işlevler, b2clogin.com uç noktasında aynı kalır.
 
 Login.microsoftonline.com 'nin kullanımdan kaldırılması Azure Active Directory kiracıları etkilemez. Bu değişiklikten yalnızca Azure Active Directory B2C kiracılar etkilenir.
 
@@ -47,7 +45,7 @@ Alternatif olarak, `<policy-name>` bir sorgu parametresi olarak geçirilebilir:
 > [!IMPORTANT]
 > ' İlke ' parametresini kullanan uç noktaların yanı sıra [kimlik sağlayıcısı yeniden yönlendirme URL 'leri](#change-identity-provider-redirect-urls)de güncelleştirilmeleri gerekir.
 
-Bazı Azure AD B2C müşteriler, Azure AD kurumsal kiracılarının OAuth 2,0 istemci kimlik bilgileri verme akışı gibi paylaşılan yeteneklerini kullanır. Bu özelliklere, *bir ilke parametresi Içermeyen*Azure AD 'nin Login.microsoftonline.com uç noktaları kullanılarak erişilir. __Bu uç noktalar etkilenmez__.
+Bazı Azure AD B2C müşteriler, Azure AD kurumsal kiracılarının OAuth 2,0 istemci kimlik bilgileri verme akışı gibi paylaşılan yeteneklerini kullanır. Bu özelliklere, *bir ilke parametresi Içermeyen* Azure AD 'nin Login.microsoftonline.com uç noktaları kullanılarak erişilir. __Bu uç noktalar etkilenmez__ .
 
 ## <a name="benefits-of-b2clogincom"></a>B2clogin.com avantajları
 
@@ -55,13 +53,13 @@ Yeniden yönlendirme URL 'SI olarak *b2clogin.com* kullandığınızda:
 
 * Microsoft Hizmetleri tarafından kullanılan tanımlama bilgisi üstbilgisinde tüketilen alan azalır.
 * Yeniden yönlendirme URL 'Lerinin artık Microsoft 'a bir başvuru eklemesi gerekmez.
-* JavaScript istemci tarafı kodu özelleştirilmiş sayfalarda desteklenir (Şu anda [önizlemede](user-flow-javascript-overview.md)). Güvenlik kısıtlamaları nedeniyle, *login.microsoftonline.com*kullanıyorsanız, JavaScript kodu ve HTML form öğeleri özel sayfalardan kaldırılır.
+* JavaScript istemci tarafı kodu özelleştirilmiş sayfalarda desteklenir (Şu anda [önizlemede](user-flow-javascript-overview.md)). Güvenlik kısıtlamaları nedeniyle, *login.microsoftonline.com* kullanıyorsanız, JavaScript kodu ve HTML form öğeleri özel sayfalardan kaldırılır.
 
 ## <a name="overview-of-required-changes"></a>Gerekli değişikliklere genel bakış
 
-Uygulamalarınızı *b2clogin.com*'e geçirmek için yapmanız gerekebilecek birkaç değişiklik vardır:
+Uygulamalarınızı *b2clogin.com* 'e geçirmek için yapmanız gerekebilecek birkaç değişiklik vardır:
 
-* Kimlik sağlayıcınızın uygulamalarındaki yeniden yönlendirme URL 'sini *b2clogin.com*başvurusuna değiştirin.
+* Kimlik sağlayıcınızın uygulamalarındaki yeniden yönlendirme URL 'sini *b2clogin.com* başvurusuna değiştirin.
 * Azure AD B2C uygulamalarınızı, Kullanıcı akışında ve belirteç uç noktası başvurularında *b2clogin.com* kullanacak şekilde güncelleştirin. Bu, Microsoft kimlik doğrulama kitaplığı (MSAL) gibi bir kimlik doğrulama kitaplığı kullanlarınızın güncelleştirilmesini içerebilir.
 * [Kullanıcı arabirimi özelleştirmesi](custom-policy-ui-customization.md)için CORS ayarlarında tanımladığınız tüm **izin verilen kaynakları** güncelleştirin.
 
@@ -115,7 +113,7 @@ Azure AD B2C tarafından korunan Azure API Management API ['leri geçirmek için
 
 ### <a name="msalnet-validateauthority-property"></a>MSAL.NET ValidateAuthority özelliği
 
-[Msal.net][msal-dotnet] v2 veya daha önceki bir sürümünü kullanıyorsanız, b2clogin.com 'e yeniden yönlendirmeye izin vermek Için **validateauthority** özelliğini `false` istemci örneği oluşturma *b2clogin.com*' ya ayarlayın. Bu değerin olarak ayarlanması `false` msal.net v3 ve üzeri için gerekli değildir.
+[Msal.net][msal-dotnet] v2 veya daha önceki bir sürümünü kullanıyorsanız, b2clogin.com 'e yeniden yönlendirmeye izin vermek Için **validateauthority** özelliğini `false` istemci örneği oluşturma *b2clogin.com* ' ya ayarlayın. Bu değerin olarak ayarlanması `false` msal.net v3 ve üzeri için gerekli değildir.
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication

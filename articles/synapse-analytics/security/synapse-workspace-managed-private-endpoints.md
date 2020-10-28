@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: e592159777f3b533bc447bb109e9b1308af7ecff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 091f73aa2383094973db35efb05c5f93034efa39
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249511"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738102"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>SYNAPSE yönetilen özel uç noktaları (Önizleme)
 
@@ -51,7 +51,8 @@ Bir çalışma alanı oluşturulduğunda Azure SYNAPSE, SQL havuzunda ve bu çal
 
 Bu iki yönetilen özel uç nokta Azure SYNAPSE Studio 'da listelenmiştir. Sol gezinti bölmesinde **Yönet** ' i seçin ve ardından Studio 'da görmek Için **yönetilen sanal ağlar** ' ı seçin.
 
-SQL havuzunu hedefleyen yönetilen özel uç nokta *SYNAPSE-WS-SQL-- \<workspacename\> * olarak adlandırılır ve isteğe bağlı SQL 'i hedefleyen bir tane *SYNAPSE-WS-sqlondemand-- \<workspacename\> *olarak adlandırılır.
+SQL havuzunu hedefleyen yönetilen özel uç nokta *SYNAPSE-WS-SQL-- \<workspacename\>* olarak adlandırılır ve isteğe bağlı SQL 'i hedefleyen bir tane *SYNAPSE-WS-sqlondemand-- \<workspacename\>* olarak adlandırılır.
+
 ![SQL havuzu ve isteğe bağlı SQL için yönetilen özel uç noktalar](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
 
 Bu iki yönetilen özel uç nokta, Azure SYNAPSE çalışma alanınızı oluştururken sizin için otomatik olarak oluşturulur. Bu iki yönetilen özel uç nokta için ücret ödemeniz gerekmez.

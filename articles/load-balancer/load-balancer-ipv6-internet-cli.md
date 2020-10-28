@@ -9,17 +9,17 @@ keywords: IPv6, Azure yük dengeleyici, çift yığın, genel IP, yerel IPv6, mo
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97fdf55032e92585d723b54e21079098cdc19636
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87001583"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735912"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLı kullanarak IPv6 ile genel yük dengeleyici oluşturma
 
@@ -48,11 +48,11 @@ Aşağıdaki adımlarda, Azure CLı kullanarak nasıl ortak yük dengeleyici olu
 
 Yük dengeleyici dağıtmak için aşağıdaki nesneleri oluşturun ve yapılandırın:
 
-* **Ön uç IP yapılandırması**: gelen ağ trafiği IÇIN genel IP adreslerini içerir.
-* **Arka uç adres havuzu**: sanal makinelerin yük dengeleyiciden ağ trafiği alması için ağ arabirimlerini (NIC 'ler) içerir.
-* **Yük Dengeleme kuralları**: yük dengeleyicideki genel bağlantı noktasını arka uç adres havuzundaki bir bağlantı noktasına eşleyen kuralları içerir.
-* **Gelen NAT kuralları**: yük dengeleyicideki genel bağlantı noktasını arka uç adres havuzundaki belirli bir sanal makineye yönelik bir bağlantı noktasına eşleyen ağ adresi ÇEVIRISI (NAT) kurallarını içerir.
-* **Yoklamalar**: arka uç adres havuzundaki sanal makine örneklerinin kullanılabilirliğini kontrol etmek için kullanılan durum araştırmalarını içerir.
+* **Ön uç IP yapılandırması** : gelen ağ trafiği IÇIN genel IP adreslerini içerir.
+* **Arka uç adres havuzu** : sanal makinelerin yük dengeleyiciden ağ trafiği alması için ağ arabirimlerini (NIC 'ler) içerir.
+* **Yük Dengeleme kuralları** : yük dengeleyicideki genel bağlantı noktasını arka uç adres havuzundaki bir bağlantı noktasına eşleyen kuralları içerir.
+* **Gelen NAT kuralları** : yük dengeleyicideki genel bağlantı noktasını arka uç adres havuzundaki belirli bir sanal makineye yönelik bir bağlantı noktasına eşleyen ağ adresi ÇEVIRISI (NAT) kurallarını içerir.
+* **Yoklamalar** : arka uç adres havuzundaki sanal makine örneklerinin kullanılabilirliğini kontrol etmek için kullanılan durum araştırmalarını içerir.
 
 ## <a name="set-up-azure-cli"></a>Azure CLI’yı ayarlama
 
@@ -122,7 +122,7 @@ Bu örnekte, Azure CLı araçlarını bir PowerShell komut penceresinde çalış
     > [!IMPORTANT]
     > Yük dengeleyici, tam etki alanı adı (FQDN) olarak genel IP 'nin etki alanı etiketini kullanır. Bu, bulut hizmeti adını yük dengeleyici FQDN olarak kullanan klasik dağıtımdan bir değişiklik.
     >
-    > Bu örnekte, FQDN *contoso09152016.southcentralus.cloudapp.Azure.com*' dir.
+    > Bu örnekte, FQDN *contoso09152016.southcentralus.cloudapp.Azure.com* ' dir.
 
 ## <a name="create-front-end-and-back-end-pools"></a>Ön uç ve arka uç havuzları oluşturma
 

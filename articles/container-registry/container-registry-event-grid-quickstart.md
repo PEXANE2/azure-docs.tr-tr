@@ -3,13 +3,13 @@ title: Hızlı başlangıç-olayları Event Grid gönder
 description: Bu hızlı başlangıçta, kapsayıcı kayıt defteriniz için Event Grid olaylarını etkinleştirir, ardından kapsayıcı görüntüsü gönderme ve olay silme olaylarını örnek bir uygulamaya gönderirsiniz.
 ms.topic: article
 ms.date: 08/23/2018
-ms.custom: seodec18
-ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 3e9e9a7d6016f53225c1b2f31fb8eef91e202c7a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78403231"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736847"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Hızlı başlangıç: özel kapsayıcı kayıt defterinden olayları Event Grid gönder
 
@@ -206,7 +206,7 @@ Tebrikler! `ImagePushed`Ve `ImageDeleted` olaylarını görürseniz, kayıt deft
 
 Bu hızlı başlangıçta oluşturduğunuz kaynaklarla işiniz bittiğinde, bunları aşağıdaki Azure CLı komutuyla silebilirsiniz. Bir kaynak grubunu sildiğinizde, içerdiği tüm kaynaklar kalıcı olarak silinir.
 
-**Uyarı**: Bu işlem geri alınamaz. Komutu çalıştırmadan önce gruptaki herhangi bir kaynağa artık ihtiyacınız olmadığından emin olun.
+**Uyarı** : Bu işlem geri alınamaz. Komutu çalıştırmadan önce gruptaki herhangi bir kaynağa artık ihtiyacınız olmadığından emin olun.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME

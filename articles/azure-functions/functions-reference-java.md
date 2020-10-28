@@ -3,13 +3,13 @@ title: Azure Işlevleri için Java geliştirici başvurusu
 description: Java ile işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.custom: devx-track-java
-ms.openlocfilehash: 2dfd00484e84f4b2c31e52392df43bb07a800f73
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: fcacfd96ece68424c876b0349ceb49d3eaabb598
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519631"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736694"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Işlevleri Java geliştirici kılavuzu
 
@@ -45,7 +45,7 @@ Yukarıdaki makale bağlantılarında, tercih ettiğiniz IDE 'yi kullanarak ilk 
 
 ### <a name="project-scaffolding"></a>Proje yapı Iskelesi
 
-Terminalden komut satırı geliştirmeyi tercih ediyorsanız, Java tabanlı işlev projelerini dolandırmanın en kolay yolu, arşiv `Apache Maven` türleri kullanmaktır. Azure Işlevleri için Java Maven arşiv ETYPE şu _GroupID_altında yayımlanır:_ArtifactId_: [com. Microsoft. Azure: Azure-Functions-arşiv ETYPE](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
+Terminalden komut satırı geliştirmeyi tercih ediyorsanız, Java tabanlı işlev projelerini dolandırmanın en kolay yolu, arşiv `Apache Maven` türleri kullanmaktır. Azure Işlevleri için Java Maven arşiv ETYPE şu _GroupID_ altında yayımlanır: _ArtifactId_ : [com. Microsoft. Azure: Azure-Functions-arşiv ETYPE](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
 Aşağıdaki komut, bu arşiv ETYPE kullanarak yeni bir Java işlev projesi oluşturur:
 
@@ -202,7 +202,7 @@ Adlı bir uygulama ayarında ek bağımsız değişkenler sağlayabilirsiniz `JA
 > [!IMPORTANT]  
 > Tüketim planında, özelleştirmenin çalışması için değeri 0 olan WEBSITE_USE_PLACEHOLDER ayarını da eklemeniz gerekir. Bu ayar, Java işlevleri için soğuk başlangıç sürelerini artırır.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 [Azure Portal](https://portal.azure.com), ayarı eklemek Için [uygulama ayarları sekmesini](functions-how-to-use-azure-function-app-settings.md#settings) kullanın `JAVA_OPTS` .
 

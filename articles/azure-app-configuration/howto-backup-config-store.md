@@ -6,16 +6,16 @@ author: avanigupta
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.custom: devx-track-dotnet
+ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b48adfdfda4b3e120b2246e67a70000d25c25f3a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074864"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737081"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Uygulama yapılandırma depolarını otomatik olarak yedekleme
 
@@ -37,7 +37,7 @@ Uygulama yapılandırma depolarını yedeklemenin arkasındaki mosyon, uygulaman
 
 Bu öğreticide, bölgede `centralus` ve bölgedeki tüm diğer kaynaklarda ikincil bir depo oluşturacaksınız `westus` .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/). 
 - Azure geliştirme iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs) .
@@ -62,7 +62,7 @@ az group create --name $resourceGroupName --location westus
 ## <a name="create-app-configuration-stores"></a>Uygulama yapılandırma depoları oluşturma
 
 Birincil ve ikincil uygulama yapılandırma depolarınızı farklı bölgelerde oluşturun.
- `<primary_appconfig_name>`Ve `<secondary_appconfig_name>` yapılandırma depolarınız için benzersiz adlarla değiştirin. Her mağaza adı bir DNS adı olarak kullanıldığı için benzersiz olmalıdır.
+`<primary_appconfig_name>`Ve `<secondary_appconfig_name>` yapılandırma depolarınız için benzersiz adlarla değiştirin. Her mağaza adı bir DNS adı olarak kullanıldığı için benzersiz olmalıdır.
 
 ```azurecli-interactive
 primaryAppConfigName="<primary_appconfig_name>"
@@ -213,7 +213,7 @@ Her şeyin çalıştığından test etmek için, birincil depodan bir anahtar de
 az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 ```
 
-Olayı tetikledi. Birkaç dakika içinde, Event Grid olay bildirimini kuyruğunuza gönderir. *İşlevinizin bir sonraki zamanlanmış çalıştıktan sonra*, ikincil deponuzdaki yapılandırma ayarlarını görüntüleyerek, birincil depodan güncelleştirilmiş anahtar-değer olup olmadığını görebilirsiniz.
+Olayı tetikledi. Birkaç dakika içinde, Event Grid olay bildirimini kuyruğunuza gönderir. *İşlevinizin bir sonraki zamanlanmış çalıştıktan sonra* , ikincil deponuzdaki yapılandırma ayarlarını görüntüleyerek, birincil depodan güncelleştirilmiş anahtar-değer olup olmadığını görebilirsiniz.
 
 > [!NOTE]
 > Test ve sorun giderme sırasında işlevinizi, zamanlanmış Zamanlayıcı tetikleyicisi için beklemeden [el ile tetikleyebilirsiniz](../azure-functions/functions-manually-run-non-http.md) .

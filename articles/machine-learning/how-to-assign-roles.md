@@ -10,13 +10,13 @@ ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
-ms.custom: how-to, seodec18
-ms.openlocfilehash: e15092ee767e6840f190027b0a35af3ce07e8ba9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: how-to, seodec18, devx-track-azurecli
+ms.openlocfilehash: cba01684457c8b3a7f6c8c51c7d202bf8963658e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425651"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736615"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 
@@ -173,7 +173,7 @@ Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en 
 
 Aşağıda, kendi özel rollerinizi tanımlamak için temel olarak kullanabileceğiniz özel önerilen rol tanımlarına sahip bazı yaygın senaryolar verilmiştir:
 
-* __Veri Bilimconu özel__: bir veri bilimi 'nin bir çalışma alanı içindeki tüm işlemleri gerçekleştirmesine izin verir, **ancak şunları hariç**:
+* __Veri Bilimconu özel__ : bir veri bilimi 'nin bir çalışma alanı içindeki tüm işlemleri gerçekleştirmesine izin verir, **ancak şunları hariç** :
 
     * İşlem oluşturma
     * Bir üretim AKS kümesine model dağıtma
@@ -209,7 +209,7 @@ Aşağıda, kendi özel rollerinizi tanımlamak için temel olarak kullanabilece
     }
     ```
 
-* __Data Bilimcst kısıtlı özel__: izin verilen eylemlerde joker karakter olmadan daha kısıtlı bir rol tanımı. **Aşağıdakiler dışında**, çalışma alanındaki tüm işlemleri gerçekleştirebilir:
+* __Data Bilimcst kısıtlı özel__ : izin verilen eylemlerde joker karakter olmadan daha kısıtlı bir rol tanımı. **Aşağıdakiler dışında** , çalışma alanındaki tüm işlemleri gerçekleştirebilir:
 
     * İşlem oluşturma
     * Bir üretim AKS kümesine model dağıtma
@@ -270,7 +270,7 @@ Aşağıda, kendi özel rollerinizi tanımlamak için temel olarak kullanabilece
     }
     ```
      
-* __Mlflow veri Bilimcst özel__: şu **durumlar dışında**, veri Bilimclarının tüm mlflow AzureML desteklenen işlemlerini gerçekleştirmesine izin verir:
+* __Mlflow veri Bilimcst özel__ : şu **durumlar dışında** , veri Bilimclarının tüm mlflow AzureML desteklenen işlemlerini gerçekleştirmesine izin verir:
 
    * İşlem oluşturma
    * Bir üretim AKS kümesine model dağıtma
@@ -310,7 +310,7 @@ Aşağıda, kendi özel rollerinizi tanımlamak için temel olarak kullanabilece
     }
     ```   
 
-* __Mlops Custom__: bir hizmet sorumlusuna rol atamanıza ve MLOps işlem hatlarınızı otomatikleştirmek için bunu kullanmanıza olanak sağlar. Örneğin, önceden yayımlanmış bir işlem hattına karşı çalıştırmaları göndermek için:
+* __Mlops Custom__ : bir hizmet sorumlusuna rol atamanıza ve MLOps işlem hatlarınızı otomatikleştirmek için bunu kullanmanıza olanak sağlar. Örneğin, önceden yayımlanmış bir işlem hattına karşı çalıştırmaları göndermek için:
 
     `mlops_custom_role.json` :
     ```json
@@ -351,7 +351,7 @@ Aşağıda, kendi özel rollerinizi tanımlamak için temel olarak kullanabilece
     }
     ```
 
-* __Çalışma alanı yöneticisi__: **aşağıdakiler dışında**tüm işlemleri bir çalışma alanının kapsamında gerçekleştirmenize olanak tanır:
+* __Çalışma alanı yöneticisi__ : **aşağıdakiler dışında** tüm işlemleri bir çalışma alanının kapsamında gerçekleştirmenize olanak tanır:
 
     * Yeni bir çalışma alanı oluşturma
     * Abonelik veya çalışma alanı düzeyinde kotalar atama
@@ -381,7 +381,7 @@ Aşağıda, kendi özel rollerinizi tanımlamak için temel olarak kullanabilece
     ```
 
 <a name="labeler"></a>
-* __Labeler Custom__: yalnızca verileri etiketlemeye yönelik bir rol tanımlamanızı sağlar:
+* __Labeler Custom__ : yalnızca verileri etiketlemeye yönelik bir rol tanımlamanızı sağlar:
 
     `labeler_custom_role.json` :
     ```json

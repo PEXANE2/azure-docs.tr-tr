@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
-ms.date: 04/15/2020
-ms.openlocfilehash: 143713649afd7f9e42f517713b6b2365ee1605a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: f942525f1360a134f58f18e0ec76a84b0ceee50b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260283"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738144"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Öğretici: SYNAPSE Studio 'da Apache Spark iş tanımı oluşturma
 
@@ -28,7 +28,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > - Apache Spark iş tanımını toplu iş olarak gönderme
 > - Ardışık düzene Apache Spark iş tanımı ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığından emin olun:
 
@@ -43,11 +43,11 @@ Bu bölümde, PySpark (Python) için Apache Spark iş tanımı oluşturursunuz.
 
 1. [Azure SYNAPSE Studio 'yu](https://web.azuresynapse.net/)açın.
 
-2. **python.zipiçin örnek dosyaları **indirmek üzere [Apache Spark iş tanımları oluşturmak için örnek dosyalara](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) gidebilir, sonra sıkıştırılmış paketi indirebilir ve **WORDCOUNT.py** ve **shakespeare.txt** dosyalarını ayıklayın. 
+2. **python.zipiçin örnek dosyaları** indirmek üzere [Apache Spark iş tanımları oluşturmak için örnek dosyalara](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) gidebilir, sonra sıkıştırılmış paketi indirebilir ve **WORDCOUNT.py** ve **shakespeare.txt** dosyalarını ayıklayın. 
 
      ![örnek dosyalar](./media/apache-spark-job-definitions/sample-files.png)
 
-3. Azure Data Lake Storage 2. **veri**   ->  **bağlantısı**   ->  **Azure Data Lake Storage Gen2**' nı seçin ve **wordcount.py**   ADLS 2. dosya sisteminize WORDCOUNT.py ve **shakespeare.txt** yükleyin. 
+3. Azure Data Lake Storage 2. **veri**  ->  **bağlantısı**  ->  **Azure Data Lake Storage Gen2** ' nı seçin ve ADLS 2. dosya sisteminize **WORDCOUNT.py** ve **shakespeare.txt** yükleyin. 
 
      ![Python dosyasını karşıya yükle](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -85,11 +85,11 @@ Bu bölümde, Apache Spark (Scala) için Apache Spark iş tanımı oluşturursun
 
  1. [Azure SYNAPSE Studio 'yu](https://web.azuresynapse.net/)açın.
 
- 2. **scala.zipiçin örnek dosyaları **indirmek üzere [Apache Spark iş tanımları oluşturmak için örnek dosyalara](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) gidebilir, sonra sıkıştırılmış paketi indirebilir ve **wordcount. jar** ve **shakespeare.txt** dosyalarını ayıklayabilirsiniz. 
+ 2. **scala.zipiçin örnek dosyaları** indirmek üzere [Apache Spark iş tanımları oluşturmak için örnek dosyalara](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) gidebilir, sonra sıkıştırılmış paketi indirebilir ve **wordcount. jar** ve **shakespeare.txt** dosyalarını ayıklayabilirsiniz. 
  
      ![örnek dosyalar Scala](./media/apache-spark-job-definitions/sample-files-scala.png)
 
- 3.  **Veri**   ->  **bağlantılı**   ->  **Azure Data Lake Storage 2.** seçin ve ADLS 2. dosya sisteminize **WORDCOUNT. jar**   ve **shakespeare.txt** yükleyin.
+ 3. **Veri**  ->  **bağlantılı**  ->  **Azure Data Lake Storage 2.** seçin ve ADLS 2. dosya sisteminize **WORDCOUNT. jar** ve **shakespeare.txt** yükleyin.
  
      ![Scala yapısını hazırlama](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
@@ -125,11 +125,11 @@ Bu bölümde, Apache Spark (Scala) için Apache Spark iş tanımı oluşturursun
 Bu bölümde, .NET Spark (C#/F #) için Apache Spark iş tanımı oluşturursunuz.
  1. [Azure SYNAPSE Studio 'yu](https://web.azuresynapse.net/)açın.
 
- 2. **dotnet.zipiçin örnek dosyaları **indirmek üzere [Apache Spark iş tanımları oluşturmak için örnek dosyalara](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) gidebilir, sonra sıkıştırılmış paketi indirebilir ve **wordcount.zip** ve **shakespeare.txt** dosyalarını ayıklayın. 
+ 2. **dotnet.zipiçin örnek dosyaları** indirmek üzere [Apache Spark iş tanımları oluşturmak için örnek dosyalara](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) gidebilir, sonra sıkıştırılmış paketi indirebilir ve **wordcount.zip** ve **shakespeare.txt** dosyalarını ayıklayın. 
 
      ![örnek DotNet](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. Azure Data Lake Storage 2. **veri**   ->  **bağlantısı**   ->  **Azure Data Lake Storage Gen2**' nı seçin ve **wordcount.zip**   ve **shakespeare.txt** ADLS 2. dosya sisteminize yükleyin.
+ 3. Azure Data Lake Storage 2. **veri**  ->  **bağlantısı**  ->  **Azure Data Lake Storage Gen2** ' nı seçin ve **wordcount.zip** ve **shakespeare.txt** ADLS 2. dosya sisteminize yükleyin.
  
      ![DotNet yapısını hazırlama](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
@@ -177,7 +177,7 @@ Apache Spark iş tanımı oluşturduktan sonra, bir Apache Spark havuzuna gönde
 
 ### <a name="scenario-2-view-apache-spark-job-running-progress"></a>Senaryo 2: Apache Spark işi çalışma ilerlemesini görüntüleme
 
- 1. **İzleme**' yi seçin, ardından **Apache Spark uygulamalar** seçeneğini belirleyin. Gönderilen Apache Spark uygulamasını bulabilirsiniz.
+ 1. **İzleme** ' yi seçin, ardından **Apache Spark uygulamalar** seçeneğini belirleyin. Gönderilen Apache Spark uygulamasını bulabilirsiniz.
 
      ![Spark uygulamasını görüntüle](./media/apache-spark-job-definitions/view-spark-application.png)
 
@@ -197,7 +197,7 @@ Bu bölümde, işlem hattına bir Apache Spark iş tanımı eklersiniz.
 
  1. Mevcut bir Apache Spark iş tanımını açın.
 
- 2. Apache Spark iş tanımının sağ üst köşesindeki simgeyi seçin, **mevcut ardışık düzen**veya **Yeni işlem hattı**' nı seçin. Daha fazla bilgi için, işlem hattı sayfasına başvurabilirsiniz.
+ 2. Apache Spark iş tanımının sağ üst köşesindeki simgeyi seçin, **mevcut ardışık düzen** veya **Yeni işlem hattı** ' nı seçin. Daha fazla bilgi için, işlem hattı sayfasına başvurabilirsiniz.
 
      ![pipeline1 'e Ekle](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 

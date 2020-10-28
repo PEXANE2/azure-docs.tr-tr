@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: georgewallace
 ms.author: gwallace
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
-ms.custom: mvc
-ms.openlocfilehash: eedd796e3223c6cbcd0844cc4e814a35172d6c7e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3082f30f46a1e450a9ac42958163894c014de66d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078536"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737199"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 özel kümesi oluşturma
 
@@ -192,7 +192,7 @@ az aro create \
 Komutu yürüttükten sonra `az aro create` , normalde bir küme oluşturmak yaklaşık 35 dakika sürer.
 
 >[!IMPORTANT]
-> Özel bir etki alanı belirtmeyi seçerseniz (örneğin, **foo.example.com**) OpenShift Konsolu `https://console-openshift-console.apps.foo.example.com` yerleşik etki alanı yerine, gibi bir URL 'de kullanılabilir `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
+> Özel bir etki alanı belirtmeyi seçerseniz (örneğin, **foo.example.com** ) OpenShift Konsolu `https://console-openshift-console.apps.foo.example.com` yerleşik etki alanı yerine, gibi bir URL 'de kullanılabilir `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
 >
 > Varsayılan olarak, Openshıft, üzerinde oluşturulan tüm yollar için otomatik olarak imzalanan sertifikalar kullanır `*.apps.<random>.<location>.aroapp.io` .  Özel DNS ' i seçerseniz, kümeye bağlandıktan sonra, giriş denetleyicinizin ve [API sunucunuz için özel CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html) [IÇIN özel bir CA yapılandırmak](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) üzere OpenShift belgelerini izlemeniz gerekir.
 
@@ -233,7 +233,7 @@ Konsol URL 'sini bir tarayıcıda başlatın ve kimlik bilgilerini kullanarak ot
 
 ## <a name="install-the-openshift-cli"></a>OpenShift CLı 'yı yükler
 
-OpenShift Web konsolunda oturum **açtıktan sonra, üzerine tıklayın.** sağ üst köşedeki ve ardından **komut satırı araçlarında**. Makinenize uygun yayını indirin.
+OpenShift Web konsolunda oturum **açtıktan sonra, üzerine tıklayın.** sağ üst köşedeki ve ardından **komut satırı araçlarında** . Makinenize uygun yayını indirin.
 
 ![Azure Red Hat OpenShift oturum açma ekranı](media/aro4-download-cli.png)
 
