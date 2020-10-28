@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 99257b7bef83d0acef484118c7d53aea8eda168c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c017ae8044c14a579190f5f1e76cfb1a73e3ce66
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91264295"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896200"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Hızlı başlangıç: Azure Maps ile etkileşimli arama haritası oluşturma
 
@@ -37,14 +37,14 @@ Bu makalede, kullanıcılara etkileşimli bir arama deneyimi sağlayan bir harit
 Aşağıdaki adımlarla yeni bir Azure Maps hesabı oluşturun:
 
 1. [Azure portalının](https://portal.azure.com) sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
-2. Market 'te *Ara* kutusuna **Azure Maps**yazın.
-3. *Sonuçlardan* **Azure haritaları**' nı seçin. Haritanın altında görüntülenen **Oluştur** düğmesine tıklayın.
+2. Market 'te *Ara* kutusuna **Azure Maps** yazın.
+3. *Sonuçlardan* **Azure haritaları** ' nı seçin. Haritanın altında görüntülenen **Oluştur** düğmesine tıklayın.
 4. **Haritalar Hesabı Oluştur** sayfasında aşağıdaki değerleri girin:
-    * Bu hesap için kullanmak istediğiniz *Abonelik*.
+    * Bu hesap için kullanmak istediğiniz *Abonelik* .
     * Bu hesap için *Kaynak grubu* adı. Kaynak grubu için *Yeni oluştur* veya *Mevcut olanı kullan* seçeneğini belirleyebilirsiniz.
-    * Yeni hesabınıza verilen *Ad*.
+    * Yeni hesabınıza verilen *Ad* .
     * Bu hesabın *fiyatlandırma katmanı* .
-    * *Lisans*’ı ve *Gizlilik Bildirimi*’ni okuyun ve onay kutusunu işaretleyerek koşulları kabul edin.
+    * *Lisans* ’ı ve *Gizlilik Bildirimi* ’ni okuyun ve onay kutusunu işaretleyerek koşulları kabul edin.
     * **Oluştur** düğmesine tıklayın.
 
     :::image type="content" source="./media/quick-demo-map-app/create-account.png" alt-text="Portalda Haritalar hesabı oluşturma":::
@@ -56,18 +56,18 @@ Aşağıdaki adımlarla yeni bir Azure Maps hesabı oluşturun:
 Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API 'Lerini sorgulamanızı sağlayan birincil anahtarı alın.
 
 1. Portalda Haritalar hesabınızı açın.
-2. Ayarlar bölümünde **kimlik doğrulaması**' nı seçin.
-3. **Birincil Anahtar**’ı panonuza kopyalayın. Bu öğreticinin ilerleyen kısmında kullanmak üzere bunu yerel olarak kaydedin.
+2. Ayarlar bölümünde **kimlik doğrulaması** ' nı seçin.
+3. **Birincil Anahtar** ’ı panonuza kopyalayın. Bu öğreticinin ilerleyen kısmında kullanmak üzere bunu yerel olarak kaydedin.
 
 >[!NOTE]
-> Birincil anahtar yerine abonelik anahtarını kullanırsanız, haritanız düzgün şekilde işlenmez. Ayrıca, güvenlik nedeniyle, birincil ve ikincil anahtarlarınız arasında döndürme yapmanız önerilir. Anahtarları döndürmek için uygulamanızı ikincil anahtarı kullanacak şekilde güncelleştirin, dağıtın ve ardından birincil anahtarın yanındaki döngüye/Yenile düğmesine basarak yeni bir birincil anahtar oluşturun. Eski birincil anahtar devre dışı bırakılacak. Anahtar döndürme hakkında daha fazla bilgi için bkz. [anahtar döndürme ve denetleme ile Azure Key Vault ayarlama](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)
+> Birincil anahtar yerine abonelik anahtarını kullanırsanız, haritanız düzgün şekilde işlenmez. Ayrıca, güvenlik nedeniyle, birincil ve ikincil anahtarlarınız arasında döndürme yapmanız önerilir. Anahtarları döndürmek için uygulamanızı ikincil anahtarı kullanacak şekilde güncelleştirin, dağıtın ve ardından birincil anahtarın yanındaki döngüye/Yenile düğmesine basarak yeni bir birincil anahtar oluşturun. Eski birincil anahtar devre dışı bırakılacak. Anahtar döndürme hakkında daha fazla bilgi için bkz. [anahtar döndürme ve denetleme ile Azure Key Vault ayarlama](../key-vault/secrets/tutorial-rotation-dual.md)
 
 :::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Portalda Haritalar hesabı oluşturma":::
 
 ## <a name="download-the-demo-application"></a>Demo uygulamayı indirme
 
 1. [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html)'ye gidin. Dosyanın içeriğini kopyalayın.
-2. Bu dosyanın içeriğini **AzureMapDemo.html**olarak yerel olarak kaydedin. Bir metin düzenleyicisinde açın.
+2. Bu dosyanın içeriğini **AzureMapDemo.html** olarak yerel olarak kaydedin. Bir metin düzenleyicisinde açın.
 3. Dizeyi arayın `<Your Azure Maps Key>` . Önceki bölümdeki **birincil anahtar** değeriyle değiştirin.
 
 ## <a name="open-the-demo-application"></a>Demo uygulamasını açın
@@ -75,7 +75,7 @@ Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API 'Lerini 
 1. **AzureMapDemo.html** dosyasını istediğiniz bir tarayıcıda açın.
 2. Los Angeles şehrinde gösterilen Haritayı gözlemleyin. Yakınlaştırma düzeyine bağlı olarak haritanın daha fazla veya daha az bilgiyle nasıl işlendiğini görmek için yakınlaştırma ve uzaklaştırma yapın.
 3. Haritanın varsayılan merkezini değiştirin. **AzureMapDemo.html** dosyasında, **center** adlı değişkeni arayın. Bu değişkenin boylam ve enlem çiftini, yeni **[-74.0060, 40.7128]** değerleriyle değiştirin. Dosyayı kaydedin ve tarayıcınızı yenileyin.
-4. Etkileşimli arama deneyimini deneyin. Demo Web uygulamasının sol üst köşesindeki arama kutusunda **Restoran**' ı arayın.
+4. Etkileşimli arama deneyimini deneyin. Demo Web uygulamasının sol üst köşesindeki arama kutusunda **Restoran** ' ı arayın.
 5. Farenizi arama kutusunun altında görüntülenen adresler ve konumlar listesinin üzerine taşıyın. Haritadaki karşılık gelen PIN 'in bu konumla ilgili bilgileri nasıl göründüğüne dikkat edin. Özel işletmelerin gizliliğini korumak için kurgusal ad ve adresler gösterilir.
 
     :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Portalda Haritalar hesabı oluşturma":::
@@ -89,8 +89,8 @@ Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API 'Lerini 
 Öğreticilere devam etmeyi planlamıyorsanız, kaynakları temizlemek için şu adımları uygulayın:
 
 1. **AzureMapDemo.html** Web uygulamasını çalıştıran tarayıcıyı kapatın.
-2. Azure portal sayfasına gidin. Ana Portal sayfasından **tüm kaynaklar** ' ı seçin. Ya da sol üst köşedeki menü simgesine tıklayın. **Tüm kaynaklar**’ı seçin.
-3. Azure haritalar hesabınıza tıklayın. Sayfanın üst kısmında **Sil**' e tıklayın.
+2. Azure portal sayfasına gidin. Ana Portal sayfasından **tüm kaynaklar** ' ı seçin. Ya da sol üst köşedeki menü simgesine tıklayın. **Tüm kaynaklar** ’ı seçin.
+3. Azure haritalar hesabınıza tıklayın. Sayfanın üst kısmında **Sil** ' e tıklayın.
 
 Daha fazla kod örneği ve etkileşimli kodlama deneyimi için aşağıdaki kılavuzlara bakın:
 

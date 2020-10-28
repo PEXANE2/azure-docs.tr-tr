@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 52ae961a813b6d14592953fdf8662cbaecf662e1
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b82478338603750a76718da956d74e23d242692e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280453"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896543"
 ---
 # <a name="managed-application-metered-billing"></a>Yönetilen uygulama ölçümlü faturalandırma 
 
@@ -56,11 +56,11 @@ CoA hizmetine abone olan bir Azure müşterisi, seçilen plana göre her ay rapo
 
 Fatura boyutları, yazılımı kullanmak için nasıl faturalandırılabilecekleri müşteriyle iletişim kurmak için kullanılır.  Bu boyutlar, kullanım olaylarını Microsoft 'a iletmek için de kullanılır. Bunlar aşağıdaki gibi tanımlanır:
 
-* **Boyut tanımlayıcısı**: kullanım olaylarını yayırken başvurulan sabit tanımlayıcı.
-* **Boyut adı**: boyutla ilişkili görünen ad (örneğin, "gönderilen metin iletileri").
-* **Ölçü birimi**: Faturalandırma biriminin açıklaması, örneğin "metin başına ileti" veya "100 başına e-posta".
-* **Birim başına fiyat**: boyutun bir birimi için fiyat.
-* **Aylık dönem Için dahil edilen miktar**: yinelenen aylık ücreti ödeyen müşteriler için ayda dahil edilen boyut miktarı, bir tamsayı olmalıdır.
+* **Boyut tanımlayıcısı** : kullanım olaylarını yayırken başvurulan sabit tanımlayıcı.
+* **Boyut adı** : boyutla ilişkili görünen ad (örneğin, "gönderilen metin iletileri").
+* **Ölçü birimi** : Faturalandırma biriminin açıklaması, örneğin "metin başına ileti" veya "100 başına e-posta".
+* **Birim başına fiyat** : boyutun bir birimi için fiyat.
+* **Aylık dönem Için dahil edilen miktar** : yinelenen aylık ücreti ödeyen müşteriler için ayda dahil edilen boyut miktarı, bir tamsayı olmalıdır.
 
 Fatura boyutları, bir teklif için tüm planlar arasında paylaşılır. Bazı öznitelikler, tüm planlar genelinde boyut için geçerlidir ve diğer öznitelikler plana özgüdür.
 
@@ -79,7 +79,7 @@ Bir boyutun diğer öznitelikleri her plana özeldir ve plandan plana göre fark
 Boyutların Ayrıca "etkin" ve "sonsuz" olmak üzere iki özel kavramı vardır:
 
 * **Etkin** , bu planın bu boyutta katıldığını gösterir.  Bu boyuta göre kullanım olayları göndermediği yeni bir plan oluşturuyorsanız, bu seçeneği işaretsiz bırakmak isteyebilirsiniz. Ayrıca, bir plan ilk yayımlandıktan sonra eklenen tüm yeni boyutlar, zaten yayımlanmış planda "etkin değil" olarak görünür.  Devre dışı bırakılan bir boyut, müşteriler tarafından görülen bir plan için boyutların herhangi bir listesinde gösterilmez.
-* Sonsuzluk "∞" simgesiyle temsil edilen **sonsuz**, bu planın bu boyuta göre tarifeli kullanım olmadan bu boyutta katıldığını gösterir. Müşterilerinize bu boyut tarafından temsil edilen işlevlerin plana dahil edildiğini, ancak kullanım sınırlaması olmadığını belirtmek istiyorsanız.  Sonsuz kullanım içeren bir boyut, müşteriler tarafından görülen bir plana ait boyut listelerinde görünür.  Bu plan hiçbir şekilde ücretlendirilmeyecektir.
+* Sonsuzluk "∞" simgesiyle temsil edilen **sonsuz** , bu planın bu boyuta göre tarifeli kullanım olmadan bu boyutta katıldığını gösterir. Müşterilerinize bu boyut tarafından temsil edilen işlevlerin plana dahil edildiğini, ancak kullanım sınırlaması olmadığını belirtmek istiyorsanız.  Sonsuz kullanım içeren bir boyut, müşteriler tarafından görülen bir plana ait boyut listelerinde görünür.  Bu plan hiçbir şekilde ücretlendirilmeyecektir.
 
 >[!Note] 
 >Aşağıdaki senaryolar açıkça desteklenir:  <br> -Yeni bir plana yeni bir boyut ekleyebilirsiniz.  Yeni boyut, zaten yayımlanmış olan herhangi bir plan için etkinleştirilmeyecektir. <br> -Sabit bir aylık ücretle ve herhangi bir boyut olmadan bir plan yayımlayabilir, sonra yeni bir plan ekleyebilir ve bu plan için yeni bir boyut yapılandırabilirsiniz. Yeni boyut, zaten yayımlanmış planlar için etkinleştirilmeyecektir.
@@ -107,7 +107,7 @@ Bir plan yayımlandığında, plan düzeyi ayrıntıları artık değiştirileme
 
 ### <a name="upper-limits"></a>Üst sınırlar
 
-Tek bir teklif için yapılandırılabilecek maksimum boyut sayısı 18 benzersiz boyutlardır.
+Tek bir teklif için yapılandırılabilecek maksimum boyut sayısı 30 benzersiz boyutlardır.
 
 ## <a name="get-support"></a>Destek alma
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 5499402e94cad8673da597afd68571b77047192a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f020f3d9e23b9f834fd203f6d030656581fb4416
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677686"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896608"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme
 
@@ -23,15 +23,15 @@ Rüzgar gücü, fossıl için bir alternatif enerji kaynağıdır ve bu da iklim
 Bu öğreticide şunları yapacaksınız:
 
 > [!div class="checklist"]
-> * Bulutta [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) veri dosyalarıyla çalışın.
+> * Bulutta [Azure Notebooks](../notebooks/index.yml) veri dosyalarıyla çalışın.
 > * Tanıtım verilerini dosyadan yükle.
 > * Python 'da Azure haritalar REST API 'Lerini çağırın.
 > * Haritada konum verileri oluşturma.
-> * Azure haritalar ile tanıtım verilerinin [günlük tahmin](https://aka.ms/AzureMapsWeatherDailyForecast) Hava durumu verilerini zenginleştirin.
+> * Azure haritalar ile tanıtım verilerinin [günlük tahmin](/rest/api/maps/weather/getdailyforecastpreview) Hava durumu verilerini zenginleştirin.
 > * Tahmin verilerini grafiklerde çiz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için öncelikle şunları yapmanız gerekir:
 
@@ -41,7 +41,7 @@ Bu öğreticiyi tamamlayabilmeniz için öncelikle şunları yapmanız gerekir:
 
 Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
-Azure Not defterleri hakkında bilgi edinmek ve nasıl başlaleyeceğinizi öğrenmek için, [Azure Not defteri oluşturma](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebooks-project)yönergelerini izleyin.
+Azure Not defterleri hakkında bilgi edinmek ve nasıl başlaleyeceğinizi öğrenmek için, [Azure Not defteri oluşturma](./tutorial-ev-routing.md#create-an-azure-notebooks-project)yönergelerini izleyin.
 
 > [!Note]
 > Bu projenin Jupyter Not defteri dosyası, [Hava durumu haritaları Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)indirilebilir.
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Günlük tahmin verileri iste
 
-Senaryolarımızda her bir algılayıcı konumu için günlük tahmin istemek istiyoruz. Aşağıdaki betik, Azure Maps Hava durumu hizmetinin [günlük tahmın API](https://aka.ms/AzureMapsWeatherDailyForecast) 'sini çağırır. Bu API, geçerli tarihten sonraki 15 gün boyunca her bir rüzgar Turbin için hava durumu tahminini döndürür.
+Senaryolarımızda her bir algılayıcı konumu için günlük tahmin istemek istiyoruz. Aşağıdaki betik, Azure Maps Hava durumu hizmetinin [günlük tahmın API](/rest/api/maps/weather/getdailyforecastpreview) 'sini çağırır. Bu API, geçerli tarihten sonraki 15 gün boyunca her bir rüzgar Turbin için hava durumu tahminini döndürür.
 
 
 ```python
@@ -107,7 +107,7 @@ for i in range(0, len(coords), 2):
 await session.close()
 ```
 
-Aşağıdaki komut dosyası, Azure haritalar [Get harita görüntüsü hizmetini](https://docs.microsoft.com/rest/api/maps/render/getmapimage)çağırarak haritadaki türbin konumlarını işler.
+Aşağıdaki komut dosyası, Azure haritalar [Get harita görüntüsü hizmetini](/rest/api/maps/render/getmapimage)çağırarak haritadaki türbin konumlarını işler.
 
 ```python
 # Render the turbine locations on the map by calling the Azure Maps Get Map Image service
@@ -184,18 +184,18 @@ Aşağıdaki grafiklerde tahmin verileri görselleştirilecek. Rüzgar hızı de
 
 Bu öğreticide, hava durumu tahmin verileri almak için Azure haritalar REST API 'Lerini nasıl çağıracağınız anlatılmaktadır. Ayrıca grafiklerde verileri görselleştirmeyi de öğrendiniz.
 
-Azure Notebooks içinde Azure haritalar REST API 'Lerini çağırma hakkında daha fazla bilgi için, bkz. [Azure Notebooks kullanarak ev yönlendirme](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
+Azure Notebooks içinde Azure haritalar REST API 'Lerini çağırma hakkında daha fazla bilgi için, bkz. [Azure Notebooks kullanarak ev yönlendirme](./tutorial-ev-routing.md).
 
 Bu öğreticide kullanılan Azure Maps API 'Lerini araştırmak için, bkz.:
 
-* [Günlük tahmin](https://aka.ms/AzureMapsWeatherDailyForecast)
-* [Render-harita görüntüsünü al](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Günlük tahmin](/rest/api/maps/weather/getdailyforecastpreview)
+* [Render-harita görüntüsünü al](/rest/api/maps/render/getmapimage)
 
-Azure haritalar REST API 'lerinin tüm listesi için bkz. [Azure Maps REST API 'leri](https://docs.microsoft.com/azure/azure-maps/consumption-model).
+Azure haritalar REST API 'lerinin tüm listesi için bkz. [Azure Maps REST API 'leri](./consumption-model.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Notebooks hakkında daha fazla bilgi edinmek için bkz.
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)
+> [Azure Notebooks](../notebooks/index.yml)

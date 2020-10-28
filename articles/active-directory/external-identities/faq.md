@@ -12,19 +12,19 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ceb1a299fe09afd0551bdade5526a4aeefebaba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f92b95e38dea6555ca881d56ccf1cf2d68783e53
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441853"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896098"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B işbirliği SSS
 
 Azure Active Directory (Azure AD) işletmeden işletmeye (B2B) işbirliğiyle ilgili sık sorulan sorular (SSS), yeni konuları içerecek şekilde düzenli olarak güncelleştirilir.
 
    > [!IMPORTANT]
-   > Microsoft, **31 mart 2021**' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
+   > Microsoft, **31 mart 2021** ' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>, B2B işbirliği Konuk kullanıcılarımız için daha sezgisel olması için oturum açma sayfamızı özelleştirebiliriz.
 Kesinlikle! [Bu özellik hakkında blog gönderimize](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)bakın. Kuruluşunuzun oturum açma sayfasını özelleştirme hakkında daha fazla bilgi için bkz. [oturum açma ve erişim paneli sayfalarına Şirket markası ekleme](../fundamentals/customize-branding.md).
@@ -64,17 +64,17 @@ Kullanıcılara sınırlı yönetici rolü atanmamışsa, B2B işbirliği kullan
 Evet! Tüm konuk ve dış kullanıcıların Azure portal erişimini engelleyen bir koşullu erişim ilkesi oluşturabilirsiniz. Bu ilkeyi yapılandırırken, yanlışlıkla üyelere ve yöneticilere erişimi engellemeyi unutmaktan emin olun.
 
 1. [Azure Portal](https://portal.azure.com/) Güvenlik Yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-2. Azure portal **Azure Active Directory**' ni seçin. 
-3. **Yönet**altında **güvenlik**' i seçin.
-4. **Koru**altında **koşullu erişim**' i seçin. **Yeni ilke**' yi seçin.
+2. Azure portal **Azure Active Directory** ' ni seçin. 
+3. **Yönet** altında **güvenlik** ' i seçin.
+4. **Koru** altında **koşullu erişim** ' i seçin. **Yeni ilke** ' yi seçin.
 5. **Yeni** sayfada, **ad** metin kutusuna ilke için bir ad girin (örneğin, "konukların portala erişimini engelle").
-6. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
-7. **Dahil et** sekmesinde **kullanıcıları ve grupları seç**' i seçin ve ardından **tüm konuk ve dış kullanıcılar ' ı (Önizleme)** seçin.
+6. **Atamalar** altında **Kullanıcılar ve gruplar** ’ı seçin.
+7. **Dahil et** sekmesinde **kullanıcıları ve grupları seç** ' i seçin ve ardından **tüm konuk ve dış kullanıcılar ' ı (Önizleme)** seçin.
 9. **Bitti** seçeneğini belirleyin.
-10. **Yeni** sayfada, **atamalar** bölümünde, **bulut uygulamaları veya eylemler**' i seçin.
-11. **Bulut uygulamaları veya eylemler** sayfasında, **uygulamaları seç**' i seçin ve ardından **Seç**' i seçin.
-12. **Seç** sayfasında **Microsoft Azure Management**’ı ve sonra **Seç** öğesini seçin.
-13. **Bulut uygulamaları veya eylemler** sayfasında **bitti**' yi seçin.
+10. **Yeni** sayfada, **atamalar** bölümünde, **bulut uygulamaları veya eylemler** ' i seçin.
+11. **Bulut uygulamaları veya eylemler** sayfasında, **uygulamaları seç** ' i seçin ve ardından **Seç** ' i seçin.
+12. **Seç** sayfasında **Microsoft Azure Management** ’ı ve sonra **Seç** öğesini seçin.
+13. **Bulut uygulamaları veya eylemler** sayfasında **bitti** ' yi seçin.
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Azure AD B2B işbirliği, Multi-Factor Authentication ve müşteri e-posta hesaplarını destekliyor mu?
 Evet. Multi-Factor Authentication ve tüketici e-posta hesaplarının her ikisi de Azure AD B2B işbirliği için desteklenir.
@@ -130,7 +130,7 @@ Evet. Daha fazla bilgi için bkz. [B2B işbirliği kullanıcıları Için koşul
 Evet. Azure AD B2B işbirliği, liste ve reddetme listelerine izin vermeyi destekler. 
 
 ### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>Azure AD B2B 'yi kullanmak için hangi lisansları gerekir?
-Kuruluşunuzun Azure AD B2B kullanması gereken lisanslar hakkında daha fazla bilgi için, [Azure ACTIVE DIRECTORY B2B işbirliği Lisanslama Kılavuzu](licensing-guidance.md)' na bakın.
+Kuruluşunuzun Azure AD B2B kullanması gereken lisanslar hakkında daha fazla bilgi için bkz. [dış kimlikler fiyatlandırması](external-identities-pricing.md).
 
 ### <a name="next-steps"></a>Sonraki adımlar
 

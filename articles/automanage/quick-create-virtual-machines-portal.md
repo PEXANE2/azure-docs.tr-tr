@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: d66c19ce3a9786a5ca0f1390acb398c2a9cf502f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 69f43b626bb50171ceaca1b7a8761bec040d1dd6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91445785"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897237"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal sanal makineler için Azure oto yönetimini etkinleştirin
 
@@ -28,7 +28,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 > Ücretsiz deneme hesaplarının bu öğreticide kullanılan sanal makinelere erişimi yoktur. Lütfen Kullandıkça Öde aboneliğine yükseltin.
 
 > [!IMPORTANT]
-> Mevcut bir oto Yönet hesabı kullanarak, oto yönetimini etkinleştirmek için **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte.
+> Mevcut bir oto Yönet hesabı kullanarak, oto yönetimini etkinleştirmek için VM 'lerinizi içeren kaynak grubunda **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katılımcısı** , aboneliğinizdeki **Kullanıcı erişimi yönetici** rolleriyle birlikte.
 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
@@ -38,20 +38,20 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 
 ## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>Mevcut bir VM 'de VM 'Ler için oto yönetimini etkinleştir
 
-1. Arama çubuğunda, **Automanage: Azure sanal makine en iyi uygulamaları**' nı arayıp seçin.
+1. Arama çubuğunda, **Automanage: Azure sanal makine en iyi uygulamaları** ' nı arayıp seçin.
 
 2. **Mevcut VM 'de etkinleştir '** i seçin.
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\zero-vm-list-view.png" alt-text="Mevcut VM 'de etkinleştirin.":::
 
 3. **Makineleri seçin** dikey penceresinde:
-    1. **Abonelik** ve **kaynak grubunuza**göre VM 'leri listesini filtreleyin.
+    1. **Abonelik** ve **kaynak grubunuza** göre VM 'leri listesini filtreleyin.
     1. Eklemek istediğiniz her bir sanal makinenin onay kutusunu işaretleyin.
     1. **Seç** düğmesine tıklayın.
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Mevcut VM 'de etkinleştirin.":::
 
-4. **Yapılandırma profili**altında, Araştır ' a tıklayın **ve profilleri ve tercihleri değiştirin**.
+4. **Yapılandırma profili** altında, Araştır ' a tıklayın **ve profilleri ve tercihleri değiştirin** .
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Mevcut VM 'de etkinleştirin.":::
 
@@ -74,13 +74,13 @@ Yeni bir sanal makine oluşturmak ve oto yönetimi etkinleştirmek için [burada
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\create-next-steps.png" alt-text="Mevcut VM 'de etkinleştirin.":::
 
-3. **Sonraki adımlarda**, **sanal makine en iyi uygulamalarını etkinleştir**' i seçin.
+3. **Sonraki adımlarda** , **sanal makine en iyi uygulamalarını etkinleştir** ' i seçin.
 
 4. Otomatik **Yönet – Azure sanal makine en iyi uygulamaları** sayfasında, **makineler** OTOMATIK olarak yeni oluşturulan VM 'niz tarafından doldurulur.
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\create-new-enable-overview.png" alt-text="Mevcut VM 'de etkinleştirin.":::
 
-5. **Yapılandırma profili**altında, Araştır ' a tıklayın **ve profilleri ve tercihleri değiştirin**.
+5. **Yapılandırma profili** altında, Araştır ' a tıklayın **ve profilleri ve tercihleri değiştirin** .
 
 6. **Yapılandırma profilini seç + Tercihler** dikey penceresinde:
     1. Sol taraftaki bir profil seçin: test için *geliştirme/test* *, üretim için üretim.*
@@ -99,7 +99,7 @@ Oto yönetimini devre dışı bırakarak sanal makineler için Azure oto yöneti
 1. Otomatik olarak yönetilen tüm sanal **makinelerinizi listeleyen otomatik Yönet – Azure sanal makine en iyi uygulamaları** sayfasına gidin.
 1. Devre dışı bırakmak istediğiniz sanal makinenin yanındaki onay kutusunu seçin.
 1. **Devre dışı bırak automanagent** düğmesine tıklayın.
-1. Kabul etmiş önce **devre dışı bırakmak**için ortaya çıkan açılan pencerede iletiyi dikkatle okuyun.
+1. Kabul etmiş önce **devre dışı bırakmak** için ortaya çıkan açılan pencerede iletiyi dikkatle okuyun.
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -108,9 +108,9 @@ Sanal makineler için Azure oto yönetimi 'ni denemek üzere yeni bir kaynak gru
 
 Azure oto yönetimi, içindeki kaynakları depolamak için varsayılan kaynak gruplarını oluşturur. Tüm kaynakları temizlemek için "DefaultResourceGroupRegionName" ve "AzureBackupRGRegionName" adlandırma kuralına sahip kaynak gruplarını kontrol edin.
 
-1. **Kaynak grubunu**seçin.
-1. Kaynak grubunun sayfasında **Sil**' i seçin.
-1. İstendiğinde, kaynak grubunun adını onaylayın ve **Sil**' i seçin.
+1. **Kaynak grubunu** seçin.
+1. Kaynak grubunun sayfasında **Sil** ' i seçin.
+1. İstendiğinde, kaynak grubunun adını onaylayın ve **Sil** ' i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 731ffe02b16fe832bb5feba34973ca81bf941646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80d61e69b5e8d666406c378c2d3fece28c822491
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371431"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896788"
 ---
 # <a name="tutorial-use-creator-to-create-indoor-maps"></a>Öğretici: iç kapak eşlemeleri oluşturmak için Oluşturucu kullanma
 
@@ -44,13 +44,13 @@ Bu öğretici [Postman](https://www.postman.com/) uygulamasını kullanır, anca
 
 ## <a name="upload-a-drawing-package"></a>Bir çizim paketini karşıya yükle
 
-Azure Maps kaynaklarına çizim paketini yüklemek için [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) 'sini kullanın.
+Azure Maps kaynaklarına çizim paketini yüklemek için [veri yükleme API](/rest/api/maps/data/uploadpreview) 'sini kullanın.
 
 Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun süredir çalışan bir işlemdir. İşlem tamamlandıktan sonra, öğesini `udid` dönüştürmek için karşıya yüklenen pakete erişmek üzere öğesini kullanacağız. Edinmek için aşağıdaki adımları izleyin `udid` .
 
-1. Postman uygulamasını açın. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin.
+1. Postman uygulamasını açın. Postman uygulamasının üst kısmında **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **koleksiyon** ' ı seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin.
 
-2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
+2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. İstek için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
 
 3. Oluşturucu sekmesinde http **Post** yöntemini seçin ve çizim paketini Azure Maps hizmetine yüklemek için aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 
@@ -58,7 +58,7 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
     https://atlas.microsoft.com/mapData/upload?api-version=1.0&dataFormat=zip&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-4. **Üst bilgiler** sekmesinde, anahtar için bir değer belirtin `Content-Type` . Çizim paketi daraltılmış bir klasördür, bu nedenle `application/octet-stream` değerini kullanın. **Gövde** sekmesinde **ikili**' ı seçin. **Dosya Seç** ' e tıklayın ve bir çizim paketi seçin.
+4. **Üst bilgiler** sekmesinde, anahtar için bir değer belirtin `Content-Type` . Çizim paketi daraltılmış bir klasördür, bu nedenle `application/octet-stream` değerini kullanın. **Gövde** sekmesinde **ikili** ' ı seçin. **Dosya Seç** ' e tıklayın ve bir çizim paketi seçin.
 
      ![veri yönetimi](./media/tutorial-creator-indoor-maps/enter-content-type-dialog.png)
 
@@ -102,7 +102,7 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
 
  Artık çizim paketi karşıya yüklendikten sonra, `udid` paketi harita verilerine dönüştürmek için karşıya yüklenen paket için kullanacağız. Dönüştürme API 'SI, [burada](creator-long-running-operation.md)tanımlanan kalıbı uygulayan uzun süre çalışan bir işlem kullanır. İşlem tamamlandıktan sonra, ' yi kullanarak `conversionId` Dönüştürülen verilere erişin. Edinmek için aşağıdaki adımları izleyin `conversionId` .
 
-1. **Yeni**’yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet**’e tıklayın.
+1. **Yeni** 'yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet** ’e tıklayın.
 
 2. Oluşturucu sekmesinde http **Post** yöntemini seçin ve karşıya yüklenen çizim paketinizi harita verilerine dönüştürmek için aşağıdaki URL 'yi girin. `udid`Karşıya yüklenen paket için öğesini kullanın.
 
@@ -164,11 +164,11 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
 
 ## <a name="create-a-dataset"></a>Veri kümesi oluşturma
 
-Veri kümesi, binalar, düzeyler ve odalar gibi eşleme özelliklerinin bir koleksiyonudur. Bir veri kümesi oluşturmak için [veri kümesi oluşturma API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview)'sini kullanın. Veri kümesi oluşturma API 'SI, `conversionId` dönüştürülmüş çizim paketini alır ve `datasetId` oluşturulan veri kümesinin bir öğesini döndürür. Aşağıdaki adımlarda, bir veri kümesinin nasıl oluşturulacağı gösterilmektedir.
+Veri kümesi, binalar, düzeyler ve odalar gibi eşleme özelliklerinin bir koleksiyonudur. Bir veri kümesi oluşturmak için [veri kümesi oluşturma API](/rest/api/maps/dataset/createpreview)'sini kullanın. Veri kümesi oluşturma API 'SI, `conversionId` dönüştürülmüş çizim paketini alır ve `datasetId` oluşturulan veri kümesinin bir öğesini döndürür. Aşağıdaki adımlarda, bir veri kümesinin nasıl oluşturulacağı gösterilmektedir.
 
-1. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet**’e tıklayın
+1. Postman uygulamasında **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet** ’e tıklayın
 
-2. Yeni bir veri kümesi oluşturmak için [veri kümesi oluşturma API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview) 'Sine bir **Post** isteği yapın. İsteği göndermeden önce, `conversionId` `conversionId` 5. adımdaki dönüştürme işlemi sırasında hem abonelik anahtarınızı hem de ile elde edilen öğesini ekleyin.  İstek aşağıdaki URL gibi görünmelidir:
+2. Yeni bir veri kümesi oluşturmak için [veri kümesi oluşturma API](/rest/api/maps/dataset/createpreview) 'Sine bir **Post** isteği yapın. İsteği göndermeden önce, `conversionId` `conversionId` 5. adımdaki dönüştürme işlemi sırasında hem abonelik anahtarınızı hem de ile elde edilen öğesini ekleyin.  İstek aşağıdaki URL gibi görünmelidir:
 
     ```http
     https://atlas.microsoft.com/dataset/create?api-version=1.0&conversionID={conversionId}&type=facility&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -197,7 +197,7 @@ Veri kümesi, binalar, düzeyler ve odalar gibi eşleme özelliklerinin bir kole
 
 Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler var olan veri kümelerinden oluşturulur. Ancak, bir tileset, kaynağı oluşturulan veri kümesinden bağımsızdır. Veri kümesi silinirse, tileset mevcut olmaya devam edecektir. Bir tileset oluşturmak için aşağıdaki adımları izleyin:
 
-1. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet**’e tıklayın
+1. Postman uygulamasında **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet** ’e tıklayın
 
 2. Oluşturucu sekmesinde bir **Post** isteği yapın. İstek URL 'si aşağıdaki URL gibi görünmelidir:
 
@@ -224,9 +224,9 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
 
 ## <a name="query-datasets-with-wfs-api"></a>WFS API ile veri kümelerini sorgulama
 
- Veri kümeleri,  [WFS API](https://docs.microsoft.com/rest/api/maps/wfs)kullanılarak sorgulanabilir. WFS API ile özellik koleksiyonları, belirli bir koleksiyon veya özellik **kimliği**olan belirli bir özellik için sorgulama yapabilirsiniz. Özellik **kimliği** , özelliği veri kümesi içinde benzersiz şekilde tanımlar. Bu, örneğin, belirli bir stateset içinde hangi özellik durumunun güncelleştirileceğini belirlemek için kullanılır.
+ Veri kümeleri,  [WFS API](/rest/api/maps/wfs)kullanılarak sorgulanabilir. WFS API ile özellik koleksiyonları, belirli bir koleksiyon veya özellik **kimliği** olan belirli bir özellik için sorgulama yapabilirsiniz. Özellik **kimliği** , özelliği veri kümesi içinde benzersiz şekilde tanımlar. Bu, örneğin, belirli bir stateset içinde hangi özellik durumunun güncelleştirileceğini belirlemek için kullanılır.
 
-1. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet**’e tıklayın
+1. Postman uygulamasında **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet** ’e tıklayın
 
 2. Veri kümenizdeki koleksiyonların listesini görüntülemek için bir **Get** isteği yapın. `<dataset-id>`İle değiştirin `datasetId` . Yer tutucu yerine Azure Maps birincil anahtarınızı kullanın. İstek aşağıdaki URL gibi görünmelidir:
 
@@ -234,7 +234,7 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
     https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
-3. Yanıt gövdesi GeoJSON biçiminde teslim edilir ve veri kümesindeki tüm koleksiyonları içerecektir. Kolaylık sağlaması için buradaki örnek yalnızca `unit` koleksiyonu gösterir. Tüm koleksiyonları içeren bir örneği görmek için bkz. [WFS, koleksiyonları API 'Si açıklaması](https://docs.microsoft.com/rest/api/maps/wfs/collectiondescriptionpreview). Herhangi bir koleksiyon hakkında daha fazla bilgi edinmek için öğesi içindeki URL 'Lerden birine tıklayabilirsiniz `link` .
+3. Yanıt gövdesi GeoJSON biçiminde teslim edilir ve veri kümesindeki tüm koleksiyonları içerecektir. Kolaylık sağlaması için buradaki örnek yalnızca `unit` koleksiyonu gösterir. Tüm koleksiyonları içeren bir örneği görmek için bkz. [WFS, koleksiyonları API 'Si açıklaması](/rest/api/maps/wfs/collectiondescriptionpreview). Herhangi bir koleksiyon hakkında daha fazla bilgi edinmek için öğesi içindeki URL 'Lerden birine tıklayabilirsiniz `link` .
 
     ```json
     {
@@ -302,15 +302,15 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
 
 ## <a name="create-a-feature-stateset"></a>Özellik stateset oluşturma
 
-1. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet**’e tıklayın
+1. Postman uygulamasında **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet** ’e tıklayın
 
-2. [Create Stateset API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview)'Sine bir **Post** isteği yapın. `datasetId`Değiştirmek istediğiniz durumu içeren veri kümesini kullanın. İstek aşağıdaki URL gibi görünmelidir:
+2. [Create Stateset API](/rest/api/maps/featurestate/createstatesetpreview)'Sine bir **Post** isteği yapın. `datasetId`Değiştirmek istediğiniz durumu içeren veri kümesini kullanın. İstek aşağıdaki URL gibi görünmelidir:
 
     ```http
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. **Post** Isteğinin **üst bilgilerinde** , `Content-Type` olarak ayarlanır `application/json` . **Gövdesinde**, ve durumlarındaki değişiklikleri yansıtmak için aşağıdaki stilleri sağlayın `occupied` `temperature` *states*. İşiniz bittiğinde **Gönder**' e tıklayın.
+3. **Post** Isteğinin **üst bilgilerinde** , `Content-Type` olarak ayarlanır `application/json` . **Gövdesinde** , ve durumlarındaki değişiklikleri yansıtmak için aşağıdaki stilleri sağlayın `occupied` `temperature` *states* . İşiniz bittiğinde **Gönder** ' e tıklayın.
 
     ```json
     {
@@ -402,7 +402,7 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
 
 7. Başarılı bir güncelleştirmeden sonra bir `200 OK` http durum kodu alırsınız. Bir ınkapımap için  [dinamik stil uygulanmışsa](indoor-map-dynamic-styling.md) , güncelleştirme işlenen haritasında belirtilen zaman damgasında görüntülenir.
 
-[Özellik alma API 'si](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) , özelliğini kullanarak bir özelliğin durumunu almanıza olanak sağlar `ID` . Ayrıca, [durum SILME API](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview)'sini kullanarak stateset ve kaynaklarını silebilirsiniz.
+[Özellik alma API 'si](/rest/api/maps/featurestate/getstatespreview) , özelliğini kullanarak bir özelliğin durumunu almanıza olanak sağlar `ID` . Ayrıca, [durum SILME API](/rest/api/maps/featurestate/deletestatesetpreview)'sini kullanarak stateset ve kaynaklarını silebilirsiniz.
 
 Bu makalede ele alınan farklı Azure Maps Creator hizmetleri hakkında daha fazla bilgi edinmek için bkz. [creator ınkapımaps](creator-indoor-maps.md).
 

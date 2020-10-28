@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 905085d5b0787697d6094bd1337420ee8ae61d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: faa5e3e3177e18787a73c6b4c43aa04b6bc760b7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311106"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897101"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya kutucuk katmanı ekleme Android SDK
 
@@ -37,9 +37,9 @@ Döşeme katmanına geçirilen kutucuk URL 'si, bir TileJSON kaynağına veya a�
 * `{bbox-epsg-3857}` - `{west},{south},{east},{north}` EPSG 3857 uzamsal başvuru sisteminde biçim içeren bir sınırlayıcı kutu dizesi.
 * `{subdomain}` -Alt etki alanı değeri belirtilmişse alt etki alanı değerleri için bir yer tutucu.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
+Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) yüklemeniz gerekir.
 
 
 ## <a name="add-a-tile-layer-to-the-map"></a>Haritaya kutucuk katmanı ekleyin
@@ -179,4 +179,4 @@ Uygulamanızı Şimdi çalıştırırsanız, haritada aşağıda görüldüğü 
 Harita stillerini ayarlama yolları hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın
 
 > [!div class="nextstepaction"]
-> [Android haritalar 'da harita stillerini değiştirme](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Android haritalar 'da harita stillerini değiştirme](./set-android-map-styles.md)

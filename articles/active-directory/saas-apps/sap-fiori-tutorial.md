@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: b1776518816a9b01ce803edfb39e147136dba08d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 35bb05eb019a1284a8a418df0197960130e8d013
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675469"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897305"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Öğretici: SAP Fiori ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide SAP Fiori 'ı Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -272,11 +272,11 @@ Bu bölümde, SAP Fiori 'e erişim vererek Azure çoklu oturum açma özelliğin
 
     1. SAP 'de, **NameID biçimi "belirtilmemiş"** bölümünde Ayrıntılar:
 
-        ![SAP 'de NameID biçimi "belirtilmemiş" iletişim kutusunun ayrıntıları](./media/sapfiori-tutorial/nameiddetails.png)
+        ![A P 'deki ' NameID biçimi "belirtilmemiş" ' iletişim kutusunun ' ayrıntılarını gösteren ekran görüntüsü.](./media/sapfiori-tutorial/nameiddetails.png)
 
     1. Azure portal, **Kullanıcı öznitelikleri & talepler** altında, Azure AD 'den gerekli talepleri aklınızda edin.
 
-        ![Azure portal Kullanıcı öznitelikleri & talepleri iletişim kutusu](./media/sapfiori-tutorial/claimsaad1.png)
+        !["Kullanıcı öznitelikleri & talepleri" iletişim kutusunu gösteren ekran görüntüsü.](./media/sapfiori-tutorial/claimsaad1.png)
 
     **2. senaryo** : SU01 ' de yapılandırılan e-posta adresine bağlı olarak SAP Kullanıcı kimliğini seçin. Bu durumda, SSO gerektiren her kullanıcı için e-posta KIMLIĞI SU01 ' de yapılandırılmalıdır.
 

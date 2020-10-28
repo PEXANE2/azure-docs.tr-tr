@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Sprizle bağlantı ile Azure Active Directory tümleştirme | Microsoft Docs'
+title: 'Öğretici: Sprizle bağlantı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Sprte bağlantısı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 author: jeevansd
@@ -9,107 +9,80 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 4a64e2ab2748b7354f9bb779c1efa98865cd60e8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3c03bb91320e79d5ea54ad43802073795bfbd4cb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514699"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896496"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Öğretici: Sprte bağlantısı ile Azure Active Directory tümleştirme
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-springer-link"></a>Öğretici: Sprizle bağlantı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Sprte bağlantısını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Sprbahar bağlantısını Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, Sprde bağlantısını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Sprte bağlantısını Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de Sprbahar bağlantısına erişimi olan denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Sprte bağlantısı (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
-
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+* Azure AD 'de Sprbahar bağlantısına erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Sprte bağlantısı için otomatik olarak oturum açma olanağı sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini spru bağlantısıyla yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Sprte bağlantısı çoklu oturum açma etkin abonelik
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Sprte bağlantısı çoklu oturum açma (SSO) etkin abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* SPRK bağlantısı **SP** ve **IDP** tarafından başlatılan SSO 'yu destekler
+* SPRK bağlantısı **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 
 ## <a name="adding-springer-link-from-the-gallery"></a>Galeriden Sprte bağlantısı ekleme
 
 Sprz bağlantısının tümleştirmesini Azure AD 'ye göre yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize Sprbahar bağlantısı eklemeniz gerekir.
 
-**Galeriden Sprte bağlantısı eklemek için aşağıdaki adımları uygulayın:**
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **sprde bağlantısı** yazın.
+1. Sonuçlar panelinden **Sprte bağlantısı** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+**B. Simon** adlı bir test kullanıcısını kullanarak Azure AD SSO 'Yu sprsi bağlantısıyla yapılandırın ve test edin. SSO 'nun çalışması için, Sprte bağlantısı 'ndaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+Azure AD SSO 'yu Sprte bağlantısı ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+2. **[Sprte BAĞLANTıSı SSO 'Yu yapılandırma](#configure-springer-link-sso)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
+3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-4. Arama kutusuna **sprte bağlantısı**yazın, sonuç panelinden **sprte bağlantısı** ' nı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+1. Azure portal, **Sprte bağlantısı** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-     ![Sonuçlar listesinde sprte bağlantısı](common/search-new-app.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak spru BAĞLANTıSıYLA Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+    a. **Tanımlayıcı** metin kutusuna URL 'yi yazın:`https://fsso.springer.com`
 
-Azure AD çoklu oturum açma 'yı Sprte bağlantısı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+    b. **Yanıt URL** 'si metin kutusuna URL 'yi yazın:`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Sprte bağlantısını yapılandırma çoklu oturum açma](#configure-springer-link-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+    c. **Ek URL 'Ler ayarla** ' ya tıklayın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı spru bağlantısıyla yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **sprte bağlantısı** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
-
-    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-relay.png)
-
-    a. **Tanımlayıcı** metin kutusuna bir URL yazın:`https://fsso.springer.com`
-
-    b. **Yanıt URL** 'si metin kutusuna bir URL yazın:`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
-
-    c. **Ek URL 'Ler ayarla**' ya tıklayın.
-
-    d. **Geçiş durumu** metin kutusuna bir URL yazın:`https://link.springer.com`
+    d. **Geçiş durumu** metin kutusuna URL 'yi yazın:`https://link.springer.com`
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı uygulayın:
-
-    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/both-signonurl.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com`
 
@@ -120,71 +93,57 @@ Azure AD çoklu oturum açmayı spru bağlantısıyla yapılandırmak için aşa
 
     ![Meta veri indirme bağlantısı](common/copy_metadataurl.png)
 
-### <a name="configure-springer-link-single-sign-on"></a>Sprte bağlantısı tek Sign-On yapılandırma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-**Spru bağlantı** tarafında çoklu oturum açmayı yapılandırmak için, kopyalanmış **uygulama Federasyon meta veri URL 'Sini** [sprte bağlantısı destek ekibine](mailto:onlineservice@springernature.com)göndermeniz gerekir. Sprkli bağlantı desteği ekibi, SAML SSO bağlantısını her iki tarafta da düzgün bir şekilde ayarlamak için bu URL 'YI kullanır.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
-
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
-
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Sprmi bağlantısına erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
+Bu bölümde, SPRK bağlantısına erişim vererek B. Simon 'u Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **sprde bağlantısı**' nı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde, **sprte bağlantısı** ' nı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+## <a name="configure-springer-link-sso"></a>Sprte bağlantı SSO 'SU yapılandırma
 
-2. Uygulamalar listesinde, **sprte bağlantısı**' nı seçin.
+**Spru bağlantı** tarafında çoklu oturum açmayı yapılandırmak için, kopyalanmış **uygulama Federasyon meta veri URL 'Sini** [sprte bağlantısı destek ekibine](mailto:onlineservice@springernature.com)göndermeniz gerekir. Sprkli bağlantı desteği ekibi, SAML SSO bağlantısını her iki tarafta da düzgün bir şekilde ayarlamak için bu URL 'YI kullanır.
 
-    ![Uygulamalar listesindeki Sprte bağlantısı bağlantısı](common/all-applications.png)
+### <a name="create-springer-link-test-user"></a>Sprte bağlantısı test kullanıcısı oluştur
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+Bu bölümde, Sprte bağlantısı 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Sprbahar bağlantı platformuna kullanıcıları eklemek için [sprte bağlantısı destek ekibi](mailto:onlineservice@springernature.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+## <a name="test-sso"></a>Test SSO 'SU 
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Sprsi bağlantı oturum açma URL 'sine yönlendirecektir.  
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+* Sprte bağlantısı oturum açma URL 'sine doğrudan gidin ve oturum açma akışını buradan başlatın.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız Sprde bağlantısı için otomatik olarak oturum açmış olmanız gerekir 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de kullanabilirsiniz. Erişim panelindeki SPRK bağlantı kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız Sprte bağlantısı için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-Erişim panelinde sprkir bağlantı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Sprde bağlantısı için otomatik olarak oturumunuz açılır. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+## <a name="next-steps"></a>Sonraki Adımlar
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+Sprdrasyon bağlantısını yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
-
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

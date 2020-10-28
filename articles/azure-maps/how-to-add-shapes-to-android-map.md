@@ -8,25 +8,25 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6ff64f975550a0222fd56325115bc98976fb038a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04773ef279717c7728cf1b07761c6e4c0726a877
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311317"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897135"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya şekil ekleme Android SDK
 
 Bu makalede, Azure Maps Android SDK kullanarak bir haritada şekillerin nasıl işleneceğini gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
+Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) yüklemeniz gerekir.
 
 
 ## <a name="add-a-line-to-the-map"></a>Haritaya bir satır ekleyin
 
-Bir çizgi **katmanını**kullanarak haritaya bir satır ekleyebilirsiniz, haritada bir satır eklemek için aşağıdaki adımları izleyin.
+Bir çizgi **katmanını** kullanarak haritaya bir satır ekleyebilirsiniz, haritada bir satır eklemek için aşağıdaki adımları izleyin.
 
 1. **Kaynak > düzeni > activity_main.xml** aşağıdaki gibi görünmesi için düzenleyin:
 

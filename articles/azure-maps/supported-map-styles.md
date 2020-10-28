@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4a50a9d6d4a485f7d8e63adb9ae5032f49edc261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3404c02dc159309ed1e9fcd6f9f6bb593fc7552
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310365"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896948"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>Azure haritalar 'da desteklenen yerleşik harita stilleri
 
@@ -27,8 +27,8 @@ Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita st
 
 **Geçerli API 'Ler:**
 
-* [Harita resmi](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Harita kutucuğu](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [Harita resmi](/rest/api/maps/render/getmapimage)
+* [Harita kutucuğu](/rest/api/maps/render/getmaptile)
 * Web SDK eşlemesi denetimi
 * Android harita denetimi
 * Power BI görseli
@@ -52,7 +52,7 @@ Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita st
 
 **Geçerli API 'Ler:**
 
-* [Uydu kutucuğu](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
+* [Uydu kutucuğu](/rest/api/maps/render/getmapimagerytilepreview)
 * Web SDK eşlemesi denetimi
 * Android harita denetimi
 * Power BI görseli
@@ -77,8 +77,8 @@ Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için 
 
 **Geçerli API 'Ler:**
 
-* [Harita resmi](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Harita kutucuğu](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [Harita resmi](/rest/api/maps/render/getmapimage)
+* [Harita kutucuğu](/rest/api/maps/render/getmaptile)
 * Web SDK eşlemesi denetimi
 * Android harita denetimi
 * Power BI görseli
@@ -114,7 +114,7 @@ Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için 
 
 **Geçerli API 'Ler:**
 
-* [Harita kutucuğu](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [Harita kutucuğu](/rest/api/maps/render/getmaptile)
 * Web SDK eşlemesi denetimi
 * Android harita denetimi
 * Power BI görseli
@@ -134,4 +134,4 @@ Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için 
 
 Azure haritalar 'da harita stili ayarlama hakkında bilgi edinin:
 
-[Harita stili seçme](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
+[Harita stili seçme](./choose-map-style.md)

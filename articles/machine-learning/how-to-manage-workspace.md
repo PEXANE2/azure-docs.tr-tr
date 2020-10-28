@@ -10,15 +10,14 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 733a5c899e72809d979dfeeb60e4157c0d587bcf
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9abfbe03a4192411a3790bb6d6e488d674c13109
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633714"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897169"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning çalışma alanları oluşturma ve yönetme 
-
 
 Bu makalede, [Python için](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) Azure Portal veya SDK kullanarak [Azure Machine Learning](overview-what-is-azure-ml.md)için [**Azure Machine Learning çalışma alanları**](concept-workspace.md) oluşturacaksınız, görüntüleyebilir ve silebilirsiniz.
 
@@ -33,48 +32,82 @@ Gereksinimleriniz değiştikçe veya Otomasyon artışı için gereksinimler de�
 
 # <a name="python"></a>[Python](#tab/python)
 
-Bu ilk örnek yalnızca minimal belirtim gerektirir ve tüm bağımlı kaynaklar ve kaynak grubu otomatik olarak oluşturulur.
+* **Varsayılan belirtim.** Varsayılan olarak, bağımlı kaynaklar ve kaynak grubu otomatik olarak oluşturulur. Bu kod, adlı bir çalışma alanı `myworkspace` ve içinde adlı bir kaynak grubu oluşturur `myresourcegroup` `eastus2` .
+    
+    ```python
+    from azureml.core import Workspace
+    
+    ws = Workspace.create(name='myworkspace',
+                   subscription_id='<azure-subscription-id>',
+                   resource_group='myresourcegroup',
+                   create_resource_group=True,
+                   location='eastus2'
+                   )
+    ```
+    `create_resource_group`Çalışma alanı için kullanmak istediğiniz mevcut bir Azure Kaynak grubunuz varsa, bu değeri false olarak ayarlayın.
 
-```python
-from azureml.core import Workspace
-   ws = Workspace.create(name='myworkspace',
-               subscription_id='<azure-subscription-id>',
-               resource_group='myresourcegroup',
-               create_resource_group=True,
-               location='eastus2'
-               )
-```
-`create_resource_group`Çalışma alanı için kullanmak istediğiniz mevcut bir Azure Kaynak grubunuz varsa, bu değeri false olarak ayarlayın.
+* <a name="create-multi-tenant"></a>**Birden çok kiracı.**  Birden çok hesabınız varsa, kullanmak istediğiniz Azure Active Directory kiracı KIMLIĞINI ekleyin.  **Azure Active Directory, dış kimlikler** altındaki [Azure Portal](https://portal.azure.com) kiracı kimliğinizi bulun.
 
-Azure Kaynak KIMLIĞI biçimiyle mevcut Azure kaynaklarını kullanan bir çalışma alanı da oluşturabilirsiniz. Azure portal veya SDK ile ilgili Azure Kaynak kimliklerini bulun. Bu örnek, kaynak grubunun, depolama hesabının, anahtar kasasının, uygulama öngörülerinin ve kapsayıcı kayıt defterinin zaten var olduğunu varsayar.
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(tenant_id="my-tenant-id")
+    ws = Workspace.create(name='myworkspace',
+                subscription_id='<azure-subscription-id>',
+                resource_group='myresourcegroup',
+                create_resource_group=True,
+                location='eastus2',
+                auth=interactive_auth
+                )
+    ```
 
-```python
-import os
+* **[Sogeign bulutu](reference-machine-learning-cloud-parity.md)** . Bir bağımsız bulutu 'nda çalışıyorsanız Azure 'da kimlik doğrulaması yapmak için ek koda ihtiyacınız olacaktır.
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(cloud="<cloud name>") # for example, cloud="AzureUSGovernment"
+    ws = Workspace.create(name='myworkspace',
+                subscription_id='<azure-subscription-id>',
+                resource_group='myresourcegroup',
+                create_resource_group=True,
+                location='eastus2',
+                auth=interactive_auth
+                )
+    ```
+
+* **Mevcut Azure kaynaklarını kullanın** .  Azure Kaynak KIMLIĞI biçimiyle mevcut Azure kaynaklarını kullanan bir çalışma alanı da oluşturabilirsiniz. Azure portal veya SDK ile ilgili Azure Kaynak kimliklerini bulun. Bu örnek, kaynak grubunun, depolama hesabının, anahtar kasasının, uygulama öngörülerinin ve kapsayıcı kayıt defterinin zaten var olduğunu varsayar.
+
+   ```python
+   import os
    from azureml.core import Workspace
    from azureml.core.authentication import ServicePrincipalAuthentication
 
    service_principal_password = os.environ.get("AZUREML_PASSWORD")
 
    service_principal_auth = ServicePrincipalAuthentication(
-       tenant_id="<tenant-id>",
-       username="<application-id>",
-       password=service_principal_password)
+      tenant_id="<tenant-id>",
+      username="<application-id>",
+      password=service_principal_password)
 
-   ws = Workspace.create(name='myworkspace',
-                         auth=service_principal_auth,
-                         subscription_id='<azure-subscription-id>',
-                         resource_group='myresourcegroup',
-                         create_resource_group=False,
-                         location='eastus2',
-                         friendly_name='My workspace',
-                         storage_account='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.storage/storageaccounts/mystorageaccount',
-                         key_vault='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.keyvault/vaults/mykeyvault',
-                         app_insights='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.insights/components/myappinsights',
-                         container_registry='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.containerregistry/registries/mycontainerregistry',
-                         exist_ok=False)
-```
+                        auth=service_principal_auth,
+                             subscription_id='<azure-subscription-id>',
+                             resource_group='myresourcegroup',
+                             create_resource_group=False,
+                             location='eastus2',
+                             friendly_name='My workspace',
+                             storage_account='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.storage/storageaccounts/mystorageaccount',
+                             key_vault='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.keyvault/vaults/mykeyvault',
+                             app_insights='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.insights/components/myappinsights',
+                             container_registry='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.containerregistry/registries/mycontainerregistry',
+                             exist_ok=False)
+   ```
 
-Daha fazla bilgi için bkz. [çalışma alanı SDK başvurusu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true)
+Daha fazla bilgi için bkz. [çalışma alanı SDK başvurusu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true).
+
+Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama ve](how-to-setup-authentication.md)Azure Machine Learning Not defteri ['nde kimlik doğrulama](https://aka.ms/aml-notebook-auth) .
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -237,6 +270,37 @@ Yerel ortamınızda bu çalışma alanına başvuran kodu kullanmayı planlıyor
 
 Dosyayı Python betikleriniz veya Jupyıter Not defterleriniz ile dizin yapısına yerleştirin. Aynı dizinde, *. azureml* adlı bir alt dizin veya bir üst dizin içinde olabilir. Bir işlem örneği oluşturduğunuzda, bu dosya VM 'deki doğru dizine eklenir.
 
+## <a name="connect-to-a-workspace"></a>Çalışma alanına bağlan
+
+Python kodunuzda, çalışma alanınıza bağlanmak için bir çalışma alanı nesnesi oluşturun.  Bu kod, çalışma alanınızı bulmak için yapılandırma dosyasının içeriğini okur.  Henüz kimlik doğrulamasından geçirilmediğinden oturum açmanız için bir istem alacaksınız.
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+* <a name="connect-multi-tenant"></a>**Birden çok kiracı.**  Birden çok hesabınız varsa, kullanmak istediğiniz Azure Active Directory kiracı KIMLIĞINI ekleyin.  **Azure Active Directory, dış kimlikler** altındaki [Azure Portal](https://portal.azure.com) kiracı kimliğinizi bulun.
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(tenant_id="my-tenant-id")
+    ws = Workspace.from_config(auth=interactive_auth)
+    ```
+
+* **[Sogeign bulutu](reference-machine-learning-cloud-parity.md)** . Bir bağımsız bulutu 'nda çalışıyorsanız Azure 'da kimlik doğrulaması yapmak için ek koda ihtiyacınız olacaktır.
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(cloud="<cloud name>") # for example, cloud="AzureUSGovernment"
+    ws = Workspace.from_config(auth=interactive_auth)
+    ```
+    
+Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama ve](how-to-setup-authentication.md)Azure Machine Learning Not defteri ['nde kimlik doğrulama](https://aka.ms/aml-notebook-auth) .
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Çalışma alanı bul
 
@@ -254,7 +318,7 @@ Workspace.list('<subscription-id>')
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Üst arama alanına **Machine Learning** yazın.  
 

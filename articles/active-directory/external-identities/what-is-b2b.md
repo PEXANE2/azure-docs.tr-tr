@@ -12,19 +12,19 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7104040e73679b6563b02aba47698b8eac2b7a56
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d10eb3334154f4915aa0bddd488ddc78bde06805
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441394"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897271"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B’de konuk kullanıcı erişimi nedir?
 
 Azure Active Directory (Azure AD) işletmeden işletmeye (B2B) işbirliği, Konuk kullanıcıları kuruluşunuzla işbirliği yapmaya davet etmenize olanak tanıyan dış kimliklerden oluşan bir özelliktir. B2B işbirliğiyle, şirketinizin uygulamalarını ve hizmetlerini başka bir kuruluştan Konuk kullanıcılarla güvenli bir şekilde paylaşabilir ve kendi şirket verileriniz üzerinde denetim sağlayabilirsiniz. Azure AD veya bir BT departmanı olmasa da şirket dışındaki ortaklarla güvenli ve emniyetli şekilde çalışın. Basit bir davet ve kullanım işlemi, ortakların şirketinizin kaynaklarına erişmek için kendi kimliklerini kullanmasına olanak sağlar. Geliştiriciler, self servis kayıt portalları gibi uygulamalar yazmak veya davet işlemini özelleştirmek için Azure AD işletmeler arası API’leri kullanabilir. Konuk kullanıcılarla ilgili lisanslama ve fiyatlandırma bilgileri için [Azure Active Directory fiyatlandırmasına](https://azure.microsoft.com/pricing/details/active-directory/)bakın.  
 
    > [!IMPORTANT]
-   > Microsoft, **31 mart 2021**' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
+   > Microsoft, **31 mart 2021** ' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>Kimliklerini kullanarak herhangi bir ortak ile işbirliği yapma
 
@@ -95,6 +95,6 @@ Ayrıca, self servis kaydolma Kullanıcı akışlarınızı dış bulut sistemle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD B2B işbirliği için lisanslama yönergeleri](licensing-guidance.md)
+- [Dış Kimlikler fiyatlandırması](external-identities-pricing.md)
 - [Portalda B2B işbirliği konuk kullanıcıları ekleme](add-users-administrator.md)
 - [Davet kullanımı işlemini anlama](redemption-experience.md)

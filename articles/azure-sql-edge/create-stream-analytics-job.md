@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: f0fcdf7aab5f43a0412cd28a1c15188b19770dc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e75edad9f2e473d27d81c73fc784c568c4e404c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888107"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896149"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Azure SQL Edge 'de veri akışı işi oluşturma 
 
@@ -39,8 +39,8 @@ Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aş
 | Veri kaynağı türü | Girdi | Çıktı | Açıklama |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub 'ı | E | E | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| SQL Veritabanı | H | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
-| Kafka | E | H | Bir Kafka konusunun akış verilerini okumak için veri kaynağı. Bu bağdaştırıcı Şu anda yalnızca Azure SQL Edge 'in Intel veya AMD sürümlerinde kullanılabilir. Azure SQL Edge 'in ARM64 sürümünde kullanılamaz.|
+| SQL Veritabanı | N | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
+| Kafka | E | N | Bir Kafka konusunun akış verilerini okumak için veri kaynağı. Bu bağdaştırıcı Şu anda yalnızca Azure SQL Edge 'in Intel veya AMD sürümlerinde kullanılabilir. Azure SQL Edge 'in ARM64 sürümünde kullanılamaz.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Örnek: Azure IoT Edge hub 'ı için dış akış giriş/çıkış nesnesi oluşturma
 
@@ -103,7 +103,7 @@ Aşağıdaki örnek, Azure SQL Edge 'de yerel veritabanında bir dış akış ne
 
 3. Dış VERI kaynağı oluştur ile bir dış veri kaynağı oluşturun. Aşağıdaki örnek:
 
-    * *LocalSQLOutput*adlı bir dış veri kaynağı oluşturur.
+    * *LocalSQLOutput* adlı bir dış veri kaynağı oluşturur.
     * Dış veri kaynağını tanımlar (konum = ' <vendor> :// <server> [: <port> ] '). Örnekte, Azure SQL Edge 'in yerel bir örneğine işaret eder.
     * Daha önce oluşturulan kimlik bilgisini kullanır.
 
@@ -117,7 +117,7 @@ Aşağıdaki örnek, Azure SQL Edge 'de yerel veritabanında bir dış akış ne
     go
     ```
 
-4. Dış akış nesnesini oluşturun. Aşağıdaki örnek, dbo tablosuna işaret eden bir dış akış nesnesi oluşturur *. TemperatureMeasurements*, *mysqldatabase*veritabanında.
+4. Dış akış nesnesini oluşturun. Aşağıdaki örnek, dbo tablosuna işaret eden bir dış akış nesnesi oluşturur *. TemperatureMeasurements* , *mysqldatabase* veritabanında.
 
     ```sql
     CREATE EXTERNAL STREAM TemperatureMeasurements 
@@ -233,7 +233,8 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 (
        (
        name nvarchar(256),
-       status nvarchar(256)
+       status nvarchar(256),
+       error nvarchar(256)
        )
 )
 ```

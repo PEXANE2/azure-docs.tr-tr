@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0004a250173ce6707462b852016d205782479717
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321722"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896689"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Öğretici: Azure Maps Route Service ve Map Control kullanarak yol yönlerini görüntüleme
 
-Bu öğreticide, başlangıçtan bitiş noktasından yol yönlerini göstermek için Azure Maps [route hizmeti API 'si](https://docs.microsoft.com/rest/api/maps/route) ve [harita denetimi](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) 'nin nasıl kullanılacağı gösterilmektedir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide, başlangıçtan bitiş noktasından yol yönlerini göstermek için Azure Maps [route hizmeti API 'si](/rest/api/maps/route) ve [harita denetimi](./how-to-use-map-control.md) 'nin nasıl kullanılacağı gösterilmektedir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Harita denetimini bir Web sayfasında oluşturun ve görüntüleyin. 
 > * [Sembol katmanlarını](map-add-pin.md) ve [çizgi katmanlarını](map-add-line-layer.md)tanımlayarak yolun görüntü işlemesini tanımlayın.
 > * Başlangıç ve bitiş noktalarını göstermek için haritaya GeoJSON nesneleri oluşturun ve ekleyin.
-> * [Yol yönlerini al API 'sini](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)kullanarak başlangıç ve bitiş noktalarından yol yönleri alın.
+> * [Yol yönlerini al API 'sini](/rest/api/maps/route/getroutedirections)kullanarak başlangıç ve bitiş noktalarından yol yönleri alın.
 
 Örneğin tam kaynak kodunu [buradan](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)edinebilirsiniz. [Burada](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)canlı bir örnek bulabilirsiniz.
 
@@ -170,7 +170,7 @@ Bu öğreticide, bir çizgi katmanı kullanarak yolu oluşturacağız. Başlang�
 
     Bu kod, daha sonra veri kaynağına eklenen başlangıç ve bitiş noktalarını temsil eden iki [coğrafi JSON noktası nesnesi](https://en.wikipedia.org/wiki/GeoJSON) oluşturur. 
 
-    Son kod bloğu, başlangıç ve bitiş noktalarının Enlem ve boylasını kullanarak kamera görünümünü ayarlar. Başlangıç ve bitiş noktaları veri kaynağına eklenir. Başlangıç ve bitiş noktaları için sınırlayıcı kutu, `atlas.data.BoundingBox.fromData` işlevi kullanılarak hesaplanır. Bu sınırlama kutusu, işlevi kullanarak tüm yol üzerinde harita kameralarının görünümünü ayarlamak için kullanılır `map.setCamera` . Sembol simgelerinin piksel boyutlarını dengelemek için doldurma eklenir. Harita denetiminin setCamera özelliği hakkında daha fazla bilgi için bkz. [setcamera (CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) özelliği.
+    Son kod bloğu, başlangıç ve bitiş noktalarının Enlem ve boylasını kullanarak kamera görünümünü ayarlar. Başlangıç ve bitiş noktaları veri kaynağına eklenir. Başlangıç ve bitiş noktaları için sınırlayıcı kutu, `atlas.data.BoundingBox.fromData` işlevi kullanılarak hesaplanır. Bu sınırlama kutusu, işlevi kullanarak tüm yol üzerinde harita kameralarının görünümünü ayarlamak için kullanılır `map.setCamera` . Sembol simgelerinin piksel boyutlarını dengelemek için doldurma eklenir. Harita denetiminin setCamera özelliği hakkında daha fazla bilgi için bkz. [setcamera (CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) özelliği.
 
 3. **MapRoute.html** 'yi kaydedin ve tarayıcınızı yenileyin. Eşleme artık Seattle üzerinden ortalanır. Teardrop mavi pin başlangıç noktasını işaretler. Yuvarlak mavi pin bitiş noktasını işaretler.
 
@@ -183,7 +183,7 @@ Bu öğreticide, bir çizgi katmanı kullanarak yolu oluşturacağız. Başlang�
 Bu bölümde, yol yönlerini ve bir noktadan diğerine tahmini varış süresini almak için Azure Maps yol yönleri API 'sinin nasıl kullanılacağı gösterilmektedir.
 
 >[!TIP]
->Azure haritalar yol Hizmetleri, *en hızlı*, *en kısa*, *ekonomik*veya *Thrilling* yollar gibi farklı yol türlerine göre yolları, uzaklık, trafik koşullarına ve kullanılan taşıma moduna göre planlamak için API 'ler sunar. Hizmet Ayrıca, kullanıcıların geçmiş trafik koşullarına göre gelecek yolları planlayabilmenizi sağlar. Kullanıcılar, belirli bir süre için yol sürelerinin tahminini tahmin edebilir. Daha fazla bilgi için bkz. [yol yönleri API 'Si edinme](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
+>Azure haritalar yol Hizmetleri, *en hızlı* , *en kısa* , *ekonomik* veya *Thrilling* yollar gibi farklı yol türlerine göre yolları, uzaklık, trafik koşullarına ve kullanılan taşıma moduna göre planlamak için API 'ler sunar. Hizmet Ayrıca, kullanıcıların geçmiş trafik koşullarına göre gelecek yolları planlayabilmenizi sağlar. Kullanıcılar, belirli bir süre için yol sürelerinin tahminini tahmin edebilir. Daha fazla bilgi için bkz. [yol yönleri API 'Si edinme](/rest/api/maps/route/getroutedirections).
 
 1. `GetMap`İşlevinde, denetimin `ready` olay işleyicisinin Içinde, JavaScript koduna aşağıdakini ekleyin.
 
@@ -198,7 +198,7 @@ Bu bölümde, yol yönlerini ve bir noktadan diğerine tahmini varış süresini
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   , `SubscriptionKeyCredential` `SubscriptionKeyCredentialPolicy` Azure Maps 'a ABONELIK anahtarıyla http isteklerinin kimliğini doğrulamak için bir oluşturur. , `atlas.service.MapsURL.newPipeline()` `SubscriptionKeyCredential` İlkeyi alır ve bir işlem [hattı](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) örneği oluşturur. , `routeURL` Azure Maps [yönlendirme](https://docs.microsoft.com/rest/api/maps/route) işlemlerine yönelik bir URL 'yi temsil eder.
+   , `SubscriptionKeyCredential` `SubscriptionKeyCredentialPolicy` Azure Maps 'a ABONELIK anahtarıyla http isteklerinin kimliğini doğrulamak için bir oluşturur. , `atlas.service.MapsURL.newPipeline()` `SubscriptionKeyCredential` İlkeyi alır ve bir işlem [hattı](/javascript/api/azure-maps-rest/atlas.service.pipeline) örneği oluşturur. , `routeURL` Azure Maps [yönlendirme](/rest/api/maps/route) işlemlerine yönelik bir URL 'yi temsil eder.
 
 2. Kimlik bilgilerini ve URL 'YI ayarladıktan sonra, denetimin olay işleyicisine aşağıdaki kodu ekleyin `ready` . Bu kod, yolu başlangıç noktasından bitiş noktasına oluşturur. `routeURL`Azure haritalar yönlendirme HIZMETI API 'sini rota yönlerini hesaplamak için ister. Yanıttan bir GeoJSON Özellik koleksiyonu daha sonra yöntemi kullanılarak ayıklanır `geojson.getFeatures()` ve veri kaynağına eklenir.
 

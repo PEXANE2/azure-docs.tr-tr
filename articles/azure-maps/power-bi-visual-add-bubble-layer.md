@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4443b0f479079a4722a5d62fea40afcb4a58632d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff0d2c8e90995222af79d5be63ca3e9da24b3c45
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86262156"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896234"
 ---
 # <a name="add-a-bubble-layer"></a>Baloncuk katmanı ekleme
 
@@ -51,13 +51,13 @@ Başlangıçta tüm kabarcıklar aynı Fill rengine sahiptir. **Alanlar** bölme
 | En büyük boyut            | Veriler ölçeklendirilirken en büyük kabarcık boyutu.|
 | Boyut ölçeklendirme yöntemi | Göreli kabarcık boyutunu belirlemede kullanılan ölçekleme algoritması.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• Doğrusal-daha erken ve en büyük boyuta eşlenen giriş verisi aralığı. (varsayılan)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Günlük veri aralığı, en düşük ve en büyük boyutla eşleştirilmiş olan giriş verisi logaritarak.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Cubic-Bezier-özel ölçeklendirme yöntemi oluşturmak için Cubic-Bezier eğrisinin x1, y1, X2, Y2 değerlerini belirtin. |
 
-**Boyut ölçekleme yöntemi** **günlüğe yazılır**olarak ayarlandığında, aşağıdaki seçenekler kullanılabilir hale getirilir.
+**Boyut ölçekleme yöntemi** **günlüğe yazılır** olarak ayarlandığında, aşağıdaki seçenekler kullanılabilir hale getirilir.
 
 | Ayar   | Açıklama      |
 |-----------|------------------|
 | Günlük ölçeği | Kabarcıkların boyutu hesaplanırken uygulanacak Logaritmik ölçek. |
 
-**Boyut ölçekleme yöntemi** **üçüncü dereceden Bezier**olarak ayarlandığında, ölçek eğrisini özelleştirmek için aşağıdaki seçenekler kullanılabilir hale getirilir.
+**Boyut ölçekleme yöntemi** **üçüncü dereceden Bezier** olarak ayarlandığında, ölçek eğrisini özelleştirmek için aşağıdaki seçenekler kullanılabilir hale getirilir.
 
 | Ayar | Açıklama                           |
 |---------|---------------------------------------|
@@ -90,7 +90,7 @@ Haritaya daha fazla bağlam ekleyin:
 Görseli özelleştirin:
 
 > [!div class="nextstepaction"]
-> [Power BI'da renk biçimlendirmesiyle ilgili ipuçları ve püf noktaları](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Power BI'da renk biçimlendirmesiyle ilgili ipuçları ve püf noktaları](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [Görselleştirme başlıklarını, arka planlarını ve göstergelerini özelleştirme](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [Görselleştirme başlıklarını, arka planlarını ve göstergelerini özelleştirme](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

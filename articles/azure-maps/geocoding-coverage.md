@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cf27319fa84ff5d693e74e90664b7a86f4d934a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037448"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897220"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure haritalar coğrafi kodlama kapsamı
 
-Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) , coğrafi kodlamayı destekler, bu da API isteğinizin bir adres ya da bir konumun adı gibi arama koşullarına sahip olabileceği ve sonucu Enlem ve boylam koordinatları olarak döndürdüğü anlamına gelir. Örneğin, Azure Maps [alma arama adresi API 'si](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) , konum bilgilerini içeren sorguları alır ve sonuçları Enlem ve boylam koordinatları olarak döndürür.
+Azure haritalar [Arama hizmeti](/rest/api/maps/search) , coğrafi kodlamayı destekler, bu da API isteğinizin bir adres ya da bir konumun adı gibi arama koşullarına sahip olabileceği ve sonucu Enlem ve boylam koordinatları olarak döndürdüğü anlamına gelir. Örneğin, Azure Maps [alma arama adresi API 'si](/rest/api/maps/search/getsearchaddress) , konum bilgilerini içeren sorguları alır ve sonuçları Enlem ve boylam koordinatları olarak döndürür.
 
-Ancak, Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) tüm bölgeler ve ülkeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Her bölgede güvenilir bir şekilde arama yapmak istediğiniz konum türlerini belirlemek için bu makaleyi kullanın.
+Ancak, Azure haritalar [Arama hizmeti](/rest/api/maps/search) tüm bölgeler ve ülkeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Her bölgede güvenilir bir şekilde arama yapmak istediğiniz konum türlerini belirlemek için bu makaleyi kullanın.
 
 Bir ülkede/bölgede kodlamayı özelliği, coğrafi kodlama hizmetinin yol verileri kapsamına ve coğrafi kodlama duyarlığına bağımlıdır. Aşağıdaki sınıflandırmalar, her ülkede/bölgede coğrafi kodlama desteğinin düzeyini belirtmek için kullanılır.
 
@@ -301,4 +301,4 @@ Bir ülkede/bölgede kodlamayı özelliği, coğrafi kodlama hizmetinin yol veri
 
 Azure haritalar coğrafi kodlama hakkında daha fazla bilgi edinin:
 > [!div class="nextstepaction"]
-> [Azure Haritalar Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search)
+> [Azure Haritalar Arama hizmeti](/rest/api/maps/search)

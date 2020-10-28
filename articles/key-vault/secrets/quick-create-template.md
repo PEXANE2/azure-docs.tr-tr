@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: cff67e99d40b092341e89c96a9f1e037d8572248
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 68c10ba5581ffe404e8e3c1ac8ce92832cfcd6c4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88690638"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896438"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma
 
@@ -36,7 +36,7 @@ Bu makaleyi gerçekleştirmek için:
 
 * Şablonda izinlerin yapılandırılması için Azure AD kullanıcı nesnesi kimliğiniz gerekir. Aşağıdaki yordam nesne KIMLIĞINI (GUID) alır.
 
-    1. Aşağıdaki Azure PowerShell veya Azure CLı komutunu çalıştırarak **deneyin**' i seçin ve ardından betiği kabuk bölmesine yapıştırın. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin.
+    1. Aşağıdaki Azure PowerShell veya Azure CLı komutunu çalıştırarak **deneyin** ' i seçin ve ardından betiği kabuk bölmesine yapıştırın. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır** ' ı seçin.
 
         # <a name="cli"></a>[CLI](#tab/CLI)
         ```azurecli-interactive
@@ -82,16 +82,16 @@ Daha fazla Azure Key Vault şablon örneği, [Azure hızlı başlangıç şablon
 
     Belirtilmediği takdirde, anahtar kasasını ve bir parolayı oluşturmak için varsayılan değeri kullanın.
 
-    * **Abonelik**: Bir Azure aboneliği seçin.
-    * **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın.
-    * **Konum**: Bir konum seçin. Örneğin **Orta ABD**.
-    * **Key Vault adı**: Anahtar Kasası için,. Vault.Azure.net ad alanı içinde genel olarak benzersiz olması gereken bir ad girin. Dağıtımı doğruladığınızda, sonraki bölümde adı kullanmanız gerekir.
-    * **Kiracı kimliği**: şablon IşLEVI kiracı kimliğinizi otomatik olarak alır. Varsayılan değeri değiştirmeyin.
-    * **Ad Kullanıcı kimliği**: [ön koşullardan](#prerequisites)aldığınız Azure AD Kullanıcı nesne kimliğinizi girin.
-    * **Gizli dizi adı**: anahtar kasasında depoladığınız gizli dizi için bir ad girin. Örneğin, **AdminPassword**.
-    * **Gizli dizi değeri**: gizli değeri girin. Bir parolayı depolukarşılaşırsanız, ön koşullarda oluşturduğunuz oluşturulan parolayı kullanmanız önerilir.
-    * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**: Bunu seçin.
-3. **Satın al**'ı seçin. Anahtar Kasası başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
+    * **Abonelik** : Bir Azure aboneliği seçin.
+    * **Kaynak grubu** : **Yeni oluştur** ' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam** ' a tıklayın.
+    * **Konum** : Bir konum seçin. Örneğin **Orta ABD** .
+    * **Key Vault adı** : Anahtar Kasası için,. Vault.Azure.net ad alanı içinde genel olarak benzersiz olması gereken bir ad girin. Dağıtımı doğruladığınızda, sonraki bölümde adı kullanmanız gerekir.
+    * **Kiracı kimliği** : şablon IşLEVI kiracı kimliğinizi otomatik olarak alır. Varsayılan değeri değiştirmeyin.
+    * **Ad Kullanıcı kimliği** : [ön koşullardan](#prerequisites)aldığınız Azure AD Kullanıcı nesne kimliğinizi girin.
+    * **Gizli dizi adı** : anahtar kasasında depoladığınız gizli dizi için bir ad girin. Örneğin, **AdminPassword** .
+    * **Gizli dizi değeri** : gizli değeri girin. Bir parolayı depolukarşılaşırsanız, ön koşullarda oluşturduğunuz oluşturulan parolayı kullanmanız önerilir.
+    * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** : Bunu seçin.
+3. **Satın al** 'ı seçin. Anahtar Kasası başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
 
     ![ARM şablonu, Key Vault tümleştirme, Portal dağıtma bildirimi](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
@@ -124,7 +124,7 @@ Write-Host "Press [ENTER] to continue..."
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
-![ARM şablonu, Key Vault tümleştirme, Portal doğrulama çıkışını dağıtma](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
+![CLı 'de Portal doğrulama çıkışını Dağıt ' ı gösteren ekran görüntüsü.](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

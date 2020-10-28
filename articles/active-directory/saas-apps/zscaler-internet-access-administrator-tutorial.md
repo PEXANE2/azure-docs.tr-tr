@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e7e332a807c2a92f0bac2c5c8d8fb421f6903df
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: cb3417cf765cd703d72d4a2db7a649400ab2d4de
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520379"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896831"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Öğretici: Zscaler Internet erişim yöneticisiyle Azure Active Directory tümleştirme
 
@@ -64,13 +64,13 @@ Zscaler Internet Access Administrator 'ın Azure AD ile tümleştirilmesini yap�
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Zscaler Internet Access Administrator**yazın, sonuç panelinden **Zscaler internet erişimi Yöneticisi** ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Zscaler Internet Access Administrator** yazın, sonuç panelinden **Zscaler internet erişimi Yöneticisi** ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde Zscaler Internet erişimi Yöneticisi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Zscaler Internet erişim YÖNETICISIYLE Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre Zscaler Internet erişim YÖNETICISIYLE Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Zscaler Internet Erişim Yöneticisi 'ndeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Zscaler Internet erişim yöneticisiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -88,7 +88,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açma 'yı Zscaler Internet erişimi yöneticisiyle yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **Zscaler Internet Access Administrator** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **Zscaler Internet Access Administrator** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -126,27 +126,27 @@ Azure AD çoklu oturum açma 'yı Zscaler Internet erişimi yöneticisiyle yapı
     | `https://admin.zscloud.net/adminsso.do` |
     | `https://admin.zscalerbeta.net/adminsso.do` |
 
-5. Zscaler Internet erişimi yönetici uygulaması, belirli bir biçimde SAML onayları bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri & talepler** bölümünde yönetebilirsiniz. **SAML Ile tek Sign-On ayarlama sayfasında**, **Kullanıcı öznitelikleri & talepler** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+5. Zscaler Internet erişimi yönetici uygulaması, belirli bir biçimde SAML onayları bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri & talepler** bölümünde yönetebilirsiniz. **SAML Ile tek Sign-On ayarlama sayfasında** , **Kullanıcı öznitelikleri & talepler** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
     ![Öznitelik bağlantısı](./media/zscaler-internet-access-administrator-tutorial/tutorial_zscaler-internet_attribute.png)
 
 6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, YUKARıDAKI görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırın ve aşağıdaki adımları gerçekleştirin:
 
-    | Adı  | Kaynak özniteliği  |
+    | Ad  | Kaynak özniteliği  |
     | ---------| ------------ |
     | Rol     | Kullanıcı. atandroles |
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
-    ![image](./common/new-save-attribute.png)
+    ![Ekran görüntüsü, yeni talep ekleme seçeneğiyle Kullanıcı taleplerini gösterir.](./common/new-save-attribute.png)
     
-    ![image](./common/new-attribute-details.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı taleplerini Yönet iletişim kutusunu gösterir.](./common/new-attribute-details.png)
 
-    b. **Kaynak özniteliği** listesinden öznitelik değerini yeniden toplayın.
+    b. **Kaynak özniteliği** listesinden öznitelik değerini seçin.
 
-    c. **Tamam**’a tıklayın.
+    c. **Tamam** ’a tıklayın.
 
-    d. **Kaydet**’e tıklayın.
+    d. **Kaydet** ’e tıklayın.
 
     > [!NOTE]
     > Azure AD 'de rolün nasıl yapılandırılacağını öğrenmek için lütfen [buraya](../develop/active-directory-enterprise-app-role-management.md) tıklayın
@@ -171,27 +171,27 @@ Azure AD çoklu oturum açma 'yı Zscaler Internet erişimi yöneticisiyle yapı
 
 2. **Yönetim > Yönetici Yönetimi** ' ne gidin ve aşağıdaki adımları gerçekleştirin ve Kaydet ' e tıklayın:
 
-    ![Yönetim](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "Yönetim")
+    ![Ekran görüntüsü, SAML kimlik doğrulamasını etkinleştirme, S S L sertifikasını karşıya yükleme ve bir veren belirleme seçenekleriyle yönetici yönetimini gösterir.](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "Yönetim")
 
-    a. **SAML kimlik doğrulamasını etkinleştir**' i işaretleyin.
+    a. **SAML kimlik doğrulamasını etkinleştir** ' i işaretleyin.
 
-    b. **Ortak SSL sertifikasındaki**Azure Portal adresinden INDIRDIĞINIZ Azure SAML imzalama sertifikasını karşıya yüklemek Için **karşıya yükle**' ye tıklayın.
+    b. **Ortak SSL sertifikasındaki** Azure Portal adresinden INDIRDIĞINIZ Azure SAML imzalama sertifikasını karşıya yüklemek Için **karşıya yükle** ' ye tıklayın.
 
     c. İsteğe bağlı olarak, ek güvenlik için, SAML yanıtının vereni doğrulamak üzere **veren** ayrıntılarını ekleyin.
 
 3. Yönetici Kullanıcı arabiriminde aşağıdaki adımları gerçekleştirin:
 
-    ![Yönetim](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
+    ![Ekran görüntüsü, adımları gerçekleştirebileceğiniz Yönetici U 'yi gösterir.](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
 
     a. Sol alt kısımdaki **etkinleştirme** menüsünün üzerine gelin.
 
-    b. **Etkinleştir**' e tıklayın.
+    b. **Etkinleştir** ' e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -203,28 +203,28 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Zscaler Internet erişim yöneticisine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Zscaler Internet erişimi Yöneticisi**' ni seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **Zscaler Internet erişimi Yöneticisi** ' ni seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Zscaler Internet Erişim Yöneticisi**' ni yazın ve seçin.
+2. Uygulamalar listesinde, **Zscaler Internet Erişim Yöneticisi** ' ni yazın ve seçin.
 
     ![Uygulamalar listesinde Zscaler Internet erişimi yönetici bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 

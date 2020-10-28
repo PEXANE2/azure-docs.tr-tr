@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b12ff431b2d164baf4f70fa5341f538b16bca51
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85319076"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896574"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Veri Yönetimi Ağ Geçidi kullanımıyla ilgili sorunları giderme
 Bu makalede Veri Yönetimi ağ geçidi kullanmayla ilgili sorunları giderme hakkında bilgi sağlanır.
@@ -86,7 +86,7 @@ Bir ağ geçidini kaydederken aşağıdaki hata iletisini görebilirsiniz.
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
 
-![Ağ Geçidi anahtarı geçersiz veya boş](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
+![Ağ Geçidi anahtarının geçersiz veya boş olduğunu belirten hata iletisini vurgulayan ekran görüntüsü.](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
 
 #### <a name="cause"></a>Nedeni
 Ağ Geçidi anahtarı yeniden üretildi veya Azure portal Ağ Geçidi silindi. Veri Yönetimi ağ geçidi kurulumu en son değilse de oluşabilir.
@@ -107,14 +107,14 @@ Bir ağ geçidini kaydederken aşağıdaki hata iletisini görebilirsiniz.
 Bu hata, ağ geçidi silindiğinden veya ilişkili ağ geçidi anahtarı yeniden üretildiğinden oluşabilir.
 
 #### <a name="resolution"></a>Çözüm
-Ağ Geçidi silinmişse, portaldan ağ geçidini yeniden oluşturun, **Kaydet**' e tıklayın, anahtarı portaldan kopyalayın, yapıştırın ve ağ geçidini kaydetmeyi deneyin.
+Ağ Geçidi silinmişse, portaldan ağ geçidini yeniden oluşturun, **Kaydet** ' e tıklayın, anahtarı portaldan kopyalayın, yapıştırın ve ağ geçidini kaydetmeyi deneyin.
 
 Ağ geçidi hala mevcutsa ancak anahtarı yeniden üretildiğinde, ağ geçidini kaydetmek için yeni anahtarı kullanın. Anahtarınız yoksa portaldan anahtarı yeniden oluşturun.
 
 ### <a name="7-problem"></a>7. sorun
 Bir ağ geçidini kaydederken, bir sertifika için yol ve parola girmeniz gerekebilir.
 
-![Sertifika belirtin](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
+![Sertifikanın yolunu ve parolasını nereye girdiğinin gösterildiği ekran görüntüsü.](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
 
 #### <a name="cause"></a>Nedeni
 Ağ Geçidi daha önce diğer makinelere kaydedildi. Bir ağ geçidinin ilk kaydı sırasında ağ geçidiyle bir şifreleme sertifikası ilişkilendirilir. Sertifika, ağ geçidi tarafından kendi kendine oluşturulmuş veya Kullanıcı tarafından sağlanmış olabilir.  Bu sertifika, veri deposunun (bağlı hizmet) kimlik bilgilerini şifrelemek için kullanılır.  
@@ -233,7 +233,7 @@ Veri deposu bağlantısı veya sürücü ile ilgili hatalar görürseniz, aşağ
 
 1. Ağ Geçidi makinesinde Veri Yönetimi ağ geçidi Configuration Manager başlatın.
 2. **Tanılama** sekmesine geçin.
-3. **Test bağlantısı**' nda Ağ Geçidi grubu değerlerini ekleyin.
+3. **Test bağlantısı** ' nda Ağ Geçidi grubu değerlerini ekleyin.
 4. Bağlantı bilgilerini ve kimlik bilgilerini kullanarak ağ geçidi makinesinden şirket içi veri kaynağına bağlanıp bağlanamadıysanız bkz. **Test** ' e tıklayın. Bir sürücü yükledikten sonra bağlantı testi yine başarısız olursa, ağ geçidini son değişiklikleri alması için yeniden başlatın.
 
 ![Tanılama sekmesinde Bağlantıyı Sına](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
@@ -252,7 +252,7 @@ Ağ Geçidi sorunlarını gidermeye yönelik yardım almak için Microsoft Deste
 4. Seçim Microsoft Web Hizmetleri Gizlilik bildirimini gözden geçirmek için **Gizlilik** ' e tıklayın.
 5. Karşıya yüklemek üzere olduğunuz şeyi karşıladığınızda, sorun giderme için günlükleri **Gönder** ' e tıklayarak günlükleri son yedi günden Microsoft 'a gönderin. Aşağıdaki ekran görüntüsünde gösterildiği gibi, gönderme günlüğü işleminin durumunu görmeniz gerekir.
 
-    ![Veri Yönetimi ağ geçidi gönderme günlükleri durumu](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
+    ![Gönderme günlüğü işleminin durumunun nerede görüntüleneceği gösteren ekran görüntüsü.](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
 6. İşlem tamamlandıktan sonra, aşağıdaki ekran görüntüsünde gösterildiği gibi bir iletişim kutusu görürsünüz.
 
     ![Veri Yönetimi ağ geçidi gönderme günlükleri durumu](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
@@ -278,7 +278,7 @@ Bu senaryolar için, ağ geçidi günlüklerini bir zip dosyası olarak kaydedeb
 ### <a name="locate-gateway-logs"></a>Ağ Geçidi günlüklerini bulma
 Ayrıntılı ağ geçidi günlük bilgilerini Windows olay günlüklerinde bulabilirsiniz.
 
-1. Windows **Olay Görüntüleyicisi**başlatın.
+1. Windows **Olay Görüntüleyicisi** başlatın.
 2. **Uygulama ve hizmet günlükleri**  >  **veri yönetimi ağ geçidi** klasöründeki günlükleri bulun.
 
    Ağ geçidine ilişkin sorunlarda sorun giderirken, Olay Görüntüleyicisi 'nde hata düzeyi olayları arayın.

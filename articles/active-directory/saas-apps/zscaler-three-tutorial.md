@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 934c19d9bd09b9c9d8d13f20c1b1271336739ec3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 12bc1de62217a598a478d8d7e4d71a4b60e000b9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514563"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896642"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>Öğretici: Zscaler üç ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -52,14 +52,14 @@ Zscaler 'nın üçünü Azure AD 'ye tümleştirmeyi yapılandırmak için, Gale
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Zscaler üç** yazın.
 1. Sonuçlar panelinden **Zscaler** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zscaler-three"></a>Zscaler için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Zscaler Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Zscaler içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Zscaler Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Zscaler içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu Zscaler üç ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -74,8 +74,8 @@ Azure AD SSO 'yu Zscaler üç ile yapılandırmak ve test etmek için aşağıda
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Zscaler üç** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **Zscaler üç** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -86,11 +86,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Zscaler üç uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, düzenleme simgesi seçili olan kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
 6. Yukarıdaki Zscaler uygulamasının yanı sıra, aşağıda gösterilen SAML yanıtında daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
     
-    | Adı | Kaynak özniteliği |
+    | Ad | Kaynak özniteliği |
     | ---------| ------------ |
     | Üyesi     | Kullanıcı. atandroles |
 
@@ -109,35 +109,35 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Zscaler ' a erişim vererek, B. Simon 'u Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Zscaler 3**' ü seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde **Zscaler 3** ' ü seçin.
 1. **Kullanıcılar ve gruplar** iletişim kutusunda listeden **Britta Simon** gibi bir kullanıcı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-    ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_users.png)
+    ![Ekran görüntüsü, bir kullanıcı seçebileceğiniz kullanıcılar ve gruplar iletişim kutusunu gösterir.](./media/zscaler-three-tutorial/tutorial_zscalerthree_users.png)
 
 1. **Rol Seç** iletişim kutusunda listeden uygun Kullanıcı rolünü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-    ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_roles.png)
+    ![Ekran görüntüsü, bir kullanıcı rolü seçebileceğiniz rol Seç iletişim kutusunu gösterir.](./media/zscaler-three-tutorial/tutorial_zscalerthree_roles.png)
 
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesini seçin.
 
-    ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_assign.png)
+    ![Ekran görüntüsü ata ' yı seçebileceğiniz atama Ekle iletişim kutusunu gösterir.](./media/zscaler-three-tutorial/tutorial_zscalerthree_assign.png)
 
 ## <a name="configure-zscaler-three-sso"></a>Zscaler üç SSO yapılandırma
 
-1. Zscaler 'daki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarımın güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+1. Zscaler 'daki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemeniz** ' ne tıklayarak **uygulamalarımın güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -149,11 +149,11 @@ Bu bölümde, Zscaler ' a erişim vererek, B. Simon 'u Azure çoklu oturum açma
 
 4. **Yönetim > kimlik doğrulaması > kimlik doğrulama ayarları** ' na gidin ve aşağıdaki adımları gerçekleştirin:
    
-    ![Yönetim](./media/zscaler-three-tutorial/ic800206.png "Yönetim")
+    ![Ekran görüntüsü, açıklanan adımları içeren Zscaler sitesini gösterir.](./media/zscaler-three-tutorial/ic800206.png "Yönetim")
 
-    a. Kimlik doğrulama türü altında **SAML**' yi seçin.
+    a. Kimlik doğrulama türü altında **SAML** ' yi seçin.
 
-    b. **SAML Yapılandır**öğesine tıklayın.
+    b. **SAML Yapılandır** öğesine tıklayın.
 
 5. **SAML Düzenle** penceresinde, aşağıdaki adımları uygulayın: ve Kaydet ' e tıklayın.  
             
@@ -161,11 +161,11 @@ Bu bölümde, Zscaler ' a erişim vererek, B. Simon 'u Azure çoklu oturum açma
     
     a. **SAML PORTALı URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL** 'sini yapıştırın.
 
-    b. **Oturum açma adı öznitelik** metin kutusuna **NameID**girin.
+    b. **Oturum açma adı öznitelik** metin kutusuna **NameID** girin.
 
-    c. **Ortak SSL sertifikasındaki**Azure Portal adresinden INDIRDIĞINIZ Azure SAML imzalama sertifikasını karşıya yüklemek Için **karşıya yükle**' ye tıklayın.
+    c. **Ortak SSL sertifikasındaki** Azure Portal adresinden INDIRDIĞINIZ Azure SAML imzalama sertifikasını karşıya yüklemek Için **karşıya yükle** ' ye tıklayın.
 
-    d. **SAML otomatik sağlamayı etkinleştir**' i açın.
+    d. **SAML otomatik sağlamayı etkinleştir** ' i açın.
 
     e. **Kullanıcı görünen adı öznitelik** metin kutusunda, DisplayName ÖZNITELIKLERI için SAML otomatik sağlamayı etkinleştirmek istiyorsanız **DisplayName** yazın.
 
@@ -173,20 +173,20 @@ Bu bölümde, Zscaler ' a erişim vererek, B. Simon 'u Azure çoklu oturum açma
 
     örneğin: Departman **adı özniteliğinde** departman ÖZNITELIKLERI için SAML otomatik sağlamayı etkinleştirmek istiyorsanız **departmanı** girin.
 
-    h. **Kaydet**’e tıklayın.
+    h. **Kaydet** ’e tıklayın.
 
 6. **Kullanıcı kimlik doğrulamasını Yapılandır** iletişim sayfasında, aşağıdaki adımları gerçekleştirin:
 
-    ![Yönetim](./media/zscaler-three-tutorial/ic800207.png)
+    ![Ekran görüntüsü, etkinleştir seçili olan kullanıcı kimlik doğrulamasını Yapılandır iletişim kutusunu gösterir.](./media/zscaler-three-tutorial/ic800207.png)
 
     a. Sol alt kısımdaki **etkinleştirme** menüsünün üzerine gelin.
 
-    b. **Etkinleştir**' e tıklayın.
+    b. **Etkinleştir** ' e tıklayın.
 
 ## <a name="configuring-proxy-settings"></a>Ara sunucu ayarlarını yapılandırma
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Internet Explorer 'da proxy ayarlarını yapılandırmak için
 
-1. **Internet Explorer 'ı**başlatın.
+1. **Internet Explorer 'ı** başlatın.
 
 2. **Internet** seçenekleri iletişim kutusunu açmak için **Araçlar** menüsünden **Internet seçenekleri** ' ni seçin.   
     
@@ -202,13 +202,13 @@ Bu bölümde, Zscaler ' a erişim vererek, B. Simon 'u Azure çoklu oturum açma
    
     ![Proxy sunucusu](./media/zscaler-three-tutorial/ic769494.png "Proxy sunucu")
 
-    a. **LAN için bir proxy sunucusu kullan**' ı seçin.
+    a. **LAN için bir proxy sunucusu kullan** ' ı seçin.
 
-    b. Adres metin kutusuna **ağ geçidi yazın. Zscaler Three.net**.
+    b. Adres metin kutusuna **ağ geçidi yazın. Zscaler Three.net** .
 
-    c. Bağlantı noktası metin kutusuna **80**yazın.
+    c. Bağlantı noktası metin kutusuna **80** yazın.
 
-    d. **Yerel adresler için proxy sunucusunu atla**' yı seçin.
+    d. **Yerel adresler için proxy sunucusunu atla** ' yı seçin.
 
     e. **Yerel alan ağı (LAN) ayarları** iletişim kutusunu kapatmak için **Tamam** ' ı tıklatın.
 

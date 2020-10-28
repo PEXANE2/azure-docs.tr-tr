@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: jeedes
-ms.openlocfilehash: feb65d11c525b396e272c8a43ad9619d10a010d8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9b244d5e6aa9dd732aa670fd645b6bbc266c9535
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671191"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897288"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>Öğretici: müşteri için SAP bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile müşteri için SAP bulut
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -86,13 +86,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Müşteri için SAP Cloud uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    !["Düzenle" simgesi seçili "Kullanıcı öznitelikleri" iletişim kutusunu gösteren ekran görüntüsü.](common/edit-attribute.png)
 
 1. **Kullanıcı öznitelikleri & talepler** Iletişim kutusundaki **Kullanıcı öznitelikleri** bölümünde aşağıdaki adımları uygulayın:
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **Düzenle simgesine** tıklayın.
 
-    ![image](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
+    !["Düzenle" simgesi seçili "Kullanıcı özniteliklerini & taleplerini" gösteren ekran görüntüsü.](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
 
     ![image](./media/sap-customer-cloud-tutorial/tutorial_usermailedit.png)
 
@@ -149,11 +149,11 @@ Bu bölümde, müşteri için SAP buluta erişim vererek Azure çoklu oturum aç
 
 2. Menünün sol tarafında, **kimlik sağlayıcıları**  >  **Kurumsal kimlik sağlayıcıları** ' na tıklayın  >  **Add** ve açılır pencerede **Azure AD** gibi kimlik sağlayıcısı adını ekleyin, **Kaydet** ' e tıklayın, ardından **SAML 2,0 yapılandırması** ' na tıklayın.
 
-    ![SAP yapılandırması](./media/sap-customer-cloud-tutorial/configure01.png)
+    !["Kimlik sağlayıcısı ekle" iletişim kutusu metin kutusu vurgulanmış ve "Kaydet" düğmesi seçili olan "kimlik sağlayıcıları" sayfasını gösteren ekran görüntüsü.](./media/sap-customer-cloud-tutorial/configure01.png)
 
 3. **SAML 2,0 yapılandırma** bölümünde aşağıdaki adımları uygulayın:
 
-    ![SAP yapılandırması](./media/sap-customer-cloud-tutorial/configure02.png)
+    !["A M L 2,0 yapılandırmasını" gösteren ve "araştır" düğmesi seçili olan ekran görüntüsü.](./media/sap-customer-cloud-tutorial/configure02.png)
 
     a. Azure portal 'ten indirdiğiniz Federasyon meta veri XML dosyasını karşıya yüklemek için, **Araştır** ' a tıklayın.
 
@@ -169,7 +169,7 @@ Azure AD kullanıcılarının müşteri için SAP bulutu 'nda oturum açmasını
 
 2. Menünün sol tarafında **Kullanıcılar & yetkilendirmeler**  >  **Kullanıcı yönetimi**  >  **Kullanıcı Ekle** ' ye tıklayın.
 
-    ![SAP yapılandırması](./media/sap-customer-cloud-tutorial/configure03.png)
+    !["Kullanıcı Ekle" düğmesinin seçili olduğu "Kullanıcı Yönetimi" sayfasını gösteren ekran görüntüsü.](./media/sap-customer-cloud-tutorial/configure03.png)
 
 3. **Yeni Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın:
 

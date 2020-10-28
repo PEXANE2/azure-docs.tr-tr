@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d61cc94ee1b3c5d23135c033b1068aa7411761d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12548b04e5fb967572e17f1be88369b9950661c3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88033266"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896302"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure haritalar Mobility kapsamı
 
-Azure haritalar [Mobility hizmeti](https://aka.ms/AzureMapsMobilityService) , aktarım yönlendirme ve yakın ortak aktarım için arama gibi genel aktarım özelliklerine sahip uygulamalar için geliştirme süresini geliştirir. Kullanıcılar, aktarım duraklarının, satırların ve zamanlamalarla ilgili ayrıntılı bilgi alabilir. Mobility hizmeti ayrıca kullanıcıların durdurma ve çizgi geometrileri, duruyor, satırlar ve hizmet alanlarıyla ilgili uyarıları ve gerçek zamanlı genel transit ve hizmet uyarılarını almasına olanak tanır. Ayrıca, Mobility hizmeti çok kalıcı seyahat planlama seçenekleriyle yönlendirme özellikleri sağlar. Çoklu kalıcı seyahat planlaması, tek seyahat halinde yürüyen, Bicycling ve genel aktarım seçeneklerini içerir. Kullanıcılar, ayrıntılı çok kalıcı adım adım yolculuk de erişebilir. 
+Azure haritalar [Mobility hizmeti](/rest/api/maps/mobility) , aktarım yönlendirme ve yakın ortak aktarım için arama gibi genel aktarım özelliklerine sahip uygulamalar için geliştirme süresini geliştirir. Kullanıcılar, aktarım duraklarının, satırların ve zamanlamalarla ilgili ayrıntılı bilgi alabilir. Mobility hizmeti ayrıca kullanıcıların durdurma ve çizgi geometrileri, duruyor, satırlar ve hizmet alanlarıyla ilgili uyarıları ve gerçek zamanlı genel transit ve hizmet uyarılarını almasına olanak tanır. Ayrıca, Mobility hizmeti çok kalıcı seyahat planlama seçenekleriyle yönlendirme özellikleri sağlar. Çoklu kalıcı seyahat planlaması, tek seyahat halinde yürüyen, Bicycling ve genel aktarım seçeneklerini içerir. Kullanıcılar, ayrıntılı çok kalıcı adım adım yolculuk de erişebilir. 
 
 Azure haritalar tüm şehirlerin ve ülkelerin/bölgelerin aynı düzeyde bilgileri ve doğruluğu sağlamamıştır. Ortak aktarım verilerini çağırma özelliği, Metro alanına bağlıdır. Ayrıca, harita verileri, Metro alanına sunan tüm genel aktarım seçeneklerini ve kuruluşlarını içermeyebilir.
 
@@ -159,4 +159,4 @@ Mobility hizmetini kullanarak gerçek zamanlı veriler isteme hakkında bilgi ed
 Azure haritalar Mobility hizmeti API 'SI belgelerini inceleyin
 
 > [!div class="nextstepaction"]
-> [Mobility hizmeti API 'SI belgeleri](https://aka.ms/AzureMapsMobilityService)
+> [Mobility hizmeti API 'SI belgeleri](/rest/api/maps/mobility)

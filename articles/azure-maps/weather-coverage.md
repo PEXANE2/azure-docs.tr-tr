@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 5383309143302e0f3fb2052b47e4c497d9a21bf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e529e44f48343027457f18ba503e4bbb5930f1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976885"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896625"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure haritalar Hava durumu kapsamı
 
-Bu makalede Azure haritalar [Hava durumu Hizmetleri](https://aka.ms/AzureMapsWeatherService)için kapsam bilgileri sağlanmaktadır. Azure haritalar Hava durumu veri Hizmetleri, radar kutucukları, geçerli hava durumu koşulları, hava durumu tahminleri ve bir rota üzerinde hava durumu gibi ayrıntıları getirir.
+Bu makalede Azure haritalar [Hava durumu Hizmetleri](/rest/api/maps/weather)için kapsam bilgileri sağlanmaktadır. Azure haritalar Hava durumu veri Hizmetleri, radar kutucukları, geçerli hava durumu koşulları, hava durumu tahminleri ve bir rota üzerinde hava durumu gibi ayrıntıları getirir.
 
 Azure haritalar tüm ülkeler ve bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir.
 
@@ -299,4 +299,4 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Türkiye                 | ✓ |   | | ✓| 
 | Ukrayna                | ✓ |   | | ✓| 
 | Birleşik Krallık         | ✓ | ✓ | ✓| ✓| 
-| Vatikan           | ✓ |   |✓ | ✓| 
+| Vatikan           | ✓ |   |✓ | ✓|

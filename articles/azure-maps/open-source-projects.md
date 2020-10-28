@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b45eea7a6c4bccbdc6669752255469174493ab55
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ebe633bbfa8ec950e7726c127e38adecf0d1872f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938357"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896268"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure haritalar topluluk-açık kaynaklı projeler
 
@@ -82,4 +82,4 @@ Oluşturulan ve açık kaynaklı projeler ve örnekler için aşağıdaki deyiml
 Daha fazla açık kaynaklı Azure haritalar projesi bulun.
 
 > [!div class="nextstepaction"]
-> [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kod örnekleri](/samples/browse/?products=azure-maps)

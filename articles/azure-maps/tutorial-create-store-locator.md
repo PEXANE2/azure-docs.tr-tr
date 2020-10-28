@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 981697211cf8ee0aff1ac0e3d0db6000c1089c00
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335271"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896858"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturma
 
-Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıcı oluşturma sürecinde size rehberlik eder. Mağaza bulleyicileri ortaktır. Bu tür uygulamalarda kullanılan kavramların birçoğu, diğer birçok uygulama türü için geçerlidir. Müşterilere bir mağaza bulucunun teklif etmek, doğrudan tüketicilere satış yapan işletmelerin bir sunudur. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıcı oluşturma sürecinde size rehberlik eder. Mağaza bulleyicileri ortaktır. Bu tür uygulamalarda kullanılan kavramların birçoğu, diğer birçok uygulama türü için geçerlidir. Müşterilere bir mağaza bulucunun teklif etmek, doğrudan tüketicilere satış yapan işletmelerin bir sunudur. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Harita Denetimi API 'sini kullanarak yeni bir Web sayfası oluşturun.
@@ -76,7 +76,7 @@ Bir mağaza Bulucu uygulaması geliştirmeden önce, haritada göstermek istedi�
 
 Verilerin ekran görüntüsüne bakarak aşağıdaki gözlemleri yapabiliriz:
 
-* Konum bilgileri **Adressatırı**, **şehir**, **municipsellik** (ilçe), **Adminbölüm** (Eyalet/bölge), **Postcode** (posta kodu) ve **ülke** sütunları kullanılarak depolanır.  
+* Konum bilgileri **Adressatırı** , **şehir** , **municipsellik** (ilçe), **Adminbölüm** (Eyalet/bölge), **Postcode** (posta kodu) ve **ülke** sütunları kullanılarak depolanır.  
 * **Enlem** ve **boylam** sütunları, her contoso Coffee kahve dükkanı mağaza konumunun koordinatlarını içerir. Koordinat bilgilerine sahip değilseniz, Konum koordinatlarını öğrenmek için Azure haritalar 'daki arama hizmetleri ' ni kullanabilirsiniz.
 * Bazı ek sütunlar, kafeterlerle ilgili meta verileri içerir: telefon numarası, Boole sütunları ve açılış ve kapanış zamanlarını 24 saat biçiminde depolar. Boolean sütunları Wi-Fi ve wheelsandalye erişilebilirliği içindir. Konum verilerinize daha uygun olan meta verileri içeren kendi sütunlarınızı oluşturabilirsiniz.
 
@@ -87,7 +87,7 @@ Veri kümesini uygulamada açığa çıkarmak için birçok yol vardır. Bir yak
 
 Başka bir yaklaşım, bu veri kümesini tarayıcının kolayca ayrıştırabileceği düz bir metin dosyasına dönüştürmesidir. Dosyanın kendisi, uygulamanın geri kalanı ile barındırılabilir. Bu seçenek, şeyleri basit tutar, ancak kullanıcı tüm verileri indirdiğinden daha küçük veri kümeleri için iyi bir seçenektir. Veri dosyasının boyutu 1 MB 'tan küçük olduğundan bu veri kümesi için düz metin dosyası kullanıyoruz.  
 
-Çalışma kitabını düz metin dosyasına dönüştürmek için çalışma kitabını sekmeyle ayrılmış bir dosya olarak kaydedin. Her sütun bir sekme karakteriyle sınırlandırılır, bu da sütunları kodlarımızda ayrıştırmayı kolaylaştırır. Virgülle ayrılmış değer (CSV) biçimi kullanabilirsiniz, ancak bu seçenek daha fazla ayrıştırma mantığı gerektirir. İçinde virgül olan herhangi bir alan, tırnak işaretleriyle kaydırılır. Bu verileri Excel 'de sekmeyle ayrılmış bir dosya olarak dışarı aktarmak için **farklı kaydet**' i seçin. **Farklı kaydet türü** aşağı açılan listesinde **metin (sekmeyle sınırlandırılmış) (*. txt)** seçeneğini belirleyin. Dosyayı *ContosoCoffee.txt*olarak adlandırın.
+Çalışma kitabını düz metin dosyasına dönüştürmek için çalışma kitabını sekmeyle ayrılmış bir dosya olarak kaydedin. Her sütun bir sekme karakteriyle sınırlandırılır, bu da sütunları kodlarımızda ayrıştırmayı kolaylaştırır. Virgülle ayrılmış değer (CSV) biçimi kullanabilirsiniz, ancak bu seçenek daha fazla ayrıştırma mantığı gerektirir. İçinde virgül olan herhangi bir alan, tırnak işaretleriyle kaydırılır. Bu verileri Excel 'de sekmeyle ayrılmış bir dosya olarak dışarı aktarmak için **farklı kaydet** ' i seçin. **Farklı kaydet türü** aşağı açılan listesinde **metin (sekmeyle sınırlandırılmış) (*. txt)** seçeneğini belirleyin. Dosyayı *ContosoCoffee.txt* olarak adlandırın.
 
 ![Farklı Kaydet tür iletişim kutusunun ekran görüntüsü](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
@@ -97,15 +97,15 @@ Metin dosyasını Not defteri 'nde açarsanız, aşağıdaki şekle benzer şeki
 
 ## <a name="set-up-the-project"></a>Projeyi ayarlama
 
-Projeyi oluşturmak için, [Visual Studio 'yu](https://visualstudio.microsoft.com) veya seçtiğiniz kod düzenleyicisini kullanabilirsiniz. Proje klasörünüzde üç dosya oluşturun: *index.html*, *index. css*ve *index.js*. Bu dosyalar, uygulamanın yerleşimini, stilini ve mantığını tanımlar. *Veri* adlı bir klasör oluşturun ve klasöre *ContosoCoffee.txt* ekleyin. *Görüntüler*adlı başka bir klasör oluşturun. Haritada simgeler, düğmeler ve işaretçiler için bu uygulamada 10 resim kullanıyoruz. [Bu görüntüleri indirebilirsiniz](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Proje klasörünüz artık aşağıdaki şekilde görünmelidir:
+Projeyi oluşturmak için, [Visual Studio 'yu](https://visualstudio.microsoft.com) veya seçtiğiniz kod düzenleyicisini kullanabilirsiniz. Proje klasörünüzde üç dosya oluşturun: *index.html* , *index. css* ve *index.js* . Bu dosyalar, uygulamanın yerleşimini, stilini ve mantığını tanımlar. *Veri* adlı bir klasör oluşturun ve klasöre *ContosoCoffee.txt* ekleyin. *Görüntüler* adlı başka bir klasör oluşturun. Haritada simgeler, düğmeler ve işaretçiler için bu uygulamada 10 resim kullanıyoruz. [Bu görüntüleri indirebilirsiniz](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Proje klasörünüz artık aşağıdaki şekilde görünmelidir:
 
 ![Basit depo Konumlandırıcı proje klasörünün ekran görüntüsü](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
 ## <a name="create-the-user-interface"></a>Kullanıcı arabirimini oluşturma
 
-Kullanıcı arabirimini oluşturmak için *index.html*'ye kod ekleyin:
+Kullanıcı arabirimini oluşturmak için *index.html* 'ye kod ekleyin:
 
-1. Aşağıdaki `meta` etiketleri `head` *index.html*öğesine ekleyin. `charset`Etiket, (UTF-8) karakter kümesini tanımlar. `http-equiv`Internet Explorer ve Microsoft Edge 'in değeri en son tarayıcı sürümlerini kullanmasını söyler. Son etiket ise, `meta` yanıt veren düzenler için iyi bir görünüm penceresi belirtir.
+1. Aşağıdaki `meta` etiketleri `head` *index.html* öğesine ekleyin. `charset`Etiket, (UTF-8) karakter kümesini tanımlar. `http-equiv`Internet Explorer ve Microsoft Edge 'in değeri en son tarayıcı sürümlerini kullanmasını söyler. Son etiket ise, `meta` yanıt veren düzenler için iyi bir görünüm penceresi belirtir.
 
     ```HTML
     <meta charset="utf-8">
@@ -126,7 +126,7 @@ Kullanıcı arabirimini oluşturmak için *index.html*'ye kod ekleyin:
     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
-1. *index.js* ve *index. css*öğesine başvurular ekleyin:
+1. *index.js* ve *index. css* öğesine başvurular ekleyin:
 
     ```HTML
     <link rel="stylesheet" href="index.css" type="text/css">
@@ -385,7 +385,7 @@ Her şey artık Kullanıcı arabiriminde ayarlanır. Yine de verileri yüklemek 
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. *index.js*kod ekleyin. Aşağıdaki kod eşlemeyi başlatır. Sayfa yüklemeyi bitirene kadar beklemek için bir [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events) ekledik. Daha sonra, eşlemenin yüklenmesini izlemek için olaylar ve arama düğmesine ve Konumum düğmesine işlevsellik veririz.
+1. *index.js* kod ekleyin. Aşağıdaki kod eşlemeyi başlatır. Sayfa yüklemeyi bitirene kadar beklemek için bir [olay dinleyicisi](/javascript/api/azure-maps-control/atlas.map#events) ekledik. Daha sonra, eşlemenin yüklenmesini izlemek için olaylar ve arama düğmesine ve Konumum düğmesine işlevsellik veririz.
 
    Kullanıcı arama düğmesini seçtiğinde veya arama kutusuna bir konum yazdığında, sonra ENTER tuşuna bastığında, kullanıcının sorgusuna yönelik belirsiz bir arama başlatılır. `countrySet`Arama sonuçlarını bu ülkelere/bölgelerle sınırlamak için bir ülke/bölge ISO 2 değerleri dizisi geçirin. Ülkeleri/bölgeleri arama yapılacak şekilde sınırlamak, döndürülen sonuçların doğruluğunu artırmaya yardımcı olur. 
   
@@ -931,8 +931,8 @@ Bu öğreticide, Azure haritalar 'ı kullanarak temel bir mağaza Konumlandırı
  * Kullanıcının [bir rota üzerinde konumları filtrelemesine](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)izin verin. 
  * [Filtre ayarlama](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)özelliğini ekleyin. 
  * Sorgu dizesi kullanarak bir ilk arama değeri belirtmek için destek ekleyin. Bu seçeneği mağaza bulucusınıza eklediğinizde, kullanıcılar aramaları yer işaretine ekleyebilir ve aramaları paylaşabilir. Ayrıca, bu sayfaya aramaları başka bir sayfadan iletmeniz için kolay bir yöntem sağlar.  
- * Mağaza bulucuyu bir [Azure App Service Web uygulaması](https://docs.microsoft.com/azure/app-service/quickstart-html)olarak dağıtın. 
- * Verilerinizi bir veritabanında depolayın ve yakındaki konumları arayın. Daha fazla bilgi edinmek için bkz. [SQL Server uzamsal veri türlerine genel bakış](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017&preserve-view=true) ve [en yakın komşu Için uzamsal verileri sorgulama](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017&preserve-view=true).
+ * Mağaza bulucuyu bir [Azure App Service Web uygulaması](../app-service/quickstart-html.md)olarak dağıtın. 
+ * Verilerinizi bir veritabanında depolayın ve yakındaki konumları arayın. Daha fazla bilgi edinmek için bkz. [SQL Server uzamsal veri türlerine genel bakış](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017) ve [en yakın komşu Için uzamsal verileri sorgulama](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017).
 
 [Tam kaynak kodu görüntüleyebilir](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), [canlı örneği görüntüleyebilir](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) ve [Yakınlaştırma düzeylerini ve kutucuk kılavuzunu](zoom-levels-and-tile-grid.md)kullanarak Azure haritalar 'ın kapsamı ve özellikleri hakkında daha fazla bilgi edinebilirsiniz. İş mantığınıza uygulamak için [veri odaklı stil ifadeleri de kullanabilirsiniz](data-driven-style-expressions-web-sdk.md) .
 

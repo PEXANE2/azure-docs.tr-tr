@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 168b3d51b66078b3d4c2e113711d3124820dd6bd
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: be0b2a3a15c77ae0de303f02be078f115b283eb9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677785"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897152"
 ---
 # <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Öğretici-Bing Haritalar 'dan bir Web uygulaması geçirme
 
 Bing Haritalar kullanan Web uygulamaları genellikle Bing Haritalar V8 JavaScript SDK 'sını kullanır. Azure Haritalar Web SDK 'Sı, geçirilecek Azure tabanlı uygun SDK 'dir. Azure Haritalar Web SDK 'Sı, etkileşimli haritaları, Web veya mobil uygulamalarınızda görüntülenmek üzere kendi içeriklerinizi ve Imagery 'yi özelleştirmenize olanak tanır. Bu denetimde büyük veri kümelerini yüksek performansla oluşturmanızı sağlayan WebGL bileşeni kullanılmaktadır. JavaScript veya TypeScript kullanarak bu SDK ile geliştirin.
 
-Var olan bir Web uygulamasını geçiriyorsanız, Cesium, leaflet ve Openkatmanları gibi bir açık kaynak eşleme denetim kitaplığı kullanıp kullanmın olup olmadığını kontrol edin. Bu durumda, bu kitaplığı kullanmaya devam etmeyi tercih ediyorsanız, Azure haritalar kutucuk Hizmetleri 'ne ([yol kutucukları](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [uydu kutucukları](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)) bağlayabilirsiniz. Aşağıdaki bağlantılar, yaygın olarak kullanılan bazı açık kaynaklı harita denetim kitaplıklarında Azure Haritalarını kullanma hakkında ayrıntılı bilgi sağlar.
+Var olan bir Web uygulamasını geçiriyorsanız, Cesium, leaflet ve Openkatmanları gibi bir açık kaynak eşleme denetim kitaplığı kullanıp kullanmın olup olmadığını kontrol edin. Bu durumda, bu kitaplığı kullanmaya devam etmeyi tercih ediyorsanız, Azure haritalar kutucuk Hizmetleri 'ne ([yol kutucukları](/rest/api/maps/render/getmaptile) \| [uydu kutucukları](/rest/api/maps/render/getmapimagerytile)) bağlayabilirsiniz. Aşağıdaki bağlantılar, yaygın olarak kullanılan bazı açık kaynaklı harita denetim kitaplıklarında Azure Haritalarını kullanma hakkında ayrıntılı bilgi sağlar.
 
 -   Cesium-Web için 3B harita denetimi. [Kod örneği](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Belgeler](https://cesiumjs.org/)
 -   Leaflet – Web için hafif 2B harita denetimi. [Kod örneği](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Belgeler](https://leafletjs.com/)
@@ -68,7 +68,7 @@ Azure Maps [, Web SDK 'sının](open-source-projects.md#open-web-sdk-modules) ye
 
 Aşağıda, Bing Haritalar ve Azure Maps web SDK 'Ları arasındaki önemli farklılıklar aşağıda verilmiştir:
 
--   Azure Maps web SDK 'sına erişim için barındırılan bir uç nokta sağlamaya ek olarak, tercih edilen durumlarda Web SDK 'sını uygulamalara katıştırmak için de bir NPM paketi de mevcuttur. Daha fazla bilgi için bu [belgelere](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) bakın. Bu paket TypeScript tanımlarını da içerir.
+-   Azure Maps web SDK 'sına erişim için barındırılan bir uç nokta sağlamaya ek olarak, tercih edilen durumlarda Web SDK 'sını uygulamalara katıştırmak için de bir NPM paketi de mevcuttur. Daha fazla bilgi için bu [belgelere](./how-to-use-map-control.md) bakın. Bu paket TypeScript tanımlarını da içerir.
 -   Bing Haritalar, SDK 'sının iki barındırılan dalını sağlar; Yayın ve deneysel. Deneysel dal, yeni geliştirme gerçekleşirken günde birden çok güncelleştirme alabilir. Azure Maps yalnızca bir sürüm dalı barındırır, ancak deneysel Özellikler açık kaynaklı Azure Maps kod örnekleri projesinde özel modüller olarak oluşturulur. Bing Haritalar, dondurulmuş bir dala sahip olmak ve daha az sıklıkta güncelleştirildiğinden, bir yayın nedeniyle değişiklikleri bozmak riskini azaltmak için kullanılır. Azure haritalar 'da, NPM modülünü kullanabilir ve önceki bir alt sürüm sürümüne işaret edebilirsiniz.
 
 > [!TIP]
@@ -78,20 +78,20 @@ Aşağıda, Bing Haritalar ve Azure Maps web SDK 'Ları arasındaki önemli fark
 -   Her iki platform da temel haritalar için benzer bir döşeme sistemi kullanır, ancak Bing Haritalar 'daki kutucuklar boyut olarak 256 pikseldir, ancak Azure haritalar 'daki kutucuklar boyut olarak 512 pikseldir. Bu nedenle, Azure haritalar 'daki aynı harita görünümünü Bing Haritalar olarak almak için, Bing Haritalar 'da kullanılan bir yakınlaştırma düzeyinin Azure Maps 'ta bir tane tarafından çıkarılan olması gerekir.
 -   Bing Haritalar 'daki koordinatlar `latitude, longitude` Azure haritalar 'ın kullandığı sırada olarak adlandırılır `longitude, latitude` . Bu biçim `[x, y]` , en fazla GIS platformundan sonra gelen standart ile hizalanır.
 
--   Azure Haritalar Web SDK 'sindeki şekiller GeoJSON şemasına dayalıdır. Yardımcı sınıflar, [Atlas. Data ad alanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)aracılığıyla sunulur. Ayrıca Atlas de vardır [. ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) GeoJSON nesnelerini kaydırmak ve veri bağlanabilir bir şekilde güncellemenin ve bakımını kolaylaştırmak için kullanılabilecek şekil sınıfı.
+-   Azure Haritalar Web SDK 'sindeki şekiller GeoJSON şemasına dayalıdır. Yardımcı sınıflar, [Atlas. Data ad alanı](/javascript/api/azure-maps-control/atlas.data)aracılığıyla sunulur. Ayrıca Atlas de vardır [. ](/javascript/api/azure-maps-control/atlas.shape) GeoJSON nesnelerini kaydırmak ve veri bağlanabilir bir şekilde güncellemenin ve bakımını kolaylaştırmak için kullanılabilecek şekil sınıfı.
 -   Azure haritalar 'daki Koordinatlar, veya biçiminde basit bir sayı dizisi olarak belirtime konumu nesneleri olarak tanımlanır `[longitude, latitude]` `new atlas.data.Position(longitude, latitude)` .
 
 > [!TIP]
-> Konum sınıfı, biçiminde olan koordinatları içeri aktarmaya yönelik statik bir yardımcı işleve sahiptir `latitude, longitude` . [Atlas. Data. Position. fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position)Işlevi genellikle `new Microsoft.Maps.Location` Bing Haritalar kodundaki işlevin yerini alabilir.
+> Konum sınıfı, biçiminde olan koordinatları içeri aktarmaya yönelik statik bir yardımcı işleve sahiptir `latitude, longitude` . [Atlas. Data. Position. fromLatLng](/javascript/api/azure-maps-control/atlas.data.position)Işlevi genellikle `new Microsoft.Maps.Location` Bing Haritalar kodundaki işlevin yerini alabilir.
 
 -   Haritaya eklenen her bir şekil üzerinde stil bilgilerini belirtmek yerine, Azure Maps stilleri verilerden ayırır. Veriler veri kaynaklarında depolanır ve Azure haritalar kodunun verileri işlemek için kullandığı katmanları işlemek üzere bağlanır. Bu yaklaşım, gelişmiş performans avantajı sağlar. Ayrıca, birçok katman, çalışma mantığının şekil içinde tanımlanan özelliklere bağlı olarak bir katman içinde nasıl işleneceğini değiştirecek katman stili seçeneklerine eklenebileceği veri tabanlı stillendirme desteği sağlar.
 -   Azure haritalar, ad alanında çok sayıda kullanışlı uzamsal matematik işlevleri sağlar `atlas.math` , ancak bunlar Bing Haritalar uzamsal matematik modülünden farklıdır. Birincil fark, Azure haritalar 'ın birleşim ve kesişim gibi ikili işlemler için yerleşik işlevler sağlamamasından, ancak Azure Maps, açık bir standart olan GeoJSON 'ı temel aldığı için kullanılabilir çok sayıda açık kaynak kitaplık vardır. Azure haritalar ile iyi bir şekilde çalışacak ve çok sayıda uzamsal matematik özelliği içeren bir popüler seçenek [Türf js](http://turfjs.org/)' dir.
 
-Azure haritalar ile ilişkili terminolojinin derinlemesine bir listesi için bkz. [Azure Maps sözlüğü](https://docs.microsoft.com/azure/azure-maps/glossary) .
+Azure haritalar ile ilişkili terminolojinin derinlemesine bir listesi için bkz. [Azure Maps sözlüğü](./glossary.md) .
 
 ## <a name="web-sdk-side-by-side-examples"></a>Web SDK yan yana örnekleri
 
-Aşağıda, Web uygulamanızı Bing Haritalar V8 JavaScript SDK 'sından Azure Maps web SDK 'sına geçirmenize yardımcı olacak genel kullanım durumlarını kapsayan her bir platform için kod örnekleri koleksiyonu verilmiştir. Web uygulamalarıyla ilgili kod örnekleri JavaScript 'te verilmiştir; Ancak Azure Maps, bir [NPM modülü](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)aracılığıyla ek bir seçenek olarak TypeScript tanımları da sağlar.
+Aşağıda, Web uygulamanızı Bing Haritalar V8 JavaScript SDK 'sından Azure Maps web SDK 'sına geçirmenize yardımcı olacak genel kullanım durumlarını kapsayan her bir platform için kod örnekleri koleksiyonu verilmiştir. Web uygulamalarıyla ilgili kod örnekleri JavaScript 'te verilmiştir; Ancak Azure Maps, bir [NPM modülü](./how-to-use-map-control.md)aracılığıyla ek bir seçenek olarak TypeScript tanımları da sağlar.
 
 **Konu başlıkları**
 
@@ -230,14 +230,14 @@ Bu kodun bir tarayıcıda çalıştırılması, aşağıdaki görüntü gibi gö
 
 ![Azure haritalar Haritası](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)</center>
 
-Azure haritalar harita denetimini ayarlama ve kullanma hakkında ayrıntılı belgeler [burada](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)bulunabilir.
+Azure haritalar harita denetimini ayarlama ve kullanma hakkında ayrıntılı belgeler [burada](./how-to-use-map-control.md)bulunabilir.
 
 > [!TIP]
 > Azure haritalar, SDK 'nın hem küçültülmüş hem de küçültülmüş sürümlerini yayımlar. `.min`Dosya adlarından kaldırın. Mini karşılaşılan sürüm, hata ayıklama sırasında faydalıdır ancak küçük dosya boyutundan faydalanmak için üretimde küçültülmüş sürümü kullandığınızdan emin olun.
 
 **Ek Kaynaklar**
 
--   Azure haritalar Ayrıca, [burada](https://docs.microsoft.com/azure/azure-maps/map-add-controls)açıklandığı gibi harita görünümünü döndürme ve ele döndürme için de gezinti denetimleri sağlar.
+-   Azure haritalar Ayrıca, [burada](./map-add-controls.md)açıklandığı gibi harita görünümünü döndürme ve ele döndürme için de gezinti denetimleri sağlar.
 
 ### <a name="localizing-the-map"></a>Haritayı yerelleştirme
 
@@ -281,7 +281,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!NOTE]
-> Azure haritalar ile aynı sayfada farklı dil ve bölge ayarlarıyla birden çok eşleme örneği yüklemek mümkündür. Ayrıca, bu ayarları haritadan yüklendikten sonra güncelleştirmek de mümkündür. Azure Maps 'ta desteklenen dillerin ayrıntılı bir listesi [burada](https://docs.microsoft.com/azure/azure-maps/supported-languages)bulunabilir.
+> Azure haritalar ile aynı sayfada farklı dil ve bölge ayarlarıyla birden çok eşleme örneği yüklemek mümkündür. Ayrıca, bu ayarları haritadan yüklendikten sonra güncelleştirmek de mümkündür. Azure Maps 'ta desteklenen dillerin ayrıntılı bir listesi [burada](./supported-languages.md)bulunabilir.
 
 Aşağıda dil "fr" olarak ayarlanan ve Kullanıcı bölgesinin "fr-FR" olarak ayarlandığı bir Azure Maps örneği verilmiştir.
 
@@ -333,8 +333,8 @@ map.setStyle({
 
 **Ek Kaynaklar**
 
--   [Harita stili seçme](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
--   [Desteklenen eşleme stilleri](https://docs.microsoft.com/azure/azure-maps/supported-map-styles)
+-   [Harita stili seçme](./choose-map-style.md)
+-   [Desteklenen eşleme stilleri](./supported-map-styles.md)
 
 ### <a name="adding-a-pushpin"></a>Raptiye ekleme
 
@@ -462,16 +462,16 @@ Bir sembol katmanı kullanırken, verilerin bir veri kaynağına eklenmesi ve ka
 
 **Ek Kaynaklar**
 
--   [Veri kaynağı oluşturma](https://docs.microsoft.com/azure/azure-maps/create-data-source-web-sdk)
--   [Sembol katmanı ekleme](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [Kabarcık katmanı ekleme](https://docs.microsoft.com/azure/azure-maps/map-add-bubble-layer)
--   [Küme noktası verileri](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)
--   [HTML Işaretçileri Ekle](https://docs.microsoft.com/azure/azure-maps/map-add-custom-html)
--   [Veri temelli stil ifadeleri kullanma](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
--   [Sembol katmanı simgesi seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
--   [Sembol katmanı metin seçeneği](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML işaret sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML işaret seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+-   [Veri kaynağı oluşturma](./create-data-source-web-sdk.md)
+-   [Sembol katmanı ekleme](./map-add-pin.md)
+-   [Kabarcık katmanı ekleme](./map-add-bubble-layer.md)
+-   [Küme noktası verileri](./clustering-point-data-web-sdk.md)
+-   [HTML Işaretçileri Ekle](./map-add-custom-html.md)
+-   [Veri temelli stil ifadeleri kullanma](./data-driven-style-expressions-web-sdk.md)
+-   [Sembol katmanı simgesi seçenekleri](/javascript/api/azure-maps-control/atlas.iconoptions)
+-   [Sembol katmanı metin seçeneği](/javascript/api/azure-maps-control/atlas.textoptions)
+-   [HTML işaret sınıfı](/javascript/api/azure-maps-control/atlas.htmlmarker)
+-   [HTML işaret seçenekleri](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-custom-pushpin"></a>Özel iğne ekleme
 
@@ -593,14 +593,14 @@ Azure haritalar 'daki sembol katmanları özel görüntüleri de destekler, anca
 
 **Ek Kaynaklar**
 
--   [Veri kaynağı oluşturma](https://docs.microsoft.com/azure/azure-maps/create-data-source-web-sdk)
--   [Sembol katmanı ekleme](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [HTML Işaretçileri Ekle](https://docs.microsoft.com/azure/azure-maps/map-add-custom-html)
--   [Veri temelli stil ifadeleri kullanma](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
--   [Sembol katmanı simgesi seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
--   [Sembol katmanı metin seçeneği](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML işaret sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML işaret seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+-   [Veri kaynağı oluşturma](./create-data-source-web-sdk.md)
+-   [Sembol katmanı ekleme](./map-add-pin.md)
+-   [HTML Işaretçileri Ekle](./map-add-custom-html.md)
+-   [Veri temelli stil ifadeleri kullanma](./data-driven-style-expressions-web-sdk.md)
+-   [Sembol katmanı simgesi seçenekleri](/javascript/api/azure-maps-control/atlas.iconoptions)
+-   [Sembol katmanı metin seçeneği](/javascript/api/azure-maps-control/atlas.textoptions)
+-   [HTML işaret sınıfı](/javascript/api/azure-maps-control/atlas.htmlmarker)
+-   [HTML işaret seçenekleri](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-polyline"></a>Çoklu çizgi ekleme
 
@@ -668,9 +668,9 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **Ek Kaynaklar**
 
--   [Haritaya satır ekleme](https://docs.microsoft.com/azure/azure-maps/map-add-line-layer)
--   [Çizgi katmanı seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [Veri temelli stil ifadeleri kullanma](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [Haritaya satır ekleme](./map-add-line-layer.md)
+-   [Çizgi katmanı seçenekleri](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+-   [Veri temelli stil ifadeleri kullanma](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="adding-a-polygon"></a>Çokgen ekleme
 
@@ -744,11 +744,11 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **Ek Kaynaklar**
 
--   [Haritaya Çokgen ekleme](https://docs.microsoft.com/azure/azure-maps/map-add-shape#use-a-polygon-layer)
--   [Haritaya daire ekleme](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-circle-to-the-map)
--   [Çokgen katman seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
--   [Çizgi katmanı seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [Veri temelli stil ifadeleri kullanma](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [Haritaya Çokgen ekleme](./map-add-shape.md#use-a-polygon-layer)
+-   [Haritaya daire ekleme](./map-add-shape.md#add-a-circle-to-the-map)
+-   [Çokgen katman seçenekleri](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
+-   [Çizgi katmanı seçenekleri](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+-   [Veri temelli stil ifadeleri kullanma](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="display-an-infobox"></a>Bilgi kutusu görüntüle
 
@@ -820,12 +820,12 @@ map.events.add('click', marker, function () {
 
 **Ek Kaynaklar**
 
--   [Açılır pencere ekleme](https://docs.microsoft.com/azure/azure-maps/map-add-popup)
+-   [Açılır pencere ekleme](./map-add-popup.md)
 -   [Medya Içeriğiyle açılan pencere](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
 -   [Şekillerdeki açılanlar](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
 -   [Çoklu PIN ile açılan pencereyi yeniden kullanma](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
--   [Açılır Sınıf](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
--   [Açılan seçenekler](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+-   [Açılır Sınıf](/javascript/api/azure-maps-control/atlas.popup)
+-   [Açılan seçenekler](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 ### <a name="pushpin-clustering"></a>İğne Kümelemesi
 
@@ -947,7 +947,7 @@ Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümel
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar.    |
 | `getClusterLeaves(clusterId: number, limit: number, offset: number)` | `Promise<Feature<Geometry, any> | Shape>` | Kümedeki tüm noktaları alır. `limit`' İ, noktaların bir alt kümesini döndürecek şekilde ayarlayın ve bu `offset` noktaları noktaları üzerinden kullanın.    |
 
-Haritada kümelenmiş verileri işlerken genellikle iki veya daha fazla katman kullanmak en kolay yoldur. Aşağıdaki örnek üç katman kullanır, küme boyutunu temel alan ölçeklendirilmiş renkli daireler çizmek için bir kabarcık katmanı, küme boyutunu metin olarak işlemek için bir sembol katmanı ve kümelenmemiş noktaları işlemek için ikinci bir sembol katmanı. [Küme noktası veri](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk) belgelerinde vurgulanan Azure haritalar 'da kümelenmiş verileri işlemenin birçok farklı yolu vardır.
+Haritada kümelenmiş verileri işlerken genellikle iki veya daha fazla katman kullanmak en kolay yoldur. Aşağıdaki örnek üç katman kullanır, küme boyutunu temel alan ölçeklendirilmiş renkli daireler çizmek için bir kabarcık katmanı, küme boyutunu metin olarak işlemek için bir sembol katmanı ve kümelenmemiş noktaları işlemek için ikinci bir sembol katmanı. [Küme noktası veri](./clustering-point-data-web-sdk.md) belgelerinde vurgulanan Azure haritalar 'da kümelenmiş verileri işlemenin birçok farklı yolu vardır.
 
 GeoJSON verileri, sınıfındaki işlevi kullanılarak Azure Maps 'ta doğrudan içeri aktarılabilir `importDataFromUrl` `DataSource` .
 
@@ -1051,10 +1051,10 @@ GeoJSON verileri, sınıfındaki işlevi kullanılarak Azure Maps 'ta doğrudan 
 
 **Ek Kaynaklar**
 
--   [Sembol katmanı ekleme](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [Kabarcık katmanı ekleme](https://docs.microsoft.com/azure/azure-maps/map-add-bubble-layer)
--   [Küme noktası verileri](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)
--   [Veri temelli stil ifadeleri kullanma](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [Sembol katmanı ekleme](./map-add-pin.md)
+-   [Kabarcık katmanı ekleme](./map-add-bubble-layer.md)
+-   [Küme noktası verileri](./clustering-point-data-web-sdk.md)
+-   [Veri temelli stil ifadeleri kullanma](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="add-a-heat-map"></a>Isı haritası ekleme
 
@@ -1183,10 +1183,10 @@ Azure Maps ' de GeoJSON verilerini bir veri kaynağına yükleyin ve veri kayna�
 
 **Ek Kaynaklar**
 
--   [Isı haritası katmanı ekleme](https://docs.microsoft.com/azure/azure-maps/map-add-heat-map-layer)
--   [Isı haritası katman sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
--   [Isı haritası katman seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
--   [Veri temelli stil ifadeleri kullanma](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [Isı haritası katmanı ekleme](./map-add-heat-map-layer.md)
+-   [Isı haritası katman sınıfı](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
+-   [Isı haritası katman seçenekleri](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+-   [Veri temelli stil ifadeleri kullanma](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="overlay-a-tile-layer"></a>Döşeme katmanını kaplama
 
@@ -1238,9 +1238,9 @@ map.layers.add(new atlas.layer.TileLayer({
 
 **Ek Kaynaklar**
 
--   [Kutucuk katmanları ekleme](https://docs.microsoft.com/azure/azure-maps/map-add-tile-layer)
--   [Döşeme katmanı sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)
--   [Döşeme katmanı seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions)
+-   [Kutucuk katmanları ekleme](./map-add-tile-layer.md)
+-   [Döşeme katmanı sınıfı](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
+-   [Döşeme katmanı seçenekleri](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 ### <a name="show-traffic-data"></a>Trafik verilerini gösterme
 
@@ -1284,7 +1284,7 @@ Azure haritalar 'daki trafik simgelerinden birine tıklarsanız, açılan pencer
 
 **Ek Kaynaklar**
 
--   [Haritada trafiği göster](https://docs.microsoft.com/azure/azure-maps/map-show-traffic)
+-   [Haritada trafiği göster](./map-show-traffic.md)
 -   [Trafik kaplama seçenekleri](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
 -   [Trafik denetimi](https://azuremapscodesamples.azurewebsites.net/?sample=Traffic%20controls)
 
@@ -1344,7 +1344,7 @@ Bu kodun bir tarayıcıda çalıştırılması, aşağıdaki görüntü gibi gö
 Azure haritalar 'da, coğrafi olarak başvurulan görüntüler sınıfı kullanılarak kaplama olabilir `atlas.layer.ImageLayer` . Bu sınıf, görüntünün dört köşesi için bir görüntünün URL 'sini ve bir koordinat kümesini gerektirir. Görüntünün aynı etki alanında barındırılması ya da CORs 'nin etkin olması gerekir.
 
 > [!TIP]
-> Görüntünün her köşesi için yalnızca Kuzey, Güney, Doğu, Batı ve döndürme bilgilerine sahipseniz, statik [Atlas. Layer. ımagelayer. Getkoordinatör Tesfromedges](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) işlevini kullanabilirsiniz.
+> Görüntünün her köşesi için yalnızca Kuzey, Güney, Doğu, Batı ve döndürme bilgilerine sahipseniz, statik [Atlas. Layer. ımagelayer. Getkoordinatör Tesfromedges](/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) işlevini kullanabilirsiniz.
 
 ```html
 <!DOCTYPE html>
@@ -1404,8 +1404,8 @@ Azure haritalar 'da, coğrafi olarak başvurulan görüntüler sınıfı kullan�
 
 **Ek Kaynaklar**
 
--   [Resme katman ekleme](https://docs.microsoft.com/azure/azure-maps/map-add-image-layer)
--   [Görüntü katmanı sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+-   [Resme katman ekleme](./map-add-image-layer.md)
+-   [Görüntü katmanı sınıfı](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 ### <a name="add-kml-data-to-the-map"></a>KML verilerini haritaya ekleme
 
@@ -1467,7 +1467,7 @@ Bu kodun bir tarayıcıda çalıştırılması, aşağıdaki görüntü gibi gö
 
 **Sonrasında: Azure Maps**
 
-Azure haritalar 'da GeoJSON, Web SDK 'sında kullanılan ana veri biçimidir, ek uzamsal veri biçimleri de [uzamsal GÇ modülü](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)kullanılarak kolayca tümleştirilebilir. Bu modülde hem okuma hem de yazma uzamsal verileri için işlevler bulunur ve bu uzamsal veri biçimlerinden herhangi birinden verileri kolayca işleyebilmeniz gereken basit bir veri katmanı da vardır. Uzamsal bir veri dosyasındaki verileri okumak için, bir URL 'ye veya ham verileri işleve dize veya blob olarak geçirin `atlas.io.read` . Bu, dosyadan daha sonra haritaya eklenebilen tüm ayrıştırılmış verileri döndürür. Daha çok daha fazla stil bilgisi içerdiği için KML, en çok uzamsal veri biçiminden biraz daha karmaşıktır. `SpatialDataLayer`Sınıfı, bu stillerin büyük bölümünü oluşturmayı destekler, ancak özellik verileri yüklenmeden önce simge görüntülerinin haritaya yüklenmesi gerekir ve arka kaplamalar haritaya ayrı olarak eklenir. Bir URL aracılığıyla veri yüklerken, CORs 'yi etkinleştirmiş bir uç noktada barındırılmalıdır veya bir proxy hizmeti okuma işlevine seçenek olarak geçirilmelidir.
+Azure haritalar 'da GeoJSON, Web SDK 'sında kullanılan ana veri biçimidir, ek uzamsal veri biçimleri de [uzamsal GÇ modülü](/javascript/api/azure-maps-spatial-io/)kullanılarak kolayca tümleştirilebilir. Bu modülde hem okuma hem de yazma uzamsal verileri için işlevler bulunur ve bu uzamsal veri biçimlerinden herhangi birinden verileri kolayca işleyebilmeniz gereken basit bir veri katmanı da vardır. Uzamsal bir veri dosyasındaki verileri okumak için, bir URL 'ye veya ham verileri işleve dize veya blob olarak geçirin `atlas.io.read` . Bu, dosyadan daha sonra haritaya eklenebilen tüm ayrıştırılmış verileri döndürür. Daha çok daha fazla stil bilgisi içerdiği için KML, en çok uzamsal veri biçiminden biraz daha karmaşıktır. `SpatialDataLayer`Sınıfı, bu stillerin büyük bölümünü oluşturmayı destekler, ancak özellik verileri yüklenmeden önce simge görüntülerinin haritaya yüklenmesi gerekir ve arka kaplamalar haritaya ayrı olarak eklenir. Bir URL aracılığıyla veri yüklerken, CORs 'yi etkinleştirmiş bir uç noktada barındırılmalıdır veya bir proxy hizmeti okuma işlevine seçenek olarak geçirilmelidir.
 
 ```html
 <!DOCTYPE html>
@@ -1564,9 +1564,9 @@ Azure haritalar 'da GeoJSON, Web SDK 'sında kullanılan ana veri biçimidir, ek
 
 **Ek Kaynaklar**
 
--   [Atlas. IO. Read işlevi](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
--   [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
--   [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+-   [Atlas. IO. Read işlevi](/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
+-   [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+-   [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 ### <a name="add-drawing-tools"></a>Çizim araçları ekleme
 
@@ -1683,7 +1683,7 @@ Azure haritalar 'da, JavaScript ve CSS dosyalarının uygulamada başvurulması 
 
 **Ek Kaynaklar**
 
--   [Belgeler](https://docs.microsoft.com/azure/azure-maps/set-drawing-options)
+-   [Belgeler](./set-drawing-options.md)
 -   [Kod örnekleri](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -1703,16 +1703,16 @@ Diğer Bing Haritalar özelliklerini geçirme ile ilgili kod örneklerini gözde
 **Hizmetler**
 
 > [!div class="nextstepaction"]
-> [Azure haritalar Hizmetleri modülünü kullanma](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)
+> [Azure haritalar Hizmetleri modülünü kullanma](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [İlgi noktası arama](https://docs.microsoft.com/azure/azure-maps/map-search-location)
+> [İlgi noktası arama](./map-search-location.md)
 
 > [!div class="nextstepaction"]
-> [Bir koordinatdan bilgi edinme (ters coğrafi kod)](https://docs.microsoft.com/azure/azure-maps/map-get-information-from-coordinate)
+> [Bir koordinatdan bilgi edinme (ters coğrafi kod)](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [A'dan B'ye yönleri gösterme](https://docs.microsoft.com/azure/azure-maps/map-route)
+> [A'dan B'ye yönleri gösterme](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [JQuery Kullanıcı arabirimi ile otomatik öneri ara](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
@@ -1729,7 +1729,7 @@ Azure Haritalar Web SDK 'Sı hakkında daha fazla bilgi edinin.
 > [Çizim araçları modülünü kullanma](set-drawing-options.md)
 
 > [!div class="nextstepaction"]
-> [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kod örnekleri](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
-> [Azure Maps web SDK hizmeti API başvuru belgeleri](https://docs.microsoft.com/javascript/api/azure-maps-control/)
+> [Azure Maps web SDK hizmeti API başvuru belgeleri](/javascript/api/azure-maps-control/)

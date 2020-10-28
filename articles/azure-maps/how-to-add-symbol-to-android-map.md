@@ -8,26 +8,26 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 10969e20cd7ae71cade230f6643a27d5d940ceaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acd5f06a5383308ce736f2860810ebee7e5bce28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311283"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897118"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya bir sembol katmanı ekleme Android SDK
 
 Bu makalede, Azure Maps Android SDK kullanarak bir harita üzerinde sembol katmanı olarak bir veri kaynağındaki nokta verilerinin nasıl işleneceğini gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu makaledeki adımları tamamen izlemek için, bir harita yüklemek üzere [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
+Bu makaledeki adımları tamamen izlemek için, bir harita yüklemek üzere [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) yüklemeniz gerekir.
 
 ## <a name="add-a-symbol-layer"></a>Sembol katmanı ekleme
 
 Sembol katmanını kullanarak haritada bir işaretleyici eklemek için aşağıdaki adımları izleyin:
 
-1. **res**  >  **layout**  >  Şu XML gibi görünmesi için res Düzen**activity_main.xml** düzenleyin:
+1. **res**  >  **layout**  >  Şu XML gibi görünmesi için res Düzen **activity_main.xml** düzenleyin:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -180,7 +180,7 @@ Bu noktada, uygulamanızı çalıştırırsanız burada gösterildiği gibi hari
 Haritanızda daha fazla bilgi eklemek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Android haritasına şekil ekleme](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Android haritasına şekil ekleme](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [Özellik bilgilerini görüntüleme](display-feature-information-android.md)

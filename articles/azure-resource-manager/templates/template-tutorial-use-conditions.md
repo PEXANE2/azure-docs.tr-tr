@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64767f83dfad2b0c2909e8a89b55c849d5c5a9a9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119319"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896999"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Öğretici: ARM şablonlarındaki koşulu kullanma
 
@@ -37,7 +37,7 @@ Bu öğretici yalnızca koşulların kullanıldığı temel bir senaryoyu ele al
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -54,14 +54,14 @@ Bu makaleyi tamamlamak için gerekenler:
 
 Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablonun adı: [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Basit bir Windows sanal makinesi dağıtma).
 
-1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
-1. **Dosya adı**’na şu URL’yi yapıştırın:
+1. Visual Studio Code **Dosya** > **Aç dosya** ' yı seçin.
+1. **Dosya adı** ’na şu URL’yi yapıştırın:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. Dosyayı açmak için **Aç**’ı seçin.
+1. Dosyayı açmak için **Aç** ’ı seçin.
 1. Şablon tarafından tanımlanan altı kaynak vardır:
 
    * [**Microsoft. Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
@@ -73,7 +73,7 @@ Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sı
 
     Şablonu özelleştirmeden önce şablon başvurusunu gözden geçirmeniz faydalı olur.
 
-1. Dosyanın **File** > bir kopyasını yerel bilgisayarınıza **azuredeploy.js**adı ile kaydetmek için dosya**farklı kaydet** ' i seçin.
+1. Dosyanın **File** > bir kopyasını yerel bilgisayarınıza **azuredeploy.js** adı ile kaydetmek için dosya **farklı kaydet** ' i seçin.
 
 ## <a name="modify-the-template"></a>Şablonu değiştirme
 
@@ -88,7 +88,7 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
 1. Bu üç **değişkeni (' storageAccountName ')** tüm şablonda **Parametreler (' storageAccountName ')** ile değiştirin.
 1. Aşağıdaki değişken tanımını kaldırın:
 
-    ![Kaynak Yöneticisi şablonu kullanım koşulu diyagramı](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![Kaldırmanız gereken değişken tanımlarını vurgulayan ekran görüntüsü.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 1. Parametreler bölümünün başlangıcına aşağıdaki iki parametreyi ekleyin:
 
@@ -121,7 +121,7 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
 
     Güncelleştirilmiş depolama hesabı tanımı şu şekilde görünür:
 
-    ![Resource Manager kullanım koşulu](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
+    ![Güncelleştirilmiş depolama hesabı tanımını gösteren ekran görüntüsü.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
 1. Sanal makine kaynak tanımının **Storageuri** özelliğini aşağıdaki değerle güncelleştirin:
 
     ```json
@@ -140,7 +140,7 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
 
     ![Dosyayı karşıya yükleme Cloud Shell Azure portal](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Önceki ekran görüntüsüne bakın. Önceki bölümde kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, dosyanın başarıyla karşıya yüklendiğini doğrulamak için **ls** komutunu ve **Cat** komutunu kullanabilirsiniz.
+1. **Dosyaları karşıya yükle/indir** 'i seçin ve sonra da **Karşıya Yükle** 'yi seçin. Önceki ekran görüntüsüne bakın. Önceki bölümde kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, dosyanın başarıyla karşıya yüklendiğini doğrulamak için **ls** komutunu ve **Cat** komutunu kullanabilirsiniz.
 
 1. Şablonu dağıtmak için aşağıdaki PowerShell betiğini çalıştırın.
 
@@ -178,7 +178,7 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin. Kaynak grubunu silmek için **dene** ' yi seçerek Cloud Shell açın. PowerShell betiğini yapıştırmak için kabuk bölmesine sağ tıklayın ve ardından **Yapıştır**' ı seçin.
+Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin. Kaynak grubunu silmek için **dene** ' yi seçerek Cloud Shell açın. PowerShell betiğini yapıştırmak için kabuk bölmesine sağ tıklayın ve ardından **Yapıştır** ' ı seçin.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"

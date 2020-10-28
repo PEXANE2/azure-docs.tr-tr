@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8a0d930d1c0fd30c48d97b0d1d4b94548077fbca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab99f32932f39d5ad140b7a16d16ceae30fff54
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86262157"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896217"
 ---
 # <a name="add-a-tile-layer"></a>Kutucuk katmanı ekleme
 
@@ -57,11 +57,11 @@ Kutucuk URL 'si, aşağıdaki parametreleri kullanan bir kutucuk URL şablonuna 
 -   `{quadkey}` - `quadkey` Bing Haritalar kutucuk sistem adlandırma kuralına göre kutucuk tanımlayıcısı.
 -   `{bbox-epsg-3857}` - `{west},{south},{east},{north}` EPSG 3857 uzamsal başvuru sisteminde biçim içeren bir sınırlayıcı kutu dizesi.
 
-Örnek olarak, aşağıdakiler Azure haritalar 'daki [Hava durumu radar kutucuk hizmeti](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) için biçimlendirilen bir kutucuk URL 'sidir. `[subscription-key]`Azure Maps abonelik anahtarınız için bir yer tutucu olduğunu unutmayın.
+Örnek olarak, aşağıdakiler Azure haritalar 'daki [Hava durumu radar kutucuk hizmeti](/rest/api/maps/renderv2/getmaptilepreview) için biçimlendirilen bir kutucuk URL 'sidir. `[subscription-key]`Azure Maps abonelik anahtarınız için bir yer tutucu olduğunu unutmayın.
 
 > `https://atlas.microsoft.com/map/tile?zoom={z}&x={x}&y={y}&tilesetId=microsoft.weather.radar.main&api-version=2.0&subscription-key=[subscription-key]`
 
-Azure haritalar döşeme sistemi hakkında daha fazla bilgi için bkz. [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md).
+Azure haritalar döşeme sistemi hakkında daha fazla bilgi için bkz. [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

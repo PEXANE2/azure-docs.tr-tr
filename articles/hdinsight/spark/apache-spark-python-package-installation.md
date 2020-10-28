@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: dc1da641ba628cef92250549c1c6b6482cf18b51
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a0f9f9f972ec42987d6152c16e4377e399cdba5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547342"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896421"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
 
@@ -129,6 +129,24 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
     4. Değişiklikleri kaydedin ve etkilenen hizmetleri yeniden başlatın. Bu değişikliklerin Spark2 hizmetinin yeniden başlatılması gerekir. Ambarı Kullanıcı arabirimi gerekli bir yeniden başlatma anımsatıcısı ister, tüm etkilenen hizmetleri yeniden başlatmak için yeniden Başlat 'a tıklayın.
 
         ![Hizmetleri yeniden Başlat](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+
+    5. İşin güncelleştirilmiş Spark yapılandırmasına işaret ettiğini sağlamak için Spark oturumunuzla iki özellik ayarlayın: `spark.yarn.appMasterEnv.PYSPARK_PYTHON` ve `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON` . 
+
+        Terminal veya Not defterini kullanarak `spark.conf.set` işlevini kullanın.
+
+        ```spark
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        ```
+
+        Livy kullanıyorsanız, istek gövdesine aşağıdaki özellikleri ekleyin:
+
+        ```
+        “conf” : {
+        “spark.yarn.appMasterEnv.PYSPARK_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”,
+        “spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”
+        }
+        ```
 
 4. Jupyıter üzerinde yeni oluşturulan sanal ortamı kullanmak istiyorsanız. Jupi yapılandırmalarını 'yi değiştirip jupyıter 'ı yeniden başlatın. Jupi 'yi yeni oluşturulan sanal ortama işaret etmek için aşağıdaki deyimle tüm üst bilgi düğümlerinde betik eylemlerini çalıştırın. Sanal ortamınız için belirttiğiniz önek için yolu değiştirdiğinizden emin olun. Bu betik eylemini çalıştırdıktan sonra, bu değişikliği kullanılabilir hale getirmek için ambarı Kullanıcı arabirimi aracılığıyla Jupyıter hizmetini yeniden başlatın.
 

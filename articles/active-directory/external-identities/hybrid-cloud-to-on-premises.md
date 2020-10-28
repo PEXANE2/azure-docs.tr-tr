@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84169daa28fc394254ddce211a96d4a462f78cbd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 61f82e94f506cc403106912e24532f9d5263a60d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441870"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896475"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme
 
@@ -39,8 +39,8 @@ Aşağıdakilerden her ikisini de yapmanız gerekir:
 
 B2B kullanıcılarına, tümleşik Windows kimlik doğrulaması ve Kerberos kısıtlı temsilcisiyle güvenliği sağlanmış şirket içi uygulamalara erişim sağlamak için aşağıdaki bileşenlere ihtiyacınız vardır:
 
-- **Azure AD uygulama ara sunucusu aracılığıyla kimlik doğrulaması**. B2B kullanıcılarının şirket içi uygulamada kimlik doğrulaması yapabilmesi gerekir. Bunu yapmak için şirket içi uygulamayı Azure AD Uygulama Ara Sunucusu aracılığıyla yayımlamanız gerekir. Daha fazla bilgi için bkz. [uygulama proxy 'si ile çalışmaya başlama ve](../manage-apps/application-proxy-add-on-premises-application.md) [Azure AD uygulama ara sunucusu kullanarak](../manage-apps/application-proxy-add-on-premises-application.md)bağlayıcı ve uygulama yayımlama.
-- **Şirket içi dizindeki BIR B2B Kullanıcı nesnesi aracılığıyla yetkilendirme**. Uygulamanın kullanıcı erişim denetimleri gerçekleştirebilmesi ve doğru kaynaklara erişim izni vermesi gerekir. IWA ve KCD, bu yetkilendirmeyi tamamlaması için şirket içi Windows Server Active Directory bir kullanıcı nesnesi gerektirir. [KCD ile çoklu oturum açma konusunda](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)açıklandığı gibi, uygulama proxy 'si, kullanıcının kimliğine bürünmesi ve uygulamaya Kerberos belirteci alması için bu kullanıcı nesnesine ihtiyaç duyuyor. 
+- **Azure AD uygulama ara sunucusu aracılığıyla kimlik doğrulaması** . B2B kullanıcılarının şirket içi uygulamada kimlik doğrulaması yapabilmesi gerekir. Bunu yapmak için şirket içi uygulamayı Azure AD Uygulama Ara Sunucusu aracılığıyla yayımlamanız gerekir. Daha fazla bilgi için bkz. [öğretici: uygulama proxy 'si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](../manage-apps/application-proxy-add-on-premises-application.md).
+- **Şirket içi dizindeki BIR B2B Kullanıcı nesnesi aracılığıyla yetkilendirme** . Uygulamanın kullanıcı erişim denetimleri gerçekleştirebilmesi ve doğru kaynaklara erişim izni vermesi gerekir. IWA ve KCD, bu yetkilendirmeyi tamamlaması için şirket içi Windows Server Active Directory bir kullanıcı nesnesi gerektirir. [KCD ile çoklu oturum açma konusunda](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)açıklandığı gibi, uygulama proxy 'si, kullanıcının kimliğine bürünmesi ve uygulamaya Kerberos belirteci alması için bu kullanıcı nesnesine ihtiyaç duyuyor. 
 
    > [!NOTE]
    > Azure AD Uygulama Ara Sunucusu yapılandırdığınızda, tümleşik Windows kimlik doğrulaması (ıWA) için çoklu oturum açma yapılandırmasında, **temsilci oturum açma kimliğinin** **Kullanıcı asıl adı** (varsayılan) olarak ayarlandığından emin olun.

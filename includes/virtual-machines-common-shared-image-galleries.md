@@ -1,18 +1,17 @@
 ---
 title: include dosyası
-description: include dosyası
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116656"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897716"
 ---
 Paylaşılan görüntü Galerisi, yansımalarınızın etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
@@ -46,7 +45,7 @@ Paylaşılan görüntü Galerisi özelliği birden çok kaynak türüne sahiptir
 
 Görüntü tanımları bir görüntünün sürümleri için bir mantıksal gruplandırmadır. Görüntü tanımı, görüntünün neden oluşturulduğu, ne kadar işletim sistemi olduğu ve görüntünün kullanımıyla ilgili diğer bilgilerin yer aldığı bilgileri barındırır. Bir görüntü tanımı, belirli bir görüntü oluşturma ile ilgili tüm ayrıntılar için bir plan gibidir. Bir görüntü tanımından, ancak tanımdan oluşturulan görüntü sürümlerinden bir VM dağıtmazsınız.
 
-Her görüntü tanımı için, kombinasyon- **Yayımcı**, **teklif** ve **SKU**'da kullanılan üç parametre vardır. Bunlar, belirli bir görüntü tanımını bulmak için kullanılır. Üç değerden birini veya ikisini birden paylaşan görüntü sürümlerine sahip olabilirsiniz.  Örneğin, aşağıda üç görüntü tanımı ve değerleri verilmiştir:
+Her görüntü tanımı için, kombinasyon- **Yayımcı** , **teklif** ve **SKU** 'da kullanılan üç parametre vardır. Bunlar, belirli bir görüntü tanımını bulmak için kullanılır. Üç değerden birini veya ikisini birden paylaşan görüntü sürümlerine sahip olabilirsiniz.  Örneğin, aşağıda üç görüntü tanımı ve değerleri verilmiştir:
 
 |Görüntü Tanımı|Publisher|Sunduğu|Sku|
 |---|---|---|---|
@@ -116,7 +115,7 @@ Daha fazla bilgi için bkz. geçerli kullanımınızı nasıl denetabileceğine 
 ## <a name="scaling"></a>Ölçeklendirme
 Paylaşılan görüntü Galerisi, Azure 'un görüntüleri tutmasını istediğiniz çoğaltma sayısını belirtmenize olanak tanır. Bu, sanal makine dağıtımları farklı çoğaltmalara yayılabilecek olduğundan, tek bir çoğaltmanın aşırı yüklemesi nedeniyle örnek oluşturma işleminin kısıtlanıyor olma olasılığını azaltmak için çoklu VM dağıtım senaryolarında yardımcı olur.
 
-Paylaşılan görüntü Galerisi ile artık bir sanal makine ölçek kümesindeki bir 1.000 VM örneğine (yönetilen görüntülerle 600 ' den fazla) dağıtabilirsiniz. Görüntü çoğaltmaları daha iyi dağıtım performansı, güvenilirlik ve tutarlılık sağlar. Bölgenin ölçek ihtiyaçlarına göre her bir hedef bölgede farklı bir çoğaltma sayısı ayarlayabilirsiniz. Her çoğaltma görüntünüzün derin bir kopyası olduğundan, bu, her bir ekstra çoğaltma ile dağıtımlarınızın ölçeğini daha erken ölçeklendirmenize yardımcı olur. İki görüntü veya bölgenin aynı olmadığını anladığımızda, bir bölgede çoğaltmaların nasıl kullanılacağına ilişkin genel kılavuzumuz aşağıda verilmiştir:
+Paylaşılan görüntü Galerisi ile artık bir sanal makine ölçek kümesindeki bir 1.000 VM örneğine (yönetilen görüntülerle 600 ' den fazla) dağıtabilirsiniz. Görüntü çoğaltmaları daha iyi dağıtım performansı, güvenilirlik ve tutarlılık sağlar.  Bölgenin ölçek ihtiyaçlarına göre her bir hedef bölgede farklı bir çoğaltma sayısı ayarlayabilirsiniz. Her çoğaltma görüntünüzün derin bir kopyası olduğundan, bu, her bir ekstra çoğaltma ile dağıtımlarınızın ölçeğini daha erken ölçeklendirmenize yardımcı olur. İki görüntü veya bölgenin aynı olmadığını anladığımızda, bir bölgede çoğaltmaların nasıl kullanılacağına ilişkin genel kılavuzumuz aşağıda verilmiştir:
 
 - Sanal olmayan makine ölçek kümesi (VMSS) dağıtımları için-eşzamanlı olarak oluşturduğunuz her 20 VM Için bir çoğaltma tutmanız önerilir. Örneğin, bir bölgedeki aynı görüntüyü kullanarak aynı anda 120 VM oluşturuyorsanız, resminizin en az 6 çoğaltmasını tutmanız önerilir. 
 - Sanal makine ölçek kümesi (VMSS) dağıtımları için-en çok 600 örneğe sahip her ölçek kümesi dağıtımı Için en az bir çoğaltma tutmanız önerilir. Örneğin, her biri tek bir bölgedeki aynı görüntüyü kullanan 600 VM örneğiyle aynı anda 5 ölçek kümesi oluşturuyorsanız, resminizin en az 5 çoğaltmasını tutmanızı öneririz. 
@@ -140,7 +139,7 @@ Paylaşılan görüntü sürümünün çoğaltılacağı bölgeler, oluşturma z
 
 ![Görüntüleri nasıl çoğaltacağınızı gösteren grafik](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Access
+## <a name="access"></a>Erişim
 
 Paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü tüm kaynaklar olduğundan, yerleşik yerel Azure RBAC denetimleri kullanılarak paylaşılabilir. RBAC kullanarak bu kaynakları diğer kullanıcılar, hizmet sorumluları ve gruplar ile paylaşabilirsiniz. Hatta, içinde oluşturuldukları kiracı dışındaki bireylere erişim de paylaşabilirsiniz. Bir kullanıcının paylaşılan görüntü sürümüne erişimi olduktan sonra, bir VM veya bir sanal makine ölçek kümesi dağıtabilirler.  Kullanıcının ne erişimi olduğunu anlamanıza yardımcı olan paylaşım matrisi aşağıda verilmiştir:
 
@@ -153,22 +152,25 @@ En iyi deneyim için Galeri düzeyinde paylaşım yapmanızı öneririz. Ayrı g
 
 Görüntüler aynı zamanda çok kiracılı bir uygulama kaydı kullanan kiracılar arasında bile ölçeklenebilir şekilde paylaşılabilir. Kiracılar arasında görüntü paylaşma hakkında daha fazla bilgi için bkz. [Azure kiracılar genelinde galerı VM görüntülerini paylaşma](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 Paylaşılan görüntü Galerisi hizmetinin kullanılması için ek ücret alınmaz. Aşağıdaki kaynaklar için ücretlendirilirsiniz:
-- Paylaşılan görüntü sürümlerini depolamanın depolama maliyeti. Maliyet, görüntü sürümünün yineleme sayısına ve sürümün çoğaltılacağı bölge sayısına bağlıdır. Örneğin, 2 görüntünüz varsa ve her ikisi de 3 bölgeye çoğaltılırsa, boyutlarına göre 6 yönetilen disk üzerinden ücretlendirilirsiniz. Daha fazla bilgi için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
-- Kaynak bölgeden çoğaltılan bölgelere ilk görüntü sürümünün çoğaltılmasıyla ilgili ağ çıkış ücretleri. Sonraki çoğaltmalar bölge içinde işlenir, bu nedenle ek ücret alınmaz. 
+-   Her çoğaltmayı depolamanın depolama maliyeti. Depolama maliyeti bir anlık görüntü olarak ücretlendirilir ve görüntü sürümünün çok fazla boyutunu, görüntü sürümünün çoğaltmaların sayısını ve sürümün çoğaltılacağı bölge sayısını temel alır. 
+-   Kaynak bölgeden çoğaltılan bölgelere ilk görüntü sürümünün çoğaltılmasıyla ilgili ağ çıkış ücretleri. Sonraki çoğaltmalar bölge içinde işlenir, bu nedenle ek ücret alınmaz. 
+
+Örneğin, yalnızca 10 GB 'lik bir işletim sistemi diski ve bir boş 32 GB veri diski kaplayan bir 127 görüntünüz olduğunu varsayalım. Her görüntünün bulunan boyutu yalnızca 10 GB olur. Görüntü 3 bölgeye çoğaltılır ve her bölgede iki çoğaltma bulunur. Her biri 10 GB kullanan altı toplam anlık görüntü olacaktır. Her anlık görüntü için, 10 GB 'lık boyutu temel alınarak depolama maliyeti ücretlendirilecektir. İlk çoğaltma için, ek iki bölgeye kopyalanacak olan ağ çıkış ücretleri ödersiniz. Her bölgedeki anlık görüntülerin fiyatlandırması hakkında daha fazla bilgi için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/). Ağ çıkışı hakkında daha fazla bilgi için bkz. [bant genişliği fiyatlandırması](https://azure.microsoft.com/pricing/details/bandwidth/).
+
 
 ## <a name="updating-resources"></a>Kaynakları güncelleştirme
 
 Oluşturulduktan sonra, görüntü Galerisi kaynaklarında bazı değişiklikler yapabilirsiniz. Bunlarla sınırlı:
  
 Paylaşılan görüntü Galerisi:
-- Description
+- Açıklama
 
 Görüntü tanımı:
 - Önerilen vCPU 'Lar
 - Önerilen bellek
-- Description
+- Açıklama
 - Yaşam tarihi sonu
 
 Görüntü sürümü:
@@ -220,9 +222,9 @@ Aşağıdaki SDK 'lar paylaşılan görüntü galerileri oluşturmayı destekler
 Azure portal erişiminiz olan aboneliklerdeki tüm paylaşılan görüntü Galerisi kaynaklarını listelemek için aşağıdaki adımları izleyin:
 
 1. [Azure portalını](https://portal.azure.com) açın.
-1. Sayfayı aşağı kaydırın ve **tüm kaynaklar**' ı seçin.
+1. Sayfayı aşağı kaydırın ve **tüm kaynaklar** ' ı seçin.
 1. Tüm kaynakları listelemek istediğiniz tüm abonelikleri seçin.
-1. **Paylaşılan görüntü Galerisi**türündeki kaynakları arayın.
+1. **Paylaşılan görüntü Galerisi** türündeki kaynakları arayın.
   
 İzinleriniz olan aboneliklerdeki tüm paylaşılan görüntü Galerisi kaynaklarını listelemek için Azure CLı 'de aşağıdaki komutu kullanın:
 

@@ -1,15 +1,16 @@
 ---
 title: Azure İşlevleri ağ seçenekleri
 description: Azure Işlevlerinde kullanılabilen tüm ağ seçeneklerine genel bakış.
+author: jeffhollan
 ms.topic: conceptual
-ms.date: 4/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.author: jehollan
+ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530106"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897084"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
 
@@ -66,11 +67,30 @@ Daha yüksek bir güvenlik düzeyi sağlamak için, hizmet uç noktalarını kul
 
 Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Depolama hesabınızı bir sanal ağla sınırlayın
+## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>Depolama hesabınızı bir sanal ağla sınırlayın (Önizleme)
 
-Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Şu anda bu hesapta herhangi bir sanal ağ kısıtlaması kullanamazsınız. İşlev uygulamanız için kullanmakta olduğunuz depolama hesabında bir sanal ağ hizmeti uç noktası yapılandırırsanız, bu yapılandırma uygulamanızı bozacaktır.
+Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir.  Bu depolama hesabını hizmet uç noktaları veya özel uç nokta ile güvenli bir şekilde değiştirebilirsiniz.  Bu önizleme özelliği şu anda yalnızca Batı Avrupa Windows Premium planlarıyla birlikte çalışıyor.  Bir işlevi özel bir ağla sınırlı bir depolama hesabıyla ayarlamak için:
 
-Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](./functions-create-function-app-portal.md#storage-account-requirements).
+> [!NOTE]
+> Depolama hesabını kısıtlamak yalnızca Batı Avrupa Windows kullanan Premium işlevlerde çalışır
+
+1. Hizmet uç noktaları etkin olmayan bir depolama hesabıyla bir işlev oluşturun.
+1. İşlevini sanal ağınıza bağlanacak şekilde yapılandırın.
+1. Farklı bir depolama hesabı oluşturun veya yapılandırın.  Bu, hizmet uç noktalarıyla güvenli hale yaptığımız depolama hesabıdır ve işlevimizi bağlayacağız.
+1. Güvenli depolama hesabında [bir dosya paylaşma oluşturun](../storage/files/storage-how-to-create-file-share.md#create-file-share) .
+1. Depolama hesabı için hizmet uç noktalarını veya özel uç noktayı etkinleştirin.  
+    * Hizmet uç noktası kullanılıyorsa, işlev uygulamalarınıza adanmış alt ağı etkinleştirdiğinizden emin olun.
+    * Özel uç nokta kullanılıyorsa, bir DNS kaydı oluşturmayı ve uygulamanızı [Özel uç nokta uç noktalarıyla çalışacak](#azure-dns-private-zones) şekilde yapılandırmayı unutmayın.  Depolama hesabının `file` ve alt kaynaklar için özel bir uç noktası olması gerekir `blob` .  Dayanıklı İşlevler gibi belirli yetenekler kullanılıyorsa, Ayrıca, `queue` `table` özel bir uç nokta bağlantısı aracılığıyla da ihtiyacınız ve erişilebilir.
+1. Seçim Dosya ve BLOB içeriğini işlev uygulama depolama hesabından güvenli depolama hesabına ve dosya paylaşımıyla kopyalayın.
+1. Bu depolama hesabı için bağlantı dizesini kopyalayın.
+1. İşlev uygulaması **yapılandırması** altındaki **uygulama ayarlarını** aşağıdakilere göre güncelleştirin:
+    - `AzureWebJobsStorage` güvenli depolama hesabı için bağlantı dizesine.
+    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` güvenli depolama hesabı için bağlantı dizesine.
+    - `WEBSITE_CONTENTSHARE` güvenli depolama hesabında oluşturulan dosya paylaşımının adı.
+    - Adı ve değeri olan yeni bir ayar oluşturun `WEBSITE_CONTENTOVERVNET` `1` .
+1. Uygulama ayarlarını kaydedin.  
+
+İşlev uygulaması yeniden başlatılır ve artık güvenli bir depolama hesabına bağlanacak.
 
 ## <a name="use-key-vault-references"></a>Key Vault başvurularını kullanma
 
@@ -87,7 +107,7 @@ Kod değişikliği gerektirmeden Azure Işlevleri uygulamanızda Azure Key Vault
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Sanal ağ tetikleyicilerine sahip Premium plan
 
-Bir Premium planı çalıştırdığınızda, HTTP olmayan tetikleyici işlevlerini bir sanal ağ içinde çalışan hizmetlere bağlayabilirsiniz. Bunu yapmak için, işlev uygulamanız için sanal ağ tetikleme desteğini etkinleştirmeniz gerekir. **Çalışma zamanı ölçek izleme** ayarı, [Azure Portal](https://portal.azure.com) **yapılandırma**  >  **işlevi çalışma zamanı ayarları**altında bulunur.
+Bir Premium planı çalıştırdığınızda, HTTP olmayan tetikleyici işlevlerini bir sanal ağ içinde çalışan hizmetlere bağlayabilirsiniz. Bunu yapmak için, işlev uygulamanız için sanal ağ tetikleme desteğini etkinleştirmeniz gerekir. **Çalışma zamanı ölçek izleme** ayarı, [Azure Portal](https://portal.azure.com) **yapılandırma**  >  **işlevi çalışma zamanı ayarları** altında bulunur.
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -99,7 +119,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Sanal ağ Tetikleyicileri, Işlevler çalışma zamanının 2. x ve üzerinde desteklenir. Aşağıdaki HTTP olmayan tetikleyici türleri desteklenir.
 
-| Dahili numara | En düşük sürüm |
+| Uzantı | En düşük sürüm |
 |-----------|---------| 
 |[Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 veya üzeri |
 |[Microsoft. Azure. WebJobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 veya üzeri|
@@ -136,8 +156,8 @@ Bir Premium planda veya bir sanal ağla App Service bir planda bir işlev uygula
 ## <a name="automation"></a>Otomasyon
 Aşağıdaki API 'Ler, bölgesel sanal ağ tümleştirmelerini programlı bir şekilde yönetmenizi sağlar:
 
-+ **Azure CLI**: [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) Bölgesel bir sanal ağ tümleştirmeleri eklemek, listelemek veya kaldırmak için komutları kullanın.  
-+ **ARM şablonları**: bölgesel sanal ağ tümleştirmesi, bir Azure Resource Manager şablonu kullanılarak etkinleştirilebilir. Tam bir örnek için, [Bu işlevlere hızlı başlangıç şablonu](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)' na bakın.
++ **Azure CLI** : [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) Bölgesel bir sanal ağ tümleştirmeleri eklemek, listelemek veya kaldırmak için komutları kullanın.  
++ **ARM şablonları** : bölgesel sanal ağ tümleştirmesi, bir Azure Resource Manager şablonu kullanılarak etkinleştirilebilir. Tam bir örnek için, [Bu işlevlere hızlı başlangıç şablonu](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)' na bakın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

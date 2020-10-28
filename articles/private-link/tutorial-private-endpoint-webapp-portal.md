@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/19/2020
-ms.openlocfilehash: 6d4d9fd901337b9c05c7d7d7f271974273e9fe37
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 502c48a92f5b41c4434d03139335a0ce05fa451f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170075"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896982"
 ---
 # <a name="tutorial-connect-to-a-web-app-using-an-azure-private-endpoint"></a>Öğretici: Azure özel uç noktası kullanarak bir Web uygulamasına bağlanma
 
@@ -48,7 +48,7 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
 
 1. Ekranın sol üst kısmındaki **Kaynak oluştur > Ağ > Sanal ağ** seçeneğini belirleyin veya arama kutusuna **Sanal ağ** yazarak arama yapın.
 
-2. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
+2. **Sanal ağ oluştur** ' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
 
     | **Ayar**          | **Değer**                                                           |
     |------------------|-----------------------------------------------------------------|
@@ -57,7 +57,7 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
     | Kaynak Grubu   | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Bölge           | **Doğu ABD** seçin |
+    | Bölge           | **Batı Avrupa** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -67,31 +67,31 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
     |--------------------|----------------------------|
     | IPv4 adres alanı | **10.1.0.0/16** girin |
 
-5. **Alt ağ adı**altında, **varsayılan**sözcük ' ı seçin.
+5. **Alt ağ adı** altında, **varsayılan** sözcük ' ı seçin.
 
-6. **Alt ağı Düzenle**' de şu bilgileri girin:
+6. **Alt ağı Düzenle** ' de şu bilgileri girin:
 
     | Ayar            | Değer                      |
     |--------------------|----------------------------|
     | Alt ağ adı | **Mysubnet** girin |
     | Alt ağ adres aralığı | **10.1.0.0/24** girin |
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
 8. **Güvenlik** sekmesini seçin.
 
-9. **Bastionhost**altında **Etkinleştir**' i seçin. Bu bilgileri girin:
+9. **Bastionhost** altında **Etkinleştir** ' i seçin. Bu bilgileri girin:
 
     | Ayar            | Değer                      |
     |--------------------|----------------------------|
     | Savunma adı | **Mybastionhost** girin |
     | AzureBastionSubnet adres alanı | **10.1.1.0/24** girin |
-    | Genel IP Adresi | **Yeni oluştur**’u seçin. </br> **Ad**Için **Mybastionıp**girin. </br> **Tamam**’ı seçin. |
+    | Genel IP Adresi | **Yeni oluştur** ’u seçin. </br> **Ad** Için **Mybastionıp** girin. </br> **Tamam** ’ı seçin. |
 
 
 8. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesini seçin.
 
-9. **Oluştur**’u seçin.
+9. **Oluştur** ’u seçin.
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
@@ -100,7 +100,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
 
 1. Portalın sol üst tarafında, **kaynak oluştur**  >  **işlem**  >  **sanal makinesi** ' ni seçin veya arama kutusunda **sanal makine** ara ' yı seçin.
    
-2. **Sanal makine oluştur**' da **temel bilgiler** sekmesinde değerleri yazın veya seçin:
+2. **Sanal makine oluştur** ' da **temel bilgiler** sekmesinde değerleri yazın veya seçin:
 
     | Ayar | Değer                                          |
     |-----------------------|----------------------------------|
@@ -109,7 +109,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
     | Kaynak Grubu | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **Myvm 'yi** girin |
-    | Bölge | **Doğu ABD** seçin |
+    | Bölge | **Batı Avrupa** seçin |
     | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
     | Görüntü | **Windows Server 2019 Datacenter-Gen1** seçin |
     | Azure Spot örneği | **Hayır** seçin |
@@ -119,7 +119,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
     | Parola | Parola girin |
     | Parolayı onayla | Parolayı yeniden girin |
 
-3. **Ağ** sekmesini seçin veya **Sonraki: diskler**' i ve sonra **İleri: ağ**' ı seçin.
+3. **Ağ** sekmesini seçin veya **Sonraki: diskler** ' i ve sonra **İleri: ağ** ' ı seçin.
   
 4. Ağ sekmesinde, şunu seçin veya girin:
 
@@ -132,15 +132,15 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
     | NIC ağ güvenlik grubu | **Temel**|
     | Genel gelen bağlantı noktaları | **Hiçbiri** seçeneğini belirtin. |
    
-5. **Gözden geçir + oluştur**’u seçin. 
+5. **Gözden geçir ve oluştur** ’u seçin. 
   
-6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
+6. Ayarları gözden geçirin ve ardından **Oluştur** ' u seçin.
 
 ## <a name="create-web-app"></a>Web uygulaması oluşturma
 
 Bu bölümde, bir Web uygulaması oluşturacaksınız.
 
-1. Sol taraftaki menüde, **kaynak**  >  **depolama**  >  **Web uygulaması**oluştur ' u veya arama kutusunda **Web uygulaması** ara ' yı seçin.
+1. Sol taraftaki menüde, **kaynak**  >  **depolama**  >  **Web uygulaması** oluştur ' u veya arama kutusunda **Web uygulaması** ara ' yı seçin.
 
 2. **Web uygulaması oluştur** ' un **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin:
 
@@ -150,18 +150,18 @@ Bu bölümde, bir Web uygulaması oluşturacaksınız.
     | Abonelik | Azure aboneliğinizi seçin |
     | Kaynak Grubu | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |  |
-    | Name | **MyWebApp**girin. Ad kullanılamıyorsa, benzersiz bir ad girin. |
-    | Yayımla | **Kod**’u seçin. |
+    | Name | **MyWebApp** girin. Ad kullanılamıyorsa, benzersiz bir ad girin. |
+    | Yayımlama | **Kod** ’u seçin. |
     | Çalışma zamanı yığını | **.NET Core 3,1 (LTS)** seçeneğini belirleyin. |
-    | İşletim Sistemi | **Windows**' u seçin. |
-    | Bölge | **Doğu ABD** seçin |
+    | İşletim Sistemi | **Windows** ' u seçin. |
+    | Bölge | **Batı Avrupa** seçin |
     | **App Service Planı** |  |
-    | Windows planı (Doğu ABD) | **Yeni oluştur**’u seçin. </br> **Ad**alanına **myserviceplan** yazın. |
-    | Sku ve boyut | **Boyutu değiştir**'i seçin. </br> **Spec Seçicisi** ekranında **P2V2** öğesini seçin. </br> **Apply** (Uygula) seçeneğini belirleyin. |
+    | Windows planı (Batı Avrupa) | **Yeni oluştur** ’u seçin. </br> **Ad** alanına **myserviceplan** yazın. |
+    | Sku ve boyut | **Boyutu değiştir** 'i seçin. </br> **Spec Seçicisi** ekranında **P2V2** öğesini seçin. </br> **Apply** (Uygula) seçeneğini belirleyin. |
    
-3. **Gözden geçir ve oluştur**’u seçin.
+3. **Gözden geçir ve oluştur** ’u seçin.
 
-4. **Oluştur**’u seçin.
+4. **Oluştur** ’u seçin.
 
     :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/create-web-app.png" alt-text="Azure portal 'de Web uygulaması oluşturma temelleri sekmesi." border="true":::
 
@@ -169,9 +169,9 @@ Bu bölümde, bir Web uygulaması oluşturacaksınız.
 
 1. Sol taraftaki menüden **tüm kaynaklar**  >  **MyWebApp** ' i veya oluşturma sırasında seçtiğiniz adı seçin.
 
-2. Web uygulamasına genel bakış ' da **Ayarlar**  >  **ağ**' ı seçin.
+2. Web uygulamasına genel bakış ' da **Ayarlar**  >  **ağ** ' ı seçin.
 
-3. **Ağ**' da **Özel uç nokta bağlantılarınızı yapılandırın**' ı seçin.
+3. **Ağ** ' da **Özel uç nokta bağlantılarınızı yapılandırın** ' ı seçin.
 
 4. **Özel uç nokta bağlantıları** ekranında **+ Ekle** ' yi seçin.
 
@@ -179,13 +179,13 @@ Bu bölümde, bir Web uygulaması oluşturacaksınız.
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | **Mywebappendpoint**girin. |
+    | Ad | **Mywebappendpoint** girin. |
     | Abonelik | Aboneliğinizi seçin. |
-    | Sanal ağ | **Myvnet**' i seçin. |
-    | Alt ağ | **Mysubnet**öğesini seçin. |
-    | Özel DNS bölgesi ile tümleştirme | **Evet**’i seçin. |
+    | Sanal ağ | **Myvnet** ' i seçin. |
+    | Alt ağ | **Mysubnet** öğesini seçin. |
+    | Özel DNS bölgesi ile tümleştirme | **Evet** ’i seçin. |
 
-6. **Tamam**’ı seçin.
+6. **Tamam** ’ı seçin.
     
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Özel uç nokta ile bağlantıyı sına
@@ -196,9 +196,9 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi özel uç nokta ge
 
 2. **myResourceGroup** öğesini seçin.
 
-3. **Myvm**' yi seçin.
+3. **Myvm** ' yi seçin.
 
-4. **Myvm**için genel bakış sayfasında **Bağlan** ' ı **seçin.**
+4. **Myvm** için genel bakış sayfasında **Bağlan** ' ı **seçin.**
 
 5. Mavi **kullanımı** savunma düğmesini seçin.
 
@@ -220,35 +220,35 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi özel uç nokta ge
 
     Web uygulaması adı için **10.1.0.5** özel IP adresi döndürülür.  Bu adres, daha önce oluşturduğunuz sanal ağın alt ağıdır.
 
-9. Yerel bilgisayarınızda bir Web tarayıcısı açın ve **https:// \<webapp-name> . azurewebsites.net**Web uygulamanızın dış URL 'sini girin.
+9. Yerel bilgisayarınızda bir Web tarayıcısı açın ve **https:// \<webapp-name> . azurewebsites.net** Web uygulamanızın dış URL 'sini girin.
 
 10. Bir **403** sayfası albildiğinizi doğrulayın. Bu sayfa, Web uygulamasının dışarıdan erişilebilir olmadığını gösterir.
 
     :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-ext-403.png" alt-text="Azure portal 'de Web uygulaması oluşturma temelleri sekmesi." border="true":::
 
-11. **Myvm**'e yönelik savunma bağlantısı ' nda Internet Explorer 'ı açın.
+11. **Myvm** 'e yönelik savunma bağlantısı ' nda Internet Explorer 'ı açın.
 
-12. Web uygulamanızın URL 'sini girin, **https:// \<webapp-name> . azurewebsites.net**.
+12. Web uygulamanızın URL 'sini girin, **https:// \<webapp-name> . azurewebsites.net** .
 
 13. Varsayılan Web uygulaması sayfasını almanızı doğrulayın.
 
     :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-default-page.png" alt-text="Azure portal 'de Web uygulaması oluşturma temelleri sekmesi." border="true":::
 
-18. **Myvm**bağlantısını kapatın.
+18. **Myvm** bağlantısını kapatın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, sanal ağ, sanal makine ve Web uygulamasını aşağıdaki adımlarla silin:
 
-1. Sol taraftaki menüden **kaynak grupları**' nı seçin.
+1. Sol taraftaki menüden **kaynak grupları** ' nı seçin.
 
 2. **myResourceGroup** öğesini seçin.
 
-3. **Kaynak grubunu sil**'i seçin.
+3. **Kaynak grubunu sil** 'i seçin.
 
 4. **Kaynak grubu adını türüne** **myresourcegroup** girin.
 
-5. **Sil**’i seçin.
+5. **Sil** ’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

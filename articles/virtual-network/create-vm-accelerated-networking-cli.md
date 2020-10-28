@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 1dc35b596d73f713aea99ea14ddb0ff8cbc8d203
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b0b2cbf3fc637d7ad53be911c0171f6bb971bc6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84688629"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896132"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLı kullanarak hızlandırılmış ağ ile Linux sanal makinesi oluşturma
 
@@ -58,7 +58,7 @@ Aşağıdaki dağıtımlar Azure galerisindeki kutudan çıkar:
 ### <a name="supported-vm-instances"></a>Desteklenen VM örnekleri
 Hızlandırılmış ağ, 2 veya daha fazla vCPU ile en genel amaçlı ve işlem için iyileştirilmiş örnek boyutlarında desteklenir.  Desteklenen bu seriler şunlardır: D/DSv2 ve F/FS
 
-Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, 4 veya daha fazla vCPU içeren VM örneklerinde desteklenir. Desteklenen Seriler: D/Dsv3, D/Dsv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS ve MS/Mmsv2.
+Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, 4 veya daha fazla vCPU içeren VM örneklerinde desteklenir. Desteklenen seriler şunlardır: D/Dsv3, D/Dsv4, gg/Ddv4, da/Dasv4, E/Esv3, E/Esv4, Ed/Edsv4, EA/Easv4, Fsv2, Lsv2, MS/MMS ve MS/Mmsv2.
 
 VM örnekleri hakkında daha fazla bilgi için bkz. [LINUX VM boyutları](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -78,7 +78,7 @@ Sanal makineler (klasik) hızlandırılmış ağlarla dağıtılamaz.
 
 ## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>Azure hızlandırılmış ağ ile Linux VM oluşturma
 ## <a name="portal-creation"></a>Portal oluşturma
-Bu makalede, Azure CLı kullanarak hızlandırılmış ağ içeren bir sanal makine oluşturma adımları sunulmaktadır, ancak [Azure Portal kullanarak hızlandırılmış ağ içeren bir sanal makine oluşturabilirsiniz](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Portalda bir sanal makine oluştururken, **sanal makine oluştur** dikey penceresinde **ağ** sekmesini seçin.  Bu sekmede, **hızlandırılmış ağ**için bir seçenek vardır.  [Desteklenen bir işletim sistemi](#supported-operating-systems) ve [VM boyutu](#supported-vm-instances)seçtiyseniz, bu seçenek otomatik olarak "açık" olarak doldurulur.  Aksi takdirde, hızlandırılmış ağ için "kapalı" seçeneğini doldurur ve kullanıcıya neden etkinleştirilmemiş bir neden olur.   
+Bu makalede, Azure CLı kullanarak hızlandırılmış ağ içeren bir sanal makine oluşturma adımları sunulmaktadır, ancak [Azure Portal kullanarak hızlandırılmış ağ içeren bir sanal makine oluşturabilirsiniz](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Portalda bir sanal makine oluştururken, **sanal makine oluştur** dikey penceresinde **ağ** sekmesini seçin.  Bu sekmede, **hızlandırılmış ağ** için bir seçenek vardır.  [Desteklenen bir işletim sistemi](#supported-operating-systems) ve [VM boyutu](#supported-vm-instances)seçtiyseniz, bu seçenek otomatik olarak "açık" olarak doldurulur.  Aksi takdirde, hızlandırılmış ağ için "kapalı" seçeneğini doldurur ve kullanıcıya neden etkinleştirilmemiş bir neden olur.   
 
 * *Note:* Portal aracılığıyla yalnızca desteklenen işletim sistemleri etkinleştirilebilir.  Özel bir görüntü kullanıyorsanız ve görüntünüz hızlandırılmış ağı destekliyorsa, lütfen CLı veya PowerShell kullanarak VM 'nizi oluşturun. 
 
@@ -87,7 +87,7 @@ Sanal makine oluşturulduktan sonra, [hızlandırılmış ağ oluşturma özelli
 ## <a name="cli-creation"></a>CLı oluşturma
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-En son [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [az Login](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın. Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup*, *MYNIC*ve *myvm*dahil olmak üzere örnek parametre adları.
+En son [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [az Login](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın. Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup* , *MYNIC* ve *myvm* dahil olmak üzere örnek parametre adları.
 
 [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Aşağıdaki örnek, *merkezileştirme* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
@@ -160,7 +160,7 @@ az network nic create \
 ### <a name="create-a-vm-and-attach-the-nic"></a>VM oluşturma ve NIC 'yi iliştirme
 VM oluştururken, ile oluşturduğunuz NIC 'i belirtin `--nics` . [Linux hızlandırılmış ağlarda](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)listelenen bir boyut ve dağıtım seçin. 
 
-[az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek, UbuntuLTS görüntüsü ile *Myvm* ADLı bir VM ve hızlandırılmış ağı destekleyen bir boyut oluşturur (*Standard_DS4_v2*):
+[az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek, UbuntuLTS görüntüsü ile *Myvm* ADLı bir VM ve hızlandırılmış ağı destekleyen bir boyut oluşturur ( *Standard_DS4_v2* ):
 
 ```azurecli
 az vm create \
@@ -200,10 +200,10 @@ ssh azureuser@<your-public-ip-address>
 
 Bash kabuğundan, `uname -r` çekirdek sürümünün aşağıdaki sürümlerden biri veya daha fazlası olduğunu girin ve onaylayın:
 
-* **Ubuntu 16,04**: 4.11.0-1013
-* **SLES SP3**: 4.4.92-6.18
-* **RHEL**: 7.4.2017120423
-* **CentOS**: 7.4.20171206
+* **Ubuntu 16,04** : 4.11.0-1013
+* **SLES SP3** : 4.4.92-6.18
+* **RHEL** : 7.4.2017120423
+* **CentOS** : 7.4.20171206
 
 
 Mellanox VF cihazının VM 'ye komutuyla açık olduğunu doğrulayın `lspci` . Döndürülen çıkış aşağıdaki çıktıya benzer:
@@ -230,7 +230,7 @@ Hızlandırılmış ağ, VM 'niz için artık etkinleştirilmiştir.
 
 ## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>Sanal işlevin dinamik bağlamasını ve iptalini işle 
 Uygulamalar VM 'de kullanıma sunulan yapay NIC 'in üzerinde çalışmalıdır. Uygulama doğrudan VF NIC üzerinden çalışıyorsa, bazı paketler yapay arabirim üzerinde gösterildiğinden, VM 'ye giden **Tüm** paketleri almaz.
-Yapay NIC üzerinden bir uygulama çalıştırırsanız, uygulamanın kendisine gidecek **Tüm** paketleri almasını güvence altına alır. Ayrıca, ana bilgisayara bakım yapıldığında VF iptal edilse bile uygulamanın çalışmaya devam etmelerini sağlar. Yapay NIC 'e bağlayan uygulamalar, **hızlandırılmış ağ**özelliğinden yararlanan tüm uygulamaların **zorunlu** bir gereksinimidir.
+Yapay NIC üzerinden bir uygulama çalıştırırsanız, uygulamanın kendisine gidecek **Tüm** paketleri almasını güvence altına alır. Ayrıca, ana bilgisayara bakım yapıldığında VF iptal edilse bile uygulamanın çalışmaya devam etmelerini sağlar. Yapay NIC 'e bağlayan uygulamalar, **hızlandırılmış ağ** özelliğinden yararlanan tüm uygulamaların **zorunlu** bir gereksinimidir.
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>Mevcut VM 'lerde hızlandırılmış ağı etkinleştir
 Hızlandırılmış ağ olmadan bir VM oluşturduysanız, bu özelliği var olan bir VM 'de etkinleştirmek mümkündür.  Yukarıda da özetlenen aşağıdaki önkoşulları izleyerek VM 'nin hızlandırılmış ağı desteklemesi gerekir:

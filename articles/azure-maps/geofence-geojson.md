@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e880710b93a6764df50780e685c89b5f569b4ec0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037414"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897203"
 ---
 # <a name="geofencing-geojson-data"></a>Bölge sınırlaması coğrafi JSON verileri
 
@@ -40,7 +40,7 @@ Bölge ölçütü veya bölge kümesi verileri `Feature` `FeatureCollection` `Ge
 
 * Tüm koordinat değerleri içinde tanımlanmış [Boylam, Enlem] olarak gösterilir `WGS84` .
 * ,,, Veya içeren her özellik için, `MultiPoint` `MultiLineString` `MultiPolygon` `GeometryCollection` Özellikler tüm öğelere uygulanır. Örneğin: içindeki tüm noktaları, `MultiPoint` birden çok daire bölge oluşturmak için aynı yarıçapı kullanır.
-* Nokta-daire senaryosunda, bir daire geometrisi, `Point` [geojson geometrileri genişletilerek](https://docs.microsoft.com/azure/azure-maps/extend-geojson)ayrıntılı Properties ile bir geometri nesnesi kullanılarak gösterilebilir.      
+* Nokta-daire senaryosunda, bir daire geometrisi, `Point` [geojson geometrileri genişletilerek](./extend-geojson.md)ayrıntılı Properties ile bir geometri nesnesi kullanılarak gösterilebilir.      
 
 Aşağıda, bir `GeoJSON` orta nokta ve yarıçap kullanan bir daire bölge alanı geometrisi olarak temsil edilen bölge için örnek bir istek gövdesi verilmiştir. Bölge verilerinin geçerli dönemi 2018-10-22, 00 ila 17:00, hafta sonu hariç her gün yinelenir. `expiredTime` istekte daha sonra olması durumunda bu bölge verilerinin zaman aşımına geçeceğini belirtir `userTime` `2019-01-01` .  
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea8698b7bf402850e506ec126cd2a7bb6ce05823
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972037"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896736"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure haritalar 'da Hava durumu Hizmetleri
 
-Bu makalede, [Azure Maps Hava durumu Hizmetleri](https://aka.ms/AzureMapsWeatherService)için uygulanan kavramlar tanıtılmaktadır. Hava durumu API 'Leri ile çalışmaya başlamadan önce bu makaleyi kullanmanızı öneririz.
+Bu makalede, [Azure Maps Hava durumu Hizmetleri](/rest/api/maps/weather)için uygulanan kavramlar tanıtılmaktadır. Hava durumu API 'Leri ile çalışmaya başlamadan önce bu makaleyi kullanmanızı öneririz.
 
 ## <a name="unit-types"></a>Birim türleri
 
@@ -100,7 +100,7 @@ Bazı hava durumu hizmeti API 'Leri `iconCode` yanıt olarak ' i döndürür. , 
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>Radar ve uydu Imagery renk ölçeği
 
-[Get Map kutucuğu v2 API](https://aka.ms/AzureMapsWeatherTiles) kullanıcıları, en son radar ve kızılötesi uydu görüntülerini isteyebilir. Radar ve uydu kutucukları için kullanılan renkleri yorumlamaya yardımcı olması için aşağıdaki kılavuza bakın.
+[Get Map kutucuğu v2 API](/rest/api/maps/renderv2/getmaptilepreview) kullanıcıları, en son radar ve kızılötesi uydu görüntülerini isteyebilir. Radar ve uydu kutucukları için kullanılan renkleri yorumlamaya yardımcı olması için aşağıdaki kılavuza bakın.
 
 ### <a name="radar-images"></a>Radar görüntüler
 
@@ -475,7 +475,7 @@ Kızılötesi uydu kutucukları için ayrıntılı renk paleti aşağıda göste
 
 ## <a name="index-ids-and-index-groups-ids"></a>Dizin kimlikleri ve dizin grupları kimlikleri
 
-[Günlük dizinleri al API 'si](https://aka.ms/AzureMapsWeatherDailyIndices) , kullanıcıların döndürülen sonuçları belirli dizin türlerine veya dizin gruplarına kısıtlayasağlar.
+[Günlük dizinleri al API 'si](/rest/api/maps/weather) , kullanıcıların döndürülen sonuçları belirli dizin türlerine veya dizin gruplarına kısıtlayasağlar.
 
 Aşağıda, kullanılabilir dizin kimlikleri, adları ve Aralık kümelerinin bir bağlantısı yer alan bir tablodur. Bu tablonun altında çeşitli dizin gruplarının listelendiği bir tablo bulunur.
 
@@ -547,7 +547,7 @@ Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmi�
 
 ## <a name="daily-index-range-sets"></a>Günlük dizin aralığı kümeleri
 
-[Günlük dizinler al API 'si](https://aka.ms/AzureMapsWeatherDailyIndices) , her BIR dizin kimliği için ranşlı değeri ve ilişkili kategori adını döndürür. Aralık kümeleri tüm dizinler için aynı değildir. Aşağıdaki tablolarda, [Dizin kimlikleri ve dizin grupları kimliklerinde](#index-ids-and-index-groups-ids)listelenen desteklenen dizinler tarafından kullanılan çeşitli Aralık kümeleri gösterilmektedir. Hangi dizinlerin hangi Aralık kümelerini kullanacağınızı öğrenmek için, bu belgenin [Dizin kimlikleri ve dizin grupları kimlikleri](#index-ids-and-index-groups-ids) bölümüne gidin.
+[Günlük dizinler al API 'si](/rest/api/maps/weather) , her BIR dizin kimliği için ranşlı değeri ve ilişkili kategori adını döndürür. Aralık kümeleri tüm dizinler için aynı değildir. Aşağıdaki tablolarda, [Dizin kimlikleri ve dizin grupları kimliklerinde](#index-ids-and-index-groups-ids)listelenen desteklenen dizinler tarafından kullanılan çeşitli Aralık kümeleri gösterilmektedir. Hangi dizinlerin hangi Aralık kümelerini kullanacağınızı öğrenmek için, bu belgenin [Dizin kimlikleri ve dizin grupları kimlikleri](#index-ids-and-index-groups-ids) bölümüne gidin.
 
 ### <a name="poor-excellent-1"></a>Poor-Excellent 1
 
@@ -573,7 +573,7 @@ Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmi�
 
  | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
   ----------------|--------------|------------
-  Mükemmel      |     0.00        |    1,00
+  Mükemmel      |     0,00        |    1,00
   Çok iyi        |   1.01          |  3,00
   İyi             |   3,01          |  5.00
   Yeterli             |   5,01          |  7,00
@@ -613,7 +613,7 @@ Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmi�
 
  | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
   ----------------|--------------|------------
-  Çok büyük olasılıkla      |  0.00     |         1,00
+  Çok büyük olasılıkla      |  0,00     |         1,00
   Düşüktür           |  1.01     |         3,00
   Belki           |  3,01     |         5.00
   Mesinden             |  5,01     |         7,00
