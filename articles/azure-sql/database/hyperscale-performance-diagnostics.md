@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed31ff5d77b258d141a77fc174c2d5452adf7d01
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84324409"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791724"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL hiper ölçek performans sorunlarını giderme tanılaması
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Tüm diğer veri dosyalarında yapılan toplanmış okumaların, RBPEX üzerinde
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>Kaynak Kullanım istatistiklerinde veri GÇ
 
-Hiper olmayan bir veritabanında, [kaynak idare](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) verileri IOPS sınırına göre veri dosyalarına yönelik Birleşik okuma ve Yazma IOPS 'si, [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ve [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) görünümlerinde raporlanır `avg_data_io_percent` . Aynı değer Azure portal _VERI GÇ yüzdesi_olarak raporlanır.
+Hiper olmayan bir veritabanında, [kaynak idare](./resource-limits-logical-server.md#resource-governance) verileri IOPS sınırına göre veri dosyalarına yönelik Birleşik okuma ve Yazma IOPS 'si, [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ve [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) görünümlerinde raporlanır `avg_data_io_percent` . Aynı değer Azure portal _VERI GÇ yüzdesi_ olarak raporlanır.
 
 Hiper ölçekli bir veritabanında, bu sütun yalnızca işlem çoğaltmasındaki yerel depolama alanı için olan sınıra göre veri ıOPS kullanımını bildirir ve özellikle RBPEX ve ile karşı GÇ `tempdb` . Bu sütundaki %100 değeri, kaynak yönetimi 'nin yerel depolama ıOPS 'yi sınırlandırdığını gösterir. Bu bir performans sorunuyla bağıntılı ise, daha az GÇ oluşturmak için iş yükünü ayarlayın veya kaynak yönetimi _en yüksek VERI IOPS_ [sınırını](resource-limits-vcore-single-databases.md)artırmak için veritabanı hizmeti hedefini artırın. RBPEX okuma ve yazma kaynak idaresi için sistem, SQL Server veritabanı altyapısı tarafından verilebilen daha büyük IOs yerine ayrı ayrı 8 KB 'lık IOs sayısını sayar.
 

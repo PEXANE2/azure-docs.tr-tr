@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: cade5a4329cdfc11c1b256ba01e9764f60a476a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1126798bdf07f54811c83b932af9928f3e3115dc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667869"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792013"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma ve iliştirme
 
@@ -34,7 +34,7 @@ Azure Machine Learning, eğitilen makine öğrenimi modellerini Azure Kubernetes
 
 - Temel bir Load Balancer (BLB) yerine kümenizde dağıtılan bir **Standart Load Balancer (SLB)** gerekiyorsa, aks PORTALıNDA/CLı/SDK ' da bir küme oluşturun ve ardından AML çalışma alanına **ekleyin** .
 
-- Genel IP adreslerinin oluşturulmasını kısıtlayan bir Azure Ilkeniz varsa, AKS kümesi oluşturma işlemi başarısız olur. AKS, [çıkış trafiği](/azure/aks/limit-egress-traffic)için genel bir IP gerektirir. TH çıkış trafiği makalesi, bazı tam etki alanı adları dışında, genel IP aracılığıyla kümeden çıkış trafiğini kilitlemek için rehberlik sağlar. Genel IP 'yi etkinleştirmenin 2 yolu vardır:
+- Genel IP adreslerinin oluşturulmasını kısıtlayan bir Azure Ilkeniz varsa, AKS kümesi oluşturma işlemi başarısız olur. AKS, [çıkış trafiği](/azure/aks/limit-egress-traffic)için genel bir IP gerektirir. Çıkış trafiği makalesi, bazı tam etki alanı adları dışında, genel IP aracılığıyla kümeden çıkış trafiğini kilitlemek için rehberlik sağlar. Genel IP 'yi etkinleştirmenin 2 yolu vardır:
     - Küme, varsayılan olarak BLB veya SLB ile oluşturulan genel IP 'yi kullanabilir veya
     - Küme, genel IP olmadan oluşturulabilir ve ardından genel IP, Kullanıcı tanımlı bir yol ile bir güvenlik duvarıyla yapılandırılır. Daha fazla bilgi için bkz. [Kullanıcı tanımlı rota ile küme çıkışı özelleştirme](/azure/aks/egress-outboundtype).
     
@@ -54,12 +54,12 @@ Azure Machine Learning, eğitilen makine öğrenimi modellerini Azure Kubernetes
    
  - Modelleri **GPU** düğümlerine veya **FPGA** düğümlerine (ya da belirli bir SKU) DAĞıTMAK istiyorsanız, belirli SKU 'ya sahip bir küme oluşturmanız gerekir. Mevcut bir kümede ikincil düğüm havuzu oluşturma ve ikincil düğüm havuzunda modelleri dağıtma desteği yoktur.
  
-- Bir küme oluştururken veya iliştirirken, __geliştirme ve test__ ya da __Üretim__için kümenin oluşturulup oluşturulmayacağını seçebilirsiniz. Üretim yerine __geliştirme__, __doğrulama__ve __Test__ için bir aks kümesi oluşturmak istiyorsanız, __küme amacını__ __geliştirme-test__olarak ayarlayın. Küme amacını belirtmezseniz, bir __Üretim__ kümesi oluşturulur. 
+- Bir küme oluştururken veya iliştirirken, __geliştirme ve test__ ya da __Üretim__ için kümenin oluşturulup oluşturulmayacağını seçebilirsiniz. Üretim yerine __geliştirme__ , __doğrulama__ ve __Test__ için bir aks kümesi oluşturmak istiyorsanız, __küme amacını__ __geliştirme-test__ olarak ayarlayın. Küme amacını belirtmezseniz, bir __Üretim__ kümesi oluşturulur. 
 
     > [!IMPORTANT]
     > __Geliştirme ve test__ kümesi, üretim düzeyi trafiğe uygun değildir ve çıkarım sürelerini artırabilir. Geliştirme ve test kümeleri de hata toleransı garantisi vermez.
 
-- Küme oluştururken veya iliştirirken, küme __Üretim__için kullanılacaksa, en az 12 __sanal CPU__içermesi gerekir. Sanal CPU sayısı, seçilen VM boyutu tarafından belirtilen __çekirdek sayısına__ göre kümedeki __düğümlerin sayısı__ çarpılarak hesaplanabilir. Örneğin, 4 sanal çekirdeği olan "Standard_D3_v2" sanal makine boyutunu kullanırsanız, düğüm sayısı olarak 3 veya daha büyük bir değer seçmeniz gerekir.
+- Küme oluştururken veya iliştirirken, küme __Üretim__ için kullanılacaksa, en az 12 __sanal CPU__ içermesi gerekir. Sanal CPU sayısı, seçilen VM boyutu tarafından belirtilen __çekirdek sayısına__ göre kümedeki __düğümlerin sayısı__ çarpılarak hesaplanabilir. Örneğin, 4 sanal çekirdeği olan "Standard_D3_v2" sanal makine boyutunu kullanırsanız, düğüm sayısı olarak 3 veya daha büyük bir değer seçmeniz gerekir.
 
     Geliştirme ve __Test__ kümesi için en az 2 sanal CPU 'yu yeniden komutlarız.
 
@@ -85,7 +85,7 @@ Mevcut bir AKS kümesini **eklerken** , şu anda desteklenen tüm aks sürümler
 > [!NOTE]
 > Artık desteklenmeyen daha eski bir kümeniz olan uç durumlar olabilir. Bu durumda iliştirme işlemi bir hata döndürür ve şu anda desteklenen sürümleri listeler.
 >
-> **Önizleme** sürümleri ekleyebilirsiniz. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Önizleme sürümlerinin kullanımı için destek sınırlı olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> **Önizleme** sürümleri ekleyebilirsiniz. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Önizleme sürümlerinin kullanımı için destek sınırlı olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="available-and-default-versions"></a>Kullanılabilir ve varsayılan sürümler
 
@@ -124,7 +124,7 @@ Result
 1.16.13
 ```
 
-**Kullanılabilir sürümleri programlı olarak denetlemek**Isterseniz, [kapsayıcı hizmeti istemci listesi düzenleyiciler](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) REST API kullanın. Kullanılabilir sürümleri bulmak için, olduğu girişlere bakın `orchestratorType` `Kubernetes` . İlişkili `orchestrationVersion` girişler, çalışma alanınıza **iliştirilebilecek** kullanılabilir sürümleri içerir.
+**Kullanılabilir sürümleri programlı olarak denetlemek** Isterseniz, [kapsayıcı hizmeti istemci listesi düzenleyiciler](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) REST API kullanın. Kullanılabilir sürümleri bulmak için, olduğu girişlere bakın `orchestratorType` `Kubernetes` . İlişkili `orchestrationVersion` girişler, çalışma alanınıza **iliştirilebilecek** kullanılabilir sürümleri içerir.
 
 Azure Machine Learning aracılığıyla küme **oluştururken** kullanılan varsayılan sürümü bulmak için, ve olduğu girişi bulun `orchestratorType` `Kubernetes` `default` `true` . İlişkili `orchestratorVersion` değer varsayılan sürümdür. Aşağıdaki JSON kod parçacığında bir örnek girişi gösterilmektedir:
 
@@ -147,7 +147,7 @@ Azure Machine Learning aracılığıyla küme **oluştururken** kullanılan vars
 
 ## <a name="create-a-new-aks-cluster"></a>Yeni bir AKS kümesi oluşturma
 
-**Tahmini süre**: yaklaşık 10 dakika.
+**Tahmini süre** : yaklaşık 10 dakika.
 
 AKS kümesi oluşturma veya iliştirme, çalışma alanınız için tek seferlik bir işlemdir. Bu kümeyi birden çok dağıtım için yeniden kullanabilirsiniz. Kümeyi veya onu içeren kaynak grubunu silerseniz, bir dahaki sefer dağıtmanız gerektiğinde yeni bir küme oluşturmanız gerekir. Çalışma alanınıza eklenmiş birden çok AKS kümeniz olabilir.
 
@@ -284,7 +284,7 @@ Portala AKS kümesi ekleme hakkında daha fazla bilgi için, bkz. [Azure Machine
 Bir kümeyi çalışma alanınızdan ayırmak için aşağıdaki yöntemlerden birini kullanın:
 
 > [!WARNING]
-> Bir AKS kümesini ayırmak için Machine Learning 'in Azure Machine Learning Studio, SDK veya Azure CLı uzantısının kullanılması **AKS kümesini silmez**. Kümeyi silmek için bkz. [Azure CLI 'Yı AKS Ile kullanma](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
+> Bir AKS kümesini ayırmak için Machine Learning 'in Azure Machine Learning Studio, SDK veya Azure CLı uzantısının kullanılması **AKS kümesini silmez** . Kümeyi silmek için bkz. [Azure CLI 'Yı AKS Ile kullanma](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -302,7 +302,7 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure Machine Learning Studio 'da __işlem__, __çıkarım kümeleri__ve kaldırmak istediğiniz kümeyi seçin. Kümeyi ayırmak için __ayırma__ bağlantısını kullanın.
+Azure Machine Learning Studio 'da __işlem__ , __çıkarım kümeleri__ ve kaldırmak istediğiniz kümeyi seçin. Kümeyi ayırmak için __ayırma__ bağlantısını kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

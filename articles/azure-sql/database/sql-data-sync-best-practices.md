@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332993"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791452"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL Data Sync için en iyi yöntemler 
 
@@ -41,11 +41,11 @@ SQL Data Sync hizmetine genel bakış için bkz. [Azure SQL Data Sync ile birden
 
 ### <a name="database-accounts-with-least-required-privileges"></a>En az gerekli ayrıcalıklara sahip veritabanı hesapları
 
--   **Eşitleme kurulumu için**. Tablo Oluştur/Değiştir; Alter database; Yordam oluşturma; Şemayı Seç/Değiştir; User-Defined türü oluşturun.
+-   **Eşitleme kurulumu için** . Tablo Oluştur/Değiştir; Alter database; Yordam oluşturma; Şemayı Seç/Değiştir; User-Defined türü oluşturun.
 
--   , **Devam eden eşitleme için**. Eşitleme için seçilen tablolarda ve eşitleme meta verileri ve izleme tablolarında seçme/ekleme/güncelleştirme/silme; Hizmet tarafından oluşturulan saklı yordamlarda yürütme izni; Kullanıcı tanımlı tablo türlerinde yürütme izni.
+-   , **Devam eden eşitleme için** . Eşitleme için seçilen tablolarda ve eşitleme meta verileri ve izleme tablolarında seçme/ekleme/güncelleştirme/silme; Hizmet tarafından oluşturulan saklı yordamlarda yürütme izni; Kullanıcı tanımlı tablo türlerinde yürütme izni.
 
--   **Sağlaması için**. Eşitleme kapsamında tablolar üzerinde Değiştir; Eşitleme meta verileri tablolarında seçin/silin; Eşitleme izleme tablolarında, saklı yordamlarda ve Kullanıcı tanımlı türlerde denetim.
+-   **Sağlaması için** . Eşitleme kapsamında tablolar üzerinde Değiştir; Eşitleme meta verileri tablolarında seçin/silin; Eşitleme izleme tablolarında, saklı yordamlarda ve Kullanıcı tanımlı türlerde denetim.
 
 Azure SQL veritabanı yalnızca tek bir kimlik bilgileri kümesini destekler. Bu kısıtlama dahilinde bu görevleri gerçekleştirmek için aşağıdaki seçenekleri göz önünde bulundurun:
 
@@ -168,7 +168,7 @@ Portal ve günlük arabirimi aracılığıyla eşitleme grubunu ve veritabanı s
 
 ### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> Güncel olmayan veritabanlarının ve eşitleme gruplarının olmaması
 
-Bir eşitleme grubunun veya bir eşitleme grubundaki veritabanının tarihi eski olabilir. Eşitleme grubunun durumu **güncel**olmadığında, çalışmayı sonlandırır. Veritabanının durumu **güncel**olmadığında veriler kaybolabilir. Bu senaryodan kurtarmaya çalışmak yerine bu senaryonun önüne geçmek en iyisidir.
+Bir eşitleme grubunun veya bir eşitleme grubundaki veritabanının tarihi eski olabilir. Eşitleme grubunun durumu **güncel** olmadığında, çalışmayı sonlandırır. Veritabanının durumu **güncel** olmadığında veriler kaybolabilir. Bu senaryodan kurtarmaya çalışmak yerine bu senaryonun önüne geçmek en iyisidir.
 
 #### <a name="avoid-out-of-date-databases"></a>Güncel olmayan veritabanlarından kaçının
 
@@ -238,7 +238,7 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
         -  [Azure SQL veritabanı 'nda birden çok veritabanı arasında eşitleme yapmak için PowerShell 'i kullanma](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak SQL veritabanındaki bir veritabanı ile bir SQL Server örneğindeki bir veritabanı arasında eşitleme](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Veri eşitleme Aracısı- [Azure SQL Data Sync Için veri eşitleme Aracısı](sql-data-sync-agent-overview.md)
--   İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](sql-data-sync-monitor-sync.md)
+-   İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](./monitor-tune-overview.md)
 -   Sorun giderme- [Azure SQL Data Sync sorunlarını giderme](sql-data-sync-troubleshoot.md)
 -   Eşitleme şemasını güncelleştirme
     -   Transact-SQL- [Azure SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin](sql-data-sync-update-sync-schema.md)
@@ -247,4 +247,4 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 SQL veritabanı hakkında daha fazla bilgi için bkz.
 
 -   [SQL veritabanına genel bakış](sql-database-paas-overview.md)
--   [Veritabanı yaşam döngüsü yönetimi](https://msdn.microsoft.com/library/jj907294.aspx)
+-   [Veritabanı yaşam döngüsü yönetimi](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

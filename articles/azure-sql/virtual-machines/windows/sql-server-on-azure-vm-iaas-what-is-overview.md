@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae00703805bef6f5e9758bafcb781eda91cd93f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f781ddfa5717bbe5bcbb05ec8c236c8594c587
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272166"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793101"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure sanal makinelerinde SQL Server nedir (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "91272166"
 
 [Azure sanal makinelerinde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) , şirket içi donanımları yönetmek zorunda kalmadan bulutta SQL Server tam sürümlerini kullanmanıza olanak sağlar. SQL Server sanal makineler (VM 'Ler), Kullandıkça Öde sırasında lisans maliyetlerini de basitleştirir.
 
-Azure sanal makineleri dünyanın birçok farklı [coğrafi bölgesinde](https://azure.microsoft.com/regions/) çalışır. Bu makineler, ayrıca çeşitli [makine boyutları](../../../virtual-machines/windows/sizes.md) sunar. Sanal makine resim galerisi, doğru sürüm ve işletim sistemiyle bir SQL Server VM’i oluşturmanızı sağlar. Bu, sanal makinelere birçok farklı SQL Server iş yükü için iyi bir seçenek sunar.
+Azure sanal makineleri dünyanın birçok farklı [coğrafi bölgesinde](https://azure.microsoft.com/regions/) çalışır. Bu makineler, ayrıca çeşitli [makine boyutları](../../../virtual-machines/sizes.md) sunar. Sanal makine resim galerisi, doğru sürüm ve işletim sistemiyle bir SQL Server VM’i oluşturmanızı sağlar. Bu, sanal makinelere birçok farklı SQL Server iş yükü için iyi bir seçenek sunar.
 
 Azure VM 'lerinde SQL Server yeni başladıysanız, derinlemesine Azure [SQL video serimizin](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) *Azure VM 'sine genel bakış videosunu SQL Server* inceleyin:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
@@ -42,7 +42,7 @@ Azure sanal makinelerinde SQL Server, önemli pencerelerin ve SQL Server güncel
 
 Azure sanal makinelerinde SQL Server, düzenli olarak veritabanınızın yedeklerini blob depolamaya oluşturan [otomatik yedekleme](automated-backup.md)özelliğinden yararlanabilir. Bu tekniği el ile de kullanabilirsiniz. Daha fazla bilgi için. bkz. [SQL Server Yedekleme ve Geri Yükleme için Azure Storage’ı Kullanma](azure-storage-sql-server-backup-restore-use.md).
 
-Azure, Azure VM 'lerinde çalışan SQL Server için kurumsal sınıf bir yedekleme çözümü de sunmaktadır. Tam olarak yönetilen bir yedekleme çözümü, her zaman açık kullanılabilirlik grupları, uzun süreli saklama, noktadan noktaya kurtarma ve merkezi yönetim ve izleme desteği destekler. Daha fazla bilgi için bkz. [Azure VM 'lerinde SQL Server Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-sql-database).
+Azure, Azure VM 'lerinde çalışan SQL Server için kurumsal sınıf bir yedekleme çözümü de sunmaktadır. Tam olarak yönetilen bir yedekleme çözümü, her zaman açık kullanılabilirlik grupları, uzun süreli saklama, noktadan noktaya kurtarma ve merkezi yönetim ve izleme desteği destekler. Daha fazla bilgi için bkz. [Azure VM 'lerinde SQL Server Azure Backup](../../../backup/backup-azure-sql-database.md).
   
 
 ## <a name="high-availability"></a>Yüksek kullanılabilirlik
@@ -116,11 +116,11 @@ Azure portal, SQL sanal makineleriniz dahil olmak üzere [tüm Azure SQL kaynakl
 > [!NOTE]
 > Azure SQL, tüm Azure SQL veritabanlarına, elastik havuzlarınıza, mantıksal sunuculara, yönetilen örneklere ve sanal makinelere erişmenin hızlı ve kolay bir yolunu sunar. Azure SQL bir hizmet veya kaynak değil. 
 
-Mevcut kaynakları yönetmek için listeden istediğiniz öğeyi seçin. Yeni Azure SQL kaynakları oluşturmak için **+ Ekle**' yi seçin. 
+Mevcut kaynakları yönetmek için listeden istediğiniz öğeyi seçin. Yeni Azure SQL kaynakları oluşturmak için **+ Ekle** ' yi seçin. 
 
 ![Azure SQL kaynağı oluşturma](./media/sql-server-on-azure-vm-iaas-what-is-overview/create-azure-sql-resource.png)
 
-**+ Ekle**' yi seçtikten sonra herhangi bir kutucukta **Ayrıntıları göster** ' i seçerek farklı seçeneklerle ilgili ek bilgileri görüntüleyin.
+**+ Ekle** ' yi seçtikten sonra herhangi bir kutucukta **Ayrıntıları göster** ' i seçerek farklı seçeneklerle ilgili ek bilgileri görüntüleyin.
 
 ![veritabanları kutucuk ayrıntıları](./media/sql-server-on-azure-vm-iaas-what-is-overview/sql-vm-details.png)
 
@@ -135,7 +135,7 @@ Ayrıntılar için bkz.
 Azure desteklenen her işletim sistemi, sürüm ve sürüm bileşimi için yalnızca tek bir sanal makine görüntüsü tutar. Diğer bir deyişle, zaman içinde görüntüler yenilenir ve eski görüntüler kaldırılır. Daha fazla bilgi için [SQL Server VM'leri SSS](frequently-asked-questions-faq.md#images) makalesindeki **Görüntüler** bölümüne bakın.
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Müşteri deneyimini geliştirme programı (CEIP)
-Müşteri Deneyimini Geliştirme Programı (CEIP) varsayılan olarak etkindir. Bu, SQL Server’ın geliştirilmesine yardımcı olmak için Microsoft’a düzenli olarak raporlar gönderir. CEIP’i hazırladıktan sonra devre dışı bırakmak istemiyorsanız CEIP için herhangi bir yönetim görevi gerekmez. VM’ye uzak masaüstüyle bağlanarak CEIP özelleştirebilir ya da devre dışı bırakabilirsiniz. Ardından **SQL Server Hata ve Kullanım Raporlama** yardımcı programını çalıştırın. Raporlamayı devre dışı bırakmak için yönergeleri izleyin. Veri toplama hakkında daha fazla bilgi için bkz. [SQL Server Gizlilik Bildirimi](https://docs.microsoft.com/sql/sql-server/sql-server-privacy).
+Müşteri Deneyimini Geliştirme Programı (CEIP) varsayılan olarak etkindir. Bu, SQL Server’ın geliştirilmesine yardımcı olmak için Microsoft’a düzenli olarak raporlar gönderir. CEIP’i hazırladıktan sonra devre dışı bırakmak istemiyorsanız CEIP için herhangi bir yönetim görevi gerekmez. VM’ye uzak masaüstüyle bağlanarak CEIP özelleştirebilir ya da devre dışı bırakabilirsiniz. Ardından **SQL Server Hata ve Kullanım Raporlama** yardımcı programını çalıştırın. Raporlamayı devre dışı bırakmak için yönergeleri izleyin. Veri toplama hakkında daha fazla bilgi için bkz. [SQL Server Gizlilik Bildirimi](/sql/sql-server/sql-server-privacy).
 
 ## <a name="related-products-and-services"></a>İlgili ürün ve hizmetler
 ### <a name="windows-virtual-machines"></a>Windows sanal makineleri
@@ -150,7 +150,7 @@ Müşteri Deneyimini Geliştirme Programı (CEIP) varsayılan olarak etkindir. B
 * [Azure portalda Tam Etki Alanı Adı oluşturma](../../../virtual-machines/linux/portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
-* [SQL Server belgeleri](https://docs.microsoft.com/sql/index)
+* [SQL Server belgeleri](/sql/index)
 * [Azure SQL Veritabanı karşılaştırması](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -165,5 +165,5 @@ SQL Server VM 'Ler hakkında sık sorulan soruların yanıtlarını alın:
 
 IaaS 'de SQL Server N katmanlı uygulamaları çalıştırmaya yönelik başvuru mimarilerini görüntüleyin
 
-* [SQL Server ile Azure 'da Windows N katmanlı uygulama](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [Yüksek kullanılabilirlik için birden fazla Azure bölgesinde N katmanlı bir uygulama çalıştırma](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [SQL Server ile Azure 'da Windows N katmanlı uygulama](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [Yüksek kullanılabilirlik için birden fazla Azure bölgesinde N katmanlı bir uygulama çalıştırma](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

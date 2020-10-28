@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/16/2020
-ms.openlocfilehash: 41760eb91d2a8406d4deb52cd8e247731239e2b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d24143a440c0d30c3abcd6eb5efd454033b8f71c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309872"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791486"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Veritabanında tek veritabanı kaynaklarını ölçeklendirme
 
 Bu makalede, sağlanan işlem katmanında bir Azure SQL veritabanı için kullanılabilir işlem ve depolama kaynaklarının nasıl ölçeklendiriyapılacağı açıklanır. Alternatif olarak, [sunucusuz bilgi işlem katmanı](serverless-tier-overview.md) , kullanılan işlem için saniye başına işlem otomatik ölçeklendirme ve fatura sağlar.
 
-Sanal çekirdekler veya DTU sayısını ilk kez seçtikten sonra, [Azure Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)kullanarak gerçek deneyime göre tek bir veritabanını dinamik olarak yukarı veya aşağı ölçeklendirdirebilirsiniz.
+Sanal çekirdekler veya DTU sayısını ilk kez seçtikten sonra, [Azure Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](/rest/api/sql/databases/update)kullanarak gerçek deneyime göre tek bir veritabanını dinamik olarak yukarı veya aşağı ölçeklendirdirebilirsiniz.
 
 Aşağıdaki videoda, tek bir veritabanı için kullanılabilir DTU 'ları artırmak üzere hizmet katmanını ve işlem boyutunu dinamik olarak değiştirme gösterilmektedir.
 
@@ -58,7 +58,7 @@ Hizmet katmanını değiştirmek, tek bir veritabanının veya elastik havuzun i
 |**Hiper Ölçek**|Yok|Yok|Yok|&bull;&nbsp;Kullanılan alandan bağımsız sabit zaman gecikmesi</br>&bull;&nbsp;Genellikle 2 dakikadan az|
 
 > [!NOTE]
-> Ayrıca, standart (S2-S12) ve Genel Amaçlı veritabanları için, veritabanı Premium dosya paylaşma ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) depolaması kullanıyorsa, bir veritabanını elastik havuzun içine/dışına veya elastik havuzlar arasında taşıma gecikmesi veritabanı boyutuyla orantılıdır.
+> Ayrıca, standart (S2-S12) ve Genel Amaçlı veritabanları için, veritabanı Premium dosya paylaşma ([PFS](../../storage/files/storage-files-introduction.md)) depolaması kullanıyorsa, bir veritabanını elastik havuzun içine/dışına veya elastik havuzlar arasında taşıma gecikmesi veritabanı boyutuyla orantılıdır.
 >
 > Bir veritabanının PFS depolama kullanıp kullanmadığını anlamak için, veritabanı bağlamında aşağıdaki sorguyu yürütün. AccountType sütunundaki değer `PremiumFileStorage` veya ise `PremiumFileStorage-ZRS` , veritabanı PFS depolama alanını kullanıyor demektir.
  
@@ -72,7 +72,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
 
 > [!TIP]
-> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [stop-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [stop-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ## <a name="cancelling-changes"></a>Değişiklikler iptal ediliyor
 
@@ -84,7 +84,7 @@ Veritabanına genel bakış dikey penceresinde **Bildirimler** ' e gidin ve deva
 
 ![Devam eden işlem](./media/single-database-scale/ongoing-operations.png)
 
-Sonra, **Bu Işlemi Iptal et**etiketli düğmeye tıklayın.
+Sonra, **Bu Işlemi Iptal et** etiketli düğmeye tıklayın.
 
 ![Devam eden işlemi iptal et](./media/single-database-scale/cancel-ongoing-operation.png)
 
@@ -113,7 +113,7 @@ else {
 - Geri yükleme hizmeti teklifleri, çeşitli hizmet katmanları için farklılık gösterir. **Temel** katmana eski sürüme düşürüyorsanız, daha düşük bir yedekleme saklama süresi vardır. Bkz. [Azure SQL veritabanı yedeklemeleri](automated-backups-overview.md).
 - Veritabanı için yeni özellikler, değişiklikler tamamlanana kadar uygulanmaz.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından bağımsız olarak, bu saat boyunca uygulanan en yüksek hizmet katmanı + işlem boyutunu kullanarak bir veritabanının mevcut olduğu her saat için faturalandırılırsınız. Örneğin, tek bir veritabanı oluşturup beş dakika sonra silerseniz faturanız bir veritabanı saati için bir ücret yansıtır.
 
@@ -122,7 +122,7 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 ### <a name="vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modeli
 
 - Depolama, 1 GB 'lik artışlarla veri depolama maksimum boyut sınırına sağlanabilir. Yapılandırılabilir veri depolaması en az 1 GB 'dir. Her hizmet hedefi için [tek veritabanları](resource-limits-vcore-single-databases.md) ve [Esnek havuzlar](resource-limits-vcore-elastic-pools.md) için kaynak sınırı belge sayfalarına bakın.
-- Tek bir veritabanı için veri depolama, [Azure Portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)kullanılarak en büyük boyutu arttırılarak veya azaltılarak sağlanabilir. En büyük boyut değeri bayt cinsinden belirtilirse, 1 GB (1073741824 bayt) katlarından biri olmalıdır.
+- Tek bir veritabanı için veri depolama, [Azure Portal](https://portal.azure.com), [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](/rest/api/sql/databases/update)kullanılarak en büyük boyutu arttırılarak veya azaltılarak sağlanabilir. En büyük boyut değeri bayt cinsinden belirtilirse, 1 GB (1073741824 bayt) katlarından biri olmalıdır.
 - Bir veritabanının veri dosyalarında depolanabilecek veri miktarı, yapılandırılan veri depolama maksimum boyutuyla sınırlıdır. Bu depolamaya ek olarak, Azure SQL veritabanı işlem günlüğü için kullanılmak üzere %30 daha fazla depolama alanı ayırır.
 - Azure SQL veritabanı, veritabanı için otomatik olarak 32 GB ayırır `tempdb` . `tempdb` , tüm hizmet katmanlarında yerel SSD depolamada bulunur.
 - Tek bir veritabanı veya elastik havuz için depolama fiyatı, veri depolama ve işlem günlüğü depolama tutarlarının toplamıdır ve hizmet katmanının depolama birimi fiyatıyla çarpılır. Maliyeti `tempdb` fiyata dahildir. Depolama fiyatı hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
@@ -133,7 +133,7 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 ### <a name="dtu-based-purchasing-model"></a>DTU tabanlı satın alma modeli
 
 - Tek bir veritabanı için DTU fiyatı, ek ücret ödemeden belirli miktarda depolama alanı içerir. Dahil edilen miktarın ötesinde daha fazla depolama alanı, 250 GB ile 1 TB arasında artan maksimum boyut sınırına kadar ek bir maliyet ve sonra da 1 TB 'ın üzerinde 256 GB 'lık artışlarla sağlanabilir. Dahil edilen depolama miktarları ve maksimum boyut sınırları için bkz. [tek veritabanı: depolama boyutları ve işlem boyutları](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes).
-- Tek bir veritabanı için ek depolama, Azure portal, [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1), [POWERSHELL](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)kullanılarak en büyük boyutu arttırılarak sağlanabilir.
+- Tek bir veritabanı için ek depolama, Azure portal, [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [POWERSHELL](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](/rest/api/sql/databases/update)kullanılarak en büyük boyutu arttırılarak sağlanabilir.
 - Tek bir veritabanı için ek depolama alanı fiyatı, hizmet katmanının ek depolama birimi fiyatı ile çarpılmış olan ek depolama miktarıdır. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [Azure SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
@@ -156,4 +156,3 @@ Premium katmanda 1 TB 'den fazla depolama alanı şu anda tüm bölgelerde kulla
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Genel kaynak sınırları için bkz. [Azure SQL veritabanı sanal çekirdek tabanlı kaynak limitleri-tek veritabanları](resource-limits-vcore-single-databases.md) ve [Azure SQL veritabanı DTU tabanlı kaynak limitleri-tek veritabanları](resource-limits-dtu-single-databases.md).
- 

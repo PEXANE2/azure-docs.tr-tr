@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 67d1979ccbfbffc17ba450600e605a96911c8331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35738db5b7bd4a1ac7aaf94e2dc5f1d26a075cdf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056348"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791843"
 ---
 # <a name="repairing-an-export-job"></a>Bir dışarı aktarma işini onarma
 Bir dışarı aktarma işi tamamlandıktan sonra şirket içi Microsoft Azure İçeri/Dışarı Aktarma Aracı 'nı çalıştırmak için şunları yapabilirsiniz:  
@@ -24,11 +24,11 @@ Bir dışarı aktarma işi tamamlandıktan sonra şirket içi Microsoft Azure İ
   
 Bu işlevselliği kullanmak için Azure depolama bağlantısına sahip olmanız gerekir.  
   
-Bir içeri aktarma işini onarmak için komutu **Repaırexport**' dir.
+Bir içeri aktarma işini onarmak için komutu **Repaırexport** ' dir.
 
 ## <a name="repairexport-parameters"></a>Repaırexport parametreleri
 
-Aşağıdaki parametreler **Repaırexport**ile belirtilebilir:  
+Aşağıdaki parametreler **Repaırexport** ile belirtilebilir:  
   
 |Parametre|Açıklama|  
 |---------------|-----------------|  
@@ -81,7 +81,7 @@ Kopyalama günlük dosyası, Microsoft Azure Içeri/dışarı aktarma hizmeti, b
 ## <a name="using-repairexport-to-validate-drive-contents"></a>Sürücü içeriğini doğrulamak için Repaırexport kullanma  
 Ayrıca, sürücüdeki içeriklerin doğru olduğunu doğrulamak için Azure Içeri/dışarı aktarma ile **Repaırexport** seçeneğini kullanabilirsiniz. Her dışarı aktarma sürücüsündeki bildirim dosyası, sürücünün içeriği için MD5s içerir.  
   
-Azure Içeri/dışarı aktarma hizmeti, bildirim dosyalarını dışarı aktarma işlemi sırasında bir depolama hesabına de kaydedebilir. Bildirim dosyalarının konumu, iş tamamlandığında [Iş al](/rest/api/storageimportexport/jobs) işlemi yoluyla kullanılabilir. Bir sürücü bildirim dosyasının biçimi hakkında daha fazla bilgi için bkz. [Import/Export hizmet bildirim dosyası biçimi](storage-import-export-file-format-metadata-and-properties.md).  
+Azure Içeri/dışarı aktarma hizmeti, bildirim dosyalarını dışarı aktarma işlemi sırasında bir depolama hesabına de kaydedebilir. Bildirim dosyalarının konumu, iş tamamlandığında [Iş al](/rest/api/storageimportexport/jobs) işlemi yoluyla kullanılabilir. Bir sürücü bildirim dosyasının biçimi hakkında daha fazla bilgi için bkz. [Import/Export hizmet bildirim dosyası biçimi](/previous-versions/azure/storage/common/storage-import-export-file-format-metadata-and-properties).  
   
 Aşağıdaki örnek, **/ManifestFile** ve **/CopyLogFile** parametreleriyle Azure Içeri/dışarı aktarma aracının nasıl çalıştırılacağını göstermektedir:  
   
@@ -153,6 +153,6 @@ Doğrulama başarısız olan herhangi bir bileşen araç tarafından indirilir v
 ## <a name="next-steps"></a>Sonraki adımlar
  
 * [Azure Içeri/dışarı aktarma aracı 'nı ayarlama](storage-import-export-tool-setup-v1.md)   
-* [Sabit sürücüleri içeri aktarma işine hazırlama](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Sabit sürücüleri içeri aktarma işine hazırlama](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
 * [Kopyalama günlük dosyalarıyla iş durumunu gözden geçirme](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Bir içeri aktarma işini onarma](storage-import-export-tool-repairing-an-import-job-v1.md)

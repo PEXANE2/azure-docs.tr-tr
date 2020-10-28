@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 5fd0f14f4bbc919efd5b3c236b13654574d456d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 488d10906039327d830bfb6bcffc3163d65ad01e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334982"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792047"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>Azure SQL veritabanı 'nın Akıllı İçgörüler Performans Tanılama günlüğünü ve Azure SQL yönetilen örnek performans sorunlarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Bu sayfa, Azure SQL veritabanı 'nın [akıllı içgörüler](intelligent-insights-overview.md) ve Azure SQL yönetilen örnek performans sorunları, biçimi ve özel geliştirme gereksinimleriniz için içerdiği veriler tarafından oluşturulan Performans Tanılama günlüğünü kullanma hakkında bilgi sağlar. Bu tanılama günlüğünü, özel DevOps uyarısı ve raporlama özellikleri için [Azure izleyici günlüklerine](../../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure depolama](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)'ya veya üçüncü taraf bir çözüme gönderebilirsiniz.
+Bu sayfa, Azure SQL veritabanı 'nın [akıllı içgörüler](intelligent-insights-overview.md) ve Azure SQL yönetilen örnek performans sorunları, biçimi ve özel geliştirme gereksinimleriniz için içerdiği veriler tarafından oluşturulan Performans Tanılama günlüğünü kullanma hakkında bilgi sağlar. Bu tanılama günlüğünü, özel DevOps uyarısı ve raporlama özellikleri için [Azure izleyici günlüklerine](../../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs), [Azure depolama](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)'ya veya üçüncü taraf bir çözüme gönderebilirsiniz.
 
 > [!NOTE]
 > Akıllı Öngörüler şu bölgelerde kullanılamayan bir önizleme özelliğidir: Batı Avrupa, Kuzey Avrupa, Batı ABD 1 ve Doğu ABD 1.
@@ -144,5 +144,5 @@ Akıllı İçgörüler performans günlüğünün son kısmı, belirlenen perfor
 
 - [Akıllı içgörüler](intelligent-insights-overview.md) kavramları hakkında bilgi edinin.
 - [Akıllı içgörüler performans sorunlarını giderme](intelligent-insights-troubleshoot-performance.md)hakkında bilgi edinin.
-- [Azure SQL Analytics kullanarak performans sorunlarını nasıl izleyeceğinizi](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)öğrenin.
-- [Azure kaynaklarınızdan günlük verilerini nasıl toplayacağınızı ve](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)kullanacağınızı öğrenin.
+- [Azure SQL Analytics kullanarak performans sorunlarını nasıl izleyeceğinizi](../../azure-monitor/insights/azure-sql.md)öğrenin.
+- [Azure kaynaklarınızdan günlük verilerini nasıl toplayacağınızı ve](../../azure-monitor/platform/platform-logs-overview.md)kullanacağınızı öğrenin.

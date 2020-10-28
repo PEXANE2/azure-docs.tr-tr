@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 63b93db314701d281f3f4fff195671f43cdb9dbc
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: dd4a7537e01c9e97997be64bb478e86a64f4325b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340895"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792268"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde ek tehdit korumaları
 Azure Güvenlik Merkezi, yerleşik [Azure Defender korumalarının](azure-defender.md)yanı sıra aşağıdaki tehdit koruması yeteneklerini de sunmaktadır.
@@ -48,10 +48,10 @@ Azure Resource Manager (Önizleme) uyarılarının listesi için, [Uyarı tablos
 >[!NOTE]
 > Yukarıdaki analizler Microsoft Cloud App Security tarafından desteklenmektedir. Bu analizlerden yararlanmak için bir Cloud App Security lisansını etkinleştirmeniz gerekir. Cloud App Security lisansınız varsa, bu uyarılar varsayılan olarak etkinleştirilir. Uyarıları devre dışı bırakmak için:
 >
-> 1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
+> 1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları** ' nı seçin.
 > 1. Değiştirmek istediğiniz aboneliği seçin.
-> 1. **Tehdit algılamayı**seçin.
-> 1. **Verilerinize erişmek için Microsoft Cloud App Security Izin ver**' i temizleyin ve **Kaydet**' i seçin.
+> 1. **Tehdit algılamayı** seçin.
+> 1. **Verilerinize erişmek için Microsoft Cloud App Security Izin ver** ' i temizleyin ve **Kaydet** ' i seçin.
 
 
 >[!NOTE]
@@ -59,7 +59,7 @@ Azure Resource Manager (Önizleme) uyarılarının listesi için, [Uyarı tablos
 
 1. Aracıyı yüklemekte olduğunuz çalışma alanını ayarlayın. Çalışma alanının, güvenlik merkezi 'nde kullandığınız abonelikte olduğundan ve çalışma alanında okuma/yazma izinlerine sahip olduğunuzdan emin olun.
 
-1. **Azure Defender**'ı etkinleştirin ve **Kaydet**' i seçin.
+1. **Azure Defender** 'ı etkinleştirin ve **Kaydet** ' i seçin.
 
 
 ## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için tehdit koruması (Önizleme)<a name="cosmos-db"></a>
@@ -101,4 +101,4 @@ Bu tehdit koruması özelliklerinden güvenlik uyarıları hakkında daha fazla 
 * [Tüm Azure Güvenlik Merkezi uyarıları için başvuru tablosu](alerts-reference.md)
 * [Azure Güvenlik Merkezi'nde güvenlik uyarıları](security-center-alerts-overview.md)
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md)
-* [Güvenlik uyarılarını ve önerilerini dışarı aktarma (Önizleme)](continuous-export.md)
+* [Güvenlik Merkezi verilerini sürekli dışa aktarma](continuous-export.md)

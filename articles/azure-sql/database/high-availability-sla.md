@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 93e9ad28b14a51432fd9ccd32d1a155eaff2e190
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c616ba1971fcbb0674a42583b30c25f6ccda6874
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427145"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791792"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -63,7 +63,7 @@ Genel amaçlı hizmet katmanı için yüksek kullanılabilirlik mimarisinin böl
 > Bölge yedekli veritabanlarını destekleyen bölgeler hakkında güncel bilgiler için bkz. [bölgeye göre Hizmetler desteği](../../availability-zones/az-region.md). Bölge yedekli yapılandırma yalnızca 5. nesil işlem donanımı seçildiğinde kullanılabilir. Bu özellik SQL yönetilen örneği 'nde kullanılamaz.
 
 > [!NOTE]
-> 80 sanal çekirdek boyutundaki Genel Amaçlı veritabanları, bölgesel olarak yedekli yapılandırma ile performans düşüşü yaşayabilir. Yedekleme, geri yükleme, veritabanı kopyalama ve coğrafi-DR ilişkilerini ayarlama gibi işlemler, 1 TB 'den büyük tek veritabanları için daha yavaş performans yaşayabilir. 
+> 80 sanal çekirdek boyutundaki Genel Amaçlı veritabanları, bölgesel olarak yedekli yapılandırma ile performans düşüşü yaşayabilir. Ayrıca, yedekleme, geri yükleme, veritabanı kopyalama ve coğrafi-DR ilişkilerini ayarlama gibi işlemler 1 TB 'den büyük olan tek veritabanları için daha yavaş performans yaşayabilir. 
 
 ## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>Premium ve İş Açısından Kritik hizmet katmanı yerel olarak yedekli kullanılabilirlik
 
@@ -71,7 +71,7 @@ Premium ve İş Açısından Kritik hizmet katmanları, işlem kaynaklarını ( 
 
 ![Veritabanı altyapısı düğümlerinin kümesi](./media/high-availability-sla/business-critical-service-tier.png)
 
-Temel alınan veritabanı dosyaları (. mdf/. ldf), iş yükünüze çok düşük gecikmeli GÇ sağlamak üzere eklenmiş SSD depolama alanına yerleştirilir. Yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)SQL Server benzer bir teknoloji kullanılarak uygulanır. Küme, okuma/yazma müşteri iş yükleri için erişilebilen tek bir birincil çoğaltma ve verilerin kopyalarını içeren üç ikincil çoğaltma (işlem ve depolama) içerir. Birincil düğüm değişiklikleri sürekli olarak ikincil düğümlere gönderir ve her bir işlem gerçekleştirilmeden önce verilerin en az bir ikincil çoğaltmayla eşitlenmesini sağlar. Bu işlem, birincil düğüm herhangi bir nedenden dolayı kilitlenirse, her zaman yük devretmek için tamamen eşitlenmiş bir düğüm vardır. Yük devretme işlemi Azure Service Fabric tarafından başlatılır. İkincil çoğaltma yeni birincil düğüm olduktan sonra, kümede yeterli düğüm (çekirdek kümesi) olduğundan emin olmak için başka bir ikincil çoğaltma oluşturulur. Yük devretme işlemi tamamlandıktan sonra Azure SQL bağlantıları otomatik olarak yeni birincil düğüme yönlendirilir.
+Temel alınan veritabanı dosyaları (. mdf/. ldf), iş yükünüze çok düşük gecikmeli GÇ sağlamak üzere eklenmiş SSD depolama alanına yerleştirilir. Yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik grupları](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)SQL Server benzer bir teknoloji kullanılarak uygulanır. Küme, okuma/yazma müşteri iş yükleri için erişilebilen tek bir birincil çoğaltma ve verilerin kopyalarını içeren üç ikincil çoğaltma (işlem ve depolama) içerir. Birincil düğüm değişiklikleri sürekli olarak ikincil düğümlere gönderir ve her bir işlem gerçekleştirilmeden önce verilerin en az bir ikincil çoğaltmayla eşitlenmesini sağlar. Bu işlem, birincil düğüm herhangi bir nedenden dolayı kilitlenirse, her zaman yük devretmek için tamamen eşitlenmiş bir düğüm vardır. Yük devretme işlemi Azure Service Fabric tarafından başlatılır. İkincil çoğaltma yeni birincil düğüm olduktan sonra, kümede yeterli düğüm (çekirdek kümesi) olduğundan emin olmak için başka bir ikincil çoğaltma oluşturulur. Yük devretme işlemi tamamlandıktan sonra Azure SQL bağlantıları otomatik olarak yeni birincil düğüme yönlendirilir.
 
 Ek bir avantaj olarak Premium kullanılabilirlik modeli, salt okunurdur Azure SQL bağlantılarını ikincil çoğaltmalardan birine yeniden yönlendirebilme özelliği içerir. Bu özelliğe [okuma ölçeği](read-scale-out.md)genişletme denir. Birincil çoğaltmadan, analitik iş yükleri gibi salt okuma işlemlerini yük dışı bırakmak için ek ücret olmadan %100 ek işlem kapasitesi sağlar.
 
@@ -82,7 +82,7 @@ Varsayılan olarak, Premium kullanılabilirlik modeli için düğümlerin kümes
 Bölge yedekli veritabanlarının aralarında biraz uzaklıktan farklı veri merkezlerinde çoğaltmaları olduğundan, artan ağ gecikmesi çalışma süresini artırabilir ve böylece bazı OLTP iş yüklerinin performansını etkileyebilir. Bölge artıklığı ayarını devre dışı bırakarak her zaman tek bölge yapılandırmasına dönebilirsiniz. Bu işlem, normal hizmet katmanı yükseltmesine benzer bir çevrimiçi işlemdir. İşlemin sonunda, veritabanı veya havuz, bölge yedekli halkadan tek bir bölge halkaine geçirilir veya tam tersi de geçerlidir.
 
 > [!IMPORTANT]
-> Bölgesel olarak yedekli veritabanları ve elastik havuzlar Şu anda yalnızca Seç bölgelerinde Premium ve İş Açısından Kritik hizmet katmanlarında desteklenir. İş Açısından Kritik katmanını kullanırken, bölge yedekli yapılandırma yalnızca 5. nesil işlem donanımı seçildiğinde kullanılabilir. Bölge yedekli veritabanlarını destekleyen bölgeler hakkında güncel bilgiler için bkz. [bölgeye göre Hizmetler desteği](../../availability-zones/az-region.md).
+> İş Açısından Kritik katmanını kullanırken, bölge yedekli yapılandırma yalnızca 5. nesil işlem donanımı seçildiğinde kullanılabilir. Bölge yedekli veritabanlarını destekleyen bölgeler hakkında güncel bilgiler için bkz. [bölgeye göre Hizmetler desteği](../../availability-zones/az-region.md).
 
 > [!NOTE]
 > Bu özellik SQL yönetilen örneği 'nde kullanılamaz.
@@ -122,9 +122,9 @@ PowerShell, REST API veya Azure CLı kullanılarak yük devretme başlatılabili
 
 |Dağıtım türü|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|Veritabanı|[Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Veritabanı yük devretmesi](/rest/api/sql/databases(failover)/failover/)|[az Rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
-|Elastik havuz|[Invoke-Azsqtalayapışpoolfailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Elastik havuz yük devretme](/rest/api/sql/elasticpools(failover)/failover/)|[az Rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
-|Yönetilen Örnek|[Invoke-Azsqlınstancefailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Yönetilen örnekler-yük devretme](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)|[az SQL mı yük devretme](/cli/azure/sql/mi/#az-sql-mi-failover)|
+|Veritabanı|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Veritabanı yük devretmesi](/rest/api/sql/databases(failover)/failover/)|[az Rest](/cli/azure/reference-index#az-rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
+|Elastik havuz|[Invoke-Azsqtalayapışpoolfailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Elastik havuz yük devretme](/rest/api/sql/elasticpools(failover)/failover/)|[az Rest](/cli/azure/reference-index#az-rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
+|Yönetilen Örnek|[Invoke-Azsqlınstancefailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Yönetilen örnekler-yük devretme](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az SQL mı yük devretme](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]
 > Hiper ölçek veritabanlarının okunabilir ikincil çoğaltmaları için yük devretme komutu kullanılamaz.

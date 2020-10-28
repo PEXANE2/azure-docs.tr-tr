@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96b6b262765a361befeadd9b5a42d37ca5e66497
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 57cda5104551f8b62d157e443a42c5e3c75e4ddf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372064"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792421"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Gizli uygulama ayarlarını bir Web uygulaması için güvenli bir şekilde Kaydet
 
@@ -30,7 +30,7 @@ Geliştirme sürecinin güvenli olduğundan emin olmak için, uygulama gizli aya
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET ve .NET Core Uygulamaları
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Gizli dizi ayarlarını, kaynak denetimi klasörü dışında Kullanıcı gizli deposunda Kaydet
-Hızlı bir prototip yapıyorsanız veya İnternet erişiminiz yoksa, gizli ayarlarınızı kaynak denetimi klasörü dışında Kullanıcı gizli deposuna taşımaya başlayın. Kullanıcı gizli dizisi, Kullanıcı Profil Oluşturucu klasörü altında kaydedilmiş bir dosyadır, bu nedenle gizli dizileri kaynak denetiminde iade edilmez. Aşağıdaki diyagramda [Kullanıcı gizliliğinin](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) nasıl çalıştığı gösterilmektedir.
+Hızlı bir prototip yapıyorsanız veya İnternet erişiminiz yoksa, gizli ayarlarınızı kaynak denetimi klasörü dışında Kullanıcı gizli deposuna taşımaya başlayın. Kullanıcı gizli dizisi, Kullanıcı Profil Oluşturucu klasörü altında kaydedilmiş bir dosyadır, bu nedenle gizli dizileri kaynak denetiminde iade edilmez. Aşağıdaki diyagramda [Kullanıcı gizliliğinin](/aspnet/core/security/app-secrets?tabs=visual-studio) nasıl çalıştığı gösterilmektedir.
 
 ![Kullanıcı gizli dizisi, kaynak denetimi dışında gizli ayarları tutar](../media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
@@ -43,7 +43,7 @@ Bir proje geliştirmekte ve kaynak kodunu güvenli bir şekilde paylaşmanız ge
 
     ![Azure Key Vault oluştur](../media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. Size ve takım üyelerinize Key Vault erişimi verin. Büyük bir ekibiniz varsa, bir [Azure Active Directory grubu](../../active-directory/active-directory-groups-create-azure-portal.md) oluşturabilir ve bu güvenlik grubuna Key Vault erişimi ekleyebilirsiniz. *Gizli izinler* açılan menüsünde, *gizli yönetim işlemleri*altında *Al* ve *Listele* ' yi işaretleyin.
+2. Size ve takım üyelerinize Key Vault erişimi verin. Büyük bir ekibiniz varsa, bir [Azure Active Directory grubu](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) oluşturabilir ve bu güvenlik grubuna Key Vault erişimi ekleyebilirsiniz. *Gizli izinler* açılan menüsünde, *gizli yönetim işlemleri* altında *Al* ve *Listele* ' yi işaretleyin.
 Web uygulamanız zaten oluşturulmuşsa, uygulama ayarlarında veya dosyalarında gizli yapılandırmayı depolamadan, anahtar kasasına erişebilmeleri için Web uygulamasına Key Vault erişim izni verin. Web uygulamanızı adına göre arayın ve kullanıcılara erişim verdiğiniz şekilde ekleyin.
 
     ![Key Vault erişim ilkesi Ekle](../media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
@@ -103,7 +103,7 @@ Devam etmek için [.NET 4.7.1 indirin](https://www.microsoft.com/download/detail
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Gizli dizi ayarlarını kaynak denetimi klasörü dışında bir gizli dosyada Kaydet
 Hızlı bir prototip yazıyorsanız ve Azure kaynaklarını sağlamak istemiyorsanız, bu seçenekle birlikte gidin.
 
-1. Projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet**' i seçin. Bu işlem, ** Urationoluşturucular. usersecretMicrosoft.Configuration.Config** bir NuGet paketi yükler, gizli ayarları web.config dosya dışında kaydetmek için bir dosya oluşturur ve web.config dosyasına bir bölüm **configoluşturucular** ekler.
+1. Projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet** ' i seçin. Bu işlem, **Urationoluşturucular. usersecretMicrosoft.Configuration.Config** bir NuGet paketi yükler, gizli ayarları web.config dosya dışında kaydetmek için bir dosya oluşturur ve web.config dosyasına bir bölüm **configoluşturucular** ekler.
 
 2. Gizli dizi ayarlarını kök öğe altına koyun. Aşağıda bir örnek verilmiştir
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: c60bff122b6ad9bef4e9e4558d9858e1243ebd1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d346d1ff30c138667749822b258bab4c6a621f4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321488"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792727"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>Mevcut bir eşitleme grubunda eşitleme şemasını güncelleştirmek için PowerShell kullanma
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -78,11 +78,11 @@ UpdateSyncSchema.ps1 -SubscriptionId <subscriptionId> -ResourceGroupName <resour
 
 | Komut | Notlar |
 |---|---|
-| [Get-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncgroup) | Bir eşitleme grubu hakkında bilgi döndürür. |
-| [Update-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncgroup) | Bir eşitleme grubunu güncelleştirir. |
-| [Get-AzSqlSyncMember](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncmember) | Bir eşitleme üyesiyle ilgili bilgileri döndürür. |
-| [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncschema) | Bir eşitleme şeması hakkında bilgi döndürür. |
-| [Update-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncschema) | Bir eşitleme şemasını güncelleştirir. |
+| [Get-AzSqlSyncGroup](/powershell/module/az.sql/get-azsqlsyncgroup) | Bir eşitleme grubu hakkında bilgi döndürür. |
+| [Update-AzSqlSyncGroup](/powershell/module/az.sql/update-azsqlsyncgroup) | Bir eşitleme grubunu güncelleştirir. |
+| [Get-AzSqlSyncMember](/powershell/module/az.sql/get-azsqlsyncmember) | Bir eşitleme üyesiyle ilgili bilgileri döndürür. |
+| [Get-AzSqlSyncSchema](/powershell/module/az.sql/get-azsqlsyncschema) | Bir eşitleme şeması hakkında bilgi döndürür. |
+| [Update-AzSqlSyncSchema](/powershell/module/az.sql/update-azsqlsyncschema) | Bir eşitleme şemasını güncelleştirir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -100,7 +100,7 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
         -  [Azure SQL veritabanı ve SQL Server arasında veri eşitlemek için PowerShell 'i kullanma](sql-data-sync-sync-data-between-azure-onprem.md)
 - Veri eşitleme Aracısı- [Azure 'da SQL Data Sync Için veri eşitleme Aracısı](../sql-data-sync-agent-overview.md)
 - En iyi uygulamalar- [Azure 'da SQL Data Sync Için en iyi yöntemler](../sql-data-sync-best-practices.md)
-- İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](../sql-data-sync-monitor-sync.md)
+- İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](../monitor-tune-overview.md)
 - Sorun giderme- [Azure 'da SQL Data Sync sorunlarını giderme](../sql-data-sync-troubleshoot.md)
 - Eşitleme şemasını güncelleştirme
     - [Azure 'da SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatik hale getirmek Için](../sql-data-sync-update-sync-schema.md) Transact-SQL-otomatikleştir kullanma
@@ -108,4 +108,4 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 SQL veritabanı hakkında daha fazla bilgi için bkz.
 
 - [SQL veritabanına genel bakış](../sql-database-paas-overview.md)
-- [Veritabanı Yaşam Döngüsü Yönetimi](https://msdn.microsoft.com/library/jj907294.aspx)
+- [Veritabanı Yaşam Döngüsü Yönetimi](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: afd36eb079b6e5f29fa664050cded3c5ddd17d8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad991974df30060e552d21a44d5796cd2ba165e2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669476"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792557"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>Linux üzerinde SQL Server sanal makineler için sık sorulan sorular
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,7 +61,7 @@ Bu makalede [Linux üzerinde SQL Server sanal makineler](sql-server-on-linux-vm-
 
 1. **Lisanslı SQL Server kopyamı bir Azure sanal makinesine nasıl yükleyebilirim?**
 
-   İlk olarak, yalnızca bir Linux işletim sistemi sanal makinesi oluşturun. Ardından Linux dağıtım için [SQL Server yükleme adımlarını](https://docs.microsoft.com/sql/linux/sql-server-linux-setup#platforms) çalıştırın. SQL Server ücretsiz lisanslı sürümlerinden birini yüklemediğiniz takdirde [Azure üzerinde](https://azure.microsoft.com/pricing/license-mobility/)bir SQL Server lisansınız ve Yazılım Güvencesiyle Lisans Taşınabilirliği de sahip olmanız gerekir.
+   İlk olarak, yalnızca bir Linux işletim sistemi sanal makinesi oluşturun. Ardından Linux dağıtım için [SQL Server yükleme adımlarını](/sql/linux/sql-server-linux-setup#platforms) çalıştırın. SQL Server ücretsiz lisanslı sürümlerinden birini yüklemediğiniz takdirde [Azure üzerinde](https://azure.microsoft.com/pricing/license-mobility/)bir SQL Server lisansınız ve Yazılım Güvencesiyle Lisans Taşınabilirliği de sahip olmanız gerekir.
 
 1. **SQL Server için kendi lisansını getir (KLG) Linux sanal makine görüntüleri var mı?**
 
@@ -75,7 +75,7 @@ Bu makalede [Linux üzerinde SQL Server sanal makineler](sql-server-on-linux-vm-
 
 1. **SQL Server çalıştıran bir Linux sanal makinesini SQL Server Management Studio (SSMS) ile yönetebilir miyim?**
 
-   Evet, ancak SSMS Şu anda yalnızca Windows 'un bir aracıdır. SQL Server çalıştıran Linux VM 'lerle SSMS 'yi kullanmak için bir Windows makinesinden uzaktan bağlanmanız gerekir. Linux 'ta yerel olarak, yeni [MSSQL-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) aracı birçok yönetim görevi gerçekleştirebilir. Platformlar arası veritabanı yönetim aracı için bkz. [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is).
+   Evet, ancak SSMS Şu anda yalnızca Windows 'un bir aracıdır. SQL Server çalıştıran Linux VM 'lerle SSMS 'yi kullanmak için bir Windows makinesinden uzaktan bağlanmanız gerekir. Linux 'ta yerel olarak, yeni [MSSQL-conf](/sql/linux/sql-server-linux-configure-mssql-conf) aracı birçok yönetim görevi gerçekleştirebilir. Platformlar arası veritabanı yönetim aracı için bkz. [Azure Data Studio](/sql/azure-data-studio/what-is).
 
 1. **SQL Server'ı SQL Server VM'sinden tamamen kaldırabilir miyim?**
 
@@ -85,7 +85,7 @@ Bu makalede [Linux üzerinde SQL Server sanal makineler](sql-server-on-linux-vm-
 
 1. **Azure VM 'deki SQL Server yeni sürüme/sürümüne yükseltme Nasıl yaparım?.**
 
-   Şu anda bir Azure sanal makinesinde çalışan SQL Server için yerinde yükseltme mevcut değildir. İstediğiniz SQL Server sürümü ile yeni bir Azure sanal makinesi oluşturun ve ardından [standart veri geçirme tekniklerini](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview) kullanarak veritabanlarınızı yeni sunucuya geçirin.
+   Şu anda bir Azure sanal makinesinde çalışan SQL Server için yerinde yükseltme mevcut değildir. İstediğiniz SQL Server sürümü ile yeni bir Azure sanal makinesi oluşturun ve ardından [standart veri geçirme tekniklerini](/sql/linux/sql-server-linux-migrate-overview) kullanarak veritabanlarınızı yeni sunucuya geçirin.
 
 ## <a name="general"></a>Genel
 
@@ -95,13 +95,13 @@ Bu makalede [Linux üzerinde SQL Server sanal makineler](sql-server-on-linux-vm-
 
 ## <a name="resources"></a>Kaynaklar
 
-**Linux VM 'leri**:
+**Linux VM 'leri** :
 
 * [Linux VM 'de SQL Server genel bakış](sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Linux VM üzerinde SQL Server sağlama](sql-vm-create-portal-quickstart.md)
-* [Linux üzerinde SQL Server belgeleri](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [Linux üzerinde SQL Server belgeleri](/sql/linux/sql-server-linux-overview)
 
-**Windows VM 'leri**:
+**Windows VM 'leri** :
 
 * [Windows VM 'de SQL Server genel bakış](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 'de SQL Server sağlama](../windows/sql-vm-create-portal-quickstart.md)

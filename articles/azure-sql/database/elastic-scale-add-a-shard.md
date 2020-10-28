@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 50e7e597a4fb02919739633529abdbf772bcecea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efab0234d428a8283845946289cdd1e8a17ded26
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443048"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792064"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanarak parça ekleme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Yeni anahtar değerleri aralığı zaten varolan bir eşlemenin parçası değil
 
 ### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Örnek: var olan parça eşlemesine parça ve onun aralığını ekleme
 
-Bu örnek, TryGetShard[(Java,](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard).net [),](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))createkıard[(Java, .net](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard) [),](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)createrangemapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) yöntemleri) kullanır ve shardlocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) sınıfının bir örneğini oluşturur. Aşağıdaki örnekte, **sample_shard_2** adlı bir veritabanı ve içindeki tüm gerekli şema nesneleri [300, 400) aralığını tutmak için oluşturulmuştur.  
+Bu örnek, TryGetShard[(Java,](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard).net [),](/previous-versions/azure/dn823929(v=azure.100))createkıard[(Java, .net](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard) [),](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)createrangemapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) yöntemleri) kullanır ve shardlocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) sınıfının bir örneğini oluşturur. Aşağıdaki örnekte, **sample_shard_2** adlı bir veritabanı ve içindeki tüm gerekli şema nesneleri [300, 400) aralığını tutmak için oluşturulmuştur.  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -79,6 +79,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Önemli**: Bu tekniği yalnızca, güncelleştirilmiş eşleme aralığının boş olduğundan eminseniz kullanın.  Önceki yöntemler, taşınmakta olan aralığın verilerini denetlemez, bu nedenle kodunuzda denetimleri eklemek en iyisidir.  Taşınmakta olan aralıkta satırlar varsa, gerçek veri dağıtımı güncelleştirilmiş parça eşlemesiyle eşleşmez. Bu gibi durumlarda işlemi gerçekleştirmek için [bölünmüş birleştirme aracını](elastic-scale-overview-split-and-merge.md) kullanın.  
+**Önemli** : Bu tekniği yalnızca, güncelleştirilmiş eşleme aralığının boş olduğundan eminseniz kullanın.  Önceki yöntemler, taşınmakta olan aralığın verilerini denetlemez, bu nedenle kodunuzda denetimleri eklemek en iyisidir.  Taşınmakta olan aralıkta satırlar varsa, gerçek veri dağıtımı güncelleştirilmiş parça eşlemesiyle eşleşmez. Bu gibi durumlarda işlemi gerçekleştirmek için [bölünmüş birleştirme aracını](elastic-scale-overview-split-and-merge.md) kullanın.  
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]

@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c62534acdbfbff7fd4e718bad1f07a92c641626
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448133"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792404"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio bağlı hizmetler 'i kullanarak Web uygulamanıza Key Vault ekleme
 
@@ -24,7 +24,7 @@ Bağlı hizmetlerin projenizde Key Vault sağlamak üzere yaptığı değişikli
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- **Bir Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
+- **Bir Azure aboneliği** . Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
 - **Visual Studio 2019 sürüm 16,3** veya sonraki sürümleri [Şimdi indirin](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 
@@ -32,15 +32,15 @@ Bağlı hizmetlerin projenizde Key Vault sağlamak üzere yaptığı değişikli
 
 Başlamadan önce, Visual Studio 'da oturum açtığınızdan emin olun. Azure aboneliğiniz için kullandığınız hesapla oturum açın. Sonra bir ASP.NET 4.7.1 veya üzeri veya ASP.NET Core 2,0 Web projesi açın ve aşağıdaki adımları uygulayın:
 
-1. **Çözüm Gezgini**' de, Key Vault desteğini eklemek istediğiniz projeye sağ tıklayın ve **Add**  >  **bağlı hizmet**  >  **Ekle**Ekle ' yi seçin.
+1. **Çözüm Gezgini** ' de, Key Vault desteğini eklemek istediğiniz projeye sağ tıklayın ve **Add**  >  **bağlı hizmet**  >  **Ekle** Ekle ' yi seçin.
    Projenize ekleyebileceğiniz hizmetlerle birlikte Bağlı Hizmet sayfası görüntülenir.
-1. Kullanılabilir hizmetler menüsünde **Azure Key Vault** öğesini seçin ve **İleri**' ye tıklayın.
+1. Kullanılabilir hizmetler menüsünde **Azure Key Vault** öğesini seçin ve **İleri** ' ye tıklayın.
 
    !["Azure Key Vault" öğesini seçin](../media/vs-key-vault-add-connected-service/key-vault-connected-service.png)
 
-1. Kullanmak istediğiniz aboneliği seçin ve ardından mevcut bir Key Vault seçip **son**' a tıklayın. 
+1. Kullanmak istediğiniz aboneliği seçin ve ardından mevcut bir Key Vault seçip **son** ' a tıklayın. 
 
-   ![Aboneliğinizi seçin](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
+   ![Aboneliğinizi seçme](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
 Şimdi Key Vault bağlantısı oluşturulur ve kod içinde gizli dizilerimize erişebilirsiniz. Sonraki adımlar, ASP.NET 4.7.1 veya ASP.NET Core kullanıyor olmanıza bağlı olarak farklılık belirtir.
 
@@ -115,7 +115,7 @@ Yapılandırmayı, web.config dosyası `appSettings` çalışma zamanında true 
          <add key="<secretNameInYourKeyVault>" value="dummy"/>
         ```
 
-1. `About`Onay değerini göstermek için *HomeController.cs*içindeki metodu düzenleyin.
+1. `About`Onay değerini göstermek için *HomeController.cs* içindeki metodu düzenleyin.
 
    ```csharp
    public ActionResult About()
@@ -131,12 +131,12 @@ Key Vault, Visual Studio 'da oturum açtığınızdan farklı bir Microsoft hesa
 
 1. [Azure Portal](https://portal.azure.com) gidin ve Key Vault açın.
 
-1. **Erişim ilkeleri**' ni seçin, sonra **erişim ilkesi ekleyin**ve oturum açtığınız hesabı sorumlu olarak seçin.
+1. **Erişim ilkeleri** ' ni seçin, sonra **erişim ilkesi ekleyin** ve oturum açtığınız hesabı sorumlu olarak seçin.
 
-1. Visual Studio 'da **Dosya**  >  **hesabı ayarları**' nı seçin.
+1. Visual Studio 'da **Dosya**  >  **hesabı ayarları** ' nı seçin.
 **Tüm hesap** bölümünden **Hesap Ekle** ' yi seçin. Erişim ilkenizin sorumlusu olarak seçtiğiniz hesapla oturum açın.
 
-1. **Araçlar**  >  **Seçenekler**' i seçin ve **Azure hizmeti kimlik doğrulaması**' nı arayın. Ardından, Visual Studio 'ya yeni eklediğiniz hesabı seçin.
+1. **Araçlar**  >  **Seçenekler** ' i seçin ve **Azure hizmeti kimlik doğrulaması** ' nı arayın. Ardından, Visual Studio 'ya yeni eklediğiniz hesabı seçin.
 
 Artık uygulamanızda hata ayıklarken, Visual Studio Key Vault bulunduğu hesaba bağlanır.
 
@@ -204,6 +204,6 @@ Bu bölümde, Key Vault bağlı hizmeti Visual Studio kullanılarak eklenirken b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticiyi izlediyseniz, Key Vault izinleriniz kendi Azure aboneliğinizle çalışacak şekilde ayarlanır, ancak bu, bir üretim senaryosu için istenmeyebilir. Uygulamanıza yönelik Key Vault erişimini yönetmek için yönetilen bir kimlik oluşturabilirsiniz. [Key Vault Için kimlik doğrulama](/azure/key-vault/general/authentication) ve [Key Vault erişim ilkesi atama](/azure/key-vault/general/assign-access-policy-portal)konusuna bakın.
+Bu öğreticiyi izlediyseniz, Key Vault izinleriniz kendi Azure aboneliğinizle çalışacak şekilde ayarlanır, ancak bu, bir üretim senaryosu için istenmeyebilir. Uygulamanıza yönelik Key Vault erişimini yönetmek için yönetilen bir kimlik oluşturabilirsiniz. [Key Vault Için kimlik doğrulama](./authentication.md) ve [Key Vault erişim ilkesi atama](./assign-access-policy-portal.md)konusuna bakın.
 
 [Key Vault geliştirici kılavuzunu](developers-guide.md)okuyarak Key Vault geliştirme hakkında daha fazla bilgi edinin.

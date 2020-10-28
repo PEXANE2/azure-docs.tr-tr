@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: daa1bbbace55281f81e04c4639b083b3e934b9f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443085"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792098"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Farklı şemalarla bulut veritabanları genelinde sorgulama (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,10 +36,10 @@ Dikey olarak bölümlenmiş veritabanları, farklı veritabanlarındaki farklı 
 > Yatay bölümlemeden farklı olarak, bu DDL deyimleri elastik veritabanı istemci kitaplığı aracılığıyla bir parça haritası ile veri katmanı tanımlamaya bağlı değildir.
 >
 
-1. [ANA ANAHTAR OLUŞTUR](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [VERITABANı KAPSAMLı KIMLIK BILGISI OLUŞTUR](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [DıŞ VERI KAYNAĞı OLUŞTUR](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [DıŞ TABLO OLUŞTUR](https://msdn.microsoft.com/library/dn935021.aspx)
+1. [ANA ANAHTAR OLUŞTUR](/sql/t-sql/statements/create-master-key-transact-sql)
+2. [VERITABANı KAPSAMLı KIMLIK BILGISI OLUŞTUR](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)
+3. [DıŞ VERI KAYNAĞı OLUŞTUR](/sql/t-sql/statements/create-external-data-source-transact-sql)
+4. [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql)
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>Veritabanı kapsamlı ana anahtar ve kimlik bilgileri oluşturma
 
@@ -63,7 +63,7 @@ Söz dizimi:
     CREDENTIAL = <credential_name>) [;]
 
 > [!IMPORTANT]
-> TÜR parametresi **RDBMS**olarak ayarlanmalıdır.
+> TÜR parametresi **RDBMS** olarak ayarlanmalıdır.
 
 ### <a name="example"></a>Örnek
 
@@ -120,8 +120,8 @@ select * from sys.external_tables;
 
 Elastik sorgu, mevcut dış tablo söz dizimini genişleterek, RDBMS türünde dış veri kaynaklarını kullanan dış tabloları tanımlar. Dikey bölümlendirme için bir dış tablo tanımı aşağıdaki özellikleri içerir:
 
-* **Şema**: dış tablo DDL, sorgularınızın kullanabileceği bir şemayı tanımlar. Dış tablo tanımınızda belirtilen şemanın, asıl verilerin depolandığı uzak veritabanındaki tabloların şemasıyla eşleşmesi gerekir.
-* **Uzak veritabanı başvurusu**: dış tablo DDL, bir dış veri kaynağını ifade eder. Dış veri kaynağı, gerçek tablo verilerinin depolandığı uzak veritabanının sunucu adını ve veritabanı adını belirtir.
+* **Şema** : dış tablo DDL, sorgularınızın kullanabileceği bir şemayı tanımlar. Dış tablo tanımınızda belirtilen şemanın, asıl verilerin depolandığı uzak veritabanındaki tabloların şemasıyla eşleşmesi gerekir.
+* **Uzak veritabanı başvurusu** : dış tablo DDL, bir dış veri kaynağını ifade eder. Dış veri kaynağı, gerçek tablo verilerinin depolandığı uzak veritabanının sunucu adını ve veritabanı adını belirtir.
 
 Bir dış veri kaynağını önceki bölümde özetlenen şekilde kullanarak, dış tablo oluşturma sözdizimi aşağıdaki gibidir:
 
@@ -135,9 +135,9 @@ Aşağıdaki DDL ekstresi, mevcut bir dış tablo tanımını yerel katalogdan b
 DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 ```
 
-**Dış tablo oluşturma/bırakma izinleri**: Ayrıca, temel alınan veri kaynağına başvurmak için gereken dış tablo DDL için HERHANGI BIR dış veri kaynağı izinlerini değiştirme gerekir.  
+**Dış tablo oluşturma/bırakma izinleri** : Ayrıca, temel alınan veri kaynağına başvurmak için gereken dış tablo DDL için HERHANGI BIR dış veri kaynağı izinlerini değiştirme gerekir.  
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Dış tabloya erişimi olan kullanıcılar, dış veri kaynağı tanımında verilen kimlik bilgileri altındaki temeldeki uzak tablolara otomatik olarak erişim elde edebilir. Dış veri kaynağının kimlik bilgisi aracılığıyla ayrıcalıkların istenmeyen olarak yükseltilmesini önlemek için dış tabloya erişimi dikkatle yönetmeniz gerekir. Normal SQL izinleri, bir dış tabloya normal bir tablo gibi erişim vermek veya erişimi Iptal etmek için kullanılabilir.  
 
@@ -163,7 +163,7 @@ Aşağıdaki sorgu, siparişler ve sipariş satırları için iki yerel tablo ve
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Uzak T-SQL yürütmesi için saklı yordam: SP \_ execute_remote
 
-Elastik sorgu, uzak veritabanına doğrudan erişim sağlayan bir saklı yordam de sunar. Saklı yordama [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714) adı verilir ve uzak saklı yordamları veya T-SQL kodunu uzak veritabanında yürütmek için kullanılabilir. Aşağıdaki parametreleri alır:
+Elastik sorgu, uzak veritabanına doğrudan erişim sağlayan bir saklı yordam de sunar. Saklı yordama [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) adı verilir ve uzak saklı yordamları veya T-SQL kodunu uzak veritabanında yürütmek için kullanılabilir. Aşağıdaki parametreleri alır:
 
 * Veri kaynağı adı (nvarchar): RDBMS türünde dış veri kaynağının adı.
 * Sorgu (nvarchar): uzak veritabanında yürütülecek T-SQL sorgusu.
@@ -184,7 +184,7 @@ SP \_ Execute \_ Remote, uzak veritabanında verilen T-SQL ifadesini yürütmek 
 
 Bı ve veri tümleştirme araçlarınızı, elastik sorgu özellikli ve dış tablolar tanımlanmış sunucuda veritabanlarına bağlamak için normal SQL Server bağlantı dizelerini kullanabilirsiniz. SQL Server, aracınız için bir veri kaynağı olarak desteklendiğinden emin olun. Daha sonra, diğer tüm SQL Server veritabanıyla aynı şekilde, bu şekilde elastik sorgu veritabanına ve dış tablolarına başvurun.
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 * Azure SQL veritabanı güvenlik duvarı yapılandırmasındaki Azure hizmetlerine erişimi etkinleştirerek elastik sorgu uç noktası veritabanına uzak veritabanına erişim verildiğinden emin olun. Ayrıca, dış veri kaynağı tanımında belirtilen kimlik bilgisinin uzak veritabanında başarıyla oturum açabildiğinden ve uzak tabloya erişim izinlerine sahip olduğundan emin olun.  
 * Elastik sorgu en iyi şekilde, hesaplama işlemlerinin büyük bir kısmının uzak veritabanlarında yapılabildiği sorgular için geçerlidir. Genellikle uzak veritabanlarında veya yalnızca uzak veritabanında gerçekleştirilebilecek birleşimlerde değerlendirilebilecek seçmeli filtre koşullarına sahip en iyi sorgu performansını elde edersiniz. Diğer sorgu desenlerinin, uzak veritabanından büyük miktarlarda veri yüklemesi gerekebilir ve kötü bir şekilde çalışabilir.
@@ -195,7 +195,7 @@ Bı ve veri tümleştirme araçlarınızı, elastik sorgu özellikli ve dış ta
 * Dikey bölümleme öğreticisi için bkz. [çapraz veritabanı sorgusuna Başlarken (dikey bölümlendirme)](elastic-query-getting-started-vertical.md).
 * Yatay bölümleme (parçalama) öğreticisi için bkz. [Yatay bölümleme (parçalama) için elastik sorgu ile çalışmaya](elastic-query-getting-started.md)başlama.
 * Yatay olarak bölümlenmiş veriler için sözdizimi ve örnek sorgular için bkz. [yatay olarak bölümlenmiş verileri sorgulama)](elastic-query-horizontal-partitioning.md)
-* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
+* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
 
 <!--Image references-->
 [1]: ./media/elastic-query-vertical-partitioning/verticalpartitioning.png

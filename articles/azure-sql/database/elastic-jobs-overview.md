@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 2aa2c0c8cbd8b826444dc5420685aaa9731cddab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409602"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792183"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>Elastik işler oluşturma, yapılandırma ve yönetme (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -50,11 +50,11 @@ Elastik işler kullandıysanız, [Azure SQL veritabanı 'nda iş Otomasyonu kavr
 
 Bir işi çalıştırmak için uygun kimlik bilgilerinin ayarlanması kafa karışıklığına neden olabileceğinden aşağıdaki noktaları göz önünde bulundurun:
 
-- Veritabanı kapsamlı kimlik bilgilerinin *iş veritabanında*oluşturulması gerekir.
-- **Tüm hedef veritabanlarının, işin başarıyla tamamlanabilmesi için [yeterli izinlere](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) sahip bir oturum açma işlemi olması gerekir** ( `jobuser` Aşağıdaki diyagramda).
+- Veritabanı kapsamlı kimlik bilgilerinin *iş veritabanında* oluşturulması gerekir.
+- **Tüm hedef veritabanlarının, işin başarıyla tamamlanabilmesi için [yeterli izinlere](/sql/relational-databases/security/permissions-database-engine) sahip bir oturum açma işlemi olması gerekir** ( `jobuser` Aşağıdaki diyagramda).
 - Kimlik bilgileri işler arasında yeniden kullanılabilir ve kimlik bilgisi parolaları, iş nesnelerine salt okuma erişimi olan kullanıcılardan şifrelenir ve bunların güvenliğini sağlar.
 
-Aşağıdaki resim, uygun iş kimlik bilgilerinin anlaşılması ve ayarlanması konusunda yardımcı olmak üzere tasarlanmıştır. **Kullanıcının, işin çalıştırılacağı her veritabanında (tüm *hedef kullanıcı veritabanlarında*) oluşturulması gerektiğini unutmayın**.
+Aşağıdaki resim, uygun iş kimlik bilgilerinin anlaşılması ve ayarlanması konusunda yardımcı olmak üzere tasarlanmıştır. **Kullanıcının, işin çalıştırılacağı her veritabanında (tüm *hedef kullanıcı veritabanlarında* ) oluşturulması gerektiğini unutmayın** .
 
 ![Elastik İşler kimlik bilgileri](./media/elastic-jobs-overview/job-credentials.png)
 
@@ -63,7 +63,7 @@ Aşağıdaki resim, uygun iş kimlik bilgilerinin anlaşılması ve ayarlanması
 Elastik İşlerle çalışırken dikkat etmeniz gereken en iyi deneyimlerin bazıları:
 
 - API’lerin kullanımını güvenilir kişilerle sınırlayın.
-- Kimlik bilgileri iş adımını gerçekleştirmek için gerekli olan en düşük ayrıcalıklara sahip olmalıdır. Daha fazla bilgi için bkz. [Yetkilendirme ve izinler](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
+- Kimlik bilgileri iş adımını gerçekleştirmek için gerekli olan en düşük ayrıcalıklara sahip olmalıdır. Daha fazla bilgi için bkz. [Yetkilendirme ve izinler](/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
 - Sunucu ve/veya havuz hedef grubu üyesini kullanırken, iş yürütmeden önce sunucu (ler) ve/veya havuzların veritabanı listelerini genişletmek için kullanılan veritabanlarını görüntülemek/listelemek için ana veritabanında haklara sahip ayrı bir kimlik bilgisi oluşturmanız önerilir.
 
 ## <a name="agent-performance-capacity-and-limitations"></a>Aracı performansı, kapasitesi ve sınırlamaları
@@ -83,7 +83,7 @@ Bir işin üzerinde çalıştığı eşzamanlı veritabanı sayısını `sp_add_
 ## <a name="best-practices-for-creating-jobs"></a>İş oluşturmak için en iyi deneyimler
 
 ### <a name="idempotent-scripts"></a>Bir kez etkili betikler
-Bir işin T-SQL betiklerinin [bir kez etkili](https://en.wikipedia.org/wiki/Idempotence) olması gerekir. **Bir kez etkili**, betiğin başarılı olması ve tekrar çalıştırılması durumunda aynı sonucun ortaya çıkması anlamına gelir. Bir betik, geçici ağ sorunları nedeniyle başarısız olabilir. Bu durumda iş, betiği atlamadan önce otomatik olarak önceden belirtilen sayıda yeniden deneme gerçekleştirir. Bir kez etkili betik, iki kez (veya daha fazla) çalıştırılsa dahi aynı sonucu verir.
+Bir işin T-SQL betiklerinin [bir kez etkili](https://en.wikipedia.org/wiki/Idempotence) olması gerekir. **Bir kez etkili** , betiğin başarılı olması ve tekrar çalıştırılması durumunda aynı sonucun ortaya çıkması anlamına gelir. Bir betik, geçici ağ sorunları nedeniyle başarısız olabilir. Bu durumda iş, betiği atlamadan önce otomatik olarak önceden belirtilen sayıda yeniden deneme gerçekleştirir. Bir kez etkili betik, iki kez (veya daha fazla) çalıştırılsa dahi aynı sonucu verir.
 
 Basit bir yöntem, bir nesneyi oluşturmadan önce mevcut olup olmadığını test etmektir.
 

@@ -11,12 +11,13 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 8194f520abf5c8d4e47fa279f6cf82013024e9ec
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: bdd9d5fd878094326331e60fc1a639eef08b7ea3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152171"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792472"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Cihaz akışlarını IoT Hub (Önizleme)
 
@@ -26,7 +27,7 @@ Azure IoT Hub *cihaz akışları* , çok sayıda buluttan cihaza iletişim senar
 
 Cihaz akışlarını IoT Hub kullanarak, cihazlar güvenli kalır ve yalnızca IoT Hub 'ın 443 numaralı bağlantı noktası üzerinden akış uç noktasına giden TCP bağlantılarını açması gerekecektir. Bir akış kurulduktan sonra, hizmet tarafı ve cihaz tarafı uygulamaların her biri, bir WebSocket istemci nesnesine bir diğerine ham bayt gönderme ve alma için programlı erişim sağlar. Bu tünelle sunulan güvenilirlik ve sipariş garantisi TCP ile aynıdır.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 IoT Hub cihaz akışları aşağıdaki avantajları sağlar:
 
@@ -56,7 +57,7 @@ SDK kullanarak bir cihaz akışının programlı bir şekilde oluşturulması, a
 
 1. Cihaz uygulaması, cihaza yeni bir cihaz akışı başlatıldığında bildirim almak için önceden bir geri çağırma kaydeder. Bu adım genellikle cihaz önyüklendiğinde ve IoT Hub bağlandığı zaman gerçekleşir.
 
-2. Hizmet tarafı programı, cihaz KIMLIĞINI (IP adresi_değil_ ) sağlayarak gerektiğinde bir cihaz akışı başlatır.
+2. Hizmet tarafı programı, cihaz KIMLIĞINI (IP adresi _değil_ ) sağlayarak gerektiğinde bir cihaz akışı başlatır.
 
 3. IoT Hub, 1. adımda kaydedilen geri aramayı çağırarak cihaz tarafı programını bilgilendirir. Cihaz, akış başlatma isteğini kabul edebilir veya reddedebilir. Bu mantık, Uygulama senaryonuz için özel olabilir. Akış isteği cihaz tarafından reddedilirse, IoT Hub hizmete uygun şekilde bildirir; Aksi takdirde, aşağıdaki adımlar izleyin.
 
@@ -103,7 +104,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Azure CLı sürüm 2.0.57 veya daha yeni bir sürümü yüklediğinizden emin olun. [Azure CLI 'Yı yükle](/cli/azure/install-azure-cli?view=azure-cli-latest) sayfasından en son sürümü indirebilirsiniz.
+> Azure CLı sürüm 2.0.57 veya daha yeni bir sürümü yüklediğinizden emin olun. [Azure CLI 'Yı yükle](/cli/azure/install-azure-cli) sayfasından en son sürümü indirebilirsiniz.
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Cihaz akış uç noktalarına giden bağlantılara izin ver
@@ -119,30 +120,30 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Azure CLı sürüm 2.0.57 veya daha yeni bir sürümü yüklediğinizden emin olun. [Azure CLI 'Yı yükle](/cli/azure/install-azure-cli?view=azure-cli-latest) sayfasından en son sürümü indirebilirsiniz.
+> Azure CLı sürüm 2.0.57 veya daha yeni bir sürümü yüklediğinizden emin olun. [Azure CLI 'Yı yükle](/cli/azure/install-azure-cli) sayfasından en son sürümü indirebilirsiniz.
 >
 
-## <a name="troubleshoot-via-device-streams-activity-logs"></a>Cihaz akışları etkinlik günlükleri aracılığıyla sorun giderme
+## <a name="troubleshoot-via-device-streams-resource-logs"></a>Cihaz akışları kaynak günlükleri aracılığıyla sorun giderme
 
-Azure Izleyici günlüklerini, IoT Hub cihaz akışlarının etkinlik günlüğünü toplayacak şekilde ayarlayabilirsiniz. Sorun giderme senaryolarında bu çok faydalı olabilir.
+Azure Izleyici 'yi, IoT Hub tarafından yayılan [cihaz akışları için kaynak günlüklerini](monitor-iot-hub-reference.md#device-streams-preview) toplayacak şekilde ayarlayabilirsiniz. Sorun giderme senaryolarında bu çok faydalı olabilir.
 
-IoT Hub cihaz akışı etkinlikleri için Azure Izleyici günlüklerini yapılandırmak üzere aşağıdaki adımları izleyin:
+Azure Izleyici günlüklerine IoT Hub cihaz akışları günlüklerini göndermek üzere bir tanılama ayarı oluşturmak için aşağıdaki adımları izleyin:
 
-1. IoT Hub *Tanılama ayarları* sekmesine gidin ve *Tanılama bağlantısını aç* ' a tıklayın.
+1. Azure portal, IoT Hub 'ınıza gidin. Sol bölmedeki **izleme** altında **Tanılama ayarları** ' nı seçin. Ardından **Tanılama ayarı Ekle** ' yi seçin.
 
-   !["Tanılama günlüklerini etkinleştirme"](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
+2. Tanılama ayarınız için bir ad girin ve Günlükler listesinden **Devicestreams** ' ı seçin. Sonra **Log Analytics gönder** ' i seçin. Mevcut bir Log Analytics çalışma alanını seçmek veya yeni bir tane oluşturmak için size kılavuzluk edilecek.
 
-2. Tanılama ayarlarınıza bir ad verin ve *Log Analytics gönder* seçeneğini belirleyin. Mevcut bir Log Analytics çalışma alanı kaynağı seçmek veya yeni bir tane oluşturmak için size kılavuzluk edecek. Ayrıca, listeden *Devicestreams* ' ı kontrol edin.
+    :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="Cihaz akışları günlüklerini etkinleştir":::
 
-    !["Cihaz akışları günlüklerini etkinleştir"](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
-
-3. Artık, IoT Hub portalınızdaki *Günlükler* sekmesinden cihaz akışları günlüklerine erişebilirsiniz. Cihaz akışı etkinlik günlükleri tabloda görüntülenir ve olur `AzureDiagnostics` `Category=DeviceStreams` .
+3. Cihaz akış günlüklerinizi bir Log Analytics çalışma alanına göndermek için bir tanılama ayarı oluşturduktan sonra, Azure portal içindeki IoT Hub 'ınızın sol bölmesinde bulunan **Günlükler** ' **i** seçerek günlüklere erişebilirsiniz. Cihaz akışları günlükleri tabloda görüntülenir ve olur `AzureDiagnostics` `Category=DeviceStreams` . Günlüklerin tabloda görünmesi için bir işlemin birkaç dakika sürecağına dikkat edin.
 
    Aşağıda gösterildiği gibi, hedef cihazın kimliği ve işlemin sonucu da günlüklerde bulunur.
 
    !["Cihaz akış günlüklerine erişin"](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
 
-## <a name="regional-availability"></a>Bölgesel Kullanılabilirlik
+IoT Hub ile Azure Izleyici kullanma hakkında daha fazla bilgi için bkz. [Monitor IoT Hub](monitor-iot-hub.md). IoT Hub için kullanılabilen tüm kaynak günlükleri, ölçümler ve tablolar hakkında daha fazla bilgi için bkz. [Azure IoT Hub veri başvurusunu izleme](monitor-iot-hub-reference.md).
+
+## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
 Genel Önizleme sırasında IoT Hub cihaz akışları Orta ABD, Orta ABD EUAP, Kuzey Avrupa ve Güneydoğu Asya bölgelerinde kullanılabilir. Lütfen hub 'ınızı bu bölgelerden birinde oluşturduğunuzdan emin olun.
 
@@ -182,7 +183,7 @@ Yerel proxy örneği, var olan bir uygulamanın, bir istemci ile sunucu program�
 
 Bu bölümde, kullanıcının cihaz akışları üzerinden bir cihaza SSH kullanmasını sağlamak için cihaz akışlarının kullanımı açıklanmaktadır (RDP veya diğer istemci/sunucu uygulaması için protokolün karşılık gelen bağlantı noktası kullanılarak benzerdir).
 
-Kurulum, aşağıdaki şekilde gösterilen iki *yerel proxy* programını kullanır; bu şekilde *cihaz yerel proxy* ve *hizmet yerel ara sunucu*. Yerel proxy programları, IoT Hub ile [cihaz akışı başlatma el sıkışması](#device-stream-creation-flow) gerçekleştirmekten ve normal istemci/sunucu YUVALARıNı kullanarak SSH ISTEMCISI ve ssh daemon ile etkileşimde bulunmaktan sorumludur.
+Kurulum, aşağıdaki şekilde gösterilen iki *yerel proxy* programını kullanır; bu şekilde *cihaz yerel proxy* ve *hizmet yerel ara sunucu* . Yerel proxy programları, IoT Hub ile [cihaz akışı başlatma el sıkışması](#device-stream-creation-flow) gerçekleştirmekten ve normal istemci/sunucu YUVALARıNı kullanarak SSH ISTEMCISI ve ssh daemon ile etkileşimde bulunmaktan sorumludur.
 
 !["SSH/RDP için cihaz akışı proxy kurulumu"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 

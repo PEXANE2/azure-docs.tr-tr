@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: ced546f8f4375433d9fcd59f7ce46f9604f72921
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 148c4828309738a18dbda5fd35ea634e8384bfde
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443124"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792115"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Ölçekli bulut veritabanları genelinde raporlama (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,10 +40,10 @@ Parçalı olmayan veritabanları için bkz. [farklı şemalarla bulut veritabanl
 
 Bu deyimler, esnek sorgu veritabanında bulunan, parçalı veri katmanınızın meta veri temsilini oluşturur.
 
-1. [ANA ANAHTAR OLUŞTUR](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [VERITABANı KAPSAMLı KIMLIK BILGISI OLUŞTUR](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [DıŞ VERI KAYNAĞı OLUŞTUR](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [DıŞ TABLO OLUŞTUR](https://msdn.microsoft.com/library/dn935021.aspx)
+1. [ANA ANAHTAR OLUŞTUR](/sql/t-sql/statements/create-master-key-transact-sql)
+2. [VERITABANı KAPSAMLı KIMLIK BILGISI OLUŞTUR](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)
+3. [DıŞ VERI KAYNAĞı OLUŞTUR](/sql/t-sql/statements/create-external-data-source-transact-sql)
+4. [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql)
 
 ## <a name="11-create-database-scoped-master-key-and-credentials"></a>1,1 veritabanı kapsamlı ana anahtar ve kimlik bilgileri oluşturma
 
@@ -57,7 +57,7 @@ SECRET = '<password>'
 ```
 
 > [!NOTE]
-> " * \<username\> "* , " * \@ ServerName"* sonekini içermediğinden emin olun.
+> " *\<username\> "* , " *\@ ServerName"* sonekini içermediğinden emin olun.
 
 ## <a name="12-create-external-data-sources"></a>1,2 dış veri kaynakları oluşturma
 
@@ -163,9 +163,9 @@ DAĞıTıM yan tümcesi, bu tablo için kullanılan veri dağılımını belirti
 2. **Çoğaltılan** , tablonun aynı kopyalarının her veritabanında bulunduğu anlamına gelir. Çoğaltmalarınızın veritabanları genelinde özdeş olmasını sağlamak sizin sorumluluğunuzdadır.
 3. **Yuvarlak \_ Bir kez deneme** , bir uygulamaya bağımlı dağıtım yöntemi kullanılarak tablonun yatay olarak bölümlenmesi anlamına gelir.
 
-**Veri katmanı başvurusu**: dış tablo DDL, bir dış veri kaynağını ifade eder. Dış veri kaynağı, dış tabloya, veri katmanınızda tüm veritabanlarını bulmak için gereken bilgileri sağlayan bir parça Haritası belirtir.
+**Veri katmanı başvurusu** : dış tablo DDL, bir dış veri kaynağını ifade eder. Dış veri kaynağı, dış tabloya, veri katmanınızda tüm veritabanlarını bulmak için gereken bilgileri sağlayan bir parça Haritası belirtir.
 
-### <a name="security-considerations"></a>Güvenlik konuları
+### <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Dış tabloya erişimi olan kullanıcılar, dış veri kaynağı tanımında verilen kimlik bilgileri altındaki temeldeki uzak tablolara otomatik olarak erişim elde edebilir. Dış veri kaynağının kimlik bilgileri aracılığıyla, ayrıcalıkların istenmeyen ayrıcalıklarından kaçının. Bir dış tablo için, normal bir tablo olmasına rağmen ızın verme veya Iptal etme kullanın.  
 
@@ -194,7 +194,7 @@ Aşağıdaki sorgu, ambarlar, siparişler ve sipariş satırları arasında üç
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Uzak T-SQL yürütmesi için saklı yordam: SP \_ execute_remote
 
-Elastik sorgu Ayrıca, parçalara doğrudan erişim sağlayan bir saklı yordam de sunar. Saklı yordama [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714) adı verilir ve uzak veritabanlarında uzak saklı yordamları veya T-SQL kodu yürütmek için kullanılabilir. Aşağıdaki parametreleri alır:
+Elastik sorgu Ayrıca, parçalara doğrudan erişim sağlayan bir saklı yordam de sunar. Saklı yordama [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) adı verilir ve uzak veritabanlarında uzak saklı yordamları veya T-SQL kodu yürütmek için kullanılabilir. Aşağıdaki parametreleri alır:
 
 * Veri kaynağı adı (nvarchar): RDBMS türünde dış veri kaynağının adı.
 * Sorgu (nvarchar): her parça üzerinde yürütülecek T-SQL sorgusu.
@@ -215,7 +215,7 @@ SP \_ Execute \_ Remote, uzak veritabanlarında verilen T-SQL ifadesini yürütm
 
 Uygulamanızı, bı ve veri tümleştirme araçlarınızı, dış tablo tanımlarınızla veritabanına bağlamak için normal SQL Server bağlantı dizelerini kullanın. SQL Server, aracınız için bir veri kaynağı olarak desteklendiğinden emin olun. Ardından, araçla bağlantılı diğer SQL Server veritabanları gibi elastik sorgu veritabanına başvurun ve araç veya uygulamanızdaki dış tabloları yerel tablolar gibi kullanın.
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 * Elastik sorgu uç noktası veritabanına, shardmap veritabanına ve SQL veritabanı güvenlik duvarları üzerinden tüm parçalara erişim verildiğinden emin olun.  
 * Dış tablo tarafından tanımlanan veri dağıtımını doğrulayın veya zorunlu tutun. Gerçek veri dağıtım tablonuz, tablo tanımınızda belirtilen dağıtıma farklıysa, sorgunuz beklenmedik sonuçlara neden olabilir.
@@ -228,7 +228,7 @@ Uygulamanızı, bı ve veri tümleştirme araçlarınızı, dış tablo tanımla
 * Dikey bölümleme öğreticisi için bkz. [çapraz veritabanı sorgusuna Başlarken (dikey bölümlendirme)](elastic-query-getting-started-vertical.md).
 * Dikey olarak bölümlenmiş verilere yönelik sözdizimi ve örnek sorgular için bkz. [dikey olarak bölümlenmiş verileri sorgulama)](elastic-query-vertical-partitioning.md)
 * Yatay bölümleme (parçalama) öğreticisi için bkz. [Yatay bölümleme (parçalama) için elastik sorgu ile çalışmaya](elastic-query-getting-started.md)başlama.
-* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
+* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
 
 <!--Image references-->
 [1]: ./media/elastic-query-horizontal-partitioning/horizontalpartitioning.png

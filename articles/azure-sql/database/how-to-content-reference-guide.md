@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 01/14/2020
-ms.openlocfilehash: 9b151e566f0cc3e086277c101a796e7dde059ef9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19cec1deeef344ea5897061db0fec88066b90b05
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442567"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791775"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>İçerik başvurusunu yapılandırma ve yönetme-Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ Bu makalede, Azure SQL veritabanınızı yönetmenize ve yapılandırmanıza yar
 
 - [El ile ayarlama](performance-guidance.md)
 - [Performansı izlemek için DMV’leri kullanma](monitoring-with-dmvs.md)
-- [Performansı izlemek için Sorgu deposunu kullanma](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
+- [Performansı izlemek için Sorgu deposunu kullanma](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - Azure SQL veritabanı 'nın iş yükünüzün performansını iyileştirmelerine izin vermek için [otomatik ayarlamayı etkinleştirin](automatic-tuning-enable.md) .
 - Ayarlama önerileri hakkında bilgi almak için [otomatik ayarlama için e-posta bildirimlerini etkinleştirin](automatic-tuning-email-notifications-configure.md) .
 - [Performans önerilerini uygulayın](database-advisor-find-recommendations-portal.md) ve veritabanınızı iyileştirin.
@@ -84,7 +84,7 @@ Bu makalede, Azure SQL veritabanınızı yönetmenize ve yapılandırmanıza yar
 - [SQL Data Sync](sql-data-sync-data-sql-server-sql-database.md)
 - [Veri Eşitleme Aracısı](sql-data-sync-agent-overview.md)
 - [Şema değişikliklerini çoğaltma](sql-data-sync-update-sync-schema.md)
-- [OMS ile izleme](sql-data-sync-monitor-sync.md)
+- [OMS ile izleme](./monitor-tune-overview.md)
 - [Data Sync için en iyi deneyimler](sql-data-sync-best-practices.md)
 - [Data Sync’de sorun giderme](sql-data-sync-troubleshoot.md)
 

@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: dd92e1529b889671bc29939f7e9611eceac7ee20
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a815295c4f2ab78cbd3aff82949d7c28197afd82
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370517"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791928"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Kubernetes için Azure Defender 'a giriş
 
@@ -20,7 +20,7 @@ Azure Kubernetes Service (AKS), Kapsayıcılı uygulamalar geliştirmeye, dağı
 
 Azure Güvenlik Merkezi ve AKS, en iyi bulut Yerel Kubernetes güvenlik sunumunu ve birlikte aşağıda özetlenen ortam sağlamlaştırma, iş yükü koruması ve çalışma zamanı koruması sağlar.
 
-Kubernetes kümelerinize yönelik tehdit algılama için, **Kubernetes Için Azure Defender**'ı etkinleştirin.
+Kubernetes kümelerinize yönelik tehdit algılama için, **Kubernetes Için Azure Defender** 'ı etkinleştirin.
 
 Linux AKS düğümleriniz için ana bilgisayar düzeyinde tehdit algılama, [sunucular Için Azure Defender 'ı](defender-for-servers-introduction.md)etkinleştirdiğinizde kullanılabilir.
 
@@ -31,7 +31,7 @@ Linux AKS düğümleriniz için ana bilgisayar düzeyinde tehdit algılama, [sun
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|**Kubernetes Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi** , uyarıları kapatabilir.<br>**Güvenlik okuyucusu** bulguları görüntüleyebilir.|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Kubernetes için Azure Defender 'ın yararları nelerdir?
@@ -72,7 +72,7 @@ Güvenlik Merkezi tarafından alınan ve çözümlenen öğelerin şunları gör
 - API sunucusundan denetim günlükleri
 - Log Analytics aracısından ham güvenlik olayları
 - AKS kümesindeki küme yapılandırma bilgileri
-- Azure Ilkesinden iş yükü yapılandırması ( **Kubernetes Için Azure ilke eklentisi**aracılığıyla). [Kubernetes giriş denetimini kullanan iş yükü koruma en iyi uygulamaları hakkında daha fazla bilgi edinin](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
+- Azure Ilkesinden iş yükü yapılandırması ( **Kubernetes Için Azure ilke eklentisi** aracılığıyla). [Kubernetes giriş denetimini kullanan iş yükü koruma en iyi uygulamaları hakkında daha fazla bilgi edinin](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
 
 :::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Azure Güvenlik Merkezi, Azure Kubernetes hizmeti ve Azure Ilkesi arasındaki etkileşimin üst düzey mimarisi" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
 
@@ -114,5 +114,5 @@ Bu makalede, Kubernetes için Azure Defender dahil güvenlik merkezi 'nin Kubern
 İlgili malzemeler için aşağıdaki makalelere bakın: 
 
 - [Azure Defender 'ı etkinleştir](security-center-pricing.md)
-- [Uyarıları bir Azure Sentinel 'e veya üçüncü taraf SıEM 'ye aktarma](continuous-export.md)
+- [Uyarıları bir SıEM, SOAR veya BT hizmet yönetimi çözümüne akış](export-to-siem.md)
 - [Uyarıların başvuru tablosu](alerts-reference.md)

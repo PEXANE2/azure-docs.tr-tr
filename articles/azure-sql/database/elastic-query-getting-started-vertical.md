@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 089cc8f22248a2b7152afaf951f6028a05682648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd8a30c60c81ef2761d5dc051d2dfeb300e1bac4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443328"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792132"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Veritabanları arası sorguları kullanmaya başlama (dikey bölümlendirme) (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,7 +33,7 @@ Herhangi bir dış VERI kaynağı iznini DEĞIŞTIR gereklidir. Bu izin ALTER DA
 
 ## <a name="create-the-sample-databases"></a>Örnek veritabanları oluşturma
 
-İle başlamak için, aynı ya da farklı sunucularda iki veritabanı, **Müşteri** ve **sipariş**oluşturun.
+İle başlamak için, aynı ya da farklı sunucularda iki veritabanı, **Müşteri** ve **sipariş** oluşturun.
 
 **Orderınformation** tablosunu oluşturmak ve örnek verileri girmek için **Orders** veritabanında aşağıdaki sorguları yürütün.
 
@@ -129,4 +129,4 @@ Fiyatlandırma bilgileri için bkz. [SQL veritabanı fiyatlandırması](https://
 * Dikey olarak bölümlenmiş verilere yönelik sözdizimi ve örnek sorgular için bkz. [dikey olarak bölümlenmiş verileri sorgulama)](elastic-query-vertical-partitioning.md)
 * Yatay bölümleme (parçalama) öğreticisi için bkz. [Yatay bölümleme (parçalama) için elastik sorgu ile çalışmaya](elastic-query-getting-started.md)başlama.
 * Yatay olarak bölümlenmiş veriler için sözdizimi ve örnek sorgular için bkz. [yatay olarak bölümlenmiş verileri sorgulama)](elastic-query-horizontal-partitioning.md)
-* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
+* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443046"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792081"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Parçalı veritabanları arasında veri taşımak için bölünmüş birleştirme hizmeti dağıtma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,9 +39,9 @@ Dosyalar, **Microsoft. Azure. SQLDatabase. Elalapscale. Service. SplitMerge. x. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-1. Bölünmüş birleştirme durum veritabanı olarak kullanılacak bir Azure SQL veritabanı veritabanı oluşturun. [Azure portalına](https://portal.azure.com) gidin. Yeni bir **SQL veritabanı**oluşturun. Veritabanına bir ad verin ve yeni bir yönetici ve parola oluşturun. Daha sonra kullanmak üzere adı ve parolayı kaydettiğinizden emin olun.
+1. Bölünmüş birleştirme durum veritabanı olarak kullanılacak bir Azure SQL veritabanı veritabanı oluşturun. [Azure portalına](https://portal.azure.com) gidin. Yeni bir **SQL veritabanı** oluşturun. Veritabanına bir ad verin ve yeni bir yönetici ve parola oluşturun. Daha sonra kullanmak üzere adı ve parolayı kaydettiğinizden emin olun.
 
-1. Sunucunuzun Azure hizmetlerinin bu sunucuya bağlanmasına izin verdiğinden emin olun. Portalda, **güvenlik duvarı ayarları**' nda, **Azure hizmetlerine erişime Izin ver** ayarının **Açık**olarak ayarlandığından emin olun. "Kaydet" simgesine tıklayın.
+1. Sunucunuzun Azure hizmetlerinin bu sunucuya bağlanmasına izin verdiğinden emin olun. Portalda, **güvenlik duvarı ayarları** ' nda, **Azure hizmetlerine erişime Izin ver** ayarının **Açık** olarak ayarlandığından emin olun. "Kaydet" simgesine tıklayın.
 
 1. Tanılama çıktısı için bir Azure depolama hesabı oluşturun.
 
@@ -51,14 +51,14 @@ Dosyalar, **Microsoft. Azure. SQLDatabase. Elalapscale. Service. SplitMerge. x. 
 
 ### <a name="split-merge-service-configuration"></a>Split-Merge hizmeti yapılandırması
 
-1. Split-Merge derlemelerini indirdiğiniz klasörde, *Splitmergeservice. cspkg* ile birlikte gelen *ServiceConfiguration. Template. cscfg* dosyasının bir kopyasını oluşturun ve *ServiceConfiguration. cscfg*olarak yeniden adlandırın.
+1. Split-Merge derlemelerini indirdiğiniz klasörde, *Splitmergeservice. cspkg* ile birlikte gelen *ServiceConfiguration. Template. cscfg* dosyasının bir kopyasını oluşturun ve *ServiceConfiguration. cscfg* olarak yeniden adlandırın.
 
 1. Visual Studio gibi bir metin düzenleyicisinde *ServiceConfiguration. cscfg* ' i açarak sertifika parmak izlerinin biçimi gibi girdileri doğrular.
 
 1. Yeni bir veritabanı oluşturun veya Split-Merge işlemler için durum veritabanı olarak kullanılacak mevcut bir veritabanını seçin ve bu veritabanının bağlantı dizesini alın.
 
    > [!IMPORTANT]
-   > Şu anda, durum veritabanının Latin harmanlaması (SQL \_ Latin1 \_ General \_ CP1 \_ CI \_ as) kullanması gerekir. Daha fazla bilgi için bkz. [Windows harmanlama adı (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
+   > Şu anda, durum veritabanının Latin harmanlaması (SQL \_ Latin1 \_ General \_ CP1 \_ CI \_ as) kullanması gerekir. Daha fazla bilgi için bkz. [Windows harmanlama adı (Transact-SQL)](/sql/t-sql/statements/windows-collation-name-transact-sql).
 
    Azure SQL veritabanı ile bağlantı dizesi genellikle şu biçimdedir:
 
@@ -76,7 +76,7 @@ Bu öğreticide basit bir test dağıtımının amaçları doğrultusunda hizmet
 
 ### <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
 
-Yeni bir dizin oluşturun ve bu dizinden, [Visual Studio için bir geliştirici komut istemi](https://msdn.microsoft.com/library/ms229859.aspx) kullanarak aşağıdaki komutu yürütün:
+Yeni bir dizin oluşturun ve bu dizinden, [Visual Studio için bir geliştirici komut istemi](/dotnet/framework/tools/developer-command-prompt-for-vs) kullanarak aşağıdaki komutu yürütün:
 
    ```cmd
    makecert ^
@@ -99,17 +99,17 @@ MakeCert 'ın yürütüldüğü pencerede aşağıdaki komutu yürütün; sertif
 
 ### <a name="import-the-client-certificate-into-the-personal-store"></a>İstemci sertifikasını Kişisel depoya aktarma
 
-1. Windows Gezgini 'nde *mycert. pfx*dosyasına çift tıklayın.
-2. **Sertifika Içeri aktarma sihirbazında** **Geçerli Kullanıcı** ' yı seçin ve **İleri**' ye tıklayın.
-3. Dosya yolunu doğrulayın ve **İleri**' ye tıklayın.
-4. Parolayı yazın, **Tüm genişletilmiş özellikleri içer** işaretli bırakın ve **İleri**' ye tıklayın.
-5. **[...] Sertifika deposunu otomatik olarak seçin** ve **İleri**' ye tıklayın.
-6. **Son** ve **Tamam**' a tıklayın.
+1. Windows Gezgini 'nde *mycert. pfx* dosyasına çift tıklayın.
+2. **Sertifika Içeri aktarma sihirbazında** **Geçerli Kullanıcı** ' yı seçin ve **İleri** ' ye tıklayın.
+3. Dosya yolunu doğrulayın ve **İleri** ' ye tıklayın.
+4. Parolayı yazın, **Tüm genişletilmiş özellikleri içer** işaretli bırakın ve **İleri** ' ye tıklayın.
+5. **[...] Sertifika deposunu otomatik olarak seçin** ve **İleri** ' ye tıklayın.
+6. **Son** ve **Tamam** ' a tıklayın.
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>PFX dosyasını bulut hizmetine yükle
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-2. **Cloud Services**seçin.
+2. **Cloud Services** seçin.
 3. Bölünmüş/birleştirme hizmeti için yukarıda oluşturduğunuz bulut hizmetini seçin.
 4. Üst menüdeki **Sertifikalar** ' a tıklayın.
 5. Alt çubukta **karşıya yükle** ' ye tıklayın.
@@ -143,8 +143,8 @@ CA için ayrı sertifikaların üretim dağıtımları, şifreleme, sunucu serti
 
 1. [Azure portal](https://portal.azure.com)'a gidin
 2. Daha önce oluşturduğunuz bulut hizmetini seçin.
-3. **Genel Bakış**'a tıklayın.
-4. Hazırlama ortamını seçin ve ardından **karşıya yükle**' ye tıklayın.
+3. **Genel Bakış** 'a tıklayın.
+4. Hazırlama ortamını seçin ve ardından **karşıya yükle** ' ye tıklayın.
 5. İletişim kutusunda bir dağıtım etiketi girin. Hem ' paket ' hem de ' yapılandırma ' için ' yerelden ' seçeneğine tıklayın ve *Splitmergeservice. cspkg* dosyasını ve daha önce yapılandırdığınız cscfg dosyanızı seçin.
 6. **Bir veya daha fazla rol tek bir örnek içeriyorsa bile dağıt** onay kutusunun işaretli olduğundan emin olun.
 7. Dağıtıma başlamak için sağ alt köşedeki değer düğmesine basın. Tamamlanması için birkaç dakika sürer.
@@ -324,8 +324,8 @@ Bölünmüş birleştirme işlemi gerçekleştirmek için, taşınmasını isted
 1. Parçalı her tablo için, tablonun üst şema adını (isteğe bağlı, varsayılan olarak "dbo"), tablo adını ve parça anahtarını içeren tablodaki sütun adını açıklayan bir **Shardedtableınfo** nesnesi oluşturun.
 2. Her başvuru tablosu için, tablonun üst şema adını (isteğe bağlı, varsayılan olarak "dbo") ve tablo adını açıklayan bir **Referencetableınfo** nesnesi oluşturun.
 3. Yukarıdaki Tableınfo **nesnelerini yeni bir** nesne tablosu nesnesine ekleyin.
-4. Bir **Shardmapmanager** nesnesine bir başvuru alın ve **Getıfermainfocollection**' ı çağırın.
-5. Parça eşleme adını sağlayarak, **Fermainınfo** ' ı bir **Fermainfocollection**öğesine ekleyin.
+4. Bir **Shardmapmanager** nesnesine bir başvuru alın ve **Getıfermainfocollection** ' ı çağırın.
+5. Parça eşleme adını sağlayarak, **Fermainınfo** ' ı bir **Fermainfocollection** öğesine ekleyin.
 
 SetupSampleSplitMergeEnvironment.ps1 betiğiyle Bu örnek görünebilir.
 
@@ -343,7 +343,7 @@ Bu hata, TLS/SSL sertifikanızın doğru yapılandırılmadığı anlamına geli
 
    `[Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'.`
 
-Bu durumda, özellikle **Workerrolesynchronizationstorageaccountconnectionstring**ayarında yapılandırma dosyanızı denetleyin. Bu hata genellikle çalışan rolünün ilk kullanımda olan meta veri veritabanını başarıyla başlatamadığını gösterir.
+Bu durumda, özellikle **Workerrolesynchronizationstorageaccountconnectionstring** ayarında yapılandırma dosyanızı denetleyin. Bu hata genellikle çalışan rolünün ilk kullanımda olan meta veri veritabanını başarıyla başlatamadığını gösterir.
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
 

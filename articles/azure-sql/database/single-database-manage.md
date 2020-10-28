@@ -4,19 +4,19 @@ description: Azure portal, PowerShell, Azure CLı, Transact-SQL (T-SQL) ve REST 
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c487b5bc5c8d5fa01388b2942a70defa0001253
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85255015"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791537"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda sunucular ve tek veritabanları oluşturma ve yönetme
 
@@ -58,7 +58,7 @@ Var olan bir veritabanını yönetmek için **SQL veritabanları** sayfasına gi
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
 Sunucular, tek ve havuza alınmış veritabanları ve Azure PowerShell ile sunucu düzeyi güvenlik duvarları oluşturmak ve yönetmek için aşağıdaki PowerShell cmdlet 'lerini kullanın. PowerShell 'i yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-az-ps).
 
@@ -74,7 +74,7 @@ Sunucular, tek ve havuza alınmış veritabanları ve Azure PowerShell ile sunuc
 |[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)|Bir kaynak grubu oluşturur|
 |[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|Sunucu oluşturur|
 |[Get-AzSqlServer](/powershell/module/az.sql/get-azsqlserver)|Sunucular hakkında bilgi döndürür|
-|[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)|Bir sunucunun özelliklerini değiştirir|
+|[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver)|Bir sunucunun özelliklerini değiştirir|
 |[Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)|Bir sunucuyu kaldırır|
 |[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)|Sunucu düzeyinde bir güvenlik duvarı kuralı oluşturur |
 |[Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|Bir sunucu için güvenlik duvarı kurallarını alır|
@@ -84,7 +84,7 @@ Sunucular, tek ve havuza alınmış veritabanları ve Azure PowerShell ile sunuc
 
 ## <a name="the-azure-cli"></a>Azure CLI
 
-[Azure CLI](/cli/azure)ile sunucuları, veritabanlarını ve güvenlik duvarlarını oluşturup yönetmek Için AŞAĞıDAKI [Azure CLI](/cli/azure/sql/db) komutlarını kullanın. CLI’yi tarayıcınızda çalıştırmak için [Cloud Shell](/azure/cloud-shell/overview) kullanın veya macOS, Linux ya da Windows’da [yükleyin](/cli/azure/install-azure-cli). Elastik havuzlar oluşturma ve yönetme için bkz. [elastik havuzlar](elastic-pool-overview.md).
+[Azure CLI](/cli/azure)ile sunucuları, veritabanlarını ve güvenlik duvarlarını oluşturup yönetmek Için AŞAĞıDAKI [Azure CLI](/cli/azure/sql/db) komutlarını kullanın. CLI’yi tarayıcınızda çalıştırmak için [Cloud Shell](../../cloud-shell/overview.md) kullanın veya macOS, Linux ya da Windows’da [yükleyin](/cli/azure/install-azure-cli). Elastik havuzlar oluşturma ve yönetme için bkz. [elastik havuzlar](elastic-pool-overview.md).
 
 > [!TIP]
 > Azure CLı hızlı başlangıç için bkz. [Azure CLI kullanarak tek bir Azure SQL veritabanı oluşturma](az-cli-script-samples-content-guide.md). Azure CLı örnek betikleri için bkz. [CLI kullanarak Azure SQL veritabanında veritabanı oluşturma ve BIR SQL veritabanı güvenlik duvarı kuralı yapılandırma](scripts/create-and-configure-database-cli.md) ve [Azure SQL veritabanı 'nda bir veritabanını izlemek ve ölçeklendirmek için CLI](scripts/monitor-and-scale-database-cli.md)kullanma.
@@ -144,22 +144,22 @@ Sunucuları, veritabanlarını ve güvenlik duvarlarını oluşturup yönetmek i
 
 | Komut | Açıklama |
 | --- | --- |
-|[Sunucular-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Yeni bir sunucu oluşturur veya güncelleştirir.|
-|[Sunucular-Sil](https://docs.microsoft.com/rest/api/sql/servers/delete)|Bir SQL sunucusunu siler.|
-|[Sunucular-al](https://docs.microsoft.com/rest/api/sql/servers/get)|Bir sunucu alır.|
-|[Sunucular-liste](https://docs.microsoft.com/rest/api/sql/servers/list)|Bir abonelikteki sunucuların listesini döndürür.|
-|[Sunucular-kaynak grubuna göre Listele](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Bir kaynak grubundaki sunucuların listesini döndürür.|
-|[Sunucular-Güncelleştir](https://docs.microsoft.com/rest/api/sql/servers/update)|Var olan bir sunucuyu güncelleştirir.|
-|[Veritabanları-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Yeni bir veritabanı oluşturur veya var olan bir veritabanını güncelleştirir.|
-|[Veritabanları-Sil](https://docs.microsoft.com/rest/api/sql/databases/delete)|Bir veritabanını siler.|
-|[Veritabanları-al](https://docs.microsoft.com/rest/api/sql/databases/get)|Bir veritabanını alır.|
-|[Veritabanları-elastik havuza göre Listele](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Elastik havuzdaki veritabanlarının listesini döndürür.|
-|[Veritabanları-sunucuya göre listeleme](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Bir sunucudaki veritabanlarının listesini döndürür.|
-|[Veritabanları-Güncelleştir](https://docs.microsoft.com/rest/api/sql/databases/update)|Var olan bir veritabanını güncelleştirir.|
-|[Güvenlik duvarı kuralları-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|Bir güvenlik duvarı kuralı oluşturur veya güncelleştirir.|
-|[Güvenlik duvarı kuralları-Sil](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|Bir güvenlik duvarı kuralını siler.|
-|[Güvenlik duvarı kuralları-al](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Bir güvenlik duvarı kuralı alır.|
-|[Güvenlik duvarı kuralları-sunucuya göre Listele](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|Güvenlik Duvarı kurallarının bir listesini döndürür.|
+|[Sunucular-oluştur veya güncelleştir](/rest/api/sql/servers/createorupdate)|Yeni bir sunucu oluşturur veya güncelleştirir.|
+|[Sunucular-Sil](/rest/api/sql/servers/delete)|Bir SQL sunucusunu siler.|
+|[Sunucular-al](/rest/api/sql/servers/get)|Bir sunucu alır.|
+|[Sunucular-liste](/rest/api/sql/servers/list)|Bir abonelikteki sunucuların listesini döndürür.|
+|[Sunucular-kaynak grubuna göre Listele](/rest/api/sql/servers/listbyresourcegroup)|Bir kaynak grubundaki sunucuların listesini döndürür.|
+|[Sunucular-Güncelleştir](/rest/api/sql/servers/update)|Var olan bir sunucuyu güncelleştirir.|
+|[Veritabanları-oluştur veya güncelleştir](/rest/api/sql/databases/createorupdate)|Yeni bir veritabanı oluşturur veya var olan bir veritabanını güncelleştirir.|
+|[Veritabanları-Sil](/rest/api/sql/databases/delete)|Bir veritabanını siler.|
+|[Veritabanları-al](/rest/api/sql/databases/get)|Bir veritabanını alır.|
+|[Veritabanları-elastik havuza göre Listele](/rest/api/sql/databases/listbyelasticpool)|Elastik havuzdaki veritabanlarının listesini döndürür.|
+|[Veritabanları-sunucuya göre listeleme](/rest/api/sql/databases/listbyserver)|Bir sunucudaki veritabanlarının listesini döndürür.|
+|[Veritabanları-Güncelleştir](/rest/api/sql/databases/update)|Var olan bir veritabanını güncelleştirir.|
+|[Güvenlik duvarı kuralları-oluştur veya güncelleştir](/rest/api/sql/firewallrules/createorupdate)|Bir güvenlik duvarı kuralı oluşturur veya güncelleştirir.|
+|[Güvenlik duvarı kuralları-Sil](/rest/api/sql/firewallrules/delete)|Bir güvenlik duvarı kuralını siler.|
+|[Güvenlik duvarı kuralları-al](/rest/api/sql/firewallrules/get)|Bir güvenlik duvarı kuralı alır.|
+|[Güvenlik duvarı kuralları-sunucuya göre Listele](/rest/api/sql/firewallrules/listbyserver)|Güvenlik Duvarı kurallarının bir listesini döndürür.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

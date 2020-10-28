@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 11b41f4dcffad2c98ea5d1f70346ba150fd18c17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 492041e39cf3e7be256bc783afc82fc756e17bf4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278643"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791554"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -69,7 +69,7 @@ Yeniden yönlendirme destekleniyor. Bkz. [Application Gateway yeniden yönlendir
 
 Uç nokta olarak genel bir IP adresi kullanıyorsanız, IP ve DNS bilgilerini genel IP adresi kaynağında bulabilirsiniz. Veya Portal 'da, uygulama ağ geçidinin Genel Bakış sayfasında bulabilirsiniz. İç IP adresleri kullanıyorsanız Genel Bakış sayfasındaki bilgileri bulun.
 
-V2 SKU 'SU için genel IP kaynağını açın ve **yapılandırma**' yı seçin. DNS ad **etiketi (isteğe bağlı)** alanı DNS adını yapılandırmak için kullanılabilir.
+V2 SKU 'SU için genel IP kaynağını açın ve **yapılandırma** ' yı seçin. DNS ad **etiketi (isteğe bağlı)** alanı DNS adını yapılandırmak için kullanılabilir.
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Keep-Alive zaman aşımı ve TCP boşta kalma zaman aşımı ayarları nelerdir?
 
@@ -138,7 +138,7 @@ Hayır. Application Gateway v2, kimlik doğrulama isteklerini henüz NTLM kimlik
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway benzeşim tanımlama bilgisi SameSite özniteliğini destekliyor mu?
 Evet, [Kmıum Browser](https://www.chromium.org/Home) [V80 Update](https://chromiumdash.appspot.com/schedule) , SameSite = LAX olarak değerlendirilmeyeceği bir SAMESITE özniteliği olmadan http tanımlama bilgilerinde bir mantarih getirdi. Bu, Application Gateway benzeşim tanımlama bilgisinin tarayıcı tarafından üçüncü taraf bir bağlamda gönderilemeyeceği anlamına gelir. 
 
-Bu senaryoyu desteklemek için, mevcut *Applicationgatewaybenzeşim* tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir tanımlama bilgisini Application Gateway çıkartır.  Bu tanımlama bilgileri benzerdir, ancak *Applicationgatewayaffinitycors* tanımlama bilgisinin kendisine eklenmiş iki özniteliği vardır: *SameSite = None; Güvenli*. Bu öznitelikler, çapraz kaynak istekleri için bile yapışkan oturumları korur. Daha fazla bilgi için [tanımlama bilgisi tabanlı benzeşim bölümüne](configuration-http-settings.md#cookie-based-affinity) bakın.
+Bu senaryoyu desteklemek için, mevcut *Applicationgatewaybenzeşim* tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir tanımlama bilgisini Application Gateway çıkartır.  Bu tanımlama bilgileri benzerdir, ancak *Applicationgatewayaffinitycors* tanımlama bilgisinin kendisine eklenmiş iki özniteliği vardır: *SameSite = None; Güvenli* . Bu öznitelikler, çapraz kaynak istekleri için bile yapışkan oturumları korur. Daha fazla bilgi için [tanımlama bilgisi tabanlı benzeşim bölümüne](configuration-http-settings.md#cookie-based-affinity) bakın.
 
 ## <a name="performance"></a>Performans
 
@@ -249,11 +249,11 @@ Ancak Application Gateway v2 'yi yalnızca özel IP ile kullanmak istiyorsanız,
 2. Genel ön uç IP adresi için herhangi bir dinleyici oluşturmayın. Application Gateway, kendisi için bir dinleyici oluşturulmadıysa genel IP adresindeki herhangi bir trafiği dinlemez.
 3. Öncelik sırasına göre aşağıdaki yapılandırmaya sahip Application Gateway alt ağı için bir [ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/security-overview) oluşturun ve ekleyin:
     
-    a. Kaynak olarak **Gatewaymanager** hizmet etiketi ve hedef bağlantı **noktası olarak** **65200-65535**olarak gelen trafiğe izin verin. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları sertifika kimlik doğrulaması tarafından korunur (kilitlidir). Ağ Geçidi Kullanıcı yöneticileri de dahil olmak üzere dış varlıklar, uygun sertifikalara sahip olmayan bu uç noktalar üzerinde değişiklik başlatamaz
+    a. Kaynak olarak **Gatewaymanager** hizmet etiketi ve hedef bağlantı **noktası olarak** **65200-65535** olarak gelen trafiğe izin verin. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları sertifika kimlik doğrulaması tarafından korunur (kilitlidir). Ağ Geçidi Kullanıcı yöneticileri de dahil olmak üzere dış varlıklar, uygun sertifikalara sahip olmayan bu uç noktalar üzerinde değişiklik başlatamaz
     
     b. Kaynak **AzureLoadBalancer** hizmet etiketi ve hedef ve hedef bağlantı **noktası gibi kaynaklardan** gelen trafiğe izin ver
     
-    c. Kaynaktan **Internet** hizmet etiketi ve hedef ve hedef bağlantı **noktası olarak gelen**tüm trafiği reddetme. Bu kurala gelen kurallarda *En düşük önceliği* verin
+    c. Kaynaktan **Internet** hizmet etiketi ve hedef ve hedef bağlantı **noktası olarak gelen** tüm trafiği reddetme. Bu kurala gelen kurallarda *En düşük önceliği* verin
     
     d. Özel IP adresine erişimin engellenmemesi için VirtualNetwork Inbound 'e izin verme gibi varsayılan kuralları koruyun
     
@@ -350,7 +350,7 @@ Sertifika yetkilisi (CA) tarayıcı üyeleri son yayınlanan raporlar, müşteri
 * [Hata 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
 * [Hata 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
 
-Sektörün uyumluluk gereksinimlerine göre, CA satıcıları uyumlu olmayan CA 'Ları iptal etmeyi ve müşterilere sertifikalarının yeniden verilmesini gerektiren uyumlu CA 'ları vermeyi başladık.Microsoft, Azure hizmetlerine yönelik olası etkiyi en aza indirmek için bu satıcılarla yakından işbirliği yapıyor, **ancak "kendi sertifikasını getir" (BYOC) senaryolarında kullanılan kendi kendine verilen sertifika veya sertifikalarınız, beklenmedik şekilde iptal edilmesinden hala devam**etmektedir.
+Sektörün uyumluluk gereksinimlerine göre, CA satıcıları uyumlu olmayan CA 'Ları iptal etmeyi ve müşterilere sertifikalarının yeniden verilmesini gerektiren uyumlu CA 'ları vermeyi başladık.Microsoft, Azure hizmetlerine yönelik olası etkiyi en aza indirmek için bu satıcılarla yakından işbirliği yapıyor, **ancak "kendi sertifikasını getir" (BYOC) senaryolarında kullanılan kendi kendine verilen sertifika veya sertifikalarınız, beklenmedik şekilde iptal edilmesinden hala devam** etmektedir.
 
 Uygulamanız tarafından kullanılan sertifikaların iptal edilip edilmediğini denetlemek için, [DigiCert duyurusu](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) ve [sertifika iptal izleyici](https://misissued.com/#revoked)başvurusu. Sertifikalarınız iptal edildiyse veya iptal edildiğinde, uygulamalarınızda kullanılan CA satıcısından yeni sertifikalar istemeniz gerekir. Sertifikaların beklenmedik şekilde iptal edildiği veya iptal edilmiş bir sertifikayı güncelleştirme nedeniyle, uygulamanızın kullanılabilirliğinin kesintiye uğramasını önlemek için, BYOC 'yi destekleyen çeşitli Azure hizmetlerinin düzeltme bağlantıları için lütfen Azure Updates gönderimize bakın: https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
@@ -434,9 +434,9 @@ Hayır, AGIC eklentisi, Microsoft 'un eklentiyi otomatik olarak en son kararlı 
 
 Application Gateway üç günlük sağlar: 
 
-* **Applicationgatewayaccesslog**: erişim günlüğü, Application Gateway ön ucunda gönderilen her isteği içerir. Veriler çağıranın IP 'sini, istenen URL 'yi, yanıt gecikmesini, dönüş kodunu ve gelen ve giden baytları içerir. Her uygulama ağ geçidi için bir kayıt içerir.
-* **ApplicationGatewayPerformanceLog**: performans günlüğü her uygulama ağ geçidi için performans bilgilerini yakalar. Bilgiler bayt cinsinden aktarım hızını, sunulan toplam istek sayısını, başarısız istek sayısını, sağlıklı ve sağlıksız arka uç örnek sayısını içerir.
-* **Applicationgatewayfirewalllog**: WAF ile yapılandırdığınız uygulama ağ geçitleri için, güvenlik duvarı günlüğü, algılama modu ya da önleme modu aracılığıyla günlüğe kaydedilen istekleri içerir.
+* **Applicationgatewayaccesslog** : erişim günlüğü, Application Gateway ön ucunda gönderilen her isteği içerir. Veriler çağıranın IP 'sini, istenen URL 'yi, yanıt gecikmesini, dönüş kodunu ve gelen ve giden baytları içerir. Her uygulama ağ geçidi için bir kayıt içerir.
+* **ApplicationGatewayPerformanceLog** : performans günlüğü her uygulama ağ geçidi için performans bilgilerini yakalar. Bilgiler bayt cinsinden aktarım hızını, sunulan toplam istek sayısını, başarısız istek sayısını, sağlıklı ve sağlıksız arka uç örnek sayısını içerir.
+* **Applicationgatewayfirewalllog** : WAF ile yapılandırdığınız uygulama ağ geçitleri için, güvenlik duvarı günlüğü, algılama modu ya da önleme modu aracılığıyla günlüğe kaydedilen istekleri içerir.
 
 Tüm Günlükler her 60 saniyede toplanır. Daha fazla bilgi için bkz. [Application Gateway Için arka uç sistem durumu, tanılama günlükleri ve ölçümler](application-gateway-diagnostics.md).
 
@@ -472,6 +472,10 @@ Evet. Yapılandırmanız aşağıdaki senaryoda eşleşiyorsa NSG akış günlü
 - Application Gateway v2 'yi dağıttıysanız
 - Application Gateway alt ağında bir NSG var
 - NSG akış günlüklerini bu NSG 'de etkinleştirdiniz
+
+### <a name="does-application-gateway-store-customer-data"></a>Application Gateway müşteri verilerini mi depolumidir?
+
+Hayır, Application Gateway müşteri verilerini depolamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

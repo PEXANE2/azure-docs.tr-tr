@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 60b322cc0c1a50df7f8946fa1047bdc58ea92d77
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8afedec224fed55f617340af512485726ff44326
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488546"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792948"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Bant genişliği düşük olduğunda veya hiç olmadığında büyük veri kümeleri için veri aktarımı
  
@@ -51,8 +51,8 @@ Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
 |    **Veri türü**                    |    Azure Blobları                  |    Azure Blobları<br>Azure Dosyaları                    |    Azure Blobları<br>Azure Dosyaları            |    Azure Blobları<br>Azure Dosyaları          |
 |    **Form faktörü**                  |    sipariş başına 5 SSD             |    1 X 50-lbs. sipariş başına masaüstü boyutunda cihaz    |    1 X ~ 500-lbs. sipariş başına büyük cihaz    |    Sipariş başına en fazla 10 HDD/SSD        |
 |    **İlk kurulum saati**           |    Düşük <br>(15 dakika)            |    Düşük-orta <br> (<30 dakika)               |    Orta<br>(1-2 saat)               |    Orta-zor<br>değişken |
-|    **Verileri Azure 'a gönderme**           |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
-|    **Verileri Azure'dan dışarı aktarma**       |    Hayır                           |    Hayır                                            |    Hayır                                    |    Yes                                 |
+|    **Verileri Azure 'a gönderme**           |    Evet                          |    Evet                                           |    Evet                                   |    Evet                                 |
+|    **Verileri Azure'dan dışarı aktarma**       |    Hayır                           |    Hayır                                            |    Hayır                                    |    Evet                                 |
 |    **Şifreleme**                   |    AES 128 bit                  |    AES 256 bit                                   |    AES 256 bit                           |    AES 128 bit                         |
 |    **Donanım**                     |     Microsoft tarafından sağlanan          |    Microsoft tarafından sağlanan                            |    Microsoft tarafından sağlanan                    |    Müşteri sağlandı                   |
 |    **Ağ arabirimi**            |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA ıı/SATA ııı                    |
@@ -66,6 +66,6 @@ Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
 
 - Nasıl yapılacağını öğrenin
 
-    - [Data Box disk verileri aktarın](/azure/databox/data-box-disk-quickstart-portal).
-    - [Data Box verileri aktarın](/azure/databox/data-box-quickstart-portal).
-    - [İçeri/dışarı aktarma ile veri aktarma](/azure/storage/common/storage-import-export-data-to-blobs).
+    - [Data Box disk verileri aktarın](../../databox/data-box-disk-quickstart-portal.md).
+    - [Data Box verileri aktarın](../../databox/data-box-quickstart-portal.md).
+    - [İçeri/dışarı aktarma ile veri aktarma](./storage-import-export-data-to-blobs.md).

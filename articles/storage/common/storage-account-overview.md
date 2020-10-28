@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 429883a1bd9bc4df270e6a9f2965087fa3fba2dc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: fc44b7a49785a24460ea11f07e5248b266f5dfad
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488869"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793016"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
@@ -60,7 +60,7 @@ Genel amaçlı v1 depolama hesapları, tüm Azure depolama hizmetlerine erişim 
 
 - Uygulamalarınız işlem açısından yoğun veya önemli coğrafi çoğaltma bant genişliği kullanır, ancak büyük kapasiteye gerek kalmaz. Bu durumda, genel amaçlı v1 en ekonomik seçim olabilir.
 
-- 2014-02-14 'den önceki bir [depolama hizmetleri REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) veya 4. x sürümünden daha düşük bir sürüme sahip bir istemci kitaplığı kullanın. Uygulamanızı yükseltemezsiniz.
+- 2014-02-14 'den önceki bir [depolama hizmetleri REST API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) veya 4. x sürümünden daha düşük bir sürüme sahip bir istemci kitaplığı kullanın. Uygulamanızı yükseltemezsiniz.
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage hesapları
 
@@ -127,18 +127,18 @@ Depolama hesabınızdaki tüm veriler hizmet tarafında şifrelenir. Şifreleme 
 
 Depolama hesabı, Azure 'da verileriniz için benzersiz bir ad alanı sağlar. Azure Storage 'da depoladığınız her nesnenin benzersiz hesap adınızı içeren bir adresi vardır. Hesap adı ve Azure depolama hizmeti uç noktası birleşimi, depolama hesabınız için uç noktaları oluşturur.
 
-Örneğin, genel amaçlı depolama hesabınız *mystorageaccount*olarak adlandırılmışsa, bu hesaba ait varsayılan uç noktalar şunlardır:
+Örneğin, genel amaçlı depolama hesabınız *mystorageaccount* olarak adlandırılmışsa, bu hesaba ait varsayılan uç noktalar şunlardır:
 
 - BLOB depolama alanı: `https://*mystorageaccount*.blob.core.windows.net`
 - Tablo Depolama: `https://*mystorageaccount*.table.core.windows.net`
 - Kuyruk depolama: `https://*mystorageaccount*.queue.core.windows.net`
 - Azure dosyaları: `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage 2.: `https://*mystorageaccount*.dfs.core.windows.net` ( [büyük veriler için özel olarak Iyileştirilmiş ABFS sürücüsünü](/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)kullanır.)
+- Azure Data Lake Storage 2.: `https://*mystorageaccount*.dfs.core.windows.net` ( [büyük veriler için özel olarak Iyileştirilmiş ABFS sürücüsünü](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2)kullanır.)
 
 > [!NOTE]
 > Blok Blobu ve BLOB depolama hesapları yalnızca blob hizmeti uç noktasını kullanıma sunar.
 
-Depolama hesabındaki nesnenin konumunu uç noktaya ekleyerek bir depolama hesabındaki bir nesneye erişmek için URL oluşturun. Örneğin bir blob adresi şu biçimde olabilir: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
+Depolama hesabındaki nesnenin konumunu uç noktaya ekleyerek bir depolama hesabındaki bir nesneye erişmek için URL oluşturun. Örneğin bir blob adresi şu biçimde olabilir: http:// *mystorageaccount* .blob.core.windows.net/ *mycontainer*/*myblob* .
 
 Ayrıca, depolama hesabınızı Bloblar için özel bir etki alanı kullanacak şekilde yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure depolama hesabınız için özel etki alanı adı yapılandırma](../blobs/storage-custom-domain-name.md).  
 
@@ -167,7 +167,7 @@ Genel amaçlı v1 veya blob depolama hesabından genel amaçlı bir v2 hesabına
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy, verilerin Azure Storage’a ve Azure Storage’dan yüksek performansla kopyalanması için tasarlanmış bir Windows komut satırı yardımcı programıdır. AzCopy komutunu, mevcut bir genel amaçlı depolama hesabından bir BLOB depolama hesabına kopyalamak veya şirket içi depolama cihazlarından verileri karşıya yüklemek için kullanabilirsiniz. Daha fazla bilgi için bkz. [AzCopy Komut Satırı Yardımcı Programı ile Veri Aktarma](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+AzCopy, verilerin Azure Storage’a ve Azure Storage’dan yüksek performansla kopyalanması için tasarlanmış bir Windows komut satırı yardımcı programıdır. AzCopy komutunu, mevcut bir genel amaçlı depolama hesabından bir BLOB depolama hesabına kopyalamak veya şirket içi depolama cihazlarından verileri karşıya yüklemek için kullanabilirsiniz. Daha fazla bilgi için bkz. [AzCopy Komut Satırı Yardımcı Programı ile Veri Aktarma](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json).
 
 ### <a name="data-movement-library"></a>Veri hareketi kitaplığı
 

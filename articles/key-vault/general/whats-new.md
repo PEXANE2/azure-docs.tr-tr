@@ -9,16 +9,26 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2f128cc5c3b50356127fba97f4140294ce399300
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: dbbde397ab235068ea90280da721e3e3dc38866a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516945"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792370"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault yenilikler
 
 Azure Key Vault yenilikleri aşağıda verilmiştir. [Azure updates Key Vault kanalında](https://azure.microsoft.com/updates/?category=security&query=Key%20vault)yeni özellikler ve geliştirmeler de duyurulur.
+
+## <a name="october-2020"></a>Ekim 2020
+
+> [!WARNING]
+> Bu güncelleştirmelerin Azure Key Vault uygulamalarını etkilemesi mümkün değildir.
+
+[Varsayılan olarak geçici silme](#soft-delete-on-by-default)desteğini desteklemek Için Azure Key Vault PowerShell cmdlet 'lerinde iki değişiklik yapılmıştır:
+
+- [Update-Azkeykasasının](/powershell/module/az.keyvault/update-azkeyvault) disablesoftdelete ve enablesoftdelete parametreleri kullanım dışı bırakılmıştır.
+- [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret) cmdlet 'inin çıktısı artık özniteliğe sahip değil `SecretValueText` .
 
 ## <a name="july-2020"></a>Temmuz 2020
 
@@ -27,75 +37,11 @@ Azure Key Vault yenilikleri aşağıda verilmiştir. [Azure updates Key Vault ka
 
 ### <a name="soft-delete-on-by-default"></a>Varsayılan olarak geçici silme
 
-2020 sonuna kadar, geçici silme, hem yeni hem de önceden mevcut olan **tüm anahtar kasaları için varsayılan olarak açık olacaktır**. Bu potansiyel değişiklik hakkında tam ayrıntılar ve etkilenen anahtar kasalarını bulma ve önceden güncelleştirme adımları için, [tüm anahtar kasalarında geçici silme](soft-delete-change.md)makalesine bakın. 
+2020 sonuna kadar, geçici silme, hem yeni hem de önceden mevcut olan **tüm anahtar kasaları için varsayılan olarak açık olacaktır** . Bu potansiyel değişiklik hakkında tam ayrıntılar ve etkilenen anahtar kasalarını bulma ve önceden güncelleştirme adımları için, [tüm anahtar kasalarında geçici silme](soft-delete-change.md)makalesine bakın.
 
-### <a name="azure-tls-certificate-changes"></a>Azure TLS sertifikası değişiklikleri  
+### <a name="azure-tls-certificate-changes"></a>Azure TLS sertifikası değişiklikleri
 
-Microsoft, Azure hizmetlerini farklı bir kök sertifika yetkilisi (CA) kümesinden TLS sertifikaları kullanacak şekilde güncelleştiriyor. Geçerli CA sertifikaları [CA/tarayıcı Forum temel gereksinimlerinden biriyle uyumlu olmadığından](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)bu değişiklik yapılıyor.
-
-### <a name="when-will-this-change-happen"></a>Bu değişiklik ne zaman meydana gelir?
-
-- [Azure Active Directory](/azure/active-directory) (Azure AD) Hizmetleri, bu geçişe 7 Temmuz 2020 tarihinde başlamıştır.
-- Yeni oluşturulan tüm Azure TLS/SSL uç noktaları, yeni kök CA 'Lara zincirleme olan güncelleştirilmiş sertifikaları içerir.
-- Mevcut Azure uç noktaları, 13 Ağustos 2020 ' den itibaren aşamalı bir şekilde geçiş yapacaktır.
-- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) ve [DPS](/azure/iot-dps/) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. Tüm ayrıntılar için bkz. [Azure ıOT TLS gönderme: değişiklikler geliyor! (... ve neden dikkat etmeniz gerekir)](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
-- [Azure depolama](/azure/storage) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. Tüm ayrıntılar için bkz. [Azure Storage TLS gönderme: değişiklikler geliyor! (... ve neden dikkat etmeniz gerekir)](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
-
-> [!IMPORTANT]
-> Müşterilerin, Azure hizmetlerine bağlanmaya çalışırken bağlantı başarısızlıklarını engellemek için bu değişiklikten sonra uygulama (ler) i güncelleştirmeleri güncelleştirmesi gerekebilir.
-
-### <a name="what-is-changing"></a>Ne değişiyor?
-
-Bugün, Azure hizmetleri zinciri tarafından aşağıdaki kök CA 'ya kadar kullanılan TLS sertifikalarının çoğu bugün:
-
-| CA 'nın ortak adı | Parmak izi (SHA1) |
-|--|--|
-| [Baltimore Sitrust kökü](https://cacerts.digicert.com/BaltimoreCyberTrustRoot.crt) | d4de20d05e66fc53fe1a50882c78db2852cae474 |
-
-Azure hizmetleri tarafından kullanılan TLS sertifikaları aşağıdaki kök CA 'Lardan birine zincirlenir:
-
-| CA 'nın ortak adı | Parmak izi (SHA1) |
-|--|--|
-| [DigiCert genel kök G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt) | df3c24f9bfd666761b268073fe06d1cc8d4f82a4 |
-| [DigiCert genel kök CA 'sı](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) | a8985d3a65e5e5c4b2d7d66d40c6dd2fb19c5436 |
-| [Baltimore Sitrust kökü](https://cacerts.digicert.com/BaltimoreCyberTrustRoot.crt) | d4de20d05e66fc53fe1a50882c78db2852cae474 |
-| [D-TRUST kök sınıfı 3 CA 2 2009](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt) | 58e8abb0361533fb80f79b1b6d29d3ff8d5f00f0 |
-| [Microsoft RSA kök sertifika yetkilisi 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt) | 73a5e64a3bff8316ff0edccc618a906e4eae4d74 | 
-| [Microsoft ECC kök sertifika yetkilisi 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20ECC%20Root%20Certificate%20Authority%202017.crt) | 999a64c37ff47d9fab95f14769891460eec4c3c5 |
-
-### <a name="when-can-i-retire-the-old-intermediate-thumbprint"></a>Eski ara parmak izini devre dışı bırakabilirim?
-
-Geçerli CA sertifikaları 15 Şubat 2021 ' ye kadar *iptal edilmez.* Bu tarihten sonra, eski parmak izlerini kodınızdan kaldırabilirsiniz.
-
-Bu tarih değişirse, yeni iptal tarihi hakkında bildirim alırsınız.
-
-### <a name="will-this-change-affect-me"></a>Bu değişiklik beni etkiler mi? 
-
-**Azure müşterilerinin çoğu** etkilenmeyeceğini umuz.  Ancak, kabul edilebilir ca 'ların bir listesini açıkça belirtiyorsa uygulamanız etkilenebilir. Bu uygulama, sertifika sabitleme olarak bilinir.
-
-Uygulamanızın etkilenip etkilendiğinin algılanması için bazı yollar şunlardır:
-
-- Kaynak kodunuzda, bir Microsoft IT TLS CA 'sının parmak izi, ortak ad ve diğer CERT özellikleri için [burada](https://www.microsoft.com/pki/mscorp/cps/default.htm)bulunan bir arama yapın. Bir eşleşme varsa uygulamanız etkilenecektir. Bu sorunu çözmek için, kaynak kodu güncelleştirme yeni CA 'Ları içerir. En iyi uygulama olarak, CA 'Ların kısa bildirimde eklenebildiğinden veya düzenlenebildiğinden emin olun. Sektör düzenlemeleri, CA sertifikalarının yedi gün içinde değiştirilmesini gerektirir ve bu nedenle sabitleme ile ilgili olan müşterilerin da bir şekilde tepki sağlaması gerekir.
-
-- Azure API 'Leri veya diğer Azure hizmetleriyle tümleşen bir uygulamanız varsa ve sertifika sabitleme kullanıyorsa emin değilseniz, uygulama satıcısına danışın.
-
-- Azure hizmetleriyle iletişim kuran farklı işletim sistemleri ve dil çalışma zamanları, sertifika zincirini bu yeni köklerle doğru şekilde oluşturmak için ek adımlar gerektirebilir:
-    - **Linux**: birçok dağıtım,/etc/SSL/certsa CA eklemenizi gerektirir. Belirli yönergeler için dağıtım belgelerine bakın.
-    - **Java**: Java anahtar deposunun yukarıda listelenen CA 'ları içerdiğinden emin olun.
-    - **Bağlantısı kesilmiş ortamlarda çalışan Windows**: bağlantısı kesilmiş ortamlarda çalışan sistemlerin, güvenilen kök sertifika yetkilileri deposuna yeni köklerin ve ara sertifika yetkilileri deposuna eklenmiş olan hammaddeleri olması gerekir.
-    - **Android**: cihazınızın ve Android sürümünün belgelerini denetleyin.
-    - **Diğer donanım aygıtları, özellikle IoT**: cihaz üreticisine başvurun.
-
-- Güvenlik Duvarı kurallarının yalnızca belirli sertifika Iptal listesi (CRL) indirme ve/veya çevrimiçi sertifika durumu Protokolü (OCSP) doğrulama konumlarına giden çağrılara izin verecek şekilde ayarlandığı bir ortamınız varsa. Aşağıdaki CRL ve OCSP URL 'Lerine izin vermeniz gerekir:
-
-    - http://crl3&#46;d ıgicert&#46;com
-    - http://crl4&#46;d ıgicert&#46;com
-    - http://ocsp&#46;d ıgicert&#46;com
-    - http://www&#46;d güveni&#46;net
-    - http://root-c3-ca2-2009&#46; OCSP&#46;d-Trust&#46;net
-    - http://crl&#46; Microsoft&#46;com
-    - http://oneocsp&#46; Microsoft&#46;com
-    - http://ocsp&#46; msocsp&#46;com
+Microsoft, Azure hizmetlerini farklı bir kök sertifika yetkilisi (CA) kümesinden TLS sertifikaları kullanacak şekilde güncelleştiriyor. Geçerli CA sertifikaları CA/tarayıcı Forum temel gereksinimlerinden biriyle uyumlu olmadığından bu değişiklik yapılıyor.  Tüm ayrıntılar için bkz. [Azure TLS sertifikası değişiklikleri](../../security/fundamentals/tls-certificate-changes.md).
 
 ## <a name="june-2020"></a>Haziran 2020
 
@@ -112,7 +58,7 @@ Key Vault için Azure Izleyici artık önizlemededir.  Azure Izleyici, Key Vault
 ## <a name="2019"></a>2019
 
 - Yeni nesil Azure Key Vault SDK 'Ları sürümü. Kullanımları örnekleri için bkz. [Python](../secrets/quick-create-python.md), [.net](../secrets/quick-create-net.md), [Java](../secrets/quick-create-java.md)ve [Node.js](../secrets/quick-create-node.md) için Azure Key Vault gizli hızlı başlangıç
-- Anahtar Kasası sertifikalarını yönetmek için yeni Azure ilkeleri. [Key Vault Için Azure ilkesi yerleşik tanımlarına](../policy-samples.md)bakın.
+- Anahtar Kasası sertifikalarını yönetmek için yeni Azure ilkeleri. [Key Vault Için Azure ilkesi yerleşik tanımlarına](../policy-reference.md)bakın.
 - Azure Key Vault sanal makine uzantısı artık genel olarak kullanılabilir.  Bkz. Windows için [Linux için sanal makine uzantısı](../../virtual-machines/extensions/key-vault-linux.md) ve [Key Vault sanal makine uzantısı](../../virtual-machines/extensions/key-vault-windows.md)Key Vault.
 - Azure Key Vault için olay odaklı gizli dizi yönetimi artık Azure Event Grid sunulmaktadır. Daha fazla bilgi için bkz. [Azure Key Vault olaylar için Event Grid şeması] (.. /.. /Event-Grid/Event-Schema-Key-Vault.exe) ve [Azure Event Grid ile Anahtar Kasası bildirimlerini nasıl alabileceğinizi ve yanıtlayacağınızı](event-grid-tutorial.md)öğrenin.
 
@@ -120,7 +66,7 @@ Key Vault için Azure Izleyici artık önizlemededir.  Azure Izleyici, Key Vault
 
 Bu yıldan yayınlanan yeni özellikler ve tümleştirmeler:
 
-- Azure Işlevleri ile tümleştirme. Anahtar Kasası işlemlerine yönelik [Azure işlevleri](../../azure-functions/index.yml) ile ilgili örnek bir senaryo için bkz. [gizli dizi döndürmesini otomatikleştirme](../secrets/tutorial-rotation.md). 
+- Azure Işlevleri ile tümleştirme. Anahtar Kasası işlemlerine yönelik [Azure işlevleri](../../azure-functions/index.yml) ile ilgili örnek bir senaryo için bkz. [gizli dizi döndürmesini otomatikleştirme](../secrets/tutorial-rotation.md).
 - [Azure Databricks Ile tümleştirme](/azure/databricks/scenarios/store-secrets-azure-key-vault). Bu, Azure Databricks artık iki tür gizli kapsam desteklemektedir: Azure Key Vault-desteklenen ve Databricks-desteklenen. Daha fazla bilgi için bkz. [Azure Key Vault ile desteklenen gizli dizi kapsamı oluşturma](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)
 - [Azure Key Vault Için sanal ağ hizmeti uç noktaları](overview-vnet-service-endpoints.md).
 
@@ -128,39 +74,39 @@ Bu yıldan yayınlanan yeni özellikler ve tümleştirmeler:
 
 Bu yıl yayımlanan yeni özellikler:
 
-- Yönetilen depolama hesabı anahtarları. Depolama hesabı anahtarları özelliği, Azure depolama ile daha kolay tümleştirme ekledi. Daha fazla bilgi için bkz. genel bakış konusu, [yönetilen depolama hesabı anahtarlarına genel bakış](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys).
-- Geçici silme. Geçici silme özelliği, Anahtar kasaları ve Anahtar Kasası nesnelerinizin veri korumasını geliştirir. Daha fazla bilgi için bkz. genel bakış konusu, [geçici silme genel bakış](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).
+- Yönetilen depolama hesabı anahtarları. Depolama hesabı anahtarları özelliği, Azure depolama ile daha kolay tümleştirme ekledi. Daha fazla bilgi için bkz. genel bakış konusu, [yönetilen depolama hesabı anahtarlarına genel bakış](../secrets/overview-storage-keys.md).
+- Geçici silme. Geçici silme özelliği, Anahtar kasaları ve Anahtar Kasası nesnelerinizin veri korumasını geliştirir. Daha fazla bilgi için bkz. genel bakış konusu, [geçici silme genel bakış](./soft-delete-overview.md).
 
 ## <a name="2015"></a>2015
 
 Bu yıl yayımlanan yeni özellikler:
 - Sertifika yönetimi. 26 Eylül 2016 tarihinde GA sürüm 2015-06-01 ' e bir özellik olarak eklenmiştir.
 
-Genel kullanılabilirlik (sürüm 2015-06-01), 24 Haziran 2015 tarihinde duyuruldu. Bu sürümde aşağıdaki değişiklikler yapılmıştır: 
+Genel kullanılabilirlik (sürüm 2015-06-01), 24 Haziran 2015 tarihinde duyuruldu. Bu sürümde aşağıdaki değişiklikler yapılmıştır:
 - Anahtar "Use" alanını silme kaldırıldı.
 - Anahtar "kullanım" alanı kaldırılmış şekilde bilgi alın.
 - "Use" alanı kaldırılmış bir anahtarı içeri aktarın.
-- Anahtar "kullanım" alanı kaldırılmış şekilde geri yükleyin.     
-- RSA algoritmaları için "RSA_OAEP", "RSA-OAEP" olarak değiştirildi. [Anahtarlar, gizli diziler ve sertifikalar hakkında](about-keys-secrets-certificates.md)bilgi için bkz..    
- 
-İkinci önizleme sürümü (sürüm 2015-02-01-Önizleme), 20 Nisan 2015 ' de duyuruldu. Daha fazla bilgi için bkz. [REST API Update](https://docs.microsoft.com/archive/blogs/kv/rest-api-update) blog gönderisi. Aşağıdaki görevler güncelleştirildi:
- 
+- Anahtar "kullanım" alanı kaldırılmış şekilde geri yükleyin.
+- RSA algoritmaları için "RSA_OAEP", "RSA-OAEP" olarak değiştirildi. [Anahtarlar, gizli diziler ve sertifikalar hakkında](about-keys-secrets-certificates.md)bilgi için bkz..
+
+İkinci önizleme sürümü (sürüm 2015-02-01-Önizleme), 20 Nisan 2015 ' de duyuruldu. Daha fazla bilgi için bkz. [REST API Update](/archive/blogs/kv/rest-api-update) blog gönderisi. Aşağıdaki görevler güncelleştirildi:
+
 - Anahtara kasaya eklenen ve işleme için bir sayfalama desteği olan anahtarları listeleyin.
-- Anahtarın sürümlerini listelemek için anahtar ekleme işleminin sürümlerini listeleyin.  
+- Anahtarın sürümlerini listelemek için anahtar ekleme işleminin sürümlerini listeleyin.
 - Kasalardan oluşan bir sayfalama desteğiyle gizli dizileri listeleyin.
-- Gizli dizi sürümlerini listelemek için gizli-ekleme işleminin sürümlerini listeleyin.  
-- Tüm işlemler-özniteliklere oluşturulan/güncellenen zaman damgaları eklendi.  
+- Gizli dizi sürümlerini listelemek için gizli-ekleme işleminin sürümlerini listeleyin.
+- Tüm işlemler-özniteliklere oluşturulan/güncellenen zaman damgaları eklendi.
 - Gizli dizileri için gizli bir Içerik türü oluşturun.
 - İsteğe bağlı bilgiler olarak anahtar eklenmiş etiketler oluşturun.
 - İsteğe bağlı bilgiler olarak gizli eklenen Etiketler oluşturun.
 - Anahtar eklenmiş bir etiketi isteğe bağlı bilgiler olarak güncelleştirin.
 - Gizli eklenen bir etiketi isteğe bağlı bilgiler olarak güncelleştirin.
-- 10 K ile 25 K bayt arasındaki gizli dizileri için maksimum boyut değişti. [Anahtarlar, gizli diziler ve sertifikalar hakkında](about-keys-secrets-certificates.md)bilgi için bkz..    
+- 10 K ile 25 K bayt arasındaki gizli dizileri için maksimum boyut değişti. [Anahtarlar, gizli diziler ve sertifikalar hakkında](about-keys-secrets-certificates.md)bilgi için bkz..
 
 ## <a name="2014"></a>2014
- 
-İlk önizleme sürümü (sürüm 2014-12-08-önizleme), 8 Ocak 2015 tarihinde duyuruldu.  
+
+İlk önizleme sürümü (sürüm 2014-12-08-önizleme), 8 Ocak 2015 tarihinde duyuruldu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başka sorularınız varsa lütfen [destek](https://azure.microsoft.com/support/options/)aracılığıyla bizimle iletişim kurun.  
+Başka sorularınız varsa lütfen [destek](https://azure.microsoft.com/support/options/)aracılığıyla bizimle iletişim kurun.

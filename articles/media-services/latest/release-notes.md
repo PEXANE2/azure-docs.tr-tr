@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4a741834637900ec0c78105790bac2453d759e2f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514495"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791605"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -46,6 +46,16 @@ Ses analizi önceden ayarı artık temel mod fiyatlandırma katmanını içerir.
 Dizin Oluşturucu v1 ve Dizin Oluşturucu v2 kullanan müşteriler temel ses analizi hazır ayarı 'na geçiş yapılmalıdır.
 
 Temel ses Çözümleyicisi modu hakkında daha fazla bilgi için bkz. [video ve ses dosyalarını çözümleme](analyzing-video-audio-files-concept.md).  Temel ses çözümleyici modunu REST API kullanmayı öğrenmek için bkz. [temel ses dönüşümü oluşturma](how-to-create-basic-audio-transform.md).
+
+## <a name="live-events"></a>Canlı Etkinlikler
+
+Canlı olaylar durdurulduğunda çoğu özelliğe yönelik güncelleştirmelere artık izin verilir. Ayrıca, kullanıcıların canlı etkinliğin giriş ve önizleme URL 'Leri için statik ana bilgisayar adı için bir önek belirtmesinin izni vardır. VanityUrl artık `useStaticHostName` özelliğin amacını daha iyi yansıtacak şekilde çağırılır.
+
+Canlı olaylar artık bekleme durumuna sahiptir.  [Media Services 'Da canlı olaylara ve canlı çıkışlara](https://docs.microsoft.com/azure/media-services/latest/live-events-outputs-concept)bakın.
+
+Canlı bir olay, çeşitli giriş en boy oranlarını almayı destekler. Esnetme modu, müşterilerin çıkış için uzatma davranışını belirlemesine izin verir.
+
+Canlı kodlama artık 0,5 ile 20 saniye arasında sabit anahtar kare aralığı parçalarının çıktısını almak için özellik ekler.
 
 ## <a name="august-2020"></a>Ağustos 2020
 
@@ -99,7 +109,7 @@ Azure Media Player belgeleri [Azure belgelerine](../azure-media-player/azure-med
 
 ### <a name="azure-government-cloud-updates"></a>Azure Kamu bulut güncelleştirmeleri
 
-Media Services şu Azure Kamu bölgelerinde: *Usgov Arizona* ve *Usgov Texas*.
+Media Services şu Azure Kamu bölgelerinde: *Usgov Arizona* ve *Usgov Texas* .
 
 ## <a name="december-2019"></a>Aralık 2019
 
@@ -163,7 +173,7 @@ Media Services v3, canlı etkinliklerin canlı doğrusal kodlamasının 24 saat 
 
 #### <a name="deprecation-of-media-processors"></a>Medya işlemcilerinin kullanımdan kaldırılması
 
-*Azure Media Indexer* ve *Azure Media Indexer 2 Preview*kullanım dışı olarak duyuruluyoruz. Kullanımdan kaldırma tarihleri için,  [eski bileşenler](../previous/legacy-components.md) makalesine bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) bu eski medya işlemcilerinin yerini alır.
+*Azure Media Indexer* ve *Azure Media Indexer 2 Preview* kullanım dışı olarak duyuruluyoruz. Kullanımdan kaldırma tarihleri için,  [eski bileşenler](../previous/legacy-components.md) makalesine bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) bu eski medya işlemcilerinin yerini alır.
 
 Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](../previous/migrate-indexer-v1-v2.md)konusuna bakın.
 
@@ -227,7 +237,7 @@ Media Services artık Kore Orta ve Kore Güney bölgelerinde kullanılabilir.
 
 Daha fazla bilgi için bkz. [Media Services v3 'nin bulunduğu bulutlar ve bölgeler](azure-clouds-regions.md).
 
-### <a name="performance-improvements"></a>Performans geliştirmeleri
+### <a name="performance-improvements"></a>Performans iyileştirmeleri
 
 Media Services performans iyileştirmeleri içeren güncelleştirmeler eklendi.
 
@@ -265,10 +275,10 @@ MPı dosyasını değiştirmemelisiniz veya kaldırmamalıdır ya da bu tür bir
 
 V3 API 'sinin GA sürümündeki güncelleştirmeler şunlardır:
        
-* **Varlık filtreleri** ve **hesap filtreleri**için **presentationtimerange** özellikleri artık ' gerekli ' değildir. 
+* **Varlık filtreleri** ve **hesap filtreleri** için **presentationtimerange** özellikleri artık ' gerekli ' değildir. 
 * **İşler** ve **dönüşümler** için $top ve $Skip sorgu seçenekleri kaldırılmıştır ve $OrderBy eklenmiştir. Yeni sıralama işlevinin eklenmesinin bir parçası olarak, $top ve $skip seçeneklerinin, uygulanmamasına rağmen daha önce daha önce açığa çıkmıştı.
 * Numaralandırma genişletilebilirliği yeniden etkinleştirildi. Bu özellik SDK 'nın önizleme sürümlerinde etkinleştirilmiştir ve GA sürümünde yanlışlıkla devre dışı bırakıldı.
-* Önceden tanımlanmış iki akış ilkesi yeniden adlandırıldı. **Securestreaming** artık **Multidrmcencstreaming**. **SecureStreamingWithFairPlay** artık **Predefined_MultiDrmStreaming**.
+* Önceden tanımlanmış iki akış ilkesi yeniden adlandırıldı. **Securestreaming** artık **Multidrmcencstreaming** . **SecureStreamingWithFairPlay** artık **Predefined_MultiDrmStreaming** .
 
 ## <a name="november-2018"></a>Kasım 2018
 

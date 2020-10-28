@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 99a038b23eb0978b6e1d8a65b061c2f744852def
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1f71c01d53a89ce1b459826689eb5b2e4899b3a2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126815"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886796"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Dağıtılan bir Iletişim Hizmetleri kaynağı. [Iletişim Hizmetleri kaynağı oluşturun](../../create-communication-resource.md).
@@ -114,11 +114,21 @@ Call groupCall = callAgent.call(participants, startCallOptions);
 > Şu anda yalnızca bir giden yerel video akışı, bir video ile çağrı yerleştirmek Için desteklenir ve API 'yi kullanarak yerel kameraları listeleyebilirsiniz `deviceManager` `getCameraList` .
 İstenen bir kamerayı seçtikten sonra bir `LocalVideoStream` örnek oluşturmak ve dizideki bir öğe olarak bir yönteme geçirmek için onu kullanın `videoOptions` `localVideoStream` `call` .
 Çağrı bağlandıktan sonra, seçili kameradan diğer katılımcılara otomatik olarak bir video akışı göndermeye başlar.
+
+> [!NOTE]
+> Gizlilik kaygıları nedeniyle, yerel olarak önizlenmediğinden video çağrıya paylaşılmaz.
+Daha fazla bilgi için bkz. [yerel kamera önizlemesi](#local-camera-preview) .
 ```java
 Context appContext = this.getApplicationContext();
 VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
 LocalVideoStream currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
 VideoOptions videoOptions = new VideoOptions(currentVideoStream);
+
+// Render a local preview of video so the user knows that their video is being shared
+Renderer previewRenderer = new Renderer(currentVideoStream, appContext);
+View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+// Attach the uiView to a viewable location on the app at this point
+layout.addView(uiView);
 
 CommunicationUser[] participants = new CommunicationUser[]{ new CommunicationUser("<acs user id>") };
 StartCallOptions startCallOptions = new StartCallOptions();
@@ -141,7 +151,7 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 ### <a name="overview"></a>Genel Bakış
 Mobil anında iletme bildirimleri, mobil cihazlarda gördüğünüz açılır bildirimlerdir. Çağırmak için VoIP (Internet Protokolü üzerinden ses) anında iletme bildirimleri üzerine odaklanacağız. Anında iletme bildirimleri için kaydolacağız, anında iletme bildirimlerini işleyecek ve sonra anında iletme bildirimlerinin kaydını sileceğiz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Bulut mesajlaşma (FCM) ile birlikte ayarlanmış bir Firebase hesabı ve Azure Notification Hub örneğine bağlı olan Firebase bulut mesajlaşma hizmeti. Daha fazla bilgi için bkz. [Iletişim Hizmetleri bildirimleri](https://docs.microsoft.com/azure/communication-services/concepts/notifications) .
 Ayrıca öğreticide, uygulamanızı derlemek için Android Studio sürüm 3,6 veya üstünü kullandığınızı varsaymaktadır.
@@ -607,9 +617,9 @@ currentVideoStream = new LocalVideoStream(videoDevice, appContext);
 videoOptions = new VideoOptions(currentVideoStream);
 
 Renderer previewRenderer = new Renderer(currentVideoStream, appContext);
-View uiView previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
 
-// Attach the renderingSurface to a viewable location on the app at this point
+// Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
 ```
 

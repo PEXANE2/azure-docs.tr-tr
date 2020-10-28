@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 24c850b9a5302fd0ac684df6e6f1cc319118a75d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 294adce3dc312003d72336bd0752ba3aba5eaace
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488529"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792863"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy ve BLOB Storage ile veri aktarma
 
@@ -363,7 +363,7 @@ Bir yerel dosya sisteminin içeriğini bir blob kapsayıcısı ile eşzamanlı h
 `--delete-destination` `true` AzCopy bayrağını, bir istem sağlamadan dosyaları siler olarak ayarlarsanız. AzCopy bir dosyayı silmesinden önce bir istem görünmesini istiyorsanız, `--delete-destination` bayrağını olarak ayarlayın `prompt` .
 
 > [!NOTE]
-> Yanlışlıkla silinmeleri engellemek için, bayrağını kullanmadan önce [geçici silme](/azure/storage/blobs/storage-blob-soft-delete) özelliğini etkinleştirdiğinizden emin olun `--delete-destination=prompt|true` .
+> Yanlışlıkla silinmeleri engellemek için, bayrağını kullanmadan önce [geçici silme](../blobs/soft-delete-blob-overview.md) özelliğini etkinleştirdiğinizden emin olun `--delete-destination=prompt|true` .
 
 > [!TIP]
 > İsteğe bağlı bayraklar kullanarak eşitleme işleminizi ince ayar yapabilirsiniz. İşte birkaç örnek.

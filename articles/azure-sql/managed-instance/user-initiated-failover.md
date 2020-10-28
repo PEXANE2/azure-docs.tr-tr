@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 3be0695c20eafb71564211d1168bc59813f8800a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebf36c99e6c4dd636c41086d4c72fd6761f6d5ca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617766"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791639"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL yönetilen örneği üzerinde kullanıcı tarafından başlatılan el ile yük devretme
 
@@ -46,7 +46,7 @@ Yük devretmeyi başlatan kullanıcının aşağıdaki RBAC rollerinden birine s
 - Aşağıdaki izne sahip özel rol:
   - `Microsoft.Sql/managedInstances/failover/action`
 
-### <a name="using-powershell"></a>PowerShell’i kullanma
+### <a name="using-powershell"></a>PowerShell'i kullanma
 
 En az az. SQL sürümünün [v 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0)olması gerekir. Her zaman en son PowerShell sürümü bulunan Azure portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanmayı göz önünde bulundurun. 
 
@@ -62,7 +62,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subscription
 ```
 
-Birincil düğümün yük devretmesini başlatmak için aşağıdaki örnekle birlikte [Invoke-Azsqlınstancefailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) PowerShell komutunu kullanın.
+Birincil düğümün yük devretmesini başlatmak için aşağıdaki örnekle birlikte [Invoke-Azsqlınstancefailover](/powershell/module/az.sql/invoke-azsqlinstancefailover) PowerShell komutunu kullanın.
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -96,7 +96,7 @@ az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableS
 
 ### <a name="using-rest-api"></a>Rest API'yi kullanma
 
-Sürekli test işlem hattı veya otomatik performans mitigators uygulama amacıyla SQL tarafından yönetilen örneklerinin yük devretmesini otomatik hale getirmesi gerekebilecek ileri düzey kullanıcılar için, bu işlev bir API çağrısıyla yük devretme başlatılmasına göre gerçekleştirilebilir. Ayrıntılar için bkz. [yönetilen örnekler-yük devretme REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) .
+Sürekli test işlem hattı veya otomatik performans mitigators uygulama amacıyla SQL tarafından yönetilen örneklerinin yük devretmesini otomatik hale getirmesi gerekebilecek ileri düzey kullanıcılar için, bu işlev bir API çağrısıyla yük devretme başlatılmasına göre gerçekleştirilebilir. Ayrıntılar için bkz. [yönetilen örnekler-yük devretme REST API](/rest/api/sql/managed%20instances%20-%20failover/failover) .
 
 REST API çağrısı kullanarak yük devretmeyi başlatmak için önce tercih ettiğiniz API istemcisini kullanarak kimlik doğrulama belirtecini oluşturun. Oluşturulan kimlik doğrulama belirteci, API isteği üstbilgisinde Authorization özelliği olarak kullanılır ve zorunludur.
 
@@ -140,7 +140,7 @@ Daha önce BC için gösterilen GP hizmet katmanıyla aynı çıktıyı göremez
 
 > [!IMPORTANT]
 > Kullanıcı tarafından başlatılan el ile yük devretmenin işlevsel sınırlamaları şunlardır:
-> - Her **30 dakikada**bir yönetilen örnek üzerinde bir (1) yük devretme başlatılmış olabilir.
+> - Her **30 dakikada** bir yönetilen örnek üzerinde bir (1) yük devretme başlatılmış olabilir.
 > - BC örnekleri için, yük devretme isteğinin kabul edilmesi için mevcut çoğaltmaların çekirdeği olması gerekir.
 > - BC örnekleri için, hangi okunabilir ikincil çoğaltmanın üzerinde yük devretmeyi başlatacağını belirtmek mümkün değildir.
 

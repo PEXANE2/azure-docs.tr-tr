@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840498"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792608"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek uygulama performansını artırmak için toplu işlem kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Bu makalenin ilk bölümü, Azure SQL veritabanı veya Azure SQL yönetilen örn
 ### <a name="note-about-timing-results-in-this-article"></a>Bu makaledeki zamanlama sonuçları hakkında bilgi alın
 
 > [!NOTE]
-> Sonuçlar kıyaslamalar değildir ancak **göreli performansı**göstermek için tasarlanmıştır. Zamanlamalar, en az 10 test çalıştırmalarının ortalamasını temel alır. İşlemler boş bir tabloya eklenir. Bu sınamalar önceden V12 ölçülmüş ve yeni [DTU hizmeti katmanlarını](database/service-tiers-dtu.md) veya [Vcore hizmeti katmanlarını](database/service-tiers-vcore.md)kullanarak bir V12 veritabanında karşılaşabileceğiniz aktarım hızına karşılık gelmez. Toplu işleme tekniğinin göreli avantajı benzer olmalıdır.
+> Sonuçlar kıyaslamalar değildir ancak **göreli performansı** göstermek için tasarlanmıştır. Zamanlamalar, en az 10 test çalıştırmalarının ortalamasını temel alır. İşlemler boş bir tabloya eklenir. Bu sınamalar önceden V12 ölçülmüş ve yeni [DTU hizmeti katmanlarını](database/service-tiers-dtu.md) veya [Vcore hizmeti katmanlarını](database/service-tiers-vcore.md)kullanarak bir V12 veritabanında karşılaşabileceğiniz aktarım hızına karşılık gelmez. Toplu işleme tekniğinin göreli avantajı benzer olmalıdır.
 
 ### <a name="transactions"></a>İşlemler
 
@@ -93,11 +93,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-İşlemler aslında bu örneklerin her ikisinde de kullanılır. İlk örnekte, her bir çağrı örtük bir işlemdir. İkinci örnekte, açık bir işlem tüm çağrıları sarmalar. [Yazma öncesi işlem günlüğü](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)için belge başına, işlem tamamlandığında günlük kayıtları diske silinir. Bu nedenle, bir işleme daha fazla çağrı dahil ederek işlem günlüğüne yazma işlemi, işlem kaydedilene kadar geciktirebilirler. Aslında, sunucunun işlem günlüğüne yazma işlemleri için toplu işleme etkinleştiriliyor.
+İşlemler aslında bu örneklerin her ikisinde de kullanılır. İlk örnekte, her bir çağrı örtük bir işlemdir. İkinci örnekte, açık bir işlem tüm çağrıları sarmalar. [Yazma öncesi işlem günlüğü](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)için belge başına, işlem tamamlandığında günlük kayıtları diske silinir. Bu nedenle, bir işleme daha fazla çağrı dahil ederek işlem günlüğüne yazma işlemi, işlem kaydedilene kadar geciktirebilirler. Aslında, sunucunun işlem günlüğüne yazma işlemleri için toplu işleme etkinleştiriliyor.
 
 Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, ve işlemleri olmadan aynı sıralı eklemeleri gerçekleştirdi. Daha fazla bakış için, ilk test kümesi bir dizüstü bilgisayardan Microsoft Azure içindeki veritabanına uzaktan çalışır. İkinci test kümesi, her ikisi de aynı Microsoft Azure veri merkezi (Batı ABD) içinde yer alan bir bulut hizmetinden ve veritabanından çalışır. Aşağıdaki tabloda, işlemleri ile ve olmayan sıralı ekleme süresinin milisaniye cinsinden gösterilmektedir.
 
-**Şirket Içinden Azure 'a**:
+**Şirket Içinden Azure 'a** :
 
 | İşlemler | İşlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
@@ -106,7 +106,7 @@ Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, 
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure 'Dan Azure 'a (aynı veri merkezi)**:
+**Azure 'Dan Azure 'a (aynı veri merkezi)** :
 
 | İşlemler | İşlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
@@ -120,7 +120,7 @@ Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, 
 
 Önceki test sonuçlarına bağlı olarak, bir işlemdeki tek bir işlemin sarmalanması performansı düşürür. Ancak, tek bir işlem içindeki işlem sayısını artırdıkça, performans iyileştirmesi daha fazla işaretlenmiş olur. Performans farkı, Microsoft Azure veri merkezinde tüm işlemler gerçekleştiğinde da daha belirgin bir şekilde görülür. Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nin Microsoft Azure veri merkezi dışından kullanmanın gecikme süresi, işlemleri kullanmanın performans kazanmasına neden olacak şekilde artar.
 
-İşlemlerin kullanımı performansı artırabilir, ancak [işlemler ve bağlantılar için en iyi yöntemleri gözlemlemeye](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105))devam edin. İşlemi mümkün olduğunca kısa tutun ve iş tamamlandıktan sonra veritabanı bağlantısını kapatın. Önceki örnekteki using deyimleri, sonraki kod bloğu tamamlandığında bağlantının kapalı olmasını sağlar.
+İşlemlerin kullanımı performansı artırabilir, ancak [işlemler ve bağlantılar için en iyi yöntemleri gözlemlemeye](/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105))devam edin. İşlemi mümkün olduğunca kısa tutun ve iş tamamlandıktan sonra veritabanı bağlantısını kapatın. Önceki örnekteki using deyimleri, sonraki kod bloğu tamamlandığında bağlantının kapalı olmasını sağlar.
 
 Önceki örnekte, iki satırlık herhangi bir ADO.NET koduna yerel bir işlem ekleyebileceğinizi gösterir. İşlemler sıralı ekleme, güncelleştirme ve silme işlemleri yapan kodun performansını artırmanın hızlı bir yolunu sunar. Bununla birlikte, en hızlı performans için, tablo değerli parametreler gibi istemci tarafı toplu işlem avantajlarından faydalanmak için kodu daha fazla değiştirmeyi göz önünde bulundurun.
 
@@ -128,7 +128,7 @@ ADO.NET içindeki işlemler hakkında daha fazla bilgi için bkz. [ADO.net Için
 
 ### <a name="table-valued-parameters"></a>Tablo değerli parametreler
 
-Tablo değerli parametreler, Kullanıcı tanımlı tablo türlerini Transact-SQL deyimleriyle, saklı yordamlarda ve işlevlerde parametre olarak destekler. Bu istemci tarafı toplu işleme tekniği, tablo değerli parametre içinde birden fazla veri satırı göndermenizi sağlar. Tablo değerli parametreleri kullanmak için önce bir tablo türü tanımlayın. Aşağıdaki Transact-SQL beyanı, **Mytabletype**adlı bir tablo türü oluşturur.
+Tablo değerli parametreler, Kullanıcı tanımlı tablo türlerini Transact-SQL deyimleriyle, saklı yordamlarda ve işlevlerde parametre olarak destekler. Bu istemci tarafı toplu işleme tekniği, tablo değerli parametre içinde birden fazla veri satırı göndermenizi sağlar. Tablo değerli parametreleri kullanmak için önce bir tablo türü tanımlayın. Aşağıdaki Transact-SQL beyanı, **Mytabletype** adlı bir tablo türü oluşturur.
 
 ```sql
     CREATE TYPE MyTableType AS TABLE
@@ -169,7 +169,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Önceki örnekte, **SqlCommand** nesnesi tablo değerli bir parametre olan ** \@ testtvp**öğesinden satır ekler. Önceden oluşturulan **DataTable** nesnesi, **SqlCommand. Parameters. Add** yöntemiyle bu parametreye atanır. Eklemeleri tek bir çağrıda toplu olarak işleme, sıralı eklemelerin performansını önemli ölçüde artırır.
+Önceki örnekte, **SqlCommand** nesnesi tablo değerli bir parametre olan **\@ testtvp** öğesinden satır ekler. Önceden oluşturulan **DataTable** nesnesi, **SqlCommand. Parameters. Add** yöntemiyle bu parametreye atanır. Eklemeleri tek bir çağrıda toplu olarak işleme, sıralı eklemelerin performansını önemli ölçüde artırır.
 
 Önceki örneği daha da geliştirmek için metin tabanlı komut yerine bir saklı yordam kullanın. Aşağıdaki Transact-SQL komutu, **Simpletesttabletype** tablo değerli parametresini alan bir saklı yordam oluşturur.
 
@@ -212,7 +212,7 @@ Tablo değerli parametreler hakkında daha fazla bilgi için bkz. [tablo değerl
 
 ### <a name="sql-bulk-copy"></a>SQL toplu kopyalama
 
-SQL toplu kopyalama, bir hedef veritabanına büyük miktarlarda veri eklemenin başka bir yoludur. .NET uygulamaları toplu ekleme işlemleri gerçekleştirmek için **SqlBulkCopy** sınıfını kullanabilir. **SqlBulkCopy** işlevi, komut satırı aracına, **Bcp.exe**veya Transact-SQL bildirimine benzer **bulk INSERT**. Aşağıdaki kod örneği, kaynak **DataTable**, tablosundaki satırların, myTable hedef tablosuna nasıl toplu şekilde kopyalanacağını gösterir.
+SQL toplu kopyalama, bir hedef veritabanına büyük miktarlarda veri eklemenin başka bir yoludur. .NET uygulamaları toplu ekleme işlemleri gerçekleştirmek için **SqlBulkCopy** sınıfını kullanabilir. **SqlBulkCopy** işlevi, komut satırı aracına, **Bcp.exe** veya Transact-SQL bildirimine benzer **bulk INSERT** . Aşağıdaki kod örneği, kaynak **DataTable** , tablosundaki satırların, myTable hedef tablosuna nasıl toplu şekilde kopyalanacağını gösterir.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -293,7 +293,7 @@ Bu yaklaşım 100 satırdan az olan toplu işlemler için biraz daha hızlı ola
 
 ### <a name="entity-framework"></a>Varlık Çerçevesi
 
-[Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) toplu işlemeyi destekler.
+[Entity Framework Core](/ef/efcore-and-ef6/#saving-data) toplu işlemeyi destekler.
 
 ### <a name="xml"></a>XML
 
@@ -380,7 +380,7 @@ Toplu işleme için belirgin aday olan bazı senaryolar olsa da, Gecikmeli işle
 
 Örneğin, her kullanıcının gezinti geçmişini izleyen bir Web uygulaması düşünün. Her sayfa isteğinde, uygulama, kullanıcının sayfa görünümünü kaydetmek için bir veritabanı çağrısı yapabilir. Ancak daha yüksek performans ve ölçeklenebilirlik, kullanıcıların gezinti etkinliklerinin arabelleğe alınması ve sonra bu verilerin veritabanına toplu işlem halinde gönderilmesi ile elde edilebilir. Veritabanı güncelleştirmesini geçen süre ve/veya arabellek boyutuna göre tetikleyebilirsiniz. Örneğin, bir kural, toplu işin 20 saniye sonra veya arabelleğin 1000 öğeye ulaştığında işlenmesi gerektiğini belirtebilir.
 
-Aşağıdaki kod örneği, bir izleme sınıfı tarafından oluşturulan arabelleğe alınmış olayları işlemek için [reaktif uzantıları-RX](https://docs.microsoft.com/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) kullanır. Arabellek dolguları veya zaman aşımı ulaşıldığında, Kullanıcı verisi toplu işi veritabanına tablo değerli bir parametre ile gönderilir.
+Aşağıdaki kod örneği, bir izleme sınıfı tarafından oluşturulan arabelleğe alınmış olayları işlemek için [reaktif uzantıları-RX](/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) kullanır. Arabellek dolguları veya zaman aşımı ulaşıldığında, Kullanıcı verisi toplu işi veritabanına tablo değerli bir parametre ile gönderilir.
 
 Aşağıdaki Navgeçmişini veri sınıfı kullanıcı Gezinti ayrıntılarını modeller. Kullanıcı tanımlayıcısı, erişilen URL ve erişim zamanı gibi temel bilgileri içerir.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: e44fe44285a6693583c1b16645ad0d023428c72b
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: dd7c5da84d6330e0214404f55aad9487c71b0a29
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494669"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792438"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -25,7 +25,7 @@ Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti 
 > * Kaynakları temizleme
 > * Sonraki adımlar
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici, kurulum ve proje çalışması için komut satırını kullanır. Bu nedenle, alýþtýrmalar üzerinde gezinmek için herhangi bir kod düzenleyicisini kullanabilirsiniz.
 
@@ -41,11 +41,11 @@ Başlamak için gerekenler:
 
 Azure dijital TWINS örneğiniz ile çalışmaya hazırsanız, istemci uygulama projesini ayarlamaya başlayın. 
 
-Makinenizde bir komut istemi veya başka bir konsol penceresi açın ve bu öğreticide işlerinizi depolamak istediğiniz boş bir proje dizini oluşturun. Dizine istediğiniz her şeyi adlandırın (örneğin, *Digitaltwınscodeöğreticisi*).
+Makinenizde bir komut istemi veya başka bir konsol penceresi açın ve bu öğreticide işlerinizi depolamak istediğiniz boş bir proje dizini oluşturun. Dizine istediğiniz her şeyi adlandırın (örneğin, *Digitaltwınscodeöğreticisi* ).
 
 Yeni dizine gidin.
 
-Proje dizininde bir kez, boş bir .NET konsol uygulaması projesi oluşturun. Konsol için en az C# projesi oluşturmak üzere komut penceresinde aşağıdaki komutu çalıştırın:
+Proje dizininde bir kez, **boş bir .NET konsol uygulaması projesi oluşturun** . Komut penceresinde, konsol için en az C# projesi oluşturmak üzere aşağıdaki komutu çalıştırabilirsiniz:
 
 ```cmd/sh
 dotnet new console
@@ -53,16 +53,11 @@ dotnet new console
 
 Bu, kodunuzun büyük bir kısmını yazacağınız bir *program.cs* dahil olmak üzere, dizininiz içinde birkaç dosya oluşturur.
 
-Ardından, Azure dijital TWINS ile çalışmak için gereken iki bağımlılığı ekleyin:
-
-```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity
-```
-
-İlk bağımlılık [.net Için Azure Digital TWINS SDK 'sına](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)sahiptir. İkinci bağımlılık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
-
 Öğreticinin tamamında kullanmaya devam edebileceksiniz, komut penceresini açık tutun.
+
+Ardından, projenize Azure dijital TWINS ile çalışmak için gerekli olacak **iki bağımlılık ekleyin** . Aşağıdaki bağlantıları kullanarak, her birinin en son sürümünü projenize eklemek için konsol komutlarının (.NET CLı için de dahil olmak üzere) bulabileceğiniz NuGet üzerindeki paketlere gidebilirsiniz.
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Bu paket, [.net Için Azure Digital TWINS SDK 'sına](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)yöneliktir. 
+* [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Bu kitaplık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
 
 ## <a name="get-started-with-project-code"></a>Proje kodu ile çalışmaya başlama
 
@@ -108,7 +103,7 @@ Uygulamanızın yapması gereken ilk şey, Azure dijital TWINS hizmetinde kimlik
 
 Kimlik doğrulamak için, Azure dijital TWINS örneğinizin *ana bilgisayar adına* ihtiyacınız vardır.
 
-*Program.cs*' de, aşağıdaki kodu "Hello, World!" altına yapıştırın yöntemdeki çıktı satırı `Main` . Değerini `adtInstanceUrl` Azure Digital TWINS örneğiniz *ana bilgisayar adına*ayarlayın.
+*Program.cs* ' de, aşağıdaki kodu "Hello, World!" altına yapıştırın yöntemdeki çıktı satırı `Main` . Değerini `adtInstanceUrl` Azure Digital TWINS örneğiniz *ana bilgisayar adına* ayarlayın.
 
 ```csharp
 string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
@@ -126,16 +121,16 @@ dotnet run
 ```
 
 Bu işlem, ilk çalıştırmada bağımlılıkları geri yükler ve ardından programı yürütür. 
-* Bir hata oluşursa, program *oluşturulan hizmet istemcisini Yazdır-başlamaya hazırlanın*.
+* Bir hata oluşursa, program *oluşturulan hizmet istemcisini Yazdır-başlamaya hazırlanın* .
 * Bu projede henüz herhangi bir hata işleme olmadığından, bir şey yanlış olursa kod tarafından oluşturulan bir özel durum görürsünüz.
 
 ### <a name="upload-a-model"></a>Bir modeli karşıya yükleyin
 
-Azure dijital TWINS 'in hiç iç etki alanı sözlüğü yok. Ortamınızdaki Azure dijital TWINS 'de temsil ettiğiniz öğelerin türleri, **modeller**kullanılarak sizin tarafınızdan tanımlanır. [Modeller](concepts-models.md) , nesne odaklı programlama dillerinde sınıflarla benzerdir; Bunlar, daha sonra izlemek ve örneklendirilecek [dijital TWINS](concepts-twins-graph.md) için Kullanıcı tanımlı şablonlar sağlar. Bunlar, **dijital TWINS tanım dili (DTDL)** adlı JSON benzeri bir dilde yazılır.
+Azure dijital TWINS 'in hiç iç etki alanı sözlüğü yok. Ortamınızdaki Azure dijital TWINS 'de temsil ettiğiniz öğelerin türleri, **modeller** kullanılarak sizin tarafınızdan tanımlanır. [Modeller](concepts-models.md) , nesne odaklı programlama dillerinde sınıflarla benzerdir; Bunlar, daha sonra izlemek ve örneklendirilecek [dijital TWINS](concepts-twins-graph.md) için Kullanıcı tanımlı şablonlar sağlar. Bunlar, **dijital TWINS tanım dili (DTDL)** adlı JSON benzeri bir dilde yazılır.
 
 Azure dijital TWINS çözümü oluşturmanın ilk adımı, bir DTDL dosyasında en az bir model tanımlıyor.
 
-Projenizi oluşturduğunuz dizinde, *üzerindeSampleModel.js*adlı yeni bir *. JSON* dosyası oluşturun. Aşağıdaki dosya gövdesine yapıştırın: 
+Projenizi oluşturduğunuz dizinde, *üzerindeSampleModel.js* adlı yeni bir *. JSON* dosyası oluşturun. Aşağıdaki dosya gövdesine yapıştırın: 
 
 ```json
 {
@@ -158,7 +153,7 @@ Projenizi oluşturduğunuz dizinde, *üzerindeSampleModel.js*adlı yeni bir *. J
 ```
 
 > [!TIP]
-> Bu öğretici için Visual Studio kullanıyorsanız, yeni oluşturulan JSON dosyasını seçmek ve Özellik denetçisindeki *Çıkış Dizinine Kopyala* özelliğini, *daha yeniyse* veya *her zaman*kopyalamak üzere ayarlamak isteyebilirsiniz. Bu, öğreticinin geri kalanı sırasında program 'yu **F5** ile çalıştırdığınızda, Visual Studio 'nun varsayılan yol ile json dosyasını bulmasını sağlayacaktır.
+> Bu öğretici için Visual Studio kullanıyorsanız, yeni oluşturulan JSON dosyasını seçmek ve Özellik denetçisindeki *Çıkış Dizinine Kopyala* özelliğini, *daha yeniyse* veya *her zaman* kopyalamak üzere ayarlamak isteyebilirsiniz. Bu, öğreticinin geri kalanı sırasında program 'yu **F5** ile çalıştırdığınızda, Visual Studio 'nun varsayılan yol ile json dosyasını bulmasını sağlayacaktır.
 
 > [!TIP] 
 > DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](/samples/azure-samples/dtdl-validator/dtdl-validator) vardır. Bu, [*nasıl yapılır: modellerinizi ayrıştırma ve doğrulama*](how-to-parse-models.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
@@ -263,7 +258,7 @@ Bu noktadan itibaren öğreticide, try/catch işleyicilerindeki hizmet yöntemle
 
 ### <a name="create-digital-twins"></a>Dijital TWINS oluşturma
 
-Azure dijital TWINS 'e bir model yüklediğinize göre, bu model tanımını **dijital TWINS**oluşturmak için kullanabilirsiniz. [Dijital TWINS](concepts-twins-graph.md) , bir modelin örnekleridir ve iş ortamınızdaki varlıkları, bir gruptaki sensörlerden, binadaki odaların veya bir otomobilde ışıkların bulunduğu şeyleri temsil eder. Bu bölümde, daha önce karşıya yüklediğiniz modele göre birkaç dijital TWINS oluşturulur.
+Azure dijital TWINS 'e bir model yüklediğinize göre, bu model tanımını **dijital TWINS** oluşturmak için kullanabilirsiniz. [Dijital TWINS](concepts-twins-graph.md) , bir modelin örnekleridir ve iş ortamınızdaki varlıkları, bir gruptaki sensörlerden, binadaki odaların veya bir otomobilde ışıkların bulunduğu şeyleri temsil eder. Bu bölümde, daha önce karşıya yüklediğiniz modele göre birkaç dijital TWINS oluşturulur.
 
 `using`Bu yeni deyimleri en üste ekleyin; Bu kod örneği içinde yerleşik .net JSON serileştiricisini `System.Text.Json` ve `Serialization` [.net Için Azure Digital Twins SDK (C#) için](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) ad ALANıNı kullanır [önizleme için değiştirilen bağlantı]:
 
@@ -304,7 +299,7 @@ TWINS, ilk çalıştırmadan sonra zaten mevcut olsa bile, ikinci kez oluşturul
 
 ### <a name="create-relationships"></a>İlişki oluştur
 
-Daha sonra, oluşturduğunuz TWINS arasında **ilişkiler** oluşturarak bunları bir **ikizi grafiğine**bağlayabilirsiniz. [İkizi grafikleri](concepts-twins-graph.md) , tüm ortamınızı temsil etmek için kullanılır.
+Daha sonra, oluşturduğunuz TWINS arasında **ilişkiler** oluşturarak bunları bir **ikizi grafiğine** bağlayabilirsiniz. [İkizi grafikleri](concepts-twins-graph.md) , tüm ortamınızı temsil etmek için kullanılır.
 
 Bu kod örneği, ilişki oluşturma konusunda yardımcı olmak için `Azure.DigitalTwins.Core.Serialization` ad alanını kullanır. Bunu, [*dijital TWINS oluşturma*](#create-digital-twins) bölümünde daha önce projeye eklediniz.
 

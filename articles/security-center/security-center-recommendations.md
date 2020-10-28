@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: f3fb31dc7db4808db83f33abdf14179265d147f9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c0952e0f267f9c2511a2e80fa7106958d8dd0ee5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425192"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791894"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik önerileri 
 Bu konu başlığı altında, Azure Güvenlik Merkezi 'nde Azure kaynaklarınızı korumanıza yardımcı olan önerilerin nasıl görüntüleneceği ve anlayabileceği açıklanmaktadır.
@@ -77,8 +77,8 @@ Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için kaynakların
 
 Bu belgede, güvenlik merkezi 'nde güvenlik önerilerine sunulmuştur. İlgili bilgiler için:
 
-- [Önerileri](security-center-remediate-recommendations.md) düzeltme — Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
+- [Önerileri düzeltin](security-center-remediate-recommendations.md)-Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
 - [Zorla/reddetme önerilerini kullanarak yanlış yapılandırma yapılmasını engelleyin](prevent-misconfigurations.md).
-- [Önerilere verilen yanıtları otomatikleştirme](workflow-automation.md)
+- [Güvenlik Merkezi tetikleyicilerine yönelik yanıtları otomatikleştirin](workflow-automation.md)--önerilerin yanıtlarını otomatikleştirin
 - [Kaynağı öneriden muaf tutma](exempt-resource.md)
 - [Güvenlik önerileri - başvuru kılavuzu](recommendations-reference.md)

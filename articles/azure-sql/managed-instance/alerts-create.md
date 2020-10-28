@@ -11,14 +11,14 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: dbf5c06adcddb5b3dfa3cdf2e0127f8a36c59885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5a2336728d4507544fa621961c2f346746c2bb9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620112"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792659"
 ---
-# <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Azure SQL yönetilen örneği için Azure portal kullanarak uyarı oluşturma
+# <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Azure portalı kullanarak Azure SQL Yönetilen Örneği için uyarılar oluşturma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Bu makalede, Azure SQL yönetilen örnek veritabanındaki veritabanları için Azure portal kullanarak nasıl uyarı ayarlanacağı gösterilmektedir. Uyarılar; örnek depolama boyutu veya CPU kullanımı gibi belirli bir ölçümün önceden tanımlanmış olan eşiğe ulaşması durumunda size e-posta gönderebilir, bir web kancasını çağırabilir, bir Azure İşlevi yürütebilir, runbook çalıştırabilir, ITSM uyumlu bir dış bilet sistemini çağırabilir, sizi arayabilir veya SMS gönderebilir. Bu makale, uyarı dönemlerini ayarlamaya yönelik en iyi yöntemleri de sağlar.
@@ -145,5 +145,5 @@ Var olan uyarıları görüntülemek, askıya almak, etkinleştirmek, değiştir
 * Azure Izleyici uyarı sistemi hakkında bilgi edinin, bkz. [Microsoft Azure uyarılara genel bakış](../../azure-monitor/platform/alerts-overview.md)
 * Ölçüm uyarıları hakkında daha fazla bilgi için bkz. [ölçüm uyarılarının Azure izleyici 'de nasıl çalıştığını anlama](../../azure-monitor/platform/alerts-metric-overview.md)
 * Uyarılarda bir Web kancası yapılandırma hakkında bilgi edinin, bkz. [Klasik bir ölçüm uyarısı ile Web kancası çağırma](../../azure-monitor/platform/alerts-webhooks.md)
-* PowerShell kullanarak uyarıları yapılandırma ve yönetme hakkında bilgi edinin, bkz. [Eylem kuralları](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)
-* API kullanarak uyarıları yapılandırma ve yönetme hakkında bilgi edinmek için bkz. [Azure izleyici REST API başvurusu](https://docs.microsoft.com/rest/api/monitor/) 
+* PowerShell kullanarak uyarıları yapılandırma ve yönetme hakkında bilgi edinin, bkz. [Eylem kuralları](/powershell/module/az.monitor/add-azmetricalertrulev2)
+* API kullanarak uyarıları yapılandırma ve yönetme hakkında bilgi edinmek için bkz. [Azure izleyici REST API başvurusu](/rest/api/monitor/)

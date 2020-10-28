@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: 265b99fb985602604eefee27d722b4dc8d7593a8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 99528d1575056917b68bcb38f41a24d065822827
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970393"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792812"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM'ler için Zamanlanan Olaylar
 
@@ -154,6 +154,10 @@ Her olay, gelecekte olay türüne göre en az bir süre zamanlanır. Bu zaman, b
 
 > [!NOTE] 
 > Azure, bazı durumlarda ana bilgisayar başarısızlığını düşürülmüş bir donanım nedeniyle tahmin edebilir ve bir geçiş zamanlayarak hizmetinize olan kesintiyi azaltmaya çalışacaktır. Etkilenen sanal makineler, `NotBefore` genellikle gelecekte birkaç gün olan zamanlanmış bir olay alır. Gerçek süre, tahmin edilen hata riski değerlendirmesine bağlı olarak farklılık gösterir. Azure, mümkün olduğunda 7 gün daha kısa bir bildirimde bulunmaya çalışır, ancak tahmin, donanım arızalanmaya yönelik yüksek bir şansınız olması durumunda gerçek zaman değişir ve daha küçük olabilir. Sistemin sistem tarafından başlatılan geçişten önce başarısız olması durumunda hizmetinize yönelik riski en aza indirmek için, sanal makinenizi mümkün olan en kısa sürede otomatik olarak yeniden dağıtmanız önerilir.
+
+### <a name="polling-frequency"></a>Yoklama sıklığı
+
+Güncelleştirme için uç noktayı istediğiniz sıklıkta veya daha seyrek olarak yoklayabilmeniz gerekir. Ancak, istekler arasındaki süre ne kadar uzun zaman, yaklaşan bir olaya tepki vermek için büyük olasılıkla daha fazla zaman kaybı olabilir. Çoğu olay yaklaşık olarak 5 ila 15 dakikalık bir bildirimde bulunabilir, ancak bazı durumlarda öncelikli bir uyarı 30 saniye olabilir. Azaltıcı işlemleri gerçekleştirmek için mümkün olduğunca çok zaman olduğundan emin olmak için, hizmeti saniyede bir kez yoklamenizi öneririz.
 
 ### <a name="start-an-event"></a>Olay başlatma 
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d67046f799e60db3101dfeb27dee10f92f9aad79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0454e7bcc81c71cdffcddcd859bb6d335cc8aef2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052435"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791826"
 ---
 # <a name="repairing-an-import-job"></a>Bir içeri aktarma işini onarma
 Microsoft Azure İçeri/Dışarı Aktarma hizmeti, bazı dosyalarınızı veya bir dosyanın bazı bölümlerini Windows Azure Blob hizmetine kopyalayamayabilir. Hatalar şunlardan kaynaklanabilir:  
@@ -28,19 +28,19 @@ Microsoft Azure İçeri/Dışarı Aktarma aracını içeri aktarma işinin kopya
   
 ## <a name="repairimport-parameters"></a>Repairımport parametreleri
 
-Aşağıdaki parametreler **Repairımport**ile belirtilebilir: 
+Aşağıdaki parametreler **Repairımport** ile belirtilebilir: 
   
 |||  
 |-|-|  
-|**/r:**<repairFile\>|**Gerekli.** Onarımın ilerlemesini izleyen ve kesilen bir onarımı sürdürmeye devam etmenizi sağlayan onarım dosyasının yolu. Her sürücünün bir ve yalnızca bir onarım dosyası olmalıdır. Belirli bir sürücü için onarım başlattığınızda, yolu henüz mevcut olmayan bir onarım dosyasına geçirin. Kesilen bir onarımın sürdürülmesi için, var olan bir onarım dosyasının adını geçirmeniz gerekir. Her zaman hedef sürücüye karşılık gelen onarım dosyasını belirtin.|  
-|**/logdir:**<LogDirectory\>|**Seçim.** Günlük dizini. Ayrıntılı günlük dosyaları bu dizine yazılır. Günlük dizini belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|  
-|**/d:**<targetdizinler\>|**Gerekli.** İçeri aktarılan özgün dosyaları içeren bir veya daha fazla noktalı virgülle ayrılmış dizin. İçeri aktarma sürücüsü de kullanılabilir, ancak özgün dosyaların alternatif konumları varsa gerekli değildir.|  
-|**/BK:**<BitLockerKey\>|**Seçim.** Aracın, özgün dosyaların kullanılabildiği şifreli bir sürücünün kilidini açmak istiyorsanız BitLocker anahtarını belirtin.|  
-|**/sn:**<storageAccountName\>|**Gerekli.** İçeri aktarma işinin depolama hesabının adı.|  
-|**/SK:**<StorageAccountKey\>|Yalnızca bir kapsayıcı SAS belirtilmemişse **gereklidir** . İçeri aktarma işi için depolama hesabının hesap anahtarı.|  
-|**/csas:**<containersas\>|Yalnızca depolama hesabı anahtarı belirtilmemişse **gereklidir** . İçeri aktarma işiyle ilişkili bloblara erişmek için kapsayıcı SAS.|  
-|**/CopyLogFile:**<DriveCopyLogFile\>|**Gerekli.** Sürücü kopyalama günlük dosyasının yolu (ayrıntılı günlük veya hata günlüğü). Dosya, Windows Azure Içeri/dışarı aktarma hizmeti tarafından oluşturulur ve işle ilişkili blob depolamadan indirilebilir. Kopyalama günlük dosyası, başarısız Bloblar veya dosyalar hakkında onarılabilecek bilgiler içerir.|  
-|**/Pathmapfile:**<DrivePathMapFile\>|**Seçim.** Aynı işte içeri aktardığınız aynı ada sahip birden çok dosyanız varsa, belirsizlikleri çözümlemek için kullanılan bir metin dosyasının yolu. Araç ilk kez çalıştırıldığında, bu dosyayı tüm belirsiz adlarla doldurabilir. Daha sonra aracın çalıştırmaları, belirsizlikleri çözümlemek için bu dosyayı kullanır.|  
+|**/r:** <repairFile\>|**Gerekli.** Onarımın ilerlemesini izleyen ve kesilen bir onarımı sürdürmeye devam etmenizi sağlayan onarım dosyasının yolu. Her sürücünün bir ve yalnızca bir onarım dosyası olmalıdır. Belirli bir sürücü için onarım başlattığınızda, yolu henüz mevcut olmayan bir onarım dosyasına geçirin. Kesilen bir onarımın sürdürülmesi için, var olan bir onarım dosyasının adını geçirmeniz gerekir. Her zaman hedef sürücüye karşılık gelen onarım dosyasını belirtin.|  
+|**/logdir:** <LogDirectory\>|**Seçim.** Günlük dizini. Ayrıntılı günlük dosyaları bu dizine yazılır. Günlük dizini belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|  
+|**/d:** <targetdizinler\>|**Gerekli.** İçeri aktarılan özgün dosyaları içeren bir veya daha fazla noktalı virgülle ayrılmış dizin. İçeri aktarma sürücüsü de kullanılabilir, ancak özgün dosyaların alternatif konumları varsa gerekli değildir.|  
+|**/BK:** <BitLockerKey\>|**Seçim.** Aracın, özgün dosyaların kullanılabildiği şifreli bir sürücünün kilidini açmak istiyorsanız BitLocker anahtarını belirtin.|  
+|**/sn:** <storageAccountName\>|**Gerekli.** İçeri aktarma işinin depolama hesabının adı.|  
+|**/SK:** <StorageAccountKey\>|Yalnızca bir kapsayıcı SAS belirtilmemişse **gereklidir** . İçeri aktarma işi için depolama hesabının hesap anahtarı.|  
+|**/csas:** <containersas\>|Yalnızca depolama hesabı anahtarı belirtilmemişse **gereklidir** . İçeri aktarma işiyle ilişkili bloblara erişmek için kapsayıcı SAS.|  
+|**/CopyLogFile:** <DriveCopyLogFile\>|**Gerekli.** Sürücü kopyalama günlük dosyasının yolu (ayrıntılı günlük veya hata günlüğü). Dosya, Windows Azure Içeri/dışarı aktarma hizmeti tarafından oluşturulur ve işle ilişkili blob depolamadan indirilebilir. Kopyalama günlük dosyası, başarısız Bloblar veya dosyalar hakkında onarılabilecek bilgiler içerir.|  
+|**/Pathmapfile:** <DrivePathMapFile\>|**Seçim.** Aynı işte içeri aktardığınız aynı ada sahip birden çok dosyanız varsa, belirsizlikleri çözümlemek için kullanılan bir metin dosyasının yolu. Araç ilk kez çalıştırıldığında, bu dosyayı tüm belirsiz adlarla doldurabilir. Daha sonra aracın çalıştırmaları, belirsizlikleri çözümlemek için bu dosyayı kullanır.|  
   
 ## <a name="using-the-repairimport-command"></a>Repairımport komutunu kullanma  
 Verileri ağ üzerinden akışa alarak içeri aktarma verilerini onarmak için, parametresini kullanarak içe aktardığınız özgün dosyaları içeren dizinleri belirtmeniz gerekir `/d` . Depolama hesabınızdan indirdiğiniz kopyalama günlük dosyasını da belirtin. Kısmi hatalarla bir içeri aktarma işini onarmak için tipik bir komut satırı şöyle görünür:  
@@ -100,6 +100,6 @@ Gerekli dosyaları araç için kullanılabilir hale getirdikten veya yol haritas
 ## <a name="next-steps"></a>Sonraki adımlar
  
 * [Azure Içeri/dışarı aktarma aracı 'nı ayarlama](storage-import-export-tool-setup-v1.md)   
-* [Sabit sürücüleri içeri aktarma işine hazırlama](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Sabit sürücüleri içeri aktarma işine hazırlama](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
 * [Kopyalama günlük dosyalarıyla iş durumunu gözden geçirme](storage-import-export-tool-reviewing-job-status-v1.md)   
-* [Bir dışarı aktarma işini onarma](../storage-import-export-tool-repairing-an-export-job-v1.md)
+* [Bir dışarı aktarma işini onarma](./storage-import-export-tool-repairing-an-export-job-v1.md)

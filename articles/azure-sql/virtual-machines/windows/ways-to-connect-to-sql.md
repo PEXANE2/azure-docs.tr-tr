@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 26052441d19abb6a0c423a3b3d6f6c2d21478814
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8bee990074debf09cc9bfd19f96470a029b50c9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272071"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793135"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure 'da SQL Server sanal makinesine bağlanma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ Hem sağlama hem de bağlantı konusunda tam bir anlatım olmasını istiyorsan�
 
 İstemcinin bir SQL Server VM bağlanma şekli, istemcinin konumuna ve ağ yapılandırmasına bağlı olarak farklılık gösterir.
 
-Azure portal SQL Server VM sağlarsanız, **SQL bağlantısı**türünü belirtme seçeneğiniz vardır.
+Azure portal SQL Server VM sağlarsanız, **SQL bağlantısı** türünü belirtme seçeneğiniz vardır.
 
 ![Sağlama sırasında genel SQL bağlantısı seçeneği](./media/ways-to-connect-to-sql/sql-vm-portal-connectivity.png)
 
@@ -41,8 +41,8 @@ Bağlantı seçenekleriniz şunlardır:
 
 | Seçenek | Açıklama |
 |---|---|
-| **Geneldir** | İnternet üzerinden SQL Server 'e bağlanın. |
-| **Özelleştirme** | Aynı sanal ağda SQL Server bağlanın. |
+| **Genel** | İnternet üzerinden SQL Server 'e bağlanın. |
+| **Özel** | Aynı sanal ağda SQL Server bağlanın. |
 | **Yerel** | Aynı sanal makinede yerel olarak SQL Server bağlantı. | 
 
 Aşağıdaki bölümlerde **ortak** ve **özel** seçenekler daha ayrıntılı açıklanmıştır.
@@ -65,7 +65,7 @@ SQL Server veritabanı altyapısına internet 'ten bağlanmak istiyorsanız, sa�
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
 ```
 
-Bu dize Internet üzerinden istemciler için bağlantıya izin verse de, bu, herkesin SQL Server örneğine bağlanabildiği anlamına gelmez. Dış istemciler, doğru Kullanıcı adını ve parolayı kullanmalıdır. Bununla birlikte, ek güvenlik için, bilinen 1433 numaralı bağlantı noktasından kaçınabilirsiniz. Örneğin, bağlantı noktası 1500 ' i dinlemek için SQL Server yapılandırmak ve uygun güvenlik duvarı ve ağ güvenlik grubu kuralları oluşturmak için, bağlantı noktası numarasını sunucu adına ekleyerek bağlanabilirsiniz. Aşağıdaki örnek, sunucu adına **1500**, özel bir bağlantı noktası numarası ekleyerek öncekini değiştirir:
+Bu dize Internet üzerinden istemciler için bağlantıya izin verse de, bu, herkesin SQL Server örneğine bağlanabildiği anlamına gelmez. Dış istemciler, doğru Kullanıcı adını ve parolayı kullanmalıdır. Bununla birlikte, ek güvenlik için, bilinen 1433 numaralı bağlantı noktasından kaçınabilirsiniz. Örneğin, bağlantı noktası 1500 ' i dinlemek için SQL Server yapılandırmak ve uygun güvenlik duvarı ve ağ güvenlik grubu kuralları oluşturmak için, bağlantı noktası numarasını sunucu adına ekleyerek bağlanabilirsiniz. Aşağıdaki örnek, sunucu adına **1500** , özel bir bağlantı noktası numarası ekleyerek öncekini değiştirir:
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
@@ -76,7 +76,7 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 
 ## <a name="connect-to-sql-server-within-a-virtual-network"></a>Bir sanal ağ içinde SQL Server bağlanma
 
-Portalda **SQL bağlantı** türü için **özel** ' i seçtiğinizde, Azure ayarların çoğunu **ortak**ile aynı şekilde yapılandırır. Bunun farkı, SQL Server bağlantı noktasında dış trafiğe izin veren bir ağ güvenlik grubu kuralı olmaması (varsayılan 1433).
+Portalda **SQL bağlantı** türü için **özel** ' i seçtiğinizde, Azure ayarların çoğunu **ortak** ile aynı şekilde yapılandırır. Bunun farkı, SQL Server bağlantı noktasında dış trafiğe izin veren bir ağ güvenlik grubu kuralı olmaması (varsayılan 1433).
 
 > [!IMPORTANT]
 > SQL Server Developer ve Express sürümleri için sanal makine görüntüleri TCP/IP protokolünü otomatik olarak etkinleştirmez. Geliştirici ve Express sürümleri için, VM 'yi oluşturduktan sonra [TCP/IP protokolünü el ile etkinleştirmek](#manualtcp) üzere SQL Server Yapılandırma Yöneticisi kullanmanız gerekir.
@@ -97,11 +97,11 @@ Server=mysqlvm;Integrated Security=true
 
 Azure portal SQL Server sanal makinenizin bağlantı ayarlarını değiştirebilirsiniz.
 
-1. Azure portal, **SQL sanal makineler**' i seçin.
+1. Azure portal, **SQL sanal makineler** ' i seçin.
 
 2. SQL Server VM seçin.
 
-3. **Ayarlar**altında **güvenlik**' i seçin.
+3. **Ayarlar** altında **güvenlik** ' i seçin.
 
 4. **SQL bağlantı düzeyini** gerekli ayarınızla değiştirin. İsteğe bağlı olarak, SQL Server bağlantı noktasını veya SQL kimlik doğrulaması ayarlarını değiştirmek için bu alanı kullanabilirsiniz.
 
@@ -119,7 +119,7 @@ SQL Server bağlantı ayarlarını değiştirirken Azure, SQL Server Developer v
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
-Sonra TCP/IP protokolünü **SQL Server Yapılandırma Yöneticisi**etkinleştirin.
+Sonra TCP/IP protokolünü **SQL Server Yapılandırma Yöneticisi** etkinleştirin.
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
@@ -138,9 +138,9 @@ Aşağıdaki tabloda, Azure VM 'de SQL Server bağlanma gereksinimleri listelenm
 | Gereksinim | Açıklama |
 |---|---|
 | [SQL Server kimlik doğrulama modunu etkinleştir](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | Sanal ağ üzerinde Active Directory yapılandırmadığınız takdirde VM 'ye uzaktan bağlanmak için SQL Server kimlik doğrulaması gerekir. |
-| [SQL oturum açma oluştur](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | SQL kimlik doğrulaması kullanıyorsanız, hedef veritabanınıza yönelik izinlere de sahip olan bir Kullanıcı adı ve parolayla SQL oturum açma gerekir. |
+| [SQL oturum açma oluştur](/sql/relational-databases/security/authentication-access/create-a-login) | SQL kimlik doğrulaması kullanıyorsanız, hedef veritabanınıza yönelik izinlere de sahip olan bir Kullanıcı adı ve parolayla SQL oturum açma gerekir. |
 | [TCP/IP protokolünü etkinleştir](#manualtcp) | SQL Server TCP üzerinden bağlantılara izin vermelidir. |
-| [SQL Server bağlantı noktası için güvenlik duvarı kuralını etkinleştir](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | VM 'deki güvenlik duvarı SQL Server bağlantı noktasında gelen trafiğe izin vermelidir (varsayılan 1433). |
+| [SQL Server bağlantı noktası için güvenlik duvarı kuralını etkinleştir](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | VM 'deki güvenlik duvarı SQL Server bağlantı noktasında gelen trafiğe izin vermelidir (varsayılan 1433). |
 | [TCP 1433 için bir ağ güvenlik grubu kuralı oluşturma](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) | Internet üzerinden bağlanmak istiyorsanız, VM 'nin SQL Server bağlantı noktasında trafik almasına izin vermelisiniz (varsayılan 1433). Yalnızca yerel ve sanal ağ bağlantılarında bu için gerekli değildir. Azure portal için gereken tek adım budur. |
 
 > [!TIP]

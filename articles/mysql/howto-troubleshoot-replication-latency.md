@@ -6,15 +6,17 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 10/08/2020
-ms.openlocfilehash: cb02b29c100da7b8d63f214acc78906a757344c0
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.date: 10/25/2020
+ms.openlocfilehash: af82b9e2feee3e03d2a0703d771c68b67ddd08c9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096105"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791588"
 ---
-# <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda çoğaltma gecikmesi sorunlarını giderme
+# <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda çoğaltma gecikmesi sorununu giderme
+
+[!INCLUDE[applies-to-single-flexible-server](./includes/applies-to-single-flexible-server.md)]
 
 [Çoğaltma oku](concepts-read-replicas.md) özelliği, bir MySQL Için Azure veritabanı sunucusu sunucusundan salt bir çoğaltma sunucusuna veri çoğaltmanıza olanak sağlar. Okuma ve raporlama sorgularını uygulamadan çoğaltma sunucularına yönlendirerek iş yüklerini ölçekleyebilirsiniz. Bu kurulum, kaynak sunucu üzerindeki basıncı azaltır. Ayrıca, ölçeklendirilirken uygulamanın genel performansını ve gecikme süresini geliştirir. 
 
@@ -31,9 +33,9 @@ Bu makalede, MySQL için Azure veritabanı 'nda çoğaltma gecikmesini nasıl gi
 
 ## <a name="replication-concepts"></a>Çoğaltma kavramları
 
-İkili günlük etkinleştirildiğinde, kaynak sunucu kaydedilmiş işlemleri ikili günlüğe yazar. İkili günlük çoğaltma için kullanılır. 16 TB 'a kadar depolamayı destekleyen yeni sağlanan tüm sunucular için varsayılan olarak açıktır. Çoğaltma sunucularında, her çoğaltma sunucusunda iki iş parçacığı çalışır. Bir iş parçacığı *GÇ iş parçacığıdır*ve diğeri *SQL iş parçacığıdır*:
+İkili günlük etkinleştirildiğinde, kaynak sunucu kaydedilmiş işlemleri ikili günlüğe yazar. İkili günlük çoğaltma için kullanılır. 16 TB 'a kadar depolamayı destekleyen yeni sağlanan tüm sunucular için varsayılan olarak açıktır. Çoğaltma sunucularında, her çoğaltma sunucusunda iki iş parçacığı çalışır. Bir iş parçacığı *GÇ iş parçacığıdır* ve diğeri *SQL iş parçacığıdır* :
 
-- GÇ iş parçacığı kaynak sunucuya bağlanır ve ikili günlükleri güncelleştirilmiş olarak ister. Bu iş parçacığı ikili günlük güncelleştirmelerini alır. Bu güncelleştirmeler bir çoğaltma sunucusuna, *geçiş günlüğü*adlı yerel bir günlüğe kaydedilir.
+- GÇ iş parçacığı kaynak sunucuya bağlanır ve ikili günlükleri güncelleştirilmiş olarak ister. Bu iş parçacığı ikili günlük güncelleştirmelerini alır. Bu güncelleştirmeler bir çoğaltma sunucusuna, *geçiş günlüğü* adlı yerel bir günlüğe kaydedilir.
 - SQL iş parçacığı geçiş günlüğünü okur ve sonra veri değişikliklerini çoğaltma sunucularında uygular.
 
 ## <a name="monitoring-replication-latency"></a>İzleme çoğaltma gecikmesi

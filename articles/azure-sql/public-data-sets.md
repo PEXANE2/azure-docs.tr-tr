@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 30f6bf7629152050bc1249a1e22aff0aa30642de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e836a175b45c6fca46f9c76760e1cbaef305a47
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88209532"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792591"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Test ve prototipleme için ortak veri kümeleri
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -45,7 +45,7 @@ Depolama ve analiz hizmetleri ile çözümlerini prototip ve test etmek için ku
 | [Bilim verileri bulut verilerini aç](https://www.opensciencedatacloud.org/projects/) | "Açık bilim veri bulutu, terabayttan ve petab, bilimsel veri kümelerini depolama, paylaşma ve çözümleme için kaynaklarla bilimsel bir topluluk sağlar."| Veri kümeleri çeşitli biçimlerde. |
 | [Küresel iklim verileri-Worldclid](https://worldclim.org/) | "Worldclid, yaklaşık 1 km2 üzerinde uzamsal bir çözünürlükte küresel bir klima katmanları (gridupsal veri) kümesidir. Bu veriler, eşleme ve uzamsal modelleme için kullanılabilir. " | Bu dosyalar Jeo uzamsal verileri içerir. Daha fazla bilgi için bkz. [veri biçimi](https://worldclim.org/formats1). |
 | [İnsan topluluğu hakkındaki veriler-GDELT projesi](https://www.gdeltproject.org/data.html) | "GDELT projesi en büyük, en kapsamlı ve en yüksek çözünürlüklü açık insan topluluğu veritabanı veritabanıdır." | Ham veri dosyaları CSV biçimindedir. |
-| [Criteo 'dan makine öğrenimi için tıklama tahmin verileri tanıtımı](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Genel olarak ML veri kümesi yayınlandı." Daha fazla bilgi için bkz. [Criteo 'ın 1 TB 'ı tahmin veri kümesi](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
+| [Criteo 'dan makine öğrenimi için tıklama tahmin verileri tanıtımı](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Genel olarak ML veri kümesi yayınlandı." Daha fazla bilgi için bkz. [Criteo 'ın 1 TB 'ı tahmin veri kümesi](/archive/blogs/machinelearning/now-available-on-azure-ml-criteos-1tb-click-prediction-dataset). | |
 | [ClueWeb09, limon projesinden ayarlanan metin araştırma verileri](https://www.lemurproject.org/clueweb09.php/) | "ClueWeb09 veri kümesi, bilgi alımı ve ilgili insan dili teknolojileriyle araştırmayı desteklemek için oluşturulmuştur. Ocak ve 2009 ' de toplanan 10 dilde 1.000.000.000 Web sayfası hakkında bilgi içerir. " | Bkz. [veri kümesi bilgileri](https://www.lemurproject.org/clueweb09/datasetInformation.php).|
 
 ## <a name="online-service-data"></a>Çevrimiçi hizmet verileri

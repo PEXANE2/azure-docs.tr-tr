@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5c54da3621df1e5d49e7269781e6ae33fc9c0923
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 47cface4efbf38f2cec630745d498db674c936d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675642"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791962"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>C# .NET uygulamasında Azure.Search.Documtaları kullanma
 
@@ -23,7 +23,7 @@ Bu makalede, C# ve [**Azure.Search.Documstalar**](/dotnet/api/overview/azure/sea
 
 ## <a name="about-version-11"></a>Sürüm 11 hakkında
 
-.NET için Azure SDK 'sı, Azure SDK ekibi 'nden [Microsoft. Azure. Search](/dotnet/api/overview/azure/search/client10) istemci kitaplıklarına işlevsel olarak denk olan yeni bir istemci kitaplığı ekler, ancak uygun yerlerde yaygın yaklaşımları ve kuralları kullanır. Bazı örneklere [`AzureKeyCredential`](/dotnet/api/azure.azurekeycredential) anahtar kimlik doğrulaması ve [ üzerindeSystem.Text.Jsdahildir. ](/dotnet/api/system.text.json.serialization) JSON serileştirme için serileştirme.
+.NET için Azure SDK, Azure SDK ekibi 'nden [Microsoft. Azure. Search](/dotnet/api/overview/azure/search/client10) istemci kitaplıklarına işlevsel olarak denk olan yeni bir [**Azure.Search.Documstalar**](/dotnet/api/overview/azure/search) istemci kitaplığı ekler, ancak uygun yerlerde yaygın yaklaşımlar ve kuralları kullanır. Bazı örneklere [`AzureKeyCredential`](/dotnet/api/azure.azurekeycredential) anahtar kimlik doğrulaması ve [ üzerindeSystem.Text.Jsdahildir. ](/dotnet/api/system.text.json.serialization) JSON serileştirme için serileştirme.
 
 Önceki sürümlerde olduğu gibi, bu kitaplığı kullanarak şunları yapabilirsiniz:
 

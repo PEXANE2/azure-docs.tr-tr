@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: af6db76a5d752396ca965c5ed98682ebcab7da6a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9c0ed50cc0f7ef3580d1441fe2f361065e6f8524
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755846"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886782"
 ---
 <a name="HOLTop"></a>
 
@@ -107,7 +107,7 @@ Ardından, bir işlev tanımlayın `computerVision` ve birincil işlev ve geri �
 Bu bölümdeki kod, çeşitli görsel özellikleri ayıklamak için uzak görüntüleri analiz eder. Bu işlemleri, istemci nesnesinin **analiz Zeımage** yönteminin bir parçası olarak gerçekleştirebilir veya tek tek yöntemler kullanarak çağırabilirsiniz. Ayrıntılar için [başvuru belgelerine](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) bakın.
 
 > [!NOTE]
-> Yerel bir görüntüyü de analiz edebilirsiniz. Yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 'daki örnek koda bakın.
+> Yerel bir görüntüyü de analiz edebilirsiniz. **AnalyzeImageInStream** gibi [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 'daki örnek koda bakın.
 
 ### <a name="get-image-description"></a>Görüntü açıklamasını al
 
@@ -219,14 +219,14 @@ Yardımcı işlevi tanımlayın `describeType` :
 
 Görüntü İşleme, görüntüdeki görünür metni ayıklayabilir ve bir karakter akışına dönüştürebilir. Bu örnek, okuma işlemlerini kullanır.
 
-> [!NOTE]
-> Ayrıca, yerel görüntüden metin okuyabilirsiniz. Yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 'daki örnek koda bakın.
-
 ### <a name="set-up-test-images"></a>Test görüntülerini ayarlama
 
 Metin ayıklamak istediğiniz görüntülerin URL 'SI başvurusunu kaydedin.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
+
+> [!NOTE]
+> Ayrıca, yerel görüntüden metin okuyabilirsiniz. **ReadInStream** gibi [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 'daki örnek koda bakın.
 
 ### <a name="call-the-read-api"></a>Okuma API 'sini çağırma
 
@@ -235,11 +235,11 @@ Okuma çağrısı durum değerlerini göstermek için işlevinizde aşağıdaki 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_statuses)]
 
 
-`readTextFromURL`Verilen görüntüler için ve işlevlerini çağıran aşağıdaki kodu ekleyin `readTextFromFile` .
+Aşağıdaki kodu ekleyerek `readTextFromURL` verilen görüntüler için işlevini çağırır.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-`readTextFromURL`Ve işlevlerini tanımlayın `readTextFromFile` . Bu, bir işlem KIMLIĞI döndüren ve görüntünün içeriğini okumak için zaman uyumsuz bir işlem Başlatan istemci nesnesindeki **Read** ve **readInStream** yöntemlerini çağırır. Ardından, sonuçlar döndürülünceye kadar işlem durumunu denetlemek için işlem KIMLIĞINI kullanırlar. Sonra ayıklanan sonuçları döndürür.
+İşlevi tanımlayın `readTextFromURL` . Bu çağrı, bir işlem KIMLIĞI döndüren ve görüntünün içeriğini okumak için zaman uyumsuz bir işlem Başlatan istemci nesnesindeki **Read** yöntemini çağırır. Ardından, sonuçlar döndürülünceye kadar işlem durumunu denetlemek için işlem KIMLIğINI kullanır. Bunlar ayıklanan sonuçları döndürür.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 3a0b40b91aad388cb42222ead8da4f2bd91947ee
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 848f3cd2d5719d62e39f46c166d51e09ec89bd4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165273"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792523"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Depolama Alanları Doğrudan (Azure VM 'lerinde SQL Server) ile bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Aşağıdaki diyagramda, Azure VM 'lerinde SQL Server ile hiper yakınsanmış D
 
 Yukarıdaki diyagramda, aynı kaynak grubundaki aşağıdaki kaynaklar gösterilmektedir:
 
-- Bir Windows Server yük devretme kümesindeki iki sanal makine. Bir sanal makine bir yük devretme kümesinde olduğunda, *küme düğümü* veya *düğüm*da denir.
+- Bir Windows Server yük devretme kümesindeki iki sanal makine. Bir sanal makine bir yük devretme kümesinde olduğunda, *küme düğümü* veya *düğüm* da denir.
 - Her sanal makinenin iki veya daha fazla veri diski vardır.
 - Depolama Alanları Doğrudan veri disklerindeki verileri eşitler ve eşitlenmiş depolamayı bir depolama havuzu olarak gösterir.
 - Depolama havuzu, yük devretme kümesine bir Küme Paylaşılan Birimi (CSV) gösterir.
@@ -50,7 +50,7 @@ Yukarıdaki diyagramda, aynı kaynak grubundaki aşağıdaki kaynaklar gösteril
    > Bu çözümün tamamını, bir şablondan Azure 'da oluşturabilirsiniz. GitHub [Azure hızlı başlangıç şablonları](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad) sayfasında bir şablon örneği bulunur. Bu örnek, belirli bir iş yükü için tasarlanmamıştır veya test edilmemiştir. Etki alanına bağlı Depolama Alanları Doğrudan depolama alanı ile bir SQL Server FCı oluşturmak için şablonu çalıştırabilirsiniz. Şablonu değerlendirebilir ve sizin amacınıza göre değiştirebilirsiniz.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
@@ -68,11 +68,11 @@ Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
    Yük devretme kümelemesini kullanıcı arabiriminden yüklemek için her iki sanal makinede şunları yapın:
 
-   1. **Sunucu Yöneticisi**, **Yönet**' i seçin ve ardından **rol ve Özellik Ekle**' yi seçin.
+   1. **Sunucu Yöneticisi** , **Yönet** ' i seçin ve ardından **rol ve Özellik Ekle** ' yi seçin.
    1. **Rol ve özellik ekleme** Sihirbazı ' nda, **özellikleri seçerken** **İleri** ' yi seçin.
-   1. **Özellikleri Seç**bölümünde **Yük Devretme Kümelemesi**' ni seçin. Tüm gerekli özellikleri ve yönetim araçlarını dahil edin. 
-   1. **Özellik Ekle**' yi seçin.
-   1. **İleri**' yi seçin ve sonra özellikleri yüklemek için **son** ' u seçin.
+   1. **Özellikleri Seç** bölümünde **Yük Devretme Kümelemesi** ' ni seçin. Tüm gerekli özellikleri ve yönetim araçlarını dahil edin. 
+   1. **Özellik Ekle** ' yi seçin.
+   1. **İleri** ' yi seçin ve sonra özellikleri yüklemek için **son** ' u seçin.
 
    PowerShell 'i kullanarak Yük Devretme Kümelemesi 'ni yüklemek için sanal makinelerden birindeki yönetici PowerShell oturumundan aşağıdaki betiği çalıştırın:
 
@@ -81,7 +81,7 @@ Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-Sonraki adımlar hakkında daha fazla bilgi için [Windows Server 2016 ' de depolama alanları doğrudan kullanarak hiper yakınsama çözümünün](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct)"Adım 3: yapılandırma depolama alanları doğrudan" bölümündeki yönergelere bakın.
+Sonraki adımlar hakkında daha fazla bilgi için [Windows Server 2016 ' de depolama alanları doğrudan kullanarak hiper yakınsama çözümünün](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct)"Adım 3: yapılandırma depolama alanları doğrudan" bölümündeki yönergelere bakın.
 
 
 ## <a name="validate-the-cluster"></a>Kümeyi doğrulama
@@ -90,18 +90,18 @@ Kümeyi Kullanıcı arabiriminde veya PowerShell kullanarak doğrulayın.
 
 Kullanıcı arabirimini kullanarak kümeyi doğrulamak için sanal makinelerden birinde şunları yapın:
 
-1. **Sunucu Yöneticisi**altında **Araçlar**' ı seçin ve **Yük devretme kümesi Yöneticisi**' i seçin.
-1. **Yük devretme kümesi Yöneticisi**altında **eylem**' i seçin ve ardından **Yapılandırmayı Doğrula**' yı seçin.
-1. **İleri**’yi seçin.
-1. **Sunucu veya küme Seç**altında, her iki sanal makinenin adını da girin.
-1. **Test seçenekleri**altında **yalnızca Seçdiğim Testleri Çalıştır**' ı seçin. 
-1. **İleri**’yi seçin.
-1. **Test seçimi**altında, aşağıda gösterildiği gibi, **depolama**hariç tüm testleri seçin:
+1. **Sunucu Yöneticisi** altında **Araçlar** ' ı seçin ve **Yük devretme kümesi Yöneticisi** ' i seçin.
+1. **Yük devretme kümesi Yöneticisi** altında **eylem** ' i seçin ve ardından **Yapılandırmayı Doğrula** ' yı seçin.
+1. **İleri** ’yi seçin.
+1. **Sunucu veya küme Seç** altında, her iki sanal makinenin adını da girin.
+1. **Test seçenekleri** altında **yalnızca Seçdiğim Testleri Çalıştır** ' ı seçin. 
+1. **İleri** ’yi seçin.
+1. **Test seçimi** altında, aşağıda gösterildiği gibi, **depolama** hariç tüm testleri seçin:
 
    ![Küme doğrulama testlerini seçin](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
 
-1. **İleri**’yi seçin.
-1. **Onay**altında **İleri**' yi seçin.
+1. **İleri** ’yi seçin.
+1. **Onay** altında **İleri** ' yi seçin.
 
     **Yapılandırma doğrulama** Sihirbazı doğrulama testlerini çalıştırır.
 
@@ -150,9 +150,9 @@ Daha fazla bilgi için bkz. [Yük devretme kümesi: küme ağ nesnesi](https://b
 
 ## <a name="add-storage"></a>Depolama ekleme
 
-Depolama Alanları Doğrudan disklerin boş olması gerekir. Bunlar bölüm veya diğer verileri içeremez. Diskleri temizlemek için, [depolama alanları doğrudan dağıtma](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct?redirectedfrom=MSDN#step-31-clean-drives)' daki yönergeleri izleyin.
+Depolama Alanları Doğrudan disklerin boş olması gerekir. Bunlar bölüm veya diğer verileri içeremez. Diskleri temizlemek için, [depolama alanları doğrudan dağıtma](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives)' daki yönergeleri izleyin.
 
-1. [Depolama alanları doğrudan etkinleştirin](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
+1. [Depolama alanları doğrudan etkinleştirin](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-35-enable-storage-spaces-direct).
 
    Aşağıdaki PowerShell betiği Depolama Alanları Doğrudan şunları sunar:  
 
@@ -160,9 +160,9 @@ Depolama Alanları Doğrudan disklerin boş olması gerekir. Bunlar bölüm veya
    Enable-ClusterS2D
    ```
 
-   **Yük devretme kümesi Yöneticisi**, artık depolama havuzunu görebilirsiniz.
+   **Yük devretme kümesi Yöneticisi** , artık depolama havuzunu görebilirsiniz.
 
-1. [Bir birim oluşturun](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
+1. [Bir birim oluşturun](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-36-create-volumes).
 
    Depolama Alanları Doğrudan, etkinleştirdiğinizde otomatik olarak bir depolama havuzu oluşturur. Artık bir birim oluşturmaya hazırsınız. PowerShell cmdlet 'i `New-Volume` , birim oluşturma işlemini otomatikleştirir. Bu işlem biçimlendirme, birimi kümeye ekleme ve CSV oluşturma işlemlerini içerir. Bu örnek, 800 gigabayt (GB) CSV oluşturur:
 
@@ -180,7 +180,7 @@ Depolama Alanları Doğrudan disklerin boş olması gerekir. Bunlar bölüm veya
 
 ## <a name="test-cluster-failover"></a>Test kümesi yük devretmesi
 
-Kümenizin yük devretmesini test edin. **Yük devretme kümesi Yöneticisi**, kümenize sağ tıklayın, **diğer eylemler**' i  >  **taşıyın çekirdek küme kaynağı**  >  **Seç düğümünü**seçin ve ardından kümenin diğer düğümünü seçin. Çekirdek küme kaynağını kümenin her düğümüne taşıyın ve ardından birincil düğüme geri taşıyın. Kümeyi her düğüme başarıyla taşıyabiliyorsanız SQL Server yüklemeye hazırsınız demektir.  
+Kümenizin yük devretmesini test edin. **Yük devretme kümesi Yöneticisi** , kümenize sağ tıklayın, **diğer eylemler** ' i  >  **taşıyın çekirdek küme kaynağı**  >  **Seç düğümünü** seçin ve ardından kümenin diğer düğümünü seçin. Çekirdek küme kaynağını kümenin her düğümüne taşıyın ve ardından birincil düğüme geri taşıyın. Kümeyi her düğüme başarıyla taşıyabiliyorsanız SQL Server yüklemeye hazırsınız demektir.  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Çekirdek kaynağı diğer düğümlere taşıyarak küme yük devretmesini test etme":::
 
@@ -190,13 +190,13 @@ Yük devretme kümesini ve depolama dahil tüm küme bileşenlerini yapılandır
 
 1. RDP kullanarak ilk sanal makineye bağlanın.
 
-1. **Yük devretme kümesi Yöneticisi**, tüm çekirdek küme kaynaklarının ilk sanal makinede olduğundan emin olun. Gerekirse, tüm kaynakları bu sanal makineye taşıyın.
+1. **Yük devretme kümesi Yöneticisi** , tüm çekirdek küme kaynaklarının ilk sanal makinede olduğundan emin olun. Gerekirse, tüm kaynakları bu sanal makineye taşıyın.
 
-1. Yükleme medyasını bulun. Sanal makine Azure Marketi görüntülerinden birini kullanıyorsa medya konumunda bulunur `C:\SQLServer_<version number>_Full` . **Kurulum 'u**seçin.
+1. Yükleme medyasını bulun. Sanal makine Azure Marketi görüntülerinden birini kullanıyorsa medya konumunda bulunur `C:\SQLServer_<version number>_Full` . **Kurulum 'u** seçin.
 
-1. **SQL Server Yükleme Merkezi**'nde **yükleme**' yi seçin.
+1. **SQL Server Yükleme Merkezi** 'nde **yükleme** ' yi seçin.
 
-1. **Yeni SQL Server yük devretme kümesi yüklemesi ' ni**seçin. SQL Server FCı 'yi yüklemek için sihirbazdaki yönergeleri izleyin.
+1. **Yeni SQL Server yük devretme kümesi yüklemesi ' ni** seçin. SQL Server FCı 'yi yüklemek için sihirbazdaki yönergeleri izleyin.
 
    FCı veri dizinlerinin kümelenmiş depolamada olması gerekir. Depolama Alanları Doğrudan, bu, paylaşılan bir disk değildir ancak her bir sunucudaki birime bağlama noktasıdır. Depolama Alanları Doğrudan, birimi her iki düğüm arasında eşitler. Birim, kümeye bir CSV olarak sunulur. Veri dizinleri için CSV bağlama noktasını kullanın.
 
@@ -206,12 +206,12 @@ Yük devretme kümesini ve depolama dahil tüm küme bileşenlerini yapılandır
 
 1. Kurulum, ilk düğümde FCı 'yı yükledikten sonra, RDP kullanarak ikinci düğüme bağlanın.
 
-1. **SQL Server yükleme merkezini**açın. **Yükleme**' yi seçin.
+1. **SQL Server yükleme merkezini** açın. **Yükleme** ' yi seçin.
 
-1. **SQL Server yük devretme kümesine düğüm Ekle**' yi seçin. SQL Server yüklemek ve sunucuyu FCı 'ye eklemek için sihirbazdaki yönergeleri izleyin.
+1. **SQL Server yük devretme kümesine düğüm Ekle** ' yi seçin. SQL Server yüklemek ve sunucuyu FCı 'ye eklemek için sihirbazdaki yönergeleri izleyin.
 
    >[!NOTE]
-   >SQL Server içeren bir Azure Marketi Galeri görüntüsü kullandıysanız, görüntüye SQL Server Araçlar eklenmiştir. Bu görüntülerden birini kullanmıyorsanız, SQL Server araçlarını ayrı olarak yükleyebilirsiniz. Daha fazla bilgi için bkz. [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+   >SQL Server içeren bir Azure Marketi Galeri görüntüsü kullandıysanız, görüntüye SQL Server Araçlar eklenmiştir. Bu görüntülerden birini kullanmıyorsanız, SQL Server araçlarını ayrı olarak yükleyebilirsiniz. Daha fazla bilgi için bkz. [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
    >
 
 
@@ -237,7 +237,7 @@ Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ort
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Azure sanal makineleri, Windows Server 2019 ' de CSV ve [Standart yük dengeleyici](../../../load-balancer/load-balancer-standard-overview.md)depolama ile Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) destekler.
+- Azure sanal makineleri, Windows Server 2019 ' de CSV ve [Standart yük dengeleyici](../../../load-balancer/load-balancer-overview.md)depolama ile Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) destekler.
 - NTFS biçimli diskler olarak eklenmiş diskler, yalnızca disk uygunluk seçeneği işaretli değilse ya da depolama alanı kümeye eklenirken silinirse Depolama Alanları Doğrudan ile kullanılabilir. 
 - Yalnızca [basit yönetim MODUNDAKI](sql-vm-resource-provider-register.md#management-modes) SQL VM kaynak sağlayıcısı ile kaydolma desteklenir.
 

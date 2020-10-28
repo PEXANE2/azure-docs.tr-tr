@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 09498587ad65a8de0935a3a4455bb3b66ed6c3ec
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a0efc6f6f6d4ae6355fbb42fbc7e13ad7c078cf3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491266"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792897"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Düzenli aralıklarla veri aktarımına yönelik çözümler
  
@@ -42,7 +42,7 @@ Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
 
 ### <a name="scriptedprogrammatic-network-data-transfer"></a>Betikleştirilmiş/programlı ağ veri aktarımı
 
-| Özellik                  | AzCopy                                 | Azure depolama REST API 'Leri       |
+| Yetenek                  | AzCopy                                 | Azure depolama REST API 'Leri       |
 |-----------------------------|----------------------------------------|-------------------------------|
 | Form faktörü                 | Microsoft 'tan komut satırı aracı       | Müşterilere depolamaya yönelik geliştirme <br> Azure istemci kitaplıklarını kullanarak REST API 'Leri |
 | İlk bir kerelik kurulum     | En az                                | Orta, değişken geliştirme çabaları    |
@@ -57,17 +57,17 @@ Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
 | Form faktörü                                   | Sanal cihaz             | Fiziksel cihaz          | Azure portal hizmeti, şirket içi aracıda                                                            |
 | Donanım                                      | Hiper yöneticinizi            | Microsoft tarafından sağlandı    | NA                                                            |
 | İlk kurulum çabası                          | Düşük (<30 dakika)            | Orta (~ birkaç saat) | Büyük (~ gün)                                                 |
-| Veri biçimi                                   | Azure Blobları, Azure dosyaları   | Azure Blobları, Azure dosyaları | [Veri depoları ve biçimleri için 70 ' ten fazla veri Bağlayıcısı destekler](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
-| Verileri önceden işleme                           | Hayır                         | Evet, uç işlem ile    | Yes                                                           |
-| Yerel önbellek<br>(Şirket içi verileri depolamak için)    | Yes                        | Yes                      | Hayır                                                            |
-| Diğer bulutlardan aktar                    | Hayır                         | Hayır                       | Yes                                                           |
+| Veri biçimi                                   | Azure Blobları, Azure dosyaları   | Azure Blobları, Azure dosyaları | [Veri depoları ve biçimleri için 70 ' ten fazla veri Bağlayıcısı destekler](../../data-factory/copy-activity-overview.md#supported-data-stores-and-formats)|
+| Verileri önceden işleme                           | Hayır                         | Evet, uç işlem ile    | Evet                                                           |
+| Yerel önbellek<br>(Şirket içi verileri depolamak için)    | Evet                        | Evet                      | Hayır                                                            |
+| Diğer bulutlardan aktar                    | Hayır                         | Hayır                       | Evet                                                           |
 | Fiyatlandırma                                       | [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Fiyatlandırma](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [AzCopy ile veri aktarma](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
+- [AzCopy ile veri aktarma](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ftables%252ftoc.json).
 - [Depolama REST API 'leri ile veri aktarımı hakkında daha fazla bilgi](/dotnet/api/overview/azure/storage).
 - Nasıl yapılacağını anlayın:
-    - [Data Box Gateway verileri aktarın](/azure/databox-online/data-box-gateway-deploy-add-shares).
-    - [Azure 'a göndermeden önce Data Box Edge verileri dönüştürün](/azure/databox-online/data-box-edge-deploy-configure-compute).
-- [Azure Data Factory ile veri aktarmayı öğrenin](/azure/data-factory/tutorial-bulk-copy-portal).
+    - [Data Box Gateway verileri aktarın](../../databox-online/data-box-gateway-deploy-add-shares.md).
+    - [Azure 'a göndermeden önce Data Box Edge verileri dönüştürün](../../databox-online/azure-stack-edge-deploy-configure-compute.md).
+- [Azure Data Factory ile veri aktarmayı öğrenin](../../data-factory/tutorial-bulk-copy-portal.md).

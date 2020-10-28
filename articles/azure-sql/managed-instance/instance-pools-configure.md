@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 5798220ad92a99f32f757ffa20f9233b8c79151b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 732a9bab018103321a9a3a759b31495bd67a209e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617443"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793118"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL yönetilen örneğini bir örnek havuzuna dağıtma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ Aşağıdaki tabloda, Azure portal ve PowerShell 'de örnek havuzlarla ilgili ku
 |Havuzda bir örnek içinde veritabanı oluşturma|Evet|Evet|
 |SQL yönetilen örneğinden bir veritabanını silme|Evet|Evet|
 
-Kullanılabilir [PowerShell komutları](https://docs.microsoft.com/powershell/module/az.sql/):
+Kullanılabilir [PowerShell komutları](/powershell/module/az.sql/):
 
 |Cmdlet |Açıklama |
 |:---|:---|
@@ -52,7 +52,7 @@ Kullanılabilir [PowerShell komutları](https://docs.microsoft.com/powershell/mo
 |[Get-Azsqlınstancepoolusage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | SQL yönetilen örnek havuzu kullanımı hakkında bilgi döndürür. |
 
 
-PowerShell 'i kullanmak için [PowerShell Core 'un en son sürümünü yükleyip](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell) [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps)için yönergeleri izleyin.
+PowerShell 'i kullanmak için [PowerShell Core 'un en son sürümünü yükleyip](/powershell/scripting/install/installing-powershell#powershell) [Azure PowerShell modülünü yüklemek](/powershell/azure/install-az-ps)için yönergeleri izleyin.
 
 Hem havuzların hem de tek örneklerin içindeki örneklerle ilgili işlemler için, standart [yönetilen örnek komutlarını](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)kullanın, ancak bir havuzdaki bir örnek için bu komutlar kullanılırken *örnek havuzu adı* özelliği doldurulmalıdır.
 

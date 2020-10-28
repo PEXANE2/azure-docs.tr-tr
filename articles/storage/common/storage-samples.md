@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d537ba74dad55ea1cb980ea04d20fd0c8494ed0b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: de587483f5dc15b17fa32e044b569ef9d7f007f7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479451"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792965"
 ---
 # <a name="azure-storage-samples"></a>Azure depolama örnekleri
 
@@ -60,7 +60,7 @@ C++ örneklerini araştırmak için GitHub 'dan [c++ Için Azure depolama Istemc
 Azure CLı örneklerini araştırmak için önce [Azure CLI 'Yı yüklemeniz](/cli/azure/install-azure-cli)gerekir.
 
 * [Azure CLI’yı kullanmaya başlama](/cli/azure/get-started-with-azure-cli)
-* [Azure CLı kullanan Azure depolama örnekleri](/azure/storage/blobs/storage-samples-blobs-cli)
+* [Azure CLı kullanan Azure depolama örnekleri](../blobs/storage-samples-blobs-cli.md)
 * [Azure depolama ile Azure CLı kullanma hakkında popüler makaleler](/cli/azure/popular-articles-using-the-azure-cli#storage)
 
 ## <a name="api-reference-and-source-code"></a>API başvurusu ve kaynak kodu
@@ -83,4 +83,4 @@ Aşağıdaki makaleler, hizmet (blob, dosya, kuyruk, tablo) örneklerinin her bi
 * [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
 * [Python kullanarak Azure Storage örnekleri](storage-samples-python.md)
 * [C++ kullanan Azure depolama örnekleri](storage-samples-c-plus-plus.md)
-* [Azure CLı kullanan Azure depolama örnekleri](/azure/storage/blobs/storage-samples-blobs-cli)
+* [Azure CLı kullanan Azure depolama örnekleri](../blobs/storage-samples-blobs-cli.md)

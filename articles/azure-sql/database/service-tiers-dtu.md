@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.date: 10/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9ae5d5e488a7bbe0e80f5a8960be27fd3de8489a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103008"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793186"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU tabanlı satın alma modelindeki hizmet katmanları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,7 +42,7 @@ Bir hizmet katmanını seçmek, birincil olarak iş sürekliliği, depolama ve p
 |**CPU**|Düşük|Düşük, orta, yüksek|Orta, yüksek|
 |**IOPS (yaklaşık)**\* |DTU başına 1-4 ıOPS| DTU başına 1-4 ıOPS | DTU başına 25 ıOPS|
 |**GÇ gecikme süresi (yaklaşık)**|5 ms (okuma), 10 MS (yazma)|5 ms (okuma), 10 MS (yazma)|2 ms (okuma/yazma)|
-|**Columnstore dizin oluşturma** |YOK|S3 ve üzeri|Desteklenir|
+|**Columnstore dizin oluşturma** |Yok|S3 ve üzeri|Desteklenir|
 |**Bellek içi OLTP**|Yok|Yok|Desteklenir|
 
 \* Arka plan GÇ (kontrol noktası ve yavaş yazıcı) dahil olmak üzere veri dosyalarında tüm okuma ve yazma ıOPS
@@ -54,7 +54,7 @@ Bir hizmet katmanını seçmek, birincil olarak iş sürekliliği, depolama ve p
 >
 
 > [!TIP]
-> Bir veritabanı veya elastik havuz için gerçek [kaynak idare](resource-limits-logical-server.md#resource-governance) sınırlarını görmek üzere [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümünü sorgulayın.
+> Bir veritabanı veya elastik havuz için gerçek [kaynak idare](resource-limits-logical-server.md#resource-governance) sınırlarını görmek üzere [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümünü sorgulayın.
 
 > [!NOTE]
 > Azure SQL veritabanı 'ndaki ücretsiz bir veritabanını Azure Ücretsiz hesabıyla birlikte temel hizmet katmanında ücretsiz olarak edinebilirsiniz. Daha fazla bilgi için bkz. [Azure Ücretsiz hesabınızla yönetilen bulut veritabanı oluşturma](https://azure.microsoft.com/free/services/sql-database/).
@@ -114,7 +114,7 @@ Veritabanı "ölçek faktörü" temelinde boyutlandırılır. Ölçek faktörü 
 
 İş yükü, aşağıdaki tabloda gösterildiği gibi dokuz işlem türünden oluşur. Her işlem, veritabanı altyapısı ve sistem donanımında belirli bir sistem özellikleri kümesini, diğer işlemlerden yüksek karşıtlığa göre vurgulamak için tasarlanmıştır. Bu yaklaşım, farklı bileşenlerin genel performansa etkilerini değerlendirmeyi kolaylaştırır. Örneğin, "okuma ağır" işlemi diskten önemli sayıda okuma işlemi üretir.
 
-| İşlem Türü | Description |
+| İşlem Türü | Açıklama |
 | --- | --- |
 | Lite 'ı oku |SEÇIN bellek içi; salt okunurdur |
 | Ortamı oku |SEÇIN genellikle bellek içi; salt okunurdur |

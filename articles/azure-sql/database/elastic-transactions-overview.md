@@ -1,5 +1,5 @@
 ---
-title: Bulut veritabanları arasında dağıtılmış işlemler (Önizleme)
+title: Bulut veritabanlarında dağıtılmış işlemler (önizleme)
 description: Azure SQL veritabanı ve Azure SQL yönetilen örneği ile elastik veritabanı Işlemlerine genel bakış.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 369f79a436d76e6a1bf1a1ce64f7754f25a5abc5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 5504b9bc87f78682ff584006255d4e75e5e69fa7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058055"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793356"
 ---
-# <a name="distributed-transactions-across-cloud-databases-preview"></a>Bulut veritabanları arasında dağıtılmış işlemler (Önizleme)
+# <a name="distributed-transactions-across-cloud-databases-preview"></a>Bulut veritabanlarında dağıtılmış işlemler (önizleme)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL veritabanı ve Azure SQL yönetilen örneği için elastik veritabanı işlemleri, çeşitli veritabanlarına yayılan işlemleri çalıştırmanıza olanak sağlar. Esnek veritabanı işlemleri, ADO.NET kullanarak .NET uygulamaları için kullanılabilir ve [System. Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) sınıflarını kullanarak tanıdık programlama deneyimiyle tümleştirilebilir. Kitaplığı almak için, bkz. [.NET Framework 4.6.1 (Web Yükleyicisi)](https://www.microsoft.com/download/details.aspx?id=49981).
-Ayrıca, yönetilen örnek için dağıtılmış işlemler [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql)' te kullanılabilir.
+Azure SQL veritabanı ve Azure SQL yönetilen örneği için elastik veritabanı işlemleri, çeşitli veritabanlarına yayılan işlemleri çalıştırmanıza olanak sağlar. Esnek veritabanı işlemleri, ADO.NET kullanarak .NET uygulamaları için kullanılabilir ve [System. Transaction](/dotnet/api/system.transactions) sınıflarını kullanarak tanıdık programlama deneyimiyle tümleştirilebilir. Kitaplığı almak için, bkz. [.NET Framework 4.6.1 (Web Yükleyicisi)](https://www.microsoft.com/download/details.aspx?id=49981).
+Ayrıca, yönetilen örnek için dağıtılmış işlemler [Transact-SQL](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql)' te kullanılabilir.
 
 Şirket içinde bu tür bir senaryo genellikle Microsoft Dağıtılmış İşlem Düzenleyicisi (MSDTC) çalıştırmayı gerektirir. MSDTC, Azure 'da hizmet olarak platform uygulaması için kullanılamadığından, dağıtılmış işlemleri koordine etme özelliği artık doğrudan SQL veritabanı veya yönetilen örnekle tümleştirilmiştir. Uygulamalar dağıtılmış işlemleri başlatmak için herhangi bir veritabanına bağlanabilir ve veritabanlarından veya sunucularından biri, aşağıdaki şekilde gösterildiği gibi, dağıtılmış işlemi saydam şekilde koordine eder.
 
@@ -32,7 +32,7 @@ Bu belge koşullarında "dağıtılmış işlemler" ve "elastik veritabanı işl
 
 ## <a name="common-scenarios"></a>Genel senaryolar
 
-Elastik veritabanı işlemleri, uygulamaların birçok farklı veritabanında depolanan verilerde atomik değişiklikler yapmasını sağlar. Önizleme, C# ve .NET içindeki istemci tarafı geliştirme deneyimlerine odaklanmaktadır. [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) ' y i kullanarak sunucu tarafı deneyimi (saklı yordamlarda veya sunucu tarafı betiklerle yazılmış kod) yalnızca yönetilen örnek için kullanılabilir.
+Elastik veritabanı işlemleri, uygulamaların birçok farklı veritabanında depolanan verilerde atomik değişiklikler yapmasını sağlar. Önizleme, C# ve .NET içindeki istemci tarafı geliştirme deneyimlerine odaklanmaktadır. [Transact-SQL](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) ' y i kullanarak sunucu tarafı deneyimi (saklı yordamlarda veya sunucu tarafı betiklerle yazılmış kod) yalnızca yönetilen örnek için kullanılabilir.
 > [!IMPORTANT]
 > Önizlemede, Azure SQL veritabanı ile Azure SQL yönetilen örneği arasında elastik veritabanı işlemlerini çalıştırmak şu anda desteklenmiyor. Elastik veritabanı işlemi, yalnızca SQL veritabanı veya yönetilen örnek kümesi arasında yayılabilir.
 
@@ -136,9 +136,9 @@ Aşağıdaki kod örneğinde bu yaklaşım gösterilmektedir. Bu, shardmap adlı
 
 ## <a name="transact-sql-development-experience"></a>Transact-SQL geliştirme deneyimi
 
-Transact-SQL kullanan sunucu tarafı dağıtılmış işlemler yalnızca Azure SQL yönetilen örneği için kullanılabilir. Dağıtılmış işlem yalnızca aynı [sunucu güven grubuna](https://aka.ms/mitrusted-groups)ait yönetilen örnekler arasında yürütülebilir. Bu senaryoda, yönetilen örneklerin birbirlerine başvurmak için [bağlı sunucu](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure) kullanması gerekir.
+Transact-SQL kullanan sunucu tarafı dağıtılmış işlemler yalnızca Azure SQL yönetilen örneği için kullanılabilir. Dağıtılmış işlem yalnızca aynı [sunucu güven grubuna](../managed-instance/server-trust-group-overview.md)ait yönetilen örnekler arasında yürütülebilir. Bu senaryoda, yönetilen örneklerin birbirlerine başvurmak için [bağlı sunucu](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure) kullanması gerekir.
 
-Aşağıdaki örnek Transact-SQL kodu dağıtılmış işlemi başlatmak için [Dağıtılmış Işlem kullanmaya başla](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) ' yı kullanır.
+Aşağıdaki örnek Transact-SQL kodu dağıtılmış işlemi başlatmak için [Dağıtılmış Işlem kullanmaya başla](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) ' yı kullanır.
 
 ```Transact-SQL
 
@@ -192,7 +192,7 @@ Bu, işlemin Transact-SQL ile dağıtılmış işleme açıkça yükseltilme ör
             Helper.ExecuteNonQueryOnOpenConnection(conn, "BEGIN DISTRIBUTED TRAN");
             // ...
         }
-     
+     
         using (SqlConnection conn2 = new SqlConnection(DB1_ConnectionString)
         {
             conn2.Open();
@@ -232,19 +232,19 @@ Aşağıdaki örnek, TransactionScope içinde ikinci SqlConnecton başlatıldık
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
 Esnek veritabanı işlemleri, Azure SQL veritabanı 'ndaki farklı sunucular arasında desteklenir. İşlemler çapraz sunucu sınırları sırasında, katılım sunucularının ilk olarak karşılıklı iletişim ilişkisine girilmesi gerekir. İletişim ilişkisi kurulduktan sonra, iki sunucudan herhangi bir veritabanı diğer sunucudaki veritabanları ile elastik işlemlere katılabilir. İkiden fazla sunucuyu kapsayan işlemler sayesinde, herhangi bir sunucu çifti için bir iletişim ilişkisinin olması gerekir.
 
 Elastik veritabanı işlemleri için çapraz sunucu iletişim ilişkilerini yönetmek üzere aşağıdaki PowerShell cmdlet 'lerini kullanın:
 
-* **New-AzSqlServerCommunicationLink**: Azure SQL veritabanı 'nda iki sunucu arasında yeni bir iletişim ilişkisi oluşturmak için bu cmdlet 'i kullanın. İlişki simetrik olduğundan, her iki sunucunun da diğer sunucu ile işlemleri başlatabileceği anlamına gelir.
-* **Get-AzSqlServerCommunicationLink**: var olan iletişim ilişkilerini ve bunların özelliklerini almak için bu cmdlet 'i kullanın.
-* **Remove-AzSqlServerCommunicationLink**: var olan bir iletişim ilişkisini kaldırmak için bu cmdlet 'i kullanın.
+* **New-AzSqlServerCommunicationLink** : Azure SQL veritabanı 'nda iki sunucu arasında yeni bir iletişim ilişkisi oluşturmak için bu cmdlet 'i kullanın. İlişki simetrik olduğundan, her iki sunucunun da diğer sunucu ile işlemleri başlatabileceği anlamına gelir.
+* **Get-AzSqlServerCommunicationLink** : var olan iletişim ilişkilerini ve bunların özelliklerini almak için bu cmdlet 'i kullanın.
+* **Remove-AzSqlServerCommunicationLink** : var olan bir iletişim ilişkisini kaldırmak için bu cmdlet 'i kullanın.
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için birden çok sunucu arasında işlem
 
-Dağıtılmış işlemler, Azure SQL yönetilen örneği 'nde farklı sunucular arasında desteklenir. İşlemler, yönetilen örnek sınırları sırasında, katılım örneklerinin ilk olarak bir karşılıklı güvenlik ve iletişim ilişkisine girilmesi gerekir. Bu işlem, Azure portal gerçekleştirilen bir [sunucu güven grubu](https://aka.ms/mitrusted-groups)oluşturularak yapılır. Yönetilen örnekler aynı sanal ağ üzerinde değilse, [sanal ağ](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) eşlemesinin ayarlanması gerekir ve ağ güvenlik grubu gelen ve giden kurallarının tüm katılan sanal ağlarda 5024 ve 11000-12000 bağlantı noktalarına izin verilmesi gerekir.
+Dağıtılmış işlemler, Azure SQL yönetilen örneği 'nde farklı sunucular arasında desteklenir. İşlemler, yönetilen örnek sınırları sırasında, katılım örneklerinin ilk olarak bir karşılıklı güvenlik ve iletişim ilişkisine girilmesi gerekir. Bu işlem, Azure portal gerçekleştirilen bir [sunucu güven grubu](../managed-instance/server-trust-group-overview.md)oluşturularak yapılır. Yönetilen örnekler aynı sanal ağ üzerinde değilse, [sanal ağ](../../virtual-network/virtual-network-peering-overview.md) eşlemesinin ayarlanması gerekir ve ağ güvenlik grubu gelen ve giden kurallarının tüm katılan sanal ağlarda 5024 ve 11000-12000 bağlantı noktalarına izin verilmesi gerekir.
 
   ![Azure portalında sunucu güven grupları][3]
 
@@ -254,13 +254,13 @@ Aşağıdaki diyagramda, .NET veya Transact-SQL ile dağıtılmış işlemleri y
 
 ## <a name="monitoring-transaction-status"></a>İşlem durumunu izleme
 
-Devam eden elastik veritabanı işlemlerinizin durumunu ve ilerlemesini izlemek için dinamik yönetim görünümlerini (DMVs) kullanın. İşlemler ile ilgili tüm DMVs 'ler, SQL veritabanı ve yönetilen örnekteki dağıtılmış işlemler için geçerlidir. Bunlara karşılık gelen DMVs listesini buradan bulabilirsiniz: [Işlemle Ilgili dinamik yönetim görünümleri ve işlevleri (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
+Devam eden elastik veritabanı işlemlerinizin durumunu ve ilerlemesini izlemek için dinamik yönetim görünümlerini (DMVs) kullanın. İşlemler ile ilgili tüm DMVs 'ler, SQL veritabanı ve yönetilen örnekteki dağıtılmış işlemler için geçerlidir. Bunlara karşılık gelen DMVs listesini buradan bulabilirsiniz: [Işlemle Ilgili dinamik yönetim görünümleri ve işlevleri (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/transaction-related-dynamic-management-views-and-functions-transact-sql).
 
 Bu DMVs 'ler özellikle yararlıdır:
 
-* **sys.DM \_ Tran \_ etkin \_ işlemler**: etkin olan işlemleri ve bunların durumlarını listeler. UOW (Iş birimi) sütunu, aynı dağıtılmış işleme ait farklı alt işlemleri tanımlayabilir. Aynı dağıtılmış işlem içindeki tüm işlemler aynı UOW değerini taşır. Daha fazla bilgi için bkz. [DMV belgeleri](https://msdn.microsoft.com/library/ms174302.aspx).
-* **sys.DM \_ Tran \_ veritabanı \_ işlemleri**: işlemin günlüğe yerleştirilmesi gibi işlemler hakkında ek bilgiler sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](https://msdn.microsoft.com/library/ms186957.aspx).
-* **sys.DM \_ Tran \_ kilitleri**: devam eden işlemler tarafından şu anda tutulan kilitler hakkında bilgi sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](https://msdn.microsoft.com/library/ms190345.aspx).
+* **sys.DM \_ Tran \_ etkin \_ işlemler** : etkin olan işlemleri ve bunların durumlarını listeler. UOW (Iş birimi) sütunu, aynı dağıtılmış işleme ait farklı alt işlemleri tanımlayabilir. Aynı dağıtılmış işlem içindeki tüm işlemler aynı UOW değerini taşır. Daha fazla bilgi için bkz. [DMV belgeleri](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql).
+* **sys.DM \_ Tran \_ veritabanı \_ işlemleri** : işlemin günlüğe yerleştirilmesi gibi işlemler hakkında ek bilgiler sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql).
+* **sys.DM \_ Tran \_ kilitleri** : devam eden işlemler tarafından şu anda tutulan kilitler hakkında bilgi sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -268,19 +268,19 @@ Aşağıdaki sınırlamalar şu anda SQL veritabanındaki elastik veritabanı i�
 
 * Yalnızca SQL veritabanı 'ndaki veritabanları arasındaki işlemler desteklenir. Diğer [X/açık XA](https://en.wikipedia.org/wiki/X/Open_XA) kaynak SAĞLAYıCıLARı ve SQL veritabanı dışındaki veritabanları, elastik veritabanı işlemlerine katılamaz. Diğer bir deyişle, elastik veritabanı işlemlerinin şirket içi SQL Server ve Azure SQL veritabanı arasında genişlemeyeceği anlamına gelir. Şirket içi dağıtılmış işlemler için MSDTC kullanmaya devam edin.
 * Yalnızca bir .NET uygulamasından alınan istemci ile eşgüdümlü işlemler desteklenir. BAŞLANGıÇ DAĞıTıM IŞLEMI gibi T-SQL için sunucu tarafı desteği planlanmaktadır, ancak henüz kullanılamamaktadır.
-* WCF hizmetleri arasında işlem desteklenmez. Örneğin, bir işlemi yürüten bir WCF hizmeti yönteminiz vardır. Çağrıyı bir işlem kapsamı içinde kapsayan bir [System. ServiceModel. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)olarak başarısız olur.
+* WCF hizmetleri arasında işlem desteklenmez. Örneğin, bir işlemi yürüten bir WCF hizmeti yönteminiz vardır. Çağrıyı bir işlem kapsamı içinde kapsayan bir [System. ServiceModel. ProtocolException](/dotnet/api/system.servicemodel.protocolexception)olarak başarısız olur.
 
 Aşağıdaki sınırlamalar şu anda yönetilen örnekteki dağıtılmış işlemler için geçerlidir:
 
 * Yalnızca yönetilen örnekteki veritabanları arasındaki işlemler desteklenir. Diğer [X/açık XA](https://en.wikipedia.org/wiki/X/Open_XA) kaynak sağlayıcıları ve Azure SQL yönetilen örneği dışındaki veritabanları dağıtılmış işlemlere katılamaz. Bu, dağıtılmış işlemlerin şirket içi SQL Server ve Azure SQL yönetilen örneği arasında genişlemeyeceği anlamına gelir. Şirket içi dağıtılmış işlemler için MSDTC kullanmaya devam edin.
-* WCF hizmetleri arasında işlem desteklenmez. Örneğin, bir işlemi yürüten bir WCF hizmeti yönteminiz vardır. Çağrıyı bir işlem kapsamı içinde kapsayan bir [System. ServiceModel. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)olarak başarısız olur.
-* Dağıtılmış işleme katılabilmek için Azure SQL yönetilen örneği bir [sunucu güven grubunun](https://aka.ms/mitrusted-groups) parçası olmalıdır.
-* [Sunucu güven gruplarının](https://aka.ms/mitrusted-groups) sınırlamaları dağıtılmış işlemleri etkiler.
+* WCF hizmetleri arasında işlem desteklenmez. Örneğin, bir işlemi yürüten bir WCF hizmeti yönteminiz vardır. Çağrıyı bir işlem kapsamı içinde kapsayan bir [System. ServiceModel. ProtocolException](/dotnet/api/system.servicemodel.protocolexception)olarak başarısız olur.
+* Dağıtılmış işleme katılabilmek için Azure SQL yönetilen örneği bir [sunucu güven grubunun](../managed-instance/server-trust-group-overview.md) parçası olmalıdır.
+* [Sunucu güven gruplarının](../managed-instance/server-trust-group-overview.md) sınırlamaları dağıtılmış işlemleri etkiler.
 * Dağıtılmış işlemlere katılan yönetilen örneklerin özel uç noktalar üzerinden bağlantısı olması gerekir (dağıtıldığı sanal ağdan özel IP adresi kullanılarak) ve özel FQDN 'Ler kullanılarak karşılıklı olarak başvurulmaları gerekir. İstemci uygulamaları, Özel uç noktalarında dağıtılmış işlemleri kullanabilir. Ayrıca, Transact-SQL ' i özel uç noktalara başvuran bağlı sunuculardan yararlantığında, istemci uygulamaları da genel uç noktalarında dağıtılmış işlemleri kullanabilir. Bu sınırlama aşağıdaki diyagramda açıklanmaktadır.
   ![Özel uç nokta bağlantı sınırlaması][4]
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sorular için, [SQL veritabanı Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-sql-database.html)bize ulaşın.
+* Sorular için, [SQL veritabanı Için Microsoft Q&soru sayfasında](/answers/topics/azure-sql-database.html)bize ulaşın.
 * Özellik istekleri için bunları [SQL veritabanı geri bildirim Forumu](https://feedback.azure.com/forums/217321-sql-database/) veya [yönetilen örnek forumuna](https://feedback.azure.com/forums/915676-sql-managed-instance)ekleyin.
 
 
@@ -290,4 +290,3 @@ Aşağıdaki sınırlamalar şu anda yönetilen örnekteki dağıtılmış işle
 [2]: ./media/elastic-transactions-overview/sql-mi-distributed-transactions.png
 [3]: ./media/elastic-transactions-overview/server-trust-groups-azure-portal.png
 [4]: ./media/elastic-transactions-overview/managed-instance-distributed-transactions-private-endpoint-limitations.png
- 

@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: c372dafdbfa5e9cafb208673128038dc23b30f5a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488835"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792999"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Bir Azure Depolama hesabını başka bir bölgeye taşıma
 
 Bir depolama hesabını taşımak için diğer bölgede depolama hesabının bir kopyasını oluşturun. Daha sonra, AzCopy veya seçtiğiniz başka bir aracı kullanarak verilerinizi bu hesaba taşıyın.
 
-Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+Bu makalede şunları yapmayı öğreneceksiniz:
 
 > [!div class="checklist"]
 > 
@@ -31,7 +31,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > * Verileri yeni depolama hesabına taşıyın.
 > * Kaynak bölgedeki kaynakları silin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Hesabınızın kullandığı hizmetlerin ve özelliklerin hedef bölgede desteklendiğinden emin olun.
 
@@ -51,11 +51,11 @@ Bu şablon, depolama hesabınızı tanımlayan ayarlar içerir.
 
 Şablonu Azure portalını kullanarak dışarı aktarmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. **Tüm kaynaklar** ' ı seçin ve ardından depolama hesabınızı seçin.
 
-3. > **ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
+3. > **ayarları**  >  **dışarı aktarma şablonu** ' nu seçin.
 
 4. **Şablonu dışarı aktar** dikey penceresinde **İndir** ' i seçin.
 
@@ -101,19 +101,19 @@ Depolama hesabı adını ve bölgesini değiştirerek şablonu düzenleyin.
 
 Azure portal kullanarak şablonu dağıtmak için:
 
-1. Azure portal **kaynak oluştur**' u seçin.
+1. Azure portal **kaynak oluştur** ' u seçin.
 
-2. **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
+2. **Market 'Te ara** ' te, **şablon dağıtımı** yazın ve ardından **ENTER** tuşuna basın.
 
-3. **Şablon dağıtımı**seçin.
+3. **Şablon dağıtımı** seçin.
 
     ![Azure Resource Manager şablon kitaplığı](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. **Oluştur**’u seçin.
+4. **Oluştur** ’u seçin.
 
-5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini**seçin.
+5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini** seçin.
 
-6. **Dosya Yükle**' yi seçin ve ardından son bölümde indirdiğiniz dosyanın **template.js** yüklemek için yönergeleri izleyin.
+6. **Dosya Yükle** ' yi seçin ve ardından son bölümde indirdiğiniz dosyanın **template.js** yüklemek için yönergeleri izleyin.
 
 7. Dosyadaki **template.js** , depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan değerini olarak ayarlar `mytargetaccount` .
     
@@ -137,7 +137,7 @@ Azure portal kullanarak şablonu dağıtmak için:
          "location": "centralus"
          }]          
     ```
-    Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD**  =  **merkezileştirme**.
+    Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD**  =  **merkezileştirme** .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -156,7 +156,7 @@ PowerShell kullanarak şablonu dağıtmak için:
     },
     ``` 
 
-2. Dosyadakitemplate.js**konum** özelliğini hedef bölgeye **template.json** düzenleyin. Bu örnek, hedef bölgeyi olarak ayarlar `eastus` .
+2. Dosyadakitemplate.js **konum** özelliğini hedef bölgeye **template.json** düzenleyin. Bu örnek, hedef bölgeyi olarak ayarlar `eastus` .
 
     ```json
     "resources": [{
@@ -186,11 +186,11 @@ Hedef bölgede yeni bir depolama hesabı oluşturmak için şablonu dağıtın.
 
 2. Özellik değerlerini girin veya seçin:
 
-- **Abonelik**: bir Azure aboneliği seçin.
+- **Abonelik** : bir Azure aboneliği seçin.
 
-- **Kaynak grubu**: **Yeni Oluştur**'u seçin ve kaynak grubuna bir ad verin.
+- **Kaynak grubu** : **Yeni Oluştur** 'u seçin ve kaynak grubuna bir ad verin.
 
-- **Konum**: bir Azure konumu seçin.
+- **Konum** : bir Azure konumu seçin.
 
 3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** onay kutusuna tıklayın ve ardından **satın al düğmesini seçin** .
 
@@ -255,9 +255,9 @@ Azure portalını kullanarak depolama hesabını kaldırma:
 
 1. Azure portal, sol taraftaki menüyü genişleterek hizmet menüsünü açın **ve depolama hesapları ' nı seçerek depolama** hesaplarınızın listesini görüntüleyin.
 
-2. Silinecek hedef depolama hesabını bulun ve listenin sağ tarafındaki **daha fazla** düğmesine (**...**) sağ tıklayın.
+2. Silinecek hedef depolama hesabını bulun ve listenin sağ tarafındaki **daha fazla** düğmesine ( **...** ) sağ tıklayın.
 
-3. **Sil**' i seçin ve onaylayın.
+3. **Sil** ' i seçin ve onaylayın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -273,5 +273,5 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 Bu öğreticide, bir Azure Depolama hesabını bir bölgeden diğerine taşıdı ve kaynak kaynakları temizledi.  Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz:
 
 
-- [Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure VM’lerini başka bir bölgeye taşıma](/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure VM’lerini başka bir bölgeye taşıma](../../site-recovery/azure-to-azure-tutorial-migrate.md)

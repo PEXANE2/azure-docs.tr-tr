@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: 421763769ff0bd7ffe2b06eb48e1ac5ecbbb545e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 10/26/2020
+ms.openlocfilehash: c66845a801b93db4ba718bc0aba5c39eabdd24b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537975"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791979"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -36,9 +36,6 @@ Yaygın bir senaryo, bı ve analitik iş yüklerinin raporlama için veri kayna�
 Çoğaltmalar salt okunurdur, ana bilgisayardaki yazma kapasitesini doğrudan azaltmazlar. Bu özellik, yazma açısından yoğun iş yükleri için uygun değildir.
 
 Okuma çoğaltması özelliği MySQL zaman uyumsuz çoğaltma kullanır. Özelliği, zaman uyumlu çoğaltma senaryolarına yönelik değildir. Kaynak ve çoğaltma arasında ölçülebilir bir gecikme olacaktır. Çoğaltılan veriler, sonunda, ana sunucudaki verilerle tutarlı hale gelir. Bu gecikmeyi barındırabilecek iş yükleri için bu özelliği kullanın.
-
-> [!IMPORTANT]
-> MySQL için Azure Veritabanı **SATIR** tabanlı ikili günlüğü destekler. Tablonuzda birincil anahtar eksikse, DML işlemleri için tablodaki tüm satırlar taranır. Bu da çoğaltma gecikmesinin artmasına neden olur. Çoğaltmanın kaynaktaki değişikliklere ayak uydurabileceğinden emin olmak için, genellikle çoğaltma sunucusunu oluşturmadan veya önceden varsa yeniden oluşturmadan önce kaynak sunucudaki tablolara birincil anahtar eklenmesini öneririz.
 
 ## <a name="cross-region-replication"></a>Bölgeler arası çoğaltma
 Kaynak sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsiniz. Çapraz bölge çoğaltma, olağanüstü durum kurtarma planlaması veya kullanıcılarınıza daha yakın veri getirme gibi senaryolar için yararlı olabilir.
@@ -95,7 +92,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 MySQL için Azure veritabanı, Azure Izleyici 'de **saniye cinsinden yineleme gecikmesi** sağlar. Bu ölçüm yalnızca çoğaltmalar için kullanılabilir. Bu ölçüm, `seconds_behind_master` MySQL 'in komutunda kullanılabilir olan ölçüm kullanılarak hesaplanır `SHOW SLAVE STATUS` . Çoğaltma gecikmesi iş yükünüz için kabul edilebilir bir değere ulaştığında sizi bilgilendirmek için bir uyarı ayarlayın.
 
-Daha fazla çoğaltma gecikmesi görürseniz, olası nedenler hakkında sorun gidermek ve anlamak için [çoğaltma gecikmesini sorun giderme](howto-troubleshoot-replication-latency.md) bölümüne bakın.
+Daha fazla çoğaltma gecikmesi görürseniz, sorunun giderilmesi ve olası nedenleri anlamak için [sorun giderme çoğaltma gecikmesini](howto-troubleshoot-replication-latency.md) inceleyin.
 
 ## <a name="stop-replication"></a>Çoğaltmayı durdurma
 

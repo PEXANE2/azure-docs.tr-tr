@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c964e3c02148c461c601eab4bc5bfb0abb4ac052
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 6a1a7e19e598980b21ee6c41f6984de38d6a6f2b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013313"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791622"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak birden çok veri kaynağından Dizin
 
@@ -66,11 +66,11 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve Azure Cosmos DB hesabınıza genel bakış sayfasına gidin.
 
-1. **Veri Gezgini** ' yi seçin ve ardından **Yeni veritabanı**' nı seçin.
+1. **Veri Gezgini** ' yi seçin ve ardından **Yeni veritabanı** ' nı seçin.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
-1. **Otel-odalar-DB**adını girin. Geri kalan ayarlar için varsayılan değerleri kabul edin.
+1. **Otel-odalar-DB** adını girin. Geri kalan ayarlar için varsayılan değerleri kabul edin.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
@@ -78,7 +78,7 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
-1. **Oteller**altındaki **öğeleri** seçin ve ardından komut çubuğunda **öğeyi karşıya yükle** ' ye tıklayın. Öğesine gidin ve proje klasöründe **cosmosdb/HotelsDataSubset_CosmosDb.js** dosyasını seçin.
+1. **Oteller** altındaki **öğeleri** seçin ve ardından komut çubuğunda **öğeyi karşıya yükle** ' ye tıklayın. Öğesine gidin ve proje klasöründe **cosmosdb/HotelsDataSubset_CosmosDb.js** dosyasını seçin.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
@@ -88,13 +88,13 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 ### <a name="azure-blob-storage"></a>Azure Blob depolama
 
-1. [Azure Portal](https://portal.azure.com)oturum açın, Azure depolama hesabınıza gidin, **Bloblar**' a tıklayın ve ardından **+ Container**' a tıklayın.
+1. [Azure Portal](https://portal.azure.com)oturum açın, Azure depolama hesabınıza gidin, **Bloblar** ' a tıklayın ve ardından **+ Container** ' a tıklayın.
 
 1. Örnek otel odası JSON dosyalarını depolamak için **otel odaları** adlı [bir blob kapsayıcısı oluşturun](../storage/blobs/storage-quickstart-blobs-portal.md) . Ortak erişim düzeyini geçerli değerlerinden herhangi birine ayarlayabilirsiniz.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
-1. Kapsayıcı oluşturulduktan sonra açın ve komut çubuğunda **karşıya yükle** ' yi seçin. Örnek dosyaları içeren klasöre gidin. Tümünü seçip **karşıya yükle**' ye tıklayın.
+1. Kapsayıcı oluşturulduktan sonra açın ve komut çubuğunda **karşıya yükle** ' yi seçin. Örnek dosyaları içeren klasöre gidin. Tümünü seçip **karşıya yükle** ' ye tıklayın.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
@@ -110,9 +110,9 @@ Arama hizmetinize kimlik doğrulaması yapmak için, hizmet URL 'SI ve erişim a
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+1. **Ayarlar**  >  **anahtarlar** ' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Yeni veritabanı oluşturma" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
 İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
@@ -126,7 +126,7 @@ Arama hizmetinize kimlik doğrulaması yapmak için, hizmet URL 'SI ve erişim a
 
 1. NuGet paketlerinde **Microsoft.Extensions.Configurlama** ve **Microsoft.Extensions.Configuration.Js** arayın ve bunları da birlikte yüklersiniz.
 
-1. Çözüm dosyasını **/v11/AzureSearchMultipleDataSources.sln**açın.
+1. Çözüm dosyasını **/v11/AzureSearchMultipleDataSources.sln** açın.
 
 1. Çözüm Gezgini, bağlantı bilgilerini eklemek için dosya **appsettings.js** düzenleyin.  
 
@@ -240,7 +240,7 @@ private static async Task CreateAndRunCosmosDbIndexerAsync(string indexName, Sea
     await indexerClient.CreateOrUpdateDataSourceConnectionAsync(cosmosDbDataSource);
 ```
 
-Veri kaynağı oluşturulduktan sonra program, **otel-odalar-Cosmos-Indexer**adlı bir Azure Cosmos DB Dizin Oluşturucu ayarlar.
+Veri kaynağı oluşturulduktan sonra program, **otel-odalar-Cosmos-Indexer** adlı bir Azure Cosmos DB Dizin Oluşturucu ayarlar.
 
 Program, Yukarıdaki kodun içeriğiyle mevcut dizin oluşturucunun üzerine yazarak aynı ada sahip mevcut dizin oluşturucularının güncelleştirilmesini sağlayacaktır. Ayrıca, bu örneği birden çok kez çalıştırmak istemeniz durumunda sıfırlama ve çalıştırma eylemlerini de içerir.
 
@@ -306,7 +306,7 @@ private static async Task CreateAndRunBlobIndexerAsync(string indexName, SearchI
     await indexerClient.CreateOrUpdateDataSourceConnectionAsync(blobDataSource);
 ```
 
-Veri kaynağı oluşturulduktan sonra program, aşağıda gösterildiği gibi **otel-odalar-blob-Indexer**adlı bir blob Dizin Oluşturucu ayarlar.
+Veri kaynağı oluşturulduktan sonra program, aşağıda gösterildiği gibi **otel-odalar-blob-Indexer** adlı bir blob Dizin Oluşturucu ayarlar.
 
 JSON blob 'ları yerine adında bir anahtar alanı içerir **`Id`** **`HotelId`** . Kod, Dizin `FieldMapping` oluşturucudan **`Id`** alan değerini **`HotelId`** dizindeki belge anahtarına yönlendirecek şekilde söylemek için sınıfını kullanır.
 

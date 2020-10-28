@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 29ab7def6209483ee891dc0d26bf8163cdc39a23
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6f216a7f0851661efc61a771fc35feb71e77fd1f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165269"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792489"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server yük devretme kümesi örnekleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,8 +30,8 @@ Azure VM 'lerinde SQL Server, sunucu örneği düzeyinde yedeklilik aracılığ�
 
 Makalenin geri kalanı, Azure VM 'lerinde SQL Server ile kullanıldığında yük devretme kümesi örneklerinin farklılıklarına odaklanır. Yük Devretme Kümelemesi teknolojisi hakkında daha fazla bilgi edinmek için bkz.: 
 
-- [Windows küme teknolojileri](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
-- [SQL Server yük devretme kümesi örnekleri](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows küme teknolojileri](/windows-server/failover-clustering/failover-clustering-overview)
+- [SQL Server yük devretme kümesi örnekleri](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 
 ## <a name="quorum"></a>Çekirdeğin
 
@@ -51,8 +51,8 @@ Azure VM 'lerinde SQL Server, SQL Server yük devretme kümesi örneklerinin da�
 |**En düşük işletim sistemi sürümü**| Tümü |Windows Server 2012|Windows Server 2016|
 |**En düşük SQL Server sürümü**|Tümü|SQL Server 2012|SQL Server 2016|
 |**Desteklenen VM kullanılabilirliği** |Yakınlık yerleşimi gruplarıyla kullanılabilirlik kümeleri |Kullanılabilirlik kümeleri ve kullanılabilirlik bölgeleri|Kullanılabilirlik kümeleri |
-|**FILESTREAM 'i destekler**|Yes|Hayır|Yes |
-|**Azure Blob önbelleği**|Hayır|Hayır|Yes|
+|**FILESTREAM 'i destekler**|Evet|Hayır|Evet |
+|**Azure Blob önbelleği**|Hayır|Hayır|Evet|
 
 Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabilen her depolama seçeneğinin avantajları ve sınırlamaları listelenmektedir. 
 
@@ -60,10 +60,10 @@ Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabile
 
 [Azure paylaşılan diskler](../../../virtual-machines/windows/disks-shared.md) , [Azure yönetilen disklerinin](../../../virtual-machines/managed-disks-overview.md)bir özelliğidir. Windows Server Yük Devretme Kümelemesi, yük devretme kümesi örneğiyle Azure Paylaşılan diskleri kullanmayı destekler. 
 
-**Desteklenen işletim sistemi**: tümü   
-**Desteklenen SQL sürümü**: tümü     
+**Desteklenen işletim sistemi** : tümü   
+**Desteklenen SQL sürümü** : tümü     
 
-**Avantajlar**: 
+**Avantajlar** : 
 - Yüksek kullanılabilirlik ve olağanüstü durum kurtarma (HADR) mimarisini olduğu gibi tutarken Azure 'a geçiş yapmak isteyen uygulamalar için faydalıdır. 
 - , SCSI kalıcı ayırmaları (SCSI PR) desteği nedeniyle kümelenmiş uygulamaları Azure 'a geçirebilirler. 
 - , Paylaşılan Azure Premium SSD ve Azure Ultra Disk depolamayı destekler.
@@ -71,7 +71,7 @@ Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabile
 - FILESTREAM 'i destekler.
 
 
-**Sınırlamalar**: 
+**Sınırlamalar** : 
 - Sanal makinelerin aynı Kullanılabilirlik kümesine ve yakınlık yerleşimi grubuna yerleştirilmesi gerekir.
 - Kullanılabilirlik alanları desteklenmiyor.
 - Premium SSD disk önbelleğe alma desteklenmez.
@@ -82,8 +82,8 @@ Başlamak için bkz. [Azure Paylaşılan disklerle SQL Server yük devretme küm
 
 [Depolama alanları doğrudan](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) , Azure sanal makinelerinde Yük Devretme Kümelemesi ile desteklenen bir Windows Server özelliğidir. Yazılım tabanlı bir sanal SAN sağlar.
 
-**Desteklenen işletim sistemi**: Windows Server 2016 ve üzeri   
-**Desteklenen SQL sürümü**: SQL Server 2016 ve üzeri   
+**Desteklenen işletim sistemi** : Windows Server 2016 ve üzeri   
+**Desteklenen SQL sürümü** : SQL Server 2016 ve üzeri   
 
 
 **Larından** 
@@ -104,8 +104,8 @@ Başlamak için, bkz. [SQL Server yük devretme kümesi örneği depolama alanla
 
 [Premium dosya paylaşımları](../../../storage/files/storage-how-to-create-premium-fileshare.md) , [Azure dosyalarının](../../../storage/files/index.yml)bir özelliğidir. Premium dosya paylaşımları SSD olarak desteklenir ve sürekli düşük gecikme süresine sahiptir. Windows Server 2012 veya sonraki sürümlerde SQL Server 2012 veya üzeri yük devretme kümesi örnekleriyle birlikte kullanılmak üzere tam olarak desteklenmektedir. Bir dosya paylaşımını herhangi bir kesinti olmadan yeniden boyutlandırabilir ve ölçeklendirebileceğiniz için Premium dosya paylaşımları size daha fazla esneklik sağlar.
 
-**Desteklenen işletim sistemi**: Windows Server 2012 ve üzeri   
-**Desteklenen SQL sürümü**: SQL Server 2012 ve üzeri   
+**Desteklenen işletim sistemi** : Windows Server 2012 ve üzeri   
+**Desteklenen SQL sürümü** : SQL Server 2012 ve üzeri   
 
 **Larından** 
 - Yalnızca sanal makineler için paylaşılan depolama çözümü birden çok kullanılabilirlik bölgesine yayılır. 
@@ -122,8 +122,8 @@ Başlamak için bkz. [Premium dosya paylaşımıyla SQL Server yük devretme kü
 
 Desteklenen depolamaya sahip iş ortağı kümesi çözümleri vardır. 
 
-**Desteklenen işletim sistemi**: tümü   
-**Desteklenen SQL sürümü**: tümü   
+**Desteklenen işletim sistemi** : tümü   
+**Desteklenen SQL sürümü** : tümü   
 
 Bir örnek, depolama olarak SIOS veri Man kullanır. Daha fazla bilgi için bkz. blog girdisi [Yük Devretme Kümelemesi ve SIOS veri Man](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/).
 
@@ -131,8 +131,8 @@ Bir örnek, depolama olarak SIOS veri Man kullanır. Daha fazla bilgi için bkz.
 
 Ayrıca, Azure ExpressRoute aracılığıyla bir Iscsı hedefi paylaşılan blok depolama alanını kullanıma sunabilirsiniz. 
 
-**Desteklenen işletim sistemi**: tümü   
-**Desteklenen SQL sürümü**: tümü   
+**Desteklenen işletim sistemi** : tümü   
+**Desteklenen SQL sürümü** : tümü   
 
 Örneğin, NetApp özel depolama (NPS), Azure VM 'lerine Equinx ile ExpressRoute aracılığıyla bir Iscsı hedefi sunar.
 
@@ -155,7 +155,7 @@ Tam uzantı otomatik yedekleme, düzeltme eki uygulama ve gelişmiş Portal yön
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure sanal makineleri, kümelenmiş paylaşılan birimler (CSV) ve [azure standart Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) ya da Azure paylaşılan diskler kullanan SQL Server VM 'lerde depolama Ile Windows Server 2019 ' de Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) ' i destekler. 
+Azure sanal makineleri, kümelenmiş paylaşılan birimler (CSV) ve [azure standart Load Balancer](../../../load-balancer/load-balancer-overview.md) ya da Azure paylaşılan diskler kullanan SQL Server VM 'lerde depolama Ile Windows Server 2019 ' de Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) ' i destekler. 
 
 Azure sanal makinelerde, kümelenmiş paylaşılan birimlerde Windows Server 2016 veya önceki sürümlerde MSDTC desteklenmez çünkü:
 
@@ -171,4 +171,3 @@ Daha fazla bilgi için bkz.
 
 - [Windows küme teknolojileri](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server yük devretme kümesi örnekleri](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
-

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/30/2020
-ms.openlocfilehash: c1f60888a3d1fda50e63c7d11ea5d871f7c1e9fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33c63ffc4220da6d98c462039897067e4ba69491
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321348"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793169"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek hizmeti katmanları
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -84,7 +84,7 @@ Aşağıdaki faktörler, veri ve günlük dosyaları için kullanılan depolama 
 > [!IMPORTANT]
 > MDF ve LDF dosyaları için ayrılan toplam depolama alanı için ücretlendirilirsiniz.
 
-MDF ve LDF dosyalarınızın geçerli toplam boyutunu izlemek için [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql)kullanın. Bireysel MDF ve LDF dosyalarının geçerli boyutunu izlemek için [sys.database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql)kullanın.
+MDF ve LDF dosyalarınızın geçerli toplam boyutunu izlemek için [sp_spaceused](/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql)kullanın. Bireysel MDF ve LDF dosyalarının geçerli boyutunu izlemek için [sys.database_files](/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql)kullanın.
 
 > [!IMPORTANT]
 > Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](file-space-manage.md).
@@ -93,8 +93,8 @@ MDF ve LDF dosyalarınızın geçerli toplam boyutunu izlemek için [sp_spaceuse
 
 Veritabanı yedeklemeleri için depolama, SQL veritabanı ve SQL yönetilen örneği 'nin zaman içinde geri yükleme (ıNR) ve [uzun süreli saklama (LTR)](long-term-retention-overview.md) özelliklerini desteklemek için ayrılır. Bu depolama, her veritabanı için ayrı ayrı ayrılır ve iki ayrı veritabanı başına ücret olarak faturalandırılır.
 
-- **Sür**: ayrı veritabanı yedeklemeleri, [Okuma Erişimli Coğrafi olarak yedekli (RA-GRS) depolamaya](../../storage/common/geo-redundant-design.md) otomatik olarak kopyalanır. Yeni yedeklemeler oluşturuldıkça depolama boyutu dinamik olarak artar. Depolama, haftalık tam yedeklemeler, günlük değişiklik yedeklemeleri ve 5 dakikada bir kopyalanmış olan işlem günlüğü yedeklemeleri tarafından kullanılır. Depolama alanı tüketimi, veritabanının değişim hızına ve yedeklemeler için Bekletme süresine bağlıdır. Her veritabanı için 7 ila 35 gün arasında ayrı bir bekletme süresi yapılandırabilirsiniz. Veritabanı boyutunun yüzde 100 ' una (1x) eşit olan minimum depolama miktarı ek bir ücret ödemeden sunulmaktadır. Çoğu veritabanı için, bu miktar 7 günlük yedeklemeleri depolamak için yeterlidir.
-- **LTR**: 10 yıla kadar tam yedeklemelerin uzun süreli bekletmesini yapılandırma seçeneğiniz de vardır (Bu özellik [SQL yönetilen örneği için sınırlı genel önizleme](long-term-retention-overview.md#sql-managed-instance-support)aşamasındadır. Bir LTR ilkesi ayarlarsanız, bu yedeklemeler RA-GRS depolama alanında otomatik olarak depolanır, ancak yedeklemelerin ne sıklıkla kopyalanacağını kontrol edebilirsiniz. Farklı uyumluluk gereksinimlerini karşılamak için haftalık, aylık ve/veya yıllık yedeklemeler için farklı saklama süreleri seçebilirsiniz. Seçtiğiniz yapılandırma, LTR yedeklemeleri için ne kadar Depolama kullanılacağını belirler. LTR depolama maliyetini tahmin etmek için, LTR Fiyatlandırma hesaplayıcısı ' nı kullanabilirsiniz. Daha fazla bilgi için bkz. [SQL veritabanı uzun süreli saklama](long-term-retention-overview.md).
+- **Sür** : ayrı veritabanı yedeklemeleri, [Okuma Erişimli Coğrafi olarak yedekli (RA-GRS) depolamaya](../../storage/common/geo-redundant-design.md) otomatik olarak kopyalanır. Yeni yedeklemeler oluşturuldıkça depolama boyutu dinamik olarak artar. Depolama, haftalık tam yedeklemeler, günlük değişiklik yedeklemeleri ve 5 dakikada bir kopyalanmış olan işlem günlüğü yedeklemeleri tarafından kullanılır. Depolama alanı tüketimi, veritabanının değişim hızına ve yedeklemeler için Bekletme süresine bağlıdır. Her veritabanı için 7 ila 35 gün arasında ayrı bir bekletme süresi yapılandırabilirsiniz. Veritabanı boyutunun yüzde 100 ' una (1x) eşit olan minimum depolama miktarı ek bir ücret ödemeden sunulmaktadır. Çoğu veritabanı için, bu miktar 7 günlük yedeklemeleri depolamak için yeterlidir.
+- **LTR** : 10 yıla kadar tam yedeklemelerin uzun süreli bekletmesini yapılandırma seçeneğiniz de vardır (Bu özellik [SQL yönetilen örneği için sınırlı genel önizleme](long-term-retention-overview.md#sql-managed-instance-support)aşamasındadır. Bir LTR ilkesi ayarlarsanız, bu yedeklemeler RA-GRS depolama alanında otomatik olarak depolanır, ancak yedeklemelerin ne sıklıkla kopyalanacağını kontrol edebilirsiniz. Farklı uyumluluk gereksinimlerini karşılamak için haftalık, aylık ve/veya yıllık yedeklemeler için farklı saklama süreleri seçebilirsiniz. Seçtiğiniz yapılandırma, LTR yedeklemeleri için ne kadar Depolama kullanılacağını belirler. LTR depolama maliyetini tahmin etmek için, LTR Fiyatlandırma hesaplayıcısı ' nı kullanabilirsiniz. Daha fazla bilgi için bkz. [SQL veritabanı uzun süreli saklama](long-term-retention-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -102,5 +102,4 @@ Genel amaçlı ve iş açısından kritik hizmet katmanlarında bulunan belirli 
 
 - [Azure SQL veritabanı Için sanal çekirdek tabanlı kaynak sınırları](resource-limits-vcore-single-databases.md).
 - [Azure SQL veritabanı 'nda havuza alınmış veritabanları Için sanal çekirdek tabanlı kaynak sınırları](resource-limits-vcore-elastic-pools.md).
-- [Azure SQL yönetilen örneği Için sanal çekirdek tabanlı kaynak sınırları](../managed-instance/resource-limits.md). 
-
+- [Azure SQL yönetilen örneği Için sanal çekirdek tabanlı kaynak sınırları](../managed-instance/resource-limits.md).

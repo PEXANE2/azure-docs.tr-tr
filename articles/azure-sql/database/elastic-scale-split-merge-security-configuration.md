@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 235efc550fd47d4244a5bf081c75d5e824a8e4b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829450"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793441"
 ---
 # <a name="split-merge-security-configuration"></a>Bölünmüş birleştirme güvenlik yapılandırması
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,18 +32,18 @@ Sertifikalar iki şekilde yapılandırılır.
 
 ## <a name="to-obtain-certificates"></a>Sertifikaları almak için
 
-Sertifikalar, genel sertifika yetkililerinden (CA 'Lar) veya [Windows sertifika hizmeti](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)'nden alınabilir. Bunlar, sertifikaları almak için tercih edilen yöntemlerdir.
+Sertifikalar, genel sertifika yetkililerinden (CA 'Lar) veya [Windows sertifika hizmeti](/windows/win32/seccrypto/certificate-services)'nden alınabilir. Bunlar, sertifikaları almak için tercih edilen yöntemlerdir.
 
-Bu seçenekler yoksa, **otomatik olarak imzalanan sertifikalar**oluşturabilirsiniz.
+Bu seçenekler yoksa, **otomatik olarak imzalanan sertifikalar** oluşturabilirsiniz.
 
 ## <a name="tools-to-generate-certificates"></a>Sertifika oluşturmaya yönelik araçlar
 
-* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](/previous-versions/dotnet/netframework-4.0/bfsktky3(v=vs.100))
+* [pvk2pfx.exe](/windows-hardware/drivers/devtest/pvk2pfx)
 
 ### <a name="to-run-the-tools"></a>Araçları çalıştırmak için
 
-* Visual Studios için bir Geliştirici Komut İstemi, bkz. [Visual Studio komut istemi](https://msdn.microsoft.com/library/ms229859.aspx) 
+* Visual Studios için bir Geliştirici Komut İstemi, bkz. [Visual Studio komut istemi](/dotnet/framework/tools/developer-command-prompt-for-vs) 
   
     Yüklüyse, şuraya gidin:
   
@@ -124,7 +124,7 @@ Varsayılan yapılandırma HTTP uç noktasına tüm erişimi reddeder. Bu uç no
 Varsayılan yapılandırma, HTTPS uç noktasına tüm erişime izin verir. Bu ayar daha fazla kısıtlanmış olabilir.
 
 ### <a name="changing-the-configuration"></a>Yapılandırmayı değiştirme
-Ve uç nokta için uygulanan erişim denetimi kuralları grubu, **\<EndpointAcls>** **hizmet yapılandırma dosyasının**bölümünde yapılandırılır.
+Ve uç nokta için uygulanan erişim denetimi kuralları grubu, **\<EndpointAcls>** **hizmet yapılandırma dosyasının** bölümünde yapılandırılır.
 
 ```xml
 <EndpointAcls>
@@ -437,35 +437,35 @@ Hizmet yapılandırma dosyasında, bulut hizmetine yüklenen sertifikanın parma
 * İstemci sertifikalarını yapılandırma
 
 ## <a name="find-certificate"></a>Sertifika bul
-Şu adımları izleyin:
+Şu adımları uygulayın:
 
 1. mmc.exe çalıştırın.
 2. Dosya-> ek bileşen Ekle/Kaldır...
-3. **Sertifikalar**' ı seçin.
-4. **Ekle**'ye tıklayın.
+3. **Sertifikalar** ' ı seçin.
+4. **Ekle** 'ye tıklayın.
 5. Sertifika deposu konumunu seçin.
 6. **Finish (Son)** düğmesine tıklayın.
-7. **Tamam**'a tıklayın.
-8. **Sertifikalar**' ı genişletin.
+7. **Tamam** ’a tıklayın.
+8. **Sertifikalar** ' ı genişletin.
 9. Sertifika depolama düğümünü genişletin.
 10. Sertifika alt düğümünü genişletin.
 11. Listeden bir sertifika seçin.
 
 ## <a name="export-certificate"></a>Sertifikayı dışarı aktarma
-**Sertifika dışarı aktarma Sihirbazı**'nda:
+**Sertifika dışarı aktarma Sihirbazı** 'nda:
 
-1. **İleri**’ye tıklayın.
-2. **Evet**' i seçin ve ardından **özel anahtarı dışarı aktarın**.
-3. **İleri**’ye tıklayın.
+1. **İleri** ’ye tıklayın.
+2. **Evet** ' i seçin ve ardından **özel anahtarı dışarı aktarın** .
+3. **İleri** ’ye tıklayın.
 4. İstenen çıkış dosyası biçimini seçin.
 5. İstenen seçenekleri denetleyin.
-6. **Parolayı**denetleyin.
+6. **Parolayı** denetleyin.
 7. Güçlü bir parola girin ve onaylayın.
-8. **İleri**’ye tıklayın.
+8. **İleri** ’ye tıklayın.
 9. Sertifikanın depolanacağı bir dosya adı yazın veya dosyaya gidin (bir kullanın. PFX uzantısı).
-10. **İleri**’ye tıklayın.
+10. **İleri** ’ye tıklayın.
 11. **Finish (Son)** düğmesine tıklayın.
-12. **Tamam**'a tıklayın.
+12. **Tamam** ’a tıklayın.
 
 ## <a name="import-certificate"></a>Sertifikayı içeri aktarma
 Sertifika Içeri aktarma Sihirbazı 'nda:
@@ -474,26 +474,26 @@ Sertifika Içeri aktarma Sihirbazı 'nda:
    
    * Yalnızca geçerli kullanıcı altında çalışan işlemlerin hizmete erişmesi durumunda **Geçerli Kullanıcı** ' yı seçin
    * Bu bilgisayardaki başka işlemlerin hizmete erişmesi durumunda **yerel makine** ' yi seçin
-2. **İleri**’ye tıklayın.
+2. **İleri** ’ye tıklayın.
 3. Bir dosyadan içeri aktarıldıysanız dosya yolunu onaylayın.
 4. İçeri aktarıldıysanız. PFX dosyası:
    1. Özel anahtarı koruyan parolayı girin
    2. İçeri aktarma seçeneklerini belirleyin
 5. Aşağıdaki depoya "yerleştir" sertifikalarını seçin
-6. **Gözat**’a tıklayın.
+6. **Gözat** ’a tıklayın.
 7. İstenen depoyu seçin.
 8. **Finish (Son)** düğmesine tıklayın.
    
-   * Güvenilen kök sertifika yetkilisi deposu seçilmişse **Evet**' e tıklayın.
+   * Güvenilen kök sertifika yetkilisi deposu seçilmişse **Evet** ' e tıklayın.
 9. Tüm iletişim kutusu pencereleri üzerinde **Tamam** ' ı tıklatın.
 
 ## <a name="upload-certificate"></a>Sertifikayı karşıya yükleme
 [Azure Portal](https://portal.azure.com/)
 
-1. **Cloud Services**seçin.
+1. **Cloud Services** seçin.
 2. Bulut hizmetini seçin.
-3. Üstteki menüde, **Sertifikalar**' a tıklayın.
-4. Alt çubukta **karşıya yükle**' ye tıklayın.
+3. Üstteki menüde, **Sertifikalar** ' a tıklayın.
+4. Alt çubukta **karşıya yükle** ' ye tıklayın.
 5. Sertifika dosyasını seçin.
 6. Eğer bir. PFX dosyası, özel anahtar için parolayı girin.
 7. Tamamlandıktan sonra, listedeki yeni girdiden sertifika parmak izini kopyalayın.
@@ -508,4 +508,3 @@ Bu belgede açıklanan TLS ayarları, HTTPS uç noktası kullanıldığında hiz
 Bu veritabanında depolanan kimlik bilgileri şifrelenir. Bununla birlikte, en iyi uygulama olarak, hizmet dağıtımlarınızın hem Web hem de çalışan rollerinin hem meta veri veritabanına erişimi hem de depolanan kimlik bilgilerinin şifrelenmesi ve şifresinin çözülmesi için kullanılan sertifika olduğundan emin olun. 
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
-

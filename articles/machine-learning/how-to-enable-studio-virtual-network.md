@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: b6d46dfc348cc518daf2e6af4d5b9677148c3911
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a5206ed55dfe2632c7f6604c4f3d8e3199e23b99
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503224"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792030"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure sanal ağında Azure Machine Learning Studio 'yu kullanma
 
@@ -36,10 +36,10 @@ Bu serideki diğer makalelere göz atın:
 
 
 > [!IMPORTANT]
-> Çalışma alanınız, Azure Kamu veya Azure Çin 21Vianet gibi bir bağımsız __bulutta__ise, tümleşik Not defterleri sanal bir ağdaki depolamanın _kullanımını desteklemez._ Bunun yerine, Jupyıter not defterlerini bir işlem örneğinden kullanabilirsiniz. Daha fazla bilgi için, [Işlem örneği Not Defteri Içindeki erişim verileri](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) bölümüne bakın.
+> Çalışma alanınız, Azure Kamu veya Azure Çin 21Vianet gibi bir bağımsız __bulutta__ ise, tümleşik Not defterleri sanal bir ağdaki depolamanın _kullanımını desteklemez._ Bunun yerine, Jupyıter not defterlerini bir işlem örneğinden kullanabilirsiniz. Daha fazla bilgi için, [Işlem örneği Not Defteri Içindeki erişim verileri](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) bölümüne bakın.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
@@ -53,7 +53,7 @@ Bu serideki diğer makalelere göz atın:
 
 Studio 'ya bir sanal ağın içindeki bir kaynaktan erişiyorsanız (örneğin, bir işlem örneği veya sanal makine), sanal ağdan Studio 'ya giden trafiğe izin vermeniz gerekir. 
 
-Örneğin, giden trafiği kısıtlamak için ağ güvenlik grupları (NSG) kullanıyorsanız, __Azurefrontkapısı. ön uç__'nin __hizmet etiketi__ hedefine bir kural ekleyin.
+Örneğin, giden trafiği kısıtlamak için ağ güvenlik grupları (NSG) kullanıyorsanız, __Azurefrontkapısı. ön uç__ 'nin __hizmet etiketi__ hedefine bir kural ekleyin.
 
 ## <a name="access-data-using-the-studio"></a>Studio 'yu kullanarak verilere erişme
 
@@ -66,9 +66,6 @@ Yönetilen kimlik ' i etkinleştirmezseniz bu hatayı alırsınız, `Error: Unab
 * Bir oto ml denemesi gönder.
 * Etiketleme projesi başlatın.
 
-> [!NOTE]
-> [Ml yardımlı veri etiketlemeyi](how-to-create-labeling-projects.md#use-ml-assisted-labeling) , bir sanal ağın arkasında güvenliği sağlanmış varsayılan depolama hesaplarını desteklemez. ML yardımlı veri etiketlemeyi için varsayılan olmayan bir depolama hesabı kullanmanız gerekir. Varsayılan olmayan depolama hesabı, sanal ağın arkasında güvenli hale getirilmiş olabilir. 
-
 Studio, bir sanal ağdaki aşağıdaki veri deposu türlerinden veri okumayı destekler:
 
 * Azure Blob
@@ -76,17 +73,21 @@ Studio, bir sanal ağdaki aşağıdaki veri deposu türlerinden veri okumayı de
 * Azure Data Lake Storage Gen2
 * Azure SQL Veritabanı
 
-### <a name="configure-datastores-to-use-managed-identity"></a>Veri depolarını yönetilen kimlik kullanacak şekilde yapılandırma
+### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Depolama özel bağlantısına çalışma alanı yönetilen kimlik __okuyucusu__ erişimi verme
+
+Bu adım yalnızca, Azure Storage hesabını [özel bir uç nokta](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)ile sanal ağınıza eklediyseniz gereklidir. Daha fazla bilgi için bkz. [Reader](../role-based-access-control/built-in-roles.md#reader) yerleşik rolü.
+
+### <a name="configure-datastores-to-use-workspace-managed-identity"></a>Veri depolarını çalışma alanı yönetilen kimliğini kullanacak şekilde yapılandırma
 
 Azure Machine Learning, depolama hesaplarına bağlanmak için [veri depolarını](concept-data.md#datastores) kullanır. Veri mağazalarınızı yönetilen kimlik kullanacak şekilde yapılandırmak için aşağıdaki adımları kullanın. 
 
-1. Studio 'da __veri depoları__' nı seçin.
+1. Studio 'da __veri depoları__ ' nı seçin.
 
-1. Yeni bir veri deposu oluşturmak için __+ Yeni veri deposu__' nu seçin.
+1. Yeni bir veri deposu oluşturmak için __+ Yeni veri deposu__ ' nu seçin.
 
-    Mevcut bir veri deposunu güncelleştirmek için veri deposunu seçin ve __kimlik bilgilerini güncelleştir__' i seçin.
+    Mevcut bir veri deposunu güncelleştirmek için veri deposunu seçin ve __kimlik bilgilerini güncelleştir__ ' i seçin.
 
-1. Veri deposu ayarları ' nda, __çalışma alanı tarafından yönetilen kimliği kullanarak Azure Machine Learning hizmetin depolamaya erişmesine Izin ver__için __Evet__ ' i seçin.
+1. Veri deposu ayarları ' nda, __çalışma alanı tarafından yönetilen kimliği kullanarak Azure Machine Learning hizmetin depolamaya erişmesine Izin ver__ için __Evet__ ' i seçin.
 
 
 Bu adımlar, Azure Kaynak tabanlı erişim denetimi (Azure RBAC) kullanarak, çalışma alanı tarafından yönetilen kimliği depolama hizmetine __okuyucu__ olarak ekler. __Okuyucu__ erişimi, çalışma alanının güvenlik duvarı ayarlarını almasına ve verilerin sanal ağdan çıkmadığınızdan emin olmanızı sağlar.
@@ -100,7 +101,7 @@ Depolama hizmetlerine erişmek için yönetilen kimlik kullanılması bazı güv
 
 ### <a name="azure-blob-storage"></a>Azure Blob depolama
 
-__Azure Blob depolama__için çalışma alanı tarafından yönetilen kimlik, blob depolamadan veri okuyabilmesi Için bir [BLOB veri okuyucusu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) olarak da eklenir.
+__Azure Blob depolama__ için çalışma alanı tarafından yönetilen kimlik, blob depolamadan veri okuyabilmesi Için bir [BLOB veri okuyucusu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) olarak da eklenir.
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage 2. Access Control
 
@@ -127,15 +128,15 @@ Tasarımcı, çıktıyı varsayılan olarak depolamak için çalışma alanını
 Bir işlem hattı için yeni bir varsayılan depolama alanı ayarlamak için:
 
 1. İşlem hattı Taslağınızda, işlem hatlarınızın başlığının yakınında bulunan **Ayarlar dişli simgesini** seçin.
-1. **Varsayılan veri deposunu Seç**' i seçin.
+1. **Varsayılan veri deposunu Seç** ' i seçin.
 1. Yeni bir veri deposu belirtin.
 
 Ayrıca modül temelinde varsayılan veri deposunu geçersiz kılabilirsiniz. Bu, her bir modülün depolama konumu üzerinde denetim sağlar.
 
 1. Çıktısını belirtmek istediğiniz modülü seçin.
 1. **Çıkış ayarları** bölümünü genişletin.
-1. **Varsayılan çıkış ayarlarını geçersiz kıl ' ı**seçin.
-1. **Çıkış ayarlarını ayarla**' yı seçin.
+1. **Varsayılan çıkış ayarlarını geçersiz kıl ' ı** seçin.
+1. **Çıkış ayarlarını ayarla** ' yı seçin.
 1. Yeni bir veri deposu belirtin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

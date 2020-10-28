@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: e5792f63025c0be4d9f67a6971707618f12cc8ce
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f16b0fb5cf241604c627925a7cd905c1683399fd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755896"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886777"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -147,7 +147,8 @@ function fromFile() {
 fromFile();
 ```
 
-Giriş olarak gönderme akışı kullanmak, dosya akışının konumunun *verilerin başlangıcına* ayarlandığını varsayar ve üst bilgileri atlar. Üst bilgi atlanmadığında API bazı durumlarda çalışmaya devam eder, ancak en iyi sonuçlar için üst bilgileri okumak ve konumu ses verilerinin başlangıcına ayarlamak için mantık uygulamayı düşünün.
+Giriş olarak bir gönderim akışı kullanmak, ses verilerinin ham PCM olduğunu varsayar, ör. herhangi bir üst bilgi atlanıyor.
+Üst bilgi atlanmadığında, API bazı durumlarda çalışmaya devam eder, ancak en iyi sonuçlar için, `fs` *ses verilerinin başlangıcında* başlayacak şekilde üstbilgileri okumak için mantığı uygulamayı düşünün.
 
 ---
 

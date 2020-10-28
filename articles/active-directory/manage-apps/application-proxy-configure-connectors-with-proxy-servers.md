@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: fcf06c280a93489b2e958b9baff2e132da37c005
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 81a735966b2a0ebdd7c8fcd9e9aa467d68aac354
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426457"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792761"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Mevcut şirket içi proxy sunucularıyla çalışma
 
@@ -111,11 +111,12 @@ Giden ara sunucuda dikkate alınması gereken dört önemli nokta vardır:
 
 Aşağıdaki URL 'Lere erişime izin ver:
 
-| URL | Nasıl kullanılır? |
-| --- | --- |
-| \*. msappproxy.net<br>\*. servicebus.windows.net | Bağlayıcı ile uygulama proxy 'Si bulut hizmeti arasındaki iletişim |
-| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>www.d-trust.net<br>root-c3-ca2-2009.ocsp.d-trust.net<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | Bağlayıcı, sertifikaları doğrulamak için bu URL 'Leri kullanır. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.net <br> *. msauthimages.net<br>*. msecnd.net <br> *. msftauth.net<br>*. msftauthimages.net <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | Bağlayıcı, kayıt işlemi sırasında bu URL 'Leri kullanır. |
+| URL | Bağlantı noktası |  Nasıl kullanılır? |
+| --- | --- | --- |
+| &ast;. msappproxy.net<br>&ast;. servicebus.windows.net | 443/HTTPS | Bağlayıcı ile uygulama proxy 'Si bulut hizmeti arasındaki iletişim |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP | Bağlayıcı, sertifikaları doğrulamak için bu URL 'Leri kullanır. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;. microsoftonline-p.com<br>&ast;. msauth.net<br>&ast;. msauthimages.net<br>&ast;. msecnd.net<br>&ast;. msftauth.net<br>&ast;. msftauthimages.net<br>&ast;. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS | Bağlayıcı, kayıt işlemi sırasında bu URL 'Leri kullanır. |
+| ctldl.windowsupdate.com | 80/HTTP | Bağlayıcı, kayıt işlemi sırasında bu URL 'YI kullanır. |
 
 Güvenlik duvarınız veya proxy 'niz DNS izin verilenler listelerini yapılandırmanıza izin veriyorsa, \* . msappproxy.net ve. ServiceBus.Windows.net bağlantılarına izin verebilirsiniz \* .
 
@@ -178,7 +179,7 @@ Aşağıdaki örnekler Ileti çözümleyici 'ye özgüdür, ancak ilkeler herhan
    ![Services. msc ' de Azure AD Uygulama Ara Sunucusu Bağlayıcısı hizmeti](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
 1. Ileti Çözümleyicisi 'ni yönetici olarak çalıştırın.
-1. **Yerel Izlemeyi Başlat**' ı seçin.
+1. **Yerel Izlemeyi Başlat** ' ı seçin.
 1. Azure AD Uygulama Ara Sunucusu Bağlayıcısı hizmetini başlatın.
 1. Ağ yakalamayı durdurun.
 
@@ -188,7 +189,7 @@ Aşağıdaki örnekler Ileti çözümleyici 'ye özgüdür, ancak ilkeler herhan
 
 Uygulama proxy bağlayıcınızı proxy sunucularını atlayacak ve doğrudan uygulama ara sunucusu hizmetine bağlanacak şekilde yapılandırdıysanız, başarısız olan TCP bağlantı girişimleri için ağ yakalamaya bakmak isteyebilirsiniz.
 
-Bu denemeleri belirlemek için Ileti Çözümleyicisi filtresini kullanın. `property.TCPSynRetransmit`Filtre kutusuna girin ve **Uygula**' yı seçin.
+Bu denemeleri belirlemek için Ileti Çözümleyicisi filtresini kullanın. `property.TCPSynRetransmit`Filtre kutusuna girin ve **Uygula** ' yı seçin.
 
 Bir SYN paketi, TCP bağlantısı kurmak için gönderilen ilk pakettir. Bu paket bir yanıt döndürmezse, SYN işlemi yeniden deneyin. Yeniden iletilen tüm sistem 'leri görmek için önceki filtreyi kullanabilirsiniz. Ardından, bu sistem 'lerin bağlayıcıyla ilgili herhangi bir trafiğe karşılık geldiğini kontrol edebilirsiniz.
 

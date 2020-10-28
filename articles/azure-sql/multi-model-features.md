@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5a067272caf9b072117ba57b7b16f8d78a8b456
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073312"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791656"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği 'nin çok modelli özellikleri
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -44,7 +44,7 @@ Azure SQL ürün ailesi aşağıdaki çok modelli özellikleri sağlar:
 - Anahtar-değer çiftleri, iki sütunlu tablolar olarak yerel olarak modellendirildiğinden, [anahtar-değer çiftleri](#key-value-pairs) özel özellikler olarak açıkça desteklenmez.
 
   > [!Note]
-  > Veritabanında depoladığınız tüm verilere erişmek için aynı Transact-SQL sorgusunda JSON yol ifadesini, XQuery/XPath ifadelerini, uzamsal işlevleri ve Graph-Query ifadelerini de kullanabilirsiniz. Ayrıca, Transact-SQL sorgularını yürüteerişebilen herhangi bir araç veya programlama dili, çok modelli verilere erişmek için bu sorgu arabirimini de kullanabilir. Bu, farklı veri modelleri için özelleştirilmiş API sağlayan [Azure Cosmos DB](/azure/cosmos-db/) gibi çok modelli veritabanlarıyla karşılaştırıldığında önemli farktır.
+  > Veritabanında depoladığınız tüm verilere erişmek için aynı Transact-SQL sorgusunda JSON yol ifadesini, XQuery/XPath ifadelerini, uzamsal işlevleri ve Graph-Query ifadelerini de kullanabilirsiniz. Ayrıca, Transact-SQL sorgularını yürüteerişebilen herhangi bir araç veya programlama dili, çok modelli verilere erişmek için bu sorgu arabirimini de kullanabilir. Bu, farklı veri modelleri için özelleştirilmiş API sağlayan [Azure Cosmos DB](../cosmos-db/index.yml) gibi çok modelli veritabanlarıyla karşılaştırıldığında önemli farktır.
 
 Aşağıdaki bölümlerde, Azure SQL ürün ailesinin en önemli çok modelli özellikleri hakkında bilgi edinebilirsiniz.
 
@@ -142,7 +142,7 @@ CREATE TABLE Collection (
 
 Bu anahtar-değer yapısını, herhangi bir kısıtlama olmadan gereksinimlerinize uyacak şekilde özelleştirebilirsiniz. Örnek olarak, değeri türü yerine XML belgesi olabilir `nvarchar(max)` . değer JSON belgesi ise, `CHECK` JSON içeriğinin geçerliliğini doğrulayan bir kısıtlama koyabilirsiniz. Ek sütunlarda bir anahtarla ilgili herhangi bir sayıda değer koyabilirsiniz, veri erişimini basitleştirmek ve iyileştirmek için hesaplanmış sütunlar ve dizinler ekleyebilirsiniz, daha iyi performans sağlamak için tabloyu bellek/en iyileştirilmiş şema tablosu olarak tanımlayın, vb.
 
-Bkz. [BWin 'nın,](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) bir saniyede 1.200.000 toplu işlem elde eden bir örnek olarak, ilişkisel modelin uygulamada anahtar-değer çifti çözümü olarak nasıl etkili bir şekilde kullanılabileceğini gösteren ASP.NET önbelleğe alma çözümüne YÖNELIK In-Memory OLTP 'yi nasıl kullandığını öğrenin.
+Bkz. [BWin 'nın,](/archive/blogs/sqlcat/how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale) bir saniyede 1.200.000 toplu işlem elde eden bir örnek olarak, ilişkisel modelin uygulamada anahtar-değer çifti çözümü olarak nasıl etkili bir şekilde kullanılabileceğini gösteren ASP.NET önbelleğe alma çözümüne YÖNELIK In-Memory OLTP 'yi nasıl kullandığını öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

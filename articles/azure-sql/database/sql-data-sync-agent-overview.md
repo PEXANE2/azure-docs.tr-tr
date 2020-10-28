@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: e91fd0d94d6f6d87b5e554e27bf9c2a2ba6ccabd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed8d51adf5a93b470f287383a4d3eeb866b15236
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858481"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791469"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL Data Sync için veri eşitleme Aracısı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,11 +34,11 @@ Veri eşitleme aracısını indirmek için [SQL Data Sync aracı](https://www.mi
 
 Veri eşitleme aracısını komut isteminden sessizce yüklemek için aşağıdaki örneğe benzer bir komut girin. İndirilen. msi dosyasının dosya adını denetleyin ve **targetı** ve **SERVICEACCOUNT** bağımsız değişkenleri için kendi değerlerinizi sağlayın.
 
-- **Targetı**için bir değer sağlamazsanız, varsayılan değer olur `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0` .
+- **Targetı** için bir değer sağlamazsanız, varsayılan değer olur `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0` .
 
-- `LocalSystem` **SERVICEACCOUNT**değeri olarak sağlarsanız, aracıyı SQL Server bağlanacak şekilde yapılandırırken SQL Server kimlik doğrulaması kullanın.
+- `LocalSystem` **SERVICEACCOUNT** değeri olarak sağlarsanız, aracıyı SQL Server bağlanacak şekilde yapılandırırken SQL Server kimlik doğrulaması kullanın.
 
-- **SERVICEACCOUNT**değeri olarak bir etki alanı kullanıcı hesabı veya yerel bir kullanıcı hesabı sağlarsanız, **ServicePassword** bağımsız değişkeni ile de parola sağlamanız gerekir. Örneğin, `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
+- **SERVICEACCOUNT** değeri olarak bir etki alanı kullanıcı hesabı veya yerel bir kullanıcı hesabı sağlarsanız, **ServicePassword** bağımsız değişkeni ile de parola sağlamanız gerekir. Örneğin, `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
 
 ```cmd
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
@@ -52,7 +52,7 @@ Verileri bir veya daha fazla SQL Server veritabanıyla eşitleyebilmeniz için v
 
 ### <a name="why-do-i-need-a-client-agent"></a>Neden bir istemci aracısına ihtiyacım var?
 
-SQL Data Sync hizmeti istemci Aracısı aracılığıyla SQL Server veritabanlarıyla iletişim kurar. Bu güvenlik özelliği, bir güvenlik duvarının arkasındaki veritabanlarıyla doğrudan iletişimi önler. SQL Data Sync hizmeti aracıyla iletişim kurduğunda, bu, şifrelenmiş bağlantıları ve benzersiz bir belirteç ya da *Aracı anahtarını*kullanmayı da ister. SQL Server veritabanları, bağlantı dizesini ve aracı anahtarını kullanarak aracının kimliğini doğrular. Bu tasarım, verileriniz için yüksek düzeyde güvenlik sağlar.
+SQL Data Sync hizmeti istemci Aracısı aracılığıyla SQL Server veritabanlarıyla iletişim kurar. Bu güvenlik özelliği, bir güvenlik duvarının arkasındaki veritabanlarıyla doğrudan iletişimi önler. SQL Data Sync hizmeti aracıyla iletişim kurduğunda, bu, şifrelenmiş bağlantıları ve benzersiz bir belirteç ya da *Aracı anahtarını* kullanmayı da ister. SQL Server veritabanları, bağlantı dizesini ve aracı anahtarını kullanarak aracının kimliğini doğrular. Bu tasarım, verileriniz için yüksek düzeyde güvenlik sağlar.
 
 ### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>Yerel Aracı kullanıcı arabirimine ait kaç örnek çalıştırılabilir
 
@@ -98,9 +98,9 @@ Yerel aracıyı Şu anda açık olandan farklı bir bilgisayardan çalıştırma
 
 ### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a> İstemci Aracısı yükleme, kaldırma veya onarma başarısız oluyor
 
-- **Neden**. Birçok senaryo bu hataya neden olabilir. Bu hatanın belirli nedenini öğrenmek için günlüklere bakın.
+- **Neden** . Birçok senaryo bu hataya neden olabilir. Bu hatanın belirli nedenini öğrenmek için günlüklere bakın.
 
-- **Çözümleme**. Hatanın belirli nedenini bulmak için Windows Installer günlüklerini oluşturun ve bu günlüklere bakın. Günlüğe kaydetmeyi bir komut isteminde açabilirsiniz. Örneğin, indirilen yükleme dosyası ise, `SQLDataSyncAgent-2.0-x86-ENU.msi` aşağıdaki komut satırlarını kullanarak günlük dosyaları oluşturun ve inceleyin:
+- **Çözümleme** . Hatanın belirli nedenini bulmak için Windows Installer günlüklerini oluşturun ve bu günlüklere bakın. Günlüğe kaydetmeyi bir komut isteminde açabilirsiniz. Örneğin, indirilen yükleme dosyası ise, `SQLDataSyncAgent-2.0-x86-ENU.msi` aşağıdaki komut satırlarını kullanarak günlük dosyaları oluşturun ve inceleyin:
 
   - Yüklemeler için: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
   - Kaldırma için: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
@@ -111,9 +111,9 @@ Yerel aracıyı Şu anda açık olandan farklı bir bilgisayardan çalıştırma
 
 Kaldırma işlemini iptal ettikten sonra bile istemci Aracısı çalışmaz.
 
-- **Neden**. Bu durum SQL Data Sync istemci Aracısı kimlik bilgilerini depolamadığından oluşur.
+- **Neden** . Bu durum SQL Data Sync istemci Aracısı kimlik bilgilerini depolamadığından oluşur.
 
-- **Çözümleme**. Bu iki çözümü deneyebilirsiniz:
+- **Çözümleme** . Bu iki çözümü deneyebilirsiniz:
 
     -   İstemci aracısının kimlik bilgilerini yeniden girmek için Services. msc kullanın.
     -   Bu istemci aracısını kaldırın ve yeni bir tane yükleme. En son istemci aracısını [Indirme merkezinden](https://www.microsoft.com/download/details.aspx?id=27693)indirin ve yükleyin.
@@ -124,16 +124,16 @@ Var olan bir SQL Server veritabanını bir eşitleme grubuna eklemeye çalışt�
 
 Bu senaryolar bu soruna neden olabilir:
 
-- **Neden**. İstemci Aracısı ve eşitleme grubu farklı veri merkezlerinde.
+- **Neden** . İstemci Aracısı ve eşitleme grubu farklı veri merkezlerinde.
 
-- **Çözümleme**. İstemci Aracısı ve eşitleme grubu aynı veri merkezinde olmalıdır. Bu ayarı yapmak için iki seçeneğiniz vardır:
+- **Çözümleme** . İstemci Aracısı ve eşitleme grubu aynı veri merkezinde olmalıdır. Bu ayarı yapmak için iki seçeneğiniz vardır:
 
     -   Veri merkezinde eşitleme grubunun bulunduğu yeni bir aracı oluşturun. Ardından, veritabanını bu aracıya kaydedin.
     -   Geçerli eşitleme grubunu silin. Daha sonra, aracının bulunduğu veri merkezinde eşitleme grubunu yeniden oluşturun.
 
-- **Neden**. İstemci aracısının veritabanı listesi geçerli değil.
+- **Neden** . İstemci aracısının veritabanı listesi geçerli değil.
 
-- **Çözümleme**. İstemci Aracısı hizmetini durdurup yeniden başlatın.
+- **Çözümleme** . İstemci Aracısı hizmetini durdurup yeniden başlatın.
 
     Yerel Aracı, ilişkili veritabanlarının listesini yalnızca aracı anahtarının ilk gönderiminde indirir. Bu, sonraki aracı anahtar gönderimlerinin ilişkili veritabanlarının listesini indirmez. Bir aracı taşıma sırasında kaydedilen veritabanları özgün aracı örneğinde gösterilmez.
 
@@ -143,22 +143,22 @@ Aracının SQL Server barındıran bir bilgisayarda çalışmadığını fark ed
 
 ![Veri eşitleme hatası 1069 iletişim kutusu](./media/sql-data-sync-agent-overview/sync-error-1069.png)
 
-- **Neden**. Bu hatanın olası nedeni, aracıyı ve Aracı parolasını oluşturduktan sonra yerel sunucu üzerindeki parolanın değiştiği bir nedendir.
+- **Neden** . Bu hatanın olası nedeni, aracıyı ve Aracı parolasını oluşturduktan sonra yerel sunucu üzerindeki parolanın değiştiği bir nedendir.
 
-- **Çözümleme**. Aracının parolasını geçerli sunucu parolanızla güncelleştirin:
+- **Çözümleme** . Aracının parolasını geçerli sunucu parolanızla güncelleştirin:
 
   1. SQL Data Sync Client Agent hizmetini bulun.  
-    a. **Başlat**'ı seçin.  
-    b. Arama kutusuna **Services. msc**yazın.  
-    c. Arama sonuçlarında **Hizmetler**' i seçin.  
-    d. **Hizmetler** penceresinde, **SQL Data Sync Aracısı**için girişe kaydırın.  
-  1. **SQL Data Sync Aracısı**' na sağ tıklayın ve ardından **Durdur**' u seçin.
-  1. **SQL Data Sync Aracısı**' na sağ tıklayın ve ardından **Özellikler**' i seçin.
-  1. **SQL Data Sync Aracısı özellikleri**üzerinde **oturum aç** sekmesini seçin.
+    a. **Başlat** 'ı seçin.  
+    b. Arama kutusuna **Services. msc** yazın.  
+    c. Arama sonuçlarında **Hizmetler** ' i seçin.  
+    d. **Hizmetler** penceresinde, **SQL Data Sync Aracısı** için girişe kaydırın.  
+  1. **SQL Data Sync Aracısı** ' na sağ tıklayın ve ardından **Durdur** ' u seçin.
+  1. **SQL Data Sync Aracısı** ' na sağ tıklayın ve ardından **Özellikler** ' i seçin.
+  1. **SQL Data Sync Aracısı özellikleri** üzerinde **oturum aç** sekmesini seçin.
   1. **Parola** kutusuna parolanızı girin.
   1. **Parolayı Onayla** kutusuna parolanızı yeniden girin.
-  1. **Uygula**’yı ve sonra **Tamam**’ı seçin.
-  1. **Hizmetler** penceresinde, **SQL Data Sync Aracısı** hizmetine sağ tıklayın ve ardından **Başlat**' a tıklayın.
+  1. **Uygula** ’yı ve sonra **Tamam** ’ı seçin.
+  1. **Hizmetler** penceresinde, **SQL Data Sync Aracısı** hizmetine sağ tıklayın ve ardından **Başlat** ' a tıklayın.
   1. **Hizmetler** penceresini kapatın.
 
 ### <a name="i-cant-submit-the-agent-key"></a><a name="agent-key"></a> Aracı anahtarını gönderemiyor
@@ -167,7 +167,7 @@ Bir aracı için anahtar oluşturup yeniden oluşturduktan sonra, anahtarı SqlA
 
 ![Eşitleme hatası iletişim kutusu-aracı anahtarı gönderilemiyor](./media/sql-data-sync-agent-overview/sync-error-cant-submit-agent-key.png)
 
-- **Ön koşullar**. Devam etmeden önce aşağıdaki önkoşulları kontrol edin:
+- **Ön koşullar** . Devam etmeden önce aşağıdaki önkoşulları kontrol edin:
 
   - SQL Data Sync Windows hizmeti çalışıyor.
 
@@ -177,12 +177,12 @@ Bir aracı için anahtar oluşturup yeniden oluşturduktan sonra, anahtarı SqlA
 
   - Yerel IP, eşitleme meta verileri veritabanı için sunucu veya veritabanı güvenlik duvarı kuralına eklenir.
 
-- **Neden**. Aracı anahtarı her yerel aracıyı benzersiz şekilde tanımlar. Anahtarın iki koşulu karşılaması gerekir:
+- **Neden** . Aracı anahtarı her yerel aracıyı benzersiz şekilde tanımlar. Anahtarın iki koşulu karşılaması gerekir:
 
   -   SQL Data Sync sunucusundaki istemci Aracısı anahtarı ve yerel bilgisayar aynı olmalıdır.
   -   İstemci Aracısı anahtarı yalnızca bir kez kullanılabilir.
 
-- **Çözümleme**. Aracınız çalışmıyorsa, bu koşulların biri veya her ikisi karşılanmaz. Aracının yeniden çalışmasını sağlamak için:
+- **Çözümleme** . Aracınız çalışmıyorsa, bu koşulların biri veya her ikisi karşılanmaz. Aracının yeniden çalışmasını sağlamak için:
 
   1. Yeni bir anahtar oluşturun.
   1. Yeni anahtarı aracıya uygulayın.
@@ -192,30 +192,30 @@ Bir aracı için anahtar oluşturup yeniden oluşturduktan sonra, anahtarı SqlA
   1. Dosya Gezgini 'nde, aracı yükleme dizininize gidin. Varsayılan yükleme dizini C: \\ Program Files (x86) \\ Microsoft SQL Data Sync.
   1. Bin alt dizinine çift tıklayın.
   1. SqlAzureDataSyncAgent uygulamasını açın.
-  1. **Aracı anahtarını gönder**' i seçin.
+  1. **Aracı anahtarını gönder** ' i seçin.
   1. Girilen alana anahtarı panodan yapıştırın.
-  1. **Tamam**’ı seçin.
+  1. **Tamam** ’ı seçin.
   1. Programı kapatın.
 
 ### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a> İlişkili şirket içi veritabanı ulaşılamaz durumdaysa, portaldan istemci Aracısı silinemez
 
 Bir SQL Data Sync istemci aracısıyla kayıtlı yerel bir uç nokta (bir veritabanı) ulaşılamaz hale gelirse, istemci Aracısı silinemez.
 
-- **Neden**. Erişilemeyen veritabanı hala aracıya kaydedildiğinden, yerel aracı silinemiyor. Aracıyı silmeye çalıştığınızda, silme işlemi veritabanına ulaşmaya çalışır, bu da başarısız olur.
+- **Neden** . Erişilemeyen veritabanı hala aracıya kaydedildiğinden, yerel aracı silinemiyor. Aracıyı silmeye çalıştığınızda, silme işlemi veritabanına ulaşmaya çalışır, bu da başarısız olur.
 
-- **Çözümleme**. Erişilemeyen veritabanını silmek için "silmeyi zorla" yı kullanın.
+- **Çözümleme** . Erişilemeyen veritabanını silmek için "silmeyi zorla" yı kullanın.
 
 > [!NOTE]
 > Eşitleme meta verileri tabloları bir "silmeyi zorla" sonra kalırsa, `deprovisioningutil.exe` bunları temizlemek için kullanın.
 
 ### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a><a name="agent-connect"></a> Yerel eşitleme Aracısı uygulaması yerel Eşitleme hizmetine bağlanamıyor
 
-- **Çözümleme**. Aşağıdaki adımları deneyin:
+- **Çözümleme** . Aşağıdaki adımları deneyin:
 
   1. Uygulamadan çıkın.  
   1. Bileşen Hizmetleri panelini açın.  
-    a. Görev çubuğundaki arama kutusuna **Services. msc**yazın.  
-    b. Arama sonuçlarında **Hizmetler**' e çift tıklayın.  
+    a. Görev çubuğundaki arama kutusuna **Services. msc** yazın.  
+    b. Arama sonuçlarında **Hizmetler** ' e çift tıklayın.  
   1. **SQL Data Sync** hizmetini durdurun.
   1. **SQL Data Sync** hizmetini yeniden başlatın.  
   1. Uygulamayı yeniden açmak.
@@ -326,7 +326,7 @@ SQL Data Sync hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
         -  [Azure SQL veritabanı 'nda birden çok veritabanı arasında eşitleme yapmak için PowerShell 'i kullanma](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak Azure SQL veritabanındaki bir veritabanı ile SQL Server örneğindeki bir veritabanı arasında eşitleme](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   En iyi uygulamalar- [Azure SQL Data Sync Için en iyi yöntemler](sql-data-sync-best-practices.md)
--   İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](sql-data-sync-monitor-sync.md)
+-   İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](./monitor-tune-overview.md)
 -   Sorun giderme-[Azure SQL Data Sync sorunları giderme] SQL-Data-Sync-troubleshoot.md)
 -   Eşitleme şemasını güncelleştirme
     -   [Azure 'da SQL Data Sync şema değişikliklerinin](sql-data-sync-update-sync-schema.md) Transact-SQL Ile otomatikleştirilmesi ile

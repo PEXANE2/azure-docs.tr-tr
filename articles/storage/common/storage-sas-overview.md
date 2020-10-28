@@ -10,12 +10,12 @@ ms.date: 08/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 218946fcfbf2268ff3b06eab839d69e6b370e891
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6c6ac3e6ab6a27e0aca1aa2bebecb86cc1eb3f87
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367916"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792982"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
 
@@ -127,7 +127,7 @@ Paylaşılan erişim imzalarını kullanmaya yönelik aşağıdaki öneriler, bu
 - **Hesabınızın bir SAS aracılığıyla da dahil olmak üzere herhangi bir kullanım için faturalandırılacağını anlayın.** Blob 'a yazma erişimi sağlarsanız, bir Kullanıcı bir 200 GB blobu karşıya yüklemeyi tercih edebilir. Bunlara yönelik okuma erişimi de aldıysanız, çıkış maliyetlerinde 2 TB 'a sahip olmak üzere 10 kez indirmeyi seçebilirler. Bu, kötü amaçlı kullanıcıların olası eylemlerini azaltmaya yardımcı olmak için sınırlı izinler sağlar. Bu tehdidi azaltmak için kısa süreli SAS kullanın (ancak bitiş saati üzerinde geçen saat çarpıklığı).
 - **SAS kullanarak yazılan verileri doğrulayın.** Bir istemci uygulaması depolama hesabınıza veri yazdığında, bu verilerle ilgili sorunlar olabileceğini aklınızda bulundurun. Uygulamanız, kullanıma hazırlanmadan önce verilerin doğrulanmasını veya yetkilendirilmesini gerektiriyorsa, veriler yazıldıktan sonra ve uygulamanız tarafından kullanılmadan önce Bu doğrulamayı gerçekleştirmelisiniz. Bu yöntem ayrıca, ister bir kullanıcı tarafından, hem de bir veya sızdırılan SAS kullanan bir kullanıcı tarafından hesabınıza yazılan bozuk veya kötü amaçlı verilere karşı koruma sağlar.
 - **SAS ne zaman kullanacağınızı öğrenin.** Bazen, depolama hesabınıza yönelik belirli bir işlemle ilişkili riskler, SAS kullanmanın avantajlarından yararlanır. Bu gibi işlemler için, iş kuralı doğrulama, kimlik doğrulama ve denetim gerçekleştirdikten sonra depolama hesabınıza yazan bir orta katman hizmeti oluşturun. Ayrıca, bazen erişimi başka yollarla yönetmek daha basittir. Örneğin, bir kapsayıcıdaki tüm Blobları herkese açık bir şekilde okunabilir hale getirmek istiyorsanız, her istemciye erişim için bir SAS sağlamak yerine kapsayıcıyı ortak hale getirebilirsiniz.
-- **Uygulamanızı izlemek için Azure Izleyici ve Azure depolama günlüklerini kullanın.** SAS sağlayıcısı hizmetinizdeki bir kesinti veya depolanmış bir erişim ilkesinin yanlışlıkla kaldırılması nedeniyle, yetkilendirme hatalarında ani değişiklikleri gözlemlemek için Azure Izleyici ve depolama Analizi günlüğünü kullanabilirsiniz. Daha fazla bilgi için bkz. Azure [izleyici 'de Azure depolama ölçümleri](monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ve [günlüğe kaydetme Azure depolama Analizi](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+- **Uygulamanızı izlemek için Azure Izleyici ve Azure depolama günlüklerini kullanın.** SAS sağlayıcısı hizmetinizdeki bir kesinti veya depolanmış bir erişim ilkesinin yanlışlıkla kaldırılması nedeniyle, yetkilendirme hatalarında ani değişiklikleri gözlemlemek için Azure Izleyici ve depolama Analizi günlüğünü kullanabilirsiniz. Daha fazla bilgi için bkz. Azure [izleyici 'de Azure depolama ölçümleri](../blobs/monitor-blob-storage.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) ve [günlüğe kaydetme Azure depolama Analizi](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="get-started-with-sas"></a>SAS ile çalışmaya başlama
 

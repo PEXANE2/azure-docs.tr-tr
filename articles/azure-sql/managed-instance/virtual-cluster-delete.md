@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 0b8ceee1260e4209420778d7f327d771b858a899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed8f6dc90debddd17282f8f96962ffd78055030
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617732"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791673"
 ---
 # <a name="delete-a-subnet-after-deleting-a-managed-instance-of-sql-managed-instance"></a>Yönetilen bir SQL yönetilen örneği silindikten sonra bir alt ağı silme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,7 +29,7 @@ Yönetilen örnekler [sanal kümelere](connectivity-architecture-overview.md#vir
 
 > [!IMPORTANT]
 > - Silme işleminin başarılı olabilmesi için sanal kümenin yönetilen örnek içermemesi gerekir. 
-> - Bir sanal kümeyi silme işlemi yaklaşık 1,5 saat boyunca uzun süredir çalışan bir işlemdir (bkz. güncel sanal küme silme zamanı için [yönetilen örnek yönetimi işlemleri](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) ). Bu işlem tamamlanana kadar, sanal küme portalda görünür olmaya devam edecektir.
+> - Bir sanal kümeyi silme işlemi yaklaşık 1,5 saat boyunca uzun süredir çalışan bir işlemdir (bkz. güncel sanal küme silme zamanı için [yönetilen örnek yönetimi işlemleri](./sql-managed-instance-paas-overview.md#management-operations) ). Bu işlem tamamlanana kadar, sanal küme portalda görünür olmaya devam edecektir.
 
 ## <a name="delete-a-virtual-cluster-from-the-azure-portal"></a>Azure portal bir sanal kümeyi silme
 
@@ -37,7 +37,7 @@ Azure portal kullanarak bir sanal kümeyi silmek için sanal küme kaynakların�
 
 ![Arama kutusuyla vurgulanan Azure portal ekran görüntüsü](./media/virtual-cluster-delete/virtual-clusters-search.png)
 
-Silmek istediğiniz sanal kümeyi bulduktan sonra bu kaynağı seçin ve **Sil**' i seçin. Sanal küme silmeyi onaylamanız istenir.
+Silmek istediğiniz sanal kümeyi bulduktan sonra bu kaynağı seçin ve **Sil** ' i seçin. Sanal küme silmeyi onaylamanız istenir.
 
 ![Silme seçeneği vurgulanmış şekilde Azure portal Sanal kümeler panosu ekran görüntüsü](./media/virtual-cluster-delete/virtual-clusters-delete.png)
 
@@ -48,7 +48,7 @@ Azure portal bildirimlerde, sanal kümeyi silme isteğinin başarıyla gönderil
 
 ## <a name="delete-a-virtual-cluster-by-using-the-api"></a>API kullanarak bir sanal kümeyi silme
 
-Bir sanal kümeyi API aracılığıyla silmek için, [Sanal kümeler silme yönteminde](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)belirtilen URI parametrelerini kullanın.
+Bir sanal kümeyi API aracılığıyla silmek için, [Sanal kümeler silme yönteminde](/rest/api/sql/virtualclusters/delete)belirtilen URI parametrelerini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

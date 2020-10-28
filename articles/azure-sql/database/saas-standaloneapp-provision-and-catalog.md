@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: fc12d1359ab7b6f664326cd3be448b79809c53e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 2343800f8801105ca75f285972b441ecb027d1a0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332204"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793254"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Kiracı SaaS düzenine göre uygulama kullanarak yeni kiracılar sağlayın ve kataloglayın
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Bu makalede iki ana bölüm bulunur:
 
 ## <a name="standalone-application-per-tenant-pattern"></a>Her kiracı için tek başına uygulama
 
-Her kiracı deseni için tek başına uygulama, çok kiracılı SaaS uygulamalarına yönelik birkaç desenden biridir.  Bu düzende, her kiracı için tek başına bir uygulama sağlanır. Uygulama, uygulama düzeyi bileşenleri ve bir Azure SQL veritabanı içerir.  Her kiracı uygulaması satıcının aboneliğine dağıtılabilir.  Alternatif olarak, Azure, bir uygulamanın kiracının aboneliğine dağıtılacağı ve kiracının adına satıcı tarafından yönetilen bir [yönetilen uygulamalar programı](https://docs.microsoft.com/azure/managed-applications/overview) sunmaktadır.
+Her kiracı deseni için tek başına uygulama, çok kiracılı SaaS uygulamalarına yönelik birkaç desenden biridir.  Bu düzende, her kiracı için tek başına bir uygulama sağlanır. Uygulama, uygulama düzeyi bileşenleri ve bir Azure SQL veritabanı içerir.  Her kiracı uygulaması satıcının aboneliğine dağıtılabilir.  Alternatif olarak, Azure, bir uygulamanın kiracının aboneliğine dağıtılacağı ve kiracının adına satıcı tarafından yönetilen bir [yönetilen uygulamalar programı](../../azure-resource-manager/managed-applications/overview.md) sunmaktadır.
 
    ![Uygulama-kiracı başına desenler](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
@@ -72,8 +72,8 @@ Bu öğreticinin sonunda, her bir veritabanı katalogda kayıtlı olan bir tek b
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
-* Azure PowerShell’in yüklendiğinden. Ayrıntılar için bkz. [Azure PowerShell’i kullanmaya başlama](https://docs.microsoft.com/powershell/azure/get-started-azureps)
-* Üç örnek kiracı uygulaması dağıtılır. Bu uygulamaları beş dakikadan kısa bir süre içinde dağıtmak için bkz. [Wingtip biletleri SaaS tek başına uygulama modelini dağıtma ve araştırma](../../sql-database/saas-standaloneapp-get-started-deploy.md).
+* Azure PowerShell’in yüklendiğinden. Ayrıntılar için bkz. [Azure PowerShell’i kullanmaya başlama](/powershell/azure/get-started-azureps)
+* Üç örnek kiracı uygulaması dağıtılır. Bu uygulamaları beş dakikadan kısa bir süre içinde dağıtmak için bkz. [Wingtip biletleri SaaS tek başına uygulama modelini dağıtma ve araştırma](./saas-standaloneapp-get-started-deploy.md).
 
 ## <a name="provision-the-catalog"></a>Kataloğu sağlama
 
@@ -82,24 +82,24 @@ Bu görevde, tüm kiracı veritabanlarını kaydetmek için kullanılan kataloğ
 * Azure Kaynak Yönetimi şablonu kullanarak **Katalog veritabanını sağlayın** . Veritabanı bacpac dosyası içeri aktarılmasıyla başlatılır.
 * Daha önce dağıttığınız **örnek kiracı uygulamalarını kaydettirin** .  Her kiracı, kiracı adının karmasından oluşturulmuş bir anahtar kullanılarak kaydedilir.  Kiracı adı, katalogdaki bir uzantı tablosunda da depolanır.
 
-1. PowerShell ıSE 'de *. ..\Learning Modules\userconfig.exe* dosyasını açın ve **\<user\>** değeri üç örnek uygulamayı dağıttığınızda kullandığınız değere güncelleştirin.  **Dosyayı kaydedin**.
-1. PowerShell ıSE 'de *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* açın ve **$Scenario = 1**olarak ayarlayın. Kiracı kataloğunu dağıtın ve önceden tanımlanmış kiracılar 'ı kaydedin.
+1. PowerShell ıSE 'de *. ..\Learning Modules\userconfig.exe* dosyasını açın ve **\<user\>** değeri üç örnek uygulamayı dağıttığınızda kullandığınız değere güncelleştirin.  **Dosyayı kaydedin** .
+1. PowerShell ıSE 'de *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* açın ve **$Scenario = 1** olarak ayarlayın. Kiracı kataloğunu dağıtın ve önceden tanımlanmış kiracılar 'ı kaydedin.
 
-1. İmlecinizi,, `& $PSScriptRoot\New-Catalog.ps1` ve ardından **F9**tuşuna basarak bir yere yerleştirerek bir kesme noktası ekleyin.
+1. İmlecinizi,, `& $PSScriptRoot\New-Catalog.ps1` ve ardından **F9** tuşuna basarak bir yere yerleştirerek bir kesme noktası ekleyin.
 
     ![izleme için kesme noktası ayarlama](./media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
-1. **F5**tuşuna basarak betiği çalıştırın.
+1. **F5** tuşuna basarak betiği çalıştırın.
 1.  Komut dosyası yürütme kesme noktasında durduktan sonra, New-Catalog.ps1 betiğine geçmek için **F11** tuşuna basın.
 1.  Komut dosyasının yürütülmesini, hata ayıklama menü seçenekleri, F10 ve F11 kullanarak, çağrılan işlevleri üzerinde veya içine adımla izleyin.
-    *   PowerShell betiklerinde hata ayıklama hakkında daha fazla bilgi için bkz. [PowerShell betiklerinde çalışma ve hata ayıklama hakkında ipuçları](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
+    *   PowerShell betiklerinde hata ayıklama hakkında daha fazla bilgi için bkz. [PowerShell betiklerinde çalışma ve hata ayıklama hakkında ipuçları](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
 Betik tamamlandıktan sonra, katalog var olur ve tüm örnek kiracılar kaydedilir.
 
 Şimdi oluşturduğunuz kaynaklara bakın.
 
-1. [Azure Portal](https://portal.azure.com/) açın ve kaynak gruplarına gözatamazsınız.  **Wingtip-sa-catalog- \<user\> ** Resource grubunu açın ve katalog sunucusunu ve veritabanını göz önünde edin.
-1. Portalda veritabanını açın ve sol taraftaki menüden *Veri Gezgini* ' ni seçin.  Oturum aç komutuna tıklayın ve ardından Password = **P \@ ssword1**yazın.
+1. [Azure Portal](https://portal.azure.com/) açın ve kaynak gruplarına gözatamazsınız.  **Wingtip-sa-catalog- \<user\>** Resource grubunu açın ve katalog sunucusunu ve veritabanını göz önünde edin.
+1. Portalda veritabanını açın ve sol taraftaki menüden *Veri Gezgini* ' ni seçin.  Oturum aç komutuna tıklayın ve ardından Password = **P \@ ssword1** yazın.
 
 
 1. *Tenantcatalog* veritabanının şemasını gezin.
@@ -120,13 +120,13 @@ Bu görevde, tek bir kiracı uygulamasını sağlamayı öğreneceksiniz. Şunla
 
 * Kiracı için **Yeni bir kaynak grubu oluşturun** .
 * Azure Kaynak Yönetimi şablonu kullanarak **uygulamayı ve veritabanını** yeni kaynak grubuna sağlayın.  Bu eylem, bir bacpac dosyasını içeri aktararak ortak şema ve başvuru verileriyle veritabanını başlatmayı içerir.
-* **Veritabanını temel kiracı bilgileriyle başlatın**. Bu eylem, olay Web sitesinde arka plan olarak kullanılan fotoğrafı belirleyen mekan türünü belirtmeyi içerir.
-* **Veritabanını Katalog veritabanına kaydedin**.
+* **Veritabanını temel kiracı bilgileriyle başlatın** . Bu eylem, olay Web sitesinde arka plan olarak kullanılan fotoğrafı belirleyen mekan türünü belirtmeyi içerir.
+* **Veritabanını Katalog veritabanına kaydedin** .
 
-1. PowerShell ıSE 'de *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* açın ve **$Scenario = 2**olarak ayarlayın. Kiracı kataloğunu dağıtma ve önceden tanımlanmış kiracılar kaydetme
+1. PowerShell ıSE 'de *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* açın ve **$Scenario = 2** olarak ayarlayın. Kiracı kataloğunu dağıtma ve önceden tanımlanmış kiracılar kaydetme
 
-1. İmlecinizi,, `& $PSScriptRoot\New-TenantApp.ps1` ve ardından **F9**tuşuna basarak satır 49 ' de bir yere yerleştirerek betiğe bir kesme noktası ekleyin.
-1. **F5**tuşuna basarak betiği çalıştırın.
+1. İmlecinizi,, `& $PSScriptRoot\New-TenantApp.ps1` ve ardından **F9** tuşuna basarak satır 49 ' de bir yere yerleştirerek betiğe bir kesme noktası ekleyin.
+1. **F5** tuşuna basarak betiği çalıştırın.
 1.  Komut dosyası yürütme kesme noktasında durduktan sonra, New-Catalog.ps1 betiğine geçmek için **F11** tuşuna basın.
 1.  Komut dosyasının yürütülmesini, hata ayıklama menü seçenekleri, F10 ve F11 kullanarak, çağrılan işlevleri üzerinde veya içine adımla izleyin.
 
@@ -156,4 +156,4 @@ Bu öğreticide şunları öğrendiniz:
 > * Uygulamayı oluşturan sunucular ve veritabanları hakkında.
 > * İlgili faturalandırmayı durdurmak için örnek kaynakları silme.
 
-Kataloğun, [Wingtip bilet SaaS uygulamasının](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)kiracı başına veritabanı sürümünü kullanarak çeşitli çapraz kiracı senaryolarını desteklemek için nasıl kullanıldığını keşfedebilirsiniz.
+Kataloğun, [Wingtip bilet SaaS uygulamasının](./saas-dbpertenant-wingtip-app-overview.md)kiracı başına veritabanı sürümünü kullanarak çeşitli çapraz kiracı senaryolarını desteklemek için nasıl kullanıldığını keşfedebilirsiniz.

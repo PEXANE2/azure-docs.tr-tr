@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 58c5fdcfef5e866d0c69d65412582c0ed649f7c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2396aac67a17352987d9d6e3b49535c19ffe8917
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86230834"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792387"
 ---
 # <a name="key-vault-versions"></a>Key Vault sürümleri
 
@@ -33,7 +33,7 @@ Key Vault için Azure Izleyici artık önizlemededir.  Azure Izleyici, Key Vault
 ## <a name="2019"></a>2019
 
 - Yeni nesil Azure Key Vault SDK 'Ları sürümü. Kullanımları örnekleri için bkz. [Python](../secrets/quick-create-python.md), [.net](../secrets/quick-create-net.md), [Java](../secrets/quick-create-java.md)ve [Node.js](../secrets/quick-create-node.md) için Azure Key Vault gizli hızlı başlangıç
-- Anahtar Kasası sertifikalarını yönetmek için yeni Azure ilkeleri. [Key Vault Için Azure ilkesi yerleşik tanımlarına](../policy-samples.md)bakın.
+- Anahtar Kasası sertifikalarını yönetmek için yeni Azure ilkeleri. [Key Vault Için Azure ilkesi yerleşik tanımlarına](../policy-reference.md)bakın.
 - Azure Key Vault sanal makine uzantısı artık genel olarak kullanılabilir.  Bkz. Windows için [Linux için sanal makine uzantısı](../../virtual-machines/extensions/key-vault-linux.md) ve [Key Vault sanal makine uzantısı](../../virtual-machines/extensions/key-vault-windows.md)Key Vault.
 - Azure Key Vault için olay odaklı gizli dizi yönetimi artık Azure Event Grid sunulmaktadır. Daha fazla bilgi için bkz. [Azure Key Vault olaylar için Event Grid şeması] (.. /.. /Event-Grid/Event-Schema-Key-Vault.exe) ve [Azure Event Grid ile Anahtar Kasası bildirimlerini nasıl alabileceğinizi ve yanıtlayacağınızı](event-grid-tutorial.md)öğrenin.
 
@@ -49,8 +49,8 @@ Bu yıldan yayınlanan yeni özellikler ve tümleştirmeler:
 
 Bu yıl yayımlanan yeni özellikler:
 
-- Yönetilen depolama hesabı anahtarları. Depolama hesabı anahtarları özelliği, Azure depolama ile daha kolay tümleştirme ekledi. Daha fazla bilgi için bkz. genel bakış konusu, [yönetilen depolama hesabı anahtarlarına genel bakış](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys).
-- Geçici silme. Geçici silme özelliği, Anahtar kasaları ve Anahtar Kasası nesnelerinizin veri korumasını geliştirir. Daha fazla bilgi için bkz. genel bakış konusu, [geçici silme genel bakış](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).
+- Yönetilen depolama hesabı anahtarları. Depolama hesabı anahtarları özelliği, Azure depolama ile daha kolay tümleştirme ekledi. Daha fazla bilgi için bkz. genel bakış konusu, [yönetilen depolama hesabı anahtarlarına genel bakış](../secrets/overview-storage-keys.md).
+- Geçici silme. Geçici silme özelliği, Anahtar kasaları ve Anahtar Kasası nesnelerinizin veri korumasını geliştirir. Daha fazla bilgi için bkz. genel bakış konusu, [geçici silme genel bakış](./soft-delete-overview.md).
 
 ## <a name="2015"></a>2015
 
@@ -64,7 +64,7 @@ Genel kullanılabilirlik (sürüm 2015-06-01), 24 Haziran 2015 tarihinde duyurul
 - Anahtar "kullanım" alanı kaldırılmış şekilde geri yükleyin.     
 - RSA algoritmaları için "RSA_OAEP", "RSA-OAEP" olarak değiştirildi. [Anahtarlar, gizli diziler ve sertifikalar hakkında](about-keys-secrets-certificates.md)bilgi için bkz..    
  
-İkinci önizleme sürümü (sürüm 2015-02-01-Önizleme), 20 Nisan 2015 ' de duyuruldu. Daha fazla bilgi için bkz. [REST API Update](https://docs.microsoft.com/archive/blogs/kv/rest-api-update) blog gönderisi. Aşağıdaki görevler güncelleştirildi:
+İkinci önizleme sürümü (sürüm 2015-02-01-Önizleme), 20 Nisan 2015 ' de duyuruldu. Daha fazla bilgi için bkz. [REST API Update](/archive/blogs/kv/rest-api-update) blog gönderisi. Aşağıdaki görevler güncelleştirildi:
  
 - Anahtara kasaya eklenen ve işleme için bir sayfalama desteği olan anahtarları listeleyin.
 - Anahtarın sürümlerini listelemek için anahtar ekleme işleminin sürümlerini listeleyin.  

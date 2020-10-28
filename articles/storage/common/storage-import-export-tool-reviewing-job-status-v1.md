@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/26/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: be421cc0bb00018b32ee63f2b486c11300627a01
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7ef06bb9c5b5010f3fbbe413f98d77cc8519de00
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488563"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791809"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Azure Içeri/dışarı aktarma iş durumunu kopyalama günlük dosyalarıyla gözden geçirme
 Microsoft Azure İçeri/Dışarı Aktarma hizmeti bir içeri veya dışarı aktarma işiyle ilişkili sürücüleri işlediğinde, kopyalama günlük dosyalarını blob 'ları içeri veya dışarı aktarmak için kullandığınız depolama hesabına yazar. Günlük dosyası, içeri aktarılan veya aktarılan her dosya hakkında ayrıntılı durum içerir. Hizmet, tamamlanan bir işin durumunu sorgulayıp her bir kopya günlük dosyasının URL 'sini döndürür. Daha fazla bilgi için bkz. [Işi al](/rest/api/storageimportexport/Jobs/Get).  
@@ -26,11 +26,11 @@ Aşağıda, iki sürücü içeren bir içeri aktarma işine ait günlük dosyala
 
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM45A6Q_20130921-042122-021_error.xml`  
 
- Kopya günlüklerinin biçimi ve durum kodlarının tam listesi için bkz. [içeri/dışarı aktarma hizmeti günlük dosyası biçimi](../storage-import-export-file-format-log.md) .  
+ Kopya günlüklerinin biçimi ve durum kodlarının tam listesi için bkz. [içeri/dışarı aktarma hizmeti günlük dosyası biçimi](/previous-versions/azure/storage/common/storage-import-export-file-format-log) .  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
  * [Azure Içeri/dışarı aktarma aracı 'nı ayarlama](storage-import-export-tool-setup-v1.md)   
- * [Sabit sürücüleri içeri aktarma işine hazırlama](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
- * [Bir içeri aktarma işini onarma](../storage-import-export-tool-repairing-an-import-job-v1.md)   
- * [Bir dışarı aktarma işini onarma](../storage-import-export-tool-repairing-an-export-job-v1.md)
+ * [Sabit sürücüleri içeri aktarma işine hazırlama](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
+ * [Bir içeri aktarma işini onarma](./storage-import-export-tool-repairing-an-import-job-v1.md)   
+ * [Bir dışarı aktarma işini onarma](./storage-import-export-tool-repairing-an-export-job-v1.md)

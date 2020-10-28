@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.date: 04/17/2019
 ms.custom: sqldbrb=1
 tags: azure-synapse
-ms.openlocfilehash: ae92d2000bb2c0dfd7e7a42c6070c143e5b787e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f32599c9d289c8fc5e86eb8c7b0574d9703a6dd4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84170877"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792676"
 ---
 # <a name="powershell-create-a-virtual-service-endpoint-and-vnet-rule-for-azure-sql-database"></a>PowerShell: Azure SQL veritabanı için sanal hizmet uç noktası ve VNet kuralı oluşturma
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "84170877"
 Bu makalede, aşağıdaki eylemleri alan bir PowerShell betiği gösterilmektedir:
 
 1. Alt ağınızda Microsoft Azure *sanal hizmet uç noktası* oluşturur.
-2. Bir *sanal ağ kuralı*oluşturmak için, uç noktasını sunucunuzun güvenlik duvarına ekler.
+2. Bir *sanal ağ kuralı* oluşturmak için, uç noktasını sunucunuzun güvenlik duvarına ekler.
 
 Daha fazla arka plan için bkz. [Azure SQL veritabanı Için sanal hizmet uç noktaları][sql-db-vnet-service-endpoint-rule-overview-735r].
 
@@ -40,20 +40,20 @@ Daha fazla arka plan için bkz. [Azure SQL veritabanı Için sanal hizmet uç no
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler [ `Az.Sql` cmdlet 'ler](/powershell/module/az.sql)içindir. Eski modül için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler [ `Az.Sql` cmdlet 'ler](/powershell/module/az.sql)içindir. Eski modül için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
 ## <a name="major-cmdlets"></a>Ana cmdlet 'ler
 
-Bu makale, alt ağ uç noktasını sunucunuzun erişim denetim listesine (ACL) ekleyen [ **New-AzSqlServerVirtualNetworkRule** cmdlet 'ini](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule) vurgular ve böylece bir kural oluşturur.
+Bu makale, alt ağ uç noktasını sunucunuzun erişim denetim listesine (ACL) ekleyen [ **New-AzSqlServerVirtualNetworkRule** cmdlet 'ini](/powershell/module/az.sql/new-azsqlservervirtualnetworkrule) vurgular ve böylece bir kural oluşturur.
 
-Aşağıdaki listede, **New-AzSqlServerVirtualNetworkRule**çağrınıza hazırlanmanız için çalıştırmanız gereken diğer *ana* cmdlet 'lerin sırası gösterilmektedir. Bu makalede, [komut dosyası 3 "sanal ağ kuralı"](#a-script-30)içinde bu çağrılar oluşur:
+Aşağıdaki listede, **New-AzSqlServerVirtualNetworkRule** çağrınıza hazırlanmanız için çalıştırmanız gereken diğer *ana* cmdlet 'lerin sırası gösterilmektedir. Bu makalede, [komut dosyası 3 "sanal ağ kuralı"](#a-script-30)içinde bu çağrılar oluşur:
 
-1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): bir alt ağ nesnesi oluşturur.
-2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): Sanal ağınızı, alt ağ vererek oluşturur.
-3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): alt ağınız Için bir sanal hizmet uç noktası atar.
-4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): sanal ağınızda yapılan güncelleştirmeler devam ettirir.
-5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): alt ağınız bir uç nokta olduktan sonra, alt ağınızı bir sanal ağ kuralı olarak sunucunuzun ACL 'sine ekler.
-   - Bu cmdlet, Azure RM PowerShell modülü sürüm 5.1.1 'dan başlayarak **-ıgnoremissingvnetserviceendpoint**parametresini sunar.
+1. [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig): bir alt ağ nesnesi oluşturur.
+2. [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork): Sanal ağınızı, alt ağ vererek oluşturur.
+3. [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): alt ağınız Için bir sanal hizmet uç noktası atar.
+4. [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork): sanal ağınızda yapılan güncelleştirmeler devam ettirir.
+5. [New-AzSqlServerVirtualNetworkRule](/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): alt ağınız bir uç nokta olduktan sonra, alt ağınızı bir sanal ağ kuralı olarak sunucunuzun ACL 'sine ekler.
+   - Bu cmdlet, Azure RM PowerShell modülü sürüm 5.1.1 'dan başlayarak **-ıgnoremissingvnetserviceendpoint** parametresini sunar.
 
 ## <a name="prerequisites-for-running-powershell"></a>PowerShell çalıştırmaya yönelik önkoşullar
 
@@ -382,7 +382,7 @@ Ya da alt ağınızın **Microsoft. SQL** tür adına sahip olup olmadığından
 
 1. Alt ağınızın **Microsoft. SQL** tür adına sahip olup olmadığını yokerin.
 2. İsteğe bağlı olarak, varsa tür adını atayın.
-    - Komut dosyası, eksik tür adını uygulamadan önce *onaylamanızı*ister.
+    - Komut dosyası, eksik tür adını uygulamadan önce *onaylamanızı* ister.
 
 ### <a name="phases-of-the-script"></a>Betiğin aşamaları
 
@@ -391,7 +391,7 @@ PowerShell betiğinin aşamaları aşağıda verilmiştir:
 1. Her PS oturumunda yalnızca bir kez gerekli olan Azure hesabınızda oturum açın.  Değişkenler atayın.
 2. Sanal ağınızı ve ardından alt ağınız için arama yapın.
 3. Alt ağınız **Microsoft. SQL** Endpoint Server türü olarak etiketlendi mu?
-4. Alt ağınız üzerinde **Microsoft. SQL**ad türünde bir sanal hizmet uç noktası ekleyin.
+4. Alt ağınız üzerinde **Microsoft. SQL** ad türünde bir sanal hizmet uç noktası ekleyin.
 
 > [!IMPORTANT]
 > Bu betiği çalıştırmadan önce, komut dosyasının en üstüne yakın olan $-Variables atanan değerleri düzenlemeniz gerekir.

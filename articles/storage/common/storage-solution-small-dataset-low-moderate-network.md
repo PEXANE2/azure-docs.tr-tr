@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: a95361dda74c145e435a7e122339fb5945fed0f6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491232"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792914"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Bant genişliği düşük veya orta olduğunda küçük veri kümeleri için veri aktarımı
  
@@ -49,10 +49,10 @@ Bu senaryoda önerilen seçenekler şunlardır:
 
 Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
 
-| Özellik | Azure Depolama Gezgini | Azure portalı | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure depolama REST API 'Leri veya SDK 'Ları |
+| Özellik | Azure Depolama Gezgini | Azure portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure depolama REST API 'Leri veya SDK 'Ları |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Kullanılabilirlik | İndirme ve yükleme <br>Tek başına aracı | Azure portal web tabanlı araştırma araçları | Komut satırı aracı |.NET, Java, Python, JavaScript, C++, Go, Ruby ve PHP 'de programlanabilir arabirimler |
-| Grafik arabirim | Yes | Yes | Hayır | Hayır |
+| Grafik arabirim | Evet | Evet | Hayır | Hayır |
 | Desteklenen platformlar | Windows, Mac, Linux | Web tabanlı |Windows, Mac, Linux |Tüm platformlar |
 | İzin verilen BLOB depolama işlemleri<br>Bloblar ve klasörler için | Karşıya Yükleme<br>İndir<br>Yönetme | Karşıya Yükleme<br>İndir<br>Yönetme |Karşıya Yükleme<br>İndir<br>Yönetme | Evet, özelleştirilebilir |
 | Data Lake Gen1 Storage izin verildi<br>dosyalar ve klasörler için işlemler | Karşıya Yükleme<br>İndir<br>Yönetme | Hayır |Karşıya Yükleme<br>İndir<br>Yönetme                   | Hayır |
@@ -63,6 +63,5 @@ Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Depolama Gezgini ile veri aktarmayı](/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer)öğrenin.
-- [AzCopy ile verileri aktarma](/azure/storage/common/storage-use-azcopy-v10)
-
+- [Azure Depolama Gezgini ile veri aktarmayı](../../machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer.md)öğrenin.
+- [AzCopy ile verileri aktarma](./storage-use-azcopy-v10.md)

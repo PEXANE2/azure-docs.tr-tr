@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 3330b4d5df366a5e886157e875f40d7e370c7442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91543204"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791996"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob Dizinleyicileri ve becerileri kullanarak şifrelenmiş Blobların dizinini oluşturma
 
@@ -56,7 +56,7 @@ Bu şekilde, Decryptblobdosya becerisi her blob için URL ve SAS belirtecini gir
 
 1. **Azure Key Vault örneğinizin bulunduğu aboneliği** seçin (farklı bir abonelik seçerseniz bu kılavuz çalışmaz) ve var olan bir kaynak grubunu seçebilir ya da yeni bir tane oluşturursanız (yeni bir tane oluşturursanız, dağıtım için bir bölge seçmeniz gerekecektir).
 
-1. **Gözden geçir + oluştur**' u seçin, koşulları kabul ettiğinizden emin olun ve ardından **Oluştur** ' u seçerek Azure işlevini dağıtın.
+1. **Gözden geçir + oluştur** ' u seçin, koşulları kabul ettiğinizden emin olun ve ardından **Oluştur** ' u seçerek Azure işlevini dağıtın.
 
     ![Portalda ARM şablonu](media/indexing-encrypted-blob-files/arm-template.jpg "Portalda ARM şablonu")
 
@@ -64,13 +64,13 @@ Bu şekilde, Decryptblobdosya becerisi her blob için URL ve SAS belirtecini gir
 
 1. Portalda Azure Key Vault örneğinize gidin. Azure Key Vault, özel beceriye anahtar erişimi veren [bir erişim Ilkesi oluşturun](../key-vault/general/assign-access-policy-portal.md) .
  
-    1. **Ayarlar**altında, **erişim ilkeleri**' ni seçin ve ardından **erişim ilkesi Ekle** ' yi seçin.
+    1. **Ayarlar** altında, **erişim ilkeleri** ' ni seçin ve ardından **erişim ilkesi Ekle** ' yi seçin.
      
        ![Anahtar Kasası erişim ilkesi ekleme](media/indexing-encrypted-blob-files/keyvault-access-policies.jpg "Anahtar Kasası erişim ilkeleri")
 
-    1. **Şablondan Yapılandır**altında **Azure Data Lake Storage veya Azure Storage**' ı seçin.
+    1. **Şablondan Yapılandır** altında **Azure Data Lake Storage veya Azure Storage** ' ı seçin.
 
-    1. Sorumlu için, dağıttığınız Azure Işlev örneğini seçin. Bu dosyayı, **psdbf-Function-App**varsayılan ön ek değerine sahip 2. adımda oluşturmak için kullanılan kaynak önekini kullanarak arayabilirsiniz.
+    1. Sorumlu için, dağıttığınız Azure Işlev örneğini seçin. Bu dosyayı, **psdbf-Function-App** varsayılan ön ek değerine sahip 2. adımda oluşturmak için kullanılan kaynak önekini kullanarak arayabilirsiniz.
 
     1. Yetkili uygulama seçeneği için hiçbir şey seçmeyin.
      
@@ -86,7 +86,7 @@ Bu şekilde, Decryptblobdosya becerisi her blob için URL ve SAS belirtecini gir
     
         ![İşlev URL'si](media/indexing-encrypted-blob-files/function-uri.jpg "Azure Işlevi URL 'sinin nerede bulunacağı")
 
-    1. **Uygulama anahtarlarına**giderek, **varsayılan** anahtarı göstermek ve değeri kopyalamak için öğesine tıklanarak bulunan konak anahtar kodu.
+    1. **Uygulama anahtarlarına** giderek, **varsayılan** anahtarı göstermek ve değeri kopyalamak için öğesine tıklanarak bulunan konak anahtar kodu.
      
         ![İşlev ana bilgisayar anahtar kodu](media/indexing-encrypted-blob-files/function-host-key.jpg "Azure Işlevi ana bilgisayar anahtar kodu nerede bulunur")
 
@@ -106,9 +106,9 @@ Azure Işlevinde olduğu gibi, yönetici anahtarını toplamak için bir dakikan
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetinize **genel bakış** sayfasında, arama hizmetinizin adını alın. Uç nokta URL 'sini inceleyerek hizmet adınızı doğrulayabilirsiniz. Uç nokta URL 'niz olsaydı `https://mydemo.search.windows.net` , hizmet adınız olur `mydemo` .
 
-2. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+2. **Ayarlar**  >  **anahtarlar** ' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-   ![Hizmet adı ve yönetici ve sorgu anahtarlarını alın](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![Hizmet adı ve yönetici ve sorgu anahtarlarını alın](media/search-get-started-javascript/service-name-and-keys.png)
 
 Tüm istekler, hizmetinize gönderilen her isteğin üstbilgisinde bir API anahtarı gerektirir. Geçerli bir anahtar, istek başına, isteği gönderen uygulama ve onu işleyen hizmet arasında güven oluşturur.
 
@@ -119,9 +119,9 @@ Postman yükleme ve ayarlama.
 ### <a name="download-and-install-postman"></a>Postman indirme ve yükleme
 
 1. [Postman koleksiyonu kaynak kodunu](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json)indirin.
-1. **File**  >  Kaynak kodu Postman içine aktarmak için dosya**içeri aktarma** ' yı seçin.
+1. **File**  >  Kaynak kodu Postman içine aktarmak için dosya **içeri aktarma** ' yı seçin.
 1. **Koleksiyonlar** sekmesini seçin ve ardından **...** (üç nokta) düğmesini seçin.
-1. **Düzenle**’yi seçin. 
+1. **Düzenle** ’yi seçin. 
    
    ![Gezintiyi gösteren Postman uygulaması](media/indexing-encrypted-blob-files/postman-edit-menu.jpg "Postman 'daki düzenleme menüsüne git")
 1. **Düzenle** Iletişim kutusunda **değişkenler** sekmesini seçin. 
@@ -137,24 +137,24 @@ Değerini almak için `admin-key` , daha önce not ettiğiniz Azure bilişsel ar
 |-------------|-----------------|
 | `admin-key` | Azure Bilişsel Arama hizmetinin **anahtarlar** sayfasında.  |
 | `search-service-name` | Azure Bilişsel Arama hizmetinin adı. URL `https://{{search-service-name}}.search.windows.net` . | 
-| `storage-connection-string` | Depolama hesabında, **erişim anahtarları** sekmesinde **KEY1**  >  **bağlantı dizesi**' ni seçin. | 
+| `storage-connection-string` | Depolama hesabında, **erişim anahtarları** sekmesinde **KEY1**  >  **bağlantı dizesi** ' ni seçin. | 
 | `storage-container-name` | Dizine eklenecek şifrelenmiş dosyaları olan blob kapsayıcısının adı. | 
 | `function-uri` |  Azure Işlevinde ana sayfada **Essentials** altında. | 
-| `function-code` | Azure Işlevinde, **uygulama anahtarlarına**giderek, **varsayılan** anahtarı göstermek ve değeri kopyalamak için öğesine tıklayın. | 
-| `api-version` | **2020-06-30**olarak bırakın. |
-| `datasource-name` | **Şifreli-Bloblar**olarak bırakın. | 
-| `index-name` | **Şifrelenmiş-Bloblar-idx**olarak bırakın. | 
-| `skillset-name` | **Şifreli blob 'lar-sn**olarak bırakın. | 
-| `indexer-name` | **Şifreli Bloblar-ixR**olarak bırakın. | 
+| `function-code` | Azure Işlevinde, **uygulama anahtarlarına** giderek, **varsayılan** anahtarı göstermek ve değeri kopyalamak için öğesine tıklayın. | 
+| `api-version` | **2020-06-30** olarak bırakın. |
+| `datasource-name` | **Şifreli-Bloblar** olarak bırakın. | 
+| `index-name` | **Şifrelenmiş-Bloblar-idx** olarak bırakın. | 
+| `skillset-name` | **Şifreli blob 'lar-sn** olarak bırakın. | 
+| `indexer-name` | **Şifreli Bloblar-ixR** olarak bırakın. | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Postman 'da istek koleksiyonunu gözden geçirin
 
 Bu kılavuzu çalıştırdığınızda dört HTTP isteği vermelisiniz: 
 
-- **Dizini oluşturmak için Isteği yerleştir**: Bu dizin, Azure bilişsel arama tarafından kullanılan ve döndürdüğü verileri tutar.
-- **Veri kaynağını oluşturmak Için post isteği**: Bu veri kaynağı, Azure bilişsel arama hizmetinizi depolama hesabınıza ve bu nedenle şifrelenmiş blob dosyalarına bağlar. 
-- **Beceri oluşturma isteği**: Beceri, Azure işlevi için blob dosya verilerinin şifresini çözmek üzere özel yetenek tanımını ve şifresi çözülememiş olduktan sonra metnin her bir belgeden ayıklanmasına yönelik bir [Belgetextractionbeceri](cognitive-search-skill-document-extraction.md) belirler.
-- **Dizin oluşturucuyu oluşturma Isteği koy**: Dizin oluşturucuyu çalıştırmak, verileri okur, Beceri uygular ve sonuçları depolar. Bu isteği en son çalıştırmanız gerekir.
+- **Dizini oluşturmak için Isteği yerleştir** : Bu dizin, Azure bilişsel arama tarafından kullanılan ve döndürdüğü verileri tutar.
+- **Veri kaynağını oluşturmak Için post isteği** : Bu veri kaynağı, Azure bilişsel arama hizmetinizi depolama hesabınıza ve bu nedenle şifrelenmiş blob dosyalarına bağlar. 
+- **Beceri oluşturma isteği** : Beceri, Azure işlevi için blob dosya verilerinin şifresini çözmek üzere özel yetenek tanımını ve şifresi çözülememiş olduktan sonra metnin her bir belgeden ayıklanmasına yönelik bir [Belgetextractionbeceri](cognitive-search-skill-document-extraction.md) belirler.
+- **Dizin oluşturucuyu oluşturma Isteği koy** : Dizin oluşturucuyu çalıştırmak, verileri okur, Beceri uygular ve sonuçları depolar. Bu isteği en son çalıştırmanız gerekir.
 
 [Kaynak kodu](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json) , dört istek ve bazı yararlı izleme istekleri Içeren bir Postman koleksiyonu içerir. İstekleri vermek için, Postman 'da, istekler için sekmeyi seçin ve her biri için **Gönder** ' i seçin.
 

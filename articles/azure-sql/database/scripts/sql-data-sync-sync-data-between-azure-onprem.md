@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 194c2466e29c15ac35cf0bd88b90bf9f816e9035
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 443232bb41ba73b5bd02d45c542e555904f539db
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284474"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792880"
 ---
 # <a name="use-powershell-to-sync-data-between-sql-database-and-sql-server"></a>PowerShell kullanarak SQL veritabanı ile SQL Server arasında veri eşitleme
 
@@ -35,7 +35,7 @@ SQL Data Sync genel bakış için bkz. [Azure SQL Data Sync anlık ileti ile bir
 > [!IMPORTANT]
 > SQL Data Sync Şu anda Azure SQL yönetilen örneğini desteklemez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure SQL veritabanı 'nda bir AdventureWorksLT örnek veritabanından merkez veritabanı olarak veritabanı oluşturun.
 - Azure SQL veritabanı 'nda eşitleme veritabanıyla aynı bölgedeki bir veritabanı oluşturun.
@@ -299,7 +299,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [Get-AzSqlSyncAgentLinkedDatabase](/powershell/module/az.sql/Get-azSqlSyncAgentLinkedDatabase) |  Eşitleme aracısına ilişkin tüm bilgileri alın. |
 | [New-AzSqlSyncMember](/powershell/module/az.sql/New-azSqlSyncMember) |  Eşitleme grubuna yeni bir üye ekleyin. |
 | [Update-AzSqlSyncSchema](/powershell/module/az.sql/Update-azSqlSyncSchema) |  Veritabanı şeması bilgilerini yeniler. |
-| [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/Get-azSqlSyncSchema) |  Veritabanı şeması bilgilerini alın. |
+| [Get-AzSqlSyncSchema](/powershell/module/az.sql/Get-azSqlSyncSchema) |  Veritabanı şeması bilgilerini alın. |
 | [Update-AzSqlSyncGroup](/powershell/module/az.sql/Update-azSqlSyncGroup) |  Eşitleme grubunu güncelleştirir. |
 | [Start-AzSqlSyncGroupSync](/powershell/module/az.sql/Start-azSqlSyncGroupSync) | Bir eşitlemeyi tetikler. |
 | [Get-AzSqlSyncGroupLog](/powershell/module/az.sql/Get-azSqlSyncGroupLog) |  Eşitleme günlüğünü denetler. |
@@ -319,7 +319,7 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
     - PowerShell kullanma- [Azure SQL veritabanı 'nda birden çok veritabanı arasında eşitleme yapmak Için PowerShell kullanma](sql-data-sync-sync-data-between-sql-databases.md)
 - Veri eşitleme Aracısı- [Azure 'da SQL Data Sync Için veri eşitleme Aracısı](../sql-data-sync-agent-overview.md)
 - En iyi uygulamalar- [Azure 'da SQL Data Sync Için en iyi yöntemler](../sql-data-sync-best-practices.md)
-- İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](../sql-data-sync-monitor-sync.md)
+- İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](../monitor-tune-overview.md)
 - Sorun giderme- [Azure 'da SQL Data Sync sorunlarını giderme](../sql-data-sync-troubleshoot.md)
 - Eşitleme şemasını güncelleştirme
     - [Azure 'da SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatik hale getirmek Için](../sql-data-sync-update-sync-schema.md) Transact-SQL-otomatikleştir kullanma
@@ -328,4 +328,4 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 Azure SQL veritabanı hakkında daha fazla bilgi için bkz.
 
 - [SQL veritabanına genel bakış](../sql-database-paas-overview.md)
-- [Veritabanı Yaşam Döngüsü Yönetimi](https://msdn.microsoft.com/library/jj907294.aspx)
+- [Veritabanı Yaşam Döngüsü Yönetimi](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

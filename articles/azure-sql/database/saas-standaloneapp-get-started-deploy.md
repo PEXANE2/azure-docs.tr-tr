@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: 1545f9cde15f010ba3d7d52c6fea1ef233d2fac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 896f4edb1e94c1eca06b046382727a5042375e3b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619484"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793288"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanan tek başına tek kiracılı bir uygulama dağıtma ve araştırma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -60,16 +60,16 @@ Uygulamayı belirtilen üç kiracı için dağıtın:
     > Bazı kimlik doğrulama ve sunucu güvenlik duvarları, tanıtım amacıyla güvenli şekilde güvenli değildir. Her uygulama dağıtımı için **Yeni bir kaynak grubu oluşturun** .  Mevcut bir kaynak grubunu kullanmayın. Üretim için bu uygulamayı veya oluşturduğu kaynakları kullanmayın. İlgili faturalandırmayı durdurmak için uygulamalarla işiniz bittiğinde tüm kaynak gruplarını silin.
 
     Kaynak adlarınızdan yalnızca küçük harf, sayı ve kısa çizgi kullanmak en iyisidir.
-    * **Kaynak grubu**Için yeni oluştur ' u seçin ve ardından kaynak grubu için küçük harfli bir ad sağlayın. **Wingtip-sa- \<venueName\> - \<user\> ** Önerilen modeldir.  İçin \<venueName\> , mekan adını boşluk yok ile değiştirin. İçin \<user\> , Kullanıcı değerini aşağıdan değiştirin.  Bu düzende, kaynak grubu adları *Wingtip-sa-contosoconcerthall-AF1*, *Wingtip-sa-dogwooddojo-AF1*, *Wingtip-sa-fabrikamjazzclub-AF1*olabilir.
+    * **Kaynak grubu** Için yeni oluştur ' u seçin ve ardından kaynak grubu için küçük harfli bir ad sağlayın. **Wingtip-sa- \<venueName\> - \<user\>** Önerilen modeldir.  İçin \<venueName\> , mekan adını boşluk yok ile değiştirin. İçin \<user\> , Kullanıcı değerini aşağıdan değiştirin.  Bu düzende, kaynak grubu adları *Wingtip-sa-contosoconcerthall-AF1* , *Wingtip-sa-dogwooddojo-AF1* , *Wingtip-sa-fabrikamjazzclub-AF1* olabilir.
     * Açılan listeden bir **konum** seçin.
 
-    * **Kullanıcı** için-adınızın baş ve bir basamak gibi kısa bir kullanıcı değeri önerilir: Örneğin, *AF1*.
+    * **Kullanıcı** için-adınızın baş ve bir basamak gibi kısa bir kullanıcı değeri önerilir: Örneğin, *AF1* .
 
 
-3. **Uygulamayı dağıtın**.
+3. **Uygulamayı dağıtın** .
 
     * Hüküm ve koşulları kabul etmek için tıklayın.
-    * **Satın al**’a tıklayın.
+    * **Satın al** ’a tıklayın.
 
 4. **Bildirimler** ' e tıklayarak üç dağıtımın durumunu izleyin (arama kutusunun sağındaki zil simgesi). Uygulamaları dağıtmak yaklaşık beş dakika sürer.
 
@@ -102,16 +102,16 @@ Dağıtılan kaynaklara göz atalım:
 
 1. [Azure Portal](https://portal.azure.com), kaynak grupları listesine gidin.
 2. Üç kiracı kaynak grubunu görmeniz gerekir.
-3. Fabrikam Cap Kulükünün dağıtımına yönelik kaynakları içeren **Wingtip-sa-fabrikam- &lt; user &gt; ** kaynak grubunu açın.  **Fabrikamjazzclub- &lt; &gt; User** sunucusu **fabrikamjazzclub** veritabanını içerir.
+3. Fabrikam Cap Kulükünün dağıtımına yönelik kaynakları içeren **Wingtip-sa-fabrikam- &lt; user &gt;** kaynak grubunu açın.  **Fabrikamjazzclub- &lt; &gt; User** sunucusu **fabrikamjazzclub** veritabanını içerir.
 
 Her kiracı veritabanı 50 DTU *tek başına* veritabanıdır.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 <!--
-* Additional [tutorials that build on the Wingtip SaaS application](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* Additional [tutorials that build on the Wingtip SaaS application](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * To learn about elastic pools, see [*What is an Azure SQL elastic pool*](elastic-pool-overview.md)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](../../sql-database/elastic-jobs-overview.md)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](./elastic-jobs-overview.md)
 -->
 
 - Çok kiracılı SaaS uygulamaları hakkında bilgi edinmek için bkz. [çok kiracılı SaaS uygulamaları Için tasarım desenleri](saas-tenancy-app-design-patterns.md).
@@ -131,5 +131,3 @@ Bu öğreticide şunları öğrendiniz:
 > * İlgili faturalandırmayı durdurmak için örnek kaynakları silme.
 
 Daha sonra, şema yönetimi ve kiracı analizi gibi çeşitli çapraz kiracı senaryolarına izin veren kiracılar kataloğunun kullanımını keşfedebileceğiniz [sağlama ve Katalog](saas-standaloneapp-provision-and-catalog.md) öğreticisini deneyin.
- 
-

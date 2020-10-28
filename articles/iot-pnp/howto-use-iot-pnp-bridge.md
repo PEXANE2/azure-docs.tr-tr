@@ -7,18 +7,18 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6670f654685f8d5cdcaf55d2b1679738a57ecab4
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 958402e61f6dc81a3e6618dbcd4df4c8dd6b9ced
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042805"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793067"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Linux veya Windows üzerinde çalışan bir IoT Tak ve Kullan köprüsü örneğini IoT Hub 'a bağlama
 
 Bu nasıl yapılır, IoT Tak ve Kullan köprüsünün örnek çevresel bağdaştırıcısının nasıl oluşturulduğunu, IoT Hub 'ınıza nasıl bağlayakullanacağınızı ve gönderdiği Telemetriyi görüntülemek için Azure IoT gezgin aracını nasıl kullanacağınızı gösterir. IoT Tak ve Kullan köprüsü C dilinde yazılır ve C için Azure IoT cihaz SDK 'sını içerir. Bu öğreticinin sonuna kadar IoT Tak ve Kullan köprüsünü çalıştırabiliyor ve Azure IoT Explorer 'da BT rapor telemetrisini görmeniz gerekir: :::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-explorer-telemetry.png" alt-text="ıot Tak ve kullan Bridge 'ten bildirilen telemetri (nem, sıcaklık) tablosu Ile Azure IoT Gezginini gösteren ekran görüntüsü.":::
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı Linux veya Windows üzerinde çalıştırabilirsiniz. Bu nasıl yapılır kılavuzundaki kabuk komutları ' ' yol ayırıcıları için Windows kuralına uyar `\` , Linux üzerinde takip ediyorsanız, bu ayırıcıları ' ' için değiştirmeyi unutmayın `/` .
 
@@ -30,14 +30,14 @@ Bu hızlı başlangıç, Ubuntu Linux kullandığınızı varsayar. Bu hızlı b
 
 Bu hızlı başlangıcı Linux üzerinde gerçekleştirmek için, yerel Linux ortamınıza aşağıdaki yazılımı yüklersiniz:
 
-Komutunu kullanarak **GCC**, **Git**, **CMake**ve tüm gerekli bağımlılıkları yükler `apt-get` :
+Komutunu kullanarak **GCC** , **Git** , **CMake** ve tüm gerekli bağımlılıkları yükler `apt-get` :
 
 ```sh
 sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Öğesinin sürümünün `cmake` **2.8.12** üzerinde olduğunu ve **GCC** 'nin sürümünün **4.4.7**'in üzerinde olduğunu doğrulayın.
+Öğesinin sürümünün `cmake` **2.8.12** üzerinde olduğunu ve **GCC** 'nin sürümünün **4.4.7** 'in üzerinde olduğunu doğrulayın.
 
 ```sh
 cmake --version
@@ -107,9 +107,13 @@ Bu işlemin tamamlanması birkaç dakika sürer.
 
 IoT Tak ve Kullan köprü deposunu makinenize kopyaladıktan sonra, `pnpbridge/docs/schema` kopyalanan deponun dizinine gidin ve bu [yapılandırmayı JSON](https://aka.ms/iot-pnp-bridge-env-config) veya `config.json` köprünün çevresel algılayıcı örneği için bulabilirsiniz. [Iot Tak ve kullan köprü kavramları belgesinde](concepts-iot-pnp-bridge.md)yapılandırma dosyaları hakkında daha fazla bilgi edinebilirsiniz.
 
-Alanı için, `root-_interface_model_id` cihazınızın modelini tanımlayan ıot Tak ve kullan MODELI kimliğini kopyalamanız gerekir. Bu örnekte bu değer `dtmi:com:example:SampleDevice;1`’dur. ' İçindeki dosyada **pnp_bridge_parameters** düğümü altında aşağıdaki parametreleri değiştirin `config.json` :
+Alanı için, `root-_interface_model_id` cihazınızın modelini tanımlayan ıot Tak ve kullan MODELI kimliğini kopyalamanız gerekir. Bu örnekte bu değer `dtmi:com:example:SampleDevice;1`’dur. Dosyadaki **pnp_bridge_parameters** düğümü altında aşağıdaki parametreleri değiştirin `config.json` :
 
-  Bağlantı dizesi kullanılıyor (Note: symmetric_key bağlantı dizesindeki SAS anahtarıyla eşleşmelidir):
+* connection_string 
+* symmetric_key 
+
+>[!NOTE]
+> Symmetric_key bağlantı dizesindeki SAS anahtarıyla aynı olmalıdır.
 
   ```JSON
     {
@@ -126,7 +130,7 @@ Alanı için, `root-_interface_model_id` cihazınızın modelini tanımlayan ıo
   }
   ```
 
- Dosya doldurulduktan sonra, `config.json` şuna benzemelidir:
+ Bu dosya doldurulduktan sonra, `config.json` şuna benzemelidir:
 
    ```JSON
     {

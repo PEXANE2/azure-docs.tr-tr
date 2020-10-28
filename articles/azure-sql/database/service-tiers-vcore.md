@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 09/30/2020
-ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4473ea304176615c35205494f342922869b71ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614436"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793152"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Sanal çekirdek modeline genel bakış-Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,8 +34,8 @@ Sanal çekirdek modelindeki hizmet katmanı seçenekleri Genel Amaçlı, İş A�
 |-|**Genel Amaçlı**|**İş Açısından Kritik**|**Hiper Ölçek**|
 |---|---|---|---|
 |En iyi kullanım alanı:|Birçok iş yükü. Bütçe odaklı, dengeli ve ölçeklenebilir işlem ile depolama seçenekleri sunar. |, Birkaç yalıtılmış çoğaltma kullanarak ve en yüksek g/ç performansı sunan iş uygulamalarına en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.  , Birden fazla yalıtılmış veritabanı çoğaltmasının yapılandırılmasına izin vererek daha yüksek esnekliği hatalara olanak sağlar. |
-|Depolama|Uzak depolamayı kullanır.<br/>**SQL veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Sunucusuz işlem**:<br/>5 GB-3 TB<br/>**SQL yönetilen örneği**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**SQL veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**SQL yönetilen örneği**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
-|IOPS ve aktarım hızı (yaklaşık)|**SQL veritabanı**: [tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için kaynak sınırlarına bakın.<br/>**SQL yönetilen örneği**: bkz. [Azure SQL yönetilen örnek kaynak sınırlarına genel bakış](../managed-instance/resource-limits.md#service-tier-characteristics).|[Tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için kaynak sınırlarına bakın.|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS ve aktarım hızı iş yüküne bağlıdır.|
+|Depolama|Uzak depolamayı kullanır.<br/>**SQL veritabanı sağlanan işlem** :<br/>5 GB – 4 TB<br/>**Sunucusuz işlem** :<br/>5 GB-3 TB<br/>**SQL yönetilen örneği** : 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**SQL veritabanı sağlanan işlem** :<br/>5 GB – 4 TB<br/>**SQL yönetilen örneği** :<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
+|IOPS ve aktarım hızı (yaklaşık)|**SQL veritabanı** : [tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için kaynak sınırlarına bakın.<br/>**SQL yönetilen örneği** : bkz. [Azure SQL yönetilen örnek kaynak sınırlarına genel bakış](../managed-instance/resource-limits.md#service-tier-characteristics).|[Tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için kaynak sınırlarına bakın.|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS ve aktarım hızı iş yüküne bağlıdır.|
 |Kullanılabilirlik|1 çoğaltma, okuma ölçeğinde çoğaltmalar yok|3 çoğaltma, 1 [okuma ölçeği çoğaltma](read-scale-out.md),<br/>bölge yedekli yüksek kullanılabilirlik (HA)|1 okuma-yazma çoğaltması, artı 0-4 [okuma ölçekli çoğaltmalar](read-scale-out.md)|
 |Yedeklemeler|[Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../../storage/common/geo-redundant-design.md), 7-35 gün (varsayılan olarak 7 gün)|[RA-GRS](../..//storage/common/geo-redundant-design.md), 7-35 gün (varsayılan olarak 7 gün)|Azure uzak depolama 'da anlık görüntü tabanlı yedeklemeler. Geri yükleme bu anlık görüntüleri hızlı kurtarma için kullanır. Yedeklemeler anında gerçekleşir ve işlem g/ç performansını etkilemez. Geri yükleme işlemleri hızlıdır ve veri boyutu (saatler veya günler yerine dakikalar içinde).|
 |Bellek içi|Desteklenmez|Desteklenir|Desteklenmez|
@@ -111,7 +111,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |Fsv2 serisi     |-Intel® 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-En fazla 72 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-136 GB 'a kadar sağlama|
 |M serisi     |-Intel® E7-8890 v3 2,5 GHz ve Intel® 8280D 2,7 GHz (Cascade Lake) işlemcileri<br>-En fazla 128 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-3,7 TB 'a kadar sağlama|
 
-\*[Sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamik yönetim görünümünde, ıNTEL® SP-8160 (ufuk Gölü) işlemcileri kullanan veritabanları için donanım oluşturma Gen6 olarak görünür, ancak ıNTEL® 8272CL (Cascade Lake) kullanan veritabanları için donanım oluşturma, Gen7 olarak görünür. Tüm 5. nesil veritabanlarının kaynak sınırları, işlemci türünden (çok Iyi, ufuk Gölü veya Cascade Lake) bağımsız olarak aynıdır.
+\*[Sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamik yönetim görünümünde, ıNTEL® SP-8160 (ufuk Gölü) işlemcileri kullanan veritabanları için donanım oluşturma Gen6 olarak görünür, ancak ıNTEL® 8272CL (Cascade Lake) kullanan veritabanları için donanım oluşturma, Gen7 olarak görünür. Tüm 5. nesil veritabanlarının kaynak sınırları, işlemci türünden (çok Iyi, ufuk Gölü veya Cascade Lake) bağımsız olarak aynıdır.
 
 Kaynak limitleri hakkında daha fazla bilgi için bkz. [tek veritabanları (sanal çekirdek) Için kaynak limitleri](resource-limits-vcore-single-databases.md)veya [elastik havuzlar (Vcore) için kaynak sınırları](resource-limits-vcore-elastic-pools.md).
 
@@ -138,7 +138,7 @@ Bir veritabanı için genel bakış sayfasında, **fiyatlandırma katmanı** ba�
 
   ![donanımı değiştirme](./media/service-tiers-vcore/change-hardware.png)
 
-Bir havuz için genel bakış sayfasında **Yapılandır**' ı seçin.
+Bir havuz için genel bakış sayfasında **Yapılandır** ' ı seçin.
 
 Yapılandırmayı değiştirmek için adımları izleyin ve önceki adımlarda açıklandığı gibi donanım üretimini seçin.
 
@@ -168,7 +168,7 @@ Aşağıdaki PowerShell komut dosyasını kullanın:
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-Daha fazla ayrıntı için [set-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) komutunu işaretleyin.
+Daha fazla ayrıntı için [set-Azsqlınstance](/powershell/module/az.sql/set-azsqlinstance) komutunu işaretleyin.
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -178,7 +178,7 @@ Aşağıdaki CLı komutunu kullanın:
 az sql mi update -g mygroup -n myinstance --family Gen5
 ```
 
-Daha fazla ayrıntı için [az SQL mı Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) komutunu işaretleyin.
+Daha fazla ayrıntı için [az SQL mı Update](/cli/azure/sql/mi#az-sql-mi-update) komutunu işaretleyin.
 
 ---
 
@@ -238,5 +238,4 @@ Genel amaçlı ve iş açısından kritik hizmet katmanlarında bulunan belirli 
 
 - [Azure SQL veritabanı Için sanal çekirdek tabanlı kaynak sınırları](resource-limits-vcore-single-databases.md).
 - [havuza alınmış Azure SQL veritabanı Için sanal çekirdek tabanlı kaynak sınırları](resource-limits-vcore-elastic-pools.md).
-- [Azure SQL yönetilen örneği Için sanal çekirdek tabanlı kaynak sınırları](../managed-instance/resource-limits.md). 
-
+- [Azure SQL yönetilen örneği Için sanal çekirdek tabanlı kaynak sınırları](../managed-instance/resource-limits.md).
