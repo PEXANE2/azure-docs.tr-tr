@@ -48,7 +48,7 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Stream Analytics
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Synapse Analytics
+            - name: Synapse Analytics SQL havuzu
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blok zinciri
           items:
@@ -158,6 +158,10 @@
               href: ../../application-gateway/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Content Delivery Network
               href: ../../cdn/create-profile-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: DNS
+              href: ../../dns/dns-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: ExpressRoute
+              href: ../../expressroute/quickstart-create-expressroute-vnet-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Güvenlik Duvarı - Kullanılabilirlik Alanları
               href: ../../firewall/deploy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Güvenlik Duvarı - IP Grupları
@@ -166,20 +170,26 @@
               href: ../../firewall/quick-create-multiple-ip-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Güvenlik Duvarı Yöneticisi
               href: ../../firewall-manager/quick-secure-virtual-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Load Balancer
+            - name: Yük Dengeleyici - genel
               href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: NAT Gateway
+              href: ../../virtual-network/quickstart-create-nat-gateway-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Özel Uç Nokta
               href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Özel Bağlantı hizmeti
               href: ../../private-link/create-private-link-service-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Traffic Manager
+              href: ../../traffic-manager/quickstart-create-traffic-manager-profile-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Web Uygulaması Güvenlik Duvarı
               href: ../../web-application-firewall/ag/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Güvenlik
           items:
             - name: Kanıtlama
               href: ../../attestation/quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Key Vault
+            - name: Key Vault - gizli dizi
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Güvenlik Merkezi
+              href: ../../security-center/quickstart-automation-alert.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Depolama
           items:
             - name: Veri Paylaşımı
@@ -188,6 +198,8 @@
               href: ../../storage/common/storage-account-create.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
+            - name: API Management
+              href: ../../api-management/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: App Service
               href: ../../app-service/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Notification Hubs
@@ -343,36 +355,42 @@
             - name: Çıkışlar
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: Şablon özelliklerini keşfetme
-      items:
-        - name: Şablonu dışarı aktarma
-          href: export-template-portal.md
-        - name: Kaynak bulma
-          href: view-resources.md
-    - name: Şablonları doğrulama
-      items:
-        - name: Durum çözümlemesi dağıtımı
-          href: template-deploy-what-if.md
-        - name: Test araç seti
-          href: test-toolkit.md
-        - name: Test çalışmaları
-          href: test-cases.md
     - name: Şablon dağıtma
       items:
-        - name: Dağıtma - portal
-          displayName: deployment
-          href: deploy-portal.md
-        - name: Dağıtma - CLI
-          displayName: deployment
-          href: deploy-cli.md
-        - name: Dağıtma - PowerShell
-          displayName: deployment
-          href: deploy-powershell.md
-        - name: Dağıtma - REST API
-          displayName: deployment
-          href: deploy-rest.md
-        - name: GitHub’dan dağıtım
-          href: deploy-to-azure-button.md
+        - name: Dağıtım işlemleri
+          items:
+            - name: Dağıtma - portal
+              displayName: deployment
+              href: deploy-portal.md
+            - name: Dağıtma - CLI
+              displayName: deployment
+              href: deploy-cli.md
+            - name: Dağıtma - PowerShell
+              displayName: deployment
+              href: deploy-powershell.md
+            - name: Dağıtma - REST API
+              displayName: deployment
+              href: deploy-rest.md
+            - name: Dağıtma - GitHub
+              href: deploy-to-azure-button.md
+            - name: Dağıtma - Cloud Shell
+              href: deploy-cloud-shell.md
+        - name: Kapsamlar
+          items:
+            - name: Kaynak grubu
+              href: deploy-to-resource-group.md
+            - name: Abonelik
+              href: deploy-to-subscription.md
+            - name: Yönetim grubu
+              href: deploy-to-management-group.md
+            - name: Kiracı
+              href: deploy-to-tenant.md
+            - name: Uzantı kaynakları
+              href: scope-extension-resources.md
+            - name: Kapsamlar genelinde işlevler
+              href: scope-functions.md
+        - name: Durum çözümlemesi dağıtımı
+          href: template-deploy-what-if.md
         - name: Hata durumunda yeniden dağıtma
           displayName: rollback
           href: rollback-on-error.md
@@ -380,16 +398,6 @@
           href: secure-template-with-sas-token.md
         - name: Dağıtım geçmişini görüntüleme
           href: deployment-history.md
-    - name: Kapsamlı dağıtımlar
-      items:
-        - name: Abonelik
-          href: deploy-to-subscription.md
-        - name: Yönetim grubu
-          href: deploy-to-management-group.md
-        - name: Kiracı
-          href: deploy-to-tenant.md
-        - name: Kapsamlar arası dağıtımlar
-          href: cross-scope-deployment.md
     - name: Parametreleri sağlama
       items:
         - name: Parametre dosyası oluşturma
@@ -397,12 +405,24 @@
         - name: Hassas değerleri geçirme
           displayname: key vault
           href: key-vault-parameter.md
+    - name: Test şablonları
+      items:
+        - name: Test araç seti
+          href: test-toolkit.md
+        - name: Test çalışmaları
+          href: test-cases.md
     - name: CI/CD
       items:
         - name: İşlem hatları olan ARM şablonları
           href: add-template-to-azure-pipelines.md
         - name: Dağıtım - GitHub Actions
           href: deploy-github-actions.md
+    - name: Şablon özelliklerini keşfetme
+      items:
+        - name: Şablonu dışarı aktarma
+          href: export-template-portal.md
+        - name: Kaynak bulma
+          href: view-resources.md
     - name: Yazma araçlarını kullanma
       items:
         - name: Visual Studio
