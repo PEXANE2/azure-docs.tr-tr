@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: eab90fc2cb30ae8e9f1c19bdbefc6fbc88c32f76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c6f4f7db312355b719deb434bf6a46fa55eec9d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079277"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912795"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>Bekleyen veriler için yüz hizmeti şifreleme
 
@@ -30,5 +30,5 @@ Yüz hizmeti, verileri buluta kalıcı hale geldiğinde otomatik olarak şifrele
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * CMK 'yı destekleyen hizmetlerin tam listesi için bkz. bilişsel [Hizmetler Için müşteri tarafından yönetilen anahtarlar](../encryption/cognitive-services-encryption-keys-portal.md)
-* [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
+* [Azure Key Vault nedir](../../key-vault/general/overview.md)?
 * [Bilişsel hizmetler Customer-Managed anahtar Isteği formu](https://aka.ms/cogsvc-cmk)

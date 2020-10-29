@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: ad365c2d4c171105d8dec89d818ef481361d1ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81272602"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912880"
 ---
 # <a name="moderate-text-from-the-api-console"></a>API konsolundan orta metin
 
@@ -33,7 +33,7 @@ Metin içeriğini küfür için taramak ve özel ve paylaşılan listelerle kar�
 
 ## <a name="open-the-api-console"></a>API konsolunu açın
 
-**Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
+**Open API test konsolu** için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
 
   ![Metin-ekran sayfa bölgesi seçimi](images/test-drive-region.png)
 
@@ -43,20 +43,20 @@ Metin içeriğini küfür için taramak ve özel ve paylaşılan listelerle kar�
 
 ### <a name="parameters"></a>Parametreler
 
-Metin ekranınızda kullanmak istediğiniz sorgu parametrelerini seçin. Bu örnek için **dil**için varsayılan değeri kullanın. Ayrıca işlem, yürütmenin bir parçası olarak olası dili otomatik olarak algılayacağından boş bırakabilirsiniz.
+Metin ekranınızda kullanmak istediğiniz sorgu parametrelerini seçin. Bu örnek için **dil** için varsayılan değeri kullanın. Ayrıca işlem, yürütmenin bir parçası olarak olası dili otomatik olarak algılayacağından boş bırakabilirsiniz.
 
 > [!NOTE]
-> **Dil** parametresi için, `eng` makine yardımlı **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere boş bırakın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler**.
+> **Dil** parametresi için, `eng` makine yardımlı **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere boş bırakın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler** .
 >
 > **Küfür terimleri** algılama için, bu makalede listelenen desteklenen dillerin [ISO 639-3 kodunu](http://www-01.sil.org/iso639-3/codes.asp) kullanın veya boş bırakın.
 
-**Otomatik Düzelt**, **PII**ve **sınıflandır (Önizleme)** için **doğru**öğesini seçin. **ListId** alanını boş bırakın.
+**Otomatik Düzelt** , **PII** ve **sınıflandır (Önizleme)** için **doğru** öğesini seçin. **ListId** alanını boş bırakın.
 
   ![Metin-ekran konsolu sorgu parametreleri](images/text-api-console-inputs.PNG)
 
 ### <a name="content-type"></a>İçerik türü
 
-**Içerik türü**için, ekranın istediğiniz içerik türünü seçin. Bu örnek için varsayılan **metin/düz** içerik türünü kullanın. **OCP-apim-Subscription-Key** kutusuna abonelik anahtarınızı girin.
+**Içerik türü** için, ekranın istediğiniz içerik türünü seçin. Bu örnek için varsayılan **metin/düz** içerik türünü kullanın. **OCP-apim-Subscription-Key** kutusuna abonelik anahtarınızı girin.
 
 ### <a name="sample-text-to-scan"></a>Taranacak örnek metin
 
@@ -137,4 +137,4 @@ JSON yanıtındaki tüm bölümlerin ayrıntılı bir açıklaması için, [meti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kodunuzda REST API kullanın veya uygulamanızla tümleştirilecek [.NET SDK hızlı](dotnet-sdk-quickstart.md) başlangıcını izleyin.
+Kodunuzda REST API kullanın veya uygulamanızla tümleştirilecek [.NET SDK hızlı](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) başlangıcını izleyin.

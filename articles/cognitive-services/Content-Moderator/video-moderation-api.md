@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b389841bdba107ba27371387d4a6e5d1f009d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd813c6db9d03b0b7c84497e5b44f6ecdb591437
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919361"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912863"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C 'de sakıncalı malzeme için video içeriğini analiz etme #
 
@@ -24,7 +24,7 @@ Bu makalede, [.NET için Content moderator SDK 'yı](https://www.nuget.org/packa
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Herhangi bir [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/) sürümü
 
 ## <a name="set-up-azure-resources"></a>Azure kaynakları ayarlama
@@ -33,17 +33,17 @@ Content Moderator video denetleme özelliği, Azure Media Services (AMS) içinde
 
 ### <a name="create-an-azure-media-services-account"></a>Azure Media Services hesabı oluşturma
 
-AMS 'ye abone olmak ve ilişkili bir Azure depolama hesabı oluşturmak için [Azure Media Services hesabı oluşturma](https://docs.microsoft.com/azure/media-services/media-services-portal-create-account) bölümündeki yönergeleri izleyin. Bu depolama hesabında, yeni bir BLOB depolama kapsayıcısı oluşturun.
+AMS 'ye abone olmak ve ilişkili bir Azure depolama hesabı oluşturmak için [Azure Media Services hesabı oluşturma](../../media-services/previous/media-services-portal-create-account.md) bölümündeki yönergeleri izleyin. Bu depolama hesabında, yeni bir BLOB depolama kapsayıcısı oluşturun.
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory uygulaması oluşturma
 
-Azure portal yeni AMS aboneliğinize gidin ve Yan menüden **API erişimi** ' ni seçin. **Hizmet sorumlusu ile Azure Media Services Bağlan**' ı seçin. **REST API uç noktası** alanındaki değeri aklınızda edin; Buna daha sonra ihtiyacınız olacak.
+Azure portal yeni AMS aboneliğinize gidin ve Yan menüden **API erişimi** ' ni seçin. **Hizmet sorumlusu ile Azure Media Services Bağlan** ' ı seçin. **REST API uç noktası** alanındaki değeri aklınızda edin; Buna daha sonra ihtiyacınız olacak.
 
 **Azure AD uygulaması** bölümünde **Yeni oluştur** ' u SEÇIN ve yeni Azure AD uygulama kaydınızı adlandırın (örneğin, "VideoModADApp"). **Kaydet** ' e tıklayın ve uygulama yapılandırıldıktan sonra birkaç dakika bekleyin. Ardından, yeni uygulama kaydınızı sayfanın **Azure AD uygulaması** bölümünde görmeniz gerekir.
 
-Uygulama kaydınızı seçin ve altındaki **Uygulamayı Yönet** düğmesine tıklayın. **Uygulama kimliği** alanındaki değeri aklınızda edin; Buna daha sonra ihtiyacınız olacak. **Ayarlar**  >  **anahtarlar**' ı seçin ve yeni anahtar için bir açıklama girin (örneğin, "videomodkey"). **Kaydet**' e tıklayın ve ardından yeni anahtar değerine dikkat edin. Bu dizeyi kopyalayın ve güvenli bir yere kaydedin.
+Uygulama kaydınızı seçin ve altındaki **Uygulamayı Yönet** düğmesine tıklayın. **Uygulama kimliği** alanındaki değeri aklınızda edin; Buna daha sonra ihtiyacınız olacak. **Ayarlar**  >  **anahtarlar** ' ı seçin ve yeni anahtar için bir açıklama girin (örneğin, "videomodkey"). **Kaydet** ' e tıklayın ve ardından yeni anahtar değerine dikkat edin. Bu dizeyi kopyalayın ve güvenli bir yere kaydedin.
 
-Yukarıdaki işlemin daha kapsamlı bir yolu için bkz. [Azure AD kimlik doğrulamasıyla çalışmaya başlama](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
+Yukarıdaki işlemin daha kapsamlı bir yolu için bkz. [Azure AD kimlik doğrulamasıyla çalışmaya başlama](../../media-services/previous/media-services-portal-get-started-with-aad.md).
 
 Bunu yaptıktan sonra, video denetlemesi medya işlemcisini iki farklı yolla kullanabilirsiniz.
 
@@ -55,9 +55,9 @@ Azure Media Services gezgin, AMS için Kullanıcı dostu bir ön uçta bulunur. 
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio projesini oluşturma
 
-1. Visual Studio 'da yeni bir **konsol uygulaması (.NET Framework)** projesi oluşturun ve bunu **videodenetlemesi**olarak adlandırın. 
+1. Visual Studio 'da yeni bir **konsol uygulaması (.NET Framework)** projesi oluşturun ve bunu **videodenetlemesi** olarak adlandırın. 
 1. Çözümünüzde başka projeler de varsa, tek başlangıç projesi olarak bunu seçin.
-1. Gereken NuGet paketlerini alın. Çözüm Gezgini'nde projenize sağ tıklayın ve **NuGet Paketlerini Yönet**'i seçin; ardından aşağıdaki projeleri bulun ve yükleyin:
+1. Gereken NuGet paketlerini alın. Çözüm Gezgini'nde projenize sağ tıklayın ve **NuGet Paketlerini Yönet** 'i seçin; ardından aşağıdaki projeleri bulun ve yükleyin:
     - windowsazure. mediaservices
     - windowsazure. mediaservices. Extensions
 
@@ -84,7 +84,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Kaynak başvurularını ayarlama
 
-Aşağıdaki statik alanları _program.cs_içindeki **Program** sınıfına ekleyin. Bu alanlar, AMS aboneliğinize bağlanmak için gereken bilgileri tutar. Bunları yukarıdaki adımlarda aldığınız değerlerle birlikte doldurabilirsiniz. `CLIENT_ID`Azure AD uygulamanızın **uygulama kimliği** değeri olduğunu ve `CLIENT_SECRET` Bu uygulama Için oluşturduğunuz "videomodkey" değerinin olduğunu unutmayın.
+Aşağıdaki statik alanları _program.cs_ içindeki **Program** sınıfına ekleyin. Bu alanlar, AMS aboneliğinize bağlanmak için gereken bilgileri tutar. Bunları yukarıdaki adımlarda aldığınız değerlerle birlikte doldurabilirsiniz. `CLIENT_ID`Azure AD uygulamanızın **uygulama kimliği** değeri olduğunu ve `CLIENT_SECRET` Bu uygulama Için oluşturduğunuz "videomodkey" değerinin olduğunu unutmayın.
 
 ```csharp
 // declare constants and globals
@@ -365,9 +365,9 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 Içerik denetleme işi tamamlandıktan sonra JSON yanıtını çözümleyin. Şu öğelerden oluşur:
 
 - Video bilgileri Özeti
-- "**Parçalar**" olarak **anlık görüntüleri**
-- " **(= True veya false)"** adlı "**Olaylar**" olarak, **yetişkin** ve **kcy** puanlarını temel alan **ana çerçeveler**
-- **Başlangıç**, **süre**, **TotalDuration**ve **zaman damgası** "ticks" dir. Sayıyı saniye cinsinden almak için **zaman ölçeğinde** ayırın.
+- " **Parçalar** " olarak **anlık görüntüleri**
+- " **(= True veya false)"** adlı " **Olaylar** " olarak, **yetişkin** ve **kcy** puanlarını temel alan **ana çerçeveler**
+- **Başlangıç** , **süre** , **TotalDuration** ve **zaman damgası** "ticks" dir. Sayıyı saniye cinsinden almak için **zaman ölçeğinde** ayırın.
  
 > [!NOTE]
 > - `adultScore` belirli durumlarda cinsel açık veya yetişkin olarak değerlendirilen içeriğin olası varlığını ve tahmin Puanını temsil eder.

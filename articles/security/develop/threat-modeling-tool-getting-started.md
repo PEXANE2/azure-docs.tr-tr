@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0aff6692a12ca7fb00090c0585e46f37c84ace
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980470"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913033"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool kullanmaya başlama
 
@@ -101,7 +101,7 @@ Ricardo, listedeki ilk öğeyi seçerek başlar. Şöyle olur:
 
 İkinci olarak tehdit hakkında ek bilgiler tehdit Özellikler penceresi görünür.
 
-![Etkileşim bilgileri](./media/threat-modeling-tool-getting-started/interactioninfo.png)
+![Ekran görüntüsünde başlık, kategori, açıklama, etkileşim ve öncelik içeren tehdit Özellikler penceresi gösterilmektedir.](./media/threat-modeling-tool-getting-started/interactioninfo.png)
 
 Oluşturulan tehdit potansiyel tasarım kusurları anlamanıza yardımcı olur. Ilerleme kategorisi, olası saldırı vektörlerine fikir verir. ek açıklama, tam olarak neyin yanlış olduğunu ve bunu hafifletmenin olası yollarını söyler. Düzenleme ayrıntılarına Not yazmak veya kuruluşun hata çubuğuna bağlı olarak öncelik derecelendirmelerini değiştirmek için düzenlenebilir alanları kullanabilir.
 
@@ -118,7 +118,7 @@ Mevcut azaltma işlemleri veya güvenlik garantisi nedeniyle, durum açılan lis
 
 Ricardo, Cristina ile listedeki ilerledikten sonra önemli notlar, azaltmalar/gerekçeler, öncelik ve durum değişikliklerini ekler ve uygun güvenlik işinin uygulandığından emin olmak için iş arkadaşlarınızla birlikte çalışmaya yönelik iyi bir rapor yazdıran > tam rapor oluşturma > raporu seçer.
 
-![Etkileşim bilgileri](./media/threat-modeling-tool-feature-overview/report.png)
+![Ekran görüntüsü temsili bir tehdit modelleme raporu gösterir.](./media/threat-modeling-tool-feature-overview/report.png)
 
 Bunun yerine Ricardo dosyayı paylaştırmak istiyorsa, kuruluşun OneDrive hesabına kaydederek kolayca bunu yapabilirsiniz. Bunu yaptıktan sonra belge bağlantısını kopyalayabilir ve iş arkadaşlarınızla paylaşabilir. 
 

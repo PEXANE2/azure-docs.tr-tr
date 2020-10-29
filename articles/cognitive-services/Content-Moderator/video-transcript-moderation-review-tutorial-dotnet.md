@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1f5a68bcf0069663d8ef1101407bea7ee26e9e8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1648bd9a073bca696299e9ed703536db745e7edb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919301"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912846"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Öğretici: Video ve transkript denetimi
 
@@ -35,7 +35,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Content moderator gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com/) Web sitesine kaydolun ve özel etiketler oluşturun. Bu adımla ilgili yardıma ihtiyacınız varsa [etiketleri kullanma](Review-Tool-User-Guide/tags.md) bölümüne bakın.
+- [Content moderator gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com/) Web sitesine kaydolun ve özel etiketler oluşturun. Bu adımla ilgili yardıma ihtiyacınız varsa [etiketleri kullanma](./review-tool-user-guide/configure.md#tags) bölümüne bakın.
 
     ![Video denetleme özel etiketlerinin ekran görüntüsü](images/video-tutorial-custom-tags.png)
 - Örnek uygulamayı çalıştırmak için bir Azure hesabına, bir Azure Media Services kaynağına, bir Azure Content Moderator kaynağına ve Azure Active Directory kimlik bilgilerine sahip olmanız gerekir. Bu kaynakları alma hakkında yönergeler için bkz. [video denetleme API](video-moderation-api.md) Kılavuzu.
@@ -83,7 +83,7 @@ Dosyayı düzenleyin `App.config` ve tarafından gösterilen Active Directory ki
 Hiçbir komut satırı bağımsız değişkeni yoksa, `Main()``GetUserInputs()` çağrısı yapar. Bu yöntem kullanıcıdan tek bir video dosyasının yolunu girmesini ve metin transkriptinin oluşturulup oluşturulmayacağını belirtmesini ister.
 
 > [!NOTE]
-> Konsol uygulaması, karşıya yüklenen videonun ses izlemesindeki dökümü oluşturmak için [Azure MEDIA Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) kullanır. Sonuçlar WebVTT biçiminde sağlanır. Bu biçimle ilgili daha fazla bilgi için bkz. [Web Video Metin Parçaları Biçimi](https://developer.mozilla.org/docs/Web/API/WebVTT_API).
+> Konsol uygulaması, karşıya yüklenen videonun ses izlemesindeki dökümü oluşturmak için [Azure MEDIA Indexer API](../../media-services/previous/legacy-components.md) kullanır. Sonuçlar WebVTT biçiminde sağlanır. Bu biçimle ilgili daha fazla bilgi için bkz. [Web Video Metin Parçaları Biçimi](https://developer.mozilla.org/docs/Web/API/WebVTT_API).
 
 ### <a name="initialize-and-processvideo-methods"></a>Initialize ve ProcessVideo yöntemleri
 
@@ -224,7 +224,7 @@ Video denetimi işinin sonucu (Bkz. [video denetimine hızlı başlangıç](vide
 `GenerateVTT` bayrağı ayarlandığında videodan ses transkripsiyonu da oluşturulur.
 
 > [!NOTE]
-> Konsol uygulaması, karşıya yüklenen videonun ses izlemesindeki dökümü oluşturmak için [Azure MEDIA Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) kullanır. Sonuçlar WebVTT biçiminde sağlanır. Bu biçimle ilgili daha fazla bilgi için bkz. [Web Video Metin Parçaları Biçimi](https://developer.mozilla.org/docs/Web/API/WebVTT_API).
+> Konsol uygulaması, karşıya yüklenen videonun ses izlemesindeki dökümü oluşturmak için [Azure MEDIA Indexer API](../../media-services/previous/legacy-components.md) kullanır. Sonuçlar WebVTT biçiminde sağlanır. Bu biçimle ilgili daha fazla bilgi için bkz. [Web Video Metin Parçaları Biçimi](https://developer.mozilla.org/docs/Web/API/WebVTT_API).
 
 ## <a name="create-a-human-review"></a>İnsan incelemesi oluşturma
 
@@ -249,7 +249,7 @@ Aşağıdaki ekranda önceki adımların sonuçları gösterilir.
 
 ## <a name="process-the-transcript"></a>Dökümü işle
 
-Şimdiye kadar, bu öğreticide tanıtılan kod görsel içeriğe odaklanmıştı. Konuşma içeriğinin incelenmesi ayrı ve isteğe bağlı bir işlemdir ve daha önce belirtildiği gibi sesten oluşturulan transkripti kullanır. Artık metin transkriptlerinin nasıl oluşturulduğunu ve inceleme işleminde nasıl kullanıldığını gözden geçirmenin zamanı geldi. Transkript oluşturma görevi, [Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-index-content) hizmetinin kapsamına girer.
+Şimdiye kadar, bu öğreticide tanıtılan kod görsel içeriğe odaklanmıştı. Konuşma içeriğinin incelenmesi ayrı ve isteğe bağlı bir işlemdir ve daha önce belirtildiği gibi sesten oluşturulan transkripti kullanır. Artık metin transkriptlerinin nasıl oluşturulduğunu ve inceleme işleminde nasıl kullanıldığını gözden geçirmenin zamanı geldi. Transkript oluşturma görevi, [Azure Media Indexer](../../media-services/previous/media-services-index-content.md) hizmetinin kapsamına girer.
 
 Uygulama aşağıdaki görevleri gerçekleştirir:
 

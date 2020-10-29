@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 2c4349662b06ff281ef028c833c6c43dd2707051
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 5a6fc8e9b316f7c4740ee27fe72c5f056f071d73
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905552"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912724"
 ---
 # <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>DDoS saldırı risk azaltma raporlarını ve akış günlüklerini yapılandırma 
 
@@ -91,6 +91,22 @@ Akış günlükleri aşağıdaki alanlara sahip olur:
 ![DDoS koruması çalışma kitabı](./media/ddos-attack-telemetry/ddos-attack-analytics-workbook.png)
 
 Saldırı Analizi, yalnızca genel IP adresinin sanal ağında DDoS koruma standardı etkinse çalışır. 
+
+## <a name="sample-log-outputs"></a>Örnek günlük çıkışları
+
+Aşağıdaki ekran görüntüleri örnek günlük çıktılardır:
+
+### <a name="ddosmitigationflowlogs"></a>DDoSMitigationFlowLogs
+
+![DDoS koruması DDoSMitigationFlowLogs](./media/ddos-attack-telemetry/ddos-mitigation-flow-logs.png)
+
+### <a name="ddosprotectionnotifications"></a>DDoSProtectionNotifications
+
+![DDoS koruması DDoSProtectionNotifications](./media/ddos-attack-telemetry/ddos-protection-notifications.png)
+
+### <a name="ddosmitigationreports"></a>DDoSMitigationReports
+
+![DDoS koruması DDoSMitigationReports](./media/ddos-attack-telemetry/ddos-mitigation-reports.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
