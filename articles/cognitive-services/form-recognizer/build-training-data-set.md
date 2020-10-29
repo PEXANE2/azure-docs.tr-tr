@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 073f1361771ded96b33158d040efd77306acd846
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 513d98ae274c668197b066c742119055248f37f9
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276959"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911724"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Özel model için eğitim veri kümesi oluşturma
 
@@ -41,7 +41,7 @@ Eğitim için veri kümesini daha iyi hale getirmeye yönelik bu ek ipuçların�
 
 ## <a name="upload-your-training-data"></a>Eğitim verilerinizi karşıya yükleyin
 
-Eğitim için kullanacağınız form belgelerinin bir kümesini birlikte yerleştirdiğinizde, bir Azure Blob depolama kapsayıcısına yüklemeniz gerekir. Bir kapsayıcı ile Azure depolama hesabı oluşturmayı bilmiyorsanız [Azure Portal Için Azure Storage hızlı](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)başlangıcını takip edin. Standart performans katmanını kullanın.
+Eğitim için kullanacağınız form belgelerinin bir kümesini birlikte yerleştirdiğinizde, bir Azure Blob depolama kapsayıcısına yüklemeniz gerekir. Bir kapsayıcı ile Azure depolama hesabı oluşturmayı bilmiyorsanız [Azure Portal Için Azure Storage hızlı](../../storage/blobs/storage-quickstart-blobs-portal.md)başlangıcını takip edin. Standart performans katmanını kullanın.
 
 El ile etiketlenmiş verileri kullanmak istiyorsanız eğitim belgelerinize karşılık gelen dosyalara *.labels.js* ve *.ocr.js* yüklemeniz gerekir. Bu dosyaları oluşturmak için [örnek etiketleme aracını](./quickstarts/label-tool.md) (veya kendi Kullanıcı arabiriminizi) kullanabilirsiniz.
 

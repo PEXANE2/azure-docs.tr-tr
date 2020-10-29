@@ -2,22 +2,22 @@
 title: Tanılama günlüklerini ayarlama-Azure Olay Hub 'ı | Microsoft Docs
 description: Azure 'da Olay Hub 'ları için etkinlik günlüklerini ve tanılama günlüklerini ayarlamayı öğrenin.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.openlocfilehash: a7230746dc4225b04b0507c872416368aa14442b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88927740"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912608"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure olay hub'ı için tanılama günlüklerini ayarlama
 
 Azure Event Hubs için iki tür günlük görüntüleyebilirsiniz:
 
-* **[Etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md)**: Bu günlüklerde, bir işte yapılan işlemlerle ilgili bilgiler vardır. Günlükler her zaman etkindir. Azure portal olay hub 'ı ad alanınız için sol bölmedeki **etkinlik günlüğü** ' ni seçerek etkinlik günlüğü girdilerini görebilirsiniz. Örneğin: "ad alanı oluştur veya güncelleştir", "Olay Hub 'ı oluştur veya güncelleştir".
+* **[Etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md)** : Bu günlüklerde, bir işte yapılan işlemlerle ilgili bilgiler vardır. Günlükler her zaman etkindir. Azure portal olay hub 'ı ad alanınız için sol bölmedeki **etkinlik günlüğü** ' ni seçerek etkinlik günlüğü girdilerini görebilirsiniz. Örneğin: "ad alanı oluştur veya güncelleştir", "Olay Hub 'ı oluştur veya güncelleştir".
 
     ![Event Hubs ad alanı için etkinlik günlüğü](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[Tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md)**: Tanılama GÜNLÜKLERI, API kullanarak veya dil SDK 'sindeki yönetim istemcileri aracılığıyla ad alanı üzerinde yürütülen işlemler ve eylemler hakkında daha zengin bilgiler sağlar. 
+* **[Tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md)** : Tanılama GÜNLÜKLERI, API kullanarak veya dil SDK 'sindeki yönetim istemcileri aracılığıyla ad alanı üzerinde yürütülen işlemler ve eylemler hakkında daha zengin bilgiler sağlar. 
     
     Aşağıdaki bölümde bir Event Hubs ad alanı için tanılama günlüklerinin nasıl etkinleştirileceği gösterilmektedir.
 
@@ -25,7 +25,7 @@ Azure Event Hubs için iki tür günlük görüntüleyebilirsiniz:
 Tanılama günlükleri varsayılan olarak devre dışıdır. Tanılama günlüklerini etkinleştirmek için şu adımları izleyin:
 
 1.  [Azure Portal](https://portal.azure.com), Event Hubs ad alanına gidin. 
-2. Sol bölmede **izleme** altında **Tanılama ayarları** ' nı seçin ve **+ Tanılama ayarı Ekle**' yi seçin. 
+2. Sol bölmede **izleme** altında **Tanılama ayarları** ' nı seçin ve **+ Tanılama ayarı Ekle** ' yi seçin. 
 
     ![Tanılama ayarları sayfası-tanılama ayarı Ekle](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
 4. **Kategori ayrıntıları** bölümünde, etkinleştirmek istediğiniz **tanılama günlüğü türlerini** seçin. Bu kategorilerin ilerleyen kısımlarında bu kategorilerin ayrıntılarını bulabilirsiniz. 
@@ -188,7 +188,6 @@ Kafka Kullanıcı hatası günlüğü JSON, aşağıdaki tabloda listelenen öğ
 | `Message` | Bir hata hakkındaki ayrıntıları sağlayan bilgilendirici ileti |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs sanal ağ bağlantısı olay şeması
-
 Event Hubs sanal ağ (VNet) bağlantı olayı JSON aşağıdaki tabloda listelenen öğeleri içerir:
 
 | Ad | Açıklama |
@@ -196,10 +195,12 @@ Event Hubs sanal ağ (VNet) bağlantı olayı JSON aşağıdaki tabloda listelen
 | `SubscriptionId` | Azure abonelik KIMLIĞI |
 | `NamespaceName` | Ad alanı adı |
 | `IPAddress` | Event Hubs hizmetine bağlanan bir istemcinin IP adresi |
-| `Action` | Bağlantı istekleri değerlendirilirken Event Hubs hizmeti tarafından gerçekleştirilen eylem. Desteklenen eylemler **bağlantı kabul eder** ve **bağlantıyı reddedebilir**. |
+| `Action` | Bağlantı istekleri değerlendirilirken Event Hubs hizmeti tarafından gerçekleştirilen eylem. Desteklenen eylemler **bağlantı kabul eder** ve **bağlantıyı reddedebilir** . |
 | `Reason` | Eylemin neden yapıldığını bir neden sağlar |
 | `Count` | Verilen eylem için oluşum sayısı |
 | `ResourceId` | Azure Resource Manager kaynak KIMLIĞI. |
+
+Sanal ağ günlükleri yalnızca ad alanı **Seçili ağlardan** veya **belirli IP adreslerinden** (IP filtre kuralları) erişime izin veriyorsa oluşturulur. Bu özellikleri kullanarak ad alanınızı erişimi kısıtlamak ve yine de Event Hubs ad alanına bağlanan istemcilerin IP adreslerini izlemek için sanal ağ günlükleri almak istiyorsanız, aşağıdaki geçici çözümü kullanabilirsiniz. IP filtrelemeyi etkinleştirin ve toplam adreslenebilir IPv4 aralığını (1.0.0.0/1-255.0.0.0/1) ekleyin. Event Hubs IPv6 aralıklarını desteklemez. 
 
 ### <a name="example"></a>Örnek
 

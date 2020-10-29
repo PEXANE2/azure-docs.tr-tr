@@ -3,12 +3,12 @@ title: Akış olaylarını yakala-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs aracılığıyla olayları akışını yakalamanızı sağlayan yakalama özelliğine bir genel bakış sunulmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1b79db7a7f8d0fe03b21e005ef696d5fe55ac0a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32741fdd98ec79c38568ff5a6c4fa476f27d794b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613416"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912625"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Blob depolama veya Azure Data Lake Storage Azure Event Hubs aracılığıyla olayları yakalama
 Azure Event Hubs, bir [Azure Blob depolama](https://azure.microsoft.com/services/storage/blobs/) alanında Event Hubs akış verilerini otomatik olarak yakalamanızı veya tercih ettiğiniz bir zaman veya boyut aralığı belirtme esnekliğine sahip olan [Azure Data Lake Storage Gen 1 veya Gen 2](https://azure.microsoft.com/services/data-lake-store/) hesabı. Yakalama ayarı hızlıdır, çalıştırmak için yönetim maliyeti yoktur ve Event Hubs [üretilen iş birimleriyle](event-hubs-scalability.md#throughput-units)otomatik olarak ölçeklendirilir. Event Hubs yakalama, akış verilerini Azure 'a yüklemenin en kolay yoludur ve veri yakalama yerine veri işlemeye odaklanmanızı sağlar.
@@ -58,6 +58,8 @@ Yapılandırıldıktan sonra, ilk olaylarınızı gönderdiğinizde Event Hubs y
 - [Azure portalını kullanarak Event Hubs Yakalama özelliğini etkinleştirme](event-hubs-capture-enable-through-portal.md)
 - [Bir olay hub'ı ile bir Event Hubs ad alanı oluşturma ve Azure Resource Manager şablonu kullanarak Yakalamayı etkinleştirme](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 
+> [!NOTE]
+> Mevcut bir olay hub 'ı için yakalama özelliğini etkinleştirirseniz özellik, özellik **açıldıktan sonra** Olay Hub 'ına gelen olayları yakalar. Özellik açılmadan önce olay hub 'ında var olan olayları yakalamaz. 
 
 ## <a name="exploring-the-captured-files-and-working-with-avro"></a>Yakalanan dosyaları keşfetme ve avro ile çalışma
 

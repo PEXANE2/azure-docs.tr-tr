@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 231b6ffa3730721d4e44ecb15c2fc58591b80178
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 22922972049ec78cc26f4d060fa1981d1f23a3ce
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314807"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912455"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer sorunlarını giderme
 
@@ -35,10 +35,10 @@ Arka uç VM 'lerine dış istemciler yük dengeleyiciye geldiğinde, istemcileri
 
 **Doğrulama ve çözümleme**
 
-Standart ılbs 'ler **Varsayılan olarak güvenlidir**. *Gizli* genel IP adresi aracılığıyla internet 'e bağlanmasına izin verilen temel ılbs. Bu, IP adresi statik olmadığı veya sahip olduğunuz NSG 'ler aracılığıyla kilitlendiği için üretim iş yükleri için recommened değildir. Kısa bir süre önce temel ıLB 'den standart bir ıLB 'ye taşındıysanız IP 'yi NSG 'ler aracılığıyla kilitleyen [yalnızca giden](egress-only.md) yapılandırma yoluyla açık bir IP oluşturmalısınız. 
+Standart ılbs 'ler **Varsayılan olarak güvenlidir** . *Gizli* genel IP adresi aracılığıyla internet 'e bağlanmasına izin verilen temel ılbs. Bu, IP adresi statik olmadığı veya sahip olduğunuz NSG 'ler aracılığıyla kilitlendiği için üretim iş yükleri için recommened değildir. Kısa bir süre önce temel ıLB 'den standart bir ıLB 'ye taşındıysanız IP 'yi NSG 'ler aracılığıyla kilitleyen [yalnızca giden](egress-only.md) yapılandırma yoluyla açık bir IP oluşturmalısınız. Ayrıca, alt ağınızda bir [NAT ağ geçidi](../virtual-network/nat-overview.md) de kullanabilirsiniz.
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Belirti: Load Balancer arkasındaki VM 'Ler sistem durumu araştırmalara yanıt vermiyor
-Arka uç sunucularının yük dengeleyici kümesine katılması için, araştırma denetimini geçmesi gerekir. Sistem durumu araştırmaları hakkında daha fazla bilgi için bkz. [Load Balancer araştırmalarını anlama](load-balancer-custom-probe-overview.md). 
+Arka uç sunucularının yük dengeleyici kümesine katılması için, araştırma denetimini geçmesi gerekir. Sistem durumu araştırmaları hakkında daha fazla bilgi için bkz. [Load Balancer araştırmalarını anlama](load-balancer-custom-probe-overview.md). 
 
 Load Balancer arka uç havuzu VM 'Leri aşağıdaki nedenlerden biri nedeniyle yoklamalara yanıt vermiyor olabilir: 
 - Load Balancer arka uç havuzu VM 'si uygun değil 
@@ -58,12 +58,12 @@ VM sağlıklı, ancak araştırmasına yanıt vermiyorsa, olası bir neden araş
 **Doğrulama ve çözümleme**
 
 1. Arka uç VM 'de oturum açın. 
-2. Bir komut istemi açın ve araştırma bağlantı noktasında dinleme yapan bir uygulama olduğunu doğrulamak için aşağıdaki komutu çalıştırın:   
+2. Bir komut istemi açın ve araştırma bağlantı noktasında dinleme yapan bir uygulama olduğunu doğrulamak için aşağıdaki komutu çalıştırın:   
             netstat-a
-3. Bağlantı noktası durumu **dinleyen**olarak listelenmiyorsa, doğru bağlantı noktasını yapılandırın. 
-4. Alternatif olarak, **dinleme**olarak listelenen başka bir bağlantı noktasını seçin ve yük dengeleyici yapılandırmasını buna göre güncelleştirin.              
+3. Bağlantı noktası durumu **dinleyen** olarak listelenmiyorsa, doğru bağlantı noktasını yapılandırın. 
+4. Alternatif olarak, **dinleme** olarak listelenen başka bir bağlantı noktasını seçin ve yük dengeleyici yapılandırmasını buna göre güncelleştirin.              
 
-### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Neden 3: güvenlik duvarı veya ağ güvenlik grubu yük dengeleyici arka uç havuzu VM 'lerinde bağlantı noktasını engelliyor  
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Neden 3: güvenlik duvarı veya ağ güvenlik grubu yük dengeleyici arka uç havuzu VM 'lerinde bağlantı noktasını engelliyor  
 VM 'deki güvenlik duvarı araştırma bağlantı noktasını engelliyorsa veya alt ağda veya VM 'de yapılandırılmış bir veya daha fazla ağ güvenlik grubu varsa, araştırmanın bağlantı noktasına erişmesine izin vermez, VM sistem durumu araştırmasına yanıt veremez.          
 
 **Doğrulama ve çözümleme**
@@ -71,7 +71,7 @@ VM 'deki güvenlik duvarı araştırma bağlantı noktasını engelliyorsa veya 
 * Güvenlik Duvarı etkinse, araştırma bağlantı noktasına izin vermek üzere yapılandırılıp yapılandırılmadığını denetleyin. Aksi takdirde, güvenlik duvarını araştırma bağlantı noktasında trafiğe izin verecek şekilde yapılandırın ve yeniden sınayın. 
 * Ağ güvenlik grupları listesinden, araştırma bağlantı noktasındaki gelen veya giden trafiğin girişim olup olmadığını denetleyin. 
 * Ayrıca, sanal makinenin NIC 'inde bulunan tüm ağ güvenlik gruplarını reddetme kuralını ve LB yoklamalarını & trafiğe izin veren varsayılan kuraldan daha yüksek önceliğe sahip alt ağı **Engelle** (ağ güvenlik grupları 168.63.129.16 ıp 'sinin Load Balancer IP 'sine izin vermelidir) seçeneğini işaretleyin. 
-* Bu kurallardan herhangi biri araştırma trafiğini engelliyorsa, araştırma trafiğine izin vermek için kuralları kaldırın ve yeniden yapılandırın.  
+* Bu kurallardan herhangi biri araştırma trafiğini engelliyorsa, araştırma trafiğine izin vermek için kuralları kaldırın ve yeniden yapılandırın.  
 * VM şimdi sistem durumu araştırmalarının yanıt vermeyi başlatmışsa test edin. 
 
 ### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>Neden 4: Load Balancer diğer yapılandırma hataları
@@ -93,7 +93,7 @@ Yukarıdaki tüm nedenler doğru şekilde doğrulanıp çözümlenirse ve arka u
 
 Bir arka uç havuzu VM 'si sağlıklı olarak listeleniyorsa ve sistem durumu araştırmasına yanıt verirse, ancak hala yük dengelemeye katılmadığında veya veri trafiğine yanıt vermiyorsa, bunun nedeni aşağıdakilerden biri olabilir: 
 * Load Balancer arka uç havuzu VM 'si, veri bağlantı noktasında dinlemiyor 
-* Ağ güvenlik grubu Load Balancer arka uç havuzu VM 'sinin bağlantı noktasını engelliyor  
+* Ağ güvenlik grubu Load Balancer arka uç havuzu VM 'sinin bağlantı noktasını engelliyor  
 * Aynı VM ve NIC 'den Load Balancer erişme 
 * Katılan Load Balancer arka uç havuzu VM 'sinden Internet Load Balancer ön ucuna erişme 
 
@@ -103,11 +103,12 @@ Bir VM veri trafiğine yanıt vermezse, bunun nedeni hedef bağlantı noktasın�
 **Doğrulama ve çözümleme**
 
 1. Arka uç VM 'de oturum açın. 
-2. Bir komut istemi açın ve veri bağlantı noktasında dinleme yapan bir uygulama olduğunu doğrulamak için şu komutu çalıştırın:   netstat-a 
+2. Bir komut istemi açın ve veri bağlantı noktasında dinleme yapan bir uygulama olduğunu doğrulamak için aşağıdaki komutu çalıştırın:  
+            netstat-a 
 3. Bağlantı noktası "dınleme" durumu ile listelenmiyorsa, doğru dinleyici bağlantı noktasını yapılandırın 
 4. Bağlantı noktası dinleme olarak işaretlenmişse, olası sorunlar için bu bağlantı noktasındaki hedef uygulamayı kontrol edin.
 
-### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Neden 2: ağ güvenlik grubu Load Balancer arka uç havuzu sanal makinesi üzerindeki bağlantı noktasını engelliyor  
+### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Neden 2: ağ güvenlik grubu Load Balancer arka uç havuzu sanal makinesi üzerindeki bağlantı noktasını engelliyor  
 
 Alt ağda veya VM 'de yapılandırılmış bir veya daha fazla ağ güvenlik grubu kaynak IP veya bağlantı noktasını engelliyorsa, VM yanıt veremez.
 
@@ -117,7 +118,7 @@ Ortak yük dengeleyici için, Internet istemcilerinin IP adresi, istemcilerle y�
 1. Ağ güvenlik grupları listesinden şunları denetleyin:
     - veri bağlantı noktasındaki gelen veya giden trafiğin girişimi vardır. 
     - sanal makinenin NIC 'inde veya Load Balancer araştırmasını ve trafiğe izin veren varsayılan kuralın (ağ güvenlik grupları, araştırma bağlantı noktası olan 168.63.129.16 IP 'si Load Balancer izin vermelidir) daha yüksek önceliğe sahip bir ağ güvenlik grubu kuralını **Engelle**
-1. Kurallardan herhangi biri trafiği engelliyorsa, veri trafiğine izin vermek için bu kuralları kaldırın ve yeniden yapılandırın.  
+1. Kurallardan herhangi biri trafiği engelliyorsa, veri trafiğine izin vermek için bu kuralları kaldırın ve yeniden yapılandırın.  
 1. VM şimdi durum araştırmalara yanıt vermeye başlamışsa test edin.
 
 ### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Neden 3: aynı VM ve ağ arabiriminden Load Balancer erişme 

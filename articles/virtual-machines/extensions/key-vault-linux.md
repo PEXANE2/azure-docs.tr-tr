@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fa6f569a1a857c09f1e7d1173a5948b1747c05ed
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f4e429d9c5eeee382d59a294a11204f674b1f546
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124370"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911520"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux için sanal makine uzantısı Key Vault
 
@@ -62,7 +62,7 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
           "linkOnRenewal": <Not available on Linux e.g.: false>,
           "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
-          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"]>
         },
         "authenticationSettings": {
                 "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
@@ -79,26 +79,26 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 > Bunun nedeni, `/secrets` yol değil, özel anahtar dahil olmak üzere tam sertifikayı döndürmektedir `/certificates` . Sertifikalar hakkında daha fazla bilgi için şurada bulunabilir: [Key Vault sertifikaları](../../key-vault/general/about-keys-secrets-certificates.md)
 
 > [!IMPORTANT]
-> ' AuthenticationSettings ' özelliği yalnızca **Kullanıcı tarafından atanan kimlikleri**olan VM 'ler için **gereklidir** .
+> ' AuthenticationSettings ' özelliği yalnızca **Kullanıcı tarafından atanan kimlikleri** olan VM 'ler için **gereklidir** .
 > Key Vault kimlik doğrulaması için kullanılacak kimliği belirtir.
 
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek | Veri Türü |
+| Ad | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | tarih |
-| yayımcı | Microsoft.Azure.KeyVault | dize |
-| tür | KeyVaultForLinux | dize |
-| typeHandlerVersion | 1.0 | int |
-| Pollingınterinterval bileşenleri | 3600 | dize |
-| certificateStoreName | Linux üzerinde yok sayılır | dize |
+| apiVersion | 2019-07-01 | date |
+| yayımcı | Microsoft.Azure.KeyVault | string |
+| tür | KeyVaultForLinux | string |
+| typeHandlerVersion | 1,0 | int |
+| Pollingınterinterval bileşenleri | 3600 | string |
+| certificateStoreName | Linux üzerinde yok sayılır | string |
 | Linkonyenilemeye | yanlış | boolean |
-| certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | dize |
+| certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | string |
 | requiredInitialSync | true | boolean |
-| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | dize dizisi
-| Msıendpoint | http://169.254.169.254/metadata/identity | dize |
-| msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | dize |
+| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"] | dize dizisi
+| Msıendpoint | http://169.254.169.254/metadata/identity | string |
+| msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
 
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
@@ -152,7 +152,7 @@ Azure PowerShell, Key Vault VM uzantısını var olan bir sanal makineye veya sa
         { "pollingIntervalInS": "' + <pollingInterval> + 
         '", "certificateStoreName": "' + <certStoreName> + 
         '", "certificateStoreLocation": "' + <certStoreLoc> + 
-        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        '", "observedCertificates": ["' + <observedCert1> + '","' + <observedCert2> + '"] } }'
         $extName =  "KeyVaultForLinux"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForLinux"
@@ -172,7 +172,7 @@ Azure PowerShell, Key Vault VM uzantısını var olan bir sanal makineye veya sa
         { "pollingIntervalInS": "' + <pollingInterval> + 
         '", "certificateStoreName": "' + <certStoreName> + 
         '", "certificateStoreLocation": "' + <certStoreLoc> + 
-        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        '", "observedCertificates": ["' + <observedCert1> + '","' + <observedCert2> + '"] } }'
         $extName = "KeyVaultForLinux"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForLinux"
@@ -198,7 +198,7 @@ Azure CLı, Key Vault VM uzantısını var olan bir sanal makineye veya sanal ma
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
          --vm-name "<vmName>" `
-         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
+         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
 * Uzantıyı bir sanal makine ölçek kümesine dağıtmak için:
@@ -209,7 +209,7 @@ Azure CLı, Key Vault VM uzantısını var olan bir sanal makineye veya sanal ma
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
         --vm-name "<vmName>" `
-        --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
+        --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 Lütfen aşağıdaki kısıtlamalara/gereksinimlere dikkat edin:
 - Key Vault kısıtlamaları:
@@ -218,25 +218,25 @@ Lütfen aşağıdaki kısıtlamalara/gereksinimlere dikkat edin:
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 
-### <a name="troubleshoot"></a>Sorun giderme
-
-Uzantı dağıtımlarının durumuyla ilgili veriler, Azure portal alabilir ve Azure PowerShell kullanılarak elde edilebilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için, Azure PowerShell kullanarak aşağıdaki komutu çalıştırın.
-
 ### <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
 
 * Ayarlayabilmeniz için observedCertificates sayısında bir sınır var mı?
   Hayır, Key Vault VM uzantısının observedCertificates sayısı üzerinde sınırı yok.
-  
-## <a name="azure-powershell"></a>Azure PowerShell
+
+### <a name="troubleshoot"></a>Sorun giderme
+
+Uzantı dağıtımlarının durumuyla ilgili veriler, Azure portal alabilir ve Azure PowerShell kullanılarak elde edilebilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için, Azure PowerShell kullanarak aşağıdaki komutu çalıştırın.
+
+**Azure PowerShell**
 ```powershell
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
-### <a name="logs-and-configuration"></a>Günlükler ve yapılandırma
+#### <a name="logs-and-configuration"></a>Günlükler ve yapılandırma
 
 ```
 /var/log/waagent.log

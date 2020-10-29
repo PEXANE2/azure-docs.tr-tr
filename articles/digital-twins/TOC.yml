@@ -23,8 +23,6 @@
   items:
     - name: Özel modeller
       href: concepts-models.md
-    - name: Sektör standardı modelleri dönüştürme
-      href: concepts-convert-models.md
     - name: Dijital ikizler ve ikiz grafiği
       href: concepts-twins-graph.md
     - name: Sorgu dili
@@ -63,6 +61,8 @@
       items:
         - name: Özel modelleri yönetme
           href: how-to-manage-model.md
+        - name: Sektör standardı modellerini dönüştürme
+          href: how-to-convert-models.md
         - name: Modelleri ayrıştırma ve doğrulama
           href: how-to-parse-models.md
         - name: Etiket ekleme
@@ -176,11 +176,15 @@
             - name: Java SDK - kaynak
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
             - name: JavaScript SDK - npm
-              href: 'https://www.npmjs.com/package/@azure/digital-twins/'
+              href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
             - name: JavaScript SDK - başvuru
               href: /javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest
+            - name: JavaScript SDK’sı - kaynak
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
             - name: Python SDK - PyPi
               href: 'https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/'
+            - name: Python SDK - kaynak
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
     - name: Digital Twins CLI
       items:
         - name: Digital Twins CLI başvurusu

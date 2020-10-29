@@ -8,34 +8,43 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: dcfae72d5f15399dc4c759ab859ad8059134f11d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d178ae39d3af6b39047501f0bc47acbc6e792f48
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279799"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911503"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Linux sanal makineleri için Azure disk şifrelemesi örnek betikleri
 
-Bu makalede önceden şifrelenen VHD 'ler ve diğer görevler için örnek betikler sağlanmaktadır.
+Bu makalede önceden şifrelenen VHD 'ler ve diğer görevler için örnek betikler sağlanmaktadır.  
 
- 
+> [!NOTE]
+> Tüm betikler, belirtilenler dışında, en son AAD olmayan ADE sürümüne başvurur.
 
 ## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Azure disk şifrelemesi için örnek PowerShell betikleri 
 
 - **Aboneliğinizdeki tüm şifreli VM 'Leri listeleyin**
+  
+  [Bu PowerShell betiği](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1)kullanılarak, bir abonelikte bulunan tüm kaynak GRUPLARıNDAKI tüm Ade şifreli VM 'leri ve uzantı sürümünü bulabilirsiniz.
 
-     ```azurepowershell-interactive
-     $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
-     $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
-     Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
-     ```
+  Alternatif olarak, bu cmdlet 'ler tüm ADE şifreli VM 'Leri gösterir (ancak uzantı sürümü değil):
+
+   ```azurepowershell-interactive
+   $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
+   $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
+   Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
+   ```
+
+- **Aboneliğinizdeki tüm şifreli VMSS örneklerini listeleyin**
+    
+    [Bu PowerShell betiği](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1)kullanılarak, bir abonelikte bulunan tüm kaynak GRUPLARıNDAKI tüm Ade şifreli VMSS örneklerini ve uzantı sürümünü bulabilirsiniz.
 
 - **Bir anahtar kasasındaki VM 'Leri şifrelemek için kullanılan tüm disk şifreleme gizli dizilerini listeleyin** 
 
-     ```azurepowershell-interactive
-     Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
-     ```
+   ```azurepowershell-interactive
+   Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
+   ```
 
 ### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>Azure disk şifrelemesi önkoşulları PowerShell betiğini kullanma
 Azure disk şifrelemesi önkoşullarını zaten biliyorsanız, [Azure disk şifrelemesi önkoşulları PowerShell betiğini](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )kullanabilirsiniz. Bu PowerShell betiğini kullanmayla ilgili bir örnek için bkz. [VM 'Yi şifreleme hızlı başlangıç](disk-encryption-powershell-quickstart.md). Mevcut bir kaynak grubundaki mevcut VM 'Ler için tüm diskleri şifrelemek üzere, 211. satırdan başlayarak betiğin bir bölümünden açıklamaları kaldırabilirsiniz. 
@@ -53,14 +62,13 @@ Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanı
 |$aadClientSecret|Daha önce oluşturulan Azure AD uygulamasının istemci gizli anahtarı.|Yanlış|
 |$keyEncryptionKeyName|Anahtar Kasası 'nda isteğe bağlı anahtar şifreleme anahtarının adı. Bu ada sahip yeni bir anahtar, yoksa oluşturulur.|Yanlış|
 
-
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Azure AD uygulaması olmadan VM 'Leri şifreleme veya şifrelerini çözme
 
 - [Mevcut veya çalışan bir Linux VM 'de disk şifrelemeyi etkinleştirme](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
 - [Çalışan bir Linux VM 'de şifrelemeyi devre dışı bırakma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Şifrelemeyi devre dışı bırakmak yalnızca Linux sanal makineleri için veri birimlerinde kullanılabilir.  
 
-### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>VM 'Leri bir Azure AD uygulamasıyla şifreleme veya şifrelerini çözme (önceki sürüm) 
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>VM 'Leri bir Azure AD uygulamasıyla şifreleme veya şifrelerini çözme (önceki sürüm)
  
 - [Mevcut veya çalışan bir Linux VM 'de disk şifrelemeyi etkinleştirme](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
 
@@ -71,10 +79,6 @@ Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanı
 
 - [Önceden şifrelenen bir VHD/depolama blobundan yeni bir şifrelenmiş yönetilen disk oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
     - Önceden şifrelenen bir VHD ve buna karşılık gelen şifreleme ayarları sağlanmış olan yeni bir şifrelenmiş yönetilen disk oluşturur
-
-
-
-
 
 ## <a name="encrypting-an-os-drive-on-a-running-linux-vm"></a>Çalışan bir Linux VM 'de işletim sistemi sürücüsü şifreleme
 
@@ -227,7 +231,7 @@ Aşağıdaki adımları uygulayarak şifrelemeyi Azure ile çalışacak şekilde
     fi
    ```
 
-2. */Etc/crypttab*içinde Crypt yapılandırmasını değiştirin. Şu şekilde görünmelidir:
+2. */Etc/crypttab* içinde Crypt yapılandırmasını değiştirin. Şu şekilde görünmelidir:
    ```
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```
@@ -254,7 +258,7 @@ Aşağıdaki adımları uygulayarak şifrelemeyi Azure ile çalışacak şekilde
 
 ### <a name="opensuse-132"></a>openSUSE 13.2
 Dağıtım yüklemesi sırasında şifrelemeyi yapılandırmak için aşağıdaki adımları uygulayın:
-1. Diskleri bölümlediğinizde, **birim grubunu şifreleyin**' ı seçin ve ardından bir parola girin. Bu, anahtar kasanıza yüklediğiniz paroladır.
+1. Diskleri bölümlediğinizde, **birim grubunu şifreleyin** ' ı seçin ve ardından bir parola girin. Bu, anahtar kasanıza yüklediğiniz paroladır.
 
    ![openSUSE 13,2 kurulumu-birim grubunu şifreleme](./media/disk-encryption/opensuse-encrypt-fig1.png)
 

@@ -8,35 +8,47 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e9dc6acf33208de44eec2b5b9706b9f0b176f0d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 255e284cf8d54a9be59f09f5613cb2728417d234
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284481"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912047"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Şifrelemesi örnek betikleri 
 
 Bu makalede önceden şifrelenen VHD 'ler ve diğer görevler için örnek betikler sağlanmaktadır.
 
+> [!NOTE]
+> Tüm betikler, belirtilenler dışında, en son AAD olmayan ADE sürümüne başvurur.
+
+## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Azure disk şifrelemesi için örnek PowerShell betikleri 
+
+
+- **Aboneliğinizdeki tüm şifreli VM 'Leri listeleyin**
+
+  [Bu PowerShell betiği](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1)kullanılarak, bir abonelikte bulunan tüm kaynak GRUPLARıNDAKI tüm Ade şifreli VM 'leri ve uzantı sürümünü bulabilirsiniz.
+
+  Alternatif olarak, bu cmdlet 'ler tüm ADE şifreli VM 'Leri gösterir (ancak uzantı sürümü değil):
+
+    ```azurepowershell-interactive
+    $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
+    $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
+    Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
+    ```
+
+- **Aboneliğinizdeki tüm şifreli VMSS örneklerini listeleyin**
+    
+    [Bu PowerShell betiği](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1)kullanılarak, bir abonelikte bulunan tüm kaynak GRUPLARıNDAKI tüm Ade şifreli VMSS örneklerini ve uzantı sürümünü bulabilirsiniz.
  
-
-## <a name="list-vms-and-secrets"></a>VM 'Leri ve gizli dizileri listeleyin
-
-Aboneliğinizdeki tüm şifreli VM 'Leri listeleyin:
-
-```azurepowershell-interactive
-$osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
-$dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
-Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
-```
-Bir anahtar kasasındaki VM 'Leri şifrelemek için kullanılan tüm disk şifreleme gizli dizilerini listeleyin:
+- **Bir anahtar kasasındaki VM 'Leri şifrelemek için kullanılan tüm disk şifreleme gizli dizilerini listeleyin**
 
 ```azurepowershell-interactive
 Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
 ```
 
-## <a name="the-azure-disk-encryption-prerequisites-scripts"></a>Azure disk şifrelemesi önkoşul betikleri
+### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>Azure disk şifrelemesi önkoşulları PowerShell betiğini kullanma
+
 Azure disk şifrelemesi önkoşullarını zaten biliyorsanız, [Azure disk şifrelemesi önkoşulları PowerShell betiğini](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )kullanabilirsiniz. Bu PowerShell betiğini kullanmayla ilgili bir örnek için bkz. [VM 'Yi şifreleme hızlı başlangıç](disk-encryption-powershell-quickstart.md). Mevcut bir kaynak grubundaki mevcut VM 'Ler için tüm diskleri şifrelemek üzere, 211. satırdan başlayarak betiğin bir bölümünden açıklamaları kaldırabilirsiniz. 
 
 Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanılabileceği gösterilmektedir: 
@@ -69,7 +81,7 @@ Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanı
 Aşağıdaki bölümler, Azure IaaS 'de şifrelenmiş bir VHD olarak dağıtıma önceden şifrelenmiş bir Windows VHD 'si hazırlamak için gereklidir. Azure Site Recovery veya Azure 'da yeni bir Windows VM (VHD) hazırlamak ve önyüklemek için bu bilgileri kullanın. Bir VHD 'yi hazırlama ve karşıya yükleme hakkında daha fazla bilgi için bkz. [Genelleştirilmiş BIR VHD 'Yi karşıya yükleme ve Azure 'da yeni VM 'ler oluşturmak için kullanma](upload-generalized-managed.md).
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Grup ilkesini, işletim sistemi koruması için TPM olmayan bir şekilde güncelleştirme
-**BitLocker Drive Encryption** **Yerel bilgisayar ilkesi**  >  **bilgisayar yapılandırması**  >  **Yönetim Şablonları**  >  **Windows bileşenleri**altında bulacağınız BitLocker Grup İlkesi ayarını BitLocker Sürücü Şifrelemesi yapılandırın. Bu ayarı **işletim sistemi sürücüleri**olarak değiştirin  >  , başlangıçta aşağıdaki şekilde gösterildiği gibi, uyumlu bir TPM olmadan BitLocker 'a**ek kimlik doğrulaması gerektir**  >  **Allow BitLocker without a compatible TPM**:
+**BitLocker Drive Encryption** **Yerel bilgisayar ilkesi**  >  **bilgisayar yapılandırması**  >  **Yönetim Şablonları**  >  **Windows bileşenleri** altında bulacağınız BitLocker Grup İlkesi ayarını BitLocker Sürücü Şifrelemesi yapılandırın. Bu ayarı **işletim sistemi sürücüleri** olarak değiştirin  >  , başlangıçta aşağıdaki şekilde gösterildiği gibi, uyumlu bir TPM olmadan BitLocker 'a **ek kimlik doğrulaması gerektir**  >  **Allow BitLocker without a compatible TPM** :
 
 ![Azure’da Microsoft Kötü Amaçlı Yazılımdan Koruma](../media/disk-encryption/disk-encryption-fig8.png)
 

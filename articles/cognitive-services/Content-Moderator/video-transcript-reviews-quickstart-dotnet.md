@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2d0ddae8a9bd8054c740402b8beb3bb0bccfa9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3f7b877818056fc73f10d54b94a6b6c26c605e8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919225"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911282"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>.NET kullanarak video dökümü oluşturma İncelemeleri oluşturun
 
@@ -51,7 +51,7 @@ Bir video incelemesinin dökümünü ekleyin. Videonun çevrimiçi yayımlanmas�
 
 1. Çözümünüze yeni bir **Konsol uygulaması (.NET Framework)** projesi ekleyin.
 
-1. Projeyi **Videotranscriptreviews**olarak adlandırın.
+1. Projeyi **Videotranscriptreviews** olarak adlandırın.
 
 1. Bu projeyi çözümün tekil başlangıç projesi olarak seçin.
 
@@ -81,7 +81,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>Özel özellikler ekleme
 
-Aşağıdaki özel özellikleri **Videotranscriptreviews**, Class **Program**ad alanına ekleyin. `AzureEndpoint`Ve `CMSubscriptionKey` alanlarını uç nokta URL 'si ve abonelik anahtarınızın değerleriyle güncelleştirin. Bunları, Azure portal kaynağınızın **hızlı başlangıç** sekmesinde bulabilirsiniz.
+Aşağıdaki özel özellikleri **Videotranscriptreviews** , Class **Program** ad alanına ekleyin. `AzureEndpoint`Ve `CMSubscriptionKey` alanlarını uç nokta URL 'si ve abonelik anahtarınızın değerleriyle güncelleştirin. Bunları, Azure portal kaynağınızın **hızlı başlangıç** sekmesinde bulabilirsiniz.
 
 ```csharp
 namespace VideoReviews
@@ -140,17 +140,17 @@ public static ContentModeratorClient NewClient()
 
 ## <a name="create-a-video-review"></a>Video incelemesi oluşturma
 
-**Contentmoderatorclient. İncelemeleri. Createvideoincelemeleri**ile bir video incelemesi oluşturun. Daha fazla bilgi için bkz. [API başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+**Contentmoderatorclient. İncelemeleri. Createvideoincelemeleri** ile bir video incelemesi oluşturun. Daha fazla bilgi için bkz. [API başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
 **Createvideoincelemeleri** aşağıdaki gerekli parametrelere sahiptir:
 1. "Application/JSON" olması gereken bir MIME türü içeren bir dize. 
 1. Content Moderator takım adınız.
-1. Bir **IList \<CreateVideoReviewsBodyItem> ** nesnesi. Her **Createvideoreview Sbodyıtem** nesnesi bir video incelemesini temsil eder. Bu hızlı başlangıçta tek seferde bir gözden geçirme oluşturulur.
+1. Bir **IList \<CreateVideoReviewsBodyItem>** nesnesi. Her **Createvideoreview Sbodyıtem** nesnesi bir video incelemesini temsil eder. Bu hızlı başlangıçta tek seferde bir gözden geçirme oluşturulur.
 
 **Createvideo, Sbodyıtem** 'ın birkaç özelliği vardır. En azından, aşağıdaki özellikleri ayarlarsınız:
-- **İçerik**. Gözden geçirilecek videonun URL 'SI.
-- **ContentID**. Video incelemeye atanacak bir KIMLIK.
-- **Durum**. Değeri "yayımdan kaldırıldı" olarak ayarlayın. Bunu yapmazsanız, varsayılan olarak "bekliyor" olarak ayarlanır; Bu, video incelemesinin yayımlandığı ve insan incelemesi bekleyen bir anlamına gelir. Video incelemesi yayımlandıktan sonra artık video çerçeveleri, bir döküm dosyası veya bir döküm denetimi sonucu ekleyemezsiniz.
+- **İçerik** . Gözden geçirilecek videonun URL 'SI.
+- **ContentID** . Video incelemeye atanacak bir KIMLIK.
+- **Durum** . Değeri "yayımdan kaldırıldı" olarak ayarlayın. Bunu yapmazsanız, varsayılan olarak "bekliyor" olarak ayarlanır; Bu, video incelemesinin yayımlandığı ve insan incelemesi bekleyen bir anlamına gelir. Video incelemesi yayımlandıktan sonra artık video çerçeveleri, bir döküm dosyası veya bir döküm denetimi sonucu ekleyemezsiniz.
 
 > [!NOTE]
 > **Createvideoincelemeleri** bir IList döndürür \<string> . Bu dizelerin her biri video incelemesi için bir KIMLIK içerir. Bu kimlikler GUID 'lerdir ve **ContentID** özelliğinin değeriyle aynı değildir.
@@ -197,15 +197,15 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 
 ## <a name="add-transcript-to-video-review"></a>Video incelemesinin dökümünü ekleyin
 
-**Contentmoderatorclient. İncelemeleri. AddVideoTranscript**ile bir video incelemelerine bir TRANSCRIPT eklersiniz. **Addvideotranscript** aşağıdaki gerekli parametrelere sahiptir:
+**Contentmoderatorclient. İncelemeleri. AddVideoTranscript** ile bir video incelemelerine bir TRANSCRIPT eklersiniz. **Addvideotranscript** aşağıdaki gerekli parametrelere sahiptir:
 1. Content Moderator takım KIMLIĞINIZ.
-1. **Createvideoincelemeleri**tarafından döndürülen VIDEO İnceleme kimliği.
+1. **Createvideoincelemeleri** tarafından döndürülen VIDEO İnceleme kimliği.
 1. Dökümü içeren bir **Stream** nesnesi.
 
 TRANSCRIPT, WebVTT biçiminde olmalıdır. Daha fazla bilgi için bkz. [WEBVTT: web video metni Izler biçimi](https://www.w3.org/TR/webvtt1/).
 
 > [!NOTE]
-> Program, VTT biçiminde bir örnek TRANSCRIPT kullanır. Gerçek dünyada bir çözümde, bir videodan döküm [oluşturmak](https://docs.microsoft.com/azure/media-services/media-services-index-content) için Azure Media Indexer hizmetini kullanırsınız.
+> Program, VTT biçiminde bir örnek TRANSCRIPT kullanır. Gerçek dünyada bir çözümde, bir videodan döküm [oluşturmak](../../media-services/previous/media-services-index-content.md) için Azure Media Indexer hizmetini kullanırsınız.
 
 Aşağıdaki yöntem tanımını, VideotranscriptReviews, Class program ad alanına ekleyin.
 
@@ -229,21 +229,21 @@ static void AddTranscript(ContentModeratorClient client, string review_id, strin
 
 ## <a name="add-a-transcript-moderation-result-to-video-review"></a>Video incelemeye döküm denetimi sonucu ekleme
 
-Bir video incelemeye el ile döküm eklemenin yanı sıra, bu dökümü moderonuzun sonucunu da eklersiniz. Bunu **Contentmoderatorclient. İncelemeleri. AddVideoTranscriptModerationResult**ile yapabilirsiniz. Daha fazla bilgi için bkz. [API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff).
+Bir video incelemeye el ile döküm eklemenin yanı sıra, bu dökümü moderonuzun sonucunu da eklersiniz. Bunu **Contentmoderatorclient. İncelemeleri. AddVideoTranscriptModerationResult** ile yapabilirsiniz. Daha fazla bilgi için bkz. [API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff).
 
 **Addvideotranscriptmoderationresult** aşağıdaki gerekli parametrelere sahiptir:
 1. "Application/JSON" olması gereken bir MIME türü içeren bir dize. 
 1. Content Moderator takım adınız.
-1. **Createvideoincelemeleri**tarafından döndürülen VIDEO İnceleme kimliği.
+1. **Createvideoincelemeleri** tarafından döndürülen VIDEO İnceleme kimliği.
 1. Bir IList \<TranscriptModerationBodyItem> . **Transcriptmoderationbodyıtem** aşağıdaki özelliklere sahiptir:
-1. **Koşullar**. Bir IList \<TranscriptModerationBodyItemTermsItem> . Bir **TranscriptModerationBodyItemTermsItem** aşağıdaki özelliklere sahiptir:
-1. **Dizin**. Terimin sıfır tabanlı dizini.
-1. **Terim**. Terimi içeren bir dize.
-1. **Zaman damgası**. Koşulların bulunduğu döküm içindeki zamanı saniye cinsinden içeren bir dize.
+1. **Koşullar** . Bir IList \<TranscriptModerationBodyItemTermsItem> . Bir **TranscriptModerationBodyItemTermsItem** aşağıdaki özelliklere sahiptir:
+1. **Dizin** . Terimin sıfır tabanlı dizini.
+1. **Terim** . Terimi içeren bir dize.
+1. **Zaman damgası** . Koşulların bulunduğu döküm içindeki zamanı saniye cinsinden içeren bir dize.
 
 TRANSCRIPT, WebVTT biçiminde olmalıdır. Daha fazla bilgi için bkz. [WEBVTT: web video metni Izler biçimi](https://www.w3.org/TR/webvtt1/).
 
-Aşağıdaki yöntem tanımını, VideoTranscriptReviews, Class program ad alanına ekleyin. Bu yöntem, **contentmoderatorclient. textmoder. screentext** yöntemine bir döküm gönderir. Ayrıca, sonucu bir IList 'e çevirir \<TranscriptModerationBodyItem> ve **Addvideotranscriptmoderationresult**' a gönderir.
+Aşağıdaki yöntem tanımını, VideoTranscriptReviews, Class program ad alanına ekleyin. Bu yöntem, **contentmoderatorclient. textmoder. screentext** yöntemine bir döküm gönderir. Ayrıca, sonucu bir IList 'e çevirir \<TranscriptModerationBodyItem> ve **Addvideotranscriptmoderationresult** ' a gönderir.
 
 ```csharp
 /// <summary>
@@ -292,9 +292,9 @@ static void AddTranscriptModerationResult(ContentModeratorClient client, string 
 
 ## <a name="publish-video-review"></a>Video incelemesi Yayımla
 
-**Contentmoderatorclient. İncelemeleri. PublishVideoReview**ile bir video incelemesi yayımlarsınız. **Publishvideoreview** aşağıdaki gerekli parametrelere sahiptir:
+**Contentmoderatorclient. İncelemeleri. PublishVideoReview** ile bir video incelemesi yayımlarsınız. **Publishvideoreview** aşağıdaki gerekli parametrelere sahiptir:
 1. Content Moderator takım adınız.
-1. **Createvideoincelemeleri**tarafından döndürülen VIDEO İnceleme kimliği.
+1. **Createvideoincelemeleri** tarafından döndürülen VIDEO İnceleme kimliği.
 
 Aşağıdaki yöntem tanımını ad alanı Videoincelemeleri, sınıf programına ekleyin.
 
@@ -318,7 +318,7 @@ private static void PublishReview(ContentModeratorClient client, string review_i
 **Ana** yöntem tanımını, VideoTranscriptReviews, Class program ad alanına ekleyin. Son olarak, program sınıfını ve VideoTranscriptReviews ad alanını kapatın.
 
 > [!NOTE]
-> Program, VTT biçiminde bir örnek TRANSCRIPT kullanır. Gerçek dünyada bir çözümde, bir videodan döküm [oluşturmak](https://docs.microsoft.com/azure/media-services/media-services-index-content) için Azure Media Indexer hizmetini kullanırsınız.
+> Program, VTT biçiminde bir örnek TRANSCRIPT kullanır. Gerçek dünyada bir çözümde, bir videodan döküm [oluşturmak](../../media-services/previous/media-services-index-content.md) için Azure Media Indexer hizmetini kullanırsınız.
 
 ```csharp
 static void Main(string[] args)
@@ -367,7 +367,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>Video dökümü gözden geçirme 'nize gidin
 
-Video dökümünü **gözden geçir**ekranında Content moderator gözden geçirme aracındayken video dökümü inceleme sayfasına gidin > **Video** > **Transcript** .
+Video dökümünü **gözden geçir** ekranında Content moderator gözden geçirme aracındayken video dökümü inceleme sayfasına gidin > **Video** > **Transcript** .
 
 Aşağıdaki özellikleri görürsünüz:
 - Eklediğiniz iki satır dökümü

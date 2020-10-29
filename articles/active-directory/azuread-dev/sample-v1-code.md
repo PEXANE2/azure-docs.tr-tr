@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1efae6563b88f82318f9b8358d255b234c6cb7fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 484a44a7a9840409e3f5770c743e5cd62e0cef66
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116215"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910313"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kodu örnekleri (v 1.0 uç noktası)
 
@@ -53,19 +53,19 @@ Aşağıdaki örneklerde, kullanıcıları imzalayan Web uygulamaları gösteril
 
  Platform | Yalnızca kullanıcılar oturum açar | Çağrılar Microsoft Graph | Başka bir ASP.NET veya ASP.NET Core 2,0 Web API 'sini çağırır
  -------- | ------------------- | --------------------- | -------------------------
-![Bu görüntüde ASP.NET logosu gösterilmektedir](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [DotNet-WebApp-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WEBAPP-WebApi-Multitenant-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD grafiği) | [DotNet-WebApp-WebApi-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
-![Bu görüntüde ASP.NET logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [WEBAPP-Wsfederatıon-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [DotNet-WebApp-WebApi-OAuth2-UserIdentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [DotNet-WebApp-Multitenant-openıdconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD grafiği) |
+![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [DotNet-WebApp-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WEBAPP-WebApi-Multitenant-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD grafiği) | [DotNet-WebApp-WebApi-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
+![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [WEBAPP-Wsfederatıon-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [DotNet-WebApp-WebApi-OAuth2-UserIdentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [DotNet-WebApp-Multitenant-openıdconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD grafiği) |
 ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo-python.png) | | [Python-WebApp-graphapı](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
 ![Bu görüntüde Java günlüğü gösterilmektedir](media/sample-v2-code/logo-java.png)  | | [Java-WebApp-openıdconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
 ![Bu görüntüde PHP logosu gösterilmektedir](media/sample-v2-code/logo-php.png) | | [php-graphapı-Web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
 
 ### <a name="web-applications-demonstrating-role-based-access-control-authorization"></a>Rol tabanlı erişim denetimi (yetkilendirme) gösteren Web uygulamaları
 
-Aşağıdaki örnekler rol tabanlı erişim denetiminin (RBAC) nasıl uygulanacağını gösterir. RBAC, bir Web uygulamasındaki belirli özelliklerin izinlerini belirli kullanıcılara kısıtlamak için kullanılır. Kullanıcılar bir **Azure AD grubuna** ait olup olmadığınıza veya belirli bir uygulama **rolüne**sahip olmasına bağlı olarak yetkilendirilir.
+Aşağıdaki örnekler rol tabanlı erişim denetiminin (RBAC) nasıl uygulanacağını gösterir. RBAC, bir Web uygulamasındaki belirli özelliklerin izinlerini belirli kullanıcılara kısıtlamak için kullanılır. Kullanıcılar bir **Azure AD grubuna** ait olup olmadığınıza veya belirli bir uygulama **rolüne** sahip olmasına bağlı olarak yetkilendirilir.
 
 Platform | Örnek |
  -------- | ------------------- |
-![Bu görüntüde ASP.NET logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-WebApp-groupclaim](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [DotNet-WebApp-roleclaim](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Yetkilendirme için Azure AD **rolleri** kullanan bir .NET 4,5 MVC web uygulaması
+![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-WebApp-groupclaim](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [DotNet-WebApp-roleclaim](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Yetkilendirme için Azure AD **rolleri** kullanan bir .NET 4,5 MVC web uygulaması
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Microsoft Graph veya bir Web API 'sini çağıran masaüstü ve mobil ortak istemci uygulamaları
 
@@ -92,9 +92,9 @@ Aşağıdaki örnekler, Microsoft Graph veya Kullanıcı olmayan (uygulama kimli
 
 İstemci uygulaması | Platform | Flow/ver | ASP.NET veya ASP.NET Core 2,0 Web API 'sini çağırır
 ------------------ | -------- | ---------- | -------------------- 
-Daemon uygulaması (konsol)          | ![Bu görüntüde .NET logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png) | Uygulama gizli anahtarı veya sertifikasıyla istemci kimlik bilgileri | [DotNet-Daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [DotNet-Daemon-sertifika-kimlik bilgileri](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
-Daemon uygulaması (konsol)         | ![Bu görüntüde .NET logosu gösterilmektedir](media/sample-v2-code/logo-netcore.png) | Sertifika ile istemci kimlik bilgileri| [dotnetcore-Daemon-sertifika-kimlik bilgisi](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
-ASP.NET Web uygulaması  | ![Bu görüntüde .NET logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png) | İstemci kimlik bilgileri | [DotNet-WebApp-WebApi-OAuth2-appıdentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
+Daemon uygulaması (konsol)          | ![Bu görüntüde .NET Framework logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png) | Uygulama gizli anahtarı veya sertifikasıyla istemci kimlik bilgileri | [DotNet-Daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [DotNet-Daemon-sertifika-kimlik bilgileri](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
+Daemon uygulaması (konsol)         | ![Bu görüntüde .NET Core logosu gösterilmektedir](media/sample-v2-code/logo-netcore.png) | Sertifika ile istemci kimlik bilgileri| [dotnetcore-Daemon-sertifika-kimlik bilgisi](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
+ASP.NET Web uygulaması  | ![Bu görüntüde .NET Framework logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png) | İstemci kimlik bilgileri | [DotNet-WebApp-WebApi-OAuth2-appıdentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
 
 ## <a name="web-apis"></a>Web API'leri
 
@@ -114,7 +114,7 @@ Aşağıdaki örneklerde, başka bir Web API 'sini çağıran bir Web API 'SI g�
 
 | Platform |  Çağrılar Microsoft Graph | Başka bir ASP.NET veya ASP.NET Core 2,0 Web API 'sini çağırır |
 | -------- |  --------------------- | ------------------------- |
-| ![Bu görüntüde ASP.NET logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-WebApi-OnBehalfOf](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [DotNet-WebApi-OnBehalfOf-CA](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [DotNet-WebApi-OnBehalfOf](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [DotNet-WebApi-OnBehalfOf-CA](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
+| ![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-WebApi-OnBehalfOf](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [DotNet-WebApi-OnBehalfOf-CA](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [DotNet-WebApi-OnBehalfOf](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [DotNet-WebApi-OnBehalfOf-CA](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
 
 ## <a name="other-microsoft-graph-samples"></a>Diğer Microsoft Graph örnekleri
 

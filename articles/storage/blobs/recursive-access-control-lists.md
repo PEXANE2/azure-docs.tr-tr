@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 10/27/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eb227ab955ca2ec9ec72b4a86fd321a45dee997f
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 247742cac3dc24b062fc8e1cb5eceb6c1a6f3f8b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107666"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911622"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. için erişim denetim listelerini (ACL 'Ler) yinelemeli olarak ayarlama
 
@@ -72,6 +72,17 @@ Gerekli kitaplıkları yükler.
    ```
 
    PowerShell modüllerinin nasıl yükleneceği hakkında daha fazla bilgi için bkz [. Azure PowerShell modülünü Install](https://docs.microsoft.com/powershell/azure/install-az-ps)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)açın veya Azure CLI 'yı yerel olarak [yüklediyseniz](https://docs.microsoft.com/cli/azure/install-azure-cli) , Windows PowerShell gibi bir komut konsol uygulaması açın.
+
+2. Yüklü olan Azure CLı sürümünün `2.14.0` aşağıdaki komutu kullanarak veya daha yüksek olduğunu doğrulayın.
+
+   ```azurecli
+    az --version
+   ```
+   Azure CLı sürümünüz daha düşükse `2.14.0` , daha sonra yeni bir sürüm yüklersiniz. Bkz. [Azure CLI 'Yi yüklemeyi](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -190,6 +201,31 @@ Bu yaklaşımda sistem Azure RBAC veya ACL izinlerini denetlemez.
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
 $ctx = $storageAccount.Context
 ```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Azure CLı 'yi yerel olarak kullanıyorsanız Login komutunu çalıştırın.
+
+   ```azurecli
+   az login
+   ```
+
+   CLı varsayılan tarayıcınızı açabildiğinden, bunu yapılır ve bir Azure oturum açma sayfası yükler.
+
+   Aksi takdirde, konumunda bir tarayıcı sayfası açın [https://aka.ms/devicelogin](https://aka.ms/devicelogin) ve terminalinizde görünen yetkilendirme kodunu girin. Ardından, tarayıcıda hesap kimlik bilgilerinizle oturum açın.
+
+   Farklı kimlik doğrulama yöntemleri hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md).
+
+2. Kimliğiniz birden fazla abonelikle ilişkiliyse, etkin aboneliğinizi statik Web sitenizi barındıracak depolama hesabının aboneliğine ayarlayın.
+
+   ```azurecli
+   az account set --subscription <subscription-id>
+   ```
+
+   `<subscription-id>`Yer tutucu değerini ABONELIĞINIZIN kimliğiyle değiştirin.
+
+> [!NOTE]
+> Bu makalede sunulan örnekte Azure Active Directory (AD) yetkilendirmesi gösterilmektedir. Yetkilendirme yöntemleri hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md).
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -369,7 +405,7 @@ Bu bölüm, ACL ayarlama ile ilgili örnekleri içerir
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Cmdlet 'ini kullanarak bir ACL 'yi yinelemeli olarak ayarlayın `Set-AzDataLakeGen2AclRecursive` .
+**Set-AzDataLakeGen2AclRecursive** cmdlet 'ini kullanarak bir ACL 'yi yinelemeli olarak ayarlayın.
 
 Bu örnek, adlı bir dizinin ACL 'sini ayarlar `my-parent-directory` . Bu girişler, sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve tüm diğerlerine erişim vermez. Bu örnekteki son ACL girişi, "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" okuma ve yürütme izinlerine sahip belirli bir kullanıcıya izin verir.
 
@@ -390,11 +426,24 @@ Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $
 > [!NOTE]
 > **Varsayılan** bir ACL girişi ayarlamak Istiyorsanız, **set-AzDataLakeGen2ItemAclObject** komutunu çalıştırdığınızda **-DefaultScope** parametresini kullanın. Örneğin: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Az Storage FS Access set-özyinelemeli](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_set_recursive) komutunu kullanarak bir ACL 'yi yinelemeli olarak ayarlayın.
+
+Bu örnek, adlı bir dizinin ACL 'sini ayarlar `my-parent-directory` . Bu girişler, sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve tüm diğerlerine erişim vermez. Bu örnekteki son ACL girişi, "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" okuma ve yürütme izinlerine sahip belirli bir kullanıcıya izin verir.
+
+```azurecli
+az storage fs access set-recursive --acl "user::rwx,group::r-x,other::---,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r-x" -p my-parent-directory/ -f my-container --account-name mystorageaccount --auth-mode login
+```
+
+> [!NOTE]
+> **Varsayılan** bir ACL girişi ayarlamak istiyorsanız, `default:` Her girişe öneki ekleyin. Örneğin `default:user::rwx` veya `default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r-x` olabilir. 
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
 **Datalakedirectoryclient. SetAccessControlRecursiveAsync** yöntemini ÇAĞıRARAK bir ACL 'yi yinelemeli olarak ayarlayın. Bu yönteme [Pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) [listesi](/dotnet/api/system.collections.generic.list-1) geçirin. Her [Pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) bir ACL girdisi tanımlar. 
 
-**Varsayılan** bir ACL girişi ayarlamak Istiyorsanız [pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) öğesinin [pathaccesscontrolıdıtem. DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) özelliğini **true**olarak ayarlayabilirsiniz. 
+**Varsayılan** bir ACL girişi ayarlamak Istiyorsanız [pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) öğesinin [pathaccesscontrolıdıtem. DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) özelliğini **true** olarak ayarlayabilirsiniz. 
 
 Bu örnek, adlı bir dizinin ACL 'sini ayarlar `my-parent-directory` . Bu yöntem `isDefaultScope` , varsayılan ACL 'nin ayarlanmış olup olmayacağını belirten adlı bir Boole parametresini kabul eder. Bu parametre [Pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)kurucusunda kullanılır. ACL 'nin girişleri, sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve tüm diğerlerine erişim vermez. Bu örnekteki son ACL girişi, "" xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx "okuma ve yürütme izinlerine sahip belirli bir kullanıcıya izin verir.
 
@@ -436,7 +485,7 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient, bool is
 
 **Datalakedirectoryclient. Setaccesscontrolözyinelemeli** yöntemini ÇAĞıRARAK bir ACL 'yi yinelemeli olarak ayarlayın. Bu yöntemi [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) nesnelerinin bir [listesini](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) geçirin. Her [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) bir ACL girdisi tanımlar. 
 
-**Varsayılan** bir ACL girişi ayarlamak Istiyorsanız, [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) ve pass öğesinin **setdefaultscope** yöntemini **doğru**değerine çağırabilirsiniz. 
+**Varsayılan** bir ACL girişi ayarlamak Istiyorsanız, [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) ve pass öğesinin **setdefaultscope** yöntemini **doğru** değerine çağırabilirsiniz. 
 
 Bu örnek, adlı bir dizinin ACL 'sini ayarlar `my-parent-directory` . Bu yöntem `isDefaultScope` , varsayılan ACL 'nin ayarlanmış olup olmayacağını belirten adlı bir Boole parametresini kabul eder. Bu parametre, [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)öğesinin **setdefaultscope** metoduna yapılan her çağrıda kullanılır. ACL 'nin girişleri, sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve tüm diğerlerine erişim vermez. Bu örnekteki son ACL girişi, "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" okuma ve yürütme izinlerine sahip belirli bir kullanıcıya izin verir.
 
@@ -564,11 +613,24 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 > [!NOTE]
 > **Varsayılan** bir ACL girişini güncelleştirmek Istiyorsanız, **set-AzDataLakeGen2ItemAclObject** komutunu çalıştırdığınızda **-DefaultScope** parametresini kullanın. Örneğin: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`.
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Az Storage FS Access Update-özyinelemeli](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_update_recursive) komutunu kullanarak bir ACL 'yi yinelemeli olarak güncelleştirin. 
+
+Bu örnekte, yazma izniyle bir ACL girişi güncelleştirilir. 
+
+```azurecli
+az storage fs access update-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx" -p my-parent-directory/ -f my-container --account-name mystorageaccount --auth-mode login
+```
+
+> [!NOTE]
+> **Varsayılan** bir ACL girişini güncelleştirmek istiyorsanız, `default:` Her girişe öneki ekleyin. Örneğin, `default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r-x`.
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
 **Datalakedirectoryclient. UpdateAccessControlRecursiveAsync** yöntemini ÇAĞıRARAK bir ACL 'yi yinelemeli olarak güncelleştirin.  Bu yönteme [Pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) [listesi](/dotnet/api/system.collections.generic.list-1) geçirin. Her [Pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) bir ACL girdisi tanımlar. 
 
-**Varsayılan** bir ACL girişini güncelleştirmek Istiyorsanız, [pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) öğesinin [Pathaccesscontrolıdıtem. DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) özelliğini **true**olarak ayarlayabilirsiniz. 
+**Varsayılan** bir ACL girişini güncelleştirmek Istiyorsanız, [pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) öğesinin [Pathaccesscontrolıdıtem. DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) özelliğini **true** olarak ayarlayabilirsiniz. 
 
 Bu örnekte, yazma izniyle bir ACL girişi güncelleştirilir. Bu yöntem `isDefaultScope` , varsayılan ACL 'nin güncelleştirilmesini isteyip istemediğinizi belirten adlı bir Boole parametresini kabul eder. Bu parametre [Pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)kurucusunda kullanılır.
 
@@ -599,7 +661,7 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient, boo
 
 **Datalakedirectoryclient. Updateaccesscontrolözyinelemeli** yöntemini ÇAĞıRARAK bir ACL 'yi yinelemeli olarak güncelleştirin.  Bu yöntemi [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) nesnelerinin bir [listesini](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) geçirin. Her [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) bir ACL girdisi tanımlar. 
 
-**Varsayılan** bir ACL girişini güncelleştirmek Istiyorsanız, [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) ve pass öğesinin **setdefaultscope** yöntemine **doğru**değerini verebilirsiniz. 
+**Varsayılan** bir ACL girişini güncelleştirmek Istiyorsanız, [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) ve pass öğesinin **setdefaultscope** yöntemine **doğru** değerini verebilirsiniz. 
 
 Bu örnekte, yazma izniyle bir ACL girişi güncelleştirilir. Bu yöntem `isDefaultScope` , varsayılan ACL 'nin güncelleştirilmesini isteyip istemediğinizi belirten adlı bir Boole parametresini kabul eder. Bu parametre, [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)öğesinin **setdefaultscope** metoduna yapılan çağrıda kullanılır. 
 
@@ -686,11 +748,24 @@ Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Ac
 > [!NOTE]
 > **Varsayılan** bir ACL girişini kaldırmak Istiyorsanız, **set-AzDataLakeGen2ItemAclObject** komutunu çalıştırdığınızda **-DefaultScope** parametresini kullanın. Örneğin: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`.
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Az Storage FS Access Remove-özyinelemeli](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_remove_recursive) komutunu kullanarak acl girişlerini kaldırın. 
+
+Bu örnek, kapsayıcının kök dizininden bir ACL girişini kaldırır.  
+
+```azurecli
+az storage fs access remove-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -p my-parent-directory/ -f my-container --account-name mystorageaccount --auth-mode login
+```
+
+> [!NOTE]
+> **Varsayılan** bir ACL girişini kaldırmak istiyorsanız, `default:` Her girişe öneki ekleyin. Örneğin, `default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
 **Datalakedirectoryclient. RemoveAccessControlRecursiveAsync** YÖNTEMINI çağırarak acl girişlerini kaldırın. Bu yönteme [Pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) [listesi](/dotnet/api/system.collections.generic.list-1) geçirin. Her [Pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) bir ACL girdisi tanımlar. 
 
-**Varsayılan** bir ACL girişini kaldırmak Istiyorsanız, [pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) öğesinin [pathaccesscontrolıdıtem. DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) özelliğini **true**olarak ayarlayabilirsiniz. 
+**Varsayılan** bir ACL girişini kaldırmak Istiyorsanız, [pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) öğesinin [pathaccesscontrolıdıtem. DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) özelliğini **true** olarak ayarlayabilirsiniz. 
 
 Bu örnek, adlı dizinin ACL 'sinden bir ACL girişini kaldırır `my-parent-directory` . Bu yöntem `isDefaultScope` , girişin varsayılan ACL 'den kaldırılması gerekip gerekmediğini belirten adlı bir Boole parametresini kabul eder. Bu parametre [Pathaccesscontrolıdıtem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)kurucusunda kullanılır.
 
@@ -718,7 +793,7 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient, isD
 
 **Datalakedirectoryclient. removeAccessControlRecursive** YÖNTEMINI çağırarak acl girişlerini kaldırın. Bu yöntemi [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) nesnelerinin bir [listesini](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) geçirin. Her [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) bir ACL girdisi tanımlar. 
 
-**Varsayılan** bir ACL girişini kaldırmak Istiyorsanız, [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) ve pass öğesinin **setdefaultscope** yöntemine **true**değerini verebilirsiniz.  
+**Varsayılan** bir ACL girişini kaldırmak Istiyorsanız, [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) ve pass öğesinin **setdefaultscope** yöntemine **true** değerini verebilirsiniz.  
 
 Bu örnek, adlı dizinin ACL 'sinden bir ACL girişini kaldırır `my-parent-directory` . Bu yöntem `isDefaultScope` , girişin varsayılan ACL 'den kaldırılması gerekip gerekmediğini belirten adlı bir Boole parametresini kabul eder. Bu parametre, [Pathaccesscontrolentry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html)öğesinin **setdefaultscope** metoduna yapılan çağrıda kullanılır.
 
@@ -796,6 +871,14 @@ Tablonun çıktısına bağlı olarak, tüm izin hatalarını giderebilir ve son
 $result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl -ContinuationToken $result.ContinuationToken
 $result
 
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Bir hata durumunda, parametresini olarak ayarlayarak bir devamlılık belirteci döndürebilirsiniz `--continue-on-failure` `true` . Hataları adresledikten sonra, komutu yeniden çalıştırarak ve sonra parametreyi devamlılık belirtecine ayarlayarak işlemi hata noktasından devam ettirebilirsiniz `--continuation` . 
+
+```azurecli
+az storage fs access set-recursive --acl "user::rw-,group::r-x,other::---" --continue-on-failure true --continuation xxxxxxx -p my-parent-directory/ -f my-container --account-name mystorageaccount --auth-mode login  
 ```
 
 ## <a name="net"></a>[.NET](#tab/dotnet)
@@ -900,6 +983,7 @@ Bu bölüm, kitaplıkların ve kod örneklerinin bağlantılarını içerir.
 #### <a name="libraries"></a>Kitaplıklar
 
 - [PowerShell](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.powershellgallery.com%2Fpackages%2FAz.Storage%2F2.5.2-preview&data=02%7C01%7Cnormesta%40microsoft.com%7Ccdabce06132c42132b4008d849a2dfb1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637340311173215017&sdata=FWynO9UKTt7ESMCFgkWaL7J%2F%2BjODaRo5BD6G6yCx9os%3D&reserved=0)
+- [Azure CLI](https://docs.microsoft.com/cli/azure/storage/fs/access)
 - [.NET](https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json)
 - [Java](/java/api/overview/azure/storage-file-datalake-readme)
 - [Python](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2Fazure_storage_file_datalake-12.1.0b99-py2.py3-none-any.whl%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A47%253A01Z%26se%3D2021-08-25T07%253A47%253A00Z%26sr%3Db%26sp%3Dr%26sig%3DH1XYw4FTLJse%252BYQ%252BfamVL21UPVIKRnnh2mfudA%252BfI0I%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C95a5966d938a4902560e08d84912fe32%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637339693209725909&sdata=acv4KWZdzkITw1lP0%2FiA3lZuW7NF5JObjY26IXttfGI%3D&reserved=0)
@@ -907,6 +991,8 @@ Bu bölüm, kitaplıkların ve kod örneklerinin bağlantılarını içerir.
 #### <a name="code-samples"></a>Kod örnekleri
 
 - PowerShell: [Benioku](https://recursiveaclpr.blob.core.windows.net/privatedrop/README.txt?sv=2019-02-02&st=2020-08-24T17%3A03%3A18Z&se=2021-08-25T17%3A03%3A00Z&sr=b&sp=r&sig=sPdKiCSXWExV62sByeOYqBTqpGmV2h9o8BLij3iPkNQ%3D)  |  [örneği](https://recursiveaclpr.blob.core.windows.net/privatedrop/samplePS.ps1?sv=2019-02-02&st=2020-08-24T17%3A04%3A44Z&se=2021-08-25T17%3A04%3A00Z&sr=b&sp=r&sig=dNNKS%2BZcp%2F1gl6yOx6QLZ6OpmXkN88ZjBeBtym1Mejo%3D)
+
+- Azure CLı: [örnek](https://github.com/Azure/azure-cli/blob/2a55a5350696a3a93a13f364f2104ec8bc82cdd3/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 
 - NET: [Benioku](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FREADME%2520for%2520net%3Fsv%3D2019-02-02%26st%3D2020-08-25T23%253A20%253A42Z%26se%3D2021-08-26T23%253A20%253A00Z%26sr%3Db%26sp%3Dr%26sig%3DKrnHvasHoSoVeUyr2g%252FSc2aDVW3De4A%252Fvx0lFWZs494%253D&data=02%7C01%7Cnormesta%40microsoft.com%7Cda902e4fe6c24e6a07d908d8494fd4bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637339954503767961&sdata=gd%2B2LphTtDFVb7pZko9rkGO9OG%2FVvmeXprHB9IOEYXE%3D&reserved=0)  |  [örneği](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0)
 

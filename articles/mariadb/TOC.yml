@@ -118,10 +118,6 @@
           href: concepts-data-in-replication.md
         - name: Okuma amaçlı çoğaltmalar
           href: concepts-read-replicas.md
-    - name: Bölgeler arasında taşıma
-      items:
-        - name: Azure portal
-          href: howto-move-regions-portal.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Sunucu yönetme
@@ -240,6 +236,10 @@
           href: howto-restart-server-cli.md
         - name: Azure PowerShell
           href: howto-restart-server-powershell.md
+    - name: Bölgeler arasında taşıma
+      items:
+        - name: Azure portal
+          href: howto-move-regions-portal.md
 - name: Başvuru
   items:
     - name: Azure CLI

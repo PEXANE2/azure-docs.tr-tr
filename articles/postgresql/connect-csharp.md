@@ -7,41 +7,52 @@ ms.service: postgresql
 ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 10/16/2020
-ms.openlocfilehash: 221bd8287133c3fe9bb53bd4b480823d971b3e3a
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.date: 10/18/2020
+ms.openlocfilehash: 96a655c99a5b6846e5f286e31d22a3756e69d06e
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166021"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912132"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için .NET (C#) kullanma-tek sunucu
 
 Bu hızlı başlangıçta, C# uygulaması kullanılarak PostgreSQL için Azure Veritabanı'na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, C# kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
-- [DB Oluşturma - Portal](quickstart-create-server-database-portal.md)
-- [DB oluşturma - CLI](quickstart-create-server-database-azure-cli.md)
+Bu hızlı başlangıç için şunlar gerekir:
 
-Şunları da yapmanız gerekir:
-- [.NET Framework](https://www.microsoft.com/net/download)'ü yükleyin. NET’i platformunuza (Windows, Ubuntu Linux veya macOS) özel olarak yüklemek için bağlantılı makaledeki adımları izleyin. 
-- Kod yazmak ve düzenlemek için [Visual Studio](https://www.visualstudio.com/downloads/) veya Visual Studio Code yükleyin.
-- [Npgsql](https://www.nuget.org/packages/Npgsql/) Nuget paketine bir başvuru ekleyin.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free).
+- [Azure Portal](./quickstart-create-server-database-portal.md) kullanarak PostgreSQL Için Azure veritabanı tek sunucu oluşturma <br/> ya da bir tane yoksa [Azure CLI](./quickstart-create-server-database-azure-cli.md) .
+- Genel veya özel erişim kullanıyor olmanız temelinde, bağlantıyı etkinleştirmek için aşağıdaki eylemlerden **birini** doldurun.
+
+  |Eylem| Bağlantı yöntemi|Nasıl yapılır kılavuzu|
+  |:--------- |:--------- |:--------- |
+  | **Güvenlik duvarı kurallarını yapılandırma** | Genel | [Portal](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
+  | **Hizmet uç noktasını yapılandır** | Genel | [Portal](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
+  | **Özel bağlantıyı Yapılandır** | Özel | [Portal](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
+
+- Platformunuzun (Windows, Ubuntu Linux veya macOS) [.NET Framework](https://www.microsoft.com/net/download) yüklemesini yapın. 
+- Projenizi derlemek için [Visual Studio 'yu](https://www.visualstudio.com/downloads/) yükler.
+- Visual Studio 'da [Npgsql](https://www.nuget.org/packages/Npgsql/) NuGet paketini yükler.
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
+2. Azure portalında sol taraftaki menüden **Tüm kaynaklar** 'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver** ) arayın.
 3. Sunucunun adına tıklayın.
-4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı** ’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  :::image type="content" source="./media/connect-csharp/1-connection-string.png" alt-text="PostgreSQL için Azure Veritabanı sunucu adı":::
 
-## <a name="connect-create-table-and-insert-data"></a>Bağlanma, tablo oluşturma ve veri ekleme
-Aşağıdaki kodu kullanarak bağlanın ve **CREATE TABLE** ve **INSERT INTO** SQL deyimlerini kullanarak verileri yükleyin. Kod, [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) yöntemiyle birlikte NpgsqlCommand sınıfını kullanarak PostgreSQL veritabanı ile bağlantı kurar. Ardından kod [CreateCommand ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand)yöntemini kullanarak CommandText özelliğini ayarlar ve [ExecuteNonQuery ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) yöntemini çağırarak veritabanı komutlarını çalıştırır. 
+## <a name="step-1-connect-and-insert-data"></a>1. Adım: verileri bağlama ve ekleme
+Aşağıdaki kodu kullanarak bağlanın ve **CREATE TABLE** ve **INSERT INTO** SQL deyimlerini kullanarak verileri yükleyin. Kod, yöntemi ile NpgsqlCommand sınıfını kullanır: 
+- PostgreSQL veritabanına bağlantı kurmak için [() öğesini açın](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) .
+- [CreateCommand ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) CommandText özelliğini ayarlar.
+- [ExecuteNonQuery ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) yöntemi veritabanı komutlarını çalıştırmak için. 
 
-Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
+> [!IMPORTANT]
+> Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
 
 ```csharp
 using System;
@@ -113,10 +124,17 @@ namespace Driver
 }
 ```
 
-## <a name="read-data"></a>Verileri okuma
-Bağlanmak ve **SELECT** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. Kod, [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) yöntemiyle birlikte NpgsqlCommand sınıfını kullanarak PostgreSQL ile bağlantı kurar. Ardından kod [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) ve [ExecuteReader()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteReader) yöntemlerini kullanarak veritabanı komutlarını çalıştırır. Daha sonra kod [Read()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_Read) yöntemini kullanarak sonuçlardaki kayda gider. Son olarak kod, [GetInt32()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetInt32_System_Int32_) ve [GetString()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetString_System_Int32_) yöntemini kullanarak kayıttaki değerleri ayrıştırır.
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/postgres-doc-feedback)
 
-Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
+## <a name="step-2-read-data"></a>2. Adım: verileri okuma
+Bağlanmak ve **SELECT** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. Kod, yöntemi ile NpgsqlCommand sınıfını kullanır:
+- PostgreSQL bağlantısı kurmak için [() öğesini açın](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) .
+- Veritabanı komutlarını çalıştırmak için [CreateCommand ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) ve [ExecuteReader ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteReader) .
+- Sonuçlarda kayda ilerlemek için [Read ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_Read) .
+- Kayıttaki değerleri ayrıştırmak için [GetInt32 ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetInt32_System_Int32_) ve [GetString ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetString_System_Int32_) .
+
+> [!IMPORTANT]
+> Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
 
 ```csharp
 using System;
@@ -179,11 +197,16 @@ namespace Driver
 }
 ```
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/postgres-doc-feedback)
 
-## <a name="update-data"></a>Verileri güncelleştirme
-Bağlanmak ve bir **UPDATE** SQL deyimi kullanarak verileri güncelleştirmek için aşağıdaki kodu kullanın. Kod, [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) yöntemiyle birlikte NpgsqlCommand sınıfını kullanarak PostgreSQL ile bağlantı kurar. Ardından kod [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) yöntemini kullanarak CommandText özelliğini ayarlar ve [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) yöntemini çağırarak veritabanı komutlarını çalıştırır.
+## <a name="step-3-update-data"></a>3. Adım: verileri güncelleştirme
+Bağlanmak ve bir **UPDATE** SQL deyimi kullanarak verileri güncelleştirmek için aşağıdaki kodu kullanın. Kod, yöntemi ile NpgsqlCommand sınıfını kullanır:
+- PostgreSQL bağlantısı kurmak için [() öğesini açın](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) . 
+- [CreateCommand ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand), CommandText özelliğini ayarlar.
+- [ExecuteNonQuery ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) yöntemi veritabanı komutlarını çalıştırmak için.
 
-Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
+> [!IMPORTANT]
+> Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
 
 ```csharp
 using System;
@@ -239,13 +262,15 @@ namespace Driver
 
 ```
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/postgres-doc-feedback)
 
-## <a name="delete-data"></a>Verileri silme
+## <a name="step-4-delete-data"></a>4. Adım: verileri silme
 **DELETE** SQL deyimini kullanarak bağlanmak ve verileri silmek için aşağıdaki kodu kullanın. 
 
 Kod, [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) yöntemiyle birlikte NpgsqlCommand sınıfını kullanarak PostgreSQL veritabanı ile bağlantı kurar. Ardından kod [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) yöntemini kullanarak CommandText özelliğini ayarlar ve [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) yöntemini çağırarak veritabanı komutlarını çalıştırır.
 
-Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
+> [!IMPORTANT]
+> Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
 
 ```csharp
 using System;
@@ -300,4 +325,9 @@ namespace Driver
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Dışarı Aktarma ve İçeri Aktarma seçeneğini kullanarak veritabanınızı geçirme](./howto-migrate-using-export-and-import.md)
+> [Portalı kullanarak MySQL için Azure veritabanı sunucusunu yönetme](./howto-create-manage-server-portal.md)<br/>
+
+> [!div class="nextstepaction"]
+> [CLı kullanarak MySQL için Azure veritabanı sunucusunu yönetme](./how-to-manage-server-cli.md)
+
+[Aradığınızı bulamıyor musunuz? Bize bilgi verin.](https://aka.ms/postgres-doc-feedback)

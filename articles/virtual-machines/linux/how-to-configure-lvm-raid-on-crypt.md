@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: b65c37ab06092be63cbb2ad9fb5e23cdb8324e80
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c8ffe78e885eedd84c4cf6948954a7d3477a5cff
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476170"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911826"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Şifrelenmiş cihazlarda LVM ve RAID yapılandırma
 
@@ -287,7 +287,7 @@ Cihaz adını kullanmak yerine, bir fiziksel birim oluşturmak için disklerin h
 
 ### <a name="configure-lvm-on-top-of-the-encrypted-layers"></a>LVM 'yi şifreli katmanların üstünde yapılandırma
 #### <a name="create-the-physical-volumes"></a>Fiziksel birimleri oluşturma
-Dosya sistemi imzasını temizlemeyi isteyip istemediğinizi soran bir uyarı alırsınız. **Y**girerek devam edin veya gösterildiği gibi **echo "y"** kullanın:
+Dosya sistemi imzasını temizlemeyi isteyip istemediğinizi soran bir uyarı alırsınız. **Y** girerek devam edin veya gösterildiği gibi **echo "y"** kullanın:
 
 ```bash
 echo "y" | pvcreate /dev/mapper/c49ff535-1df9-45ad-9dad-f0846509f052
@@ -298,7 +298,7 @@ echo "y" | pvcreate /dev/mapper/4159c60a-a546-455b-985f-92865d51158c
 ![Fiziksel bir birimin oluşturulduğunu doğrulama](./media/disk-encryption/lvm-raid-on-crypt/014-lvm-raid-pvcreate.png)
 
 >[!NOTE] 
->Burada/dev/mapper/Device adlarının, **lsblk**'ın çıktısına göre gerçek değerlerinizle değiştirilmesini gerekir.
+>Burada/dev/mapper/Device adlarının, **lsblk** 'ın çıktısına göre gerçek değerlerinizle değiştirilmesini gerekir.
 
 #### <a name="verify-the-information-for-physical-volumes"></a>Fiziksel birimler için bilgileri doğrulama
 ```bash
@@ -368,9 +368,9 @@ mount -a
 lsblk -fs
 df -h
 ```
-![Bağlı dosya sistemleri için bilgiler](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
+![Ekran görüntüsü, data0 ve Veri1 olarak bağlanmış dosya sistemlerine sahip bir konsol penceresi gösterir.](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
 
-Bu **lsblk**çeşitlemesiyle, bağımlılıkları ters sırada gösteren cihazları listeliyoruz. Bu seçenek, özgün/dev/SD [Disk] cihaz adları yerine mantıksal birime göre gruplanmış cihazları belirlemesine yardımcı olur.
+Bu **lsblk** çeşitlemesiyle, bağımlılıkları ters sırada gösteren cihazları listeliyoruz. Bu seçenek, özgün/dev/SD [Disk] cihaz adları yerine mantıksal birime göre gruplanmış cihazları belirlemesine yardımcı olur.
 
 **NOFAIL** seçeneğinin Azure disk şifrelemesi ile şifrelenen bir cihazın üzerine oluşturulan LVM birimlerinin bağlama noktası seçeneklerine eklendiğinden emin olmak önemlidir. Önyükleme işlemi sırasında (veya bakım modunda) işletim sisteminin takılmasını önler.
 
@@ -406,7 +406,7 @@ mdadm --create /dev/md10 \
 ![Mdaddm komutu aracılığıyla yapılandırılmış RAID bilgileri](./media/disk-encryption/lvm-raid-on-crypt/019-lvm-raid-md-creation.png)
 
 >[!NOTE] 
->Buradaki/dev/mapper/Device adlarının, **lsblk**'ın çıktısına göre gerçek değerlerinizle değiştirilmesini gerekir.
+>Buradaki/dev/mapper/Device adlarının, **lsblk** 'ın çıktısına göre gerçek değerlerinizle değiştirilmesini gerekir.
 
 ### <a name="checkmonitor-raid-creation"></a>RAID oluşturmayı denetle/izle
 ```bash
@@ -437,7 +437,7 @@ Yeni dosya sisteminin takılı olduğundan emin olun:
 lsblk -fs
 df -h
 ```
-![Bağlı dosya sistemleri için bilgiler](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
+![Ekran görüntüsü, kıddata olarak bağlanmış bir dosya sistemine sahip bir konsol penceresi gösterir.](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
 **NOFAIL** seçeneğinin Azure disk şifrelemesi ile şifrelenen bir cihazın ÜZERINE oluşturulan RAID birimlerinin bağlama noktası seçeneklerine eklendiğinden emin olmak önemlidir. Önyükleme işlemi sırasında (veya bakım modunda) işletim sisteminin takılmasını önler.
 

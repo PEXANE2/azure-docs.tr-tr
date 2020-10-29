@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/14/2019
+ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: ba7a395c73abe62a02a1d47f35dce0fc59b23a53
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: dbc8d126cabae249db8b5e5be5e311d232395c83
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520175"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910738"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-line-works"></a>Öğretici: satır ÇALıŞMALARLA Azure Active Directory tümleştirme
 
@@ -26,9 +26,6 @@ SATıR tümleştirmesi Azure AD ile birlikte ÇALıŞARAK aşağıdaki avantajla
 * Azure AD 'de satır ÇALıŞMASıNA erişimi olan denetim yapabilirsiniz.
 * Kullanıcılarınızın Azure AD hesaplarıyla ÇALıŞMASı için (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
-
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -43,157 +40,107 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 * SATıR ÇALıŞMASı **SP** tarafından başlatılan SSO 'yu destekler
 
-
-
-
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="adding-line-works-from-the-gallery"></a>Galeriden satır ekleme
 
 SATıR çalışmasının tümleştirmesini Azure AD 'ye göre yapılandırmak için, galerideki satır çalışmalarından yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-**Galeriden satır ÇALıŞMASı eklemek için aşağıdaki adımları uygulayın:**
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **satır çalışması** yazın.
+1. Sonuçlar panelinden **satır çalışması** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+Azure AD SSO 'yu bir satır ile yapılandırın ve test edin, **B. Simon** adlı bir test kullanıcısı kullanılarak. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve SATıRDAKI ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+Azure AD SSO 'yu satır ÇALıŞMASı ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+2. **[Satır çalışma SSO 'Su yapılandırma](#configure-line-works-sso)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
+    * **[Satır oluştur test kullanıcısı](#create-line-works-test-user)** -Kullanıcı IÇIN Azure AD gösterimine bağlı olan, satır Içinde Britta Simon 'un bir karşılığı olmalıdır.
+3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-4. Arama kutusuna **satır çalışması**yazın, sonuç PANELINDEN **satır çalışması** ' nı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+1. Azure portal, **SATıRDAKI çalışmalar** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-    ![SATıR, sonuçlar listesinde KULLANILABILIR](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
-
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, satır ile birlikte yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve SATıRDAKI ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
-
-SATıR ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
-
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Satırı Yapılandır çoklu oturum açma](#configure-line-works-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. **[Satır oluştur test kullanıcısı](#create-line-works-test-user)** -Kullanıcı IÇIN Azure AD gösterimine bağlı olan, satır Içinde Britta Simon 'un bir karşılığı olmalıdır.
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı satır ÇALıŞMASı ile yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **satırdaki** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![SATıR, etki alanı ve URL 'Ler çoklu oturum açma bilgileri ile kullanılabılır](common/sp-identifier.png)
-
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://auth.worksmobile.com/d/login/<domain>/`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın:`worksmobile.com`
+    b. **Yanıt URL** 'si metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://auth.worksmobile.com/acs/ <domain>`
 
-5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+    > [!NOTE]
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI ve yanıt URL 'SI ile güncelleştirin. İlgili kişi satırı, değerleri almak için [Destek ekibine](https://line.worksmobile.com/jp/en/contactus/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-    ![Sertifika indirme bağlantısı](common/certificateraw.png)
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+
+    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
 6. **SATıRı çalışır duruma ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-    b. Azure AD tanımlayıcısı
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-    c. Oturum kapatma URL 'SI
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur** 'a tıklayın.
 
-### <a name="configure-line-works-single-sign-on"></a>SATıRı Yapılandır tek Sign-On
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+
+Bu bölümde, satır ÇALıŞMALARıNıZıN erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde, **satır çalışması** ' nı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+## <a name="configure-line-works-sso"></a>SATıR çalışma SSO 'SU yapılandırma
 
 **Satır ıçı çalışma** tarafında çoklu oturum açmayı yapılandırmak Için lütfen [satırı, SSO BELGELERINI](https://developers.worksmobile.com/jp/document/1001080101) ve bir hat çalışma ayarını yapılandırın.
 
 > [!NOTE]
 > İndirilen sertifika dosyasını. CERT 'den. ped 'ye dönüştürmeniz gerekir
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
-
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
-
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
-
-Bu bölümde, LINE 'ın ÇALıŞMASıNA erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
-
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı SEÇIN ve ardından **satır çalışması**' nı seçin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde, **satır çalışması**' nı seçin.
-
-    ![Bu hat, uygulamalar listesindeki bağlantı](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ### <a name="create-line-works-test-user"></a>SATıR çalışma testi Kullanıcı Oluştur
 
 Bu bölümde, satır içinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Access [Line, yönetici sayfasına](https://admin.worksmobile.com) sahıptır ve hat çalışma platformunda kullanıcıları ekleyin.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+### <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde SATıRı çalışır Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız SATıRDAKI çalışır durumda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+1. Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu işlem, oturum açma akışını başlatabileceğiniz satır için çalışır oturum açma URL 'sine yeniden yönlendirilir. 
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+2. SATıRLA doğrudan oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde hat çalışma kutucuğuna tıkladığınızda, bu işlem LINE, oturum açma URL 'sine yeniden yönlendirilir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+HAT çalışma düzeyini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+

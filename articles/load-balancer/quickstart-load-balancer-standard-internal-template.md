@@ -8,18 +8,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: aa68dad2f8f018a9f3f70f2f02fd5e989ccbad4e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 41c90bb58e6ece968f8e2bf211a14e4e4e98211f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047769"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910874"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
 Bu hızlı başlangıçta, iç Azure yük dengeleyici oluşturmak için bir Azure Resource Manager şablonunun (ARM şablonu) nasıl kullanılacağı açıklanmaktadır.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-2-vms-internal-load-balancer%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -49,7 +53,7 @@ Azure Load Balancer ilgili daha fazla şablon bulmak için bkz. [Azure hızlı b
 ```azurecli-interactive
 read -p "Enter the location (i.e. westcentralus): " location
 resourceGroupName="myResourceGroupLB"
-templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json" 
+templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json"
 
 az group create \
 --name $resourceGroupName \
@@ -62,13 +66,13 @@ az deployment group create \
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Sol bölmeden **kaynak grupları** ' nı seçin.
+1. Sol bölmeden **kaynak grupları** ' nı seçin.
 
-3. Önceki bölümde oluşturduğunuz kaynak grubunu seçin. Varsayılan kaynak grubu adı **Myresourcegrouplb**
+1. Önceki bölümde oluşturduğunuz kaynak grubunu seçin. Varsayılan kaynak grubu adı **Myresourcegrouplb**
 
-4. Kaynak grubunda aşağıdaki kaynakların oluşturulduğunu doğrulayın:
+1. Kaynak grubunda aşağıdaki kaynakların oluşturulduğunu doğrulayın:
 
 :::image type="content" source="media/quickstart-load-balancer-standard-internal-template/verify-creation.png" alt-text="Kaynak oluşturulmasını doğrulamak için Kullanıcı Azure portal." border="true":::
 
@@ -76,7 +80,7 @@ az deployment group create \
 
 Artık gerekli değilse, [az Group Delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu ve içinde yer alan tüm kaynakları kaldırabilirsiniz.
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete \
     --name myResourceGroupLB
 ```

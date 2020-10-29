@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 71629ebf1397c00face500f0bfd9c8e92deacc5e
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5d27a09f0ff38ec7422636ef0933552aa310c387
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173031"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911775"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Küme kullanarak bir Service Fabric kümesini açıkla Kaynak Yöneticisi
 
@@ -47,9 +47,7 @@ Azure ortamında, Service Fabric, kümedeki düğümleri sizin adınıza doğru 
 
 Aşağıdaki grafikte, hata etki alanlarına katkıda bulunan tüm varlıkların yanı sıra sonuçlanan tüm farklı hata etki alanlarını da listeliyoruz. Bu örnekte, veri merkezlerimiz ("DC"), raflar ("R") ve dikey pencereler ("B") vardır. Her dikey pencere birden fazla sanal makine barındırıyorsa, hata etki alanı hiyerarşisinde başka bir katman olabilir.
 
-<center>
 ![Hata etki alanları aracılığıyla düzenlenmiş düğümler][Image1]
-</center>
 
 Çalışma zamanı sırasında Service Fabric Küme Kaynak Yöneticisi, küme ve plan düzenlerindeki hata etki alanlarını dikkate alır. Durum bilgisi olan çoğaltmalar veya bir hizmetin durum bilgisiz örnekleri ayrı hata etki alanlarında olacak şekilde dağıtılır. Hizmetin hata etki alanları arasında dağıtılması, hiyerarşinin herhangi bir düzeyinde hata etki alanı başarısız olduğunda hizmetin kullanılabilirliğine karşı uzlaşmamasını sağlar.
 
@@ -62,13 +60,11 @@ Hata etki alanı hiyerarşisindeki her bir derinlik düzeyinde aynı sayıda dü
 
 İmdengeli etki alanları nasıl görünür? Aşağıdaki diyagramda iki farklı küme düzeni gösterilmektedir. İlk örnekte, düğümler hata etki alanları arasında eşit olarak dağıtılır. İkinci örnekte, bir hata etki alanının diğer hata etki alanlarından çok daha fazla düğümü vardır.
 
-<center>
 ![İki farklı küme düzeni][Image2]
-</center>
 
 Azure 'da, bir düğüm içeren hata etki alanının seçimi sizin için yönetilir. Ancak, sağladığınız düğüm sayısına bağlı olarak, diğer düğümlerde daha fazla düğüme sahip hata etki alanları ile de devam edebilirsiniz.
 
-Örneğin, kümede beş hata etki alanı olduğunu ancak düğüm türü (**NodeType**) için yedi düğüm sağladığınızı varsayalım. Bu durumda, ilk iki hata etki alanı daha fazla düğüm ile biter. Yalnızca birkaç örnek ile daha fazla **NodeType** örneği dağıtmaya devam ederseniz, sorun daha kötü olur. Bu nedenle, her düğüm türündeki düğüm sayısının hata etki alanı sayısının katı olması önerilir.
+Örneğin, kümede beş hata etki alanı olduğunu ancak düğüm türü ( **NodeType** ) için yedi düğüm sağladığınızı varsayalım. Bu durumda, ilk iki hata etki alanı daha fazla düğüm ile biter. Yalnızca birkaç örnek ile daha fazla **NodeType** örneği dağıtmaya devam ederseniz, sorun daha kötü olur. Bu nedenle, her düğüm türündeki düğüm sayısının hata etki alanı sayısının katı olması önerilir.
 
 ## <a name="upgrade-domains"></a>Yükseltme etki alanları
 
@@ -78,9 +74,7 @@ Yükseltme etki alanları, hata etki alanları gibi birçok önemli fark ile ayn
 
 Aşağıdaki diyagramda, üç hata etki alanı üzerinde dizili üç yükseltme etki alanı gösterilmektedir. Ayrıca, her biri farklı hata ve yükseltme etki alanlarında biten, durum bilgisi olan bir hizmetin üç farklı çoğaltması için olası bir yerleşimi gösterir. Bu yerleştirme, bir hizmet yükseltmenin ortasında bir hata etki alanının kaybedilmesine ve kod ve verilerin bir kopyasına sahip olmaya devam etmesine izin verir.  
 
-<center>
 ![Hata ve yükseltme etki alanlarına yerleştirme][Image3]
-</center>
 
 Çok sayıda yükseltme etki alanı sağlamak için olumlu ve olumsuz yönleri vardır. Daha fazla yükseltme etki alanı, yükseltmenin her bir adımının daha ayrıntılı olduğu ve daha az sayıda düğüm veya hizmeti etkilediği anlamına gelir. Aynı anda, sisteme daha az dalgalanmaya yönelik daha az sayıda hizmetin taşınması gerekir. Bu, hizmetin daha az bir yükseltme sırasında tanıtılan herhangi bir sorundan etkilenmemesi nedeniyle güvenilirliği artırmaya eğilimindedir. Daha fazla yükseltme etki alanı, yükseltmenin etkisini işlemek için diğer düğümlerde daha az kullanılabilir arabelleğe ihtiyacınız olduğu anlamına da gelir.
 
@@ -98,9 +92,7 @@ Bir ortamdaki toplam hata veya yükseltme etki alanı sayısı için gerçek sı
 * Düğüm başına bir yükseltme etki alanı (fiziksel veya sanal işletim sistemi örneği)
 * Hata etki alanları ve yükseltme etki alanlarının genellikle köşegenler altında çalışan makinelerle matris oluşturmakta olduğu bir "şeritli" veya "matris" modeli
 
-<center>
 ![Hata ve yükseltme etki alanı düzenleri][Image4]
-</center>
 
 Hangi düzen arasından seçim yapabileceğiniz en iyi yanıt yok. Her birinin profesyonelleri ve dezavantajları vardır. Örneğin, 1FD: 1UD modelinin ayarlanması basittir. Düğüm modeli başına bir yükseltme etki alanının modeli, çoğu kişinin hangi kişilerin kullanıldığı gibidir. Yükseltmeler sırasında her düğüm bağımsız olarak güncelleştirilir. Bu, geçmişte küçük makine kümelerinin el ile yükseltilme biçimine benzer.
 
@@ -127,7 +119,7 @@ Bu kısıtlamanın "en yüksek fark" garantisi sağladığını varsayalım. Hat
 | **UD3** | | | |N4 | |
 | **UD4** | | | | |N5 düğümünde |
 
-Şimdi, bir **Targetreplicasetsize** (veya durum bilgisiz hizmeti, **InstanceCount**) değeri için beş olan bir hizmet oluşturduğunuzu varsayalım. Çoğaltmalar, N1-N5 düğümünde üzerinde yer alır. Aslında, bunun gibi kaç hizmetin oluşturulduğuna bakılmaksızın N6 hiçbir şekilde kullanılmaz. Ancak neden? Geçerli düzen arasındaki farka ve N6 seçilirse ne olacağını inceleyelim.
+Şimdi, bir **Targetreplicasetsize** (veya durum bilgisiz hizmeti, **InstanceCount** ) değeri için beş olan bir hizmet oluşturduğunuzu varsayalım. Çoğaltmalar, N1-N5 düğümünde üzerinde yer alır. Aslında, bunun gibi kaç hizmetin oluşturulduğuna bakılmaksızın N6 hiçbir şekilde kullanılmaz. Ancak neden? Geçerli düzen arasındaki farka ve N6 seçilirse ne olacağını inceleyelim.
 
 Hata ve yükseltme etki alanı başına aldığımız düzen ve toplam çoğaltma sayısı aşağıda verilmiştir:
 
@@ -187,7 +179,7 @@ Küme Kaynak Yöneticisi, hata ve yükseltme etki alanları için kısıtlamanı
 > [!NOTE]
 > Durum bilgisi olan bir hizmet için, Bölüm çoğaltmalarının çoğunluğu aynı anda kapatılıyorsa, bir durumda *çekirdek kaybı* tanımlandık. Örneğin, **Targetreplicasetsize** beş ise, üç çoğaltma kümesi çekirdeği temsil eder. Benzer şekilde, **Targetreplicasetsize** altı ise, çekirdek için dört çoğaltma gerekir. Her iki durumda da, Bölüm normal çalışmaya devam etmek isterse, iki çoğaltma aynı anda kullanılamaz.
 >
-> Durum bilgisi olmayan bir hizmet için *çekirdek kaybı*olarak böyle bir şey yoktur. Durum bilgisi olmayan hizmetler, çoğu örnek aynı anda aşağı gitse bile normal şekilde çalışmaya devam eder. Bu nedenle, bu makalenin geri kalanında durum bilgisi olan hizmetlere odaklanacağız.
+> Durum bilgisi olmayan bir hizmet için *çekirdek kaybı* olarak böyle bir şey yoktur. Durum bilgisi olmayan hizmetler, çoğu örnek aynı anda aşağı gitse bile normal şekilde çalışmaya devam eder. Bu nedenle, bu makalenin geri kalanında durum bilgisi olan hizmetlere odaklanacağız.
 >
 
 Önceki örneğe geri gidelim. Kısıtlamanın "çekirdek güvenli" sürümü ile üç düzen de geçerli olur. FD0 ikinci düzen içinde başarısız olsa veya UD1 üçüncü düzende başarısız olduysa, bölüm yine de çekirdeğe sahip olur. (Çoğaltmaların büyük bölümü yine de devam edebilir.) Kısıtlamasının bu sürümü ile, N6 neredeyse her zaman kullanılabilir.
@@ -351,27 +343,23 @@ Bazen (aslında çoğu zaman) belirli iş yüklerinin yalnızca kümedeki belirl
 
 Belirli iş yükleri için donanım hedeflemek için harika bir örnek neredeyse her n katmanlı mimaridir. Bazı makineler uygulamanın ön uç veya API hizmet tarafı olarak hizmet verir ve istemcilere ya da internet 'e sunulur. Genellikle farklı donanım kaynakları olan farklı makineler, işlem veya depolama katmanlarının çalışmasını işler. Bunlar genellikle istemcilere veya internet _'e doğrudan gösterilmez_ .
 
-Service Fabric, bazı durumlarda belirli iş yüklerinin belirli donanım yapılandırmalarında çalıştırılması gerekebilir. Örnek:
+Service Fabric, bazı durumlarda belirli iş yüklerinin belirli donanım yapılandırmalarında çalıştırılması gerekebilir. Örneğin:
 
 * Var olan n katmanlı bir uygulama, bir Service Fabric ortamına "yükseltilmemiş ve" kaydırmıştır.
 * Performans, ölçek veya güvenlik yalıtımı nedenleriyle belirli bir donanımda iş yükünün çalıştırılması gerekir.
 * İlke veya kaynak tüketimi nedeniyle iş yükü diğer iş yüklerinden yalıtılmalıdır.
 
-Bu yapılandırma türlerini desteklemek için Service Fabric düğümlere uygulayabileceğiniz Etiketler içerir. Bu etiketlere *düğüm özellikleri*denir. *Yerleştirme kısıtlamaları* , bir veya daha fazla düğüm özelliği için seçtiğiniz ayrı hizmetlere eklenen ifadelerdir. Yerleştirme kısıtlamaları, hizmetlerin nerede çalışacağını tanımlar. Kısıtlama kümesi genişletilebilir. Herhangi bir anahtar/değer çifti çalışabilir.
+Bu yapılandırma türlerini desteklemek için Service Fabric düğümlere uygulayabileceğiniz Etiketler içerir. Bu etiketlere *düğüm özellikleri* denir. *Yerleştirme kısıtlamaları* , bir veya daha fazla düğüm özelliği için seçtiğiniz ayrı hizmetlere eklenen ifadelerdir. Yerleştirme kısıtlamaları, hizmetlerin nerede çalışacağını tanımlar. Kısıtlama kümesi genişletilebilir. Herhangi bir anahtar/değer çifti çalışabilir.
 
-<center>
 ![Bir küme düzeni için farklı iş yükleri][Image5]
-</center>
 
 ### <a name="built-in-node-properties"></a>Yerleşik düğüm özellikleri
 
-Service Fabric, otomatik olarak kullanılabilecek bazı varsayılan düğüm özelliklerini tanımlar, böylece bunları tanımlamanız gerekmez. Her düğümde tanımlanan varsayılan Özellikler **NodeType** ve **düğüdir**.
+Service Fabric, otomatik olarak kullanılabilecek bazı varsayılan düğüm özelliklerini tanımlar, böylece bunları tanımlamanız gerekmez. Her düğümde tanımlanan varsayılan Özellikler **NodeType** ve **düğüdir** .
 
 Örneğin, olarak bir yerleştirme kısıtlaması yazabilirsiniz `"(NodeType == NodeType03)"` . **NodeType** yaygın olarak kullanılan bir özelliktir. Bir makine türü ile 1:1 ' a karşılık geldiği için yararlıdır. Her makine türü geleneksel n katmanlı bir uygulamadaki bir iş yükü türüne karşılık gelir.
 
-<center>
 ![Yerleştirme kısıtlamaları ve düğüm özellikleri][Image6]
-</center>
 
 ## <a name="placement-constraints-and-node-property-syntax"></a>Yerleştirme kısıtlamaları ve düğüm özelliği sözdizimi
 
@@ -477,7 +465,7 @@ Herhangi bir Orchestrator 'ın en önemli işlerinin biri, kümedeki kaynak tük
 
 İkinci olarak, hizmetleri verimli bir şekilde çalıştırmak için önemli olan Dengeleme ve iyileştirme vardır. Düşük maliyetli veya performans duyarlı hizmet teklifleri, bazı düğümlerin diğerleri soğuk olduğu sürece sık kullanılmasına izin vermez. Sık kullanılan düğümler, kaynak çekişmesine ve zayıf performansa yol açabilir. Soğuk düğümler, harcanan kaynakları ve artan maliyetleri temsil eder.
 
-Service Fabric kaynakları *ölçümler*olarak temsil eder. Ölçümler Service Fabric için açıklama eklemek istediğiniz herhangi bir mantıksal veya fiziksel kaynaktır. Ölçümlere örnek olarak "WorkQueueDepth" veya "Memorınmb" verilebilir. Service Fabric düğümlerde yönetebilecek fiziksel kaynaklar hakkında daha fazla bilgi için bkz. [Resource idare](service-fabric-resource-governance.md). Küme Kaynak Yöneticisi tarafından kullanılan varsayılan ölçümler ve özel ölçümleri yapılandırma hakkında daha fazla bilgi için [Bu makaleye](service-fabric-cluster-resource-manager-metrics.md)bakın.
+Service Fabric kaynakları *ölçümler* olarak temsil eder. Ölçümler Service Fabric için açıklama eklemek istediğiniz herhangi bir mantıksal veya fiziksel kaynaktır. Ölçümlere örnek olarak "WorkQueueDepth" veya "Memorınmb" verilebilir. Service Fabric düğümlerde yönetebilecek fiziksel kaynaklar hakkında daha fazla bilgi için bkz. [Resource idare](service-fabric-resource-governance.md). Küme Kaynak Yöneticisi tarafından kullanılan varsayılan ölçümler ve özel ölçümleri yapılandırma hakkında daha fazla bilgi için [Bu makaleye](service-fabric-cluster-resource-manager-metrics.md)bakın.
 
 Ölçümler, yerleştirme kısıtlamalarından ve düğüm özelliklerinden farklıdır. Düğüm özellikleri, düğümlerin kendilerine ait statik tanımlayıcılardır. Ölçümler, düğümlerin sahip olduğu kaynakları ve bir düğüm üzerinde çalıştıklarında Hizmetleri kullanır. Node özelliği **HasSSD** olabilir ve true ya da false olarak ayarlanabilir. Bu SSD 'de kullanılabilir alan miktarı ve hizmetler tarafından tüketilen alanın "DriveSpaceInMb" gibi bir ölçüm olması gerekir.
 
@@ -485,15 +473,13 @@ Yerleştirme kısıtlamaları ve düğüm özellikleri gibi Service Fabric Küme
 
 ## <a name="capacity"></a>Kapasite
 
-Tüm kaynak *dengelemeyi*kapatırsanız Service Fabric küme kaynak yöneticisi kapasitesinin üzerinde hiçbir düğümün kaybolmamasını sağlamaya devam eder. Küme çok dolu olmadığı veya iş yükü herhangi bir düğümden daha büyük olmadığı için kapasite taşmalarının yönetilmesi mümkündür. Kapasite, Küme Kaynak Yöneticisi bir düğümün bir kaynağın ne kadarının olduğunu anlamak için kullandığı başka bir *kısıtlamadır* . Kalan kapasite Ayrıca küme için bir bütün olarak izlenir.
+Tüm kaynak *dengelemeyi* kapatırsanız Service Fabric küme kaynak yöneticisi kapasitesinin üzerinde hiçbir düğümün kaybolmamasını sağlamaya devam eder. Küme çok dolu olmadığı veya iş yükü herhangi bir düğümden daha büyük olmadığı için kapasite taşmalarının yönetilmesi mümkündür. Kapasite, Küme Kaynak Yöneticisi bir düğümün bir kaynağın ne kadarının olduğunu anlamak için kullandığı başka bir *kısıtlamadır* . Kalan kapasite Ayrıca küme için bir bütün olarak izlenir.
 
 Kapasite ve hizmet düzeyindeki tüketim, ölçümler bakımından ifade edilir. Örneğin, ölçüm "ClientConnections" olabilir ve bir düğümde 32.768 'nin "ClientConnections" kapasitesi olabilir. Diğer düğümlerin başka sınırları olabilir. Bu düğümde çalışan bir hizmet, şu anda "ClientConnections" ölçüsünün 32.256 ' i tükettiğini söyleyebilir.
 
 Çalışma zamanı sırasında küme Kaynak Yöneticisi kümedeki ve düğümlerdeki kalan kapasiteyi izler. Küme Kaynak Yöneticisi, kapasiteyi izlemek için her hizmetin kullanımını, bir düğümün hizmetin çalıştığı kapasitesinden çıkartır. Bu bilgilerle, Küme Kaynak Yöneticisi düğümlerin kapasite üzerinde ilerlemez olması için çoğaltmaları nereye yerleştireceğinizi veya taşıyabileceğinizi anlayabilir.
 
-<center>
 ![Küme düğümleri ve kapasitesi][Image7]
-</center>
 
 ```csharp
 StatefulServiceDescription serviceDescription = new StatefulServiceDescription();
@@ -580,7 +566,7 @@ Fazla kayıt kapasitesi, sınırsız olacak şekilde de belirlenebilir. Bu durum
 
 Bir metriğin aynı anda hem düğüm arabelleği hem de fazla kayıt kapasitesi belirtilemez.
 
-*ClusterManifest.xml*içinde düğüm arabelleğinin veya fazla kayıt kapasitelerinin nasıl belirtilme örneği aşağıda verilmiştir:
+*ClusterManifest.xml* içinde düğüm arabelleğinin veya fazla kayıt kapasitelerinin nasıl belirtilme örneği aşağıda verilmiştir:
 
 ```xml
 <Section Name="NodeBufferPercentage">

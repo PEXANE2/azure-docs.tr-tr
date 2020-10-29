@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ce922e3ce39bc3df9f4c242558644922e5713300
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 2ea8840a4c66ff05bea22c5c7c063e31d09f9dc8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494808"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911758"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -64,15 +64,15 @@ Konuyu oluşturduktan sonra, aşağıdaki [Azure dijital TWıNS CLI komutuyla](h
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Şimdi, olay Kılavuzu konusu bağımsız değişkenle belirtilen ad altında Azure dijital TWINS 'in içindeki bir uç nokta olarak sunulmaktadır `--endpoint-name` . Genellikle bu adı, Azure Digital TWINS hizmet API 'sini kullanarak [Bu makalenin ilerleyen kısımlarında](#create-an-event-route) oluşturacağınız bir **olay yolunun**hedefi olarak kullanacaksınız.
+Şimdi, olay Kılavuzu konusu bağımsız değişkenle belirtilen ad altında Azure dijital TWINS 'in içindeki bir uç nokta olarak sunulmaktadır `--endpoint-name` . Genellikle bu adı, Azure Digital TWINS hizmet API 'sini kullanarak [Bu makalenin ilerleyen kısımlarında](#create-an-event-route) oluşturacağınız bir **olay yolunun** hedefi olarak kullanacaksınız.
 
 ### <a name="create-an-event-hubs-or-service-bus-endpoint"></a>Event Hubs veya Service Bus uç noktası oluşturma
 
 Event Hubs veya Service Bus uç noktaları oluşturma işlemi yukarıda gösterilen Event Grid işlemine benzerdir.
 
 İlk olarak, uç nokta olarak kullanacağınız kaynaklarınızı oluşturun. Gerekli olan özellikler şunlardır:
-* Service Bus: _Service Bus ad alanı_, _Service Bus konu_, _Yetkilendirme kuralı_
-* Event Hubs: _Event Hubs ad alanı_, _Olay Hub_'ı, _Yetkilendirme kuralı_
+* Service Bus: _Service Bus ad alanı_ , _Service Bus konu_ , _Yetkilendirme kuralı_
+* Event Hubs: _Event Hubs ad alanı_ , _Olay Hub_ 'ı, _Yetkilendirme kuralı_
 
 Ardından, Azure dijital TWINS 'de uç noktaları oluşturmak için aşağıdaki komutları kullanın: 
 
@@ -88,7 +88,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Etkin olmayan bir uç nokta oluşturma
 
-Bir uç nokta belirli bir süre içinde bir olayı teslim edimezse veya olayı belirli bir sayıda sunmaya çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak**olarak bilinir.
+Bir uç nokta belirli bir süre içinde bir olayı teslim edimezse veya olayı belirli bir sayıda sunmaya çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak** olarak bilinir.
 
 Etkin olmayan bir uç nokta oluşturmak için, uç noktanızı oluşturmak için [ARM API 'lerini](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) kullanmanız gerekir. 
 
@@ -152,11 +152,11 @@ Aşağıda, bir [ikizi Create bildirimi](how-to-interpret-event-data.md#digital-
 
 ## <a name="create-an-event-route"></a>Olay yolu oluşturma
 
-Azure dijital TWINS 'den bir uç noktaya gerçek veri göndermek için bir **olay yolu**tanımlamanız gerekir. Azure dijital TWINS **Eventroutes API 'leri** , geliştiricilerin sistem genelinde ve aşağı akış hizmetlerinde olay akışını bir şekilde yönetmesine olanak tanır. Kavramlar bölümünde olay yolları hakkında daha fazla bilgi edinin [*: Azure dijital TWINS olaylarını yönlendirme*](concepts-route-events.md).
+Azure dijital TWINS 'den bir uç noktaya gerçek veri göndermek için bir **olay yolu** tanımlamanız gerekir. Azure dijital TWINS **Eventroutes API 'leri** , geliştiricilerin sistem genelinde ve aşağı akış hizmetlerinde olay akışını bir şekilde yönetmesine olanak tanır. Kavramlar bölümünde olay yolları hakkında daha fazla bilgi edinin [*: Azure dijital TWINS olaylarını yönlendirme*](concepts-route-events.md).
 
 Bu bölümdeki örnekler [.net (C#) SDK 'sını](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)kullanır.
 
-**Önkoşul**: bir yol oluşturmak için geçiş yapabilmeniz için önce Bu makalenin önceki kısımlarında açıklandığı gibi uç noktalar oluşturmanız gerekir. Uç noktalarınız kurulum tamamlandıktan sonra bir olay rotası oluşturmaya devam edebilirsiniz.
+**Önkoşul** : bir yol oluşturmak için geçiş yapabilmeniz için önce Bu makalenin önceki kısımlarında açıklandığı gibi uç noktalar oluşturmanız gerekir. Uç noktalarınız kurulum tamamlandıktan sonra bir olay rotası oluşturmaya devam edebilirsiniz.
 
 >[!NOTE]
 >Son noktalarınızı dağıttıysanız, yeni bir olay yolu için kullanmayı denemeden **önce** bunların dağıtımını tamamladığınızı doğrulayın. Uç noktalar kullanılamadığından yönlendirme dağıtımı başarısız olursa birkaç dakika bekleyip yeniden deneyin.
@@ -179,27 +179,29 @@ Bir yol birden çok bildirimin ve olay türünün seçilebilmelidir.
 `CreateEventRoute` , bir olay yolu eklemek için kullanılan SDK çağrıdır. Kullanım örneği aşağıda verilmiştir:
 
 ```csharp
-EventRoute er = new EventRoute("endpointName");
+EventRoute er = new EventRoute("<your-endpointName>");
 er.Filter = "true"; //Filter allows all messages
-await client.CreateEventRoute("routeName", er);
+await CreateEventRoute(client, "routeName", er);
 ```
-
+    
 > [!TIP]
 > Tüm SDK işlevleri, zaman uyumlu ve zaman uyumsuz sürümlerde gelir.
 
 ### <a name="event-route-sample-code"></a>Olay rotası örnek kodu
 
-Aşağıdaki kod örneği, bir olay yolunu oluşturma, listeleme ve silme işlemlerinin nasıl yapılacağını göstermektedir:
+Aşağıdaki örnek yöntem bir olay yolunun nasıl oluşturulduğunu, ekleneceğini ve silineceğini gösterir:
 ```csharp
-try
+private async static Task CreateEventRoute(DigitalTwinsClient client, String routeName, EventRoute er)
 {
+  try
+  {
     Console.WriteLine("Create a route: testRoute1");
-    EventRoute er = new EventRoute("< your - endpoint - name >");
+            
     // Make a filter that passes everything
     er.Filter = "true";
-    client.CreateEventRoute("< your - route - name >", er);
+    await client.CreateEventRouteAsync(routeName, er);
     Console.WriteLine("Create route succeeded. Now listing routes:");
-    Pageable <EventRoute> result = client.GetEventRoutes();
+    Pageable<EventRoute> result = client.GetEventRoutes();
     foreach (EventRoute r in result)
     {
         Console.WriteLine($"Route {r.Id} to endpoint {r.EndpointName} with filter {r.Filter} ");
@@ -210,11 +212,12 @@ try
         Console.WriteLine($"Deleting route {r.Id}:");
         client.DeleteEventRoute(r.Id);
     }
-}
-catch (RequestFailedException e)
-{
-    Console.WriteLine($"*** Error in event route processing ({e.ErrorCode}):\n${e.Message}");
-}
+  }
+    catch (RequestFailedException e)
+    {
+        Console.WriteLine($"*** Error in event route processing ({e.ErrorCode}):\n${e.Message}");
+    }
+  }
 ```
 
 ## <a name="filter-events"></a>Olayları filtreleme

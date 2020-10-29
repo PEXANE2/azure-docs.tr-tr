@@ -4,12 +4,12 @@ description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüst�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: b90f0c379310e8557f08f0f318ab6abe2c0be016
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 05e29278f6b9ce5436979c0533551763e2f90462
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520947"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911044"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure sanal makinesi olağanüstü durum kurtarma için destek matrisi
 
@@ -21,7 +21,7 @@ Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine olağanüstü du
 **Dağıtım** |  **Destek**
 --- | ---
 **Azure Portal** | Destekleniyor.
-**PowerShell** | Destekleniyor. [Daha fazla bilgi edinin](azure-to-azure-powershell.md)
+**PowerShell** | Destekleniyor. [Daha fazla bilgi](azure-to-azure-powershell.md)
 **REST API** | Destekleniyor.
 **CLI** | Şu anda desteklenmiyor
 
@@ -44,7 +44,7 @@ Aynı coğrafi küme içindeki iki bölge arasında VM 'Leri çoğaltıp kurtara
 **Coğrafi küme** | **Azure bölgeleri**
 -- | --
 Amerika | Kanada Doğu, Kanada Orta, Orta Güney ABD, Orta Batı ABD, Doğu ABD, Doğu ABD 2, Batı ABD, Batı ABD 2, Orta ABD, Orta Kuzey ABD
-Avrupa | UK Batı, UK Güney, Kuzey Avrupa, Batı Avrupa, Güney Afrika Batı, Güney Afrika Kuzey, Norveç Doğu, Norveç Batı, Fransa Orta
+Avrupa | UK Batı, UK Güney, Kuzey Avrupa, Batı Avrupa, Güney Afrika Batı, Güney Afrika Kuzey, Norveç Doğu, Norveç Batı, Fransa Orta, İsviçre Kuzey
 Asya | Güney Hindistan, Orta Hindistan, Batı Hindistan, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney
 Avustralya    | Avustralya Doğu, Avustralya Güneydoğu, Avustralya Orta, Avustralya Orta 2
 Azure Kamu    | ABD devleti Virginia, US GOV IWA, US GOV Arizona, US GOV Texas, US DOD Doğu, US DOD orta
@@ -54,7 +54,7 @@ Almanya    | Almanya Orta, Almanya Kuzeydoğu
 
 >[!NOTE]
 >
-> - **Brezilya Güney**için, şu bölgelere çoğaltabilir ve yük devredebilmeniz gerekir: Orta Güney ABD, Orta Batı ABD, Doğu ABD, Doğu ABD 2, Batı ABD, Batı ABD 2 ve Orta Kuzey ABD.
+> - **Brezilya Güney** için, şu bölgelere çoğaltabilir ve yük devredebilmeniz gerekir: Orta Güney ABD, Orta Batı ABD, Doğu ABD, Doğu ABD 2, Batı ABD, Batı ABD 2 ve Orta Kuzey ABD.
 > - Brezilya Güney yalnızca, Site Recovery kullanılarak sanal makinelerin çoğaltılacağı kaynak bölge olarak kullanılabilir. Hedef bölge işlevi görebilir. Bu, coğrafi uzaklıkları nedeniyle gecikme sorunlarından kaynaklanır. Bir hedefe kaynak bölge olarak Brezilya Güney yük devretmek, hedef bölgeden Brezilya Güney için yeniden çalışma desteklendiğini unutmayın.
 > - Uygun erişiminiz olan bölgeler içinde çalışabilirsiniz.
 > - Bir kasa oluşturmak istediğiniz bölge görünmüyorsa, aboneliğinizin bu bölgedeki kaynakları oluşturmak için erişime sahip olduğundan emin olun.
@@ -280,21 +280,21 @@ NIC | Belirli bir Azure VM boyutu için desteklenen en yüksek sayı | NIC 'ler,
 Genel IP adresi | Desteklenir | Mevcut bir genel IP adresini NIC ile ilişkilendirin. Ya da bir genel IP adresi oluşturun ve bir kurtarma planında Azure Otomasyonu betiği kullanarak NIC ile ilişkilendirin.
 NIC üzerinde NSG | Desteklenir | Bir kurtarma planında Azure Otomasyonu betiği kullanarak NSG 'yi NIC ile ilişkilendirin.
 Alt ağda NSG | Desteklenir | Bir kurtarma planında Azure Otomasyonu betiği kullanarak NSG 'yi alt ağ ile ilişkilendirin.
-Ayrılmış (statik) IP adresi | Desteklenir | Kaynak VM üzerindeki NIC 'nin statik bir IP adresi varsa ve hedef alt ağda aynı IP adresi varsa, yük devredilen VM 'ye atanır.<br/><br/> Hedef alt ağa aynı IP adresi yoksa, alt ağdaki kullanılabilir IP adreslerinden biri VM için ayrılmıştır.<br/><br/> Ayrıca, **çoğaltılan öğeler**  >  **ayarları**  >  **işlem ve ağ**  >  **ağı arabirimleri**' nde sabit bir IP adresi ve alt ağ belirtebilirsiniz.
+Ayrılmış (statik) IP adresi | Desteklenir | Kaynak VM üzerindeki NIC 'nin statik bir IP adresi varsa ve hedef alt ağda aynı IP adresi varsa, yük devredilen VM 'ye atanır.<br/><br/> Hedef alt ağa aynı IP adresi yoksa, alt ağdaki kullanılabilir IP adreslerinden biri VM için ayrılmıştır.<br/><br/> Ayrıca, **çoğaltılan öğeler**  >  **ayarları**  >  **işlem ve ağ**  >  **ağı arabirimleri** ' nde sabit bir IP adresi ve alt ağ belirtebilirsiniz.
 Dinamik IP adresi | Desteklenir | Kaynaktaki NIC dinamik IP adreslemesini içeriyorsa, yük devredilen VM üzerindeki NIC de varsayılan olarak dinamik olur.<br/><br/> Gerekirse bunu sabit bir IP adresi ile değiştirebilirsiniz.
 Birden çok IP adresi | Desteklenmez | Birden çok IP adresli NIC 'ye sahip bir VM 'nin yükünü devretmek için yalnızca kaynak bölgedeki NIC 'in birincil IP adresi tutulur. Birden çok IP adresi atamak için, bir [kurtarma planına](recovery-plan-overview.md) VM ekleyebilir ve plana ek IP adresleri atamak için bir komut dosyası ekleyebilir ya da değişikliği yük devretmeden sonra el ile veya bir komut dosyasıyla yapabilirsiniz.
 Traffic Manager     | Desteklenir | Traffic Manager, trafiğin kaynak bölgedeki uç noktaya ve yük devretme durumunda hedef bölgedeki uç noktaya yönlendirilmesi için önceden yapılandırabilirsiniz.
 Azure DNS | Desteklenir |
 Özel DNS    | Desteklenir |
-Kimliği doğrulanmamış proxy | Desteklenir | [Daha fazla bilgi edinin](./azure-to-azure-about-networking.md)
+Kimliği doğrulanmamış proxy | Desteklenir | [Daha fazla bilgi](./azure-to-azure-about-networking.md)
 Kimliği doğrulanmış ara sunucu | Desteklenmez | VM, giden bağlantı için kimliği doğrulanmış bir proxy kullanıyorsa, Azure Site Recovery kullanılarak çoğaltılamaz.
-Şirket içinde VPN siteden siteye bağlantısı<br/><br/>(ExpressRoute ile veya olmayan)| Desteklenir | UDRs ve NSG 'Lerin Site Recovery trafiğinin şirket içine yönlendirilmediğinden emin olmak için yapılandırıldığından emin olun. [Daha fazla bilgi edinin](./azure-to-azure-about-networking.md)
-VNET 'ten VNET 'e bağlantı    | Desteklenir | [Daha fazla bilgi edinin](./azure-to-azure-about-networking.md)
+Şirket içinde VPN siteden siteye bağlantısı<br/><br/>(ExpressRoute ile veya olmayan)| Desteklenir | UDRs ve NSG 'Lerin Site Recovery trafiğinin şirket içine yönlendirilmediğinden emin olmak için yapılandırıldığından emin olun. [Daha fazla bilgi](./azure-to-azure-about-networking.md)
+VNET 'ten VNET 'e bağlantı    | Desteklenir | [Daha fazla bilgi](./azure-to-azure-about-networking.md)
 Sanal Ağ Hizmet Uç Noktaları | Desteklenir | Depolama hesaplarına sanal ağ erişimini kısıtladığınız takdirde, güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin verildiğinden emin olun.
 Hızlandırılmış ağ iletişimi | Desteklenir | Kaynak VM 'de hızlandırılmış ağ etkin olmalıdır. [Daha fazla bilgi edinin](azure-vm-disaster-recovery-with-accelerated-networking.md).
 Palo Alto ağ gereci | Desteklenmez | Üçüncü taraf gereçlerle, genellikle sağlayıcı tarafından sanal makine içinde uygulanan kısıtlamalar vardır. Azure Site Recovery aracı, Uzantılar ve giden bağlantıların kullanılabilir olmasını gerektirir. Ancak gereç, sanal makine içinde herhangi bir giden etkinliğin yapılandırılmasına izin vermez.
 IPv6  | Desteklenmez | Hem IPv4 hem de IPv6 içeren karışık yapılandırma de desteklenmez. Lütfen herhangi bir Site Recovery işleminden önce IPv6 aralığının alt ağını boşaltın.
-Site Recovery hizmetine özel bağlantı erişimi | Desteklenir | [Daha fazla bilgi edinin](azure-to-azure-how-to-enable-replication-private-endpoints.md)
+Site Recovery hizmetine özel bağlantı erişimi | Desteklenir | [Daha fazla bilgi](azure-to-azure-how-to-enable-replication-private-endpoints.md)
 
 
 

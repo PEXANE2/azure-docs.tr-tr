@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: 0365238fd70e2e098e5a228ee71d5b9e0e584c71
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f7fd40c48f94b4337c5ec342499203f83763299b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279803"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909939"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Standart (el ile) ve otomatik ölçeklendirme sağlanan aktarım hızını seçme 
 
@@ -83,7 +83,7 @@ Varsayımlar:
 
 Saat 1 ' de, %6 kullanım olduğunda otomatik ölçeklendirmeyi, en az RU/sn 'nin saat başına en az %10 ' luk için faturalandırılyacağını unutmayın. Otomatik ölçeklendirme maliyeti belirli saatlerde el ile üretilen iş maliyetinden daha yüksek olabilir, ancak ortalama kullanım tüm saatlerde %66 ' den az olduğunda otomatik ölçeklendirme, genel olarak olacaktır.
 
-|  | Kullanım |Faturalandırılan otomatik ölçeklendirme RU/s  |Seçenek 1: El Ile 30.000 RU/sn  | Seçenek 2: otomatik ölçeklendirme 3000-30.000 RU/s |
+|Süre  | Kullanım |Faturalandırılan otomatik ölçeklendirme RU/s  |Seçenek 1: El Ile 30.000 RU/sn  | Seçenek 2: otomatik ölçeklendirme 3000-30.000 RU/s |
 |---------|---------|---------|---------|---------|
 |Saat 1  | %6  |     3000  |  30.000 * 0,008/100 = $2,40        |   3000 * 0,012/100 = $0,36      |
 |Saat 2  | %100  |     30.000    |  30.000 * 0,008/100 = $2,40       |  30.000 * 0,012/100 = $3,60      |
@@ -102,7 +102,7 @@ Tabloda açıklandığı gibi kullanım geçmişimiz olduğunu varsayalım. Bu �
 
 Genel olarak, bir ayda tüm 730 saat boyunca ortalama kullanım %66 ' den büyükse, el ile üretilen iş kullanarak tasarruf ederiz. 
 
-|  | Kullanım |Faturalandırılan otomatik ölçeklendirme RU/s  |Seçenek 1: El Ile 30.000 RU/sn  | Seçenek 2: otomatik ölçeklendirme 3000-30.000 RU/s |
+| Süre | Kullanım |Faturalandırılan otomatik ölçeklendirme RU/s  |Seçenek 1: El Ile 30.000 RU/sn  | Seçenek 2: otomatik ölçeklendirme 3000-30.000 RU/s |
 |---------|---------|---------|---------|---------|
 |Saat 1  | %72  |     21.600   |  30.000 * 0,008/100 = $2,40        |   21600 * 0,012/100 = $2,59      |
 |Saat 2  | %93  |     28.000    |  30.000 * 0,008/100 = $2,40       |  28.000 * 0,012/100 = $3,36       |
@@ -116,18 +116,18 @@ Genel olarak, bir ayda tüm 730 saat boyunca ortalama kullanım %66 ' den büyü
 En yüksek RU/sn için bir saat içinde ölçeklendirilmiş olan faturaları otomatik ölçeklendirme. Zamana göre normalleştirilmiş RU tüketimini analiz edilirken, ortalamayı hesaplarken saat başına en yüksek kullanımı kullanmak önemlidir. 
 
 Tüm saatlerde en yüksek kullanımın ortalamasını hesaplamak için:
-1. Noramon RU tüketim ölçümünde **toplamayı** **en yüksek**olarak ayarlayın.
+1. Noramon RU tüketim ölçümünde **toplamayı** **en yüksek** olarak ayarlayın.
 1. 1 saat **ayrıntı düzeyini** seçin.
-1. **Grafik seçenekleri**' ne gidin.
+1. **Grafik seçenekleri** ' ne gidin.
 1. Çubuk grafik seçeneğini belirleyin. 
-1. **Paylaşma**bölümünde **Excel 'e indir** seçeneğini belirleyin. Oluşturulan elektronik tablodan, her saat içindeki ortalama kullanımı hesaplayın. 
+1. **Paylaşma** bölümünde **Excel 'e indir** seçeneğini belirleyin. Oluşturulan elektronik tablodan, her saat içindeki ortalama kullanımı hesaplayın. 
 
 :::image type="content" source="media/how-to-choose-offer/variable-workload-highest-util-by-hour.png" alt-text="Değişken trafiği olan iş yükü-%6 ila %100 arasında normalleştirilmiş RU tüketimi, tüm saatler için":::
 
 ## <a name="measure-and-monitor-your-usage"></a>Kullanımınızı ölçme ve izleme
 Zaman içinde, üretilen iş türünü seçtikten sonra uygulamanızı izlemeniz ve gereken ayarlamaları yapmanız gerekir. 
 
-Otomatik ölçeklendirme kullanırken, sağlanan otomatik ölçeklendirme en fazla RU/sn (**Otomatik ölçeklendirme en fazla aktarım hızı**) ve sistem şu anda ölçeklendirildi (**sağlanan aktarım hızı**) için Azure izleyici 'yi kullanın. Aşağıda, otomatik ölçeklendirme kullanan bir değişkene veya öngörülemeyen iş yüküne bir örnek verilmiştir. Herhangi bir trafik olmadığında, sistem RU/s 'yi en fazla RU/sn 'nin en az %10 ' u, bu örnekte sırasıyla 5000 RU/s ve 50.000 RU/s olacak şekilde ölçeklendirir. 
+Otomatik ölçeklendirme kullanırken, sağlanan otomatik ölçeklendirme en fazla RU/sn ( **Otomatik ölçeklendirme en fazla aktarım hızı** ) ve sistem şu anda ölçeklendirildi ( **sağlanan aktarım hızı** ) için Azure izleyici 'yi kullanın. Aşağıda, otomatik ölçeklendirme kullanan bir değişkene veya öngörülemeyen iş yüküne bir örnek verilmiştir. Herhangi bir trafik olmadığında, sistem RU/s 'yi en fazla RU/sn 'nin en az %10 ' u, bu örnekte sırasıyla 5000 RU/s ve 50.000 RU/s olacak şekilde ölçeklendirir. 
 
 :::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Değişken trafiği olan iş yükü-%6 ila %100 arasında normalleştirilmiş RU tüketimi, tüm saatler için":::
 

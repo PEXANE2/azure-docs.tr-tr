@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8812fd1e6c1efb2aa44c77573bc4b8f1c099834d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84689852"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912030"
 ---
 # <a name="configure-the-review-tool"></a>Gözden Geçirme aracını yapılandırma
 
@@ -35,7 +35,7 @@ Bu bölümde, subekipler oluşturma ve anında İncelemeleri hızlı bir şekild
 
 ### <a name="create-a-subteam"></a>Alt takım oluşturma
 
-**Alt takımlar** bölümüne gidin ve **alt takım Ekle**' ye tıklayın. İletişim kutusuna alt takımınızın adını girin ve **Kaydet**' e tıklayın.
+**Alt takımlar** bölümüne gidin ve **alt takım Ekle** ' ye tıklayın. İletişim kutusuna alt takımınızın adını girin ve **Kaydet** ' e tıklayın.
 
 ![Alt takım adı](images/1-Teams-2.PNG)
 
@@ -54,19 +54,19 @@ Varsayılan takımınızdan bir veya daha fazla alt takıma üye atamak için **
 ### <a name="assign-reviews-to-subteams"></a>Alt takımlara incelemeler atama
 
 Alt ekiplerinizi oluşturduktan ve üyeleri atadıktan sonra, bu alt takımlara içerik [İncelemeleri](../review-api.md#reviews) atamaya başlayabilirsiniz. Bu, sitenin **Gözden geçirme** sekmesinden yapılır.
-Bir alt takıma içerik atamak için sağ üst köşedeki üç noktaya tıklayın, **Git**' i seçin ve bir alt takım seçin.
+Bir alt takıma içerik atamak için sağ üst köşedeki üç noktaya tıklayın, **Git** ' i seçin ve bir alt takım seçin.
 
 ![Alt ekibe görüntü incelemesi atama](images/3-review-image-subteam-1.png)
 
 ### <a name="switch-between-subteams"></a>Alt takımlar arasında geçiş yap
 
-Birden fazla alt ekibin üyesiyseniz, sizin için görüntülenen içerik incelemelerini değiştirmek üzere bu alt takımlar arasında geçiş yapabilirsiniz. **Gözden geçir** sekmesinde **varsayılan** etiketli açılan menüyü seçin ve **alt takım seç**' i seçin. Farklı alt takımlar için içerik incelemelerini, ancak yalnızca sizin üye olduğunu görüntüleyebilirsiniz.
+Birden fazla alt ekibin üyesiyseniz, sizin için görüntülenen içerik incelemelerini değiştirmek üzere bu alt takımlar arasında geçiş yapabilirsiniz. **Gözden geçir** sekmesinde **varsayılan** etiketli açılan menüyü seçin ve **alt takım seç** ' i seçin. Farklı alt takımlar için içerik incelemelerini, ancak yalnızca sizin üye olduğunu görüntüleyebilirsiniz.
 
 ![Alt takımlar arasında geçiş yap](images/3-review-image-subteam-2.png)
 
 ## <a name="tags"></a>Etiketler
 
-**Etiketler** sekmesi, iki varsayılan denetim etiketlerinin ( &mdash; **a**) ve **isracy** (**r**) yanı sıra özel**denetleme etiketleri tanımlamanıza** olanak sağlar. Özel bir etiket oluşturduğunuzda, bu, varsayılan etiketlerin yanı sıra incelemelerde kullanılabilir hale gelir. Görünürlük ayarlarını değiştirerek, gözden geçirmeler halinde hangi etiketlerin gösterileceğini değiştirebilirsiniz.
+**Etiketler** sekmesi, iki varsayılan denetim etiketlerinin ( &mdash; **a** ) ve **isracy** ( **r** ) yanı sıra özel **denetleme etiketleri tanımlamanıza** olanak sağlar. Özel bir etiket oluşturduğunuzda, bu, varsayılan etiketlerin yanı sıra incelemelerde kullanılabilir hale gelir. Görünürlük ayarlarını değiştirerek, gözden geçirmeler halinde hangi etiketlerin gösterileceğini değiştirebilirsiniz.
 
 !["Görünür" onay kutuları dahil olmak üzere etiket görünümü](images/tags-4-disable.png)
 
@@ -74,9 +74,9 @@ Birden fazla alt ekibin üyesiyseniz, sizin için görüntülenen içerik incele
 
 Yeni bir etiket oluşturmak için ilgili alanlara kısa bir kod, ad ve açıklama girmeniz gerekir.
 
-- **Kısa kod**: etiketinize yönelik iki harfli bir kod girin. Örnek: **CB**
-- **Ad**: boşluk olmadan küçük harfli bir kısa ve açıklayıcı etiket adı girin. Örnek: **ıbulber**.
-- **Açıklama**: (isteğe bağlı) etiketlerinizin hedeflediği içerik türünün bir açıklamasını girin. Örnek: **tasber bulun tasviri veya örnekleri**.
+- **Kısa kod** : etiketinize yönelik iki harfli bir kod girin. Örnek: **CB**
+- **Ad** : boşluk olmadan küçük harfli bir kısa ve açıklayıcı etiket adı girin. Örnek: **ıbulber** .
+- **Açıklama** : (isteğe bağlı) etiketlerinizin hedeflediği içerik türünün bir açıklamasını girin. Örnek: **tasber bulun tasviri veya örnekleri** .
 
 Etiket eklemek için **Ekle** ' ye tıklayın ve etiket oluşturmayı bitirdiğinizde **Kaydet** ' e tıklayın.
 
@@ -90,7 +90,7 @@ Etiketler listesindeki girişlerinin yanındaki çöp kutusu simgesini seçerek 
 
 **Bağlayıcılar** sekmesi, içerik [iş akışlarının](../review-api.md#workflows)bir parçası olarak farklı yollarla içeriği işleyebilen, hizmete özgü eklentiler olan bağlayıcılarınızı yönetmenizi sağlar.
 
-Bir iş akışı oluşturduğunuzda varsayılan bağlayıcı Content Moderator bağlayıcıdır. Bu, içeriği **yetişkin** veya **korklık**olarak işaretleyebilir, küfür bulun vb. Ancak, burada listelenen diğer bağlayıcıları, ilgili hizmetlerinin kimlik bilgileriniz olduğu sürece (örneğin, yüz bağlayıcısını kullanmak için bir [yüz](https://docs.microsoft.com/azure/cognitive-services/face/overview) abonelik anahtarı almanız gerekir) kullanabilirsiniz.
+Bir iş akışı oluşturduğunuzda varsayılan bağlayıcı Content Moderator bağlayıcıdır. Bu, içeriği **yetişkin** veya **korklık** olarak işaretleyebilir, küfür bulun vb. Ancak, burada listelenen diğer bağlayıcıları, ilgili hizmetlerinin kimlik bilgileriniz olduğu sürece (örneğin, yüz bağlayıcısını kullanmak için bir [yüz](../../face/overview.md) abonelik anahtarı almanız gerekir) kullanabilirsiniz.
 
 [İnceleme aracında](./human-in-the-loop.md) aşağıdaki bağlayıcılar bulunur:
 
@@ -105,7 +105,7 @@ Bir bağlayıcı eklemek için (ve içerik [iş akışlarında](../review-api.md
 
 ![Content Moderator bağlayıcı ayarları](images/settings-4-connectors.png)
 
-## <a name="workflows"></a>İş akışları
+## <a name="workflows"></a>İş Akışları
 
 **İş** akışları sekmesi, [iş](../review-api.md#workflows)akışlarınızı yönetmenizi sağlar. İş akışları, içerik için bulut tabanlı filtrelerdir ve içeriği farklı yollarla sıralamak ve uygun işlemleri yapmak için bağlayıcılarla birlikte çalışırlar. Burada, iş akışlarınızı tanımlayabilir, düzenleyebilir ve test edebilirsiniz. Bunun nasıl yapılacağını gösteren yönergeler için bkz. [iş akışlarını tanımlama ve kullanma](Workflows.md) .
 
@@ -125,7 +125,7 @@ Azure 'da bir [Content moderator kaynağı](https://ms.portal.azure.com/#create/
 
 ![Azure portal anahtarları Content Moderator](images/credentials-azure-portal-keys.PNG)
 
-[İnceleme aracının](https://contentmoderator.cognitive.microsoft.com) **kimlik bilgileri** sekmesinde, **iş akışı ayarları** bölmesine gidin, **Düzenle**' yi seçin ve anahtarınızı **OCP-apim-Subscription-Key** alanına yapıştırın. Artık, denetleme API 'Lerini çağıran iş akışları Azure kimlik bilgilerinizi kullanacaktır.
+[İnceleme aracının](https://contentmoderator.cognitive.microsoft.com) **kimlik bilgileri** sekmesinde, **iş akışı ayarları** bölmesine gidin, **Düzenle** ' yi seçin ve anahtarınızı **OCP-apim-Subscription-Key** alanına yapıştırın. Artık, denetleme API 'Lerini çağıran iş akışları Azure kimlik bilgilerinizi kullanacaktır.
 
 > [!NOTE]
 > **Iş akışı ayarları** bölmesindeki diğer iki alan özel terim ve görüntü listeleri içindir. Bunlar hakkında bilgi edinmek için [özel terimleri](../try-terms-list-api.md) veya [özel görüntü](../try-image-list-api.md) kılavuzlarını inceleyin.

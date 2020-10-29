@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c063fec3eac962d22ead12e0ca11f4b9fc155b5d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903196"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910160"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics çıkışları sorunlarını giderme
 
@@ -67,7 +67,7 @@ Bir işin normal işlemi sırasında, çıktıda daha uzun ve daha uzun gecikme 
 * Yukarı akış kaynağının kısıtlanıp kısıtlanmayacağı
 * Sorgudaki işleme mantığının işlem yoğunluğu olup olmadığı
 
-Çıkış ayrıntılarını görmek için Azure portal akış işini seçin ve sonra **iş diyagramı**' nı seçin. Her giriş için, bölüm başına bir kapsam olay ölçümü vardır. Ölçüm artmaya devam ederse, sistem kaynaklarının kısıtlandığı bir göstergedir. Artış, büyük olasılıkla çıkış havuzu azaltma veya yüksek CPU kullanımı nedeniyle olabilir. Daha fazla bilgi için, bkz. [iş diyagramını kullanarak veri odaklı hata ayıklama](stream-analytics-job-diagram-with-metrics.md).
+Çıkış ayrıntılarını görmek için Azure portal akış işini seçin ve sonra **iş diyagramı** ' nı seçin. Her giriş için, bölüm başına bir kapsam olay ölçümü vardır. Ölçüm artmaya devam ederse, sistem kaynaklarının kısıtlandığı bir göstergedir. Artış, büyük olasılıkla çıkış havuzu azaltma veya yüksek CPU kullanımı nedeniyle olabilir. Daha fazla bilgi için, bkz. [iş diyagramını kullanarak veri odaklı hata ayıklama](stream-analytics-job-diagram-with-metrics.md).
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL veritabanı çıkışıyla anahtar ihlali uyarısı
 
@@ -81,7 +81,29 @@ Birkaç dizin türü için IGNORE_DUP_KEY yapılandırırken aşağıdaki gözle
 
 * Birincil anahtarda veya ALTER INDEX kullanan benzersiz bir kısıtlamada IGNORE_DUP_KEY ayarlayamazsınız. Dizini bırakıp yeniden oluşturmanız gerekir.  
 * Benzersiz bir dizin için ALTER INDEX kullanarak IGNORE_DUP_KEY belirleyebilirsiniz. Bu örnek, bir BIRINCIL ANAHTARDAN/BENZERSIZ kısıtlamadan farklıdır ve oluşturma DIZINI veya DIZIN tanımı kullanılarak oluşturulur.  
-* IGNORE_DUP_KEY seçeneği, kendileri üzerinde benzersizlik zorlayamadığı için sütun deposu dizinlerine uygulanmaz.  
+* IGNORE_DUP_KEY seçeneği, kendileri üzerinde benzersizlik zorlayamadığı için sütun deposu dizinlerine uygulanmaz.
+
+## <a name="sql-output-retry-logic"></a>SQL çıkışı yeniden deneme mantığı
+
+SQL çıktısı olan Stream Analytics bir iş, ilk olay toplu işlemini aldığında aşağıdaki adımlar oluşur:
+
+1. İş SQL 'e bağlanmaya çalışır.
+2. İş, hedef tablonun şemasını getirir.
+3. İş, sütun adlarını ve türlerini hedef tablo şemasına göre doğrular.
+4. İş, toplu işteki çıktı kayıtlarından bir bellek içi veri tablosu hazırlar.
+5. İş, veri tablosunu BulkCopy [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver?view=dotnet-plat-ext-3.1)kullanarak SQL 'e yazar.
+
+Bu adımlar sırasında, SQL çıktısı aşağıdaki hata türleriyle karşılaşabilir:
+
+* Bir üstel geri alma yeniden deneme stratejisi kullanılarak yeniden denenen geçici [hatalar](/azure/azure-sql/database/troubleshoot-common-errors-issues#transient-fault-error-messages-40197-40613-and-others) . En düşük yeniden deneme aralığı, bireysel hata koduna bağlıdır, ancak aralıklar genellikle 60 saniyeden düşüktür. Üst sınır en fazla beş dakika olabilir. 
+
+   [Oturum açma hataları](/azure/azure-sql/database/troubleshoot-common-errors-issues#unable-to-log-in-to-the-server-errors-18456-40531) ve [güvenlik duvarı sorunları](/azure/azure-sql/database/troubleshoot-common-errors-issues#cannot-connect-to-server-due-to-firewall-issues) , önceki denemelerinden en az 5 dakika sonra yeniden denenir ve başarılı olana kadar yeniden denenir.
+
+* Hataları ve şema kısıtlama ihlallerini atama gibi veri hataları çıktı hata ilkesiyle işlenir. Bu hatalar, hataya neden olan tek bir kayıt, atla veya yeniden dene tarafından işlenene kadar ikili bölme toplu işleri yeniden denenerek işlenir. Birincil benzersiz anahtar kısıtlaması ihlali [her zaman işlenir](./stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output).
+
+* SQL hizmet sorunları veya iç kod hataları olduğunda geçici olmayan hatalar meydana gelebilir. Örneğin, benzer hatalar (kod 1132) depolama sınırına ulaşarak Elastik Havuz, yeniden denemeler hatayı çözmez. Bu senaryolarda Stream Analytics işi [azalmaya neden olur](job-states.md).
+* `BulkCopy` 5. adımda zaman aşımları meydana gelebilir `BulkCopy` . `BulkCopy` işlem zaman aşımları zaman zaman oluşabilir. En az yapılandırılan zaman aşımı süresi beş dakikadır ve arka arkaya isabet edildiğinde iki katına çıkar.
+Zaman aşımı 15 dakikadan daha uzun bir süre sonra, yığın başına 100 olay için en fazla toplu iş boyutu ipucu değeri `BulkCopy` yarıya düşürülür.
 
 ## <a name="column-names-are-lowercase-in-azure-stream-analytics-10"></a>Sütun adları küçük harfle Azure Stream Analytics (1,0)
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 500099753ee4fe47f02e7f09d9732b71aa3bae36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7a740b1015bda80000f65180eda2c5e618670da
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856374"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911248"
 ---
 # <a name="get-face-detection-data"></a>Yüz algılama verilerini al
 
@@ -30,25 +30,25 @@ Bu kılavuzda nasıl yapılacağı gösterilmektedir:
 
 ## <a name="setup"></a>Kurulum
 
-Bu kılavuzda [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) `faceClient` , bir yüz abonelik anahtarı ve uç nokta URL 'si olan adlı bir faceclient nesnesi oluşturmuş olduğunuz varsayılmaktadır. Buradan, bu kılavuzda kullanılan [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), ya da [Detectwithstreamasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)' i çağırarak yüz algılama özelliğini kullanabilirsiniz. Bu özelliği ayarlama hakkında yönergeler için hızlı başlangıçlardan birini izleyin.
+Bu kılavuzda [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) `faceClient` , bir yüz abonelik anahtarı ve uç nokta URL 'si olan adlı bir faceclient nesnesi oluşturmuş olduğunuz varsayılmaktadır. Buradan, bu kılavuzda kullanılan [DetectWithUrlAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), ya da [Detectwithstreamasync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)' i çağırarak yüz algılama özelliğini kullanabilirsiniz. Bu özelliği ayarlama hakkında yönergeler için hızlı başlangıçlardan birini izleyin.
 
 Bu kılavuz, hangi bağımsız değişkenleri geçebileceğinize ve döndürülen verilerle yapabileceklerinize ilişkin olarak, algılama çağrısının özelliklerine odaklanır. Yalnızca ihtiyacınız olan özellikleri sorgulamanızı öneririz. Her işlemin tamamlanabilmesi için ek süre sürer.
 
 ## <a name="get-basic-face-data"></a>Temel yüz verilerini al
 
-Yüzeyleri bulmak ve konumlarını bir görüntüde almak için, [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) veya [Detectwithstreamasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) yöntemini, _returnceıd_ parametresi **true**olarak ayarlanmış şekilde çağırın. Bu varsayılan ayardır.
+Yüzeyleri bulmak ve konumlarını bir görüntüde almak için, [DetectWithUrlAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) veya [Detectwithstreamasync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) yöntemini, _returnceıd_ parametresi **true** olarak ayarlanmış şekilde çağırın. Bu varsayılan ayardır.
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic1":::
 
-Döndürülen [Detectedface](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) nesnelerini benzersiz kimlikleri ve yüzün piksel koordinatlarını sağlayan bir dikdörtgen için sorgulayabilirsiniz.
+Döndürülen [Detectedface](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) nesnelerini benzersiz kimlikleri ve yüzün piksel koordinatlarını sağlayan bir dikdörtgen için sorgulayabilirsiniz.
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic2":::
 
-Yüzün konumunu ve boyutlarını ayrıştırma hakkında daha fazla bilgi için bkz. [Facerectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet). Bu dikdörtgen genellikle gözler, eyebro, burun ve ağız içerir. Baş, korun ve Chin en üstü dahil değildir. Yüz dikdörtgenini, tam bir kafa kırpmak veya orta ölçekli bir dikey almak için, belki de fotoğraf KIMLIĞI türünde bir görüntü için dikdörtgeni her yönde genişletebilirsiniz.
+Yüzün konumunu ve boyutlarını ayrıştırma hakkında daha fazla bilgi için bkz. [Facerectangle](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet). Bu dikdörtgen genellikle gözler, eyebro, burun ve ağız içerir. Baş, korun ve Chin en üstü dahil değildir. Yüz dikdörtgenini, tam bir kafa kırpmak veya orta ölçekli bir dikey almak için, belki de fotoğraf KIMLIĞI türünde bir görüntü için dikdörtgeni her yönde genişletebilirsiniz.
 
 ## <a name="get-face-landmarks"></a>Yüz çizgilerini al
 
-[Yüz yüzleri](../concepts/face-detection.md#face-landmarks) , bir yüz üzerinde yer alan, pupıls veya burun ipucu gibi kolay bir arama noktası kümesidir. Yüz yer işareti verilerini almak için _detectionModel_ parametresini **detectionModel. Detection01** ve _returncelandiþaretleri_ parametresini **true**olarak ayarlayın.
+[Yüz yüzleri](../concepts/face-detection.md#face-landmarks) , bir yüz üzerinde yer alan, pupıls veya burun ipucu gibi kolay bir arama noktası kümesidir. Yüz yer işareti verilerini almak için _detectionModel_ parametresini **detectionModel. Detection01** ve _returncelandiþaretleri_ parametresini **true** olarak ayarlayın.
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks1":::
 
@@ -66,7 +66,7 @@ Yüzün yönünü bildiğiniz zaman, dikdörtgen yüzey çerçevesini daha doğr
 
 Yüz algılama API 'SI, yüz dikdörtgeni ve yer işaretlerinin yanı sıra bir yüzün çeşitli kavramsal özniteliklerini analiz edebilir. Tam liste için, [yüz nitelikleri](../concepts/face-detection.md#attributes) kavramsal bölümüne bakın.
 
-Yüz özniteliklerini çözümlemek için _detectionModel_ parametresini **detectionModel. Detection01** ve _returnfaceattributes_ parametresini bir [faceattributetype numaralandırma](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) değerleri listesine ayarlayın.
+Yüz özniteliklerini çözümlemek için _detectionModel_ parametresini **detectionModel. Detection01** ve _returnfaceattributes_ parametresini bir [faceattributetype numaralandırma](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) değerleri listesine ayarlayın.
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes1":::
 
@@ -85,4 +85,4 @@ Bu kılavuzda, çeşitli yüz algılama işlevlerini nasıl kullanacağınızı 
 ## <a name="related-topics"></a>İlgili konular
 
 - [Başvuru belgeleri (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
-- [Başvuru belgeleri (.NET SDK)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+- [Başvuru belgeleri (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)

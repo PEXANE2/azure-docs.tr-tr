@@ -11,12 +11,12 @@ ms.date: 9/17/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: yüz tanıma, yüz tanıma yazılımı, yüz analizi, yüz eşleştirme, yüz tanıma uygulaması, görüntüye göre arama, yüz tanıma arama
-ms.openlocfilehash: 0a7e242add9fdaa9e169a4003e8ad8f39b1fb111
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ccc9ee3107d287844430be0ae089e4b7ac3a2f44
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91262493"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911452"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure yüz hizmeti nedir?
 
@@ -34,7 +34,7 @@ Yüz tanıma hizmeti, her biri aşağıdaki bölümlerde özetlenen birkaç fark
 Yüz hizmeti bir görüntüdeki insan yüzlerini algılar ve konumlarına ait dikdörtgen koordinatlarını döndürür. İsteğe bağlı olarak, yüz algılama, baş poz, cinsiyet, yaş, duygu, yüz artı ve gözlük gibi bir dizi yüz bağlantılı öznitelik ayıklayabilir.
 
 > [!NOTE]
-> Yüz algılama özelliği [görüntü işleme hizmeti](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)aracılığıyla da kullanılabilir. Ancak, yüz verileriyle daha fazla işlem yapmak istiyorsanız, bunun yerine bu hizmeti kullanmanız gerekir.
+> Yüz algılama özelliği [görüntü işleme hizmeti](../computer-vision/overview.md)aracılığıyla da kullanılabilir. Ancak, yüz verileriyle daha fazla işlem yapmak istiyorsanız, bunun yerine bu hizmeti kullanmanız gerekir.
 
 ![Kadın ve adam, yüz ve yaş ve cinsiyetlerinin etrafında çizilmiş dikdörtgenler](./Images/Face.detection.jpg)
 
@@ -48,7 +48,7 @@ Verify API 'SI algılanan iki yüzde veya algılanan bir yüzden bir kişi nesne
 
 Benzer API 'yi bul, hedef yüzü ve aday yüzey kümesi arasında eşleşen bir yüzey kümesi, hedef yüztekine benzer daha küçük bir yüzey kümesi buluyor. Bu, görüntüye göre yüz arama yapmak için yararlıdır. 
 
-İki çalışma modu, **Matchperson** ve **matchface**desteklenir. **Matchperson** modu, [Verify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)'sini kullanarak aynı kişi için filtreledikten sonra benzer yüzler döndürür. **Matchface** modu aynı kişi filtresini yoksayar. Aynı kişiye ait olan veya olmayan benzer aday yüzlerin bir listesini döndürür.
+İki çalışma modu, **Matchperson** ve **matchface** desteklenir. **Matchperson** modu, [Verify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)'sini kullanarak aynı kişi için filtreledikten sonra benzer yüzler döndürür. **Matchface** modu aynı kişi filtresini yoksayar. Aynı kişiye ait olan veya olmayan benzer aday yüzlerin bir listesini döndürür.
 
 Aşağıdaki örnekte hedef yüz gösterilmektedir:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1837d84c97227ba3d8743c3717e2f68dafd6b95
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447376"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911401"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>DNS girişlerinin tehlikini önleyin ve alt etki alanı devralmayı önleyin
 
@@ -51,7 +51,7 @@ Bir alt etki alanı için ortak senaryo:
 
     1. Tehdit aktör, daha önce denetlediğiniz kaynakla aynı FQDN 'ye sahip bir Azure kaynağı sağlar. Bu örnekte, `app-contogreat-dev-001.azurewebsites.net` .
 
-    1. Alt etki alanına gönderilen trafik `myapp.contoso.com` artık içeriği kontrol ettikleri kötü amaçlı aktör kaynağına yönlendirilir.
+    1. Alt etki alanına gönderilen trafik `greatapp.contoso.com` artık içeriği kontrol ettikleri kötü amaçlı aktör kaynağına yönlendirilir.
 
 
 
@@ -100,7 +100,7 @@ Araç, aşağıdaki tabloda listelenen Azure kaynaklarını destekler. Araç, t�
 
 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Sorguyu şu sahip olan bir kullanıcı olarak çalıştırın:
 
@@ -119,7 +119,7 @@ Kuruluşunuzun kiracısının genel yöneticisiyseniz, [tüm Azure aboneliklerin
 
 ### <a name="run-the-script"></a>Betiği çalıştırın
 
-PowerShell betiği hakkında daha fazla bilgi edinin, **Get-DanglingDnsRecords.ps1**ve GitHub 'dan indirin: https://aka.ms/DanglingDNSDomains .
+PowerShell betiği hakkında daha fazla bilgi edinin, **Get-DanglingDnsRecords.ps1** ve GitHub 'dan indirin: https://aka.ms/DanglingDNSDomains .
 
 ## <a name="remediate-dangling-dns-entries"></a>Geçiciye DNS girdilerini düzelt 
 

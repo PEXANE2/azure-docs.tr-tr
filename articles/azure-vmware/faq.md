@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 91be1c51639aa3ae8acbf0c37f5c4a8174b5a592
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 64b2955b1417d6931172b41f83f05d5f1b560708
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779450"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911894"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -76,7 +76,7 @@ Hayır, [VMware tarafından sunulan yönergeleri](https://docs.vmware.com/en/VMw
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Şu VPN 'lerde VMware HCX destekleniyor mu?
 Bant genişliği ve gecikme süresi gereksinimleri nedeniyle Hayır.
 
-#### <a name="can-azure-bastion-be-used-for-connecting-to-avs-vms"></a>Azure savunma, AVS VM 'lerine bağlanmak için kullanılabilir mi?
+#### <a name="can-azure-bastion-be-used-for-connecting-to-azure-vmware-solution-vms"></a>Azure, Azure VMware Çözüm VM 'lerine bağlanmak için kullanılabilir mi?
 Azure 'da, Azure VMware çözümünün Internet 'e sunulmasını engellemek için bağlantı kutusu 'na bağlanmanız önerilir. Azure IaaS nesneleri olmadığından Azure VMware Çözüm VM 'lerine bağlanmak için Azure savunma 'yi kullanamazsınız.
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidi kullanılabilir mi?

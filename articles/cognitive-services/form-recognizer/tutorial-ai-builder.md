@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 90e6c41ad9f6b3d13f29e76d053287395eb88aed
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bb4b69902f73a22cbd2b0fd5ad97c547ceb76a5c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889910"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912336"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Öğretici: AI Oluşturucu ile form işleme uygulaması oluşturma
 
-[AI Oluşturucu](https://docs.microsoft.com/ai-builder/overview) , iş performansını geliştirmek için işlemleri otomatikleştirmenize ve sonuçları tahmin etmenize olanak tanıyan bir güç platformu özelliğidir. Form belgelerinden anahtar-değer çiftlerini ve tablo verilerini tanımlayan ve ayıklayan AI modelleri oluşturmak için AI Oluşturucu form işleme ' yı kullanabilirsiniz.
+[AI Oluşturucu](/ai-builder/overview) , iş performansını geliştirmek için işlemleri otomatikleştirmenize ve sonuçları tahmin etmenize olanak tanıyan bir güç platformu özelliğidir. Form belgelerinden anahtar-değer çiftlerini ve tablo verilerini tanımlayan ve ayıklayan AI modelleri oluşturmak için AI Oluşturucu form işleme ' yı kullanabilirsiniz.
 
 > [!NOTE]
-> Bu proje bir [Microsoft Learn modülü](https://docs.microsoft.com/learn/modules/get-started-with-form-processing/)olarak da kullanılabilir.
+> Bu proje bir [Microsoft Learn modülü](/learn/modules/get-started-with-form-processing/)olarak da kullanılabilir.
 
 Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
@@ -129,11 +129,11 @@ Modelinize memnunsanız yayımlamak için **Yayımla**  ' yı seçin. Yayımlama
 > [!div class="mx-imgBorder"]
 > ![modeli Yayımla sayfası](./media/tutorial-ai-builder/model-page.png)
 
-Form işleme modelinizi yayımladıktan sonra, bunu bir [Power Apps tuval](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps) uygulamasında veya [Power otomatikleştirmede](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)kullanabilirsiniz.
+Form işleme modelinizi yayımladıktan sonra, bunu bir [Power Apps tuval](/ai-builder/form-processor-component-in-powerapps) uygulamasında veya [Power otomatikleştirmede](/ai-builder/form-processing-model-in-flow)kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Form işleme modeli kullanmaya yönelik AI Oluşturucu belgelerini izleyin.
 
-* [Power Apps 'teki form işlemcisi bileşenini kullanma](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps)
-* [Power otomatikleştirmek 'de form işleme modeli kullanma](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)
+* [Power Apps 'teki form işlemcisi bileşenini kullanma](/ai-builder/form-processor-component-in-powerapps)
+* [Power otomatikleştirmek 'de form işleme modeli kullanma](/ai-builder/form-processing-model-in-flow)

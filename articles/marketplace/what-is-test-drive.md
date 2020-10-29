@@ -7,66 +7,65 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f78aa110ed42e17db873b9593de62602aa4193f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121876"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911146"
 ---
 # <a name="what-is-a-test-drive"></a>Test sürüşü nedir?
 
-Test sürüşü, *satın almadan önce deneme*seçeneğini sunarak olası müşterilere teklifinizi göstermek için harika bir yoldur. böylece, yüksek oranda nitelikli müşteri adaylarının dönüştürülmesine ve oluşturulmasına neden olur. Bir sınama sürücüsü, ürününüzü gerçek dünyada bir uygulama senaryosunda hayata geçirin ve ayrıca yüksek düzeyde nitelikli müşteri adayları da sunar.
+Test sürücüsü, satın almadan önce denemeye, son derece nitelikli müşteri adayları oluşturmaya ve daha fazla dönüştürmeye neden olacak bir seçenek sunarak potansiyel müşterilere teklifinizi sergilemenin harika bir yoludur. Bir sınama sürücüsü, ürününüzü gerçek hayatta gerçek bir uygulama senaryosunda hayata getirir. Ürününüzü deneyen müşteriler benzer bir çözüm satın almak için açık bir amaç gösterir. Daha gelişmiş müşteri adaylarını izleyerek bunu avantajınıza kullanın.
 
-Test sürücüleri, çözümünüzü veya uygulamanızı isteyen müşteriler için talep üzerine dağıtan yönetilen örneklerdir. Bir test sürücü örneği atandıktan sonra, bir süre için kullanılabilir ve daha sonra başka bir müşterinin odasını oluşturmak için silinir.
-
-Yayımcı olarak, Iş Ortağı Merkezi 'nde test sürücüsü ayarlarını yönetip yapılandırırsınız. Teknik yapılandırma ayrıntıları, çalıştığınız teklifin türüne bağlı olarak değişiklik gösterir. Ayrıntılı yönergeler için bu konunun sonundaki [sonraki adım](#next-step) altındaki bağlantıya bakın.
-
-Potansiyel müşteriler, ticari Market 'teki test sürücünüzü keşfeder. Bunlar, iletişim bilgilerini sağlar ve teklifinizin hüküm ve gizlilik ilkesini kabul edebilir ve ardından sabit bir süre boyunca denemek için önceden yapılandırılmış ortamınıza erişin. Müşteriler, ürününüzün temel özelliklerine ve avantajlarına yönelik uygulamalı, kendinden destekli bir deneme alır ve değerli bir müşteri adayı elde edersiniz.
+Müşterileriniz bir test sürücüsünden da faydalanır. İlk olarak ürününüzü denemeye izin vererek, satın alma sürecinin bir kısmını azaltmaktadır. Buna ek olarak, test sürücüsü önceden sağlanmış olur, yani müşterilerin ürünü indirmesi, kurulumu veya yapılandırması gerekmez.
 
 ## <a name="how-does-it-work"></a>Nasıl çalışır?
 
-Yayımcı olarak, Iş Ortağı Merkezi 'nde test sürücüsü ayarlarını yönetip yapılandırırsınız. Kurulumdan sonra, isteği isteyen müşteri için isteğe bağlı dağıtılacak yönetilen bir örnek haline gelir. Bir test sürücü örneği atandıktan sonra, bir süre için kullanılabilir ve daha sonra başka bir müşterinin odasını oluşturmak için silinir.
+Test sürücüleri, çözümünüzü veya uygulamanızı isteyen müşterilere talep üzerine Başlatan yönetilen örneklerdir. Bir test sürücü örneği atandıktan sonra, bu müşteri tarafından bir ayarlama dönemi için kullanılabilir. Süre sona erdikten sonra, başka bir müşteri için yer açmak üzere silinir.
+
+Yayımcı olarak, Iş Ortağı Merkezi 'nde test sürücüsü ayarlarını yönetip yapılandırırsınız. Teknik yapılandırma ayrıntıları teklifin türüne göre farklılık gösterir. Ayrıntılı kılavuz için bkz. [sınama sürücüsü teknik yapılandırması](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
+
+Potansiyel müşteriler, test sürücünüzü [Appsource](https://appsource.microsoft.com/en-US/)'ta teklifinizin bir CTA olarak bulur. Bunlar, iletişim bilgilerini sağlar ve teklifinizin hüküm ve gizlilik ilkesini kabul edebilir ve ardından sabit bir süre denemek için önceden yapılandırılmış ortamınıza erişin. Müşteriler, ürününüzün temel özelliklerine ve avantajlarına yönelik uygulamalı, kendinden destekli bir deneme alır ve değerli bir müşteri adayı elde edersiniz.
 
 ## <a name="types-of-test-drives"></a>Test sürücü türleri
 
 Sunmakta olduğunuz ürün, senaryo ve Market türüne bağlı olarak, select teklifleri için ticari Market 'te bulunan farklı test sürücüleri mevcuttur:
 
 - Azure Resource Manager
+    - Azure uygulamaları
+    - SaaS
+    - Sanal Makineler
 - Barındırılan test sürücüsü
-    - Dynamics 365 for Business Central
+    - Iş Merkezi için Dynamics 365 (Şu anda desteklenmiyor)
     - Müşteri Etkileşimi için Dynamics 365
     - Dynamics 365 for Operations
-- Mantıksal uygulama
+- Logic App (yalnızca destek modunda)
 - Power BI
 
-Bu test sürücülerinden birini yapılandırma hakkında ayrıntılı bilgi için bu konunun sonundaki [sonraki adımda](#next-step) yer alan bağlantıya bakın.
+Bu test sürücülerinden birini yapılandırma hakkında ayrıntılı bilgi için bkz. [Test Drive Technical Configuration](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration). 
 
 ### <a name="azure-resource-manager-test-drive"></a>Test sürüşü Azure Resource Manager
 
 Bu dağıtım şablonu, çözümünüzü oluşturan tüm Azure kaynaklarını içerir. Bu senaryoya uyan ürünler yalnızca Azure kaynaklarını kullanır. Azure Resource Manager test sürücüsü bu teklif türleri için kullanılabilir: 
 
 - Azure uygulamaları
-- Dynamics 365 for Business Central
-- PowerApps & müşteri katılımı için Dynamics 365
-- Dynamics 365 for Operations
 - SaaS
 - Sanal makineler
 
 >[!NOTE]
 >Bu, sanal makine ve Azure Uygulama teklifleri için tek sınama sürücüsü seçeneğidir.
 
-### <a name="hosted-test-drive"></a>Barındırılan test sürücüsü
+### <a name="hosted-test-drive-recommended"></a>Barındırılan test sürücüsü (önerilir)
 
-Barındırılan bir test sürücüsü, Microsoft ana bilgisayarına izin vererek ve Kullanıcı hazırlama, dağıtma ve devre dışı bırakma sınama sürücüsünü gerçekleştiren hizmeti sürdürerek kurulum karmaşıklığını ortadan kaldırır. Microsoft AppSource bir teklifiniz varsa, bir Dynamics AX/CRM örneğine veya yalnızca Azure dışındaki diğer kaynaklara bağlanmak için test sürücünüzü oluşturun. Bu Dynamics 365 tekliflerle bağlantı kurmak için AppSource teklifleri için bu türü kullanın:
+Barındırılan bir test sürücüsü, Microsoft ana bilgisayarına izin vererek kurulum karmaşıklığını ortadan kaldırır ve test sürücüsü Kullanıcı sağlamasını ve sağlama işlemini gerçekleştiren hizmeti korur. Microsoft AppSource bir teklifiniz varsa, bir Dynamics AX/CRM örneğiyle bağlantı kurmak için test sürücünüzü oluşturun. Aşağıdaki AppSource tekliflerini kullanabilirsiniz:
 
-- Finans, işlemler, tedarik zinciri ve CRM gibi Iş Merkezi kurumsal kaynak planlama sistemi için [Dynamics 365 for Business Central](partner-center-portal/create-new-operations-offer.md) 'ı kullanın.
 - Sales, Service, Project Service ve Field hizmeti gibi bir müşteri katılımı sistemi için [Dynamics 365](partner-center-portal/create-new-customer-engagement-offer.md) ' i kullanın.
 - Finans, işlemler ve üretim, tedarik zinciri gibi finans ve Işlemler kurumsal kaynak planlama sistemine yönelik [işlemler Için Dynamics 365](partner-center-portal/create-new-operations-offer.md) kullanın.
 
 ### <a name="logic-app-test-drive"></a>Mantıksal uygulama sınama sürücüsü
 
-Bu tür bir test sürücüsü Microsoft tarafından barındırılmamaktadır. Dynamics 365 teklifiyle veya diğer özel kaynakla bağlanmak için bunu kullanın.
+Bu tür test sürücüsü Microsoft tarafından barındırılmamaktadır ve Dynamics AX/CRM teklif türleri için Azure Resource Manager (ARM) şablonları kullanır. Azure aboneliğinizde gerekli kaynakları oluşturmak için ARM şablonunu çalıştırmanız gerekir. Logic app test sürücüsü şu anda yalnızca destek modunda ve Logic app test sürücüsü yapılandırma hakkında ayrıntılı bilgi Için bkz. [sınama sürücüsü teknik yapılandırması](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
 
 ### <a name="power-bi-test-drive"></a>Test sürüşü Power BI
 
@@ -92,7 +91,7 @@ Bir test sürücüsü lideri ile bir anlaşmayı kapatırsanız, [Microsoft Iş 
 
 Ek test sürücüsü kaynakları:
 
-- [En iyi teknik uygulamalar](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Sınama sürücüsü en iyi uygulamaları](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Genel bakış](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; açılır pencere engelleyicinizin kapalı olduğundan emin olun)
 
 ## <a name="next-step"></a>Sonraki adım

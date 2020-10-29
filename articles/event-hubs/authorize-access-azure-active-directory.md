@@ -3,12 +3,12 @@ title: Azure Active Directory'ye erişimi yetkilendirme
 description: Bu makalede Azure Active Directory kullanarak Event Hubs kaynaklarına erişimi yetkilendirme hakkında bilgi sağlanır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1f69c3e5136ab47de4683cc65c32054d067dde13
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d794b03fdbb5429983788c74cbb05a7c13bf2d76
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332408"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910806"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Azure Active Directory kullanarak Event Hubs kaynaklarına erişim yetkisi verme
 Azure Event Hubs, istekleri Event Hubs kaynaklara yetkilendirmek için Azure Active Directory (Azure AD) kullanılmasını destekler. Azure AD ile, bir kullanıcı veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusu için izin vermek üzere Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanabilirsiniz. Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
@@ -16,7 +16,7 @@ Azure Event Hubs, istekleri Event Hubs kaynaklara yetkilendirmek için Azure Act
 ## <a name="overview"></a>Genel Bakış
 Bir güvenlik sorumlusu (bir kullanıcı veya uygulama) bir Event Hubs kaynağına erişmeyi denediğinde, isteğin yetkilendirilmiş olması gerekir. Azure AD ile bir kaynağa erişim iki adımlı bir işlemdir. 
 
- 1. İlk olarak, güvenlik sorumlusunun kimliği doğrulanır ve bir OAuth 2,0 belirteci döndürülür. Belirteç istemek için kaynak adı `https://eventhubs.azure.net/` . Kafka istemcileri için, belirteç isteme kaynağı olur `https://<namespace>.servicebus.windows.net` .
+ 1. İlk olarak, güvenlik sorumlusunun kimliği doğrulanır ve bir OAuth 2,0 belirteci döndürülür. Belirteç istemek için kaynak adı, `https://eventhubs.azure.net/` Tüm bulutlar/kiracılar için de aynıdır. Kafka istemcileri için, belirteç isteme kaynağı olur `https://<namespace>.servicebus.windows.net` .
  1. Ardından, belirteç, belirtilen kaynağa erişim yetkisi vermek için Event Hubs hizmetine bir isteğin bir parçası olarak geçirilir.
 
 Kimlik doğrulama adımı, bir uygulama isteğinin çalışma zamanında bir OAuth 2,0 erişim belirteci içermesi gerekir. Bir uygulama bir Azure VM 'si, bir sanal makine ölçek kümesi veya bir Azure Işlev uygulaması gibi bir Azure varlığı içinde çalışıyorsa, kaynaklara erişmek için yönetilen bir kimlik kullanabilir. Yönetilen bir kimlik tarafından Event Hubs hizmetine yapılan isteklerin nasıl doğrulanabilmesi hakkında bilgi edinmek için bkz. [Azure kaynakları için Azure Active Directory ve yönetilen kimlikler Ile azure Event Hubs kaynaklarına erişim kimlik doğrulaması](authenticate-managed-identity.md). 
@@ -46,11 +46,11 @@ Güvenlik sorumlusuna bir Azure rolü atamadan önce, güvenlik sorumlusunun sah
 
 Aşağıdaki listede, en dar kapsamdan başlayarak Event Hubs kaynaklarına erişimi kapsamındaki düzeyler açıklanmaktadır:
 
-- **Tüketici grubu**: Bu kapsamda, rol ataması yalnızca bu varlık için geçerlidir. Şu anda Azure portal, bu düzeyde bir güvenlik sorumlusuna Azure rolü atanmasını desteklemez. 
-- **Olay Hub 'ı**: rol ataması, Olay Hub 'ı varlığı ve altındaki Tüketici grubu için geçerlidir.
-- **Ad alanı**: rol ataması, ad alanı altındaki tüm Event Hubs topolojisine ve onunla ilişkili tüketici grubuna yayılır.
-- **Kaynak grubu**: rol atama, kaynak grubu altındaki tüm Event Hubs kaynaklarına uygulanır.
-- **Abonelik**: rol ataması, abonelikteki tüm kaynak gruplarındaki tüm Event Hubs kaynaklara uygulanır.
+- **Tüketici grubu** : Bu kapsamda, rol ataması yalnızca bu varlık için geçerlidir. Şu anda Azure portal, bu düzeyde bir güvenlik sorumlusuna Azure rolü atanmasını desteklemez. 
+- **Olay Hub 'ı** : rol ataması, Olay Hub 'ı varlığı ve altındaki Tüketici grubu için geçerlidir.
+- **Ad alanı** : rol ataması, ad alanı altındaki tüm Event Hubs topolojisine ve onunla ilişkili tüketici grubuna yayılır.
+- **Kaynak grubu** : rol atama, kaynak grubu altındaki tüm Event Hubs kaynaklarına uygulanır.
+- **Abonelik** : rol ataması, abonelikteki tüm kaynak gruplarındaki tüm Event Hubs kaynaklara uygulanır.
 
 > [!NOTE]
 > - Azure rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun. 

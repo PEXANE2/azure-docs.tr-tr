@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: f8f173291448d9da4d8967ff56b0fa027ca73409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82182c24f87a82df5ee040b7853588f74dda449f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334557"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909956"
 ---
 # <a name="business-card-concepts"></a>Kartvizit kavramları
 
@@ -385,7 +385,7 @@ Iş kartı API 'siyle ayıklanan veriler, çeşitli görevleri gerçekleştirmek
 * Satış fırsatlarını takip edin.  
 * Mevcut iş kartı görüntülerinden toplu olarak kişi bilgilerini ayıklayın. 
 
-Iş kartı API 'SI de [Aibuilder Iş kartı işleme özelliğini](https://docs.microsoft.com/ai-builder/prebuilt-business-card)güçlendirir.
+Iş kartı API 'SI de [Aibuilder Iş kartı işleme özelliğini](/ai-builder/prebuilt-business-card)güçlendirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,21 +3,22 @@ title: Azure haritalar arama hizmetlerini kullanarak bir konum arayın
 description: Azure haritalar arama hizmeti hakkında bilgi edinin. Bu API kümesini coğrafi kodlama, ters coğrafi kodlama, benzer aramalar ve çapraz açık aramalar için nasıl kullanacağınızı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/21/2020
+ms.date: 10/05/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9628ecada2e427f6220ae2a5154cebb8e4958bd0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895707"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910993"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure haritalar arama hizmetlerini kullanarak bir konum arayın
 
 [Azure haritalar arama hizmeti](/rest/api/maps/search) , geliştiricilerin adresleri, yerleri ve iş dökümlerini ada, kategoriye ve diğer coğrafi bilgilere göre aramasına yardımcı olmak üzere tasarlanan bir dizi yeniden API 'dir. Geleneksel coğrafi kodlamayı desteklemeye ek olarak, hizmetler Ayrıca coğrafi kod adreslerini ve çapraz Streets 'leri de Latitudes ve Longitudes temelinde ters çevirebilirsiniz. Arama tarafından döndürülen Enlem ve boylam değerleri, [yönlendirme](/rest/api/maps/route) ve [Hava durumu](/rest/api/maps/weather) hizmetleri gibi diğer Azure haritalar hizmetlerinde parametre olarak kullanılabilir.
+
 
 Bu makalede şunları yapmayı öğreneceksiniz:
 
@@ -44,9 +45,7 @@ Bu örnekte, bir adresi Enlem ve Boylam koordinatlarına dönüştürmek için A
 
 2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. İstek için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
 
-3. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istekte, belirli bir adres için arama yapıyoruz: `400 Braod St, Seattle, WA 98109` .
-
-    Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin. İstek aşağıdaki URL gibi görünmelidir:
+3. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istekte, belirli bir adres için arama yapıyoruz: `400 Braod St, Seattle, WA 98109` . Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 
     ```http
     https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
@@ -60,7 +59,7 @@ Bu örnekte, bir adresi Enlem ve Boylam koordinatlarına dönüştürmek için A
 
 6. Sonra, `query` anahtarı olarak ayarlamayı deneyin `400 Broa` .
 
-7. **Gönder** düğmesine tıklayın.  Artık yanıtın birden çok ülkeden gelen yanıtları içerdiğini görebilirsiniz. Kullanıcılara yönelik ilgili alana yönelik sonuçları elde etmek için, her zaman istek için mümkün olduğunca fazla konum ayrıntısı ekleyin.
+7. **Gönder** düğmesine tıklayın. Artık yanıtın birden çok ülkeden gelen yanıtları içerdiğini görebilirsiniz. Kullanıcılara yönelik ilgili alana yönelik sonuçları elde etmek için, her zaman istek için mümkün olduğunca fazla konum ayrıntısı ekleyin.
 
 ## <a name="using-fuzzy-search-api"></a>Benzer arama API 'sini kullanma
 
@@ -78,7 +77,7 @@ Bu örnekte, tüm dünyayı aramak için belirsiz arama kullanacağız `pizza` .
 
 1. Postman uygulamasını açın, **Yeni** ' ye tıklayın ve **istek** ' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
 
-2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin. İstek aşağıdaki URL gibi görünmelidir:
+2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 
     ```http
    https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza

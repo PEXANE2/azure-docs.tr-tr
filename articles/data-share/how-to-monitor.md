@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: 2a986afa1916d179834c516a26f76a2789f82452
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc400922115f348090677661cd1b30434be19b72
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87511896"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910483"
 ---
 # <a name="monitor-azure-data-share"></a>Azure Veri Paylaşımı’nı izleme  
 
@@ -36,13 +36,13 @@ Davetinizin bulunabileceği üç durum vardır:
 
 ## <a name="monitor-share-subscriptions"></a>Paylaşma aboneliklerini izleme
 
-Gönderilen paylaşımlar-> paylaşma aboneliklerine giderek paylaşım aboneliklerinizin durumunu görüntüleyin. Bu, davetinizi kabul ettikten sonra veri Tüketicileriniz tarafından oluşturulan etkin abonelikler hakkındaki ayrıntıları verir. Paylaşma aboneliğini seçerek ve *Iptal et*' i seçerek veri tüketicinizin gelecekteki güncelleştirmelerini durdurabilirsiniz. 
+Gönderilen paylaşımlar-> paylaşma aboneliklerine giderek paylaşım aboneliklerinizin durumunu görüntüleyin. Bu, davetinizi kabul ettikten sonra veri Tüketicileriniz tarafından oluşturulan etkin abonelikler hakkındaki ayrıntıları verir. Paylaşma aboneliğini seçerek ve *Iptal et* ' i seçerek veri tüketicinizin gelecekteki güncelleştirmelerini durdurabilirsiniz. 
 
 ## <a name="snapshot-history"></a>Anlık görüntü geçmişi 
 
 Bir paylaşımın **Geçmiş** sekmesinde, verilerin veri sağlayıcısından veri tüketicisinin veri deposuna ne zaman kopyalanacağını görüntüleyebilirsiniz. Her anlık görüntünün sıklığını, süresini ve durumunu izleyebilirsiniz. 
 
-![Anlık görüntü geçmişi](./media/sent-shares.png "Anlık görüntü geçmişi") 
+![Ekran görüntüsünde Azure portal gönderilen paylaşımlar gösterilmektedir.](./media/sent-shares.png "Anlık görüntü geçmişi") 
 
 Çalıştırma başlangıç tarihi ' ne tıklayarak her bir anlık görüntü çalıştırması hakkında daha fazla ayrıntı görüntüleyebilirsiniz. Ardından, aktarılan veri miktarını, kopyalanan dosya/kayıt sayısını, anlık görüntü süresini, kullanılan sanal çekirdekleri sayısını ve varsa hata iletisini görüntülemek için her bir veri kümesinin durumuna tıklayın. 
 
@@ -50,9 +50,9 @@ En fazla 30 günlük anlık görüntü geçmişi görüntülenir. 30 günden faz
 
 ## <a name="diagnostic-setting"></a>Tanılama ayarı
 
-Günlük verilerini veya olaylarını kaydetmek için tanılama ayarını yapılandırabilirsiniz. Izleme-> Tanılama Ayarları ' na gidin ve **Tanılama ayarı Ekle**' yi seçin. İlgilendiğiniz günlük verilerini veya olayları ve bunları nerede depolamak veya göndermek istediğinizi seçin. 
+Günlük verilerini veya olaylarını kaydetmek için tanılama ayarını yapılandırabilirsiniz. Izleme-> Tanılama Ayarları ' na gidin ve **Tanılama ayarı Ekle** ' yi seçin. İlgilendiğiniz günlük verilerini veya olayları ve bunları nerede depolamak veya göndermek istediğinizi seçin. 
 
-![Anlık görüntü geçmişi](./media/diagnostic-settings.png "Tanılama ayarları") 
+![Ekran görüntüsü Azure portal Tanılama Ayarları sayfasını gösterir.](./media/diagnostic-settings.png "Tanılama ayarları") 
 
 ## <a name="next-steps"></a>Sonraki Adımlar 
 

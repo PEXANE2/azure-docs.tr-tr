@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 9e233b93a1dc054e6d9f713e790e706d589bf01e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e35dc35746f08f48150a738b927433065fc1c67
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504001"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910279"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase kümesini yeni bir sürüme geçirme
 
@@ -32,17 +32,17 @@ Apache HBase 'i yükseltmeden önce kaynak ve hedef kümelerindeki HBase sürüm
 
 | Uyumluluk türü | Ana sürüm| İkincil sürüm | Patch |
 | --- | --- | --- | --- |
-| Client-Server hat uyumluluğu | H | E | E |
-| Server-Server uyumluluğu | H | E | E |
-| Dosya biçimi uyumluluğu | H | E | E |
-| İstemci API 'SI uyumluluğu | H | E | E |
-| İstemci ikili uyumluluğu | N | H | E |
+| Client-Server hat uyumluluğu | N | E | E |
+| Server-Server uyumluluğu | N | E | E |
+| Dosya biçimi uyumluluğu | N | E | E |
+| İstemci API 'SI uyumluluğu | N | E | E |
+| İstemci ikili uyumluluğu | N | N | E |
 | **Sunucu tarafı sınırlı API uyumluluğu** |  |  |  |
-| Dengeli | H | E | E |
-| Mektedir | N | H | E |
+| Dengeli | N | E | E |
+| Mektedir | N | N | E |
 | Gelmesine | N | N | N |
-| Bağımlılık uyumluluğu | H | E | E |
-| İşletimsel uyumluluk | N | H | E |
+| Bağımlılık uyumluluğu | N | E | E |
+| İşletimsel uyumluluk | N | N | E |
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Aynı Apache HBase ana sürümüyle yükselt
 
@@ -52,9 +52,9 @@ Azure HDInsight 'ta Apache HBase kümenizi yükseltmek için aşağıdaki adıml
 
 1. Aynı depolama hesabını kullanarak, ancak farklı bir kapsayıcı adıyla [Yeni bir hedef HDInsight kümesi ayarlayın](../hdinsight-hadoop-provision-linux-clusters.md) :
 
-    ![Aynı depolama hesabını kullanın, ancak farklı bir kapsayıcı oluşturun](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
+   ![Aynı depolama hesabını kullanın, ancak farklı bir kapsayıcı oluşturun](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
 
-1. Yükseltmekte olduğunuz küme olan kaynak HBase kümenizi temizler. HBase, gelen verileri _memstore_olarak adlandırılan bir bellek içi depoya yazar. Memstore belirli bir boyuta ulaştığında, HBase onu kümenin depolama hesabındaki uzun vadeli depolama için diske boşaltır. Eski küme silinirken, memmağazaların geri dönüştürülmesi, muhtemelen verilerin kaybedilmesi. Her tablo için memstore 'yi diske el ile temizlemek için aşağıdaki betiği çalıştırın. Bu betiğin en son sürümü Azure [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)' dır.
+1. Yükseltmekte olduğunuz küme olan kaynak HBase kümenizi temizler. HBase, gelen verileri _memstore_ olarak adlandırılan bir bellek içi depoya yazar. Memstore belirli bir boyuta ulaştığında, HBase onu kümenin depolama hesabındaki uzun vadeli depolama için diske boşaltır. Eski küme silinirken, memmağazaların geri dönüştürülmesi, muhtemelen verilerin kaybedilmesi. Her tablo için memstore 'yi diske el ile temizlemek için aşağıdaki betiği çalıştırın. Bu betiğin en son sürümü Azure [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)' dır.
 
     ```bash
     #!/bin/bash
@@ -182,20 +182,50 @@ Azure HDInsight 'ta Apache HBase kümenizi yükseltmek için aşağıdaki adıml
 
     ![HBase için bakım modunu aç onay kutusunu işaretleyin ve ardından onaylayın](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-1. Yeni HDInsight kümesinde ambarı 'nda oturum açın. Bu `fs.defaultFS` ayarı, özgün küme tarafından kullanılan kapsayıcı adını gösterecek şekilde değiştirin. Bu ayar, Gelişmiş **> Gelişmiş çekirdek sitesi > > config**'ler altında.
+1. Gelişmiş yazma özelliği ile HBase kümeleri kullanmıyorsanız, bu adımı atlayın. Yalnızca gelişmiş yazma özelliği olan HBase kümeleri için gereklidir.
 
-    ![Ambarı 'nda hizmetler >, gelişmiş > > config 'ler ' e tıklayın](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+   Özgün kümenin Zookeeper düğümlerinin veya çalışan düğümlerinin herhangi birinde bir SSH oturumundan aşağıdaki komutları çalıştırarak WAL dizini ' ni şu şekilde yedekleyin.
+   
+   ```bash
+   hdfs dfs -mkdir /hbase-wal-backup**
+   hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup**
+   ```
+    
+1. Yeni HDInsight kümesinde ambarı 'nda oturum açın. Bu `fs.defaultFS` ayarı, özgün küme tarafından kullanılan kapsayıcı adını gösterecek şekilde değiştirin. Bu ayar, Gelişmiş **> Gelişmiş çekirdek sitesi > > config** 'ler altında.
 
-    ![Ambarı 'nda kapsayıcı adını değiştirin](./media/apache-hbase-migrate-new-version/change-container-name.png)
+   ![Ambarı 'nda hizmetler >, gelişmiş > > config 'ler ' e tıklayın](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+
+   ![Ambarı 'nda kapsayıcı adını değiştirin](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
 1. Gelişmiş yazma özelliği ile HBase kümeleri kullanmıyorsanız, bu adımı atlayın. Yalnızca gelişmiş yazma özelliği olan HBase kümeleri için gereklidir.
 
    `hbase.rootdir`Yolu orijinal kümenin kapsayıcısına işaret etmek üzere değiştirin.
 
-    ![Ambarı 'nda, HBase rootdir için kapsayıcı adını değiştirin](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+   ![Ambarı 'nda, HBase rootdir için kapsayıcı adını değiştirin](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+    
+1. Gelişmiş yazma özelliği ile HBase kümeleri kullanmıyorsanız, bu adımı atlayın. Yalnızca gelişmiş yazma özelliğine sahip HBase kümelerinde ve yalnızca özgün kümenizin, gelişmiş yazma özelliğine sahip bir HBase kümesi olduğu durumlarda gereklidir.
 
+   Bu yeni küme için Zookeeper ve WAL FS verilerini temizleyin. Zookeeper düğümlerinin veya çalışan düğümlerinin hiçbirinde aşağıdaki komutları verin:
+
+   ```bash
+   hbase zkcli
+   rmr /hbase-unsecure
+   quit
+
+   hdfs dfs -rm -r hdfs://mycluster/hbasewal**
+   ```
+
+1. Gelişmiş yazma özelliği ile HBase kümeleri kullanmıyorsanız, bu adımı atlayın. Yalnızca gelişmiş yazma özelliği olan HBase kümeleri için gereklidir.
+   
+   WAL dizini 'ni, yeni kümenin Zookeeper düğümlerinin veya çalışan düğümlerinin herhangi birinde bulunan bir SSH oturumundan yeni kümeye geri yükleyin.
+   
+   ```bash
+   hdfs dfs -cp /hbase-wal-backup/hbasewal hdfs://mycluster/**
+   ```
+   
 1. HDInsight 3,6 ' i 4,0 sürümüne yükseltiyorsanız aşağıdaki adımları izleyin, aksi halde adım 10 ' a atlayın:
-    1. **Hizmetler**  >  **yeniden başlatma gerekli**' i seçerek, tüm gerekli hizmetleri yeniden başlatın.
+
+    1. **Hizmetler**  >  **yeniden başlatma gerekli** ' i seçerek, tüm gerekli hizmetleri yeniden başlatın.
     1. HBase hizmetini durdurun.
     1. Zookeeper düğümüne SSH yazın ve [Zkclı](https://github.com/go-zkcli/zkcli) komutunu yürütün. Bu, `rmr /hbase-unsecure` HBase kök Znode değerini Zookeeper 'dan kaldırın.
     1. HBase 'i yeniden başlatın.
