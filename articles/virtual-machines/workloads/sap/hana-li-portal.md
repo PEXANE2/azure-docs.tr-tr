@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d81a8b3a1596e8a447f7a2434e52df8c89b416b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 887adb3e8b0a5f0410fc9a7732e2220049b7ba6c
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085274"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927201"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portalı üzerinden Azure HANA Büyük Örnekler denetimi
 Bu belge, [Hana büyük örneklerinin](./hana-overview-architecture.md) [Azure Portal](https://portal.azure.com) nasıl sunulduğunu ve sizin Için dağıtılan Hana büyük örnek birimleri ile Azure Portal aracılığıyla hangi etkinliklerin yapılabileceğini anlatmaktadır. Azure portal 'daki HANA büyük örneklerin görünürlüğü, şu anda genel önizlemede olan HANA büyük örnekleri için bir Azure Kaynak sağlayıcısı aracılığıyla sunulmaktadır
@@ -54,13 +54,13 @@ Bir HANA büyük örnek dağıtım isteği gönderilirken, HANA büyük örnekle
 
 Yeni Azure kaynak grubunu bulmak için, Azure portal sol gezinti bölmesinde gezinerek aboneliğinizdeki kaynak grubunu listeleyin
 
-![Azure portal gezinti bölmesi](./media/hana-li-portal/portal-resource-group.png)
+![Kaynak grupları seçeneğini vurgulayan ekran görüntüsü.](./media/hana-li-portal/portal-resource-group.png)
 
 Kaynak grupları listesinde, listede, HANA büyük örneklerinin dağıtılmasından önce kullandığınız abonelikte filtre uygulamanız gerekebilir
 
 ![Azure portal kaynak gruplarını filtrele](./media/hana-li-portal/portal-filtering-subscription.png)
 
-Doğru aboneliğe filtreledikten sonra, hala kaynak grupları için uzun bir listeniz olabilir. "Xxx" in **-T050**gibi üç basamak olduğu **-TxXx** sonrası bir tane bulun. 
+Doğru aboneliğe filtreledikten sonra, hala kaynak grupları için uzun bir listeniz olabilir. "Xxx" in **-T050** gibi üç basamak olduğu **-TxXx** sonrası bir tane bulun. 
 
 Kaynak grubunu bulduğunuz için ayrıntılarını listeleyin. Aldığınız liste şöyle görünebilir:
 
@@ -94,7 +94,7 @@ Dağıtılan her bir HANA büyük örnek birimi için otomatik olarak oluşturul
 Üstbilginin sağ sütunundaki ek bir alan, HANA büyük örnek biriminin güç durumu hakkında bilgi verir.
 
 > [!NOTE]
-> Güç durumu, donanım biriminin açık veya kapalı olup olmadığını açıklar. Çalışır duruma sahip olan işletim sistemi hakkında bilgi vermez. Bir HANA büyük örnek birimini yeniden başlattığınızda, birim **durumunun başlangıç durumuna** geçmeye **başlamak**için değiştiği küçük bir zaman yaşarsınız. **Başlatılmış** durumunda işletim sistemi başlatıldığı veya işletim sisteminin tamamen başlatılmış olduğu anlamına gelir. Sonuç olarak, birim yeniden başlatıldıktan sonra durum **başlatılır**başlatılmaz hemen sonra birimde oturum açmanız beklenmemelidir.
+> Güç durumu, donanım biriminin açık veya kapalı olup olmadığını açıklar. Çalışır duruma sahip olan işletim sistemi hakkında bilgi vermez. Bir HANA büyük örnek birimini yeniden başlattığınızda, birim **durumunun başlangıç durumuna** geçmeye **başlamak** için değiştiği küçük bir zaman yaşarsınız. **Başlatılmış** durumunda işletim sistemi başlatıldığı veya işletim sisteminin tamamen başlatılmış olduğu anlamına gelir. Sonuç olarak, birim yeniden başlatıldıktan sonra durum **başlatılır** başlatılmaz hemen sonra birimde oturum açmanız beklenmemelidir.
 > 
 
 ' Daha fazla ' düğmesine basarsanız ek bilgiler gösterilir. Bir ek bilgi, HANA büyük örnek damgasının, ' de dağıtılan birimin düzeltmesini görüntülüyor. HANA büyük örnek damgalarının farklı düzeltmeleri için [Azure 'da SAP HANA nedir (büyük örnekler)](./hana-overview-architecture.md) makalesine bakın
@@ -106,7 +106,7 @@ HANA büyük örnek birimlerine genel bir bakış vermekten daha fazla, belirli 
 
 Kaydedilen ana etkinliklerden biri bir birimin yeniden başlatılmalardır. Listelenen veriler, etkinliğin durumunu, etkinliğin tetiklendiği zaman damgasını, etkinliğin tetiklendiği abonelik KIMLIĞINI ve etkinliği tetikleyen Azure kullanıcısını içerir. 
 
-Kaydedilen başka bir etkinlik, Azure meta verilerinde bulunan birimde değişir. Yeniden başlatmanın başlatılmasının yanı sıra, **yazma Hanaınstances**etkinliğini görebilirsiniz. Bu tür bir etkinlik, HANA büyük örnek biriminde hiçbir değişiklik gerçekleştirmez, ancak Azure 'daki birimin meta verilerinde yapılan değişiklikleri belgeyor. Listelenen örnekte bir etiketi ekledik ve sildik (sonraki bölüme bakın).
+Kaydedilen başka bir etkinlik, Azure meta verilerinde bulunan birimde değişir. Yeniden başlatmanın başlatılmasının yanı sıra, **yazma Hanaınstances** etkinliğini görebilirsiniz. Bu tür bir etkinlik, HANA büyük örnek biriminde hiçbir değişiklik gerçekleştirmez, ancak Azure 'daki birimin meta verilerinde yapılan değişiklikleri belgeyor. Listelenen örnekte bir etiketi ekledik ve sildik (sonraki bölüme bakın).
 
 ## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>Bir HANA büyük örnek birimine Azure etiketi ekleme ve silme
 Başka bir olasılık da HANA büyük örnek birimine bir [etiket](../../../azure-resource-manager/management/tag-resources.md) eklemektir. Etiketlerin atanma yöntemi, sanal makinelere etiket atamaya farklı değildir. VM 'Lerde olduğu gibi, Etiketler Azure meta verilerinde mevcuttur ve HANA büyük örnekleri için VM 'Lerle aynı kısıtlamalara sahiptir.
@@ -131,7 +131,7 @@ Linux işletim sisteminin yeniden başlatılmasını başlatırken, IŞLETIM sis
 Yeniden Başlat düğmesine basarken birimi gerçekten yeniden başlatmak isteyip istemediğiniz sorulur. "Evet" düğmesine basarak onaylamanız durumunda birim yeniden başlatılır.
 
 > [!NOTE]
-> Yeniden başlatma işleminde, birim **durumunun başlangıç durumuna** geçmeye **başlamak**için değiştiği küçük bir zaman yaşarsınız. **Başlatılmış** durumunda işletim sistemi başlatıldığı veya işletim sisteminin tamamen başlatılmış olduğu anlamına gelir. Sonuç olarak, birim yeniden başlatıldıktan sonra durum **başlatılır**başlatılmaz hemen sonra birimde oturum açmanız beklenmemelidir.
+> Yeniden başlatma işleminde, birim **durumunun başlangıç durumuna** geçmeye **başlamak** için değiştiği küçük bir zaman yaşarsınız. **Başlatılmış** durumunda işletim sistemi başlatıldığı veya işletim sisteminin tamamen başlatılmış olduğu anlamına gelir. Sonuç olarak, birim yeniden başlatıldıktan sonra durum **başlatılır** başlatılmaz hemen sonra birimde oturum açmanız beklenmemelidir.
 
 > [!IMPORTANT]
 > HANA büyük örnek biriminizdeki bellek miktarına bağlı olarak, donanımın ve işletim sisteminin yeniden başlatılması ve yeniden başlatılması bir saate kadar sürebilir
@@ -146,7 +146,7 @@ Bir sonraki ekranda listelenen SAP HANA Büyük Örnekleri hizmetini almak için
 
 ![Azure portal tüm hizmetleri seçin](./media/hana-li-portal/portal-create-service-request.png)
 
-Hizmetler listesinde, hizmet **SAP HANA büyük örnek**' i bulabilirsiniz. Bu hizmeti seçerken, belirli sorun türlerini gösterildiği gibi seçebilirsiniz:
+Hizmetler listesinde, hizmet **SAP HANA büyük örnek** ' i bulabilirsiniz. Bu hizmeti seçerken, belirli sorun türlerini gösterildiği gibi seçebilirsiniz:
 
 
 ![Azure portal sorun sınıfını seçin](./media/hana-li-portal/portal-select-problem-class.png)
