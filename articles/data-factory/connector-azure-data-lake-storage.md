@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/09/2020
-ms.openlocfilehash: 187d430e1475a85118be3811520824d6f8ca3aa7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/28/2020
+ms.openlocfilehash: aedaedd29082c9ad51c03aa919181649a6dcf281
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636519"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913356"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Data Lake Storage 2. verileri kopyalama ve dönüştürme
 
@@ -46,10 +46,6 @@ Kopyalama etkinliği için, bu bağlayıcıyla şunları yapabilirsiniz:
 - [Kopyalama sırasında dosya meta verilerini koru](#preserve-metadata-during-copy).
 - Azure Data Lake Storage 1./Gen2 'tan kopyalarken [ACL 'Leri koru](#preserve-acls) .
 
->[!IMPORTANT]
->Azure Storage güvenlik duvarı ayarlarında **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver** seçeneğini etkinleştirip Data Lake Storage 2. bağlanmak için Azure tümleştirme çalışma zamanını kullanmak istiyorsanız, ADLS 2. için [yönetilen kimlik kimlik doğrulamasını](#managed-identity) kullanmanız gerekir.
-
-
 ## <a name="get-started"></a>başlarken
 
 >[!TIP]
@@ -68,7 +64,8 @@ Azure Data Lake Storage 2. Bağlayıcısı aşağıdaki kimlik doğrulama türle
 - [Azure kaynakları kimlik doğrulaması için Yönetilen kimlikler](#managed-identity)
 
 >[!NOTE]
->Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri yüklemek için PolyBase kullanılırken, kaynak Data Lake Storage 2. sanal ağ uç noktası ile yapılandırıldıysa, PolyBase için gereken yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. Daha fazla yapılandırma önkoşulları ile [yönetilen kimlik doğrulama](#managed-identity) bölümüne bakın.
+>- Azure Storage güvenlik duvarında etkin **Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver** seçeneğini kullanarak Data Lake Storage 2. bağlanmak Için Genel Azure tümleştirme çalışma zamanını kullanmak istiyorsanız, [yönetilen kimlik kimlik doğrulamasını](#managed-identity)kullanmanız gerekir.
+>- Azure SYNAPSE Analytics 'e veri yüklemek için PolyBase veya COPY ifadesini kullandığınızda, kaynak veya hazırlama Data Lake Storage 2. bir Azure sanal ağ uç noktasıyla yapılandırılmışsa, SYNAPSE tarafından gereken yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. Daha fazla yapılandırma önkoşulları ile [yönetilen kimlik doğrulama](#managed-identity) bölümüne bakın.
 
 ### <a name="account-key-authentication"></a>Hesap anahtarı kimlik doğrulaması
 
@@ -210,7 +207,7 @@ Azure Kaynak kimlik doğrulaması için yönetilen kimlikleri kullanmak için a�
 >Yazmak için Data Factory UI kullanırsanız ve yönetilen kimlik, ıAM 'de "Depolama Blobu veri okuyucusu/katkıda bulunan" rolü ile ayarlanmamışsa, test bağlantısı veya tarama/gezinme sırasında "dosya yoluna Bağlantıyı Sına" veya "belirtilen yoldan göz at" seçeneğini belirleyin ve devam etmek için **okuma + yürütme** iznine sahip bir yol belirtin.
 
 >[!IMPORTANT]
->Data Lake Storage 2. verileri Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) yüklemek için PolyBase kullanırsanız, Data Lake Storage 2. için yönetilen kimlik kimlik doğrulaması kullanılırken, Azure Active Directory [Bu](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) kılavuzdaki 1. ve 2. adımları izlediğinizden emin olun. (Azure AD) ve 2) Depolama Blobu veri katılımcısı rolünü sunucunuza atayın; Rest Data Factory tarafından işlenir. Data Lake Storage 2. Azure sanal ağ uç noktası ile yapılandırıldıysa, verileri dosyadan yüklemek için PolyBase kullanmak istiyorsanız, PolyBase 'in gerektirdiği şekilde yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir.
+>Data Lake Storage 2. verileri Azure SYNAPSE Analytics 'e yüklemek için PolyBase veya COPY ifadesini kullanıyorsanız, Data Lake Storage 2. için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Bu](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)kılavuzda 1 ile 3 arasındaki adımları da izlediğinizden emin olun. Bu adımlar, sunucunuzu Azure AD 'ye kaydeder ve Depolama Blobu veri katılımcısı rolünü sunucunuza atar. Data Factory Rest 'i işler. Blob depolamayı bir Azure sanal ağ uç noktasıyla yapılandırırsanız, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına** Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsü altında, SYNAPSE Için gereken şekilde erişmesine izin ver ' i de yüklemeniz gerekir.
 
 Bu özellikler bağlı hizmet için desteklenir:
 

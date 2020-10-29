@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak gruplar
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: bd1870e803f5051e2a65a6cddbb72406421d4fc3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5a73963970b5fad7b3992d501d9aac5cc7229622
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171617"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926691"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
@@ -17,11 +17,7 @@ Bu makalede, Azure abonelikleri arasında Azure Backup için yapılandırılmı�
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Kurtarma Hizmetleri Kasası için kaynak taşıma Avustralya Doğu, Avustralya Güney Doğu, Kanada Orta, Kanada Doğu, Güney Doğu Asya, Doğu Asya, Orta ABD, Orta Kuzey ABD, Doğu ABD, Doğu ABD 2, Orta Güney ABD, Orta Batı ABD, Orta Batı ABD 2, Batı ABD, Batı ABD 2, Brezilya Güney, Orta Hindistan, Güney Hindistan, Japonya Doğu, Japonya Batı, Kore orta, Kore Güney , Kuzey Avrupa, Batı Avrupa, Güney Afrika Kuzey, Güney Afrika Batı, UK Güney ve UK Batı.
-
-## <a name="unsupported-regions"></a>Desteklenmeyen bölgeler
-
-Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, US Gov Iowa, Çin Kuzey, Çin North2, Çin Doğu, Çin Doğu2
+Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, Çin Kuzey, Çin North2, Çin Doğu ve Çin Doğu2 dışında tüm ortak bölgeler ve bağımsız bölgeler desteklenir.
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Kurtarma Hizmetleri kasasını taşımaya yönelik önkoşullar
 
@@ -46,7 +42,7 @@ Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, US Gov Iowa, Çin 
 
 > [!NOTE]
 > Azure bölgeleri arasında Azure Backup için kurtarma hizmetleri kasalarının taşınması desteklenmez.<br><br>
-> **Azure Site Recovery**kullanarak olağanüstü durum kurtarma için herhangi bir VM (Azure IaaS, Hyper-V, VMware) veya fiziksel makine yapılandırdıysanız taşıma işlemi engellenir. Azure Site Recovery için kasa taşımak istiyorsanız, kasaların el ile taşınmasını öğrenmek için [Bu makaleyi](../site-recovery/move-vaults-across-regions.md) gözden geçirin.
+> **Azure Site Recovery** kullanarak olağanüstü durum kurtarma için herhangi bir VM (Azure IaaS, Hyper-V, VMware) veya fiziksel makine yapılandırdıysanız taşıma işlemi engellenir. Azure Site Recovery için kasa taşımak istiyorsanız, kasaların el ile taşınmasını öğrenmek için [Bu makaleyi](../site-recovery/move-vaults-across-regions.md) gözden geçirin.
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Kurtarma Hizmetleri kasasını farklı kaynak grubuna taşımak için Azure portal kullanın
 
@@ -61,7 +57,7 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubun
 
    ![Essentials bilgi sekmesi](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. Kasa genel bakış menüsünde, **kaynak grubu**' nun yanındaki **Değiştir** ' i seçerek **kaynakları taşı** bölmesini açın.
+3. Kasa genel bakış menüsünde, **kaynak grubu** ' nun yanındaki **Değiştir** ' i seçerek **kaynakları taşı** bölmesini açın.
 
    ![Kaynak grubunu değiştir](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
@@ -90,7 +86,7 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğ
 
     ![Essentials bilgi sekmesi](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. Kasa genel bakış menüsünde, **abonelik**' ın yanındaki **Değiştir** ' i seçerek **kaynakları taşı** bölmesini açın.
+3. Kasa genel bakış menüsünde, **abonelik** ' ın yanındaki **Değiştir** ' i seçerek **kaynakları taşı** bölmesini açın.
 
    ![Aboneliği Değiştir](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
@@ -103,7 +99,7 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğ
 
    ![Azure](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. **Taşınan kaynaklarla ilişkili araçların ve betiklerin, onaylamak üzere yeni kaynak kimlikleri seçeneğini kullanacak şekilde güncelleştirene** ve sonra **Tamam**' ı seçene kadar çalıştığını anladım seçeneğini belirleyin.
+7. **Taşınan kaynaklarla ilişkili araçların ve betiklerin, onaylamak üzere yeni kaynak kimlikleri seçeneğini kullanacak şekilde güncelleştirene** ve sonra **Tamam** ' ı seçene kadar çalıştığını anladım seçeneğini belirleyin.
 
 > [!NOTE]
 > Çapraz abonelik yedeklemesi (RS kasası ve korunan VM 'Ler farklı aboneliklerde) desteklenen bir senaryo değildir. Ayrıca, yerel yedekli depolama (LRS) ile global olarak yedekli depolama (GRS) arasında depolama artıklığı seçeneği ve tam tersi de kasa taşıma işlemi sırasında değiştirilemez.
@@ -161,9 +157,9 @@ Yeni bir kasadaki iş yüklerini korumak için, geçerli koruma ve verilerin esk
 
 1. Kasa özelliklerinde geçici silme devre dışı bırakın. Geçici silme devre dışı bırakmak için [aşağıdaki adımları](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) izleyin.
 
-2. Korumayı durdurun ve geçerli kasadan yedeklemeleri silin. Kasa panosu menüsünde **yedekleme öğeleri**' ni seçin. Yeni kasaya taşınması gereken burada listelenen öğelerin, yedekleme verileriyle birlikte kaldırılması gerekir. [Bulutta korunan öğeleri silme](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) ve [Şirket içi korumalı öğeleri silme](backup-azure-delete-vault.md#delete-protected-items-on-premises)bölümüne bakın.
+2. Korumayı durdurun ve geçerli kasadan yedeklemeleri silin. Kasa panosu menüsünde **yedekleme öğeleri** ' ni seçin. Yeni kasaya taşınması gereken burada listelenen öğelerin, yedekleme verileriyle birlikte kaldırılması gerekir. [Bulutta korunan öğeleri silme](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) ve [Şirket içi korumalı öğeleri silme](backup-azure-delete-vault.md#delete-protected-items-on-premises)bölümüne bakın.
 
-3. AFS 'yi (Azure dosya paylaşımlarını), SQL Server 'ı veya SAP HANA sunucularını taşımayı planlıyorsanız, bunları da silmeniz gerekir. Kasa panosu menüsünde, **Yedekleme altyapısı**' nı seçin. Bkz. [SQL Server kaydını silme](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance), [Azure dosya paylaşımları ile ilişkili bir depolama hesabının kaydını silme](manage-afs-backup.md#unregister-a-storage-account)ve [bir SAP HANA örneğinin kaydını silme](sap-hana-db-manage.md#unregister-an-sap-hana-instance).
+3. AFS 'yi (Azure dosya paylaşımlarını), SQL Server 'ı veya SAP HANA sunucularını taşımayı planlıyorsanız, bunları da silmeniz gerekir. Kasa panosu menüsünde, **Yedekleme altyapısı** ' nı seçin. Bkz. [SQL Server kaydını silme](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance), [Azure dosya paylaşımları ile ilişkili bir depolama hesabının kaydını silme](manage-afs-backup.md#unregister-a-storage-account)ve [bir SAP HANA örneğinin kaydını silme](sap-hana-db-manage.md#unregister-an-sap-hana-instance).
 
 4. Eski kasadan kaldırıldıktan sonra, yeni kasadaki iş yükünüz için yedeklemeleri yapılandırmaya devam edin.
 

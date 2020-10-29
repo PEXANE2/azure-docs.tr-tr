@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5e9fd3b3d2d5bceb766651c2758f956b9ef105e0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 601e124c1ad87724babfabffc95e9265bc962d87
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494944"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913305"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Öğretici: Jupyter not defterlerinde Azure Machine Learning kullanmaya başlayın
 
@@ -36,12 +36,12 @@ Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini 
 
 Zaten bir Azure Machine Learning çalışma alanınız varsa, [bir not defteri klasörünü kopyalamaya](#clone) atlayın.  
 
-Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure portal bir çalışma alanı oluşturursunuz.
+[Çalışma alanı oluşturmanın birçok yolu](how-to-manage-workspace.md)vardır.  Bu öğreticide, Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure portal bir çalışma alanı oluşturursunuz.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT]
-> *Çalışma alanınızı* ve *aboneliğinizi*bir yere göz atın. Denemenizi doğru yerde oluşturduğunuzdan emin olmak için bu bilgilere ihtiyacınız olacaktır.
+> *Çalışma alanınızı* ve *aboneliğinizi* bir yere göz atın. Denemenizi doğru yerde oluşturduğunuzdan emin olmak için bu bilgilere ihtiyacınız olacaktır.
 
 ## <a name="run-a-notebook-in-your-workspace"></a><a name="azure"></a>Çalışma alanınızda bir not defteri çalıştırma
 
@@ -59,7 +59,7 @@ Aşağıdaki deneme kurulumunu tamamlayıp Azure Machine Learning Studio 'da ad�
 
 1. Aboneliğinizi ve oluşturduğunuz çalışma alanını seçin.
 
-1. Sol tarafta, **Not defterleri**' ni seçin.
+1. Sol tarafta, **Not defterleri** ' ni seçin.
 
 1. En üstteki **örnekler** sekmesini seçin.
 
@@ -67,7 +67,7 @@ Aşağıdaki deneme kurulumunu tamamlayıp Azure Machine Learning Studio 'da ad�
 
 1. Klasörü üzerinde bir sürüm numarasıyla açın. Bu sayı, Python SDK 'sının geçerli sürümünü temsil eder.
 
-1. **Öğreticiler** klasörünün sağ tarafındaki **...** düğmesini seçin ve ardından **Kopyala**' yı seçin.
+1. **Öğreticiler** klasörünün sağ tarafındaki **...** düğmesini seçin ve ardından **Kopyala** ' yı seçin.
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="Klonlama öğreticileri klasörünü gösteren ekran görüntüsü.":::
 
@@ -99,7 +99,7 @@ Aşağıdaki deneme kurulumunu tamamlayıp Azure Machine Learning Studio 'da ad�
 
     1. Kullanılabilir seçeneklerden VM boyutunu seçin. Öğreticiler için, varsayılan VM iyi bir seçimdir.
 
-    1. Ardından **Oluştur**’u seçin. SANAL makinenizin ayarlanması yaklaşık beş dakika sürebilir.
+    1. Ardından **Oluştur** ’u seçin. SANAL makinenizin ayarlanması yaklaşık beş dakika sürebilir.
 
 1. VM kullanılabilir olduğunda, üstteki araç çubuğunda görüntülenir. Artık Not defteri 'ni araç çubuğunda **Çalıştır** ' a veya Not defteri 'nin kod hücrelerinde **SHIFT + enter** ' a tıklayarak çalıştırabilirsiniz.
 

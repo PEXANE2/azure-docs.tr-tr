@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1157a18954c30e1f1d93aa33dbea6104491b5353
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d7e019e7759e22e945bddee477a4cb77f17350b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396460"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913832"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Yalıtılmış bir ağda Azure disk şifrelemesi
 
@@ -25,12 +25,12 @@ Azure disk şifrelemesi, genellikle zaten mevcut değilse, daha önce ADE etkinl
 
 Her dağıtım için gereken paketler aşağıda verilmiştir. Desteklenen destekler ve birim türlerinin tam listesi için bkz. [desteklenen VM 'ler ve işletim sistemleri](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
-- **Ubuntu 14,04, 16,04, 18,04**: lsscsı, psmisc, at, cryptsetup-bin, Python-partalı, Python-altı, PROCPS
-- **CentOS 7,2-7,7**: lsscsı, psmisc, lvm2, UUID, at, Patch, cryptsetup, cryptsetup-reencrypt, pyparted, PROCPS-ng, Util-Linux
-- **CentOS 6,8**: lsscsı, psmisc, lvm2, UUID, at, cryptsetup-reencrypt, pyparted, Python-altı
-- **RedHat 7,2-7,7**: lsscsı, psmisc, lvm2, UUID, at, Patch, cryptsetup, cryptsetup-reencrypt, PROCPS-ng, Util-Linux
-- **RedHat 6,8**: lsscsı, psmisc, lvm2, UUID, at, Patch, cryptsetup-reencrypt
-- **openSUSE 42,3, SLES 12-SP4, 12-SP3**: lsscsı, cryptsetup
+- **Ubuntu 14,04, 16,04, 18,04** : lsscsı, psmisc, at, cryptsetup-bin, Python-Parted, Python-altı, PROCPS, grub-PC-bin
+- **CentOS 7,2-7,7** : lsscsı, psmisc, lvm2, UUID, at, Patch, cryptsetup, cryptsetup-reencrypt, pyparted, PROCPS-ng, Util-Linux
+- **CentOS 6,8** : lsscsı, psmisc, lvm2, UUID, at, cryptsetup-reencrypt, pyparted, Python-altı
+- **RedHat 7,2-7,7** : lsscsı, psmisc, lvm2, UUID, at, Patch, cryptsetup, cryptsetup-reencrypt, PROCPS-ng, Util-Linux
+- **RedHat 6,8** : lsscsı, psmisc, lvm2, UUID, at, Patch, cryptsetup-reencrypt
+- **openSUSE 42,3, SLES 12-SP4, 12-SP3** : lsscsı, cryptsetup
 
 Red hat üzerinde bir ara sunucu gerektiğinde, abonelik Yöneticisi 'nin ve en fazla 'nin düzgün kurulduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [abonelik-yönetici ve sorun giderme sorunları nasıl giderilir](https://access.redhat.com/solutions/189533).  
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 7dd23f481409eb3498893c1c7f9c0fd8311b9af2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a06bbeb4946f03b9cb6e5b1400521a0abffdd7f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901595"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913560"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL veri ambarı) veri kopyalama ve dönüştürme
 
@@ -42,7 +42,7 @@ Kopyalama etkinliği için bu Azure SYNAPSE Analytics Bağlayıcısı şu işlev
 
 - Azure kaynakları için hizmet sorumlusu veya yönetilen kimlikler ile SQL kimlik doğrulaması ve Azure Active Directory (Azure AD) uygulama belirteci kimlik doğrulamasını kullanarak verileri kopyalayın.
 - Kaynak olarak, bir SQL sorgusu veya saklı yordam kullanarak verileri alın. Ayrıca, Azure SYNAPSE Analytics kaynağından paralel kopyalama seçeneğini de belirleyebilirsiniz. Ayrıntılar için [SYNAPSE Analytics 'Ten paralel kopyalama](#parallel-copy-from-synapse-analytics) bölümüne bakın.
-- Havuz olarak, [PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics) veya [Copy deyiminizi](#use-copy-statement) (Önizleme) veya toplu ekleme 'yi kullanarak verileri yükleyin. Daha iyi kopyalama performansı için PolyBase veya COPY deyiminizi (Önizleme) öneririz. Bağlayıcı, kaynak şemasına bağlı değilse otomatik olarak hedef tablo oluşturmayı da destekler.
+- Havuz olarak, [PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics) veya [Copy ifadesini](#use-copy-statement) veya toplu ekleme 'yi kullanarak veri yükleyin. Daha iyi kopyalama performansı için PolyBase veya COPY deyimimizi öneririz. Bağlayıcı, kaynak şemasına bağlı değilse otomatik olarak hedef tablo oluşturmayı da destekler.
 
 > [!IMPORTANT]
 > Azure Data Factory Integration Runtime kullanarak verileri kopyalarsanız, Azure hizmetlerinin [MANTıKSAL SQL Server](../azure-sql/database/logical-servers.md)'a erişebilmesi için [sunucu düzeyinde bir güvenlik duvarı kuralı](../azure-sql/database/firewall-configure.md) yapılandırın.
@@ -51,7 +51,7 @@ Kopyalama etkinliği için bu Azure SYNAPSE Analytics Bağlayıcısı şu işlev
 ## <a name="get-started"></a>başlarken
 
 > [!TIP]
-> En iyi performansı elde etmek için PolyBase 'i kullanarak Azure SYNAPSE Analytics 'e veri yükleyin. [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](#use-polybase-to-load-data-into-azure-synapse-analytics) bölümünde ayrıntılar bulunur. Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB yükleme](load-azure-sql-data-warehouse.md)bölümüne bakın.
+> En iyi performansı elde etmek için PolyBase veya COPY deyimlerini kullanarak Azure SYNAPSE Analytics 'e veri yükleyin. [Azure SYNAPSE Analytics 'e veri yüklemek](#use-polybase-to-load-data-into-azure-synapse-analytics) ve [Copy deyimlerini kullanarak Azure SYNAPSE Analytics bölümlerine veri yüklemek](#use-copy-statement) için PolyBase kullanma ayrıntıları vardır. Kullanım örneği ile ilgili bir anlatım için, [Azure Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB yükleme](load-azure-sql-data-warehouse.md)bölümüne bakın.
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -478,7 +478,7 @@ Tabloda fiziksel bölüm varsa, "HasPartition" öğesini "Yes" olarak görürsü
 - Kaynak veri depoluü ve biçimlendirmeniz ilk olarak PolyBase tarafından desteklenmiyorsa, bunun yerine **[PolyBase özelliğini kullanarak hazırlanan kopyayı](#staged-copy-by-using-polybase)** kullanın. Hazırlanan kopya özelliği de size daha iyi aktarım hızı sağlar. Verileri otomatik olarak PolyBase uyumlu biçime dönüştürür, verileri Azure Blob depolama alanında depolar ve Azure SYNAPSE Analytics 'e veri yüklemek için PolyBase 'i çağırır.
 
 > [!TIP]
-> [PolyBase 'i kullanmaya yönelik en iyi uygulamalar](#best-practices-for-using-polybase)hakkında daha fazla bilgi edinin. Azure Integration Runtime ile PolyBase kullanılırken, etkin veri tümleştirme birimleri (DIUs) her zaman 2 ' dir. Depolama alanından yükleme, SYNAPSE altyapısı tarafından desteklenmektedir, DIU 'nın ayarlanması performansı etkilemez.
+> [PolyBase 'i kullanmaya yönelik en iyi uygulamalar](#best-practices-for-using-polybase)hakkında daha fazla bilgi edinin. Azure Integration Runtime ile PolyBase kullanılırken doğrudan veya hazırlanan depolama-SYNAPSE için etkili [veri tümleştirme birimleri (DIU)](copy-activity-performance-features.md#data-integration-units) her zaman 2 ' dir. Depolama alanından yükleme, SYNAPSE altyapısı tarafından desteklenmektedir, DIU 'nın ayarlanması performansı etkilemez.
 
 Kopyalama etkinliğinde aşağıdaki PolyBase ayarları desteklenir `polyBaseSettings` :
 
@@ -507,7 +507,8 @@ Gereksinimler karşılanmazsa, Azure Data Factory ayarları denetler ve veri ta�
     | [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | Hesap anahtarı kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
 
     >[!IMPORTANT]
-    >Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, yönetilen kimlik kimlik doğrulaması kullanmanız gerekir- [VNET hizmet uç noktalarını Azure depolama ile kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)için başvurun. [Azure Blob tarafından yönetilen kimlik doğrulama](connector-azure-blob-storage.md#managed-identity) ve [Azure Data Lake Storage 2. tarafından yönetilen kimlik doğrulama](connector-azure-data-lake-storage.md#managed-identity) bölümündeki Data Factory gereken konfigürasyonları öğrenin.
+    >- Depolama bağlı hizmetiniz için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) sırasıyla öğrenin.
+    >- Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 2. **Kaynak veri biçimi** , aşağıdaki yapılandırmalara **sahip Parquet** , **orc** veya **sınırlandırılmış bir metindir** :
 
@@ -567,7 +568,8 @@ Kaynak verileriniz PolyBase ile yerel olarak uyumlu değilse, geçici hazırlama
 Bu özelliği kullanmak için, Azure [BLOB depolama bağlı hizmeti](connector-azure-blob-storage.md#linked-service-properties) oluşturun veya hesap anahtarı ya da ara depolama alanı olarak Azure depolama hesabına başvuran **yönetilen kimlik kimlik doğrulamasıyla** [Azure Data Lake Storage 2. bağlı hizmeti](connector-azure-data-lake-storage.md#linked-service-properties) oluşturun.
 
 >[!IMPORTANT]
->Hazırlama Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, yönetilen kimlik kimlik doğrulaması kullanmanız gerekir- [VNET hizmet uç noktalarını Azure depolama ile kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)için başvurun. [Azure Blob tarafından yönetilen kimlik doğrulama](connector-azure-blob-storage.md#managed-identity) ve [Azure Data Lake Storage 2. yönetilen kimlik kimlik doğrulamasından](connector-azure-data-lake-storage.md#managed-identity)Data Factory için gereken konfigürasyonları öğrenin.
+>- Hazırlama bağlantılı hizmetiniz için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) sırasıyla öğrenin.
+>- Hazırlama Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). 
 
 ```json
 "activities":[
@@ -673,7 +675,7 @@ Azure SYNAPSE Analytics [kopyalama ekstresi](/sql/t-sql/statements/copy-into-tra
 >Şu anda Data Factory yalnızca aşağıda belirtilen COPY deyimiyle uyumlu kaynaklardan kopyalama desteklenir.
 
 >[!TIP]
->Azure Integration Runtime ile kopyalama açıklaması kullanılırken, etkin veri tümleştirme birimleri (DIUs) her zaman 2 ' dir. Depolama alanından yükleme, SYNAPSE altyapısı tarafından desteklenmektedir, DIU 'nın ayarlanması performansı etkilemez.
+>Azure Integration Runtime ile kopyalama açıklaması kullanılırken, etkin [veri tümleştirme birimleri (DIU)](copy-activity-performance-features.md#data-integration-units) her zaman 2 ' dir. Depolama alanından yükleme, SYNAPSE altyapısı tarafından desteklenmektedir, DIU 'nın ayarlanması performansı etkilemez.
 
 COPY ifadesinin kullanılması aşağıdaki yapılandırmayı destekler:
 
@@ -687,7 +689,8 @@ COPY ifadesinin kullanılması aşağıdaki yapılandırmayı destekler:
     | [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | [Sınırlandırılmış metin](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | Hesap anahtarı kimlik doğrulaması, hizmet sorumlusu kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
 
     >[!IMPORTANT]
-    >Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, yönetilen kimlik kimlik doğrulaması kullanmanız gerekir- [VNET hizmet uç noktalarını Azure depolama ile kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)için başvurun. [Azure Blob tarafından yönetilen kimlik doğrulama](connector-azure-blob-storage.md#managed-identity) ve [Azure Data Lake Storage 2. tarafından yönetilen kimlik doğrulama](connector-azure-data-lake-storage.md#managed-identity) bölümündeki Data Factory gereken konfigürasyonları öğrenin.
+    >- Depolama bağlı hizmetiniz için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) sırasıyla öğrenin.
+    >- Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 2. Biçim ayarları şunlardır:
 
@@ -769,7 +772,10 @@ Azure SYNAPSE Analytics 'e özgü ayarlar, kaynak dönüşümünün **kaynak se�
 
 **Giriş** Kaynağınızı bir tabloya (eşdeğerini) işaret edip etmeyeceğinizi seçin ```Select * from <table-name>``` ya da özel BIR SQL sorgusu girin.
 
-**Hazırlamayı etkinleştir** Bu seçeneği, SYNAPSE DW kaynaklarıyla üretim iş yükleri içinde kullanmanız önemle önerilir. Bir işlem hattından Synapase kaynaklarıyla bir veri akışı etkinliği yürüttüğünüzde, ADF sizden bir hazırlama konumu depolama hesabı ister ve bunu hazırlanan veri yüklemesi için kullanır. SYNAPSE DW 'den veri yüklemek için en hızlı mekanizmadır.
+**Hazırlamayı etkinleştir** Azure SYNAPSE Analytics kaynaklarıyla üretim iş yükleri için bu seçeneği kullanmanız önemle önerilir. Bir işlem hattından Azure SYNAPSE Analytics kaynaklarıyla bir [veri akışı etkinliği](control-flow-execute-data-flow-activity.md) YÜRÜTTÜĞÜNÜZDE, ADF sizden bir hazırlama konumu depolama hesabı ister ve bunu hazırlanan veri yüklemesi için kullanır. Azure SYNAPSE Analytics 'ten veri yüklemeye en hızlı bir mekanizmadır.
+
+- Depolama bağlı hizmetiniz için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) sırasıyla öğrenin.
+- Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 **Sorgu** : giriş alanında sorgu ' yı seçerseniz, kaynağınız IÇIN bir SQL sorgusu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar. **Order by** yan tümceleri burada desteklenmez, ancak BIR tam select from ifadesini ayarlayabilirsiniz. Kullanıcı tanımlı tablo işlevleri de kullanabilirsiniz. **select * from udfGetData ()** , bir tablo döndüren SQL 'de bir UDF 'dir. Bu sorgu, veri akışınızda kullanabileceğiniz bir kaynak tablosu oluşturur. Sorguların kullanılması, test veya aramalar için satırları azaltmanın harika bir yoludur.
 
@@ -798,7 +804,10 @@ Azure SYNAPSE Analytics 'e özgü ayarlar, havuz dönüşümünün **Ayarlar** s
 - Yeniden oluştur: tablo bırakılır ve yeniden oluşturulur. Dinamik olarak yeni bir tablo oluşturuluyoruz gereklidir.
 - Kes: hedef tablodaki tüm satırlar kaldırılacak.
 
-**Hazırlamayı etkinleştir:** Azure SYNAPSE Analytics 'e yazarken [PolyBase](/sql/relational-databases/polybase/polybase-guide) 'i kullanıp kullanmayacağınızı belirler
+**Hazırlamayı etkinleştir:** Azure SYNAPSE Analytics 'e yazılırken [PolyBase](/sql/relational-databases/polybase/polybase-guide) 'in kullanılıp kullanılmayacağını belirler. Hazırlama depolaması [veri akışını Yürüt etkinliğinde](control-flow-execute-data-flow-activity.md)yapılandırılır. 
+
+- Depolama bağlı hizmetiniz için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) sırasıyla öğrenin.
+- Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 **Toplu iş boyutu** : her bir sepete kaç satır yazıldığını denetler. Daha büyük toplu işlem boyutları sıkıştırma ve bellek iyileştirmeyi iyileştirir, ancak verileri önbelleğe alırken bellek dışında özel durumlar riskini ortadan kaldıracak.
 

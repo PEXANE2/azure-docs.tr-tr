@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f4e429d9c5eeee382d59a294a11204f674b1f546
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2d5a6949c5dbe1e4c3c668dcb9eae6e51e5806f7
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911520"
+ms.locfileid: "92926045"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux için sanal makine uzantısı Key Vault
 
@@ -85,7 +85,7 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft.Azure.KeyVault | string |
@@ -216,12 +216,11 @@ Lütfen aşağıdaki kısıtlamalara/gereksinimlere dikkat edin:
   - Dağıtım sırasında var olmalıdır 
   - Key Vault erişim Ilkesi, yönetilen bir kimlik kullanılarak VM/VMSS kimliği için ayarlanmalıdır. [Key Vault Için kimlik doğrulama](../../key-vault/general/authentication.md) ve [Key Vault erişim ilkesi atama](../../key-vault/general/assign-access-policy-cli.md)konusuna bakın.
 
-## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
-
 ### <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
 
 * Ayarlayabilmeniz için observedCertificates sayısında bir sınır var mı?
   Hayır, Key Vault VM uzantısının observedCertificates sayısı üzerinde sınırı yok.
+
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
@@ -243,6 +242,14 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
 /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
 ```
+### <a name="using-symlink"></a>Symlink kullanma
+
+Sembolik bağlantılar veya Symbağlantılar temelde gelişmiş kısayollardır. Klasörü izlemeyi önlemek ve en son sertifikayı otomatik olarak almak için bu oluşturmaksızın 'i kullanarak `([VaultName].[CertificateName])` Linux üzerinde sertifikanın en son sürümünü edinebilirsiniz.
+
+### <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
+
+* Ayarlayabilmeniz için observedCertificates sayısında bir sınır var mı?
+  Hayır, Key Vault VM uzantısının observedCertificates sayısı üzerinde sınırı yok.
 
 ### <a name="support"></a>Destek
 

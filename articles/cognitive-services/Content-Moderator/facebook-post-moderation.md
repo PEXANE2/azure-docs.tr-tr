@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e930e5d125a8f1ee90448e293e2e0ca2c5c28465
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760206"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913679"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Öğretici: Azure Content Moderator ile orta Facebook gönderileri ve komutları
 
@@ -39,7 +39,7 @@ Bu diyagramda bu senaryonun her bileşeni gösterilmektedir:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Content Moderator abonelik anahtarı. Content Moderator hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
+- Content Moderator abonelik anahtarı. Content Moderator hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](../cognitive-services-apis-create-account.md) ' daki yönergeleri izleyin.
 - [Facebook hesabı](https://www.facebook.com/).
 
 ## <a name="create-a-review-team"></a>Bir gözden geçirme ekibi oluşturun
@@ -48,11 +48,11 @@ Bu diyagramda bu senaryonun her bileşeni gösterilmektedir:
 
 ## <a name="configure-image-moderation-workflow"></a>Görüntü denetleme iş akışını yapılandırma
 
-Özel bir görüntü iş akışı oluşturmak için [tanımlama, test et ve iş akışlarını kullanma](review-tool-user-guide/workflows.md) kılavuzuna bakın. Content Moderator, Facebook 'ta görüntüleri otomatik olarak denetlemek ve bazılarını Inceleme aracına göndermek için bu iş akışını kullanacaktır. İş akışı **adını**bir yere göz atın.
+Özel bir görüntü iş akışı oluşturmak için [tanımlama, test et ve iş akışlarını kullanma](review-tool-user-guide/workflows.md) kılavuzuna bakın. Content Moderator, Facebook 'ta görüntüleri otomatik olarak denetlemek ve bazılarını Inceleme aracına göndermek için bu iş akışını kullanacaktır. İş akışı **adını** bir yere göz atın.
 
 ## <a name="configure-text-moderation-workflow"></a>Metin denetleme iş akışını yapılandırma
 
-Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user-guide/workflows.md) kılavuzuna bakın. Bu kez, özel bir metin iş akışı oluşturun. Content Moderator, metin içeriğini otomatik olarak denetlemek için bu iş akışını kullanacaktır. İş akışı **adını**bir yere göz atın.
+Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user-guide/workflows.md) kılavuzuna bakın. Bu kez, özel bir metin iş akışı oluşturun. Content Moderator, metin içeriğini otomatik olarak denetlemek için bu iş akışını kullanacaktır. İş akışı **adını** bir yere göz atın.
 
 ![Metin İş Akışını Yapılandırma](images/text-workflow-configure.PNG)
 
@@ -64,14 +64,14 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
 
 [Azure Portal](https://portal.azure.com/) oturum açın ve şu adımları izleyin:
 
-1. [Azure İşlevleri](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) sayfasında gösterildiği gibi bir Azure İşlev Uygulaması oluşturun.
+1. [Azure İşlevleri](../../azure-functions/functions-create-function-app-portal.md) sayfasında gösterildiği gibi bir Azure İşlev Uygulaması oluşturun.
 1. Yeni oluşturulan İşlev Uygulaması gidin.
-1. Uygulama içinde **platform özellikleri** sekmesine gidin ve **yapılandırma**' yı seçin. Aşağıdaki anahtar/değer çiftlerini eklemek için sonraki sayfanın **uygulama ayarları** bölümünde **Yeni uygulama ayarı** ' nı seçin:
+1. Uygulama içinde **platform özellikleri** sekmesine gidin ve **yapılandırma** ' yı seçin. Aşağıdaki anahtar/değer çiftlerini eklemek için sonraki sayfanın **uygulama ayarları** bölümünde **Yeni uygulama ayarı** ' nı seçin:
     
     | Uygulama ayarı adı | değer   | 
     | -------------------- |-------------|
     | `cm:TeamId`   | Content Moderator Takım Kimliğiniz  | 
-    | `cm:SubscriptionKey` | Content Moderator abonelik anahtarınız. Bkz. [Kimlik Bilgileri](review-tool-user-guide/credentials.md) |
+    | `cm:SubscriptionKey` | Content Moderator abonelik anahtarınız. Bkz. [Kimlik Bilgileri](./review-tool-user-guide/configure.md#credentials) |
     | `cm:Region` | Content Moderator bölge adınız (boşluk içermez). Bu adı, Azure kaynağınızın **genel bakış** sekmesinin **konum** alanında bulabilirsiniz.|
     | `cm:ImageWorkflow` | Görüntüler üzerinde çalıştırılacak iş akışının adı |
     | `cm:TextWorkflow` | Metinler üzerinde çalıştırılacak iş akışının adı |
@@ -85,14 +85,14 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
 
     ![Işlev Ekle düğmesi vurgulanmış şekilde Azure Işlevleri bölmesi.](images/new-function.png)
 
-    1. **Http tetikleyicisini**belirten kutucuğa tıklayın.
+    1. **Http tetikleyicisini** belirten kutucuğa tıklayın.
     1. **FBListener** adını girin. **Yetkilendirme Düzeyi** alanı **İşlev** olarak ayarlanmalıdır.
-    1. **Oluştur**’a tıklayın.
+    1. **Oluştur** 'a tıklayın.
     1. **Run. CSX** Içeriğini **fblistener/Run. CSX** içeriğiyle değiştirin
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
 
-1. **Cmlistener**adlı yeni bir **http tetikleyici** işlevi oluşturun. Bu işlev Content Moderator'dan olayları alır. **Run. CSX** Içeriğini **cmlistener/Run. CSX** içindekilerle değiştirin
+1. **Cmlistener** adlı yeni bir **http tetikleyici** işlevi oluşturun. Bu işlev Content Moderator'dan olayları alır. **Run. CSX** Içeriğini **cmlistener/Run. CSX** içindekilerle değiştirin
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-110)]
 
@@ -122,9 +122,9 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
     1. [Facebook](https://www.facebook.com/bookmarks/pages)'a gidin ve **yeni bir Facebook Sayfası** oluşturun.
     1. Şu adımları izleyerek Facebook Uygulamasının bu sayfaya erişmesine izin verin:
         1. [Graph API Explorer](https://developers.facebook.com/tools/explorer/)'a gidin.
-        1. **Uygulama**'yı seçin.
-        1. **Sayfa Erişim Belirteci**'ni seçin. Bir **Get** isteği gönderin.
-        1. Yanıtta **Sayfa Kimliği**'ne tıklayın.
+        1. **Uygulama** 'yı seçin.
+        1. **Sayfa Erişim Belirteci** 'ni seçin. Bir **Get** isteği gönderin.
+        1. Yanıtta **Sayfa Kimliği** 'ne tıklayın.
         1. Şimdi **/subscribed_apps** bölümünü URL'ye ekleyin ve bir **Get** (boş yanıt) isteği gönderin.
         1. **Post** isteği gönderin. **success: true** gibi bir yanıt alırsınız.
 
@@ -138,7 +138,7 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
 
 4. Önümüzdeki birkaç adımda Postman kullanıyoruz.
 
-    1. **Postman**'ı açın (veya [buradan](https://www.getpostman.com/) alın).
+    1. **Postman** 'ı açın (veya [buradan](https://www.getpostman.com/) alın).
     2. Şu iki dosyayı içeri aktarın:
         1. [Postman Collection](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/Facebook%20Permanant%20Page%20Access%20Token.postman_collection.json)
         2. [Postman Environment](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
@@ -150,9 +150,9 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
         | appSecret | Buraya Facebook Uygulamanızın gizli dizisini ekleyin | 
         | short_lived_token | Önceki adımda oluşturduğunuz kısa ömürlü kullanıcı erişim belirtecini ekleyin |
     4. Şimdi koleksiyonda listelenen 3 API'yi çalıştırın: 
-        1. **Uzun Ömürlü Erişim Belirteci Oluştur**'u seçin ve **Gönder**'e tıklayın.
-        2. **Kullanıcı Kimliğini Al**'ı seçin ve **Gönder**'e tıklayın.
-        3. **Kalıcı Sayfa Erişim Belirtecini Al**'ı seçin ve **Gönder**'e tıklayın.
+        1. **Uzun Ömürlü Erişim Belirteci Oluştur** 'u seçin ve **Gönder** 'e tıklayın.
+        2. **Kullanıcı Kimliğini Al** 'ı seçin ve **Gönder** 'e tıklayın.
+        3. **Kalıcı Sayfa Erişim Belirtecini Al** 'ı seçin ve **Gönder** 'e tıklayın.
     5. Yanıttan **access_token** değerini kopyalayın ve bunu **fb:PageAccessToken** Uygulama ayarına atayın.
 
 Çözüm, Facebook sayfanıza gönderilen tüm resimleri ve metinleri Content Moderator'a gönderir. Daha önce yapılandırdığınız iş akışları çağrılır. İş akışlarında tanımlı kriterlerinizi geçirmez, gözden geçirme aracının içindeki incelemelere geçirilir. İçeriğin geri kalanı otomatik olarak yayımlanır.

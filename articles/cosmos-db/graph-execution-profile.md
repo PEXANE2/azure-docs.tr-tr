@@ -2,19 +2,18 @@
 title: Azure Cosmos DB Gremlin API 'sindeki sorguları değerlendirmek için yürütme profilini kullanın
 description: Yürütme profili adımını kullanarak Gremlin sorgularını nasıl giderebileceğinizi ve geliştireceğinizi öğrenin.
 services: cosmos-db
-author: jasonwhowell
-manager: kfile
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
-ms.author: jasonh
-ms.openlocfilehash: 2d34c91cab157fcd51d58521d739fcb081fe03ea
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.author: chrande
+ms.openlocfilehash: ff49889977bc4e5d9097d81ea7b05387900bedd4
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490603"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926385"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gremlin sorgularınızı hesaplamak için yürütme profili adımını kullanma
 
@@ -139,12 +138,12 @@ Aşağıda, döndürülecek çıkışın ek açıklamalı bir örneği verilmiş
 ## <a name="execution-profile-response-objects"></a>Yürütme profili yanıt nesneleri
 
 Bir executionProfile () işlevinin yanıtı, aşağıdaki yapıyla bir JSON nesneleri hiyerarşisi sağlayacak:
-  - **Gremlin Operation nesnesi**: yürütülen tüm Gremlin işlemini temsil eder. Aşağıdaki özellikleri içerir.
+  - **Gremlin Operation nesnesi** : yürütülen tüm Gremlin işlemini temsil eder. Aşağıdaki özellikleri içerir.
     - `gremlin`: Yürütülen açık Gremlin bildirisi.
     - `totalTime`: Bu adımın yürütülmesi için milisaniye cinsinden süre. 
     - `metrics`: Sorguyu yerine getirmek için yürütülen Cosmos DB çalışma zamanı işleçlerini her birini içeren bir dizi. Bu liste, yürütme sırasına göre sıralanır.
     
-  - **Cosmos DB çalışma zamanı işleçleri**: tüm Gremlin işleminin bileşenlerinin her birini temsil eder. Bu liste, yürütme sırasına göre sıralanır. Her nesne aşağıdaki özellikleri içerir:
+  - **Cosmos DB çalışma zamanı işleçleri** : tüm Gremlin işleminin bileşenlerinin her birini temsil eder. Bu liste, yürütme sırasına göre sıralanır. Her nesne aşağıdaki özellikleri içerir:
     - `name`: İşlecin adı. Bu, değerlendirilen ve yürütülen adımın türüdür. Aşağıdaki tabloda daha fazla bilgi edinin.
     - `time`: Belirli bir operatör tarafından geçen süre (milisaniye olarak).
     - `annotations`: Yürütülen işlece özgü ek bilgiler içerir.
@@ -155,7 +154,7 @@ Bir executionProfile () işlevinin yanıtı, aşağıdaki yapıyla bir JSON nesn
     - `storeOps.count`: Bu depolama işleminin döndürdüğü sonuç sayısını temsil eder.
     - `storeOps.size`: Belirli bir depolama işleminin sonucunun bayt cinsinden boyutunu temsil eder.
 
-Cosmos DB Gremlin çalışma zamanı Işleci|Açıklama
+Cosmos DB Gremlin çalışma zamanı Işleci|Description
 ---|---
 `GetVertices`| Bu adım, kalıcılık katmanından tahmine dayalı bir nesne kümesi edinir. 
 `GetEdges`| Bu adım bir köşe kümesine bitişik olan kenarları elde eder. Bu adım bir veya daha fazla depolama işlemine yol açabilir.
@@ -177,7 +176,7 @@ Aşağıda, yürütme profili yanıtını kullanarak sposıya yönelik genel iyi
 
 ### <a name="blind-fan-out-query-patterns"></a>Gizli olmayan fan sorgu desenleri
 
-**Bölümlenmiş bir grafikten**aşağıdaki yürütme profili yanıtını varsayın:
+**Bölümlenmiş bir grafikten** aşağıdaki yürütme profili yanıtını varsayın:
 
 ```json
 [
@@ -220,7 +219,7 @@ Aşağıda, yürütme profili yanıtını kullanarak sposıya yönelik genel iyi
 
 Aşağıdaki ekibinizle şunlardan yapılabilir:
 - Gremlin ifadesinin deseninin izlediği için sorgu tek bir KIMLIK aramadır `g.V('id')` .
-- `time`Ölçüden sorumlu olan bu sorgunun gecikmesi, [tek bir nokta okuma işlemi için 10ms 'den fazla](./introduction.md#guaranteed-low-latency-at-99th-percentile-worldwide)olduğundan, bu sorgunun gecikmesi yüksek gibi görünüyor.
+- `time`Ölçüden sorumlu olan bu sorgunun gecikmesi, [tek bir nokta okuma işlemi için 10ms 'den fazla](./introduction.md#guaranteed-speed-at-any-scale)olduğundan, bu sorgunun gecikmesi yüksek gibi görünüyor.
 - Nesnesine baktığımızda, olduğunu, yani `storeOps` `fanoutFactor` `5` [5 bölüme](./partitioning-overview.md) bu işlem tarafından erişildiğini görebiliriz.
 
 Bu çözümlemenin bir sonucu olarak, ilk sorgunun gerekenden daha fazla bölüme erişimi olduğunu belirleyebiliriz. Bu, sorguda bir koşul olarak bölümleme anahtarı belirtilerek çözülebilir. Bu, sorgu başına daha az gecikme süresine ve maliyeti azaltır. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. Daha iyi bir sorgu olabilir `g.V('tt0093640').has('partitionKey', 't1001')` .

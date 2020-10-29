@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ad3dd64bb55ccd657b74bacff3e4441ce63f0cf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cea061c1fd36bed9fa1e43c874fbca347707f78d
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569382"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925876"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault 'de CSR oluşturma ve birleştirme
 
@@ -34,7 +34,7 @@ Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden 
 
 
 
-1.  İlk olarak, **sertifika ilkesi oluşturun**. Key Vault, bu senaryoda seçilen CA desteklenmediğinden sertifikayı verenin Kullanıcı adına kaydetmeyecektir veya yenilemez ve bu nedenle IssuerName bilinmiyor olarak ayarlanır.
+1.  İlk olarak, **sertifika ilkesi oluşturun** . Key Vault, bu senaryoda seçilen CA desteklenmediğinden sertifikayı verenin Kullanıcı adına kaydetmeyecektir veya yenilemez ve bu nedenle IssuerName bilinmiyor olarak ayarlanır.
 
     ```azurepowershell
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown
@@ -62,19 +62,19 @@ Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden 
 ### <a name="azure-portal"></a>Azure portal
 
 1.  Tercih ettiğiniz CA için CSR oluşturmak üzere, sertifikayı eklemek istediğiniz anahtar kasasına gidin.
-2.  Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
+2.  Key Vault Özellikler sayfalarında, **Sertifikalar** ' ı seçin.
 3.  **Oluştur/Içeri aktar** sekmesini seçin.
 4.  **Sertifika oluştur** ekranında aşağıdaki değerleri seçin:
     - **Sertifika oluşturma yöntemi:** Üretecek.
     - **Sertifika adı:** ContosoManualCSRCertificate.
     - **Sertifika yetkilisinin (CA) türü:** Tümleşik olmayan bir CA tarafından verilen sertifika
     - **Konu:**`"CN=www.contosoHRApp.com"`
-    - İstediğiniz diğer değerleri seçin. **Oluştur**’a tıklayın.
+    - İstediğiniz diğer değerleri seçin. **Oluştur** 'a tıklayın.
 
     ![Sertifika Özellikleri](../media/certificates/create-csr-merge-csr/create-certificate.png)
 6.  Sertifikanın artık sertifikalar listesine eklendiğini görürsünüz. Az önce oluşturduğunuz yeni sertifikayı seçin. Sertifikanın geçerli durumu henüz CA tarafından verilmediğinden ' devre dışı ' olur.
-7. **Sertifika işlemi** sekmesine tıklayın ve CSR 'yi **İndir**' i seçin.
- ![Sertifika Özellikleri](../media/certificates/create-csr-merge-csr/download-csr.png)
+7. **Sertifika işlemi** sekmesine tıklayın ve CSR 'yi **İndir** ' i seçin.
+ ![CSR 'yi Indir düğmesini vurgulayan ekran görüntüsü.](../media/certificates/create-csr-merge-csr/download-csr.png)
 
 8.  İmzalanacak istek için. CSR dosyasını CA 'ya alın.
 9.  İstek CA tarafından imzalandıktan sonra, **imzalanmış isteği** aynı sertifika işlemi ekranında birleştirmek için sertifika dosyasını geri getirin.

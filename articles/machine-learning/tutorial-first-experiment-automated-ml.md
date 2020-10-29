@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: ebc3899c98a09b64443b129dde52cb597fac9eff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3fd4dcfa4c01c39e4e6cab4915de807c3d19ae6
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976643"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913866"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Öğretici: Azure Machine Learning otomatik ML ile sınıflandırma modeli oluşturma
 
@@ -44,12 +44,12 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 
 Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz, hizmette kolayca tüketilen bir nesne ile aynı olur. 
 
-Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure portal bir çalışma alanı oluşturun.
+[Çalışma alanı oluşturmanın birçok yolu](how-to-manage-workspace.md)vardır. Bu öğreticide, Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure portal bir çalışma alanı oluşturursunuz.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> **Çalışma alanınızı** ve **aboneliğinizi**bir yere göz atın. Denemenizin doğru yerde oluşturulmasını sağlamak için bunlara ihtiyacınız olacaktır. 
+> **Çalışma alanınızı** ve **aboneliğinizi** bir yere göz atın. Denemenizin doğru yerde oluşturulmasını sağlamak için bunlara ihtiyacınız olacaktır. 
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da çalışmaya başlama
 
@@ -59,7 +59,7 @@ Aşağıdaki deneme kurulumunu tamamlayıp, https://ml.azure.com tüm beceri sev
 
 1. Aboneliğinizi ve oluşturduğunuz çalışma alanını seçin.
 
-1. **Kullanmaya**başlayın ' ı seçin.
+1. **Kullanmaya** başlayın ' ı seçin.
 
 1. Sol bölmede **Yazar** bölümü altında **Otomatik ml** ' yi seçin.
 
@@ -67,7 +67,7 @@ Aşağıdaki deneme kurulumunu tamamlayıp, https://ml.azure.com tüm beceri sev
 
    ![Başlarken sayfası](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
-1. **+ Yeni OTOMATIK ml Çalıştır**' ı seçin. 
+1. **+ Yeni OTOMATIK ml Çalıştır** ' ı seçin. 
 
 ## <a name="create-and-load-dataset"></a>Veri kümesi oluşturma ve yükleme
 
@@ -75,13 +75,13 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
 
 1. **+ Veri kümesi oluştur** açılır listesinden **yerel dosyalardan** seçim yaparak yeni bir veri kümesi oluşturun. 
 
-    1. **Temel bilgi** formunda, veri kümenize bir ad verin ve isteğe bağlı bir açıklama sağlayın. Otomatik ML arabirimi şu anda yalnızca Tabulardataset 'leri desteklediğinden veri kümesi türü *tablosal*olmalıdır.
+    1. **Temel bilgi** formunda, veri kümenize bir ad verin ve isteğe bağlı bir açıklama sağlayın. Otomatik ML arabirimi şu anda yalnızca Tabulardataset 'leri desteklediğinden veri kümesi türü *tablosal* olmalıdır.
 
     1. Sol alt kısımdaki **İleri ' yi** seçin
 
     1. **Veri deposu ve dosya seçimi** formunda, çalışma alanı oluşturma, çalışma alanı **BlobStore (Azure Blob depolama)** sırasında otomatik olarak ayarlanan varsayılan veri deposunu seçin. Bu, çalışma alanınız için kullanılabilir hale getirmek üzere veri dosyanızı karşıya yükleyeceksiniz.
 
-    1. **Gözat**'ı seçin.
+    1. **Gözat** 'ı seçin.
     
     1. Yerel bilgisayarınızda **bankmarketing_train.csv** dosyasını seçin. Bu, bir [Önkoşul](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)olarak indirdiğiniz dosyadır.
 
@@ -91,7 +91,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
     
        Karşıya yükleme tamamlandığında, ayarlar ve önizleme formu dosya türüne göre önceden doldurulur. 
        
-    1. **Ayarlar ve önizleme** formunun aşağıdaki gibi doldurulduğunu doğrulayın ve **İleri ' yi**seçin.
+    1. **Ayarlar ve önizleme** formunun aşağıdaki gibi doldurulduğunu doğrulayın ve **İleri ' yi** seçin.
         
         Alan|Açıklama| Öğretici için değer
         ---|---|---
@@ -101,7 +101,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
         Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların aynı üst bilgileri var
         Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok
 
-    1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. **İleri**’yi seçin.
+    1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. **İleri** ’yi seçin.
 
         ![Önizleme sekmesi yapılandırması](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
 
@@ -111,9 +111,9 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
     
     1. Listede göründükten sonra veri kümenizi seçin.
     
-    1. **Day_of_week** dahil etmediğinizden emin olmak için **veri önizlemeyi** gözden geçirin ve **Tamam**' ı seçin.
+    1. **Day_of_week** dahil etmediğinizden emin olmak için **veri önizlemeyi** gözden geçirin ve **Tamam** ' ı seçin.
 
-    1. **İleri ' yi**seçin.
+    1. **İleri ' yi** seçin.
 
 ## <a name="configure-experiment-run"></a>Deneme çalıştırmasını Yapılandır
 
@@ -140,7 +140,7 @@ Verilerinizi yükleyip yapılandırdıktan sonra, denemenizin kurulumunu yapabil
 
         1. Oluşturulduktan sonra, açılan listeden yeni işlem hedefini seçin.
 
-    1. **İleri**’yi seçin.
+    1. **İleri** ’yi seçin.
 
 1. **Görev türü ve ayarlar** formunda, Machine Learning görev türünü ve yapılandırma ayarlarını BELIRTEREK otomatikleştirilmiş ml denemenizin kurulumunu doldurun.
     
@@ -157,13 +157,13 @@ Verilerinizi yükleyip yapılandırdıktan sonra, denemenizin kurulumunu yapabil
         Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 2
         Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla &nbsp; eşzamanlı &nbsp; yineleme: 5
         
-        **Kaydet**’i seçin.
+        **Kaydet** ’i seçin.
 
 1. Denemeyi çalıştırmak için **son** ' u seçin. **Çalışma ayrıntısı** ekranı, deneme hazırlığı başladığında en üstteki **çalıştırma durumuyla** birlikte açılır.
 
 >[!IMPORTANT]
 > Hazırlık, deneme çalıştırmasının hazırlanmasına **10-15 dakika** sürer.
-> Çalışmaya başladıktan sonra, **her yinelemede 2-3 dakika daha**sürer.  
+> Çalışmaya başladıktan sonra, **her yinelemede 2-3 dakika daha** sürer.  
 > Deneme ilerledikçe çalıştırmanın durumunu görmek için düzenli aralıklarla **Yenile** ' yi seçin.
 >
 > Üretimde, büyük olasılıkla biraz daha fazla yol göstereceğiz. Ancak bu öğreticide, diğer kullanıcılar çalışmaya devam ederken, **modeller** sekmesinde sınanan algoritmaları keşfetmeye başlayacağız. 
@@ -206,9 +206,9 @@ Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yakl
     
     Bu örnekte, *Gelişmiş* menüsünde belirtilen Varsayılanları kullanırız. 
 
-1. **Dağıt**'ı seçin.  
+1. **Dağıt** 'ı seçin.  
 
-    **Çalıştır** ekranının üst kısmında yeşil başarı iletisi görünür ve **model Özeti** bölmesinde **dağıtım durumu**altında bir durum iletisi görüntülenir. Dağıtım durumunu denetlemek için düzenli aralıklarla **Yenile** ' yi seçin.
+    **Çalıştır** ekranının üst kısmında yeşil başarı iletisi görünür ve **model Özeti** bölmesinde **dağıtım durumu** altında bir durum iletisi görüntülenir. Dağıtım durumunu denetlemek için düzenli aralıklarla **Yenile** ' yi seçin.
     
 Artık tahminleri oluşturmak için işlemsel bir Web hizmetiniz vardır. 
 
@@ -222,11 +222,11 @@ Dağıtım dosyaları veri ve deneme dosyalarından daha büyüktür, bu nedenle
 
 \/Diğer öğreticiler ve araştırmayla ilgili kaynak grubunu ve çalışma alanını tutmak istiyorsanız, yalnızca https:/ml.Azure.com/konumundaki Azure Machine Learning dağıtım örneğini silin. 
 
-1. [Azure Machine Learning](https://ml.azure.com/)gidin. Çalışma alanınıza gidin ve **varlıklar** bölmesinin sol tarafında **uç noktalar**' ı seçin. 
+1. [Azure Machine Learning](https://ml.azure.com/)gidin. Çalışma alanınıza gidin ve **varlıklar** bölmesinin sol tarafında **uç noktalar** ' ı seçin. 
 
-1. Silmek istediğiniz dağıtımı seçin ve **Sil**' i seçin. 
+1. Silmek istediğiniz dağıtımı seçin ve **Sil** ' i seçin. 
 
-1. **Devam**' ı seçin.
+1. **Devam** ' ı seçin.
 
 ### <a name="delete-the-resource-group"></a>Kaynak grubunu silme
 

@@ -3,16 +3,16 @@ title: Azure Batch düğümler ve havuzlar
 description: İşlem düğümleri ve havuzlar hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: a6422976f5362e9ff32cd41cc167a00441ab7aec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c85c50d0b30e30563390d2ffb05942f199047d67
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371452"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913815"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch düğümler ve havuzlar
 
-Azure Batch bir iş akışında, bir *işlem düğümü* (veya *düğümü*), uygulamanızın iş yükünün bir bölümünü işleyen bir sanal makinedir. *Havuz* , uygulamanızın üzerinde çalışacağı bu düğümlerin bir koleksiyonudur. Bu makalede düğümler ve havuzlar hakkında daha fazla bilgi verilmektedir ve bunları bir Azure Batch iş akışında oluşturma ve kullanma konusunda dikkat edilecek noktalar açıklanmaktadır.
+Azure Batch bir iş akışında, bir *işlem düğümü* (veya *düğümü* ), uygulamanızın iş yükünün bir bölümünü işleyen bir sanal makinedir. *Havuz* , uygulamanızın üzerinde çalışacağı bu düğümlerin bir koleksiyonudur. Bu makalede düğümler ve havuzlar hakkında daha fazla bilgi verilmektedir ve bunları bir Azure Batch iş akışında oluşturma ve kullanma konusunda dikkat edilecek noktalar açıklanmaktadır.
 
 ## <a name="nodes"></a>Düğümler
 
@@ -68,11 +68,11 @@ Toplu Işte kullanılabilen iki tür havuz yapılandırması vardır.
 
 **Sanal makine yapılandırması** , havuzun Azure sanal makinelerinden oluştuğunu belirtir. Bu VM'ler Linux veya Windows görüntülerinden oluşturulabilir.
 
-Sanal Makine Yapılandırmasını temel alan bir havuz oluşturduğunuzda, yalnızca düğümlerin boyutunu ve onları oluşturmak için kullanılan görüntülerin kaynağını değil, aynı zamanda **sanal makine görüntü başvurusunu** ve düğümlere yüklenecek Batch **düğümü aracı SKU'sunu** da belirtmeniz gerekir. Bu havuz özelliklerini belirtme hakkında daha fazla bilgi için bkz. [Azure Batch havuzlarında Linux işlem düğümlerini hazırlama](batch-linux-nodes.md). İsteğe bağlı olarak Market görüntülerinden oluşturulmuş havuz VM'lerine bir veya daha fazla boş veri diski ekleyebilir veya VM'leri oluşturmak için kullanılan özel görüntülere veri diskleri dahil edebilirsiniz. Veri disklerini dahil etmek için, diskleri kullanmak üzere bir VM içinden bağlamanız ve biçimlendirmeniz gerekir.
+[Batch düğüm Aracısı](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) , havuzdaki her düğüm üzerinde çalışan ve düğüm ile Batch hizmeti arasında komut ve denetim arabirimini sağlayan bir programdır. Farklı işletim sistemleri için SKU olarak bilinen düğüm aracısının farklı uygulamaları vardır. Sanal Makine Yapılandırmasını temel alan bir havuz oluşturduğunuzda, yalnızca düğümlerin boyutunu ve onları oluşturmak için kullanılan görüntülerin kaynağını değil, aynı zamanda **sanal makine görüntü başvurusunu** ve düğümlere yüklenecek Batch **düğümü aracı SKU'sunu** da belirtmeniz gerekir. Bu havuz özelliklerini belirtme hakkında daha fazla bilgi için bkz. [Azure Batch havuzlarında Linux işlem düğümlerini hazırlama](batch-linux-nodes.md). İsteğe bağlı olarak Market görüntülerinden oluşturulmuş havuz VM'lerine bir veya daha fazla boş veri diski ekleyebilir veya VM'leri oluşturmak için kullanılan özel görüntülere veri diskleri dahil edebilirsiniz. Veri disklerini dahil etmek için, diskleri kullanmak üzere bir VM içinden bağlamanız ve biçimlendirmeniz gerekir.
 
 ### <a name="cloud-services-configuration"></a>Cloud Services yapılandırması
 
-**Cloud Services yapılandırması** , havuzun Azure Cloud Services düğümlerinden oluştuğunu belirtir. Cloud Services *yalnızca*Windows işlem düğümleri sağlar.
+**Cloud Services yapılandırması** , havuzun Azure Cloud Services düğümlerinden oluştuğunu belirtir. Cloud Services *yalnızca* Windows işlem düğümleri sağlar.
 
 Cloud Services Yapılandırması havuzları için kullanılabilen işletim sistemleri [Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi](../cloud-services/cloud-services-guestos-update-matrix.md) içinde listelenmiştir. Cloud Services düğümleri içeren bir havuz oluşturduğunuzda, düğüm boyutunu ve *Işletim sistemi ailesini* belirtmeniz gerekir (hangi .NET sürümlerinin işletim sistemine yükleneceğini belirler). Cloud Services, Windows çalıştıran sanal makinelerden daha hızlı bir şekilde Azure 'a dağıtılır. Windows işlem düğümlerinden oluşan havuzlar oluşturmak istiyorsanız, Cloud Services'ın dağıtım süresi açısından daha iyi bir performans sunduğunu görebilirsiniz.
 
@@ -127,7 +127,7 @@ Bir [otomatik ölçeklendirme formülü](batch-automatic-scaling.md#autoscale-fo
 
 - **Zaman ölçümleri** belirtilen saat sayısınca beş dakikada bir toplanan istatistikleri temel alır.
 - **Kaynak ölçümleri** CPU kullanımı, bant genişliği kullanımı, bellek kullanımı ve düğüm sayısını temel alır.
-- **Görev ölçümleri**; *Etkin* (kuyruğa alınmış) *Çalışıyor* veya *Tamamlandı* gibi görev durumlarını temel alır.
+- **Görev ölçümleri** ; *Etkin* (kuyruğa alınmış) *Çalışıyor* veya *Tamamlandı* gibi görev durumlarını temel alır.
 
 Otomatik ölçeklendirme bir havuzdaki işlem düğümlerinin sayısını azalttığında, azaltma işlemi sırasında çalışan görevlerin nasıl ele alınacağını göz önünde bulundurmanız gerekir. Toplu Işlem buna uyum sağlamak için formüllerinize dahil ettiğiniz [*düğüm ayırmayı kaldırma seçeneğini*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) sağlar. Örneğin, çalışmakta olan görevlerin hemen durdurulacağını, ardından başka bir düğüm üzerinde yeniden kuyruğa alınacağını veya düğüm havuzdan kaldırılmadan önce bitmesine izin verileceğini belirtebilirsiniz. Düğüm ayırmayı kaldırma seçeneğini olarak ayarlamanın `taskcompletion` veya `retaineddata` Tüm görevler tamamlanana kadar havuz yeniden boyutlandırma işlemlerini önlemesine veya sırasıyla tüm görev saklama dönemlerinin süresi dolmaya engel olacağını unutmayın.
 
@@ -142,7 +142,7 @@ Bir uygulamayı otomatik olarak ölçeklendirme hakkında daha fazla bilgi için
 
 Varsayılan yapılandırma bir düğümde tek seferde bir görevin çalışacağını belirtir, ancak bir düğümde aynı anda iki veya daha fazla görev yürütülmesinin faydalı olduğu senaryolar da vardır. Düğüm başına birden fazla görevden nasıl yararlanabileceğinizi görmek için [eşzamanlı düğüm görevleri](batch-parallel-node-tasks.md) makalesindeki [örnek senaryoya](batch-parallel-node-tasks.md#example-scenario) bakın.
 
-Ayrıca, Batch 'in görevleri bir havuzdaki tüm düğümlerde eşit olarak paketleyemeyeceğini veya bir düğümdeki görevleri başka bir düğüme atamadan önce en fazla sayıda göreve paketleyemeyeceğini belirleyen bir *Fill türü*de belirtebilirsiniz.
+Ayrıca, Batch 'in görevleri bir havuzdaki tüm düğümlerde eşit olarak paketleyemeyeceğini veya bir düğümdeki görevleri başka bir düğüme atamadan önce en fazla sayıda göreve paketleyemeyeceğini belirleyen bir *Fill türü* de belirtebilirsiniz.
 
 ## <a name="communication-status"></a>İletişim durumu
 
@@ -179,7 +179,7 @@ Bir sanal ağda Batch havuzu oluşturma hakkında daha fazla bilgi için bkz. [S
 
 Azure Batch çözümünüzü tasarlarken, havuzların nasıl ve ne zaman oluşturulduğunu ve bu havuzlardaki işlem düğümlerinin ne kadar süreyle kullanılabilir tutulacağını belirtmeniz gerekir.
 
-Spektrumun bir ucunda, gönderdiğiniz her iş için bir havuz oluşturabilir ve görevlerin yürütülmesi biter bitmez havuzu silebilirsiniz. Bu, düğümler yalnızca gerektiğinde ayrıldığından ve boşta kaldıktan sonra kapatılabileceği için kullanımı en üst düzeye çıkarır. Bu, işin düğümlerin ayrılmasını beklemesi gerektiği anlamına geldiğinden, düğümlerin ayrı ayrı ayrıldığı ve başlangıç görevinin tamamlandığı anda görevlerin yürütme için zamanlandığını aklınızda bulundurulmalıdır. Batch, görevler düğümlere atamadan önce havuzdaki tüm düğümlerin kullanılabilir olmasını *beklemez*. Böylece kullanılabilir tüm düğümlerden en iyi şekilde faydalanılmasını sağlar.
+Spektrumun bir ucunda, gönderdiğiniz her iş için bir havuz oluşturabilir ve görevlerin yürütülmesi biter bitmez havuzu silebilirsiniz. Bu, düğümler yalnızca gerektiğinde ayrıldığından ve boşta kaldıktan sonra kapatılabileceği için kullanımı en üst düzeye çıkarır. Bu, işin düğümlerin ayrılmasını beklemesi gerektiği anlamına geldiğinden, düğümlerin ayrı ayrı ayrıldığı ve başlangıç görevinin tamamlandığı anda görevlerin yürütme için zamanlandığını aklınızda bulundurulmalıdır. Batch, görevler düğümlere atamadan önce havuzdaki tüm düğümlerin kullanılabilir olmasını *beklemez* . Böylece kullanılabilir tüm düğümlerden en iyi şekilde faydalanılmasını sağlar.
 
 Spektrumun diğer ucunda, işlerin hemen başlatılması en yüksek önceliğe sahipse işler gönderilmeden önce bir havuz oluşturabilir ve bu havuzun düğümlerini kullanıma sunabilirsiniz. Bu senaryoda görevler hemen başlayabilir, ancak görevlerin atanmasını beklerken düğümler boşta kalmaya devam edebilir.
 

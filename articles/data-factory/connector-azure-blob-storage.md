@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: af03dde724b4f1ec75c9505bb2f9311ad09f5fd0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/28/2020
+ms.openlocfilehash: 5969c449afe203ec9a014d2da78b56eeeb837590
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635924"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913373"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamada verileri kopyalama ve dönüştürme
 
@@ -48,9 +48,6 @@ Kopyalama etkinliği için bu blob Storage Bağlayıcısı şunları destekler:
 - Blob 'ları olduğu gibi kopyalama veya [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs.md)ile blob ayrıştırma veya oluşturma.
 - [Kopyalama sırasında dosya meta verileri koruma](#preserving-metadata-during-copy).
 
->[!IMPORTANT]
->Azure Storage güvenlik duvarı ayarlarında **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver** seçeneğini etkinleştirip blob depolamaya bağlanmak için Azure tümleştirme çalışma zamanını kullanmak istiyorsanız, [yönetilen kimlik kimlik doğrulamasını](#managed-identity)kullanmanız gerekir.
-
 ## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -67,7 +64,8 @@ Bu BLOB depolama Bağlayıcısı aşağıdaki kimlik doğrulama türlerini deste
 - [Azure Kaynak kimlik doğrulaması için Yönetilen kimlikler](#managed-identity)
 
 >[!NOTE]
->Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri yüklemek için PolyBase kullandığınızda, kaynak veya hazırlama BLOB depolama alanı bir Azure sanal ağ uç noktasıyla yapılandırılmışsa, PolyBase için gereken yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. Şirket içinde barındırılan tümleştirme çalışma zamanını 3,18 veya üzeri bir sürümle de kullanmalısınız. Daha fazla yapılandırma önkoşulları için [yönetilen kimlik doğrulama](#managed-identity) bölümüne bakın.
+>- Azure depolama güvenlik duvarında **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver** seçeneğini kullanarak blob depolamaya bağlanmak Için Genel Azure tümleştirme çalışma zamanını kullanmak istiyorsanız, [yönetilen kimlik kimlik doğrulamasını](#managed-identity)kullanmanız gerekir.
+>- Azure SYNAPSE Analytics 'e veri yüklemek için PolyBase veya COPY ifadesini kullandığınızda, kaynak veya hazırlama BLOB depolama alanı bir Azure sanal ağ uç noktasıyla yapılandırılmışsa, SYNAPSE için gereken yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. Daha fazla yapılandırma önkoşulları için [yönetilen kimlik doğrulama](#managed-identity) bölümüne bakın.
 
 >[!NOTE]
 >Azure HDInsight ve Azure Machine Learning etkinlikleri yalnızca Azure Blob depolama hesabı anahtarlarını kullanan kimlik doğrulamasını destekler.
@@ -286,7 +284,7 @@ Azure depolama kimlik doğrulaması hakkında genel bilgi için bkz. [Azure Acti
     - **Havuz olarak** , **erişim denetımı 'nde (IAM)** , en azından **Depolama Blobu veri katılımcısı** rolüne izin verin.
 
 >[!IMPORTANT]
->BLOB depolama alanından (kaynak veya hazırlama olarak) Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri yüklemek için PolyBase kullanırsanız, BLOB depolama için yönetilen kimlik kimlik doğrulamasını kullanırken, [Bu](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)kılavuzda 1 ve 2. adımları izlediğinizden emin olun. Bu adımlar, sunucunuzu Azure AD 'ye kaydeder ve Depolama Blobu veri katılımcısı rolünü sunucunuza atar. Data Factory Rest 'i işler. Blob depolamayı bir Azure sanal ağ uç noktası ile yapılandırdıysanız, verileri dosyadan yüklemek için PolyBase kullanmak istiyorsanız, PolyBase 'in gerektirdiği şekilde yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir.
+>BLOB depolama alanından (kaynak veya hazırlama olarak) Azure SYNAPSE Analytics 'e veri yüklemek için PolyBase veya COPY ifadesini kullanırsanız, blob depolaması için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Bu](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)kılavuzda 1 ile 3 arasındaki adımları da izlediğinizden emin olun. Bu adımlar, sunucunuzu Azure AD 'ye kaydeder ve Depolama Blobu veri katılımcısı rolünü sunucunuza atar. Data Factory Rest 'i işler. Blob depolamayı bir Azure sanal ağ uç noktasıyla yapılandırırsanız, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına** Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsü altında, SYNAPSE Için gereken şekilde erişmesine izin ver ' i de yüklemeniz gerekir.
 
 Bu özellikler, Azure Blob depolama bağlı hizmeti için desteklenir:
 

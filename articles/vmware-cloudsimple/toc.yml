@@ -52,6 +52,8 @@
           href: node-quota.md
         - name: Bakım ve güncelleştirmeler
           href: cloudsimple-maintenance-updates.md
+        - name: Yasak eylemler
+          href: forbidden-actions.md
         - name: SSS
           href: cloudsimple-faq.md
     - name: Öğreticiler

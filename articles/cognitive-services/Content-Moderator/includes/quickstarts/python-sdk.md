@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 64a9143e7a425b35e37f23b233c91b8e7bb70169
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bf24d7c5ca88c47d3bfd8067a4e533ed413dde90
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755540"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925001"
 ---
 Python için Azure Content Moderator istemci kitaplığı ile çalışmaya başlayın. PiPy paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
@@ -30,9 +30,9 @@ Python için Content Moderator istemci kitaplığını şu şekilde kullanın:
 * Özel görüntü listesi kullanma
 * İnceleme oluştur
 
-[Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Başvuru belgeleri](/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
@@ -75,10 +75,10 @@ Aşağıdaki sınıflar, Content Moderator Python istemci kitaplığının bazı
 
 |Ad|Açıklama|
 |---|---|
-|[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
-|[Imagemoderationoperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
-|[TextModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)|Bu sınıf, dil, küfür, hatalar ve kişisel bilgiler için metin çözümleme işlevlerini sağlar.|
-[ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python)|Bu sınıf, iş oluşturma, özel iş akışları ve insan incelemeleri için yöntemler de dahil olmak üzere, gözden geçirme API 'lerinin işlevlerini sağlar.|
+|[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
+|[Imagemoderationoperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
+|[TextModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)|Bu sınıf, dil, küfür, hatalar ve kişisel bilgiler için metin çözümleme işlevlerini sağlar.|
+[ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python)|Bu sınıf, iş oluşturma, özel iş akışları ve insan incelemeleri için yöntemler de dahil olmak üzere, gözden geçirme API 'lerinin işlevlerini sağlar.|
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -93,7 +93,7 @@ Bu kod parçacıkları, Python için Content Moderator istemci kitaplığı ile 
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir [Biliveservicescredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [Contentmoderatorclient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir [Biliveservicescredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [Contentmoderatorclient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_client)]
 
@@ -116,7 +116,7 @@ Ardından, Python betiğe aşağıdaki kodu ekleyin.
 
 ## <a name="use-a-custom-terms-list"></a>Özel terimler listesi kullanma
 
-Aşağıdaki kod, metin düzenlemesi için özel terimlerin bir listesini yönetmeyi gösterir. [ListManagementTermListsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations?view=azure-python) sınıfını kullanarak bir hüküm listesi oluşturabilir, tek tek koşulları yönetebilir ve diğer metin gövdelerini buna karşı görüntüleyebilirsiniz.
+Aşağıdaki kod, metin düzenlemesi için özel terimlerin bir listesini yönetmeyi gösterir. [ListManagementTermListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations?view=azure-python) sınıfını kullanarak bir hüküm listesi oluşturabilir, tek tek koşulları yönetebilir ve diğer metin gövdelerini buna karşı görüntüleyebilirsiniz.
 
 ### <a name="get-sample-text"></a>Örnek metin al
 
@@ -186,7 +186,7 @@ Tüm koşullarının listesini temizlemek için aşağıdaki kodu kullanın.
 
 ## <a name="moderate-images"></a>Orta görüntüler
 
-Aşağıdaki kod, Yetişkin ve kcy içeriğinin görüntülerini çözümlemek için bir [ımagemoderationoperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python) nesnesiyle birlikte bir Content moderator istemcisi kullanır.
+Aşağıdaki kod, Yetişkin ve kcy içeriğinin görüntülerini çözümlemek için bir [ımagemoderationoperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python) nesnesiyle birlikte bir Content moderator istemcisi kullanır.
 
 ### <a name="get-sample-images"></a>Örnek görüntüleri al
 
@@ -218,7 +218,7 @@ Aşağıdaki kod, resmi insan yüzeyleri için denetler ve sonuçları konsola y
 
 ## <a name="use-a-custom-image-list"></a>Özel görüntü listesi kullanma
 
-Aşağıdaki kod, görüntü düzenlemesi için özel bir görüntü listesini yönetmeyi gösterir. Bu özellik, platformunuz Sıklıkla, ekran dışına almak istediğiniz görüntü kümesinin örneklerini alırsa kullanışlıdır. Bu belirli görüntülerin bir listesini tutarak performansı artırabilirsiniz. [ListManagementImageListsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations?view=azure-python) sınıfı, bir görüntü listesi oluşturmanıza, listedeki tek resimleri yönetmenize ve diğer görüntüleri buna karşı karşılaştırmanıza olanak sağlar.
+Aşağıdaki kod, görüntü düzenlemesi için özel bir görüntü listesini yönetmeyi gösterir. Bu özellik, platformunuz Sıklıkla, ekran dışına almak istediğiniz görüntü kümesinin örneklerini alırsa kullanışlıdır. Bu belirli görüntülerin bir listesini tutarak performansı artırabilirsiniz. [ListManagementImageListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations?view=azure-python) sınıfı, bir görüntü listesi oluşturmanıza, listedeki tek resimleri yönetmenize ve diğer görüntüleri buna karşı karşılaştırmanıza olanak sağlar.
 
 Bu senaryoda kullanacağınız görüntü URL 'Lerini depolamak için aşağıdaki metin değişkenlerini oluşturun.
 
@@ -296,7 +296,7 @@ Belirli bir görüntü listesini silmek için aşağıdaki kodu kullanın.
 
 İçerik akışını [Gözden](https://contentmoderator.cognitive.microsoft.com) geçirmek Için Content moderator Python istemci Kitaplığı ' nı kullanarak, insan moderatör tarafından gözden geçirebilirsiniz. Inceleme aracı hakkında daha fazla bilgi edinmek için bkz. [İnceleme aracı kavramsal Kılavuzu](../../review-tool-user-guide/human-in-the-loop.md).
 
-Aşağıdaki kod, gözden geçirme oluşturmak, KIMLIĞINI almak ve gözden geçirme aracının Web portalı aracılığıyla insan girişini aldıktan sonra ayrıntılarını denetlemek için [ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) sınıfını kullanır.
+Aşağıdaki kod, gözden geçirme oluşturmak, KIMLIĞINI almak ve gözden geçirme aracının Web portalı aracılığıyla insan girişini aldıktan sonra ayrıntılarını denetlemek için [ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) sınıfını kullanır.
 
 ### <a name="get-review-credentials"></a>Inceleme kimlik bilgilerini al
 
@@ -311,7 +311,7 @@ Verilen görüntü URL 'SI için bir inceleme oluşturmak ve göndermek üzere a
 
 ### <a name="get-review-details"></a>İnceleme ayrıntılarını al
 
-Belirli bir incelemenin ayrıntılarını denetlemek için aşağıdaki kodu kullanın. İncelemeyi oluşturduktan sonra, gözden geçirme aracına kendiniz gidebilir ve içerikle etkileşime geçebilirsiniz. Bunun nasıl yapılacağı hakkında bilgi için bkz. [İnceleme nasıl yapılır Kılavuzu](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images). İşiniz bittiğinde, bu kodu tekrar çalıştırabilirsiniz ve gözden geçirme işleminin sonuçları alınır.
+Belirli bir incelemenin ayrıntılarını denetlemek için aşağıdaki kodu kullanın. İncelemeyi oluşturduktan sonra, gözden geçirme aracına kendiniz gidebilir ve içerikle etkileşime geçebilirsiniz. Bunun nasıl yapılacağı hakkında bilgi için bkz. [İnceleme nasıl yapılır Kılavuzu](../../review-tool-user-guide/review-moderated-images.md). İşiniz bittiğinde, bu kodu tekrar çalıştırabilirsiniz ve gözden geçirme işleminin sonuçları alınır.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_getdetails)]
 
@@ -351,7 +351,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 Bu hızlı başlangıçta, denetleme görevlerini yapmak için Content Moderator Python kitaplığını nasıl kullanacağınızı öğrendiniz. Daha sonra, bir kavramsal kılavuz okuyarak görüntülerin veya diğer ortamların denetimi hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
->[Görüntü denetleme kavramları](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
+>[Görüntü denetleme kavramları](../../image-moderation-api.md)
 
 * [Azure Content Moderator nedir?](../../overview.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py)' da bulunabilir.

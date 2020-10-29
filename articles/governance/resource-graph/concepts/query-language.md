@@ -1,14 +1,14 @@
 ---
 title: Sorgu dilini anlama
 description: Kaynak grafik tablolarını ve kullanılabilir kusto veri türlerini, işleçlerini ve Azure Kaynak Graf ile kullanılabilir işlevleri açıklar.
-ms.date: 09/30/2020
+ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: ef588bd3fd8afcf1f1139f97d5df2d48a14b4dd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c3ad55a0f1af623211852c02aabd37560c00bc6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578538"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926096"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Kaynak Grafiği sorgu dilini anlama
 
@@ -26,16 +26,17 @@ Bu makalede kaynak Graph tarafından desteklenen dil bileşenleri ele alınmakta
 
 Kaynak Grafiği Azure Resource Manager kaynak türlerini ve bunların özelliklerini depolayan veriler için birkaç tablo sağlar. Bu tablolar, `join` `union` ilişkili kaynak türlerinden özellikleri almak için veya işleçleriyle birlikte kullanılabilir. Kaynak grafiğinde kullanılabilen tabloların listesi aşağıda verilmiştir:
 
-|Kaynak grafik tabloları |Açıklama |
+|Kaynak grafik tabloları |Description |
 |---|---|
 |Kaynaklar |Sorguda tanımlanmazsa varsayılan tablo. Çoğu Kaynak Yöneticisi kaynak türü ve özelliği burada bulunur. |
 |ResourceContainers |Abonelik (Önizleme-- `Microsoft.Resources/subscriptions` ) ve kaynak grubu ( `Microsoft.Resources/subscriptions/resourcegroups` ) kaynak türleri ve verileri içerir. |
 |Danışmanlaştırın kaynakları |İle _ilgili_ kaynakları içerir `Microsoft.Advisor` . |
 |AlertsManagementResources |İle _ilgili_ kaynakları içerir `Microsoft.AlertsManagement` . |
 |GuestConfigurationResources |İle _ilgili_ kaynakları içerir `Microsoft.GuestConfiguration` . |
-|HealthResources |İle _ilgili_ kaynakları içerir `Microsoft.ResourceHealth` . |
 |MaintenanceResources |İle _ilgili_ kaynakları içerir `Microsoft.Maintenance` . |
+|PolicyResources |İle _ilgili_ kaynakları içerir `Microsoft.PolicyInsights` . ( **Önizleme** )|
 |SecurityResources |İle _ilgili_ kaynakları içerir `Microsoft.Security` . |
+|ServiceHealthResources |İle _ilgili_ kaynakları içerir `Microsoft.ResourceHealth` . |
 
 Kaynak türleri dahil olmak üzere kapsamlı bir liste için bkz. [Başvuru: desteklenen tablolar ve kaynak türleri](../reference/supported-tables-resources.md).
 
@@ -44,7 +45,7 @@ Kaynak türleri dahil olmak üzere kapsamlı bir liste için bkz. [Başvuru: des
 
 Her tabloda hangi kaynak türlerinin kullanılabildiğini öğrenmek için portalda kaynak grafiği gezginini kullanın. Alternatif olarak, `<tableName> | distinct type` kaynak türlerinin bir listesini almak için gibi bir sorgu kullanın, belirtilen kaynak grafik tablosu ortamınızda var olan kaynağı destekler.
 
-Aşağıdaki sorguda basit gösterilmektedir `join` . Sorgu sonucu sütunları bir araya ve birleştirilmiş tablodaki tüm yinelenen sütun adlarını, bu örnekteki _Resourcecontainer_ 'leri **1**' de eklenmiş şekilde harmanlar. _Resourcecontainers_ tablosunda hem abonelikler hem de kaynak grupları için türler olduğundan, _kaynak tablosundan kaynağa_ katılması için her iki tür de kullanılabilir.
+Aşağıdaki sorguda basit gösterilmektedir `join` . Sorgu sonucu sütunları bir araya ve birleştirilmiş tablodaki tüm yinelenen sütun adlarını, bu örnekteki _Resourcecontainer_ 'leri **1** ' de eklenmiş şekilde harmanlar. _Resourcecontainers_ tablosunda hem abonelikler hem de kaynak grupları için türler olduğundan, _kaynak tablosundan kaynağa_ katılması için her iki tür de kullanılabilir.
 
 ```kusto
 Resources
@@ -52,7 +53,7 @@ Resources
 | limit 1
 ```
 
-Aşağıdaki sorguda daha karmaşık bir kullanımı gösterilmektedir `join` . Sorgu, birleştirilmiş tabloyu abonelik kaynakları ile sınırlandırır ve `project` yalnızca özgün alan _SubscriptionID_ ve _ad_ alanı, _SubName_olarak yeniden adlandırılır. Alan, `join` _kaynaklar_bölümünde zaten mevcut olduğundan, yeniden adlandırma, _name1_ olarak eklenmesini önler. Özgün tablo ile filtrelenmiştir `where` ve aşağıdakiler `project` her iki tablodan sütunları içerir. Sorgu sonucu, türünü, anahtar kasasının adını ve içindeki aboneliğin adını gösteren tek bir Anahtar Kasası.
+Aşağıdaki sorguda daha karmaşık bir kullanımı gösterilmektedir `join` . Sorgu, birleştirilmiş tabloyu abonelik kaynakları ile sınırlandırır ve `project` yalnızca özgün alan _SubscriptionID_ ve _ad_ alanı, _SubName_ olarak yeniden adlandırılır. Alan, `join` _kaynaklar_ bölümünde zaten mevcut olduğundan, yeniden adlandırma, _name1_ olarak eklenmesini önler. Özgün tablo ile filtrelenmiştir `where` ve aşağıdakiler `project` her iki tablodan sütunları içerir. Sorgu sonucu, türünü, anahtar kasasının adını ve içindeki aboneliğin adını gösteren tek bir Anahtar Kasası.
 
 ```kusto
 Resources
@@ -67,7 +68,7 @@ Resources
 
 ## <a name="extended-properties-preview"></a><a name="extended-properties"></a>Genişletilmiş Özellikler (Önizleme)
 
-_Önizleme_ özelliği olarak, kaynak grafiğindeki kaynak türlerinden bazılarının, Azure Resource Manager tarafından sağlanan özelliklerin ötesinde sorgu için kullanılabilecek ek tür ile ilgili özellikleri vardır. _Genişletilmiş özellikler_olarak bilinen bu değer kümesi, içindeki desteklenen bir kaynak türünde mevcuttur `properties.extended` . Hangi kaynak türlerinin _genişletilmiş özelliklere_sahip olduğunu görmek için aşağıdaki sorguyu kullanın:
+_Önizleme_ özelliği olarak, kaynak grafiğindeki kaynak türlerinden bazılarının, Azure Resource Manager tarafından sağlanan özelliklerin ötesinde sorgu için kullanılabilecek ek tür ile ilgili özellikleri vardır. _Genişletilmiş özellikler_ olarak bilinen bu değer kümesi, içindeki desteklenen bir kaynak türünde mevcuttur `properties.extended` . Hangi kaynak türlerinin _genişletilmiş özelliklere_ sahip olduğunu görmek için aşağıdaki sorguyu kullanın:
 
 ```kusto
 Resources
@@ -121,7 +122,7 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
 
 |KQL |Kaynak Grafiği örnek sorgusu |Notlar |
 |---|---|---|
-|[biriktirme](/azure/kusto/query/countoperator) |[Ana kasaları say](../samples/starter.md#count-keyvaults) | |
+|[count](/azure/kusto/query/countoperator) |[Ana kasaları say](../samples/starter.md#count-keyvaults) | |
 |[ayrı](/azure/kusto/query/distinctoperator) |[Belirli bir diğer ad için farklı değerleri göster](../samples/starter.md#distinct-alias-values) | |
 |[genişletmeyi](/azure/kusto/query/extendoperator) |[Sanal makineleri işletim sistemi türüne göre sayma](../samples/starter.md#count-os) | |
 |[ayrılma](/azure/kusto/query/joinoperator) |[Abonelik adı olan Anahtar Kasası](../samples/advanced.md#join) |Birleşim türleri desteklenir: [ınnerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [soltouter](/azure/kusto/query/joinoperator#left-outer-join). `join`Tek bir sorgudaki 3 sınırı. Yayın katılımı gibi özel JOIN stratejilerine izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
@@ -135,15 +136,15 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
 |[ölçütü](/azure/kusto/query/summarizeoperator) |[Azure kaynaklarını sayma](../samples/starter.md#count-resources) |Yalnızca Basitleştirilmiş ilk sayfa |
 |[take](/azure/kusto/query/takeoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |Öğesinin eşanlamlısı `limit` . [Skip](./work-with-data.md#skipping-records)ile çalışmaz. |
 |[Sayfanın Üstü](/azure/kusto/query/topoperator) |[Ada ve işletim sistemi türlerine göre ilk beş sanal makineyi göster](../samples/starter.md#show-sorted) | |
-|[birleşim](/azure/kusto/query/unionoperator) |[İki sorgudan alınan sonuçları tek bir sonuç halinde birleştirin](../samples/advanced.md#unionresults) |Tek tablo izin verildi: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _tablosu_. `union`Tek bir sorgudaki 3 Tag sınırı. `union`Bacak tablolarının benzer çözümüne izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
-|[where](/azure/kusto/query/whereoperator) |[Depolama içeren kaynakları göster](../samples/starter.md#show-storage) | |
+|[birleşim](/azure/kusto/query/unionoperator) |[İki sorgudan alınan sonuçları tek bir sonuç halinde birleştirin](../samples/advanced.md#unionresults) |Tek tablo izin verildi: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _tablosu_ . `union`Tek bir sorgudaki 3 Tag sınırı. `union`Bacak tablolarının benzer çözümüne izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
+|[olmadığı](/azure/kusto/query/whereoperator) |[Depolama içeren kaynakları göster](../samples/starter.md#show-storage) | |
 
 ## <a name="query-scope"></a>Sorgu kapsamı
 
 Kaynakları bir sorgu tarafından döndürülen aboneliklerin kapsamı, kaynak grafiğine erişme yöntemine bağlıdır. Azure CLı ve Azure PowerShell yetkili kullanıcının bağlamına göre isteğe dahil edilecek Aboneliklerin listesini doldurun. Abonelikler listesi, sırasıyla **abonelikler** ve **abonelik** parametreleriyle birlikte el ile tanımlanabilir.
 REST API ve diğer tüm SDK 'larda, kaynak dahil edilecek aboneliklerin listesi, isteğin bir parçası olarak açıkça tanımlanmalıdır.
 
-Bir **Önizleme**olarak REST API sürüm, `2020-04-01-preview` sorgunun kapsamını bir [yönetim grubuna](../../management-groups/overview.md)eklemek için bir özellik ekler. Bu önizleme API 'SI de abonelik özelliğini isteğe bağlı hale getirir. Bir yönetim grubu veya abonelik listesi tanımlanmamışsa, sorgu kapsamı, kimliği doğrulanmış kullanıcının erişebileceği [Azure Use](../../../lighthouse/concepts/azure-delegated-resource-management.md) Temsilcili kaynaklar dahil olmak üzere tüm kaynaklarıdır. Yeni `managementGroupId` özellik, yönetim grubunun adından farklı olan yönetim grubu kimliğini alır. Belirtildiğinde `managementGroupId` , belirtilen yönetim grubu hiyerarşisinde veya altında ilk 5000 aboneliklerden kaynaklar dahil edilir. `managementGroupId` , ile aynı anda kullanılamaz `subscriptions` .
+Bir **Önizleme** olarak REST API sürüm, `2020-04-01-preview` sorgunun kapsamını bir [yönetim grubuna](../../management-groups/overview.md)eklemek için bir özellik ekler. Bu önizleme API 'SI de abonelik özelliğini isteğe bağlı hale getirir. Bir yönetim grubu veya abonelik listesi tanımlanmamışsa, sorgu kapsamı, kimliği doğrulanmış kullanıcının erişebileceği [Azure Use](../../../lighthouse/concepts/azure-delegated-resource-management.md) Temsilcili kaynaklar dahil olmak üzere tüm kaynaklarıdır. Yeni `managementGroupId` özellik, yönetim grubunun adından farklı olan yönetim grubu kimliğini alır. Belirtildiğinde `managementGroupId` , belirtilen yönetim grubu hiyerarşisinde veya altında ilk 5000 aboneliklerden kaynaklar dahil edilir. `managementGroupId` , ile aynı anda kullanılamaz `subscriptions` .
 
 Örnek: ' myMG ' KIMLIĞIYLE ' My Management Group ' adlı Yönetim grubu hiyerarşisinde tüm kaynakları sorgulayın.
 
@@ -168,7 +169,7 @@ Ya da dahil olanlar gibi bazı özellik adları, `.` `$` sorgunun sarmalanması 
 
 - `.` -Özellik adını şu şekilde kaydırın: `['propertyname.withaperiod']`
   
-  OData özelliğini sarmalayan örnek sorgu _. tür_:
+  OData özelliğini sarmalayan örnek sorgu _. tür_ :
 
   ```kusto
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
@@ -178,7 +179,7 @@ Ya da dahil olanlar gibi bazı özellik adları, `.` `$` sorgunun sarmalanması 
 
   - **Bash** - `\`
 
-    Bash içindeki özellik _ \$ türünü_ iptal eden örnek sorgu:
+    Bash içindeki özellik _\$ türünü_ iptal eden örnek sorgu:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
@@ -188,7 +189,7 @@ Ya da dahil olanlar gibi bazı özellik adları, `.` `$` sorgunun sarmalanması 
 
   - **PowerShell** - ``` ` ```
 
-    PowerShell 'deki özellik _ \$ türünü_ iptal eden örnek sorgu:
+    PowerShell 'deki özellik _\$ türünü_ iptal eden örnek sorgu:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type

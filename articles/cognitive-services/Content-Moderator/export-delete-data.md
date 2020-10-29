@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 81713bf8d424b9f272f6b1bccf3657810160d4cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f74fdc9cd30e1dfbd4df6c94842a9dccb435ef4
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73744799"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913662"
 ---
 # <a name="export-or-delete-user-data-in-content-moderator"></a>Content Moderator Kullanıcı verilerini dışarı aktarma veya silme
 
-Content Moderator, hizmeti çalıştırmak için Kullanıcı verilerini toplar, ancak müşteriler [İnceleme aracını](https://contentmoderator.cognitive.microsoft.com/) ve [denetleme ve gözden geçirme API 'lerini](https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference)kullanarak verilerini görüntülemek, dışarı aktarmak ve silmek için tam denetime sahiptir.
+Content Moderator, hizmeti çalıştırmak için Kullanıcı verilerini toplar, ancak müşteriler [İnceleme aracını](https://contentmoderator.cognitive.microsoft.com/) ve [denetleme ve gözden geçirme API 'lerini](./api-reference.md)kullanarak verilerini görüntülemek, dışarı aktarmak ve silmek için tam denetime sahiptir.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -33,4 +33,3 @@ Content Moderator Kullanıcı verilerini dışarı aktarma ve silme hakkında da
 | Etiketler | Yok | UI etiketi ayarlarını gözden geçir sayfasında her etiket için kullanılabilir **Sil** simgesini kullanın. Ya da UI ekip ayarlarını [gözden geçir](https://contentmoderator.cognitive.microsoft.com/) sayfasında **takımı Sil** düğmesini kullanın. |
 | İncelemeler | [Inceleme al API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) 'sini çağırma | UI ekip ayarlarını [gözden geçir](https://contentmoderator.cognitive.microsoft.com/) sayfasındaki **takımı Sil** düğmesini kullanın.
 | Kullanıcılar | Yok | UI ekip ayarlarını [gözden geçir](https://contentmoderator.cognitive.microsoft.com/) sayfasında her bir Kullanıcı Için kullanılabilen **Sil** simgesini kullanın. Ya da UI ekip ayarlarını [gözden geçir](https://contentmoderator.cognitive.microsoft.com/) sayfasında **takımı Sil** düğmesini kullanın. |
-

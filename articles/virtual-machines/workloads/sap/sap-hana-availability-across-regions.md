@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68a393865038722f2fd7fa5e42334f8d5e760951
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3de5a449e90452307f3c9b02c725050df6fdd873
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70078846"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925688"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>Azure bölgeleri arasında kullanılabilirlik SAP HANA
 
@@ -74,7 +74,7 @@ SAP, HANA 2,0 SPS3 ile [çok hedef sistem çoğaltması](https://help.sap.com/vi
 
 Kuruluşun, ikinci (DR) Azure bölgesinde yüksek kullanılabilirliğe sahip olma gereksinimleri varsa, mimari şöyle görünür:
 
-![İki bölgedeki üç sanal makine diyagramı, milti-Target](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+![İkinci (DR) Azure bölgesinde yüksek kullanılabilirlik hazırlığı için gereksinimleri olan bir kuruluşu gösteren diyagram.](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
 
 
 İşlem modu olarak logreplay kullanarak, bu yapılandırma birincil bölge içinde düşük RTO ile bir RPO = 0 sağlar. Ayrıca, ikinci bölgeye bir taşıma söz konusu olduğunda yapılandırma de yaprak RPO sağlar. İkinci bölgedeki RTO zamanları verilerin önceden yüklenmiş olup olmadığına bağlıdır. Birçok müşteri, bir test sistemini çalıştırmak için ikincil bölgedeki VM 'yi kullanır. Bu kullanım durumunda, veriler önceden yüklenemez.

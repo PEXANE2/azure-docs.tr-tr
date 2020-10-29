@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 91823ff0d324cd30566948fecd86cc441342f14e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ee6d88b5247209d5628c7f85f1985507d53811d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757053"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913730"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure özel bağlantı hakkında sık sorulan sorular (SSS)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91757053"
 ### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>Azure özel uç noktası ve Azure özel bağlantı hizmeti nedir?
 
 - **[Azure özel uç](private-endpoint-overview.md)** noktası: Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç noktaları, özel bağlantıyı destekleyen bir Azure PaaS hizmetine veya kendi özel bağlantı hizmetinize bağlanmak için kullanabilirsiniz.
-- **[Azure özel bağlantı hizmeti](private-link-service-overview.md)**: Azure özel bağlantı hizmeti, bir hizmet sağlayıcısı tarafından oluşturulan bir hizmettir. Şu anda bir özel bağlantı hizmeti bir Standart Load Balancer ön uç IP yapılandırmasına bağlanabilir. 
+- **[Azure özel bağlantı hizmeti](private-link-service-overview.md)** : Azure özel bağlantı hizmeti, bir hizmet sağlayıcısı tarafından oluşturulan bir hizmettir. Şu anda bir özel bağlantı hizmeti bir Standart Load Balancer ön uç IP yapılandırmasına bağlanabilir. 
 
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Özel bağlantı kullanılırken trafik nasıl gönderiliyor?
 Trafik, Microsoft omurgası kullanılarak özel olarak gönderilir. İnternet 'te geçiş yapmaz. Azure özel bağlantısı müşteri verilerini depolamaz.
@@ -48,6 +48,9 @@ Evet. Özel uç noktalar, AD kiracılarında özel bağlantı hizmetlerine veya 
  
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Özel uç nokta Azure bölgeleri arasında Azure PaaS kaynaklarına bağlanabilir mi?
 Evet. Özel uç noktalar Azure bölgeleri arasında Azure PaaS kaynaklarına bağlanabilir.
+
+### <a name="can-i-modify-my-private-endpoint-network-interface-nic-"></a>Özel uç nokta ağ Arabirimmi (NIC) değiştirebilir miyim?
+Özel bir uç nokta oluşturulduğunda, salt okunurdur bir NIC atanır. Bu değiştirilemez ve özel uç noktanın yaşam döngüsü için kalır.
 
 ## <a name="private-link-service"></a>Özel Bağlantı Hizmeti
  

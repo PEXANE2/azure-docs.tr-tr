@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: allensu
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 6b953c0183943e895c8836f79c1b8e81a22fb31d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 95856db9288e5860dfab47dce506d1e7d6de1ffc
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792285"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913339"
 ---
 # <a name="quickstart-create-a-nat-gateway---arm-template"></a>Hızlı başlangıç: NAT Gateway-ARM şablonu oluşturma
 
@@ -54,26 +54,18 @@ Ubuntu VM, NAT ağ geçidi kaynağıyla ilişkili bir alt ağa dağıtılır.
 Şablonda dokuz Azure kaynağı tanımlanmıştır:
 
 * **[Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)** : bir ağ güvenlik grubu oluşturur.
-
 * **[Microsoft. Network/networkSecurityGroups/securityRules](/azure/templates/microsoft.network/networksecuritygroups/securityrules)** : bir güvenlik kuralı oluşturur.
-
 * **[Microsoft. Network/Publicıpaddresses](/azure/templates/microsoft.network/publicipaddresses)** : genel bir IP adresi oluşturur.
-
 * **[Microsoft. Network/Publicıpprefix](/azure/templates/microsoft.network/publicipprefixes)** : genel bir IP öneki oluşturur.
-
 * **[Microsoft. COMPUTE/virtualMachines](/azure/templates/Microsoft.Compute/virtualMachines)** : bir sanal makine oluşturur.
-
 * **[Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)** : bir sanal ağ oluşturur.
-
 * **[Microsoft. Network/natgateway](/azure/templates/microsoft.network/natgateways)** : bir NAT ağ geçidi kaynağı oluşturur.
-
 * **[Microsoft. Network/virtualNetworks/alt ağları](/azure/templates/microsoft.network/virtualnetworks/subnets)** : bir sanal ağ alt ağı oluşturur.
-
 * **[Microsoft. Network/NetworkInterfaces](/azure/templates/microsoft.network/networkinterfaces)** : bir ağ arabirimi oluşturur.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-### <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 
 ```azurecli-interactive
 read -p "Enter the location (i.e. westcentralus): " location
@@ -89,7 +81,7 @@ az group deployment create \
 --template-uri  $templateUri
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+**Azure PowerShell**
 
 ```azurepowershell-interactive
 $location = Read-Host -Prompt "Enter the location (i.e. westcentralus)"
@@ -101,13 +93,13 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 ```
 
-### <a name="azure-portal"></a>Azure portal
+**Azure Portal**
 
 [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Sol bölmeden **kaynak grupları** ' nı seçin.
 
@@ -119,7 +111,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-### <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 
 Artık gerekli değilse, [az Group Delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu ve içinde yer alan tüm kaynakları kaldırabilirsiniz.
 
@@ -128,7 +120,7 @@ Artık gerekli değilse, [az Group Delete](/cli/azure/group#az-group-delete) kom
     --name myResourceGroupNAT
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+**Azure PowerShell**
 
 Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve içinde yer alan tüm kaynakları kaldırabilirsiniz.
 
@@ -136,7 +128,7 @@ Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resource
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
-### <a name="azure-portal"></a>Azure portal
+**Azure Portal**
 
 Artık gerekli olmadığında kaynak grubunu, NAT ağ geçidini ve tüm ilgili kaynakları silin. NAT ağ geçidini içeren **Myresourcegroupnat** kaynak grubunu seçin ve **Sil** ' i seçin.
 

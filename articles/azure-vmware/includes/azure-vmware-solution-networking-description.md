@@ -1,14 +1,14 @@
 ---
-title: Azure VMWare çözüm ağı ve bağlantısı
-description: Azure VMWare çözüm ağı ve bağlantı açıklaması.
+title: Azure VMware Çözüm ağı ve bağlantısı
+description: Azure VMware Çözüm ağı ve bağlantı açıklaması.
 ms.topic: include
 ms.date: 09/28/2020
-ms.openlocfilehash: 1d43a8a49fc56a6a5b534a89fd1dfc2f5ae2d478
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b5fab8430f4e462f1e4a0e8cb6ddb69ec38c02
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574474"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92924984"
 ---
 <!-- Used in introduction.md and concepts-networking.md -->
 
@@ -16,7 +16,4 @@ Azure VMware çözümü, şirket içi ve Azure tabanlı ortamların veya kaynakl
 
 Özel bir bulut dağıtımında, yönetim, sağlama ve vMotion için özel ağlar oluşturulur. VCenter ve NSX-T Manager ve sanal makine vMotion veya dağıtımına erişmek için bu özel ağları kullanın.  ExpressRoute Global Reach, özel bulutları şirket içi ortamlara bağlamak için kullanılır. Bağlantı, aboneliğinizde bir ExpressRoute devresine sahip bir sanal ağ gerektiriyor.
 
-
-
->[!NOTE]
->İnternet ve Azure hizmetlerine erişim sağlanır ve özel bir bulut dağıtımında üretim ağlarında VM 'Leri tüketmek için sağlanır.  Varsayılan olarak, internet erişimi yeni özel bulutlar için devre dışıdır ve herhangi bir zamanda etkinleştirilebilir veya devre dışı bırakılabilir.
+Web sunucuları ve sanal makineler gibi kaynaklara Azure sanal WAN genel IP işlevselliği aracılığıyla internet üzerinden erişilebilir.  Varsayılan olarak, internet erişimi yeni özel bulutlar için devre dışıdır. Daha fazla bilgi için bkz. [Azure VMware çözümünde genel IP işlevselliğini kullanma](../public-ip-usage.md).

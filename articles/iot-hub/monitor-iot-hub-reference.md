@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: b4d5b3682114d44ceaadc73252f355e4cdc9cc66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 166234711ce00f0ed1f45c35ef661aa5b35f8a3c
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548617"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926334"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Azure IoT Hub veri başvurusunu izleme
 
@@ -57,7 +57,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 ### <a name="cloud-to-device-command-metrics"></a>Buluttan cihaza komut ölçümleri
 
-|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |C2D Iletilerinin süre dolma (Önizleme)|C2DMessagesExpired|Count|Toplam|Zaman aşımına uğradı buluttan cihaza ileti sayısı|Yok|
 |C2D ileti teslimleri tamamlandı|C2D. Commands. çıkış.<br>tamamlandı. başarılı|Count|Toplam|Cihaz tarafından başarıyla tamamlanan buluttan cihaza ileti teslimleri sayısı|Yok|
@@ -68,7 +68,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 ### <a name="cloud-to-device-direct-methods-metrics"></a>Buluttan cihaza doğrudan Yöntemler ölçümleri
 
-|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Başarısız doğrudan yöntem etkinleştirmeleri|C2D. Methods. Failure|Count|Toplam|Tüm başarısız doğrudan yöntem çağrılarının sayısı.|Yok|
 |Doğrudan yöntem etkinleştirmeleri istek boyutu|C2D. Methods. requestSize|Bayt|Ortalama|Tüm başarılı doğrudan yöntem isteklerinin sayısı.|Yok|
@@ -79,7 +79,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 ### <a name="cloud-to-device-twin-operations-metrics"></a>Buluttan cihaza ikizi işlemleri ölçümleri
 
-|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Arka uçtan başarısız ikizi okumaları|C2D. ikizi. Read. Failure|Count|Toplam|Tüm başarısız arka uç tarafından başlatılan ikizi okumaların sayısı.|Yok|
 |Arka uçtan başarısız ikizi güncelleştirmeleri|C2D. ikizi. Update. Failure|Count|Toplam|Tüm başarısız arka uç başlatılan ikizi güncelleştirmelerinin sayısı.|Yok|
@@ -92,7 +92,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 ### <a name="configurations-metrics"></a>Yapılandırma ölçümleri
 
-|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Yapılandırma ölçümleri|konfigürasyonları|Count|Toplam|Bir hedef cihaz kümesinde cihaz yapılandırması ve IoT Edge dağıtımı için gerçekleştirilen toplam CRUD işlemlerinin sayısı. Bu Ayrıca, bu yapılandırmalardan dolayı cihaz ikizi veya modül ikizi ' i değiştiren işlem sayısını da içerir.|Yok|
 
@@ -100,7 +100,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 ### <a name="daily-quota-metrics"></a>Günlük kota ölçümleri
 
-|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Toplam cihaz verisi kullanımı|deviceDataUsage|Bayt|Toplam|Iothub 'e bağlı tüm cihazlardan ve bunlardan aktarılan baytlar|Yok|
 |Toplam cihaz verisi kullanımı (Önizleme)|deviceDataUsageV2|Bayt|Toplam|Iothub 'e bağlı tüm cihazlardan ve bunlardan aktarılan baytlar|Yok|
@@ -110,7 +110,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 ### <a name="device-metrics"></a>Cihaz ölçümleri
 
-|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Toplam cihaz (kullanım dışı)|Devices. totalDevices|Count|Toplam|IoT Hub 'ınıza kayıtlı cihazların sayısı|Yok|
 |Bağlı cihazlar (kullanım dışı) |cihazlar. connectedDevices.<br>allProtocol|Count|Toplam|IoT Hub 'ınıza bağlı cihazların sayısı|Yok|
@@ -125,7 +125,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 ### <a name="device-telemetry-metrics"></a>Cihaz telemetri ölçümleri
 
-|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Daraltma hatası sayısı|D2C. telemetri. ınress.<br>Sendkısıtlaması|Count|Toplam|Cihaz performansı azaltmasından kaynaklanan azaltma hatası sayısı|Yok|
 |Telemetri iletisi gönderme denemeleri|D2C. telemetri. ınress.<br>allProtocol|Count|Toplam|IoT Hub 'ınıza gönderilmeye çalışılan cihazdan buluta telemetri iletisi sayısı|Yok|
@@ -135,7 +135,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 ### <a name="device-to-cloud-twin-operations-metrics"></a>Cihazdan buluta ikizi işlemler ölçümleri
 
-|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Cihazlardan başarısız ikizi okumaları|D2C. ikizi. Read. Failure|Count|Toplam|Tüm başarısız cihaz tarafından başlatılan ikizi okumaların sayısı.|Yok|
 |Cihazlardan ikizi güncelleştirmeleri başarısız oldu|D2C. ikizi. Update. Failure|Count|Toplam|Tüm başarısız cihaz tarafından başlatılan ikizi güncelleştirmelerinin sayısı.|Yok|
@@ -148,7 +148,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 ### <a name="event-grid-metrics"></a>Olay Kılavuzu ölçümleri
 
-|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Event Grid teslimler (Önizleme)|Eventgridteslimler|Count|Toplam|Event Grid yayımlanan IoT Hub olaylarının sayısı. Başarılı ve başarısız isteklerin sayısı için sonuç boyutunu kullanın. EventType boyutu olay türünü gösterir ( https://aka.ms/ioteventgrid) .|Sonuç,<br/>Olay türü<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)* .|
 |Event Grid gecikme süresi (Önizleme)|EventGridLatency|Mayacak|Ortalama|Olay Event Grid yayımlandığında IoT Hub olayının oluşturulduğu sürenin ortalama gecikme süresi (milisaniye). Bu sayı, tüm olay türleri arasındaki bir ortalama değer. Belirli bir olay türünün gecikmesini görmek için EventType boyutunu kullanın.|Olay türü<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)* .|
@@ -157,7 +157,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 ### <a name="jobs-metrics"></a>İş ölçümleri
 
-|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Tamamlanan İşler|işler. tamamlandı|Count|Toplam|Tamamlanan tüm işlerin sayısı.|Yok|
 |İşleri listelemek için başarısız çağrılar|Jobs. listJobs. hata|Count|Toplam|Listeleme işleri için başarısız olan tüm çağrıların sayısı.|Yok|
@@ -176,7 +176,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 ### <a name="routing-metrics"></a>Yönlendirme ölçümleri
 
-|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 | Yönlendirme teslim denemeleri (Önizleme) |Routingteslimler | Count | Toplam |Bu, yönlendirme teslimi ölçümdür. Belirli bir uç noktanın teslim durumunu veya belirli bir yönlendirme kaynağını belirlemek için boyutları kullanın.| Sonuç,<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>Uçnoktaadı<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)* . |
 | Yönlendirme teslim verilerinin bayt cinsinden boyutu (Önizleme)|RoutingDataSizeInBytesDelivered| Bayt | Toplam |IoT Hub tarafından özel uç noktaya ve yerleşik uç noktaya yönlendirilen toplam bayt sayısı. Belirli bir uç noktaya veya belirli bir yönlendirme kaynağına yönlendirilen veri boyutunu tanımlamak için boyutları kullanın.| RoutingSource,<br>EndpointType<br>Uçnoktaadı<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)* .|
@@ -203,7 +203,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 ### <a name="twin-query-metrics"></a>İkizi sorgu ölçümleri
 
-|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Başarısız ikizi sorguları|twinQueries. Failure|Count|Toplam|Tüm başarısız ikizi sorgularının sayısı.|Yok|
 |Başarılı ikizi sorguları|twinQueries. Success|Count|Toplam|Tüm başarılı ikizi sorgularının sayısı.|Yok|
@@ -215,7 +215,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 Azure IoT Hub, bazı yönlendirme ve olay Kılavuzu ölçümleriyle ilişkili aşağıdaki boyutlara sahiptir.
 
-|Boyut adı | Açıklama|
+|Boyut adı | Description|
 |---|---|
 ||
 |**Uçnoktaadı**| Uç nokta adı.|
@@ -559,7 +559,7 @@ IoT Hub, geçerli izleme özellikleri içeren bir ileti IoT Hub geldiğinde bu g
 
 Burada, `durationMs` IoT Hub saatinin cihaz saatiyle eşitlenmiş olmaması ve bu nedenle bir süre hesaplamasının yanıltıcı olması için hesaplanmaz. `properties`Cihazdan buluta gecikme süresini yakalamak için bölümündeki zaman damgalarını kullanarak mantık yazma öneririz.
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Tamsayı | Cihazdan buluta iletinin bayt cinsinden boyutu |
 | **deviceId** | ASCII 7 bit alfasayısal karakter dizesi | Cihazın kimliği |
@@ -593,7 +593,7 @@ IoT Hub, geçerli izleme özellikleri içeren ileti iç veya yerleşik Olay Hub 
 
 `properties`Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Dize | True veya false, IoT Hub ileti yönlendirmenin etkin olup olmadığını gösterir |
 | **Parentspanıd** | Dize | Bu durumda D2C ileti izlemesi olacak üst iletinin [yayılma kimliği](https://w3c.github.io/trace-context/#parent-id) |
@@ -625,7 +625,7 @@ IoT Hub [yönlendirme](iot-hub-devguide-messages-d2c.md) etkinken ve ileti bir [
 
 `properties`Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **Uçnoktaadı** | Dize | Yönlendirme uç noktasının adı |
 | **endpointType** | Dize | Yönlendirme uç noktasının türü |

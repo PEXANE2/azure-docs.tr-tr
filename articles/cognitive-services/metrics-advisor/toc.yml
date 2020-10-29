@@ -7,8 +7,6 @@
       href: overview.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Tanıtım sitesini keşfetme
-      href: quickstarts/explore-demo.md
     - name: Web portalını kullanma
       href: quickstarts/web-portal.md
     - name: REST API kullanma
@@ -40,9 +38,9 @@
     - name: Ölçüm Danışmanı API’si
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Azure CLI başvurusu
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: PowerShell başvurusu
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: /powershell/module/azurerm.cognitiveservices/
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri

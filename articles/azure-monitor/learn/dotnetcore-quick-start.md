@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: a12fe837bfd9606d07c7be71851880d2cebb9d61
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bd45284bfea09935ea48445d816f3b91272f68fc
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055490"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925858"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web Uygulamanızı İzlemeye Başlama
 
@@ -42,7 +42,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 Application Insights, şirket içinde veya bulutta çalışmasından bağımsız olarak İnternet’e bağlı herhangi bir uygulamadan telemetri verilerini toplayabilir. Bu verileri görüntülemeyi başlatmak için aşağıdaki adımları kullanın.
 
-1. **Kaynak oluştur**  >  **Geliştirici Araçları**  >  **Application Insights**seçin.
+1. **Kaynak oluştur**  >  **Geliştirici Araçları**  >  **Application Insights** seçin.
 
    > [!NOTE]
    >İlk kez bir Application Insights kaynağı oluşturuyorsanız [Application Insights kaynak oluştur belge oluştur](../app/create-new-resource.md) ' a giderek daha fazla bilgi edinebilirsiniz.
@@ -55,25 +55,25 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
    | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni kaynak grubunun adı. Yeni bir kaynak grubu oluşturabilir veya var olan bir grup kullanabilirsiniz. |
    | **Konum** | Doğu ABD | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-2. **Oluştur**’a tıklayın.
+2. **Oluştur** 'a tıklayın.
 
 
 
 ## <a name="configure-app-insights-sdk"></a>App Insights SDK’sını Yapılandırma
 
-1. ASP.NET Core Web Uygulaması **projenizi** Visual Studio’da açın > **Çözüm Gezgini**’nde AppName öğesne sağ tıklayın > **Ekle** > **Application Insights Telemetrisi**’ni seçin.
+1. ASP.NET Core Web Uygulaması **projenizi** Visual Studio’da açın > **Çözüm Gezgini** ’nde AppName öğesne sağ tıklayın > **Ekle** > **Application Insights Telemetrisi** ’ni seçin.
 
     ![Application Insights Telemetrisi ekleme](./media/dotnetcore-quick-start/2vsaddappinsights.png)
 
 2. **Başlarken** düğmesine tıklayın
 
-3. Hesabınızı ve aboneliğinizi seçin > Azure portal oluşturduğunuz **mevcut kaynağı** seçin > **Kaydet**' e tıklayın.
+3. Hesabınızı ve aboneliğinizi seçin > Azure portal oluşturduğunuz **mevcut kaynağı** seçin > **Kaydet** ' e tıklayın.
 
-4. **Proje**seçin  >  **NuGet paketleri**  >  **paket kaynağını seçin: NuGet.org**  >  Application Insights SDK paketlerini en son kararlı sürüme**güncelleştirin** .
+4. **Proje** seçin  >  **NuGet paketleri**  >  **paket kaynağını seçin: NuGet.org**  >  Application Insights SDK paketlerini en son kararlı sürüme **güncelleştirin** .
 
 5. Uygulamanızı başlatmak için **hata ayıklama**  >  **olmadan Başlat** ' ı seçin (CTRL + F5)
 
-    ![Application Insights’a Genel Bakış Menüsü](./media/dotnetcore-quick-start/3debug.png)
+    ![Hata ayıklama olmadan Başlat menü seçeneğini gösteren ekran görüntüsü.](./media/dotnetcore-quick-start/3debug.png)
 
 > [!NOTE]
 > Verilerin portalda görünmesi 3-5 dakika sürer. Bu uygulama düşük trafikli bir test uygulaması ise, çoğu ölçümün yalnızca etkin istek veya işlem olduğunda yakalandığını aklınızda bulundurun.
@@ -84,11 +84,11 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
    ![Application Insights’a Genel Bakış Menüsü](./media/dotnetcore-quick-start/4overview.png)
 
-2. Uygulama bileşenleriniz arasındaki bağımlılık ilişkilerinin görsel düzeni için **Uygulama haritası**’na tıklayın. Her bileşen yük, performans, hatalar ve uyarılar gibi KPI'leri gösterir.
+2. Uygulama bileşenleriniz arasındaki bağımlılık ilişkilerinin görsel düzeni için **Uygulama haritası** ’na tıklayın. Her bileşen yük, performans, hatalar ve uyarılar gibi KPI'leri gösterir.
 
    ![Uygulama Eşlemesi](./media/dotnetcore-quick-start/5appmap.png)
 
-3. Analytics 'teki uygulama **Analizi** simgesi ![ uygulama Haritası simge ](./media/dotnetcore-quick-start/006.png) **görünümü**' ne tıklayın. Bu işlem, Application Insights tarafından toplanan tüm verileri analiz etmeye yönelik zengin bir sorgu dili sağlayan **Application Insights Analizi**’ni açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
+3. Analytics 'teki uygulama **Analizi** simgesi ![ uygulama Haritası simge ](./media/dotnetcore-quick-start/006.png) **görünümü** ' ne tıklayın. Bu işlem, Application Insights tarafından toplanan tüm verileri analiz etmeye yönelik zengin bir sorgu dili sağlayan **Application Insights Analizi** ’ni açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
 
    ![Belirli bir süre içindeki kullanıcı isteklerinin analiz grafiği](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -96,7 +96,7 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
    ![Sistem Durumuna Genel Bakış zaman çizelgesi grafikleri](./media/dotnetcore-quick-start/7kpidashboards.png)
 
-5. Sağ tarafta **ölçümler**' e tıklayın. Kaynağınızın sistem durumunu ve kullanımını araştırmak için ölçüm gezginini kullanın. **Yeni grafik ekle**’ye tıklayarak ek özel görünümler oluşturabilir veya **Düzenle**’yi seçerek mevcut grafik türlerini, yüksekliğini, renk paletini, gruplandırmaları ve ölçümleri değiştirebilirsiniz. Örneğin, ölçümler açılan penceresinden "tarayıcı sayfa yükleme süresi" ni ve toplamasının "Ort" öğesini seçerek ortalama tarayıcı sayfa yükleme süresini görüntüleyen bir grafik yapabilirsiniz. Azure Ölçüm Gezgini hakkında daha fazla bilgi edinmek için [azure Ölçüm Gezgini](../platform/metrics-getting-started.md)kullanmaya başlama makalesini ziyaret edin.
+5. Sağ tarafta **ölçümler** ' e tıklayın. Kaynağınızın sistem durumunu ve kullanımını araştırmak için ölçüm gezginini kullanın. **Yeni grafik ekle** ’ye tıklayarak ek özel görünümler oluşturabilir veya **Düzenle** ’yi seçerek mevcut grafik türlerini, yüksekliğini, renk paletini, gruplandırmaları ve ölçümleri değiştirebilirsiniz. Örneğin, ölçümler açılan penceresinden "tarayıcı sayfa yükleme süresi" ni ve toplamasının "Ort" öğesini seçerek ortalama tarayıcı sayfa yükleme süresini görüntüleyen bir grafik yapabilirsiniz. Azure Ölçüm Gezgini hakkında daha fazla bilgi edinmek için [azure Ölçüm Gezgini](../platform/metrics-getting-started.md)kullanmaya başlama makalesini ziyaret edin.
 
      ![Ölçümler sekmesi: ortalama tarayıcı sayfa yükleme süresi grafiği](./media/dotnetcore-quick-start/8metrics.png)
 
@@ -106,8 +106,8 @@ Testi tamamladığınızda, kaynak grubunu ve tüm ilgili kaynakları silebilirs
 > [!NOTE]
 > Var olan bir kaynak grubunu kullandıysanız aşağıdaki yönergeler çalışmaz ve yalnızca tek bir Application Insights kaynağını silmeniz gerekir. Bir kaynak grubunu her sildiğinizde, bu grubun üyesi olan tüm temel kaynakların silineceği göz önünde bulundurun.
 
-1. Azure portal sol taraftaki menüden **kaynak grupları** ' na ve ardından **myresourcegroup**' a tıklayın.
-2. Kaynak grubu sayfanızda, **Sil**’e tıklayın, metin kutusuna **myResourceGroup** yazın ve ardından **Sil**’e tıklayın.
+1. Azure portal sol taraftaki menüden **kaynak grupları** ' na ve ardından **myresourcegroup** ' a tıklayın.
+2. Kaynak grubu sayfanızda, **Sil** ’e tıklayın, metin kutusuna **myResourceGroup** yazın ve ardından **Sil** ’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

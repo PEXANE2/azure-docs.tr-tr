@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: c56f3b561dbced9f00bb2616f5709a51fa02fbcb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3b5cc1dd61b4f01e40c1cc812e93a448855ad92d
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481015"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926521"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>PowerShell kullanarak Azure Cosmos DB Core (SQL) API kaynaklarını yönetme
 
@@ -78,7 +78,7 @@ New-AzCosmosDBAccount `
 * `$resourceGroupName` Cosmos hesabının dağıtılacağı Azure Kaynak grubu. Zaten var olmalıdır.
 * `$locations` Veritabanı hesabının bölgeleri olan bölge, `FailoverPriority 0` yazma bölgesidir.
 * `$accountName` Azure Cosmos hesabının adı. Benzersiz, küçük harf, yalnızca alfasayısal ve '-' karakter içermeli ve 3 ila 31 karakter uzunluğunda olmalıdır.
-* `$apiKind` Oluşturulacak Cosmos hesabının türü. Daha fazla bilgi için bkz. [Cosmos DB API 'leri](introduction.md#develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis).
+* `$apiKind` Oluşturulacak Cosmos hesabının türü. Daha fazla bilgi için bkz. [Cosmos DB API 'leri](introduction.md#simplified-application-development).
 * `$consistencyPolicy`, `$maxStalenessInterval` , ve `$maxStalenessPrefix` Azure Cosmos hesabının varsayılan tutarlılık düzeyini ve ayarlarını yapın. Daha fazla bilgi için bkz. [Azure Cosmos DB tutarlılık düzeyleri](consistency-levels.md).
 
 Azure Cosmos hesapları IP güvenlik duvarı, sanal ağ hizmeti uç noktaları ve özel uç noktalarla yapılandırılabilir. Azure Cosmos DB için IP güvenlik duvarını yapılandırma hakkında daha fazla bilgi için bkz. [IP güvenlik duvarını yapılandırma](how-to-configure-firewall.md). Azure Cosmos DB için hizmet uç noktalarını etkinleştirme hakkında daha fazla bilgi için bkz. [sanal ağlardan erişimi yapılandırma](how-to-configure-vnet-service-endpoint.md). Azure Cosmos DB için özel uç noktaları etkinleştirme hakkında daha fazla bilgi için bkz. [Özel uç noktalardan erişimi yapılandırma](how-to-configure-private-endpoints.md).

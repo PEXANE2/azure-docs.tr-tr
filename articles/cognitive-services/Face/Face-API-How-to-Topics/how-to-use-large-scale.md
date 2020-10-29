@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b35b66615bd5c577dd73faca77d3ea20468442f8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332398"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913526"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Örnek: büyük ölçekli özelliği kullanın
 
@@ -232,7 +232,7 @@ Bu sorunu azaltmak için, yalnızca yeni eklenen girişler için arabellek olara
 
 Oldukça uzun bir gecikme kabul edilebilir ise, yeni verileri ekledikten sonra eğitme işlemini tetiklemeniz gerekmez. Bunun yerine Eğitim işlemi, ana mantıktan ayrılabilir ve düzenli olarak tetiklenebilir. Bu strateji, kabul edilebilir gecikme süresine sahip dinamik senaryolar için uygundur. Bu, tren sıklığını daha fazla azaltmak için statik senaryolara uygulanabilir.
 
-`TrainLargePersonGroup`Şuna benzer bir işlev olduğunu varsayalım `TrainLargeFaceList` . İçinde sınıfını çağırarak bir LargePersonGroup 'ta tek başına eğitimin tipik bir uygulamasıdır [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) `System.Timers` :
+`TrainLargePersonGroup`Şuna benzer bir işlev olduğunu varsayalım `TrainLargeFaceList` . İçinde sınıfını çağırarak bir LargePersonGroup 'ta tek başına eğitimin tipik bir uygulamasıdır [`Timer`](/dotnet/api/system.timers.timer) `System.Timers` :
 
 ```csharp
 private static void Main()

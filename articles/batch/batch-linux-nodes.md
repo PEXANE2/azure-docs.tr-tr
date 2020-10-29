@@ -4,12 +4,12 @@ description: Azure Batch içindeki Linux sanal makinelerinin havuzlarında paral
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 9cbf7dcb5b0f6f43b4fc5d69127e817dceea650e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 704b73ab43f40a5542e80ffebc4ab34edfc446dc
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108074"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913798"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch havuzlarında Linux işlem düğümleri sağlama
 
@@ -46,7 +46,8 @@ Bir sanal makine görüntü başvurusunu yapılandırdığınızda, sanal makine
 >
 
 ### <a name="node-agent-sku"></a>Düğüm Aracısı SKU 'SU
-Batch düğüm Aracısı, havuzdaki her düğüm üzerinde çalışan ve düğüm ile Batch hizmeti arasında komut ve denetim arabirimini sağlayan bir programdır. Farklı işletim sistemleri için SKU olarak bilinen düğüm aracısının farklı uygulamaları vardır. Temelde, bir sanal makine yapılandırması oluşturduğunuzda, önce sanal makine görüntüsü başvurusunu belirttikten sonra görüntüye yüklenecek düğüm aracısını belirlersiniz. Genellikle, her düğüm Aracısı SKU 'SU birden çok sanal makine görüntüsü ile uyumludur. Düğüm Aracısı SKU 'Larının birkaç örneği aşağıda verilmiştir:
+
+[Batch düğüm Aracısı](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) , havuzdaki her düğüm üzerinde çalışan ve düğüm ile Batch hizmeti arasında komut ve denetim arabirimini sağlayan bir programdır. Farklı işletim sistemleri için SKU olarak bilinen düğüm aracısının farklı uygulamaları vardır. Temelde, bir sanal makine yapılandırması oluşturduğunuzda, önce sanal makine görüntüsü başvurusunu belirttikten sonra görüntüye yüklenecek düğüm aracısını belirlersiniz. Genellikle, her düğüm Aracısı SKU 'SU birden çok sanal makine görüntüsü ile uyumludur. Düğüm Aracısı SKU 'Larının birkaç örneği aşağıda verilmiştir:
 
 * Batch. Node. Ubuntu 18,04
 * Batch. Node. CentOS 7
@@ -276,7 +277,7 @@ tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 Bir parola yerine, bir düğümde Kullanıcı oluştururken bir SSH ortak anahtarı belirtebilirsiniz. Python SDK 'sında [Computenodeuser][py_computenodeuser]üzerinde **ssh_public_key** parametresini kullanın. .NET ' te [Computenodeuser][net_computenodeuser]öğesini kullanın. [Sshpublickey][net_ssh_key] özelliği.
 
 ## <a name="pricing"></a>Fiyatlandırma
-Azure Batch Azure Cloud Services ve Azure sanal makineler teknolojisinden oluşturulmuştur. Batch hizmeti 'nin kendisi ücretsiz olarak sunulur, bu da yalnızca toplu Iş çözümlerinizin tükettiği işlem kaynakları (ve buna yönelik ilişkili maliyetler) için ücretlendirilirsiniz. **Cloud Services yapılandırma**' yı seçtiğinizde, [Cloud Services fiyatlandırma][cloud_services_pricing] yapısına göre ücretlendirilirsiniz. **Sanal makine yapılandırması**' nı seçtiğinizde, [sanal makinelerin fiyatlandırma][vm_pricing] yapısına göre ücretlendirilirsiniz.
+Azure Batch Azure Cloud Services ve Azure sanal makineler teknolojisinden oluşturulmuştur. Batch hizmeti 'nin kendisi ücretsiz olarak sunulur, bu da yalnızca toplu Iş çözümlerinizin tükettiği işlem kaynakları (ve buna yönelik ilişkili maliyetler) için ücretlendirilirsiniz. **Cloud Services yapılandırma** ' yı seçtiğinizde, [Cloud Services fiyatlandırma][cloud_services_pricing] yapısına göre ücretlendirilirsiniz. **Sanal makine yapılandırması** ' nı seçtiğinizde, [sanal makinelerin fiyatlandırma][vm_pricing] yapısına göre ücretlendirilirsiniz.
 
 [Uygulama paketlerini](batch-application-packages.md)kullanarak toplu iş düğümlerinize uygulamalar dağıtırsanız, uygulama paketlerinizin kullanacağı Azure depolama kaynakları için de ücretlendirilirsiniz.
 

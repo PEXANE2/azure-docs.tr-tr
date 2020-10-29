@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172842"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925586"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -76,6 +76,10 @@ Evet. Bir **anlık görüntü** durumunda yedekleme işini iptal edebilirsiniz. 
 Azure Backup hizmeti tarafından oluşturulan kaynak grubunu kilitlerseniz, en fazla 18 geri yükleme noktası sınırı olduğundan yedeklemeler başarısız olur.
 
 Kilidi kaldırın ve gelecekteki yedeklemelerin başarılı olması için bu kaynak grubundan geri yükleme noktası koleksiyonunu temizleyin. Geri yükleme noktası koleksiyonunu kaldırmak için [aşağıdaki adımları izleyin](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) .
+
+### <a name="i-have-a-lock-at-the-resource-group-level-that-contains-all-the-resources-related-to-my-virtual-machine-will-my-backup-work"></a>Kaynak grubu düzeyinde, sanal makinesiyle ilgili tüm kaynakları içeren bir kilitim var. Yedeklemem çalışsın mı?
+
+Azure Backup `AzureBackupRG_<geo>_<number>` ResourcePointCollections nesnelerini depolamak için biçimde ayrı bir kaynak grubu oluşturur. Bu kaynak grubu hizmete ait olduğundan, kilitleme, yedeklemelerin başarısız olmasına neden olur. Kilitler yalnızca müşteri tarafından oluşturulan kaynak gruplarına uygulanabilir.
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>, SSD tarafından yönetilen standart diskleri Azure Backup destekler mi?
 
@@ -145,7 +149,7 @@ Evet. VM 'yi silseniz bile kasadaki karşılık gelen yedekleme öğesine gidebi
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>Bir VM 'yi aynı Kullanılabilirlik kümelerine geri yüklemek Nasıl yaparım? istiyor musunuz?
 
-Yönetilen disk Azure VM 'Leri için, kullanılabilirlik kümelerine geri yükleme, yönetilen diskler olarak geri yüklenirken şablonda bir seçenek sunarak etkinleştirilir. Bu şablon, **kullanılabilirlik kümeleri**adlı giriş parametresine sahiptir.
+Yönetilen disk Azure VM 'Leri için, kullanılabilirlik kümelerine geri yükleme, yönetilen diskler olarak geri yüklenirken şablonda bir seçenek sunarak etkinleştirilir. Bu şablon, **kullanılabilirlik kümeleri** adlı giriş parametresine sahiptir.
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Daha hızlı geri yükleme performanslarını nasıl sağlıyoruz?
 
@@ -181,7 +185,7 @@ VM, değiştirilen veya yeni ilkedeki zamanlama ve bekletme ayarları kullanıla
 
    1. Sanal makinenizin konumunu bulun.
    2. Şu adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<location of your VM>_1` . Örneğin, *AzureBackupRG_westus2_1*
-   3. Azure portal, **gizli türleri göster**' i işaretleyin.
+   3. Azure portal, **gizli türleri göster** ' i işaretleyin.
    4. Adlandırma düzenine sahip **Microsoft. COMPUTE/restorePointCollections** türünde kaynağı bulun `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Bu kaynağı silin. Bu işlem, kasadaki yedeklenen verileri değil yalnızca anlık kurtarma noktalarını siler.
    6. Silme işlemi tamamlandıktan sonra, sanal makinenizi taşıyabilirsiniz.
@@ -199,7 +203,7 @@ VM 'yi yeni bir kaynak grubuna taşıdıktan sonra, VM 'yi aynı kasada veya far
 
 Eski VM 'nin geri yükleme noktaları gerekirse geri yükleme için kullanılabilir olacaktır. Bu yedekleme verilerine ihtiyacınız yoksa, eski VM 'nizi silme verileriyle korumayı durdurabilirsiniz.
 
-### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>Aynı yedekleme ilkesiyle ilişkilendirilebilen VM sayısıyla ilgili bir sınır var mı?
+### <a name="is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy"></a>Aynı yedekleme ilkesiyle ilişkilendirilebilen VM sayısıyla ilgili bir sınır var mı?
 
 Evet, portaldan aynı yedekleme ilkesiyle ilişkilendirilebilen 100 VM sınırlaması vardır. 100 ' den fazla VM için, aynı zamanlamaya veya farklı zamanlamaya sahip birden fazla yedekleme ilkesi oluşturmanız önerilir.
 

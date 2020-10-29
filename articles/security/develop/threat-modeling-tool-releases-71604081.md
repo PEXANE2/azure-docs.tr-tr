@@ -8,12 +8,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 8d24eb868a13e7b2d9ff3d2b625302c1c1fcb908
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69dd2c6cdba41779849b4eb6b889cde9b1d6e5c9
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318016"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913577"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool güncelleştirme sürümü 7.1.60408.1-4/9/2019
 
@@ -28,7 +28,7 @@ Microsoft Threat Modeling Tool (TMT) sürüm 7.1.60408.1 sürümü 9 2019 Nisan 
 
 ### <a name="new-stencils-for-azure-key-vault-and-azure-traffic-manager"></a>Azure Key Vault ve Azure Traffic Manager için yeni şablonlar
 
-![Azure Key Vault kalıbı](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
+![Ekran görüntüsünde Azure Key Vault ve Azure Traffic Manager simgeleri gösterilmektedir.](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
 
 Azure şablon kümesine Azure Key Vault ve Azure Traffic Manager için yeni şablonlar ve tehditler eklenmiştir. Modelleri Azure kalıbı kümesine göre açtığınızda, kullanıcılardan modelle ilişkili şablonu güncelleştirmesi istenir. Azure kalıbı kümesini temel alan bir modelin güncelleştirilmesi, "dosya" menüsündeki "Şablon Uygula" komutu kullanılarak da el ile başlatılabilir ve en son Azure Cloud Services. TB7 dosyasını yeniden uygular.
 
@@ -36,7 +36,7 @@ Azure şablon kümesine Azure Key Vault ve Azure Traffic Manager için yeni şab
 
 Threat Modeling Tool istemci sürümü artık erişim kolaylığı için uygulamasının giriş ekranında gösteriliyor.
 
-![Azure Key Vault kalıbı](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
+![Ekran görüntüsü istemci sürüm numarasıyla Microsoft Threat Modeling Tool gösterir.](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
 
 ### <a name="support-links-have-been-updated"></a>Destek bağlantıları güncelleştirildi
 

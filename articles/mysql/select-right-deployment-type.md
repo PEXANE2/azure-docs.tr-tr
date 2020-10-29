@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: e89a7d9bc71d48be1b7d7ea40246b2394c95e84b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 000de084cf9375347704cc4d3905ca36bdd77ff8
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543789"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926198"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure 'da doğru MySQL sunucusu seçeneğini belirleyin
 
@@ -44,24 +44,24 @@ Bu seçenekler arasındaki temel farklılıklar aşağıdaki tabloda listelenmi�
 | Öznitelik          | MySQL için Azure Veritabanı<br/>Tek sunucu |MySQL için Azure Veritabanı<br/>Esnek sunucu  |Azure VM 'lerinde MySQL                      |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
 | MySQL sürüm desteği | 5,6, 5,7 & 8,0| 5.7 | Herhangi bir sürüm|
-| İşlem ölçekleme | Desteklenir (ve temel katmandan ölçekleme desteklenmez)| Destekleniyor | Destekleniyor|
+| İşlem ölçekleme | Desteklenir (ve temel katmandan ölçekleme desteklenmez)| Desteklenir | Desteklenir|
 | Depolama boyutu | 5 GiB ile 16 TiB| 5 GiB ile 16 TiB | 32 GiB 'den 32.767 GiB 'ye|
-| Çevrimiçi depolama Ölçeklendirmesi | Destekleniyor| Destekleniyor| Desteklenmez|
-| Otomatik depolama Ölçeklendirmesi | Destekleniyor| Önizlemede desteklenmez| Desteklenmez|
+| Çevrimiçi depolama Ölçeklendirmesi | Desteklenir| Desteklenir| Desteklenmez|
+| Otomatik depolama Ölçeklendirmesi | Desteklenir| Önizlemede desteklenmez| Desteklenmez|
 | Ağ bağlantısı | -Sunucu güvenlik duvarıyla ortak uç noktalar.<br/> -Özel bağlantı desteğiyle özel erişim.|-Sunucu güvenlik duvarıyla ortak uç noktalar.<br/> -Sanal ağ tümleştirmesiyle özel erişim.| -Sunucu güvenlik duvarıyla ortak uç noktalar.<br/> -Özel bağlantı desteğiyle özel erişim.|
 | Hizmet düzeyi sözleşmesi (SLA) | % 99,99 kullanılabilirlik SLA 'Sı |Önizlemede SLA yok| Kullanılabilirlik Alanları kullanarak% 99,99|
 | İşletim sistemi düzeltme eki uygulama| Automatic  | Özel bakım penceresi denetimiyle otomatik | Son kullanıcılar tarafından yönetiliyor |
 | MySQL düzeltme eki uygulama     | Automatic  | Özel bakım penceresi denetimiyle otomatik | Son kullanıcılar tarafından yönetiliyor |
 | Yüksek kullanılabilirlik | Tek kullanılabilirlik bölgesi içinde yerleşik HA| Kullanılabilirlik alanları içinde ve genelinde yerleşik HA | Kümeleme, çoğaltma vb. kullanarak özel yönetilen|
-| Bölge yedekliliği | Desteklenmez | Destekleniyor | Destekleniyor|
+| Bölge yedekliliği | Desteklenmez | Desteklenir | Desteklenir|
 | Karma senaryolar | [Gelen verileri çoğaltma](./concepts-data-in-replication.md) ile desteklenir| Önizlemede yok | Son kullanıcılar tarafından yönetiliyor |
-| Okuma amaçlı çoğaltmalar | Destekleniyor| Destekleniyor | Son kullanıcılar tarafından yönetiliyor |
+| Okuma amaçlı çoğaltmalar | Desteklenir (en fazla 5 çoğaltma)| Desteklenir (10 çoğaltmaya kadar)| Son kullanıcılar tarafından yönetiliyor |
 | Backup | 7-35 gün bekletme ile otomatik | 1-35 gün bekletme ile otomatik | Son kullanıcılar tarafından yönetiliyor |
-| Veritabanı işlemlerini izleme | Destekleniyor | Destekleniyor | Son kullanıcılar tarafından yönetiliyor |
+| Veritabanı işlemlerini izleme | Desteklenir | Desteklenir | Son kullanıcılar tarafından yönetiliyor |
 | Olağanüstü durum kurtarma | Coğrafi olarak yedekli yedekleme depolama ve çapraz bölge okuma çoğaltmalarıyla desteklenir | Önizlemede desteklenmez| Çoğaltma teknolojileri ile özel yönetilen |
-| Sorgu Performansı İçgörüleri | Destekleniyor | Önizlemede yok| Son kullanıcılar tarafından yönetiliyor |
-| Ayrılmış Örnek Fiyatlandırması | Destekleniyor | Önizlemede yok | Destekleniyor |
-| Azure AD Kimlik Doğrulaması | Destekleniyor | Önizlemede yok | Desteklenmiyor|
+| Sorgu Performansı İçgörüleri | Desteklenir | Önizlemede yok| Son kullanıcılar tarafından yönetiliyor |
+| Ayrılmış Örnek Fiyatlandırması | Desteklenir | Önizlemede yok | Desteklenir |
+| Azure AD Kimlik Doğrulaması | Desteklenir | Önizlemede yok | Desteklenmiyor|
 | Bekleyen veri şifrelemesi | Müşteri tarafından yönetilen anahtarlarla desteklenir | Hizmet tarafından yönetilen anahtarlarla desteklenir | Desteklenmiyor|
 | SSL/TLS | TLS v 1.2, 1,1 ve 1,0 desteğiyle varsayılan olarak etkindir | TLS v 1.2 ile zorlanır | TLS v 1.2, 1,1 ve 1,0 ile desteklenir |
 | Fleet yönetimi | Azure CLı, PowerShell, REST ve Azure Resource Manager desteklenir | Azure CLı, PowerShell, REST ve Azure Resource Manager desteklenir  | Azure CLı, PowerShell, REST ve Azure Resource Manager VM 'Ler için desteklenir |

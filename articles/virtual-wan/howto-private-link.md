@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
-ms.openlocfilehash: fa4828d8b2752168d5f66a4f80c00611f80f0176
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc8e7314c941035207ecf809a9d85ef46bd58379
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306642"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913764"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>Sanal WAN 'da özel bağlantı kullan
 
@@ -72,7 +72,7 @@ $ sqlcmd -S wantest.database.windows.net -U $username -P $password -Q "$query"
 10.1.3.75
 ```
 
-Gördüğünüz gibi, SQL Server 'ın istemciden gördüğü kaynak IP adresini bize veren özel bir SQL sorgusu kullanıyoruz. Bu durumda, sunucu istemciyi özel IP 'si () ile görür `10.1.3.75` ; Bu, trafiğin genel Internet üzerinden gezinmediği ancak doğrudan özel uç noktaya gidebileceği anlamına gelir.
+Gördüğünüz gibi, SQL Server 'ın istemciden gördüğü kaynak IP adresini bize veren özel bir SQL sorgusu kullanıyoruz. Bu durumda, sunucu istemciyi kendi özel IP 'si () ile görür; bu da `10.1.3.75` trafiğin VNET 'ten doğrudan özel uç noktaya gider anlamına gelir.
 
 `username` `password` Bu kılavuzdaki örneklerin çalışmasını sağlamak için değişkenleri ve Azure SQL veritabanında tanımlanan kimlik bilgileriyle eşleşecek şekilde ayarlamanız gerektiğini unutmayın.
 

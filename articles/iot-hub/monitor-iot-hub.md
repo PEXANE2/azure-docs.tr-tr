@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 5e2f5e067f0a1d5c13179b3d6175b3aebf6a43fd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a8f9c46487422deb4513768dff04f559af952f7b
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548616"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926266"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Azure IoT Hub izleme
 
@@ -54,11 +54,14 @@ Platform ölçümleri ve etkinlik günlüğü otomatik olarak toplanır ve depol
 
 Kaynak günlükleri, bir tanılama ayarı oluşturup bunları bir veya daha fazla konuma yönlendirene kadar toplanmaz ve depolanmaz.
 
-Ölçümler ve Günlükler, Azure Izleyici günlükleri kullanılarak çözümlenebilecekleri bir Log Analytics çalışma alanına yönlendirilebilir; arşivleme ve çevrimdışı analiz için Azure depolama; ya da, üçüncü taraf SıEM araçları gibi dış uygulamalar tarafından okundukları bir Event Hubs uç noktası.
+Ölçümler ve Günlükler aşağıdakiler dahil olmak üzere çeşitli konumlara yönlendirilebilir:
+- Azure Izleyici, ilişkili bir Log Analytics çalışma alanı aracılığıyla depolar. Log Analytics kullanılarak çözümlenebilirler.
+- Arşivleme ve çevrimdışı analiz için Azure depolama 
+- Dış uygulamalar tarafından okunabilecek bir Event Hubs uç noktası (örneğin, üçüncü taraf SıEM araçları).
 
 Azure portal, IoT Hub 'ınızın sol bölmesindeki **izleme** altında **Tanılama ayarları** ' nı ve ardından IoT Hub 'ınız tarafından yayınlanan Günlükler ve platform ölçümleri kapsamındaki tanılama ayarlarını oluşturmak için **Tanılama ayarı Ekle** ' yi seçebilirsiniz.
 
-Aşağıdaki ekran görüntüsünde, bir Log Analytics çalışma alanına, kaynak günlüklerinde ve tüm platform ölçümlerinde yönlendirme bağlantı işlemlerine yönelik bir tanılama ayarı gösterilmektedir.
+Aşağıdaki ekran görüntüsünde, kaynak günlüğü türü *bağlantı işlemlerini* ve tüm platform ölçümlerini bir Log Analytics çalışma alanına yönlendirmeye yönelik bir tanılama ayarı gösterilmektedir.
 
 :::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="IoT Hub 'a Genel Bakış sayfasında varsayılan ölçüm grafikleri.":::
 
@@ -86,7 +89,7 @@ Sayı birimlerinde toplanan IoT Hub platform ölçümleri için bazı toplamalar
 
 ## <a name="analyzing-logs"></a>Günlükler çözümleniyor
 
-Azure Izleyici günlüklerindeki veriler, her tablonun kendine ait benzersiz özellikler kümesine sahip olduğu tablolarda depolanır. Azure Izleyici günlükleri hakkında daha fazla bilgi edinmek için Azure izleyici belgelerinde [Azure Izleyici günlüklerine genel bakış](/azure/azure-monitor/platform/data-platform-logs) konusuna bakın. 
+Azure Izleyici günlüklerindeki veriler, her tablonun kendine ait benzersiz özellikler kümesine sahip olduğu tablolarda depolanır. Bu tablolardaki veriler bir Log Analytics çalışma alanıyla ilişkilendirilir ve Log Analytics sorgulanabilir. Azure Izleyici günlükleri hakkında daha fazla bilgi edinmek için Azure izleyici belgelerinde [Azure Izleyici günlüklerine genel bakış](/azure/azure-monitor/platform/data-platform-logs) konusuna bakın. 
 
 Verileri Azure Izleyici günlüklerine yönlendirmek için bir Log Analytics çalışma alanına kaynak günlükleri veya platform ölçümleri göndermek üzere bir tanılama ayarı oluşturmanız gerekir. Daha fazla bilgi için bkz. [koleksiyon ve yönlendirme](#collection-and-routing).
 

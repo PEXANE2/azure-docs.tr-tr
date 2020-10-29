@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec29b6489712eeb67783aef03261a3606a390125
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88648998"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926623"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure sanal makinesi üzerinde SAP iş yüküne yönelik desteklenen senaryolar
 Azure 'da SAP NetWeaver, Business One `Hybris` veya S/4HANA sistemleri mimarisi tasarlamak, ölçeklenebilir, verimli ve yüksek oranda kullanılabilir bir dağıtıma ulaşmak için kullanabileceğiniz çeşitli mimariler ve araçlar için çok sayıda farklı fırsat açar. Kullanılan işletim sistemine veya DBMS 'ye bağımlı olsa da kısıtlamalar vardır. Ayrıca, şirket içinde desteklenen tüm senaryolar Azure 'da aynı şekilde desteklenmez. Bu belge, Azure VM 'Leri kullanan desteklenen yüksek kullanılabilirliğe sahip olmayan yapılandırmaların ve yüksek kullanılabilirliğe sahip yapılandırmaların ve mimarilerin oluşmasına yol açacaktır. [Hana büyük örneklerle](./hana-overview-architecture.md)desteklenen senaryolar IÇIN, [Hana büyük örnekler için desteklenen senaryolar](./hana-supported-scenario.md)makalesine bakın. 
@@ -46,7 +46,7 @@ Bu tür yapılandırmalarda SAP uygulama katmanını ve DBMS katmanını farklı
 
 Grafik gösterimi şöyle görünür:
 
-![Basit 2 katmanlı yapılandırma](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
+![Basit 3 katmanlı bir yapılandırma gösteren diyagram.](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
 
 Bu tür bir yapılandırma Windows, Red hat, SUSE ve Oracle Linux ' de desteklenir ve üretim ve üretim dışı durumlar için SQL Server, Oracle, DB2, SAP HANA, maxDB ve SAP Ao 'un DBMS sistemleri için de kullanılır. Bu, [Azure Hana büyük örnekleri](./hana-overview-architecture.md)için varsayılan dağıtım yapılandırmadır. Basitme için SAP uygulama katmanındaki SAP Merkezi Hizmetleri ve SAP iletişim örnekleri arasında ayrım yapmadınız. Bu basit 3 katmanlı yapılandırmada SAP Merkezi Hizmetleri için yüksek kullanılabilirlik koruması yoktur.
 
@@ -83,7 +83,7 @@ Birçok durumda, çıplak sunucularda veya özel bulutlarda çalışan VM 'lerde
 
 Azure VM 'lerinde birden çok SAP iletişim örneğinin çalıştırıldığı 3 katmanlı bir yapılandırmada şöyle görünebilirler:
 
-![Bir birimde birden çok DBMS örneği](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
+![Azure VM 'lerinde birden çok SAP iletişim örneğinin çalıştırıldığı 3 katmanlı bir yapılandırmayı gösteren diyagram.](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
 
 Basitme için SAP uygulama katmanındaki SAP Merkezi Hizmetleri ve SAP iletişim örnekleri arasında ayrım yapmadınız. Bu basit 3 katmanlı yapılandırmada SAP Merkezi Hizmetleri için yüksek kullanılabilirlik koruması yoktur. Üretim sistemleri için SAP Merkezi Hizmetleri korumasız olarak ayrılmamanız önerilmez. Daha fazla bilgi için, SAP merkezi örnekleri etrafında çok düzeyli yapılandırmaların ve bu tür çok düzeyli yapılandırmaların yüksek kullanılabilirliğine yönelik bilgiler için, bu belgenin sonraki bölümlerine bakın.
 
@@ -208,7 +208,7 @@ Yapılandırma, [SAP uygulamaları için SUSE Linux Enterprise Server Çoklu SID
 
 Sıraya alma çoğaltması sunucusu olan bir çoklu SID kümesi, şema gibi
 
-![DBMS ve ASCS HA yapılandırması](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
+![Sıraya alma çoğaltması sunucusuyla çok düzeyli bir kümeyi gösteren diyagram.](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
 
 
 ## <a name="sap-hana-scale-out-scenarios"></a>SAP HANA genişleme senaryoları

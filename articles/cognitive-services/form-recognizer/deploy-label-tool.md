@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717906"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913118"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Örnek etiketleme aracını dağıtma
 
@@ -41,9 +41,9 @@ Başlamadan önce, örnek etiketleme aracını bir Azure Container Instance 'a (
 
 Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımları izleyin: 
 
-1. [Azure portalında](https://portal.azure.com/signin/index/) oturum açın.
-2. **Kaynak oluştur**’u seçin. 
-3. Ardından **Web uygulaması**' nı seçin. 
+1. [Azure Portal](https://portal.azure.com/signin/index/) oturum açın.
+2. **Kaynak oluştur** ’u seçin. 
+3. Ardından **Web uygulaması** ' nı seçin. 
 
    > [!div class="mx-imgBorder"]
    > ![Web uygulaması Seç](./media/quickstarts/formre-create-web-app.png)
@@ -95,14 +95,14 @@ Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımlar�
    > [!div class="mx-imgBorder"]
    > ![Docker 'ı yapılandırma](./media/quickstarts/formre-configure-docker.png)
 
-7. İşte bu kadar. Ardından Web uygulamanızı dağıtmak için **gözden geçir + oluştur**' u ve ardından **Oluştur** ' u seçin. Tamamlandığında, Web uygulamanıza, kaynağınız için **genel bakış** bölümünde belirtilen URL 'de erişebilirsiniz.
+7. İşte bu kadar. Ardından Web uygulamanızı dağıtmak için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. Tamamlandığında, Web uygulamanıza, kaynağınız için **genel bakış** bölümünde belirtilen URL 'de erişebilirsiniz.
 
 > [!NOTE]
 > Web uygulamanızı oluştururken yetkilendirmeyi/kimlik doğrulamasını da yapılandırabilirsiniz. Başlamak için bu gerekli değildir. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure portal kullanmaya alternatif olarak, Azure CLı kullanarak bir kaynak oluşturabilirsiniz. Devam etmeden önce [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)'yı yüklemeniz gerekir. Azure CLı ile zaten çalışıyorsanız bu adımı atlayabilirsiniz. 
+Azure portal kullanmaya alternatif olarak, Azure CLı kullanarak bir kaynak oluşturabilirsiniz. Devam etmeden önce [Azure CLI](/cli/azure/install-azure-cli)'yı yüklemeniz gerekir. Azure CLı ile zaten çalışıyorsanız bu adımı atlayabilirsiniz. 
 
 Bu komutla ilgili bilmeniz gereken birkaç nokta vardır:
 
@@ -149,7 +149,7 @@ az container create \
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>Yetkilendirme için Azure AD 'ye bağlanma
 
-Web uygulamanızı Azure Active Directory bağlamanız önerilir. Bu, yalnızca geçerli kimlik bilgilerine sahip kullanıcıların oturum açabilmesini ve Web uygulamanızı kullanmasını sağlar. Azure Active Directory bağlanmak için [App Service uygulamanızı yapılandırma](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) bölümündeki yönergeleri izleyin.
+Web uygulamanızı Azure Active Directory bağlamanız önerilir. Bu, yalnızca geçerli kimlik bilgilerine sahip kullanıcıların oturum açabilmesini ve Web uygulamanızı kullanmasını sağlar. Azure Active Directory bağlanmak için [App Service uygulamanızı yapılandırma](../../app-service/configure-authentication-provider-aad.md) bölümündeki yönergeleri izleyin.
 
 ## <a name="open-source-on-github"></a>GitHub 'da açık kaynak
 

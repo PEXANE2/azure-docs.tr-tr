@@ -1,6 +1,6 @@
 ---
 title: Fortinet verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Panoları görüntülemek, özel uyarılar oluşturmak ve araştırmayı geliştirmek için Fortinet gerecinizi Azure Sentinel 'e bağlayın. 
+description: Panoları görüntülemek, özel uyarılar oluşturmak ve araştırmayı geliştirmek için Fortinet gerecinizi Azure Sentinel 'e bağlayın.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 8aa8599cbaab6af00d7b4122b94c9e24870881f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60be22f439547d006f54e489833b63171e617e3e
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511339"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92914002"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>Fortinet 'ı Azure Sentinel 'e bağlama
 
@@ -38,19 +38,19 @@ Fortinet Agent aracılığıyla syslog iletilerini CEF biçiminde Azure çalış
 
     ```console
     config log syslogd setting
+    set status enable
     set format cef
     set port 514
     set server <ip_address_of_Receiver>
-    set status enable
     end
     ```
 
     - Sunucu **IP adresini** aracının IP adresiyle değiştirin.
     - **Syslog bağlantı noktasını** **514** veya aracıda ayarlanan bağlantı noktası olarak ayarlayın.
-    - Erken FortiOS sürümlerinde CEF biçimini etkinleştirmek için, **CSV 'yi devre dışı bırak**komut kümesini çalıştırmanız gerekebilir.
+    - Erken FortiOS sürümlerinde CEF biçimini etkinleştirmek için, **CSV 'yi devre dışı bırak** komut kümesini çalıştırmanız gerekebilir.
  
    > [!NOTE] 
-   > Daha fazla bilgi için, [Fortinet belge kitaplığına](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)gidin. Sürümünüzü seçin ve **el kitabı** ve **log ileti başvurusunu**kullanın.
+   > Daha fazla bilgi için, [Fortinet belge kitaplığına](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)gidin. Sürümünüzü seçin ve **el kitabı** ve **log ileti başvurusunu** kullanın.
 
 1. Azure Izleyici 'de ilgili şemayı, Fortinet olayları için Log Analytics kullanmak için arama yapın `CommonSecurityLog` .
 

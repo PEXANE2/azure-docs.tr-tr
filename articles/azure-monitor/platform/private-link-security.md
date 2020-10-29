@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 42419247de537f9a166c3cdca2fd5a832ade6a5f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 61073ce7e8d3abc43d1db031608da72e6d3e0791
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461439"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926810"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -90,18 +90,18 @@ Aşağıdaki topolojide:
 
 Azure Izleyici özel bağlantı kapsamı kaynağı oluşturarak başlayın.
 
-1. Azure portal **bir kaynak oluştur ' a** gidin ve **Azure Izleyici özel bağlantı kapsamını**arayın.
+1. Azure portal **bir kaynak oluştur ' a** gidin ve **Azure Izleyici özel bağlantı kapsamını** arayın.
 
    ![Azure Izleyici özel bağlantı kapsamını bulun](./media/private-link-security/ampls-find-1c.png)
 
-2. **Oluştur**' a tıklayın.
+2. **Oluştur** ' a tıklayın.
 3. Bir abonelik ve kaynak grubu seçin.
 4. AMPLS 'e bir ad verin. Kapsamın, ağ güvenlik sınırlarını yanlışlıkla kesmesine izin vermek için, kapsamın kullanılacağı amacı ve güvenlik sınırını belirten bir ad kullanmak en iyisidir. Örneğin, "AppServerProdTelem".
-5. **Gözden Geçir ve Oluştur**’a tıklayın. 
+5. **Gözden Geçir ve Oluştur** ’a tıklayın. 
 
    ![Azure Izleyici özel bağlantı kapsamı oluştur](./media/private-link-security/ampls-create-1d.png)
 
-6. Doğrulama geçişine izin verin ve ardından **Oluştur**' a tıklayın.
+6. Doğrulama geçişine izin verin ve ardından **Oluştur** ' a tıklayın.
 
 ## <a name="connect-azure-monitor-resources"></a>Azure Izleyici kaynaklarını bağlama
 
@@ -112,40 +112,45 @@ AMPLS 'yi önce özel uç noktalara, sonra da Azure Izleyici kaynaklarına veya 
 
     ![Kapsam seçin UX ekran görüntüsü](./media/private-link-security/ampls-select-2.png)
 
+> [!NOTE]
+> Azure Izleyici kaynaklarını silmek için önce bağlandıkları tüm AMPLS nesneleriyle bağlantılarını kesmeniz gerekir. Bir AMPLS 'e bağlı kaynakları silmek mümkün değildir.
+
 ### <a name="connect-to-a-private-endpoint"></a>Özel bir uç noktaya Bağlan
 
 Şimdi, AMPLS 'larınızla bağlantılı kaynaklarınız olduğuna göre, ağımızı bağlamak için özel bir uç nokta oluşturun. Bu görevi, bu örnekte olduğu gibi [Azure Portal özel bağlantı merkezinde](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)veya Azure Izleyici özel bağlantı kapsamınızda yapabilirsiniz.
 
-1. Kapsam kaynağında, sol taraftaki kaynak menüsünde **Özel uç nokta bağlantıları** ' na tıklayın. Uç nokta oluşturma işlemini başlatmak için **Özel uç noktaya** tıklayın. Ayrıca, özel bağlantı merkezinde başlatılan bağlantıları, seçerek ve **Onayla**' ya tıklayarak da onaylayabilirsiniz.
+1. Kapsam kaynağında, sol taraftaki kaynak menüsünde **Özel uç nokta bağlantıları** ' na tıklayın. Uç nokta oluşturma işlemini başlatmak için **Özel uç noktaya** tıklayın. Ayrıca, özel bağlantı merkezinde başlatılan bağlantıları, seçerek ve **Onayla** ' ya tıklayarak da onaylayabilirsiniz.
 
     ![Özel uç nokta bağlantıları UX görüntüsü](./media/private-link-security/ampls-select-private-endpoint-connect-3.png)
 
 2. Abonelik, kaynak grubu ve uç noktanın adını ve üzerinde etkin olması gereken bölgeyi seçin. Bölgenin, bağlayacaksınız sanal ağ ile aynı bölgede olması gerekir.
 
-3. **İleri: kaynak**' a tıklayın. 
+3. **İleri: kaynak** ' a tıklayın. 
 
 4. Kaynak ekranında,
 
    a. Azure Izleyici özel kapsam kaynağınızı içeren **aboneliği** seçin. 
 
-   b. **Kaynak türü**için **Microsoft. Insights/privatelinkscopes**' ı seçin. 
+   b. **Kaynak türü** için **Microsoft. Insights/privatelinkscopes** ' ı seçin. 
 
    c. **Kaynak** açılan listesinden daha önce oluşturduğunuz özel bağlantı kapsamınızı seçin. 
 
-   d. Ileri ' ye tıklayın **: yapılandırma >**.
+   d. Ileri ' ye tıklayın **: yapılandırma >** .
       ![Özel uç nokta oluştur Seç ekran görüntüsü](./media/private-link-security/ampls-select-private-endpoint-create-4.png)
 
 5. Yapılandırma bölmesinde,
 
    a.    Azure Izleyici kaynaklarınıza bağlamak istediğiniz **sanal ağı** ve **alt ağı** seçin. 
  
-   b.    **Özel DNS bölgesi Ile tümleştirme**için **Evet** ' i seçin ve otomatik olarak yeni bir özel DNS bölgesi oluşturmasını sağlayın. Gerçek DNS bölgeleri aşağıdaki ekran görüntüsünde gösterilenden farklı olabilir. 
+   b.    **Özel DNS bölgesi Ile tümleştirme** için **Evet** ' i seçin ve otomatik olarak yeni bir özel DNS bölgesi oluşturmasını sağlayın. Gerçek DNS bölgeleri aşağıdaki ekran görüntüsünde gösterilenden farklı olabilir. 
+   > [!NOTE]
+   > **Hayır** ' ı SEÇIN ve DNS kayıtlarını el ile yönetmeyi tercih ederseniz, bu özel uç nokta ve ampls yapılandırması dahil olmak üzere, Ilk olarak özel bağlantınız kurulumunu tamamlayabilirsiniz. Ardından, DNS 'nizi [Azure özel uç nokta DNS yapılandırmasındaki](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)yönergelere göre yapılandırın. Özel bağlantı kurulumunuzu hazırlama olarak boş kayıtlar oluşturmadığından emin olun. Oluşturduğunuz DNS kayıtları var olan ayarları geçersiz kılabilir ve Azure Izleyici ile bağlantınızı etkileyebilir.
  
-   c.    **Gözden geçir ve oluştur**’a tıklayın.
+   c.    **Gözden geçir ve oluştur** ’a tıklayın.
  
    d.    Doğrulama geçişine izin verin. 
  
-   e.    **Oluştur**’a tıklayın. 
+   e.    **Oluştur** 'a tıklayın. 
 
     ![Create Private Endpoint2 Select ekran görüntüsü](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -159,7 +164,7 @@ Azure portala gidin. Log Analytics çalışma alanı kaynağında, sol taraftaki
 
 İlk olarak, bu Log Analytics kaynağını erişiminiz olan tüm Azure Izleyici özel bağlantı kapsamlarına bağlayabilirsiniz. **Ekle** ' ye tıklayın ve Azure Izleyici özel bağlantı kapsamını seçin.  Bağlanmak için **Uygula** ' ya tıklayın. Tüm bağlı kapsamlar Bu ekranda görünür. Bu bağlantının yapılması, bağlı sanal ağlardaki ağ trafiğinin bu çalışma alanına ulaşmasını sağlar. Bağlantıyı, [Azure izleyici kaynaklarını bağlıyoruz](#connect-azure-monitor-resources), kapsamdan bağlama ile aynı etkiye sahip hale getirme.  
 
-İkincisi, bu kaynağa yukarıda listelenen özel bağlantı kapsamlarının dışından nasıl ulaşılırsa denetleyebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır**olarak ayarlarsanız, bağlı kapsamların dışındaki makineler bu çalışma alanına veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır**olarak ayarlarsanız, kapsamların dışındaki makineler bu çalışma alanındaki verilere erişemez. Bu veriler çalışma kitaplarına, panolara, sorgu API tabanlı istemci deneyimlerini, Azure portal öngörüleri ve daha fazlasını içerir. Azure portal dışında çalışan deneyimler ve sorgu Log Analytics verileri özel bağlantılı VNET içinde de çalışıyor olması gerekir.
+İkincisi, bu kaynağa yukarıda listelenen özel bağlantı kapsamlarının dışından nasıl ulaşılırsa denetleyebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, bağlı kapsamların dışındaki makineler bu çalışma alanına veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, kapsamların dışındaki makineler bu çalışma alanındaki verilere erişemez. Bu veriler çalışma kitaplarına, panolara, sorgu API tabanlı istemci deneyimlerini, Azure portal öngörüleri ve daha fazlasını içerir. Azure portal dışında çalışan deneyimler ve sorgu Log Analytics verileri özel bağlantılı VNET içinde de çalışıyor olması gerekir.
 
 Erişimin bu şekilde kısıtlanması Azure Resource Manager uygulanmaz ve bu nedenle aşağıdaki sınırlamalara sahiptir:
 * Verilere erişim-ortak ağlardan gelen sorguları engelleme, çoğu Log Analytics deneyim için geçerli olsa da, bazı deneyimler verileri Azure Resource Manager aracılığıyla sorgular ve bu nedenle özel bağlantı ayarları Kaynak Yöneticisi de (yakında kullanıma sunulacak özellik) uygulanmamışsa verileri sorgulayamaz. Bu, örneğin Azure Izleyici çözümlerini, çalışma kitaplarını ve öngörülerini ve LogicApp bağlayıcısını içerir.
@@ -175,9 +180,9 @@ Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uy
 
 | Bulut ortamı | Aracı Kaynağı | Bağlantı noktaları | Yön |
 |:--|:--|:--|:--|
-|Azure Genel     | scadvisorcontent.blob.core.windows.net         | 443 | Outbound
-|Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Outbound
-|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Outbound
+|Azure Genel     | scadvisorcontent.blob.core.windows.net         | 443 | Giden
+|Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Giden
+|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Giden
 
 ## <a name="configure-application-insights"></a>Application Insights Yapılandır
 
@@ -185,9 +190,9 @@ Azure portala gidin. Azure Izleyici Application Insights bileşen kaynağında, 
 
 ![AI ağ yalıtımı](./media/private-link-security/ampls-application-insights-lan-network-isolation-6.png)
 
-İlk olarak, bu Application Insights kaynağını, erişiminiz olan Azure Izleyici özel bağlantı kapsamlarına bağlayabilirsiniz. **Ekle** ' ye tıklayın ve **Azure Izleyici özel bağlantı kapsamını**seçin. Bağlanmak için Uygula ' ya tıklayın. Tüm bağlı kapsamlar Bu ekranda görünür. Bu bağlantının yapılması, bağlı sanal ağlardaki ağ trafiğinin bu bileşene ulaşmasını sağlar. Bağlantıyı, [Azure izleyici kaynaklarını bağlıyoruz](#connect-azure-monitor-resources), kapsamdan bağlama ile aynı etkiye sahip hale getirme. 
+İlk olarak, bu Application Insights kaynağını, erişiminiz olan Azure Izleyici özel bağlantı kapsamlarına bağlayabilirsiniz. **Ekle** ' ye tıklayın ve **Azure Izleyici özel bağlantı kapsamını** seçin. Bağlanmak için Uygula ' ya tıklayın. Tüm bağlı kapsamlar Bu ekranda görünür. Bu bağlantının yapılması, bağlı sanal ağlardaki ağ trafiğinin bu bileşene ulaşmasını sağlar. Bağlantıyı, [Azure izleyici kaynaklarını bağlıyoruz](#connect-azure-monitor-resources), kapsamdan bağlama ile aynı etkiye sahip hale getirme. 
 
-İkincisi, daha önce listelenen özel bağlantı kapsamlarının dışından bu kaynağa nasıl ulaşılırsa kontrol edebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır**olarak ayarlarsanız, bağlı kapsamların dışındaki makineler veya SDK 'lar bu bileşene veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır**olarak ayarlarsanız, kapsamların dışındaki makineler bu Application Insights kaynaktaki verilere erişemez. Bu veriler APM günlüklerine, ölçümlere ve canlı ölçüm akışına erişimi, ayrıca çalışma kitapları, panolar, sorgu API tabanlı istemci deneyimleri, Azure portal içgörüler ve daha fazlası gibi en üstte oluşturulan deneyimlerden de oluşur. 
+İkincisi, daha önce listelenen özel bağlantı kapsamlarının dışından bu kaynağa nasıl ulaşılırsa kontrol edebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, bağlı kapsamların dışındaki makineler veya SDK 'lar bu bileşene veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, kapsamların dışındaki makineler bu Application Insights kaynaktaki verilere erişemez. Bu veriler APM günlüklerine, ölçümlere ve canlı ölçüm akışına erişimi, ayrıca çalışma kitapları, panolar, sorgu API tabanlı istemci deneyimleri, Azure portal içgörüler ve daha fazlası gibi en üstte oluşturulan deneyimlerden de oluşur. 
 
 Portal dışı tüketim deneyimlerinin, izlenen iş yüklerini içeren özel bağlantılı VNET içinde de çalışıyor olması gerektiğini unutmayın. 
 
@@ -235,11 +240,11 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure portal
 
-Application Insights ve Log Analytics gibi Azure Izleyici portalı deneyimlerini kullanmak için, Azure portal ve Azure Izleyici uzantılarına özel ağlarda erişilebilir durumda izin vermeniz gerekir. Ağ güvenlik grubunuza **AzureActiveDirectory**, **AzureResourceManager**, **Azurefrontkapısı. Firstpartisi**ve **Azurefrontkapısı. ön uç** [hizmeti etiketleri](../../firewall/service-tags.md) ekleyin.
+Application Insights ve Log Analytics gibi Azure Izleyici portalı deneyimlerini kullanmak için, Azure portal ve Azure Izleyici uzantılarına özel ağlarda erişilebilir durumda izin vermeniz gerekir. Ağ güvenlik grubunuza **AzureActiveDirectory** , **AzureResourceManager** , **Azurefrontkapısı. Firstpartisi** ve **Azurefrontkapısı. ön uç** [hizmeti etiketleri](../../firewall/service-tags.md) ekleyin.
 
 ### <a name="programmatic-access"></a>Programlı erişim
 
-REST API, [CLI](/cli/azure/monitor?view=azure-cli-latest) veya PowerShell 'i özel ağlarda Azure izleyici ile kullanmak için,**AzureActiveDirectory** ve AzureResourceManager [hizmet etiketlerini](../../virtual-network/service-tags-overview.md)güvenlik duvarınızın **AzureResourceManager** içine ekleyin.  
+REST API, [CLI](/cli/azure/monitor?view=azure-cli-latest) veya PowerShell 'i özel ağlarda Azure izleyici ile kullanmak için, **AzureActiveDirectory** ve AzureResourceManager [hizmet etiketlerini](../../virtual-network/service-tags-overview.md)güvenlik duvarınızın **AzureResourceManager** içine ekleyin.  
 
 Bu etiketlerin eklenmesi, Log Analytics çalışma alanlarını ve AI bileşenlerini sorgulama, oluşturma ve yönetme gibi eylemleri gerçekleştirmenize olanak tanır.
 

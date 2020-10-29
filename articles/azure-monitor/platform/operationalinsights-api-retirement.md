@@ -5,23 +5,23 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/02/2020
-ms.openlocfilehash: ad3287651716580aaf6ab8c5e819fd92a70e695d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 10/29/2020
+ms.openlocfilehash: 4075e27c3711cbc4c584005126b53f7c99942049
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144111"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926734"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Operationalınsights API sürümü kullanımdan kaldırma
-Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için API 'YI devre dışı bırakma konusunda en az 12 ay önceden bildirim sağlar. **Operationalınsights** kaynak sağlayıcısı API 'leri için yeni bir sürüm (2020-08-01) yayımladık ve 31 Ekim 2023 TARIHINDE önceki API sürümlerini devre dışı bırakacağız.
+Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için API 'YI devre dışı bırakma konusunda en az 12 ay önceden bildirim sağlar. **Operationalınsights** kaynak sağlayıcısı API 'leri için yeni bir sürüm (2020-08-01) yayımladık ve 29 Şubat 2014 ' te önceki API sürümlerini devre dışı bırakacağız.
 
 [Adanmış küme](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters), [müşteri tarafından yönetilen anahtarlar](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys), [özel bağlantı](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security) ve [veri dışa aktarma](https://docs.microsoft.com/azure/azure-monitor/platform/logs-data-export)gibi yeni işlevlerin avantajlarından yararlanmak için şimdi 2020-08-01 sürümünü kullanmaya başlamanız önerilir. Ayrıca, yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli API 'ye eklenir.
 
-31 Ekim 2023 ' den sonra Azure Izleyici artık 2020-08-01 ' den önceki API sürümlerini desteklememektedir. Yükseltmemeyi tercih ediyorsanız, önceki sürümlerden gönderilen istekler, 31 Ekim 2023 ' e kadar Azure Izleyici hizmeti tarafından sunulmayı sürdürmeye devam edecektir.
+29 Şubat 2014 ' ten sonra 2014 Azure Izleyici, artık 2020-08-01 ' den önceki API sürümlerini desteklemezler. Yükseltmemeyi tercih ediyorsanız, önceki sürümlerden gönderilen istekler, 29 Şubat 2014 ' e kadar Azure Izleyici hizmeti tarafından sunulmayı sürdürmeye devam edecektir.
 
 ## <a name="migration-steps"></a>Geçiş adımları
-Kullandığınız yapılandırma yöntemine bağlı olarak, **rest** isteklerindeki yeni sürümü ve **Kaynak Yöneticisi şablonları**güncelleştirmelisiniz. API sürümünü güncelleştirmek için aşağıdaki örnekleri izleyin:
+Kullandığınız yapılandırma yöntemine bağlı olarak, **rest** isteklerindeki yeni sürümü ve **Kaynak Yöneticisi şablonları** güncelleştirmelisiniz. API sürümünü güncelleştirmek için aşağıdaki örnekleri izleyin:
 
 1. REST API istekler, isteğin URL 'sindeki API sürümünü kullanır. Aşağıdaki örnekte gösterildiği gibi, bu sürümü en son sürüm (2020-08-01) ile değiştirin.
 

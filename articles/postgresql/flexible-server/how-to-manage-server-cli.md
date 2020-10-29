@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: eba175eb831ef0c472c2e11d2d03f134a0d3b052
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8e24dd6cb8a1fa90f1a6caf9117ab3c344c00b12
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547682"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913883"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Azure CLı kullanarak bir PostgreSQL için Azure veritabanı 'nı yönetme-esnek sunucu
 
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>İşlem ve depolamayı ölçeklendirme
 
-Aşağıdaki komutu kullanarak işlem katmanınızı, sanal çekirdekleri ve depolamayı kolayca ölçeklendirebilirsiniz. Çalıştırabilmeniz için tüm sunucu işlemlerini görebilirsiniz [az Postgres esnek-sunucu sunucusuna genel bakış](https://azure.microsoft.com/services/postgresql/)
+Aşağıdaki komutu kullanarak işlem katmanınızı, sanal çekirdekleri ve depolamayı kolayca ölçeklendirebilirsiniz. Çalıştırabilmeniz için tüm sunucu işlemlerini görebilirsiniz [az Postgres esnek-sunucu sunucusuna genel bakış](https://docs.microsoft.com/cli/azure/postgres/flexible-server)
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
@@ -123,7 +123,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>Sunucu silme
 
-PostgreSQL esnek sunucusunu silmek istiyorsanız [az Postgres esnek-sunucu Delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) komutunu çalıştırabilirsiniz.
+PostgreSQL esnek sunucusunu silmek istiyorsanız [az Postgres esnek-sunucu Delete](https://docs.microsoft.com/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) komutunu çalıştırabilirsiniz.
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver

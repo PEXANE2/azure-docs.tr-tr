@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: b1aa12bd73772b5d6332a36d749ec4d7d10d4026
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: abb3aa9ca7c9697fef1cf456964154249f0d69f3
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048194"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913985"
 ---
 # <a name="set-up-an-azure-iot-edge-device-with-x509-certificate-authentication"></a>X. 509.440 sertifikası kimlik doğrulaması ile bir Azure IoT Edge cihazı ayarlama
 
@@ -26,11 +26,11 @@ Bu makaledeki adımlarda, her cihazı IoT Hub 'ına el ile bağlayabileceğiniz 
 
 El ile sağlama için, IoT Edge cihazların kimliğini doğrulamak için iki seçeneğiniz vardır:
 
-* **Simetrik anahtar**: IoT Hub yeni bir cihaz kimliği oluşturduğunuzda, hizmet iki anahtar oluşturur. Bir cihazdan anahtardan birini yerleştirebilirsiniz ve kimlik doğrulanırken IoT Hub anahtarı gösterir.
+* **Simetrik anahtar** : IoT Hub yeni bir cihaz kimliği oluşturduğunuzda, hizmet iki anahtar oluşturur. Bir cihazdan anahtardan birini yerleştirebilirsiniz ve kimlik doğrulanırken IoT Hub anahtarı gösterir.
 
   Bu kimlik doğrulama yöntemi kullanmaya başlamak için daha hızlıdır, ancak güvenli değildir.
 
-* **X. 509.440 otomatik imzalı**: iki X. 509.440 kimlik sertifikası oluşturup cihaza yerleştirebilirsiniz. IoT Hub yeni bir cihaz kimliği oluşturduğunuzda, her iki sertifika için de parmak izleri sağlarsınız. Cihaz IoT Hub kimlik doğrulaması yaparken, sertifikalarını gösterir ve IoT Hub parmak izleriyle eşleştiğini doğrulayabilirler.
+* **X. 509.440 otomatik imzalı** : iki X. 509.440 kimlik sertifikası oluşturup cihaza yerleştirebilirsiniz. IoT Hub yeni bir cihaz kimliği oluşturduğunuzda, her iki sertifika için de parmak izleri sağlarsınız. Cihaz IoT Hub kimlik doğrulaması yaparken, sertifikalarını gösterir ve IoT Hub parmak izleriyle eşleştiğini doğrulayabilirler.
 
   Bu kimlik doğrulama yöntemi daha güvenlidir ve üretim senaryoları için önerilir.
 
@@ -44,9 +44,24 @@ X. 509.440 sertifikaları ile el ile sağlama, IoT Edge sürüm 1.0.10 veya daha
 
 ## <a name="create-certificates-and-thumbprints"></a>Sertifika ve parmak izleri oluşturma
 
+Cihaz kimlik sertifikası, en üstteki X. 509.440 sertifika yetkilisi (CA) sertifikasına bir sertifika güven zinciri üzerinden bağlanan bir yaprak sertifikadır. Cihaz kimliği sertifikasının ortak adı (CN), cihazın IoT Hub 'ınızda olmasını istediğiniz cihaz KIMLIĞI olarak ayarlanmalıdır.
 
+Cihaz kimlik sertifikaları yalnızca IoT Edge cihazı sağlamak ve cihazın Azure IoT Hub kimlik doğrulamasını yapmak için kullanılır. IoT Edge cihazın, doğrulama için modüllerde veya yaprak cihazlarda sundukları CA sertifikalarının aksine, sertifikaları imzalarlar. Daha fazla bilgi için bkz. [Azure IoT Edge sertifika kullanımı ayrıntısı](iot-edge-certs.md).
 
-<!-- TODO -->
+Cihaz kimliği sertifikasını oluşturduktan sonra iki dosyanız olmalıdır: sertifikanın ortak bölümünü içeren bir. cer veya. ped dosyası ve sertifikanın özel anahtarıyla bir. cer veya. PEA dosyası.
+
+X. 509.952 ile el ile sağlama için aşağıdaki dosyalara ihtiyacınız vardır:
+
+* İki cihaz kimlik sertifikası kümesi ve özel anahtar sertifikası. IoT Edge çalışma zamanına bir sertifika/anahtar dosyası kümesi verilmiştir.
+* Her iki cihaz kimlik sertifikasından alınan parmak izleri. Parmak izi değerleri, SHA-1 karmaları için 40 onaltılı karakterler veya SHA-256 karmaları için 64 onaltılık karakterdir. Her iki parmak izi de IoT Hub için cihaz kaydı sırasında sağlanır.
+
+Kullanılabilir sertifikanız yoksa, [IoT Edge cihaz özelliklerini test etmek için tanıtım sertifikaları oluşturabilirsiniz](how-to-create-test-certificates.md). Sertifika oluşturma betikleri ayarlamak, bir kök CA sertifikası oluşturmak ve ardından iki IoT Edge cihaz kimlik sertifikası oluşturmak için bu makaledeki yönergeleri izleyin.
+
+Bir sertifikadan parmak izini almanın bir yolu aşağıdaki OpenSSL komutuna sahiptir:
+
+```cmd
+openssl x509 -in <certificate filename>.pem -text -fingerprint
+```
 
 ## <a name="register-a-new-device"></a>Yeni bir cihaz Kaydet
 
@@ -54,7 +69,7 @@ Bir IoT Hub bağlanan her cihazın, buluttan cihaza veya cihazdan buluta iletiş
 
 X. 509.440 sertifikası kimlik doğrulaması için bu bilgiler, cihaz kimliği sertifikalarınızın içindeki *parmak izleri* biçiminde sağlanır. Bu parmak izlerinin cihaz kaydı sırasında IoT Hub, hizmetin bağlandığı sırada cihazı tanıyabilmesi için bu parmak izleri verilmiştir.
 
-IoT Hub yeni bir IoT Edge cihazı kaydetmek ve sertifika parmak izlerini karşıya yüklemek için çeşitli araçları kullanabilirsiniz. 
+IoT Hub yeni bir IoT Edge cihazı kaydetmek ve sertifika parmak izlerini karşıya yüklemek için çeşitli araçları kullanabilirsiniz.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -68,7 +83,7 @@ Azure portal IoT Hub, IoT Edge cihazlar kenar etkin olmayan ıOT cihazlarından 
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub 'ınıza gidin.
 
-1. Sol bölmede, menüden **IoT Edge** ' i seçin ve ardından **IoT Edge cihaz ekle**' yi seçin.
+1. Sol bölmede, menüden **IoT Edge** ' i seçin ve ardından **IoT Edge cihaz ekle** ' yi seçin.
 
    ![Azure portal IoT Edge bir cihaz ekleyin](./media/how-to-manual-provision-symmetric-key/portal-add-iot-edge-device.png)
 
@@ -78,7 +93,7 @@ Azure portal IoT Hub, IoT Edge cihazlar kenar etkin olmayan ıOT cihazlarından 
    * Kimlik doğrulama türü olarak **X. 509.440 otomatik olarak imzalanan** ' ı seçin.
    * Birincil ve ikincil kimlik sertifikası parmak izlerini sağlayın. Parmak izi değerleri, SHA-1 karmaları için 40 onaltılı karakterler veya SHA-256 karmaları için 64 onaltılık karakterdir.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet** ’i seçin.
 
 ### <a name="view-iot-edge-devices-in-the-azure-portal"></a>Azure portal IoT Edge cihazları görüntüleme
 
@@ -96,7 +111,7 @@ IoT Hub 'ınıza bağlanan tüm Edge özellikli cihazlar **IoT Edge** sayfasınd
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>Azure CLı ile IoT Edge cihaz oluşturma
 
-IoT Hub 'ınızda yeni bir cihaz kimliği oluşturmak için [az IoT Hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) komutunu kullanın. Örnek:
+IoT Hub 'ınızda yeni bir cihaz kimliği oluşturmak için [az IoT Hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) komutunu kullanın. Örneğin:
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled --auth-method x509_thumbprint --primary-thumbprint [SHA thumbprint] --secondary-thumbprint [SHA thumbprint]
@@ -113,7 +128,7 @@ Bu komut çeşitli parametreleri içerir:
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>Azure CLı ile IoT Edge cihazları görüntüleme
 
-IoT Hub 'ınızdaki tüm cihazları görüntülemek için [az IoT Hub Device-Identity List](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) komutunu kullanın. Örnek:
+IoT Hub 'ınızdaki tüm cihazları görüntülemek için [az IoT Hub Device-Identity List](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) komutunu kullanın. Örneğin:
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]
@@ -121,7 +136,7 @@ IoT Hub 'ınızdaki tüm cihazları görüntülemek için [az IoT Hub Device-Ide
 
 `--edge-enabled` `--ee` Yalnızca IoT hub 'ınızdaki IoT Edge cihazları listelemek için bayrak ekleyin.
 
-IoT Edge cihaz olarak kaydedilmiş tüm cihazlarda özellik **özellikleri olur. ıotedge** **doğru**olarak ayarlanır.
+IoT Edge cihaz olarak kaydedilmiş tüm cihazlarda özellik **özellikleri olur. ıotedge** **doğru** olarak ayarlanır.
 
 --- 
 
@@ -160,10 +175,10 @@ Bir Linux cihazında, bu bilgileri bir config. YAML dosyasını düzenleyerek sa
 
 1. Aşağıdaki alanları güncelleştirin:
 
-   * **iothub_hostname**: cihazın bağlanacağı IoT Hub 'ının ana bilgisayar adı. Örneğin, `{IoT hub name}.azure-devices.net`.
-   * **device_id**: cihazı kaydettirdiğiniz sırada verdiğiniz kimlik.
-   * **identity_cert**: cihazdaki bir kimlik sertifikası için URI. Örneğin, `file:///path/identity_certificate.pem`.
-   * **identity_pk**: belirtilen kimlik sertifikası için özel anahtar dosyasının URI 'si. Örneğin, `file:///path/identity_key.pem`.
+   * **iothub_hostname** : cihazın bağlanacağı IoT Hub 'ının ana bilgisayar adı. Örneğin, `{IoT hub name}.azure-devices.net`.
+   * **device_id** : cihazı kaydettirdiğiniz sırada verdiğiniz kimlik.
+   * **identity_cert** : cihazdaki bir kimlik sertifikası için URI. Örneğin, `file:///path/identity_certificate.pem`.
+   * **identity_pk** : belirtilen kimlik sertifikası için özel anahtar dosyasının URI 'si. Örneğin, `file:///path/identity_key.pem`.
 
 1. Dosyayı kaydedin ve kapatın.
 
@@ -202,10 +217,10 @@ Bir Linux cihazında, bu bilgileri bir config. YAML dosyasını düzenleyerek sa
 
 3. İstendiğinde, aşağıdaki bilgileri sağlayın:
 
-   * **Iothubhostname**: cihazın bağlanacağı IoT Hub 'ının ana bilgisayar adı. Örneğin, `{IoT hub name}.azure-devices.net`.
-   * **DeviceID**: cihazı kaydettirdiğiniz sırada verdiğiniz kimlik.
-   * **X509IdentityCertificate**: cihazdaki bir kimlik sertifikasının mutlak yolu. Örneğin, `C:\path\identity_certificate.pem`.
-   * **X509IdentityPrivateKey**: belirtilen kimlik sertifikası için özel anahtar dosyasının mutlak yolu. Örneğin, `C:\path\identity_key.pem`.
+   * **Iothubhostname** : cihazın bağlanacağı IoT Hub 'ının ana bilgisayar adı. Örneğin, `{IoT hub name}.azure-devices.net`.
+   * **DeviceID** : cihazı kaydettirdiğiniz sırada verdiğiniz kimlik.
+   * **X509IdentityCertificate** : cihazdaki bir kimlik sertifikasının mutlak yolu. Örneğin, `C:\path\identity_certificate.pem`.
+   * **X509IdentityPrivateKey** : belirtilen kimlik sertifikası için özel anahtar dosyasının mutlak yolu. Örneğin, `C:\path\identity_key.pem`.
 
 Bir cihazı el ile sağladığınızda, aşağıdakileri de içeren ek parametreleri kullanarak işlemi değiştirebilirsiniz:
 

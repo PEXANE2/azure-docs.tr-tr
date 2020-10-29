@@ -10,19 +10,19 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5eb392fdfc1ffdb6d7cfee64734cca32c9abcd33
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019384"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913288"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Öğretici: bir Machine Learning modeli oluşturmak için R kullanma (Önizleme)
 
 
 > [!IMPORTANT]
 > Azure Machine Learning R SDK Şu anda genel önizlemededir.
-> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu öğreticide, bir arabadaki bir Fatality olma olasılığını tahmin eden bir lojistik regresyon modeli oluşturmak için Azure Machine Learning R SDK (Önizleme) kullanacaksınız. Azure Machine Learning Bulut kaynaklarının, eğitim ve bir modeli dağıtmaya yönelik ölçeklenebilir bir ortam sağlamak için R ile nasıl çalıştığını göreceksiniz.  
 
@@ -45,12 +45,12 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 
 Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz, hizmette kolayca tüketilen bir nesne ile aynı olur. 
 
-Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure portal bir çalışma alanı oluşturursunuz. 
+[Çalışma alanı oluşturmanın birçok yolu](how-to-manage-workspace.md)vardır. Bu öğreticide, Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure portal bir çalışma alanı oluşturursunuz. 
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> **Çalışma alanınızı** ve **aboneliğinizi**bir yere göz atın. Denemenizin doğru yerde oluşturulmasını sağlamak için bunlara ihtiyacınız olacaktır. 
+> **Çalışma alanınızı** ve **aboneliğinizi** bir yere göz atın. Denemenizin doğru yerde oluşturulmasını sağlamak için bunlara ihtiyacınız olacaktır. 
 
 
 ## <a name="open-rstudio"></a><a name="open"></a>RStudio 'Yu aç
@@ -74,7 +74,7 @@ https://github.com/Azure/azureml-sdk-for-rBu öğreticide çalıştıracağını
 
 1. `git clone https://github.com/Azure/azureml-sdk-for-r`Depoyu kopyalamak için terminalde çalıştırın.
 
-1. RStudio 'da, kopyalanmış *azureml-SDK-for-r* klasörünün *Vignettes* klasörüne gidin.  *Vignettes*altında, *eğitme ve dağıtım-ilk modeli ' ni seçin. *Bu öğreticide kullanılan Vignette 'yi bulmak için rmd dosyası. Vignette için kullanılan ek dosyalar, *eğitme ve-dağıt-ilk model* alt klasöründe bulunur. Vignette 'yı açtıktan sonra, çalışma dizinini **oturum >, çalışma dizini > olarak kaynak dosya konumu olarak ayarlayın**. 
+1. RStudio 'da, kopyalanmış *azureml-SDK-for-r* klasörünün *Vignettes* klasörüne gidin.  *Vignettes* altında, *eğitme ve dağıtım-ilk modeli ' ni seçin.* Bu öğreticide kullanılan Vignette 'yi bulmak için rmd dosyası. Vignette için kullanılan ek dosyalar, *eğitme ve-dağıt-ilk model* alt klasöründe bulunur. Vignette 'yı açtıktan sonra, çalışma dizinini **oturum >, çalışma dizini > olarak kaynak dosya konumu olarak ayarlayın** . 
 
 > [!Important]
 > Bu makalenin geri kalanında,  *eğitme ve dağıtma-ilk modelinde gördüğünüz içerikle aynı içerik bulunur. RMD* dosyası. Rmarkkiyle karşılaşırsanız, bu dosyadaki kodu kullanmayı ücretsiz olarak kullanabilirsiniz.  Ya da kod parçacıklarını buradan veya bu makaleden bir R betiğine veya komut satırına kopyalayabilir/yapıştırabilirsiniz. 
@@ -188,7 +188,7 @@ Bir eğitim betiği, `accidents.R` sizin için *eğitme ve dağıtma-ilk model* 
 
 * Eğitim betiği, `-d` eğitim verilerini içeren dizini bulmak için bir bağımsız değişken alır. İşinizi daha sonra tanımlayıp gönderdiğinizde, bu bağımsız değişken için veri deposuna işaret edersiniz. Azure ML, eğitim işi için depolama klasörünü uzak kümeye bağlayacaktır.
 * Eğitim betiği, kullanarak Azure ML 'deki çalıştırma kaydına bir ölçüm olarak son doğruluğu günlüğe kaydeder `log_metric_to_run()` . Azure ML SDK, eğitim çalıştırmaları sırasında çeşitli ölçümleri günlüğe kaydetmek için bir günlük API kümesi sağlar. Bu ölçümler, deneme çalıştırması kaydında kaydedilir ve kalıcı hale getirilir. Ölçümlere daha sonra istediğiniz zaman erişilebilir veya [Studio](https://ml.azure.com)'daki çalıştırma ayrıntıları sayfasında görüntüleyebilirsiniz. Günlük yöntemlerinin tamamına yönelik [başvuruya](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) bakın `log_*()` .
-* Eğitim betiği, modelinizi **çıktılar**adlı bir dizine kaydeder. `./outputs`Klasör, Azure ML tarafından özel bir işleme alır. Eğitim sırasında, üzerine yazılan dosyalar `./outputs` Azure ML tarafından çalıştırma kaydlarınıza otomatik olarak yüklenir ve yapıtlar olarak kalıcı hale getirilir. Eğitilen modeli uygulamasına kaydederek `./outputs` , çalışma bittikten sonra ve uzaktan eğitim ortamınıza artık erişiminiz olmadığında bile model dosyanıza erişebiliyor ve bu dosyayı alabilirsiniz.
+* Eğitim betiği, modelinizi **çıktılar** adlı bir dizine kaydeder. `./outputs`Klasör, Azure ML tarafından özel bir işleme alır. Eğitim sırasında, üzerine yazılan dosyalar `./outputs` Azure ML tarafından çalıştırma kaydlarınıza otomatik olarak yüklenir ve yapıtlar olarak kalıcı hale getirilir. Eğitilen modeli uygulamasına kaydederek `./outputs` , çalışma bittikten sonra ve uzaktan eğitim ortamınıza artık erişiminiz olmadığında bile model dosyanıza erişebiliyor ve bu dosyayı alabilirsiniz.
 
 ### <a name="create-an-estimator"></a>Tahmin aracı oluşturma
 
@@ -212,7 +212,7 @@ est <- estimator(source_directory = "train-and-deploy-first-model",
 
 ### <a name="submit-the-job-on-the-remote-cluster"></a>İşi uzak kümede gönder
 
-Son olarak, işi kümenizde çalışacak şekilde gönderebilirsiniz. `submit_experiment()` daha sonra çalıştırma ile arabirim için kullandığınız bir Run nesnesi döndürür. Toplam olarak, ilk çalıştırma **yaklaşık 10 dakika**sürer. Ancak daha sonra çalıştırıldığında, komut dosyası bağımlılıkları değişmedikçe aynı Docker görüntüsü yeniden kullanılır.  Bu durumda, görüntü önbelleğe alınır ve kapsayıcı başlangıç zamanı çok daha hızlıdır.
+Son olarak, işi kümenizde çalışacak şekilde gönderebilirsiniz. `submit_experiment()` daha sonra çalıştırma ile arabirim için kullandığınız bir Run nesnesi döndürür. Toplam olarak, ilk çalıştırma **yaklaşık 10 dakika** sürer. Ancak daha sonra çalıştırıldığında, komut dosyası bağımlılıkları değişmedikçe aynı Docker görüntüsü yeniden kullanılır.  Bu durumda, görüntü önbelleğe alınır ve kapsayıcı başlangıç zamanı çok daha hızlıdır.
 
 ```R
 run <- submit_experiment(exp, est)
@@ -329,7 +329,7 @@ Bu öğreticide, hizmetinizi ACI 'ye dağıtacaksınız. Bu kod, test ve hafif y
 aci_config <- aci_webservice_deployment_config(cpu_cores = 1, memory_gb = 0.5)
 ```
 
-Şimdi modelinizi bir Web hizmeti olarak dağıtırsınız. Dağıtım **birkaç dakika sürebilir**. 
+Şimdi modelinizi bir Web hizmeti olarak dağıtırsınız. Dağıtım **birkaç dakika sürebilir** . 
 
 ```R
 aci_service <- deploy_model(ws, 
@@ -392,7 +392,7 @@ delete_compute(compute)
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-Ayrıca, kaynak grubunu koruyabilir ancak tek bir çalışma alanını silebilirsiniz. Çalışma alanı özelliklerini görüntüleyin ve **Sil**' i seçin.
+Ayrıca, kaynak grubunu koruyabilir ancak tek bir çalışma alanını silebilirsiniz. Çalışma alanı özelliklerini görüntüleyin ve **Sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

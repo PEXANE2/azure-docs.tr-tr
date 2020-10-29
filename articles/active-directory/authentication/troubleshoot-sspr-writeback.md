@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94b8d744c964b07c1ed6a4d7e8b89bca2258c1bc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c9664518a7e8ec505a2823cdd5f17d6fa8a7db8b
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963967"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925807"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Azure Active Directory içinde self servis parola sıfırlama geri yazma sorunlarını giderme
 
@@ -51,10 +51,10 @@ Daha fazla bilgi için bkz. [Azure AD Connect için bağlantı önkoşulları](.
 
 Bağlantı sorunlarını veya hizmetle ilgili diğer geçici sorunları çözümlemek için Azure AD Connect eşitleme hizmetini yeniden başlatmak üzere aşağıdaki adımları izleyin:
 
-1. Azure AD Connect çalıştıran sunucuda yönetici olarak **Başlat**' ı seçin.
-1. Arama alanına *Services. msc* yazın ve **ENTER**' u seçin.
+1. Azure AD Connect çalıştıran sunucuda yönetici olarak **Başlat** ' ı seçin.
+1. Arama alanına *Services. msc* yazın ve **ENTER** ' u seçin.
 1. *Microsoft Azure AD eşitleme* girişi ' ni arayın.
-1. Hizmet girişine sağ tıklayın, **Yeniden Başlat**' ı seçin ve işlemin bitmesini bekleyin.
+1. Hizmet girişine sağ tıklayın, **Yeniden Başlat** ' ı seçin ve işlemin bitmesini bekleyin.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/service-restart.png" alt-text="GUI 'yi kullanarak Azure AD Eşitleme hizmetini yeniden başlatın" border="false":::
 
@@ -66,15 +66,15 @@ Azure AD Connect eşitleme hizmetini yeniden başlatmak sorununuzu gidermezse, s
 
 Sorunları gidermeye devam etmek için aşağıdaki adımları tamamlayarak parola geri yazma özelliğini devre dışı bırakıp yeniden etkinleştirin:
 
-1. Azure AD Connect çalıştıran sunucuda yönetici olarak, **Azure AD Connect Yapılandırma Sihirbazı**' nı açın.
-1. **Azure AD 'ye Bağlan**' da Azure AD Genel yönetici kimlik bilgilerinizi girin.
-1. **AD DS Bağlan**' da şirket içi Active Directory Domain Services Yönetici kimlik bilgilerinizi girin.
-1. **Kullanıcılarınızı benzersiz olarak tanımlamak**için **İleri** düğmesini seçin.
-1. **Isteğe bağlı özellikler**' de **parola geri yazma** onay kutusunu temizleyin.
+1. Azure AD Connect çalıştıran sunucuda yönetici olarak, **Azure AD Connect Yapılandırma Sihirbazı** ' nı açın.
+1. **Azure AD 'ye Bağlan** ' da Azure AD Genel yönetici kimlik bilgilerinizi girin.
+1. **AD DS Bağlan** ' da şirket içi Active Directory Domain Services Yönetici kimlik bilgilerinizi girin.
+1. **Kullanıcılarınızı benzersiz olarak tanımlamak** için **İleri** düğmesini seçin.
+1. **Isteğe bağlı özellikler** ' de **parola geri yazma** onay kutusunu temizleyin.
 1. **Yapılandırmaya hazırlanma** sayfasına ulaşana kadar herhangi bir şeyi değiştirmeden kalan Iletişim sayfalarında **İleri ' yi** seçin.
-1. **Yapılandırmaya hazırlanma sayfasında** *parola geri yazma* seçeneğinin *devre dışı*olarak gösterildiği denetlenir. Değişikliklerinizi uygulamak için yeşil **Yapılandır** düğmesini seçin.
+1. **Yapılandırmaya hazırlanma sayfasında** *parola geri yazma* seçeneğinin *devre dışı* olarak gösterildiği denetlenir. Değişikliklerinizi uygulamak için yeşil **Yapılandır** düğmesini seçin.
 1. **Tamamlandı** **seçeneğini temizleyin ve ardından** Sihirbazı kapatmak için **son** ' u seçin.
-1. **Azure AD Connect Yapılandırma Sihirbazı**'nı yeniden açın.
+1. **Azure AD Connect Yapılandırma Sihirbazı** 'nı yeniden açın.
 1. Hizmeti yeniden etkinleştirmek için, **Isteğe bağlı özellikler** sayfasında *parola geri yazma* seçeneğini belirleyerek bu kez 2-8 arasındaki adımları yineleyin.
 
 Bu adımlar, Azure AD ile bağlantınızı yeniden kurup bağlantı sorunlarınızı çözmelidir.
@@ -101,8 +101,8 @@ Azure AD Connect sunucusunun en son sürümünü yüklemek sorununuzu gidermezse
 
 Azure AD Connect parola geri yazma işlemini gerçekleştirmek için **parola sıfırlama** izninin AD DS gerekir. Azure AD Connect belirli bir şirket içi AD DS kullanıcı hesabı için gerekli izinlere sahip olup olmadığını denetlemek için **Windows etkin izin** özelliğini kullanın:
 
-1. Azure AD Connect sunucusunda oturum açın ve **Synchronization Service Manager** **Start**  >  **eşitleme hizmetini**Başlat ' a tıklayarak Synchronization Service Manager başlatın.
-1. **Bağlayıcılar** sekmesinde şirket içi **Active Directory Domain Services** Bağlayıcısı ' nı seçin ve ardından **Özellikler**' i seçin.
+1. Azure AD Connect sunucusunda oturum açın ve **Synchronization Service Manager** **Start**  >  **eşitleme hizmetini** Başlat ' a tıklayarak Synchronization Service Manager başlatın.
+1. **Bağlayıcılar** sekmesinde şirket içi **Active Directory Domain Services** Bağlayıcısı ' nı seçin ve ardından **Özellikler** ' i seçin.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="GUI 'yi kullanarak Azure AD Eşitleme hizmetini yeniden başlatın" border="false":::
   
@@ -117,14 +117,14 @@ Azure AD Connect parola geri yazma işlemini gerçekleştirmek için **parola s�
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="GUI 'yi kullanarak Azure AD Eşitleme hizmetini yeniden başlatın" border="false":::
   
-1. Doğrulamak istediğiniz AD DS kullanıcı hesabını bulun. Hesap adına sağ tıklayın ve **Özellikler**' i seçin.  
-1. Açılır pencerede **güvenlik** sekmesine gidin ve **Gelişmiş**' i seçin.  
+1. Doğrulamak istediğiniz AD DS kullanıcı hesabını bulun. Hesap adına sağ tıklayın ve **Özellikler** ' i seçin.  
+1. Açılır pencerede **güvenlik** sekmesine gidin ve **Gelişmiş** ' i seçin.  
 1. **Yönetici Için gelişmiş güvenlik ayarları** açılır penceresinde, **etkin erişim** sekmesine gidin.
-1. **Kullanıcı Seç**' i seçin, Azure AD Connect tarafından kullanılan AD DS hesabını seçin ve ardından **etkin erişimi görüntüle**' yi seçin.
+1. **Kullanıcı Seç** ' i seçin, Azure AD Connect tarafından kullanılan AD DS hesabını seçin ve ardından **etkin erişimi görüntüle** ' yi seçin.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="GUI 'yi kullanarak Azure AD Eşitleme hizmetini yeniden başlatın" border="false":::
   
-1. Aşağı kaydırın ve **sıfırlama parolasını**bulun. Girişte bir onay işareti varsa, AD DS hesabının seçili Active Directory Kullanıcı hesabının parolasını sıfırlama izni vardır.  
+1. Aşağı kaydırın ve **sıfırlama parolasını** bulun. Girişte bir onay işareti varsa, AD DS hesabının seçili Active Directory Kullanıcı hesabının parolasını sıfırlama izni vardır.  
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="GUI 'yi kullanarak Azure AD Eşitleme hizmetini yeniden başlatın" border="false":::
 
@@ -135,7 +135,7 @@ Parola geri yazma ile ilgili olarak aşağıdaki daha belirgin sorunlar meydana 
 | Hata | Çözüm |
 | --- | --- |
 | Parola sıfırlama hizmeti şirket içinde başlamıyor. Hata 6800 Azure AD Connect makinenin uygulama olay günlüğünde görüntülenir. <br> <br> Ekleme, Federasyon, geçişli kimlik doğrulama veya parola karması ile eşitlenen kullanıcılar parolalarını sıfırlayamaz. | Parola geri yazma etkinleştirildiğinde, eşitleme altyapısı, bulut ekleme hizmetine iletişim kurarak yapılandırmayı (ekleme) gerçekleştirmek için geri yazma kitaplığını çağırır. Parola geri yazma sırasında veya Windows Communication Foundation (WCF) uç noktası başlatılırken karşılaşılan hatalar, Azure AD Connect makinenizde olay günlüğündeki hatalara neden olur. <br> <br> Azure AD Eşitleme (ADSync) hizmetinin yeniden başlatılması sırasında, geri yazma yapılandırıldıysa, WCF uç noktası başlatılır. Ancak, uç noktanın başlatılması başarısız olursa, olay 6800 ' i günlüğe kaydeder ve eşitleme hizmetinin başlamasını sağlar. Bu olayın varlığı, parola geri yazma uç noktasının başlamamasıdır. Bu olay 6800 için olay günlüğü ayrıntıları, PasswordResetService bileşeni tarafından oluşturulacak olay günlüğü girişleriyle birlikte, uç noktayı neden başlatamadığını gösterir. Bu olay günlüğü hatalarını gözden geçirin ve parola geri yazma hala çalışmıyorsa Azure AD Connect yeniden başlatmayı deneyin. Sorun devam ederse, parola geri yazma özelliğini devre dışı bırakıp yeniden etkinleştirmeyi deneyin.
-| Kullanıcı parolayı sıfırlamayı veya parola geri yazma etkinken bir hesabın kilidini açmaya çalıştığında, işlem başarısız olur. <br> <br> Ayrıca, şunu içeren Azure AD Connect olay günlüğünde bir olay görürsünüz: "eşitleme altyapısı bir hata döndürdü HR = 800700CE, ileti = dosya adı veya uzantı çok uzun", kilit açma işlemi oluştuktan sonra. | Azure AD Connect için Active Directory hesabı bulun ve parolayı en fazla 256 karakter içerecek şekilde sıfırlayın. Sonra, **Başlat** menüsünden **eşitleme hizmetini** açın. **Bağlayıcılar** ' a gidin ve **Active Directory bağlayıcısını**bulun. Seçin ve ardından **Özellikler**' i seçin. **Kimlik bilgileri** sayfasına gidin ve yeni parolayı girin. Sayfayı kapatmak için **Tamam ' ı** seçin. |
+| Kullanıcı parolayı sıfırlamayı veya parola geri yazma etkinken bir hesabın kilidini açmaya çalıştığında, işlem başarısız olur. <br> <br> Ayrıca, şunu içeren Azure AD Connect olay günlüğünde bir olay görürsünüz: "eşitleme altyapısı bir hata döndürdü HR = 800700CE, ileti = dosya adı veya uzantı çok uzun", kilit açma işlemi oluştuktan sonra. | Azure AD Connect için Active Directory hesabı bulun ve parolayı en fazla 256 karakter içerecek şekilde sıfırlayın. Sonra, **Başlat** menüsünden **eşitleme hizmetini** açın. **Bağlayıcılar** ' a gidin ve **Active Directory bağlayıcısını** bulun. Seçin ve ardından **Özellikler** ' i seçin. **Kimlik bilgileri** sayfasına gidin ve yeni parolayı girin. Sayfayı kapatmak için **Tamam ' ı** seçin. |
 | Azure AD Connect yükleme işleminin son adımında, parola geri yazma özelliğinin yapılandırılamadığını belirten bir hata görürsünüz. <br> <br> Azure AD Connect uygulama olay günlüğü, "Auth Token alma hatası" metnini içeren 32009 hatasını içerir. | Bu hata aşağıdaki iki durumda oluşur: <br><ul><li>Azure AD Connect yükleme işleminin başlangıcında sağlanmış olan genel yönetici hesabı için yanlış bir parola belirttiniz.</li><li>Azure AD Connect yükleme işleminin başlangıcında belirtilen genel yönetici hesabı için bir Federasyon kullanıcısı kullanmaya çalıştınız.</li></ul> Bu sorunu gidermek için, yükleme işleminin başlangıcında belirttiğiniz genel yönetici için bir Federasyon hesabı kullanmadığınız ve belirtilen parolanın doğru olduğundan emin olun. |
 | Azure AD Connect makine olay günlüğü, PasswordResetService çalıştırılarak oluşturulan 32002 hatasını içerir. <br> <br> Hata şunu okur: "ServiceBus 'a bağlanılırken hata oluştu. Belirteç sağlayıcısı bir güvenlik belirteci sağlayamadı. " | Şirket içi ortamınız, Bulutta Azure Service Bus uç noktasına bağlanamaz. Bu hata normalde, belirli bir bağlantı noktasına veya web adresine giden bağlantıyı engelleyen bir güvenlik duvarı kuralı nedeniyle oluşur. Daha fazla bilgi için bkz. [bağlantı önkoşulları](../hybrid/how-to-connect-install-prerequisites.md) . Bu kuralları güncelleştirdikten sonra Azure AD Connect sunucusunu yeniden başlatın ve parola geri yazma yeniden çalışmaya başlaması gerekir. |
 | Bir süredir çalıştıktan sonra, Federasyon, geçişli kimlik doğrulaması veya parola karması ile eşitlenen kullanıcılar parolalarını sıfırlayamaz. | Bazı ender durumlarda, parola geri yazma hizmeti Azure AD Connect yeniden başlatıldığında yeniden başlatılamaz. Bu durumlarda, ilk olarak parola geri yazma özelliğinin şirket içinde etkin olup olmadığını denetleyin. Azure AD Connect Sihirbazı 'nı veya PowerShell 'i kullanarak kontrol edebilirsiniz. Özellik etkin görünüyorsa, özelliği yeniden etkinleştirmeyi veya devre dışı bırakmayı deneyin. Bu sorun giderme adımı işe yaramazsa, Azure AD Connect bir kaldırma ve yeniden yükleme işlemini deneyin. |
@@ -150,7 +150,7 @@ Parola geri yazma ile ilgili sorunları giderirken en iyi yöntem, Azure AD Conn
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Olayın kaynağı ADSync ise
 
-| Kod | Ad veya ileti | Açıklama |
+| Kod | Ad veya ileti | Description |
 | --- | --- | --- |
 | 6329 | BAıL: MMS (4924) 0x80230619: "bir kısıtlama, parolanın belirtilen geçerli bir şekilde değiştirilmesini engelliyor." | Bu olay, parola geri yazma hizmeti yerel dizininizde, etki alanının parola yaşı, geçmişi, karmaşıklık veya filtreleme gereksinimlerini karşılamayan bir parola ayarlamaya çalıştığında oluşur. <br> <br> En az bir parola yaşı varsa ve kısa süre önce bu zaman içindeki parolayı değiştirdiyseniz, etki alanındaki belirli bir yaşa ulaşıncaya kadar parolayı tekrar değiştiremezsiniz. Sınama amacıyla, minimum yaş 0 olarak ayarlanmalıdır. <br> <br> Parola geçmişi gereksinimleriniz etkinse, son *n* kez kullanılmamış bir parola seçmeniz gerekir, burada *n* parola geçmişi ayarıdır. Son *N* kez kullanılan bir parola seçerseniz, bu durumda bir hata görürsünüz. Sınama amacıyla parola geçmişi 0 olarak ayarlanmalıdır. <br> <br> Parola karmaşıklığı gereksinimleriniz varsa, Kullanıcı bir parolayı değiştirmeye veya sıfırlamaya çalıştığında bunların hepsi zorlanır. <br> <br> Parola Filtreleriniz etkinse ve Kullanıcı filtreleme ölçütlerine uymayan bir parola seçerse, sıfırlama veya değiştirme işlemi başarısız olur. |
 | 6329 | MMS (3040): admaexport. cpp (2837): sunucuda LDAP parola ilkesi denetimi yoktur. | DC 'lerde LDAP_SERVER_POLICY_HINTS_OID Control (1.2.840.113556.1.4.2066) etkinleştirilmemişse bu sorun oluşur. Parola geri yazma özelliğini kullanmak için, denetimi etkinleştirmeniz gerekir. Bunu yapmak için, DC 'Ler Windows Server 2008R2 veya üzeri sürümlerde olmalıdır. |
@@ -158,7 +158,7 @@ Parola geri yazma ile ilgili sorunları giderirken en iyi yöntem, Azure AD Conn
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Olayın kaynağı PasswordResetService ise
 
-| Kod | Ad veya ileti | Açıklama |
+| Kod | Ad veya ileti | Description |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | Bu olay, şirket içi hizmetin, buluttan kaynaklanan bir Federasyon, geçişli kimlik doğrulama veya parola karması ile eşitlenen Kullanıcı için bir parola sıfırlama isteği algıladığını gösterir. Bu olay, her parola sıfırlama geri yazma işlemindeki ilk olaydır. |
 | 31002 | PasswordResetSuccess | Bu olay, bir kullanıcının parola sıfırlama işlemi sırasında yeni bir parola seçtiği anlamına gelir. Bu parolanın, kurumsal parola gereksinimlerini karşıladığını belirledik. Parola, yerel Active Directory ortamına başarıyla geri yazıldı. |
@@ -178,6 +178,7 @@ Parola geri yazma ile ilgili sorunları giderirken en iyi yöntem, Azure AD Conn
 | 31016| Writebackservicestomış| Bu olay parola geri yazma hizmetinin durdurulduğunu gösterir. Buluttan gelen parola yönetim istekleri başarılı olmayacaktır.|
 | 31017| AuthTokenSuccess| Bu olay, oluşturma veya ekleme işlemini başlatmak üzere Azure AD Connect kurulumu sırasında belirtilen genel yönetici için bir yetkilendirme belirtecini başarıyla aldığını gösterir.|
 | 31018| KeyPairCreationSuccess| Bu olay parola şifreleme anahtarını başarıyla oluşturduğumuz anlamına gelir. Bu anahtar, şirket içi ortamınıza gönderilmek üzere buluttan parolaları şifrelemek için kullanılır.|
+| 31034| ServiceBusListenerError| Bu olay, kiracının Service Bus dinleyicisine bağlanılırken bir hata olduğunu gösterir. Hata iletisi "uzak sertifika geçersiz" içeriyorsa, Azure AD Connect sunucunuzun [Azure TLS sertifikası değişikliklerinde](../../security/fundamentals/tls-certificate-changes.md)açıklandığı gibi tüm gerekli kök CA 'lara sahip olduğundan emin olun. |
 | 32000| UnknownError| Bu olay, parola yönetimi işlemi sırasında bilinmeyen bir hata oluştuğunu gösterir. Daha fazla ayrıntı için olaydaki özel durum metnine bakın. Sorun yaşıyorsanız, parola geri yazma özelliğini devre dışı bırakıp yeniden etkinleştirmeyi deneyin. Bu yardım yoksa, bir destek isteği açtığınızda belirtilen izleme KIMLIĞIYLE birlikte olay günlüğlerinizin bir kopyasını ekleyin.|
 | 32001| ServiceError| Bu olay, bulut parola sıfırlama hizmetine bağlanılırken bir hata olduğunu gösterir. Bu hata genellikle şirket içi hizmet, parola sıfırlama Web hizmetine bağlanamadığı zaman oluşur.|
 | 32002| ServiceBusError| Bu olay, kiracının Service Bus örneğine bağlanılırken bir hata olduğunu gösterir. Şirket içi ortamınızda giden bağlantıları engelliyorsanız bu durum oluşabilir. TCP 443 ve ile bağlantı kurulmasına izin verdiğinizden emin olmak için güvenlik duvarınızı denetleyin https://ssprdedicatedsbprodncu.servicebus.windows.net ve sonra yeniden deneyin. Hala sorun yaşıyorsanız, parola geri yazma özelliğini devre dışı bırakıp yeniden etkinleştirmeyi deneyin.|
@@ -212,22 +213,22 @@ Bir sorunun yanıtını bulamazsanız, destek ekiplerimiz size daha fazla yardı
 
 Size uygun bir şekilde yardımcı olması için, bir servis talebi açarken mümkün olduğunca fazla ayrıntı sağlamanızı isteyeceğiz. Bu ayrıntılar şunları içerir:
 
-* **Hatanın genel açıklaması**: hata nedir? Fark edilen davranış nedir? Hatayı nasıl yeniden oluşturuyoruz? Mümkün olduğunca çok ayrıntı sağlayın.
-* **Sayfa**: hatayı fark ettiğinizde hangi sayfayı kullanıyorsunuz? Mümkün olduğunda URL 'YI ve sayfanın ekran görüntüsünü ekleyin.
-* **Destek kodu**: Kullanıcı hatayı gördüğünüzde oluşturulan destek kodu nedir?
+* **Hatanın genel açıklaması** : hata nedir? Fark edilen davranış nedir? Hatayı nasıl yeniden oluşturuyoruz? Mümkün olduğunca çok ayrıntı sağlayın.
+* **Sayfa** : hatayı fark ettiğinizde hangi sayfayı kullanıyorsunuz? Mümkün olduğunda URL 'YI ve sayfanın ekran görüntüsünü ekleyin.
+* **Destek kodu** : Kullanıcı hatayı gördüğünüzde oluşturulan destek kodu nedir?
    * Bu kodu bulmak için, hatayı yeniden oluşturun ve ardından ekranın alt kısmındaki **destek kodu** bağlantısını seçin ve destek mühendisine sonuçları veren GUID 'yi gönderin.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="GUI 'yi kullanarak Azure AD Eşitleme hizmetini yeniden başlatın":::
 
   * En altta destek kodu olmayan bir sayfadan karşılaşırsanız, F12 ' yi seçin ve SID ve CıD için arama yapın ve bu iki sonucu destek mühendisine gönderin.
-* **Tarih, saat ve saat dilimi**: Hatanın gerçekleştiği *saat dilimiyle* kesin tarih ve saati dahil edin.
-* **Kullanıcı kimliği**: hatayı seçen kullanıcı kim? *Kullanıcı \@ contoso.com*bir örnektir.
+* **Tarih, saat ve saat dilimi** : Hatanın gerçekleştiği *saat dilimiyle* kesin tarih ve saati dahil edin.
+* **Kullanıcı kimliği** : hatayı seçen kullanıcı kim? *Kullanıcı \@ contoso.com* bir örnektir.
    * Bu bir Federasyon kullanıcısı mı?
    * Bu bir geçişli kimlik doğrulama kullanıcısı mı?
    * Bu, Parola karması ile eşitlenen bir Kullanıcı mı?
    * Bu yalnızca bulut kullanıcısı mı?
-* **Lisanslama**: kullanıcıya BIR Azure AD lisansı atandı mi?
-* **Uygulama olay günlüğü**: parola geri yazma özelliğini kullanıyorsanız ve hata şirket içi altyapınızda ise, Azure AD Connect sunucusundan uygulama olay günlüğlerinizin daraltılmış bir kopyasını ekleyin.
+* **Lisanslama** : kullanıcıya BIR Azure AD lisansı atandı mi?
+* **Uygulama olay günlüğü** : parola geri yazma özelliğini kullanıyorsanız ve hata şirket içi altyapınızda ise, Azure AD Connect sunucusundan uygulama olay günlüğlerinizin daraltılmış bir kopyasını ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

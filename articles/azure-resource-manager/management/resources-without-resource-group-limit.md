@@ -2,13 +2,13 @@
 title: 800 olmayan kaynaklar sayısı sınırı
 description: Bir kaynak grubunda 800 taneden fazla örneğe sahip olabilir Azure Kaynak türlerini listeler.
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: e7a15607b144f1d7916f310948f15dc28d76a205
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: cec7ea87bbe81d3bfcca37f3133ac650e66f849f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330766"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913509"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Kaynak grubu başına 800 örneğiyle sınırlı kaynak yok
 
@@ -81,6 +81,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
+* Labs/virtualMachines-varsayılan olarak 800 örnek Ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
 * cağını
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
@@ -173,6 +174,10 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 * workspaceCollections, varsayılan olarak 800 örnek ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
 
+## <a name="microsoftpowerbidedicated"></a>Microsoft. Powerbiadanmış
+
+* kapasiteler, varsayılan olarak 800 örnek ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
+
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 
 * öznitelikleri
@@ -185,18 +190,21 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 * öznitelikleri
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft. Servicefabrickafesi
+## <a name="microsoftsingularity"></a>Microsoft. Singular
 
-* uygulamalar
-* Kapsayıcı grupları
-* geçidinin
-* Mamak
-* kaynaklanır
-* volumes
+* accounts
+* hesaplar/accountQuotaPolicies
+* hesaplar/groupPolicies
+* hesaplar/işler
+* hesaplar/storageContainers
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 * storageAccounts
+
+## <a name="microsoftsql"></a>Microsoft.Sql
+
+* sunucular/veritabanları
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 
