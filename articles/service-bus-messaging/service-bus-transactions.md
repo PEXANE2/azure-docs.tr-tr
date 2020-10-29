@@ -2,14 +2,14 @@
 title: Azure Service Bus içinde işlem işlemeye genel bakış
 description: Bu makale, işlem işleme ve Azure Service Bus aracılığıyla gönderme özelliği için bir genel bakış sunar.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 10/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f51e570775fbce8a316d98b5198fa906173dc755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88999963"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927796"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Service Bus işlem işlemeye genel bakış
 
@@ -17,7 +17,7 @@ Bu makale Microsoft Azure Service Bus işlem yeteneklerini açıklamaktadır. Ta
 
 ## <a name="transactions-in-service-bus"></a>Service Bus işlemler
 
-*İşlem* iki veya daha fazla işlemi bir *yürütme kapsamında*gruplandırır. Doğası gereği, bu tür bir işlem, belirli bir işlem grubuna ait tüm işlemlerin başarılı veya başarısız bir şekilde ortaklaşa bulunduğundan emin olmalıdır. Bu işlemler, genellikle *kararlılık*olarak anılan tek bir birim görevi görür.
+*İşlem* iki veya daha fazla işlemi bir *yürütme kapsamında* gruplandırır. Doğası gereği, bu tür bir işlem, belirli bir işlem grubuna ait tüm işlemlerin başarılı veya başarısız bir şekilde ortaklaşa bulunduğundan emin olmalıdır. Bu işlemler, genellikle *kararlılık* olarak anılan tek bir birim görevi görür.
 
 Service Bus, işlem temelli bir ileti aracısıdır ve tüm iç işlemler için ileti depolarına karşı işlem bütünlüğü sağlar. İletilerin teslim [edilemeyen ileti sırasına](service-bus-dead-letter-queues.md) taşınması veya iletilerin varlıklar arasında [otomatik olarak iletilmesi](service-bus-auto-forwarding.md) gibi Service Bus içindeki iletilerin tüm aktarımları işlem yapar. Bu nedenle, Service Bus bir iletiyi kabul ediyorsa, zaten depolanmış ve bir sıra numarasıyla etiketlendi. Bundan sonra, Service Bus içindeki herhangi bir ileti aktarımı, varlıklar genelinde koordine edilen işlemlerdir ve bu, kayıp (kaynak başarılı ve hedef başarısız olur) veya ileti çoğaltma (kaynak başarısız ve hedef başarılı).
 
@@ -27,8 +27,8 @@ Service Bus, bir hareketin kapsamı içindeki işlemlerin (kuyruk, konu başlı�
 
 Bir işlem kapsamı içinde gerçekleştirilebilecek işlemler aşağıdaki gibidir:
 
-* ** [Queueclient](/dotnet/api/microsoft.azure.servicebus.queueclient), [iletileyici](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [topicclient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: `Send` , `SendAsync` , `SendBatch` ,`SendBatchAsync`
-* **[Brokeredmessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: `Complete` , `CompleteAsync` , `Abandon` , `AbandonAsync` , `Deadletter` , `DeadletterAsync` , `Defer` , `DeferAsync` , `RenewLock` , `RenewLockAsync` 
+* **[Queueclient](/dotnet/api/microsoft.azure.servicebus.queueclient), [iletileyici](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [topicclient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : `Send` , `SendAsync` , `SendBatch` ,`SendBatchAsync`
+* **[Brokeredmessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : `Complete` , `CompleteAsync` , `Abandon` , `AbandonAsync` , `Deadletter` , `DeadletterAsync` , `Defer` , `DeferAsync` , `RenewLock` , `RenewLockAsync` 
 
 Uygulamanın [ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) modunu kullanarak, bazı alma döngülerine veya bir [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) geri çağırması ile veya yalnızca iletiyi işlemeye yönelik bir işlem kapsamını açtığından emin olduğu varsayıldığından alma işlemleri dahil değildir.
 
@@ -36,9 +36,9 @@ Uygulamanın [ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.rece
 
 ## <a name="transfers-and-send-via"></a>Aktarımlar ve "gönderme aracılığıyla"
 
-Sıradan bir sıraya ve sonra başka bir kuyruğa ait işlem devreden Multipath, Service Bus *aktarımları*destekler. Bir aktarım işleminde, bir gönderen önce bir *Aktarım kuyruğuna*bir ileti gönderir ve Aktarım kuyruğu iletiyi doğrudan ileri sarma özelliğinin dayandığı sağlam aktarım uygulamasını kullanarak amaçlanan hedef kuyruğa taşımalıdır. İleti, aktarım sırasının tüketicileri için görünür hale gelmesi için aktarım sırasının günlüğüne hiçbir şekilde yürütülmedi.
+Bir kuyruktan veya konudan bir işlemciye işlem devreden Multipath ve daha sonra başka bir kuyruğa veya konuya yönelik işlemsel bir veri sağlamak için, Service Bus *aktarımları* destekler. Bir aktarım işleminde, bir gönderen öncelikle bir *Aktarım kuyruğuna veya konuya* bir ileti gönderir ve Aktarım kuyruğu veya konu başlığı, yeniden yönlendirme yeteneğinin bağımlı olduğu aynı güçlü aktarım uygulamasını kullanarak iletiyi amaçlanan hedef kuyruğuna veya konuya doğrudan taşımalıdır. İleti, Aktarım kuyruğu veya konunun tüketicileri için görünür hale gelmesi için aktarım kuyruğuna veya konunun günlüğüne hiçbir şekilde yürütülmedi.
 
-Bu işlem özelliğinin gücü, aktarım sırasının kendisi gönderenin giriş iletilerinin kaynağı olduğunda görünür hale gelir. Diğer bir deyişle, Service Bus ileti, Aktarım kuyruğu "aracılığıyla" hedef kuyruğuna aktarabilir. Bu işlem, giriş iletisinde tam (veya erteleme ya da atılacak harf) işlemini tek bir atomik işlemde gerçekleştirebilir. 
+Aktarım sırasının veya konusunun kendisi gönderenin giriş iletilerinin kaynağı olduğunda bu işlem yeteneğinin gücü görünür hale gelir. Diğer bir deyişle, Service Bus ileti, Aktarım kuyruğu veya konu başlığı altında ", bir atomik bir işlemde, giriş iletisinde tam (veya ertelenme ya da atılacak) işlemi gerçekleştirirken" iletiyi hedef sıraya veya konuya aktarabilir. 
 
 ### <a name="see-it-in-code"></a>Kodda gör
 

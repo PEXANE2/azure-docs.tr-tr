@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: f91611ab3c75a96f13ab84312ca0b2157e69af0d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c965b27fde80e1cb8d52b1061917d83e5cd7f5d6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289319"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927813"
 ---
 # <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) görünümleri oluşturma ve kullanma
 
@@ -57,7 +57,7 @@ WITH (
 
 Bu örnekteki görünüm, `OPENROWSET` temel alınan dosyaların mutlak yolunu kullanan işlevini kullanır. `EXTERNAL DATA SOURCE`Depolama alanınızı kök URL 'niz varsa, `OPENROWSET` `DATA_SOURCE` ve ile göreli dosya yolunu kullanabilirsiniz:
 
-```
+```sql
 CREATE VIEW TaxiView
 AS SELECT *, nyc.filepath(1) AS [year], nyc.filepath(2) AS [month]
 FROM

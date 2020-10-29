@@ -7,12 +7,12 @@ ms.date: 10/15/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6c1ccbfc221970980d5d0b15e82f9f8483c48bce
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6ac4d0e0744bfc82a686671234e013b2dd717146
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043774"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927762"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault’u Azure İlkesiyle tümleştirme
 
@@ -29,9 +29,9 @@ ms.locfileid: "92043774"
 
 ## <a name="types-of-policy-effects-and-guidance"></a>İlke etkileri ve kılavuz türleri
 
-**Denetim**: bir ilkenin etkisi denetim olarak ayarlandığında, bu ilke ortamınızda hiçbir bozucu değişikliğe neden olmaz. Bu bileşenler, ilke uyumluluk panosunda uyumsuz olarak işaretlenerek, yalnızca belirtilen kapsamdaki ilke tanımlarına uymayan sertifikalar gibi bileşenlerde sizi uyarır. İlke efekti seçilmezse, denetim varsayılan olarak ayarlanır.
+**Denetim** : bir ilkenin etkisi denetim olarak ayarlandığında, bu ilke ortamınızda hiçbir bozucu değişikliğe neden olmaz. Bu bileşenler, ilke uyumluluk panosunda uyumsuz olarak işaretlenerek, yalnızca belirtilen kapsamdaki ilke tanımlarına uymayan sertifikalar gibi bileşenlerde sizi uyarır. İlke efekti seçilmezse, denetim varsayılan olarak ayarlanır.
 
-**Reddet**: bir ilkenin etkisi Reddet olarak ayarlandığında, ilke, sertifikalar gibi yeni bileşenlerin oluşturulmasını ve ilke tanımıyla uyumlu olmayan mevcut bileşenlerin yeni sürümlerini engellemeyi engeller. Bir Anahtar Kasası içindeki uyumlu olmayan mevcut kaynaklar etkilenmez. ' Denetim ' özellikleri çalışmaya devam edecektir.
+**Reddet** : bir ilkenin etkisi Reddet olarak ayarlandığında, ilke, sertifikalar gibi yeni bileşenlerin oluşturulmasını ve ilke tanımıyla uyumlu olmayan mevcut bileşenlerin yeni sürümlerini engellemeyi engeller. Bir Anahtar Kasası içindeki uyumlu olmayan mevcut kaynaklar etkilenmez. ' Denetim ' özellikleri çalışmaya devam edecektir.
 
 ## <a name="available-built-in-policy-definitions"></a>Kullanılabilir "yerleşik" Ilke tanımları
 
@@ -91,9 +91,9 @@ Düzgün şekilde izlenmeyen bir sertifika, süresi dolmadan önce döndürülme
 
 Anahtarlarınızın belirtilen gün sayısından daha uzun süre etkin olmadığından emin olmak istiyorsanız, anahtarınızın ne kadar süreyle etkin olduğunu denetlemek için bu ilkeyi kullanabilirsiniz.
 
-**Anahtarınız bir etkinleştirme tarihi ayarlandıysa**, bu ilke anahtarın **etkinleştirme tarihinden** geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, bu anahtar ilkeyle uyumlu değil olarak işaretlenir.
+**Anahtarınız bir etkinleştirme tarihi ayarlandıysa** , bu ilke anahtarın **etkinleştirme tarihinden** geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, bu anahtar ilkeyle uyumlu değil olarak işaretlenir.
 
-**Anahtarınız bir etkinleştirme tarihi ayarlanmamışsa**, bu ilke anahtarın **Oluşturulma tarihinden** itibaren geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, bu anahtar ilkeyle uyumlu değil olarak işaretlenir.
+**Anahtarınız bir etkinleştirme tarihi ayarlanmamışsa** , bu ilke anahtarın **Oluşturulma tarihinden** itibaren geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, bu anahtar ilkeyle uyumlu değil olarak işaretlenir.
 
 ### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>Anahtarlar belirtilen şifreleme türü RSA veya EC (Önizleme) olmalıdır
 
@@ -139,9 +139,9 @@ Anahtar Kasanızda bir anahtarın geçerli olduğu maksimum süreyi gün cinsind
 
 Gizli anahtarlarınızın belirtilen gün sayısından daha uzun süre etkin olmadığından emin olmak istiyorsanız, bu ilkeyi kullanarak gizli ağınızın ne kadar süreyle etkin olduğunu denetleyebilirsiniz.
 
-**Gizli dizinizdeki bir etkinleştirme tarihi ayarlandıysa**, bu ilke gizli dizi **etkinleştirme tarihinden** geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, parola ilkeyle uyumlu değil olarak işaretlenir.
+**Gizli dizinizdeki bir etkinleştirme tarihi ayarlandıysa** , bu ilke gizli dizi **etkinleştirme tarihinden** geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, parola ilkeyle uyumlu değil olarak işaretlenir.
 
-**Gizli dizinizdeki bir etkinleştirme tarihi ayarlanmamışsa**, bu ilke, parolanın **Oluşturulma tarihinden** itibaren geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, parola ilkeyle uyumlu değil olarak işaretlenir.
+**Gizli dizinizdeki bir etkinleştirme tarihi ayarlanmamışsa** , bu ilke, parolanın **Oluşturulma tarihinden** itibaren geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, parola ilkeyle uyumlu değil olarak işaretlenir.
 
 ### <a name="secrets-should-have-content-type-set-preview"></a>Gizli diziler içerik türü kümesine sahip olmalıdır (Önizleme)
 
@@ -175,51 +175,51 @@ Anahtar Kasanızda bir gizli dizi geçerli olabilecek maksimum süreyi gün cins
 ### <a name="select-a-policy-definition"></a>Ilke tanımı seçin
 
 1. Azure portalında oturum açın. 
-1. Arama çubuğunda "Ilke" araması yapın ve **ilke**' yi seçin.
+1. Arama çubuğunda "Ilke" araması yapın ve **ilke** ' yi seçin.
 
-    ![Azure Key Vault nasıl çalıştığına genel bakış](../media/policy-img1.png)
+    ![Arama çubuğunu gösteren ekran görüntüsü.](../media/policy-img1.png)
 
-1. Ilke penceresinde **tanımlar**' ı seçin.
+1. Ilke penceresinde **tanımlar** ' ı seçin.
 
-    ![Azure Key Vault nasıl çalıştığına genel bakış](../media/policy-img2.png)
+    ![Tanımlar seçeneğini vurgulayan ekran görüntüsü.](../media/policy-img2.png)
 
-1. Kategori filtresinde **Tümünü Seç** seçimini kaldırın ve **Key Vault**seçin. 
+1. Kategori filtresinde **Tümünü Seç** seçimini kaldırın ve **Key Vault** seçin. 
 
-    ![Azure Key Vault nasıl çalıştığına genel bakış](../media/policy-img3.png)
+    ![Kategori filtresini ve seçili Key Vault kategorisini gösteren ekran görüntüsü.](../media/policy-img3.png)
 
 1. Artık Azure Key Vault için genel önizlemeye sunulan tüm ilkeleri görebilmeniz gerekir. Yukarıdaki ilke kılavuzu bölümünü okuduğunuzdan ve anladığınızdan emin olun ve bir kapsama atamak istediğiniz ilkeyi seçin.  
 
-    ![Azure Key Vault nasıl çalıştığına genel bakış](../media/policy-img4.png)
+    ![Genel önizleme için kullanılabilen ilkeleri gösteren ekran görüntüsü.](../media/policy-img4.png)
 
 ### <a name="assign-a-policy-to-a-scope"></a>Kapsama Ilke atama 
 
 1. Uygulamak istediğiniz ilkeyi seçin, bu örnekte **sertifika geçerlilik süresini Yönet** ilkesi görüntülenir. Sol üst köşedeki ata düğmesine tıklayın.
 
-    ![Azure Key Vault nasıl çalıştığına genel bakış](../media/policy-img5.png)
+    ![Sertifika geçerlilik süresini Yönet ilkesini gösteren ekran görüntüsü.](../media/policy-img5.png)
   
 1. İlkenin uygulanmasını istediğiniz aboneliği seçin. Kapsamı, bir abonelik içinde yalnızca tek bir kaynak grubuyla kısıtlamayı tercih edebilirsiniz. İlkeyi aboneliğin tamamına uygulamak ve bazı kaynak gruplarını dışlamak istiyorsanız, bir dışlama listesi de yapılandırabilirsiniz. İlkeyi (denetim ya da reddetme) gerçekleşmesini veya **devre dışı** bırakmak (denetim veya reddetme) devre dışı bırakmak istiyorsanız ilke zorlama seçiciyi **etkin** olarak ayarlayın. 
 
-    ![Azure Key Vault nasıl çalıştığına genel bakış](../media/policy-img6.png)
+    ![Kapsamı bir abonelik içinde yalnızca tek bir kaynak grubuyla kısıtlamayı tercih ettiğiniz gösteren ekran görüntüsü.](../media/policy-img6.png)
 
 1. İstediğiniz en uzun geçerlilik süresini belirtmek için ekranın üst kısmındaki parametreler sekmesine tıklayın. Yukarıdaki bölümlerdeki kılavuzdan sonra ilke için **Denetim** veya **reddetme** seçimini yapın. Sonra gözden geçir + Oluştur düğmesini seçin. 
 
-    ![Azure Key Vault nasıl çalıştığına genel bakış](../media/policy-img7.png)
+    ![En fazla geçerlilik süresini istediğiniz ay içinde belirtebileceğiniz Parametreler sekmesini gösteren ekran görüntüsü.](../media/policy-img7.png)
 
 ### <a name="view-compliance-results"></a>Uyumluluk sonuçlarını görüntüle
 
 1. Ilke dikey penceresine dönün ve Uyumluluk sekmesini seçin. Uyumluluk sonuçlarını görüntülemek istediğiniz ilke atamasını tıklatın.
 
-    ![Azure Key Vault nasıl çalıştığına genel bakış](../media/policy-img8.png)
+    ![Uyumluluk sekmesini gösteren ve uyumluluk sonuçlarını görüntülemek istediğiniz ilke atamasını seçebileceğiniz ekran görüntüsü.](../media/policy-img8.png)
 
 1. Bu sayfadan, sonuçları uyumlu veya uyumsuz kasaların filtrelemesine göre filtreleyebilirsiniz. Burada, ilke atamasının kapsamında uyumlu olmayan anahtar kasalarının bir listesini görebilirsiniz. Kasadaki bileşenlerden herhangi biri (Sertifikalar) uyumlu değilse, kasa uyumlu değil olarak kabul edilir. Bireysel olarak uyumlu olmayan bileşenleri (Sertifikalar) görüntülemek için tek bir kasa seçebilirsiniz. 
 
 
-    ![Azure Key Vault nasıl çalıştığına genel bakış](../media/policy-img9.png)
+    ![İlke atamasının kapsamında uyumlu olmayan anahtar kasalarının bir listesini gösteren ekran görüntüsü.](../media/policy-img9.png)
 
 1. Bir kasadaki, uyumsuz olmayan bileşenlerin adını görüntüleme
 
 
-    ![Azure Key Vault nasıl çalıştığına genel bakış](../media/policy-img10.png)
+    ![Bir kasadaki, uyumsuz olmayan bileşenlerin adını görüntüleyebileceğiniz ekran görüntüsü.](../media/policy-img10.png)
 
 1. Kullanıcıların Anahtar Kasası içinde kaynak oluşturma yeteneğinin engellenip engellenmeyeceğini denetlemeniz gerekiyorsa, istek sahibine ve isteklerin zaman damgalarına sahip reddedilen sertifika işlemlerinin özetini görüntülemek için **bileşen olayları (Önizleme)** sekmesine tıklayabilirsiniz. 
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 10/22/2020
 ms.author: jeedes
-ms.openlocfilehash: 083c454390327972da2c2e63175021f2d9c2bd8f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7bc2ebf394eb5b20e5f0a7d3722f8bcc2a9127a6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459008"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Öğretici: KnowBe4 güvenlik tanıma eğitimi ile Azure Active Directory tümleştirme
 
@@ -27,10 +27,7 @@ KnowBe4 güvenlik tanıma eğitimini Azure AD ile tümleştirmek aşağıdaki av
 * Kullanıcılarınızın Azure AD hesaplarıyla KnowBe4 güvenlik tanıma eğitimine (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini KnowBe4 güvenlik tanıma eğitiminde yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -45,73 +42,50 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 * KnowBe4 güvenlik tanıma Eğitimi **, tam zamanında** Kullanıcı sağlamayı destekler
 
-## <a name="adding-knowbe4-security-awareness-training-from-the-gallery"></a>Galeriden KnowBe4 güvenlik tanıma Eğitimi ekleme
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
-KnowBe4 güvenlik tanıma eğitiminin tümleştirmesini Azure AD ile yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize KnowBe4 güvenlik tanıma Eğitimi eklemeniz gerekir.
+## <a name="adding-knowbe4-from-the-gallery"></a>Galeriden KnowBe4 ekleme
 
-**Galeriden KnowBe4 güvenlik tanıma Eğitimi eklemek için aşağıdaki adımları uygulayın:**
+KnowBe4 tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden KnowBe4 yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **KnowBe4** yazın.
+1. Sonuçlar panelinden **KnowBe4** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre KnowBe4 ile yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve KnowBe4 'deki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+Azure AD çoklu oturum açmayı KnowBe4 ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD SSO 'yu, Britta Simon ile test etmek için Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+    * Azure AD **[Test kullanıcısına,](#assign-the-azure-ad-test-user)** Azure AD SSO 'yu kullanmak Için Britta Simon 'u etkinleştirmek üzere atayın.
+2. Uygulama tarafında SSO ayarlarını yapılandırmak için **[KnowBe4 güvenlik tanıma EĞITIMI SSO 'Yu yapılandırın](#configure-knowbe4-security-awareness-training-sso)** .
+    * Kullanıcının Azure AD gösterimine bağlı olan KnowBe4 güvenlik tanıma eğitiminde Britta Simon 'a sahip olmak için **[KnowBe4 güvenlik tanıma Eğitimi test kullanıcısı oluşturun](#create-knowbe4-security-awareness-training-test-user)** .
+3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-4. Arama kutusuna **KnowBe4 güvenlik tanıma Eğitimi**yazın, sonuç panelinden **KnowBe4 güvenlik tanıma Eğitimi** ' ni seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-     ![KnowBe4 güvenlik tanıma Eğitimi sonuçlar listesinde](common/search-new-app.png)
+1. Azure portal, **KnowBe4** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre KnowBe4 güvenlik tanıma eğitimi ile yapılandırıp test edersiniz.
-Çoklu oturum açma için, KnowBe4 güvenlik tanıma eğitiminde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-Azure AD çoklu oturum açma 'yı KnowBe4 güvenlik tanıma eğitiminde yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
-
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[KnowBe4 güvenlik tanıma Eğitimi çoklu oturum açmayı yapılandırın](#configure-knowbe4-security-awareness-training-single-sign-on)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimine bağlı olan KnowBe4 güvenlik tanıma eğitiminde Britta Simon 'a sahip olmak için **[KnowBe4 güvenlik tanıma Eğitimi test kullanıcısı oluşturun](#create-knowbe4-security-awareness-training-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı KnowBe4 güvenlik tanıma eğitiminde yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **KnowBe4 güvenlik tanıma Eğitimi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
-
-    ![KnowBe4 güvenlik tanıma eğitim etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
-
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
 
     > [!NOTE]
     > Oturum açma URL 'SI değeri gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için [KnowBe4 güvenlik tanıma Eğitimi istemci destek ekibine](mailto:support@KnowBe4.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen düzene de başvurabilirsiniz.
-
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna dize değerini yazın:`KnowBe4`
-
-    > [!NOTE]
-    > Bu, büyük/küçük harfe duyarlıdır.
 
 5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -121,86 +95,49 @@ Azure AD çoklu oturum açmayı KnowBe4 güvenlik tanıma eğitiminde yapıland�
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-    b. Azure AD tanımlayıcısı
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-    c. Oturum kapatma URL 'SI
-
-### <a name="configure-knowbe4-security-awareness-training-single-sign-on"></a>KnowBe4 güvenlik tanıma Eğitimi tek Sign-On yapılandırma
-
-**KnowBe4 güvenlik tanıma eğitim** tarafında çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (ham)** ve Azure Portal ' den uygun kopyalanmış URL 'Leri [KnowBe4 güvenlik tanıma Eğitimi destek ekibine](mailto:support@KnowBe4.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
-
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
-
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, KnowBe4 güvenlik tanıma eğitimine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+Bu bölümde, KnowBe4 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **KnowBe4 güvenlik tanıma Eğitimi**' ni seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde **KnowBe4** ' yi seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+## <a name="configure-knowbe4-security-awareness-training-sso"></a>KnowBe4 güvenlik tanıma Eğitimi SSO 'yu yapılandırma
 
-2. Uygulamalar listesinde **KnowBe4 güvenlik tanıma Eğitimi**' ni seçin.
-
-    ![Uygulamalar listesindeki KnowBe4 güvenlik tanıma Eğitimi bağlantısı](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+**KnowBe4 güvenlik tanıma eğitim** tarafında çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (ham)** ve Azure Portal ' den uygun kopyalanmış URL 'Leri [KnowBe4 güvenlik tanıma Eğitimi destek ekibine](mailto:support@KnowBe4.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-knowbe4-security-awareness-training-test-user"></a>KnowBe4 güvenlik tanıma Eğitimi test kullanıcısı oluşturma
 
-Bu bölümün amacı, KnowBe4 güvenlik tanıma eğitiminde Britta Simon adlı bir Kullanıcı oluşturmaktır. KnowBe4 güvenlik tanıma Eğitimi, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler.
+Bu bölümde, KnowBe4 içinde Britta Simon adlı bir Kullanıcı oluşturulur. KnowBe4, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı KnowBe4 içinde zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
-Bu bölümde sizin için herhangi bir eylem öğesi yok. Henüz yoksa KnowBe4 güvenlik tanıma eğitimine erişme girişimi sırasında yeni bir Kullanıcı oluşturulur.
+### <a name="test-sso"></a>Test SSO 'SU
 
-> [!NOTE]
-> Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [KnowBe4 güvenlik tanıma Eğitimi destek ekibine](mailto:support@KnowBe4.com)başvurmanız gerekir.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+1. Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz KnowBe4 oturum açma URL 'sine yeniden yönlendirilir. 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+2. Doğrudan KnowBe4 oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-Erişim panelinde KnowBe4 güvenlik tanıma Eğitimi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız KnowBe4 güvenlik tanıma eğitiminde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde KnowBe4 kutucuğuna tıkladığınızda bu, KnowBe4 oturum açma URL 'sine yeniden yönlendirilir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+KnowBe4 yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

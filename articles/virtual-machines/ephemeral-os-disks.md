@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a79a030c4f57c3dabdd14c01aa2062cab7026cd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611529"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927932"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM 'Leri için kısa ömürlü işletim sistemi diskleri
 
@@ -34,15 +34,16 @@ Kalıcı ve kısa ömürlü işletim sistemi diskleri arasındaki önemli farkl�
 
 |                             | Kalıcı işletim sistemi diski                          | Kısa Ömürlü İşletim Sistemi Diski                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| **İşletim sistemi diski için boyut sınırı**      | 2 TiB                                                                                        | VM boyutu için önbellek boyutu veya 2TiB, hangisi daha küçüktür. **GiB 'deki önbellek boyutu**için bkz. [DS](sizes-general.md), [es](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md)ve [GS](sizes-previous-gen.md#gs-series)              |
+| **İşletim sistemi diski için boyut sınırı**      | 2 TiB                                                                                        | VM boyutu için önbellek boyutu veya 2TiB, hangisi daha küçüktür. **GiB 'deki önbellek boyutu** için bkz. [DS](sizes-general.md), [es](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md)ve [GS](sizes-previous-gen.md#gs-series)              |
 | **Desteklenen VM boyutları**          | Tümü                                                                                          | DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, d gibi Premium depolamayı destekleyen VM boyutları                                               |
 | **Disk türü desteği**           | Yönetilen ve yönetilmeyen işletim sistemi diski                                                                | Yalnızca yönetilen işletim sistemi diski                                                               |
 | **Bölge desteği**              | Tüm bölgeler                                                                                  | Tüm bölgeler                              |
 | **Veri kalıcılığı**            | IŞLETIM sistemi diskine yazılan işletim sistemi diski verileri Azure depolama 'da depolanıyor                                  | İşletim sistemi diskine yazılan veriler yerel VM depolama alanında depolanır ve Azure Storage 'da kalıcı değildir. |
 | **Serbest bırakılmış durumu durdur**      | VM 'Ler ve ölçek kümesi örnekleri, durdurma-serbest bırakıldı durumundan durdurulup yeniden başlatılabilir | VM 'Ler ve ölçek kümesi örnekleri durdurulamıyor-serbest bırakılamaz                                  |
-| **Özelleştirilmiş işletim sistemi diski desteği** | Evet                                                                                          | Hayır                                                                                 |
+| **Özelleştirilmiş işletim sistemi diski desteği** | Yes                                                                                          | Hayır                                                                                 |
 | **İşletim sistemi diski yeniden boyutlandırma**              | VM oluşturma sırasında ve VM durdurulduktan sonra desteklenir-serbest bırakıldı                                | Yalnızca VM oluşturma sırasında desteklenir                                                  |
-| **Yeni bir VM boyutuna yeniden boyutlandırma**   | İşletim sistemi diski verileri korunur                                                                    | İşletim sistemi diskindeki veriler silinir, işletim sistemi yeniden sağlandı                                      |
+| **Yeni bir VM boyutuna yeniden boyutlandırma**   | İşletim sistemi diski verileri korunur                                                                    | İşletim sistemi diskindeki veriler silinir, işletim sistemi yeniden sağlandı       
+| **Sayfa dosyası yerleşimi**   | Windows için, sayfa dosyası kaynak diskte depolanıyor                                              | Windows için sayfa dosyası işletim sistemi diskinde depolanır   |
 
 ## <a name="size-requirements"></a>Boyut gereksinimleri
 
@@ -87,13 +88,13 @@ az vm create \
 
 ## <a name="portal"></a>Portal   
 
-Azure portal, **diskler** sekmesinin **Gelişmiş** bölümünü açarak bir VM dağıtımı sırasında kısa ömürlü diskler kullanmayı seçebilirsiniz. **Kısa ömürlü işletim sistemi diski kullan** için **Evet**' i seçin.
+Azure portal, **diskler** sekmesinin **Gelişmiş** bölümünü açarak bir VM dağıtımı sırasında kısa ömürlü diskler kullanmayı seçebilirsiniz. **Kısa ömürlü işletim sistemi diski kullan** için **Evet** ' i seçin.
 
 ![Kısa ömürlü işletim sistemi diski kullanmayı seçme için radyo düğmesini gösteren ekran görüntüsü](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
 
 Kısa ömürlü disk kullanma seçeneği gri ise, işletim sistemi görüntüsünden daha büyük bir önbellek boyutuna sahip olmayan veya Premium depolamayı desteklemeyen bir VM boyutu seçmiş olabilirsiniz. **Temel bilgiler** sayfasına dönün ve başka bir VM boyutu seçmeyi deneyin.
 
-Ayrıca, Portal 'ı kullanarak kısa ömürlü işletim sistemi diskleri ile ölçek kümeleri de oluşturabilirsiniz. Yeterli büyüklükte bir önbellek boyutuna sahip bir VM boyutu seçtiğinizden emin olun ve ardından **kısa ömürlü işletim sistemi diski kullanın** ' de **Evet**' i seçin.
+Ayrıca, Portal 'ı kullanarak kısa ömürlü işletim sistemi diskleri ile ölçek kümeleri de oluşturabilirsiniz. Yeterli büyüklükte bir önbellek boyutuna sahip bir VM boyutu seçtiğinizden emin olun ve ardından **kısa ömürlü işletim sistemi diski kullanın** ' de **Evet** ' i seçin.
 
 ![Ölçek kümesi için kısa ömürlü bir işletim sistemi diski kullanmayı seçme radyo düğmesini gösteren ekran görüntüsü](./media/virtual-machines-common-ephemeral/scale-set.png)
 

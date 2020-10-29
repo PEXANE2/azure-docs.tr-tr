@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: eb70e7cfec4e6f3e7e55fa74bbdd6cee43493576
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a55db6a9db8cc53da15ba6e818db7b78b72cefc9
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537890"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927745"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için sanal ağ desteğini yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. VNet, buluttaki özel bir ağ. Redsıs örneği için bir Azure önbelleği bir sanal ağ ile yapılandırıldığında, bu, genel olarak adreslenebilir değildir ve yalnızca VNet içindeki sanal makineler ve uygulamalardan erişilebilir. Bu makalede, Redsıs örneği için Premium bir Azure önbelleği için sanal ağ desteğinin nasıl yapılandırılacağı açıklanır.
@@ -50,10 +50,10 @@ Sanal ağ (VNet) desteği, önbellek oluşturma sırasında **redsıs dikey penc
 
 5. **Ağ** sekmesinde, bağlantı yönteminiz olarak **sanal ağlar** ' ı seçin. Yeni bir sanal ağ kullanmak için, [Azure Portal kullanarak sanal ağ oluşturma](../virtual-network/manage-virtual-network.md#create-a-virtual-network) veya [Azure Portal kullanarak bir sanal ağ oluşturma (klasik)](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) adımlarını izleyerek ve ardından Premium önbelleğinizi oluşturmak ve yapılandırmak üzere **Redsıs dikey penceresinde yeni Azure önbelleğine** geri dönüp oluşturun.
 
-> [!IMPORTANT]
-> Redsıs için Azure önbelleğinin bir Kaynak Yöneticisi VNet 'e dağıtılmasında, önbelleğin Redsıs örnekleri için Azure önbelleği dışında başka hiçbir kaynak içermeyen bir ayrılmış alt ağda olması gerekir. Redsıs için Azure önbelleğini diğer kaynakları içeren bir alt ağa bir Kaynak Yöneticisi VNet 'e dağıtmak için bir girişimde bulunuldu, dağıtım başarısız olur.
-> 
-> 
+   > [!IMPORTANT]
+   > Redsıs için Azure önbelleğinin bir Kaynak Yöneticisi VNet 'e dağıtılmasında, önbelleğin Redsıs örnekleri için Azure önbelleği dışında başka hiçbir kaynak içermeyen bir ayrılmış alt ağda olması gerekir. Redsıs için Azure önbelleğini diğer kaynakları içeren bir alt ağa bir Kaynak Yöneticisi VNet 'e dağıtmak için bir girişimde bulunuldu, dağıtım başarısız olur.
+   > 
+   > 
 
    | Ayar      | Önerilen değer  | Açıklama |
    | ------------ |  ------- | -------------------------------------------------- |
@@ -61,12 +61,12 @@ Sanal ağ (VNet) desteği, önbellek oluşturma sırasında **redsıs dikey penc
    | **Alt ağ** | Açılır ve alt ağlarınızı seçin. | Alt ağın adres aralığı CıDR gösteriminde (ör. 192.168.1.0/24) olmalıdır. Sanal ağın adres alanı tarafından içerilmelidir. | 
    | **Statik IP adresi** | Seçim Statik bir IP adresi girin. | Statik IP belirtmezseniz, otomatik olarak bir IP adresi seçilir. | 
 
-> [!IMPORTANT]
-> Azure, bazı IP adreslerini her alt ağ içinde ayırır ve bu adresler kullanılamaz. Alt ağların ilk ve son IP adresleri protokol uyumu için ayrılmıştır ve Azure hizmetleri için kullanılan üç adres daha vardır. Daha fazla bilgi için bkz. [Bu alt AĞLARDAKI IP adreslerini kullanma konusunda herhangi bir kısıtlama var mı?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
-> 
-> Azure VNET altyapısı tarafından kullanılan IP adreslerine ek olarak, alt ağdaki her reddo örneği, yük dengeleyici için bir parça başına iki IP adresi ve bir ek IP adresi kullanır. Kümelenmemiş bir önbelleğin bir parça olduğu kabul edilir.
-> 
-> 
+   > [!IMPORTANT]
+   > Azure, bazı IP adreslerini her alt ağ içinde ayırır ve bu adresler kullanılamaz. Alt ağların ilk ve son IP adresleri protokol uyumu için ayrılmıştır ve Azure hizmetleri için kullanılan üç adres daha vardır. Daha fazla bilgi için bkz. [Bu alt AĞLARDAKI IP adreslerini kullanma konusunda herhangi bir kısıtlama var mı?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
+   > 
+   > Azure VNET altyapısı tarafından kullanılan IP adreslerine ek olarak, alt ağdaki her reddo örneği, yük dengeleyici için bir parça başına iki IP adresi ve bir ek IP adresi kullanır. Kümelenmemiş bir önbelleğin bir parça olduğu kabul edilir.
+   > 
+   > 
 
 6. **İleri: Gelişmiş** sekmesini seçin veya sayfanın altındaki **İleri: Gelişmiş** düğmesine tıklayın.
 
@@ -76,7 +76,7 @@ Sanal ağ (VNet) desteği, önbellek oluşturma sırasında **redsıs dikey penc
 
 9. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin. 
 
-10. **Gözden geçir + oluştur** ’u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
+10. **Gözden geçir ve oluştur** ’u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
 
 11. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur** ' u seçin.
 
@@ -131,7 +131,7 @@ Dokuz giden bağlantı noktası gereksinimi vardır. Bu aralıklardaki giden ist
 | Bağlantı noktaları | Yön | Aktarım Protokolü | Amaç | Yerel IP | Uzak IP |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Giden |TCP |Azure depolama/PKI (Internet) üzerinde redsıs bağımlılıkları | (Redsıs alt ağı) |* |
-| 443 | Giden | TCP | Azure Key Vault redsıs bağımlılığı | (Redsıs alt ağı) | AzureKeyVault <sup>1</sup> |
+| 443 | Giden | TCP | Azure Key Vault ve Azure Izleyici 'de redsıs bağımlılığı | (Redsıs alt ağı) | AzureKeyVault, AzureMonitor <sup>1</sup> |
 | 53 |Giden |TCP/UDP |DNS 'de redsıs bağımlılıkları (Internet/VNet) | (Redsıs alt ağı) | 168.63.129.16 ve 169.254.169.254 <sup>2</sup> ve alt ağ <sup>3</sup> için özel DNS sunucusu |
 | 8443 |Giden |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) | (Redsıs alt ağı) |
 | 10221-10231 |Giden |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) | (Redsıs alt ağı) |
@@ -140,7 +140,7 @@ Dokuz giden bağlantı noktası gereksinimi vardır. Bu aralıklardaki giden ist
 | 15000-15999 |Giden |TCP |Redsıs ve Geo-Replication iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) (Coğrafi çoğaltma eş alt ağı) |
 | 6379-6380 |Giden |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
 
-<sup>1</sup> ' AzureKeyVault ' hizmet etiketini Kaynak Yöneticisi ağ güvenlik grupları ile birlikte kullanabilirsiniz.
+<sup>1</sup> ' AzureKeyVault ' ve ' AzureMonitor ' hizmet etiketlerini Kaynak Yöneticisi ağ güvenlik grupları ile birlikte kullanabilirsiniz.
 
 <sup>2</sup> Microsoft 'un sahip olduğu bu IP adresleri, Azure DNS hizmet veren ana bilgisayar VM 'sini ele almak için kullanılır.
 
@@ -172,9 +172,9 @@ Sekiz gelen bağlantı noktası aralığı gereksinimi vardır. Bu aralıklardak
 Redsıs için Azure önbelleği için bir sanal ağda karşılanmamış olabilecek ağ bağlantısı gereksinimleri vardır. Redo için Azure Cache, bir sanal ağ içinde kullanıldığında aşağıdaki öğelerin tümünün düzgün çalışmasını gerektirir.
 
 * Dünya çapındaki Azure depolama uç noktalarına giden ağ bağlantısı. Bu, Redsıs örneği için Azure önbelleği ile aynı bölgede bulunan uç noktaları ve **diğer** Azure bölgelerinde bulunan depolama uç noktalarını içerir. Azure depolama uç noktaları şu DNS etki alanları altında çözümlenir: *Table.Core.Windows.net* , *BLOB.Core.Windows.net* , *Queue.Core.Windows.net* ve *File.Core.Windows.net* . 
-* *OCSP.msocsp.com* , *mscrl.Microsoft.com* ve *CRL.Microsoft.com* giden ağ bağlantısı. Bu bağlantı, TLS/SSL işlevselliğini desteklemek için gereklidir.
+* *OCSP.DigiCert.com* , *crl4.DigiCert.com* , *OCSP.msocsp.com* , *mscrl.Microsoft.com* , *crl3.DigiCert.com* , *cacerts.DigiCert.com* , *oneocsp.Microsoft.com* ve *CRL.Microsoft.com* giden ağ bağlantısı. Bu bağlantı, TLS/SSL işlevselliğini desteklemek için gereklidir.
 * Sanal ağın DNS yapılandırması, önceki noktalarda bahsedilen tüm uç noktaları ve etki alanlarını çözebilme yeteneğine sahip olmalıdır. Bu DNS gereksinimleri, sanal ağ için yapılandırılmış ve korunan geçerli bir DNS altyapısının sağlanması sağlanarak karşılanacaktır.
-* Aşağıdaki Azure Izleme uç noktalarına giden ağ bağlantısı: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
+* Aşağıdaki Azure Izleme uç noktalarına giden ağ bağlantısı: *shoebox2-Black.shoebox2.Metrics.nsatc.net* , *North-prod2.prod2.Metrics.nsatc.net* , *azglobal-Black.azglobal.Metrics.nsatc.net* , *shoebox2-Red.shoebox2.Metrics.nsatc.net* , *East-prod2.prod2.Metrics.nsatc.net* , *azglobal-Red.azglobal.Metrics.nsatc.net* .
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Önbelleğim VNET 'te çalıştığını nasıl doğrulayabilirim?
 

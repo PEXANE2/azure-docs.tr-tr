@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e9341ff9a2ee0a6bfc79d94eea99bfb9aebceadf
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ea746d67b23422243685347d1fe7a7fbaf03a4fe
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637046"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927966"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 ve Easv4 serisi
 
@@ -25,7 +25,7 @@ Eav4-Series ve Easv4 serisi, en fazla 256 MB boyutlu önbellek kullanan çok iş
 [Premium depolama önbelleği](premium-storage-performance.md): desteklenmiyor<br>
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
-[VM oluşturma desteği](generation-2.md): 1. nesil<br>
+[VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
 <br>
 
 Eav4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını ve Premium SSD 'yi kullanmayı sağlayan 2.35 GHz AMD EPIC<sup>TM</sup> 7452 işlemcisini temel alır. Eav4 serisi Boyutlar, bellek açısından yoğun kurumsal uygulamalar için idealdir. Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium SSD 'yi kullanmak için Easv4-Series boyutlarını kullanın. Easv4 boyutları için fiyatlandırma ve faturalandırma ölçümleri Eav3 serisi ile aynıdır.
@@ -49,7 +49,7 @@ Eav4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını ve Premium SSD 'yi k
 [Premium depolama önbelleği](premium-storage-performance.md): desteklenir<br>
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
-[VM oluşturma desteği](generation-2.md): 1. nesil<br>
+[VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
 <br>
 
 Easv4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını ve Premium SSD 'yi kullanmayı sağlayan 2.35 GHz AMD EPIC<sup>TM</sup> 7452 işlemcisini temel alır. Easv4 serisi Boyutlar, bellek açısından yoğun kurumsal uygulamalar için idealdir.

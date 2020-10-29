@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c706ba6847334648fade1e8983e00433d3fa618
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dcabd01cfbda8cd892c82b391bf649b2b464d6fb
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978212"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927779"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Tek bir Azure bölgesinde kullanılabilirliği SAP HANA
 Bu makalede, bir Azure bölgesindeki çeşitli kullanılabilirlik senaryoları açıklanmaktadır. Azure, dünyanın tamamında yayılan birçok bölgeye sahiptir. Azure bölgelerinin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/). Tek bir Azure bölgesindeki sanal makinelere SAP HANA dağıtmak için, Microsoft, bir HANA örneğiyle tek bir sanal makinenin dağıtımını sunmaktadır. Daha yüksek kullanılabilirlik için, kullanılabilirlik için HANA sistem çoğaltması kullanan bir [Azure kullanılabilirlik kümesi](../../windows/tutorial-availability-sets.md) IÇINDE iki Hana örneğiyle iki VM dağıtabilirsiniz. 
@@ -78,7 +78,7 @@ En ilkel kurulumlardan biri yedeklemeleri kullanmaktır. Özellikle, bir VM 'den
 
 Mimari şöyle görünür:
 
-![Depolama çoğaltması olan iki VM 'nin diyagramı](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
+![Depolama çoğaltması ile iki sanal makine mimarisini gösteren diyagram.](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
 
 Bu kurulum, harika kurtarma noktası hedefi (RPO) ve kurtarma süresi hedefi (RTO) zamanlarını elde etmek için uygun değildir. RTO zamanları özellikle, kopyalanmış yedeklemeleri kullanarak tam veritabanını tamamen geri yükleme gereksiniminden kaynaklanıyor olabilir. Ancak, bu kurulum ana örneklerde istenmeden veri silmeyi kurtarmak için yararlıdır. Bu kurulumla, herhangi bir zamanda belirli bir noktaya geri yükleme yapabilir, verileri ayıklayabilir ve silinen verileri ana örneğinizle içeri aktarabilirsiniz. Bu nedenle, bir yedek kopya yönteminin diğer yüksek kullanılabilirlik işlevselliğiyle birlikte kullanılması mantıklı olabilir. 
 

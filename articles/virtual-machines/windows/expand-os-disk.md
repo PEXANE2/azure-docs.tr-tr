@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3908e5f4b7b246fe1c74e5ac4d20053242ece9f6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336012"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927694"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Bir sanal makinenin işletim sistemi sürücüsünü genişletme
 
@@ -32,26 +32,27 @@ ms.locfileid: "91336012"
 > [!IMPORTANT]
 > Bir Azure sanal makinesinin işletim sistemini veya veri diskini yeniden boyutlandırmak için sanal makinenin serbest bırakılmış olması gerekir.
 >
-> Diskleri genişlettikten sonra, daha büyük diskten yararlanmak için [işletim sistemi içindeki birimi genişletmeniz](#expand-the-volume-within-the-os) gerekir.
+> Mevcut bir diskin küçültülmesi desteklenmez ve muhtemelen veri kaybına neden olabilir.
 > 
+> Diskleri genişlettikten sonra, daha büyük diskten yararlanmak için [işletim sistemi içindeki birimi genişletmeniz](#expand-the-volume-within-the-os) gerekir.
 
 ## <a name="resize-a-managed-disk-in-the-azure-portal"></a>Azure portal yönetilen bir diski yeniden boyutlandırma
 
 1. [Azure Portal](https://portal.azure.com), diski genişletmek istediğiniz sanal makineye gidin. VM 'yi serbest bırakmak için **Durdur** ' u seçin.
-2. VM durdurulduğunda, sol taraftaki menüde, **Ayarlar**' ın altında, **diskler**' i seçin.
+2. VM durdurulduğunda, sol taraftaki menüde, **Ayarlar** ' ın altında, **diskler** ' i seçin.
 
     :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="Menünün ayarlar bölümünde seçilen diskler seçeneğini gösteren ekran görüntüsü.":::
 
  
-3. **Disk adı**bölümünde, yeniden boyutlandırmak istediğiniz diski seçin.
+3. **Disk adı** bölümünde, yeniden boyutlandırmak istediğiniz diski seçin.
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Menünün ayarlar bölümünde seçilen diskler seçeneğini gösteren ekran görüntüsü.":::
 
-4. **Ayarlar**altındaki sol menüde **yapılandırma**' yı seçin.
+4. **Ayarlar** altındaki sol menüde **yapılandırma** ' yı seçin.
 
     :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Menünün ayarlar bölümünde seçilen diskler seçeneğini gösteren ekran görüntüsü.":::
 
-5. **Boyut (GiB)**' de istediğiniz disk boyutunu seçin.
+5. **Boyut (GiB)** ' de istediğiniz disk boyutunu seçin.
    
    > [!WARNING]
    > Yeni boyut mevcut disk boyutundan büyük olmalıdır. İşletim sistemi diskleri için izin verilen en yüksek 2.048 GB 'dir. (VHD blobunun boyutunu bu boyuttan büyük bir şekilde genişletmek mümkündür, ancak işletim sistemi yalnızca ilk 2.048 GB alan ile çalışabilir.)
@@ -59,7 +60,7 @@ ms.locfileid: "91336012"
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Menünün ayarlar bölümünde seçilen diskler seçeneğini gösteren ekran görüntüsü.":::
 
-6. **Kaydet**’i seçin.
+6. **Kaydet** ’i seçin.
 
     :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Menünün ayarlar bölümünde seçilen diskler seçeneğini gösteren ekran görüntüsü.":::
 
@@ -230,11 +231,11 @@ Benzer şekilde, yukarıda gösterildiği gibi bir dizin kullanarak VM 'ye bağl
 
 ## <a name="expand-the-volume-within-the-os"></a>İşletim sistemi içindeki birimi genişletme
 
-VM için diski genişlettikten sonra işletim sistemine gitmeniz ve yeni alanı kapsayacak şekilde birimi genişletmeniz gerekir. Bölüm genişletmek için birkaç yöntem vardır. Bu bölümde, **DiskPart**kullanarak bölümü genişletmek IÇIN bir RDP BAĞLANTıSı kullanarak VM 'nin bağlanması ele alınmaktadır.
+VM için diski genişlettikten sonra işletim sistemine gitmeniz ve yeni alanı kapsayacak şekilde birimi genişletmeniz gerekir. Bölüm genişletmek için birkaç yöntem vardır. Bu bölümde, **DiskPart** kullanarak bölümü genişletmek IÇIN bir RDP BAĞLANTıSı kullanarak VM 'nin bağlanması ele alınmaktadır.
 
 1. VM 'nize bir RDP bağlantısı açın.
 
-2. Bir komut istemi açın ve **DiskPart**yazın.
+2. Bir komut istemi açın ve **DiskPart** yazın.
 
 3. **DISKPART** isteminde yazın `list volume` . Genişletmek istediğiniz birimi unutmayın.
 

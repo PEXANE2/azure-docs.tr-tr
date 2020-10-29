@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b73c7e62c6b621d3ac86cfb99b10b567460534f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a51fbcb7b7504b9a16e8d0025856c2b007070a9
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961865"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928017"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Kapsayıcılar için Web App ile sürekli dağıtım
 
@@ -35,7 +35,7 @@ Bu öğreticide, yönetilen [Azure Container Registry](https://azure.microsoft.c
 
 Sürekli dağıtım etkinleştirildikten sonra, yeni oluşturulan Web kancasını Azure Container Registry Web kancaları sayfasında görüntüleyebilirsiniz.
 
-![ACR Web kancasının ekran görüntüsü](./media/deploy-ci-cd-custom-container/ci-cd-acr-03.png)
+![Yeni oluşturulan Web kancasını Azure Container Registry Web kancaları sayfasında görüntüleyebileceğiniz gösteren ekran görüntüsü.](./media/deploy-ci-cd-custom-container/ci-cd-acr-03.png)
 
 Container Registry Web kancaları ' na tıklayarak geçerli Web kancalarını görüntüleyin.
 

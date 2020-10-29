@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: e4b85c609c53c46cfab71f37b8427eb1cee29f1a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7ab9b5166aab07e0629cdd280f8cdccbd0702c99
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518016"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927728"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -123,8 +123,8 @@ Hayır. VNet, tek bir bölgeyle sınırlıdır. Ancak, bir sanal ağ, kullanım 
 
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Azure 'da bir sanal ağı başka bir VNet 'e bağlayabilirim miyim?
 Evet. Aşağıdakilerden birini kullanarak bir sanal ağı başka bir VNet 'e bağlayabilirsiniz:
-- **Sanal ağ eşlemesi**: Ayrıntılar için bkz. [VNET eşlemesi genel bakış](virtual-network-peering-overview.md)
-- **Azure VPN Gateway**: Ayrıntılar için bkz. [VNET 'ten VNET 'e bağlantı yapılandırma](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+- **Sanal ağ eşlemesi** : Ayrıntılar için bkz. [VNET eşlemesi genel bakış](virtual-network-peering-overview.md)
+- **Azure VPN Gateway** : Ayrıntılar için bkz. [VNET 'ten VNET 'e bağlantı yapılandırma](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
 ## <a name="name-resolution-dns"></a>Ad çözümlemesi (DNS)
 
@@ -159,10 +159,10 @@ Evet. Kaynak Yöneticisi dağıtım modeliyle dağıtılan bir VM 'ye bağlı t�
 ### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>VM 'lere atayabildiğim farklı IP adresi türleri nelerdir?
 * **Özel:** Her VM 'deki her NIC 'ye atanır. Adres static ya da Dynamic yöntemi kullanılarak atanır. Özel IP adresleri, sanal ağınızın alt ağ ayarlarında belirttiğiniz aralıktan atanır. Klasik dağıtım modeliyle dağıtılan kaynaklara, sanal ağa bağlı olmasalar bile özel IP adresleri atanır. Ayırma yönteminin davranışı, bir kaynağın Kaynak Yöneticisi veya klasik dağıtım modeliyle dağıtıldığına bağlı olarak farklılık belirtir: 
 
-  - **Kaynak Yöneticisi**: dinamik veya statik yöntemle atanan özel IP adresi, kaynak silinene kadar bir sanal makineye (Kaynak Yöneticisi) atanmış olarak kalır. Fark, statik kullanırken atanacak adresi seçtiğinizde Azure 'un dinamik kullanılırken seçtiği bir adrestir. 
-  - **Klasik**: sanal makine (klasık) VM durdurulmuş (serbest bırakıldı) durumda olduktan sonra yeniden başlatıldığında dinamik yöntemle atanan özel IP adresi değişebilir. Klasik dağıtım modeliyle dağıtılan bir kaynağın özel IP adresinin hiçbir şekilde değişmeyeceğinden emin olmanız gerekiyorsa, statik metoda sahip bir özel IP adresi atayın.
+  - **Kaynak Yöneticisi** : dinamik veya statik yöntemle atanan özel IP adresi, kaynak silinene kadar bir sanal makineye (Kaynak Yöneticisi) atanmış olarak kalır. Fark, statik kullanırken atanacak adresi seçtiğinizde Azure 'un dinamik kullanılırken seçtiği bir adrestir. 
+  - **Klasik** : sanal makine (klasık) VM durdurulmuş (serbest bırakıldı) durumda olduktan sonra yeniden başlatıldığında dinamik yöntemle atanan özel IP adresi değişebilir. Klasik dağıtım modeliyle dağıtılan bir kaynağın özel IP adresinin hiçbir şekilde değişmeyeceğinden emin olmanız gerekiyorsa, statik metoda sahip bir özel IP adresi atayın.
 
-* **Ortak:** İsteğe bağlı olarak, Azure Resource Manager dağıtım modeliyle dağıtılan VM 'lere bağlı NIC 'lere atanır. Adres, statik veya dinamik ayırma yöntemiyle atanabilir. Klasik dağıtım modeli aracılığıyla dağıtılan tüm VM 'Ler ve Cloud Services rol örnekleri, *dinamik*, genel sanal IP (VIP) adresi atanmış bir bulut hizmeti içinde bulunur. [Ayrılmış IP adresi](virtual-networks-reserved-public-ip.md)olarak adlandırılan genel *statik* IP adresı isteğe bağlı olarak VIP olarak atanabilir. Genel IP adreslerini tek tek VM 'lere atayabilir veya klasik dağıtım modeliyle dağıtılan rol örneklerine Cloud Services. Bu adreslere [örnek düzeyi genel IP (ıLPıP](virtual-networks-instance-level-public-ip.md) adresleri denir ve dinamik olarak atanabilir.
+* **Ortak:** İsteğe bağlı olarak, Azure Resource Manager dağıtım modeliyle dağıtılan VM 'lere bağlı NIC 'lere atanır. Adres, statik veya dinamik ayırma yöntemiyle atanabilir. Klasik dağıtım modeli aracılığıyla dağıtılan tüm VM 'Ler ve Cloud Services rol örnekleri, *dinamik* , genel sanal IP (VIP) adresi atanmış bir bulut hizmeti içinde bulunur. [Ayrılmış IP adresi](virtual-networks-reserved-public-ip.md)olarak adlandırılan genel *statik* IP adresı isteğe bağlı olarak VIP olarak atanabilir. Genel IP adreslerini tek tek VM 'lere atayabilir veya klasik dağıtım modeliyle dağıtılan rol örneklerine Cloud Services. Bu adreslere [örnek düzeyi genel IP (ıLPıP](virtual-networks-instance-level-public-ip.md) adresleri denir ve dinamik olarak atanabilir.
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Daha sonra oluşturacağınız bir VM için özel IP adresini ayırabilir miyim?
 Hayır. Özel bir IP adresi ayıramazsınız. Özel bir IP adresi varsa, DHCP sunucusu tarafından bir VM veya rol örneğine atanır. VM, özel IP adresinin atanmasını istediğiniz bir tane olabilir veya olmayabilir. Bununla birlikte, zaten oluşturulmuş bir VM 'nin özel IP adresini kullanılabilir bir özel IP adresine değiştirebilirsiniz.
@@ -191,7 +191,7 @@ Evet. Bir sanal ağ içinde dağıtılan tüm VM 'Ler ve Cloud Services rol örn
 ## <a name="azure-services-that-connect-to-vnets"></a>VNET 'lere bağlanan Azure hizmetleri
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>VNet ile Azure App Service Web Apps kullanabilir miyim?
-Evet. Bir ASE (App Service Ortamı) kullanarak bir VNet içinde Web Apps dağıtabilir, uygulamalarınızın arka ucunu VNet tümleştirmeyle sanal ağlarınıza bağlayabilirsiniz ve gelen trafiği hizmet uç noktalarıyla uygulamanıza taşıyabilirsiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Evet. Bir ASE (App Service Ortamı) kullanarak bir VNet içinde Web Apps dağıtabilir, uygulamalarınızın arka ucunu VNet tümleştirmeyle sanal ağlarınıza bağlayabilirsiniz ve gelen trafiği hizmet uç noktalarıyla uygulamanıza taşıyabilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [App Service ağ özellikleri](../app-service/networking-features.md)
 * [App Service Ortamı Web Apps oluşturma](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -227,6 +227,9 @@ Evet. Azure Marketi aracılığıyla birkaç satıcının [güvenlik duvarı ağ
 
 ### <a name="is-there-information-available-about-securing-vnets"></a>VNET 'leri güvenli hale getirmek için kullanılabilir bilgi var mı?
 Evet. Ayrıntılar için bkz. [Azure ağ güvenliğine genel bakış](../security/fundamentals/network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+### <a name="do-virtual-networks-store-customer-data"></a>Sanal ağlar müşteri verilerini depolasın mı?
+Hayır. Sanal ağlar hiçbir müşteri verisini depolamaz. 
 
 ## <a name="apis-schemas-and-tools"></a>API 'Ler, şemalar ve araçlar
 
@@ -268,7 +271,7 @@ Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıy
 Evet. Abonelikleriniz farklı Azure Active Directory kiracılara aitse VNet eşlemesi (yerel veya genel) oluşturmak mümkündür. Bunu Portal, PowerShell veya CLı aracılığıyla yapabilirsiniz.
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>VNet eşleme bağlantısı *başlatılmış* durumda, neden bağlanamıyorum?
-Eşleme bağlantınız *başlatılmış* durumdaysa, bu, yalnızca bir bağlantı oluşturmuş olmanız anlamına gelir. Başarılı bir bağlantı kurmak için çift yönlü bir bağlantı oluşturulmalıdır. Örneğin, A VNet to VNet 'e eşler arası, VNetA 'dan VNetB 'ye ve VNetB 'den VNetA 'ya bir bağlantı oluşturulmalıdır. Her iki bağlantı da oluşturulduğunda durumu *bağlı*olarak değişir.
+Eşleme bağlantınız *başlatılmış* durumdaysa, bu, yalnızca bir bağlantı oluşturmuş olmanız anlamına gelir. Başarılı bir bağlantı kurmak için çift yönlü bir bağlantı oluşturulmalıdır. Örneğin, A VNet to VNet 'e eşler arası, VNetA 'dan VNetB 'ye ve VNetB 'den VNetA 'ya bir bağlantı oluşturulmalıdır. Her iki bağlantı da oluşturulduğunda durumu *bağlı* olarak değişir.
 
 ### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>VNet eşleme bağlantımın bağlantısı *kesik* durumda, neden eşleme bağlantısı oluşturamıyorum?
 VNet eşleme bağlantınızın *bağlantısı kesik* durumdaysa, oluşturulan bağlantılardan biri silinmiş demektir. Bir eşleme bağlantısını yeniden kurmak için bağlantıyı silip yeniden oluşturmanız gerekir.
@@ -331,7 +334,7 @@ Hizmet uç noktaları aracılığıyla bir Azure hizmet kaynağını güvenli ha
 >[!NOTE]
 > Azure hizmeti erişimini izin verilen VNet ve alt ağa sınırlayabilmeniz için yukarıda açıklanan işlemlerin her ikisi de tamamlanmalıdır. Yalnızca ağ tarafında Azure hizmeti için hizmet uç noktalarını açmak, size sınırlı erişim sağlamaz. Ayrıca, Azure hizmet tarafında VNet ACL 'Leri de ayarlamanız gerekir.
 
-Bazı hizmetler (SQL ve CosmosDB gibi), **ıgnoremissingvnetserviceendpoint** bayrağıyla yukarıdaki sırada özel durumlara izin verir. Flag **değeri true**olarak ayarlandığında, ağ tarafında hizmet uç noktaları ayarlamadan önce Azure hizmet tarafında VNET ACL 'leri ayarlanabilir. Azure Hizmetleri, belirli IP güvenlik duvarlarının Azure hizmetlerinde yapılandırıldığı ve ağ tarafında hizmet uç noktalarının açık olduğu ve kaynak IP ortak bir IPv4 adresinden özel bir adrese değiştiği için bir bağlantı bırakmaya neden olabilecek müşterilere yardımcı olmak için bu bayrağı sunar. Ağ tarafında hizmet uç noktaları ayarlamadan önce Azure hizmet tarafında VNet ACL 'Lerinin kurulması bağlantı kesmesinden kaçınılmasını sağlayabilir.
+Bazı hizmetler (SQL ve CosmosDB gibi), **ıgnoremissingvnetserviceendpoint** bayrağıyla yukarıdaki sırada özel durumlara izin verir. Flag **değeri true** olarak ayarlandığında, ağ tarafında hizmet uç noktaları ayarlamadan önce Azure hizmet tarafında VNET ACL 'leri ayarlanabilir. Azure Hizmetleri, belirli IP güvenlik duvarlarının Azure hizmetlerinde yapılandırıldığı ve ağ tarafında hizmet uç noktalarının açık olduğu ve kaynak IP ortak bir IPv4 adresinden özel bir adrese değiştiği için bir bağlantı bırakmaya neden olabilecek müşterilere yardımcı olmak için bu bayrağı sunar. Ağ tarafında hizmet uç noktaları ayarlamadan önce Azure hizmet tarafında VNet ACL 'Lerinin kurulması bağlantı kesmesinden kaçınılmasını sağlayabilir.
 
 ### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>Tüm Azure hizmetleri müşteri tarafından sunulan Azure sanal ağında mi var? VNet hizmeti uç noktası Azure hizmetleriyle nasıl çalışır?
 
@@ -407,7 +410,7 @@ Bir sanal ağdaki toplam VNet hizmeti uç noktası sayısı için bir sınır yo
 
 |Azure hizmeti| VNet kuralları sınırları|
 |---|---|
-|Azure Depolama| 100|
+|Azure Storage| 100|
 |Azure SQL| 128|
 |Azure Synapse Analytics|   128|
 |Azure KeyVault|    127|

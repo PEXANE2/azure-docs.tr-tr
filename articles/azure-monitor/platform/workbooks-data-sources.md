@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: a0349a3fe21bdc0b73252bce1207c9f3b53dc15f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143727"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927915"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Izleyici çalışma kitapları veri kaynakları
 
@@ -77,7 +77,7 @@ Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, **sor
 
 Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için **sorgu türü** açılan listesini kullanarak Azure sistem durumu ' nu seçin ve hedeflenecek kaynakları seçin. Analiz gereksinimleriniz için kaynak sorunlarının ilginç bir alt kümesini seçmek üzere durum filtre açılan listelerini kullanın.
 
-![Uyarı sorgusunun ekran görüntüsü](./media/workbooks-overview/resource-health.png)
+![Durum filtre listelerini gösteren uyarı sorgusunun ekran görüntüsü.](./media/workbooks-overview/resource-health.png)
 
 ## <a name="json"></a>JSON
 
@@ -100,7 +100,7 @@ Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, _veri
 
 Çalışma kitapları, herhangi bir dış kaynaktan veri almayı destekler. Verileriniz Azure dışında yaşar, bu veri kaynağı türünü kullanarak çalışma kitaplarına taşıyabilirsiniz.
 
-Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, _veri kaynağı_ açılır listesini kullanarak _Özel uç nokta_' ı seçin. ,, `Http method` `url` `headers` , `url parameters` Ve/ `body` gibi uygun parametreleri sağlayın. Veri kaynağınızın [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) 'yi desteklediğinden emin olun, aksi takdirde istek başarısız olur.
+Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, _veri kaynağı_ açılır listesini kullanarak _Özel uç nokta_ ' ı seçin. ,, `Http method` `url` `headers` , `url parameters` Ve/ `body` gibi uygun parametreleri sağlayın. Veri kaynağınızın [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) 'yi desteklediğinden emin olun, aksi takdirde istek başarısız olur.
 
 Şablonları kullanırken güvenilmeyen konaklara otomatik olarak çağrı yapmayı önlemek için, kullanıcının kullanılan konakları güvenilir olarak işaretlemesi gerekir. Bu işlem, _güvenilir değil Ekle_ düğmesine tıklayarak veya çalışma kitabı ayarları 'nda güvenilir bir ana bilgisayar olarak eklenerek yapılabilir. Bu ayarlar, Web çalışanları ile ındexdb 'yi destekleyen tarayıcılara kaydedilir, burada daha fazla bilgi [bulabilirsiniz](https://caniuse.com/#feat=indexeddb).
 

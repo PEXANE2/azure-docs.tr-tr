@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: 400e82780abd08e0db4f49d72b352e290ea1f212
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9445004170fb06a3d563982da51f89535464e328
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900299"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928000"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için genel geçiş kimlik eşitlemesini yapılandırma
 
@@ -33,6 +33,10 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem genel 
 > * Artık erişim gerektirmeyen kullanıcıları genel geçiş kimlik Eşitlede kaldır
 > * Azure AD ile genel geçiş kimlik eşitleme arasında kullanıcı özniteliklerini eşitlenmiş olarak tut
 > * Genel geçiş kimlik eşitlemede grupları ve grup üyeliklerini sağlama
+
+
+> [!NOTE]
+> Küresel geçiş kimlik eşitleme sağlama Bağlayıcısı, güvenlik sorunları nedeniyle artık desteklenmeyen bir SCıM yetkilendirme yöntemi kullanır. Çabalar, daha güvenli bir yetkilendirme yöntemine geçiş yapmak için küresel geçişle devam eden çalışmalardır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

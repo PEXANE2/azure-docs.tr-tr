@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0bc8b4f7bd2bf02d4d034ebacc0fc45b17cd3e15
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425357"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928102"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik puanı
 
@@ -29,7 +29,7 @@ Azure Güvenlik Merkezi 'nin iki ana hedefi vardır:
 - Geçerli güvenlik durumunuzu anlamanıza yardımcı olması için
 - güvenliği verimli ve etkili bir şekilde iyileştirmenize yardımcı olmak için
 
-Güvenlik Merkezi 'nde, bu hedeflere ulaşmanızı sağlayan merkezi özellik **güvenli puanı**.
+Güvenlik Merkezi 'nde, bu hedeflere ulaşmanızı sağlayan merkezi özellik **güvenli puanı** .
 
 Güvenlik Merkezi, güvenlik sorunları için kaynaklarınızı, aboneliklerinizi ve kuruluşunuzu sürekli olarak değerlendirir. Daha sonra her türlü bulguları tek bir puanın içinde toplar, böylece bir bakışta geçerli güvenlik durumunuza göre daha yüksek puan, belirtilen risk düzeyini azaltır.
 
@@ -39,7 +39,7 @@ Güvenli puan, Azure portal sayfalarında yüzde değeri olarak gösterilir, anc
 
 Güvenliğinizi artırmak için, puanınızı yükseltmek için gereken bekleyen eylemler için Güvenlik Merkezi 'nin öneriler sayfasını gözden geçirin. Her öneri, belirli bir sorunu düzeltmenizi sağlayacak yönergeler içerir.
 
-Öneriler, **güvenlik denetimleri**halinde gruplandırılır. Her denetim, ilgili güvenlik önerilerinin mantıksal grubudur ve güvenlik açığı bulunan saldırı yüzeylerinizi yansıtır. Puanınız yalnızca bir denetim içindeki tek bir kaynağın *Tüm* önerilerini düzeltdiğinde geliştirilir. Kuruluşunuzun her bir saldırı yüzeyi için ne kadar iyi güvenlik altına alınacağını öğrenmek için her bir güvenlik denetiminin puanlarını gözden geçirin.
+Öneriler, **güvenlik denetimleri** halinde gruplandırılır. Her denetim, ilgili güvenlik önerilerinin mantıksal grubudur ve güvenlik açığı bulunan saldırı yüzeylerinizi yansıtır. Puanınız yalnızca bir denetim içindeki tek bir kaynağın *Tüm* önerilerini düzeltdiğinde geliştirilir. Kuruluşunuzun her bir saldırı yüzeyi için ne kadar iyi güvenlik altına alınacağını öğrenmek için her bir güvenlik denetiminin puanlarını gözden geçirin.
 
 Daha fazla bilgi için bkz. [güvenli puanınızın aşağıda nasıl hesaplandığı](secure-score-security-controls.md#how-your-secure-score-is-calculated) . 
 
@@ -88,7 +88,7 @@ Azure Kaynak Grafiği, güçlü filtreleme, gruplama ve sıralama özelliklerine
 
 Bağımsız değişken ile birden çok aboneliğin güvenli puanına erişmek için:
 
-1. Azure portal **Azure Kaynak Grafiği Gezgini**' ni açın.
+1. Azure portal **Azure Kaynak Grafiği Gezgini** ' ni açın.
 
     :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Portalda gösterildiği gibi genel güvenli puan" :::
 
@@ -112,7 +112,7 @@ Bağımsız değişken ile birden çok aboneliğin güvenli puanına erişmek i�
         | project SecureControl , unhealthy, currentscore, maxscore
         ```
 
-1. **Sorguyu Çalıştır**' ı seçin.
+1. **Sorguyu Çalıştır** ' ı seçin.
 
 ## <a name="how-your-secure-score-is-calculated"></a>Güvenli puanınızın hesaplanması 
 
@@ -162,6 +162,14 @@ Puanınızı artırmanın ve kullanıcılarınızın puanınızı olumsuz yönde
 
 Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri listelenmiştir. Her denetim için, denetimde listelenen *Tüm* önerileri, *Tüm* kaynaklarınız için düzeltmeniz durumunda, güvenli puanlarınıza ekleyebileceğiniz en fazla puan sayısını görebilirsiniz. 
 
+Güvenlik Merkezi ile sağlanan güvenlik önerileri kümesi, her bir kuruluşun ortamındaki kullanılabilir kaynaklara göre tasarlanmıştır. Öneriler, [ilkeleri devre dışı bırakarak](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations) ve [belirli kaynakları bir öneriden muaf](exempt-resource.md)bırakarak daha da özelleştirilebilir. 
+ 
+Her kuruluşun, atanan Azure Ilke girişimlerini dikkatle gözden geçirmesini öneririz. 
+
+> [!TIP]
+> Girişimlerinizi İnceleme ve düzenlemeyle ilgili ayrıntılar için bkz. [güvenlik Ilkeleriyle çalışma](tutorial-security-policy.md). 
+
+Güvenlik Merkezi 'nin varsayılan güvenlik girişimi sektörde en iyi uygulamaları ve standartları temel alsa da, aşağıda listelenen yerleşik önerilerin kuruluşunuza tamamen uymamasının bir senaryosu vardır. Sonuç olarak, kuruluşunuzun kendi ilkeleriyle uyumlu olduğundan emin olmak için, güvenliği tehlikeye atmadan, bazen varsayılan girişimi ayarlamanız gerekir. endüstri standartları, mevzuat standartları ve buluşmak üzere olduğunuz kıyaslamalar.<br><br>
 <div class="foo">
 
 <style type="text/css"> . TG {Border-daraltma: daraltma; kenarlık-boşluk: 0;}. TG TD {Border-Color: Siyah; kenarlık stili: Solid; Border-width: 1px; yazıtipi-Family: Arial, sans-serif; font-size: 14px; overflow: Hidden; Padding: 10px 5px; sözcük-Break: normal;}. TG TH {Border-Color: Siyah; kenarlık stili: Solid; kenarlık genişliği: 1px; yazı tipi-ailesi: Arial, sans-serif; font-size: 18px; yazı tipi-ağırlığı: normal; taşma: gizli; doldurma: 10px 5px; sözcük-Break: normal;}. TG. TG-cly1 {text-align: Left; dikey-align: Middle}. TG. TG-lboı {Border-Color: Inherit; metin-Hizala: Left; Dikey-Hizala: Orta} </style>

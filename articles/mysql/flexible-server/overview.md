@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 200f74ee8d99c80956f1d27599769401d30c3f95
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4cb706bfa1c10e941e6d2d44358c784549973302
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537958"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927983"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme)
 
@@ -84,6 +84,17 @@ Daha fazla bilgi için bkz. [ağ kavramları](concepts-networking.md) .
 Esnek sunucu hizmeti üç SKU katmanında mevcuttur: Burstable, Genel Amaçlı ve bellek için Iyileştirilmiş. Burstable katmanı, her zaman sürekli olarak tam işlem kapasitesi gerektirmeyen düşük maliyetli geliştirme ve düşük eşzamanlılık iş yükleri için idealdir. Genel Amaçlı ve bellek için Iyileştirilmiş, yüksek eşzamanlılık, ölçek ve öngörülebilir performans gerektiren üretim iş yükleri için daha uygundur. İlk uygulamanızı ayda birkaç ABD Doları için küçük bir veritabanında oluşturabilir ve ardından ölçeklendirmeyi gereksinimlerinize uygun şekilde ayarlayabilirsiniz. Depolama Ölçeklendirmesi çevrimiçi ve depolama otomatik büyümesini destekler. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesini sağlar. Yalnızca kullandığınız kaynaklar için ödeme yaparsınız. 
 
 Daha fazla bilgi için bkz. [işlem ve depolama kavramları](concepts-compute-storage.md) .
+
+## <a name="scale-out-your-read-workload-with-up-to-10-read-replicas"></a>10 ' a kadar okuma çoğaltmalarıyla okuma iş yükünüzü ölçeklendirin
+
+MySQL, İnternet ölçeğinde Web ve mobil uygulamaları çalıştırmaya yönelik popüler veritabanı altyapılarından biridir. Müşterilerimizin birçoğu, çevrimiçi eğitim hizmetleri, video akış Hizmetleri, dijital ödeme çözümleri, e-ticaret platformları, Oyun Hizmetleri, haber portalları, kamu ve sağlık Web siteleri için bunu kullanır. Web veya mobil uygulamadaki trafik arttıkça bu hizmetlerin hizmet vermesi ve ölçeklendirilmesi gerekir.
+
+Uygulamalar tarafında, uygulama genellikle Java veya php 'de geliştirilmiştir ve [Azure sanal makine ölçek kümeleri](/azure/virtual-machine-scale-sets/overview.md)   veya [Azure Uygulama hizmetlerinde](/azure/app-service/overview.md)çalışacak şekilde geçirilir   ya da [Azure KUBERNETES hizmeti (aks)](/azure/aks/intro-kubernetes.md)üzerinde çalışmak üzere Kapsayıcılı hale getirilir. Arka plandaki altyapı olarak sanal makine ölçek kümesi, App Service veya AKS ile, uygulama ölçekleme, anında yeni VM 'Ler sunarak basitleştirilir ve isteklerin durum bilgisiz bileşenleri, isteklere geçmek için, ancak genellikle veritabanı, Merkezi durum bilgisi olan bir bileşen olarak performans sorunlarına neden olur.
+
+Çoğaltma oku özelliği, MySQL için Azure veritabanı esnek sunucusu 'na ait verileri salt okunurdur bir sunucuya çoğaltmanıza olanak sağlar. Kaynak sunucudan 10 ' a **kadar** çoğaltma yapabilirsiniz. Çoğaltmalar, MySQL altyapısının yerel [ikili günlük (binlog) dosya konumu tabanlı çoğaltma teknolojisi](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)kullanılarak zaman uyumsuz olarak güncelleştirilir. Uygulama yeniden düzenleme maliyeti olmadan çoğaltmaları okumak için uygulama iş yükünüzü sorunsuz bir şekilde genişletmek için [Proxysql](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) gibi yük dengeleyici ara sunucu çözümünü kullanabilirsiniz. 
+
+Daha fazla bilgi edinmek için bkz. [çoğaltma kavramlarını okuyun](concepts-read-replicas.md) . 
+
 
 ## <a name="stopstart-server-to-optimize-cost"></a>Maliyeti iyileştirmek için sunucuyu Durdur/Başlat
 

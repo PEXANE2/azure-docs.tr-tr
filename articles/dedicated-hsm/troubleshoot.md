@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 622ead2ab58075fe6edbe2c013f14391624fd2b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b911181abea06894873e64da51afbb8799f1066a
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88590464"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927847"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Azure ayrılmış HSM hizmeti sorunlarını giderme
 
@@ -71,7 +71,7 @@ Belirli bir damga veya bölge dolduğunda, diğer bir deyişle, neredeyse tüm �
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Nasıl yaparım?, sağlanan HSM 'leri görmek mi istiyorsunuz?
 Adanmış HSM 'nin beyaz listeye eklenen bir hizmet olması nedeniyle, Azure portal bir "gizli tür" olarak kabul edilir. HSM kaynaklarını görmek için aşağıda gösterildiği gibi "gizli türleri göster" onay kutusunu denetlemeniz gerekir. NIC kaynağı her zaman HSM 'yi izler ve bağlanmak için SSH kullanılmadan önce HSM 'nin IP adresini bulmak için iyi bir yerdir.
 
-![Alt ağ temsili](./media/troubleshoot/hsm-provisioned.png)
+![Gizli türleri göster denetimini vurgulayan ekran görüntüsü](./media/troubleshoot/hsm-provisioned.png)
 
 ## <a name="networking-resources"></a>Ağ kaynakları
 
@@ -85,7 +85,7 @@ Adanmış HSM, ExpressRoute ağ geçidini, müşterinin özel IP adresi alanı v
 
 Adanmış HSM için sağlanan örnek şablonlar, HSM IP 'nin belirli bir alt ağ aralığından otomatik olarak alınacağını varsayar. ARM şablonunda bir "NetworkInterfaces" özniteliği aracılığıyla HSM için açık bir IP adresi belirtebilirsiniz. 
 
-![Alt ağ temsili](./media/troubleshoot/private-ip-address.png)
+![Adanmış HSM için örnek şablonu gösteren ekran görüntüsü.](./media/troubleshoot/private-ip-address.png)
 
 ## <a name="hsm-initialization"></a>HSM başlatması
 
