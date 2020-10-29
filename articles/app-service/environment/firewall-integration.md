@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/24/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 8acd0a6992c26266f20aaf46dd225a9fff9d6974
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e5f9cd361d4f130d725f608614159d67fb7b56d1
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172019"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026369"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Ortamı kilitleme
 
@@ -61,11 +61,11 @@ Azure Güvenlik Duvarı ile mevcut Ao 'ınızdan çıkış kilitlemeyi kilitleme
    
    ![Uygulama kuralı ekle][1]
    
-1. Azure Güvenlik Duvarı Kullanıcı arabirimi > kuralları > ağ kuralı koleksiyonu ' ndan ağ kuralı koleksiyonu Ekle ' yi seçin. Ad, öncelik ve Izin ver ayarla ' yı belirtin. IP adresleri altındaki kurallar bölümünde, bir ad girin, **herhangi**bir protokol seçin, * kaynak ve hedef adresleri ayarlayın ve bağlantı noktalarını 123 olarak ayarlayın. Bu kural, sistemin NTP kullanarak saat eşitlemesi gerçekleştirmesini sağlar. Herhangi bir sistem sorununu değerlendirmenize yardımcı olmak için bağlantı noktası 12000 ile aynı şekilde başka bir kural oluşturun. 
+1. Azure Güvenlik Duvarı Kullanıcı arabirimi > kuralları > ağ kuralı koleksiyonu ' ndan ağ kuralı koleksiyonu Ekle ' yi seçin. Ad, öncelik ve Izin ver ayarla ' yı belirtin. IP adresleri altındaki kurallar bölümünde, bir ad girin, **herhangi** bir protokol seçin, * kaynak ve hedef adresleri ayarlayın ve bağlantı noktalarını 123 olarak ayarlayın. Bu kural, sistemin NTP kullanarak saat eşitlemesi gerçekleştirmesini sağlar. Herhangi bir sistem sorununu değerlendirmenize yardımcı olmak için bağlantı noktası 12000 ile aynı şekilde başka bir kural oluşturun. 
 
    ![NTP ağ kuralı ekle][3]
    
-1. Azure Güvenlik Duvarı Kullanıcı arabirimi > kuralları > ağ kuralı koleksiyonu ' ndan ağ kuralı koleksiyonu Ekle ' yi seçin. Ad, öncelik ve Izin ver ayarla ' yı belirtin. Hizmet etiketleri altındaki kurallar bölümünde, bir ad girin, **herhangi**bir protokol seçin, * kaynak adreslerini ayarlayın, AzureMonitor bir hizmet etiketi seçin ve bağlantı noktalarını 80, 443 olarak ayarlayın. Bu kural, sistemin sistem durumu ve ölçüm bilgileriyle Azure Izleyici sağlamasına izin verir.
+1. Azure Güvenlik Duvarı Kullanıcı arabirimi > kuralları > ağ kuralı koleksiyonu ' ndan ağ kuralı koleksiyonu Ekle ' yi seçin. Ad, öncelik ve Izin ver ayarla ' yı belirtin. Hizmet etiketleri altındaki kurallar bölümünde, bir ad girin, **herhangi** bir protokol seçin, * kaynak adreslerini ayarlayın, AzureMonitor bir hizmet etiketi seçin ve bağlantı noktalarını 80, 443 olarak ayarlayın. Bu kural, sistemin sistem durumu ve ölçüm bilgileriyle Azure Izleyici sağlamasına izin verir.
 
    ![NTP hizmeti etiketi ağ kuralı ekle][6]
    
@@ -114,15 +114,15 @@ Aşağıdaki bilgiler yalnızca Azure Güvenlik Duvarı dışında bir güvenlik
 
 #### <a name="service-endpoint-capable-dependencies"></a>Hizmet uç noktası özellikli bağımlılıklar 
 
-| Uç Noktası |
+| Uç Nokta |
 |----------|
 | Azure SQL |
-| Azure Depolama |
+| Azure Storage |
 | Azure Event Hub |
 
 #### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları
 
-| Uç Noktası | Ayrıntılar |
+| Uç Nokta | Ayrıntılar |
 |----------| ----- |
 | \*: 123 | NTP saat denetimi. Trafik, 123 numaralı bağlantı noktasında birden çok uç noktaya denetlenir |
 | \*: 12000 | Bu bağlantı noktası, bazı sistem izleme için kullanılır. Engellenirse, bazı sorunlar önceliklendirme daha zor olacaktır, ancak ASE 'niz çalışmaya devam edecektir |
@@ -139,7 +139,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS bağımlılıkları 
 
-| Uç Noktası |
+| Uç Nokta |
 |----------|
 |graph.microsoft.com:443 |
 |login.live.com:443 |
@@ -230,7 +230,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 #### <a name="wildcard-httphttps-dependencies"></a>Joker karakter HTTP/HTTPS bağımlılıkları 
 
-| Uç Noktası |
+| Uç Nokta |
 |----------|
 |gr-prod- \* . cloudapp.net:443 |
 | \*. management.azure.com:443 |
@@ -242,7 +242,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 #### <a name="linux-dependencies"></a>Linux bağımlılıkları 
 
-| Uç Noktası |
+| Uç Nokta |
 |----------|
 |wawsinfraprodbay063.blob.core.windows.net:443 |
 |registry-1.docker.io:443 |
@@ -255,6 +255,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 |security.ubuntu.com:80 |
 |oryx-cdn.microsoft.io:443 |
 | \*. cdn.mscr.io:443 |
+| \*. data.mcr.microsoft.com:443 |
 |mcr.microsoft.com:443 |
 |\*. data.mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |
@@ -286,15 +287,15 @@ Linux, US Gov bölgelerinde kullanılamaz ve bu nedenle isteğe bağlı bir yap�
 
 #### <a name="service-endpoint-capable-dependencies"></a>Hizmet uç noktası özellikli bağımlılıklar ####
 
-| Uç Noktası |
+| Uç Nokta |
 |----------|
 | Azure SQL |
-| Azure Depolama |
+| Azure Storage |
 | Azure Event Hub |
 
 #### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları
 
-| Uç Noktası | Ayrıntılar |
+| Uç Nokta | Ayrıntılar |
 |----------| ----- |
 | \*: 123 | NTP saat denetimi. Trafik, 123 numaralı bağlantı noktasında birden çok uç noktaya denetlenir |
 | \*: 12000 | Bu bağlantı noktası, bazı sistem izleme için kullanılır. Engellenirse, bazı sorunlar önceliklendirme daha zor olacaktır, ancak ASE 'niz çalışmaya devam edecektir |
@@ -309,7 +310,7 @@ Linux, US Gov bölgelerinde kullanılamaz ve bu nedenle isteğe bağlı bir yap�
 
 #### <a name="dependencies"></a>Bağımlılıklar ####
 
-| Uç Noktası |
+| Uç Nokta |
 |----------|
 | \*. ctldl.windowsupdate.com:80 |
 | \*. management.usgovcloudapi.net:80 |

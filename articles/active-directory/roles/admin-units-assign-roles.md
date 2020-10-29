@@ -1,6 +1,6 @@
 ---
 title: Yönetim birimi kapsamına sahip rolleri atama ve listeleme-Azure Active Directory | Microsoft Docs
-description: Azure Active Directory içindeki rol atamalarının kapsamını kısıtlamak için yönetim birimlerini kullanma
+description: Azure Active Directory içindeki rol atamalarının kapsamını kısıtlamak için yönetim birimlerini kullanın.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,25 +14,25 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a4810b3a84cac55a49744025b6ac71c3f1c0a7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dfae813f01d3e7a08e18cde76e5c26ca253a371f
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377947"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026607"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Yönetim birimine kapsamlı roller atama
 
-Azure Active Directory (Azure AD) ' de, daha ayrıntılı yönetim denetimi için kullanıcıları bir veya daha fazla yönetim birimiyle (AU) sınırlı bir kapsamla bir Azure AD rolüne atayabilirsiniz.
+Azure Active Directory (Azure AD) içinde, daha ayrıntılı yönetim denetimi için, bir veya daha fazla yönetim birimiyle sınırlı bir kapsama sahip bir Azure AD rolüne kullanıcı atayabilirsiniz.
 
-PowerShell 'i kullanmaya hazırlanma ve yönetim birimi yönetimi için Microsoft Graph adımlar için bkz. [kullanmaya başlayın](admin-units-manage.md#get-started).
+Yönetim birimi yönetimi için PowerShell ve Microsoft Graph kullanmaya hazırlanmak için bkz. [kullanmaya başlayın](admin-units-manage.md#get-started).
 
-## <a name="roles-available"></a>Kullanılabilir roller
+## <a name="available-roles"></a>Kullanılabilir roller
 
 Rol  |  Açıklama
 ----- |  -----------
 Kimlik doğrulama Yöneticisi  |  Yalnızca atanan yönetim birimindeki yönetici olmayan kullanıcılar için kimlik doğrulama yöntemi bilgilerini görüntüleme, ayarlama ve sıfırlama erişimine sahiptir.
-Grup Yöneticisi  |  , Yalnızca atanan yönetim birimindeki adlandırma ve süre sonu ilkeleri gibi grupların ve grupların ayarlarının tüm yönlerini yönetebilir.
+Grup Yöneticisi  |  , Yalnızca atanan yönetim birimindeki adlandırma ve sona erme ilkeleri gibi grupların ve grupların ayarlarının tüm yönlerini yönetebilir.
 Yardım Masası Yöneticisi  |  , Yalnızca atanan yönetim birimindeki yönetici olmayanlar ve Yardım Masası yöneticileri için parolaları sıfırlayabilir.
 Lisans Yöneticisi  |  , Lisans atamalarını yalnızca yönetim birimi içinde atayabilir, kaldırabilir ve güncelleştirebilir.
 Parola Yöneticisi  |  , Yalnızca atanan yönetim birimi içindeki yönetici olmayanlar ve parola yöneticileri için parolaları sıfırlayabilir.
@@ -48,21 +48,28 @@ Aşağıdaki güvenlik sorumluları, yönetim birimi kapsamına sahip bir role a
 
 ## <a name="assign-a-scoped-role"></a>Kapsamlı bir rol atama
 
-### <a name="azure-portal"></a>Azure portal
+Azure portal, PowerShell veya Microsoft Graph kullanarak kapsamlı bir rol atayabilirsiniz.
 
-Portalda **Azure AD > yönetim birimleri** ' ne gidin. Rolü bir kullanıcıya atamak istediğiniz yönetim birimini seçin. Sol bölmede, tüm kullanılabilir rolleri listelemek için roller ve yöneticiler ' i seçin.
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
-![Rol kapsamını değiştirmek için bir yönetim birimi seçin](./media/admin-units-assign-roles/select-role-to-scope.png)
+1. Azure portal **Azure AD** 'ye gidin.
 
-Atanacak rolü seçin ve ardından **atama Ekle**' yi seçin. Sağ tarafta, role atanacak bir veya daha fazla kullanıcıyı seçebileceğiniz bir panel açılır.
+1. **Yönetim birimleri** ' ni seçin ve ardından bir kullanıcı rolü kapsamı atamak istediğiniz yönetim birimini seçin. 
 
-![Kapsam için rol seçin ve sonra atama Ekle ' yi seçin.](./media/admin-units-assign-roles/select-add-assignment.png)
+1. Sol bölmede, tüm kullanılabilir rolleri listelemek için **Roller ve yöneticiler** ' i seçin.
+
+   ![Rol kapsamını atamak istediğiniz yönetim birimini seçmek için "rol ve Yöneticiler" bölmesinin ekran görüntüsü.](./media/admin-units-assign-roles/select-role-to-scope.png)
+
+1. Atanacak rolü seçin ve ardından **atama Ekle** ' yi seçin. 
+
+1. **Atama Ekle** bölmesinde, role atanacak bir veya daha fazla kullanıcı seçin.
+
+   ![Kapsam için rol seçin ve sonra atama Ekle ' yi seçin.](./media/admin-units-assign-roles/select-add-assignment.png)
 
 > [!Note]
->
-> Bir yönetim birimine PıM kullanarak bir rol atamak için [buradaki](../privileged-identity-management/pim-how-to-add-role-to-user.md?tabs=new#assign-a-role-with-restricted-scope)adımları izleyin.
+> Bir yönetim biriminde Azure AD Privileged Identity Management (PıM) kullanarak bir rol atamak için bkz. [PIM 'de Azure AD rolleri atama](../privileged-identity-management/pim-how-to-add-role-to-user.md?tabs=new#assign-a-role-with-restricted-scope).
 
-### <a name="powershell"></a>PowerShell
+### <a name="use-powershell"></a>PowerShell kullanma
 
 ```powershell
 $AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
@@ -73,9 +80,9 @@ $RoleMember.ObjectId = $AdminUser.ObjectId
 Add-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
 ```
 
-Vurgulanan bölüm, belirli bir ortam için gerektiği şekilde değiştirilebilir.
+Vurgulanan bölümü, belirli bir ortam için gereken şekilde değiştirebilirsiniz.
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Microsoft Graph kullan
 
 ```http
 Http request
@@ -90,22 +97,30 @@ Request body
 }
 ```
 
-## <a name="list-the-scoped-admins-on-an-au"></a>Bir AU 'da kapsamlı yöneticileri listeleme
+## <a name="view-a-list-of-the-scoped-admins-in-an-administrative-unit"></a>Yönetim birimindeki kapsamlı yöneticilerin listesini görüntüleme
 
-### <a name="azure-portal"></a>Azure portal
+Kapsamlı yöneticilerin listesini Azure portal, PowerShell veya Microsoft Graph kullanarak görüntüleyebilirsiniz.
 
-Bir yönetim birimi kapsamıyla gerçekleştirilen tüm rol atamaları, [Azure AD 'Nin yönetim birimleri bölümünde](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)görüntülenebilir. Portalda **Azure AD > yönetim birimleri** ' ne gidin. Listelemek istediğiniz rol atamaları için yönetim birimini seçin. **Roller ve yöneticiler** ' i seçin ve yönetici birimindeki atamaları görüntülemek için bir rol açın.
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
-### <a name="powershell"></a>PowerShell
+Yönetim birimi kapsamıyla oluşturulan tüm rol atamalarını [Azure AD 'Nin yönetim birimleri bölümünde](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)görüntüleyebilirsiniz. 
+
+1. Azure portal **Azure AD** 'ye gidin.
+
+1. Sol bölmede **yönetim birimleri** ' ni seçin ve ardından görüntülemek istediğiniz rol atamalarının listesi için yönetim birimini seçin. 
+
+1. **Roller ve yöneticiler** ' i seçin ve ardından yönetim biriminde atamaları görüntülemek için bir rol açın.
+
+### <a name="use-powershell"></a>PowerShell kullanma
 
 ```powershell
 $administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
 Get-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 ```
 
-Vurgulanan bölüm, belirli bir ortam için gerektiği şekilde değiştirilebilir.
+Vurgulanan bölümü, belirli ortamınız için gerektiği gibi değiştirebilirsiniz.
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Microsoft Graph kullan
 
 ```http
 Http request
@@ -117,4 +132,4 @@ Request body
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Rol atamalarını yönetmek için bulut gruplarını kullanma](groups-concept.md)
-- [Bulut gruplarına atanan rollerle ilgili sorunları giderme](groups-faq-troubleshooting.md)
+- [Bulut gruplarına atanan rollerin sorunlarını giderme](groups-faq-troubleshooting.md)

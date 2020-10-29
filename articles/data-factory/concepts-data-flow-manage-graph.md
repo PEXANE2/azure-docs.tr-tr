@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2020
-ms.openlocfilehash: 0cdad47123d69ca7cee468c5bb0cea3268d73bfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15a4a0ea78ef169480d4494683cb929cfefd16f2
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420120"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026981"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>Eşleme veri akışı grafiğini yönetme
 
@@ -27,7 +27,7 @@ Veri akışlarınız daha karmaşık olduğu için, veri akışı grafiğine etk
 
 ## <a name="moving-transformations"></a>Dönüşümleri taşıma
 
-Veri akışlarını eşleme bölümünde, bir bağlı dönüştürme mantığı kümesi **akış**olarak bilinir. **Gelen akış** alanı, geçerli dönüştürmeyi hangi veri akışının beslemeyi belirler. Her bir dönüşüme, işlevine bağlı olarak bir veya iki gelen akış vardır ve bir çıkış akışı temsil eder. Gelen akışların çıkış şeması, geçerli dönüşüm tarafından hangi sütun meta verilerine başvuramayacağını belirler.
+Veri akışlarını eşleme bölümünde, bir bağlı dönüştürme mantığı kümesi **akış** olarak bilinir. **Gelen akış** alanı, geçerli dönüştürmeyi hangi veri akışının beslemeyi belirler. Her bir dönüşüme, işlevine bağlı olarak bir veya iki gelen akış vardır ve bir çıkış akışı temsil eder. Gelen akışların çıkış şeması, geçerli dönüşüm tarafından hangi sütun meta verilerine başvuramayacağını belirler.
 
 ![Düğümü taşı](media/data-flow/move-nodes.png "düğümü taşı")
 
@@ -39,7 +39,7 @@ Dönüşümünüzü düzenlediğinizde, pano 'nun tamamını gizleyerek, yapıla
 
 ![Grafiği gizle](media/data-flow/hide-graph.png "grafiği gizle")
 
-Grafik gizli olduğunda, **İleri** veya **geri**' ye tıklayarak bir akış içindeki dönüşümler arasında geçiş yapabilirsiniz. Grafiği göstermek için aşağı bakan köşeli çift ayraca tıklayın.
+Grafik gizli olduğunda, **İleri** veya **geri** ' ye tıklayarak bir akış içindeki dönüşümler arasında geçiş yapabilirsiniz. Grafiği göstermek için aşağı bakan köşeli çift ayraca tıklayın.
 
 ![Grafiği göster](media/data-flow/show-graph.png "Grafiği göster")
 
@@ -47,15 +47,15 @@ Grafik gizli olduğunda, **İleri** veya **geri**' ye tıklayarak bir akış iç
 
 Grafiğinizde bir dönüştürmeyi hızlıca bulmak için yakınlaştırma ayarının üzerindeki **arama** simgesine tıklayın.
 
-![Ara](media/data-flow/search-1.png "Arama grafiği")
+![Ekran görüntüsü arama düğmesini gösterir.](media/data-flow/search-1.png "Arama grafiği")
 
 Bir dönüştürmeyi bulmak için dönüşüm adına veya açıklamaya göre arama yapabilirsiniz.
 
-![Ara](media/data-flow/search-2.png "Arama grafiği")
+![Ekran görüntüsü arama metin kutusunu gösterir.](media/data-flow/search-2.png "Arama grafiği")
 
 ## <a name="hide-reference-nodes"></a>Başvuru düğümlerini gizle
 
-Veri akışınız herhangi bir birleştirme, arama, mevcut veya birleşim dönüşümlerine sahipse, veri akışı tüm gelen akışlara başvuru düğümlerini gösterir. Alınan dikey alan miktarını en aza indirmek isterseniz, başvuru düğümlerinizi en aza indirmenize olanak sağlayabilirsiniz. Bunu yapmak için tuvale sağ tıklayıp **başvuru düğümlerini Gizle**' yi seçin.
+Veri akışınız herhangi bir birleştirme, arama, mevcut veya birleşim dönüşümlerine sahipse, veri akışı tüm gelen akışlara başvuru düğümlerini gösterir. Alınan dikey alan miktarını en aza indirmek isterseniz, başvuru düğümlerinizi en aza indirmenize olanak sağlayabilirsiniz. Bunu yapmak için tuvale sağ tıklayıp **başvuru düğümlerini Gizle** ' yi seçin.
 
 ![Başvuru düğümlerini gizle](media/data-flow/hide-reference-nodes.png "Başvuru düğümlerini gizle")
 

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/02/2020
-ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32f1602c91d17ef2ad3283d4bc03d00d432641aa
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370921"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027610"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme
 
@@ -27,7 +27,7 @@ Veri akışlarını eşleme, hiçbir kodlamaya gerek olmadan tamamen görsel bir
 
 ## <a name="getting-started"></a>Başlarken
 
-Veri akışları, işlem hatları ve veri kümeleri gibi fabrika kaynakları bölmesinden oluşturulur. Bir veri akışı oluşturmak için, **fabrika kaynakları**' nın yanındaki artı işaretini ve ardından **veri akışı**' nı seçin. 
+Veri akışları, işlem hatları ve veri kümeleri gibi fabrika kaynakları bölmesinden oluşturulur. Bir veri akışı oluşturmak için, **fabrika kaynakları** ' nın yanındaki artı işaretini ve ardından **veri akışı** ' nı seçin. 
 
 ![Yeni veri akışı](media/data-flow/new-data-flow.png "Yeni veri akışı")
 
@@ -37,13 +37,13 @@ Bu eylem sizi, dönüşüm mantığınızı oluşturabileceğiniz veri akışı 
 
 Eşleme veri akışı, dönüştürme mantığını kolayca oluşturmak için tasarlanan benzersiz bir yazma tuvaline sahiptir. Veri akışı tuvali üç parçaya ayrılmıştır: üst çubuk, grafik ve yapılandırma paneli. 
 
-![Tuval](media/data-flow/canvas1.png "Tuval")
+![Ekran görüntüsünde, etiketli üst çubuk, grafik ve yapılandırma paneli ile veri akışı tuvali gösterilmektedir.](media/data-flow/canvas1.png "Tuval")
 
 ### <a name="graph"></a>Graf
 
-Grafik, dönüşüm akışını görüntüler. Bir veya daha fazla havuza akan kaynak verilerinin kökenini gösterir. Yeni bir kaynak eklemek için **Kaynak Ekle**' yi seçin. Yeni bir dönüşüm eklemek için, varolan bir dönüşümün sağ alt köşesindeki artı işaretini seçin. [Veri akışı grafiğinin nasıl yönetileceği](concepts-data-flow-manage-graph.md)hakkında daha fazla bilgi edinin.
+Grafik, dönüşüm akışını görüntüler. Bir veya daha fazla havuza akan kaynak verilerinin kökenini gösterir. Yeni bir kaynak eklemek için **Kaynak Ekle** ' yi seçin. Yeni bir dönüşüm eklemek için, varolan bir dönüşümün sağ alt köşesindeki artı işaretini seçin. [Veri akışı grafiğinin nasıl yönetileceği](concepts-data-flow-manage-graph.md)hakkında daha fazla bilgi edinin.
 
-![Tuval](media/data-flow/canvas2.png "Tuval")
+![Ekran görüntüsü, bir arama metin kutusuyla tuvalin grafik bölümünü gösterir.](media/data-flow/canvas2.png "Tuval")
 
 ### <a name="configuration-panel"></a>Yapılandırma bölmesi
 
@@ -134,8 +134,8 @@ Eşleme veri akışları aşağıdaki bölgelerde kullanılabilir:
 | Kuzey Avrupa  | ✓ |    |
 | Norveç Doğu | | |
 | Norveç Batı | | |
-| Güney Afrika Kuzey    | ✓ | |
-| Güney Afrika Batı |  |    |
+| Güney Afrika - Kuzey    | ✓ | |
+| Güney Afrika - Batı |  |    |
 | Orta Güney ABD  | | ✓ |
 | Güney Hindistan | | |
 | Güneydoğu Asya    | ✓ | ✓ |

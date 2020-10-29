@@ -11,12 +11,12 @@ ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4d66a1174b1b4adc94b24c6aecd55b2b8679f2f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa5025e0a2bd260adeb23b4ab7c4d5f8bd83a43a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211893"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026811"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Gen2 önbelleğini izleme
 
@@ -26,15 +26,15 @@ Gen2 depolama mimarisi, en sık sorgulanan columnstore segmentlerinizi, Gen2 ver
  
 ## <a name="troubleshoot-using-the-azure-portal"></a>Azure portal kullanarak sorun giderme
 
-Sorgu performansının sorunlarını gidermek için Azure Izleyici 'yi Gen2 önbellek ölçümlerini görüntülemek için kullanabilirsiniz. Önce Azure portal gidin ve **izleyici**, **ölçümler** ve **+ bir kapsam seçin**' e tıklayın:
+Sorgu performansının sorunlarını gidermek için Azure Izleyici 'yi Gen2 önbellek ölçümlerini görüntülemek için kullanabilirsiniz. Önce Azure portal gidin ve **izleyici** , **ölçümler** ve **+ bir kapsam seçin** ' e tıklayın:
 
-![Azure İzleyici](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
+![Ekran görüntüsü, Azure portal ölçümlerden seçilen bir kapsamı seçin.](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
 Veri Ambarınızı bulmak için arama ve aşağı açılan çubukları kullanın. Ardından Uygula ' yı seçin.
 
-![Azure İzleyici](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
+![Ekran görüntüsü, veri Ambarınızı seçebileceğiniz bir kapsam seçin bölmesi gösterir.](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-Gen2 önbelleğinde sorun gidermeye yönelik temel ölçümler, **önbellek isabet yüzdesi** ve **kullanılan önbellek yüzdesidir**. **Önbellek isabet yüzdesi** ' ni seçin ve ardından **kullanılan önbellek yüzdesini**eklemek için **ölçüm Ekle** düğmesini kullanın. 
+Gen2 önbelleğinde sorun gidermeye yönelik temel ölçümler, **önbellek isabet yüzdesi** ve **kullanılan önbellek yüzdesidir** . **Önbellek isabet yüzdesi** ' ni seçin ve ardından **kullanılan önbellek yüzdesini** eklemek için **ölçüm Ekle** düğmesini kullanın. 
 
 ![Önbellek ölçümleri](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 

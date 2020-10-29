@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 99af424d44624adeedf30a87d915fbd377012378
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: d2ea7233ee923881ee430aba8d8c23a37c29da7c
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927609"
+ms.locfileid: "93027729"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure NetApp Files ayarlama ve bir NFS birimi oluşturma
 
@@ -304,7 +304,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/capacityPools]
     * Birim için NFS sürümünü ( **NFSv3** veya **nfsv 4.1** ) seçin.
       Bkz. NFS sürümleri hakkında [konular](azure-netapp-files-create-volumes.md#considerations) ve [en iyi uygulamalar](azure-netapp-files-create-volumes.md#best-practice) .
 
-  ![Hızlı başlangıç için NFS protokolünü belirtin](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+    ![Hızlı başlangıç için NFS protokolünü belirtin](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. **Gözden geçir ve oluştur** ’a tıklayın.
 

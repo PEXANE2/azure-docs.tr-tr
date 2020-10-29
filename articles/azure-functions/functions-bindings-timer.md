@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 69ba8d1735d16791d62b6b04e49c0d2fb7484959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6423ec481c65155b511e398885b4954522bbb376
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325802"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025910"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi
 
@@ -163,7 +163,7 @@ Write-Host "PowerShell timer trigger function ran! TIME: $currentU
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, yapılandırması *function.jsdosya üzerinde* açıklanan bir Zamanlayıcı tetikleyicisi bağlamayı kullanır. Bağlamayı kullanan gerçek [Python işlevi](functions-reference-python.md) * __init__. Kopyala* dosyasında açıklanmıştır. İşleve geçirilen nesne, [Azure. Functions. TimerRequest nesnesi](/python/api/azure-functions/azure.functions.timerrequest)türündedir. İşlev mantığı, geçerli çağrının kaçırılmış bir zamanlama oluşumunda olup olmadığını gösteren günlüklere yazar.
+Aşağıdaki örnek, yapılandırması *function.jsdosya üzerinde* açıklanan bir Zamanlayıcı tetikleyicisi bağlamayı kullanır. Bağlamayı kullanan gerçek [Python işlevi](functions-reference-python.md) *__init__ . Kopyala* dosyasında açıklanmıştır. İşleve geçirilen nesne, [Azure. Functions. TimerRequest nesnesi](/python/api/azure-functions/azure.functions.timerrequest)türündedir. İşlev mantığı, geçerli çağrının kaçırılmış bir zamanlama oluşumunda olup olmadığını gösteren günlüklere yazar.
 
 Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
@@ -256,11 +256,11 @@ public void keepAlive(
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `TimerTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "In" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**ada** | yok | İşlev kodundaki Timer nesnesini temsil eden değişkenin adı. | 
+|**name** | yok | İşlev kodundaki Timer nesnesini temsil eden değişkenin adı. | 
 |**çizelgesini**|**ScheduleExpression**|Bir [cron ifadesi](#ncrontab-expressions) veya [TimeSpan](#timespan) değeri. `TimeSpan`Yalnızca, App Service planında çalışan bir işlev uygulaması için kullanılabilir. Zamanlama ifadesini bir uygulama ayarına yerleştirebilir ve bu özelliği **%** Şu örnekte gösterildiği gibi, işaretlere kaydırılmış uygulama ayarı adı olarak ayarlayabilirsiniz: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|İse `true` , çalışma zamanı başlatıldığında işlev çağrılır. Örneğin, çalışma zamanı, işlev uygulaması eylemsizlik nedeniyle boşta kaldıktan sonra uyandığında başlatılır. işlev değişiklikleri nedeniyle uygulama yeniden başlatıldığında ve işlev uygulaması ölçeklenirken. Bu nedenle **runOnStartup** `true` , özellikle üretimde olarak ayarlandıysa nadiren gerekir. |
 |**useMonitor**|**UseMonitor**|`true` `false` Zamanlamanın izlenmesi gerekip gerekmediğini belirtmek için veya olarak ayarlayın. Zamanlamayı zamanla, işlev uygulama örnekleri yeniden başlatıldığında bile zamanlamanın doğru bir şekilde tutulmasını sağlamaya yardımcı olmak için zamanlama oluşumları devam ettirir. Açıkça ayarlanmamışsa varsayılan değer `true` 1 dakikadan büyük veya ona eşit bir yinelenme aralığına sahip zamanlamalara yöneliktir. Dakikada birden çok kez tetikleyen zamanlamalar için varsayılan olarak ' dir `false` .
@@ -276,18 +276,18 @@ Bir Zamanlayıcı tetikleyicisi işlevi çağrıldığında, işleve bir Zamanla
 
 ```json
 {
-    "Schedule":{
+    "schedule":{
     },
-    "ScheduleStatus": {
-        "Last":"2016-10-04T10:15:00+00:00",
-        "LastUpdated":"2016-10-04T10:16:00+00:00",
-        "Next":"2016-10-04T10:20:00+00:00"
+    "scheduleStatus": {
+        "last":"2016-10-04T10:15:00+00:00",
+        "lastUpdated":"2016-10-04T10:16:00+00:00",
+        "next":"2016-10-04T10:20:00+00:00"
     },
-    "IsPastDue":false
+    "isPastDue":false
 }
 ```
 
-`IsPastDue`Özelliği, `true` geçerli işlev çağırma zamanlanmadan daha sonra olduğunda olur. Örneğin, bir işlev uygulamasının yeniden başlatılması, çağrının kaçırılmasını sağlayabilir.
+`isPastDue`Özelliği, `true` geçerli işlev çağırma zamanlanmadan daha sonra olduğunda olur. Örneğin, bir işlev uygulamasının yeniden başlatılması, çağrının kaçırılmasını sağlayabilir.
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB ifadeleri
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b6dbcaf317efb8589a92275527f992029b7eb8a6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 0c82114f697227b96e3548fff24314d4774455b9
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494745"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026454"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Cihaz sağlama hizmeti 'ni (DPS) kullanarak Azure dijital TWINS 'de cihazları otomatik olarak yönetme
 
@@ -29,12 +29,12 @@ Sağlamayı ayarlamadan önce, modeller ve TWINS içeren bir **Azure dijital TWI
 Bu ayarı zaten yoksa, Azure dijital TWINS [*öğreticisini izleyerek oluşturabilirsiniz: uçtan uca çözümü bağlama*](tutorial-end-to-end.md). Öğretici, modellerle bir Azure dijital TWINS örneği, bağlantılı bir Azure [IoT Hub](../iot-hub/about-iot-hub.md)ve veri akışını yaymaya yönelik çeşitli [Azure işlevleri](../azure-functions/functions-overview.md) ayarlama konusunda size kılavuzluk eder.
 
 Örneğinizi ayarlarken, bu makalenin ilerleyen kısımlarında aşağıdaki değerlere sahip olmanız gerekir. Bu değerleri yeniden toplamanız gerekiyorsa, yönergeler için aşağıdaki bağlantıları kullanın.
-* Azure Digital TWINS örnek **_ana bilgisayar adı_** ([portalda bul](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Azure Event Hubs bağlantı dizesi **_bağlantı dizesi_** ([portalda bul](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
+* Azure Digital TWINS örnek **_ana bilgisayar adı_** ( [portalda bul](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
+* Azure Event Hubs bağlantı dizesi **_bağlantı dizesi_** ( [portalda bul](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
 
 Bu örnek ayrıca cihaz sağlama hizmetini kullanarak sağlamayı içeren bir **cihaz simülatörü** kullanır. Cihaz simülatörü şurada bulunur: [Azure dijital TWINS ve IoT Hub tümleştirme örneği](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Örnek bağlantısına gidip başlık altındaki *posta indir* düğmesini seçerek makinenizde örnek projeyi alın. İndirilen klasörü sıkıştırmayı açın.
 
-Cihaz simülatörü **Node.js**, sürüm 10.0. x veya üzerini temel alır. [*Geliştirme ortamınızı hazırlama*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) Bu öğretici Için Node.js Windows veya Linux 'ta nasıl yükleneceğini açıklar.
+Cihaz simülatörü **Node.js** , sürüm 10.0. x veya üzerini temel alır. [*Geliştirme ortamınızı hazırlama*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) Bu öğretici Için Node.js Windows veya Linux 'ta nasıl yükleneceğini açıklar.
 
 ## <a name="solution-architecture"></a>Çözüm mimarisi
 
@@ -77,7 +77,7 @@ az iot dps create --name <Device Provisioning Service name> --resource-group <re
 
 ### <a name="create-an-azure-function"></a>Azure işlevi oluşturma
 
-Ardından, bir işlev uygulaması içinde HTTP isteği ile tetiklenen bir işlev oluşturacaksınız. Uçtan uca öğreticide oluşturulan işlev uygulamasını kullanabilirsiniz ([*öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)) veya kendi kendinize.
+Ardından, bir işlev uygulaması içinde HTTP isteği ile tetiklenen bir işlev oluşturacaksınız. Uçtan uca öğreticide oluşturulan işlev uygulamasını kullanabilirsiniz ( [*öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)) veya kendi kendinize.
 
 Bu işlev, cihaz sağlama hizmeti tarafından, yeni bir cihaz sağlamak için [özel bir ayırma ilkesinde](../iot-dps/how-to-use-custom-allocation-policies.md) kullanılacaktır. Azure işlevleri ile HTTP istekleri kullanma hakkında daha fazla bilgi için bkz. Azure [*Için Azure http istek tetikleyicisi işlevleri*](../azure-functions/functions-bindings-http-webhook-trigger.md).
 
@@ -233,7 +233,7 @@ Dosyayı kaydedin ve ardından işlev uygulamanızı yeniden yayımlayın. İşl
 
 ### <a name="configure-your-function"></a>İşlevinizi yapılandırma
 
-Daha sonra, oluşturduğunuz Azure Digital TWINS örneğine başvuruyu içeren işlev uygulamanızda ortam değişkenlerini ayarlamanız gerekir. Uçtan uca öğreticiyi kullandıysanız ([*öğretici: uçtan uca çözümü bağlama*](tutorial-end-to-end.md)), ayar zaten yapılandırılır.
+Daha sonra, oluşturduğunuz Azure Digital TWINS örneğine başvuruyu içeren işlev uygulamanızda ortam değişkenlerini ayarlamanız gerekir. Uçtan uca öğreticiyi kullandıysanız ( [*öğretici: uçtan uca çözümü bağlama*](tutorial-end-to-end.md)), ayar zaten yapılandırılır.
 
 Bu Azure CLı komutuyla ayarı ekleyin:
 
@@ -243,18 +243,11 @@ az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure
 
 Son adım öğreticideki [*işlev uygulamasına Izin atama*](tutorial-end-to-end.md#assign-permissions-to-the-function-app) bölümünde açıklandığı gibi, Izinler ve yönetilen kimlik rolü atamasının işlev uygulaması için doğru yapılandırıldığından emin olun.
 
-<!-- 
-* Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
-
-```azurecli-interactive
-az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
-``` -->
-
 ### <a name="create-device-provisioning-enrollment"></a>Cihaz sağlama kaydı oluşturma
 
-Daha sonra, **özel bir ayırma işlevi**kullanarak cihaz sağlama hizmeti 'nde bir kayıt oluşturmanız gerekir. Özel ayırma ilkeleri hakkında cihaz sağlama hizmetleri makalesinin [*kayıt oluştur*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) ve [*benzersiz cihaz anahtarlarını türet*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) bölümünde bunu yapmak için yönergeleri izleyin.
+Daha sonra, **özel bir ayırma işlevi** kullanarak cihaz sağlama hizmeti 'nde bir kayıt oluşturmanız gerekir. Özel ayırma ilkeleri hakkında cihaz sağlama hizmetleri makalesinin [*kayıt oluştur*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) ve [*benzersiz cihaz anahtarlarını türet*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) bölümünde bunu yapmak için yönergeleri izleyin.
 
-Bu akıştan gezinirken, bu kaydı yeni oluşturduğunuz işleve bağlayacaksınız. Bu işlem adım adım sırasında, **cihazları hub 'lara nasıl atamak Istediğinizi seçer**. Kayıt oluşturulduktan sonra, bu makalenin cihaz simülatörünü yapılandırmak için kayıt adı ve birincil veya ikincil SAS anahtarı daha sonra kullanılacaktır.
+Bu akıştan gezinirken, bu kaydı yeni oluşturduğunuz işleve bağlayacaksınız. Bu işlem adım adım sırasında, **cihazları hub 'lara nasıl atamak Istediğinizi seçer** . Kayıt oluşturulduktan sonra, bu makalenin cihaz simülatörünü yapılandırmak için kayıt adı ve birincil veya ikincil SAS anahtarı daha sonra kullanılacaktır.
 
 ### <a name="set-up-the-device-simulator"></a>Cihaz simülatörünü ayarlama
 
@@ -266,7 +259,7 @@ Bir komut penceresi açın ve indirilen klasöre ve ardından *cihaz simülatör
 npm install
 ```
 
-Sonra, *. env. Template* dosyasını *. env*adlı yeni bir dosyaya kopyalayın ve bu ayarları girin:
+Sonra, *. env. Template* dosyasını *. env* adlı yeni bir dosyaya kopyalayın ve bu ayarları girin:
 
 ```cmd
 PROVISIONING_HOST = "global.azure-devices-provisioning.net"
@@ -318,18 +311,18 @@ Aşağıdaki bölümlerde, bu otomatik devre dışı bırakma cihaz akışını 
 Artık IoT Hub yaşam döngüsü olaylarını almak için kullanılacak bir Azure [Olay Hub](../event-hubs/event-hubs-about.md)'ı oluşturmanız gerekir. 
 
 Aşağıdaki bilgileri kullanarak, [*Olay Hub 'ı oluşturma*](../event-hubs/event-hubs-create.md) hızlı başlangıç bölümünde açıklanan adımları izleyin:
-* Uçtan uca öğreticiyi kullanıyorsanız ([*öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)), uçtan uca öğretici için oluşturduğunuz kaynak grubunu yeniden kullanabilirsiniz.
-* Olay Hub 'ınızı *lifecycleevents*veya istediğiniz bir şeyi adlandırın ve oluşturduğunuz ad alanını unutmayın. Yaşam döngüsü işlevini ayarlarken ve sonraki bölümlerde yolu IoT Hub, bunları kullanacaksınız.
+* Uçtan uca öğreticiyi kullanıyorsanız ( [*öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)), uçtan uca öğretici için oluşturduğunuz kaynak grubunu yeniden kullanabilirsiniz.
+* Olay Hub 'ınızı *lifecycleevents* veya istediğiniz bir şeyi adlandırın ve oluşturduğunuz ad alanını unutmayın. Yaşam döngüsü işlevini ayarlarken ve sonraki bölümlerde yolu IoT Hub, bunları kullanacaksınız.
 
 ### <a name="create-an-azure-function"></a>Azure işlevi oluşturma
 
-Sonra, bir işlev uygulaması içinde Event Hubs tetiklenen bir işlev oluşturacaksınız. Uçtan uca öğreticide oluşturulan işlev uygulamasını kullanabilirsiniz ([*öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)) veya kendi kendinize. 
+Sonra, bir işlev uygulaması içinde Event Hubs tetiklenen bir işlev oluşturacaksınız. Uçtan uca öğreticide oluşturulan işlev uygulamasını kullanabilirsiniz ( [*öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)) veya kendi kendinize. 
 
-Event hub tetikleyicinizi *lifecycleevents*olarak adlandırın ve Olay Hub 'ı tetikleyicisini önceki adımda oluşturduğunuz Olay Hub 'ına bağlayın. Farklı bir olay hub 'ı adı kullandıysanız, bunu aşağıdaki tetikleyici adı ile eşleşecek şekilde değiştirin.
+Event hub tetikleyicinizi *lifecycleevents* olarak adlandırın ve Olay Hub 'ı tetikleyicisini önceki adımda oluşturduğunuz Olay Hub 'ına bağlayın. Farklı bir olay hub 'ı adı kullandıysanız, bunu aşağıdaki tetikleyici adı ile eşleşecek şekilde değiştirin.
 
 Bu işlev, var olan bir cihazı devre dışı bırakmak için IoT Hub cihaz yaşam döngüsü olayını kullanacaktır. Yaşam döngüsü olayları hakkında daha fazla bilgi için bkz. [*telemetri dışı olayları IoT Hub*](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events). Azure işlevleri ile Event Hubs kullanma hakkında daha fazla bilgi için bkz. Azure [*için azure Event Hubs tetikleyicisi işlevleri*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
-Yayınlanan işlev uygulamanızın içinde, *Event hub tetikleyicisi*türünde yeni bir işlev sınıfı ekleyin ve aşağıdaki kodu yapıştırın.
+Yayınlanan işlev uygulamanızın içinde, *Event hub tetikleyicisi* türünde yeni bir işlev sınıfı ekleyin ve aşağıdaki kodu yapıştırın.
 
 ```C#
 using System;
@@ -445,7 +438,7 @@ Projeyi kaydedin, sonra işlev uygulamasını yeniden yayımlayın. İşlev uygu
 
 ### <a name="configure-your-function"></a>İşlevinizi yapılandırma
 
-Daha sonra, oluşturduğunuz Azure dijital TWINS örneğine ve Olay Hub 'ına başvuruyu içeren işlev uygulamanızda ortam değişkenlerini ayarlamanız gerekir. Uçtan uca öğreticiyi kullandıysanız ([*öğretici: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md)), ilk ayar önceden yapılandırılmıştır.
+Daha sonra, oluşturduğunuz Azure dijital TWINS örneğine ve Olay Hub 'ına başvuruyu içeren işlev uygulamanızda ortam değişkenlerini ayarlamanız gerekir. Uçtan uca öğreticiyi kullandıysanız ( [*öğretici: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md)), ilk ayar önceden yapılandırılmıştır.
 
 Bu Azure CLı komutuyla ayarı ekleyin. Bu komut, [makinenizde yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)Azure CLI 'niz varsa [Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir.
 

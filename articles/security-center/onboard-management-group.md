@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: ce0858f61ca1fe3b81c3d0c8a3c97954827def80
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4ecd436b548c29c520a7538970d4d703cc8488d2
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950627"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027576"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Yönetim grubundaki tüm aboneliklerde güvenlik merkezini etkinleştir
 
@@ -25,7 +25,7 @@ Azure Güvenlik Merkezi 'ni aynı yönetim grubu (MG) içindeki tüm Azure abone
 
 Bir yönetim grubunu ve tüm aboneliklerini eklemek için:
 
-1. **Güvenlik Yöneticisi** izinlerine sahip bir kullanıcı olarak Azure ilkesini açın ve **aboneliğinizde Azure Güvenlik Merkezi 'ni etkinleştirin**' i arayın.
+1. **Güvenlik Yöneticisi** izinlerine sahip bir kullanıcı olarak Azure ilkesini açın ve **aboneliğinizde Azure Güvenlik Merkezi 'ni etkinleştirin** ' i arayın.
 
     :::image type="content" source="./media/security-center-get-started/enable-security-center-policy.png" alt-text="Azure Ilke tanımı aboneliğinizde Azure Güvenlik Merkezi 'ni etkinleştirin":::
 
@@ -43,7 +43,7 @@ Bir yönetim grubunu ve tüm aboneliklerini eklemek için:
     Ardından düzeltme görevi, uyumlu olmayan aboneliklerde güvenlik merkezini ücretsiz olarak etkinleştirir.
 
 > [!IMPORTANT]
-> İlke tanımı yalnızca **mevcut** aboneliklerde güvenlik merkezini etkinleştirir. Yeni oluşturulan abonelikleri kaydetmek için, yeni oluşturulan abonelikleri kaydetmek üzere, Uyumluluk sekmesini açın, ilgili uyumlu olmayan abonelikleri seçin ve bir düzeltme görevi oluşturun. Güvenlik Merkezi ile izlemek istediğiniz bir veya daha fazla yeni aboneliğiniz varsa bu adımı yineleyin.
+> İlke tanımı yalnızca **mevcut** aboneliklerde güvenlik merkezini etkinleştirir. Yeni oluşturulan abonelikleri kaydetmek için, Uyumluluk sekmesini açın, ilgili uyumlu olmayan abonelikleri seçin ve bir düzeltme görevi oluşturun. Güvenlik Merkezi ile izlemek istediğiniz bir veya daha fazla yeni aboneliğiniz varsa bu adımı yineleyin.
 
 ## <a name="optional-modifications"></a>İsteğe bağlı değişiklikler
 

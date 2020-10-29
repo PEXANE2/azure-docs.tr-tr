@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/11/2020
-ms.openlocfilehash: 41153c488825e87583284b23a287353f63ff8db8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cfd498f73646b0021d5fbb3e982dc82871ef35c
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085102"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027015"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Eşleme veri akışı hata ayıklama modu
 
@@ -77,15 +77,15 @@ Birim testi katıldığında, varsa veya Arama dönüşümlerine göre, testiniz
 
 Veri önizlemesini görtikten sonra, bir sütunda tür atama, kaldırma veya değiştirme yapmak için hızlı bir dönüşüm oluşturabilirsiniz. Sütun başlığına tıklayın ve ardından veri önizleme araç çubuğundan seçeneklerden birini belirleyin.
 
-![Hızlı Eylemler](media/data-flow/quick-actions1.png "Hızlı Eylemler")
+![Ekran görüntüsü, veri önizleme araç çubuğunu seçenekler ile gösterir: typecast, MODIFY, Statistics ve Remove.](media/data-flow/quick-actions1.png "Hızlı Eylemler")
 
 Bir değişikliği seçtiğinizde, veri önizlemesi hemen yenilenir. Yeni bir dönüşüm oluşturmak için sağ üst köşedeki **Onayla** ' ya tıklayın.
 
-![Hızlı Eylemler](media/data-flow/quick-actions2.png "Hızlı Eylemler")
+![Ekran görüntüsü Onayla düğmesini gösterir.](media/data-flow/quick-actions2.png "Hızlı Eylemler")
 
 **Tür dönüştürme** ve **değiştirme** türetilmiş bir sütun dönüştürmesi oluşturacak ve **Remove** bir SELECT dönüştürmesi oluşturacak.
 
-![Hızlı Eylemler](media/data-flow/quick-actions3.png "Hızlı Eylemler")
+![Ekran görüntüsü türetilmiş sütunun ayarlarını gösterir.](media/data-flow/quick-actions3.png "Hızlı Eylemler")
 
 > [!NOTE]
 > Veri akışınızı düzenlerseniz hızlı bir dönüştürme eklemeden önce veri önizlemeyi yeniden almanız gerekir.

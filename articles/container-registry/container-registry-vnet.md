@@ -3,12 +3,12 @@ title: Hizmet uç noktası kullanarak erişimi kısıtlama
 description: Azure sanal ağındaki bir hizmet uç noktasını kullanarak bir Azure Container Registry 'ye erişimi kısıtlayın. Hizmet uç noktası erişimi, Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 3472549827781c6ed2f6be0417866747c81edd93
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215510"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026233"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Bir Azure sanal ağında hizmet uç noktası kullanarak bir kapsayıcı kayıt defterine erişimi kısıtlama
 
@@ -37,7 +37,7 @@ Bir kayıt defteri hizmet uç noktası yapılandırmak **Premium** kapsayıcı k
 
 * Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium katman gereklidir) ve Docker Hub 'dan gibi örnek bir görüntü gönderin `hello-world` . Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun. 
 
-* Farklı bir Azure aboneliğindeki bir hizmet uç noktası kullanarak kayıt defteri erişimini kısıtlamak istiyorsanız, bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydedin. Örnek:
+* Farklı bir Azure aboneliğindeki bir hizmet uç noktası kullanarak kayıt defteri erişimini kısıtlamak istiyorsanız, bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydedin. Örneğin:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -53,7 +53,7 @@ Bu bölümde, kapsayıcı kayıt defterinizi Azure sanal ağındaki bir alt ağd
 
 ### <a name="add-a-service-endpoint-to-a-subnet"></a>Bir alt ağa hizmet uç noktası ekleme
 
-Bir VM oluşturduğunuzda, Azure varsayılan olarak aynı kaynak grubunda bir sanal ağ oluşturur. Sanal ağın adı, sanal makinenin adını temel alır. Örneğin, *Mydockervm*sanal makinenizi adlandırdıysanız, varsayılan sanal ağ adı Mydockervmvnet adlı bir alt ağ ile Mydockervmvnet *olur.* *myDockerVMVNET* [Az Network VNET List][az-network-vnet-list] komutunu kullanarak bunu doğrulayın:
+Bir VM oluşturduğunuzda, Azure varsayılan olarak aynı kaynak grubunda bir sanal ağ oluşturur. Sanal ağın adı, sanal makinenin adını temel alır. Örneğin, *Mydockervm* sanal makinenizi adlandırdıysanız, varsayılan sanal ağ adı Mydockervmvnet adlı bir alt ağ ile Mydockervmvnet *olur.* *myDockerVMVNET* [Az Network VNET List][az-network-vnet-list] komutunu kullanarak bunu doğrulayın:
 
 ```azurecli
 az network vnet list \
@@ -151,7 +151,7 @@ Kayıt defteriniz için yapılandırılmış ağ kurallarının bir listesini g�
 az acr network-rule list --name mycontainerregistry 
 ```
 
-Yapılandırılan her kural için [az ACR Network-Rule Remove][az-acr-network-rule-remove] komutunu çalıştırarak kaldırın. Örnek:
+Yapılandırılan her kural için [az ACR Network-Rule Remove][az-acr-network-rule-remove] komutunu çalıştırarak kaldırın. Örneğin:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.
@@ -189,7 +189,6 @@ az group delete --name myResourceGroup
 
 
 <!-- LINKS - External -->
-[aci-helloworld]: https://hub.docker.com/r/microsoft/aci-helloworld/
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

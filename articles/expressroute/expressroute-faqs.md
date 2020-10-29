@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: f4bddf1746a9d680897428f1aa0afdb35d93e470
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b8ef1c14089744defaf6de5b3cf9e72d281452b6
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631283"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027117"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -35,6 +35,10 @@ Desteklenen Exchange sağlayıcısı konumlarından birine bir bölgesel taşıy
 ### <a name="how-much-does-expressroute-cost"></a>ExpressRoute maliyeti ne kadar sürer?
 
 Fiyatlandırma bilgileri için [fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/expressroute/) bakın.
+
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-this-bandwidth-allocated-for-ingress-and-egress-traffic-separately"></a>Belirli bir bant genişliği için bir ExpressRoute bağlantı hattı ödediğimde, bu bant genişliği giriş ve çıkış trafiği için ayrı olarak ayrılmış mi?
+
+Evet, ExpressRoute bağlantı hattı bant genişliği çift yönlü. Örneğin, 200 Mbps ExpressRoute bağlantı hattı satın aldıysanız, giriş trafiği için 200 Mbps ve çıkış trafiği için 200 Mbps değeri sağlanır.
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Belirli bir bant genişliği için bir ExpressRoute bağlantı hattı ödediğimde, ağ hizmeti sağlayıcımdan satın dığım VPN bağlantısının aynı hızda olması gerekir mi?
 

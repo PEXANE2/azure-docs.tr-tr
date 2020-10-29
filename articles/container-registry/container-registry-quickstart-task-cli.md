@@ -4,12 +4,12 @@ description: Azure bulutunda, isteğe bağlı olarak bir Docker kapsayıcı gör
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 36921900f64d458f1f2591897e32c98f6d22a550
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4ea3f1bb86bcf3f6583cc438b2a27429f5b69d14
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91538237"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027695"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Hızlı başlangıç: Azure Container Registry görevleri kullanarak kapsayıcı görüntüsü oluşturma ve çalıştırma
 
@@ -46,10 +46,10 @@ Bu örnek, Azure Container Registry hakkında bilgi edinmek için uygun maliyetl
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>Dockerfile dosyasından görüntü oluşturma ve gönderme
 
-Şimdi bir görüntü derlemek ve göndermek için Azure Container Registry kullanın. İlk olarak, yerel bir çalışma dizini oluşturun ve ardından tek satırlık *dockerfile* adlı bir dockerfile oluşturun: `FROM hello-world` . Bu, `hello-world` Docker Hub 'daki görüntüden Linux kapsayıcı görüntüsü oluşturmak için basit bir örnektir. Kendi standart Dockerfile dosyanızı oluşturabilir ve diğer platformlar için görüntü oluşturabilirsiniz. Bash kabuğu 'nda çalışıyorsanız, Dockerfile komutunu aşağıdaki komutla oluşturun:
+Şimdi bir görüntü derlemek ve göndermek için Azure Container Registry kullanın. İlk olarak, yerel bir çalışma dizini oluşturun ve ardından tek satırlık *dockerfile* adlı bir dockerfile oluşturun: `FROM mcr.microsoft.com/hello-world` . Bu, `hello-world` Microsoft Container Registry 'de barındırılan görüntüden Linux kapsayıcı görüntüsü oluşturmak için basit bir örnektir. Kendi standart Dockerfile dosyanızı oluşturabilir ve diğer platformlar için görüntü oluşturabilirsiniz. Bash kabuğu 'nda çalışıyorsanız, Dockerfile komutunu aşağıdaki komutla oluşturun:
 
 ```bash
-echo FROM hello-world > Dockerfile
+echo FROM mcr.microsoft.com/hello-world > Dockerfile
 ```
 
 Görüntüyü oluşturan [az ACR Build][az-acr-build] komutunu çalıştırın ve görüntü başarıyla derlendikten sonra, Kayıt defterinize gönderin. Aşağıdaki örnek görüntüyü oluşturur ve gönderir `sample/hello-world:v1` . `.`Komutun sonundaki, Dockerfile dosyasının konumunu, bu durumda geçerli dizin olarak belirler.
@@ -78,8 +78,8 @@ Waiting for agent...
 2019/03/18 21:57:00 Successfully obtained source code and scanned for dependencies
 2019/03/18 21:57:00 Launching container with name: build
 Sending build context to Docker daemon  13.82kB
-Step 1/1 : FROM hello-world
-latest: Pulling from library/hello-world
+Step 1/1 : FROM mcr.microsoft.com/hello-world
+latest: Pulling from hello-world
 Digest: sha256:2557e3c07ed1e38f26e389462d03ed943586fxxxx21577a99efb77324b0fe535
 Successfully built fce289e99eb9
 Successfully tagged mycontainerregistry008.azurecr.io/sample/hello-world:v1

@@ -3,12 +3,12 @@ title: Azure Service Bus mesajlaşma özel durumları | Microsoft Docs
 description: Bu makale, özel durum oluştuğunda gerçekleştirilecek Azure Service Bus mesajlaşma özel durumlarının ve önerilen eylemlerin bir listesini sağlar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4813ad7386af3d9dd730b74e6b815ff173cfe809
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45f18d16aaeee0017bd4d219b6dc9e6beab515af
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885738"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027525"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus mesajlaşma özel durumları
 Bu makalede, .NET Framework API 'Leri tarafından oluşturulan .NET özel durumları listelenmektedir. 
@@ -33,9 +33,10 @@ Aşağıdaki tabloda mesajlaşma özel durum türleri ve nedenleri ve gerçekle�
 | [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1&preserve-view=true)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1&preserve-view=true)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1&preserve-view=true) |Yönteme sağlanan bir veya daha fazla bağımsız değişken geçersiz.<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) için sağlanan URI yol kesimi (ler) içeriyor.<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) için sağlanan URI şeması geçersiz. <br />Özellik değeri 32 KB 'den büyük. |Çağıran kodu denetleyin ve bağımsız değişkenlerin doğru olduğundan emin olun. |Yeniden deneme yardım etmez. |
 | [MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception) |İşlemle ilişkili varlık yok veya silinmiş. |Varlığın mevcut olduğundan emin olun. |Yeniden deneme yardım etmez. |
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |Belirli bir sıra numarasına sahip bir ileti alma girişimi. Bu ileti bulunamadı. |İletinin zaten alınmadığından emin olun. İletinin kaldırılmış olup olmadığını görmek için sahipsiz sırayı kontrol edin. |Yeniden deneme yardım etmez. |
-| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |İstemci Service Bus bir bağlantı kuramıyor. |Sağlanan ana bilgisayar adının doğru olduğundan ve konağın erişilebilir olduğundan emin olun. |Yeniden dene, aralıklı bağlantı sorunları olup olmadığı konusunda yardımcı olabilir. |
+| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |İstemci Service Bus bir bağlantı kuramıyor. |Sağlanan ana bilgisayar adının doğru olduğundan ve konağın erişilebilir olduğundan emin olun. <p>Kodunuz bir güvenlik duvarı/proxy 'si olan bir ortamda çalışıyorsa, Service Bus etki alanı/IP adresi ve bağlantı noktaları trafiğinin engellenmediğinden emin olun.
+</p>|Yeniden dene, aralıklı bağlantı sorunları olup olmadığı konusunda yardımcı olabilir. |
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |Hizmet şu anda isteği işleyemiyor. |İstemci bir süre bekleyip işlemi yeniden deneyin. |İstemci belirli bir aralıktan sonra yeniden deneyebilir. Yeniden deneme farklı bir özel durumla sonuçlanırsa, bu özel durumun yeniden deneme davranışını denetleyin. |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |Aşağıdaki durumlarda oluşabilecek genel mesajlaşma özel durumu:<p>Farklı bir varlık türüne (örneğin, bir konu) ait olan bir ad veya yol kullanarak bir [Queueclient](/dotnet/api/microsoft.azure.servicebus.queueclient) oluşturmak için girişimde bulunuldu.</p><p>256 KB 'den büyük bir ileti göndermek için bir girişimde bulunuldu. </p>Sunucu veya hizmet, isteğin işlenmesi sırasında bir hatayla karşılaştı. Ayrıntılar için özel durum iletisine bakın. Genellikle geçici bir özel durumdur.</p><p>Varlık kısıtlandığından istek sonlandırıldı. Hata kodu: 50001, 50002, 50008. </p> | Kodu denetleyin ve ileti gövdesi için yalnızca serileştirilebilir nesnelerin kullanıldığından emin olun (veya özel bir seri hale getirici kullanın). <p>Özelliklerin desteklenen değer türleri için belgeleri denetleyin ve yalnızca desteklenen türleri kullanın.</p><p> [Isgeçici](/dotnet/api/microsoft.servicebus.messaging.messagingexception) özelliğini denetleyin. **Doğru**ise işlemi yeniden deneyebilirsiniz. </p>| Özel durum azaltmasından kaynaklanıyorsa, birkaç saniye bekleyip işlemi yeniden deneyin. Yeniden deneme davranışı tanımsızdır ve diğer senaryolarda yardımcı olmayabilir.|
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |Aşağıdaki durumlarda oluşabilecek genel mesajlaşma özel durumu:<p>Farklı bir varlık türüne (örneğin, bir konu) ait olan bir ad veya yol kullanarak bir [Queueclient](/dotnet/api/microsoft.azure.servicebus.queueclient) oluşturmak için girişimde bulunuldu.</p><p>256 KB 'den büyük bir ileti göndermek için bir girişimde bulunuldu. </p>Sunucu veya hizmet, isteğin işlenmesi sırasında bir hatayla karşılaştı. Ayrıntılar için özel durum iletisine bakın. Genellikle geçici bir özel durumdur.</p><p>Varlık kısıtlandığından istek sonlandırıldı. Hata kodu: 50001, 50002, 50008. </p> | Kodu denetleyin ve ileti gövdesi için yalnızca serileştirilebilir nesnelerin kullanıldığından emin olun (veya özel bir seri hale getirici kullanın). <p>Özelliklerin desteklenen değer türleri için belgeleri denetleyin ve yalnızca desteklenen türleri kullanın.</p><p> [Isgeçici](/dotnet/api/microsoft.servicebus.messaging.messagingexception) özelliğini denetleyin. **Doğru** ise işlemi yeniden deneyebilirsiniz. </p>| Özel durum azaltmasından kaynaklanıyorsa, birkaç saniye bekleyip işlemi yeniden deneyin. Yeniden deneme davranışı tanımsızdır ve diğer senaryolarda yardımcı olmayabilir.|
 | [Messagingentityalreadyvartsexception](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |Bu hizmet ad alanındaki başka bir varlık tarafından zaten kullanılan bir ada sahip bir varlık oluşturma girişimi. |Mevcut varlığı silin veya oluşturulacak varlık için farklı bir ad seçin. |Yeniden deneme yardım etmez. |
 | [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) |Mesajlaşma varlığı izin verilen en büyük boyuta ulaştı veya bir ad alanına yönelik bağlantı sayısı üst sınırı aşıldı. |Varlıktan veya onun alt sıraları üzerinden ileti alarak varlıkta alan oluşturun. Bkz. [QuotaExceededException](#quotaexceededexception). |Yeniden deneme, iletilerin bu sırada kaldırılıp kaldırılmadığı konusunda yardımcı olabilir. |
 | [RuleActionException](/dotnet/api/microsoft.servicebus.messaging.ruleactionexception) |Service Bus geçersiz bir kural eylemi oluşturmayı denerseniz bu özel durumu döndürür. Service Bus, söz konusu ileti için kural eylemi işlenirken bir hata oluşursa, bu özel durumu bir hatalı iletiye iliştirir. |Kural eyleminin doğruluğunu denetleyin. |Yeniden deneme yardım etmez. |
@@ -45,8 +46,8 @@ Aşağıdaki tabloda mesajlaşma özel durum türleri ve nedenleri ve gerçekle�
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.azure.servicebus.messagingentitydisabledexception) |Devre dışı bırakılmış bir varlık üzerinde çalışma zamanı işlemi isteği. |Varlığı etkinleştirin. |Yeniden deneme, varlığın geçici bir şekilde etkinleştirilmiş olup olmadığı konusunda yardımcı olabilir. |
 | [NoMatchingSubscriptionException](/dotnet/api/microsoft.servicebus.messaging.nomatchingsubscriptionexception) |Service Bus, ön filtreleme etkin olan ve filtrelerin hiçbirinde eşleşmeyen bir konuya ileti gönderirseniz bu özel durumu döndürür. |En az bir filtrenin eşleştiğinden emin olun. |Yeniden deneme yardım etmez. |
 | [Iletiizeexceededexception](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |İleti yükü 256 KB sınırını aşıyor. 256-KB sınırı, sistem özelliklerini ve tüm .NET ek yükünü içerebilen toplam ileti boyutudur. |İleti yükünün boyutunu küçültün, sonra işlemi yeniden deneyin. |Yeniden deneme yardım etmez. |
-| [TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1&preserve-view=true) |Çevresel işlem (*Transaction. Current*) geçersiz. Tamamlanmış veya durdurulmuş olabilir. İç özel durum, ek bilgi sağlayabilir. | |Yeniden deneme yardım etmez. |
-| [TransactionInDoubtException](/dotnet/api/system.transactions.transactionindoubtexception?view=netcore-3.1&preserve-view=true) |Şüpheli bir işlem üzerinde bir işlem yapılmaya çalışıldı veya işlemi yürütmek için bir girişimde bulunuldu ve işlem şüpheli olur. |İşlem zaten kaydedilmiş olabileceğinden, uygulamanız bu özel durumu (özel bir durum olarak) işlemelidir. |- |
+| [TransactionException](/dotnet/api/system.transactions.transactionexception) |Çevresel işlem ( *Transaction. Current* ) geçersiz. Tamamlanmış veya durdurulmuş olabilir. İç özel durum, ek bilgi sağlayabilir. | |Yeniden deneme yardım etmez. |
+| [TransactionInDoubtException](/dotnet/api/system.transactions.transactionindoubtexception) |Şüpheli bir işlem üzerinde bir işlem yapılmaya çalışıldı veya işlemi yürütmek için bir girişimde bulunuldu ve işlem şüpheli olur. |İşlem zaten kaydedilmiş olabileceğinden, uygulamanız bu özel durumu (özel bir durum olarak) işlemelidir. |- |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception), belirli bir varlık için belirlenen kotanın aşıldığını gösterir.
@@ -63,7 +64,7 @@ Message: The maximum entity size has been reached or exceeded for Topic: 'xxx-xx
 
 İleti, konunun boyut sınırını aştığını, bu durumda 1 GB (varsayılan boyut sınırı) olduğunu belirtir. 
 
-### <a name="namespaces"></a>Ad Alanları
+### <a name="namespaces"></a>Ad alanları
 
 Ad alanları için [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) , bir uygulamanın bir ad alanına yönelik en fazla bağlantı sayısını aştığını gösterebilir. Örneğin:
 
@@ -80,7 +81,7 @@ Bu hatanın yaygın iki nedeni vardır: atılacak ileti sırası ve çalışır 
 1. **[Atılacak ileti sırası](service-bus-dead-letter-queues.md)** Bir okuyucu iletileri tamamlamayacak ve kilit sona erdiğinde iletiler kuyruğa/konuya döndürülür. Okuyucu, [Brokeredmessage. tamamlanmıştır](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete)öğesini aramasını önleyen bir özel durumla karşılaştığında gerçekleşebilir. Bir ileti 10 kez okunduktan sonra varsayılan olarak atılacak ileti kuyruğuna gider. Bu davranış, [Queuedescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) özelliği tarafından denetlenir ve varsayılan değeri 10 ' dur. İletiler, atılacak ileti kuyruğunda yer aldığı sırada yer kaplar.
    
     Bu sorunu çözmek için, başka bir kuyruktan yaptığınız gibi atılacak ileti sırasından iletileri okuyun ve doldurun. Atılacak ileti sırası yolunu biçimlendirmeye yardımcı olması için [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) yöntemini kullanabilirsiniz.
-2. **Alıcı durdu**. Alıcı bir kuyruktan veya abonelikten ileti almayı durdurdu. Bunu belirlemenin yolu, iletilerin tam dökümünü gösteren [Queuedescription. MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) özelliğine bakabilmenizdir. [Activemessagecount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) özelliği yüksek veya daha fazla olursa iletiler yazıldığı kadar hızlı okunmazlar.
+2. **Alıcı durdu** . Alıcı bir kuyruktan veya abonelikten ileti almayı durdurdu. Bunu belirlemenin yolu, iletilerin tam dökümünü gösteren [Queuedescription. MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) özelliğine bakabilmenizdir. [Activemessagecount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) özelliği yüksek veya daha fazla olursa iletiler yazıldığı kadar hızlı okunmazlar.
 
 ## <a name="timeoutexception"></a>TimeoutException
 [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1&preserve-view=true) , Kullanıcı tarafından başlatılan bir işlemin işlem zaman aşımından daha uzun sürdüğünü gösterir. 
@@ -106,11 +107,11 @@ Bir iletideki kilit çeşitli nedenlerden dolayı sona ermeyebilir-
 
 ### <a name="resolution"></a>Çözüm
 
-Bir **Messagelocklostexception**olayında, istemci uygulaması artık iletiyi işleyemez. İstemci uygulaması isteğe bağlı olarak analiz için özel durumu günlüğe kaydetmeyi göz önünde bulundurmayabilir, ancak istemcinin iletiyi *atmalıdır* .
+Bir **Messagelocklostexception** olayında, istemci uygulaması artık iletiyi işleyemez. İstemci uygulaması isteğe bağlı olarak analiz için özel durumu günlüğe kaydetmeyi göz önünde bulundurmayabilir, ancak istemcinin iletiyi *atmalıdır* .
 
 İleti üzerindeki kilidin süresi sona erdiğinden, kuyruğa (veya aboneliğe) geri döner ve alma işlemi çağıran bir sonraki istemci uygulaması tarafından işlenebilir.
 
-**Maxdeliverycount** aşılırsa Ileti, **DeadLetterQueue**öğesine taşınabilir.
+**Maxdeliverycount** aşılırsa Ileti, **DeadLetterQueue** öğesine taşınabilir.
 
 ## <a name="sessionlocklostexception"></a>SessionLockLostException
 
@@ -125,7 +126,7 @@ Bir oturumdaki kilit, çeşitli nedenlerle sona ermeyebilir-
 
 ### <a name="resolution"></a>Çözüm
 
-**Sessionlocklostexception**durumunda istemci uygulaması artık oturumdaki iletileri işlemez. İstemci uygulaması, analiz için özel durumu günlüğe kaydetmeyi göz önünde bulundurmayabilir, ancak istemcinin iletiyi *atmalıdır* .
+**Sessionlocklostexception** durumunda istemci uygulaması artık oturumdaki iletileri işlemez. İstemci uygulaması, analiz için özel durumu günlüğe kaydetmeyi göz önünde bulundurmayabilir, ancak istemcinin iletiyi *atmalıdır* .
 
 Oturumdaki kilit sona erdiğinden, kuyruğa (veya aboneliğe) geri döner ve oturumu kabul eden bir sonraki istemci uygulaması tarafından kilitlenebilir. Oturum kilidi, belirli bir zamanda tek bir istemci uygulaması tarafından tutulduğundan, sıralı işleme garanti edilir.
 
@@ -159,7 +160,7 @@ Aliases:  <mynamespace>.servicebus.windows.net
 
 Yukarıdaki ad bir IP ve ad alanı diğer adı olarak **çözümlenmezse** , ağ yöneticisinin daha fazla araştırılacağını kontrol edin. Ad çözümlemesi, genellikle müşteri ağındaki bir DNS sunucusu aracılığıyla yapılır. DNS çözümlemesi Azure DNS tarafından yapılabiliyorsanız lütfen Azure desteğine başvurun.
 
-Ad çözümlemesi **beklendiği gibi çalışıyorsa**, Azure Service Bus bağlantılara bu adreste izin [verilip verilmeyeceğini denetleyin](service-bus-troubleshooting-guide.md#connectivity-certificate-or-timeout-issues)
+Ad çözümlemesi **beklendiği gibi çalışıyorsa** , Azure Service Bus bağlantılara bu adreste izin [verilip verilmeyeceğini denetleyin](service-bus-troubleshooting-guide.md#connectivity-certificate-or-timeout-issues)
 
 
 ## <a name="messagingexception"></a>MessagingException
@@ -168,7 +169,7 @@ Ad çözümlemesi **beklendiği gibi çalışıyorsa**, Azure Service Bus bağla
 
 **Messagingexception** çeşitli nedenlerle oluşturulabilecek genel bir istisnadır. Bazı nedenlerden bazıları aşağıda listelenmiştir.
 
-   * Bir **Konu** veya **abonelik**üzerinde bir **queueclient** oluşturmak için bir girişimde bulunuldu.
+   * Bir **Konu** veya **abonelik** üzerinde bir **queueclient** oluşturmak için bir girişimde bulunuldu.
    * Gönderilen iletinin boyutu verilen katmanın sınırından daha büyük. Service Bus [kotaları ve limitleri](service-bus-quotas.md)hakkında daha fazla bilgi edinin.
    * Belirli veri düzlemi isteği (gönderme, alma, tamamlanma, bırakma) azaltma nedeniyle sonlandırıldı.
    * Hizmet yükseltmeleri ve yeniden başlatmaları nedeniyle oluşan geçici sorunlar.
@@ -180,7 +181,7 @@ Ad çözümlemesi **beklendiği gibi çalışıyorsa**, Azure Service Bus bağla
 
 Çözümleme adımları, **Messagingexception** 'ın oluşturulmasına neden olan ne olduğuna bağlıdır.
 
-   * **Geçici sorunlar** Için ( ***ısgeçici*** 'in ***true***olarak ayarlandığı) veya **azaltma sorunları**için işlemi yeniden denemek sorunu çözebilir. SDK 'daki varsayılan yeniden deneme ilkesi bu için yararlanılabilir olabilir.
+   * **Geçici sorunlar** Için ( **_ısgeçici_*_, _*_true_*_ olarak ayarlanır) veya _* azaltma sorunları için** işlemi yeniden denemek sorunu çözebilir. SDK 'daki varsayılan yeniden deneme ilkesi bu için yararlanılabilir olabilir.
    * Diğer sorunlar için, özel durum içindeki Ayrıntılar sorunu gösterir ve çözümleme adımları da aynı şekilde anlaşılamıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4f84ccbddc6f5244ac8f4334b716d770e0ed4afc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64d40de50f21811a56318971de1836abc8fbf8c9
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328930"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027270"
 ---
 # <a name="http-features"></a>HTTP özellikleri
 
@@ -57,7 +57,7 @@ Dayanıklı İşlevler uzantısı tarafından kullanıma sunulan tüm yerleşik 
 
 # <a name="python"></a>[Python](#tab/python)
 
-**__init__. Kopyala**
+**__init__ . Kopyala**
 
 ```python
 import logging
@@ -140,7 +140,7 @@ Tüm yerleşik HTTP API 'Lerinin açıklaması için bkz. [http API başvurusu](
 
 ### <a name="async-operation-tracking"></a>Zaman uyumsuz işlem izleme
 
-Daha önce bahsedilen HTTP yanıtı, Dayanıklı İşlevler uzun süre çalışan HTTP zaman uyumsuz API 'Leri uygulamaya yardımcı olacak şekilde tasarlanmıştır. Bu model bazen *yoklama tüketici stili*olarak adlandırılır. İstemci/sunucu akışı aşağıdaki gibi çalışmaktadır:
+Daha önce bahsedilen HTTP yanıtı, Dayanıklı İşlevler uzun süre çalışan HTTP zaman uyumsuz API 'Leri uygulamaya yardımcı olacak şekilde tasarlanmıştır. Bu model bazen *yoklama tüketici stili* olarak adlandırılır. İstemci/sunucu akışı aşağıdaki gibi çalışmaktadır:
 
 1. İstemci bir Orchestrator işlevi gibi uzun süreli bir işlemi başlatmak için bir HTTP isteği yayınlar.
 1. Hedef HTTP tetikleyicisi, "statusQueryGetUri" değerine sahip bir konum üst bilgisine sahip HTTP 202 yanıtı döndürüyor.
@@ -304,7 +304,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
     # get a list of the Azure subscriptions that I have access to
     restart_response = yield context.call_http("POST", 
-        f"https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.Compute/virtualMachines/${vm_name}/restart?api-version=${api_version}",
+        f"https://management.azure.com/subscriptions/{subscription_id}/resourceGroups/{resource_group}/providers/Microsoft.Compute/virtualMachines/{vm_name}/restart?api-version={api_version}",
         None,
         None,
         token_source)

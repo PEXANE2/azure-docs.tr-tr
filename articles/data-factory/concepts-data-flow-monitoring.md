@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/19/2020
-ms.openlocfilehash: 77dda42b27aa6f5fb505fe65667876523cb3f5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9636e7227671cd5a8ed31904e6bc27782d3bd6a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88650902"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025842"
 ---
 # <a name="monitor-data-flows"></a>Veri akışlarını izleme
 
@@ -23,15 +23,15 @@ Veri akışınızı oluşturma ve hata ayıklamayı tamamladıktan sonra, veri a
 
 İşlem hattınızı yürüttüğünüzde, işlem hattını ve veri akışı etkinliği dahil olmak üzere işlem hattında bulunan tüm etkinlikleri izleyebilirsiniz. Sol taraftaki Azure Data Factory UI panelinde bulunan izleyici simgesine tıklayın. Aşağıdakine benzer bir ekran görebilirsiniz. Vurgulanan simgeler, veri akışı etkinliği dahil olmak üzere işlem hattındaki etkinliklerin ayrıntılarına gitmenizi sağlar.
 
-![Veri akışı Izleme](media/data-flow/mon001.png "Veri Akışını İzleme")
+![Ekran görüntüsünde daha fazla bilgi için işlem hatları için seçilecek simgeler gösterilir.](media/data-flow/mon001.png "Veri Akışını İzleme")
 
 Bu düzeyde istatistikler ve çalışma süreleri ve durumu da dahil olmak üzere istatistikleri görürsünüz. Etkinlik düzeyindeki çalıştırma KIMLIĞI, işlem hattı düzeyindeki çalıştırma KIMLIĞINDEN farklı. Önceki düzeydeki çalıştırma KIMLIĞI işlem hattı içindir. Duyun seçilmesi, veri akışı yürütmenize ilişkin ayrıntılı ayrıntılar sağlar.
 
-![Veri akışı Izleme](media/data-flow/monitoring-details.png "Veri Akışını İzleme")
+![Ekran görüntüsünde, veri akışı yürütmesinin ayrıntılarını görmek için göz gözlük simgesi gösterilir.](media/data-flow/monitoring-details.png "Veri Akışını İzleme")
 
 Grafik düğüm izleme görünümünde olduğunuzda, veri akışı grafiklerinizin yalnızca Basitleştirilmiş bir görünüm sürümünü görebilirsiniz.
 
-![Veri akışı Izleme](media/data-flow/mon003.png "Veri Akışını İzleme")
+![Ekran görüntüsü grafiğin yalnızca görünüm sürümünü gösterir.](media/data-flow/mon003.png "Veri Akışını İzleme")
 
 ADF izleme ekranından veri akışlarınızın performansını izlemeye ilişkin bir genel bakış aşağıda verilmiştir:
 
@@ -41,7 +41,7 @@ ADF izleme ekranından veri akışlarınızın performansını izlemeye ilişkin
 
 Veri akışınız Spark 'ta yürütüldüğünde, Azure Data Factory veri akışınızı tamamen temel alarak en iyi kod yollarını belirler. Ek olarak, yürütme yolları farklı genişleme düğümlerinde ve veri bölümlerinde de gerçekleşebilir. Bu nedenle, izleme grafiği, dönüştürmelerinizin yürütme yolunu dikkate alarak akışınızın tasarımını temsil eder. Tek tek düğümleri seçtiğinizde, kümede birlikte yürütülen kodu temsil eden "gruplandırmaları" görebilirsiniz. Gördüğünüz zamanlamalar ve sayımlar, tasarımınızda bireysel adımlara karşılık bu grupları temsil eder.
 
-![Veri akışı Izleme](media/data-flow/mon004.png "Veri Akışını İzleme")
+![Ekran görüntüsü bir veri akışı için sayfayı gösterir.](media/data-flow/mon004.png "Veri Akışını İzleme")
 
 * İzleme penceresinde açık alanı seçtiğinizde, alt bölmedeki istatistikler her bir havuz için zamanlama ve satır sayılarını ve dönüştürme kökenini için havuz verilerine işaret eden dönüşümleri görüntüler.
 
@@ -56,7 +56,7 @@ Veri akışınız Spark 'ta yürütüldüğünde, Azure Data Factory veri akış
   * Küme başlangıç zamanı: veri akışı yürütmenizle ilgili JıT Spark işlem ortamının elde edilecek süre miktarı
   * Dönüşüm sayısı: akışınızda kaç dönüştürme adımı yürütüldüğü
   
-![Veri akışı Izleme](media/data-flow/monitornew.png "Veri akışı Izleme yeni")
+![Ekran görüntüsü Yenile seçeneğini gösterir.](media/data-flow/monitornew.png "Veri akışı Izleme yeni")
 
 ## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>Toplam Havuz Işleme süresi ile dönüşüm Işleme süresi karşılaştırması
 
@@ -85,6 +85,6 @@ Haritaınızda bir havuz dönüştürme simgesi seçtiğinizde, sağdaki slayt p
 
 Bu simge, dönüştürme verilerinin kümede zaten önbelleğe alındığı anlamına gelir; bu nedenle zamanlamalar ve yürütme yolu şu hesaba alınır:
 
-![Veri akışı Izleme](media/data-flow/mon005.png "Veri Akışını İzleme")
+![Ekran görüntüsü disk simgesini gösterir.](media/data-flow/mon005.png "Veri Akışını İzleme")
 
 Ayrıca, dönüşümde yeşil daire simgeleri görürsünüz. Bunlar, verilerin akan havuz sayısını temsil eder.

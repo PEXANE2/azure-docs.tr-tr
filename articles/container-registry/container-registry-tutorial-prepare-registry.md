@@ -4,12 +4,12 @@ description: Bir Azure Container Registry oluşturun, coğrafi çoğaltma yapıl
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: c473e3cd891214c2c5789bd43b0d293cb25d660a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 804f07762bef596f4631fbc5f694ecc6b308bfad
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739479"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027236"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Öğretici: Coğrafi çoğaltmalı Azure Container Registry’yi hazırlama
 
@@ -42,7 +42,7 @@ Bu öğreticide, Premium hizmet katmanında bir Azure Kapsayıcı kayıt defteri
 > [!TIP]
 > Daha önce bir kayıt defteri oluşturduysanız ve yükseltmeniz gerekiyorsa bkz. [katmanları değiştirme](container-registry-skus.md#changing-tiers). 
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 Azure Container Registry **kaynak kapsayıcıları oluştur** ' u seçin  >  **Containers**  >  **Azure Container Registry** .
 
@@ -123,19 +123,19 @@ cd acr-helloworld
 
 ## <a name="update-dockerfile"></a>Dockerfile’ı güncelleştirme
 
-Örnekte bulunan Dockerfile, kapsayıcının nasıl yapılandırıldığını gösterir. Resmi bir [aspnetcore][dockerhub-aspnetcore] görüntüsünden başlatılır, uygulama dosyalarını kapsayıcıya kopyalar, bağımlılıkları yükler, resmi [aspnetcore-build][dockerhub-aspnetcore-build] görüntüsünü kullanarak çıktıyı derler ve son olarak iyileştirilmiş bir aspnetcore görüntüsü oluşturur.
+Örnekte bulunan Dockerfile, kapsayıcının nasıl yapılandırıldığını gösterir. Resmi bir ASP.NET Core çalışma zamanı görüntüsünden başlar, uygulama dosyalarını kapsayıcıya kopyalar, bağımlılıkları kurar, resmi .NET Core SDK görüntüsünü kullanarak çıktıyı derler ve son olarak en iyi duruma getirilmiş bir aspnetcore görüntüsü oluşturur.
 
 [Dockerfile][dockerfile] , `./AcrHelloworld/Dockerfile` klonlanan kaynakta bulunur.
 
 ```Dockerfile
-FROM microsoft/aspnetcore:2.0 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
 # Update <acrName> with the name of your registry
 # Example: uniqueregistryname.azurecr.io
 ENV DOCKER_REGISTRY <acrName>.azurecr.io
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.0 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /src
 COPY *.sln ./
 COPY AcrHelloworld/AcrHelloworld.csproj AcrHelloworld/
@@ -187,8 +187,8 @@ Docker görüntüsü oluşturulurken birçok çıktı satırı görüntülenir (
 
 ```bash
 Sending build context to Docker daemon  523.8kB
-Step 1/18 : FROM microsoft/aspnetcore:2.0 AS base
-2.0: Pulling from microsoft/aspnetcore
+Step 1/18 : FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
+2.2: Pulling from mcr.microsoft.com/dotnet/core/aspnet
 3e17c6eae66c: Pulling fs layer
 
 [...]
@@ -245,6 +245,4 @@ Görüntülere yerel olarak hizmet vermek için coğrafi çoğaltma kullanarak k
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
 [aspnet-core]: https://dot.net
-[dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
-[dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
 [dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

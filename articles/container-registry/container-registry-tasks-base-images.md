@@ -3,12 +3,12 @@ title: Temel görüntü güncelleştirmeleri-görevler
 description: Uygulama kapsayıcısı görüntülerinin temel görüntüleri ve temel görüntü güncelleştirmesinin Azure Container Registry görevi nasıl tetikleyebileceğinizi öğrenin.
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 35933c4cdbbf2762f7a54bd945f8a8ffa55b9f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85918513"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025774"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>ACR görevleri için temel görüntü güncelleştirmeleri hakkında
 
@@ -16,15 +16,19 @@ Bu makale, bir uygulamanın temel görüntüsüne yönelik güncelleştirmeler v
 
 ## <a name="what-are-base-images"></a>Temel görüntüler nelerdir?
 
-Çoğu kapsayıcı görüntüsünü tanımlayan dockerfiles, görüntünün dayandığı ve genellikle *temel görüntüsü*olarak adlandırılan bir üst görüntü belirler. Normalde temel görüntüler, [Alpine Linux][base-alpine] veya [Windows Nano Server][base-windows] gibi bir işletim sistemi içerir ve kapsayıcının kalan katmanları bu işletim sistemi üzerine uygulanır. Bunlar ayrıca [Node.js][base-node] veya [.NET Core][base-dotnet] gibi uygulama çerçeveleri de içerir. Bu temel görüntüler genellikle genel yukarı akış görüntülerini temel alır. Uygulama görüntülerinizin birkaçı ortak bir temel görüntü paylaşabilir.
+Çoğu kapsayıcı görüntüsünü tanımlayan dockerfiles, görüntünün dayandığı ve genellikle *temel görüntüsü* olarak adlandırılan bir üst görüntü belirler. Normalde temel görüntüler, [Alpine Linux][base-alpine] veya [Windows Nano Server][base-windows] gibi bir işletim sistemi içerir ve kapsayıcının kalan katmanları bu işletim sistemi üzerine uygulanır. Bunlar ayrıca [Node.js][base-node] veya [.NET Core][base-dotnet] gibi uygulama çerçeveleri de içerir. Bu temel görüntüler genellikle genel yukarı akış görüntülerini temel alır. Uygulama görüntülerinizin birkaçı ortak bir temel görüntü paylaşabilir.
 
 Temel görüntü çoğunlukla, görüntüdeki işletim sistemi veya çerçevenin yeni özelliklerini veya geliştirmelerini içermesi için görüntü bakımcısı tarafından güncelleştirilir. Temel görüntüyü güncelleştirmenin bir diğer yaygın nedeni de güvenlik yamalarıdır. Bu yukarı akış güncelleştirmeleri gerçekleştiğinde, temel görüntülerinizi de kritik bir çözüm içerecek şekilde güncelleştirmeniz gerekir. Ayrıca, bu yukarı akış düzeltmelerini temel görüntıza dahil etmek için her bir uygulama görüntüsünün yeniden oluşturulması gerekir.
 
 Özel bir geliştirme ekibi gibi bazı durumlarda, temel görüntü, işletim sistemi veya Framework 'ten daha fazla belirtebilir. Örneğin, bir temel görüntü izlenmesi gereken bir paylaşılan hizmet bileşen görüntüsü olabilir. Bir ekibin üyelerinin test için bu temel görüntüyü izlemesi veya uygulama görüntülerini geliştirirken düzenli olarak görüntüyü güncelleştirmesi gerekebilir.
 
+## <a name="maintain-copies-of-base-images"></a>Temel görüntülerin kopyalarını koruma
+
+Kayıt defterinizde bulunan ve Docker Hub gibi genel bir kayıt defterinde tutulan temel içeriğe bağlı olan içerikler için, içeriği bir Azure Container Registry 'ye veya başka bir özel kayıt defterine kopyalamanız önerilir. Ardından, özel temel görüntülere başvurarak uygulama görüntülerinizi oluşturduğunuzdan emin olun. Azure Container Registry, ortak kayıt defterlerinden veya diğer Azure Container kayıt defterlerinden kolayca içerik kopyalamak için bir [görüntü içeri aktarma](container-registry-import-images.md) yeteneği sağlar. Sonraki bölümde, uygulama güncelleştirmeleri oluştururken temel görüntü güncelleştirmelerini izlemek için ACR görevlerinin kullanımı açıklanmaktadır. Temel görüntü güncelleştirmelerini kendi Azure Container kayıt defterlerine ve isteğe bağlı olarak, yukarı akış genel kayıt defterlerine izleyebilirsiniz.
+
 ## <a name="track-base-image-updates"></a>Temel görüntü güncelleştirmelerini izleme
 
-ACR Görevleri, kapsayıcının temel görüntüsü güncelleştirildiğinde sizin için görüntüleri otomatik olarak oluşturma özelliğine sahiptir.
+ACR Görevleri, kapsayıcının temel görüntüsü güncelleştirildiğinde sizin için görüntüleri otomatik olarak oluşturma özelliğine sahiptir. Bu özelliği kullanarak, Azure Container kayıt defterlerinde ortak temel görüntülerin kopyalarını koruyabilir ve güncelleştirebilir ve ardından temel görüntülere bağlı olan uygulama görüntülerini yeniden oluşturabilirsiniz.
 
 ACR görevleri bir kapsayıcı görüntüsü oluşturduğunda temel görüntü bağımlılıklarını dinamik olarak bulur. Sonuç olarak, bir uygulama görüntüsünün temel görüntüsünün ne zaman güncelleştirileceğini algılayabilir. Önceden yapılandırılmış bir derleme göreviyle, ACR görevleri temel görüntüye başvuran her uygulama görüntüsünü otomatik olarak yeniden oluşturabilir. Bu otomatik algılama ve yeniden oluşturma ile, ACR görevleri, güncelleştirilmiş temel görüntenize başvuran her bir uygulama görüntüsünü el ile izlemek ve güncelleştirmek için normalde gereken zaman ve çabayı kaydeder.
 
@@ -48,7 +52,7 @@ Temel görüntünün güncelleştirildiği zaman ve bağımlı görevin tetiklen
 
 ## <a name="additional-considerations"></a>Diğer konular
 
-* **Uygulama görüntüleri Için temel görüntüler** -Şu anda ACR görevi yalnızca uygulama (*çalışma zamanı*) görüntüleri için temel görüntü güncelleştirmelerini izler. Çok aşamalı Dockerfiles 'da kullanılan ara (*buildtime*) görüntüleri için temel görüntü güncelleştirmelerini izlemez.  
+* **Uygulama görüntüleri Için temel görüntüler** -Şu anda ACR görevi yalnızca uygulama ( *çalışma zamanı* ) görüntüleri için temel görüntü güncelleştirmelerini izler. Çok aşamalı Dockerfiles 'da kullanılan ara ( *buildtime* ) görüntüleri için temel görüntü güncelleştirmelerini izlemez.  
 
 * **Varsayılan olarak etkindir** - [az ACR Task Create][az-acr-task-create] komutuyla bir ACR görevi oluşturduğunuzda, varsayılan olarak görev bir temel görüntü güncelleştirmesi *tarafından tetiklenir.* Diğer bir deyişle, `base-image-trigger-enabled` özelliği true olarak ayarlanır. Bir görevde bu davranışı devre dışı bırakmak istiyorsanız, özelliği false olarak güncelleştirin. Örneğin, şu [az ACR Task Update][az-acr-task-update] komutunu çalıştırın:
 
@@ -56,7 +60,7 @@ Temel görüntünün güncelleştirildiği zaman ve bağımlı görevin tetiklen
   az acr task update --myregistry --name mytask --base-image-trigger-enabled False
   ```
 
-* **Bağımlılıkları izlemek Için Tetikle** -BIR ACR görevinin, kendi temel görüntüsünü içeren bir kapsayıcı görüntüsünün bağımlılıklarını belirlemesine ve izlemesine olanak tanımak için, önce görevi görüntüyü **en az bir kez**oluşturmak üzere tetiklemeniz gerekir. Örneğin, [az ACR Task Run][az-acr-task-run] komutunu kullanarak görevi el ile tetikleyin.
+* **Bağımlılıkları izlemek Için Tetikle** -BIR ACR görevinin, kendi temel görüntüsünü içeren bir kapsayıcı görüntüsünün bağımlılıklarını belirlemesine ve izlemesine olanak tanımak için, önce görevi görüntüyü **en az bir kez** oluşturmak üzere tetiklemeniz gerekir. Örneğin, [az ACR Task Run][az-acr-task-run] komutunu kullanarak görevi el ile tetikleyin.
 
 * **Temel görüntü Için kararlı etiket** -temel görüntü güncelleştirmesinde bir görevi tetiklemek için, temel görüntünün gibi *kararlı* bir etiketi olmalıdır `node:9-alpine` . Bu etiketleme, işletim sistemi ve çerçeve düzeltme ekleriyle en son kararlı sürüme güncelleştirilmiş bir temel görüntü için tipik bir noktadır. Temel görüntü yeni bir sürüm etiketiyle güncelleştirilirse bir görevi tetiklemez. Görüntü etiketleme hakkında daha fazla bilgi için [en iyi yöntemler Kılavuzu](container-registry-image-tag-version.md)' na bakın. 
 

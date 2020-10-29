@@ -3,12 +3,12 @@ title: ACR görevinden çapraz kayıt defteri kimlik doğrulaması
 description: Azure kaynakları için yönetilen bir kimlik kullanarak başka bir özel Azure Container Registry 'ye erişmek üzere bir Azure Container Registry görevi (ACR görevi) yapılandırma
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a460102eafa5c1eda2f37330887d985387d5df5
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86057373"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026267"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Azure tarafından yönetilen kimlik kullanan bir ACR görevinde çapraz kayıt defteri kimlik doğrulaması 
 
@@ -30,8 +30,8 @@ Gerçek dünyada bir senaryoda kuruluş, tüm geliştirme ekipleri tarafından u
 
 Bu makalede iki Azure Container Registry gerekir:
 
-* ACR görevlerini oluşturmak ve yürütmek için ilk kayıt defterini kullanın. Bu makalede, bu kayıt defteri *myregistry*olarak adlandırılmıştır. 
-* İkinci kayıt defteri, görev için bir görüntü oluşturmak için kullanılan bir temel görüntü barındırır. Bu makalede ikinci kayıt defteri *mybaseregyıı*olarak adlandırılmıştır. 
+* ACR görevlerini oluşturmak ve yürütmek için ilk kayıt defterini kullanın. Bu makalede, bu kayıt defteri *myregistry* olarak adlandırılmıştır. 
+* İkinci kayıt defteri, görev için bir görüntü oluşturmak için kullanılan bir temel görüntü barındırır. Bu makalede ikinci kayıt defteri *mybaseregyıı* olarak adlandırılmıştır. 
 
 Sonraki adımlarda kendi kayıt defteri adlarınızla değiştirin.
 
@@ -39,16 +39,12 @@ Gerekli Azure Container Registry 'ye zaten sahip değilseniz bkz. [hızlı başl
 
 ## <a name="prepare-base-registry"></a>Temel kayıt defterini hazırla
 
-İlk olarak, bir çalışma dizini oluşturun ve ardından aşağıdaki içeriğe sahip Dockerfile adlı bir dosya oluşturun. Bu basit örnek, Docker Hub 'daki ortak görüntüden bir Node.js temel görüntü oluşturur.
-    
-```bash
-echo FROM node:9-alpine > Dockerfile
-```
+Tanıtım amacıyla, tek seferlik bir işlem olarak, Docker Hub 'ından temel kayıt defterinize ortak bir Node.js görüntüsünü içeri aktarmak için [az ACR Import] [az-ACR-import] öğesini çalıştırın. Uygulamada, kuruluştaki başka bir takım veya işlem, temel kayıt defterindeki görüntüleri koruyabilir.
 
-Geçerli dizinde, temel görüntüyü derlemek ve temel bir kayıt defterine göndermek için [az ACR Build][az-acr-build] komutunu çalıştırın. Uygulamada, kuruluştaki başka bir takım veya işlem temel kayıt defterini koruyabilir.
-    
 ```azurecli
-az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
+az acr import --name mybaseregistry \
+  --source docker.io/library/node:9-alpine \
+  --image baseimages/node:9-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>YAML dosyasında görev adımlarını tanımlama
@@ -88,7 +84,7 @@ az acr task create \
 
 ### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Temel kayıt defterine kimlik çekme izinleri verme
 
-Bu bölümde, *mybaseregyıı*temel kayıt defterinden çekme için yönetilen kimlik izinlerini verin.
+Bu bölümde, *mybaseregyıı* temel kayıt defterinden çekme için yönetilen kimlik izinlerini verin.
 
 Temel kayıt defterinin kaynak KIMLIĞINI almak ve bir değişkende depolamak için [az ACR Show][az-acr-show] komutunu kullanın:
 
@@ -127,7 +123,7 @@ az acr task create \
 
 ### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Temel kayıt defterine kimlik çekme izinleri verme
 
-Bu bölümde, *mybaseregyıı*temel kayıt defterinden çekme için yönetilen kimlik izinlerini verin.
+Bu bölümde, *mybaseregyıı* temel kayıt defterinden çekme için yönetilen kimlik izinlerini verin.
 
 Temel kayıt defterinin kaynak KIMLIĞINI almak ve bir değişkende depolamak için [az ACR Show][az-acr-show] komutunu kullanın:
 
@@ -223,7 +219,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-Oluşturulan görüntünün ve *myregistry*'e başarıyla gönderildiğinden emin olmak için [az ACR Repository Show-Tags][az-acr-repository-show-tags] komutunu çalıştırın:
+Oluşturulan görüntünün ve *myregistry* 'e başarıyla gönderildiğinden emin olmak için [az ACR Repository Show-Tags][az-acr-repository-show-tags] komutunu çalıştırın:
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv

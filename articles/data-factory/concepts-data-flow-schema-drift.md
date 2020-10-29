@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 5edea4b3d3834d8f99159546c0279394ec3986f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11ddb2f40ee56b51c5ecbae11465093abb8e4feb
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324357"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027491"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Eşleme veri akışı 'nda şema kayması
 
@@ -43,7 +43,7 @@ Kaynak dönüşümünde, şema kayması, veri kümesi şemanız tanımlı olmaya
 
 ![Şema DRFT kaynağı](media/data-flow/schemadrift001.png "Şema DRFT kaynağı")
 
-Şema drında, tüm gelen alanlar yürütme sırasında kaynağınızdan alınır ve tüm akış havuza gönderilir. Varsayılan olarak, *düzeltebilecekler sütunları*olarak bilinen tüm yeni algılanan sütunlar dize veri türü olarak gelir. Veri akışınız için düzeltebilecekler sütunların veri türlerini otomatik olarak çıkarması gerekirse, kaynak ayarlarınızda **düzeltebilecekler sütun türlerini** kontrol edin.
+Şema drında, tüm gelen alanlar yürütme sırasında kaynağınızdan alınır ve tüm akış havuza gönderilir. Varsayılan olarak, *düzeltebilecekler sütunları* olarak bilinen tüm yeni algılanan sütunlar dize veri türü olarak gelir. Veri akışınız için düzeltebilecekler sütunların veri türlerini otomatik olarak çıkarması gerekirse, kaynak ayarlarınızda **düzeltebilecekler sütun türlerini** kontrol edin.
 
 ## <a name="schema-drift-in-sink"></a>Havuzda DRFT şeması
 
@@ -69,11 +69,11 @@ Sütun desenlerinin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. 
 
 Düzeltebilecekler sütunlara açıkça başvurmak için, veri önizleme hızlı eylemi aracılığıyla bu sütunlara yönelik eşlemeleri hızlıca oluşturabilirsiniz. [Hata ayıklama modu](concepts-data-flow-debug-mode.md) açıldıktan sonra, veri önizleme sekmesine gidin ve **Yenile** ' ye tıklayarak bir veri önizlemesi getirin. Data Factory, düzeltebilecekler sütunlarının mevcut olduğunu algılarsa, **Map düzeltebilecekler** ' e tıklayabilir ve şema görünümlerinde tüm düzeltebilecekler sütunlarına başvurmanıza olanak tanıyan bir türetilmiş sütun oluşturabilirsiniz.
 
-![Düzeltebilecekler eşle](media/data-flow/mapdrifted1.png "Düzeltebilecekler eşle")
+![Ekran görüntüsü, Map düzeltebilecekler ile çağrılan veri önizleme sekmesini gösterir.](media/data-flow/mapdrifted1.png "Düzeltebilecekler eşle")
 
 Oluşturulan türetilmiş sütun dönüşümünde, her düzeltebilecekler sütunu algılanan ad ve veri türü ile eşlenir. Yukarıdaki veri önizlemede, ' Movieıd ' sütunu bir tamsayı olarak algılanır. **Map düzeltebilecekler** tıklatıldıktan sonra, Movieıd, türetilmiş sütunda olarak tanımlanır `toInteger(byName('movieId'))` ve aşağı akış dönüşümlerinde şema görünümlerine dahil edilir.
 
-![Düzeltebilecekler eşle](media/data-flow/mapdrifted2.png "Düzeltebilecekler eşle")
+![Ekran görüntüsü türetilmiş sütunun ayarlar sekmesini gösterir.](media/data-flow/mapdrifted2.png "Düzeltebilecekler eşle")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Veri akışı Ifade dilinde](data-flow-expression-functions.md), sütun desenleri ve "byName" ve "byposition" gibi şema kayması için ek tesisler bulacaksınız.

@@ -1,7 +1,7 @@
 ---
-title: .NET ile bir kapsayıcı veya blob için hizmet SAS oluşturma
+title: Bir kapsayıcı veya blob için hizmet SAS oluşturma
 titleSuffix: Azure Storage
-description: .NET istemci kitaplığını kullanarak bir kapsayıcı veya blob için hizmet paylaşılan erişim imzası (SAS) oluşturmayı öğrenin.
+description: .NET istemci kitaplığını veya JavaScript V12 SDK 'sını kullanarak bir kapsayıcı veya blob için hizmet paylaşılan erişim imzası (SAS) oluşturmayı öğrenin
 services: storage
 author: tamram
 ms.service: storage
@@ -11,14 +11,14 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9674c7f892c31bd65ec651baf2d032de0256ac6c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c38581a23f6714c0676b3b3c9c8481205b14a374
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218213"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027210"
 ---
-# <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>.NET ile bir kapsayıcı veya blob için hizmet SAS oluşturma
+# <a name="create-a-service-sas-for-a-container-or-blob"></a>Bir kapsayıcı veya blob için hizmet SAS oluşturma
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
@@ -80,6 +80,31 @@ private static string GetContainerSasUri(CloudBlobContainer container,
 
     // Return the URI string for the container, including the SAS token.
     return container.Uri + sasContainerToken;
+}
+```
+
+# <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
+
+Bir hizmet SAS, hesap erişim anahtarıyla imzalanır. SAS imzalamak için kullanılan kimlik bilgisini oluşturmak için [Storagesharedkeycredential](/javascript/api/@azure/storage-blob/storagesharedkeycredential) sınıfını kullanın. Daha sonra, SAS belirteç dizesini almak için gerekli seçenekleri sağlayan [generateBlobSASQueryParameters](/javascript/api/@azure/storage-blob/#generateBlobSASQueryParameters_BlobSASSignatureValues__StorageSharedKeyCredential_) işlevini çağırın.
+
+```javascript
+function getContainerSasUri(containerClient, sharedKeyCredential, storedPolicyName) {
+    const sasOptions = {
+        containerName: containerClient.containerName,
+        permissions: ContainerSASPermissions.parse("c")
+    };
+
+    if (storedPolicyName == null) {
+        sasOptions.startsOn = new Date();
+        sasOptions.expiresOn = new Date(new Date().valueOf() + 3600 * 1000);
+    } else {
+        sasOptions.identifier = storedPolicyName;
+    }
+
+    const sasToken = generateBlobSASQueryParameters(sasOptions, sharedKeyCredential).toString();
+    console.log(`SAS token for blob container is: ${sasToken}`);
+
+    return `${containerClient.url}?${sasToken}`;
 }
 ```
 
@@ -149,9 +174,39 @@ private static string GetBlobSasUri(CloudBlobContainer container,
 }
 ```
 
+# <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
+
+Blob için bir hizmet SAS oluşturmak için [Cloudblob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) metodunu çağırın.
+
+Blob için bir hizmet SAS oluşturmak için, gerekli seçenekleri sağlamak üzere [generateBlobSASQueryParameters](/javascript/api/@azure/storage-blob/#generateBlobSASQueryParameters_BlobSASSignatureValues__StorageSharedKeyCredential_) işlevini çağırın.
+
+```javascript
+function getBlobSasUri(containerClient, blobName, sharedKeyCredential, storedPolicyName) {
+    const sasOptions = {
+        containerName: containerClient.containerName,
+        blobName: blobName
+    };
+
+    if (storedPolicyName == null) {
+        sasOptions.startsOn = new Date();
+        sasOptions.expiresOn = new Date(new Date().valueOf() + 3600 * 1000);
+        sasOptions.permissions = BlobSASPermissions.parse("r");
+    } else {
+        sasOptions.identifier = storedPolicyName;
+    }
+
+    const sasToken = generateBlobSASQueryParameters(sasOptions, sharedKeyCredential).toString();
+    console.log(`SAS token for blob is: ${sasToken}`);
+
+    return `${containerClient.getBlockBlobClient(blobName).url}?${sasToken}`;
+}
+```
+
 ---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
+
+[!INCLUDE [storage-blob-javascript-resources-include](../../../includes/storage-blob-javascript-resources-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 879ea141a4621fac9e1774df64a63e9e56549012
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707991"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026964"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -20,7 +20,7 @@ Bu makalede ticari Market hakkında sık sorulan sorular yanıtlanmaktadır.
 
 ## <a name="general"></a>Genel
 
-### <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market nedir?
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft ticari market nedir?
 
 Ticari Market iş ve kamu kuruluşlarını iş ortaklarımız tarafından oluşturulan çözümlerle bağlar. İş ortaklarımız Iş Ortağı Merkezi 'nde teklifler oluşturur ve yönetir ve müşteriler, Microsoft AppSource, Azure Marketi, bulut çözümü sağlayıcısı programındaki satıcılar ve ortak satış programı aracılığıyla satış ekiplerimiz gibi ürün içi deneyimler aracılığıyla çözümleri bulabilir ve satın alabilir.
 
@@ -58,10 +58,10 @@ Ticari Market yayımcısı olmak üzere kaydolmak için [Iş Ortağı Merkezi](h
 
 Müşterilerin ticari Market teklifinizi kullanma yolları, teklifleri nasıl oluşturdığınıza bağlıdır.
 
-- Otomatik olarak sağladığınız çözümler, ister ücretli olsun, kendi lisansını getir (KLG) ya da ücretsiz olarak, müşterileri *hemen almak*için tasarlanmıştır.
-- Sınama sürücüsünü destekleyen teklifler (demo), müşteriyi *Test*etmek için müşterinin isteği ister. 
-- Ticari Market dışında bir deneme sağlayan hizmet olarak yazılım (SaaS) teklifleri *ücretsiz deneme*.
-- Basit listeler müşterinin *benimle iletişim*istemesine izin verir.
+- Otomatik olarak sağladığınız çözümler, ister ücretli olsun, kendi lisansını getir (KLG) ya da ücretsiz olarak, müşterileri *hemen almak* için tasarlanmıştır.
+- Sınama sürücüsünü destekleyen teklifler (demo), müşteriyi *Test* etmek için müşterinin isteği ister. 
+- Ticari Market dışında bir deneme sağlayan hizmet olarak yazılım (SaaS) teklifleri *ücretsiz deneme* .
+- Basit listeler müşterinin *benimle iletişim* istemesine izin verir.
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Ticari Market için teklifler oluşturmak Nasıl yaparım? misiniz?
 
@@ -99,10 +99,10 @@ Evet, Azure Kamu marketi Azure Kamu bölgelerinde kullanılabilir ve Azure sanal
 
 Iş ortağı merkezi erişimini yöneten dört ilgili rol vardır.
 
-- *Yönetici*: dizindeki Iş Ortağı Merkezi kullanıcılarını yönetmek ve teklifleri oluşturmak ve güncelleştirmek için izinler sağlar.
-- *Geliştirici*: bir kullanıcının teklifleri oluşturmasına ve güncelleştirmesine izin verir.
-- *Mali katkıda bulunan*: ödeme raporlamasını görüntüleme izinleri sağlar.
-- *Sahip*: ödeme hesabı ve vergi profilini ayarlayabilir. Yayımcı anlaşmasını kabul eden Kullanıcı varsayılan olarak sahip olur.
+- *Yönetici* : dizindeki Iş Ortağı Merkezi kullanıcılarını yönetmek ve teklifleri oluşturmak ve güncelleştirmek için izinler sağlar.
+- *Geliştirici* : bir kullanıcının teklifleri oluşturmasına ve güncelleştirmesine izin verir.
+- *Mali katkıda bulunan* : ödeme raporlamasını görüntüleme izinleri sağlar.
+- *Sahip* : ödeme hesabı ve vergi profilini ayarlayabilir. Yayımcı anlaşmasını kabul eden Kullanıcı varsayılan olarak sahip olur.
 
 Azure Active Directory (Azure AD) *genel yönetici* izinleri, Yeni Kullanıcı hesapları oluşturmak veya temel alınan dizindeki Konuk hesaplarını davet etmek için gereklidir. İş Ortağı Merkezi, Azure AD 'yi kimlik modeline uygular ve bir kuruluşun Azure AD örneği genellikle BT veya güvenlik ekipleri tarafından yönetilir ve denetlenir.
 
@@ -303,7 +303,7 @@ Daha fazla bilgi için bkz. [ödeme hesabınızı ve vergi formlarınızı ayarl
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Ticari Market ile desteklenen dönüşler ve para iadesi mi?
 
-Müşteriler, para iadesi almak için belirtilen bir zaman çerçevesinde abonelikleri iptal edebilir. Aylık abonelikler için 24 saattir ve yıllık abonelikler için 14 gündür. Bir çözüm kullanıldıktan sonra tüketimine göre faturalandırılan teklifler, para iadesi için uygun değildir.
+Para iadesi, belirli koşullar ve belirli ücretler kapsamındaki müşteriler tarafından kullanılabilir. Aylık olarak faturalandırılan yinelenen giderlerin para iadesi istekleri, satın alma veya yenileme işlemleri için 24 saat içinde alınmalıdır. Benzer şekilde, yıllık olarak faturalandırılan yinelenen ücretlere yönelik isteklerin iadesi veya yenilenmesi için 14 gün içinde alınması gerekir. Bu tür bir para iadesi, kullanımından kaynaklanan ücretler için geçerlidir (sanal makine tekliflerinden veya tarifeli faturalandırma üzerinden).
 
 ## <a name="resources"></a>Kaynaklar
 
@@ -311,7 +311,7 @@ Müşteriler, para iadesi almak için belirtilen bir zaman çerçevesinde abonel
 
 Başlamak için bazı kaynaklar aşağıda verilmiştir:
 
-- [Microsoft ticari Market nedir?](overview.md)
+- [Microsoft ticari market nedir?](overview.md)
 - [Microsoft ticari Market İş Ortağı Merkezi](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Microsoft ve diğer iş ortaklarıyla nasıl etkileşime geçebilirim?

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: cd1342ae5912a9a91f1bd8d1bdacecdb5a2bbdb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eaf36cc2690b3c0f8922c05432b3197b4ff30d9a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416522"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026063"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Azure Data Factory Veri Akışı Oluşturma
 
@@ -22,15 +22,15 @@ ADF 'de veri akışlarını eşleme, hiçbir kodlama gerekmeden verileri ölçek
 
 İlk olarak Azure portal yeni bir v2 Data Factory oluşturmaya başlayın. Yeni fabrikanızı oluşturduktan sonra, Data Factory Kullanıcı arabirimini başlatmak için "yazar & Izleyicisi" kutucuğuna tıklayın.
 
-![Veri akışı seçenekleri](media/data-flow/v2portal.png "veri akışı oluşturma")
+![Ekran görüntüsü sürüm için seçili v2 ile yeni Data Factory bölmesini gösterir.](media/data-flow/v2portal.png "veri akışı oluşturma")
 
 Data Factory kullanıcı arabiriminden olduktan sonra örnek veri akışlarını kullanabilirsiniz. Bu örnekler ADF Şablon Galerisi ' nden kullanılabilir. ADF 'de "şablondan işlem hattı" oluşturun ve şablon galerisinden veri akışı kategorisini seçin.
 
-![Veri akışı seçenekleri](media/data-flow/template.png "veri akışı oluşturma")
+![Ekran görüntüsünde veri akışı seçili olarak veri akışı sekmesi görüntülenir.](media/data-flow/template.png "veri akışı oluşturma")
 
 Azure Blob depolama hesabı bilgilerinizi girmeniz istenir.
 
-![Veri akışı seçenekleri](media/data-flow/template2.png "veri akışı oluşturma 2")
+![Ekran görüntüsü, Kullanıcı girişlerini girebileceğiniz veri akışı bölmesini kullanarak verileri dönüştürme ' yı gösterir.](media/data-flow/template2.png "veri akışı oluşturma 2")
 
 [Bu örnekler için kullanılan veriler burada bulunabilir](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata). Örnekleri yürütebilmeniz için örnek verileri indirin ve dosyaları Azure Blob depolama hesaplarınıza depolayın.
 
@@ -38,7 +38,7 @@ Azure Blob depolama hesabı bilgilerinizi girmeniz istenir.
 
 Veri akışları oluşturmak için ADF Kullanıcı arabirimindeki kaynak oluştur "artı işareti" düğmesini kullanın.
 
-![Veri akışı seçenekleri](media/data-flow/newresource.png "Yeni kaynak")
+![Ekran görüntüsü, fabrika kaynakları menüsünden seçilen veri akışını gösterir.](media/data-flow/newresource.png "Yeni kaynak")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

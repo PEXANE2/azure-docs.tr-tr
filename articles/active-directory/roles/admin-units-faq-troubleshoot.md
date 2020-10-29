@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c92359c9bbdb985cd4b01c84911b561554fd7d2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 56bb9ab927c3383c49106a3a7b263ff8e137db9c
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377944"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026522"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD yönetim birimleri: sorun giderme ve SSS
 
-Azure Active Directory (Azure AD) içinde daha ayrıntılı yönetim denetimi için, bir veya daha fazla yönetim birimiyle (AU) sınırlı bir kapsama sahip bir Azure AD rolüne kullanıcı atayabilirsiniz. Ortak görevlere yönelik örnek PowerShell betikleri için bkz. [çalışma, yönetim birimleriyle çalışma](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true).
+Azure Active Directory (Azure AD) ' da daha ayrıntılı yönetim denetimi için, bir veya daha fazla yönetim birimiyle sınırlı bir kapsama sahip bir Azure AD rolüne kullanıcı atayabilirsiniz. Ortak görevlere yönelik örnek PowerShell betikleri için bkz. [çalışma, yönetim birimleriyle çalışma](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -31,27 +31,29 @@ Azure Active Directory (Azure AD) içinde daha ayrıntılı yönetim denetimi i�
 
 Y **:** Yalnızca bir *genel yönetici* veya *ayrıcalıklı rol YÖNETICISI* , Azure AD 'de bir yönetim birimi oluşturabilir. Yönetim birimini oluşturmaya çalışan kullanıcının *genel yönetici* ya da *ayrıcalıklı rol yöneticisi* rolüne atandığından emin olun.
 
-**S: yönetim birimine bir grup ekledim. Grup üyeleri neden hala gösterilmiyor?**
+**S: bir yönetim birimine bir grup ekledim. Grup üyeleri neden hala gösterilmiyor?**
 
-Y **:** Yönetim birimine bir grup eklediğinizde, bu, gruba eklenen tüm üyelerin oluşmasına neden olmaz. Kullanıcıların doğrudan yönetim birimine atanması gerekir.
+Y **:** Bir yönetim birimine bir grup eklediğinizde, bu, gruba eklenen tüm üyelerin oluşmasına neden olmaz. Kullanıcıların doğrudan yönetim birimine atanması gerekir.
 
 **S: yönetici biriminin bir üyesini yeni ekledim (veya kaldırdım). Üye Kullanıcı arabiriminde neden gösterilmiyor (veya hala gösterilmiyor)?**
 
-Y **:** Bazen, yönetim biriminin bir veya daha fazla üyesinin eklenmesi veya kaldırılması işleminin işlenmesi, **yönetim birimleri** sayfasında yansıtılmayı birkaç dakika sürebilir. Alternatif olarak, doğrudan ilişkili kaynağın özelliklerine gidebilir ve eylemin tamamlanıp tamamlanmadığını görebilirsiniz. Au 'daki kullanıcılar ve gruplar hakkında daha fazla bilgi için bkz. [bir kullanıcının yönetim birimlerini listeleme](admin-units-add-manage-users.md) ve [bir grup Için yönetim birimlerini listeleme](admin-units-add-manage-groups.md).
+Y **:** Bazen, yönetim biriminin bir veya daha fazla üyesinin eklenmesi veya kaldırılması, **yönetim birimleri** bölmesinde yansıtılmayı birkaç dakika sürebilir. Alternatif olarak, doğrudan ilişkili kaynağın özelliklerine gidebilir ve eylemin tamamlanıp tamamlanmadığını görebilirsiniz. Yönetim birimlerindeki kullanıcılar ve gruplar hakkında daha fazla bilgi için, bkz. bir [Kullanıcı için yönetim birimlerinin listesini görüntüleme](admin-units-add-manage-users.md) ve [bir grup için yönetim birimlerinin bir listesini görüntüleme](admin-units-add-manage-groups.md).
 
 **S: bir yönetim biriminde Temsilcili bir parola yöneticisidir. Belirli bir kullanıcının parolasını neden sıfırlayamıyorum?**
 
-Y **:** Bir yönetim biriminin Yöneticisi olarak, yalnızca yönetim biriminizdeki kullanıcılara atanan kullanıcılar için parolaları sıfırlayabilirsiniz. Parola sıfırlama başarısız olan kullanıcının, atandığı yönetim birimine ait olduğundan emin olun. Kullanıcı aynı yönetim birimine aitse ancak parolasını sıfırlamadıysanız, kullanıcıya atanan rolleri kontrol edin. 
+Y **:** Bir yönetim biriminin Yöneticisi olarak, yalnızca yönetim biriminizdeki kullanıcılara atanan kullanıcılar için parolaları sıfırlayabilirsiniz. Parola sıfırlama başarısız olan kullanıcının, atandığı yönetim birimine ait olduğundan emin olun. Kullanıcı aynı yönetim birimine aitse ancak hala kullanıcının parolasını sıfırlamadıysanız, kullanıcıya atanan rolleri kontrol edin. 
 
 Ayrıcalık yükselmesine engel olmak için, yönetim birimi kapsamlı bir yönetici, kuruluş genelinde bir kapsama sahip bir role atanan kullanıcının parolasını sıfırlayabilir.
 
 **S: yönetim birimleri neden gereklidir? Kapsam tanımlama yolu olarak güvenlik grupları kullanılamadı mu?**
 
-Y **:** Güvenlik grupları, mevcut bir amaç ve yetkilendirme modeline sahiptir. Örneğin, bir *Kullanıcı Yöneticisi*, Azure AD kuruluşundaki tüm güvenlik gruplarının üyeliğini yönetebilir. Rol, Salesforce gibi uygulamalara erişimi yönetmek için grupları kullanabilir. Bir *Kullanıcı Yöneticisi* , yetkilendirme modelinin kendisini yönetebilmelidir, bu da güvenlik grupları "kaynak gruplandırması" senaryolarını destekleyecek şekilde genişletilmişse sonuç olur. Windows Server Active Directory 'daki kuruluş birimleri gibi yönetim birimlerinin, çok çeşitli dizin nesnelerinin kapsamını yönetmek için bir yol sağlaması amaçlanmıştır. Güvenlik grupları, kaynak kapsamlarının üyesi olabilir. Yöneticinin yönetebileceği güvenlik grupları kümesini tanımlamak için güvenlik gruplarının kullanılması kafa karıştırıcı hale gelebilir.
+Y **:** Güvenlik grupları, mevcut bir amaç ve yetkilendirme modeline sahiptir. Örneğin, bir *Kullanıcı Yöneticisi* , Azure AD kuruluşundaki tüm güvenlik gruplarının üyeliğini yönetebilir. Rol, Salesforce gibi uygulamalara erişimi yönetmek için grupları kullanabilir. Bir *Kullanıcı Yöneticisi* , yetkilendirme modelinin kendisini yönetebilmelidir, bu da güvenlik grupları "kaynak gruplandırması" senaryolarını destekleyecek şekilde genişletilmişse sonuç olur. 
+
+Windows Server Active Directory 'daki kuruluş birimleri gibi yönetim birimlerinin, çok çeşitli dizin nesnelerinin kapsamını yönetmek için bir yol sağlaması amaçlanmıştır. Güvenlik grupları, kaynak kapsamlarının üyesi olabilir. Yöneticinin yönetebileceği güvenlik grupları kümesini tanımlamak için güvenlik gruplarının kullanılması kafa karıştırıcı hale gelebilir.
 
 **S: yönetim birimine bir grup eklemek ne anlama geliyor?**
 
-Y **:** Bir yönetim birimine Grup eklemek, grubun kendisini o yönetim birimi kapsamındaki herhangi bir *Kullanıcı yöneticisinin* yönetim kapsamına taşır. Yönetim birimi için Kullanıcı yöneticileri, grubun adını ve üyeliğini yönetebilir. Yönetici birimi izinleri için *Kullanıcı yöneticisinin* grup kullanıcılarını (örneğin parolalarını sıfırlamasına) yönetmesine izin vermez. *Kullanıcı yöneticisine* kullanıcıları yönetme olanağı vermek için kullanıcıların doğrudan yönetim biriminin üyesi olması gerekir.
+Y **:** Bir yönetim birimine Grup eklemek, grubun kendisini o yönetim birimi kapsamındaki herhangi bir *Kullanıcı yöneticisinin* yönetim kapsamına taşır. Yönetim birimi için Kullanıcı yöneticileri, grubun adını ve üyeliğini yönetebilir. Grup kullanıcılarını yönetmek için *Kullanıcı Yöneticisi* izinleri vermez (örneğin, parolalarını sıfırlamak için). *Kullanıcı yöneticisine* kullanıcıları yönetme olanağı vermek için kullanıcıların doğrudan yönetim biriminin üyesi olması gerekir.
 
 **S: bir kaynak (Kullanıcı veya grup) birden fazla yönetim biriminin üyesi olabilir mi?**
 

@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f7bfa15b12618715bf0d911e4b4927a1fa327107
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539138"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027168"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights’daki günlük tabanlı ve önceden toplanmış ölçümler
 
@@ -40,6 +40,28 @@ Daha yeni SDK 'lar (.NET için[Application Insights 2,7](https://www.nuget.org/p
 Ön toplamayı uygulamayan SDK 'lar için (yani Application Insights SDK 'ların daha eski sürümleri veya tarayıcı araçları için) Application Insights arka ucu, Application Insights olay toplama uç noktası tarafından alınan olayları toplayarak yeni ölçümleri hala doldurur. Bu, kablo üzerinden iletilen azaltılan veri hacminin avantajlarından faydalanmadığında, önceden toplanmış ölçümleri kullanmaya devam edebilir ve koleksiyon sırasında ölçümleri önceden toplamayan SDK 'lar ile neredeyse gerçek zamanlı boyut uyarısı hakkında daha iyi performans ve destek elde edebilirsiniz.
 
 Koleksiyon uç noktasının, uygulama ile birlikte kullandığınız SDK sürümünden bağımsız olarak önceden toplanmış ölçümlerin doğruluğunu hiçbir şekilde [etkilemeyeceği anlamına](./sampling.md) gelen, giriş bitiş noktası 'nın olayları önceden topladığından emin olmak önemlidir.  
+
+### <a name="sdk-supported-pre-aggregated-metrics-table"></a>SDK tarafından desteklenen önceden toplanmış ölçümler tablosu
+
+| Geçerli üretim SDK 'Ları | Standart ölçümler (SDK ön toplaması) | Özel ölçümler (SDK ön toplaması olmadan) | Özel ölçümler (SDK ön toplaması ile)|
+|------------------------------|-----------------------------------|----------------------------------------------|---------------------------------------|
+| .NET Core ve .NET Framework | Desteklenen (V 2.13.1 +)| [Trackmetric](api-custom-events-metrics.md#trackmetric) aracılığıyla desteklenir| [GetMetric](get-metric.md) aracılığıyla desteklenen (v 2.7.2 +) |
+| Java                         | Desteklenmiyor       | [Trackmetric](api-custom-events-metrics.md#trackmetric) aracılığıyla desteklenir| Desteklenmiyor                           |
+| Node.js                      | Desteklenmiyor       | [Trackmetric](api-custom-events-metrics.md#trackmetric) aracılığıyla desteklenir| Desteklenmiyor                           |
+| Python                       | Desteklenmiyor       | Desteklenir                                 | [Opencensus. stats](opencensus-python.md#metrics) aracılığıyla desteklenir |  
+
+
+### <a name="codeless-supported-pre-aggregated-metrics-table"></a>Codeless desteklenen önceden toplanmış ölçümler tablosu
+
+| Geçerli üretim SDK 'Ları | Standart ölçümler (SDK ön toplaması) | Özel ölçümler (SDK ön toplaması olmadan) | Özel ölçümler (SDK ön toplaması ile)|
+|-------------------------|--------------------------|-------------------------------------------|-----------------------------------------|
+| ASP.NET                 | Desteklenen <sup> 1<sup>    | Desteklenmiyor                             | Desteklenmiyor                           |
+| ASP.NET Core            | Desteklenen <sup> 2<sup>    | Desteklenmiyor                             | Desteklenmiyor                           |
+| Java                    | Desteklenmiyor            | Desteklenmiyor                             | [Desteklenir](java-in-process-agent.md#metrics) |
+| Node.js                 | Desteklenmiyor            | Desteklenmiyor                             | Desteklenmiyor                           |
+
+1. App Service ASP.net kodsuz kullanacaksınız Attach yalnızca "tam" izleme modunda ölçümleri yayar. App Service, VM/VMSS ve şirket içi ASP.net kodsuz kullanacaksınız iliştirme, Boyutlar olmadan standart ölçümleri yayar. Tüm boyutlar için SDK gereklidir.
+2. ASP.NET Core kodsuz kullanacaksınız Attach App Service, Boyutlar olmadan standart ölçümleri yayar. Tüm boyutlar için SDK gereklidir.
 
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>Application Insights özel ölçümlerle ön toplamayı kullanma
 

@@ -1,15 +1,15 @@
 ---
 title: Azure İlkesi kaynaklarını dışarı aktarma
 description: İlke tanımları ve ilke atamaları gibi Azure Ilke kaynaklarını GitHub 'a aktarmayı öğrenin.
-ms.date: 09/30/2020
+ms.date: 10/29/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 691e0a026c5f4f1a0a68c744ee81b1da8da9e70b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c16ceed755cab3228b8f9e401f486a0629f3a60d
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777097"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025723"
 ---
 # <a name="export-azure-policy-resources"></a>Azure İlkesi kaynaklarını dışarı aktarma
 
@@ -19,20 +19,20 @@ Bu makalede, mevcut Azure Ilke kaynaklarınızı dışarı aktarma hakkında bil
 
 Azure portal bir ilke tanımını dışarı aktarmak için şu adımları izleyin:
 
-1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
+1. Azure portalında **Tüm hizmetler** ’e tıkladıktan sonra **İlke** 'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
 
 1. Azure Ilkesi sayfasının sol tarafındaki **tanımlar** ' ı seçin.
 
-1. **Tanımları dışarı aktar** düğmesini veya bir ilke tanımının satırındaki üç noktayı seçip **dışarı aktarma tanımı**' nı seçin.
+1. **Tanımları dışarı aktar** düğmesini veya bir ilke tanımının satırındaki üç noktayı seçip **dışarı aktarma tanımı** ' nı seçin.
 
 1. **GitHub Ile oturum aç** düğmesini seçin. Kaynağı dışarı aktarmak için Azure Ilkesini yetkilendirmek üzere GitHub ile henüz kimlik doğrulamasından ayrıldıysanız, açılan yeni pencerede [GitHub eylemi](https://github.com/features/actions) ihtiyaçlarına erişimi gözden geçirin ve dışarı aktarma işlemine devam etmek Için **Yetkilendir AzureGitHubActions** ' ı seçin. Tamamlandıktan sonra, yeni pencere kendi kendini kapatır.
 
 1. **Temel bilgiler** sekmesinde, aşağıdaki seçenekleri ayarlayın ve ardından sayfanın alt kısmındaki **Ilkeler** sekmesini veya **Sonraki: ilkeler** düğmesini seçin.
 
-   - **Depo filtresi**: GitHub eyleminin erişimine izin verdiğiniz tüm depoları görmek Için _depolarıma_ yalnızca sahip olduğunuz depoları veya _Tüm depolarımı_ görüntülemek için ayarlayın.
-   - **Depo**: Azure ilke kaynaklarını dışarı aktarmak istediğiniz depoya ayarlayın.
-   - **Dal**: depodaki dalı ayarlayın. Varsayılan dışında bir dal kullanmak, kaynak kodunuzda daha fazla birleştirmeden önce güncelleştirmelerinizi doğrulamak için iyi bir yoldur.
-   - **Dizin**: Azure ilke kaynaklarının dışarı aktarılacağı _kök düzeyi klasörü_ . Bu dizin altındaki alt klasörler, hangi kaynakların verileceği temel alınarak oluşturulur.
+   - **Depo filtresi** : GitHub eyleminin erişimine izin verdiğiniz tüm depoları görmek Için _depolarıma_ yalnızca sahip olduğunuz depoları veya _Tüm depolarımı_ görüntülemek için ayarlayın.
+   - **Depo** : Azure ilke kaynaklarını dışarı aktarmak istediğiniz depoya ayarlayın.
+   - **Dal** : depodaki dalı ayarlayın. Varsayılan dışında bir dal kullanmak, kaynak kodunuzda daha fazla birleştirmeden önce güncelleştirmelerinizi doğrulamak için iyi bir yoldur.
+   - **Dizin** : Azure ilke kaynaklarının dışarı aktarılacağı _kök düzeyi klasörü_ . Bu dizin altındaki alt klasörler, hangi kaynakların verileceği temel alınarak oluşturulur.
 
 1. **İlkeler** sekmesinde, üç noktayı seçip yönetim gruplarının, aboneliklerinin veya kaynak gruplarının bir birleşimini seçerek kapsamı arama olarak ayarlayın.
    
@@ -47,7 +47,7 @@ Azure portal bir ilke tanımını dışarı aktarmak için şu adımları izleyi
 
 1. Seçilen kaynakların artık kaynak denetiminize aktarıldığına bakmak için GitHub deponuzu, dalınızı ve _kök düzeyi klasörünüzü_ denetleyin.
 
-Azure Ilke kaynakları, seçilen GitHub deposu ve _kök düzeyi klasörü_içinde aşağıdaki yapıya aktarılabilir:
+Azure Ilke kaynakları, seçilen GitHub deposu ve _kök düzeyi klasörü_ içinde aşağıdaki yapıya aktarılabilir:
 
 ```text
 |
@@ -84,7 +84,7 @@ Azure Ilke tanımları, girişimleri ve atamaları, her biri [Azure POWERSHELL](
 Aşağıda _Virtual, Inesstorage_ **adlı** BIR ilke tanımı için JSON alma örneği verilmiştir:
 
 ```azurepowershell-interactive
-Get-AzPolicyDefinition -Name 'VirtualMachineStorage'
+Get-AzPolicyDefinition -Name 'VirtualMachineStorage' | ConvertTo-Json -Depth 10
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

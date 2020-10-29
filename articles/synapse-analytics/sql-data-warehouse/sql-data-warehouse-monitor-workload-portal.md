@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01a22aa5d2ec7ed54be62f0975b0fefbafd84cd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53c68f44273b14658bd4d95ce7cf3cf847c077d0
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211570"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025961"
 ---
 # <a name="monitor-workload---azure-portal"></a>İş yükünü izleme-Azure portal
 
@@ -32,9 +32,9 @@ Log Analytics çalışma alanları için gezinme dikey penceresine gidin ve bir 
 
 ![Log Analytics çalışma alanları](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspaces.png)
 
-![Analytics çalışma alanı Ekle](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace.png)
+![Ekran görüntüsü, Ekle ' yi seçebileceğiniz Log Analytics çalışma alanlarını gösterir.](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace.png)
 
-![Analytics çalışma alanı Ekle](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
+![Ekran görüntüsü, değer girebileceğiniz Log Analytics çalışma alanını gösterir.](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
 Çalışma alanları hakkında daha fazla bilgi için aşağıdaki [belgeleri](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)ziyaret edin.
 

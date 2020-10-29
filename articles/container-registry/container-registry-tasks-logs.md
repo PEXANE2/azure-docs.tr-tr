@@ -3,12 +3,12 @@ title: Görev çalıştırma günlüklerini görüntüleme-görevler
 description: ACR görevleri tarafından oluşturulan çalıştırma günlüklerini görüntüleme ve yönetme.
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a10d4a3a2746acf38445673af994c6317c77de
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871941"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027185"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Görev çalıştırma günlüklerini görüntüleme ve yönetme
 
@@ -65,14 +65,14 @@ Bir görev otomatik olarak tetikleniyorsa (örneğin, kaynak kodu güncelleştir
 Portalda çalıştırma günlüklerini görüntülemek için:
 
 1. Kapsayıcı Kayıt defterinize gidin.
-1. **Hizmetler**' de **Görevler**  >  **çalıştırmalar**' ı seçin.
+1. **Hizmetler** ' de **Görevler**  >  **çalıştırmalar** ' ı seçin.
 1. Çalıştırma durumunu görüntülemek ve günlükleri çalıştırmak için bir **çalıştırma kimliği** seçin. Günlük, oluşturulduysa akış günlüğü ile aynı bilgileri içerir.
 
 ![Görevi çalıştır oturum açma portalını görüntüle](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
 Azure CLı kullanarak bir günlüğü görüntülemek için [az ACR görev günlüklerini](/cli/azure/acr/task#az-acr-task-logs) çalıştırın ve bır çalıştırma kimliği, bir görev adı ya da bir yapı göreviyle oluşturduğunuz belirli bir görüntüyü belirtin. Bir görev adı belirtilmişse, komut, son oluşturulan çalıştırmanın günlüğünü gösterir.
 
-Aşağıdaki örnek, KIMLIĞI *CF4*olan çalıştırma için günlüğü çıktı olarak verir:
+Aşağıdaki örnek, KIMLIĞI *CF4* olan çalıştırma için günlüğü çıktı olarak verir:
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \
@@ -94,18 +94,10 @@ az acr task logs --registry mycontainerregistry1220 \
 
 Ayrıca, yerel günlük dosyalarını Azure depolama 'ya kaydedebilirsiniz. Örneğin, bir depolama hesabına dosya yüklemek için [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md), [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)veya başka yöntemler kullanın.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Container Registry görevler](container-registry-tasks-overview.md) hakkında daha fazla bilgi edinin
 
-<!-- LINKS - External -->
-[base-alpine]: https://hub.docker.com/_/alpine/
-[base-dotnet]: https://hub.docker.com/r/microsoft/dotnet/
-[base-node]: https://hub.docker.com/_/node/
-[base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
-[sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli

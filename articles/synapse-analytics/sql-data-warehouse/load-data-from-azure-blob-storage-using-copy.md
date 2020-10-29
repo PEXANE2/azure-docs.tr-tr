@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb5984ba5d5764ee2ffa3f28e2d95612c14f7e27
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371533"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025944"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Öğretici: New York Taxicab veri kümesini yükleme
 
@@ -52,7 +52,7 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
 2. **Yeni** sayfadan **veritabanları** ' nı seçin ve **Yeni** sayfada **öne çıkan** **Azure SYNAPSE Analytics** ' i seçin.
 
-    ![veri ambarı oluşturma](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
+    ![Ekran görüntüsü, Azure portal veritabanlarından SQL veri ambarı 'nın seçili olduğunu gösterir.](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
 3. Formu aşağıdaki bilgilerle doldurun:
 
@@ -63,9 +63,9 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
    | **Kaynak grubu** | myResourceGroup       | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
    | **Kaynak seçme**  | Boş veritabanı        | Boş bir veritabanı oluşturulacağını belirtir. Veri ambarının bir veritabanı türü olduğuna dikkat edin. |
 
-    ![veri ambarı oluşturma](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
+    ![Ekran görüntüsü, bu değerleri girebileceğiniz SQL veri ambarı bölmesini gösterir.](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
 
-4. Yeni veritabanınız için yeni bir sunucu oluşturup yapılandırmak üzere **Sunucu**’yu seçin. **Yeni sunucu formu**’nu aşağıdaki bilgilerle doldurun:
+4. Yeni veritabanınız için yeni bir sunucu oluşturup yapılandırmak üzere **Sunucu** ’yu seçin. **Yeni sunucu formu** ’nu aşağıdaki bilgilerle doldurun:
 
     | Ayar                | Önerilen değer          | Açıklama                                                  |
     | ---------------------- | ------------------------ | ------------------------------------------------------------ |
@@ -76,20 +76,20 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
     ![Sunucu oluştur](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. **Seç**’i seçin.
+5. **Seç** ’i seçin.
 
 6. Veri ambarının Gen1 mi yoksa Gen2 mi olduğunu ve veri ambarı birimlerinin sayısını belirtmek için **performans düzeyini** seçin.
 
-7. Bu öğretici için, SQL havuzu **Gen2**' ı seçin. Kaydırıcı varsayılan olarak **DW1000c** olarak ayarlanır.  Nasıl çalıştığını görmek için yukarı ve aşağı taşımayı deneyin.
+7. Bu öğretici için, SQL havuzu **Gen2** ' ı seçin. Kaydırıcı varsayılan olarak **DW1000c** olarak ayarlanır.  Nasıl çalıştığını görmek için yukarı ve aşağı taşımayı deneyin.
 
     ![performansı yapılandırma](./media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. **Uygula**’yı seçin.
+8. **Apply** (Uygula) seçeneğini belirleyin.
 9. Sağlama dikey penceresinde boş veritabanı için bir **harmanlama** seçin. Bu öğreticide varsayılan değeri kullanın. Harmanlamalar hakkında daha fazla bilgi için bkz. [Harmanlamalar](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 10. Formu tamamladığınıza göre, veritabanını sağlamak için **Oluştur** ' u seçin. Sağlama işlemi birkaç dakika sürer.
 
-11. Araç çubuğunda **Bildirimler**’i seçerek dağıtım işlemini izleyin.
+11. Araç çubuğunda **Bildirimler** ’i seçerek dağıtım işlemini izleyin.
   
      ![Ekran görüntüsü, bildirimler bölmesinin devam eden dağıtım ile açık Azure portal gösterir.](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
@@ -100,7 +100,7 @@ Sunucu düzeyinde, dış uygulamaların ve araçların sunucuya ya da sunucu üz
 > [!NOTE]
 > Azure SYNAPSE Analytics, 1433 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı takdirde sunucunuza bağlanamazsınız.
 
-1. Dağıtım tamamlandıktan sonra, sol taraftaki menüden **SQL veritabanları** ' nı seçin ve ardından **SQL veritabanları** sayfasında **mysampledatabase** ' i seçin. Veritabanınızın genel bakış sayfası açılır ve tam sunucu adı (örneğin, **MyNewServer-20180430.Database.Windows.net**) görüntülenerek daha fazla yapılandırma seçeneği sunulur.
+1. Dağıtım tamamlandıktan sonra, sol taraftaki menüden **SQL veritabanları** ' nı seçin ve ardından **SQL veritabanları** sayfasında **mysampledatabase** ' i seçin. Veritabanınızın genel bakış sayfası açılır ve tam sunucu adı (örneğin, **MyNewServer-20180430.Database.Windows.net** ) görüntülenerek daha fazla yapılandırma seçeneği sunulur.
 
 2. Sonraki hızlı başlangıçlarda sunucunuza ve veritabanlarına bağlanmak için bu tam sunucu adını kopyalayın. Sonra sunucu ayarlarını açmak için sunucu adını seçin.
 
@@ -110,13 +110,13 @@ Sunucu düzeyinde, dış uygulamaların ve araçların sunucuya ya da sunucu üz
 
     ![sunucu ayarları](./media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
-4. **Güvenlik duvarı ayarlarını göster**’i seçin. Sunucu için **güvenlik duvarı ayarları** sayfası açılır.
+4. **Güvenlik duvarı ayarlarını göster** ’i seçin. Sunucu için **güvenlik duvarı ayarları** sayfası açılır.
 
     ![sunucu güvenlik duvarı kuralı](./media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
 
 5. Geçerli IP adresinizi yeni bir güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin. Güvenlik duvarı kuralı, 1433 numaralı bağlantı noktasını tek bir IP adresi veya bir IP adresi aralığı için açabilir.
 
-6. **Kaydet**’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturulur.
+6. **Kaydet** ’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturulur.
 
 7. **Tamam** ' ı seçin ve ardından **güvenlik duvarı ayarları** sayfasını kapatın.
 
@@ -146,16 +146,16 @@ Bu bölüm, sunucunuza bağlantı kurmak için [SQL Server Management Studio](/s
     | Ayar        | Önerilen değer                            | Açıklama                                                  |
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Sunucu türü    | Veritabanı altyapısı                            | Bu değer gereklidir                                       |
-    | Sunucu adı    | Tam sunucu adı            | Ad şuna benzer olmalıdır: **MyNewServer-20180430.Database.Windows.net**. |
+    | Sunucu adı    | Tam sunucu adı            | Ad şuna benzer olmalıdır: **MyNewServer-20180430.Database.Windows.net** . |
     | Kimlik doğrulaması | SQL Server Kimlik Doğrulaması                  | Bu öğreticide yapılandırdığımız tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
     | Oturum aç          | Sunucu yöneticisi hesabı                   | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
     | Parola       | Sunucu yöneticisi hesabınızın parolası | Bu, sunucuyu oluştururken belirttiğiniz paroladır. |
 
     ![sunucuya bağlan](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. **Bağlan**'ı seçin. SSMS’te Nesne Gezgini penceresi açılır.
+3. **Bağlan** ’ı seçin. SSMS’te Nesne Gezgini penceresi açılır.
 
-4. Nesne Gezgini’nde, **Veritabanları**’nı genişletin. Ardından **Sistem veritabanları**'nı ve **asıl** öğesini genişleterek asıl veritabanındaki nesneleri görüntüleyin.  Yeni veritabanınızdaki nesneleri görüntülemek için **mySampleDatabase**’i genişletin.
+4. Nesne Gezgini’nde, **Veritabanları** ’nı genişletin. Ardından **Sistem veritabanları** 'nı ve **asıl** öğesini genişleterek asıl veritabanındaki nesneleri görüntüleyin.  Yeni veritabanınızdaki nesneleri görüntülemek için **mySampleDatabase** ’i genişletin.
 
     ![veritabanı nesneleri](./media/load-data-from-azure-blob-storage-using-polybase/connected.png)
 
@@ -167,7 +167,7 @@ En iyisi verileri yüklemeye ayrılmış bir oturum açma ve kullanıcı bilgisi
 
 Şu anda sunucu yöneticisi olarak bağlandığınız için oturum açma bilgileri ve kullanıcılar oluşturabilirsiniz. Şu adımları kullanarak **LoaderRC20** adlı bir oturum açma bilgisi ve kullanıcı oluşturun. Sonra kullanıcıyı **staticrc20** kaynak sınıfına atayın.
 
-1. SSMS 'de, açılan menüyü göstermek için **ana öğe** ' yi sağ seçin ve **Yeni sorgu**' yı seçin. Yeni bir sorgu penceresi açılır.
+1. SSMS 'de, açılan menüyü göstermek için **ana öğe** ' yi sağ seçin ve **Yeni sorgu** ' yı seçin. Yeni bir sorgu penceresi açılır.
 
     ![Asıl veritabanında yeni sorgu](./media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
@@ -178,9 +178,9 @@ En iyisi verileri yüklemeye ayrılmış bir oturum açma ve kullanıcı bilgisi
     CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
     ```
 
-3. **Yürüt**’ü seçin.
+3. **Yürüt** ’ü seçin.
 
-4. **mySampleDataWarehouse**’a sağ tıklayıp **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.  
+4. **mySampleDataWarehouse** ’a sağ tıklayıp **Yeni Sorgu** ’yu seçin. Yeni bir sorgu penceresi açılır.  
 
     ![Örnek veri ambarında yeni sorgu](./media/load-data-from-azure-blob-storage-using-polybase/create-loading-user.png)
 
@@ -192,19 +192,19 @@ En iyisi verileri yüklemeye ayrılmış bir oturum açma ve kullanıcı bilgisi
     EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
     ```
 
-6. **Yürüt**’ü seçin.
+6. **Yürüt** ’ü seçin.
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>Yükleme kullanıcısı olarak sunucuya bağlanma
 
 Verileri yüklemenin ilk adımı LoaderRC20 olarak oturum açmaktır.  
 
-1. Nesne Gezgini ' de **Bağlan** açılan menüsünü seçin ve **veritabanı altyapısı**' nı seçin. **Sunucuya Bağlan** iletişim kutusu görüntülenir.
+1. Nesne Gezgini ' de **Bağlan** açılan menüsünü seçin ve **veritabanı altyapısı** ' nı seçin. **Sunucuya Bağlan** iletişim kutusu görüntülenir.
 
     ![Yeni oturum açma bilgileriyle bağlanma](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
 2. Tam sunucu adını girin ve Oturum Açma bilgisi olarak **LoaderRC20** girin.  LoaderRC20 için parolanızı girin.
 
-3. **Bağlan**'ı seçin.
+3. **Bağlan** ’ı seçin.
 
 4. Bağlantınız hazır olduğunda, Nesne Gezgini'nde iki sunucu bağlantısı görürsünüz. Bağlantılardan biri ServerAdmin ve diğeri de MedRCLogin olarak gösterilir.
 
@@ -216,7 +216,7 @@ Verileri yeni veri ambarınıza yükleme işlemine başlamaya hazırsınız. Ö�
 
 Aşağıdaki SQL betiklerini çalıştırın ve yüklemek istediğiniz veriler hakkındaki bilgileri belirtin. Bu bilgiler verilerin konumu, verilerdeki içeriğin biçimi ve verilerin tablo tanımıdır.
 
-1. Önceki bölümde veri ambarınızda LoaderRC20 olarak oturum açmıştınız. SSMS'de, LoaderRC20 bağlantınıza sağ tıklayın ve **Yeni Sorgu**'yu seçin.  Yeni bir sorgu penceresi görüntülenir.
+1. Önceki bölümde veri ambarınızda LoaderRC20 olarak oturum açmıştınız. SSMS'de, LoaderRC20 bağlantınıza sağ tıklayın ve **Yeni Sorgu** 'yu seçin.  Yeni bir sorgu penceresi görüntülenir.
 
     ![Yeni yükleme sorgusu penceresi](./media/load-data-from-azure-blob-storage-using-polybase/new-loading-query.png)
 
@@ -505,13 +505,13 @@ Kaynakları istediğiniz gibi temizlemek için bu adımları izleyin.
 
     ![Kaynakları temizleme](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. İşlem duraklatmak için **Duraklat** düğmesini seçin. Veri ambarı duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşlem işlemini sürdürmesini sağlamak için **Başlat**' ı seçin.
+2. İşlem duraklatmak için **Duraklat** düğmesini seçin. Veri ambarı duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşlem işlemini sürdürmesini sağlamak için **Başlat** ' ı seçin.
 
-3. Veri ambarını kaldırmak için işlem veya depolama için ücretlendirilmezsiniz, **Sil**' i seçin.
+3. Veri ambarını kaldırmak için işlem veya depolama için ücretlendirilmezsiniz, **Sil** ' i seçin.
 
-4. Oluşturduğunuz sunucuyu kaldırmak için önceki görüntüde **MyNewServer-20180430.Database.Windows.net** ' ı seçin ve **Sil**' i seçin.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu işlemi gerçekleştirirken dikkatli olun.
+4. Oluşturduğunuz sunucuyu kaldırmak için önceki görüntüde **MyNewServer-20180430.Database.Windows.net** ' ı seçin ve **Sil** ' i seçin.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu işlemi gerçekleştirirken dikkatli olun.
 
-5. Kaynak grubunu kaldırmak için **Myresourcegroup**' ı seçin ve **kaynak grubunu sil**' i seçin.
+5. Kaynak grubunu kaldırmak için **Myresourcegroup** ' ı seçin ve **kaynak grubunu sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

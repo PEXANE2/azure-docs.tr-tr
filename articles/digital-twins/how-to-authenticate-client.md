@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 84cb7e7e98e81e242ec1cac554fe073370e45645
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 7f5ca063bcc784498dddf87f34f0f7974b95ecaf
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495776"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027322"
 ---
 # <a name="write-client-app-authentication-code"></a>İstemci uygulaması kimlik doğrulama kodunu yaz
 
@@ -24,7 +24,7 @@ Bu makalede, istemci kitaplığı kullanılarak kimlik bilgilerinin nasıl alın
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-İlk olarak, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-portal.md)bölümünde kurulum adımlarını doldurun. Bu, bir Azure dijital TWINS örneğiniz olduğundan, kullanıcılarınızın erişim izinlerine sahip olduğundan ve istemci uygulamaları için izinler ayarlamış olduğunuzdan emin olur. Tüm bu kurulumdan sonra, istemci uygulama kodunu yazmaya hazırsınızdır.
+İlk olarak, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-portal.md)bölümünde kurulum adımlarını doldurun. Bu, bir Azure dijital TWINS örneğine sahip olmanızı ve kullanıcılarınızın erişim izinlerine sahip olmasını sağlayacaktır. Bu kurulumdan sonra, istemci uygulama kodu yazmaya hazırsınızdır.
 
 Devam etmek için, kodunuzu yazdığınız bir istemci uygulaması projesine ihtiyacınız olacaktır. Önceden ayarlanmış bir istemci uygulama projeniz yoksa, bu öğreticide kullanmak üzere seçtiğiniz dilde temel bir proje oluşturun.
 
@@ -37,7 +37,7 @@ Devam etmek için, kodunuzu yazdığınız bir istemci uygulaması projesine iht
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 Üç ortak kimlik bilgisi-içindeki yöntemleri alma `Azure.Identity` :
-* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `TokenCredential` , Azure 'a dağıtılacak uygulamalar için varsayılan bir kimlik doğrulama akışı sağlar ve **yerel geliştirme için önerilen seçenektir**. Ayrıca, bu makalede önerilen diğer iki yöntemi denemek için de etkinleştirilebilir; `ManagedIdentityCredential` `InteractiveBrowserCredential` bir yapılandırma değişkeniyle birlikte kaydırılır ve buna erişebilir.
+* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `TokenCredential` , Azure 'a dağıtılacak uygulamalar için varsayılan bir kimlik doğrulama akışı sağlar ve **yerel geliştirme için önerilen seçenektir** . Ayrıca, bu makalede önerilen diğer iki yöntemi denemek için de etkinleştirilebilir; `ManagedIdentityCredential` `InteractiveBrowserCredential` bir yapılandırma değişkeniyle birlikte kaydırılır ve buna erişebilir.
 * [Managedıdentitycredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) , [YÖNETILEN kimlikler (MSI)](../active-directory/managed-identities-azure-resources/overview.md)gerektiren durumlarda harika çalışır ve Azure Işlevleri ile çalışmaya ve Azure hizmetlerine dağıtmaya yönelik iyi bir adaydır.
 * [Interactivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) etkileşimli uygulamalara yöneliktir ve kimliği DOĞRULANMıŞ bir SDK istemcisi oluşturmak için kullanılabilir
 
@@ -60,7 +60,7 @@ Daha sonra, içindeki yöntemlerden birini kullanarak kimlik bilgilerini almak i
 
 ### <a name="defaultazurecredential-method"></a>DefaultAzureCredential yöntemi
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `TokenCredential` , Azure 'a dağıtılacak uygulamalar için varsayılan bir kimlik doğrulama akışı sağlar ve **yerel geliştirme için önerilen seçenektir**.
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `TokenCredential` , Azure 'a dağıtılacak uygulamalar için varsayılan bir kimlik doğrulama akışı sağlar ve **yerel geliştirme için önerilen seçenektir** .
 
 Varsayılan Azure kimlik bilgilerini kullanmak için Azure Digital TWINS örneğinin URL 'SI ([bulunacak yönergeler](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) gerekir.
 
@@ -110,8 +110,8 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 [Interactivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) yöntemi etkileşimli uygulamalara yöneliktir ve kimlik doğrulaması için bir Web tarayıcısı getirir. Bunu, `DefaultAzureCredential` etkileşimli kimlik doğrulaması gerektiren durumlarda kullanabilirsiniz.
 
 Etkileşimli tarayıcı kimlik bilgilerini kullanmak için Azure dijital TWINS API 'Leri için izinlere sahip bir **uygulama kaydına** ihtiyacınız olacaktır. Bu uygulama kaydını ayarlama adımları için bkz. [*nasıl yapılır: uygulama kaydı oluşturma*](how-to-create-app-registration.md). Uygulama kaydı kurulduktan sonra...
-* Uygulama kaydının *uygulama (istemci) kimliği* ([bulunacak yönergeler](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
-* Uygulama kaydının *Dizin (kiracı) kimliği* ([bulunacak yönergeler](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* Uygulama kaydının *uygulama (istemci) kimliği* ( [bulunacak yönergeler](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* Uygulama kaydının *Dizin (kiracı) kimliği* ( [bulunacak yönergeler](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
 * Azure dijital TWINS örneğinin URL 'SI ([bulunacak yönergeler](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 
 Kullanılarak kimliği doğrulanmış SDK istemcisi oluşturma kodu örneği aşağıda verilmiştir `InteractiveBrowserCredential` .

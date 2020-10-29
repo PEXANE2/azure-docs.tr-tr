@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/17/2020
-ms.openlocfilehash: 445cd7c55de58b6e5266f76a06d2cbabc75c18b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: fb5aca1739fbb4a77cbcb7eed6b9dce1b3ccc182
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907170"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027593"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics giriş olarak veri akışı
 
@@ -55,7 +55,7 @@ Aşağıdaki tabloda, bir olay hub 'ından veri girişi akışı için Azure por
 | **Olay Hub'ı adı** | Giriş olarak kullanılacak Olay Hub 'ının adı. |
 | **Olay Hub'ı ilke adı** | Olay Hub 'ına erişim sağlayan paylaşılan erişim ilkesi. Her paylaşılan erişim ilkesinin adı, sizin ayarladığınız izinler ve anahtarlara erişim vardır. Bu seçenek, Olay Hub 'ı ayarlarını el ile sağlama seçeneğini seçmediğiniz takdirde otomatik olarak doldurulur.|
 | **Olay Hub 'ı Tüketici grubu** (önerilir) | Her Stream Analytics işi için ayrı bir tüketici grubu kullanmanız önemle önerilir. Bu dize, Olay Hub 'ından veri almak için kullanılacak tüketici grubunu tanımlar. Hiçbir tüketici grubu belirtilmemişse, Stream Analytics işi $Default tüketici grubunu kullanır.  |
-| **Bölüm anahtarı** | Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını ekleyebilirsiniz. Bölüm anahtarları isteğe bağlıdır ve bu özellikte bir bölüm veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını artırmak için kullanılır. |
+| **Bölüm anahtarı** | Bu, yalnızca işiniz [Uyumluluk düzeyi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1,2 veya üstünü kullanacak şekilde yapılandırıldıysa kullanılabilen isteğe bağlı bir alandır. Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını buraya ekleyebilirsiniz. Bu özellik, bir bölüm BY veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını iyileştirmek için kullanılır. Bu iş uyumluluk düzeyi 1,2 veya üstünü kullanıyorsa, bu alan varsayılan olarak "PartitionID" olarak belirlenmiştir. |
 | **Olay serileştirme biçimi** | Gelen veri akışının serileştirme biçimi (JSON, CSV, Avro veya [diğer (prototip, XML, özel...)](custom-deserializer.md)).  JSON biçiminin belirtile hizalandığından ve ondalık sayılar için öndeki 0 içermediğinden emin olun. |
 | **Kodlama** | UTF-8 şu anda desteklenen tek kodlama biçimidir. |
 | **Olay sıkıştırma türü** | Hiçbiri (varsayılan), GZip veya söndür gibi gelen veri akışını okumak için kullanılan sıkıştırma türü. |
@@ -101,11 +101,11 @@ Aşağıdaki tabloda, bir IoT Hub akış girişi olarak yapılandırdığınızd
 | **Girdi diğer adı** | Bu girişe başvurmak için iş sorgusunda kullandığınız kolay bir ad.|
 | **Abonelik** | IoT Hub kaynağının bulunduğu aboneliği seçin. | 
 | **IoT Hub’ı** | Giriş olarak kullanılacak IoT Hub adı. |
-| **Uç Noktası** | IoT Hub uç noktası.|
+| **Uç Nokta** | IoT Hub uç noktası.|
 | **Paylaşılan erişim ilkesi adı** | IoT Hub erişim sağlayan paylaşılan erişim ilkesi. Her paylaşılan erişim ilkesinin adı, sizin ayarladığınız izinler ve anahtarlara erişim vardır. |
 | **Paylaşılan erişim ilkesi anahtarı** | IoT Hub erişimi yetkilendirmek için kullanılan paylaşılan erişim anahtarı.  IoT Hub ayarlarını el ile sağlama seçeneğini seçmediğiniz takdirde bu seçenek otomatik olarak doldurulur. |
 | **Tüketici grubu** | Her Stream Analytics işi için farklı bir tüketici grubu kullanmanız önemle tavsiye edilir. Tüketici grubu IoT Hub verileri almak için kullanılır. Stream Analytics, aksi belirtilmedikçe $Default tüketicisi grubunu kullanır.  |
-| **Bölüm anahtarı** | Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını ekleyebilirsiniz. Bölüm anahtarları isteğe bağlıdır ve bu özellikte bir bölüm veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını artırmak için kullanılır. |
+| **Bölüm anahtarı** | Bu, yalnızca işiniz [Uyumluluk düzeyi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1,2 veya üstünü kullanacak şekilde yapılandırıldıysa kullanılabilen isteğe bağlı bir alandır. Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını buraya ekleyebilirsiniz. Bu özellik, bir bölüm BY veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını iyileştirmek için kullanılır. Bu iş uyumluluk düzeyi 1,2 veya üstünü kullanıyorsa, bu alan varsayılan olarak "PartitionID" olarak belirlenmiştir. |
 | **Olay serileştirme biçimi** | Gelen veri akışının serileştirme biçimi (JSON, CSV, Avro veya [diğer (prototip, XML, özel...)](custom-deserializer.md)).  JSON biçiminin belirtile hizalandığından ve ondalık sayılar için öndeki 0 içermediğinden emin olun. |
 | **Kodlama** | UTF-8 şu anda desteklenen tek kodlama biçimidir. |
 | **Olay sıkıştırma türü** | Hiçbiri (varsayılan), GZip veya söndür gibi gelen veri akışını okumak için kullanılan sıkıştırma türü. |
@@ -159,7 +159,8 @@ Aşağıdaki tabloda, blob depolamayı bir akış girişi olarak yapılandırdı
 | **Yol kalıbı** (isteğe bağlı) | Belirtilen kapsayıcı içindeki Blobları bulmak için kullanılan dosya yolu. Kapsayıcının kökünden blob 'ları okumak istiyorsanız, bir yol kalıbı ayarlamayın. Yol içinde, aşağıdaki üç değişkenin bir veya daha fazla örneğini belirtebilirsiniz: `{date}` , `{time}` veya `{partition}`<br/><br/>Örnek 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Örnek 2: `cluster1/logs/{date}`<br/><br/>`*`Karakter, yol ön eki için izin verilen bir değer değil. Yalnızca geçerli <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob karakterlerine</a> izin verilir. Kapsayıcı adlarını veya dosya adlarını eklemeyin. |
 | **Tarih biçimi** (isteğe bağlı) | Yol içinde tarih değişkenini kullanıyorsanız, dosyaların düzenlenme tarih biçimi. Örnek: `YYYY/MM/DD` <br/><br/> Blob girişi `{date}` `{time}` yolunda veya yolunda olduğunda, klasörler artan zaman düzeninde aranır.|
 | **Saat biçimi** (isteğe bağlı) |  Yoldaki zaman değişkenini, dosyaların düzenlenme zaman biçimini kullanırsanız. Şu anda desteklenen tek değer `HH` saattir. |
-| **Bölüm anahtarı** | Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını ekleyebilirsiniz. Bölüm anahtarları isteğe bağlıdır ve bu özellikte bir bölüm veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını artırmak için kullanılır. |
+| **Bölüm anahtarı** | Bu, yalnızca işiniz [Uyumluluk düzeyi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1,2 veya üstünü kullanacak şekilde yapılandırıldıysa kullanılabilen isteğe bağlı bir alandır. Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını buraya ekleyebilirsiniz. Bu özellik, bir bölüm BY veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını iyileştirmek için kullanılır. Bu iş uyumluluk düzeyi 1,2 veya üstünü kullanıyorsa, bu alan varsayılan olarak "PartitionID" olarak belirlenmiştir. |
+| **Giriş bölümlerinin sayısı** | Bu alan yalnızca yol düzeninde {Partition} mevcut olduğunda mevcuttur. Bu özelliğin değeri bir tamsayı >= 1 ' dir. Pathmodel içinde {Partition} nerede göründüğünde, 0 ile bu alanın değeri (1) arasında bir sayı kullanılacaktır. |
 | **Olay serileştirme biçimi** | Gelen veri akışının serileştirme biçimi (JSON, CSV, Avro veya [diğer (prototip, XML, özel...)](custom-deserializer.md)).  JSON biçiminin belirtile hizalandığından ve ondalık sayılar için öndeki 0 içermediğinden emin olun. |
 | **Kodlama** | CSV ve JSON için, UTF-8 şu anda desteklenen tek kodlama biçimidir. |
 | **Sıkıştırma** | Hiçbiri (varsayılan), GZip veya söndür gibi gelen veri akışını okumak için kullanılan sıkıştırma türü. |

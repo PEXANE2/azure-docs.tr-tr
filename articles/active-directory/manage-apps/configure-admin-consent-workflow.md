@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4871af354d68a8d6dcaf3170271959146f57cba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cde5afe01c90b68567f411bcf26063f02ca5a34a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763627"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027253"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Yönetici onayı iş akışını yapılandırma (Önizleme)
 
@@ -35,21 +35,21 @@ Yönetici onayı iş akışını etkinleştirmek ve gözden geçirenler ' i seç
 
 1. [Azure portalında](https://portal.azure.com) genel yönetici olarak oturum açın.
 2. Sol taraftaki Gezinti menüsünün en üstünde bulunan **tüm hizmetler** ' e tıklayın. **Azure Active Directory uzantısı** açılır.
-3. Filtre arama kutusuna "**Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
-4. Gezinti menüsünde **Kurumsal uygulamalar**' a tıklayın. 
-5. **Yönet**altında **Kullanıcı ayarları**' nı seçin.
-6. **Yönetici izin istekleri (Önizleme)** altında, kullanıcıları **Evet**olarak **kabul veremediği uygulamalara yönetici onayı isteyebilecekleri** şekilde ayarlayın.
+3. Filtre arama kutusuna " **Azure Active Directory** " yazın ve **Azure Active Directory** öğesini seçin.
+4. Gezinti menüsünde **Kurumsal uygulamalar** ' a tıklayın. 
+5. **Yönet** altında **Kullanıcı ayarları** ' nı seçin.
+6. **Yönetici izin istekleri (Önizleme)** altında, kullanıcıları **Evet** olarak **kabul veremediği uygulamalara yönetici onayı isteyebilecekleri** şekilde ayarlayın.
 
    ![Yönetici onayı iş akışı ayarlarını yapılandırma](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
 6. Aşağıdaki ayarları yapılandırın:
 
-   * **Yönetici onay isteklerini gözden geçirmek için kullanıcılar**' ı seçin. Genel yönetici, bulut uygulaması Yöneticisi ve uygulama yöneticisi rollerine sahip olan bir Kullanıcı kümesinden bu iş akışı için gözden geçirenler ' i seçin.
-   * **Seçili kullanıcılar, istekler için e-posta bildirimleri alır**. İstek yapıldığında gözden geçirenler için e-posta bildirimlerini etkinleştirin veya devre dışı bırakın.  
-   * **Seçili kullanıcılar, istek süre sonu anımsatıcıları alır**. İstek sona ermek üzereyken gözden geçirenlere anımsatıcı e-posta bildirimlerini etkinleştirin veya devre dışı bırakın.  
-   * **Onay isteğinin süresi (gün)**. İsteklerin ne kadar süreyle geçerli kalacağını belirtin.
+   * **Yönetici onay isteklerini gözden geçirmek için kullanıcılar** ' ı seçin. Genel yönetici, bulut uygulaması Yöneticisi ve uygulama yöneticisi rollerine sahip olan bir Kullanıcı kümesinden bu iş akışı için gözden geçirenler ' i seçin.
+   * **Seçili kullanıcılar, istekler için e-posta bildirimleri alır** . İstek yapıldığında gözden geçirenler için e-posta bildirimlerini etkinleştirin veya devre dışı bırakın.  
+   * **Seçili kullanıcılar, istek süre sonu anımsatıcıları alır** . İstek sona ermek üzereyken gözden geçirenlere anımsatıcı e-posta bildirimlerini etkinleştirin veya devre dışı bırakın.  
+   * **Onay isteğinin süresi (gün)** . İsteklerin ne kadar süreyle geçerli kalacağını belirtin.
 
-7. **Kaydet**’i seçin. Özelliğin etkin hale gelmesi bir saate kadar sürebilir.
+7. **Kaydet** ’i seçin. Özelliğin etkin hale gelmesi bir saate kadar sürebilir.
 
 > [!NOTE]
 > **Yönetici onay istekleri gözden geçirenler listesini seçerek** bu iş akışı için gözden geçirenler ekleyebilir veya kaldırabilirsiniz. Bu özelliğin geçerli sınırlaması, gözden geçirenlerin gözden geçiren olarak belirlenirken yapılan istekleri gözden geçirebilme özelliğini gerçekleştirebileceğini unutmayın.
@@ -60,13 +60,13 @@ Yönetici onayı iş akışı etkinleştirildikten sonra, kullanıcılar, izin v
 
 1. Kullanıcı uygulamada oturum açmaya çalışır.
 
-2. **Onay gerekli** iletisi görüntülenir. Kullanıcı uygulamaya erişim gereksinimi için bir gerekçe belirler ve sonra **istek onayı**' nı seçer.
+2. **Onay gerekli** iletisi görüntülenir. Kullanıcı uygulamaya erişim gereksinimi için bir gerekçe belirler ve sonra **istek onayı** ' nı seçer.
 
-   ![Yönetici onayı Kullanıcı isteği ve gerekçe](media/configure-admin-consent-workflow/end-user-justification.png)
+   ![Ekran görüntüsünde onay Isteyebileceğiniz onay gerekli bir iletişim kutusu gösterilir.](media/configure-admin-consent-workflow/end-user-justification.png)
 
 3. **Gönderilen istek** iletisi, isteğin yöneticiye gönderildiğini onaylar. Kullanıcı birkaç istek gönderirse, yalnızca ilk istek yöneticiye gönderilir.
 
-   ![Yönetici onayı Kullanıcı isteği ve gerekçe](media/configure-admin-consent-workflow/end-user-sent-request.png)
+   ![Ekran görüntüsü, Istek gönderme onayını gösterir.](media/configure-admin-consent-workflow/end-user-sent-request.png)
 
  4. Kullanıcı, istekleri onaylandığında, reddedildiğinde veya engellendiğinde bir e-posta bildirimi alır. 
 
@@ -76,9 +76,9 @@ Yönetici izin isteklerini gözden geçirmek ve işlem yapmak için:
 
 1. Yönetici onayı iş akışının kayıtlı gözden geçirenlerden biri olarak [Azure Portal](https://portal.azure.com) oturum açın.
 2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i seçin. **Azure Active Directory uzantısı** açılır.
-3. Filtre arama kutusuna "**Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
-4. Gezinti menüsünde **Kurumsal uygulamalar**' a tıklayın.
-5. **Etkinlik**' ın altında **Yönetici onay istekleri (Önizleme)** öğesini seçin.
+3. Filtre arama kutusuna " **Azure Active Directory** " yazın ve **Azure Active Directory** öğesini seçin.
+4. Gezinti menüsünde **Kurumsal uygulamalar** ' a tıklayın.
+5. **Etkinlik** ' ın altında **Yönetici onay istekleri (Önizleme)** öğesini seçin.
 
    > [!NOTE]
    > Gözden geçirenler yalnızca, gözden geçiren olarak belirlendikten sonra oluşturulan yönetici isteklerini görürler.
@@ -87,13 +87,13 @@ Yönetici izin isteklerini gözden geçirmek ve işlem yapmak için:
 2. İstek hakkındaki ayrıntıları gözden geçirin:  
 
    * Kimlerin erişim istediğini ve neden olduğunu görmek için, **istenen** sekmesini seçin.
-   * Uygulama tarafından hangi izinlerin istenmekte olduğunu görmek için, **Gözden geçirme izinleri ve onayı**' nı seçin.
+   * Uygulama tarafından hangi izinlerin istenmekte olduğunu görmek için, **Gözden geçirme izinleri ve onayı** ' nı seçin.
 
 8. İsteği değerlendirin ve uygun eylemi gerçekleştirin:
 
-   * **Isteği onaylayın**. Bir isteği onaylamak için uygulamaya yönetici onayı verin. İstek onaylandıktan sonra, tüm istek sahipleri erişim izni verildiğini bilgilendirilir.  
-   * **Isteği reddedin**. Bir isteği reddetmek için tüm istek sahipleri için sağlanacak bir gerekçe sağlamanız gerekir. İstek reddedildikten sonra, tüm istek sahipleri uygulamaya erişimin reddedildikleri bildirilir. Bir isteği reddetmek, kullanıcıların gelecekte uygulamaya yönetici onayı istemesini engellemez.  
-   * **Isteği engelleyin**. Bir isteği engellemek için tüm istek sahipleri için sağlanacak bir gerekçe sağlamanız gerekir. İstek engellendiğinde, tüm istek sahipleri uygulamaya erişimin reddedildikleri bildirilir. Bir isteği engellemek, kiracınızdaki uygulama için devre dışı durumda bir hizmet sorumlusu nesnesi oluşturur. Kullanıcılar gelecekte uygulamaya yönetici onayı isteyemeyecektir.
+   * **Isteği onaylayın** . Bir isteği onaylamak için uygulamaya yönetici onayı verin. İstek onaylandıktan sonra, tüm istek sahipleri erişim izni verildiğini bilgilendirilir.  
+   * **Isteği reddedin** . Bir isteği reddetmek için tüm istek sahipleri için sağlanacak bir gerekçe sağlamanız gerekir. İstek reddedildikten sonra, tüm istek sahipleri uygulamaya erişimin reddedildikleri bildirilir. Bir isteği reddetmek, kullanıcıların gelecekte uygulamaya yönetici onayı istemesini engellemez.  
+   * **Isteği engelleyin** . Bir isteği engellemek için tüm istek sahipleri için sağlanacak bir gerekçe sağlamanız gerekir. İstek engellendiğinde, tüm istek sahipleri uygulamaya erişimin reddedildikleri bildirilir. Bir isteği engellemek, kiracınızdaki uygulama için devre dışı durumda bir hizmet sorumlusu nesnesi oluşturur. Kullanıcılar gelecekte uygulamaya yönetici onayı isteyemeyecektir.
  
 ## <a name="email-notifications"></a>E-posta bildirimleri
  
