@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: bf88782cf771c01a6a167d4584ad86dc69795c59
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: aaafd3833c63458f8403dfeb3620d76f631315b5
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781490"
+ms.locfileid: "92899187"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kullanıcı hazırlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler
 
@@ -142,10 +142,7 @@ SCıM RFC, çekirdek Kullanıcı ve grup şeması tanımlar, Ayrıca, şema uzan
    4. **Appname için öznitelik listesini düzenle** ' yi seçin.
    5. Öznitelik listesinin en altında, belirtilen alanlara özel öznitelikle ilgili bilgileri girin. Sonra **öznitelik Ekle** ' yi seçin.
 
-SCıM uygulamaları için, öznitelik adı aşağıdaki örnekte gösterilen modele uymalıdır. "CustomExtensionName" ve "CustomAttribute", uygulamanızın gereksinimlerine göre özelleştirilebilir, örneğin:  
- * urn: IETF: params: Scim: schemas: EXTENSION: CustomExtensionName: 2.0: Kullanıcı: CustomAttribute 
- * urn: IETF: params: Scim: schemas: EXTENSION: 2.0: CustomExtensionName: CustomAttribute  
- * urn: IETF: params: Scim: schemas: EXTENSION: CustomExtensionName: 2.0: Kullanıcı: CustomAttributeName: Value
+SCıM uygulamaları için, öznitelik adı aşağıdaki örnekte gösterilen modele uymalıdır. "CustomExtensionName" ve "CustomAttribute" uygulamanızın gereksinimlerine göre özelleştirilebilir. Örneğin: urn: IETF: params: SCIM: schemas: Extension: CustomExtensionName: 2.0: User: CustomAttribute 
 
 Bu yönergeler yalnızca SCıM özellikli uygulamalar için geçerlidir. ServiceNow ve Salesforce gibi uygulamalar, SCıM kullanılarak Azure AD ile tümleştirilebilir ve bu nedenle özel bir öznitelik eklerken bu özel ad alanı gerektirmez.
 

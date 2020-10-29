@@ -3,19 +3,19 @@ title: Azure aboneliklerini ve hesaplarını etkinleştirme
 description: Yeni ve mevcut hesaplar için Azure Resource Manager API'lerini kullanarak erişimi etkinleştirin ve ortak hesap sorunlarını çözün.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: vitavor
 ms.custom: secdec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 52ac239369f2998a3a8eac9c400512ac845a0c49
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: b1b7ea7467be107bd1af9daf0869c77ff0b94c70
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131437"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537363"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure aboneliklerini ve hesaplarını Cloudyn ile etkinleştirme
 
@@ -40,7 +40,7 @@ Hesabınıza **Katkıda Bulunan** rolü atandıysa, uygulamayı atamak için yet
 
 1. [Azure portalda](https://portal.azure.com) oturum açın.
 2. Azure portalında **Azure Active Directory** seçeneğini belirleyin.
-3. Azure Active Directory’de **Kullanıcı ayarları**’nı seçin.
+3. Azure Active Directory’de **Kullanıcı ayarları** ’nı seçin.
 4. **Uygulama kayıtları** seçeneğini işaretleyin.
     - Bu **Evet** olarak ayarlanırsa, yönetici olmayan kullanıcılar AD uygulamalarını kaydedebilir. Bu ayar, Azure AD kiracısı içindeki herhangi bir kullanıcının bir uygulamayı kaydedebileceği anlamına gelir.  
     ![Kullanıcı ayarlarında Uygulama kayıtları'nı seçin](./media/activate-subs-accounts/app-register.png)
@@ -53,27 +53,27 @@ Bir aboneliğe hesap güncelleştirme eklediğinizde, Cloudyn'e Azure verilerini
 
 ### <a name="add-a-new-account-subscription"></a>Yeni hesap ekleme (abonelik)
 
-1. Cloudyn portalında, sağ üst kısımdaki dişli simgesine tıklayın ve **Bulut Hesapları**'nı seçin.
-2. **Yeni hesap ekle**’ye tıklayın, böylece **Yeni hesap ekle** kutusu görüntülenir. Gerekli bilgileri girin.  
+1. Cloudyn portalında, sağ üst kısımdaki dişli simgesine tıklayın ve **Bulut Hesapları** 'nı seçin.
+2. **Yeni hesap ekle** ’ye tıklayın, böylece **Yeni hesap ekle** kutusu görüntülenir. Gerekli bilgileri girin.  
     ![Yeni hesap ekle kutusuna gerekli bilgileri girin](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Aboneliği güncelleştirme
 
-1. Cloudyn’de önceden mevcut olan _etkinleştirilmemiş_ bir aboneliği güncelleştirmek istiyorsanız, üst _kiracı GUID'si_'nin sağındaki düzenleme kalemi simgesine tıklayın. Abonelikler bir üst kiracı altında gruplanır, bu nedenle abonelikleri tek tek etkinleştirmekten kaçının.
+1. Cloudyn’de önceden mevcut olan _etkinleştirilmemiş_ bir aboneliği güncelleştirmek istiyorsanız, üst _kiracı GUID'si_ 'nin sağındaki düzenleme kalemi simgesine tıklayın. Abonelikler bir üst kiracı altında gruplanır, bu nedenle abonelikleri tek tek etkinleştirmekten kaçının.
     ![Abonelikleri yeniden keşfetme kutusunda kiracı kimliğinizi seçin](./media/activate-subs-accounts/existing-sub.png)
 2. Gerekirse Kiracı Kimliğini girin. Kiracı Kimliğinizi bilmiyorsanız, bulmak için aşağıdaki adımları kullanın:
     1. [Azure Portal](https://portal.azure.com) oturum açın.
     2. Azure portalında **Azure Active Directory** seçeneğini belirleyin.
-    3. Kiracı kimliğini almak için Azure AD kiracınızda **Özellikler**'i seçin.
+    3. Kiracı kimliğini almak için Azure AD kiracınızda **Özellikler** 'i seçin.
     4. Dizin Kimliği GUID’ini kopyalayın. Bu değer kiracı kimliğinizdir.
     Daha fazla bilgi için bkz. [Kiracı kimliğini alma](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 3. Gerekirse, Ücret Kimliğinizi seçin. Ücret kimliğinizi bilmiyorsanız, bulmak için aşağıdaki adımları kullanın.
-    1. Azure portalının sağ üst kısmında kullanıcı bilgilerinize tıklayın ve sonra **Faturamı görüntüle**’ye tıklayın.
-    2. **Faturalama Hesabı** bölümünde **Abonelikler**’e tıklayın.
+    1. Azure portalının sağ üst kısmında kullanıcı bilgilerinize tıklayın ve sonra **Faturamı görüntüle** ’ye tıklayın.
+    2. **Faturalama Hesabı** bölümünde **Abonelikler** ’e tıklayın.
     3. **Aboneliklerim** bölümünde aboneliği seçin.
     4. Ücret kimliğiniz, **Teklif kimliği** bölümünde gösterilir. Abonelik için Teklif Kimliğini kopyalayın.
-4. Yeni hesap ekle (veya Aboneliği Düzenle) kutusunda, **Kaydet**’e (veya **İleri**’ye) tıklayın. Azure portalına yeniden yönlendirilirsiniz.
-5. Portalda oturum açın. Cloudyn Collector'a Azure hesabınıza erişim yetkisi vermek için **Kabul Et**'e tıklayın.
+4. Yeni hesap ekle (veya Aboneliği Düzenle) kutusunda, **Kaydet** ’e (veya **İleri** ’ye) tıklayın. Azure portalına yeniden yönlendirilirsiniz.
+5. Portalda oturum açın. Cloudyn Collector'a Azure hesabınıza erişim yetkisi vermek için **Kabul Et** 'e tıklayın.
 
     Cloudyn Hesapları yönetim sayfasına yeniden yönlendirilirsiniz ve aboneliğiniz **etkin** Hesap Durumu ile güncelleştirilir. Resource Manager sütununun altında yeşil bir onay işareti simgesi görüntülenmelidir.
 
@@ -96,7 +96,7 @@ Cloudyn portalını ilk kullandığınızda, Kurumsal Anlaşma veya Bulut Çöz�
 Sorunların çözümü:
 
 1. Kurumsal bayinin hesabınız için _işaretlemeyi_ etkinleştirmesi gerekir. Yönergeler için bkz. [Dolaylı Müşteri Ekleme Kılavuzu](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
-2. Cloudyn ile kullanılmak için Azure Kurumsal Anlaşma anahtarını üretirsiniz. Yönergeler için bkz. [Azure Kurumsal Anlaşma kaydetme ve maliyet verilerini görüntüleme](./quick-register-ea.md).
+2. Cloudyn ile kullanılmak için Azure Kurumsal Anlaşma anahtarını üretirsiniz.
 
 Cloudyn'i kurmak için Azure Kurumsal Anlaşma API anahtarını oluşturabilmeniz için aşağıda belirtilen kaynaklarda yer alan yönergeleri izleyerek Azure Faturalama API’sini etkinleştirmeniz gerekir:
 
@@ -105,7 +105,7 @@ Cloudyn'i kurmak için Azure Kurumsal Anlaşma API anahtarını oluşturabilmeni
 
 Departman yöneticilerine, hesap sahiplerine ve kurumsal yöneticilere Faturalama API’si ile _ücretleri görüntüleme_ izni vermeniz de gerekebilir.
 
-Yalnızca bir Azure hizmet yöneticisi Cloudyn'i etkinleştirebilir. Ortak yönetici izinleri yeterli değil. Ancak, yönetici gereksinimine geçici bir çözüm sunabilirsiniz. Azure Active Directory yöneticinizin PowerShell betiği ile **CloudynAzureCollector**’ı yetkilendirme izni vermesini isteyebilirsiniz. Aşağıdaki betik, **CloudynAzureCollector** adlı Azure Active Directory Hizmet Sorumlusu’nu kaydetme izni verir.
+Yalnızca bir Azure hizmet yöneticisi Cloudyn'i etkinleştirebilir. Ortak yönetici izinleri yeterli değil. Ancak, yönetici gereksinimine geçici bir çözüm sunabilirsiniz. Azure Active Directory yöneticinizin PowerShell betiği ile **CloudynAzureCollector** ’ı yetkilendirme izni vermesini isteyebilirsiniz. Aşağıdaki betik, **CloudynAzureCollector** adlı Azure Active Directory Hizmet Sorumlusu’nu kaydetme izni verir.
 
 
 ```powershell

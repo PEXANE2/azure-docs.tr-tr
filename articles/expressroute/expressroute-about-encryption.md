@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 83fa16265106e1033cb77ab4175b606714ec66d7
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 693d2304324bdfcac298b3e20ddd0d882a16533c
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996840"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899871"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute şifreleme
  
@@ -31,7 +31,7 @@ Hayır. MACsec yapılandırıldıysa ve bir anahtar uyumsuzluğu oluşursa, Micr
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>ExpressRoute Direct üzerinde MACsec 'i etkinleştirmek, ağ performansının düşmesine neden olacak mı?
 MACsec şifreleme ve şifre çözme, kullandığımız yönlendiricilerin donanımında oluşur. Bizim tarafımızda performans etkisi yoktur. Ancak, kullandığınız cihazların ağ satıcısına danışmanız ve MACsec 'in herhangi bir performansa sahip olup olmadığını görmeniz gerekir.
 ### <a name="which-cipher-suites-are-supported-for-encryption"></a>Şifreleme için hangi şifre paketleri destekleniyor?
-Yalnızca AES128 ve AES256 [genişletilmiş paket numaralandırma](https://1.ieee802.org/security/802-1aebw/) sürümünü destekliyoruz. Ayrıca, lütfen cihazınızdaki MACsec yapılandırmasındaki [güvenli kanal tanımlayıcısını (SCı)](https://en.wikipedia.org/wiki/IEEE_802.1AE) devre dışı bırakın. 
+Yalnızca AES-128 ve AES-256 [genişletilmiş paket numaralandırma](https://1.ieee802.org/security/802-1aebw/) sürümünü destekliyoruz. Ayrıca, cihazınızdaki MACsec yapılandırmasında [güvenli kanal tanımlayıcısı 'nı (SCı)](https://wikipedia.org/wiki/IEEE_802.1AE) devre dışı bırakmanız gerekir. 
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>IPSec ile uçtan uca şifreleme hakkında SSS
 IPSec bir [IETF standardıdır](https://tools.ietf.org/html/rfc6071). Internet Protokolü (IP) düzeyinde veya ağ katmanı 3 ' teki verileri şifreler. Azure 'da şirket içi ağınız ile sanal ağınız (VNET) arasında uçtan uca bir bağlantıyı şifrelemek için IPSec kullanabilirsiniz. Aşağıdaki diğer SSS bölümüne bakın.

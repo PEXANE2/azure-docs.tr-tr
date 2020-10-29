@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52fd4867532832e0304a27317b21950bf131de79
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443067"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900778"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde işlem yoğunluğu yoğun iş yükleri için GPU 'ları kullanma
 
-Grafik işleme birimleri (GPU 'Lar) genellikle grafik ve görselleştirme iş yükleri gibi işlem yoğunluğu yoğun iş yükleri için kullanılır. AKS, bu yoğun işlem yoğunluğu olan iş yüklerini Kubernetes 'de çalıştırmak için GPU etkin düğüm havuzlarının oluşturulmasını destekler. Kullanılabilir GPU etkin VM 'Ler hakkında daha fazla bilgi için bkz. [Azure 'Da GPU IYILEŞTIRILMIŞ VM boyutları][gpu-skus]. AKS düğümlerinde, en az bir *Standard_NC6*boyutu öneririz.
+Grafik işleme birimleri (GPU 'Lar) genellikle grafik ve görselleştirme iş yükleri gibi işlem yoğunluğu yoğun iş yükleri için kullanılır. AKS, bu yoğun işlem yoğunluğu olan iş yüklerini Kubernetes 'de çalıştırmak için GPU etkin düğüm havuzlarının oluşturulmasını destekler. Kullanılabilir GPU etkin VM 'Ler hakkında daha fazla bilgi için bkz. [Azure 'Da GPU IYILEŞTIRILMIŞ VM boyutları][gpu-skus]. AKS düğümlerinde, en az bir *Standard_NC6* boyutu öneririz.
 
 > [!NOTE]
 > GPU özellikli VM 'Ler, daha yüksek fiyatlandırma ve bölge kullanılabilirliğine tabi olan özel donanımlar içerir. Daha fazla bilgi için bkz. [fiyatlandırma][azure-pricing] aracı ve [bölge kullanılabilirliği][azure-availability].
@@ -26,7 +26,7 @@ Grafik işleme birimleri (GPU 'Lar) genellikle grafik ve görselleştirme iş y�
 
 Bu makalede, GPU 'ları destekleyen düğümlere sahip mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümeniz Kubernetes 1,10 veya sonraki bir sürümü çalıştırmalıdır. Bu gereksinimleri karşılayan bir AKS kümesine ihtiyacınız varsa, [BIR aks kümesi oluşturmak](#create-an-aks-cluster)için bu makalenin ilk bölümüne bakın.
 
-Ayrıca Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
@@ -58,7 +58,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 Düğümlerdeki GPU 'Ların kullanılabilmesi için, NVıDıA cihaz eklentisi için bir DaemonSet dağıtmanız gerekir. Bu DaemonSet, GPU 'Lar için gerekli sürücüleri sağlamak üzere her düğümde bir pod çalıştırır.
 
-İlk olarak, *GPU kaynakları*gibi [kubectl Create Namespace][kubectl-create] komutunu kullanarak bir ad alanı oluşturun:
+İlk olarak, *GPU kaynakları* gibi [kubectl Create Namespace][kubectl-create] komutunu kullanarak bir ad alanı oluşturun:
 
 ```console
 kubectl create namespace gpu-resources
@@ -97,7 +97,7 @@ spec:
         operator: Exists
         effect: NoSchedule
       containers:
-      - image: nvidia/k8s-device-plugin:1.11
+      - image: mcr.microsoft.com/oss/nvidia/k8s-device-plugin:1.11
         name: nvidia-device-plugin-ctr
         securityContext:
           allowPrivilegeEscalation: false
@@ -134,7 +134,7 @@ Bu adımlara alternatif olarak, AKS, [Kubernetes Için NVIDIA cihaz eklentisini]
 az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
 ```
 
-Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
@@ -198,7 +198,7 @@ aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 
 Artık GPU 'Ların zamanlanabilen olduğunu onaylamak için [kubectl açıkla node][kubectl-describe] komutunu kullanın. *Kapasite* bölümünün altında, GPU olarak listelemelidir `nvidia.com/gpu:  1` .
 
-Aşağıdaki sıkıştırılmış örnek, *aks-nodepool1-18821093-0*adlı düğümde bir GPU 'nun kullanılabildiğini göstermektedir:
+Aşağıdaki sıkıştırılmış örnek, *aks-nodepool1-18821093-0* adlı düğümde bir GPU 'nun kullanılabildiğini göstermektedir:
 
 ```console
 $ kubectl describe node aks-nodepool1-28993262-0
@@ -289,7 +289,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>GPU etkin iş yükünün durumunu ve çıkışını görüntüleme
 
-Bağımsız değişkenle [kubectl Get Jobs][kubectl-get] komutunu kullanarak işin ilerlemesini izleyin `--watch` . Önce görüntüyü çekmek ve veri kümesini işlemek birkaç dakika sürebilir. *Tamamlamalar* sütununda *1/1*' ı gösteriyorsa, iş başarıyla tamamlanmıştır. `kubetctl --watch` *CTRL-C*ile komuttan çıkın:
+Bağımsız değişkenle [kubectl Get Jobs][kubectl-get] komutunu kullanarak işin ilerlemesini izleyin `--watch` . Önce görüntüyü çekmek ve veri kümesini işlemek birkaç dakika sürebilir. *Tamamlamalar* sütununda *1/1* ' ı gösteriyorsa, iş başarıyla tamamlanmıştır. `kubetctl --watch` *CTRL-C* ile komuttan çıkın:
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch

@@ -1,14 +1,14 @@
 ---
 title: PowerShell kullanarak karma makineleri Azure 'a bağlama
 description: Bu makalede, PowerShell 'i kullanarak Azure Arc etkin sunucularını kullanarak aracıyı yüklemeyi ve bir makineyi Azure 'a bağlamayı öğreneceksiniz.
-ms.date: 10/27/2020
+ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb114ec3e279a7ea696d834af8eb7240cb892dc1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0755846ef02377edade98b69e478908a111ab247
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891950"
+ms.locfileid: "92901532"
 ---
 # <a name="connect-hybrid-machines-to-azure-using-powershell"></a>PowerShell kullanarak karma makineleri Azure 'a bağlama
 
@@ -22,7 +22,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure PowerShell olan bir bilgisayar. Yönergeler için bkz. [Azure PowerShell yükleyip yapılandırma](/powershell/azure/).
+- Azure PowerShell olan bir makine. Yönergeler için bkz. [Azure PowerShell yükleyip yapılandırma](/powershell/azure/).
 
 Yay etkin sunucularla yönetilen karma sunucunuzda VM uzantılarını yönetmek için Azure PowerShell kullanmadan önce modülünü yüklemeniz gerekir `Az.ConnectedMachine` . Şu komutu yay etkin sunucunuzda çalıştırın:
 
@@ -44,21 +44,21 @@ Yükleme tamamlandığında, aşağıdaki ileti döndürülür:
 
     * Bağlı makine aracısını doğrudan Azure ile iletişim kurabilen hedef makineye yüklemek için şunu çalıştırın:
 
-    ```azurepowershell
-    Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
-    ```
+        ```azurepowershell
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
+        ```
     
     * Bağlı makine aracısını bir ara sunucu üzerinden iletişim kuran hedef makineye yüklemek için şunu çalıştırın:
-    
-    ```azurepowershell
-    Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
-    ```
+        
+        ```azurepowershell
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
+        ```
 
 Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log* adresinde ve Linux 'ta */var/seçenek/azcmagent/log/hımds.log* konumunda.
 
 ## <a name="install-and-connect-using-powershell-remoting"></a>PowerShell uzaktan iletişimini kullanarak yükleyip bağlanma
 
-Hedef Windows sunucusunu veya makineyi Azure Arc etkin sunucularıyla yapılandırmak için aşağıdaki adımları gerçekleştirin. Uzak bilgisayarda PowerShell uzaktan iletişim özelliğinin etkinleştirilmesi gerekir. `Enable-PSRemoting`PowerShell uzaktan iletişimini etkinleştirmek için cmdlet 'ini kullanın.
+Azure Arc etkin sunucularıyla bir veya daha fazla Windows sunucusu yapılandırmak için aşağıdaki adımları gerçekleştirin. Uzak makinede PowerShell uzaktan iletişim özelliğinin etkinleştirilmesi gerekir. `Enable-PSRemoting`PowerShell uzaktan iletişimini etkinleştirmek için cmdlet 'ini kullanın.
 
 1. Yönetici olarak bir PowerShell konsolu açın.
 
@@ -66,25 +66,32 @@ Hedef Windows sunucusunu veya makineyi Azure Arc etkin sunucularıyla yapıland�
 
 3. Bağlı makine aracısını yüklemek için,, `Connect-AzConnectedMachine` `-Name` `-ResourceGroupName` ve `-Location` parametreleriyle kullanın. `-SubscriptionId`Oturum açtıktan sonra oluşturulan Azure bağlamının bir sonucu olarak varsayılan aboneliği geçersiz kılmak için parametresini kullanın.
 
-Bağlı makine aracısını doğrudan Azure ile iletişim kurabilen hedef makineye yüklemek için şu komutu çalıştırın:
+    * Bağlı makine aracısını doğrudan Azure ile iletişim kurabilen hedef makineye yüklemek için şu komutu çalıştırın:
+    
+        ```azurepowershell
+        $session = Connect-PSSession -ComputerName myMachineName
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        ```
+    
+    * Bağlı makine aracısını aynı anda birden fazla uzak makineye yüklemek için, virgülle ayrılmış uzak makine adlarının bir listesini ekleyin.
 
-```azurepowershell
-$session = Connect-PSSession -ComputerName myMachineName
-Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
-```
+        ```azurepowershell
+        $session = Connect-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        ```
 
-Komutun sonuçları aşağıdaki örnekte verilmiştir:
-
-```azurepowershell
-time="2020-08-07T13:13:25-07:00" level=info msg="Onboarding Machine. It usually takes a few minutes to complete. Sometimes it may take longer depending on network and server load status."
-time="2020-08-07T13:13:25-07:00" level=info msg="Check network connectivity to all endpoints..."
-time="2020-08-07T13:13:29-07:00" level=info msg="All endpoints are available... continue onboarding"
-time="2020-08-07T13:13:50-07:00" level=info msg="Successfully Onboarded Resource to Azure" VM Id=f65bffc7-4734-483e-b3ca-3164bfa42941
-
-Name           Location OSName   Status     ProvisioningState
-----           -------- ------   ------     -----------------
-myMachineName  eastus   windows  Connected  Succeeded
-```
+    Aşağıdaki örnek, tek bir makineyi hedefleyen komutun sonuçbir örneğidir:
+    
+    ```azurepowershell
+    time="2020-08-07T13:13:25-07:00" level=info msg="Onboarding Machine. It usually takes a few minutes to complete. Sometimes it may take longer depending on network and server load status."
+    time="2020-08-07T13:13:25-07:00" level=info msg="Check network connectivity to all endpoints..."
+    time="2020-08-07T13:13:29-07:00" level=info msg="All endpoints are available... continue onboarding"
+    time="2020-08-07T13:13:50-07:00" level=info msg="Successfully Onboarded Resource to Azure" VM Id=f65bffc7-4734-483e-b3ca-3164bfa42941
+    
+    Name           Location OSName   Status     ProvisioningState
+    ----           -------- ------   ------     -----------------
+    myMachineName  eastus   windows  Connected  Succeeded
+    ```
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Azure Arc ile bağlantıyı doğrulama
 

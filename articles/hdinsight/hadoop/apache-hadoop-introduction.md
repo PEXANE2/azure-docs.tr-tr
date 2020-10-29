@@ -8,28 +8,28 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: 5e5f02b1684e56496778ab677aa9dc46e7dcd9aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ef1914499765beff9913f9735cf55736135f9d96
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87086532"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899629"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hadoop nedir?
 
 Kümelerde büyük veri kümelerinin dağıtılmış işlenmesi ve analizine yönelik ilk açık kaynak çerçeve [Apache Hadoop](https://hadoop.apache.org/)’tu. Hadoop ekosistemi Apache Hive, Apache HBase, Spark, Kafka ve diğer birçok tane dahil olmak üzere ilgili yazılım ve yardımcı programları içerir.
 
-Azure HDInsight, kuruluşlar için bulutta tam olarak yönetilen, tam bir açık kaynaklı analiz hizmetidir. Azure HDInsight 'taki Apache Hadoop kümesi türü, Batch verilerini paralel olarak işlemek ve analiz etmek için, bu kaynak yönetimini ve basit bir MapReduce programlama modelini kullanmanıza olanak sağlar.
+Azure HDInsight, kuruluşlar için bulutta tam olarak yönetilen, tam bir açık kaynaklı analiz hizmetidir. Azure HDInsight 'taki Apache Hadoop kümesi türü, toplu verileri paralel olarak işlemek ve analiz etmek için [Apache Hadoop Dağıtılmış dosya sistemi (bir)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) [Apache Hadoop, Yarn](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) kaynak yönetimini ve basit bir [MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) programlama modelini kullanmanıza olanak sağlar.  HDInsight 'ta Hadoop kümeleri [Azure Blob depolama](../../storage/common/storage-introduction.md), [Azure Data Lake Storage 1.](../../data-lake-store/data-lake-store-overview.md)veya [Azure Data Lake Storage 2.](../../storage/blobs/data-lake-storage-introduction.md)uyumludur.
 
 HDInsight üzerindeki kullanılabilir Hadoop teknolojisi yığını bileşenlerini görmek için, bkz. [HDInsight ile sağlanan bileşenler ve sürümler](../hdinsight-component-versioning.md). HDInsight'ta Hadoop hakkında daha fazla bilgi edinmek için bkz. [HDInsight için Azure özellikleri sayfası](https://azure.microsoft.com/services/hdinsight/).
 
 ## <a name="what-is-mapreduce"></a>MapReduce nedir?
 
-MapReduce Apache Hadoop, çok miktarda veriyi işleyen işleri yazmaya yönelik bir yazılım çerçevesidir. Giriş verileri bağımsız parçalara bölünür. Her bir öbek, kümenizdeki düğümler arasında paralel olarak işlenir. MapReduce işi iki işlevden oluşur:
+[MapReduce Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) , çok miktarda veriyi işleyen işleri yazmaya yönelik bir yazılım çerçevesidir. Giriş verileri bağımsız parçalara bölünür. Her bir öbek, kümenizdeki düğümler arasında paralel olarak işlenir. MapReduce işi iki işlevden oluşur:
 
-* **Eşleyici**: giriş verilerini kullanır, analiz eder (genellikle filtre ve sıralama işlemleriyle birlikte) ve tanımlama gruplarını yayar (anahtar-değer çiftleri)
+* **Eşleyici** : giriş verilerini kullanır, analiz eder (genellikle filtre ve sıralama işlemleriyle birlikte) ve tanımlama gruplarını yayar (anahtar-değer çiftleri)
 
-* **Reducer**: Eşleyici tarafından yayılan başlıkları kullanır ve Eşleyici verilerinden daha küçük ve birleştirilmiş bir sonuç oluşturan bir Özet işlem gerçekleştirir
+* **Reducer** : Eşleyici tarafından yayılan başlıkları kullanır ve Eşleyici verilerinden daha küçük ve birleştirilmiş bir sonuç oluşturan bir Özet işlem gerçekleştirir
 
 Temel bir sözcük sayısı MapReduce iş örneği aşağıdaki diyagramda gösterilmiştir:
 
@@ -44,7 +44,7 @@ MapReduce, çeşitli dillerde uygulanabilir. Java en yaygın uygulamasıdır ve 
 
 ## <a name="development-languages"></a>Geliştirme dilleri
 
-Java ve Java Sanal Makinesi temel alan diller veya çerçeveler doğrudan MapReduce işi olarak çalıştırılabilir. Bu belgede kullanılan örnek bir Java MapReduce uygulamasıdır. C#, Python veya tek başına yürütülebilir dosyalar gibi Java olmayan diller **Hadoop akışını**kullanmalıdır.
+Java ve Java Sanal Makinesi temel alan diller veya çerçeveler doğrudan [MapReduce işi](..//hadoop/submit-apache-hadoop-jobs-programmatically.md)olarak çalıştırılabilir. Bu belgede kullanılan örnek bir Java MapReduce uygulamasıdır. C#, Python veya tek başına yürütülebilir dosyalar gibi Java olmayan diller **Hadoop akışını** kullanmalıdır.
 
 Hadoop akışı Eşleyici ve Reducer üzerinden STDıN ve STDOUT üzerinden iletişim kurar. Eşleyici ve Reducer verileri STDIN 'den bir kerede bir satıra okur ve çıktıyı STDOUT 'a yazar. Eşleyici ve Reducer tarafından okunan veya yayılan her satır, bir sekme karakteriyle ayrılmış bir anahtar/değer çifti biçiminde olmalıdır:
 
@@ -56,6 +56,16 @@ HDInsight ile Hadoop akışını kullanma örnekleri için aşağıdaki belgeye 
 
 * [C# MapReduce işleri geliştirme](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
+## <a name="where-do-i-start"></a>Nereden başlayabilirim?
+
+* [Hızlı başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Hadoop kümesi oluşturma](../hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [Öğretici: HDInsight 'ta Apache Hadoop işleri gönderme](../hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [HDInsight üzerinde Apache Hadoop için Java MapReduce programları geliştirme](../hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Ayıklama, dönüştürme ve yükleme (ETL) aracı olarak Apache Hive kullanma](../hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md)
+* [Ölçeklendirerek ayıklama, dönüştürme ve yükleme (ETL)](../hadoop/apache-hadoop-etl-at-scale.md)
+* [Veri analizi işlem hattını kullanıma hazır hale getirme](../hdinsight-operationalize-data-pipeline.md)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [HDInsight 'ta Apache Hadoop kümesi oluşturma](apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [Portalı kullanarak HDInsight 'ta Apache Hadoop kümesi oluşturma](../hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [ARM şablonunu kullanarak HDInsight 'ta Apache Hadoop kümesi oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md)

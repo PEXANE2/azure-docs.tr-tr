@@ -3,12 +3,12 @@ title: Azure Service Bus sık sorulan sorular (SSS) | Microsoft Docs
 description: Bu makalede Azure Service Bus hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: ec79b6988fdbc78dc4f45e504f84179e617589cc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 38745d1cc2b1961da10a0c9e9f2c90c3b7dc48a7
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518764"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899535"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-sık sorulan sorular (SSS)
 
@@ -26,7 +26,7 @@ Bu makalede Microsoft Azure Service Bus hakkında sık sorulan bazı sorular aç
 [Service Bus kuyruğu](service-bus-queues-topics-subscriptions.md) , iletilerin depolandığı bir varlıktır. Kuyruklar, birden çok uygulamanız veya birbirleriyle iletişim kurması gereken dağıtılmış bir uygulamanın birden çok bölümü olduğunda faydalıdır. Sıra, birden çok ürüne (ileti) alınmış ve ardından bu konumdan gönderildiği bir dağıtım merkeziyle benzerdir.
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>Azure Service Bus konuları ve abonelikleri nelerdir?
-Bir konu bir sıra olarak görselleştirilir ve birden çok abonelik kullanıldığında, daha zengin bir mesajlaşma modeli olur; esas olarak bire çok iletişim aracı. Bu yayımla/abone ol modeli (veya *pub/Sub*), birden fazla uygulama tarafından alınan bir konuya bir ileti gönderen bir uygulamayı, bu iletinin birden çok uygulama tarafından alınmasını sağlar.
+Bir konu bir sıra olarak görselleştirilir ve birden çok abonelik kullanıldığında, daha zengin bir mesajlaşma modeli olur; esas olarak bire çok iletişim aracı. Bu yayımla/abone ol modeli (veya *pub/Sub* ), birden fazla uygulama tarafından alınan bir konuya bir ileti gönderen bir uygulamayı, bu iletinin birden çok uygulama tarafından alınmasını sağlar.
 
 ### <a name="what-is-a-partitioned-entity"></a>Bölümlenmiş varlık nedir?
 Geleneksel bir kuyruk veya konu, tek bir ileti Aracısı tarafından işlenir ve tek bir mesajlaşma deposunda depolanır. Yalnızca temel ve standart mesajlaşma katmanlarında desteklenir, [bölümlenmiş bir kuyruk veya konu](service-bus-partitioning.md) , birden çok ileti aracılarıyla işlenir ve birden çok mesajlaşma mağazasında saklanır. Bu özellik, bölümlenmiş bir sıranın veya konunun genel üretilen işinin artık tek bir ileti aracısının veya mesajlaşma deposunun performansıyla sınırlı olmadığı anlamına gelir. Ayrıca, bir mesajlaşma deposunun geçici kesilmesi bölümlenmiş bir kuyruğu veya konuyu işlemez.
@@ -41,17 +41,28 @@ Azure Service Bus müşteri verilerini depolar. Bu veriler tek bir bölgede Serv
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Güvenlik duvarında hangi bağlantı noktalarını açmalıyım? 
 Aşağıdaki protokolleri, ileti göndermek ve almak için Azure Service Bus ile birlikte kullanabilirsiniz:
 
-- Gelişmiş İleti Sıraya Alma Protokolü (AMQP)
-- Service Bus mesajlaşma Protokolü (SBMP)
-- HTTP
+- Gelişmiş İleti Sıraya Alma Protokolü 1,0 (AMQP)
+- TLS ile Köprü Metni Aktarım Protokolü 1,1 (HTTPS)
 
-Azure Event Hubs ile iletişim kurmak için bu protokolleri kullanmak üzere açmanız gereken giden bağlantı noktaları için aşağıdaki tabloya bakın. 
+Azure Service Bus ile iletişim kurmak için bu protokolleri kullanmak üzere açmanız gereken giden TCP bağlantı noktaları için aşağıdaki tabloya bakın:
 
-| Protokol | Bağlantı noktaları | Ayrıntılar | 
+| Protokol | Bağlantı noktası | Ayrıntılar | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 ve 5672 | Bkz. [AMQP protokol Kılavuzu](service-bus-amqp-protocol-guide.md) | 
-| SBMP | 9350 9354 | Bkz. [bağlantı modu](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet&preserve-view=true) |
-| HTTP, HTTPS | 80, 443 | 
+| AMQP | 5671 | TLS ile AMQP. Bkz. [AMQP protokol Kılavuzu](service-bus-amqp-protocol-guide.md) | 
+| HTTPS | 443 | Bu bağlantı noktası HTTP/REST API ve AMQP-Over-WebSockets için kullanılır |
+
+HTTPS bağlantı noktası, istemci SDK 'Ları tarafından gerçekleştirilen çeşitli yönetim işlemleri ve Azure Active Directory (kullanıldığında) ' dan belirteçleri alma HTTPS üzerinden çalıştırıldığında, genellikle giden iletişim için bağlantı noktası 5671 üzerinden de kullanılır. 
+
+Resmi Azure SDK 'Ları genellikle Service Bus ileti göndermek ve almak için AMQP protokolünü kullanır. AMQP-Over-WebSockets protokol seçeneği, HTTP API gibi bağlantı noktası TCP 443 üzerinden çalışır, ancak başka bir şekilde düz AMQP ile aynı şekilde çalışır. Bu seçenek, ek el sıkışma ve HTTPS bağlantı noktasını paylaşmak için zorunluluğunu getirir kadar çok daha fazla ek yük nedeniyle ilk bağlantı gecikmesini daha yüksektir. Bu mod seçilirse, TCP bağlantı noktası 443 iletişim için yeterlidir. Aşağıdaki seçenekler, düz AMQP veya AMQP WebSockets modunun seçilmesine izin verir:
+
+| Dil | Seçenek   |
+| -------- | ----- |
+| .NET     | [TransportType. AMQP](/dotnet/api/microsoft.azure.servicebus.transporttype?view=azure-dotnet) veya [TransportType. AmqpWebSockets](/dotnet/api/microsoft.azure.servicebus.transporttype?view=azure-dotnet) ile [servicebusconnection. TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype?view=azure-dotnet) özelliği |
+| Java     | com. Microsoft. [Azure. ServiceBus. ClientSettings](/java/api/com.microsoft.azure.servicebus.clientsettings.clientsettings?view=azure-java-stable) [com. Microsoft. Azure. ServiceBus. Ilkel. TRANSPORTTYPE. amqp](/java/api/com.microsoft.azure.servicebus.primitives.transporttype?view=azure-java-stable) veya [com.Microsoft.Azure.ServiceBus.Primitives.TransportType.AMQP_WEB_SOCKETS](/java/api/com.microsoft.azure.servicebus.primitives.transporttype?view=azure-java-stable) |
+| Node  | [Servicebusclientoptions](/javascript/api/@azure/service-bus/servicebusclientoptions?view=azure-node-latest) bir `webSocket` Oluşturucu bağımsız değişkenine sahip. |
+| Python | [TransportType. AMQP](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-servicebus/latest/azure.servicebus.html#azure.servicebus.TransportType) veya [TransportType. AmqpOverWebSocket](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-servicebus/latest/azure.servicebus.html#azure.servicebus.TransportType) ile [ServiceBusClient.transport_type](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-servicebus/latest/azure.servicebus.html#azure.servicebus.ServiceBusClient) |
+
+.NET Framework için eski WindowsAzure. ServiceBus paketi, "NetMessaging" olarak da adlandırılan eski "Service Bus mesajlaşma protokolünü" (SBMP) kullanma seçeneğine sahiptir. Bu protokol 9350-9354 TCP bağlantı noktalarını kullanır. Bu paketin varsayılan modu, bu bağlantı noktalarının iletişim için kullanılabilir olup olmadığını otomatik olarak algılamadır ve bu durum söz konusu değilse 443 bağlantı noktası üzerinden TLS ile WebSockets ' ye geçiş yapar. Bu ayarı geçersiz kılabilir ve `Https` uygulama için global olarak uygulanan ayarda [connectivitymode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) ayarını yaparak bu modu zorlayabilirsiniz [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity?view=azure-dotnet) .
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>İzin verilenler listesine hangi IP adreslerini eklemem gerekir?
 Bağlantılarınızın izin verilenler listesine eklenecek doğru IP adreslerini bulmak için şu adımları izleyin:
@@ -87,7 +98,7 @@ Ad alanınızı/onlardan ileti gönderen veya alan istemcilerin IP adreslerini g
 
 **Premium** ad alanı kullanıyorsanız, ad alanına erişimi sınırlandırmak için [IP filtrelemesi](service-bus-ip-filtering.md), [sanal ağ hizmeti uç noktaları](service-bus-service-endpoints.md)ve [Özel uç noktalar](private-link-service.md) kullanın. 
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure Service Bus en iyi uygulamalar nelerdir?
 [Service Bus kullanarak performans iyileştirmeleri Için en iyi uygulamalar][Best practices for performance improvements using Service Bus] bölümüne bakın – bu makalede ileti alışverişi sırasında performansın nasıl iyileştirileceği açıklanır.
 

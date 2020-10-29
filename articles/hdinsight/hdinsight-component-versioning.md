@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 47e2211be478a16238d35eeb5219cf6e785a6979
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 282f13c89c527b096573b67b5d539de821e89032
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547580"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900809"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Azure HDInsight için kullanılabilen Apache bileşenleri ve sürümleri
 
@@ -89,7 +89,7 @@ Bu tabloda, Azure portal ve PowerShell ve .NET SDK gibi diğer dağıtım yönte
 | HDInsight 3,6 Spark             | 2.2               | 30 Haziran 2020 tarihinde kullanımdan kaldırıldı          |                             |
 | HDInsight 3,6 Spark             | 2.1               | 30 Haziran 2020 tarihinde kullanımdan kaldırıldı          |                             |
 | HDInsight 3,6 Kafka             | 1.1               | 31 Aralık 2020                      | 30 Haziran 2021               |
-| HDInsight 3,6 Kafka             | 1.0               | 30 Haziran 2020 tarihinde kullanımdan kaldırıldı.         |                             |
+| HDInsight 3,6 Kafka             | 1,0               | 30 Haziran 2020 tarihinde kullanımdan kaldırıldı.         |                             |
 | HDInsight 3,6 HBase             | 1.1               | 31 Aralık 2020                      | 30 Haziran 2021               |
 | HDInsight 3,6 etkileşimli sorgu | 2.1               | 31 Aralık 2020                      | 30 Haziran 2021               |
 | HDInsight 3,6 fırtınası             | 1.1               | 31 Aralık 2020                      | 30 Haziran 2021               |
@@ -133,6 +133,6 @@ Kümeniz için seçilecek sanal makine SKU 'Larının hakkında daha fazla bilgi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [HDInsight üzerinde Apache Hadoop, Spark ve daha fazlası için küme kurulumu](hdinsight-hadoop-provision-linux-clusters.md)
-- [Windows BILGISAYARDAN HDInsight üzerinde Apache Hadoop çalışma](hdinsight-hadoop-windows-tools.md)
-- [Azure HDInsight sürümleriyle ilişkili hortonçalışmalar sürüm notları](./hortonworks-release-notes.md)
 - [Kurumsal Güvenlik Paketi](./enterprise-security-package.md)
+- [Azure HDInsight sürümleriyle ilişkili hortonçalışmalar sürüm notları](./hortonworks-release-notes.md)
+- [Windows BILGISAYARDAN HDInsight üzerinde Apache Hadoop çalışma](hdinsight-hadoop-windows-tools.md)

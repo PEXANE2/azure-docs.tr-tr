@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: c1e2d64bb30b6451e232c85a5892771157d32928
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 400e82780abd08e0db4f49d72b352e290ea1f212
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514410"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900299"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için genel geçiş kimlik eşitlemesini yapılandırma
 
-Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem genel geçiş kimlik eşitleme hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak kullanıcıları ve grupları [küresel geçiş kimlik eşitlemesine](https://portalalpha1.globalrelay.com/) otomatik olarak sağlar. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../manage-apps/user-provisioning.md). 
+Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem genel geçiş kimlik eşitleme hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak kullanıcıları ve grupları küresel geçiş kimlik eşitlemesine otomatik olarak sağlar. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../manage-apps/user-provisioning.md). 
 
 
-## <a name="capabilities-supported"></a>Desteklenen yetenekler
+## <a name="capabilities-supported"></a>Desteklenen özellikler
 > [!div class="checklist"]
 > * Küresel geçiş kimlik eşitlemeyle Kullanıcı oluşturma
 > * Artık erişim gerektirmeyen kullanıcıları genel geçiş kimlik Eşitlede kaldır
@@ -67,11 +67,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşi
 
 ### <a name="to-configure-automatic-user-provisioning-for-global-relay-identity-sync-in-azure-ad"></a>Azure AD 'de küresel geçiş kimlik eşitlemesi için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **genel geçiş kimlik eşitleme**' yi seçin.
+2. Uygulamalar listesinde, **genel geçiş kimlik eşitleme** ' yi seçin.
 
     ![Uygulamalar listesindeki genel geçiş kimlik eşitleme bağlantısı](common/all-applications.png)
 
@@ -79,11 +79,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşi
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, genel geçiş kimliği eşitleme **kiracı URL**'nizi girin. Azure AD 'nin genel geçiş kimlik eşitlemesine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, genel geçiş kimlik eşitleme hesabınızın yönetici izinlerine sahip olduğundan emin olun ve sorunu çözmek için küresel geçiş temsilcinizle iletişime geçin.
+5. **Yönetici kimlik bilgileri** bölümünde, genel geçiş kimliği eşitleme **kiracı URL** 'nizi girin. Azure AD 'nin genel geçiş kimlik eşitlemesine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, genel geçiş kimlik eşitleme hesabınızın yönetici izinlerine sahip olduğundan emin olun ve sorunu çözmek için küresel geçiş temsilcinizle iletişime geçin.
 
     ![Yetkilendirme düğmesi](media/global-relay-identity-sync-provisioning-tutorial/authorization.png)
 
@@ -91,9 +91,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşi
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory kullanıcıları genel geçiş kimlik eşitlemesi olarak eşitle**' yi seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory kullanıcıları genel geçiş kimlik eşitlemesi olarak eşitle** ' yi seçin.
 
 9. **Öznitelik eşleme** bölümünde, Azure AD 'Den genel geçiş kimlik eşitlemesine eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için genel geçiş kimliği eşitleme içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, genel geçiş kimlik eşitleme API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -103,7 +103,6 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşi
    |active|Boole|
    |displayName|Dize|
    |başlık|Dize|
-   |emails[type eq "work"].value|Dize|
    |preferredLanguage|Dize|
    |name.givenName|Dize|
    |name.familyName|Dize|
@@ -170,7 +169,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşi
 
 
 
-10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını genel geçiş kimlik eşitlemesi olarak eşitle**' yi seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını genel geçiş kimlik eşitlemesi olarak eşitle** ' yi seçin.
 
 11. **Öznitelik eşleme** bölümünde, Azure AD 'Den genel geçiş kimlik eşitlemesine eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için genel geçiş kimliği eşitleme 'deki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -189,7 +188,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşi
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 5948f7adedfa430d7d0dac570910f662846464c6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 67902073b1484835d23566c91cbfae6f1d80d249
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790874"
+ms.locfileid: "92900465"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Öğretici: iki yönetilen örnek arasında çoğaltmayı yapılandırma
 
@@ -32,7 +32,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 >
 > - Yönetilen bir örneği, Çoğaltma yayımcısı ve dağıtıcı olarak yapılandırın.
-> - Yönetilen bir örneği, çoğaltma dağıtıcısı olarak yapılandırın.
+> - Yönetilen bir örneği, çoğaltma abonesi olarak yapılandırın.
 
 ![İki yönetilen örnek arasında Çoğalt](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 

@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 78ae0fc94e74755b481f80724ca26b34da99122c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c742240cc82035b2a9af16348eaa9f2a40a32fa3
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758583"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900328"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Özel Görüntü İşleme projelerinizi kopyalayın ve taşıyın
 
@@ -26,7 +26,7 @@ Bir Özel Görüntü İşleme projesi oluşturup eğitimli olduktan sonra, proje
 
 Uygulamanız veya işletmeniz Özel Görüntü İşleme bir proje kullanımına bağımlıysa, modelinizi başka bir bölgedeki başka bir Özel Görüntü İşleme hesabına kopyalamanızı öneririz. Daha sonra bölgesel bir kesinti oluşursa, projenize kopyalandığı bölgede erişebilirsiniz.
 
-##  <a name="prerequisites"></a>Ön koşullar
+##  <a name="prerequisites"></a>Önkoşullar
 
 - İki Azure Özel Görüntü İşleme kaynağı. Bunlar yoksa, Azure portal gidin ve [Yeni bir özel görüntü işleme kaynağı oluşturun](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - Özel Görüntü İşleme kaynaklarınızın eğitim tuşları ve uç nokta URL 'Leri. Bu değerleri, Azure portal kaynağın **genel bakış** sekmesinde bulabilirsiniz.
@@ -105,8 +105,9 @@ curl -v -X GET "{endpoint}/customvision/v3.3/Training/projects/{projectId}/expor
 Hedef eğitim anahtarınızı ve uç noktasını kullanarak, başvuru belirteciyle birlikte **[ımportproject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** 'i çağırın. Ayrıca, projenize yeni hesapta bir ad verebilirsiniz.
 
 ```curl
-curl -v -X POST "{endpoint}/customvision/v3.3/Training/projects/import?token={token}?name={name}"
--H "Training-key: {training key}"
+curl -v -G -X POST "{endpoint}/customvision/v3.3/Training/projects/import"
+--data-urlencode "token={token}" --data-urlencode "name={name}"
+-H "Training-key: {training key}" -H "Content-Length: 0"
 ```
 
 `200/OK`Yeni içeri aktarılan projeniz hakkında meta veriler içeren bir yanıt alırsınız.

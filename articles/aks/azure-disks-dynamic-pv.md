@@ -5,19 +5,19 @@ description: Azure Kubernetes Service (AKS) ' de Azure diskleriyle kalıcı bir 
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: fd2bc698a107599dccf8f142b0d318400b40aaf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad51bfdf8c494e763921de880926b839cdb7be62
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299332"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900751"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetinde (AKS) Azure diskleriyle kalıcı bir birimi dinamik olarak oluşturma ve kullanma
 
 Kalıcı bir birim, Kubernetes pods ile kullanılmak üzere sağlanmış bir depolama parçasını temsil eder. Kalıcı bir birim bir veya daha fazla sayıda pods tarafından kullanılabilir ve dinamik veya statik olarak sağlanabilir. Bu makalede, Azure Kubernetes Service (AKS) kümesinde tek bir pod tarafından kullanılmak üzere Azure diskleriyle kalıcı birimleri dinamik olarak oluşturma konusu gösterilmektedir.
 
 > [!NOTE]
-> Azure diski yalnızca *erişim modu* türü *readwriteonce*ile bağlanabilir ve bu, aks 'deki bir düğüm için kullanılabilir hale gelir. Kalıcı bir birimi birden çok düğüm arasında paylaşmanız gerekiyorsa [Azure dosyalarını][azure-files-pvc]kullanın.
+> Azure diski yalnızca *erişim modu* türü *readwriteonce* ile bağlanabilir ve bu, aks 'deki bir düğüm için kullanılabilir hale gelir. Kalıcı bir birimi birden çok düğüm arasında paylaşmanız gerekiyorsa [Azure dosyalarını][azure-files-pvc]kullanın.
 
 Kubernetes birimleri hakkında daha fazla bilgi için bkz. [AKS 'de uygulamalar Için depolama seçenekleri][concepts-storage].
 
@@ -25,7 +25,7 @@ Kubernetes birimleri hakkında daha fazla bilgi için bkz. [AKS 'de uygulamalar 
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][install-azure-cli].
 
 ## <a name="built-in-storage-classes"></a>Yerleşik depolama sınıfları
 
@@ -78,7 +78,7 @@ spec:
 ```
 
 > [!TIP]
-> Standart depolama kullanan bir disk oluşturmak için, `storageClassName: default` *yönetilen-Premium*yerine kullanın.
+> Standart depolama kullanan bir disk oluşturmak için, `storageClassName: default` *yönetilen-Premium* yerine kullanın.
 
 [Kubectl Apply][kubectl-apply] komutuyla kalıcı birim talebi oluşturun ve *Azure-Premium. YAML* dosyanızı belirtin:
 
@@ -102,7 +102,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -159,7 +159,7 @@ Ultra disk 'ten yararlanmak için bkz. [Azure Kubernetes Service (AKS) üzerinde
 
 Kalıcı biriminizdeki verileri yedeklemek için birim için yönetilen diskin anlık görüntüsünü alın. Daha sonra bu anlık görüntüyü kullanarak geri yüklenen bir disk oluşturabilir ve verileri geri yükleme yöntemi olarak Pod 'ye iliştirebilirsiniz.
 
-İlk `kubectl get pvc` olarak, *Azure-Managed-DISK*adlı PVC için gibi, komutuyla birim adını alın:
+İlk `kubectl get pvc` olarak, *Azure-Managed-DISK* adlı PVC için gibi, komutuyla birim adını alın:
 
 ```console
 $ kubectl get pvc azure-managed-disk
@@ -176,7 +176,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-[Az Snapshot Create][az-snapshot-create]komutuyla bir anlık görüntü diski oluşturmak IÇIN disk kimliğini kullanın. Aşağıdaki örnek, AKS kümesiyle aynı kaynak grubunda *Pvcsnapshot* adlı bir anlık görüntü oluşturur (*MC_myResourceGroup_myAKSCluster_eastus*). AKS kümesinin erişimi olmayan kaynak gruplarında anlık görüntü ve geri yükleme diskleri oluşturursanız, izin sorunlarıyla karşılaşabilirsiniz.
+[Az Snapshot Create][az-snapshot-create]komutuyla bir anlık görüntü diski oluşturmak IÇIN disk kimliğini kullanın. Aşağıdaki örnek, AKS kümesiyle aynı kaynak grubunda *Pvcsnapshot* adlı bir anlık görüntü oluşturur ( *MC_myResourceGroup_myAKSCluster_eastus* ). AKS kümesinin erişimi olmayan kaynak gruplarında anlık görüntü ve geri yükleme diskleri oluşturursanız, izin sorunlarıyla karşılaşabilirsiniz.
 
 ```azurecli-interactive
 $ az snapshot create \
@@ -189,7 +189,7 @@ Diskinizdeki veri miktarına bağlı olarak, anlık görüntünün oluşturulmas
 
 ## <a name="restore-and-use-a-snapshot"></a>Anlık görüntüyü geri yükleme ve kullanma
 
-Diski geri yüklemek ve Kubernetes Pod ile kullanmak için [az disk Create][az-disk-create]komutunu kullanarak bir disk oluşturduğunuzda anlık görüntüyü kaynak olarak kullanın. Özgün veri anlık görüntüsüne erişmeniz gerekiyorsa, bu işlem özgün kaynağı korur. Aşağıdaki örnek *Pvcsnapshot*adlı anlık görüntüden *pvcgeri yüklendi* adlı bir disk oluşturur:
+Diski geri yüklemek ve Kubernetes Pod ile kullanmak için [az disk Create][az-disk-create]komutunu kullanarak bir disk oluşturduğunuzda anlık görüntüyü kaynak olarak kullanın. Özgün veri anlık görüntüsüne erişmeniz gerekiyorsa, bu işlem özgün kaynağı korur. Aşağıdaki örnek *Pvcsnapshot* adlı anlık görüntüden *pvcgeri yüklendi* adlı bir disk oluşturur:
 
 ```azurecli-interactive
 az disk create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --source pvcSnapshot
@@ -201,7 +201,7 @@ Geri yüklenen diski Pod ile birlikte kullanmak için, bildirimdeki diskin KIMLI
 az disk show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --query id -o tsv
 ```
 
-Adlı bir pod bildirimi oluşturun `azure-restored.yaml` ve önceki adımda elde edilen DISK URI 'sini belirtin. Aşağıdaki örnek, */mnt/Azure*' da bir birim olarak bağlanmış geri yüklenen disk ile temel bir NGINX web sunucusu oluşturur:
+Adlı bir pod bildirimi oluşturun `azure-restored.yaml` ve önceki adımda elde edilen DISK URI 'sini belirtin. Aşağıdaki örnek, */mnt/Azure* ' da bir birim olarak bağlanmış geri yüklenen disk ile temel bir NGINX web sunucusu oluşturur:
 
 ```yaml
 kind: Pod
@@ -211,7 +211,7 @@ metadata:
 spec:
   containers:
   - name: mypodrestored
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m

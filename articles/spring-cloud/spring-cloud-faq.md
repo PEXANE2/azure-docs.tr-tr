@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a0851e9d032d4d1bf9751d63061141839e95d510
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: edd79d08d18e95d27e557a26f0adc36868097bb3
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491300"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900272"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -39,6 +39,9 @@ Güvenlik ve gizlilik, Azure ve Azure Spring bulut müşterileri için en öneml
 
 Doğu ABD, Doğu ABD 2, Orta ABD, Orta Güney ABD, Batı ABD 2, Batı Avrupa, Kuzey Avrupa, UK Güney, Güneydoğu Asya ve Avustralya Doğu.
 
+### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>Belirtilen bölgenin dışında depolanan müşteri verileri mi?
+
+Azure yay bulutu, bölgesel bir hizmettir. Azure Spring Cloud 'daki tüm müşteri verileri, artıklık için belirtilen bölgenin aynı coğrafi bölge içinde birden çok bölgeye depolanır. Coğrafi ve bölge hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da veri](https://azure.microsoft.com/global-infrastructure/data-residency/)yerleşimi.
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud 'ın bilinen sınırlamaları nelerdir?
 
@@ -72,7 +75,7 @@ Azure yay bulutu, Java 8 ve 11 ' i destekler. Bkz. [Java çalışma zamanı ve i
 
 Uygulama Genel Bakış sekmesinde ve [Azure izleyici](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics) sekmesinde ölçümleri bulun.
 
-Azure Spring Cloud, Azure depolama, EventHub ve [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries)yay bulut uygulaması günlüklerini ve ölçümlerini vermeyi destekler. Log Analytics tablo adı *Appplatformlogsforspring*' dir. Nasıl etkinleştireceğinizi öğrenmek için bkz. [Tanılama Hizmetleri](diagnostic-services.md).
+Azure Spring Cloud, Azure depolama, EventHub ve [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries)yay bulut uygulaması günlüklerini ve ölçümlerini vermeyi destekler. Log Analytics tablo adı *Appplatformlogsforspring* ' dir. Nasıl etkinleştireceğinizi öğrenmek için bkz. [Tanılama Hizmetleri](diagnostic-services.md).
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure yay bulutu dağıtılmış izlemeyi destekliyor mu?
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Ilkesiyle uyumluluğu denetleme ve yönetme
+title: İlke uyumluluğunu denetleme ve yönetme
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning yönelik yerleşik ilkeleri kullanmak için Azure Ilkesi 'ni nasıl kullanacağınızı öğrenin.
 author: jhirono
@@ -10,19 +10,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: e7eebb22efe32b290e078348337049c6c3e762db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d371ea077b479ad2256e782dadd5d037f53004f2
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998126"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900144"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Azure Ilkesi kullanarak Azure Machine Learning denetleme ve yönetme
 
 [Azure ilkesi](/azure/governance/policy) , Azure kaynaklarının ilkelerinizle uyumlu olduğundan emin olmanızı sağlayan bir idare aracıdır. Azure Machine Learning, aşağıdaki ilkeleri atayabilirsiniz:
 
-* **Müşteri tarafından yönetilen anahtar**: çalışma alanlarının müşteri tarafından yönetilen anahtar kullanması gerekip gerekmediğini denetleyin veya zorlayın.
-* **Özel bağlantı**: çalışma alanlarının bir sanal ağla iletişim kurmak için özel uç nokta kullanıp kullanmadığını denetleyin.
+* **Müşteri tarafından yönetilen anahtar** : çalışma alanlarının müşteri tarafından yönetilen anahtar kullanması gerekip gerekmediğini denetleyin veya zorlayın.
+* **Özel bağlantı** : çalışma alanlarının bir sanal ağla iletişim kurmak için özel uç nokta kullanıp kullanmadığını denetleyin.
 
 İlkeler, abonelik veya kaynak grubu düzeyinde gibi farklı kapsamlardan ayarlanabilir. Daha fazla bilgi için bkz. [Azure ilkesi belgeleri](/azure/governance/policy/overview).
 
@@ -33,8 +33,8 @@ Azure Machine Learning, Azure Machine Learning ortak senaryolar için kullanabil
 Azure Machine Learning ilgili yerleşik ilke tanımlarını görüntülemek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com) __Azure ilkesi__ ' ne gidin.
-1. __Tanımlar__' ı seçin.
-1. __Tür__için _yerleşik_' i seçin ve __Kategori__için __Machine Learning__' yi seçin.
+1. __Tanımlar__ ' ı seçin.
+1. __Tür__ için _yerleşik_ ' i seçin ve __Kategori__ için __Machine Learning__ ' yi seçin.
 
 Buradan görüntülenecek ilke tanımlarını seçebilirsiniz. Bir tanımı görüntülerken, ilkeyi belirli bir kapsama atamak için __ata__ bağlantısını kullanabilir ve ilke için parametreleri yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Ilke atama-Portal](/azure/governance/policy/assign-policy-portal).
 
@@ -44,15 +44,15 @@ Buradan görüntülenecek ilke tanımlarını seçebilirsiniz. Bir tanımı gör
 
 Çalışma alanlarının, müşteri tarafından yönetilen bir anahtarla mi (CMK) şifrelendiğini, yoksa ölçümleri ve meta verileri şifrelemek için Microsoft tarafından yönetilen bir anahtar kullanmayı denetler. CMK kullanma hakkında daha fazla bilgi için, kurumsal güvenlik makalesinin [Azure Cosmos DB](concept-enterprise-security.md#azure-cosmos-db) bölümüne bakın.
 
-Bu ilkeyi yapılandırmak için, efekt parametresini __Denetim__ veya __reddetme__olarak ayarlayın. __Denetim__olarak ayarlanırsa, BIR CMK olmadan çalışma alanları oluşturabilir ve etkinlik günlüğünde bir uyarı olayı oluşturulur.
+Bu ilkeyi yapılandırmak için, efekt parametresini __Denetim__ veya __reddetme__ olarak ayarlayın. __Denetim__ olarak ayarlanırsa, BIR CMK olmadan çalışma alanları oluşturabilir ve etkinlik günlüğünde bir uyarı olayı oluşturulur.
 
-İlke __Reddet__olarak ayarlandıysa, BIR CMK belirtmediği takdirde bir çalışma alanı oluşturamazsınız. CMK olmadan bir çalışma alanı oluşturmaya çalışmak, şuna benzer bir hatayla sonuçlanır `Resource 'clustername' was disallowed by policy` ve etkinlik günlüğünde bir hata oluşturur. İlke tanımlayıcısı bu hatanın bir parçası olarak da döndürülür.
+İlke __Reddet__ olarak ayarlandıysa, BIR CMK belirtmediği takdirde bir çalışma alanı oluşturamazsınız. CMK olmadan bir çalışma alanı oluşturmaya çalışmak, şuna benzer bir hatayla sonuçlanır `Resource 'clustername' was disallowed by policy` ve etkinlik günlüğünde bir hata oluşturur. İlke tanımlayıcısı bu hatanın bir parçası olarak da döndürülür.
 
 ## <a name="workspaces-should-use-private-link"></a>Çalışma alanlarının özel bağlantı kullanması gerekir
 
 Çalışma alanlarının Azure sanal ağı ile iletişim kurmak için Azure özel bağlantısı kullanması gerekip gerekmediğini denetler. Özel bağlantı kullanma hakkında daha fazla bilgi için bkz. [bir çalışma alanı için özel bağlantı yapılandırma](how-to-configure-private-link.md).
 
-Bu ilkeyi yapılandırmak için, efekt parametresini __audit__olarak ayarlayın. Özel bağlantı kullanmadan bir çalışma alanı oluşturursanız, etkinlik günlüğünde bir uyarı olayı oluşturulur.
+Bu ilkeyi yapılandırmak için, efekt parametresini __audit__ olarak ayarlayın. Özel bağlantı kullanmadan bir çalışma alanı oluşturursanız, etkinlik günlüğünde bir uyarı olayı oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
-ms.date: 08/12/2020
-ms.openlocfilehash: c616ba1971fcbb0674a42583b30c25f6ccda6874
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 10/28/2020
+ms.openlocfilehash: c0c925f68e8edbae00f980d9445c59d7213a4b25
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791792"
+ms.locfileid: "92901318"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -116,7 +116,7 @@ Hiper ölçekte yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz.
 
 ## <a name="testing-application-fault-resiliency"></a>Uygulama hatası dayanıklılığı sınanıyor
 
-Yüksek kullanılabilirlik, veritabanı uygulamanız için saydam bir şekilde çalışan SQL Veritabanı ve SQL Yönetilen Örneği platformunun temel bir parçasıdır. Bununla birlikte uygulamayı üretime dağıtmadan önce, planlanmış veya planlanmamış olaylar sırasında başlatılan otomatik yük devretme işlemlerinin uygulamayı nasıl etkileyebileceğini test etmek isteyeceğinizin farkındayız. Bir veritabanını, elastik havuzu veya yönetilen örneği yeniden başlatmak için özel bir API çağırarak, yük devretmeyi el ile tetikleyebilirsiniz. Bölgesel olarak yedekli bir veritabanı veya elastik havuz söz konusu olduğunda, API çağrısı, eski birincil bölge kullanılabilirlik bölgesinden farklı bir kullanılabilirlik bölgesindeki yeni birincil bağlantı ile istemci bağlantılarını yeniden yönlendirmeye neden olur. Bu nedenle, yük devretmenin var olan veritabanı oturumlarını nasıl etkilediğini test etmeye ek olarak, ağ gecikmede yapılan değişiklikler nedeniyle uçtan uca performansı değiştirdiğinizi de doğrulayabilirsiniz. Yeniden başlatma işlemi zorlandığından ve çok sayıda, platformu vurgulamada, her veritabanı, elastik havuz veya yönetilen örnek için her 30 dakikada bir yük devretme çağrısına izin verilir.
+Yüksek kullanılabilirlik, veritabanı uygulamanız için saydam bir şekilde çalışan SQL Veritabanı ve SQL Yönetilen Örneği platformunun temel bir parçasıdır. Bununla birlikte uygulamayı üretime dağıtmadan önce, planlanmış veya planlanmamış olaylar sırasında başlatılan otomatik yük devretme işlemlerinin uygulamayı nasıl etkileyebileceğini test etmek isteyeceğinizin farkındayız. Bir veritabanını, elastik havuzu veya yönetilen örneği yeniden başlatmak için özel bir API çağırarak, yük devretmeyi el ile tetikleyebilirsiniz. Bölgesel olarak yedekli bir veritabanı veya elastik havuz söz konusu olduğunda, API çağrısı, eski birincil bölge kullanılabilirlik bölgesinden farklı bir kullanılabilirlik bölgesindeki yeni birincil bağlantı ile istemci bağlantılarını yeniden yönlendirmeye neden olur. Bu nedenle, yük devretmenin var olan veritabanı oturumlarını nasıl etkilediğini test etmeye ek olarak, ağ gecikmede yapılan değişiklikler nedeniyle uçtan uca performansı değiştirdiğinizi de doğrulayabilirsiniz. Yeniden başlatma işlemi zorlandığından ve çok sayıda, platformu vurgulamada, her veritabanı, elastik havuz veya yönetilen örnek için yalnızca bir yük devretme çağrısına her 15 dakikada bir izin verilir.
 
 PowerShell, REST API veya Azure CLı kullanılarak yük devretme başlatılabilir:
 

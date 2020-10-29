@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 608694c07894c8bdff8b1101d607e07ea4383764
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1970709dea67111bfd8b90f9fc315a3b044b2ab9
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279865"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900259"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP tablosundan veri kopyalama
 
@@ -51,12 +51,13 @@ Bir SAP tablosundan desteklenen herhangi bir havuz veri deposuna veri kopyalayab
 - Varsayılan veya özel RFC aracılığıyla veri alma.
 
 Sürüm 7,01 veya üzeri, SAP ECC sürümü yerine SAP NetWeaver sürümüne başvurur. Örneğin, SAP ECC 6,0 EHP 7, genel olarak NetWeaver sürüm >= 7,4 ' dir. Ortamınız hakkında emin değilseniz SAP sisteminizden sürümü onaylamaya yönelik adımlar aşağıda verilmiştir:
-1.  SAP sistemine bağlanmak için SAP GUI 'yi kullanın. 
-2.  **Sistem**  ->  **durumuna**gidin. 
-3.  SAP_BASIS sürümünü denetleyin, 701 ' den büyük veya ona eşit olduğundan emin olun.  
+
+1. SAP sistemine bağlanmak için SAP GUI 'yi kullanın. 
+2. **Sistem**  ->  **durumuna** gidin. 
+3. SAP_BASIS sürümünü denetleyin, 701 ' den büyük veya ona eşit olduğundan emin olun.  
       ![SAP_BASIS denetle](./media/connector-sap-table/sap-basis.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu SAP tablosu bağlayıcısını kullanmak için şunları yapmanız gerekir:
 

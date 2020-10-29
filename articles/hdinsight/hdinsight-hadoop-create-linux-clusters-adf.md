@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: dede52b751b25a1990cf110fea083f9aebc4ddbb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ea4f8c33a906bff96ea93f9a7aea3e6f625556cb
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542072"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900909"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak HDInsight 'ta isteğe bağlı Apache Hadoop kümeleri oluşturma
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Bu öğreticide, isteğe bağlı olarak Azure HDInsight 'ta Azure Data Factory kullanarak [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) kümesi oluşturmayı öğreneceksiniz. Daha sonra Azure Data Factory ' de veri işlem hatlarını kullanarak Hive işlerini çalıştırabilir ve kümeyi silebilirsiniz. Bu öğreticinin sonuna kadar, `operationalize` küme oluşturma, iş çalıştırma ve küme silme işlemlerinin zamanlamaya göre yapıldığı büyük bir veri işinin nasıl yapılacağını öğrenirsiniz.
+Bu öğreticide, isteğe bağlı olarak Azure HDInsight 'ta Azure Data Factory kullanarak [Apache Hadoop](../hdinsight/hdinsight-overview.md#cluster-types-in-hdinsight) kümesi oluşturmayı öğreneceksiniz. Daha sonra Azure Data Factory ' de veri işlem hatlarını kullanarak Hive işlerini çalıştırabilir ve kümeyi silebilirsiniz. Bu öğreticinin sonuna kadar, `operationalize` küme oluşturma, iş çalıştırma ve küme silme işlemlerinin zamanlamaya göre yapıldığı büyük bir veri işinin nasıl yapılacağını öğrenirsiniz.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -194,7 +194,7 @@ Bu makalede, Hive etkinliğini isteğe bağlı bir HDInsight Hadoop kümesi olu�
 
     |Özellik  |Değer  |
     |---------|---------|
-    |Adı | Veri Fabrikası için bir ad girin. Bu adın genel olarak benzersiz olması gerekir.|
+    |Ad | Veri Fabrikası için bir ad girin. Bu adın genel olarak benzersiz olması gerekir.|
     |Sürüm | **V2** adresinden ayrılın. |
     |Abonelik | Azure aboneliğinizi seçin. |
     |Kaynak grubu | PowerShell betiğini kullanarak oluşturduğunuz kaynak grubunu seçin. |
@@ -236,7 +236,7 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
     |Özellik |Değer |
     |---|---|
-    |Adı |`HDIStorageLinkedService` yazın.|
+    |Ad |`HDIStorageLinkedService` yazın.|
     |Azure aboneliği |Açılır listeden aboneliğinizi seçin.|
     |Depolama hesabı adı |PowerShell betiğinin bir parçası olarak oluşturduğunuz Azure Depolama hesabını seçin.|
 
@@ -258,7 +258,7 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
     | Özellik | Değer |
     | --- | --- |
-    | Adı | `HDInsightLinkedService` yazın.|
+    | Ad | `HDInsightLinkedService` yazın.|
     | Tür | **İsteğe bağlı HDInsight '** ı seçin. |
     | Azure Storage Bağlı Hizmeti | `HDIStorageLinkedService` öğesini seçin. |
     | Küme türü | **Hadoop** seçin |

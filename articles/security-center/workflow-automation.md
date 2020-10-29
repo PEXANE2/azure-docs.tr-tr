@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: cbe6adc37025f0b727fa5f5d3ace46ed34afaa9e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: a7341362183aee4a23556a164677bc320babdfec
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895231"
+ms.locfileid: "92900830"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Güvenlik Merkezi tetikleyicilerine yönelik yanıtları otomatikleştirin
 
@@ -77,7 +77,7 @@ Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği aç
 1. Yeni mantıksal uygulamanızda, güvenlik kategorisinden yerleşik, önceden tanımlanmış şablonlar arasından seçim yapabilirsiniz. Ya da bu işlem tetiklendiğinde gerçekleşecek özel olay akışını tanımlayabilirsiniz.
 
     > [!TIP]
-    > Bazen bir mantıksal uygulamada, parametreler bağlayıcıya bir dizenin parçası olarak dahil edilir ve kendi alanları içinde değildir. Parametrelerin nasıl ayıklanacağını gösteren EAN örneği için bkz. [Azure Güvenlik Merkezi iş akışı tahminleri oluştururken Logic App parametreleriyle çalışma](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121)#14 adım adım.
+    > Bazen bir mantıksal uygulamada, parametreler bağlayıcıya bir dizenin parçası olarak dahil edilir ve kendi alanları içinde değildir. Parametrelerin nasıl ayıklanacağını gösteren bir örnek için bkz. [Azure Güvenlik Merkezi iş akışı tahminleri oluştururken Logic App parametreleriyle çalışma](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121)#14 adım adım.
 
     Logic App Designer, bu güvenlik merkezi tetikleyicilerini destekler:
 

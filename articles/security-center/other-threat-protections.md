@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: dd4a7537e01c9e97997be64bb478e86a64f4325b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 0b80db15e4fafd5e5c63a4194039fbeca21d429b
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792268"
+ms.locfileid: "92900398"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde ek tehdit korumaları
 Azure Güvenlik Merkezi, yerleşik [Azure Defender korumalarının](azure-defender.md)yanı sıra aşağıdaki tehdit koruması yeteneklerini de sunmaktadır.
@@ -32,7 +32,6 @@ Güvenlik Merkezi ağ katmanı analizi, Azure çekirdek yönlendiricileri taraf�
 Bazı ağ yapılandırmalarında, güvenlik merkezi 'nin şüpheli ağ etkinliğinde Uyarı oluşturması kısıtlanabilir. Güvenlik Merkezi 'nin ağ uyarıları oluşturması için şunları doğrulayın:
 - Sanal makineniz genel bir IP adresine sahiptir (veya genel IP adresine sahip bir yük dengeleyicide bulunur).
 - Sanal makinenizin ağ çıkış trafiği bir dış KIMLIK çözümü tarafından engellenmiyor.
-- Sanal makinenize, şüpheli iletişimin gerçekleştiği saatin tamamında aynı IP adresi atandı. Bu, yönetilen bir hizmetin parçası olarak oluşturulan VM 'Ler için de geçerlidir (örneğin, AKS, Databricks).
 
 Azure ağ katmanı uyarılarının bir listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-azurenetlayer)bakın.
 

@@ -1,5 +1,5 @@
 ---
-title: Power BI Professional 'a bağlanma
+title: Power BI Professional ile SYNAPSE SQL 'e bağlanma
 description: Bu öğreticide, Power BI Desktop 'ı isteğe bağlı SQL (Önizleme) ile nasıl bağlayacağız adımları öğreneceksiniz.
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 48b6639ad8228347737669fffca06eb660a25874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d88406646099a136d196a104f9cf4352a367f6d2
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288707"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899127"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Power BI Professional ile SYNAPSE SQL 'e bağlanma
 
@@ -75,7 +75,7 @@ Sorguları çalıştırabilmeniz için önce kimlik bilgileri oluşturuyoruz. Bu
 > [!NOTE]
 > Depolama hesabı erişimi için kimlik bilgileri oluşturmanız gerekir. İsteğe bağlı SQL, farklı bölgelerdeki depolamaya erişebilse de depolama ve Azure SYNAPSE çalışma alanının aynı bölgede bulunması daha iyi bir performans deneyimi sağlar.
 
-**Census veri kapsayıcıları için kimlik bilgileri oluşturma hakkında kod parçacığı**, şunu çalıştırın:
+**Census veri kapsayıcıları için kimlik bilgileri oluşturma hakkında kod parçacığı** , şunu çalıştırın:
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
@@ -98,7 +98,7 @@ Power BI Masaüstü uygulamasını açın ve **veri al** seçeneğini belirleyin
 
 ### <a name="step-1---select-data-source"></a>1. adım-veri kaynağını seçme
 
-Menüden **Azure** ' u ve ardından **Azure SQL veritabanı**' nı seçin.
+Menüden **Azure** ' u ve ardından **Azure SQL veritabanı** ' nı seçin.
 ![Veri kaynağını seçin.](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
 ### <a name="step-2---select-database"></a>2. adım-veritabanı seçme

@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: e52bd150f72ba663c504b81832ce83d3e38cbf04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbbd5dbbc51cdb3b0d3c3783fa6ed72b76d26284
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986777"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900364"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Uygulama geliştiricilerinin Azure Kubernetes Service (AKS) içindeki kaynakları yönetmesi için en iyi uygulamalar
 
@@ -27,7 +27,7 @@ Bu en iyi yöntemler makalesi, bir uygulama geliştirici perspektifinden kümeni
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Pod kaynak isteklerini ve sınırlarını tanımlama
 
-**En iyi Yöntem Kılavuzu** -YAML bildirimlerinizde tüm yığınlarda Pod isteklerini ve sınırlarını ayarlayın. AKS kümesi *kaynak kotalarını*kullanıyorsa, bu değerleri tanımlamadıysanız dağıtımınız reddedilebilir.
+**En iyi Yöntem Kılavuzu** -YAML bildirimlerinizde tüm yığınlarda Pod isteklerini ve sınırlarını ayarlayın. AKS kümesi *kaynak kotalarını* kullanıyorsa, bu değerleri tanımlamadıysanız dağıtımınız reddedilebilir.
 
 Bir AKS kümesindeki işlem kaynaklarını yönetmenin birincil yolu Pod isteklerini ve sınırlarını kullanmaktır. Bu istekler ve sınırlar, Kubernetes Scheduler 'ın bir pod 'ın hangi işlem kaynaklarına atanması gerektiğini bilmesini sağlar.
 
@@ -60,7 +60,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m

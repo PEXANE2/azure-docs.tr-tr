@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: e72d1161f80ad92c1e4cfc7fd2c9fde0d46e77b9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 97853f0524b794169de3aaaec33cf1b30949d930
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332017"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901557"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -37,11 +37,11 @@ Azure Güvenlik Merkezi en acil üç güvenlik sorununu giderir:
 
 Bu güçlüklere karşı kendinizi korumanıza yardımcı olmak için, Güvenlik Merkezi aşağıdakileri sağlayan araçlar sunar:
 
--   **Güvenliği güçlendirin**: Güvenlik Merkezi ortamınıza değerlendirir ve kaynaklarınızın durumunu anlamanıza ve güvenli olup olmadığınıza olanak sağlar.
+-   **Güvenliği güçlendirin** : Güvenlik Merkezi ortamınıza değerlendirir ve kaynaklarınızın durumunu anlamanıza ve güvenli olup olmadığınıza olanak sağlar.
 
--   **Tehditlere karşı koruma**: güvenlik merkezi iş yüklerinizi değerlendirir ve tehdit önleme önerilerini ve güvenlik uyarılarını yükseltir.
+-   **Tehditlere karşı koruma** : güvenlik merkezi iş yüklerinizi değerlendirir ve tehdit önleme önerilerini ve güvenlik uyarılarını yükseltir.
 
--   **Daha hızlı güvenlik sağlama**: Güvenlik Merkezi'nde her şey bulut hızında yapılır. Yerel olarak tümleşik olduğundan, Güvenlik Merkezi dağıtımı kolaydır ve Azure hizmetleriyle otomatik sağlama ve koruma olanağı tanır.
+-   **Daha hızlı güvenlik sağlama** : Güvenlik Merkezi'nde her şey bulut hızında yapılır. Yerel olarak tümleşik olduğundan, Güvenlik Merkezi dağıtımı kolaydır ve Azure hizmetleriyle otomatik sağlama ve koruma olanağı tanır.
 
 > [!NOTE]
 > Bu hizmet, müşterilerin Temsilcili abonelikleri ve kaynak gruplarını yönetmek için hizmet sağlayıcılarının kendi kiracılarında oturum açmasını sağlayan [Azure Mathouse](../lighthouse/overview.md)hizmetini destekler. Azure Güvenlik Merkezi senaryolarında, bir aboneliğin ayrı kaynak grupları yerine temsilci seçilmiş olması gerekir.
@@ -62,11 +62,11 @@ Azure Güvenlik Merkezi, güvenlik duruşunuzu güçlendirin. Bu, en iyi güvenl
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>Kuruluş güvenlik ilkesini ve uyumluluğunu yönetme
 
-Bu bir güvenlik temel olanıdır ve iş yüklerinizin güvende olduğundan emin olur ve özel güvenlik ilkelerine sahip olmaya başlar. Güvenlik Merkezi 'ndeki tüm ilkeler Azure Ilke denetimleri üzerine oluşturulduğundan, birinci **sınıf bir ilke çözümünün**tam aralığını ve esnekliğini elde edersiniz. Güvenlik Merkezi 'nde ilkelerinize yönetim gruplarında, aboneliklerde ve hatta tüm kiracı için çalışacak şekilde ayarlayabilirsiniz.
+Bu bir güvenlik temel olanıdır ve iş yüklerinizin güvende olduğundan emin olur ve özel güvenlik ilkelerine sahip olmaya başlar. Güvenlik Merkezi 'ndeki tüm ilkeler Azure Ilke denetimleri üzerine oluşturulduğundan, birinci **sınıf bir ilke çözümünün** tam aralığını ve esnekliğini elde edersiniz. Güvenlik Merkezi 'nde ilkelerinize yönetim gruplarında, aboneliklerde ve hatta tüm kiracı için çalışacak şekilde ayarlayabilirsiniz.
 
 :::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="İlke yönetimi sayfası":::
 
-Güvenlik Merkezi, **Gölge BT aboneliklerini belirlemenize**yardımcı olur. Panonuzda **kapsanmayan** etiketli aboneliklere bakarak, yeni oluşturulan abonelikler olduğunda hemen haberdar edebilir ve ilkeleriniz kapsamında olduklarından ve Azure Güvenlik Merkezi tarafından korunduğunuzdan emin olabilirsiniz.
+Güvenlik Merkezi, **Gölge BT aboneliklerini belirlemenize** yardımcı olur. Panonuzda **kapsanmayan** etiketli aboneliklere bakarak, yeni oluşturulan abonelikler olduğunda hemen haberdar edebilir ve ilkeleriniz kapsamında olduklarından ve Azure Güvenlik Merkezi tarafından korunduğunuzdan emin olabilirsiniz.
 
 :::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="İlke yönetimi sayfası":::
 
@@ -74,13 +74,13 @@ Güvenlik Merkezi, **Gölge BT aboneliklerini belirlemenize**yardımcı olur. Pa
 
 Güvenlik Merkezi, iş yükleriniz genelinde dağıtılan yeni kaynakları sürekli olarak bulur ve bunların en iyi güvenlik uygulamalarına göre yapılandırılıp yapılandırılmadığını değerlendirir, bunlar işaretlenir ve makinelerinizi korumak için neleri çözmeniz gerektiği hakkında önerilerin öncelikli bir listesini alırsınız.
 
-Güvenlik Merkezi, her bir önerinin genel güvenlik durinize ne kadar önemli olduğunu anlamanıza yardımcı olmak için önerileri güvenlik denetimlerine gruplandırır ve her denetime **güvenli bir puan** değeri ekler. Bu, **güvenlik çalışmalarınızı önceliklendirmenize olanak tanımak**için önemlidir.
+Güvenlik Merkezi, her bir önerinin genel güvenlik durinize ne kadar önemli olduğunu anlamanıza yardımcı olmak için önerileri güvenlik denetimlerine gruplandırır ve her denetime **güvenli bir puan** değeri ekler. Bu, **güvenlik çalışmalarınızı önceliklendirmenize olanak tanımak** için önemlidir.
 
 :::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="İlke yönetimi sayfası":::
 
 ### <a name="network-map"></a>Ağ eşlemesi
 
-En güçlü araçlardan biri olan Güvenlik Merkezi, ağınızın güvenlik durumunu sürekli olarak izlemek için tarafından sağlanan **ağ haritadır**. Eşleme, iş yüklerinizin topolojisini görmenizi sağlar, böylece her bir düğümün düzgün şekilde yapılandırılıp yapılandırılmadığını görebilirsiniz. Düğümlerinizin nasıl bağlandığını görebilirsiniz. Bu, bir saldırganın ağınızı daha kolay bir şekilde yayılmasını sağlamak için istenmeyen bağlantıları engellemenize yardımcı olur.
+En güçlü araçlardan biri olan Güvenlik Merkezi, ağınızın güvenlik durumunu sürekli olarak izlemek için tarafından sağlanan **ağ haritadır** . Eşleme, iş yüklerinizin topolojisini görmenizi sağlar, böylece her bir düğümün düzgün şekilde yapılandırılıp yapılandırılmadığını görebilirsiniz. Düğümlerinizin nasıl bağlandığını görebilirsiniz. Bu, bir saldırganın ağınızı daha kolay bir şekilde yayılmasını sağlamak için istenmeyen bağlantıları engellemenize yardımcı olur.
 
 :::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="İlke yönetimi sayfası":::
 
@@ -103,9 +103,9 @@ Güvenlik Merkezi 'nin tehdit koruması, bir saldırı kampanyasının tam hikay
 
 :::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="İlke yönetimi sayfası":::
 
-### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Microsoft Defender Gelişmiş tehdit koruması ile tümleştirme
+### <a name="integration-with-microsoft-defender-for-endpoint"></a>Uç nokta için Microsoft Defender ile tümleştirme
 
-Güvenlik Merkezi, Microsoft Defender Gelişmiş tehdit koruması ile otomatik, yerel tümleştirme içerir. Bu, herhangi bir yapılandırma olmadan Windows ve Linux makinelerinizin Güvenlik Merkezi 'nin önerileriyle ve değerlendirmelerinden tamamen tümleştirileceği anlamına gelir.
+Güvenlik Merkezi, uç nokta için Microsoft Defender ile otomatik, yerel tümleştirme içerir. Bu, herhangi bir yapılandırma olmadan Windows ve Linux makinelerinizin Güvenlik Merkezi 'nin önerileriyle ve değerlendirmelerinden tamamen tümleştirileceği anlamına gelir.
 
 Ayrıca, Güvenlik Merkezi, sunucu ortamlarında uygulama denetim ilkelerini otomatikleştirmenize imkan tanır. Güvenlik Merkezi 'ndeki Uyarlamalı uygulama denetimleri, Windows sunucularınız genelinde uçtan uca uygulama onayı listesini etkinleştirir. Kurallar oluşturmanız ve ihlalleri denetlemeniz gerekmez, bu işlem sizin için otomatik olarak yapılır.
 
@@ -123,7 +123,7 @@ Güvenlik Merkezi, Azure SQL 'de verilerinizin otomatik sınıflandırmasını g
 
 ## <a name="get-secure-faster"></a>Daha hızlı bir şekilde güvende edin
 
-Yerel Azure tümleştirmesi (Azure Ilkesi ve Azure Izleyici günlükleri dahil), Microsoft Cloud App Security ve Windows Defender Gelişmiş tehdit koruması gibi diğer Microsoft güvenlik çözümleriyle sorunsuz bir şekilde tümleştirmeyle birleştirilmiş güvenlik çözümünüzün kolayca kullanıma sunulmasına ve kullanıma sunulmasına yardımcı olur.
+Yerel Azure tümleştirmesi (Azure Ilkesi ve Azure Izleyici günlükleri dahil), Microsoft Cloud App Security ve uç nokta için Microsoft Defender gibi diğer Microsoft güvenlik çözümleriyle sorunsuz tümleştirme ile birleştirilir
 
 Ayrıca, Azure 'un ötesinde diğer bulutlarda ve şirket içi veri merkezlerinde çalışan iş yüklerine kadar tam çözümü genişletebilirsiniz.
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: 9088b36acead9f47e94949ee102d66a8aff2d226
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: 1f3ab61c6030c2871356f494db228711305e5466
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529611"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901580"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP ECC 'den veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -47,6 +47,13 @@ SAP ECC 'den, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsi
 
 - Temel kimlik doğrulaması kullanarak verileri kopyalama.
 
+Sürüm 7,0 veya üzeri, SAP ECC sürümü yerine SAP NetWeaver sürümüne başvurur. Örneğin, SAP ECC 6,0 EHP 7, genel olarak NetWeaver sürüm >= 7,4 ' dir. Ortamınız hakkında emin değilseniz SAP sisteminizden sürümü onaylamaya yönelik adımlar aşağıda verilmiştir:
+
+1. SAP sistemine bağlanmak için SAP GUI 'yi kullanın. 
+2. **Sistem**  ->  **durumuna** gidin. 
+3. SAP_BASIS sürümünü denetleyin, 701 ' den büyük veya ona eşit olduğundan emin olun.  
+      ![SAP_BASIS denetle](./media/connector-sap-table/sap-basis.png)
+
 >[!TIP]
 >SAP, SAP tablosu veya görünümü aracılığıyla SAP ECC 'den veri kopyalamak için, daha hızlı ve daha ölçeklenebilir olan [SAP tablosu](connector-sap-table.md) bağlayıcısını kullanın.
 
@@ -54,9 +61,9 @@ SAP ECC 'den, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsi
 
 Bu SAP ECC bağlayıcısını kullanmak için SAP Gateway aracılığıyla SAP ECC varlıklarını OData Hizmetleri aracılığıyla kullanıma sunabilirsiniz. Daha ayrıntılı belirtmek gerekirse:
 
-- **SAP Gateway ayarlayın**. 7,4 ' den sonraki SAP NetWeaver sürümleri olan sunucular için SAP Gateway zaten yüklüdür. Önceki sürümler için, OData Hizmetleri aracılığıyla SAP ECC verileri kullanıma sunmadan önce gömülü SAP Gateway veya SAP Gateway hub sistemini yüklemelisiniz. SAP Gateway ayarlamak için bkz. [Yükleme Kılavuzu](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
+- **SAP Gateway ayarlayın** . 7,4 ' den sonraki SAP NetWeaver sürümleri olan sunucular için SAP Gateway zaten yüklüdür. Önceki sürümler için, OData Hizmetleri aracılığıyla SAP ECC verileri kullanıma sunmadan önce gömülü SAP Gateway veya SAP Gateway hub sistemini yüklemelisiniz. SAP Gateway ayarlamak için bkz. [Yükleme Kılavuzu](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
 
-- **SAP OData hizmetini etkinleştirin ve yapılandırın**. Bir saniyede TCODE SıCF aracılığıyla OData hizmetini etkinleştirebilirsiniz. Ayrıca, hangi nesnelerin gösterilmesini gerektiğini de yapılandırabilirsiniz. Daha fazla bilgi için bkz. [adım adım Kılavuzu](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
+- **SAP OData hizmetini etkinleştirin ve yapılandırın** . Bir saniyede TCODE SıCF aracılığıyla OData hizmetini etkinleştirebilirsiniz. Ayrıca, hangi nesnelerin gösterilmesini gerektiğini de yapılandırabilirsiniz. Daha fazla bilgi için bkz. [adım adım Kılavuzu](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
