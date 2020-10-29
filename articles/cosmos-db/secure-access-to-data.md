@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0a68c2b9c857205dda7f5da846085f9f3823da20
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371741"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927643"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB'de verilere erişimin güvenliğini sağlama
 
@@ -119,6 +119,12 @@ Bir izin kaynağı, bir kullanıcıyla ilişkilendirilir ve bölüm anahtarı d�
 > [!NOTE]
 > Saklı yordamları çalıştırmak için kullanıcının saklı yordamın çalıştırılacağı kapsayıcıda tüm izne sahip olması gerekir.
 
+[Veri düzlemi isteklerinde tanılama günlüklerini](cosmosdb-monitor-resource-logs.md)etkinleştirirseniz, izne karşılık gelen aşağıdaki iki özellik günlüğe kaydedilir:
+
+* **Resourcetokenpermissionıd** -bu özellik belirttiğiniz kaynak belirteci izin kimliğini gösterir. 
+
+* **Resourcetokenpermissionmode** -bu özellik, kaynak belirtecini oluştururken ayarlamış olduğunuz izin modunu gösterir. İzin modunun "All" veya "Read" gibi değerleri olabilir.
+
 ### <a name="code-sample-to-create-permission"></a>İzin oluşturmak için kod örneği
 
 Aşağıdaki kod örneği, bir izin kaynağı oluşturmayı, izin kaynağının kaynak belirtecini okumayı ve izinleri yukarıda oluşturulan [kullanıcıyla](#users) ilişkilendirmeyi gösterir.
@@ -150,12 +156,12 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 Kullanıcı hesabınıza Azure Cosmos DB hesap okuyucusu erişimi eklemek için bir abonelik sahibine Azure portal aşağıdaki adımları uygulayın.
 
 1. Azure portal açın ve Azure Cosmos DB hesabınızı seçin.
-2. **Erişim denetimi (IAM)** sekmesine tıklayın ve ardından **+ rol ataması Ekle**' ye tıklayın.
-3. **Rol ataması Ekle** bölmesinde, **rol** kutusunda **Cosmos DB hesap okuyucu rolü**' nü seçin.
-4. **Erişim ata kutusunda** **Azure AD Kullanıcı, Grup veya uygulama**' yı seçin.
+2. **Erişim denetimi (IAM)** sekmesine tıklayın ve ardından **+ rol ataması Ekle** ' ye tıklayın.
+3. **Rol ataması Ekle** bölmesinde, **rol** kutusunda **Cosmos DB hesap okuyucu rolü** ' nü seçin.
+4. **Erişim ata kutusunda** **Azure AD Kullanıcı, Grup veya uygulama** ' yı seçin.
 5. Dizininizde erişim vermek istediğiniz kullanıcı, Grup veya uygulamayı seçin.  Dizinde görünen ad, e-posta adresi veya nesne tanımlayıcıları ile arama yapabilirsiniz.
     Seçilen Kullanıcı, Grup veya uygulama seçilen Üyeler listesinde görünür.
-6. **Kaydet**’e tıklayın.
+6. **Kaydet** ’e tıklayın.
 
 Varlık artık Azure Cosmos DB kaynaklarını okuyabilir.
 

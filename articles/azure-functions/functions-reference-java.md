@@ -4,12 +4,12 @@ description: Java ile işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fcacfd96ece68424c876b0349ceb49d3eaabb598
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b25e548fe56c22458fe625f617fb076be13525cd
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736694"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927524"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Işlevleri Java geliştirici kılavuzu
 
@@ -49,7 +49,7 @@ Terminalden komut satırı geliştirmeyi tercih ediyorsanız, Java tabanlı işl
 
 Aşağıdaki komut, bu arşiv ETYPE kullanarak yeni bir Java işlev projesi oluşturur:
 
-```
+```bash
 mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
     -DarchetypeArtifactId=azure-functions-archetype 
@@ -153,7 +153,7 @@ Parametresini kullanarak Maven arşiv ETYPE tarafından hedeflenen Java sürüm�
 
 Maven arşiv ETYPE, belirtilen Java sürümünü hedefleyen bir pom.xml oluşturur. pom.xml ' deki aşağıdaki öğeler, kullanılacak Java sürümünü gösterir:
 
-| Öğe |  Java 8 değeri | Java 11 değeri | Açıklama |
+| Öğe |  Java 8 değeri | Java 11 değeri | Description |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | Maven-derleyici-eklentisi tarafından kullanılan Java sürümü. |
 | **`JavaVersion`** | 8 | 11 | Azure 'da işlev uygulaması tarafından barındırılan Java sürümü. |
@@ -206,7 +206,7 @@ Adlı bir uygulama ayarında ek bağımsız değişkenler sağlayabilirsiniz `JA
 
 [Azure Portal](https://portal.azure.com), ayarı eklemek Için [uygulama ayarları sekmesini](functions-how-to-use-azure-function-app-settings.md#settings) kullanın `JAVA_OPTS` .
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Aşağıdaki örnekte olduğu gibi, ayarlamak için [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) komutunu kullanabilirsiniz `JAVA_OPTS` :
 

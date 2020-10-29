@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ed7cec34b4bca1882d069997d4f89677cda32447
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dd262b942d6ce4e423f524c7381574afd501f466
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88080958"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927558"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>ASP.NET Web Uygulamanızı izlemeye başlama
 
@@ -33,26 +33,26 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 ## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 
 1. Projenizi Visual Studio 2019 ' de açın.
-2. Proje menüsünden **Application Insights’ı Yapılandır**’ı seçin. Visual Studio, uygulamanıza Application Insights SDK'sını ekler.
+2. Proje menüsünden **Application Insights’ı Yapılandır** ’ı seçin. Visual Studio, uygulamanıza Application Insights SDK'sını ekler.
 
     > [!IMPORTANT]
     > Application Insights ekleme işlemi, ASP.NET şablon türüne göre değişiklik gösterir. **Boş** bir şablon veya **Azure Mobil Uygulaması** şablonu kullanıyorsanız **Proje** > **Application Insights Telemetri Ekleme** seçeneğini belirleyin. Diğer tüm ASP.NET şablonları için yukarıdaki adımda yer alan yönergelere başvurun. 
 
-3. **Kullanmaya Başlayın**’a tıklayın (Visual Studio'nun önceki sürümlerinde bunun yerine **Ücretsiz Başlayın** düğmesi vardır).
+3. **Kullanmaya Başlayın** ’a tıklayın (Visual Studio'nun önceki sürümlerinde bunun yerine **Ücretsiz Başlayın** düğmesi vardır).
 
     ![Visual Studio’ya Application Insights ekleme](./media/quick-monitor-portal/add-application-insights-b.png)
 
-4. Aboneliğinizi seçin ve **Kaydet**’e tıklayın.
+4. Aboneliğinizi seçin ve **Kaydet** ’e tıklayın.
 
-5. **Proje**seçin  >  **NuGet paketleri**  >  **paket kaynağını seçin: NuGet.org**  >  Application Insights SDK paketlerini en son kararlı sürüme**güncelleştirin** .
+5. **Proje** seçin  >  **NuGet paketleri**  >  **paket kaynağını seçin: NuGet.org**  >  Application Insights SDK paketlerini en son kararlı sürüme **güncelleştirin** .
 
-6. **Hata Ayıkla** menüsünden **Hata Ayıklamayı Başlat**’ı seçerek veya F5 tuşuna basarak uygulamanızı çalıştırın.
+6. **Hata Ayıkla** menüsünden **Hata Ayıklamayı Başlat** ’ı seçerek veya F5 tuşuna basarak uygulamanızı çalıştırın.
 
 ## <a name="confirm-app-configuration"></a>Uygulama yapılandırmasını onaylama
 
 Application Insights, uygulamanızın nerede çalıştığına bakmaksızın telemetri verilerini toplar. Bu verileri görüntülemeyi başlatmak için aşağıdaki adımları kullanın.
 
-1. **View**  ->  **Diğer Windows**  ->  **Application Insights aramasını**görüntüle ' ye tıklayarak Application Insights açın.  Geçerli oturumunuzdaki telemetriye bakın.<BR><br>![Visual Studio'da telemetri](./media/quick-monitor-portal/telemetry-in-vs.png)
+1. **View**  ->  **Diğer Windows**  ->  **Application Insights aramasını** görüntüle ' ye tıklayarak Application Insights açın.  Geçerli oturumunuzdaki telemetriye bakın.<BR><br>![Visual Studio'da telemetri](./media/quick-monitor-portal/telemetry-in-vs.png)
 
 2. İstek ayrıntılarını görmek için listedeki ilk isteğe tıklayın (Bu örnekte, GET Home/Index). Durum kodu ve yanıt süresinin her ikisinin de istekle ilgili diğer değerli bilgilerle birlikte eklendiğine dikkat edin.<br><br>![Visual Studio'da yanıt ayrıntıları](media/quick-monitor-portal/request-details.png)
 
@@ -60,15 +60,15 @@ Application Insights, uygulamanızın nerede çalıştığına bakmaksızın tel
 
 Artık Application Insights’ı Azure portalında açarak çalışan uygulamanıza ilişkin çeşitli ayrıntıları görüntüleyebilirsiniz.
 
-1. Çözüm Gezgini **bağlı hizmetler** klasörünü (bulut ve tak simgesi) genişletin, **Application Insights** klasörüne sağ tıklayın ve **Application Insights Portal 'ı aç**' a tıklayın.  Uygulamanıza ilişkin bazı bilgiler ve çeşitli seçenekler görürsünüz.
+1. Çözüm Gezgini **bağlı hizmetler** klasörünü (bulut ve tak simgesi) genişletin, **Application Insights** klasörüne sağ tıklayın ve **Application Insights Portal 'ı aç** ' a tıklayın.  Uygulamanıza ilişkin bazı bilgiler ve çeşitli seçenekler görürsünüz.
 
-    ![Uygulama Eşlemesi](media/quick-monitor-portal/04-overview.png)
+    ![Application Insights portalında uygulama hakkında bilgi gösteren ekran görüntüsü.](media/quick-monitor-portal/04-overview.png)
 
-2. Uygulama bileşenleriniz arasındaki bağımlılık ilişkilerinin görsel düzenini almak için **Uygulama haritası**’na tıklayın.  Her bileşen yük, performans, hatalar ve uyarılar gibi KPI'leri gösterir.
+2. Uygulama bileşenleriniz arasındaki bağımlılık ilişkilerinin görsel düzenini almak için **Uygulama haritası** ’na tıklayın.  Her bileşen yük, performans, hatalar ve uyarılar gibi KPI'leri gösterir.
 
     ![Uygulama Eşlemesi](media/quick-monitor-portal/05-appmap.png)
 
-3. **App Analytics** ![ ](media/quick-monitor-portal/app-viewinlogs-icon.png) Uygulama bileşenlerinden birinde bulunan **günlüklerde (Analiz)** uygulama analizi simgesine tıklayın. Bu, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Günlükler (Analiz)** açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
+3. Uygulama **Analizi simgesinin** ![ ekran görüntüsüne tıklayın.](media/quick-monitor-portal/app-viewinlogs-icon.png) Uygulama bileşenlerinden birinde **günlüklerde (Analiz) görüntüleyin** . Bu, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Günlükler (Analiz)** açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
 
     ![Analiz](media/quick-monitor-portal/6viewanalytics.png)
 
@@ -103,8 +103,8 @@ Daha fazla bilgi edinmek için [açık kaynak JavaScript SDK'sı](https://github
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Testi tamamladığınızda, kaynak grubunu ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin.
-1. Azure portal sol taraftaki menüden **kaynak grupları** ' na ve ardından **myresourcegroup**' a tıklayın.
-2. Kaynak grubu sayfanızda, **Sil**’e tıklayın, metin kutusuna **myResourceGroup** yazın ve ardından **Sil**’e tıklayın.
+1. Azure portal sol taraftaki menüden **kaynak grupları** ' na ve ardından **myresourcegroup** ' a tıklayın.
+2. Kaynak grubu sayfanızda, **Sil** ’e tıklayın, metin kutusuna **myResourceGroup** yazın ve ardından **Sil** ’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu hızlı başlangıçta, uygulamanızı Azure Application Insights tarafından izlemeye etkinleştirdiniz.  İstatistikleri izlemek ve uygulamanızdaki sorunları tespit etmek üzere nasıl kullanacağınızı öğrenmek için öğreticilere ilerleyin.

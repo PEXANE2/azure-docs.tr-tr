@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: b4e2b5afd7742791218394422d00ee8ee46cb23a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 161e3e7fbc5b343ee73142f0e968367c3cbfaa6b
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212606"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927422"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Işlevleri bağlama ifadesi desenleri
 
-[Tetikleyiciler ve bağlamaların](./functions-triggers-bindings.md) en güçlü özelliklerinden biri *bağlama ifadeleri*. Dosyadaki *function.js* ve işlev parametreleri ve kodu ' nda, çeşitli kaynaklardaki değerlere çözüm veren ifadeleri kullanabilirsiniz.
+[Tetikleyiciler ve bağlamaların](./functions-triggers-bindings.md) en güçlü özelliklerinden biri *bağlama ifadeleri* . Dosyadaki *function.js* ve işlev parametreleri ve kodu ' nda, çeşitli kaynaklardaki değerlere çözüm veren ifadeleri kullanabilirsiniz.
 
 Çoğu ifade küme ayracı içinde tanımlanır. Örneğin, bir kuyruk tetikleyicisi işlevinde, `{queueTrigger}` kuyruk ileti metnine çözülür. `path`Blob çıkış bağlamasının özelliği ise `container/{queueTrigger}` ve işlev bir kuyruk iletisi tarafından tetikleniyorsa `HelloWorld` adlı bir blob `HelloWorld` oluşturulur.
 
@@ -41,7 +41,7 @@ Bir işlev yerel olarak çalıştığında, uygulama ayarı değerleri dosyadaki
 > [!NOTE]
 > `connection`Tetikleyiciler ve bağlamaların özelliği özel bir durumdur ve yüzde işaretleri olmadan değerleri otomatik olarak uygulama ayarları olarak çözümler. 
 
-Aşağıdaki örnek, `%input-queue-name%` üzerinde tetiklenecek sırayı tanımlamak için bir uygulama ayarı kullanan bir Azure kuyruk depolama tetikleyicisinin bir örneğidir.
+Aşağıdaki örnek, `%input_queue_name%` üzerinde tetiklenecek sırayı tanımlamak için bir uygulama ayarı kullanan bir Azure kuyruk depolama tetikleyicisinin bir örneğidir.
 
 ```json
 {
@@ -50,7 +50,7 @@ Aşağıdaki örnek, `%input-queue-name%` üzerinde tetiklenecek sırayı tanım
       "name": "order",
       "type": "queueTrigger",
       "direction": "in",
-      "queueName": "%input-queue-name%",
+      "queueName": "%input_queue_name%",
       "connection": "MY_STORAGE_ACCT_APP_SETTING"
     }
   ]
@@ -62,7 +62,7 @@ Sınıf kitaplıklarında aynı yaklaşımı kullanabilirsiniz:
 ```csharp
 [FunctionName("QueueTrigger")]
 public static void Run(
-    [QueueTrigger("%input-queue-name%")]string myQueueItem, 
+    [QueueTrigger("%input_queue_name%")]string myQueueItem, 
     ILogger log)
 {
     log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
@@ -292,7 +292,7 @@ public class BlobName
 
 ## <a name="create-guids"></a>GUID 'Ler oluştur
 
-`{rand-guid}`Bağlama ifadesi BIR GUID oluşturur. Bir dosyadaki aşağıdaki blob yolu, `function.json` *50710cb5-84b9-4d87-9d83-a03d6976a682.txt*gibi bir ada sahip bir blob oluşturur.
+`{rand-guid}`Bağlama ifadesi BIR GUID oluşturur. Bir dosyadaki aşağıdaki blob yolu, `function.json` *50710cb5-84b9-4d87-9d83-a03d6976a682.txt* gibi bir ada sahip bir blob oluşturur.
 
 ```json
 {
@@ -305,7 +305,7 @@ public class BlobName
 
 ## <a name="current-time"></a>Geçerli saat
 
-Bağlama ifadesi `DateTime` olarak çözümlenir `DateTime.UtcNow` . Bir dosyadaki aşağıdaki blob yolu, `function.json` *2018-02-16T17-59-55Z.txt*gibi bir ada sahip bir blob oluşturur.
+Bağlama ifadesi `DateTime` olarak çözümlenir `DateTime.UtcNow` . Bir dosyadaki aşağıdaki blob yolu, `function.json` *2018-02-16T17-59-55Z.txt* gibi bir ada sahip bir blob oluşturur.
 
 ```json
 {

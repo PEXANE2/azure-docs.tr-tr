@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 602e3f58ac5f8f194ad4704a4e792d4f0aec3a3e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 19abb3f12dc1a0fd2a3dff548ecdc9e7fff47659
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978790"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927677"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure'da SAP HANA altyapı yapılandırmaları ve işlemleri
 Bu belgede, Azure yerel sanal makinelerinde (VM 'Ler) dağıtılan Azure altyapısını ve işletim SAP HANA sistemlerini yapılandırmaya yönelik yönergeler sağlanmaktadır. Belge ayrıca, M128s VM SKU 'SU için SAP HANA genişleme için yapılandırma bilgilerini içerir. Bu belge, aşağıdaki içeriği içeren standart SAP belgelerinin yerine geçecek şekilde tasarlanmamıştır:
@@ -29,7 +29,7 @@ Bu belgede, Azure yerel sanal makinelerinde (VM 'Ler) dağıtılan Azure altyap�
 - [SAP Yükleme Kılavuzu](https://service.sap.com/instguides)
 - [SAP notları](https://service.sap.com/notes)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu kılavuzu kullanmak için aşağıdaki Azure bileşenleriyle temel bilgilere ihtiyacınız vardır:
 
 - [Azure sanal makineleri](../../linux/tutorial-manage-vm.md)
@@ -135,11 +135,11 @@ Azure VM 'lerinde genişleme yapılandırması dağıtmak için en düşük işl
 
 Bir genişleme yapılandırmasındaki tek bir düğüm için tipik bir temel tasarım şöyle görünecektir:
 
-![Tek bir düğümün ölçek genişletme temelleri](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
+![Genişleme yapılandırmasındaki tek bir düğüm için tipik bir temel tasarımı gösteren diyagram.](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
 
 SAP HANA ölçeği genişletme için bir VM düğümünün temel yapılandırması şöyle görünür:
 
-- **/Hana/Shared**için, Azure NetApp Files aracılığıyla SAĞLANMıŞ yerel NFS hizmetini kullanırsınız. 
+- **/Hana/Shared** için, Azure NetApp Files aracılığıyla SAĞLANMıŞ yerel NFS hizmetini kullanırsınız. 
 - Diğer tüm disk birimleri farklı düğümler arasında paylaşılmaz ve NFS tabanlı değildir. Bu belgede daha sonra paylaşılmayan **/Hana/Data** ve **/Hana/log** ile genişleme Hana yüklemelerine yönelik yükleme yapılandırma ve adımları daha sonra sunulmaktadır. Kullanılabilecek HANA sertifikalı depolama için [Azure sanal makine depolama yapılandırmalarının SAP HANA](./hana-vm-operations-storage.md)makalesine bakın.
 
 

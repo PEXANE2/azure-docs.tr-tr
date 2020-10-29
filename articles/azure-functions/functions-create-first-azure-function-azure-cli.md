@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b457c3b0ec0f68dd6a8213fbebe7a2596bed4c2e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b7b46f2d280577f40f927a0d8eb6fcf2ed33e04a
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519682"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927439"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir işlev oluşturma
 
@@ -114,7 +114,7 @@ Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değe
 
 `Y`Onaylamak için yazın veya ENTER tuşuna basın.
 
-Maven, proje dosyalarını, bu örnekte olduğu gibi, _ArtifactId_adında yeni bir klasörde oluşturur `fabrikam-functions` . 
+Maven, proje dosyalarını, bu örnekte olduğu gibi, _ArtifactId_ adında yeni bir klasörde oluşturur `fabrikam-functions` . 
 
 ::: zone-end  
 Proje klasörüne gidin:
@@ -140,7 +140,7 @@ Bu klasör, [local.settings.js](functions-run-local.md#local-settings-file) ve [
 ::: zone pivot="programming-language-csharp"
 #### <a name="httpexamplecs"></a>HttpExample.cs
 
-*HttpExample.cs* , `Run` değişkende istek verilerini alan bir yöntem içerir `req` , tetikleme davranışını tanımlayan **Httptriggerattribute**ile donatılmış bir [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) ' dir. 
+*HttpExample.cs* , `Run` değişkende istek verilerini alan bir yöntem içerir `req` , tetikleme davranışını tanımlayan **Httptriggerattribute** ile donatılmış bir [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) ' dir. 
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
@@ -170,41 +170,41 @@ Ayrıca, bu, işleviniz için bir birim testi de oluşturur. Bağlama eklemek ve
 ::: zone pivot="programming-language-python"
 #### <a name="__init__py"></a>\_\_init \_ \_ . Kopyala
 
-* \_ \_ init \_ \_ . Kopyala* `main()` , *function.jsüzerindeki*yapılandırmaya göre tetiklenen bir Python işlevi içerir.
+*\_ \_ init \_ \_ . Kopyala* `main()` , *function.jsüzerindeki* yapılandırmaya göre tetiklenen bir Python işlevi içerir.
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-Bir HTTP tetikleyicisi için işlev, `req` *function.json*öğesinde tanımlanan şekilde değişkende istek verilerini alır. `req` , [Azure. Functions. HttpRequest sınıfının](/python/api/azure-functions/azure.functions.httprequest)bir örneğidir. function.jsolarak tanımlanan dönüş nesnesi, `$return` [Azure. Functions. HttpResponse sınıfının](/python/api/azure-functions/azure.functions.httpresponse)bir örneğidir. *function.json* Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](./functions-bindings-http-webhook.md?tabs=python).
+Bir HTTP tetikleyicisi için işlev, `req` *function.json* öğesinde tanımlanan şekilde değişkende istek verilerini alır. `req` , [Azure. Functions. HttpRequest sınıfının](/python/api/azure-functions/azure.functions.httprequest)bir örneğidir. function.jsolarak tanımlanan dönüş nesnesi, `$return` [Azure. Functions. HttpResponse sınıfının](/python/api/azure-functions/azure.functions.httpresponse)bir örneğidir. *function.json* Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](./functions-bindings-http-webhook.md?tabs=python).
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
 #### <a name="indexjs"></a>index.js
 
-*index.js* , *function.jsüzerindeki*yapılandırmaya göre tetiklenen bir işlevi dışarı aktarır.
+*index.js* , *function.jsüzerindeki* yapılandırmaya göre tetiklenen bir işlevi dışarı aktarır.
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-Bir HTTP tetikleyicisi için işlev, `req` *function.json*öğesinde tanımlanan şekilde değişkende istek verilerini alır. function.jsüzerinde olarak tanımlanan Return nesnesi `$return` Yanıt *function.json*olur. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](./functions-bindings-http-webhook.md?tabs=javascript).
+Bir HTTP tetikleyicisi için işlev, `req` *function.json* öğesinde tanımlanan şekilde değişkende istek verilerini alır. function.jsüzerinde olarak tanımlanan Return nesnesi `$return` Yanıt *function.json* olur. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](./functions-bindings-http-webhook.md?tabs=javascript).
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"
 #### <a name="indexts"></a>Dizin. TS
 
-*index. TS* , *function.jsüzerindeki*yapılandırmaya göre tetiklenen bir işlevi dışarı aktarır.
+*index. TS* , *function.jsüzerindeki* yapılandırmaya göre tetiklenen bir işlevi dışarı aktarır.
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-Bir HTTP tetikleyicisi için işlev, `req` *function.jsüzerinde*tanımlanan **HttpRequest** türünde değişkende istek verilerini alır. function.jsüzerinde olarak tanımlanan Return nesnesi `$return` Yanıt *function.json*olur. 
+Bir HTTP tetikleyicisi için işlev, `req` *function.jsüzerinde* tanımlanan **HttpRequest** türünde değişkende istek verilerini alır. function.jsüzerinde olarak tanımlanan Return nesnesi `$return` Yanıt *function.json* olur. 
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
 #### <a name="runps1"></a>run.ps1
 
-*run.ps1* , *function.jsüzerindeki*yapılandırmaya göre tetiklenen bir işlev betiği tanımlar.
+*run.ps1* , *function.jsüzerindeki* yapılandırmaya göre tetiklenen bir işlev betiği tanımlar.
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-Bir HTTP tetikleyicisi için işlev, `$Request` *function.jsüzerinde*tanımlanan param öğesine geçirilen istek verilerini alır. function.jsüzerinde olduğu gibi tanımlanan dönüş nesnesi, `Response` *function.json* `Push-OutputBinding` cmdlet 'e yanıt olarak geçirilir. 
+Bir HTTP tetikleyicisi için işlev, `$Request` *function.jsüzerinde* tanımlanan param öğesine geçirilen istek verilerini alır. function.jsüzerinde olduğu gibi tanımlanan dönüş nesnesi, `Response` *function.json* `Push-OutputBinding` cmdlet 'e yanıt olarak geçirilir. 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
@@ -369,10 +369,10 @@ mvn azure-functions:deploy
 
 Bu, Azure 'da aşağıdaki kaynakları oluşturur:
 
-+ Kaynak grubu. _Java-Functions-Group_olarak adlandırılır.
++ Kaynak grubu. _Java-Functions-Group_ olarak adlandırılır.
 + Depolama hesabı. Işlevleri için gereklidir. Ad, depolama hesabı adı gereksinimlerine göre rastgele oluşturulur.
-+ Barındırma planı. _Westus_ bölgesindeki işlev uygulamanız için sunucusuz barındırma. Ad, _Java-Functions-App-Service-plan_' dır.
-+ İşlev uygulaması. İşlev uygulaması, işlevleriniz için dağıtım ve yürütme birimidir. Ad, rastgele oluşturulmuş bir sayı eklenerek, _ArtifactId_temel alınarak rastgele oluşturulur. 
++ Barındırma planı. _Westus_ bölgesindeki işlev uygulamanız için sunucusuz barındırma. Ad, _Java-Functions-App-Service-plan_ ' dır.
++ İşlev uygulaması. İşlev uygulaması, işlevleriniz için dağıtım ve yürütme birimidir. Ad, rastgele oluşturulmuş bir sayı eklenerek, _ArtifactId_ temel alınarak rastgele oluşturulur. 
 
 Dağıtım proje dosyalarını paketler ve bunları [ZIP dağıtımı](functions-deployment-technologies.md#zip-deploy)kullanarak yeni işlev uygulamasına dağıtır. Kod, Azure 'daki dağıtım paketinden çalışır.
 ::: zone-end
@@ -390,7 +390,7 @@ Yayımla komutunun çıktısında gösterilen tüm **ÇAĞıRMA URL** 'sini, sor
 
 # <a name="curl"></a>[kıvr](#tab/curl)
 
-[`curl`](https://curl.haxx.se/)Parametresini ekleyerek **Invoke URL 'si**ile çalıştırın `&name=Functions` . Komutun çıktısı, "Hello Functions" metni olmalıdır.
+[`curl`](https://curl.haxx.se/)Parametresini ekleyerek **Invoke URL 'si** ile çalıştırın `&name=Functions` . Komutun çıktısı, "Hello Functions" metni olmalıdır.
 
 ![İşlevin çıktısı, Azure 'da kıvrımlı kullanarak çalıştırıldı](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-curl.png)
 

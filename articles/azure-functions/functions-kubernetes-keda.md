@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: eab0a54d30f2cd2829779dbfc6081445f5be0a71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 525635ef40437fe308c52e2d5aba2c97ed8f20e7
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83648851"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927541"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA ile Kubernetes üzerinde Azure Işlevleri
 
@@ -18,7 +18,7 @@ Azure Işlevleri çalışma zamanı, nerede ve nasıl istediğinizi barındırma
 
 ## <a name="how-kubernetes-based-functions-work"></a>Kubernetes tabanlı işlevler nasıl çalışır?
 
-Azure Işlevleri hizmeti iki temel bileşenden oluşur: çalışma zamanı ve ölçek denetleyicisi.  Işlevler çalışma zamanı, kodunuzu çalıştırır ve yürütür.  Çalışma zamanı, işlev yürütmelerinin tetiklenmesi, günlüğe kaydı ve yönetilmesi ile ilgili mantığı içerir.  Azure Işlevleri çalışma zamanı *her yerde*çalıştırılabilir.  Diğer bileşen bir ölçek denetleyicisidir.  Ölçek denetleyicisi, işlevinizi hedefleyen olayların oranını izler ve uygulamanızı çalıştıran örnek sayısını etkin bir şekilde ölçeklendirir.  Daha fazla bilgi için bkz. [Azure işlevleri ölçeklendirme ve barındırma](functions-scale.md).
+Azure Işlevleri hizmeti iki temel bileşenden oluşur: çalışma zamanı ve ölçek denetleyicisi.  Işlevler çalışma zamanı, kodunuzu çalıştırır ve yürütür.  Çalışma zamanı, işlev yürütmelerinin tetiklenmesi, günlüğe kaydı ve yönetilmesi ile ilgili mantığı içerir.  Azure Işlevleri çalışma zamanı *her yerde* çalıştırılabilir.  Diğer bileşen bir ölçek denetleyicisidir.  Ölçek denetleyicisi, işlevinizi hedefleyen olayların oranını izler ve uygulamanızı çalıştıran örnek sayısını etkin bir şekilde ölçeklendirir.  Daha fazla bilgi için bkz. [Azure işlevleri ölçeklendirme ve barındırma](functions-scale.md).
 
 Kubernetes tabanlı Işlevler, bir [Docker kapsayıcısında](functions-create-function-linux-custom-image.md) , Keda ile olay odaklı ölçeklendirmeyle işlevleri çalışma zamanı sağlar.  KEDA, 0 örneğe (hiçbir olay gerçekleşmesiz) ve *n* örneklerine kadar ölçeklendirebilir. Bu, Kubernetes otomatik (yatay Pod otomatik Scaler) için özel ölçümler ortaya çıkaran bunu yapar.  Bir Kubernetes kümesinde, Işlev kapsayıcılarını KEDA kullanarak, sunucusuz işlev yeteneklerini çoğaltabilirsiniz.  Bu işlevler, sunucusuz altyapı için [Azure Kubernetes Hizmetleri (AKS) sanal düğümleri](../aks/virtual-nodes-cli.md) özelliği kullanılarak da dağıtılabilir.
 
@@ -33,6 +33,9 @@ Helm dahil olmak üzere herhangi bir Kubernetes kümesine KEDA yüklemenin çeş
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Kubernetes 'e işlev uygulaması dağıtma
 
 Herhangi bir işlev uygulamasını KEDA çalıştıran bir Kubernetes kümesine dağıtabilirsiniz.  İşlevleriniz bir Docker kapsayıcısında çalıştığından, projeniz bir gerektirir `Dockerfile` .  Henüz bir tane yoksa, Işlevler projenizin kökünde aşağıdaki komutu çalıştırarak bir Dockerfile ekleyebilirsiniz:
+
+> [!NOTE]
+> Temel araçlar, .NET, Node, Python veya PowerShell 'de yazılmış Azure Işlevleri için Dockerfile 'ı otomatik olarak oluşturur. Java 'da yazılan işlev uygulamaları için Dockerfile el ile oluşturulmalıdır. Azure Işlevinin temel aldığı doğru görüntüyü bulmak için Azure Işlevleri [görüntüsü listesini](https://github.com/Azure/azure-functions-docker) kullanın.
 
 ```cli
 func init --docker-only
@@ -49,7 +52,10 @@ func kubernetes deploy --name <name-of-function-deployment> --registry <containe
 
 > `<name-of-function-deployment>`İşlev uygulamanızın adıyla değiştirin.
 
-Bu, bir Kubernetes `Deployment` kaynağı, bir `ScaledObject` kaynak ve `Secrets` , dosyanızda içeri aktarılan ortam değişkenlerini içeren bir kaynak oluşturur `local.settings.json` .
+Dağıt komutu bir dizi eylemi yürütür:
+1. Daha önce oluşturulan Dockerfile, işlev uygulaması için yerel görüntü oluşturmak üzere kullanılır.
+2. Yerel görüntü etiketlenir ve kullanıcının oturum açtığı kapsayıcı kayıt defterine gönderilir.
+3. Bir bildirim oluşturulup bir Kubernetes `Deployment` kaynağı `ScaledObject` ve bir kaynak tanımlar ve `Secrets` Dosyadan içeri aktarılan ortam değişkenlerini içerir `local.settings.json` .
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>Özel bir kayıt defterinden işlev uygulaması dağıtma
 

@@ -8,36 +8,59 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 088961d58cee2f1bb0c6ac042d9d8ee2ad50ba14
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 99af424d44624adeedf30a87d915fbd377012378
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931368"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927609"
 ---
-# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure NetApp Files ayarlama ve bir NFS birimi oluşturma
 
-Bu makalede, Azure NetApp Files hızlı bir şekilde ayarlama ve birim oluşturma işlemlerinin nasıl yapılacağı gösterilir. 
+Bu makalede, bir Azure Resource Manager şablonu (ARM şablonu) kullanarak Azure NetApp Files hızlı bir şekilde ayarlama ve birim oluşturma işlemlerinin nasıl yapılacağı gösterilir.
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Bu hızlı başlangıçta, aşağıdaki öğeleri ayarlayacaksınız:
 
-- Azure NetApp Files ve NetApp kaynak sağlayıcısı için kayıt
-- NetApp hesabı
-- Kapasite havuzu
-- Azure NetApp Files için NFS birimi
+- Azure NetApp Files ve NetApp kaynak sağlayıcısı için kayıt.
+- Bir NetApp hesabı.
+- Bir kapasite Havuzu.
+- Azure NetApp Files için bir NFS birimi.
+
+Ortamınız önkoşulları karşılıyorsa, [başlamadan önce](#before-you-begin) bölümünü TAMAMLADıNıZ ve ARM şablonlarını kullanmaya Alışdıysanız, **Azure 'a dağıt** düğmesini seçin. Şablon Azure portalda açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-anf-nfs-volume%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="before-you-begin"></a>Başlamadan önce 
+## <a name="before-you-begin"></a>Başlamadan önce
 
-> [!IMPORTANT] 
-> Azure NetApp Files hizmetine erişim verilmesi gerekir.  Hizmete erişim istemek için, [Azure NetApp Files eklenebileceğinizi gönderim sayfasına](https://aka.ms/azurenetappfiles)bakın.  Devam etmeden önce Azure NetApp Files ekipten bir resmi onay e-postası beklemeniz gerekir. 
+> [!IMPORTANT]
+> Azure NetApp Files hizmetine erişim verilmesi gerekir. Hizmete erişim istemek için, [Azure NetApp Files eklenebileceğinizi gönderim sayfasına](https://aka.ms/azurenetappfiles)bakın.  Devam etmeden önce Azure NetApp Files ekipten bir resmi onay e-postası beklemeniz gerekir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
+## <a name="review-the-template"></a>Şablonu gözden geçirme
+
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-anf-nfs-volume) alınmıştır.
+
+ Şablonu görüntülemek için bkz. [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json).
+
+Şablonda birkaç kaynak tanımlanmıştır:
+
+- [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+- [Microsoft. NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts)
+- [Microsoft. NetApp/netAppAccounts/Capacityhavuzları](/azure/templates/microsoft.netapp/netappaccounts/capacitypools)
+- [Microsoft. NetApp/netAppAccounts/Capacityhavuzları/birimleri](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes)
+
+## <a name="deploy-the-template"></a>Şablonu dağıtma
+
 ---
 
-## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Azure NetApp Files ve NetApp kaynak sağlayıcısına kaydolun
+### <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Azure NetApp Files ve NetApp kaynak sağlayıcısına kaydolun
 
 > [!NOTE]
 > Kayıt işleminin tamamlanması biraz zaman alabilir.
@@ -69,15 +92,15 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-Yok.  
+Yok.
 
-Azure NetApp Files ve NetApp kaynak sağlayıcısına kaydolmak için Azure portal, PowerShell veya Azure CLı 'yi kullanın.  
+Azure NetApp Files ve NetApp kaynak sağlayıcısına kaydolmak için Azure portal, PowerShell veya Azure CLı 'yi kullanın.
 
-Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-files-register.md) . 
+Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-files-register.md) .
 
 ---
 
-## <a name="create-a-netapp-account"></a>NetApp hesabı oluşturma
+### <a name="create-a-netapp-account"></a>NetApp hesabı oluşturma
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -85,17 +108,17 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
 
       ![Azure NetApp Files seçin](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
-2. Yeni bir NetApp hesabı oluşturmak için **+ Ekle**'ye tıklayın.
+2. Yeni bir NetApp hesabı oluşturmak için **+ Ekle** 'ye tıklayın.
 
      ![Yeni NetApp hesabı oluştur](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
 
-3. Yeni NetApp hesabı penceresinde, aşağıdaki bilgileri sağlayın: 
-   1. Hesap adı için **myaccount1** girin. 
+3. Yeni NetApp hesabı penceresinde, aşağıdaki bilgileri sağlayın:
+   1. Hesap adı için **myaccount1** girin.
    2. Aboneliğinizi seçin.
-   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam**'a tıklayın. 
-   4. Hesap konumunuzu seçin.  
+   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam** ’a tıklayın.
+   4. Hesap konumunuzu seçin.
 
-      ![Yeni NetApp hesabı penceresi](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
+      ![Yeni NetApp hesabı penceresi](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)
 
       ![Kaynak grubu penceresi](../media/azure-netapp-files/azure-netapp-files-resource-group-window.png)
 
@@ -109,7 +132,7 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
     $resourceGroup = "myRG1"
     $location = "eastus"
     $anfAccountName = "myaccount1"
-    ``` 
+    ```
 
     > [!NOTE]
     > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) bakın.
@@ -123,7 +146,7 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
     ```
 
 2. [New-AzNetAppFilesAccount](/powershell/module/az.netappfiles/New-AzNetAppFilesAccount) komutuyla Azure NetApp Files hesabı oluşturun:
-   
+
     ```powershell-interactive
     New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $location -Name $anfAccountName
     ```
@@ -136,7 +159,7 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
     RESOURCE_GROUP="myRG1"
     LOCATION="eastus"
     ANF_ACCOUNT_NAME="myaccount1"
-    ``` 
+    ```
 
     > [!NOTE]
     > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) bakın.
@@ -152,7 +175,7 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
     ```
 
 3. [Az netappfiles hesabı Create](/cli/azure/netappfiles/account#az-netappfiles-account-create) komutuyla Azure NetApp Files hesabı oluşturun:
-   
+
     ```azurecli-interactive
     az netappfiles account create \
         --resource-group $RESOURCE_GROUP \
@@ -162,9 +185,9 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) kaynağını kullanarak bir Azure Resource Manager ŞABLONUNDA (ARM şablonu) bir NetApp hesabı oluşturmayı gösterir. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) indirin.
+Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) kaynağını kullanarak bir ARM şablonunda NetApp hesabı oluşturmayı gösterir. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json) indirin.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
 
@@ -172,29 +195,29 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templa
 
 ---
 
-## <a name="set-up-a-capacity-pool"></a>Kapasite havuzunu ayarlama
+### <a name="set-up-a-capacity-pool"></a>Kapasite havuzunu ayarlama
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Azure NetApp Files yönetimi dikey penceresinde NetApp hesabınızı (**myaccount1**) seçin.
+1. Azure NetApp Files yönetimi dikey penceresinde NetApp hesabınızı ( **myaccount1** ) seçin.
 
-    ![NetApp hesabı seçin](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)  
+    ![NetApp hesabı seçin](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)
 
-2. NetApp hesabınızın Azure NetApp Files yönetim dikey penceresinde **Kapasite havuzları**' na tıklayın.
+2. NetApp hesabınızın Azure NetApp Files yönetim dikey penceresinde **Kapasite havuzları** ' na tıklayın.
 
-    ![Kapasite havuzları ' na tıklayın](../media/azure-netapp-files/azure-netapp-files-click-capacity-pools.png)  
+    ![Kapasite havuzları ' na tıklayın](../media/azure-netapp-files/azure-netapp-files-click-capacity-pools.png)
 
-3. **+ Havuz Ekle**' ye tıklayın. 
+3. **+ Havuz Ekle** ' ye tıklayın.
 
-    ![Havuz Ekle 'ye tıklayın](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)  
+    ![Havuz Ekle 'ye tıklayın](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. Kapasite havuzu için bilgi sağlayın: 
+4. Kapasite havuzu için bilgi sağlayın:
     * Havuz adı olarak **mypool1** girin.
-    * Hizmet düzeyi için **Premium** ' u seçin. 
-    * Havuz boyutu olarak **4 (TiB)** belirtin. 
+    * Hizmet düzeyi için **Premium** ' u seçin.
+    * Havuz boyutu olarak **4 (TiB)** belirtin.
     * **Otomatik** QoS türünü kullanın.
 
-5. **Oluştur**’a tıklayın.
+5. **Oluştur** 'a tıklayın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -222,7 +245,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templa
     SERVICE_LEVEL="Premium" # Valid values are Standard, Premium and Ultra
     ```
 
-2. [Az netappfiles Havuz oluştur](/cli/azure/netappfiles/pool#az-netappfiles-pool-create) kullanarak yeni bir kapasite havuzu oluşturun 
+2. [Az netappfiles Havuz oluştur](/cli/azure/netappfiles/pool#az-netappfiles-pool-create) kullanarak yeni bir kapasite havuzu oluşturun
 
     ```azurecli-interactive
     az netappfiles pool create \
@@ -238,7 +261,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templa
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzlar](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) kaynağını kullanarak bir Azure Resource Manager ŞABLONUNDA (ARM şablonu) bir kapasite havuzu oluşturmayı gösterir. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) indirin.
+Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) kaynağını kullanarak bir ARM şablonunda bir kapasite havuzunun nasıl oluşturulacağını göstermektedir. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json) indirin.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
 
@@ -246,22 +269,22 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzl
 
 ---
 
-## <a name="create-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
+### <a name="create-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. NetApp hesabınızın Azure NetApp Files yönetim dikey penceresinde **birimler**' e tıklayın.
+1. NetApp hesabınızın Azure NetApp Files yönetim dikey penceresinde **birimler** ' e tıklayın.
 
-    ![Birimler'e tıklayın](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)  
+    ![Birimler'e tıklayın](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)
 
-2. **+ Birim ekle**’ye tıklayın.
+2. **+ Birim ekle** ’ye tıklayın.
 
-    ![Birim Ekle 'ye tıklayın](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)  
+    ![Birim Ekle 'ye tıklayın](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)
 
-3. Birim Oluştur penceresinde, birim için bilgi sağlayın: 
-   1. Birim adı olarak **myvol1** girin. 
-   2. Kapasite havuzunuzu (**mypool1**) seçin.
-   3. Kota için varsayılan değeri kullanın. 
+3. Birim Oluştur penceresinde, birim için bilgi sağlayın:
+   1. Birim adı olarak **myvol1** girin.
+   2. Kapasite havuzunuzu ( **mypool1** ) seçin.
+   3. Kota için varsayılan değeri kullanın.
    4. Yeni bir Azure sanal ağı (VNet) oluşturmak için sanal ağ altında **Yeni oluştur** ' a tıklayın.  Ardından aşağıdaki bilgileri girin:
        * VNET adı olarak **myvnet1** girin.
        * Ayarınız için bir adres alanı belirtin, örneğin, 10.7.0.0/16
@@ -269,28 +292,28 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzl
        * Alt ağ adres aralığını belirtin, örneğin, 10.7.0.0/24. Ayrılmış alt ağı diğer kaynaklarla paylaşamazsınız.
        * Alt ağ temsili için **Microsoft. NetApp/birimler** ' i seçin.
        * VNET oluşturmak için **Tamam** ' ı tıklatın.
-   5. Alt ağ ' da, temsilci alt ağı olarak yeni oluşturulan VNET 'i (**myvnet1**) seçin.
+   5. Alt ağ ' da, temsilci alt ağı olarak yeni oluşturulan VNET 'i ( **myvnet1** ) seçin.
 
-      ![Birim penceresi oluşturma](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)  
+      ![Birim penceresi oluşturma](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)
 
-      ![Sanal Ağ penceresi oluştur](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
+      ![Sanal Ağ penceresi oluştur](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)
 
-4. **Protokol**' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin: 
-    * Birimin protokol türü olarak **NFS** ' yi seçin.  
-    * Birimin dışa aktarma yolunu oluşturmak için kullanılacak dosya yolu olarak **myfilepath1** girin.  
-    * Birim için NFS sürümünü (**NFSv3** veya **nfsv 4.1**) seçin.  
-      Bkz. NFS sürümleri hakkında [konular](azure-netapp-files-create-volumes.md#considerations) ve [en iyi uygulamalar](azure-netapp-files-create-volumes.md#best-practice) . 
-      
+4. **Protokol** ' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin:
+    * Birimin protokol türü olarak **NFS** ' yi seçin.
+    * Birimin dışa aktarma yolunu oluşturmak için kullanılacak dosya yolu olarak **myfilepath1** girin.
+    * Birim için NFS sürümünü ( **NFSv3** veya **nfsv 4.1** ) seçin.
+      Bkz. NFS sürümleri hakkında [konular](azure-netapp-files-create-volumes.md#considerations) ve [en iyi uygulamalar](azure-netapp-files-create-volumes.md#best-practice) .
+
   ![Hızlı başlangıç için NFS protokolünü belirtin](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
-5. **Gözden geçir ve oluştur**’a tıklayın.
+5. **Gözden geçir ve oluştur** ’a tıklayın.
 
-    ![İnceleme ve pencere oluşturma](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)  
+    ![İnceleme ve pencere oluşturma](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)
 
-6. Birimle ilgili bilgileri gözden geçirin ve ardından **Oluştur**' a tıklayın.  
+6. Birimle ilgili bilgileri gözden geçirin ve ardından **Oluştur** ' a tıklayın.
     Oluşturulan birim birimler dikey penceresinde görünür.
 
-    ![Birim oluşturuldu](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
+    ![Birim oluşturuldu](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -307,13 +330,13 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzl
     ```
 
 3. [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) komutunu kullanarak sanal ağı oluşturun.
-    
+
     ```powershell-interactive
     $vnet = New-AzVirtualNetwork -Name "myvnet1" -ResourceGroupName $resourceGroup -Location $location -AddressPrefix "10.7.0.0/16" -Subnet $subnet
     ```
 
 4. [New-AzNetAppFilesVolume](/powershell/module/az.netappfiles/new-aznetappfilesvolume) komutunu kullanarak birimi oluşturun.
-   
+
     ```powershell-interactive
     $volumeSizeBytes = 1099511627776 # 100GiB
     $subnetId = $vnet.Subnets[0].Id
@@ -333,14 +356,14 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzl
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Daha sonraki kullanımlar için bazı değişkenler tanımlama.
-    
+
     ```azurecli-interactive
     VNET_NAME="myvnet1"
     SUBNET_NAME="myANFSubnet"
     ```
 
 1. [Az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create) komutunu kullanarak alt ağ olmadan sanal ağ oluşturun.
-    
+
     ```azurecli-interactive
     az network vnet create \
         --resource-group $RESOURCE_GROUP \
@@ -362,7 +385,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzl
     ```
 
 3. [Az netappfiles Volume Create](/cli/azure/netappfiles/volume#az-netappfiles-volume-create) komutunu kullanarak birimi oluşturun.
-   
+
     ```azurecli-interactive
     VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
     SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP --vnet-name $VNET_NAME --name $SUBNET_NAME --query "id" -o tsv)
@@ -385,9 +408,9 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzl
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] --> 
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-Aşağıdaki kod parçacıkları, bir sanal ağı ayarlamayı ve bir Azure Resource Manager şablonunda (ARM şablonunda) Azure NetApp Files birim oluşturmayı gösterir. VNet kurulumu, [Microsoft. Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) kaynağını kullanır. Birim oluşturma, [Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/Volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) kaynağını kullanır. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) indirin.
+Aşağıdaki kod parçacıkları bir sanal ağı ayarlamayı ve ARM şablonunda bir Azure NetApp Files birimi oluşturmayı gösterir. VNet kurulumu, [Microsoft. Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) kaynağını kullanır. Birim oluşturma, [Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/Volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) kaynağını kullanır. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json) indirin.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
 
@@ -403,50 +426,50 @@ Aşağıdaki kod parçacıkları, bir sanal ağı ayarlamayı ve bir Azure Resou
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-İşiniz bittiğinde ve isterseniz, kaynak grubunu silebilirsiniz. Kaynak grubunu silme eylemi geri alınamaz.  
+İşiniz bittiğinde ve isterseniz, kaynak grubunu silebilirsiniz. Kaynak grubunu silme eylemi geri alınamaz.
 
 > [!IMPORTANT]
-> Kaynak grupları içindeki tüm kaynaklar kalıcı olarak silinecek ve geri alınamaz. 
+> Kaynak grupları içindeki tüm kaynaklar kalıcı olarak silinecek ve geri alınamaz.
 
 1. Azure portal arama kutusuna **Azure NetApp Files** girin ve görüntülenen listeden **Azure NetApp Files** ' yı seçin.
 
-2. Abonelikler listesinde, silmek istediğiniz kaynak grubuna (myRG1) tıklayın. 
+2. Abonelikler listesinde, silmek istediğiniz kaynak grubuna (myRG1) tıklayın.
 
     ![Kaynak gruplarına gidin](../media/azure-netapp-files/azure-netapp-files-azure-navigate-to-resource-groups.png)
 
 
-3. Kaynak grubu sayfasında, **kaynak grubunu sil**' e tıklayın.
+3. Kaynak grubu sayfasında, **kaynak grubunu sil** ' e tıklayın.
 
-    ![Kaynak grubunu Sil düğmesini vurgulayan ekran görüntüsü.](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![Kaynak grubunu Sil düğmesini vurgulayan ekran görüntüsü.](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png)
 
     Bir pencere açılır ve kaynak grubuyla birlikte silinecek kaynaklar hakkında bir uyarı görüntüler.
 
-4. Kaynak grubunu ve içindeki tüm kaynakları kalıcı olarak silmek istediğinizi onaylamak için kaynak grubunun adını (myRG1) girin ve ardından **Sil**' e tıklayın.
+4. Kaynak grubunu ve içindeki tüm kaynakları kalıcı olarak silmek istediğinizi onaylamak için kaynak grubunun adını (myRG1) girin ve ardından **Sil** ' e tıklayın.
 
-    ![Kaynak grubunu silmeyi onayla](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![Kaynak grubunu silmeyi onayla](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png )
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-İşiniz bittiğinde ve isterseniz, kaynak grubunu silebilirsiniz. Kaynak grubunu silme eylemi geri alınamaz.  
+İşiniz bittiğinde ve isterseniz, kaynak grubunu silebilirsiniz. Kaynak grubunu silme eylemi geri alınamaz.
 
 > [!IMPORTANT]
 > Kaynak grupları içindeki tüm kaynaklar kalıcı olarak silinecek ve geri alınamaz.
 
 1. [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu silin.
-   
+
     ```powershell-interactive
     Remove-AzResourceGroup -Name $resourceGroup
     ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-İşiniz bittiğinde ve isterseniz, kaynak grubunu silebilirsiniz. Kaynak grubunu silme eylemi geri alınamaz.  
+İşiniz bittiğinde ve isterseniz, kaynak grubunu silebilirsiniz. Kaynak grubunu silme eylemi geri alınamaz.
 
 > [!IMPORTANT]
 > Kaynak grupları içindeki tüm kaynaklar kalıcı olarak silinecek ve geri alınamaz.
 
 1. [Az Group Delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu silin.
-   
+
     ```azurecli-interactive
     az group delete \
         --name $RESOURCE_GROUP
@@ -456,13 +479,17 @@ Aşağıdaki kod parçacıkları, bir sanal ağı ayarlamayı ve bir Azure Resou
 
 Yok.
 
-Kaynak grubunu silmek için Azure portal, PowerShell veya Azure CLı kullanın.   
+Kaynak grubunu silmek için Azure portal, PowerShell veya Azure CLı kullanın.
 
 ---
 
-## <a name="next-steps"></a>Sonraki adımlar  
+## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure NetApp Files depolama hiyerarşisi](azure-netapp-files-understand-storage-hierarchy.md)   
-> [Azure NetApp Files için hizmet düzeyleri](azure-netapp-files-service-levels.md)   
+> [Azure NetApp Files’ın depolama hiyerarşisi](azure-netapp-files-understand-storage-hierarchy.md)
+
+> [!div class="nextstepaction"]
+> [Azure NetApp Files için hizmet düzeyleri](azure-netapp-files-service-levels.md)
+
+> [!div class="nextstepaction"]
 > [NFS birimi oluşturma](azure-netapp-files-create-volumes.md)

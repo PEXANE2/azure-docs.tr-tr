@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: eeceb1279579055bfff33f0a4413f0798418faed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59b57e292275888140045bf94ff36995f312b6c1
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83201522"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927490"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Öğretici: Key Vault içinde sertifika otomatik döndürmeyi yapılandırma
 
@@ -41,13 +41,13 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
-İşlem gerçekleştirmek için bir Anahtar Kasası oluşturun veya mevcut kasalarınızı seçin (bkz. [Anahtar Kasası oluşturma adımları](../quick-create-portal.md)). Örnekte, Anahtar Kasası adı **örnek kasadır**.
+İşlem gerçekleştirmek için bir Anahtar Kasası oluşturun veya mevcut kasalarınızı seçin (bkz. [Anahtar Kasası oluşturma adımları](../quick-create-portal.md)). Örnekte, Anahtar Kasası adı **örnek kasadır** .
 
 ![Anahtar Kasası oluşturma işlemi tamamlandıktan sonra çıkış](../media/certificates/tutorial-import-cert/vault-properties.png)
 
 ## <a name="create-a-certificate-in-key-vault"></a>Key Vault bir sertifika oluşturun
 
-Bir sertifika oluşturun veya bir sertifikayı anahtar kasasına aktarın (bkz. [Key Vault sertifika oluşturma adımları](../quick-create-portal.md)). Bu durumda, **examplecertificate**adlı bir sertifika üzerinde çalışacaksınız.
+Bir sertifika oluşturun veya bir sertifikayı anahtar kasasına aktarın (bkz. [Key Vault sertifika oluşturma adımları](../quick-create-portal.md)). Bu durumda, **examplecertificate** adlı bir sertifika üzerinde çalışacaksınız.
 
 ## <a name="update-certificate-lifecycle-attributes"></a>Sertifika yaşam döngüsü özniteliklerini güncelleştirme
 
@@ -73,38 +73,38 @@ Key Vault CAs ile belirlenen ortaklıklar aracılığıyla sertifikaları otomat
 
 ### <a name="update-certificate-lifecycle-attributes-at-the-time-of-creation"></a>Sertifika yaşam döngüsü özniteliklerini oluşturma sırasında Güncelleştir
 
-1. Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
-1. **Oluştur/Içeri aktar**' ı seçin.
+1. Key Vault Özellikler sayfalarında, **Sertifikalar** ' ı seçin.
+1. **Oluştur/Içeri aktar** ' ı seçin.
 1. **Sertifika oluştur** ekranında, aşağıdaki değerleri güncelleştirin:
 
-   - **Geçerlilik süresi**: değeri girin (ay). Kısa süreli sertifikaların oluşturulması önerilen bir güvenlik uygulamasıdır. Varsayılan olarak, yeni oluşturulan sertifikanın geçerlilik değeri 12 aydan oluşur.
-   - **Ömür eylemi türü**: sertifikanın otomatik yenileme ve uyarı eylemini seçin ve ardından **yüzde ömrü** veya **süre sonu öncesindeki gün sayısını**güncelleştirin. Varsayılan olarak, bir sertifikanın otomatik yenilenmesi, yaşam süresinin yüzde 80 ' sinden belirlenir. Aşağı açılan menüden, aşağıdaki seçeneklerden birini seçin.
+   - **Geçerlilik süresi** : değeri girin (ay). Kısa süreli sertifikaların oluşturulması önerilen bir güvenlik uygulamasıdır. Varsayılan olarak, yeni oluşturulan sertifikanın geçerlilik değeri 12 aydan oluşur.
+   - **Ömür eylemi türü** : sertifikanın otomatik yenileme ve uyarı eylemini seçin ve ardından **yüzde ömrü** veya **süre sonu öncesindeki gün sayısını** güncelleştirin. Varsayılan olarak, bir sertifikanın otomatik yenilenmesi, yaşam süresinin yüzde 80 ' sinden belirlenir. Aşağı açılan menüden, aşağıdaki seçeneklerden birini seçin.
 
         |  Belirli bir zamanda otomatik olarak Yenile| Belirli bir zamanda tüm kişileri e-postayla gönder |
         |-----------|------|
         |Bu seçeneğin belirlenmesi, oto dönüşü *etkinleştirebilir* . | Bu seçeneğin *belirlenmesi otomatik olarak döndürülmez, ancak* yalnızca ilgili kişileri uyarır.|
 
-1. **Oluştur**’u seçin.
+1. **Oluştur** ’u seçin.
 
 ![Sertifika yaşam döngüsü](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)
 
 ### <a name="update-lifecycle-attributes-of-a-stored-certificate"></a>Depolanan bir sertifikanın yaşam döngüsü özniteliklerini güncelleştirme
 
 1. Anahtar kasasını seçin.
-1. Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
-1. Güncelleştirmek istediğiniz sertifikayı seçin. Bu durumda, **examplecertificate**adlı bir sertifika üzerinde çalışacaksınız.
+1. Key Vault Özellikler sayfalarında, **Sertifikalar** ' ı seçin.
+1. Güncelleştirmek istediğiniz sertifikayı seçin. Bu durumda, **examplecertificate** adlı bir sertifika üzerinde çalışacaksınız.
 1. Üst menü çubuğundan **verme ilkesi** ' ni seçin.
 
-   ![Sertifika Özellikleri](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
+   ![Verme Ilkesi düğmesini vurgulayan ekran görüntüsü.](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
 
 1. **Verme ilkesi** ekranında, aşağıdaki değerleri güncelleştirin:
 
-   - **Geçerlilik süresi**: değeri güncelleştirin (ay).
-   - **Ömür eylemi türü**: sertifikanın otomatik yenileme ve uyarı eylemini seçin ve ardından sürenin dolması için gereken **ömrü** veya **gün sayısını**güncelleştirin.
+   - **Geçerlilik süresi** : değeri güncelleştirin (ay).
+   - **Ömür eylemi türü** : sertifikanın otomatik yenileme ve uyarı eylemini seçin ve ardından sürenin dolması için gereken **ömrü** veya **gün sayısını** güncelleştirin.
 
    ![Sertifika Özellikleri](../media/certificates/tutorial-rotate-cert/cert-policy-change.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
 > [!IMPORTANT]
 > Bir sertifikanın ömür eylemi türünü değiştirmek, mevcut sertifikalara yönelik değişiklikleri hemen kaydeder.
@@ -144,8 +144,8 @@ Artık ihtiyacınız kalmadığında, anahtar kasasını ve ilgili kaynakları s
 Portalı kullanarak kaynak grubunu silmek için:
 
 1. Portalın üst kısmındaki **arama** kutusuna kaynak grubunuzun adını girin. Bu hızlı başlangıçta kullanılan kaynak grubu arama sonuçlarında göründüğünde, bunu seçin.
-1. **Kaynak grubunu sil**'i seçin.
-1. **Kaynak grubu adını yazın:** kutusuna kaynak grubunun adını yazın ve **Sil**' i seçin.
+1. **Kaynak grubunu sil** 'i seçin.
+1. **Kaynak grubu adını yazın:** kutusuna kaynak grubunun adını yazın ve **Sil** ' i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

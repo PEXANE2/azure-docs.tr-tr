@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy, studio
-ms.openlocfilehash: e2f3e0b596847000af62aa6e23da5b137ee9de33
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 0d98d5103e26eb0b4ee0d31b95f1d07cdaa396ae
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999005"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927592"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Tasarımcı 'da eğitilen modelleri dağıtmak için Studio 'yu kullanma
 
@@ -33,7 +33,7 @@ Model kaydı ve dosya indirme adımlarını atlamak için modelleri doğrudan ta
 
 Tasarımcıda eğitilen modeller ayrıca SDK veya komut satırı arabirimi (CLı) aracılığıyla da dağıtılabilir. Daha fazla bilgi için bkz. [mevcut modelinizi Azure Machine Learning dağıtma](how-to-deploy-existing-model.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
 
@@ -56,7 +56,7 @@ Eğitim işlem hattı tamamlandıktan sonra, diğer projelerdeki modele erişmek
 
     ![Model modülü eğitimi sağ bölmesinin ekran görüntüsü](./media/how-to-deploy-model-designer/train-model-right-pane.png)
 
-1. Modeliniz için bir ad girin ve ardından **Kaydet**' i seçin.
+1. Modeliniz için bir ad girin ve ardından **Kaydet** ' i seçin.
 
 Modelinize kaydolduktan sonra, bunu Studio 'daki **modeller** varlık sayfasında bulabilirsiniz.
     
@@ -104,8 +104,8 @@ Gerekli dosyaları indirdikten sonra modeli dağıtmaya hazırsınız demektir.
 
     - Uç nokta için bir ad girin.
     - Modeli [Azure Kubernetes hizmetine](how-to-deploy-azure-kubernetes-service.md) veya [Azure Container Instance](how-to-deploy-azure-container-instance.md)'a dağıtmayı seçin.
-    - `score.py` **Giriş betik dosyası**için öğesini yükleyin.
-    - `conda_env.yml` **Conda Dependencies dosyası**için öğesini karşıya yükleyin. 
+    - `score.py` **Giriş betik dosyası** için öğesini yükleyin.
+    - `conda_env.yml` **Conda Dependencies dosyası** için öğesini karşıya yükleyin. 
 
     >[!TIP]
     > **Gelişmiş** ayarında, DAĞıTıM için CPU/bellek kapasitesi ve diğer parametreleri ayarlayabilirsiniz. Bu ayarlar, önemli miktarda memery (yaklaşık 4 GB) kullanan PyTorch modelleri gibi bazı modeller için önemlidir.
@@ -299,6 +299,7 @@ score_params = dict(
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Tasarımcıda bir modeli eğitme](tutorial-designer-automobile-price-train-score.md)
+* [Azure Machine Learning SDK ile modelleri dağıtma](how-to-deploy-and-where.md)
 * [Başarısız bir dağıtımda sorun giderme](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service’e dağıtma](how-to-deploy-azure-kubernetes-service.md)
 * [Web hizmetlerini kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 83725a3839d36fc753bb43803e67acaca7571a6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 052418924e73252a780689aea33e84d5bfdbc3f6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851834"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927660"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Özel komutlar kavramları ve tanımları
 
@@ -62,10 +62,10 @@ Tüm bu parametre türleri, Azure portal yapılandırabileceğiniz varsayılan d
 ### <a name="configuration"></a>Yapılandırma
 Yapılandırma yalnızca tür dizesi için tanımlanan bir parametre özelliğidir. Aşağıdaki değerler desteklenir:
 
-* **Yok**.
-* **Tam girişi kabul et**: etkinleştirildiğinde, bir parametre herhangi bir giriş açıklamasını kabul eder. Bu seçenek, kullanıcının tam utterlik bir parametreye ihtiyacı olduğunda faydalıdır. Posta adresleri bir örnektir.
-* **Dış katalogdan önceden tanımlanmış giriş değerlerini kabul et**: Bu değer, çok çeşitli değerleri varsayan bir parametre yapılandırmak için kullanılır. Bir satış kataloğu örneğidir. Bu durumda, Katalog bir dış Web uç noktasında barındırılır ve bağımsız olarak yapılandırılabilir.
-* **İç katalogdan önceden tanımlanmış giriş değerlerini kabul et**: Bu değer, birkaç değeri varsayacak bir parametreyi yapılandırmak için kullanılır. Bu durumda, konuşma Studio 'da değerlerin yapılandırılması gerekir.
+* **Yok** .
+* **Tam girişi kabul et** : etkinleştirildiğinde, bir parametre herhangi bir giriş açıklamasını kabul eder. Bu seçenek, kullanıcının tam utterlik bir parametreye ihtiyacı olduğunda faydalıdır. Posta adresleri bir örnektir.
+* **Dış katalogdan önceden tanımlanmış giriş değerlerini kabul et** : Bu değer, çok çeşitli değerleri varsayan bir parametre yapılandırmak için kullanılır. Bir satış kataloğu örneğidir. Bu durumda, Katalog bir dış Web uç noktasında barındırılır ve bağımsız olarak yapılandırılabilir.
+* **İç katalogdan önceden tanımlanmış giriş değerlerini kabul et** : Bu değer, birkaç değeri varsayacak bir parametreyi yapılandırmak için kullanılır. Bu durumda, konuşma Studio 'da değerlerin yapılandırılması gerekir.
 
 
 ### <a name="validation"></a>Doğrulama
@@ -75,47 +75,50 @@ Doğrulamalar, bir parametre değerindeki kısıtlamaları yapılandırmanıza o
 * Sayı
 
 ## <a name="rules-configuration"></a>Kural yapılandırması
-Özel komutlarda bir kural, karşılandığında, bir dizi *eylemi*yürütülene yönelik bir dizi *koşula* göre tanımlanır. Kurallar, bir sonraki sırayla *yürütme sonrası durumunu* ve *beklentilerini* yapılandırmanıza da imkan tanır.
+Özel komutlarda bir kural, karşılandığında, bir dizi *eylemi* yürütülene yönelik bir dizi *koşula* göre tanımlanır. Kurallar, bir sonraki sırayla *yürütme sonrası durumunu* ve *beklentilerini* yapılandırmanıza da imkan tanır.
 
 ### <a name="types"></a>Türler
 Özel komutlar aşağıdaki kural kategorilerini destekler:
 
-* **Tamamlama kuralları**: Bu kuralların, komut ile tamamlama sırasında yürütülmesi gerekir. Bu bölümde, koşulların doğru olduğu tüm kurallar yürütülür. 
-* **Etkileşim kuralları**: Bu kurallar ek özel doğrulamaları, onayları ve tek adımlı bir düzeltmeyi yapılandırmak ya da başka bir özel iletişim kutusu mantığını gerçekleştirmek için kullanılabilir. Etkileşim kuralları her bir işleme sırayla değerlendirilir ve tamamlanma kurallarını tetiklemek için kullanılabilir.
+* **Tamamlama kuralları** : Bu kuralların, komut ile tamamlama sırasında yürütülmesi gerekir. Bu bölümde, koşulların doğru olduğu tüm kurallar yürütülür. 
+* **Etkileşim kuralları** : Bu kurallar ek özel doğrulamaları, onayları ve tek adımlı bir düzeltmeyi yapılandırmak ya da başka bir özel iletişim kutusu mantığını gerçekleştirmek için kullanılabilir. Etkileşim kuralları her bir işleme sırayla değerlendirilir ve tamamlanma kurallarını tetiklemek için kullanılabilir.
 
 Bir kuralın parçası olarak yapılandırılan farklı eylemler, yazma portalında göründükleri sırada yürütülür.
 
 ### <a name="conditions"></a>Koşullar
 Koşullar, bir kuralın yürütülmesi için karşılanması gereken gereksinimlerdir. Kural koşulları aşağıdaki türlerde olabilir:
 
-* **Parametre değeri eşittir**: yapılandırılan parametrenin değeri belirli bir değere eşit.
-* **Parametre değeri yok**: yapılandırılan parametrelerin herhangi bir değer olmaması gerekir.
-* **Gerekli parametreler**: yapılandırılmış parametrenin bir değeri vardır.
-* **Tüm gerekli parametreler**: gerekli olarak işaretlenen tüm parametrelerin bir değeri vardır.
-* **Güncelleştirilmiş parametreler**: bir veya daha fazla parametre değeri, geçerli girişi (utterance veya Activity) işlemenin sonucu olarak güncelleştirildi.
-* **Onay başarılı**oldu: giriş ya da etkinlik başarılı bir onaydı (Evet).
-* **Onay reddedildi**: giriş ya da etkinlik başarılı bir onay (Hayır) değildi.
-* **Önceki komutun güncelleştirilmesi gerekiyor**: Bu koşul, bir güncelleştirmeyle birlikte bir zaman onayını yakalamak istediğinizde örneklerde kullanılır. Arka planda bu koşul, iletişim kutusu altyapısının, amaç önceki sırayla aynı olduğu ve Kullanıcı bir güncelleştirmeyle yanıt verdiği negatif bir onay algıladığında yapılandırılır.
+* **Parametre değeri eşittir** : yapılandırılan parametrenin değeri belirli bir değere eşit.
+* **Parametre değeri yok** : yapılandırılan parametrelerin herhangi bir değer olmaması gerekir.
+* **Gerekli parametreler** : yapılandırılmış parametrenin bir değeri vardır.
+* **Tüm gerekli parametreler** : gerekli olarak işaretlenen tüm parametrelerin bir değeri vardır.
+* **Güncelleştirilmiş parametreler** : bir veya daha fazla parametre değeri, geçerli girişi (utterance veya Activity) işlemenin sonucu olarak güncelleştirildi.
+* **Onay başarılı** oldu: giriş ya da etkinlik başarılı bir onaydı (Evet).
+* **Onay reddedildi** : giriş ya da etkinlik başarılı bir onay (Hayır) değildi.
+* **Önceki komutun güncelleştirilmesi gerekiyor** : Bu koşul, bir güncelleştirmeyle birlikte bir zaman onayını yakalamak istediğinizde örneklerde kullanılır. Arka planda bu koşul, iletişim kutusu altyapısının, amaç önceki sırayla aynı olduğu ve Kullanıcı bir güncelleştirmeyle yanıt verdiği negatif bir onay algıladığında yapılandırılır.
 
 ### <a name="actions"></a>Eylemler
-* **Konuşma yanıtı gönder**: istemciye geri konuşma yanıtı gönderin.
-* **Parametre değerini Güncelleştir**: bir komut parametresinin değerini belirtilen bir değere güncelleştirin.
-* **Parametre değerini temizle**: komut parametresi değerini temizleyin.
-* **Web uç noktası çağır**: bir Web uç noktasına çağrı yapın.
-* **Etkinliği Istemciye gönder**: istemciye özel etkinlik gönderme.
+* **Konuşma yanıtı gönder** : istemciye geri konuşma yanıtı gönderin.
+* **Parametre değerini Güncelleştir** : bir komut parametresinin değerini belirtilen bir değere güncelleştirin.
+* **Parametre değerini temizle** : komut parametresi değerini temizleyin.
+* **Web uç noktası çağır** : bir Web uç noktasına çağrı yapın.
+* **Etkinliği Istemciye gönder** : istemciye özel etkinlik gönderme.
 
 ### <a name="expectations"></a>Beklentileri
 Beklentiler, sonraki Kullanıcı girişinin işlenmesine yönelik ipuçları yapılandırmak için kullanılır. Aşağıdaki türler desteklenir:
 
-* **Kullanıcıdan onay bekleniyor**: Bu beklenerek, uygulamanın bir sonraki Kullanıcı girişi için bir onay (Evet/Hayır) beklediği belirtilir.
-* **Kullanıcıdan parametre girdisi bekleniyor**: Bu beklenerek uygulamanın Kullanıcı girişinden beklediği bir veya daha fazla komut parametresi belirtilir.
+* **Kullanıcıdan onay bekleniyor** : Bu beklenerek, uygulamanın bir sonraki Kullanıcı girişi için bir onay (Evet/Hayır) beklediği belirtilir.
+* **Kullanıcıdan parametre girdisi bekleniyor** : Bu beklenerek uygulamanın Kullanıcı girişinden beklediği bir veya daha fazla komut parametresi belirtilir.
 
 ### <a name="post-execution-state"></a>Yürütme sonrası durumu
 Yürütme sonrası durumu, geçerli giriş (utterance veya Activity) işlendikten sonra gelen iletişim durumudur. Şu türlerden biri:
 
-* **Komut tamamlandı**: komutu doldurun ve komutun başka hiçbir kuralı işlenmeyecek.
-* **Tamamlanma kurallarını Yürüt**: geçerli tamamlanma kurallarını yürütün.
-* **Kullanıcının girişini bekle**: sonraki Kullanıcı girişini bekle.
+* **Geçerli durumu koru** : yalnızca geçerli durumu koru.
+* **Komutu doldurun** : komutunu doldurun ve komutun başka hiçbir kuralı işlenmeyecek.
+* **Tamamlanma kurallarını Yürüt** : geçerli tamamlanma kurallarını yürütün.
+* **Kullanıcının girişini bekle** : sonraki Kullanıcı girişini bekle.
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
