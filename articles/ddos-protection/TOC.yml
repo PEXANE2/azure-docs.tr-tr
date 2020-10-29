@@ -1,0 +1,68 @@
+- name: Azure DDoS Koruması Standart belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure DDoS Koruması Standart nedir?
+      href: ddos-protection-overview.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: DDoS koruma planı oluşturma - Portal
+      href: manage-ddos-protection.md
+    - name: DDoS koruma planı oluşturma - PowerShell
+      href: manage-ddos-protection-powershell.md
+    - name: DDoS koruma planı oluşturma - CLI
+      href: manage-ddos-protection-cli.md
+- name: Öğreticiler
+  items:
+    - name: DDoS konuma telemetrisini görüntüleme ve yapılandırma
+      href: telemetry-monitoring-alerting.md
+    - name: DDoS saldırı azaltma raporları ve akış günlükleri
+      href: reports-and-flow-logs.md
+- name: Kavramlar
+  items:
+    - name: Saldırı türleri
+      href: types-of-attacks.md
+    - name: Temel en iyi yöntemler
+      href: fundamental-best-practices.md
+    - name: Azure DDoS Koruması Standart'ın özellikleri
+      href: ddos-protection-standard-features.md
+    - name: DDoS yanıt stratejisinin bileşenleri
+      href: ddos-response-strategy.md
+    - name: Başvuru mimarileri
+      href: ddos-protection-reference-architectures.md
+    - name: Güvenlik temeli
+      href: ../security/fundamentals/ddos-protection-security-baseline.md?toc=%2fazure%2fddos-protection%2ftoc.json
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Simülasyonlar aracılığıyla test etme
+      href: test-through-simulations.md
+    - name: İzinleri ve kısıtlamaları yönetme
+      href: manage-permissions.md
+    - name: DDoS Rapid Response (DRR)
+      href: ddos-rapid-response.md
+    - name: İş ortaklarını ekleme
+      href: ddos-protection-partner-onboarding.md
+- name: Başvuru
+  items:
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/Az.Network/New-AzDdosProtectionPlan?view=azps-2.8.0'
+    - name: .NET
+      href: 'https://docs.microsoft.com/dotnet/api/'
+    - name: Java
+      href: 'https://docs.microsoft.com/java/api/'
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/virtualnetwork/ddosprotectionplans'
+    - name: Azure Resource Manager
+      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/overview'
+- name: Kaynaklar
+  items:
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/en-us/pricing/details/ddos-protection/'
+    - name: Bölgesel kullanılabilirlik
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=ddos-protection'

@@ -112,7 +112,7 @@
         - name: Kubernetes ağ ilkeleri
           href: kubernetes-network-policies.md
         - name: DDoS koruması
-          href: ddos-protection-overview.md
+          href: 'https://docs.microsoft.com/azure/ddos-protection/ddos-protection-overview'
         - name: Sanal ağ TAP
           href: virtual-network-tap-overview.md
         - name: Azure İlkesi’ne göre güvenlik denetimleri
@@ -299,9 +299,9 @@
                 - name: Azure CLI
                   href: virtual-network-service-endpoint-policies-cli.md
         - name: Manage DDoS koruması
-          href: manage-ddos-protection.md
+          href: 'https://docs.microsoft.com/azure/ddos-protection/manage-ddos-protection'
         - name: DDos Koruması Standart’a iş ortağı ekleme
-          href: ddos-protection-partner-onboarding.md
+          href: 'https://docs.microsoft.com/azure/ddos-protection/ddos-protection-partner-onboarding'
         - name: Ağ güvenlik gruplarını yönetme
           href: manage-network-security-group.md
         - name: Güvenlik senaryoları

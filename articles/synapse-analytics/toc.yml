@@ -115,8 +115,6 @@
                   href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Bakım zamanlaması
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Yedekleme ve geri yükleme
-          href: ./sql-data-warehouse/backup-and-restore.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: İzleme
       items:
         - name: Havuz izleme
@@ -259,6 +257,8 @@
               href: sql/best-practices-sql-on-demand.md
             - name: SQL havuzu en iyi yöntemleri
               href: sql/best-practices-sql-pool.md
+        - name: Yedekleme ve geri yükleme
+          href: ./sql-data-warehouse/backup-and-restore.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Veri alımı ve hazırlığı
           items:
             - name: Genel Bakış
@@ -431,8 +431,6 @@
               href: ./sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: İş yükünüzü izleme - portal
               href: ./sql-data-warehouse/sql-data-warehouse-monitor-workload-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Veri ambarınızı geri yükleme
-              href: ./sql-data-warehouse/backup-and-restore.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: İş yüklerini yönetme
               items:
                 - name: İş yükünüzü çözümleme

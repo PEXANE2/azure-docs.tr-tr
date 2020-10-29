@@ -132,6 +132,8 @@
           href: how-to-request-transit-data.md
         - name: Gerçek zamanlı genel aktarım verilerini isteme
           href: how-to-request-real-time-data.md
+        - name: Gerçek zamanlı ve tahmini hava durumu verileri isteme
+          href: how-to-request-weather-data.md
     - name: Web SDK ile geliştirme
       items:
         - name: Harita denetimi
@@ -281,55 +283,55 @@
     - name: REST
       items:
         - name: Veri hizmeti
-          href: 'https://docs.microsoft.com/rest/api/maps/data'
+          href: /rest/api/maps/data
         - name: Coğrafi Konum hizmeti
-          href: 'https://docs.microsoft.com/rest/api/maps/geolocation'
+          href: /rest/api/maps/geolocation
         - name: Mobility hizmeti
-          href: 'https://docs.microsoft.com/rest/api/maps/mobility'
+          href: /rest/api/maps/mobility
         - name: İşleme hizmeti
-          href: 'https://docs.microsoft.com/rest/api/maps/render'
+          href: /rest/api/maps/render
         - name: İşleme hizmeti V2
-          href: 'https://docs.microsoft.com/rest/api/maps/renderv2'
+          href: /rest/api/maps/renderv2
         - name: Yönlendirme hizmeti
-          href: 'https://docs.microsoft.com/rest/api/maps/route'
+          href: /rest/api/maps/route
         - name: Arama hizmeti
-          href: 'https://docs.microsoft.com/rest/api/maps/search'
+          href: /rest/api/maps/search
         - name: Uzamsal hizmet
-          href: 'https://docs.microsoft.com/rest/api/maps/spatial'
+          href: /rest/api/maps/spatial
         - name: Saat dilimi hizmeti
-          href: 'https://docs.microsoft.com/rest/api/maps/timezone'
+          href: /rest/api/maps/timezone
         - name: Trafik hizmeti
-          href: 'https://docs.microsoft.com/rest/api/maps/traffic'
+          href: /rest/api/maps/traffic
         - name: Hava durumu hizmeti
-          href: 'https://docs.microsoft.com/rest/api/maps/weather'
+          href: /rest/api/maps/weather
         - name: Haritalar Oluşturucu hizmeti
           items:
             - name: Diğer ad hizmeti
-              href: 'https://docs.microsoft.com/rest/api/maps/alias'
+              href: /rest/api/maps/alias
             - name: Dönüştürme hizmeti
-              href: 'https://docs.microsoft.com/rest/api/maps/conversion'
+              href: /rest/api/maps/conversion
             - name: Veri kümesi hizmeti
-              href: 'https://docs.microsoft.com/rest/api/maps/dataset'
+              href: /rest/api/maps/dataset
             - name: Özellik Durumu hizmeti
-              href: 'https://docs.microsoft.com/rest/api/maps/featurestate'
+              href: /rest/api/maps/featurestate
             - name: Kutucuk kümesi hizmeti
-              href: 'https://docs.microsoft.com/rest/api/maps/tileset'
+              href: /rest/api/maps/tileset
             - name: WFS hizmeti
-              href: 'https://docs.microsoft.com/rest/api/maps/wfs'
+              href: /rest/api/maps/wfs
         - name: Haritalar hesabı yönetimi
-          href: 'https://docs.microsoft.com/rest/api/maps-management'
+          href: /rest/api/maps-management
     - name: JavaScript
       items:
         - name: Harita denetimi
-          href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+          href: /javascript/api/azure-maps-javascript/
         - name: Çizim araçları
-          href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
+          href: /javascript/api/azure-maps-drawing-tools/
         - name: Hizmet modülü
-          href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
+          href: /javascript/api/azure-maps-rest/
         - name: Uzamsal GÇ modülü
-          href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
+          href: /javascript/api/azure-maps-spatial-io/
         - name: İç mekan modülü
-          href: 'https://aka.ms/am-indoor-module-websdk/'
+          href: /javascript/api/azure-maps-indoor/
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.maps/accounts
     - name: Azure CLI
@@ -337,31 +339,31 @@
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT hizmetleri
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: IoT Hub Cihazı Sağlama Hizmeti
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../iot-edge/index.yml
         - name: IoT çözüm hızlandırıcıları
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT Tak Çalıştır
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
         - name: Azure Haritalar
-          href: /azure/azure-maps
+          href: ./index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK’ları
       items:
         - name: IoT Hizmet SDK’ları
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT Cihaz SDK'ları
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Azure Haritalar kullanım koşulları
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Haritalar fiyatlandırması

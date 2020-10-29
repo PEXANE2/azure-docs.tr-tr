@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 4979405c7675b5eff9f6940cd34e0c974ebad217
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: af057750e81086bf691b87057da97af3de19cd3b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538281"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909650"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -40,7 +40,7 @@ IoT Hub istekleri aşağıdaki hata iletilerinden biriyle başarısız olur:
 
 ## <a name="cause"></a>Nedeni
 
-### <a name="cause-1"></a>Neden 1
+### <a name="cause-1"></a>1\. Neden
 
 MQTT için bazı SDK 'lar, bir kilit süresinin ne zaman yenileneceğini bilmek için SAS belirtecinin süresi dolarsa bağlantıyı kesmek için IoT Hub kullanır. Dolayısıyla: 
 
@@ -50,9 +50,9 @@ MQTT için bazı SDK 'lar, bir kilit süresinin ne zaman yenileneceğini bilmek 
 1. IoT SDK yeni bir SAS belirteci oluşturur
 1. Cihaz başarıyla IoT Hub yeniden bağlanır
 
-### <a name="cause-2"></a>Neden 2
+### <a name="cause-2"></a>2\. Neden
 
-IoT Hub auth üstbilgisinin, kuralın veya anahtarın kimliğini doğrulayamadı.
+IoT Hub auth üstbilgisinin, kuralın veya anahtarın kimliğini doğrulayamadı. Bu, belirtilere alıntı yapılan nedenlerden kaynaklanabilir.
 
 ## <a name="solution"></a>Çözüm
 
@@ -66,10 +66,13 @@ Hata hacmi bir sorun oluşturacaksa, SAS belirtecini sona ermeden önce yeniledi
 
 Genel olarak, sunulan hata iletisinde hatanın nasıl düzeltileceğini açıklamalıdır. Bazı nedenlerle hata iletisi ayrıntısına erişiminiz yoksa şunları yaptığınızdan emin olun:
 
-- Kullandığınız SAS veya diğer güvenlik belirtecinin geçerliliği dolmamıştır. 
-- Yetkilendirme kimlik bilgileri, kullandığınız protokol için doğru şekilde biçimlendirilir. Daha fazla bilgi için bkz. [IoT Hub Access Control](iot-hub-devguide-security.md).
+- Kullandığınız SAS veya diğer güvenlik belirtecinin geçerliliği dolmamıştır.
+- X. 509.952 sertifikası kimlik doğrulaması için, cihaz sertifikası veya cihazla ilişkili CA sertifikası zaman aşımına uğradı. IoT Hub ile X. 509.952 CA sertifikalarını nasıl kaydedeceğinizi öğrenmek için bkz. [Azure IoT Hub 'ınızda x. 509.440 güvenliğini ayarlama](iot-hub-security-x509-get-started.md).
+- X. 509.440 sertifika parmak izi kimlik doğrulaması için, cihaz sertifikasının parmak izi IoT Hub kaydedilir.
+- Yetkilendirme kimlik bilgileri, kullandığınız protokol için doğru şekilde biçimlendirilir. Daha fazla bilgi için bkz. [IoT Hub erişimi denetleme](iot-hub-devguide-security.md).
 - Kullanılan yetkilendirme kuralı istenen işlem için izne sahip.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Hub kimlik doğrulamasını kolaylaştırmak için [Azure IoT SDK](iot-hub-devguide-sdks.md)'larını kullanmanızı öneririz.
+- IoT Hub kimlik doğrulamasını kolaylaştırmak için [Azure IoT SDK](iot-hub-devguide-sdks.md)'larını kullanmanızı öneririz.
+- IoT Hub ile kimlik doğrulama hakkında ayrıntılı bilgi için bkz. [IoT Hub denetim erişimi](iot-hub-devguide-security.md).

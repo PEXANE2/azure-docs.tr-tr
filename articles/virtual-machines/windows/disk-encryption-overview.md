@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ffed14c1877f92b8f8989ea65500f441506fa34
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ea82724ec534aa896fa012332c10e28050caf825
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977298"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909395"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 'Leri için Azure disk şifrelemesi 
 
@@ -37,7 +37,7 @@ Windows VM 'Leri [çeşitli boyutlarda](../sizes-general.md)kullanılabilir. Azu
 
 Azure disk şifrelemesi, Premium depolama özellikli VM 'Ler için de kullanılabilir.
 
-Azure disk şifrelemesi [2. nesil VM](../generation-2.md#generation-1-vs-generation-2-capabilities) 'Lerde ve [Lsv2 serisi sanal](../lsv2-series.md)makinelerde kullanılamaz. Daha fazla özel durum için bkz. [Azure disk şifrelemesi: desteklenmeyen senaryolar](disk-encryption-windows.md#unsupported-scenarios).
+Azure disk şifrelemesi [2. nesil VM](../generation-2.md#generation-1-vs-generation-2-capabilities)'lerde kullanılamaz. Daha fazla özel durum için bkz. [Azure disk şifrelemesi: desteklenmeyen senaryolar](disk-encryption-windows.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 

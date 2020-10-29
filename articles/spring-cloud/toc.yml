@@ -65,7 +65,7 @@
       href: disaster-recovery.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Java Spring uygulamasını dağıtım için hazırlama
+    - name: Uygulamayı dağıtıma hazırlama
       href: spring-cloud-tutorial-prepare-app-deployment.md
     - name: Kaynak kodundan Java uygulaması başlatma
       href: spring-cloud-howto-launch-from-source.md

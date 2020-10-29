@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: Azure DDoS Koruması Standart belgeleri
+summary: Azure DDoS Koruması Standart'ın, uygulama tasarımı en iyi yöntemleriyle birleştirildiğinde DDoS saldırılarına karşı nasıl savunma sağladığını öğrenin.
+metadata:
+  description: Azure DDoS Koruması Standart'ın, uygulama tasarımı en iyi yöntemleriyle birleştirildiğinde DDoS saldırılarına karşı nasıl savunma sağladığını öğrenin.
+  keywords: azure ddos protection standard
+  author: yitoh
+  ms.author: yitoh
+  ms.date: 09/04/2019
+  ms.service: ddos-protection
+  ms.topic: landing-page
+  ms.custom: azure-ddos-protection
+  ms.openlocfilehash: cfc0a8c4856711c4f011805322e2b28942866573
+  ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92904753"
+landingContent:
+- title: Azure DDoS Koruması Standart hakkında bilgi edinin
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure DDoS Koruması Standart nedir?
+      url: ddos-protection-overview.md
+  - linkListType: architecture
+    links:
+    - text: Azure DDoS Koruması Standart'ın özellikleri
+      url: ddos-protection-standard-features.md
+    - text: Başvuru mimarileri
+      url: ddos-protection-reference-architectures.md
+- title: başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: DDoS Koruma Planı Oluşturma - Portal
+      url: manage-ddos-protection.md
+- title: Saldırı analizini yapılandırma
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: DDoS konuma telemetrisini görüntüleme ve yapılandırma
+      url: telemetry-monitoring-alerting.md
+    - text: DDoS saldırı azaltma raporları ve akış günlükleri
+      url: reports-and-flow-logs.md
+- title: DDoS saldırılarına yanıt verme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Saldırı türleri
+      url: types-of-attacks.md
+    - text: Temel en iyi yöntemler
+      url: fundamental-best-practices.md
+    - text: DDoS yanıt stratejisinin bileşenleri
+      url: ddos-response-strategy.md
+  - linkListType: how-to-guide
+    links:
+    - text: DDoS Rapid Response (DRR)
+      url: ddos-rapid-response.md

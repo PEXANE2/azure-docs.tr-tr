@@ -79,7 +79,33 @@
         - name: TypeScript
           href: /samples/browse/?products=azure-functions&languages=typescript
     - name: Azure CLI
-      href: functions-cli-samples.md
+      items:
+        - name: CLI örnek dizini
+          href: functions-cli-samples.md
+        - name: İşlev uygulaması oluşturma
+          items:
+            - name: Sunucusuz işlev uygulaması
+              href: ./scripts/functions-cli-create-serverless.md
+            - name: Sunucusuz Python uygulaması
+              href: ./scripts/functions-cli-create-serverless-python.md
+            - name: Ölçeklenebilir Premium planı uygulaması
+              href: ./scripts/functions-cli-create-premium-plan.md
+            - name: Ayrılmış (App Service) plan uygulaması
+              href: ./scripts/functions-cli-create-app-service-plan.md
+        - name: Hizmetleri tümleştirme
+          items:
+            - name: Azure Depolama’ya bağlanma
+              href: ./scripts/functions-cli-create-function-app-connect-to-storage-account.md
+            - name: Azure Cosmos DB’ye bağlanma
+              href: ./scripts/functions-cli-create-function-app-connect-to-cosmos-db.md
+            - name: Python takılan Dosya paylaşımı
+              href: ./scripts/functions-cli-mount-files-storage-linux.md
+        - name: Sürekli dağıtım
+          items:
+            - name: GitHub dağıtımı
+              href: ./scripts/functions-cli-create-function-app-github-continuous.md
+            - name: DevOps dağıtımı
+              href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: Kavramlar
   items:
     - name: Çalışma zamanı sürümlerini karşılaştırma
