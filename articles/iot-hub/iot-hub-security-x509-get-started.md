@@ -13,16 +13,16 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: 7c05d6f91f4c05405ba8148b0924a755122f99fe
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a3e328418a0f111cd0b985310ea6dc497999772d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144466"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909803"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT hub'ınızda X.509 güvenliğini ayarlama
 
-Bu öğreticide, *X. 509.952 sertifika kimlik doğrulamasını*kullanarak Azure IoT Hub 'ınızı güvence altına almak için gereken adımlar gösterilmektedir. Çizim amacına yönelik olarak, Windows makinenizde yerel olarak sertifika oluşturmak için OpenSSL açık kaynaklı aracını kullanırız. Bu öğreticiyi yalnızca test amacıyla kullanmanızı öneririz. Üretim ortamında, sertifikaları bir *kök sertifika yetkilisinden (CA)* satın almalısınız.
+Bu öğreticide, *X. 509.952 sertifika kimlik doğrulamasını* kullanarak Azure IoT Hub 'ınızı güvence altına almak için gereken adımlar gösterilmektedir. Çizim amacına yönelik olarak, Windows makinenizde yerel olarak sertifika oluşturmak için OpenSSL açık kaynaklı aracını kullanırız. Bu öğreticiyi yalnızca test amacıyla kullanmanızı öneririz. Bir üretim ortamında, sertifikaları bir *kök sertifika yetkilisinden (CA)* satın almanız gerekir. Ayrıca, üretimde, bir cihaz sertifikası veya CA sertifikası sona erdiğinde sertifika rollover 'ı işlemek için bir stratejiniz olduğundan emin olun.
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
@@ -51,7 +51,7 @@ Sertifikalarınızı almak için aşağıdaki yollarla seçim yapabilirsiniz:
 
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>X. 509.440 CA sertifikalarını IoT Hub 'ınıza kaydetme
 
-Bu adımlarda, Portal üzerinden IoT Hub 'ınıza yeni bir sertifika yetkilisini nasıl ekleyeceğiniz gösterilir.
+Bu adımlarda, Portal üzerinden IoT Hub 'ınıza yeni bir sertifika yetkilisini nasıl ekleyeceğiniz gösterilir. X. 509.952 sertifika CA kimlik doğrulaması kullandığınızda, sertifika aktarma stratejinizin bir parçası olarak, mevcut bir sertifikanın süresi dolmadan önce yeni sertifikanızı kaydettiğinizden emin olun.
 
 > [!NOTE]
 > Bir IoT Hub 'ına kaydedilenebilir en fazla X. 509.952 CA sertifikası sayısı 25 ' tir. Daha fazla bilgi için bkz. [Azure IoT Hub kotaları ve azaltma](iot-hub-devguide-quotas-throttling.md).
@@ -60,15 +60,15 @@ Bu adımlarda, Portal üzerinden IoT Hub 'ınıza yeni bir sertifika yetkilisini
 
 1. Yeni bir sertifika eklemek için **Ekle** ' yi seçin.
 
-1. **Sertifika adı**alanına kolay bir görünen ad girin ve bilgisayarınızdan önceki bölümde oluşturduğunuz sertifika dosyasını seçin.
+1. **Sertifika adı** alanına kolay bir görünen ad girin ve bilgisayarınızdan önceki bölümde oluşturduğunuz sertifika dosyasını seçin.
 
-1. Sertifikanızın başarıyla karşıya yüklendiğini belirten bir bildirim aldıktan sonra **Kaydet**' i seçin.
+1. Sertifikanızın başarıyla karşıya yüklendiğini belirten bir bildirim aldıktan sonra **Kaydet** ' i seçin.
 
     ![Sertifikayı karşıya yükleme](./media/iot-hub-security-x509-get-started/iot-hub-add-cert.png)  
 
-   Sertifikanız, sertifika listesinde **doğrulanmamış**durumuyla görüntülenir.
+   Sertifikanız, sertifika listesinde **doğrulanmamış** durumuyla görüntülenir.
 
-1. **Sertifika ayrıntılarını**göstermek için yeni eklediğiniz sertifikayı seçin ve ardından **doğrulama kodu oluştur**' u seçin.
+1. **Sertifika ayrıntılarını** göstermek için yeni eklediğiniz sertifikayı seçin ve ardından **doğrulama kodu oluştur** ' u seçin.
 
    ![Sertifikayı doğrula](./media/iot-hub-security-x509-get-started/copy-verification-code.png)  
 
@@ -76,17 +76,17 @@ Bu adımlarda, Portal üzerinden IoT Hub 'ınıza yeni bir sertifika yetkilisini
 
 1. [Örnekler ve öğreticiler için test CA sertifikalarını yönetme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)içindeki 3. adımı izleyin.  Bu işlem, bir imza oluşturan X. 509.440 CA sertifikanız ile ilişkili özel anahtarla doğrulama kodunuzu imzalar. Bu imzalama işlemini gerçekleştirmek için kullanabileceğiniz araçlar vardır, örneğin, OpenSSL. Bu işlem, [elinde bulunan kanıtı](https://tools.ietf.org/html/rfc5280#section-3.1)olarak bilinir.
 
-1. **Sertifika ayrıntıları**' nda, **doğrulama sertifikası. pek veya. cer dosyası**' nın altında, imza dosyasını bulup açın. Ardından **Doğrula**' yı seçin.
+1. **Sertifika ayrıntıları** ' nda, **doğrulama sertifikası. pek veya. cer dosyası** ' nın altında, imza dosyasını bulup açın. Ardından **Doğrula** ' yı seçin.
 
-   Sertifikanızın durumu **doğrulandı**olarak değişir. Sertifika otomatik olarak güncelleştirmezse **Yenile** ' yi seçin.
+   Sertifikanızın durumu **doğrulandı** olarak değişir. Sertifika otomatik olarak güncelleştirmezse **Yenile** ' yi seçin.
 
 ## <a name="create-an-x509-device-for-your-iot-hub"></a>IoT Hub 'ınız için bir X. 509.952 cihazı oluşturma
 
-1. Azure Portal IoT Hub 'ınıza gidin ve ardından **araştırıcılar**  >  **IoT cihazları**' nı seçin.
+1. Azure Portal IoT Hub 'ınıza gidin ve ardından **araştırıcılar**  >  **IoT cihazları** ' nı seçin.
 
 1. Yeni bir cihaz eklemek için **Yeni** ' yi seçin.
 
-1. **CIHAZ kimliği**' nde kolay bir görünen ad girin. **Kimlik doğrulama türü**Için, **X. 509.440 CA imzalanmış**' ı seçin ve ardından **Kaydet**' i seçin.
+1. **CIHAZ kimliği** ' nde kolay bir görünen ad girin. **Kimlik doğrulama türü** Için, **X. 509.440 CA imzalanmış** ' ı seçin ve ardından **Kaydet** ' i seçin.
 
    ![Portalda X. 509.952 cihazı oluşturma](./media/iot-hub-security-x509-get-started/new-x509-device.png)
 
@@ -96,15 +96,15 @@ X. 509.952 cihazınızın kimliğini doğrulamak için önce cihazı CA sertifik
 
 Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 cihazının benzetimini yapmak üzere bir C# uygulaması oluşturmayı göstereceğiz. Sanal cihazdan hub 'ınıza sıcaklık ve nem değerleri göndereceğiz. Bu öğreticide yalnızca cihaz uygulaması oluşturacağız. Bu sanal cihaz tarafından gönderilen olaylara yanıt gönderecek IoT Hub hizmet uygulaması oluşturmak için okuyucuların bir alıştırma olarak kalır. C# uygulaması, [örnek ve öğreticiler için test CA sertifikalarını yönetme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)bölümündeki adımları izlediğinizi varsayar.
 
-1. Visual Studio 'yu açın, **Yeni proje oluştur**' u seçin ve ardından **konsol uygulaması (.NET Framework)** proje şablonunu seçin. **İleri**’yi seçin.
+1. Visual Studio 'yu açın, **Yeni proje oluştur** ' u seçin ve ardından **konsol uygulaması (.NET Framework)** proje şablonunu seçin. **İleri** ’yi seçin.
 
-1. **Yeni projenizi yapılandırın**bölümünde projeyi *SimulateX509Device*olarak adlandırın ve ardından **Oluştur**' u seçin.
+1. **Yeni projenizi yapılandırın** bölümünde projeyi *SimulateX509Device* olarak adlandırın ve ardından **Oluştur** ' u seçin.
 
    ![Visual Studio 'da X. 509.952 cihaz projesi oluşturma](./media/iot-hub-security-x509-get-started/create-device-project-vs2019.png)
 
-1. Çözüm Gezgini, **SimulateX509Device** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
+1. Çözüm Gezgini, **SimulateX509Device** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet** ' i seçin.
 
-1. **NuGet Paket Yöneticisi**'Nde, **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin. **Yükle**'yi seçin.
+1. **NuGet Paket Yöneticisi** 'Nde, **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client** ' ı seçin. **Yükle** 'yi seçin.
 
    ![Visual Studio 'da cihaz SDK 'Sı NuGet paketi ekleme](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 
@@ -153,7 +153,7 @@ Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 cihazının benzetimini y
     }
     ```
 
-1. Son olarak, aşağıdaki kod satırlarını **ana** işleve ekleyerek, kurulum için gereken _cihaz-kimliği_, _IoT-Hub-adı_ve mutlak ve-------------,-,- _Dosya_ ve--------dosyanızın yer tutucuları
+1. Son olarak, aşağıdaki kod satırlarını **ana** işleve ekleyerek, kurulum için gereken _cihaz-kimliği_ , _IoT-Hub-adı_ ve mutlak ve-------------,-,- _Dosya_ ve--------dosyanızın yer tutucuları
 
     ```csharp
     try
@@ -186,7 +186,7 @@ Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 cihazının benzetimini y
 
    1. Visual Studio çözümünü derleyin.
 
-   1. **Yönetici olarak çalıştır**'ı kullanarak yeni bir komut istemi penceresi açın.  
+   1. **Yönetici olarak çalıştır** 'ı kullanarak yeni bir komut istemi penceresi açın.  
 
    1. Çözümünüzü içeren klasöre gidin ve çözüm klasörü içindeki *bin/Debug* yoluna gidin.
 
