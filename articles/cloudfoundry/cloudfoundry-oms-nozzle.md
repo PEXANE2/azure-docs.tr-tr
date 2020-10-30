@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277354"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040772"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry sistem izleme için Azure Log Analytics başlık dağıtma
 
@@ -59,15 +59,15 @@ Log Analytics çalışma alanını el ile veya bir şablon kullanarak oluşturab
 #### <a name="to-create-the-workspace-manually"></a>Çalışma alanını el ile oluşturmak için:
 
 1. Azure portal Azure Marketi ' nde Hizmetler listesinde arama yapın ve sonra Log Analytics çalışma alanları ' nı seçin.
-2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
+2. **Oluştur** ' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
-   * **Log Analytics çalışma alanı**: çalışma alanınız için bir ad yazın.
-   * **Abonelik**: birden çok aboneliğiniz varsa, CF dağıtımınızla aynı olanı seçin.
-   * **Kaynak grubu**: yeni bir kaynak grubu oluşturabilir veya bunu CF dağıtımınızla aynı şekilde kullanabilirsiniz.
-   * **Konum**: konumu girin.
-   * **Fiyatlandırma katmanı**: tamamlanacak **Tamam ' ı** seçin.
+   * **Log Analytics çalışma alanı** : çalışma alanınız için bir ad yazın.
+   * **Abonelik** : birden çok aboneliğiniz varsa, CF dağıtımınızla aynı olanı seçin.
+   * **Kaynak grubu** : yeni bir kaynak grubu oluşturabilir veya bunu CF dağıtımınızla aynı şekilde kullanabilirsiniz.
+   * **Konum** : konumu girin.
+   * **Fiyatlandırma katmanı** : tamamlanacak **Tamam ' ı** seçin.
 
-Daha fazla bilgi için bkz. [Azure izleyici günlüklerini kullanmaya başlama](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
+Daha fazla bilgi için bkz. [Azure izleyici günlüklerini kullanmaya başlama](../azure-monitor/overview.md).
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Azure pazar yeri ' nden izleme şablonu aracılığıyla Log Analytics çalışma alanı oluşturmak için:
 
@@ -76,13 +76,13 @@ Daha fazla bilgi için bkz. [Azure izleyici günlüklerini kullanmaya başlama](
 1. Arama penceresinde "Cloud Foundry" yazın, "çözümü Cloud Foundry Izleme" öğesini seçin.
 1. Cloud Foundry izleme çözümü şablonu ön sayfası yüklendi, şablon dikey penceresini başlatmak için "Oluştur" düğmesine tıklayın.
 1. Gerekli parametreleri girin:
-    * **Abonelik**: Log Analytics çalışma alanı için genellikle Cloud Foundry dağıtımıyla aynı bir Azure aboneliği seçin.
-    * **Kaynak grubu**: Log Analytics çalışma alanı için var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun.
-    * **Kaynak grubu konumu**: kaynak grubunun konumunu seçin.
-    * **OMS_Workspace_Name**: bir çalışma alanı adı girin, çalışma alanı yoksa şablon yeni bir tane oluşturur.
-    * **OMS_Workspace_Region**: çalışma alanının konumunu seçin.
-    * **OMS_Workspace_Pricing_Tier**: Log Analytics çalışma alanı SKU 'su seçin. Başvuru için [fiyatlandırma Kılavuzu](https://azure.microsoft.com/pricing/details/log-analytics/) ' na bakın.
-    * **Yasal koşullar**: yasal koşullar ' a tıklayın ve sonra yasal terimi kabul etmek Için "Oluştur" a tıklayın.
+    * **Abonelik** : Log Analytics çalışma alanı için genellikle Cloud Foundry dağıtımıyla aynı bir Azure aboneliği seçin.
+    * **Kaynak grubu** : Log Analytics çalışma alanı için var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun.
+    * **Kaynak grubu konumu** : kaynak grubunun konumunu seçin.
+    * **OMS_Workspace_Name** : bir çalışma alanı adı girin, çalışma alanı yoksa şablon yeni bir tane oluşturur.
+    * **OMS_Workspace_Region** : çalışma alanının konumunu seçin.
+    * **OMS_Workspace_Pricing_Tier** : Log Analytics çalışma alanı SKU 'su seçin. Başvuru için [fiyatlandırma Kılavuzu](https://azure.microsoft.com/pricing/details/log-analytics/) ' na bakın.
+    * **Yasal koşullar** : yasal koşullar ' a tıklayın ve sonra yasal terimi kabul etmek Için "Oluştur" a tıklayın.
 1. Tüm parametreler belirtildikten sonra, şablonu dağıtmak için "Oluştur" düğmesine tıklayın. Dağıtım tamamlandığında, durum bildirim sekmesinde görünür.
 
 
@@ -183,17 +183,17 @@ Log Analytics çalışma alanını el ile oluşturduysanız, görünümleri ve u
 
 ### <a name="1-import-the-oms-view"></a>1. OMS görünümünü içeri aktarma
 
-OMS portalından **Görünüm tasarımcı**  >  **içeri aktarma**  >  **gözatmaya**gidin ve omsview dosyalarından birini seçin. Örneğin *Cloud Foundry. omsview*' i seçin ve görünümü kaydedin. Artık **genel bakış** sayfasında bir kutucuk görüntülenir. Görselleştirilen ölçümleri görmek için seçin.
+OMS portalından **Görünüm tasarımcı**  >  **içeri aktarma**  >  **gözatmaya** gidin ve omsview dosyalarından birini seçin. Örneğin *Cloud Foundry. omsview* ' i seçin ve görünümü kaydedin. Artık **genel bakış** sayfasında bir kutucuk görüntülenir. Görselleştirilen ölçümleri görmek için seçin.
 
-Bu görünümleri özelleştirebilir veya **Görünüm Tasarımcısı**aracılığıyla yeni görünümler oluşturabilirsiniz.
+Bu görünümleri özelleştirebilir veya **Görünüm Tasarımcısı** aracılığıyla yeni görünümler oluşturabilirsiniz.
 
 *"Cloud Foundry. omsview"* , Cloud Foundry OMS görünüm şablonunun önizleme sürümüdür. Bu, tam olarak yapılandırılmış, varsayılan bir şablondur. Şablonla ilgili önerileriniz veya geri bildiriminiz varsa, bunları [sorun bölümüne](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues)gönderin.
 
 ### <a name="2-create-alert-rules"></a>2. uyarı kuralları oluşturma
 
-[Uyarıları oluşturabilir](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)ve gerektiğinde sorgular ve eşik değerlerini özelleştirebilirsiniz. Önerilen uyarılar aşağıda verilmiştir:
+[Uyarıları oluşturabilir](../azure-monitor/platform/alerts-overview.md)ve gerektiğinde sorgular ve eşik değerlerini özelleştirebilirsiniz. Önerilen uyarılar aşağıda verilmiştir:
 
-| Arama sorgusu                                                                  | Temelinde uyarı oluştur | Açıklama                                                                       |
+| Arama sorgusu                                                                  | Temelinde uyarı oluştur | Description                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Tür = CF_ValueMetric_CL Origin_s = BBS Name_s = "Domain. CF-Apps"                   | Sonuç sayısı < 1   | **BBS. Domain.cf-uygulamalar** , CF-uygulamalar etki alanının güncel olup olmadığını gösterir. Bu, bulut denetleyicideki CF uygulaması isteklerinin BBS ile eşitlendiği anlamına gelir. Yürütme için LRPsDesired (Diego-Desired ASIS). Veri alınmadı; belirtilen zaman penceresinde CF-uygulamalar etki alanı güncel değil. |
 | Type = CF_ValueMetric_CL Origin_s = rep Name_s = Unhealthyıcell Value_d>1            | Sonuç sayısı > 0   | Diego hücreleri için 0 iyi anlamına gelir ve 1 iyi durumda değildir. Belirtilen zaman penceresinde birden çok sağlıksız Diego hücresi algılanırsa uyarıyı ayarlayın. |

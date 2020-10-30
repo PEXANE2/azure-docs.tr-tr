@@ -1,18 +1,18 @@
 ---
 title: 'Hızlı başlangıç: MySQL için Azure DB-ARM şablonu oluşturma'
 description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak, sanal ağ tümleştirmesiyle MySQL için Azure veritabanı sunucusu oluşturmayı öğrenin.
-author: mgblythe
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 97a16bd81fd79646fb3693ec2dc4b8a40b9a6a3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 952bfa7182997511ce072c051d872140c3b907cb
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90896156"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041202"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Hızlı başlangıç: MySQL için Azure veritabanı sunucusu oluşturmak için ARM şablonu kullanma
 
@@ -70,34 +70,34 @@ MySQL için Azure veritabanı sunucu şablonunu Azure portal dağıtmak için a�
 
 **VNET Ile MySQL Için Azure veritabanı 'Nı dağıtma** sayfasında:
 
-1. **Kaynak grubu**Için **Yeni oluştur**' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam**' ı seçin.
+1. **Kaynak grubu** Için **Yeni oluştur** ' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam** ' ı seçin.
 
 2. Yeni bir kaynak grubu oluşturduysanız, kaynak grubu ve yeni sunucu için bir **konum** seçin.
 
-3. **Sunucu adı**, **yönetici oturumu açma**ve **yönetici oturum açma parolası**girin.
+3. **Sunucu adı** , **yönetici oturumu açma** ve **yönetici oturum açma parolası** girin.
 
     :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Azure 'a dağıtma":::
 
 4. İsterseniz diğer varsayılan ayarları değiştirin:
 
-    * **Abonelik**: sunucu için kullanmak istediğiniz Azure aboneliği.
-    * **SKU kapasitesi**: *2* (varsayılan), *4*, *8*, *16*, *32*veya *64*olabilen Vcore kapasitesi.
-    * **SKU adı**: *B_Gen5_1*, *GP_Gen5_2* (varsayılan) veya *MO_Gen5_32*gıbı alt çizgilerden BIRLEŞTIRILMIŞ SKU katmanı öneki, SKU ailesi ve SKU kapasitesi.
-    * **SKU boyutu MB**: MySQL Için Azure veritabanı sunucusu 'nun megabayt cinsinden depolama boyutu (varsayılan *5120*).
-    * **SKU katmanı**: *temel*, *generalamacını* (varsayılan) veya *memoryoptıılanmış*gibi dağıtım katmanı.
-    * **SKU ailesi**: sunucu dağıtımı için donanım oluşturmayı gösteren *4. nesil* veya *5. nesil* (varsayılan).
-    * **MySQL sürümü**: dağıtılacak MySQL sunucusunun sürümü (örneğin, *5,6* veya *5,7* ) (varsayılan).
-    * **Yedekleme bekletme günleri**: coğrafi olarak yedekli yedekleme saklama için gün cinsinden istenen süre (varsayılan *7*).
-    * **Coğrafi olarak yedekli yedekleme**: coğrafi olağanüstü durum kurtarma (COĞRAFI-Dr) gereksinimlerine bağlı olarak *etkin* veya *devre dışı* (varsayılan).
-    * **Sanal ağ adı**: sanal ağın adı (varsayılan *azure_mysql_vnet*).
-    * **Alt ağ adı**: alt ağın adı (varsayılan *azure_mysql_subnet*).
-    * **Sanal ağ kuralı adı**: alt ağa izin veren sanal ağ kuralının adı (varsayılan *allowsubnet*).
-    * **VNET adresi ön eki**: sanal ağın adres ön eki (varsayılan *10.0.0.0/16*).
-    * **Alt ağ ön eki**: alt ağın adres ön eki (varsayılan *10.0.0.0/16*).
+    * **Abonelik** : sunucu için kullanmak istediğiniz Azure aboneliği.
+    * **SKU kapasitesi** : *2* (varsayılan), *4* , *8* , *16* , *32* veya *64* olabilen Vcore kapasitesi.
+    * **SKU adı** : *B_Gen5_1* , *GP_Gen5_2* (varsayılan) veya *MO_Gen5_32* gıbı alt çizgilerden BIRLEŞTIRILMIŞ SKU katmanı öneki, SKU ailesi ve SKU kapasitesi.
+    * **SKU boyutu MB** : MySQL Için Azure veritabanı sunucusu 'nun megabayt cinsinden depolama boyutu (varsayılan *5120* ).
+    * **SKU katmanı** : *temel* , *generalamacını* (varsayılan) veya *memoryoptıılanmış* gibi dağıtım katmanı.
+    * **SKU ailesi** : sunucu dağıtımı için donanım oluşturmayı gösteren *4. nesil* veya *5. nesil* (varsayılan).
+    * **MySQL sürümü** : dağıtılacak MySQL sunucusunun sürümü (örneğin, *5,6* veya *5,7* ) (varsayılan).
+    * **Yedekleme bekletme günleri** : coğrafi olarak yedekli yedekleme saklama için gün cinsinden istenen süre (varsayılan *7* ).
+    * **Coğrafi olarak yedekli yedekleme** : coğrafi olağanüstü durum kurtarma (COĞRAFI-Dr) gereksinimlerine bağlı olarak *etkin* veya *devre dışı* (varsayılan).
+    * **Sanal ağ adı** : sanal ağın adı (varsayılan *azure_mysql_vnet* ).
+    * **Alt ağ adı** : alt ağın adı (varsayılan *azure_mysql_subnet* ).
+    * **Sanal ağ kuralı adı** : alt ağa izin veren sanal ağ kuralının adı (varsayılan *allowsubnet* ).
+    * **VNET adresi ön eki** : sanal ağın adres ön eki (varsayılan *10.0.0.0/16* ).
+    * **Alt ağ ön eki** : alt ağın adres ön eki (varsayılan *10.0.0.0/16* ).
 
-5. Hüküm ve koşulları okuyun ve ardından **yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u seçin.
+5. Hüküm ve koşulları okuyun ve ardından **yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ' u seçin.
 
-6. **Satın al**'ı seçin.
+6. **Satın al** 'ı seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -153,7 +153,7 @@ echo "Press [ENTER] to continue ..."
 
 Yeni MySQL sunucusu için Azure veritabanı 'na genel bir bakış görmek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com), **MySQL için Azure veritabanı sunucuları**' nı arayıp seçin.
+1. [Azure Portal](https://portal.azure.com), **MySQL için Azure veritabanı sunucuları** ' nı arayıp seçin.
 
 2. Veritabanı listesinde yeni sunucunuzu seçin. Yeni MySQL için Azure veritabanı sunucunuzun **genel bakış** sayfası görüntülenir.
 
@@ -187,13 +187,13 @@ Artık gerekli olmadığında kaynak grubundaki kaynakları silen kaynak grubunu
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını**arayıp seçin.
+1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını** arayıp seçin.
 
 2. Kaynak grubu listesinde, kaynak grubunuzun adını seçin.
 
-3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil**' i seçin.
+3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil** ' i seçin.
 
-4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil**' i seçin.
+4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil** ' i seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

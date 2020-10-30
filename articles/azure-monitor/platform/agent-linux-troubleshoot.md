@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: e87331cb2bbfb11a9d49888462b8be3b55e18118
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: eaf12fe1d757c3a5a76307d87151bf71aa720b2b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460878"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042389"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -55,6 +55,15 @@ Daha fazla ayrıntı için lütfen [GitHub belgelerimize](https://github.com/mic
  >[!NOTE]
  >Lütfen bir sorunla karşılaştığınızda günlük Toplayıcı aracını çalıştırın. Günlüklerin başlangıçta bulunması, destek ekibimizin sorununuzu daha hızlı gidermelerine büyük ölçüde yardımcı olur.
 
+## <a name="purge-and-re-install-the-linux-agent"></a>Linux aracısını Temizleme ve Re-Install
+
+Aracının temiz bir şekilde yeniden yüklemesinin çoğu sorunu gidereceğini gördük. Aslında bu durum, aracıyı destek ekibimizden kaldırgın bir duruma getirmek için desteğin ilk önerisi olabilir. Sorun gidericiyi çalıştırma, toplamayı günlüğe kaydetme ve temiz yeniden yüklemeye çalışılması, sorunların daha hızlı çözümüne yardımcı olur.
+
+1. Temizleme betiğini indirin:
+- `$ wget https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/tools/purge_omsagent.sh`
+2. Temizleme betiğini çalıştırın (sudo izinleriyle):
+- `$ sudo sh purge_omsagent.sh`
+
 ## <a name="important-log-locations-and-log-collector-tool"></a>Önemli günlük konumları ve günlük Toplayıcı aracı
 
  Dosya | Yol
@@ -83,9 +92,9 @@ Daha fazla ayrıntı için lütfen [GitHub belgelerimize](https://github.com/mic
 | NOT_DEFINED | Gerekli bağımlılıklar yüklü olmadığından auoms auditd eklentisi yüklenmeyecek | Auoms yüklemesi başarısız oldu, paket auditd 'yi yükleme. |
 | 2 | Kabuk paketi için geçersiz seçenek belirtildi. `sudo sh ./omsagent-*.universal*.sh --help`Kullanım için Çalıştır |
 | 3 | Kabuk paketine hiçbir seçenek sağlanmaz. `sudo sh ./omsagent-*.universal*.sh --help`Kullanım için çalıştırın. |
-| 4 | Geçersiz paket türü veya geçersiz proxy ayarları; omsagent-*RPM*. sh PAKETLERI yalnızca RPM tabanlı sistemlere yüklenebilir ve omsagent-*Deb*. sh paketleri yalnızca, detem tabanlı sistemlere yüklenebilir. [En son sürümden](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)evrensel yükleyiciyi kullanmanız önerilir. Ayrıca, proxy ayarlarınızı doğrulamak için gözden geçirin. |
+| 4 | Geçersiz paket türü veya geçersiz proxy ayarları; omsagent- *RPM* . sh PAKETLERI yalnızca RPM tabanlı sistemlere yüklenebilir ve omsagent- *Deb* . sh paketleri yalnızca, detem tabanlı sistemlere yüklenebilir. [En son sürümden](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)evrensel yükleyiciyi kullanmanız önerilir. Ayrıca, proxy ayarlarınızı doğrulamak için gözden geçirin. |
 | 5 | Kabuk paketi kök olarak yürütülmelidir veya ekleme sırasında 403 hatası döndürüldü. Komutunu kullanarak komutunu çalıştırın `sudo` . |
-| 6 | Geçersiz Paket mimarisi veya ekleme sırasında 200 hatası döndürüldü. omsagent-*x64.sh paketleri yalnızca 64 bitlik sistemlere yüklenebilir ve omsagent-* x86.sh paketleri yalnızca 32 bit sistemlere yüklenebilir. [En son sürümden](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)mimariniz için doğru paketi indirin. |
+| 6 | Geçersiz Paket mimarisi veya ekleme sırasında 200 hatası döndürüldü. omsagent- *x64.sh paketleri yalnızca 64 bitlik sistemlere yüklenebilir ve omsagent-* x86.sh paketleri yalnızca 32 bit sistemlere yüklenebilir. [En son sürümden](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)mimariniz için doğru paketi indirin. |
 | 17 | OMS paketi yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |
 | 19 | OMı paketi yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |
 | 20 | SCX paketinin yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |
@@ -454,7 +463,7 @@ Sorunu gidermek için aşağıdaki adımları gerçekleştirin.
 1. Uzantıyı Azure portal kaldır.
 2. [Yönergeleri](../learn/quick-collect-linux-computer.md)izleyerek aracıyı yükler.
 3. Şu komutu çalıştırarak aracıyı yeniden başlatın: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
-* Birkaç dakika bekleyin ve sağlama durumu, **sağlama başarılı**olarak değişir.
+* Birkaç dakika bekleyin ve sağlama durumu, **sağlama başarılı** olarak değişir.
 
 
 ## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Sorun: isteğe bağlı Log Analytics aracı yükseltmesi

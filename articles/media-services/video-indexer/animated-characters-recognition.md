@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1ac27f8fe0c6c608bfc261e9ac2d96651c94b341
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018891"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040078"
 ---
 # <a name="animated-character-detection-preview"></a>Animasyonlu karakter algılama (önizleme)
 
@@ -69,17 +69,17 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 
     * Eğitim anahtarı (eğitim kaynağı için)
     * Tahmin anahtarı (tahmin kaynağı için)
-    * Uç Noktası 
+    * Uç Nokta 
     * Tahmin kaynak KIMLIĞI
     
     > [!NOTE]
     > Tek bir eğitim ve diğeri tahmin için Özel Görüntü İşleme iki ayrı kaynağa sahip olmanız için ihtiyacınız olan tüm anahtarları sağlamak için.
 1. [Video Indexer](https://vi.microsoft.com/)gidin ve oturum açın.
-1. Sayfanın sağ üst köşesindeki soru işaretine tıklayın ve **API başvurusu**' nu seçin.
+1. Sayfanın sağ üst köşesindeki soru işaretine tıklayın ve **API başvurusu** ' nu seçin.
 1. **Ürünler** sekmesi ' ne tıklayarak API Management abone olduğunuzdan emin olun. Bir API bağlantısı varsa, bir sonraki adıma devam edebilir, aksi takdirde abone olabilirsiniz. 
-1. Geliştirici portalında, **tüm API başvurusuna** tıklayın ve **işlemlere**gidin.  
-1. **Özel görüntü işleme hesabı Bağlan ' ı (Önizleme)** seçin ve **dene**' ye tıklayın.
-1. Gerekli alanların yanı sıra erişim belirtecini de girin ve **Gönder**' e tıklayın. 
+1. Geliştirici portalında, **tüm API başvurusuna** tıklayın ve **işlemlere** gidin.  
+1. **Özel görüntü işleme hesabı Bağlan ' ı (Önizleme)** seçin ve **dene** ' ye tıklayın.
+1. Gerekli alanların yanı sıra erişim belirtecini de girin ve **Gönder** ' e tıklayın. 
 
     Video Indexer erişim belirtecini alma hakkında daha fazla bilgi için [Geliştirici portalına](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)gidin ve [ilgili belgelere](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)bakın.  
 1. Çağrı 200 Tamam yanıtı döndürtikten sonra hesabınız bağlanır.
@@ -96,9 +96,9 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 1. [Video Indexer](https://vi.microsoft.com/) web sitesine gidip oturum açın.
 1. Sayfanın sağ üst köşesindeki içerik modeli özelleştirmesi düğmesine tıklayın.
 
-    ![İçerik modeli özelleştirmesi](./media/animated-characters-recognition/content-model-customization.png)
+    ![Sağ üst köşede "içerik modeli özelleştirmesi" düğmesinin seçili olduğu "Video Indexer" sayfasını gösteren ekran görüntüsü.](./media/animated-characters-recognition/content-model-customization.png)
 1. Model özelleştirme bölümündeki **animasyonlu karakterler** sekmesine gidin.
-1. **Model Ekle**' ye tıklayın.
+1. **Model Ekle** ' ye tıklayın.
 1. Modelleyin ve adı kaydetmek için ENTER 'a tıklayın.
 
 > [!NOTE]
@@ -108,8 +108,8 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 
 1. Üstteki menüden **karşıya yükle** düğmesine tıklayın.
 1. Karşıya yüklenecek bir video seçin (bir dosyadan veya URL 'den).
-1. **Gelişmiş Seçenekler**' e tıklayın.
-1. **Kişiler/animasyonlu karakterler** altında **animasyon modeller**' ı seçin.
+1. **Gelişmiş Seçenekler** ' e tıklayın.
+1. **Kişiler/animasyonlu karakterler** altında **animasyon modeller** ' ı seçin.
 1. Tek bir modeliniz varsa, otomatik olarak seçilir ve birden çok modelleriniz varsa, açılan menüden ilgili olanı seçebilirsiniz.
 1. Karşıya yükle ' ye tıklayın.
 1. Videonun dizini oluşturulduktan sonra, **Öngörüler** bölmesindeki **animasyonlu karakterler** bölümünde Algılanan karakterleri görürsünüz.
@@ -129,7 +129,7 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 
         Özelleştirme sayfasını açın ve **animasyon karakterleri** sekmesine tıklayın ve ardından modelinizi eğitebilmeniz Için **eğitme** düğmesine tıklayın.
          
-        Ücretli bir hesabınız varsa, **Müşteri vizyonlarındaki modelleri Yönet** bağlantısını (aşağıda gösterildiği gibi) tıklayabilirsiniz. Daha sonra **özel görüntü işleme**modelin sayfasına iletilecektir.
+        Ücretli bir hesabınız varsa, **Müşteri vizyonlarındaki modelleri Yönet** bağlantısını (aşağıda gösterildiği gibi) tıklayabilirsiniz. Daha sonra **özel görüntü işleme** modelin sayfasına iletilecektir.
  
         ![İçerik modeli özelleştirmesi](./media/animated-characters-recognition/content-model-customization-tab.png)
 

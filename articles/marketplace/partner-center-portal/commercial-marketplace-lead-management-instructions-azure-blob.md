@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/01/2020
-ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0b708ac3a1b16804430584dfcb01b3d2a4fae2
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121920"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042386"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Ticari Market müşteri adaylarını yönetmek için Azure Blob depolamayı kullanma
 
@@ -51,9 +51,9 @@ ms.locfileid: "86121920"
      DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
      ```
 
-    ![Azure depolama anahtarı](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
+    !["Bağlantı dizesi" metin kutusu vurgulanmış "erişim tuşları" sayfasını gösteren ekran görüntüsü.](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
-6. Depolama hesabı sayfasından **Bloblar**' ı seçin.
+6. Depolama hesabı sayfasından **Bloblar** ' ı seçin.
 
    ![Azure depolama anahtarı](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "86121920"
 
 9. Kapsayıcıya genel erişim düzeyini **özel (anonim erişim yok)** olarak ayarlayın.
 
-10. Kapsayıcıyı oluşturmak için **Tamam**'ı seçin.
+10. Kapsayıcıyı oluşturmak için **Tamam** 'ı seçin.
 
     ![Yeni kapsayıcı](./media/commercial-marketplace-lead-management-instructions-azure-blob/new-container.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "86121920"
 Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini yapılandırmaya hazırsanız, aşağıdaki adımları izleyin:
 
 1. Teklifiniz için **teklif kurulumu** sayfasına gidin.
-2. **Müşteri müşteri adayları** bölümünde **Bağlan**' ı seçin.
+2. **Müşteri müşteri adayları** bölümünde **Bağlan** ' ı seçin.
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-blob/customer-leads.png" alt-text="Müşteri liderleri":::
 
@@ -87,7 +87,7 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini ya
     * Kapsayıcı adı örneği: `marketplaceleadcontainer`
     * Depolama hesabı bağlantı dizesi örneği: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ bağlantı ayrıntısı](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
-5. **Kaydet**’i seçin.
+5. **Kaydet** ’i seçin.
 
     > [!NOTE]
     > Teklif için müşteri adaylarını almadan önce teklifin geri kalanını yapılandırmayı ve bunu yayımlamanız gerekir.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363701"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041125"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
@@ -34,13 +34,13 @@ Kullanıcı hazırlama, sürekli kimlik yönetimi için bir temel oluşturur ve 
 
 Otomatik Kullanıcı sağlamayı etkinleştirmenin başlıca avantajları şunlardır:
 
-* **Daha fazla üretkenlik**. Tek bir Kullanıcı sağlama yönetim arabirimiyle SaaS uygulamaları genelinde Kullanıcı kimliklerini yönetebilirsiniz. Bu arabirimin tek bir sağlama ilkeleri kümesi vardır.
+* **Daha fazla üretkenlik** . Tek bir Kullanıcı sağlama yönetim arabirimiyle SaaS uygulamaları genelinde Kullanıcı kimliklerini yönetebilirsiniz. Bu arabirimin tek bir sağlama ilkeleri kümesi vardır.
 
-* **Riski yönetin**. Rolleri ve/veya erişimi tanımlayan çalışan durumu veya grup üyelikleri temelinde değişiklikleri otomatikleştirerek güvenliği artırabilirsiniz.
+* **Riski yönetin** . Rolleri ve/veya erişimi tanımlayan çalışan durumu veya grup üyelikleri temelinde değişiklikleri otomatikleştirerek güvenliği artırabilirsiniz.
 
-* **Adres uyumluluğu ve idare**. Azure AD, her Kullanıcı sağlama isteği için yerel denetim günlüklerini destekler. İstekler hem kaynak hem de hedef sistemlerde yürütülür. Bu, tek bir ekrandan uygulamalara kimlerin erişebileceğini izlemenize olanak sağlar.
+* **Adres uyumluluğu ve idare** . Azure AD, her Kullanıcı sağlama isteği için yerel denetim günlüklerini destekler. İstekler hem kaynak hem de hedef sistemlerde yürütülür. Bu, tek bir ekrandan uygulamalara kimlerin erişebileceğini izlemenize olanak sağlar.
 
-* **Maliyeti azaltın**. Otomatik Kullanıcı sağlama, el ile sağlama ile ilişkili verimsizlikleri ve insan hatasından kaçınarak maliyetleri azaltır. Özel olarak geliştirilmiş Kullanıcı sağlama çözümleri, betikler ve denetim günlükleri gereksinimini azaltır.
+* **Maliyeti azaltın** . Otomatik Kullanıcı sağlama, el ile sağlama ile ilişkili verimsizlikleri ve insan hatasından kaçınarak maliyetleri azaltır. Özel olarak geliştirilmiş Kullanıcı sağlama çözümleri, betikler ve denetim günlükleri gereksinimini azaltır.
 
 ### <a name="licensing"></a>Lisanslama
 
@@ -99,7 +99,7 @@ Bu örnekte, kullanıcılar ve veya gruplar, şirket içi bir dizine bağlı bir
 
 Bu örnekte, Azure AD 'de Kullanıcı oluşturma oluşur ve Azure AD sağlama hizmeti, hedef (SaaS) uygulamalarına otomatik Kullanıcı sağlamasını yönetir.
 
-![Resim 2](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![Azure A D sağlama hizmeti aracılığıyla şirket içi H R uygulamasından gelen Kullanıcı/Grup oluşturma işlemini hedef S a S uygulamalarına gösteren diyagram.](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **İş akışının açıklaması:**
 

@@ -74,6 +74,8 @@
       href: concepts/sdk-options.md
     - name: Fiyatlandırma modeli
       href: concepts/pricing.md
+    - name: Gizlilik
+      href: concepts/privacy.md
     - name: Kimlik Doğrulaması
       href: concepts/authentication.md
     - name: Olay işleme

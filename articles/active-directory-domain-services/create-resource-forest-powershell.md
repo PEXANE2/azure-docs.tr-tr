@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: joflore
-ms.openlocfilehash: e914c273adc632449ed31915127fe6d261a8d56c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 32ec3eface215330aba9e40b46e45b97b5c07091
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960960"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041097"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Azure PowerShell kullanarak bir şirket içi etki alanına Azure Active Directory Domain Services kaynak ormanı ve giden orman güveni oluşturma
 
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 > [!IMPORTANT]
 > Yönetilen etki alanı kaynak ormanları Şu anda Azure HDInsight veya Azure dosyalarını desteklememektedir. Varsayılan yönetilen etki alanı kullanıcı ormanları, bu ek hizmetlerden her ikisini de destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -74,12 +74,12 @@ Başlamadan önce, [ağ konularını, orman adlandırmayı ve DNS gereksinimleri
 
 Azure AD DS, Azure AD 'den bir hizmet sorumlusu veri eşitlemesi gerektirir. Yönetilen etki alanı kaynak ormanı 'nı oluşturmadan önce bu sorumlunun Azure AD kiracınızda oluşturulması gerekir.
 
-Azure AD DS ile iletişim kurmak ve kimliğini doğrulamak için bir Azure AD hizmet sorumlusu oluşturun. Belirli bir uygulama KIMLIĞI, *2565bd9d-dad50-47d4-8B85-4c97f669dc36*kimliğine sahip *etki alanı denetleyicisi Hizmetleri* adında kullanılır. Bu uygulama KIMLIĞINI değiştirmeyin.
+Azure AD DS ile iletişim kurmak ve kimliğini doğrulamak için bir Azure AD hizmet sorumlusu oluşturun. Belirli bir uygulama KIMLIĞI, adı *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* olan *etki alanı denetleyicisi Hizmetleri* olarak kullanılır. Bu uygulama KIMLIĞINI değiştirmeyin.
 
 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 'ini kullanarak BIR Azure AD hizmet sorumlusu oluşturun:
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 ## <a name="create-a-managed-domain-resource-forest"></a>Yönetilen etki alanı kaynak ormanı oluşturma
@@ -112,14 +112,14 @@ Yönetilen bir etki alanı kaynak ormanı oluşturmak için `New-AzureAaddsFores
 
     `New-AzureAaddsForest`Bu kaynaklar zaten mevcut değilse betik Azure sanal ağını ve azure AD DS alt ağını oluşturabilir. Komut dosyası, belirtildiğinde, isteğe bağlı olarak iş yükü alt ağlarını oluşturabilir:
 
-    | Name                              | Betik parametresi                  | Açıklama |
+    | Name                              | Betik parametresi                  | Description |
     |:----------------------------------|:----------------------------------|:------------|
     | Sanal ağın adı              | *-Aaddsvbir ağ adı*                  | Yönetilen etki alanı için sanal ağın adı.|
     | Adres alanı                     | *-Aaddsvnetcıdraddressspace*      | CıDR gösteriminde sanal ağın adres aralığı (sanal ağ oluşturuluyoruz).|
     | Azure AD DS alt ağ adı           | *-aaddsSubnetName*                | Yönetilen etki alanını barındıran *Aaddsvbir* sanal ağın alt ağının adı. Kendi sanal makinelerinizi ve iş yüklerinizi bu alt ağa dağıtmayın. |
-    | Azure AD DS adres aralığı         | *-aaddsSubnetCIDRAddressRange*    | Örneğin *192.168.1.0/24*gıbı AAD DS ÖRNEĞI için CIDR gösteriminde alt ağ adres aralığı. Adres aralığı, sanal ağın adres aralığı ve diğer alt ağlardan farklı olmalıdır. |
+    | Azure AD DS adres aralığı         | *-aaddsSubnetCIDRAddressRange*    | Örneğin *192.168.1.0/24* gıbı AAD DS ÖRNEĞI için CIDR gösteriminde alt ağ adres aralığı. Adres aralığı, sanal ağın adres aralığı ve diğer alt ağlardan farklı olmalıdır. |
     | İş yükü alt ağ adı (isteğe bağlı)   | *-workloadSubnetName*             | Kendi uygulama iş yükleriniz için oluşturulacak *Aaddsv,* sanal ağındaki bir alt ağın isteğe bağlı adı. VM 'Ler ve uygulamalar, bunun yerine eşlenmiş bir Azure sanal ağına da bağlanır. |
-    | İş yükü adres aralığı (isteğe bağlı) | *-workloadSubnetCIDRAddressRange* | *192.168.2.0/24*gibi uygulama iş yükü için CIDR gösteriminde isteğe bağlı alt ağ adres aralığı. Adres aralığı, sanal ağın adres aralığı ve diğer alt ağlardan farklı olmalıdır.|
+    | İş yükü adres aralığı (isteğe bağlı) | *-workloadSubnetCIDRAddressRange* | *192.168.2.0/24* gibi uygulama iş yükü için CIDR gösteriminde isteğe bağlı alt ağ adres aralığı. Adres aralığı, sanal ağın adres aralığı ve diğer alt ağlardan farklı olmalıdır.|
 
 1. Şimdi betiği kullanarak bir yönetilen etki alanı kaynak ormanı oluşturun `New-AzureAaaddsForest` . Aşağıdaki örnek, *addscontoso.com* adlı bir orman oluşturur ve bir iş yükü alt ağı oluşturur. Kendi parametre adlarınızı ve IP adresi aralıklarını veya var olan sanal ağları sağlayın.
 
@@ -163,7 +163,7 @@ Başlamadan önce, [ağ konularını ve önerileri](tutorial-create-forest-trust
     * Şirket içi etki alanı denetleyicinizin, veya Uzak Masaüstü kullanarak yönetilen VM 'ye bağlanabildiğini onaylayın ( `ping` Örneğin,).
     * Yönetim sanal makinenizin, gibi bir yardımcı programı kullanarak şirket içi etki alanı denetleyicilerinize bağlanıp bağlanamadiğini doğrulayın `ping` .
 
-1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin. *Aaddscontoso.com* gibi yönetilen etki alanınızı seçin ve durumu **çalışıyor**olarak raporlamak için bekleyin.
+1. Azure portal, araması yapın ve **Azure AD Domain Services** seçin. *Aaddscontoso.com* gibi yönetilen etki alanınızı seçin ve durumu **çalışıyor** olarak raporlamak için bekleyin.
 
     Çalışırken, [Azure sanal ağı IÇIN DNS ayarlarını güncelleştirin](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network) ve ardından, yönetilen etki alanı kaynak ormanınızın yapılandırmasını sonuçlandırmak için [Azure AD DS kullanıcı hesaplarını etkinleştirin](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) .
 
@@ -193,16 +193,16 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Şimdi aşağıdaki bilgileri komut dosyasına girin:
 
-| Name                               | Betik parametresi     | Açıklama |
+| Name                               | Betik parametresi     | Description |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS etki alanı adı            | *-ManagedDomainFqdn* | Yönetilen etki alanının FQDN 'SI (örneğin, *aaddscontoso.com* ) |
 | Şirket içi AD DS etki alanı adı      | *-TrustFqdn*         | *OnPrem.contoso.com* gibi güvenilir ormanın FQDN 'si |
 | Güven kolay adı                | *-TrustFriendlyName* | Güven ilişkisinin kolay adı. |
 | Şirket içi AD DS DNS IP adresleri | *-TrustDnsIPs*       | Listelenen güvenilen etki alanı için DNS sunucusu IPv4 adreslerinin virgülle ayrılmış listesi. |
 | Güven parolası                     | *-TrustPassword*     | Güven ilişkisi için karmaşık bir parola. Bu parola, şirket içi AD DS tek yönlü gelen güveni oluştururken de girilir. |
-| Kimlik bilgileri                        | *-Kimlik bilgileri*       | Azure 'da kimlik doğrulamak için kullanılan kimlik bilgileri. Kullanıcı *AAD DC Administrators grubunda*olmalıdır. Sağlanmazsa, betik kimlik doğrulaması ister. |
+| Kimlik bilgileri                        | *-Kimlik bilgileri*       | Azure 'da kimlik doğrulamak için kullanılan kimlik bilgileri. Kullanıcı *AAD DC Administrators grubunda* olmalıdır. Sağlanmazsa, betik kimlik doğrulaması ister. |
 
-Aşağıdaki örnek, *OnPrem.contoso.com*Için *Myazureaddstrust* adlı bir güven ilişkisi oluşturur. Kendi parametre adlarınızı ve parolalarınızı kullanın:.
+Aşağıdaki örnek, *OnPrem.contoso.com* Için *Myazureaddstrust* adlı bir güven ilişkisi oluşturur. Kendi parametre adlarınızı ve parolalarınızı kullanın:.
 
 ```azurepowershell
 Add-AaddsResourceForestTrust `
@@ -221,9 +221,9 @@ Add-AaddsResourceForestTrust `
 Yönetilen etki alanını şirket içi ortamdan doğru bir şekilde çözümlemek için, mevcut DNS sunucularına ileticiler eklemeniz gerekebilir. Şirket içi ortamı yönetilen etki alanıyla iletişim kuracak şekilde yapılandırmadıysanız, şirket içi AD DS etki alanı için bir yönetim iş istasyonundan aşağıdaki adımları uygulayın:
 
 1. Başlat 'ı seçin **| Yönetim Araçları | DNS**
-1. *MyAD01*gibi DNS sunucusunu sağ seçin, **Özellikler** ' i seçin
-1. **İleticiler**' i seçin ve ardından başka ileticiler eklemek için **düzenleyin** .
-1. *10.0.1.4* ve *10.0.1.5*gıbı yönetilen etki alanının IP adreslerini ekleyin.
+1. *MyAD01* gibi DNS sunucusunu sağ seçin, **Özellikler** ' i seçin
+1. **İleticiler** ' i seçin ve ardından başka ileticiler eklemek için **düzenleyin** .
+1. *10.0.1.4* ve *10.0.1.5* gıbı yönetilen etki alanının IP adreslerini ekleyin.
 1. Yerel bir komut isteminden, yönetilen etki alanı kaynak ormanı etki alanı adının **nslookup** 'ı kullanarak ad çözümlemesini doğrulayın. Örneğin, `Nslookup aaddscontoso.com` yönetilen etki alanı kaynak ormanı için ıkı IP adresi döndürmelidir.
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Şirket içi etki alanında gelen orman güveni oluşturma
@@ -233,13 +233,13 @@ Yönetilen etki alanını şirket içi ortamdan doğru bir şekilde çözümleme
 Şirket içi AD DS etki alanında gelen güveni yapılandırmak için, şirket içi AD DS etki alanı için bir yönetim iş istasyonundan aşağıdaki adımları uygulayın:
 
 1. Başlat 'ı seçin **| Yönetim Araçları | Active Directory etki alanları ve Güvenleri**
-1. *OnPrem.contoso.com*gibi etki alanını sağ seçin, **Özellikler** ' i seçin
+1. *OnPrem.contoso.com* gibi etki alanını sağ seçin, **Özellikler** ' i seçin
 1. **Güvenler** sekmesini ve ardından **yeni güven** ' i seçin
-1. Yönetilen etki alanının adını (örneğin, *aaddscontoso.com*) girin ve ardından **İleri** ' yi seçin.
-1. Bir **orman güveni**oluşturma, sonra bir **yol oluşturma: gelen** güven seçeneğini belirleyin.
-1. **Yalnızca bu etki alanı**için güven oluşturmayı seçin. Bir sonraki adımda, yönetilen etki alanı için Azure portal güveni oluşturursunuz.
-1. **Orman genelinde kimlik doğrulaması**kullanmayı seçin, ardından bir güven parolasını girip onaylayın. Aynı parola, sonraki bölümde Azure portal de girilir.
-1. Varsayılan seçeneklerde bir sonraki birkaç pencere arasında ilerleyin, ardından **Hayır, giden güveni onaylama**seçeneğini belirleyin. Yönetilen etki alanı kaynak ormanına atanan yönetici hesabınız gerekli izinlere sahip olmadığından güven ilişkisini doğrulayamazsınız. Bu davranış tasarım gereğidir.
+1. Yönetilen etki alanının adını (örneğin, *aaddscontoso.com* ) girin ve ardından **İleri** ' yi seçin.
+1. Bir **orman güveni** oluşturma, sonra bir **yol oluşturma: gelen** güven seçeneğini belirleyin.
+1. **Yalnızca bu etki alanı** için güven oluşturmayı seçin. Bir sonraki adımda, yönetilen etki alanı için Azure portal güveni oluşturursunuz.
+1. **Orman genelinde kimlik doğrulaması** kullanmayı seçin, ardından bir güven parolasını girip onaylayın. Aynı parola, sonraki bölümde Azure portal de girilir.
+1. Varsayılan seçeneklerde bir sonraki birkaç pencere arasında ilerleyin, ardından **Hayır, giden güveni onaylama** seçeneğini belirleyin. Yönetilen etki alanı kaynak ormanına atanan yönetici hesabınız gerekli izinlere sahip olmadığından güven ilişkisini doğrulayamazsınız. Bu davranış tasarım gereğidir.
 1. **Son** ' u seçin
 
 ## <a name="validate-resource-authentication"></a>Kaynak kimlik doğrulamasını doğrulama
@@ -288,21 +288,21 @@ Yönetilen etki alanı kaynak ormanına katılmış Windows Server VM 'sini kull
     > [!TIP]
     > Azure AD Domain Services ' a katılmış sanal makinelerinize güvenli bir şekilde bağlanmak için, desteklenen Azure bölgelerinde [Azure savunma ana bilgisayarı hizmetini](../bastion/bastion-overview.md) kullanabilirsiniz.
 
-1. **Windows ayarları**' nı açın ve **Ağ ve Paylaşım Merkezi**' ni arayıp seçin.
+1. **Windows ayarları** ' nı açın ve **Ağ ve Paylaşım Merkezi** ' ni arayıp seçin.
 1. **Gelişmiş paylaşım ayarlarını değiştir** seçeneğini belirleyin.
-1. **Etki alanı profili**altında **dosya ve yazıcı paylaşımını aç** ' ı seçin ve **değişiklikleri kaydedin**.
-1. **Ağ ve Paylaşım Merkezi 'ni**kapatın.
+1. **Etki alanı profili** altında **dosya ve yazıcı paylaşımını aç** ' ı seçin ve **değişiklikleri kaydedin** .
+1. **Ağ ve Paylaşım Merkezi 'ni** kapatın.
 
 #### <a name="create-a-security-group-and-add-members"></a>Güvenlik grubu oluşturma ve üye ekleme
 
-1. **Active Directory Kullanıcıları ve Bilgisayarları**'nı açın.
-1. Etki alanı adını sağ seçin, **Yeni**' yi seçin ve ardından **kuruluş birimi**' ni seçin.
-1. Ad kutusuna *Localobjects*yazın ve ardından **Tamam**' ı seçin.
-1. Gezinti bölmesinde **Localobjects** ' i seçin ve sağ tıklayın. **Yeni** ' yi ve ardından **Grup**' u seçin.
-1. **Grup adı** kutusuna *fileserveraccess* yazın. **Grup kapsamı**Için **etki alanı yerel**' i seçin ve ardından **Tamam**' ı seçin.
-1. İçerik bölmesinde, **Fileserveraccess**' e çift tıklayın. **Üyeler**' i seçin, **eklemeyi**seçin ve ardından **konumlar**' ı seçin.
-1. **Konum** görünümünden şirket içi Active Directory seçin ve ardından **Tamam**' ı seçin.
-1. **Seçilecek nesne adlarını girin** kutusunda *etki alanı kullanıcıları* yazın. **Adları denetle**' yi seçin, şirket içi Active Directory kimlik bilgilerini sağlayın ve ardından **Tamam**' ı seçin.
+1. **Active Directory Kullanıcıları ve Bilgisayarları** 'nı açın.
+1. Etki alanı adını sağ seçin, **Yeni** ' yi seçin ve ardından **kuruluş birimi** ' ni seçin.
+1. Ad kutusuna *Localobjects* yazın ve ardından **Tamam** ' ı seçin.
+1. Gezinti bölmesinde **Localobjects** ' i seçin ve sağ tıklayın. **Yeni** ' yi ve ardından **Grup** ' u seçin.
+1. **Grup adı** kutusuna *fileserveraccess* yazın. **Grup kapsamı** Için **etki alanı yerel** ' i seçin ve ardından **Tamam** ' ı seçin.
+1. İçerik bölmesinde, **Fileserveraccess** ' e çift tıklayın. **Üyeler** ' i seçin, **eklemeyi** seçin ve ardından **konumlar** ' ı seçin.
+1. **Konum** görünümünden şirket içi Active Directory seçin ve ardından **Tamam** ' ı seçin.
+1. **Seçilecek nesne adlarını girin** kutusunda *etki alanı kullanıcıları* yazın. **Adları denetle** ' yi seçin, şirket içi Active Directory kimlik bilgilerini sağlayın ve ardından **Tamam** ' ı seçin.
 
     > [!NOTE]
     > Güven ilişkisi yalnızca tek bir yol olduğundan kimlik bilgilerini sağlamanız gerekir. Bu, yönetilen etki alanındaki kullanıcıların kaynaklara erişemeyeceği veya güvenilir (Şirket içi) etki alanındaki kullanıcıları veya grupları araymayacağı anlamına gelir.
@@ -311,27 +311,27 @@ Yönetilen etki alanı kaynak ormanına katılmış Windows Server VM 'sini kull
 
 #### <a name="create-a-file-share-for-cross-forest-access"></a>Ormanlar arası erişim için bir dosya paylaşma oluşturma
 
-1. Yönetilen etki alanı kaynak ormanına katılmış Windows Server VM 'de, bir klasör oluşturun ve *Crossforestshare*gibi bir ad sağlayın.
-1. Klasörü sağ seçin ve **Özellikler**' i seçin.
-1. **Güvenlik** sekmesini seçin ve ardından **Düzenle**' yi seçin.
-1. *Çapraz Forestshare izinleri* Iletişim kutusunda **Ekle**' yi seçin.
-1. **Seçilecek nesne adlarını girin**alanına *fileserveraccess* yazın ve ardından **Tamam**' ı seçin.
-1. **Gruplar veya Kullanıcı adları** listesinden *fileserveraccess* ' i seçin. **FileServerAccess izinleri** listesinde, **değiştirme** ve **yazma** izinleri için *Izin ver* ' i seçin ve ardından **Tamam**' ı seçin.
+1. Yönetilen etki alanı kaynak ormanına katılmış Windows Server VM 'de, bir klasör oluşturun ve *Crossforestshare* gibi bir ad sağlayın.
+1. Klasörü sağ seçin ve **Özellikler** ' i seçin.
+1. **Güvenlik** sekmesini seçin ve ardından **Düzenle** ' yi seçin.
+1. *Çapraz Forestshare izinleri* Iletişim kutusunda **Ekle** ' yi seçin.
+1. **Seçilecek nesne adlarını girin** alanına *fileserveraccess* yazın ve ardından **Tamam** ' ı seçin.
+1. **Gruplar veya Kullanıcı adları** listesinden *fileserveraccess* ' i seçin. **FileServerAccess izinleri** listesinde, **değiştirme** ve **yazma** izinleri için *Izin ver* ' i seçin ve ardından **Tamam** ' ı seçin.
 1. **Paylaşım** sekmesini seçin ve **Gelişmiş paylaşım...** seçeneğini belirleyin.
-1. **Bu klasörü paylaşma**' yı seçin, sonra da *çapraz Forestshare*gibi **Share adında** dosya paylaşımının hatırlayabileceğiniz bir adını girin.
-1. **İzinler**' i seçin. **Herkes Için izinler** listesinde, **Değiştir** izni için **izin ver** ' i seçin.
-1. **Tamam** ' ı iki kez seçin ve ardından **kapatın**.
+1. **Bu klasörü paylaşma** ' yı seçin, sonra da *çapraz Forestshare* gibi **Share adında** dosya paylaşımının hatırlayabileceğiniz bir adını girin.
+1. **İzinler** ' i seçin. **Herkes Için izinler** listesinde, **Değiştir** izni için **izin ver** ' i seçin.
+1. **Tamam** ' ı iki kez seçin ve ardından **kapatın** .
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Ormanlar arası kimlik doğrulamasını bir kaynağa doğrulama
 
 1. Şirket içi Active Directory bir kullanıcı hesabı kullanarak şirket içi Active Directory katılmış bir Windows bilgisayarda oturum açın.
-1. **Windows Gezgini**'ni kullanarak, tam ana bilgisayar adını ve gibi bir paylaşma kullanarak oluşturduğunuz paylaşıma bağlanın `\\fs1.aaddscontoso.com\CrossforestShare` .
-1. Yazma iznini doğrulamak için, klasörde sağ seçin, **Yeni**' yi seçin ve ardından **metin belgesi**' ni seçin. Varsayılan ad **Yeni metin belgesi ' ni**kullanın.
+1. **Windows Gezgini** 'ni kullanarak, tam ana bilgisayar adını ve gibi bir paylaşma kullanarak oluşturduğunuz paylaşıma bağlanın `\\fs1.aaddscontoso.com\CrossforestShare` .
+1. Yazma iznini doğrulamak için, klasörde sağ seçin, **Yeni** ' yi seçin ve ardından **metin belgesi** ' ni seçin. Varsayılan ad **Yeni metin belgesi ' ni** kullanın.
 
     Yazma izinleri doğru ayarlandıysa yeni bir metin belgesi oluşturulur. Aşağıdaki adımlar, dosyayı uygun şekilde açar, düzenleyebilir ve siler.
-1. Oku iznini doğrulamak için **Yeni metin belgesi**açın.
-1. Değiştirme iznini doğrulamak için, dosyaya metin ekleyin ve **Not defteri 'ni**kapatın. Değişiklikleri kaydetmeniz istendiğinde **Kaydet**' i seçin.
-1. Silme iznini doğrulamak için **Yeni metin belgesi** ' ni sağ seçin ve **Sil**' i seçin. Dosya silmeyi onaylamak için **Evet** ' i seçin.
+1. Oku iznini doğrulamak için **Yeni metin belgesi** açın.
+1. Değiştirme iznini doğrulamak için, dosyaya metin ekleyin ve **Not defteri 'ni** kapatın. Değişiklikleri kaydetmeniz istendiğinde **Kaydet** ' i seçin.
+1. Silme iznini doğrulamak için **Yeni metin belgesi** ' ni sağ seçin ve **Sil** ' i seçin. Dosya silmeyi onaylamak için **Evet** ' i seçin.
 
 ## <a name="update-or-remove-outbound-forest-trust"></a>Giden orman güvenini güncelleştirme veya kaldırma
 
@@ -349,7 +349,7 @@ Aşağıdaki örnek adımlarda, giden güven parolasını el ile sıfırlamanız
     Install-Script -Name Get-AaddsResourceForestTrusts,Set-AaddsResourceForestTrust
     ```
 
-1. Mevcut bir güveni güncelleştirebilmeniz için önce betiği kullanarak güven kaynağını alın `Get-AaddsResourceForestTrusts` . Aşağıdaki örnekte, var olan güven *existingtrust*adlı bir nesneye atanır. Güncelleştirmek için kendi yönetilen etki alanı orman adınızı ve şirket içi orman adını belirtin:
+1. Mevcut bir güveni güncelleştirebilmeniz için önce betiği kullanarak güven kaynağını alın `Get-AaddsResourceForestTrusts` . Aşağıdaki örnekte, var olan güven *existingtrust* adlı bir nesneye atanır. Güncelleştirmek için kendi yönetilen etki alanı orman adınızı ve şirket içi orman adını belirtin:
 
     ```powershell
     $existingTrust = Get-AaddsResourceForestTrust `
@@ -388,9 +388,9 @@ Yönetilen etki alanından şirket içi AD DS ormanına tek yönlü giden orman 
 Şirket içi AD DS ormanından tek yönlü gelen güveni kaldırmak için, şirket içi AD DS ormanına erişimi olan bir yönetim bilgisayarına bağlanın ve aşağıdaki adımları uygulayın:
 
 1. Başlat 'ı seçin **| Yönetim Araçları | Active Directory etki alanları ve Güvenleri**
-1. *OnPrem.contoso.com*gibi etki alanını sağ seçin, **Özellikler** ' i seçin
+1. *OnPrem.contoso.com* gibi etki alanını sağ seçin, **Özellikler** ' i seçin
 1. **Güvenler** sekmesini seçin ve ardından yönetilen etki alanı ormanınızdan mevcut gelen güveni seçin.
-1. **Kaldır**' ı seçin, ardından gelen güveni kaldırmak istediğinizi onaylayın.
+1. **Kaldır** ' ı seçin, ardından gelen güveni kaldırmak istediğinizi onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

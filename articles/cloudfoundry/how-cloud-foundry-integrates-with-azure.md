@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: f3b84ba1c3571e3660d1d71a0167a7489c6ec4ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 897d7f662c4cad4df92eeec66820a0e8cf17b8ad
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82145122"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040619"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry ile Azure’ı tümleştirme
 
@@ -32,21 +32,21 @@ Bosh, disk oluşturma ve silme yordamları için Azure MPE 'yi (bulut sağlayıc
 Artık [yönetilen disk](https://azure.microsoft.com/services/managed-disks/) kullanılabilir, sanal makineler için yönetilen güvenli ve güvenilir disk depolama alanı sunar. Müşterinin artık ölçek ve HA için depolama hesabıyla uğraşmak zorunda değildir. Azure diskleri otomatik olarak düzenler. Yeni veya mevcut bir dağıtım olup olmadığı için Azure MPE, bir CF dağıtımı sırasında yönetilen diskin oluşturulmasını veya geçirilmesini işleymeyecektir. PCF 1,11 ile desteklenir. Ayrıca, başvuru için açık kaynaklı Cloud Foundry [yönetilen disk kılavuzunu](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/managed-disks) inceleyebilirsiniz. 
 ### <a name="availability-zone-"></a>Kullanılabilirlik alanı *
 Bulut Yerel uygulama platformu olarak, Cloud Foundry [dört yüksek düzeyde kullanılabilirlik](https://docs.pivotal.io/pivotalcf/2-1/concepts/high-availability.html)ile tasarlanmıştır. Yazılım hatalarının ilk üç düzeyi CF sistemi tarafından işlenebilirse de, bulut sağlayıcıları tarafından platform hata toleransı sağlanır. Anahtar CF bileşenleri, bir bulut sağlayıcısının platform HA çözümüyle korunmuş olmalıdır. Bu, GoRouters, Diego Brains, CF veritabanı ve hizmet kutucukları içerir. Varsayılan olarak, [Azure kullanılabilirlik kümesi](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/deploy-cloudfoundry-with-availability-sets) , bir veri merkezindeki kümeler arasındaki hata toleransı için kullanılır.
-Yeni bir deyişle, [Azure kullanılabilirlik bölgesi](https://docs.microsoft.com/azure/availability-zones/az-overview ) şimdi serbest bırakılır ve bu da hata toleransını bir sonraki düzeye getirerek, veri merkezlerinde düşük gecikmeli artıklık sağlar.
+Yeni bir deyişle, [Azure kullanılabilirlik bölgesi](../availability-zones/az-overview.md) şimdi serbest bırakılır ve bu da hata toleransını bir sonraki düzeye getirerek, veri merkezlerinde düşük gecikmeli artıklık sağlar.
 Azure kullanılabilirlik bölgesi, 2 + veri merkezlerine bir VM kümesi yerleştirerek, her bir sanal makine kümesi diğer kümeler için gereksizdir. Bir bölge kapalıysa, diğer kümeler hala etkin, olağanüstü durumdan yalıtılmıştır.
 > [!NOTE] 
-> Azure kullanılabilirlik bölgesi henüz tüm bölgelere sunulmaz, [desteklenen bölgelerin listesi için](https://docs.microsoft.com/azure/availability-zones/az-overview)en son duyuruyu denetleyin. Açık kaynak Cloud Foundry için, [açık kaynak Cloud Foundry Kılavuzu Için Azure kullanılabilirlik bölgesi](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/availability-zone)' ne bakın.
+> Azure kullanılabilirlik bölgesi henüz tüm bölgelere sunulmaz, [desteklenen bölgelerin listesi için](../availability-zones/az-overview.md)en son duyuruyu denetleyin. Açık kaynak Cloud Foundry için, [açık kaynak Cloud Foundry Kılavuzu Için Azure kullanılabilirlik bölgesi](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/availability-zone)' ne bakın.
 
 ## <a name="2-network-routing"></a>2. ağ yönlendirme
 Varsayılan olarak, Azure temel yük dengeleyici, gelen CF API/uygulama istekleri için kullanılır ve bunları Gorulara ileterek. Diego bey, MySQL, ERT gibi CF bileşenleri, HA trafiğini dengelemek için yük dengeleyiciyi de kullanabilir. Azure, tam olarak yönetilen bir Yük Dengeleme çözümleri kümesi de sağlar. TLS/SSL sonlandırmasını ("SSL boşaltması") veya HTTP/HTTPS isteği uygulama katmanı işleme için arıyorsanız, Application Gateway göz önünde bulundurun. Katman 4 ' te yüksek kullanılabilirlik ve ölçeklenebilirlik yük dengelemesi için standart yük dengeleyiciyi göz önünde bulundurun.
 ### <a name="azure-application-gateway-"></a>Azure Application Gateway *
-[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) , SSL boşaltma, uçtan uca TLS, Web uygulaması güvenlik duvarı, tanımlama bilgisi tabanlı oturum benzeşimi ve daha fazlasını içeren çeşitli katman 7 yük dengeleme özellikleri sunar. [Açık kaynak Cloud Foundry Application Gateway yapılandırabilirsiniz](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). PCF için, POC testi için  [pcf 2,1 sürüm notlarına](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) bakın.
+[Azure Application Gateway](../application-gateway/overview.md) , SSL boşaltma, uçtan uca TLS, Web uygulaması güvenlik duvarı, tanımlama bilgisi tabanlı oturum benzeşimi ve daha fazlasını içeren çeşitli katman 7 yük dengeleme özellikleri sunar. [Açık kaynak Cloud Foundry Application Gateway yapılandırabilirsiniz](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). PCF için, POC testi için  [pcf 2,1 sürüm notlarına](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) bakın.
 
 ### <a name="azure-standard-load-balancer-"></a>Azure Standart Load Balancer *
-Azure Load Balancer katman 4 yük dengeleyicidir. Trafiği, yük dengeli bir küme içindeki hizmet örnekleri arasında dağıtmak için kullanılır. Standart sürüm, temel sürümün üstünde [Gelişmiş Özellikler](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) sağlar. Örneğin 1. Arka uç havuzu en yüksek sınırı 100 ' den 1000 VM 'ye yükseltilir.  2. Uç noktalar artık tek kullanılabilirlik kümesi yerine birden çok kullanılabilirlik kümesini destekler.  3. HA bağlantı noktaları, daha zengin izleme verileri vb. gibi ek özellikler. Azure kullanılabilirlik bölgesine taşındıysanız standart yük dengeleyici gereklidir. Yeni bir dağıtım için Azure Standart Load Balancer ile başlamanız önerilir. 
+Azure Load Balancer katman 4 yük dengeleyicidir. Trafiği, yük dengeli bir küme içindeki hizmet örnekleri arasında dağıtmak için kullanılır. Standart sürüm, temel sürümün üstünde [Gelişmiş Özellikler](../load-balancer/load-balancer-overview.md) sağlar. Örneğin 1. Arka uç havuzu en yüksek sınırı 100 ' den 1000 VM 'ye yükseltilir.  2. Uç noktalar artık tek kullanılabilirlik kümesi yerine birden çok kullanılabilirlik kümesini destekler.  3. HA bağlantı noktaları, daha zengin izleme verileri vb. gibi ek özellikler. Azure kullanılabilirlik bölgesine taşındıysanız standart yük dengeleyici gereklidir. Yeni bir dağıtım için Azure Standart Load Balancer ile başlamanız önerilir. 
 
 ## <a name="3-authentication"></a>3. kimlik doğrulaması 
-[Cloud Foundry Kullanıcı hesabı ve kimlik doğrulaması](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) , CF ve çeşitli bileşenleri için merkezi kimlik yönetimi hizmetidir. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) , Microsoft 'un çok kiracılı, bulut tabanlı dizin ve kimlik yönetimi hizmetidir. Varsayılan olarak, Cloud Foundry kimlik doğrulaması için UAA kullanılır. Ayrıca, UAA, gelişmiş bir seçenek olarak Azure AD 'yi dış kullanıcı deposu olarak da destekler. Azure AD kullanıcıları, Cloud Foundry hesabı olmadan LDAP kimliklerini kullanarak Cloud Foundry erişebilir. [PCF 'de UAA Için Azure AD 'yi yapılandırmak](https://docs.pivotal.io/p-identity/1-6/azure/index.html)için aşağıdaki adımları izleyin.
+[Cloud Foundry Kullanıcı hesabı ve kimlik doğrulaması](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) , CF ve çeşitli bileşenleri için merkezi kimlik yönetimi hizmetidir. [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) , Microsoft 'un çok kiracılı, bulut tabanlı dizin ve kimlik yönetimi hizmetidir. Varsayılan olarak, Cloud Foundry kimlik doğrulaması için UAA kullanılır. Ayrıca, UAA, gelişmiş bir seçenek olarak Azure AD 'yi dış kullanıcı deposu olarak da destekler. Azure AD kullanıcıları, Cloud Foundry hesabı olmadan LDAP kimliklerini kullanarak Cloud Foundry erişebilir. [PCF 'de UAA Için Azure AD 'yi yapılandırmak](https://docs.pivotal.io/p-identity/1-6/azure/index.html)için aşağıdaki adımları izleyin.
 
 ## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4. Cloud Foundry çalışma zamanı sistemi için veri depolama
 Cloud Foundry, uygulama çalışma zamanı sistem depolaması için Azure blobdeposu veya Azure MySQL/PostgreSQL hizmetlerini kullanmak için harika genişletilebilirlik sağlar.
@@ -67,7 +67,7 @@ Azure Hizmet Aracısı, uygulamanın Azure Hizmetlerine erişimini yönetmek iç
 
 ## <a name="6-metrics-and-logging"></a>6. ölçümler ve günlüğe kaydetme
 Azure Log Analytics başlık, [Cloud Foundry loggregator fire'tan](https://docs.cloudfoundry.org/loggregator/architecture.html) [Azure izleyici günlüklerine](https://azure.microsoft.com/services/log-analytics/)olan ölçümleri ileten bir Cloud Foundry bileşenidir. Başlık sayesinde, CF sistem durumu ve performans ölçümlerinizi birden çok dağıtımda toplayabilir, görüntüleyebilir ve çözümleyebilirsiniz.
-Azure Log Analytics başlığı 'nı hem açık kaynak hem de Özet Cloud Foundry ortamına dağıtmayı öğrenmek için [buraya](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) tıklayın ve sonra Azure izleyici günlükleri konsolundan verilere erişin. 
+Azure Log Analytics başlığı 'nı hem açık kaynak hem de Özet Cloud Foundry ortamına dağıtmayı öğrenmek için [buraya](./cloudfoundry-oms-nozzle.md) tıklayın ve sonra Azure izleyici günlükleri konsolundan verilere erişin. 
 > [!NOTE]
 > PCF 2,0 ' den VM 'Ler için BOSH sağlık ölçümleri, varsayılan olarak hortum ve Azure Izleyici günlükleri konsolu ile tümleştirilir.
 
@@ -76,7 +76,7 @@ Azure Log Analytics başlığı 'nı hem açık kaynak hem de Özet Cloud Foundr
 ## <a name="7-cost-saving"></a>7. maliyet kaydetme
 ### <a name="cost-saving-for-devtest-environments"></a>Geliştirme ve test ortamları için maliyet tasarrufu
 #### <a name="b-series-"></a>B Serisi: *
-F ve D VM Serisi, Özet Cloud Foundry üretim ortamı için sıklıkla önerilse de yeni "Burstable" [B serisi](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/) yeni seçenekleri getirir. B serisi Burstable VM 'Ler, Web sunucuları, küçük veritabanları ve geliştirme ve test ortamları gibi CPU 'nun tam performansına gerek olmayan iş yükleri için idealdir. Bu iş yükleri genellikle ani performans gereksinimlerine sahiptir. $0.012/Hour (B1) $0,05/Saat (F1) ile karşılaştırıldığında, Ayrıntılar için [VM boyutlarının](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general) tam listesine ve [fiyatlarına](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) bakın. 
+F ve D VM Serisi, Özet Cloud Foundry üretim ortamı için sıklıkla önerilse de yeni "Burstable" [B serisi](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/) yeni seçenekleri getirir. B serisi Burstable VM 'Ler, Web sunucuları, küçük veritabanları ve geliştirme ve test ortamları gibi CPU 'nun tam performansına gerek olmayan iş yükleri için idealdir. Bu iş yükleri genellikle ani performans gereksinimlerine sahiptir. $0.012/Hour (B1) $0,05/Saat (F1) ile karşılaştırıldığında, Ayrıntılar için [VM boyutlarının](../virtual-machines/sizes-general.md) tam listesine ve [fiyatlarına](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) bakın. 
 #### <a name="managed-standard-disk"></a>Yönetilen standart disk: 
 Üretim ortamında güvenilir performans için Premium diskler önerilmıştı.  [Yönetilen disk](https://azure.microsoft.com/services/managed-disks/)ile standart depolama, farklı performansla benzer bir güvenilirlik de sunabilir. Geliştirme/test veya kritik olmayan ortam gibi performans açısından hassas olmayan iş yükü için, yönetilen standart diskler daha düşük maliyetli alternatif bir seçenek sunar.  
 ### <a name="cost-saving-in-general"></a>Genel olarak maliyet kaydetme 
@@ -91,5 +91,4 @@ Azure 'un birinci taraf hizmetinden yararlanmak, yukarıdaki bölümlerde bahsed
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Azure tümleştirme özellikleri, ilk olarak [açık kaynak Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/)ile kullanılabilir ve Özet Cloud Foundry kullanılabilir. * İle işaretlenmiş Özellikler, PCF aracılığıyla yine de kullanılamaz. Azure Stack ile Cloud Foundry tümleştirme bu belgede kapsanmaz.
-* İle işaretlenmiş Özellikler üzerinde PCF desteği veya Azure Stack tümleştirmesi Cloud Foundry, en son durum için özetleme ve Microsoft hesabı yöneticinize başvurun. 
-
+* İle işaretlenmiş Özellikler üzerinde PCF desteği veya Azure Stack tümleştirmesi Cloud Foundry, en son durum için özetleme ve Microsoft hesabı yöneticinize başvurun.

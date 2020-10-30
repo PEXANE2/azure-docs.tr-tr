@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
-ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d93cb49c77a4c8164a8b4e9bca349a805f39678
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82691893"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041637"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Azure SQL Veritabanı'ndaki normalleştirilmiş veritabanı şemasını Azure Cosmos DB'deki normalleştirilmişlikten çıkarılmış kapsayıcıya geçirme
 
@@ -50,7 +50,7 @@ Elde edilen CosmosDB kapsayıcısı, iç sorguyu tek bir belgeye katıştırır 
 
 2. Veri akışı etkinliği ekleyin
 
-3. Veri akışı etkinliğinde **Yeni eşleme veri akışı**' nı seçin.
+3. Veri akışı etkinliğinde **Yeni eşleme veri akışı** ' nı seçin.
 
 4. Bu veri akışı grafiğini aşağıdan oluşturacağız
 
@@ -96,11 +96,11 @@ Elde edilen CosmosDB kapsayıcısı, iç sorguyu tek bir belgeye katıştırır 
 
 19. Havuz ayarları ' nda, Bölüm anahtarını ```\SalesOrderID``` ve toplama eylemini "yeniden oluştur" olarak oluşturun. Eşleme sekmesinin şu şekilde göründüğünden emin olun:
 
-![Havuz ayarları](media/data-flow/cosmosb7.png)
+![Ekran görüntüsü eşleme sekmesini gösterir.](media/data-flow/cosmosb7.png)
 
 20. Yeni kapsayıcıya yeni belge olarak eklemek üzere şu 32 satırları ayarladığınızdan emin olmak için veri önizleme ' ye tıklayın:
 
-![Havuz ayarları](media/data-flow/cosmosb8.png)
+![Ekran görüntüsü, veri önizleme sekmesini gösterir.](media/data-flow/cosmosb8.png)
 
 Her şey iyi görünüyorsa, artık yeni bir işlem hattı oluşturmaya hazır olursunuz, bu veri akışı etkinliğini bu işlem hattına ekleyin ve yürütün. Hata ayıklama veya tetiklenen bir çalıştırma aracılığıyla çalıştırabilirsiniz. Birkaç dakika sonra, CosmosDB veritabanınızda "Orders" adlı yeni bir eşit sipariş kapsayıcısına sahip olmanız gerekir.
 

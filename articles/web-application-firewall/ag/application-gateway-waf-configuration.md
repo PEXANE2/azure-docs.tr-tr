@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d34641fdecfe334e84347efe1a2f64482cae74b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84752482"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040258"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri
 
@@ -38,11 +38,11 @@ Tam bir istek üst bilgisi, gövde, tanımlama bilgisi veya sorgu dizesi öznite
 
 Aşağıdakiler, desteklenen eşleşme ölçütü işleçleridir:
 
-- **Eşittir**: Bu işleç tam eşleşme için kullanılır. Örnek olarak, **yataertoken**adlı bir üst bilgi seçmek için, Selector ile WITH, **yataya**kümesi olarak ayarlanmış Equals işlecini kullanın.
-- **Ile başlar**: Bu işleç, belirtilen Seçici değeriyle başlayan tüm alanlarla eşleşir.
-- **Şununla biter**: Bu işleç, belirtilen Seçici değeriyle biten tüm istek alanlarıyla eşleşir.
-- **Contains**: Bu işleç, belirtilen Seçici değerini içeren tüm istek alanlarıyla eşleşir.
-- **Eşittir any**: Bu işleç tüm istek alanlarıyla eşleşir. * Seçici değeri olacaktır.
+- **Eşittir** : Bu işleç tam eşleşme için kullanılır. Örnek olarak, **yataertoken** adlı bir üst bilgi seçmek için, Selector ile WITH, **yataya** kümesi olarak ayarlanmış Equals işlecini kullanın.
+- **Ile başlar** : Bu işleç, belirtilen Seçici değeriyle başlayan tüm alanlarla eşleşir.
+- **Şununla biter** : Bu işleç, belirtilen Seçici değeriyle biten tüm istek alanlarıyla eşleşir.
+- **Contains** : Bu işleç, belirtilen Seçici değerini içeren tüm istek alanlarıyla eşleşir.
+- **Eşittir any** : Bu işleç tüm istek alanlarıyla eşleşir. * Seçici değeri olacaktır.
 
 Tüm durumlarda eşleşen büyük/küçük harfe duyarlı değildir ve normal ifadeye seçici olarak izin verilmez.
 
@@ -81,7 +81,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Bu nedenle, URL `http://www.contoso.com/?user%281%29=fdafdasfda` WAF 'ye geçirilirse **fdadfdasfda**dizesini değerlendirmez, ancak yine de **%281 %29**parametre adı kullanıcı olarak değerlendirilir. 
+Bu nedenle, URL `http://www.contoso.com/?user%281%29=fdafdasfda` WAF 'ye geçirilirse **fdadfdasfda** dizesini değerlendirmez, ancak yine de **%281 %29** parametre adı kullanıcı olarak değerlendirilir. 
 
 ## <a name="waf-request-size-limits"></a>WAF istek boyutu sınırları
 
@@ -89,7 +89,7 @@ Bu nedenle, URL `http://www.contoso.com/?user%281%29=fdafdasfda` WAF 'ye geçiri
 
 Web uygulaması güvenlik duvarı, istek boyutu sınırlarını alt ve üst sınırlar içinde yapılandırmanıza olanak tanır. Aşağıdaki iki boyut sınırı yapılandırması kullanılabilir:
 
-- En büyük istek gövdesi boyutu alanı kilobayt cinsinden belirtilir ve dosya yükleme işlemleri hariç olmak üzere genel istek boyutu sınırını denetler. Bu alan, 1 KB en az 128-KB maksimum değer arasında değişebilir. İstek gövdesi boyutu için varsayılan değer 128 KB 'tır.
+- En büyük istek gövdesi boyutu alanı kilobayt cinsinden belirtilir ve dosya yükleme işlemleri hariç olmak üzere genel istek boyutu sınırını denetler. Bu alan en az 1 KB ve en yüksek değer olan 128 KB 'dir. İstek gövdesi boyutu için varsayılan değer 128 KB 'tır.
 - Dosya karşıya yükleme sınırı alanı MB olarak belirtilir ve izin verilen en büyük dosya yükleme boyutunu yönetir. Bu alan en az 1 MB ve aşağıdaki en yüksek değer olabilir:
 
    - V1 orta WAF ağ geçitleri için 100 MB

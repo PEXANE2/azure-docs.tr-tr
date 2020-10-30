@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39b61815c33f933e0cdf08bd46382e74eea2f806
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259645"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040465"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında
 
 Azure Active Directory B2C (Azure AD B2C) [özel ilkelerindeki](custom-policy-overview.md) talep çözücüler, ilke adı, Istek bağıntı kimliği, Kullanıcı arabirimi dili ve daha fazlası gibi bir yetkilendirme isteğiyle ilgili bağlam bilgilerini sağlar.
 
-Bir giriş veya çıkış talebinde bir talep çözümleyici kullanmak için, [Claimsschema](claimsschema.md) öğesi altında bir String **ClaimType**tanımlar ve ardından **DefaultValue** değerini giriş veya çıkış talebi öğesinde talep çözümleyici olarak ayarlarsınız. Azure AD B2C, talep Çözümleyicisinin değerini okur ve teknik profildeki değeri kullanır.
+Bir giriş veya çıkış talebinde bir talep çözümleyici kullanmak için, [Claimsschema](claimsschema.md) öğesi altında bir String **ClaimType** tanımlar ve ardından **DefaultValue** değerini giriş veya çıkış talebi öğesinde talep çözümleyici olarak ayarlarsınız. Azure AD B2C, talep Çözümleyicisinin değerini okur ve teknik profildeki değeri kullanır.
 
 Aşağıdaki örnekte, adlı bir talep türü, `correlationId` bir **veri türü** ile tanımlanmıştır `string` .
 
@@ -51,7 +51,7 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 | {Culture: LanguageName} | Dil için iki harfli ISO kodu. | en |
 | {Culture: LCıD}   | Dil kodunun LCıD 'SI. | 1033 |
 | {Culture: RegionName} | Bölgenin iki harfli ISO kodu. | ABD |
-| {Culture: RFC5646} | RFC5646 dil kodu. | tr-TR |
+| {Culture: RFC5646} | RFC5646 dil kodu. | en-US |
 
 ### <a name="policy"></a>İlke
 
@@ -127,6 +127,7 @@ OıDC veya OAuth2 isteğinin bir parçası olarak dahil edilen herhangi bir para
 | {SAML: ForceAuthn} | `ForceAuthN` `AuthnRequest` SAML isteğinin öğesinden öznitelik değeri. | Doğru |
 | {SAML: ProviderName} | `ProviderName` `AuthnRequest` SAML isteğinin öğesinden öznitelik değeri.| Contoso.com |
 | {SAML: RelayState} | `RelayState`Sorgu dizesi parametresi.| 
+| {SAML: Subject} | `Subject`SAML AuthN Isteğinin NameID öğesinden.| 
 
 ## <a name="using-claim-resolvers"></a>Talep çözücüler kullanma
 

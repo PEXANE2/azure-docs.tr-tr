@@ -212,8 +212,6 @@
           href: log-query/get-started-portal.md
         - name: Sorgu kapsamı
           href: log-query/scope.md
-        - name: Basit günlükler deneyimi
-          href: log-query/simple-logs.md
         - name: Azure Veri Gezgini kullanarak sorgulama
           href: platform/azure-data-explorer-monitor-proxy.md
         - name: Günlük sorguları

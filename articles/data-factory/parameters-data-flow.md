@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 564c7cf6e9627db08d543b964ce476e71bfb473d
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82780427"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040752"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Eşleme veri akışlarını parametreleştirme
 
@@ -28,7 +28,7 @@ Verilerinizi genel amaçlı, esnek ve yeniden kullanılabilir hale getirmek içi
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>Eşleme veri akışında parametre oluşturma
 
-Veri akışınıza parametreler eklemek için, genel özellikleri görmek üzere veri akışı tuvalinin boş kısmına tıklayın. Ayarlar bölmesinde, **parametre**adlı bir sekme görürsünüz. Yeni bir parametre oluşturmak için **Yeni** ' yi seçin. Her parametre için bir ad atamanız, bir tür seçmeniz ve isteğe bağlı olarak varsayılan bir değer ayarlamanız gerekir.
+Veri akışınıza parametreler eklemek için, genel özellikleri görmek üzere veri akışı tuvalinin boş kısmına tıklayın. Ayarlar bölmesinde, **parametre** adlı bir sekme görürsünüz. Yeni bir parametre oluşturmak için **Yeni** ' yi seçin. Her parametre için bir ad atamanız, bir tür seçmeniz ve isteğe bağlı olarak varsayılan bir değer ayarlamanız gerekir.
 
 ![Veri akışı parametreleri oluşturma](media/data-flow/create-params.png "Veri akışı parametreleri oluşturma")
 
@@ -36,11 +36,11 @@ Veri akışınıza parametreler eklemek için, genel özellikleri görmek üzere
 
 Parametrelere, herhangi bir veri akışı ifadesinde başvurulabilir. Parametreler $ ile başlar ve sabittir. **Parametreler** sekmesinde, ifade oluşturucusunun içindeki kullanılabilir parametrelerin listesini bulacaksınız.
 
-![Veri akışı parametre ifadesi](media/data-flow/parameter-expression.png "Veri akışı parametre ifadesi")
+![Ekran görüntüsü Parametreler sekmesinde kullanılabilir parametreleri gösterir.](media/data-flow/parameter-expression.png "Veri akışı parametre ifadesi")
 
 **Yeni parametre** ' i seçip adı ve türü belirterek hızlı bir şekilde ek parametreler ekleyebilirsiniz.
 
-![Veri akışı parametre ifadesi](media/data-flow/new-parameter-expression.png "Veri akışı parametre ifadesi")
+![Ekran görüntüsü parametreler sekmesindeki parametreleri yeni parametrelerle eklenmiş şekilde gösterir.](media/data-flow/new-parameter-expression.png "Veri akışı parametre ifadesi")
 
 ## <a name="assign-parameter-values-from-a-pipeline"></a>İşlem hattından parametre değerleri atama
 
@@ -48,13 +48,13 @@ Parametrelerle bir veri akışı oluşturduktan sonra, veri akışını Yürüt 
 
 Parametre değerlerini atarken, Spark türlerine göre işlem [hattı ifade dilini](control-flow-expression-language-functions.md) veya [veri akışı ifade dilini](data-flow-expression-functions.md) kullanabilirsiniz. Her eşleme veri akışı, ardışık düzen ve veri akışı ifade parametrelerinin herhangi bir birleşimini içerebilir.
 
-![Veri akışı parametresini ayarlama](media/data-flow/parameter-assign.png "Veri akışı parametresini ayarlama")
+![Ekran görüntüsü, myParam değeri için seçilen veri akışı ifadesi ile Parametreler sekmesini gösterir.](media/data-flow/parameter-assign.png "Veri akışı parametresini ayarlama")
 
 ### <a name="pipeline-expression-parameters"></a>Ardışık düzen ifade parametreleri
 
-İşlem hattı ifade parametreleri, sistem değişkenlerine, işlevlere, işlem hattı parametrelerine ve diğer işlem hattı etkinliklerine benzer değişkenlere başvurmasına olanak tanır. **Ardışık düzen ifadesi**' ne tıkladığınızda, ifade oluşturucuyu kullanarak bir ifade girmenize izin veren bir yan gezinti açılır.
+İşlem hattı ifade parametreleri, sistem değişkenlerine, işlevlere, işlem hattı parametrelerine ve diğer işlem hattı etkinliklerine benzer değişkenlere başvurmasına olanak tanır. **Ardışık düzen ifadesi** ' ne tıkladığınızda, ifade oluşturucuyu kullanarak bir ifade girmenize izin veren bir yan gezinti açılır.
 
-![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline.png "Veri akışı parametresini ayarlama")
+![Ekran görüntüsü ifade Oluşturucu bölmesini gösterir.](media/data-flow/parameter-pipeline.png "Veri akışı parametresini ayarlama")
 
 Başvurulduğunda, işlem hattı parametreleri değerlendirilir ve ardından bu değer veri akışı ifade dilinde kullanılır. Ardışık düzen ifadesi türünün veri akışı parametre türüyle eşleşmesi gerekmez. 
 
@@ -62,7 +62,7 @@ Başvurulduğunda, işlem hattı parametreleri değerlendirilir ve ardından bu 
 
 Dize türünde bir işlem hattı ifade parametresi atarken, varsayılan olarak tırnak işaretleri eklenir ve değer değişmez değer olarak değerlendirilir. Parametre değerini bir veri akışı ifadesi olarak okumak için, parametrenin yanındaki ifade kutusunu işaretleyin.
 
-![Veri akışı parametresini ayarlama](media/data-flow/string-parameter.png "Veri akışı parametresini ayarlama")
+![Ekran görüntüsü, bir parametre için seçilen veri akışı parametreleri bölmesi Ifadesini gösterir.](media/data-flow/string-parameter.png "Veri akışı parametresini ayarlama")
 
 Veri akışı parametresi `stringParam` değeri olan bir işlem hattı parametresine başvuruyorsa `upper(column1)` . 
 
@@ -73,7 +73,7 @@ Veri akışı parametresi `stringParam` değeri olan bir işlem hattı parametre
 
 İşlem hattı ifade dilinde, gibi sistem değişkenleri `pipeline().TriggerTime` ve `utcNow()` ' yyyy-aa-gg \' T \' HH: mm: ss biçiminde dizeler olarak dönüş zaman damgası olarak işlevler. SSSSSSZ '. Bunları zaman damgası türünde veri akışı parametrelerine dönüştürmek için, istenen zaman damgasını bir işleve dahil etmek üzere dize ilişkilendirmeyi kullanın `toTimestamp()` . Örneğin, işlem hattı tetikleme süresini bir veri akışı parametresine dönüştürmek için kullanabilirsiniz `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` . 
 
-![Veri akışı parametresini ayarlama](media/data-flow/parameter-timestamp.png "Veri akışı parametresini ayarlama")
+![Ekran görüntüsü, bir tetikleme süresi girebileceğiniz Parametreler sekmesini gösterir.](media/data-flow/parameter-timestamp.png "Veri akışı parametresini ayarlama")
 
 > [!NOTE]
 > Veri akışları yalnızca 3 milisaniyeye kadar basamağı destekleyebilir. `left()`İşlev, ek basamakların kırpılıp kullanılamaz.
@@ -82,15 +82,15 @@ Veri akışı parametresi `stringParam` değeri olan bir işlem hattı parametre
 
 `intParam`String türünde bir işlem hattı parametresine başvuran bir tamsayı parametresi olduğunu varsayalım `@pipeline.parameters.pipelineParam` . 
 
-![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline-2.png "Veri akışı parametresini ayarlama")
+![Ekran görüntüsü, stringParam ve intParam adlı parametrelere sahip Parametreler sekmesini gösterir.](media/data-flow/parameter-pipeline-2.png "Veri akışı parametresini ayarlama")
 
 `@pipeline.parameters.pipelineParam` çalışma zamanında bir değeri atandı `abs(1)` .
 
-![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline-4.png "Veri akışı parametresini ayarlama")
+![Ekran görüntüsünde, bir b s (1) değeri seçili olan Parametreler sekmesi görüntülenir.](media/data-flow/parameter-pipeline-4.png "Veri akışı parametresini ayarlama")
 
 `$intParam`Türetilmiş sütun gibi bir ifadede başvuruluyorsa, return sonucunu değerlendirir `abs(1)` `1` . 
 
-![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline-3.png "Veri akışı parametresini ayarlama")
+![Ekran görüntüsünde sütunlar değeri gösterilir.](media/data-flow/parameter-pipeline-3.png "Veri akışı parametresini ayarlama")
 
 ### <a name="data-flow-expression-parameters"></a>Veri akışı ifade parametreleri
 

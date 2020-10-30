@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 17531c6e38447fba7fe8761a963be39ecfc8f489
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4064acd6d2857ebc00a38ea7f6ff5d5e30bbd699
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044165"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041371"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Geliştirme ve test ortamınızı IoT Edge için hazırlama
 
@@ -83,7 +83,7 @@ IoT Edge cihazlarının veya hata ayıklama modüllerinin daha verimli benzetimi
 | Araç | Olarak da bilinen | Desteklenen platformlar | En iyi kullanım alanı: |
 | ---- | ------------- | ------------------- | --------- |
 | IoT EdgeHub geliştirme aracı  | iotedgehubdev | Windows, Linux, macOS | Modül hatalarını ayıklamak için bir cihazın benzetimini yapın. |
-| IoT Edge dev kapsayıcısı | Microsoft/ıotedgedev | Windows, Linux, macOS | Bağımlılıkları yüklemeden geliştirme. |
+| IoT Edge dev kapsayıcısı | ıotedgedev | Windows, Linux, macOS | Bağımlılıkları yüklemeden geliştirme. |
 | Bir kapsayıcıda IoT Edge çalışma zamanı | iotedgec | Windows, Linux, macOS, ARM | Çalışma zamanını destekleyemeyebilir bir cihazda test etme. |
 | IoT Edge cihaz kapsayıcısı | toolboc/Azure-IoT-Edge-cihaz-kapsayıcı | Windows, Linux, macOS, ARM | Çok sayıda IoT Edge cihazı olan bir senaryoyu ölçeklendirerek test etme. |
 
@@ -99,7 +99,7 @@ Daha fazla bilgi ve yüklemek için bkz. [Azure IoT EdgeHub geliştirme aracı](
 
 Azure IoT Edge dev kapsayıcısı, IoT Edge geliştirme için ihtiyaç duyduğunuz tüm bağımlılıklara sahip bir Docker kapsayıcısıdır. Bu kapsayıcı C#, Python, Node.js ve Java dahil olmak üzere, içinde geliştirme yapmak istediğiniz dili kullanmaya başlamanızı kolaylaştırır. Yüklemeniz gereken tek şey, kapsayıcıyı geliştirme makinenize çekmek için Docker veya Moby gibi bir kapsayıcı altyapısıdır.
 
-Daha fazla bilgi için bkz. [Azure IoT Edge geliştirme kapsayıcısı](https://hub.docker.com/r/microsoft/iotedgedev/).
+Daha fazla bilgi için bkz. [Azure IoT Edge geliştirme kapsayıcısı](https://github.com/Azure/iotedgedev/wiki/quickstart-with-iot-edge-dev-container).
 
 ### <a name="iot-edge-runtime-in-a-container"></a>Bir kapsayıcıda IoT Edge çalışma zamanı
 

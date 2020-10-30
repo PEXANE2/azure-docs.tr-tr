@@ -7,18 +7,18 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 3fc8f205bff52fad6e55b7aa6692ec80ae5e954a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d0b66d2b4d89b512b34cb33a5607b471b7d1e84
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212152"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040930"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Azure Service Bus
 
 Kuyruk veya konu iletileri göndermek için Azure Service Bus çıktı bağlamayı kullanın.
 
-Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakış](functions-bindings-service-bus-output.md).
+Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakış](functions-bindings-service-bus.md).
 
 ## <a name="example"></a>Örnek
 
@@ -175,7 +175,7 @@ Service Bus bağlama tanımı, *türünün türü* olarak ayarlandığı *functi
 }
 ```
 
-* _ \_ İnit_ \_ . Kopyala*içinde, yöntemine bir değer geçirerek bir ileti yazabilirsiniz `set` .
+*_\_ İnit_ \_ . Kopyala* içinde, yöntemine bir değer geçirerek bir ileti yazabilirsiniz `set` .
 
 ```python
 import azure.functions as func
@@ -280,7 +280,7 @@ Tam bir örnek için bkz. [Çıkış-örnek](#example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `ServiceBus` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | "ServiceBus" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "Out" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -384,7 +384,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 
 `isSessionsEnabled`' A ayarlarsanız `true` , kabul edilir `sessionHandlerOptions` .  `isSessionsEnabled`' A ayarlarsanız `false` , kabul edilir `messageHandlerOptions` .
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |prefetchCount|0|İleti alıcısının eşzamanlı olarak isteyebildiği ileti sayısını alır veya ayarlar.|
 |maxAutoRenewDuration|00:05:00|İleti kilidinin otomatik olarak yenilenebileceği en uzun süre.|

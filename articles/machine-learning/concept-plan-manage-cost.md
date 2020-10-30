@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e6e59ad237cdc1f23181375894512e69eba86ff
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704737"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042182"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning maliyetlerini planlayın ve yönetin
 
@@ -41,7 +41,7 @@ Azure Maliyet Yönetimi verilerine erişim atama hakkında daha fazla bilgi içi
 
 ## <a name="estimate-costs"></a>Maliyetleri tahmin etme
 
-Azure Machine Learning hesapta kaynakları oluşturmadan önce maliyetleri tahmin etmek için [Azure Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/) ' nı kullanın. Sol tarafta **AI + Machine Learning**ve ardından başlamak için **Azure Machine Learning** öğesini seçin.  
+Azure Machine Learning hesapta kaynakları oluşturmadan önce maliyetleri tahmin etmek için [Azure Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/) ' nı kullanın. Sol tarafta **AI + Machine Learning** ve ardından başlamak için **Azure Machine Learning** öğesini seçin.  
 
 Aşağıdaki ekran, hesaplayıcı kullanılarak maliyet tahmini gösterir:
 
@@ -61,7 +61,9 @@ Azure Machine Learning ile kaynakları kullanırken maliyetleriniz vardır. Azur
 
 Farklı zaman aralıkları için grafikler ve tablolardaki maliyetleri görüntüleyebilirsiniz. Ayrıca bütçeleri ve tahmin edilen maliyetlerden de maliyet görüntüleyebilirsiniz. Zamana göre daha uzun görünümlere geçiş yapmak, harcama eğilimlerini belirlemenize ve fazla harcama oluşmuş olabileceğini görmenizi sağlar. Bütçeleri oluşturduysanız nerede aşıldığını görün.  
 
-Machine Learning için ayrı bir hizmet alanı görmezsiniz.  Bunun yerine Machine Learning çalışma alanlarınızda eklediğiniz çeşitli kaynakları görürsünüz.
+Machine Learning için ayrı bir hizmet alanı görmezsiniz.  Bunun yerine Machine Learning çalışma alanlarınızda eklediğiniz çeşitli kaynakları görürsünüz. 
+
+Machine Learning çalışma alanının kendisinin doğrudan maliyeti olmadığından, yönetilen işlem kaynakları üzerinden faturalandırılırsınız. Bu nedenle, üzerinde doğrudan maliyet olmadığından, çalışma alanlarına Etiketler eklediyseniz, maliyet analizi bölmesi bu işlemi çalışma alanı için yansıtır. Etiketler aracılığıyla doğru maliyet yönetimi için, ilişkili işlem kaynaklarını etiketlemelisiniz.  
 
 ## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Azure Machine Learning işlem kümesi (AmlCompute) kullanın
 

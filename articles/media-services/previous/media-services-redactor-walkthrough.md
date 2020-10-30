@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 5fdec829ceeefce2426a5fd08b4245e66bd0a08c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1a106874277f64a006584f9deb98fb9729263b1b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016680"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040714"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics izlenecek yüzü redaksiyonu
 
@@ -30,7 +30,7 @@ ms.locfileid: "92016680"
 
 **Azure Media Redactor** , bulutta ölçeklenebilir yüz redaksiyon sağlayan bir [Azure Media Analytics](./legacy-components.md) medya işlemcisidir (MP). Yüz Redaksiyon, seçili kişilerin yüzlerini bulanıklaştırmak için videonuzu değiştirmenize olanak sağlar. Yüz redaksiyon hizmetini genel güvenlik ve haber medya senaryolarında kullanmak isteyebilirsiniz. Birden çok yüz içeren birkaç dakikalık bir çekimi, el ile redaksiyona kadar zaman alabilir, ancak bu hizmetle yüz redaksiyon süreci yalnızca birkaç basit adım gerektirir. Daha fazla bilgi için [Bu](https://azure.microsoft.com/blog/azure-media-redactor/) bloga bakın.
 
-**Azure Media Redactor**hakkındaki ayrıntılar için bkz. [yüz redaksiyon genel bakış](media-services-face-redaction.md) konusu.
+**Azure Media Redactor** hakkındaki ayrıntılar için bkz. [yüz redaksiyon genel bakış](media-services-face-redaction.md) konusu.
 
 Bu konuda, Azure Media Services Explorer (AMI) ve Azure Media Redactor görselleştiricisi (açık kaynak aracı) kullanarak tam bir redaksiyon iş akışının nasıl çalıştırılacağı hakkında adım adım yönergeler gösterilmektedir.
 
@@ -47,7 +47,7 @@ Redactor ile çalışmaya başlamanın en kolay yolu GitHub 'da açık kaynak AM
 
     Hesap adını ve anahtar bilgilerini almak için [Azure portalına](https://portal.azure.com/) gidin ve AMS hesabınızı seçin. Ardından, ayarlar > anahtarlar ' ı seçin. Anahtarları yönet pencerelerinde hesap adı gösterilir ve birincil anahtar ile ikincil anahtar görüntülenir. Hesap adı ve birincil anahtar değerlerini kopyalayın.
 
-![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
+![Ekran görüntüsü, hesap adınızı ve anahtarınızı girebileceğiniz Microsoft Azure Media Services gösterir.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
 
 ### <a name="first-pass--analyze-mode"></a>İlk geçiş – analiz modu
 
@@ -55,32 +55,32 @@ Redactor ile çalışmaya başlamanın en kolay yolu GitHub 'da açık kaynak AM
 1. Media Analytics – > Azure Media Redactor – > çözümleme modunu kullanarak medya dosyanızı sağ tıklayıp işleyin. 
 
 
-![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
+![Ekran görüntüsünde, Azure Media Redactor olan Işlem varlıkları içeren bir menü gösterilir.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
 
-![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
+![Ekran görüntüsü Ilk Pass Azure Media Redactor gösterir: çözümleme modu seçili.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
 
 Çıktı, yüz konumu verileri içeren bir ek açıklama JSON dosyası ve algılanan her bir yüzeyi de içerecektir. 
 
-![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
+![Ekran görüntüsü Analize ait çıktıyı gösterir.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
 ### <a name="second-pass--redact-mode"></a>İkinci geçiş – redakct modu
 
 1. Özgün video varlığınızı ilk geçişte çıktıya yükleyin ve birincil varlık olarak ayarlayın. 
 
-    ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
+    ![Ekran görüntüsünde karşıya yükle ve birincil olarak ayarla düğmeleri gösterilir.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
 2. Seçim Redaksiyona eklemek istediğiniz kimliklerin bir yeni satır sınırlı listesini içeren bir ' Dance_idlist.txt ' dosyasını karşıya yükleyin. 
 
-    ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
+    ![Ekran görüntüsü metin dosyasını karşıya yükleme seçeneğini gösterir.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. Seçim Dosyadaki annotations.js, sınırlayıcı kutu sınırlarını artırma gibi herhangi bir düzenleme yapın. 
 4. İlk geçişte çıkış varlığına sağ tıklayın, Redactor ' ı seçin ve **Redakct** moduyla çalıştırın. 
 
-    ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
+    ![Ekran görüntüsünde Ikinci pass: Redakct modu seçiliyken Azure Media Redactor gösterilmektedir.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
 5. Son Redaksiyonu yapılmış çıkış varlığını indirin veya paylaşabilirsiniz. 
 
-    ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
+    ![Ekran görüntüsü Indir düğmesini gösterir.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
 ## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor görselleştiricisi açık kaynak aracı
 
@@ -94,12 +94,12 @@ JSON ek açıklama verilerini ayrıştırmaya çalışan bir geliştiricisiyseni
 
 1.  Tüm çözümü indirin ve derleyin. 
 
-    ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
+    ![Ekran görüntüsü, menüden yapı çözümünü seçili olarak gösterir.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
 2.  FFMPEG 'yi [buradan](https://ffmpeg.org/download.html)indirin. Bu proje başlangıçta statik bağlama ile sürüm be1d324 (2016-10-04) ile geliştirilmiştir. 
 3.  ffmpeg.exe ve ffprobe.exe AzureMediaRedactor.exe ile aynı çıkış klasörüne kopyalayın. 
 
-    ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
+    ![Ekran görüntüsü, ffmpeg ve ffaraştırması dahil olmak üzere klasörün içeriğini gösterir.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
 4. AzureMediaRedactor.exe çalıştırın. 
 
@@ -109,11 +109,11 @@ JSON ek açıklama verilerini ayrıştırmaya çalışan bir geliştiricisiyseni
 2. Orijinal video dosyasını ve redaksiyon-analiz işinin çıkışını indirin. 
 3. Görselleştirici uygulamasını çalıştırın ve yukarıdaki dosyaları seçin. 
 
-    ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
+    ![Ekran görüntüsünde dosyaları karşıya yükleme Azure Media Redactor gösterilmektedir.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
 
 4. Dosyanızı önizleyin. Sağdaki kenar çubuğu aracılığıyla bulanıklaştırmak istediğiniz yüzleri seçin. 
     
-    ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
+    ![Ekran görüntüsünde, bulanıklaştırmak üzere yüzler önizlemesi oluşturabileceğiniz ve seçebileceğiniz Azure Media Redactor gösterilmektedir.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
 5.  Alt metin alanı, yüz kimlikleri ile güncelleştirilecek. Bu kimliklerle "idlist.txt" adlı bir dosya oluşturun ve yeni bir liste oluşturun. 
 

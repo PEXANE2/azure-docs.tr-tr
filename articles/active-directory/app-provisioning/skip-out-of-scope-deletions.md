@@ -11,22 +11,21 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f459a804b4c375eea17cbc22ded2f41f808c1b82
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84789914"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041180"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın
 
 Varsayılan olarak, Azure AD sağlama altyapısı, kapsam dışına çıkan kullanıcıları geçici olarak siler veya devre dışı bırakır. Ancak, Workday gibi AD kullanıcısı gelen sağlama ile ilgili bazı senaryolar için bu davranış beklenmeyebilir ve bu varsayılan davranışı geçersiz kılmak isteyebilirsiniz.  
 
-Bu makalede, kapsam dışına çıkan hesapların işlenmesini denetleyen ***Skipoutofscopesilmelerini*** bayrağını ayarlamak IÇIN Microsoft Graph apı ve Microsoft Graph API Explorer 'ın nasıl kullanılacağı açıklanır. 
-* ***Skipoutofscopesilmeleri*** 0 (false) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılır.
-* ***Skipoutofscopesilmeleri*** 1 (true) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı olmayacaktır. Bu bayrak, *sağlama uygulama* düzeyinde ayarlanır ve Graph API kullanılarak yapılandırılabilir. 
+Bu makalede, kapsam dışına çıkan hesapların işlenmesini denetleyen " **Skipoutofscopesilmeleri** _" bayrağını ayarlamak IÇIN Microsoft Graph apı ve Microsoft Graph API Explorer 'ın nasıl kullanılacağı açıklanır. _ IF * **Skipoutofscopesilmeleri** _ değeri 0 (false) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılır.
+_ IF * **Skipoutofscopesilmeleri** _, 1 (true) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı olmayacaktır. Bu bayrak _Provisioning App * düzeyinde ayarlanır ve Graph API kullanılarak yapılandırılabilir. 
 
-Bu yapılandırma *Kullanıcı sağlama uygulamasını Active Directory Için Workday* ile yaygın olarak kullanıldığından, Workday uygulamasının ekran görüntülerini içerir. Ancak, yapılandırma ServiceNow, Salesforce ve Dropbox gibi *diğer uygulamalarla*de kullanılabilir.
+Bu yapılandırma *Kullanıcı sağlama uygulamasını Active Directory Için Workday* ile yaygın olarak kullanıldığından, Workday uygulamasının ekran görüntülerini içerir. Ancak, yapılandırma ServiceNow, Salesforce ve Dropbox gibi *diğer uygulamalarla* de kullanılabilir.
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1. Adım: sağlama App Service asıl KIMLIĞINI alma (nesne KIMLIĞI)
 
@@ -69,9 +68,9 @@ Eşlemeye eklenecek JSON bloğu aşağıda verilmiştir.
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>4. Adım: Skipoutofscopesilmeleri bayrağıyla gizli dizileri bitiş noktasını güncelleştirme
 
-Grafik Gezgini 'nde, gizli dizi uç noktasını ***Skipoutofscopesilmeleri*** bayrağıyla güncelleştirmek için aşağıdaki komutu çalıştırın. 
+Grafik Gezgini 'nde, gizli dizi uç noktasını * *_Skipoutofscopesilmeleri_* _ bayrağıyla güncelleştirmek için aşağıdaki komutu çalıştırın. 
 
-Aşağıdaki URL 'de, [Serviceprincipalıd] öğesini [Adım 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)' den ayıklanan **serviceprincipalıd** ile değiştirin. 
+Aşağıdaki URL 'de, [Serviceprincipalıd] öğesini [Adım 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)' den ayıklanan _ *serviceprincipalıd* * ile değiştirin. 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
@@ -90,7 +89,7 @@ Adım 3 ' teki güncelleştirilmiş metni "istek gövdesine" kopyalayın ve "Ist
 
 Kapsam kurallarınızı belirli bir kullanıcıyı atlayacak şekilde güncelleştirerek, bu bayrak sonuçlarını beklenen davranışa göre test edebilirsiniz. Aşağıdaki örnekte, KIMLIĞI 21173 olan çalışanı (kapsam içinde daha önce olan) yeni bir kapsam kuralı ekleyerek dışlıyoruz: 
 
-   ![Kapsam oluşturma örneği](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![Örnek bir Kullanıcı vurgulanmış şekilde "kapsam filtresi ekle" bölümünü gösteren ekran görüntüsü.](./media/skip-out-of-scope-deletions/skip-07.png)
 
 Bir sonraki sağlama döngüsünün Azure AD sağlama hizmeti, 21173 kullanıcısının kapsam dışına çıkış olduğunu ve Skipoutofscopesilmeleri özelliğinin etkin olduğunu belirler, bu durumda Kullanıcı için eşitleme kuralı aşağıda gösterildiği gibi bir ileti görüntüler: 
 

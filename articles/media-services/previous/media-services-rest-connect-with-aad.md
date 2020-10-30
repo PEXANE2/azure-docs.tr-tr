@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bea4c049c3d7ea17e173f069a3e99cbcca1fe48
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89257152"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041982"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>REST ile Media Services API'sine erişmek için Azure AD kimlik doğrulamasını kullanma
 
@@ -38,7 +38,7 @@ Azure Media Services ile Azure AD kimlik doğrulaması kullanırken, iki şekild
     > [!NOTE]
     > **Hizmet sorumlusu** , Azure Media Services bağlanan çoğu uygulama için önerilen en iyi uygulamadır. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure portal kimlik doğrulama bilgilerini alın
@@ -56,7 +56,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 - [Azure AD kimlik doğrulamasına genel bakış makalesini Azure Media Services API 'sine](media-services-use-aad-auth-to-access-ams-api.md) göz atın.
 - Bu makalede gösterilen REST API 'Leri yürütmek için [Postman](https://www.getpostman.com/) Rest istemcisini yükleme. 
 
-    Bu öğreticide **Postman** kullanıyoruz, ancak Rest aracı uygun olacak. Diğer seçenekler şunlardır: REST eklentili **Visual Studio Code** veya **Telerik Fiddler**. 
+    Bu öğreticide **Postman** kullanıyoruz, ancak Rest aracı uygun olacak. Diğer seçenekler şunlardır: REST eklentili **Visual Studio Code** veya **Telerik Fiddler** . 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Azure portal kimlik doğrulama bilgilerini alın
 
@@ -64,23 +64,23 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Media Services API 'sine erişmek için aşağıdaki veri noktalarını toplamanız gerekir.
 
-|Ayar|Örnek|Açıklama|
+|Ayar|Örnek|Description|
 |---|-------|-----|
 |Azure Active Directory kiracı etki alanı|microsoft.onmicrosoft.com|Azure AD, güvenli belirteç hizmeti (STS) uç noktası olarak şu biçim kullanılarak oluşturulmuştur: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token> . Azure AD, kaynaklara erişmek için bir JWT yayınlar (bir erişim belirteci).|
 |REST API uç noktası|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Bu, uygulamanızdaki tüm Media Services REST API çağrılarının yapıldığı bitiş noktasıdır.|
 |İstemci KIMLIĞI (uygulama KIMLIĞI)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD uygulaması (istemci) KIMLIĞI. Erişim belirtecini almak için istemci KIMLIĞI gereklidir. |
 |İstemci Gizli Anahtarı|+ mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq + Dbim0 =|Azure AD uygulama anahtarları (istemci gizli dizisi). Erişim belirtecini almak için istemci parolası gerekir.|
 
-### <a name="get-aad-auth-info-from-the-azure-portal"></a>Azure portal AAD kimlik doğrulama bilgilerini al
+### <a name="get-azure-active-directory-auth-info-from-the-azure-portal"></a>Azure portal kimlik doğrulama bilgilerini al Azure Active Directory
 
 Bilgileri almak için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 2. AMS örneğinize gidin.
-3. **API erişimi**seçin.
-4. **Hizmet sorumlusu ile Azure MEDIA SERVICES API 'Sine Bağlan**' a tıklayın.
+3. **API erişimi** seçin.
+4. **Hizmet sorumlusu ile Azure MEDIA SERVICES API 'Sine Bağlan** ' a tıklayın.
 
-    ![API erişimi](./media/connect-with-rest/connect-with-rest01.png)
+    ![Sağ bölmedeki "Media Services" menüsünden Seçili "bir P I erişimi" ve "hizmet sorumlusu ile bir P 'yi Azure Media Services 'ye Bağlan" gösteren ekran görüntüsü.](./media/connect-with-rest/connect-with-rest01.png)
 
 5. Mevcut bir **Azure AD uygulaması** seçin veya yeni bir tane oluşturun (aşağıda gösterildiği gibi).
 
@@ -89,12 +89,12 @@ Bilgileri almak için aşağıdaki adımları izleyin:
 
     Yeni bir AD uygulaması oluşturmanız gerekiyorsa, şu adımları izleyin:
     
-   1. **Yeni oluştur**' a basın.
+   1. **Yeni oluştur** ' a basın.
    2. Bir ad girin.
    3. **Yeni oluştur** ' a yeniden basın.
-   4. **Kaydet**’e basın.
+   4. **Kaydet** ’e basın.
 
-      ![API erişimi](./media/connect-with-rest/new-app.png)
+      !["Uygulama oluştur" metin kutusu vurgulanmış ve "Kaydet" düğmesinin seçili olduğu "Yeni oluştur" iletişim kutusunu gösteren ekran görüntüsü.](./media/connect-with-rest/new-app.png)
 
       Yeni uygulama sayfada görüntülenir.
 
@@ -103,14 +103,14 @@ Bilgileri almak için aşağıdaki adımları izleyin:
    1. Uygulamayı seçin.
    2. Sağdaki pencereden **ISTEMCI kimliğini** alın. 
 
-      ![API erişimi](./media/connect-with-rest/existing-client-id.png)
+      !["Azure A D uygulaması" ve "uygulamayı Yönet" seçili ve sağ bölmede "Istemci ı D" vurgulanmış ekran görüntüsü.](./media/connect-with-rest/existing-client-id.png)
 
 7. Uygulamanın **anahtarını** (istemci parolası) alın. 
 
-   1. **Uygulamayı Yönet** düğmesine tıklayın (istemci kimliği BILGISININ **uygulama kimliği**altında olduğuna dikkat edin). 
-   2. **Tuşlara**basın.
+   1. **Uygulamayı Yönet** düğmesine tıklayın (istemci kimliği BILGISININ **uygulama kimliği** altında olduğuna dikkat edin). 
+   2. **Tuşlara** basın.
     
-       ![API erişimi](./media/connect-with-rest/manage-app.png)
+       !["Uygulamayı Yönet" düğmesinin seçili olduğu, orta bölmedeki "uygulama ı D" ve sağ bölmede seçilen "anahtarlar" gösteren ekran görüntüsü.](./media/connect-with-rest/manage-app.png)
    3. **Açıklama** ' yı doldurarak ve **Kaydet** **' i basarak** uygulama anahtarını (istemci gizli anahtarı) oluşturun.
     
        **Kaydet** düğmesine basıldığında, anahtar değeri görünür. Dikey pencereden çıkmadan önce anahtar değerini kopyalayın.
@@ -124,18 +124,18 @@ Kodunuzda daha sonra kullanmak üzere web.config veya app.config dosyanıza AD b
 
 ## <a name="get-the-access-token-using-postman"></a>Postman kullanarak erişim belirtecini al
 
-Bu bölümde, bir JWT taşıyıcı belirteci (erişim belirteci) döndüren bir REST API yürütmek için **Postman** 'ın nasıl kullanılacağı gösterilmektedir. Herhangi bir Media Services REST API çağırmak için, çağrılara "yetkilendirme" başlığını eklemeniz ve her çağrıya "taşıyıcı *your_access_token*" değerini eklemeniz gerekir (Bu öğreticinin sonraki bölümünde gösterildiği gibi). 
+Bu bölümde, bir JWT taşıyıcı belirteci (erişim belirteci) döndüren bir REST API yürütmek için **Postman** 'ın nasıl kullanılacağı gösterilmektedir. Herhangi bir Media Services REST API çağırmak için, çağrılara "yetkilendirme" başlığını eklemeniz ve her çağrıya "taşıyıcı *your_access_token* " değerini eklemeniz gerekir (Bu öğreticinin sonraki bölümünde gösterildiği gibi). 
 
-1. **Postman**'yi açın.
-2. **POST**'u seçin.
-3. Aşağıdaki biçimi kullanarak kiracı adınızı içeren URL 'YI girin: kiracı adı **. onmicrosoft.com** ile BITMELIDIR ve URL 'nin **OAuth2/Token**ile bitmesi gerekir: 
+1. **Postman** 'yi açın.
+2. **POST** 'u seçin.
+3. Aşağıdaki biçimi kullanarak kiracı adınızı içeren URL 'YI girin: kiracı adı **. onmicrosoft.com** ile BITMELIDIR ve URL 'nin **OAuth2/Token** ile bitmesi gerekir: 
 
     `https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token`
 
 4. **Üstbilgiler** sekmesini seçin.
 5. "Anahtar/değer" veri kılavuzunu kullanarak **üstbilgiler** bilgilerini girin. 
 
-    ![Veri Kılavuzu](./media/connect-with-rest/headers-data-grid.png)
+    !["Üstbilgiler" sekmesini ve "toplu düzenleme" eyleminin seçili olduğunu gösteren ekran görüntüsü.](./media/connect-with-rest/headers-data-grid.png)
 
     Alternatif olarak, Postman penceresinin sağ tarafındaki **toplu düzenleme** bağlantısına tıklayın ve aşağıdaki kodu yapıştırın.
 
@@ -158,21 +158,21 @@ Bu bölümde, bir JWT taşıyıcı belirteci (erişim belirteci) döndüren bir 
     resource:https://rest.media.azure.net
     ```
 
-8. **Gönder**’e basın.
+8. **Gönder** ’e basın.
 
-    ![belirteç al](./media/connect-with-rest/connect-with-rest04.png)
+    !["Post" metin kutusu, "üstbilgiler" ve "Body" sekmelerini ve "access_token" vurgulanmasını ve "Gönder" düğmesinin algılandığını gösteren ekran görüntüsü.](./media/connect-with-rest/connect-with-rest04.png)
 
 Döndürülen yanıt, herhangi bir AMS API 'ye erişmek için kullanmanız gereken **erişim belirtecini** içerir.
 
 ## <a name="test-the-assets-api-using-the-access-token"></a>Erişim belirtecini kullanarak **varlıklar** API 'sini test etme
 
-Bu bölümde, **Postman**kullanılarak **varlıklar** API 'sine nasıl erişebileceğiniz gösterilmektedir.
+Bu bölümde, **Postman** kullanılarak **varlıklar** API 'sine nasıl erişebileceğiniz gösterilmektedir.
 
-1. **Postman**'yi açın.
-2. **GET**'i seçin.
+1. **Postman** 'yi açın.
+2. **GET** 'i seçin.
 3. REST API uç noktasını yapıştırın (örneğin, https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. **Yetkilendirme** sekmesini seçin. 
-5. **Taşıyıcı belirtecini**seçin.
+5. **Taşıyıcı belirtecini** seçin.
 6. Önceki bölümde oluşturulan belirteci yapıştırın.
 
     ![belirteç al](./media/connect-with-rest/connect-with-rest05.png)
@@ -182,7 +182,7 @@ Bu bölümde, **Postman**kullanılarak **varlıklar** API 'sine nasıl erişebil
 
    ![Kimlik doğrulama üst bilgisi](./media/connect-with-rest/auth-header.png)
 
-7. **Üst bilgileri**seçin.
+7. **Üst bilgileri** seçin.
 5. Sağ taraftaki Postman penceresinde **toplu düzenleme** bağlantısı ' na tıklayın.
 6. Aşağıdaki üst bilgileri yapıştırın:
 
@@ -194,7 +194,7 @@ Bu bölümde, **Postman**kullanılarak **varlıklar** API 'sine nasıl erişebil
     MaxDataServiceVersion:3.0
     ```
 
-7. **Gönder**’e basın.
+7. **Gönder** ’e basın.
 
 Döndürülen yanıt, hesabınızdaki varlıkları içerir.
 

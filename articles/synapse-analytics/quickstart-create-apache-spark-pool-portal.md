@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea32126e19c4520a6d5a40f38f60ec44e9a119cd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7578ca12c46ec6de626eeb1340ce680eda6bbb92
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260878"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041300"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak yeni bir Apache Spark havuzu oluşturma
 
@@ -39,13 +39,13 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 ## <a name="navigate-to-the-synapse-workspace"></a>SYNAPSE çalışma alanına gidin 
 1. Arama çubuğuna hizmet adı (veya doğrudan kaynak adı) yazarak Apache Spark havuzunun oluşturulacağı SYNAPSE çalışma alanına gidin.
 ![İçinde SYNAPSE çalışma alanlarıyla yazılan arama çubuğu Azure portal.](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
-1. Çalışma alanları listesinden, açmak için çalışma alanının adını (veya adının bir bölümünü) yazın. Bu örnekte, **contosoanalytics**adlı bir çalışma alanı kullanacağız.
+1. Çalışma alanları listesinden, açmak için çalışma alanının adını (veya adının bir bölümünü) yazın. Bu örnekte, **contosoanalytics** adlı bir çalışma alanı kullanacağız.
 ![Contoso adını içeren bunları göstermek üzere filtrelenmiş SYNAPSE çalışma alanlarının listesi.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
 
 ## <a name="create-new-apache-spark-pool"></a>Yeni Apache Spark Havuzu Oluştur
 
-1. Apache Spark havuzunu oluşturmak istediğiniz SYNAPSE çalışma alanında **yeni Apache Spark havuzu**' nu seçin.
+1. Apache Spark havuzunu oluşturmak istediğiniz SYNAPSE çalışma alanında **yeni Apache Spark havuzu** ' nu seçin.
     ![Yeni bir Apache Spark havuzu oluşturmak için komutu etrafında kırmızı bir kutu ile SYNAPSE çalışma alanına genel bakış](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-01.png)
 2. **Temel bilgiler** sekmesinde aşağıdaki ayrıntıları girin:
 
@@ -62,18 +62,18 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
     > Apache Spark havuzların kullanabileceği adlarla ilgili özel sınırlamalar olduğunu unutmayın. Adlar yalnızca harf veya sayı içermelidir, 15 veya daha az karakter olmalıdır, bir harfle başlamalı, ayrılmış sözcükler içermemelidir ve çalışma alanında benzersiz olmalıdır.
 
 3. **İleri ' yi seçin: ek ayarlar** ve varsayılan ayarları gözden geçirin. Herhangi bir varsayılan ayarı değiştirmeyin.
-    ![Apache Spark havuzu akış oluşturma-ek ayarlar sekmesi.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-03.png)
+    !["Ek ayarlar" sekmesi seçiliyken "Apache Spark Havuzu Oluştur" sayfasını gösteren ekran görüntüsü.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-03.png)
 
-4. **Sonraki: Etiketler**' i seçin. Etiket eklemeyin.
+4. **Sonraki: Etiketler** ' i seçin. Etiket eklemeyin.
     ![Apache Spark havuzu akış oluşturma-ek ayarlar sekmesi.](media/quickstart-create-apache-spark-pool/create-spark-pool-03-tags.png)
 
-5. **Gözden geçir ve oluştur**’u seçin.
+5. **Gözden geçir ve oluştur** ’u seçin.
 
-6. Ayrıntıların daha önce girildiği duruma göre doğru göründüğünden emin olun ve **Oluştur**' u seçin.
+6. Ayrıntıların daha önce girildiği duruma göre doğru göründüğünden emin olun ve **Oluştur** ' u seçin.
     ![Apache Spark havuzu akış oluşturma-ayarları gözden geçirme sekmesi.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-05.png)
 
 7. Bu noktada, kaynak sağlama akışı başlar ve bu işlem tamamlandıktan sonra görüntülenir.
-    ![Apache Spark havuzu Flow-Resource hazırlama oluşturma.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-06.png)
+    !["Dağıtımınız tamamlanmıştır" iletisi görüntülenirken "genel bakış" sayfasını gösteren ekran görüntüsü.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-06.png)
 
 8. Sağlama tamamlandıktan sonra, çalışma alanına geri dönmek Yeni oluşturulan Apache Spark havuzu için yeni bir giriş gösterecektir.
     ![Apache Spark havuzu Flow-Resource hazırlama oluşturma.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-07.png)
@@ -89,8 +89,8 @@ Apache Spark havuzunu çalışma alanından silmek için aşağıdaki adımları
 Apache Spark havuzunu silmek istiyorsanız, aşağıdakileri yapın:
 
 1. Çalışma alanındaki Apache Spark havuzları dikey penceresine gidin.
-2. Silinecek Apache Spark havuzunu seçin (Bu durumda, **contosospark**).
-3. **Sil**'e basın.
+2. Silinecek Apache Spark havuzunu seçin (Bu durumda, **contosospark** ).
+3. **Sil** 'e basın.
  ![Son oluşturulan havuz seçiliyken Apache Spark havuzlarının listelenmesi.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-08.png)
 4. Silmeyi onaylayın ve **Sil** düğmesine basın.
  ![Seçili Apache Spark havuzunu silmek için onay iletişim kutusu.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-10.png)

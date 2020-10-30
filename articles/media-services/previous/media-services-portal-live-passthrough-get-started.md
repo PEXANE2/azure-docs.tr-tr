@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 15b876104dfa1a35077a34aa178d650e2d68855e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 707c12cac6bbceee925c4710eff29482f687d47f
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266740"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040738"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Azure portal kullanarak şirket içi kodlayıcılarla canlı akış gerçekleştirme
 
@@ -37,7 +37,7 @@ ms.locfileid: "89266740"
 
 Bu öğretici, Azure portal kullanarak doğrudan teslimat için yapılandırılmış bir **Kanal** oluşturmaya ilişkin adımları anlatmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
 * Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/). 
@@ -112,15 +112,15 @@ Bu bölüm bir geçiş kanalı oluşturmak için **Hızlı Oluştur** seçeneği
 Geçiş kanalları hakkında daha fazla ayrıntı için bkz. [Çoklu bit hızı akışları oluşturan şirket içi kodlayıcılarla canlı akış](media-services-live-streaming-with-onprem-encoders.md).
 
 1. [Azure portalında](https://portal.azure.com/) Azure Media Services hesabınızı seçin.
-2. **Ayarlar** penceresinde, **Canlı Akış**’a tıklayın. 
+2. **Ayarlar** penceresinde, **Canlı Akış** ’a tıklayın. 
    
     ![Başlarken](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
     **Canlı akış** penceresi görüntülenir.
-3. RTMP alma protokolüyle bir geçiş kanalı oluşturmak için **Hızlı Oluştur**’a tıklayın.
+3. RTMP alma protokolüyle bir geçiş kanalı oluşturmak için **Hızlı Oluştur** ’a tıklayın.
    
     **YENİ KANAL OLUŞTUR** penceresi görüntülenir.
-4. Yeni kanala bir ad verin ve **Oluştur**’a tıklayın. 
+4. Yeni kanala bir ad verin ve **Oluştur** ’a tıklayın. 
    
     Bunun yapılması RTMP alma protokolüyle bir geçiş kanalı oluşturur.
 
@@ -133,10 +133,10 @@ Geçiş kanalları hakkında daha fazla ayrıntı için bkz. [Çoklu bit hızı 
 ## <a name="get-ingest-urls"></a>Alma URL’leri alma
 Kanal oluşturulduktan sonra, gerçek zamanlı kodlayıcıya sağlayacağınız alma URL’lerini alabilirsiniz. Kodlayıcı bu URL'leri canlı akış girişi için kullanır.
 
-![Oluşturulan](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
+![Bir kanalın seçili olduğu ve kanal bölmesinin gösterildiği "canlı akış" sayfasını gösteren ekran görüntüsü.](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>Olayı izleme
-Olay izlemek için, Azure portalda **İzle**’ye tıklayın veya akış URL'sini kopyalayın ve tercih ettiğiniz bir oynatıcı kullanın. 
+Olay izlemek için, Azure portalda **İzle** ’ye tıklayın veya akış URL'sini kopyalayın ve tercih ettiğiniz bir oynatıcı kullanın. 
 
 ![Oluşturulan](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
@@ -151,7 +151,7 @@ Geçiş kanalları hakkında daha fazla ayrıntı için bkz. [Çoklu bit hızı 
 ## <a name="view-archived-content"></a>Arşivlenen içeriği görüntüleme
 Olayı durdurduktan ve sildikten sonra dahi, varlığı silmeniz sürece, kullanıcılar arşivlenen içeriğinizin isteğe bağlı içerik olarak akışını gerçekleştirebilir. Bir olay tarafından kullanılıyorsa varlık silinemez; önce olayın silinmesi gerekir. 
 
-Varlıklarınızı yönetmek için, **Ayar**’ı seçin ve **Varlıklar**’a tıklayın.
+Varlıklarınızı yönetmek için, **Ayar** ’ı seçin ve **Varlıklar** ’a tıklayın.
 
 ![Varlıklar](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 248799d70e0741efcaea1714c12f4d92a42cef25
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84691348"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041897"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Sahneler, çekimler, ana kareler
 
@@ -48,7 +48,7 @@ Videonuzla ilgili yüksek çözünürlüklü ana kareleri ayıklamak için önce
 
 Video Indexer Web sitesini kullanarak ana kareleri ayıklamak için videonuzu karşıya yükleyin ve dizine yükleyin. Dizin oluşturma işi tamamlandıktan sonra **İndir** düğmesine tıklayın ve **yapılar (ZIP)** öğesini seçin. Bu, yapıt klasörünü bilgisayarınıza indirir. 
 
-![Gezen](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+!["Yapılar" seçiliyken "Indir" açılan görüntüsünü gösteren ekran görüntüsü.](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
 Açın ve klasörü açın. *_KeyframeThumbnail* klasöründe, videodan ayıklanan tüm ana kareleri bulacaksınız. 
 

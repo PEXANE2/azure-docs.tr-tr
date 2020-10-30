@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 1c887093972507904b007c696214708eb0e2b039
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: bffe69dd5b7d3cdfcba1df3420d494dcffc33f9a
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282202"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042668"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
@@ -68,13 +68,13 @@ Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklen
 
 ## <a name="azcopy"></a>AzCopy
 
-AzCopy 'in yalnızca en son sürümünü kullanın ([AzCopy ile v10 arasındaki](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)).AzCopy v 8.1 gibi önceki AzCopy sürümleri desteklenmez.
+AzCopy 'in yalnızca en son sürümünü kullanın ([AzCopy ile v10 arasındaki](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). AzCopy v 8.1 gibi önceki AzCopy sürümleri desteklenmez.
 
 <a id="storage-explorer"></a>
 
 ## <a name="azure-storage-explorer"></a>Azure Depolama Gezgini
 
-Yalnızca sürümlerini  `1.6.0`   veya üstünü kullanın.
+Yalnızca sürümlerini `1.6.0` veya üstünü kullanın.
 
 <a id="explorer-in-portal"></a>
 
@@ -84,7 +84,7 @@ ACL 'Ler henüz desteklenmiyor.
 
 <a id="third-party-apps"></a>
 
-## <a name="thirdpartyapplications"></a>Üçüncü taraf uygulamalar
+## <a name="third-party-applications"></a>Üçüncü taraf uygulamalar
 
 REST API 'leri kullanan üçüncü taraf uygulamalar, bunları blob API 'Leri çağıran Data Lake Storage 2. uygulamalarla birlikte kullandığınızda çalışmaya devam edecektir.
 
@@ -92,38 +92,15 @@ REST API 'leri kullanan üçüncü taraf uygulamalar, bunları blob API 'Leri ç
 
 Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md) verildiyse, ACL 'lerin bu kapsayıcıya veya o kapsayıcıdaki dosyalara hiçbir etkisi olmaz.
 
-### <a name="diagnostic-logs"></a>Tanılama günlükleri
+## <a name="diagnostic-logs"></a>Tanılama günlükleri
 
 Saklama günlerinin ayarı henüz desteklenmiyor, ancak Azure Depolama Gezgini, REST veya SDK gibi desteklenen bir aracı kullanarak günlükleri el ile silebilirsiniz.
 
-## <a name="issues-specific-to-premium-performance-blockblobstorage-storage-accounts"></a>Premium performanslı blok Blobstorage depolama hesaplarına özgü sorunlar
+## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage için Premium katmanda yaşam döngüsü yönetim ilkeleri
 
-### <a name="diagnostic-logs"></a>Tanılama günlükleri
+Premium katmanda depolanan verileri sık erişimli, seyrek erişimli ve arşiv katmanları arasında taşıyamazsınız. Ancak, Premium katmandan verileri farklı bir hesaptaki sık erişimli erişim katmanına kopyalayabilirsiniz.
 
-Tanılama günlükleri henüz Azure portal kullanılarak etkinleştirilemez. PowerShell kullanarak bunları etkinleştirebilirsiniz. Örneğin:
-
-```powershell
-#To login
-Connect-AzAccount
-
-#Set default block blob storage account.
-Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
-
-#Enable logging
-Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
-```
-
-### <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetim ilkeleri
-
-- Yaşam döngüsü yönetimi ilkeleri yalnızca genel amaçlı v2 hesaplarında desteklenir. Henüz Premium blok Blobstorage depolama hesaplarında desteklenmemektedir.
-- Veriler Premium katmandan daha düşük katmanlara taşınamaz.
-
-
-### <a name="hdinsight-support"></a>HDInsight desteği
-
-Bir n HDInsight kümesi oluşturduğunuzda, henüz hiyerarşik ad alanı özelliği etkinleştirilmiş bir blok Blobstorage hesabı seçemezsiniz. Ancak, hesabı oluşturduktan sonra kümeye ekleyebilirsiniz.
-
-### <a name="dremio-support"></a>Dremio desteği
+## <a name="dremio-support-with-premium-performance-blockblobstorage-storage-accounts"></a>Premium performanslı blok Blobstorage depolama hesaplarıyla Dremio desteği
 
 Dremio henüz hiyerarşik ad alanı özelliği etkinleştirilmiş olan bir BlockBlobStorage hesabına bağlanmıyor. 
 

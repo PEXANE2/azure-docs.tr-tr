@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c89bd01cb2e6947df5ed192d66e0dbae08cf66d5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6c9d49d8d4d1951542268d35e22822ab62449278
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260640"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041229"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Synapse SQL Havuzu (Önizleme) oluşturma
 
@@ -37,7 +37,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 1. Arama çubuğuna hizmet adı (veya doğrudan kaynak adı) yazarak SQL havuzunun oluşturulacağı SYNAPSE çalışma alanına gidin.
 ![İçinde SYNAPSE çalışma alanları içeren arama çubuğu Azure portal. ](media/quickstart-create-sql-pool/create-sql-pool-00a.png) . 
-1. Çalışma alanları listesinden, açmak için çalışma alanının adını (veya adının bir bölümünü) yazın. Bu örnekte, **contosoanalytics**adlı bir çalışma alanı kullanacağız.
+1. Çalışma alanları listesinden, açmak için çalışma alanının adını (veya adının bir bölümünü) yazın. Bu örnekte, **contosoanalytics** adlı bir çalışma alanı kullanacağız.
 ![Contoso adını içeren bunları göstermek üzere filtrelenmiş SYNAPSE çalışma alanlarının listesi.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
 ## <a name="create-new-sql-pool"></a>Yeni SQL Havuzu Oluştur
@@ -56,16 +56,16 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
     > [!IMPORTANT]
     > SQL havuzlarının kullanabileceği adlarla ilgili belirli sınırlamalar olduğunu unutmayın. Adlar özel karakterler içeremez, 15 veya daha az karakter olmalı, ayrılmış sözcükler içermemelidir ve çalışma alanında benzersiz olmalıdır.
 
-3. **Sonraki: Ek Ayarlar**’ı seçin.
+3. **Sonraki: Ek Ayarlar** ’ı seçin.
 4. SQL havuzunu veri olmadan sağlamak için **hiçbiri** ' ni seçin. Varsayılan harmanlamayı seçili bırakın.
 ![SQL havuzu akış oluşturma-ek ayarlar sekmesi.](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
-5. **Gözden geçir ve oluştur**’u seçin.
-6. Ayrıntıların daha önce girildiği duruma göre doğru göründüğünden emin olun. **Oluştur**’u seçin.
+5. **Gözden geçir ve oluştur** ’u seçin.
+6. Ayrıntıların daha önce girildiği duruma göre doğru göründüğünden emin olun. **Oluştur** ’u seçin.
 ![SQL havuzu akış oluşturma-ayarları gözden geçirme sekmesi.](media/quickstart-create-sql-pool/create-sql-pool-portal-04.png)
 
 7. Bu noktada kaynak sağlama akışı başlar.
- ![SQL havuzu akış oluşturma-kaynak sağlama.](media/quickstart-create-sql-pool/create-sql-pool-portal-06.png)
+ !["Dağıtımınız tamamlanmıştır" sayfasını gösteren ekran görüntüsü.](media/quickstart-create-sql-pool/create-sql-pool-portal-06.png)
 
 8. Sağlama tamamlandıktan sonra, çalışma alanına geri dönmek Yeni oluşturulan SQL havuzu için yeni bir giriş gösterir.
  ![SQL havuzu akış oluşturma-kaynak sağlama.](media/quickstart-create-sql-pool/create-sql-pool-portal-07.png)
@@ -82,7 +82,7 @@ SQL havuzunu çalışma alanından silmek için aşağıdaki adımları izleyin.
 SQL havuzunu silmek istiyorsanız aşağıdaki adımları izleyin:
 
 1. Çalışma alanı Dikey penceresinde SQL havuzları dikey penceresine gidin
-1. Silinecek SQL havuzunu seçin (Bu durumda **contosowdw**)
+1. Silinecek SQL havuzunu seçin (Bu durumda **contosowdw** )
 1. Seçildikten sonra **Sil** 'e basın
 1. Silmeyi onaylayın ve **Sil** düğmesine basın ![ SQL havuzuna genel bakış-silme onayını vurgulama.](media/quickstart-create-sql-pool/create-sql-pool-portal-11.png)
 1. İşlem başarıyla tamamlandığında, SQL havuzu artık çalışma alanı kaynaklarında listelenmeyecektir.

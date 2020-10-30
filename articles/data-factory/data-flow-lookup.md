@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
-ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70787f1d918064b48d37ce051bfdd2aba49472ea
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84187608"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040185"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Eşleme veri akışında arama dönüşümü
 
@@ -27,7 +27,7 @@ Bir arama dönüştürmesi, bir sol dış birleşime benzer. Birincil akıştaki
 
 ## <a name="configuration"></a>Yapılandırma
 
-![Arama dönüşümü](media/data-flow/lookup1.png "Arama")
+![Ekran görüntüsü, aşağıdaki metinde açıklanan etiketlere sahip arama ayarları sekmesini gösterir.](media/data-flow/lookup1.png "Arama")
 
 **Birincil akış:** Gelen veri akışı. Bu akış, birleştirmenin sol tarafıyla eşdeğerdir.
 
@@ -65,13 +65,13 @@ Hata ayıklama modundaki arama dönüşümünü veri önizleme ile sınarken, k�
 
 ![Yayın katılımı](media/data-flow/broadcast.png "Yayın katılımı")
 
-Birleşimler, aramalar ve mevcut dönüşümde, bir veya her iki veri akışı çalışan düğümü belleğine sığması halinde **yayını**etkinleştirerek performansı iyileştirebilirsiniz. Spark altyapısı, varsayılan olarak bir kenar yayınlanıp yayınlanmayacağını otomatik olarak karar verir. Hangi tarafın yayınlanmak üzere el ile seçmek için, **sabit**' i seçin.
+Birleşimler, aramalar ve mevcut dönüşümde, bir veya her iki veri akışı çalışan düğümü belleğine sığması halinde **yayını** etkinleştirerek performansı iyileştirebilirsiniz. Spark altyapısı, varsayılan olarak bir kenar yayınlanıp yayınlanmayacağını otomatik olarak karar verir. Hangi tarafın yayınlanmak üzere el ile seçmek için, **sabit** ' i seçin.
 
 Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dışında yayınlamayı** devre dışı bırakmanız önerilmez.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <leftStream>, <rightStream>
@@ -85,7 +85,7 @@ Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dı�
 ```
 ### <a name="example"></a>Örnek
 
-![Arama dönüşümü](media/data-flow/lookup-dsl-example.png "Arama")
+![Ekran görüntüsü aşağıdaki kodun arama ayarları sekmesini gösterir.](media/data-flow/lookup-dsl-example.png "Arama")
 
 Yukarıdaki arama yapılandırması için veri akışı betiği aşağıdaki kod parçacığında bulunur.
 

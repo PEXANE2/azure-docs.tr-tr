@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: a10340d4c2bd2811204af41fba5b32cbe9c4e905
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 649f02097a18a141d186434a91539563c64e72ba
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735062"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042132"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
@@ -131,7 +131,7 @@ az aks get-versions --location eastus --output table
 
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes Yayın takvimi
 
-Son sürüm geçmişi için [buraya](https://en.wikipedia.org/wiki/Kubernetes#History)bakın.
+Son sürüm geçmişi için bkz. [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History).
 
 |  K8s sürümü | Yukarı akış yayını  | AKS önizlemesi  | AKS GA  | Yaşam sonu |
 |--------------|-------------------|--------------|---------|-------------|
@@ -139,8 +139,10 @@ Son sürüm geçmişi için [buraya](https://en.wikipedia.org/wiki/Kubernetes#Hi
 | 1,17  | Ara-09-19  | Ocak 2019   | 2020 Tem  | 1,20 GA | 
 | 1,18  | Mar-23-20  | Mayıs 2020   | Ağu 2020  | 1,21 GA | 
 | 1,19  | Ağu-04-20  | Eyl 2020   | Kas 2020  | 1,22 GA | 
-| 1.20  | Ara-08-20  | Ocak 2021   | Mar 2021  | 1,23 GA | 
-\* Tatil mevsimi nedeniyle AKS, 1,16 ' den itibaren 2020 ' e kadar ' ye 2021 kadar olan yaşam süresini genişletmekle [Daha fazla bilgi edinin](https://github.com/Azure/AKS/releases/tag/2020-10-12)
+| 1.20  | Ara-08-20  | Ocak 2021   | Mar 2021  | 1,23 GA |
+
+\* Tatil döneminde, AKS, 1,16 ' 2021 e kadar 2020 ' den itibaren ' e kadar olan yaşam süresini uzatadır. [Daha fazla bilgi edinin](https://github.com/Azure/AKS/releases/tag/2020-10-12).
+
 
 ## <a name="faq"></a>SSS
 

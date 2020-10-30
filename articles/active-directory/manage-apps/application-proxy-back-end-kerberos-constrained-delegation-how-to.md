@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: 3ca3df010426347846b29734426edfad4536516b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b18eb0f8d57c06e82d243c10bf038a861bcf88d1
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568723"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042702"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Uygulama proxy 'Si için Kerberos kısıtlanmış temsil yapılandırmalarının sorunlarını giderme
 
@@ -33,7 +33,7 @@ Bu makalede aşağıdaki varsayımlar yapılır:
 - Sunucu ve uygulama Konakları tek bir Azure Active Directory etki alanında bulunur. Etki alanları arası ve orman senaryolarıyla ilgili ayrıntılı bilgi için, bkz. [KCD teknik incelemesi](https://aka.ms/KCDPaper).
 - Konu uygulaması, ön kimlik doğrulama etkin olan bir Azure kiracısında yayımlanır. Kullanıcıların, form tabanlı kimlik doğrulaması aracılığıyla Azure 'da kimlik doğrulaması yapması beklenir. Zengin istemci kimlik doğrulama senaryoları Bu makalede ele alınmıştır. Gelecekte bir noktada eklenebilirler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD Uygulama Ara Sunucusu, birçok tür altyapıya da ortamda dağıtılabilir. Mimariler kuruluştan kuruluşa farklılık gösterir. KCD ile ilgili sorunların en yaygın nedenleri ortamlar değildir. Basit yanlış yapılandırma veya genel hatalar çoğu soruna neden olur.
 
@@ -51,7 +51,7 @@ Bağlayıcıların en iyi konumu, hedefleri için mümkün olduğunca yakın bir
 
 Bir KCD sorunu gösteriliyor? KCD SSO 'nun başarısız olduğu bazı yaygın göstergeler vardır. Bir sorunun ilk işareti tarayıcıda görüntülenir.
 
-![Örnek: yanlış KCD yapılandırma hatası](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
+![Yanlış bir K C D yapılandırma hatasına bir örnek gösteren, "yanlış Kerberos kısıtlı temsilcisi..." hatasıyla bir örnek gösteren ekran görüntüsü Bunun.](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
 
 ![Örnek: eksik izinler nedeniyle yetkilendirme başarısız oldu](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
@@ -81,13 +81,13 @@ Daha önce belirtildiği gibi, tarayıcı hata iletileri neden başarısız oldu
 
 ![Örnek: yanlış KCD yapılandırma hatası](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-Olay günlüğünde görülen karşılık gelen girişler, 13019 veya 12027 olaylarını gösterir. **Uygulama ve hizmet günlüklerinde** bağlayıcı olay günlüklerini bulma &gt; **Microsoft** &gt; **aadapplicationproxy** &gt; **bağlayıcı** &gt; **Yöneticisi**.
+Olay günlüğünde görülen karşılık gelen girişler, 13019 veya 12027 olaylarını gösterir. **Uygulama ve hizmet günlüklerinde** bağlayıcı olay günlüklerini bulma &gt; **Microsoft** &gt; **aadapplicationproxy** &gt; **bağlayıcı** &gt; **Yöneticisi** .
 
 ![Uygulama proxy 'Si olay günlüğünden olay 13019](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
 ![Uygulama proxy 'Si olay günlüğünden olay 12027](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic5.png)
 
-1. **CNAME**değil, uygulamanın adresi IÇIN iç DNS 'Niz içindeki **bir** kaydı kullanın.
+1. **CNAME** değil, uygulamanın adresi IÇIN iç DNS 'Niz içindeki **bir** kaydı kullanın.
 1. Bağlayıcı ana bilgisayarına belirtilen hedef hesabın SPN 'sine temsilci atanmış hakkı verildiğini yeniden onaylayın. **Herhangi bir kimlik doğrulama protokolünü kullan** ' ın seçili olduğunu yeniden onaylayın. Daha fazla bilgi için bkz. [SSO yapılandırma makalesi](application-proxy-configure-single-sign-on-with-kcd.md).
 1. Azure AD 'de mevcut olan SPN 'nin yalnızca bir örneğinin olduğunu doğrulayın. `setspn -x`Herhangi bir etki alanı üyesi konağında bir komut isteminden sorun.
 1. [Verilen Kerberos belirteçlerinin maksimum boyutunu](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/)sınırlayan bir etki alanı ilkesinin zorlandığını denetleyin. Bu ilke, bağlayıcının aşırı olduğu bulunursa bir belirteç alınmasını engeller.
@@ -102,20 +102,20 @@ Bağlayıcı tarafından sağlanmış Kerberos biletinin tüketicisi. Bu aşamad
 
 1. Portalda tanımlanan iç URL 'yi kullanarak, uygulamanın bağlayıcı ana bilgisayarındaki tarayıcıdan doğrudan erişilebilir olduğunu doğrulayın. Ardından başarıyla oturum açabilirsiniz. Ayrıntılar bağlayıcı **sorun giderme** sayfasında bulunabilir.
 1. Hala bağlayıcı konağında, tarayıcı ve uygulama arasındaki kimlik doğrulamasının Kerberos kullandığını doğrulayın. Aşağıdaki eylemlerden birini uygulayın:
-1. Internet Explorer 'da DevTools (**F12**) öğesini çalıştırın veya bağlayıcı ana bilgisayardan [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) 'ı kullanın. İç URL 'YI kullanarak uygulamaya gidin. Negotiate veya Kerberos 'un mevcut olduğundan emin olmak için uygulamadan alınan yanıtta döndürülen, sunulan WWW yetkilendirme üst bilgilerini inceleyin.
+1. Internet Explorer 'da DevTools ( **F12** ) öğesini çalıştırın veya bağlayıcı ana bilgisayardan [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) 'ı kullanın. İç URL 'YI kullanarak uygulamaya gidin. Negotiate veya Kerberos 'un mevcut olduğundan emin olmak için uygulamadan alınan yanıtta döndürülen, sunulan WWW yetkilendirme üst bilgilerini inceleyin.
 
-   - Tarayıcıdan uygulamaya yapılan yanıtta döndürülen bir sonraki Kerberos blobu, **yıIı**ile başlar. Bu mektuplar, Kerberos 'un çalıştığını söyler. Diğer yandan Microsoft NT LAN Manager (NTLM), her zaman, Base64 'ten kodu çözülerek NTLM güvenlik desteği sağlayıcısı 'nı (NTLMSSP) okuyan **Tlrmtvntuaab**ile başlar. Blob başlangıcında **Tlrmtvntuaab** görürseniz, Kerberos kullanılabilir değildir. **Tlrmtvntuaab**' yi görmüyorsanız, Kerberos büyük olasılıkla kullanılabilir.
+   - Tarayıcıdan uygulamaya yapılan yanıtta döndürülen bir sonraki Kerberos blobu, **yıIı** ile başlar. Bu mektuplar, Kerberos 'un çalıştığını söyler. Diğer yandan Microsoft NT LAN Manager (NTLM), her zaman, Base64 'ten kodu çözülerek NTLM güvenlik desteği sağlayıcısı 'nı (NTLMSSP) okuyan **Tlrmtvntuaab** ile başlar. Blob başlangıcında **Tlrmtvntuaab** görürseniz, Kerberos kullanılabilir değildir. **Tlrmtvntuaab** ' yi görmüyorsanız, Kerberos büyük olasılıkla kullanılabilir.
 
       > [!NOTE]
       > Fiddler kullanırsanız, bu yöntem uygulamanın IIS 'deki yapılandırmasında genişletilmiş korumayı geçici olarak devre dışı bırakmanızı gerektirir.
 
       ![Tarayıcı ağ İnceleme penceresi](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
 
-   - Bu şekildeki blob, **Timtvntuaab**ile başlamaz. Bu nedenle, Kerberos kullanılabilir ve Kerberos blobu **III**ile başlamaz.
+   - Bu şekildeki blob, **Timtvntuaab** ile başlamaz. Bu nedenle, Kerberos kullanılabilir ve Kerberos blobu **III** ile başlamaz.
 
 1. NTLM 'yi IIS sitesindeki sağlayıcılar listesinden geçici olarak kaldırın. Uygulamaya doğrudan bağlayıcı ana bilgisayarındaki Internet Explorer 'dan erişin. NTLM artık sağlayıcılar listesinde değil. Uygulamaya yalnızca Kerberos kullanarak erişebilirsiniz. Erişim başarısız olursa, uygulamanın yapılandırmasıyla ilgili bir sorun olabilir. Kerberos kimlik doğrulaması çalışmıyor.
 
-   - Kerberos kullanılamıyorsa, uygulamanın IIS 'de kimlik doğrulama ayarlarını kontrol edin. **Negotiate** 'in hemen altındaki NTLM ile en üstte listelendiğinden emin olun. **Negotiate**, **Kerberos veya Negotiate**ya da **PKU2U**' u görmüyorsanız, yalnızca Kerberos çalışır ise devam edin.
+   - Kerberos kullanılamıyorsa, uygulamanın IIS 'de kimlik doğrulama ayarlarını kontrol edin. **Negotiate** 'in hemen altındaki NTLM ile en üstte listelendiğinden emin olun. **Negotiate** , **Kerberos veya Negotiate** ya da **PKU2U** ' u görmüyorsanız, yalnızca Kerberos çalışır ise devam edin.
 
      ![Windows kimlik doğrulama sağlayıcıları](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
 
@@ -138,11 +138,11 @@ Bağlayıcı tarafından sağlanmış Kerberos biletinin tüketicisi. Bu aşamad
 
       ![Azure portal SPN yapılandırması](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic11.png)
 
-   - IIS 'ye gidin ve uygulama için **yapılandırma Düzenleyicisi** seçeneğini belirleyin. **System. webserver/Security/Authentication/WindowsAuthentication**sayfasına gidin. **UseAppPoolCredentials** değerinin **doğru**olduğundan emin olun.
+   - IIS 'ye gidin ve uygulama için **yapılandırma Düzenleyicisi** seçeneğini belirleyin. **System. webserver/Security/Authentication/WindowsAuthentication** sayfasına gidin. **UseAppPoolCredentials** değerinin **doğru** olduğundan emin olun.
 
       ![IIS yapılandırma uygulama havuzları kimlik bilgileri seçeneği](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
 
-      Bu değeri **true**olarak değiştirin. Aşağıdaki komutu çalıştırarak tüm önbelleğe alınmış Kerberos biletlerini arka uç sunucusundan kaldırın:
+      Bu değeri **true** olarak değiştirin. Aşağıdaki komutu çalıştırarak tüm önbelleğe alınmış Kerberos biletlerini arka uç sunucusundan kaldırın:
 
       ```powershell
       Get-WmiObject Win32_LogonSession | Where-Object {$_.AuthenticationPackage -ne 'NTLM'} | ForEach-Object {klist.exe purge -li ([Convert]::ToString($_.LogonId, 16))}
@@ -152,7 +152,7 @@ Daha fazla bilgi için bkz. [tüm oturumlar Için Kerberos istemci bileti önbel
 
 Çekirdek modu etkin bırakırsanız, Kerberos işlemlerinin performansını geliştirir. Ancak, makine hesabı kullanılarak istenen hizmetin biletinin şifresinin çözülmesi de neden olur. Bu hesap yerel sistem olarak da adlandırılır. Uygulama bir gruptaki birden fazla sunucu üzerinde barındırıldığında KCD 'yi kesmek için bu değeri **true** olarak ayarlayın.
 
-- Ek bir denetim olarak, **genişletilmiş** korumayı da devre dışı bırakın. Bazı senaryolarda, **genişletilmiş** koruma, belirli yapılandırmalarda etkinleştirildiğinde KCD 'yi brocağız. Bu durumlarda, bir uygulama varsayılan Web sitesinin bir alt klasörü olarak yayımlanmıştır. Bu uygulama yalnızca anonim kimlik doğrulaması için yapılandırılmış. Tüm iletişim kutuları gri renkte bulunur ve bu da alt nesnelerin etkin ayarları devralmasını önerir. Test etmenizi öneririz, ancak mümkün olduğunda bu değeri **etkin**olarak geri yüklemeyi unutmayın.
+- Ek bir denetim olarak, **genişletilmiş** korumayı da devre dışı bırakın. Bazı senaryolarda, **genişletilmiş** koruma, belirli yapılandırmalarda etkinleştirildiğinde KCD 'yi brocağız. Bu durumlarda, bir uygulama varsayılan Web sitesinin bir alt klasörü olarak yayımlanmıştır. Bu uygulama yalnızca anonim kimlik doğrulaması için yapılandırılmış. Tüm iletişim kutuları gri renkte bulunur ve bu da alt nesnelerin etkin ayarları devralmasını önerir. Test etmenizi öneririz, ancak mümkün olduğunda bu değeri **etkin** olarak geri yüklemeyi unutmayın.
 
   Bu ek denetim, yayımlanan uygulamanızı kullanmak için sizi izlemenizi sağlar. Ayrıca, temsilci olarak yapılandırılmış ek bağlayıcılar çalıştırabilirsiniz. Daha fazla bilgi için daha ayrıntılı teknik inceleme ve [Azure AD uygulama ara sunucusu sorunlarını giderme](https://aka.ms/proxytshootpaper)makalesini okuyun.
 

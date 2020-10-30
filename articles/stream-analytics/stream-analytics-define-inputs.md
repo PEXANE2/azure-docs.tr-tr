@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: fb5aca1739fbb4a77cbcb7eed6b9dce1b3ccc182
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 467b8506eb0cafc61731a69804c70b8080ab21c2
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027593"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042443"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics giriş olarak veri akışı
 
@@ -21,6 +21,7 @@ Stream Analytics, Azure veri akışları ile birinci sınıf tümleştirmeyle ü
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Depolama](https://azure.microsoft.com/services/storage/blobs/) 
+- [Azure Data Lake Storage 2. Nesil](../storage/blobs/data-lake-storage-introduction.md) 
 
 Bu giriş kaynakları, Stream Analytics işiniz veya farklı bir abonelikle aynı Azure aboneliğinde bulunabilir.
 
@@ -125,18 +126,18 @@ Akış verilerini bir IoT Hub kullandığınızda, Stream Analytics sorgunuzda a
 | **Iothub. EnqueuedTime** | İleti IoT Hub tarafından alındığı zaman. |
 
 
-## <a name="stream-data-from-blob-storage"></a>Blob depolamadan veri akışı
-Azure Blob depolama, bulutta depolanacak büyük miktarda yapılandırılmamış veri ile senaryolar için uygun maliyetli ve ölçeklenebilir bir çözüm sunar. Blob depolamada bulunan veriler genellikle bekleyen veriler olarak değerlendirilir; Ancak, blob verileri Stream Analytics tarafından veri akışı olarak işlenebilir. 
+## <a name="stream-data-from-blob-storage-or-data-lake-storage-gen2"></a>Blob depolamadan veya Data Lake Storage 2. veri akışı
+Bulutta depolanacak büyük miktarda yapılandırılmamış veri içeren senaryolarda, Azure Blob depolama veya Azure Data Lake Storage 2. (ADLS 2.) uygun maliyetli ve ölçeklenebilir bir çözüm sunar. Blob depolamada veya ADLS 2. veriler genellikle bekleyen veriler olarak değerlendirilir; Ancak, bu veriler Stream Analytics tarafından bir veri akışı olarak işlenebilir. 
 
-Günlük işleme, Stream Analytics ile BLOB depolama girişlerini kullanmak için yaygın olarak kullanılan bir senaryodur. Bu senaryoda telemetri veri dosyaları bir sistemden yakalanmıştır ve anlamlı verilerin ayıklanmasının ayrıştırılması ve işlenmesi gerekir.
+Günlük işleme, Stream Analytics girdileri kullanmak için yaygın olarak kullanılan bir senaryodur. Bu senaryoda telemetri veri dosyaları bir sistemden yakalanmıştır ve anlamlı verilerin ayıklanmasının ayrıştırılması ve işlenmesi gerekir.
 
-Stream Analytics blob Storage olaylarının varsayılan zaman damgası, blob 'un en son değiştirildiği zaman damgasıdır `BlobLastModifiedUtcTime` . Blob, 13:00 konumundaki bir depolama hesabına yüklenirse ve Azure Stream Analytics işi *Şu* anda 13:01 ' de seçeneği kullanılarak başlatılırsa, değiştirilen süre iş çalışma döneminin dışında kaldığında blob alınmaz.
+Stream Analytics bir BLOB depolama veya ADLS 2. olayının varsayılan zaman damgası, en son değiştirildiği zaman damgasıdır `BlobLastModifiedUtcTime` . Bir blob, 13:00 konumundaki bir depolama hesabına yüklenirse ve Azure Stream Analytics işi *Şu* anda 13:01 ' de seçeneği kullanılarak başlatılırsa, değiştirilen süre iş çalışma döneminin dışında kalırsa bu işlem alınmaz.
 
 Bir blob, 13:00 konumundaki bir depolama hesabı kapsayıcısına yüklenirse ve Azure Stream Analytics işi 13:00 veya daha önceki bir tarihte *özel süre* kullanılarak başlatılırsa, blob, değiştirilen süre iş çalışma döneminin içinde yer aldığından alınır.
 
 Bir Azure Stream Analytics işi *Şu* anda 13:00 ' de kullanılarak başlatılırsa ve bir BLOB depolama hesabı kapsayıcısına 13:01 ' de yüklenirse, Azure Stream Analytics blobu seçer. Her bloba atanan zaman damgası yalnızca üzerine dayalıdır `BlobLastModifiedTime` . Blob 'un içinde olduğu klasörün, atanan zaman damgasıyla ilişkisi yok. Örneğin, 2019-11-11 olan bir blob *2019/10-01/00/b1.txt* varsa `BlobLastModifiedTime` , bu bloba atanan zaman damgası 2019-11-11.
 
-Verileri olay yükünde zaman damgası kullanarak bir akış olarak işlemek için anahtar sözcük [Ile zaman damgasını](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanmanız gerekir. Blob dosyası kullanılabiliyorsa bir Stream Analytics işi her saniye Azure Blob depolama girişinden verileri çeker. Blob dosyası kullanılamıyorsa, 90 saniyelik en fazla gecikme süresine sahip bir üstel geri alma işlemi vardır.
+Verileri olay yükünde zaman damgası kullanarak bir akış olarak işlemek için anahtar sözcük [Ile zaman damgasını](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanmanız gerekir. Blob dosyası kullanılabiliyorsa Stream Analytics işi her saniye Azure Blob depolama alanından veya ADLS 2. girişte veri çeker. Blob dosyası kullanılamıyorsa, 90 saniyelik en fazla gecikme süresine sahip bir üstel geri alma işlemi vardır.
 
 CSV biçimli girişler, veri kümesi alanlarını tanımlamak için bir başlık satırı gerektirir ve tüm üstbilgi satırı alanları benzersiz olmalıdır.
 
@@ -152,10 +153,10 @@ Aşağıdaki tabloda, blob depolamayı bir akış girişi olarak yapılandırdı
 | Özellik | Açıklama |
 | --- | --- |
 | **Girdi diğer adı** | Bu girişe başvurmak için iş sorgusunda kullandığınız kolay bir ad. |
-| **Abonelik** | IoT Hub kaynağının bulunduğu aboneliği seçin. | 
+| **Abonelik** | Depolama kaynağının bulunduğu aboneliği seçin. | 
 | **Depolama hesabı** | Blob dosyalarının bulunduğu depolama hesabının adı. |
-| **Depolama hesabı anahtarı** | Depolama hesabıyla ilişkili gizli anahtar. BLOB depolama ayarlarını el ile sağlama seçeneğini seçmediğiniz takdirde bu seçenek otomatik olarak doldurulur. |
-| **Kapsayıcı** | Blob girişi için kapsayıcı. Kapsayıcılar Microsoft Azure Blob hizmetinde depolanan Bloblar için mantıksal bir gruplama sağlar. Azure Blob depolama hizmetine bir blob yüklediğinizde, o blob için bir kapsayıcı belirtmeniz gerekir. Yeni bir kapsayıcının oluşturulmasını sağlamak için **Mevcut kapsayıcıyı kullan** veya  **Yeni oluştur** seçeneklerinden birini belirleyebilirsiniz.|
+| **Depolama hesabı anahtarı** | Depolama hesabıyla ilişkili gizli anahtar. Ayarları el ile sağlama seçeneğini seçmediğiniz takdirde bu seçenek otomatik olarak doldurulur. |
+| **Kapsayıcı** | Kapsayıcılar, Bloblar için mantıksal bir gruplama sağlar. Yeni bir kapsayıcının oluşturulmasını sağlamak için **Mevcut kapsayıcıyı kullan** veya  **Yeni oluştur** seçeneklerinden birini belirleyebilirsiniz.|
 | **Yol kalıbı** (isteğe bağlı) | Belirtilen kapsayıcı içindeki Blobları bulmak için kullanılan dosya yolu. Kapsayıcının kökünden blob 'ları okumak istiyorsanız, bir yol kalıbı ayarlamayın. Yol içinde, aşağıdaki üç değişkenin bir veya daha fazla örneğini belirtebilirsiniz: `{date}` , `{time}` veya `{partition}`<br/><br/>Örnek 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Örnek 2: `cluster1/logs/{date}`<br/><br/>`*`Karakter, yol ön eki için izin verilen bir değer değil. Yalnızca geçerli <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob karakterlerine</a> izin verilir. Kapsayıcı adlarını veya dosya adlarını eklemeyin. |
 | **Tarih biçimi** (isteğe bağlı) | Yol içinde tarih değişkenini kullanıyorsanız, dosyaların düzenlenme tarih biçimi. Örnek: `YYYY/MM/DD` <br/><br/> Blob girişi `{date}` `{time}` yolunda veya yolunda olduğunda, klasörler artan zaman düzeninde aranır.|
 | **Saat biçimi** (isteğe bağlı) |  Yoldaki zaman değişkenini, dosyaların düzenlenme zaman biçimini kullanırsanız. Şu anda desteklenen tek değer `HH` saattir. |

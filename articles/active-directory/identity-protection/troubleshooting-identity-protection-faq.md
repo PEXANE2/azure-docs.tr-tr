@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b8fdabc3f4f33627936eead9dda57e67c7b0da8
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827897"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040507"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
 
 ## <a name="dismiss-user-risk-known-issues"></a>Kullanıcı riski bilinen sorunlarını kapat
 
-Klasik kimlik koruması ' nda **Kullanıcı riskini** kapatma, kullanıcının kimlik koruması olan risk GEÇMIŞINI **Azure AD**'ye ayarlar.
+Klasik kimlik koruması ' nda **Kullanıcı riskini** kapatma, kullanıcının kimlik koruması olan risk GEÇMIŞINI **Azure AD** 'ye ayarlar.
 
 Kimlik koruması ' nda **Kullanıcı riskini kapat** kullanıcının kimlik koruması olan risk geçmişinde aktör olarak ayarlanır **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
@@ -38,13 +38,19 @@ Klasik kimlik korumasında **tüm olayları kapat** risk algılamalarının duru
 
 ## <a name="risky-sign-ins-report-known-issues"></a>Riskli oturum açma işlemleri raporu bilinen sorunlar
 
-Risk algılamasında **Çözümle** , durumu **risk tabanlı ILKEYE göre yönetilen MFA 'ya geçen kullanıcılara**ayarlar.
+Risk algılamasında **Çözümle** , durumu **risk tabanlı ILKEYE göre yönetilen MFA 'ya geçen kullanıcılara** ayarlar.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
 ### <a name="why-is-a-user-is-at-risk"></a>Kullanıcı neden risk altında?
 
 Azure AD Kimlik Koruması müşteriyseniz, [riskli kullanıcılar](howto-identity-protection-investigate-risk.md#risky-users) görünümüne gidin ve risk altındaki kullanıcıya tıklayın. Alttaki çekmecede, ' risk geçmişi ' sekmesi, bir Kullanıcı riski değişikliğine yol açan tüm olayları gösterecektir. Kullanıcının tüm riskli oturum açma işlemlerini görmek için, ' kullanıcının riskli oturum açma işlemleri ' ne tıklayın. Bu kullanıcıya yönelik tüm risk algılamalarını görmek için, ' kullanıcının risk algılamaları ' seçeneğine tıklayın.
+
+## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Oturum açma, neden engelleniyor, ancak kimlik koruması risk algılama işlemi oluşturmaz mi?
+Oturum açma işlemleri, çeşitli nedenlerle engellenebilir. Kimlik koruması, kimlik doğrulama isteğinde doğru kimlik bilgileri kullanıldığında yalnızca risk algılamalarını ürettiğine dikkat edin. Bir Kullanıcı yanlış kimlik bilgilerini kullanıyorsa, kötü bir aktör doğru kimlik bilgilerini kullanmadığı takdirde kimlik bilgilerinin güvenliğinin olmaması nedeniyle kimlik koruması tarafından işaretlenmeyecektir. Bir kullanıcının bir kimlik koruması algılaması üretmeyecek bir şekilde imzalanmasına neden olabilecek bazı nedenler şunlardır:
+* IP adresinden gelen kötü amaçlı etkinlik nedeniyle **IP engelleniyor olabilir** . IP engellenen ileti, kimlik bilgilerinin doğru olup olmadığını ayırt etmez. IP engellenirse ve kimlik bilgileri doğru değilse, Kimlik Koruması Algılama işlemi oluşturmaz
+* **[Akıllı kilitleme](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** , birden çok başarısız girişimden sonra hesabın oturum açmasını engelleyebilir
+* Bir kimlik doğrulama isteğini engellemek için risk düzeyinden farklı koşulları kullanan **koşullu erişim ilkesi** zorlanabilir
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Belirli bir türdeki algılamalardan nasıl rapor alabilirim?
 
@@ -76,12 +82,12 @@ Tüm risk algılamaları, [risk](concept-identity-protection-risks.md#risk-types
 
 **Tehlikede olduğunu onaylayın** (oturum açma sırasında) – oturum açma kimliğinin kimlik sahibi tarafından gerçekleştirilmediğini ve bir güvenliğinin aşıldığını belirtir Azure AD kimlik koruması bildirir.
 
-- Bu geri bildirimin alınması sırasında, oturum açma ve Kullanıcı risk durumunu, **güvenliği aşılmış** ve risk düzeyini **yüksek**olarak geçeceğiz.
+- Bu geri bildirimin alınması sırasında, oturum açma ve Kullanıcı risk durumunu, **güvenliği aşılmış** ve risk düzeyini **yüksek** olarak geçeceğiz.
 
 - Ayrıca, risk değerlendirmesinde gelecekteki geliştirmeler için Machine Learning sistemlerimize bilgi sağlıyoruz.
 
     > [!NOTE]
-    > Kullanıcı zaten düzeltildiyse, oturum açma ve Kullanıcı risk durumunu **onaylanabilecek** ve risk düzeyi **yüksek**olarak taşıdığı için **güvenliği aşılmış** ' i tıklamayın.
+    > Kullanıcı zaten düzeltildiyse, oturum açma ve Kullanıcı risk durumunu **onaylanabilecek** ve risk düzeyi **yüksek** olarak taşıdığı için **güvenliği aşılmış** ' i tıklamayın.
 
 **Güvenli** ' i (oturum açma sırasında) onayla – oturum açma 'nın kimlik sahibi tarafından gerçekleştirildiğini Azure AD kimlik koruması ve bir uzlaşmaya Işaret olmadığını bildirir.
 

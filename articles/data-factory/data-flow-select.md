@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/02/2020
-ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d8c4d1915e22ccabf193f1b34c5fc4797ead549
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84322099"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040234"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi seçin
 
@@ -44,13 +44,13 @@ Sabit eşlemeler, hiyerarşik bir sütunun alt sütununu en üst düzey bir süt
 
 Birden çok sütunu aynı anda eşlemek veya düzeltebilecekler sütunları aşağı akış olarak geçirmek istiyorsanız, sütun düzenlerini kullanarak eşlemelerinizi tanımlamak için kural tabanlı eşleme kullanın. ,,, Ve sütunlarını temel alarak eşleştirin `name` `type` `stream` `position` . Sabit ve kural tabanlı eşlemelerin herhangi bir birleşimini kullanabilirsiniz. Varsayılan olarak, 50 'den büyük sütunları olan tüm projeksiyonlar varsayılan olarak, her sütunda eşleşen ve giriş yapan adı izleyen kural tabanlı bir eşleme olur. 
 
-Kural tabanlı eşleme eklemek için **eşleme Ekle** ' ye tıklayın ve **kural tabanlı eşleme**' yi seçin.
+Kural tabanlı eşleme eklemek için **eşleme Ekle** ' ye tıklayın ve **kural tabanlı eşleme** ' yi seçin.
 
-![kural tabanlı eşleme](media/data-flow/rule2.png "Kural tabanlı eşleme")
+![Ekran görüntüsünde, eşleme Ekle ' den seçilen kural tabanlı eşleme gösterilmektedir.](media/data-flow/rule2.png "Kural tabanlı eşleme")
 
 Her kural tabanlı eşleme için iki giriş gerekir: ile eşleşmesi gereken durum ve her eşlenmiş sütunun adı. Her iki değer de [ifade Oluşturucusu](concepts-data-flow-expression-builder.md)aracılığıyla yapılır. Sol ifade kutusunda, Boolean eşleşme koşulunuz girin. Sağ ifade kutusunda, eşleşen sütunun ne eşleştirileceği belirtin.
 
-![kural tabanlı eşleme](media/data-flow/rule-based-mapping.png "Kural tabanlı eşleme")
+![Ekran görüntüsünde bir eşleme gösterilir.](media/data-flow/rule-based-mapping.png "Kural tabanlı eşleme")
 
 `$$`Eşleşen bir sütunun giriş adına başvurmak için söz dizimini kullanın. Yukarıdaki görüntünün bir örnek olarak kullanılması, bir kullanıcının adı altı karakterden kısa olan tüm dize sütunlarında eşleştirmek istediğini varsayalım. Gelen bir sütun adlandırıldıysa `test` , ifadesi `$$ + '_short'` sütunu yeniden adlandırır `test_short` . Var olan tek eşleme varsa, koşulu karşılamayan tüm sütunlar, outputfrom verilerinden bırakılır.
 
@@ -60,7 +60,7 @@ Desenler hem düzeltebilecekler hem de tanımlı sütunlarla eşleşir. Hangi ta
 
 Aşağı köşeli çift ayraç simgesine tıklarsanız, bir Regex-Mapping koşulu belirtebilirsiniz. Bir Regex eşleme koşulu, belirtilen Regex koşuluyla eşleşen tüm sütun adlarıyla eşleşir. Bu, standart kural tabanlı eşlemelerle birlikte kullanılabilir.
 
-![kural tabanlı eşleme](media/data-flow/regex-matching.png "Kural tabanlı eşleme")
+![Ekran görüntüsü, hiyerarşi düzeyi ve ad eşleşmeleri olan Regex eşleme koşulunu gösterir.](media/data-flow/regex-matching.png "Kural tabanlı eşleme")
 
 Yukarıdaki örnek, Regex düzeniyle `(r)` veya küçük harf içeren bir sütun adı ile eşleşir. Standart kural tabanlı eşlemeye benzer şekilde, eşleşen tüm sütunlar, sözdizimi kullanılarak sağdaki koşul tarafından değiştirilir `$$` .
 
@@ -70,7 +70,7 @@ Sütun adınızla birden çok Regex eşleşmesi varsa, `$n` ' n ' öğesine kar�
 
 Tanımlı projeksiyonda bir hiyerarşisi varsa, hiyerarşiler alt sütunlarını eşlemek için kural tabanlı eşleme kullanabilirsiniz. Eşleşen bir koşul ve alt sütunlarını eşlemek istediğiniz karmaşık sütunu belirtin. Sağ tarafta belirtilen ' ad As ' kuralı kullanılarak eşleşen her alt sütun silinir.
 
-![kural tabanlı eşleme](media/data-flow/rule-based-hierarchy.png "Kural tabanlı eşleme")
+![Ekran görüntüsünde, bir hiyerarşi için kullanılan kural tabanlı eşleme gösterilmektedir.](media/data-flow/rule-based-hierarchy.png "Kural tabanlı eşleme")
 
 Yukarıdaki örnek, karmaşık sütunun tüm alt sütunlarında eşleşir `a` . `a` iki alt sütun `b` ve içerir `c` . Çıkış şeması iki sütun içerir `b` ve `c` ' ad As ' koşulu olur `$$` .
 
@@ -98,7 +98,7 @@ Eşleşmelerin sırası, çıkış sütunlarının sırasını belirler. Bir gir
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

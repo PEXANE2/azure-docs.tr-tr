@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: 5eaf17281fef32d682a2dac17b379faf7ec23a53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28186a7dcced47a42b3249f1f74b13e969b41978
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970086"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041354"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Video Indexer düzenleyicisini kullanarak projeler oluşturma
 
@@ -33,9 +33,9 @@ Bu makalede, sıfırdan bir proje oluşturma ve hesabınızdaki bir videodan bir
 
 1. [Video Indexer](https://www.videoindexer.ai/) web sitesine gidip oturum açın.
 1. **Projeler** sekmesini seçin. Daha önce projeler oluşturduysanız, burada diğer projelerinizi görürsünüz.
-1. **Yeni proje oluştur**' a tıklayın.  
+1. **Yeni proje oluştur** ' a tıklayın.  
 
-    ![Yeni proje](./media/video-indexer-view-edit/new-project.png)
+    !["Projeler" sekmesi seçiliyken "Video Indexer" sayfasını gösteren ekran görüntüsü.](./media/video-indexer-view-edit/new-project.png)
 1. Kalem simgesine tıklayarak projenize bir ad verin. "Başlıksız proje" yazan metni proje adınızla değiştirin ve onay düğmesine tıklayın.
 
     ![Yeni proje](./media/video-indexer-view-edit/new-project3.png)
@@ -45,7 +45,7 @@ Bu makalede, sıfırdan bir proje oluşturma ve hesabınızdaki bir videodan bir
 > [!NOTE]
 > Şu anda projeler yalnızca aynı dilde dizinli videolar içerebilir. Bir dilde video seçtikten sonra, farklı bir dildeki hesabınızdaki videoları ekleyemezsiniz.
 
-1. **Video ekle**seçeneğini belirleyerek bu projede birlikte çalışmak istediğiniz videoları ekleyin.
+1. **Video ekle** seçeneğini belirleyerek bu projede birlikte çalışmak istediğiniz videoları ekleyin.
 
     Hesabınızdaki tüm videoları ve "metin, anahtar sözcükleri veya görsel içerik arama" yazılı bir arama kutusunu görürsünüz. Belirli bir kişiye, etikete, markaya, anahtar sözcüğe veya betiğe ve OCR 'ye bir örneğe sahip videoları aramak için.
     
@@ -53,19 +53,19 @@ Bu makalede, sıfırdan bir proje oluşturma ve hesabınızdaki bir videodan bir
     
     ![Ekran görüntüsü, GitHub ile iki sonuçla oluşan videoları aramayı gösterir.](./media/video-indexer-view-edit/github.png)
 
-    Sonuçları **Filtrele ' i**seçerek sonuçlarınızı daha fazla filtreleyebilirsiniz. Belirli bir kişiye sahip olan videoları göstermek veya yalnızca belirli bir dilde olan veya belirli bir sahibe sahip olan video sonuçlarını görmek istediğinizi belirtmek için filtre uygulayabilirsiniz. <br/> Sorgunuzun kapsamını da belirtebilirsiniz. Örneğin, OCR 'de "GitHub" öğesini aramak istiyorsanız **görsel metin**' i seçin.
+    Sonuçları **Filtrele ' i** seçerek sonuçlarınızı daha fazla filtreleyebilirsiniz. Belirli bir kişiye sahip olan videoları göstermek veya yalnızca belirli bir dilde olan veya belirli bir sahibe sahip olan video sonuçlarını görmek istediğinizi belirtmek için filtre uygulayabilirsiniz. <br/> Sorgunuzun kapsamını da belirtebilirsiniz. Örneğin, OCR 'de "GitHub" öğesini aramak istiyorsanız **görsel metin** ' i seçin.
 
     ![Filtre](./media/video-indexer-view-edit/visual-text.png)
 
     Sorgunuza birden çok filtre uygulayabilirsiniz. **+** / **-** Filtreleri eklemek/kaldırmak için düğmeleri kullanın. Tüm filtreleri kaldırmak için **clear filtrelerini** kullanın.
-1. Video eklemek için, bunları seçin ve ardından **Ekle**' yi seçin.
+1. Video eklemek için, bunları seçin ve ardından **Ekle** ' yi seçin.
 1. Şimdi, seçtiğiniz tüm videoları görürsünüz. Bunlar, projeniz için klip seçeceğim olan videolardır.
 
-    Video sırasını sürükleyip bırakarak veya liste menü düğmesini seçip **aşağı taşı** veya **Yukarı taşı**' yı seçerek yeniden düzenleyebilirsiniz. Liste menüsünde, bu projeden videoyu da kaldırabileceksiniz. 
+    Video sırasını sürükleyip bırakarak veya liste menü düğmesini seçip **aşağı taşı** veya **Yukarı taşı** ' yı seçerek yeniden düzenleyebilirsiniz. Liste menüsünde, bu projeden videoyu da kaldırabileceksiniz. 
 
     ![Ekran görüntüsünde, bir videoyu kaldırmak, seçimi temizlemek veya aşağı taşımak için bir bağlam menüsü ile birlikte Video Indexer gösterilmektedir.](./media/video-indexer-view-edit/rearrange.png)
     
-    Bu projeye **video ekle**seçeneğini belirleyerek istediğiniz zaman daha fazla video ekleyebilirsiniz. Ayrıca, projenize aynı videonun birden fazla örneğini de ekleyebilirsiniz. Bir videodan klip ve sonra başka bir klibin bir kırpından sonra ilk videodan başka bir klip göstermek istiyorsanız bunu yapmak isteyebilirsiniz. 
+    Bu projeye **video ekle** seçeneğini belirleyerek istediğiniz zaman daha fazla video ekleyebilirsiniz. Ayrıca, projenize aynı videonun birden fazla örneğini de ekleyebilirsiniz. Bir videodan klip ve sonra başka bir klibin bir kırpından sonra ilk videodan başka bir klip göstermek istiyorsanız bunu yapmak isteyebilirsiniz. 
 
 ### <a name="select-clips-to-use-in-your-project"></a>Projenizde kullanılacak klipleri seçin
 
@@ -75,7 +75,7 @@ Her videonun sağ tarafındaki aşağı oka tıklarsanız, videoda zaman damgala
 
     ![Öngörüleri görüntüle](./media/video-indexer-view-edit/insights.png)
 1. Belirli klipler için sorgular oluşturmak üzere "yazılı betik, görsel metin, kişiler ve etiketlerde arama" ifadesini içeren arama kutusunu kullanın.
-1. **Filtre seçeneklerini**belirleyerek Aradığınız sahnelerin ayrıntılarını daha fazla belirtmek için filtre ekleyin.
+1. **Filtre seçeneklerini** belirleyerek Aradığınız sahnelerin ayrıntılarını daha fazla belirtmek için filtre ekleyin.
 
     ![Filtre seçenekleri](./media/video-indexer-view-edit/filter-options.png)
 
@@ -87,7 +87,7 @@ Her videonun sağ tarafındaki aşağı oka tıklarsanız, videoda zaman damgala
 
 1. Eklemek istediğiniz segmenti seçerek projenize bir klip ekleyin. Segmente yeniden tıklayarak bu klibin seçimini kaldırabilirsiniz.
     
-    Videonun yanındaki liste menüsü seçeneğine tıklayıp **tüm segmentleri Seç**' i seçerek videonun tüm parçalarını ekleyin. 
+    Videonun yanındaki liste menüsü seçeneğine tıklayıp **tüm segmentleri Seç** ' i seçerek videonun tüm parçalarını ekleyin. 
 
     ![Tümünü Ekle](./media/video-indexer-view-edit/add-all.png)
 
@@ -98,7 +98,7 @@ Her videonun sağ tarafındaki aşağı oka tıklarsanız, videoda zaman damgala
 
 ![Ekran görüntüsünde, pencerenin sağ tarafındaki videonun önizlemesiyle birlikte Video Indexer gösterilmektedir.](./media/video-indexer-view-edit/preview.png)
 
-**Projeyi kaydet**' i seçerek projenizi kaydetmeyi unutmayın. 
+**Projeyi kaydet** ' i seçerek projenizi kaydetmeyi unutmayın. 
 
 ### <a name="render-and-download-the-project"></a>Projeyi işle ve indir
 
@@ -117,7 +117,7 @@ Her videonun sağ tarafındaki aşağı oka tıklarsanız, videoda zaman damgala
 
 1. Kaydedilmiş projelere **Projeler** sekmesinden erişebilirsiniz. 
 
-    Bu projeyi seçerseniz, bu projenin tüm öngörülerini ve zaman çizelgesini görürsünüz. **Video Düzenleyicisi**' ni seçerseniz bu projede düzenleme yapmaya devam edebilirsiniz. Düzenlemeler arasında video ve klip ekleme veya kaldırma ya da projeyi yeniden adlandırma dahildir.
+    Bu projeyi seçerseniz, bu projenin tüm öngörülerini ve zaman çizelgesini görürsünüz. **Video Düzenleyicisi** ' ni seçerseniz bu projede düzenleme yapmaya devam edebilirsiniz. Düzenlemeler arasında video ve klip ekleme veya kaldırma ya da projeyi yeniden adlandırma dahildir.
 
     ![Video Düzenleyicisi](./media/video-indexer-view-edit/video-editor.png)
      
