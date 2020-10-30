@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: d22ab643fb4ed7eae477c8f77d9621266d9146be
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3d3def7057eeb022b3e207cbecf06ee3074a91af
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165784"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043224"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -226,6 +226,14 @@ Yalnızca tüketim & Premium planlar için. İşlev uygulaması kodu ve yapılan
 |Anahtar|Örnek değer|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [ad]; AccountKey = [anahtar]|
+
+## <a name="website_contentovervnet"></a>Web sItesI \_ contenentovervnet
+
+Yalnızca Premium planlar için. Bir değeri, `1` depolama hesabınız bir sanal ağla sınırlı olduğunda, işlev uygulamanızın ölçeğini belirlemenizi sağlar. Depolama hesabınızı bir sanal ağ ile kısıtlamadan bu ayarı etkinleştirmeniz gerekir. Daha fazla bilgi edinmek için bkz. [depolama hesabınızı bir sanal ağla kısıtlama](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview). 
+
+|Anahtar|Örnek değer|
+|---|------------|
+|WEBSITE_CONTENTOVERVNET|1|
 
 ## <a name="website_contentshare"></a>Web sItesI \_ contentshare
 

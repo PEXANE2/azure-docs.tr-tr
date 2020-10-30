@@ -1,16 +1,16 @@
 ---
-title: Azure açık senaryolarındaki kiracılar, roller ve kullanıcılar
+title: Azure açık senaryolarındaki kiracılar, kullanıcılar ve roller
 description: Azure Active Directory kiracılar, kullanıcılar ve roller kavramlarını ve bunların Azure Use senaryolarında nasıl kullanılabileceğini anlayın.
-ms.date: 07/03/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6dae09ddd7760af1663e0329eb646c8956dff3ac
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424114"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043038"
 ---
-# <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure açık senaryolarındaki kiracılar, roller ve kullanıcılar
+# <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure açık senaryolarındaki kiracılar, kullanıcılar ve roller
 
 Azure 'u açık bir şekilde [kullanmaya](../overview.md)başlamadan önce, Azure Active Directory (Azure AD) kiracılarının, kullanıcıların ve rollerinin nasıl çalıştığını ve Azure açık thouse senaryolarında nasıl kullanılabileceğini anlamak önemlidir.
 
@@ -18,7 +18,19 @@ Azure 'u açık bir şekilde [kullanmaya](../overview.md)başlamadan önce, Azur
 
 Bu mantıksal projeksiyonu başarmak için, müşteri kiracısındaki bir abonelik (veya bir abonelik içindeki bir veya daha fazla kaynak grubu), Azure açık *eklendi* olmalıdır. Bu ekleme işlemi, [Azure Resource Manager şablonlar aracılığıyla](../how-to/onboard-customer.md) veya [Azure Market 'e genel veya özel bir teklif yayınlayarak](../how-to/publish-managed-services-offers.md)yapılabilir.
 
-Seçtiğiniz ekleme yöntemine ne olursa *yetkilendirmeler*tanımlamanız gerekecektir. Her yetkilendirme, yönetim kiracısında, temsilcili kaynaklara erişimi olacak bir kullanıcı hesabı ve bu kullanıcıların her birinin bu kaynaklar için sahip olacağı izinleri ayarlayan yerleşik bir rol belirler.
+Seçtiğiniz ekleme yöntemine ne olursa *yetkilendirmeler* tanımlamanız gerekecektir. Her yetkilendirme, yönetim kiracısında, temsilcili kaynaklara erişimi olacak bir kullanıcı hesabı ve bu kullanıcıların her birinin bu kaynaklar için sahip olacağı izinleri ayarlayan yerleşik bir rol belirler.
+
+## <a name="best-practices-for-defining-users-and-roles"></a>Kullanıcıları ve rolleri tanımlamaya yönelik en iyi uygulamalar
+
+Yetkilendirmeleri oluştururken aşağıdaki en iyi yöntemleri öneririz:
+
+- Çoğu durumda, tek bir kullanıcı hesabı serisi yerine bir Azure AD kullanıcı grubuna veya hizmet sorumlusuna izin atamak isteyeceksiniz. Bu, erişim gereksinimleriniz değiştiğinde planı güncelleştirmek ve yeniden yayınlamak zorunda kalmadan bireysel kullanıcılar için erişim eklemenize veya kaldırmanıza olanak sağlar.
+- Kullanıcıların yalnızca işini tamamlaması için gerekli izinlere sahip olması için en az ayrıcalık ilkesini izlediğinizden emin olun, böylece yanlışlıkla oluşan hatalar olasılığını azaltmaya yardımcı olur. Daha fazla bilgi için bkz. [Önerilen güvenlik uygulamaları](../concepts/recommended-security-practices.md).
+- Gerekirse, daha sonra [temsilciye erişimi kaldırabilmeniz için](../how-to/remove-delegation.md) , [yönetilen hizmetler kayıt ataması silme rolüne](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) sahip bir kullanıcı ekleyin. Bu rol atanmamışsa, atanan kaynaklar yalnızca müşterinin kiracısındaki bir kullanıcı tarafından kaldırılabilir.
+- [Azure Portal müşterileri sayfasını görüntülemesi](../how-to/view-manage-customers.md) gereken tüm kullanıcıların [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne (veya okuyucu erişimi de içeren başka bir yerleşik Role) sahip olduğundan emin olun.
+
+> [!IMPORTANT]
+> Bir Azure AD grubu için izinler eklemek üzere, **Grup türü** **güvenlik** olarak ayarlanmalıdır. Grup oluşturulduğunda bu seçenek seçilidir. Daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 ## <a name="role-support-for-azure-lighthouse"></a>Azure ışıklı kullanım için rol desteği
 
@@ -32,18 +44,6 @@ Aşağıdaki özel durumlarla birlikte, tüm [yerleşik roller](../../role-based
 
 > [!NOTE]
 > Azure 'a yeni bir ilgili yerleşik rol eklendikten sonra, [Azure Resource Manager şablonları kullanarak bir müşteriyi](../how-to/onboard-customer.md)eklerken atanabilir. [Yönetilen bir hizmet teklifi yayımlanırken](../how-to/publish-managed-services-offers.md), yeni eklenen rol Iş Ortağı Merkezi 'nde kullanılabilir hale gelmeden önce bir gecikme olabilir.
-
-## <a name="best-practices-for-defining-users-and-roles"></a>Kullanıcıları ve rolleri tanımlamaya yönelik en iyi uygulamalar
-
-Yetkilendirmeleri oluştururken aşağıdaki en iyi yöntemleri öneririz:
-
-- Çoğu durumda, tek bir kullanıcı hesabı serisi yerine bir Azure AD kullanıcı grubuna veya hizmet sorumlusuna izin atamak isteyeceksiniz. Bu, erişim gereksinimleriniz değiştiğinde planı güncelleştirmek ve yeniden yayınlamak zorunda kalmadan bireysel kullanıcılar için erişim eklemenize veya kaldırmanıza olanak sağlar.
-- Kullanıcıların yalnızca işini tamamlaması için gerekli izinlere sahip olması için en az ayrıcalık ilkesini izlediğinizden emin olun, böylece yanlışlıkla oluşan hatalar olasılığını azaltmaya yardımcı olur. Daha fazla bilgi için bkz. [Önerilen güvenlik uygulamaları](../concepts/recommended-security-practices.md).
-- Gerekirse, daha sonra [temsilciye erişimi kaldırabilmeniz için](../how-to/remove-delegation.md) , [yönetilen hizmetler kayıt ataması silme rolüne](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) sahip bir kullanıcı ekleyin. Bu rol atanmamışsa, atanan kaynaklar yalnızca müşterinin kiracısındaki bir kullanıcı tarafından kaldırılabilir.
-- [Azure Portal müşterileri sayfasını görüntülemesi](../how-to/view-manage-customers.md) gereken tüm kullanıcıların [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne (veya okuyucu erişimi de içeren başka bir yerleşik Role) sahip olduğundan emin olun.
-
-> [!IMPORTANT]
-> Bir Azure AD grubu için izinler eklemek üzere, **Grup türü** **güvenlik**olarak ayarlanmalıdır. Grup oluşturulduğunda bu seçenek seçilidir. Daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

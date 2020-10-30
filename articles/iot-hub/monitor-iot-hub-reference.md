@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 166234711ce00f0ed1f45c35ef661aa5b35f8a3c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 8cace120dc823f42f2b2e01e4234ea8d5ace7a69
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926334"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042942"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Azure IoT Hub veri başvurusunu izleme
 
@@ -60,9 +60,9 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 |Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |C2D Iletilerinin süre dolma (Önizleme)|C2DMessagesExpired|Count|Toplam|Zaman aşımına uğradı buluttan cihaza ileti sayısı|Yok|
-|C2D ileti teslimleri tamamlandı|C2D. Commands. çıkış.<br>tamamlandı. başarılı|Count|Toplam|Cihaz tarafından başarıyla tamamlanan buluttan cihaza ileti teslimleri sayısı|Yok|
-|C2D iletileri bırakıldı|C2D. Commands. çıkış.<br>Abandon. Success|Count|Toplam|Cihaz tarafından bırakılan buluttan cihaza yönelik ileti sayısı|Yok|
-|C2D iletileri reddedildi|C2D. Commands. çıkış.<br>Reddet. başarılı|Count|Toplam|Cihaz tarafından reddedilen buluttan cihaza yönelik ileti sayısı|Yok|
+|C2D ileti teslimleri tamamlandı|C2D. Commands. çıkış. tamamlandı. başarılı|Count|Toplam|Cihaz tarafından başarıyla tamamlanan buluttan cihaza ileti teslimleri sayısı|Yok|
+|C2D iletileri bırakıldı|C2D. Commands. çıkış. Abandon. Success|Count|Toplam|Cihaz tarafından bırakılan buluttan cihaza yönelik ileti sayısı|Yok|
+|C2D iletileri reddedildi|C2D. Commands. çıkış. Red. Success|Count|Toplam|Cihaz tarafından reddedilen buluttan cihaza yönelik ileti sayısı|Yok|
 
 **Birim** değeri **sayısı** olan ölçümler için, yalnızca toplam (Sum) toplama geçerlidir. En düşük, en yüksek ve ortalama toplamalar her zaman 1 döndürür. Daha fazla bilgi için bkz. [desteklenen toplamalar](#supported-aggregations).
 
@@ -113,7 +113,7 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 |Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Toplam cihaz (kullanım dışı)|Devices. totalDevices|Count|Toplam|IoT Hub 'ınıza kayıtlı cihazların sayısı|Yok|
-|Bağlı cihazlar (kullanım dışı) |cihazlar. connectedDevices.<br>allProtocol|Count|Toplam|IoT Hub 'ınıza bağlı cihazların sayısı|Yok|
+|Bağlı cihazlar (kullanım dışı) |Devices. connectedDevices. allProtocol|Count|Toplam|IoT Hub 'ınıza bağlı cihazların sayısı|Yok|
 |Toplam cihaz (Önizleme)|totalDeviceCount|Count|Ortalama|IoT Hub 'ınıza kayıtlı cihazların sayısı|Yok|
 |Bağlı cihazlar (Önizleme)|connectedDeviceCount|Count|Ortalama|IoT Hub 'ınıza bağlı cihazların sayısı|Yok|
 
@@ -127,9 +127,9 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 |Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
-|Daraltma hatası sayısı|D2C. telemetri. ınress.<br>Sendkısıtlaması|Count|Toplam|Cihaz performansı azaltmasından kaynaklanan azaltma hatası sayısı|Yok|
-|Telemetri iletisi gönderme denemeleri|D2C. telemetri. ınress.<br>allProtocol|Count|Toplam|IoT Hub 'ınıza gönderilmeye çalışılan cihazdan buluta telemetri iletisi sayısı|Yok|
-|Gönderilen telemetri iletileri|D2C. telemetri. ınress.<br>başarılı|Count|Toplam|IoT Hub 'ınıza başarıyla gönderilen cihazdan buluta telemetri iletisi sayısı|Yok|
+|Daraltma hatası sayısı|D2C. telemetri. ınress. Sendvaliz|Count|Toplam|Cihaz performansı azaltmasından kaynaklanan azaltma hatası sayısı|Yok|
+|Telemetri iletisi gönderme denemeleri|D2C. telemetri. ınress. allProtocol|Count|Toplam|IoT Hub 'ınıza gönderilmeye çalışılan cihazdan buluta telemetri iletisi sayısı|Yok|
+|Gönderilen telemetri iletileri|D2C. telemetri. giriş. başarılı|Count|Toplam|IoT Hub 'ınıza başarıyla gönderilen cihazdan buluta telemetri iletisi sayısı|Yok|
 
 **Birim** değeri **sayısı** olan ölçümler için, yalnızca toplam (Sum) toplama geçerlidir. En düşük, en yüksek ve ortalama toplamalar her zaman 1 döndürür. Daha fazla bilgi için bkz. [desteklenen toplamalar](#supported-aggregations).
 
@@ -161,13 +161,13 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 |---|---|---|---|---|---|
 |Tamamlanan İşler|işler. tamamlandı|Count|Toplam|Tamamlanan tüm işlerin sayısı.|Yok|
 |İşleri listelemek için başarısız çağrılar|Jobs. listJobs. hata|Count|Toplam|Listeleme işleri için başarısız olan tüm çağrıların sayısı.|Yok|
-|Yöntem çağırma işlerinin oluşturma işlemi başarısız oldu|Jobs. createDirectMethodJob.<br>hataları|Count|Toplam|Doğrudan yöntem çağırma işlerinin tüm başarısız oluşturma sayısı.|Yok|
-|İkizi Update işlerinin başarısız oluşturmaları|Jobs. createTwinUpdateJob.<br>hataları|Count|Toplam|İkizi Update işlerinin başarısız olan tüm oluşturma sayısı.|Yok|
+|Yöntem çağırma işlerinin oluşturma işlemi başarısız oldu|Jobs. createDirectMethodJob. Failure|Count|Toplam|Doğrudan yöntem çağırma işlerinin tüm başarısız oluşturma sayısı.|Yok|
+|İkizi Update işlerinin başarısız oluşturmaları|Jobs. createTwinUpdateJob. Failure|Count|Toplam|İkizi Update işlerinin başarısız olan tüm oluşturma sayısı.|Yok|
 |Başarısız iş iptalleri|Jobs. cancelJob. Failure|Count|Toplam|İşi iptal etmek için başarısız olan tüm çağrıların sayısı.|Yok|
 |Başarısız iş sorguları|Jobs. queryJobs. hata|Count|Toplam|Sorgu işlerine yapılan tüm başarısız çağrıların sayısı.|Yok|
 |Başarısız işler|işler. başarısız|Count|Toplam|Başarısız olan tüm işlerin sayısı.|Yok|
 |İşleri listelemek için başarılı çağrılar|işler. listJobs. başarılı|Count|Toplam|İşleri listelemek için başarılı olan tüm çağrıların sayısı.|Yok|
-|Yöntem çağırma işlerinin başarılı oluşturmaları|Jobs. createDirectMethodJob.<br>başarılı|Count|Toplam|Tüm başarılı doğrudan yöntem çağırma işlerinin oluşturulma sayısı.|Yok|
+|Yöntem çağırma işlerinin başarılı oluşturmaları|Jobs. createDirectMethodJob. Success|Count|Toplam|Tüm başarılı doğrudan yöntem çağırma işlerinin oluşturulma sayısı.|Yok|
 |İkizi Update işlerinin başarılı oluşturmaları|Jobs. createTwinUpdateJob.<br>başarılı|Count|Toplam|Tüm başarılı ikizi Update işlerinin oluşturma sayısı.|Yok|
 |Başarılı iş iptalleri|Jobs. cancelJob. Success|Count|Toplam|İşi iptal etmek için tüm başarılı çağrı sayısı.|Yok|
 |Başarılı iş sorguları|işler. queryJobs. başarılı|Count|Toplam|Sorgu işlerine yapılan tüm başarılı çağrıların sayısı.|Yok|
@@ -181,23 +181,23 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 | Yönlendirme teslim denemeleri (Önizleme) |Routingteslimler | Count | Toplam |Bu, yönlendirme teslimi ölçümdür. Belirli bir uç noktanın teslim durumunu veya belirli bir yönlendirme kaynağını belirlemek için boyutları kullanın.| Sonuç,<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>Uçnoktaadı<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)* . |
 | Yönlendirme teslim verilerinin bayt cinsinden boyutu (Önizleme)|RoutingDataSizeInBytesDelivered| Bayt | Toplam |IoT Hub tarafından özel uç noktaya ve yerleşik uç noktaya yönlendirilen toplam bayt sayısı. Belirli bir uç noktaya veya belirli bir yönlendirme kaynağına yönlendirilen veri boyutunu tanımlamak için boyutları kullanın.| RoutingSource,<br>EndpointType<br>Uçnoktaadı<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)* .|
 | Yönlendirme gecikmesi (Önizleme) |Routingdeliverygecikme süresi| Mayacak | Ortalama |Bu, yönlendirme teslimi gecikme ölçümdür. Belirli bir uç noktanın gecikmesini veya belirli bir yönlendirme kaynağını belirlemek için boyutları kullanın.| RoutingSource,<br>EndpointType,<br>Uçnoktaadı<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)* .|
-|Yönlendirme: depolamaya teslim edilen Bloblar|D2C. endpoints. çıkış.<br>Storage. blob 'ları|Count|Toplam|IoT Hub blob 'ları depolama uç noktalarına yönlendirmenin kaç kez yönlendirtığı sayısıdır.|Yok|
-|Yönlendirme: depolamaya teslim edilen veriler|D2C. endpoints. çıkış.<br>Storage. Bytes|Bayt|Toplam|Depolama uç noktalarına teslim edilen veri miktarı (bayt) IoT Hub.|Yok|
-|Yönlendirme: Olay Hub 'ı için ileti gecikmesi|D2C. endpoints. Latency.<br>eventHubs|Mayacak|Ortalama|Olay Hub 'ının özel uç noktalarına IoT Hub ileti girişi ve ileti girişi arasındaki ortalama gecikme süresi (milisaniye). Bu, yerleşik uç noktaya yönelik ileti yollarını içermez (olaylar).|Yok|
-|Yönlendirme: Service Bus kuyruğu için ileti gecikmesi|D2C. endpoints. Latency.<br>serviceBusQueues|Mayacak|Ortalama|IoT Hub ileti girişi ile Service Bus kuyruğu uç noktasına giriş arasındaki ortalama gecikme süresi (milisaniye).|Yok|
-|Yönlendirme: Service Bus konusu için ileti gecikmesi|D2C. endpoints. Latency.<br>Servicebuskonulardaki konuları|Mayacak|Ortalama|IoT Hub ve ileti girişi arasındaki ortalama gecikme süresi (milisaniye) Service Bus konu uç noktasına giriş.|Yok|
-|Yönlendirme: iletiler/olaylar için ileti gecikmesi|D2C. endpoints. Latency.<br>Yerleşik. olaylar|Mayacak|Ortalama|Yerleşik uç noktaya (iletiler/olaylar) ve geri dönüş rotasında ileti girişi IoT Hub ve ileti girişi arasındaki ortalama gecikme süresi (milisaniye).|Yok|
-|Yönlendirme: depolama için ileti gecikmesi|D2C. endpoints. Latency.<br>depolama|Mayacak|Ortalama|Bir depolama uç noktasında ileti girişi IoT Hub ve ileti girişi arasındaki ortalama gecikme süresi (milisaniye).|Yok|
-|Yönlendirme: Olay Hub 'ına teslim edilen iletiler|D2C. endpoints. çıkış.<br>eventHubs|Count|Toplam|IoT Hub yönlendirmenin, Olay Hub 'ı türünde özel uç noktalara başarıyla ileti teslim dağıttığı sayı. Bu, yerleşik uç noktaya yönelik ileti yollarını içermez (olaylar).|Yok|
-|Yönlendirme: Service Bus kuyruğuna teslim edilen iletiler|D2C. endpoints. çıkış.<br>serviceBusQueues|Count|Toplam|IoT Hub yönlendirmenin iletileri Service Bus sıra uç noktalarına başarıyla teslim dağıttığı zaman sayısı.|Yok|
-|Yönlendirme: Service Bus konuya teslim edilen iletiler|D2C. endpoints. çıkış.<br>Servicebuskonulardaki konuları|Count|Toplam|IoT Hub yönlendirmenin Service Bus konu uç noktalarına başarıyla ileti teslim eden zaman sayısı.|Yok|
-|Yönlendirme: geri dönüşe teslim edilen iletiler|D2C. telemetri. çıkış.<br>dönüş|Count|Toplam|Geri dönüş rotası ile ilişkili uç noktaya gönderilen iletileri yönlendirmenin IoT Hub sayısı.|Yok|
-|Yönlendirme: iletilere/olaylara teslim edilen iletiler|D2C. endpoints. çıkış.<br>Yerleşik. olaylar|Count|Toplam|IoT Hub yönlendirmenin, yerleşik uç noktaya (iletiler/olaylar) ve geri dönüş rotasında iletileri başarıyla teslim eden zaman sayısı.|Yok|
-|Yönlendirme: depolamaya teslim edilen iletiler|D2C. endpoints. çıkış.<br>depolama|Count|Toplam|IoT Hub yönlendirmenin depolama uç noktalarına başarıyla ileti teslim eden zaman sayısı.|Yok|
-|Yönlendirme: teslim edilen telemetri iletileri|D2C. telemetri. çıkış.<br>başarılı|Count|Toplam|IoT Hub yönlendirme kullanılarak iletilerin tüm uç noktalara başarıyla ulaştırılan ileti sayısı. Bir ileti birden çok uç noktaya yönlendirilmemişse, her başarılı teslimat için bu değer bir artar. Bir ileti aynı uç noktaya birden çok kez teslim edildiğinde, her başarılı teslimat için bu değer bir artar.|Yok|
-|Yönlendirme: telemetri iletileri bırakıldı |D2C. telemetri. çıkış.<br>bırakılmış|Count|Toplam|İleti, ölü uç noktalar nedeniyle IoT Hub yönlendirmenin kaç kez bırakılmakta olduğunu. Bu değer, bırakılan iletiler buraya teslim edimediğinden geri dönüş rotasına teslim edilen iletileri saymaz.|Yok|
-|Yönlendirme: telemetri iletileri uyumsuz|D2C. telemetri. çıkış.<br>geçersiz|Count|Toplam|Uç nokta ile uyumsuzluk nedeniyle IoT Hub yönlendirmenin iletileri teslim etme başarısız olduğu zaman sayısı. IoT Hub, iletiyi bir uç noktaya teslim etmeye çalıştığında ve geçici olmayan bir hata ile başarısız olduğunda bir ileti bir uç nokta ile uyumsuzdur. Geçersiz iletiler yeniden denenmez. Bu değer yeniden denemeler içermez.|Yok|
-|Yönlendirme: telemetri iletileri yalnız bırakılmış |D2C. telemetri. çıkış.<br>kaldı|Count|Toplam|Geri dönüş rotası devre dışı bırakıldığında hiçbir yönlendirme sorgusuyla eşleşmediğinden iletilerin IoT Hub yönlendirme tarafından yalnız bırakılmış olduğu zaman sayısı.|Yok|
+|Yönlendirme: depolamaya teslim edilen Bloblar|D2C. endpoints. çıkış. Storage. blob 'ları|Count|Toplam|IoT Hub blob 'ları depolama uç noktalarına yönlendirmenin kaç kez yönlendirtığı sayısıdır.|Yok|
+|Yönlendirme: depolamaya teslim edilen veriler|D2C. endpoints. çıkış. Storage. Bytes|Bayt|Toplam|Depolama uç noktalarına teslim edilen veri miktarı (bayt) IoT Hub.|Yok|
+|Yönlendirme: Olay Hub 'ı için ileti gecikmesi|D2C. endpoints. Latency. eventHubs|Mayacak|Ortalama|Olay Hub 'ının özel uç noktalarına IoT Hub ileti girişi ve ileti girişi arasındaki ortalama gecikme süresi (milisaniye). Bu, yerleşik uç noktaya yönelik ileti yollarını içermez (olaylar).|Yok|
+|Yönlendirme: Service Bus kuyruğu için ileti gecikmesi|D2C. endpoints. Latency. serviceBusQueues|Mayacak|Ortalama|IoT Hub ileti girişi ile Service Bus kuyruğu uç noktasına giriş arasındaki ortalama gecikme süresi (milisaniye).|Yok|
+|Yönlendirme: Service Bus konusu için ileti gecikmesi|D2C. endpoints. Latency. Servicebuskonular|Mayacak|Ortalama|IoT Hub ve ileti girişi arasındaki ortalama gecikme süresi (milisaniye) Service Bus konu uç noktasına giriş.|Yok|
+|Yönlendirme: iletiler/olaylar için ileti gecikmesi|D2C. endpoints. Latency. yerleik. Events|Mayacak|Ortalama|Yerleşik uç noktaya (iletiler/olaylar) ve geri dönüş rotasında ileti girişi IoT Hub ve ileti girişi arasındaki ortalama gecikme süresi (milisaniye).|Yok|
+|Yönlendirme: depolama için ileti gecikmesi|D2C. endpoints. Latency. Storage|Mayacak|Ortalama|Bir depolama uç noktasında ileti girişi IoT Hub ve ileti girişi arasındaki ortalama gecikme süresi (milisaniye).|Yok|
+|Yönlendirme: Olay Hub 'ına teslim edilen iletiler|D2C. endpoints. çıkış. eventHubs|Count|Toplam|IoT Hub yönlendirmenin, Olay Hub 'ı türünde özel uç noktalara başarıyla ileti teslim dağıttığı sayı. Bu, yerleşik uç noktaya yönelik ileti yollarını içermez (olaylar).|Yok|
+|Yönlendirme: Service Bus kuyruğuna teslim edilen iletiler|D2C. endpoints. çıkış. serviceBusQueues|Count|Toplam|IoT Hub yönlendirmenin iletileri Service Bus sıra uç noktalarına başarıyla teslim dağıttığı zaman sayısı.|Yok|
+|Yönlendirme: Service Bus konuya teslim edilen iletiler|D2C. endpoints. çıkış. Servicebuskonular|Count|Toplam|IoT Hub yönlendirmenin Service Bus konu uç noktalarına başarıyla ileti teslim eden zaman sayısı.|Yok|
+|Yönlendirme: geri dönüşe teslim edilen iletiler|D2C. telemetri. çıkış. geri dönüş|Count|Toplam|Geri dönüş rotası ile ilişkili uç noktaya gönderilen iletileri yönlendirmenin IoT Hub sayısı.|Yok|
+|Yönlendirme: iletilere/olaylara teslim edilen iletiler|D2C. endpoints. çıkış. builtIn. Events|Count|Toplam|IoT Hub yönlendirmenin, yerleşik uç noktaya (iletiler/olaylar) ve geri dönüş rotasında iletileri başarıyla teslim eden zaman sayısı.|Yok|
+|Yönlendirme: depolamaya teslim edilen iletiler|D2C. endpoints. çıkış. Storage|Count|Toplam|IoT Hub yönlendirmenin depolama uç noktalarına başarıyla ileti teslim eden zaman sayısı.|Yok|
+|Yönlendirme: teslim edilen telemetri iletileri|D2C. telemetri. çıkış. başarılı|Count|Toplam|IoT Hub yönlendirme kullanılarak iletilerin tüm uç noktalara başarıyla ulaştırılan ileti sayısı. Bir ileti birden çok uç noktaya yönlendirilmemişse, her başarılı teslimat için bu değer bir artar. Bir ileti aynı uç noktaya birden çok kez teslim edildiğinde, her başarılı teslimat için bu değer bir artar.|Yok|
+|Yönlendirme: telemetri iletileri bırakıldı |D2C. telemetri. çıkış. bırakıldı|Count|Toplam|İleti, ölü uç noktalar nedeniyle IoT Hub yönlendirmenin kaç kez bırakılmakta olduğunu. Bu değer, bırakılan iletiler buraya teslim edimediğinden geri dönüş rotasına teslim edilen iletileri saymaz.|Yok|
+|Yönlendirme: telemetri iletileri uyumsuz|D2C. telemetri. çıkış. geçersiz|Count|Toplam|Uç nokta ile uyumsuzluk nedeniyle IoT Hub yönlendirmenin iletileri teslim etme başarısız olduğu zaman sayısı. IoT Hub, iletiyi bir uç noktaya teslim etmeye çalıştığında ve geçici olmayan bir hata ile başarısız olduğunda bir ileti bir uç nokta ile uyumsuzdur. Geçersiz iletiler yeniden denenmez. Bu değer yeniden denemeler içermez.|Yok|
+|Yönlendirme: telemetri iletileri yalnız bırakılmış |D2C. telemetri. çıkış. yalnız bırakılmış|Count|Toplam|Geri dönüş rotası devre dışı bırakıldığında hiçbir yönlendirme sorgusuyla eşleşmediğinden iletilerin IoT Hub yönlendirme tarafından yalnız bırakılmış olduğu zaman sayısı.|Yok|
 
 **Birim** değeri **sayısı** olan ölçümler için, yalnızca toplam (Sum) toplama geçerlidir. En düşük, en yüksek ve ortalama toplamalar her zaman 1 döndürür. Daha fazla bilgi için bkz. [desteklenen toplamalar](#supported-aggregations).
 

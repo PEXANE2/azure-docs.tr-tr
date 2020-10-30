@@ -5,18 +5,18 @@ description: Microsoft Identity platformu tarafından zorlanan yeniden yönlendi
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 08/07/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
-ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: marsma, lenalepa, manrath
+ms.openlocfilehash: e7635aad85352887646a1319b4d0bfbf64924bf9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030319"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042913"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Yeniden yönlendirme URI 'SI (yanıt URL 'SI) kısıtlamaları ve sınırlamaları
 
@@ -24,7 +24,7 @@ Yeniden yönlendirme URI 'SI veya yanıt URL 'SI, uygulama başarıyla yetkilend
 
  Yeniden yönlendirme URI 'Leri için aşağıdaki kısıtlamalar geçerlidir:
 
-* Yeniden yönlendirme URI 'SI şemayla başlamalıdır `https` .
+* Yeniden yönlendirme URI 'SI şemayla başlamalıdır `https` . Localhost yeniden yönlendirme URI 'Leri [için bazı özel durumlar](#localhost-exceptions) vardır.
 
 * Yeniden yönlendirme URI 'SI, büyük/küçük harfe duyarlıdır. Büyük/küçük harf durumu, çalışan uygulamanızın URL yolu ile aynı olmalıdır. Örneğin, uygulamanız yolunun bir parçası olarak içeriyorsa `.../abc/response-oidc` , `.../ABC/response-oidc` yeniden yönlendirme URI 'si içinde belirtmeyin. Web tarayıcısı yollara büyük/küçük harfe duyarlı olarak davrandığı için, bununla ilişkili tanımlama bilgileri, `.../abc/response-oidc` büyük/küçük harfe eşleşmeyen URL 'ye yönlendiriliyorsa dışlanamaz `.../ABC/response-oidc` .
 
@@ -32,7 +32,7 @@ Yeniden yönlendirme URI 'SI veya yanıt URL 'SI, uygulama başarıyla yetkilend
 
 Bu tablo, Microsoft Identity platformunda bir uygulama kaydına ekleyebileceğiniz en fazla yeniden yönlendirme URI sayısını gösterir.
 
-| Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Açıklama |
+| Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Description |
 |--------------------------|---------------------------------|-------------|
 | Herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısındaki Microsoft iş veya okul hesapları | 256 | `signInAudience`uygulama bildirimindeki alan *Azureadmyorg* ya da *Azureadmultipleorgs* olarak ayarlandı |
 | Kişisel Microsoft hesapları ve iş ve okul hesapları | 100 | `signInAudience`uygulama bildirimindeki alan *Azureadandpersonmicrosoftaccount* olarak ayarlandı |
@@ -64,11 +64,10 @@ Geliştirme açısından, bu birkaç şey anlamına gelir:
 
 * Yalnızca bağlantı noktasının farklı olduğu birden çok yeniden yönlendirme URI 'sini kaydetme. Oturum açma sunucusu bir rastgele seçer ve bu yeniden yönlendirme URI 'siyle ilişkili davranışı kullanır (örneğin,-, `web` `native` -veya `spa` -Type yeniden yönlendirmesi).
 * Geliştirme sırasında farklı akışları test etmek için localhost 'a birden çok yeniden yönlendirme URI 'SI kaydetmeniz gerekiyorsa, bunları URI 'nin *yol* bileşenini kullanarak birbirinden ayırın. Örneğin, `http://127.0.0.1/MyWebApp` eşleşmez `http://127.0.0.1/MyNativeApp` .
-* RFC gözetimi başına, `localhost` yeniden yönlendirme URI 'si içinde kullanmamalısınız. Bunun yerine, gerçek geri döngü IP adresini kullanın `127.0.0.1` . Bu, uygulamanızın yanlış yapılandırılmış güvenlik duvarları veya yeniden adlandırılmış ağ arabirimleri tarafından bozulmasına engel olur.
+* IPv6 geri döngü adresi ( `[::1]` ) Şu anda desteklenmiyor.
+* Uygulamanızın, yanlış yapılandırılmış güvenlik duvarları veya yeniden adlandırılmış ağ arabirimleri tarafından kırılmasını engellemek için, `127.0.0.1` yeniden yönlendirme URI 'SINDEKI IP sabit geri döngü adresini yerine kullanın `localhost` .
 
-    `http`Şemayı localhost yerine geri döngü adresiyle (127.0.0.1) kullanmak için, [uygulama bildirimini](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#replyurls-attribute)düzenlemeniz gerekir. 
-
-    IPv6 geri döngü adresi ( `[::1]` ) Şu anda desteklenmiyor.
+    `http`ŞEMAYı IP sabit değeri geri döngü adresiyle kullanmak için `127.0.0.1` , şu anda [uygulama bildiriminde](reference-app-manifest.md) [replyurlswithtype](reference-app-manifest.md#replyurlswithtype-attribute) özniteliğini değiştirmelisiniz.
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>Yeniden yönlendirme URI 'Lerinde Joker karakterlere yönelik kısıtlamalar
 
@@ -78,9 +77,9 @@ Joker karakterler şu anda kişisel Microsoft hesaplarında ve iş veya okul hes
 
 İş veya okul hesaplarında oturum açmaya yönelik uygulama kayıtlarına joker karakterler içeren yeniden yönlendirme URI 'Leri eklemek için, Azure portal [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) içindeki uygulama bildirimi düzenleyicisini kullanmanız gerekir. Bildirim düzenleyicisini kullanarak bir joker karakterle yeniden yönlendirme URI 'SI ayarlamak mümkün olsa da, 3.1.2 for the [RFC 6749 bölümüne](https://tools.ietf.org/html/rfc6749#section-3.1.2) bağlı tutmanız ve yalnızca mutlak URI 'ler kullanmanız *önemle* önerilir.
 
-Senaryonuz izin verilen üst sınırdan daha fazla yeniden yönlendirme URI 'si gerektiriyorsa, joker karakter yeniden yönlendirme URI 'si eklemek yerine [aşağıdaki yaklaşımı](#use-a-state-parameter) göz önünde bulundurun.
+Senaryonuz izin verilen üst sınırdan daha fazla yeniden yönlendirme URI 'si gerektiriyorsa, joker karakter yeniden yönlendirme URI 'si eklemek yerine aşağıdaki [durum parametresi yaklaşımını](#use-a-state-parameter) göz önünde bulundurun.
 
-### <a name="use-a-state-parameter"></a>Bir durum parametresi kullanın
+#### <a name="use-a-state-parameter"></a>Bir durum parametresi kullanın
 
 Birkaç alt etki alanı varsa ve senaryonuz, başarılı bir kimlik doğrulamasından sonra, kullanıcıları başlatıldığı sayfaya yönlendirdikten sonra bir durum parametresinin kullanılması faydalı olabilir.
 

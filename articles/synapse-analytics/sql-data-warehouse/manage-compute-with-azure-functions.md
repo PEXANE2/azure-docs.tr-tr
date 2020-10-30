@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0e14bba7b2982dd12fcca0d7aedc864b2a65288f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1683977d5c8be965cb329611c5a7fd6602a1cd97
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259960"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043363"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzundaki işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanma
 
@@ -48,7 +48,7 @@ Yukarıdaki bilgilere sahip olduktan sonra bu şablonu dağıtın:
 
    ![Şablonla dağıtılan işlevler](./media/manage-compute-with-azure-functions/five-functions.png)
 
-2. Zaman ölçeğini artırmak mı yoksa azaltmak mı istediğinize bağlı olarak, *DWScaleDownTrigger*'ı veya *DWScaleUpTrigger*'ı seçin. Açılan menüde tümleştirin ' ı seçin.
+2. Zaman ölçeğini artırmak mı yoksa azaltmak mı istediğinize bağlı olarak, *DWScaleDownTrigger* 'ı veya *DWScaleUpTrigger* 'ı seçin. Açılan menüde tümleştirin ' ı seçin.
 
    ![İşlev için Tümleştir'i seçme](./media/manage-compute-with-azure-functions/select-integrate.png)
 
@@ -70,15 +70,15 @@ Yukarıdaki bilgilere sahip olduktan sonra bu şablonu dağıtın:
 
 1. İşlev Uygulaması hizmetinize gidin. Şablonu varsayılan değerlerle dağıttıysanız, bu hizmetin adı *DWOperations* olacaktır. İşlev Uygulamanız açıldığında, İşlev Uygulaması Hizmetinize beş işlevin dağıtılmış olduğunu görürsünüz.
 
-2. İşlem değeri ölçeğini artırmak mı yoksa azaltmak mı istediğinize bağlı olarak, *DWScaleDownTrigger*'ı veya *DWScaleUpTrigger*'ı seçin. İşlevleri seçtikten sonra, bölmenizde *index.js* dosyası gösterilmelidir.
+2. İşlem değeri ölçeğini artırmak mı yoksa azaltmak mı istediğinize bağlı olarak, *DWScaleDownTrigger* 'ı veya *DWScaleUpTrigger* 'ı seçin. İşlevleri seçtikten sonra, bölmenizde *index.js* dosyası gösterilmelidir.
 
    ![İşlev tetikleyicisi işlem düzeyini değiştirme](././media/manage-compute-with-azure-functions/index-js.png)
 
-3. *ServiceLevelObjective*'in değerini istediğiniz düzeyle değiştirin ve Kaydet'e tıklayın. Bu değer, veri ambarı örneğinizin tümleştirin bölümünde tanımlanan zamanlamaya göre ölçeklendirileceği işlem düzeyidir.
+3. *ServiceLevelObjective* 'in değerini istediğiniz düzeyle değiştirin ve Kaydet'e tıklayın. Bu değer, veri ambarı örneğinizin tümleştirin bölümünde tanımlanan zamanlamaya göre ölçeklendirileceği işlem düzeyidir.
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>Ölçek yerine duraklatma veya sürdürme kullanma
 
-Şu anda, varsayılan olarak açık olan işlevler *DWScaleDownTrigger* ve *DWScaleUpTrigger*'dır. Bunun yerine duraklatma ve sürdürme işlevselliğini kullanmak isterseniz, *DWPauseTrigger* veya *DWResumeTrigger*'ı etkinleştirebilirsiniz.
+Şu anda, varsayılan olarak açık olan işlevler *DWScaleDownTrigger* ve *DWScaleUpTrigger* 'dır. Bunun yerine duraklatma ve sürdürme işlevselliğini kullanmak isterseniz, *DWPauseTrigger* veya *DWResumeTrigger* 'ı etkinleştirebilirsiniz.
 
 1. İşlevler bölmesine gidin.
 
@@ -97,9 +97,9 @@ Yukarıdaki bilgilere sahip olduktan sonra bu şablonu dağıtın:
 
 1. Yeni boş bir işlev oluşturun. *+* İşlev şablonu bölmesini göstermek Için işlevlerinizin konumunun yakınındaki düğmeyi seçin.
 
-   ![Yeni işlev oluşturma](./media/manage-compute-with-azure-functions/create-new-function.png)
+   !["Işlevler" seçeneğinin yanında "Plus" simgesiyle "Işlev uygulamaları" menüsünü gösteren ekran görüntüsü.](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. Dilden *JavaScript*' i seçin, sonra *timertrigger*' ı seçin.
+2. Dilden *JavaScript* ' i seçin, sonra *timertrigger* ' ı seçin.
 
    ![Yeni işlev oluşturma](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 

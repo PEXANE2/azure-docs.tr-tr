@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 99604092ea901458062abd6423d74ad8f1f2c8d7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 58ecca6251e4c428ae5f834379e8b45059b0efc9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014418"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042776"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Senaryolar ve Media Services özelliklerinin veri merkezleri arasında kullanılabilirliği
 
@@ -67,7 +67,7 @@ Modelin tamamını [buradan](https://media.windows.net/API/$metadata?api-version
     İçeriğinizi beklerken korumak için çıktı varlığına depolama şifrelemesi seçeneğini uygulamanız önerilir.
 3. Varlık teslim ilkesini (dinamik paketleme tarafından kullanılır) yapılandırın.
 
-    Varlığınıza depolama şifrelemesi uygulanmışsa varlık teslim ilkesini yapılandırmanız **gerekir**.
+    Varlığınıza depolama şifrelemesi uygulanmışsa varlık teslim ilkesini yapılandırmanız **gerekir** .
 4. Bir OnDemand bulucu oluşturarak varlığı yayımlayın.
 5. Yayımlanan içeriği akışla aktarın.
 
@@ -123,7 +123,7 @@ Canlı akış yaparken, aşağıdaki yollardan birini seçebilirsiniz:
 
 Aşağıdaki diyagramda, AMS platformunun **doğrudan geçiş** iş akışında rol oynayan başlıca parçaları gösterilmektedir.
 
-![Canlı iş akışı](./media/scenarios-and-availability/media-services-live-streaming-current.png)
+!["Doğrudan geçiş" iş akışında bir d S platformunun ana parçalarını gösteren diyagram.](./media/scenarios-and-availability/media-services-live-streaming-current.png)
 
 Daha fazla bilgi için bkz. [Şirket İçi Kodlayıcılardan Çoklu Bit Hızlı Canlı Akış Alan Kanallar ile Çalışma](media-services-live-streaming-with-onprem-encoders.md).
 
@@ -153,7 +153,7 @@ AMS müşterileri akış uç noktalarını, medya işleme ve depolamayı kendi A
 
     **Premium** akış uç noktaları, adanmış ve ölçeklenebilir bant genişliği kapasitesi sağlar; dolayısıyla gelişmiş iş yükleri için uygundur. **Premium** akış uç noktası olan müşteriler, varsayılan olarak bir akış birimi (SU) alır. Akış uç noktası, SU’lar eklenerek ölçeklendirilebilir. Her SU, uygulamaya ek bant genişliği kapasitesi sağlar. **Premium** akış uç noktalarını ölçeklendirme hakkında daha fazla bilgi için, [Akış uç noktalarını ölçeklendirme](media-services-portal-scale-streaming-endpoints.md) konusuna bakın.
 
-* Media Services hesabı bir Ayrılmış Birim Türüyle ilişkilendirilir ve bu da medya işleme görevlerinizin ne hızda işleneceğini belirler. Şu ayrılmış birim türleri arasından seçim yapabilirsiniz: **S1**, **S2**veya **S3**. Örneğin, aynı kodlama işi **S2** ayrılmış birim türünü kullandığınızda **S1** türüne göre daha hızlı çalışır.
+* Media Services hesabı bir Ayrılmış Birim Türüyle ilişkilendirilir ve bu da medya işleme görevlerinizin ne hızda işleneceğini belirler. Şu ayrılmış birim türleri arasından seçim yapabilirsiniz: **S1** , **S2** veya **S3** . Örneğin, aynı kodlama işi **S2** ayrılmış birim türünü kullandığınızda **S1** türüne göre daha hızlı çalışır.
 
     Ayrılmış birim türünü belirtmenin yanı sıra, hesabınızı **ayrılmış birimler** (ru) ile sağlamayı belirtebilirsiniz. Sağlanan RU sayısı, verili bir hesapta eşzamanlı olarak işlenebilecek medya görevlerinin sayısını belirler.
 
@@ -179,7 +179,7 @@ Media Services müşterileri **Standart** akış uç noktası veya **Premium** a
 
 #### <a name="availability"></a>Kullanılabilirlik
 
-|Ad|Durum|Veri merkezleri
+|Name|Durum|Veri merkezleri
 |---|---|---|
 |Standart|GA|Tümü|
 |Premium|GA|Tümü|
@@ -192,7 +192,7 @@ Media Services müşterileri **Standart** akış uç noktası veya **Premium** a
 
 ### <a name="encoding-media-processors"></a>Kodlama medya işleyicileri
 
-AMS, isteğe bağlı iki kodlayıcı sunar: **Media Encoder Standard** ve **Media Encoder Premium İş Akışı**. Daha fazla bilgi için bkz. [Azure isteğe bağlı medya kodlayıcılarına genel bakış ve karşılaştırma](media-services-encode-asset.md). 
+AMS, isteğe bağlı iki kodlayıcı sunar: **Media Encoder Standard** ve **Media Encoder Premium İş Akışı** . Daha fazla bilgi için bkz. [Azure isteğe bağlı medya kodlayıcılarına genel bakış ve karşılaştırma](media-services-encode-asset.md). 
 
 #### <a name="availability"></a>Kullanılabilirlik
 

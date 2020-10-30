@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2f7132ffa1fa55d1dfd8043677bf9695a589b7af
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745808"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043030"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Kullanılabilirlik alanlarını kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma
 
@@ -52,7 +52,7 @@ Kullanılabilirlik bölgelerini kullanarak bir AKS kümesi oluşturduğunuzda a�
 
 Azure yönetilen diskleri kullanan birimler Şu anda bölgesel olarak yedekli kaynaklar değildir. Birimler bölgelere bağlanamaz ve hedef Pod 'u barındıran belirli bir düğümle aynı bölgede birlikte bulunması gerekir.
 
-Durum bilgisi olan iş yükleri çalıştırmanız gerekiyorsa, Pod özelliklerini disklerinizdeki aynı bölgede gruplamak için pod özelliklerine göre düğüm havuzu talarını ve toleranlarını kullanın. Alternatif olarak, bölgeler arasında zamanlandıkları üzere Pod 'ye iliştirilabilen Azure dosyaları gibi ağ tabanlı depolama alanı kullanın.
+Kubernetes, 1,12 sürümünden bu yana Azure kullanılabilirlik bölgeleriyle haberdar değildir. Çok bölgeli bir AKS kümesinde Azure yönetilen diskine başvuran bir PersistentVolumeClaim nesnesi dağıtabilir ve [Kubernetes](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones) , bu PVC 'yi talep eden tüm Pod 'ları doğru kullanılabilirlik bölgesinde planlıyor.
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS kümeleri için kullanılabilirlik bölgelerine genel bakış
 
@@ -120,7 +120,20 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 Bir aracı havuzuna ek düğümler eklediğinizde, Azure platformu, belirtilen kullanılabilirlik alanları genelinde temel alınan VM 'Leri otomatik olarak dağıtır.
 
-Daha yeni Kubernetes sürümlerinde (1.17.0 ve üzeri), AKS 'in `topology.kubernetes.io/zone` kullanım dışı öğesine ek olarak daha yeni etiketi kullandığını unutmayın `failure-domain.beta.kubernetes.io/zone` .
+Daha yeni Kubernetes sürümlerinde (1.17.0 ve üzeri), AKS 'in `topology.kubernetes.io/zone` kullanım dışı öğesine ek olarak daha yeni etiketi kullandığını unutmayın `failure-domain.beta.kubernetes.io/zone` . Aşağıdaki betiği çalıştırarak, ile aynı sonucu elde edebilirsiniz:
+
+```console
+kubectl get nodes -o custom-columns=NAME:'{.metadata.name}',REGION:'{.metadata.labels.topology\.kubernetes\.io/region}',ZONE:'{metadata.labels.topology\.kubernetes\.io/zone}'
+```
+
+Size daha fazla kısa çıktısı sağlayacak:
+
+```console
+NAME                                REGION   ZONE
+aks-nodepool1-34917322-vmss000000   eastus   eastus-1
+aks-nodepool1-34917322-vmss000001   eastus   eastus-2
+aks-nodepool1-34917322-vmss000002   eastus   eastus-3
+```
 
 ## <a name="verify-pod-distribution-across-zones"></a>Bölgeler arasında Pod dağıtımını doğrulama
 

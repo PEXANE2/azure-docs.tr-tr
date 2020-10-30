@@ -3,12 +3,12 @@ title: Bir müşteriyi Azure Lighthouse’a ekleme
 description: Bir müşteriyi Azure Mathouse 'a eklemeyi öğrenin. böylece, kaynakları Azure tarafından atanan kaynak yönetimi kullanılarak kendi kiracınız aracılığıyla erişilebilir ve yönetilebilir.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: b5a6d60d10b2cee7f26ae405ed95b980f423b42e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d80fef21e4b7cf1705b67df3c8d08f91bac589bf
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426339"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042859"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Bir müşteriyi Azure Lighthouse’a ekleme
 
@@ -38,7 +38,7 @@ Bu KIMLIK değerleri zaten yoksa, bunları aşağıdaki yollarla alabilirsiniz. 
 
 ### <a name="azure-portal"></a>Azure portal
 
-Kiracı KIMLIĞINIZ, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelerek veya **Dizin Değiştir**' i seçerek görülebilir. Kiracı KIMLIĞINIZI seçmek ve kopyalamak için Portal içinden "Azure Active Directory" araması yapın, ardından **Özellikler** ' i seçin ve **dizin kimliği** alanında gösterilen değeri kopyalayın. Müşterinin kiracısında bir aboneliğin KIMLIĞINI bulmak için, "abonelikler" araması yapın ve ardından uygun abonelik KIMLIĞINI seçin.
+Kiracı KIMLIĞINIZ, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelerek veya **Dizin Değiştir** ' i seçerek görülebilir. Kiracı KIMLIĞINIZI seçmek ve kopyalamak için Portal içinden "Azure Active Directory" araması yapın, ardından **Özellikler** ' i seçin ve **dizin kimliği** alanında gösterilen değeri kopyalayın. Müşterinin kiracısında bir aboneliğin KIMLIĞINI bulmak için, "abonelikler" araması yapın ve ardından uygun abonelik KIMLIĞINI seçin.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -66,10 +66,10 @@ Hizmet sağlayıcı olarak, farklı kapsamlar için farklı erişim gerektiren t
 
 Yönetimi kolaylaştırmak için, her rol için Azure AD Kullanıcı gruplarını kullanmanızı öneririz. Bu sayede, Kullanıcı değişikliği yapmak için ekleme işlemini tekrarlamanız gerekmiyorsa, erişimi olan gruba bireysel kullanıcı ekleme veya kaldırma esnekliği sağlar. Bir hizmet sorumlusuna roller atayabilirsiniz, bu da otomasyon senaryoları için yararlı olabilir.
 
-Yetkilendirmeleri tanımlarken, kullanıcıların yalnızca işlerini tamamlaması için gerekli izinlere sahip olması için en az ayrıcalık ilkesini izlediğinizden emin olun. Desteklenen roller hakkında yönergeler ve bilgiler için bkz. [Azure açık bir senaryolarda kiracılar, kullanıcılar ve roller](../concepts/tenants-users-roles.md).
-
 > [!IMPORTANT]
-> Bir Azure AD grubu için izinler eklemek üzere, **Grup türü** **güvenlik**olarak ayarlanmalıdır. Grup oluşturulduğunda bu seçenek seçilidir. Daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+> Bir Azure AD grubu için izinler eklemek üzere, **Grup türü** **güvenlik** olarak ayarlanmalıdır. Grup oluşturulduğunda bu seçenek seçilidir. Daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+
+Yetkilendirmeleri tanımlarken, kullanıcıların yalnızca işlerini tamamlaması için gerekli izinlere sahip olması için en az ayrıcalık ilkesini izlediğinizden emin olun. Desteklenen roller hakkında yönergeler ve bilgiler için bkz. [Azure açık bir senaryolarda kiracılar, kullanıcılar ve roller](../concepts/tenants-users-roles.md).
 
 Yetkilendirmeleri tanımlamak için, erişim vermek istediğiniz hizmet sağlayıcı kiracısında her bir Kullanıcı, Kullanıcı grubu veya hizmet sorumlusu için KIMLIK değerlerini bilmeniz gerekir. Ayrıca, atamak istediğiniz her bir yerleşik rol için rol tanımı KIMLIĞI gerekir. Daha önceden sahip değilseniz, hizmet sağlayıcı kiracısı içinden aşağıdaki komutları çalıştırarak bunları alabilirsiniz.
 
@@ -128,7 +128,7 @@ Ekleme işlemi, bir Azure Resource Manager şablonu ( [örnek](https://github.co
 > [!IMPORTANT]
 > Burada açıklanan işlem, aynı müşteri kiracısına abonelik ekleme olsanız bile, her abonelik için eklendi olan ayrı bir dağıtım gerektirir. Aynı müşteri kiracısında farklı abonelikler içinde birden fazla kaynak grubu eklediyseniz ayrı dağıtımlar da gereklidir. Ancak, tek bir abonelik içinde birden çok kaynak grubu ekleme işlemi tek bir dağıtımda yapılabilir.
 >
-> Aynı aboneliğe (veya bir abonelik içindeki kaynak gruplarına) uygulanan birden çok teklif için ayrı dağıtımlar da gerekir. Uygulanan her teklifin farklı bir **Mspoffername**kullanması gerekir.
+> Aynı aboneliğe (veya bir abonelik içindeki kaynak gruplarına) uygulanan birden çok teklif için ayrı dağıtımlar da gerekir. Uygulanan her teklifin farklı bir **Mspoffername** kullanması gerekir.
 
 Seçtiğiniz şablon, bir aboneliğin tüm aboneliğini, kaynak grubunu veya birden çok kaynak grubunu mı, yoksa bir abonelik içinde mi sundığınıza bağlıdır. Ayrıca, aboneliklerini bu şekilde eklemek isterseniz, Azure Marketi 'Nde yayımladığınız yönetilen hizmet teklifini satın alan müşteriler için kullanılabilecek bir şablon sunuyoruz.
 
@@ -211,8 +211,8 @@ Dağıtım Azure portal, PowerShell kullanılarak veya aşağıda gösterildiği
 ### <a name="azure-portal"></a>Azure portal
 
 1. [GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)deponuzda, kullanmak istediğiniz şablonun yanında gösterilen **Azure 'a dağıt** düğmesini seçin. Şablon Azure portalda açılır.
-1. **MSP teklif adı**, **MSP teklif açıklaması**, **Kiracı kimliği tarafından yönetilen**ve **yetkilendirmeler**için değerlerinizi girin. İsterseniz **parametreleri Düzenle** ' yi seçerek `mspOfferName` parametre dosyasında,,, `mspOfferDescription` `managedbyTenantId` ve doğrudan değerlerini girebilirsiniz `authorizations` . Şablondaki varsayılan değerleri kullanmak yerine bu değerleri güncelleştirdiğinizden emin olun.
-1. **Gözden geçir ve oluştur**' u seçin ve **Oluştur**' u seçin.
+1. **MSP teklif adı** , **MSP teklif açıklaması** , **Kiracı kimliği tarafından yönetilen** ve **yetkilendirmeler** için değerlerinizi girin. İsterseniz **parametreleri Düzenle** ' yi seçerek `mspOfferName` parametre dosyasında,,, `mspOfferDescription` `managedbyTenantId` ve doğrudan değerlerini girebilirsiniz `authorizations` . Şablondaki varsayılan değerleri kullanmak yerine bu değerleri güncelleştirdiğinizden emin olun.
+1. **Gözden geçir ve oluştur** ' u seçin ve **Oluştur** ' u seçin.
 
 Birkaç dakika sonra dağıtımın tamamlandığını belirten bir bildirim görmeniz gerekir.
 
@@ -265,7 +265,7 @@ Bir müşteri aboneliğinin Azure Mathouse 'a başarıyla eklendi, hizmet sağla
 Hizmet sağlayıcısının kiracısında:
 
 1. [Müşterilerimiz sayfasına](view-manage-customers.md)gidin.
-2. **Müşteriler**’i seçin.
+2. **Müşteriler** ’i seçin.
 3. Kaynak Yöneticisi şablonunda verdiğiniz teklif adı ile abonelik (ler) i görmek istediğinizi onaylayın.
 
 > [!IMPORTANT]
@@ -274,7 +274,7 @@ Hizmet sağlayıcısının kiracısında:
 Müşterinin kiracısında:
 
 1. [Hizmet sağlayıcıları sayfasına](view-manage-service-providers.md)gidin.
-2. **Hizmet sağlayıcısı teklifleri**’ni seçin.
+2. **Hizmet sağlayıcısı teklifleri** ’ni seçin.
 3. Kaynak Yöneticisi şablonunda verdiğiniz teklif adı ile abonelik (ler) i görmek istediğinizi onaylayın.
 
 > [!NOTE]

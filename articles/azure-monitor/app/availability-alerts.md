@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 300c4bcdb948665b2cdf4ce0eb429499208660b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0e8540d9488e9cc3756eb09c69349ac90d20b83
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970756"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043382"
 ---
 # <a name="availability-alerts"></a>Kullanılabilirlik uyarıları
 
@@ -28,11 +28,11 @@ Uyarılar artık varsayılan olarak otomatik olarak etkinleştirilir, ancak uyar
 
 1. Kullanılabilirlik testini kaydettikten sonra, Ayrıntılar sekmesinde, yeni yaptığınız teste göre üç noktaya tıklayın. "Uyarıyı Düzenle" seçeneğine tıklayın.
 
-   ![Kaydettikten sonra Düzenle](./media/availability-alerts/edit-alert.png)
+   ![Ekran görüntüsü menüden düzenleme uyarısını gösterir.](./media/availability-alerts/edit-alert.png)
 
 2. İstenen önem derecesi düzeyi, kural açıklaması ve en önemlisi-bu uyarı kuralı için kullanmak istediğiniz bildirim tercihlerine sahip olan eylem grubunu ayarlayın.
 
-   ![Kaydettikten sonra Düzenle](./media/availability-alerts/set-action-group.png)
+   ![Ekran görüntüsü, kuralı düzenleyebileceğiniz kural yönetimi sayfasını gösterir.](./media/availability-alerts/set-action-group.png)
 
 > [!NOTE]
 > Bu deneyim aracılığıyla oluşturulan kullanılabilirlik uyarıları durum tabanlıdır. Bu, site kullanılamaz olarak algılandığında, uyarı ölçütleri karşılandığında tek bir uyarının oluşturulduğu anlamına gelir. Uyarı ölçütlerinin bir sonraki değerlendirilme durumunda site hala kapalıysa, bu yeni bir uyarı oluşturmaz. Bu nedenle, siteniz bir saat boyunca kapalıysa ve bir e-posta uyarısı oluşturduysanız, site geri geldiğinde yalnızca bir e-posta alacaksınız ve site yedeklenmişse sonraki bir e-posta alırsınız. Sitenin hala kullanılamadığını belirten sürekli uyarılar almazsınız.

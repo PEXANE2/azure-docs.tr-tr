@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a59939fc7988e1a94bdfb9fac2d77011422e4983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b763a1cda91886946bba211f589c37940e7c3ae1
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87274689"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042811"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -70,7 +70,7 @@ Kuruluşlar, koşullu erişim ilkesinin bir parçası olarak cihaz kimliğini ku
 
 Kuruluşlar, onaylanan bir istemci uygulamasından seçili bulut uygulamalarına yönelik bir erişim denemesinin yapılması gerektiğini gerektirebilir. Bu onaylanan istemci uygulamaları, mobil cihaz yönetimi (MDM) çözümünden bağımsız olarak [Intune uygulama koruma ilkelerini](/intune/app-protection-policy) destekler.
 
-Bu izin denetiminden yararlanmak için, koşullu erişim cihazın bir aracı uygulamasının kullanılmasını gerektiren Azure Active Directory kaydedilmesini gerektirir. Aracı uygulama, iOS için Microsoft Authenticator ya da Android cihazlar için Microsoft Şirket portalı olabilir. Kullanıcı kimlik doğrulamaya çalıştığında cihazda bir aracı uygulaması yüklü değilse, aracı uygulamasını yüklemek için Kullanıcı App Store 'a yönlendirilir.
+Bu izin denetiminden yararlanmak için, koşullu erişim cihazın bir aracı uygulamasının kullanılmasını gerektiren Azure Active Directory kaydedilmesini gerektirir. Aracı uygulaması iOS için Microsoft Authenticator veya Android cihazları için Microsoft Authenticator ya da Microsoft şirket portalı olabilir. Kullanıcı kimlik doğrulamaya çalıştığında cihaza bir aracı uygulaması yüklü değilse, Kullanıcı gerekli Aracı uygulamasını yüklemek için uygun uygulama/yürütme deposuna yönlendirilir.
 
 Bu ayar, aşağıdaki iOS ve Android uygulamaları için geçerlidir:
 

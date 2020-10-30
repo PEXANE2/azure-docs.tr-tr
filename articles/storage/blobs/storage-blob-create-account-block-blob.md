@@ -5,23 +5,20 @@ author: tamram
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/10/2020
+ms.date: 10/28/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0af98993cc4b3c7d19cdaa61cd7a35e3b444a3df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19d70642a6c76239f62b2fd6f7e713430a7adfbb
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613807"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043093"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage hesabı oluşturma
 
 BlockBlobStorage hesap türü, Premium performans özellikleriyle blok Blobları oluşturmanızı sağlar. Bu depolama hesabı türü, yüksek işlem ücretleri olan veya çok hızlı erişim süreleri gerektiren iş yükleri için iyileştirilmiştir. Bu makalede Azure portal, Azure CLı veya Azure PowerShell kullanarak bir blok Blobstorage hesabının nasıl oluşturulacağı gösterilmektedir.
-
-> [!NOTE]
-> Bir Blok Blobu depolama hesabındaki hiyerarşik ad alanı özelliği genel önizlemede bulunur ve ABD Doğu, ABD Doğu 2, ABD Orta, ABD Orta Güney, ABD Batı 2, UK Güney, Kanada Orta ve Avustralya Doğu bölgelerinde kullanılabilir. Sınırlamaları gözden geçirmek için, Azure Data Lake Storage 2. ve [bilinen sorunlarda](data-lake-storage-known-issues.md)bulunan [BLOB Storage özellikleri](data-lake-storage-supported-blob-storage-features.md) bölümüne bakın. Önizlemeye kaydolmak için [Bu forma](https://aka.ms/adlspremiumonboard)bakın.
 
 BlockBlobStorage hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
@@ -91,13 +88,13 @@ az login
 ## <a name="portal"></a>[Portal](#tab/azure-portal)
 Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure portal **depolama** kategorisi > depolama **hesapları**> **tüm hizmetler** ' i seçin.
+1. Azure portal **depolama** kategorisi > depolama **hesapları** > **tüm hizmetler** ' i seçin.
 
-2. **Depolama hesapları**altında **Ekle**' yi seçin.
+2. **Depolama hesapları** altında **Ekle** ' yi seçin.
 
 3. **Abonelik** alanında, depolama hesabının oluşturulacağı aboneliği seçin.
 
-4. **Kaynak grubu** alanında, var olan bir kaynak grubunu seçin veya **Yeni oluştur**' u seçin ve yeni kaynak grubu için bir ad girin.
+4. **Kaynak grubu** alanında, var olan bir kaynak grubunu seçin veya **Yeni oluştur** ' u seçin ve yeni kaynak grubu için bir ad girin.
 
 5. **Depolama hesabı adı** alanına hesap için bir ad girin. Aşağıdaki yönergeleri dikkate alın:
 
@@ -111,24 +108,22 @@ Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımla
 
    |Alan     |Değer  |
    |---------|---------|
-   |**Performans**    |  **Premium**' u seçin.   |
-   |**Hesap türü**    | **Blockblobstorage**' ı seçin.      |
+   |**Performans**    |  **Premium** ' u seçin.   |
+   |**Hesap türü**    | **Blockblobstorage** ' ı seçin.      |
    |**Çoğaltma**    |  **Yerel olarak yedekli depolama (LRS)** varsayılan ayarını bırakın.      |
 
    ![Bir Blok Blobu depolama hesabı oluşturmak için Portal Kullanıcı arabirimini gösterir](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
 8. **Gelişmiş** sekmesini seçin.
 
-9. Veri analizi için depolama hesabınızı iyileştirmek isterseniz, **hiyerarşik ad alanını** **etkin**olarak ayarlayın. Aksi takdirde, bu seçeneği varsayılan değeri olarak ayarlayın.
-
-   Daha fazla bilgi edinmek için bkz. [Azure Data Lake Storage 2. giriş](data-lake-storage-introduction.md).
+9. Veri analizi için depolama hesabınızı iyileştirmek isterseniz, **hiyerarşik ad alanını** **etkin** olarak ayarlayın. Aksi takdirde, bu seçeneği varsayılan değeri olarak ayarlayın. BlockBlobStorage hesabınızla bu ayarı etkinleştirmek, [Data Lake Storage için Premium katman](premium-tier-for-data-lake-storage.md)sağlar.  Data Lake Storage hakkında daha fazla bilgi edinmek için bkz. [Azure Data Lake Storage 2. giriş](data-lake-storage-introduction.md).
 
    > [!NOTE]
-   > Bir Blok Blobu depolama hesabındaki hiyerarşik ad alanı özelliği genel önizlemede bulunur ve ABD Doğu, ABD Doğu 2, ABD Orta, ABD Orta Güney, ABD Batı 2, UK Güney, Kanada Orta ve Avustralya Doğu bölgelerinde kullanılabilir. Sınırlamaları gözden geçirmek için, Azure Data Lake Storage 2. ve [bilinen sorunlarda](data-lake-storage-known-issues.md)bulunan [BLOB Storage özellikleri](data-lake-storage-supported-blob-storage-features.md) bölümüne bakın. Önizlemeye kaydolmak için [Bu forma](https://aka.ms/adlspremiumonboard)bakın.
+   > Blok Blobu depolama hesabındaki hiyerarşik ad alanı özelliği genel önizlemeye sunuldu. Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [Bölgesel kullanılabilirlik](premium-tier-for-data-lake-storage.md#regional-availability).
 
 8. Depolama hesabı ayarlarını gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
 
-9. **Oluştur**’u seçin.
+9. **Oluştur** ’u seçin.
 
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -165,10 +160,10 @@ Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımla
 
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
-   Veri analizi için depolama hesabınızı iyileştirmek istiyorsanız `-EnableHierarchicalNamespace $True` komuta ekleyin. Daha fazla bilgi edinmek için bkz. [Azure Data Lake Storage 2. giriş](data-lake-storage-introduction.md).
+   Veri analizi için depolama hesabınızı iyileştirmek istiyorsanız `-EnableHierarchicalNamespace $True` komuta ekleyin. BlockBlobStorage hesabınızla bu ayarı etkinleştirmek, [Data Lake Storage için Premium katman](premium-tier-for-data-lake-storage.md)sağlar.  Data Lake Storage hakkında daha fazla bilgi edinmek için bkz. [Azure Data Lake Storage 2. giriş](data-lake-storage-introduction.md).
 
    > [!NOTE]
-   > Bir Blok Blobu depolama hesabındaki hiyerarşik ad alanı özelliği genel önizlemede bulunur ve ABD Doğu, ABD Doğu 2, ABD Orta, ABD Orta Güney, ABD Batı 2, UK Güney, Kanada Orta ve Avustralya Doğu bölgelerinde kullanılabilir. Sınırlamaları gözden geçirmek için, Azure Data Lake Storage 2. ve [bilinen sorunlarda](data-lake-storage-known-issues.md)bulunan [BLOB Storage özellikleri](data-lake-storage-supported-blob-storage-features.md) bölümüne bakın. Önizlemeye kaydolmak için [Bu forma](https://aka.ms/adlspremiumonboard)bakın.
+   > Blok Blobu depolama hesabındaki hiyerarşik ad alanı özelliği genel önizlemeye sunuldu. Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [Bölgesel kullanılabilirlik](premium-tier-for-data-lake-storage.md#regional-availability).
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -199,10 +194,10 @@ Azure CLı kullanarak bir Blok Blobu hesabı oluşturmak için önce Azure CLı 
     --sku "Premium_LRS"
    ```
 
-   Veri analizi için depolama hesabınızı iyileştirmek istiyorsanız `--hierarchical-namespace true` komuta ekleyin. Daha fazla bilgi edinmek için bkz. [Azure Data Lake Storage 2. giriş](data-lake-storage-introduction.md).
-
+   Veri analizi için depolama hesabınızı iyileştirmek istiyorsanız `--hierarchical-namespace true` komuta ekleyin. BlockBlobStorage hesabınızla bu ayarı etkinleştirmek, [Data Lake Storage için Premium katman](premium-tier-for-data-lake-storage.md)sağlar.  Data Lake Storage hakkında daha fazla bilgi edinmek için bkz. [Azure Data Lake Storage 2. giriş](data-lake-storage-introduction.md).
+   
    > [!NOTE]
-   > Bir Blok Blobu depolama hesabındaki hiyerarşik ad alanı özelliği genel önizlemede bulunur ve ABD Doğu, ABD Doğu 2, ABD Orta, ABD Orta Güney, ABD Batı 2, UK Güney, Kanada Orta ve Avustralya Doğu bölgelerinde kullanılabilir. Sınırlamaları gözden geçirmek için, Azure Data Lake Storage 2. ve [bilinen sorunlarda](data-lake-storage-known-issues.md)bulunan [BLOB Storage özellikleri](data-lake-storage-supported-blob-storage-features.md) bölümüne bakın. Önizlemeye kaydolmak için [Bu forma](https://aka.ms/adlspremiumonboard)bakın.
+   > Blok Blobu depolama hesabındaki hiyerarşik ad alanı özelliği genel önizlemeye sunuldu. Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [Bölgesel kullanılabilirlik](premium-tier-for-data-lake-storage.md#regional-availability).
    
 ---
 

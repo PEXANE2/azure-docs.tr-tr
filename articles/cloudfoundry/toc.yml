@@ -8,15 +8,15 @@
 - name: Öğreticiler
   items:
     - name: Azure üzerinde CF oluşturma
-      href: /azure/cloudfoundry/create-cloud-foundry-on-azure
+      href: ./create-cloud-foundry-on-azure.md
     - name: CF Uygulamasını Azure’a dağıtma
-      href: /azure/cloudfoundry/cloudfoundry-deploy-your-first-app
+      href: ./cloudfoundry-deploy-your-first-app.md
     - name: Azure üzerinde CloudFoundry
-      href: /azure/cloudfoundry/cloudfoundry-get-started
+      href: ./cloudfoundry-get-started.md
     - name: CF OMS Nozzle dağıtma
-      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+      href: ./cloudfoundry-oms-nozzle.md
     - name: Cloud Foundry ile Azure’ı tümleştirme
-      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
+      href: ./how-cloud-foundry-integrates-with-azure.md
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

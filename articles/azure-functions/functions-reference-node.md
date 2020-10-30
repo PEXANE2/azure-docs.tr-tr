@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 86a512ea0e07f5eb2ce00ff27427139c5221d229
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 758e11a9c043fbd1238d1e3533a2d83804ec0b73
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164831"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043107"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -107,13 +107,13 @@ JavaScript 'te [bağlamalar](functions-triggers-bindings.md) , üzerinde bir iş
 
 ### <a name="inputs"></a>Girişler
 Giriş, Azure Işlevlerinde iki kategoriye ayrılmıştır: biri tetikleyici girişi, diğeri ise ek giriştir. Tetikleyici ve diğer giriş bağlamaları (bağlamaları `direction === "in"` ), bir işlev tarafından üç şekilde okunabilir:
- - **_[Önerilir]_ İşlevlerinizi parametre olarak geçirdi.** Bunlar, * üzerindefunction.js*tanımlandıkları sırada işleve geçirilir. `name` *function.jsüzerinde* tanımlanan özelliğin, parametresinin adı ile eşleşmesi gerekir, ancak.
+ - **_[Önerilir]_ İşlevlerinizi parametre olarak geçirdi.** Bunlar, *üzerindefunction.js* tanımlandıkları sırada işleve geçirilir. `name` *function.jsüzerinde* tanımlanan özelliğin, parametresinin adı ile eşleşmesi gerekir, ancak.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **Nesnesinin üyeleri olarak [`context.bindings`](#contextbindings-property) .** Her üye, `name` *function.jsüzerinde*tanımlanan özellik tarafından adlandırılır.
+ - **Nesnesinin üyeleri olarak [`context.bindings`](#contextbindings-property) .** Her üye, `name` *function.jsüzerinde* tanımlanan özellik tarafından adlandırılır.
  
    ```javascript
    module.exports = async function(context) { 
@@ -138,7 +138,7 @@ Giriş, Azure Işlevlerinde iki kategoriye ayrılmıştır: biri tetikleyici gir
 
 Çıkış bağlamalarına aşağıdaki yöntemlerden birini uygulayarak veri atayabilirsiniz (Bu yöntemleri birleştirmeyin):
 
-- **_[Birden çok çıkış Için önerilir]_ Bir nesne döndürülüyor.** Zaman uyumsuz/Promise döndüren bir işlev kullanıyorsanız, atanmış çıkış verileri olan bir nesne döndürebilirsiniz. Aşağıdaki örnekte, çıkış bağlamaları * üzerindefunction.js*"HttpResponse" ve "queueoutput" olarak adlandırılmıştır.
+- **_[Birden çok çıkış Için önerilir]_ Bir nesne döndürülüyor.** Zaman uyumsuz/Promise döndüren bir işlev kullanıyorsanız, atanmış çıkış verileri olan bir nesne döndürebilirsiniz. Aşağıdaki örnekte, çıkış bağlamaları *üzerindefunction.js* "HttpResponse" ve "queueoutput" olarak adlandırılmıştır.
 
   ```javascript
   module.exports = async function(context) {
@@ -325,10 +325,10 @@ Varsayılan düzeyin yanı sıra, belirli izleme düzeylerinde işlev günlükle
 
 | Yöntem                 | Açıklama                                |
 | ---------------------- | ------------------------------------------ |
-| **hata (_ileti_)**   | Günlüklere hata düzeyi bir olay yazar.   |
-| **uyar (_ileti_)**    | Günlüklere uyarı düzeyi bir olay yazar. |
-| **bilgi (_ileti_)**    | Bilgi düzeyinde günlüğe kaydetme veya daha düşük bir yazma.    |
-| **ayrıntılı (_ileti_)** | Ayrıntılı düzey günlüğe kaydetmeye yazar.           |
+| **hata ( _ileti_ )**   | Günlüklere hata düzeyi bir olay yazar.   |
+| **uyar ( _ileti_ )**    | Günlüklere uyarı düzeyi bir olay yazar. |
+| **bilgi ( _ileti_ )**    | Bilgi düzeyinde günlüğe kaydetme veya daha düşük bir yazma.    |
+| **ayrıntılı ( _ileti_ )** | Ayrıntılı düzey günlüğe kaydetmeye yazar.           |
 
 Aşağıdaki örnek, bilgi düzeyi yerine uyarı izleme düzeyinde aynı günlüğü Yazar:
 
@@ -358,7 +358,7 @@ Günlüklere ve konsola yazılan tüm izlemelerin eşiğini ayarlamak için `tra
 }  
 ```
 
-**Consolelevel** değerleri, yöntemlerin adlarına karşılık gelir `context.log` . Konsola tüm izleme günlüğünü devre dışı bırakmak için **Consolelevel** ' ı _off_olarak ayarlayın. Daha fazla bilgi için, bkz [ . v1. x başvurusuhost.js](functions-host-json-v1.md).
+**Consolelevel** değerleri, yöntemlerin adlarına karşılık gelir `context.log` . Konsola tüm izleme günlüğünü devre dışı bırakmak için **Consolelevel** ' ı _off_ olarak ayarlayın. Daha fazla bilgi için, bkz [ . v1. x başvurusuhost.js](functions-host-json-v1.md).
 
 ---
 
@@ -545,12 +545,12 @@ Kaynak denetiminden Işlev uygulamaları dağıttığınızda, deponuzda bulunan
 ### <a name="using-kudu"></a>Kudu kullanma
 1. `https://<function_app_name>.scm.azurewebsites.net` öğesine gidin.
 
-2. **Hata ayıklama konsolu**  >  **cmd**' ye tıklayın.
+2. **Hata ayıklama konsolu**  >  **cmd** ' ye tıklayın.
 
 3. `D:\home\site\wwwroot`' A gidin ve ardından package.jsdosyayı sayfanın üst yarısında **Wwwroot** klasörüne sürükleyin.  
     Dosyaları işlev uygulamanıza başka yollarla da yükleyebilirsiniz. Daha fazla bilgi için bkz. [işlev uygulama dosyalarını güncelleştirme](functions-reference.md#fileupdate). 
 
-4. Dosyadaki package.jskarşıya yüklendikten sonra, `npm install` **kudu uzaktan yürütme konsolunda**komutunu çalıştırın.  
+4. Dosyadaki package.jskarşıya yüklendikten sonra, `npm install` **kudu uzaktan yürütme konsolunda** komutunu çalıştırın.  
     Bu eylem, dosyadaki package.jsbelirtilen paketleri indirir ve işlev uygulamasını yeniden başlatır.
 
 ## <a name="environment-variables"></a>Ortam değişkenleri

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 5c18a904f0ec0f100312ee3fafb53038bd2ccf19
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1da7221b511cb07e5000f09e4015fc8bd4a0a928
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745691"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043316"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı'nı kullanarak Azure'ı ITSM araçlarına bağlama
 
@@ -57,7 +57,7 @@ Bir bağlantı oluşturabilmeniz için önce ITSM Bağlayıcısı çözümünü 
 3. **OMS çalışma alanı** bölümünde, çözümü yüklemek istediğiniz Azure Log Analytics çalışma alanını seçin.
    >[!NOTE]
    > * Microsoft Operations Management Suite (OMS) ile Azure Izleyici arasında devam eden geçişin bir parçası olarak, OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
-   > * ITSM Bağlayıcısı, yalnızca şu bölgelerde Log Analytics çalışma alanlarında yüklenebilir: Doğu ABD, Batı ABD2, Orta Güney ABD, Orta Batı ABD, Fairfax, Orta Kanada, Batı Avrupa, Güney UK, Güneydoğu Asya, Doğu Japonya, Orta Hindistan, Güneydoğu Avustralya.
+   > * ITSM Bağlayıcısı yalnızca şu bölgelerde Log Analytics çalışma alanlarına yüklenebilir: Doğu ABD, Batı ABD2, Orta Güney ABD, Orta Batı ABD, US Gov Arizona, US Gov Virginia, Orta Kanada, Batı Avrupa, Güney UK, Güneydoğu Asya, Doğu Japonya, Orta Hindistan, Güneydoğu Avustralya.
 
 4. **OMS çalışma alanı ayarları** bölümünde, çözüm kaynağını oluşturmak istediğiniz ResourceGroup öğesini seçin.
 
@@ -246,7 +246,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Planlanan bitiş tarihi
 - Çalışma başlangıç tarihi
 - Çalışma bitiş tarihi
-- Açıklama
+- Description
 - Bilgisayar
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow olayı için çıkış verileri
@@ -293,7 +293,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | PlannedEndDate_t  |   Planlanan bitiş tarihi |
 | WorkStartDate_t  | Gerçek başlangıç tarihi |
 | WorkEndDate_t | Gerçek bitiş tarihi|
-| Description_s | Açıklama |
+| Description_s | Description |
 | Bilgisayar  | Yapılandırma öğesi |
 
 

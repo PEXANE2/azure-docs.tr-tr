@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: e8ecb0dde2208b367362f26f654ec8eb83c7a777
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5d02085fe4850dacf6e876b42cf301df2ea76713
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016204"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043326"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 ve Edsv4 serisi
 
@@ -29,10 +29,10 @@ Edv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) işle
 [Premium depolama önbelleği](premium-storage-performance.md): desteklenmiyor<br>
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
-[VM oluşturma desteği](generation-2.md): 1. nesil<br>
+[VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
 <br>
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps | En fazla NIC|Beklenen ağ bant genişliği (MB/sn) |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | <sup>**</sup> Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps | En fazla NIC|Beklenen ağ bant genişliği (MB/sn) |
 |---|---|---|---|---|---|---|---|
 | Standard_E2d_v4  | 2 | 16 | 75 | 4 | 19000/120 | 2|1000 |
 | Standard_E4d_v4  | 4 | 32 | 150 | 8 | 38500/242 | 2|2000 |
@@ -44,6 +44,8 @@ Edv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) işle
 | Standard_E64d_v4 | 64 | 504 | 2400 | 32 | 615000/3872 | 8|30000 |
 
 
+<sup>**</sup>Bu IOPS değerleri [Gen2 VM 'leri](generation-2.md) kullanılarak garanti edilebilir
+
 ## <a name="edsv4-series"></a>Edsv4 serisi
 
 Edsv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) işlemcileri üzerinde çalışır. Edsv4 sanal makinesi, hızlı ve büyük yerel SSD depolamaya (2.400 GiB 'ye kadar) ek olarak 504 GiB 'a kadar RAM özelliğine sahiptir. Bu sanal makineler, düşük gecikme süresi, yüksek hızlı yerel depolama 'dan faydalanabilecek bellek yoğunluklu kurumsal uygulamalar ve uygulamalar için idealdir.
@@ -53,10 +55,10 @@ Edsv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) işl
 [Premium depolama önbelleği](premium-storage-performance.md): desteklenir<br>
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
-[VM oluşturma desteği](generation-2.md): 1. nesil<br>
+[VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
 <br>
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC|Beklenen ağ bant genişliği (MB/sn) |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | <sup>**</sup> Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC|Beklenen ağ bant genişliği (MB/sn) |
 |---|---|---|---|---|---|---|---|---|
 | Standard_E2ds_v4  | 2 | 16 | 75 | 4 | 19000/120 (50) | 3200/48 | 2|1000 |
 | Standard_E4ds_v4  | 4 | 32 | 150 | 8 | 38500/242 (100) | 6400/96 | 2|2000 |

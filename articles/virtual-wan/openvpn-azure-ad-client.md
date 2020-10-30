@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: e64de987bd82f6b93350cdd706fc1a243d2855b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecebaf9384bcb0dbbb6fe36df4dd474738422149
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90977839"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043416"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN protokolü bağlantıları için VPN istemcisi yapılandırma: Azure AD kimlik doğrulaması
 
@@ -32,7 +32,7 @@ Azure VPN Istemcisini indirmek için bu [bağlantıyı](https://go.microsoft.com
 
 1. Başlat ' a gidin, ardından ayarlar > gizlilik > arka plan uygulamaları ' nı seçin.
 2. Arka plan uygulamaları altında, **arka planda uygulamaların çalışmasına Izin ver** ' in açık olduğundan emin olun.
-3. Arka planda hangi uygulamaların çalışabileceğini seçin altında, Azure VPN Istemcisi ayarlarını **Açık**olarak açın.
+3. Arka planda hangi uygulamaların çalışabileceğini seçin altında, Azure VPN Istemcisi ayarlarını **Açık** olarak açın.
 
   ![yetkisi](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
@@ -54,111 +54,111 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 Çalışma profiliniz varsa ve diğer kullanıcılara dağıtmanız gerekiyorsa, aşağıdaki adımları kullanarak dışarı aktarabilirsiniz:
 
-1. Dışarı aktarmak istediğiniz VPN istemci profilini vurgulayın, **...** öğesini seçin ve ardından **dışarı aktar**' ı seçin.
+1. Dışarı aktarmak istediğiniz VPN istemci profilini vurgulayın, **...** öğesini seçin ve ardından **dışarı aktar** ' ı seçin.
 
-    ![dışarı aktarma](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![Ekran görüntüsünde, menüden dışa aktarma seçili görüntülenir.](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Bu profili kaydetmek istediğiniz konumu seçin, dosya adını olduğu gibi bırakın ve **Kaydet** ' i seçerek XML dosyasını kaydedin.
 
-    ![dışarı aktarma](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![Ekran görüntüsü, bir dosya adı girebileceğiniz bir farklı Kaydet iletişim kutusu gösterir.](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>İstemci profilini içeri aktarmak için
 
-1. Sayfasında **Içeri aktar**' ı seçin.
+1. Sayfasında **Içeri aktar** ' ı seçin.
 
-    ![içeri aktar](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![Ekran görüntüsü artı menüsünden Seçili Içeri aktarmayı gösterir.](./media/openvpn-azure-ad-client/import/import1.jpg)
 
-2. Profil XML dosyasına gidin ve seçin. Dosya seçili olduğunda **Aç**' ı seçin.
+2. Profil XML dosyasına gidin ve seçin. Dosya seçili olduğunda **Aç** ' ı seçin.
 
-    ![içeri aktar](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![Ekran görüntüsü, bir dosyayı seçebileceğiniz açık bir iletişim kutusu gösterir.](./media/openvpn-azure-ad-client/import/import2.jpg)
 
-3. Profilin adını belirtin ve **Kaydet**' i seçin.
+3. Profilin adını belirtin ve **Kaydet** ' i seçin.
 
-    ![içeri aktar](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![Ekran görüntüsünde, eklenen bağlantı adı ve Kaydet düğmesi seçili görüntülenir.](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. VPN 'ye bağlanmak için **Bağlan** ' ı seçin.
 
-    ![içeri aktar](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![Ekran görüntüsü, yeni oluşturduğunuz bağlantı için Bağlan düğmesini gösterir.](./media/openvpn-azure-ad-client/import/import4.jpg)
 
-5. Bağlandıktan sonra simge yeşil ve **bağlı**olarak görünür.
+5. Bağlandıktan sonra simge yeşil ve **bağlı** olarak görünür.
 
-    ![içeri aktar](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![Ekran görüntüsü, bağlantıyı kesme seçeneğiyle bağlı bir durumda gösterir.](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="to-delete-a-client-profile"></a><a name="delete"></a>İstemci profilini silmek için
 
-1. Silmek istediğiniz istemci profilinin yanındaki üç nokta simgesini seçin. Ardından **Kaldır**' ı seçin.
+1. Silmek istediğiniz istemci profilinin yanındaki üç nokta simgesini seçin. Ardından **Kaldır** ' ı seçin.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![Ekran görüntüsü menüden Seçileni kaldır 'ı gösterir.](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Silmek için **Kaldır** ' ı seçin.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![Ekran görüntüsü, kaldırma veya Iptal etme seçeneğiyle bir onay iletişim kutusu gösterir.](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Bağlantı oluşturma
 
-1. Sayfasında **+** , ve ardından **+ Ekle**' yi seçin.
+1. Sayfasında **+** , ve ardından **+ Ekle** ' yi seçin.
 
-    ![bağlantı](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![Ekran görüntüsü artı menüsünden Seçileni Ekle ' ye gösterir.](./media/openvpn-azure-ad-client/create/create1.jpg)
 
-2. Bağlantı bilgilerini doldurun. Değerlerden emin değilseniz yöneticinize başvurun. Değerleri doldurduktan sonra **Kaydet**' i seçin.
+2. Bağlantı bilgilerini doldurun. Değerlerden emin değilseniz yöneticinize başvurun. Değerleri doldurduktan sonra **Kaydet** ' i seçin.
 
-    ![bağlantı](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![Ekran görüntüsü, gerekli değerleri girebileceğiniz bölmeyi gösterir.](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. VPN 'ye bağlanmak için **Bağlan** ' ı seçin.
 
-    ![bağlantı](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![Ekran görüntüsü, bağlantınızın Bağlan düğmesini gösterir.](./media/openvpn-azure-ad-client/create/create3.jpg)
 
-4. Doğru kimlik bilgilerini seçip **devam**' ı seçin.
+4. Doğru kimlik bilgilerini seçip **devam** ' ı seçin.
 
-    ![bağlantı](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![Ekran görüntüsü oturum aç iletişim kutusunu gösterir.](./media/openvpn-azure-ad-client/create/create4.jpg)
 
-5. Başarılı bir şekilde bağlandıktan sonra simge yeşil ve **bağlı**olarak görünür.
+5. Başarılı bir şekilde bağlandıktan sonra simge yeşil ve **bağlı** olarak görünür.
 
-    ![bağlantı](./media/openvpn-azure-ad-client/create/create5.jpg)
+    ![Ekran görüntüsü bağlı durumdaki bağlantıyı gösterir.](./media/openvpn-azure-ad-client/create/create5.jpg)
 
 ### <a name="to-connect-automatically"></a><a name="autoconnect"></a>Otomatik olarak bağlanmak için
 
 Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak şekilde yapılandırmanıza yardımcı olur.
 
-1. VPN istemcinizin ana sayfasında **VPN ayarları**' nı seçin.
+1. VPN istemcinizin ana sayfasında **VPN ayarları** ' nı seçin.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![Ekran görüntüsü, v p n ayarlarını seçebileceğiniz V P N bağlantılarını gösterir.](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. Uygulamalar arasında geçiş yap iletişim kutusunda **Evet** ' i seçin.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![Ekran görüntüsü, uygulama değiştirme hakkında bir doğrulama iletisi gösterir.](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. Ayarlamak istediğiniz bağlantının zaten bağlı olmadığından emin olun, sonra profili vurgulayın ve **otomatik olarak bağlan** onay kutusunu işaretleyin.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![Ekran görüntüsü, otomatik olarak bağlan ' ı seçebileceğiniz bir ayarlar iletişim kutusu gösterir.](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. VPN bağlantısını başlatmak için **Bağlan** ' ı seçin.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![Ekran görüntüsü Bağlan düğmesini gösterir.](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Bağlantı sorunlarını Tanıla
 
-1. Bağlantı sorunlarını tanılamak için **Tanılama** aracını kullanabilirsiniz. Menüyü açığa çıkarmak için tanılamak istediğiniz VPN bağlantısının yanındaki **...** seçeneğini belirleyin. Ardından **Tanıla**' yı seçin.
+1. Bağlantı sorunlarını tanılamak için **Tanılama** aracını kullanabilirsiniz. Menüyü açığa çıkarmak için tanılamak istediğiniz VPN bağlantısının yanındaki **...** seçeneğini belirleyin. Ardından **Tanıla** ' yı seçin.
 
-    ![tanın](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
+    ![Ekran görüntüsü, menüden seçili tanılamayı gösterir.](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
-2. **Bağlantı özellikleri** sayfasında, **tanı Çalıştır**' ı seçin.
+2. **Bağlantı özellikleri** sayfasında, **tanı Çalıştır** ' ı seçin.
 
-    ![tanın](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
+    ![Ekran görüntüsü, bir bağlantı için tanılama Çalıştır düğmesini gösterir.](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
 3. Kimlik bilgilerinizle oturum açın.
 
-    ![tanın](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
+    ![Ekran görüntüsü bu eylem için oturum açma iletişim kutusunu gösterir.](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
 
 4. Tanılama sonuçlarını görüntüleyin.
 
-    ![tanın](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
+    ![Ekran görüntüsü, tanılamada sonuçları gösterir.](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
 ## <a name="faq"></a>SSS
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine DNS sonekleri eklensin mi?
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> ** etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve **\<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes>** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>
@@ -176,7 +176,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine özel DNS sunucuları eklensin mi?
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve **\<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers>** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>
@@ -197,7 +197,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine özel yollar eklensin mi?
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> ** etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve **\<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes>** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>
@@ -214,7 +214,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 ```
 ### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a>Tüm trafiği VPN tüneline (Zorlamalı tünel) yönlendirmek Nasıl yaparım??
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> ** etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve **\<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes>** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>
@@ -235,7 +235,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>VPN istemcisinden gelen yollar engellensin mi (hariç) Nasıl yaparım??
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> ** etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve **\<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes>** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>
