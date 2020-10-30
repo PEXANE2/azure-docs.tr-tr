@@ -1,26 +1,28 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/19/2020
+ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e85dc8c079205484db9b7b7c43a0086f69feb3be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8e3df77df53b887c4367e46b05d8a7ea4eed2f6
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80059970"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061666"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>Otomatik olarak imzalanan kök sertifika oluşturma
 
 Otomatik olarak imzalanan bir kök sertifika oluşturmak için New-SelfSignedCertificate cmdlet 'ini kullanın. Ek parametre bilgileri için, bkz. [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
 1. Windows 10 veya Windows Server 2016 çalıştıran bir bilgisayardan yükseltilmiş ayrıcalıklarla bir Windows PowerShell konsolu açın. Bu örnekler, "TRY It" Azure Cloud Shell çalışmaz. Bu örnekleri yerel olarak çalıştırmanız gerekir.
-2. Otomatik olarak imzalanan kök sertifika oluşturmak için aşağıdaki örneği kullanın. Aşağıdaki örnek, ' sertifikalar-geçerli kullanıcı \ kişisel \ Sertifikalar ' ' a otomatik olarak yüklenen ' P2SRootCert ' adlı otomatik olarak imzalanan bir kök sertifika oluşturur. Sertifikayı *certmgr. msc*' yi açarak veya *Kullanıcı sertifikalarını yönettiğinizde*görüntüleyebilirsiniz.
+1. Otomatik olarak imzalanan kök sertifika oluşturmak için aşağıdaki örneği kullanın. Aşağıdaki örnek, ' sertifikalar-geçerli kullanıcı \ kişisel \ Sertifikalar ' ' a otomatik olarak yüklenen ' P2SRootCert ' adlı otomatik olarak imzalanan bir kök sertifika oluşturur. Sertifikayı *certmgr. msc* ' yi açarak veya *Kullanıcı sertifikalarını yönettiğinizde* görüntüleyebilirsiniz.
+
+   Cmdlet 'ini kullanarak oturum açın `Connect-AzAccount` . Ardından, gerekli değişikliklerle aşağıdaki örneği çalıştırın.
 
    ```powershell
    $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -28,7 +30,8 @@ Otomatik olarak imzalanan bir kök sertifika oluşturmak için New-SelfSignedCer
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
- 3. Bu kök sertifikayı oluşturduktan hemen sonra bir istemci sertifikası oluşturmak istiyorsanız PowerShell konsolunu açık bırakın.
+
+1. PowerShell konsolunu açık bırakın ve bir istemci sertifikası oluşturmak için sonraki adımlarla devam edin.
 
 ## <a name="generate-a-client-certificate"></a><a name="clientcert"></a>İstemci sertifikası oluşturma
 
@@ -61,7 +64,8 @@ Ek istemci sertifikaları oluşturuyorsanız veya otomatik olarak imzalanan kök
    ```powershell
    Get-ChildItem -Path "Cert:\CurrentUser\My"
    ```
-2. Döndürülen listeden konu adını bulun, sonra da yanındaki parmak izini bir metin dosyasına kopyalayın. Aşağıdaki örnekte, iki sertifika vardır. CN adı, alt sertifika oluşturmak istediğiniz otomatik olarak imzalanan kök sertifikanın adıdır. Bu durumda, ' P2SRootCert '.
+
+1. Döndürülen listeden konu adını bulun, sonra da yanındaki parmak izini bir metin dosyasına kopyalayın. Aşağıdaki örnekte, iki sertifika vardır. CN adı, alt sertifika oluşturmak istediğiniz otomatik olarak imzalanan kök sertifikanın adıdır. Bu durumda, ' P2SRootCert '.
 
    ```
    Thumbprint                                Subject
@@ -69,7 +73,8 @@ Ek istemci sertifikaları oluşturuyorsanız veya otomatik olarak imzalanan kök
    AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
    7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
    ```
-3. Önceki adımdaki parmak izini kullanarak kök sertifika için bir değişken bildirin. PARMAK IZINI, alt sertifika oluşturmak istediğiniz kök sertifikanın parmak izine değiştirin.
+
+1. Önceki adımdaki parmak izini kullanarak kök sertifika için bir değişken bildirin. PARMAK IZINI, alt sertifika oluşturmak istediğiniz kök sertifikanın parmak izine değiştirin.
 
    ```powershell
    $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
@@ -80,7 +85,8 @@ Ek istemci sertifikaları oluşturuyorsanız veya otomatik olarak imzalanan kök
    ```powershell
    $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
    ```
-4. Bir istemci sertifikası oluşturmak için örneği değiştirin ve çalıştırın. Aşağıdaki örneği değiştirmeden çalıştırırsanız, sonuç ' P2SChildCert ' adlı bir istemci sertifikasıdır. Alt sertifikayı başka bir şekilde adlandırmak istiyorsanız, CN değerini değiştirin. Bu örneği çalıştırırken TextExtension 'ı değiştirmeyin. Oluşturduğunuz istemci sertifikası, bilgisayarınızdaki ' sertifikalar-geçerli kullanıcı \ kişisel \ Sertifikalar ' ' a otomatik olarak yüklenir.
+
+1. Bir istemci sertifikası oluşturmak için örneği değiştirin ve çalıştırın. Aşağıdaki örneği değiştirmeden çalıştırırsanız, sonuç ' P2SChildCert ' adlı bir istemci sertifikasıdır. Alt sertifikayı başka bir şekilde adlandırmak istiyorsanız, CN değerini değiştirin. Bu örneği çalıştırırken TextExtension 'ı değiştirmeyin. Oluşturduğunuz istemci sertifikası, bilgisayarınızdaki ' sertifikalar-geçerli kullanıcı \ kişisel \ Sertifikalar ' ' a otomatik olarak yüklenir.
 
    ```powershell
    New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `

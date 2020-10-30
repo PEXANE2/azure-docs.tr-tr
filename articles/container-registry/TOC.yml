@@ -59,6 +59,8 @@
           href: container-registry-geo-replication.md
         - name: En iyi kayıt defteri uygulamalar
           href: container-registry-best-practices.md
+        - name: Genel görüntüleri yönetme
+          href: buffer-gate-public-content.md
     - name: Nasıl yapılır kılavuzları
       expanded: false
       items:

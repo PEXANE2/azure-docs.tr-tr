@@ -6,6 +6,8 @@
       href: oracle-vm-solutions.md
     - name: Azure Sanal Makineler’de çalışan Oracle WebLogic Server’a yönelik çözümler nelerdir?
       href: oracle-weblogic.md
+    - name: Azure Kubernetes Service’te çalışan Oracle WebLogic Server’a yönelik çözümler nelerdir?
+      href: weblogic-aks.md
     - name: OCI ile çözümler
       href: oracle-oci-overview.md
 - name: Hızlı Başlangıçlar
