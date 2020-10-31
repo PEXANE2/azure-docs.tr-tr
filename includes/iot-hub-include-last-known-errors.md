@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a0b7a1c600fe81081fbfe8d33c3878f68e730888
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d8583a1fee96d0a6eb3300882b2b115f057cbeec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547376"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135580"
 ---
 REST API [uç nokta durumu Al](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) , uç noktaların sistem durumunu ve bilinen son hatayı, bir uç noktanın sağlıklı olma nedenini belirlemek için verir. Aşağıdaki tabloda en yaygın hatalar listelenmektedir.
 
 |Bilinen son hata|Açıklama/gerçekleştiği zaman|Olası risk azaltma|
 |-----|-----|-----|
-|Larsa|Geçici bir hata oluştu ve IoT Hub işlemi yeniden deneyecek.|[Rotalar kaynak günlüklerini](https://docs.microsoft.com/azure/iot-hub/monitor-service-reference#routes)gözlemleyin.|
-|InternalError|Bir uç noktaya ileti teslim edilirken bir hata oluştu.|Bu bir iç özel durumdur, ancak [rotalar kaynak günlüklerini](https://docs.microsoft.com/azure/iot-hub/monitor-service-reference#routes)de gözlemleyin.|
+|Larsa|Geçici bir hata oluştu ve IoT Hub işlemi yeniden deneyecek.|[Rotalar kaynak günlüklerini](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#routes)gözlemleyin.|
+|InternalError|Bir uç noktaya ileti teslim edilirken bir hata oluştu.|Bu bir iç özel durumdur, ancak [rotalar kaynak günlüklerini](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#routes)de gözlemleyin.|
 |Yetkisiz|IoT Hub belirtilen uç noktaya ileti gönderme yetkisi yok.|Uç nokta için bağlantı dizesinin güncel olduğunu doğrulayın. Değiştirildiyse, IoT Hub bir güncelleştirmeyi göz önünde bulundurun. Uç nokta yönetilen kimlik kullanıyorsa, IoT Hub sorumlunun hedefte gerekli izinlere sahip olup olmadığını denetleyin.|
 |Sürecek|Uç noktalara ileti yazılırken IoT Hub kısıtlanıyor.|Etkilenen uç nokta için azaltma sınırlarını gözden geçirin. Gerekirse ölçeği genişletmek için uç nokta yapılandırmasını değiştirin.|
 |Zaman aşımı|İşlem zaman aşımı.|İşlemi yeniden deneyin.|

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: active-directory
 author: MarkusVi
 ms.service: active-directory
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: markvi
 ms.custom: include file
-ms.openlocfilehash: ab6e3426096f6fbaf7dfa44984a26c939f3b91fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0bc51fcd3a56af2f836377da736af3a1976463e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75971914"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135529"
 ---
 Sistem tarafından atanan yönetilen kimliğin etkinleştirilmesi tek tıklamayla bir deneyimdir. Bunu, VM oluşturma sırasında veya mevcut bir VM 'nin özelliklerinde etkinleştirebilirsiniz.
 
-![Yeni depolama hesabı oluşturma](./media/active-directory-msi-tut-enable/identity.png)
+![Ekran görüntüsü, sistem tarafından atanan durumu açmak için kullanabileceğiniz, bir sanal makine için sistem tarafından atanan sekmesini gösterir.](./media/active-directory-msi-tut-enable/identity.png)
 
 
 **Yeni bir VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için:** 

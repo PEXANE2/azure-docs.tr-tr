@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 61ced7eda78d3ce56d78dfd6cc54e0e92d376e68
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0b79fa22d3203504e63161aba03b32830d74d016
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100686"
+ms.locfileid: "93131284"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok özelliğinden VM’leri kaldırma
 
@@ -22,7 +22,7 @@ Ortamınızdaki VM 'lerde yapılan değişiklikleri izlemeyi tamamladığınızd
 
 ## <a name="to-remove-your-vms"></a>VM 'lerinizi kaldırmak için
 
-1. Azure portal, Azure portal üst gezintiden **Cloud Shell** başlatın. Azure Cloud Shell hakkında bilginiz yoksa bkz. [Azure Cloud Shell Genel Bakış](/azure/cloud-shell/overview).
+1. Azure portal, Azure portal üst gezintiden **Cloud Shell** başlatın. Azure Cloud Shell hakkında bilginiz yoksa bkz. [Azure Cloud Shell Genel Bakış](../../cloud-shell/overview.md).
 
 2. Yönetimden kaldırmak istediğiniz bir makinenin UUID 'sini tanımlamak için aşağıdaki komutu kullanın.
 

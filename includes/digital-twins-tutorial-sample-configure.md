@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: ff44e4ae45f8b7c6bff3685522440ca7118f337e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: f5b332415f1abf7d4c1002bdd4f3bfcef12f1267
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92347345"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136310"
 ---
 ## <a name="configure-the-sample-project"></a>Örnek projeyi yapılandırma
 
@@ -18,9 +18,9 @@ Ardından, Azure dijital TWINS örneğinizle etkileşime girebilen bir örnek is
 
 Daha önce [*Azure dijital TWINS uçtan uca örnekleri*](/samples/azure-samples/digital-twins-samples/digital-twins-samples) (ve henüz yapmadıysanız) için makinenizde daha önce indirdiğiniz dosyaya gidin.
 
-Klasörün içindeyken _AdtSampleApp_adresine gidin. Visual Studio 2019 ' de _**AdtE2ESample. sln**_ 'yi açın. 
+Klasörün içindeyken _AdtSampleApp_ adresine gidin. Visual Studio 2019 ' de _**AdtE2ESample. sln**_ 'yi açın. 
 
-Visual Studio 'da, dosyayı Düzenle penceresinde açmak için dosya _üzerinde Sampleclientapp > **appsettings.js** _ seçin. Bu, projeyi çalıştırmak için gerekli yapılandırma değişkenlerine sahip bir önceden ayarlanmış JSON dosyası işlevi görür.
+Visual Studio 'da, dosyayı Düzenle penceresinde açmak için dosya _üzerinde Sampleclientapp > **appsettings.js**_ seçin. Bu, projeyi çalıştırmak için gerekli yapılandırma değişkenlerine sahip bir önceden ayarlanmış JSON dosyası işlevi görür.
 
 Dosya gövdesinde, öğesini `instanceUrl` Azure Digital TWINS örnek *ana bilgisayar adı* URL 'siyle değiştirin (aşağıda gösterildiği gibi *https://* önünde).
 
@@ -32,9 +32,9 @@ Dosya gövdesinde, öğesini `instanceUrl` Azure Digital TWINS örnek *ana bilgi
 
 Dosyayı kaydedin ve kapatın. 
 
-Sonra, *Sampleclientapp*' i oluştururken dosyayı çıkış dizinine kopyalamak üzere *appsettings.js* yapılandırın. Bunu yapmak için dosya * üzerindeappsettings.js* sağ seçin ve Özellikler ' i seçin *.* *Özellikler* denetçisinde, *Çıkış Dizinine Kopyala* özelliğinin değerini *daha yeniyse kopyala*olarak değiştirin.
+Sonra, *Sampleclientapp* ' i oluştururken dosyayı çıkış dizinine kopyalamak üzere *appsettings.js* yapılandırın. Bunu yapmak için dosya *üzerindeappsettings.js* sağ seçin ve Özellikler ' i seçin *.* *Özellikler* denetçisinde, *Çıkış Dizinine Kopyala* özelliğinin değerini *daha yeniyse kopyala* olarak değiştirin.
 
-:::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Vurgulanan appsettings.jsiçeren Çözüm Gezgini bölmesini ve ' çıkış dizinine Kopyala ' özelliği olan Özellikler bölmesini &quot;daha yeniyse kopyala&quot; olarak gösteren Visual Studio penceresinden alıntı" border="false":::
+:::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Vurgulanan appsettings.jsiçeren Çözüm Gezgini bölmesini ve ' çıkış dizinine Kopyala ' özelliği olan Özellikler bölmesini &quot;daha yeniyse kopyala&quot; olarak gösteren Visual Studio penceresinden alıntı" border="false" lightbox="../articles/digital-twins/media/includes/copy-config.png":::
 
 Öğreticide kullanmaya devam etmek için _**AdtE2ESample**_ projesini Visual Studio 'da açık tutun.
 

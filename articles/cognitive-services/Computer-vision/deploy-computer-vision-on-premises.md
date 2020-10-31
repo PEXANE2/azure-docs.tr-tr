@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/30/2020
 ms.author: aahi
-ms.openlocfilehash: 9a8e0dde8b24c39180a584c26af725ab82ea0176
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e77b5ea2bbd5bae79295a5680fa6e143efa5e99
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907111"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131539"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes ve Held ile Görüntü İşleme kapsayıcısı kullanma
 
 Şirket içi Görüntü İşleme Kapsayıcılarınızı yönetmenin bir seçeneği, Kubernetes ve Held 'yi kullanmaktır. Kubernetes ve Held kullanarak bir Görüntü İşleme kapsayıcı görüntüsü tanımlamak için bir Kubernetes paketi oluşturacağız. Bu paket, şirket içi bir Kubernetes kümesine dağıtılacak. Son olarak, dağıtılan hizmetleri nasıl test ettireceğiz. Kubernetes düzenlemesi olmadan Docker kapsayıcılarını çalıştırma hakkında daha fazla bilgi için bkz. [görüntü işleme kapsayıcıları yükleyip çalıştırma](computer-vision-how-to-install-containers.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şirket içinde Görüntü İşleme kapsayıcıları kullanmadan önce aşağıdaki Önkoşullar:
 
@@ -30,7 +30,7 @@ ms.locfileid: "90907111"
 | Azure Hesabı | Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][free-azure-account] oluşturun. |
 | Kubernetes CLı | [Kubernetes CLI][kubernetes-cli] , paylaşılan kimlik bilgilerinin kapsayıcı kayıt defterinden yönetilmesi için gereklidir. Kubernetes, Kubernetes paket yöneticisi olan helk 'dan önce de gereklidir. |
 | Held CLı | Heln bir grafik (kapsayıcı paket tanımı) yüklemek için kullanılan [Held CLI][helm-install]'yı yükler. |
-| Görüntü İşleme kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>Uç nokta URI 'SI olan bir Azure **görüntü işleme** kaynağı ve ilişkili API anahtarı. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}**: **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}**: **genel bakış** sayfasında belirtilen bitiş noktası|
+| Görüntü İşleme kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>Uç nokta URI 'SI olan bir Azure **görüntü işleme** kaynağı ve ilişkili API anahtarı. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}** : **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **genel bakış** sayfasında belirtilen bitiş noktası|
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -46,56 +46,15 @@ ms.locfileid: "90907111"
 
 Ana bilgisayarın kullanılabilir bir Kubernetes kümesi olması beklenmektedir. Bir Kubernetes kümesinin bir ana bilgisayara nasıl dağıtılacağını anlamak için bir [Kubernetes kümesi dağıtmaya](../../aks/tutorial-kubernetes-deploy-cluster.md) yönelik Bu öğreticiye bakın. [Kubernetes belgelerindeki](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)dağıtımlar hakkında daha fazla bilgi edinebilirsiniz.
 
-### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker kimlik bilgilerini Kubernetes kümesiyle paylaşma
-
-Kubernetes kümesine, `docker pull` kapsayıcı kayıt defterinden yapılandırılmış görüntü (ler) e izin vermek için `containerpreview.azurecr.io` Docker kimlik bilgilerini kümeye aktarmanız gerekir. [`kubectl create`][kubectl-create]Kapsayıcı kayıt defteri erişim önkoşulunu tarafından belirtilen kimlik bilgilerine göre *Docker-Registry gizli* anahtarı oluşturmak için aşağıdaki komutu yürütün.
-
-Seçtiğiniz komut satırı arabiriminizden aşağıdaki komutu çalıştırın. , Ve ' ı `<username>` `<password>` `<email-address>` kapsayıcı kayıt defteri kimlik bilgileriyle değiştirdiğinizden emin olun.
-
-```console
-kubectl create secret docker-registry containerpreview \
-    --docker-server=containerpreview.azurecr.io \
-    --docker-username=<username> \
-    --docker-password=<password> \
-    --docker-email=<email-address>
-```
-
-> [!NOTE]
-> Zaten `containerpreview.azurecr.io` kapsayıcı kayıt defterine erişiminiz varsa, bunun yerine genel bayrağını kullanarak bir Kubernetes gizli dizisi oluşturabilirsiniz. Docker yapılandırmanızda JSON olarak çalıştırılan aşağıdaki komutu göz önünde bulundurun.
-> ```console
->  kubectl create secret generic containerpreview \
->      --from-file=.dockerconfigjson=~/.docker/config.json \
->      --type=kubernetes.io/dockerconfigjson
-> ```
-
-Gizli dizi başarıyla oluşturulduğunda konsola aşağıdaki çıktı yazdırılır.
-
-```console
-secret "containerpreview" created
-```
-
-Gizli dizinin oluşturulduğunu doğrulamak için [`kubectl get`][kubectl-get] `secrets` işaretini bayrağıyla yürütün.
-
-```console
-kubectl get secrets
-```
-
-Yürütülmesi, `kubectl get secrets` yapılandırılan tüm gizli dizileri yazdırır.
-
-```console
-NAME                  TYPE                                  DATA      AGE
-containerpreview      kubernetes.io/dockerconfigjson        1         30s
-```
-
 ## <a name="configure-helm-chart-values-for-deployment"></a>Dağıtım için Held grafik değerlerini yapılandırma
 
-*Read*adlı bir klasör oluşturarak başlayın. Ardından, aşağıdaki YAML içeriğini adlı yeni bir dosyaya yapıştırın `chart.yaml` :
+*Read* adlı bir klasör oluşturarak başlayın. Ardından, aşağıdaki YAML içeriğini adlı yeni bir dosyaya yapıştırın `chart.yaml` :
 
 ```yaml
 apiVersion: v2
 name: read
 version: 1.0.0
-description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+description: A Helm chart to deploy the Read OCR container to a Kubernetes cluster
 dependencies:
 - name: rabbitmq
   condition: read.image.args.rabbitmq.enabled
@@ -111,15 +70,13 @@ HELI grafiğinin varsayılan değerlerini yapılandırmak için aşağıdaki YAM
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
-
 read:
   enabled: true
   image:
     name: cognitive-services-read
-    registry:  containerpreview.azurecr.io/
-    repository: microsoft/cognitive-services-read
-    tag: latest
-    pullSecret: containerpreview # Or an existing secret
+    registry:  mcr.microsoft.com/
+    repository: azure-cognitive-services/vision/read
+    tag: 3.1-preview
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
@@ -227,15 +184,15 @@ Aynı *Şablonlar* klasöründe aşağıdaki yardımcı işlevleri kopyalayıp i
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes paketi (helk grafiği)
 
-*Helk grafiği* , kapsayıcı kayıt defterinden hangi Docker görüntüsünün çekeceğini tanımlayan yapılandırmayı içerir `containerpreview.azurecr.io` .
+*Helk grafiği* , kapsayıcı kayıt defterinden hangi Docker görüntüsünün çekeceğini tanımlayan yapılandırmayı içerir `mcr.microsoft.com` .
 
 > [Helk grafiği][helm-charts] , Ilgili bir Kubernetes kaynakları kümesini tanımlayan bir dosya koleksiyonudur. Tek bir grafik, bir veya daha çok karmaşık, örneğin, HTTP sunucuları, veritabanları, önbellekler gibi tam bir Web uygulaması yığını gibi basit bir şeyi dağıtmak için kullanılabilir.
 
-Belirtilen *HELI grafikleri* , görüntü işleme hizmetinin Docker görüntülerini ve `containerpreview.azurecr.io` kapsayıcı kayıt defterinden karşılık gelen hizmeti çeker.
+Belirtilen *HELI grafikleri* , görüntü işleme hizmetinin Docker görüntülerini ve `mcr.microsoft.com` kapsayıcı kayıt defterinden karşılık gelen hizmeti çeker.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Kubernetes kümesine helk grafiğini yükler
 
-*Helk grafiğini*yüklemek için komutunu yürütmemiz gerekir [`helm install`][helm-install-cmd] . Klasörü yukarıdaki dizinden install komutunu yürütdiğinizden emin olun `read` .
+*Helk grafiğini* yüklemek için komutunu yürütmemiz gerekir [`helm install`][helm-install-cmd] . Klasörü yukarıdaki dizinden install komutunu yürütdiğinizden emin olun `read` .
 
 ```console
 helm install read ./read

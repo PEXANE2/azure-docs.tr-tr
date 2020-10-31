@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: bdd2dacbba4ef8b7c439a345ea70771354b7fb5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c906d37a01f0fca2d4114e8ba07078fc46eec88b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708603"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131182"
 ---
 # <a name="cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı
 
@@ -64,11 +64,11 @@ Bu seçeneği belirleyerek, CSP programındaki hangi iş ortaklarının teklifin
 
 ![CSP menüsünü seçin](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
-**Ülke**, **uzmanlık**veya **beceri**gibi arama filtreleri uygulayabilirsiniz.
+**Ülke** , **uzmanlık** veya **beceri** gibi arama filtreleri uygulayabilirsiniz.
 
 ![İş ortağı arama için ülke/bölge, uzmanlık ve yetenek filtreleri](media/marketplace-publishers-guide/csp-add-resellers.png)
 
-İş ortakları listesini seçtikten sonra **Ekle**' yi seçin.
+İş ortakları listesini seçtikten sonra **Ekle** ' yi seçin.
 
 ![CSP programındaki yetkili iş ortaklarının örnek listesi](media/marketplace-publishers-guide/csp-add-resellers-details.png)
 
@@ -81,11 +81,11 @@ Değişikliklerinizi kaydetmek için **Taslağı kaydet** ' i seçin.
 Bu teklif yayımdan kaldırılmış ise, teklifinizi seçtiğiniz iş ortaklarınız için kullanılabilir hale getirmek üzere yayımlamanız gerekir.
 
 >[!NOTE]
->Belirli bir bölgedeki CSP programında bir iş ortağı yetkilendirmeniz durumunda bu, söz konusu bölgeye ait olan herhangi bir müşteriye teklifi satabilir. CSP tekliflerinin bölgeler altında nasıl sınıflandırıldığı hakkında daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı program bölgesel pazarlar ve para birimi](https://docs.microsoft.com/partner-center/regional-authorization-overview).
+>Belirli bir bölgedeki CSP programında bir iş ortağı yetkilendirmeniz durumunda bu, söz konusu bölgeye ait olan herhangi bir müşteriye teklifi satabilir. CSP tekliflerinin bölgeler altında nasıl sınıflandırıldığı hakkında daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı program bölgesel pazarlar ve para birimi](/partner-center/regional-authorization-overview).
 
-Zaten yayımlanmış bir teklifin CSP listesini güncelleştiriyorsanız, ek iş ortakları ekleyin ve **CSP hedef kitleleri**' ni seçin.
+Zaten yayımlanmış bir teklifin CSP listesini güncelleştiriyorsanız, ek iş ortakları ekleyin ve **CSP hedef kitleleri** ' ni seçin.
 
-Zaten yetkili iş ortakları listesine sahip bir teklifiniz varsa ve başka bir teklif için aynı listeyi kullanmak istiyorsanız **içeri/dışarı aktarma**' yı kullanın. CSP listesine sahip olan teklifine gidin ve **CSP 'Leri dışarı aktar**' ı seçin. İşlevi, başka bir teklifine aktarılabilecek bir. csv dosyası geliştirir.
+Zaten yetkili iş ortakları listesine sahip bir teklifiniz varsa ve başka bir teklif için aynı listeyi kullanmak istiyorsanız **içeri/dışarı aktarma** ' yı kullanın. CSP listesine sahip olan teklifine gidin ve **CSP 'Leri dışarı aktar** ' ı seçin. İşlevi, başka bir teklifine aktarılabilecek bir. csv dosyası geliştirir.
 
 #### <a name="option-3-no-partners-in-the-csp-program"></a>Seçenek 3: CSP programında iş ortağı yok
 
@@ -104,9 +104,9 @@ CSP programındaki bir iş, ürününüzü müşterilerine satmamışsa ve tekli
    > [!NOTE]
    > Önceden doldurulmuş açılan menü seçimlerini değiştirmeyin.
 
-2. **Ürün sürümünü seçin**için **canlı teklif yönetimi**' ni seçin.
-3. **Sorunu en iyi şekilde tanımlayan bir kategori seçin**için teklifinizin başvurduğu kategoriyi seçin.
-4. **Sorunu en iyi açıklayan bir sorun seçin**için **Mevcut teklifi Güncelleştir**' i seçin.
+2. **Ürün sürümünü seçin** için **canlı teklif yönetimi** ' ni seçin.
+3. **Sorunu en iyi şekilde tanımlayan bir kategori seçin** için teklifinizin başvurduğu kategoriyi seçin.
+4. **Sorunu en iyi açıklayan bir sorun seçin** için **Mevcut teklifi Güncelleştir** ' i seçin.
 5. Sorun **ayrıntıları sayfasına** yönlendirilmek için **İleri ' yi** seçin ve sorununuz hakkında daha fazla ayrıntı girin.
 6. Sorun başlığı olarak **Deyetkilendir CSP** kullanın ve gerekli bölümlerin geri kalanını doldurun.
 
@@ -123,9 +123,9 @@ Teklifiniz Şu anda **1: varsa, CSP programında herhangi bir iş ortağı** var
    > [!NOTE]
    > Önceden doldurulmuş açılan menü seçimlerini değiştirmeyin.
 
-2. **Ürün sürümünü seçin**için **canlı teklif yönetimi**' ni seçin.
-3. **Sorunu en iyi şekilde tanımlayan bir kategori seçin**için teklifinizin başvurduğu kategoriyi seçin.
-4. **Sorunu en iyi açıklayan bir sorun seçin**için **Mevcut teklifi Güncelleştir**' i seçin.
+2. **Ürün sürümünü seçin** için **canlı teklif yönetimi** ' ni seçin.
+3. **Sorunu en iyi şekilde tanımlayan bir kategori seçin** için teklifinizin başvurduğu kategoriyi seçin.
+4. **Sorunu en iyi açıklayan bir sorun seçin** için **Mevcut teklifi Güncelleştir** ' i seçin.
 5. Sorun **ayrıntıları sayfasına** yönlendirilmek için **İleri ' yi** seçin ve sorununuz hakkında daha fazla ayrıntı girin.
 6. Sorun başlığı olarak **Deyetkilendir CSP** kullanın ve gerekli bölümlerin geri kalanını doldurun.
 
@@ -134,35 +134,35 @@ Teklifiniz Şu anda **1: varsa, CSP programında herhangi bir iş ortağı** var
 
 ### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>İki seçenekten birinde gezin: CSP programında seçdiğim belirli iş ortakları
 
-Teklifiniz Şu anda **2. seçenek ise, CSP programındaki belirli iş ortakları ' i seçin** ve tek yapmanız gerekırse, **CSP programındaki herhangi bir iş ortağı**olarak bir istek oluşturmak için aşağıdaki yönergeleri kullanın:
+Teklifiniz Şu anda **2. seçenek ise, CSP programındaki belirli iş ortakları ' i seçin** ve tek yapmanız gerekırse, **CSP programındaki herhangi bir iş ortağı** olarak bir istek oluşturmak için aşağıdaki yönergeleri kullanın:
 
 1. [Destek isteği sayfasına](https://aka.ms/marketplacepublishersupport)gidin. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur.
 
    > [!NOTE]
    > Önceden doldurulmuş açılan menü seçimlerini değiştirmeyin.
 
-2. **Ürün sürümünü seçin**için **canlı teklif yönetimi**' ni seçin.
-3. **Sorunu en iyi şekilde tanımlayan bir kategori seçin**için teklifinizin başvurduğu kategoriyi seçin.
-4. **Sorunu en iyi açıklayan bir sorun seçin**için **Mevcut teklifi Güncelleştir**' i seçin.
+2. **Ürün sürümünü seçin** için **canlı teklif yönetimi** ' ni seçin.
+3. **Sorunu en iyi şekilde tanımlayan bir kategori seçin** için teklifinizin başvurduğu kategoriyi seçin.
+4. **Sorunu en iyi açıklayan bir sorun seçin** için **Mevcut teklifi Güncelleştir** ' i seçin.
 5. Sorun **ayrıntıları sayfasına** yönlendirilmek için **İleri ' yi** seçin ve sorununuz hakkında daha fazla ayrıntı girin.
 6. Sorun başlığı olarak **Deyetkilendir CSP** kullanın ve gerekli bölümlerin geri kalanını doldurun.
 
- Teklifiniz Şu anda **2. seçenek: CSP programındaki belirli iş ortakları** ve **seçenek 3: CSP programında iş ortağı yok**' a gitmek istiyorsanız bu seçeneğe giderek yalnızca daha önce yetkilendirdiğiniz CSP programındaki iş ortakları, son müşterilere teklifinizi yeniden kişiselleştirmez. Bir istek oluşturmak için aşağıdaki yönergeleri kullanın:
+ Teklifiniz Şu anda **2. seçenek: CSP programındaki belirli iş ortakları** ve **seçenek 3: CSP programında iş ortağı yok** ' a gitmek istiyorsanız bu seçeneğe giderek yalnızca daha önce yetkilendirdiğiniz CSP programındaki iş ortakları, son müşterilere teklifinizi yeniden kişiselleştirmez. Bir istek oluşturmak için aşağıdaki yönergeleri kullanın:
 
 1. [Destek isteği sayfasına](https://aka.ms/marketplacepublishersupport)gidin. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur.
 
    > [!NOTE]
    > Önceden doldurulmuş açılan menü seçimlerini değiştirmeyin.
 
-2. **Ürün sürümünü seçin**için **canlı teklif yönetimi**' ni seçin.
-3. **Sorunu en iyi şekilde tanımlayan bir kategori seçin**için teklifinizin başvurduğu kategoriyi seçin.
-4. **Sorunu en iyi açıklayan bir sorun seçin**için **Mevcut teklifi Güncelleştir**' i seçin.
+2. **Ürün sürümünü seçin** için **canlı teklif yönetimi** ' ni seçin.
+3. **Sorunu en iyi şekilde tanımlayan bir kategori seçin** için teklifinizin başvurduğu kategoriyi seçin.
+4. **Sorunu en iyi açıklayan bir sorun seçin** için **Mevcut teklifi Güncelleştir** ' i seçin.
 5. Sorun **ayrıntıları sayfasına** yönlendirilmek için **İleri ' yi** seçin ve sorununuz hakkında daha fazla ayrıntı girin.
 6. Sorun başlığı olarak **Deyetkilendir CSP** kullanın ve gerekli bölümlerin geri kalanını doldurun.
 
 ### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>3. seçenek: CSP programında iş ortakları olmadan gezinme
 
-Teklifiniz Şu anda **seçenek 3: CSP programında iş ortakları**yoksa dilediğiniz zaman diğer iki seçenekten birine gidebilirsiniz.
+Teklifiniz Şu anda **seçenek 3: CSP programında iş ortakları** yoksa dilediğiniz zaman diğer iki seçenekten birine gidebilirsiniz.
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>CSP programındaki iş ortaklarıyla satış ve destek malzemeleri paylaşma
 

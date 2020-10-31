@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 416e6cb29ab2816d53cb837f72233a9fe098f659
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072008"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131386"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics veri hataları
 
@@ -168,7 +168,7 @@ Kaynak günlüklerinin şemasını görmek için [tanılama günlüklerini kulla
 * Neden: uygulama süresi ve varış süresi arasındaki fark geç varış toleransı penceresinden daha büyüktür.
 * Portal bildirimi belirtildi: Hayır
 * Kaynak günlük düzeyi: bilgi
-* Etki: geç giriş olayları, iş yapılandırmasının olay sıralaması bölümünde "diğer olayları Işleme" ayarına göre işlenir. Daha fazla bilgi için bkz. [zaman Işleme ilkeleri](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Etki: geç giriş olayları, iş yapılandırmasının olay sıralaması bölümünde "diğer olayları Işleme" ayarına göre işlenir. Daha fazla bilgi için bkz. [zaman Işleme ilkeleri](/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Günlük ayrıntıları
    * Uygulama süresi ve varış süresi. 
    * En fazla kilobayt olan gerçek yük.
@@ -184,7 +184,7 @@ Kaynak günlüklerinin şemasını görmek için [tanılama günlüklerini kulla
 * Neden: uygulama süresi ve varış süresi arasındaki fark 5 dakikadan fazla.
 * Portal bildirimi belirtildi: Hayır
 * Kaynak günlük düzeyi: bilgi
-* Etki: erken giriş olayları, iş yapılandırmasının olay sıralaması bölümünde "diğer olayları Işleme" ayarına göre işlenir. Daha fazla bilgi için bkz. [zaman Işleme ilkeleri](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Etki: erken giriş olayları, iş yapılandırmasının olay sıralaması bölümünde "diğer olayları Işleme" ayarına göre işlenir. Daha fazla bilgi için bkz. [zaman Işleme ilkeleri](/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Günlük ayrıntıları
    * Uygulama süresi ve varış süresi. 
    * En fazla kilobayt olan gerçek yük.
@@ -200,7 +200,7 @@ Kaynak günlüklerinin şemasını görmek için [tanılama günlüklerini kulla
 * Neden: olay, sıralama dışı tolerans penceresi tanımlı olarak kabul edilir.
 * Portal bildirimi belirtildi: Hayır
 * Kaynak günlük düzeyi: bilgi
-* Etki: sıra dışı olaylar, iş yapılandırmasının olay sıralaması bölümünde "diğer olayları Işleme" ayarına göre işlenir. Daha fazla bilgi için bkz. [zaman Işleme ilkeleri](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Etki: sıra dışı olaylar, iş yapılandırmasının olay sıralaması bölümünde "diğer olayları Işleme" ayarına göre işlenir. Daha fazla bilgi için bkz. [zaman Işleme ilkeleri](/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Günlük ayrıntıları
    * En fazla kilobayt olan gerçek yük.
 
@@ -221,7 +221,7 @@ Yalnızca çıkış havuzuna bir çağrı yapıldıktan sonra algılanamayan ve 
 * Neden: çıktı için gereken sütun yok. Örneğin, Azure Table PartitionKey olarak tanımlanan bir sütun yok.
 * Portal bildirimi belirtildi: Evet
 * Kaynak günlük düzeyi: uyarı
-* Etki: eksik gerekli sütununu da içeren tüm çıkış verileri dönüştürme hataları [çıkış verileri ilkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarına göre işlenir.
+* Etki: eksik gerekli sütununu da içeren tüm çıkış verileri dönüştürme hataları [çıkış verileri ilkesi](./stream-analytics-output-error-policy.md) ayarına göre işlenir.
 * Günlük ayrıntıları
    * Sütunun adı ve kayıt tanımlayıcısı ya da kaydın bir parçası.
 
@@ -236,7 +236,7 @@ Yalnızca çıkış havuzuna bir çağrı yapıldıktan sonra algılanamayan ve 
 * Neden: sütun değeri çıkışa uymuyor. Örneğin, sütun adı geçerli bir Azure Tablo sütunu değil.
 * Portal bildirimi belirtildi: Evet
 * Kaynak günlük düzeyi: uyarı
-* Etki: geçersiz sütun adı da dahil olmak üzere tüm çıkış verileri dönüştürme hataları [çıkış verileri ilkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarına göre işlenir.
+* Etki: geçersiz sütun adı da dahil olmak üzere tüm çıkış verileri dönüştürme hataları [çıkış verileri ilkesi](./stream-analytics-output-error-policy.md) ayarına göre işlenir.
 * Günlük ayrıntıları
    * Sütunun adı ve kayıt tanımlayıcı ya da kaydın bir parçası.
 
@@ -251,7 +251,7 @@ Yalnızca çıkış havuzuna bir çağrı yapıldıktan sonra algılanamayan ve 
 * Neden: bir sütun çıktıda geçerli bir türe dönüştürülemez. Örneğin, sütununun değeri SQL tablosunda tanımlı kısıtlamalar veya türle uyumlu değil.
 * Portal bildirimi belirtildi: Evet
 * Kaynak günlük düzeyi: uyarı
-* Etki: tür dönüştürme hatası da dahil olmak üzere tüm çıkış verileri dönüştürme hataları [çıkış verileri ilkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarına göre işlenir.
+* Etki: tür dönüştürme hatası da dahil olmak üzere tüm çıkış verileri dönüştürme hataları [çıkış verileri ilkesi](./stream-analytics-output-error-policy.md) ayarına göre işlenir.
 * Günlük ayrıntıları
    * Sütunun adı.
    * Kayıt tanımlayıcı ya da kaydın bir parçası.
@@ -267,7 +267,7 @@ Yalnızca çıkış havuzuna bir çağrı yapıldıktan sonra algılanamayan ve 
 * Neden: iletinin değeri desteklenen çıkış boyutundan daha büyük. Örneğin, bir kayıt bir olay hub 'ı çıkışı için 1 MB 'den büyük.
 * Portal bildirimi belirtildi: Evet
 * Kaynak günlük düzeyi: uyarı
-* Etki: kayıt boyutu sınırı da dahil olmak üzere tüm çıkış verileri dönüştürme hataları, [çıkış verileri ilkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarına göre işlenir.
+* Etki: kayıt boyutu sınırı da dahil olmak üzere tüm çıkış verileri dönüştürme hataları, [çıkış verileri ilkesi](./stream-analytics-output-error-policy.md) ayarına göre işlenir.
 * Günlük ayrıntıları
    * Kayıt tanımlayıcı ya da kaydın bir parçası.
 
@@ -282,7 +282,7 @@ Yalnızca çıkış havuzuna bir çağrı yapıldıktan sonra algılanamayan ve 
 * Neden: bir kayıt zaten sistem sütunuyla aynı ada sahip bir sütun içeriyor. Örneğin, ID sütunu farklı bir sütuna ayarlandığında ID adlı bir sütunla CosmosDB çıkışı.
 * Portal bildirimi belirtildi: Evet
 * Kaynak günlük düzeyi: uyarı
-* Etki: yinelenen anahtar dahil tüm çıkış verileri dönüştürme hataları [çıkış verileri ilkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarına göre işlenir.
+* Etki: yinelenen anahtar dahil tüm çıkış verileri dönüştürme hataları [çıkış verileri ilkesi](./stream-analytics-output-error-policy.md) ayarına göre işlenir.
 * Günlük ayrıntıları
    * Sütunun adı.
    * Kayıt tanımlayıcı ya da kaydın bir parçası.

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710660"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131505"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI uygulaması teklifi oluşturma
 
@@ -23,8 +23,8 @@ Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
-3. Genel Bakış sayfasında **+ yeni teklif**  >  **Power BI hizmet uygulaması**' nı seçin.
+2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış** ' ı seçin.
+3. Genel Bakış sayfasında **+ yeni teklif**  >  **Power BI hizmet uygulaması** ' nı seçin.
 
    ![Sol gezinti menüsünü gösterir.](./media/new-offer-power-bi-app.png)
 
@@ -36,16 +36,16 @@ Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari 
 
 ## <a name="new-offer"></a>Yeni teklif
 
-Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
+Bir **TEKLIF kimliği** girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
 
 - Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
 - Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, burada **Test-teklif-1** girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
+- Teklif KIMLIĞI, **Oluştur** ' u seçtikten sonra değiştirilemez.
 
-Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
+Bir **teklif diğer adı** girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
 
 - Bu ad Market 'te kullanılmıyor ve teklif adından ve müşterilere gösterilen diğer değerlerden farklı.
-- Teklif diğer adı, **Oluştur**' u seçtikten sonra değiştirilemez.
+- Teklif diğer adı, **Oluştur** ' u seçtikten sonra değiştirilemez.
 
 Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
@@ -55,10 +55,10 @@ Bu sayfa, bu teklifi yayımlamak için gereken adımların görsel bir gösterim
 
 Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örneğin:
 
-- Teklif bir taslak- [silme taslağı tekliftir](update-existing-offer.md#delete-a-draft-offer)
+- Teklif bir taslak-silme taslağı tekliftir
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- Teklif önizleme sürümündedir- [canlı](publishing-status.md#publisher-approval)
-- Yayımlamayı tamamlamadıysanız- [yayımlamayı Iptal edin](update-existing-offer.md#cancel-publishing)
+- Teklif önizleme sürümündedir- [canlı](../review-publish-offer.md#previewing-and-approving-your-offer)
+- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız [yayımlamayı Iptal edin.](../review-publish-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Teklif kurulumu
 
@@ -97,7 +97,7 @@ Bu sayfa, teklifinizi Market 'te, uygulama sürümünüzde ve teklifinizi destek
 Teklifinizi uygun Market arama alanlarında yerleştirmek için kategoriler ve alt kategoriler ' i seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini açıkladığınızdan emin olun. Seçin:
 
 - Birincil ve ikincil kategori dahil olmak üzere en az bir ve en fazla iki kategori (isteğe bağlı).
-- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil**' i seçin.
+- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil** ' i seçin.
 
 [Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)kategorilerin ve alt kategorilerin tam listesini görebilirsiniz.
 
@@ -146,7 +146,7 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 10. Açıklama
 11. Ekran görüntüleri/videolar
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Ad
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -186,7 +186,7 @@ Kuruluşunuzun gizlilik ilkesine Web adresini girin. Teklifinizin gizlilik yasal
 
 ### <a name="contact-information"></a>İletişim Bilgileri
 
-Bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad, e-posta ve telefon numarası sağlamanız gerekir. Bu bilgiler müşterilere gösterilmez. Microsoft tarafından kullanılabilir ve bulut çözümü sağlayıcısı (CSP) iş ortakları için sağlanmış olabilir.
+Bir **destek kişisi** ve **mühendislik ilgili kişisi** için ad, e-posta ve telefon numarası sağlamanız gerekir. Bu bilgiler müşterilere gösterilmez. Microsoft tarafından kullanılabilir ve bulut çözümü sağlayıcısı (CSP) iş ortakları için sağlanmış olabilir.
 
 - Destek kişisi (gerekli): genel destek soruları Için.
 - Mühendislik ilgili kişisi (gerekli): Teknik sorular ve sertifika sorunları Için.
@@ -234,7 +234,7 @@ Teklif listeleri oluşturma hakkında daha fazla bilgi için bkz. [teklif listes
 
 ## <a name="technical-configuration"></a>Teknik yapılandırma
 
-Uygulamanızı Power BI hizmetine yükseltin ve müşterilerin uygulamanızı yüklemesini sağlayan Power BI uygulama yükleyicisi bağlantısını sağlayın. Daha fazla bilgi için bkz. [Power BI içindeki panoları ve raporları kullanarak uygulama yayımlama](https://docs.microsoft.com/power-bi/service-create-distribute-apps).
+Uygulamanızı Power BI hizmetine yükseltin ve müşterilerin uygulamanızı yüklemesini sağlayan Power BI uygulama yükleyicisi bağlantısını sağlayın. Daha fazla bilgi için bkz. [Power BI içindeki panoları ve raporları kullanarak uygulama yayımlama](/power-bi/service-create-distribute-apps).
 
 ## <a name="supplemental-content"></a>Ek içerik
 
@@ -248,7 +248,7 @@ Sağlamamıza yardımcı olması için teklifiniz hakkında ek bilgiler sağlay�
 
 Teklifin tüm gerekli bölümlerini tamamladıktan sonra, teklifinizi gözden geçirme ve yayımlama için gönderebilirsiniz.
 
-Portalın sağ üst köşesinde, **gözden geçir ve Yayımla**' yı seçin.
+Portalın sağ üst köşesinde, **gözden geçir ve Yayımla** ' yı seçin.
 
 İnceleme sayfasında şunları yapabilirsiniz:
 
@@ -258,6 +258,6 @@ Portalın sağ üst köşesinde, **gözden geçir ve Yayımla**' yı seçin.
   - **Tamamlandı** -bölümde tüm gerekli veriler var ve hata yok. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamlanmış olması gerekir.
 - Uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın. Ayrıca, teklifinizi anlamak için yararlı olan tüm ek notları sağlayın.
 
-Teklifi yayımlamaya göndermek için **Yayımla**' yı seçin.
+Teklifi yayımlamaya göndermek için **Yayımla** ' yı seçin.
 
-Teklifin bir önizleme sürümünün gözden geçirilmesi ve onaylanmak üzere kullanılabilir olduğunu size bildirmek için size bir e-posta göndereceğiz. Teklifinizi herkese açık bir şekilde yayımlamak için Iş Ortağı Merkezi 'ne gidin ve **Git-Live**' ı seçin.
+Teklifin bir önizleme sürümünün gözden geçirilmesi ve onaylanmak üzere kullanılabilir olduğunu size bildirmek için size bir e-posta göndereceğiz. Teklifinizi herkese açık bir şekilde yayımlamak için Iş Ortağı Merkezi 'ne gidin ve **Git-Live** ' ı seçin.

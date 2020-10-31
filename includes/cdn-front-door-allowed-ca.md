@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: multiple
 author: sharad4u
 ms.service: multiple
 ms.topic: include
-ms.date: 05/09/2019
+ms.date: 10/30/2020
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: 68d0459153fbdb34216c1313f70e292119b93a7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60c26d8c33b1d419da5a51206d310e2112c69644
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269820"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135744"
 ---
 Kendi sertifikanızı oluştururken aşağıdaki CA 'Lara izin verilir:
 
@@ -32,6 +32,7 @@ Kendi sertifikanızı oluştururken aşağıdaki CA 'Lara izin verilir:
 - D-TRUST kök sınıfı 3 CA 2 2009
 - DigiCert Cloud Services CA-1
 - DigiCert genel kök CA 'sı
+- DigiCert genel CA G2
 - DigiCert yüksek güvence CA-3
 - DigiCert yüksek güvence EV kök CA
 - DigiCert SHA2 genişletilmiş doğrulama sunucusu CA 'sı

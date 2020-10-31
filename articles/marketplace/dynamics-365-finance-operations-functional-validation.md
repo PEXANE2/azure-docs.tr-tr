@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9685081c0beacd745a83067b9d9876384933377
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651165"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131250"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 finans ve Operations işlev doğrulaması
 
@@ -22,7 +22,7 @@ ms.locfileid: "91651165"
 - Çözümün [yaşam döngüsü Hizmetleri](https://lcs.dynamics.com/) (LCS) ortamını gösteren ekran görüntüleri sunun.
 
 > [!NOTE]
-> Sonraki yeniden sertifika yayımlarım tanıtım gerektirmez. Daha fazla bilgi için bkz. [Appsource ilke belgesi](https://docs.microsoft.com/legal/marketplace/certification-policies#1440-dynamics-365-finance-ops).
+> Sonraki yeniden sertifika yayımlarım tanıtım gerektirmez. Daha fazla bilgi için bkz. [Appsource ilke belgesi](/legal/marketplace/certification-policies#1440-dynamics-365-finance-ops).
 
 ## <a name="how-to-validate"></a>Doğrulama
 
@@ -50,11 +50,11 @@ Nihai bir gözden geçirme çağrısını zamanlamak için, [appsourceCRM@micros
 
 2. , Yayınlamak istediğiniz teklif veya çözümle eşleşen [LCS](https://lcs.dynamics.com/) ortamının aşağıdaki ekran görüntülerini alın. Sertifika ekibinin metni okuyabilmesi için yeterince net olması gerekir. Ekran görüntülerini JPG dosyası olarak kaydedin. Bu [appSourceCRM@microsoft.com](mailto:appSourceCRM@microsoft.com) kurulumu, ekran görüntüleri sağlama yerine doğrulayabilmemiz IÇIN LCS ortamınız için izin sağlayabilirsiniz.
 
-    1. **LCS**  >  **iş süreci Modelleyicisi**  >  **proje kitaplığı**' na gidin. Tüm Işlem adımlarının ekran görüntülerini alın. **Diyagramları** ve **Gözden geçirilen** sütunları aşağıda gösterildiği gibi ekleyin:
+    1. **LCS**  >  **iş süreci Modelleyicisi**  >  **proje kitaplığı** ' na gidin. Tüm Işlem adımlarının ekran görüntülerini alın. **Diyagramları** ve **Gözden geçirilen** sütunları aşağıda gösterildiği gibi ekleyin:
 
        :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="Proje kitaplığı penceresini gösterir.":::
 
-      2. **LCS**  >  **Çözüm Yönetimi**  >  **test çözüm paketine**gidin. Bu örneklerde gösterilen pakete genel bakış ve içerikleri içeren ekran görüntülerini alın:
+      2. **LCS**  >  **Çözüm Yönetimi**  >  **test çözüm paketine** gidin. Bu örneklerde gösterilen pakete genel bakış ve içerikleri içeren ekran görüntülerini alın:
 
     | Alan | Görüntü <img src="" width="400px">|
     | --- | --- |
@@ -65,7 +65,7 @@ Nihai bir gözden geçirme çağrısını zamanlamak için, [appsourceCRM@micros
     | <ul><li>Power BI rapor modeli</li><li>BPM yapıtı</li></ul><br>**Power BI** bölümünde yapıtlar gerekli değildir. | [![Paket içeriği ekranı üç](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>İşlem veri paketi</li><li>Çözüm Lisans Sözleşmesi ve Gizlilik ilkesi</li></ul><br>**Grup yapılandırma** ve **Power BI rapor modeli** bölümleri, finans ve işlemler tekliflerini içerecek şekilde isteğe bağlıdır. | [![Paket içeriği ekranı dört](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |
 
-    LCS portalının her bölümü hakkında daha fazla bilgi edinmek için, [LCS Kullanıcı Kılavuzu](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide)' na bakın.
+    LCS portalının her bölümü hakkında daha fazla bilgi edinmek için, [LCS Kullanıcı Kılavuzu](/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide)' na bakın.
 
 3. Iş Ortağı Merkezi 'ne yükleyin.
 
@@ -76,4 +76,4 @@ Nihai bir gözden geçirme çağrısını zamanlamak için, [appsourceCRM@micros
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teklif oluşturma hakkında bilgi edinmek için bkz. [bir Dynamics 365 for Operations teklifini oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
+Teklif oluşturma hakkında bilgi edinmek için bkz. [bir Dynamics 365 for Operations teklifini oluşturma](./partner-center-portal/create-new-operations-offer.md).

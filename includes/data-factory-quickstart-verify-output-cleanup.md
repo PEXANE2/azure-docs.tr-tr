@@ -4,12 +4,12 @@ ms.topic: include
 ms.date: 11/09/2018
 author: linda33wj
 ms.author: jingwang
-ms.openlocfilehash: c0fcdf1cf69c55f63288138bc7377a78295cb2be
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34848b638ff0c7f7b9d1a2f3e5894339f8310ccc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86544511"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135523"
 ---
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
@@ -17,13 +17,13 @@ ms.locfileid: "86544511"
 
 1. Azure portal, **adföğreticisi** kapsayıcı sayfasında, çıktı klasörünü görmek için **Yenile** ' yi seçin. 
     
-    ![Yenile](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
+    ![Ekran görüntüsü, sayfayı yenileyebileceğiniz kapsayıcı sayfasını gösterir.](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
 
 2. Klasör listesinde **Çıkış ' ı** seçin. 
 
 3. **emp.txt** dosyasının output klasörüne kopyalandığını onaylayın. 
 
-    ![Yenile](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
+    ![Ekran görüntüsü, çıkış klasörü içeriğini gösterir.](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

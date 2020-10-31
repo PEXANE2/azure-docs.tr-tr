@@ -11,17 +11,17 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa9fa036f86fc822a4bb2175f404cdff1ca81d7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9e6b03a2f9dd0089b1112000804e46f3d214cd3c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362578"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131301"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Öğretici: Log Analytics Sihirbazı 'nı yapılandırma
 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Denetim ve oturum açma günlüklerinizi için bir Log Analytics çalışma alanı yapılandırma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Hızlı başlangıç şablonunu kullanarak özel çalışma kitabı oluşturma
 > * Varolan çalışma kitabı şablonuna sorgu ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - En az bir P1 lisanslı Yöneticisi olan bir Azure aboneliği. Azure aboneliğiniz yoksa, [ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
@@ -66,11 +66,11 @@ Bir Log Analytics çalışma alanının yapılandırılması iki ana adımdan ol
 
 1. [Azure portalında](https://portal.azure.com) genel yönetici olarak oturum açın.
 
-2. **Log Analytics çalışma alanlarını**arayın.
+2. **Log Analytics çalışma alanlarını** arayın.
 
     ![Arama kaynakları Hizmetleri ve belgeleri](./media/tutorial-log-analytics-wizard/search-services.png)
 
-3. Log Analytics çalışma alanları sayfasında **Ekle**' ye tıklayın.
+3. Log Analytics çalışma alanları sayfasında **Ekle** ' ye tıklayın.
 
     ![Ekran görüntüsü, Log Analytics çalışma alanları sayfasındaki Ekle düğmesini gösterir.](./media/tutorial-log-analytics-wizard/add.png)
 
@@ -86,7 +86,7 @@ Bir Log Analytics çalışma alanının yapılandırılması iki ana adımdan ol
 
     4. Bölgenizi seçin.
 
-5. **Gözden Geçir ve Oluştur**’a tıklayın.
+5. **Gözden Geçir ve Oluştur** ’a tıklayın.
 
     ![Gözden geçir ve oluştur](./media/tutorial-log-analytics-wizard/review-create.png)
 
@@ -96,13 +96,13 @@ Bir Log Analytics çalışma alanının yapılandırılması iki ana adımdan ol
 
 7. **Azure Active Directory** aratın.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Ekran görüntüsünde Azure Search 'te Azure Active Directory gösterilmektedir.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
-8. **İzleme** bölümünde **Tanılama ayarı**' na tıklayın.
+8. **İzleme** bölümünde **Tanılama ayarı** ' na tıklayın.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
+    ![Ekran görüntüsü, Izleme tarafından seçilen tanılama ayarlarını gösterir.](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
 
-9. **Tanılama ayarları** sayfasında, **Tanılama ayarı Ekle**' ye tıklayın.
+9. **Tanılama ayarları** sayfasında, **Tanılama ayarı Ekle** ' ye tıklayın.
 
     ![Tanılama ayarı Ekle](./media/tutorial-log-analytics-wizard/add-diagnostic-setting.png)
 
@@ -110,11 +110,11 @@ Bir Log Analytics çalışma alanının yapılandırılması iki ana adımdan ol
 
     ![Tanılama ayarlarını seçin](./media/tutorial-log-analytics-wizard/select-diagnostics-settings.png)
 
-    1. **Kategori ayrıntıları**' nın altında **Auditlogs** ve **signınlogs**' u seçin.
+    1. **Kategori ayrıntıları** ' nın altında **Auditlogs** ve **signınlogs** ' u seçin.
 
-    2. **Hedef ayrıntıları**altında **Log Analytics gönder**' i seçin ve ardından yeni Log Analytics çalışma alanınızı seçin. 
+    2. **Hedef ayrıntıları** altında **Log Analytics gönder** ' i seçin ve ardından yeni Log Analytics çalışma alanınızı seçin. 
    
-    3. **Kaydet**’e tıklayın. 
+    3. **Kaydet** ’e tıklayın. 
 
 ## <a name="run-queries"></a>Sorgu çalıştırma  
 
@@ -128,15 +128,15 @@ Bu yordam, **kusto sorgu dili (KQL)** kullanılarak sorguların nasıl çalışt
 
 2. **Azure Active Directory** aratın.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Ekran görüntüsünde Azure Search 'te Azure Active Directory gösterilmektedir.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
-3. **İzleme** bölümünde **Günlükler**' e tıklayın.
+3. **İzleme** bölümünde **Günlükler** ' e tıklayın.
 
-4. **Günlükler** sayfasında, **kullanmaya başlayın**' a tıklayın.
+4. **Günlükler** sayfasında, **kullanmaya başlayın** ' a tıklayın.
 
-5. **Arama* metin kutusuna sorgunuzu yazın.
+5. * *Arama* metin kutusuna sorgunuzu yazın.
 
-6. **Çalıştır**'a tıklayın.  
+6. **Çalıştır** 'a tıklayın.  
 
 
 ### <a name="kql-query-examples"></a>KQL sorgu örnekleri
@@ -210,23 +210,23 @@ Bu yordamda, breakcam hesabı kullanıldığında nasıl uyarı gönderileceğin
 
 2. **Azure Active Directory** aratın.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Ekran görüntüsünde Azure Search 'te Azure Active Directory gösterilmektedir.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
-3. **İzleme** bölümünde **Günlükler**' e tıklayın.
+3. **İzleme** bölümünde **Günlükler** ' e tıklayın.
 
-4. **Günlükler** sayfasında, **kullanmaya başlayın**' a tıklayın.
+4. **Günlükler** sayfasında, **kullanmaya başlayın** ' a tıklayın.
 
 5. **Arama** metin kutusuna şunu yazın:`SigninLogs |where UserDisplayName contains "BreakGlass" | project UserDisplayName`
 
-6. **Çalıştır**'a tıklayın.  
+6. **Çalıştır** 'a tıklayın.  
 
-7. Araç çubuğunda **Yeni uyarı kuralı**' nı tıklatın.
+7. Araç çubuğunda **Yeni uyarı kuralı** ' nı tıklatın.
 
     ![Yeni uyarı kuralı](./media/tutorial-log-analytics-wizard/new-alert-rule.png)
 
 8. **Uyarı kuralı oluştur** sayfasında, kapsamın doğru olduğundan emin olun.
 
-9. **Koşul**altında, **Ortalama özel günlük araması sayıdan büyük <logic undefined> ** olduğunda öğesine tıklayın.
+9. **Koşul** altında, **Ortalama özel günlük araması sayıdan büyük <logic undefined>** olduğunda öğesine tıklayın.
 
     ![Varsayılan koşul](./media/tutorial-log-analytics-wizard/default-condition.png)
 
@@ -234,27 +234,27 @@ Bu yordamda, breakcam hesabı kullanıldığında nasıl uyarı gönderileceğin
 
     ![Uyarı mantığı](./media/tutorial-log-analytics-wizard/alert-logic.png)
 
-    1. **Temelinde**, **sonuç sayısı**' nı seçin.
+    1. **Temelinde** , **sonuç sayısı** ' nı seçin.
 
-    2. As **işleci**, **büyüktür**' i seçin.
+    2. As **işleci** , **büyüktür** ' i seçin.
 
-    3. **Eşik değeri**olarak **0**' ı seçin. 
+    3. **Eşik değeri** olarak **0** ' ı seçin. 
 
 11. **Sinyal mantığını Yapılandır** sayfasında, **değerlendirilen temel** bölümünde aşağıdaki adımları uygulayın:
 
     ![Temel alınarak değerlendirilen](./media/tutorial-log-analytics-wizard/evaluated-based-on.png)
 
-    1. **Süre (dakika cinsinden)** olarak **5**' i seçin.
+    1. **Süre (dakika cinsinden)** olarak **5** ' i seçin.
 
-    2. **Sıklık (dakika)** olarak **5**' i seçin.
+    2. **Sıklık (dakika)** olarak **5** ' i seçin.
 
-    3. **Bitti**’ye tıklayın. 
+    3. **Bitti** ’ye tıklayın. 
 
-12. **Eylem grubu**altında **eylem grubu seç**' e tıklayın. 
+12. **Eylem grubu** altında **eylem grubu seç** ' e tıklayın. 
 
     ![Eylem grubu](./media/tutorial-log-analytics-wizard/action-group.png)
 
-13. **Bu uyarı kuralına iliştirilecek bir eylem grubu seçin**sayfasında, **eylem grubu oluştur**' a tıklayın. 
+13. **Bu uyarı kuralına iliştirilecek bir eylem grubu seçin** sayfasında, **eylem grubu oluştur** ' a tıklayın. 
 
     ![Eylem grubu oluşturma](./media/tutorial-log-analytics-wizard/create-action-group.png)
 
@@ -262,24 +262,24 @@ Bu yordamda, breakcam hesabı kullanıldığında nasıl uyarı gönderileceğin
 
     ![Örnek ayrıntıları](./media/tutorial-log-analytics-wizard/instance-details.png)
 
-    1. **Eylem grubu adı** metin kutusuna **eylem grubumu**yazın.
+    1. **Eylem grubu adı** metin kutusuna **eylem grubumu** yazın.
 
-    2. **Görünen ad** metin kutusuna **eylemin**yazın.
+    2. **Görünen ad** metin kutusuna **eylemin** yazın.
 
-    3. **Gözden geçir ve oluştur**’a tıklayın. 
+    3. **Gözden geçir ve oluştur** ’a tıklayın. 
 
-    4. **Oluştur**’a tıklayın.
+    4. **Oluştur** 'a tıklayın.
 
 
-15. **Özelleştirme eylemi**altında aşağıdaki adımları gerçekleştirin:
+15. **Özelleştirme eylemi** altında aşağıdaki adımları gerçekleştirin:
 
     ![Eylemleri özelleştirme](./media/tutorial-log-analytics-wizard/customize-actions.png)
 
-    1. **E-posta konusu**seçin.
+    1. **E-posta konusu** seçin.
 
     2. **Konu satırı** metin kutusuna şunu yazın:`Breakglass account has been used`
 
-16. **Uyarı kuralı ayrıntıları**' nın altında, aşağıdaki adımları uygulayın:
+16. **Uyarı kuralı ayrıntıları** ' nın altında, aşağıdaki adımları uygulayın:
 
     ![Uyarı kuralı ayrıntıları](./media/tutorial-log-analytics-wizard/alert-rule-details.png)
 
@@ -287,7 +287,7 @@ Bu yordamda, breakcam hesabı kullanıldığında nasıl uyarı gönderileceğin
 
     2. **Açıklama** metin kutusuna şunu yazın:`Your emergency access account has been used`
 
-17. **Uyarı kuralı oluştur**’a tıklayın.   
+17. **Uyarı kuralı oluştur** ’a tıklayın.   
 
 
 ## <a name="create-a-custom-workbook"></a>Özel çalışma kitabı oluşturma
@@ -301,44 +301,44 @@ Bu yordamda, hızlı başlangıç şablonunu kullanarak nasıl yeni bir çalış
 
 2. **Azure Active Directory** aratın.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Ekran görüntüsünde Azure Search 'te Azure Active Directory gösterilmektedir.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
-3. **İzleme** bölümünde, **çalışma kitapları**' nı tıklatın.
+3. **İzleme** bölümünde, **çalışma kitapları** ' nı tıklatın.
 
     ![Ekran görüntüsü Azure portal menüsündeki çalışma kitaplarının seçili olduğunu gösterir.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
-4. **Hızlı başlangıç** bölümünde **boş**' a tıklayın.
+4. **Hızlı başlangıç** bölümünde **boş** ' a tıklayın.
 
     ![Hızlı başlangıç](./media/tutorial-log-analytics-wizard/quick-start.png)
 
-5. **Ekle**'ye tıklayın.
+5. **Ekle** 'ye tıklayın.
 
     ![Çalışma kitabı Ekle](./media/tutorial-log-analytics-wizard/add-workbook.png)
 
-6. **Metin ekle**' ye tıklayın.
+6. **Metin ekle** ' ye tıklayın.
 
     ![Metin ekle](./media/tutorial-log-analytics-wizard/add-text.png)
 
 
-7. Metin kutusuna: yazın `# Client apps used in the past week` ve ardından **Düzenle**' ye tıklayın.
+7. Metin kutusuna: yazın `# Client apps used in the past week` ve ardından **Düzenle** ' ye tıklayın.
 
     ![Çalışma kitabı metni](./media/tutorial-log-analytics-wizard/workbook-text.png)
 
-8. Yeni çalışma kitabında **Ekle**' ye ve ardından **Sorgu Ekle**' ye tıklayın.
+8. Yeni çalışma kitabında **Ekle** ' ye ve ardından **Sorgu Ekle** ' ye tıklayın.
 
     ![Sorgu Ekle](./media/tutorial-log-analytics-wizard/add-query.png)
 
 9. Sorgu metin kutusuna şunu yazın: `SigninLogs | where TimeGenerated > ago(7d) | project TimeGenerated, UserDisplayName, ClientAppUsed | summarize count() by ClientAppUsed`
 
-10. **Sorguyu Çalıştır**' a tıklayın.
+10. **Sorguyu Çalıştır** ' a tıklayın.
 
-    ![Sorgu çalıştırma](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
+    ![Ekran görüntüsü Sorguyu Çalıştır düğmesini gösterir.](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
 
-11. Araç çubuğunda, **görselleştirme**altında, **pasta grafiği**' ne tıklayın.
+11. Araç çubuğunda, **görselleştirme** altında, **pasta grafiği** ' ne tıklayın.
 
     ![Pasta grafiği](./media/tutorial-log-analytics-wizard/pie-chart.png)
 
-12. **Düzenlemenizi bitti**' ye tıklayın.
+12. **Düzenlemenizi bitti** ' ye tıklayın.
 
     ![Düzenlenmek bitti](./media/tutorial-log-analytics-wizard/done-workbook-editing.png)
 
@@ -353,35 +353,35 @@ Bu yordam, var olan bir çalışma kitabı şablonuna nasıl sorgu ekleneceğini
 
 2. **Azure Active Directory** aratın.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Ekran görüntüsünde Azure Search 'te Azure Active Directory gösterilmektedir.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
-3. **İzleme** bölümünde, **çalışma kitapları**' nı tıklatın.
+3. **İzleme** bölümünde, **çalışma kitapları** ' nı tıklatın.
 
     ![Ekran görüntüsü, çalışma kitaplarının seçili olduğu menüdeki Izlemeyi gösterir.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
-4. **Koşullu erişim** bölümünde, **koşullu erişim öngörüleri ve raporlama**' ya tıklayın.
+4. **Koşullu erişim** bölümünde, **koşullu erişim öngörüleri ve raporlama** ' ya tıklayın.
 
-    ![Koşullu erişim şablonu](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
+    ![Ekran görüntüsü koşullu erişim öngörülerini ve raporlama seçeneğini gösterir.](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
 
-5. Araç çubuğunda **Düzenle**' ye tıklayın.
+5. Araç çubuğunda **Düzenle** ' ye tıklayın.
 
-    ![Koşullu erişim şablonu](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
+    ![Ekran görüntüsü Düzenle düğmesini gösterir.](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
 
-6. Araç çubuğunda üç noktaya ve ardından **Ekle**' ye ve ardından **Sorgu Ekle**' ye tıklayın.
+6. Araç çubuğunda üç noktaya ve ardından **Ekle** ' ye ve ardından **Sorgu Ekle** ' ye tıklayın.
 
     ![Çalışma kitabı sorgusu Ekle](./media/tutorial-log-analytics-wizard/add-custom-workbook-query.png)
 
 7. Sorgu metin kutusuna şunu yazın: `SigninLogs | where TimeGenerated > ago(20d) | where ConditionalAccessPolicies != "[]" | summarize dcount(UserDisplayName) by bin(TimeGenerated, 1d), ConditionalAccessStatus`
 
-8. **Sorguyu Çalıştır**' a tıklayın.
+8. **Sorguyu Çalıştır** ' a tıklayın.
 
-    ![Sorgu çalıştırma](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
+    ![Ekran görüntüsü bu sorguyu çalıştırmak için sorguyu Çalıştır düğmesini gösterir.](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
 
-9. **Zaman aralığı**' na tıklayın ve ardından **sorguda ayarla**' yı seçin.
+9. **Zaman aralığı** ' na tıklayın ve ardından **sorguda ayarla** ' yı seçin.
 
-10. **Görselleştirme**' e tıklayın ve ardından **çubuk grafik**' i seçin. 
+10. **Görselleştirme** ' e tıklayın ve ardından **çubuk grafik** ' i seçin. 
 
-11. Grafik başlığı olarak **Gelişmiş ayarlar**' a tıklayın, yazın `Conditional Access status over the last 20 days` ve ardından **Düzenle bitti**' ye tıklayın. 
+11. Grafik başlığı olarak **Gelişmiş ayarlar** ' a tıklayın, yazın `Conditional Access status over the last 20 days` ve ardından **Düzenle bitti** ' ye tıklayın. 
 
     ![Grafik başlığını ayarla](./media/tutorial-log-analytics-wizard/set-chart-title.png)
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 1befc26d6c6d0a12af57c8a0d3d0e6d32f363f19
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 10cee7f5b0deff37a9b1df1937fe8f6ed8431daa
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096904"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135941"
 ---
 Bu kılavuzda, Linux için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir
 
@@ -23,9 +23,9 @@ Bu kılavuzda, Linux için [konuşma SDK 'sının](~/articles/cognitive-services
 
 ## <a name="system-requirements"></a>Sistem gereksinimleri
 
-Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 7/8, CentOS 7/8)
+'Un [desteklenen Linux dağıtımları ve hedef mimarilerin](~/articles/cognitive-services/speech-service/speech-sdk.md)listesine bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunlar gerekir:
 
@@ -33,19 +33,14 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunlar gerekir:
 
 * Desteklenen Linux platformları, belirli kitaplıkların yüklü olmasını gerektirir ( `libssl` Güvenli Yuva Katmanı desteği ve `libasound2` ses desteği için). Bu kitaplıkların doğru sürümlerini yüklemek için gereken komutlar için aşağıdaki dağıtıma bakın.
 
-   * Ubuntu 'da:
+   * Ubuntu/de, üzerinde:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.0 libasound2 wget
      ```
 
-   * On yıl 9 ' da:
-
-     ```sh
-     sudo apt-get update
-     sudo apt-get install build-essential libssl1.0.2 libasound2 wget
-     ```
+     Libssl 1.0.0 yoksa, bunun yerine libssl 1.0. x (x 0 ' dan büyük) veya libssl 1.1 sürümünü yüklemelisiniz.
 
    * RHEL/CentOS üzerinde:
 

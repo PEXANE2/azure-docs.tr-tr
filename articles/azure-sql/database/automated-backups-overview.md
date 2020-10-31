@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 10/05/2020
-ms.openlocfilehash: dc6d083efd1d39d96f9df995fe5e7e4bcc95abff
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/30/2020
+ms.openlocfilehash: a97e39314b4dc15a360a01408f183a3f9a19c76f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675309"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131369"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -50,7 +50,7 @@ SQL veritabanı için yedekleme depolama yedekliliği, veritabanı oluşturma s�
 > Bölgesel olarak yedekli depolama Şu anda yalnızca [belirli bölgelerde](../../storage/common/storage-redundancy.md#zone-redundant-storage)kullanılabilir. 
 
 > [!NOTE]
-> Azure SQL veritabanı için yapılandırılabilir yedekleme depolama yedekliği, şu anda yalnızca Güneydoğu Asya Azure bölgesinde genel kullanıma sunulmuştur. Bu özellik henüz hiper ölçek katmanı için kullanılabilir değil. 
+> Azure SQL veritabanı için yapılandırılabilir yedekleme depolama yedekliği Şu anda Brezilya Güney ' de genel önizlemeye sunuldu ve genel olarak Güneydoğu Asya Azure bölgesinde kullanıma sunuldu. Bu özellik henüz hiper ölçek katmanı için kullanılabilir değil. 
 
 ### <a name="backup-usage"></a>Yedekleme kullanımı
 
@@ -371,7 +371,7 @@ Daha fazla bilgi için bkz. [yedekleme bekletme REST API](/rest/api/sql/backupsh
 ## <a name="configure-backup-storage-redundancy"></a>Yedek depolama yedekliliği yapılandırma
 
 > [!NOTE]
-> SQL yönetilen örneği için yapılandırılabilir depolama yedekliliği yalnızca yönetilen örnek oluşturma işlemi sırasında belirtilebilir. Kaynak sağlandıktan sonra yedek depolama artıklığı seçeneğini değiştiremezsiniz. SQL veritabanı için, bu özelliğin genel önizlemesi Şu anda yalnızca Güneydoğu Asya Azure bölgesinde kullanılabilir. 
+> SQL yönetilen örneği için yapılandırılabilir depolama yedekliliği yalnızca yönetilen örnek oluşturma işlemi sırasında belirtilebilir. Kaynak sağlandıktan sonra yedek depolama artıklığı seçeneğini değiştiremezsiniz. SQL veritabanı için, bu özelliğin genel önizlemesi Şu anda Brezilya Güney sürümünde sunulmaktadır ve Güney Doğu Asya Azure bölgesinde genel kullanıma sunulmuştur. 
 
 Yönetilen bir örnek için yedek depolama yedekliği yalnızca örnek oluşturma sırasında ayarlanabilir. Bir SQL veritabanı için veritabanı oluşturulurken ayarlanabilir veya var olan bir veritabanı için güncelleştirilemeyebilir. Varsayılan değer, coğrafi olarak yedekli depolama (RA-GRS) değeridir. Yerel olarak yedekli (LRS), bölgesel olarak yedekli (ZRS) ve coğrafi olarak yedekli (RA-GRS) yedekleme depolaması arasındaki fiyatlandırma farkları için [yönetilen örnek fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)ziyaret edin.
 

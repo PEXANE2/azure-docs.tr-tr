@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: 2f34723bec6dc2212f8897eca849e6535d737fc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af77f18771d8e18ee86b79360ac03307d3330cb0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397428"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131437"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI uygulama oluşturmaya genel bakış
 
@@ -33,22 +33,22 @@ Ticari Market 'e yayımlamanın avantajları:
 
 Bunlar, önemli yayımlama adımlardır:
 
-1. Uygulamanızı Power BI oluşturun. Teklif için ana teknik varlık olan bir paket yüklemesi bağlantısı alacaksınız. Teklifi Iş Ortağı Merkezi ' nde oluşturmadan önce test paketini ön üretime gönderin. Ayrıntılar için bkz. [Power BI uygulamalar nelerdir?](https://docs.microsoft.com/power-bi/service-template-apps-overview).
+1. Uygulamanızı Power BI oluşturun. Teklif için ana teknik varlık olan bir paket yüklemesi bağlantısı alacaksınız. Teklifi Iş Ortağı Merkezi ' nde oluşturmadan önce test paketini ön üretime gönderin. Ayrıntılar için bkz. [Power BI uygulamalar nelerdir?](/power-bi/service-template-apps-overview).
 2. Resmi ad, açıklama ve logo gibi pazarlama malzemeleri ekleyin.
 3. Kullanım koşulları, Gizlilik ilkesi, destek ilkesi ve Kullanıcı Yardımı gibi teklifin yasal ve destek belgelerini de dahil edin.
 4. Teklifi oluşturun – teklif açıklaması, pazarlama malzemeleri, yasal bilgiler, destek bilgileri ve varlık belirtimleri dahil olmak üzere ayrıntıları düzenlemek için Iş ortağı merkezini kullanın.
 5. Yayımlamak için gönderebilirsiniz.
 6. Iş Ortağı Merkezi 'nde, AppSource ekleme ekibinin uygulamanızı test ettiği, doğruladığı ve sertifika doğruladığı süreci izleyin.
 7. Sertifikalandırdıktan sonra, uygulamayı test ortamında inceleyin ve serbest bırakın. Bu, bunu AppSource 'ta listeler ("canlı gidiyor").
-8. Power BI, paketi üretime gönderin. Ayrıntılar için bkz. [Power BI uygulaması sürümünü yönetme](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release).
+8. Power BI, paketi üretime gönderin. Ayrıntılar için bkz. [Power BI uygulaması sürümünü yönetme](/power-bi/service-template-apps-create#manage-the-template-app-release).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Şablonlar, ipuçları ve örnekler sağlayan aşağıdaki bağlantıları gözden geçirin.
 
-- [Power BI uygulaması oluşturma](https://docs.microsoft.com/power-bi/service-template-apps-create)
-- [Power BI uygulaması yazma ipuçları](https://docs.microsoft.com/power-bi/service-template-apps-tips)
-- [Örnekler](https://docs.microsoft.com/power-bi/service-template-apps-samples)
+- [Power BI uygulaması oluşturma](/power-bi/service-template-apps-create)
+- [Power BI uygulaması yazma ipuçları](/power-bi/service-template-apps-tips)
+- [Örnekler](/power-bi/service-template-apps-samples)
 
 ## <a name="requirements"></a>Gereksinimler
 
@@ -56,13 +56,13 @@ Ticari Market 'te yayınlanmak üzere Power BI uygulama teklifinizin aşağıdak
 
 ### <a name="technical-requirements"></a>Teknik gereksinimler
 
-İhtiyacınız olan ana teknik varlık bir [Power BI uygulamasıdır](https://go.microsoft.com/fwlink/?linkid=2028636). Bu, birincil veri kümeleri, raporlar veya panolar koleksiyonudur. Ayrıca, daha önce bir [içerik paketi](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction)olarak bilinen isteğe bağlı hizmetleri ve katıştırılmış veri kümelerini içerir. Bu tür bir uygulamayı geliştirme hakkında daha fazla bilgi için bkz. [Power BI uygulamalar nelerdir?](https://go.microsoft.com/fwlink/?linkid=2028636).
+İhtiyacınız olan ana teknik varlık bir [Power BI uygulamasıdır](/power-bi/connect-data/service-template-apps-overview). Bu, birincil veri kümeleri, raporlar veya panolar koleksiyonudur. Ayrıca, daha önce bir [içerik paketi](/power-bi/service-organizational-content-pack-introduction)olarak bilinen isteğe bağlı hizmetleri ve katıştırılmış veri kümelerini içerir. Bu tür bir uygulamayı geliştirme hakkında daha fazla bilgi için bkz. [Power BI uygulamalar nelerdir?](/power-bi/connect-data/service-template-apps-overview).
 
 #### <a name="get-an-installation-web-address"></a>Yükleme Web adresi alma
 
 [Power BI](https://powerbi.microsoft.com/) ortamında yalnızca bir Power BI uygulaması oluşturabilirsiniz.
 
-1. [Power BI Pro lisansıyla](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)oturum açın.
+1. [Power BI Pro lisansıyla](/power-bi/service-admin-purchasing-power-bi-pro)oturum açın.
 2. Power BI ' de uygulamanızı oluşturun ve test edin.
 3. Uygulama yükleme Web adresini aldığınızda, Iş Ortağı Merkezi 'nde **Teknik yapılandırma** sayfasına ekleyin.
 

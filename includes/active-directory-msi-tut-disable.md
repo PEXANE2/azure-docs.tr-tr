@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: active-directory
 author: MarkusVi
 ms.service: active-directory
@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: markvi
 ms.custom: include file
-ms.openlocfilehash: 6a50faee2d557c39e9bd371caa98a4bcb2016e0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b907eb1f9240156cdb1d9c9cf44d77d4738aff1a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75971845"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135655"
 ---
-SANAL makinenizde sistem tarafından atanan kimliği devre dışı bırakmak için, sistem tarafından atanan kimliğin durumunu **kapalı**olarak ayarlayın. 
+SANAL makinenizde sistem tarafından atanan kimliği devre dışı bırakmak için, sistem tarafından atanan kimliğin durumunu **kapalı** olarak ayarlayın. 
 
-![Yeni depolama hesabı oluşturma](./media/active-directory-msi-tut-disable/identity.png)
+![Ekran görüntüsü, sistem tarafından atanan durumu kapatabileceğiniz bir sanal makine için sistem tarafından atanan sekmesini gösterir.](./media/active-directory-msi-tut-disable/identity.png)

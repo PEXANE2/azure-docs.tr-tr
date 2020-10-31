@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 9bfca7def313fc701798ff96d0ed4b18ca13ef60
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 01574407801c0a6b0a5e0ddc438af4d3965dc090
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313885"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131556"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric yayınları
 
@@ -23,6 +23,28 @@ ms.locfileid: "92313885"
 Bu makalede, Service Fabric çalışma zamanına ve SDK 'lara yönelik en son yayınlar ve güncelleştirmeler hakkında daha fazla bilgi sağlanmaktadır.
 
 ## <a name="whats-new-in-service-fabric"></a>Service Fabric yenilikleri
+
+### <a name="service-fabric-72"></a>Service Fabric 7,2 
+Service Fabric çalışma zamanının 7,2 sürümünün araç ve SDK güncelleştirmeleriyle birlikte çeşitli Azure bölgelerine kullanıma sunulduğunu duyurmaktan mutluluk duyuyoruz. .NET SDK, Java SDK ve Service Fabric çalışma zamanına yönelik güncelleştirmeler Web Platformu Yükleyicisi, NuGet paketleri ve Maven depoları aracılığıyla kullanılabilir.
+## <a name="what-is-new-in-service-fabric-7"></a>Service Fabric 7 ' deki yenilikler nelerdir?
+Bu sürüm, temel özellikler ve geliştirmeler ile yüklenir. Önemli özelliklerden bazıları aşağıda vurgulanır:
+## <a name="key-announcements-in-72"></a>7,2 'deki önemli Duyurular
+- **Önizleme** : [**Service Fabric yönetilen kümeler**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572) artık genel önizlemede. Service Fabric yönetilen kümeler, bir Service Fabric kümesini tek bir ARM kaynağına oluşturan temel kaynakları kapsülleyerek küme dağıtımını ve yönetimini basitleştirmeye yönelik olarak hedeflenir. Daha ayrıntılı bilgi için bkz. [Service Fabric yönetilen kümeye genel bakış](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster).
+- **Önizleme** : [**düğüm sayısından daha fazla sayıda örnek içeren, durum bilgisi olmayan hizmetleri destekleme**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies) artık genel önizlemeye sunuldu. Yerleştirme ilkesi, bir düğümde bir bölümün birden çok durum bilgisi olmayan örneğinin oluşturulmasına izin vermez.
+- [**Fabricobserver (FO) 3,0**](https://aka.ms/sf/fabricobserver) artık kullanılabilir.
+    - Artık, Linux ve Windows kümelerinde Fabricgözlemci çalıştırabilirsiniz.
+    - Artık özel gözlemci eklentileri oluşturabilirsiniz. Ayrıntılar ve kod için lütfen bkz. [Eklentiler Benioku dosyası](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Plugins.md) ve [örnek eklenti projesi](https://github.com/microsoft/service-fabric-observer/tree/master/SampleObserverPlugin) .
+    - Artık, uygulama parametreleri yükseltmesi aracılığıyla herhangi bir gözlemci ayarını değiştirebilirsiniz. Bu, belirli gözlemci ayarlarını değiştirmek için artık ıNFO yeniden dağıtmanız gerekmediği anlamına gelir. Lütfen [örneğe](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Using.md#parameterUpdates)bakın.
+- [**Ubuntu 18,04 OneBox kapsayıcı görüntüleri Için destek**](https://hub.docker.com/_/microsoft-service-fabric-onebox).
+- **Önizleme** : [ **Service Fabric uygulamalar için Anahtar Kasası başvurusu **yalnızca sürümlenmiş gizli** dizileri destekler. Sürümler olmadan gizli dizileri desteklenmez.**](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)
+- SF SDK 'Sı, en son VS 2019 güncelleştirme 16.7.6 veya 16,8 Preview 4 ' ün yeni .NET Framework durum bilgisiz/durum bilgisi/aktör projelerini oluşturabilmesidir. En son VS güncelleştirmeniz yoksa, hizmet projesini oluşturduktan sonra, durum bilgisiz/durum bilgisi olan projeler için Microsoft. ServiceFabric. Services (sürüm 4.2. x) ve nuget.org ' den aktör projeleri için Microsoft. ServiceFabric. aktör (sürüm 4.2. x) yüklemek için Paket Yöneticisi 'ni kullanın.
+- **Runtocompletion** : Service Fabric, Konuk yürütülebilir dosyaları için çalıştırmanın tamamlanması kavramını destekler. Çoğaltma tamamlandığında bu güncelleştirme ile, bu çoğaltmaya ayrılan küme kaynakları serbest bırakılır.
+- [**Kaynak idare desteği geliştirildi**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance): CPU ve bellek kaynakları için isteklere ve sınırlara izin verme.
+
+### <a name="service-fabric-72-releases"></a>Service Fabric 7,2 yayınları
+| Sürüm tarihi | Yayınla | Daha fazla bilgi |
+|---|---|---|
+| 21 Ekim 2020 | [Azure Service Fabric 7,2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-release/ba-p/1805653)  | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72-releasenotes.md)|
 
 ### <a name="service-fabric-71"></a>Service Fabric 7,1
 Geçerli COVı-19 çapraz olduğu ve müşterilerimizin karşılaştığı zorluk göz önünde bulundurarak 7,1 kullanılabilir hale getirdik, ancak Otomatik yükseltmeleri alacak şekilde kümeleri otomatik olarak yükseltmeyecektir. Müşterilerin, bu kullanıcılara en uygun olan yükseltmeleri uygulayabilmesi için, beklenmeyen kesintilere engel olmak üzere Otomatik yükseltmeleri durakladık.
@@ -50,14 +72,14 @@ Service Fabric sonraki sürümünü duyurmaktan mutluluk duyuyoruz. Bu sürüm, 
 
 ### <a name="improve-application-life-cycle-experience"></a>Uygulama yaşam döngüsü deneyimini geliştirme
 
-- **[Önizleme: istek boşaltma](./service-fabric-application-upgrade-advanced.md#avoid-connection-drops-during-stateless-service-planned-downtime)**: hizmet yükseltmeleri veya düğüm devre dışı bırakma gibi planlı hizmet bakımı sırasında hizmetlerin bağlantıları düzgün bir şekilde boşaltmasını sağlamak istersiniz. Bu özellik, hizmet yapılandırmasında bir örnek kapatma gecikme süresi ekler. Planlanan işlemler sırasında, SF hizmetin adresini bulma işleminden kaldırır ve ardından hizmeti kapatmadan önce bu süreyi bekler.
-- **[Otomatik alt küme algılama ve dengeleme](./cluster-resource-manager-subclustering.md)**: farklı yerleştirme kısıtlamalarına sahip hizmetlerde ortak bir [yük ölçümü](./service-fabric-cluster-resource-manager-metrics.md)olduğunda, alt kümeleme gerçekleşir. Farklı düğüm kümelerindeki yükün önemli ölçüde farklı olduğu durumlarda Service Fabric kümesi, yerleştirme kısıtlamaları nedeniyle mümkün olan en iyi dengeyi sahip olsa bile kümenin imse olduğunu düşündü Kaynak Yöneticisi. Sonuç olarak, büyük olasılıkla gereksiz hizmet hareketlerine neden olan ("ımbilanço" önemli ölçüde iyileşebildiğinden) kümeyi yeniden dengelemeye çalışır. Bu sürümden itibaren, Küme Kaynak Yöneticisi artık bu yapılandırma türlerini otomatik olarak algılamaya çalışır ve ne zaman, önemli bir geliştirme yapamayacağı için bu tür yapılandırmayı otomatik olarak algılamaya ve ne zaman tek tek bırakması gerektiğine çalışacaktır.  
+- **[Önizleme: istek boşaltma](./service-fabric-application-upgrade-advanced.md#avoid-connection-drops-during-stateless-service-planned-downtime)** : hizmet yükseltmeleri veya düğüm devre dışı bırakma gibi planlı hizmet bakımı sırasında hizmetlerin bağlantıları düzgün bir şekilde boşaltmasını sağlamak istersiniz. Bu özellik, hizmet yapılandırmasında bir örnek kapatma gecikme süresi ekler. Planlanan işlemler sırasında, SF hizmetin adresini bulma işleminden kaldırır ve ardından hizmeti kapatmadan önce bu süreyi bekler.
+- **[Otomatik alt küme algılama ve dengeleme](./cluster-resource-manager-subclustering.md)** : farklı yerleştirme kısıtlamalarına sahip hizmetlerde ortak bir [yük ölçümü](./service-fabric-cluster-resource-manager-metrics.md)olduğunda, alt kümeleme gerçekleşir. Farklı düğüm kümelerindeki yükün önemli ölçüde farklı olduğu durumlarda Service Fabric kümesi, yerleştirme kısıtlamaları nedeniyle mümkün olan en iyi dengeyi sahip olsa bile kümenin imse olduğunu düşündü Kaynak Yöneticisi. Sonuç olarak, büyük olasılıkla gereksiz hizmet hareketlerine neden olan ("ımbilanço" önemli ölçüde iyileşebildiğinden) kümeyi yeniden dengelemeye çalışır. Bu sürümden itibaren, Küme Kaynak Yöneticisi artık bu yapılandırma türlerini otomatik olarak algılamaya çalışır ve ne zaman, önemli bir geliştirme yapamayacağı için bu tür yapılandırmayı otomatik olarak algılamaya ve ne zaman tek tek bırakması gerektiğine çalışacaktır.  
 - [**İkincil çoğaltmalar Için farklı taşıma maliyeti**](./service-fabric-cluster-resource-manager-movement-cost.md): ikincil çoğaltmalar için ayrı bir taşıma maliyetinin kullanılması gerekip gerekmediğini tanımlamak üzere bazı senaryolarda ek esneklik sağlayan yeni taşıma maliyeti değeri VeryHigh.
 - Kapsayıcılı uygulamalar için etkin hale [**getirme araştırması**](./probes-codepackage.md) mekanizması. Lizur araştırması Kapsayıcılı uygulamanın tam olarak duyurulmasına ve zamanında yanıt vermediklerinde yeniden başlatmaya neden olur.
 - [**Hizmetler için tamamlama/bir kez çalıştırma**](./run-to-completion.md)**
 
 ### <a name="image-store-improvements"></a>Görüntü Deposu iyileştirmeler
- - Service Fabric 7,1, **düğümler arasında dosya aktarımını varsayılan olarak güvenli hale getirmek için özel aktarım**kullanır. SMB dosya paylaşımındaki bağımlılık 7,1 sürümünden kaldırılmıştır. Güvenli SMB dosya paylaşımları, müşterinin varsayılan olarak devre dışı bırakmak ve eski sürüme yükseltmek için Görüntü Deposu hizmet çoğaltmasını içeren düğümlerde hala mevcut.
+ - Service Fabric 7,1, **düğümler arasında dosya aktarımını varsayılan olarak güvenli hale getirmek için özel aktarım** kullanır. SMB dosya paylaşımındaki bağımlılık 7,1 sürümünden kaldırılmıştır. Güvenli SMB dosya paylaşımları, müşterinin varsayılan olarak devre dışı bırakmak ve eski sürüme yükseltmek için Görüntü Deposu hizmet çoğaltmasını içeren düğümlerde hala mevcut.
        
  ### <a name="reliable-collections-improvements"></a>Güvenilir koleksiyonlar geliştirmeleri
 
@@ -86,15 +108,15 @@ Ayrıca, bu ilkenin dikkate alınması gerektiğini göstermek için planlanmı�
 Bu, Service Fabric en son sürümüdür ve temel özellikler ve geliştirmeler ile yüklenir.
 
 ### <a name="key-announcements"></a>Anahtar Duyurular
- - [**Uygulama gizli dizileri Için Keyvaultreference desteği (Önizleme)**](./service-fabric-keyvault-references.md): Service Fabric [yönetilen kimlikleri](./concepts-managed-identity.md) etkinleştirilmiş olan uygulamalar artık bir Key Vault gizli URL 'sine doğrudan bir ortam değişkeni, uygulama parametresi veya kapsayıcı deposu kimlik bilgileri olarak başvurabilir. Service Fabric, uygulamanın yönetilen kimliğini kullanarak gizli anahtarı otomatik olarak çözer. 
+ - [**Uygulama gizli dizileri Için Keyvaultreference desteği (Önizleme)**](./service-fabric-keyvault-references.md): Service Fabric [yönetilen kimlikleri](./concepts-managed-identity.md) etkinleştirilmiş olan uygulamalar artık bir Key Vault gizli URL 'sine doğrudan bir ortam değişkeni, uygulama parametresi veya kapsayıcı deposu kimlik bilgileri olarak başvurabilir. Service Fabric, uygulamanın yönetilen kimliğini kullanarak gizli anahtarı otomatik olarak çözer. 
      
-- **Durum bilgisi olmayan hizmetler Için geliştirilmiş yükseltme güvenliği**: bir uygulama yükseltmesi sırasında kullanılabilirliği garantilemek için, [durum bilgisi olmayan hizmetler için en az sayıda örnek](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) belirlemek için kullanılabilir kabul edilecek yeni yapılandırmaların tanıtıldık. Bu değer daha önce tüm hizmetler için 1 idi ve değiştirilemez. Bu yeni hizmet başına güvenlik denetimi sayesinde, hizmetlerinizin uygulama yükseltmeleri sırasında, küme yükseltmeleri sırasında ve Service Fabric sistem durumu ve güvenlik denetimlerine dayanan diğer bakımda en az sayıda örnek korumasını sağlayabilirsiniz.
+- **Durum bilgisi olmayan hizmetler Için geliştirilmiş yükseltme güvenliği** : bir uygulama yükseltmesi sırasında kullanılabilirliği garantilemek için, [durum bilgisi olmayan hizmetler için en az sayıda örnek](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) belirlemek için kullanılabilir kabul edilecek yeni yapılandırmaların tanıtıldık. Bu değer daha önce tüm hizmetler için 1 idi ve değiştirilemez. Bu yeni hizmet başına güvenlik denetimi sayesinde, hizmetlerinizin uygulama yükseltmeleri sırasında, küme yükseltmeleri sırasında ve Service Fabric sistem durumu ve güvenlik denetimlerine dayanan diğer bakımda en az sayıda örnek korumasını sağlayabilirsiniz.
   
-- [**Kullanıcı Hizmetleri Için kaynak sınırları**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services): kullanıcılar, Service Fabric sistem hizmetlerinin kaynak tükenmesi gibi senaryoları engellemek için bir düğümdeki Kullanıcı Hizmetleri için kaynak sınırları ayarlayabilir. 
+- [**Kullanıcı Hizmetleri Için kaynak sınırları**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services): kullanıcılar, Service Fabric sistem hizmetlerinin kaynak tükenmesi gibi senaryoları engellemek için bir düğümdeki Kullanıcı Hizmetleri için kaynak sınırları ayarlayabilir. 
   
 - Bir çoğaltma türü için [**çok yüksek hizmet taşıma maliyeti**](./service-fabric-cluster-resource-manager-movement-cost.md) . Çok yüksek taşıma maliyeti olan çoğaltmalar yalnızca kümede başka bir şekilde sabitlenemez bir kısıtlama ihlali varsa taşınır. "Çok yüksek" taşıma maliyetinin kullanımının makul olduğu ve ek konular hakkında daha fazla bilgi için bağlantılı belgeye bakın.
   
--  **Ek küme güvenliği denetimleri**: Bu sürümde, yapılandırılabilir bir çekirdek düğümü çekirdek güvenlik denetimi sunuyoruz. Bu, küme yaşam döngüsü ve yönetim senaryolarında kaç çekirdek düğümünün kullanılabilir olması gerektiğini özelleştirmenizi sağlar. Yapılandırılan değerin altında kümeyi alacak işlemler engellenir. Günümüzde varsayılan değer her zaman çekirdek düğümlerinin bir çekirdektir. Örneğin, 7 çekirdek düğümünüz varsa, 5 tohum düğümü altına almanız gereken bir işlem varsayılan olarak engellenir. Bu değişiklik ile, en az bir çekirdek düğümün aynı anda kapatılmasını sağlayan 6 Minimum güvenli değerini yapabilirsiniz.
+-  **Ek küme güvenliği denetimleri** : Bu sürümde, yapılandırılabilir bir çekirdek düğümü çekirdek güvenlik denetimi sunuyoruz. Bu, küme yaşam döngüsü ve yönetim senaryolarında kaç çekirdek düğümünün kullanılabilir olması gerektiğini özelleştirmenizi sağlar. Yapılandırılan değerin altında kümeyi alacak işlemler engellenir. Günümüzde varsayılan değer her zaman çekirdek düğümlerinin bir çekirdektir. Örneğin, 7 çekirdek düğümünüz varsa, 5 tohum düğümü altına almanız gereken bir işlem varsayılan olarak engellenir. Bu değişiklik ile, en az bir çekirdek düğümün aynı anda kapatılmasını sağlayan 6 Minimum güvenli değerini yapabilirsiniz.
    
 - [**Service Fabric Explorer 'de yedekleme ve geri yükleme hizmetinin yönetilmesine**](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)yönelik destek eklendi. Bu, aşağıdaki etkinlikleri doğrudan SFX içinden mümkün hale getirir: yedekleme ve geri yükleme hizmetini keşfetme, yedekleme ilkesi oluşturma, otomatik yedeklemeleri etkinleştirme, geçici yedeklemeler alma, geri yükleme işlemlerini tetikleme ve var olan yedeklemelere göz atma.
 
@@ -130,7 +152,7 @@ Service Fabric 6,5 ' deki yenilikler aşağıda verilmiştir:
 
 - Durum bilgisi olan hizmetler için [çoğaltma yaşam döngüsü olayları](service-fabric-diagnostics-event-generation-operational.md#replica-events) eklendi.
 
-- Çekirdek düğümünün sağlıksız olması durumunda (*aşağı*, *kaldırılmış* veya *bilinmiyor*) küme düzeyinde uyarılar da dahil olmak üzere [çekirdek düğüm durumunun daha iyi görünebilirliği](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#seed-node-status).
+- Çekirdek düğümünün sağlıksız olması durumunda ( *aşağı* , *kaldırılmış* veya *bilinmiyor* ) küme düzeyinde uyarılar da dahil olmak üzere [çekirdek düğüm durumunun daha iyi görünebilirliği](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#seed-node-status).
 
 - [Service Fabric uygulama olağanüstü durum kurtarma aracı](https://github.com/Microsoft/Service-Fabric-AppDRTool) , birincil küme bir olağanüstü durum ile karşılaştığında, durum bilgisi olan hizmetlerin hızla kurtarılmasını Service Fabric sağlar. Birincil kümeden alınan veriler, düzenli yedekleme ve geri yükleme kullanılarak ikincil bekleme uygulamasıyla sürekli olarak eşitlenir.
 

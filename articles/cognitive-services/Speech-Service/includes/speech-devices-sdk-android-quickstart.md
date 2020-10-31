@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5e83650bc9861f982c4905e26fbb674abbd4de97
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88226244"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135771"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription-service.md) cihazı olarak kullanmak için Android Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz.
 
@@ -35,7 +35,7 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
 
 - Kullanıcı dıklarından amaçları (veya eylemleri) belirlemek için konuşma hizmetini kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (Luu)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) aboneliğine sahip olmanız gerekir. Lua ve amaç tanıma hakkında daha fazla bilgi edinmek için bkz. [lusıs, C# ile konuşma amaçlarını tanıma](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
-  [Basit BIR luya modeli oluşturabilir](https://docs.microsoft.com/azure/cognitive-services/luis/) veya örnek lusıs modelini kullanabilirsiniz, üzerinde LUIS-example.js. Örnek LUSıS modeli, [konuşma cihazları SDK 'sı indirme sitesinden](https://aka.ms/sdsdk-luis)edinilebilir. Modelinizin JSON dosyasını [Lue portalına](https://www.luis.ai/home)yüklemek için **Yeni uygulama al**' ı seçin ve ardından json dosyasını seçin.
+  [Basit BIR luya modeli oluşturabilir](https://docs.microsoft.com/azure/cognitive-services/luis/) veya örnek lusıs modelini kullanabilirsiniz, üzerinde LUIS-example.js. Örnek LUSıS modeli, [konuşma cihazları SDK 'sı indirme sitesinden](https://aka.ms/sdsdk-luis)edinilebilir. Modelinizin JSON dosyasını [Lue portalına](https://www.luis.ai/home)yüklemek için **Yeni uygulama al** ' ı seçin ve ardından json dosyasını seçin.
 
 - [Android Studio](https://developer.android.com/studio/) ve [vysor](https://vysor.io/download/) 'u bilgisayarınıza yükleyip.
 
@@ -45,24 +45,24 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
 
    ![Vysor](../media/speech-devices-sdk/qsg-3.png)
 
-1. Cihazınızın **cihaz Seç**altında listelenmesi gerekir. Cihazın yanındaki **Görünüm** düğmesini seçin.
+1. Cihazınızın **cihaz Seç** altında listelenmesi gerekir. Cihazın yanındaki **Görünüm** düğmesini seçin.
 
-1. Klasör simgesini seçerek kablosuz ağınıza bağlanın ve ardından **Ayarlar**  >  **WLAN**' ı seçin.
+1. Klasör simgesini seçerek kablosuz ağınıza bağlanın ve ardından **Ayarlar**  >  **WLAN** ' ı seçin.
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
    > [!NOTE]
-   > Şirketinizde cihazları Wi-Fi sistemine bağlama ilkeleri varsa, MAC adresini edinmeniz ve şirketinizin Wi-Fi ' e nasıl bağlayacağına ilişkin BT bölümünüze başvurmanız gerekir.
+   > Şirketinizde cihazları Wi-Fi sistemine bağlama hakkında ilkeler varsa, MAC adresini edinmeniz ve BT departmanınızla iletişime geçerek şirketinizin Wi-Fi ' a nasıl bağlayacağına ilişkin ilkeler olması gerekir.
    >
    > Dev Kit MAC adresini bulmak için, Dev Kit 'in masaüstündeki dosya klasörü simgesini seçin.
    >
    > ![Vysor dosya klasörü](../media/speech-devices-sdk/qsg-10.png)
    >
-   > **Ayarlar**'ı seçin. "MAC adresi" araması yapın ve ardından **Mac adresi**  >  **Gelişmiş WLAN**' ı seçin. İletişim kutusunun alt kısmına yakın görünen MAC adresini yazın.
+   > **Ayarlar** 'ı seçin. "MAC adresi" araması yapın ve ardından **Mac adresi**  >  **Gelişmiş WLAN** ' ı seçin. İletişim kutusunun alt kısmına yakın görünen MAC adresini yazın.
    >
    > ![Vysor MAC adresi](../media/speech-devices-sdk/qsg-11.png)
    >
-   > Bazı şirketlerin, bir cihazın Wi-Fi sistemine ne kadar süreyle bağlı kalabileceğini gösteren bir zaman sınırı olabilir. Belirli bir gün sayısından sonra Dev Kit 'in kaydını Wi-Fi sisteminizle genişletmeniz gerekebilir.
+   > Bazı şirketlerin bir cihazın Wi-Fi sistemine ne kadar süreyle bağlanmayacağı zaman sınırlaması olabilir. Belirli bir gün sayısından sonra Dev Kit 'in kaydını Wi-Fi sisteminizle genişletmeniz gerekebilir.
 
 ## <a name="run-the-sample-application"></a>Örnek uygulamayı çalıştırın
 
@@ -70,7 +70,7 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
 
 1. Android Studio başlatın.
 
-1. **Var olan Android Studio projesini aç**'ı seçin.
+1. **Var olan Android Studio projesini aç** 'ı seçin.
 
    ![Android Studio var olan bir projeyi açın](../media/speech-devices-sdk/qsg-5.png)
 
@@ -96,7 +96,7 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
     Bu satırı bağımlılıklar bölümüne ekleyerek **Build. Gradle (Module: App)** öğesini güncelleştirin. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.13.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.14.0'
     ```
     
 1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanımayı denemek istiyorsanız, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarınızı ve uygulama kimliğinizi da ekleyin.

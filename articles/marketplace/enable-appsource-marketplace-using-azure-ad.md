@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
-ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c70d976a05cbeed058243829d0658693341636e9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88607425"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131216"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Ticari Market listelerinizi Azure Active Directory ile tümleştirin
 
@@ -36,7 +36,7 @@ Microsoft AppSource ve Azure Market müşterileri çevrimiçi mağaza listesi ka
 | Sanal Makine | Yok | Hayır | Hayır | Hayır |
 | Azure uygulamaları (çözüm şablonu)  | Yok | Yok | Yok | Yok |
 | Yönetilen uygulamalar  | Yok | Yok | Yok | Hayır |
-| SaaS  | Hayır | Evet | Evet | Evet |
+| SaaS  | Hayır | Yes | Yes | Yes |
 | Kapsayıcılar  | Yok | Yok | Yok | Hayır |
 | Danışmanlık Hizmetleri  | Hayır | Yok | Yok | Yok |
 
@@ -80,7 +80,7 @@ Azure AD Federasyon çoklu oturum açma 'yı kullanmaya yeni başladıysanız ş
 
 Aşağıdaki eylemlerden birini desteklemek için Azure AD 'yi kullanın:
 
-- [Azure AD B2B](../active-directory/b2b/what-is-b2b.md)kullanarak dizininize Konuk kullanıcı ekleyin.
+- [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md)kullanarak dizininize Konuk kullanıcı ekleyin.
 - **İletişim** yayımlama yayınlaması seçeneğini kullanarak müşteriler için denemeleri el ile ayarlayın.
 - Müşteri başına test sürücüsü geliştirin.
 - SSO kullanan çok kiracılı örnek Tanıtım uygulaması oluşturun.

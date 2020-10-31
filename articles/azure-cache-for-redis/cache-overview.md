@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 47c4fbada4bb4e7019cb2fa619d97bbb38843dd8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3bea474ae61ba4a0213d880934d9536d6ad71796
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085114"
+ms.locfileid: "93131641"
 ---
 # <a name="azure-cache-for-redis"></a>Redis için Azure Önbelleği
 Redsıs için Azure önbelleği, [redin](https://redis.io/) yazılımını temel alan bellek içi veri deposu sağlar. Redsıs, arka uç veri depolarında yoğun bir şekilde kullanılan bir uygulamanın performansını ve ölçeklenebilirliğini geliştirir. Sık erişilen verileri hızlı bir şekilde yazılabilen ve hızla okunabilen sunucu belleğinde tutarak, büyük hacimde uygulama isteğini işleyebilir. Redin, modern uygulamalara kritik düşük gecikmeli ve yüksek performanslı veri depolama çözümü getirir.
@@ -48,7 +48,7 @@ Redo için Azure Cache aşağıdaki katmanlarda kullanılabilir:
 | Standart | Çoğaltılan bir yapılandırmadaki iki VM üzerinde çalışan bir OSS Redsıs önbelleği. |
 | Premium | Yüksek performanslı OSS Redsıs önbellekler. Bu katman daha yüksek aktarım hızı, daha düşük gecikme süresi, daha iyi kullanılabilirlik ve daha fazla özellik sunar. Premium önbellekler, temel veya standart önbellekler ile karşılaştırıldığında daha güçlü sanal makinelere dağıtılır. |
 | Kurumsal | Redsıs Labs ' Redsıs Enterprise Software tarafından desteklenen yüksek performanslı önbellekler. Bu katman RediSearch, RedisBloom ve RedisTimeSeries gibi Redsıs modüllerini destekler. Ayrıca, Premium katmandan daha yüksek kullanılabilirlik sağlar. |
-| Kurumsal | Redsıs Labs ' Redsıs Enterprise Software tarafından desteklenen uygun maliyetli büyük önbellekler. Bu katman Redsıs veri depolamayı bir VM 'de DRAM 'dan farklı olan geçici olmayan belleğe genişletir. Toplam GB başına bellek maliyetini azaltır. |
+| Enterprise Flash | Redsıs Labs ' Redsıs Enterprise Software tarafından desteklenen uygun maliyetli büyük önbellekler. Bu katman Redsıs veri depolamayı bir VM 'de DRAM 'dan farklı olan geçici olmayan belleğe genişletir. Toplam GB başına bellek maliyetini azaltır. |
 
 ### <a name="feature-comparison"></a>Özellik karşılaştırması
 [Redin fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/) , her katman için ayrıntılı bir karşılaştırma sağlar. Aşağıdaki tablo, katmana göre desteklenen özelliklerden bazılarını açıklamaya yardımcı olur:

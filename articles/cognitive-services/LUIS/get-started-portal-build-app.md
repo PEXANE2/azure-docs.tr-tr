@@ -5,36 +5,37 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74866c65111fae9e6fb3b79d9b59819b14b03c16
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91303871"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131488"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Hızlı başlangıç: LUO portalında yeni bir uygulama oluşturma
 
-Bu hızlı başlangıçta, LUı portalında yeni bir uygulama oluşturacaksınız. İlk olarak, uygulama, **Amaç**ve **varlıkların**temel parçalarını oluşturun. Ardından, tahmin edilen amacı almak için etkileşimli test paneline örnek bir Kullanıcı yazarak uygulamayı test edin.
+Bu hızlı başlangıçta, LUı portalında yeni bir uygulama oluşturacaksınız. İlk olarak, uygulama, **Amaç** ve **varlıkların** temel parçalarını oluşturun. Ardından, tahmin edilen amacı almak için etkileşimli test paneline örnek bir Kullanıcı yazarak uygulamayı test edin.
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>Uygulama oluşturma
 
-1. Bağlam araç çubuğundan **konuşma için + yeni uygulama** ' yı seçin ve ardından yeniden **konuşmaya yönelik yeni uygulama** ' yı seçin.
+Bir uygulama oluşturmak için  **+ Yeni uygulama** ' ya tıklayın. 
 
-    > [!div class="mx-imgBorder"]
-    > [![LUSıS portalında yeni uygulama oluşturma ekran görüntüsü](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+Görüntülenen pencerede, aşağıdaki bilgileri girin:
 
-1. Açılır pencerede, uygulamayı aşağıdaki ayarlarla yapılandırın ve **bitti**' yi seçin.
+|Ad  |Açıklama  |
+|---------|---------|
+|Ad     | Uygulamanız için bir ad. Örneğin, "ana Otomasyon". Gereklidir.        |
+|Kültür     | Uygulamanızın anladığı ve kulakça dili. Gereklidir.   |
+|Açıklama | Uygulamanız için bir açıklama. İsteğe bağlı.
+|Tahmin kaynağı | Sorgu alacak tahmin kaynağı. İsteğe bağlı. |
 
-   |Ayar adı| Değer | Amaç|
-   |--|--|--|
-   |Name|`myEnglishApp`|Benzersiz LUSıS uygulama adı<br>gerekli|
-   |Kültür|**İngilizce**|Kullanıcılardan gelen **söylenme dili, en-US**<br>gerekli|
-   |Açıklama (Isteğe bağlı)|`App made with LUIS Portal`|Uygulamanın açıklaması<br>isteğe bağlı|
-   |Tahmin kaynağı (Isteğe bağlı) |-  |' Yi seçmeyin. LUSıS, yazma ve 1.000 tahmin uç noktası istekleri için ücretsiz olarak kullanabileceğiniz bir başlangıç anahtarı sağlar. |
+**Bitti** ’yi seçin.
 
-   ![Yeni uygulama ayarları girme ekran görüntüsü](./media/get-started-portal-build-app/create-new-app-settings.png)
+>[!NOTE]
+>Uygulama oluşturduktan sonra kültür değiştirilemez.
+
 
 ## <a name="create-intents"></a>Amaç oluşturma
 
@@ -52,22 +53,17 @@ Uygulamanın _iki farklı amacı_ aşağıdaki amaçlar için hizalanacaktır:
 
 Amaç oluşturmak için aşağıdaki adımları izleyin:
 
-1. Uygulama oluşturulduktan sonra, **derleme** bölümünün **amaçlar** sayfasında olursunuz. **Oluştur**’u seçin.
+1. Uygulama oluşturulduktan sonra, **derleme** bölümünün **amaçlar** sayfasında olduğunuzdan emin olun. **Oluştur** ’u seçin.
 
    [![Yeni amaç oluşturmak için ' oluştur ' seçeneğinin ekran görüntüsü](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Amaç adını girip `FindForm` **bitti**' yi seçin.
+1. Amaç adını girip `FindForm` **bitti** ' yi seçin.
 
 ## <a name="add-an-example-utterance"></a>Örnek bir mekan ekleyin
 
-Amaçları oluşturduktan sonra örnek bir parametre ekleyin. Örnek, kullanıcının bir sohbet bot veya diğer istemci uygulamasına girdiği metindir. Kullanıcı metninin amacı bir LUO amacı ile eşlenir.
+Amaçları oluşturduktan sonra örnek bir parametre ekleyin. Örnek, kullanıcının bir sohbet bot veya diğer istemci uygulamasına girdiği metindir. Kullanıcı metninin amacı bir LUO amacı ile eşlenir. Bu örnek uygulamanın amacı için `FindForm` , örnek olarak form numarasını içerecektir. İstemci uygulaması, kullanıcının isteğini yerine getirmek için form numarasına ihtiyaç duyuyor, bu yüzden bunu utterde eklemek önemlidir.
 
-Bu örnek uygulamanın amacı için `FindForm` , örnek olarak form numarasını içerecektir. İstemci uygulaması, kullanıcının isteğini yerine getirmek için form numarasına ihtiyaç duyuyor, bu yüzden bunu utterde eklemek önemlidir.
-
-> [!div class="mx-imgBorder"]
-> [![FindForm amacı için örnek utbotları girme ekran görüntüsü](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
-
-Amaç için aşağıdaki 15 örnek utbotları ekleyin `FindForm` .
+İçin **amaçlar** sayfasında, `FindForm` **örnek utterance** altına aşağıdaki örnek söyleylerini ekleyin, 
 
 |#|Örnek konuşmalar|
 |--|--|
@@ -106,7 +102,7 @@ Bu örnek, tasarıma göre aşağıdaki yollarla farklılık gösterir:
 
 1. Adı girin `FormNumber` , **Regex** varlık türünü seçin.
 
-1. Normal ifadeyi, `hrf-[0-9]{6}` **Regex** alanına girin. Bu giriş, değişmez karakterlerle eşleşir, `hrf-` tam olarak altı basamak sağlar ve ardından **Oluştur**' u seçin.
+1. Normal ifadeyi, `hrf-[0-9]{6}` **Regex** alanına girin. Bu giriş, değişmez karakterlerle eşleşir, `hrf-` tam olarak altı basamak sağlar ve ardından **Oluştur** ' u seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Normal ifade varlığı oluşturma ekran görüntüsü](./media/get-started-portal-build-app/create-regular-expression-entity.png)
