@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5be1cfc097da4f1f10bb775c9b20043096b9fb8b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 14c18d0cae335f96cc2d95c79bcf39bf85ef6a2b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279630"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101553"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Cosmos DB için birden çok Azure Işlevleri tetikleyicisi oluşturun
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede Cosmos DB için birden çok Azure İşlevleri tetikleyicisini paralel çalışacak ve değişikliklere bağımsız olarak tepki verecek şekilde nasıl yapılandırabileceğiniz açıklanır.
 
@@ -28,11 +29,11 @@ Bu makalede Cosmos DB için birden çok Azure İşlevleri tetikleyicisini parale
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Birden çok tetikleyici için kapsayıcıları iyileştirme
 
-Cosmos DB için Azure Işlevleri tetikleyicisinin *gereksinimleri* verildiğinde, *kiralamalar kapsayıcısı*olarak da bilinen durumu depolamak için ikinci bir kapsayıcıya ihtiyacımız var. Bu, her bir Azure Işlevi için ayrı bir kiralama kapsayıcısına ihtiyacınız olduğu anlamına geliyor mu?
+Cosmos DB için Azure Işlevleri tetikleyicisinin *gereksinimleri* verildiğinde, *kiralamalar kapsayıcısı* olarak da bilinen durumu depolamak için ikinci bir kapsayıcıya ihtiyacımız var. Bu, her bir Azure Işlevi için ayrı bir kiralama kapsayıcısına ihtiyacınız olduğu anlamına geliyor mu?
 
 Burada iki seçeneğiniz vardır:
 
-* **İşlev başına bir kira kapsayıcısı**oluştur: Bu yaklaşım, [paylaşılan bir üretilen iş veritabanı](./set-throughput.md#set-throughput-on-a-database)kullanmadığınız müddetçe ek maliyetlere çevirebilir. Kapsayıcı düzeyindeki en düşük aktarım hızı 400 [Istek birimi](./request-units.md)olduğunu ve kiralamalar kapsayıcısı durumunda yalnızca ilerlemeyi kontrol etmek ve durumu korumak için kullanıldığını unutmayın.
+* **İşlev başına bir kira kapsayıcısı** oluştur: Bu yaklaşım, [paylaşılan bir üretilen iş veritabanı](./set-throughput.md#set-throughput-on-a-database)kullanmadığınız müddetçe ek maliyetlere çevirebilir. Kapsayıcı düzeyindeki en düşük aktarım hızı 400 [Istek birimi](./request-units.md)olduğunu ve kiralamalar kapsayıcısı durumunda yalnızca ilerlemeyi kontrol etmek ve durumu korumak için kullanıldığını unutmayın.
 * **Tek bir kira kapsayıcısına** sahip olmak ve tüm işlevleriniz için paylaşmak Için: Bu ikinci seçenek, birden fazla Azure işlevinin aynı sağlanan üretilen işi paylaşmasına ve kullanmasına olanak sağladığından, kapsayıcıda sağlanan istek birimlerinin daha iyi kullanımını sağlar.
 
 Bu makalenin amacı, ikinci seçeneği gerçekleştirmenize yardımcı olmaktır.

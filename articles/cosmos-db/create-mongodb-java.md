@@ -9,14 +9,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: a831921ec3b3fa755496c08c02665b1c0fe99557
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2dcd72f9231726d5a2f473dbbfa4d8fd81e64b97
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475966"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098998"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Hızlı başlangıç: Azure Cosmos DB 'de Java ve MongoDB API 'SI ile bir konsol uygulaması oluşturma
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -41,7 +42,7 @@ Bu hızlı başlangıçta, Azure portal bir MongoDB API hesabı için Azure Cosm
 
 ## <a name="add-a-collection"></a>Koleksiyon ekleme
 
-Yeni **veritabanı veritabanınızı**ve yeni koleksiyon **kol**değerini adlandırın.
+Yeni **veritabanı veritabanınızı** ve yeni koleksiyon **kol** değerini adlandırın.
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-mongodb-create-collection.md)] 
 
@@ -111,7 +112,7 @@ Bu konsol uygulaması [MongoDB Java sürücüsünü](https://docs.mongodb.com/ec
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin.
 
-1. Azure Cosmos DB hesabınızda **hızlı başlangıç**' i seçin, **Java**' yı seçin, sonra bağlantı dizesini panonuza kopyalayın.
+1. Azure Cosmos DB hesabınızda **hızlı başlangıç** ' i seçin, **Java** ' yı seçin, sonra bağlantı dizesini panonuza kopyalayın.
 
 2. *Program. Java* dosyasını açın, MongoClientURI oluşturucusuna bağımsız değişkenini bağlantı dizesiyle değiştirin. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
     

@@ -7,14 +7,16 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: 4b082c89684bc06346fa933aad6be97dc371bc3f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 00394e60ad1cf86bfd75a86a0b6630505c7d7356
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490586"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100397"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin sunucu yanıtı üstbilgileri
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 Bu makalede, istek yürütmesi sırasında Cosmos DB Gremlin sunucusunun çağırana döndürdüğü başlıklar ele alınır. Bu üst bilgiler, istek performansı sorunlarının giderilmesi, Cosmos DB hizmetiyle yerel olarak tümleştirilen uygulamaların oluşturulması ve müşteri desteğinin basitleştirilmesi için kullanışlıdır.
 
 Bu üst bilgilere bağımlılık alan diğer Gremlin uygulamalarına yönelik taşınabilirlik sınırlandırdığını aklınızda bulundurun. Sonuç olarak, Cosmos DB Gremlin ile daha sıkı bir tümleştirme elde edersiniz. Bu üstbilgiler bir TinkerPop standardı değildir.

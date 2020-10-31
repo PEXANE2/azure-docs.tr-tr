@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8e751d210ab472d82e4abd613d37069a8c591f52
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013942"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100737"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme 
 
@@ -33,14 +33,14 @@ Bu görevi tamamlamadan önce, Azure Active Directory kayıtlı bir hizmet sorum
 Sunucu yöneticilerini, SQL Server Management Studio (SSMS) kullanarak yapılandırabilirsiniz. Bu görevi gerçekleştirmek için Azure 'da sunucu [Yöneticisi](analysis-services-server-admins.md) izinlerine sahip olmanız gerekir. 
 
 1. SSMS 'de, Azure 'u sunucunuza bağlayın.
-2. **Sunucu özellikleri**  >  **güvenlik**bölümünde **Ekle**' ye tıklayın.
-3. **Kullanıcı veya Grup Seç**' te, kayıtlı uygulamanızı ada göre arayın, öğesini seçin ve ardından **Ekle**' ye tıklayın.
+2. **Sunucu özellikleri**  >  **güvenlik** bölümünde **Ekle** ' ye tıklayın.
+3. **Kullanıcı veya Grup Seç** ' te, kayıtlı uygulamanızı ada göre arayın, öğesini seçin ve ardından **Ekle** ' ye tıklayın.
 
     ![Hizmet sorumlusu hesabı ara](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
 
-4. Hizmet sorumlusu hesap KIMLIĞINI doğrulayın ve ardından **Tamam**' a tıklayın.
+4. Hizmet sorumlusu hesap KIMLIĞINI doğrulayın ve ardından **Tamam** ' a tıklayın.
     
-    ![Hizmet sorumlusu hesabı ara](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
+    ![Hizmet sorumlusu hesap KIMLIĞINI gösteren ve Tamam düğmesini vurgulayan ekran görüntüsü.](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
 ## <a name="using-a-resource-manager-template"></a>Resource Manager şablonu kullanma
 

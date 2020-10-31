@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2b3433d969611fabe1b12a8dcabfe6e50066a8c1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4be2b8cdd987b6357df283f0791593c51417dfc7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491198"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101509"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB'deki tutarlılık düzeylerini yönetme
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede, Azure Cosmos DB ' de tutarlılık düzeylerinin nasıl yönetileceği açıklanmaktadır. Varsayılan tutarlılık düzeyini yapılandırmayı, varsayılan tutarlılığı geçersiz kılmayı, oturum belirteçlerini el ile yönetmeyi ve olasılık açısından iyi sınırlı Stalet (PBS) ölçüsünü anladığınızı öğrenirsiniz.
 
@@ -26,7 +27,7 @@ Bu makalede, Azure Cosmos DB ' de tutarlılık düzeylerinin nasıl yönetilece�
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Varsayılan tutarlılık düzeyini görüntülemek veya değiştirmek için Azure portal oturum açın. Azure Cosmos hesabınızı bulun ve **varsayılan tutarlılık** bölmesini açın. Yeni varsayılan olarak istediğiniz tutarlılık düzeyini seçin ve ardından **Kaydet**' i seçin. Azure portal Ayrıca, müzik notlarıyla farklı tutarlılık seviyelerinin bir görselleştirmesi sağlar. 
+Varsayılan tutarlılık düzeyini görüntülemek veya değiştirmek için Azure portal oturum açın. Azure Cosmos hesabınızı bulun ve **varsayılan tutarlılık** bölmesini açın. Yeni varsayılan olarak istediğiniz tutarlılık düzeyini seçin ve ardından **Kaydet** ' i seçin. Azure portal Ayrıca, müzik notlarıyla farklı tutarlılık seviyelerinin bir görselleştirmesi sağlar. 
 
 :::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Azure portal tutarlılık menüsü":::
 
@@ -151,7 +152,7 @@ const client = new CosmosClient({
 const { body } = await item.read({ consistencyLevel: ConsistencyLevel.Eventual });
 ```
 
-### <a name="python-sdk"></a><a id="override-default-consistency-python"></a>Python SDK'sı
+### <a name="python-sdk"></a><a id="override-default-consistency-python"></a>Python SDK 'Sı
 
 ```python
 # Override consistency at the client level
@@ -263,7 +264,7 @@ const sessionToken = headers["x-ms-session-token"];
 const { body } = await item.read({ sessionToken });
 ```
 
-### <a name="python-sdk"></a><a id="utilize-session-tokens-python"></a>Python SDK'sı
+### <a name="python-sdk"></a><a id="utilize-session-tokens-python"></a>Python SDK 'Sı
 
 ```python
 // Get the session token from the last response headers
@@ -279,7 +280,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Olasılığa Dayalı Sınırlanmış Eskime Durumu (PBS) ölçümünü izleme
 
-Ne kadar nihai tutarlılık? Ortalama durumda, sürüm geçmişi ve saatine göre, eskime sınırları sunarız. [**Olasılığa göre sınırlı stalet (PBS)**](https://pbs.cs.berkeley.edu/) ölçümü, eskime olasılığını ölçmenizi ve bunu bir ölçüm olarak gösterir. PBS ölçüsünü görüntülemek için Azure portal Azure Cosmos hesabınıza gidin. **Ölçümler** bölmesini açın ve **tutarlılık** sekmesini seçin. **İş yükünüze göre sağlam tutarlı okumaların olasılığı adlı grafiğe bakın (bkz. PBS)**.
+Ne kadar nihai tutarlılık? Ortalama durumda, sürüm geçmişi ve saatine göre, eskime sınırları sunarız. [**Olasılığa göre sınırlı stalet (PBS)**](https://pbs.cs.berkeley.edu/) ölçümü, eskime olasılığını ölçmenizi ve bunu bir ölçüm olarak gösterir. PBS ölçüsünü görüntülemek için Azure portal Azure Cosmos hesabınıza gidin. **Ölçümler** bölmesini açın ve **tutarlılık** sekmesini seçin. **İş yükünüze göre sağlam tutarlı okumaların olasılığı adlı grafiğe bakın (bkz. PBS)** .
 
 :::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure portal tutarlılık menüsü":::
 

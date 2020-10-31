@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb2553346881bc2e8de631988bd11642b85aa847
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327863"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099649"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Uygulamanızı Java SDK 'Sı v4 Azure Cosmos DB kullanmak için geçirin
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]  
 > Bu SDK hakkında daha fazla bilgi için lütfen Azure Cosmos DB Java SDK v4 [sürüm notları](sql-api-sdk-java-v4.md), [maven deposu](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB Java SDK v4 [Performans ipuçları](performance-tips-java-sdk-v4-sql.md)ve Azure Cosmos DB Java SDK v4 [sorun giderme kılavuzunu](troubleshoot-java-sdk-v4-sql.md)görüntüleyin.
@@ -64,9 +65,9 @@ Aşağıda, Java SDK 4. x. x Azure Cosmos DB önceki SDK 'lara kıyasla (Java SD
 
   * **Java SDK 4,0** : sınıf adı daha sonra eklenmediği takdirde tüm SıNıFLAR eşitleme API 'sine aittir `Async` `Cosmos` .
 
-  * **Java SDK 3. x. x**: sınıf adı daha sonra eklenmediği takdirde tüm sınıflar zaman uyumsuz API 'ye aittir `Async` `Cosmos` .
+  * **Java SDK 3. x. x** : sınıf adı daha sonra eklenmediği takdirde tüm sınıflar zaman uyumsuz API 'ye aittir `Async` `Cosmos` .
 
-  * **Async Java SDK 2. x. x**: sınıf adları eşitleme Java SDK 'sı 2. x. x ile benzerdir, ancak ad *zaman uyumsuz*olarak başlar.
+  * **Async Java SDK 2. x. x** : sınıf adları eşitleme Java SDK 'sı 2. x. x ile benzerdir, ancak ad *zaman uyumsuz* olarak başlar.
 
 ### <a name="hierarchical-api-structure"></a>Hiyerarşik API yapısı
 

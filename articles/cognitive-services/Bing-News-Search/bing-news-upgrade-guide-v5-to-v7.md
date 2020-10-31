@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7999ed5296f2ff4e64b9edc0fb355f72b7d7a04e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 564af32b724c8b4883cd27d01813e246e5fa4901
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316656"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100210"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Haber Arama API Yükseltme Kılavuzu
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bu yükseltme Kılavuzu, sürüm 5 ve Bing Haber Arama API'si sürüm 7 arasındaki değişiklikleri tanımlar. Uygulamanızın 7 sürümünü kullanmak için güncelleştirmeniz gereken parçalarını belirlemenize yardımcı olması için bu kılavuzu kullanın.
 
@@ -90,4 +95,4 @@ Engellendi|Invalidrequest. engellendi
 
 - `sort`Alan [haber](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) nesnesine eklendi. `sort`Alan, makalelerin sıralama sırasını gösterir. Örneğin, makaleler ilgiye (varsayılan) veya tarihe göre sıralanır.
 
-- Sıralama düzenini tanımlayan [Sortvalue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) nesnesi eklendi. `isSelected`Alan, yanıtın sıralama düzenini kullanıp kullanmadığını belirtir. **Doğru**ise, yanıt sıralama düzenini kullandı. `isSelected` **Yanlışsa**, `url` farklı bir sıralama düzeni istemek için alanındaki URL 'yi kullanabilirsiniz.
+- Sıralama düzenini tanımlayan [Sortvalue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) nesnesi eklendi. `isSelected`Alan, yanıtın sıralama düzenini kullanıp kullanmadığını belirtir. **Doğru** ise, yanıt sıralama düzenini kullandı. `isSelected` **Yanlışsa** , `url` farklı bir sıralama düzeni istemek için alanındaki URL 'yi kullanabilirsiniz.

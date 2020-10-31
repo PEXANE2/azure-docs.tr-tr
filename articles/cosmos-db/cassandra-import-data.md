@@ -9,14 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: b450d8463c09647b8f87547afe9d714c4b8659c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd2d27addb6860e49ac12eb36d8b625b8bf92001
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82858568"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100414"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Öğretici: verilerinizi Azure Cosmos DB Cassandra API hesaba geçirin
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Bir geliştirici olarak, şirket içinde veya bulutta çalışan mevcut Cassandra iş yüklerine sahip olabilirsiniz ve bunları Azure 'a geçirmek isteyebilirsiniz. Bu tür iş yüklerini Azure Cosmos DB bir Cassandra API hesabına geçirebilirsiniz. Bu öğretici, Apache Cassandra verilerinin Azure Cosmos DB Cassandra API hesaba geçirilmesi için kullanılabilecek farklı seçeneklere ilişkin yönergeler sağlar.
 
@@ -105,7 +106,7 @@ Azure sanal makinelerinde veya başka bir bulutta mevcut bir kümede bulunan ver
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında, kaynak grubunu, Azure Cosmos hesabını ve ilgili tüm kaynakları silebilirsiniz. Bunu yapmak için, sanal makine için kaynak grubunu seçin, **Sil**' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
+Artık gerekli olmadığında, kaynak grubunu, Azure Cosmos hesabını ve ilgili tüm kaynakları silebilirsiniz. Bunu yapmak için, sanal makine için kaynak grubunu seçin, **Sil** ' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,14 +6,15 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: 183b161039b86ce824fd0bfde82cf291d54024fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc47f2f7a0f1586b197d14015fe2167293c806c6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801486"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099360"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Azure Cosmos kapsayıcısı veya bir hesap için normalleştirilmiş RU/s 'yi izleme
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB için Azure Izleyici, hesabınızı izlemek ve panolar oluşturmak için bir ölçüm görünümü sağlar. Azure Cosmos DB ölçümleri varsayılan olarak toplanır, bu özellik açıkça her şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez.
 
@@ -23,7 +24,7 @@ Azure Cosmos DB için Azure Izleyici, hesabınızı izlemek ve panolar oluşturm
 
 Normalleştirilmiş RU/sn tüketimi, belirtilen bölüm anahtarı aralığı için %100 ' e ulaştığında ve bir istemci bu zaman penceresinde belirli bir bölüm anahtarı aralığına istek yapıyorsa, bu hız sınırlı bir hata alır. İstemci önerilen bekleme süresini dikkate almalıdır ve isteği yeniden dener. SDK, uygun bir şekilde bekleyerek, önceden yapılandırılmış süreleri yeniden denemeden bu durumu daha kolay hale getirir.  Normalleştirilmiş RU %100 değerine ulaştığından, RU oranı sınırlandırma hatasını görmeniz gerekli değildir. Bunun nedeni, normalleştirilmiş RU 'nın tüm bölüm anahtarı aralıkları üzerinde en fazla kullanımı temsil eden tek bir değer olmasından kaynaklanır, bir bölüm anahtar aralığı meşgul olabilir ancak diğer bölüm anahtarı aralıkları sorun olmadan isteklere sunabilir. Örneğin, bir bölüm anahtar aralığındaki tüm RU/s 'leri tüketen saklı yordam gibi tek bir işlem, normalleştirilmiş RU/s tüketimine göre kısa bir ani artış oluşmasına neden olur. Bu gibi durumlarda, istek hızı düşük olduğunda veya farklı bölüm anahtarı aralıklarında diğer bölümlere istekler yapılırsa, hiçbir anında hız sınırlama hatası olmayacaktır. 
 
-Azure Izleyici ölçümleri, **toplam istek** ÖLÇÜMÜNÜ kullanarak SQL API için durum kodu başına işlemleri bulmanıza yardımcı olur. Daha sonra bu isteklere 429 durum kodu ile filtre uygulayabilir ve bunları **Işlem türüne**göre bölebilirsiniz.  
+Azure Izleyici ölçümleri, **toplam istek** ÖLÇÜMÜNÜ kullanarak SQL API için durum kodu başına işlemleri bulmanıza yardımcı olur. Daha sonra bu isteklere 429 durum kodu ile filtre uygulayabilir ve bunları **Işlem türüne** göre bölebilirsiniz.  
 
 Oran sınırlı olan istekleri bulmak için, bu bilgileri tanılama günlükleri aracılığıyla almanız önerilir.
 
@@ -37,11 +38,11 @@ En fazla %100 normalleştirilmiş RU/sn tüketimi veya birden çok bölüm anaht
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-2. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
+2. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler** ' i seçin.
 
    :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
-3. **Ölçümler** bölmesinden > **bir kaynak seçin** > gerekli **aboneliği**ve **kaynak grubunu**seçin. **Kaynak türü**için **Azure Cosmos DB hesapları**' nı seçin, mevcut Azure Cosmos hesaplarınızdan birini seçin ve **Uygula**' yı seçin.
+3. **Ölçümler** bölmesinden > **bir kaynak seçin** > gerekli **aboneliği** ve **kaynak grubunu** seçin. **Kaynak türü** için **Azure Cosmos DB hesapları** ' nı seçin, mevcut Azure Cosmos hesaplarınızdan birini seçin ve **Uygula** ' yı seçin.
 
    :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
@@ -53,7 +54,7 @@ En fazla %100 normalleştirilmiş RU/sn tüketimi veya birden çok bölüm anaht
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>Normalleştirilmiş istek birimi tüketimi için filtreler
 
-Ayrıca ölçümleri ve belirli bir **CollectionName**, **DatabaseName**, **Partitionkeyrangeıd**ve **bölge**tarafından görünen grafiği filtreleyebilirsiniz. Ölçümleri filtrelemek için **Filtre Ekle** ' yi seçin ve **KoleksiyonAdı** ve ilgilendiğiniz karşılık gelen değer gibi gerekli özelliği seçin. Daha sonra grafik, seçili dönem için kapsayıcı için tüketilen normalleştirilmiş RU tüketim birimlerini görüntüler.  
+Ayrıca ölçümleri ve belirli bir **CollectionName** , **DatabaseName** , **Partitionkeyrangeıd** ve **bölge** tarafından görünen grafiği filtreleyebilirsiniz. Ölçümleri filtrelemek için **Filtre Ekle** ' yi seçin ve **KoleksiyonAdı** ve ilgilendiğiniz karşılık gelen değer gibi gerekli özelliği seçin. Daha sonra grafik, seçili dönem için kapsayıcı için tüketilen normalleştirilmiş RU tüketim birimlerini görüntüler.  
 
 **Bölmeyi Uygula** seçeneğini kullanarak ölçümleri gruplandırabilirsiniz.  
 

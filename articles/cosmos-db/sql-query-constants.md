@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebc1f66e68d4cf37546e7d33a9b723385330395c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74873429"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100873"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>SQL sorgu sabitlerini Azure Cosmos DB  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Sabit, sabit değer veya skaler değer olarak da bilinen, belirli bir veri değerini temsil eden bir simgedir. Bir sabit biçim, temsil ettiği değerin veri türüne bağlıdır.  
   
@@ -23,13 +24,13 @@ ms.locfileid: "74873429"
 |-|-|  
 |**Tanımlayan**|Tek değer: **tanımsız**|  
 |**Null**|Tek değer: **null**|  
-|**Boole**|Değerler: **false**, **true**.|  
+|**Boolean**|Değerler: **false** , **true** .|  
 |**Sayı**|Bir çift duyarlıklı kayan noktalı sayı, IEEE 754 standardı.|  
 |**Dize**|Sıfır veya daha fazla Unicode karakterden oluşan bir dizi. Dizeler tek veya çift tırnak içine alınmalıdır.|  
-|**Dizide**|Sıfır veya daha fazla öğe dizisi. Her öğe, **tanımsız**bir değer hariç herhangi bir skaler veri türü değeri olabilir.|  
-|**Nesne**|Sırasız bir sıfır veya daha fazla ad/değer çifti kümesi. Ad bir Unicode dizesidir, değer **tanımsız**olmayan herhangi bir skaler veri türünde olabilir.|  
+|**Dizide**|Sıfır veya daha fazla öğe dizisi. Her öğe, **tanımsız** bir değer hariç herhangi bir skaler veri türü değeri olabilir.|  
+|**Nesne**|Sırasız bir sıfır veya daha fazla ad/değer çifti kümesi. Ad bir Unicode dizesidir, değer **tanımsız** olmayan herhangi bir skaler veri türünde olabilir.|  
   
-## <a name="syntax"></a><a name="bk_syntax"></a>Sözdizimi
+## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
 ```sql  
 <constant> ::=  
@@ -67,7 +68,7 @@ ms.locfileid: "74873429"
   
 * `<null_constant>; null`  
   
-  **Null**türünde **null** değeri temsil eder.  
+  **Null** türünde **null** değeri temsil eder.  
   
 * `<boolean_constant>`  
   
@@ -113,7 +114,7 @@ ms.locfileid: "74873429"
 |\f|Form akışı|U + 000C|  
 |\n|satır besleme|U + 000A|  
 |\r|satır başı|U + 000D|  
-|\t|sekmesinde|U + 0009|  
+|\t| sekme|U + 0009|  
 |\Uxxxx içinde|4 onaltılık basamakla tanımlanan bir Unicode karakteri.|U + XXXX|  
 
 ## <a name="next-steps"></a>Sonraki adımlar

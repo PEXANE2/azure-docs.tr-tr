@@ -6,14 +6,15 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: ef681f861a14fbbf86e7e350441d05f84fc95f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75d22a5021c7c8ae3a12f25644f2875e0ccf8cdd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757906"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098765"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB sunucusuz (Önizleme)
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 > [!IMPORTANT]
 > Azure Cosmos DB sunucusuz Şu anda önizleme aşamasındadır. Bu önizleme sürümü bir Hizmet Düzeyi Sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -32,9 +33,9 @@ Azure Cosmos DB kullanırken, her veritabanı işleminin, [Istek birimlerinde](r
 
 İstediğiniz yerde sunucusuz en iyi uyan senaryolar Azure Cosmos DB:
 
-- **Hafif trafik**: Bu gibi durumlarda sağlama kapasitesi gerekli değildir ve düşük maliyetli olabilir
-- **Orta burkararlılığı**: sunucusuz kapsayıcılar saniyede 5.000 istek birimi sunabileceğinden,
-- **Orta performans**: sunucusuz kapsayıcılar [belirli performans özelliklerine](#performance) sahip olduğundan
+- **Hafif trafik** : Bu gibi durumlarda sağlama kapasitesi gerekli değildir ve düşük maliyetli olabilir
+- **Orta burkararlılığı** : sunucusuz kapsayıcılar saniyede 5.000 istek birimi sunabileceğinden,
+- **Orta performans** : sunucusuz kapsayıcılar [belirli performans özelliklerine](#performance) sahip olduğundan
 
 Bu nedenlerden dolayı sunucusuz Azure Cosmos DB aşağıdaki iş yükü türleri için göz önünde bulundurulmalıdır:
 
@@ -81,9 +82,9 @@ Hesabınızın **ölçümler** bölmesine gözatarken, **genel bakış** sekmesi
 
 Sunucusuz kaynaklar, sağlanan aktarım hızı kaynaklarından farklı olarak belirli performans özellikleri sunar:
 
-- **Kullanılabilirlik**: sunucusuz teklif genel kullanıma sunulduktan sonra, kullanılabilirlik alanları (bölge yedekliliği) kullanılmazsa sunucusuz kapsayıcıların kullanılabilirliği% 99,9 HIZMET DÜZEYI SÖZLEŞMESI (SLA) kapsamında olur. Kullanılabilirlik Alanları kullanıldığında SLA% 99,99 ' dir.
-- **Gecikme süresi**: sunucusuz teklif genel kullanıma hazır hale geldikten sonra sunucusuz kapsayıcıların gecikmesi, bir hizmet düzeyi hedefı (SLO) için 10 milisaniye veya nokta okuma ve 30 milisaniye ya da daha az yazma için daha az olabilir. Bir nokta okuma işlemi, KIMLIĞINE ve bölüm anahtarı değerine göre tek bir öğe getirilirken oluşur.
-- **Buristimsuz**: sunucusuz bir teklif genel kullanıma sunulduğunda, sunucusuz kapsayıcıların maistikliğine yönelik bir hizmet düzeyi hedefı (SLO) %95 olarak ele alınacaktır. Bu, en fazla patlama süresinin en az %95 ' i kadar erişilebilir olması anlamına gelir.
+- **Kullanılabilirlik** : sunucusuz teklif genel kullanıma sunulduktan sonra, kullanılabilirlik alanları (bölge yedekliliği) kullanılmazsa sunucusuz kapsayıcıların kullanılabilirliği% 99,9 HIZMET DÜZEYI SÖZLEŞMESI (SLA) kapsamında olur. Kullanılabilirlik Alanları kullanıldığında SLA% 99,99 ' dir.
+- **Gecikme süresi** : sunucusuz teklif genel kullanıma hazır hale geldikten sonra sunucusuz kapsayıcıların gecikmesi, bir hizmet düzeyi hedefı (SLO) için 10 milisaniye veya nokta okuma ve 30 milisaniye ya da daha az yazma için daha az olabilir. Bir nokta okuma işlemi, KIMLIĞINE ve bölüm anahtarı değerine göre tek bir öğe getirilirken oluşur.
+- **Buristimsuz** : sunucusuz bir teklif genel kullanıma sunulduğunda, sunucusuz kapsayıcıların maistikliğine yönelik bir hizmet düzeyi hedefı (SLO) %95 olarak ele alınacaktır. Bu, en fazla patlama süresinin en az %95 ' i kadar erişilebilir olması anlamına gelir.
 
 > [!NOTE]
 > Azure önizlemesi olarak, Azure Cosmos DB sunucusuz hizmet düzeyi sözleşmelerinden (SLA) hariç tutulur. Yukarıda belirtilen performans özellikleri, genel kullanıma sunulduğunda bu teklifin ne kadar teslim edileceği hakkında bir önizleme olarak sağlanır.

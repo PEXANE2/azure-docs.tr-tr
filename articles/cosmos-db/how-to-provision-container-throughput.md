@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: a6855a1c730c33a835e5033041ee7978be28fc6b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 4caf43cb972b44dd1482b9e6e467e41cae294708
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278674"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100108"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container---sql-api"></a>Azure Cosmos kapsayıcısında standart (el ile) aktarım hızı sağlama-SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede, Azure Cosmos DB SQL API 'sindeki bir kapsayıcıda standart (el ile) işleme sağlama açıklanır. Tek bir kapsayıcıda üretilen iş sağlama veya [bir veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md) ve veritabanı içindeki kapsayıcılar arasında paylaşma sağlayabilirsiniz. Azure portal, Azure CLı veya Azure Cosmos DB SDK 'Ları kullanarak bir kapsayıcıda aktarım hızı sağlayabilirsiniz.
 
@@ -27,13 +28,13 @@ Farklı bir API kullanıyorsanız, üretilen işi sağlamak için [MongoDB Için
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya mevcut bir Azure Cosmos hesabı seçin.
 
-1. **Veri Gezgini** bölmesini açın ve **yeni kapsayıcı**' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
+1. **Veri Gezgini** bölmesini açın ve **yeni kapsayıcı** ' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
 
    * Yeni bir veritabanı mı yoksa var olan bir veritabanını mı kullandığınızı belirtin.
    * Bir kapsayıcı KIMLIĞI girin.
    * Bir bölüm anahtarı değeri girin (örneğin, `/ItemID` ).
    * Sağlamak istediğiniz bir üretilen iş (örneğin, 1000 ru) girin.
-   * **Tamam**’ı seçin.
+   * **Tamam** ’ı seçin.
 
     :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="Yeni koleksiyonla vurgulanan Veri Gezgini ekran görüntüsü":::
 

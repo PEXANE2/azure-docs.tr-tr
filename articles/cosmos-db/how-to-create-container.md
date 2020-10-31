@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: eb9e8caff81e86b7db732c970eee1e1a08be5241
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 302c5d6e8e523a11b8773f10bb6089e3bea09bdd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491113"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101570"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API 'de kapsayıcı oluşturma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede, SQL API Azure Cosmos DB bir kapsayıcı oluşturmanın farklı yolları açıklanmaktadır. Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'Ları kullanarak nasıl kapsayıcı oluşturulacağını gösterir. Bu makalede bir kapsayıcı oluşturma, Bölüm anahtarını belirtme ve üretilen iş sağlama işlemlerinin nasıl yapılacağı gösterilir.
 
@@ -30,13 +31,13 @@ Bu makalede, SQL API Azure Cosmos DB bir kapsayıcı oluşturmanın farklı yoll
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya var olan bir hesabı seçin.
 
-1. **Veri Gezgini** bölmesini açın ve **yeni kapsayıcı**' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
+1. **Veri Gezgini** bölmesini açın ve **yeni kapsayıcı** ' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
 
    * Yeni bir veritabanı mı yoksa var olan bir veritabanını mı kullandığınızı belirtin.
    * Bir kapsayıcı KIMLIĞI girin.
    * Bir bölüm anahtarı girin.
    * Sağlanacak bir üretilen iş (örneğin, 1000 ru) girin.
-   * **Tamam**’ı seçin.
+   * **Tamam** ’ı seçin.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="Yeni kapsayıcı vurgulanmış şekilde Veri Gezgini bölmesinin ekran görüntüsü":::
 

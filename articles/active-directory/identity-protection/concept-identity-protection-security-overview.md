@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95c589289d77597be2550673944c8fa21902e0fb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86024086"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098476"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Kimlik Koruması - Güvenliğe genel bakış
 
@@ -27,7 +27,7 @@ Azure portal [güvenlik genel bakışı](https://aka.ms/IdentityProtectionRefres
 - Eğilimler, solda, kuruluşunuzda risk zaman çizelgesi sağlar.
 - Kutucuklar, sağda, kuruluşunuzda devam eden sorunları vurgulayabilir ve hızlı bir şekilde nasıl işlem yapılacağını önerir.
 
-![Güvenliğe genel bakış](./media/concept-identity-protection-security-overview/01.png)
+:::image type="content" source="./media/concept-identity-protection-security-overview/01.png" alt-text="Azure portal güvenliğine genel bakış ekran görüntüsü. Çubuk grafikler zaman içinde risk sayısını gösterir. Kutucuklar, kullanıcılar ve oturum açmalar hakkındaki bilgileri özetler." border="false":::
   
 ## <a name="trends"></a>Eğilimler
 
@@ -45,7 +45,7 @@ Bu grafik, seçilen dönemde algılanan riskli oturum açma işlemlerinin sayıs
 
 ' Yüksek riskli kullanıcılar ' kutucuğunda, kimlik güvenliğinin en son olasılığı yüksek olan kullanıcı sayısı gösterilir. Bunlar, araştırma için bir üst öncelik olmalıdır. ' Yüksek riskli kullanıcılar ' kutucuğuna tıkladığınızda ' riskli kullanıcılar ' raporunun yalnızca risk düzeyine sahip kullanıcıları gösteren filtrelenmiş bir görünümüne yeniden yönlendirilir. Bu raporu kullanarak daha fazla bilgi alabilir ve parolayı sıfırlama ile bu kullanıcıları düzeltebilirsiniz.
 
-![Güvenliğe genel bakış](./media/concept-identity-protection-security-overview/02.png)
+:::image type="content" source="./media/concept-identity-protection-security-overview/02.png" alt-text="Azure portal güvenliğine genel bakış ekran görüntüsü. Çubuk grafikler zaman içinde risk sayısını gösterir. Kutucuklar, kullanıcılar ve oturum açmalar hakkındaki bilgileri özetler." border="false":::
 
 ### <a name="medium-risk-users"></a>Orta riskli kullanıcılar
 ' Orta riskli kullanıcılar ' kutucuğu, en son kullanıcı sayısını orta düzeyde kimlik güvenliğinin aşılmasına neden gösterir. ' Orta riskli kullanıcılar ' kutucuğuna tıklama, yalnızca risk düzeyine sahip kullanıcıları gösteren ' riskli kullanıcılar ' raporunun filtrelenmiş görünümüne yönlendirilir. Bu raporu kullanarak bu kullanıcıları daha fazla araştırıp düzeltebilirsiniz.

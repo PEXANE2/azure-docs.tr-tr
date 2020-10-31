@@ -11,14 +11,19 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cea88c2e20c9e96c5ad5504815886b2cc771e44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297799"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100567"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Araması API'si yanıt yapısı ve yanıt türleri  
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bir arama isteği Bing Web Araması gönderdiğinizde, [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) yanıt gövdesinde bir nesne döndürür. Nesnesi, Bing 'in sorguyla ilgili olduğunu tespit eden her yanıt için bir alan içerir. Bu örnek, Bing tüm yanıtları döndürmediğinde bir yanıt nesnesini gösterir:
 
@@ -38,7 +43,7 @@ Bir arama isteği Bing Web Araması gönderdiğinizde, [`SearchResponse`](https:
 }, ...
 ```
 
-Genellikle, Bing Web Araması yanıtların bir alt kümesini döndürür. Örneğin, Sorgu terimi *dingsies*ise, yanıt, `webPages` `images` ve içerebilir `rankingResponse` . Web sayfalarını filtrelemek için [Responsefilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) kullanmadığınız müddetçe, yanıt her zaman `webpages` ve `rankingResponse` yanıtlarını içerir.
+Genellikle, Bing Web Araması yanıtların bir alt kümesini döndürür. Örneğin, Sorgu terimi *dingsies* ise, yanıt, `webPages` `images` ve içerebilir `rankingResponse` . Web sayfalarını filtrelemek için [Responsefilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) kullanmadığınız müddetçe, yanıt her zaman `webpages` ve `rankingResponse` yanıtlarını içerir.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -316,7 +321,7 @@ Matematik ifadesi aşağıdaki işlevleri içerebilir:
 
 |Sembol|Açıklama|
 |------------|-----------------|
-|Sıralama|Kare kök|
+|Sırala|Kare kök|
 |Sin [x], cos [x], tan [x]<br />CSC [x], SEC [x], COT [x]|Trigonometrik İşlevler (radyan cinsinden bağımsız değişkenlerle)|
 |ArcSin [x], ArcCos [x], ArcTan [x]<br />ArcCsc [x], ArcSec [x], ArcCot [x]|Ters Trigonometrik İşlevler (radyan cinsinden sonuçlar verir)|
 |Exp [x], E ^ x|Üstel işlevi|
@@ -328,7 +333,7 @@ Değişkenleri içeren matematik ifadeleri (örneğin, 4X + 6 = 18, burada x de�
 
 ## <a name="timezone-answer"></a>Saat dilimi yanıtı
 
-Kullanıcı bir saat veya tarih sorgusu girerse, yanıt bir [saat dilimi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) yanıtı içerebilir. Bu yanıt örtük veya açık sorguları destekler. Kapalı bir sorgu; Örneğin, *ne zaman*olduğu gibi, kullanıcının konumuna göre yerel saati döndürür. Bir açık sorgu (örneğin, *Seattle 'Da ne zaman)?*, Seattle, WA için yerel saati döndürür.
+Kullanıcı bir saat veya tarih sorgusu girerse, yanıt bir [saat dilimi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) yanıtı içerebilir. Bu yanıt örtük veya açık sorguları destekler. Kapalı bir sorgu; Örneğin, *ne zaman* olduğu gibi, kullanıcının konumuna göre yerel saati döndürür. Bir açık sorgu (örneğin, *Seattle 'Da ne zaman)?* , Seattle, WA için yerel saati döndürür.
 
 `timeZone`Yanıt, konumun adını, belirtilen konumdaki GEÇERLI UTC tarihini ve saatini ve UTC farkını sağlar. Konumun sınırı birden çok saat dilimi içindeyse, yanıt, sınırın içindeki tüm saat dilimlerinin geçerli UTC Tarih ve saatini içerir. Örneğin, Florida durumu iki saat diliminin içinde olduğundan, yanıt her iki saat dilimindeki yerel tarih ve saati içerir.  
 
@@ -419,7 +424,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>Yazım önerisi yanıtı
 
-Bing, kullanıcının farklı bir şeyi aramak için tasarlanmış olabileceğini belirlerse, yanıt bir [yazım önerisi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) nesnesi içerir. Örneğin, Kullanıcı *Carlos Pen*'u arayıyorsa, Bing kullanıcının bunun yerine Carlos pena aramak için (yani, *Carlos Pen*'ın başkaları tarafından geçmiş aramalara bağlı olarak) arama yapma amacını belirleyebilir. Aşağıda örnek bir yazım yanıtı gösterilmektedir.
+Bing, kullanıcının farklı bir şeyi aramak için tasarlanmış olabileceğini belirlerse, yanıt bir [yazım önerisi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) nesnesi içerir. Örneğin, Kullanıcı *Carlos Pen* 'u arayıyorsa, Bing kullanıcının bunun yerine Carlos pena aramak için (yani, *Carlos Pen* 'ın başkaları tarafından geçmiş aramalara bağlı olarak) arama yapma amacını belirleyebilir. Aşağıda örnek bir yazım yanıtı gösterilmektedir.
 
 ```json
 "spellSuggestions": {

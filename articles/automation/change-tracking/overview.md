@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 35b1b07bd4d9eef555be26e1c24356b7c352bf38
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670741"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100703"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
@@ -93,7 +93,7 @@ Hem Windows hem de Linux 'ta dosyalardaki değişiklikleri izlemek için, Deği�
 
 ## <a name="tracking-file-content-changes"></a>Dosya içeriği değişikliklerini izleme
 
-Değişiklik İzleme ve envanter, bir Windows veya Linux dosyasının içeriğini görüntülemenizi sağlar. Bir dosyada yapılan her değişiklik için Değişiklik İzleme ve stok, dosyanın içeriğini bir [Azure depolama hesabına](/storage/common/storage-account-create)depolar. Bir dosyayı izlerken, bir değişiklikten önce veya sonra içeriğini görüntüleyebilirsiniz. Dosya içeriği satır içi veya yan yana görüntülenebilir.
+Değişiklik İzleme ve envanter, bir Windows veya Linux dosyasının içeriğini görüntülemenizi sağlar. Bir dosyada yapılan her değişiklik için Değişiklik İzleme ve stok, dosyanın içeriğini bir [Azure depolama hesabına](/azure/storage/common/storage-account-create)depolar. Bir dosyayı izlerken, bir değişiklikten önce veya sonra içeriğini görüntüleyebilirsiniz. Dosya içeriği satır içi veya yan yana görüntülenebilir.
 
 ![Dosyadaki değişiklikleri görüntüleme](./media/overview/view-file-changes.png)
 

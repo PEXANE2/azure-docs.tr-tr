@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: b874ad4ce566cfca3b0dbd28bdfe48bf30272121
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 10882a0f4daf5c0d9aa1d4aeb53b2f14f9d1dea0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482834"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100839"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB Jeo uzamsal ve GeoJSON konum verileri
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makale, Azure Cosmos DB Jeo uzamsal işlevselliğe giriş niteliğindedir. Şu anda Jeo uzamsal verileri depolama ve bunlara erişme yalnızca SQL API hesapları Azure Cosmos DB desteklenir. Jeo-uzamsal dizin oluşturma hakkındaki belgelerimizi okuduktan sonra aşağıdaki soruları cevaplayabilirsiniz:
 
@@ -169,7 +170,7 @@ Günümüzde kullanımda olan en popüler dünyayı dünya çapındaki sistem  [
 ## <a name="creating-documents-with-spatial-data"></a>Uzamsal verilerle belge oluşturma
 GeoJSON değerleri içeren belgeler oluşturduğunuzda, kapsayıcının dizin oluşturma ilkesine uygun olarak bir uzamsal dizin ile otomatik olarak dizinlenir. Python veya Node.js gibi dinamik olarak yazılmış bir dilde Azure Cosmos DB SDK 'Sı ile çalışıyorsanız, geçerli bir GeoJSON oluşturmanız gerekir.
 
-**Node.jsJeo uzamsal verilerle belge oluşturma **
+**Node.jsJeo uzamsal verilerle belge oluşturma**
 
 ```javascript
 var userProfileDocument = {

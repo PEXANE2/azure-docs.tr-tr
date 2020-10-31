@@ -8,14 +8,15 @@ ms.topic: tutorial
 ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cfab8ba88c7da84efb3f6aed6f95bb100507f8da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e80a67890dcf76d115464ea62c0729aedd444667
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981922"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099241"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK kullanarak verileri Azure Cosmos DB SQL API hesabına toplu olarak içeri aktarma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu öğreticide, verileri Azure Cosmos DB aktarmak için gereken üretilen iş üretimini (RU/s) optimize eden bir .NET konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. Bu makalede, bir örnek veri kaynağından verileri okuyacaksınız ve Azure Cosmos kapsayıcısına aktarırsınız.
 Bu öğretici, .NET Framework veya .NET Core 'a hedeflenmiş Azure Cosmos DB .NET SDK 'sının [3.0 + sürümünü](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) kullanır.
@@ -44,7 +45,7 @@ Azure portal [Azure Cosmos DB BIR SQL API hesabı oluşturun](create-cosmosdb-re
 
 ## <a name="step-2-set-up-your-net-project"></a>2. Adım: .NET projenizi ayarlama
 
-Yerel bilgisayarınızdan Windows komut istemi veya bir Terminal penceresi açın. Komut istemi veya terminalden sonraki bölümlerde bulunan tüm komutları çalıştıracaksınız. *Toplu içeri aktarma tanıtımı*adlı yeni bir uygulama oluşturmak için aşağıdaki DotNet New komutunu çalıştırın. `--langVersion`Parametresi, oluşturulan proje dosyasındaki *langversion* özelliğini ayarlar.
+Yerel bilgisayarınızdan Windows komut istemi veya bir Terminal penceresi açın. Komut istemi veya terminalden sonraki bölümlerde bulunan tüm komutları çalıştıracaksınız. *Toplu içeri aktarma tanıtımı* adlı yeni bir uygulama oluşturmak için aşağıdaki DotNet New komutunu çalıştırın. `--langVersion`Parametresi, oluşturulan proje dosyasındaki *langversion* özelliğini ayarlar.
 
    ```bash
    dotnet new console –langVersion:8 -n bulk-import-demo
@@ -82,7 +83,7 @@ Hala uygulama dizininde, DotNet Add Package komutunu kullanarak .NET Core için 
 
 Örnek uygulamanın Azure Cosmos hesabınızda kimlik doğrulaması yapması gerekir. Kimlik doğrulaması yapmak için Azure Cosmos hesabı kimlik bilgilerini uygulamaya geçirmeniz gerekir. Aşağıdaki adımları izleyerek Azure Cosmos hesabı kimlik bilgilerinizi alın:
 
-1.  [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1.  [Azure portalında](https://portal.azure.com/) oturum açın.
 1.  Azure Cosmos hesabınıza gidin.
 1.  **Anahtarlar** bölmesini açın ve hesabınızın **URI** ve **birincil anahtarını** kopyalayın.
 

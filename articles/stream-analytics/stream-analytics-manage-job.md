@@ -7,18 +7,18 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: a265bc2ed131dc0bb69d89f767ab60225d30ee8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc9b91ce7e40d8f1efab060376a9641642a10472
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89612055"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101333"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Öğretici: Stream Analytics ile telefon araması verilerini analiz edin ve sonuçları Power BI panoda görselleştirin
 
 Bu öğreticide Azure Stream Analytics'i kullanarak telefon araması verilerini analiz etme adımları gösterilmektedir. Bir istemci uygulaması tarafından oluşturulan telefon araması verileri, Stream Analytics işi tarafından filtrelenecektir bazı sahte çağrılar içerir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Örnek telefon araması verileri oluşturma ve Azure Event Hubs'a gönderme
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Başlamadan önce aşağıdaki işlemleri yapın:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 * [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) telefon araması olay oluşturucu uygulamasını Microsoft İndirme Merkezi’nden indirin veya [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator)’dan kaynak kodu edinin.
 * Power BI hesabınız olmalıdır.
 
@@ -43,25 +43,25 @@ Stream Analytics’in sahte arama veri akışını analiz edebilmesi için veril
 
 Bir olay hub'ı oluşturmak ve arama verilerini bu olay hub'ına göndermek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
-2. Event Hubs **nesnelerin interneti kaynak oluştur**' u seçin  >  **Internet of Things**  >  **Event Hubs**.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+2. Event Hubs **nesnelerin interneti kaynak oluştur** ' u seçin  >  **Internet of Things**  >  **Event Hubs** .
 
    ![Portalda bir Azure Olay Hub 'ı oluşturma](media/stream-analytics-manage-job/find-event-hub-resource.png)
 3. **Ad Alanı Oluştur** bölmesini aşağıdaki değerlerle doldurun:
 
    |**Ayar**  |**Önerilen değer** |**Açıklama**  |
    |---------|---------|---------|
-   |Name     | myEventHubsNS        |  Olay hub'ı ad alanını tanımlamak için benzersiz bir ad.       |
+   |Ad     | myEventHubsNS        |  Olay hub'ı ad alanını tanımlamak için benzersiz bir ad.       |
    |Abonelik     |   \<Your subscription\>      |   Olay hub'ını oluşturmak istediğiniz Azure aboneliğini seçin.      |
-   |Kaynak grubu     |   MyASADemoRG      |  **Yeni Oluştur**’u seçin ve hesabınız için yeni bir kaynak grubu adı girin.       |
+   |Kaynak grubu     |   MyASADemoRG      |  **Yeni Oluştur** ’u seçin ve hesabınız için yeni bir kaynak grubu adı girin.       |
    |Konum     |   Batı ABD 2      |    Olay hub'ı ad alanının dağıtılabildiği konum.     |
 
-4. Kalan ayarlarda varsayılan seçenekleri kullanın ve **Oluştur**’u seçin.
+4. Kalan ayarlarda varsayılan seçenekleri kullanın ve **Oluştur** ’u seçin.
 
    ![Azure portal olay hub 'ı ad alanı oluşturma](media/stream-analytics-manage-job/create-event-hub-namespace.png)
 
-5. Ad alanının dağıtımı tamamlandığında **Tüm kaynaklar**’a gidin ve Azure kaynak listesinde *myEventHubsNS* girişini bulun. *myEventHubsNS* girişini seçerek açın.
-6. Ardından **+Olay hub'ı** öğesini seçin ve **Ad** alanına *MyEventHub* veya istediğiniz başka bir ad yazın. Kalan ayarlarda varsayılan seçenekleri kullanın ve **Oluştur**’u seçin. Ardından dağıtımın başarıyla tamamlanmasını bekleyin.
+5. Ad alanının dağıtımı tamamlandığında **Tüm kaynaklar** ’a gidin ve Azure kaynak listesinde *myEventHubsNS* girişini bulun. *myEventHubsNS* girişini seçerek açın.
+6. Ardından **+Olay hub'ı** öğesini seçin ve **Ad** alanına *MyEventHub* veya istediğiniz başka bir ad yazın. Kalan ayarlarda varsayılan seçenekleri kullanın ve **Oluştur** ’u seçin. Ardından dağıtımın başarıyla tamamlanmasını bekleyin.
 
    ![Azure portal 'de Olay Hub 'ı yapılandırması](media/stream-analytics-manage-job/create-event-hub-portal.png)
 
@@ -69,9 +69,9 @@ Bir olay hub'ı oluşturmak ve arama verilerini bu olay hub'ına göndermek içi
 
 Bir uygulamanın Azure Olay Hub’larına veri gönderebilmesi için olay hub’ında ilgili erişime izin veren bir ilke olması gerekir. Erişim ilkesi, yetkilendirme bilgilerini içeren bir bağlantı dizesi oluşturur.
 
-1. Önceki adımda oluşturduğunuz Olay Hub 'ına gidin, MyEventHub *. **Ayarlar**'ın altında **Paylaşılan erişim ilkeleri**'ni ve ardından **+ Ekle**'yi seçin.
+1. Önceki adımda oluşturduğunuz Olay Hub 'ına gidin, MyEventHub *. **Ayarlar** 'ın altında **Paylaşılan erişim ilkeleri** 'ni ve ardından **+ Ekle** 'yi seçin.
 
-2. İlkeye **MyPolicy** adını verin ve **Yönet** seçeneğinin işaretli olduğundan emin olun. Ardından **Oluştur**’u seçin.
+2. İlkeye **MyPolicy** adını verin ve **Yönet** seçeneğinin işaretli olduğundan emin olun. Ardından **Oluştur** ’u seçin.
 
    ![Olay hub'ı paylaşılan erişim ilkesi oluşturma](media/stream-analytics-manage-job/create-event-hub-access-policy.png)
 
@@ -85,7 +85,7 @@ Bir uygulamanın Azure Olay Hub’larına veri gönderebilmesi için olay hub’
 
    `Endpoint=sb://<Your event hub namespace>.servicebus.windows.net/;SharedAccessKeyName=<Your shared access policy name>;SharedAccessKey=<generated key>;EntityPath=<Your event hub name>`
 
-   Bağlantı dizesinin noktalı virgülle ayrılmış birden çok anahtar-değer çifti içerdiğine dikkat edin: **Endpoint**, **sharedaccesskeyname**, **Sharedaccesskey**ve **entitypath**.
+   Bağlantı dizesinin noktalı virgülle ayrılmış birden çok anahtar-değer çifti içerdiğine dikkat edin: **Endpoint** , **sharedaccesskeyname** , **Sharedaccesskey** ve **entitypath** .
 
 ## <a name="start-the-event-generator-application"></a>Olay oluşturucu uygulamasını başlatma
 
@@ -109,7 +109,7 @@ TelcoGenerator uygulamasını başlatmadan önce bunu, daha önce oluşturduğun
    Bu komut aşağıdaki parametreleri alır:
    * Saat başına arama verisi kaydının sayısı.
    * Sahtekarlık olasılığının yüzdesi, uygulamanın ne sıklıkta sahte arama benzetimi gerçekleştirmesi gerektiği. 0.2 değeri arama kayıtlarının %20'sinin sahte görüneceğini anlamına gelir.
-   * Saat cinsinden süre, uygulamanın çalışması gereken saat sayısı. Ayrıca, komut satırında işlemi sonlandırarak (**CTRL + C**) uygulamayı istediğiniz zaman durdurabilirsiniz.
+   * Saat cinsinden süre, uygulamanın çalışması gereken saat sayısı. Ayrıca, komut satırında işlemi sonlandırarak ( **CTRL + C** ) uygulamayı istediğiniz zaman durdurabilirsiniz.
 
    Birkaç saniye sonra uygulama, telefon araması kayıtlarını olay hub'ına gönderirken ekranda bu kayıtları görüntülemeye başlar. Telefon araması verileri aşağıdaki alanları içerir:
 
@@ -128,7 +128,7 @@ Arama olaylarından oluşan bir akışa sahip olduğunuza göre artık olay hub'
 
 1. Stream Analytics bir iş oluşturmak için [Azure Portal](https://portal.azure.com/)gidin.
 
-2. **Create a resource**  >  **Internet of Things**  >  **Stream Analytics iş**nesnelerin interneti kaynak oluştur ' u seçin.
+2. **Create a resource**  >  **Internet of Things**  >  **Stream Analytics iş** nesnelerin interneti kaynak oluştur ' u seçin.
 
 3. **Yeni Stream Analytics işi** bölmesini aşağıdaki değerlerle doldurun:
 
@@ -141,7 +141,7 @@ Arama olaylarından oluşan bir akışa sahip olduğunuza göre artık olay hub'
    |Barındırma ortamı    | Bulut        |     Stream Analytics işleri buluta veya uca dağıtılabilir. Bulut, Azure bulutuna dağıtmanıza olanak tanır ve Edge bir IoT Edge cihazına dağıtmanıza olanak tanır.    |
    |Akış birimleri     |    1       |      Akış birimleri, bir işin yürütülmesi için gereken bilgi işlem kaynaklarını temsil eder. Varsayılan olarak, bu değer 1 olarak ayarlanır. Akış birimlerini ölçeklendirme hakkında bilgi edinmek için [akış birimlerini anlama ve ayarlama](stream-analytics-streaming-unit-consumption.md) başlıklı makaleye bakın.      |
 
-4. Kalan ayarlarda varsayılan seçenekleri kullanın, **Oluştur**' u seçin ve dağıtımın başarılı olmasını bekleyin.
+4. Kalan ayarlarda varsayılan seçenekleri kullanın, **Oluştur** ' u seçin ve dağıtımın başarılı olmasını bekleyin.
 
    ![Azure Stream Analytics işi oluşturma](media/stream-analytics-manage-job/create-stream-analytics-job.png)
 
@@ -153,7 +153,7 @@ Bir sonraki adım, önceki bölümde oluşturduğunuz olay hub'ını kullanarak 
 
 2. Stream Analytics iş bölmesinin **İş Topolojisi** bölümünde **Girişler** seçeneğini belirleyin.
 
-3. **+ Akış girişi ekle**'yi ve **Olay hub'ı** girişini seçin. Bölmeye aşağıdaki değerleri girin:
+3. **+ Akış girişi ekle** 'yi ve **Olay hub'ı** girişini seçin. Bölmeye aşağıdaki değerleri girin:
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
@@ -163,7 +163,7 @@ Bir sonraki adım, önceki bölümde oluşturduğunuz olay hub'ını kullanarak 
    |Olay Hub'ı adı    |   MyEventHub      |  Önceki bölümde oluşturduğunuz olay hub’ını seçin. Geçerli aboneliğinizde kullanılabilen tüm olay hub’ları açılır menüde listelenir.       |
    |Olay Hub'ı ilke adı   |  MyPolicy       |  Önceki bölümde oluşturduğunuz olay hub’ı paylaşılan erişim ilkesini seçin. Geçerli aboneliğinizde kullanılabilen tüm olay hub’ı ilkeleri açılır menüde listelenir.       |
 
-4. Kalan ayarlarda varsayılan seçenekleri kullanın ve **Kaydet**’i seçin.
+4. Kalan ayarlarda varsayılan seçenekleri kullanın ve **Kaydet** ’i seçin.
 
    ![Azure Stream Analytics girişi yapılandırma](media/stream-analytics-manage-job/configure-stream-analytics-input.png)
 
@@ -175,7 +175,7 @@ Son adım, işin dönüştürülmüş verileri yazabileceği bir çıkış havuz
 
 2. Stream Analytics iş bölmesinin **İş Topolojisi** bölümünde **Çıkışlar** seçeneğini belirleyin.
 
-3. **+ Power BI Ekle**' yi seçin  >  **Power BI**. Ardından formu aşağıdaki bilgilerle doldurun ve **Yetkilendir**'i seçin:
+3. **+ Power BI Ekle** ' yi seçin  >  **Power BI** . Ardından formu aşağıdaki bilgilerle doldurun ve **Yetkilendir** 'i seçin:
 
    |**Ayar**  |**Önerilen değer**  |
    |---------|---------|
@@ -185,7 +185,7 @@ Son adım, işin dönüştürülmüş verileri yazabileceği bir çıkış havuz
 
    ![Stream Analytics çıkışını yapılandırma](media/stream-analytics-manage-job/configure-stream-analytics-output.png)
 
-4. **Yetkilendir**'i seçtiğinizde bir açılır pencere görünür ve Power BI hesabınızda kimlik doğrulaması için sizden kimlik bilgilerini sağlamanız istenir. Yetkilendirme başarılı olduktan sonra **Kaydet** seçeneğine tıklayarak ayarları kaydedin. Yönetilen kimliği kullanmak için, bkz. [Azure Stream Analytics işinizin kimliğini doğrulamak Için yönetilen kimliği kullanma Power BI](powerbi-output-managed-identity.md).
+4. **Yetkilendir** 'i seçtiğinizde bir açılır pencere görünür ve Power BI hesabınızda kimlik doğrulaması için sizden kimlik bilgilerini sağlamanız istenir. Yetkilendirme başarılı olduktan sonra **Kaydet** seçeneğine tıklayarak ayarları kaydedin. Yönetilen kimliği kullanmak için, bkz. [Azure Stream Analytics işinizin kimliğini doğrulamak Için yönetilen kimliği kullanma Power BI](powerbi-output-managed-identity.md).
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Giriş verilerini analiz etmek için sorgu tanımlama
 
@@ -214,7 +214,7 @@ Bu örnekte sahte aramalar, aynı kullanıcı tarafından beş saniye içinde an
 
    Bu sorgu, **DATEDIFF** işlevi dışında normal bir SQL JOIN gibi olur. Bu sorguda kullanılan **DATEDIFF** işlevi Stream Analytics’e özeldir ve `ON...BETWEEN` yan tümcesi içinde görünmelidir.
 
-4. Sorguyu **kaydedin**.
+4. Sorguyu **kaydedin** .
 
    ![Portalda Stream Analytics sorgusu tanımlama](media/stream-analytics-manage-job/define-stream-analytics-query.png)
 
@@ -224,29 +224,29 @@ Bu örnekte sahte aramalar, aynı kullanıcı tarafından beş saniye içinde an
 
 1. TelcoGenerator uygulamasının çalıştığından ve telefon araması kayıtları oluşturduğundan emin olun.
 
-2. **Sorgu** bölmesinde, *callstream* girişinin yanındaki noktaları seçin ve ardından **girişten örnek veriler**' i seçin.
+2. **Sorgu** bölmesinde, *callstream* girişinin yanındaki noktaları seçin ve ardından **girişten örnek veriler** ' i seçin.
 
-3. **Dakika**’yı 3 olarak ayarlayıp **Tamam**’ı seçin. Üç dakikalık veriler, giriş akışından örnekleme olarak alınır ve örnek veriler hazır olduğunda size bildirilir. Bildirim çubuğundan örneklemenin durumunu görüntüleyebilirsiniz.
+3. **Dakika** ’yı 3 olarak ayarlayıp **Tamam** ’ı seçin. Üç dakikalık veriler, giriş akışından örnekleme olarak alınır ve örnek veriler hazır olduğunda size bildirilir. Bildirim çubuğundan örneklemenin durumunu görüntüleyebilirsiniz.
 
    Örnek veriler geçici olarak depolanır ve sorgu penceresi açıkken kullanılabilir. Sorgu penceresini kapatırsanız örnek veriler atılır ve test gerçekleştirmek için yeni bir örnek veri kümesi oluşturmanız gerekir. Alternatif olarak, [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json)’daki örnek veriler içeren JSON dosyasını kullanabilir ve ardından bunu *CallStream* girişi için örnek veri olarak kullanmak üzere karşıya yükleyebilirsiniz.
 
    ![Stream Analytics için giriş verilerini örnekleme görseli](media/stream-analytics-manage-job/sample-input-data-asa.png)
 
-4. Sorguyu test etmek için **Test**'i seçin. Aşağıdaki sonuçları görmeniz gerekir:
+4. Sorguyu test etmek için **Test** 'i seçin. Aşağıdaki sonuçları görmeniz gerekir:
 
    ![Stream Analytics sorgu testinin çıktısı](media/stream-analytics-manage-job/sample-test-output-restuls.png)
 
 ## <a name="start-the-job-and-visualize-output"></a>İş başlatma ve çıkışı görselleştirme
 
-1. İşi başlatmak için işinizin **genel bakış** bölmesine gidin ve **Başlat**' ı seçin.
+1. İşi başlatmak için işinizin **genel bakış** bölmesine gidin ve **Başlat** ' ı seçin.
 
-2. İş çıkışı başlangıç saati için **Şimdi**’yi seçip **Başlat** seçeneğini belirleyin. İş durumunu bildirim çubuğunda durumu görüntüleyebilirsiniz.
+2. İş çıkışı başlangıç saati için **Şimdi** ’yi seçip **Başlat** seçeneğini belirleyin. İş durumunu bildirim çubuğunda durumu görüntüleyebilirsiniz.
 
 3. İş başarıyla tamamlandıktan sonra [Power BI](https://powerbi.com/)'a gidip iş veya okul hesabınızla oturum açın. Stream Analytics işi sorgusu sonuç üretiyorsa oluşturduğunuz *ASAdataset* veri kümesi **Veri kümeleri** sekmesinde yer alır.
 
-4. Power BI çalışma alanınızdan **+ Oluştur**'u seçerek *Fraudulent Calls* adında yeni bir pano oluşturun.
+4. Power BI çalışma alanınızdan **+ Oluştur** 'u seçerek *Fraudulent Calls* adında yeni bir pano oluşturun.
 
-5. Pencerenin üst kısmındaki **Kutucuk ekle**’yi seçin. Ardından **Özel Akış Verileri**'ni ve **İleri**'yi seçin. **Veri kümeleriniz** bölümünden **ASAdataset** girişini seçin. **Görselleştirme türü** açılan menüsünden **kart** ' ı seçin ve alanlara **sahte çağrılar** ekleyin **Fields**. **İleri**'yi seçip ad belirledikten sonra **Uygula**'yı seçerek kutucuğu oluşturun.
+5. Pencerenin üst kısmındaki **Kutucuk ekle** ’yi seçin. Ardından **Özel Akış Verileri** 'ni ve **İleri** 'yi seçin. **Veri kümeleriniz** bölümünden **ASAdataset** girişini seçin. **Görselleştirme türü** açılan menüsünden **kart** ' ı seçin ve alanlara **sahte çağrılar** ekleyin **Fields** . **İleri** 'yi seçip ad belirledikten sonra **Uygula** 'yı seçerek kutucuğu oluşturun.
 
    ![Power BI Pano kutucukları oluşturma](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
 
@@ -264,14 +264,14 @@ Bu örnekte sahte aramalar, aynı kullanıcı tarafından beş saniye içinde an
 
 Öğreticinin bu bölümünde, panonuzu eklemek için Power BI ekibi tarafından oluşturulan örnek bir [ASP.net](https://asp.net/) Web uygulamasını kullanacaksınız. Pano ekleme hakkında daha fazla bilgi için [Power BI ile ekleme](https://docs.microsoft.com/power-bi/developer/embedding) başlıklı makaleye bakın.
 
-Uygulamayı ayarlamak için [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub deposuna gidin ve **verilerin sahip olduğu Kullanıcı** bölümündeki yönergeleri izleyin ( **tümleştirin-Web-App** alt bölümünün altındaki yeniden yönlendirme ve ana sayfa URL 'lerini kullanın). Pano örneğini kullandığımızdan, [GitHub deposunda](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/Embed%20for%20your%20organization/integrate-web-app)bulunan **tümleştirin-Web-App** örnek kodunu kullanın.
+Uygulamayı ayarlamak için [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub deposuna gidin ve **verilerin sahip olduğu Kullanıcı** bölümündeki yönergeleri izleyin ( **tümleştirin-Web-App** alt bölümünün altındaki yeniden yönlendirme ve ana sayfa URL 'lerini kullanın). Pano örneğini kullandığımızdan, [GitHub deposunda](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/Embed%20for%20your%20organization/)bulunan **tümleştirin-Web-App** örnek kodunu kullanın.
 Uygulamayı tarayıcınızda çalıştırmaya başladıktan sonra, daha önce oluşturduğunuz panoyu web sayfasına eklemek için şu adımları uygulayın:
 
-1. **Power BI Için oturum aç**' ı seçin. Bu, uygulamaya Power BI hesabınızdaki panolara erişim izni verir.
+1. **Power BI Için oturum aç** ' ı seçin. Bu, uygulamaya Power BI hesabınızdaki panolara erişim izni verir.
 
-2. Hesabınızın Panolarını bir tabloda görüntüleyen **Pano Al** düğmesini seçin. Daha önce oluşturduğunuz panonun adını, **PowerBI-Embedded-panosunu**bulun ve karşılık gelen **EmbedUrl**kopyalayın.
+2. Hesabınızın Panolarını bir tabloda görüntüleyen **Pano Al** düğmesini seçin. Daha önce oluşturduğunuz panonun adını, **PowerBI-Embedded-panosunu** bulun ve karşılık gelen **EmbedUrl** kopyalayın.
 
-3. Son olarak, **EmbedUrl**’yi ilgili metin alanına yapıştırıp **Panoyu Ekle** seçeneğini belirleyin. Artık bir web uygulamasının içine eklenen panoyu görüntüleyebilirsiniz.
+3. Son olarak, **EmbedUrl** ’yi ilgili metin alanına yapıştırıp **Panoyu Ekle** seçeneğini belirleyin. Artık bir web uygulamasının içine eklenen panoyu görüntüleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

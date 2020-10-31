@@ -7,14 +7,15 @@ ms.date: 03/13/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9da07dc76bdd9273b70f68ee1abcddfa04519fda
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79365517"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101043"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken sorunları tanılayın ve sorun giderin
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede, [Cosmos DB Için Azure işlevleri tetikleyicisi](change-feed-functions.md)kullandığınızda yaygın sorunlar, geçici çözümler ve Tanılama adımları ele alınmaktadır.
 
@@ -31,7 +32,7 @@ Bu makale, açıkça belirtilmediği takdirde, her zaman çalışma zamanına he
 
 Uzantı paketinin temel işlevselliği, Cosmos DB için Azure Işlevleri tetikleyicisi ve bağlamaları için destek sağlamaktır. Ayrıca, tetikleyici ve bağlamaları kullanmadan Azure Cosmos DB programlı bir şekilde etkileşim kurmak istiyorsanız yararlı olacak [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md)' yı da içerir.
 
-Azure Cosmos DB SDK 'yı kullanmak istiyorsanız, projenize başka bir NuGet paket başvurusu eklemediğinizden emin olun. Bunun yerine, **SDK başvurusunun Azure işlevleri ' uzantı paketi aracılığıyla çözümlenmesine izin verin**. Azure Cosmos DB SDK 'sını tetikleyiciden ve bağlamalardan ayrı kullanın
+Azure Cosmos DB SDK 'yı kullanmak istiyorsanız, projenize başka bir NuGet paket başvurusu eklemediğinizden emin olun. Bunun yerine, **SDK başvurusunun Azure işlevleri ' uzantı paketi aracılığıyla çözümlenmesine izin verin** . Azure Cosmos DB SDK 'sını tetikleyiciden ve bağlamalardan ayrı kullanın
 
 Ayrıca, [Azure Cosmos DB SDK istemcisinin](./sql-api-sdk-dotnet-core.md)kendi örneğinizi el ile oluşturuyorsanız, tek [bir desenli yaklaşım kullanarak](../azure-functions/manage-connections.md#documentclient-code-example-c)istemcinin yalnızca bir örneğine sahip olma örüntüsünün izlenmesi gerekir. Bu işlem, işlemlerinizin olası yuva sorunlarından kaçınacaktır.
 
@@ -43,7 +44,7 @@ Azure Işlevi şu hata iletisiyle başarısız oldu "' koleksiyon-adı ' (verita
 
 Bu, tetikleyicinin çalışması için gereken Azure Cosmos kapsayıcılarının bir veya her ikisinin mevcut olmadığı ya da Azure Işlevi için ulaşılamaz olmadığı anlamına gelir. Hatanın kendisi, yapılandırmanıza bağlı olarak **hangi Azure Cosmos veritabanı ve kapsayıcısının hangi tetikleyici olduğunu bildirir** .
 
-1. `ConnectionStringSetting`Özniteliğini ve **Azure işlev uygulaması var olan bir ayara başvurmuş**olduğunu doğrulayın. Bu öznitelikteki değer bağlantı dizesinin kendisi olmaması gerekir, ancak yapılandırma ayarının adı.
+1. `ConnectionStringSetting`Özniteliğini ve **Azure işlev uygulaması var olan bir ayara başvurmuş** olduğunu doğrulayın. Bu öznitelikteki değer bağlantı dizesinin kendisi olmaması gerekir, ancak yapılandırma ayarının adı.
 2. `databaseName`Ve ' nin `collectionName` Azure Cosmos hesabınızda mevcut olduğunu doğrulayın. Otomatik değer değiştirme ( `%settingName%` desenler kullanarak) kullanıyorsanız, ayarın adının Azure işlev uygulaması bulunduğundan emin olun.
 3. Bir belirtmezseniz `LeaseCollectionName/leaseCollectionName` , varsayılan değer "kiralamalar" dır. Bu kapsayıcının var olduğunu doğrulayın. İsteğe bağlı `CreateLeaseCollectionIfNotExists` olarak, tetikleyicinizdeki özniteliğini `true` otomatik olarak oluşturmak için olarak ayarlayabilirsiniz.
 4. Azure Işlevini engellemediğini öğrenmek için [Azure Cosmos hesabınızın güvenlik duvarı yapılandırmasını](how-to-configure-firewall.md) doğrulayın.
@@ -94,7 +95,7 @@ Bu senaryoda, en iyi işlem `try/catch` konusu, kodunuzun içindeki blokları ve
 > [!NOTE]
 > Cosmos DB için Azure İşlevleri tetikleyicisi, kod yürütmeniz sırasında işlenmemiş bir özel durum oluştuğunda varsayılan olarak bir toplu değişiklik grubunu yeniden denemeyecektir. Bu, değişikliklerin hedefe ulaşamamasının nedeni, bunları İşleyemeyeceğiniz anlamına gelir.
 
-Tetikleyicinizin tümünde bazı değişiklikler alınmadığından, en yaygın senaryo, **çalışan başka bir Azure işlevi**olduğundan emin olur. Bu, Azure 'da dağıtılan başka bir Azure Işlevi veya bir geliştirici makinesinde yerel olarak **aynı yapılandırmaya** (aynı izlenen ve kira kapsayıcıları) sahip olan bir Azure işlevi olabilir ve bu Azure Işlevi, Azure işlevinizin işlemesini beklediğiniz değişikliklerin bir alt kümesini çalmaya çalışır.
+Tetikleyicinizin tümünde bazı değişiklikler alınmadığından, en yaygın senaryo, **çalışan başka bir Azure işlevi** olduğundan emin olur. Bu, Azure 'da dağıtılan başka bir Azure Işlevi veya bir geliştirici makinesinde yerel olarak **aynı yapılandırmaya** (aynı izlenen ve kira kapsayıcıları) sahip olan bir Azure işlevi olabilir ve bu Azure Işlevi, Azure işlevinizin işlemesini beklediğiniz değişikliklerin bir alt kümesini çalmaya çalışır.
 
 Ayrıca, kaç Azure İşlev Uygulaması örneğinin çalıştığını biliyorsanız senaryo doğrulanabilir. Kira kapsayıcınızı inceleyebilir ve içindeki kira öğelerinin sayısını saydıysanız, içindeki özelliğin farklı değerleri, `Owner` işlev uygulaması örneklerinin sayısına eşit olmalıdır. Bilinen Azure İşlev Uygulaması örneklerinden daha fazla sahip varsa, bu ek sahipler değişikliklerin "çalmasını" olduğu anlamına gelir.
 

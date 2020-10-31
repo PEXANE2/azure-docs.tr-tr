@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: fe4c40e2c5e2b8992598125c376dc0da516e9736
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a62133737d48a8ebf454b5fab83ef52ef2daad09
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316707"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098442"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Öğretici: Bing Resim Arama API’sini kullanarak tek sayfalı uygulama oluşturma
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bing Resim Arama API’si, web’de yüksek kaliteli, alakalı görüntüleri aramanıza olanak sağlar. API’ye arama sorguları gönderebilen ve sonuçları web sayfasında görüntüleyebilen tek sayfalı bir web uygulaması derlemek için bu öğreticiyi kullanın. Bu öğretici, Bing Web Araması’nın [ilgili öğreticisine](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) benzerdir.
 

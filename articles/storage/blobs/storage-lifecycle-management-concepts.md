@@ -1,22 +1,22 @@
 ---
-title: Azure depolama yaşam döngüsünü yönetme
-description: Sık erişimli verileri sık erişimli ve arşiv katmanlarına geçirmeye yönelik yaşam döngüsü ilke kuralları oluşturmayı öğrenin.
+title: Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirin
+description: Sık erişimli, seyrek erişimli ve arşiv katmanları arasında veri taşımak için otomatik kurallar oluşturun.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/15/2020
+ms.date: 10/29/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: ee04ad28d6b52e63becd2991d77b453cd411f683
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a4a338a4d13715ba1ff7cb30c011757d5050ba05
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309790"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100078"
 ---
-# <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
+# <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirin
 
 Veri kümelerinin benzersiz ömürleri vardır. Yaşam döngüsünün başlarında, insanlar bazı verilere sık erişir. Ancak erişim gereksinimi, verilerin yaş açısından önemli ölçüde büyük ölçüde düşmez. Bazı veriler bulutta boş kalır ve depolandıktan sonra nadiren erişilebilir. Bazı veriler oluşturulduktan sonra gün veya ay sonra dolar, diğer veri kümeleri yaşam süreleri boyunca etkin bir şekilde okunabilir ve değiştirilir. Azure Blob depolama yaşam döngüsü yönetimi, GPv2 ve BLOB depolama hesapları için zengin, kural tabanlı bir ilke sunar. Verilerinizi uygun erişim katmanlarına geçirmeye veya veri yaşam döngüsünün sonunda sona ermesini sağlamak için ilkeyi kullanın.
 
@@ -31,6 +31,7 @@ Yaşam döngüsü yönetimi ilkesi şunları yapmanızı sağlar:
 Yaşam döngüsünün erken aşamaları sırasında, ancak iki hafta sonra zaman içinde sık sık erişim aldığı bir senaryo düşünün. İlk ayın ötesinde veri kümesine nadiren erişilir. Bu senaryoda, etkin depolama, erken aşamalar sırasında en iyisidir. Seyrek Erişimli Depolama, büyük olasılıkla erişim için en uygun. Arşiv depolaması, verilerin bir ay boyunca yaşından sonraki en iyi katman seçeneğidir. Depolama katmanlarını verilerin yaşına göre ayarlayarak, gereksinimlerinize göre en düşük maliyetli depolama seçeneklerini tasarlayabilirsiniz. Bu geçişe ulaşmak için, eskime verilerini daha soğuk katmanlara taşımak amacıyla yaşam döngüsü yönetimi ilke kuralları kullanılabilir.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 >[!NOTE]
 >Örneğin, StorSimple tarafından kullanıldığında okunabilir kalabilmeniz için veri gerekiyorsa, Blobları arşiv katmanına taşımak için bir ilke ayarlamayın.
 
@@ -69,11 +70,11 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 
 1. Azure portal, depolama hesabınızı arayıp seçin. 
 
-1. **BLOB hizmeti**altında, kurallarınızı görüntülemek veya değiştirmek Için **yaşam döngüsü yönetimi** ' ni seçin.
+1. **BLOB hizmeti** altında, kurallarınızı görüntülemek veya değiştirmek Için **yaşam döngüsü yönetimi** ' ni seçin.
 
 1. **Liste görünümü** sekmesini seçin.
 
-1. **Kural Ekle** ' yi seçin ve kuralları **Ayrıntılar** formunda adlandırın. **Kural kapsamını**, **BLOB türünü**ve **BLOB alt türü** değerlerini de ayarlayabilirsiniz. Aşağıdaki örnek, blob 'ları filtrelemek için kapsamı ayarlar. Bu, **filtre kümesi** sekmesinin eklenmesine neden olur.
+1. **Kural Ekle** ' yi seçin ve kuralları **Ayrıntılar** formunda adlandırın. **Kural kapsamını** , **BLOB türünü** ve **BLOB alt türü** değerlerini de ayarlayabilirsiniz. Aşağıdaki örnek, blob 'ları filtrelemek için kapsamı ayarlar. Bu, **filtre kümesi** sekmesinin eklenmesine neden olur.
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="Yaşam döngüsü yönetimi Azure portal bir kural ayrıntıları ekleme sayfası":::
 
@@ -90,7 +91,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 
 1. Azure portal, depolama hesabınızı arayıp seçin.
 
-1. **BLOB hizmeti**altında, ilkenizi görüntülemek veya değiştirmek Için **yaşam döngüsü yönetimi** ' ni seçin.
+1. **BLOB hizmeti** altında, ilkenizi görüntülemek veya değiştirmek Için **yaşam döngüsü yönetimi** ' ni seçin.
 
 1. Aşağıdaki JSON, **kod görünümü** sekmesine yapıştırılabilecek bir ilke örneğidir.
 
@@ -123,7 +124,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
    }
    ```
 
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
 1. Bu JSON örneği hakkında daha fazla bilgi için bkz. [ilke](#policy) ve [kurallar](#rules) bölümleri.
 
@@ -303,12 +304,12 @@ Filtreler aşağıdakileri içerir:
 
 | Filtre adı | Filtre türü | Notlar | Gereklidir |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın ve destekler `blockBlob` `appendBlob` . İçin yalnızca silme desteklenir `appendBlob` , set Tier desteklenmez. | Evet |
+| blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın ve destekler `blockBlob` `appendBlob` . İçin yalnızca silme desteklenir `appendBlob` , set Tier desteklenmez. | Yes |
 | prefixMatch | Öneklerin eşleştirileceği dizeler dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız, `https://myaccount.blob.core.windows.net/container1/foo/...` prefixMatch olur `container1/foo` . | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
 | blobIndexMatch | Blob dizini etiketi anahtarından ve eşleştirilecek değer koşullarından oluşan Sözlük değerleri dizisi. Her kural, en fazla 10 blob Dizin etiketi koşulunu tanımlayabilir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız `Project = Contoso` `https://myaccount.blob.core.windows.net/` , blobIndexMatch olur `{"name": "Project","op": "==","value": "Contoso"}` . | BlobIndexMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
 
 > [!NOTE]
-> Blob dizini ortak önizlemededir ve **Kanada Orta**, **Kanada Doğu**, **Fransa orta**ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
+> Blob dizini ortak önizlemededir ve **Kanada Orta** , **Kanada Doğu** , **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Kural eylemleri
 

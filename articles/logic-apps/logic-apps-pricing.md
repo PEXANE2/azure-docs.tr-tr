@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 486930776b4b4b6d852102be723ac1047ebd5e0a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078155"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098493"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma modeli
 
@@ -85,13 +85,13 @@ Azure Logic Apps bağlayıcılar, mantıksal uygulamanızın, [Tetikleyiciler](#
 
 Bir tetikleyici, mantıksal uygulama iş akışındaki her zaman ilk adımdır ve belirli ölçütler karşılandığında veya belirli bir olay gerçekleştiğinde mantıksal uygulama örneği oluşturan ve çalıştıran özel bir işlemdir. Tetikler, mantıksal uygulamanın nasıl ölçüldiğini etkileyen farklı yollarla çalışır. Azure Logic Apps var olan çeşitli tetikleyici türleri şunlardır:
 
-* **Yinelenme tetikleyicisi**: herhangi bir hizmet veya sisteme özgü olmayan bu genel tetikleyiciyi, herhangi bir mantıksal uygulama iş akışını başlatmak ve tetikleyicide ayarladığınız yinelenme aralığına göre çalışan bir mantıksal uygulama örneği oluşturmak için kullanabilirsiniz. Örneğin, her üç günde bir veya daha karmaşık bir zamanlamaya göre çalışan bir yinelenme tetikleyicisi ayarlayabilirsiniz.
+* **Yinelenme tetikleyicisi** : herhangi bir hizmet veya sisteme özgü olmayan bu genel tetikleyiciyi, herhangi bir mantıksal uygulama iş akışını başlatmak ve tetikleyicide ayarladığınız yinelenme aralığına göre çalışan bir mantıksal uygulama örneği oluşturmak için kullanabilirsiniz. Örneğin, her üç günde bir veya daha karmaşık bir zamanlamaya göre çalışan bir yinelenme tetikleyicisi ayarlayabilirsiniz.
 
-* **Yoklama tetikleyicisi**: Bu daha özelleştirilmiş yinelenme tetikleyicisini, genellikle belirli bir hizmet veya sistem için yönetilen bağlayıcıyla ilişkili olan, tetikleyicide ayarladığınız yinelenme aralığına göre mantıksal uygulama örneği oluşturma ve çalıştırma ölçütlerine uyan olayları denetlemek için, bu daha özelleştirilmiş yineleme tetikleyicisini kullanabilirsiniz. Mantıksal uygulama örneği oluşturulmasa bile, örneğin Tetikleyiciler atlandığında, Logic Apps hizmeti her yoklama isteğini bir yürütme olarak ölçümler. Yoklama aralığını belirtmek için, mantıksal uygulama Tasarımcısı aracılığıyla tetikleyiciyi ayarlayın.
+* **Yoklama tetikleyicisi** : Bu daha özelleştirilmiş yinelenme tetikleyicisini, genellikle belirli bir hizmet veya sistem için yönetilen bağlayıcıyla ilişkili olan, tetikleyicide ayarladığınız yinelenme aralığına göre mantıksal uygulama örneği oluşturma ve çalıştırma ölçütlerine uyan olayları denetlemek için, bu daha özelleştirilmiş yineleme tetikleyicisini kullanabilirsiniz. Mantıksal uygulama örneği oluşturulmasa bile, örneğin Tetikleyiciler atlandığında, Logic Apps hizmeti her yoklama isteğini bir yürütme olarak ölçümler. Yoklama aralığını belirtmek için, mantıksal uygulama Tasarımcısı aracılığıyla tetikleyiciyi ayarlayın.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Web kancası tetikleyicisi**: bir yoklama tetikleyicisi kullanmak yerine, istemcinin belirli bir uç nokta URL 'sindeki mantıksal uygulamanıza istek göndermesini beklemek için bir Web kancası tetikleyicisi kullanabilirsiniz. Web kancası uç noktasına gönderilen her istek bir eylem yürütmesi olarak sayılır. Örneğin, Istek ve HTTP Web kancası tetikleyicisi genel Web kancası tetikleyicilerine sahiptir. Hizmetler veya sistemler için bazı bağlayıcıların Web kancası Tetikleyicileri de vardır.
+* **Web kancası tetikleyicisi** : bir yoklama tetikleyicisi kullanmak yerine, istemcinin belirli bir uç nokta URL 'sindeki mantıksal uygulamanıza istek göndermesini beklemek için bir Web kancası tetikleyicisi kullanabilirsiniz. Web kancası uç noktasına gönderilen her istek bir eylem yürütmesi olarak sayılır. Örneğin, Istek ve HTTP Web kancası tetikleyicisi genel Web kancası tetikleyicilerine sahiptir. Hizmetler veya sistemler için bazı bağlayıcıların Web kancası Tetikleyicileri de vardır.
 
 <a name="actions"></a>
 
@@ -122,11 +122,11 @@ Azure Logic Apps, ücretsiz, temel ve standart tümleştirme hesapları sunmakta
 
 Ücretsiz, temel veya standart tümleştirme hesabı arasından seçim yapmak için bu kullanım örneği açıklamalarını gözden geçirin:
 
-* **Ücretsiz**: bir üretim senaryosu değil keşif senaryoları denemek istediğiniz zaman. Bu katman yalnızca Azure 'daki genel bölgeler için kullanılabilir (örneğin, Batı ABD veya Güneydoğu Asya), ancak [Azure Çin 21Vianet](/azure/china/overview-operations) veya [Azure Kamu](../azure-government/documentation-government-welcome.md)için değil.
+* **Ücretsiz** : bir üretim senaryosu değil keşif senaryoları denemek istediğiniz zaman. Bu katman yalnızca Azure 'daki genel bölgeler için kullanılabilir (örneğin, Batı ABD veya Güneydoğu Asya), ancak [Azure Çin 21Vianet](/azure/china/overview-operations) veya [Azure Kamu](../azure-government/documentation-government-welcome.md)için değil.
 
-* **Temel**: yalnızca ileti işleme yapmak veya daha büyük bir iş varlığıyla bir ticari iş ortağı ilişkisine sahip küçük bir iş ortağı olarak hareket etmek istediğinizde
+* **Temel** : yalnızca ileti işleme yapmak veya daha büyük bir iş varlığıyla bir ticari iş ortağı ilişkisine sahip küçük bir iş ortağı olarak hareket etmek istediğinizde
 
-* **Standart**: daha karmaşık B2B ilişkilerine sahip olduğunuzda ve yönetmeniz gereken varlıkların sayısı arttıkça
+* **Standart** : daha karmaşık B2B ilişkilerine sahip olduğunuzda ve yönetmeniz gereken varlıkların sayısı arttıkça
 
 <a name="data-retention"></a>
 
@@ -137,6 +137,7 @@ Bir tümleştirme hizmeti ortamında (ıSE) çalışan Logic Apps dışında, ma
 Mantıksal uygulamanızın depolama tüketimini izlemenize yardımcı olması için şunları yapabilirsiniz:
 
 * Mantıksal uygulamanızın aylık kullandığı GB cinsinden depolama birimi sayısını görüntüleyin.
+
 * Mantıksal uygulamanızın çalıştırma geçmişinde belirli bir eylemin giriş ve çıkışları için boyutları görüntüleyin.
 
 <a name="storage-consumption"></a>
@@ -145,11 +146,14 @@ Mantıksal uygulamanızın depolama tüketimini izlemenize yardımcı olması i�
 
 1. Azure portal, mantıksal uygulamanızı bulun ve açın.
 
-1. Mantıksal uygulamanızın menüsünde, **izleme**altında **ölçümler**' i seçin.
+1. Mantıksal uygulamanızın menüsünde, **izleme** altında **ölçümler** ' i seçin.
 
-1. Sağ bölmedeki **grafik başlığı**altında, **ölçüm** listesinden, **depolama tüketimi yürütmeleri için faturalandırma kullanımı**' nı seçin.
+1. Sağ bölmedeki **grafik başlığı** altında, **ölçüm** listesinden, **depolama tüketimi yürütmeleri için faturalandırma kullanımı** ' nı seçin.
 
    Bu ölçüm, faturalandırılan ayda GB cinsinden depolama tüketim birimi sayısını sağlar.
+
+   > [!NOTE]
+   > Depolama alanında 500 MB 'tan az kullanan çalıştırmalar izleme görünümünde görünmeyebilir, ancak yine de faturalandırılır.
 
 <a name="input-output-sizes"></a>
 
@@ -157,15 +161,18 @@ Mantıksal uygulamanızın depolama tüketimini izlemenize yardımcı olması i�
 
 1. Azure portal, mantıksal uygulamanızı bulun ve açın.
 
-1. Mantıksal uygulamanızın menüsünde **genel bakış**' ı seçin.
+1. Mantıksal uygulamanızın menüsünde **genel bakış** ' ı seçin.
 
-1. Sağ bölmede, çalışma **geçmişi**altında, denetlemek istediğiniz girişleri ve çıkışları içeren çalıştırmayı seçin.
+1. Sağ bölmede, çalışma **geçmişi** altında, denetlemek istediğiniz girişleri ve çıkışları içeren çalıştırmayı seçin.
 
-1. **Mantıksal uygulama çalıştırma**altında, **Çalıştır ayrıntıları**' nı seçin.
+1. **Mantıksal uygulama çalıştırma** altında, **Çalıştır ayrıntıları** ' nı seçin.
 
 1. **Mantıksal uygulama çalıştırma ayrıntıları** bölmesinde, eylemler tablosunda, her eylemin durumunu ve süresini listeleyen, görüntülemek istediğiniz eylemi seçin.
 
-1. **Mantıksal uygulama eylemi** bölmesinde, bu eylemin giriş ve **çıkış bağlantısı**altında sırasıyla görüntülenecek olan **giriş ve çıkış** boyutlarını bulun.
+1. **Mantıksal uygulama eylemi** bölmesinde, bu eylemin giriş ve çıkışları için boyutları bulun. **Girişler bağlantı** ve **çıkış bağlantısı** altında, bu giriş ve çıkışların bağlantılarını bulun.
+
+   > [!NOTE]
+   > Döngüler için, yalnızca üst düzey eylemler, giriş ve çıkışları için boyutları gösterir. İç içe döngüler, girişler ve çıkışlar içindeki eylemler için sıfır boyut ve bağlantı yok gösterilmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

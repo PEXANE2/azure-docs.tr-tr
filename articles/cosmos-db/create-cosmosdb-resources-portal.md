@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 97bb7db434322609630d97b7eff84e08da72c11c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 127b491da3e01e88c90e689e7dbcc9052ae4392f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486659"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099759"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure Cosmos hesabı, veritabanı, kapsayıcı ve öğe oluşturma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](create-cosmosdb-resources-portal.md)
@@ -44,7 +45,7 @@ Azure Cosmos DB hesabı oluşturmak için [Azure portalına](https://portal.azur
 
    :::image type="content" source="./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png" alt-text="Azure portalındaki Veritabanları bölmesi":::
 
-1. **Ekle**’yi seçin.
+1. **Ekle** ’yi seçin.
 1. **Azure Cosmos DB Hesabı Oluştur** sayfasında, yeni Azure Cosmos hesabına yönelik temel ayarları girin. 
 
     |Ayar|Değer|Açıklama |
@@ -53,7 +54,7 @@ Azure Cosmos DB hesabı oluşturmak için [Azure portalına](https://portal.azur
     |Kaynak Grubu|Kaynak grubu adı|Bir kaynak grubu seçin veya **Yeni oluştur** seçeneğini belirleyin ve yeni kaynak grubu için benzersiz bir ad girin. |
     |Hesap Adı|Benzersiz bir ad|Azure Cosmos hesabınızı tanımlayan bir ad girin. URI’nizi oluşturmak için sağladığınız ada *documents.azure.com* ekleneceği için benzersiz bir ad kullanın.<br><br>Ad yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. Ad, 3-31 karakter arası uzunlukta olmalıdır.|
     |API|Oluşturulacak hesap türü|SQL söz dizimini kullanarak belge veritabanı ve sorgusu oluşturmak için **Cekirdek (SQL)** seçeneğini belirleyin. <br><br>API, oluşturulacak hesap türünü belirler. Azure Cosmos DB beş API sağlar: belge verileri için çekirdek (SQL) ve MongoDB, Graf verileri için Gremlin, Azure tablosu ve Cassandra. Şu anda, her API için farklı bir hesap oluşturmanız gerekir. <br><br>[SQL API’si hakkında daha fazla bilgi edinin](introduction.md).|
-    |Kapasite modu|Sağlanan aktarım hızı veya sunucusuz|[Sağlanan aktarım](set-throughput.md) hızı modunda bir hesap oluşturmak için **sağlanan aktarım hızı** ' nı seçin. [Sunucusuz modda bir](serverless.md) hesap oluşturmak Için **sunucusuz** ' ı seçin.<br><br>**Note**: sunucusuz Şu anda yalnızca çekırdek (SQL) API hesapları için kullanılabilir.|
+    |Kapasite modu|Sağlanan aktarım hızı veya sunucusuz|[Sağlanan aktarım](set-throughput.md) hızı modunda bir hesap oluşturmak için **sağlanan aktarım hızı** ' nı seçin. [Sunucusuz modda bir](serverless.md) hesap oluşturmak Için **sunucusuz** ' ı seçin.<br><br>**Note** : sunucusuz Şu anda yalnızca çekırdek (SQL) API hesapları için kullanılabilir.|
     |Ücretsiz Katman İndirimi Uygula|Uygula veya Uygula|Azure Cosmos DB ücretsiz katman sayesinde ilk 400 RU/sn ve 5 GB depolama alanını hesapta ücretsiz olarak alırsınız. [Ücretsiz katman](https://azure.microsoft.com/pricing/details/cosmos-db/)hakkında daha fazla bilgi edinin.|
     |Konum|Kullanıcılarınıza en yakın bölge|Azure Cosmos DB hesabınızın barındırılacağı coğrafi konumu seçin. Verilere en hızlı erişimi sağlamak için kullanıcılarınıza en yakın olan konumu kullanın.|
     |Hesap Türü|Üretim veya üretim dışı|Hesap bir üretim iş yükü için kullanılacaksa, **Üretim** ' ı seçin. Hesap üretim dışı, örneğin geliştirme, test, QA veya hazırlama için kullanılacaksa, **Üretim dışı** seçeneğini belirleyin. Bu, Portal deneyimini denetleyen ancak temel alınan Azure Cosmos DB hesabını etkilemeyen bir Azure Kaynak etiketi ayarıdır. Bu değeri dilediğiniz zaman değiştirebilirsiniz.|
@@ -65,14 +66,14 @@ Azure Cosmos DB hesabı oluşturmak için [Azure portalına](https://portal.azur
 > Azure aboneliği başına en fazla bir ücretsiz katman Azure Cosmos DB hesabınız olabilir ve hesabı oluştururken kabul etmeniz gerekir. Ücretsiz katman indirimi uygulama seçeneğini görmüyorsanız bu, abonelikteki başka bir hesabın ücretsiz katmanla zaten etkinleştirildiği anlamına gelir.
 
 > [!NOTE]
-> **Kapasite modu**olarak **sunucusuz** ' i seçerseniz aşağıdaki seçenekler kullanılamaz:
+> **Kapasite modu** olarak **sunucusuz** ' i seçerseniz aşağıdaki seçenekler kullanılamaz:
 > - Ücretsiz Katman İndirimi Uygula
 > - Coğrafi yedeklilik
 > - Birden Çok Bölgeli Yazmalar
    
    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Azure portalındaki Veritabanları bölmesi":::
 
-1. **Gözden geçir + oluştur**’u seçin. **Ağ** ve **Etiketler** bölümlerini atlayabilirsiniz.
+1. **Gözden geçir ve oluştur** ’u seçin. **Ağ** ve **Etiketler** bölümlerini atlayabilirsiniz.
 
 1. Hesap ayarlarını gözden geçirip **Oluştur** seçeneğini belirleyin. Hesabın oluşturulması birkaç dakika sürer. Portal sayfasında **Dağıtımınız tamamlandı** iletisinin görüntülenmesini bekleyin. 
 
@@ -87,7 +88,7 @@ Azure Cosmos DB hesabı oluşturmak için [Azure portalına](https://portal.azur
 
 Veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini kullanabilirsiniz. 
 
-1.  Azure Cosmos DB hesabı sayfanızda sol gezinti **Veri Gezgini** seçin ve ardından **yeni kapsayıcı**' yı seçin. 
+1.  Azure Cosmos DB hesabı sayfanızda sol gezinti **Veri Gezgini** seçin ve ardından **yeni kapsayıcı** ' yı seçin. 
     
     **Kapsayıcı Ekle** penceresini görmek için sağa kaydırmanız gerekebilir.
     
@@ -98,20 +99,20 @@ Veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini kullanabi
     |Ayar|Önerilen değer|Açıklama
     |---|---|---|
     |**Veritabanı Kimliği**|ToDoList|Yeni veritabanının adı olarak *ToDoList* girin. Veritabanı adları 1 ila 255 karakterden oluşmalıdır ve `/, \\, #, ?` boşluk içeremez veya sonunda boşluk olamaz. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
-    |**İşleme hızı**|400|Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz işlem hızının ölçeğini artırabilirsiniz.<br><br>**Not**: Bu ayar, sunucusuz hesapta yeni bir kapsayıcı oluşturulurken kullanılamaz.| 
+    |**İşleme hızı**|400|Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz işlem hızının ölçeğini artırabilirsiniz.<br><br>**Not** : Bu ayar, sunucusuz hesapta yeni bir kapsayıcı oluşturulurken kullanılamaz.| 
     |**Kapsayıcı Kimliği**|Öğeler|*Öğeleri* yeni kapsayıcının adı olarak girin. Kapsayıcı kimliklerinin karakter gereksinimleri, veritabanı adlarına ilişkin karakter gereksinimleri ile aynıdır.|
     |**Bölüm anahtarı**| /kategori| Bu makalede açıklanan örnek, bölüm anahtarı olarak */category* kullanır.|
 
     
     Bu örnek için **benzersiz anahtarlar** eklemeyin. Benzersiz anahtarlar, bölüm anahtarı başına bir veya daha fazla değerin benzersizliğini sağlayarak veritabanına veri bütünlüğü katmanı eklemenizi sağlar. Daha fazla bilgi için bkz. [Azure Cosmos DB Içindeki benzersiz anahtarlar](unique-keys.md).
     
-1.  **Tamam**’ı seçin. Veri Gezgini yeni veritabanını ve oluşturduğunuz kapsayıcıyı görüntüler.
+1.  **Tamam** ’ı seçin. Veri Gezgini yeni veritabanını ve oluşturduğunuz kapsayıcıyı görüntüler.
 
 ## <a name="add-data-to-your-database"></a>Veritabanınıza veri ekleme
 
 Veri Gezgini kullanarak yeni veritabanınıza veri ekleyin.
 
-1. **Veri Gezgini**' de, **ToDoList** veritabanını genişletin ve **öğeler** kapsayıcısını genişletin. Sonra, **öğeler**' i ve sonra **Yeni öğe**' yi seçin. 
+1. **Veri Gezgini** ' de, **ToDoList** veritabanını genişletin ve **öğeler** kapsayıcısını genişletin. Sonra, **öğeler** ' i ve sonra **Yeni öğe** ' yi seçin. 
    
    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="Azure portalındaki Veritabanları bölmesi":::
    
@@ -127,7 +128,7 @@ Veri Gezgini kullanarak yeni veritabanınıza veri ekleyin.
      }
      ```
 
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
    
    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="Azure portalındaki Veritabanları bölmesi":::
    
@@ -144,7 +145,7 @@ Veri Gezgini kullanarak yeni veritabanınıza veri ekleyin.
 Yalnızca veritabanını silmek ve gelecekte Azure Cosmos hesabını kullanmak istiyorsanız, aşağıdaki adımlarla veritabanını silebilirsiniz:
 
 * Azure Cosmos hesabınıza alındı.
-* **Veri Gezgini**açın, silmek istediğiniz veritabanına sağ tıklayın ve **veritabanını sil**' i seçin.
+* **Veri Gezgini** açın, silmek istediğiniz veritabanına sağ tıklayın ve **veritabanını sil** ' i seçin.
 * Silme işlemini onaylamak için veritabanı KIMLIĞI/veritabanı adını girin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar

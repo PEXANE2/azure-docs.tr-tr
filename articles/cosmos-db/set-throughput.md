@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 7caa29807f2779ee1f52cb22de2bf95fdb9cb37e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367134"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098782"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş hızına giriş
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB, veritabanlarınızda ve kapsayıcılarınızda sağlanan aktarım hızını ayarlamanıza olanak sağlar. İki tür sağlanan aktarım hızı, standart (el ile) veya otomatik ölçeklendirme. Bu makale, sağlanan iş üretiminin nasıl çalıştığına ilişkin bir genel bakış sunar. 
 
@@ -79,11 +80,11 @@ Azure Cosmos DB hesabınız zaten >= 25 kapsayıcılarıyla paylaşılan bir ür
 İki modeli birleştirebilirsiniz. Hem veritabanında hem de kapsayıcıda sağlama aktarımına izin verilir. Aşağıdaki örnek, bir Azure Cosmos veritabanı ve bir kapsayıcı üzerinde standart (el ile) sağlanan işleme sağlamayı gösterir:
 
 * *"K"* ru 'nin sağlanan standart (el ile) üretilen iş hızına sahip *Z* adlı bir Azure Cosmos veritabanı oluşturabilirsiniz. 
-* Sonra, veritabanı içinde *A*, *B*, *C*, *D*ve *E* adlı beş kapsayıcı oluşturun. B kapsayıcısını oluştururken, **Bu kapsayıcı seçeneği için adanmış üretilen iş üretimini sağlamayı** etkinleştirdiğinizden emin olun ve bu kapsayıcıda *"P"* ru sağlanan aktarım hızını açık olarak yapılandırın. Yalnızca veritabanı ve kapsayıcı oluştururken paylaşılan ve ayrılmış aktarım hızını yapılandırabilirsiniz. 
+* Sonra, veritabanı içinde *A* , *B* , *C* , *D* ve *E* adlı beş kapsayıcı oluşturun. B kapsayıcısını oluştururken, **Bu kapsayıcı seçeneği için adanmış üretilen iş üretimini sağlamayı** etkinleştirdiğinizden emin olun ve bu kapsayıcıda *"P"* ru sağlanan aktarım hızını açık olarak yapılandırın. Yalnızca veritabanı ve kapsayıcı oluştururken paylaşılan ve ayrılmış aktarım hızını yapılandırabilirsiniz. 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Bir kapsayıcının bir veya daha fazla mantıksal bölümünü barındıran fiziksel bölüm":::
 
-* *"K"* Rus verimlilik, *A*, *C*, *D*ve *E*dört kapsayıcı genelinde paylaşılır. *Bir*, *C*, *D*veya *E* için kullanılabilir aktarım hızı miktarı farklılık gösterir. Her bir kapsayıcının verimlilik için SLA 'lar yoktur.
+* *"K"* Rus verimlilik, *A* , *C* , *D* ve *E* dört kapsayıcı genelinde paylaşılır. *Bir* , *C* , *D* veya *E* için kullanılabilir aktarım hızı miktarı farklılık gösterir. Her bir kapsayıcının verimlilik için SLA 'lar yoktur.
 * *B* adlı kapsayıcı, *"P"* ru aktarım hızını her zaman almak için garanti edilir. SLA 'Lar tarafından desteklenir.
 
 > [!NOTE]
@@ -119,9 +120,9 @@ Azure portal veya SDK 'Ları kullanarak bir kapsayıcının veya veritabanının
 * .NET SDK üzerinde [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) .
 * Java SDK 'sında [Cosmoscontainer. Replaceverimini](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) .
 
-**Sağlanan aktarım hızını azalttıktan**sonra [En düşük düzeyde](#current-provisioned-throughput)yapabileceksiniz.
+**Sağlanan aktarım hızını azalttıktan** sonra [En düşük düzeyde](#current-provisioned-throughput)yapabileceksiniz.
 
-**Sağlanan aktarım hızını artırdıysanız**, çoğu zaman işlem anında gerçekleşir. Bununla birlikte, sistem görevlerinin gerekli kaynakları sağlaması nedeniyle işlemin uzun sürebileceği durumlar vardır. Bu durumda, bu işlem devam ederken sağlanan aktarım hızını değiştirme girişimi, başka bir ölçeklendirme işleminin devam ettiğini belirten bir hata iletisiyle HTTP 423 yanıtı verir.
+**Sağlanan aktarım hızını artırdıysanız** , çoğu zaman işlem anında gerçekleşir. Bununla birlikte, sistem görevlerinin gerekli kaynakları sağlaması nedeniyle işlemin uzun sürebileceği durumlar vardır. Bu durumda, bu işlem devam ederken sağlanan aktarım hızını değiştirme girişimi, başka bir ölçeklendirme işleminin devam ettiğini belirten bir hata iletisiyle HTTP 423 yanıtı verir.
 
 > [!NOTE]
 > Sağlanan aktarım hızı için büyük bir artış gerektiren çok büyük bir alım iş yükü planlıyorsanız, ölçeklendirme işleminin SLA olmadığını ve önceki paragrafta belirtildiği gibi, artışın büyük olduğu zaman uzun sürebileceğini aklınızda bulundurun. İş yükü başlamadan önce planı planlamak ve ölçeklendirmeyi başlatmak isteyebilirsiniz ve ilerleme durumunu denetlemek için aşağıdaki yöntemleri kullanın.

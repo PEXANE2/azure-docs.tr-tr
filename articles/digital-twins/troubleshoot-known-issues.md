@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8f56538470b8a52697e2d5c4154a6a6807a0cfde
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 549e1808a3b449f7d29b968cde76ef29391880b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489022"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100625"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure dijital TWINS 'de bilinen sorunlar
 
@@ -32,7 +32,7 @@ Bu, `az login` Cloud Shell komutu yeniden çalıştırarak ve sonraki oturum aç
 
 Alternatif olarak, Azure portal Cloud Shell bölmesini açabilir ve Cloud Shell işinizi buradan tamamlayabilirsiniz:
 
-:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="' Cloud Shell ' simgesi vurgulanmış Azure portal görünümü ve Portal penceresinin alt kısmında görünen Cloud Shell":::
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="' Cloud Shell ' simgesi vurgulanmış Azure portal görünümü ve Portal penceresinin alt kısmında görünen Cloud Shell" lightbox="media/includes/portal-cloud-shell.png":::
 
 Son olarak, Azure CLı komutlarını yerel olarak çalıştırabilmeniz için başka bir çözüm, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 'yi makinenize yüklemektir. Yerel CLı bu sorunla karşılaşmaz.
 
@@ -66,9 +66,9 @@ Kişisel bir [Microsoft hesabı (MSA)](https://account.microsoft.com/account)ile
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Etkileşimli tarayıcı kimlik doğrulamasıyla ilgili sorun
 
-Azure ** [. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) kitaplığı**'Nın **1.2.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz.
+Azure **[. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) kitaplığı** 'Nın **1.2.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz.
 
-Bu, kitaplığın en son sürümü değildir. En son sürüm **1.2.2**' dir.
+Bu, kitaplığın en son sürümü değildir. En son sürüm **1.2.2** ' dir.
 
 Etkilenen yöntem aşağıdaki makalelerde kullanılır: 
 * [*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)
@@ -79,7 +79,7 @@ Sorun, bir tarayıcı penceresinde kimlik doğrulamaya çalışırken "Azure. Id
 
 ### <a name="troubleshooting-steps"></a>Sorun giderme adımları
 
-Çözümlemek için, uygulamalarınızı 1.2.2 sürümünü kullanacak şekilde `Azure.Identity` güncelleştirin **1.2.2**. Kitaplığın bu sürümüyle, tarayıcının beklendiği gibi yüklemesi ve kimlik doğrulaması gerekir.
+Çözümlemek için, uygulamalarınızı 1.2.2 sürümünü kullanacak şekilde `Azure.Identity` güncelleştirin **1.2.2** . Kitaplığın bu sürümüyle, tarayıcının beklendiği gibi yüklemesi ve kimlik doğrulaması gerekir.
 
 ### <a name="possible-causes"></a>Olası nedenler
 

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 92d15337f511f534c23ff97d274b344714812a5e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277985"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100261"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Gerçek dünyadan bir örnek kullanarak Azure Cosmos DB'de verileri modelleme ve bölümleme
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede, [veri modelleme](modeling-data.md), [bölümleme](partitioning-overview.md)ve [sağlanan aktarım hızı](request-units.md) gibi çeşitli Azure Cosmos DB kavramlarıyla ilgili olarak gerçek bir veri tasarımı denemesinin nasıl üstesinden geldiğini göstermek için derleme yapılır.
 
@@ -22,10 +23,10 @@ Genellikle ilişkisel veritabanları ile çalışıyorsanız, büyük olasılık
 
 ## <a name="the-scenario"></a>Senaryo
 
-Bu alıştırmada, *kullanıcıların* *gönderi*oluşturbilecekleri bir blog platformunun etki alanını göz önünde bulunduracağız. Kullanıcılar *Ayrıca bu* gönderilere yorum ekleyebilir ve bu postalara *yorum* ekleyebilir.
+Bu alıştırmada, *kullanıcıların* *gönderi* oluşturbilecekleri bir blog platformunun etki alanını göz önünde bulunduracağız. Kullanıcılar *Ayrıca bu* gönderilere yorum ekleyebilir ve bu postalara *yorum* ekleyebilir.
 
 > [!TIP]
-> Bazı kelimeleri *italik*olarak vurgulıyoruz; Bu sözcükler, modelimizin ' i işlemek zorunda olacağı "şeyleri" türünü belirler.
+> Bazı kelimeleri *italik* olarak vurgulıyoruz; Bu sözcükler, modelimizin ' i işlemek zorunda olacağı "şeyleri" türünü belirler.
 
 Belirtimize daha fazla gereksinim ekleniyor:
 
@@ -291,7 +292,7 @@ Ayrıca, açıklamaları ve bunları oluşturan kullanıcının Kullanıcı adı
 
 Her ne zaman bir yorum veya benzer bir şekilde bir açıklama eklediğimiz, `commentCount` ilgili postadaki veya öğesini de arttık `likeCount` . `posts`Kapsayıcımız tarafından bölümlendiğimiz `postId` için, yeni öğe (açıklama veya benzer) ve karşılık gelen gönderi aynı mantıksal bölümde yer. Sonuç olarak, bu işlemi gerçekleştirmek için bir [saklı yordam](stored-procedures-triggers-udfs.md) kullanabiliriz.
 
-Artık bir yorum (**[C3]**) oluştururken, kapsayıcıda yalnızca yeni bir öğe eklemek yerine, `posts` Bu kapsayıcıda aşağıdaki saklı yordamı çağırdık:
+Artık bir yorum ( **[C3]** ) oluştururken, kapsayıcıda yalnızca yeni bir öğe eklemek yerine, `posts` Bu kapsayıcıda aşağıdaki saklı yordamı çağırdık:
 
 ```javascript
 function createComment(postId, comment) {
@@ -405,7 +406,7 @@ Beğeni listelenirken aynı durum kesin.
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: tüm isteklerin ölçeklenebilir olduğundan emin olma
 
-Genel performans geliştirmelerimize baktığınızda, tam olarak iyileştirildiğimiz iki istek vardır: **[Q3]** ve **[Q6]**. Bunlar, hedefleytikleri kapsayıcıların bölüm anahtarını filtrelememe sorguları içeren isteklerdir.
+Genel performans geliştirmelerimize baktığınızda, tam olarak iyileştirildiğimiz iki istek vardır: **[Q3]** ve **[Q6]** . Bunlar, hedefleytikleri kapsayıcıların bölüm anahtarını filtrelememe sorguları içeren isteklerdir.
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>S3 Kullanıcı Gönderilerini kısa biçimde listeleme
 

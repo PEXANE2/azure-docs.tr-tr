@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Python uygulaması oluşturma-Redsıs için Azure önbelleği'
+title: "Hızlı başlangıç: Python 'da Redsıs için Azure önbelleğini kullanma"
 description: Bu hızlı başlangıçta, Redu için Azure önbelleği kullanan bir Python uygulaması oluşturmayı öğreneceksiniz.
 author: yegu-ms
 ms.author: yegu
@@ -11,14 +11,14 @@ ms.custom:
 - seo-python-october2019
 - devx-track-python
 ms.date: 11/05/2019
-ms.openlocfilehash: aed9be394076b4ef10b8354552d69771ae659eea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 79add54478e9cd52ffd3041d5f85bf588929b44f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87845333"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099445"
 ---
-# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Hızlı başlangıç: Redsıs için Azure önbelleği kullanan bir Python uygulaması oluşturma
+# <a name="quickstart-use-azure-cache-for-redis-in-python"></a>Hızlı başlangıç: Python 'da Redsıs için Azure önbelleğini kullanma
 
 Bu makalede, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir Python uygulamasına katabilirsiniz.
 
@@ -34,7 +34,7 @@ Bu makalede, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrıl
 
 ## <a name="install-redis-py"></a>redis-py yükleyin
 
-[Redin-](https://github.com/andymccurdy/redis-py) , Redsıs Için Azure önbelleğine yönelik bir Python arabirimidir. Komut isteminden *Redu-Kopyala* paketini yüklemek için, *PIP*Python paketleri aracını kullanın. 
+[Redin-](https://github.com/andymccurdy/redis-py) , Redsıs Için Azure önbelleğine yönelik bir Python arabirimidir. Komut isteminden *Redu-Kopyala* paketini yüklemek için, *PIP* Python paketleri aracını kullanın. 
 
 Aşağıdaki örnek, bir yönetici komut isteminden Windows 10 ' da *Reda-Kopyala* yüklemek için Python 3 için *pip3* kullandı.
 
@@ -42,7 +42,7 @@ Aşağıdaki örnek, bir yönetici komut isteminden Windows 10 ' da *Reda-Kopyal
 
 ## <a name="read-and-write-to-the-cache"></a>Önbellek üzerinde okuma ve yazma
 
-Komut satırından Python komutunu çalıştırın ve aşağıdaki kodu kullanarak önbelleğinizi test edin. `<Your Host Name>`Ve `<Your Access Key>` değerlerini, redsıs örneği Için Azure önbelleğinizin değerleriyle değiştirin. Ana bilgisayar adınız * \<DNS name> . Redis.cache.Windows.net*biçimindedir.
+Komut satırından Python komutunu çalıştırın ve aşağıdaki kodu kullanarak önbelleğinizi test edin. `<Your Host Name>`Ve `<Your Access Key>` değerlerini, redsıs örneği Için Azure önbelleğinizin değerleriyle değiştirin. Ana bilgisayar adınız *\<DNS name> . Redis.cache.Windows.net* biçimindedir.
 
 ```python
 >>> import redis
@@ -59,7 +59,7 @@ b'bar'
 
 ## <a name="create-a-python-sample-app"></a>Python örnek uygulaması oluşturma
 
-Yeni bir metin dosyası oluşturun, aşağıdaki betiği ekleyin ve dosyayı *PythonApplication1.py*olarak kaydedin. `<Your Host Name>`Ve `<Your Access Key>` değerlerini, redsıs örneği Için Azure önbelleğinizin değerleriyle değiştirin. Ana bilgisayar adınız * \<DNS name> . Redis.cache.Windows.net*biçimindedir.
+Yeni bir metin dosyası oluşturun, aşağıdaki betiği ekleyin ve dosyayı *PythonApplication1.py* olarak kaydedin. `<Your Host Name>`Ve `<Your Access Key>` değerlerini, redsıs örneği Için Azure önbelleğinizin değerleriyle değiştirin. Ana bilgisayar adınız *\<DNS name> . Redis.cache.Windows.net* biçimindedir.
 
 ```python
 import redis
@@ -98,10 +98,10 @@ Bu hızlı başlangıçta oluşturduğunuz Azure Kaynak grubu ve kaynakları ile
 
 Kaynak grubunu ve Azure örneği için Redis Cache silmek için:
 
-1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını**arayıp seçin.
+1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını** arayıp seçin.
 1. **Ada göre filtrele** metin kutusunda, önbellek örneğinizi içeren kaynak grubunun adını girin ve arama sonuçlarından bunu seçin. 
-1. Kaynak grubu sayfanızda **kaynak grubunu sil**' i seçin.
-1. Kaynak grubu adını yazın ve ardından **Sil**' i seçin.
+1. Kaynak grubu sayfanızda **kaynak grubunu sil** ' i seçin.
+1. Kaynak grubu adını yazın ve ardından **Sil** ' i seçin.
    
    ![Redsıs için Azure önbelleği için kaynak grubunuzu silme](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 

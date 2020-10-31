@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 9a7f36299d235ca2578a1ff3518650c5632ef046
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 61ced7eda78d3ce56d78dfd6cc54e0e92d376e68
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210455"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100686"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok özelliğinden VM’leri kaldırma
 
@@ -22,7 +22,7 @@ Ortamınızdaki VM 'lerde yapılan değişiklikleri izlemeyi tamamladığınızd
 
 ## <a name="to-remove-your-vms"></a>VM 'lerinizi kaldırmak için
 
-1. Azure portal, Azure portal üst gezintiden **Cloud Shell** başlatın. Azure Cloud Shell hakkında bilginiz yoksa bkz. [Azure Cloud Shell Genel Bakış](/cloud-shell/overview).
+1. Azure portal, Azure portal üst gezintiden **Cloud Shell** başlatın. Azure Cloud Shell hakkında bilginiz yoksa bkz. [Azure Cloud Shell Genel Bakış](/azure/cloud-shell/overview).
 
 2. Yönetimden kaldırmak istediğiniz bir makinenin UUID 'sini tanımlamak için aşağıdaki komutu kullanın.
 
@@ -30,7 +30,7 @@ Ortamınızdaki VM 'lerde yapılan değişiklikleri izlemeyi tamamladığınızd
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. Azure portal, **Log Analytics çalışma alanları**' na gidin. Listeden çalışma alanınızı seçin.
+3. Azure portal, **Log Analytics çalışma alanları** ' na gidin. Listeden çalışma alanınızı seçin.
 
 4. Log Analytics çalışma alanınızda **Günlükler** ' i seçin ve ardından üstteki Eylemler menüsünden **sorgu Gezgini** ' ni seçin.
 

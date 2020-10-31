@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: b602b56d37cec0e23d31318f6675d031bdd6bcdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f272ea9005d8eb24f639b4039a84163441cffa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83700996"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101451"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki GROUP BY yan tümcesi
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 GROUP BY yan tümcesi sorgunun sonuçlarını belirtilen bir veya daha fazla özellik değerine göre böler.
 

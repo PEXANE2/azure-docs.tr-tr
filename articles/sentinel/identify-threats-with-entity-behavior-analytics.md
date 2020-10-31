@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 6597baa67bcd2e26f3b8aeaa98c1776b5fc47430
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad0486c9d2eb6c651b507f4b0a44f4a6fc2b018f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998116"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100669"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel 'de Kullanıcı ve varlık davranış analizi (UEBA) ile gelişmiş tehditleri tanımla
 
@@ -62,11 +62,43 @@ Her etkinlik "araştırma önceliği puanı" ile puanlanır. Bu, belirli bir kul
 
 Bunun nasıl çalıştığına ilişkin bir örnek için davranış analizinin [Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) nasıl kullanıldığını görün.
 
+## <a name="entities-in-azure-sentinel"></a>Azure Sentinel 'de varlıklar
 
+### <a name="entity-identifiers"></a>Varlık tanımlayıcıları
 
-## <a name="entity-pages"></a>Varlık sayfaları
+Uyarılar Azure Sentinel 'e gönderildiğinde, Azure Sentinel 'in Kullanıcı hesapları, konaklar, IP adresleri ve diğerleri gibi varlıkları tanımladığı ve sınıflandırdığı veri öğelerini içerirler. Bazen, uyarı varlık hakkında yeterli bilgi içermiyorsa bu kimlik bir sorun olabilir.
 
-Bir aramada, bir uyarıda veya bir araştırmada herhangi bir varlık (Şu anda kullanıcılarla ve konaklarla sınırlı) ile karşılaşırsanız, varlığı seçebilir ve bu varlıkla ilgili yararlı bilgiler içeren bir veri sayfası olan varlık **sayfasına**yönlendirilirsiniz. Bu sayfada bulacağınız bilgi türleri, varlıkla ilgili temel gerçekleri, bu varlıkla ilgili önemli olayların bir zaman çizelgesini ve varlığın davranışı hakkında öngörüleri içerir.
+Örneğin, Kullanıcı hesapları birden çok şekilde tanımlanabilir: bir Azure AD hesabının sayısal tanımlayıcısı (GUID) veya Kullanıcı asıl adı (UPN) değeri veya alternatif olarak, Kullanıcı adının ve onun NT etki alanı adının bir birleşimi kullanılarak. Farklı veri kaynakları aynı kullanıcıyı farklı yollarla tanımlayabilir. Bu nedenle, mümkün olduğunda Azure Sentinel bu tanımlayıcıları, düzgün şekilde tanımlanabilmesi için tek bir varlığa birleştirir.
+
+Bu durum, kaynak sağlayıcılarınızın bir varlığın yeterince tanımlanmadığı bir uyarı oluşturduğundan (örneğin, etki alanı adı bağlamı olmayan bir Kullanıcı adı) meydana gelebilir. Böyle bir durumda, kullanıcı varlığı, ayrı bir varlık olarak tanımlanabilecek aynı kullanıcı hesabının diğer örnekleriyle birleştirilemez ve bu iki varlık Birleşik yerine ayrı kalır.
+
+Bu meydana gelme riskini en aza indirmek için, tüm uyarı sağlayıcılarınızın oluşturdukları uyarılarda varlıkları doğru şekilde tanımladıklarından emin olmalısınız. Ayrıca, Kullanıcı hesabı varlıklarının Azure Active Directory ile eşitlenmesi, Kullanıcı hesabı varlıklarını birleştirebilecek bir dizin oluşturamayacak.
+
+Aşağıdaki varlık türleri şu anda Azure Sentinel 'de tanımlanmıştır:
+
+- Kullanıcı hesabı (hesap)
+- Yönetici
+- IP adresi (IP)
+- Kötü Amaçlı Yazılımlar
+- Dosya
+- İşleme
+- Bulut uygulaması (Cloudadpplication)
+- Etki alanı adı (DNS)
+- Azure kaynağı
+- Dosya (FileHash)
+- Kayıt defteri anahtarı
+- Kayıt defteri değeri
+- Güvenlik grubu
+- URL
+- IoT cihazı
+- Mailbox
+- Posta kümesi
+- Posta iletisi
+- Gönderim postası
+
+### <a name="entity-pages"></a>Varlık sayfaları
+
+Bir aramada, bir uyarıda veya bir araştırmada herhangi bir varlık (Şu anda kullanıcılarla ve konaklarla sınırlı) ile karşılaşırsanız, varlığı seçebilir ve bu varlıkla ilgili yararlı bilgiler içeren bir veri sayfası olan varlık **sayfasına** yönlendirilirsiniz. Bu sayfada bulacağınız bilgi türleri, varlıkla ilgili temel gerçekleri, bu varlıkla ilgili önemli olayların bir zaman çizelgesini ve varlığın davranışı hakkında öngörüleri içerir.
  
 Varlık sayfaları üç bölümden oluşur:
 - Sol taraftaki panel, varlığın Azure Active Directory, Azure Izleyici, Azure Güvenlik Merkezi ve Microsoft Defender gibi veri kaynaklarından toplanan tanımlama bilgilerini içerir.
@@ -81,11 +113,11 @@ Varlık sayfaları üç bölümden oluşur:
 
 Zaman çizelgesi, varlık sayfasının Azure Sentinel 'de davranış analizinin katkılarının önemli bir parçasıdır. Varlıkla ilgili olaylar hakkında bir hikaye sunar ve varlığın etkinliğini belirli bir zaman çerçevesinde anlamanıza yardımcı olur.
 
-Birkaç önceden ayarlanmış seçenek arasından ( *son 24 saat*) veya özel olarak tanımlanmış zaman dilimine ayarlanmış **zaman aralığını** seçebilirsiniz. Ayrıca, zaman çizelgesindeki bilgileri belirli olay veya uyarı türleriyle sınırlayan filtreler ayarlayabilirsiniz.
+Birkaç önceden ayarlanmış seçenek arasından ( *son 24 saat* ) veya özel olarak tanımlanmış zaman dilimine ayarlanmış **zaman aralığını** seçebilirsiniz. Ayrıca, zaman çizelgesindeki bilgileri belirli olay veya uyarı türleriyle sınırlayan filtreler ayarlayabilirsiniz.
 
 Aşağıdaki öğe türleri zaman çizelgesine dahildir:
 
-- Uyarılar-varlığın **eşlenmiş bir varlık**olarak tanımlandığı tüm uyarılar. Kuruluşunuzun [analiz kurallarını kullanarak özel uyarılar](./tutorial-detect-threats-custom.md)oluşturduğuna sahip olması durumunda kuralların varlık eşlemesinin düzgün şekilde yapıldığından emin olun.
+- Uyarılar-varlığın **eşlenmiş bir varlık** olarak tanımlandığı tüm uyarılar. Kuruluşunuzun [analiz kurallarını kullanarak özel uyarılar](./tutorial-detect-threats-custom.md)oluşturduğuna sahip olması durumunda kuralların varlık eşlemesinin düzgün şekilde yapıldığından emin olun.
 
 - Yer işaretleri-sayfada gösterilen belirli varlığı içeren tüm yer işaretleri.
 
@@ -162,7 +194,7 @@ Kullanıcı eşi meta verilerini görselleştirmek için Azure Sentinel GitHub d
 
 İzin analizi, bir saldırgan tarafından kurumsal bir varlığın güvenliğinin tehlikeye atması olasılığını belirlemesine yardımcı olur. Bu etki, varlığın "envanter" yarıçapını de bilinir. Güvenlik analistleri, bu bilgileri, araştırmalar ve olay işleme önceliklerini belirlemek için kullanabilir.
 
-Azure Sentinel, kullanıcının doğrudan veya gruplar ya da hizmet sorumluları aracılığıyla erişebileceği Azure aboneliklerini değerlendirerek, belirli bir kullanıcı tarafından Azure kaynakları için tutulan doğrudan ve geçişli erişim haklarını belirler. Bu bilgilerin yanı sıra kullanıcının Azure AD güvenlik grubu üyeliğinin tam listesi, **UserAccessAnalytics** tablosunda depolanır. Aşağıdaki ekran görüntüsünde, UserAccessAnalytics tablosundaki bir örnek satır gösterilmektedir ve Kullanıcı Alex Johnson. **Kaynak varlık** Kullanıcı veya hizmet sorumlusu hesabıdır ve **hedef varlık** , kaynak varlığın erişimi olan kaynaktır. **Erişim düzeyi** ve **erişim türü** değerleri, hedef varlığın erişim denetimi modeline bağlıdır. Alex 'ın Azure aboneliği *contoso oteller kiracısına*katkıda bulunan erişimine sahip olduğunu görebilirsiniz. Aboneliğin erişim denetimi modeli RBAC 'dir.   
+Azure Sentinel, kullanıcının doğrudan veya gruplar ya da hizmet sorumluları aracılığıyla erişebileceği Azure aboneliklerini değerlendirerek, belirli bir kullanıcı tarafından Azure kaynakları için tutulan doğrudan ve geçişli erişim haklarını belirler. Bu bilgilerin yanı sıra kullanıcının Azure AD güvenlik grubu üyeliğinin tam listesi, **UserAccessAnalytics** tablosunda depolanır. Aşağıdaki ekran görüntüsünde, UserAccessAnalytics tablosundaki bir örnek satır gösterilmektedir ve Kullanıcı Alex Johnson. **Kaynak varlık** Kullanıcı veya hizmet sorumlusu hesabıdır ve **hedef varlık** , kaynak varlığın erişimi olan kaynaktır. **Erişim düzeyi** ve **erişim türü** değerleri, hedef varlığın erişim denetimi modeline bağlıdır. Alex 'ın Azure aboneliği *contoso oteller kiracısına* katkıda bulunan erişimine sahip olduğunu görebilirsiniz. Aboneliğin erişim denetimi modeli RBAC 'dir.   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Varlık davranışı analitik mimarisi":::
 

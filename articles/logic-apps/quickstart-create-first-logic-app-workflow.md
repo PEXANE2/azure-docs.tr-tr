@@ -1,158 +1,175 @@
 ---
-title: Otomatikleştirilmiş Tümleştirme iş akışı oluşturma
-description: Hızlı başlangıç-sistem tümleştirme ve kuruluş uygulaması Tümleştirme (EAı) çözümleri için Azure Logic Apps kullanarak ilk otomatikleştirilmiş iş akışınızı oluşturun
+title: Hızlı başlangıç-ilk Logic Apps iş akışınızı oluşturma-Azure portal
+description: Bu hızlı başlangıç kılavuzunu kullanarak Azure portal ilk otomatik Logic Apps iş akışınızı oluşturun. Logic Apps 'de sistem tümleştirme ve kuruluş uygulaması Tümleştirme (EAı) çözümlerinin temellerini öğrenin.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/23/2020
-ms.openlocfilehash: c40bec80d9f61cf46221cbfe7dde80f3a7b46f6f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/30/2020
+ms.openlocfilehash: 7ec4515d5f1d096cfb83f06c398da4c1254279f6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89658303"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099156"
 ---
-# <a name="quickstart-create-your-first-automated-integration-workflow-by-using-azure-logic-apps---azure-portal"></a>Hızlı başlangıç: Azure Logic Apps Azure portal kullanarak ilk otomatikleştirilmiş Tümleştirme iş akışınızı oluşturun
+# <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>Hızlı başlangıç: ilk Logic Apps iş akışınızı oluşturma-Azure portal
 
-Bu hızlı başlangıçta, boş bir mantıksal uygulama oluşturma, tetikleyici ve eylem ekleme ve daha sonra mantıksal uygulamanızı test etme gibi [Azure Logic Apps](logic-apps-overview.md)kullanarak ilk iş akışınızı oluşturma konusunda temel genel kavramlar tanıtılmıştır. Bu hızlı başlangıçta, yeni öğeler için bir Web sitesinin RSS akışını düzenli olarak denetleyen bir mantıksal uygulama oluşturacaksınız. Yeni öğeler varsa, mantıksal uygulama her öğe için bir e-posta gönderir. İşlemi tamamladığınızda, mantıksal uygulamanız bu yüksek düzeyli iş akışı gibi görünür:
+Bu hızlı başlangıçta, [Azure Portal](https://portal.azure.com)üzerinden [Azure Logic Apps](logic-apps-overview.md) ilk iş akışınızı nasıl oluşturabileceğiniz açıklanmaktadır. Bu giriş Kılavuzu Ayrıca, yeni bir mantıksal uygulama oluşturma, mantıksal uygulamanıza bir tetikleyici ve eylem ekleme ve mantıksal uygulamanızı test etme dahil olmak üzere Logic Apps hizmetinin temel kavramlarını açıklar. Düzenli olarak bir RSS akışını denetleyen ve yeni öğeler için bir e-posta bildirimi gönderen örnek bir mantık uygulaması oluşturmak için bu hızlı başlangıcı izleyin. Aşağıdaki ekran görüntüsünde, bu örnek mantıksal uygulamanın üst düzey iş akışı gösterilmektedir:
 
-![Üst düzey örnek mantıksal uygulama iş akışını gösteren kavramsal resim.](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
+![Tetikleyicinin bir RSS akışı olduğu ve eylemin bir e-posta gönderdiği örnek mantıksal uygulamayı gösteren Logic Apps Designer 'ın ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Bu senaryoda, bir Azure aboneliğine sahip olmanız veya [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), Office 365 Outlook, Outlook.com veya Gmail gibi Azure Logic Apps tarafından desteklenen bir hizmetten e-posta hesabı için kaydolmanız gerekir. Desteklenen diğer e-posta hizmetleri için [burada bağlayıcılar listesini gözden geçirin](/connectors/). Bu örnekte, mantıksal uygulama bir iş veya okul hesabı kullanır. Farklı bir e-posta hizmeti kullanıyorsanız genel adımlar aynıdır, ancak Kullanıcı arabiriminiz biraz farklı görünebilir.
+<a name="prerequisites"></a>
 
-> [!IMPORTANT]
-> Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
+İlk mantıksal uygulamanızı diğer arabirimler ve uygulamalar aracılığıyla oluşturmayı ve yönetmeyi öğrenmek isterseniz, aşağıdaki diğer Logic Apps hızlı başlangıçlara bakın: 
+
+* [Azure Command-Line arabirimini (Azure CLı) kullanarak Logic Apps oluşturma ve yönetme](quickstart-logic-apps-azure-cli.md)
+* [Visual Studio Code 'de Logic Apps oluşturma ve yönetme](quickstart-create-logic-apps-visual-studio-code.md)
+* [Visual Studio 'da mantıksal uygulamalar oluşturma ve yönetme](quickstart-create-logic-apps-with-visual-studio.md)
+
+## <a name="prerequisites"></a>Önkoşullar
+
+* Azure aboneliği. Bir hesabınız yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Logic Apps tarafından desteklenen hizmetten (Office 365 Outlook veya Outlook.com gibi) bir e-posta hesabı. Desteklenen diğer e-posta sağlayıcıları için [bağlayıcı listesini gözden geçirin](/connectors/).
+
+    > [!IMPORTANT]
+    > [Gmail bağlayıcısını](/connectors/gmail/)kullanıyorsanız, yalnızca G Suite hesaplarının Logic Apps kısıtlaması olmadan bu bağlayıcıyı kullanabileceğini unutmayın. Bir tüketici Gmail hesabınız varsa, [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturmadığınız](/connectors/gmail/#authentication-and-bring-your-own-application)müddetçe bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz. Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
+
+<a name="create-logic-app"></a>
 
 ## <a name="create-your-logic-app"></a>Mantıksal uygulamanızı oluşturma
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Azure portal arama kutusuna girin `logic apps` ve **Logic Apps**öğesini seçin.
+1. Azure portal arama kutusuna girin `logic apps` ve **Logic Apps** öğesini seçin.
 
-   ![Arama terimi olarak "Logic Apps" ve seçilen arama sonucu olarak "Logic Apps" içeren Azure portal arama kutusunu gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
+   ![Arama terimi olarak "Logic Apps" ve seçilen arama sonucu olarak "Logic Apps" içeren arama kutusunu gösteren Azure portal ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
 
-1. **Logic Apps** sayfasında **Ekle**' yi seçin.
+1. **Logic Apps** sayfasında **Ekle** ' yi seçin.
 
-   ![Logic Apps listesini ve seçili düğmeyi gösteren ekran görüntüsü, "Ekle".](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
+   ![Mantıksal uygulamalar listesini ve seçili "" Ekle "düğmesini gösteren Azure portal Logic Apps hizmet sayfasının ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
-1. **Mantıksal uygulama** bölmesinde aşağıda gösterildiği gibi mantıksal uygulamanız hakkında ayrıntılı bilgi sağlayın.
-
-   ![Mantıksal uygulama oluşturma bölmesini yeni mantıksal uygulama ile ilgili ayrıntılarla gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
-
+1. **Mantıksal uygulama** bölmesinde mantıksal uygulamanız için temel ayrıntıları ve ayarları sağlayın. Bu örnek mantıksal uygulamanın amaçları doğrultusunda yeni bir [kaynak grubu](../azure-resource-manager/management/overview.md#terminology) oluşturun.
+    
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Ad** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, bölgeler genelinde benzersiz olmalıdır ve yalnızca harf, rakam, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) ve nokta ( `.` ) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
-   | **Abonelik** | <*Azure-abonelik-adı*> | Azure abonelik adınız |
-   | **Kaynak grubu** | <*Azure-Resource-Group-Name*> | [Azure Kaynak grubu](../azure-resource-manager/management/overview.md)için, bölgeler genelinde benzersiz olması gereken ve ilgili kaynakları düzenlemek için kullanılan ad. Bu örnek "My-First-LA-RG" kullanır. |
-   | **Konum** | <*Azure-bölge*> | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
-   | **Log Analytics** | Kapalı | Tanılama günlüğüne kaydetme ayarını **Kapalı** durumda bırakın. |
+   | **Ad** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, bölgeler arasında benzersiz olmalıdır. Ad yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) ve nokta () içerebilir `.` . Bu örnek "My-First-Logic-App" kullanır. |
+   | **Abonelik** | <*Azure-abonelik-adı*> | Azure aboneliğinizin adı. |
+   | **Kaynak grubu** | <*Azure-Resource-Group-Name*> | Mantıksal uygulamayı oluşturmakta olduğunuz [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md#terminology) adı. Kaynak grubunun adı bölgeler arasında benzersiz olmalıdır. Bu örnek "My-First-LA-RG" kullanır. |
+   | **Konum** | <*Azure-bölge*> | Mantıksal uygulama bilgilerinizin depolanacağı Azure bölgesi. Bu örnek, "Batı ABD" kullanır. |
+   | **Log Analytics** | Kapalı | Varsayılan olarak **kapalı** olan tanılama günlüğü ayarı. Bu örnek için **kapalı** ayarını değiştirmeyin. |
    ||||
 
-1. Hazırsanız, **gözden geçir + oluştur**' u seçin. Verdiğiniz ayrıntıları onaylayın ve **Oluştur**' u seçin.
+   ![Yeni mantıksal uygulama ayrıntılarının bulunduğu bölmeyi gösteren Logic Apps oluşturma sayfasının ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-1. Azure uygulamanızı başarıyla dağıtduktan sonra **Kaynağa Git**' i seçin.
+1. Hazırsanız, **gözden geçir + oluştur** ' u seçin. Verdiğiniz ayrıntıları onaylayın ve **Oluştur** ' u seçin.
 
-   ![Kaynak dağıtım sayfasını ve "kaynağa git" için seçili düğmeyi gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
+1. Azure uygulamanızı başarıyla dağıtduktan sonra **Kaynağa Git** ' i seçin. Ya da, arama kutusuna adı yazarak mantıksal uygulamanızı bulabilir ve seçebilirsiniz.
 
-   Ya da, arama kutusuna adı yazarak mantıksal uygulamanızı bulabilir ve seçebilirsiniz.
+   ![Kaynak dağıtım sayfasının, seçili düğmeyi gösteren ekran görüntüsü, "kaynağa git".](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
-   Logic Apps Tasarımcısı açılır ve bir tanıtım videosu ile sık kullanılan tetikleyicilerin bulunduğu bir sayfa görüntülenir. **Şablonlar** altında **Boş Mantıksal Uygulama**'yı seçin.
+   Logic Apps Tasarımcısı açılır ve bir tanıtım videosu ile sık kullanılan tetikleyicilerin bulunduğu bir sayfa görüntülenir. **Şablonlar** altında **Boş Mantıksal Uygulama** 'yı seçin.
 
-   ![Logic Apps tasarımcı şablonu galerisini ve seçili şablon, "boş mantıksal uygulama" gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
+   ![Şablon galerisini ve seçili şablonu "boş mantıksal uygulama" gösteren Logic Apps Designer 'ın ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
-Sonra, yeni bir RSS akışı öğesi göründüğünde tetiklenen bir [tetikleyici](../logic-apps/logic-apps-overview.md#logic-app-concepts) ekleyin. Her mantıksal uygulama, belirli bir olay gerçekleştiğinde ya da belirli bir koşul karşılandığında tetiklenen bir tetikleyiciyle başlamalıdır. Tetikleyici her tetiklendiğinde Azure Logic Apps altyapısı, iş akışınızı başlatan ve çalıştıran bir mantıksal uygulama örneği oluşturur.
+Sonra [mantıksal uygulamanıza bir tetikleyici ekleyin](#add-rss-trigger).
 
 <a name="add-rss-trigger"></a>
 
 ## <a name="add-the-rss-trigger"></a>RSS tetikleyicisi ekleme
 
-1. **Mantıksal uygulama Tasarımcısı**' nda, arama kutusunda, **Tümü**' nü seçin.
+Her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya belirli bir koşul karşılandığında tetiklenen bir [tetikleyiciyle](../logic-apps/logic-apps-overview.md#how-do-logic-apps-work)başlamalıdır. Tetikleyicinin her yeni öğe bulduğu her seferinde harekete geçirilir ve Logic Apps altyapısı, iş akışınızı başlatan ve çalıştıran bir mantıksal uygulama örneği oluşturur. Tetikleyici yeni öğeler bulamazsa, tetikleyici harekete geçmez ve bir örnek oluşturmaz veya iş akışını bu denetim üzerinde çalıştırmaz.
 
-1. RSS bağlayıcısını bulmak için arama kutusuna girin `rss` . Tetikleyiciler listesinden, **bir akış öğesi YAYıMLANDıĞıNDA**RSS tetikleyicisini seçin.
+Bu hızlı başlangıç örneğinde, [bir mantıksal uygulama](#create-your-logic-app)oluşturduktan sonra bir RSS akışındaki yeni öğeleri denetleyen bir tetikleyici ekler ve yeni öğeler olduğunda ateşlenir. Ayrıca, [otomatik onay tabanlı iş akışları oluşturmak](tutorial-process-mailing-list-subscriptions-workflow.md)için öğreticide olduğu gibi farklı tür tetikleyicilerle Logic Apps de oluşturabilirsiniz.
 
-   ![Arama kutusunda "RSS" ile birlikte Logic Apps tasarımcı ve seçili tetikleyici "bir akış öğesi yayımlandığında" gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
+1. **Mantıksal uygulama Tasarımcısı** ' nda, arama kutusunda, **Tümü** ' nü seçin.
 
-1. Bu adımda açıklandığı gibi tetikleyicinizin bilgilerini sağlayın:
+1. RSS bağlayıcısını bulmak için arama kutusuna girin `rss` . **Tetikleyiciler** listesinden, **bir AKıŞ öğesi yayımlandığında** RSS tetikleyicisini seçin.
+
+   ![Arama kutusunda "RSS" ile birlikte Logic Apps tasarımcı ve seçilen RSS tetikleyicisi "bir akış öğesi yayımlandığında" gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
+
+1. Tetikleyicinizin RSS akışı URL 'sini sağlayın. Sonra, zaman aralığını ve sıklığı ayarlayarak tetikleyicinizin zamanlamasını tanımlayın.
+
+   | Özellik | Değer | Açıklama |
+   | -------- | ----- | ----------- |
+   | **RSS akışının URL'si** | <*RSS-Feed-URL*> | İzlemek istediğiniz RSS akışı URL 'SI. Bu örnek, adresindeki duvar Caddesi günlüğü RSS akışını kullanır `https://feeds.a.dj.com/rss/RSSMarketsMain.xml` . Ancak, bu örneğin amaçları doğrultusunda, HTTP yetkilendirmesi gerektirmeyen herhangi bir RSS akışını kullanabilirsiniz. Sık yayımlanan bir RSS akışı seçin, böylece mantıksal uygulamanızı daha sonra kolayca test edebilirsiniz. |
+   | **Aralık** | 1 | RSS akışı denetimleri arasında beklenecek Aralık sayısı. Bu örnekte 1 dakikalık aralıklar kullanılmaktadır. |
+   | **Sıklık** | Dakika | RSS akışı denetimleri arasındaki her Aralık için zaman birimi. Bu örnekte 1 dakikalık aralıklar kullanılmaktadır. |
+   ||||
 
    ![RSS URL 'SI, sıklık ve Aralık dahil olmak üzere RSS tetikleyici ayarları ile Logic Apps tasarımcısını gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | Özellik | Değer | Açıklama |
-   |----------|-------|-------------|
-   | **RSS akışının URL'si** | <*RSS-Feed-URL*> | İzlemek istediğiniz RSS akışına yönelik bağlantı. Bu örnek, adresindeki duvar Caddesi günlüğü RSS akışını kullanır `https://feeds.a.dj.com/rss/RSSMarketsMain.xml` , ancak isterseniz kendı RSS AKıŞ URL 'nizi kullanabilirsiniz. |
-   | **Aralık** | 1 | Denetimler arasında beklenecek aralık sayısı |
-   | **Sıklık** | Dakika | Denetimler arası her aralık için zaman birimi |
-   ||||
-
-   Aralık ve sıklık özelliği, mantıksal uygulamanızın tetikleyicisi için zamanlamayı tanımlar. Bu mantıksal uygulama, akışı dakika başı denetler.
-
-1. Tetikleyici ayrıntılarını şimdilik daraltmak için tetikleyicinin başlık çubuğunun içine tıklayın.
+1. Kendi başlık çubuğunun içine tıklayarak tetikleyicinin ayrıntılarını şimdilik daraltın.
 
    ![Daraltılmış Logic Apps şekliyle Logic Apps tasarımcı gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
-1. Mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+1. Tasarımcı araç çubuğunda **Kaydet** ' i seçerek mantıksal uygulamanızı kaydedin.
 
-Mantıksal uygulamanız çalışıyor ancak RSS akışını kontrol etme dışında bir işlem gerçekleştirmiyor. Şimdi, tetikleyici etkinleştirildiğinde gerçekleştirilecek bir eylem ekleyin.
+Mantıksal uygulamanız artık canlı, ancak RSS akışını kontrol dışında bir şey yapmaz. Sonra, Tetikleyiciniz tetiklendiğinde ne olacağını tanımlamak için [bir eylem ekleyin](#add-email-action) .
+
+<a name="add-email-action"></a>
 
 ## <a name="add-the-send-email-action"></a>"E-posta gönder" eylemini ekleyin
 
-Şimdi RSS akışında yeni bir öğe göründüğünde e-posta gönderen bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-concepts) ekleyin.
+[Mantıksal uygulamanız için bir tetikleyici ekledikten](#add-rss-trigger)sonra MANTıKSAL uygulamanız RSS akışını denetlediğinde ve yeni bir öğe göründüğünde yanıtı belirleyecek bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-concepts) eklemeniz gerekir. Ayrıca, [Logic Apps, Azure işlevleri ve Azure depolama ile e-postaları işlemeye](/tutorial-process-email-attachments-workflow.md)yönelik öğreticide olduğu gibi çok daha karmaşık eylemlerle de mantıksal uygulamalar oluşturabilirsiniz.
 
-1. **Bir akış öğesi yayımlandığında** tetikleyicisi bölümünde **yeni adım**' ı seçin.
+> [!NOTE]
+> Bu örnekte e-posta hizmeti olarak Office 365 Outlook kullanılmaktadır. Mantıksal uygulamanızda desteklenen başka bir e-posta hizmeti kullanıyorsanız, Kullanıcı arabirimi farklı görünebilir. Ancak, başka bir e-posta hizmetine bağlanmak için temel kavramlar aynı kalır.
 
-   !["Yeni adım" ile Logic Apps tasarımcısını gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/add-new-step-under-trigger.png)
+1. **Bir akış öğesi yayımlandığında** tetikleyicisi bölümünde **yeni adım** ' ı seçin.
 
-1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü**' nü seçin.
+   ![Seçili düğmeye sahip bir iş akışını gösteren Logic Apps Tasarımcısı 'nın ekran görüntüsü, "yeni adım".](./media/quickstart-create-first-logic-app-workflow/add-new-step-under-trigger.png)
+
+1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü** ' nü seçin.
 
 1. Arama kutusuna, `send an email` Bu eylemi sunan bağlayıcıları bulabilmeniz için yazın. Eylemler listesini belirli bir uygulama veya hizmete göre filtrelemek için, önce bu uygulamayı veya hizmeti seçebilirsiniz.
 
-   Örneğin, bir Microsoft iş veya okul hesabı kullanıyorsanız ve Office 365 Outlook 'u kullanmak istiyorsanız **office 365 Outlook**' u seçin. Ya da kişisel Microsoft hesabı kullanıyorsanız, Outlook.com ' yi seçebilirsiniz. Bu örnek, Office 365 Outlook ile devam eder:
+   Örneğin, bir Microsoft iş veya okul hesabı kullanıyorsanız ve Office 365 Outlook 'u kullanmak istiyorsanız **office 365 Outlook** ' u seçin. Ya da kişisel Microsoft hesabı kullanıyorsanız, Outlook.com ' yi seçebilirsiniz. Bu örnek, Office 365 Outlook ile devam eder:
 
-   ![Logic Apps Designer ve seçili Office 365 Outlook bağlayıcısını gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/select-connector.png)
+   ![Seçili e-posta Bağlayıcısı, "Office 365 Outlook" ile eylem adımını gösteren Logic Apps Tasarımcısı 'nın ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/select-connector.png)
 
    Artık kullanmak istediğiniz eylemi daha kolay bulabilir ve seçebilirsiniz, örneğin `send an email` :
 
-   ![Logic Apps tasarımcı ve filtrelenmiş eylemlerle liste gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/filtered-actions-list.png)
+   ![E-posta Bağlayıcısı için filtrelenmiş eylemlerin listesini gösteren Logic Apps Tasarımcısı 'nın ekran görüntüsü, "Office 365 Outlook".](./media/quickstart-create-first-logic-app-workflow/filtered-actions-list.png)
 
-1. Seçtiğiniz e-posta Bağlayıcınız kimliğinizin kimliğini doğrulamanızı isterse, mantıksal uygulamanız ile e-posta hizmetiniz arasında bir bağlantı oluşturmak için bu adımı hemen doldurun.
+1. Seçtiğiniz e-posta Bağlayıcınız kimliğinizin kimliğini doğrulamanızı isterse, bu adımı şimdi tamamlayabilirsiniz. Bu örneğin çalışması için mantıksal uygulamanız ile e-posta hizmetiniz arasında bir bağlantı oluşturmanız gerekir. 
 
-   > [!NOTE]
-   > Bu belirli örnekte, kimliğinizi el ile doğrukullanırsınız. Ancak, kimlik doğrulaması gerektiren bağlayıcılar destekledikleri kimlik doğrulama türlerinde farklılık gösterir. Ayrıca, kimlik doğrulamasını işlemek istediğiniz şekilde ayarlama seçenekleriniz vardır. Örneğin, dağıtım için Azure Resource Manager Şablonlar kullandığınızda, bağlantı bilgileri gibi sıklıkla veya kolayca değiştirmek istediğiniz girişler üzerindeki güvenliği parametreleştirebilirsiniz ve artırabilirsiniz. Daha fazla bilgi için şu konulara bakın:
-   >
+    > [!NOTE]
+    > Bu örnekte, Office 365 Outlook Bağlayıcısı için el ile kimlik doğrulaması gösterilmektedir. Ancak, diğer bağlayıcılar farklı kimlik doğrulama türlerini destekleyebilir.
+    > Ayrıca, kullanım durumunuza bağlı olarak mantıksal uygulamalarınızın kimlik doğrulamasını farklı yollarla işleyebilirsiniz. Örneğin, dağıtım için Azure Resource Manager şablonlarını kullan ' ı kullanırsanız, bağlantı ayrıntıları gibi sık değişen girişler üzerindeki güvenliği artırmak için parametreleştirebilirsiniz. Daha fazla bilgi için şu konulara bakın:
    > * [Dağıtım için şablon parametreleri](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
    > * [OAuth bağlantılarını yetkilendir](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)
    > * [Yönetilen kimliklerle erişimin kimliğini doğrulama](../logic-apps/create-managed-service-identity.md)
    > * [Mantıksal uygulama dağıtımı için bağlantı kimlik doğrulaması](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)
 
-1. **E-posta gönder** eyleminde, e-postaya eklenecek bilgileri belirtin.
+1. **E-posta gönder** eyleminde, e-posta bildirimine hangi bilgilerin ekleneceğini belirtin.
 
-   1. **Alıcı** kutusuna alıcının e-posta adresini girin. Sınama amacıyla e-posta adresinizi kullanabilirsiniz.
+   1. **Alıcı** kutusuna alıcının e-posta adresini girin. Bu örnek için e-posta adresinizi kullanın.
 
-      Görüntülenen **Dinamik içerik ekle** listesini şimdilik yoksayın. Bazı düzenleme kutularının içine tıkladığınızda, bu liste görünür ve önceki adımdan geçerli eylem için giriş olarak kullanabileceğiniz tüm kullanılabilir çıktıları gösterir.
+        > [!NOTE]
+        > **Dinamik Içerik Ekle** **listesi, '** ın Içine tıkladığınızda ve Logic Apps tasarımcısında başka bazı giriş kutularında görünür. Bu örnek, daha sonraki bir adımda dinamik içerik kullanır. **Dinamik Içerik Ekle** listesi, önceki adımda bulunan ve geçerli eylem için giriş olarak kullanabileceğiniz tüm kullanılabilir çıktıları gösterir.
 
-   1. **Konu** kutusuna, sonuna bir boşluk koyarak şu metni girin: `New RSS item: `
+   1. **Konu** kutusuna e-posta bildirimin konusunu girin. Bu örnek için, sonundaki boş alana sahip aşağıdaki metni girin: `New RSS item: `
 
-      !["Konu" özellik kutusunun içinde "e-posta gönder" eylemi ve imleci içeren Logic Apps tasarımcısını gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/send-email-subject.png)
+      !["Konu" özellik kutusunun içindeki "e-posta gönder" eylemini ve imleci gösteren Logic Apps tasarımcısının ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/send-email-subject.png)
 
-   1. **Dinamik Içerik Ekle** listesinden, "bir akış öğesi yayımlandığında" tetikleyiciden çıktı olan **akış başlığı**' nı SEÇIN, bu da RSS öğesi başlığını kullanabilmeniz için kullanılabilir hale getirir.
+   1. **Dinamik Içerik Ekle** listesinden, **bir akış öğesi yayımlandığında** tetikleyiciden çıktı olan **akış başlığı** ' nı seçin. E-posta bildirimidir RSS öğesinin başlığını almak için bu çıktıyı kullanır.
 
-      !["Konu" özellik kutusunun içindeki "e-posta gönder" eylemi ve imleci açık bir dinamik içerik listesi ve seçili çıkış "akış başlığı" ile birlikte Logic Apps tasarımcısını gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/send-email-subject-dynamic-content.png)
+      ![Açık dinamik içerik listesi ve seçili çıkış, "akış başlığı" olan "konu" özellik kutusunun içindeki "e-posta gönder" eylemini ve imleci gösteren Logic Apps tasarımcısının ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/send-email-subject-dynamic-content.png)
 
       > [!TIP]
-      > Dinamik içerik listesinde, "bir akış öğesi yayımlandığında" tetikleyicisinden hiçbir çıkış görünmezse, eylem üstbilgisinin yanında, **daha fazla göster**' i seçin.
+      > Dinamik içerik listesinde, **bir akış öğesi yayımlandığında bir** çıkış görünmüyorsa, eylem üstbilgisinin yanında, **daha fazla göster** ' i seçin.
       > 
-      > ![Açık dinamik içerik listesi ile Logic Apps tasarımcısını gösteren ekran görüntüsü ve tetikleyici için "daha fazla gör" seçilidir.](./media/quickstart-create-first-logic-app-workflow/dynamic-content-list-see-more-actions.png)
+      > ![Açık dinamik içerik listesini gösteren ve tetikleyici için "daha fazla gör" seçilmiş Logic Apps tasarımcısının ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/dynamic-content-list-see-more-actions.png)
 
       İşlem tamamlandığında e-posta konusu şu örnekteki gibi görünür:
 
-      !["E-posta gönder" eylemine sahip Logic Apps tasarımcısını ve dahil edilen "akış başlığı" özelliği ile örnek bir e-posta konusunu gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
+      !["E-posta gönder" eylemini ve dahil edilen "akış başlığı" özelliği ile örnek bir e-posta konusunu gösteren Logic Apps tasarımcısının ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
 
-      Tasarımcıda bir "For each" döngüsü görünüyorsa, dizi için belirteç (örneğin, **categories-item** belirteci) seçmişsiniz demektir. Bu tür belirteçler için tasarımcı otomatik olarak ilgili belirtece başvuran eylemin etrafına bu döngüyü ekler. Bu şekilde mantıksal uygulamanız dizideki tüm öğeler için aynı eylemi gerçekleştirir. Döngüyü kaldırmak için döngünün başlık çubuğundaki **üç nokta** (**...**) simgesini seçin ve **Sil**' i seçin.
+      Tasarımcı üzerinde "for each" döngüsü görünürse, dizi için bir belirteç seçtiniz; Örneğin, **Kategoriler-öğe** belirteci. Bu tür belirteçler için tasarımcı otomatik olarak ilgili belirtece başvuran eylemin etrafına bu döngüyü ekler. Bu şekilde mantıksal uygulamanız dizideki tüm öğeler için aynı eylemi gerçekleştirir. Döngüyü kaldırmak için döngünün başlık çubuğundaki **üç nokta** ( **...** ) simgesini seçin ve **Sil** ' i seçin.
 
-   1. **Gövde** kutusuna bu metni girin ve e-posta gövdesi için bu belirteçleri seçin. Bir düzenleme kutusuna boş satır eklemek için Shift + Enter tuşlarını kullanın.
-
-      !["E-posta gönder" eylemi ve "gövde" kutusunun içinde seçili özellikler içeren Logic Apps tasarımcısını gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/send-email-body.png)
+   1. **Gövde** kutusuna e-posta gövdesinin içeriğini girin. Bu örnekte, içerik her biri için açıklayıcı metin içeren üç özellik içerir: `Title:` , **akış başlığı** özelliği; `Date published:` , özellikte **Yayınlanan akış** ve `Link:` **birincil akış bağlantısı** özelliği. Bir düzenleme kutusuna boş satır eklemek için Shift + Enter tuşlarını kullanın.
 
       | Özellik | Açıklama |
       |----------|-------------|
@@ -161,48 +178,55 @@ Mantıksal uygulamanız çalışıyor ancak RSS akışını kontrol etme dışı
       | **Birincil akış bağlantısı** | Öğenin URL'si |
       |||
 
-1. Mantıksal uygulamanızı kaydedin.
+      !["E-posta gönder" eylemini ve "Body" kutusunun içindeki seçili özellikleri gösteren Logic Apps tasarımcısının ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/send-email-body.png)
 
-Daha sonra, mantıksal uygulamanızı test edin.
+1. Mantıksal uygulamanızı kaydedin. Tasarımcı menüsünde **Kaydet** ' i seçin.
+
+Daha sonra [mantıksal uygulamanızın çalışıp çalışmadığını test](#test-logic-app)edin.
+
+<a name="test-logic-app"></a>
 
 ## <a name="run-your-logic-app"></a>Mantıksal uygulamanızı çalıştırın
 
-Mantıksal uygulamanızı el ile başlatmak için tasarımcı araç çubuğu çubuğunda **Çalıştır**' ı seçin. Veya mantıksal uygulamanızın belirttiğiniz zamanlamaya (dakika başı) göre RSS akışını denetlemesini bekleyin.
+Örnek mantıksal uygulamanızı oluşturduktan sonra, iş akışınızın doğru şekilde yapılandırıldığını onaylayın. Mantıksal uygulamanın, belirtilen zamanlamaya göre RSS akışınızı denetlemesini bekleyebilirsiniz. Ya da, aşağıdaki ekran görüntüsünde gösterildiği gibi Logic Apps Tasarımcı araç çubuğunda **Çalıştır** ' ı seçerek mantıksal uygulamanızı el ile çalıştırabilirsiniz. 
 
-![Tasarımcı araç çubuğunda "Çalıştır" düğmesi seçili olan Logic Apps tasarımcısını gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/run-logic-app-test.png)
+RSS akışında yeni öğeler olduğunda mantıksal uygulamanız her yeni öğe için bir e-posta gönderir. Aksi takdirde, mantıksal uygulamanız RSS akışını yeniden denetlemek için bir sonraki aralığa kadar bekler. 
 
-RSS akışında yeni öğeler olduğunda mantıksal uygulamanız her yeni öğe için bir e-posta gönderir. Aksi takdirde mantıksal uygulamanız yeniden denetlemek için bir sonraki zaman aralığını bekler. E-posta gelmezse istenmeyen e-posta klasörüne bakın.
+![Tasarımcı araç çubuğunda "Çalıştır" düğmesinin seçili olduğunu gösteren Logic Apps tasarımcısının ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/run-logic-app-test.png)
 
-Örneğin, bu mantıksal uygulamanın gönderdiği örnek bir e-posta aşağıda verilmiştir.
+Aşağıdaki ekran görüntüsünde, bu örnek mantıksal uygulamadan örnek bir e-posta bildirimi gösterilmektedir. E-posta, tasarımcıda seçilen her RSS akışı öğesinin ayrıntılarını ve her biri için eklenen açıklayıcı metni içerir.
 
-![Yeni RSS Akış öğesi göründüğünde alınan örnek e-postayı gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
+![Öğe başlığı, Yayımlanma tarihi ve bağlantısı ile yeni RSS Akış öğesi göründüğünde alınan örnek e-posta iletisini gösteren Outlook ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-Teknik olarak, tetikleyici RSS akışını denetlediğinde ve yeni öğeler bulduğunda, tetikleyici ateşlenir ve Azure Logic Apps altyapısı, iş akışındaki eylemleri çalıştıran mantıksal uygulama iş akışınızın bir örneğini oluşturur. Tetikleyici yeni öğeler bulmazsa tetikleyici etkinleşmez ve iş akışı örneğini oluşturma işlemini "atlar".
+Mantıksal uygulamadan beklenen şekilde bildirim e-postaları almadıysanız:
 
-Tebrikler, artık Azure portal ilk mantıksal uygulamanızı başarıyla oluşturup çalıştırdık.
+* İletinin yanlış filtrelenme olasılığına karşı e-posta hesabınızın önemsiz veya istenmeyen posta klasörünü denetleyin.
+* Kullandığınız RSS akışı, son zamanlanan veya el ile yapılan denetim öğesinden sonra öğeleri yayımladığından emin olun.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık bu örneğe ihtiyacınız yoksa mantıksal uygulamanızı ve ilgili kaynakları içeren kaynak grubunu silin.
+Bu örnek mantıksal uygulamayı test etmeyi tamamladıktan sonra, bu örnek için oluşturduğunuz kaynak grubunu silerek mantıksal uygulamayı ve ilgili kaynakları temizleyin.
 
-1. Azure Arama kutusuna girin `resource groups` ve ardından **kaynak grupları**' nı seçin.
+> [!NOTE]
+> [Bir mantıksal uygulamayı sildiğinizde](manage-logic-apps-with-azure-portal.md#delete-logic-apps), hiçbir yeni çalıştırma örneği oluşturulur. Devam eden ve bekleme durumunda olan tüm çalıştırmalar iptal edilir. Binlerce çalıştırma varsa iptal işleminin tamamlanması zaman alabilir.
+
+1. Azure Arama kutusuna girin `resource groups` ve ardından **kaynak grupları** ' nı seçin.
 
    ![Arama terimi "kaynak grupları" olan Azure portal arama kutusunu gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/find-resource-groups.png)
 
-1. Mantıksal uygulamanızın kaynak grubunu bulun ve seçin. **Genel bakış** bölmesinde **kaynak grubunu sil**' i seçin.
+1. Mantıksal uygulamanızın kaynak grubunu bulun ve seçin. **Genel bakış** bölmesinde **kaynak grubunu sil** ' i seçin.
 
    !["Kaynak grubunu sil" için seçili kaynak grubu ve düğmeyle birlikte Azure portal gösteren ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 
-1. Onay bölmesi göründüğünde, kaynak grubu adını girin ve **Sil**' i seçin.
+1. Onay bölmesi göründüğünde, kaynak grubu adını girin ve **Sil** ' i seçin.
 
    ![Onay bölmesinin Azure portal ve silinecek kaynak grubu adının gösterildiği ekran görüntüsü.](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
-> [!NOTE]
-> Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam eden ve bekleme durumunda olan tüm çalıştırmalar iptal edilir. Binlerce çalıştırma varsa iptal işleminin tamamlanması zaman alabilir.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, belirttiğiniz zamanlamayı (dakika başı) temel alarak RSS güncelleştirmelerini denetleyen ve güncelleştirme olduğunda eylem gerçekleştiren (e-posta gönderen) ilk mantıksal uygulamanızı oluşturdunuz. Daha fazla bilgi edinmek için daha gelişmiş zamanlama temelli iş akışlarının oluşturulduğu şu öğreticiye geçin:
+Bu hızlı başlangıçta, bir zamanlamaya göre güncelleştirmeler için RSS akışını denetlemek ve her yeni akış öğesi hakkında bir e-posta bildirimi göndermek için Azure portal ilk mantıksal uygulamanızı oluşturdunuz. 
+
+Logic Apps daha gelişmiş zamanlama tabanlı iş akışları oluşturmayı öğrenmek için aşağıdaki öğreticiye bakın:
 
 > [!div class="nextstepaction"]
 > [Zamanlama tabanlı mantıksal uygulama ile trafiği denetleme](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

@@ -4,12 +4,12 @@ description: Azure bulutunda, isteğe bağlı olarak bir Docker kapsayıcı gör
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 4ea3f1bb86bcf3f6583cc438b2a27429f5b69d14
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 1b4dcc05747ceae52c649c366c3faf437e77b560
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027695"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098935"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Hızlı başlangıç: Azure Container Registry görevleri kullanarak kapsayıcı görüntüsü oluşturma ve çalıştırma
 
@@ -17,11 +17,11 @@ Bu hızlı başlangıçta, yerel bir Docker yüklemesi olmadan Azure 'da bir Doc
 
 Bu hızlı başlangıç sonrasında [öğreticilerini](container-registry-tutorial-quick-task.md)kullanarak ACR görevlerinin daha gelişmiş özelliklerine göz atın. ACR görevleri kod yürütmelerine veya temel görüntü güncelleştirmelerine göre görüntü derlemelerini otomatikleştirebilir veya birden çok kapsayıcıyı paralel olarak diğer senaryolar arasında test edebilir. 
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-account] oluşturun.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Bu hızlı başlangıcı tamamlamak için Azure Cloud Shell veya yerel bir Azure CLI yüklemesi kullanabilirsiniz. Yerel olarak kullanmak isterseniz, sürüm 2.0.58 veya üzeri önerilir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+    
+- Bu hızlı başlangıç, Azure CLı 'nin sürüm 2.0.58 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 

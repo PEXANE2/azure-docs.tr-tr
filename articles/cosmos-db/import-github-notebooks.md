@@ -6,14 +6,15 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46170a0f723e912c370eb6e068542a02b9959948
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262897"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101485"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Not defterlerini GitHub deposundan Azure Cosmos DB içine aktarma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos hesaplarınız için [Not defteri desteğini etkinleştirdikten](enable-notebooks.md) sonra, yeni not defterleri oluşturabilir, yerel bilgisayarınızdan yeni not defterleri yükleyebilir veya mevcut not defterlerini GitHub hesaplarınızdan içeri aktarabilirsiniz. Bu makalede, Not defteri çalışma alanınızı GitHub 'a bağlama ve not defterlerini bir GitHub deposundan Azure Cosmos hesabınıza aktarma işlemi gösterilmektedir. İçeri aktardıktan sonra, bunları çalıştırabilir, değişiklikler yapabilir ve değişiklikleri GitHub 'a geri kaydedebilirsiniz.
 
@@ -27,7 +28,7 @@ Azure Cosmos DB içindeki not defterlerini okumak, yazmak ve paylaşmak için ke
 
 1. **GitHub 'A Bağlan** menü öğesini seçin.
 
-1. Yalnızca **ortak depoya** veya **genel ve özel**depolara bağlanmayı seçebileceğiniz bir sekme açılır.  Gerekli seçeneği belirledikten sonra, **erişimi Yetkilendir**' i seçin. GitHub hesabınızdaki depolara erişmek için Azure Cosmos DB yetkilendirme gerekir.
+1. Yalnızca **ortak depoya** veya **genel ve özel** depolara bağlanmayı seçebileceğiniz bir sekme açılır.  Gerekli seçeneği belirledikten sonra, **erişimi Yetkilendir** ' i seçin. GitHub hesabınızdaki depolara erişmek için Azure Cosmos DB yetkilendirme gerekir.
 
    :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="GitHub Depolarınıza erişmek için Azure Cosmos DB yetkilendirme&quot;:::
 
@@ -45,13 +46,13 @@ Azure Cosmos DB içindeki not defterlerini okumak, yazmak ve paylaşmak için ke
 
 Bir GitHub hesabıyla tümleştirdikten sonra yalnızca Azure Cosmos hesabınızda bulunan depoların ve Not defterlerinin listesini görebilirsiniz. Birden çok Kullanıcı Azure Cosmos DB hesapta oturum açıp kendi hesaplarını ekleyebilse bile bu ifade geçerlidir. Diğer bir deyişle, birden çok Kullanıcı, Not defteri çalışma alanını GitHub 'a bağlamak için aynı Azure Cosmos hesabını kullanabilir. Ancak, her Kullanıcı yalnızca içeri aktardıkları depoların ve Not defterlerinin listesini görür. Başkaları tarafından içeri aktarılan Not defterleri sizin için görünür değildir.
 
-GitHub hesabınızın Not defteri çalışma alanından bağlantısını kesmek için **Veri Gezgini** sekmesini açın, `…` **GitHub depoları** ' nı seçin ve **GitHub ' dan bağlantıyı kes**' i seçin.
+GitHub hesabınızın Not defteri çalışma alanından bağlantısını kesmek için **Veri Gezgini** sekmesini açın, `…` **GitHub depoları** ' nı seçin ve **GitHub ' dan bağlantıyı kes** ' i seçin.
 
 ## <a name="edit-a-notebook-and-push-changes-to-github"></a>Bir not defteri düzenleyin ve değişiklikleri GitHub 'a gönderin
 
 Mevcut bir not defterini düzenleyebilir veya depoya yeni bir not defteri ekleyebilir ve değişiklikleri GitHub 'a geri kaydedebilirsiniz.
 
-Mevcut bir not defterini düzenledikten sonra **Kaydet**' i seçin. Yaptığınız değişiklikler için COMMIT iletisini girebileceğiniz bir iletişim kutusu açılır. **Yürüt** ' ü seçin ve GitHub 'daki Not defteri güncelleştirilir. GitHub hesabınızda oturum açarak ve tamamlama geçmişini doğrulayarak güncelleştirmeleri doğrulayabilirsiniz.
+Mevcut bir not defterini düzenledikten sonra **Kaydet** ' i seçin. Yaptığınız değişiklikler için COMMIT iletisini girebileceğiniz bir iletişim kutusu açılır. **Yürüt** ' ü seçin ve GitHub 'daki Not defteri güncelleştirilir. GitHub hesabınızda oturum açarak ve tamamlama geçmişini doğrulayarak güncelleştirmeleri doğrulayabilirsiniz.
 
 Değişiklikleri kaydettikten sonra normal GitHub akışında, genellikle değişiklikleri uzak bir ile gönderirsiniz. Bununla birlikte, bu durumda COMMIT seçeneği, güncelleştirmelerinizi GitHub 'a "hazırlama, yürütme ve gönderme" amacını sunar.
 

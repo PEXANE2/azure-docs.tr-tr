@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ee221acb9ff045716e3a8015b20b467ab6d0b10
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764987"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098561"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Jeo uzamsal verileri Azure Cosmos DB sorgulama
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede, SQL ve LINQ kullanarak Azure Cosmos DB Jeo uzamsal verileri sorgulama ele alınacaktır. Şu anda Jeo uzamsal verileri depolama ve bunlara erişme yalnızca SQL API hesapları Azure Cosmos DB desteklenir. Azure Cosmos DB, Jeo-uzamsal sorgulama için aşağıdaki Open Geospatial Consortium (OGC) yerleşik işlevlerini destekler. SQL dilinde yerleşik işlevlerin tam kümesi hakkında daha fazla bilgi için, bkz. [Azure Cosmos db sorgu sistemi işlevleri](sql-query-system-functions.md).
 

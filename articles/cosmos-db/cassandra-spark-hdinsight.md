@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 4848bdceef084d587c839f2af93d1ff5a43c850b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cee5181bf3dda3f0fb609d5aa344697e989ae6c3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260585"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098901"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>HDInsight ile YARN 'de Spark Azure Cosmos DB Cassandra API erişme
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Bu makalede, Azure Cosmos DB Cassandra API, YARN 'deki Spark-Shell HDInsight-Spark ile nasıl erişebileceğiniz ele alınmaktadır. HDInsight, Microsoft 'un Azure 'da bulunan Hortonçalışmalar Hadoop PaaS 'in, Azure 'da, [bir.](../hdinsight/spark/apache-spark-overview.md)  Bu belgedeki içerik HDInsight-Spark 'a başvurduğundan, tüm Hadoop dağıtımları için geçerlidir.  
 

@@ -9,14 +9,15 @@ ms.date: 05/28/2019
 ms.author: jasonh
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d113189d1361122305f92bc86c46346e1e700f4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: eb611c77abe5bf9067bfdbabd1e2c5d2ee90ac23
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489379"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100499"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirmek için Graph toplu yürütücü .NET kitaplığını kullanma
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Bu öğretici, Graph nesnelerini bir Azure Cosmos DB Gremlin API kapsayıcısına aktarmak ve güncelleştirmek için Azure CosmosDB 'nin toplu yürütücü .NET kitaplığı kullanma hakkında yönergeler sağlar. Bu işlem, [toplu yürütücü kitaplığı](./bulk-executor-overview.md) 'ndaki Graph sınıfını kullanarak her bir ağ isteği için, programlama yoluyla köşe ve kenar nesneleri oluşturmayı sağlar. Bu davranış, hem veritabanı hem de yerel bellek kaynaklarının en iyi şekilde kullanılmasını sağlamak için toplu yürütücü kitaplığı aracılığıyla yapılandırılabilir.
 
@@ -78,7 +79,7 @@ Toplu yürütücü kitaplığının parametreleri hakkında daha fazla bilgi iç
 
 Yükün `GremlinVertex` ve `GremlinEdge` nesnelerinde oluşturulması gerekir. Bu nesneler şu şekilde oluşturulabilir:
 
-**Köşeler**:
+**Köşeler** :
 ```csharp
 // Creating a vertex
 GremlinVertex v = new GremlinVertex(
@@ -92,7 +93,7 @@ v.AddProperty("customProperty", "value");
 v.AddProperty("partitioningKey", "value");
 ```
 
-**Kenarlar**:
+**Kenarlar** :
 ```csharp
 // Creating an edge
 GremlinEdge e = new GremlinEdge(
@@ -139,9 +140,9 @@ Dosya|Açıklama
 
 Ayar|Açıklama
 ---|---
-`EndPointUrl`|Bu, Azure Cosmos DB Gremlin API veritabanı hesabınızın Genel Bakış dikey penceresinde bulunan **.NET SDK uç noktanızdır**. `https://your-graph-database-account.documents.azure.com:443/` biçimine sahiptir
+`EndPointUrl`|Bu, Azure Cosmos DB Gremlin API veritabanı hesabınızın Genel Bakış dikey penceresinde bulunan **.NET SDK uç noktanızdır** . `https://your-graph-database-account.documents.azure.com:443/` biçimine sahiptir
 `AuthorizationKey`|Bu, Azure Cosmos DB hesabınızda listelenen Birincil veya İkincil anahtardır. [Azure Cosmos DB verilerine güvenli erişim sağlama](./secure-access-to-data.md#primary-keys) hakkında daha fazla bilgi edinin
-`DatabaseName`, `CollectionName`|Bunlar **hedef veritabanı ve koleksiyon adlarıdır**. `ShouldCleanupOnStart`, `true` olarak ayarlandığında bu değerler `CollectionThroughput` ile birlikte bunları bırakmaya ek olarak yeni bir veritabanı ve koleksiyon oluşturmak için kullanılır. Benzer şekilde `ShouldCleanupOnFinish`, `true` olarak ayarlandığında alma işlemi sona erdiğinde veritabanını silmek için kullanılır. Hedef koleksiyonun **sınırsız koleksiyon** olması gerektiğini unutmayın.
+`DatabaseName`, `CollectionName`|Bunlar **hedef veritabanı ve koleksiyon adlarıdır** . `ShouldCleanupOnStart`, `true` olarak ayarlandığında bu değerler `CollectionThroughput` ile birlikte bunları bırakmaya ek olarak yeni bir veritabanı ve koleksiyon oluşturmak için kullanılır. Benzer şekilde `ShouldCleanupOnFinish`, `true` olarak ayarlandığında alma işlemi sona erdiğinde veritabanını silmek için kullanılır. Hedef koleksiyonun **sınırsız koleksiyon** olması gerektiğini unutmayın.
 `CollectionThroughput`|Bu, `ShouldCleanupOnStart` seçeneği `true` olarak ayarlandığında yeni koleksiyon oluşturmak için kullanılır.
 `ShouldCleanupOnStart`|Bu işlem program çalıştırılmadan önce veritabanı hesabını ve koleksiyonlarını bırakır ve ardından `DatabaseName`, `CollectionName` ve `CollectionThroughput` değerleriyle yenilerini oluşturur.
 `ShouldCleanupOnFinish`|Bu değer program çalıştırıldıktan sonra belirtilen `DatabaseName` ve `CollectionName` değerleriyle veritabanı hesabını ve koleksiyonlarını bırakır.

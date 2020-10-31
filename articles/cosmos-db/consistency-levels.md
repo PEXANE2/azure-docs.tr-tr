@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 77af5a66ba349e5985e3b27b07c82a1595ccc8a1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 742ff2e6cff4569b5b7eeb131cd4394277b6c3cd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547087"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100465"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB'deki tutarlılık düzeyleri
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Yüksek kullanılabilirlik, düşük gecikme süresi veya her ikisi için çoğaltmaya dayanan dağıtılmış veritabanları, [paclc teoreminin](https://en.wikipedia.org/wiki/PACELC_theorem)tarafından tanımlanan okuma tutarlılığı, kullanılabilirliği, gecikme süresi ve aktarım hızı arasında temel bir zorunluluğunu getirir olmalıdır. Güçlü tutarlılık modelinin doğrizlebilirlik, veri programlamasına yönelik altın standarttır. Ancak büyük uzaklıklarda çoğaltmak ve yürütmek zorunda olması nedeniyle daha yüksek yazma gecikmeleri olan bir içerse fiyatı ekler. Veriler her bölgede çoğaltılamadığından ve işlemeden, güçlü tutarlılık de azalabilir (başarısızlık sırasında). Nihai tutarlılık daha yüksek kullanılabilirlik ve daha iyi performans sunar, ancak veriler tüm bölgelerde tamamen tutarlı olmayabilir.
 
@@ -21,7 +22,7 @@ Günümüzde piyasada bulunan ticari olarak kullanılabilen dağıtılmış NoSQ
 
 - *Güçlü*
 - *Sınırlanmış Eskime durumu*
-- *Oturum*
+- *Oturumuna*
 - *Tutarlı ön ek*
 - *Son*
 
@@ -132,7 +133,7 @@ Tam RTT gecikmesi, hafif bir mesafe ve Azure ağ topolojisi 'nin bir işlevidir.
 |--|--|--|
 |**Güçlü**|Yerel Minınlık|Küresel çoğunluk|
 |**Sınırlanmış Eskime durumu**|Yerel Minınlık|Yerel çoğunluk|
-|**Oturum**|Tek çoğaltma (oturum belirtecini kullanarak)|Yerel çoğunluk|
+|**Oturumuna**|Tek çoğaltma (oturum belirtecini kullanarak)|Yerel çoğunluk|
 |**Tutarlı ön ek**|Tek çoğaltma|Yerel çoğunluk|
 |**Son**|Tek çoğaltma|Yerel çoğunluk|
 

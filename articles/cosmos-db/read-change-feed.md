@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0252af90a6afb5b2a59620afaa61702f208991e7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b9a9af2178cc6130393cd9e74cb5b6b1f79dbf88
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785264"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100380"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB değişiklik akışını okuma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Anında iletme modeli veya çekme modeli kullanarak Azure Cosmos DB değişiklik akışı ile çalışabilirsiniz. Bir anında iletme modeliyle, değişiklik akışı işlemcisi bu çalışmayı işlemek için iş mantığı olan bir istemciye işi gönderir. Ancak, son işlenen çalışmanın çalışma ve depolama durumunu denetleme karmaşıklığı, değişiklik akışı işlemcisi içinde işlenir.
 

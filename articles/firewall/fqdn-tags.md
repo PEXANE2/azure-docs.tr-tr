@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: e29e568786881f663414dcdf3eff72d4d72ab181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed34bf755023ab866e95c51aca6d1bfb1dd7bf71
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610617"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099462"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN etiketlerine genel bakış
 
@@ -30,7 +30,7 @@ Aşağıdaki tabloda kullanabileceğiniz geçerli FQDN etiketleri gösterilmekte
 
 |FQDN etiketi  |Açıklama  |
 |---------|---------|
-|Windows Update     |[Yazılım güncelleştirmeleri Için güvenlik duvarı yapılandırma](https://technet.microsoft.com/library/bb693717.aspx)bölümünde açıklandığı gibi Microsoft Update giden erişime izin verin.|
+|Windows Update     |[Yazılım güncelleştirmeleri Için güvenlik duvarı yapılandırma](https://docs.microsoft.com/mem/configmgr/sum/get-started/install-a-software-update-point)bölümünde açıklandığı gibi Microsoft Update giden erişime izin verin.|
 |Windows Tanılama Özellikleri|Tüm [Windows Tanılama uç noktalarına](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints)giden erişime izin verin.|
 |Microsoft Etkin Koruma Hizmeti (HARITALAR)|[Haritalara](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/)giden erişime izin verin.|
 |App Service Ortamı (Ao)|ASE platformu trafiği için giden erişime izin verir. Bu etiket, asa tarafından oluşturulan müşteriye özgü depolama ve SQL uç noktalarını kapsamıyor. Bunların [hizmet uç noktaları](../virtual-network/tutorial-restrict-network-access-to-resources.md) aracılığıyla etkinleştirilmesi veya el ile eklenmesi gerekir.<br><br>Azure Güvenlik duvarını as ile tümleştirme hakkında daha fazla bilgi için bkz. [App Service ortamı kilitleme](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
@@ -40,7 +40,7 @@ Aşağıdaki tabloda kullanabileceğiniz geçerli FQDN etiketleri gösterilmekte
 |Azure Kubernetes Hizmeti (AKS)|AKS 'e giden erişime izin verir. Daha fazla bilgi için bkz. Azure [Kubernetes hizmeti (AKS) dağıtımlarını korumak Için Azure Güvenlik duvarını kullanma](protect-azure-kubernetes-service.md).|
 
 > [!NOTE]
-> Bir uygulama kuralında FQDN etiketi seçilirken protokol: bağlantı noktası alanı **https**olarak ayarlanmalıdır.
+> Bir uygulama kuralında FQDN etiketi seçilirken protokol: bağlantı noktası alanı **https** olarak ayarlanmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

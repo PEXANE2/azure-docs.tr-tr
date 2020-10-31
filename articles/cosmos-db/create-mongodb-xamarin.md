@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: masoucou
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ffa8e473fb084b2d5f0e7f59a07b3de50e04752e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 94cf54e689f845f77c54d1d3c7710e079594f556
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475868"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098952"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: .NET SDK ve Azure Cosmos DB MongoDB için API 'SI ile bir Xamarin. Forms uygulaması oluşturma
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -163,7 +164,7 @@ Aşağıdaki kod parçacıkları, şu `MongoService` yolda bulunan sınıfından
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin.
 
-1. [Azure portalında](https://portal.azure.com/), Azure Cosmos DB hesabınızın sol taraftaki gezinti menüsünden **Bağlantı Dizesi**'ne ve ardından **Okuma-Yazma Anahtarları**'na tıklayın. Ekranın sağ tarafındaki kopyala düğmesini kullanarak sonraki adımlarda bulunan Birincil Bağlantı Dizesini kopyalayın.
+1. [Azure portalında](https://portal.azure.com/), Azure Cosmos DB hesabınızın sol taraftaki gezinti menüsünden **Bağlantı Dizesi** 'ne ve ardından **Okuma-Yazma Anahtarları** 'na tıklayın. Ekranın sağ tarafındaki kopyala düğmesini kullanarak sonraki adımlarda bulunan Birincil Bağlantı Dizesini kopyalayın.
 
 2. **TaskList.Core** projesinin **Helpers** dizinindeki **APIKeys.cs** dosyasını açın.
 
@@ -180,12 +181,12 @@ Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-1. Visual Studio'nun **Çözüm Gezgini** bölümünde her bir projeye sağ tıklayın ve ardından **NuGet Paketlerini Yönet**'e tıklayın.
-2. **Tüm NuGet paketlerini geri yükle**'ye tıklayın.
-3. **TaskList.Android**'e sağ tıklayın ve **Başlangıç projesi olarak ayarla**'yı seçin.
+1. Visual Studio'nun **Çözüm Gezgini** bölümünde her bir projeye sağ tıklayın ve ardından **NuGet Paketlerini Yönet** 'e tıklayın.
+2. **Tüm NuGet paketlerini geri yükle** 'ye tıklayın.
+3. **TaskList.Android** 'e sağ tıklayın ve **Başlangıç projesi olarak ayarla** 'yı seçin.
 4. Uygulamada hata ayıklamaya başlamak için F5'e basın.
 5. iOS üzerinde çalıştırmak istiyorsanız ilk olarak makinenizin bir Mac'e bağlı olduğundan ([talimatlara](/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio) buradan ulaşabilirsiniz) emin olun.
-6. **TaskList.iOS** projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla**'yı seçin.
+6. **TaskList.iOS** projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla** 'yı seçin.
 7. Uygulamada hata ayıklamaya başlamak için F5'e basın.
 
 ### <a name="visual-studio-for-mac"></a>Mac için Visual Studio

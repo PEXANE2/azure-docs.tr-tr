@@ -7,16 +7,17 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: e12bae14ede90a3b93a69d963981f097818e65ab
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7dc81581846f8abdae81fa3552d9fa4645f32a05
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480233"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101315"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB JavaScript'in dil ile tümleşik, işlem tabanlı yürütmesini sağlar. Azure Cosmos DB içinde SQL API 'sini kullanırken, JavaScript dilinde **saklı yordamlar**, **Tetikleyiciler**ve **Kullanıcı tanımlı işlevler (UDF 'ler)** yazabilirsiniz. Veritabanı altyapısı içinde yürütülen mantığınızı JavaScript'te yazabilirsiniz. Azure Cosmos DB veya [Cosmos db SQL API Istemci SDK](how-to-use-stored-procedures-triggers-udfs.md)'larının [Azure Portal](https://portal.azure.com/), [JavaScript Dil tümleşik sorgu API 'sini](javascript-query-api.md) kullanarak Tetikleyiciler, saklı yordamlar ve UDF 'ler oluşturabilir ve bunları çalıştırabilirsiniz.
+Azure Cosmos DB JavaScript'in dil ile tümleşik, işlem tabanlı yürütmesini sağlar. Azure Cosmos DB içinde SQL API 'sini kullanırken, JavaScript dilinde **saklı yordamlar** , **Tetikleyiciler** ve **Kullanıcı tanımlı işlevler (UDF 'ler)** yazabilirsiniz. Veritabanı altyapısı içinde yürütülen mantığınızı JavaScript'te yazabilirsiniz. Azure Cosmos DB veya [Cosmos db SQL API Istemci SDK](how-to-use-stored-procedures-triggers-udfs.md)'larının [Azure Portal](https://portal.azure.com/), [JavaScript Dil tümleşik sorgu API 'sini](javascript-query-api.md) kullanarak Tetikleyiciler, saklı yordamlar ve UDF 'ler oluşturabilir ve bunları çalıştırabilirsiniz.
 
 ## <a name="benefits-of-using-server-side-programming"></a>Sunucu tarafı programlama kullanmanın avantajları
 
@@ -41,7 +42,7 @@ JavaScript 'te saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevl
 
 ## <a name="transactions"></a>İşlemler
 
-Tipik bir veritabanındaki işlem, tek bir mantıksal iş birimi olarak gerçekleştirilen işlem sırası olarak tanımlanabilir. Her işlem, **ACID Özellik garantisi**sağlar. ACID, şunu temsil eden iyi bilinen bir kısaltmadır: **a**-micity, **C**onsistency, **i**solation ve **D**uryeteneğinin. 
+Tipik bir veritabanındaki işlem, tek bir mantıksal iş birimi olarak gerçekleştirilen işlem sırası olarak tanımlanabilir. Her işlem, **ACID Özellik garantisi** sağlar. ACID, şunu temsil eden iyi bilinen bir kısaltmadır: **a** -micity, **C** onsistency, **i** solation ve **D** uryeteneğinin. 
 
 * Atomicity, bir işlem içinde gerçekleştirilen tüm işlemlerin tek bir birim olarak değerlendirildiğinden ve tümünün yürütüldüğünden ya da hiçbirinin olmadığından emin garanti eder. 
 

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2f79e2ca751ce9c1016f32effeca532d6ffe7fb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498846"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101247"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB işleçler
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede Azure Cosmos DB tarafından desteklenen çeşitli işleçler ayrıntılı olarak açıklanır.
 
@@ -21,11 +22,11 @@ Bu makalede Azure Cosmos DB tarafından desteklenen çeşitli işleçler ayrınt
 
 Aşağıdaki tabloda, iki JSON türü arasındaki SQL API 'sindeki eşitlik karşılaştırmalarının sonucu gösterilmektedir.
 
-| **Üs** | **Tanımlayan** | **Null** | **Boole** | **Sayı** | **Dize** | **Nesne** | **Dizide** |
+| **Üs** | **Tanımlayan** | **Null** | **Boolean** | **Sayı** | **Dize** | **Nesne** | **Dizide** |
 |---|---|---|---|---|---|---|---|
 | **Tanımlayan** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
 | **Null** | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
-| **Boole** | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
+| **Boolean** | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
 | **Sayı** | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan |
 | **Dize** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan |
 | **Nesne** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan |
@@ -77,7 +78,7 @@ Herhangi bir Boolean ifadesinin değerini tersine çevirir.
 | **False** |Doğru |
 | **Tanımlayan** |Tanımlayan |
 
-**İşleç önceliği**
+**İşleç Önceliği**
 
 Mantıksal işleçler, `OR` `AND` ve `NOT` aşağıda gösterilen öncelik düzeyine sahiptir:
 
@@ -121,5 +122,5 @@ Diğer sorgu işleçleri gibi? başvurulan Özellikler eksikse veya karşılaşt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Anahtar Sözcükler](sql-query-keywords.md)
+- [Anahtar sözcükler](sql-query-keywords.md)
 - [SELECT yan tümcesi](sql-query-select.md)

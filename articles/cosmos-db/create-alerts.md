@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: 84c2ad3a24d944db6a55f3f21e8a2a0c4084d033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1042638dc622e6675c997bc6db8df1d072824816
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87100564"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099921"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Cosmos DB uyarı oluşturma
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Uyarılar, Azure Cosmos DB kaynaklarınızın kullanılabilirliğini ve yanıt hızını izlemek için yinelenen testler ayarlamak üzere kullanılır. Uyarılar size e-posta biçiminde bir bildirim gönderebilir veya ölçülerinizin biri eşiğe ulaştığında ya da etkinlik günlüğünde belirli bir olay günlüğe kaydedildiğinde bir Azure Işlevi yürütebilir.
 
@@ -33,7 +34,7 @@ Bu bölümde, istekler hız sınırlı olduğunda alınan 429 HTTP durum kodunu 
 
 1. Azure portal oturum açın [.](https://portal.azure.com/)
 
-1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **Uyarılar**' ı seçin.
+1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **Uyarılar** ' ı seçin.
 
 1. Uyarı kuralı oluştur bölmesini açmak için yeni uyarı kuralı düğmesini seçin.  
 
@@ -43,31 +44,31 @@ Bu bölümde, istekler hız sınırlı olduğunda alınan 429 HTTP durum kodunu 
 
    * **Abonelik** adınızı seçin.
 
-   * **Kaynak türü**için **Azure Cosmos DB hesapları** seçin.
+   * **Kaynak türü** için **Azure Cosmos DB hesapları** seçin.
 
    * Azure Cosmos hesabınızın **konumu** .
 
-   * Ayrıntıları doldurduktan sonra, seçilen kapsamdaki Azure Cosmos hesaplarının bir listesi görüntülenir. Uyarılarını yapılandırmak istediğiniz birini seçin ve **bitti**' yi seçin.
+   * Ayrıntıları doldurduktan sonra, seçilen kapsamdaki Azure Cosmos hesaplarının bir listesi görüntülenir. Uyarılarını yapılandırmak istediğiniz birini seçin ve **bitti** ' yi seçin.
 
 1. **Koşul** bölümünü doldurun:
 
    * **Sinyal mantığını Yapılandır** sayfasını açmak Için **Koşul Seç** bölmesini açın ve aşağıdakileri yapılandırın:
 
-   * Bir sinyal seçin. **Sinyal türü** bir **ölçüm** veya **etkinlik günlüğü**olabilir. Bu senaryo için **ölçümleri** seçin. Toplam İstek birimleri ölçümünde hız sınırlaması sorunları olduğunda bir uyarı almak istiyorsanız.
+   * Bir sinyal seçin. **Sinyal türü** bir **ölçüm** veya **etkinlik günlüğü** olabilir. Bu senaryo için **ölçümleri** seçin. Toplam İstek birimleri ölçümünde hız sınırlaması sorunları olduğunda bir uyarı almak istiyorsanız.
 
    * **İzleme hizmeti** için **Tümünü** seçin
 
-   * Bir **sinyal adı**seçin. HTTP durum kodları için uyarı almak üzere **Toplam Istek birimleri** sinyalini seçin.
+   * Bir **sinyal adı** seçin. HTTP durum kodları için uyarı almak üzere **Toplam Istek birimleri** sinyalini seçin.
 
    * Bir sonraki sekmede, uyarı tetiklemenin mantığını tanımlayabilir ve Azure Cosmos hesabınızın eğilimlerini görüntülemek için grafiği kullanabilirsiniz. **Toplam Istek birimleri** ölçümü, boyutları destekler. Bu boyutlar, ölçümü filtrelemenize izin verir. Herhangi bir boyut seçmezseniz, bu değer yoksayılır.
 
-   * **Boyut adı**olarak **StatusCode** öğesini seçin. **Özel değer Ekle** ' yi seçin ve durum kodunu 429 olarak ayarlayın.
+   * **Boyut adı** olarak **StatusCode** öğesini seçin. **Özel değer Ekle** ' yi seçin ve durum kodunu 429 olarak ayarlayın.
 
-   * **Uyarı mantığındaki** **eşiği** **statik**olarak ayarlayın. Statik eşik, kuralı değerlendirmek için Kullanıcı tanımlı bir eşik değeri kullanır, ancak dinamik eşikler ölçüm davranış modelini sürekli olarak öğrenmek ve eşikleri otomatik olarak hesaplamak için yerleşik makine öğrenimi algoritmaları kullanır.
+   * **Uyarı mantığındaki** **eşiği** **statik** olarak ayarlayın. Statik eşik, kuralı değerlendirmek için Kullanıcı tanımlı bir eşik değeri kullanır, ancak dinamik eşikler ölçüm davranış modelini sürekli olarak öğrenmek ve eşikleri otomatik olarak hesaplamak için yerleşik makine öğrenimi algoritmaları kullanır.
 
-   * **İşleci** **,** **toplama türü** , **Toplam**ve **eşik değerini** **100**olarak ayarlayın. Bu mantığa, istemciniz 429 durum koduna sahip 100 ' den fazla istek görürse uyarı tetiklenir. Toplama türünü, toplama ayrıntı düzeyini ve değerlendirme sıklığını, gereksiniminize göre de yapılandırabilirsiniz.
+   * **İşleci** **,** **toplama türü** , **Toplam** ve **eşik değerini** **100** olarak ayarlayın. Bu mantığa, istemciniz 429 durum koduna sahip 100 ' den fazla istek görürse uyarı tetiklenir. Toplama türünü, toplama ayrıntı düzeyini ve değerlendirme sıklığını, gereksiniminize göre de yapılandırabilirsiniz.
 
-   * Formu doldurduktan sonra **bitti**' yi seçin. Aşağıdaki ekran görüntüsünde, uyarı mantığının ayrıntıları gösterilmektedir:
+   * Formu doldurduktan sonra **bitti** ' yi seçin. Aşağıdaki ekran görüntüsünde, uyarı mantığının ayrıntıları gösterilmektedir:
 
      :::image type="content" source="./media/create-alerts/configure-alert-logic.png" alt-text="Fiyat sınırlı/429 istekleri için uyarı almak üzere mantığı yapılandırma":::
 
@@ -81,7 +82,7 @@ Bu bölümde, istekler hız sınırlı olduğunda alınan 429 HTTP durum kodunu 
 
    * Bu eylem grubunun oluşturulacağı aboneliği ve kaynak grubunu seçin.  
 
-   * Eyleminiz için bir ad girin ve **eylem türü**olarak **e-posta/SMS iletisi/gönderim/ses** ' i seçin. Aşağıdaki ekran görüntüsünde eylem türünün ayrıntıları gösterilmektedir:
+   * Eyleminiz için bir ad girin ve **eylem türü** olarak **e-posta/SMS iletisi/gönderim/ses** ' i seçin. Aşağıdaki ekran görüntüsünde eylem türünün ayrıntıları gösterilmektedir:
 
      :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Fiyat sınırlı/429 istekleri için uyarı almak üzere mantığı yapılandırma":::
 

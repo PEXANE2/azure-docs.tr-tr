@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 7ff1e2f00b20344fc19d797ed5bafdfbc2113b66
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f0c19130312db4e6ef500a0750f40359931d48d2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044675"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099122"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins nedir?
 
@@ -52,7 +52,7 @@ Azure dijital TWINS grafınızı, [**Azure Digital TWINS Explorer**](/samples/az
 
 Azure dijital TWINS, bu grafiği veri işleme ve iş mantığı ile güncel tutmak için zengin bir **olay sistemi** sağlar. Bu veri işlemeyi esnek ve özelleştirilmiş yöntemlerle yönlendirmek için [Azure işlevleri](../azure-functions/functions-overview.md)gibi dış işlem kaynaklarını bağlayabilirsiniz.
 
-Ayrıca, Azure Digital TWINS ' i güçlü **sorgu API 'si**kullanarak canlı yürütme ortamından öngörüleri de ayıklayabilirsiniz. API, özellik değerleri, ilişkiler, ilişki özellikleri, model bilgileri ve daha fazlasını içeren zengin arama koşulları ile sorgulama yapmanızı sağlar. Ayrıca, sorguları birleştirebilir, ortamınız hakkında çok çeşitli Öngörüler toplayıp sizin için önemli olan özel sorulara yanıt verebilirsiniz.
+Ayrıca, Azure Digital TWINS ' i güçlü **sorgu API 'si** kullanarak canlı yürütme ortamından öngörüleri de ayıklayabilirsiniz. API, özellik değerleri, ilişkiler, ilişki özellikleri, model bilgileri ve daha fazlasını içeren zengin arama koşulları ile sorgulama yapmanızı sağlar. Ayrıca, sorguları birleştirebilir, ortamınız hakkında çok çeşitli Öngörüler toplayıp sizin için önemli olan özel sorulara yanıt verebilirsiniz.
 
 ### <a name="input-from-iot-and-business-systems"></a>IoT ve iş sistemlerinden giriş
 
@@ -64,7 +64,7 @@ Ayrıca, REST API 'Leri veya bağlayıcıları [Logic Apps](../logic-apps/logic-
 
 ### <a name="output-to-tsi-storage-and-analytics"></a>TSI, Storage ve Analytics 'e çıkış
 
-Azure dijital TWINS modelinizdeki veriler ek analiz veya depolama için aşağı akış Azure hizmetlerine yönlendirilebilir. Bu, istediğiniz veri akışlarınızı barındırmak için [Olay Hub](../event-hubs/event-hubs-about.md)'ı, [Event Grid](../event-grid/overview.md)veya [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) kullanan **olay yolları**aracılığıyla sağlanır.
+Azure dijital TWINS modelinizdeki veriler ek analiz veya depolama için aşağı akış Azure hizmetlerine yönlendirilebilir. Bu, istediğiniz veri akışlarınızı barındırmak için [Olay Hub](../event-hubs/event-hubs-about.md)'ı, [Event Grid](../event-grid/overview.md)veya [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) kullanan **olay yolları** aracılığıyla sağlanır.
 
 Olay rotalarıyla gerçekleştirebileceğiniz bazı şeyler şunlardır:
 * Azure dijital TWINS verilerini [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md) depolama
@@ -90,18 +90,14 @@ Aşağıdaki diyagramda Azure Digital TWINS 'in daha büyük bir Azure IoT çöz
 
 :::image type="content" source="media/overview/solution-context.png" alt-text="Dijital TWINS 'i temsil eden düğümlerin grafiğini gösteren Azure Digital TWINS Explorer örnek uygulamasının ekran görüntüsü" border="false" lightbox="media/overview/solution-context.png":::
 
-## <a name="service-limits-in-public-preview"></a>Hizmet sınırları genel önizlemede
+## <a name="service-limits"></a>Hizmet sınırlamaları
 
-> [!IMPORTANT]
-> Azure dijital TWINS Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [*Microsoft Azure önizlemeleri Için ek kullanım koşulları*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Genel Önizleme sırasında Azure dijital TWINS sınırları listesi için bkz. [*Başvuru: genel önizleme hizmeti sınırları*](reference-service-limits.md).
+Azure dijital TWINS sınırları listesi için bkz. [*Başvuru: hizmet limitleri*](reference-service-limits.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure dijital TWINS 'in önceki önizleme sürümüyle çalıştıysanız, nelerin değiştiğini öğrenin:
-* [*Genel Bakış: önceki sürümden farklılıklar*](overview-differences.md)
+Azure dijital TWINS 'in (Ekim 2018) ilk önizleme sürümüyle çalıştıysanız, nelerin değiştiğini öğrenin:
+* [*Genel Bakış: ilk sürümden farklılıklar*](overview-differences.md)
 
 Veya ilk öğreticiyle Azure dijital ikgörüleri ile çalışmaya devam edin:
 

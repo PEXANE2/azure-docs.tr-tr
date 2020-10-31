@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 546187b49e1186d665fe32b3f8d632a0281bffa4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409383"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099683"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Hızlı başlangıç: Azure Cosmos DB Gremlin API hesabını kullanarak bir Node.js uygulaması derleme
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin konsolu](create-graph-gremlin-console.md)
@@ -95,7 +96,7 @@ Bu konsol uygulaması açık kaynaklı [Gremlin Node.js](https://www.npmjs.com/p
 
     ```
 
-  Yapılandırmaların hepsi *config.js*, [aşağıdaki bölümde](#update-your-connection-string)düzenliyoruz.
+  Yapılandırmaların hepsi *config.js* , [aşağıdaki bölümde](#update-your-connection-string)düzenliyoruz.
 
 * Farklı Gremlin işlemlerini yürütmek için bir dizi işlev tanımlanır. Bu, bunlardan biridir:
 
@@ -151,13 +152,13 @@ Bu konsol uygulaması açık kaynaklı [Gremlin Node.js](https://www.npmjs.com/p
 
 1. *config.js* dosyasını açın. 
 
-2. *config.js*, `config.endpoint` Azure Portal Cosmos DB hesabınızın **genel bakış** sayfasında bulunan **Gremlin uç noktası** değeriyle anahtarı girin. 
+2. *config.js* , `config.endpoint` Azure Portal Cosmos DB hesabınızın **genel bakış** sayfasında bulunan **Gremlin uç noktası** değeriyle anahtarı girin. 
 
     `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
     :::image type="content" source="./media/create-graph-nodejs/gremlin-uri.png" alt-text="Azure portal, Genel Bakış sayfasında erişim anahtarını görüntüleme ve kopyalama":::
 
-3. *config.js*, config. PrimaryKey değerini, Azure Portal Cosmos DB hesabınızın **anahtarlar** sayfasından **birincil anahtar** değeriyle birlikte girin. 
+3. *config.js* , config. PrimaryKey değerini, Azure Portal Cosmos DB hesabınızın **anahtarlar** sayfasından **birincil anahtar** değeriyle birlikte girin. 
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -191,9 +192,9 @@ module.exports = config;
 
 Artık Azure portalındaki Veri Gezgini'ne dönerek yeni grafik verilerinizi görüntüleyebilir, sorgulayabilir, değiştirebilir ve bu verilerle çalışabilirsiniz.
 
-Yeni veritabanı, Veri Gezgini'nin **Graflar** bölmesinde görüntülenir. Veritabanını ve ardından kapsayıcıyı genişletip **Graf**’ı seçin.
+Yeni veritabanı, Veri Gezgini'nin **Graflar** bölmesinde görüntülenir. Veritabanını ve ardından kapsayıcıyı genişletip **Graf** ’ı seçin.
 
-Örnek uygulama tarafından oluşturulan veriler, **Filtre Uygula**’yı seçtiğinizde **Graf** sekmesinin sonraki bölmesinde gösterilir.
+Örnek uygulama tarafından oluşturulan veriler, **Filtre Uygula** ’yı seçtiğinizde **Graf** sekmesinin sonraki bölmesinde gösterilir.
 
 Filtreyi test etmek için `g.V()` işlemini `.has('firstName', 'Thomas')` ile tamamlamayı deneyin. Değerin büyük küçük harfe duyarlı olduğunu unutmayın.
 

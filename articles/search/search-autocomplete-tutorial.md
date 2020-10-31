@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1796566c0a775e5810c387a01e0b54983727fa37
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 04123d06d22786c9dd2aa08c2dab1153f6d43375
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951409"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098459"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>İstemci uygulamalarına otomatik tamamlama ve öneriler ekleme
 
-Yazarken ara, Kullanıcı tarafından başlatılan sorguların üretkenliğini iyileştirmeye yönelik ortak bir tekniktir. Azure Bilişsel Arama, bu deneyim kısmi girişe dayalı bir terimi veya tümceciği tamamlayan *AutoComplete*aracılığıyla desteklenir ("Micro" ile "Microsoft" arasında tamamlanır). Başka bir form *öneriler*: eşleşen belgelerin kısa bir listesi (ayrıntı sayfasına bağlantı yapabilmeniz IÇIN bir kimliği olan kitap başlıkları döndürülüyor). Hem otomatik tamamlama hem de öneriler dizindeki bir eşleşmeden tahmin edilir. Hizmet, sıfır sonuç döndüren sorgular sunmaz.
+Yazarken ara, Kullanıcı tarafından başlatılan sorguların üretkenliğini iyileştirmeye yönelik ortak bir tekniktir. Azure Bilişsel Arama, bu deneyim kısmi girişe dayalı bir terimi veya tümceciği tamamlayan *AutoComplete* aracılığıyla desteklenir ("Micro" ile "Microsoft" arasında tamamlanır). Başka bir form *öneriler* : eşleşen belgelerin kısa bir listesi (ayrıntı sayfasına bağlantı yapabilmeniz IÇIN bir kimliği olan kitap başlıkları döndürülüyor). Hem otomatik tamamlama hem de öneriler dizindeki bir eşleşmeden tahmin edilir. Hizmet, sıfır sonuç döndüren sorgular sunmaz.
 
 Bu deneyimleri Azure Bilişsel Arama uygulamak için şunlar gerekir:
 
@@ -131,7 +131,7 @@ source: "/home/suggest?highlights=false&fuzzy=true&",
 
 ### <a name="enable-highlighting"></a>Vurgulamayı etkinleştir
 
-Vurgulama, girilen yazı tipi stilini, girişe karşılık gelen sonuçdaki karakterlere uygular. Örneğin, kısmi giriş "mikro" ise, sonuç **mikro**Soft, **mikro**kapsam vs. olarak görünür. Vurgulama, öneri işleviyle satır içi olarak tanımlanmış HighlightPreTag ve HighlightPostTag parametrelerini temel alır.
+Vurgulama, girilen yazı tipi stilini, girişe karşılık gelen sonuçdaki karakterlere uygular. Örneğin, kısmi giriş "mikro" ise, sonuç **mikro** Soft, **mikro** kapsam vs. olarak görünür. Vurgulama, öneri işleviyle satır içi olarak tanımlanmış HighlightPreTag ve HighlightPostTag parametrelerini temel alır.
 
 ```javascript
 source: "/home/suggest?highlights=true&fuzzy=true&",
@@ -181,7 +181,7 @@ Suggest işlevi, arama terimi girişine ek olarak isabet vurgularının veya ben
 
 ## <a name="autocomplete"></a>Otomatik Tamamlama
 
-Şimdiye kadar, arama UX kodu önerilerle ortalandı. Sonraki kod bloğunda, Azure Bilişsel Arama AutoComplete için bir istek geçirerek XDSoft jQuery UI AutoComplete işlevini kullanarak AutoComplete gösterilmektedir. Önerilerle birlikte, bir C# uygulamasında, kullanıcı etkileşimini destekleyen kod **index. cshtml**'ye gider.
+Şimdiye kadar, arama UX kodu önerilerle ortalandı. Sonraki kod bloğunda, Azure Bilişsel Arama AutoComplete için bir istek geçirerek XDSoft jQuery UI AutoComplete işlevini kullanarak AutoComplete gösterilmektedir. Önerilerle birlikte, bir C# uygulamasında, kullanıcı etkileşimini destekleyen kod **index. cshtml** 'ye gider.
 
 ```javascript
 $(function () {
@@ -253,4 +253,4 @@ Uçtan uca yönergeler veya hem arama hem de arama-yazma deneyimlerini gösteren
 
 + [Öğretici: C# ' de ilk uygulamanızı oluşturma (Ders 3)](tutorial-csharp-type-ahead-and-suggestions.md)
 + [C# kod örneği: Azure-Search-DotNet-Samples/Create-First-App/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
-+ [REST yan yana kod örneği ile C# ve JavaScript](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)
++ [REST yan yana kod örneği ile C# ve JavaScript](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

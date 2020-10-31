@@ -9,14 +9,15 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 2229eea7b91168507ea9568a1e53930cf983b1df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d0c8433fff58854cb77a4e806058eae1937e71b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171939"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101128"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Azure Tablo Depolama ve Azure Cosmos DB Tablo API’sini Ruby ile kullanma
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -69,7 +70,7 @@ Bu değerleri Azure portalında bir klasik veya Kaynak Yöneticisi depolama hesa
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 2. Kullanmak istediğiniz depolama hesabına gidin.
-3. Sağdaki Ayarlar dikey penceresinde **Erişim Anahtarları**'na tıklayın.
+3. Sağdaki Ayarlar dikey penceresinde **Erişim Anahtarları** 'na tıklayın.
 4. Açılan Erişim anahtarları dikey penceresinde, 1. ve 2. erişim anahtarını göreceksiniz. Bunlardan birini kullanabilirsiniz.
 5. Anahtarı panoya kopyalamak için Kopyala simgesine tıklayın.
 
@@ -97,7 +98,7 @@ end
 
 ## <a name="add-an-entity-to-a-table"></a>Tabloya bir varlık ekleme
 
-Bir varlık eklemek için ilk olarak varlık özelliklerinizi tanımlayan bir karma değer nesnesi oluşturun. Her varlık için bir **PartitionKey** ve **RowKey** belirtmeniz gerektiğini unutmayın. Bunlar, varlıklarınızın benzersiz tanımlayıcılarıdır ve diğer özelliklerinizden çok daha hızlı sorgulanabilen değerlerdir. Azure Depolama, tablonun varlıklarını çok sayıda depolama düğümüne otomatik olarak dağıtmak için **PartitionKey** değerini kullanır. Aynı **PartitionKey** değerine sahip varlıklar aynı düğüme depolanır. **RowKey**, varlığın ait olduğu bölümdeki benzersiz kimliğidir.
+Bir varlık eklemek için ilk olarak varlık özelliklerinizi tanımlayan bir karma değer nesnesi oluşturun. Her varlık için bir **PartitionKey** ve **RowKey** belirtmeniz gerektiğini unutmayın. Bunlar, varlıklarınızın benzersiz tanımlayıcılarıdır ve diğer özelliklerinizden çok daha hızlı sorgulanabilen değerlerdir. Azure Depolama, tablonun varlıklarını çok sayıda depolama düğümüne otomatik olarak dağıtmak için **PartitionKey** değerini kullanır. Aynı **PartitionKey** değerine sahip varlıklar aynı düğüme depolanır. **RowKey** , varlığın ait olduğu bölümdeki benzersiz kimliğidir.
 
 ```ruby
 entity = { "content" => "test entity",

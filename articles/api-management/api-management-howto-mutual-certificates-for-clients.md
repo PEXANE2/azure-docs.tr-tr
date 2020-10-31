@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 19e0d741d959eba704f26e7e8f7b5d311aa77775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e5522c162e08f0257bd6f20b058bf8bb858cff3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904879"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099355"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management'ta istemci sertifikası kimlik doğrulamasını kullanarak API'lerin güvenliğini sağlama
 
@@ -93,9 +93,8 @@ Aşağıdaki örnek, API Management yüklenen sertifikalara karşı bir istemci 
 
 > [!TIP]
 > Bu [makalede](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) açıklanan istemci sertifikası kilitlenmesi sorunu, tek bir şekilde kendi kendine bildirimde bulunabilir. Örneğin, istekler `403 Forbidden` dondurduktan sonra istek zaman aşımından sonra durum koduna neden `context.Request.Certificate` olur `null` . Bu sorun genellikle `POST` `PUT` yaklaşık 60 KB veya daha büyük içerik uzunluğuna sahip olan istekleri etkiler.
-> Bu sorunun oluşmasını önlemek için, aşağıda gösterildiği gibi, "özel etki alanları" dikey penceresinde istenen ana bilgisayar adları için "istemci sertifikası anlaş" ayarını etkinleştirin. Bu özellik, tüketim katmanında kullanılamaz.
+> Bu sorunun oluşmasını önlemek için, "özel etki alanları" dikey penceresindeki istenen ana bilgisayar adları için "istemci sertifikası anlaş" ayarını bu belgenin ilk görüntüsünde gösterildiği gibi etkinleştirin. Bu özellik, tüketim katmanında kullanılamaz.
 
-![İstemci sertifikası ile anlaş](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

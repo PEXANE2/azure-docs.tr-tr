@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: dc7d16fe809e3e324f384b0d9e088dd7e6ab261c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c724925a12535c561b035296e374691f3fb2689
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74111490"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098357"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Bing Haber Arama API'si uç noktaları
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 **Haber Arama API 'si** , haber makalelerini, Web sayfalarını, görüntüleri, Videoları ve [varlıkları](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)döndürür. Varlıklar bir kişi, yer veya konu hakkında özet bilgiler içerir.
 
@@ -39,7 +44,7 @@ Arama sorgusunu temel alan haber öğelerini döndürür. Arama sorgusu boşsa, 
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-Kategoriye göre en popüler haber öğelerini döndürür. , Veya kullanarak popüler iş, spor veya eğlence makalelerini özellikle isteyebilirsiniz `category=business` `category=sports` `category=entertainment` . `category`Parametresi yalnızca URL ile birlikte kullanılabilir `/news` . Kategorileri belirtmek için bazı biçimsel gereksinimler vardır; `category` [sorgu parametresi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) belgelerindeki bölümüne bakın. Arama teriminizi kodlayıp parametreye ekleyerek URL ile bir sorgu gönderin `q=""` . Kullanılabilirlik için bkz. [Desteklenen ülkeler/bölgeler ve pazarlar](language-support.md#supported-markets-for-news-endpoint).
+Kategoriye göre en popüler haber öğelerini döndürür. , Veya kullanarak popüler iş, spor veya eğlence makalelerini özellikle isteyebilirsiniz `category=business` `category=sports` `category=entertainment` .  `category`Parametresi yalnızca URL ile birlikte kullanılabilir `/news` . Kategorileri belirtmek için bazı biçimsel gereksinimler vardır; `category` [sorgu parametresi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) belgelerindeki bölümüne bakın. Arama teriminizi kodlayıp parametreye ekleyerek URL ile bir sorgu gönderin `q=""` . Kullanılabilirlik için bkz. [Desteklenen ülkeler/bölgeler ve pazarlar](language-support.md#supported-markets-for-news-endpoint).
 
 ### <a name="trending-news-topics"></a>Popüler Haberler konuları 
 

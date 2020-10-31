@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: c030c1548a931bc749ad799a5aa88813c35d19cd
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 250a06d81f929d0e3d3befa1e7494db13044fc97
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997032"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101281"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme
 
@@ -48,7 +48,7 @@ Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve kullanılabi
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. Azure portal sol bölmeden **izleyici** ' yi seçin ve **Öngörüler** bölümünde **depolama hesapları**' nı seçin.
+2. Azure portal sol bölmeden **izleyici** ' yi seçin ve **Öngörüler** bölümünde **depolama hesapları** ' nı seçin.
 
     ![Birden çok depolama hesabı görünümü](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
@@ -64,10 +64,10 @@ Seçili abonelik için **genel bakış** çalışma kitabında tablo, abonelik i
 
 Açılan listelerin altındaki sayaç kutucuğu, abonelikteki toplam depolama hesabı sayısını kaydeder ve toplamın kaç tane seçili olduğunu yansıtır. Çalışma kitabındaki, işlem ölçümlerini veya hataları rapor eden sütunlar için koşullu renk kodlaması veya heavmaps vardır. En büyük renk en yüksek değere sahiptir ve en düşük değere göre daha açık bir renge sahiptir. Hata tabanlı sütunlarda değer kırmızı, ölçüm tabanlı sütunlar için ise değer mavi renkte olur.
 
-**Kullanılabilirlik**, **e2e gecikme süresi**, **sunucu gecikmesi**ve **işlem hata türü/hata** sütunlarında bir değer seçin, sizi bu depolama hesabı için seçilen sütunla eşleşen belirli depolama ölçümleri türüne uyarlanmış bir rapora yönlendirir. Her bir kategorinin çalışma kitapları hakkında daha fazla bilgi için aşağıdaki [ayrıntılı depolama çalışma kitapları](#detailed-storage-workbooks) bölümüne bakın. 
+**Kullanılabilirlik** , **e2e gecikme süresi** , **sunucu gecikmesi** ve **işlem hata türü/hata** sütunlarında bir değer seçin, sizi bu depolama hesabı için seçilen sütunla eşleşen belirli depolama ölçümleri türüne uyarlanmış bir rapora yönlendirir. Her bir kategorinin çalışma kitapları hakkında daha fazla bilgi için aşağıdaki [ayrıntılı depolama çalışma kitapları](#detailed-storage-workbooks) bölümüne bakın. 
 
 >[!NOTE]
->Raporda hangi hataların gösterilebileceği hakkında ayrıntılı bilgi için bkz. [yanıt türü şeması](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions) ve **serverothererror**, **clienentothererror**, **clientkısıtlanror**gibi yanıt türlerini arayın. Seçili depolama hesaplarına bağlı olarak, üçten fazla üç tür hata bildirildiğinde, diğer tüm hatalar **diğeri**kategorisi altında gösterilir.
+>Raporda hangi hataların gösterilebileceği hakkında ayrıntılı bilgi için bkz. [yanıt türü şeması](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions) ve **serverothererror** , **clienentothererror** , **clientkısıtlanror** gibi yanıt türlerini arayın. Seçili depolama hesaplarına bağlı olarak, üçten fazla üç tür hata bildirildiğinde, diğer tüm hatalar **diğeri** kategorisi altında gösterilir.
 
 Varsayılan **kullanılabilirlik** eşiği:
 
@@ -94,7 +94,7 @@ Bir depolama hesabından doğrudan VM'ler için Azure İzleyici erişmek için:
 
 2. Listeden bir depolama hesabı seçin. Izleme bölümünde Öngörüler ' i seçin.
 
-    ![Seçili depolama hesabına genel bakış sayfası](./media/storage-insights-overview/storage-account-direct-overview-01.png)
+    ![Depolama hesabı için genel bakış çalışma kitabı sayfasını gösteren ekran görüntüsü.](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
 Depolama hesabı için **genel bakış** çalışma kitabında, hızlı bir şekilde değerlendirmenize yardımcı olan çeşitli depolama performans ölçümleri gösterilmektedir:
 
@@ -104,13 +104,13 @@ Depolama hesabı için **genel bakış** çalışma kitabında, hızlı bir şek
 
 * Ölçüm ve durum kutucukları, hizmet kullanılabilirliğini, depolama hizmetindeki toplam işlem sayısını, E2E gecikmesini ve sunucu gecikmesini vurgular.
 
-**Hatalara**, **performansa**, **kullanılabilirliğine**ve **kapasiteye** yönelik düğmelerden birini seçmek ilgili çalışma kitabını açar. 
+**Hatalara** , **performansa** , **kullanılabilirliğine** ve **kapasiteye** yönelik düğmelerden birini seçmek ilgili çalışma kitabını açar. 
 
 ![Seçili depolama hesabına genel bakış sayfası](./media/storage-insights-overview/storage-account-capacity-01.png)
 
 ## <a name="detailed-storage-workbooks"></a>Ayrıntılı depolama çalışma kitapları
 
-Birden fazla depolama hesabına **genel bakış** çalışma kitabındaki **kullanılabilirlik**, **e2e gecikme süresi**, **sunucu gecikmesi**ve **işlem hata türü/hata** sütunlarında bir değer seçtiğinizden veya belirli bir depolama hesabındaki **genel bakış** çalışma kitabından **hatalara**, **performansa**, **kullanılabilirliğe**ve **kapasiteye** yönelik düğmelerden birini seçerek, her biri bu kategoriye özel bir dizi etkileşimli depolama ile ilgili bilgi sağlar.  
+Birden fazla depolama hesabına **genel bakış** çalışma kitabındaki **kullanılabilirlik** , **e2e gecikme süresi** , **sunucu gecikmesi** ve **işlem hata türü/hata** sütunlarında bir değer seçtiğinizden veya belirli bir depolama hesabındaki **genel bakış** çalışma kitabından **hatalara** , **performansa** , **kullanılabilirliğe** ve **kapasiteye** yönelik düğmelerden birini seçerek, her biri bu kategoriye özel bir dizi etkileşimli depolama ile ilgili bilgi sağlar.  
 
 * **Kullanılabilirlik** , **kullanılabilirlik** çalışma kitabını açar. Depolama hesabında tanımlanan, seçili zaman aralığını temsil eden bir eğilim çizgisi ve hesaptaki her bir veri hizmeti için bir kullanılabilirlik eğilimi grafiği içeren her nesnenin kullanılabilir sistem durumunu gösteren bir tablo olan Azure depolama hizmeti 'nin geçerli sistem durumunu gösterir.  
 
@@ -157,7 +157,7 @@ Bu bölümde, veri analizi ihtiyaçlarınızı desteklemeye yönelik olarak öze
 
 1. Portalda **izleyici** ' yi seçin ve ardından sol bölmedeki **depolama hesapları** ' nı seçin.
 
-2. **Genel bakış** çalışma kitabında, komut çubuğundan **Düzenle**' yi seçin.
+2. **Genel bakış** çalışma kitabında, komut çubuğundan **Düzenle** ' yi seçin.
 
 3. **Abonelikler** açılan listesinden, varsayılan olarak kullanmak istediğiniz bir veya daha fazla aboneliği seçin. Çalışma kitabının toplam 10 aboneliği seçmeyi desteklediğini unutmayın.  
 
@@ -174,7 +174,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 * Ölçüyü kaldırma
 * Renk işlemeyi Değiştir
 
-Önceden oluşturulmuş **hatalardan**, **performans**, **kullanılabilirlik**ve **Kapasite** çalışma kitaplarının herhangi birine karşı aynı değişiklikleri gerçekleştirebilirsiniz.
+Önceden oluşturulmuş **hatalardan** , **performans** , **kullanılabilirlik** ve **Kapasite** çalışma kitaplarının herhangi birine karşı aynı değişiklikleri gerçekleştirebilirsiniz.
 
 1. Portalda **izleyici** ' yi seçin ve ardından sol bölmedeki **depolama hesapları** ' nı seçin.
 
@@ -182,7 +182,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 
     ![Çalışma kitabını değiştirmek için Düzenle ' yi seçin](./media/storage-insights-overview/workbook-edit-workbook.png)
 
-3. Ölçümler bölümünün yanındaki **Düzenle**' yi seçin.
+3. Ölçümler bölümünün yanındaki **Düzenle** ' yi seçin.
 
     ![Kapasite çalışma kitabı ölçümlerini değiştirmek için Düzenle ' yi seçin](./media/storage-insights-overview/edit-metrics-capacity-workbook-01.png)
 
@@ -190,7 +190,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 
     ![Sütun ayarlarını Düzenle](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
-5. **Sütun ayarlarını Düzenle** bölmesinde, **Columns** **Microsoft. Storage/Storageaccounts-Capacity-usedcapacity zaman çizelgesi $ | sütunları bölümünde öğesini seçin. Hesap kapasite zaman çizelgesi $** ve açılan liste **sütunu Işleyicisinin** altında **gizli**öğesini seçin.
+5. **Sütun ayarlarını Düzenle** bölmesinde, **Columns** **Microsoft. Storage/Storageaccounts-Capacity-usedcapacity zaman çizelgesi $ | sütunları bölümünde öğesini seçin. Hesap kapasite zaman çizelgesi $** ve açılan liste **sütunu Işleyicisinin** altında **gizli** öğesini seçin.
 
 6. Değişiklerinizi uygulamak için **Kaydet ve Kapat ' ı** seçin.
 
@@ -198,7 +198,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 
 1. Ölçüm kılavuzunda **sütun ayarları** ' nı seçin.
 
-2. **Sütun ayarlarını Düzenle** bölmesinde, Microsoft **sütunları** bölümünde ' ı seçin **. depolama/Storageaccounts-kapasite-usedcapacity $ `|` Microsoft. Storage/Storageaccounts/Blobservices-Capacity-blobcapacity $ `|` Microsoft. Storage/Storageaccounts/fileservices-Capacity-filecapacity $ `|` Microsoft. Storage/Storageaccounts/queueservices-Capacity-queuecapacity $ `|` Microsoft. Storage/Storageaccounts/tableservices-Capacity-tablecapacity $**. Aşağı açılan liste **renk paleti**altında **yeşil**' i seçin.
+2. **Sütun ayarlarını Düzenle** bölmesinde, Microsoft **sütunları** bölümünde ' ı seçin **. depolama/Storageaccounts-kapasite-usedcapacity $ `|` Microsoft. Storage/Storageaccounts/Blobservices-Capacity-blobcapacity $ `|` Microsoft. Storage/Storageaccounts/fileservices-Capacity-filecapacity $ `|` Microsoft. Storage/Storageaccounts/queueservices-Capacity-queuecapacity $ `|` Microsoft. Storage/Storageaccounts/tableservices-Capacity-tablecapacity $** . Aşağı açılan liste **renk paleti** altında **yeşil** ' i seçin.
 
 3. Değişiklerinizi uygulamak için **Kaydet ve Kapat ' ı** seçin.
 
@@ -214,13 +214,13 @@ Bu örnekte, depolama hesabı kapasite çalışma kitabıyla birlikte çalışı
 
 3. Çalışma kitabında kullanılabilirlik çalışma kitabına geçiş yapmak için **kullanılabilirlik** ' i seçin ve ardından komut çubuğundan **Düzenle** ' yi seçin. 
 
-4. Sayfanın en altına aşağı kaydırın ve **API kılavuzunun kullanılabilirliği** ' nin yanındaki sol tarafta bulunan **Düzenle**' yi seçin.
+4. Sayfanın en altına aşağı kaydırın ve **API kılavuzunun kullanılabilirliği** ' nin yanındaki sol tarafta bulunan **Düzenle** ' yi seçin.
 
     ![API adına göre kullanılabilirliği düzenleme kılavuz ayarları](./media/storage-insights-overview/availability-workbook-avail-by-apiname.png)
 
-5. **Sütun ayarları** ' nı seçin ve ardından **sütun ayarlarını Düzenle** bölmesinde, **sütunlar** bölümünde **kullanılabilirlik (%) seçeneğini belirleyin. (Eşikler + biçimlendirilen)**.
+5. **Sütun ayarları** ' nı seçin ve ardından **sütun ayarlarını Düzenle** bölmesinde, **sütunlar** bölümünde **kullanılabilirlik (%) seçeneğini belirleyin. (Eşikler + biçimlendirilen)** .
 
-6. **Kritik** sistem durumu için değeri **90** ' den **85** ' e değiştirin ve ardından **Kaydet ve Kapat**' a tıklayın.
+6. **Kritik** sistem durumu için değeri **90** ' den **85** ' e değiştirin ve ardından **Kaydet ve Kapat** ' a tıklayın.
 
     ![Kritik durum için kullanılabilirlik eşik değerini değiştirme](./media/storage-insights-overview/edit-column-settings-capacity-workbook-01.png)
 
