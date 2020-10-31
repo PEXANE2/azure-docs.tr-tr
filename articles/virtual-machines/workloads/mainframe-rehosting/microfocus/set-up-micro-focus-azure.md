@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 11fde4480f4e2ed9feda00fa2af0e5937a77b9ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd8da9ae7e31fb60ba0ca553f5aa304ccd3621d2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986879"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127187"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Azure 'da Micro Focus Enterprise Server 5,0 ve Enterprise Developer 5,0 'yi yükler
 
@@ -29,7 +29,7 @@ Bu kurulum, Azure Marketi 'nden Windows Server 2016 görüntüsünü çalıştı
 
 Enterprise Server için karşılık gelen geliştirme ortamı, Microsoft Visual Studio 2017 veya üzeri, Visual Studio Community (indirme için ücretsiz) veya çakışan küreler üzerinde çalışan Enterprise Developer ' dır. Bu makalede, Visual Studio 2017 veya üzeri yüklü bir Windows Server 2016 sanal makinesi kullanılarak nasıl dağıtılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce Şu önkoşullara göz atın:
 
@@ -47,7 +47,7 @@ Başlamadan önce Şu önkoşullara göz atın:
 
 ## <a name="install-enterprise-server"></a>Enterprise Server’ı yükleme
 
-1.  Daha iyi güvenlik ve yönetilebilirlik için, yalnızca bu proje için yeni bir kaynak grubu oluşturmayı düşünün — Örneğin, **Rgmikro Focusentserver**. Bir listede daha kolay olmasını sağlamak üzere kaynak türünü seçmek için Azure 'daki adın ilk kısmını kullanın.
+1.  Daha iyi güvenlik ve yönetilebilirlik için, yalnızca bu proje için yeni bir kaynak grubu oluşturmayı düşünün — Örneğin, **Rgmikro Focusentserver** . Bir listede daha kolay olmasını sağlamak üzere kaynak türünü seçmek için Azure 'daki adın ilk kısmını kullanın.
 
 2.  Sanal makine oluşturur. Azure Marketi 'nden istediğiniz sanal makineyi ve işletim sistemini seçin. Önerilen bir kurulum aşağıda verilmiştir:
 
@@ -73,11 +73,11 @@ Başlamadan önce Şu önkoşullara göz atın:
 
 9.  Yüklemeyi başlatmak için dosyaya çift tıklayın. İlk pencerede, yükleme konumunu seçin ve Son Kullanıcı Lisans sözleşmesini kabul edin.
 
-    ![Mikro odaklı kurumsal sunucu kurulum ekranı](media/install-image-1.png)
+    ![Ekran görüntüsü, yüklemeyi başlatabileceğiniz mikro odak kurumsal sunucu iletişim kutusunu gösterir.](media/install-image-1.png)
 
     Kurulum tamamlandığında, aşağıdaki ileti görünür:
 
-    ![Mikro odaklı kurumsal sunucu kurulum ekranı](media/install-image-2.png)
+    ![Ekran görüntüsü, mikro odaklı kurumsal sunucu iletişim kutusunda bir başarı iletisi gösterir.](media/install-image-2.png)
 
  ### <a name="check-for-updates"></a>Güncelleştirmeleri denetle
 
@@ -87,9 +87,9 @@ Yükleme sonrasında, Microsoft C++ yeniden dağıtılabilir ve .NET Framework g
 
 1.  Micro Focus lisans yönetimini başlatın.
 
-2.  **Start** \> **Micro Focus License Manager** \> **lisans yönetimini**Başlat ' ı seçin ve ardından **Yükle** sekmesine tıklayın. karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, `mflic` daha önce VM 'ye yüklenen * dosyasına gidin ve **Lisansları Yükleme ' yi**seçin.
+2.  **Start** \> **Micro Focus License Manager** \> **lisans yönetimini** Başlat ' ı seçin ve ardından **Yükle** sekmesine tıklayın. karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında** , `mflic` daha önce VM 'ye yüklenen * dosyasına gidin ve **Lisansları Yükleme ' yi** seçin.
 
-    ![Mikro odaklı lisans yönetimi iletişim kutusu](media/install-image-3.png)
+    ![Ekran görüntüsü, Lisans yüklemesi ' ni seçebileceğiniz mikro odak lisans yönetimi iletişim kutusunu gösterir.](media/install-image-3.png)
 
 3.  Enterprise Server 'ın yüklendiğini doğrulayın. Şu URL 'YI kullanarak bir tarayıcıdan Enterprise Server yönetim sitesini başlatmayı deneyin: `http://localhost:86/` . Kurumsal sunucu yönetim sayfası gösterildiği gibi görüntülenir.
 
@@ -97,9 +97,9 @@ Yükleme sonrasında, Microsoft C++ yeniden dağıtılabilir ve .NET Framework g
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>Geliştirici makinesine Enterprise Developer 'ı yükler
 
-1.  Daha önce oluşturulmuş kaynak grubunu (örneğin, **Rgmikro Focusentserver**) seçin ve ardından Geliştirici görüntüsünü seçin.
+1.  Daha önce oluşturulmuş kaynak grubunu (örneğin, **Rgmikro Focusentserver** ) seçin ve ardından Geliştirici görüntüsünü seçin.
 
-2.  Sanal makinede oturum açmak için **genel bakış** bölümüne gidin ve **Bağlan**' ı seçin. Bu oturum açma, bir RDP oturumu başlatır. VM için oluşturduğunuz kimlik bilgilerini kullanarak oturum açın.
+2.  Sanal makinede oturum açmak için **genel bakış** bölümüne gidin ve **Bağlan** ' ı seçin. Bu oturum açma, bir RDP oturumu başlatır. VM için oluşturduğunuz kimlik bilgilerini kullanarak oturum açın.
 
 3.  RDP oturumunda, aşağıdaki iki dosyayı yükleyin (isterseniz sürükleyip bırakın):
 
@@ -115,9 +115,9 @@ Yükleme sonrasında, Microsoft C++ yeniden dağıtılabilir ve .NET Framework g
 
     ![Kurulum başarılı iletisi](media/install-image-6.png)
 
-6.  Micro Focus lisans yöneticisini, yalnızca kurumsal sunucu için yaptığınız gibi başlatın. **Start** \> **Micro Focus License Manager** \> **lisans yönetimini**Başlat ' ı seçin ve sonra da **Install** sekmesine tıklayın.
+6.  Micro Focus lisans yöneticisini, yalnızca kurumsal sunucu için yaptığınız gibi başlatın. **Start** \> **Micro Focus License Manager** \> **lisans yönetimini** Başlat ' ı seçin ve sonra da **Install** sekmesine tıklayın.
 
-7.  Karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, `mflic` daha önce VM 'ye yüklenen dosyaya gidin ve  **Lisansları Yükleme ' yi**seçin.
+7.  Karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında** , `mflic` daha önce VM 'ye yüklenen dosyaya gidin ve  **Lisansları Yükleme ' yi** seçin.
 
     ![Mikro odaklı lisans yönetimi iletişim kutusu](media/install-image-7.png)
 

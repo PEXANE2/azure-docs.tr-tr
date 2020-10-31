@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: 879ea141a4621fac9e1774df64a63e9e56549012
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: a5c5d7ae4dbf1126d171c78bbd4e353f11402260
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026964"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126728"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -46,7 +46,7 @@ Daha fazla bilgi için bkz. [Microsoft ticari Market hub](https://aka.ms/commerc
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market için bir listeleme ücreti var mı?
 
-Hayır, ticari Market 'teki teklifleri yayımlama maliyeti yoktur. Satışın küçük bir yüzdesini, işlem ücreti olarak tutduk ve Market 'e, platform yeniliklerine ve ticari Market işlemlerine yatırım yaptık. Bu işlem ücreti, [Azure IP ortak satış](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) incentivized teklifleri ve tek bir Microsoft ekipleri uygulamasıyla veya en az iki Microsoft 365 eklentisi (Excel, PowerPoint, Word, Outlook ve SharePoint) ile Ilişkili olan appsource 'Ta ücretli SaaS teklifleri için azaltılır.
+Hayır, ticari Market 'teki teklifleri yayımlama maliyeti yoktur. Satışın küçük bir yüzdesini, işlem ücreti olarak tutduk ve Market 'e, platform yeniliklerine ve ticari Market işlemlerine yatırım yaptık. Bu işlem ücreti, [Azure IP ortak satış](./marketplace-co-sell.md) incentivized teklifleri ve tek bir Microsoft ekipleri uygulamasıyla veya en az iki Microsoft 365 eklentisi (Excel, PowerPoint, Word, Outlook ve SharePoint) ile Ilişkili olan appsource 'Ta ücretli SaaS teklifleri için azaltılır.
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'te bir yayımcı olmak Nasıl yaparım? Kaydolmak ister misiniz?
 
@@ -106,7 +106,7 @@ Iş ortağı merkezi erişimini yöneten dört ilgili rol vardır.
 
 Azure Active Directory (Azure AD) *genel yönetici* izinleri, Yeni Kullanıcı hesapları oluşturmak veya temel alınan dizindeki Konuk hesaplarını davet etmek için gereklidir. İş Ortağı Merkezi, Azure AD 'yi kimlik modeline uygular ve bir kuruluşun Azure AD örneği genellikle BT veya güvenlik ekipleri tarafından yönetilir ve denetlenir.
 
-Daha fazla bilgi için bkz. [Kullanıcı rolleri ve Izinleri atama](https://docs.microsoft.com/partner-center/permissions-overview).
+Daha fazla bilgi için bkz. [Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview).
 
 ### <a name="do-customers-need-a-subscription-for-microsoft-azure-cloud-services"></a>Müşterilerin Microsoft Azure Cloud Services abonelik yapması gerekiyor mu?
 

@@ -4,12 +4,12 @@ description: Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme hakk�
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 78119d3d7ff83ca237c1e668785439d943dcfd14
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900412"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126262"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme
 
@@ -29,7 +29,6 @@ Azure NetApp Files kullandığınızda aşağıdaki sınırlamalar geçerlidir:
 
 * Azure NetApp Files yalnızca [Seçili Azure bölgelerinde][anf-regions]kullanılabilir.
 * Azure NetApp Files kullanabilmeniz için, Azure NetApp Files hizmetine erişim verilmesi gerekir. Erişim için uygulamak üzere [Azure NetApp Files eklenebileceğinizi gönderim formunu][anf-waitlist]kullanabilirsiniz. Azure NetApp Files ekibinden resmi onay e-postasını yapana kadar Azure NetApp Files hizmetine erişemezsiniz.
-* Azure NetApp Files hizmetinizin AKS kümeniz ile aynı sanal ağda oluşturulması gerekir.
 * Bir AKS kümesinin ilk dağıtımından sonra, yalnızca Azure NetApp Files statik sağlama desteklenir.
 * Azure NetApp Files ile dinamik sağlamayı kullanmak için [NetApp Trident](https://netapp-trident.readthedocs.io/) sürüm 19,07 veya üstünü yükleyip yapılandırın.
 

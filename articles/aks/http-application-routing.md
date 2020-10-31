@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbedb20d9e5c75fd49c08950bbf5d459130206ce
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495157"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125878"
 ---
 # <a name="http-application-routing"></a>HTTP uygulaması yönlendirme
 
@@ -26,8 +26,8 @@ Eklenti etkinleştirildiğinde, aboneliğinizde bir DNS bölgesi oluşturur. DNS
 
 Eklenti iki bileşeni dağıtır: bir [Kubernetes giriş denetleyicisi][ingress] ve BIR [dış DNS][external-dns] denetleyicisi.
 
-- Giriş **denetleyicisi**: giriş denetleyicisi, yük dengeleyici türünde bir Kubernetes hizmeti kullanılarak internet 'e açıktır. Giriş denetleyicisi, uygulama uç noktalarına yollar oluşturan [Kubernetes giriş kaynaklarını][ingress-resource]izler ve uygular.
-- **Dış-DNS denetleyicisi**: Kubernetes giriş kaynaklarını izler ve KÜMEYE özgü DNS bölgesinde DNS A kayıtları oluşturur.
+- Giriş **denetleyicisi** : giriş denetleyicisi, yük dengeleyici türünde bir Kubernetes hizmeti kullanılarak internet 'e açıktır. Giriş denetleyicisi, uygulama uç noktalarına yollar oluşturan [Kubernetes giriş kaynaklarını][ingress-resource]izler ve uygular.
+- **Dış-DNS denetleyicisi** : Kubernetes giriş kaynaklarını izler ve KÜMEYE özgü DNS bölgesinde DNS A kayıtları oluşturur.
 
 ## <a name="deploy-http-routing-cli"></a>HTTP yönlendirmeyi dağıtma: CLı
 
@@ -78,7 +78,7 @@ Azure Cloud Shell'i kullanıyorsanız `kubectl` zaten yüklüdür. [az aks insta
 az aks install-cli
 ```
 
-`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials][] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup*Içinde *Myakscluster* adlı aks kümesinin kimlik bilgilerini alır:
+`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials][] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup* Içinde *Myakscluster* adlı aks kümesinin kimlik bilgilerini alır:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
@@ -112,7 +112,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -163,7 +163,7 @@ service/aks-helloworld created
 ingress.networking.k8s.io/aks-helloworld created
 ```
 
-*Aks- \<CLUSTER_SPECIFIC_DNS_ZONE\> HelloWorld*için bir Web tarayıcısı açın. Örneğin, *aks-HelloWorld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io* ve tanıtım uygulamasını gördiğinizi doğrulayın. Uygulamanın görünmesi birkaç dakika sürebilir.
+*Aks- \<CLUSTER_SPECIFIC_DNS_ZONE\> HelloWorld* için bir Web tarayıcısı açın. Örneğin, *aks-HelloWorld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io* ve tanıtım uygulamasını gördiğinizi doğrulayın. Uygulamanın görünmesi birkaç dakika sürebilir.
 
 ## <a name="remove-http-routing"></a>HTTP yönlendirmeyi kaldır
 
@@ -173,7 +173,7 @@ HTTP yönlendirme çözümü, Azure CLı kullanılarak kaldırılabilir. Bunu ya
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
-HTTP uygulama yönlendirme eklentisi devre dışı bırakıldığında, bazı Kubernetes kaynakları kümede kalabilir. Bu kaynaklar *Configmaps* ve *gizli*dizileri içerir ve *Kuto-System* ad alanında oluşturulur. Temiz bir kümeyi sürdürmek için bu kaynakları kaldırmak isteyebilirsiniz.
+HTTP uygulama yönlendirme eklentisi devre dışı bırakıldığında, bazı Kubernetes kaynakları kümede kalabilir. Bu kaynaklar *Configmaps* ve *gizli* dizileri içerir ve *Kuto-System* ad alanında oluşturulur. Temiz bir kümeyi sürdürmek için bu kaynakları kaldırmak isteyebilirsiniz.
 
 Aşağıdaki [kubectl Get][kubectl-get] komutlarını kullanarak *addon-http-Application-Routing* kaynaklarını arayın:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 46adbfee24ab463acdc4687c0465bbf50527a329
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f681c6c453c9c0955092c4f1574a54ea2c9973f5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790653"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126660"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için uygulama desenleri ve geliştirme stratejileri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -191,11 +191,11 @@ Aşağıdaki diyagramda, şirket içi bir senaryo ve bulut etkin çözümü gös
 
 Diyagramda görüldüğü gibi, trafiği birden çok sanal makineye dağıtır ve ayrıca bağlanılacak Web sunucusu veya uygulama sunucusu Azure Load Balancer ' nu belirler. Web ve uygulama sunucularının yük dengeleyici arkasında birden fazla örneğinin olması, sunum katmanının ve iş katmanının yüksek kullanılabilirliğini sağlar. Daha fazla bilgi için bkz. [SQL HADR gerektiren uygulama desenleri Için en iyi uygulamalar](#best-practices-for-application-patterns-requiring-sql-hadr).
 
-![Cloud Services ile uygulama desenleri](./media/application-patterns-development-strategies/IC728013.png)
+![Diyagram, Azure yük dengeleyici aracılığıyla bir Azure sanal ağındaki web rolü örneklerine bağlı şirket içi fiziksel veya sanal makineleri gösterir.](./media/application-patterns-development-strategies/IC728013.png)
 
 Bu uygulama modelini uygulamaya yönelik başka bir yaklaşım, aşağıdaki diyagramda gösterildiği gibi sunum katmanını ve iş katmanı bileşenlerini içeren birleştirilmiş bir Web rolü kullanmaktır. Bu uygulama stili, durum bilgisi içeren tasarım gerektiren uygulamalar için kullanışlıdır. Azure, Web ve çalışan rolleri için durum bilgisi olmayan işlem düğümleri sağladığından, oturum durumunu depolamak için aşağıdaki teknolojilerden birini kullanarak bir mantık uygulamanızı öneririz: [Azure önbelleğe alma](https://azure.microsoft.com/documentation/services/azure-cache-for-redis/), [Azure Tablo depolama](../../../cosmos-db/tutorial-develop-table-dotnet.md) veya [Azure SQL veritabanı](../../database/sql-database-paas-overview.md).
 
-![Cloud Services ile uygulama desenleri](./media/application-patterns-development-strategies/IC728014.png)
+![Diyagramda, bir Azure sanal ağındaki birleştirilmiş web/çalışan rolü örneklerine bağlı şirket içi fiziksel veya sanal makineler gösterilir.](./media/application-patterns-development-strategies/IC728014.png)
 
 ## <a name="pattern-with-azure-virtual-machines-azure-sql-database-and-azure-app-service-web-apps"></a>Azure sanal makineler, Azure SQL veritabanı ve Azure App Service (Web Apps) ile desenler
 Bu uygulama deseninin birincil amacı, çözümünüzde Azure hizmet olarak platform (IaaS) bileşenlerini nasıl birleştirebileceğinizi, çözümünüzde Azure hizmet olarak platform (PaaS) bileşenleri ile nasıl birleştirileceğini gösterir. Bu model, ilişkisel veri depolama için Azure SQL veritabanı ' na odaklanılmıştır. Hizmet sunumu olarak Azure altyapısının bir parçası olan Azure sanal makinesinde SQL Server içermez.

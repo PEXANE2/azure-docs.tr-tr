@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 510991c1afba9a5ffbfd77e855ee25d8b641bdd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76dc7693b1773038d610f9ed42eddad2c81e3eaf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226990"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126643"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory raporları için Azure Izleyici çalışma kitaplarını kullanma
 
@@ -54,7 +54,7 @@ Bu makalede:
  
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
 
@@ -83,15 +83,15 @@ Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. **Azure Active Directory**  >  **izleme**  >  **çalışma kitaplarına**gidin. 
+1. **Azure Active Directory**  >  **izleme**  >  **çalışma kitaplarına** gidin. 
 
-1. Bir rapor veya şablon seçin ya da araç çubuğunda **Aç**' ı seçin. 
+1. Bir rapor veya şablon seçin ya da araç çubuğunda **Aç** ' ı seçin. 
 
 ![Azure AD 'de Azure Izleyici çalışma kitaplarını bulma](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>Oturum açma Analizi
 
-Oturum açma çözümleme çalışma kitabına erişmek için **kullanım** bölümünde **oturum açma**işlemleri ' ni seçin. 
+Oturum açma çözümleme çalışma kitabına erişmek için **kullanım** bölümünde **oturum açma** işlemleri ' ni seçin. 
 
 Bu çalışma kitabı aşağıdaki oturum açma eğilimlerini gösterir:
 
@@ -128,7 +128,7 @@ Her eğilim için, aşağıdaki kategorilere göre bir döküm alırsınız:
 ## <a name="sign-ins-using-legacy-authentication"></a>Eski kimlik doğrulaması kullanan oturum açma işlemleri 
 
 
-[Eski kimlik doğrulaması](../conditional-access/block-legacy-authentication.md)kullanan oturum açma işlemleri için çalışma kitabına erişmek üzere, **kullanım** bölümünde **eski kimlik doğrulamasını kullanarak oturum açma**işlemlerini seçin. 
+[Eski kimlik doğrulaması](../conditional-access/block-legacy-authentication.md)kullanan oturum açma işlemleri için çalışma kitabına erişmek üzere, **kullanım** bölümünde **eski kimlik doğrulamasını kullanarak oturum açma** işlemlerini seçin. 
 
 Bu çalışma kitabı aşağıdaki oturum açma eğilimlerini gösterir:
 
@@ -159,7 +159,7 @@ Her eğilim için, uygulama ve protokole göre bir döküm alırsınız.
 ## <a name="sign-ins-by-conditional-access"></a>Koşullu erişime göre oturum açma işlemleri 
 
 
-Koşullu erişim [ilkelerine](../conditional-access/overview.md)göre oturum açma işlemleri için çalışma kitabına erişmek **üzere koşullu erişim bölümünde,** **koşullu erişime göre oturum açma**işlemlerini seçin. 
+Koşullu erişim [ilkelerine](../conditional-access/overview.md)göre oturum açma işlemleri için çalışma kitabına erişmek **üzere koşullu erişim bölümünde,** **koşullu erişime göre oturum açma** işlemlerini seçin. 
 
 Bu çalışma kitabı, devre dışı bırakılan oturum açma eğilimlerini gösterir. Her eğilimi aşağıdaki kategorilere göre filtreleyebilirsiniz:
 
@@ -174,7 +174,7 @@ Bu çalışma kitabı, devre dışı bırakılan oturum açma eğilimlerini gös
 
 Devre dışı bırakılan oturum açma işlemleri için, koşullu erişim durumuna göre bir döküm alırsınız.
 
-![Koşullu erişim durumu](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
+![Ekran görüntüsü koşullu erişim durumunu ve en son oturum açma işlemlerini gösterir.](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
 ## <a name="conditional-access-insights"></a>Koşullu Erişim İçgörüleri
@@ -194,12 +194,12 @@ Koşullu erişim öngörüleri için çalışma kitabına erişmek üzere koşul
 
 - **Veri görünümü**
 
-![Koşullu erişim durumu](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+![Ekran görüntüsü, koşullu erişim bölmesini seçebileceğiniz koşullu erişim bölmesini gösterir.](./media/howto-use-azure-monitor-workbooks/access-insights.png)
 
 
 Etki Özeti, seçilen ilkelerin belirli bir sonuç aldığı Kullanıcı veya oturum açma sayısını gösterir. Toplam, seçilen ilkelerin seçili zaman aralığında değerlendirildiği Kullanıcı veya oturum açma işlemlerinin sayısıdır. Çalışma kitabındaki verileri ilgili sonuç türü ile filtrelemek için bir kutucuğa tıklayın. 
 
-![Koşullu erişim durumu](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+![Ekran görüntüsü, toplam, başarı ve başarısızlık gibi sonuçları filtrelemek için kullanılacak kutucukları gösterir.](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
 
 Bu çalışma kitabı, seçilen ilkelerin altı koşuldan her biri tarafından ayrılmış etkisini de gösterir: 
 - **Cihaz durumu**
@@ -209,19 +209,15 @@ Bu çalışma kitabı, seçilen ilkelerin altı koşuldan her biri tarafından a
 - **Konum**
 - **Uygulamalar**
 
-![Koşullu erişim durumu](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+![Ekran görüntüsü, Toplam oturum açma filtresinden ayrıntıları gösterir.](./media/howto-use-azure-monitor-workbooks/device-platform.png)
 
 Ayrıca, çalışma kitabında seçilen parametrelere göre filtreleyerek tek tek oturum açma işlemlerini de inceleyebilirsiniz. Bireysel kullanıcıları arayın, oturum açma sıklığına göre sıralanmış ve ilgili oturum açma olaylarını görüntüleyin. 
 
-![Koşullu erişim durumu](./media/howto-use-azure-monitor-workbooks/filtered.png)
-
-
-
-
+![Ekran görüntüsü, gözden geçirebilmeniz için tek tek oturum açma işlemlerini gösterir.](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 ## <a name="sign-ins-by-grant-controls"></a>Atama denetimlerine göre oturum açma işlemleri
 
-Çalışma kitabına [denetimler](../conditional-access/controls.md)vererek oturum açma işlemleri için erişmek üzere, **koşullu erişim** bölümünde, **Denetim izni vererek oturum açma**işlemlerini seçin. 
+Çalışma kitabına [denetimler](../conditional-access/controls.md)vererek oturum açma işlemleri için erişmek üzere, **koşullu erişim** bölümünde, **Denetim izni vererek oturum açma** işlemlerini seçin. 
 
 Bu çalışma kitabı, aşağıdaki devre dışı oturum açma eğilimlerini gösterir:
 
@@ -261,7 +257,7 @@ Hataları gidermek için **oturum açma hatası analiz** çalışma kitabını k
 - Eski kimlik doğrulaması 
 
 
-Koşullu erişim verilerine göre oturum açma işlemleri için, **sorun giderme** bölümünde, **eski kimlik doğrulamasını kullanarak oturum açma**işlemlerini seçin. 
+Koşullu erişim verilerine göre oturum açma işlemleri için, **sorun giderme** bölümünde, **eski kimlik doğrulamasını kullanarak oturum açma** işlemlerini seçin. 
 
 Bu çalışma kitabı aşağıdaki oturum açma eğilimlerini gösterir:
 

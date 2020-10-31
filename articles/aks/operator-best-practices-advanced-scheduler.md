@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ile ilgili teknoloji ve tolerans, d�
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87530070"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125640"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) gelişmiş zamanlayıcı özellikleri için en iyi yöntemler
 
@@ -36,7 +36,7 @@ Kubernetes Zamanlayıcı, düğümlerde hangi iş yüklerinin çalıştırılaca
 * Yalnızca belirli yığınların zamanlanabileceğini gösteren bir düğüme bir **taınt** uygulanır.
 * Daha sonra bir **tolerans** , düğümün Taint *'e kabul* etmesine izin veren bir pod öğesine uygulanır.
 
-Bir aks kümesine Pod dağıttığınızda, Kubernetes yalnızca bir toleranation 'ın Taint ile hizalandığı düğümlerde Pod 'yi zamanlar. Örnek olarak, GPU desteği olan düğümler için AKS kümenizdeki bir düğüm havuzunuzun olduğunu varsayalım. *GPU*gibi bir ad, sonra da zamanlama için bir değer tanımlarsınız. Bu değeri *NoSchedule*olarak ayarlarsanız, Pod uygun toleransı tanımlamıyorsa Kubernetes Scheduler düğüm üzerinde pod zamanlayamaz.
+Bir aks kümesine Pod dağıttığınızda, Kubernetes yalnızca bir toleranation 'ın Taint ile hizalandığı düğümlerde Pod 'yi zamanlar. Örnek olarak, GPU desteği olan düğümler için AKS kümenizdeki bir düğüm havuzunuzun olduğunu varsayalım. *GPU* gibi bir ad, sonra da zamanlama için bir değer tanımlarsınız. Bu değeri *NoSchedule* olarak ayarlarsanız, Pod uygun toleransı tanımlamıyorsa Kubernetes Scheduler düğüm üzerinde pod zamanlayamaz.
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -52,7 +52,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -79,15 +79,15 @@ AKS 'deki bir düğüm havuzunu yükselttiğinizde, litre ve tolerans, yeni dü�
 
 - **Sanal makine ölçek kümeleri kullanan varsayılan kümeler**
   - Yeni ölçeklendirilen düğümlerin API tarafından belirtilen düğüm Taks 'leri almasını sağlamak için AKS API 'sinden [nodepool Taint][taint-node-pool] 'i kullanabilirsiniz.
-  - İki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2*. Düğüm havuzunu yükseltirsiniz.
-  - İki ek düğüm oluşturulur, *Düğüm3* ve *Düğüm4*ve litre sırasıyla geçirilir.
+  - İki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2* . Düğüm havuzunu yükseltirsiniz.
+  - İki ek düğüm oluşturulur, *Düğüm3* ve *Düğüm4* ve litre sırasıyla geçirilir.
   - Özgün *Düğüm1* ve *Düğüm2* silinir.
 
 - **Sanal makine ölçek kümesi desteği olmayan kümeler**
-  - Yine de iki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2*. Yükselttiğinizde, ek bir düğüm (*Düğüm3*) oluşturulur.
-  - *Düğüm1* 'in talar *Düğüm3*'e uygulanır, sonra *Düğüm1* silinir.
-  - Başka bir yeni düğüm oluşturulur (önceki *Düğüm1* silindiği için *Düğüm1*adında) ve *Düğüm2* talitre yeni *Düğüm1*uygulanır. Sonra, *Düğüm2* silinir.
-  - *Düğüm1* ' de *Düğüm3*olur ve *Düğüm2* *Düğüm1*olur.
+  - Yine de iki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2* . Yükselttiğinizde, ek bir düğüm ( *Düğüm3* ) oluşturulur.
+  - *Düğüm1* 'in talar *Düğüm3* 'e uygulanır, sonra *Düğüm1* silinir.
+  - Başka bir yeni düğüm oluşturulur (önceki *Düğüm1* silindiği için *Düğüm1* adında) ve *Düğüm2* talitre yeni *Düğüm1* uygulanır. Sonra, *Düğüm2* silinir.
+  - *Düğüm1* ' de *Düğüm3* olur ve *Düğüm2* *Düğüm1* olur.
 
 AKS 'deki bir düğüm havuzunu ölçeklendirdiğiniz zaman, litre ve tolerans, tasarıma göre yerine geçer.
 
@@ -113,7 +113,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -131,9 +131,9 @@ Düğüm seçicileri kullanma hakkında daha fazla bilgi için bkz. [düğümler
 
 ### <a name="node-affinity"></a>Düğüm benzeşimi
 
-Düğüm seçici, belirli bir düğüme Pod atamak için temel bir yoldur. *Düğüm benzeşimi*kullanılarak daha fazla esneklik sağlanır. Düğüm benzeşimi ile pod 'un bir düğümle eşleştirilemezse ne olacağını tanımlarsınız. Kubernetes Scheduler 'ın etiketli bir ana bilgisayar ile bir pod ile eşleşmesini *zorunlu* kılabilirsiniz. Ya da bir eşleşme *tercih* edebilir, ancak aynı eşleşme yoksa Pod 'ın farklı bir konakta zamanlanmasını sağlayabilirsiniz.
+Düğüm seçici, belirli bir düğüme Pod atamak için temel bir yoldur. *Düğüm benzeşimi* kullanılarak daha fazla esneklik sağlanır. Düğüm benzeşimi ile pod 'un bir düğümle eşleştirilemezse ne olacağını tanımlarsınız. Kubernetes Scheduler 'ın etiketli bir ana bilgisayar ile bir pod ile eşleşmesini *zorunlu* kılabilirsiniz. Ya da bir eşleşme *tercih* edebilir, ancak aynı eşleşme yoksa Pod 'ın farklı bir konakta zamanlanmasını sağlayabilirsiniz.
 
-Aşağıdaki örnek, Düğüm benzeşimini *requiredDuringSchedulingIgnoredDuringExecution*olarak ayarlar. Bu benzeşim, eşleşen etikete sahip bir düğüm kullanmak için Kubernetes zamanlamasını gerektirir. Kullanılabilir düğüm yoksa Pod 'ın zamanlamanın devam etmesini beklemesi gerekir. Pod 'un farklı bir düğümde zamanlanmasını sağlamak için, bunun yerine değeri *preferredDuringSchedulingIgnoreDuringExecution*olarak ayarlayabilirsiniz:
+Aşağıdaki örnek, Düğüm benzeşimini *requiredDuringSchedulingIgnoredDuringExecution* olarak ayarlar. Bu benzeşim, eşleşen etikete sahip bir düğüm kullanmak için Kubernetes zamanlamasını gerektirir. Kullanılabilir düğüm yoksa Pod 'ın zamanlamanın devam etmesini beklemesi gerekir. Pod 'un farklı bir düğümde zamanlanmasını sağlamak için, bunun yerine değeri *preferredDuringSchedulingIgnoreDuringExecution* olarak ayarlayabilirsiniz:
 
 ```yaml
 kind: Pod
@@ -143,7 +143,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5

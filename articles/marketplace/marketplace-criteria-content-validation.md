@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 51f226443e6f21b6c333cacf6c88f0d00208f5f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75bf1e3d81b466098884a354826019aa94a94174
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484281"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126116"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketi listeleme yönergeleri
 
@@ -31,7 +31,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 | 7 | Videolar | <ul><li>Video gerekmez, ancak sağlanmışsa, herhangi bir hata olmadan kayıttan yürütülmesi gerekir.</li><li>Sağlanmışsa, bir geçiş çözümü *göstermediği müddetçe* rakip şirketlerine başvurmayabilir. |<ul><li>En ideal olarak Uzunluk 3 dakikadır.</li><li>Çözüm teklifi, video içeriği aracılığıyla kolayca anlaşılır.</li><li>Çözüm özellikleri tanıtımı sağlar. |
 | 8 | Liste durumu (listeleme seçenekleri) | <ul><li>Aşağıdaki türlerden biri olarak etiketlenmelidir: <ul><li>*Benimle iletişim kurun*</li><li>*Deneme sürümü* / *Deneme sürümünü şimdi al* / *Denemeyi Başlat* / *Sınama sürücüsü*</li><li>*Hemen* / satın alın *Hemen alın*</li></ul></ul> | Müşteri, sonraki adımların ne olduğunu kolay bir şekilde anlayabilir: <ol><li>Denemeyi deneyin.</li><li>Hemen satın alın.</li><li>Kavram kanıtı (POC), değerlendirme veya Brit açısından düzenlemek için e-posta veya telefon numarası ile iletişim kurun.</li></ol> | 
 | 9 | Çözüm fiyatlandırması | Çözüm fiyatlandırma sekmesi/ayrıntıları olmalıdır ve fiyatlandırma, iş ortağı çözümü sunumunun yerel para birimi cinsinden olmalıdır. | Müşteri seçenekleri sağlamak için katman fiyatlandırmasıyla birden çok faturalandırma seçeneği kullanılabilir olmalıdır. |
-| 10 | Daha fazla bilgi edinin | En alttaki bağlantılar (açıklama altında, sol taraftaki Azure Marketi bağlantıları değil), çözüm hakkında daha fazla bilgi sağlar ve genel olarak kullanılabilir ve doğru şekilde görüntülenir. |    Yalnızca iş ortağı giriş sayfasına değil belirli öğelerin (örneğin, iş ortağı sitesindeki özellikler sayfaları) bağlantıları. | 
+| 10 | Daha fazlasını öğrenin | En alttaki bağlantılar (açıklama altında, sol taraftaki Azure Marketi bağlantıları değil), çözüm hakkında daha fazla bilgi sağlar ve genel olarak kullanılabilir ve doğru şekilde görüntülenir. |    Yalnızca iş ortağı giriş sayfasına değil belirli öğelerin (örneğin, iş ortağı sitesindeki özellikler sayfaları) bağlantıları. | 
 | 11 | Çözüm desteği ve yardım | Aşağıdakilerden en az birine bağlantı: <ul><li>Telefon numaraları</li><li>E-posta desteği</li><li>Sohbet aracıları</li><li>Topluluk forumları |<ul><li>Tüm destek yöntemleri listelenmiştir.</li><li>Ücretli destek, *deneme* veya *Test sürücü* döneminde ücretsiz olarak sunulur. |
 | 12 | Yasal Bildirim | İlkeler veya koşullar ortak bir URL aracılığıyla kullanılabilir. |  |
 |||
@@ -40,7 +40,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 
 | Hayır. | Listeleme öğesi | Temel gereksinim | En iyi gereksinim | 
 |:--- |:--- |:--- |:--- |
-|  | Liste durumu (listeleme seçeneği) | Bağlantı, müşteri tarafından LED 'e yönelik bir *deneme* deneyimine yol açmalıdır. | Diğer liste seçenekleri de (örneğin, *Şimdi satın al*) kullanılabilir. | 
+|  | Liste durumu (listeleme seçeneği) | Bağlantı, müşteri tarafından LED 'e yönelik bir *deneme* deneyimine yol açmalıdır. | Diğer liste seçenekleri de (örneğin, *Şimdi satın al* ) kullanılabilir. | 
 |||
 
 ## <a name="saas-application-requirements"></a>SaaS uygulama gereksinimleri
@@ -48,8 +48,8 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 | Hayır. | Listeleme öğesi | Temel gereksinim | En iyi gereksinim | 
 |:--- |:--- |:--- |:--- |
 | 1 | Teklif başlığı |<ul><li>Yalnızca küçük harf, alfasayısal karakter, kısa çizgi veya alt çizgi içermelidir. Başlık yayımlandıktan sonra değiştirilemez.</li><li>Çözüm sunumunu açıklar.</li><li>İş ortağının Web sitesinde çevrimiçi çözüm promosyonu ile eşleşir. | Anahtar arama sözcüklerini içerir. |
-| 2 | Teknik bilgiler: yapılandırma |<ul><li>Hizmet olarak yazılım (SaaS) uygulamaları için yalnızca uygulamanızı listelemek mı yoksa müşterilerin uygulamanızı Azure üzerinden satın almasını mı istediğinizi seçin.</li><li>Teklifinizin Alım düğmenizde istediğiniz metni seçin: *ücretsiz*, *ücretsiz deneme*veya *benimle iletişim kurun*.</li><li>Açılır pencerede, uygulamanız teknolojiden yararlanıyorsa yalnızca geçerli bir ürün seçin: Cortana Intelligence, Power BI çözüm şablonları veya güç uygulamaları. |  |
-| 3 | Sınama sürücüsü | *Evet* veya *Hayır*'ı seçin | Müşteri, sonraki adımların ne olduğunu kolay bir şekilde anlayabilir: <ol><li>Denemeyi deneyin.</li><li>Hemen satın alın.</li><li>POC, değerlendirme veya Brit için düzenlemek amacıyla e-posta veya telefon numarası ile iletişim kurun.</li></ol> |
+| 2 | Teknik bilgiler: yapılandırma |<ul><li>Hizmet olarak yazılım (SaaS) uygulamaları için yalnızca uygulamanızı listelemek mı yoksa müşterilerin uygulamanızı Azure üzerinden satın almasını mı istediğinizi seçin.</li><li>Teklifinizin Alım düğmenizde istediğiniz metni seçin: *ücretsiz* , *ücretsiz deneme* veya *benimle iletişim kurun* .</li><li>Açılır pencerede, uygulamanız teknolojiden yararlanıyorsa yalnızca geçerli bir ürün seçin: Cortana Intelligence, Power BI çözüm şablonları veya güç uygulamaları. |  |
+| 3 | Sınama sürücüsü | *Evet* veya *Hayır* 'ı seçin | Müşteri, sonraki adımların ne olduğunu kolay bir şekilde anlayabilir: <ol><li>Denemeyi deneyin.</li><li>Hemen satın alın.</li><li>POC, değerlendirme veya Brit için düzenlemek amacıyla e-posta veya telefon numarası ile iletişim kurun.</li></ol> |
 | 4 | Çevrimiçi mağaza ayrıntıları: teklif Özeti | Uygulamanızın arama sayfasında görünür ve en fazla 100 karakter vardır. | |
 | 5 | Çevrimiçi mağaza ayrıntıları: Industries | Sektörler (maks. 2): uygulamanızın en iyi hizalandığı ve için geçerli olduğu endüstrileri seçin. | |
 | 6 | Teklif açıklaması | <ul><li>,,,, \<p> \<em> \<ul> \<li> \<ol> Ve üst bilgi etiketleri dahil basit HTML 'ye izin verilir. En çok, 3000 karakter.</li><li>2-3 paragraf içerir.</li><li>Çözüm sunumu, bir bakışta kolayca anlaşılır.</li><li>Açıklama kapsamlıdır ve hedef kitleyi, Kullanıcı türü ve neden değerli (değer teklifi) yakalar.</li><li>, Anlaşılması kolay olan kısa cümleler olan paragraf anlatım biçimindedir. | <ul><li>Hedef sektör ana hatlarıyla özetlenmiştir (ilgiliyse).</li><li>Her paragraf başlığının, önemli avantajları vurgulamak için, uygun olduğunda ve madde işaretleri kullanan içeriği özetleyerek tek bir cümle veya ifade içeren iyi stil biçimlendirme. Amaç, okuyucunun sunumu kolay görünüm biçiminde bir bakışta anlaması için ve paragrafları okumak zorunda değildir.</li><li>Her paragraf arasında boşluk vardır. Bir araba broşürü gibi okur. Yani, bu kapsamlı bir öneme sahiptir ve sunumu teknik bir jargolmadan yalnızca açıklar. | 
@@ -78,20 +78,20 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 | 2 | Teklif açıklaması  |<ul><li>[Microsoft ürün adlarının](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx)doğru kullanımını sağlayın.</li><li>Fiyat olarak işaretlenen teklifler *: tahmini* , değişkenlik (istemciye yolculuk, geçirilmekte olan sunucu sayısı vb.) açıklamak için en üst veya alt kısımdaki bir nota sahip olmalıdır.</li><li>Her teklif türü, aşağıdaki gibi açıklama gereksinimlerine sahiptir: <ul><li>Brifler, ele alınanlara ilişkin bilgilerle en az dört veya beş madde işareti olmalıdır.</li><li>Tüm atölyeler bir ajandası olmalıdır.</li><li>Atölyenin süresine bağlı olarak tüm ajandaların güne veya haftaya göre ayrılmış olması gerekir.</li><li>Assessment, POC, eğitim olmayan atölyeler ve uygulama için teslim edilebilirler gerekir.</li><li>Eğitim atölyeler için teslim edilebilirler gerekmez, ancak kapsanacak konularda daha ayrıntılı bir gündemi olması gerekir.</li></ul></ul> | <ul><li>Herhangi bir teklifin gündem ve teslim edilebilirler vardır.</li><li>Teklif, en üst bölümde hizmeti sağlayan şirket hakkında bağlam içeren bir paragraf içerir.</li><li>Teklif, en üst bölüm olarak hizmetin kendisinin değeri hakkında bir paragraf içerir. |
 | 3 | Markaşağı biçimlendirme  | Teklifin HTML 'ye dönüştürüldüğünde düzgün şekilde çalışması için tüm tekliflerden Markup biçimlendirmesi kullanılması gerekir.  |  |
 | 4 | Kategoriler ve endüstriler | Kategoriler ilgili değildir. |  | 
-| 5 | Liste durumu (listeleme seçeneği) | *Benimle Iletişim kurmak*için otomatik olarak listelendi. |  | 
+| 5 | Liste durumu (listeleme seçeneği) | *Benimle Iletişim kurmak* için otomatik olarak listelendi. |  | 
 | 6 | Çözüm desteği ve yardım  | Destek ve yardım gerekli değildir.  | | 
 | 7 | Gizlilik ilkesi ve kullanım koşulları kullanılabilir  |  İlkeler veya koşullar gerekli değildir.  | | 
 | 8 | Hizmet türleri | Hizmet türünün başlıkla eşleştiğinden emin olun. | |
 | 9 | Yetkinlikler | Aşağıdakilerden en az birinde uzmanlığa sahip olmalıdır:<ul><li>Uygulama Geliştirme</li><li>Uygulama Tümleştirme</li><li>Uygulama Yaşam Döngüsü Yönetimi</li><li>Bulut platformu<li>Veri Analizi</li><li>Veri Merkezi</li><li>Veri platformu</li><li>DevOps |
 | 10 | Ürünler | Azure ürünleri olmalıdır. | |
 | 11 | Ülke/bölge | Ülke/bölgenin seçili para birimiyle eşleştiğinden emin olun. | |
-| 12 | Daha fazla bilgi edinin  | <ul><li>En alttaki bağlantılar (açıklama altında, sol taraftaki Azure Marketi bağlantıları değil), çözüm hakkında daha fazla bilgi sağlar ve genel olarak kullanılabilir ve doğru şekilde görüntülenir.</li><li>Bağlantıların "kolay ad" olması ve herhangi bir indirmelerin dosya adı olarak gösterilmemelidir. | |
+| 12 | Daha fazlasını öğrenin  | <ul><li>En alttaki bağlantılar (açıklama altında, sol taraftaki Azure Marketi bağlantıları değil), çözüm hakkında daha fazla bilgi sağlar ve genel olarak kullanılabilir ve doğru şekilde görüntülenir.</li><li>Bağlantıların "kolay ad" olması ve herhangi bir indirmelerin dosya adı olarak gösterilmemelidir. | |
 ||||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Marketi 'nde çeşitli teklif türleri hakkında bilgi edinin:
-  * [SaaS uygulamaları](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)
-  * [Kapsayıcılar](https://docs.microsoft.com/azure/marketplace/marketplace-containers)
-  * [Danışmanlık hizmetleri](https://docs.microsoft.com/azure/marketplace/consulting-services)
-* [Yayımlama seçeneğinizi belirleme](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+  * [SaaS uygulamaları](./plan-saas-offer.md)
+  * [Kapsayıcılar](./marketplace-containers.md)
+  * [Danışmanlık hizmetleri](./consulting-services.md)
+* [Yayımlama seçeneğinizi belirleme](./determine-your-listing-type.md)

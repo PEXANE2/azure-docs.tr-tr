@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8eb042b214ba1e4aea1eda1c65996d55ddde216e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a23f44e60bd68e51c26cc6a0bbf3e85e64914135
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741890"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125776"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 
@@ -30,7 +30,7 @@ Genel olarak, Azure Machine Learning ile kullanabileceğiniz iki tür kimlik do�
 
 Kullanılan kimlik doğrulama türü ne olursa olsun, kaynaklara izin verilen erişim düzeyini kapsam altına almak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılır. Örneğin, dağıtılan bir modelin erişim belirtecini almak için kullanılan bir hesabın yalnızca çalışma alanına okuma erişimi olması gerekir. Azure RBAC hakkında daha fazla bilgi için bkz. [Azure Machine Learning erişimi yönetme](how-to-assign-roles.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)oluşturun.
 * Azure Machine Learning SDK 'yı yüklemek için [geliştirme ortamınızı yapılandırın](how-to-configure-environment.md) veya SDK 'nın zaten yüklü olduğu bir [Azure MACHINE LEARNING Not defteri VM](concept-azure-machine-learning-architecture.md#compute-instance) 'si kullanın.
@@ -280,6 +280,62 @@ Değişken, `token_response` belirteci ve sona erme saati gibi ilişkili meta ve
 ```
 
 `token_response["accessToken"]`Kimlik doğrulama belirtecini getirmek için kullanın. API çağrıları yapmak için belirteci kullanma hakkında örnekler için [REST API belgelerine](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) bakın.
+
+#### <a name="java"></a>Java
+
+Java 'da, standart bir REST çağrısını kullanarak taşıyıcı belirtecini alın:
+
+```java
+String tenantId = "your-tenant-id";
+String clientId = "your-client-id";
+String clientSecret = "your-client-secret";
+String resourceManagerUrl = "https://management.azure.com";
+
+HttpRequest tokenAuthenticationRequest = tokenAuthenticationRequest(tenantId, clientId, clientSecret, resourceManagerUrl);
+
+HttpClient client = HttpClient.newBuilder().build();
+Gson gson = new Gson();
+HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+if (response.statusCode == 200)
+{
+     body = gson.fromJson(body, AuthenticationBody.class);
+
+    // ... etc ... 
+}
+// ... etc ...
+
+static HttpRequest tokenAuthenticationRequest(String tenantId, String clientId, String clientSecret, String resourceManagerUrl){
+    String authUrl = String.format("https://login.microsoftonline.com/%s/oauth2/token", tenantId);
+    String clientIdParam = String.format("client_id=%s", clientId);
+    String resourceParam = String.format("resource=%s", resourceManagerUrl);
+    String clientSecretParam = String.format("client_secret=%s", clientSecret);
+
+    String bodyString = String.format("grant_type=client_credentials&%s&%s&%s", clientIdParam, resourceParam, clientSecretParam);
+
+    HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(authUrl))
+            .POST(HttpRequest.BodyPublishers.ofString(bodyString))
+            .build();
+    return request;
+}
+
+class AuthenticationBody {
+    String access_token;
+    String token_type;
+    int expires_in;
+    String scope;
+    String refresh_token;
+    String id_token;
+    
+    AuthenticationBody() {}
+}
+```
+
+Yukarıdaki kodun dışındaki özel durumları ve durum kodlarını işlemesi gerekir, ancak bu, şu `200 OK` kalıbı gösterir: 
+
+- Programınızın erişimi olması gerektiğini doğrulamak için istemci kimliğini ve gizli anahtarını kullanın
+- Nerede aranması gerektiğini belirtmek için kiracı kimliğinizi kullanın `login.microsoftonline.com`
+- Yetkilendirme belirtecinin kaynağı olarak Azure Resource Manager kullanın
 
 ## <a name="web-service-authentication"></a>Web hizmeti kimlik doğrulaması
 

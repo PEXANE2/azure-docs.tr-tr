@@ -8,24 +8,24 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5776c741bb69d345f191e5673fe388328d0fe7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93e10baa5281481b57e945f93b7375060b574de5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89015603"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126864"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Yönetim .NET SDK: .NET için Azure Stream Analytics API 'sini kullanarak analiz işlerini ayarlama ve çalıştırma
 Yönetim .NET SDK 'sını kullanarak .NET için Stream Analytics API 'sini kullanarak analiz işlerini ayarlamayı ve çalıştırmayı öğrenin. Bir proje kurun, giriş ve çıkış kaynakları, dönüşümler ve işleri başlatın ve durdurun. Analiz işleriniz için blob depolamadan veya bir olay hub 'ından veri akışı yapabilirsiniz.
 
-[.NET için Stream Analytics API 'si için yönetim başvurusu belgelerine](https://msdn.microsoft.com/library/azure/dn889315.aspx)bakın.
+[.NET için Stream Analytics API 'si için yönetim başvurusu belgelerine](/previous-versions/azure/dn889315(v=azure.100))bakın.
 
 Azure Stream Analytics, bulutta akış verileri üzerinde düşük gecikmeli, yüksek oranda kullanılabilir, ölçeklenebilir ve karmaşık olay işleme sağlayan, tam olarak yönetilen bir hizmettir. Stream Analytics, müşterilerin veri akışlarını çözümlemek için akış işleri ayarlamasına olanak tanır ve neredeyse gerçek zamanlı analizler sağlar.  
 
 > [!NOTE]
-> Bu makaledeki örnek kodu, Azure Stream Analytics Management .NET SDK v2. x sürümü ile güncelleştirdik. Kullanılan örnek kod için lagecy (1. x) SDK sürümünü kullanır, lütfen bkz. [Stream Analytics Için yönetim .NET SDK v1. x kullanın](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
+> Bu makaledeki örnek kodu, Azure Stream Analytics Management .NET SDK v2. x sürümü ile güncelleştirdik. Kullanılan örnek kod için lagecy (1. x) SDK sürümünü kullanır, lütfen bkz. [Stream Analytics Için yönetim .NET SDK v1. x kullanın]().
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makaleye başlamadan önce, aşağıdaki gereksinimlere sahip olmanız gerekir:
 
 * Visual Studio 2019 veya 2015 ' ü yükler.
@@ -167,7 +167,7 @@ Aşağıdaki kod, tanımladığınız kaynak grubu altında bir Stream Analytics
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>Stream Analytics giriş kaynağı oluşturma
-Aşağıdaki kod, blob giriş kaynağı türü ve CSV serileştirmesi ile bir Stream Analytics giriş kaynağı oluşturur. Bir olay hub 'ı giriş kaynağı oluşturmak için **Blobstreaminputdatasource**yerine **Eventhubstreaminputdatasource** kullanın. Benzer şekilde, giriş kaynağının serileştirme türünü özelleştirebilirsiniz.
+Aşağıdaki kod, blob giriş kaynağı türü ve CSV serileştirmesi ile bir Stream Analytics giriş kaynağı oluşturur. Bir olay hub 'ı giriş kaynağı oluşturmak için **Blobstreaminputdatasource** yerine **Eventhubstreaminputdatasource** kullanın. Benzer şekilde, giriş kaynağının serileştirme türünü özelleştirebilirsiniz.
 
    ```csharp
    // Create an input
@@ -284,8 +284,8 @@ Aşağıdaki örnek kod, özel bir çıkış başlangıç saati 12 Aralık 2012,
    streamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, streamingJobName);
    ```
 
-## <a name="get-support"></a>Destek alın
-Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
+## <a name="get-support"></a>Destek alma
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Analiz işleri oluşturmak ve çalıştırmak için .NET SDK kullanmanın temellerini öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
@@ -293,9 +293,9 @@ Analiz işleri oluşturmak ve çalıştırmak için .NET SDK kullanmanın temell
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Management .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).
-* [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics Management .NET SDK](/previous-versions/azure/dn889315(v=azure.100)).
+* [Azure Akış Analizi Sorgu Dili Başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](/rest/api/streamanalytics/)
 
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png
@@ -305,17 +305,17 @@ Analiz işleri oluşturmak ve çalıştırmak için .NET SDK kullanmanın temell
 
 <!--Link references-->
 [azure.blob.storage]: https://azure.microsoft.com/documentation/services/storage/
-[azure.blob.storage.use]: https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/
+[azure.blob.storage.use]: ../storage/blobs/storage-quickstart-blobs-dotnet.md
 
 [azure.event.hubs]: https://azure.microsoft.com/services/event-hubs/
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
 [stream.analytics.forum]: https://go.microsoft.com/fwlink/?LinkId=512151
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.developer.guide]: stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

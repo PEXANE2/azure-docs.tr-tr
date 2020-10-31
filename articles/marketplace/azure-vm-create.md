@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/20/2020
-ms.openlocfilehash: 5964292d7037465456efe22283a5552a2bfc7ad8
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: bfd67688ce30b62002e26cea9f7be4df1cb6e622
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331269"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126456"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Azure Marketi 'nde sanal makine teklifi oluşturma
 
@@ -27,40 +27,40 @@ Henüz yapmadıysanız, [bir sanal makine teklifi planı](marketplace-virtual-ma
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol bölmede, **ticari Market**  >  **genel bakış**' ı seçin.
-3. **Genel bakış** sayfasında, **yeni teklif**  >  **Azure sanal makinesi**' ni seçin.
+2. Sol bölmede, **ticari Market**  >  **genel bakış** ' ı seçin.
+3. **Genel bakış** sayfasında, **yeni teklif**  >  **Azure sanal makinesi** ' ni seçin.
 
     ![Sol bölme menü seçeneklerini ve "yeni teklif" düğmesini gösteren ekran görüntüsü.](./media/create-vm/new-offer-azure-virtual-machine.png)
 
 > [!NOTE]
 > Teklifiniz yayımlandıktan sonra, Iş Ortağı Merkezi 'nde üzerinde yaptığınız herhangi bir düzenleme, yalnızca teklifi yeniden yayımladığınızda Azure Marketi 'nde görünür. Bir teklifi üzerinde değişiklik yaptıktan sonra her zaman yeniden yayımlamayı unutmayın.
 
-Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
+Bir **TEKLIF kimliği** girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
 
 - Bu KIMLIK, Azure Marketi teklifinin Web adresindeki müşterilere ve varsa Azure PowerShell ve Azure CLı 'ye yönelik olarak görünür.
-- Yalnızca küçük harfleri ve rakamları kullanın. KIMLIK, kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1**girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
+- Yalnızca küçük harfleri ve rakamları kullanın. KIMLIK, kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1** girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+- Teklif KIMLIĞI, **Oluştur** ' u seçtikten sonra değiştirilemez.
 
-Bir **teklif diğer adı**girin. Teklif diğer adı, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
+Bir **teklif diğer adı** girin. Teklif diğer adı, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
 
 - Bu ad Azure Marketi 'nde kullanılmaz. Teklif adından ve müşterilere gösterilen diğer değerlerden farklıdır.
 
 ## <a name="enable-a-test-drive-optional"></a>Sınama sürücüsünü etkinleştir (isteğe bağlı)
 
-Test sürücüsü, bu kullanıcılara, bir sabit sayıda saat boyunca önceden yapılandırılmış bir ortama erişim vererek, teklifinizi olası müşterilere sergilemenin harika bir yoludur. Sınama sürücüsü sunumu, daha fazla dönüştürme hızına neden olur ve yüksek oranda nitelikli müşteri adayları üretir. Sınama sürücüleri hakkında daha fazla bilgi için bkz. [test sürücüsü nedir?](partner-center-portal/test-drive.md).
+Test sürücüsü, bu kullanıcılara, bir sabit sayıda saat boyunca önceden yapılandırılmış bir ortama erişim vererek, teklifinizi olası müşterilere sergilemenin harika bir yoludur. Sınama sürücüsü sunumu, daha fazla dönüştürme hızına neden olur ve yüksek oranda nitelikli müşteri adayları üretir. Sınama sürücüleri hakkında daha fazla bilgi için bkz. [test sürücüsü nedir?](./what-is-test-drive.md).
 
 > [!TIP]
 > Bir test sürücüsü, ücretsiz deneme sürümünden farklıdır. Bir test sürücüsü, ücretsiz deneme ya da her ikisini birden sağlayabilirsiniz. Bunlar her ikisi de kendi çözümünüzü sabit bir süre için sağlar. Ancak, bir sınama sürücüsü Ayrıca, ürününüzün temel özelliklerine ve avantajlarına yönelik uygulamalı, kendinden kılavuzlu bir tura sahip olan gerçek hayatta bir uygulama senaryosunda gösterilmekte olan avantajlı bir geliştirme içerir.
 
 **Bir sınama sürücüsünü etkinleştirmek için**
-1.  **Test sürücüsü**altında, **sınama sürücüsünü etkinleştir** onay kutusunu seçin.
+1.  **Test sürücüsü** altında, **sınama sürücüsünü etkinleştir** onay kutusunu seçin.
 1.  Görüntülenen listeden test sürücü türünü seçin.
 
 ## <a name="configure-lead-management"></a>Müşteri adayı yönetimini yapılandırma
 
 Teklifinizi Iş Ortağı Merkezi ile ticari Market 'te yayımladığınızda, Müşteri Ilişkileri yönetimi (CRM) sisteminize bağlayın. Bu, bir kişi, ürününüzü ilgilendiren veya ürünü kullandığı anda müşteri iletişim bilgilerini almanızı sağlar. Bir test sürücüsünü etkinleştirmek istiyorsanız, bir CRM 'ye bağlanmak gerekir (yukarıdaki bölüme bakın). Aksi takdirde, bir CRM 'ye bağlanmak isteğe bağlıdır.
 
-1. **Müşteri liderleri**altında **Bağlan** bağlantısını seçin.
+1. **Müşteri liderleri** altında **Bağlan** bağlantısını seçin.
 1. **Bağlantı ayrıntıları** iletişim kutusunda listeden bir müşteri adayı hedefi seçin.
 1. Görüntülenen alanları doldurun. Ayrıntılı adımlar için aşağıdaki makalelere bakın:
 
@@ -71,7 +71,7 @@ Teklifinizi Iş Ortağı Merkezi ile ticari Market 'te yayımladığınızda, M�
    - [Teklifinizi Salesforce 'a göndermek için teklifinizi yapılandırma](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
 1. Verdiğiniz yapılandırmayı doğrulamak için **Doğrula** bağlantısını seçin.
-1. İletişim kutusunu kapatmak için **Tamam**' ı seçin.
+1. İletişim kutusunu kapatmak için **Tamam** ' ı seçin.
 
 ## <a name="resell-through-csps"></a>CSP 'Ler aracılığıyla yeniden satış
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 7/14/2020
-ms.openlocfilehash: 4c4455d62f32acb1cfebde8f5e4d97de5bda17c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 345b9447daa9fcb5f97ec5d8d00bcf5ea76d958c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463907"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126745"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications Bağımsız Yazılım Satıcısı (ISV) Connect Programı katılım kılavuzu
 
@@ -25,7 +25,7 @@ Business Applications ISV Connect programının teknik, pazarlama ve satış etk
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>Microsoft Iş Ortağı Merkezi hesabınızı ayarlama
 
-ISV Connect programı için hesabınızı ayarlamak ve yönetmek için şu makaledeki adımları uygulayın: [Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account). Bu makalede, yeni bir hesap oluşturma ve ticari Market programına yeni yayımcılar ekleme hakkında bilgi verilmektedir.
+ISV Connect programı için hesabınızı ayarlamak ve yönetmek için şu makaledeki adımları uygulayın: [Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma](./partner-center-portal/create-account.md). Bu makalede, yeni bir hesap oluşturma ve ticari Market programına yeni yayımcılar ekleme hakkında bilgi verilmektedir.
 
 > [!NOTE]
 > Bu adım Iş Ortağı Merkezi 'nde bir *sahip* veya *yönetici* rolü gerektirir.
@@ -38,10 +38,10 @@ Bu programa katılım, [Business Applications eki](https://aka.ms/bizappsisvadde
 > Bu adım, hesabınızın yasal sözleşmeleri imzalamasını sağlamak için Iş Ortağı Merkezi 'nde bir *sahip* veya *yönetici* rolü gerektirir.
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)' nde oturum açın.
-1. **Ayarları** (dişli simgesi) seçin ve **Geliştirici ayarları**' nı seçin.
-1. **Anlaşmaları**seçin.
+1. **Ayarları** (dişli simgesi) seçin ve **Geliştirici ayarları** ' nı seçin.
+1. **Anlaşmaları** seçin.
 1. Sürüm bağlantısını seçin ve sözleşmeyi görüntüleyin.
-1. Sözleşmeyi kabul edip kabul etmek için **sözleşmeyi kabul et**' i seçin.
+1. Sözleşmeyi kabul edip kabul etmek için **sözleşmeyi kabul et** ' i seçin.
 
 ## <a name="set-up-your-billing-information"></a>Faturalandırma bilgilerinizi ayarlama
 
@@ -51,11 +51,11 @@ Business Applications ISV Connect programı için faturalandırma bilgilerini ay
 > Bu adım, hesap için Iş Ortağı Merkezi 'nde faturalama bilgilerini güncelleştirmek üzere bir *sahip* veya *yönetici* rolü gerektirir.
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)' nde oturum açın.
-1. **Ayarları** (dişli simgesi) seçin ve **Geliştirici ayarları**' nı seçin.
-1. **Hesap**altında **Faturalandırma profili**' ni seçin.
+1. **Ayarları** (dişli simgesi) seçin ve **Geliştirici ayarları** ' nı seçin.
+1. **Hesap** altında **Faturalandırma profili** ' ni seçin.
 1. Yasal varlığınızdan doldurulan birincil iletişim ve fatura bilgilerini gözden geçirin ve gerekli güncelleştirmeleri yapın.
 1. Uygulanabiliyorsa, vergi KIMLIĞI/KDV KIMLIK ayarları ' nı belirtin.
-1. Değişikliklerinizi kaydetmek için **Kaydet**'e tıklayın.
+1. Değişikliklerinizi kaydetmek için **Kaydet** 'e tıklayın.
 
 > [!NOTE]
 > Faturalandırma profilinizi dilediğiniz zaman güncelleştirebilirsiniz. Ancak, *Şirket adı* ve fatura adresi *ülkesi* daha sonra değiştirilemez.
@@ -66,11 +66,11 @@ Yukarıdaki adımları tamamladıktan sonra, mevcut Dynamics 365 CE ve/veya Dyna
 
 Business Applications ISV Connect programında kayıt için son adım, mevcut uygulamalarınızı yayımlamak ve onaylamaktır. Uygulamanızı yayımlamanız ve AppSource 'a onaylamak için, uygun bağlantıyı izleyin:
 
-- [Dynamics 365 müşteri katılımı için](https://docs.microsoft.com/powerapps/developer/common-data-service/publish-app-appsource) 
-- [Finans ve Işlemler için Dynamics 365](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
+- [Dynamics 365 müşteri katılımı için](/powerapps/developer/common-data-service/publish-app-appsource) 
+- [Finans ve Işlemler için Dynamics 365](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 > [!IMPORTANT]
-> Uygulamanızı AppSource 'ta canlı tutmak için her 6 ayda bir yeniden sertifikalandırmalısınız. Ayrıntılar için bkz. Market ilkesi [ticari Market sertifika ilkeleri](https://docs.microsoft.com/legal/marketplace/certification-policies).
+> Uygulamanızı AppSource 'ta canlı tutmak için her 6 ayda bir yeniden sertifikalandırmalısınız. Ayrıntılar için bkz. Market ilkesi [ticari Market sertifika ilkeleri](/legal/marketplace/certification-policies).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

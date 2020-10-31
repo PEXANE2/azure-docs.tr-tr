@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/04/2020
-ms.openlocfilehash: b01b482b967ba6db90aa80ba537457597fb91046
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfa5d77077b8827bed1cbd8c7a46a5dbf361f139
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488618"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125725"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te ücretsiz veya deneme SaaS teklifinizin giriş sayfasını oluşturun
 
@@ -43,23 +43,23 @@ Bu makaledeki aşağıdaki bölümler, bir giriş sayfası oluşturma işleminde
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD uygulama kaydı oluşturma
 
-Ticari Market, Azure AD ile tamamen tümleşiktir. Kullanıcılar bir [Azure AD hesabı veya Microsoft hesabı (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)ile kimliği doğrulanan Market 'e ulaşır. Yalnızca liste teklifiniz aracılığıyla ücretsiz veya ücretsiz bir deneme aboneliği aldıktan sonra, Kullanıcı, SaaS uygulamanıza yönelik aboneliklerini etkinleştirmek ve yönetmek için ticari Market 'ten giriş sayfası URL 'sine gider. Kullanıcının Azure AD SSO ile uygulamanızda oturum açmasını sağlamalısınız. (Giriş sayfası URL 'SI, teklifin [Teknik yapılandırma](plan-saas-offer.md#technical-information) sayfasında belirtilir.
+Ticari Market, Azure AD ile tamamen tümleşiktir. Kullanıcılar bir [Azure AD hesabı veya Microsoft hesabı (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology)ile kimliği doğrulanan Market 'e ulaşır. Yalnızca liste teklifiniz aracılığıyla ücretsiz veya ücretsiz bir deneme aboneliği aldıktan sonra, Kullanıcı, SaaS uygulamanıza yönelik aboneliklerini etkinleştirmek ve yönetmek için ticari Market 'ten giriş sayfası URL 'sine gider. Kullanıcının Azure AD SSO ile uygulamanızda oturum açmasını sağlamalısınız. (Giriş sayfası URL 'SI, teklifin [Teknik yapılandırma](plan-saas-offer.md#technical-information) sayfasında belirtilir.
 
 Kimliği kullanmanın ilk adımı, giriş sayfanızın bir Azure AD uygulaması olarak kaydedildiğinden emin olmak için kullanılır. Uygulamayı kaydetmek, kullanıcıların kimliğini doğrulamak ve Kullanıcı kaynaklarına erişim istemek için Azure AD 'yi kullanmanıza olanak sağlar. Uygulamanın tanım olarak düşünülebilir ve bu da hizmetin uygulama ayarlarına bağlı olarak uygulamaya belirteç verme konusunda bilgi verir.
 
 ### <a name="register-a-new-application-using-the-azure-portal"></a>Yeni bir uygulamayı Azure portalını kullanarak kaydetme
 
-Başlamak için [Yeni bir uygulama kaydetme](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)yönergelerini izleyin. Diğer şirketlere ait kullanıcıların uygulamayı ziyaret etmesini sağlamak için, uygulamayı ne zaman kullanabilecelerine ilişkin **bir kurumsal dizinde (herhangi bir Azure ad dizini — çok kiracılı) ve kişisel Microsoft hesaplarından (Skype veya Xbox gibi) hesapları** seçmeniz gerekir.
+Başlamak için [Yeni bir uygulama kaydetme](../active-directory/develop/quickstart-register-app.md)yönergelerini izleyin. Diğer şirketlere ait kullanıcıların uygulamayı ziyaret etmesini sağlamak için, uygulamayı ne zaman kullanabilecelerine ilişkin **bir kurumsal dizinde (herhangi bir Azure ad dizini — çok kiracılı) ve kişisel Microsoft hesaplarından (Skype veya Xbox gibi) hesapları** seçmeniz gerekir.
 
-Microsoft Graph API 'sini sorgulamak istiyorsanız, [Yeni uygulamanızı Web API 'lerine erişecek şekilde yapılandırın](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis). Bu uygulama için API izinlerini seçtiğinizde, **Kullanıcı. Read** 'in varsayılan örneği, ekleme işlemini sorunsuz ve otomatik hale getirmek için Kullanıcı hakkındaki temel bilgileri toplamak üzere yeterlidir. Yönetici olmayan tüm kullanıcıların giriş sayfanızı ziyaret etmesini engelleyecek şekilde, yönetici **izni olması gereken**HERHANGI bir API izni isteme.
+Microsoft Graph API 'sini sorgulamak istiyorsanız, [Yeni uygulamanızı Web API 'lerine erişecek şekilde yapılandırın](../active-directory/develop/quickstart-configure-app-access-web-apis.md). Bu uygulama için API izinlerini seçtiğinizde, **Kullanıcı. Read** 'in varsayılan örneği, ekleme işlemini sorunsuz ve otomatik hale getirmek için Kullanıcı hakkındaki temel bilgileri toplamak üzere yeterlidir. Yönetici olmayan tüm kullanıcıların giriş sayfanızı ziyaret etmesini engelleyecek şekilde, yönetici **izni olması gereken** HERHANGI bir API izni isteme.
 
-Ekleme veya sağlama işleminizin bir parçası olarak yükseltilmiş izinlere ihtiyacınız varsa, marketten gönderilen tüm kullanıcıların başlangıçta giriş sayfasıyla etkileşime girebilmesi için Azure AD 'nin [artımlı onay](https://aka.ms/incremental-consent) işlevlerini kullanmayı düşünün.
+Ekleme veya sağlama işleminizin bir parçası olarak yükseltilmiş izinlere ihtiyacınız varsa, marketten gönderilen tüm kullanıcıların başlangıçta giriş sayfasıyla etkileşime girebilmesi için Azure AD 'nin [artımlı onay](../active-directory/azuread-dev/azure-ad-endpoint-comparison.md) işlevlerini kullanmayı düşünün.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Başlangıç noktası olarak bir kod örneği kullanma
 
 Microsoft, Azure AD oturum açma özelliği etkinken basit bir Web sitesi uygulayan birkaç örnek uygulama sağlamıştır. Uygulamanız Azure AD 'ye kaydedildikten sonra, **hızlı başlangıç** dikey penceresi ortak uygulama türlerinin ve geliştirme yığınlarının bir listesini sunar (Şekil 1). Ortamınızla eşleşen birini seçin ve indirme ve kurulum yönergelerini izleyin.
 
-***Şekil 1: Azure portal hızlı başlangıç dikey penceresi***
+**_Şekil 1: Azure Portal _ ' de hızlı başlangıç dikey_* penceresi
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="Azure portal hızlı başlangıç dikey penceresini gösterir.":::
 
@@ -67,7 +67,7 @@ Kodu indirip geliştirme ortamınızı ayarladıktan sonra, uygulamadaki yapıla
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>KIMLIK belirtecinde kodlanan taleplerden bilgi okuyun
 
-[OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) Flow 'un bir parçası olarak, Azure AD, Kullanıcı giriş sayfasına gönderildiğinde Isteğe bir [kimlik belirteci](https://docs.microsoft.com/azure/active-directory/develop/id-tokens) ekler. Bu belirteç, bu tabloda görülen bilgiler de dahil olmak üzere etkinleştirme işleminde yararlı olabilecek birçok temel bilgi parçasını içerir.
+[OpenID Connect](../active-directory/develop/v2-protocols-oidc.md) Flow 'un bir parçası olarak, Azure AD, Kullanıcı giriş sayfasına gönderildiğinde Isteğe bir [kimlik belirteci](../active-directory/develop/id-tokens.md) ekler. Bu belirteç, bu tabloda görülen bilgiler de dahil olmak üzere etkinleştirme işleminde yararlı olabilecek birçok temel bilgi parçasını içerir.
 
 | Değer | Açıklama |
 | ------------ | ------------- |
@@ -82,7 +82,7 @@ Kodu indirip geliştirme ortamınızı ayarladıktan sonra, uygulamadaki yapıla
 
 ## <a name="use-the-microsoft-graph-api"></a>Microsoft Graph API’sini kullanma
 
-KIMLIK belirteci, kullanıcıyı tanımlamak için temel bilgileri içerir, ancak etkinleştirme işleminiz ekleme işlemini tamamlamaya yönelik ek ayrıntılar gerektirebilir (örneğin, kullanıcının şirketi). Kullanıcı bu ayrıntıları yeniden girmemek için bu bilgileri istemek üzere [MICROSOFT Graph API](https://docs.microsoft.com/graph/use-the-api) 'sini kullanın. Standart **Kullanıcı. okuma** izinleri, varsayılan olarak aşağıdaki bilgileri içerir:
+KIMLIK belirteci, kullanıcıyı tanımlamak için temel bilgileri içerir, ancak etkinleştirme işleminiz ekleme işlemini tamamlamaya yönelik ek ayrıntılar gerektirebilir (örneğin, kullanıcının şirketi). Kullanıcı bu ayrıntıları yeniden girmemek için bu bilgileri istemek üzere [MICROSOFT Graph API](/graph/use-the-api) 'sini kullanın. Standart _ *User. Read* * izinleri, varsayılan olarak aşağıdaki bilgileri içerir:
 
 | Değer | Açıklama |
 | ------------ | ------------- |
@@ -95,9 +95,9 @@ KIMLIK belirteci, kullanıcıyı tanımlamak için temel bilgileri içerir, anca
 | surname | Kullanıcının soyadı. |
 |||
 
-Kullanıcı şirketinin adı veya Kullanıcı konumu (ülke) gibi ek özellikler, isteğe eklenmek üzere seçilebilir. Daha ayrıntılı bilgi için bkz. [Kullanıcı kaynak türü özellikleri](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties).
+Kullanıcı şirketinin adı veya Kullanıcı konumu (ülke) gibi ek özellikler, isteğe eklenmek üzere seçilebilir. Daha ayrıntılı bilgi için bkz. [Kullanıcı kaynak türü özellikleri](/graph/api/resources/user?view=graph-rest-1.0#properties).
 
-Azure AD 'ye kayıtlı uygulamaların çoğu, kullanıcının şirketinin Azure AD kiracısından bilgilerini okumak için temsilci izinleri verir. Bu bilgilere yönelik Microsoft Graph yönelik istekler, kimlik doğrulama olarak bir erişim belirteciyle birlikte gelmelidir. Erişim belirtecini oluşturmaya yönelik belirli adımlar, kullanmakta olduğunuz teknoloji yığınına bağlıdır, ancak örnek kod bir örnek içerir. Daha fazla bilgi için bkz. [Kullanıcı adına erişim edinme](https://docs.microsoft.com/graph/auth-v2-user).
+Azure AD 'ye kayıtlı uygulamaların çoğu, kullanıcının şirketinin Azure AD kiracısından bilgilerini okumak için temsilci izinleri verir. Bu bilgilere yönelik Microsoft Graph yönelik istekler, kimlik doğrulama olarak bir erişim belirteciyle birlikte gelmelidir. Erişim belirtecini oluşturmaya yönelik belirli adımlar, kullanmakta olduğunuz teknoloji yığınına bağlıdır, ancak örnek kod bir örnek içerir. Daha fazla bilgi için bkz. [Kullanıcı adına erişim edinme](/graph/auth-v2-user).
 
 > [!NOTE]
 > MSA kiracısından (kiracı KIMLIĞI olan) hesaplar, `9188040d-6c67-4c5b-b112-36a304b66dad` kimlik belirteciyle toplanmamış olandan daha fazla bilgi döndürmez. Bu nedenle, bu hesaplar için Graph API bu çağrıyı atlayabilirsiniz.

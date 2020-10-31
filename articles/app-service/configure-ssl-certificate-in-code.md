@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: e791e4ca3481bc0aea931abe946751415f1e1614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4e184f827875ebebd40ab976ef63e77ee702d49
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311827"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126048"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Kodunuzda bir TLS/SSL sertifikası kullanın Azure App Service
 
@@ -20,7 +20,7 @@ Kodunuzda sertifika kullanmaya yönelik bu yaklaşım, uygulamanızın **temel**
 
 TLS/SSL sertifikalarınızı App Service yönettiğinizde, sertifikaları ve uygulama kodunuzu ayrı olarak koruyabilir ve hassas verilerinizi koruyabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
@@ -29,9 +29,9 @@ Bu nasıl yapılır kılavuzunu izlemek için:
 
 ## <a name="find-the-thumbprint"></a>Parmak izini bulma
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **uygulama hizmetleri**' ni seçin  >  **\<app-name>** .
+<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **uygulama hizmetleri** ' ni seçin  >  **\<app-name>** .
 
-Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları**' nı seçin ve ardından **özel anahtar sertifikaları (. pfx** ) veya **ortak anahtar sertifikaları (. cer)** seçeneğini belirleyin.
+Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları** ' nı seçin ve ardından **özel anahtar sertifikaları (. pfx** ) veya **ortak anahtar sertifikaları (. cer)** seçeneğini belirleyin.
 
 Kullanmak istediğiniz sertifikayı bulun ve parmak izini kopyalayın.
 
@@ -49,10 +49,7 @@ Tüm sertifikalarınızı erişilebilir hale getirmek için değerini olarak aya
 
 ## <a name="load-certificate-in-windows-apps"></a>Windows uygulamalarında sertifika yükleme
 
-`WEBSITE_LOAD_CERTIFICATES`Uygulama ayarı, belirtilen sertifikaları Windows sertifika deposundaki Windows barındırılan uygulamanız için erişilebilir hale getirir ve konum, [fiyatlandırma katmanına](overview-hosting-plans.md)bağlıdır:
-
-- **Yalıtılmış** katman- [Yerel machine\.](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) 
-- Diğer tüm katmanlar- [geçerli Kullanıcı\.](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)
+`WEBSITE_LOAD_CERTIFICATES`Uygulama ayarı, belirtilen sertifikaları Windows sertifika deposundaki Windows barındırılan uygulamanız tarafından erişilebilir hale getirir. [Current User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)
 
 C# kodunda sertifika parmak izine göre sertifikaya erişirsiniz. Aşağıdaki kod parmak izine sahip bir sertifika yükler `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` .
 

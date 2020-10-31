@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/15/2020
-ms.openlocfilehash: 7b91cf3d49d88501fb908d157892ec3eb24bee6e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1c89887117c10ca77ec4c04b3adbe3e2d9923479
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284537"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126847"
 ---
 # <a name="virtual-machine-sas-failure-messages"></a>Sanal makine SAS hata iletileri
 
@@ -29,7 +29,7 @@ Aşağıda, paylaşılan erişim imzaları ile çalışırken (çözümünüz i�
 | SAS URI 'SI "St" ve "o" parametrelerinin tam tarih-saat belirtimi yoktur | `Failure: Copying Images. Not able to download blob due to incorrect SAS Uri.` | SAS URI 'SI **Başlangıç tarihi** ve **bitiş tarihi** parametreleri ( `st` ve alt `se` dizeleri), gibi tam bir tarih-saat biçimine sahip olmalıdır `11-02-2017T00:00:00Z` . Kısaltılmış sürümler geçersiz (Azure CLı 'deki bazı komutlar varsayılan olarak kısaltılmış değerler oluşturabilir). |
 |  |  |  |
 
-Ayrıntılar için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/).
+Ayrıntılar için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](../storage/common/storage-sas-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

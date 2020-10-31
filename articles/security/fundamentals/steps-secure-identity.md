@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 43974258008e3813a368ab31891251db15060aff
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364125"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127068"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
@@ -145,7 +145,7 @@ Azure Active Directory, algılama ve yanıt arasındaki gecikmeyi kaldırmak iç
 
 Kullanıcı riski, kullanıcının kimliğinin tehlikeye girdiği ve kullanıcının kimliğiyle ilişkili [Kullanıcı risk algılamaları](../../active-directory/identity-protection/overview.md) temelinde hesaplanma olasılığını gösterir. Kullanıcı risk ilkesi, risk düzeyini belirli bir kullanıcı veya gruba değerlendiren bir koşullu erişim ilkesidir. Düşük, orta ve yüksek risk düzeyine bağlı olarak, bir ilke, erişimi engelleyecek veya Multi-Factor Authentication kullanarak güvenli bir parola değişikliği gerektirecek şekilde yapılandırılabilir. Microsoft 'un önerisi, yüksek riskli kullanıcılar için güvenli bir parola değişikliği yapmanız gerekir.
 
-![Riskli oldukları belirlenen kullanıcılar](./media/steps-secure-identity/azure-ad-sec-steps1.png)
+![Ekran görüntüsü, Kullanıcı seçili olarak, riskli olarak işaretlenen kullanıcıları gösterir.](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
 ### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>Azure AD Kimlik Koruması kullanarak oturum açma risk ilkesi uygulama
 
@@ -175,7 +175,7 @@ Azure AD Kimlik Koruması, günlük izlemeniz gereken iki önemli rapor sağlar:
 1. Riskli oturum açma raporları, araştırmanız gereken kullanıcı oturum açma etkinliklerini açacaktır, meşru sahip, oturum açma gerçekleştirmemiş olabilir.
 2. Riskli Kullanıcı raporları, algılanan sızdırılan kimlik bilgisi veya farklı konumlardan oturum açmış olan Kullanıcı, mümkün olmayan bir seyahat olayına neden olan kullanıcı hesaplarını açığa çıkabilir.
 
-![Riskli oldukları belirlenen kullanıcılar](./media/steps-secure-identity/azure-ad-sec-steps3.png)
+![Ekran görüntüsü, kullanıcıların ve risk düzeylerindeki Azure A D Identity Protection bölmesini gösterir.](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>Uygulamaları denetleme ve onaylanan izinler
 

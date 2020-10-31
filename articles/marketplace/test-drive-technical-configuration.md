@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892630"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125691"
 ---
 # <a name="test-drive-technical-configuration"></a>Test sürüşü teknik yapılandırması
 
@@ -50,7 +50,7 @@ Bu tür bir test sürücüsü Microsoft tarafından barındırılmamaktadır. Ç
 
 - **Sınama sürücüsü süresi** (zorunlu) – test sürücüsünün, saat sayısı içinde etkin kalacağı sürenin uzunluğunu girin. Bu süre dolduktan sonra test sürücüsü otomatik olarak sona erer.
 
-- **Azure Kaynak grubu adı** (gerekli) – mantıksal uygulama test sürücünüzün kaydedildiği [Azure Kaynak grubu](../azure-resource-manager/resource-group-overview.md#resource-groups)adını girin.
+- **Azure Kaynak grubu adı** (gerekli) – mantıksal uygulama test sürücünüzün kaydedildiği [Azure Kaynak grubu](../azure-resource-manager/management/overview.md#resource-groups)adını girin.
 
 - **Azure mantıksal uygulama adı** (gerekli) – test sürücüsünü kullanıcıya atayan mantıksal uygulamanın adını girin. Bu mantıksal uygulama, yukarıdaki Azure kaynakları grubuna kaydedilmelidir.
 
@@ -60,7 +60,7 @@ Bu tür bir test sürücüsü Microsoft tarafından barındırılmamaktadır. Ç
 
 Etkileşimli bir Power BI görseli göstermek isteyen ürünler, özel olarak oluşturulmuş bir panoyu test sürücüleri olarak paylaşmak için, daha fazla teknik yapılandırma gerekmeden gömülü bir bağlantı kullanabilir. Burada yapmanız gereken, gömülü Power BI URL 'nizi karşıya yükleyin.
 
-Power BI uygulamaları ayarlama hakkında daha fazla bilgi için bkz. [Power BI uygulamalar nelerdir?](https://docs.microsoft.com/power-bi/service-template-apps-overview)
+Power BI uygulamaları ayarlama hakkında daha fazla bilgi için bkz. [Power BI uygulamalar nelerdir?](/power-bi/service-template-apps-overview)
 
 ## <a name="deployment-subscription-details"></a>Dağıtım aboneliği ayrıntıları
 

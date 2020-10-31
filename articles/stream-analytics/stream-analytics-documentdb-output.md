@@ -8,26 +8,26 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5b28d75e6526f27fd0076244ec32848dbf20e91e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e8b8c89b94b2fbb191eee0ea57e957802a54204e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424774"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126983"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Çıktıyı Azure Cosmos DB Azure Stream Analytics  
 Azure Stream Analytics, veri arşivlemeyi ve yapılandırılmamış JSON verilerinde düşük gecikme süreli sorguları etkinleştirerek JSON çıkışı için [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) hedefleyebilir. Bu belge, bu yapılandırmayı uygulamak için bazı en iyi yöntemleri içerir. Azure Cosmos db çıktı olarak kullanırken işinizi uyumluluk Level 1,2 olarak ayarlamanızı öneririz.
 
-Azure Cosmos DB hakkında bilgi sahibi değilseniz, kullanmaya başlamak için [Azure Cosmos DB belgelerine](https://docs.microsoft.com/azure/cosmos-db/) bakın. 
+Azure Cosmos DB hakkında bilgi sahibi değilseniz, kullanmaya başlamak için [Azure Cosmos DB belgelerine](../cosmos-db/index.yml) bakın. 
 
 > [!Note]
-> Şu anda Stream Analytics, yalnızca *SQL API 'si*aracılığıyla Azure Cosmos DB bağlantısını destekler.
+> Şu anda Stream Analytics, yalnızca *SQL API 'si* aracılığıyla Azure Cosmos DB bağlantısını destekler.
 > Diğer Azure Cosmos DB API 'Leri henüz desteklenmiyor. Diğer API 'lerle oluşturulan Azure Cosmos DB hesaplara Stream Analytics işaret ediyorsanız, veriler düzgün şekilde depolanmayabilir. 
 
 ## <a name="basics-of-azure-cosmos-db-as-an-output-target"></a>Çıkış hedefi olarak Azure Cosmos DB temelleri
 Stream Analytics Azure Cosmos DB çıktısı, akış işleme sonuçlarınızı Azure Cosmos DB kapsayıcılarınızın JSON çıktısı olarak yazılmasına izin verebilir. 
 
-Stream Analytics, veritabanınızda kapsayıcı oluşturmaz. Bunun yerine, bunları baştan oluşturmanız gerekir. Daha sonra Azure Cosmos DB kapsayıcıların faturalandırma maliyetlerini kontrol edebilirsiniz. Ayrıca, [Azure Cosmos DB API 'lerini](https://msdn.microsoft.com/library/azure/dn781481.aspx)kullanarak doğrudan kapsayıcılarınızın performans, tutarlılık ve kapasitesini ayarlayabilirsiniz.
+Stream Analytics, veritabanınızda kapsayıcı oluşturmaz. Bunun yerine, bunları baştan oluşturmanız gerekir. Daha sonra Azure Cosmos DB kapsayıcıların faturalandırma maliyetlerini kontrol edebilirsiniz. Ayrıca, [Azure Cosmos DB API 'lerini](/rest/api/cosmos-db/)kullanarak doğrudan kapsayıcılarınızın performans, tutarlılık ve kapasitesini ayarlayabilirsiniz.
 
 > [!Note]
 > Azure Cosmos DB güvenlik duvarınızdan izin verilen IP 'Ler listesine 0.0.0.0 eklemeniz gerekir.
@@ -44,7 +44,7 @@ Ayrıca, Azure Cosmos DB, kapsayıcılarınızın her bir CRUD işleminde zaman 
 Daha fazla bilgi için, [veritabanınızı değiştirme ve tutarlılık düzeylerini sorgulama](../cosmos-db/consistency-levels.md) makalesini inceleyin.
 
 ## <a name="upserts-from-stream-analytics"></a>Stream Analytics yukarı
-Azure Cosmos DB tümleştirmesi Stream Analytics, belirli bir **belge kimliği** sütununa göre kapsayıcınıza kayıt eklemenize veya güncelleştirmenize olanak tanır. Bu da *upsert*olarak adlandırılır.
+Azure Cosmos DB tümleştirmesi Stream Analytics, belirli bir **belge kimliği** sütununa göre kapsayıcınıza kayıt eklemenize veya güncelleştirmenize olanak tanır. Bu da *upsert* olarak adlandırılır.
 
 Stream Analytics iyimser bir yaklaşım kullanır. Güncelleştirmeler yalnızca bir ekleme bir belge KIMLIĞI çakışmasıyla başarısız olduğunda gerçekleşir. 
 
@@ -61,20 +61,20 @@ Gelen JSON belgesinde mevcut bir KIMLIK alanı varsa, bu alan Azure Cosmos DB **
 Yinelenen KIMLIĞE sahip olanlar da dahil olmak üzere *Tüm* belgeleri kaydetmek ISTIYORSANıZ sorgunuzun ID alanını ( **as** anahtar sözcüğünü kullanarak) yeniden adlandırın. KIMLIK alanı Azure Cosmos DB oluşturma veya KIMLIĞI başka bir sütunun değeriyle değiştirme ( **as** anahtar sözcüğünü kullanarak veya **belge kimliği** ayarını kullanarak).
 
 ## <a name="data-partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB veri bölümleme
-Azure Cosmos DB, iş yükünüze göre bölümleri otomatik olarak ölçeklendirir. Bu nedenle, verilerinizi bölümlemeye yönelik yaklaşım olarak [sınırsız](../cosmos-db/partition-data.md) kapsayıcı önerilir. Stream Analytics sınırsız kapsayıcılara yazdığında, önceki sorgu adımı veya giriş bölümleme düzeni olarak çok sayıda paralel yazıcı kullanır.
+Azure Cosmos DB, iş yükünüze göre bölümleri otomatik olarak ölçeklendirir. Bu nedenle, verilerinizi bölümlemeye yönelik yaklaşım olarak [sınırsız](../cosmos-db/partitioning-overview.md) kapsayıcı önerilir. Stream Analytics sınırsız kapsayıcılara yazdığında, önceki sorgu adımı veya giriş bölümleme düzeni olarak çok sayıda paralel yazıcı kullanır.
 
 > [!NOTE]
 > Azure Stream Analytics en üst düzeyde yalnızca bölüm anahtarları olan sınırsız kapsayıcıları destekler. Örneğin, `/region` desteklenir. İç içe geçmiş bölüm anahtarları (örneğin, `/region/name` ) desteklenmez. 
 
-Bölüm anahtarınız seçiminize bağlı olarak şu _uyarıyı_alabilirsiniz:
+Bölüm anahtarınız seçiminize bağlı olarak şu _uyarıyı_ alabilirsiniz:
 
 `CosmosDB Output contains multiple rows and just one row per partition key. If the output latency is higher than expected, consider choosing a partition key that contains at least several hundred records per partition key.`
 
 Farklı değerlere sahip bir bölüm anahtarı özelliği seçmeniz ve iş yükünüzü bu değerler arasında eşit bir şekilde dağıtmanıza olanak sağlamak önemlidir. Doğal bir bölümlendirme yapıtı olarak, aynı bölüm anahtarını içeren istekler tek bir bölümün en yüksek aktarım hızı ile sınırlıdır. 
 
-Aynı bölüm anahtarı değerine ait olan belgelerin depolama boyutu 20 GB ile sınırlıdır ( [fiziksel bölüm boyutu sınırı](../cosmos-db/partition-data.md) 50 GB 'tır). [İdeal bölüm anahtarı](../cosmos-db/partitioning-overview.md#choose-partitionkey) , sorgularda filtre olarak sık görülen ve çözümünüzün ölçeklenebilir olduğundan emin olmak için yeterli kardinalite olan bir bölümdür.
+Aynı bölüm anahtarı değerine ait olan belgelerin depolama boyutu 20 GB ile sınırlıdır ( [fiziksel bölüm boyutu sınırı](../cosmos-db/partitioning-overview.md) 50 GB 'tır). [İdeal bölüm anahtarı](../cosmos-db/partitioning-overview.md#choose-partitionkey) , sorgularda filtre olarak sık görülen ve çözümünüzün ölçeklenebilir olduğundan emin olmak için yeterli kardinalite olan bir bölümdür.
 
-Stream Analytics sorguları için kullanılan bölüm anahtarları ve Cosmos DB aynı olması gerekmez. Tam paralel topolojiler, Stream Analytics sorgusunun bölüm anahtarı olarak *giriş bölüm anahtarının*kullanılmasını önerir, `PartitionId` ancak Cosmos DB kapsayıcısının bölüm anahtarı için önerilen seçenek olmayabilir.
+Stream Analytics sorguları için kullanılan bölüm anahtarları ve Cosmos DB aynı olması gerekmez. Tam paralel topolojiler, Stream Analytics sorgusunun bölüm anahtarı olarak *giriş bölüm anahtarının* kullanılmasını önerir, `PartitionId` ancak Cosmos DB kapsayıcısının bölüm anahtarı için önerilen seçenek olmayabilir.
 
 Bölüm anahtarı Ayrıca, saklı yordamlar ve Azure Cosmos DB tetikleyicilerinde bulunan işlemler için de sınır olur. İşlem içinde birlikte oluşan belgelerin aynı bölüm anahtarı değerini paylaşması için bölüm anahtarını seçmeniz gerekir. Azure Cosmos DB bölümünde [bulunan](../cosmos-db/partitioning-overview.md) makale, bölüm anahtarı seçme hakkında daha fazla ayrıntı sağlar.
 
@@ -89,7 +89,7 @@ Gelişmiş yazma mekanizması, büyük bir davranıştaki farklılık nedeniyle 
 
 1,2 ' dan önceki düzeyler sayesinde Stream Analytics, bölüm anahtarı başına belgeleri Azure Cosmos DB içine toplu olarak eklemek için özel bir saklı yordam kullanır. Burada bir Batch işlem olarak yazılır. Tek bir kayıt geçici bir hatayı (daraltma) azaltsa bile, tüm toplu işin yeniden denenmesi gerekir. Bu, senaryoları nispeten daha da düşük bir şekilde yavaş azaltarak kolaylaştırır.
 
-Aşağıdaki örnekte aynı Azure Event Hubs girişinin okuduğu iki özdeş Stream Analytics işi gösterilmektedir. Stream Analytics işlerin her ikisi de bir PASSTHROUGH sorgusuyla [tamamen bölümlenir](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) ve aynı Azure Cosmos DB kapsayıcılarına yazılır. Sol taraftaki ölçümler uyumluluk düzeyi 1,0 ile yapılandırılmış işten alınır. Sağdaki ölçümler 1,2 ile yapılandırılır. Azure Cosmos DB kapsayıcısının bölüm anahtarı, giriş olayından gelen benzersiz bir GUID 'dir.
+Aşağıdaki örnekte aynı Azure Event Hubs girişinin okuduğu iki özdeş Stream Analytics işi gösterilmektedir. Stream Analytics işlerin her ikisi de bir PASSTHROUGH sorgusuyla [tamamen bölümlenir](./stream-analytics-parallelization.md#embarrassingly-parallel-jobs) ve aynı Azure Cosmos DB kapsayıcılarına yazılır. Sol taraftaki ölçümler uyumluluk düzeyi 1,0 ile yapılandırılmış işten alınır. Sağdaki ölçümler 1,2 ile yapılandırılır. Azure Cosmos DB kapsayıcısının bölüm anahtarı, giriş olayından gelen benzersiz bir GUID 'dir.
 
 ![Stream Analytics ölçümlerinin karşılaştırması](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-3.png)
 
@@ -117,9 +117,9 @@ Stream Analytics bir çıkış olarak Azure Cosmos DB kullanmak için aşağıda
 |Kapsayıcı adı | Kapsayıcı adı, örneğin `MyContainer` . Adlı bir kapsayıcı `MyContainer` var olmalıdır.  |
 |Belge KIMLIĞI     | İsteğe bağlı. Ekleme veya güncelleştirme işlemlerinin temel olması gereken benzersiz anahtar olarak kullanılan çıkış olaylardaki sütun adı. Boş bırakırsanız, tüm olaylar hiçbir güncelleştirme seçeneği olmadan eklenir.|
 
-Azure Cosmos DB çıkışını yapılandırdıktan sonra, bunu sorgusunda bir [Into ifadesinin](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics)hedefi olarak kullanabilirsiniz. Bu şekilde bir Azure Cosmos DB çıkışı kullanırken, [bölüm anahtarının açıkça ayarlanması gerekir](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). 
+Azure Cosmos DB çıkışını yapılandırdıktan sonra, bunu sorgusunda bir [Into ifadesinin](/stream-analytics-query/into-azure-stream-analytics)hedefi olarak kullanabilirsiniz. Bu şekilde bir Azure Cosmos DB çıkışı kullanırken, [bölüm anahtarının açıkça ayarlanması gerekir](./stream-analytics-parallelization.md#partitions-in-inputs-and-outputs). 
 
-Çıkış kaydı, Azure Cosmos DB bölüm anahtarından sonra adlı büyük küçük harfe duyarlı bir sütun içermelidir. Daha büyük paralelleştirme elde etmek için, deyimi aynı sütunu kullanan bir [bölüm by yan tümcesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) gerektirebilir.
+Çıkış kaydı, Azure Cosmos DB bölüm anahtarından sonra adlı büyük küçük harfe duyarlı bir sütun içermelidir. Daha büyük paralelleştirme elde etmek için, deyimi aynı sütunu kullanan bir [bölüm by yan tümcesi](./stream-analytics-parallelization.md#embarrassingly-parallel-jobs) gerektirebilir.
 
 Örnek bir sorgu aşağıda verilmiştir:
 

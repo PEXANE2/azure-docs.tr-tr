@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: c421c730321213a9adbf0a0043874a21ba26bb05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2afebe61c4b2998692c823e66d8fc73584ec1dc2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906237"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125657"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Stream Analytics işi Azure Resource Manager şablonu dışarı aktarma
 
@@ -24,7 +24,7 @@ Azure Resource Manager şablonunu dışarı aktararak Azure Stream Analytics iş
 
 Bir şablonu dışarı aktarmak için önce Visual Studio Code içinde mevcut bir Stream Analytics işini açmanız gerekir. 
 
-Bir işi yerel bir projeye aktarmak için, Azure portal **Stream Analytics Gezgininde** dışarı aktarmak istediğiniz işi bulun. **Sorgu** sayfasından, **Visual Studio 'da aç**' ı seçin. **Visual Studio Code**öğesini seçin.
+Bir işi yerel bir projeye aktarmak için, Azure portal **Stream Analytics Gezgininde** dışarı aktarmak istediğiniz işi bulun. **Sorgu** sayfasından, **Visual Studio 'da aç** ' ı seçin. **Visual Studio Code** öğesini seçin.
 
 ![Visual Studio Code Stream Analytics işi aç](./media/resource-manager-export/open-job-vs-code.png)
 
@@ -58,9 +58,9 @@ Ardından, Azure Kaynak Yönetimi şablon parametreleri dosyasını doldurun.
 
 Önceki bölümde oluşturduğunuz Azure Resource Manager şablonları kullanarak Azure Stream Analytics işinizi dağıtmaya hazırsınız.
 
-Bir PowerShell penceresinde aşağıdaki komutu çalıştırın. *Resourcegroupname*, *TemplateFile*ve *templateparameterfile* dosyalarını gerçek kaynak grubu adınızla ve *JobTemplate.jsile ilgili* tüm dosya yollarını ve iş çalışma alanınızın **dağıtım klasöründeki** dosyalar *üzerindeJobTemplate.parameters.js* .
+Bir PowerShell penceresinde aşağıdaki komutu çalıştırın. *Resourcegroupname* , *TemplateFile* ve *templateparameterfile* dosyalarını gerçek kaynak grubu adınızla ve *JobTemplate.jsile ilgili* tüm dosya yollarını ve iş çalışma alanınızın **dağıtım klasöründeki** dosyalar *üzerindeJobTemplate.parameters.js* .
 
-Azure PowerShell yapılandırılmamışsa, [ınstall Azure PowerShell Module](https://docs.microsoft.com/powershell/azure/install-Az-ps)' daki adımları izleyin.
+Azure PowerShell yapılandırılmamışsa, [ınstall Azure PowerShell Module](/powershell/azure/install-Az-ps)' daki adımları izleyin.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName "<your resource group>" -TemplateFile "<path to JobTemplate.json>" -TemplateParameterFile "<path to JobTemplate.parameters.json>"

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 849f25f6fdd3fef2e1ebca7dae397d96e6849f10
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 921c3b8afdb6b196e001cdb7c190529e6238c1f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748857"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127102"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Öğretici: Java Spring uygulamasındaki Key Vault başvurularını kullanma
 
@@ -41,7 +41,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Key Vault depolanan bir değere başvuran bir uygulama yapılandırma anahtarı oluşturun.
 > * Bu anahtarın değerine bir Java Spring uygulamasından erişin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Sürüm 8 ile desteklenen bir [Java Geliştirme Seti (JDK)](/java/azure/jdk) .
@@ -51,7 +51,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 1. Azure portal, sol üst köşedeki **kaynak oluştur** seçeneğini belirleyin:
 
-    ![Anahtar Kasası oluşturma işlemi tamamlandıktan sonra çıkış](./media/quickstarts/search-services.png)
+    ![Ekran görüntüsü Azure portal kaynak oluştur seçeneğini gösterir.](./media/quickstarts/search-services.png)
 1. Arama kutusuna **Key Vault** girin.
 1. Sonuçlar listesinden sol taraftaki **Anahtar kasaları** ' nı seçin.
 1. **Anahtar kasaları** ' nda **Ekle** ' yi seçin.
@@ -65,7 +65,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Bu noktada, Azure hesabınız, bu yeni kasaya erişme yetkisine sahip tek bir hesaptır.
 
-![Anahtar Kasası oluşturma işlemi tamamlandıktan sonra çıkış](./media/quickstarts/vault-properties.png)
+![Ekran görüntüsü anahtar kasanızı gösterir.](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault’a gizli dizi ekleme
 
@@ -82,7 +82,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Uygulama yapılandırmasına Key Vault başvurusu ekleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar** ' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar** ' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Yapılandırma Gezgini** ' ni seçin.
 
