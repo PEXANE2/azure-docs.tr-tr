@@ -16,12 +16,12 @@ ms.subservice: report-monitor
 ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c7cc68c84cc9f137ba5b51206526ff96111fe9a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74008259"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122750"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki Kullanım ve Öngörüler raporu
 
@@ -42,10 +42,10 @@ Kullanım ve Öngörüler raporundan verilere erişmek için şunlar gerekir:
 ## <a name="access-the-usage-and-insights-report"></a>Kullanım ve Öngörüler raporuna erişin
 
 1. [Azure Portal](https://portal.azure.com)gidin.
-2. Doğru dizini seçin ve **Azure Active Directory** seçin ve **Kurumsal uygulamalar**' ı seçin.
+2. Doğru dizini seçin ve **Azure Active Directory** seçin ve **Kurumsal uygulamalar** ' ı seçin.
 3. **Etkinlik** bölümünde, raporu açmak için **kullanım & Öngörüler** ' i seçin. 
 
-![Kullanım ve İçgörüler raporu](./media/concept-usage-insights-report/main-menu.png)
+![Ekran görüntüsü etkinlik bölümünden seçilen kullanım & öngörülerini gösterir.](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>Raporu kullanma
@@ -58,7 +58,7 @@ Odağı belirli bir uygulama için de ayarlayabilirsiniz. Uygulamanın zaman iç
 
 Uygulama kullanımı grafiğinde bir gün seçtiğinizde, uygulama için oturum açma etkinliklerinin ayrıntılı bir listesini alırsınız.  
 
-![Kullanım ve İçgörüler raporu](./media/concept-usage-insights-report/usage-and-insights-report.png)
+![Ekran görüntüsü, bir Aralık seçebileceğiniz ve farklı uygulamalar için oturum açma etkinliğini görüntüleyebileceğiniz uygulama etkinliği için kullanım & öngörülerini gösterir.](./media/concept-usage-insights-report/usage-and-insights-report.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

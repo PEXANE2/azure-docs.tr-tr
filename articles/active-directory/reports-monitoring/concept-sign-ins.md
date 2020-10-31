@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23074dcd7ee888d6d9d8bf288cf0fda66dc0ceec
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319767"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122852"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki oturum açma etkinlik raporları
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
 
 Bu makale, oturum açma raporuna genel bir bakış sunar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 
@@ -58,13 +58,13 @@ Kullanıcı oturum açma işlemleri raporu, aşağıdaki soruların yanıtların
 * Bir hafta içerisinde kaç kullanıcı oturum açtı?
 * Bu açılan oturumların durumu nedir?
 
-[Azure Portal](https://portal.azure.com) menüsünde **Azure Active Directory**' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
+[Azure Portal](https://portal.azure.com) menüsünde **Azure Active Directory** ' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
 
 ![Azure Active Directory'yi seçin](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
-**İzleme**bölümünde oturum **açma** işlemlerini seçerek [oturum](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)açma işlemlerini açın.
+**İzleme** bölümünde oturum **açma** işlemlerini seçerek [oturum](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)açma işlemlerini açın.
 
-![Oturum açma etkinliği](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Oturum açma etkinliği")
+![Ekran görüntüsü, Izleme menüsünden seçilen oturum açma işlemlerini gösterir.](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Oturum açma etkinliği")
 
 Bazı oturum açma kayıtlarının portalda gösterilmesi iki saate kadar sürebilir.
 
@@ -80,19 +80,19 @@ Oturum açma günlüklerinin aşağıdakileri gösteren bir varsayılan liste g�
 - Risk algılama durumu
 - Çok faktörlü kimlik doğrulaması (MFA) gereksiniminin durumu
 
-![Oturum açma etkinliği](./media/concept-sign-ins/sign-in-activity.png "Oturum açma etkinliği")
+![Ekran görüntüsünde Office 365 SharePoint Online oturum açma işlemleri gösterilir.](./media/concept-sign-ins/sign-in-activity.png "Oturum açma etkinliği")
 
-Araç çubuğunda **Sütunlar**’a tıklayarak liste görünümünü özelleştirebilirsiniz.
+Araç çubuğunda **Sütunlar** ’a tıklayarak liste görünümünü özelleştirebilirsiniz.
 
-![Oturum açma etkinliği](./media/concept-sign-ins/19.png "Oturum açma etkinliği")
+![Ekran görüntüsü, oturum açma sayfasındaki sütunlar seçeneğini gösterir.](./media/concept-sign-ins/19.png "Oturum açma etkinliği")
 
 **Sütunlar** iletişim kutusu seçilebilir özniteliklere erişmenizi sağlar. Bir oturum açma raporunda, belirli bir oturum açma isteği için sütun olarak birden fazla değere sahip olan alanlar olamaz. Bu, örneğin, kimlik doğrulama ayrıntıları, koşullu erişim verileri ve ağ konumu için geçerlidir.   
 
-![Oturum açma etkinliği](./media/concept-sign-ins/columns.png "Oturum açma etkinliği")
+![Ekran görüntüsünde, öznitelikleri seçebileceğiniz sütunlar iletişim kutusu gösterilir.](./media/concept-sign-ins/columns.png "Oturum açma etkinliği")
 
 Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
-![Oturum açma etkinliği](./media/concept-sign-ins/basic-sign-in.png "Oturum açma etkinliği")
+![Ekran görüntüsü ayrıntılı bir bilgi görünümünü gösterir.](./media/concept-sign-ins/basic-sign-in.png "Oturum açma etkinliği")
 
 > [!NOTE]
 > Müşteriler artık tüm oturum açma raporları aracılığıyla koşullu erişim ilkelerini giderebilirler. Bir oturum açma kaydı için **koşullu erişim** sekmesine tıkladığınızda müşteriler koşullu erişim durumunu gözden geçirebilir ve oturum açma için uygulanan ilkelerin ayrıntılarını ve her bir ilkenin sonucunu görebilir.
@@ -104,7 +104,7 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
 İlk olarak, bildirilen verileri sizin için uygun bir düzeye daraltın. İkinci olarak, tarih alanını kullanarak oturum açma verilerini varsayılan filtre olarak filtreleyin. Azure AD size ayarlayabileceğiniz çok çeşitli ek filtreler sağlar:
 
-![Oturum açma etkinliği](./media/concept-sign-ins/04.png "Oturum açma etkinliği")
+![Ekran görüntüsü, Filtre Ekle seçeneğini gösterir.](./media/concept-sign-ins/04.png "Oturum açma etkinliği")
 
 **Istek kimliği** -ILGILENDIĞINIZ isteğin kimliği.
 
@@ -177,11 +177,11 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
 **Koşullu erişim** -uygulanan koşullu erişim kurallarının durumu
 
-- **Uygulanmadı**: oturum açma sırasında Kullanıcı ve uygulamaya ilke uygulanmaz.
+- **Uygulanmadı** : oturum açma sırasında Kullanıcı ve uygulamaya ilke uygulanmaz.
 
-- **Başarılı**: oturum açma sırasında Kullanıcı ve uygulamaya (diğer koşullar olması gerekmez) uygulanan bir veya daha fazla koşullu erişim ilkesi. 
+- **Başarılı** : oturum açma sırasında Kullanıcı ve uygulamaya (diğer koşullar olması gerekmez) uygulanan bir veya daha fazla koşullu erişim ilkesi. 
 
-- **Hata**: oturum açma, en az bir koşullu erişim ilkesinin Kullanıcı ve uygulama koşulunu karşıladı ve izin verme denetimleri karşılanmadı ya da erişimi engelle olarak ayarlı değil.
+- **Hata** : oturum açma, en az bir koşullu erişim ilkesinin Kullanıcı ve uygulama koşulunu karşıladı ve izin verme denetimleri karşılanmadı ya da erişimi engelle olarak ayarlı değil.
 
 
 
@@ -214,7 +214,7 @@ Azure AD ve Azure portal, oturum açma verilerine yönelik ek giriş noktaları 
 
 **Kimlik güvenlik koruması** Genel Bakış sayfasındaki Kullanıcı oturum açma grafiğinde, oturum açma işlemlerinin haftalık toplamaları gösterilmektedir. Zaman aralığı için varsayılan değer 30 gündür.
 
-![Oturum açma etkinliği](./media/concept-sign-ins/06.png "Oturum açma etkinliği")
+![Ekran görüntüsü, bir ay boyunca oturum açma işlemlerinin bir grafiğini gösterir.](./media/concept-sign-ins/06.png "Oturum açma etkinliği")
 
 Oturum açma grafiğinde bir güne tıkladığınızda, o güne ait oturum açma etkinliklerinin genel bir açıklamasını alırsınız.
 
@@ -234,7 +234,7 @@ Bir öğeye tıklayarak oturum açma işlemi hakkında daha fazla bilgi alabilir
 - Uygulama
 - İstemci
 - Konum
-- IP adresi
+- IP Adresi
 - Tarih
 - MFA Gerekli
 - Oturum açma durumu
@@ -244,7 +244,7 @@ Bir öğeye tıklayarak oturum açma işlemi hakkında daha fazla bilgi alabilir
 
 **Kullanıcılar** sayfasında, **Etkinlik** bölümündeki **Oturum açma** öğesine tıklayarak tüm kullanıcı oturum açma işlemlerine eksiksiz bir genel bakış elde edebilirsiniz.
 
-![Oturum açma etkinliği](./media/concept-sign-ins/08.png "Oturum açma etkinliği")
+![Ekran görüntüsü, oturum açma işlemlerini seçebileceğiniz etkinlik bölümünü gösterir.](./media/concept-sign-ins/08.png "Oturum açma etkinliği")
 
 ## <a name="usage-of-managed-applications"></a>Yönetilen uygulamaların kullanımı
 
@@ -254,13 +254,13 @@ Oturum açma bilgilerinizin uygulama odaklı bir görünümüyle aşağıdakiler
 * Kuruluşunuzdaki en iyi üç uygulama nelerdir?
 * En yeni Uygulamam nasıl yapıyor?
 
-Bu verilere yönelik giriş noktası, kuruluşunuzdaki en üst üç uygulama olur. Veriler, **Kurumsal uygulamalar**altındaki **genel bakış** bölümünde yer alan son 30 gün içinde bulunur.
+Bu verilere yönelik giriş noktası, kuruluşunuzdaki en üst üç uygulama olur. Veriler, **Kurumsal uygulamalar** altındaki **genel bakış** bölümünde yer alan son 30 gün içinde bulunur.
 
-![Oturum açma etkinliği](./media/concept-sign-ins/10.png "Oturum açma etkinliği")
+![Ekran görüntüsü, genel bakış ' ı seçebileceğiniz yeri gösterir.](./media/concept-sign-ins/10.png "Oturum açma etkinliği")
 
 Uygulama kullanımı grafikleri, belirli bir dönemde en iyi üç uygulama için oturum açma işlemlerinin haftalık toplamalarını toplamalar. Zaman dönemi için varsayılan süre 30 gündür.
 
-![Oturum açma etkinliği](./media/concept-sign-ins/graph-chart.png "Oturum açma etkinliği")
+![Ekran görüntüsü, bir aylık dönem için uygulama kullanımını gösterir.](./media/concept-sign-ins/graph-chart.png "Oturum açma etkinliği")
 
 İsterseniz belirli bir uygulamaya odaklanabilirsiniz.
 

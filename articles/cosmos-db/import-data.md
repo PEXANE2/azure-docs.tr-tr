@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 8613d3b02d396f16008ee771cdff25fe8b2e2f10
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7084458d8d3fbae45819fc29daa502423c919bbf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490654"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101621"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Öğretici: Verilerinizi Azure Cosmos DB'ye geçirmek için Veri Geçiş Aracı'nı kullanma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu öğreticide, çeşitli kaynaklardan Azure Cosmos kapsayıcılarına ve tablolarına verileri içeri aktarabilen Azure Cosmos DB Veri Geçişi aracının kullanımına ilişkin yönergeler sağlanmaktadır. JSON dosyalarından, CSV dosyalarından, SQL, MongoDB, Azure Tablo depolamadan, Amazon DynamoDB ve hatta Azure Cosmos DB SQL API koleksiyonlarından içeri aktarma işlemi yapabilirsiniz. Bu verileri, Azure Cosmos DB ile birlikte kullanmak için koleksiyonlara ve tablolara geçirirsiniz. Veri Geçişi aracı, tek bir bölüm koleksiyonundan SQL API’si için çok bölümlü bir koleksiyona geçirme işlemi sırasında da kullanılabilir.
 
@@ -68,8 +69,8 @@ Veri Geçişi aracı, aşağıda örnekleri verilen çeşitli kaynaklardan Azure
 
 Geçiş aracı kaynak koduna GitHub’da [bu depodan](https://github.com/azure/azure-documentdb-datamigrationtool) erişilebilir. Çözümü yerel olarak indirip derleyebilir veya [önceden derlenmiş bir ikiliyi indirip](https://aka.ms/csdmtool) daha sonra aşağıdakilerden birini çalıştırabilirsiniz:
 
-* **Dtui.exe**: Aracın grafiksel arabirim sürümü
-* **Dt.exe**: Aracın komut satırı sürümü
+* **Dtui.exe** : Aracın grafiksel arabirim sürümü
+* **Dt.exe** : Aracın komut satırı sürümü
 
 ## <a name="select-data-source"></a>Veri kaynağı seçme
 
@@ -99,7 +100,7 @@ Bağlantı dizesi aşağıdaki biçimdedir:
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
 * , `<CosmosDB Endpoint>` Uç nokta URI 'sidir. Bu değeri Azure portal alabilir. Azure Cosmos hesabınıza gidin. **Genel bakış** bölmesini açın ve **URI** değerini kopyalayın.
-* , `<AccountKey>` "Parola" veya **birincil anahtardır**. Bu değeri Azure portal alabilir. Azure Cosmos hesabınıza gidin. **Bağlantı dizelerini** veya **anahtarlar** bölmesini açın ve "parola" veya **birincil anahtar** değerini kopyalayın.
+* , `<AccountKey>` "Parola" veya **birincil anahtardır** . Bu değeri Azure portal alabilir. Azure Cosmos hesabınıza gidin. **Bağlantı dizelerini** veya **anahtarlar** bölmesini açın ve "parola" veya **birincil anahtar** değerini kopyalayın.
 * , `<CosmosDB Database>` CosmosDB veritabanı adıdır.
 
 Örnek: `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
@@ -364,7 +365,7 @@ Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 > [!NOTE]
 > Bağlantı dizesi alanında belirtilen Azure Cosmos DB örneğinin erişilebilir olduğundan emin olmak için Doğrula komutunu kullanın.
 
-Tek bir koleksiyona içeri aktarmak için, içinden verilerin içeri aktarılacağı koleksiyonun adını girin ve Ekle düğmesine tıklayın. Birden fazla koleksiyona içeri aktarmak için her bir koleksiyon adını tek tek girin veya birden fazla koleksiyon belirtmek için şu sözdizimini kullanın: *collection_prefix*[Dizin sonu dizinini Başlat]. Belirtilen sözdizimini kullanarak birden fazla koleksiyon belirtirken aşağıdaki yönergeleri aklınızda bulundurun:
+Tek bir koleksiyona içeri aktarmak için, içinden verilerin içeri aktarılacağı koleksiyonun adını girin ve Ekle düğmesine tıklayın. Birden fazla koleksiyona içeri aktarmak için her bir koleksiyon adını tek tek girin veya birden fazla koleksiyon belirtmek için şu sözdizimini kullanın: *collection_prefix* [Dizin sonu dizinini Başlat]. Belirtilen sözdizimini kullanarak birden fazla koleksiyon belirtirken aşağıdaki yönergeleri aklınızda bulundurun:
 
 1. Yalnızca tamsayı aralığı adı desenleri desteklenir. Örneğin, collection[0-3] belirtildiğinde şu koleksiyonlar oluşturulur: collection0, collection1, collection2, collection3.
 2. Kısaltılmış bir sözdizimi kullanabilirsiniz: collection[3], 1. adımda belirtilen aynı koleksiyon kümesini oluşturur.
@@ -423,7 +424,7 @@ Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 > [!NOTE]
 > Bağlantı dizesi alanında belirtilen Azure Cosmos DB örneğinin erişilebilir olduğundan emin olmak için Doğrula komutunu kullanın.
 
-Tek bir koleksiyona aktarmak için, verilerin içe aktarılacağı koleksiyonun adını girin ve ardından Ekle düğmesine tıklayın. Birden fazla koleksiyona içeri aktarmak için her koleksiyon adını tek tek girin. Ayrıca, birden fazla koleksiyon belirtmek için şu sözdizimini kullanabilirsiniz: *collection_prefix*[Dizin bitiş dizinini Başlat]. Belirtilen sözdizimi aracılığıyla birden fazla koleksiyon belirtirken aşağıdaki yönergeleri aklınızda bulundurun:
+Tek bir koleksiyona aktarmak için, verilerin içe aktarılacağı koleksiyonun adını girin ve ardından Ekle düğmesine tıklayın. Birden fazla koleksiyona içeri aktarmak için her koleksiyon adını tek tek girin. Ayrıca, birden fazla koleksiyon belirtmek için şu sözdizimini kullanabilirsiniz: *collection_prefix* [Dizin bitiş dizinini Başlat]. Belirtilen sözdizimi aracılığıyla birden fazla koleksiyon belirtirken aşağıdaki yönergeleri aklınızda bulundurun:
 
 1. Yalnızca tamsayı aralığı adı desenleri desteklenir. Örneğin, collection[0-3] belirtildiğinde şu koleksiyonlar oluşturulur: collection0, collection1, collection2, collection3.
 2. Kısaltılmış bir sözdizimi kullanabilirsiniz: collection[3], 1. adımda belirtilen aynı koleksiyon kümesini oluşturur.
@@ -517,7 +518,7 @@ Gelişmiş yapılandırma ekranında, hataların yazılmasını istediğiniz gü
 
     :::image type="content" source="./media/import-data/summarycommand.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
 
-2. Kaynak ve hedef seçeneklerden memnun kaldığınızda **İçeri Aktar**’a tıklayın. İçeri aktarma devam ettikçe, geçen süre, aktarılan sayı ve hata bilgileri (Gelişmiş yapılandırma bölümünde bir dosya adı sağlamadıysanız) güncelleştirilir. Tamamlandıktan sonra, sonuçları dışarı aktarabilirsiniz (örneğin, içeri aktarma hatalarıyla ilgilenmek için).
+2. Kaynak ve hedef seçeneklerden memnun kaldığınızda **İçeri Aktar** ’a tıklayın. İçeri aktarma devam ettikçe, geçen süre, aktarılan sayı ve hata bilgileri (Gelişmiş yapılandırma bölümünde bir dosya adı sağlamadıysanız) güncelleştirilir. Tamamlandıktan sonra, sonuçları dışarı aktarabilirsiniz (örneğin, içeri aktarma hatalarıyla ilgilenmek için).
 
     :::image type="content" source="./media/import-data/viewresults.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
 

@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 54b58a07e3d6d4b330b6f97ef0f4a7bdd10293da
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 01030a563c15eee7786058c2eae30d23803dfe42
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490467"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101655"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API bir kapsayıcı oluşturma
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Bu makalede, Azure Cosmos DB Cassandra API bir kapsayıcı oluşturmanın farklı yolları açıklanmaktadır. Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'lar kullanılarak nasıl kapsayıcı oluşturulacağını gösterir. Bu makalede bir kapsayıcı oluşturma, Bölüm anahtarını belirtme ve üretilen iş sağlama işlemlerinin nasıl yapılacağı gösterilir.
 
@@ -30,13 +31,13 @@ Bu makalede, Azure Cosmos DB Cassandra API bir kapsayıcı oluşturmanın farkl�
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-cassandra-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
-1. **Veri Gezgini** bölmesini açın ve **Yeni tablo**' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
+1. **Veri Gezgini** bölmesini açın ve **Yeni tablo** ' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
 
    * Yeni bir keyspace mi, yoksa var olanı mi kullandığınızı belirtin.
    * Tablo adı girin.
    * Özellikleri girin ve bir birincil anahtar belirtin.
    * Sağlanacak bir üretilen iş (örneğin, 1000 ru) girin.
-   * **Tamam**’ı seçin.
+   * **Tamam** ’ı seçin.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Cassandra API, tablo Ekle iletişim kutusunun ekran görüntüsü":::
 

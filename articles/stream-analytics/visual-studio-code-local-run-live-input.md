@@ -6,18 +6,18 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
-ms.openlocfilehash: 944c1a8cc4606c5e614f17cd0590331826527a7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd4966ee75e9dc0ff401823e4291f8d299c8893c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892113"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122903"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Visual Studio Code kullanarak canlı akış girişine göre Stream Analytics sorguları yerel olarak test edin
 
-Stream Analytics işlerinizi canlı akış girişine karşı yerel olarak test etmek için Visual Studio Code Azure Stream Analytics araçları kullanabilirsiniz. Giriş, Azure Event Hubs veya Azure IoT Hub gibi bir kaynaktan gelebilir. Çıktı sonuçları, projenizdeki **Localrunçıktılar**adlı BIR klasöre JSON dosyaları olarak gönderilir.
+Stream Analytics işlerinizi canlı akış girişine karşı yerel olarak test etmek için Visual Studio Code Azure Stream Analytics araçları kullanabilirsiniz. Giriş, Azure Event Hubs veya Azure IoT Hub gibi bir kaynaktan gelebilir. Çıktı sonuçları, projenizdeki **Localrunçıktılar** adlı BIR klasöre JSON dosyaları olarak gönderilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download) yükleyip Visual Studio Code yeniden başlatın.
 
@@ -29,7 +29,7 @@ Stream Analytics işlerinizi canlı akış girişine karşı yerel olarak test e
 
    ![Girişler klasöründen giriş ekleme](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
-   Ayrıca, **CTRL + SHIFT + P** ' yi seçerek komut paletini açabilir ve **asa: giriş Ekle**' yi girebilirsiniz.
+   Ayrıca, **CTRL + SHIFT + P** ' yi seçerek komut paletini açabilir ve **asa: giriş Ekle** ' yi girebilirsiniz.
 
    ![Visual Studio Code Stream Analytics girişi ekleme](./media/quick-create-visual-studio-code/add-input.png)
 
@@ -37,7 +37,7 @@ Stream Analytics işlerinizi canlı akış girişine karşı yerel olarak test e
 
    ![Giriş seçeneği olarak IoT Hub 'ı seçin](./media/quick-create-visual-studio-code/iot-hub.png)
 
-3. Girişi komut paletinden eklediyseniz, girişi kullanacak Stream Analytics sorgu betiğini seçin. **MyASAproj. aşama QL**dosya yoluyla otomatik olarak doldurulmalıdır.
+3. Girişi komut paletinden eklediyseniz, girişi kullanacak Stream Analytics sorgu betiğini seçin. **MyASAproj. aşama QL** dosya yoluyla otomatik olarak doldurulmalıdır.
 
    ![Visual Studio Code bir Stream Analytics betiği seçin](./media/quick-create-visual-studio-code/asa-script.png)
 
@@ -57,7 +57,7 @@ Giriş verilerinin geldiğinden emin olmak için, en üstteki satırdaki canlı 
 
 ## <a name="run-queries-locally"></a>Sorguları yerel olarak çalıştır
 
-Sorgu düzenleyicinize dönün ve **yerel olarak çalıştır**' ı seçin. Ardından açılan listeden **canlı girişi kullan** ' ı seçin.
+Sorgu düzenleyicinize dönün ve **yerel olarak çalıştır** ' ı seçin. Ardından açılan listeden **canlı girişi kullan** ' ı seçin.
 
 ![Sorgu Düzenleyicisi 'nde "yerel olarak çalıştır" seçeneğini belirleyin](./media/vscode-local-run/run-locally.png)
 
@@ -65,7 +65,7 @@ Sorgu düzenleyicinize dönün ve **yerel olarak çalıştır**' ı seçin. Ard�
 
 Sonuç doğru pencerede gösterilir ve her 3 saniyede bir yenilenir. Yeniden test etmek için **Çalıştır** ' ı seçebilirsiniz. Dosya Gezgini 'nde sonuç dosyalarını görmek ve Visual Studio Code veya Excel gibi bir araçla açmak için **klasörü aç** ' ı da seçebilirsiniz. Sonuç dosyalarının yalnızca JSON biçiminde kullanılabilir olduğunu unutmayın.
 
-İşin çıkış oluşturmaya başlaması için varsayılan zaman, **Şimdi**olarak ayarlanır. Sonuç penceresinde **Çıkış başlangıç zamanı** düğmesini seçerek saati özelleştirebilirsiniz.
+İşin çıkış oluşturmaya başlaması için varsayılan zaman, **Şimdi** olarak ayarlanır. Sonuç penceresinde **Çıkış başlangıç zamanı** düğmesini seçerek saati özelleştirebilirsiniz.
 
 ![Yerel çalıştırma sonucunu görüntüle](./media/vscode-local-run-live-input/vscode-livetesting.gif)
 
@@ -73,4 +73,4 @@ Sonuç doğru pencerede gösterilir ve her 3 saniyede bir yenilenir. Yeniden tes
 
 * [Visual Studio Code Azure Stream Analytics işleri keşfet (Önizleme)](visual-studio-code-explore-jobs.md)
 
-* [NPM paketini kullanarak CI/CD işlem hatlarını ayarlama](setup-cicd-vs-code.md)
+* [NPM paketini kullanarak CI/CD işlem hatlarını ayarlama](./cicd-overview.md)

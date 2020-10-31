@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d18cf248aa94e23abfa6e2b9467bb1167a32a6f1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2bbdbc7a0ed71634522bd68dbf0807264a409525
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490535"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101740"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) Azure Cosmos DB erişimi yapılandırma
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos hesabını yalnızca belirli bir sanal ağ (VNet) alt ağından erişime izin verecek şekilde yapılandırabilirsiniz. [Hizmet uç noktasının](../virtual-network/virtual-network-service-endpoints-overview.md) bir sanal ağ içindeki alt ağda Azure Cosmos DB erişmesini etkinleştirerek, bu alt ağdan gelen trafik, alt ağın ve sanal ağın kimliğiyle Azure Cosmos DB gönderilir. Azure Cosmos DB hizmeti uç noktası etkinleştirildikten sonra, Azure Cosmos hesabınıza ekleyerek alt ağa erişimi sınırlayabilirsiniz.
 
@@ -39,11 +40,11 @@ Aşağıdaki bölümlerde, bir Azure Cosmos DB hesabı için sanal ağ hizmeti u
 
 1. **Tüm kaynaklar** dikey penceresinde, güvenli hale getirmek istediğiniz Azure Cosmos DB hesabını bulun.
 
-1. Ayarlar menüsünden **güvenlik duvarları ve sanal ağlar** ' ı seçin ve **Seçilen ağlardan**erişime izin ver ' i seçin.
+1. Ayarlar menüsünden **güvenlik duvarları ve sanal ağlar** ' ı seçin ve **Seçilen ağlardan** erişime izin ver ' i seçin.
 
-1. Var olan bir sanal ağın alt ağına erişim vermek için, **sanal ağlar**altında **var olan Azure sanal ağını Ekle**' yi seçin.
+1. Var olan bir sanal ağın alt ağına erişim vermek için, **sanal ağlar** altında **var olan Azure sanal ağını Ekle** ' yi seçin.
 
-1. Azure sanal ağını eklemek istediğiniz **aboneliği** seçin. Azure Cosmos DB hesabınıza erişim sağlamak istediğiniz Azure **sanal ağlarını** ve **alt ağlarını** seçin. Sonra, "Microsoft. Azu, Smosdb" için hizmet uç noktalarına sahip seçili ağları etkinleştirmek üzere **Etkinleştir** ' i seçin. Tamamlandıktan sonra **Ekle**' yi seçin.
+1. Azure sanal ağını eklemek istediğiniz **aboneliği** seçin. Azure Cosmos DB hesabınıza erişim sağlamak istediğiniz Azure **sanal ağlarını** ve **alt ağlarını** seçin. Sonra, "Microsoft. Azu, Smosdb" için hizmet uç noktalarına sahip seçili ağları etkinleştirmek üzere **Etkinleştir** ' i seçin. Tamamlandıktan sonra **Ekle** ' yi seçin.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="Sanal ağ ve alt ağ seçin":::
 
@@ -63,15 +64,15 @@ Aboneliği kaynak sağlayıcısına kaydetme yönergeleri aşağıda verilmişti
 
 1. **Tüm kaynaklar** dikey penceresinde, güvenli hale getirmek istediğiniz Azure Cosmos DB hesabını bulun.  
 
-1. Ayarlar menüsünden **güvenlik duvarları ve Azure sanal ağları** ' nı seçin ve **Seçilen ağlardan**erişime izin ver ' i seçin.  
+1. Ayarlar menüsünden **güvenlik duvarları ve Azure sanal ağları** ' nı seçin ve **Seçilen ağlardan** erişime izin ver ' i seçin.  
 
-1. Yeni bir Azure sanal ağına erişim vermek için, **sanal ağlar**altında **Yeni sanal ağ ekle**' yi seçin.  
+1. Yeni bir Azure sanal ağına erişim vermek için, **sanal ağlar** altında **Yeni sanal ağ ekle** ' yi seçin.  
 
-1. Yeni bir sanal ağ oluşturmak için gereken ayrıntıları girip **Oluştur**' u seçin. Alt ağ "Microsoft. Azu, Smosdb" etkin bir hizmet uç noktası ile oluşturulur.
+1. Yeni bir sanal ağ oluşturmak için gereken ayrıntıları girip **Oluştur** ' u seçin. Alt ağ "Microsoft. Azu, Smosdb" etkin bir hizmet uç noktası ile oluşturulur.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Sanal ağ ve alt ağ seçin":::
 
-Azure Cosmos DB hesabınız Azure Bilişsel Arama gibi diğer Azure hizmetleri tarafından kullanılıyorsa veya Stream Analytics veya Power BI 'e erişildiğinde, **Genel Azure veri merkezlerinden gelen bağlantıları kabul et**' i seçerek erişime izin verebilirsiniz.
+Azure Cosmos DB hesabınız Azure Bilişsel Arama gibi diğer Azure hizmetleri tarafından kullanılıyorsa veya Stream Analytics veya Power BI 'e erişildiğinde, **Genel Azure veri merkezlerinden gelen bağlantıları kabul et** ' i seçerek erişime izin verebilirsiniz.
 
 Portaldan Azure Cosmos DB ölçümlerine erişiminizin olduğundan emin olmak için **Azure Portal seçeneklerinden erişime Izin ver** ' i etkinleştirmeniz gerekir. Bu seçenekler hakkında daha fazla bilgi edinmek için bkz. [IP güvenlik duvarı yapılandırma](how-to-configure-firewall.md) makalesi. Erişimi etkinleştirdikten sonra ayarları kaydetmek için **Kaydet** ' i seçin.
 
@@ -81,11 +82,11 @@ Portaldan Azure Cosmos DB ölçümlerine erişiminizin olduğundan emin olmak i�
 
 1. Ayarlar menüsünden **güvenlik duvarları ve sanal ağlar ' ı** seçin.  
 
-1. Bir sanal ağ veya alt ağ kuralını kaldırmak için, sanal ağ veya alt ağın yanındaki **...** öğesini seçin ve **Kaldır**' ı seçin.
+1. Bir sanal ağ veya alt ağ kuralını kaldırmak için, sanal ağ veya alt ağın yanındaki **...** öğesini seçin ve **Kaldır** ' ı seçin.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Sanal ağ ve alt ağ seçin":::
 
-1. Değişikliklerinizi uygulamak için **Kaydet**’i seçin.
+1. Değişikliklerinizi uygulamak için **Kaydet** ’i seçin.
 
 ## <a name="configure-a-service-endpoint-by-using-azure-powershell"></a><a id="configure-using-powershell"></a>Azure PowerShell kullanarak bir hizmet uç noktası yapılandırma
 

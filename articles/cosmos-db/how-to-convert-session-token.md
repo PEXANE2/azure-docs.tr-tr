@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ff66c2cb355e2070cdf30444c52d1accacac8964
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ece181d06c7d3dbd00ba2f1262a3887ad966d088
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490450"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101672"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>.NET SDK 'da oturum belirteci biçimlerini dönüştürme
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede, SDK sürümleri arasında uyumluluk sağlamak için farklı oturum belirteci biçimleri arasında dönüştürme işleminin nasıl yapılacağı açıklanır.
 
@@ -26,7 +27,7 @@ Bu makalede, SDK sürümleri arasında uyumluluk sağlamak için farklı oturum 
 
 ## <a name="session-token-formats"></a>Oturum belirteci biçimleri
 
-İki oturum belirteci biçimi vardır: **basit** ve **vektör**.  Bu iki biçim de değiştirilemez, bu nedenle, farklı sürümlerle istemci uygulamasına geçiş yaparken biçimin dönüştürülmesi gerekir.
+İki oturum belirteci biçimi vardır: **basit** ve **vektör** .  Bu iki biçim de değiştirilemez, bu nedenle, farklı sürümlerle istemci uygulamasına geçiş yaparken biçimin dönüştürülmesi gerekir.
 - **Basit** oturum belirteci BIÇIMI .NET SDK v1 tarafından kullanılır (Microsoft.Azure.DocumentDB-sürüm 1. x)
 - **Vektör** oturum belirteci BIÇIMI .NET SDK V2 (Microsoft.Azure.DocumentDB-sürüm 2. x) tarafından kullanılır
 

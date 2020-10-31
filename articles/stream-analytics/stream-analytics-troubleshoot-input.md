@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 760c98ce9464e4d40f01256a973e07d9084c6dfe
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448877"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123294"
 ---
 # <a name="troubleshoot-input-connections"></a>Giriş bağlantısı sorunlarını giderme
 
@@ -25,13 +25,13 @@ Bu makalede Azure Stream Analytics giriş bağlantılarıyla ilgili yaygın soru
 
 2.  Giriş verilerinizi inceleyin.
 
-    1. Her giriş için [**örnek veri**](stream-analytics-sample-data-input.md) düğmesini kullanın. Giriş örnek verilerini indirin.
+    1. Her giriş için [**örnek veri**](./stream-analytics-test-query.md) düğmesini kullanın. Giriş örnek verilerini indirin.
         
-    1. Şema ve [veri türlerini](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)anlamak için örnek verileri inceleyin.
+    1. Şema ve [veri türlerini](/stream-analytics-query/data-types-azure-stream-analytics)anlamak için örnek verileri inceleyin.
     
     1. Olayların gönderildiğinden emin olmak için [Olay Hub 'ı ölçümlerini](../event-hubs/event-hubs-metrics-azure-monitor.md) denetleyin. Event Hubs ileti alıyorsanız, ileti ölçümleri sıfırdan büyük olmalıdır.
 
-3.  Giriş önizlemede bir zaman aralığı seçtiğinizden emin olun. **Zaman aralığını Seç**' i seçin ve ardından sorgunuzu test etmeden önce bir örnek süre girin.
+3.  Giriş önizlemede bir zaman aralığı seçtiğinizden emin olun. **Zaman aralığını Seç** ' i seçin ve ardından sorgunuzu test etmeden önce bir örnek süre girin.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Yanlış biçimlendirilmiş giriş olayları seri durumundan çıkarma hatalarına neden oluyor 
 
@@ -71,7 +71,7 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 Event Hubs örneğinize yeni bir tüketici grubu eklemek için aşağıdaki adımları izleyin:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
 2. Olay Hub 'ınızı bulun.
 
@@ -79,7 +79,7 @@ Event Hubs örneğinize yeni bir tüketici grubu eklemek için aşağıdaki adı
 
 4. Olay Hub 'ını ada göre seçin.
 
-5. **Event Hubs örneği** sayfasında, **varlıklar** başlığı altında **tüketici grupları**' nı seçin. **$Default** adlı bir tüketici grubu listelenir.
+5. **Event Hubs örneği** sayfasında, **varlıklar** başlığı altında **tüketici grupları** ' nı seçin. **$Default** adlı bir tüketici grubu listelenir.
 
 6. Yeni bir tüketici grubu eklemek için **+ Tüketici grubu** ' nu seçin. 
 
@@ -163,16 +163,16 @@ SELECT foo FROM DataTwo
 
 ## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>Bölüm başına okuyucu IoT Hub sınırı aşıyor
 
-Stream Analytics işler, IoT Hub olayları bağlamak ve okumak için IoT Hub yerleşik [Olay Hub 'ı ile uyumlu uç noktasını](../iot-hub/iot-hub-devguide-messages-read-builtin.md) kullanır. Bölüm başına okuma, IoT Hub sınırlarını aşarsa, bu sorunu çözmek için [Olay Hub 'ı çözümlerini](#readers-per-partition-exceeds-event-hubs-limit) kullanabilirsiniz. Yerleşik uç nokta için IoT Hub Portal uç noktası oturumunda veya [IoT Hub SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)aracılığıyla bir tüketici grubu oluşturabilirsiniz.
+Stream Analytics işler, IoT Hub olayları bağlamak ve okumak için IoT Hub yerleşik [Olay Hub 'ı ile uyumlu uç noktasını](../iot-hub/iot-hub-devguide-messages-read-builtin.md) kullanır. Bölüm başına okuma, IoT Hub sınırlarını aşarsa, bu sorunu çözmek için [Olay Hub 'ı çözümlerini](#readers-per-partition-exceeds-event-hubs-limit) kullanabilirsiniz. Yerleşik uç nokta için IoT Hub Portal uç noktası oturumunda veya [IoT Hub SDK](/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)aracılığıyla bir tüketici grubu oluşturabilirsiniz.
 
 ## <a name="get-help"></a>Yardım alın
 
-Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Akış Analizi Sorgu Dili Başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](/rest/api/streamanalytics/)

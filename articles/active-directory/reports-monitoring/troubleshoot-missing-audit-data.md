@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1ac0033b7ed2de90ece481cd02d64970ff5f9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f48c26a65314e2f23513fba155f07db3805a516
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85608118"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123073"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Sorun giderme: Azure Active Directory etkinlik günlüklerindeki eksik veriler 
 
@@ -32,7 +32,7 @@ ms.locfileid: "85608118"
 
 Azure portalında bazı eylemler gerçekleştirdim ve bu eylemlerin denetim günlüklerini `Activity logs > Audit Logs` dikey penceresinde görmeyi umuyordum, ancak bulamıyorum.
 
- ![Raporlama](./media/troubleshoot-missing-audit-data/01.png)
+ ![Ekran görüntüsü denetim günlüğü girdilerini gösterir.](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>Nedeni
 
@@ -53,7 +53,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 
 Azure portalında kısa bir süre önce oturum açtım ve bu oturum açma işleminin günlük girişlerini `Activity logs > Sign-ins` dikey penceresinde görmeyi umuyordum, ancak bulamıyorum.
 
- ![Raporlama](./media/troubleshoot-missing-audit-data/02.png)
+ ![Ekran görüntüsü etkinlik günlüğündeki oturum açma işlemlerini gösterir.](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>Nedeni
 
@@ -74,7 +74,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 
 Azure portalda 30 günden daha eski oturum açma ve denetim verilerini görüntüleyemiyorum. Neden? 
 
- ![Raporlama](./media/troubleshoot-missing-audit-data/03.png)
+ ![Ekran görüntüsü Tarih menüsünü gösterir.](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>Nedeni
 

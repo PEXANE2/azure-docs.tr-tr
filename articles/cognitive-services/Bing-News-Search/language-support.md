@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc28cdbca7d2566318a3158399c1d44fd8d2ccd9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710567"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101730"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing Haber Arama API'si için dil ve bölge desteği
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bing Haber Arama API'si, birden fazla dili olan çok sayıda ülkeyi/bölgeyi destekler. Bir ülkeyi/bölgeyi bir sorgu ile belirtmek, birincil olarak bu ülkenin/bölgedeki ilgi alanları temelinde arama sonuçlarını iyileştirmesini sağlar. Ayrıca, sonuçlar Bing bağlantıları içerebilir ve bu bağlantılar, belirtilen ülkeye/bölgeye veya dile göre Bing Kullanıcı deneyimini yerelleştiremeyebilir.
 
@@ -47,7 +52,7 @@ Sorgu parametresinde belirtebileceğiniz ülke/bölge kodlarının bir listesi i
 |Yeni Zelanda|İngilizce|En-NZ|
 |Filipinler Cumhuriyeti|İngilizce|En-PH|
 |Singapur|İngilizce|En-SG|
-|Birleşik Devletler|İngilizce|tr-TR|
+|Birleşik Devletler|İngilizce|en-US|
 |İngilizce|genel|En-WW|
 |İngilizce|genel|En-XA|
 |Güney Afrika|İngilizce|En-ZA|
@@ -86,7 +91,7 @@ Sorgu parametresinde belirtebileceğiniz ülke/bölge kodlarının bir listesi i
 |Almanya|Almanca|de-DE|
 |Avustralya|İngilizce|En-AU|
 |Birleşik Krallık|İngilizce|en-GB|
-|Birleşik Devletler|İngilizce|tr-TR|
+|Birleşik Devletler|İngilizce|en-US|
 |İngilizce|genel|En-WW|
 |Şili|İspanyolca|es-CL|
 |Meksika|İspanyolca|es-MX|
@@ -108,7 +113,7 @@ Sorgu parametresinde belirtebileceğiniz ülke/bölge kodlarının bir listesi i
 |Almanya|Almanca|de-DE|
 |Avustralya|İngilizce|En-AU|
 |Birleşik Krallık|İngilizce|en-GB|
-|Birleşik Devletler|İngilizce|tr-TR|
+|Birleşik Devletler|İngilizce|en-US|
 |Kanada|İngilizce|en-CA|
 |Hindistan|İngilizce|En-ın|
 |Fransa|Fransızca|fr-FR|

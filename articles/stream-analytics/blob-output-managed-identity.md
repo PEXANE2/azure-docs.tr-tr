@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/11/2020
-ms.openlocfilehash: 99b23b65a0ce1693bcd04d5828fe062f2f43ea73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99b7891f332298024c82103322cc6b58d066f587
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044235"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123243"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Azure Stream Analytics işinizin Azure Blob depolama çıkışına kimliğini doğrulamak için yönetilen kimlik kullanma
 
@@ -21,11 +21,11 @@ Bu makalede, Azure portal ve Azure Resource Manager dağıtımı aracılığıyl
 
 ## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>Azure portal kullanarak Stream Analytics işi oluşturun
 
-1. Yeni bir Stream Analytics işi oluşturun veya Azure portal var olan bir işi açın. Ekranın sol tarafındaki menü çubuğundan **Yapılandır**' ın altında bulunan **yönetilen kimlik** ' i seçin. "Sistem tarafından atanan yönetilen kimliği kullan" öğesinin seçili olduğundan emin olun ve ardından ekranın alt kısmındaki **Kaydet** düğmesine tıklayın.
+1. Yeni bir Stream Analytics işi oluşturun veya Azure portal var olan bir işi açın. Ekranın sol tarafındaki menü çubuğundan **Yapılandır** ' ın altında bulunan **yönetilen kimlik** ' i seçin. "Sistem tarafından atanan yönetilen kimliği kullan" öğesinin seçili olduğundan emin olun ve ardından ekranın alt kısmındaki **Kaydet** düğmesine tıklayın.
 
    ![Stream Analytics yönetilen kimliği yapılandırma](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. Azure Blob depolama çıkış havuzunun çıkış özellikleri penceresinde kimlik doğrulama modu açılan listesini seçin ve **yönetilen kimlik**' i seçin. Diğer çıkış özellikleriyle ilgili daha fazla bilgi için bkz. [Azure Stream Analytics çıkışları anlama](./stream-analytics-define-outputs.md). İşiniz bittiğinde **Kaydet**’e tıklayın.
+2. Azure Blob depolama çıkış havuzunun çıkış özellikleri penceresinde kimlik doğrulama modu açılan listesini seçin ve **yönetilen kimlik** ' i seçin. Diğer çıkış özellikleriyle ilgili daha fazla bilgi için bkz. [Azure Stream Analytics çıkışları anlama](./stream-analytics-define-outputs.md). İşiniz bittiğinde **Kaydet** ’e tıklayın.
 
    ![Azure Blob depolama çıkışını yapılandırma](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
@@ -33,7 +33,7 @@ Bu makalede, Azure portal ve Azure Resource Manager dağıtımı aracılığıyl
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager dağıtımı
 
-Azure Resource Manager kullanmak Stream Analytics işinizin dağıtımını tamamen otomatikleştirmenizi sağlar. Azure PowerShell ya da [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)kullanarak kaynak yöneticisi şablonlarını dağıtabilirsiniz. Aşağıdaki örneklerde Azure CLı kullanılır.
+Azure Resource Manager kullanmak Stream Analytics işinizin dağıtımını tamamen otomatikleştirmenizi sağlar. Azure PowerShell ya da [Azure CLI](/cli/azure/?view=azure-cli-latest)kullanarak kaynak yöneticisi şablonlarını dağıtabilirsiniz. Aşağıdaki örneklerde Azure CLı kullanılır.
 
 
 1. Kaynak Yöneticisi şablonunuzun kaynak bölümüne aşağıdaki özelliği ekleyerek, yönetilen bir kimlikle bir **Microsoft. StreamAnalytics/streamingjobs** kaynağı oluşturabilirsiniz:
@@ -168,14 +168,14 @@ Stream Analytics işinizi sağlamak için seçebileceğiniz iki erişim düzeyi 
 
 2. Sol taraftaki **Access Control (IAM)** seçeneğini belirleyin.
 
-3. "Rol ataması Ekle" bölümünde **Ekle**' ye tıklayın.
+3. "Rol ataması Ekle" bölümünde **Ekle** ' ye tıklayın.
 
 4. Rol atama bölmesinde:
 
     1. **Rolü** "Depolama Blobu verileri katılımcısı" olarak ayarlayın
     2. Açılan listeye **erişim ata erişimi** 'Nin "Azure AD Kullanıcı, Grup veya hizmet sorumlusu" olarak ayarlandığından emin olun.
     3. Arama alanına Stream Analytics işinizin adını yazın.
-    4. Stream Analytics işinizi seçin ve **Kaydet**' e tıklayın.
+    4. Stream Analytics işinizi seçin ve **Kaydet** ' e tıklayın.
 
    ![Kapsayıcı erişimi verme](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-container-access-portal.png)
 
@@ -185,14 +185,14 @@ Stream Analytics işinizi sağlamak için seçebileceğiniz iki erişim düzeyi 
 
 2. Sol taraftaki **Access Control (IAM)** seçeneğini belirleyin.
 
-3. "Rol ataması Ekle" bölümünde **Ekle**' ye tıklayın.
+3. "Rol ataması Ekle" bölümünde **Ekle** ' ye tıklayın.
 
 4. Rol atama bölmesinde:
 
     1. **Rolü** "Depolama Blobu verileri katılımcısı" olarak ayarlayın
     2. Açılan listeye **erişim ata erişimi** 'Nin "Azure AD Kullanıcı, Grup veya hizmet sorumlusu" olarak ayarlandığından emin olun.
     3. Arama alanına Stream Analytics işinizin adını yazın.
-    4. Stream Analytics işinizi seçin ve **Kaydet**' e tıklayın.
+    4. Stream Analytics işinizi seçin ve **Kaydet** ' e tıklayın.
 
    ![Hesap erişimi verme](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-account-access-portal.png)
 
@@ -216,11 +216,11 @@ Tüm hesaba erişim vermek için, Azure CLı kullanarak aşağıdaki komutu çal
 
 ## <a name="enable-vnet-access"></a>VNET erişimini etkinleştir
 
-Depolama hesabınızın **güvenlik duvarlarını ve sanal ağlarını**yapılandırırken, isteğe bağlı olarak diğer güvenilir Microsoft hizmetlerinden gelen ağ trafiğine izin verebilirsiniz. Yönetilen kimliği kullanarak kimlik doğrulaması Stream Analytics, isteğin güvenilir bir hizmetten kaynaklanan kanıt sağlar. Aşağıda, bu VNET erişim özel durumunun etkinleştirilmesi için yönergeler verilmiştir.
+Depolama hesabınızın **güvenlik duvarlarını ve sanal ağlarını** yapılandırırken, isteğe bağlı olarak diğer güvenilir Microsoft hizmetlerinden gelen ağ trafiğine izin verebilirsiniz. Yönetilen kimliği kullanarak kimlik doğrulaması Stream Analytics, isteğin güvenilir bir hizmetten kaynaklanan kanıt sağlar. Aşağıda, bu VNET erişim özel durumunun etkinleştirilmesi için yönergeler verilmiştir.
 
 1.  Depolama hesabının yapılandırma bölmesi içindeki "güvenlik duvarları ve sanal ağlar" bölmesine gidin.
 2.  "Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver" seçeneğinin etkin olduğundan emin olun.
-3.  Etkinleştirilirse **Kaydet**' e tıklayın.
+3.  Etkinleştirilirse **Kaydet** ' e tıklayın.
 
    ![VNET erişimini etkinleştir](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
 

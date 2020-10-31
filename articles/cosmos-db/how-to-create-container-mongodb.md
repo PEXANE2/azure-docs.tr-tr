@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 0fa7f122c5a9957db0800d2ccf4e5c1f8effd574
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a5669b15c041f663605a62ef8d02b206928d0c14
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491181"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101604"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde kapsayıcı oluşturma
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Bu makalede, MongoDB için Azure Cosmos DB API 'sinde bir kapsayıcı oluşturmanın farklı yolları açıklanmaktadır. Azure portal, Azure CLı, PowerShell veya desteklenen SDK 'lar kullanılarak nasıl kapsayıcı oluşturulacağını gösterir. Bu makalede bir kapsayıcı oluşturma, Bölüm anahtarını belirtme ve üretilen iş sağlama işlemlerinin nasıl yapılacağı gösterilir.
 
@@ -30,13 +31,13 @@ Bu makalede, MongoDB için Azure Cosmos DB API 'sinde bir kapsayıcı oluşturma
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-mongodb-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
-1. **Veri Gezgini** bölmesini açın ve **yeni kapsayıcı**' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
+1. **Veri Gezgini** bölmesini açın ve **yeni kapsayıcı** ' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
 
    * Yeni bir veritabanı mı yoksa var olan bir veritabanını mı kullandığınızı belirtin.
    * Bir kapsayıcı KIMLIĞI girin.
    * Parça anahtarı girin.
    * Sağlanacak bir üretilen iş (örneğin, 1000 ru) girin.
-   * **Tamam**’ı seçin.
+   * **Tamam** ’ı seçin.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="MongoDB için Azure Cosmos DB API 'nin ekran görüntüsü, kapsayıcı ekleme iletişim kutusu":::
 

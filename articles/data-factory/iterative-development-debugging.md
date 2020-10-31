@@ -1,7 +1,7 @@
 ---
 title: Azure Data Factory 'de yinelemeli geliştirme ve hata ayıklama
 description: ADF UX 'te yinelemeli olarak Data Factory işlem hatlarını geliştirmeyi ve hata ayıklamanızı öğrenin
-ms.date: 09/11/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -9,12 +9,12 @@ documentationcenter: ''
 ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: e4c66055184b2ef0113aa0e25c02ad8635feddb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1f81af715bc4b2248a24076f3b12a74d0ee73e3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031016"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102084"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory ile yinelemeli geliştirme ve hata ayıklama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -25,9 +25,9 @@ Bu özelliğin sekiz dakikalık bir girişi ve gösterimi için aşağıdaki vid
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Iterative-development-and-debugging-with-Azure-Data-Factory/player]
 
-## <a name="debugging-a-pipeline"></a>İşlem hattında hata ayıklama
+## <a name="debugging-a-pipeline"></a>İşlem hattı hatalarını ayıklama
 
-İşlem hattı tuvali 'ni kullanarak yazarınızda, **hata ayıklama** özelliğini kullanarak etkinliklerinizi test edebilirsiniz. Test çalıştırmalarını gerçekleştirdiğinizde, **Hata Ayıkla**' yı seçmeden önce veri fabrikasında yaptığınız değişiklikleri yayımlamanız gerekmez. Bu özellik, Data Factory iş akışını güncelleştirmeden önce değişikliklerin beklendiği gibi çalıştığından emin olmak istediğiniz senaryolarda yararlıdır.
+İşlem hattı tuvali 'ni kullanarak yazarınızda, **hata ayıklama** özelliğini kullanarak etkinliklerinizi test edebilirsiniz. Test çalıştırmalarını gerçekleştirdiğinizde, **Hata Ayıkla** ' yı seçmeden önce veri fabrikasında yaptığınız değişiklikleri yayımlamanız gerekmez. Bu özellik, Data Factory iş akışını güncelleştirmeden önce değişikliklerin beklendiği gibi çalıştığından emin olmak istediğiniz senaryolarda yararlıdır.
 
 ![İşlem hattı tuvalindeki hata ayıklama özelliği](media/iterative-development-debugging/iterative-development-1.png)
 
@@ -44,7 +44,7 @@ Bir test çalıştırması başarılı olduktan sonra, işlem hattınızda daha 
 
 ### <a name="setting-breakpoints"></a>Kesme noktalarını ayarlama
 
-Azure Data Factory, işlem hattı tuvalindeki belirli bir etkinliğe ulaşana kadar bir işlem hattından hata ayıklamanıza olanak tanır. Test etmek istediğiniz kadar etkinliğe bir kesme noktası koyun ve **Hata Ayıkla**' yı seçin. Data Factory, testin yalnızca işlem hattı tuvalindeki kesme noktası etkinliğine kadar çalışmasını sağlar. İşlem hattının tamamını test etmek istemediğiniz durumlarda bu *hata ayıklama* işlemi, yalnızca işlem hattının içindeki etkinliklerin bir alt kümesi yararlı olur.
+Azure Data Factory, işlem hattı tuvalindeki belirli bir etkinliğe ulaşana kadar bir işlem hattından hata ayıklamanıza olanak tanır. Test etmek istediğiniz kadar etkinliğe bir kesme noktası koyun ve **Hata Ayıkla** ' yı seçin. Data Factory, testin yalnızca işlem hattı tuvalindeki kesme noktası etkinliğine kadar çalışmasını sağlar. İşlem hattının tamamını test etmek istemediğiniz durumlarda bu *hata ayıklama* işlemi, yalnızca işlem hattının içindeki etkinliklerin bir alt kümesi yararlı olur.
 
 ![İşlem hattı tuvalindeki kesme noktaları](media/iterative-development-debugging/iterative-development-3.png)
 
@@ -79,11 +79,14 @@ Veri akışlarını eşleme, ölçeklendirerek çalışan kod içermeyen veri d�
  
 ### <a name="debugging-a-pipeline-with-a-data-flow-activity"></a>Veri akışı etkinliğiyle işlem hattında hata ayıklama
 
-Bir veri akışı ile bir hata ayıklama çalıştırması çalıştırırken, hangi işlem için kullanılması gerektiğini iki seçeneğe sahip olursunuz. Mevcut bir hata ayıklama kümesini kullanabilir veya veri akışlarınız için yeni bir tam zamanında kümesi çalıştırabilirsiniz.
+Bir veri akışı ile bir hata ayıklama işlem hattı çalıştırıldığında, hangi işlemin kullanılması gerektiğini iki seçeneğe sahip olursunuz. Mevcut bir hata ayıklama kümesini kullanabilir veya veri akışlarınız için yeni bir tam zamanında kümesi çalıştırabilirsiniz.
 
-Mevcut bir hata ayıklama oturumunun kullanılması, küme zaten çalışırken veri akışı başlangıç süresini büyük ölçüde azaltır, ancak birden çok iş aynı anda çalıştırıldığında başarısız olabileceğinden karmaşık veya paralel iş yükleri için önerilmez. 
+Mevcut bir hata ayıklama oturumunun kullanılması, küme zaten çalışırken veri akışı başlangıç süresini büyük ölçüde azaltır, ancak birden çok iş aynı anda çalıştırıldığında başarısız olabileceğinden karmaşık veya paralel iş yükleri için önerilmez.
 
-Etkinlik çalışma zamanının kullanılması, her bir veri akışı etkinliğinin tümleştirme çalışma zamanı 'nda belirtilen ayarları kullanarak yeni bir küme oluşturur. Bu, her bir işin yalıtılmasını sağlar ve karmaşık iş yükleri veya performans testi için kullanılmalıdır.
+Etkinlik çalışma zamanının kullanılması, her bir veri akışı etkinliğinin tümleştirme çalışma zamanı 'nda belirtilen ayarları kullanarak yeni bir küme oluşturur. Bu, her bir işin yalıtılmasını sağlar ve karmaşık iş yükleri veya performans testi için kullanılmalıdır. Ayrıca, hata ayıklama için kullanılan küme kaynaklarının ek iş isteklerine hizmeti sağlamak üzere bu süre için kullanılabilir olacağı şekilde, Azure IR TTL 'yi de kontrol edebilirsiniz.
+
+> [!NOTE]
+> Paralel olarak yürütülen veri akışları ile bir işlem hattına sahipseniz, Data Factory veri akışı etkinliğinizdeki seçtiğiniz Integration Runtime kullanabilmesi için "etkinlik çalışma zamanını kullan" ı seçin. Bu, veri akışlarının birden fazla kümede yürütülmesine izin verir ve paralel veri akışı yürütmelerine uyum sağlayabilir.
 
 ![Veri akışı ile işlem hattı çalıştırma](media/iterative-development-debugging/iterative-development-dataflow.png)
 

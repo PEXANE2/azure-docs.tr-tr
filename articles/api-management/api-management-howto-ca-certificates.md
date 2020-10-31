@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
-ms.openlocfilehash: e42e976e57dd69ffcbd9065cfb3aaf3af9c4b972
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 124bc053aa2c6e59e205bb6f33a9a96190799499
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852081"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102046"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Azure API Management özel CA sertifikası ekleme
 
@@ -41,15 +41,15 @@ Yeni bir CA sertifikasını karşıya yüklemek için aşağıdaki adımları iz
 
 3. **+ Ekle** düğmesine tıklayın.  
 
-    ![CA sertifikaları ekleme](media/api-management-howto-ca-certificates/01.png)  
+    ![CA sertifikası eklemek için + Ekle düğmesini gösteren ekran görüntüsü.](media/api-management-howto-ca-certificates/01.png)  
 
 4. Sertifikaya gözatıp sertifika deposuna karar verin. Yalnızca ortak anahtar gereklidir, bu nedenle parola gerekli değildir.
 
-    ![CA sertifikaları ekleme](media/api-management-howto-ca-certificates/02.png)  
+    ![Sertifikaya nasıl gözatakullanacağınızı gösteren ekran görüntüsü.](media/api-management-howto-ca-certificates/02.png)  
 
-5. **Kaydet**’e tıklayın. Bu işlem birkaç dakika sürebilir.
+5. **Kaydet** ’e tıklayın. Bu işlem birkaç dakika sürebilir.
 
-    ![CA sertifikaları ekleme](media/api-management-howto-ca-certificates/03.png)  
+    ![Sertifikanın nasıl kaydedileceğini gösteren ekran görüntüsü.](media/api-management-howto-ca-certificates/03.png)  
 
 > [!NOTE]
 > PowerShell komutunu kullanarak bir CA sertifikasını karşıya yükleyebilirsiniz `New-AzApiManagementSystemCertificate` .

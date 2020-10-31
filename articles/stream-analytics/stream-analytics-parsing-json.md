@@ -7,19 +7,19 @@ ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 67bcd6fbf04cb92deaae034d289990dfec309fe6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c2eb4225cb014b3251d12470e4e9827150a5cf2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280020"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123362"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics JSON ve avro verilerini ayrıştırın
 
 CSV, JSON ve avro veri biçimlerinde olayları işlemeyi destekler Azure Stream Analytics. Hem JSON hem de avro verileri yapılandırılabilir ve iç içe geçmiş nesneler (kayıtlar) ve diziler gibi bazı karmaşık türleri içerebilir. 
 
 >[!NOTE]
->AVRO Olay Hub 'ı tarafından oluşturulan dosyalar *özel seri hale getirici* özelliğini kullanmanızı gerektiren belirli bir biçimi kullanır. Daha fazla bilgi için bkz. [.NET özel seri hale getiriciler kullanarak herhangi bir biçimde giriş okuma](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples).
+>AVRO Olay Hub 'ı tarafından oluşturulan dosyalar *özel seri hale getirici* özelliğini kullanmanızı gerektiren belirli bir biçimi kullanır. Daha fazla bilgi için bkz. [.NET özel seri hale getiriciler kullanarak herhangi bir biçimde giriş okuma](./custom-deserializer-examples.md).
 >
 >Stream Analytics AVRO serisini kaldırma, eşleme türünü desteklemez. EventHub yakalama eşlemesi kullandığından, Stream Analytics EventHub yakalama bloblarını okuyamıyorum.
 
@@ -89,7 +89,7 @@ Sonuç:
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Özellik adı bir değişken olduğunda iç içe alanlara erişin
 
-Özellik adı bir değişken ise [Getrecordpropertyvalue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) işlevini kullanın. Bu özellik adlarını kodlamadan dinamik sorgular oluşturulmasına olanak sağlar.
+Özellik adı bir değişken ise [Getrecordpropertyvalue](/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) işlevini kullanın. Bu özellik adlarını kodlamadan dinamik sorgular oluşturulmasına olanak sağlar.
 
 Örneğin, örnek veri akışının her bir cihaz algılayıcısı için eşikler içeren **başvuru verileriyle katılması** gerektiğini düşünün. Bu tür başvuru verilerinin bir parçacığı aşağıda gösterilmiştir.
 
@@ -121,7 +121,7 @@ WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
 ```
 
-**Getrecordpropertyvalue** , *Sensorreadusing*içindeki özelliği seçer. Bu ad, başvuru verilerinden gelen özellik adı ile eşleşir. Ardından *Sensorreadlılar* 'dan ilişkili değer ayıklanır.
+**Getrecordpropertyvalue** , *Sensorreadusing* içindeki özelliği seçer. Bu ad, başvuru verilerinden gelen özellik adı ile eşleşir. Ardından *Sensorreadlılar* 'dan ilişkili değer ayıklanır.
 
 Sonuç:
 
@@ -131,7 +131,7 @@ Sonuç:
 
 ### <a name="convert-record-fields-into-separate-events"></a>Kayıt alanlarını ayrı olaylara Dönüştür
 
-Kayıt alanlarını ayrı olaylara dönüştürmek için, [Getrecordproperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) Işleviyle birlikte [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işlecini kullanın.
+Kayıt alanlarını ayrı olaylara dönüştürmek için, [Getrecordproperties](/stream-analytics-query/getrecordproperties-azure-stream-analytics) Işleviyle birlikte [Apply](/stream-analytics-query/apply-azure-stream-analytics) işlecini kullanın.
 
 Özgün örnek verilerle, aşağıdaki sorgu, özellikleri farklı olaylara ayıklamak için kullanılabilir.
 
@@ -154,7 +154,7 @@ Sonuç:
 |12345|CustomSensor02|99|
 |12345|SensorMetadata|[nesne nesnesi]|
 
-[İle](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)kullanarak, bu olayları farklı hedeflere yönlendirmek mümkün olur:
+[İle](/stream-analytics-query/with-azure-stream-analytics)kullanarak, bu olayları farklı hedeflere yönlendirmek mümkün olur:
 
 ```SQL
 WITH Stage0 AS
@@ -205,9 +205,9 @@ Ardından, JSON kayıtlarınızın alanlarına erişmek için aşağıda göster
 
 ## <a name="array-data-types"></a>Dizi veri türleri
 
-Dizi veri türleri sıralı değerler koleksiyonudur. Dizi değerlerinde bazı tipik işlemler aşağıda ayrıntılı olarak verilmiştir. Bu örnekler, [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [getarrayelements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)ve [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işleci işlevlerini kullanır.
+Dizi veri türleri sıralı değerler koleksiyonudur. Dizi değerlerinde bazı tipik işlemler aşağıda ayrıntılı olarak verilmiştir. Bu örnekler, [GetArrayElement](/stream-analytics-query/getarrayelement-azure-stream-analytics), [getarrayelements](/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](/stream-analytics-query/getarraylength-azure-stream-analytics)ve [Apply](/stream-analytics-query/apply-azure-stream-analytics) işleci işlevlerini kullanır.
 
-Tek bir olaya bir örnek aşağıda verilmiştir. Her ikisi de `CustomSensor03` `SensorMetadata` **dizi**türündedir:
+Tek bir olaya bir örnek aşağıda verilmiştir. Her ikisi de `CustomSensor03` `SensorMetadata` **dizi** türündedir:
 
 ```json
 {
@@ -265,7 +265,7 @@ Sonuç:
 
 ### <a name="convert-array-elements-into-separate-events"></a>Dizi öğelerini ayrı olaylara Dönüştür
 
-Tek tek olaylar olarak tüm dizi öğelerini seçin. [Getarrayelements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) yerleşik işlevi Ile birlikte [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işleci, tüm dizi öğelerini ayrı olaylar olarak ayıklar:
+Tek tek olaylar olarak tüm dizi öğelerini seçin. [Getarrayelements](/stream-analytics-query/getarrayelements-azure-stream-analytics) yerleşik işlevi Ile birlikte [Apply](/stream-analytics-query/apply-azure-stream-analytics) işleci, tüm dizi öğelerini ayrı olaylar olarak ayıklar:
 
 ```SQL
 SELECT
@@ -301,7 +301,7 @@ Sonuç:
 |12345|Üretici|ABC|
 |12345|Sürüm|1.2.45|
 
-Ayıklanan alanların sütunlarda görünmesi gerekiyorsa, [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) işlemine ek olarak, [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) sözdizimi kullanılarak veri kümesini Özet hale getirmeniz mümkündür. Bu birleşimin, çoğaltmayı önleyen bir [zaman sınırı](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) koşulu gerekir:
+Ayıklanan alanların sütunlarda görünmesi gerekiyorsa, [JOIN](/stream-analytics-query/join-azure-stream-analytics) işlemine ek olarak, [WITH](/stream-analytics-query/with-azure-stream-analytics) sözdizimi kullanılarak veri kümesini Özet hale getirmeniz mümkündür. Bu birleşimin, çoğaltmayı önleyen bir [zaman sınırı](/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) koşulu gerekir:
 
 ```SQL
 WITH DynamicCTE AS (
@@ -330,4 +330,4 @@ Sonuç:
 |12345|47|122|1.2.45|ABC|
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Azure Stream Analytics veri türleri](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Azure Stream Analytics veri türleri](/stream-analytics-query/data-types-azure-stream-analytics)

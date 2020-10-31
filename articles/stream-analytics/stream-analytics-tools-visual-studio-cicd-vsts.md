@@ -8,17 +8,17 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e87432ad4437f41e70d988e7e2b3cd82aa3bd82
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903838"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123396"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Öğretici: Azure Pipelines kullanarak CI/CD ile Azure Stream Analytics işi dağıtma
 Bu öğreticide, Azure Pipelines kullanarak bir Azure Stream Analytics işi için sürekli tümleştirme ve dağıtımın nasıl ayarlanacağı açıklanır. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Projenize kaynak denetimi ekleme
@@ -35,7 +35,7 @@ Başlamadan önce, aşağıdaki adımları gerçekleştirdiğinizden emin olun:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 * [Visual Studio](stream-analytics-tools-for-visual-studio-install.md)’yu ve **Azure geliştirme** veya **Veri Depolama ve İşleme** iş yüklerini yükleyin.
-* [Visual Studio’da Stream Analytics projesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs) oluşturun.
+* [Visual Studio’da Stream Analytics projesi](./stream-analytics-quick-create-vs.md) oluşturun.
 * [Azure DevOps](https://visualstudio.microsoft.com/team-services/) organizasyonu oluşturun.
 
 ## <a name="configure-nuget-package-dependency"></a>NuGet paketi bağımlılığını yapılandırma
@@ -54,57 +54,57 @@ Proje dizininize **packages.config** ekleyin.
 
 Derlemeler oluşturabilmek için uygulamanızın kaynak dosyalarını Azure DevOps’daki bir projede paylaşın.  
 
-1. Visual Studio’nun sağ alt köşesindeki durum çubuğunda **Kaynak Denetimine Ekle**’yi ve sonra da **Git**’i seçerek projeniz için yeni bir yerel Git deposu oluşturun. 
+1. Visual Studio’nun sağ alt köşesindeki durum çubuğunda **Kaynak Denetimine Ekle** ’yi ve sonra da **Git** ’i seçerek projeniz için yeni bir yerel Git deposu oluşturun. 
 
-2. **Takım Gezgini**’ndeki **Eşitleme** görünümünde **Azure DevOps Services’a Gönder**’in altında yer alan **Git Deposunda Yayımla** düğmesini seçin.
+2. **Takım Gezgini** ’ndeki **Eşitleme** görünümünde **Azure DevOps Services’a Gönder** ’in altında yer alan **Git Deposunda Yayımla** düğmesini seçin.
 
    ![Git depo Azure DevOps Services yayımlama düğmesine Gönder](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-git-repo-devops.png)
 
-3. E-postanızı doğrulayın ve **Azure DevOps Services Etki Alanı** açılır listesinde kuruluşunuzu seçin. Deponuzun adını girin ve **Depoyu yayımla**’yı seçin.
+3. E-postanızı doğrulayın ve **Azure DevOps Services Etki Alanı** açılır listesinde kuruluşunuzu seçin. Deponuzun adını girin ve **Depoyu yayımla** ’yı seçin.
 
    ![Git deposu yayımlama depoyu Gönder düğmesi](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-repository-devops.png)
 
-    Depoyu yayımlamak, kuruluşunuzda yerel depoyla aynı ada sahip yeni bir proje oluşturur. Mevcut bir projede depoyu oluşturmak için **Depo adı**' nın yanındaki **Gelişmiş** ' e tıklayın ve bir proje seçin. **Web üzerinde görüntüleyin**’i seçerek kodunuzu tarayıcıda görüntüleyebilirsiniz.
+    Depoyu yayımlamak, kuruluşunuzda yerel depoyla aynı ada sahip yeni bir proje oluşturur. Mevcut bir projede depoyu oluşturmak için **Depo adı** ' nın yanındaki **Gelişmiş** ' e tıklayın ve bir proje seçin. **Web üzerinde görüntüleyin** ’i seçerek kodunuzu tarayıcıda görüntüleyebilirsiniz.
  
 ## <a name="configure-continuous-delivery-with-azure-devops"></a>Azure DevOps ile sürekli teslimi yapılandırma
-Azure Pipelines derleme işlem hattı, sırayla yürütülen derleme adımlarından oluşturulmuş bir iş akışını açıklar. [Azure Pipelines derleme işlem hatları](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav&preserve-view=true) hakkında daha fazla bilgi edinin.
+Azure Pipelines derleme işlem hattı, sırayla yürütülen derleme adımlarından oluşturulmuş bir iş akışını açıklar. [Azure Pipelines derleme işlem hatları](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts) hakkında daha fazla bilgi edinin.
 
-Bir Azure Pipelines yayın işlem hattı, kümeye uygulama paketi dağıtan bir iş akışını açıklar. Derleme işlem hattı ve yayın işlem hattı birlikte kullanıldığında kaynak dosyalarla başlayan ve kümenizde çalışan bir uygulamayla biten iş akışının tamamını yürütür. Azure Pipelines [yayın işlem hatları](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts&preserve-view=true) hakkında daha fazla bilgi edinin.
+Bir Azure Pipelines yayın işlem hattı, kümeye uygulama paketi dağıtan bir iş akışını açıklar. Derleme işlem hattı ve yayın işlem hattı birlikte kullanıldığında kaynak dosyalarla başlayan ve kümenizde çalışan bir uygulamayla biten iş akışının tamamını yürütür. Azure Pipelines [yayın işlem hatları](/azure/devops/pipelines/release/define-multistage-release-process?preserve-view=true&view=vsts) hakkında daha fazla bilgi edinin.
 
 ### <a name="create-a-build-pipeline"></a>Derleme işlem hattı oluşturma
 Bir web tarayıcısı açın ve [Azure DevOps](https://app.vsaex.visualstudio.com/)’da az önce oluşturduğunuz projeye gidin. 
 
-1. **Derleme ve Yayınlama** sekmesi altında **Derlemeler**’i ve **+Yeni**’yi seçin.  **Azure DevOps Services Git**’i ve **Devam Et**’i seçin.
+1. **Derleme ve Yayınlama** sekmesi altında **Derlemeler** ’i ve **+Yeni** ’yi seçin.  **Azure DevOps Services Git** ’i ve **Devam Et** ’i seçin.
     
     ![Azure DevOps 'da DevOps git kaynağını seçme](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source-devops.png)
 
-2. Boş bir işlem hattıyla başlamak için **Şablon seçin**’de **Boş İşlem**’e tıklayın.
+2. Boş bir işlem hattıyla başlamak için **Şablon seçin** ’de **Boş İşlem** ’e tıklayın.
     
     ![DevOps 'daki şablon seçeneklerinden boş işlem seçin](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template-empty-process.png)
 
-3. **Tetikleyiciler**’in altında **Sürekli tümleştirmeyi etkinleştir** tetikleyici durumunu işaretleyerek sürekli tümleştirmeyi etkinleştirin.  Derlemeyi el ile başlatmak için **Kaydet ve kuyruğa al**’ı seçin. 
+3. **Tetikleyiciler** ’in altında **Sürekli tümleştirmeyi etkinleştir** tetikleyici durumunu işaretleyerek sürekli tümleştirmeyi etkinleştirin.  Derlemeyi el ile başlatmak için **Kaydet ve kuyruğa al** ’ı seçin. 
     
     ![Sürekli Tümleştirme tetikleyicisi durumunu etkinleştir](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger-status-ci.png)
 
-4. Derlemeler gönderme veya iade işlemleriyle de tetiklenir. Derleme ilerleme durumunu denetlemek için **derlemeler** sekmesine geçin.  Derlemeyi başarıyla yürüttüğünü doğruladıktan sonra, uygulamanızı bir kümeye dağıtan bir yayın işlem hattı tanımlamanız gerekir. Derleme işlem hattınızın yanındaki üç noktaya sağ tıklayın ve **Düzenle**’yi seçin.
+4. Derlemeler gönderme veya iade işlemleriyle de tetiklenir. Derleme ilerleme durumunu denetlemek için **derlemeler** sekmesine geçin.  Derlemeyi başarıyla yürüttüğünü doğruladıktan sonra, uygulamanızı bir kümeye dağıtan bir yayın işlem hattı tanımlamanız gerekir. Derleme işlem hattınızın yanındaki üç noktaya sağ tıklayın ve **Düzenle** ’yi seçin.
 
-5.  **Görevler**’de **Aracı kuyruğu** olarak "Hosted" girin.
+5.  **Görevler** ’de **Aracı kuyruğu** olarak "Hosted" girin.
     
     ![Görevler menüsünde aracı kuyruğu seçin](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue-task.png) 
 
-6. **1. Aşama**’da **+** öğesine tıklayın ve bir **NuGet** görevi ekleyin.
+6. **1. Aşama** ’da **+** öğesine tıklayın ve bir **NuGet** görevi ekleyin.
     
     ![Aracı kuyruğuna NuGet görevi ekleme](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-nuget-task.png)
 
-7. **Gelişmiş**’i genişletin ve **Hedef dizini**’ne `$(Build.SourcesDirectory)\packages` ekleyin. Diğer varsayılan NuGet yapılandırması değerlerini olduğu gibi bırakın.
+7. **Gelişmiş** ’i genişletin ve **Hedef dizini** ’ne `$(Build.SourcesDirectory)\packages` ekleyin. Diğer varsayılan NuGet yapılandırması değerlerini olduğu gibi bırakın.
 
    ![NuGet geri yükleme görevini yapılandırma](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-restore-config.png)
 
-8. **1. Aşama**’da **+** seçeneğine tıklayın ve bir **MSBuild** görevi ekleyin.
+8. **1. Aşama** ’da **+** seçeneğine tıklayın ve bir **MSBuild** görevi ekleyin.
 
    ![Aracı kuyruğuna MSBuild görevi ekleme](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-msbuild-task.png)
 
-9. **MSBuild Bağımsız Değişkenleri**’ni şöyle değiştirin:
+9. **MSBuild Bağımsız Değişkenleri** ’ni şöyle değiştirin:
 
    ```
    /p:CompilerTaskAssemblyFile="Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll"  /p:ASATargetsFilePath="$(Build.SourcesDirectory)\packages\Microsoft.Azure.StreamAnalytics.CICD.1.0.0\build\StreamAnalytics.targets"
@@ -112,11 +112,11 @@ Bir web tarayıcısı açın ve [Azure DevOps](https://app.vsaex.visualstudio.co
 
    ![DevOps 'da MSBuild görevini yapılandırma](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-config-msbuild-task.png)
 
-10. **1. Aşama**’da **+** seçeneğine tıklayın ve **Azure Kaynak Grubu Dağıtımı** görevini ekleyin. 
+10. **1. Aşama** ’da **+** seçeneğine tıklayın ve **Azure Kaynak Grubu Dağıtımı** görevini ekleyin. 
     
     ![Azure Kaynak Grubu Dağıtımı görevi ekleme](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-resource-group-deployment.png)
 
-11. **Azure Ayrıntıları**’nı genişletin ve yapılandırmayı aşağıdakilerle doldurun:
+11. **Azure Ayrıntıları** ’nı genişletin ve yapılandırmayı aşağıdakilerle doldurun:
     
     |**Ayar**  |**Önerilen değer**  |
     |---------|---------|
@@ -129,7 +129,7 @@ Bir web tarayıcısı açın ve [Azure DevOps](https://app.vsaex.visualstudio.co
     
     ![Azure Kaynak grubu dağıtımı için özellikleri ayarla](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deployment-properties.png)
 
-12. Derleme işlem hattınızı test etmek için **Kaydet ve Kuyruğa Al**’a tıklayın.
+12. Derleme işlem hattınızı test etmek için **Kaydet ve Kuyruğa Al** ’a tıklayın.
     
     ![Derlemeyi DevOps 'a Kaydet ve kuyruğa al](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-and-queue-build.png)
 
@@ -147,7 +147,7 @@ Siz kodunuzu yazarken, değişiklikleriniz Visual Studio tarafından otomatik ol
 
     ![Visual Studio 'dan depo değişiklikleri yapma](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-commit-changes-visual-studio.png)
 
-2. Yayımlanmamış değişiklikler durum çubuğu simgesini veya Takım Gezgini'nde Eşitleme görünümünü seçin. Azure DevOps’da kodunuzu güncelleştirmek için **Gönder**'i seçin.
+2. Yayımlanmamış değişiklikler durum çubuğu simgesini veya Takım Gezgini'nde Eşitleme görünümünü seçin. Azure DevOps’da kodunuzu güncelleştirmek için **Gönder** 'i seçin.
 
     ![Visual Studio 'dan değişiklikleri gönder](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes-visual-studio.png)
 
@@ -157,8 +157,8 @@ Değişikliklerin Azure DevOps Services’a gönderilmesi otomatik olarak derlem
 
 Artık gerekli olmadığında kaynak grubunu, akış işini ve tüm ilgili kaynakları silin. İşin silinmesi, iş tarafından kullanılan akış birimlerinin faturalanmasını önler. İşi gelecekte kullanmayı planlıyorsanız, durdurup daha sonra gerektiğinde yeniden başlatabilirsiniz. Bu işi kullanmaya devam etmeyecekseniz aşağıdaki adımları kullanarak bu öğreticiyle oluşturulan tüm kaynakları silin:
 
-1. Azure portalında sol taraftaki menüden, **Kaynak grupları**'na ve ardından oluşturduğunuz kaynağın adına tıklayın.  
-2. Kaynak grubu sayfanızda, **Sil**'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil**'e tıklayın.
+1. Azure portalında sol taraftaki menüden, **Kaynak grupları** 'na ve ardından oluşturduğunuz kaynağın adına tıklayın.  
+2. Kaynak grubu sayfanızda, **Sil** 'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil** 'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

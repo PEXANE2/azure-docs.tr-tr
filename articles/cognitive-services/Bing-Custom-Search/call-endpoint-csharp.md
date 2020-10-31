@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eae9565db5fd88a38343423422cfcc92a3fac33f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0abd03338982c866c92a8462e1e840651a9c2759
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936818"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101791"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Hızlı başlangıç: C kullanarak Bing Özel Arama uç noktanızı çağırma # 
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bing Özel Arama örneğinden arama sonuçları isteme hakkında bilgi edinmek için bu hızlı başlangıcı kullanın. Bu uygulama C# dilinde yazılsa da, Bing Özel Arama API'si çoğu programlama dili ile uyumlu olan bir yeniden yazılmış Web hizmetidir. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs)' da kullanılabilir.
 
@@ -31,8 +36,8 @@ Bing Özel Arama örneğinden arama sonuçları isteme hakkında bilgi edinmek i
 - [Bing özel arama](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/2.0.0) NuGet paketi. 
 
    Bu paketi Visual Studio 'ya yüklemek için: 
-     1. **Çözüm Gezgini**' de projenize sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin. 
-     2. Arama yapın ve *Microsoft. Azure. Biliveservices. Search. CustomSearch*öğesini seçin ve ardından paketi yükler.
+     1. **Çözüm Gezgini** ' de projenize sağ tıklayın ve ardından **NuGet Paketlerini Yönet** ' i seçin. 
+     2. Arama yapın ve *Microsoft. Azure. Biliveservices. Search. CustomSearch* öğesini seçin ve ardından paketi yükler.
 
    Bing Özel Arama NuGet paketini yüklediğinizde, Visual Studio aşağıdaki paketleri de yükler:
      - **Microsoft.Rest.ClientRuntime**

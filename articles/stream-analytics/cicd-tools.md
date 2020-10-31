@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: e772701396f172eaab906f99463bd9019728b531
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa75a553ffc131f4827aa045849f1317d894ddc5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941192"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123159"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>CI/CD araçları kullanarak Azure Stream Analytics işin derlemelerini, testlerini ve dağıtımlarını otomatikleştirin
 
@@ -21,11 +21,11 @@ Azure Stream Analytics Visual Studio Code veya Visual Studio projelerinizi otoma
 
 ## <a name="installation"></a>Yükleme
 
-Paketi doğrudan [indirebilir](https://www.npmjs.com/package/azure-streamanalytics-cicd) veya komutunu kullanarak [genel olarak](https://docs.npmjs.com/downloading-and-installing-packages-globally) yükleyebilirsiniz `npm install -g azure-streamanalytics-cicd` . **Azure Pipelines**bir derleme Işlem hattının PowerShell veya Azure CLI betik görevinde de kullanılabilen komutunu kullanmanızı öneririz.
+Paketi doğrudan [indirebilir](https://www.npmjs.com/package/azure-streamanalytics-cicd) veya komutunu kullanarak [genel olarak](https://docs.npmjs.com/downloading-and-installing-packages-globally) yükleyebilirsiniz `npm install -g azure-streamanalytics-cicd` . **Azure Pipelines** bir derleme Işlem hattının PowerShell veya Azure CLI betik görevinde de kullanılabilen komutunu kullanmanızı öneririz.
 
 ## <a name="build-the-project"></a>Projeyi derleme
 
-**Asa-streamanalytics-cicd** NPM paketi, Stream Analytics [Visual Studio Code proje](quick-create-vs-code.md) veya [Visual Studio projelerinin](stream-analytics-quick-create-vs.md)Azure Resource Manager şablonlar oluşturmak için araçlar sağlar. Ayrıca, Visual Studio Code veya Visual Studio yüklemeden Windows, macOS ve Linux 'ta NPM paketini de kullanabilirsiniz.
+**Asa-streamanalytics-cicd** NPM paketi, Stream Analytics [Visual Studio Code proje](./quick-create-visual-studio-code.md) veya [Visual Studio projelerinin](stream-analytics-quick-create-vs.md)Azure Resource Manager şablonlar oluşturmak için araçlar sağlar. Ayrıca, Visual Studio Code veya Visual Studio yüklemeden Windows, macOS ve Linux 'ta NPM paketini de kullanabilirsiniz.
 
 Paketi yükledikten sonra, Stream Analytics projelerinizi derlemek için aşağıdaki komutu kullanın.
 
@@ -66,7 +66,7 @@ Bir Stream Analytics projesi başarıyla oluşturduğunda, çıkış klasörü a
 
 parameters.jsdosyadaki varsayılan parametreler Visual Studio Code veya Visual Studio projenizin ayarlarından alınır. Başka bir ortama dağıtmak istiyorsanız, parametreleri uygun şekilde değiştirin.
 
-Tüm kimlik bilgileri için varsayılan değerler **null**. Azure 'a dağıtmadan önce değerleri ayarlamanız gerekir.
+Tüm kimlik bilgileri için varsayılan değerler **null** . Azure 'a dağıtmadan önce değerleri ayarlamanız gerekir.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -122,7 +122,7 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 | Parametre | Açıklama |
 |---|---|
 | `-project` | Visual Studio projesi için Visual Studio Code projenizin veya **[projeniz adınız]. aşama proj** dosyasının **asaproj.js** yolu. |
-| `-testConfigPath` | Test yapılandırma dosyasının yolu. Belirtilmemişse dosya, dosya **üzerindeasaproj.js** geçerli **Dizin altında,** varsayılan dosya adı **testConfig.js**olacak şekilde aranır. Mevcut değilse yeni bir dosya oluşturulur. |
+| `-testConfigPath` | Test yapılandırma dosyasının yolu. Belirtilmemişse dosya, dosya **üzerindeasaproj.js** geçerli **Dizin altında,** varsayılan dosya adı **testConfig.js** olacak şekilde aranır. Mevcut değilse yeni bir dosya oluşturulur. |
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -137,9 +137,9 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
 ```
 ---
 
-Test yapılandırma dosyası boşsa, aşağıdaki içerik dosyaya yazılır. Aksi halde test çalışması, **TestCases**dizisine eklenir. Gerekli giriş yapılandırmaları, varsa giriş yapılandırma dosyalarına göre otomatik olarak doldurulur. Aksi takdirde, varsayılan değerler yapılandırılır. Test çalıştırılmadan önce her girişin **FilePath** ve beklenen çıkışın belirtilmesi gerekir. Yapılandırmayı el ile değiştirebilirsiniz.
+Test yapılandırma dosyası boşsa, aşağıdaki içerik dosyaya yazılır. Aksi halde test çalışması, **TestCases** dizisine eklenir. Gerekli giriş yapılandırmaları, varsa giriş yapılandırma dosyalarına göre otomatik olarak doldurulur. Aksi takdirde, varsayılan değerler yapılandırılır. Test çalıştırılmadan önce her girişin **FilePath** ve beklenen çıkışın belirtilmesi gerekir. Yapılandırmayı el ile değiştirebilirsiniz.
 
-Test doğrulamasının belirli bir çıktıyı yok saymasını istiyorsanız, beklenen bu çıkışın **gerekli** alanını **false**olarak ayarlayın.
+Test doğrulamasının belirli bir çıktıyı yok saymasını istiyorsanız, beklenen bu çıkışın **gerekli** alanını **false** olarak ayarlayın.
 
 ```json
 {
@@ -179,11 +179,11 @@ azure-streamanalytics-cicd test -project <projectFullPath> [-testConfigPath <tes
 | Parametre | Açıklama |
 |---|---|
 | `-project` | Visual Studio projesi için Visual Studio Code projenizin veya **[projeniz adınız]. aşama proj** dosyasının **asaproj.js** yolu. |
-| `-testConfigPath` | Test yapılandırma dosyasının yolu. Belirtilmemişse dosya, dosya **üzerindeasaproj.js** geçerli **Dizin altında,** varsayılan dosya adı **testConfig.js**olacak şekilde aranır.
+| `-testConfigPath` | Test yapılandırma dosyasının yolu. Belirtilmemişse dosya, dosya **üzerindeasaproj.js** geçerli **Dizin altında,** varsayılan dosya adı **testConfig.js** olacak şekilde aranır.
 | `-outputPath` | Test sonucu çıkış klasörünün yolu. Belirtilmemişse, çıkış sonuç dosyaları geçerli dizine yerleştirilir. |
 | `-customCodeZipFilePath` | Kullanılan UDF veya seri hale getirici gibi özel kod için zip dosyasının yolu. |
 
-Tüm testler tamamlandığında, JSON biçimindeki test sonuçlarının bir özeti çıkış klasöründe oluşturulur. Özet dosyası **testResultSummary.jsolarak**adlandırılır.
+Tüm testler tamamlandığında, JSON biçimindeki test sonuçlarının bir özeti çıkış klasöründe oluşturulur. Özet dosyası **testResultSummary.jsolarak** adlandırılır.
 
 ```json
 {
@@ -237,7 +237,7 @@ Tüm testler tamamlandığında, JSON biçimindeki test sonuçlarının bir öze
 }
 ```
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a>Azure’a dağıtın
 
 [Işinizi Azure 'a dağıtmak](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md?tabs=azure-powershell#deploy-template)için derlemeden oluşturulan Azure Resource Manager şablonu ve parametre dosyalarını kullanabilirsiniz.
 

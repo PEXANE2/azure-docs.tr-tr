@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: c063fec3eac962d22ead12e0ca11f4b9fc155b5d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: bc630fc5ea9407c284e2e2e879c349a83302cd9f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910160"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122632"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics çıkışları sorunlarını giderme
 
@@ -71,7 +71,7 @@ Bir işin normal işlemi sırasında, çıktıda daha uzun ve daha uzun gecikme 
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL veritabanı çıkışıyla anahtar ihlali uyarısı
 
-Bir Azure SQL veritabanını bir Stream Analytics işine çıktı olarak yapılandırdığınızda, kayıt, hedef tabloya toplu ekler. Genel olarak, Azure Stream Analytics çıkış havuzuna [en az bir kez teslim](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) garantisi verir. Bir SQL tablosu tanımlı benzersiz bir kısıtlama olduğunda, bir SQL çıktısına [tam bir kez gönderim elde]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) edebilirsiniz.
+Bir Azure SQL veritabanını bir Stream Analytics işine çıktı olarak yapılandırdığınızda, kayıt, hedef tabloya toplu ekler. Genel olarak, Azure Stream Analytics çıkış havuzuna [en az bir kez teslim](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) garantisi verir. Bir SQL tablosu tanımlı benzersiz bir kısıtlama olduğunda, bir SQL çıktısına [tam bir kez gönderim elde]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) edebilirsiniz.
 
 SQL tablosunda benzersiz anahtar kısıtlamalarını ayarlarken Azure Stream Analytics yinelenen kayıtları kaldırır. Verileri toplu işlemlere böler ve tek bir yinelenen kayıt bulunana kadar toplu işleri ekler. Bölünmüş ve araya ekleme işlemi, yinelenenleri tek seferde yoksayar. Çok sayıda yinelenen satır içeren bir akış işi için, işlem verimsiz ve zaman alabilir. Önceki saatte etkinlik günlüğünde birden çok anahtar ihlali uyarı iletisi görürseniz, büyük olasılıkla SQL çıktınızın tüm işi yavaşlatıyor olması olasıdır.
 
@@ -95,9 +95,9 @@ SQL çıktısı olan Stream Analytics bir iş, ilk olay toplu işlemini aldığ�
 
 Bu adımlar sırasında, SQL çıktısı aşağıdaki hata türleriyle karşılaşabilir:
 
-* Bir üstel geri alma yeniden deneme stratejisi kullanılarak yeniden denenen geçici [hatalar](/azure/azure-sql/database/troubleshoot-common-errors-issues#transient-fault-error-messages-40197-40613-and-others) . En düşük yeniden deneme aralığı, bireysel hata koduna bağlıdır, ancak aralıklar genellikle 60 saniyeden düşüktür. Üst sınır en fazla beş dakika olabilir. 
+* Bir üstel geri alma yeniden deneme stratejisi kullanılarak yeniden denenen geçici [hatalar](../azure-sql/database/troubleshoot-common-errors-issues.md#transient-fault-error-messages-40197-40613-and-others) . En düşük yeniden deneme aralığı, bireysel hata koduna bağlıdır, ancak aralıklar genellikle 60 saniyeden düşüktür. Üst sınır en fazla beş dakika olabilir. 
 
-   [Oturum açma hataları](/azure/azure-sql/database/troubleshoot-common-errors-issues#unable-to-log-in-to-the-server-errors-18456-40531) ve [güvenlik duvarı sorunları](/azure/azure-sql/database/troubleshoot-common-errors-issues#cannot-connect-to-server-due-to-firewall-issues) , önceki denemelerinden en az 5 dakika sonra yeniden denenir ve başarılı olana kadar yeniden denenir.
+   [Oturum açma hataları](../azure-sql/database/troubleshoot-common-errors-issues.md#unable-to-log-in-to-the-server-errors-18456-40531) ve [güvenlik duvarı sorunları](../azure-sql/database/troubleshoot-common-errors-issues.md#cannot-connect-to-server-due-to-firewall-issues) , önceki denemelerinden en az 5 dakika sonra yeniden denenir ve başarılı olana kadar yeniden denenir.
 
 * Hataları ve şema kısıtlama ihlallerini atama gibi veri hataları çıktı hata ilkesiyle işlenir. Bu hatalar, hataya neden olan tek bir kayıt, atla veya yeniden dene tarafından işlenene kadar ikili bölme toplu işleri yeniden denenerek işlenir. Birincil benzersiz anahtar kısıtlaması ihlali [her zaman işlenir](./stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output).
 
@@ -107,16 +107,16 @@ Zaman aşımı 15 dakikadan daha uzun bir süre sonra, yığın başına 100 ola
 
 ## <a name="column-names-are-lowercase-in-azure-stream-analytics-10"></a>Sütun adları küçük harfle Azure Stream Analytics (1,0)
 
-Orijinal uyumluluk düzeyini (1,0) kullanırken, Azure Stream Analytics sütun adlarını küçük harfe dönüştürür. Bu davranış sonraki uyumluluk düzeylerinde düzeltildi. Durumu korumak için uyumluluk düzeyi 1,1 veya sonraki bir sürüme gidin. Daha fazla bilgi için bkz. [Stream Analytics işler Için uyumluluk düzeyi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
+Orijinal uyumluluk düzeyini (1,0) kullanırken, Azure Stream Analytics sütun adlarını küçük harfe dönüştürür. Bu davranış sonraki uyumluluk düzeylerinde düzeltildi. Durumu korumak için uyumluluk düzeyi 1,1 veya sonraki bir sürüme gidin. Daha fazla bilgi için bkz. [Stream Analytics işler Için uyumluluk düzeyi](./stream-analytics-compatibility-level.md).
 
 ## <a name="get-help"></a>Yardım alın
 
-Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics yönetim REST API başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics sorgu dili başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics yönetim REST API başvurusu](/rest/api/streamanalytics/)
