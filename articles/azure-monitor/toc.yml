@@ -123,8 +123,6 @@
           href: platform/data-platform-metrics.md
         - name: Event Hubs’a veri akışı sağlama
           href: platform/stream-monitoring-data-event-hubs.md
-    - name: Insights
-      href: insights/insights-overview.md
     - name: Veri güvenliği
       items:
         - name: Günlük verileri
@@ -1062,7 +1060,7 @@
               href: insights/container-insights-optout-hybrid.md
         - name: Sorun giderme
           href: insights/container-insights-troubleshoot.md
-    - name: Diğer içgörüler
+    - name: Insights
       items:
         - name: Redis için Azure Cache (önizleme)
           href: insights/redis-cache-insights-overview.md
@@ -1079,61 +1077,61 @@
           href: insights/resource-group-insights.md
         - name: İçgörülerle ilgili sorunları giderme
           href: insights/troubleshoot-workbooks.md
-    - name: Çözümler
-      items:
-        - name: Genel Bakış
-          href: insights/solutions.md
-          displayName: 'Azure CLI, az monitor log-analytics'
-        - name: Hedef çözümler
-          href: insights/solution-targeting.md
-        - name: Kullanılabilir çözümler
+        - name: Çözümler
           items:
-            - name: AD sistem durumu değerlendirmesi
-              href: insights/ad-assessment.md
-            - name: AD Çoğaltma Durumu
-              href: insights/ad-replication-status.md
-            - name: Kapasite ve performans çözümü
-              href: insights/capacity-performance.md
-            - name: Docker ve Windows Kapsayıcıları’nı izleme
-              href: insights/containers.md
-            - name: Ağlar
+            - name: Genel Bakış
+              href: insights/solutions.md
+              displayName: 'Azure CLI, az monitor log-analytics'
+            - name: Hedef çözümler
+              href: insights/solution-targeting.md
+            - name: Kullanılabilir çözümler
               items:
-                - name: Ağ Analizi
-                  href: insights/azure-networking-analytics.md
-                - name: DNS
-                  href: insights/dns-analytics.md
-                - name: Ağ Performansı İzleyicisi
+                - name: AD sistem durumu değerlendirmesi
+                  href: insights/ad-assessment.md
+                - name: AD Çoğaltma Durumu
+                  href: insights/ad-replication-status.md
+                - name: Kapasite ve performans çözümü
+                  href: insights/capacity-performance.md
+                - name: Docker ve Windows Kapsayıcıları’nı izleme
+                  href: insights/containers.md
+                - name: Ağlar
                   items:
-                    - name: Çözüme genel bakış
-                      href: insights/network-performance-monitor.md
-                    - name: Performans İzleyicisi
-                      href: insights/network-performance-monitor-performance-monitor.md
-                    - name: Hizmet Bağlantısı İzleyicisi
-                      href: insights/network-performance-monitor-service-connectivity.md
-                    - name: ExpressRoute
-                      href: insights/network-performance-monitor-expressroute.md
-                    - name: Fiyatlandırma
-                      href: insights/network-performance-monitor-pricing-faq.md
-                    - name: SSS
-                      href: insights/network-performance-monitor-faq.md
-            - name: Office 365
-              href: insights/solution-office-365.md
-            - name: Hizmet Eşlemesi çözümü
-              href: insights/service-map.md
-            - name: Hizmet Eşlemesi ve Operations Manager
-              href: insights/service-map-scom.md
-            - name: Azure SQL
-              href: insights/azure-sql.md
-            - name: SQL Server
-              href: insights/sql-assessment.md
-            - name: Surface Hub
-              href: insights/surface-hubs.md
-            - name: VMware Analytics çözümü
-              href: insights/vmware.md
-            - name: Wire Data çözümü
-              href: insights/wire-data.md
-            - name: Uyarı Yönetimi çözümü
-              href: platform/alert-management-solution.md
+                    - name: Ağ Analizi
+                      href: insights/azure-networking-analytics.md
+                    - name: DNS
+                      href: insights/dns-analytics.md
+                    - name: Ağ Performansı İzleyicisi
+                      items:
+                        - name: Çözüme genel bakış
+                          href: insights/network-performance-monitor.md
+                        - name: Performans İzleyicisi
+                          href: insights/network-performance-monitor-performance-monitor.md
+                        - name: Hizmet Bağlantısı İzleyicisi
+                          href: insights/network-performance-monitor-service-connectivity.md
+                        - name: ExpressRoute
+                          href: insights/network-performance-monitor-expressroute.md
+                        - name: Fiyatlandırma
+                          href: insights/network-performance-monitor-pricing-faq.md
+                        - name: SSS
+                          href: insights/network-performance-monitor-faq.md
+                - name: Office 365
+                  href: insights/solution-office-365.md
+                - name: Hizmet Eşlemesi çözümü
+                  href: insights/service-map.md
+                - name: Hizmet Eşlemesi ve Operations Manager
+                  href: insights/service-map-scom.md
+                - name: Azure SQL
+                  href: insights/azure-sql.md
+                - name: SQL Server
+                  href: insights/sql-assessment.md
+                - name: Surface Hub
+                  href: insights/surface-hubs.md
+                - name: VMware Analytics çözümü
+                  href: insights/vmware.md
+                - name: Wire Data çözümü
+                  href: insights/wire-data.md
+                - name: Uyarı Yönetimi çözümü
+                  href: platform/alert-management-solution.md
     - name: Çalışma Kitapları
       items:
         - name: Genel Bakış

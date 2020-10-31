@@ -18,3 +18,9 @@
         - name: İlke
           tocHref: /azure/aks
           topicHref: /azure/governance/policy
+        - name: İlke
+          tocHref: /azure/storage
+          topicHref: /azure/governance/policy
+        - name: İlke
+          tocHref: /azure/web-application-firewall
+          topicHref: /azure/governance/policy

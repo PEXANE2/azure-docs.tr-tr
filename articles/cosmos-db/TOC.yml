@@ -731,6 +731,10 @@
               items:
                 - name: Java SDK v4 sorunlarını giderme
                   href: troubleshoot-java-sdk-v4-sql.md
+                - name: İstek zaman aşımı sorunlarını giderme
+                  href: troubleshoot-request-timeout-java-sdk-v4-sql.md
+                - name: Hizmetin kullanılamaması sorunlarını giderme
+                  href: troubleshoot-service-unavailable-java-sdk-v4-sql.md
                 - name: Sorun Gidermek - Zaman uyumsuz Java SDK v2
                   href: troubleshoot-java-async-sdk.md
         - name: Akışı değiştirme
@@ -877,8 +881,6 @@
         - name: Resource Manager şablonu
           href: /azure/templates/microsoft.documentdb/allversions
           displayName: ARM
-        - name: Öykünücü sürüm notları
-          href: local-emulator-release-notes.md
         - name: Azure İlkesi yerleşik ilkeler
           displayName: 'samples, policies, definitions'
           href: ./policy-reference.md
@@ -1279,6 +1281,8 @@
               href: emulator-command-line-parameters.md
             - name: Öykünücü sorunlarını giderme
               href: troubleshoot-local-emulator.md
+            - name: Öykünücü sürüm notları
+              href: local-emulator-release-notes.md
             - name: Visual Studio Code uzantısı
               href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
         - name: Azure DevOps CI/CD işlem hattını ayarlama

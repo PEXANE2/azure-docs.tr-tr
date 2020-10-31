@@ -559,6 +559,7 @@
           href: howto-add-branding-in-azure-ad-apps.md
         - name: Yayımcı etki alanını yapılandırma
           href: howto-configure-publisher-domain.md
+          displayName: 'verified domain, verified publisher domain'
         - name: Hizmet Koşulları ve Gizlilik Bildirimini yapılandırma
           href: howto-add-terms-of-service-privacy-statement.md
         - name: Uygulamanız için yayımcı doğrulamasını yapılandırma

@@ -5,10 +5,6 @@
       items:
         - name: Azure Dev Spaces nedir?
           href: about.md
-    - name: Öğreticiler
-      items:
-        - name: Visual Studio ile çalışmaya başlama
-          href: get-started-netcore-visualstudio.md
     - name: Kavramlar
       items:
         - name: Kubernetes Köprüsü’ne Geçiş
