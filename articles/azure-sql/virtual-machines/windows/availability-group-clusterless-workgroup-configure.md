@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 6bfea42c6fca3369485ccf7a47158f7420df9c9c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790041"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124943"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Çalışma grubu kullanılabilirlik grubunu yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "92790041"
 Bu makalede, her zaman açık kullanılabilirlik grubu ile Active Directory bir etki alanı bağımsız kümesi oluşturmak için gereken adımlar açıklanmaktadır; Bu, çalışma grubu kümesi olarak da bilinir. Bu makale, çalışma grubu ve kullanılabilirlik grubunu hazırlamaya ve yapılandırmaya yönelik adımlara ve küme oluşturma veya kullanılabilirlik grubunu dağıtma gibi diğer makalelerde kapsanan adımları glosses. 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir çalışma grubu kullanılabilirlik grubunu yapılandırmak için şunlar gerekir:
 - SQL Server 2016 (veya üzeri) çalıştıran sanal makineler, aynı Kullanılabilirlik kümesine veya statik IP adresleri kullanılarak farklı kullanılabilirlik bölgelerine dağıtılır. 2016 
@@ -62,11 +62,11 @@ DNS sonekini yapılandırmak için aşağıdaki adımları izleyin:
 1. **DNS son eki ve NetBIOS bilgisayar adı** iletişim kutusunu açmak Için **daha fazla...** seçeneğini belirleyin. 
 1. DNS son ekinin adını **Bu bilgisayarın BIRINCIL DNS son eki** altına yazın (gibi) `ag.wgcluster.example.com` ve ardından **Tamam** ' ı seçin: 
 
-   ![DNS son eki Ekle](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
+   ![Ekran görüntüsü, değeri girebileceğiniz D N S soneki ve NetBIOS bilgisayar adı iletişim kutusunu gösterir.](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
 1. **Tam bilgisayar adının** artık DNS sonekini gösteriyor olduğunu onaylayın ve ardından değişikliklerinizi kaydetmek için **Tamam** ' ı seçin: 
 
-   ![DNS son eki Ekle](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
+   ![Ekran görüntüsünde, tam bilgisayar adınızın nerede görülebileceği gösterilir.](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
 
 1. İstendiğinde sunucuyu yeniden başlatın. 
 1. Kullanılabilirlik grubu için kullanılacak diğer düğümlerde bu adımları yineleyin. 

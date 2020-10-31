@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
-ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a111a1a44b508d721f16a038d0919334383d2c5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415857"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125011"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Data Lake Storage 1. verileri yükleme
 
@@ -28,12 +28,12 @@ Azure Data Factory, tam olarak yönetilen bulut tabanlı bir veri tümleştirme 
 
 Azure Data Factory, verileri Data Lake Storage 1. yüklemek için aşağıdaki avantajları sunmaktadır:
 
-* **Kolayca ayarlanabilir**: komut dosyası gerekmeden sezgisel 5 adımlı bir sihirbaz.
-* **Zengin veri deposu desteği**: zengin bir şirket içi ve bulut tabanlı veri deposu kümesi için yerleşik destek. Ayrıntılı bir liste için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats)tablosuna bakın.
-* **Güvenli ve uyumlu**: veriler HTTPS veya ExpressRoute üzerinden aktarılır. Küresel hizmet varlığı, verilerinizin hiçbir şekilde coğrafi sınır bırakmamasını sağlar.
-* **Yüksek performans**: en fazla 1 GB/sn veri yükleme hızı Data Lake Storage 1.. Ayrıntılar için bkz. [etkinlik performansını kopyalama](copy-activity-performance.md).
+* **Kolayca ayarlanabilir** : komut dosyası gerekmeden sezgisel 5 adımlı bir sihirbaz.
+* **Zengin veri deposu desteği** : zengin bir şirket içi ve bulut tabanlı veri deposu kümesi için yerleşik destek. Ayrıntılı bir liste için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats)tablosuna bakın.
+* **Güvenli ve uyumlu** : veriler HTTPS veya ExpressRoute üzerinden aktarılır. Küresel hizmet varlığı, verilerinizin hiçbir şekilde coğrafi sınır bırakmamasını sağlar.
+* **Yüksek performans** : en fazla 1 GB/sn veri yükleme hızı Data Lake Storage 1.. Ayrıntılar için bkz. [etkinlik performansını kopyalama](copy-activity-performance.md).
 
-Bu makalede, Data Factory Veri Kopyalama aracının, _Amazon S3 'ten Data Lake Storage 1. 'a veri yüklemek_için nasıl kullanılacağı gösterilmektedir. Diğer veri deposu türlerinden veri kopyalamak için benzer adımları izleyebilirsiniz.
+Bu makalede, Data Factory Veri Kopyalama aracının, _Amazon S3 'ten Data Lake Storage 1. 'a veri yüklemek_ için nasıl kullanılacağı gösterilmektedir. Diğer veri deposu türlerinden veri kopyalamak için benzer adımları izleyebilirsiniz.
 
 > [!NOTE]
 > Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Data Lake Storage 1. veri kopyalama](connector-azure-data-lake-store.md).
@@ -46,7 +46,7 @@ Bu makalede, Data Factory Veri Kopyalama aracının, _Amazon S3 'ten Data Lake S
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory**oluştur ' u seçin:
+1. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory** oluştur ' u seçin:
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -54,13 +54,13 @@ Bu makalede, Data Factory Veri Kopyalama aracının, _Amazon S3 'ten Data Lake S
       
    ![Yeni veri fabrikası sayfası](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
-    * **Ad**: Azure Data Factory 'niz için genel olarak benzersiz bir ad girin. "Data Factory Name \" LoadADLSG1Demo \" kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin _**, Name**_**ADFTutorialDataFactory**adını kullanabilirsiniz. Data Factory 'yi yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
-    * **Abonelik**: veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
-    * **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur** seçeneğini belirleyin ve bir kaynak grubunun adını girin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
-    * **Sürüm**: **V2**'yi seçin.
-    * **Konum**: veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Data Lake Storage 1., Azure depolama, Azure SQL veritabanı vb. içerir.
+    * **Ad** : Azure Data Factory 'niz için genel olarak benzersiz bir ad girin. "Data Factory Name \" LoadADLSG1Demo \" kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin _**, Name**_**ADFTutorialDataFactory** adını kullanabilirsiniz. Data Factory 'yi yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
+    * **Abonelik** : veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
+    * **Kaynak grubu** : açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur** seçeneğini belirleyin ve bir kaynak grubunun adını girin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
+    * **Sürüm** : **V2** 'yi seçin.
+    * **Konum** : veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Data Lake Storage 1., Azure depolama, Azure SQL veritabanı vb. içerir.
 
-3. **Oluştur**’u seçin.
+3. **Oluştur** ’u seçin.
 4. Oluşturma işlemi tamamlandıktan sonra, veri fabrikanıza gidin. Aşağıdaki görüntüde gösterildiği gibi **Data Factory** giriş sayfasını görürsünüz: 
    
    ![Data factory giriş sayfası](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
@@ -72,67 +72,67 @@ Bu makalede, Data Factory Veri Kopyalama aracının, _Amazon S3 'ten Data Lake S
 1. **Başlarken** sayfasında, veri kopyalama aracını başlatmak için **veri kopyalama** kutucuğunu seçin: 
 
    ![Veri Kopyalama aracının kutucuğu](./media/load-data-into-azure-data-lake-store/copy-data-tool-tile.png)
-2. **Özellikler** sayfasında, **görev adı** alanı Için **CopyFromAmazonS3ToADLS** belirtin ve **İleri**' yi seçin:
+2. **Özellikler** sayfasında, **görev adı** alanı Için **CopyFromAmazonS3ToADLS** belirtin ve **İleri** ' yi seçin:
 
     ![Özellikler sayfası](./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png)
-3. **Kaynak veri deposu** sayfasında **+ Yeni bağlantı oluştur**' a tıklayın:
+3. **Kaynak veri deposu** sayfasında **+ Yeni bağlantı oluştur** ' a tıklayın:
 
     ![Kaynak veri deposu sayfası](./media/load-data-into-azure-data-lake-store/source-data-store-page.png)
     
-    **Amazon S3**' i seçin ve **devam** ' ı seçin.
+    **Amazon S3** ' i seçin ve **devam** ' ı seçin.
     
     ![Kaynak veri deposu S3 sayfası](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
     
 4. **Amazon S3 bağlantısını belirtin** sayfasında aşağıdaki adımları uygulayın: 
    1. **Erişim anahtarı kimlik** değerini belirtin.
    2. Gizli dizi **erişim anahtarı** değerini belirtin.
-   3. **Son**’u seçin.
+   3. **Son** ’u seçin.
    
-      ![Amazon S3 hesabını belirtin](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+      ![Ekran görüntüsünde, değer girebileceğiniz yeni bağlı hizmet bölmesi görüntülenir.](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. Yeni bir bağlantı göreceksiniz. **İleri**’yi seçin.
+   4. Yeni bir bağlantı göreceksiniz. **İleri** ’yi seçin.
    
-   ![Amazon S3 hesabını belirtin](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
+   ![Ekran görüntüsü yeni bağlantınızı gösterir.](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
-5. **Giriş dosyasını veya klasörünü seçin** sayfasında, üzerine kopyalamak istediğiniz klasöre ve dosyaya göz atın. Klasörü/dosyayı seçin **, Seç '** i seçin ve ardından **İleri**' yi seçin:
+5. **Giriş dosyasını veya klasörünü seçin** sayfasında, üzerine kopyalamak istediğiniz klasöre ve dosyaya göz atın. Klasörü/dosyayı seçin **, Seç '** i seçin ve ardından **İleri** ' yi seçin:
 
     ![Girdi dosyasını veya klasörünü seçin](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. **Dosyaları yinelemeli Kopyala** ve **ikili kopya** (dosya olarak Kopyala) seçeneklerini belirleyerek kopyalama davranışını seçin. **İleri ' yi**seçin:
+6. **Dosyaları yinelemeli Kopyala** ve **ikili kopya** (dosya olarak Kopyala) seçeneklerini belirleyerek kopyalama davranışını seçin. **İleri ' yi** seçin:
 
-    ![Çıkış klasörünü belirtin](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
+    ![Ekran görüntüsü, dosyayı yinelemeli olarak Kopyala ve Ikili kopya seçeneklerini seçebileceğiniz giriş dosyasını veya klasörü seçin öğesini gösterir.](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     
-7. **Hedef veri deposu** sayfasında **+ Yeni bağlantı oluştur**' a ve ardından **Azure Data Lake Storage 1.**' ı seçip **devam**' ı seçin:
+7. **Hedef veri deposu** sayfasında **+ Yeni bağlantı oluştur** ' a ve ardından **Azure Data Lake Storage 1.** ' ı seçip **devam** ' ı seçin:
 
     ![Hedef veri deposu sayfası](./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png)
 
 8. **Yeni bağlı hizmet (Azure Data Lake Storage 1.)** sayfasında, aşağıdaki adımları uygulayın: 
 
-   1. **Data Lake Store hesap adı**için Data Lake Storage 1. hesabınızı seçin.
-   2. **Kiracıyı**belirtip son ' u seçin.
-   3. **İleri**’yi seçin.
+   1. **Data Lake Store hesap adı** için Data Lake Storage 1. hesabınızı seçin.
+   2. **Kiracıyı** belirtip son ' u seçin.
+   3. **İleri** ’yi seçin.
    
    > [!IMPORTANT]
    > Bu kılavuzda, Data Lake Storage 1. hesabınızın kimliğini doğrulamak için Azure kaynakları için yönetilen bir kimlik kullanırsınız. [Bu yönergeleri](connector-azure-data-lake-store.md#managed-identity)IZLEYEREK Data Lake Storage 1. MSI 'ye uygun izinleri verdiğinizden emin olun.
    
    ![Data Lake Storage 1. hesabı belirtin](./media/load-data-into-azure-data-lake-store/specify-adls.png)
-9. **Çıktı dosyasını veya klasörünü seçin** sayfasında, çıkış klasörü adı olarak **Copyfroms3** girin ve **İleri**' yi seçin: 
+9. **Çıktı dosyasını veya klasörünü seçin** sayfasında, çıkış klasörü adı olarak **Copyfroms3** girin ve **İleri** ' yi seçin: 
 
-    ![Çıkış klasörünü belirtin](./media/load-data-into-azure-data-lake-store/specify-adls-path.png)
+    ![Ekran görüntüsü girdiğiniz klasör yolunu gösterir.](./media/load-data-into-azure-data-lake-store/specify-adls-path.png)
 
-10. **Ayarlar** sayfasında, **İleri**' yi seçin:
+10. **Ayarlar** sayfasında, **İleri** ' yi seçin:
 
     ![Ayarlar sayfası](./media/load-data-into-azure-data-lake-store/copy-settings.png)
-11. **Özet** sayfasında, ayarları gözden geçirin ve **İleri**' yi seçin:
+11. **Özet** sayfasında, ayarları gözden geçirin ve **İleri** ' yi seçin:
 
     ![Özet sayfası](./media/load-data-into-azure-data-lake-store/copy-summary.png)
-12. **Dağıtım sayfasında**, işlem hattını (görev) Izlemek için **izleyici** ' yi seçin:
+12. **Dağıtım sayfasında** , işlem hattını (görev) Izlemek için **izleyici** ' yi seçin:
 
     ![Dağıtım sayfası](./media/load-data-into-azure-data-lake-store/deployment-page.png)
 13. Soldaki **İzleyici** sekmesinin otomatik olarak seçildiğine dikkat edin. Eylemler sütunu, etkinlik çalıştırma ayrıntılarını görüntüleme ve **işlem** hattını yeniden çalıştırma bağlantılarını içerir:
 
     ![İşlem hattı çalıştırmalarını izleme](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-14. Işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundaki **etkinlik çalıştırmalarını görüntüle** bağlantısını seçin. İşlem hattında yalnızca bir etkinlik (kopyalama etkinliği) olduğundan tek bir girdi görürsünüz. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki işlem **hatları** bağlantısını seçin. Listeyi yenilemek için **Yenile**’yi seçin. 
+14. Işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundaki **etkinlik çalıştırmalarını görüntüle** bağlantısını seçin. İşlem hattında yalnızca bir etkinlik (kopyalama etkinliği) olduğundan tek bir girdi görürsünüz. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki işlem **hatları** bağlantısını seçin. Listeyi yenilemek için **Yenile** ’yi seçin. 
 
     ![Etkinlik çalıştırmalarını izleme](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 

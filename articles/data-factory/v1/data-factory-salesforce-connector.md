@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba95ba57bb57b1b2e9ecde3ad27f6bb5fbca66cb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79281138"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124892"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Salesforce 'tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -49,9 +49,9 @@ Ayrıca, her iki senaryoda da "REQUEST_LIMIT_EXCEEDED" hatasını alabilirsiniz.
 ## <a name="getting-started"></a>Başlarken
 Verileri Salesforce 'tan farklı araçlar/API 'Ler kullanarak taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
 
-İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
+İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı** ' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager şablonu** , **.NET API** ve **REST API** . Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -68,11 +68,11 @@ Aşağıdaki tabloda, Salesforce bağlantılı hizmetine özgü JSON öğelerine
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür |Type özelliği: **Salesforce**olarak ayarlanmalıdır. |Evet |
+| tür |Type özelliği: **Salesforce** olarak ayarlanmalıdır. |Yes |
 | environmentUrl | Salesforce örneğinin URL 'sini belirtin. <br><br> -Varsayılan: "https: \/ /login.Salesforce.com". <br> -Korumalı verileri veri kopyalamak için "" seçeneğini belirtin https://test.salesforce.com . <br> -Özel etki alanından veri kopyalamak için, örneğin "https://[Domain]. My. Salesforce. com" belirtin. |Hayır |
-| username |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Evet |
-| password |Kullanıcı hesabı için bir parola belirtin. |Evet |
-| Belirtilmedi |Kullanıcı hesabı için bir güvenlik belirteci belirtin. Güvenlik belirtecini sıfırlama/alma hakkında yönergeler için bkz. [güvenlik belirteci alma](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Genel olarak güvenlik belirteçleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik ve API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Evet |
+| username |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Yes |
+| password |Kullanıcı hesabı için bir parola belirtin. |Yes |
+| Belirtilmedi |Kullanıcı hesabı için bir güvenlik belirteci belirtin. Güvenlik belirtecini sıfırlama/alma hakkında yönergeler için bkz. [güvenlik belirteci alma](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Genel olarak güvenlik belirteçleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik ve API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
@@ -86,7 +86,7 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 > [!IMPORTANT]
 > Tüm özel nesneler için API adının "__c" kısmı gereklidir.
 
-![Data Factory-Salesforce bağlantısı-API adı](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
+![Ekran görüntüsü özel nesne tanımı ayrıntısı ' nı gösterir. Bu, özel nesnelerin P ı adlarını görebileceğiniz yerdir.](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları ve çeşitli ilkeler gibi özellikler, tüm etkinlik türleri için kullanılabilir.
@@ -102,14 +102,14 @@ Kopyalama etkinliğinde, kaynak **Relationalsource** türünde olduğunda (Sales
 > [!IMPORTANT]
 > Tüm özel nesneler için API adının "__c" kısmı gereklidir.
 
-![Data Factory-Salesforce bağlantısı-API adı](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+![Ekran görüntüsü, özel nesnelerin bir P ı adını görebileceğiniz Ilişkiler & özel alanlarını gösterir.](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
 ## <a name="query-tips"></a>Sorgu ipuçları
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Tarih saat sütununda WHERE yan tümcesi kullanılarak veri alma
 SOQL veya SQL sorgusu belirttiğinizde, tarih saat biçimi farklılığı ile ilgilenyin. Örneğin:
 
-* **Soql örneği**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
-* **SQL örneği**:
+* **Soql örneği** : `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **SQL örneği** :
     * **Sorguyu belirtmek için kopyalama Sihirbazı 'Nı kullanma:**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
     * **Sorgu belirtmek IÇIN JSON düzenlemesini kullanma (doğru kaçış karakteri):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
@@ -119,8 +119,8 @@ SOQL veya SQL sorgusu belirttiğinizde, tarih saat biçimi farklılığı ile il
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Silinen kayıtları Salesforce geri dönüşüm kutusu 'ndan alma
 Salesforce geri dönüşüm kutusu 'ndaki geçici silinen kayıtları sorgulamak için sorgunuzda **"IsDeleted = 1"** belirtebilirsiniz. Örneğin,
 
-* Yalnızca silinen kayıtları sorgulamak için, "select * from MyTable__c **WHERE IsDeleted = 1**" belirtin
-* Var olan ve silinen dahil tüm kayıtları sorgulamak için, "select * from MyTable__c **WHERE IsDeleted = 0 veya IsDeleted = 1**" belirtin
+* Yalnızca silinen kayıtları sorgulamak için, "select * from MyTable__c **WHERE IsDeleted = 1** " belirtin
+* Var olan ve silinen dahil tüm kayıtları sorgulamak için, "select * from MyTable__c **WHERE IsDeleted = 0 veya IsDeleted = 1** " belirtin
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON örneği: Salesforce 'tan Azure Blob 'a veri kopyalama
 Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar. Verilerin Salesforce 'tan Azure Blob depolama alanına nasıl kopyalanacağını gösterir. Ancak, veriler burada belirtilen Azure Data Factory kopyalama etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen herhangi bir havuza kopyalanabilir.
@@ -197,7 +197,7 @@ Bu örnek **Salesforce** bağlantılı hizmetini kullanır. Bu bağlı hizmet ta
 > [!IMPORTANT]
 > Tüm özel nesneler için API adının "__c" kısmı gereklidir.
 
-![Data Factory-Salesforce bağlantısı-API adı](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
+![Ekran görüntüsü, tekil etiket, çoğul etiketi, nesne adı ve P ı adını görebileceğiniz özel nesne tanımı ayrıntılarını gösterir.](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
 **Azure Blob çıktı veri kümesi**
 
@@ -225,7 +225,7 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1).
 
 **Kopyalama etkinliği içeren işlem hattı**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılan kopyalama etkinliğini içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü **relationalsource**olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılan kopyalama etkinliğini içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink** olarak ayarlanır.
 
 RelationalSource tarafından desteklenen özelliklerin listesi için bkz. [relationalsource türü özellikleri](#copy-activity-properties) .
 
@@ -278,7 +278,7 @@ RelationalSource tarafından desteklenen özelliklerin listesi için bkz. [relat
 > [!IMPORTANT]
 > Tüm özel nesneler için API adının "__c" kısmı gereklidir.
 
-![Data Factory-Salesforce bağlantısı-API adı](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+![Ekran görüntüsü, bilinen bir P I adı olan Ilişkiler & özel alanları gösterir.](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
 
 ### <a name="type-mapping-for-salesforce"></a>Salesforce için tür eşleme
@@ -287,7 +287,7 @@ RelationalSource tarafından desteklenen özelliklerin listesi için bkz. [relat
 | --- | --- |
 | Otomatik sayı |Dize |
 | Onay kutusu |Boole |
-| Para Birimi |Ondalık |
+| Para birimi |Ondalık |
 | Tarih |DateTime |
 | Tarih/Saat |DateTime |
 | E-posta |Dize |

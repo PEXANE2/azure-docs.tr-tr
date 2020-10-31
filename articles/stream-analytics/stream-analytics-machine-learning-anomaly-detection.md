@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c57a3920dac3e18e248109fafdf61fdfa871c54d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044388"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123719"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics 'de anomali algılama
 
@@ -42,7 +42,7 @@ Zaman serisinde boşluklar, modelin belirli noktalarda olayları almamaya neden 
 
 ## <a name="spike-and-dip"></a>Ani ve DIP
 
-Zaman serisi olay akışındaki geçici bozukluklar, ani artışlar ve DIB 'ler olarak bilinir. Ani artışlar ve DIB 'ler, [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+Zaman serisi olay akışındaki geçici bozukluklar, ani artışlar ve DIB 'ler olarak bilinir. Ani artışlar ve DIB 'ler, [AnomalyDetection_SpikeAndDip](/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
 )Machine Learning tabanlı işleç kullanılarak izlenebilir.
 
 ![Ani artış ve DIP anomali örneği](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
@@ -74,7 +74,7 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>Değişiklik noktası
 
-Zaman serisi olay akışındaki kalıcı bozukluklar, olay akışındaki değerlerin dağıtımında, düzey değişiklikler ve eğilimler gibi değişiklikler. Stream Analytics, bu tür bozukluklar Machine Learning tabanlı [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) işleci kullanılarak algılanır.
+Zaman serisi olay akışındaki kalıcı bozukluklar, olay akışındaki değerlerin dağıtımında, düzey değişiklikler ve eğilimler gibi değişiklikler. Stream Analytics, bu tür bozukluklar Machine Learning tabanlı [AnomalyDetection_ChangePoint](/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) işleci kullanılarak algılanır.
 
 Kalıcı değişiklikler ani ve dallara göre çok daha uzun ve çok zararlı olay (ler) belirtebilir. Kalıcı değişiklikler genellikle çıplak göz için görünür değildir, ancak **AnomalyDetection_ChangePoint** işleci ile algılanabilir.
 
@@ -114,9 +114,9 @@ FROM AnomalyDetectionStep
 
 Bu modellerin performansı, geçmiş boyutuna, pencere süresine, olay yüküne ve işlev düzeyi bölümlemenin kullanılıp kullanılmadığını belirtir. Bu bölümde bu yapılandırma açıklanmaktadır ve saniyede 1K, 5K ve 10.000 olay alma hızlarının nasıl ele alınacağını gösteren örnekler sağlanmaktadır.
 
-* **Geçmiş boyutu** -bu modeller **Geçmiş boyutuyla**linerken gerçekleştirir. Geçmiş boyutu arttıkça, modeller yeni bir olayı puan etmek için daha uzun sürer. Bunun nedeni, modellerin yeni olayı geçmiş arabelleğindeki geçmiş olayların her biriyle karşılaştırmaktır.
+* **Geçmiş boyutu** -bu modeller **Geçmiş boyutuyla** linerken gerçekleştirir. Geçmiş boyutu arttıkça, modeller yeni bir olayı puan etmek için daha uzun sürer. Bunun nedeni, modellerin yeni olayı geçmiş arabelleğindeki geçmiş olayların her biriyle karşılaştırmaktır.
 * **Pencere süresi** - **pencere süresi** , geçmiş boyutuyla belirtilen sayıda olayı almak için geçen süreyi yansıtmalıdır. Pencerede bu çok sayıda olay olmadan, Azure Stream Analytics eksik değerleri bir değere sahip olur. Bu nedenle, CPU tüketimi geçmiş boyutunun bir işlevidir.
-* **Olay yükü** -daha fazla **olay yükü**, model tarafından gerçekleştirilen ve CPU tüketimini etkileyen daha fazla çalışma. İş mantığı daha fazla giriş bölümü kullanmanın mantıklı olduğunu varsayarak, iş bu kadar paralel olarak genişletilebilir hale gelir.
+* **Olay yükü** -daha fazla **olay yükü** , model tarafından gerçekleştirilen ve CPU tüketimini etkileyen daha fazla çalışma. İş mantığı daha fazla giriş bölümü kullanmanın mantıklı olduğunu varsayarak, iş bu kadar paralel olarak genişletilebilir hale gelir.
 * **İşlev düzeyi bölümleme**  -  **İşlev düzeyi bölümlendirme** ```PARTITION BY``` , anomali algılama işlevi çağrısı içinde kullanılarak yapılır. Aynı anda birden çok modelde durum tutulması gerektiğinden, bu tür bölümleme bir ek yük ekler. İşlev düzeyi bölümleme, cihaz düzeyi bölümlendirme gibi senaryolarda kullanılır.
 
 ### <a name="relationship"></a>İlişki
@@ -152,13 +152,12 @@ Yukarıdaki bölümlenmemiş yapılandırmaların çalıştırıldığı örnek 
 > Daha doğru bir tahmin için, örnekleri senaryonuza uyacak şekilde özelleştirin.
 
 ### <a name="identifying-bottlenecks"></a>Performans sorunlarını belirleme
-İşlem hattınızdaki performans sorunlarını belirlemek için Azure Stream Analytics işinizin ölçümler bölmesini kullanın. İşin giriş oranına sahip olup olmadığını görmek için üretilen iş ve ["filigran gecikmesi"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) veya **biriktirme listesi olayları** Için **giriş/çıkış olaylarını** gözden geçirin. Olay Hub 'ı ölçümleri için, **Kısıtlanmış istekleri** bulun ve eşik birimlerini uygun şekilde ayarlayın. Cosmos DB ölçümleri için, bölüm anahtarı aralıklarınızın her bir şekilde tüketildiğinden emin olmak için üretilen Iş birimi **anahtar aralığı başına en fazla ru/sn** 'yi gözden geçirin. Azure SQL DB için **günlük GÇ** ve **CPU 'yu**izleyin.
+İşlem hattınızdaki performans sorunlarını belirlemek için Azure Stream Analytics işinizin ölçümler bölmesini kullanın. İşin giriş oranına sahip olup olmadığını görmek için üretilen iş ve ["filigran gecikmesi"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) veya **biriktirme listesi olayları** Için **giriş/çıkış olaylarını** gözden geçirin. Olay Hub 'ı ölçümleri için, **Kısıtlanmış istekleri** bulun ve eşik birimlerini uygun şekilde ayarlayın. Cosmos DB ölçümleri için, bölüm anahtarı aralıklarınızın her bir şekilde tüketildiğinden emin olmak için üretilen Iş birimi **anahtar aralığı başına en fazla ru/sn** 'yi gözden geçirin. Azure SQL DB için **günlük GÇ** ve **CPU 'yu** izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Azure Akış Analizi Sorgu Dili Başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](/rest/api/streamanalytics/)

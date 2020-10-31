@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 09/01/2020
+ms.date: 10/30/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 167c2f091d4d8a7d7d5c32009b484125d7275796
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 91de9aff154dec1a61360477edebc90b7a13cf24
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282362"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125181"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
 
@@ -33,15 +33,18 @@ Müşteri kullanım attributıon üç dağıtım seçeneğini destekler:
 >- Müşteri kullanım attributıon Yeni dağıtımlar içindir ve zaten dağıtılmış olan mevcut kaynakların etiketlemesini desteklemez.
 >
 >- Azure Market 'Te yayımlanan [Azure Uygulama](./partner-center-portal/create-new-azure-apps-offer.md) teklifleri için müşteri kullanım atısyonu gereklidir.
+>
+>- Tüm Azure Hizmetleri Müşteri kullanımı attribuile uyumlu değildir. Azure Kubernetes Hizmetleri (AKS) ve VM Ölçek kümelerinde, kullanım raporlaması kapsamında neden olan bilinen sorunlar vardır.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-guids"></a>GUID 'Ler oluştur
 
-GUID, 32 onaltılık basamak içeren benzersiz bir başvuru tanımlayıcısıdır. İzleme için GUID 'Ler oluşturmak üzere bir GUID Oluşturucu kullanmanız gerekir. Azure depolama ekibi, doğru biçimin bir GUID 'sine e-posta sağlayacak bir [GUID Oluşturucu formu](https://aka.ms/StoragePartners) oluşturdu ve farklı izleme sistemleri arasında yeniden kullanılabilir.
+GUID, 32 onaltılık basamak içeren benzersiz bir başvuru tanımlayıcısıdır. İzleme için GUID 'Ler oluşturmak için, örneğin PowerShell aracılığıyla bir GUID Oluşturucu kullanmanız gerekir.
 
-> [!NOTE]
-> GUID 'nizi oluşturmak için [Azure Storage 'un GUID Oluşturucu formunu](https://aka.ms/StoragePartners) kullanmanız önemle tavsiye edilir. Daha fazla bilgi için bkz. [SSS](#faq).
+```powershell
+[guid]::NewGuid()]
+```
 
 Her ürün için her bir teklif ve dağıtım kanalı için benzersiz bir GUID oluşturmanız önerilir. Raporlama 'nın bölünmesini istemiyorsanız, ürünün birden çok dağıtım kanalı için tek bir GUID kullanmayı tercih edebilirsiniz.
 
@@ -67,19 +70,19 @@ GUID 'lerin, müşteri kullanımı atısyonu sağlamak için Iş Ortağı Merkez
 
 1. [Ticari Market yayımcısı](https://aka.ms/JoinMarketplace)olarak kaydolun.
 
-   * İş ortaklarının [Iş Ortağı Merkezi 'nde bir profili olması](become-publisher.md)gerekir. Teklifi Azure Market veya AppSource 'ta listeliyoruz.
+   * İş ortaklarının [Iş Ortağı Merkezi 'nde bir profili olması](./partner-center-portal/create-account.md)gerekir. Teklifi Azure Market veya AppSource 'ta listeliyoruz.
    * İş ortakları birden çok GUID kaydedebilir.
    * İş ortakları, Market olmayan çözüm şablonları ve teklifleri için GUID 'Leri kaydedebilir.
 
-1. Sağ üst köşede, ayarlar dişli simgesini seçin ve ardından **Geliştirici ayarları**' nı seçin.
+1. Sağ üst köşede, ayarlar dişli simgesini seçin ve ardından **Geliştirici ayarları** ' nı seçin.
 
-1. **Hesap ayarları sayfasında**, **Izleme GUID 'si Ekle** ' yi seçin.
+1. **Hesap ayarları sayfasında** , **Izleme GUID 'si Ekle** ' yi seçin.
 
 1. **GUID** kutusuna izleme GUID 'nizi girin. Ön ek olmadan yalnızca GUID girin `pid-` . **Açıklama** kutusuna teklif adınızı veya açıklamasını girin.
 
 1. Birden fazla GUID kaydetmek için, **izleme GUID 'i yeniden Ekle** ' yi seçin. Sayfada ek kutular görüntülenir.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager şablonlarını kullanma
 Birçok iş ortağı çözümü Azure Resource Manager şablonları kullanılarak dağıtılır. Azure Marketi 'nde, GitHub 'da veya hızlı başlangıç olarak kullanılabilen bir Kaynak Yöneticisi şablonunuz varsa, müşteri kullanımı atısyonu 'nı etkinleştirmek için şablonunuzu değiştirme işlemi düz bir işlemdir.
@@ -97,9 +100,9 @@ Bir genel benzersiz tanımlayıcı (GUID) eklemek için, ana şablon dosyasında
 
 1. Kaynak Yöneticisi şablonunu açın.
 
-1. Ana şablon dosyasında [Microsoft. resources/dağıtımlar](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) türünde yeni bir kaynak ekleyin. Kaynağın herhangi bir iç içe veya bağlı şablonlarda değil, yalnızca dosya ** üzerindemainTemplate.js** veya **azuredeploy.jsaçık** olması gerekir.
+1. Ana şablon dosyasında [Microsoft. resources/dağıtımlar](/azure/templates/microsoft.resources/deployments) türünde yeni bir kaynak ekleyin. Kaynağın herhangi bir iç içe veya bağlı şablonlarda değil, yalnızca dosya **üzerindemainTemplate.js** veya **azuredeploy.jsaçık** olması gerekir.
 
-1. `pid-`Kaynak adı olarak önekden sonra GUID değerini girin. Örneğin, GUID eb7927c8-dd66-43e1-b0cf-c346a422063 ise, kaynak adı _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_olur.
+1. `pid-`Kaynak adı olarak önekden sonra GUID değerini girin. Örneğin, GUID eb7927c8-dd66-43e1-b0cf-c346a422063 ise, kaynak adı _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_ olur.
 
 1. Şablonda hata olup olmadığını denetleyin.
 
@@ -110,7 +113,7 @@ Bir genel benzersiz tanımlayıcı (GUID) eklemek için, ana şablon dosyasında
 ### <a name="sample-resource-manager-template-code"></a>Örnek Kaynak Yöneticisi Şablon kodu
 
 Şablonunuz için izleme kaynaklarını etkinleştirmek üzere kaynaklar bölümüne aşağıdaki ek kaynağı eklemeniz gerekir. Lütfen ana şablon dosyasına eklediğinizde aşağıdaki örnek kodu kendi girdunuzla değiştirdiğinizden emin olun.
-Kaynak, iç içe veya bağlı şablonlarda değil, yalnızca dosya ** üzerindemainTemplate.js** ya da **azuredeploy.js** eklenmelidir.
+Kaynak, iç içe veya bağlı şablonlarda değil, yalnızca dosya **üzerindemainTemplate.js** ya da **azuredeploy.js** eklenmelidir.
 
 ```json
 // Make sure to modify this sample code with your own inputs where applicable
@@ -132,7 +135,7 @@ Kaynak, iç içe veya bağlı şablonlarda değil, yalnızca dosya ** üzerindem
 
 ## <a name="use-the-resource-manager-apis"></a>Kaynak Yöneticisi API 'Lerini kullanma
 
-Bazı durumlarda, Azure hizmetlerini dağıtmak için Kaynak Yöneticisi REST API 'Lerine doğrudan çağrı yapmayı tercih edebilirsiniz. Azure, bu çağrıları etkinleştirmek için [birden çok SDK 'yi destekler](https://docs.microsoft.com/azure/?pivot=sdkstools) . SDK 'Lardan birini kullanabilir veya doğrudan kaynak dağıtmak için REST API 'Lerini çağırabilirsiniz.
+Bazı durumlarda, Azure hizmetlerini dağıtmak için Kaynak Yöneticisi REST API 'Lerine doğrudan çağrı yapmayı tercih edebilirsiniz. Azure, bu çağrıları etkinleştirmek için [birden çok SDK 'yi destekler](../index.yml?pivot=sdkstools) . SDK 'Lardan birini kullanabilir veya doğrudan kaynak dağıtmak için REST API 'Lerini çağırabilirsiniz.
 
 Kaynak Yöneticisi şablonu kullanıyorsanız, daha önce açıklanan yönergeleri izleyerek çözümünüzü etiketlemelisiniz. Kaynak Yöneticisi şablonu kullanmıyorsanız ve doğrudan API çağrıları yaparsanız, Azure kaynaklarının kullanımını ilişkilendirmek için dağıtımınızı etiketleyerek yine de kullanabilirsiniz.
 
@@ -147,7 +150,7 @@ Müşteri kullanımı atısyonu 'nı etkinleştirmek için, API aramalarınızı
 
 #### <a name="example-the-python-sdk"></a>Örnek: Python SDK 'Sı
 
-Python için, **config** özniteliğini kullanın. Özniteliği yalnızca bir UserAgent öğesine ekleyebilirsiniz. İşte bir örnek:
+Python için, **config** özniteliğini kullanın. Özniteliği yalnızca bir UserAgent öğesine ekleyebilirsiniz. Aşağıda bir örnek verilmiştir:
 
 ![Özniteliği bir kullanıcı aracısına ekleyin](media/marketplace-publishers-guide/python-for-lu.PNG)
 
@@ -156,7 +159,7 @@ Python için, **config** özniteliğini kullanın. Özniteliği yalnızca bir Us
 
 #### <a name="example-the-net-sdk"></a>Örnek: .NET SDK
 
-.NET için Kullanıcı aracısını ayarladığınızdan emin olun. [Microsoft. Azure. Management. Floent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) kitaplığı, Kullanıcı aracısını aşağıdaki kodla (C# dilinde örnek) ayarlamak için kullanılabilir:
+.NET için Kullanıcı aracısını ayarladığınızdan emin olun. [Microsoft. Azure. Management. Floent](/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) kitaplığı, Kullanıcı aracısını aşağıdaki kodla (C# dilinde örnek) ayarlamak için kullanılabilir:
 
 ```csharp
 
@@ -183,7 +186,7 @@ GUID 'nizi eklemek için Azure CLı kullandığınızda **AZURE_HTTP_USER_AGENT*
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-Daha fazla bilgi için bkz. [Go için Azure SDK](https://docs.microsoft.com/azure/developer/go/).
+Daha fazla bilgi için bkz. [Go için Azure SDK](/azure/developer/go/).
 
 ## <a name="use-terraform"></a>Terrayform kullanma
 

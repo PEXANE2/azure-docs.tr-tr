@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 47b7eaacc8aba3655223eb1f0cde4a5516e370fd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9ccde8ea5453e3e553a020707ecde6e60f29b3dd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091608"
+ms.locfileid: "93124722"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -33,7 +33,9 @@ Başlamak için gerekenler:
 * Herhangi bir kod Düzenleyicisi
 * Geliştirme makinenizde **.NET Core 3,1** . Birden çok platform için .NET Core SDK bu sürümünü [.NET Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1)' i indirin.
 
-[!INCLUDE [Azure Digital Twins tutorials: instance prereq](../../includes/digital-twins-tutorial-prereq-instance.md)]
+### <a name="prepare-an-azure-digital-twins-instance"></a>Azure dijital TWINS örneği hazırlama
+
+[!INCLUDE [Azure Digital Twins: instance prereq](../../includes/digital-twins-prereq-instance.md)]
 
 [!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
 
@@ -260,7 +262,7 @@ Bu noktadan itibaren öğreticide, try/catch işleyicilerindeki hizmet yöntemle
 
 Azure dijital TWINS 'e bir model yüklediğinize göre, bu model tanımını **dijital TWINS** oluşturmak için kullanabilirsiniz. [Dijital TWINS](concepts-twins-graph.md) , bir modelin örnekleridir ve iş ortamınızdaki varlıkları, bir gruptaki sensörlerden, binadaki odaların veya bir otomobilde ışıkların bulunduğu şeyleri temsil eder. Bu bölümde, daha önce karşıya yüklediğiniz modele göre birkaç dijital TWINS oluşturulur.
 
-`using`Bu yeni deyimleri en üste ekleyin, bu kod örneği içinde yerleşik .net JSON serileştiricisini `System.Text.Json` ve `Serialization` [.net Için Azure Digital Twins SDK 'sını (C#)](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview)kullanır.
+`using`Bu yeni deyimleri en üste ekleyin, bu kod örneği içinde yerleşik .net JSON serileştiricisini `System.Text.Json` ve `Serialization` [.net Için Azure Digital Twins SDK 'sını (C#)](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview&preserve-view=true)kullanır.
 
 ```csharp
 using System.Text.Json;

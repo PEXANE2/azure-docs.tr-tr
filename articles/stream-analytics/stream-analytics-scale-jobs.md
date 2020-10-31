@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 7b96bc456d2dc0e3f1a1110f36b61be4accfbd8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12c4b9f4a3757a3974e4aff7699d0265bfd7840
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488516"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124382"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Azure Stream Analytics işini, aktarım hızını artırmak için ölçeklendirin
 Bu makalede, Akış Analizi işlerinin aktarım hızını artırmak için bir Stream Analytics sorgusunun nasıl ayarlanacağı gösterilmektedir. Daha yüksek yükü işleyecek ve daha fazla sistem kaynaklarından (daha fazla bant genişliği, daha fazla CPU kaynağı, daha fazla bellek gibi) yararlanmak üzere işinizi ölçeklendirmek için aşağıdaki kılavuzu kullanabilirsiniz.
@@ -24,7 +24,7 @@ Bir önkoşul olarak, aşağıdaki makaleleri okumanız gerekebilir:
 Sorgunuz doğal olarak giriş bölümlerine tam olarak paralelleştirmemişse aşağıdaki adımları izleyebilirsiniz:
 1.  Anahtar sözcüğe **göre Bölüm** kullanarak sorgunuzu beyana yazın. [Bu sayfanın Embarson](stream-analytics-parallelization.md)'un paralel işleri bölümünde daha fazla ayrıntı görüntüleyin.
 2.  Sorgunuzda kullanılan çıkış türlerine bağlı olarak, bazı çıktılar paralelleştirilebilir veya daha fazla yapılandırmanın emson paralel olması gerekebilir. Örneğin, PowerBI çıkışı paralelleştirilebilir. Çıktılar, çıkış havuzuna gönderilmeden önce her zaman birleştirilir. Blob 'lar, tablolar, ADLS, Service Bus ve Azure Işlevi otomatik olarak paraleldir. SQL ve Azure SYNAPSE Analytics çıkışları paralelleştirme için bir seçeneğe sahiptir. Olay Hub 'ının PartitionKey yapılandırması, **bölümleme ölçütü** alanı (genellikle PartitionID) ile eşleşecek şekilde ayarlanmalıdır. Olay Hub 'ı için Ayrıca, bölümler arasında çapraz geçiş yapmaktan kaçınmak üzere tüm girişler ve tüm çıktılar için bölüm sayısıyla eşleşen ek dikkat ödeyin. 
-3.  En yüksek ulaşılabilir üretilen iş miktarını ölçmek için sorgunuzu **6 su** (tek bir bilgi işlem düğümünün tam kapasitesi olan) ile çalıştırın ve **gruplama ölçütü**kullanıyorsanız, işin işleyebileceği grup sayısını (kardinalite) ölçebilir. İş, sistem kaynağı sınırlarına vurarak yapılacak işin genel belirtileri aşağıda verilmiştir.
+3.  En yüksek ulaşılabilir üretilen iş miktarını ölçmek için sorgunuzu **6 su** (tek bir bilgi işlem düğümünün tam kapasitesi olan) ile çalıştırın ve **gruplama ölçütü** kullanıyorsanız, işin işleyebileceği grup sayısını (kardinalite) ölçebilir. İş, sistem kaynağı sınırlarına vurarak yapılacak işin genel belirtileri aşağıda verilmiştir.
     - % SU kullanım ölçümü %80 üzerinde. Bu, bellek kullanımının yüksek olduğunu gösterir. Bu ölçümün artışına katkıda bulunan faktörler [burada](stream-analytics-streaming-unit-consumption.md)açıklanmıştır. 
     -   Çıkış zaman damgası, duvar saati zamanına göre geride olur. Sorgu mantığınıza bağlı olarak, çıkış zaman damgası, duvar saati saatinden bir mantık uzaklığa sahip olabilir. Ancak, kabaca aynı hızda ilerlemelidir. Çıktı zaman damgası daha fazla ve daha sonra geri düşolursa sistemin fazla çalıştığını gösteren bir göstergedir. Bu, akış çıkış havuzunun azalmasını veya yüksek CPU kullanımının bir sonucu olabilir. Şu anda CPU kullanım ölçümü sağlamadık, bu yüzden ikisini ayırt etmek zor olabilir.
         - Sorun havuz azaltmasından kaynaklanıyorsa, çıkış bölümlerinin sayısını artırmanız (ve ayrıca işi tamamen paralelleştirilebilir) veya havuzun kaynak miktarını (örneğin, CosmosDB için Istek birimi sayısı) artırmanız gerekebilir.
@@ -42,7 +42,7 @@ Sorgunuz emsönce paralel değilse aşağıdaki adımları izleyebilirsiniz.
 2.  İşlem sırasında tahmini yükün elde edilebilmesi için işiniz bitti demektir. Alternatif olarak, senaryolarınız için çalışan minimum SU sayısını öğrenmek üzere 3 SU ve 1 SU ile aynı işi ölçmeyi tercih edebilirsiniz.
 3.  İstenen aktarım hızını elde ediyorsanız, mümkünse sorgunuzu birden çok adıma kesmeyi deneyin, zaten birden çok adım yoksa ve sorgudaki her adım için 6 SU ayırın. Örneğin 3 adım varsa, "ölçek" seçeneğinde 18 SU ayırın.
 4.  Böyle bir işi çalıştırırken Stream Analytics, her adımı adanmış 6 SU kaynaklarıyla kendi düğümüne koyar. 
-5.  Yükleme hedefini hala almadıysanız, girişe daha yakın adımlardan başlayarak **bölüm** kullanmayı deneyebilirsiniz. Doğal olarak bölümlenebilir **Grup ölçütü** operatörü için, yerel/genel toplama modelini kullanarak bölümlenmiş bir **grubu** , sonra bölümlenmemiş olmayan bir **Grup**tarafından gerçekleştirebilirsiniz. Örneğin, her 5 dakikada bir, her biri için bir kaç araba olduğunu saymak istiyorsanız ve verilerin hacmi 6 SU tarafından işlenebilecekleri kadar fazla.
+5.  Yükleme hedefini hala almadıysanız, girişe daha yakın adımlardan başlayarak **bölüm** kullanmayı deneyebilirsiniz. Doğal olarak bölümlenebilir **Grup ölçütü** operatörü için, yerel/genel toplama modelini kullanarak bölümlenmiş bir **grubu** , sonra bölümlenmemiş olmayan bir **Grup** tarafından gerçekleştirebilirsiniz. Örneğin, her 5 dakikada bir, her biri için bir kaç araba olduğunu saymak istiyorsanız ve verilerin hacmi 6 SU tarafından işlenebilecekleri kadar fazla.
 
 Sorgu:
 
@@ -78,13 +78,13 @@ Her kiracı için ayrı girişler ve çıktılar kullanarak tek bir iş içindek
 
 
 ## <a name="get-help"></a>Yardım alın
-Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
-* [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Akış Analizi Sorgu Dili Başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](/rest/api/streamanalytics/)
 
 <!--Image references-->
 
@@ -97,10 +97,9 @@ Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfas�
 <!--Link references-->
 
 [microsoft.support]: https://support.microsoft.com
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
-
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

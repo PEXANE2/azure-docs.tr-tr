@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f2774750b61ce92b3b34f6a5cbd961e4faa7d3e7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277487"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124161"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uygulamalarım portalınızdaki gruplar bilgilerini güncelleştirme
 
@@ -88,7 +88,7 @@ Yöneticiniz, **gruplar** kutucuğunu görüntüleme izni verdiyse şunları yap
 
     - **Grup ilkesi.** Herkesin gruba katılmasına izin vermek ya da yalnızca grubun sahibinin üye eklemesine izin vermek için seçin.
 
-3. **Oluştur**’u seçin.
+3. **Oluştur** ’u seçin.
 
     Yeni Grup sizinle birlikte oluşturulur ve sahip olduğunuz **gruplar kendi listem** listesinde görünür. Sahip olduğunuz için bu grup, **Listediğim gruplar** listesinde de görünür.
 
@@ -96,27 +96,27 @@ Yöneticiniz, **gruplar** kutucuğunu görüntüleme izni verdiyse şunları yap
 
 Bir grup oluşturduktan sonra, mevcut bilgilerin hiçbirini güncelleştirmek dahil olmak üzere ayrıntılarını düzenleyebilirsiniz.
 
-1. **Gruplar** sayfasından düzenlemek istediğiniz grubu seçin ve ardından * &lt; group_name &gt; * sayfasında **Ayrıntıları Düzenle** ' yi seçin.
+1. **Gruplar** sayfasından düzenlemek istediğiniz grubu seçin ve ardından *&lt; group_name &gt;* sayfasında **Ayrıntıları Düzenle** ' yi seçin.
 
     **Ayrıntıları Düzenle** kutusu görünür ve ilk olarak grubu oluştururken eklediğiniz bilgileri güncelleştirebilirsiniz.
 
-2. Tüm değişikliklerinizi yapın ve ardından **Güncelleştir**' i seçin.
+2. Tüm değişikliklerinizi yapın ve ardından **Güncelleştir** ' i seçin.
 
 ## <a name="add-or-remove-a-member"></a>Üye ekleme veya kaldırma
 
 Sahip olduğunuz tüm gruplar için üye ekleyebilir veya kaldırabilirsiniz.
 
-1. Üye eklemek istediğiniz grubu seçin ve ardından **+** * &lt; group_name &gt; * sayfasında öğesini seçin.
+1. Üye eklemek istediğiniz grubu seçin ve ardından **+** *&lt; group_name &gt;* sayfasında öğesini seçin.
 
     ![+ İşaretiyle vurgulanmış bir grup üyesi ekleyin](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
-2. **Üye Ekle** kutusundan eklemek istediğiniz üyeyi arayın ve ardından **Ekle**' yi seçin.
+2. **Üye Ekle** kutusundan eklemek istediğiniz üyeyi arayın ve ardından **Ekle** ' yi seçin.
 
     ![Eklenecek yeni üyeyle üye kutusu Ekle](media/my-apps-portal/my-apps-portal-add-member-page.png)
 
     Kuruluşun uygulamalarına erişmeye başlamak için yeni üyeye bir davetiye gönderilir.
 
-3. Bir üyeyi yanlışlıkla eklediyseniz veya bir üye kuruluşunuzu bıraktıysanız, * &lt; group_name &gt; * sayfasında üyenin adının yanındaki **üyeyi kaldır** ' ı seçerek üyeyi kaldırabilirsiniz.
+3. Bir üyeyi yanlışlıkla eklediyseniz veya bir üye kuruluşunuzu bıraktıysanız, *&lt; group_name &gt;* sayfasında üyenin adının yanındaki **üyeyi kaldır** ' ı seçerek üyeyi kaldırabilirsiniz.
 
     ![Kaldırma bağlantısı vurgulanmış şekilde bir üyeyi kaldırma](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
@@ -124,7 +124,7 @@ Sahip olduğunuz tüm gruplar için üye ekleyebilir veya kaldırabilirsiniz.
 
 Kuruluşunuz buna izin veriyorsa, sona erme tarihini genişleterek bir Office 365 grubunu yenileyebilirsiniz.
 
-1. Yenilemek istediğiniz Office 365 grubunu seçin ve ardından **grubu Yenile**' yi seçin.
+1. Yenilemek istediğiniz Office 365 grubunu seçin ve ardından **grubu Yenile** ' yi seçin.
 
     ![Bir Office 365 grubunu yenileyin ve sona erme tarihini genişleterek](media/my-apps-portal/my-apps-portal-renew-group-link.png)
 
@@ -136,7 +136,7 @@ Kuruluşunuz buna izin veriyorsa, sona erme tarihini genişleterek bir Office 36
 
 İstediğiniz zaman kendi gruplarınızı silebilirsiniz. Ancak, bir grubu yanlışlıkla silerseniz, oluşturmanız ve üyeleri tekrar eklemeniz gerekir.
 
-1. Kalıcı olarak silmek istediğiniz grubu seçin ve ardından * &lt; group_name &gt; * sayfasında **Grubu Sil** ' i seçin.
+1. Kalıcı olarak silmek istediğiniz grubu seçin ve ardından *&lt; group_name &gt;* sayfasında **Grubu Sil** ' i seçin.
 
     ![Grup silme bağlantısı vurgulanmış olarak <Group_name> sayfası](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 
@@ -154,11 +154,11 @@ Kuruluşunuz buna izin veriyorsa, sona erme tarihini genişleterek bir Office 36
 
     ![Grubu Birleştir düğmesi vurgulanmış şekilde grupları birleştir sayfası](media/my-apps-portal/my-apps-portal-join-group-link.png)
 
-2. **Grupları birleştir** sayfasında, birleştirmek istediğiniz grubun adını seçin, ilişkili Grup ayrıntılarını görüntüleyin ve grup kullanılabiliyorsa **grubu Birleştir**' i seçin.
+2. **Grupları birleştir** sayfasında, birleştirmek istediğiniz grubun adını seçin, ilişkili Grup ayrıntılarını görüntüleyin ve grup kullanılabiliyorsa **grubu Birleştir** ' i seçin.
 
-    Grup, üyeliği onaylaması için Grup sahibi gerektiriyorsa, gruba katılması gerekmesinin nedeni için bir iş doğrulaması girmeniz ve sonra **istek**' ı seçmeniz istenir. Grup onay gerektirmiyorsa, bir üye olarak hemen eklenir ve Grup, **Listediğim gruplar** listesinde görünür.
+    Grup, üyeliği onaylaması için Grup sahibi gerektiriyorsa, gruba katılması gerekmesinin nedeni için bir iş doğrulaması girmeniz ve sonra **istek** ' ı seçmeniz istenir. Grup onay gerektirmiyorsa, bir üye olarak hemen eklenir ve Grup, **Listediğim gruplar** listesinde görünür.
 
-3. Bir gruba yanlışlıkla katılırsanız veya bir parçası olması gerekmiyorsa, **grupları birleştir** sayfasından grup adını seçebilir ve sonra **grubu bırak**' ı seçebilirsiniz.
+3. Bir gruba yanlışlıkla katılırsanız veya bir parçası olması gerekmiyorsa, **grupları birleştir** sayfasından grup adını seçebilir ve sonra **grubu bırak** ' ı seçebilirsiniz.
 
     ![Grup bırak düğmesi vurgulanmış şekilde, grupları birleştir sayfası](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
@@ -166,6 +166,6 @@ Kuruluşunuz buna izin veriyorsa, sona erme tarihini genişleterek bir Office 36
 
 - [Uygulamalarım portalındaki uygulamalara erişin ve bunları kullanın](my-apps-portal-end-user-access.md).
 
-- [Profil bilgilerinizi değiştirin](my-apps-portal-end-user-update-profile.md).
+- [Profil bilgilerinizi değiştirin](./my-account-portal-settings.md).
 
 - [Kendi erişim incelemelerinizi gerçekleştirin](my-apps-portal-end-user-access-reviews.md).

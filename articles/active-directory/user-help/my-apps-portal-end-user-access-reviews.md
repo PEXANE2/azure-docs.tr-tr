@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: fbea4ef39b970f667c5dddec52f56a428d401f65
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8da9e97aaa2c6d99990df4221d8b6e99ab18ac83
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277465"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124821"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Uygulamalarım portalından bir erişim incelemesi gerçekleştirme
 
@@ -62,11 +62,11 @@ Yöneticiniz kendi erişim incelemelerinizi gerçekleştirme izni verdiyse, kend
 
 6. Erişiminizi **kaldırmak için, erişiminizi korumak Için** **Evet** ' i seçin.
 
-    **Evet**' i seçerseniz, **neden** kutusunda bir gerekçe belirtmeniz gerekebilir.
+    **Evet** ' i seçerseniz, **neden** kutusunda bir gerekçe belirtmeniz gerekebilir.
 
     ![Örnek metinle ilgili neden kutusunu gösteren erişim gözden geçirme sayfası](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
-7. **Gönder**’i seçin.
+7. **Gönder** ’i seçin.
 
     Erişim incelemeniz tamamlanmıştır ve **My Apps** portalına dönersiniz.
 
@@ -76,5 +76,5 @@ Yöneticiniz kendi erişim incelemelerinizi gerçekleştirme izni verdiyse, kend
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Uygulamalarım portalındaki uygulamalara erişin ve bunları kullanın](my-apps-portal-end-user-access.md)
-- [Profil bilgilerinizi değiştirme](my-apps-portal-end-user-update-profile.md)
+- [Profil bilgilerinizi değiştirme](./my-account-portal-settings.md)
 - [Gruplarla ilgili bilgilerinizi görüntüleyin ve güncelleştirin](my-apps-portal-end-user-groups.md)

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: fe1caca11ec0a3d89ddae140d00cd3556b9d3d89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0788d8b4f659364fcedc690185c9159a24434125
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044473"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123923"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Visual Studio için Azure Stream Analytics araçları 'nı kullanarak canlı verileri yerel olarak test etme (Önizleme)
 
@@ -31,7 +31,7 @@ Aşağıdaki yerel test seçenekleri desteklenir:
 
 ## <a name="local-testing-with-live-data"></a>Canlı verilerle yerel test
 
-1. [Visual Studio 'da Azure Stream Analytics bir bulut projesi](stream-analytics-quick-create-vs.md)oluşturduktan sonra **Script. aşama QL**' yi açın. Yerel test varsayılan olarak yerel giriş ve yerel çıkış kullanır.
+1. [Visual Studio 'da Azure Stream Analytics bir bulut projesi](stream-analytics-quick-create-vs.md)oluşturduktan sonra **Script. aşama QL** ' yi açın. Yerel test varsayılan olarak yerel giriş ve yerel çıkış kullanır.
 
    ![Azure Stream Analytics Visual Studio yerel giriş ve yerel çıkış](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 
@@ -43,7 +43,7 @@ Aşağıdaki yerel test seçenekleri desteklenir:
 
    ![Azure Stream Analytics Visual Studio canlı veri başlangıç zamanı](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
 
-4. **Yerel olarak çalıştır**' a tıklayın. Çalışan ilerleme ve iş ölçümleriyle bir konsol penceresi görüntülenir. İşlemi durdurmak istiyorsanız bunu el ile yapabilirsiniz. 
+4. **Yerel olarak çalıştır** ' a tıklayın. Çalışan ilerleme ve iş ölçümleriyle bir konsol penceresi görüntülenir. İşlemi durdurmak istiyorsanız bunu el ile yapabilirsiniz. 
 
    ![Visual Studio Live Data Process penceresini Azure Stream Analytics](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
 
@@ -59,7 +59,7 @@ Aşağıdaki yerel test seçenekleri desteklenir:
 
 * Power BI ve Azure Data Lake Storage, kimlik doğrulama modeli sınırlamaları nedeniyle desteklenen çıkış havuzları değil.
 
-* Yalnızca bulut girişi seçeneklerinde [zaman ilkeleri](stream-analytics-out-of-order-and-late-events.md) desteklenir, ancak yerel giriş seçenekleri değildir.
+* Yalnızca bulut girişi seçeneklerinde [zaman ilkeleri](./stream-analytics-time-handling.md) desteklenir, ancak yerel giriş seçenekleri değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

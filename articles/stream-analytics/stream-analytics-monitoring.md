@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: f0932104c55e705c76a8d2b086edf828caf60520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdddbce3e9eb0a5c933ace186607186265197dc4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044099"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123515"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics iş izlemeyi ve sorguların nasıl izleneceğini anlayın
 
@@ -39,17 +39,17 @@ Bu pencere gösterildiği gibi görünür:
 | Olay baytlarını gir      | Stream Analytics işi tarafından bayt cinsinden alınan veri miktarı. Bu, olayların giriş kaynağına gönderildiğini doğrulamak için kullanılabilir. |
 | Giriş olayları           | Giriş olaylarından Serisi kaldırılan kayıt sayısı. Bu sayı, hata serisini kaldırma ile sonuçlanan gelen olayları içermez. Aynı olaylar, iç kurtarmalar ve kendinden birleşimler gibi senaryolarda birden çok kez Stream Analytics alınabilir. Bu nedenle, işinizin basit bir ' pass-through ' sorgusu varsa giriş olaylarının ve çıkış olayları ölçümlerinin eşleşmesi beklenmemelidir. |
 | Alınan giriş kaynakları       | İş tarafından alınan ileti sayısı. Olay Hub 'ı için, bir ileti tek bir EventData ' dır. Blob için, bir ileti tek bir Blobun olur. Giriş kaynaklarının seri durumundan önce sayıldığını lütfen unutmayın. Seri kaldırma hataları varsa, giriş kaynakları giriş olaylarından daha büyük olabilir. Aksi halde, her ileti birden çok olay içerebileceğinden, bu, giriş olayından daha az veya eşit olabilir. |
-| Geç giriş olayları      | Yapılandırılan geç gelme toleransı penceresinden daha sonra gelen olaylar. [Azure Stream Analytics olay sırası konuları](stream-analytics-out-of-order-and-late-events.md) hakkında daha fazla bilgi edinin. |
+| Geç giriş olayları      | Yapılandırılan geç gelme toleransı penceresinden daha sonra gelen olaylar. [Azure Stream Analytics olay sırası konuları](./stream-analytics-time-handling.md) hakkında daha fazla bilgi edinin. |
 | Sıra dışı olaylar    | Olay sıralama Ilkesine bağlı olarak, ayarlanmış bir zaman damgasına bırakılan veya verilen zaman damgası dışında alınan olay sayısı. Bu, sipariş dışı tolerans penceresi ayarının yapılandırmasından etkilenebilir. |
 | Çıkış olayları          | Stream Analytics işi tarafından çıktı hedefine, olay sayısında gönderilen veri miktarı. |
 | Çalışma zamanı hataları         | Sorgu işlemeyle ilgili toplam hata sayısı (olayları alırken veya sonuçları yazarken bulunan hatalar hariç) |
 | SU kullanımı yüzdesi       | İşin ölçek sekmesinden bir işe atanan akış birimlerinin kullanımı. Bu gösterge %80 veya üzeri bir duruma ulaşılmalıdır, olay işlemenin ilerleme durumunu geciktirebileceği veya durmuş olabileceği büyük bir olasılık vardır. |
 | Filigran gecikmesi       | İş içindeki tüm çıkışların tüm bölümlerinde en fazla eşik gecikmesi. |
 
-[Stream Analytics işinizin performansını izlemek](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor)için bu ölçümleri kullanabilirsiniz. 
+[Stream Analytics işinizin performansını izlemek](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)için bu ölçümleri kullanabilirsiniz. 
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>Azure portal Izlemeyi özelleştirme
-Grafik türünü, gösterilen ölçümleri ve zaman aralığını düzenleme grafiği ayarları ' nda ayarlayabilirsiniz. Ayrıntılar için bkz. [Izlemeyi özelleştirme](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+Grafik türünü, gösterilen ölçümleri ve zaman aralığını düzenleme grafiği ayarları ' nda ayarlayabilirsiniz. Ayrıntılar için bkz. [Izlemeyi özelleştirme](../azure-monitor/platform/data-platform.md).
 
   ![Sorgu İzleyicisi zaman grafiğini Stream Analytics](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
@@ -59,11 +59,11 @@ Grafik türünü, gösterilen ölçümleri ve zaman aralığını düzenleme gra
 Bu süre, işinizin en son çıktısının uygulama zamanı (örneğin, olay verilerinden zaman damgası kullanılarak).
 
 ## <a name="get-help"></a>Yardım alın
-Daha fazla yardım için [Microsoft Q&soru sayfasını Azure Stream Analytics için](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) deneyin
+Daha fazla yardım için [Microsoft Q&soru sayfasını Azure Stream Analytics için](/answers/topics/azure-stream-analytics.html) deneyin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Akış Analizi Sorgu Dili Başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](/rest/api/streamanalytics/)

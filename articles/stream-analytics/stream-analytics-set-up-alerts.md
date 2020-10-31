@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 06/21/2019
-ms.openlocfilehash: 35fb02717f706f026862790b7d618036d764c7a8
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 6353fe988b9b94c27ab777741bf63d3869579d9e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92914019"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124450"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyarıları ayarlama
 
@@ -68,5 +68,4 @@ Stream Analytics işinizin performansını izlemek için aşağıdaki uyarılar 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-
+* [Azure Akış Analizi Sorgu Dili Başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)

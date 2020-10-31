@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 79d677caf0c57fb36d211333b28be0eaa6528948
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a151d4ce5a2f9860c3b7919496a2edd25cc58ede
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044133"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123634"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Visual Studio ile Stream Analytics işlerini izleme ve yönetme
 
@@ -40,12 +40,10 @@ Bu makalede, Visual Studio 'da Stream Analytics işinizin nasıl izleneceği gö
 ![Visual Studio 'da Stream Analytics hataları](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
 
 
-## <a name="get-support"></a>Destek alın
-Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin. 
+## <a name="get-support"></a>Destek alma
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](/answers/topics/azure-stream-analytics.html)deneyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Visual Studio ile Azure Stream Analytics işi oluşturma](stream-analytics-quick-create-vs.md)
-* [Visual Studio için Azure Stream Analytics araçları 'nı yükler](stream-analytics-tools-for-visual-studio-install.md) 
-
-
+* [Visual Studio için Azure Stream Analytics araçları 'nı yükler](stream-analytics-tools-for-visual-studio-install.md)

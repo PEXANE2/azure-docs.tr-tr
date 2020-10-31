@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0cc3a335e5fbe037742767a3b59243e366f094ee
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: c169f10ac0444f5bca67d76e8e8ebc0f0b145ee1
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495923"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124254"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Verileri işlemek için Azure Işlevleri uygulamalarına bağlanma
 
@@ -30,17 +30,21 @@ Bu makalede, Azure dijital TWINS ile kullanmak üzere bir Azure işlevi oluştur
 4. İşlev uygulamasını Azure 'da yayımlayın
 5. Azure işlevi uygulaması için [güvenlik](concepts-security.md) erişimini ayarlama
 
+## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>Önkoşul: Azure dijital TWINS örneğini ayarlama
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
 ## <a name="create-an-azure-functions-app-in-visual-studio"></a>Visual Studio 'da Azure Işlevleri uygulaması oluşturma
 
-Visual Studio 2019 ' de _dosya > yeni > proje_ ' yi seçin ve _Azure işlevleri_ şablonunu arayın, _İleri_' yi seçin.
+Visual Studio 2019 ' de _dosya > yeni > proje_ ' yi seçin ve _Azure işlevleri_ şablonunu arayın, _İleri_ ' yi seçin.
 
 :::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
-İşlev uygulaması için bir ad belirtin ve _Oluştur_' u seçin.
+İşlev uygulaması için bir ad belirtin ve _Oluştur_ ' u seçin.
 
 :::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
-*Event Grid tetikleyicisi* işlev türünü seçin ve _Oluştur_' u seçin.
+*Event Grid tetikleyicisi* işlev türünü seçin ve _Oluştur_ ' u seçin.
 
 :::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
@@ -155,14 +159,14 @@ namespace adtIngestFunctionSample
 
 ## <a name="publish-the-function-app-to-azure"></a>İşlev uygulamasını Azure 'da yayımlayın
 
-İşlev uygulamasını Azure 'da yayımlamak için Çözüm Gezgini işlev projesini (çözümü değil) sağ seçin ve **Yayımla**' yı seçin.
+İşlev uygulamasını Azure 'da yayımlamak için Çözüm Gezgini işlev projesini (çözümü değil) sağ seçin ve **Yayımla** ' yı seçin.
 
 > [!IMPORTANT] 
 > Azure işlevi yayımlandığında, aboneliğiniz üzerinde Azure dijital TWINS 'ten bağımsız olarak ek ücretler uygulanır.
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
-Yayımlama hedefi olarak **Azure** ' u seçin ve **İleri ' yi**seçin.
+Yayımlama hedefi olarak **Azure** ' u seçin ve **İleri ' yi** seçin.
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
@@ -205,7 +209,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 Son olarak, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinizin URL 'sini işleviniz için erişilebilir hale getirebilirsiniz. Ortam değişkenlerini ayarlama hakkında daha fazla bilgi için bkz. [*ortam değişkenleri*](/sandbox/functions-recipes/environment-variables). 
 
 > [!TIP]
-> Azure Digital TWINS örneğinin URL 'SI, Azure Digital TWINS örneğinizin *ana bilgisayar adının*başlangıcına *https://* eklenerek yapılır. Ana bilgisayar adını görmek için, örneğinizin tüm özellikleriyle birlikte çalıştırabilirsiniz `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
+> Azure Digital TWINS örneğinin URL 'SI, Azure Digital TWINS örneğinizin *ana bilgisayar adının* başlangıcına *https://* eklenerek yapılır. Ana bilgisayar adını görmek için, örneğinizin tüm özellikleriyle birlikte çalıştırabilirsiniz `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
 
 ```azurecli-interactive 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
@@ -219,7 +223,7 @@ Bir sistem tarafından atanmış yönetilen kimlik, Azure kaynaklarının kimlik
 :::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
 İşlev uygulaması penceresinde, yönetilen kimliği etkinleştirmek için sol taraftaki Gezinti çubuğundan _kimlik_ ' i seçin.
-_Sistem atandı_ sekmesinde _durumu_ açık olarak değiştirin ve _kaydedin_ . _Sistem tarafından atanan yönetilen kimliği etkinleştirmek_için bir açılır pencere görürsünüz.
+_Sistem atandı_ sekmesinde _durumu_ açık olarak değiştirin ve _kaydedin_ . _Sistem tarafından atanan yönetilen kimliği etkinleştirmek_ için bir açılır pencere görürsünüz.
 _Evet_ düğmesini seçin. 
 
 :::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
@@ -240,10 +244,10 @@ Azure *rol atamaları sayfasını açmak* için _Azure rol atamaları_ düğmesi
 
 Açılan _rol ataması Ekle (Önizleme)_ sayfasında şunları seçin:
 
-* _Kapsam_: Kaynak grubu
-* _Abonelik_: Azure aboneliğinizi seçin
-* _Kaynak grubu_: açılan listeden kaynak grubunuzu seçin
-* _Rol_: açılan listeden _Azure dijital TWINS veri sahibini_ seçin
+* _Kapsam_ : Kaynak grubu
+* _Abonelik_ : Azure aboneliğinizi seçin
+* _Kaynak grubu_ : açılan listeden kaynak grubunuzu seçin
+* _Rol_ : açılan listeden _Azure dijital TWINS veri sahibini_ seçin
 
 Sonra, _Kaydet_ düğmesine basarak ayrıntılarınızı kaydedin.
 
@@ -255,7 +259,7 @@ Bir ortam değişkeni ayarlayarak, Azure dijital TWINS örneğinizin URL 'sini i
 
 Uygulama ayarı oluşturmak için ADT_INSTANCE_URL gerekir.
 
-Örnek ana bilgisayar adına **_https://_** ekleyerek ADT_INSTANCE_URL alabilirsiniz. Azure portal, arama çubuğunda örneğinizi arayarak dijital TWINS örnek ana bilgisayar adınızı bulabilirsiniz. Ardından, _ana bilgisayar adını_görüntülemek için sol gezinti çubuğundaki _genel bakış_ ' ı seçin. Bir uygulama ayarı oluşturmak için bu değeri kopyalayın.
+Örnek ana bilgisayar adına **_https://_** ekleyerek ADT_INSTANCE_URL alabilirsiniz. Azure portal, arama çubuğunda örneğinizi arayarak dijital TWINS örnek ana bilgisayar adınızı bulabilirsiniz. Ardından, _ana bilgisayar adını_ görüntülemek için sol gezinti çubuğundaki _genel bakış_ ' ı seçin. Bir uygulama ayarı oluşturmak için bu değeri kopyalayın.
 
 :::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 

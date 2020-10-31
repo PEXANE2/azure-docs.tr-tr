@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 9a804bd40635cd039a2c099f98351b2487c554d3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075544"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124195"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Spring Boot uygulamasına özellik bayrakları ekleme
 
@@ -50,7 +50,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
    * Uygulamanız için **Grup** ve **Yapıt** adlarını belirtin.  Bu makalede `com.example` ve kullanılmaktadır `demo` .
    * **Yay Web** bağımlılığını ekleyin.
 
-1. Önceki seçenekleri belirttikten sonra **proje oluştur**' u seçin. İstendiğinde, projeyi yerel bilgisayarınıza indirin.
+1. Önceki seçenekleri belirttikten sonra **proje oluştur** ' u seçin. İstendiğinde, projeyi yerel bilgisayarınıza indirin.
 
 ## <a name="add-feature-management"></a>Özellik Yönetimi Ekle
 
@@ -242,7 +242,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
     ```
 
-1. `static` *Ana. css*ADLı yeni bir CSS dosyası IÇINDE ve içinde CSS adlı yeni bir klasör oluşturun.
+1. `static` *Ana. css* ADLı yeni bir CSS dosyası IÇINDE ve içinde CSS adlı yeni bir klasör oluşturun.
 
     ```css
     html {
@@ -286,9 +286,9 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
 1. Bir tarayıcı penceresi açın ve URL 'ye gidin: `http://localhost:8080/welcome` .
 
-    ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/spring-boot-feature-flag-local-before.png)
+    ![Ekran görüntüsünde, bir hoş geldiniz iletisi içeren tarayıcı penceresi gösterilir.](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-1. Uygulama yapılandırma portalında, **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin:
+1. Uygulama yapılandırma portalında, **Özellik Yöneticisi** ' ni seçin ve **Beta** anahtarının durumunu **Açık** olarak değiştirin:
 
     | Anahtar | Durum |
     |---|---|
@@ -296,7 +296,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
 1. Yeni yapılandırma ayarlarını görmek için tarayıcı sayfasını yenileyin.
 
-    ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/spring-boot-feature-flag-local-after.png)
+    ![Ekran görüntüsünde, bir hoş geldiniz iletisi ve bir beta bağlantısı adlı bir tarayıcı penceresi gösterilir.](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

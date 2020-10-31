@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 23c7112639a64097d95df29bde16636702837f9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0aa489e1732a8be564b3cefe1ed74d7aaacb1456
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83832988"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124433"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Başvuru Mimarisi: Microsoft Azure Stream Analytics ile gerçek zamanlı olay işleme
 Azure Stream Analytics ile gerçek zamanlı olay işleme için başvuru mimarisi, Microsoft Azure ile gerçek zamanlı bir hizmet olarak platform (PaaS) akış işleme çözümü dağıtmaya yönelik bir genel şema sağlamaktır.
@@ -44,12 +44,11 @@ Microsoft Azure, farklı çözüm senaryoları ve gereksinimlerinin bir dizisini
 **İndirin:** [Microsoft Azure Stream Analytics Ile gerçek zamanlı olay işleme](https://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
 
 ## <a name="get-help"></a>Yardım alın
-Daha fazla yardım için [Microsoft Q&soru sayfasını deneyin Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)
+Daha fazla yardım için [Microsoft Q&soru sayfasını deneyin Azure Stream Analytics](/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Azure Akış Analizi Sorgu Dili Başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](/rest/api/streamanalytics/)

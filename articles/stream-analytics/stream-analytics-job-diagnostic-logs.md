@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperfq1
 ms.date: 06/18/2020
-ms.openlocfilehash: 18270a2f435428824714067749fc18ce2addc535
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 0e7777cba93706baea815521757b495209431ce6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913050"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124026"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Kaynak günlüklerini kullanarak Azure Stream Analytics sorunlarını giderme
 
@@ -48,7 +48,7 @@ Etkinlik günlükleri varsayılan olarak açık ve Stream Analytics işiniz tara
 
    ![Stream Analytics etkinlik günlüğü işlem Özeti](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. JSON 'ın **Özellikler** bölümüne ilerleyin ve bu, başarısız olan işleme neden olan hatanın ayrıntılarını sağlar. Bu örnekte hata, bağlı Enlem değerlerinin dışında bir çalışma zamanı hatası nedeniyle oluştu. Bir Stream Analytics işi tarafından işlenen verilerde tutarsızlık bir veri hatasına neden olur. Farklı [giriş ve çıkış verileri hataları ve neden gerçekleştikleri](https://docs.microsoft.com/azure/stream-analytics/data-errors)hakkında bilgi edinebilirsiniz.
+4. JSON 'ın **Özellikler** bölümüne ilerleyin ve bu, başarısız olan işleme neden olan hatanın ayrıntılarını sağlar. Bu örnekte hata, bağlı Enlem değerlerinin dışında bir çalışma zamanı hatası nedeniyle oluştu. Bir Stream Analytics işi tarafından işlenen verilerde tutarsızlık bir veri hatasına neden olur. Farklı [giriş ve çıkış verileri hataları ve neden gerçekleştikleri](./data-errors.md)hakkında bilgi edinebilirsiniz.
 
    ![JSON hata ayrıntıları](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
@@ -111,7 +111,7 @@ Yürütme günlükleri Stream Analytics işi yürütme sırasında gerçekleşen
 
 ### <a name="data-errors"></a>Veri hataları
 
-İş işlenirken oluşan herhangi bir hata, bu Günlükler kategorisindedir. Bu Günlükler genellikle veri okuma, serileştirme ve yazma işlemleri sırasında oluşturulur. Bu Günlükler bağlantı hatalarını içermez. Bağlantı hataları genel olaylar olarak değerlendirilir. Çeşitli farklı [giriş ve çıkış verileri hatalarının](https://docs.microsoft.com/azure/stream-analytics/data-errors)nedeni hakkında daha fazla bilgi edinebilirsiniz.
+İş işlenirken oluşan herhangi bir hata, bu Günlükler kategorisindedir. Bu Günlükler genellikle veri okuma, serileştirme ve yazma işlemleri sırasında oluşturulur. Bu Günlükler bağlantı hatalarını içermez. Bağlantı hataları genel olaylar olarak değerlendirilir. Çeşitli farklı [giriş ve çıkış verileri hatalarının](./data-errors.md)nedeni hakkında daha fazla bilgi edinebilirsiniz.
 
 Ad | Açıklama
 ------- | -------
@@ -143,5 +143,5 @@ Bağıntı Kimliği | İş yürütmesini benzersiz bir şekilde tanımlayan GUID
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Stream Analytics veri hataları](https://docs.microsoft.com/azure/stream-analytics/data-errors)
-* [Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics veri hataları](./data-errors.md)
+* [Stream Analytics sorgu dili başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)

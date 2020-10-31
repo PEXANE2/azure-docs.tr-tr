@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/01/2017
-ms.openlocfilehash: fdb3c5c12af8e9022f5babc84126badda890dce5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4ee868125ee30d40ef0d9ca5a42881ad003e9a8
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044490"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123991"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>İş diyagramını kullanarak veri odaklı hata ayıklama
 
@@ -20,7 +20,7 @@ Azure portal **izleme** dikey penceresindeki iş diyagramı, iş işlem hattın�
 
 ## <a name="using-the-job-diagram"></a>İş diyagramını kullanma
 
-Azure portal, bir Stream Analytics işinde, **destek + sorun giderme**altında **iş diyagramı**' nı seçin:
+Azure portal, bir Stream Analytics işinde, **destek + sorun giderme** altında **iş diyagramı** ' nı seçin:
 
 ![Ölçüm-konum ile iş diyagramı](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
@@ -59,7 +59,7 @@ Yukarıdaki sorgu adımı bir giriş işlemcisidir, aşağıdaki hedeflenen soru
  
 ### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>Zaman ileri taşınıyor mı? Gerçek olaylar okunuyorsa noktalama işaretleri verilmeyebilir.
 
-*   **InputEventsLastPunctuationTime**, zamanın ilerlemesini sağlamak için bir noktalama işaretinin ne zaman verildiğini gösterir. Noktalama işareti verilmemişse, veri akışı engellenebilir.
+*   **InputEventsLastPunctuationTime** , zamanın ilerlemesini sağlamak için bir noktalama işaretinin ne zaman verildiğini gösterir. Noktalama işareti verilmemişse, veri akışı engellenebilir.
  
 ### <a name="are-there-any-errors-in-the-input"></a>Girişte herhangi bir hata var mı?
 
@@ -75,15 +75,15 @@ Yukarıdaki sorgu adımı bir giriş işlemcisidir, aşağıdaki hedeflenen soru
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>Verileri okurken geride düşeceğiz mı?
 
-*   **Biriktirme listesindeki giriş olayları (Toplam)** Event Hubs ve Azure IoT Hub girişleri için kaç tane daha fazla ileti okunması gerektiğini söyler. Bu sayı 0 ' dan büyükse, işinizin verileri geldiği kadar hızlı işleyemediği anlamına gelir. Bu durumda, akış birimlerinin sayısını artırmanız ve/veya işinizin paralelleştirilmesine emin olmanız gerekebilir. [Sorgu paralelleştirme sayfasında](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)bu konuda daha fazla bilgi görebilirsiniz. 
+*   **Biriktirme listesindeki giriş olayları (Toplam)** Event Hubs ve Azure IoT Hub girişleri için kaç tane daha fazla ileti okunması gerektiğini söyler. Bu sayı 0 ' dan büyükse, işinizin verileri geldiği kadar hızlı işleyemediği anlamına gelir. Bu durumda, akış birimlerinin sayısını artırmanız ve/veya işinizin paralelleştirilmesine emin olmanız gerekebilir. [Sorgu paralelleştirme sayfasında](./stream-analytics-parallelization.md)bu konuda daha fazla bilgi görebilirsiniz. 
 
 
 ## <a name="get-help"></a>Yardım alın
-Ek Yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin. 
+Ek Yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](/answers/topics/azure-stream-analytics.html)deneyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Stream Analytics giriş](stream-analytics-introduction.md)
 * [Akış Analizi ile çalışmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Stream Analytics yönetim REST API başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics sorgu dili başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics yönetim REST API başvurusu](/rest/api/streamanalytics/)

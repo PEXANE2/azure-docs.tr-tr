@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c4e9a66e6bd6b94d8397429769d7718b3e9c555d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b201ebb5ad8ab9d98a76a29831fa12d6174e47cc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148116"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125215"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service uygulamaları izleme
 [Azure App Service](./overview.md) , [Azure Portal](https://portal.azure.com)Web Apps, mobil ve API uygulamaları için yerleşik izleme işlevleri sağlar.
@@ -27,11 +27,11 @@ App Service barındırılan uygulamalar, kullanabilecekleri kaynaklar üzerinde 
 
 Uygulama *ücretsiz* veya *paylaşılan* bir planda barındırılıyorsa, uygulamanın kullanabileceği kaynakların sınırları Kotalar tarafından tanımlanır.
 
-Uygulama *temel*, *Standart*veya *Premium* bir planda barındırılıyorsa, kullandıkları kaynaklarla ilgili sınırlar, App Service planındaki *Boyut* (küçük, orta, büyük) ve *örnek sayısı* (1, 2, 3, vb.) ile ayarlanır.
+Uygulama *temel* , *Standart* veya *Premium* bir planda barındırılıyorsa, kullandıkları kaynaklarla ilgili sınırlar, App Service planındaki *Boyut* (küçük, orta, büyük) ve *örnek sayısı* (1, 2, 3, vb.) ile ayarlanır.
 
 Ücretsiz veya paylaşılan uygulamalar için kotalar şunlardır:
 
-| Kota | Description |
+| Kota | Açıklama |
 | --- | --- |
 | **CPU (kısa)** | Bu uygulama için, 5 dakikalık bir aralıkta izin verilen CPU miktarı. Bu kota her beş dakikada bir sıfırlanır. |
 | **CPU (gün)** | Bu uygulama için bir günde izin verilen toplam CPU miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |
@@ -39,13 +39,13 @@ Uygulama *temel*, *Standart*veya *Premium* bir planda barındırılıyorsa, kull
 | **Bant genişliği** | Bu uygulama için günde izin verilen giden bant genişliğinin toplam miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |
 | **Dosya Sistemi** | İzin verilen toplam depolama miktarı. |
 
-*Temel*, *Standart*ve *Premium* 'da barındırılan uygulamalar Için geçerli olan tek Kota dosya sistemi 'dir.
+*Temel* , *Standart* ve *Premium* 'da barındırılan uygulamalar Için geçerli olan tek Kota dosya sistemi 'dir.
 
 Çeşitli App Service SKU 'Larının kullanabildiği belirli kotalar, sınırlar ve özellikler hakkında daha fazla bilgi için bkz. [Azure abonelik hizmeti sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
 ### <a name="quota-enforcement"></a>Kota zorlaması
 
-Bir uygulama *CPU (Short)*, *CPU (gün)* veya *bant genişliği* kotasını aşarsa, kota sıfırlanana kadar uygulama durdurulur. Bu süre boyunca, tüm gelen istekler HTTP 403 hatasına neden olacak.
+Bir uygulama *CPU (Short)* , *CPU (gün)* veya *bant genişliği* kotasını aşarsa, kota sıfırlanana kadar uygulama durdurulur. Bu süre boyunca, tüm gelen istekler HTTP 403 hatasına neden olacak.
 
 ![403 hata iletisi][http403]
 
@@ -87,6 +87,7 @@ Bir uygulama için kullanılabilir ölçümler şunlardır:
 | **Gen 1 çöp koleksiyonları** | Uygulama işleminin başlangıcından bu yana 1. nesil nesnelerin atık olarak toplandığı sayı. Daha yüksek nesil GCs, tüm düşük nesil GCs 'leri içerir.|
 | **Gen 2 çöp koleksiyonları** | Oluşturma 2 nesnelerinin, uygulama işleminin başlangıcından bu yana atık olarak toplandığı sayı.|
 | **Tanıtıcı Sayısı** | Uygulama işlemi tarafından şu anda açık olan tanıtıcı sayısının toplam sayısı.|
+| **Durum denetimi durumu** | App Service planındaki uygulamanın örnekleri genelinde ortalama sistem durumu.|
 | **Http 2xx** | HTTP durum kodu ≥ 200 ile sonuçlanan isteklerin sayısı, ancak 300 <. |
 | **Http 3xx** | HTTP durum kodu ≥ 300 ile sonuçlanan isteklerin sayısı, ancak 400 <. |
 | **Http 401** | HTTP 401 durum koduna neden olan istek sayısı. |
@@ -113,7 +114,7 @@ Bir uygulama için kullanılabilir ölçümler şunlardır:
 App Service planı için kullanılabilir ölçümler şunlardır:
 
 > [!NOTE]
-> App Service planı ölçümleri yalnızca *temel*, *Standart*ve *Premium* katmanlardaki planlar için kullanılabilir.
+> App Service planı ölçümleri yalnızca *temel* , *Standart* ve *Premium* katmanlardaki planlar için kullanılabilir.
 > 
 
 | Ölçüm | Açıklama |
@@ -130,9 +131,9 @@ App Service planı için kullanılabilir ölçümler şunlardır:
 
 CPU kullanımını yansıtan iki ölçüm vardır:
 
-**CPU süresi**: ücretsiz veya paylaşılan planlarda barındırılan uygulamalar için yararlıdır, çünkü kotalarından biri uygulama tarafından kullanılan CPU dakikalarında tanımlanmıştır.
+**CPU süresi** : ücretsiz veya paylaşılan planlarda barındırılan uygulamalar için yararlıdır, çünkü kotalarından biri uygulama tarafından kullanılan CPU dakikalarında tanımlanmıştır.
 
-**CPU yüzdesi**: temel, standart ve Premium planlarında barındırılan uygulamalar için kullanışlıdır, çünkü bu kişiler dışarı ölçeklenebilirler. CPU yüzdesi, tüm örneklerde genel kullanım kullanımının iyi bir göstergesidir.
+**CPU yüzdesi** : temel, standart ve Premium planlarında barındırılan uygulamalar için kullanışlıdır, çünkü bu kişiler dışarı ölçeklenebilirler. CPU yüzdesi, tüm örneklerde genel kullanım kullanımının iyi bir göstergesidir.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Ölçüm ayrıntı düzeyi ve bekletme ilkesi
 Bir uygulama ve App Service planı için ölçümler, hizmet tarafından günlüğe kaydedilir ve toplanır ve [Bu kurallara göre saklanır](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
@@ -142,7 +143,7 @@ Bir uygulamayı etkileyen çeşitli kotalar ve ölçümlerin durumunu gözden ge
 
 ![Azure portal kota grafiği][quotas]
 
-Kotaları bulmak için, **Ayarlar**  >  **Kotalar**' ı seçin. Grafik üzerinde şunları gözden geçirebilirsiniz: 
+Kotaları bulmak için, **Ayarlar**  >  **Kotalar** ' ı seçin. Grafik üzerinde şunları gözden geçirebilirsiniz: 
 1. Kota adı.
 1. Sıfırlama aralığı.
 1. Geçerli sınırı.

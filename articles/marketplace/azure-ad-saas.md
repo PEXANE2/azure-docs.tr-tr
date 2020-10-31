@@ -8,26 +8,26 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 5a09105dac89f3dc241140f16f3d4be72cc97493
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 674f267d3d99dd22c1ae06b6d32587761d5983ce
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483635"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124926"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Ticari Market 'te Azure AD ve transactable SaaS teklifleri
 
-Microsoft bulut tabanlı kimlik ve erişim yönetimi hizmeti [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD), kullanıcıların oturum açıp iç ve dış kaynaklara erişmesine yardımcı olur. Microsoft ticari Market 'te, Azure AD transactable SaaS 'ın yayımcılar, alıcılar ve kullanıcılar dahil herkes için daha kolay ve daha güvenli olmasını sağlar. Yayımcılar, Azure AD ile kullanıcıların hizmet olarak yazılım (SaaS) uygulamaları için sağlama işlemini otomatikleştirebilir ve alıcıların kendileri bu sağlanan kullanıcıları yönetebilir. 
+Microsoft bulut tabanlı kimlik ve erişim yönetimi hizmeti [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD), kullanıcıların oturum açıp iç ve dış kaynaklara erişmesine yardımcı olur. Microsoft ticari Market 'te, Azure AD transactable SaaS 'ın yayımcılar, alıcılar ve kullanıcılar dahil herkes için daha kolay ve daha güvenli olmasını sağlar. Yayımcılar, Azure AD ile kullanıcıların hizmet olarak yazılım (SaaS) uygulamaları için sağlama işlemini otomatikleştirebilir ve alıcıların kendileri bu sağlanan kullanıcıları yönetebilir. 
 
-[Azure AD çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (SSO), KULLANıCıLARıN Azure AD 'de uygulamalarda oturum açarken güvenlik ve kolaylık sağlar. Daha hızlı katılım ve en iyi duruma getirilmiş deneyimler, bir yayımcının SaaS uygulamasıyla ilk etkileşiminden alıcı ve Kullanıcı güveni de sağlar. Bu, görünürlük oluşturan ve yinelenen iş etkileyen olumlu bir izlenim sağlar.
+[Azure AD çoklu oturum açma](../active-directory/manage-apps/what-is-single-sign-on.md) (SSO), KULLANıCıLARıN Azure AD 'de uygulamalarda oturum açarken güvenlik ve kolaylık sağlar. Daha hızlı katılım ve en iyi duruma getirilmiş deneyimler, bir yayımcının SaaS uygulamasıyla ilk etkileşiminden alıcı ve Kullanıcı güveni de sağlar. Bu, görünürlük oluşturan ve yinelenen iş etkileyen olumlu bir izlenim sağlar.
 
-Bu makaledeki kılavuzunuzu izleyerek, SaaS teklifinizi ticari Market 'te sertifikalandırmaya yardımcı olacaksınız. Sertifika hakkında daha fazla ayrıntı için, [SaaS 'ye özgü](https://aka.ms/commercial-marketplace-certification-policies#1000-software-as-a-service-saas)olanlar da dahil olmak üzere ayrıntılı [ticari Market sertifika ilkelerini](https://aka.ms/commercial-marketplace-certification-policies#100-general)okuyun.
+Bu makaledeki kılavuzunuzu izleyerek, SaaS teklifinizi ticari Market 'te sertifikalandırmaya yardımcı olacaksınız. Sertifika hakkında daha fazla ayrıntı için, [SaaS 'ye özgü](/legal/marketplace/certification-policies#1000-software-as-a-service-saas)olanlar da dahil olmak üzere ayrıntılı [ticari Market sertifika ilkelerini](/legal/marketplace/certification-policies#100-general)okuyun.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-[SaaS teklifinizi](./partner-center-portal/create-new-saas-offer.md) Iş Ortağı Merkezi 'nde oluşturduğunuzda, teklif listesinde görüntülenecek belirli bir liste seçenekleri kümesinden seçim yapabilirsiniz. Seçiminiz, teklifinizin ticari Market 'te nasıl işlem yapıldığını belirler. Microsoft ile satılan tekliflere transactable teklifleri denir. Müşteriyi tüm transactable teklifleri için sizin adınıza faturalandırırız. Microsoft üzerinden satış yapın ve işlemleri sizin adınıza ( **Evet** seçeneği) barındırdıysanız, bir transactable teklifi oluşturmayı seçtiniz ve bu makale size yöneliktir. Bunu tamamen okumanızı öneririz.
+[SaaS teklifinizi](./create-new-saas-offer.md) Iş Ortağı Merkezi 'nde oluşturduğunuzda, teklif listesinde görüntülenecek belirli bir liste seçenekleri kümesinden seçim yapabilirsiniz. Seçiminiz, teklifinizin ticari Market 'te nasıl işlem yapıldığını belirler. Microsoft ile satılan tekliflere transactable teklifleri denir. Müşteriyi tüm transactable teklifleri için sizin adınıza faturalandırırız. Microsoft üzerinden satış yapın ve işlemleri sizin adınıza ( **Evet** seçeneği) barındırdıysanız, bir transactable teklifi oluşturmayı seçtiniz ve bu makale size yöneliktir. Bunu tamamen okumanızı öneririz.
 
-Teklifinizi yalnızca ticari Market aracılığıyla listemeyi ve işlemleri bağımsız olarak işlemeyi tercih ederseniz ( **Hayır** seçeneği), müşterilerin teklifinizi nasıl erişebileceği hakkında üç seçeneğiniz vardır: şimdi alın (ücretsiz), ücretsiz deneme ve benimle iletişim kurun. **Şimdi al (ücretsiz)** veya **ücretsiz deneme sürümünü**seçerseniz bu makale sizin için değildir. Bunun yerine, daha fazla bilgi için bkz. [ticari Market 'te ücretsiz veya deneme SaaS teklifinizin giriş sayfasını oluşturma](./azure-ad-free-or-trial-landing-page.md) . **Benimle Iletişim kurun**' i seçerseniz, doğrudan yayımcı sorumluluğu yoktur. Teklifinizi Iş ortağı merkezinde oluşturmaya devam edin.
+Teklifinizi yalnızca ticari Market aracılığıyla listemeyi ve işlemleri bağımsız olarak işlemeyi tercih ederseniz ( **Hayır** seçeneği), müşterilerin teklifinizi nasıl erişebileceği hakkında üç seçeneğiniz vardır: şimdi alın (ücretsiz), ücretsiz deneme ve benimle iletişim kurun. **Şimdi al (ücretsiz)** veya **ücretsiz deneme sürümünü** seçerseniz bu makale sizin için değildir. Bunun yerine, daha fazla bilgi için bkz. [ticari Market 'te ücretsiz veya deneme SaaS teklifinizin giriş sayfasını oluşturma](./azure-ad-free-or-trial-landing-page.md) . **Benimle Iletişim kurun** ' i seçerseniz, doğrudan yayımcı sorumluluğu yoktur. Teklifinizi Iş ortağı merkezinde oluşturmaya devam edin.
 
 ## <a name="how-azure-ad-works-with-the-commercial-marketplace-for-saas-offers"></a>Azure AD, SaaS teklifleri için ticari Market ile nasıl kullanılır?
 
@@ -35,7 +35,7 @@ Azure AD, ticari Market çözümlerini sorunsuz bir şekilde satın alma, karş�
 
 Şekil 1 ' de gösterildiği gibi, bir alıcı teklifinizin seçtiği zaman, satın alma, abonelik ve Kullanıcı yönetimi dahil iş akışlarının zincirini başlatılarlar. Bu zincir içinde, Microsoft, önemli noktalarda destek sunarak, yayımcı belirli gereksinimlerden sorumludur.
 
-***Şekil 1: ticari Market 'te SaaS teklifleri için Azure AD kullanma***
+**_Şekil 1: ticari Market 'Te SaaS teklifleri Için Azure ad kullanma_*
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow.png" alt-text="Satın alma yönetimi, abonelik yönetimi ve isteğe bağlı kullanıcı yönetimi işlem adımlarını gösterir.":::
 
@@ -52,9 +52,9 @@ Bu tablo, satın alma yönetimi işlem adımlarının ayrıntılarını sağlar.
 | İşlem adımı | Yayımcı eylemi | Yayımcılar için önerilen veya gerekli |
 | ------------ | ------------- | ------------- |
 | 1. Satınalmacı, ticari Market 'te Azure KIMLIK kimliğiyle oturum açar ve bir SaaS teklifi seçer. | Yayımcı eylemi gerekli değildir. | Uygulanamaz |
-| 2. satın alma işleminden sonra, alıcı Azure Marketi 'nde **hesabı Yapılandır** ' ı seçer veya şimdi Appsource 'ta **yapılandırır** . Bu, alıcı bu teklifin yayımcı giriş sayfasına yönlendirir. Alıcı, yayımcının SaaS uygulamasında Azure AD SSO ile oturum açabiliyor ve yalnızca Azure AD yönetici onayı gerektirmeyen en düşük onay için sorulmalıdır. | Bir kullanıcıyı Azure AD veya Microsoft hesabı (MSA) kimliğiyle alacak ve gereken ek sağlama veya kurulumu kolaylaştıran teklif için bir [giriş sayfası](azure-ad-transactable-saas-landing-page.md) tasarlayın. | Gerekli |
+| 2. satın alma işleminden sonra, alıcı Azure Marketi 'nde _ *hesabı Yapılandır* * seçeneğini belirler veya şimdi Appsource 'ta **yapılandırın** . Bu, alıcı bu teklifin yayımcı giriş sayfasına yönlendirir. Alıcı, yayımcının SaaS uygulamasında Azure AD SSO ile oturum açabiliyor ve yalnızca Azure AD yönetici onayı gerektirmeyen en düşük onay için sorulmalıdır. | Bir kullanıcıyı Azure AD veya Microsoft hesabı (MSA) kimliğiyle alacak ve gereken ek sağlama veya kurulumu kolaylaştıran teklif için bir [giriş sayfası](azure-ad-transactable-saas-landing-page.md) tasarlayın. | Gerekli |
 | 3. Yayımcı, SaaS karşılama API 'sinden satın alma ayrıntılarını ister. | Giriş sayfasının uygulama KIMLIĞINDEN oluşturulan bir [erişim belirtecini](./partner-center-portal/pc-saas-registration.md) kullanarak, satın alma hakkındaki özellikleri almak için [Çözümle bitiş noktasını çağırın](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) . | Gerekli |
-| 4. Azure AD ve Microsoft Graph API 'SI aracılığıyla Yayımcı, kuruluşun SaaS uygulamasında alıcı sağlamak için gereken şirket ve Kullanıcı ayrıntılarını toplar.  | Ad ve e-posta bulmak için Azure AD kullanıcı belirtecini oluşturun veya [MICROSOFT Graph API 'sini çağırın](https://docs.microsoft.com/graph/use-the-api) ve oturum açan kullanıcı hakkında [bilgi almak](https://docs.microsoft.com/graph/api/user-get) için temsilci izinleri kullanın. | Gerekli |
+| 4. Azure AD ve Microsoft Graph API 'SI aracılığıyla Yayımcı, kuruluşun SaaS uygulamasında alıcı sağlamak için gereken şirket ve Kullanıcı ayrıntılarını toplar.  | Ad ve e-posta bulmak için Azure AD kullanıcı belirtecini oluşturun veya [MICROSOFT Graph API 'sini çağırın](/graph/use-the-api) ve oturum açan kullanıcı hakkında [bilgi almak](/graph/api/user-get) için temsilci izinleri kullanın. | Gerekli |
 ||||
 
 ## <a name="process-steps-for-subscription-management"></a>Abonelik yönetimi için işlem adımları
@@ -82,8 +82,8 @@ Bu şekilde Kullanıcı yönetimi için üç işlem adımı gösterilmektedir.
 | İşlem adımı | Yayımcı eylemi | Yayımcılar için önerilen veya gerekli |
 | ------------ | ------------- | ------------- |
 | 7. alıcının şirketindeki Azure AD yöneticileri, Azure AD aracılığıyla kullanıcılar ve gruplar için isteğe bağlı olarak erişimi yönetebilir. | Kullanıcılar için Azure AD SSO ayarlandıysa, bunu etkinleştirmek için yayımcı eylemi gerekmez (adım 9). | Uygulanamaz |
-| 8. Azure AD sağlama hizmeti, Azure AD ile yayımcının SaaS uygulaması arasındaki değişikliklerle iletişim kurar. | Kullanıcılar eklendikçe ve kaldırıldığında Azure AD 'den güncelleştirmeleri almak için [BIR SCıM uç noktası uygulayın](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) . | Önerilen |
-| 9. uygulama eklendikten ve sağlandıktan sonra, alıcı şirketinin kullanıcıları yayımcının SaaS uygulamasında oturum açmak için Azure AD SSO 'yu kullanabilir. | Kullanıcıların, yayımcının SaaS uygulamasına bir hesap ile bir kez oturum açmasını sağlamak için [Azure AD SSO 'Yu kullanın](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) . | Önerilen |
+| 8. Azure AD sağlama hizmeti, Azure AD ile yayımcının SaaS uygulaması arasındaki değişikliklerle iletişim kurar. | Kullanıcılar eklendikçe ve kaldırıldığında Azure AD 'den güncelleştirmeleri almak için [BIR SCıM uç noktası uygulayın](../active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md) . | Önerilen |
+| 9. uygulama eklendikten ve sağlandıktan sonra, alıcı şirketinin kullanıcıları yayımcının SaaS uygulamasında oturum açmak için Azure AD SSO 'yu kullanabilir. | Kullanıcıların, yayımcının SaaS uygulamasına bir hesap ile bir kez oturum açmasını sağlamak için [Azure AD SSO 'Yu kullanın](../active-directory/manage-apps/what-is-single-sign-on.md) . | Önerilen |
 ||||
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
-ms.openlocfilehash: 8ccc4cb6a6f95cfc51fb7e265e455131bc6393c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1af2793bc32c1f3cdbdcd016562b761e05427073
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735608"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125147"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Test sürüşü Azure Resource Manager
 
 Azure Market veya AppSource 'ta bir teklifiniz varsa ancak yalnızca Azure kaynaklarıyla bir test sürücüsü oluşturmak istiyorsanız bu türü kullanın. Azure Resource Manager (ARM) şablonu, çözümünüzü en iyi şekilde temsil edecek şekilde tasarlamanızı sağlayan, Azure kaynaklarının kodlanmış bir kapsayıcısıdır. Test sürücüsü, sunulan ARM şablonunu alır ve gereken tüm kaynakları bir kaynak grubuna dağıtır. Bu, sanal makine veya Azure Uygulama teklifleri için tek sınama sürücüsü seçeneğidir.
 
-ARM şablonunun ne olduğunu bilmiyorsanız, [Azure Resource Manager nedir?](../azure-resource-manager/resource-group-overview.md) seçeneğini okuyun ve kendi şablonlarınızı nasıl oluşturup test etmek daha iyi anlamak için [ARM şablonlarının yapısını ve söz dizimini anlayın](../azure-resource-manager/resource-group-authoring-templates.md) .
+ARM şablonunun ne olduğunu bilmiyorsanız, [Azure Resource Manager nedir?](../azure-resource-manager/management/overview.md) seçeneğini okuyun ve kendi şablonlarınızı nasıl oluşturup test etmek daha iyi anlamak için [ARM şablonlarının yapısını ve söz dizimini anlayın](../azure-resource-manager/templates/template-syntax.md) .
 
 **Barındırılan** veya **mantıksal uygulama** test sürücüsü hakkında bilgi için bkz. [test sürücüsü nedir?](what-is-test-drive.md)
 
@@ -34,7 +34,7 @@ Dağıtım şablonu, çözümünüzü oluşturan tüm Azure kaynaklarını içer
 
   - **Soğuk** – Bu örnek türü, bölge başına büyük olasılıkla dağıtılabilecek örneklerin toplam sayısını temsil eder. Soğuk örnekler, bir müşteri test sürücüsünü istediğinde tüm test sürücüsü Kaynak Yöneticisi şablonun dağıtılmasını gerektirir, böylece *soğuk* örnekler, *etkin* örneklere göre yüklenmeye çok daha yavaştır. Zorunluluğunu getirir, yalnızca test sürücüsünün süresi için ödeme yapmanız gereken *bir deyişle, Azure aboneliğinizde her zaman* bir *sıcak* örnekle birlikte çalışmıyor.
 
-- **Test sürücüsü Azure Resource Manager şablonu** – Azure Resource Manager şablonunuzu içeren. zip ' i karşıya yükleyin. Hızlı başlangıç makalesinde Azure Resource Manager şablonu oluşturma hakkında daha fazla bilgi edinin [Azure Portal kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
+- **Test sürücüsü Azure Resource Manager şablonu** – Azure Resource Manager şablonunuzu içeren. zip ' i karşıya yükleyin. Hızlı başlangıç makalesinde Azure Resource Manager şablonu oluşturma hakkında daha fazla bilgi edinin [Azure Portal kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
     > [!note]
     > Başarıyla yayımlamak için ARM şablonunun biçimlendirilmesini doğrulamak önemlidir. Bunu iki şekilde yapabilirsiniz. bir [ÇEVRIMIÇI API aracı](https://docs.microsoft.com/rest/api/resources/deployments/validate) veya (2) bir [Test dağıtımıyla](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)birlikte (1).

@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 69571afceddab61c2a6134516e237facfb7a5073
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b36a71899be43f40ec16c76b5e53c8c3e7fb3552
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746890"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124535"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Stream Analytics işi oluşturma
 
@@ -26,9 +26,9 @@ Azure PowerShell modülü, PowerShell cmdlet 'leri veya betikleri kullanılarak 
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-* Bu hızlı başlangıç Azure PowerShell modülünü gerektirir. Yerel makinenizde yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Bu hızlı başlangıç Azure PowerShell modülünü gerektirir. Yerel makinenizde yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-Az-ps).
 
-* Bazı IoT Hub eylemleri Azure PowerShell desteklenmez ve Azure CLI sürüm 2.0.70 veya üzeri ile Azure CLı için IoT uzantısı kullanılarak tamamlanmalıdır. [Azure CLI 'Yı yükleyip](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) `az extension add --name azure-iot` IoT uzantısını yüklemek için kullanın.
+* Bazı IoT Hub eylemleri Azure PowerShell desteklenmez ve Azure CLI sürüm 2.0.70 veya üzeri ile Azure CLı için IoT uzantısı kullanılarak tamamlanmalıdır. [Azure CLI 'Yı yükleyip](/cli/azure/install-azure-cli?view=azure-cli-latest) `az extension add --name azure-iot` IoT uzantısını yüklemek için kullanın.
 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
@@ -52,7 +52,7 @@ Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubsc
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 ```powershell
 $resourceGroup = "StreamAnalyticsRG"
@@ -68,9 +68,9 @@ Stream Analytics işini tanımlamadan önce, işe girdi olarak yapılandırılan
 
 Aşağıdaki Azure CLı kod bloğu, iş için gereken giriş verilerini hazırlamak için birçok komut yapar. Kodu anlamak için bölümleri gözden geçirin.
 
-1. PowerShell pencerenizde, Azure hesabınızda oturum açmak için [az Login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) komutunu çalıştırın.
+1. PowerShell pencerenizde, Azure hesabınızda oturum açmak için [az Login](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) komutunu çalıştırın.
 
-    Başarıyla oturum açtığınızda Azure CLı, aboneliklerinizin bir listesini döndürür. Bu hızlı başlangıç için kullanmakta olduğunuz aboneliği kopyalayın ve bu aboneliği seçmek için [az Account set](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) komutunu çalıştırın. Önceki bölümde PowerShell ile seçtiğiniz aboneliği seçin. Öğesini aboneliğinizin adıyla değiştirdiğinizden emin olun `<your subscription name>` .
+    Başarıyla oturum açtığınızda Azure CLı, aboneliklerinizin bir listesini döndürür. Bu hızlı başlangıç için kullanmakta olduğunuz aboneliği kopyalayın ve bu aboneliği seçmek için [az Account set](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) komutunu çalıştırın. Önceki bölümde PowerShell ile seçtiğiniz aboneliği seçin. Öğesini aboneliğinizin adıyla değiştirdiğinizden emin olun `<your subscription name>` .
 
     ```azurecli
     az login
@@ -84,7 +84,7 @@ Aşağıdaki Azure CLı kod bloğu, iş için gereken giriş verilerini hazırla
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
     ```
 
-    IoT Hub 'ı oluşturulduktan sonra, [az IoT Hub Show-Connection-String](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) komutunu kullanarak IoT Hub bağlantı dizesini alın. IoT Hub, Stream Analytics işinize girdi olarak eklediğinizde, tüm bağlantı dizesini kopyalayın ve kaydedin.
+    IoT Hub 'ı oluşturulduktan sonra, [az IoT Hub Show-Connection-String](/cli/azure/iot/hub?view=azure-cli-latest) komutunu kullanarak IoT Hub bağlantı dizesini alın. IoT Hub, Stream Analytics işinize girdi olarak eklediğinizde, tüm bağlantı dizesini kopyalayın ve kaydedin.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
@@ -112,11 +112,11 @@ Aşağıdaki Azure CLı kod bloğu, iş için gereken giriş verilerini hazırla
 
 Aşağıdaki Azure PowerShell kod bloğu, iş çıktısı için kullanılan blob depolaması oluşturmak için komutları kullanır. Kodu anlamak için bölümleri gözden geçirin.
 
-1. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) cmdlet 'ini kullanarak standart bir genel amaçlı depolama hesabı oluşturun.  Bu örnek, yerel olarak yedekli depolama (LRS) ve BLOB şifrelemesi (varsayılan olarak etkindir) ile **myasaquickstartstorage** adlı bir depolama hesabı oluşturur.
+1. [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) cmdlet 'ini kullanarak standart bir genel amaçlı depolama hesabı oluşturun.  Bu örnek, yerel olarak yedekli depolama (LRS) ve BLOB şifrelemesi (varsayılan olarak etkindir) ile **myasaquickstartstorage** adlı bir depolama hesabı oluşturur.
 
 2. Kullanılacak depolama hesabını tanımlayan `$storageAccount.Context` depolama hesabı bağlamını alın. Depolama hesaplarıyla çalışırken kimlik bilgilerini tekrar tekrar sağlamak yerine bağlama başvurursunuz.
 
-3. [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer)kullanarak bir depolama kapsayıcısı oluşturun.
+3. [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer)kullanarak bir depolama kapsayıcısı oluşturun.
 
 4. Kod tarafından çıkarılan depolama anahtarını kopyalayın ve akış işinin çıkışını daha sonra oluşturmak için bu anahtarı kaydedin.
 
@@ -146,7 +146,7 @@ Aşağıdaki Azure PowerShell kod bloğu, iş çıktısı için kullanılan blob
 
 ## <a name="create-a-stream-analytics-job"></a>Akış Analizi işi oluşturma
 
-[New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) cmdlet 'i ile Stream Analytics işi oluşturun. Bu cmdlet, iş adı, kaynak grubu adı ve iş tanımını parametre olarak alır. İş adı, işinizi tanımlayan herhangi bir kolay ad olabilir. Yalnızca alfasayısal karakter, kısa çizgi ve alt çizgi içerebilir ve 3 ila 63 karakter uzunluğunda olmalıdır. İş tanımı bir iş oluşturmak için gereken özellikleri içeren bir JSON dosyasıdır. Yerel makinenizde `JobDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin:
+[New-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) cmdlet 'i ile Stream Analytics işi oluşturun. Bu cmdlet, iş adı, kaynak grubu adı ve iş tanımını parametre olarak alır. İş adı, işinizi tanımlayan herhangi bir kolay ad olabilir. Yalnızca alfasayısal karakter, kısa çizgi ve alt çizgi içerebilir ve 3 ila 63 karakter uzunluğunda olmalıdır. İş tanımı bir iş oluşturmak için gereken özellikleri içeren bir JSON dosyasıdır. Yerel makinenizde `JobDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin:
 
 ```json
 {
@@ -176,7 +176,7 @@ New-AzStreamAnalyticsJob `
 
 ## <a name="configure-input-to-the-job"></a>İş girdisini yapılandırma
 
-[New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) cmdlet 'ini kullanarak işinize bir giriş ekleyin. Bu cmdlet iş adı, iş girdisi adı, kaynak grubu adı ve iş girdisi tanımını parametre olarak alır. İş girdisi tanımı işin girdisini yapılandırmak için gereken özellikleri içeren bir JSON dosyasıdır. Bu örnekte, giriş olarak bir BLOB depolama alanı oluşturacaksınız.
+[New-AzStreamAnalyticsInput](/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) cmdlet 'ini kullanarak işinize bir giriş ekleyin. Bu cmdlet iş adı, iş girdisi adı, kaynak grubu adı ve iş girdisi tanımını parametre olarak alır. İş girdisi tanımı işin girdisini yapılandırmak için gereken özellikleri içeren bir JSON dosyasıdır. Bu örnekte, giriş olarak bir BLOB depolama alanı oluşturacaksınız.
 
 Yerel makinenizde `JobInputDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin. Değerini, `accesspolicykey` `SharedAccessKey` önceki bölümde kaydettiğiniz IoT Hub bağlantı dizesinin bölümüyle değiştirdiğinizden emin olun.
 
@@ -223,7 +223,7 @@ New-AzStreamAnalyticsInput `
 
 ## <a name="configure-output-to-the-job"></a>İş çıktısını yapılandırma
 
-[New-AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) cmdlet 'ini kullanarak işinize bir çıktı ekleyin. Bu cmdlet iş adı, iş çıktısı adı, kaynak grubu adı ve iş çıktısı tanımını parametre olarak alır. İş çıktısı tanımı işin çıktısını yapılandırmak için gereken özellikleri içeren bir JSON dosyasıdır. Bu örnek, çıktı olarak blob depolama kullanır.
+[New-AzStreamAnalyticsOutput](/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) cmdlet 'ini kullanarak işinize bir çıktı ekleyin. Bu cmdlet iş adı, iş çıktısı adı, kaynak grubu adı ve iş çıktısı tanımını parametre olarak alır. İş çıktısı tanımı işin çıktısını yapılandırmak için gereken özellikleri içeren bir JSON dosyasıdır. Bu örnek, çıktı olarak blob depolama kullanır.
 
 Yerel makinenizde `JobOutputDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin. `accountKey` değerini, depolama hesabınızın $storageAccountKey değerinde depolanmış değeri olan erişim anahtarıyla değiştirdiğinizden emin olun.
 
@@ -272,7 +272,7 @@ New-AzStreamAnalyticsOutput `
 
 ## <a name="define-the-transformation-query"></a>Dönüşüm sorgusunu tanımlama
 
-[New-AzStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation) cmdlet 'ini kullanarak işiniz için bir dönüşüm ekleyin. Bu cmdlet iş adı, iş dönüşümü adı, kaynak grubu adı ve iş dönüşümü tanımını parametre olarak alır. Yerel makinenizde `JobTransformationDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin. JSON dosyası, dönüşüm sorgusunu tanımlayan bir sorgu parametresi içerir:
+[New-AzStreamAnalyticsTransformation](/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation) cmdlet 'ini kullanarak işiniz için bir dönüşüm ekleyin. Bu cmdlet iş adı, iş dönüşümü adı, kaynak grubu adı ve iş dönüşümü tanımını parametre olarak alır. Yerel makinenizde `JobTransformationDefinition.json` adlı bir dosya oluşturun ve içine aşağıdaki JSON verilerini ekleyin. JSON dosyası, dönüşüm sorgusunu tanımlayan bir sorgu parametresi içerir:
 
 ```json
 {
@@ -310,7 +310,7 @@ New-AzStreamAnalyticsTransformation `
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics işini başlatıp çıktıyı denetleyin
 
-[Start-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) cmdlet 'ini kullanarak işi başlatın. Bu cmdlet iş adı, kaynak grubu adı, çıktı başlangıç modu ve başlangıç saatini parametre olarak alır. `OutputStartMode`; `JobStartTime`, `CustomTime` veya `LastOutputEventTime` değerlerini kabul eder. Bu değerlerin her birinin ne anlama geldiği hakkında daha fazla bilgi için PowerShell belgelerindeki [parametreler](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) bölümüne bakın.
+[Start-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) cmdlet 'ini kullanarak işi başlatın. Bu cmdlet iş adı, kaynak grubu adı, çıktı başlangıç modu ve başlangıç saatini parametre olarak alır. `OutputStartMode`; `JobStartTime`, `CustomTime` veya `LastOutputEventTime` değerlerini kabul eder. Bu değerlerin her birinin ne anlama geldiği hakkında daha fazla bilgi için PowerShell belgelerindeki [parametreler](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) bölümüne bakın.
 
 Aşağıdaki cmdlet’i çalıştırdıktan sonra iş başlarsa çıktı olarak `True` değeri döndürülür. Depolama kapsayıcısında, dönüştürülmüş verilerle birlikte bir çıktı klasörü oluşturulur.
 

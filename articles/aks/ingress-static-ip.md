@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde statik bir genel IP adres
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: be4856beac69d11de12ec764f313fa59f3b24e9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50e3e052915b6bcc1f6dee89f5ed5e2acf13dd78
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290557"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124365"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde statik bir genel IP adresi ile giriş denetleyicisi oluşturma
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> Yukarıdaki komutlar, AKS kümenizi silerseniz silinecek bir IP adresi oluşturur. Alternatif olarak, AKS kümeinizden ayrı olarak yönetilebilen farklı bir kaynak grubunda bir IP adresi oluşturabilirsiniz. Farklı bir kaynak grubunda bir IP adresi oluşturursanız, AKS kümesi tarafından kullanılan hizmet sorumlusunun, *ağ katılımcısı*gibi diğer kaynak grubu için izin Temsilcili olduğundan emin olun. Daha fazla bilgi için bkz. [AKS yük dengeleyicisiyle statik bir genel IP adresi ve DNS etiketi kullanma][aks-static-ip].
+> Yukarıdaki komutlar, AKS kümenizi silerseniz silinecek bir IP adresi oluşturur. Alternatif olarak, AKS kümeinizden ayrı olarak yönetilebilen farklı bir kaynak grubunda bir IP adresi oluşturabilirsiniz. Farklı bir kaynak grubunda bir IP adresi oluşturursanız, AKS kümesi tarafından kullanılan hizmet sorumlusunun, *ağ katılımcısı* gibi diğer kaynak grubu için izin Temsilcili olduğundan emin olun. Daha fazla bilgi için bkz. [AKS yük dengeleyicisiyle statik bir genel IP adresi ve DNS etiketi kullanma][aks-static-ip].
 
 Şimdi *NGINX-ingress* grafiğini Held ile dağıtın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin Çoğaltmalarından tamamen yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
 
@@ -62,10 +62,10 @@ Giriş denetleyicisinin hem giriş denetleyicisi hizmetine ayrılacak yük denge
 Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Giriş denetleyicisi, Windows Server düğümlerinde çalıştırılmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
 
 > [!TIP]
-> Aşağıdaki örnek, *Giriş-Basic*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, `--set rbac.create=false` helk komutlarına ekleyin.
+> Aşağıdaki örnek, *Giriş-Basic* adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, `--set rbac.create=false` helk komutlarına ekleyin.
 
 > [!TIP]
-> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, `--set controller.service.externalTrafficPolicy=Local` Helm install komutuna ekleyin. İstemci kaynak IP 'si, *Için X-iletilen-için*istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
+> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, `--set controller.service.externalTrafficPolicy=Local` Helm install komutuna ekleyin. İstemci kaynak IP 'si, *Için X-iletilen-için* istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
 
 Aşağıdaki betiği, giriş denetleyicinizin **IP adresiyle** ve FQDN ön eki için kullanmak istediğiniz **benzersiz bir adla** güncelleştirin.
 
@@ -199,7 +199,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -237,7 +237,7 @@ spec:
     spec:
       containers:
       - name: ingress-demo
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -435,7 +435,7 @@ Kendi ad alanını silin. Komutunu kullanın `kubectl delete` ve ad alanı adın
 kubectl delete namespace ingress-basic
 ```
 
-Son olarak, giriş denetleyicisi için oluşturulan statik genel IP adresini kaldırın. Bu makalenin ilk adımında elde edilen *MC_myResourceGroup_myAKSCluster_eastus*gibi *Mc_* Cluster kaynak grubu adınızı sağlayın:
+Son olarak, giriş denetleyicisi için oluşturulan statik genel IP adresini kaldırın. Bu makalenin ilk adımında elde edilen *MC_myResourceGroup_myAKSCluster_eastus* gibi *Mc_* Cluster kaynak grubu adınızı sağlayın:
 
 ```azurecli-interactive
 az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP

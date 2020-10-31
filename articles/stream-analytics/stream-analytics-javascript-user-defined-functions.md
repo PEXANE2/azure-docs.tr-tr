@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: 7df244ee024b0d67ba678e296b882fbb08c3e16b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aac85fdab157d581285af91c4c818258a5f1790b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317727"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124790"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics 'de Kullanıcı tanımlı JavaScript işlevleri
  
-Azure Stream Analytics, JavaScript dilinde yazılmış kullanıcı tanımlı işlevleri destekler. JavaScript’in sağladığı **String**, **RegExp**, **Math**, **Array** ve **Date** yöntemlerinden oluşan zengin küme sayesinde Stream Analytics işleriyle karmaşık veri dönüşümlerini oluşturmak daha kolay hale gelir.
+Azure Stream Analytics, JavaScript dilinde yazılmış kullanıcı tanımlı işlevleri destekler. JavaScript’in sağladığı **String** , **RegExp** , **Math** , **Array** ve **Date** yöntemlerinden oluşan zengin küme sayesinde Stream Analytics işleriyle karmaşık veri dönüşümlerini oluşturmak daha kolay hale gelir.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -41,11 +41,11 @@ Stream Analytics içinde JavaScript Kullanıcı tanımlı işleviyle yapaamıyor
 > [!NOTE]
 > Bu adımlar, bulutta çalışmak üzere yapılandırılmış Stream Analytics işleri üzerinde çalışır. Stream Analytics işiniz Azure IoT Edge çalışacak şekilde yapılandırıldıysa, Visual Studio 'Yu kullanın ve [C# kullanarak Kullanıcı tanımlı işlevi yazın](stream-analytics-edge-csharp-udf.md).
 
-Stream Analytics işte JavaScript Kullanıcı tanımlı bir işlev oluşturmak için **Iş topolojisi**altında **işlevler** ' i seçin. Ardından + açılan menü **Ekle** menüsünden **JavaScript UDF** ' ı seçin. 
+Stream Analytics işte JavaScript Kullanıcı tanımlı bir işlev oluşturmak için **Iş topolojisi** altında **işlevler** ' i seçin. Ardından + açılan menü **Ekle** menüsünden **JavaScript UDF** ' ı seçin. 
 
 ![JavaScript UDF ekleme](./media/javascript/stream-analytics-jsudf-add.png)
 
-Ardından aşağıdaki özellikleri sağlamanız ve **Kaydet**' i seçmeniz gerekir.
+Ardından aşağıdaki özellikleri sağlamanız ve **Kaydet** ' i seçmeniz gerekir.
 
 |Özellik|Açıklama|
 |--------|-----------|
@@ -55,13 +55,13 @@ Ardından aşağıdaki özellikleri sağlamanız ve **Kaydet**' i seçmeniz gere
 
 ## <a name="test-and-troubleshoot-javascript-udfs"></a>JavaScript UDF 'Leri test etme ve sorunlarını giderme 
 
-JavaScript UDF mantığınızı herhangi bir tarayıcıda test edebilir ve hatalarını ayıklayabilirsiniz. Kullanıcı tanımlı bu işlevlerin mantığını hata ayıklama ve test etme işlemi şu anda Stream Analytics portalında desteklenmiyor. İşlev beklenen şekilde çalışırsa, yukarıda bahsedilen Stream Analytics işe ekleyebilirsiniz ve ardından doğrudan Sorgunuzla çağırabilirsiniz. [Visual Studio için Stream Analytics araçları](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)'nı kullanarak sorgu mantığınızı JavaScript UDF ile test edebilirsiniz.
+JavaScript UDF mantığınızı herhangi bir tarayıcıda test edebilir ve hatalarını ayıklayabilirsiniz. Kullanıcı tanımlı bu işlevlerin mantığını hata ayıklama ve test etme işlemi şu anda Stream Analytics portalında desteklenmiyor. İşlev beklenen şekilde çalışırsa, yukarıda bahsedilen Stream Analytics işe ekleyebilirsiniz ve ardından doğrudan Sorgunuzla çağırabilirsiniz. [Visual Studio için Stream Analytics araçları](./stream-analytics-tools-for-visual-studio-install.md)'nı kullanarak sorgu mantığınızı JavaScript UDF ile test edebilirsiniz.
 
-JavaScript çalışma zamanı hataları önemli kabul edilir ve Etkinlik günlüğünde öne çıkarılır. Günlüğü almak için Azure portalında işinize gidin ve **Etkinlik günlüğü**’nü seçin.
+JavaScript çalışma zamanı hataları önemli kabul edilir ve Etkinlik günlüğünde öne çıkarılır. Günlüğü almak için Azure portalında işinize gidin ve **Etkinlik günlüğü** ’nü seçin.
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Bir sorguda JavaScript kullanıcı tanımlı işlevi çağırma
 
-**Udf**ile önekli işlev diğer adını kullanarak sorgunuzda JavaScript işlevinizi kolayca çağırabilirsiniz. Onaltılık değerleri bir Stream Analytics sorgusunda Çağrılmakta olan tamsayıya dönüştüren bir JavaScript UDF örneği aşağıda verilmiştir.
+**Udf** ile önekli işlev diğer adını kullanarak sorgunuzda JavaScript işlevinizi kolayca çağırabilirsiniz. Onaltılık değerleri bir Stream Analytics sorgusunda Çağrılmakta olan tamsayıya dönüştüren bir JavaScript UDF örneği aşağıda verilmiştir.
 
 ```SQL
     SELECT
@@ -188,5 +188,5 @@ FROM
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Machine Learning UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
-* [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)
+* [Machine Learning UDF](./machine-learning-udf.md)
+* [C# UDF](./stream-analytics-edge-csharp-udf-methods.md)

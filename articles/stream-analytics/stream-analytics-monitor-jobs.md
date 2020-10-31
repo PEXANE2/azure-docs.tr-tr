@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 196d722e57abe743fc51692dde231e8f93682c46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c746e409964b4625a4c9921d9f02ca0c9730a35
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002275"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123455"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Program aracılığıyla Stream Analytics iş İzleyicisi oluşturma
 
 Bu makalede bir Stream Analytics işi için izlemenin nasıl etkinleştirileceği gösterilmektedir. REST API 'Leri, Azure SDK veya PowerShell aracılığıyla oluşturulan Stream Analytics işlerin varsayılan olarak etkin izleme özelliği yoktur. İşin Izleyici sayfasına gidip Etkinleştir düğmesine tıklayarak ve bu makaledeki adımları izleyerek bu işlemi otomatikleştirebileceğiniz Azure portal el ile etkinleştirebilirsiniz. İzleme verileri, Stream Analytics işiniz için Azure portal ölçüm alanında görünür.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu işleme başlamadan önce, aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -168,14 +168,14 @@ Aşağıdaki kod, **mevcut** bir Stream Analytics işi için izlemeyi mümkün b
 >   ```
 
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
-Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Akış Analizi Sorgu Dili Başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](/rest/api/streamanalytics/)

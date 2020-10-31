@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 529b1ce8026d9880bbc8caf87ab59148baf92df3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 9b08b59090d9dd23405f8a0ba86ce608e3a64902
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019469"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123770"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics ve Azure Machine Learning Studio (klasik) ile yaklaşım analizini yapın
 
@@ -31,7 +31,7 @@ Bu makaleden öğrendiklerinizi, bunlar gibi senaryolar için uygulayabilirsiniz
 
 Oluşturduğunuz Akış Analizi işi, blob deposundan örnek metin verileri üzerinde Kullanıcı tanımlı bir işlev (UDF) olarak, yaklaşım Analizi modelini uygular. Çıktı (yaklaşım analizinin sonucu), farklı bir CSV dosyasındaki aynı blob deposuna yazılır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
@@ -43,7 +43,7 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
 Bu adımda, depolama kapsayıcınıza bir CSV dosyası yüklersiniz.
 
-1. Azure Portal, **kaynak**  >  **depolama**  >  **depolama hesabı**oluştur ' u seçin.
+1. Azure Portal, **kaynak**  >  **depolama**  >  **depolama hesabı** oluştur ' u seçin.
 
 2. *Temel bilgiler* sekmesini aşağıdaki ayrıntılarla doldurun ve kalan alanlar için varsayılan değerleri bırakın:
 
@@ -57,17 +57,17 @@ Bu adımda, depolama kapsayıcınıza bir CSV dosyası yüklersiniz.
 
    ![depolama hesabı ayrıntılarını sağlayın](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-3. **Gözden geçir + oluştur**' u seçin. Ardından, depolama hesabınızı dağıtmak için **Oluştur** ' u seçin.
+3. **Gözden geçir + oluştur** ' u seçin. Ardından, depolama hesabınızı dağıtmak için **Oluştur** ' u seçin.
 
-4. Dağıtım tamamlandığında depolama hesabınıza gidin. **Blob hizmeti** bölümünden **Kapsayıcılar**’ı seçin. Ardından yeni bir kapsayıcı oluşturmak için **+ kapsayıcı** ' yı seçin.
+4. Dağıtım tamamlandığında depolama hesabınıza gidin. **Blob hizmeti** bölümünden **Kapsayıcılar** ’ı seçin. Ardından yeni bir kapsayıcı oluşturmak için **+ kapsayıcı** ' yı seçin.
 
    ![Giriş için BLOB depolama kapsayıcısı oluştur](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
-5. Kapsayıcı için bir ad sağlayın ve **genel erişim düzeyinin** **özel**olarak ayarlandığını doğrulayın. İşiniz bittiğinde **Oluştur**'u seçin.
+5. Kapsayıcı için bir ad sağlayın ve **genel erişim düzeyinin** **özel** olarak ayarlandığını doğrulayın. İşiniz bittiğinde **Oluştur** 'u seçin.
 
    ![blob kapsayıcısı ayrıntılarını belirtin](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
-6. Yeni oluşturulan kapsayıcıya gidin ve **karşıya yükle**' yi seçin. Daha önce indirdiğiniz **sampleinput.csv** dosyasını karşıya yükleyin.
+6. Yeni oluşturulan kapsayıcıya gidin ve **karşıya yükle** ' yi seçin. Daha önce indirdiğiniz **sampleinput.csv** dosyasını karşıya yükleyin.
 
    ![Bir kapsayıcı için ' karşıya yükle ' düğmesi](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
@@ -115,7 +115,7 @@ Artık, BLOB depolama alanındaki CSV dosyasından örnek çoklu alanı içeren 
 
 İş, daha önce karşıya yüklediğiniz CSV dosyasındaki girişini BLOB depolama alanına alır.
 
-1. Stream Analytics işinize gidin. **Iş topolojisi**altında **girişler** seçeneğini belirleyin. **Akış girişi**  > **BLOB depolaması**Ekle ' yi seçin.
+1. Stream Analytics işinize gidin. **Iş topolojisi** altında **girişler** seçeneğini belirleyin. **Akış girişi**  > **BLOB depolaması** Ekle ' yi seçin.
 
 2. **BLOB depolama** ayrıntılarını aşağıdaki değerlerle doldurun:
 
@@ -127,13 +127,13 @@ Artık, BLOB depolama alanındaki CSV dosyasından örnek çoklu alanı içeren 
    |Kapsayıcı|Önceki adımda oluşturduğunuz kapsayıcıyı seçin.|
    |Olay serileştirme biçimi|CSV|
 
-3. **Kaydet**'i seçin.
+3. **Kaydet** ’i seçin.
 
 ### <a name="configure-the-job-output"></a>İş çıktısını yapılandırma
 
 İş, sonuçları girdi aldığı BLOB depolama alanına gönderir.
 
-1. Stream Analytics işinize gidin. **Iş topolojisi**altında **çıktılar** seçeneğini belirleyin. **Add**  >  **BLOB depolama**Ekle ' yi seçin.
+1. Stream Analytics işinize gidin. **Iş topolojisi** altında **çıktılar** seçeneğini belirleyin. **Add**  >  **BLOB depolama** Ekle ' yi seçin.
 
 2. **BLOB depolama** formunu şu değerlerle doldurun:
 
@@ -145,7 +145,7 @@ Artık, BLOB depolama alanındaki CSV dosyasından örnek çoklu alanı içeren 
    |Kapsayıcı|Önceki adımda oluşturduğunuz kapsayıcıyı seçin.|
    |Olay serileştirme biçimi|CSV|
 
-3. **Kaydet**'i seçin.
+3. **Kaydet** ’i seçin.
 
 ### <a name="add-the-studio-classic-function"></a>Studio (klasik) işlevini ekleme
 
@@ -161,11 +161,11 @@ Bu bölümde, Stream çözümleme işinde bir işlev tanımlarsınız. İşlevi,
 
    |Alan  |Değer  |
    |---------|---------|
-   | İşlev diğer adı | Adı kullanın `sentiment` ve **Azure Machine Learning işlev ayarlarını el ile sağla**' yı seçin. Bu, size URL ve anahtar girme seçeneği sunar.      |
+   | İşlev diğer adı | Adı kullanın `sentiment` ve **Azure Machine Learning işlev ayarlarını el ile sağla** ' yı seçin. Bu, size URL ve anahtar girme seçeneği sunar.      |
    | URL| Web hizmeti URL 'sini yapıştırın.|
    |Anahtar | API anahtarını yapıştırın. |
 
-4. **Kaydet**' i seçin.
+4. **Kaydet** ' i seçin.
 
 ### <a name="create-a-query-to-transform-the-data"></a>Verileri dönüştürmek için bir sorgu oluşturma
 
@@ -173,7 +173,7 @@ Stream Analytics girişi incelemek ve işlemek için bildirime dayalı SQL taban
 
 1. Stream Analytics işe genel bakış ' a dönün.
 
-2. **Iş topolojisi**altında **sorgu**' yı seçin.
+2. **Iş topolojisi** altında **sorgu** ' yı seçin.
 
 3. Aşağıdaki sorguyu girin:
 
@@ -202,7 +202,7 @@ Artık Stream Analytics işini başlatabilirsiniz.
 
 2. sayfanın en üstünde **Başlat** ' ı seçin.
 
-3. **Başlangıç işi**' nde, **özel**' i seçin ve ardından CSV dosyasını blob depolamaya yüklemeden önce bir gün önce bir gün seçin. İşiniz bittiğinde **Başlat**’ı seçin.  
+3. **Başlangıç işi** ' nde, **özel** ' i seçin ve ardından CSV dosyasını blob depolamaya yüklemeden önce bir gün önce bir gün seçin. İşiniz bittiğinde **Başlat** ’ı seçin.  
 
 ### <a name="check-the-output"></a>Çıktıyı denetleyin
 
@@ -211,7 +211,7 @@ Artık Stream Analytics işini başlatabilirsiniz.
 2. Blob depolamanın içeriğini incelemek için normalde kullandığınız bir aracınız varsa, kapsayıcıyı incelemek için bu aracı kullanın. Alternatif olarak, Azure portal aşağıdaki adımları uygulayın:
 
       1. Azure portal, depolama hesabınızı bulun ve hesap içinde kapsayıcıyı bulun. Kapsayıcıda iki dosya görürsünüz: örnek arası ve Stream Analytics işi tarafından oluşturulan bir CSV dosyası içeren dosya.
-      2. Oluşturulan dosyaya sağ tıklayın ve ardından **İndir**' i seçin.
+      2. Oluşturulan dosyaya sağ tıklayın ve ardından **İndir** ' i seçin.
 
 3. Oluşturulan CSV dosyasını açın. Aşağıdaki örneğe benzer bir şey görürsünüz:  
 
@@ -227,6 +227,6 @@ Ayrıca, Studio (klasik) işlevle ilgili ölçümleri de görüntüleyebilirsini
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
-* [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Akış Analizi Sorgu Dili Başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
 * [REST API ve Machine Learning Studio tümleştirin (klasik)](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
-* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](/rest/api/streamanalytics/)

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e43a43d929d256bc2a12b6b243d9620c5bd1aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8891bb5cd3b8bd8ae9e02c871d6d0ffe42078c0b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317710"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124773"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>JavaScript Kullanıcı tanımlı toplamaları Azure Stream Analytics
  
@@ -83,7 +83,7 @@ Her JavaScript UDA bir Işlev nesnesi bildirimi tarafından tanımlanır. Aşağ
 
 ### <a name="function-type"></a>İşlev türü
 
-UDA için işlev türü **JAVASCRIPT uda**olmalıdır.
+UDA için işlev türü **JAVASCRIPT uda** olmalıdır.
 
 ### <a name="output-type"></a>Çıkış türü
 
@@ -123,7 +123,7 @@ Aşağıda, portaldan UDA oluşturma işlemini yürüyoruz. Burada kullandığı
 Şimdi adımları izleyerek mevcut bir ASA işi altında bir JavaScript UDA oluşturalım.
 
 1. Azure portal oturum açın ve mevcut Stream Analytics işinizi bulun.
-1. Sonra **Iş topolojisi**altında işlevler bağlantısına tıklayın.
+1. Sonra **Iş topolojisi** altında işlevler bağlantısına tıklayın.
 1. Yeni bir işlev eklemek için **Ekle** simgesine tıklayın.
 1. Yeni Işlev görünümünde, Işlev türü olarak **JAVASCRIPT uda** ' yı seçin, ardından düzenleyicide görüntülenecek varsayılan uda şablonunu görürsünüz.
 1. "TWA" öğesini UDA diğer adı olarak girin ve işlev uygulamasını aşağıdaki şekilde değiştirin:
@@ -226,12 +226,12 @@ Aşağıdaki içeriğe sahip yerel bir JSON dosyası oluşturun, dosyayı Stream
 
 ## <a name="get-help"></a>Yardım alın
 
-Ek Yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
+Ek Yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics yönetim REST API başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics sorgu dili başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics yönetim REST API başvurusu](/rest/api/streamanalytics/)

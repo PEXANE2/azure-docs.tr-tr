@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f8885229c8ab6784c6c0bf45487812fcc43f9b22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 766d3f8d4d4c03fb4fe173dbb12eb85bb09cd71a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903832"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124179"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Visual Studio Code iş diyagramını kullanarak Azure Stream Analytics sorguları yerel olarak ayıklayın
 
@@ -31,7 +31,7 @@ Visual Studio Code kullanarak Stream Analytics bir iş oluşturmayı veya [var o
 
 Sorguyu yerel giriş verileriyle test etmek istiyorsanız, bu [yönergeleri](visual-studio-code-local-run.md)izleyin. Canlı giriş ile test etmek istiyorsanız, [giriş alanınızı](stream-analytics-add-inputs.md) bir sonraki adıma geçin. 
 
-* \. Aşama QL* betik dosyasını açın ve **yerel olarak çalıştır**' ı seçin. Ardından, **yerel giriş kullan** veya **canlı giriş kullan**' ı seçin. İş diyagramı pencerenin sağ tarafında görünür.
+*\. Aşama QL* betik dosyasını açın ve **yerel olarak çalıştır** ' ı seçin. Ardından, **yerel giriş kullan** veya **canlı giriş kullan** ' ı seçin. İş diyagramı pencerenin sağ tarafında görünür.
 
 ### <a name="view-the-output-and-intermediate-result-set"></a>Çıktıyı ve ara sonuç kümesini görüntüleme  
 
@@ -56,7 +56,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
    > [!div class="mx-imgBorder"]
    > ![İş diyagramı ölçümleri](./media/debug-locally-using-job-diagram-vs-code/job-metrics.png)
 
-3. Giriş ölçümlerini görmek için açılan listeden giriş veri kaynağının adını seçin. Aşağıdaki ekran görüntüsünde bulunan giriş kaynağına *tırnak işareti*adı verilir. Giriş ölçümleri hakkında daha fazla bilgi için bkz. [Stream Analytics iş Izlemeyi anlama ve sorguları izleme](stream-analytics-monitoring.md).
+3. Giriş ölçümlerini görmek için açılan listeden giriş veri kaynağının adını seçin. Aşağıdaki ekran görüntüsünde bulunan giriş kaynağına *tırnak işareti* adı verilir. Giriş ölçümleri hakkında daha fazla bilgi için bkz. [Stream Analytics iş Izlemeyi anlama ve sorguları izleme](stream-analytics-monitoring.md).
 
    > [!div class="mx-imgBorder"]
    > ![İş diyagramı giriş ölçümleri](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
@@ -104,7 +104,7 @@ Yerel işiniz için özellikleri ve konfigürasyonları görmek üzere iş diyag
 
 * C# özel kodu ve Azure Machine Learning işlevleri desteklenmez. 
 
-* Yalnızca bulut girişi seçeneklerinde [zaman ilkeleri](stream-analytics-out-of-order-and-late-events.md) desteklenir, ancak yerel giriş seçenekleri değildir.
+* Yalnızca bulut girişi seçeneklerinde [zaman ilkeleri](./stream-analytics-time-handling.md) desteklenir, ancak yerel giriş seçenekleri değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,17 +8,17 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 923e8d1ffc3e606c16226b4b2ccbdcfaf4d3e9f1
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75431619"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123430"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Çıkış hatası ilkesini Azure Stream Analytics
 Bu makalede, Azure Stream Analytics ' de yapılandırılabilen çıkış verileri hata işleme ilkeleri açıklanmaktadır.
 
-Çıkış verileri hata işleme ilkeleri yalnızca bir Stream Analytics işi tarafından üretilen çıkış olayı hedef havuzun şemasına uygun olmadığında oluşan veri dönüştürme hataları için geçerlidir. **Yeniden dene** veya **bırak**seçeneğini belirleyerek bu ilkeyi yapılandırabilirsiniz. Azure portal, bir Stream Analytics işinde, **Yapılandır**altında, seçiminizi yapmak Için **hata ilkesi** ' ni seçin.
+Çıkış verileri hata işleme ilkeleri yalnızca bir Stream Analytics işi tarafından üretilen çıkış olayı hedef havuzun şemasına uygun olmadığında oluşan veri dönüştürme hataları için geçerlidir. **Yeniden dene** veya **bırak** seçeneğini belirleyerek bu ilkeyi yapılandırabilirsiniz. Azure portal, bir Stream Analytics işinde, **Yapılandır** altında, seçiminizi yapmak Için **hata ilkesi** ' ni seçin.
 
 ![Çıkış hatası ilke konumunu Azure Stream Analytics](./media/stream-analytics-output-error-policy/stream-analytics-error-policy-locate.png)
 
@@ -34,4 +34,4 @@ Tüm geçici hatalar (örneğin, ağ hataları), ilke yapılandırmasından olu�
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Stream Analytics için sorun giderme kılavuzu](stream-analytics-troubleshooting-guide.md)
+[Azure Stream Analytics için sorun giderme kılavuzu](./stream-analytics-troubleshoot-query.md)

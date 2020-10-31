@@ -5,16 +5,16 @@ author: tamram
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/28/2020
+ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 19d70642a6c76239f62b2fd6f7e713430a7adfbb
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 53033226702ea1033fe4ae94f60c62cacbae6596
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043093"
+ms.locfileid: "93124977"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage hesabı oluşturma
 
@@ -116,10 +116,7 @@ Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımla
 
 8. **Gelişmiş** sekmesini seçin.
 
-9. Veri analizi için depolama hesabınızı iyileştirmek isterseniz, **hiyerarşik ad alanını** **etkin** olarak ayarlayın. Aksi takdirde, bu seçeneği varsayılan değeri olarak ayarlayın. BlockBlobStorage hesabınızla bu ayarı etkinleştirmek, [Data Lake Storage için Premium katman](premium-tier-for-data-lake-storage.md)sağlar.  Data Lake Storage hakkında daha fazla bilgi edinmek için bkz. [Azure Data Lake Storage 2. giriş](data-lake-storage-introduction.md).
-
-   > [!NOTE]
-   > Blok Blobu depolama hesabındaki hiyerarşik ad alanı özelliği genel önizlemeye sunuldu. Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [Bölgesel kullanılabilirlik](premium-tier-for-data-lake-storage.md#regional-availability).
+9. Veri analizi için depolama hesabınızı iyileştirmek isterseniz, **hiyerarşik ad alanını** **etkin** olarak ayarlayın. Aksi takdirde, bu seçeneği varsayılan değerine ayarlayın. BlockBlobStorage hesabınızla bu ayarı etkinleştirmek, [Data Lake Storage için Premium katman](premium-tier-for-data-lake-storage.md)sağlar.  Data Lake Storage hakkında daha fazla bilgi edinmek için bkz. [Azure Data Lake Storage 2. giriş](data-lake-storage-introduction.md).
 
 8. Depolama hesabı ayarlarını gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
 
@@ -162,9 +159,6 @@ Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımla
    ```
    Veri analizi için depolama hesabınızı iyileştirmek istiyorsanız `-EnableHierarchicalNamespace $True` komuta ekleyin. BlockBlobStorage hesabınızla bu ayarı etkinleştirmek, [Data Lake Storage için Premium katman](premium-tier-for-data-lake-storage.md)sağlar.  Data Lake Storage hakkında daha fazla bilgi edinmek için bkz. [Azure Data Lake Storage 2. giriş](data-lake-storage-introduction.md).
 
-   > [!NOTE]
-   > Blok Blobu depolama hesabındaki hiyerarşik ad alanı özelliği genel önizlemeye sunuldu. Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [Bölgesel kullanılabilirlik](premium-tier-for-data-lake-storage.md#regional-availability).
-
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı kullanarak bir Blok Blobu hesabı oluşturmak için önce Azure CLı v 'yi yüklemeniz gerekir. 2.0.46 veya sonraki bir sürümü. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
@@ -195,10 +189,7 @@ Azure CLı kullanarak bir Blok Blobu hesabı oluşturmak için önce Azure CLı 
    ```
 
    Veri analizi için depolama hesabınızı iyileştirmek istiyorsanız `--hierarchical-namespace true` komuta ekleyin. BlockBlobStorage hesabınızla bu ayarı etkinleştirmek, [Data Lake Storage için Premium katman](premium-tier-for-data-lake-storage.md)sağlar.  Data Lake Storage hakkında daha fazla bilgi edinmek için bkz. [Azure Data Lake Storage 2. giriş](data-lake-storage-introduction.md).
-   
-   > [!NOTE]
-   > Blok Blobu depolama hesabındaki hiyerarşik ad alanı özelliği genel önizlemeye sunuldu. Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [Bölgesel kullanılabilirlik](premium-tier-for-data-lake-storage.md#regional-availability).
-   
+
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar

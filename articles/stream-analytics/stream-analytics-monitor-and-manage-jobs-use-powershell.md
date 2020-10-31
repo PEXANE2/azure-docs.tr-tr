@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: dc2f00b859321986b9de7c15462c72049bf49ee2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4d41e8231f5bd186408ea511c0f096a6a5f26c83
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096912"
+ms.locfileid: "93123651"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Azure PowerShell cmdlet 'leriyle Stream Analytics işlerini izleme ve yönetme
 Temel Stream Analytics görevlerini çalıştıran Azure PowerShell cmdlet 'leri ve PowerShell betiği ile Stream Analytics kaynakları izlemeyi ve yönetmeyi öğrenin.
@@ -542,26 +542,25 @@ Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-
 Bu PowerShell komutu, StreamingJob içindeki çıktı çıkışının bağlantı durumunu sınar.  
 
 ## <a name="get-support"></a>Destek alma
-Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin. 
+Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](/answers/topics/azure-stream-analytics.html)deneyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Akış Analizi Sorgu Dili Başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](/rest/api/streamanalytics/)
 
-[msdn-switch-azuremode]: https://msdn.microsoft.com/library/dn722470.aspx
-[powershell-install]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
-[msdn-rest-api-create-stream-analytics-job]: https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal
-[msdn-rest-api-create-stream-analytics-input]: https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs
-[msdn-rest-api-create-stream-analytics-output]: https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs
-[msdn-rest-api-create-stream-analytics-transformation]: https://docs.microsoft.com/cli/azure/ext/stream-analytics/stream-analytics/transformation
+[msdn-switch-azuremode]: /previous-versions/azure/dn722470(v=azure.100)
+[powershell-install]: /powershell/azure/
+[msdn-rest-api-create-stream-analytics-job]: ./stream-analytics-quick-create-portal.md
+[msdn-rest-api-create-stream-analytics-input]: ./stream-analytics-define-inputs.md
+[msdn-rest-api-create-stream-analytics-output]: ./stream-analytics-define-outputs.md
+[msdn-rest-api-create-stream-analytics-transformation]: /cli/azure/ext/stream-analytics/stream-analytics/transformation
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
-
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

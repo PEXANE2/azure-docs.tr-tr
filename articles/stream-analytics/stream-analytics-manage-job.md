@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: cc9b91ce7e40d8f1efab060376a9641642a10472
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a07fccc79c34509d9d5b7073b1c28b3f60fe8f61
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101333"
+ms.locfileid: "93123702"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Öğretici: Stream Analytics ile telefon araması verilerini analiz edin ve sonuçları Power BI panoda görselleştirin
 
@@ -39,7 +39,7 @@ Başlamadan önce aşağıdaki işlemleri yapın:
 
 ## <a name="create-an-azure-event-hub"></a>Azure Olay Hub’ı oluşturma
 
-Stream Analytics’in sahte arama veri akışını analiz edebilmesi için verilerin Azure'a gönderilmesi gerekir. Bu öğreticide, [Azure Event Hub’ları](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs) kullanarak verileri Azure’a göndereceksiniz.
+Stream Analytics’in sahte arama veri akışını analiz edebilmesi için verilerin Azure'a gönderilmesi gerekir. Bu öğreticide, [Azure Event Hub’ları](../event-hubs/event-hubs-about.md) kullanarak verileri Azure’a göndereceksiniz.
 
 Bir olay hub'ı oluşturmak ve arama verilerini bu olay hub'ına göndermek için aşağıdaki adımları izleyin:
 
@@ -189,7 +189,7 @@ Son adım, işin dönüştürülmüş verileri yazabileceği bir çıkış havuz
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Giriş verilerini analiz etmek için sorgu tanımlama
 
-Bir sonraki adım, verileri gerçek zamanlı olarak analiz eden bir dönüşüm oluşturmaktır. Dönüştürme sorgusunu [Stream Analytics sorgu dilini](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanarak tanımlarsınız. Bu öğreticide kullanılan sorgu, telefon verilerindeki sahte aramaları algılar.
+Bir sonraki adım, verileri gerçek zamanlı olarak analiz eden bir dönüşüm oluşturmaktır. Dönüştürme sorgusunu [Stream Analytics sorgu dilini](/stream-analytics-query/stream-analytics-query-language-reference) kullanarak tanımlarsınız. Bu öğreticide kullanılan sorgu, telefon verilerindeki sahte aramaları algılar.
 
 Bu örnekte sahte aramalar, aynı kullanıcı tarafından beş saniye içinde ancak farklı konumlardan gerçekleştirilmiştir. Örneğin, bir kullanıcı mantıksal olarak aynı anda hem ABD’den hem de Avustralya’dan arama yapamaz. Stream Analytics işiniz için dönüştürme sorgusu tanımlama amacıyla:
 
@@ -210,7 +210,7 @@ Bu örnekte sahte aramalar, aynı kullanıcı tarafından beş saniye içinde an
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   Sahte aramaları denetlemek için `CallRecTime` değerine göre akış verilerinde iç birleşim uygulayabilirsiniz. Daha sonra `CallingIMSI` değerin (kaynak numarası) aynı olduğu, ancak `SwitchNum` değer (ülke/kaynak bölge) farklı olan çağrı kayıtlarını arayabilirsiniz. Akış verileriyle bir JOIN işlemi kullandığınızda birleştirme, eşleşen satırların zaman içinde ne kadar ayrılabildiğine ilişkin bazı sınırlar sağlamalıdır. Veri akışı sonsuz olduğundan ilişki için zaman sınırları, birleştirme işleminin **ON** yan tümcesi içinde [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics) işlevi kullanılarak belirtilir.
+   Sahte aramaları denetlemek için `CallRecTime` değerine göre akış verilerinde iç birleşim uygulayabilirsiniz. Daha sonra `CallingIMSI` değerin (kaynak numarası) aynı olduğu, ancak `SwitchNum` değer (ülke/kaynak bölge) farklı olan çağrı kayıtlarını arayabilirsiniz. Akış verileriyle bir JOIN işlemi kullandığınızda birleştirme, eşleşen satırların zaman içinde ne kadar ayrılabildiğine ilişkin bazı sınırlar sağlamalıdır. Veri akışı sonsuz olduğundan ilişki için zaman sınırları, birleştirme işleminin **ON** yan tümcesi içinde [DATEDIFF](/stream-analytics-query/datediff-azure-stream-analytics) işlevi kullanılarak belirtilir.
 
    Bu sorgu, **DATEDIFF** işlevi dışında normal bir SQL JOIN gibi olur. Bu sorguda kullanılan **DATEDIFF** işlevi Stream Analytics’e özeldir ve `ON...BETWEEN` yan tümcesi içinde görünmelidir.
 
@@ -262,7 +262,7 @@ Bu örnekte sahte aramalar, aynı kullanıcı tarafından beş saniye içinde an
 
 ## <a name="embedding-your-power-bi-dashboard-in-a-web-application"></a>Power BI panonuzu bir Web uygulamasına katıştırma
 
-Öğreticinin bu bölümünde, panonuzu eklemek için Power BI ekibi tarafından oluşturulan örnek bir [ASP.net](https://asp.net/) Web uygulamasını kullanacaksınız. Pano ekleme hakkında daha fazla bilgi için [Power BI ile ekleme](https://docs.microsoft.com/power-bi/developer/embedding) başlıklı makaleye bakın.
+Öğreticinin bu bölümünde, panonuzu eklemek için Power BI ekibi tarafından oluşturulan örnek bir [ASP.net](https://asp.net/) Web uygulamasını kullanacaksınız. Pano ekleme hakkında daha fazla bilgi için [Power BI ile ekleme](/power-bi/developer/embedding) başlıklı makaleye bakın.
 
 Uygulamayı ayarlamak için [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub deposuna gidin ve **verilerin sahip olduğu Kullanıcı** bölümündeki yönergeleri izleyin ( **tümleştirin-Web-App** alt bölümünün altındaki yeniden yönlendirme ve ana sayfa URL 'lerini kullanın). Pano örneğini kullandığımızdan, [GitHub deposunda](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/Embed%20for%20your%20organization/)bulunan **tümleştirin-Web-App** örnek kodunu kullanın.
 Uygulamayı tarayıcınızda çalıştırmaya başladıktan sonra, daha önce oluşturduğunuz panoyu web sayfasına eklemek için şu adımları uygulayın:
