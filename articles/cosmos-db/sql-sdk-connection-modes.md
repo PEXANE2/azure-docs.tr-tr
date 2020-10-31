@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d88d52f67274d14836520494580e9208ce4eecbe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 95396f28fd835091258bccbfdb0a0c0eafebea91
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284505"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93093580"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>SQL SDK bağlantı modlarını Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de gözlemlenen istemci tarafı gecikme süresi için önemli performans etkilerine sahiptir. Azure Cosmos DB, HTTPS üzerinden ağ geçidi modu adlı basit, açık bir yeniden programlama modeli sunar. Ayrıca, iletişim modelinde da daha fazla olan ve ilk kimlik doğrulaması için TLS ve doğrudan mod adlı trafiği şifrelemek için etkin bir TCP protokolü sunar.
 
@@ -34,7 +35,7 @@ Kullanılabilir iki bağlantı modu şunlardır:
      
 :::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Azure Cosmos DB bağlantı modları" border="false":::
 
-Bu bağlantı modları temelde, veri düzleminin istek gösteren yolu-belge okuma ve yazma işlemlerini, istemci makinenizden Azure Cosmos DB arka uçtaki bölümlere göre alır. Doğrudan mod, en iyi performans için tercih edilen seçenektir. istemcinin TCP bağlantılarını Azure Cosmos DB arka uçtaki bölümlerle doğrudan açmasına olanak sağlar ve istekleri doğrudan bir aracı olmadan *doğrudan*gönderebilirsiniz. Buna karşılık, ağ geçidi modunda, istemciniz tarafından yapılan istekler, Azure Cosmos DB Ön uçtaki "ağ geçidi" sunucusuna yönlendirilir ve bu da isteklerinizi Azure Cosmos DB arka uçta uygun bölümlere (ler) gönderir.
+Bu bağlantı modları temelde, veri düzleminin istek gösteren yolu-belge okuma ve yazma işlemlerini, istemci makinenizden Azure Cosmos DB arka uçtaki bölümlere göre alır. Doğrudan mod, en iyi performans için tercih edilen seçenektir. istemcinin TCP bağlantılarını Azure Cosmos DB arka uçtaki bölümlerle doğrudan açmasına olanak sağlar ve istekleri doğrudan bir aracı olmadan *doğrudan* gönderebilirsiniz. Buna karşılık, ağ geçidi modunda, istemciniz tarafından yapılan istekler, Azure Cosmos DB Ön uçtaki "ağ geçidi" sunucusuna yönlendirilir ve bu da isteklerinizi Azure Cosmos DB arka uçta uygun bölümlere (ler) gönderir.
 
 ## <a name="service-port-ranges"></a>Hizmet bağlantı noktası aralıkları
 

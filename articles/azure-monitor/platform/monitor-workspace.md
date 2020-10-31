@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 9a70dcbabea9bc55703a5e9875df05b534eb372a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 07d9ae0d7cdf8e823bb59cb376d40cdf846bb2cb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674756"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092764"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanının sistem durumunu izleme
 Azure Izleyici 'de Log Analytics çalışma alanınızın performansını ve kullanılabilirliğini sürdürmek için, ortaya çıkan sorunları önceden tespit etmeniz gerekir. Bu makalede, [işlem](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) tablosundaki verileri kullanarak Log Analytics çalışma alanınızın sistem durumunun nasıl izleneceği açıklanır. Bu tablo her Log Analytics çalışma alanına dahildir ve çalışma alanınızda oluşan hata ve uyarıları içerir. Çalışma alanınızda önemli olaylar olduğunda, bu verileri düzenli olarak gözden geçirmeniz ve uyarı oluşturmanız gerekir.
@@ -60,8 +60,8 @@ Alma işlemleri, Azure Log Analytics çalışma alanı sınırlarına ulaşma ha
 | Veriyi. | Hata | Yapılandırma hatası algılandı. | |
 | Veri toplama | Hata   | İstek, ayarlanan gün sayısından daha önce oluşturulduğundan veriler bırakıldı. | [Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme](manage-cost-storage.md#alert-when-daily-cap-reached)
 | Veri toplama | Bilgi    | Koleksiyon makinesi yapılandırması algılandı.| |
-| Veri toplama | Bilgi    | Yeni gün nedeniyle veri toplama başlatıldı. | [Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme](/manage-cost-storage.md#alert-when-daily-cap-reached) |
-| Veri toplama | Uyarı | Günlük sınıra ulaşıldığından veri toplama durdu.| [Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme](/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| Veri toplama | Bilgi    | Yeni gün nedeniyle veri toplama başlatıldı. | [Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme](/azure/azure-monitor/platform/manage-cost-storage#alert-when-daily-cap-reached) |
+| Veri toplama | Uyarı | Günlük sınıra ulaşıldığından veri toplama durdu.| [Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme](/azure/azure-monitor/platform/manage-cost-storage#alert-when-daily-cap-reached) |
 | Veri işleme | Hata   | JSON biçimi geçersiz. | [HTTP Veri Toplayıcı API 'SI ile günlük verilerini Azure Izleyici 'ye gönderme (Genel Önizleme)](data-collector-api.md#request-body) | 
 | Veri işleme | Uyarı | Değer izin verilen en büyük boyuta kırpılmıştır. | [Azure Izleyici hizmeti sınırları](../service-limits.md#log-analytics-workspaces) |
 | Veri işleme | Uyarı | Boyut sınırına ulaşıldığından alan değeri kırpılmış. | [Azure Izleyici hizmeti sınırları](../service-limits.md#log-analytics-workspaces) | 

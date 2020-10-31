@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2c52f909cf3cc77b4f5e40ee9804d0c473e575c5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6f5da1d17722f89bee88a4b69177583e095eeac3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85601947"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094294"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Bing Video Arama API'si nedir?
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bing Video Arama API'si, hizmet ve uygulamalarınıza video arama özellikleri eklemenizi kolaylaştırır. API ile Kullanıcı arama sorguları göndererek, [Bing video](https://www.bing.com/video)'ya benzer ilgili ve yüksek kaliteli videoları alabilir ve görüntüleyebilirsiniz. Yalnızca videoları içeren arama sonuçları için bu API 'YI kullanın. [Bing Web araması API'si](../bing-web-search/search-the-web.md) , Web sayfaları, videolar, Haberler ve görüntüler dahil olmak üzere diğer Web içeriği türlerini döndürebilir.
 

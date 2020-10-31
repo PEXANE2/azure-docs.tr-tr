@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb97f9ee822c808057139bd25b2e4f43c48a2e48
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ec4ec5b3ea522200562d05d1891f46e69c9e5ca8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490518"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092169"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB 'de IP güvenlik duvarını yapılandırma
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Hesabınızda depolanan verilerin güvenliğini sağlamak için Azure Cosmos DB güçlü bir karma tabanlı İleti Kimlik Doğrulama Kodu (HMAC) kullanan gizli tabanlı bir yetkilendirme modelini destekler. Ayrıca, Azure Cosmos DB gelen güvenlik duvarı desteği için IP tabanlı erişim denetimlerini destekler. Bu model geleneksel bir veritabanı sisteminin güvenlik duvarı kurallarına benzer ve hesabınıza ek bir güvenlik düzeyi sağlar. Güvenlik duvarları sayesinde Azure Cosmos hesabınızı yalnızca onaylanan bir makine ve/veya bulut hizmeti kümesinden erişilebilen şekilde yapılandırabilirsiniz. Azure Cosmos veritabanınızda bu onaylanan makine ve hizmet kümelerinden depolanan verilere erişim, çağıranın geçerli bir yetkilendirme belirteci sunmasını gerektirir.
 
@@ -34,7 +35,7 @@ IP güvenlik duvarlarını kullanarak Azure Cosmos DB hesabınızda depolanan ve
 
 ## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Azure portal kullanarak bir IP güvenlik duvarı yapılandırma
 
-Azure portal IP erişim denetimi ilkesini ayarlamak için, Azure Cosmos DB hesabı sayfasına gidin ve gezinti menüsünde **güvenlik duvarı ve sanal ağlar** ' ı seçin. Değerden **erişime Izin ver** ' i **Seçili ağlara**değiştirin ve ardından **Kaydet**' i seçin.
+Azure portal IP erişim denetimi ilkesini ayarlamak için, Azure Cosmos DB hesabı sayfasına gidin ve gezinti menüsünde **güvenlik duvarı ve sanal ağlar** ' ı seçin. Değerden **erişime Izin ver** ' i **Seçili ağlara** değiştirin ve ardından **Kaydet** ' i seçin.
 
 :::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="Azure portal güvenlik duvarı sayfasının nasıl açılacağını gösteren ekran görüntüsü":::
 
@@ -75,7 +76,7 @@ Azure portal geliştirmeyi basitleştirmek için, istemci makinenizin IP 'sini b
 
 Portal, istemci IP adresini otomatik olarak algılar. Makinenizin istemci IP adresi veya ağ geçidinizin IP adresi olabilir. İş yüklerinizi üretime almadan önce bu IP adresini kaldırdığınızdan emin olun.
 
-Geçerli IP 'nizi IP listesine eklemek için **GEÇERLI IP 'Yi Ekle**' yi seçin. Sonra **Kaydet**'i seçin.
+Geçerli IP 'nizi IP listesine eklemek için **GEÇERLI IP 'Yi Ekle** ' yi seçin. Sonra **Kaydet** 'i seçin.
 
 :::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Azure portal güvenlik duvarı sayfasının nasıl açılacağını gösteren ekran görüntüsü":::
 
@@ -211,7 +212,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 Aşağıdaki seçenekleri kullanarak bir IP erişim denetimi ilkesiyle ilgili sorunları çözebilirsiniz:
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Azure Cosmos DB hesabınız için bir IP erişim denetimi ilkesi etkinleştirerek, hesabınıza verilen IP adresi aralıkları listesinin dışındaki tüm istekleri engellenir. Kapsayıcılara göz atma ve belge sorgulama gibi portal veri düzlemi işlemlerini etkinleştirmek için, portalda **güvenlik duvarı** bölmesini kullanarak Azure Portal erişime açıkça izin vermeniz gerekir.
 

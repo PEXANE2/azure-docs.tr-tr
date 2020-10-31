@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: b4bc291c21ca1ccabec3cfd9544deaa5d45fcf51
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7fde67ab9b9160bb89493748d09e83bd9cfcff34
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787202"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091710"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure dijital TWINS sorunlarını giderme: ölçümler
 
@@ -64,7 +64,7 @@ API istekleriyle yapılacak ölçümler:
 Faturalandırma ile yapılacak ölçümler:
 
 >[!NOTE]
-> Önizleme süresince **faturalandırma sıfır maliyetlidir** . Bu ölçümler seçilebilir listede görüntülenmeye devam ederken, önizleme sırasında uygulanmaz ve hizmet Önizleme dışına çıkana kadar sıfır olarak kalır.
+>Bu ölçümler hala seçilebilir listesinde gösterilirken, hizmette yeni fiyatlandırma kullanılabilir hale gelene kadar bunlar sıfır olarak kalır. Daha fazla bilgi için bkz. [*Azure dijital TWINS fiyatlandırması*](https://azure.microsoft.com/pricing/details/digital-twins/).
 
 | Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |

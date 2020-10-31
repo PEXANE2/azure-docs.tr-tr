@@ -8,14 +8,15 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 2a1e91b4c801b573e566a95950d150a2b3c4788e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad3dfc8c86d22e58377ebfbdb94b2beb004ded56
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91564927"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092475"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB bir Cassandra API tabloya örnek veri yükleme
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Bir geliştirici olarak, anahtar/değer çiftleri kullanan uygulamalarınız olabilir. Anahtar/değer verilerini depolamak ve yönetmek için Azure Cosmos DB Cassandra API hesabı kullanabilirsiniz. Bu öğreticide, bir Java uygulaması kullanarak Azure Cosmos DB bir Cassandra API hesabındaki bir tabloya örnek Kullanıcı verilerinin nasıl yükleneceği gösterilmektedir. Java uygulaması, [Java sürücüsünü](https://github.com/datastax/java-driver) kullanır ve Kullanıcı kimliği, Kullanıcı adı ve Kullanıcı şehri gibi kullanıcı verilerini yükler. 
 

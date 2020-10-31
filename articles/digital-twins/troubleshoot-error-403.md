@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: d821d6dacc2620988c32e63439ec2e039819e0a5
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: aeae1f1a99d1fa574df8202efd2405232855628b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495905"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091812"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Hizmet isteği başarısız oldu. Durum: 403 (yasak)
 
@@ -52,7 +52,7 @@ Bu rolün öğesinden farklı olduğunu unutmayın...
 
 #### <a name="fix-issues"></a>Sorunları giderme 
 
-Bu rol ataması yoksa, Azure **aboneliğinizde** sahip rolü olan birinin Azure **dijital**TWINS örneğinde Azure dijital *TWINS veri sahibi* rolünü vermesi için aşağıdaki komutu çalıştırması gerekir. 
+Bu rol ataması yoksa, Azure **aboneliğinizde** sahip rolü olan birinin Azure **dijital** TWINS örneğinde Azure dijital *TWINS veri sahibi* rolünü vermesi için aşağıdaki komutu çalıştırması gerekir. 
 
 Abonelikte bir sahibiyseniz, bu komutu kendiniz çalıştırabilirsiniz. Değilseniz, bu komutu sizin adınıza çalıştırmak için bir sahibine başvurun.
 
@@ -60,7 +60,7 @@ Abonelikte bir sahibiyseniz, bu komutu kendiniz çalıştırabilirsiniz. Değils
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-Bu rol gereksinimi ve atama süreci hakkında daha fazla bilgi için bkz. *nasıl yapılır: bir örnek ve kimlik doğrulaması ayarlama (CLI veya portal)*. [ *Set up your user's access permissions* ](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)
+Bu rol gereksinimi ve atama süreci hakkında daha fazla bilgi için bkz. *nasıl yapılır: bir örnek ve kimlik doğrulaması ayarlama (CLI veya portal)* . [ *Set up your user's access permissions*](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)
 
 Bu rol ataması zaten varsa *ve* bir istemci uygulamasının kimliğini doğrulamak Için BIR Azure AD uygulama kaydı kullanıyorsanız, bu çözüm 403 sorununu gidermezse sonraki çözüme devam edebilirsiniz.
 

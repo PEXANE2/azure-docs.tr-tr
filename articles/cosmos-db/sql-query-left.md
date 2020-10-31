@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 0eac35a91e4d5158335d6797d49a09f8f6f391e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7bf72e17e778babb5022db514b12d8c17011417
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303758"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091965"
 ---
 # <a name="left-azure-cosmos-db"></a>Sol (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Belirtilen sayıda karakter içeren bir dizenin sol kısmını döndürür.  
   
 ## <a name="syntax"></a>Söz dizimi

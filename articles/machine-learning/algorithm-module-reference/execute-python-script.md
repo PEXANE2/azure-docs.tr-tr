@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: d4934d784e871988b5bc30f7b7cf8c09651576e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e07e12e82d96b591db324673f4c24b9074128065
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330384"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93093002"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
@@ -37,7 +37,7 @@ Azure Machine Learning, Python 'un, veri işleme için birçok yaygın yardımc�
 
 Tüm liste için bkz. [önceden yüklenmiş Python paketleri](#preinstalled-python-packages)bölümü.
 
-Önceden yüklenmiş listede olmayan paketleri yüklemek için (örneğin, *scikit-misc*), betiğe aşağıdaki kodu ekleyin: 
+Önceden yüklenmiş listede olmayan paketleri yüklemek için (örneğin, *scikit-misc* ), betiğe aşağıdaki kodu ekleyin: 
 
 ```python
 import os
@@ -110,17 +110,17 @@ Execute Python betik modülü, başlangıç noktası olarak kullanabileceğiniz 
 
 1. İşlem hattınızla **Python betiği yürütme** modülünü ekleyin.
 
-2. Giriş için kullanmak istediğiniz tasarımcıdan **dataSet1** herhangi bir veri kümesini ekleyin ve bağlayın. Bu veri kümesine Python betiğinizdeki **DataFrame1**olarak başvurun.
+2. Giriş için kullanmak istediğiniz tasarımcıdan **dataSet1** herhangi bir veri kümesini ekleyin ve bağlayın. Bu veri kümesine Python betiğinizdeki **DataFrame1** olarak başvurun.
 
     Veri kümesinin kullanımı isteğe bağlıdır. Python kullanarak veri oluşturmak istiyorsanız veya verileri doğrudan modüle aktarmak için Python kodu ' nu kullanın.
 
-    Bu modül, **DataSet2**üzerindeki ikinci bir veri kümesinin eklenmesini destekler. Python betiğinizdeki ikinci veri kümesine **DataFrame2**olarak başvurun.
+    Bu modül, **DataSet2** üzerindeki ikinci bir veri kümesinin eklenmesini destekler. Python betiğinizdeki ikinci veri kümesine **DataFrame2** olarak başvurun.
 
     Azure Machine Learning depolanan veri kümeleri, bu modülle yüklendiğinde otomatik olarak Pandas veri çerçevelerine dönüştürülür.
 
     ![Python giriş eşlemesini Yürüt](media/module/python-module.png)
 
-4. Yeni Python paketleri veya kodu eklemek için, bu özel kaynakları içeren daraltılmış dosyayı **betik paketi** bağlantı noktasına bağlayın. Ya da betiğinizin 16 KB 'den büyük olması durumunda, CommandLine gibi hataların *16597 karakter sınırını aşması*Için **betik paketi** bağlantı noktasını kullanın. 
+4. Yeni Python paketleri veya kodu eklemek için, bu özel kaynakları içeren daraltılmış dosyayı **betik paketi** bağlantı noktasına bağlayın. Ya da betiğinizin 16 KB 'den büyük olması durumunda, CommandLine gibi hataların *16597 karakter sınırını aşması* Için **betik paketi** bağlantı noktasını kullanın. 
 
     
     1. Betiği ve diğer özel kaynakları bir ZIP dosyasına paketleyin.
@@ -129,7 +129,10 @@ Execute Python betik modülü, başlangıç noktası olarak kullanabileceğiniz 
     1. Veri kümesi modülünü, **R betiği yürütme** modülünün **betik paketi** bağlantı noktasına bağlayın.
     
     Karşıya yüklenen sıkıştırılmış arşivde bulunan herhangi bir dosya, işlem hattı yürütmesi sırasında kullanılabilir. Arşiv bir dizin yapısı içeriyorsa, yapı korunur.
-    
+ 
+    > [!WARNING]
+    > Uygulama yerleşik hizmetler için ayrılmış bir **sözcük olduğundan,** **uygulamayı** klasörün veya betiğinizin adı **olarak kullanmayın.** Ancak gibi diğer ad alanlarını da kullanabilirsiniz `app123` .
+   
     Aşağıda, bir Python betik dosyası ve bir txt dosyası içeren bir betik paketi örneği verilmiştir:
       
     > [!div class="mx-imgBorder"]
@@ -182,7 +185,7 @@ Execute Python betik modülü, başlangıç noktası olarak kullanabileceğiniz 
     İki veri kümesi tasarımcıya döndürülebilir ve bu tür bir dizi olmalıdır `pandas.DataFrame` . Python kodunuzda başka çıktılar oluşturabilir ve bunları doğrudan Azure depolama 'ya yazabilirsiniz.
 
     > [!WARNING]
-    > **Python betik modülünü yürütme**Içindeki bir veritabanına veya diğer dış depolama alanına **bağlanmanız önerilmez.** [Veri alma modülünü](./import-data.md) ve [dışarı aktarma modülünü](./export-data.md) kullanabilirsiniz     
+    > **Python betik modülünü yürütme** Içindeki bir veritabanına veya diğer dış depolama alanına **bağlanmanız önerilmez.** [Veri alma modülünü](./import-data.md) ve [dışarı aktarma modülünü](./export-data.md) kullanabilirsiniz     
 
 6. İşlem hattını gönderme.
 
@@ -194,9 +197,9 @@ Katıştırılmış Python kodu tarafından yapılan hesaplamaların sonuçları
 
 Modül iki veri kümesi döndürür:  
   
-+ Bir Python betiğinde ilk döndürülen Pandas veri çerçevesi tarafından tanımlanan **sonuçlar veri kümesi 1**.
++ Bir Python betiğinde ilk döndürülen Pandas veri çerçevesi tarafından tanımlanan **sonuçlar veri kümesi 1** .
 
-+ **Sonuç veri kümesi 2**, bir Python betiğinin ikinci döndürülen Pandas veri çerçevesi tarafından tanımlanır.
++ **Sonuç veri kümesi 2** , bir Python betiğinin ikinci döndürülen Pandas veri çerçevesi tarafından tanımlanır.
 
 ## <a name="preinstalled-python-packages"></a>Önceden yüklenmiş Python paketleri
 Önceden yüklenmiş paketler şunlardır:

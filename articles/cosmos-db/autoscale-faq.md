@@ -6,14 +6,15 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: 5905471dad5cf4e2e8191894af52c503c23e9036
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 58e7d54750da86b8a700a4f2195bc4cfa012ae4b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277963"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092696"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 'de otomatik ölçeklendirme sağlanan aktarım hızı hakkında sık sorulan sorular
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Otomatik ölçeklendirme sağlanan verimlilik sayesinde Azure Cosmos DB, kullanımı temel alarak veritabanınızın veya kapsayıcının RU/s 'sini otomatik olarak yönetip ölçeklendirecektir. Bu makalede, otomatik ölçeklendirme hakkında sıkça sorulan sorular yanıtlanmaktadır.
 
@@ -108,9 +109,9 @@ En fazla ru/sn 'yi artırmak için bir istek gönderdiğinizde, hizmet, en yüks
 #### <a name="lowering-the-max-rus"></a>En büyük RU/sn 'yi kısın
 En büyük RU/s 'yi düşürürseniz, en küçük değer olarak ayarlayabilirsiniz: `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)` , en yakın 1000 ru/sn 'ye yuvarlanır. 
 
-Örnek #1:20.000 RU/sn 'nin (2000-20.000 RU/sn) ve 50 GB depolama alanı için en fazla RU/sn içeren bir otomatik ölçeklendirme kapsayıcısına sahip olduğunuzu varsayalım. En düşük, en düşük değer: en büyük RU/s ' yi şu şekilde ayarlayabilirsiniz: MAX (4000, 20.000/10, **50 * 100**) = 5000 ru/s (500-5000 ru/s arasında ölçeklendirme).
+Örnek #1:20.000 RU/sn 'nin (2000-20.000 RU/sn) ve 50 GB depolama alanı için en fazla RU/sn içeren bir otomatik ölçeklendirme kapsayıcısına sahip olduğunuzu varsayalım. En düşük, en düşük değer: en büyük RU/s ' yi şu şekilde ayarlayabilirsiniz: MAX (4000, 20.000/10, **50 * 100** ) = 5000 ru/s (500-5000 ru/s arasında ölçeklendirme).
 
-Örnek #2:100.000 RU/sn ve 100 GB depolama alanı için en fazla RU/sn içeren bir otomatik ölçeklendirme kapsayıcısına sahip olduğunuzu varsayalım. Şimdi, en fazla RU/s 'yi 150.000 RU/sn 'ye ölçeklendirebilirsiniz (15.000-150.000 RU/s arasında ölçeklendirme). En düşük, en düşük değer şu anda en fazla RU/sn 'yi ayarlayabilirsiniz: MAX (4000, **150.000/10**, 100 * 100) = 15.000 ru/s (1500-15.000 ru/s arasında ölçeklendirme). 
+Örnek #2:100.000 RU/sn ve 100 GB depolama alanı için en fazla RU/sn içeren bir otomatik ölçeklendirme kapsayıcısına sahip olduğunuzu varsayalım. Şimdi, en fazla RU/s 'yi 150.000 RU/sn 'ye ölçeklendirebilirsiniz (15.000-150.000 RU/s arasında ölçeklendirme). En düşük, en düşük değer şu anda en fazla RU/sn 'yi ayarlayabilirsiniz: MAX (4000, **150.000/10** , 100 * 100) = 15.000 ru/s (1500-15.000 ru/s arasında ölçeklendirme). 
 
 Paylaşılan bir üretilen iş veritabanı için, en fazla RU/sn 'yi düşürürseniz, en düşük değer olan en küçük `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))` 1000 ru/sn 'ye yuvarlanır.  
 

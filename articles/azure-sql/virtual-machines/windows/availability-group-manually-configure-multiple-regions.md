@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f6d5a9da238c520e2e0ec70ac312dd112aad2fe8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789990"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094493"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Farklı Azure bölgelerinde SQL Server Always on kullanılabilirlik grubu yapılandırma
 
@@ -31,7 +31,7 @@ Bu makale Kaynak Yöneticisi modundaki Azure sanal makineleri için geçerlidir.
 
 Aşağıdaki görüntüde, Azure sanal makinelerinde bir kullanılabilirlik grubunun ortak dağıtımı gösterilmektedir:
 
-   ![Kullanılabilirlik Grubu](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
+   ![Azure Yük dengeleyiciyi ve "Windows sunucu yük devretme kümesi" ve "Always on kullanılabilirlik grubu" ile kullanılabilirlik kümesini gösteren diyagram.](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
 
 Bu dağıtımda, tüm sanal makineler tek bir Azure bölgesidir. Kullanılabilirlik grubu çoğaltmalarının, SQL-1 ve SQL-2 ' de otomatik yük devretme ile zaman uyumlu yürütmesi olabilir. Bu mimariyi derlemek için bkz. [kullanılabilirlik grubu şablonu veya öğreticisi](availability-group-overview.md).
 
@@ -53,7 +53,7 @@ Kullanılabilirlik grubu çoğaltmaları farklı Azure bölgelerindeki Azure san
 
 Aşağıdaki diyagramda, ağların veri merkezleri arasında nasıl iletişim kurduğu gösterilmektedir.
 
-   ![Kullanılabilirlik Grubu](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
+   ![Farklı Azure bölgelerindeki, V P N ağ geçitleri kullanılarak iletişim kuran iki sanal ağı gösteren diyagram.](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
 
 >[!IMPORTANT]
 >Bu mimari, Azure bölgeleri arasında çoğaltılan veriler için giden veri ücretleri doğurur. Bkz. [bant genişliği fiyatlandırması](https://azure.microsoft.com/pricing/details/bandwidth/).  
@@ -98,7 +98,7 @@ Uzak bir veri merkezinde çoğaltma oluşturmak için aşağıdaki adımları uy
 
    IP adresi kaynağını Yük Devretme Kümesi Yöneticisi ' de oluşturabilirsiniz. Kümenin adını seçin, ardından küme **çekirdek kaynakları** altında küme adına sağ tıklayın ve **Özellikler** ' i seçin: 
 
-   ![Küme özellikleri](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
+   !["Yük Devretme Kümesi Yöneticisi" kümesini bir küme adı, "sunucu adı" ve "Özellikler" seçilmiş olarak gösteren ekran görüntüsü.](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
    **Özellikler** iletişim kutusunda, **IP adresi** altında **Ekle** ' yi seçin ve ardından uzak ağ bölgesinden küme adının IP adresini ekleyin. **IP adresi** Iletişim kutusunda **Tamam** ' ı SEÇIN ve ardından yeni IP adresini kaydetmek için **küme özellikleri** iletişim kutusunda yeniden **Tamam** ' ı seçin. 
 

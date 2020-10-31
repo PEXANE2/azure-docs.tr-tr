@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
-ms.openlocfilehash: 7de38097acdbfa1f9c9b90f3051c68dec5465b32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc9c7c2f06b9d39243b8593b20ddeb7ffa2f886c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80758033"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092373"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API ikincil dizin oluşturma
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB Cassandra API, platformda devralınan dizin oluşturma gücünü göstermek için temel dizin oluşturma altyapısını kullanır. Ancak, çekirdek SQL API 'sinin aksine, Azure Cosmos DB Cassandra API varsayılan olarak tüm öznitelikleri dizine eklemez. Bunun yerine, Apache Cassandra ile aynı şekilde davranan belirli özniteliklerde bir dizin oluşturmak için ikincil dizin oluşturmayı destekler.  
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 358fccec56f81ee41acc2898751b8848beaeb168
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: fc60ca462a2891cc022847e056e32239f2675f70
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905642"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094583"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Hızlı başlangıç: Azure DDoS koruma standardı oluşturma ve yapılandırma
 
@@ -63,7 +63,7 @@ Bu hızlı başlangıçta bir DDoS koruma planı oluşturacak ve bunu bir sanal 
     | Abonelik    | Aboneliğinizi seçin.                                    |
     | Kaynak grubu  | **Mevcut olanı kullan** ' ı seçin ve ardından **myresourcegroup** öğesini seçin. |
     | Konum        | _Doğu ABD_ girin                                                    |
-    | DDoS koruma standardı | **Etkinleştir** ’i seçin. Seçtiğiniz plan, sanal ağdan aynı veya farklı bir abonelikte olabilir, ancak her iki aboneliğin de aynı Azure Active Directory kiracısıyla ilişkilendirilmesi gerekir.|
+    | DDoS Koruması Standart | **Etkinleştir** ’i seçin. Seçtiğiniz plan, sanal ağdan aynı veya farklı bir abonelikte olabilir, ancak her iki aboneliğin de aynı Azure Active Directory kiracısıyla ilişkilendirilmesi gerekir.|
 
 Sanal ağ için DDoS standardı etkinleştirildiğinde bir sanal ağı başka bir kaynak grubuna veya aboneliğe taşıyamazsınız. DDoS standart özellikli bir sanal ağı taşımanız gerekiyorsa, önce DDoS standardını devre dışı bırakın, sanal ağı taşıyın ve ardından DDoS standardını etkinleştirin. Taşıma işleminden sonra, sanal ağ içindeki tüm korumalı genel IP adresleri için otomatik olarak ayarlanan ilke eşikleri sıfırlanır.
 
@@ -84,8 +84,6 @@ Sanal ağ için DDoS standardı etkinleştirildiğinde bir sanal ağı başka bi
 3. Listeden DDoS koruması planınızı seçin.
 
 _Myvnet_ sanal ağının listelenmesi gerekir. 
-
-Benzetimler üzerinden test
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -114,4 +112,4 @@ DDoS koruma planını silmek istiyorsanız, önce tüm sanal ağların ilişkile
 DDoS koruma planınız için telemetri görüntüleme ve yapılandırma hakkında bilgi edinmek için öğreticilere devam edin.
 
 > [!div class="nextstepaction"]
-> [DDoS koruması telemetrisini görüntüleyin ve yapılandırın](telemetry-monitoring-alerting.md)
+> [DDoS konuma telemetrisini görüntüleme ve yapılandırma](telemetry-monitoring-alerting.md)

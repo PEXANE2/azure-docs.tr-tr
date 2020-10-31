@@ -5,25 +5,25 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 60a5f62d4ea23db1052b2e40d10775dfaa33c632
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fe3c737e0cbf6831e3abc37443e27926ed5e62b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91989713"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091785"
 ---
 ### <a name="functional-limits"></a>İşlevsel sınırlar
 
-Aşağıdaki tabloda, geçerli önizlemede Azure dijital TWINS 'in işlevsel sınırları listelenmiştir.
+Aşağıdaki tabloda, Azure dijital TWINS 'in işlevsel sınırları listelenmektedir.
 
-| Alan | Özellik | Varsayılan limit | Ayarlanabilir? |
+| Alan | Yetenek | Varsayılan limit | Ayarlanabilir? |
 | --- | --- | --- | --- |
 | Azure kaynağı | Bir bölgedeki Azure dijital TWINS örneği sayısı, abonelik başına | 10 | Yes |
 | Digital Twins | Bir Azure dijital TWINS örneğindeki TWINS sayısı | 200,000 | Yes |
 | Digital Twins | Tek bir ikizi gelen ilişki sayısı | 5.000 | Hayır |
 | Digital Twins | Tek bir ikizi giden ilişki sayısı | 5.000 | Hayır |
 | Digital Twins | Tek bir ikizi maksimum boyutu | 32 KB | Hayır |
-| Dijital TWINS API 'SI | Maksimum istek yükü boyutu | 32 KB | Hayır | 
+| Digital Twins | Maksimum istek yükü boyutu | 32 KB | Hayır | 
 | Yönlendirme | Tek bir Azure dijital TWINS örneği için uç nokta sayısı | 6 | Hayır |
 | Yönlendirme | Tek bir Azure dijital TWINS örneği için yol sayısı | 6 | Yes |
 | Modeller | Tek bir Azure dijital TWINS örneği içindeki model sayısı | 10,000 | Yes |
@@ -37,12 +37,14 @@ Aşağıdaki tabloda, geçerli önizlemede Azure dijital TWINS 'in işlevsel sı
 
 ### <a name="rate-limits"></a>Hız sınırları
 
-Bu tablo, farklı API 'lerin hız sınırlarını yansıtır.
+Aşağıdaki tablo, farklı API 'lerin hız sınırlarını yansıtır.
 
-| API | Özellik | Varsayılan limit | Ayarlanabilir? |
+| API | Yetenek | Varsayılan limit | Ayarlanabilir? |
 | --- | --- | --- | --- |
 | Modeller API 'SI | Saniye başına istek sayısı | 100 | Yes |
-| Dijital TWINS API 'SI | Saniye başına istek sayısı | 1.000 | Yes |
+| Dijital TWINS API 'SI | Saniye başına istek sayısı | 2.000 | Yes |
+| Dijital TWINS API 'SI | **Tüm TWINS ve ilişkiler** genelinde saniye başına oluşturma/silme işlemi sayısı | 50 | Yes |
+| Dijital TWINS API 'SI | **Tek bir ikizi** veya onun ilişkilerinde saniye başına oluşturma/güncelleştirme/silme işlemi sayısı | 10 | Hayır |
 | Sorgu API'si | Saniye başına istek sayısı | 500 | Yes |
 | Sorgu API'si | Saniye başına [sorgu birimi](../articles/digital-twins/concepts-query-units.md) | 4.000 | Yes |
 | Olay rotaları API 'SI | Saniye başına istek sayısı | 100 | Yes |
@@ -51,4 +53,4 @@ Bu tablo, farklı API 'lerin hız sınırlarını yansıtır.
 
 Azure Digital TWINS modellerine yönelik DTDL belgelerindeki veri türleri ve alanları için sınırlamalar, GitHub: [*dijital TWINS tanım dili (DTDL)-sürüm 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)' deki kendi Özellikler belgelerinde bulunabilir.
  
-Sorgu gecikme ayrıntıları ve Önizleme sırasında sorgu yazmaya yönelik diğer yönergeler [*, nasıl yapılır: ikizi grafiğini sorgulama*](../articles/digital-twins/how-to-query-graph.md)bölümünde bulunabilir.
+Sorgu gecikmesi ayrıntıları ve diğer sorgu sınırlamaları [*, nasıl yapılır: ikizi grafiğini sorgulama*](../articles/digital-twins/how-to-query-graph.md)bölümünde bulunabilir.

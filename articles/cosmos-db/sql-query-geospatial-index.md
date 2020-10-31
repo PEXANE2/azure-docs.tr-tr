@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: 546b664c74980b3522fefed82c00eec414641eaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f250c15dbb30736e3e89a301fc236a848bd05da2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326635"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092067"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Azure Cosmos DB Jeo uzamsal verileri dizinle
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB veritabanı altyapısını gerçekten şema belirsiz olacak şekilde tasarlıyoruz ve JSON için birinci sınıf desteğini sunduk. Azure Cosmos DB için en iyi duruma getirilmiş yazma veritabanı altyapısı, GeoJSON standardında temsil edilen uzamsal verileri yerel olarak anlamıştır.
 
-Bir Nutshell 'de geometri, coğrafi olmayan koordinatlardan 2B düzlemin üzerine yansıtıldıysa, daha sonra **quadtree**kullanılarak hücrelere aşamalı olarak bölünür. Bu hücreler, noktaların yerini koruyan bir **Tepbert alanı doldurma eğrisi**içindeki hücrenin konumuna göre 1G ile eşleştirilir. Ayrıca, konum verileri dizinlendiğinde, **mozaik döşeme**olarak bilinen bir işlemden geçer, diğer bir deyişle, bir konumdan kesişen tüm hücreler Azure Cosmos DB dizininde anahtar olarak tanımlanır ve saklanır. Sorgu zamanında, işaret ve çokgenler gibi bağımsız değişkenler de ilgili hücre KIMLIĞI aralıklarını ayıklamak için de tesseldir ve sonra dizinden veri almak için kullanılır.
+Bir Nutshell 'de geometri, coğrafi olmayan koordinatlardan 2B düzlemin üzerine yansıtıldıysa, daha sonra **quadtree** kullanılarak hücrelere aşamalı olarak bölünür. Bu hücreler, noktaların yerini koruyan bir **Tepbert alanı doldurma eğrisi** içindeki hücrenin konumuna göre 1G ile eşleştirilir. Ayrıca, konum verileri dizinlendiğinde, **mozaik döşeme** olarak bilinen bir işlemden geçer, diğer bir deyişle, bir konumdan kesişen tüm hücreler Azure Cosmos DB dizininde anahtar olarak tanımlanır ve saklanır. Sorgu zamanında, işaret ve çokgenler gibi bağımsız değişkenler de ilgili hücre KIMLIĞI aralıklarını ayıklamak için de tesseldir ve sonra dizinden veri almak için kullanılır.
 
 /* (Tüm yollar) için uzamsal dizin içeren bir dizin oluşturma ilkesi belirtirseniz, kapsayıcıda bulunan tüm veriler etkili uzamsal sorgular için dizinlenir.
 
@@ -36,11 +37,11 @@ Azure portal içinde **Veri Gezgini** **Jeo-uzamsal yapılandırması** nasıl a
 
 :::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="Jeo-uzamsal yapılandırma ayarlanıyor":::
 
-Ayrıca, `geospatialConfig` **Jeo-uzamsal yapılandırmayı**ayarlamak için .NET SDK 'sında de değişiklik yapabilirsiniz:
+Ayrıca, `geospatialConfig` **Jeo-uzamsal yapılandırmayı** ayarlamak için .NET SDK 'sında de değişiklik yapabilirsiniz:
 
 Belirtilmemişse, `geospatialConfig` Varsayılan olarak Coğrafya veri türü olur. `geospatialConfig`Öğesini değiştirdiğinizde, kapsayıcıdaki tüm mevcut Jeo uzamsal verilerin yeniden dizinlenir.
 
-İşte, Jeo-uzamsal veri türünü, `geometry` `geospatialConfig` özelliği ayarlanarak ve **sıçrama dingbox**ekleyerek olarak değiştirme örneği:
+İşte, Jeo-uzamsal veri türünü, `geometry` `geospatialConfig` özelliği ayarlanarak ve **sıçrama dingbox** ekleyerek olarak değiştirme örneği:
 
 ```csharp
     //Retrieve the container's details
@@ -111,10 +112,10 @@ Coğrafya veri türü ile benzer olan **geometri** veri türü ile, dizine eklen
 
 Sınırlayıcı kutu aşağıdaki özelliklerden oluşur:
 
-- **XMin**: en düşük dizinli x koordinatı
-- **yMin**: en düşük dizinli y koordinatı
-- **xmax**: en fazla dizinli x koordinatı
-- **YMax**: en fazla dizinli y koordinatı
+- **XMin** : en düşük dizinli x koordinatı
+- **yMin** : en düşük dizinli y koordinatı
+- **xmax** : en fazla dizinli x koordinatı
+- **YMax** : en fazla dizinli y koordinatı
 
 Geometrik veriler sonsuz olabilecek bir düzlemi kapladığı için sınırlayıcı bir kutu gereklidir. Ancak uzamsal dizinler, sınırlı bir alan gerektirir. **Coğrafya** veri türü Için, Dünya sınırı ve bir sınırlayıcı kutu ayarlamanız gerekmez.
 
