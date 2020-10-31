@@ -4,12 +4,12 @@ description: Linux üzerinde çalışma zamanını ve SDK'yı yükleyip yerel bi
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675277"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086899"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux üzerinde geliştirme ortamınızı hazırlama
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ Bu makaledeki adımlarda, Linux 'ta yerel olarak yüklediğiniz veya [Service Fa
 Bulutta veya şirket içinde barındırılan Service Fabric varlıklarını Azure Service Fabric komut satırı arabirimi (CLı) ile yönetebilirsiniz. CLI'yi yükleme hakkında bilgi için bkz. [Service Fabric CLI'sini ayarlama](./service-fabric-cli.md).
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme için şu işletim sistemi sürümleri desteklenir.
 
@@ -175,7 +175,7 @@ SDK yüklemesiyle birlikte gelen Service Fabric çalışma zamanı, aşağıdaki
 
 # <a name="container-based-local-cluster"></a>[Kapsayıcı tabanlı yerel küme](#tab/localclusteroneboxcontainer)
 
-[Küme Service Fabric](https://hub.docker.com/r/microsoft/service-fabric-onebox/)kapsayıcı tabanlı bir kutu başlatın.
+Kapsayıcı tabanlı [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) kümesi başlatın.
 
 1. Docker Kapsayıcıları dağıtabilmek için Moby 'yi yükler.
     ```bash

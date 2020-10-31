@@ -4,12 +4,12 @@ description: Azure Service Fabric üzerinde ilk Windows kapsayıcı uygulamanız
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: e8c3a0d60e10b1cf1f8a827cec8fcc25f3d33b05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a9eda23268bc06029292c3c5f10502216e3658
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564330"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087069"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 
@@ -25,7 +25,7 @@ Bir Service Fabric kümesindeki Windows kapsayıcısında mevcut olan bir uygula
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Şunları çalıştıran bir geliştirme bilgisayarı:
   * Visual Studio 2015 veya Visual Studio 2019.
@@ -38,8 +38,8 @@ Bir Service Fabric kümesindeki Windows kapsayıcısında mevcut olan bir uygula
   
 Kümeniz için gerekli olan kapsayıcılarla Windows Server sürümünü öğrenmek için, `ver` geliştirme makinenizde bir Windows komut isteminden komutunu çalıştırın:
 
-* Sürüm *x. x. 14323. x*içeriyorsa, [bir küme oluştururken](service-fabric-cluster-creation-via-portal.md), Işletim sistemi için *windowsserver 2016-Datacenter-with-containers* ' ı seçin.
-  * Sürüm *x. x. 16299. x*içeriyorsa, [bir küme oluştururken](service-fabric-cluster-creation-via-portal.md)Işletim sistemi Için *Windowsserveraltı Datacenter-Core-1709--containers* ' ı seçin.
+* Sürüm *x. x. 14323. x* içeriyorsa, [bir küme oluştururken](service-fabric-cluster-creation-via-portal.md), Işletim sistemi için *windowsserver 2016-Datacenter-with-containers* ' ı seçin.
+  * Sürüm *x. x. 16299. x* içeriyorsa, [bir küme oluştururken](service-fabric-cluster-creation-via-portal.md)Işletim sistemi Için *Windowsserveraltı Datacenter-Core-1709--containers* ' ı seçin.
 
 * Azure Container Registry’deki bir kayıt defteri - Azure aboneliğinizde [Kapsayıcı kayıt defteri oluşturun](../container-registry/container-registry-get-started-portal.md).
 
@@ -136,7 +136,7 @@ Uygulamayı çalıştırın:
 docker run -d --name my-web-site helloworldapp
 ```
 
-*name*, çalışan kapsayıcıya bir ad verir (kapsayıcı kimliği yerine).
+*name* , çalışan kapsayıcıya bir ad verir (kapsayıcı kimliği yerine).
 
 Kapsayıcı başladıktan sonra çalışan kapsayıcınıza bir tarayıcıdan bağlanabilmek için IP adresini bulun:
 ```
@@ -190,11 +190,11 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>Visual Studio’da kapsayıcıya alınmış hizmet oluşturma
 Service Fabric SDK’sı ve araçları, kapsayıcıya alınmış uygulamalar oluşturmanıza yardımcı olan bir hizmet şablonu sağlar.
 
-1. Visual Studio’yu çalıştırın. **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
-2. **Service Fabric uygulaması**’nı seçin, "MyFirstContainer" olarak adlandırın ve **Tamam**’a tıklayın.
-3. **Hizmet şablonları** listesinden **Kapsayıcı**’yı seçin.
+1. Visual Studio’yu çalıştırın. **Dosya**  >  **Yeni**  >  **Proje** ' yi seçin.
+2. **Service Fabric uygulaması** ’nı seçin, "MyFirstContainer" olarak adlandırın ve **Tamam** ’a tıklayın.
+3. **Hizmet şablonları** listesinden **Kapsayıcı** ’yı seçin.
 4. **Görüntü Adı** alanına, kapsayıcı deponuza gönderdiğiniz görüntünün dizini olan "myregistry.azurecr.io/samples/helloworldapp" değerini girin.
-5. Hizmetinize bir ad verin ve **Tamam**’a tıklayın.
+5. Hizmetinize bir ad verin ve **Tamam** ’a tıklayın.
 
 ## <a name="configure-communication"></a>İletişimi yapılandırma
 Kapsayıcıya alınmış hizmetin iletişim sağlayabilmesi için bir uç nokta gerekir. ServiceManifest.xml dosyasına protokol, bağlantı noktası ve tür bilgileriyle bir `Endpoint` öğesi ekleyin. Bu örnekte, 8081 numaralı sabit bağlantı noktası kullanılır. Hiçbir bağlantı noktası belirtilmemişse, uygulama bağlantı noktası aralığından rastgele bir bağlantı noktası seçilir. 
@@ -286,7 +286,7 @@ Windows, kapsayıcılar için iki yalıtım modunu destekler: İşlem ve Hyper-V
 
 Service Fabric, v6.1 sürümünden itibaren [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) olaylarını otomatik olarak sistem durumu raporuyla tümleştirir. Bu, kapsayıcınızda **HEALTHCHECK** özelliği etkinse kapsayıcının sistem durumuna ilişkin Docker tarafından bildirilen her değişiklik için Service Fabric’in durumu bildireceği anlamına gelir. *health_status* özelliği *healthy* olduğunda [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)’da **OK** şeklinde bir durum raporu görüntülenirken, *health_status* özelliği *unhealthy* olduğunda **WARNING** görünür. 
 
-En son v 6.4 yenileme sürümü ile başlayarak, Docker HEALTHCHECK değerlendirmelerinin hata olarak bildirilmesi gerektiğini belirtme seçeneğiniz vardır. Bu seçenek etkinleştirilirse, *health_status* *sağlıklı* olduğunda bir **Tamam** sistem durumu raporu görüntülenir ve *health_status* *sağlıksız*olduğunda **hata** görüntülenir.
+En son v 6.4 yenileme sürümü ile başlayarak, Docker HEALTHCHECK değerlendirmelerinin hata olarak bildirilmesi gerektiğini belirtme seçeneğiniz vardır. Bu seçenek etkinleştirilirse, *health_status* *sağlıklı* olduğunda bir **Tamam** sistem durumu raporu görüntülenir ve *health_status* *sağlıksız* olduğunda **hata** görüntülenir.
 
 Kapsayıcı durumunun izlenmesi için gerçekleştirilen gerçek denetimi gösteren **HEALTHCHECK** yönergesi, kapsayıcı görüntüsü oluşturulurken kullanılan Dockerfile dosyasında mevcut olmalıdır.
 
@@ -310,20 +310,20 @@ ApplicationManifest dosyasındaki **ContainerHostPolicies** kapsamında **Health
     </Policies>
 </ServiceManifestImport>
 ```
-Varsayılan olarak, *ıncludedockerhealthstatusınsystemhealthreport* **true**olarak ayarlanır, *RestartContainerOnUnhealthyDockerHealthStatus* **false**olarak ayarlanır ve *treatcontainerunhealthyıstatusaserror* **false**olarak ayarlanır. 
+Varsayılan olarak, *ıncludedockerhealthstatusınsystemhealthreport* **true** olarak ayarlanır, *RestartContainerOnUnhealthyDockerHealthStatus* **false** olarak ayarlanır ve *treatcontainerunhealthyıstatusaserror* **false** olarak ayarlanır. 
 
 *RestartContainerOnUnhealthyDockerHealthStatus* özelliği **true** olarak ayarlanırsa, tekrarlanan şekilde durumunun iyi olmadığı bildirilen kapsayıcılar yeniden başlatılır (muhtemelen diğer düğümlerde).
 
-*Treatcontainerunhealthystatusaserror* **değeri true**olarak ayarlanırsa, kapsayıcının *health_status* *sağlıksız*olduğunda **hata** durumu raporları görüntülenir.
+*Treatcontainerunhealthystatusaserror* **değeri true** olarak ayarlanırsa, kapsayıcının *health_status* *sağlıksız* olduğunda **hata** durumu raporları görüntülenir.
 
 Tüm Service Fabric kümesi için **HEALTHCHECK** tümleştirmesini devre dışı bırakmak istiyorsanız [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) özelliğini **false** olarak ayarlamanız gerekir.
 
 ## <a name="deploy-the-container-application"></a>Kapsayıcı uygulamasını dağıtma
-Tüm değişikliklerinizi kaydedin ve uygulamayı derleyin. Uygulamanızı yayımlamak için Çözüm Gezgini’nde **MyFirstContainer**’a sağ tıklayın ve **Yayımla**’yı seçin.
+Tüm değişikliklerinizi kaydedin ve uygulamayı derleyin. Uygulamanızı yayımlamak için Çözüm Gezgini’nde **MyFirstContainer** ’a sağ tıklayın ve **Yayımla** ’yı seçin.
 
-**Bağlantı Uç Noktası**’nda kümenin yönetim uç noktasını girin. Örneğin, `containercluster.westus2.cloudapp.azure.com:19000`. İstemci bağlantı uç noktasını [Azure portalında](https://portal.azure.com) kümenizin Genel Bakış sekmesinde bulabilirsiniz.
+**Bağlantı Uç Noktası** ’nda kümenin yönetim uç noktasını girin. Örneğin, `containercluster.westus2.cloudapp.azure.com:19000`. İstemci bağlantı uç noktasını [Azure portalında](https://portal.azure.com) kümenizin Genel Bakış sekmesinde bulabilirsiniz.
 
-**Yayımla**’ya tıklayın.
+**Yayımla** ’ya tıklayın.
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), bir Service Fabric kümesindeki uygulama ve düğümleri inceleyip yönetmeye yönelik web tabanlı bir araçtır. Bir tarayıcı penceresi açıp `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` konumuna gidin ve uygulama dağıtımını izleyin. Uygulama dağıtılır, ancak görüntü küme düğümlerine yüklenene kadar hatalı durumdadır (bu işlem, görüntü boyutuna bağlı olarak biraz zaman alabilir): ![Hata][1]
 
@@ -534,7 +534,7 @@ Service Fabric kümesini kullanılmayan kapsayıcı görüntülerini düğümden
           },
           {
                 "name": "ContainerImagesToSkip",
-                "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
+                "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
           }

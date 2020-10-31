@@ -6,20 +6,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5a8351b8c74f9219cf14575cc326fa8049264ed7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4977a9ef8af75797f1e1989975688d7904f0c7b1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491130"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086457"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos hesabını yönetme
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede Azure portalını, Azure PowerShell’i, Azure CLI’yı ve Azure Resource Manager şablonlarını kullanarak Azure Cosmos hesabında çeşitli görevlerin nasıl yönetileceği açıklanır.
 
 ## <a name="create-an-account"></a>Hesap oluşturma
 
-### <a name="azure-portal"></a><a id="create-database-account-via-portal"></a>Azure portalı
+### <a name="azure-portal"></a><a id="create-database-account-via-portal"></a>Azure portal
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -37,7 +38,7 @@ Lütfen bkz. [Azure Resource Manager şablonlarla Azure Cosmos DB hesap oluştur
 
 ## <a name="addremove-regions-from-your-database-account"></a>Veritabanı hesabınızda bölge ekleme/çıkarma işlemi gerçekleştirme
 
-### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure portalı
+### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 
@@ -47,7 +48,7 @@ Lütfen bkz. [Azure Resource Manager şablonlarla Azure Cosmos DB hesap oluştur
 
 1. Bölgeleri kaldırmak için, bir veya daha fazla bölgeyi onay işaretleri içeren mavi altıgenler seçerek haritalardan kaldırın. Ya da sağ taraftaki bölgenin yanındaki "wastesepet" ( 🗑 ) simgesini seçin.
 
-1. Değişikliklerinizi kaydetmek için **Tamam**' ı seçin.
+1. Değişikliklerinizi kaydetmek için **Tamam** ' ı seçin.
 
    :::image type="content" source="./media/how-to-manage-database-account/add-region.png" alt-text="Bölge Ekle veya Kaldır menüsü":::
 
@@ -65,7 +66,7 @@ Lütfen bkz. [PowerShell ile bölge ekleme veya kaldırma](manage-with-powershel
 
 ## <a name="configure-multiple-write-regions"></a><a id="configure-multiple-write-regions"></a>Birden fazla yazma bölgesi yapılandırma
 
-### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Azure portalı
+### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Azure portal
 
 **Verileri genel olarak Çoğalt** sekmesini açın ve çok bölgeli yazmaları etkinleştirmek için **Etkinleştir** ' i seçin. Çok bölgeli yazmaları etkinleştirdikten sonra, şu anda hesapta yer alan tüm okuma bölgeleri okuma ve yazma bölgeleri olur.
 
@@ -143,17 +144,17 @@ Hesap ve ayarı oluşturmak için kullanılan Kaynak Yöneticisi şablonunu dağ
 
 Otomatik yük devretme seçeneği, bir bölgenin kullanılamaz duruma gelmesi için en yüksek yük devretme önceliğine sahip bölgeye yük devretmesinin Azure Cosmos DB sağlar. Otomatik yük devretme etkinleştirildiğinde bölge önceliği değiştirilebilir. Otomatik yük devretmeyi etkinleştirmek için hesabın iki veya daha fazla bölgesi olmalıdır.
 
-### <a name="azure-portal"></a><a id="enable-automatic-failover-via-portal"></a>Azure portalı
+### <a name="azure-portal"></a><a id="enable-automatic-failover-via-portal"></a>Azure portal
 
 1. Azure Cosmos hesabınızdan **verileri genel olarak Çoğalt** bölmesini açın.
 
-2. Bölmenin en üstünde **otomatik yük devretme**' yı seçin.
+2. Bölmenin en üstünde **otomatik yük devretme** ' yı seçin.
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Bölge Ekle veya Kaldır menüsü":::
 
-3. **Otomatik yük devretme** bölmesinde, **otomatik yük devretmeyi etkinleştir** ' in **Açık**olarak ayarlandığından emin olun. 
+3. **Otomatik yük devretme** bölmesinde, **otomatik yük devretmeyi etkinleştir** ' in **Açık** olarak ayarlandığından emin olun. 
 
-4. **Kaydet**’i seçin.
+4. **Kaydet** ’i seçin.
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Bölge Ekle veya Kaldır menüsü":::
 
@@ -172,19 +173,19 @@ Bir Cosmos hesabı otomatik yük devretme için yapılandırıldıktan sonra, b�
 > [!IMPORTANT]
 > Hesap otomatik yük devretme için yapılandırıldığında yazma bölgesini (sıfır yük devretme önceliği) değiştiremezsiniz. Yazma bölgesini değiştirmek için otomatik yük devretmeyi devre dışı bırakıp el ile yük devretme yapmanız gerekir.
 
-### <a name="azure-portal"></a><a id="set-failover-priorities-via-portal"></a>Azure portalı
+### <a name="azure-portal"></a><a id="set-failover-priorities-via-portal"></a>Azure portal
 
 1. Azure Cosmos hesabınızdan **verileri genel olarak Çoğalt** bölmesini açın.
 
-2. Bölmenin en üstünde **otomatik yük devretme**' yı seçin.
+2. Bölmenin en üstünde **otomatik yük devretme** ' yı seçin.
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Bölge Ekle veya Kaldır menüsü":::
 
-3. **Otomatik yük devretme** bölmesinde, **otomatik yük devretmeyi etkinleştir** ' in **Açık**olarak ayarlandığından emin olun.
+3. **Otomatik yük devretme** bölmesinde, **otomatik yük devretmeyi etkinleştir** ' in **Açık** olarak ayarlandığından emin olun.
 
 4. Yük devretme önceliğini değiştirmek için, okuma bölgelerini, üzerine geldiğinizde görüntülenen satırın sol tarafındaki üç nokta ile sürükleyin.
 
-5. **Kaydet**’i seçin.
+5. **Kaydet** ’i seçin.
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Bölge Ekle veya Kaldır menüsü":::
 
@@ -206,17 +207,17 @@ El ile yük devretme gerçekleştirme süreci, hesabın yazma bölgesinin (yük 
 > [!NOTE]
 > Birden çok yazma bölgesi olan hesaplara el ile yük devredilemez. Azure Cosmos SDK 'sını kullanan uygulamalar için SDK, bir bölgenin ne zaman kullanılamaz hale geldiğini algılar ve ardından SDK 'da çoklu barındırma API 'SI kullanılıyorsa otomatik olarak sonraki en yakın bölgeye yeniden yönlendirilir.
 
-### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure portalı
+### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure portal
 
 1. Azure Cosmos hesabınıza gidin ve **verileri genel olarak Çoğalt** menüsünü açın.
 
-2. Menünün üst kısmında **El Ile yük devretme**' yı seçin.
+2. Menünün üst kısmında **El Ile yük devretme** ' yı seçin.
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Bölge Ekle veya Kaldır menüsü":::
 
 3. **El Ile yük devretme** menüsünde Yeni yazma bölgenizi seçin. Bu seçeneği, yazma bölgenizi değiştirdiğinize işaret eden onay kutusunu seçin.
 
-4. Yük devretmeyi tetiklemek için **Tamam**' ı seçin.
+4. Yük devretmeyi tetiklemek için **Tamam** ' ı seçin.
 
    :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Bölge Ekle veya Kaldır menüsü":::
 

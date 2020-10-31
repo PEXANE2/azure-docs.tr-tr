@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/25/2020
-ms.openlocfilehash: af82b9e2feee3e03d2a0703d771c68b67ddd08c9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a6ada3557350cd3f2f67dad54152eafded6639ec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791588"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087035"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda çoğaltma gecikmesi sorununu giderme
 
@@ -236,6 +236,9 @@ MySQL için Azure veritabanı 'nda, varsayılan olarak çoğaltma, çoğaltmalar
 Binlog_group_commit_sync_delay parametresi, ikili günlük dosyasının eşitlenmesi için kaç mikrosaniye ikili günlük işlemesini denetler. Bu parametrenin avantajı, her bir kaydedilmiş işlemi hemen uygulamak yerine, kaynak sunucunun ikili günlük güncelleştirmelerini toplu olarak göndereceğini unutmayın. Bu gecikme, çoğaltmada GÇ 'yi azaltır ve performansı artırmaya yardımcı olur. 
 
 Binlog_group_commit_sync_delay parametresini 1000 olarak ayarlamak yararlı olabilir. Sonra çoğaltma gecikmesini izleyin. Bu parametreyi dikkatle ayarlayın ve yalnızca yüksek eşzamanlılık iş yükleri için kullanın. 
+
+> [!IMPORTANT] 
+> Çoğaltma sunucusunda, binlog_group_commit_sync_delay parametresinin 0 olması önerilir. Bu, kaynak sunucunun aksine, çoğaltma sunucusunun yüksek eşzamanlılık sahibi olmadığından ve çoğaltma sunucusu üzerindeki binlog_group_commit_sync_delay değerinin artırılması yanlışlıkla çoğaltma gecikmesi artışına neden olabileceğinden, bu önerilir.
 
 Birçok tek işlem içeren düşük eşzamanlılık iş yükleri için binlog_group_commit_sync_delay ayarı gecikmeyi artırabilir. GÇ iş parçacığı yalnızca birkaç işlem yapıldığından bile toplu ikili günlük güncelleştirmeleri beklediği için gecikme artabilir. 
 

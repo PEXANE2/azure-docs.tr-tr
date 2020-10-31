@@ -8,14 +8,15 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: b7e57656a6749f600d07b679aad6b8c77ac96551
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3979e5e904eb54db9566eb014f7e455ebaceaff0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476714"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087188"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken karşılaşılan sorgu sorunlarını giderme
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede, Azure Cosmos DB sorgularda sorun giderme için önerilen genel bir yaklaşım gösterilmektedir. Bu makalede özetlenen adımları olası sorgu sorunlarına karşı kapsamlı bir savunma olarak düşünmemeniz durumunda, en sık karşılaşılan performans ipuçlarını buradan sunuyoruz. Azure Cosmos DB Core (SQL) API'sinde yavaş veya pahalı sorgularla ilgili sorunları gidermek için başlangıç noktası olarak bu makaleyi kullanmalısınız. Ayrıca yavaş çalışan veya önemli miktarda aktarım hızı kullanan sorguları belirlemek için [tanılama günlüklerini](cosmosdb-monitor-resource-logs.md) de kullanabilirsiniz. MongoDB için Azure Cosmos DB API kullanıyorsanız, [MongoDB sorgu sorun giderme kılavuzu için Azure Cosmos DB API 'sini](mongodb-troubleshoot-query.md) kullanmanız gerekir
 

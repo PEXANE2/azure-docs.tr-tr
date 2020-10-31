@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 340ec7c16c5ed3e477cc2c4505c8b018d2d39a06
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7cf0f91a655901373b02a51004cf77eb25c8cf8e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486013"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085896"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB yaşam süresi yapılandırma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB, kapsayıcı düzeyinde yaşam süresi (TTL) yapılandırmayı seçebilir veya kapsayıcının ayarından sonra öğeyi bir öğe düzeyinde geçersiz kılabilirsiniz. Bir kapsayıcı için Azure portal veya dile özgü SDK 'Ları kullanarak TTL yapılandırabilirsiniz. Öğe düzeyi TTL geçersiz kılmaları SDK 'lar kullanılarak yapılandırılabilir.
 
@@ -33,9 +34,9 @@ Zaman aşımı olmadan bir kapsayıcıda canlı kalma süresini etkinleştirmek 
 4. Var olan bir kapsayıcıyı seçin, genişletin ve aşağıdaki değerleri değiştirin:
 
    * **Ölçek & ayarları** penceresini açın.
-   * Bulma **ayarı** altında, **yaşam süresi**' nin altında.
+   * Bulma **ayarı** altında, **yaşam süresi** ' nin altında.
    * **Açık (varsayılan)** **seçeneğini belirleyin veya SEÇIN ve bir** TTL değeri ayarlayın
-   * Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+   * Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
 
    :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="Azure portal yaşam süresi yapılandırma":::
 
@@ -204,7 +205,7 @@ Bir kapsayıcıda yaşam için varsayılan bir zaman ayarlamaya ek olarak, bir �
 
 * TTL kapsayıcı düzeyinde devre dışıysa, kapsayıcıda TTL yeniden etkinleştirilene kadar öğedeki TTL alanı yok sayılır.
 
-### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure portalı
+### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure portal
 
 Bir öğe üzerinde yaşam süresini etkinleştirmek için aşağıdaki adımları kullanın:
 
@@ -217,11 +218,11 @@ Bir öğe üzerinde yaşam süresini etkinleştirmek için aşağıdaki adımlar
 4. Var olan bir kapsayıcıyı seçin, genişletin ve aşağıdaki değerleri değiştirin:
 
    * **Ölçek & ayarları** penceresini açın.
-   * Bulma **ayarı** altında, **yaşam süresi**' nin altında.
+   * Bulma **ayarı** altında, **yaşam süresi** ' nin altında.
    * **Açık (varsayılan)** seçeneğini belirleyin veya Select seçeneğini **BELIRLEYIN ve bir** TTL değeri ayarlayın. 
-   * Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+   * Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
 
-5. Daha sonra, yaşam süresi ayarlamak istediğiniz öğeye gidin, `ttl` özelliği ekleyin ve **Güncelleştir**' i seçin. 
+5. Daha sonra, yaşam süresi ayarlamak istediğiniz öğeye gidin, `ttl` özelliği ekleyin ve **Güncelleştir** ' i seçin. 
 
    ```json
    {

@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: c86207af51ebd1a9442afe6fa609598ec917bf15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f19e009341ac0e9556cef36f8da6ef19cde0447f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570438"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087528"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB ile küresel veri dağıtımı-
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB, Azure 'daki temel bir hizmettir, bu nedenle dünya çapında genel, bağımsız, Savunma Bakanlığı (DoD) ve kamu bulutları dahil tüm Azure bölgelerinde dağıtılır. Bir veri merkezinde, her biri ayrılmış yerel depolama alanı olan çok büyük bir makine Damgalarında Azure Cosmos DB dağıtıp yönetiyoruz. Bir veri merkezi içinde Azure Cosmos DB, her biri çok sayıda donanımı çalıştıran birçok kümeye dağıtılır. Bir küme içindeki makineler genellikle bölge içinde yüksek kullanılabilirlik için 10-20 hata etki alanı arasında yayılır. Aşağıdaki görüntüde genel dağıtım sistemi topolojisi Cosmos DB gösterilmektedir:
 
@@ -22,9 +23,9 @@ Azure Cosmos DB, Azure 'daki temel bir hizmettir, bu nedenle dünya çapında ge
 
 **Azure Cosmos DB genel dağıtım, anahtar:** Her zaman, birkaç tıklamayla veya tek bir API çağrısıyla programlama yoluyla, Cosmos veritabanızla ilişkili coğrafi bölgeleri ekleyebilir veya kaldırabilirsiniz. Cosmos veritabanı, sırasıyla bir Cosmos kapsayıcıları kümesinden oluşur. Cosmos DB, kapsayıcılar mantıksal dağıtım ve ölçeklenebilirlik birimleri olarak görev yapar. Oluşturduğunuz koleksiyonlar, tablolar ve grafikler yalnızca Cosmos kapsayıcılarıdır. Kapsayıcılar tamamen şematik ve bir sorgu için kapsam sağlar. Cosmos kapsayıcısındaki veriler, alma sırasında otomatik olarak dizinlenir. Otomatik Dizin oluşturma, kullanıcıların, özellikle de genel olarak dağıtılmış bir kurulumda şema veya dizin yönetimi kurtulur olmadan verileri sorgulamasına olanak sağlar.  
 
-- Belirli bir bölgede, bir kapsayıcı içindeki veriler, sağladığınız ve temel alınan fiziksel bölümler (*Yerel dağıtım*) tarafından saydam olarak yönetilen bir bölüm anahtarı kullanılarak dağıtılır.  
+- Belirli bir bölgede, bir kapsayıcı içindeki veriler, sağladığınız ve temel alınan fiziksel bölümler ( *Yerel dağıtım* ) tarafından saydam olarak yönetilen bir bölüm anahtarı kullanılarak dağıtılır.  
 
-- Her fiziksel bölüm ayrıca coğrafi bölgeler (*genel dağıtım*) genelinde çoğaltılır. 
+- Her fiziksel bölüm ayrıca coğrafi bölgeler ( *genel dağıtım* ) genelinde çoğaltılır. 
 
 Cosmos DB esnek kullanan bir uygulama, Cosmos kapsayıcısındaki üretilen işi ölçeklendirir veya daha fazla depolama alanı tüketir, Cosmos DB bölüm yönetimi işlemlerini (bölünmüş, kopya, silme) tüm bölgelerde saydam şekilde işler. Ölçeklendirmenin, dağıtımın veya hatalardan bağımsız olarak Cosmos DB, kapsayıcıların içindeki verilerin tek bir sistem görüntüsünü sağlamaya devam eder ve bu, herhangi bir sayıda bölgede genel olarak dağıtılır.  
 
@@ -32,13 +33,13 @@ Aşağıdaki görüntüde gösterildiği gibi, bir kapsayıcı içindeki veriler
 
 :::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="Sistem topolojisi" border="false":::
 
-Fiziksel bir bölüm, *çoğaltma kümesi*olarak adlandırılan bir çoğaltmalar grubu tarafından uygulanır. Her makine, yukarıdaki görüntüde gösterildiği gibi, sabit bir işlem kümesi içindeki çeşitli fiziksel bölümlere karşılık gelen yüzlerce çoğaltma barındırır. Fiziksel bölümlere karşılık gelen çoğaltmalar, bir bölgedeki makineler ve bir bölgedeki veri merkezleri arasında dinamik olarak yerleştirildiğinden ve yük dengelemesi yapılır.  
+Fiziksel bir bölüm, *çoğaltma kümesi* olarak adlandırılan bir çoğaltmalar grubu tarafından uygulanır. Her makine, yukarıdaki görüntüde gösterildiği gibi, sabit bir işlem kümesi içindeki çeşitli fiziksel bölümlere karşılık gelen yüzlerce çoğaltma barındırır. Fiziksel bölümlere karşılık gelen çoğaltmalar, bir bölgedeki makineler ve bir bölgedeki veri merkezleri arasında dinamik olarak yerleştirildiğinden ve yük dengelemesi yapılır.  
 
 Bir çoğaltma, Azure Cosmos DB kiracıya benzersiz olarak aittir. Her çoğaltma, Cosmos DB [veritabanı altyapısının](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)bir örneğini barındırır ve bu da kaynakları ve ilişkili dizinleri yönetir. Cosmos veritabanı altyapısı, bir atom kayıt sırası (ARS) tabanlı tür sistemi üzerinde çalışır. Motor, bir şemanın kavramına belirsiz bir şekilde, kayıtların yapısı ve örnek değerleri arasındaki sınırı bulanıklaştırma. Cosmos DB, kullanıcıların, şema veya dizin yönetimiyle uğraşmak zorunda kalmadan küresel olarak dağıtılan verileri sorgulamasına olanak tanıyan, her şeyi verimli bir şekilde otomatik olarak dizinleyerek tam Şemasız bir konuyla karşılaşarak ulaşır.
 
 Cosmos veritabanı altyapısı, çeşitli koordinasyon temelleri, dil çalışma zamanları, sorgu işlemcisi ve işlem depolamadan ve veri dizinlemeden sorumlu depolama ve dizin oluşturma alt sistemlerinin uygulanması dahil bileşenlerden oluşur. Dayanıklılık ve yüksek kullanılabilirlik sağlamak için veritabanı altyapısı SSD 'lerde verilerini ve dizinini sürdürür ve bunları sırasıyla çoğaltma kümesi içindeki veritabanı altyapısı örnekleri arasında çoğaltır. Daha büyük kiracılar, üretilen iş ve depolama alanı ölçeğinde ve daha büyük ya da daha fazla kopyaya veya her ikisine sahip olur. Sistemin her bileşeni tam olarak zaman uyumsuz – hiçbir iş parçacığı blok değildir ve her iş parçacığı gereksiz iş parçacığı anahtarlarını oluşturmadan kısa süreli çalışmalardır. Hız sınırlama ve arka basınç, giriş denetiminden tüm g/ç yollarına kadar tüm yığınta kullanıma alınır. Cosmos veritabanı altyapısı, ayrıntılı eşzamanlılık yararlanmak ve yüksek verimlilik sağlamak için tasarlanmıştır.
 
-Cosmos DB genel dağıtımı, *çoğaltma-kümeler* ve *bölüm kümeleri*olmak üzere iki anahtar soyutlamalarını kullanır. Çoğaltma kümesi, bir düzenleme için modüler bir LEGO blok ve bölüm kümesi bir veya daha fazla coğrafi olarak dağıtılmış fiziksel bölümün dinamik bir yerleridir. Genel dağıtımın nasıl çalıştığını anlamak için, bu iki temel soyutlamayı anladık. 
+Cosmos DB genel dağıtımı, *çoğaltma-kümeler* ve *bölüm kümeleri* olmak üzere iki anahtar soyutlamalarını kullanır. Çoğaltma kümesi, bir düzenleme için modüler bir LEGO blok ve bölüm kümesi bir veya daha fazla coğrafi olarak dağıtılmış fiziksel bölümün dinamik bir yerleridir. Genel dağıtımın nasıl çalıştığını anlamak için, bu iki temel soyutlamayı anladık. 
 
 ## <a name="replica-sets"></a>Çoğaltma-ayarlar
 
@@ -68,7 +69,7 @@ Güncelleştirme çakışmalarını tespit etmek ve çözmek için, büyük öl�
 
 Birden çok yazma bölgesi ile yapılandırılmış Cosmos veritabanları için, sistem geliştiricilerin arasından seçim yapmak üzere çeşitli esnek otomatik çakışma çözümleme ilkeleri sunar: 
 
-- **Son yazma-WINS (LWW)**, varsayılan olarak, sistem tarafından tanımlanan bir zaman damgası özelliği kullanır (zaman eşitleme saati protokolüne dayanır). Cosmos DB, çakışma çözümü için kullanılacak başka bir özel sayısal Özellik belirtmenize de olanak tanır.  
+- **Son yazma-WINS (LWW)** , varsayılan olarak, sistem tarafından tanımlanan bir zaman damgası özelliği kullanır (zaman eşitleme saati protokolüne dayanır). Cosmos DB, çakışma çözümü için kullanılacak başka bir özel sayısal Özellik belirtmenize de olanak tanır.  
 - Uygulama tanımlı **(özel) çakışma çözümleme ilkesi** (birleştirme yordamları aracılığıyla ifade edilir), bu, çakışmaların uygulama tanımlı semantik mutabakatı için tasarlanmıştır. Bu yordamlar, sunucu tarafındaki bir veritabanı işleminin auspices altına yazma yazma çakışmalarını algılamada çağrılır. Sistem, taahhüt protokolünün bir parçası olarak birleştirme yordamının yürütülmesi için tam olarak bir kez sağlar. İle oynaması için kullanabileceğiniz [birkaç çakışma çözümü örneği](how-to-manage-conflicts.md) vardır.  
 
 ## <a name="consistency-models"></a>Tutarlılık modelleri

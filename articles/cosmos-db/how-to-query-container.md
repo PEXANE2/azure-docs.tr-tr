@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: e948031d3d1d03890bfcfccd65424a15e6e314cd
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3c363552d1a196bed49e1ef3448a8216b7bcae2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276119"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086066"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısını sorgulama
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede, Azure Cosmos DB bir kapsayıcının (koleksiyon, grafik veya tablo) nasıl sorgulanacağı açıklanmaktadır. Özellikle, Bölüm içi ve çapraz bölüm sorgularının Azure Cosmos DB içinde nasıl çalıştığını ele alır.
 
@@ -57,9 +58,9 @@ Azure Cosmos DB SDK 'Ları 1.9.0 ve üzeri paralel sorgu yürütme seçeneklerin
 
 Aşağıdaki parametreleri ayarlayarak paralel sorgu yürütme işlemini yönetebilirsiniz:
 
-- **MaxConcurrency**: kapsayıcının bölümlerine en fazla eşzamanlı ağ bağlantısı sayısını ayarlar. Bu özelliği olarak ayarlarsanız `-1` , SDK paralellik derecesini yönetir.  `MaxConcurrency`Olarak ayarlanırsa `0` , kapsayıcının bölümlerine tek bir ağ bağlantısı vardır.
+- **MaxConcurrency** : kapsayıcının bölümlerine en fazla eşzamanlı ağ bağlantısı sayısını ayarlar. Bu özelliği olarak ayarlarsanız `-1` , SDK paralellik derecesini yönetir.  `MaxConcurrency`Olarak ayarlanırsa `0` , kapsayıcının bölümlerine tek bir ağ bağlantısı vardır.
 
-- **MaxBufferedItemCount**: Sorgu gecikme süresiyle istemci tarafı bellek kullanımı arasında denge kurar. Bu seçenek atlanırsa veya-1 ' e ayarlanırsa, SDK paralel sorgu yürütme sırasında arabelleğe alınan öğe sayısını yönetir.
+- **MaxBufferedItemCount** : Sorgu gecikme süresiyle istemci tarafı bellek kullanımı arasında denge kurar. Bu seçenek atlanırsa veya-1 ' e ayarlanırsa, SDK paralel sorgu yürütme sırasında arabelleğe alınan öğe sayısını yönetir.
 
 Azure Cosmos DB, bölümler arası sorguları paralel hale getirmek özelliği nedeniyle, sistemin [fiziksel bölümler](partitioning-overview.md#physical-partitions)eklemesi sırasında sorgu gecikmesi genellikle iyi ölçeklenecektir. Ancak, toplam fiziksel bölüm sayısı arttıkça RU ücreti önemli ölçüde artar.
 

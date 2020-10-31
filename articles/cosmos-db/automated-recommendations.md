@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8fa2fdf23a0d71b854e043b66c0aed7e944c5f39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9eb55030c7ec52f9b2ac79fbab19944f0a3e190
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87450911"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087834"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Azure Cosmos DB için otomatik öneriler
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB dahil olmak üzere tüm bulut Hizmetleri, yeni özellikler, yetenekler ve geliştirmeler hakkında sık kullanılan güncelleştirmeleri alabilirler. Uygulamanızın en son performans ve güvenlik güncelleştirmeleriyle devam etmesini önemlidir. Azure portal, uygulamanızın performansını en üst düzeye çıkarmanıza olanak sağlayan özelleştirilmiş öneriler sunar. Azure Cosmos DB danışmanlık altyapısı, Azure Cosmos DB kaynaklarınızın kullanım geçmişini sürekli olarak analiz eder ve iş yükü desenlerinize göre öneriler sağlar. Bu öneriler, bölümleme, dizin oluşturma, ağ, güvenlik vb. gibi alanlara karşılık gelir. Bu özelleştirilmiş öneriler, uygulamanızın performansını artırmanıza yardımcı olur.
 
@@ -26,7 +27,7 @@ Azure Cosmos DB önerilerini aşağıdaki yollarla görüntüleyebilirsiniz:
 
    :::image type="content" source="./media/automated-recommendations/cosmos-db-pane-recommendations.png" alt-text="Azure Cosmos DB bölmesinden önerileri görüntüle":::
 
-- Ayrıca, maliyet, güvenlik, güvenilirlik, performans ve işlemsel üstün çalışma gibi farklı demetlere göre sınıflandırılan [Azure Advisor](../advisor/advisor-overview.md) aracılığıyla önerileri de bulabilirsiniz. Belirli abonelikleri seçebilir ve **Azure Cosmos DB hesaplar**olan kaynak türüne göre filtreleyebilirsiniz.  Belirli bir öneriyi seçtiğinizde, iş yüklerinize yarar sağlamak için gerçekleştirebileceğiniz eylemleri görüntüler.
+- Ayrıca, maliyet, güvenlik, güvenilirlik, performans ve işlemsel üstün çalışma gibi farklı demetlere göre sınıflandırılan [Azure Advisor](../advisor/advisor-overview.md) aracılığıyla önerileri de bulabilirsiniz. Belirli abonelikleri seçebilir ve **Azure Cosmos DB hesaplar** olan kaynak türüne göre filtreleyebilirsiniz.  Belirli bir öneriyi seçtiğinizde, iş yüklerinize yarar sağlamak için gerçekleştirebileceğiniz eylemleri görüntüler.
 
    :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Azure Cosmos DB bölmesinden önerileri görüntüle":::
 

@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 1d91f8242e31aa1efdf9301101307d5bad39a459
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ff8d726203c5ddfae63a74a7a364c6f2b9ca783e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342221"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085148"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>SSS-Sanal makineler hakkında sorular
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>Hangi tür sanal makineler destekleniyor?
 
-İzleme ve öneriler, hem klasik hem de [Kaynak Yöneticisi dağıtım modelleri](/azure/security-center/./azure-resource-manager/management/deployment-models)kullanılarak oluşturulan sanal makineler (VM) için kullanılabilir.
+İzleme ve öneriler, hem klasik hem de [Kaynak Yöneticisi dağıtım modelleri](/azure/azure-resource-manager/management/deployment-models)kullanılarak oluşturulan sanal makineler (VM) için kullanılabilir.
 
 Desteklenen platformların listesi için bkz. [Azure Güvenlik Merkezi 'Nde desteklenen platformlar](security-center-os-coverage.md) .
 

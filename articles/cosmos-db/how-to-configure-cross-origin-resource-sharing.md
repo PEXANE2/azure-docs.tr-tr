@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: eb1cbed7b974b6f0015591df01674e40aac2d8c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 863c31ecac13337ea3f91d7a7ced49b0f7141e58
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85390882"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086423"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Çıkış noktaları arası kaynak paylaşımını (CORS) yapılandırma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Çıkış noktaları arası kaynak paylaşımı (CORS), bir etki alanı altında çalışan bir Web uygulamasının başka bir etki alanındaki kaynaklara erişmesine olanak tanıyan bir HTTP özelliğidir. Web tarayıcıları, bir Web sayfasının farklı bir etki alanındaki API 'Leri aramasını önleyen aynı kaynak ilkesi olarak bilinen bir güvenlik kısıtlaması uygular. Ancak CORS, kaynak etki alanının başka bir etki alanındaki API 'Leri çağırmasını sağlamak için güvenli bir yol sağlar. Azure Cosmos DB 'deki çekirdek (SQL) API 'SI artık "Allowedorigin" üst bilgisini kullanarak çıkış noktaları arası kaynak paylaşımını (CORS) desteklemektedir. Azure Cosmos hesabınız için CORS desteğini etkinleştirdikten sonra, belirttiğiniz kurallara göre izin verilip verilmeyeceğini belirlemede yalnızca kimliği doğrulanmış istekler değerlendirilir.
 
@@ -28,7 +29,7 @@ Azure portal kullanarak, çıkış noktaları arası kaynak paylaşımını etki
 
 1. Azure Cosmos DB hesabınıza gidin. **CORS** dikey penceresini açın.
 
-2. Azure Cosmos DB hesabınıza çapraz kaynak çağrıları yapaabilecek çıkış noktaları için virgülle ayrılmış bir liste belirtin. Örneğin,, `https://www.mydomain.com` , `https://mydomain.com` `https://api.mydomain.com` . \*Tüm kaynaklarına izin vermek ve **Gönder**' i seçmek için "" joker karakteri de kullanabilirsiniz. 
+2. Azure Cosmos DB hesabınıza çapraz kaynak çağrıları yapaabilecek çıkış noktaları için virgülle ayrılmış bir liste belirtin. Örneğin,, `https://www.mydomain.com` , `https://mydomain.com` `https://api.mydomain.com` . \*Tüm kaynaklarına izin vermek ve **Gönder** ' i seçmek için "" joker karakteri de kullanabilirsiniz. 
 
    > [!NOTE]
    > Şu anda, etki alanı adının bir parçası olarak joker karakter kullanamazsınız. Örneğin `https://*.mydomain.net` biçimi henüz desteklenmiyor. 

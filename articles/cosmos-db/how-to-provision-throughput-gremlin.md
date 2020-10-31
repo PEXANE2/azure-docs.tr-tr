@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 70eecc7843867a5832d962b7efaecda1b6ab4ae4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3c2af7f33135a8c6621db233451231ffa89c2d64
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284514"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086168"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-gremlin-api-resources"></a>Azure Cosmos DB Gremlin API kaynaklarında veritabanı, kapsayıcı veya otomatik ölçeklendirme işleme sağlama
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Bu makalede, Azure Cosmos DB Gremlin API 'de üretilen iş sağlama açıklanmaktadır. Bir kapsayıcıda veya veritabanında standart (el ile) veya otomatik ölçeklendirme üretilen işi sağlayabilir ve veritabanı içindeki kapsayıcılar arasında paylaşabilirsiniz. Azure portal, Azure CLı veya Azure Cosmos DB SDK 'Ları kullanarak üretilen iş sağlayabilirsiniz.
 
@@ -27,13 +28,13 @@ Farklı bir API kullanıyorsanız, üretilen işi sağlamak için bkz. [SQL API]
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-mongodb-dotnet.md#create-a-database-account)veya mevcut bir Azure Cosmos hesabı seçin.
 
-1. **Veri Gezgini** bölmesini açın ve **yeni grafik**' i seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
+1. **Veri Gezgini** bölmesini açın ve **yeni grafik** ' i seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
 
    * Yeni bir veritabanı mı yoksa var olan bir veritabanını mı kullandığınızı belirtin. Veritabanı düzeyinde aktarım hızı sağlamak istiyorsanız **Veritabanı aktarım hızı sağla** seçeneğini belirleyin.
    * Bir grafik KIMLIĞI girin.
    * Bir bölüm anahtarı değeri girin (örneğin, `/ItemID` ).
    * Sağlamak istediğiniz bir üretilen iş (örneğin, 1000 ru) girin.
-   * **Tamam**’ı seçin.
+   * **Tamam** ’ı seçin.
 
     :::image type="content" source="./media/how-to-provision-throughput-gremlin/provision-database-throughput-portal-gremlin-api.png" alt-text="Veritabanı düzeyinde aktarım hızı ile yeni bir grafik oluştururken Veri Gezgini ekran görüntüsü":::
 
@@ -91,7 +92,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 Azure Resource Manager şablonlar, tüm Azure Cosmos DB API 'Leri için veritabanında veya kapsayıcı düzeyindeki kaynaklarda otomatik ölçeklendirme üretilen işi sağlamak için kullanılabilir. Örnekler için [Azure Cosmos DB için bkz. Azure Resource Manager şablonları](templates-samples-gremlin.md) .
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 Azure CLı, tüm Azure Cosmos DB API 'Leri için bir veritabanı veya kapsayıcı düzeyinde bir kaynak üzerinde otomatik ölçeklendirme üretilen işi sağlamak üzere kullanılabilir. Örnekler için bkz. [Azure CLI örnekleri Azure Cosmos DB](cli-samples-gremlin.md).
 

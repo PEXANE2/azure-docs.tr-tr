@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 30e1a9e4b82971180f375a006f4825832e6179e9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 98ad02c134df919c593c87dd96a9a71d73371a1c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490620"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087426"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB Gremlin API 'sine giriş
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 [Azure Cosmos DB](introduction.md)   , Microsoft 'un görev açısından kritik uygulamalar için genel olarak dağıtılmış, çok modelli bir veritabanı hizmetidir. Bu, çok modelli bir veritabanıdır ve belge, anahtar-değer, grafik ve sütun ailesi veri modellerini destekler. "Azure Cosmos DB, her ölçekte tasarlanan tam olarak yönetilen bir veritabanı hizmetinde Gremlin API 'SI aracılığıyla bir grafik veritabanı hizmeti sağlar.  
 
@@ -110,19 +111,19 @@ Sorguların Gremlin’de nasıl ifade edildiğini anlamak için örnek bir grafi
 
 Bu grafik aşağıdaki *köşe* türlerine sahiptir (bunlar Gremlin içinde "etiket" olarak da adlandırılır):
 
-* **Kişiler**: grafikte üç kişi, deneme, Thomas ve ben bulunur
-* **Ilgi alanları**: Bu örnekte, futbol oyununun oyunu
-* **Cihazlar**: kişilerin kullandığı cihazlar
-* **Işletim sistemleri**: cihazların üzerinde çalıştığı işletim sistemleri
-* **Yer**: cihazların eriştiği konumlar
+* **Kişiler** : grafikte üç kişi, deneme, Thomas ve ben bulunur
+* **Ilgi alanları** : Bu örnekte, futbol oyununun oyunu
+* **Cihazlar** : kişilerin kullandığı cihazlar
+* **Işletim sistemleri** : cihazların üzerinde çalıştığı işletim sistemleri
+* **Yer** : cihazların eriştiği konumlar
 
 Aşağıdaki *uç* türleri aracılığıyla bu varlıklar arasındaki ilişkileri temsil ediyoruz:
 
-* **Biliyor**: Örneğin, "Thomas biliyor"
-* **İlgileniyor**: grafımızda bulunan kişilerin ilgi alanlarınızı göstermek Için "Ben futbol ile ilgileniyor"
-* **Runsos**: dizüstü bilgisayar Windows işletim sistemini çalıştırır
-* Bir kişinin hangi cihaza kullandığını göstermek için: **kullanır**. Örneğin Robin, seri numarası 77 olan bir Motorola telefon kullanır
-* **Bulunur**: cihazların eriştiği konumu temsil etmek için
+* **Biliyor** : Örneğin, "Thomas biliyor"
+* **İlgileniyor** : grafımızda bulunan kişilerin ilgi alanlarınızı göstermek Için "Ben futbol ile ilgileniyor"
+* **Runsos** : dizüstü bilgisayar Windows işletim sistemini çalıştırır
+* Bir kişinin hangi cihaza kullandığını göstermek için: **kullanır** . Örneğin Robin, seri numarası 77 olan bir Motorola telefon kullanır
+* **Bulunur** : cihazların eriştiği konumu temsil etmek için
 
 Gremlin konsolu, Apache TinkerPop tarafından sunulan etkileşimli bir terminaldir ve bu Terminal, grafik verileriyle etkileşim kurmak için kullanılır. Daha fazla bilgi edinmek için bkz. [Gremlin konsolunun kullanımı](create-graph-gremlin-console.md)hakkındaki hızlı başlangıç belgesi. Dilerseniz bu işlemleri, tercih ettiğiniz platformdaki (Java, Node.js, Python veya .NET) Gremlin sürücülerini kullanarak da gerçekleştirebilirsiniz. Aşağıdaki örneklerde Gremlin konsolunu kullanarak bu grafik verilerinde nasıl sorgu çalıştırılacağı gösterilmektedir.
 

@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: jasonh
-ms.openlocfilehash: 2176708d3b5371a9bb66a59a7c6c0af56c337e28
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0d77c93e4103082a759df64fcafaefc1a1069de8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490637"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087392"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'SI için grafik veri modelleme
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Aşağıdaki belge, grafik veri modelleme önerileri sağlamak için tasarlanmıştır. Bu adım, veri geliştikçe grafik veritabanı sisteminin ölçeklenebilirliğini ve performansını güvence altına almak için önemlidir. Verimli bir veri modeli büyük ölçekli grafiklerle özellikle önemlidir.
 
@@ -30,18 +31,18 @@ Bu kılavuzda özetlenen işlem aşağıdaki varsayımlar temelinde olur:
 Bir veri etki alanındaki varlıklar ve ilişkilerin aşağıdaki özelliklerden herhangi biri varsa, grafik veritabanı çözümü en iyi şekilde uygulanabilir: 
 
 * Varlıklar, açıklayıcı ilişkiler aracılığıyla **yüksek oranda bağlanır** . Bu senaryodaki avantaj, ilişkilerin depolamada kalıcı hale getirilir.
-* **Döngüsel ilişkiler** veya **kendine Başvurulmuş varlıklar**vardır. Bu model genellikle ilişkisel veya belge veritabanlarını kullanırken zorluk sergilemektir.
+* **Döngüsel ilişkiler** veya **kendine Başvurulmuş varlıklar** vardır. Bu model genellikle ilişkisel veya belge veritabanlarını kullanırken zorluk sergilemektir.
 * Varlıklar arasında **dinamik olarak gelişen ilişkiler** vardır. Bu model özellikle çok sayıda düzeyi olan hiyerarşik veya ağaç biçimli veriler için geçerlidir.
 * Varlıklar arasında **çok-çok ilişkisi** vardır.
-* **Hem varlıklarda hem de ilişkilerde yazma ve okuma gereksinimleri**vardır. 
+* **Hem varlıklarda hem de ilişkilerde yazma ve okuma gereksinimleri** vardır. 
 
-Yukarıdaki kriterler karşılandıysanız, bir grafik veritabanı yaklaşımının **sorgu karmaşıklığı**, **veri modeli ölçeklenebilirliği**ve **sorgu performansı**için avantaj sağlaması olasıdır.
+Yukarıdaki kriterler karşılandıysanız, bir grafik veritabanı yaklaşımının **sorgu karmaşıklığı** , **veri modeli ölçeklenebilirliği** ve **sorgu performansı** için avantaj sağlaması olasıdır.
 
 Bir sonraki adım, grafiğin analitik veya işlemsel amaçlar için kullanılacağını belirlemektir. Grafik ağır hesaplama ve veri işleme iş yükleri için kullanılmak üzere tasarlanıyorsa, [Cosmos DB Spark bağlayıcısını](./spark-connector.md) ve [GraphX kitaplığının](https://spark.apache.org/graphx/)kullanımını keşfetmeye değer de vardır. 
 
 ## <a name="how-to-use-graph-objects"></a>Graph nesnelerini kullanma
 
-[Apache Tinkerpop özelliği grafik standardı](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) iki tür nesne **köşeleri** ve **kenarlarını**tanımlar. 
+[Apache Tinkerpop özelliği grafik standardı](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) iki tür nesne **köşeleri** ve **kenarlarını** tanımlar. 
 
 Grafik nesnelerindeki özellikler için en iyi uygulamalar şunlardır:
 
@@ -67,15 +68,15 @@ Aşağıda, bir Azure Cosmos DB Gremlin API grafik veritabanı için veri modell
 
 ### <a name="modeling-vertices-and-properties"></a>Modelleme köşeleri ve özellikleri 
 
-Grafik veri modeli için ilk adım, tanımlanan her varlığı bir **köşe nesnesine**eşlemenize yöneliktir. Tüm varlıkların köşelere eşlenmesinin bir ilk adımı ve değişikliğe tabi olması gerekir.
+Grafik veri modeli için ilk adım, tanımlanan her varlığı bir **köşe nesnesine** eşlemenize yöneliktir. Tüm varlıkların köşelere eşlenmesinin bir ilk adımı ve değişikliğe tabi olması gerekir.
 
 Bir ortak giriş, tek bir varlığın özelliklerini ayrı köşeler olarak eşmaktır. Aşağıdaki örneği, aynı varlığın iki farklı şekilde temsil edildiği yerde göz önünde bulundurun:
 
-* **Köşe tabanlı özellikler**: Bu yaklaşımda varlık, özelliklerini anlatmak için üç ayrı köşe ve iki kenar kullanır. Bu yaklaşım artıklığı azaltada, model karmaşıklığını artırır. Model karmaşıklığının artışı, eklenen gecikme süresi, sorgu karmaşıklığı ve hesaplama maliyetine neden olabilir. Bu model, Bölümlemede zorluk de sunabilir.
+* **Köşe tabanlı özellikler** : Bu yaklaşımda varlık, özelliklerini anlatmak için üç ayrı köşe ve iki kenar kullanır. Bu yaklaşım artıklığı azaltada, model karmaşıklığını artırır. Model karmaşıklığının artışı, eklenen gecikme süresi, sorgu karmaşıklığı ve hesaplama maliyetine neden olabilir. Bu model, Bölümlemede zorluk de sunabilir.
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="Özellikler için köşeleri olan varlık modeli." border="false":::
 
-* **Özelliğe gömülü**köşeler: Bu yaklaşım, bir köşe içindeki varlığın tüm özelliklerini göstermek için anahtar-değer çifti listesinden yararlanır. Bu yaklaşım daha basit sorgulara ve daha düşük maliyetli traversals neden olacak şekilde daha az model karmaşıklığı sağlar.
+* **Özelliğe gömülü** köşeler: Bu yaklaşım, bir köşe içindeki varlığın tüm özelliklerini göstermek için anahtar-değer çifti listesinden yararlanır. Bu yaklaşım daha basit sorgulara ve daha düşük maliyetli traversals neden olacak şekilde daha az model karmaşıklığı sağlar.
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Özellikler için köşeleri olan varlık modeli." border="false":::
 
@@ -88,7 +89,7 @@ Ancak, bir özelliğe başvuruda bulunan senaryolar avantaj sağlayabilir. Örne
 
 ### <a name="relationship-modeling-with-edge-directions"></a>Kenar yönlerine sahip ilişki modelleme
 
-Köşeler modellendikten sonra aralarındaki ilişkileri göstermek için kenarlar eklenebilir. Değerlendirilmesi gereken ilk boyut **ilişkinin yönüdür**. 
+Köşeler modellendikten sonra aralarındaki ilişkileri göstermek için kenarlar eklenebilir. Değerlendirilmesi gereken ilk boyut **ilişkinin yönüdür** . 
 
 Edge nesnelerinin, veya işlevi kullanılırken bir çapraz geçiş tarafından izlenen varsayılan bir yönü vardır `out()` `outE()` . Tüm köşeler giden kenarlarıyla depolandığından, bu doğal yönün kullanılması verimli bir işlem ile sonuçlanır. 
 

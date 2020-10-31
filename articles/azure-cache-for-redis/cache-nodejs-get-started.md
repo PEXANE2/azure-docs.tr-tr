@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Node.js ile Redsıs için Azure önbelleğini kullanma'
+title: 'Hızlı başlangıç: Node.js Redsıs için Azure önbelleğini kullanma'
 description: Bu hızlı başlangıçta, Node.js ve node_redis ile redin için Azure önbelleğini nasıl kullanacağınızı öğreneceksiniz.
 author: yegu-ms
 ms.service: cache
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: ce570475617236bb99f1bca7a07dc95e1f3285aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa22cffc1fc38e055c6c2bb504c311c012f31ac2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91331004"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087154"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Hızlı başlangıç: Node.js ile Redsıs için Azure önbelleğini kullanma
+# <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>Hızlı başlangıç: Node.js Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir Node.js uygulamasına katabilirsiniz.
 
@@ -51,7 +51,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
     {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
 ```
 
-Kodunuzdaki her işlem için yeni bağlantı oluşturmayın. Bunun yerine, mümkün olduğunca bağlantıları yeniden kullanın. 
+Kodunuzda her bir işlem için yeni bir bağlantı oluşturmayın. Bunun yerine, mümkün olduğunca bağlantıları yeniden kullanın. 
 
 ## <a name="create-a-new-nodejs-app"></a>Yeni bir Node.js uygulaması oluşturma
 
@@ -119,13 +119,13 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 > Bir kaynak grubunu silme işlemi geri alınamaz ve kaynak grubunun ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. Bu örneği, tutmak istediğiniz kaynakları içeren mevcut bir kaynak grubunda barındırmak için kaynaklar oluşturduysanız, kaynak grubunu silmek yerine her kaynağı kendi ilgili dikey penceresinden tek tek silebilirsiniz.
 >
 
-[Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
+[Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları** ’nı seçin.
 
-**Ada göre filtrele** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **.** .. öğesini seçin ve **kaynak grubunu silin**.
+**Ada göre filtrele** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **.** .. öğesini seçin ve **kaynak grubunu silin** .
 
 ![Azure kaynak grubunu sil](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 
-Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını girin ve **Sil**' i seçin.
+Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını girin ve **Sil** ' i seçin.
 
 Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 

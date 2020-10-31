@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: a319e5f3b6aa861feb2d9dfc88d471ff695c2a3c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 37f5acdb2921b6f2bf4a5ed5a8c435db78e01513
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482328"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087375"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure Cosmos DB ve kapsayıcı oluşturma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB, Microsoft 'un herhangi bir ölçekte açık API 'Leri olan hızlı NoSQL veritabanıdır. Anahtar/değer veritabanlarını, belge veritabanlarını ve grafik veritabanlarını hızlıca oluşturmak ve sorgulamak için Azure Cosmos DB kullanabilirsiniz. Bu hızlı başlangıç, bir Azure Cosmos veritabanı ve bu veritabanı içindeki bir kapsayıcı oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) dağıtma işlemine odaklanır. Daha sonra bu kapsayıcıdaki verileri saklayabilirsiniz.
 
@@ -61,22 +62,22 @@ Daha fazla Azure Cosmos DB Şablon örneği [hızlı başlangıç şablonu galer
 
     Belirtilmediği takdirde, Azure Cosmos kaynaklarını oluşturmak için varsayılan değerleri kullanın.
 
-    * **Abonelik**: Bir Azure aboneliği seçin.
-    * **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın.
-    * **Konum**: Bir konum seçin.  Örneğin **Orta ABD**.
-    * **Hesap adı**: Azure Cosmos hesabı için bir ad girin. Bu, genel olarak benzersiz olmalıdır.
-    * **Konum**: Azure Cosmos hesabınızı oluşturmak istediğiniz konumu girin. Azure Cosmos hesabı, kaynak grubuyla aynı konumda olabilir.
-    * **Birincil bölge**: Azure Cosmos hesabının birincil çoğaltma bölgesi.
-    * **İkincil bölge**: Azure Cosmos hesabı için ikincil çoğaltma bölgesi.
-    * **Varsayılan tutarlılık düzeyi**: Azure Cosmos hesabı için varsayılan tutarlılık düzeyi.
-    * **Maksimum Eskime durumu ön eki**: en fazla eski istek. Boundedstalet için gereklidir.
-    * **Saniye cinsinden en fazla zaman aralığı**: en fazla gecikme süresi. Boundedstalet için gereklidir.
-    * **Veritabanı adı**: Azure Cosmos veritabanının adı.
-    * **Kapsayıcı adı**: Azure Cosmos kapsayıcısının adı.
-    * **Aktarım hızı**: kapsayıcı için aktarım hızı, en düşük aktarım hızı DEĞERI 400 ru/sn 'dir.
-    * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**: Bunu seçin.
+    * **Abonelik** : Bir Azure aboneliği seçin.
+    * **Kaynak grubu** : **Yeni oluştur** ' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam** ' a tıklayın.
+    * **Konum** : Bir konum seçin.  Örneğin **Orta ABD** .
+    * **Hesap adı** : Azure Cosmos hesabı için bir ad girin. Bu, genel olarak benzersiz olmalıdır.
+    * **Konum** : Azure Cosmos hesabınızı oluşturmak istediğiniz konumu girin. Azure Cosmos hesabı, kaynak grubuyla aynı konumda olabilir.
+    * **Birincil bölge** : Azure Cosmos hesabının birincil çoğaltma bölgesi.
+    * **İkincil bölge** : Azure Cosmos hesabı için ikincil çoğaltma bölgesi.
+    * **Varsayılan tutarlılık düzeyi** : Azure Cosmos hesabı için varsayılan tutarlılık düzeyi.
+    * **Maksimum Eskime durumu ön eki** : en fazla eski istek. Boundedstalet için gereklidir.
+    * **Saniye cinsinden en fazla zaman aralığı** : en fazla gecikme süresi. Boundedstalet için gereklidir.
+    * **Veritabanı adı** : Azure Cosmos veritabanının adı.
+    * **Kapsayıcı adı** : Azure Cosmos kapsayıcısının adı.
+    * **Aktarım hızı** : kapsayıcı için aktarım hızı, en düşük aktarım hızı DEĞERI 400 ru/sn 'dir.
+    * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** : Bunu seçin.
 
-3. **Satın al**'ı seçin. Azure Cosmos hesabı başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
+3. **Satın al** 'ı seçin. Azure Cosmos hesabı başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
 
    :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Azure 'a dağıtma":::
 

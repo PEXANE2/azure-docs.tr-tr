@@ -8,14 +8,16 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5537b70f9852f5b5a17362c13e2c9b8e8e9fc43c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9350682f7c636979df4dcde0c43a3b4941ad6ebb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570609"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085781"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB Graph hesabının bölgesel uç noktaları
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 Azure Cosmos DB Graph veritabanı, uygulamaların birden çok okuma uç noktası kullanabilmesi için [küresel olarak dağıtılır](distribute-data-globally.md) . Birden çok konumda yazma erişimi gerektiren uygulamalar, [çok bölgeli yazma](how-to-multi-master.md) yeteneklerini etkinleştirmelidir.
 
 Birden fazla bölge seçme nedenleri:
@@ -28,7 +30,7 @@ Cosmos DB hesapta Azure Resource Manager ilkesi ayarlanarak **veri** yerleşimi 
 
 Cosmos DB Graph veritabanı altyapısı, her biri birden çok küme içeren birden çok bölgede çalışmaktadır. Her kümenin yüzlerce makinesi vardır. Cosmos DB Graph hesabı DNS CNAME *AccountName.Gremlin.Cosmos.Azure.com* , BIR kümenin DNS kaydını çözer. Yük dengeleyicinin tek bir IP adresi, iç küme topolojisini gizler.
 
-Cosmos DB Graph hesabının her bölgesi için bölgesel DNS CNAME kaydı oluşturulur. Bölgesel uç noktanın biçimi *AccountName-Region.Gremlin.Cosmos.Azure.com*. Bölgesel uç noktanın bölge kesimi, [Azure bölge](https://azure.microsoft.com/global-infrastructure/regions) adından tüm boşluklar kaldırılarak elde edilir. Örneğin, `"East US 2"` `"contoso"` Genel veritabanı hesabının BÖLGESI BIR DNS CNAME *contoso-eastus2.Gremlin.Cosmos.Azure.com*
+Cosmos DB Graph hesabının her bölgesi için bölgesel DNS CNAME kaydı oluşturulur. Bölgesel uç noktanın biçimi *AccountName-Region.Gremlin.Cosmos.Azure.com* . Bölgesel uç noktanın bölge kesimi, [Azure bölge](https://azure.microsoft.com/global-infrastructure/regions) adından tüm boşluklar kaldırılarak elde edilir. Örneğin, `"East US 2"` `"contoso"` Genel veritabanı hesabının BÖLGESI BIR DNS CNAME *contoso-eastus2.Gremlin.Cosmos.Azure.com*
 
 TinkerPop Gremlin istemcisi tek bir sunucu ile çalışacak şekilde tasarlanmıştır. Uygulama, okuma ve yazma trafiği için genel yazılabilir DNS CNAME 'i kullanabilir. Bölge kullanan uygulamalar, okuma trafiği için bölgesel uç nokta kullanmalıdır. Yalnızca belirli bir bölge yazmaları kabul edecek şekilde yapılandırıldıysa, yazma trafiği için bölgesel uç noktası kullanın. 
 

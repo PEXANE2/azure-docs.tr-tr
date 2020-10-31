@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5627aa614a7e2819b6f3cc1401c8458552e57219
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357225"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085182"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer ile kümenizi görselleştirme
 
@@ -69,7 +69,7 @@ Küme iki alt ağaç içerir: bir uygulamalar ve düğümler için bir diğeri.
 
 Service Fabric mantıksal hiyerarşisinde gezinmek için uygulama görünümünü kullanabilirsiniz: uygulamalar, hizmetler, bölümler ve çoğaltmalar.
 
-Aşağıdaki örnekte, **MyApp** uygulaması, **Mystatefulservice** ve **WebService**olmak üzere iki hizmetlerden oluşur. **Mystatefulservice** durum bilgisi olduğundan, bir birincil ve iki ikincil çoğaltmaya sahip bir bölüm içerir. Buna karşılık, WebSvcService durumsuz ve tek bir örnek içerir.
+Aşağıdaki örnekte, **MyApp** uygulaması, **Mystatefulservice** ve **WebService** olmak üzere iki hizmetlerden oluşur. **Mystatefulservice** durum bilgisi olduğundan, bir birincil ve iki ikincil çoğaltmaya sahip bir bölüm içerir. Buna karşılık, WebSvcService durumsuz ve tek bir örnek içerir.
 
 ![Service Fabric Explorer uygulama görünümü][sfx-application-tree]
 
@@ -83,7 +83,7 @@ Düğüm görünümü, kümenin fiziksel düzenini gösterir. Belirli bir düğ�
 ## <a name="actions"></a>Eylemler
 Service Fabric Explorer, kümenizin içindeki düğümlerde, uygulamalarda ve hizmetlerde eylemler çağırma için hızlı bir yol sunar.
 
-Örneğin, bir uygulama örneğini silmek için soldaki ağaçtan **uygulamayı seçin ve**ardından  >  **uygulama Sil**' i seçin.
+Örneğin, bir uygulama örneğini silmek için soldaki ağaçtan **uygulamayı seçin ve** ardından  >  **uygulama Sil** ' i seçin.
 
 ![Service Fabric Explorer bir uygulamayı silme][sfx-delete-application]
 
@@ -117,7 +117,7 @@ EventStore, Service Fabric Explorer ve REST API aracılığıyla kullanılabilir
 ## <a name="image-store-viewer"></a>Görüntü Deposu Görüntüleyici
 Görüntü deposu Görüntüleyicisi, görüntü deposunun geçerli içeriğini görüntülemeye ve dosya ve klasör bilgilerini almaya izin veren yerel Görüntü Deposu kullanılıyorsa sunulan bir özelliktir.
 
-![Küme eşlemesi Service Fabric Explorer][sfx-imagestore]
+![Görüntü Deposu görüntüleyicisini gösteren ekran görüntüsü.][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>Yedekleme ve Geri Yükleme
 Service Fabric Explorer [yedekleme ve geri yükleme](./service-fabric-reliable-services-backup-restore.md)ile arabirim özelliği sunar. SFX içindeki yedekleme ve geri yükleme özelliklerini görmek için Gelişmiş mod etkinleştirilmelidir.

@@ -3,12 +3,12 @@ title: Windows 'da Azure Service Fabric Linux kümesi ayarlama
 description: Bu makalede, Windows geliştirme makinelerinde çalışan Linux kümelerinin Service Fabric nasıl ayarlanacağı ele alınmaktadır. Bu yaklaşım, platformlar arası geliştirme için yararlıdır.
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: e25c6adf5e5f5101025aa883ef2ff9750c113a76
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 7b25a84e76773baea9f17430df1b7ba13aa661aa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164117"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087086"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows Geliştirici makinenizde Linux Service Fabric kümesi ayarlama
 
@@ -57,7 +57,7 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde Service Fabric bir kümes
     ```
 
     >[!TIP]
-    > Varsayılan olarak bu, görüntüyü Service Fabric’in en son sürümüyle çeker. Belirli düzeltmeler için lütfen [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) sayfasını ziyaret edin.
+    > Varsayılan olarak bu, görüntüyü Service Fabric’in en son sürümüyle çeker. Belirli düzeltmeler için Docker Hub 'daki [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) sayfasına bakın.
 
 
 

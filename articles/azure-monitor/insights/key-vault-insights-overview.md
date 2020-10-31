@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d28138b251cf159b7cbc5cc6942bb287e57a95d7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278627"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088106"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Key Vault için Azure Izleyici ile Anahtar Kasası hizmetinizi izleme
 Key Vault için Azure Izleyici, Key Vault isteklerinizin, performanlarınızın, hatalarından ve gecikmelerinden oluşan Birleşik bir görünüm sunarak anahtar kasalarınızın kapsamlı bir şekilde izlenmesini sağlar.
@@ -34,7 +34,7 @@ Tüm aboneliklerinizde anahtar kasalarınızın kullanımını ve işlemlerini g
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın
 
-2. Azure portal sol bölmeden **izleyici** ' yi seçin ve Öngörüler bölümünde, **Anahtar kasaları**' nı seçin.
+2. Azure portal sol bölmeden **izleyici** ' yi seçin ve Öngörüler bölümünde, **Anahtar kasaları** ' nı seçin.
 
 ![Birden çok grafik içeren genel bakış deneyiminin ekran görüntüsü](./media/key-vaults-insights-overview/overview.png)
 
@@ -90,7 +90,7 @@ Hatalar çalışma kitabı, seçili zaman çerçevesinde tüm Anahtar Kasası is
 
 Işlemler çalışma kitabı, kullanıcıların, en üst düzey kutucuklar kullanılarak sonuç durumuna göre filtrelenebilir tüm işlemlerin tam ayrıntılarına derinlemesine bakış sağlamasına olanak tanır.
 
-![İşlemler görünümünün ekran görüntüsü](./media/key-vaults-insights-overview/info.png)
+![Tüm işlemlerin tüm ayrıntılarını içeren Işlemler çalışma kitabını gösteren ekran görüntüsü.](./media/key-vaults-insights-overview/info.png)
 
 Kullanıcılar, üst tablodaki belirli işlem türlerine göre görünümleri Ayrıca, kullanıcıların bir açılan bağlam bölmesinde tam işlem ayrıntılarını görüntüleyebileceği, daha düşük tabloyu dinamik olarak güncelleştiren şekilde de kapsamını belirleyebilir.
 
@@ -126,7 +126,7 @@ En üstteki araç çubuğundan **Özelleştir** düğmesini seçerek düzenleme 
 Aşağıdaki adımları gerçekleştirerek, çoklu abonelik ve Anahtar Kasası genel bakış ya da çalışma kitaplarını her çalıştırmada belirli bir aboneliğe veya anahtar kasalarına göre yapılandırabilirsiniz:
 
 1. Portaldan **izleme** ' yi seçin ve ardından sol bölmedeki **Anahtar kasaları** ' nı seçin.
-2. **Genel bakış** çalışma kitabında, komut çubuğundan **Düzenle**' yi seçin.
+2. **Genel bakış** çalışma kitabında, komut çubuğundan **Düzenle** ' yi seçin.
 3. **Abonelikler** açılan listesinden, varsayılan olarak yo kullanmak istediğiniz bir veya daha fazla aboneliği seçin. Çalışma kitabının toplam 10 aboneliği seçmeyi desteklediğini unutmayın.
 4. **Anahtar kasaları** açılan listesinden, varsayılan olarak kullanmak istediğiniz bir veya daha fazla hesabı seçin. Çalışma kitabının toplam 200 depolama hesabı seçmeyi desteklediğini unutmayın.
 5. Özelleştirmelerinizle çalışma kitabının bir kopyasını kaydetmek için komut çubuğundan **farklı kaydet** ' i seçin ve ardından okuma moduna dönmek Için **Düzenle bitti** ' ye tıklayın.

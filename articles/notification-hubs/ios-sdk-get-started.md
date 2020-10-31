@@ -3,17 +3,17 @@ title: Azure Notification Hubs ve iOS SDK 'sını kullanarak iOS 'a anında ilet
 description: Bu öğreticide, iOS cihazlarına anında iletme bildirimleri göndermek için Azure Notification Hubs ve Apple Anında Iletilen bildirim hizmetini nasıl kullanacağınızı öğreneceksiniz.
 author: sethmanheim
 ms.author: sethm
-ms.date: 08/10/2020
+ms.date: 10/30/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 3ec96ff0fdebc0ac862af00c699ec489567a7144
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c920c9b3b28df7f5bf3bf169ef88ab967f23649e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426761"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085386"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme
 
@@ -27,7 +27,7 @@ Bu öğreticiyi çalıştırmak, sonraki amaç C ve Swift iOS öğreticilerine y
 - Bildirim hub’ı oluşturma.
 - Bildirim Hub 'ını APNS bilgileriyle yapılandırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için etkin bir Azure hesabınızın olması gerekir. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/free/).
 
@@ -51,22 +51,22 @@ Apple 'ın imzalı bir anında iletme sertifikası oluşturmak için kullandığ
 
 1. Mac’inizde Anahtar Zinciri Erişimi aracını çalıştırın. Bu, **yardımcı programlar** klasöründen veya başlatma panelindeki **diğer** klasörden açılabilir.
 
-2. **Anahtarlık erişimi**seçin, **sertifika Yardımcısı**' nı genişletin ve bir **sertifika yetkilisinden sertifika iste**' yi seçin.
+2. **Anahtarlık erişimi** seçin, **sertifika Yardımcısı** ' nı genişletin ve bir **sertifika yetkilisinden sertifika iste** ' yi seçin.
 
    :::image type="content" source="media/ios-sdk-get-started/image1.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
    > [!NOTE]
    > Varsayılan olarak, Anahtarlık erişimi listedeki ilk öğeyi seçer. Bu, **Sertifikalar** **kategorisindeyseniz ve Apple Dünya genelinde geliştirici Ilişkileri sertifika yetkilisiyseniz** listedeki ilk öğe değilse bir sorun olabilir. CSR 'yi (sertifika Imzalama Isteği) oluşturmadan önce, anahtar olmayan bir öğeye sahip olduğunuzdan veya **Apple Dünya genelinde geliştirici Ilişkileri sertifika yetkilisi** anahtarının seçildiğinden emin olun.
 
-3. **Kullanıcı e-posta adresinizi**seçin, **ortak ad** değerini girin, **diske kaydedilmiş**' ı belirttiğinizden emin olun ve ardından **devam**' ı seçin. **CA e-posta adresini** gerekli olmadığından boş bırakın.
+3. **Kullanıcı e-posta adresinizi** seçin, **ortak ad** değerini girin, **diske kaydedilmiş** ' ı belirttiğinizden emin olun ve ardından **devam** ' ı seçin. **CA e-posta adresini** gerekli olmadığından boş bırakın.
 
    :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-4. **Farklı kaydet**' de CSR dosyası için bir ad girin, **konum ' u**seçin ve ardından **Kaydet**' i seçin.
+4. **Farklı kaydet** ' de CSR dosyası için bir ad girin, **konum ' u** seçin ve ardından **Kaydet** ' i seçin.
 
    :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-   Bu eylem, CSR dosyasını seçilen konuma kaydeder. Varsayılan konum **Desktop**' dır. Bu dosya için seçilen konumu unutmayın.
+   Bu eylem, CSR dosyasını seçilen konuma kaydeder. Varsayılan konum **Desktop** ' dır. Bu dosya için seçilen konumu unutmayın.
 
 Ardından, uygulamanızı Apple 'a kaydedin, anında iletme bildirimlerini etkinleştirin ve bir anında iletme sertifikası oluşturmak için, içeri aktarılmış CSR 'yi karşıya yükleyin.
 
@@ -74,7 +74,7 @@ Ardından, uygulamanızı Apple 'a kaydedin, anında iletme bildirimlerini etkin
 
 Bir iOS uygulamasına anında iletme bildirimleri göndermek için uygulamanızı Apple 'a kaydedin ve anında iletme bildirimleri için kaydolun.
 
-1. Uygulamanızı henüz kaydetmediyseniz, Apple Geliştirici Merkezi ' nde [IOS sağlama portalı](https://go.microsoft.com/fwlink/p/?LinkId=272456) ' na gidin. Apple KIMLIĞINIZLE portalda oturum açın ve **tanımlayıcılar**' ı seçin. Sonra **+** Yeni bir uygulama kaydetmeyi seçin.
+1. Uygulamanızı henüz kaydetmediyseniz, Apple Geliştirici Merkezi ' nde [IOS sağlama portalı](https://go.microsoft.com/fwlink/p/?LinkId=272456) ' na gidin. Apple KIMLIĞINIZLE portalda oturum açın ve **tanımlayıcılar** ' ı seçin. Sonra **+** Yeni bir uygulama kaydetmeyi seçin.
 
    :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
@@ -82,31 +82,31 @@ Bir iOS uygulamasına anında iletme bildirimleri göndermek için uygulamanız�
 
    :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-3. Yeni uygulamanız için aşağıdaki üç değeri güncelleştirin ve ardından **devam**' ı seçin:
+3. Yeni uygulamanız için aşağıdaki üç değeri güncelleştirin ve ardından **devam** ' ı seçin:
 
-   - **Açıklama**: uygulamanız için açıklayıcı bir ad yazın.
-   - **Paket kimliği**: [uygulama dağıtım kılavuzunda](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)belirtilen şekilde, **kuruluş tanımlayıcısı. ürün adı** form için bir paket kimliği girin. **Kuruluş tanımlayıcısı** ve **ürün adı** değerleri, Xcode projenizi oluştururken kullandığınız kuruluş tanımlayıcısı ve ürün adıyla eşleşmelidir. Aşağıdaki ekran görüntüsünde, **Notificationhub 'lar** değeri bir kuruluş tanımlayıcısı olarak kullanılır ve **getstarted** değeri ürün adı olarak kullanılır. **Paket tanımlayıcı** değerinin Xcode projenizdeki değerle eşleştiğinden emin olun, böylece Xcode doğru yayımlama profilini kullanır.
+   - **Açıklama** : uygulamanız için açıklayıcı bir ad yazın.
+   - **Paket kimliği** : [uygulama dağıtım kılavuzunda](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)belirtilen şekilde, **kuruluş tanımlayıcısı. ürün adı** form için bir paket kimliği girin. **Kuruluş tanımlayıcısı** ve **ürün adı** değerleri, Xcode projenizi oluştururken kullandığınız kuruluş tanımlayıcısı ve ürün adıyla eşleşmelidir. Aşağıdaki ekran görüntüsünde, **Notificationhub 'lar** değeri bir kuruluş tanımlayıcısı olarak kullanılır ve **getstarted** değeri ürün adı olarak kullanılır. **Paket tanımlayıcı** değerinin Xcode projenizdeki değerle eşleştiğinden emin olun, böylece Xcode doğru yayımlama profilini kullanır.
 
       :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-   - **Anında Iletme bildirimleri**: **yetenekler** bölümündeki **anında iletme bildirimleri** seçeneğini işaretleyin.
+   - **Anında Iletme bildirimleri** : **yetenekler** bölümündeki **anında iletme bildirimleri** seçeneğini işaretleyin.
 
       :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-      Bu eylem, uygulama KIMLIĞINIZI ve bilgileri onaylamak için isteklerinizi oluşturur. **Devam**' ı seçin ve ardından yenı uygulama kimliğini onaylamak için **Kaydet** ' i seçin.
+      Bu eylem, uygulama KIMLIĞINIZI ve bilgileri onaylamak için isteklerinizi oluşturur. **Devam** ' ı seçin ve ardından yenı uygulama kimliğini onaylamak için **Kaydet** ' i seçin.
 
       :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-      **Kaydet**' i seçtikten sonra, yenı uygulama kimliğini **sertifikalar, tanımlayıcılar & profiller** sayfasında bir satır öğesi olarak görürsünüz.
+      **Kaydet** ' i seçtikten sonra, yenı uygulama kimliğini **sertifikalar, tanımlayıcılar & profiller** sayfasında bir satır öğesi olarak görürsünüz.
 
-4. **Sertifikalar, tanımlayıcılar & profiller** sayfasında, **tanımlayıcılar**' ın altında, az önce oluşturduğunuz uygulama kimliği satırı öğesini bulun ve ardından **uygulama kimliği yapılandırmasını düzenleme** ekranınızı göstermek için satırını seçin.
+4. **Sertifikalar, tanımlayıcılar & profiller** sayfasında, **tanımlayıcılar** ' ın altında, az önce oluşturduğunuz uygulama kimliği satırı öğesini bulun ve ardından **uygulama kimliği yapılandırmasını düzenleme** ekranınızı göstermek için satırını seçin.
 
 ## <a name="create-a-certificate-for-notification-hubs"></a>Notification Hubs için bir sertifika oluşturun
 
 > [!NOTE]
 > İOS 13 ' ün piyasaya çıkmasıyla, belirteç tabanlı kimlik doğrulaması kullanarak yalnızca sessiz bildirimleri alabilirsiniz. APNS kimlik bilgileriniz için sertifika tabanlı kimlik doğrulaması kullanıyorsanız, belirteç tabanlı kimlik doğrulaması ile geçiş yapmanız gerekir.
 
-Bildirim Hub 'ının **APNs**ile çalışmasını sağlamak için bir sertifika gerekir. Bu, iki şekilde yapılabilir:
+Bildirim Hub 'ının **APNs** ile çalışmasını sağlamak için bir sertifika gerekir. Bu, iki şekilde yapılabilir:
 
 - Notification Hubs doğrudan yüklenebilen bir **. p12** dosyası oluşturun.
 
@@ -129,7 +129,7 @@ Bildirim Hub 'ının **APNs**ile çalışmasını sağlamak için bir sertifika 
    > [!NOTE]
    > Bu öğretici geliştirme sertifikası kullanır. Aynı işlem üretim sertifika kaydedildiğinde de kullanılır. Bildirimleri gönderirken aynı sertifika türünü kullandığınızdan emin olun.
 
-3. **Dosya Seç**' i seçin, Ilk görevden CSR dosyasını kaydettiğiniz konuma gidin ve ardından yüklemek için sertifika adına çift tıklayın. Daha sonra **Devam** seçeneğini belirleyin.
+3. **Dosya Seç** ' i seçin, Ilk görevden CSR dosyasını kaydettiğiniz konuma gidin ve ardından yüklemek için sertifika adına çift tıklayın. Daha sonra **Devam** seçeneğini belirleyin.
 
 4. Portal sertifikayı oluşturduktan sonra **İndir** düğmesini seçin. Sertifikayı kaydedin ve kaydedildiği konumu unutmayın.
 
@@ -139,15 +139,15 @@ Bildirim Hub 'ının **APNs**ile çalışmasını sağlamak için bir sertifika 
 
    :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-   Varsayılan olarak, indirilen geliştirme sertifikası **aps_development. cer**olarak adlandırılır.
+   Varsayılan olarak, indirilen geliştirme sertifikası **aps_development. cer** olarak adlandırılır.
 
-5. İndirilen gönderim sertifikası **AP \_ geliştirme. cer**' ye çift tıklayın. Bu eylem yeni sertifikayı Anahtar Zinciri’ne aşağıdaki resimde gösterildiği gibi yüklenir:
+5. İndirilen gönderim sertifikası **AP \_ geliştirme. cer** ' ye çift tıklayın. Bu eylem yeni sertifikayı Anahtar Zinciri’ne aşağıdaki resimde gösterildiği gibi yüklenir:
 
    :::image type="content" source="media/ios-sdk-get-started/image13.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-   Sertifikanıza ilişkin ad farklı olabilir, ancak ad **Apple Development IOS anında Iletme Hizmetleri**'ne önek olarak eklenir.
+   Sertifikanıza ilişkin ad farklı olabilir, ancak ad **Apple Development IOS anında Iletme Hizmetleri** 'ne önek olarak eklenir.
 
-6. Anahtar Zinciri Erişimi’nde **Sertifikalar** kategorisinde oluşturduğunuz yeni bildirim sertifikasına sağ tıklayın. **Dışarı aktar**' ı seçin, dosyayı adlandırın, **. p12** biçimini seçin ve ardından **Kaydet**' i seçin.
+6. Anahtar Zinciri Erişimi’nde **Sertifikalar** kategorisinde oluşturduğunuz yeni bildirim sertifikasına sağ tıklayın. **Dışarı aktar** ' ı seçin, dosyayı adlandırın, **. p12** biçimini seçin ve ardından **Kaydet** ' i seçin.
 
    :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
@@ -160,21 +160,21 @@ Bildirim Hub 'ının **APNs**ile çalışmasını sağlamak için bir sertifika 
 
 1. Aşağıdaki ayrıntıları unutmayın:
 
-   - **Uygulama kimliği öneki** (Bu BIR **Takım kimliğidir**)
+   - **Uygulama kimliği öneki** (Bu BIR **Takım kimliğidir** )
    - **Paket Kimliği**
 
-2. **Sertifikalar, tanımlayıcılar & profillere**geri dönüp **anahtarlar**' a tıklayın. **APNs**için yapılandırılmış bir anahtarınız zaten varsa, oluşturulduktan hemen sonra indirdiğiniz. P8 sertifikasını yeniden kullanabilirsiniz. Bu durumda 3 ile 5 arasındaki adımları yoksayabilirsiniz.
+2. **Sertifikalar, tanımlayıcılar & profillere** geri dönüp **anahtarlar** ' a tıklayın. **APNs** için yapılandırılmış bir anahtarınız zaten varsa, oluşturulduktan hemen sonra indirdiğiniz. P8 sertifikasını yeniden kullanabilirsiniz. Bu durumda 3 ile 5 arasındaki adımları yoksayabilirsiniz.
 
 3. **+** Yeni bir anahtar oluşturmak için düğmeye tıklayın (veya **anahtar oluştur** düğmesi).
 
-4. Uygun bir **anahtar adı** değeri sağlayın, **Apple Anında iletilen BILDIRIM hizmeti (APNs)** seçeneğini işaretleyin ve ardından **devam**' a ve ardından sonraki ekranda **Kaydet** ' e tıklayın.
+4. Uygun bir **anahtar adı** değeri sağlayın, **Apple Anında iletilen BILDIRIM hizmeti (APNs)** seçeneğini işaretleyin ve ardından **devam** ' a ve ardından sonraki ekranda **Kaydet** ' e tıklayın.
 
-5. **İndir** ' e tıklayın ve ardından **. P8** dosyasını (önekli `AuthKey_` ) güvenli bir yerel dizine taşıyın ve **bitti**' ye tıklayın.
+5. **İndir** ' e tıklayın ve ardından **. P8** dosyasını (önekli `AuthKey_` ) güvenli bir yerel dizine taşıyın ve **bitti** ' ye tıklayın.
 
    > [!IMPORTANT]
    > . P8 dosyanızı güvenli bir yerde sakladığınızdan emin olun (ve bir yedek kaydedin). Anahtarınızı indirdikten sonra yeniden karşıdan yüklenemez; sunucu kopyası kaldırılır.
 
-6. **Anahtarlar**' da, az önce oluşturduğunuz anahtara (veya bunun yerine kullanmayı seçtiyseniz var olan bir anahtara) tıklayın.
+6. **Anahtarlar** ' da, az önce oluşturduğunuz anahtara (veya bunun yerine kullanmayı seçtiyseniz var olan bir anahtara) tıklayın.
 
 7. **Anahtar kimliği** değerini bir yere getirin.
 
@@ -197,36 +197,36 @@ Bu adımların sonunda, [Bildirim Hub 'ıNıZı APNs bilgileriyle yapılandırma
 
 ## <a name="create-a-provisioning-profile"></a>Sağlama profili oluşturma
 
-1. [IOS sağlama portalı](https://go.microsoft.com/fwlink/p/?LinkId=272456)' na dönün, **sertifikalar, tanımlayıcılar & profiller**' i seçin, sol menüden **profiller** ' i seçin ve ardından **+** Yeni bir profil oluşturmak için öğesini seçin. **Yeni bir sağlama profili kaydet** ekranı görüntülenir.
+1. [IOS sağlama portalı](https://go.microsoft.com/fwlink/p/?LinkId=272456)' na dönün, **sertifikalar, tanımlayıcılar & profiller** ' i seçin, sol menüden **profiller** ' i seçin ve ardından **+** Yeni bir profil oluşturmak için öğesini seçin. **Yeni bir sağlama profili kaydet** ekranı görüntülenir.
 
-2. Sağlama profili türü olarak **geliştirme** bölümünde **iOS uygulama geliştirmeyi** seçin ve ardından **devam**' ı seçin.
+2. Sağlama profili türü olarak **geliştirme** bölümünde **iOS uygulama geliştirmeyi** seçin ve ardından **devam** ' ı seçin.
 
    :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-3. Ardından, **uygulama kimliği** açılan listesinden oluşturduğunuz uygulama kimliğini seçin ve ardından **devam**' ı seçin.
+3. Ardından, **uygulama kimliği** açılan listesinden oluşturduğunuz uygulama kimliğini seçin ve ardından **devam** ' ı seçin.
 
    :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-4. **Sertifika seç** penceresinde, kod imzalama için kullandığınız geliştirme sertifikasını seçin ve **devam**' ı seçin. Bu sertifika, oluşturduğunuz gönderim sertifikası değil. Bir tane yoksa, onu oluşturmanız gerekir. Bir sertifika varsa, sonraki adıma atlayın. Yoksa bir geliştirme sertifikası oluşturmak için:
+4. **Sertifika seç** penceresinde, kod imzalama için kullandığınız geliştirme sertifikasını seçin ve **devam** ' ı seçin. Bu sertifika, oluşturduğunuz gönderim sertifikası değil. Bir tane yoksa, onu oluşturmanız gerekir. Bir sertifika varsa, sonraki adıma atlayın. Yoksa bir geliştirme sertifikası oluşturmak için:
 
-   1. **Kullanılabilir sertifika yoksa** **sertifika oluştur**' u seçin.
-   2. **Yazılım** bölümünde **Apple geliştirme**' yi seçin. Daha sonra **Devam** seçeneğini belirleyin.
-   3. **Yeni sertifika oluştur** ekranında **Dosya Seç**' i seçin.
-   4. Daha önce oluşturduğunuz **sertifika Imzalama isteği** sertifikasına gidin, seçin ve sonra **Aç**' ı seçin.
-   5. **Devam**’ı seçin.
+   1. **Kullanılabilir sertifika yoksa** **sertifika oluştur** ' u seçin.
+   2. **Yazılım** bölümünde **Apple geliştirme** ' yi seçin. Daha sonra **Devam** seçeneğini belirleyin.
+   3. **Yeni sertifika oluştur** ekranında **Dosya Seç** ' i seçin.
+   4. Daha önce oluşturduğunuz **sertifika Imzalama isteği** sertifikasına gidin, seçin ve sonra **Aç** ' ı seçin.
+   5. **Devam** ’ı seçin.
    6. Geliştirme sertifikasını indirin ve kaydedildiği konumu unutmayın.
 
 5. **Sertifikalar, tanımlayıcılar & profiller** sayfasına dönün, sol menüden **profiller** ' i seçin ve ardından **+** Yeni bir profil oluşturmak için öğesini seçin. **Yeni bir sağlama profili kaydet** ekranı görüntülenir.
 
 6. **Sertifika seç** penceresinde, az önce oluşturduğunuz geliştirme sertifikasını seçin. Daha sonra **Devam** seçeneğini belirleyin.
 
-7. Ardından, test için kullanılacak cihazları seçin ve **devam**' ı seçin.
+7. Ardından, test için kullanılacak cihazları seçin ve **devam** ' ı seçin.
 
-8. Son olarak, **sağlama profili adı**bölümünde profil için bir ad seçin ve ardından **Oluştur**' u seçin.
+8. Son olarak, **sağlama profili adı** bölümünde profil için bir ad seçin ve ardından **Oluştur** ' u seçin.
 
    :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-9. Yeni sağlama profili oluşturulduğunda **İndir**' i seçin. Kaydedildiği konumu unutmayın.
+9. Yeni sağlama profili oluşturulduğunda **İndir** ' i seçin. Kaydedildiği konumu unutmayın.
 
 10. Sağlama profilinin konumuna göz atın ve ardından çift tıklayarak Xcode geliştirme makinenize yüklemeyi seçin.
 
@@ -246,19 +246,19 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
 
 4. **Notification Hubs** sayfasında, aşağıdaki adımları uygulayın:
 
-   1. **Bildirim Hub 'ına**bir ad girin.
-   2. **Yeni ad alanı oluştur**' a bir ad girin. Bir ad alanı bir veya daha fazla Bildirim Hub 'ı içerir.
+   1. **Bildirim Hub 'ına** bir ad girin.
+   2. **Yeni ad alanı oluştur** ' a bir ad girin. Bir ad alanı bir veya daha fazla Bildirim Hub 'ı içerir.
    3. **Konum** açılır listesinden bir değer seçin. Bu değer, Bildirim Hub 'ını oluşturmak istediğiniz konumu belirtir.
-   4. **Kaynak grubunda**var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu oluşturun.
-   5. **Oluştur**’u seçin.
+   4. **Kaynak grubunda** var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu oluşturun.
+   5. **Oluştur** ’u seçin.
 
    :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-5. **Bildirimleri** (zil simgesi) seçin ve ardından **Kaynağa Git**' i seçin. Ayrıca **Notification Hubs** sayfasında listeyi yenileyebilir ve hub 'ınızı seçebilirsiniz.
+5. **Bildirimleri** (zil simgesi) seçin ve ardından **Kaynağa Git** ' i seçin. Ayrıca **Notification Hubs** sayfasında listeyi yenileyebilir ve hub 'ınızı seçebilirsiniz.
 
    :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-6. Listeden **Erişim İlkeleri**'ni seçin. İki bağlantı dizesinin sizin için kullanılabilir olduğunu unutmayın. Anında iletme bildirimlerini işlemek için onlara daha sonra ihtiyacınız olacak.
+6. Listeden **Erişim İlkeleri** 'ni seçin. İki bağlantı dizesinin sizin için kullanılabilir olduğunu unutmayın. Anında iletme bildirimlerini işlemek için onlara daha sonra ihtiyacınız olacak.
 
    > [!IMPORTANT]
    > Uygulamanızda **Defaultfullsharedaccesssignature** ilkesini kullanmayın. Bu, yalnızca arka uçta kullanılmak üzere tasarlanmıştır.
@@ -267,18 +267,18 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>Bildirim Hub 'ını APNS bilgileriyle yapılandırma
 
-**Bildirim hizmetleri**altında **Apple (APNs)** öğesini seçin ve ardından [Notification Hubs için sertifika oluşturma](#create-a-certificate-for-notification-hubs) bölümünde daha önce seçtiğiniz yaklaşıma göre uygun adımları izleyin.
+**Bildirim hizmetleri** altında **Apple (APNs)** öğesini seçin ve ardından [Notification Hubs için sertifika oluşturma](#create-a-certificate-for-notification-hubs) bölümünde daha önce seçtiğiniz yaklaşıma göre uygun adımları izleyin.
 
 > [!NOTE]
 > Yalnızca uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek istiyorsanız **uygulama modu** için **üretimi** kullanın.
 
 ### <a name="option-1-use-a-p12-push-certificate"></a>Seçenek 1: bir. p12 anında iletme sertifikası kullanın
 
-1. **Sertifika**’yı seçin.
+1. **Sertifika** ’yı seçin.
 
 2. Dosya simgesini seçin.
 
-3. Daha önce verdiğiniz. P12 dosyasını seçin ve sonra **Aç**' ı seçin.
+3. Daha önce verdiğiniz. P12 dosyasını seçin ve sonra **Aç** ' ı seçin.
 
 4. Gerekirse, doğru parolayı belirtin.
 
@@ -286,11 +286,11 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
 
    :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Sertifika yetkilisi 'nden sertifika ISTEME menü seçeneğinden oluşan ekran görüntüsü.":::
 
-6. **Kaydet**’i seçin.
+6. **Kaydet** ’i seçin.
 
 ### <a name="option-2-use-token-based-authentication"></a>Seçenek 2: belirteç tabanlı kimlik doğrulaması kullanma
 
-1. **Belirteç**seçin.
+1. **Belirteç** seçin.
 
 2. Daha önce aldığınız aşağıdaki değerleri girin:
 
@@ -301,7 +301,7 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
 
 3. **Korumalı alan** seçin
 
-4. **Kaydet**’i seçin.
+4. **Kaydet** ’i seçin.
 
 Artık Bildirim Hub 'ınızı APNS ile yapılandırdınız. Ayrıca, uygulamanızı kaydettirmek ve anında iletme bildirimleri göndermek için gereken bağlantı dizelerine sahip olursunuz.
 
@@ -309,4 +309,4 @@ Artık Bildirim Hub 'ınızı APNS ile yapılandırdınız. Ayrıca, uygulamanı
 
 Bu öğreticide, Azure 'da bir Bildirim Hub 'ı oluşturup yapılandırdığınıza ve bu uygulamayı Apple Anında İletilen Bildirim Servisi (APNS) aracılığıyla uygulamanıza gönderilmesine izin verecek şekilde yapılandırmış olursunuz. Ardından, örnek bir iOS uygulaması oluşturacağız ve Azure Notifications hub SDK 'sını, Azure portal aracılığıyla gönderilen anında iletme bildirimleri alabilmesi için tümleştireceğiz. Tercih ettiğiniz dile göre aşağıdaki öğreticiye ilerleyin:
 
-- [Öğretici: Swift kullanarak bir iOS uygulamasıyla tümleştirme]()
+- [Öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme](ios-sdk-300.md)

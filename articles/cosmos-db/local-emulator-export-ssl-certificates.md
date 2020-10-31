@@ -7,14 +7,15 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: f747cc6405cef07510766bcfa4c826aec9d9857b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 79e2b58ea342c9449faba108881c65d0bd8de856
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490416"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085811"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Java, Python ve Node.js uygulamalarıyla kullanmak üzere Azure Cosmos DB öykünücü sertifikalarını dışarı aktarın
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB öykünücüsü, geliştirme amaçlı olarak Azure Cosmos DB hizmetine öykünen yerel bir ortam sağlar. Azure Cosmos öykünücüsü yalnızca TLS bağlantıları aracılığıyla güvenli iletişimi destekler.
 
@@ -34,7 +35,7 @@ Bu makalede, Windows sertifika deposu ile tümleştirilen farklı dillerde ve ç
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png" alt-text="Azure Cosmos DB yerel öykünücüsü dışarı aktarma adımı 1":::
 
-1. **Ayrıntılar**’a ve ardından **Tamam**’a tıklayın.
+1. **Ayrıntılar** ’a ve ardından **Tamam** ’a tıklayın.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB yerel öykünücüsü dışarı aktarma adımı 1":::
 
@@ -42,19 +43,19 @@ Bu makalede, Windows sertifika deposu ile tümleştirilen farklı dillerde ve ç
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB yerel öykünücüsü dışarı aktarma adımı 1":::
 
-1. **İleri**’ye tıklayın.
+1. **İleri** ’ye tıklayın.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB yerel öykünücüsü dışarı aktarma adımı 1":::
 
-1. **Hayır, özel anahtarı dışarı aktarma**’ya tıklayın ve **İleri**’ye tıklayın.
+1. **Hayır, özel anahtarı dışarı aktarma** ’ya tıklayın ve **İleri** ’ye tıklayın.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB yerel öykünücüsü dışarı aktarma adımı 1":::
 
-1. **Base-64 ile kodlanmış X.509 (.CER)** seçeneğine ve ardından **İleri**’ye tıklayın.
+1. **Base-64 ile kodlanmış X.509 (.CER)** seçeneğine ve ardından **İleri** ’ye tıklayın.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB yerel öykünücüsü dışarı aktarma adımı 1":::
 
-1. Sertifikaya bir ad verin. Bu durumda **documentdbemulatorcert** dosyasını seçin ve **İleri**’ye tıklayın.
+1. Sertifikaya bir ad verin. Bu durumda **documentdbemulatorcert** dosyasını seçin ve **İleri** ’ye tıklayın.
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB yerel öykünücüsü dışarı aktarma adımı 1":::
 

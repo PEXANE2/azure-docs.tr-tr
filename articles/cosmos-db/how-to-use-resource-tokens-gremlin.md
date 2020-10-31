@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df25ab4b0f5593ab21336d002ad2f9f10795bdcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d851a28712beb80bf2a7aa196e471ef4f15074
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570566"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085743"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK ile Azure Cosmos DB kaynak belirteçleri kullanma
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Bu makalede, Gremlin SDK aracılığıyla grafik veritabanına erişmek için [Azure Cosmos DB kaynak belirteçlerinin](secure-access-to-data.md) nasıl kullanılacağı açıklanmaktadır.
 
@@ -100,7 +101,7 @@ Tek bir Gremlin hesabıyla sınırsız sayıda belirteç verebilirsiniz. Ancak, 
 
 ## <a name="permission"></a>İzin
 
-Uygulamaların kaynak belirteçlerini kullanırken karşılaştığı yaygın bir hata, "karşılık gelen istek için yetkilendirme üstbilgisinde izin verilmedi. Lütfen başka bir yetkilendirme üstbilgisiyle yeniden deneyin. " Bu hata, Gremlin geçişi bir kenar veya köşe yazmaya çalıştığında, ancak kaynak belirteci yalnızca *okuma* izinleri verdiğinde döndürülür. Şu adımlardan herhangi birini içerip içermediğini görmek için çapraz geçiş bilgilerinizi inceleyin: *. addv ()*, *. Adde ()*, *. Drop ()* veya *. Property ()*.
+Uygulamaların kaynak belirteçlerini kullanırken karşılaştığı yaygın bir hata, "karşılık gelen istek için yetkilendirme üstbilgisinde izin verilmedi. Lütfen başka bir yetkilendirme üstbilgisiyle yeniden deneyin. " Bu hata, Gremlin geçişi bir kenar veya köşe yazmaya çalıştığında, ancak kaynak belirteci yalnızca *okuma* izinleri verdiğinde döndürülür. Şu adımlardan herhangi birini içerip içermediğini görmek için çapraz geçiş bilgilerinizi inceleyin: *. addv ()* , *. Adde ()* , *. Drop ()* veya *. Property ()* .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Cosmos DB 'de [Azure rol tabanlı erişim denetimi (Azure RBAC)](role-based-access-control.md)
